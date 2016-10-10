@@ -8,22 +8,27 @@
     editor="" />
 <tags 
     ms.service="event-hubs"
-    ms.date="04/15/2016"
-    wacn.date="" />
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="tbd"
+    ms.date="08/16/2016"
+    ms.author="sethm" />  
+
 
 # 事件中心编程指南
 
-本主题介绍如何使用 Azure.NET SDK 进行 Azure 事件中心编程。内容假设你对事件中心已有初步的了解。有关事件中心的概念概述，请参阅[事件中心概述](/documentation/articles/event-hubs-overview/)。
+本主题介绍如何使用 Azure .NET SDK 进行 Azure 事件中心编程。内容假设你对事件中心已有初步的了解。有关事件中心的概念概述，请参阅[事件中心概述](/documentation/articles/event-hubs-overview/)。
 
 ## 事件发布者
 
 将事件发送到事件中心可以使用 HTTP POST 或通过 AMQP 1.0 连接来实现。要选择使用哪种方式取决于要解决的特定方案。AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
 
-事件中心是使用 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类创建和管理的。使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 和 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 提供 AMQP 通信通道，事件将通过该通道发送到事件中心。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类表示一个事件，用于将消息发布到事件中心。此类包括正文、一些元数据和有关事件的标头信息。其他属性将在通过事件中心传递时添加到 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 对象。
+事件中心是使用 [NamespaceManager](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.aspx) 类创建和管理的。使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 和 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类。[EventHubClient](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 提供 AMQP 通信通道，事件将通过该通道发送到事件中心。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类表示一个事件，用于将消息发布到事件中心。此类包括正文、一些元数据和有关事件的标头信息。其他属性将在通过事件中心传递时添加到 [EventData](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 对象。
 
 ## 入门
 
-支持事件中心的 .NET 类在 Microsoft.ServiceBus.dll 程序集中提供。引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)。为此，请在“Package Manager Console”窗口中发出以下命令[](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)：
+支持事件中心的 .NET 类在 Microsoft.ServiceBus.dll 程序集中提供。引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)。为此，请在[“Package Manager Console”](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)窗口中发出以下命令：
 
 ```
 Install-Package WindowsAzure.ServiceBus
@@ -181,4 +186,4 @@ while(receive)
 - [事件中心代码示例](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [事件处理程序主机 API 参考](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0926_2016-->

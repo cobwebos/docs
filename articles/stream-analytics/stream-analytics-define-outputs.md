@@ -1,20 +1,25 @@
 <properties
-	pageTitle="数据转换输出：针对存储、分析的选项 | Azure"
-	description="了解如何使流分析数据转换输出输出到数据存储选项。另外，请使用 Power BI 来获取分析结果。"
+	pageTitle="流分析输出：存储、分析选项 | Azure"
+	description="了解有关设定流分析数据输出选项（包括 Power BI）目标，用于分析结果的信息。"
 	keywords="数据转换、分析结果、数据存储选项"
 	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
 	documentationCenter="" 
 	authors="jeffstokes72"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="05/03/2016"
-	wacn.date=""/>
-# 使流分析数据转换输出输出到分析工具和数据存储选项
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-services"
+	ms.date="08/29/2016"
+	ms.author="jeffstok"/>
 
-创作流分析作业时，需考虑如何使用数据转换输出。如何查看流分析作业的结果？ 使用哪些工具来显示数据分析结果？ 数据存储选项是必需的吗？
+# 流分析输出：存储、分析选项
+
+创作流分析作业时，需考虑如何使用生成的数据。如何查看流分析作业的结果？流分析作业的结果存储在何处？
 
 为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。必须先存在作业中配置的输出，然后才能启动作业并开始事件的流动。例如，如果你使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。在启动 ASA 作业之前，需要由用户创建该存储帐户。
 
@@ -35,19 +40,19 @@
 <td>该名称是在查询中使用的友好名称，用于将查询输出定向到此数据湖存储。</td>
 </tr>
 <tr>
-<td>数据湖存储帐户</td>
-<td>存储帐户的名称（你正在向该存储帐户发送输出）。你将看到数据湖存储帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
+<td>帐户名</td>
+<td>Data Lake 存储帐户的名称（你正在向该存储帐户发送输出）。你将看到数据湖存储帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
 </tr>
 <tr>
-<td>路径前缀模式 [“可选”]</td>
+<td>路径前缀模式 [<I>可选</I>]</td>
 <td>用于对指定数据湖存储帐户中的文件进行编写的文件路径。<BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
 </tr>
 <tr>
-<td>日期格式 [“可选”]</td>
+<td>日期格式 [<I>可选</I>]</td>
 <td>如果在前缀路径中使用日期令牌，你可以选择组织文件所采用的日期格式。示例：YYYY/MM/DD</td>
 </tr>
 <tr>
-<td>时间格式 [“可选”]</td>
+<td>时间格式 [<I>可选</I>]</td>
 <td>如果在前缀路径中使用时间令牌，你可以选择组织文件所采用的时间格式。目前唯一支持的值是 HH。</td>
 </tr>
 <tr>
@@ -69,6 +74,13 @@
 </tbody>
 </table>
 
+### 续订数据湖存储授权
+
+如果自作业创建后或上次身份验证后更改了密码，则需要重新对 Data Lake Store 帐户进行身份验证。
+
+![Azure Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)
+
+
 ## SQL 数据库
 
 可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。流分析作业将写入到 Azure SQL 数据库的现有表中。请注意表架构必须与字段及其正从作业输出的类型完全匹配。[Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)也可以通过 SQL 数据库输出选项指定为输出（此项为预览功能）。下表列出了属性名称和用于创建 SQL 数据库输出的属性说明。
@@ -82,9 +94,11 @@
 | 密码 | 用于连接到数据库的密码 |
 | 表 | 将写入输出的表名称。表名称区分大小写，并且该表架构应与字段数量以及作业输出正在生成的字段类型完全匹配。 |
 
+> [AZURE.NOTE] 目前，流分析中的作业输出支持 Azure SQL 数据库产品/服务。但是，不支持带有附加数据库，运行 SQL Server 的 Azure 虚拟机。这在将来的版本中可能会有所改变。
+
 ## Blob 存储
 
-Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。如需 Azure Blob 存储及其用法的简介，请参阅文档：[如何使用 Blob](/documentation/articles/storage-dotnet-how-to-use-blobs)。
+Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。如需 Azure Blob 存储及其用法的简介，请参阅文档：[如何使用 Blob](../storage/storage-dotnet-how-to-use-blobs.md)。
 
 下表列出了属性名称和用于创建 blob 输出的属性说明。
 
@@ -166,7 +180,7 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 
 ### 向 Power BI 帐户授权
 
-1.	当 Power BI 被选为 Azure 管理门户中的输出时，会提示你向现有的 Power BI 用户授权或创建新的 Power BI 帐户。  
+1.	当 Power BI 被选为 Azure 管理门户中的输出时，会提示你向现有的 Power BI 用户授权或创建新的 Power BI 帐户。
 
     ![向 Power BI 用户授权](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
 
@@ -183,9 +197,9 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 | 属性名称 | 说明 |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此 PowerBI 输出。 |
+| 组工作区 | 若要与其他 Power BI 用户启用共享数据，可以在 Power BI 帐户中选择组。如果不想写入组，可以选择“我的工作区”。更新现有组需要对 Power BI 重新进行身份验证。 | 
 | 数据集名称 | 提供数据集名称，供 Power BI 输出使用。 |
 | 表名称 | 在 Power BI 输出的数据集下提供表名称。目前，流分析作业的 Power BI 输出只能在数据集中设置一个表。 |
-| 组名称 | 为了与其他 Power BI 用户共享数据，请将数据写入组。在你的 Power BI 帐户内选择组，或者如果你不想写入组，请选择“我的工作区”。更新现有组需要对 Power BI 重新进行身份验证。 |
 
 有关配置 Power BI 输出和仪表板的演练，请参阅 [Azure 流分析和 Power BI](stream-analytics-power-bi-dashboard.md) 一文。
 
@@ -203,7 +217,7 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 
 ## 表存储
 
-[Azure 表存储](/documentation/articles/storage-introduction)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。
+[Azure 表存储](/documentation/articles/storage-introduction/)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。
 
 下表列出了属性名称和用于创建表输出的属性说明。
 
@@ -237,16 +251,16 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 
 ## 服务总线主题
 
-服务总线队列提供的是一对一的从发送方到接收方的通信方法，而[服务总线主题](https://msdn.microsoft.com/zh-cn/library/azure/hh367516.aspx)提供的则是一对多形式的通信。
+服务总线队列提供的是一对一，从发送方到接收方的通信方法，而[服务总线主题](https://msdn.microsoft.com/zh-cn/library/azure/hh367516.aspx)提供的则是一对多形式的通信。
 
 下表列出了属性名称和用于创建表输出的属性说明。
 
 | 属性名称 | 说明 |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此服务总线主题。 |
+| 输出别名 | 这个名称是在查询中使用的友好名称，用于将查询输出定向到此服务总线主题。 |
 | 服务总线命名空间 | 服务总线命名空间是包含一组消息传递实体的容器。当你创建新的事件中心后，你还创建了服务总线命名空间 |
-| 主题名称 | 主题是消息传送实体，类似于事件中心和队列。之所以设计队列，是为了从多个不同的设备和服务收集事件流。在创建主题时，还会为其提供特定的名称。发送到主题的消息在创建订阅后才会提供给用户，因此请确保主题下存在一个或多个订阅。 |
-| 主题策略名称 | 在创建主题时，你还可以在主题“配置”选项卡上创建共享的访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
+| 主题名称 | 主题是消息传送实体，类似于事件中心和队列。之所以设计队列，是为了从多个不同的设备和服务收集事件流。在创建主题时，还会为其提供特定的名称。发送到主题的消息在创建订阅后才会提供给用户，因此请确保主题下存在一个或多个订阅 |
+| 主题策略名称 | 创建主题时，还可以在“主题配置”选项卡上创建共享的访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
 | 主题策略密钥 | 用于验证访问服务总线命名空间的共享访问密钥 |
 | 事件序列化格式 | 输出数据的序列化格式。支持 JSON、CSV 和 Avro。 |
 | 编码 | 如果是 CSV 或 JSON 格式，则必须指定一种编码格式。目前只支持 UTF-8 这种编码格式 |
@@ -293,22 +307,22 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 我们已经向你介绍了流分析，这是一种托管服务，适用于对物联网的数据进行流式分析。若要了解有关此服务的详细信息，请参阅：
 
-- [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
-- [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
+- [Azure 流分析入门](/documentation/articles/stream-analytics-get-started/)
+- [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs/)
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
 <!--Link references-->
-[stream.analytics.developer.guide]: /documentation/articles/stream-analytics-developer-guide
-[stream.analytics.scale.jobs]: /documentation/articles/stream-analytics-scale-jobs
-[stream.analytics.introduction]: /documentation/articles/stream-analytics-introduction
-[stream.analytics.get.started]: /documentation/articles/stream-analytics-get-started
+[stream.analytics.developer.guide]: /documentation/articles/stream-analytics-developer-guide/
+[stream.analytics.scale.jobs]: /documentation/articles/stream-analytics-scale-jobs/
+[stream.analytics.introduction]: /documentation/articles/stream-analytics-introduction/
+[stream.analytics.get.started]: /documentation/articles/stream-analytics-get-started/
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0926_2016-->

@@ -1,20 +1,25 @@
-<properties 
-	pageTitle="共享访问签名：了解 SAS 模型 | Microsoft Azure" 
-	description="了解使用共享访问签名 (SAS) 委派对 Azure 存储空间资源（包括 Blob、队列、表和文件）的访问权限。共享访问签名可以保护你的存储帐户密钥，同时授权其他用户访问你的帐户中的资源。你可以控制你授予的权限以及 SAS 的有效期。如果你还建立存储访问策略，则在你担心你的帐户安全受到威胁时可以撤消该 SAS。"
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
-	editor=""/>
+<properties
+	pageTitle="使用共享访问签名 (SAS) | Microsoft Azure"
+	description="了解使用共享访问签名 (SAS) 委派对 Azure 存储空间资源（包括 Blob、队列、表和文件）的访问权限。"
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.date="05/23/2016"
-	wacn.date=""/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="09/07/2016"
+	wacn.date=""
+	ms.author="tamram"/>
 
 
 
-# 共享访问签名，第 1 部分：了解 SAS 模型
+# 使用共享访问签名 (SAS)
 
 ## 概述
 
@@ -68,7 +73,7 @@ Azure 存储空间的版本 2015-04-05 引入了一种新的共享访问签名�
 - **开始时间。** 这是 SAS 生效的时间。共享访问签名的开始时间是可选的；如果省略，SAS 将立即生效。必须以 UTC（协调世界时）格式表示，并使用特殊的 UTC 指示符（“Z”），例如 1994-11-05T13:15:30Z。
 - **到期时间。** 这是之后 SAS 将不再有效的时间。最佳实践建议你或者为 SAS 指定到期时间，或者将其与某一存储访问策略相关联。必须以 UTC（协调世界时）格式表示，并使用特殊的 UTC 指示符（“Z”），例如 1994-11-05T13:15:30Z（详见下）。
 - **权限。** 对 SAS 指定的权限指示客户端可使用 SAS 对存储资源执行哪些操作。帐户 SAS 和服务 SAS 提供的权限不同。
-- **IP。** 一个可选参数，它指定 Azure 外部要从中接受请求的一个 IP 地址或 IP 地址范围（有关 Express Route，请参阅[路由会话配置状态](/documentation/articles/expressroute-workflows#routing-session-configuration-state)部分）。
+- **IP。** 一个可选参数，它指定 Azure 外部要从中接受请求的一个 IP 地址或 IP 地址范围（有关 Express Route，请参阅[路由会话配置状态](/documentation/articles/expressroute-workflows/#routing-session-configuration-state)部分）。
 - **协议。** 一个可选参数，它指定请求允许的协议。可能的值包括“HTTPS 和 HTTP”(https,http)（它是默认值）或者“仅限 HTTPS”(https)。请注意，“仅限 HTTP”是不允许的值。
 - **签名。** 签名由指定为部分令牌的其他参数构造，然后进行加密。它用于对 SAS 进行身份验证。
 
@@ -110,7 +115,7 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 
 	https://myaccount.blob.core.chinacloudapi.cn/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 
-Name|SAS 部分|说明
+名称|SAS 部分|说明
 ---|---|---
 资源 URI|https://myaccount.blob.core.chinacloudapi.cn/?restype=service&comp=properties|The Blob 服务终结点，包含用于获取服务属性（使用 GET 调用时）或设置服务属性（使用 SET 调用时）的参数。
 服务|ss=bf|该 SAS 适用于 Blob 和文件服务
@@ -298,7 +303,7 @@ Name|SAS 部分|说明
 7.	**了解对任何使用都将向你的帐户收费，包括使用 SAS 所做的工作。** 如果向你提供了针对某一 Blob 的写访问权限，用户可以选择上载 200GB Blob。如果你还向用户提供了对 Blob 的读访问权限，他们可能会选择下载 Blob 10 次，对你产生 2TB 的传出费用。此外，提供受限权限，帮助降低恶意用户的潜在威胁。使用短期 SAS 以便减少这一威胁（但要注意结束时间上的时钟偏移）。
 8.	**验证使用 SAS 写入的数据。** 在某一客户端应用程序将数据写入你的存储帐户时，请记住对于这些数据可能存在问题。如果你的应用程序要求在数据可供使用前对数据进行验证或授权，你应该在写入数据后、但在你的应用程序使用这些数据前执行此验证。这一实践还有助于防止损坏的数据或恶意数据写入你的帐户，这些数据可能是正常要求 SAS 的用户写入的，也可能是利用泄露的 SAS 的用户写入的。
 9. **不要总是使用 SAS。** 有时候，与针对你的存储帐户的特定操作相关联的风险要超过 SAS 所带来的好处。对于此类操作，应创建一个中间层服务，该服务在执行业务规则验证、身份验证和审核后写入你的存储帐户。此外，有时候以其他方式管理访问会更简单。例如，如果你想要使某一容器中的所有 Blob 都可以公开读取，则可以使该容器成为公共的，而不是为每个客户端都提供 SAS 以便进行访问。
-10.	**使用存储分析监视你的应用程序。** 你可以使用日志记录和度量来观察由于你的 SAS 提供程序服务中的中断或者由于某一存储访问策略的无意中删除而导致的身份验证失败中的任何峰值情形。有关其他信息，请参阅 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)。
+10.	**使用存储分析监视你的应用程序。** 可以使用日志记录和指标来观察由于 SAS 提供程序服务中断或无意中删除存储访问策略而导致身份验证失败的任何高发情形。有关其他信息，请参阅 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)。
 
 ## 结束语 ##
 
@@ -306,9 +311,9 @@ Name|SAS 部分|说明
 
 ## 后续步骤 ##
 
-- [共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储](/documentation/articles/storage-dotnet-shared-access-signature-part-2)
-- [在 Windows 上开始使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files)
-- [管理对容器和 blob 的匿名读取访问](/documentation/articles/storage-manage-access-to-resources)
+- [共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储](/documentation/articles/storage-dotnet-shared-access-signature-part-2/)
+- [在 Windows 上开始使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files/)
+- [管理对容器和 blob 的匿名读取访问](/documentation/articles/storage-manage-access-to-resources/)
 - [使用共享的访问签名委托访问](http://msdn.microsoft.com/zh-cn/library/azure/ee395415.aspx)
 - [介绍表和队列 SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
@@ -317,4 +322,4 @@ Name|SAS 部分|说明
 
  
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0926_2016-->

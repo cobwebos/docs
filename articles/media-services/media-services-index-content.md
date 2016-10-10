@@ -5,21 +5,21 @@
 	documentationCenter=""
 	authors="Asolanki"
 	manager="dwrede"
-	editor=""/>  
-
+	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="06/22/2016"   
-	wacn.date=""/>  
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="09/12/2016"   
+	wacn.date=""
+	ms.author="adsolank;juliako;johndeu"/>
 
 
 
 # 使用 Azure Media Indexer 为媒体文件编制索引
-
-> [AZURE.SELECTOR]
-- [门户](/documentation/articles/media-services-manage-content/#index)
-- [.NET](/documentation/articles/media-services-index-content/)
 
 
 使用 Azure Media Indexer，可以使媒体文件内容可供搜索，并为隐藏的字幕和关键字生成全文本脚本。你可以只处理一个媒体文件，也可以一次处理多个媒体文件。
@@ -48,7 +48,7 @@
 
 你还可以使用清单文件一次处理多个媒体文件。
 
-有关详细信息，请参阅 [Azure Media Indexer 的任务预设](#)。
+有关详细信息，请参阅 [Azure Media Indexer 的任务预设](https://msdn.microsoft.com/zh-cn/library/dn783454.aspx)。
 
 ## 为资产编制索引
 
@@ -164,7 +164,7 @@ __JobResult.txt__ |输出清单，仅当为多个文件编制索引时才提供�
 
 以下方法将多个媒体文件上载为资产，并创建一次性为所有这些文件编制索引的作业。
 
-使用 .lst 扩展名的清单文件在创建后将上载到资产中。该清单文件包含所有资产文件的列表。有关详细信息，请参阅 [Azure 媒体索引器的任务预设](https://msdn.microsoft.com/zh-cn/library/azure/dn783454.aspx)。
+使用 .lst 扩展名的清单文件在创建后将上载到资产中。该清单文件包含所有资产文件的列表。有关详细信息，请参阅 [Azure 媒体索引器的任务预设](https://msdn.microsoft.com/zh-cn/library/dn783454.aspx)。
 
 	static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
 	{
@@ -250,7 +250,7 @@ __JobResult.txt__ |输出清单，仅当为多个文件编制索引时才提供�
 
 可以通过连同任务一起提供可选任务预设，来自定义 Azure Media Indexer 的处理。下面描述了此配置 xml 文件的格式。
 
-名称 | 必需 | 说明
+Name | 必需 | 说明
 ----|----|---
 __input__ | false | 要编制索引的资产文件。</p><p>Azure Media Indexer 支持以下媒体文件格式：MP4、WMV、MP3、M4A、WMA、AAC、WAV。</p><p>你可以在 **input** 元素的 **name** 或 **list** 属性中指定文件名（如下所示）。如果未指定要编制索引的资产文件，将会选择主文件。如果未设置主资产文件，将为输入资产中的第一个文件编制索引。</p><p>若要显式指定资产文件名，请执行以下操作：<br />`<input name="TestFile.wmv">`<br /><br />还可以一次性为多个资产文件编制索引（最多 10 个文件）。为此，请执行以下操作：<br /><br /><ol class="ordered"><li><p>创建一个文本文件（清单文件），并为其指定扩展名 .lst。</p></li><li><p>将输入资产中所有资产文件名的列表添加到此清单文件。</p></li><li><p>将该清单文件添加（上载）到资产。</p></li><li><p>在输入的列表属性中指定清单文件的名称。<br />`<input list="input.lst">`</li></ol><br /><br />注意：如果添加到清单文件的文件超过 10 个，索引作业将会失败，并显示 2006 错误代码。
 __metadata__ | false | 用于词汇自适应的指定资产文件的元数据。在预备索引器以使其能够识别非标准词汇（例如专有名词）时，该元素非常有用。<br />`<metadata key="..." value="..."/>` <br /><br />可以提供预定义 __keys__ 的 __values__。当前支持以下键：<br /><br />“title”和“description”- 用于词汇自适应，以微调作业的语言模型及改进语音辨识准确度。值将植入 Internet 搜索以供用户查找上下文相关的文本文档，并在执行索引任务期间使用内容来补充内部字典。<br />`<metadata key="title" value="[Title of the media file]" />`<br />`<metadata key="description" value="[Description of the media file] />"`
@@ -288,4 +288,4 @@ other | 内部错误 | 请联系支持团队。indexer@microsoft.com
 
 [使用 Azure Media Indexer 2 预览版为媒体文件编制索引](/documentation/articles/media-services-process-content-with-indexer2/)
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0926_2016-->

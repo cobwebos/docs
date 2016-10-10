@@ -7,7 +7,12 @@
     manager="femila"/>
 <tags 
     ms.service="active-directory" 
-    ms.date="07/15/2016" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="identity" 
+    ms.date="08/02/2016" 
+    ms.author="markvi"
     wacn.date=""/>
 
 
@@ -19,7 +24,7 @@
 - [Android](/documentation/articles/active-directory-certificate-based-authentication-android/)
 
 
-本主题演示如何在 iOS 设备上为 Office 365 Enterprise、Business 和 Education 计划中租户的用户配置并使用基于证书的身份验证 (CBA)。
+本主题说明如何在 iOS 设备上为 Office 365 Enterprise、Business 和 Education 计划中租户的用户配置并使用基于证书的身份验证 (CBA)。
 
 如果使用 CBA，当你在 Android 或 iOS 设备上将 Exchange Online 帐户连接到以下对象时，将由 Azure Active Directory 使用客户端证书对你进行身份验证：
 
@@ -40,7 +45,7 @@
 
 - 访问证书颁发机构以颁发客户端证书。
 
-- 必须在 Azure Active Directory 中配置证书颁发机构。有关如何完成该配置的详细步骤，可参阅“入门”部分。
+- 必须在 Azure Active Directory 中配置证书颁发机构。有关如何完成该配置的详细步骤，请参阅[入门](#getting-started)部分。
 
 - 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。
 
@@ -57,9 +62,11 @@
 
 | 应用 | 支持 |
 | ---                       | ---          |
-| OneDrive | 是 |
+| Word/Excel/PowerPoint | ![勾选标记][1] |
+| OneNote | ![勾选标记][1] |
+| OneDrive | ![勾选标记][1] |
 | Outlook | 即将支持 |
-| Word/Excel/PowerPoint | 是 |
+| Yammer | ![勾选标记][1] |
 | Skype for Business | 即将支持 |
 
 
@@ -67,7 +74,7 @@
 
 设备 OS 版本必须为 iOS 9 及更高版本
 
-必须将联合服务器配置为在 Office 移动应用程序上执行 CBA。
+必须配置联合服务器。
 
 iOS 设备上的 Office 应用需要安装 Azure Authenticator。
 
@@ -87,14 +94,14 @@ iOS 设备上的 Office 应用需要安装 Azure Authenticator。
 
 - 有关如何获取用户证书的说明。
 
-有关更多详细信息，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
+有关更多详细信息，请参阅 [Customizing the AD FS Sign-in Pages](https://technet.microsoft.com/zh-cn/library/dn280950.aspx)（自定义 AD FS 登录页）。
 
 
 
 ### Exchange ActiveSync 客户端支持 
 
 
-支持 iOS 9 或更高版本上的特定 Exchange ActiveSync 应用。若要确定你的电子邮件应用程序是否支持此功能，请联系应用程序开发人员。
+iOS 9 或更高版本支持本机 iOS 邮件客户端。若要确定其他所有 Exchange ActiveSync 应用程序是否支持此功能，请联系应用程序开发人员。
 
 
 
@@ -103,7 +110,7 @@ iOS 设备上的 Office 应用需要安装 Azure Authenticator。
 
 若要开始操作，你需要在 Azure Active Directory 中配置证书颁发机构。针对每个证书颁发机构，上传以下信息：
 
-- 证书的公共部分，格式为 .cer
+- 证书的公共部分，格式为 *.cer*
 
 - 证书吊销列表 (CRL) 所在的面向 Internet 的 URL
  
@@ -142,9 +149,9 @@ iOS 设备上的 Office 应用需要安装 Azure Authenticator。
 
 1. 使用管理员特权启动 Windows PowerShell。
 
-2. 安装 Azure AD 模块。你需要安装版本 [1\.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) 或更高版本。
+2. 安装 Azure AD 模块。需要安装 [1\.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) 或更高版本。
 
-        Install-Module -Name AzureAD –RequiredVersion 1.1.143.0 
+        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
 
 3. 连接到目标租户：
 
@@ -270,4 +277,9 @@ iOS 设备上的 Office 应用需要安装 Azure Authenticator。
 
 所设日期必须属于将来。如果日期不属于将来，则不会设置 **StsRefreshTokensValidFrom** 属性。如果日期属于将来，**StsRefreshTokensValidFrom** 会设置为当前时间（而不是由 Set-MsolUser 命令指示的日期）。
 
-<!---HONumber=Mooncake_0725_2016-->
+
+
+<!--Image references-->
+[1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png
+
+<!---HONumber=Mooncake_0926_2016-->

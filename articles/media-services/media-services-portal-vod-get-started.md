@@ -1,8 +1,7 @@
 <!--ibiza portal-->
-
 <properties
 	pageTitle=" 开始使用 Azure 门户按需传送内容 | Azure"
-	description="本教程将引导你完成使用 Azure 媒体服务 (AMS) 应用程序和 Azure 门户实施基本的视频点播 (VoD) 内容传送服务的步骤。"
+	description="本教程将引导你完成相关步骤，利用 Azure 门户和 Azure 媒体服务 (AMS) 应用程序实现基本的点播视频 (VoD) 内容传送服务。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
@@ -11,15 +10,21 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="06/22/2016"
-	wacn.date=""/>
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/30/2016"
+	wacn.date=""
+	ms.author="juliako"/>  
 
 
-# 开始使用 Azure 门户按需传送内容
 
-本教程将引导你完成使用 Azure 媒体服务 (AMS) 应用程序和 Azure 门户实施基本的视频点播 (VoD) 内容传送服务的步骤。
+# 开始使用 Azure 门户传递点播内容
 
-Azure 门户中的 Azure 媒体服务目前为预览版。
+[AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
+
+本教程将引导你完成相关步骤，利用 Azure 门户和 Azure 媒体服务 (AMS) 应用程序实现基本的点播视频 (VoD) 内容传送服务。
 
 > [AZURE.NOTE] 若要完成本教程，你需要一个 Azure 帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
 
@@ -35,7 +40,7 @@ Azure 门户中的 Azure 媒体服务目前为预览版。
 
 ## 创建 Azure 媒体服务帐户
 
-本部分的步骤说明如何创建新的 AMS 帐户。
+本部分中的步骤说明如何创建 AMS 帐户。
 
 1. 在 [Azure 门户](https://portal.azure.cn/)登录。
 2. 单击“+新建”>“媒体 + CDN”>“媒体服务”。
@@ -49,10 +54,10 @@ Azure 门户中的 Azure 媒体服务目前为预览版。
 	1. 在“帐户名称”中，输入新的 AMS 帐户的名称。媒体服务帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。
 	2. 在“订阅”中，在你有权访问的不同 Azure 订阅中进行选择。
 	
-	2. 在“资源组”中，选择新的或现有的资源。资源组是具有共同生命周期、权限和策略的资源的集合。在[此处](/documentation/articles/resource-group-overview/#resource-groups)了解更多信息。
-	3. 在“位置”中，选择将用于存储媒体服务帐户的媒体和元数据记录的地理区域。此区域将用于处理和流式播放你的媒体。下拉列表中仅显示可用的媒体服务区域。
+	2. 在“资源组”中，选择新的或现有的资源。资源组是共享生命周期、权限和策略的资源的集合。在[此处](/documentation/articles/resource-group-overview/#resource-groups)了解更多信息。
+	3. 在“位置”中，选择存储媒体服务帐户的媒体和元数据记录时所用的地理区域。此区域用于处理和流式传输媒体。下拉列表中仅显示可用的媒体服务区域。
 	
-	3. 在“存储帐户”中，选择一个存储帐户以便为媒体服务帐户中的媒体内容提供 Blob 存储。你可以选择位于媒体服务帐户所在的地理区域内的现有存储帐户，也可以创建一个新的存储帐户。将在同一区域内创建一个新的存储帐户。适用于存储帐户名的规则对媒体服务帐户同样适用。
+	3. 在“存储帐户”中，选择一个存储帐户以便为媒体服务帐户中的媒体内容提供 Blob 存储。可选择媒体服务帐户所在的地理区域内的现有存储帐户，也可创建存储帐户。将在同一区域内创建一个新的存储帐户。适用于存储帐户名的规则对媒体服务帐户同样适用。
 
 		单击[此处](/documentation/articles/storage-introduction/)了解有关存储的详细信息。
 
@@ -70,29 +75,30 @@ Azure 门户中的 Azure 媒体服务目前为预览版。
 
 你需要有帐户名和主密钥信息，才能以编程方式访问媒体服务帐户。
 
-1. 在 Azure 门户中，选择你的帐户。
+1. 在 Azure 门户中选择你的帐户。
 
 	“设置”窗口显示在右侧。
 
 2. 在“设置”窗口中，选择“密钥”。
 
 	“管理密钥”窗口显示帐户名称，主密钥和辅助密钥也会显示。
-3. 按复制按钮对值进行复制。
+3. 按复制按钮来复制值。
 	
-	![媒体服务密钥](./media/media-services-portal-vod-get-started/media-services-keys.png)
+	![媒体服务密钥](./media/media-services-portal-vod-get-started/media-services-keys.png)  
+
 
 ## 配置流式处理终结点
 
-使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理将视频传送至你的客户端。通过自适应比特率流，客户端可以在视频显示时，根据当前网络带宽、CPU 利用率和其他因素，切换至较高或较低的比特率流。媒体服务支持以下自适应比特率流式处理技术：HTTP 实时流式处理 (HLS)、平滑流式处理、MPEG DASH 和 HDS（仅适用于 Adobe PrimeTime/Access 许可证持有人）。
+使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理将视频传送至你的客户端。媒体服务支持以下自适应比特率流式处理技术：HTTP 实时流式处理 (HLS)、平滑流式处理、MPEG DASH 和 HDS（仅适用于 Adobe PrimeTime/Access 许可证持有人）。
 
-媒体服务所提供的动态打包可让你以媒体服务支持的流格式（MPEG DASH、HLS、Smooth Streaming、HDS）及时传送自适应比特率 MP4 编码内容，而无须按这些流格式逐个存储预先打包的版本。
+媒体服务提供动态打包，可按媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理和 HDS）及时传送自适应比特率 MP4 编码内容，而无需存储上述各流格式的预打包版本。
 
 若要使用动态打包，必须执行下列操作：
 
 - 将夹层（源）文件编码成一组自适应比特率 MP4 文件（本教程稍后将演示编码步骤）。
 - 针对你要从其传送内容的“流式处理终结点”，创建至少一个流式处理单元。以下步骤显示如何更改流式处理单元数。
 
-通过动态打包，你只需要存储及支付一种存储格式的文件，媒体服务将会根据客户端的要求创建并提供适当的响应。
+通过动态打包，只需要存储及支付一种存储格式的文件，媒体服务就会根据客户端的要求创建并提供适当的响应。
 
 若要创建和更改流式处理保留单元数，请执行以下操作：
 
@@ -113,7 +119,7 @@ Azure 门户中的 Azure 媒体服务目前为预览版。
 
 ## 上载文件
 
-若要使用 Azure 媒体服务来流式处理视频，需先上载源视频，将其编码成多个比特率，然后发布结果。第一步在本部分介绍。
+若要使用 Azure 媒体服务流式处理视频，需要上传源视频，将其编码为多个比特率，然后发布结果。第一步在本部分介绍。
 
 1. 在“设置”窗口中，单击“资产”。
 
@@ -129,14 +135,13 @@ Azure 门户中的 Azure 媒体服务目前为预览版。
 
 	上载开始，你可以在文件名下看到进度。
 
-上载完成后，你会看到“资产”窗口中列出新的资产。
-
+上载完成后，“资产”窗口中会列出新的资产。
 
 ## 对资产进行编码
 
 使用 Azure 媒体服务时最常见的方案之一是将自适应比特率流传送至你的客户端。媒体服务支持以下自适应比特率流式处理技术：HTTP 实时流式处理 (HLS)、平滑流式处理、MPEG DASH 和 HDS（仅适用于 Adobe PrimeTime/Access 许可证持有人）。若要对视频进行准备，以便进行自适应比特率流式处理，你需要将源视频编码成多比特率文件。应使用“媒体编码器标准版”编码器来编码视频。
 
-此外，媒体服务提供的动态打包可让你以下述流格式传送多比特率 MP4，而无须重新打包成这些流格式：MPEG DASH、HLS、Smooth Streaming 或 HDS。通过动态打包，你只需要存储及支付一种存储格式的文件，媒体服务将会根据客户端的要求创建并提供适当的响应。
+媒体服务还提供动态打包，可按以下流格式传送多比特率 MP4：MPEG DASH、HLS、平滑流式处理或 HDS；且无需重新打包成这些流格式。通过动态打包，只需要存储及支付一种存储格式的文件，媒体服务就会根据客户端的要求创建并提供适当的响应。
 
 若要使用动态打包，必须执行下列操作：
 
@@ -161,7 +166,8 @@ Azure 门户中的 Azure 媒体服务目前为预览版。
 
 若要监视编码作业的进度，请单击“设置”（位于页面顶部），然后选择“作业”。
 
-![作业](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![作业](./media/media-services-portal-vod-get-started/media-services-jobs.png)  
+
 
 ## 发布内容
 
@@ -188,9 +194,9 @@ SAS URL 采用以下格式。
 
 	{blob container name}/{asset name}/{file name}/{SAS signature}
 
->[AZURE.NOTE] 如果你使用门户在 2015 年 3 月之前创建了定位符，则会创建过期日期在两年后的定位符。
+>[AZURE.NOTE] 如果在 2015 年 3 月前使用门户创建了定位符，这些定位符会在两年后过期。
 
-若要更新定位符的过期日期，请使用 [REST](http://msdn.microsoft.com/zh-cn/library/azure/hh974308.aspx#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
+若要更新定位符的过期日期，请使用 [REST](http://msdn.microsoft.com/zh-cn/library/azure/hh974308.aspx#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。请注意，更新 SAS 定位符的到期日期时，URL 会发生变化。
 
 ### 使用门户发布资产
 
@@ -202,9 +208,10 @@ SAS URL 采用以下格式。
 1. 选择定位符类型。
 2. 按“添加”。
 
-	![发布](./media/media-services-portal-vod-get-started/media-services-publish1.png)
+	![发布](./media/media-services-portal-vod-get-started/media-services-publish1.png)  
 
-URL 将添加到“已发布 URL”列表。
+
+URL 将添加到“已发布的 URL”列表。
 
 ## 从门户播放内容
 
@@ -217,6 +224,6 @@ Azure 门户提供了可用于测试视频的内容播放器。
 请注意以下事项：
 
 - 确保视频已发布。
-- 此*媒体播放器** 从默认的流式处理终结点播放。如果要从非默认流式处理终结点播放，请单击复制该 URL，然后使用其他播放器。例如 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
+- 此 **Media player** 从默认的流式处理终结点播放。如果要从非默认流式处理终结点播放，请单击复制该 URL，然后使用其他播放器。例如 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 
-<!----HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0926_2016-->

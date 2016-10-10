@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何从媒体服务传送流内容" 
+	pageTitle="使用 .NET 发布 Azure 媒体服务内容" 
 	description="了解如何创建用于生成流 URL 的定位符。代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。" 
 	authors="juliako" 
 	manager="erikre" 
@@ -7,18 +7,23 @@
 	services="media-services" 
 	documentationCenter=""/>
 
-<tags
-	ms.service="media-services"
-	ms.date="06/22/2016"
-	wacn.date=""/>
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/30/2016"
+	wacn.date=""
+	ms.author="juliako"/>
 
 
-#如何：传送流内容
+# 使用 .NET 发布 Azure 媒体服务内容
  
 > [AZURE.SELECTOR]
 - [REST](/documentation/articles/media-services-rest-deliver-streaming-content/)
 - [.NET](/documentation/articles/media-services-deliver-streaming-content/)
-- [门户](/documentation/articles/media-services-manage-content/#publish)
+- [门户](/documentation/articles/media-services-portal-publish/)
 
 ##概述
 
@@ -28,7 +33,7 @@
 
 你也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。
 
-本主题说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流 URL。此外，还将示范如何生成渐进式下载 URL。
+本主题说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。此外，还将示范如何生成渐进式下载 URL。
   	 
 ##创建 OnDemand 流式处理定位符
 
@@ -158,7 +163,6 @@
 
 ##另请参阅
 
-[下载资产](/documentation/articles/media-services-deliver-asset-download/)
-[配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy/)
+[下载资产](/documentation/articles/media-services-deliver-asset-download/)[配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy/)
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0926_2016-->

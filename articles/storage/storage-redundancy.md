@@ -8,10 +8,15 @@
   manager="adinah" 
   editor=""/>
 
-<tags 
-  ms.service="storage" 
-  ms.date="08/03/2016"
-  wacn.date=""/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/07/2016"
+	wacn.date=""
+	ms.author="tamram"/>
 
 # Azure 存储空间复制
 
@@ -80,4 +85,4 @@
 - [SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
  
 
-<!---HONumber=Mooncake_0905_2016-->
+<!---HONumber=Mooncake_0926_2016-->

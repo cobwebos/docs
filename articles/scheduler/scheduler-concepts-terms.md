@@ -1,15 +1,22 @@
 <properties
- pageTitle="计划程序的概念、术语和实体 | Microsoft Azure"
+ pageTitle="计划程序的概念、术语和实体 | Azure"
  description="Azure 计划程序的概念、术语和实体层次结构，包括作业和作业集合。显示了一个计划作业的综合示例。"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
  manager="dwrede"
- editor=""/>
+ editor=""/>  
+
 <tags
  ms.service="scheduler"
- ms.date="06/30/2016"
- wacn.date=""/>
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="get-started-article"
+ ms.date="08/18/2016"
+ wacn.date=""
+ ms.author="krisragh"/>  
+
 
 # 计划程序的概念、术语和实体层次结构
 
@@ -143,44 +150,44 @@
 
 下面是服务总线主题操作的示例。
 
-	  "action": {
-	    "type": "serviceBusTopic",
-	    "serviceBusTopicMessage": {
-	      "topicPath": "t1",  
-	      "namespace": "mySBNamespace",
-	      "transportType": "netMessaging", // Can be either netMessaging or AMQP
-	      "authentication": {
-	        "sasKeyName": "QPolicy",
-	        "type": "sharedAccessKey"
-	        },
-	      "message": "Some message",
-	      "brokeredMessageProperties": {},
-	      "customMessageProperties": {
-	        "appname": "FromScheduler"
-	      }
-	    },
-	  }
+  "action": {
+    "type": "serviceBusTopic",
+    "serviceBusTopicMessage": {
+      "topicPath": "t1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Can be either netMessaging or AMQP
+      "authentication": {
+        "sasKeyName": "QPolicy",
+        "type": "sharedAccessKey"
+        },
+      "message": "Some message",
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+        "appname": "FromScheduler"
+      }
+    },
+  }
 
 下面是服务总线队列操作的示例：
 
 
-	  "action": {
-	    "serviceBusQueueMessage": {
-	      "queueName": "q1",  
-	      "namespace": "mySBNamespace",
-	      "transportType": "netMessaging", // Can be either netMessaging or AMQP
-	      "authentication": {  
-	        "sasKeyName": "QPolicy",
-	        "type": "sharedAccessKey"
-	      },
-	      "message": "Some message",  
-	      "brokeredMessageProperties": {},
-	      "customMessageProperties": {
-	          "appname": "FromScheduler"
-	      }
-	    },
-	    "type": "serviceBusQueue"
-	  }
+  "action": {
+    "serviceBusQueueMessage": {
+      "queueName": "q1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Can be either netMessaging or AMQP
+      "authentication": {  
+        "sasKeyName": "QPolicy",
+        "type": "sharedAccessKey"
+      },
+      "message": "Some message",  
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+          "appname": "FromScheduler"
+      }
+    },
+    "type": "serviceBusQueue"
+  }
 
 “errorAction”是错误处理程序，在主操作失败时调用的操作。你可以使用此变量调用错误处理终结点或发送用户通知。这可用于在主终结点不可用时（例如，在终结点的站点上出现灾难情形时）访问辅助终结点，或者可用于通知错误处理终结点。与主操作相似，错误操作可以是基于其他操作的简单或复合逻辑。若要了解如何创建一个 SAS 令牌，请参阅[创建和使用共享访问签名](https://msdn.microsoft.com/zh-CN/library/azure/jj721951.aspx)。
 
@@ -232,7 +239,7 @@
 
  [如何使用 Azure 计划程序生成复杂的计划和高级循环](/documentation/articles/scheduler-advanced-complexity/)
 
- [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/zh-CN/library/dn528946)
+ [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/zh-cn/library/mt629143)
 
  [Azure 计划程序 PowerShell cmdlet 参考](/documentation/articles/scheduler-powershell-reference/)
 
@@ -243,4 +250,4 @@
  [Azure 计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication/)
  
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0926_2016-->

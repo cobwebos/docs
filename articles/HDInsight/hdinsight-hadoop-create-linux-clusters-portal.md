@@ -6,25 +6,30 @@
    	services="hdinsight"
    	documentationCenter=""
    	authors="nitinme"
-   	manager="paulettm"
+   	manager="jhubbard"
    	editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.date="07/07/2016"
-	wacn.date=""/>
+   	ms.service="hdinsight"
+   	ms.devlang="na"
+   	ms.topic="article"
+   	ms.tgt_pltfrm="na"
+   	ms.workload="big-data"
+   	ms.date="07/07/2016"
+   	wacn.date=""
+   	ms.author="nitinme"/>
 
 
 #使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 
-[AZURE.INCLUDE [选择器](../includes/hdinsight-selector-create-clusters.md)]
+[AZURE.INCLUDE [选择器](../../includes/hdinsight-selector-create-clusters.md)]
 
 Azure 门户是一种基于 Web 的管理工具，用于管理 Azure 云中托管的服务和资源。在本文中，你将了解如何使用门户创建基于 Linux 的 HDInsight 群集。
 
 ## 先决条件
 
-[AZURE.INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
 - **一个 Azure 订阅**。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
@@ -32,7 +37,7 @@ Azure 门户是一种基于 Web 的管理工具，用于管理 Azure 云中托�
 
 ##创建群集
 
-Azure 门户会公开大部分的群集属性。使用 Azure ARM 模板，你可以隐藏许多详细信息。有关详细信息，请参阅[在 HDInsight 中使用 ARM 模板创建基于 Linux 的 Hadoop 群集](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)。
+Azure 门户会公开大部分的群集属性。使用 Azure Resource Manager 模板可以隐藏许多详细信息。有关详细信息，请参阅 [Create Linux-based Hadoop clusters in HDInsight using Azure Resource Manager templates](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)（在 HDInsight 中使用 Azure Resource Manager 模板创建基于 Linux 的 Hadoop 群集）。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
@@ -101,7 +106,7 @@ Azure 门户会公开大部分的群集属性。使用 Azure ARM 模板，你可
 
 		![虚拟网络边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.6.png "指定虚拟网络详细信息")
 
-    	有关将 HDInsight 与虚拟网络配合使用的信息（包括虚拟网络的特定配置要求），请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](/documentation/articles/hdinsight-extend-hadoop-virtual-network/)。
+    	有关将 HDInsight 与虚拟网络配合使用的信息（包括虚拟网络的特定配置要求），请参阅 [Extend HDInsight capabilities by using an Azure Virtual Network](/documentation/articles/hdinsight-extend-hadoop-virtual-network/)（使用 Azure 虚拟网络扩展 HDInsight 功能）。
 
 	* 单击“外部元存储”以指定要用于保存与群集关联的 Hive 和 Oozie 元数据的 SQL 数据库。
     
@@ -125,11 +130,13 @@ Azure 门户会公开大部分的群集属性。使用 Azure ARM 模板，你可
 
 		![其他存储边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.9.png "指定其他存储帐户")
 
+		创建群集后，还可以添加其他存储帐户。请参阅 [Customize Linux-based HDInsight clusters using Script Action](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)（使用脚本操作自定义基于 Linux 的 HDInsight 群集）。
+
 		单击“选择”，直至返回“新建 HDInsight 群集”边栏选项卡。
         
         除了 Blob 存储帐户，还可以链接 Azure Data Lake Store。你可以通过从配置默认存储帐户和默认容器的数据源配置 AAD 来完成此配置。
 
-10. 在“新建 HDInsight 群集”边栏选项卡上，确保选中“固定到启动板”，然后单击“创建”。这将会创建群集，并将该群集的磁贴添加到 Azure 门户的启动板。该图标指示群集正在预配，完成预配后，将改为显示 HDInsight 图标。
+10. 在“新建 HDInsight 群集”边栏选项卡上，确保选中“固定到启动板”，然后单击“创建”。这会创建群集，并将该群集的磁贴添加到 Azure 门户的启动板。该图标指示群集正在预配，完成预配后，将改为显示 HDInsight 图标。
 
 	| 预配时 | 预配完成 |
 	| ------------------ | --------------------- |
@@ -137,13 +144,13 @@ Azure 门户会公开大部分的群集属性。使用 Azure ARM 模板，你可
 
 	> [AZURE.NOTE] 创建群集需要一些时间，通常约 15 分钟左右。使用启动板上的磁贴或页面左侧的“通知”项检查预配进程。
 
-11. 预配完成后，在启动板中单击群集磁贴，以启动群集边栏选项卡。群集边栏选项卡提供有关群集的基本信息，如名称、其所属的资源组、位置、操作系统、群集仪表板 URL 等。
+11. 创建过程完成后，在启动板中单击群集磁贴，启动群集边栏选项卡。群集边栏选项卡提供有关该群集的基本信息，如名称、其所属的资源组、位置、操作系统、群集仪表板 URL 等。
 
 	![群集边栏选项卡](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.Cluster.Blade.png "群集属性")
 
 	参考以下内容了解边栏选项卡顶部和“基本功能”部分中的图标：
 
-	* **设置**和**配置**：显示该群集的“设置”边栏选项卡，可让你访问该群集的详细配置信息。
+	* **设置**和**所有设置**：显示该群集的“设置”边栏选项卡，可让你访问该群集的详细配置信息。
 
 	* **仪表板**、**群集仪表板**和 **URL**：这是访问群集仪表板（也就是可在群集上运行作业的 Web 门户）的所有途径。
 
@@ -153,7 +160,7 @@ Azure 门户会公开大部分的群集属性。使用 Azure ARM 模板，你可
 
 	* **快速启动** (![云和闪电图标 = 快速启动](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png))：显示可帮助你开始使用 HDInsight 的信息。
 
-	* **用户** (![用户图标](./media/hdinsight-hadoop-create-linux-cluster-portal/users.png))：可让你设置 Azure 订阅上其他用户对此群集的_门户管理_权限。
+	* **用户** (![用户图标](./media/hdinsight-hadoop-create-linux-cluster-portal/users.png))：用于设置 Azure 订阅上其他用户对此群集的_门户管理_权限。
 
 		> [AZURE.IMPORTANT] 这_只会_影响在 Azure 门户中对此群集的访问和权限，对于连接到 HDInsight 群集或将作业提交到其上的用户并没有作用。
 
@@ -161,12 +168,12 @@ Azure 门户会公开大部分的群集属性。使用 Azure ARM 模板，你可
 
 ##自定义群集
 
-- 请参阅[使用 Bootstrap 自定义 HDInsight 群集](/documentation/articles/hdinsight-hadoop-customize-cluster-bootstrap/)。
-- 请参阅[使用脚本操作自定义基于 Windows 的 HDInsight 群集](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)。
+- 请参阅 [Customize HDInsight clusters using Bootstrap](/documentation/articles/hdinsight-hadoop-customize-cluster-bootstrap/)（使用 Bootstrap 自定义 HDInsight 群集）。
+- 请参阅 [Customize Linux-based HDInsight clusters using Script Action](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)（使用脚本操作自定义基于 Linux 的 HDInsight 群集）。
 
 ##删除群集
 
-[AZURE.INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ##后续步骤
 
@@ -197,4 +204,4 @@ Azure 门户会公开大部分的群集属性。使用 Azure ARM 模板，你可
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython/)
 * [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0926_2016-->

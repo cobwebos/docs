@@ -1,19 +1,23 @@
 <!-- not suitable for Mooncake -->
 
-
 <properties 
 	pageTitle="使用工作流设计器创建高级编码工作流 | Azure" 
 	description="了解如何使用工作流设计器创建高级编码工作流。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,johndeu,anilmur" 
-	manager="dwrede" 
+	authors="anilmur" 
+	manager="erikre" 
 	editor=""/>
 
-<tags
-	ms.service="media-services"
-	ms.date="06/22/2016"
-	wacn.date=""/>  
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/15/2016"
+	wacn.date=""
+	ms.author="juliako;johndeu;anilmur"/>
 
 
 
@@ -21,11 +25,9 @@
 
 ##概述
 
-**工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。
-借助工作流设计器工具的强大功能，你可以设计和创建将在**媒体编码器高级**中运行的复杂工作流。
+**工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。借助工作流设计器工具的强大功能，你可以设计和创建将在**媒体编码器高级**中运行的复杂工作流。
 
-根据输入源文件的属性，工作流可以包含客户决策逻辑和分支。
-你可以创建具有可重写属性与动态值的工作流，让即使最复杂的编码任务也能在云中轻松重复及自定义。
+根据输入源文件的属性，工作流可以包含客户决策逻辑和分支。你可以创建具有可重写属性与动态值的工作流，让即使最复杂的编码任务也能在云中轻松重复及自定义。
 
 你可以创建的工作流示例包括：
 
@@ -81,4 +83,4 @@
 
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0926_2016-->

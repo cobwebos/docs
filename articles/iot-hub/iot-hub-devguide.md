@@ -9,7 +9,12 @@
 
 <tags
  ms.service="iot-hub"
- ms.date="08/11/2016" 
+ ms.devlang="multiple"
+ ms.topic="article"
+ ms.tgt_pltfrm="na"
+ ms.workload="na"
+ ms.date="09/02/2016" 
+ ms.author="dobett"
  wacn.date=""/>
 
 # Azure IoT 中心开发人员指南
@@ -45,7 +50,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。下�
     - *接收云到设备的消息*设备使用此终结点来接收目标云到设备的消息。有关详细信息，请参阅[云到设备的消息传送](#c2d)。
     - *启动文件上载*。设备使用此终结点接收来自 IoT 中心的 Azure 存储空间 SAS URI，以便上载文件。有关详细信息，请参阅[文件上传](#fileupload)。
 
-    这些终结点是使用 HTTP 1.1、[MQTT v3.1.1][lnk-mqtt] 和 [AMQP 1.0][lnk-amqp] 协议公开的。请注意，也可以通过端口 443 上的 [WebSockets][lnk-websockets] 来实现 AMQP。
+    这些终结点使用 [MQTT v3.1.1][lnk-mqtt]、HTTP 1.1 和 [AMQP 1.0][lnk-amqp] 协议进行公开。请注意，也可以通过端口 443 上的 [WebSockets][lnk-websockets] 来实现 AMQP。
 * **服务终结点**。每个 IoT 中心公开应用程序后端可用来与设备通信的一组终结点。目前仅使用 [AMQP][lnk-amqp] 协议公开这些终结点。
     - *接收设备到云的消息*。此终结点与 [Azure 事件中心][lnk-event-hubs]兼容。后端服务可用它来读取由设备发送的所有设备到云的消息。有关详细信息，请参阅[设备到云的消息传递](#d2c)。
     - *发送云到设备的消息并接收传递确认*。这些终结点可让应用程序后端发送可靠的云到设备消息，以及接收对应的传送或过期确认。有关详细信息，请参阅[云到设备的消息传递](#c2d)。
@@ -79,8 +84,8 @@ Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy nam
 以下是可以配合 IoT 中心公开的事件中心兼容终结点使用的 SDK 和集成项目列表：
 
 * [Java 事件中心客户端](https://github.com/hdinsight/eventhubs-client)
-* [Apache Storm Spout](/documentation/articles/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology/)。可以在 GitHub 上查看 [Spout 源代码](https://github.com/apache/storm/tree/master/external/storm-eventhubs)。
-* [Apache Spark 集成](/documentation/articles/hdinsight/hdinsight-apache-spark-eventhub-streaming/)
+* [Apache Storm Spout](/documentation/articles/hdinsight-storm-develop-csharp-event-hub-topology/)。可以在 GitHub 上查看 [Spout 源代码](https://github.com/apache/storm/tree/master/external/storm-eventhubs)。
+* [Apache Spark 集成](/documentation/articles/hdinsight-apache-spark-eventhub-streaming/)
 
 ## 设备标识注册表
 
@@ -104,7 +109,7 @@ Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy nam
 | status | 必填 | 访问指示器。可以是 **Enabled** 或 **Disabled**。如果是 **Enabled**，则允许设备连接。如果是 **Disabled**，则此设备无法访问任何面向设备的终结点。 |
 | statusReason | 可选 | 128 个字符的字符串，用于存储设备标识状态的原因。允许所有 UTF-8 字符。 |
 | statusUpdateTime | 只读 | 临时指示器，显示上次状态更新的日期和时间。 |
-| connectionState | 只读 | 指示连接状态的字段：**Connected** 或 **Disconnected**。此字段表示设备连接状态的 IoT 中心视图。**重要说明**：此字段只用于开发/调试目的。只有使用 AMQP 或 MQTT 的设备更新连接状态。此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。出于这些原因，可能会发生误报，例如，将设备报告为已连接，但实际上已断开连接。 |
+| connectionState | 只读 | 指示连接状态的字段：**Connected** 或 **Disconnected**。此字段表示设备连接状态的 IoT 中心视图。**重要说明**：此字段只用于开发/调试目的。仅使用 MQTT 或 AMQP 的设备才更新连接状态。此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。出于这些原因，可能会发生误报，例如，将设备报告为已连接，但实际上已断开连接。 |
 | connectionStateUpdatedTime | 只读 | 临时指示器，显示上次更新连接状态的日期和时间。 |
 | lastActivityTime | 只读 | 临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 
@@ -158,7 +163,7 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 ### 访问控制 <a id="accesscontrol"></a>
 
-IoT 中心使用以下一组*权限*向每个 IoT 中心的终结点授予访问权限。权限可根据功能限制对 IoT 中心的访问。
+IoT 中心使用以下一组 *权限* 向每个 IoT 中心的终结点授予访问权限。权限可根据功能限制对 IoT 中心的访问。
 
 * **RegistryRead**。授予对设备标识注册表的读取访问权限。有关详细信息，请参阅 [Device identity registry](#device-identity-registry)（设备标识注册表）。
 * **RegistryReadWrite**。授予对设备标识注册表的读取和写入访问权限。有关详细信息，请参阅 [Device identity registry](#device-identity-registry)（设备标识注册表）。
@@ -198,7 +203,7 @@ Azure IoT 中心可根据共享访问策略和设备标识注册表安全凭据�
 
 #### 协议详情
 
-每个支持的协议（例如 AMQP、MQTT 和 HTTP）以不同的方式传输令牌。
+每个支持的协议（如 MQTT、AMQP 和 HTTP）以不同方式传输令牌。
 
 
 HTTP 通过在**授权**请求标头中包含有效的令牌来实施身份验证。
@@ -230,7 +235,7 @@ HTTP 通过在**授权**请求标头中包含有效的令牌来实施身份验�
 
 使用 SASL PLAIN 时，连接到 IoT 中心的客户端可为每个 TCP 连接使用单个令牌。当令牌过期时，TCP 将从服务断开连接，并触发重新连接。此行为虽然不对应用程序后端组件造成问题，但对设备端应用程序极为不利，原因如下：
 
-*  网关通常代表许多设备连接。使用 SASL PLAIN 时，它们必须针对连接到 IoT 中心的每个设备创建不同的 TCP 连接。此方案会大幅提高电源与网络资源的消耗并增大每个设备连接的延迟。
+* 网关通常代表许多设备连接。使用 SASL PLAIN 时，它们必须针对连接到 IoT 中心的每个设备创建不同的 TCP 连接。此方案会大幅提高电源与网络资源的消耗并增大每个设备连接的延迟。
 * 在每个令牌过期后，增加使用要重新连接的资源通常会对资源受限的设备造成不良影响。
 
 ### 设置中心级凭据的范围
@@ -243,11 +248,11 @@ HTTP 通过在**授权**请求标头中包含有效的令牌来实施身份验�
 
 IoT 中心提供消息传送基元进行通信：
 
-- [云到设备](#c2d)：从应用程序后端（*服务*或*云*）。
+- [云到设备](#c2d)：从应用程序后端（ *服务* 或 *云* ）。
 - [设备到云](#d2c)：从设备到应用程序后端。
 - 从设备到关联的 Azure 存储帐户的[文件上载](#fileupload)。
 
-IoT 中心消息传送功能的核心属性是消息的可靠性和持久性。这些属性可在设备端上恢复间歇性连接，以及在云恢复事件处理的负载高峰。IoT 中心对设备到云和云到设备的消息传送实施*至少一次*传送保证。
+IoT 中心消息传送功能的核心属性是消息的可靠性和持久性。这些属性可在设备端上恢复间歇性连接，以及在云恢复事件处理的负载高峰。IoT 中心对设备到云和云到设备的消息传送实施 *至少一次* 传送保证。
 
 IoT 中心支持多个面向设备的协议（例如 MQTT、AMQP 和 HTTP）。为了支持无缝的跨协议互操作性，IoT 中心定义了所有面向设备的协议均可支持的通用消息格式。
 
@@ -255,8 +260,8 @@ IoT 中心支持多个面向设备的协议（例如 MQTT、AMQP 和 HTTP）。�
 
 IoT 中心消息包含：
 
-* 一组*系统属性*。这些是 IoT 中心解释或设置的属性。此集合是预先确定的。
-* 一组*应用程序属性*。这是应用程序可以定义的字符串属性字典，而不需将消息正文反序列化即可进行访问。IoT 中心永不修改这些属性。
+* 一组 *系统属性*。这些是 IoT 中心解释或设置的属性。此集合是预先确定的。
+* 一组 *应用程序属性*。这是应用程序可以定义的字符串属性字典，而不需将消息正文反序列化即可进行访问。IoT 中心永不修改这些属性。
 * 不透明的二进制正文。
 
 有关在不同的协议中如何对消息进行编码的详细信息，请参阅 [IoT Hub APIs and SDKs][lnk-sdks]（IoT 中心 API 和 SDK）。
@@ -279,17 +284,23 @@ IoT 中心消息包含：
 
 ### 选择通信协议 <a id="amqpvshttp"></a>
 
-在设备端通信方面，Iot 中心支持 [AMQP][lnk-amqp]、基于 WebSockets 的 AMQP、MQTT 和 HTTP/1 协议。关于它们的用途，请考虑以下几点。
+在设备端通信方面，IoT 中心支持 MQTT、[AMQP][lnk-amqp]、基于 WebSockets 的 AMQP 和 HTTP/1 协议。下表提供了针对协议选取的高水平建议：
 
-* **云到设备模式**。HTTP/1 不会以有效的方式实现服务器推送。因此，使用 HTTP/1 时，设备将在 IoT 中心轮询云到设备的消息。此方法对于设备和 IoT 中心而言是非常低效的。根据当前 HTTP/1 准则，每个设备每 25 分钟或更长时间进行轮询。另一方面，接受云到设备的消息时，AMQP 和 MQTT 支持服务器推送。它们将启用从 IoT 中心到设备的直接消息推送。如果传送延迟是一大考虑因素，最好使用 AMQP 或 MQTT 协议。对于很少连接的设备，HTTP/1 也适用。
+| 协议 | 何时应选择此协议 |
+| -------- | ------------------------------------ |
+| MQTT | 用于无需 WebSockets 的所有设备。 |
+| AMQPS | 用于利用跨设备连接复用的字段和云网关。<br/> 需连接端口 443 时使用。 |
+| HTTPS | 用于不可支持其他协议的设备。 |
+
+应在选择设备端通信协议之前考虑以下几点：
+
+* **云到设备模式**。HTTP/1 不会以有效的方式实现服务器推送。因此，使用 HTTP/1 时，设备将在 IoT 中心轮询云到设备的消息。此方法对于设备和 IoT 中心而言是非常低效的。根据当前 HTTP/1 准则，每台设备每 25 分钟或更长时间轮询一次消息。而 MQTT 和 AMQP 支持服务器在收到云到设备的消息时进行推送。它们将启用从 IoT 中心到设备的直接消息推送。若担忧传送延迟，最好选用 AMQP 或 MQTT 协议。对于很少连接的设备，HTTP/1 也适用。
 * **现场网关**。使用 HTTP/1 和 MQTT 时，无法使用相同的 TLS 连接来连接到多个设备（各有自身的设备凭据）。因此，对于[现场网关方案][lnk-azure-gateway-guidance]，这些并不是最理想的协议，因为对于每个连接到现场网关的设备，这些协议需要在现场网关和 IoT 中心之间建立一个 TLS 连接。
-* **低资源设备**。MQTT 和 HTTP/1 库的占用空间比 AMQP 库更小。因此，如果设备拥有的资源很少（例如，小于 1 MB RAM），这些协议可能是唯一可用的协议实现。
-* **网络遍历**。MQTT 标准在端口 8883 上侦听，这可能会导致对非 HTTP 协议关闭的网络发生问题。HTTP 和 AMQP（基于 WebSockets）均可用于此方案。
-* **有效负载大小**。AMQP 和 MQTT 是二进制协议，因此明显比 HTTP/1 更精简。
+* **低资源设备**。MQTT 和 HTTP/1 库的占用空间比 AMQP 库更小。因此，如果设备的资源很少（如低于 1 MB RAM），可能只可实现这些协议。
+* **网络遍历**。MQTT 标准在端口 8883 上侦听，这可能会导致仅对 HTTP 协议开放的网络出现问题。HTTP 和 AMQP（基于 WebSockets）均可用于此方案。
+* **有效负载大小**。AMQP 和 MQTT 是二进制协议，因此其有效负载明显比 HTTP/1 更精简。
 
-一般说来，应尽可能使用 AMQP（或基于 WebSockets 的 AMQP），而且仅当资源的约束阻止使用 AMQP 时才使用 MQTT。应仅在网络遍历和网络配置都阻止使用 MQTT 和 AMQP 时才使用 HTTP/1。此外，在使用 HTTP/1 时，每个设备应该每隔 25 分钟或以上轮询一次云到设备的消息。
-
-> [AZURE.NOTE] 在开发期间可以 25 分钟以下的时间间隔进行轮询。
+> [AZURE.NOTE] 使用 HTTP/1 时，每台设备应每 25 分钟或更长时间轮询一次云到设备的消息。但在开发期间，可按低于 25 分钟的更高频率进行轮询。
 
 <a id="mqtt-support">
 #### 有关 MQTT 支持的说明
@@ -306,7 +317,7 @@ IoT 中心实现 MQTT v3.1.1 协议，但具有以下限制和特定行为：
 
 详见[终结点](#endpoints)部分，通过面向设备的终结点 (**/devices/{deviceId}/messages/events**) 发送设备到云的消息。通过面向服务的终结点 (**/messages/events**) 接收消息，该终结点与[事件中心][lnk-event-hubs]兼容。因此，你可以使用标准事件中心集成和 SDK 来接收设备到云的消息。
 
-IoT 中心使用类似于[事件中心][lnk-event-hubs]的方式实现设备到云的消息传递。IoT 中心的设备到云的消息更像是事件中心*事件*，而不是[服务总线][lnk-servicebus]*消息*。
+IoT 中心使用类似于[事件中心][lnk-event-hubs]的方式实现设备到云的消息传递。IoT 中心的设备到云的消息更像是事件中心 *事件* ，而不是[服务总线][lnk-servicebus] *消息* 。
 
 这种实现具有以下含义：
 
@@ -377,21 +388,21 @@ IoT 中心公开以下属性让你控制设备到云的消息传送。
 
 #### 消息生命周期 <a id="message lifecycle"></a>
 
-为了至少一次实现消息传递保证，云到设备的消息将保留在每个设备队列中。设备必须显式确认*完成*，IoT 中心才会从队列中将其删除。这是为了保证连接失败和设备故障时能够恢复。
+为了至少一次实现消息传递保证，云到设备的消息将保留在每个设备队列中。设备必须显式确认 *完成* ，IoT 中心才会从队列中将其删除。这是为了保证连接失败和设备故障时能够恢复。
 
 下图显示了云到设备消息的生命周期状态图。
 
 ![云到设备的消息生命周期][img-lifecycle]  
 
 
-当服务发送消息时，该消息被视为*已排队*。当设备想要*接收*消息时，IoT 中心将*锁定*该消息（将状态设置为**不可见**），以便让同一设备上的其他线程开始接收其他消息。当设备线程完成消息的处理后，将通过*完成*消息来通知 IoT 中心。
+当服务发送消息时，该消息被视为 *已排队* 。当设备想要 *接收* 消息时，IoT 中心将 *锁定* 该消息（将状态设置为**不可见**），以便让同一设备上的其他线程开始接收其他消息。当设备线程完成消息的处理后，将通过 *完成* 消息来通知 IoT 中心。
 
 设备还可以：
 
-- *拒绝*消息，这会使 IoT 中心将此消息设置为**死信**状态。
-- *放弃*消息，这会使 IoT 中心将消息放回队列，并将状态设置为**已排队**。
+- *拒绝* 消息，这会使 IoT 中心将此消息设置为**死信**状态。
+- *放弃* 消息，这会使 IoT 中心将消息放回队列，并将状态设置为**已排队**。
 
-线程可能无法处理消息，且不通知 IoT 中心。在此情况下，在*可见性（或锁定）超时*时间之后，消息将从**不可见**状态自动转换回**已排队**状态。此超时的默认值为一分钟。
+线程可能无法处理消息，且不通知 IoT 中心。在此情况下，在 *可见性（或锁定）超时* 时间之后，消息将从**不可见**状态自动转换回**已排队**状态。此超时的默认值为一分钟。
 
 消息可以在**已排队**与**不可见**状态之间转换的次数，以 IoT 中心上**最大传递计数**属性中指定的次数为上限。在该转换次数之后，IoT 中心会将消息的状态设置为**死信**。同样，IoT 中心也会在消息的到期时间之后（请参阅[生存时间](#ttl)），将消息的状态设置为**死信**。
 
@@ -401,7 +412,7 @@ IoT 中心公开以下属性让你控制设备到云的消息传送。
 
 #### 消息有效期（生存时间）<a id="ttl"></a>
 
-每条云到设备的消息都有过期时间。此时间可以由服务（在 **ExpiryTimeUtc** 属性中）显式设置，或者由 IoT 中心使用指定为 IoT 中心属性的默认*生存时间*来设置。请参阅[云到设备的配置选项](#c2dconfiguration)。
+每条云到设备的消息都有过期时间。此时间可以由服务（在 **ExpiryTimeUtc** 属性中）显式设置，或者由 IoT 中心使用指定为 IoT 中心属性的默认 *生存时间* 来设置。请参阅[云到设备的配置选项](#c2dconfiguration)。
 
 > [AZURE.NOTE] 利用消息到期时间的常见方法是设置较短的生存时间值，以避免将消息发送到已断开连接的设备。此方法可达到与维护设备连接状态一样的效果，而且更加有效。通过请求消息确认，IoT 中心可以通知哪些设备可以接收消息、哪些设备脱机或不能接收消息。
 
@@ -555,7 +566,7 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 | 云到设备的接收 | 50000/分钟/单位（适用于 S3），1000/分钟/单位（适用于 S1 和 S2）。 |
 | 文件上载操作 | 5000 个文件上载通知/分钟/单位（适用于 S3），100 个文件上载通知/分钟/单位（适用于 S1 和 S2）。<br/> 存储帐户一次可传出 10000 个 SAS URI。<br/> 一次可传出 10 个 SAS URI/设备。 | 
 
-必须清楚地知道，*设备连接*限制控制可与 IoT 中心建立新设备连接的速率，而不是控制同时连接的设备数上限。该限制取决于为中心预配的单位数。
+必须清楚地知道，*设备连接* 限制控制可与 IoT 中心建立新设备连接的速率，而不是控制同时连接的设备数上限。该限制取决于为中心预配的单位数。
 
 例如，如果你购买的是单一 S1 单位，则限制为每秒 100 个连接。这意味着，若要连接 100,000 台设备，至少需要花费 1000 秒（大约 16 分钟）。但是，同时连接的设备数可与你在设备标识注册表中注册的设备数相同。
 
@@ -593,15 +604,15 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 [lnk-pricing]: /pricing/details/iot-hub
 [lnk-resource-provider-apis]: https://msdn.microsoft.com/zh-cn/library/mt548492.aspx
 
-[lnk-sas-tokens]: /documentation/articles/iot-hub/iot-hub-sas-tokens/
-[lnk-azure-gateway-guidance]: /documentation/articles/iot-hub/iot-hub-guidance/#field-gateways
-[lnk-guidance-provisioning]: /documentation/articles/iot-hub/iot-hub-guidance/#provisioning
-[lnk-guidance-scale]: /documentation/articles/iot-hub/iot-hub-scaling/
-[lnk-guidance-security]: /documentation/articles/iot-hub/iot-hub-guidance/#customauth
-[lnk-guidance-heartbeat]: /documentation/articles/iot-hub/iot-hub-guidance/#heartbeat
+[lnk-sas-tokens]: /documentation/articles/iot-hub-sas-tokens/
+[lnk-azure-gateway-guidance]: /documentation/articles/iot-hub-guidance/#field-gateways
+[lnk-guidance-provisioning]: /documentation/articles/iot-hub-guidance/#provisioning
+[lnk-guidance-scale]: /documentation/articles/iot-hub-scaling/
+[lnk-guidance-security]: /documentation/articles/iot-hub-guidance/#customauth
+[lnk-guidance-heartbeat]: /documentation/articles/iot-hub-guidance/#heartbeat
 
-[lnk-azure-protocol-gateway]: /documentation/articles/iot-hub/iot-hub-protocol-gateway/
-[lnk-getstarted-c2d-tutorial]: /documentation/articles/iot-hub/iot-hub-csharp-csharp-c2d/
+[lnk-azure-protocol-gateway]: /documentation/articles/iot-hub-protocol-gateway/
+[lnk-getstarted-c2d-tutorial]: /documentation/articles/iot-hub-csharp-csharp-c2d/
 
 [lnk-amqp]: https://www.amqp.org/
 [lnk-mqtt]: http://mqtt.org/
@@ -611,27 +622,27 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 [lnk-cbs]: https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc
 [lnk-event-hubs-publisher-policy]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab
 [lnk-event-hubs]: /documentation/services/event-hubs/
-[lnk-event-hubs-consuming-events]: /documentation/articles/event-hubs/event-hubs-programming-guide/#event-consumers
-[lnk-guidance-d2c-processing]: /documentation/articles/iot-hub/iot-hub-csharp-csharp-process-d2c/
+[lnk-event-hubs-consuming-events]: /documentation/articles/event-hubs-programming-guide/#event-consumers
+[lnk-guidance-d2c-processing]: /documentation/articles/iot-hub-csharp-csharp-process-d2c/
 [lnk-management-portal]: https://manage.windowsazure.cn
 [lnk-rfc7232]: https://tools.ietf.org/html/rfc7232
 [lnk-sasl-plain]: http://tools.ietf.org/html/rfc4616
 [lnk-servicebus]: /documentation/services/service-bus/
 [lnk-tls]: https://tools.ietf.org/html/rfc5246
-[lnk-bulk-identity]: /documentation/articles/iot-hub/iot-hub-bulk-identity-mgmt/
-[lnk-eventhub-partitions]: /documentation/articles/event-hubs/event-hubs-overview/#partitions
-[lnk-mqtt-support]: /documentation/articles/iot-hub/iot-hub-mqtt-support/
+[lnk-bulk-identity]: /documentation/articles/iot-hub-bulk-identity-mgmt/
+[lnk-eventhub-partitions]: /documentation/articles/event-hubs-overview/#partitions
+[lnk-mqtt-support]: /documentation/articles/iot-hub-mqtt-support/
 [lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
 [lnk-servicebus-sdk]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
-[lnk-file upload]: /documentation/articles/iot-hub/iot-hub-csharp-csharp-file-upload/
-[lnk-create-hub]: /documentation/articles/iot-hub/iot-hub-rm-template-powershell/
-[lnk-c-sdk]: /documentation/articles/iot-hub/iot-hub-device-sdk-c-intro/
-[lnk-sdks]: /documentation/articles/iot-hub/iot-hub-sdks-summary/
+[lnk-file upload]: /documentation/articles/iot-hub-csharp-csharp-file-upload/
+[lnk-create-hub]: /documentation/articles/iot-hub-rm-template-powershell/
+[lnk-c-sdk]: /documentation/articles/iot-hub-device-sdk-c-intro/
+[lnk-sdks]: /documentation/articles/iot-hub-sdks-summary/
 
-[lnk-design]: /documentation/articles/iot-hub/iot-hub-guidance/
-[lnk-dmui]: /documentation/articles/iot-hub/iot-hub-device-management-ui-sample/
-[lnk-gateway]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device/
-[lnk-portal]: /documentation/articles/iot-hub/iot-hub-manage-through-portal/
-[lnk-securing]: /documentation/articles/iot-hub/iot-hub-security-ground-up/
+[lnk-design]: /documentation/articles/iot-hub-guidance/
+[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-portal]: /documentation/articles/iot-hub-manage-through-portal/
+[lnk-securing]: /documentation/articles/iot-hub-security-ground-up/
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=Mooncake_0926_2016-->

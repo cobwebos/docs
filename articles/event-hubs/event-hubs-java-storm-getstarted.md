@@ -9,12 +9,17 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="05/13/2016"
-	wacn.date=""/>
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/06/2016"
+	ms.author="sethm"/>  
+
 
 # 事件中心入门
 
-[AZURE.INCLUDE [service-bus-selector-get-started](../includes/service-bus-selector-get-started.md)]
+[AZURE.INCLUDE [service-bus-selector-get-started](../../includes/service-bus-selector-get-started.md)]
 
 ## 介绍
 
@@ -24,18 +29,18 @@
 
 本教程介绍如何使用以 Java 编写的控制台应用程序将消息收集到事件中心，以及如何使用 Apache Storm 并行检索这些消息。
 
-为了完成本教程，你将需要以下内容：
+若要完成本教程，需要满足以下条件：
 
 + 一个 Java 开发环境，配置为运行 [Maven](http://maven.apache.org/)。对于本教程，我们将采用 [Eclipse](https://www.eclipse.org/)。
 
-+ 有效的 Azure 帐户。<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/zh-cn/pricing/1rmb-trial/" target="_blank">Azure 免费试用</a>。
++ 有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/1rmb-trial/)。
 
-[AZURE.INCLUDE [event-hubs-create-event-hub](../includes/event-hubs-create-event-hub.md)]
+[AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-java](../../includes/service-bus-event-hubs-get-started-send-java.md)]
 
 
-[AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-storm](../includes/service-bus-event-hubs-get-started-receive-storm.md)]
+[AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-storm](../../includes/service-bus-event-hubs-get-started-receive-storm.md)]
 
 ## 运行应用程序
 
@@ -62,11 +67,12 @@
 <!-- Links -->
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[事件中心概述]: /documentation/articles/event-hubs-overview
+[事件中心概述]: /documentation/articles/event-hubs-overview/
 
 [Apache Storm]: https://storm.incubator.apache.org
-[HDInsight Storm 概述]: /documentation/articles/hdinsight-storm-overview
-[用 Storm 和 HDInsight 分析传感器数据]: /documentation/articles/hdinsight-storm-sensor-data-analysis
-[使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序]: /documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application
+[HDInsight Storm 概述]: /documentation/articles/hdinsight-storm-overview/
+[用 Storm 和 HDInsight 分析传感器数据]: /documentation/articles/hdinsight-storm-sensor-data-analysis/
+[使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序]: /documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
  
-<!---HONumber=Mooncake_0613_2016-->
+
+<!---HONumber=Mooncake_0926_2016-->

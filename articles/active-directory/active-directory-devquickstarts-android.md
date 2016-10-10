@@ -9,14 +9,19 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="03/18/2016"
+	ms.workload="identity"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="09/16/2016"
+	ms.author="brandwe"
 	wacn.date=""/>
 
 # 将 Azure AD 集成到 Android 应用程序中
 
-[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../includes/active-directory-devquickstarts-switcher.md)]
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
 
-[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide.md)]
+[AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
 如果你要开发桌面应用程序，Azure AD 可让你简单直接地使用用户的 Active Directory 帐户对其进行身份验证。它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 
@@ -30,23 +35,23 @@
 
 ## 步骤 1：下载并运行 Node.js REST API TODO 示例服务器
 
-专门编写这个示例是为了与用于生成 Microsoft Azure Active Directory 的单租户 To-Do REST API 的现有示例配合工作。这是本快速入门教程的先决条件。
+专门编写这个示例是为了与用于生成 Azure Active Directory 的单租户待办事项 REST API 的现有示例配合使用。这是本快速入门教程的先决条件。
 
 有关如何设置的信息，请访问我们的现有示例：
 
-* [适用于 Node.js 的 Microsoft Azure Active Directory 示例 REST API 服务](/documentation/articles/active-directory-devquickstarts-webapi-nodejs/)
+* [适用于 Node.js 的 Azure Active Directory 示例 REST API 服务](/documentation/articles/active-directory-devquickstarts-webapi-nodejs/)
 
-## 步骤 2：向 Microsoft Azure AD 租户注册 Web API
+## 步骤 2：向 Azure AD 租户注册 Web API
 
 **我正在执行什么操作？**
 
-*Microsoft Active Directory 支持添加两种类型的应用程序。Web API，用于向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你将注册你在本地运行的用于测试此示例的 Web API。通常，此 Web API 是一个 REST 服务，它提供应用需要访问的功能。Microsoft Azure Active Directory 可以保护任何终结点！*
+*Microsoft Active Directory 支持添加两种类型的应用程序。Web API，用于向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你将注册你在本地运行的用于测试此示例的 Web API。通常，此 Web API 是一个 REST 服务，它提供应用需要访问的功能。Azure Active Directory 可以保护任何终结点！*
 
 *此处我们假设你要注册上面引用的 TODO REST API，但这也适用于你希望 Azure Active Directory 保护的任何 Web API。*
 
-在 Microsoft Azure AD 中注册 Web API 的步骤
+向 Azure AD 注册 Web API 的步骤
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.com)。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
 2. 在左侧的导航栏中单击“Active Directory”。
 3. 单击你要在其中注册示例应用程序的目录租户。
 4. 单击“应用程序”选项卡。
@@ -64,13 +69,13 @@
 
 **我正在执行什么操作？**
 
-如前所述，Microsoft Azure Active Directory 支持添加两种类型的应用程序。Web API，用于向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你要将应用程序注册到此示例。只有执行了此操作，此应用程序才能请求访问你刚刚注册的 Web API。除非注册了应用程序，否则 Azure Active Directory 甚至可能会拒绝应用程序请求登录！ 这是模型安全功能的一部分。
+*如前所述，Azure Active Directory 支持添加两种类型的应用程序。Web API，用于向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你要将应用程序注册到此示例。只有执行了此操作，此应用程序才能请求访问你刚刚注册的 Web API。除非注册了应用程序，否则 Azure Active Directory 甚至可能会拒绝应用程序请求登录！ 这是模型安全功能的一部分。*
 
-此处我们假设你要注册上面引用的这个示例应用程序，但这也适用于你正在开发的任何应用程序。
+*此处我们假设你要注册上面引用的这个示例应用程序，但这也适用于你正在开发的任何应用程序。*
 
 **为什么要将应用程序和 Web API 放在一个租户中？**
 
-如你可能猜到的那样，你可以生成一个从其他租户访问 Azure Active Directory 中注册的外部 API 的应用程序。如果你这样做，系统将提示你的客户许可使用该应用程序中的 API。令人欣慰的是，适用于 iOS 的 Active Directory 身份验证库将负责为你处理此许可！ 在了解更高级的功能后，你将发现，这是从 Azure 和 Office 以及任何其他服务提供程序访问 Microsoft API 套件所需工作的重要部分。现在，由于你已将 Web API 和应用程序注册到同一个租户下，因此，你不会看到任何许可提示。如果你只是在为自己的公司开发要使用的应用程序，则通常就是这种情况。
+*如你可能猜到的那样，你可以生成一个从其他租户访问 Azure Active Directory 中注册的外部 API 的应用程序。如果你这样做，系统将提示你的客户许可使用该应用程序中的 API。令人欣慰的是，适用于 iOS 的 Active Directory 身份验证库将负责为你处理此许可！ 在了解更高级的功能后，你将发现，这是从 Azure 和 Office 以及任何其他服务提供程序访问 Microsoft API 套件所需工作的重要部分。现在，由于你已将 Web API 和应用程序注册到同一个租户下，因此，你不会看到任何许可提示。如果你只是在为自己的公司开发要使用的应用程序，则通常就是这种情况。*
 
 1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
 2. 在左侧的导航栏中单击“Active Directory”。
@@ -90,13 +95,13 @@
 
   * 将此存储库克隆到所选的目录：
 
-  `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`
+  `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`  
 
   * 根据[“先决条件”部分中的步骤针对 Android 设置 Maven](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)
   * 使用 SDK 19 设置模拟器
   * 转到存储库克隆到的根文件夹
   * 运行命令：mvn clean install
-  * 将目录切换到快速入门项目示例：cd samples\hello
+  * 将目录切换到快速入门项目示例：cd samples\\hello
   * 运行命令：mvn android:deploy android:run
   * 你应会看到应用程序正在启动
   * 输入测试用户凭据以尝试启动！
@@ -166,7 +171,7 @@ xml
 ### 步骤 5：在项目中添加对 Android ADAL 的引用
 
 
-2. 添加对项目的引用，并将其指定为 Android 库。如果你不确定如何执行此操作，请[单击此处了解详细信息](http://developer.android.com/intl/zh-cn/tools/projects/projects-eclipse.html)
+2. 添加对项目的引用，并将其指定为 Android 库。如果你不确定如何执行此操作，请[单击此处了解详细信息](http://developer.android.com/tools/projects/projects-eclipse.html)
 
 3. 在项目设置中添加用于调试的项目依赖关系
 
@@ -191,10 +196,11 @@ xml
 		      <application/>
 		    
 
-7. 在主要活动中创建 AuthenticationContext 的实例。有关此调用的详细信息超出了本自述文件的范畴，但你可以通过查看 [Android 本机客户端示例](https://github.com/AzureADSamples/NativeClient-Android)来获得一个良好的起点。下面是一个示例：Java
+7. 在主要活动中创建 AuthenticationContext 的实例。有关此调用的详细信息超出了本自述文件的范畴，但你可以通过查看 [Android 本机客户端示例](https://github.com/AzureADSamples/NativeClient-Android)来获得一个良好的起点。下面是一个示例：
+Java
 
-    // 机构采用了 https://login.windows.net/yourtenant.onmicrosoft.com 
-    mContext = new AuthenticationContext(MainActivity.this, authority, true) 的形式；// 这将使用 SharedPreferences 作为默认缓存
+    // 机构采用了 https://login.chinacloudapi.cn/yourtenant.partner.onmschina.cn 
+    mContext = new AuthenticationContext(MainActivity.this, authority, true) 的形式；// 这将使用 SharedPreferences 作为            默认缓存
     
   * 注意：mContext 是活动中的一个字段
 
@@ -272,7 +278,8 @@ Java
      mContext.acquireTokenSilent(resource, clientid, userId, callback );
     
 
-11. **Broker**：Microsoft Intune 的公司门户应用程序将提供代理组件。如果在验证器中创建了一个用户帐户并且开发人员选择不跳过代理帐户，ADAL 将使用代理帐户。开发人员可以使用以下操作跳过代理用户：
+11. **Broker**：
+  Microsoft Intune 的公司门户应用程序将提供代理组件。如果在验证器中创建了一个用户帐户并且开发人员选择不跳过代理帐户，ADAL 将使用代理帐户。开发人员可以使用以下操作跳过代理用户：
 
     Java
 
@@ -291,9 +298,9 @@ Java
 
  应用程序清单应有权使用 AccountManager 帐户：http://developer.android.com/reference/android/accounts/AccountManager.html
 
- * GET_ACCOUNTS
- * USE_CREDENTIALS
- * MANAGE_ACCOUNTS
+ * GET\_ACCOUNTS
+ * USE\_CREDENTIALS
+ * MANAGE\_ACCOUNTS
 
 
 使用本演练时，你应会获得与 Azure Active Directory 成功集成所需的项目。有关此工作的更多示例，请访问 GitHub 上的 AzureADSamples/ 存储库。
@@ -312,7 +319,7 @@ Java
 
 ADFS 不会识别为生产 STS，因此，你需要关闭实例发现，并在 AuthenticationContext 构造函数中传递 false。
 
-机构 URL 需要 STS 实例和租户名称：https://login.windows.net/yourtenant.onmicrosoft.com
+机构 URL 需要 STS 实例和租户名称：https://login.chinacloudapi.cn/yourtenant.partner.onmschina.cn
 
 ### 查询缓存项
 
@@ -342,7 +349,7 @@ Java
 
 你也可以使用此方法执行同步调用。可以将回调设置为 null，或使用 acquireTokenSilentSync。
 
-### Diagnostics
+### 诊断
 
 下面是有关诊断问题的主要信息来源：
 
@@ -465,6 +472,6 @@ ADAL 版本 1.1.0 支持通过 WebViewClient 中的 onReceivedHttpAuthRequest �
 了解[如何使用 ADAL 在 Android 上启用跨应用 SSO](/documentation/articles/active-directory-sso-android/)
 
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0926_2016-->

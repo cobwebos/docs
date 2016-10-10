@@ -6,19 +6,24 @@
     services="hdinsight"
     documentationCenter=""
     authors="Blackmist"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.date="07/05/2016"
-	wacn.date=""/>
+    ms.service="hdinsight"
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/13/2016"
+    wacn.date=""
+    ms.author="larryfr"/>
 
 # 使用 HDInsight 进行脚本操作开发
 
 使用脚本操作可以通过指定群集配置设置，或者在群集上安装额外的服务、工具或其他软件，来自定义 Azure HDInsight 群集。你可以在创建群集期间或者在运行中的群集上使用脚本操作。
 
-> [AZURE.NOTE] 本文档中的信息针对基于 Linux 的 HDInsight 群集。有关在基于 Windows 的群集上使用脚本操作的信息，请参阅 [Script action development with HDInsight (Windows)（使用 HDInsight 进行脚本操作开发 (Windows)）](/documentation/articles/hdinsight-hadoop-script-actions/)。
+> [AZURE.NOTE] 本文档中的信息针对基于 Linux 的 HDInsight 群集。有关在基于 Windows 的群集上使用脚本操作的信息，请参阅 [Script action development with HDInsight (Windows)](/documentation/articles/hdinsight-hadoop-script-actions/)（使用 HDInsight 进行脚本操作开发 (Windows)）。
 
 ## 什么是脚本操作？
 
@@ -34,7 +39,7 @@
 | HDInsight .NET SDK | ✓ | ✓ |
 | Azure Resource Manager 模板 | ✓ | &nbsp; |
 
-有关使用这些方法应用脚本操作的详细信息，请参阅 [Customize HDInsight clusters using script actions（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)。
+有关使用这些方法应用脚本操作的详细信息，请参阅 [Customize HDInsight clusters using script actions](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)（使用脚本操作自定义 HDInsight 群集）。
 
 ## <a name="bestPracticeScripting"></a>脚本开发最佳实践
 
@@ -54,7 +59,7 @@
 
 ### <a name="bPS1"></a>选择目标 Hadoop 版本
 
-不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。如果脚本需要特定版本的服务或组件，你应该只在包含所需组件的 HDInsight 版本中使用该脚本。可以使用 [HDInsight component versioning（HDInsight 组件版本控制）](/documentation/articles/hdinsight-component-versioning-v1/)来查找有关 HDInsight 随附组件版本的信息。
+不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。如果脚本需要特定版本的服务或组件，你应该只在包含所需组件的 HDInsight 版本中使用该脚本。可以使用 [HDInsight component versioning](/documentation/articles/hdinsight-component-versioning-v1/)（HDInsight 组件版本控制）来查找有关 HDInsight 随附组件版本的信息。
 
 ### <a name="bPS2"></a>提供指向脚本资源的可靠链接
 
@@ -94,7 +99,7 @@
 
 系统将会记录脚本执行期间写入 STDOUT 和 STDERR 的信息，你可以使用 Ambari Web UI 来查看这些信息。
 
-> [AZURE.NOTE] 只有在成功创建群集之后，才能使用 Ambari。如果在群集创建期间使用脚本操作但创建失败，请参阅 [Customize HDInsight clusters using script action（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/#troubleshooting)的故障排除部分，以了解访问所记录信息的其他方式。
+> [AZURE.NOTE] 只有在成功创建群集之后，才能使用 Ambari。如果在群集创建期间使用脚本操作但创建失败，请参阅 [Customize HDInsight clusters using script action](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/#troubleshooting)（使用脚本操作自定义 HDInsight 群集）的故障排除部分，以了解访问所记录信息的其他方式。
 
 大多数实用工具和安装包会将信息写入 STDOUT 和 STDERR，不过你可能想要添加更多日志记录。若要将文本发送到 STDOUT，可使用 `echo`。例如：
 
@@ -106,7 +111,7 @@
 
 这会将发送到 STDOUT（1，这是默认设置，因此未在此处列出）的信息重定向到 STDERR (2)。有关 IO 重定向的详细信息，请参阅 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
-有关查看脚本操作记录的信息的详细信息，请参阅 [Customize HDInsight clusters using script actions（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/#troubleshooting)。
+有关查看脚本操作记录的信息的详细信息，请参阅 [Customize HDInsight clusters using script actions](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/#troubleshooting)（使用脚本操作自定义 HDInsight 群集）。
 
 ###<a name="bps8"></a>将文件另存为包含 LF 行尾的 ASCII
 
@@ -165,6 +170,11 @@
 | `test_is_headnode` | 如果在群集头节点上运行，则返回 1；否则返回 0。 |
 | `test_is_datanode` | 如果当前节点是数据（辅助角色）节点，则返回 1；否则返回 0。 |
 | `test_is_first_datanode` | 如果当前节点是第一个数据（辅助角色）节点（名为 workernode0），则返回 1；否则返回 0。 |
+| `get_headnodes` | 返回群集中头节点的完全限定域名。名称以逗号分隔。出错时返回空字符串。 |
+| `get_primary_headnode` | 获取主头节点的完全限定域名。出错时返回空字符串。 |
+| `get_secondary_headnode` | 获取辅助头节点的完全限定域名。出错时返回空字符串。 |
+| `get_primary_headnode_number` | 获取主头节点的数字后缀。出错时返回空字符串。 |
+| `get_secondary_headnode_number` | 获取辅助头节点的数字后缀。出错时返回空字符串。 |
 
 ## <a name="commonusage"></a>常见使用模式
 
@@ -174,7 +184,7 @@
 
 在某些情况下，脚本可能需要参数。例如，你可能需要群集的管理员密码，以从 Ambari REST API 检索信息。
 
-传递给脚本的参数称为位置参数，将分配到 `$1` 作为第一个参数，分配到 `$2` 作为第二个参数，依此类推。`$0` 包含脚本本身的名称。
+传递给脚本的参数称为_位置参数_，将分配到 `$1` 作为第一个参数，分配到 `$2` 作为第二个参数，依此类推。`$0` 包含脚本本身的名称。
 
 传递给脚本作为参数的值应加上单引号 (')，以便传递的值被视为文本，并且不对包含的特殊字符（例如“!”）进行特殊处理。
 
@@ -196,7 +206,7 @@
 
 ### 访问存储自定义脚本的位置
 
-用于自定义群集的脚本需要位于群集的默认存储帐户中，或其他任何存储帐户的公共只读容器中。如果你的脚本访问位于其他位置的资源，则这些资源还需要具有公共可访问性（至少是公共只读性）。例如，你可能需要使用 `download_file` 将文件下载到群集。
+用于自定义群集的脚本需要位于群集的默认存储帐户中，或其他任何存储帐户的公共只读容器中。如果你的脚本访问位于其他位置的资源，则这些资源还需要具有公共可访问性（至少是公共只读性）。例如，可能需要使用 `download_file` 将文件下载到群集。
 
 将文件存储在群集可访问的 Azure 存储帐户（例如默认存储帐户）中可以提供快速访问，因为此存储在 Azure 网络内。
 
@@ -214,7 +224,7 @@
 
 ## <a name="runScriptAction"></a>如何运行脚本操作
 
-可以使用脚本操作通过 Azure 门户、Azure PowerShell、Azure Resource Manager (ARM) 模板或 HDInsight .NET SDK 来自定义 HDInsight 群集。有关说明，请参阅 [How to use script action（如何使用脚本操作）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)。
+可以使用脚本操作通过 Azure 门户、Azure PowerShell、Azure Resource Manager (ARM) 模板或 HDInsight .NET SDK 来自定义 HDInsight 群集。有关说明，请参阅 [How to use script action](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)（如何使用脚本操作）。
 
 ## <a name="sampleScripts"></a>自定义脚本示例
 
@@ -225,7 +235,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。示例�
 - [在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install-v1/)
 - [在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install-v1/)
 
-> [AZURE.NOTE] 上面链接的文档针对基于 Linux 的 HDInsight 群集。有关适用于基于 Windows 的 HDInsight 的脚本，请参阅 [Script action development with HDInsight (Windows)（使用 HDInsight 进行脚本操作开发 (Windows)）](/documentation/articles/hdinsight-hadoop-script-actions/)或使用每篇文章顶部提供的链接。
+> [AZURE.NOTE] 上面链接的文档针对基于 Linux 的 HDInsight 群集。有关适用于基于 Windows 的 HDInsight 的脚本，请参阅 [Script action development with HDInsight (Windows)](/documentation/articles/hdinsight-hadoop-script-actions/)（使用 HDInsight 进行脚本操作开发 (Windows)）或使用每篇文章顶部提供的链接。
 
 ##故障排除
 
@@ -233,11 +243,11 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。示例�
 
 __错误__: `$'\r': command not found`。有时后面会接着出现“`syntax error: unexpected end of file`”。
 
-原因：此错误的原因是脚本中以 CRLF 作为行尾。Unix 系统只允许使用 LF 作为行尾。
+_原因_：此错误的原因是脚本中以 CRLF 作为行尾。Unix 系统只允许使用 LF 作为行尾。
 
 此问题最常出现于 Windows 环境中编写的脚本，因为 CRLF 是 Windows 上许多文本编辑器中常见的行尾符号。
 
-解决方法：如果文本编辑器提供了选项，请选择 Unix 格式或 LF 作为行尾。也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
+_解决方法_：如果文本编辑器提供了选项，请选择 Unix 格式或 LF 作为行尾。也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
 
 > [AZURE.NOTE] 以下命令大致相当于将 CRLF 行尾更改为 LF。根据系统中提供的实用工具选择一种解决方法。
 
@@ -250,20 +260,20 @@ __错误__: `$'\r': command not found`。有时后面会接着出现“`syntax e
 
 __错误__: `line 1: #!/usr/bin/env: No such file or directory`。
 
-原因：将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
+_原因_：将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
 
-解决方法：将文件另存为 ASCII，或者不带 BOM 的 UTF-8。也可以在 Linux 或 Unix 系统上使用以下命令来创建不带 BOM 的新文件：
+_解决方法_：将文件另存为 ASCII，或者不带 BOM 的 UTF-8。也可以在 Linux 或 Unix 系统上使用以下命令来创建不带 BOM 的新文件：
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-对于上述命令，请将 __INFILE__ 替换为包含 BOM 的文件。__OUTFILE__ 应是新文件的名称，它将包含不带 BOM 的脚本。
+对于上述命令，请将 __INFILE__ 替换为包含 BOM 的文件。__OUTFILE__ 应是新文件的名称，包含不带 BOM 的脚本。
 
 ## <a name="seeAlso"></a>后续步骤
 
 * 了解如何[使用脚本操作自定义 HDInsight 群集](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)。
 
-* 使用 [HDInsight .NET SDK reference（HDInsight.NET SDK 参考）](https://msdn.microsoft.com/zh-cn/library/mt271028.aspx)详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
+* 使用 [HDInsight .NET SDK reference](https://msdn.microsoft.com/zh-cn/library/mt271028.aspx)（HDInsight.NET SDK 参考）详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
 
 * 使用 [HDInsight REST API](https://msdn.microsoft.com/zh-cn/library/azure/mt622197.aspx) 了解如何通过 REST 在 HDInsight 群集上执行管理操作。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0926_2016-->

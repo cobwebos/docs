@@ -9,7 +9,12 @@
 
 <tags
  ms.service="iot-hub"
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="na"
+ ms.workload="na"
  ms.date="07/19/2016"
+ ms.author="dobett"
  wacn.date=""/>
 
 # 设计你的解决方案
@@ -33,14 +38,13 @@ IoT 解决方案存储有关单个设备的数据，例如：
 
 给定的 IoT 解决方案存储的设备数据取决于该解决方案的特定要求。但是，解决方案必须至少存储设备标识和身份验证密钥。Azure IoT 中心包含[标识注册表][lnk-devguide-identityregistry]，可以存储每个设备的值，例如 ID、身份验证密钥和状态代码。解决方案可以使用其他 Azure 服务（例如表、Blob 或 Azure DocumentDB）来存储任何其他设备数据。
 
-*设备预配*是将初始设备数据添加到解决方案中存储中的过程。若要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 
-[IoT 中心标识注册表][lnk-devguide-identityregistry]。在预配过程中，你可能需要初始化其他解决方案存储中的设备特定数据。
+*设备预配* 是将初始设备数据添加到解决方案中存储中的过程。若要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 [IoT 中心标识注册表][lnk-devguide-identityregistry]。在预配过程中，你可能需要初始化其他解决方案存储中的设备特定数据。
 
 [IoT 中心标识注册表 API][lnk-devguide-identityregistry] 可让你将 IoT 中心集成到预配过程。
 
 ## 现场网关
 
-在 IoT 解决方案中，*现场网关*位于设备和 IoT 中心之间。它通常位于靠近设备的位置。设备使用设备支持的协议，直接与现场网关通信。现场网关使用 IoT 中心支持的协议来与 IoT 中心通信。现场网关可以是高度专业化的硬件或运行完成网关所针对的端到端方案的软件的低功率计算机。
+在 IoT 解决方案中，*现场网关* 位于设备和 IoT 中心之间。它通常位于靠近设备的位置。设备使用设备支持的协议，直接与现场网关通信。现场网关使用 IoT 中心支持的协议来与 IoT 中心通信。现场网关可以是高度专业化的硬件或运行完成网关所针对的端到端方案的软件的低功率计算机。
 
 现场网关与简单的流量路由设备（例如网络地址转换 (NAT) 设备或防火墙）不同，因为它通常在解决方案中管理访问和信息流中扮演主动的角色。例如，现场网关可以：
 
@@ -57,9 +61,9 @@ IoT 解决方案存储有关单个设备的数据，例如：
 
 ## 自定义设备身份验证
 
-可以使用 IoT 中心[设备标识注册表][lnk-devguide-identityregistry]来使用[令牌][lnk-sas-token]配置每个设备的安全凭据和访问控制。如果 IoT 解决方案已经大幅投资自定义设备标识注册表和/或身份验证方案，可以通过创建*令牌服务*，将此现有基础结构与 IoT 中心集成。这样，便可以在解决方案中使用其他 IoT 功能。
+可以使用 IoT 中心[设备标识注册表][lnk-devguide-identityregistry]来使用[令牌][lnk-sas-token]配置每个设备的安全凭据和访问控制。如果 IoT 解决方案已经大幅投资自定义设备标识注册表和/或身份验证方案，可以通过创建 *令牌服务* ，将此现有基础结构与 IoT 中心集成。这样，便可以在解决方案中使用其他 IoT 功能。
 
-令牌服务是自定义云服务。它使用包含 **DeviceConnect** 权限的 IoT 中心*共享访问策略* 创建*设备范围的* 令牌。这些令牌可让设备连接到 IoT 中心。
+令牌服务是自定义云服务。它使用包含 **DeviceConnect** 权限的 IoT 中心 *共享访问策略* 创建*设备范围的* 令牌。这些令牌可让设备连接到 IoT 中心。
 
   ![令牌服务模式的步骤][img-tokenservice]
 
@@ -82,8 +86,7 @@ IoT 解决方案存储有关单个设备的数据，例如：
 
 ## 设备检测信号 <a id="heartbeat"></a>
 
-[IoT 中心标识注册表][lnk-devguide-identityregistry]包含名为 **connectionState** 的字段。你只应在开发和调试期间使用 **connectionState** 字段，IoT 解决方案不应在运行时查询该字段（例如，为了检查设备是否已连接以确定是否要发送云到设备的消息或短信）。
-如果 IoT 解决方案需要知道设备是否已连接（在运行时，或在比 **connectionState** 属性提供的值更精确时），解决方案应该实施*检测信号模式*。
+[IoT 中心标识注册表][lnk-devguide-identityregistry]包含名为 **connectionState** 的字段。你只应在开发和调试期间使用 **connectionState** 字段，IoT 解决方案不应在运行时查询该字段（例如，为了检查设备是否已连接以确定是否要发送云到设备的消息或短信）。如果 IoT 解决方案需要知道设备是否已连接（在运行时，或在比 **connectionState** 属性提供的值更精确时），解决方案应该实施 *检测信号模式*。
 
 在检测信号模式下，设备每隔固定时间至少发送一次设备到云的消息（例如，每小时至少一次）。这意味着，即使设备没有任何要发送的数据，仍会发送空的设备到云的消息（通常具有可供识别其属于检测信号的属性）。在服务端，解决方案维护一份图表，其中包含每个设备所收到的最后一次检测信号，并假设如果设备没有在预期时间内收到检测信号消息，即表示设备有问题。
 
@@ -111,28 +114,28 @@ IoT 解决方案存储有关单个设备的数据，例如：
 
 [img-tokenservice]: ./media/iot-hub-guidance/tokenservice.png
 
-[lnk-devguide-identityregistry]: /documentation/articles/iot-hub/iot-hub-devguide/#identityregistry
-[lnk-devguide-opmon]: /documentation/articles/iot-hub/iot-hub-operations-monitoring/
+[lnk-devguide-identityregistry]: /documentation/articles/iot-hub-devguide/#identityregistry
+[lnk-devguide-opmon]: /documentation/articles/iot-hub-operations-monitoring/
 
-[lnk-devguide-security]: /documentation/articles/iot-hub/iot-hub-devguide/#security
+[lnk-devguide-security]: /documentation/articles/iot-hub-devguide/#security
 [lnk-tls-psk]: https://tools.ietf.org/html/rfc4279
 
 [lnk-portal]: https://portal.azure.cn
-[lnk-devguide-messaging]: /documentation/articles/iot-hub/iot-hub-devguide/#messaging
+[lnk-devguide-messaging]: /documentation/articles/iot-hub-devguide/#messaging
 [lnk-dotnet-sas]: https://msdn.microsoft.com/zh-cn/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx
 [lnk-java-sas]: http://azure.github.io/azure-iot-sdks/java/service/api_reference/com/microsoft/azure/iot/service/auth/IotHubServiceSasToken.html
-[IoT 中心配额与限制]: /documentation/articles/iot-hub/iot-hub-devguide/#throttling
+[IoT 中心配额与限制]: /documentation/articles/iot-hub-devguide/#throttling
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
-[lnk-mqtt]: /documentation/articles/iot-hub/iot-hub-mqtt-support/
-[lnk-devices]: /documentation/articles/iot-hub/iot-hub-tested-configurations/
-[lnk-protocols]: /documentation/articles/iot-hub/iot-hub-protocol-gateway/
-[lnk-compare]: /documentation/articles/iot-hub/iot-hub-compare-event-hubs/
-[lnk-scaling]: /documentation/articles/iot-hub/iot-hub-scaling/
-[lnk-devguide]: /documentation/articles/iot-hub/iot-hub-devguide/
-[lnk-dmui]: /documentation/articles/iot-hub/iot-hub-device-management-ui-sample/
-[lnk-gateway]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device/
-[lnk-portal-manage]: /documentation/articles/iot-hub/iot-hub-manage-through-portal/
-[lnk-sas-token]: /documentation/articles/iot-hub/iot-hub-sas-tokens/
-[lnk-securing]: /documentation/articles/iot-hub/iot-hub-security-ground-up/
+[lnk-mqtt]: /documentation/articles/iot-hub-mqtt-support/
+[lnk-devices]: /documentation/articles/iot-hub-tested-configurations/
+[lnk-protocols]: /documentation/articles/iot-hub-protocol-gateway/
+[lnk-compare]: /documentation/articles/iot-hub-compare-event-hubs/
+[lnk-scaling]: /documentation/articles/iot-hub-scaling/
+[lnk-devguide]: /documentation/articles/iot-hub-devguide/
+[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-portal-manage]: /documentation/articles/iot-hub-manage-through-portal/
+[lnk-sas-token]: /documentation/articles/iot-hub-sas-tokens/
+[lnk-securing]: /documentation/articles/iot-hub-security-ground-up/
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=Mooncake_0926_2016-->

@@ -1,16 +1,22 @@
 <properties
-	pageTitle="使用 .NET SDK 开始传送点播内容"
+	pageTitle="开始使用 .NET 传送点播内容 | Azure"
 	description="本教程将引导你完成使用 Azure 媒体服务和 .NET 实施点播内容传送应用程序的步骤。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
 	manager="erikre"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="07/18/2016"
-	wacn.date=""/>
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+ 	ms.date="08/17/2016"
+	wacn.date=""
+	ms.author="juliako"/>
 
 
 # 使用 .NET SDK 开始传送点播内容
@@ -400,7 +406,7 @@ MPEG DASH 的流 URL 采用以下格式：
 
 在执行上一部分中定义的程序后，控制台窗口中会显示如下所示的 URL。
 
-自适应流式处理 URL：
+自适应流 URL：
 
 平滑流
 
@@ -450,7 +456,8 @@ MPEG DASH
 
 
 <!-- URLs. -->
+
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=Mooncake_0926_2016-->

@@ -10,14 +10,19 @@
 
 <tags
  ms.service="iot-suite"
- ms.date="05/16/2016"
- wacn.date="05/17/2016"/>
+ ms.devlang="na"
+ ms.topic="get-started-article"
+ ms.tgt_pltfrm="na"
+ ms.workload="na"
+ ms.date="08/17/2016"
+ ms.author="araguila"
+ wacn.date=""/>
 
 # 预见性维护预配置解决方案演练
 
 ## 介绍
 
-IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。你可以主动对优化维护等活动运用此预配置解决方案。此解决方案结合主要的 Azure IoT 套件服务，包括带有实验的 [Azure 机器学习][lnk_machine_learning]工作区，可根据公用示例数据集预测飞机引擎的剩余使用年限 (RUL)。此解决方案提供完整的商业应用场景实现作为你规划和实施此类型 IoT 解决方案的起点，以满足你自己的特定业务需求。
+IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。可主动使用此预配置解决方案执行维护优化等活动。解决方案结合了关键的 Azure IoT 套件服务，包括 [Azure 机器学习][lnk_machine_learning]工作区。该工作区内有一些基于公共示例数据集的实验，可预测飞机引擎的剩余使用寿命 (RUL)。此解决方案完全实现了 IoT 商业应用场景，可据此为起点规划和实施满足自身特定业务需求的解决方案。
 
 ## 逻辑体系结构
 
@@ -29,17 +34,17 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 
 某些资源不适用于你预配该预配置解决方案的区域。图表中的橙色项表示在给出选定区域的情况下，在最接近的可用区域（中国北部、中国东部）预配的 Azure 服务。
 
-绿色项是表示飞机引擎的模拟设备。你可以在下面了解有关这些模拟设备的详细信息。
+绿色项是表示飞机引擎的模拟设备。可在以下部分中深入了解这些模拟设备。
 
-灰色项表示实现 *设备管理* 功能的组件。当前的预见性维护预配置解决方案版本不会预配这些资源。若要了解有关设备管理的详细信息，请参阅[远程监视预配置解决方案][lnk-remote-monitoring]。
+灰色项表示实现*设备管理*功能的组件。当前的预见性维护预配置解决方案版本不会预配这些资源。若要了解有关设备管理的详细信息，请参阅[远程监视预配置解决方案][lnk-remote-monitoring]。
 
 ## 模拟设备
 
-在该预配置解决方案中，模拟设备代表飞机引擎。该解决方案预配了 2 个映射到单架飞机的引擎。每个引擎发出 4 种遥测：传感器 9、传感器 11、传感器 14 和传感器 15，以提供机器学习模型计算该引擎的剩余使用年限 (RUL) 所需的数据。每个模拟设备会将下列遥测消息发送到 IoT 中心：
+在该预配置解决方案中，模拟设备代表飞机引擎。该解决方案预配有两个映射到单架飞机的引擎。每个引擎发出 4 种遥测数据：传感器 9、传感器 11、传感器 14 和传感器 15；提供机器学习模型计算引擎剩余使用寿命 (RUL) 所必需的数据。每个模拟设备会将下列遥测消息发送到 IoT 中心：
 
-*周期计数* 。一个周期表示 2 至 10 小时不等的已完成飞行，而在飞行时间内会每半小时捕获一次遥测数据。
+*周期计数*。一个周期表示完成 2 至 10 小时距离不等的飞行，而航行中每半小时捕获一次遥测数据。
 
-*遥测* 。有 4 个代表引擎属性的传感器。这些传感器一般标记为传感器 9、传感器 11、传感器 14 和传感器 15。这 4 个传感器代表足以从 RUL 的机器学习模型获取有用结果的遥测。此模型根据包含实际引擎传感器数据的公用数据集创建而来。有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics]（Cortana Intelligence 库预见性维护模板）。
+*遥测*。有 4 个代表引擎属性的传感器。这些传感器一般标记为传感器 9、传感器 11、传感器 14 和传感器 15。这 4 个传感器代表足以从 RUL 的机器学习模型获取有用结果的遥测。此模型根据包含实际引擎传感器数据的公用数据集创建而来。有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics]（Cortana Intelligence 库预见性维护模板）。
 
 模拟设备可以处理从 IoT 中心发送的下列命令：
 
@@ -56,7 +61,7 @@ IoT 中心会提供设备命令确认。
 
 ## 事件处理器
 
-**事件处理器**会采用已完成周期的平均传感器值，并将这些值传递到可公开机器学习定型模型的 API，以便计算引擎的 RUL。
+**事件处理器**获取已完成周期的平均传感器值。它将这些值传递到 API，后者可用于计算引擎 RUL 的机器学习训练模型。
 
 ## Azure 机器学习
 
@@ -75,25 +80,30 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 
 ### 观察云解决方案的行为
 
-你可以查看已预配的资源，方法是浏览到 Azure 门户，然后导航到具有你选定的解决方案名称的资源组。
+在 Azure 门户中，可导航到带所选解决方案名称的资源组，查看预配解决方案。
 
-![][img-resource-group]
+![][img-resource-group]  
 
-预配该预配置解决方案时，你会收到一封电子邮件，其中包含机器学习工作区的链接。如果此机器学习工作区处于“就绪”状态，你也可以从已预配解决方案的 [azureiotsuite.com][lnk-azureiotsuite] 页面导航到此工作区。
 
-![][img-machine-learning]
+预配该预配置解决方案时，你会收到一封电子邮件，其中包含机器学习工作区的链接。还可导航到 [azureiotsuite.com][lnk-azureiotsuite] 页面的机器学习工作区，了解处于“就绪”状态的预配解决方案。
 
-在解决方案门户中，你可以看到本示例预配了四个模拟设备，表示各有 2 个引擎的 2 架飞机，而每个引擎有 4 个传感器。当你第一次导航到解决方案门户时，模拟便会停止。
+![][img-machine-learning]  
 
-![][img-simulation-stopped]
 
-单击“开始模拟”即可开始模拟，而你将看到传感器历史记录、RUL、周期和 RUL 历史记录填充仪表板。
+在解决方案门户中，可看到本示例预配了 4 个模拟设备，表示各有两个引擎的两架飞机，且每个引擎有 4 个传感器。当你第一次导航到解决方案门户时，模拟便会停止。
 
-![][img-simulation-running]
+![][img-simulation-stopped]  
 
-当 RUL 小于 160 时（出于演示目的而选择的任意阈值），解决方案门户会在 RUL 旁边显示警告符号，并将图片中的飞机引擎标成黄色。你会注意到 RUL 值有整体向下的趋势，但倾向于上下波动。这是因为周期长度和模型精确度不同的缘故。
 
-![][img-simulation-warning]
+单击“开始模拟”即可开始模拟，在此期间仪表板上将填写传感器历史记录、RUL、周期和 RUL 历史记录。
+
+![][img-simulation-running]  
+
+
+RUL 小于 160 时（出于演示目的而选择的任意阈值），解决方案门户会在 RUL 旁边显示警告符号，并将飞机引擎高亮为黄色。请注意 RUL 值如何整体下滑但倾向于上下波动。此行为的原因是周期长度和模型精确度不同。
+
+![][img-simulation-warning]  
+
 
 完整模拟需要约 35 分钟的时间才能完成 148 个周期。160 RUL 阈值第一次在大约 5 分钟的时候达到，而这两个引擎在大约 8 分钟的时候同时达到阈值。
 
@@ -120,11 +130,11 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk_machine_learning]: /home/features/machine-learning/
-[lnk-remote-monitoring]: /documentation/articles/iot-suite/iot-suite-remote-monitoring-sample-walkthrough/
+[lnk-remote-monitoring]: /documentation/articles/iot-suite-remote-monitoring-sample-walkthrough/
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
-[lnk-azureiotsuite]: https://www.azureiotsuite.com/
-[lnk-customize]: /documentation/articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions/
-[lnk-faq]: /documentation/articles/iot-suite/iot-suite-faq/
-[lnk-security-groundup]: /documentation/articles/iot-suite/securing-iot-ground-up/
+[lnk-azureiotsuite]: https://www.azureiotsuite.cn/
+[lnk-customize]: /documentation/articles/iot-suite-guidance-on-customizing-preconfigured-solutions/
+[lnk-faq]: /documentation/articles/iot-suite-faq/
+[lnk-security-groundup]: /documentation/articles/securing-iot-ground-up/
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=Mooncake_0926_2016-->

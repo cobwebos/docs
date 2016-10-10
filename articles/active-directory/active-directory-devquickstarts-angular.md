@@ -9,15 +9,20 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/16/2016"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="javascript"
+	ms.topic="article"
+	ms.date="09/16/2016"
+	ms.author="dastrock"
 	wacn.date=""/>
 
 
 # 如何使用 Azure AD 保护 AngularJS 单页面应用程序
 
-[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../includes/active-directory-devquickstarts-switcher)]
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
 
-[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide)]
+[AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
 使用 Azure AD 可以简单直接地在单页面应用程序中添加登录、注销和安全 OAuth API 调用。它允许应用程序使用用户的 Active Directory 帐户对用户进行身份验证，并使用 Azure AD 保护的任何 Web API（例如 Office 365 API 或 Azure API）。
 
@@ -34,9 +39,9 @@
 3. 安装 ADAL 并配置 SPA。
 5. 使用 ADAL 来保护 SPA 中的页面。
 
-若要开始，请[下载应用程序框架](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip)。你还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant)。
+若要开始，请[下载应用程序框架](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip)。你还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。如果你还没有租户，请[了解如何获取租户](/documentation/articles/active-directory-howto-tenant/)。
 
-## 1.注册 DirectorySearcher 应用程序
+## *1.注册 DirectorySearcher 应用程序*
 若要使应用程序对用户进行身份验证并获取令牌，首先需要在 Azure AD 租户中注册该应用程序：
 
 -	登录到 [Azure 管理门户](https://manage.windowsazure.cn)
@@ -52,7 +57,7 @@
     - 打开清单，然后找到 `oauth2AllowImplicitFlow` 属性。将其值设置为 `true`。
     - 再次单击“管理清单”，以保存并上载应用程序清单。
 
-## 2.安装 ADAL 并配置 SPA
+## *2.安装 ADAL 并配置 SPA*
 将应用程序注册到 Azure AD 后，可以安装 adal.js 并编写标识相关的代码。
 
 -	首先，使用 Package Manager Console 将 adal.js 添加到 TodoSPA 项目：
@@ -69,10 +74,10 @@ js
 
 
 -	要使 SPA 后端待办事项列表 API 接受来自浏览器的令牌，后端需要有关应用程序注册的配置信息。在 TodoSPA 项目中，打开 `web.config`。替换 `<appSettings>` 中的元素值，以反映你在 Azure 门户中输入的值。只要使用 ADAL，你的代码就会引用这些值。
-    -	`ida:Tenant` 是 Azure AD 租户的域，例如 contoso.onmicrosoft.com
+    -	`ida:Tenant` 是 Azure AD 租户的域，例如 contoso.partner.onmschina.cn
     -	`ida:Audience` 必须是从门户复制的应用程序的**客户端 ID**。
 
-## 3.使用 ADAL 来保护 SPA 中的页面
+## *3.使用 ADAL 来保护 SPA 中的页面*
 Adal.js 能够与 AngularJS 路由和 http 提供程序集成，使你就可以在 SPA 中保护单个视图。
 
 - 在 `App/Scripts/app.js` 中引入 adal.js 模块：
@@ -91,7 +96,7 @@ js
 		adalProvider.init(
 		  {
 		      instance: 'https://login.microsoftonline.com/',
-		      tenant: 'Enter your tenant name here e.g. contoso.onmicrosoft.com',
+		      tenant: 'Enter your tenant name here e.g. contoso.partner.onmschina.cn',
 		      clientId: 'Enter your client ID here e.g. e9a5a8b6-8af7-4719-9821-0deef255f68e',
 		      extraQueryParameter: 'nux=1',
 		      //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
@@ -152,6 +157,6 @@ js
 
 [从 SPA 调用 CORS Web API >>](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0926_2016-->

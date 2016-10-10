@@ -5,21 +5,23 @@
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 />
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="05/03/2016"
-	wacn.date=""
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="08/30/2016"
+	ms.author="jeffstok"
 />
 
 # 流分析数据湖存储输出
 
 流分析作业支持几种输出方法，其中一种方法为 [Azure 数据湖存储](/services/data-lake-store/)。Azure 数据湖存储是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。数据湖存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。本文介绍如何在流分析 Azure 经典门户中对 Azure 数据湖存储进行授权、配置和授权续订。
-
-> [AZURE.NOTE] 目前**只有** Azure 经典门户支持创建和配置数据湖存储输出。
 
 ## 授权数据湖存储帐户
 
@@ -29,7 +31,7 @@
 
 2.  如果已有权访问数据湖存储，请单击“立即授权”，在很短的时间内将会弹出一个页面，指示“正在重定向到授权...”。该页会自动关闭，并将向你显示一个页面，可在其中配置数据湖存储输出。
 
-如果尚未注册数据湖存储预览版，则可以打开“立即注册”链接以发起该请求，或者按照[入门说明](/documentation/articles/data-lake-store-get-started-portal)进行操作。
+如果尚未注册 Data Lake Store 预览版，则可以打开“立即注册”链接以发起该请求，或者按照[入门说明](/documentation/articles/data-lake-store-get-started-portal/)进行操作。
 
 ## 配置数据湖存储输出属性
 
@@ -86,5 +88,6 @@
 
 要解决此问题，请停止正在运行的作业并转到数据湖存储输出。单击“续订授权”链接，在很短的时间内将会弹出一个页面，指示“正在重定向到授权...”。该页会自动关闭，如果成功，将指示“授权已成功续订”。然后需要单击该页底部的“保存”，并通过从上次停止的时间重新启动作业来继续，以避免数据丢失。
 
-![](./media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.jpg)
-<!---HONumber=Mooncake_0627_2016-->
+![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
+
+<!---HONumber=Mooncake_0926_2016-->

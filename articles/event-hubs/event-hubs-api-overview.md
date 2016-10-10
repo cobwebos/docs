@@ -8,8 +8,12 @@
     editor="" />
 <tags 
     ms.service="event-hubs"
-    ms.date="07/11/2016"
-    wacn.date="" />
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="08/16/2016"
+    ms.author="sethm" />
 
 # 事件中心 API 概述
 
@@ -19,7 +23,7 @@
 
 ## 管理 API
 
-若要执行以下管理操作，你必须对服务总线命名空间具有**管理**权限：
+若要执行以下管理操作，必须对事件中心命名空间具有**管理**权限：
 
 ### 创建
 
@@ -185,4 +189,4 @@ public class SimpleEventProcessor : IEventProcessor
 - [服务总线和事件中心 .NET API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt419900.aspx)
 - [事件处理程序主机 API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt445521.aspx)
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0926_2016-->

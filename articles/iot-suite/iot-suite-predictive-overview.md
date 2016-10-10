@@ -10,13 +10,18 @@
 
 <tags
  ms.service="iot-suite"
- ms.date="05/24/2016"
- wacn.date="05/17/2016"/>  
+ ms.devlang="na"
+ ms.topic="get-started-article"
+ ms.tgt_pltfrm="na"
+ ms.workload="na"
+ ms.date="08/17/2016"
+ ms.author="araguila"
+ wacn.date=""/>
 
 
 # 预见性维护预配置解决方案概述
 
-*预见性维护* 预配置解决方案是 [Azure IoT 套件][lnk_iot_suite]随附的[预配置解决方案][lnk_preconfigured_solutions]之一。此解决方案将实时设备遥测收集与使用 [Azure 机器学习][lnk_machine_learning]创建的预测模型相集成。
+*预见性维护*预配置解决方案是 [Azure IoT 套件][lnk_iot_suite]随附的[预配置解决方案][lnk_preconfigured_solutions]之一。此解决方案将实时设备遥测收集与使用 [Azure 机器学习][lnk_machine_learning]创建的预测模型相集成。
 
 
 有了 Azure IoT 套件，企业可以又快又方便地连接和监视资产，并实时分析数据。预见性维护预配置解决方案会利用该数据及丰富的仪表板与可视化效果，为企业提供新的信息，以提升其效率及增加收入来源。
@@ -39,7 +44,7 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器会监�
 
 Azure IoT 预见性维护预配置解决方案使用通过此模板创建的回归模型；此模型会部署到你的 Azure 订阅中，并通过自动生成的 API 加以公开。此解决方案包含代表 4 个（共 100 个）引擎和 4 个（共 21 个）传感器数据流的测试数据的子集，可通过定型模型提供精确的结果。
 
-*[1] A. Saxena and K. Goebel (2008)."Turbofan Engine Degradation Simulation Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
+*\[1\] A. Saxena and K. Goebel (2008). "Turbofan Engine Degradation Simulation Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
 
 ## 后续步骤
 
@@ -47,8 +52,8 @@ Azure IoT 预见性维护预配置解决方案使用通过此模板创建的回�
 
 [演练][lnk-predictive-walkthrough]预见性维护预配置解决方案。
 
-[lnk-predictive-walkthrough]: /documentation/articles/iot-suite/iot-suite-predictive-walkthrough/
-[lnk_preconfigured_solutions]: /documentation/articles/iot-suite/iot-suite-what-are-preconfigured-solutions/
+[lnk-predictive-walkthrough]: /documentation/articles/iot-suite-predictive-walkthrough/
+[lnk_preconfigured_solutions]: /documentation/articles/iot-suite-what-are-preconfigured-solutions/
 [lnk_iot_suite]: /documentation/articles/iot-suite/iot-suite-overview/
 [lnk_machine_learning]: /home/features/machine-learning/
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
@@ -60,7 +65,7 @@ Azure IoT 预见性维护预配置解决方案使用通过此模板创建的回�
 - [有关 IoT 套件的常见问题][lnk-faq]
 - [从头开始保障 IoT 安全][lnk-security-groundup]
 
-[lnk-faq]: /documentation/articles/iot-suite/iot-suite-faq/
-[lnk-security-groundup]: /documentation/articles/iot-suite/securing-iot-ground-up/
+[lnk-faq]: /documentation/articles/iot-suite-faq/
+[lnk-security-groundup]: /documentation/articles/securing-iot-ground-up/
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=Mooncake_0926_2016-->

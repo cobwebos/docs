@@ -6,20 +6,25 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
-	ms.date="05/17/2016"
-	wacn.date=""/>
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/13/2016"
+	wacn.date=""
+	ms.author="larryfr"/>
 
 # 在 HDInsight Hadoop 群集上安装并使用 Solr
 
-在本主题中，你将学习如何通过使用脚本操作在 Azure HDInsight 上安装 Solr。Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。在 HDInsight 群集上安装了 Solr 后，你还将学习如何通过使用 Solr 搜索数据。
+本主题介绍如何使用脚本操作在 Azure HDInsight 上安装 Solr。Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。在 HDInsight 群集上安装了 Solr 后，你还将学习如何通过使用 Solr 搜索数据。
 
-> [AZURE.NOTE] 本文档中的步骤要求使用基于 Linux 的 HDInsight 群集。有关在基于 Windows 的群集中使用 Solr 的信息，请参阅 [Install and use Solr on HDinsight Hadoop clusters (Windows)（在 HDInsight Hadoop 群集上安装和使用 Solr (Windows)）](/documentation/articles/hdinsight-hadoop-solr-install-v1/)。
+> [AZURE.NOTE] 本文档中的步骤要求使用基于 Linux 的 HDInsight 群集。有关在基于 Windows 的群集中使用 Solr 的信息，请参阅 [Install and use Solr on HDinsight Hadoop clusters (Windows)](/documentation/articles/hdinsight-hadoop-solr-install-v1/)（在 HDInsight Hadoop 群集上安装和使用 Solr (Windows)）。
 
 本主题中使用的示例脚本将使用特定配置创建 Solr 群集。如果你要使用不同集合、分片、架构、副本等配置 Solr 群集，则必须相应地修改脚本和 Solr 二进制文件。
 
@@ -48,22 +53,22 @@
 
 本部分提供有关如何在通过使用 Azure 门户创建新群集时使用示例脚本的说明。
 
-> [AZURE.NOTE] Azure PowerShell、Azure CLI、HDInsight .NET SDK 或 Azure Resource Manager 模板也可用于应用脚本操作。你也可以将脚本操作应用于已在运行的群集。有关详细信息，请参阅 [Customize HDInsight clusters with Script Actions（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)。
+> [AZURE.NOTE] Azure PowerShell、Azure CLI、HDInsight .NET SDK 或 Azure Resource Manager 模板也可用于应用脚本操作。你也可以将脚本操作应用于已在运行的群集。有关详细信息，请参阅 [Customize HDInsight clusters with Script Actions](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)（使用脚本操作自定义 HDInsight 群集）。
 
-1. 使用 [Provision Linux-based HDInsight clusters（预配基于 Linux 的 HDInsight 群集）](/documentation/articles/hdinsight-provision-linux-clusters/#portal)中的步骤开始预配群集，但不要完成预配。
+1. 使用 [Provision Linux-based HDInsight clusters](/documentation/articles/hdinsight-provision-linux-clusters/#portal)（预配基于 Linux 的 HDInsight 群集）中的步骤开始预配群集，但不要完成预配。
 
 2. 在“可选配置”边栏选项卡上，选择“脚本操作”，并提供以下信息：
 
 	* __名称__：输入脚本操作的友好名称。
 	* __脚本 URI__：https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
-	* __头__：选中此选项
+	* __标头__：选中此选项
 	* __辅助角色__：选中此选项
 	* __ZOOKEEPER__：选中此选项以在 Zookeeper 节点上安装
 	* __参数__：将此字段留空
 
 3. 在“脚本操作”的底部，使用“选择”按钮保存配置。最后，使用“可选配置”边栏选项卡底部的“选择”按钮保存可选配置信息。
 
-4. 根据 [Provision Linux-based HDInsight clusters（预配基于 Linux 的 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-create-linux-clusters-portal/)中所述继续预配群集。
+4. 根据 [Provision Linux-based HDInsight clusters](/documentation/articles/hdinsight-hadoop-create-linux-clusters-portal/)（预配基于 Linux 的 HDInsight 群集）中所述继续预配群集。
 
 ## <a name="usesolr"></a>如何在 HDInsight 中使用 Solr？
 
@@ -83,7 +88,7 @@
 
 	> [AZURE.IMPORTANT] 本文档中的后续步骤将使用 SSL 隧道连接到 Solr Web UI。若要使用这些步骤，必须建立 SSL 隧道，然后将浏览器配置为使用该隧道。
 	>
-	> 有关详细信息，请参阅 [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's（使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI）](/documentation/articles/hdinsight-linux-ambari-ssh-tunnel/)
+	> 有关详细信息，请参阅 [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's](/documentation/articles/hdinsight-linux-ambari-ssh-tunnel/)（使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI）
 
 2. 使用以下命令让 Solr 为示例数据编制索引：
 
@@ -104,7 +109,7 @@
 
 		curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
 
-	这将会针对 __collection1__ 中匹配 __*:*__（在查询字符串中编码为 %3A）的所有文档发出查询，并且响应将以 JSON 形式返回。响应看上去应如下所示：
+	这将会针对 __collection1__ 中匹配 __\*:\*__（在查询字符串中编码为 *%3A*）的所有文档发出查询，并且响应将以 JSON 形式返回。响应看上去应如下所示：
 
 			"response": {
 			    "numFound": 2,
@@ -144,7 +149,7 @@
 			          "electronics and computer1"
 			        ],
 			        "features": [
-			          "30" TFT active matrix LCD, 2560 x 1600, .25mm dot pitch, 700:1 contrast"
+			          "30\" TFT active matrix LCD, 2560 x 1600, .25mm dot pitch, 700:1 contrast"
 			        ],
 			        "includes": "USB cable",
 			        "weight": 401.6,
@@ -160,17 +165,29 @@
 
 ### 使用 Solr 仪表板
 
-Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。Solr 仪表板不会直接从 HDInsight 群集公开到 Internet，必须使用 SSH 隧道来访问它。有关使用 SSH 隧道的详细信息，请参阅 [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's（使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI）](/documentation/articles/hdinsight-linux-ambari-ssh-tunnel/)
+Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。Solr 仪表板不会直接从 HDInsight 群集公开到 Internet，必须使用 SSH 隧道来访问它。有关使用 SSH 隧道的详细信息，请参阅 [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's](/documentation/articles/hdinsight-linux-ambari-ssh-tunnel/)（使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI）
 
 创建 SSH 隧道后，请执行以下步骤来使用 Solr 仪表板：
 
-1. 确定头节点的主机名：
+1. 确定主头节点的主机名：
 
-    1. 在浏览器中，转到 https://CLUSTERNAME.azurehdinsight.cn。出现提示时，请使用管理员用户名和密码向站点进行身份验证。
+    1. 在端口 22 上使用 SSH 连接到群集。例如 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.cn`，其中 __USERNAME__ 是 SSH 用户名，__CLUSTERNAME__ 是群集的名称。
+
+        有关使用 SSH 的详细信息，请参阅以下文档：
+
+        * [Use SSH with Linux-based HDInsight from a Linux, Unix, or Mac OS X client](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)（从 Linux、Unix 或 Mac OS X 客户端使用 SSH 连接基于 Linux 的 HDInsight）
+
+        * [Use SSH with Linux-based HDInsight from a Windows client](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)（从 Windows 客户端使用 SSH 连接基于 Linux 的 HDInsight）
     
-    2. 从页面顶部的菜单中选择“主机”。
+    3. 使用以下命令获取完全限定的主机名：
+
+            hostname -f
+
+        此命令将返回类似于下面的名称：
+
+            hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.chinacloudapp.cn
     
-    3. 选择以 __hn0__ 开头的条目。当页面打开时，主机名将显示在顶部。主机名的格式为 __hn0-PARTOFCLUSTERNAME.randomcharacters.cx.internal.chinacloudapp.cn__。这是连接到 Solr 仪表板时必须使用的主机名。
+        这是应在以下步骤中使用的主机名。
     
 1. 在浏览器中，连接到 __http://HOSTNAME:8983/solr/#/__，其中 __HOSTNAME__ 是在前面步骤中确定的名称。
 
@@ -277,7 +294,7 @@ Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。Solr
 
 2. 接下来，将目录更改为 __/usr/hdp/current/solr/example/solr__。此处，每个集合都有一个子目录。每个集合目录包含一个 __data__ 目录，这是该集合的快照所在的位置。
 
-	例如，如果你使用前面的步骤来编制示例文档的索引，则 __/usr/hdp/current/solr/example/solr/collection1/data__ 目录现在应包含一个名为 __snapshot.###########__ 的目录，其中的 # 是快照的日期和时间。
+	例如，如果使用前面的步骤来编制示例文档的索引，则 __/usr/hdp/current/solr/example/solr/collection1/data__ 目录现在应包含一个名为 __snapshot.###########__ 的目录，其中的 # 是快照的日期和时间。
 
 3. 使用类似于下面的命令创建快照文件夹的压缩存档：
 
@@ -291,22 +308,22 @@ Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。Solr
 
 	> [AZURE.NOTE] 你可能想要创建一个专用目录来存储 Solr 快照。例如，`hadoop fs -mkdir /solrbackup`。
 
-有关使用 Solr 备份和还原的详细信息，请参阅 [Making and restoring backups of SolrCores（创建和还原 SolrCores 的备份）](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups+of+SolrCores)。
+有关使用 Solr 备份和还原的详细信息，请参阅 [Making and restoring backups of SolrCores](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups+of+SolrCores)（创建和还原 SolrCores 的备份）。
 
 
 ## 另请参阅
 
-- [Install and use Hue on HDInsight clusters（在 HDInsight 群集上安装并使用 Hue）](/documentation/articles/hdinsight-hadoop-hue-linux/)。Hue 是一个 Web UI，可让你轻松地创建、运行和保存 Pig 与 Hive 作业，以及浏览 HDInsight 群集的默认存储。
+- [Install and use Hue on HDInsight clusters](/documentation/articles/hdinsight-hadoop-hue-linux/)（在 HDInsight 群集上安装并使用 Hue）。Hue 是一个 Web UI，可让你轻松地创建、运行和保存 Pig 与 Hive 作业，以及浏览 HDInsight 群集的默认存储。
 
 - [在 HDInsight 群集上安装 R][hdinsight-install-r]。使用群集自定义在 HDInsight Hadoop 群集上安装 R。R 是一种用于统计计算的开放源代码语言和环境。它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。它还提供了各种图形功能。
 
 - [在 HDInsight 群集上安装 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install-v1/)。使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。Giraph 可让你通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
 
-- [Install Hue on HDInsight clusters（在 HDInsight 群集上安装 Hue）](/documentation/articles/hdinsight-hadoop-hue-linux/)。使用群集自定义在 HDInsight Hadoop 群集上安装 Hue。Hue 是用来与 Hadoop 群集交互的一系列 Web 应用程序。
+- [Install Hue on HDInsight clusters](/documentation/articles/hdinsight-hadoop-hue-linux/)（在 HDInsight 群集上安装 Hue）。使用群集自定义在 HDInsight Hadoop 群集上安装 Hue。Hue 是用来与 Hadoop 群集交互的一系列 Web 应用程序。
 
 
 
 [hdinsight-install-r]: /documentation/articles/hdinsight-hadoop-r-scripts-linux/
 [hdinsight-cluster-customize]: /documentation/articles/hdinsight-hadoop-customize-cluster-v1/
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0926_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD 和应用程序：将用户分配到应用程序 | Microsoft Azure"
+	pageTitle="Azure AD 和应用程序：将用户分配到应用程序 | Azure"
 	description="如何为 Azure 应用程序实现用户分配。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="active-directory"
-
-	ms.date="08/15/2016"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/15/2015"
+	ms.author="inhenk"
 	wacn.date=""/>
 
 # Azure AD 和应用程序：将用户分配到应用程序
@@ -30,4 +34,4 @@
 ## 后续步骤
 [AZURE.INCLUDE [guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=Mooncake_0926_2016-->

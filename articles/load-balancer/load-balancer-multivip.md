@@ -1,17 +1,22 @@
-<properties 
+<properties
    pageTitle="每个云服务的多个 VIP"
    description="概述 MultiVIP，以及如何在云服务上设置多个 VIP"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="adinah"
+   authors="sdwheeler"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="load-balancer"
-   ms.date="02/09/2016"
-   wacn.date="" />
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/25/2016"
+   ms.author="sewhee" />
 
 # 每个云服务的多个 VIP
+
 你可以使用 Azure 提供的 IP 地址通过公共 Internet 访问 Azure 云服务。此公共 IP 地址称为 VIP（虚拟 IP），因为它将会链接到 Azure 负载平衡器，并且实际上不是云服务中的 VM 实例。你可以使用单个 VIP 访问云服务中的任何 VM 实例。
 
 但是，在某些情况下，你可能需要多个 VIP 作为同一云服务的入口点。例如，云服务可能托管了多个网站，而这些网站需要使用默认端口 443 建立 SSL 连接，并且每个站点是针对不同的客户或租户托管的。在这种情况下，每个网站都需要有不同的面向公众的 IP 地址。下图显示了一个典型的多租户 Web 托管，它需要在同一个公共端口上使用多个 SSL 证书。
@@ -39,6 +44,7 @@
 
 
 ## 如何将 VIP 添加到云服务
+
 若要将 VIP 添加到你的服务，请运行以下 PowerShell 命令：
 
     Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
@@ -50,6 +56,7 @@
     Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded
 
 ## 如何从云服务中删除 VIP
+
 若要删除在上述示例中添加到服务的 VIP，请运行以下 PowerShell 命令：
 
     Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
@@ -57,6 +64,7 @@
 >[AZURE.IMPORTANT] 你只能删除没有任何关联终结点的 VIP。
 
 ## 如何从云服务检索 VIP 信息
+
 若要检索与云服务关联的 VIP，请运行以下 PowerShell 脚本：
 
     $deployment = Get-AzureDeployment -ServiceName myService
@@ -90,6 +98,7 @@
 >[AZURE.NOTE] 你的订阅将只收取额外的 VIP 费用（在 VIP 与终结点关联后收取）。有关定价的详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
 
 ## 如何将 VIP 关联到终结点
+
 若要将云服务上的 VIP 关联到终结点，请运行以下 PowerShell 命令：
 
     Get-AzureVM -ServiceName myService -Name myVM1 `
@@ -124,6 +133,7 @@
     ExtensionData   :
 
 ## 如何在特定 VIP 上启用负载平衡
+
 可以将单个 VIP 与多个虚拟机相关联，以实现负载平衡。例如，假设你有名为 *myService* 的云服务，以及名为 *myVM1* 和 *myVM2* 的两个虚拟机。而你的云服务有多个 VIP，其中一个名为 *Vip2*。如果你想要确保发往 *Vip2* 上端口 *81* 的所有流量都在端口 *8181* 上的 *myVM1* 与 *myVM2* 之间平衡，请运行以下 PowerShell 脚本：
 
     Get-AzureVM -ServiceName myService -Name myVM1 `
@@ -149,6 +159,5 @@
 [虚拟网络概述](/documentation/articles/virtual-networks-overview/)
 
 [保留 IP REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn722420.aspx)
- 
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=Mooncake_0926_2016-->

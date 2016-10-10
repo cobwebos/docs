@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="通知用户已收到传感器或其他系统发出的数据 | Microsoft Azure"
+   pageTitle="通知用户已收到传感器或其他系统发出的数据 | Azure"
    description="介绍如何使用事件中心来通知用户已收到传感器数据。"
    services="event-hubs"
    documentationCenter="na"
@@ -8,8 +8,12 @@
    editor="" />
 <tags 
    ms.service="event-hubs"
-   ms.date="12/16/2015"
-   wacn.date="" />
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/25/2016"
+   ms.author="spyros;sethm" />
 
 # 通知用户已收到传感器或其他系统发出的数据
 
@@ -21,7 +25,7 @@
 
 ![][2]
 
-问题是如何在达到特定条件时接收关键信息，而不是亲自去查看静态报告。如果你使用 [Azure 事件中心][]或 [IoT 中心][] 接收设备或 [Dynamics AX][] 等企业应用程序发出的数据，则你可以使用多种选项来处理这些信息。你可以在网站上查看这些信息，对其进行分析和存储，还可以使用它们来触发命令以执行某种操作。为此，你可以使用功能强大的工具，如 [Azure 网站][]、[SQL Azure][]、[HDInsight][]、[Cortana Analytics Suite][]、[IoT Suite][]、[Logic Apps][] 或 [Azure 通知中心][]。但有时，你要做的一切就是以极小的开销向某人发送数据。为了向你展示如何以少量的代码实现此目的，我们提供了一个新示例 [AppToNotifyUsers][]。包括的选项为电子邮件 (SMTP)、短信和电话。
+问题是如何在达到特定条件时接收关键信息，而不是亲自去查看静态报告。如果使用 [Azure 事件中心][]或 [Azure IoT 中心][]接收设备或 [Dynamics AX][] 等企业应用程序发出的数据，可以使用多种选项来处理这些信息。你可以在网站上查看这些信息，对其进行分析和存储，还可以使用它们来触发命令以执行某种操作。为此，可以使用功能强大的工具，如 [Azure 网站][]、[SQL Azure][]、[HDInsight][]、[Cortana Intelligence Suite][]、[IoT Suite][]、[逻辑应用][]或 [Azure 通知中心][]。但有时，你要做的一切就是以极小的开销向某人发送数据。为了向你展示如何以少量的代码实现此目的，我们提供了一个新示例 [AppToNotifyUsers][]。包括的选项为电子邮件 (SMTP)、短信和电话。
 
 ## 应用程序结构
 
@@ -39,8 +43,8 @@
 
 本示例中的代码只演示了如何监视事件中心，以及在你想要将此功能添加到应用程序时，如何调用外部消息传送服务。请注意，此解决方案是以开发人员为中心的 DIY 示例。它不能解决企业需求，例如冗余、故障转移、故障时重新启动，等等。有关更全面的解决方案和生产解决方案，请参阅以下主题：
 
-- 使用连接器或使用 [Azure Logic Apps](/documentation/articles/app-service-logic-connectors-list) 服务的推送通知。
-- 使用 [Azure 通知中心](https://msdn.microsoft.com/zh-cn/library/azure/jj927170.aspx)，如博客[使用 Azure 通知中心向数百万台移动设备广播推送通知](http://weblogs.asp.net/scottgu/broadcast-push-notifications-to-millions-of-mobile-devices-using-windows-azure-notification-hubs)中所述。 
+- 使用连接器或使用 [Azure Logic Apps](/documentation/articles/app-service-logic-connectors-list/) 服务的推送通知。
+- 使用 [Azure 通知中心](https://msdn.microsoft.com/zh-cn/library/azure/jj927170.aspx)，如博客[使用 Azure 通知中心向数百万台移动设备广播推送通知](http://weblogs.asp.net/scottgu/broadcast-push-notifications-to-millions-of-mobile-devices-using-windows-azure-notification-hubs)中所述。
 
 ## 后续步骤
 
@@ -58,21 +62,24 @@
 
 - [AppToNotifyUsers][]
 
-[事件中心教程]: /documentation/articles/event-hubs-csharp-ephcs-getstarted
+[事件中心教程]: /documentation/articles/event-hubs-csharp-ephcs-getstarted/
+[Azure IoT 中心]: https://azure.microsoft.com/services/iot-hub/
 [Azure 事件中心]: /services/event-hubs/
 [Azure 事件中心]: /services/event-hubs/
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-[队列消息解决方案]: /documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues
+[队列消息解决方案]: /documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues/
 [AppToNotifyUsers]: https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications
 [Dynamics AX]: http://www.microsoft.com/zh-cn/dynamics/erp-ax-overview.aspx
 [Azure 网站]: /services/app-service/web/
 [SQL Azure]: /services/sql-database/
 [HDInsight]: /services/hdinsight/
-[Cortana Analytics Suite]: http://www.microsoft.com/server-cloud/cortana-analytics-suite/Overview.aspx?WT.srch=1&WT.mc_ID=SEM_lLFwOJm3&bknode=BlueKai
+[Cortana Intelligence Suite]: http://www.microsoft.com/server-cloud/cortana-analytics-suite/Overview.aspx?WT.srch=1&WT.mc_ID=SEM_lLFwOJm3&bknode=BlueKai
+[IoT Suite]: https://azure.microsoft.com/solutions/iot-suite/
+[逻辑应用]: https://azure.microsoft.com/services/app-service/logic/
 [Azure 通知中心]: /services/notification-hubs/
 [Azure Stream Analytics]: /services/stream-analytics/
  
 [1]: ./media/event-hubs-sensors-notify-users/event-hubs-sensor-alert.png
 [2]: ./media/event-hubs-sensors-notify-users/event-hubs-erp-alert.png
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0926_2016-->

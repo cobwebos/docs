@@ -9,11 +9,14 @@
 
 <tags
    ms.service="site-recovery"
-   ms.date="12/14/2015"
-   wacn.date=""/>
+   ms.devlang="powershell"
+   ms.tgt_pltfrm="na"
+   ms.topic="article"
+   ms.workload="required"
+   ms.date="08/23/2016"
+   wacn.date=""
+   ms.author="ruturajd@microsoft.com"/>
 
-  
-   
 
 # 将 Azure 自动化 Runbook 添加到恢复计划
 
@@ -81,11 +84,11 @@
 
 	![](./media/site-recovery-runbook-automation/07_1.png)
 
-你可以从 Azure 门户上的帐户设置页中找到你的订阅名称。
+可从 Azure 门户上的帐户设置页中找到订阅名称。
 
 ### 添加 Azure 登录凭据作为资产
 
-Azure 自动化使用 Azure PowerShell 连接到订阅以及对那里的项目进行操作。为此，你需要使用自己的 Microsoft 帐户、工作帐户或学校帐户进行身份验证。可以将帐户凭据存储在资产中，以供 Runbook 安全使用。
+Azure 自动化使用 Azure PowerShell 连接到订阅，并对该处的项目进行操作。为此，你需要使用自己的 Microsoft 帐户、工作帐户或学校帐户进行身份验证。可以将帐户凭据存储在资产中，以供 Runbook 安全使用。
 
 1.  在 Azure 自动化“资产”中添加新设置 ![](./media/site-recovery-runbook-automation/04.png) 并选择 ![](./media/site-recovery-runbook-automation/09.png)
 
@@ -101,7 +104,7 @@ Azure 自动化使用 Azure PowerShell 连接到订阅以及对那里的项目�
 
 ![](./media/site-recovery-runbook-automation/11.png)
 
-[此处](/documentation/articles/powershell-install-configure)提供了有关如何通过 PowerShell 连接到订阅的详细信息。
+[此处](/documentation/articles/powershell-install-configure/)提供了有关如何通过 PowerShell 连接到订阅的详细信息。
 
 接下来，你将要在 Azure 自动化中创建一个 Runbook，用于在故障转移后为前端虚拟机添加终结点。
 
@@ -135,11 +138,11 @@ ASR 会将上下文变量传递给 Runbook，以帮助你编写确定性的脚�
 **变量名称** | **说明**
 ---|---
 RecoveryPlanName | 正在运行的计划的名称。帮助你根据名称使用相同的脚本执行操作
-FailoverType | 指定故障转移是测试、计划内还是计划外。 
+FailoverType | 指定故障转移是测试、计划内还是计划外。
 FailoverDirection | 指定恢复是恢复到主要站点还是辅助站点
 GroupID | 标识计划运行时恢复计划内的组编号
 VmMap | 组中所有虚拟机的阵列
-VMMap 键 | 每个 VM 的唯一键 (GUID)。与虚拟机的适用 VMM ID 相同。 
+VMMap 键 | 每个 VM 的唯一键 (GUID)。与虚拟机的适用 VMM ID 相同。
 RoleName | 正在恢复的 Azure VM 的名称
 CloudServiceName | 要在其下创建虚拟机的 Azure 云服务名称。
 
@@ -148,7 +151,7 @@ CloudServiceName | 要在其下创建虚拟机的 Azure 云服务名称。
 
 ![](./media/site-recovery-runbook-automation/13.png)
 
-## 创作 自动化 Runbook
+## 创作自动化 Runbook
 
 现在，请创建用于在前端虚拟机上打开端口 80 的 Runbook。
 
@@ -159,7 +162,7 @@ CloudServiceName | 要在其下创建虚拟机的 Azure 云服务名称。
 2.  导航到 Runbook 的“创作”视图，并进入草稿模式。
 
 3.  首先指定要用作恢复计划上下文的变量
-  
+
 	```
 		param (
 			[Object]$RecoveryPlanContext
@@ -171,7 +174,7 @@ CloudServiceName | 要在其下创建虚拟机的 Azure 云服务名称。
 
 	```
 		$Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-	
+
 		# Connect to Azure
 		$AzureAccount = Add-AzureAccount -Credential $Cred
 		$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
@@ -276,11 +279,7 @@ CloudServiceName | 要在其下创建虚拟机的 Azure 云服务名称。
 
 ## 主端脚本
 
-执行到 Azure 的故障转移时，你还可以选择运行主端脚本。这些脚本将在故障转移期间在 VMM 服务器上运行。
-主端脚本仅适用于关机前及关机后的阶段。这是因为我们预期在发生灾难时通常无法使用主站点。
-在执行非计划的故障转移期间，仅当你选择主站点操作时，才会尝试运行主端脚本。如果这些脚本不可访问或超时，故障转移将继续恢复虚拟机。
-故障转移到 Azure 时，如果未在 Azure 中保护 VMM，则无法为 VMware/物理/Hyper-V 站点使用主端脚本。
-但是，在从 Azure 故障回复到本地时，主端脚本 (Runbook) 可用于除 VMware 以外的其他所有目标。
+执行到 Azure 的故障转移时，你还可以选择运行主端脚本。这些脚本将在故障转移期间在 VMM 服务器上运行。主端脚本仅适用于关机前及关机后的阶段。这是因为我们预期在发生灾难时通常无法使用主站点。在执行非计划的故障转移期间，仅当你选择主站点操作时，才会尝试运行主端脚本。如果这些脚本不可访问或超时，故障转移将继续恢复虚拟机。故障转移到 Azure 时，如果未在 Azure 中保护 VMM，则无法为 VMware/物理/Hyper-V 站点使用主端脚本。但是，在从 Azure 故障回复到本地时，主端脚本 (Runbook) 可用于除 VMware 以外的其他所有目标。
 
 ## 测试恢复计划
 
@@ -306,8 +305,8 @@ CloudServiceName | 要在其下创建虚拟机的 Azure 云服务名称。
 
 ## 其他资源
 
-[Azure 自动化概述](https://msdn.microsoft.com/zh-CN/library/azure/dn643629.aspx "Azure Automation 概述")
+[Azure 自动化概述](https://msdn.microsoft.com/zh-CN/library/azure/dn643629.aspx "Azure 自动化概述")
 
-[Azure 自动化示例脚本](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "Azure Automation 示例脚本")
+[Azure 自动化示例脚本](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "Azure 自动化示例脚本")
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0926_2016-->

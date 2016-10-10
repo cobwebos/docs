@@ -6,14 +6,20 @@
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
-   manager="paulettem"
+   manager="jhubbard"
    editor="cgronlun"
 />
 
 <tags
-	ms.service="HDInsight"
-	ms.date="07/07/2016"
-	wacn.date=""/>
+   ms.service="HDInsight"
+   ms.devlang="R"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="data-services"
+   ms.date="08/19/2016"
+   wacn.date=""
+   ms.author="jeffstok"
+/>
 
 # 开始使用 HDInsight 上的 R Server（预览版）
 
@@ -23,7 +29,7 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
 ## 先决条件
 
-* __Azure 订阅__：在开始学习本教程之前，必须有一个 Azure 订阅。请参阅 [Get Azure trial（获取 Azure 试用版）](/pricing/1rmb-trial/)了解详细信息。
+* __Azure 订阅__：在开始学习本教程之前，必须有一个 Azure 订阅。请参阅 [Get Azure trial](/pricing/1rmb-trial/)（获取 Azure 试用版）了解详细信息。
 
 * __安全 Shell (SSH) 客户端__：SSH 客户端可用于从远程连接到 HDInsight 群集，并直接在群集上运行命令。Linux、Unix 和 OS X 系统可通过 `ssh` 命令提供 SSH 客户端。对于 Windows 系统，我们建议使用 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
@@ -37,7 +43,7 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
 ## 创建群集
 
-> [AZURE.NOTE] 本文档中的步骤将使用基本配置信息在 HDInsight 上创建 R Server。有关其他群集配置设置（例如，添加其他存储帐户、使用 Azure 虚拟网络或创建 Hive 元存储）的信息，请参阅 [Create Linux-based HDInsight clusters（创建基于 Linux 的 HDInsight 群集）](/documentation/articles/hdinsight-provision-clusters-v1/)。
+> [AZURE.NOTE] 本文档中的步骤将使用基本配置信息在 HDInsight 上创建 R Server。有关其他群集配置设置（例如，添加其他存储帐户、使用 Azure 虚拟网络或创建 Hive 元存储）的信息，请参阅 [Create Linux-based HDInsight clusters](/documentation/articles/hdinsight-provision-clusters-v1/)（创建基于 Linux 的 HDInsight 群集）。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
@@ -77,31 +83,31 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
 	若要创建并使用公钥/私钥对，请选择“公钥”，然后按如下所述继续操作。这些说明假设你安装了包含 ssh-keygen 的 Cygwin 或同等组件。
 
-	- 在便携式计算机上通过命令提示符生成公钥/私钥对：
+	-    在便携式计算机上通过命令提示符生成公钥/私钥对：
 	  
-			````ssh-keygen -t rsa -b 2048 -f <private-key-filename>````
+		    ssh-keygen -t rsa -b 2048 -f <private-key-filename>
+      
+    -    这将会创建一个私钥文件，以及一个名为 <私钥文件名>.pub 的公钥文件，例如 davec 和 davec.pub。然后，在分配 HDI 群集凭据时指定公钥文件 (*.pub)：
+      
+		![凭据边栏选项卡](./media/hdinsight-getting-started-with-r/publickeyfile.png)
+      
+	-    在便携式计算机上更改对私钥文件的权限
+      
+			chmod 600 <private-key-filename>
+      
+	-    结合使用私钥文件和 SSH 进行远程登录，例如：
+	  
+			ssh -i <private-key-filename> remoteuser@<hostname public ip>
+      
+	  在客户端上为 R Server 定义 Hadoop Spark 计算上下文的过程中（请参阅 [RevoScaleR Hadoop Spark Getting Started](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)（RevoScaleR Hadoop Spark 入门）在线指南的 [Creating a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark)（创建 Spark 的计算上下文）部分中的“Using Microsoft R Server as a Hadoop Client”（使用 Microsoft R Server 作为 Hadoop 客户端））。
 
-    - 这将会创建一个私钥文件，以及一个名为 <私钥文件名>.pub 的公钥文件，例如 davec 和 davec.pub。然后，在分配 HDI 群集凭据时指定公钥文件 (*.pub)：
-    
-	![凭据边栏选项卡](./media/hdinsight-getting-started-with-r/publickeyfile.png)
+7. 选择“数据源”，以选择群集的数据源。可以选择现有的存储帐户，方法是选择“选择存储帐户”，然后选择帐户；也可以使用“选择存储帐户”部分中的“新建”链接创建新帐户。
 
-	- 在便携式计算机上更改对私钥文件的权限
-    
-			````chmod 600 <private-key-filename>````
-
-	- 结合使用私钥文件和 SSH 进行远程登录，例如：
-	
-			````ssh -i <private-key-filename> remoteuser@<hostname public ip>````
-
-	  在客户端上为 R Server 定义 Hadoop Spark 计算上下文的过程中（请参阅“RevoScaleR Hadoop Spark Getting Started”（RevoScaleR Hadoop Spark 入门）在线指南中的“Using Microsoft R Server as a Hadoop Client in the Creating a Compute Context for Spark”（使用 Microsoft R Server 作为 Hadoop 客户端来创建 Spark 的计算上下文）部分。）
-
-7. 选择“数据源”以选择群集的数据源。可以选择现有的存储帐户，方法是选择“选择存储帐户”，然后选择帐户；也可以使用“选择存储帐户”部分中的“新建”链接创建新帐户。
-
-    如果你选择“新建”，则必须输入新存储帐户的名称。如果该名称可接受，将出现绿色复选标记。
+    如果选择“新建”，则必须输入新存储帐户的名称。如果该名称可接受，将出现绿色复选标记。
 
     “默认容器”默认为群集的名称。请不要更改此值。
     
-    选择“位置”以选择要在其中创建存储帐户的区域。
+    选择“位置”，以选择要在其中创建存储帐户的区域。
     
     > [AZURE.IMPORTANT] 选择默认数据源位置的同时会设置 HDInsight 群集位置。群集和默认数据源必须位于同一区域。
 
@@ -109,17 +115,17 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
     
     ![数据源边栏选项卡](./media/hdinsight-getting-started-with-r/datastore.png)
 
-8. 选择“节点定价层”会显示针对此群集创建的节点的相关信息。除非你确定需要更大的群集，否则请保留辅助角色节点数目的默认值 `4`。该群集的预估成本将显示在边栏选项卡内。
+8. 选择“节点定价层”显示针对此群集创建的节点的相关信息。除非确定需要更大的群集，否则请保留辅助角色节点数目的默认值 `4`。该群集的预估成本将显示在边栏选项卡内。
 
 	> [AZURE.NOTE] 以后，如果需要，你可以通过门户调整群集的大小（“群集”->“设置”->“缩放群集”），以增加或减少辅助角色节点的数目。这种方法可将不再使用的群集置于空闲状态，或者增加容量来满足更大任务的需要。
 
 	调整群集、数据节点和边缘节点的大小时，需要注意的一些因素包括：
-
-	•	如果数据较大，则 Spark 上的分布式 R Server 分析的性能与辅助角色节点数目成正比。  
-	•	R Server 分析的性能与所要分析的数据大小呈线性关系。
-	•	对于小型到中等的数据，如果在边缘节点上的本地计算上下文中执行分析，则性能最佳。有关在哪种本地上下文和 Spark 计算上下文中可获得最佳工作性能的详细信息，请参阅“Compute context options for R Server on HDInsight”（HDInsight 上 R Server 的计算上下文选项）
-	•	如果你登录到边缘节点并在该处运行 R 脚本，则除 ScaleR rx-functions 以外的所有函数将在边缘节点**本地**执行，因此内存和边缘节点的核心数应会相应地调整。如果通过便携式计算机使用 HDI 上的 R Server 作为远程计算上下文，则这一点同样适用。
-
+   
+    - 如果数据较大，则 Spark 上的分布式 R Server 分析的性能与辅助角色节点数目成正比。
+    - R Server 分析的性能与所要分析的数据大小呈线性关系。例如：
+        - 对于小型到中等的数据，如果在边缘节点上的本地计算上下文中执行分析，则性能最佳。有关在哪种本地上下文和 Spark 计算上下文中可获得最佳工作性能的详细信息，请参阅“Compute context options for R Server on HDInsight”（HDInsight 上 R Server 的计算上下文选项）。<br>
+        - 如果登录到边缘节点并在该处运行 R 脚本，则除 ScaleR rx-functions 以外的所有函数将在边缘节点<strong>本地</strong>执行，因此内存和边缘节点的核心数应会相应地调整。如果通过便携式计算机使用 HDI 上的 R Server 作为远程计算上下文，则这一点同样适用。
+    
     ![节点定价层边栏选项卡](./media/hdinsight-getting-started-with-r/pricingtier.png)
 
     使用“选择”按钮保存节点定价配置。
@@ -138,7 +144,7 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
     ssh USERNAME@r-server.CLUSTERNAME-ssh.azurehdinsight.cn
     
-> [AZURE.NOTE] 也可以依次选择你的群集、“所有设置”、“应用”和“RServer”，在 Azure 门户中找到 `R-Server.CLUSTERNAME-ssh.azurehdinsight.cn` 地址。这会显示边缘节点的 SSH 终结点信息。
+> [AZURE.NOTE] 也可以依次选择群集、“所有设置”、“应用”和“RServer”，在 Azure 门户中找到 `R-Server.CLUSTERNAME-ssh.azurehdinsight.cn` 地址。这会显示边缘节点的 SSH 终结点信息。
 >
 > ![边缘节点 SSH 终结点的图像](./media/hdinsight-getting-started-with-r/sshendpoint.png)
     
@@ -193,31 +199,35 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
     
     还可以使用 WASB 样式寻址。
     
-        rxHadoopListFiles("wasb:///")
+        rxHadoopListFiles("wasbs:///")
 
 ## 从 Microsoft R Server 或 Microsoft R Client 的远程实例使用 HDI 上的 R Server
 
-根据上述有关使用公钥/私钥对访问群集的部分，可以设置从台式机或便携式计算机上运行的 Microsoft R Server 或 Microsoft R Client 到 HDI Hadoop Spark 计算上下文的访问（请参阅“RevoScaleR Hadoop Spark Getting Started”（RevoScaleR Hadoop Spark 入门）在线指南中的“Using Microsoft R Server as a Hadoop Client in the Creating a Compute Context for Spark”（使用 Microsoft R Server 作为 Hadoop 客户端来创建 Spark 的计算上下文）部分。） 为此，需要在便携式计算机上定义 RxSpark 计算上下文时指定以下选项：hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript。例如：
+根据上述有关使用公钥/私钥对访问群集的部分，可以设置从台式机或便携式计算机上运行的 Microsoft R Server 或 Microsoft R Client 到 HDI Hadoop Spark 计算上下文的访问（请参阅 [RevoScaleR Hadoop Spark Getting Started guide](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)（RevoScaleR Hadoop Spark 入门）在线指南的 [Creating a Compute Context for Spark](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark)（创建 Spark 的计算上下文）部分中的“Using Microsoft R Server as a Hadoop Client”（使用 Microsoft R Server 作为 Hadoop 客户端））。为此，需要在便携式计算机上定义 RxSpark 计算上下文时指定以下选项：hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript。例如：
 
     
-        mySshHostname  <- 'rkrrehdi1-ssh.azurehdinsight.cn'  # HDI secure shell hostname
-        mySshUsername  <- 'remoteuser'# HDI SSH username
-        mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
-    
-        myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
-        myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
-    
-        mySparkCluster <- RxSpark(
-          hdfsShareDir = myhdfsShareDir,
-          shareDir = myShareDir,
-          sshUsername  = mySshUsername,
-          sshHostname  = mySshHostname,
-          sshSwitches  = mySshSwitches,
-          sshProfileScript = '/etc/profile',
-          nameNode = myNameNode,
-          port = myPort,
-          consoleOutput= TRUE
-        )
+    myNameNode <- "default"
+    myPort <- 0 
+ 
+    mySshHostname  <- 'rkrrehdi1-ssh.azurehdinsight.cn'  # HDI secure shell hostname
+    mySshUsername  <- 'remoteuser'# HDI SSH username
+    mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
+ 
+    myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
+    myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
+ 
+    mySparkCluster <- RxSpark(
+      hdfsShareDir = myhdfsShareDir,
+      shareDir     = myShareDir,
+      sshUsername  = mySshUsername,
+      sshHostname  = mySshHostname,
+      sshSwitches  = mySshSwitches,
+      sshProfileScript = '/etc/profile',
+      nameNode     = myNameNode,
+      port         = myPort,
+      consoleOutput= TRUE
+    )
+
     
  
 ## 使用计算上下文
@@ -325,7 +335,7 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
         # Display a summary
         summary(modelSpark)
 
-    > [AZURE.NOTE] 也可以使用 MapReduce 将计算分布到群集节点之间。有关计算上下文的详细信息，请参阅 [Compute context options for R Server on HDInsight premium（适用于 HDInsight 高级版上的 R Server 的计算上下文选项）](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts/)。
+    > [AZURE.NOTE] 也可以使用 MapReduce 将计算分布到群集节点之间。有关计算上下文的详细信息，请参阅 [Compute context options for R Server on HDInsight premium](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts/)（适用于 HDInsight 高级版上的 R Server 的计算上下文选项）。
 
 ## 将 R 代码分布到多个节点
 
@@ -333,7 +343,7 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
     
-如果你仍在使用 Spark 或 MapReduce 上下文，此操作将针对运行代码 (`Sys.info()["nodename"]`) 的辅助角色节点返回 nodename 值。例如，在四节点群集上，你可能会收到类似于下面的输出：
+如果仍在使用 Spark 或 MapReduce 上下文，此操作将针对运行代码 (`Sys.info()["nodename"]`) 的辅助角色节点返回 nodename 值。例如，在四节点群集上，你可能会收到类似于下面的输出：
 
     $rxElem1
         nodename
@@ -353,7 +363,7 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
 ## 安装 R 包
 
-如果你要在边缘节点上安装其他 R 包，可以在通过 SSH 连接到边缘节点时，直接从 R 控制台内部使用 `install.packages()`。但是，如果需要在群集的辅助角色节点上安装 R 包，则必须使用脚本操作。
+如果要在边缘节点上安装其他 R 包，可以在通过 SSH 连接到边缘节点时，直接从 R 控制台内部使用 `install.packages()`。但是，如果需要在群集的辅助角色节点上安装 R 包，则必须使用脚本操作。
 
 脚本操作是一种 Bash 脚本，可用于更改 HDInsight 群集的配置或安装其他软件。在本例中，我们要安装其他 R 包。若要使用脚本操作安装其他包，请使用以下步骤。
 
@@ -367,21 +377,21 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
 3. 在“提交脚本操作”边栏选项卡中提供以下信息。
 
-    * __名称__：用于标识此脚本的友好名称
-    * __Bash 脚本 URI__：http://mrsactionscripts.blob.core.chinacloudapi.cn/rpackages-v01/InstallRPackages.sh
-    * __头__：应为__未选中状态__
-    * __辅助角色__：应为__选中状态__
-    * __Zookeeper__：应为__未选中状态__
-    * __参数__：要安装的 R 包。例如 `bitops stringr arules`
-    * __保留此脚本...__：应为__选中状态__
-    
-    > [AZURE.IMPORTANT] 如果安装的 R 包需要添加系统库，则必须下载此处使用的基本脚本，并添加安装系统库的步骤。接下来，必须将修改的脚本上载到 Azure 存储空间中的公共 Blob 容器，并使用修改的脚本来安装包。
-    >
-    >有关开发脚本操作的详细信息，请参阅 [Script Action development（脚本操作开发）](/documentation/articles/hdinsight-hadoop-script-actions-linux/)。
-    
+  - __名称__：用于标识此脚本的友好名称
+  - __Bash 脚本 URI__：`http://mrsactionscripts.blob.core.chinacloudapi.cn/rpackages-v01/InstallRPackages.sh`
+  - __头__：应为__未选中状态__
+  - __辅助角色__：应为__选中状态__
+  - __Zookeeper__：应为__未选中状态__
+  - __参数__：要安装的 R 包。例如 `bitops stringr arules`
+  - __保留此脚本...__：应为__选中状态__
+
+    > [AZURE.NOTE] 1.默认情况下，将从与安装的 R Server 版本一致的 Microsoft MRAN 存储库快照中安装所有 R 包。如果想要安装更新版本的包，则会出现不兼容的风险，不过，这种做法是可行的，只需指定 `useCRAN` 作为包列表的第一个元素即可，例如 `useCRAN bitops, stringr, arules`。
+    > 2. 某些 R 包需要额外的 Linux 系统库。为方便起见，我们已预先安装了最流行的 100 个 R 包所需的依赖项。但是，如果安装的 R 包需要除此之外的库，则必须下载此处使用的基本脚本，并添加安装系统库的步骤。接下来，必须将修改的脚本上载到 Azure 存储空间中的公共 Blob 容器，并使用修改的脚本来安装包。
+    > 有关开发脚本操作的详细信息，请参阅 [Script Action development](/documentation/articles/hdinsight-hadoop-script-actions-linux/)（脚本操作开发）。
+
     ![添加脚本操作](./media/hdinsight-getting-started-with-r/scriptaction.png)
 
-4. 选择“创建”以运行脚本。脚本完成后，可在所有辅助角色节点上使用 R 包。
+4. 选择“创建”运行脚本。脚本完成后，可在所有辅助角色节点上使用 R 包。
     
 ## 后续步骤
 
@@ -402,6 +412,6 @@ HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群�
 
 这两个模板都会创建新的 HDInsight 群集和关联的存储帐户，并可以通过 Azure CLI、Azure PowerShell 或 Azure 门户来使用。
 
-有关使用 ARM 模板的一般信息，请参阅 [Create Linux-based Hadoop clusters in HDInsight using ARM templates（在 HDInsight 中使用 ARM 模板创建基于 Linux 的 Hadoop 群集）](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)。
+有关使用 Azure Resource Manager 模板的一般信息，请参阅 [Create Linux-based Hadoop clusters in HDInsight using Azure Resource Manager templates](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)（使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集）。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0926_2016-->

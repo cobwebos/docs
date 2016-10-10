@@ -4,12 +4,17 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/03/2016"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/20/2016"
+	ms.author="markusvi;andkjell"
 	wacn.date=""/>
 
 
@@ -17,7 +22,7 @@
 
 有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。但即使有纯模型，混合模型也是常见的模型。Azure AD Connect 同步中的默认配置不会假定任何特定模型，但具体取决于安装指南中如何选择用户匹配，可以观察到不同的行为。
 
-在本主题中，我们将讨论默认配置在某些拓扑中的行为方式。我们将讨论配置，并且同步规则编辑器可用于查看配置。
+本主题讨论默认配置在某些拓扑中的行为方式。我们将讨论配置，并且同步规则编辑器可用于查看配置。
 
 有几个配置假定的一般规则：
 
@@ -50,7 +55,7 @@
 
 ## 其他资源
 
-* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis/)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0926_2016-->

@@ -6,13 +6,18 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
-<tags
-	ms.service="hdinsight"
-	ms.date="05/17/2016"
-	wacn.date=""/>
+<tags 
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/13/2016" 
+	wacn.date="" 
+	ms.author="nitinme"/>
 
 # 在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -67,15 +72,24 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。你可以使用
 
 1. 利用[使用 SSH 隧道来访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 及其他 Web UI](/documentation/articles/hdinsight-linux-ambari-ssh-tunnel/) 中的信息，创建从客户端系统到 HDInsight 群集的 SSH 隧道，然后将 Web 浏览器配置为将 SSH 隧道用作代理。
 
-2. 在创建 SSH 隧道并将浏览器配置为通过它代理发送流量后，必须查找头节点的主机名。通过执行以下步骤从 Ambari 获取此信息：
+2. 在创建 SSH 隧道并将浏览器配置为通过它代理发送流量后，必须查找主头节点的主机名。为此，可以在端口 22 上使用 SSH 连接到群集。例如 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.cn`，其中 __USERNAME__ 是 SSH 用户名，__CLUSTERNAME__ 是群集的名称。
 
-    1. 在浏览器中，转到 https://CLUSTERNAME.azurehdinsight.cn 。出现提示时，使用管理员用户名和密码向站点进行身份验证。
-    
-    2. 从页面顶部的菜单中选择“主机”。
-    
-    3. 选择以 __hn0__ 开头的条目。当页面打开时，主机名将显示在顶部。主机名的格式为 __hn0-CLUSTERNAME.randomcharacters.cx.internal.chinacloudapp.cn__。这是连接到 Hue 时必须使用的主机名。
+    有关使用 SSH 的详细信息，请参阅以下文档：
 
-2. 在创建 SSH 隧道并将浏览器配置为通过它代理发送流量后，便可使用浏览器打开 Hue 门户，网址为 http://HOSTNAME:8888。将 HOSTNAME 替换为在上一步中从 Ambari 获取的名称：
+    * [Use SSH with Linux-based HDInsight from a Linux, Unix, or Mac OS X client](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)（从 Linux、Unix 或 Mac OS X 客户端使用 SSH 连接基于 Linux 的 HDInsight）
+    * [Use SSH with Linux-based HDInsight from a Windows client](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)（从 Windows 客户端使用 SSH 连接基于 Linux 的 HDInsight）
+
+3. 连接后，使用以下命令获取主头节点的完全限定域名：
+
+        hostname -f
+
+    此命令将返回类似于下面的名称：
+
+        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.chinacloudapp.cn
+    
+    这是 Hue 网站所在的主头节点的主机名。
+
+2. 使用浏览器打开 Hue 门户 (http://HOSTNAME:8888)。将 HOSTNAME 替换为在上一步骤中获取的名称。
 
     > [AZURE.NOTE] 第一次登录时，系统会提示你创建帐户来登录 Hue 门户。你在此处指定的凭据只能用于该门户，并且与预配群集时指定的管理员或 SSH 用户凭据不相关。
 
@@ -83,31 +97,31 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。你可以使用
 
 ### 运行 Hive 查询
 
-1. 从 Hue 门户中，单击“查询编辑器”，然后单击“Hive”打开 Hive 编辑器。
+1. 在 Hue 门户中，单击“查询编辑器”，然后单击“Hive”打开 Hive 编辑器。
 
 	![使用 Hive](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.png "使用 Hive")
 
-2. 在“帮助”选项卡上的“数据库”下面，你应该会看到 **hivesampletable**。这是 HDInsight 上的所有 Hadoop 群集随附的示例表。在右窗格中输入示例查询，然后在下方窗格的“结果”选项卡中查看输出，如屏幕捕获所示。
+2. 在“帮助”选项卡上的“数据库”下面，应会看到 **hivesampletable**。这是 HDInsight 上的所有 Hadoop 群集随附的示例表。在右窗格中输入示例查询，然后在下方窗格的“结果”选项卡中查看输出，如屏幕截图所示。
 
 	![运行 Hive 查询](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.Query.png "运行 Hive 查询")
 
-	你也可以使用“图表”选项卡来查看结果的可视表示形式。
+	也可以使用“图表”选项卡查看结果的视觉表示形式。
 
 ### 浏览群集存储
 
-1. 从 Hue 门户中，单击菜单栏右上角的“文件浏览器”。
+1. 在 Hue 门户中，单击菜单栏右上角的“文件浏览器”。
 
-2. 默认情况下，文件浏览器会在 **/user/myuser** 目录中打开。单击路径中用户目录前面的正斜杠，以转到与群集关联的 Azure 存储容器的根目录。
+2. 默认情况下，文件浏览器在 **/user/myuser** 目录中打开。单击路径中用户目录前面的正斜杠，以转到与群集关联的 Azure 存储容器的根目录。
 
 	![使用文件浏览器](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.File.Browser.png "使用文件浏览器")
 
-3. 右键单击某个文件或文件夹，以查看可用的操作。使用右边的“上传”按钮，将文件上传到当前目录中。使用“新建”按钮创建新的文件或目录。
+3. 右键单击某个文件或文件夹，以查看可用的操作。使用右侧的“上载”按钮，将文件上载到当前目录。使用“新建”按钮创建新的文件或目录。
 
-> [AZURE.NOTE] Hue 文件浏览器只能显示与 HDInsight 群集关联的默认容器的内容。与群集关联的任何其他存储帐户/容器将无法使用文件浏览器访问。不过，与群集关联的其他容器始终可供 Hive 作业访问。例如，如果在 Hive 编辑器中输入 `dfs -ls wasb://newcontainer@mystore.blob.core.chinacloudapi.cn` 命令，那么，也可以看到其他容器的内容。在此命令中，**newcontainer** 不是与群集关联的默认容器。
+> [AZURE.NOTE] Hue 文件浏览器只能显示与 HDInsight 群集关联的默认容器的内容。与群集关联的任何其他存储帐户/容器将无法使用文件浏览器访问。不过，与群集关联的其他容器始终可供 Hive 作业访问。例如，如果在 Hive 编辑器中输入 `dfs -ls wasbs://newcontainer@mystore.blob.core.chinacloudapi.cn` 命令，也可以看到其他容器的内容。在此命令中，**newcontainer** 不是与群集关联的默认容器。
 
 ## 重要注意事项
 
-1. 用于安装 Hue 的脚本只会在群集的头节点 0 上安装它。
+1. 用于安装 Hue 的脚本只会在群集的主头节点上安装它。
 
 2. 在安装期间，系统会重启多个 Hadoop 服务（HDFS、YARN、MR2、Oozie），以更新配置。在脚本安装完 Hue 之后，可能需要一些时间让其他 Hadoop 服务启动。一开始可能会影响 Hue 的性能。等所有服务都启动之后，Hue 就可以完全正常运行。
 
@@ -115,13 +129,13 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。你可以使用
 
 		set hive.execution.engine=mr;
 
-4.	使用 Linux 群集时，可能会出现这种情况：服务在头节点 0 上运行，而 Resource Manager 可能在头节点 1 上运行。使用 Hue 查看群集上正在运行的作业的详细信息时，这种情况可能会导致错误（如下所示）。不过，你可以在作业完成后查看作业详细信息。
+4.	使用 Linux 群集时，可能会出现这种情况：服务在主头节点上运行，而 Resource Manager 可能在辅助头节点上运行。使用 Hue 查看群集上正在运行的作业的详细信息时，这种情况可能会导致错误（如下所示）。不过，你可以在作业完成后查看作业详细信息。
 
 	![Hue 门户错误](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Error.png "Hue 门户错误")
 
-	这是由已知问题造成的。解决方法如下：修改 Ambari，让活动 Resource Manager 也在头节点 0 上运行。
+	这是由已知问题造成的。解决方法如下：修改 Ambari，使活动 Resource Manager 也在主头节点上运行。
 
-5.	当 HDInsight 群集使用 Azure 存储空间（使用 `wasb://`）时，Hue 能了解 WebHDFS。因此，搭配脚本操作使用的自定义脚本会安装 WebWasb，这是用来与 WASB 通信的 WebHDFS 兼容服务。所以，即使在 Hue 门户显示有 HDFS（例如，将鼠标移至**文件浏览器**上方时），也应当将它解释为 WASB。
+5.	当 HDInsight 群集使用 Azure 存储（使用 `wasbs://`）时，Hue 能识别 WebHDFS。因此，搭配脚本操作使用的自定义脚本会安装 WebWasb，这是用来与 WASB 通信的 WebHDFS 兼容服务。因此，即使 Hue 门户中显示 HDFS（例如，将鼠标移到“文件浏览器”上时），也应该将它解释为 WASB。
 
 
 ## 后续步骤
@@ -136,4 +150,4 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。你可以使用
 [hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters-v1-linux/
 [hdinsight-cluster-customize]: /documentation/articles/hdinsight-hadoop-customize-cluster-v1/
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0926_2016-->

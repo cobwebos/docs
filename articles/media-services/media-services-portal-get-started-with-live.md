@@ -3,15 +3,19 @@
 	description="本教程将指导你完成实施一个基本媒体服务实时传送视频流应用程序的步骤，在该应用程序中，某个通道将从本地实时编码器接收多比特率实时流。"
 	services="media-services"
 	documentationCenter=""
-	authors="Juliako,cenkdin"
+	authors="cenkdin"
 	manager="erikre"
-	editor=""/>  
-
+	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="06/22/2016" 
-	wacn.date=""/>
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="ne"
+	ms.topic="article"
+	ms.date="09/15/2016" 
+	wacn.date=""
+	ms.author="juliako;cenkd"/>
 
 
 # 使用 Azure 管理门户创建从本地编码器接收多比特率实时流的通道
@@ -45,7 +49,7 @@
 
 使用实时流时，本地实时编码器（在本例中为 Wirecast）会将多比特率实时流引入你的通道。当用户请求流时，媒体服务会使用动态打包将源流重新打包成自适应比特率流（HLS、DASH 或平滑流）。
 
-若要利用动态打包，你需要获取计划从中传送内容的*流式处理终结点*的至少一个流式处理单元。
+若要利用动态打包，你需要获取计划从中传送内容的 *流式处理终结点* 的至少一个流式处理单元。
 
 若要更改流式处理保留单元数，请执行以下操作：
 
@@ -203,4 +207,4 @@
 
 <!-- Images -->
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0926_2016-->

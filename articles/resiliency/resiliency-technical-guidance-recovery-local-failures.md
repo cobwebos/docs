@@ -4,13 +4,17 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
    ms.service="resiliency"
-   ms.date="07/05/2016"
-   wacn.date=""/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/18/2016"
+   ms.author="aglick"/>
 
 #Azure 复原技术指南：Azure 中发生局部故障后进行恢复
 
@@ -33,8 +37,8 @@ Azure 云服务由包含一个或多个 Web 角色或辅助角色的集合组成
 
 例如，有一项服务将数据分区存储在多个存储中。如果辅助角色在重定位分片时关闭，则分片重定位可能不会完成。或者重定位可能由另一个辅助角色重复，而这可能引起数据孤立或数据损坏。为防止出现问题，长期运行的操作必须是以下一种或两种类型：
 
- * 幂等：可重复且无副作用。要成为幂等操作，长期运行的操作无论执行多少次都应具有相同的效果，即使在执行过程中中断也是如此。
- * 能以增量方式重新启动：可从最近的故障点继续。要能以增量方式重新启动，长期运行的操作必须由一连串小型的原子操作组成。此外，该操作应在持久存储中记录其进度，从而使每个后续调用能够从其前任停止的位置接续。
+ * *幂等*：可重复且无副作用。要成为幂等操作，长期运行的操作无论执行多少次都应具有相同的效果，即使在执行过程中中断也是如此。
+ * *能以增量方式重新启动*：可从最近的故障点继续。要能以增量方式重新启动，长期运行的操作必须由一连串小型的原子操作组成。此外，该操作应在持久存储中记录其进度，从而使每个后续调用能够从其前任停止的位置接续。
 
 最后，所有长期运行的操作都应被重复调用，直到操作成功为止。例如，辅助角色可能会将预配操作放入 Azure 队列中，并且只有在操作成功时才能将它从队列中删除。可能有必要进行垃圾收集，来清理已中断操作创建的数据。
 
@@ -46,8 +50,8 @@ Azure 云服务由包含一个或多个 Web 角色或辅助角色的集合组成
 
 Azure 结构控制器使用两种类型的分区：
 
-* _更新域_用于以组的方式升级服务的角色实例。Azure 将服务实例部署到多个更新域中。对于就地更新，结构控制器会停止一个更新域中的所有实例，更新这些实例，然后重新启动这些实例，接下来将它们移到下一个更新域中。这种方法能够避免整个服务在更新期间无法使用。
-* _容错域_定义硬件或网络的潜在故障点。对于任何角实例数超过一个的角色，结构控制器会确保这些实例分布在多个容错域上，从而防止孤立的硬件故障中断服务。所有服务器和群集故障风险都由容错域管理。
+* *更新域*用于以组的方式升级服务的角色实例。Azure 将服务实例部署到多个更新域中。对于就地更新，结构控制器会停止一个更新域中的所有实例，更新这些实例，然后重新启动这些实例，接下来将它们移到下一个更新域中。这种方法能够避免整个服务在更新期间无法使用。
+* *容错域*定义硬件或网络的潜在故障点。对于任何角实例数超过一个的角色，结构控制器会确保这些实例分布在多个容错域上，从而防止孤立的硬件故障中断服务。所有服务器和群集故障风险都由容错域管理。
 
 [Azure 服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/) 保证在有两个或更多个 Web 角色实例部署到不同的容错域和升级域时，它们将有至少 99.95% 的时间具有外部连接性。与更新域不同的是，没有办法控制容错域的数量。Azure 会自动分配容错域，并将角色实例分布到这些容错域中。至少应将每个角色的前两个实例放在不同的容错域和升级域中，以确保至少有两个实例的任何角色都能满足 SLA。下图对此做了演示。
 
@@ -106,7 +110,7 @@ Azure 存储空间数据持久性形成的方式，是在区域内完全独立�
 
 Azure SQL 数据库提供数据库即服务。它使应用程序可以快速预配和查询关系数据库，并在数据库中插入数据。它提供许多熟悉的 SQL Server 特性与功能，同时减少了硬件、配置、修补和复原方面的负担。
 
->[AZURE.NOTE] Azure SQL 数据库并不提供与 SQL Server 一一对应的功能。其目的在于满足专门适用于云应用程序的一套不同的要求（通过弹性扩展、数据库即服务来降低维护成本等）。有关详细信息，请参阅[选择云 SQL Server 选项：Azure SQL 数据库 (PaaS) 或 Azure VM 上的 SQL Server (IaaS)](/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas/)。
+>[AZURE.NOTE] Azure SQL 数据库并不提供与 SQL Server 一一对应的功能。其目的在于满足专门适用于云应用程序的一套不同的要求（通过弹性扩展、数据库即服务来降低维护成本等）。有关详细信息，请参阅 [Choose a cloud SQL Server option: Azure SQL (PaaS) or SQL Server on Azure VMs (IaaS)](/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas/)（选择云 SQL Server 选项：Azure SQL (PaaS) 或 Azure VM 上的 SQL Server (IaaS)）。
 
 ####复制
 
@@ -172,7 +176,7 @@ Azure SQL 数据库对节点级故障提供内置的复原功能。所有写入�
 
 ###云服务
 
-  1. 查看本文档的[云服务](#cloud-services)部分。
+  1. 查看本文档的“云服务”部分。
   2. 为每个角色至少配置两个实例。
   3. 将状态保存在持久存储中，而不是角色实例上。
   4. 正确处理 StatusCheck 事件。
@@ -183,40 +187,40 @@ Azure SQL 数据库对节点级故障提供内置的复原功能。所有写入�
 
 ###虚拟机
 
-  1. 查看本文档的[虚拟机](#virtual-machines)部分。
+  1. 查看本文档的“虚拟机”部分。
   2. 不要使用 D 驱动器作为持久存储。
   3. 将服务层中的计算机分组为可用性集。
   4. 配置负载平衡和可选探测。
 
 ###存储
 
-  1. 查看本文档的[存储](#storage)部分。
+  1. 查看本文档的“存储”部分。
   2. 在数据或带宽超过配额时使用多个存储帐户。
 
 ###SQL 数据库
 
-  1. 查看本文档的 [SQL 数据库](#sql-database)部分。
+  1. 查看本文档的“SQL 数据库”部分。
   2. 实现重试策略以处理暂时错误。
   3. 使用分区/分片作为扩展策略。
 
 ###虚拟机上的 SQL Server
 
-  1. 查看本文档的[虚拟机上的 SQL Server](#sql-server-on-virtual-machines) 部分。
+  1. 查看本文档的“虚拟机上的 SQL Server”部分。
   2. 遵循上述有关虚拟机的建议。
   3. 使用 SQL Server 高可用性功能，如 AlwaysOn。
 
 ###服务总线
 
-  1. 查看本文档的[服务总线](#service-bus)部分。
+  1. 查看本文档的“服务总线”部分。
   2. 考虑创建持久客户端队列作为备份。
 
 ###HDInsight
 
-  1. 查看本文档的 [HDInsight](#hdinsight) 部分。
+  1. 查看本文档的“HDInsight”部分。
   2. 对于局部故障无需采取其他可用性步骤。
 
 ##后续步骤
 
-本文是着重介绍 [Azure 复原技术指南](/documentation/articles/resiliency-technical-guidance/)的系列教程的一部分。本系列教程的下一篇文章是[在发生区域范围的服务中断后进行恢复](/documentation/articles/resiliency-technical-guidance-recovery-loss-azure-region/)。
+本文是着重介绍 [Azure 复原技术指南](/documentation/articles/resiliency-technical-guidance/)的系列教程的一部分。本系列教程的下一篇文章是[Recovery from a region-wide service disruption](/documentation/articles/resiliency-technical-guidance-recovery-loss-azure-region/)（在发生区域范围的服务中断后进行恢复）。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0926_2016-->

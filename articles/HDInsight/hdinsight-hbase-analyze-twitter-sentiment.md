@@ -1,16 +1,23 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
-	pageTitle="使用 HBase 分析实时 Twitter 观点 | Microsoft Azure" 
+	pageTitle="使用 HBase 分析实时 Twitter 观点 | Azure" 
 	description="了解如何通过在 HDInsight (Hadoop) 群集中使用 HBase 对 Twitter 中的大数据执行实时观点分析。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="mumian" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
 	ms.service="hdinsight" 
-	ms.date="07/09/2015" 
-	wacn.date/>
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/09/2016" 
+	wacn.date="" 
+	ms.author="jgao"/>
 
 # 在 HDInsight 中使用 HBase 分析实时 Twitter 观点
 
@@ -19,7 +26,7 @@
 
 社交网站是采用大数据的主要推动力之一。Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。在本教程中，你将开发一个控制台流式处理服务应用程序和一个 ASP.NET Web 应用程序用于执行以下操作：
 
-![][img-app-arch]
+![HDInsight HBase 分析 Twitter 观点][img-app-arch]
 
 - 流式处理应用程序
 	- 使用 Twitter 流 API 实时获取标记地理位置的推文
@@ -64,24 +71,26 @@
 
 
 
-## <a id="prerequisites"></a>先决条件
+### 先决条件
 在开始阅读本教程前，你必须具有：
 
-- **HDInsight 中的 HBase 群集**。有关预配群集的说明，请参阅[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][hbase-get-started]。你将需要以下数据才能完成本教程：
+- **HDInsight 中的 HBase 群集**。有关创建群集的说明，请参阅 [Get started using HBase with Hadoop in HDInsight][hbase-get-started]（开始在 HDInsight 中将 HBase 与 Hadoop 配合使用）。你将需要以下数据才能完成本教程：
+
+
 	<table border="1">
-<tr><th>群集属性</th><th>说明</th></tr>
-<tr><td>HBase 群集名称</td><td>你的 HDInsight HBase 群集名称。例如：https://myhbase.azurehdinsight.net/</td></tr>
-<tr><td>群集用户名</td><td>Hadoop 用户帐户名称。默认的 Hadoop 用户名为 <strong>admin</strong>。</td></tr>
-<tr><td>群集用户密码</td><td>Hadoop 群集用户密码。</td></tr>
-</table>
+	<tr><th>群集属性</th><th>说明</th></tr>
+	<tr><td>HBase 群集名称</td><td>你的 HDInsight HBase 群集名称。例如：https://myhbase.azurehdinsight.cn/</td></tr>
+	<tr><td>群集用户名</td><td>Hadoop 用户帐户名称。默认的 Hadoop 用户名为 <strong>admin</strong>。</td></tr>
+	<tr><td>群集用户密码</td><td>Hadoop 群集用户密码。</td></tr>
+	</table>
 
-- 安装有 Visual Studio 2013 的**工作站**。有关说明，请参阅[安装 Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx)。
-
-
+- 安装有 Visual Studio 2013 的**工作站**。有关说明，请参阅[安装 Visual Studio](http://msdn.microsoft.com/zh-cn/library/e2h7fzkw.aspx)。
 
 
 
-## <a id="twitter"></a>创建 Twitter 应用程序 ID 和机密
+
+
+## 创建 Twitter 应用程序 ID 和机密
 
 Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth 的第一步是在 Twitter 开发人员网站上创建新的应用程序。
 
@@ -89,18 +98,9 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 
 1. 登录到 [Twitter 应用](https://apps.twitter.com/)。单击“立即注册”链接（如果你没有 Twitter 帐户）。
 2. 单击“创建新应用”。
-3. 输入“名称”、“说明”和“网站”。我们实际上不会用到“网站”字段。因此不必输入有效的 URL。下表显示了一些要使用的示例值：
-
-	<table border="1">
-<tr><th>字段</th><th>值</th></tr>
-<tr><td>Name</td><td>MyHDInsightHBaseApp</td></tr>
-<tr><td>说明</td><td>MyHDInsightHBaseApp</td></tr>
-<tr><td>网站</td><td>http://www.myhdinsighthbaseapp.com</td></tr>
-</table>
-> [AZURE.NOTE]Twitter 应用程序名称必须是唯一的名称。
-
+3. 输入“名称”、“说明”和“网站”。Twitter 应用程序名称必须是唯一的名称。我们实际上不会用到“网站”字段。因此不必输入有效的 URL。
 4. 选中“是，我同意”，然后单击“创建 Twitter 应用程序”。
-5. 单击“权限”选项卡。默认权限为“只读”。这对于本教程来说已足够。 
+5. 单击“权限”选项卡。默认权限为“只读”。这对于本教程来说已足够。
 6. 单击“密钥和访问令牌”选项卡。
 7. 单击“创建我的访问令牌”。
 8. 在页面右上角单击“测试 OAuth”。
@@ -137,391 +137,368 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 
 
 
-## <a id="streaming"></a>创建简单的 Twitter 流式处理服务
+## 创建 Twitter 流式处理服务
 
-你需要创建一个控制台应用程序来获取推文、计算推文观点分数，以及将处理过的推文文字发送到 HBase。
+需要创建一个应用程序来获取推文、计算推文观点分数，以及将处理过的推文文字发送到 HBase。
 
-**下载观点字典文件**
+**创建流式处理应用程序**
 
-1. 浏览到[实时社交观点分析应用](https://github.com/maxluk/tweet-sentiment)。
-2. 单击“下载 ZIP”。
-3. 在本地解压缩该文件。
-4. 复制 **.../tweet-sentiment/SimpleStreamingService/data/dictionary/dictionary.tsv** 文件的路径。稍后需要在应用程序中使用它。
+1. 打开 **Visual Studio**，创建名为 **TweetSentimentStreaming** 的 C# 控制台应用程序。
+2. 在“包管理器控制台”中运行以下命令：
 
-**创建 Visual Studio 解决方案**
+		Install-Package Microsoft.HBase.Client -version 0.4.2.0
+		Install-Package TweetinviAPI -version 1.0.0.0
 
-1. 打开 **Visual Studio**。
-2. 在“文件”菜单中，指向“新建”，然后单击“项目”。
-3. 键入或选择以下值：
+	这些命令将安装 [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) 包（用于访问 HBase 群集的客户端库）和 [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) 包（用于访问 Twitter API）。
 
-	- 模板：**Visual C# / Windows 桌面 / 控制台应用程序**
-	- 名称：**TweetSentimentStreaming** 
-	- 位置：**C:\\Tutorials**
-	- 解决方案名称：**TweetSentimentStreaming**
+	> [AZURE.NOTE] 本文中使用的示例已使用上面指定的版本进行测试。可以删除 -version 开关来安装最新版本。
 
-4. 单击“确定”继续。
- 
+3. 从“解决方案资源管理器”中，将 **System.Configuration** 添加到引用中。
+4. 将新的类文件添加到名为 **HBaseWriter.cs** 的项目中，然后将代码替换为以下内容：
 
-
-**安装 NuGet 包并添加 SDK 引用**
-
-1. 在“工具”菜单中，单击“Nuget Package Manager”，然后单击“Package Manager Console”。控制台面板将在页面底部打开。
-2. 使用以下命令安装 [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) 包（访问 HBase 群集的客户端库）和 [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) 包（用于访问 Twitter API）。
-
-		Install-Package Microsoft.HBase.Client
-		Install-Package TweetinviAPI
-	
-3. 在“解决方案资源管理器”中，右键单击“引用”，然后单击“添加引用”。
-4. 在左窗格中，展开“组件”，然后单击“框架”。
-5. 在右窗格中，选中“System.Configuration”前的复选框，然后单击“确定”。
-
-
-
-**定义 Tweeter 流式处理服务类**
-
-1. 在“解决方案资源管理器”中，右键单击“TweetSentimentStreaming”，指向“添加”，然后单击“类”。
-2. 在“名称”字段中键入 **HBaseWriter**，然后单击“添加”。
-3. 在 **HBaseWriter.cs** 文件的顶部添加以下 **using** 语句：
-
-		using System.IO;		
+		using System;
+		using System.Collections.Generic;
+		using System.IO;
+		using System.Linq;
+		using System.Text;
 		using System.Threading;
-		using System.Globalization;
-		using Microsoft.HBase.Client;
-		using Tweetinvi.Core.Interfaces;
+		using Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling;
 		using org.apache.hadoop.hbase.rest.protobuf.generated;
+		using Microsoft.HBase.Client;
+		using Tweetinvi.Models;
 
-4. 在 **HbaseWriter.cs** 中添加类调用 **DictionaryItem**：
+        namespace TweetSentimentStreaming
+        {
+            class HBaseWriter
+            {
+                // HDinsight HBase cluster and HBase table information
+                const string CLUSTERNAME = "https://<Enter Your Cluster Name>.azurehdinsight.cn/";
+                const string HADOOPUSERNAME = "admin"; //the default name is "admin"
+                const string HADOOPUSERPASSWORD = "<Enter the Hadoop User Password>";
 
-	    public class DictionaryItem
-	    {
-	        public string Type { get; set; }
-	        public int Length { get; set; }
-	        public string Word { get; set; }
-	        public string Pos { get; set; }
-	        public string Stemmed { get; set; }
-	        public string Polarity { get; set; }
-	    }
+                const string HBASETABLENAME = "tweets_by_words";
+				const string COUNT_ROW_KEY = "~ROWCOUNT";
+				const string COUNT_COLUMN_NAME = "d:COUNT";
+        		
+				long rowCount = 0;
 
-	此类结构用于分析观点字典文件。数据用于计算每则推文的观点分数。
-
-5. 在 **HBaseWriter** 类中，定义以下常量和变量：
-
-        // HDinsight HBase cluster and HBase table information
-        const string CLUSTERNAME = "https://<HBaseClusterName>.azurehdinsight.net/";
-        const string HADOOPUSERNAME = "<HadoopUserName>"; //the default name is "admin"
-        const string HADOOPUSERPASSWORD = "<HaddopUserPassword>";
-        const string HBASETABLENAME = "tweets_by_words";
-
-        // Sentiment dictionary file and the punctuation characters
-        const string DICTIONARYFILENAME = @"..\..\data\dictionary\dictionary.tsv";
-        private static char[] _punctuationChars = new[] { 
+                // Sentiment dictionary file and the punctuation characters
+                const string DICTIONARYFILENAME = @"..\..\dictionary.tsv";
+                private static char[] _punctuationChars = new[] {
             ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/',   //ascii 23--47
             ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~' };   //ascii 58--64 + misc.
 
-        // For writting to HBase
-        HBaseClient client;
+                // For writting to HBase
+                HBaseClient client;
 
-        // a sentiment dictionary for estimate sentiment. It is loaded from a physical file.
-        Dictionary<string, DictionaryItem> dictionary;
-        
-        // use multithread write
-        Thread writerThread;
-        Queue<ITweet> queue = new Queue<ITweet>();
-        bool threadRunning = true;
+                // a sentiment dictionary for estimate sentiment. It is loaded from a physical file.
+                Dictionary<string, DictionaryItem> dictionary;
 
-6. 设置常量值，包括 **&lt;HBaseClusterName>**、**&lt;HadoopUserName>** 和 **&lt;HaddopUserPassword>**。如果你想要更改 HBase 表名称，则必须相应地更改 Web 应用程序中的表名称。
+                // use multithread write
+                Thread writerThread;
+                Queue<ITweet> queue = new Queue<ITweet>();
+                bool threadRunning = true;
 
-	在本教程稍后的内容中，你需要下载 dictionary.tsv 文件并将其移到特定的文件夹。
-
-7. 在 **HBaseWriter** 类中定义以下函数：
-
-		// This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
-        public HBaseWriter()
-        {
-            ClusterCredentials credentials = new ClusterCredentials(new Uri(CLUSTERNAME), HADOOPUSERNAME, HADOOPUSERPASSWORD);
-            client = new HBaseClient(credentials);
-
-            // create the HBase table if it doesn't exist
-            if (!client.ListTables().name.Contains(HBASETABLENAME))
-            {
-                TableSchema tableSchema = new TableSchema();
-                tableSchema.name = HBASETABLENAME;
-                tableSchema.columns.Add(new ColumnSchema { name = "d" });
-                client.CreateTable(tableSchema);
-                Console.WriteLine("Table "{0}" is created.", HBASETABLENAME);
-            }
-
-            // Load sentiment dictionary from a file
-            LoadDictionary();
-
-			// Start a thread for writting to HBase
-            writerThread = new Thread(new ThreadStart(WriterThreadFunction));
-            writerThread.Start();
-        }
-
-        ~HBaseWriter()
-        {
-            threadRunning = false;
-        }
-
-        // Enqueue the Tweets received
-        public void WriteTweet(ITweet tweet)
-        {
-            lock (queue)
-            {
-                queue.Enqueue(tweet);
-            }
-        }
-
-        // Load sentiment dictionary from a file
-        private void LoadDictionary()
-        {
-            List<string> lines = File.ReadAllLines(DICTIONARYFILENAME).ToList();
-            var items = lines.Select(line =>
-            {
-                var fields = line.Split('\t');
-                var pos = 0;
-                return new DictionaryItem
+                // This function connects to HBase, loads the sentiment dictionary, and starts the thread for writting.
+                public HBaseWriter()
                 {
-                    Type = fields[pos++],
-                    Length = Convert.ToInt32(fields[pos++]),
-                    Word = fields[pos++],
-                    Pos = fields[pos++],
-                    Stemmed = fields[pos++],
-                    Polarity = fields[pos++]
-                };
-            });
+                    ClusterCredentials credentials = new ClusterCredentials(new Uri(CLUSTERNAME), HADOOPUSERNAME, HADOOPUSERPASSWORD);
+                    client = new HBaseClient(credentials);
 
-            dictionary = new Dictionary<string, DictionaryItem>();
-            foreach (var item in items)
-            {
-                if (!dictionary.Keys.Contains(item.Word))
-                {
-                    dictionary.Add(item.Word, item);
-                }
-            }
-        }
-
-        // Calculate sentiment score
-        private int CalcSentimentScore(string[] words)
-        {
-            Int32 total = 0;
-            foreach (string word in words)
-            {
-                if (dictionary.Keys.Contains(word))
-                {
-                    switch (dictionary[word].Polarity)
+                    // create the HBase table if it doesn't exist
+                    if (!client.ListTablesAsync().Result.name.Contains(HBASETABLENAME))
                     {
-                        case "negative": total -= 1; break;
-                        case "positive": total += 1; break;
+                        TableSchema tableSchema = new TableSchema();
+                        tableSchema.name = HBASETABLENAME;
+                        tableSchema.columns.Add(new ColumnSchema { name = "d" });
+						client.CreateTableAsync(tableSchema).Wait();
+                        Console.WriteLine("Table "{0}" is created.", HBASETABLENAME);
+                    }
+
+					// Read current row count cell
+            		rowCount = GetRowCount();
+
+                    // Load sentiment dictionary from a file
+                    LoadDictionary();
+
+                    // Start a thread for writting to HBase
+                    writerThread = new Thread(new ThreadStart(WriterThreadFunction));
+                    writerThread.Start();
+                }
+
+                ~HBaseWriter()
+                {
+                    threadRunning = false;
+                }
+
+				private long GetRowCount()
+				{
+					try
+					{
+						RequestOptions options = RequestOptions.GetDefaultOptions();
+						options.RetryPolicy = RetryPolicy.NoRetry;
+						var cellSet = client.GetCellsAsync(HBASETABLENAME, COUNT_ROW_KEY, null, null, options).Result;
+						if (cellSet.rows.Count != 0)
+						{
+							var countCol = cellSet.rows[0].values.Find(cell => Encoding.UTF8.GetString(cell.column) == COUNT_COLUMN_NAME);
+							if (countCol != null)
+							{
+								return Convert.ToInt64(Encoding.UTF8.GetString(countCol.data));
+							}
+						}
+					}
+					catch(Exception ex)
+					{
+						if (ex.InnerException.Message.Equals("The remote server returned an error: (404) Not Found.", StringComparison.OrdinalIgnoreCase))
+						{
+							return 0;
+						}
+						else
+						{
+							throw ex;
+						}
+						
+					}
+
+					return 0;
+				}
+
+                // Enqueue the Tweets received
+                public void WriteTweet(ITweet tweet)
+                {
+                    lock (queue)
+                    {
+                        queue.Enqueue(tweet);
                     }
                 }
-            }
-            if (total > 0)
-            {
-                return 1;
-            }
-            else if (total < 0)
-            {
-                return -1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
 
-		// Popular a CellSet object to be written into HBase
-        private void CreateTweetByWordsCells(CellSet set, ITweet tweet)
-        {
-            // Split the Tweet into words
-            string[] words = tweet.Text.ToLower().Split(_punctuationChars);
-
-            // Calculate sentiment score base on the words
-            int sentimentScore = CalcSentimentScore(words);
-            var word_pairs = words.Take(words.Length - 1)
-                                  .Select((word, idx) => string.Format("{0} {1}", word, words[idx + 1]));
-            var all_words = words.Concat(word_pairs).ToList();
-
-            // For each word in the Tweet add a row to the HBase table
-            foreach (string word in all_words)
-            {
-                string time_index = (ulong.MaxValue - (ulong)tweet.CreatedAt.ToBinary()).ToString().PadLeft(20) + tweet.IdStr;
-                string key = word + "_" + time_index;
-
-                // Create a row
-                var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
-
-                // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment 
-                var value = new Cell { column = Encoding.UTF8.GetBytes("d:id_str"), data = Encoding.UTF8.GetBytes(tweet.IdStr) };
-                row.values.Add(value);
-                
-                value = new Cell { column = Encoding.UTF8.GetBytes("d:lang"), data = Encoding.UTF8.GetBytes(tweet.Language.ToString()) };
-                row.values.Add(value);
-                
-                if (tweet.Coordinates != null)
+                // Load sentiment dictionary from a file
+                private void LoadDictionary()
                 {
-                    var str = tweet.Coordinates.Longitude.ToString() + "," + tweet.Coordinates.Latitude.ToString();
-                    value = new Cell { column = Encoding.UTF8.GetBytes("d:coor"), data = Encoding.UTF8.GetBytes(str) };
-                    row.values.Add(value);
-                }
-
-                value = new Cell { column = Encoding.UTF8.GetBytes("d:sentiment"), data = Encoding.UTF8.GetBytes(sentimentScore.ToString()) };
-                row.values.Add(value);
-
-                set.rows.Add(row);
-            }
-        }
-
-        // Write a Tweet (CellSet) to HBase
-        public void WriterThreadFunction()
-        {
-            try
-            {
-                while (threadRunning)
-                {
-                    if (queue.Count > 0)
+                    List<string> lines = File.ReadAllLines(DICTIONARYFILENAME).ToList();
+                    var items = lines.Select(line =>
                     {
-                        CellSet set = new CellSet();
-                        lock (queue)
+                        var fields = line.Split('\t');
+                        var pos = 0;
+                        return new DictionaryItem
                         {
-                            do
-                            {
-                                ITweet tweet = queue.Dequeue();
-                                CreateTweetByWordsCells(set, tweet);
-                            } while (queue.Count > 0);
+                            Type = fields[pos++],
+                            Length = Convert.ToInt32(fields[pos++]),
+                            Word = fields[pos++],
+                            Pos = fields[pos++],
+                            Stemmed = fields[pos++],
+                            Polarity = fields[pos++]
+                        };
+                    });
+
+                    dictionary = new Dictionary<string, DictionaryItem>();
+                    foreach (var item in items)
+                    {
+                        if (!dictionary.Keys.Contains(item.Word))
+                        {
+                            dictionary.Add(item.Word, item);
                         }
-
-                        // Write the Tweet by words cell set to the HBase table
-                        client.StoreCells(HBASETABLENAME, set);
-                        Console.WriteLine("\tRows written: {0}", set.rows.Count);
                     }
-                    Thread.Sleep(100);
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message);
-            }
-        }
 
-	此代码提供以下功能：
-
-	- **连接到 Hbase [ HBaseWriter() ]**：使用 HBase SDK 来创建包含群集 URL 和 Hadoop 用户凭据的 *ClusterCredentials* 对象，然后使用 ClusterCredentials 对象来创建 *HBaseClient* 对象。
-	- **创建 HBase 表 [ HBaseWriter() ]**：方法调用是 *HBaseClient.CreateTable()*。
-	- **写入 HBase 表 [ WriterThreadFunction() ]**：方法调用是 *HBaseClient.StoreCells()*。
-
-**完成 Program.cs**
-
-1. 在“解决方案资源管理器”中，双击 **Program.cs** 将其打开。
-2. 在该文件的开头，添加以下 using 语句：
-
-		using System.Configuration;
-		using System.Diagnostics;
-		using Tweetinvi;
-
-3. 在 **Program** 类中定义以下常量：
-
-        const string TWITTERAPPACCESSTOKEN = "<TwitterApplicationAccessToken";
-        const string TWITTERAPPACCESSTOKENSECRET = "TwitterApplicationAccessTokenSecret";
-        const string TWITTERAPPAPIKEY = "TwitterApplicationAPIKey";
-        const string TWITTERAPPAPISECRET = "TwitterApplicationAPISecret";
-
-4. 设置与 Twitter 应用程序值匹配的常量值。
-
-3. 修改 **main ()** 函数，使其类似于：
-
-		static void Main(string[] args)
-		{
-            TwitterCredentials.SetCredentials(TWITTERAPPACCESSTOKEN, TWITTERAPPACCESSTOKENSECRET, TWITTERAPPAPIKEY, TWITTERAPPAPISECRET);
-
-            Stream_FilteredStreamExample();
-		}
-
-4. 在类中添加以下函数：
-
-        private static void Stream_FilteredStreamExample()
-        {
-            for (; ; )
-            {
-                try
+                // Calculate sentiment score
+                private int CalcSentimentScore(string[] words)
                 {
-                    HBaseWriter hbase = new HBaseWriter();
-                    var stream = Stream.CreateFilteredStream();
-                    stream.AddLocation(Geo.GenerateLocation(-180, -90, 180, 90));
-
-                    var tweetCount = 0;
-                    var timer = Stopwatch.StartNew();
-
-                    stream.MatchingTweetReceived += (sender, args) =>
+                    Int32 total = 0;
+                    foreach (string word in words)
                     {
-                        tweetCount++;
-                        var tweet = args.Tweet;
-
-                        // Write Tweets to HBase
-                        hbase.WriteTweet(tweet);
-
-                        if (timer.ElapsedMilliseconds > 1000)
+                        if (dictionary.Keys.Contains(word))
                         {
-                            if (tweet.Coordinates != null)
+                            switch (dictionary[word].Polarity)
                             {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("\n{0}: {1} {2}", tweet.Id, tweet.Language.ToString(), tweet.Text);
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("\tLocation: {0}, {1}", tweet.Coordinates.Longitude, tweet.Coordinates.Latitude);
+                                case "negative": total -= 1; break;
+                                case "positive": total += 1; break;
                             }
-
-                            timer.Restart();
-                            Console.WriteLine("\tTweets/sec: {0}", tweetCount);
-                            tweetCount = 0;
                         }
-                    };
+                    }
+                    if (total > 0)
+                    {
+                        return 1;
+                    }
+                    else if (total < 0)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
 
-                    stream.StartStreamMatchingAllConditions();
-                }
-                catch (Exception ex)
+                // Popular a CellSet object to be written into HBase
+                private void CreateTweetByWordsCells(CellSet set, ITweet tweet)
                 {
-                    Console.WriteLine("Exception: {0}", ex.Message);
+                    // Split the Tweet into words
+                    string[] words = tweet.Text.ToLower().Split(_punctuationChars);
+
+                    // Calculate sentiment score base on the words
+                    int sentimentScore = CalcSentimentScore(words);
+                    var word_pairs = words.Take(words.Length - 1)
+                                        .Select((word, idx) => string.Format("{0} {1}", word, words[idx + 1]));
+                    var all_words = words.Concat(word_pairs).ToList();
+
+                    // For each word in the Tweet add a row to the HBase table
+                    foreach (string word in all_words)
+                    {
+                        string time_index = (ulong.MaxValue - (ulong)tweet.CreatedAt.ToBinary()).ToString().PadLeft(20) + tweet.IdStr;
+                        string key = word + "_" + time_index;
+
+                        // Create a row
+                        var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
+
+                        // Add columns to the row, including Tweet identifier, language, coordinator(if available), and sentiment 
+                        var value = new Cell { column = Encoding.UTF8.GetBytes("d:id_str"), data = Encoding.UTF8.GetBytes(tweet.IdStr) };
+                        row.values.Add(value);
+
+                        value = new Cell { column = Encoding.UTF8.GetBytes("d:lang"), data = Encoding.UTF8.GetBytes(tweet.Language.ToString()) };
+                        row.values.Add(value);
+
+                        if (tweet.Coordinates != null)
+                        {
+                            var str = tweet.Coordinates.Longitude.ToString() + "," + tweet.Coordinates.Latitude.ToString();
+                            value = new Cell { column = Encoding.UTF8.GetBytes("d:coor"), data = Encoding.UTF8.GetBytes(str) };
+                            row.values.Add(value);
+                        }
+
+                        value = new Cell { column = Encoding.UTF8.GetBytes("d:sentiment"), data = Encoding.UTF8.GetBytes(sentimentScore.ToString()) };
+                        row.values.Add(value);
+
+                        set.rows.Add(row);
+                    }
                 }
+
+                // Write a Tweet (CellSet) to HBase
+                public void WriterThreadFunction()
+                {
+                    try
+                    {
+                        while (threadRunning)
+                        {
+                            if (queue.Count > 0)
+                            {
+                                CellSet set = new CellSet();
+                                lock (queue)
+                                {
+                                    do
+                                    {
+                                        ITweet tweet = queue.Dequeue();
+                                        CreateTweetByWordsCells(set, tweet);
+                                    } while (queue.Count > 0);
+                                }
+
+                                // Write the Tweet by words cell set to the HBase table
+								client.StoreCellsAsync(HBASETABLENAME, set).Wait();
+                                Console.WriteLine("\tRows written: {0}", set.rows.Count);
+                            }
+                            Thread.Sleep(100);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Exception: " + ex.Message);
+                    }
+                }
+            }
+            public class DictionaryItem
+            {
+                public string Type { get; set; }
+                public int Length { get; set; }
+                public string Word { get; set; }
+                public string Pos { get; set; }
+                public string Stemmed { get; set; }
+                public string Polarity { get; set; }
             }
         }
 
+6. 设置上述代码中的常量，包括 **CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD** 和 DICTIONARYFILENAME。DICTIONARYFILENAME 是 direction.tsv 的文件名和位置。可以从 **https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** 下载该文件。如果你想要更改 HBase 表名称，则必须相应地更改 Web 应用程序中的表名称。
+
+7. 打开 **Program.cs**，将代码替换为以下内容：
+
+        using System;
+        using System.Diagnostics;
+        using Tweetinvi;
+        using Tweetinvi.Models;
+
+        namespace TweetSentimentStreaming
+        {
+            class Program
+            {
+                const string TWITTERAPPACCESSTOKEN = "<Enter Twitter App Access Token>";
+                const string TWITTERAPPACCESSTOKENSECRET = "<Enter Twitter Access Token Secret>";
+                const string TWITTERAPPAPIKEY = "<Enter Twitter App API Key>";
+                const string TWITTERAPPAPISECRET = "<Enter Twitter App API Secret>";
+
+                static void Main(string[] args)
+                {
+                    Auth.SetUserCredentials(TWITTERAPPAPIKEY, TWITTERAPPAPISECRET, TWITTERAPPACCESSTOKEN, TWITTERAPPACCESSTOKENSECRET);
+
+                    Stream_FilteredStreamExample();
+                }
+
+                private static void Stream_FilteredStreamExample()
+                {
+                    for (;;)
+                    {
+                        try
+                        {
+                            HBaseWriter hbase = new HBaseWriter();
+                            var stream = Stream.CreateFilteredStream();
+                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90)); 
+
+                            var tweetCount = 0;
+                            var timer = Stopwatch.StartNew();
+
+                            stream.MatchingTweetReceived += (sender, args) =>
+                            {
+                                tweetCount++;
+                                var tweet = args.Tweet;
+
+                                // Write Tweets to HBase
+                                hbase.WriteTweet(tweet);
+
+                                if (timer.ElapsedMilliseconds > 1000)
+                                {
+                                    if (tweet.Coordinates != null)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine("\n{0}: {1} {2}", tweet.Id, tweet.Language.ToString(), tweet.Text);
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                        Console.WriteLine("\tLocation: {0}, {1}", tweet.Coordinates.Longitude, tweet.Coordinates.Latitude);
+                                    }
+
+                                    timer.Restart();
+                                    Console.WriteLine("\tTweets/sec: {0}", tweetCount);
+                                    tweetCount = 0;
+                                }
+                            };
+
+                            stream.StartStreamMatchingAllConditions();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Exception: {0}", ex.Message);
+                        }
+                    }
+                }
+
+            }
+        }
+
+8. 设置常量，包括 **TWITTERAPPACCESSTOKEN**、**TWITTERAPPACCESSTOKENSECRET**、**TWITTERAPPAPIKEY** 和 **TWITTERAPPAPISECRET**。
+
+若要运行流式处理服务，请按 **F5**。下面是该控制台应用程序的屏幕截图：
+
+![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
+    
+开发 Web 应用程序时，请保持流式处理控制台应用程序的运行状态，以便有更多的数据可用。若要检查数据是否已插入表中，可以使用 HBase Shell。请参阅 [Get started with HBase in HDInsight](/documentation/articles/hdinsight-hbase-tutorial-get-started-v1/#create-tables-and-insert-data)（HDInsight 中的 HBase 入门）。
 
 
-**运行流式处理服务**
-
-1. 在 Visual Studio 中，按 **F5**。下面是该控制台应用程序的屏幕截图：
-
-	![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
-2. 开发 Web 应用程序时，请保持流式处理控制台应用程序的运行状态，以便有更多的数据可用。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## <a id="web"></a>使用 Azure 网站创建网站以可视化 Twitter 观点
+## 可视化实时观点
 
 在本部分中，你将创建一个 ASP.NET MVC Web 应用程序，以便从 HBase 读取实时观点数据，并将数据绘制在必应地图上。
 
@@ -534,15 +511,15 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 	- 模板类别：**Visual C#/Web**
 	- 模板：**ASP.NET Web 应用程序**
 	- 名称：**TweetSentimentWeb**
-	- 位置：**C:\\Tutorials** 
+	- 位置：**C:\\Tutorials**
 4. 单击**“确定”**。
-5. 在“选择模板”中单击“MVC”。 
-6. 在“Microsoft Azure”中单击“管理订阅”。
+5. 在“选择模板”中单击“MVC”。
+6. 在“Microsoft Azure”中，单击“管理订阅”。
 7. 在“管理 Microsoft Azure 订阅”中单击“登录”。
-8. 输入你的 Azure 凭据。你的 Azure 订阅信息将显示在“帐户”选项卡上。
-9. 单击“关闭”以关闭“管理 Microsoft Azure 订阅”窗口。
+8. 输入你的 Azure 凭据。Azure 订阅信息将显示在“帐户”选项卡中。
+9. 单击“关闭”，关闭“管理 Microsoft Azure 订阅”窗口。
 10. 在“新建 ASP.NET 项目 - TweetSentimentWeb”中单击“确定”。
-11. 在“配置 Microsoft Azure 站点设置”中，选择与你最靠近的“区域”。你不需要指定数据库服务器。 
+11. 在“配置 Microsoft Azure 站点设置”中，选择与你最靠近的“区域”。你不需要指定数据库服务器。
 12. 单击**“确定”**。
 
 **安装 NuGet 包**
@@ -668,8 +645,8 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 
 4. 在 **HBaseReader** 类中更改常量值，如下所示：
 
-	- **CLUSTERNAME**：HBase 群集名称，例如 *https://<HBaseClusterName>.azurehdinsight.net/*。 
-    - **HADOOPUSERNAME**：HBase 群集 Hadoop 用户的用户名。默认名称为 *admin*。
+	- **CLUSTERNAME**：HBase 群集名称，例如 *https://<HBaseClusterName>.azurehdinsight.cn/* 。
+    - **HADOOPUSERNAME**：HBase 群集 Hadoop 用户的用户名。默认名称为 *admin* 。
     - **HADOOPUSERPASSWORD**：HBase 群集 Hadoop 用户密码。
     - **HBASETABLENAME** = "tweets\_by\_words";
 
@@ -970,7 +947,7 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 
 1. 在“解决方案资源管理器”中展开“TweetSentimentWeb”。
 2. 右键单击“脚本”，然后依次单击“添加”和“JavaScript 文件”。
-3. 在“项名称”字段中键入 twitterStream.js。
+3. 在“项名称”字段中键入 **twitterStream.js**。
 4. 将以下代码复制并粘贴到文件中：
 
 		var liveTweetsPos = [];
@@ -1289,27 +1266,26 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 2. 按 **F5** 运行 Web 应用程序：
 
 	![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-2. 在文本框中输入一个关键字，然后单击“搜索”。根据在 HBase 表中收集的数据，可能找不到某些关键字。请尝试搜索一些常见的关键字，例如“love”、“xbox”和“playstation”。 
+2. 在文本框中输入一个关键字，然后单击“搜索”。根据在 HBase 表中收集的数据，可能找不到某些关键字。请尝试搜索一些常见的关键字，例如“love”、“xbox”和“playstation”。
 3. 在“肯定”、“否定”和“中立”之间切换，以比较用户对主题的观点。
 4. 让流式处理服务再多运行一小时，然后搜索相同的关键字并比较结果。
 
  
 你也可以选择性地将应用程序部署到 Azure 网站。有关说明，请参阅 [Azure 网站和 ASP.NET 入门][website-get-started]。
  
-## <a id="nextsteps"></a>后续步骤
+## 后续步骤
 
 在本教程中，你已学习如何获取推文、分析推文的观点、将观点数据保存到 HBase，以及在必应地图上呈现实时的 Twitter 观点数据。若要了解更多信息，请参阅以下文章：
 
 - [开始使用 HDInsight][hdinsight-get-started]
-- [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-geo-replication.md) 
+- [在 HDInsight 中配置 HBase 复制](/documentation/articles/hdinsight-hbase-geo-replication/)
 - [使用 HDInsight 中的 Hadoop 分析 Twitter 数据][hdinsight-analyze-twitter-data]
 - [使用 HDInsight 分析航班延误数据][hdinsight-analyze-flight-delay-data]
-- [为 HDInsight 开发 C# Hadoop 流式处理程序][hdinsight-develop-streaming]
 - [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 
-[hbase-get-started]: ../hdinsight-hbase-get-started.md
-[website-get-started]: ../web-sites-dotnet-get-started.md
+[hbase-get-started]: /documentation/articles/hdinsight-hbase-tutorial-get-started-v1/
+[website-get-started]: /documentation/articles/web-sites-dotnet-get-started/
 
 
 
@@ -1320,10 +1296,8 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 
 
 
-[hdinsight-develop-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
-[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
-[hdinsight-analyze-twitter-data]: hdinsight-analyze-twitter-data.md
-[hdinsight-hbase-get-started]: ../hdinsight-hbase-get-started.md
+[hdinsight-develop-mapreduce]: /documentation/articles/hdinsight-develop-deploy-java-mapreduce-linux/
+[hdinsight-analyze-twitter-data]: /documentation/articles/hdinsight-analyze-twitter-data/
 
 
 
@@ -1336,18 +1310,18 @@ Twitter 流 API 使用 [OAuth](http://oauth.net/) 对请求授权。使用 OAuth
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-install]: ../install-configure-powershell.md
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-start]: http://technet.microsoft.com/zh-cn/library/hh847889.aspx
+[powershell-install]: /documentation/articles/powershell-install-configure/
+[powershell-script]: https://technet.microsoft.com/zh-cn/library/dn425048.aspx
 
-[hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
-[hdinsight-storage-powershell]: ../hdinsight-use-blob-storage.md#powershell
-[hdinsight-analyze-flight-delay-data]: hdinsight-analyze-flight-delay-data.md
-[hdinsight-storage]: ../hdinsight-use-blob-storage.md
-[hdinsight-use-sqoop]: hdinsight-use-sqoop.md
-[hdinsight-power-query]: hdinsight-connect-excel-power-query.md
-[hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters-v1/
+[hdinsight-get-started]: /documentation/articles/hdinsight-hadoop-tutorial-get-started-windows-v1/
+[hdinsight-storage-powershell]: /documentation/articles/hdinsight-hadoop-use-blob-storage/#powershell
+[hdinsight-analyze-flight-delay-data]: /documentation/articles/hdinsight-analyze-flight-delay-data/
+[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage/
+[hdinsight-use-sqoop]: /documentation/articles/hdinsight-use-sqoop/
+[hdinsight-power-query]: /documentation/articles/hdinsight-connect-excel-power-query/
+[hdinsight-hive-odbc]: /documentation/articles/hdinsight-connect-excel-hive-ODBC-driver/
  
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0926_2016-->

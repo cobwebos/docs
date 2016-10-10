@@ -1,20 +1,27 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
 	pageTitle="在 HDInsight 上使用 Apache Spark 生成机器学习应用程序 | Azure" 
 	description="逐步说明如何使用 Apache Spark 随附的笔记本生成计算机学习应用程序" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags 
-	ms.service="hdinsight"
-	ms.date="07/31/2015" 
-	wacn.date=""/>
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/14/2016" 
+	wacn.date="" 
+	ms.author="nitinme"/>
 
 
-# 在 Azure HDInsight 上使用 Apache Spark 生成机器学习应用程序
+# 构建机器学习应用程序来运行 HDInsight Linux 上的 Apache Spark 群集
 
 了解如何使用 HDInsight 中的 Apache Spark 群集生成机器学习应用程序。本文说明如何使用群集随附的 Jupyter 笔记本来生成和测试应用程序。应用程序使用所有群集默认提供的示例 HVAC.csv 数据。
 
@@ -22,16 +29,16 @@
 
 必须满足以下条件：
 
-- Azure 订阅。请参阅[获取 Azure 免费试用版][azure-trial]。
-- Apache Spark 群集。有关说明，请参阅[在 Azure HDInsight 中设置 Apache Spark 群集](/documentation/articles/hdinsight-apache-spark-provision-clusters)。 
+- Azure 订阅。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
+- HDInsight Linux 上的 Apache Spark 群集。有关说明，请参阅 [Create Apache Spark clusters in Azure HDInsight](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql/)（在 Azure HDInsight 中创建 Apache Spark 群集）。
 
 ##<a name="data"></a>讲解数据
 
 在开始生成应用程序之前，我们先来了解数据的结构，以及要对数据执行的分析类型。
 
-在本文中，我们将使用所有 HDInsight 群集默认提供的示例 **HVAC.csv** 数据文件，其路径为 **\\HdiSamples\\SensorSampleData\\hvac**。下载并打开该 CSV 文件，以获取数据的快照。
+本文使用与 HDInsight 群集关联的 Azure 存储帐户中提供的示例 **HVAC.csv** 数据文件。该文件位于存储帐户中的 **\\HdiSamples\\HdiSamples\\SensorSampleData\\hvac** 位置。下载并打开该 CSV 文件，以获取数据的快照。
 
-![HVAC 数据快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.ML.Show.Data.png "HVAC 数据的快照")
+![HVAC 数据快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.png "HVAC 数据的快照")
 
 该数据显示装有 HVAC 系统的建筑物的目标温度和实际温度。我们假设“System”列代表系统 ID，“SystemAge”列代表建筑物安装 HVAC 系统的年数。
 
@@ -39,51 +46,41 @@
 
 ##<a name="app"></a>使用 Spark MLlib 编写机器学习应用程序
 
-1. 启动 [Jupyter](https://jupyter.org) 笔记本。在 Azure 门户选择你的 Spark 群集，然后在底部的门户任务栏中单击“Jupyter 笔记本”。出现提示时，输入 Spark 群集的管理员凭据。
+在此应用程序中，我们使用 Spark ML 管道来执行文档分类。在管道中，我们将文档分割成单字、将单字转换成数字特征向量，最后使用特征向量和标签创建预测模型。执行下列步骤创建应用程序。
 
-2. 创建新的笔记本。单击“新建”，然后单击“Python 2”。
+1. 在 [Azure 门户](https://portal.azure.cn/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。也可以单击“全部浏览”>“HDInsight 群集”导航到你的群集。
 
-	![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Note.Jupyter.CreateNotebook.png "创建新的 Jupyter 笔记本")
+2. 在 Spark 群集边栏选项卡中单击“快速链接”，然后在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。出现提示时，请输入群集的管理员凭据。
+
+	> [AZURE.NOTE] 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。将 __CLUSTERNAME__ 替换为群集的名称：
+	>
+	> `https://CLUSTERNAME.azurehdinsight.cn/jupyter`
+
+2. 创建新的笔记本。单击“新建”，然后单击“PySpark”。
+
+	![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
 
 3. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。在顶部单击笔记本名称，然后输入一个友好名称。
 
-	![提供笔记本的名称](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Note.Jupyter.Notebook.Name.png "提供笔记本的名称")
+	![提供笔记本的名称](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
 
-3. 开始生成机器学习应用程序。在此应用程序中，我们使用 Spark ML 管道来执行文档分类。在管道中，我们将文档分割成单字、将单字转换成数字特征向量，最后使用特征向量和标签创建预测模型。
-
-	若要开始生成应用程序，需要先导入所需的模块，并将资源分配给应用程序。将以下代码段粘贴到新笔记本中的空白单元格处，然后按 **SHIFT + ENTER**。
-
+3. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。首先可以导入此方案所需的类型。将以下代码段粘贴到空白单元格中，然后按 **SHIFT + ENTER**。
 
 		from pyspark.ml import Pipeline
 		from pyspark.ml.classification import LogisticRegression
 		from pyspark.ml.feature import HashingTF, Tokenizer
-		from pyspark.sql import Row, SQLContext
+		from pyspark.sql import Row
 		
 		import os
 		import sys
-		from pyspark import SparkConf
-		from pyspark import SparkContext
-		from pyspark.sql import SQLContext
 		from pyspark.sql.types import *
 		
 		from pyspark.mllib.classification import LogisticRegressionWithSGD
 		from pyspark.mllib.regression import LabeledPoint
 		from numpy import array
 		
-		# Assign resources to the application
-		conf = SparkConf()
-		conf.setMaster('spark://headnodehost:7077')
-		conf.setAppName('pysparkregression')
-		conf.set("spark.cores.max", "4")
-		conf.set("spark.executor.memory", "4g")
 		
-		sc = SparkContext(conf=conf)
-		sqlContext = SQLContext(sc)
-
-	每当你在 Jupyter 中运行作业时，Web 浏览器窗口标题中会显示“(繁忙)”状态以及笔记本标题。右上角 **Python 2** 文本的旁边还会出现一个实心圆。作业完成后，实心圆将变成空心圆。
-
-	 ![Jupyter 笔记本作业的状态](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Jupyter.Job.Status.png "Jupyter 笔记本作业的状态")
- 
+	 
 4. 现在必须加载数据 (hvac.csv)，分析数据，并使用它来训练模型。为此，需要定义检查建筑物实际温度是否高于目标温度的函数。如果实际温度较高，则表示建筑物处于高温状态，我们 **1.0** 值表示。如果实际温度较低，则表示建筑物处于低温状态，我们以 **0.0** 值表示。
 
 	将以下代码段粘贴到空白单元格中，然后按 **SHIFT + ENTER**。
@@ -117,7 +114,7 @@
     		return LabeledDocument((values[6]), textValue, hot)
 
 		# Load the raw HVAC.csv file, parse it using the function
-		data = sc.textFile("wasb:///HdiSamples/SensorSampleData/hvac/HVAC.csv")
+		data = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 		documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 		training = documents.toDF()
@@ -142,31 +139,35 @@
 
 	此时应会出现与下面类似的输出：
 
-		BuildingID SystemInfo label
-		4          13 20      0.0  
-		17         3 20       0.0  
-		18         17 20      1.0  
-		15         2 23       0.0  
-		3          16 9       1.0  
-		4          13 28      0.0  
-		2          12 24      0.0  
-		16         20 26      1.0  
-		9          16 9       1.0  
-		12         6 5        0.0  
-		15         10 17      1.0  
-		7          2 11       0.0  
-		15         14 2       1.0  
-		6          3 2        0.0  
-		20         19 22      0.0  
-		8          19 11      0.0  
-		6          15 7       0.0  
-		13         12 5       0.0  
-		4          8 22       0.0  
-		7          17 5       0.0
+		+----------+----------+-----+
+		|BuildingID|SystemInfo|label|
+		+----------+----------+-----+
+		|         4|     13 20|  0.0|
+		|        17|      3 20|  0.0|
+		|        18|     17 20|  1.0|
+		|        15|      2 23|  0.0|
+		|         3|      16 9|  1.0|
+		|         4|     13 28|  0.0|
+		|         2|     12 24|  0.0|
+		|        16|     20 26|  1.0|
+		|         9|      16 9|  1.0|
+		|        12|       6 5|  0.0|
+		|        15|     10 17|  1.0|
+		|         7|      2 11|  0.0|
+		|        15|      14 2|  1.0|
+		|         6|       3 2|  0.0|
+		|        20|     19 22|  0.0|
+		|         8|     19 11|  0.0|
+		|         6|      15 7|  0.0|
+		|        13|      12 5|  0.0|
+		|         4|      8 22|  0.0|
+		|         7|      17 5|  0.0|
+		+----------+----------+-----+
+
 
 	返回并根据原始 CSV 文件验证输出。例如，CSV 文件中第一行包含此数据：
 
-	![HVAC 数据快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.ML.Show.Data.First.Row.png "HVAC 数据的快照")
+	![HVAC 数据快照](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.first.row.png "HVAC 数据的快照")
 
 	请注意，实际温度比目标温度低的情况表示建筑物处于低温状态。因此在训练输出中，第一个行的 **label** 值为 **0.0**，表示建筑物并非处于高温状态。
 
@@ -203,9 +204,7 @@
 
 	从预测中的第一行可以看出，对于 ID 为 20 且系统年数为 25 的 HVAC 系统，建筑物处于高温状态 (**prediction=1.0**)。DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
 
-11. 现在可以通过重新启动内核来退出笔记本。在顶部菜单栏中，依次单击“内核”、“重新启动”，然后在出现提示时再次单击“重新启动”。
-
-	![重新启动 Jupyter 内核](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Jupyter.Restart.Kernel.png "重新启动 Jupyter 内核")
+11. 完成运行应用程序之后，应该要关闭笔记本以释放资源。为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。这将会关闭笔记本。
 	  	   
 
 ##<a name="anaconda"></a>使用机器学习 Anaconda scikit-learn 库
@@ -214,26 +213,56 @@ HDInsight 上的 Apache Spark 群集包含 Anaconda 库，其中包括适用于�
 
 ##<a name="seealso"></a>另请参阅
 
-* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview)
-* [在 HDInsight 群集上设置 Spark](/documentation/articles/hdinsight-apache-spark-provision-clusters)
-* [使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools)
-* [使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming)
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager)
+* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview/)
+
+### 方案
+
+* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools/)
+
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython/)
+
+* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming/)
+
+* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis/)
+
+### 创建和运行应用程序
+
+* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application/)
+
+* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface/)
+
+### 工具和扩展
+
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin/)
+
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/)
+
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook/)
+
+* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels/)
+
+* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages/)
+
+* [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally/)
+
+### 管理资源
+
+* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager/)
+
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](/documentation/articles/hdinsight-apache-spark-job-debugging/)
 
 
-[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning
+[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1/
+[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data/
+[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage/
 
-[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
+[hdinsight-weblogs-sample]: /documentation/articles/hdinsight-hive-analyze-website-log/
+[hdinsight-sensor-data-sample]: /documentation/articles/hdinsight-hive-analyze-sensor-data/
 
-[hdinsight-storage]: /documentation/articles/hdinsight-use-blob-storage
-
-
-[hdinsight-weblogs-sample]: /documentation/articles/hdinsight-hive-analyze-website-log
-[hdinsight-sensor-data-sample]: /documentation/articles/hdinsight-hive-analyze-sensor-data
-
-[azure-purchase-options]: http://www.windowsazure.cn/pricing/overview/
-[azure-trial]: http://www.windowsazure.cn/pricing/1rmb-trial/
+[azure-purchase-options]: /pricing/overview/
+[azure-member-offers]: /pricing/member-offers/
+[azure-trial]: /pricing/1rmb-trial/
 [azure-management-portal]: https://manage.windowsazure.cn/
-[azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
+[azure-create-storageaccount]: /documentation/articles/storage-create-storage-account/
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0926_2016-->

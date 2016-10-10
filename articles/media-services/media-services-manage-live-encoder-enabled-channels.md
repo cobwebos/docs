@@ -3,15 +3,19 @@
 	description="本主题介绍如何设置频道，以从本地编码器接收单比特率实时流，然后使用媒体服务执行实时编码以将其转换为自适应比特率流。然后，该流可以使用以下自适应流式处理协议之一通过一个或多个流式处理终结点传递给客户端播放应用程序：HLS、平滑流、MPEG DASH、HDS。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
-	editor=""/>  
+	authors="anilmur" 
+	manager="erikre" 
+	editor=""/>
 
-
-<tags
-	ms.service="media-services"
-	ms.date="06/22/2016"
-	wacn.date=""/>  
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/15/2016"
+	wacn.date=""
+	ms.author="juliako;anilmur"/>  
 
 
 #使用 Azure 媒体服务执行实时流式处理以创建多比特率流
@@ -468,4 +472,4 @@
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0926_2016-->

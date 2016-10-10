@@ -1,36 +1,48 @@
 <properties 
-	pageTitle="了解流分析作业监视 | Microsoft Azure" 
+	pageTitle="了解流分析作业监视 | Azure" 
 	description="了解流分析作业监视" 
 	keywords="查询监视器"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="02/04/2016" 
-	wacn.date=""/>
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="data-services" 
+	ms.date="09/19/2016" 
+	ms.author="jeffstok"/>
 
 # 了解流分析作业监视以及如何监视查询
 
 ## 简介：“监视”页
 
-Azure 管理门户提供了可用于监视你的作业及对其进行故障排除的关键性能指标。
+Azure 管理门户和 Azure 门户都提供了可用于监视和故障排除查询和作业性能的关键性能指标。
 
 在 Azure 管理门户中，单击正在运行的流分析作业的“监视”选项卡可查看这些指标。在“监视”页中显示性能指标最多有 1 分钟的延迟。
 
   ![监视作业仪表板](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)
 
-## 可用于流分析的指标  
+在 Azure 门户中，浏览到想要查看其指标的流分析作业并查看“监视”部分。
+
+  ![Azure 门户监视作业仪表板](./media/stream-analytics-monitoring/06-stream-analytics-monitoring.png)
+
+首次在区域中创建流分析作业时，需要为该区域配置诊断。若要执行此操作，请单击“监视”部分，“诊断”边栏选项卡随即显示。可在此处启用诊断，并指定用于监视数据的存储帐户。
+
+  ![Azure 门户配置查询诊断](./media/stream-analytics-monitoring/07-stream-analytics-monitoring.png)
+
+## 可用于流分析的指标
+
 
 | 度量值 | 定义 |
 |--------|-------------|
 | 流单元利用率 % | 从作业的“比例”选项卡向一个作业分配的流单元利用率。如果此指标达到 80% 或以上，则很可能会出现事件处理延迟或停止处理的情况。 |
-| 输入事件数 | 流分析作业收到的数据量，以事件计数来衡量。这可以用于验证正在发送到输入源的事件。 |
-| 输入事件字节数 | 流分析作业收到的数据量，以吞吐字节数来衡量。 |
-| 输出事件数 | 流分析作业发送到输出目标的数据量，以事件计数来衡量。 |
+| 输入事件数 | 流分析作业收到的数据量，以 MB 来衡量。这可以用于验证正在发送到输入源的事件。 |
+| 输出事件数 | 流分析作业发送到输出目标的数据量，以 MB 来衡量。 |
 | 无序事件数 | 收到的无序事件的数目，系统根据事件排序策略来删除这些事件，或者为其提供一个经过调整的时间戳。这可能会受“无序容错时段”设置的影响。 |
 | 数据转换错误数 | 流分析作业导致的数据转换错误的数目。 |
 | 运行时错误 | 执行流分析作业的过程中发生的错误数。 |
@@ -52,9 +64,15 @@ Azure 管理门户提供了可用于监视你的作业及对其进行故障排�
 
 你可以设置规则，在作业超过定义的阈值时以电子邮件的方式通知你。
 
+## 在 Azure 门户中自定义监视 ##
+
+可以在“编辑图表”设置中调整图表类型、显示的指标和时间范围。有关详细信息，请参阅[如何自定义监视](../azure-portal/insights-how-to-customize-monitoring.md)。
+
+  ![Azure 门户查询监视器时间刻度](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)
+
 ## 作业状态
 
-可以在 Azure 门户中查看流分析作业的状态；你可以在 Azure 门户中看到一份作业列表。你可以通过在 Azure 门户中单击流分析图标来查看该作业列表。
+可以在 Azure 经典门户中看到一份作业列表，并从中查看流分析作业的状态。可以在 Azure 经典门户中单击流分析图标来查看该作业列表。
 
 | 状态 | 定义 |
 |--------|------------|
@@ -78,14 +96,14 @@ Azure 管理门户提供了可用于监视你的作业及对其进行故障排�
   ![查询诊断](./media/stream-analytics-monitoring/05-stream-analytics-monitoring.png)
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 
-- [Azure 流分析简介](/documentation/articles/stream-analytics-introduction)
-- [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
-- [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
+- [Azure 流分析简介](/documentation/articles/stream-analytics-introduction/)
+- [Azure 流分析入门](/documentation/articles/stream-analytics-get-started/)
+- [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs/)
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0926_2016-->

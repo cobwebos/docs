@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="active-directory"
-
-	ms.date="06/27/2016"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/23/2016"
+	ms.author="andkjell;markvi"
 	wacn.date=""/>
 
 
@@ -22,7 +26,7 @@
 
 如果函数被重载并接受多个语法，则会列出所有的有效语法。  
 该函数为强类型函数，并会验证传递的类型是否匹配记录的类型。  
-如果类型不匹配，则会引发错误。
+如果类型不匹配，将引发错误。
 
 类型使用以下语法表示：
 
@@ -35,10 +39,12 @@
 - **mvstr** – 多值字符串
 - **mvref** – 多值引用
 - **num** – 数值
-- **ref** – 单值引用
-- **str** – 单值字符串
+- **ref** – 引用
+- **str** – 字符串
 - **var** – （几乎）任何其他类型的变体
 - **void** – 不返回值
+
+**mvbin**、**mvstr** 和 **mvref** 类型的函数只适用于多值属性。**bin**、**str** 和 **ref** 类型的函数只适用于单值和多值属性。
 
 ## 函数引用
 
@@ -80,12 +86,12 @@ BitAnd 函数设置值的指定位。
 **语法：**  
 `num BitAnd(num value1, num value2)`
 
-- value1、value2：应该 AND 在一起的数字值
+- value1、value2：应该使用 AND 联接在一起的数字值
 
 **备注：**  
 此函数将两个参数转换为二进制表示形式，并将位设置为：
 
-- 0 - 如果掩码和标志中相应位的其中一个或两个均为 0
+- 0 - 如果*掩码*和*标志*中相应位的其中一个或两个均为 0
 - 1 - 如果两个相应位均为 1。
 
 换而言之，除了当两个参数的相应位均为 1 时之外，所有情况下均返回 0。
@@ -106,7 +112,7 @@ BitOr 函数设置值的指定位。
 - value1、value2：应该 OR 在一起的数字值
 
 **备注：**  
-此函数将两个参数转换为二进制表示形式，并且当掩码和标志中相应位的其中一个或两个均为 1 时，将位设置为 1，当两个相应位均为 0 时，设置为 0。换而言之，除了当两个参数的相应位均为 0 时之外，所有情况下均返回 1。
+此函数将两个参数转换为二进制表示形式，当掩码和标志中相应位的其中一个或两个均为 1 时，将位设置为 1，当两个相应位均为 0 时，设置为 0。换而言之，除了当两个参数的相应位均为 0 时之外，所有情况下均返回 1。
 
 ----------
 ### CBool
@@ -118,7 +124,7 @@ CBool 函数基于计算的表达式返回布尔值
 `bool CBool(exp Expression)`
 
 **备注：**  
-如果表达式的计算结果为非零值，则 CBool 返回 True，否则则返回 False。
+如果表达式的计算结果为非零值，则 CBool 返回 True，否则返回 False。
 
 **示例：**  
 `CBool([attrib1] = [attrib2])`  
@@ -137,7 +143,7 @@ CDate 函数通过字符串返回 UTC DateTime。DateTime 不是 Sync 中的原�
 - Value：具有日期、时间和可选时区的字符串
 
 **备注：**  
-返回的字符串始终是 UTC 格式。
+返回的字符串始终采用 UTC 格式。
 
 **示例：**  
 `CDate([employeeStartTime])`  
@@ -168,15 +174,15 @@ Contains 函数查找多值属性内的字符串
 `num Contains (mvstring attribute, str search, enum Casetype)`  
 `num Contains (mvref attribute, str search)` - 区分大小写
 
-- attribute：要搜索的多值属性。<br>
-- search：在属性中查找的字符串。<br>
-- Casetype：不区分大小写或区分大小写。<br>
+- attribute：要搜索的多值属性。
+- search：在属性中查找的字符串。
+- Casetype：CaseInsensitive 或 CaseSensitive。
 
 返回找到字符串的多值属性中的索引。如果未找到字符串，则返回 0。
 
 **备注：**  
-对于多值字符串属性，搜索会在值中查找子字符串。  
-对于引用属性，搜索的字符串必须与视为匹配的值完全匹配。
+对于多值字符串属性，搜索将在值中查找子字符串。  
+对于引用属性，搜索的字符串必须与视为匹配的值完全匹配。  
 
 **示例：**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
@@ -189,7 +195,7 @@ Contains 函数查找多值属性内的字符串
 ConvertFromBase64 函数将指定的 base64 编码值转换为规则的字符串。
 
 **语法：**  
-`str ConvertFromBase64(str source)` - 假定采用 Unicode 编码 <br>
+`str ConvertFromBase64(str source)` - 假设采用 Unicode 编码   
 `str ConvertFromBase64(str source, enum Encoding)`
 
 - source：Base64 编码的字符串
@@ -199,7 +205,7 @@ ConvertFromBase64 函数将指定的 base64 编码值转换为规则的字符串
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-这两个示例均返回 "Hello world!"
+这两个示例均返回 "*Hello world!*"
 
 ----------
 ### ConvertFromUTF8Hex
@@ -214,11 +220,11 @@ ConvertFromUTF8Hex 函数将指定的 UTF8 Hex 编码值转换为字符串。
 
 **备注：**  
 该结果中此函数和 ConvertFromBase64 (,UTF8) 之间的差异对 DN 属性是友好的。  
-此格式被 Azure Active Directory 用作 DN。
+此格式被 Azure Active Directory 用作 DN。  
 
 **示例：**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-返回 "Hello world!"
+返回 "*Hello world!*"
 
 ----------
 ### ConvertToBase64
@@ -442,8 +448,8 @@ IIF 函数基于指定的条件返回一组可能值中的其中一个值。
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 - condition：计算结果可能为 true 或 false 的任何值或表达式。
-- valueIfTrue：如果条件计算结果为 true，则返回的值。
-- valueIfFalse：如果条件计算结果为 false，则返回的值。
+- valueIfTrue：如果条件计算结果为 true，则为返回值。
+- valueIfFalse：如果条件计算结果为 false，则为返回值。
 
 **示例：**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
@@ -524,7 +530,7 @@ InStrRev 函数查找字符串中最后一次出现的子字符串
 `bool IsDate(var Expression)`
 
 **备注：**  
-用来确定 CDate() 是否会成功。
+用来确定 CDate() 是否成功。
 
 ----------
 ### IsEmpty
@@ -547,7 +553,7 @@ InStrRev 函数查找字符串中最后一次出现的子字符串
 **备注：**  
 GUID 定义为遵循以下其中一种模式的字符串：xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 或 {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
-用来确定 CGuid() 是否会成功。
+用来确定 CGuid() 是否成功。
 
 **示例：**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
@@ -579,7 +585,7 @@ GUID 定义为遵循以下其中一种模式的字符串：xxxxxxxx-xxxx-xxxx-xx
 `bool IsNullOrEmpty(var Expression)`
 
 **备注：**  
-对于属性，如果属性不存在，或存在但为空字符串，此语法计算结果则为 True。<br>
+对于属性，如果属性不存在，或存在但为空字符串，此语法计算结果则为 True。  
 此函数的逆函数被命名为 IsPresent。
 
 **示例：**  
@@ -596,7 +602,7 @@ IsNumeric 函数返回布尔值，该值指示表达式是否可以计算为数�
 `bool IsNumeric(var Expression)`
 
 **备注：**  
-用来确定 CNum() 是否会成功地分析表达式。
+用来确定 CNum() 是否能成功分析表达式。
 
 ----------
 ### IsString
@@ -608,7 +614,7 @@ IsNumeric 函数返回布尔值，该值指示表达式是否可以计算为数�
 `bool IsString(var expression)`
 
 **备注：**  
-用来确定 CStr() 是否会成功地分析表达式。
+用来确定 CStr() 是否能成功分析表达式。
 
 ----------
 ### IsPresent
@@ -638,7 +644,7 @@ Item 函数返回多值字符串/属性中的一个项。
 - index：对多值字符串中某个项的索引。
 
 **备注：**  
-Item 函数与 Contains 函数一起使用很有用，因为后者函数会返回对多值属性中某个项的索引。
+Item 函数与 Contains 函数一起使用很有利，因为后一函数返回对多值属性中某个项的索引。
 
 如果索引超出界限，则引发错误。
 
@@ -659,7 +665,7 @@ ItemOrNull 函数返回多值字符串/属性中的一个项。
 - index：对多值字符串中某个项的索引。
 
 **备注：**  
-ItemOrNull 函数与 Contains 函数一起使用很有用，因为后者函数会返回对多值属性中某个项的索引。
+ItemOrNull 函数与 Contains 函数一起使用很有利，因为后一函数返回对多值属性中某个项的索引。
 
 如果索引超出界限，则返回 Null 值。
 
@@ -715,7 +721,7 @@ Left 函数从字符串左侧起返回指定的字符数。
 - 如果 numChar < 0，则返回输入字符串。
 - 如果字符串为 null，则返回空字符串。
 
-如果字符串包含的字符数比 numChar 中指定的数量少，则返回与该字符串相同的字符串（即：包含参数 1 中的所有字符）。
+如果字符串包含的字符数比 numChars 中指定的数量少，则返回与该字符串相同的字符串（即，包含参数 1 中的所有字符）。
 
 **示例：**  
 `Left("John Doe", 3)`  
@@ -745,7 +751,7 @@ LTrim 函数从字符串中删除前导空格。
 
 **示例：**  
 `LTrim(" Test ")`  
-返回 "Test "。
+返回 "Test"
 
 ----------
 ### Mid
@@ -770,7 +776,7 @@ Mid 函数从字符串指定位置起返回指定的字符数。
 - 如果 start <= 0，则返回输入字符串。
 - 如果字符串为 null，则返回空字符串。
 
-如果字符串中开始位置没有保留的 numChar 字符，则会返回尽可能多可以返回的字符。
+如果字符串中开始位置没有保留的 numChar 字符，则返回尽可能多的字符。
 
 **示例：**  
 `Mid("John Doe", 3, 5)`  
@@ -862,9 +868,16 @@ PCase 函数将字符串中每个空格分隔词的第一个字符转换为大�
 **语法：**  
 `String PCase(string)`
 
+**备注：**
+
+- 此函数目前无法正常转换全大写单词（例如首字母缩写词）的大小写。
+
 **示例：**  
 `PCase("TEsT")`  
 返回 "Test"。
+
+`PCase(LCase("TEST"))`  
+返回 "Test"
 
 ----------
 ### RandomNum
@@ -911,9 +924,9 @@ Replace 函数将所有出现的某一字符串替换为另一个字符串。
 **备注：**  
 该函数可以识别以下特殊 moniker：
 
-- \n – 新行
-- \r – 回车符
-- \t – 选项卡
+- \\n – 新行
+- \\r – 回车符
+- \\t – 选项卡
 
 **示例：**  
 `Replace([address],"\r\n",", ")`  
@@ -991,7 +1004,7 @@ RTrim 函数从字符串中删除尾随空格。
 
 **示例：**  
 `RTrim(" Test ")`  
-返回 " Test"。
+返回 "Test"。
 
 ----------
 ### 拆分
@@ -1005,7 +1018,7 @@ Split 函数使用采用分隔符分隔的字符串，并使其成为多值字�
 
 - value：用分隔符字符来分隔的字符串。
 - delimiter：用作分隔符的单个字符。
-- limit：将返回的最大数目的值。
+- limit：可返回的最大数目的值。
 
 **示例：**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
@@ -1024,11 +1037,10 @@ StringFromGuid 函数使用二进制 GUID，并将其转换为字符串
 ### StringFromSid
 
 **说明：**  
-StringFromSid 函数将字节数组或包含安全标识符的多值字节数组转换为字符串或多值字符串。
+StringFromSid 函数将包含安全标识符的字节数组转换为字符串。
 
 **语法：**  
 `str StringFromSid(bin ObjectSID)`  
-`mvstr StringFromSid(mvbin ObjectSID)`
 
 ----------
 ### Switch
@@ -1052,7 +1064,7 @@ Switch 函数参数列表包含表达式和值对。表达式从左到右计算�
 - 没有任何表达式求值为 True。
 - 第一个 True 表达式的相应值为 Null。
 
-Switch 会对所有表达式计算结果，即使它只返回其中一个结果。为此，你应监视非预期的负面影响。例如，如果任何表达式的计算结果导致除数为零的错误，则会出现错误。
+Switch 对所有表达式求值，即使它只返回其中一个结果。为此，你应监视非预期的负面影响。例如，如果任何表达式的计算结果导致除数为零的错误，则会出现错误。
 
 值还可以是将返回自定义字符串的错误函数。
 
@@ -1068,7 +1080,6 @@ Trim 函数从字符串中删除前导空格和尾随空格。
 
 **语法：**  
 `str Trim(str value)`  
-`mvstr Trim(mvstr value)`
 
 **示例：**  
 `Trim(" Test ")`  
@@ -1124,4 +1135,4 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 * [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis/)
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0926_2016-->

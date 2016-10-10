@@ -6,14 +6,19 @@
    	services="hdinsight"
    	documentationCenter=""
    	authors="mumian"
-   	manager="paulettm"
+   	manager="jhubbard"
    	editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.date="07/08/2016"
-	wacn.date=""/>
+   	ms.service="hdinsight"
+   	ms.devlang="na"
+   	ms.topic="article"
+   	ms.tgt_pltfrm="na"
+   	ms.workload="big-data"
+   	ms.date="09/06/2016"
+   	wacn.date=""
+   	ms.author="jgao"/>
 
 
 # 在 HDInsight 中创建基于 Linux 的 Hadoop 群集
@@ -106,7 +111,7 @@ Azure HDInsight 提供了两个类别的大数据云产品：标准和[高级](/
 
 ### HDInsight 版本###
 
-用于确定此群集所需的 HDInsight 版本。有关详细信息，请参阅 [Hadoop cluster versions and components in HDInsight（HDInsight 中的 Hadoop 群集版本和组件）](/documentation/articles/hdinsight-component-versioning-v1/)。
+用于确定此群集所需的 HDInsight 版本。有关详细信息，请参阅 [Hadoop cluster versions and components in HDInsight](/documentation/articles/hdinsight-component-versioning-v1/)（HDInsight 中的 Hadoop 群集版本和组件）。
 
 ### 订阅名称###
 
@@ -121,7 +126,7 @@ Azure HDInsight 提供了两个类别的大数据云产品：标准和[高级](/
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
 - HTTP 用户。默认用户名是在 Azure 门户上使用基本配置创建的 *admin* ，有时称为“群集用户”。
-- SSH 用户（Linux 群集）。用于通过 SSH 连接到群集。群集创建后，可以根据 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/) 或者 [Use SSH with Linux-based Hadoop on HDInsight from Windows（在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)中的步骤创建更多 SSH 用户帐户。
+- SSH 用户（Linux 群集）。用于通过 SSH 连接到群集。群集创建后，可以根据 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）或者 [Use SSH with Linux-based Hadoop on HDInsight from Windows](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)（在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）中的步骤创建更多 SSH 用户帐户。
 
     >[AZURE.NOTE] 对于基于 Windows 的群集，可以创建一个 RDP 用户，用于通过 RDP 连接到群集。
 
@@ -141,9 +146,9 @@ Azure HDInsight 提供了两个类别的大数据云产品：标准和[高级](/
 
 >[AZURE.WARNING] 不支持对多个群集共享一个 Blob 存储容器。
 
-有关使用辅助 Blob 存储的详细信息，请参阅 [Using Azure Blob Storage with HDInsight（将 Azure Blob 存储与 HDInsight 配合使用）](/documentation/articles/hdinsight-hadoop-use-blob-storage/)。
+有关使用辅助 Blob 存储的详细信息，请参阅 [Using Azure Blob Storage with HDInsight](/documentation/articles/hdinsight-hadoop-use-blob-storage/)（将 Azure Blob 存储与 HDInsight 配合使用）。
 
-除了 Azure Blob 存储之外，还可以使用 [Azure Data Lake Store](/documentation/articles/data-lake-store-overview/) 作为 HDInsight 中的 HBase 群集的默认存储帐户以及所有四种 HDInsight 群集类型的链接存储。有关详细信息，请参阅 [Create an HDInsight cluster with Data Lake Store using Azure Portal（使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集）](/documentation/articles/data-lake-store-hdinsight-hadoop-use-portal/)。
+除了 Azure Blob 存储之外，还可以使用 [Azure Data Lake Store](/documentation/articles/data-lake-store-overview/) 作为 HDInsight 中的 HBase 群集的默认存储帐户以及所有四种 HDInsight 群集类型的链接存储。有关详细信息，请参阅 [Create an HDInsight cluster with Data Lake Store using Azure portal](/documentation/articles/data-lake-store-hdinsight-hadoop-use-portal/)（使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集）。
 
 ### 位置（区域） ###
 
@@ -203,18 +208,20 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 |Standard\_D13\_v2 |8|56 GB|8|临时磁盘 (SSD) = 400 GB |16|16x500|
 |Standard\_D14\_v2 |16|112 GB|8|临时磁盘 (SSD) = 800 GB |32|32x500|    
 
-有关在计划使用这些资源时要考虑的部署注意事项，请参阅 [Sizes for virtual machines（虚拟机的大小）](/documentation/articles/virtual-machines-windows-sizes/)。有关不同大小的定价信息，请参阅 [HDInsight Pricing（HDInsight 定价）](/pricing/details/hdinsight/)。
+有关在计划使用这些资源时要考虑的部署注意事项，请参阅 [Sizes for virtual machines](/documentation/articles/virtual-machines-windows-sizes/)（虚拟机的大小）。有关不同大小的定价信息，请参阅 [HDInsight Pricing](/pricing/details/hdinsight/)（HDInsight 定价）。
 
 > [AZURE.IMPORTANT] 如果计划使用 32 个以上的工作节点（在创建群集时配置或者是在创建之后通过扩展群集来配置），必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。
 
-创建群集后便开始计费，删除群集后停止计费。有关定价的详细信息，请参阅 [HDInsight pricing details（HDInsight 定价详细信息）](/pricing/details/hdinsight/)。
+创建群集后便开始计费，删除群集后停止计费。有关定价的详细信息，请参阅 [HDInsight pricing details](/pricing/details/hdinsight/)（HDInsight 定价详细信息）。
 
 
 ## 使用其他存储
 
 在某些情况下，可能要向群集添加其他存储。例如，为不同地理区域或不同服务创建了多个 Azure 存储帐户，但想要使用 HDInsight 分析所有这些帐户。
 
-有关辅助 Blob 存储的详细信息，请参阅 [Using Azure Blob storage with HDInsight（将 Azure Blob 存储与 HDInsight 配合使用）](/documentation/articles/hdinsight-hadoop-use-blob-storage/)。有关辅助 Data Lake Store 的详细信息，请参阅 [Create HDInsight clusters with Data Lake Store using Azure Portal（使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集）](/documentation/articles/data-lake-store-hdinsight-hadoop-use-portal/)。
+创建 HDInsight 群集时或创建群集后，可以添加存储帐户。请参阅 [Customize Linux-based HDInsight clusters using Script Action](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)（使用脚本操作自定义基于 Linux 的 HDInsight 群集）。
+
+有关辅助 Blob 存储的详细信息，请参阅 [Using Azure Blob storage with HDInsight](/documentation/articles/hdinsight-hadoop-use-blob-storage/)（将 Azure Blob 存储与 HDInsight 配合使用）。有关辅助 Data Lake Storage 的详细信息，请参阅 [Create HDInsight clusters with Data Lake Store using Azure Portal](/documentation/articles/data-lake-store-hdinsight-hadoop-use-portal/)（使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集）。
 
 
 ## 使用 Hive/Oozie 元存储
@@ -245,7 +252,7 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 
 基于 Windows 的群集需要 v1（经典）虚拟网络，基于 Linux 的群集需要 v2 (Azure Resource Manager) 虚拟网络。如果没有正确的网络类型，创建群集时它将不能使用。
 
-有关将 HDInsight 与虚拟网络配合使用的详细信息（包括虚拟网络的特定配置要求），请参阅 [Extend HDInsight capabilities by using an Azure virtual network（使用 Azure 虚拟网络扩展 HDInsight 功能）](/documentation/articles/hdinsight-extend-hadoop-virtual-network/)。
+有关将 HDInsight 与虚拟网络配合使用的详细信息（包括虚拟网络的特定配置要求），请参阅 [Extend HDInsight capabilities by using an Azure virtual network](/documentation/articles/hdinsight-extend-hadoop-virtual-network/)（使用 Azure 虚拟网络扩展 HDInsight 功能）。
 
 ## 使用 HDInsight 群集自定义功能来自定义群集 (bootstrap)
 
@@ -267,7 +274,7 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 - webhcat-site.xml
 - yarn-site.xml
 
-若要在群集的整个生存期内保留更改，可以在创建过程中使用 HDInsight 群集自定义，或者在基于 Linux 的群集中使用 Ambari。有关详细信息，请参阅 [Customize HDInsight clusters using Bootstrap（使用 Bootstrap 自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-bootstrap/)。
+若要在群集的整个生存期内保留更改，可以在创建过程中使用 HDInsight 群集自定义，或者在基于 Linux 的群集中使用 Ambari。有关详细信息，请参阅 [Customize HDInsight clusters using Bootstrap](/documentation/articles/hdinsight-hadoop-customize-cluster-bootstrap/)（使用 Bootstrap 自定义 HDInsight 群集）。
 
 >[AZURE.NOTE] 基于 Windows 的群集无法保留重新制作映像所造成的更改。有关详细信息，请参阅[重新启动角色实例进行 OS 升级](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)。若要在群集生存期保留更改，必须在创建过程中使用 HDInsight 群集自定义。
 
@@ -279,8 +286,12 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 
 >[AZURE.NOTE] 如果你在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 技术支持](/support/contact/)。
 
-> Cascading 不受 HDInsight 支持，因此不符合 Microsoft 技术支持的条件。有关支持的组件的列表，请参阅 [What's new in the cluster versions provided by HDInsight?（HDInsight 提供的群集版本有哪些新功能？）](/documentation/articles/hdinsight-component-versioning-v1/)
+> Cascading 不受 HDInsight 支持，因此不符合 Microsoft 技术支持的条件。有关支持的组件的列表，请参阅 [What's new in the cluster versions provided by HDInsight?](/documentation/articles/hdinsight-component-versioning-v1/)（HDInsight 提供的群集版本有哪些新功能？）
 
+## 使用边缘节点
+
+ 空边缘节点是安装并配置了与头节点中相同的客户端工具的 Linux 虚拟机。可以使用该边缘节点来访问群集、测试客户端应用程序和托管客户端应用程序。有关详细信息，请参阅 [Use empty edge nodes in HDInsight](/documentation/articles/hdinsight-apps-use-edge-node/)（在 HDInsight 中使用空边缘节点）。
+ 
 ## 群集创建方法
 
 在本文中，你了解了有关创建基于 Linux 的 HDInsight 群集的基本信息。使用下表查找具体信息，了解如何使用最合适的方法创建群集。
@@ -295,4 +306,4 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 | [.NET SDK](/documentation/articles/hdinsight-hadoop-create-linux-clusters-dotnet-sdk/) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [Azure 资源管理器模板](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=Mooncake_0926_2016-->

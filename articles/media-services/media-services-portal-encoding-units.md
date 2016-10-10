@@ -3,14 +3,19 @@
 	description="了解如何通过指定要为帐户设置的“按需流式处理保留单位”和“编码保留单位”数，缩放媒体服务。"
 	services="media-services"
 	documentationCenter=""
-	authors="juliako,milangada"
+	authors="milangada"
 	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="08/12/2016"
-	wacn.date=""/>
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/15/2016"
+	wacn.date=""
+	ms.author="juliako;milanga"/>
 
 
 # 如何使用 Azure 管理门户缩放媒体处理
@@ -84,4 +89,4 @@
 
  
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=Mooncake_0926_2016-->

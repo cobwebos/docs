@@ -9,11 +9,19 @@
 
 <tags
 	ms.service="active-directory"
-
-	ms.date="04/29/2016"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/23/2016"
+	ms.author="curtand"
 	wacn.date=""/>
 
 # 已重置用户的密码
+
+> [AZURE.SELECTOR]
+- [Azure 门户](/documentation/articles/active-directory-users-reset-password-azure-portal/)
+- [Azure 经典管理门户](/documentation/articles/active-directory-create-users-reset-password/)
 
 无论你是回复在锁定后请求密码的用户，还是只专注于日常安全维护，有时你需要重置用户的密码。Azure Active Directory (Azure AD) 让这项操作变得简单。
 
@@ -27,9 +35,9 @@
 
 ## 后续步骤
 
-- [向 Azure Active Directory 添加新用户](/documentation/articles/active-directory-create-users)
-- [管理 Azure AD](/documentation/articles/active-directory-administer)
-- [在 Azure AD 中管理密码](/documentation/articles/active-directory-manage-passwords)
-- [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups)
+- [向 Azure Active Directory 添加新用户](/documentation/articles/active-directory-create-users/)
+- [管理 Azure AD](/documentation/articles/active-directory-administer/)
+- [在 Azure AD 中管理密码](/documentation/articles/active-directory-manage-passwords/)
+- [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups/)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0926_2016-->

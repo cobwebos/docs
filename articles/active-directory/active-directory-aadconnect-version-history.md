@@ -4,12 +4,17 @@
    services="active-directory"
    documentationCenter=""
    authors="AndKjell"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
    ms.service="active-directory"
-   ms.date="06/02/2016"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="08/23/2016"
+   ms.author="andkjell"
    wacn.date=""/>
 
 # Azure AD Connect：版本发布历史记录
@@ -18,13 +23,34 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 本文旨在帮助你跟踪已发布的版本，并了解你是否需要更新为最新版本。
 
-这是相关主题的列表：
+下面是相关主题的列表：
 
 主题 |  
 --------- | --------- |
-从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](active-directory-aadconnect-upgrade-previous-version.md) Azure AD Connect 的不同方法。
-所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](active-directory-aadconnect-accounts-permissions.md#upgrade)
+从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](/documentation/articles/active-directory-aadconnect-upgrade-previous-version/) Azure AD Connect 的不同方法。
+所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](/documentation/articles/active-directory-aadconnect-accounts-permissions/#upgrade/)
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.1.281.0
+发布日期：2016 年 8 月
+
+**已解决的问题：**
+
+- 只有在下一个同步周期完成后，才对同步间隔进行更改。
+- Azure AD Connect 向导不接受用户名开头为下划线 (\_) 的 Azure AD 帐户。
+- 如果帐户密码包含太多特殊字符，Azure AD Connect 向导无法对提供的 Azure AD 帐户进行身份验证。此时会返回错误消息“无法验证凭据。发生意外的错误”。
+- 卸载暂存服务器会在 Azure AD 租户中禁用密码同步，导致活动服务器的密码同步失败。
+- 在用户未存储密码哈希的罕见情况下，密码同步失败。
+- 当 Azure AD Connect 服务器启用暂存模式时，不会暂时禁用密码写回。
+- 当服务器处于暂存模式时，Azure AD Connect 向导不会显示实际的密码同步和密码写回配置，而始终将这些配置显示为已禁用。
+- 当服务器处于暂存模式时，Azure AD Connect 向导不会保存密码同步和密码写回的配置更改。
+
+**改进：**
+
+- 已更新 Start-ADSyncSyncCycle cmdlet，指出是否能够成功启动新的同步周期。
+- 已添加 Stop-ADSyncSyncCycle cmdlet，终止当前正在进行的同步周期和操作。
+- 已更新 Stop-ADSyncScheduler cmdlet，终止当前正在进行的同步周期和操作。
+- 在 Azure AD Connect 向导中配置[目录扩展](/documentation/articles/active-directory-aadconnectsync-feature-directory-extensions/)时，现在可以选择“Teletex 字符串”类型的 AD 属性。
 
 ## 1\.1.189.0
 发布日期：2016 年 6 月
@@ -32,7 +58,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 **已解决的问题和改进：**
 
 - Azure AD Connect 现在可以安装于符合 FIPS 的服务器上。
-    - 有关密码同步，请参阅[密码同步和 FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)
+    - 有关密码同步，请参阅 [Password Sync and FIPS](/documentation/articles/active-directory-aadconnectsync-implement-password-synchronization/#password-synchronization-and-fips/)（密码同步和 FIPS）
 - 已修复下列问题：NetBIOS 名称无法解析为 Active Directory 连接器中的 FQDN。
 
 ## 1\.1.180.0
@@ -41,8 +67,8 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 **新功能：**
 
 - 警告并帮助你验证域（如果你在运行 Azure AD Connect 之前未执行此操作）。
-- 添加了对[德国 Microsoft 云](active-directory-aadconnect-instances.md#microsoft-cloud-germany)的支持。
-- 添加了对最新 [Microsoft Azure 政府云](active-directory-aadconnect-instances.md#microsoft-azure-government-cloud)基础结构的支持，以及新的 URL 要求。
+- 添加了对[德国 Microsoft 云](/documentation/articles/active-directory-aadconnect-instances/#microsoft-cloud-germany/)的支持。
+- 添加了对最新 [Azure 政府云](/documentation/articles/active-directory-aadconnect-instances/#microsoft-azure-government-cloud/)基础结构的支持，以及新的 URL 要求。
 
 **已解决的问题和改进：**
 
@@ -56,9 +82,9 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 **新功能：**
 
-- 添加了对[目录扩展](/documentation/articles/active-directory-aadconnectsync-feature-directory-extensions)的多值属性支持。
-- 添加了将[自动升级](/documentation/articles/active-directory-aadconnect-feature-automatic-upgrade)的更多配置变体视为符合升级要求的支持。
-- 为[自定义计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler#custom-scheduler)添加了一些 cmdlet。
+- 添加了对[目录扩展](/documentation/articles/active-directory-aadconnectsync-feature-directory-extensions/)的多值属性支持。
+- 添加了将[自动升级](/documentation/articles/active-directory-aadconnect-feature-automatic-upgrade/)的更多配置变体视为符合升级要求的支持。
+- 为[自定义计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler/#custom-scheduler/)添加了一些 cmdlet。
 
 ## 1\.1.119.0
 发布时间：2016 年 3 月
@@ -84,22 +110,22 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 **新功能：**
 
-- 适用于快速设置客户的[自动升级](/documentation/articles/active-directory-aadconnect-feature-automatic-upgrade)功能。
+- 适用于快速设置客户的[自动升级](/documentation/articles/active-directory-aadconnect-feature-automatic-upgrade/)功能。
 - 使用安装向导中的 MFA 和 PIM 来提供全局管理员支持。
-    - 如果你使用 MFA，则需要让代理也允许向 https://secure.aadcdn.microsoftonline-p.com 传送流量。
+    - 如果使用 MFA，则需要让代理也允许向 https://secure.aadcdn.microsoftonline-p.com 传送流量。
     - 需要将 https://secure.aadcdn.microsoftonline-p.com 添加到受信任站点列表，MFA 才能正常运行。
 - 允许在初始安装之后更改用户的登录方法。
-- 允许在安装向导中使用[域和 OU 筛选](/documentation/articles/active-directory-aadconnect-get-started-custom#domain-and-ou-filtering)。这也允许连接到并非所有域都可供使用的林。
-- [计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler)是同步引擎的内置功能。
+- 允许在安装向导中使用[域和 OU 筛选](/documentation/articles/active-directory-aadconnect-get-started-custom/#domain-and-ou-filtering/)。这也允许连接到并非所有域都可供使用的林。
+- [计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler/)是同步引擎的内置功能。
 
 **从预览版升级到 GA 的功能：**
 
-- [设备写回](/documentation/articles/active-directory-aadconnect-feature-device-writeback)。
-- [目录扩展](/documentation/articles/active-directory-aadconnectsync-feature-directory-extensions)。
+- [设备写回](/documentation/articles/active-directory-aadconnect-feature-device-writeback/)。
+- [目录扩展](/documentation/articles/active-directory-aadconnectsync-feature-directory-extensions/)。
 
 **新的预览功能：**
 
-- 新的默认同步周期间隔为 30 分钟。过去所有旧版本都是 3 小时。添加了更改[计划程序](active-directory-aadconnectsync-feature-scheduler.md)行为的支持。
+- 新的默认同步周期间隔为 30 分钟。过去所有旧版本都是 3 小时。添加了更改[计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler/)行为的支持。
 
 **已解决的问题：**
 
@@ -129,8 +155,8 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 **新的预览功能：**
 
-- [用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
-- 支持 [Azure AD 域服务](active-directory-get-started.md)密码同步。
+- [用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync/)
+- 支持 [Azure AD 域服务](/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-ad-passwords/)密码同步。
 
 **新的受支持方案：**
 
@@ -143,7 +169,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
     - 选择要包含在同步中的新 OU 时不需要完全密码同步。
     - 启用已禁用的用户时密码不会同步。
     - 密码重试队列是无限的，以前实施的 5000 个对象限制已停用且已被删除。
-    - [改进了故障排除](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)。
+    - [改进了故障排除](/documentation/articles/active-directory-aadconnectsync-implement-password-synchronization/#troubleshoot-password-synchronization/)。
 - 无法连接到具有 Windows Server 2016 林功能级别的 Active Directory。
 - 初始安装后，无法更改用于组筛选的组。
 - 对于在启用密码写回的情况下执行密码更改的每个用户，不再能够在 Azure AD Connect 服务器上创建新的用户配置文件。
@@ -173,7 +199,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 **已删除的预览功能：**
 
-- 根据预览版客户的反馈，已暂时删除“[用户写回](active-directory-aadconnect-feature-preview.md#user-writeback)”预览功能。今后在解决所提供的反馈意见后，我们将重新添加此功能。
+- 根据预览版客户的反馈，已暂时删除[“用户写回”](/documentation/articles/active-directory-aadconnect-feature-preview/#user-writeback/)预览功能。今后在解决所提供的反馈意见后，我们将重新添加此功能。
 
 ## 1\.0.8641.0
 发布日期：2015 年 6 月
@@ -184,18 +210,18 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 **新功能：**
 
-- [快速设置](/documentation/articles/active-directory-aadconnect-get-started-express)安装
-- 可以[配置 ADFS](/documentation/articles/active-directory-aadconnect-get-started-custom#configuring-federation-with-ad-fs)
-- 可以[从 DirSync 升级](/documentation/articles/active-directory-aadconnect-dirsync-upgrade-get-started)
-- [防止意外删除](/documentation/articles/active-directory-aadconnectsync-feature-prevent-accidental-deletes)
-- 引入了[过渡模式](/documentation/articles/active-directory-aadconnectsync-operations#staging-mode)
+- [快速设置](/documentation/articles/active-directory-aadconnect-get-started-express/)安装
+- 可以[配置 ADFS](/documentation/articles/active-directory-aadconnect-get-started-custom/#configuring-federation-with-ad-fs/)
+- 可以[从 DirSync 升级](/documentation/articles/active-directory-aadconnect-dirsync-upgrade-get-started/)
+- [防止意外删除](/documentation/articles/active-directory-aadconnectsync-feature-prevent-accidental-deletes/)
+- 引入了[过渡模式](/documentation/articles/active-directory-aadconnectsync-operations/#staging-mode/)
 
 **新的预览功能：**
 
-- [用户写回](/documentation/articles/active-directory-aadconnect-feature-preview#user-writeback)
-- [组写回](/documentation/articles/active-directory-aadconnect-feature-preview#group-writeback)
-- [设备写回](/documentation/articles/active-directory-aadconnect-feature-device-writeback)
-- [目录扩展](/documentation/articles/active-directory-aadconnect-feature-preview#directory-extensions)
+- [用户写回](/documentation/articles/active-directory-aadconnect-feature-preview/#user-writeback/)
+- [组写回](/documentation/articles/active-directory-aadconnect-feature-preview/#group-writeback/)
+- [设备写回](/documentation/articles/active-directory-aadconnect-feature-device-writeback/)
+- [目录扩展](/documentation/articles/active-directory-aadconnect-feature-preview/#directory-extensions/)
 
 
 ## 1\.0.494.0501
@@ -245,7 +271,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 **新功能：**
 
-- 现在支持使用基于属性的筛选执行密码同步。有关详细信息，请参阅[使用筛选进行密码同步](active-directory-aadconnectsync-configure-filtering.md)。
+- 现在支持使用基于属性的筛选执行密码同步。有关详细信息，请参阅[使用筛选进行密码同步](/documentation/articles/active-directory-aadconnectsync-configure-filtering/)。
 - 属性 msDS-ExternalDirectoryObjectID 将写回 AD。这将添加对 Office 365 应用程序的支持，支持其使用 OAuth2 同时访问混合 Exchange 部署中的联机邮箱和本地邮箱。
 
 **修复了升级问题：**
@@ -287,6 +313,6 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 **Azure AD Sync 的初始版本。**
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0926_2016-->

@@ -1,29 +1,35 @@
 <properties 
 	pageTitle="使用 Azure 门户将 VMM 云中的 Hyper-V 虚拟机复制到辅助 VMM 站点 | Azure"
 	description="介绍如何部署 Azure Site Recovery，以便使用 Azure 门户来协调 VMM 云中 Hyper-V VM 到辅助 VMM 站点的复制、故障转移和恢复。"
-	services="site-recovery" 
-	documentationCenter="" 
-	authors="rayne-wiselman" 
-	manager="jwhit" 
-	editor="tysonn"/>
+	services="site-recovery"
+	documentationCenter=""
+	authors="rayne-wiselman"
+	manager="jwhit"
+	editor=""/>
 
 <tags
 	ms.service="site-recovery"
-	ms.date="05/26/2016"
-	wacn.date=""/>
+	ms.workload="backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/23/2016"
+	wacn.date=""
+	ms.author="raynew"/>
 
 # 使用 Azure 门户将 VMM 云中的 Hyper-V 虚拟机复制到辅助 VMM 站点
 
 > [AZURE.SELECTOR]
-- [Azure 门户](site-recovery-vmm-to-vmm.md)
-- [经典门户](site-recovery-vmm-to-vmm-classic.md)
+- [Azure 门户](/documentation/articles/site-recovery-vmm-to-vmm/)
+- [经典门户](/documentation/articles/site-recovery-vmm-to-vmm-classic/)
+- [PowerShell - Resource Manager](/documentation/articles/site-recovery-vmm-to-vmm-powershell-resource-manager/)
 
 欢迎使用 Azure Site Recovery！ 如果你要将 System Center Virtual Machine Manager (VMM) 云中管理的本地 Hyper-V 虚拟机复制到辅助站点，请参考本文。本文介绍如何在 Azure 门户中使用 Azure Site Recovery 设置复制。
 
-> [AZURE.NOTE] Azure 提供两个不同的[部署模型](/documentation/articles/resource-manager-deployment-model)用于创建和处理资源：Azure Resource Manager (ARM) 和经典。Azure 还有两个门户 — 支持经典部署模型的 Azure 经典门户，以及支持两种部署模型的 Azure 门户。
+> [AZURE.NOTE] Azure 提供两个不同的[部署模型](/documentation/articles/resource-manager-deployment-model/)来创建和处理资源：Azure Resource Manager (ARM) 和经典。Azure 还有两个门户 – 支持经典部署模型的 Azure 经典门户，以及支持两种部署模型的 Azure 门户。
 
 
-Azure 门户中的 Azure Site Recovery 提供许多新功能：
+Azure 门户中的 Azure Site Recovery 提供多项新功能：
 
 - 在 Azure 门户中，Azure 备份和 Azure Site Recovery 服务合并成单个恢复服务保管库，以便从单个位置设置和管理业务连续性与灾难恢复 (BCDR)。统一仪表板可让你监视和管理对本地站点与 Azure 公有云的操作。
 - 具有与云解决方案提供程序 (CSP) 一起预配的 Azure 订阅的用户现在可以在 Azure 门户中管理 Site Recovery 操作。
@@ -36,7 +42,7 @@ Azure 门户中的 Azure Site Recovery 提供许多新功能：
 
 组织需要制定 BCDR 策略来确定应用、工作负荷和数据如何在计划和非计划停机期间保持运行和可用，并尽快恢复正常运行情况。BCDR 策略应保持业务数据的安全性和可恢复性，并确保在发生灾难时工作负荷持续可用。
 
-站点恢复是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。当主要位置恢复正常时，你可以故障转移回到主要位置。在 [What is Azure Site Recovery?（什么是 Azure Site Recovery？）](/documentation/articles/site-recovery-overview)中了解详细信息
+站点恢复是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。当主要位置恢复正常时，你可以故障转移回到主要位置。在[什么是 Azure Site Recovery？](/documentation/articles/site-recovery-overview/)中了解详细信息
 
 本文提供将 VMM 云中的本地 Hyper-V VM 复制到辅助 VMM 站点所需的全部信息。其中包括体系结构概述、规划信息，以及配置本地服务器、复制设置和容量规划的部署步骤。设置基础结构之后，可以在要保护的计算机上启用复制，并检查故障转移是否可以正常工作。
 
@@ -45,7 +51,7 @@ Azure 门户中的 Azure Site Recovery 提供许多新功能：
 - 站点恢复通过将 Hyper-V VM 上运行的业务工作负荷和应用程序复制到辅助 Hyper-V 服务器来为其提供保护。
 - 恢复服务门户提供单个位置用于设置、管理和监视复制、故障转移及恢复。
 - 你可以轻松运行从主要本地基础结构到辅助站点的故障转移，以及从辅助站点到主站点的故障回复（还原）。
-- 你可以配置包含多个计算机的恢复计划，以便分层应用程序工作负荷一起故障转移。 
+- 你可以配置包含多个计算机的恢复计划，以便分层应用程序工作负荷一起故障转移。
 
 ## 方案体系结构
 
@@ -61,9 +67,9 @@ Azure 门户中的 Azure Site Recovery 提供许多新功能：
 
 下表汇总了如何在此方案中存储数据：
 ****
-操作 | **详细信息** | **收集的数据** | **使用** | **必选** 
+操作 | **详细信息** | **收集的数据** | **使用** | **必选**
 --- | --- | --- | --- | ---
-**注册** | 在恢复服务保管库中注册 VMM 服务器。如果以后想要取消注册服务器，可通过从 Azure 门户删除服务器信息来实现此目的。 | 注册 VMM 服务器之后，站点恢复将收集、处理和传输有关 VMM 服务器的元数据以及站点恢复检测到的 VMM 云的名称。 | 数据用于识别相应的 VMM 服务器并与其通信，以及配置相应 VMM 云的设置。 | 这是必需的功能。如果不想要将此信息发送到站点恢复，则不应使用站点恢复服务。 
+**注册** | 在恢复服务保管库中注册 VMM 服务器。如果以后想要取消注册服务器，可通过从 Azure 门户删除服务器信息来实现此目的。 | 注册 VMM 服务器之后，站点恢复将收集、处理和传输有关 VMM 服务器的元数据以及站点恢复检测到的 VMM 云的名称。 | 数据用于识别相应的 VMM 服务器并与其通信，以及配置相应 VMM 云的设置。 | 这是必需的功能。如果不想要将此信息发送到站点恢复，则不应使用站点恢复服务。
 **启用复制** | Azure Site Recovery 提供程序安装在 VMM 服务器上，是用于与站点恢复服务通信的通道。该提供程序是 VMM 进程中承载的一个动态链接库 (DLL)。在安装该提供程序后，会在 VMM 管理员控制台中启用“数据中心恢复”功能。新的和现有的 VM 可以启用此功能来为 VM 提供保护。 | 设置此属性后，提供程序会将 VM 的名称和 ID 发送到站点恢复。复制是通过 Windows Server 2012 或 Windows Server 2012 R2 Hyper-V 副本启用的。虚拟机数据将从一台 Hyper-V 主机复制到另一台主机（通常位于一个不同的“恢复”数据中心内）。 | 站点恢复使用元数据填充 Azure 门户中的 VM 信息。 | 此功能是服务必不可少的组成部分，不可关闭。如果你不想要发送此信息，请不要为 VM 启用站点恢复保护。请注意，该提供程序发送到站点恢复的所有数据都是通过 HTTPS 发送的。
 **恢复计划** | 恢复计划可帮助你为恢复数据中心构建业务流程计划。你可以定义多个 VM 或一组虚拟机在恢复站点上启动时应当遵循的顺序。你还可以指定在恢复每个 VM 时要运行的任何自动脚本，或者要采取的任何手动操作。通常会在恢复计划级别触发故障转移以实现协调的恢复。 | 站点恢复将收集、处理和传输恢复计划的元数据，包括虚拟机元数据以及任何自动化脚本和手动操作说明的元数据。 | 元数据用于在 Azure 门户中构建恢复计划。 | 此功能是服务必不可少的组成部分，不可关闭。如果不想要将此信息发送到站点恢复，请不要创建恢复服务。
 **网络映射** | 将主数据中心内的网络信息映射到恢复数据中心。当在恢复站点上恢复 VM 时，网络映射可帮助建立网络连接。 | 站点恢复将收集、处理和传输每个站点（主站点和数据中心）的逻辑网络的元数据。 | 元数据用于填充网络设置，以便可以映射网络信息。 | 此功能是服务必不可少的组成部分，不可关闭。如果不想要将此信息发送到站点恢复，请不要使用网络映射。
@@ -74,26 +80,26 @@ Azure 门户中的 Azure Site Recovery 提供许多新功能：
 
 下面是在 Azure 中部署此方案所需的项：
 
-**先决条件** | **详细信息** 
+**先决条件** | **详细信息**
 --- | ---
-**Azure**| 需要一个 [Microsoft Azure](https://azure.cn/) 帐户。你可以从 [1 元试用版](/pricing/1rmb-trial/)开始。[详细了解](/home/features/site-recovery#price)站点恢复定价。 
+**Azure**| 你将需要一个 [Microsoft Azure](https://azure.cn/) 帐户。你可以从 [1rmb 试用版](/pricing/1rmb-trial/)开始。[详细了解](/pricing/details/site-recovery/) Site Recovery 定价。 
 
 
 ## 本地先决条件
 
 下面是在主要和辅助本地站点中部署此方案所要满足的条件：
 
-**先决条件** | **详细信息** 
+**先决条件** | **详细信息**
 --- | ---
-**VMM** | 我们建议在主站点和辅助站点中各部署一个 VMM 服务器。<br/><br/> 也可以[在单个 VMM 服务器上的云之间复制](/documentation/articles/site-recovery-single-vmm)。为此，至少需要在 VMM 服务器上配置两个云。<br/><br/> VMM 服务器应当至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每个 VMM 服务器上必须配置了一个或多个云，所有云中必须设置了 Hyper-V 容量配置文件。<br/><br/>云必须包含一个或多个 VMM 主机组。<br/><br/>在 [Configuring the VMM cloud fabric](/documentation/articles/site-recovery-best-practices/)（配置 VMM 云结构）和 [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)（演练：使用 System Center 2012 SP1 VMM 创建私有云）中详细了解如何设置 VMM 云。<br/><br/> VMM 服务器需要 Internet 访问权限。 
+**VMM** | 我们建议在主站点和辅助站点中各部署一个 VMM 服务器。<br/><br/> 也可以[在单个 VMM 服务器上的云之间复制](/documentation/articles/site-recovery-single-vmm/)。为此，至少需要在 VMM 服务器上配置两个云。<br/><br/> VMM 服务器应当至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每个 VMM 服务器上必须配置了一个或多个云，所有云中必须设置了 Hyper-V 容量配置文件。<br/><br/>云必须包含一个或多个 VMM 主机组。<br/><br/>在 [Configuring the VMM cloud fabric](/documentation/articles/site-recovery-best-practices/)（配置 VMM 云结构）和 [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)（演练：使用 System Center 2012 SP1 VMM 创建私有云）中详细了解如何设置 VMM 云。<br/><br/> VMM 服务器需要 Internet 访问权限。 
 **Hyper-V** | Hyper-V 服务器必须至少运行具有 Hyper-V 角色且安装了最新更新的 Windows Server 2012。<br/><br/> Hyper-V 服务器应包含一个或多个 VM。<br/><br/> Hyper-V 主机服务器应位于主要和辅助 VMM 云中的主机组内。<br/><br/> 如果正在 Windows Server 2012 R2 上的群集中运行 Hyper-V，则应安装[更新 2961977](https://support.microsoft.com/zh-cn/kb/2961977)<br/><br/>如果正在 Windows Server 2012 上的群集中运行 Hyper-V，请注意，如果使用基于静态 IP 地址的群集，则不会自动创建该群集代理。你需要手动配置群集代理。[了解详细信息](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)。
-**提供商** | 在站点恢复部署期间，需要在 VMM 服务器上安装 Azure Site Recovery 提供程序。提供程序通过 HTTPS 443 与站点恢复通信，以协调复制。数据复制是通过 LAN 或 VPN 连接在主要和辅助 Hyper-V 服务器之间发生的。<br/><br/> 在 VMM 服务器上运行的提供程序需有权访问以下 URL： *.hypervrecoverymanager.windowsazure.cn； *.accesscontrol.chinacloudapi.cn； *.backup.windowsazure.cn； *.blob.core.chinacloudapi.cn； *.store.core.chinacloudapi.cn。<br/><br/> 此外，还要允许从 VMM 服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)的防火墙通信，并允许 HTTPS (433) 协议。
+**提供商** | 在站点恢复部署期间，需要在 VMM 服务器上安装 Azure Site Recovery 提供程序。提供程序通过 HTTPS 443 与站点恢复通信，以协调复制。数据复制是通过 LAN 或 VPN 连接在主要和辅助 Hyper-V 服务器之间发生的。<br/><br/> 在 VMM 服务器上运行的提供程序需有权访问以下 URL：*.hypervrecoverymanager.windowsazure.cn; *.accesscontrol.chinacloudapi.cn; *.backup.windowsazure.cn; *.blob.core.chinacloudapi.cn; *.store.core.chinacloudapi.cn.<br/><br/> 此外，还要允许从 VMM 服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)的防火墙通信，并允许 HTTPS (443) 协议。
 
 ## 准备部署
 
 若要准备部署，需要：
 
-1. [准备 VMM 服务器](#prepare-the-vmm-server)以便进行站点恢复部署。 
+1. [准备 VMM 服务器](#prepare-the-vmm-server)以便进行站点恢复部署。
 2. [准备网络映射](#prepare-for-network-mapping)。设置网络，以便能够配置网络映射。
 
 ### 准备 VMM 服务器
@@ -113,13 +119,13 @@ Azure 门户中的 Azure Site Recovery 提供许多新功能：
 	- 确保源 Hyper-V 主机服务器上的 VM 已连接到 VMM VM 网络。该网络应当该链接到与该云相关联的逻辑网络。
 	- 验证用于恢复的辅助云中是否配置了相应的 VM 网络。该 VM 网络应该链接到与辅助云关联的逻辑网络。
 
-- [详细了解](/documentation/articles/site-recovery-network-mapping)网络映射的工作原理。
+- [详细了解](/documentation/articles/site-recovery-network-mapping/)网络映射的工作原理。
 
 ## 准备使用单个 VMM 服务器进行部署
 
-如果你只有一个 VMM 服务器，可以在 VMM 云中将 Hyper-V 主机上的 VM 复制到 [Azure](/documentation/articles/site-recovery-vmm-to-azure)，或复制到辅助 VMM 云。我们建议使用第一个选项，因为云之间的复制不是无缝的，但是，如果你要这样做，则需要执行以下操作：
+如果只有一个 VMM 服务器，可以在 VMM 云中将 Hyper-V 主机上的 VM 复制到 [Azure](/documentation/articles/site-recovery-vmm-to-azure/)，或复制到辅助 VMM 云。我们建议使用第一个选项，因为云之间的复制不是无缝的，但是，如果你要这样做，则需要执行以下操作：
 
-1. **在 Hyper-V VM 上设置 VMM**。为此，我们建议你考虑将 VMM 所使用的 SQL Server 实例归置到同一 VM 上。这可以节省时间，因为只需创建一个 VM。如果你希望使用 SQL Server 的远程实例，而此时发生了中断，则需先恢复该实例，然后再恢复 VMM。
+1. **在 Hyper-V VM 上设置 VMM**。为此，我们建议你考虑将 VMM 所使用的 SQL Server 实例归置到同一 VM 上。这可以节省时间，因为只需创建一个 VM。如果希望使用 SQL Server 的远程实例，而此时发生了中断，则需先恢复该实例，然后再恢复 VMM。
 2. **确保该 VMM 服务器至少配置了两个云**。一个云将包含你要复制的 VM，另一个云将充当辅助位置。包含要保护的 VM 的云应该满足[先决条件](#on-premises-prerequisites)。
 3. 如本文中所述设置站点恢复。在保管库中创建并注册 VMM 服务器、设置复制策略，然后启用复制。应该指定初始复制要通过网络进行。
 4. 设置网络映射时，应将主云的 VM 网络映射到辅助云的 VM 网络。
@@ -141,7 +147,7 @@ Azure 门户中的 Azure Site Recovery 提供许多新功能：
 	![新保管库](./media/site-recovery-vmm-to-vmm/new-vault3.png)
 
 3. 在“名称”中，指定一个友好名称以标识该保管库。如果你有多个订阅，请选择其中一个。
-4. [创建新资源组](/documentation/articles/resource-group-portal#create-resource-group)或选择现有的资源组，并指定 Azure 区域。计算机将复制到此区域。若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息](/home/features/site-recovery/#price)中的“地域可用性”。
+4. [创建新资源组](/documentation/articles/resource-group-template-deploy-portal)或选择现有的资源组，并指定 Azure 区域。计算机将复制到此区域。若要查看受支持的区域，请参阅 Azure Site Recovery 价格详细信息中的“地域可用性”。[](/pricing/details/site-recovery/)
 4. 如果要从仪表板快速访问保管库，请单击“固定到仪表板”>“创建保管库”。
 
 	![新保管库](./media/site-recovery-vmm-to-vmm/new-vault-settings.png)
@@ -164,9 +170,9 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 选择要复制的内容以及要复制到的位置。
 
 1. 在“恢复服务保管库”边栏选项卡中选择保管库，然后单击“设置”。
-2. 在“设置”>“快速启动”中，单击“站点恢复”>“步骤 1: 准备基础结构”>“保护目标”。
-3. 在“保护目标”中选择“到恢复站点”，然后选择“是，使用 Hyper-V”。 
-4. 选择“是”指明要使用 VMM 来管理 Hyper-V 主机，如果有辅助 VMM 服务器，请选择“是”。如果要在单个 VMM 服务器上的云之间部署复制，请单击“否”。然后，单击“确定”。 
+2. 在“设置”>“快速启动”中，单击“Site Recovery”>“步骤 1: 准备基础结构”>“保护目标”。
+3. 在“保护目标”中选择“到恢复站点”，然后选择“是，使用 Hyper-V”。
+4. 选择“是”指明要使用 VMM 来管理 Hyper-V 主机，如果有辅助 VMM 服务器，请选择“是”。如果要在单个 VMM 服务器上的云之间部署复制，请单击“否”。然后，单击“确定”。
 
 	![选择目标](./media/site-recovery-vmm-to-vmm/choose-goals.png)
 
@@ -175,7 +181,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 在 VMM 服务器上安装 Azure Site Recovery 提供程序，并在保管库中注册该服务器。
 
-1. 单击“步骤 2: 准备基础结构”>“源”。 
+1. 单击“步骤 2: 准备基础结构”>“源”。
 
 	![设置源](./media/site-recovery-vmm-to-vmm/goals-source.png)
 
@@ -185,7 +191,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 2. 在“添加服务器”边栏选项卡中，检查“System Center VMM 服务器”是否出现在“服务器类型”中，以及 VMM 服务器是否符合[先决条件和 URL 要求](#on-premises-prerequisites)。
 4. 下载 Azure Site Recovery 提供程序安装文件。
-5. 下载注册密钥。运行安装程序时需要用到此密钥。生成的密钥有效期为 5 天。 
+5. 下载注册密钥。运行安装程序时需要用到此密钥。生成的密钥有效期为 5 天。
 
 	![设置源](./media/site-recovery-vmm-to-vmm/set-source3.png)
 
@@ -208,29 +214,38 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 	![安装位置](./media/site-recovery-vmm-to-vmm/provider-register.png)
 
-4. 在“代理设置”中，指定在 VMM 服务器上运行的提供程序如何通过 Internet 连接到站点恢复。
+9. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。单击*“下一步”*。
 
-	- 如果你希望提供程序直接进行连接，请选择“不使用代理直接连接”。
-	- 如果你希望使用当前已在服务器上设置的代理进行连接，请选择“使用现有代理设置进行连接”。
-	- 如果现有代理要求身份验证，或者你希望使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”。
-	- 如果你使用自定义代理，则需指定地址、端口和凭据。
-	- 如果你使用代理，应事先允许[先决条件](#provider-and-agent-prerequisites)中所述的 URL。
-	- 如果你使用自定义代理，则将使用指定的代理凭据自动创建一个 VMM 运行身份帐户 (DRAProxyAccount)。对代理服务器进行配置以便该帐户可以成功通过身份验证。可以在 VMM 控制台中修改 VMM 运行身份帐户设置。在“设置”中，展开“安全性”>“运行方式帐户”，然后修改 DRAProxyAccount 的密码。你将需要重新启动 VMM 服务以使此设置生效。
+	![服务器注册](./media/site-recovery-vmm-to-vmm-classic/vaultcred.PNG)
 
-	![Internet](./media/site-recovery-vmm-to-vmm/provider3.png)
+7. 在“Internet 连接”中，指定在 VMM 服务器上运行的提供程序如何连接到 Internet。选择“使用现有代理设置进行连接”以使用服务器上配置的默认 Internet 连接设置。
 
-4. 在“保管库设置”中，单击“浏览”以选择下载的密钥文件。指定 Azure 订阅和保管库名称。
+	![Internet 设置](./media/site-recovery-vmm-to-vmm-classic/proxydetails.PNG)
 
-	![服务器注册](./media/site-recovery-vmm-to-vmm/provider-key2.png)
+	- 如果希望使用自定义代理，则应当在安装该提供程序之前设置它。当配置自定义代理设置时，会运行测试来检查代理连接。
+	- 如果确实使用自定义代理，或者默认代理要求进行身份验证，则需要输入代理详细信息，包括代理地址和端口。
+	- 以下 URL 应可从 VMM 服务器和 Hyper-v 主机访问
+		- *.hypervrecoverymanager.windowsazure.cn
+		- *.accesscontrol.chinacloudapi.cn
+		- *.backup.windowsazure.cn
+		- *.blob.core.chinacloudapi.cn
+		- *.store.core.chinacloudapi.cn
+	- 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)中所述的 IP 地址，以及 HTTPS (443) 协议。
+	- 如果你使用自定义代理，则将使用指定的代理凭据自动创建一个 VMM 运行身份帐户 (DRAProxyAccount)。对代理服务器进行配置以便该帐户可以成功通过身份验证。可以在 VMM 控制台中修改 VMM 运行身份帐户设置。若要执行此操作，请打开“设置”工作区，展开“安全性”，单击“运行身份帐户”，然后修改 DRAProxyAccount 的密码。你将需要重新启动 VMM 服务以使此设置生效。
 
-5. 在“注册”>“保存证书的位置”中，单击“下一步”。用于加密的证书与此方案无关。只在复制到 Azure 存储空间时才会用到它。
 
-8. 在“服务器名称”中，指定一个友好名称以在保管库中标识该 VMM 服务器。在群集配置中，请指定 VMM 群集角色名称。
-9. 如果要将 VMM 服务器上所有云的元数据与保管库同步，请启用“同步云元数据”。此操作在每个服务器上只需执行一次。如果你不希望同步所有云，可以将此设置保留为未选中状态并在 VMM 控制台中的云属性中分别同步各个云。单击“下一步”以完成此过程。
+8. 在“注册密钥”中，选择从 Azure Site Recovery 下载并复制到 VMM 服务器的密钥。
 
-	![服务器注册](./media/site-recovery-vmm-to-vmm/provider-sync.png)
 
-10. 注册随即开始。注册完成后，VMM 服务器将显示在保管库的“设置”>“服务器”边栏选项卡中。
+10.  仅当你要将 VMM 云中的 Hyper-V VM 复制到 Azure 时，才使用加密设置。如果要复制到辅助站点，则不使用加密设置。
+
+11.  在“服务器名称”中，指定一个友好名称以在保管库中标识该 VMM 服务器。在群集配置中，请指定 VMM 群集角色名称。
+12.  在“同步云元数据”中，选择是否要将 VMM 服务器上所有云的元数据与保管库进行同步。此操作在每个服务器上只需执行一次。如果你不希望同步所有云，可以将此设置保留为未选中状态并在 VMM 控制台中的云属性中分别同步各个云。
+
+13.  单击“下一步”以完成此过程。注册后，Azure Site Recovery 将检索 VMM 服务器中的元数据。服务器显示在保管库中“服务器”页上的“VMM 服务器”选项卡中。
+
+	![服务器](./media/site-recovery-vmm-to-vmm-classic/provider13.PNG)
+
 11. 当服务器出现在站点恢复控制台中后，请在“源”>“准备源”中选择 VMM 服务器，然后选择 Hyper-V 主机所在的云。然后，单击“确定”。
 
 #### 命令行安装
@@ -255,19 +270,19 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 其中的参数如下：
 
- - **/Credentials**：用于指定注册密钥文件所在位置的必需参数  
+ - **/Credentials**：用于指定注册密钥文件所在位置的必需参数
  - **/FriendlyName**：在 Azure Site Recovery 门户中显示的 Hyper-V 主机服务器名称的必需参数。
  - **/EncryptionEnabled**：可选参数，只会在从 VMM 复制到 Azure 时用到。
  - **/proxyAddress**：可选参数，用于指定代理服务器的地址。
  - **/proxyport**：可选参数，用于指定代理服务器的端口。
  - **/proxyUsername**：可选参数，用于指定代理服务器用户名（如果代理服务器要求身份验证）。
- - **/proxyPassword**：可选参数，用于指定密码，以便通过代理服务器进行身份验证（如果代理服务器要求身份验证）。  
+ - **/proxyPassword**：可选参数，用于指定密码，以便通过代理服务器进行身份验证（如果代理服务器要求身份验证）。
 
 ## 步骤 3：设置目标环境
 
 选择目标 VMM 服务器和云。
 
-1. 单击“准备基础结构”>“目标”，然后选择要使用的目标 VMM 服务器。 
+1. 单击“准备基础结构”>“目标”，然后选择要使用的目标 VMM 服务器。
 2.	此时会显示该服务器上已与站点恢复同步的云。选择目标云。
 
 	![目标](./media/site-recovery-vmm-to-vmm/target-vmm.png)
@@ -319,7 +334,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 设置源与目标网络之间的网络映射。
 
-- [阅读此文](#prepare-for-network-mapping)获取网络映射的快速概述。此外，请[阅读此文](/documentation/articles/site-recovery-network-mapping)以获取更深入的说明。
+- [阅读此文](#prepare-for-network-mapping)获取网络映射的快速概述。此外，请[阅读此文](/documentation/articles/site-recovery-network-mapping/)以获取更深入的说明。
 - 验证 VMM 服务器上的虚拟机是否已连接到 VM 网络。
 
 按如下所述配置映射：
@@ -329,7 +344,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 	![网络映射](./media/site-recovery-vmm-to-azure/network-mapping1.png)
 
 2. 在“添加网络映射”选项卡中，选择源和目标 VMM 服务器。系统将检索与 VMM 服务器关联的 VM 网络。
-3. 在“源网络”中，从与主 VMM 服务器关联的 VM 网络列表中选择要使用的网络。 
+3. 在“源网络”中，从与主 VMM 服务器关联的 VM 网络列表中选择要使用的网络。
 6. 在“目标网络”中，选择要在辅助 VMM 服务器上使用的网络。然后，单击“确定”。
 
 	![网络映射](./media/site-recovery-vmm-to-vmm/network-mapping2.png)
@@ -350,7 +365,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 - 收集有关复制环境的信息，包括 VM 数、每个 VM 的磁盘数和每个磁盘的存储空间。
 - 估计复制的增量数据的每日更改（变动）率。可以使用 [Hyper-V 副本 Capacity Planner](https://www.microsoft.com/download/details.aspx?id=39057) 来帮助执行此操作。
 
-1.	单击“下载”以下载该工具，然后开始运行。[阅读](/documentation/articles/site-recovery-capacity-planner)该工具随附的文章。
+1.	单击“下载”以下载该工具，然后开始运行。[阅读](/documentation/articles/site-recovery-capacity-planner/)该工具随附的文章。
 2.	完成后，请在“是否已运行 Capacity Planner?”中选择“是”。
 
 	![容量规划](./media/site-recovery-vmm-to-azure/gs-capacity-planning.png)
@@ -368,11 +383,11 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 可以使用带宽权重设置，或按每个辅助站点的位数来限制流量。如果使用群集，则需要在所有群集节点上执行此操作。有关详细信息，请参阅：
 
 
-- Thomas Maurer 的博客 [Throttling Hyper-V Replica Traffic（限制 Hyper-V 复本流量）](http://www.thomasmaurer.ch/2013/12/throttling-hyper-v-replica-traffic/)
+- Thomas Maurer 的博客 [Throttling Hyper-V Replica Traffic](http://www.thomasmaurer.ch/2013/12/throttling-hyper-v-replica-traffic/)（限制 Hyper-V 复本流量）
 - 有关 [New-NetQosPolicy cmdlet](https://technet.microsoft.com/zh-cn/library/hh967468.aspx) 的更多信息。
 
 
-## 步骤 6：启用复制 
+## 步骤 6：启用复制
 
 现在，请按如下所述启用复制：
 
@@ -385,7 +400,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 	![启用复制](./media/site-recovery-vmm-to-vmm/enable-replication2.png)
 
 3. 在“目标”边栏选项卡中，确认辅助 VMM 服务器和云。
-4. 在“虚拟机”中，从列表中选择要保护的 VM。 
+4. 在“虚拟机”中，从列表中选择要保护的 VM。
 
 	![启用虚拟机保护](./media/site-recovery-vmm-to-vmm/enable-replication5.png)
 
@@ -411,11 +426,11 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 ### 准备故障转移
 
-- 若要全面测试部署，需要一个基础结构，使复制的计算机能够按预期工作。如果要测试 Active Directory 和 DNS，可以通过 DNS 创建虚拟机作为域控制器，并使用 Azure Site Recovery 将此虚拟机复制到 Azure。在 [Active Directory 测试故障转移注意事项](/documentation/articles/site-recovery-active-directory#considerations-for-test-failover)中了解详细信息。
-- 此文中的说明介绍了如何不使用网络来运行测试故障转移。此选项将测试 VM 故障转移，但不测试 VM 的网络设置。[详细了解](/documentation/articles/site-recovery-failover#run-a-test-failover)其他选项。
+- 若要全面测试部署，需要一个基础结构，使复制的计算机能够按预期工作。如果要测试 Active Directory 和 DNS，可以通过 DNS 创建虚拟机作为域控制器，并使用 Azure Site Recovery 将此虚拟机复制到 Azure。在 [Active Directory 测试性故障转移注意事项](/documentation/articles/site-recovery-active-directory/#considerations-for-test-failover)中了解详细信息。
+- 此文中的说明介绍了如何不使用网络来运行测试故障转移。此选项将测试 VM 故障转移，但不测试 VM 的网络设置。[详细了解](/documentation/articles/site-recovery-failover/#run-a-test-failover)其他选项。
 - 如果要运行非计划的故障转移而不是测试故障转移，请注意以下事项：
 
-	- 在运行非计划的故障转移之前，请尽可能关闭主计算机。这样可确保不会同时运行源计算机和副本计算机。 
+	- 在运行非计划的故障转移之前，请尽可能关闭主计算机。这样可确保不会同时运行源计算机和副本计算机。
 	- 当你运行非计划的故障转移时，将会停止从主计算机复制数据，因此在非计划的故障转移开始以后，将不会传输任何数据增量。此外，如果针对恢复计划运行非计划的故障转移，则即使发生错误，该计划也会一直运行到完成。
 
 
@@ -427,7 +442,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 	![测试故障转移](./media/site-recovery-vmm-to-vmm/test-failover.png)
 
-2. 若要故障转移某个恢复计划，请在“设置”>“恢复计划”中，右键单击该计划 >“测试故障转移”。若要创建恢复计划，请[遵循这些说明](/documentation/articles/site-recovery-create-recovery-plans)。
+2. 若要故障转移某个恢复计划，请在“设置”>“恢复计划”中，右键单击该计划 >“测试性故障转移”。若要创建恢复计划，请[遵循这些说明](/documentation/articles/site-recovery-create-recovery-plans/)。
 2. 在“测试故障转移”中，选择“无”。使用此选项可测试 VM 是否按预期进行故障转移，但复制的 VM 不会连接到任何网络。
 
 	![测试故障转移](./media/site-recovery-vmm-to-vmm/test-failover1.png)
@@ -440,7 +455,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 	-  单击“说明”以记录并保存与测试故障转移相关联的任何观测结果。
 
 5. 将在副本虚拟机所在的同一主机上创建测试虚拟机。它将被添加到副本虚拟机所在的同一个云中。
-6. 确认 VM 已成功启动后，单击“测试故障转移已完成”。在此阶段，将删除站点恢复在测试故障转移期间自动创建的所有元素。  
+6. 确认 VM 已成功启动后，单击“测试故障转移已完成”。在此阶段，将删除站点恢复在测试故障转移期间自动创建的所有元素。
 
 	> [AZURE.NOTE] 如果测试故障转移持续了两周以上，系统会强行将其结束。
 
@@ -477,6 +492,6 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 ## 后续步骤
 
-设置并运行部署后，请[详细了解](/documentation/articles/site-recovery-failover)不同类型的故障转移。
+设置并运行部署后，请[详细了解](/documentation/articles/site-recovery-failover/)不同类型的故障转移。
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0926_2016-->
