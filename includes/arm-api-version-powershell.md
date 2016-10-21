@@ -1,2 +1,0 @@
->[AZURE.NOTE] 目前在 Azure 中国区，Microsoft/存储空间的云环境仍使用 API 版本 2015-06-15，而最新的 Azure PowerShell 已升级到 2016-03-30。因此，若要在 Azure 中国区管理 Microsoft/存储空间，需将 Azure PowerShell 降级到 1.2.2。你可以从 [GitHub 中 Azure PowerShell 的版本页](https://github.com/Azure/azure-powershell/releases)下载完整的安装程序。
-<!---HONumber=Mooncake_0620_2016-->
