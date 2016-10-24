@@ -7,26 +7,29 @@
 	manager="femila" 
 	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.date="05/25/2016"
-	wacn.date=""/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/16/2016"
+	ms.author="markvi"/>
 
 # Azure Active Directory Premium 入门
 
 
 若要注册 Active Directory Premium，可以使用多个选项：
 
-**Azure 或 Office 365** - Azure 或 Office 365 订户可以在线购买 Active Directory Premium。
-有关详细步骤，请参阅 [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)（如何购买 Azure Active Directory Premium - 现有客户）或 [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)（如何购买 Azure Active Directory Premium - 新客户）。
+**Azure 或 Office 365** - Azure 或 Office 365 订户可以在线购买 Active Directory Premium。有关详细步骤，请参阅 [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)（如何购买 Azure Active Directory Premium - 现有客户）或 [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)（如何购买 Azure Active Directory Premium - 新客户）。
 
-**企业移动 + 安全性** - 企业移动 + 安全性（以前称为“企业移动性套件”）提供一种经济高效的方式，让组织可以在一个许可计划下同时使用以下服务：Active Directory Premium、Azure Rights Management 和 Microsoft Intune。有关详细信息，请参阅[企业移动 + 安全性](https://www.microsoft.com/zh-cn/server-cloud/enterprise-mobility/overview.aspx)网站。若要获取 30 天免费试用版，请单击[此处](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0)。
-
-
-**Microsoft 批量许可** - 可以通过 [Microsoft 企业协议](https://www.microsoft.com/zh-cn/licensing/licensing-programs/enterprise.aspx)（250 或更多许可证）或[开放批量许可](https://www.microsoft.com/zh-cn/licensing/licensing-programs/open-license.aspx)（5-250 个许可证）计划获取 Azure Active Directory Premium。
+**企业移动 + 安全性** - 企业移动 + 安全性（以前称为“企业移动性套件”）提供一种经济高效的方式，让组织可以在一个许可计划下同时使用以下服务：Active Directory Premium、Azure Rights Management 和 Microsoft Intune。有关详细信息，请参阅[企业移动 + 安全性](https://www.microsoft.com/zh-CN/server-cloud/enterprise-mobility/overview.aspx)网站。若要获取 30 天免费试用版，请单击[此处](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0)。
 
 
-本主题说明如何开始使用通过批量许可计划购买的 Azure Active Directory Premium。如果你还不熟悉 Azure Active Directory 的不同版本，请参阅 [Azure Active Directory editions](/documentation/articles/active-directory-editions/)（Azure Active Directory 版本）。
+**Microsoft 批量许可** - 可以通过 [Microsoft 企业协议](https://www.microsoft.com/zh-CN/licensing/licensing-programs/enterprise.aspx)（250 或更多许可证）或[开放批量许可](https://www.microsoft.com/zh-CN/licensing/licensing-programs/open-license.aspx)（5-250 个许可证）计划获取 Azure Active Directory Premium。
+
+
+本主题说明如何开始使用通过批量许可计划购买的 Azure Active Directory Premium。如果你还不熟悉 Azure Active Directory 的不同版本，请参阅 [Azure Active Directory editions](active-directory-editions.md)（Azure Active Directory 版本）。
 
 > [AZURE.NOTE]
 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
@@ -36,15 +39,13 @@
 
 ## 步骤 1：注册 Active Directory Premium
 
-若要注册，请参阅 [How to purchase through Volume Licensing](http://www.microsoft.com/zh-cn/licensing/how-to-buy/how-to-buy.aspx)（如何通过批量许可购买）。
+若要注册，请参阅 [How to purchase through Volume Licensing](http://www.microsoft.com/zh-CN/licensing/how-to-buy/how-to-buy.aspx)（如何通过批量许可购买）。
 
 
 
 ## 步骤 2：激活许可计划
 
-这是否为通过 Microsoft 的企业批量许可计划购买的第一个许可计划？
-如果是，则在完成购买后，你将收到一封确认电子邮件。
-必须通过这封电子邮件才能激活你的第一个许可计划。
+这是否为通过 Microsoft 的企业批量许可计划购买的第一个许可计划？ 如果是，则在完成购买后，你将收到一封确认电子邮件。必须通过这封电子邮件才能激活你的第一个许可计划。
 
 以后针对此目录购买任何许可证时，都会在同一目录中自动激活许可证。
 
@@ -76,8 +77,7 @@
 
 如果你以前用过 Microsoft Azure，则可以转到[步骤 4](#step-4-assign-license-to-user-accounts)。
 
-为你的目录预配许可证时，你会收到**欢迎电子邮件**。
-此电子邮件会确认你可以开始管理 Azure Active Directory Premium 或企业移动性套件的许可证和功能。
+为你的目录预配许可证时，你会收到**欢迎电子邮件**。此电子邮件会确认你可以开始管理 Azure Active Directory Premium 或企业移动性套件的许可证和功能。
 
 如果在收到欢迎电子邮件之前尝试激活 Azure Active Directory 访问权限，你会看到以下错误消息。
 
@@ -118,7 +118,7 @@
 
 
 
-## <a name="step-4-assign-license-to-user-accounts"></a>步骤 4：向用户帐户分配许可证
+## 步骤 4：向用户帐户分配许可证
 
 在开始使用购买的计划之前，需要先手动将许可证分配到组织中的用户帐户，以便他们能够使用 Premium 随附的丰富功能。请使用以下步骤向用户分配许可证，以便他们能够使用 Azure Active Directory Premium 功能。
 
@@ -148,8 +148,8 @@
 
 ## 后续步骤
 
-- [向“登录”和“访问面板”页添加公司品牌](/documentation/articles/active-directory-add-company-branding/)
-- [查看访问和使用情况报告](/documentation/articles/active-directory-view-access-usage-reports/)
+- [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
+- [查看访问和使用情况报告](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-get-started-premium/MOLSEmail.png
@@ -165,4 +165,4 @@
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

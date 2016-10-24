@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure 门户创建新的弹性池 | Azure"
+	pageTitle="使用 Azure 门户创建新的弹性池 | Microsoft Azure"
 	description="如何将可缩放的弹性数据库池添加到 SQL 数据库配置，以简化多个数据库的管理和资源共享。"
 	keywords="可缩放的数据库,数据库配置"
 	services="sql-database"
@@ -21,15 +21,15 @@
 # 使用 Azure 门户创建新的弹性数据库池
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/sql-database-elastic-pool-create-portal/)
-- [PowerShell](/documentation/articles/sql-database-elastic-pool-create-powershell/)
-- [C#](/documentation/articles/sql-database-elastic-pool-create-csharp/)
+- [Azure 门户](sql-database-elastic-pool-create-portal.md)
+- [PowerShell](sql-database-elastic-pool-create-powershell.md)
+- [C#](sql-database-elastic-pool-create-csharp.md)
 
-本文介绍如何在 [Azure 门户](https://portal.azure.cn/)中创建可缩放的[弹性数据库池](/documentation/articles/sql-database-elastic-pool/)。可以通过两种方法创建池。如果你知道想要的池设置，可以从头开始创建，或者根据服务的建议进行创建。SQL 数据库具有内置智能，可以根据数据库的过去的使用遥测数据来推荐更加经济高效的池设置。
+本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建可缩放的[弹性数据库池](sql-database-elastic-pool.md)。可以通过两种方法创建池。如果你知道想要的池设置，可以从头开始创建，或者根据服务的建议进行创建。SQL 数据库具有内置智能，可以根据数据库的过去的使用遥测数据来推荐更加经济高效的池设置。
 
 可以将多个池添加到服务器，但不能将数据库从不同的服务器添加到同一个池中。若要创建池，需要在 V12 服务器中至少有一个数据库。如果你没有这样的数据库，请参阅[创建首个 Azure SQL 数据库](sql-database-get-started.md)。可以创建只有一个数据库的池，但是池只有在具有多个数据库时才会经济高效。请参阅[弹性数据库池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
 
-> [AZURE.NOTE] 池只能随 SQL 数据库 V12 服务器一起使用。如果在 V11 服务器上有数据库，可以在 V12 服务器上[使用 PowerShell 脚本将它们标识为池的候选数据库](/documentation/articles/sql-database-elastic-pool-database-assessment-powershell/)，然后在一个步骤中[使用 PowerShell 升级到 V12 并创建一个池](/documentation/articles/sql-database-upgrade-server-powershell/)。
+> [AZURE.NOTE] 弹性池在所有 Azure 区域中均已正式发布 (GA)，但美国中北部和印度西部除外，这些区域当前仅发布了预览版。将尽快在这些区域中正式发布弹性池。此外，弹性池当前不支持使用[内存中 OLTP 或内存中分析](sql-database-in-memory.md)的数据库。
 
 ## 步骤 1：创建新池
 
@@ -37,7 +37,7 @@
 
 > [AZURE.NOTE] 无论是否具有服务器，都可以在“SQL 弹性池”边栏选项卡中（在门户左侧的列表下面，单击“浏览”**>**“SQL 弹性池”）创建新池。单击“SQL 弹性池”边栏选项卡上的“+添加”，可提供池预配工作流中创建新服务器的步骤。
 
-1. 在 [Azure 门户](http://portal.azure.cn/)左侧的列表下面，单击“浏览”**>**“SQL 服务器”，然后单击包含要添加到池的数据库的服务器。
+1. 在 [Azure 门户](http://portal.azure.com/)左侧的列表下面，单击“浏览”**>**“SQL 服务器”，然后单击包含要添加到池的数据库的服务器。
 2. 单击“新建池”。
 
     ![将池添加到服务器](./media/sql-database-elastic-pool-create-portal/new-pool.png)
@@ -69,14 +69,13 @@
 设置定价层后，请单击“配置池”，在其中添加数据库、设置池 eDTU 和存储（池 GB），并且在其中为池中的弹性数据库设置最小值和最大值 eDTU。
 
 1. 单击“配置池”
-2. 选择要添加到池的数据库。创建池时该步骤是可选的。创建池后可以添加数据库。
-    若要添加数据库，请单击“添加数据库”，单击要添加的数据库，然后单击“选择”按钮。
+2. 选择要添加到池的数据库。创建池时该步骤是可选的。创建池后可以添加数据库。若要添加数据库，请单击“添加数据库”，单击要添加的数据库，然后单击“选择”按钮。
 
     ![添加数据库](./media/sql-database-elastic-pool-create-portal/add-databases.png)
 
     如果所使用的数据库具有足够的历史使用情况遥测数据，则将更新“估计的弹性 DTU 和 GB 使用量”图表和“弹性 DTU 实际使用量”条形图，以帮助进行配置决策。此外，服务可能会向你提供建议消息，以帮助正确调整池大小。请参阅[动态建议](#dynamic-recommendations)。
 
-3. 使用“配置池”页面上的控件浏览设置并配置池。请参阅 [Elastic pools limits](/documentation/articles/sql-database-elastic-pool/#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)（弹性池限制）以了解有关每个服务层的限制的详细信息，以及参阅 [Price and performance considerations for elastic database pools](/documentation/articles/sql-database-elastic-pool-guidance/)（弹性数据库池的价格和性能注意事项）以了解有关正确调整池大小的详细指南。有关池设置的详细信息，请参阅 [Elastic database pool properties](/documentation/articles/sql-database-elastic-pool/#elastic-database-pool-properties)（弹性数据库池属性）。
+3. 使用“配置池”页面上的控件浏览设置并配置池。请参阅 [Elastic pools limits](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)（弹性池限制）以了解有关每个服务层的限制的详细信息，以及参阅 [Price and performance considerations for elastic database pools](sql-database-elastic-pool-guidance.md)（弹性数据库池的价格和性能注意事项）以了解有关正确调整池大小的详细指南。有关池设置的详细信息，请参阅 [Elastic database pool properties](sql-database-elastic-pool.md#elastic-database-pool-properties)（弹性数据库池属性）。
 
 	![配置弹性池](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
@@ -109,9 +108,9 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 
 ## 其他资源
 
-- [使用门户管理 SQL 数据库弹性池](/documentation/article/sql-database-elastic-pool-manage-portal/)
-- [使用 PowerShell 管理 SQL 数据库弹性池](/documentation/article/sql-database-elastic-pool-manage-powershell/)
-- [使用 C# 管理 SQL 数据库弹性池](/documentation/article/sql-database-elastic-pool-manage-csharp/)
-- [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](/documentation/article/sql-database-elastic-scale-introduction/)
+- [使用门户管理 SQL 数据库弹性池](sql-database-elastic-pool-manage-portal.md)
+- [使用 PowerShell 管理 SQL 数据库弹性池](sql-database-elastic-pool-manage-powershell.md)
+- [使用 C# 管理 SQL 数据库弹性池](sql-database-elastic-pool-manage-csharp.md)
+- [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](sql-database-elastic-scale-introduction.md)
 
-<!---HONumber=Mooncake_0912_2016--->
+<!---HONumber=AcomDC_0921_2016-->

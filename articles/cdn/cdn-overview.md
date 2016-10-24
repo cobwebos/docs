@@ -1,113 +1,90 @@
-<properties 
-	pageTitle="Azure CDN 概述" 
-	description="了解什么是 Azure 内容交付网络 (CDN)，以及如何使用它通过缓存 blob 和静态内容来交付高带宽内容。" 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="zhangmanling" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure CDN 概述 | Microsoft Azure"
+	description="了解什么是 Azure 内容交付网络 (CDN)，以及如何使用它通过缓存 blob 和静态内容来交付高带宽内容。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.date="09/01/2015" 
-	wacn.date=""/>
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="09/01/2016"
+	ms.author="casoper"/>
 
-#Azure 内容交付网络 (CDN) 概述
+# Azure 内容交付网络 (CDN) 概述
 
-Azure 内容交付网络 (CDN) 将云服务所使用的 Azure blob 和静态内容缓存在按特定策略布置好的位置，以便提供最大的带宽，方便将内容交付给用户。
+> [AZURE.NOTE] 本文档介绍 Azure 内容交付网络 (CDN) 内涵、工作原理，以及每个 Azure CDN 产品的功能。如果想要跳过此信息，直接转到有关如何创建 CDN 终结点的教程，请参阅[使用 Azure CDN](cdn-create-new-endpoint.md)。如果想要查看当前 CDN 节点位置的列表，请参阅 [Azure CDN POP 位置](cdn-pop-locations.md)。
 
-如果你已经是 CDN 客户，则现在就可以通过 [Microsoft Azure 管理门户](https://manage.windowsazure.cn)管理你的 CDN 终结点。
+Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布置好的位置，以便提供最大的吞吐量，方便将内容交付给用户。CDN 为开发人员提供了一个全局解决方案，通过在世界各地的物理节点缓存内容来交付高带宽内容。
 
+使用 CDN 来缓存网站资产的优点包括：
 
->[AZURE.NOTE]Azure CDN 有独立的[收费计划](http://www.windowsazure.cn/pricing/)，不同于Azure 存储空间或 Azure 云服务。
- 
-
-CDN 为开发人员提供了一个全局解决方案，通过在世界各地的物理节点缓存内容来交付高带宽内容。如需 CDN 节点位置的最新列表，请参阅 [Azure 内容交付网络 (CDN) POP 位置](http://msdn.microsoft.com/library/azure/gg680302.aspx)。
-
-使用 CDN 来缓存 Azure 数据的优点包括：
-
-- 为远离内容源的最终用户提供更好的性能和用户体验，在使用的应用程序中需要很多“互联网往返”来加载内容
-- 大规模分布以更好地处理瞬间的高负载，例如在产品发布活动开始时出现的高负载。 
-
-
->[AZURE.IMPORTANT]创建或启用 CDN 终结点时，可能需要长达 60 分钟的时间才能完成全球传播。
- 
-首次向 CDN 请求对象时，将直接从 Blob 服务或云服务检索该对象。使用 CDN 语法来发出请求时，该请求会重定向到最接近请求发出位置的 CDN 终结点，以方便访问对象。如果在终结点上找不到对象，则会从服务检索该对象并将其缓存在终结点上，其中会保留针对已缓存对象的生存时间 (TTL) 设置。
- 
-##缓存 Azure 存储空间的内容
-
-一旦在 Azure 存储帐户上启用 CDN，则会通过 CDN 缓存任何位于公共容器中且可供匿名访问的 blob。只能通过 Azure CDN 缓存可公开访问的 blob。若要使某个 blob 接受公开匿名访问，必须将其容器指定为公开。这样操作以后，该容器中的所有 blob 都将可供匿名读取访问。你也可以让容器数据可供公开访问，或者只允许访问容器中的 blob。请参阅[限制对容器和 Blob 的访问](http://msdn.microsoft.com/zh-cn//library/azure/dd179354.aspx)，了解如何管理容器和 blob 的访问控制。
-
-为了获得最佳性能，可以使用 CDN 边缘缓存来交付不到 10 GB 大小的 blob。
-
-为存储帐户启用 CDN 访问时，管理门户会为你提供以下格式的 CDN 域名：http://<identifier>.vo.msecnd.net/。此域名可用于访问公共容器中的 blob。例如，如果名为 myaccount 的存储帐户中存在名为 music 的公共容器，用户就可以使用以下两个 URL 中的一个来访问该容器中的 blob：
-
-- **Azure Blob 服务 URL**：`http://myAccount.blob.core.windows.net/music/` 
-- **Azure CDN URL**：`http://<identifier>.vo.msecnd.net/music/` 
-
-##缓存 Azure 网站的内容
-
-你可以让网站的 CDN 缓存 Web 内容，例如图像、脚本和样式表。请参阅[将 Azure 网站与 Azure CDN 集成](/documentation/articles/cdn-websites-with-cdn)。
-
-为网站启用 CDN 访问时，管理门户会为你提供以下格式的 CDN 域名：http://<identifier>.vo.msecnd.net/。此域名可用于从网站中检索对象。例如，如果公共容器的名称为 cdn，图像文件名为 music.png，则用户可以使用下列两个 URL 中的一个来访问该对象：
-
-- **Azure 网站 URL**：`http://mySiteName.azurewebsites.net/cdn/music.png` 
-- **Azure CDN URL**：`http://<identifier>.vo.msecnd.net/cdn/music.png`
- 
-##缓存 Azure 云服务的内容
-
-你可以将对象缓存到 Azure 云服务提供的 CDN。
-
-云服务的缓存具有以下限制：
+- 为最终用户提供更好的性能和用户体验，尤其是在使用的应用程序需要多次往返来加载内容时。
+- 大幅度缩放以更好地处理瞬间的高负载，例如在产品发布活动开始时。
+- 通过分发用户请求并通过边缘服务器来提供内容，可以减少发送到源的流量。
 
 
-- CDN 只应用于缓存静态内容。
+## 工作原理
 
-	>[AZURE.WARNING]缓存易失性很高的或动态性很强的内容可能会对性能造成负面影响，或者会导致内容问题，这些都会导致成本上升。
-- 你的云服务必须进行生产部署。
-- 你的云服务必须使用 HTTP 在端口 80 上提供对象。
-- 云服务必须将要缓存或交付的内容放置在云服务的 /cdn 文件夹中。
+![CDN 概述](./media/cdn-overview/cdn-overview.png)
 
-为云服务启用 CDN 访问时，管理门户会为你提供以下格式的 CDN 域名：http://<identifier>.vo.msecnd.net/。此域名可用于从云服务中检索对象。例如，如果云服务名为 myHostedService，交付内容的 ASP.NET 网页名为 music.aspx，则用户可以使用下列两个 URL 中的一个来访问该对象：
+1. 用户 (Alice) 使用带有特殊域名（例如 `<endpointname>.azureedge.net`）的 URL 来请求文件（也被称为资产）。DNS 将请求路由到性能最佳的接入点 (POP) 位置。通常是地理位置上最接近用户的 POP。
 
+2. 如果 POP 中的边缘服务器在其缓存中没有文件，则边缘服务器将从原点请求文件。原点可以是 Azure Web 应用、Azure 云服务、Azure 存储帐户或任何公开可用 Web 服务器。
 
-- **Azure 云服务 URL**：`http://myHostedService.chinacloudapp.cn/cdn/music.aspx` 
-- **Azure CDN URL**：`http://<identifier>.vo.msecnd.net/music.aspx` 
+3. 原点将文件返回到边缘服务器，包括描述文件生存时间 (TTL) 的可选 HTTP 标头。
 
+4. 边缘服务器缓存文件并将文件返回到原始请求者 (Alice)。TTL 过期之前，文件仍将缓存在边缘服务器中。如果原点未指定 TTL，默认 TTL 为 7 天。
 
-###使用查询字符串缓存特定内容
+5. 其他用户则可能会使用相同的 URL 请求同一文件，也可能被引向同一 POP。
 
-你可以使用查询字符串来区分从云服务检索的对象。例如，如果云服务显示一个可以改变的图表，你就可以传递一个查询字符串来检索所需的特定图表。例如：
-
-`http://<identifier>.vo.msecnd.net/chart.aspx?item=1`
-
-查询字符串以字符串文字形式传递。如果你有一个使用两个参数的服务（例如 `?area=2&item=1`），并随后使用 `?item=1&area=2` 来调用该服务，则会缓存同一对象的两个副本。
- 
-
-##通过 HTTPS 访问缓存的内容
+6. 如果文件的 TTL 未过期，边缘服务器会从缓存返回文件。这会带来更快、响应更及时的用户体验。
 
 
-Azure 允许你通过 HTTPS 调用从 CDN 检索内容。这样你就可以将缓存在 CDN 中的内容整合到安全网页中，不会收到混合使用安全内容类型的警告。
+## Azure CDN 功能
 
-使用 HTTPS 访问 CDN 内容具有以下限制：
+三种 Azure CDN 产品：**来自 Akamai 的标准 Azure CDN**、**来自 Verizon 的标准 Azure CDN** 和 **来自 Verizon 的高级 Azure CDN**。下表列出了每个产品的可用功能。
 
+| | 标准 Akamai | 标准 Verizon | 高级 Verizon |
+|-------|-----------------|------------------|-----------------|
+| 与[存储](cdn-create-a-storage-account-with-cdn.md)、[云服务](cdn-cloud-service-with-cdn.md)、[Web 应用](../app-service-web/cdn-websites-with-cdn.md)和[媒体服务](../media-services/media-services-manage-origins.md#enable_cdn)等 Azure 服务轻松集成 | **&#x2713;** | **&#x2713;** | **&#x2713;**|
+| 通过 [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](./cdn-app-dev-net.md)、[Node.js](./cdn-app-dev-node.md) 或 [PowerShell](./cdn-manage-powershell.md) 进行管理。 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| HTTPS 支持 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| 负载平衡 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [DDOS](https://www.us-cert.gov/ncas/tips/ST04-015) 保护 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| IPv4/IPv6 双协议栈 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [自定义域名支持](cdn-map-content-to-custom-domain.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [查询字符串缓存](cdn-query-string.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [国家/地区筛选](cdn-restrict-access-by-country.md) | | **&#x2713;** | **&#x2713;** |
+| [快速清除](cdn-purge-endpoint.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [资产预加载](cdn-preload-endpoint.md) | | **&#x2713;** | **&#x2713;** |
+| [核心分析](cdn-analyze-usage-patterns.md) | | **&#x2713;** | **&#x2713;** |
+| [HTTP/2 支持](https://msdn.microsoft.com/library/mt762901.aspx) | **&#x2713;** | | |
+| [高级 HTTP 报告](cdn-advanced-http-reports.md) | | | **&#x2713;** |
+| [实时统计信息](cdn-real-time-stats.md) | | | **&#x2713;** |
+| [实时警报](cdn-real-time-alerts.md) | | | **&#x2713;** |
+| [可自定义的、基于规则的内容传送引擎](cdn-rules-engine.md) | | | **&#x2713;** |
+| 缓存/标头设置（使用[规则引擎](cdn-rules-engine.md)） | | | **&#x2713;** |
+| URL 重定向/重写（使用[规则引擎](cdn-rules-engine.md)） | | | **&#x2713;** |
+| 移动设备规则（使用[规则引擎](cdn-rules-engine.md)） | | | **&#x2713;** |
 
-- 必须使用 CDN 提供的证书。不支持第三方证书。
-- 必须使用 CDN 域来访问内容。由于 CDN 目前不支持自定义证书，HTTPS 支持不适用于自定义域名 (CNAME)。
+>[AZURE.TIP] Azure CDN 中是否有你想看到的功能？ [欢迎提供反馈](https://feedback.azure.com/forums/169397-cdn)！
 
+## 后续步骤
 
+若要开始使用 CDN，请参阅 [使用 Azure CDN](./cdn-create-new-endpoint.md)。
 
-即使启用了 HTTPS，你也可以使用 HTTP 和 HTTPS 检索 CDN 中的内容。
+如果已经是 CDN 客户，则现在就可以通过 [Microsoft Azure 门户](https://portal.azure.com)或 [PowerShell](cdn-manage-powershell.md) 管理 CDN 终结点。
 
-有关对 CDN 内容启用 HTTPS 的详细信息，请参阅[如何对 Azure 启用内容交付网络 (CDN)](http://msdn.microsoft.com/zh-cn/library/azure/gg680301.aspx)。
+若要在实际操作中了解 CDN，请查看 [Build 2016 会议视频](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)。
 
+了解如何使用 [.NET](./cdn-app-dev-net.md) 或 [Node.js](./cdn-app-dev-node.md) 实现 Azure CDN 自动化。
 
-##使用自定义域访问缓存的内容
+有关定价信息，请参阅 [CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)。
 
-你可以将 CDN HTTP 终结点映射到自定义域名，并使用该名称请求 CDN 中的对象。
-
-有关如何映射自定义域的详细信息，请参阅[如何将内容交付网络 (CDN) 内容映射到自定义域](http://msdn.microsoft.com/zh-cn/library/azure/gg680307.aspx)。
-
- 
-
-<!---HONumber=74-->
+<!---HONumber=AcomDC_0921_2016-->

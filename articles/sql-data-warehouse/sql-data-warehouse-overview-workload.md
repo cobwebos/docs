@@ -9,8 +9,12 @@
 
 <tags
    ms.service="sql-data-warehouse"
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
    ms.date="07/25/2016"
-   wacn.date=""/>
+   ms.author="barbkess;mausher;jrj;sonyama"/>
 
 
 # 数据仓库工作负荷
@@ -60,11 +64,11 @@
 <!--Image references-->
 
 <!--Article references-->
-[加载示例数据]: /documentation/articles/sql-data-warehouse-load-sample-databases
-[创建 SQL 数据仓库]: /documentation/articles/sql-data-warehouse-get-started-provision
+[加载示例数据]: ./sql-data-warehouse-load-sample-databases.md
+[创建 SQL 数据仓库]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
 <!--Other web references-->
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

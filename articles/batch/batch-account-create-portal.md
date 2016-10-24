@@ -1,5 +1,5 @@
 <properties
-	pageTitle="创建 Azure Batch 帐户 | Azure"
+	pageTitle="创建 Azure Batch 帐户 | Microsoft Azure"
 	description="了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷"
 	services="batch"
 	documentationCenter=""
@@ -9,97 +9,120 @@
 
 <tags
 	ms.service="batch"
-	ms.date="06/01/2016"
-	wacn.date=""/>
+	ms.workload="big-compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/21/2016"
+	ms.author="marsma"/>
 
-	
-
-# 在 Azure 门户中创建和管理 Azure Batch 帐户
+# 使用 Azure 门户创建 Azure Batch 帐户
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/batch-account-create-portal.md)
-- [Batch Management .NET](/documentation/articles/batch-management-dotnet.md)
+- [Azure 门户](batch-account-create-portal.md)
+- [Batch Management .NET](batch-management-dotnet.md)
 
-[Azure 门户][azure_portal]提供了创建和管理 Azure Batch 帐户所需的工具，你可将这些工具用于大规模的并行工作负荷处理。在本文中，我们将使用门户逐步说明如何创建 Batch 帐户，以及讨论 Batch 帐户最重要的几项设置与属性。例如，使用 Batch 开发的应用程序和服务需要帐户的 URL 和访问密钥（在 Azure 门户中可找到这两项）才能与 Batch 服务 API 进行通信。
-
->[AZURE.NOTE] Azure 门户当前支持 Batch 服务所提供的部分功能，包括创建帐户及管理帐户设置和属性。开发人员可通过 Batch API 获取 Batch 的完整功能（包括创建和运行作业与任务）。
+了解如何在 [Azure 门户][azure_portal]中创建 Azure Batch 帐户，以及在何处查找访问密钥和帐户 URL 等重要帐户属性。我们还会讨论 Batch 定价，以及如何将 Azure 存储帐户链接到 Batch 帐户，以便可以使用[应用程序包](batch-application-packages.md)及[保存作业和任务输出](batch-task-output.md)。
 
 ## 创建批处理帐户
 
 1. 登录到 [Azure 门户][azure_portal]。
 
-2. 单击“新建”>“虚拟机”>“Batch 服务”。
+2. 单击“新建”>“计算”>“Batch 服务”。
 
 	![应用商店中的批处理][marketplace_portal]
 
-3. “新建 Batch 帐户”边栏选项卡随即显示。请参阅以下 *a* 到 *e* 项，以获取每个边栏选项卡元素的说明。
+3. 将显示“新建 Batch 帐户”边栏选项卡。请参阅以下 *a* 到 *e* 项，获取每个边栏选项卡元素的说明。
 
     ![创建批处理帐户][account_portal]
 
-	a.**帐户名**：Batch 帐户的唯一名称。此名称必须是创建帐户的 Azure 区域内的唯一名称（请参阅下面的“位置”）。它只能包含小写字符、数字，且长度必须为 3-24 个字符。
+	a.**帐户名**：Batch 帐户的唯一名称。此名称必须在创建帐户的 Azure 区域内唯一（请参阅下面的“位置”）。它只能包含小写字符、数字，且长度必须为 3-24 个字符。
 
-	b.**订阅**：要在其中创建 Batch 帐户的订阅。如果你只有一个订阅，则默认选择此项目。
+	b.**订阅**：要在其中创建 Batch 帐户的订阅。如果只有一个订阅，则会默认选择该订阅。
 
-	c.**资源组**：为新 Batch 帐户选择现有的资源组，或选择性地创建一个新组。
+	c.**资源组**：用于新 Batch 帐户的现有资源组，也可选择创建一个新组。
 
-	d.**位置**：要在其中创建 Batch 帐户的 Azure 区域。只有订阅和资源组支持的区域显示为选项。
+	d.**位置**：要在其中创建 Batch 帐户的 Azure 区域。只有订阅和资源组支持的区域才会显示为选项。
 
-    e.**存储帐户**（可选）：要与新 Batch 帐户关联（链接）的**常规用途**存储帐户。Batch 的[应用程序包](batch-application-packages.md)功能在应用程序包的存储和检索操作中使用链接的存储帐户。有关此功能的详细信息，请参阅 [Application deployment with Azure Batch application packages（使用 Azure Batch 应用程序包部署应用程序）](batch-application-packages.md)。
-
-     > [AZURE.IMPORTANT] 在链接的存储帐户中重新生成密钥时需要特别注意。有关详细信息，请参阅下面的 [Batch 帐户注意事项](#considerations-for-batch-accounts)。
+    e.**存储帐户**（可选）：要与新 Batch 帐户关联（链接）的**常规用途**存储帐户。请参阅下面的[链接的 Azure 存储帐户](#linked-azure-storage-account)，了解更多详细信息。
 
 4. 单击“创建”以创建帐户。
 
-  门户将指示**正在部署**帐户，完成后，“通知”中会显示“部署成功”通知。
+  门户指示**正在部署**帐户，完成后，“通知”中会显示“部署成功”通知。
 
 ## 查看 Batch 帐户属性
 
-Batch 帐户边栏选项卡显示帐户的多个属性，并且可让你访问其他设置，例如访问密钥、配额、用户和存储帐户关联。
+创建帐户后，即可打开 **Batch 帐户边栏选项卡**来访问其设置和属性。可以使用 Batch 帐户边栏选项卡的左侧菜单访问所有帐户设置和属性。
 
-* **Batch 帐户 URL**：当你使用 [Batch REST][api_rest] API 或 [Batch .NET][api_net] 客户端库时，此 URL 可用于访问 Batch 帐户，并遵循以下格式：
+![Azure 门户中的 Batch 帐户边栏选项卡][account_blade]
+
+* **Batch 帐户 URL**：使用 [Batch 开发 API](batch-technical-overview.md#batch-development-apis) 创建的应用程序需要帐户 URL 来管理资源及在帐户中运行作业。Batch 帐户 URL 采用以下格式：
 
     `https://<account_name>.<region>.batch.azure.com`
 
-* **访问密钥**：若要查看及管理 Batch 帐户的访问密钥，请单击密钥图标打开“管理密钥”边栏选项卡，或单击“所有设置”>“密钥”。与 Batch 服务 API（例如 [Batch REST][api_rest] 或 [Batch .NET][api_net] 客户端库）通信时，需要有访问密钥。
+![门户中的 Batch 帐户 URL][account_url]
 
-    ![批处理帐户密钥][account_keys]
+* **访问密钥**：应用程序在 Batch 帐户中处理资源时还需要访问密钥。若要查看或重新生成 Batch 帐户访问密钥，请在 Batch 帐户边栏选项卡左侧菜单的“搜索”框中输入 `keys`，然后选择“密钥”。
 
-* **所有设置**：若要管理 Batch 帐户的所有设置，或要查看其属性，请单击“所有设置”以打开“设置”边栏选项卡。此边栏选项卡可供访问帐户的所有设置和属性，包括查看帐户配额、选择要链接到 Batch 帐户的 Azure 存储帐户，以及管理用户。
+    ![Azure 门户中的 Batch 帐户密钥][account_keys]
 
-    ![Batch 帐户设置和属性边栏选项卡][5]
+## 定价
 
-## Batch 帐户注意事项
+Batch 帐户仅在“免费层”中提供，这意味着不需要为 Batch 帐户本身付费。需要支付的是 Batch 解决方案使用的基础 Azure 计算资源的费用，以及工作负荷运行时其他服务使用的资源的费用。例如，需要针对池中的计算节点以及存储在 Azure 存储中用作任务的输入或输出的数据付费。同样，如果使用 Batch 的[应用程序包](batch-application-packages.md)功能，则需支付用于存储应用程序包的 Azure 存储资源的费用。有关详细信息，请参阅 [Batch 定价][batch_pricing]。
 
-* 你也可以使用 [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md) 和 [Batch Management .NET](batch-management-dotnet.md) 库来创建和管理 Batch 帐户。
+## 链接的 Azure 存储帐户
 
-* 你不需要支付 Batch 帐户本身的费用。你需要支付 Batch 解决方案所用 Azure 计算资源的费用，以及工作负荷运行时其他服务所用资源的费用。例如，你需要支付池中计算节点的费用，而如果使用[应用程序包](batch-application-packages.md)功能，则需支付用于存储应用程序包版本的 Azure 存储空间资源费用。有关详细信息，请参阅 [Batch pricing（Batch 定价）][batch_pricing]。
+如上文所述，可以（可选）将**常规用途**存储帐户链接到 Batch 帐户。Batch 的[应用程序包](batch-application-packages.md)功能在链接的常规用途存储帐户中使用 Blob 存储，和 [Batch 文件约定 .NET](batch-task-output.md)库一样。这些可选功能可帮助部署 Batch 任务运行的应用程序，以及保存它们生成的数据。
 
-* 你可以在单个 Batch 帐户中运行多个 Batch 工作负荷，或者在不同 Azure 区域的 Batch 帐户之间分散工作负荷。
+Batch 目前*仅*支持**常规用途**存储帐户类型，如[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)的步骤 5 [创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)中所述。将某个 Azure 存储帐户链接到 Batch 帐户时，确保*只*链接**常规用途**存储帐户。
 
-* 如果你正在运行多个大规模 Batch 工作负荷，请注意适用于 Azure 订阅和每个 Batch 帐户的特定 [Batch 服务配额与限制](batch-quota-limit.md)。Batch 帐户的当前配额显示在门户上的帐户属性中。
+![创建“常规用途”存储帐户][storage_account]
 
-* 如果将存储帐户与 Batch 帐户相关联（链接），在重新生成存储帐户访问密钥时，请保持谨慎。应该只重新生成单个存储帐户密钥，请单击链接的存储帐户边栏选项卡中上的“同步密钥”，等待 5 分钟，让密钥传播到池中的计算节点，然后重新生成并同步其他密钥（如果需要）。如果同时重新生成这两个密钥，计算节点将无法同步任何一个密钥，并且无法访问存储帐户。
+我们建议创建 Batch 帐户专用的存储帐户。
+
+>[AZURE.WARNING] 重新生成链接的存储帐户的访问密钥时请小心。只能重新生成一个存储帐户密钥，然后单击链接的存储帐户边栏选项卡上的“同步密钥”。等待五分钟，让密钥传播到池中的计算节点，然后重新生成并同步其他密钥（如有必要）。如果同时重新生成这两个密钥，计算节点将无法同步任何一个密钥，并且无法访问存储帐户。
 
   ![重新生成存储帐户密钥][4]
 
-> [AZURE.IMPORTANT] Batch 目前“仅”支持**常规用途**存储帐户类型，如 [About Azure storage accounts（关于 Azure 存储帐户）](../storage/storage-create-storage-account.md)的 [Create a storage account（创建存储帐户）](../storage/storage-create-storage-account.md#create-a-storage-account)中步骤 5 所述。将某个 Azure 存储帐户链接到你的 Batch 帐户时，“只会”链接**常规用途**的存储帐户。
+## Batch 服务配额和限制
+
+请知悉，与 Azure 订阅和其他 Azure 服务一样，Batch 帐户也适用特定[配额和限制](batch-quota-limit.md)。Batch 帐户的当前配额在门户上的帐户“属性”中显示。
+
+![Azure 门户中的 Batch 帐户配额][quotas]
+
+设计和增加 Batch 工作负荷时，请记住这些配额。例如，如果池没有达到指定的计算节点目标数量，那么可能是已达到 Batch 帐户的核心配额限制。
+
+另请注意，Azure 订阅不受单个 Batch 帐户的限制。可以在单个 Batch 帐户中运行多个 Batch 工作负荷，或者在相同订阅的不同 Azure 区域的 Batch 帐户之间分散工作负荷。
+
+其中许多配额只需在 Azure 门户中提交免费产品支持请求即可增加。有关请求增加配额的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
+
+## 其他 Batch 帐户管理选项
+
+除了使用 Azure 门户外，还可使用以下各项创建和管理 Batch 帐户：
+
+* [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
+* [Azure CLI](../xplat-cli-install.md)
+* [Batch Management .NET](batch-management-dotnet.md)
 
 ## 后续步骤
 
-* 若要深入了解 Batch 服务的概念和功能，请参阅 [Azure Batch feature overview（Azure Batch 功能概述）](batch-api-basics.md)。本文讨论主要 Batch 资源（例如池、计算节点、作业和任务），并提供能够进行大规模计算工作负荷执行的服务功能概述。
+* 有关 Batch 服务概念和功能的详细信息，请参阅 [Azure Batch 功能概述](batch-api-basics.md)。本文讨论主要 Batch 资源（例如池、计算节点、作业和任务），并提供能够进行大规模计算工作负荷执行的服务功能概述。
 
-* 了解使用 [Batch .NET 客户端库](batch-dotnet-get-started.md)开发支持 Batch 的应用程序的基本概念。[简介文章](batch-dotnet-get-started.md)介绍了使用 Batch 服务在多个计算节点上执行工作负荷的可行应用程序，并说明如何使用 Azure 存储空间进行工作负荷文件暂存和检索。
+* 了解使用 [Batch .NET 客户端库](batch-dotnet-get-started.md)开发支持 Batch 的应用程序的基本概念。[简介文章](batch-dotnet-get-started.md)介绍了使用 Batch 服务在多个计算节点上执行工作负荷的可行应用程序，并说明如何使用 Azure 存储进行工作负荷文件暂存和检索。
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 
-[azure_portal]: https://portal.azure.cn
-[batch_pricing]: /pricing/details/batch/
+[azure_portal]: https://portal.azure.com
+[batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
 
 [4]: ./media/batch-account-create-portal/batch_acct_04.png "重新生成存储帐户密钥"
-[5]: ./media/batch-account-create-portal/batch_acct_05.png "Batch 帐户设置和属性边栏选项卡"
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
+[account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
+[account_url]: ./media/batch-account-create-portal/account_url.png
+[storage_account]: ./media/batch-account-create-portal/storage_account.png
+[quotas]: ./media/batch-account-create-portal/quotas.png
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=AcomDC_0921_2016-->

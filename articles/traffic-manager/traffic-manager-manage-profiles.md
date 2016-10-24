@@ -3,13 +3,17 @@
    description="本文将帮助你创建、禁用、启用、删除流量管理器配置文件以及查看 Azure 流量管理器配置文件的历史记录。"
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
-	ms.service="traffic-manager"
-	ms.date="11/12/2015"
-	wacn.date=""/>
+   ms.service="traffic-manager"
+   ms.devlang="na"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="03/17/2016"
+   ms.author="sewhee" />
 
 # 管理 Azure 流量管理器配置文件
 
@@ -17,23 +21,23 @@
 
 ## 使用“快速创建”创建流量管理器配置文件
 
-你可以使用 Azure 管理门户中的“快速创建”来快速创建流量管理器配置文件。“快速创建”允许你创建具有基本配置设置的配置文件。但是，无法使用“快速创建”设置以下设置：终结点集（云服务和网站）、“故障转移”流量路由方法的故障转移顺序，或监视设置。在创建配置文件后，可以在 Azure 管理门户中配置这些设置。流量管理器支持每个配置文件最多 200 个终结点。然而，大多数使用方案只需要少量终结点。
+可以使用 Azure 经典门户中的“快速创建”快速创建流量管理器配置文件。“快速创建”允许你创建具有基本配置设置的配置文件。但是，无法使用“快速创建”设置以下设置：终结点集（云服务和网站）、“故障转移”流量路由方法的故障转移顺序，或监视设置。在创建配置文件后，可以在 Azure 经典门户中配置这些设置。流量管理器支持每个配置文件最多 200 个终结点。然而，大多数使用方案只需要少量终结点。
 
 ### 创建新的流量管理器配置文件
 
-1. **将云服务和网站部署到生产环境中。** 有关云服务的详细信息，请参阅[云服务](https://msdn.microsoft.com/zh-CN/library/jj155995.aspx)。有关云服务的信息，请参阅[最佳实践](https://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#bkmk_TrafficManagerBestPracticesProfile)。有关网站的详细信息，请参阅[网站](/home/features/web-site/)。
+1. **将云服务和网站部署到生产环境中。** 有关云服务的详细信息，请参阅[云服务](http://go.microsoft.com/fwlink/p/?LinkId=314074)。有关云服务的信息，请参阅[最佳实践](https://msdn.microsoft.com/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#bkmk_TrafficManagerBestPracticesProfile)。有关网站的详细信息，请参阅[网站](http://go.microsoft.com/fwlink/p/?LinkId=393327)。
 
-2. **登录到 Azure 管理门户。** 若要创建新的流量管理器配置文件，请单击门户左下角的“新建”，单击“网络服务”>“流量管理器”，然后单击“快速创建”，以开始配置你的配置文件。
+2. **登录到 Azure 经典门户。** 若要创建新的流量管理器配置文件，请单击门户左下角的“新建”，单击“网络服务”>“流量管理器”，然后单击“快速创建”，以开始配置你的配置文件。
 3. **配置 DNS 前缀。** 为流量管理器配置文件提供唯一的 DNS 前缀名称。可以只为流量管理器域名指定前缀。
-4. **选择订阅。** 选择相应的 Azure 订阅。每个配置文件都与单个订阅关联。如果你只有一个订阅，则不会显示此选项。
-5. **选择流量路由方法。** 在“流量路由策略”中选择流量路由方法。有关流量路由方法的详细信息，请参阅[关于流量管理器流量路由方法](/documentation/articles/traffic-manager-load-balancing-methods)。
-6. **单击“创建”以创建新的配置文件**。完成配置文件配置后，你可以在 Azure 管理门户中的“流量管理器”窗格中找到你的配置文件。
-7. **在 Azure 管理门户中配置终结点、监视和其他设置。** 由于使用“快速创建”只能配置基本设置，因此需要配置其他设置（例如终结点列表和终结点故障转移顺序）来完成所需的配置。 
+4. **选择订阅。** 选择适当的 Azure 订阅。每个配置文件都与一个订阅相关联。如果只有一个订阅，此选项将不显示。
+5. **选择流量路由方法。** 在“流量路由策略”中选择流量路由方法。有关流量路由方法的详细信息，请参阅[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)。
+6. **单击“创建”以创建新的配置文件**。完成配置文件配置后，可以在 Azure 经典门户中的“流量管理器”窗格中找到你的配置文件。
+7. **在 Azure 经典门户中配置终结点、监视和其他设置。** 由于使用“快速创建”只能配置基本设置，因此需要配置其他设置（例如终结点列表和终结点故障转移顺序）来完成所需的配置。
 
 
 ## 禁用、启用或删除配置文件
 
-你可以禁用现有的流量管理器配置文件，以便它不再将用户请求指引到它配置的终结点。禁用流量管理器配置文件后，配置文件自身及其中包含的信息将保持不变，并且可以在流量管理器界面中进行编辑。当希望重新启用该配置文件时，你可以轻松在 Azure 管理门户中执行此操作并且指引将恢复。在 Azure 管理门户中创建流量管理器配置文件时，它将自动启用。如果你确定不再需要某个配置文件，可以将其删除。
+你可以禁用现有的流量管理器配置文件，以便它不再将用户请求指引到它配置的终结点。禁用流量管理器配置文件后，配置文件自身及其中包含的信息将保持不变，并且可以在流量管理器界面中进行编辑。当希望重新启用该配置文件时，可以轻松在 Azure 经典门户中执行此操作并且指引将恢复。在 Azure 经典门户中创建流量管理器配置文件时，它将自动启用。如果你确定不再需要某个配置文件，可以将其删除。
 
 ### 禁用配置文件
 
@@ -46,7 +50,7 @@
 
 1. 选择你要启用的配置文件。若要选择配置文件，请在“流量管理器”页面上，通过单击配置文件名称旁边的列突出显示该配置文件。不要单击配置文件的名称或名称旁边的箭头，因为这会将你带到配置文件的设置页面。
 2. 在选择配置文件后，单击页面底部的“启用”。
-3. 修改你的 Internet DNS 服务器上的 DNS 资源记录以使用 CNAME 记录类型，这会将你的公司域名映射到你的流量管理器配置文件的域名。有关详细信息，请参阅[将公司 Internet 域指向流量管理器域](/documentation/articles/traffic-manager-point-internet-domain)。
+3. 修改你的 Internet DNS 服务器上的 DNS 资源记录以使用 CNAME 记录类型，这会将你的公司域名映射到你的流量管理器配置文件的域名。有关详细信息，请参阅[将公司 Internet 域指向流量管理器域](traffic-manager-point-internet-domain.md)。
 4. 流量将重新开始定向到终结点。
 
 ### 删除配置文件
@@ -57,11 +61,11 @@
 
 ## 查看流量管理器配置文件更改历史记录
 
-可在 Azure 管理门户的“管理服务”中查看流量管理器配置文件的更改历史记录。
+可在 Azure 经典门户的“管理服务”中查看流量管理器配置文件的更改历史记录。
 
 ### 查看流量管理器配置文件更改历史记录
 
-1. 在 Azure 管理门户的左窗格中，单击“管理服务”。
+1. 在 Azure 经典门户的左侧窗格中，单击“管理服务”。
 2. 在“管理服务”页面上，单击“操作日志”。
 3. 在“操作日志”页面上，你可以筛选查看流量管理器配置文件的更改历史记录。在选择筛选选项后，单击相应的复选标记来查看结果。
    - 若要查看所有配置文件的配置文件更改，请选择订阅和时间范围，然后从“类型”快捷菜单中选择“流量管理器”。
@@ -71,14 +75,14 @@
 
 ## 后续步骤
 
-[添加终结点](/documentation/articles/traffic-manager-endpoints)
+[添加终结点](traffic-manager-endpoints.md)
 
-[配置故障转移路由方法](/documentation/articles/traffic-manager-configure-failover-routing-method)
+[配置故障转移路由方法](traffic-manager-configure-failover-routing-method.md)
 
-[配置轮循机制路由方法](/documentation/articles/traffic-manager-configure-round-robin-routing-method)
+[配置轮循机制路由方法](traffic-manager-configure-round-robin-routing-method.md)
 
-[配置性能路由方法](/documentation/articles/traffic-manager-configure-performance-routing-method)
+[配置性能路由方法](traffic-manager-configure-performance-routing-method.md)
 
-[流量管理器降级状态疑难解答](/documentation/articles/traffic-manager-troubleshooting-degraded)
+[流量管理器降级状态疑难解答](traffic-manager-troubleshooting-degraded.md)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=AcomDC_0921_2016-->

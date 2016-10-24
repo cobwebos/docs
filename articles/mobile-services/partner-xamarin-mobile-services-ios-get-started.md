@@ -9,17 +9,20 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="03/16/2016"
-	wacn.date=""/>
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="07/21/2016"
+	ms.author="craig.dunn@xamarin.com"/>
 
 # <a name="getting-started"></a>移动服务入门
-[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
-&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-> 有关本主题的对等 Mobile Apps 版本，请参阅[创建 Xamarin.iOS 应用](/documentation/articles/app-service-mobile-xamarin-ios-get-started)。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对等移动应用版本，请参阅[创建 Xamarin.iOS 应用](../app-service-mobile/app-service-mobile-xamarin-ios-get-started.md)。
 
-本教程说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单待办事项列表应用程序。
+本教程说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。
 
 如果你更愿意观看视频，下面的视频片段提供了与本教程相同的步骤。
 
@@ -31,13 +34,13 @@
 
 ![][0]
 
-完成本教程需要 XCode 和 Xamarin Studio（对于 OS X）或 Visual Studio（对于 Windows）以及联网的 Mac。[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx) 中提供了完整的安装说明。
+完成本教程需要 XCode 和 Xamarin Studio（对于 OS X）或 Visual Studio（对于 Windows）以及联网的 Mac。[Visual Studio 和 Xamarin 的设置与安装](https://msdn.microsoft.com/library/mt613162.aspx)中提供了完整的安装说明。
 
-> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
+> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-new-service"></a>创建新的移动服务
 
-[AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
 ## 创建新的 Xamarin iOS 应用程序
 
@@ -45,7 +48,7 @@
 
 在本部分中，你将要创建一个连接到移动服务的新的 Xamarin.iOS 应用程序。
 
-1.  在 [Azure 经典门户]中单击“移动服务”，然后单击你刚刚创建的移动服务。
+1.  在 [Azure 经典门户]中，单击“移动服务”，然后单击刚刚创建的移动服务。
 
 2. 在快速启动选项卡中，单击“选择平台”下的“Xamarin.iOS”，然后展开“创建新的 Xamarin.iOS 应用程序”。
 
@@ -75,15 +78,16 @@
 
 2. 按“运行”按钮以生成项目，并在 iPhone 模拟器中启动应用，这是此项目的默认设置。
 
-3. 在应用中键入有意义的文本（例如 _完成本教程_），然后单击加号 (**+**) 图标。
+3. 在应用中键入有意义的文本（例如 _Complete the tutorial_），然后单击加号 (**+**) 图标。
 
-	![][10]
+	![][10]  
+
 
 	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在列表中。
 
 	> [AZURE.NOTE] 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 TodoService.cs C# 文件中。
 
-4. 返回 [Azure 经典门户]，单击“数据”选项卡，然后单击“TodoItems”表。
+4. 返回 [Azure 经典门户]中，单击“数据”选项卡，然后单击“TodoItems”表。
 
 	![][11]
 
@@ -95,19 +99,16 @@
 ## 后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [脱机数据同步入门]  
-  了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
+* [脱机数据同步入门]了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
 
-* [身份验证入门]  
-  了解如何使用标识提供程序对应用程序的用户进行身份验证。
+* [身份验证入门] 了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
-* [推送通知入门 ]  
-  了解如何向应用程序发送一条很基本的推送通知。
+* [推送通知入门 ] 了解如何向应用程序发送一条很基本的推送通知。
 
 
 
 
-[AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -127,13 +128,13 @@
 
 
 <!-- URLs. -->
-[脱机数据同步入门]: /documentation/articles/mobile-services-xamarin-ios-get-started-offline-data
-[身份验证入门]: /documentation/articles/partner-xamarin-mobile-services-ios-get-started-users
-[推送通知入门 ]: /documentation/articles/partner-xamarin-mobile-services-ios-get-started-push
+[脱机数据同步入门]: mobile-services-xamarin-ios-get-started-offline-data.md
+[身份验证入门]: partner-xamarin-mobile-services-ios-get-started-users.md
+[推送通知入门 ]: partner-xamarin-mobile-services-ios-get-started-push.md
 
 [Xamarin Studio]: http://xamarin.com/download
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-[Azure 经典门户]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.com/
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=AcomDC_0921_2016-->

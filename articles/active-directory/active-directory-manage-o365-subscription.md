@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 Azure 中管理 Office 365 订阅的目录 | Azure"
+   pageTitle="在 Azure 中管理 Office 365 订阅的目录 | Microsoft Azure"
    description="使用 Azure Active Directory 和 Azure 经典门户来管理 Office 365 订阅目录"
    services="active-directory"
    documentationCenter=""
@@ -9,12 +9,16 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="06/03/2016"
-   wacn.date=""/>
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="08/23/2016"
+   ms.author="curtand"/>
 
-#在 Azure 中管理 Office 365 订阅的目录
+# 在 Azure 中管理 Office 365 订阅的目录
 
-本文介绍如何使用 Azure 经典门户管理为 Office 365 订阅创建的目录。必须是 Azure 订阅的服务管理员或协同管理员才能登录到 Azure 经典门户。如果你没有 Azure 订阅，你现在就可以使用此链接注册 [30 天免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)，然后在 5 分钟内部署第一个云解决方案。请务必使用登录 Office 365 时所用的工作或学校帐户。
+本文介绍如何使用 Azure 经典门户管理为 Office 365 订阅创建的目录。必须是 Azure 订阅的服务管理员或协同管理员才能登录到 Azure 经典门户。如果还没有 Azure 订阅，现在就可以使用此链接注册 [30 天免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)，然后在 5 分钟内部署第一个云解决方案请务必使用登录 Office 365 时所用的工作或学校帐户。
 
 完成 Azure 订阅后，你便可以登录到 Azure 经典门户并访问 Azure 服务。若要管理对 Office 365 用户进行身份验证所用的同一目录，请单击 Active Directory 扩展。
 
@@ -37,7 +41,7 @@
 > [AZURE.NOTE]
 仅当用户使用 Microsoft 帐户登录时才能完成这些步骤。如果用户是使用工作或学校帐户登录的，则“使用现有目录”选项不可用。工作或学校帐户只能通过其主目录（即存储工作或学校帐户的目录，该目录由工作单位或学校拥有）进行身份验证。
 
-1.	以 msmith@hotmail.com 身份登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
+1.	以 msmith@hotmail.com 身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2.	单击“新建”>“应用程序服务”>“Active Directory”>“目录”>“自定义创建”。
 3.	单击“使用现有目录”，然后选中“已准备好立即注销”。
 4.	以 Contoso.onmicrosoft.com 的全局管理员身份登录到 Azure 经典门户（例如，msmith@contoso.com）。
@@ -48,13 +52,13 @@
 完成这些步骤之后，msmith@hotmail.com 将成为 Contoso 目录的全局管理员。
 
 ## 以全局管理员身份管理资源
-现在，让我们假设 John Doe 需要管理与 msmith@hotmail.com 的 Azure 订阅关联的网站和数据库资源。在执行该操作之前，Michael Smith 需要完成以下附加步骤：
+现在，让我们假设 Jane Doe 需要管理与 msmith@hotmail.com 的 Azure 订阅关联的网站和数据库资源。在执行该操作之前，Michael Smith 需要完成以下附加步骤：
 
-1.	使用 Azure 订阅的服务管理员帐户（在本示例中为 msmith@hotmail.com）登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
-2.	将订阅传输到 Contoso 目录：单击“设置”>“订阅”> 选择订阅 >“编辑目录”> 选择“Contoso (Contoso.com)”。在传输过程中，将删除作为订阅协同管理员的所有工作或学校帐户。
-3.	将 Jane Doe 添加为订阅的协同管理员：单击“设置”>“管理员”>“选择订阅”>“添加”> 键入 **JohnDoe@Contoso.com**。
+1.	使用 Azure 订阅的服务管理员帐户（在本示例中为 msmith@hotmail.com）登录到 [Azure 经典门户](https://manage.windowsazure.com)。
+2.	将订阅传输到 Contoso 目录：依次单击“设置”>“订阅”> 选择订阅 >“编辑目录”> 选择“Contoso (Contoso.com)”。在传输过程中，将删除作为订阅协同管理员的所有工作或学校帐户。
+3.	将 Jane Doe 添加为订阅的协同管理员：依次单击“设置”>“管理员”> 选择订阅 >“添加”> 键入 **JohnDoe@Contoso.com**。
 
-##后续步骤
-有关订阅与目录之间关系的详细信息，请参阅[订阅如何与目录关联](/documentation/articles/active-directory-how-subscriptions-associated-directory/)。
+## 后续步骤
+有关订阅与目录之间的关系的详细信息，请参阅[订阅与目录的关联方式](active-directory-how-subscriptions-associated-directory.md)。
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=AcomDC_0921_2016-->

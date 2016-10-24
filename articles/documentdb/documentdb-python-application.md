@@ -1,7 +1,7 @@
 <properties
-    pageTitle="使用 DocumentDB 开发 Python Flask Web 应用程序 | Azure"
+    pageTitle="使用 DocumentDB 开发 Python Flask Web 应用程序 | Microsoft Azure"
     description="查看使用 DocumentDB 来存储和访问托管于 Azure 的 Python Flask Web 应用程序的数据的数据库教程。查找应用程序开发解决方案。" 
-    keywords="应用程序开发、数据库教程、Python Flask、Python web 应用程序、Python Web 开发、DocumentDB、azure、Azure"
+	keywords="应用程序开发, 数据库教程, Python Flask, Python web 应用程序, Python Web 开发, DocumentDB, Azure, Microsoft Azure"
     services="documentdb"
     documentationCenter="python"
     authors="AndrewHoh"
@@ -10,16 +10,20 @@
 
 <tags
     ms.service="documentdb"
-    ms.date="08/11/2016"
-    wacn.date=""/>
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="python"
+    ms.topic="hero-article"
+    ms.date="08/25/2016"
+    ms.author="anhoh"/>
 
 # 使用 DocumentDB 开发 Python Flask Web 应用程序
 
 > [AZURE.SELECTOR]
-- [.NET](/documentation/articles/documentdb-dotnet-application/)
-- [Node.js](/documentation/articles/documentdb-nodejs-application/)
-- [Java](/documentation/articles/documentdb-java-application/)
-- [Python](/documentation/articles/documentdb-python-application/)
+- [.NET](documentdb-dotnet-application.md)
+- [Node.js](documentdb-nodejs-application.md)
+- [Java](documentdb-java-application.md)
+- [Python](documentdb-python-application.md)
 
 本教程演示了如何使用 Azure DocumentDB 来存储和访问托管于 Azure 的 Python Web 应用程序的数据，并假定你之前有过一些使用 Python 和 Azure 网站的经验。
 
@@ -39,10 +43,10 @@
 
 在按照本文中的说明操作之前，你应确保已安装下列项：
 
-- 有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+- 有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 - [Visual Studio 2013](http://www.visualstudio.com/) 或更高版本，或者免费版 [Visual Studio Express]()。本教程中的说明专为 Visual Studio 2015 所编写。
 - 来自 [GitHub](http://microsoft.github.io/PTVS/) 的 Python Tools for Visual Studio。本教程使用的是 Python Tools for VS 2015。
-- [azure.cn](/downloads/) 上提供 Azure Python SDK for Visual Studio 2.4 版本或更高版本。我们使用的是 Azure SDK for Python 2.7。
+- 2\.4 版或更高版本 Azure Python SDK for Visual Studio 在 [azure.com](https://azure.microsoft.com/downloads/) 上提供。我们使用的是 Microsoft Azure SDK for Python 2.7。
 - 来自 [python.org][2] 的 Python 2.7。我们使用的是 Python 2.7.11。
 
 > [AZURE.IMPORTANT] 如果首次安装 Python 2.7，请确保在自定义 Python 2.7.11 屏幕中，选择“向路径添加 python.exe”。
@@ -132,17 +136,16 @@
 1. 在解决方案资源管理器中，右键单击“教程”项目，单击“添加”，然后单击“新建项”。选择“空 Python 文件”并将该文件命名为 **forms.py**。
 2. 将以下代码添加到 forms.py 文件，然后保存该文件。
 
-Python
+```python
+from flask.ext.wtf import Form
+from wtforms import RadioField
 
-	from flask.ext.wtf import Form
-	from wtforms import RadioField
-
-	class VoteForm(Form):
-		deploy_preference  = RadioField('Deployment Preference', choices=[
-	        ('Web Site', 'Web Site'),
-	        ('Cloud Service', 'Cloud Service'),
-	        ('Virtual Machine', 'Virtual Machine')], default='Web Site')
-
+class VoteForm(Form):
+	deploy_preference  = RadioField('Deployment Preference', choices=[
+        ('Web Site', 'Web Site'),
+        ('Cloud Service', 'Cloud Service'),
+        ('Virtual Machine', 'Virtual Machine')], default='Web Site')
+```
 
 
 ### 将所需的导入添加到 views.py 中
@@ -150,108 +153,105 @@ Python
 1. 在“解决方案资源管理器”中，展开 **tutorial** 文件夹并打开 **views.py** 文件。
 2. 将以下导入语句添加到 **views.py** 文件的顶部，然后保存该文件。这些语句将导入 DocumentDB 的 PythonSDK 和 Flask 包。
 
-Python
-
+	```python
 	from forms import VoteForm
 	import config
 	import pydocumentdb.document_client as document_client
-	
+	```
 
 
 ### 创建数据库、集合和文档
 
 - 还是在 **views.py** 中，将以下代码添加到文件末尾。这将创建窗体使用的数据库。不要删除 **views.py** 中任何现有的代码。仅将其追加到末尾。
 
-Python
+```python
+@app.route('/create')
+def create():
+    """Renders the contact page."""
+    client = document_client.DocumentClient(config.DOCUMENTDB_HOST, {'masterKey': config.DOCUMENTDB_KEY})
 
-	@app.route('/create')
-	def create():
-	    """Renders the contact page."""
-	    client = document_client.DocumentClient(config.DOCUMENTDB_HOST, {'masterKey': config.DOCUMENTDB_KEY})
+    # Attempt to delete the database.  This allows this to be used to recreate as well as create
+    try:
+        db = next((data for data in client.ReadDatabases() if data['id'] == config.DOCUMENTDB_DATABASE))
+        client.DeleteDatabase(db['_self'])
+    except:
+        pass
 
-	    # Attempt to delete the database.  This allows this to be used to recreate as well as create
-	    try:
-	        db = next((data for data in client.ReadDatabases() if data['id'] == config.DOCUMENTDB_DATABASE))
-	        client.DeleteDatabase(db['_self'])
-	    except:
-	        pass
+    # Create database
+    db = client.CreateDatabase({ 'id': config.DOCUMENTDB_DATABASE })
 
-	    # Create database
-	    db = client.CreateDatabase({ 'id': config.DOCUMENTDB_DATABASE })
+    # Create collection
+    collection = client.CreateCollection(db['_self'],{ 'id': config.DOCUMENTDB_COLLECTION })
 
-	    # Create collection
-	    collection = client.CreateCollection(db['_self'],{ 'id': config.DOCUMENTDB_COLLECTION }, { 'offerType': 'S1' })
+    # Create document
+    document = client.CreateDocument(collection['_self'],
+        { 'id': config.DOCUMENTDB_DOCUMENT,
+          'Web Site': 0,
+          'Cloud Service': 0,
+          'Virtual Machine': 0,
+          'name': config.DOCUMENTDB_DOCUMENT 
+        })
 
-	    # Create document
-	    document = client.CreateDocument(collection['_self'],
-	        { 'id': config.DOCUMENTDB_DOCUMENT,
-	          'Web Site': 0,
-	          'Cloud Service': 0,
-	          'Virtual Machine': 0,
-	          'name': config.DOCUMENTDB_DOCUMENT 
-	        })
+    return render_template(
+       'create.html',
+        title='Create Page',
+        year=datetime.now().year,
+        message='You just created a new database, collection, and document.  Your old votes have been deleted')
+```
 
-	    return render_template(
-	       'create.html',
-	        title='Create Page',
-	        year=datetime.now().year,
-	        message='You just created a new database, collection, and document.  Your old votes have been deleted')
-
-
-> [AZURE.TIP] **CreateCollection** 方法采用可选的 **RequestOptions** 作为第三个参数。这可以用于指定集合的产品/服务类型。如果没有提供任何 offerType 值，则将使用默认的产品/服务类型创建集合。有关 DocumentDB 产品/服务类型的详细信息，请参阅 [DocumentDB 中的性能级别](/documentation/articles/documentdb-performance-levels/)。
+> [AZURE.TIP] **CreateCollection** 方法采用可选的 **RequestOptions** 作为第三个参数。这可以用于指定集合的产品/服务类型。如果没有提供任何 offerType 值，则将使用默认的产品/服务类型创建集合。有关 DocumentDB 产品/服务类型的详细信息，请参阅 [DocumentDB 中的性能级别](documentdb-performance-levels.md)。
 
 
 ### 读取数据库、集合、文档，并提交窗体
 
 - 还是在 **views.py** 中，将以下代码添加到文件末尾。这将设置窗体、读取数据库、集合和文档。不要删除 **views.py** 中任何现有的代码。仅将其追加到末尾。
 
-Python
+```python
+@app.route('/vote', methods=['GET', 'POST'])
+def vote(): 
+    form = VoteForm()
+    replaced_document ={}
+    if form.validate_on_submit(): # is user submitted vote  
+        client = document_client.DocumentClient(config.DOCUMENTDB_HOST, {'masterKey': config.DOCUMENTDB_KEY})
 
-	@app.route('/vote', methods=['GET', 'POST'])
-	def vote(): 
-	    form = VoteForm()
-	    replaced_document ={}
-	    if form.validate_on_submit(): # is user submitted vote  
-	        client = document_client.DocumentClient(config.DOCUMENTDB_HOST, {'masterKey': config.DOCUMENTDB_KEY})
+        # Read databases and take first since id should not be duplicated.
+        db = next((data for data in client.ReadDatabases() if data['id'] == config.DOCUMENTDB_DATABASE))
 
-	        # Read databases and take first since id should not be duplicated.
-	        db = next((data for data in client.ReadDatabases() if data['id'] == config.DOCUMENTDB_DATABASE))
+        # Read collections and take first since id should not be duplicated.
+        coll = next((coll for coll in client.ReadCollections(db['_self']) if coll['id'] == config.DOCUMENTDB_COLLECTION))
 
-	        # Read collections and take first since id should not be duplicated.
-	        coll = next((coll for coll in client.ReadCollections(db['_self']) if coll['id'] == config.DOCUMENTDB_COLLECTION))
+        # Read documents and take first since id should not be duplicated.
+        doc = next((doc for doc in client.ReadDocuments(coll['_self']) if doc['id'] == config.DOCUMENTDB_DOCUMENT))
 
-	        # Read documents and take first since id should not be duplicated.
-	        doc = next((doc for doc in client.ReadDocuments(coll['_self']) if doc['id'] == config.DOCUMENTDB_DOCUMENT))
+        # Take the data from the deploy_preference and increment our database
+        doc[form.deploy_preference.data] = doc[form.deploy_preference.data] + 1
+        replaced_document = client.ReplaceDocument(doc['_self'], doc)
 
-	        # Take the data from the deploy_preference and increment our database
-	        doc[form.deploy_preference.data] = doc[form.deploy_preference.data] + 1
-	        replaced_document = client.ReplaceDocument(doc['_self'], doc)
+        # Create a model to pass to results.html
+        class VoteObject:
+            choices = dict()
+            total_votes = 0
 
-	        # Create a model to pass to results.html
-	        class VoteObject:
-	            choices = dict()
-	            total_votes = 0
+        vote_object = VoteObject()
+        vote_object.choices = {
+            "Web Site" : doc['Web Site'],
+            "Cloud Service" : doc['Cloud Service'],
+            "Virtual Machine" : doc['Virtual Machine']
+        }
+        vote_object.total_votes = sum(vote_object.choices.values())
 
-	        vote_object = VoteObject()
-	        vote_object.choices = {
-	            "Web Site" : doc['Web Site'],
-	            "Cloud Service" : doc['Cloud Service'],
-	            "Virtual Machine" : doc['Virtual Machine']
-	        }
-	        vote_object.total_votes = sum(vote_object.choices.values())
+        return render_template(
+            'results.html', 
+            year=datetime.now().year, 
+            vote_object = vote_object)
 
-	        return render_template(
-	            'results.html', 
-	            year=datetime.now().year, 
-	            vote_object = vote_object)
-
-	    else :
-	        return render_template(
-	            'vote.html', 
-	            title = 'Vote',
-	            year=datetime.now().year,
-	            form = form)
-
+    else :
+        return render_template(
+            'vote.html', 
+            title = 'Vote',
+            year=datetime.now().year,
+            form = form)
+```
 
 
 ### 创建 HTML 文件
@@ -261,20 +261,18 @@ Python
 3. 重复步骤 1 和步骤 2，以创建另外两个 HTML 文件：results.html 和 vote.html。
 4. 将以下代码添加到 `<body>` 元素中的 **create.html**。它将显示一条消息，说明我们创建了新的数据库、集合和文档。
 
-html
-
+	```html
 	{% extends "layout.html" %}
 	{% block content %}
 	<h2>{{ title }}.</h2>
 	<h3>{{ message }}</h3>
 	<p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
 	{% endblock %}
-	
+	```
 
 5. 将以下代码添加到 `<body`> 元素中的 **results.html**。它将显示轮询结果。
 
-html
-
+	```html
 	{% extends "layout.html" %}
 	{% block content %}
 	<h2>Results of the vote</h2>
@@ -296,12 +294,11 @@ html
 	<br />
 	<a class="btn btn-primary" href="{{ url_for('vote') }}">Vote again?</a>
 	{% endblock %}
-	
+	```
 
 6. 将以下代码添加到 `<body`> 元素中的 **vote.html**。它将显示轮询并接受投票。注册投票时，控件权将传递到 views.py 中，我们将在该位置识别投票并相应地追加文档。
 
-html
-
+	```html
 	{% extends "layout.html" %}
 	{% block content %}
 	<h2>What is your favorite way to host an application on Azure?</h2>
@@ -311,12 +308,11 @@ html
 	        <button class="btn btn-primary" type="submit">Vote</button>
 	</form>
 	{% endblock %}
-	
+	```
 
-7. 在 **templates** 文件夹中，将 **index.html** 的内容替换为以下内容。这将作为你的应用程序的登录页。
+7. 在 **templates** 文件夹中，使用以下内容替换 **index.html** 的内容。这将作为你的应用程序的登录页。
 	
-html
-
+	```html
 	{% extends "layout.html" %}
 	{% block content %}
 	<h2>Python + DocumentDB Voting Application.</h2>
@@ -324,28 +320,27 @@ html
 	<p><a href="{{ url_for('create') }}" class="btn btn-primary btn-large">Create/Clear the Voting Database &raquo;</a></p>
 	<p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
 	{% endblock %}
-	
+	```
 
 ### 添加配置文件并更改 \_\_init\_\_.py
 
 1. 在“解决方案资源管理器”中，右键单击 **tutorial** 项目，单击“添加”，再单击“新建项”，选择“空 Python 文件”，然后将该文件命名为 **config.py**。Flask 中的窗体需要此配置文件。也可将其用于提供密钥。但此教程不需要此密钥。
 
-2. 将以下代码添加到 config.py，需要在下一步更改 **DOCUMENTDB\_HOST** 和 **DOCUMENTDB\_KEY** 的值。
+2. 将以下代码添加到 config.py，你需要在下一步更改 **DOCUMENTDB\_HOST** 和 **DOCUMENTDB\_KEY** 的值。
 
-Python
-
+	```python
 	CSRF_ENABLED = True
 	SECRET_KEY = 'you-will-never-guess'
 	
-	DOCUMENTDB_HOST = 'https://YOUR_DOCUMENTDB_NAME.documents.chinacloduapi.cn:443/'
+	DOCUMENTDB_HOST = 'https://YOUR_DOCUMENTDB_NAME.documents.azure.com:443/'
 	DOCUMENTDB_KEY = 'YOUR_SECRET_KEY_ENDING_IN_=='
 	
 	DOCUMENTDB_DATABASE = 'voting database'
 	DOCUMENTDB_COLLECTION = 'voting collection'
 	DOCUMENTDB_DOCUMENT = 'voting document'
-	
+	```
 
-3. 在 [Azure 门户](https://portal.azure.cn/)中，单击“浏览”、“DocumentDB 帐户”导航到“密钥”边栏选项卡，双击要使用的帐户名，然后单击 **Essentials** 区域的“密钥”按钮。在“密钥”边栏选项卡中，复制 **URI** 值并将其粘贴到 **config.py** 文件中，作为 **DOCUMENTDB\_HOST** 属性的值。
+3. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”、“DocumentDB 帐户”导航到“密钥”边栏选项卡，双击要使用的帐户名，然后单击**Essentials** 区域的“密钥”按钮。在“密钥”边栏选项卡中，复制 **URI** 值并将其粘贴到 **config.py** 文件中，作为 **DOCUMENTDB\_HOST** 属性的值。
 4. 返回到 Azure 门户，在“密钥”边栏选项卡中，复制“主密钥”或“辅助密钥”的值，并将其粘贴到 **config.py** 文件，作为 **DOCUMENTDB\_KEY** 属性的值。
 5. 在 **\_\_init\_\_.py** 文件中，添加以下行。
 
@@ -353,13 +348,12 @@ Python
 
     因此，该文件的内容应为：
 
-Python
-
+	```python
 	from flask import Flask
 	app = Flask(__name__)
 	app.config.from_object('config')
 	import tutorial.views
-	
+	```
 
 6. 添加所有文件后，解决方案资源管理器应如下所示：
 
@@ -395,21 +389,21 @@ Python
 
  	![解决方案资源管理器中选中的教程的屏幕截图，其中突出显示了“发布”选项](./media/documentdb-python-application/image20.png)
 
-2. 在“发布 Web”窗口中，选择“Azure Web 应用”，然后单击“下一步”。
+2. 在“发布 Web”窗口中，选择“Microsoft Azure Web Apps”，然后单击“下一步”。
 
-	![“发布 Web”窗口的屏幕截图，其中突出显示了 Azure Web 应用](./media/documentdb-python-application/image21.png)
+	![“发布 Web 窗口”的屏幕截图，其中突出显示了 Microsoft Azure Web Apps](./media/documentdb-python-application/image21.png)
 
-3. 在“Azure Web 应用窗口”窗口中，单击“新建”。
+3. 在“Microsoft Azure Web Apps 窗口”窗口中，单击“新建”。
 
-	![“Azure Web 应用窗口”窗口的屏幕截图](./media/documentdb-python-application/select-existing-website.png)
+	![“Microsoft Azure Web Apps 窗口”窗口的屏幕截图](./media/documentdb-python-application/select-existing-website.png)
 
-4. 在“在 Azure 中创建网站”窗口中，输入“Web 应用名称”、“应用服务计划”、“资源组”和“区域”，然后单击“创建”。
+4. 在“在 Microsoft Azure 上创建站点”窗口中，输入“Web 应用名”、“App Service 计划”、“资源组”和“区域”，然后单击“创建”。
 
-	![“在 Azure 中创建网站”的屏幕截图](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
+	![Microsoft Azure 窗口上“创建”站点的屏幕截图](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
 
 5. 在“发布 Web”窗口中，单击“发布”。
 
-	![“在 Azure 中创建网站”的屏幕截图](./media/documentdb-python-application/publish-web.png)
+	![Microsoft Azure 窗口上“创建”站点的屏幕截图](./media/documentdb-python-application/publish-web.png)
 
 3. 在几秒钟内，Visual Studio 将完成 Web 应用程序发布并启动浏览器，你可从中查看在 Azure 中运行的简单作品！
 
@@ -427,16 +421,16 @@ Python
 
 我们将根据反馈经常更新并改进此主题。完成该教程后，请使用此页面上顶部和底部的投票按钮，并确保包括有关你想要看到的改进的反馈意见。如果你希望我们直接与你联系，欢迎将你的电子邮件地址附在评论中。
 
-若要将其他功能添加到 Web 应用程序，请查看 [DocumentDB Python SDK](/documentation/articles/documentdb-sdk-python/) 中提供的 API。
+若要将其他功能添加到 Web 应用程序，请查看 [DocumentDB Python SDK](documentdb-sdk-python.md) 中提供的 API。
 
-有关 Azure、Visual Studio 和 Python 的详细信息，请参阅 [Python 开发人员中心](/develop/python/)。
+有关 Azure、Visual Studio 和 Python 的详细信息，请参阅 [Python 开发人员中心](https://azure.microsoft.com/develop/python/)。
 
-有关其他 Python Flask 教程，请参阅 [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)（Flask 大型教程，第 I 部分：Hello, World!）。
+有关其他 Python Flask 教程，请参阅 [The Flask Mega-Tutorial, Part I: Hello, World!（Flask 大型教程，第 I 部分：Hello, World!）](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)。
 
   [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
   [2]: https://www.python.org/downloads/windows/
   [3]: https://www.microsoft.com/download/details.aspx?id=44266
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-  [Azure portal]: http://portal.azure.cn
+  [Azure portal]: http://portal.azure.com
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

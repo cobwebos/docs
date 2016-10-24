@@ -1,6 +1,6 @@
 <properties
-	pageTitle=" 使用 Azure 门户将文件上传到媒体服务帐户 | Azure"
-	description="本教程将指导你完成利用 Azure 门户将文件上传到媒体服务帐户中的步骤"
+	pageTitle=" 使用 Azure 门户将文件上载到媒体服务帐户 | Microsoft Azure"
+	description="本教程介绍了使用 Azure 门户将文件上载到媒体服务帐户的步骤"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
@@ -14,21 +14,19 @@
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.date="08/29/2016"
-	wacn.date=""
 	ms.author="juliako"/>
 
 
-
-# 使用 Azure 门户将文件上传到媒体服务帐户 
+# 使用 Azure 门户将文件上载到媒体服务帐户 
 
 > [AZURE.SELECTOR]
-- [门户](/documentation/articles/media-services-portal-upload-files/)
-- [.NET](/documentation/articles/media-services-dotnet-upload-files/)
-- [REST](/documentation/articles/media-services-rest-upload-files/)
+- [门户](media-services-portal-upload-files.md)
+- [.NET](media-services-dotnet-upload-files.md)
+- [REST](media-services-rest-upload-files.md)
 
-> [AZURE.NOTE] 若要完成本教程，你需要一个 Azure 帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+> [AZURE.NOTE] 若要完成本教程，你需要一个 Azure 帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
-在媒体服务中，可以将数字文件上载到资产中。资产可包含视频、音频、图像、缩略图集合、文本轨迹和隐藏式字幕文件（以及这些文件的相关元数据。） 上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
+在媒体服务中，可以将数字文件上载到资产中。资产可以包含视频、音频、图像、缩略图集合、图文轨迹和隐藏式字幕文件（以及有关这些文件的元数据。） 上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
  
 1. 在“设置”窗口中，单击“资产”。
 
@@ -49,6 +47,14 @@
 
 ## 后续步骤
 
-现即可编码已上传的资产。有关详细信息，请参阅[对资产进行编码](/documentation/articles/media-services-portal-encode/)。
+现在可以对上载的资产进行编码。有关详细信息，请参阅[对资产进行编码](media-services-portal-encode.md)。
 
-<!---HONumber=Mooncake_0926_2016-->
+## 媒体服务学习路径
+
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+
+##提供反馈
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="什么是 Azure SQL 数据仓库 | Azure"
+   pageTitle="什么是 Azure SQL 数据仓库？| Microsoft Azure"
    description="企业级分布式数据库，可处理 PB 量级的关系数据和非关系数据。它是行业首个云数据仓库，可以在数秒内增长、收缩和暂停。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,8 +9,12 @@
 
 <tags
    ms.service="sql-data-warehouse"
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
    ms.date="07/23/2016"
-   wacn.date=""/>  
+   ms.author="lodipalm;barbkess;mausher;jrj;sonyama;kevin"/>  
 
 
 
@@ -144,35 +148,40 @@ Polybase 可让你使用熟悉的 T-SQL 命令来利用不同源中的数据。P
 
 ## 后续步骤
 
-对 SQL 数据仓库有了初步的认识后，请继续了解 [数据仓库工作负荷]、[如何预配] SQL 数据仓库，以及[如何加载示例数据]。或者，查看一下以下一些其他 SQL 数据仓库资源。
+对 SQL 数据仓库有了初步的认识后，请继续了解如何快速[创建 SQL 数据仓库][]和[加载示例数据][]。如果不熟悉 Azure，当你遇到新术语时，[Azure 词汇表][]可以提供帮助。或者，查看一下以下一些其他 SQL 数据仓库资源。
 
 - [博客]
+- [功能请求]
+- [视频]
 - [CAT 团队博客]
+- [创建支持票证]
 - [MSDN 论坛]
 - [Stack Overflow 论坛]
+- [Twitter]
 
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
-[Create Support Ticket]: /documentation/articles/sql-data-warehouse-get-started-create-support-ticket/
-[如何加载示例数据]: /documentation/articles/sql-data-warehouse-get-started-load-sample-databases/
-[如何预配]: /documentation/articles/sql-data-warehouse-get-started-provision/
-[迁移文档]: /documentation/articles/sql-data-warehouse-overview-migrate/
-[SQL Data Warehouse solution partners]: /documentation/articles/sql-data-warehouse-integrate-solution-partners/
-[集成工具概述]: /documentation/articles/sql-data-warehouse-overview-integrate/
-[备份和还原概述]: /documentation/articles/sql-data-warehouse-restore-database-overview/
-[Azure glossary]: /documentation/articles/azure-glossary-cloud-terminology/
+[创建支持票证]: sql-data-warehouse-get-started-create-support-ticket.md
+[加载示例数据]: sql-data-warehouse-load-sample-databases.md
+[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
+[迁移文档]: sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse solution partners]: sql-data-warehouse-partner-business-intelligence.md
+[集成工具概述]: sql-data-warehouse-overview-integrate.md
+[备份和还原概述]: sql-data-warehouse-restore-database-overview.md
+[Azure 词汇表]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
 [博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [CAT 团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Feature Requests]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
+[功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/zh-CN/home?forum=AzureSQLDataWarehouse
 [Stack Overflow 论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Twitter]: https://twitter.com/hashtag/SQLDW
+[视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=Mooncake_0829_2016--->
+<!---HONumber=AcomDC_0921_2016-->

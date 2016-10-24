@@ -7,4 +7,4 @@
 
 	![自定义 DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=AcomDC_0921_2016-->

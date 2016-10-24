@@ -1,4 +1,4 @@
-1. 在门户预览版中，导航至“新建”>“网络”>“本地网关”。
+1. 在门户中，导航到“新建”>“网络”>“本地网络网关”。
 
 	![创建局域网网关](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)
 
@@ -16,4 +16,4 @@
 
 8. 单击“创建”以创建本地网关。
 
-<!---HONumber=Mooncake_0822_2016---->
+<!---HONumber=AcomDC_0921_2016-->

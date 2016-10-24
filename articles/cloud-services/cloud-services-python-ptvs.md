@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Visual Studio 中的 Python Web 角色和辅助角色 | Azure"
+	pageTitle="Visual Studio 中的 Python Web 角色和辅助角色 | Microsoft Azure"
 	description="有关使用 Python Tools for Visual Studio 来创建包括 Web 角色和辅助角色的 Azure 云服务的概述。"
 	services="cloud-services"
 	documentationCenter="python"
@@ -9,6 +9,10 @@
 
 <tags
 	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="hero-article"
 	ms.date="08/03/2016"
 	ms.author="adegeo"/>
 
@@ -28,13 +32,11 @@
 
 ## 什么是 Python Web 角色和辅助角色？
 
-Azure 提供了三种计算模型用于运行应用程序：[Azure App Service 中的 Web Apps 功能][execution model-web sites]、[Azure 虚拟机][execution model-vms]和 [Azure 云服务][execution model-cloud services]。这三种模型都支持 Python。云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)* 。在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
+Azure 提供了三种计算模型用于运行应用程序：[Azure App Service 中的 Web Apps 功能][execution model-web sites]、[Azure 虚拟机][execution model-vms]和 [Azure 云服务][execution model-cloud services]。这三种模型都支持 Python。云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
 
 有关详细信息，请参阅[什么是云服务？]。
 
-> [AZURE.NOTE] *想要构建一个简单的网站？*
-如果你的方案只涉及一个简单的网站前端，请考虑使用 Azure App Service 中的轻型 Web Apps 功能。随着您网站的不断扩大和需求的变化，您可以轻松升级到云服务。请参阅 <a href="/develop/python/">Python 开发人员中心</a>上关于开发 Azure App Service 中的 Web Apps 功能的文章。
-<br />
+> [AZURE.NOTE] *想要构建一个简单的网站？* 如果你的方案只涉及一个简单的网站前端，请考虑使用 Azure App Service 中的轻型 Web Apps 功能。随着您网站的不断扩大和需求的变化，您可以轻松升级到云服务。请参阅 <a href="/develop/python/">Python 开发人员中心</a>上关于开发 Azure App Service 中的 Web Apps 功能的文章。<br />
 
 
 ## 创建项目
@@ -61,7 +63,7 @@ Azure 提供了三种计算模型用于运行应用程序：[Azure App Service �
 
 >[AZURE.WARNING] 在本文上次更新时与 Visual Studio 一起安装的安装脚本无法使用。本部分将介绍一种解决方法。
 
-安装脚本的主要问题在于无法安装 Python。首先，请在 [ServiceDefinition.csdef](/documentation/articles/cloud-services/cloud-services-model-and-package/#servicedefinitioncsdef) 文件中定义两个[启动任务](/documentation/articles/cloud-services/cloud-services-startup-tasks/)。第一个任务 (**PrepPython.ps1**) 下载并安装 Python 运行时。第二个任务 (**PipInstaller.ps1**) 运行 pip，安装可能存在的任何依赖项。
+安装脚本的主要问题在于无法安装 Python。首先，请在 [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 文件中定义两个[启动任务](cloud-services-startup-tasks.md)。第一个任务 (**PrepPython.ps1**) 下载并安装 Python 运行时。第二个任务 (**PipInstaller.ps1**) 运行 pip，安装可能存在的任何依赖项。
 
 以下脚本是针对 Python 3.5 编写的。若要使用 2.x 版 Python，请针对两个启动任务以及运行时任务将 **PYTHON2** 变量文件设置为 **on**：`<Variable name="PYTHON2" value="<mark>on</mark>" />`。
 
@@ -74,7 +76,7 @@ Azure 提供了三种计算模型用于运行应用程序：[Azure App Service �
       <Variable name="EMULATED">
         <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
       </Variable>
-	  <Variable name="PYTHON2" value="off" />
+      <Variable name="PYTHON2" value="off" />
     </Environment>
   </Task>
 
@@ -83,8 +85,9 @@ Azure 提供了三种计算模型用于运行应用程序：[Azure App Service �
       <Variable name="EMULATED">
         <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
       </Variable>
+      <Variable name="PYTHON2" value="off" />
     </Environment>
-	<Variable name="PYTHON2" value="off" />
+	
   </Task>
 
 </Startup>
@@ -169,7 +172,7 @@ $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
 
 if (-not $is_emulated){
-	Write-Host "Checking if python is installed...$nl"
+	Write-Output "Checking if python is installed...$nl"
 	if ($is_python2) {
 		& "${env:SystemDrive}\Python27\python.exe"  -V | Out-Null
 	}
@@ -187,9 +190,9 @@ if (-not $is_emulated){
 			$outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
 		}
 		
-		Write-Host "Not found, downloading $url to $outFile$nl"
+		Write-Output "Not found, downloading $url to $outFile$nl"
 		Invoke-WebRequest $url -OutFile $outFile
-		Write-Host "Installing$nl"
+		Write-Output "Installing$nl"
 
 		if ($is_python2) {
 			Start-Process msiexec.exe -ArgumentList "/q", "/i", "$outFile", "ALLUSERS=1" -Wait
@@ -198,10 +201,10 @@ if (-not $is_emulated){
 			Start-Process "$outFile" -ArgumentList "/quiet", "InstallAllUsers=1" -Wait
 		}
 
-		Write-Host "Done$nl"
+		Write-Output "Done$nl"
 	}
 	else {
-		Write-Host "Already installed"
+		Write-Output "Already installed"
 	}
 }
 ```
@@ -216,9 +219,9 @@ $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
 
 if (-not $is_emulated){
-	Write-Host "Checking if requirements.txt exists$nl"
+	Write-Output "Checking if requirements.txt exists$nl"
 	if (Test-Path ..\requirements.txt) {
-		Write-Host "Found. Processing pip$nl"
+		Write-Output "Found. Processing pip$nl"
 
 		if ($is_python2) {
 			& "${env:SystemDrive}\Python27\python.exe" -m pip install -r ..\requirements.txt
@@ -227,15 +230,17 @@ if (-not $is_emulated){
 			py -m pip install -r ..\requirements.txt
 		}
 
-		Write-Host "Done$nl"
+		Write-Output "Done$nl"
 	}
 	else {
-		Write-Host "Not found$nl"
+		Write-Output "Not found$nl"
 	}
 }
 ```
 
 #### 修改 LaunchWorker.ps1
+
+>[AZURE.NOTE] 在“辅助角色”项目中，执行启动文件需要 **LauncherWorker.ps1** 文件。在“Web 角色”项目中，会在项目属性中定义该启动文件。
 
 **bin\\LaunchWorker.ps1** 最初是为了执行多种准备工作而创建的，但实际上并不起作用。将该文件中的内容替换为以下脚本。
 
@@ -248,7 +253,7 @@ $nl = [Environment]::NewLine
 
 if (-not $is_emulated)
 {
-	Write-Host "Running worker.py$nl"
+	Write-Output "Running worker.py$nl"
 
 	if ($is_python2) {
 		cd..
@@ -261,7 +266,7 @@ if (-not $is_emulated)
 }
 else
 {
-	Write-Host "Running (EMULATED) worker.py$nl"
+	Write-Output "Running (EMULATED) worker.py$nl"
 
 	# Customize to your local dev environment
 
@@ -338,17 +343,17 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 <!--Link references-->
 
-[什么是云服务？]: /documentation/articles/cloud-services/cloud-services-choose-me/
-[execution model-web sites]: /documentation/articles/app-service-web/app-service-web-overview/
-[execution model-vms]: /documentation/articles/cloud-services/virtual-machines-windows-about/
-[execution model-cloud services]: /documentation/articles/cloud-services/cloud-services-choose-me/
+[什么是云服务？]: cloud-services-choose-me.md
+[execution model-web sites]: ../app-service-web/app-service-web-overview.md
+[execution model-vms]: ../virtual-machines/virtual-machines-windows-about.md
+[execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blob 服务]: /documentation/articles/storage/storage-python-how-to-use-blob-storage/
-[队列服务]: /documentation/articles/storage/storage-python-how-to-use-queue-storage/
-[表服务]: /documentation/articles/storage/storage-python-how-to-use-table-storage/
-[Service Bus 队列]: /documentation/articles/service-bus/service-bus-python-how-to-use-queues/
-[服务总线主题]: /documentation/articles/service-bus/service-bus-python-how-to-use-topics-subscriptions/
+[Blob 服务]: ../storage/storage-python-how-to-use-blob-storage.md
+[队列服务]: ../storage/storage-python-how-to-use-queue-storage.md
+[表服务]: ../storage/storage-python-how-to-use-table-storage.md
+[Service Bus 队列]: ../service-bus/service-bus-python-how-to-use-queues.md
+[服务总线主题]: ../service-bus/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
@@ -361,4 +366,4 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 [Python 2.7（32 位）]: https://www.python.org/downloads/
 [Python 3.5（32 位）]: https://www.python.org/downloads/
 
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=AcomDC_0921_2016-->

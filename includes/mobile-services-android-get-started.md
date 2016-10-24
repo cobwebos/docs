@@ -39,4 +39,4 @@
 
    	![](./media/mobile-services-android-get-started/mobile-data-browse.png)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=AcomDC_0921_2016-->

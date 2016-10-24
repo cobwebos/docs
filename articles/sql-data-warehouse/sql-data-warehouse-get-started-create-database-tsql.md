@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 TSQL 创建 SQL 数据仓库 | Azure"
+   pageTitle="使用 TSQL 创建 SQL 数据仓库 | Microsoft Azure"
    description="了解如何使用 TSQL 创建 Azure SQL 数据仓库"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -10,18 +10,22 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="07/20/2016"
-   wacn.date=""/>  
+   ms.devlang="NA"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="08/24/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>  
 
 
 # 使用 Transact-SQL (TSQL) 创建 SQL 数据仓库数据库
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/sql-data-warehouse-get-started-provision)
-- [TSQL](/documentation/articles/sql-data-warehouse-get-started-create-database-tsql)
-- [PowerShell](/documentation/articles/sql-data-warehouse-get-started-provision-powershell)
+- [Azure 门户](sql-data-warehouse-get-started-provision.md)
+- [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
+- [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-本文说明如何使用 T-SQL 创建 SQL 数据仓库。
+本文将介绍如何使用 T-SQL 创建 SQL 数据仓库。
 
 ## 先决条件
 
@@ -32,52 +36,52 @@
 - **资源组**：可使用同一资源组作为 Azure SQL Server，或参阅[如何创建资源组][]。
 - **执行 T-SQL 的环境**：可以使用 [Visual Studio][Installing Visual Studio and SSDT]、[sqlcmd][] 或 [SSMS][] 执行 T-SQL。
 
-> [AZURE.NOTE] 创建新的 SQL 数据仓库可能会导致新的计费服务。有关定价的详细信息，请参阅 [SQL 数据仓库定价][]。
+> [AZURE.NOTE] 创建 SQL 数据仓库可能会导致新的计费服务。有关定价的详细信息，请参阅 [SQL 数据仓库定价][]。
 
 ## 使用 Visual Studio 创建数据库
 
-若不熟悉 Visual Studio，请参阅[使用 Visual Studio 连接到 SQL 数据仓库][]一文。若要开始操作，请在 Visual Studio 中打开 SQL Server 对象资源管理器，并连接到要托管 SQL 数据仓库数据库的服务器。连接后，可针对 **master** 数据库运行以下 SQL 命令来创建 SQL 数据仓库。此命令会创建服务目标为 DW400 的数据库 MySqlDwDb，并允许此数据库增长到大小上限 10 TB。
+如果不熟悉 Visual Studio，请参阅文章[查询 Azure SQL 数据仓库 (Visual Studio)][]。若要开始操作，请在 Visual Studio 中打开 SQL Server 对象资源管理器，并连接到要托管 SQL 数据仓库数据库的服务器。连接后，可针对 **master** 数据库运行以下 SQL 命令来创建 SQL 数据仓库。此命令可创建服务目标为 DW400 的数据库 MySqlDwDb，并允许此数据库增长到大小上限 10 TB。
 
-
-	CREATE DATABASE MySqlDwDb (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB);
-
+```sql
+CREATE DATABASE MySqlDwDb COLLATE SQL_Latin1_General_CP1_CI_AS (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB);
+```
 
 ## 使用 sqlcmd 创建数据库
 
-或者，你可以在命令提示符处运行以下命令，以使用 sqlcmd 运行相同的命令。
+或者，也可以通过在命令提示符下运行以下命令，使用 sqlcmd 运行相同的命令。
 
+```sql
+sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE MySqlDwDb COLLATE SQL_Latin1_General_CP1_CI_AS (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB)"
+```
 
-	sqlcmd -S <Server Name>.database.chinacloudapi.cn -I -U <User> -P <Password> -Q "CREATE DATABASE MySqlDwDb (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB)"
-
-
-`MAXSIZE` 可介于 250 GB 和 240 TB 之间。`SERVICE_OBJECTIVE` 可以介于 DW100 与 DW2000 [DWU][] 之间。有关所有有效值的列表，请参阅 [CREATE DATABASE][] 的 MSDN 文档。MAXSIZE 和 SERVICE\_OBJECTIVE 还可通过 [ALTER DATABASE][] T-SQL 命令进行更改。更改 SERVICE\_OBJECTIVE 时应谨慎，因为这会导致服务重新启动而取消所有正在进行的查询。更改 MAXSIZE 不会重启服务，因为这只是简单的元数据操作。
+如果未指定，默认排序规则为 COLLATE SQL\_Latin1\_General\_CP1\_CI\_AS。`MAXSIZE` 可介于 250 GB 和 240 TB 之间。`SERVICE_OBJECTIVE` 可以介于 DW100 与 DW2000 [DWU][] 之间。有关所有有效值的列表，请参阅 [CREATE DATABASE][] 的 MSDN 文档。MAXSIZE 和 SERVICE\_OBJECTIVE 可通过 [ALTER DATABASE][] T-SQL 命令进行更改。数据库的排序规则在创建后不能更改。更改 SERVICE\_OBJECTIVE 时应谨慎，因为更改 DWU 将导致服务重新启动，从而取消所有正在进行的查询。更改 MAXSIZE 不会重启服务，因为这只是简单的元数据操作。
 
 ## 后续步骤
 
 完成预配 SQL 数据仓库之后，你可以[加载示例数据][]或了解如何[开发][]、[加载][]，或[迁移][]数据。
 
 <!--Article references-->
-[DWU]: /documentation/articles/sql-data-warehouse-overview-what-is#data-warehouse-units
-[how to create a SQL Data Warehouse from the Azure portal]: /documentation/articles/sql-data-warehouse-get-started-provision/
-[使用 Visual Studio 连接到 SQL 数据仓库]: /documentation/articles/sql-data-warehouse-get-started-connect/
-[迁移]: /documentation/articles/sql-data-warehouse-overview-migrate/
-[开发]: /documentation/articles/sql-data-warehouse-overview-develop/
-[加载]: /documentation/articles/sql-data-warehouse-overview-load/
-[加载示例数据]: /documentation/articles/sql-data-warehouse-get-started-load-sample-databases/
-[使用 Azure 门户创建 Azure SQL 数据库逻辑服务器]: /documentation/articles/sql-database-get-started/#create-an-azure-sql-database-logical-server
-[使用 PowerShell 创建 Azure SQL 数据库逻辑服务器]: /documentation/articles/sql-database-get-started-powershell/#database-setup-create-a-resource-group-server-and-firewall-rule
-[如何创建资源组]: /documentation/articles/resource-group-template-deploy-portal#create-resource-group
-[Installing Visual Studio and SSDT]: /documentation/articles/sql-data-warehouse-install-visual-studio/
-[sqlcmd]: /documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd/
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[how to create a SQL Data Warehouse from the Azure portal]: sql-data-warehouse-get-started-provision.md
+[查询 Azure SQL 数据仓库 (Visual Studio)]: sql-data-warehouse-query-visual-studio.md
+[迁移]: sql-data-warehouse-overview-migrate.md
+[开发]: sql-data-warehouse-overview-develop.md
+[加载]: sql-data-warehouse-overview-load.md
+[加载示例数据]: sql-data-warehouse-load-sample-databases.md
+[使用 Azure 门户创建 Azure SQL 数据库逻辑服务器]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
+[使用 PowerShell 创建 Azure SQL 数据库逻辑服务器]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[如何创建资源组]: ../resource-group-template-deploy-portal.md#create-resource-group
+[Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
+[sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--MSDN references--> 
-[CREATE DATABASE]: https://msdn.microsoft.com/zh-cn/library/mt204021.aspx
-[ALTER DATABASE]: https://msdn.microsoft.com/zh-cn/library/mt204042.aspx
+[CREATE DATABASE]: https://msdn.microsoft.com/library/mt204021.aspx
+[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
 [SSMS]: https://msdn.microsoft.com/library/mt238290.aspx
 
 <!--Other Web references-->
-[SQL 数据仓库定价]: /home/features/sql-data-warehouse/pricing/
-[Azure 免费试用版]: /pricing/1rmb-trial/
-[MSDN Azure 信用额度]: /pricing/member-offers/
+[SQL 数据仓库定价]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
+[Azure 免费试用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
+[MSDN Azure 信用额度]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

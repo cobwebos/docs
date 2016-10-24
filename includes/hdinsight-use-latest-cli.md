@@ -1,5 +1,5 @@
-> [AZURE.IMPORTANT] 目前，在 Azure 中国的 HDInsight 只能由 Azure 服务管理器 (ASM) 进行管理。适用于 HDInsight 的 Azure Resource Manager (ARM) 模型尚不可用。<p>请按照 [Install and configure Azure CLI（安装和配置 Azure CLI）](/documentation/articles/xplat-cli-install)中的步骤安装最新版的 Azure CLI。
+> [AZURE.IMPORTANT] Azure CLI 支持使用 Azure Service Manager (ASM) 管理 HDInsight 资源，但__不建议使用__，而且将于 2017 年 1 月 1 日前删除。本文档中的步骤使用的是与 Azure Resource Manager (ARM) 兼容的新 Azure CLI 命令。
+>
+> 请按照[安装和配置 Azure CLI](../articles/xplat-cli-install.md) 中的步骤安装最新版本的 Azure CLI。如果你的脚本需要修改后才能使用与 Azure Resource Manager 兼容的新命令，请参阅[迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
 
-
-
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=AcomDC_0921_2016-->

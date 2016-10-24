@@ -9,8 +9,12 @@
    tags="azure-sql-data-warehouse"/>
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="04/29/2016"
-   wacn.date=""/>
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="08/16/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # 将数据从 Azure Blob 存储载入 Azure SQL 数据仓库（Azure 数据工厂）
 
@@ -29,19 +33,19 @@
 
 ## 开始之前
 
-若要了解 Azure 数据工厂，请参阅 [Introduction to Azure Data Factory][]（Azure 数据工厂简介）。
+若要了解 Azure 数据工厂，请参阅 [Azure 数据工厂简介][]。
 
 ### 创建或标识资源
 
 在开始此教程之前，你需要拥有以下资源。
 
-   + **Azure 存储 Blob**：此教程使用 Azure 存储 Blob 作为 Azure 数据工厂管道的数据源，因此，需要拥有一个可用于存储示例数据的 Azure 存储 Blob。如果还没有，请学习如何[创建一个存储帐户][]。
+   + **Azure 存储 Blob**：此教程使用 Azure 存储 Blob 作为 Azure 数据工厂管道的数据源，因此，你需要拥有一个可用于存储示例数据的 Azure 存储 Blob。如果还没有，请学习如何[创建一个存储帐户][]。
 
-   + **SQL 数据仓库**：本教程将 Azure 存储 Blob 的数据移动到 SQL 数据仓库，因此需要一个加载有 AdventureWorksDW 示例数据的联机数据仓库。如果还没有数据仓库，请学习如何[预配一个][Create a SQL Data Warehouse]。如果拥有数据仓库但未用示例数据进行预配，你可以[手动加载][Load sample data into SQL Data Warehouse]。
+   + **SQL 数据仓库**：此教程将 Azure 存储 Blob 的数据移动到 SQL 数据仓库，因此需要一个加载有 AdventureWorksDW 示例数据的联机数据仓库。如果还没有数据仓库，请学习如何[预配一个][Create a SQL Data Warehouse]。如果拥有数据仓库但未用示例数据进行预配，可以[手动加载][Load sample data into SQL Data Warehouse]。
 
    + **Azure 数据工厂**：Azure 数据工厂将完成实际加载，因此需要有一个可用于构建数据移动管道的 Azure 数据工厂。如果还没有，请在 [Azure 数据工厂入门（数据工厂编辑器）][]的步骤 1 中学习如何创建一个 Azure 数据工厂。
 
-   + **AZCopy**：需要 AZCopy 以便将示例数据从你的本地客户端复制到你的 Azure 存储 Blob。有关安装说明，请参阅 [AZCopy 文档][]。
+   + **AZCopy**：你需要 AZCopy 以便将示例数据从你的本地客户端复制到你的 Azure 存储 Blob。有关安装说明，请参阅 [AZCopy 文档][]。
 
 ## 步骤 1：将示例数据复制到 Azure 存储 Blob
 
@@ -60,7 +64,7 @@ AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core
 
 现在数据已就位，我们可以创建 Azure 数据工厂管道以将数据从 Azure Blob 存储移到 SQL 数据仓库。
 
-若要开始使用，请打开 [Azure 门户][]并从左侧菜单中选择你的数据工厂。
+若要开始操作，请打开 [Azure 门户][]并从左侧菜单中选择你的数据工厂。
 
 ### 步骤 2.1：创建链接的服务
 
@@ -201,14 +205,14 @@ AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core
 要了解详细信息，请先查看：
 
 - [Azure 数据工厂学习路径][]。
-- [Azure SQL 数据仓库连接器][]。这是有关将 Azure 数据工厂和 Azure SQL 数据仓库配合使用的核心参考主题。
+- [Azure SQL 数据仓库连接器][]。这是将 Azure 数据工厂和 Azure SQL 数据仓库配合使用的核心参考主题。
 
 
 这些主题提供有关 Azure 数据工厂的详细信息。它们讨论 Azure SQL 数据库或 HDinsight，但该信息也适用于 Azure SQL 数据仓库。
 
 - [教程：Azure 数据工厂入门][] 这是使用 Azure 数据工厂处理数据的核心教程。在此教程中，你将构建使用 HDInsight 每月转换和分析 Web 日志的第一个管道。请注意，在此教程中没有复制活动。
 - [教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库][]。在此教程中，你将在 Azure 数据工厂中创建管道以将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库。
-- [实际方案教程][]。这是深入了解使用 Azure 数据工厂的教程。
+
 
 <!--Image references-->
 
@@ -220,12 +224,11 @@ AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core
 [创建一个存储帐户]: ../storage/storage-create-storage-account.md#create-a-storage-account
 [Data Factory]: sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Azure 数据工厂入门（数据工厂编辑器）]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
-[Introduction to Azure Data Factory]: ../data-factory/data-factory-introduction.md
-[Load sample data into SQL Data Warehouse]: sql-data-warehouse-get-started-manually-load-samples.md
+[Azure 数据工厂简介]: ../data-factory/data-factory-introduction.md
+[Load sample data into SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
 [Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
-[实际方案教程]: ../data-factory/data-factory-tutorial.md
-[教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库]: ../data-factory/data-factory-get-started
+[教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [教程：Azure 数据工厂入门]: ../data-factory/data-factory-build-your-first-pipeline.md
 
 <!--MSDN references-->
@@ -235,4 +238,4 @@ AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core
 [Azure 门户]: https://portal.azure.com
 [下载示例数据]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=AcomDC_0921_2016-->

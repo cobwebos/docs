@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Azure 数据工厂加载数据 | Azure"
+   pageTitle="使用 Azure 数据工厂加载数据 | Microsoft Azure"
    description="了解如何使用 Azure 数据工厂加载数据"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,8 +9,12 @@
    tags="azure-sql-data-warehouse"/>
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="08/08/2016"
-   wacn.date=""/>  
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="08/16/2016"
+   ms.author="lodipalm;barbkess;sonyama"/>  
 
 
 # 使用 Azure 数据工厂加载数据 
@@ -26,6 +30,7 @@
 + 将资源连接到 Azure 数据工厂。
 + 创建管道用于将数据从存储 Blob 移到 SQL 数据仓库。
 
+>[AZURE.VIDEO loading-azure-sql-data-warehouse-with-azure-data-factory]
 
 
 ## 开始之前
@@ -53,7 +58,7 @@
 2. 使用此 AZCopy 命令将三年的数据复制到 Azure 存储 Blob。
 
 ````
-        AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core.chinacloudapi.cn/<container name> /DestKey:<storage key> /Pattern:FactInternetSales.csv
+AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core.windows.net/<container name> /DestKey:<storage key> /Pattern:FactInternetSales.csv
 ````
 
 
@@ -71,18 +76,18 @@
 
 2. 若要注册 SQL 数据仓库，请导航到“创作和部署”部分，然后依次选择“新建数据存储”和“Azure SQL 数据仓库”。在此模板中进行复制和粘贴，然后填写你的特定信息。
 
-    ````
-    {
-        "name": "<Linked Service Name>",
-	    "properties": {
-	        "description": "",
-		    "type": "AzureSqlDW",
-		    "typeProperties": {
-		            "connectionString": "Data Source=tcp:<server name>.database.chinacloudapi.cn,1433;Initial Catalog=<server name>;Integrated Security=False;User ID=<user>@<servername>;Password=<password>;Connect Timeout=30;Encrypt=True"
-	         }
-        }
+```JSON
+{
+    "name": "<Linked Service Name>",
+    "properties": {
+        "description": "",
+	    "type": "AzureSqlDW",
+	    "typeProperties": {
+	         "connectionString": "Data Source=tcp:<server name>.database.windows.net,1433;Initial Catalog=<server name>;Integrated Security=False;User ID=<user>@<servername>;Password=<password>;Connect Timeout=30;Encrypt=True"
+         }
     }
-    ````
+}
+```
 
 ### 步骤 2.2：定义数据集
 
@@ -92,64 +97,64 @@
 
 2. 依次单击“新建数据集”和“Azure Blob 存储”，以将你的存储链接到你的数据工厂。可以使用以下脚本，在 Azure Blob 存储中定义数据：
 
-    ````
-	{
-	    "name": "<Dataset Name>",
-		"properties": {
-		    "type": "AzureBlob",
-			"linkedServiceName": "<linked storage name>",
-			"typeProperties": {
-			    "folderPath": "<containter name>",
-				"fileName": "FactInternetSales.csv",
-				"format": {
-				"type": "TextFormat",
-				"columnDelimiter": ",",
-				"rowDelimiter": "\n"
-                }
-            },
-		    "external": true,
-		    "availability": {
-			    "frequency": "Hour",
-			    "interval": 1
-		    },
-		    "policy": {
-		        "externalData": {
-			        "retryInterval": "00:01:00",
-			        "retryTimeout": "00:10:00",
-			        "maximumRetry": 3
-		        }
+```JSON
+{
+    "name": "<Dataset Name>",
+	"properties": {
+	    "type": "AzureBlob",
+		"linkedServiceName": "<linked storage name>",
+		"typeProperties": {
+		    "folderPath": "<containter name>",
+			"fileName": "FactInternetSales.csv",
+			"format": {
+			"type": "TextFormat",
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n"
             }
-		}
+        },
+	    "external": true,
+	    "availability": {
+		    "frequency": "Hour",
+		    "interval": 1
+	    },
+	    "policy": {
+	        "externalData": {
+		        "retryInterval": "00:01:00",
+		        "retryTimeout": "00:10:00",
+		        "maximumRetry": 3
+	        }
+        }
 	}
-    ````
+}
+```
 
 
 3. 现在，还要为 SQL 数据仓库定义我们的数据集。我们以相同的方式开始，即依次单击“新建数据集”和“Azure SQL 数据仓库”。
 
-    ````
-    {
-	    "name": "DWDataset",
-		"properties": {
-		    "type": "AzureSqlDWTable",
-		    "linkedServiceName": "AzureSqlDWLinkedService",
-		    "typeProperties": {
-			    "tableName": "FactInternetSales"
-			},
-		    "availability": {
-		        "frequency": "Hour",
-			    "interval": 1
-	        }
+```JSON
+{
+    "name": "DWDataset",
+	"properties": {
+	    "type": "AzureSqlDWTable",
+	    "linkedServiceName": "AzureSqlDWLinkedService",
+	    "typeProperties": {
+		    "tableName": "FactInternetSales"
+		},
+	    "availability": {
+	        "frequency": "Hour",
+		    "interval": 1
         }
     }
-    ````
+}
+```
 
 ## 步骤 3：创建并运行管道
 
-最后，我们将在 Azure 数据工厂中设置并运行管道。此操作将完成实际的数据移动。可以在[此处](/documentation/articles/data-factory-azure-sql-data-warehouse-connector/)找到可以使用 SQL 数据仓库和 Azure 数据工厂完成的操作的完整视图。
+最后，我们将在 Azure 数据工厂中设置并运行管道。此操作将完成实际的数据移动。可以在[此处][Move data to and from Azure SQL Data Warehouse using Azure Data Factory]找到可以使用 SQL 数据仓库和 Azure 数据工厂完成的操作的完整视图。
 
 在“创作和部署”部分中，依次单击“更多命令”和“新建管道”。创建管道后，可以使用以下代码将数据传送到数据仓库：
 
-````
+```JSON
 {
     "name": "<Pipeline Name>",
     "properties": {
@@ -195,7 +200,7 @@
 	    "isPaused": false
     }
 }
-````
+```
 
 ## 后续步骤
 
@@ -209,32 +214,29 @@
 
 - [教程：Azure 数据工厂入门][] 这是使用 Azure 数据工厂处理数据的核心教程。在此教程中，你将构建使用 HDInsight 每月转换和分析 Web 日志的第一个管道。请注意，在此教程中没有复制活动。
 - [教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库][]。在此教程中，你将在 Azure 数据工厂中创建管道以将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库。
-- [实际方案教程][]。这是深入了解使用 Azure 数据工厂的教程。
 
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy 文档]: /documentation/articles/storage-use-azcopy/
-[Azure SQL 数据仓库连接器]: /documentation/articles/data-factory-azure-sql-data-warehouse-connector/
-[BCP]: /documentation/articles/sql-data-warehouse-load-with-bcp/
-[Create a SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-get-started-provision/
-[创建一个存储帐户]: /documentation/articles//storage-create-storage-account.md#create-a-storage-account
-[Data Factory]: /documentation/articles/sql-data-warehouse-get-started-load-with-azure-data-factory/
-[Azure 数据工厂入门（数据工厂编辑器）]: /documentation/articles/data-factory-build-your-first-pipeline-using-editor/
-[Azure 数据工厂简介]: /documentation/articles/data-factory-introduction/
-[Load sample data into SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
-[Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: /documentation/articles/data-factory-azure-sql-data-warehouse-connector/
-[PolyBase]: /documentation/articles/sql-data-warehouse-get-started-load-with-polybase/
-[实际方案教程]: /documentation/articles/data-factory-tutorial/
-[教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库]: /documentation/articles/data-factory-get-started/
-[教程：Azure 数据工厂入门]: /documentation/articles/data-factory-build-your-first-pipeline/
+[AZCopy 文档]: ../storage/storage-use-azcopy.md
+[Azure SQL 数据仓库连接器]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[BCP]: sql-data-warehouse-load-with-bcp.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[创建一个存储帐户]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Data Factory]: sql-data-warehouse-get-started-load-with-azure-data-factory.md
+[Azure 数据工厂入门（数据工厂编辑器）]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
+[Azure 数据工厂简介]: ../data-factory/data-factory-introduction.md
+[Load sample data into SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
+[Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
+[教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+[教程：Azure 数据工厂入门]: ../data-factory/data-factory-build-your-first-pipeline.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
 [Azure 数据工厂学习路径]: https://azure.microsoft.com/documentation/learning-paths/data-factory
 [Azure 门户]: https://portal.azure.com
 [下载示例数据]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

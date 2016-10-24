@@ -9,17 +9,22 @@
 
 <tags
 	ms.service="app-service-mobile"
+	ms.workload="na"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.devlang="na"
+	ms.topic="hero-article"
 	ms.date="05/03/2016"
-	wacn.date=""/>
+	ms.author="glennga"/>
 
 # <a name="getting-started"></a>什么是移动应用？
 
-Azure 应用服务是面向专业开发人员的完全托管型平台即服务 (PaaS)，可为 Web、移动和集成方案提供丰富的功能。*Azure 应用服务* 中的 *移动应用* 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，为移动开发人员提供丰富的功能。
+Azure App Service 是面向专业开发人员的完全托管型[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，可为 Web、移动和集成方案提供丰富的功能。*Azure 应用服务*中的*移动应用*提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，为移动开发人员提供丰富的功能。
 
-![Mobile Apps](./media/app-service-mobile-value-prop/overview.png)
+![Mobile Apps](./media/app-service-mobile-value-prop/overview.png)  
+
 
 ##为何使用移动应用？
-*Azure 应用服务* 中的 *移动应用* 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，为移动开发人员提供丰富的功能。使用移动应用可以：
+*Azure 应用服务*中的*移动应用*提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，为移动开发人员提供丰富的功能。使用移动应用可以：
 
 - **构建本机和跨平台应用** - 无论是要构建本机 iOS、Android、Windows 应用程序还是跨平台 Xamarin 或 Cordova (Phonegap) 应用程序，都可以通过本机 SDK 利用应用服务。
 - **连接到企业系统** - 使用移动应用可以在短时间内添加企业标志，连接到企业本地资源或云资源。
@@ -29,7 +34,7 @@ Azure 应用服务是面向专业开发人员的完全托管型平台即服务 (
 ## 移动应用的功能
 以下功能对于支持云的移动开发十分重要：
 
-- **身份验证和授权** - 从不断增多的标识提供者（包括适用于企业身份验证的 Azure Active Directory，以及 Microsoft 帐户等社交提供者）列表中选择。Azure 移动应用可为每个提供者提供 OAuth 2.0 服务。还可以为标识提供者集成 SDK，获取特定于提供者的功能。
+- **身份验证和授权** - 从不断增多的标识提供者（包括适用于企业身份验证的 Azure Active Directory，以及 Facebook、Google、Twitter 和 Microsoft 帐户等社交提供者）列表中选择。Azure 移动应用可为每个提供者提供 OAuth 2.0 服务。还可以为标识提供者集成 SDK，获取特定于提供者的功能。
 
   深入了解[身份验证功能]。
 
@@ -59,7 +64,7 @@ Azure 应用服务是面向专业开发人员的完全托管型平台即服务 (
 
   深入了解[部署选项]。
 
-- **虚拟网络** - 应用服务可以使用虚拟网络、ExpressRoute 或混合连接来与本地资源建立连接。
+- **虚拟网络** - 应用服务可以使用虚拟网络、ExpressRoute 或混合连接与本地资源建立连接。
 
   深入了解[混合连接]、[虚拟网络]和 [ExpressRoute]。
 
@@ -75,27 +80,27 @@ Azure 应用服务是面向专业开发人员的完全托管型平台即服务 (
 >[AZURE.NOTE] 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://tryappservice.azure.com/?appServiceName=mobile)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
 
 <!-- URLs. -->
-[Migrate your Mobile Service to App Service]: /documentation/articles/app-service-mobile-migrating-from-mobile-services/
-[Azure App Service]: /documentation/articles/app-service-value-prop-what-is/
-[入门]: /documentation/articles/app-service-mobile-ios-get-started/
-[Azure 表存储]: /documentation/articles/storage-getting-started-guide/
-[DocumentDB]: /documentation/articles/documentdb-get-started/
-[身份验证功能]: /documentation/articles/app-service-mobile-auth/
-[数据功能]: /documentation/articles/app-service-mobile-offline-data-sync/
-[推送通知功能]: /documentation/articles/notification-hubs-overview/
-[iOS]: /documentation/articles/app-service-mobile-ios-how-to-use-client-library/
-[Android]: /documentation/articles/app-service-mobile-android-how-to-use-client-library/
-[Windows]: /documentation/articles/app-service-mobile-dotnet-how-to-use-client-library/
-[用于 iOS 和 Android 的 Xamarin]: /documentation/articles/app-service-mobile-dotnet-how-to-use-client-library/
-[Xamarin Forms]: /documentation/articles/app-service-mobile-xamarin-forms-get-started/
-[Apache Cordova]: /documentation/articles/app-service-mobile-cordova-how-to-use-client-library/
-[自动缩放]: /documentation/articles/web-sites-scale/
-[过渡环境]: /documentation/articles/web-sites-staged-publishing/
-[部署选项]: /documentation/articles/web-sites-deploy/
-[混合连接]: /documentation/articles/web-sites-hybrid-connection-get-started/
-[虚拟网络]: /documentation/articles/web-sites-integrate-with-vnet/
-[ExpressRoute]: /documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
-[应用服务环境]: /documentation/articles/app-service-app-service-environment-intro/
-[学习路线图]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
+[Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
+[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
+[入门]: app-service-mobile-ios-get-started.md
+[Azure 表存储]: ../storage/storage-getting-started-guide.md
+[DocumentDB]: ../documentdb/documentdb-get-started.md
+[身份验证功能]: ./app-service-mobile-auth.md
+[数据功能]: ./app-service-mobile-offline-data-sync.md
+[推送通知功能]: ../notification-hubs/notification-hubs-push-notification-overview.md
+[iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
+[Android]: ./app-service-mobile-android-how-to-use-client-library.md
+[Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
+[用于 iOS 和 Android 的 Xamarin]: ./app-service-mobile-dotnet-how-to-use-client-library.md
+[Xamarin Forms]: ./app-service-mobile-xamarin-forms-get-started.md
+[Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
+[自动缩放]: ../app-service-web/web-sites-scale.md
+[过渡环境]: ../app-service-web/web-sites-staged-publishing.md
+[部署选项]: ../app-service-web/web-sites-deploy.md
+[混合连接]: ../app-service-web/web-sites-hybrid-connection-get-started.md
+[虚拟网络]: ../app-service-web/web-sites-integrate-with-vnet.md
+[ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
+[应用服务环境]: ../app-service-web/app-service-app-service-environment-intro.md
+[学习路线图]: https://azure.microsoft.com/zh-CN/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

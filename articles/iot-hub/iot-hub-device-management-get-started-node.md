@@ -1,5 +1,5 @@
 <properties
-	pageTitle="IoT 中心设备管理入门 | Azure"
+	pageTitle="IoT 中心设备管理入门 | Microsoft Azure"
 	description="面向 C# 的 Azure IoT 中心设备管理入门教程。配合 Microsoft Azure IoT SDK 使用 Azure IoT 中心和 C# 来实现设备管理。"
 	services="iot-hub"
 	documentationCenter=".net"
@@ -9,8 +9,12 @@
 
 <tags
  ms.service="iot-hub"
+ ms.devlang="dotnet"
+ ms.topic="get-started-article"
+ ms.tgt_pltfrm="na"
+ ms.workload="na"
  ms.date="08/11/2016"
- wacn.date=""/>  
+ ms.author="juanpere"/>  
 
 
 # 使用 node.js 进行 Azure IoT 中心设备管理入门（预览版）
@@ -36,7 +40,7 @@
 
 - Node.js 6.1.0 或更高版本。从 <https://nodejs.org/> 安装适用于平台的 Node.js。
 
-- 一个有效的 Azure 订阅。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 试用][lnk-free-trial]。
+- 一个有效的 Azure 订阅。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。
 
 ## 创建支持设备管理的 IoT 中心
 
@@ -59,12 +63,12 @@
 
 4.  选择 IoT 中心配置选项后，单击“创建”。Azure 可能需要几分钟时间来创建 IoT 中心。若要检查状态，可以在“启动板”或“通知”面板中监视进度。
 
-	![][img-monitor]  
-
+	![][img-monitor]
 
 5.  成功创建 IoT 中心后，请打开新 IoT 中心的边栏选项卡，记下“主机名”，然后单击“共享访问策略”。
 
-	![][img-keys]
+	![][img-keys]  
+
 
 6.  单击“iothubowner”策略，然后复制并记下“iothubowner”边栏选项卡中的连接字符串。将该连接字符串复制到稍后可访问的位置，因为完成本教程的其余部分需要连接字符串。
 
@@ -187,19 +191,19 @@
 若要详细了解 Azure IoT 中心设备管理功能，请参阅[使用示例 UI 了解 Azure IoT 中心设备管理][lnk-sample-ui]教程。
 
 <!-- images and links -->
-[img-new-hub]: ./media/iot-hub-device-management-get-started-node/image1.png
-[img-configure-hub]: ./media/iot-hub-device-management-get-started-node/image2.png
-[img-monitor]: ./media/iot-hub-device-management-get-started-node/image3.png
-[img-keys]: ./media/iot-hub-device-management-get-started-node/image4.png
-[img-connection]: ./media/iot-hub-device-management-get-started-node/image5.png
-[img-output]: ./media/iot-hub-device-management-get-started-node/image6.png
+[img-new-hub]: media/iot-hub-device-management-get-started-node/image1.png
+[img-configure-hub]: media/iot-hub-device-management-get-started-node/image2.png
+[img-monitor]: media/iot-hub-device-management-get-started-node/image3.png
+[img-keys]: media/iot-hub-device-management-get-started-node/image4.png
+[img-connection]: media/iot-hub-device-management-get-started-node/image5.png
+[img-output]: media/iot-hub-device-management-get-started-node/image6.png
 [img-dm-ui]: media/iot-hub-device-management-get-started-node/dmui.png
 
-[lnk-free-trial]: /pricing/1rmb-trial/
-[Azure 门户]: https://portal.azure.cn/
-[Using resource groups to manage your Azure resources]: /documentation/articles/azure-portal/resource-group-portal/
+[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[Azure 门户]: https://portal.azure.com/
+[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-[lnk-sample-ui]: /documentation/articles/iot-hub/iot-hub-device-management-ui-sample/
-[lnk-gateway-SDK]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-get-started/
+[lnk-sample-ui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

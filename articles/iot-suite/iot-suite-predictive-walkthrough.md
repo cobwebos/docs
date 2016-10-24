@@ -1,5 +1,5 @@
 <properties
- pageTitle="预见性维护演练 | Azure"
+ pageTitle="预见性维护演练 | Microsoft Azure"
  description="Azure IoT 预见性维护预配置解决方案演练。"
  services=""
  suite="iot-suite"
@@ -15,14 +15,13 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="08/17/2016"
- ms.author="araguila"
- wacn.date=""/>
+ ms.author="araguila"/>
 
 # 预见性维护预配置解决方案演练
 
 ## 介绍
 
-IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。可主动使用此预配置解决方案执行维护优化等活动。解决方案结合了关键的 Azure IoT 套件服务，包括 [Azure 机器学习][lnk_machine_learning]工作区。该工作区内有一些基于公共示例数据集的实验，可预测飞机引擎的剩余使用寿命 (RUL)。此解决方案完全实现了 IoT 商业应用场景，可据此为起点规划和实施满足自身特定业务需求的解决方案。
+IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。可以主动对优化维护等活动运用此预配置解决方案。该解决方案结合了关键 Azure IoT 套件服务，包括 [Azure 机器学习][lnk_machine_learning]工作区。此工作区包含基于公用示例数据集的试验，以预测飞机引擎的剩余使用寿命 (RUL)。此解决方案全面实施了完整的 loT 商业应用场景作为规划和实施解决方案的起点，以满足你自己特定的业务需求。
 
 ## 逻辑体系结构
 
@@ -30,19 +29,19 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 
 ![][img-architecture]
 
-蓝色项是你在预配该预配置解决方案时选择的位置中预配的 Azure 服务。你可以在中国东部或中国北部区域预配该预配置解决方案。
+蓝色项是你在预配该预配置解决方案时选择的位置中预配的 Azure 服务。你可以在美国东部、欧洲北部或亚洲东部区域预配该预配置的解决方案。
 
-某些资源不适用于你预配该预配置解决方案的区域。图表中的橙色项表示在给出选定区域的情况下，在最接近的可用区域（中国北部、中国东部）预配的 Azure 服务。
+某些资源不适用于你预配该预配置解决方案的区域。图表中的橙色项表示在给出选定区域的情况下，在最接近的可用区域（美国中南部、欧洲西部或亚洲东南部）预配的 Azure 服务。
 
-绿色项是表示飞机引擎的模拟设备。可在以下部分中深入了解这些模拟设备。
+绿色项是表示飞机引擎的模拟设备。可以在以下部分中了解有关这些模拟设备的详细信息。
 
 灰色项表示实现*设备管理*功能的组件。当前的预见性维护预配置解决方案版本不会预配这些资源。若要了解有关设备管理的详细信息，请参阅[远程监视预配置解决方案][lnk-remote-monitoring]。
 
 ## 模拟设备
 
-在该预配置解决方案中，模拟设备代表飞机引擎。该解决方案预配有两个映射到单架飞机的引擎。每个引擎发出 4 种遥测数据：传感器 9、传感器 11、传感器 14 和传感器 15；提供机器学习模型计算引擎剩余使用寿命 (RUL) 所必需的数据。每个模拟设备会将下列遥测消息发送到 IoT 中心：
+在该预配置解决方案中，模拟设备代表飞机引擎。该解决方案预配了 2 个映射到单架飞机的引擎。每个引擎发出 4 种遥测：传感器 9、传感器 11、传感器 14 和传感器 15，以提供机器学习模型计算该引擎的剩余使用寿命 (RUL) 所需的数据。每个模拟设备会将下列遥测消息发送到 IoT 中心：
 
-*周期计数*。一个周期表示完成 2 至 10 小时距离不等的飞行，而航行中每半小时捕获一次遥测数据。
+*周期计数*。一个周期表示 2 至 10 小时不等的已完成飞行，在飞行时间内会每半小时捕获一次遥测数据。
 
 *遥测*。有 4 个代表引擎属性的传感器。这些传感器一般标记为传感器 9、传感器 11、传感器 14 和传感器 15。这 4 个传感器代表足以从 RUL 的机器学习模型获取有用结果的遥测。此模型根据包含实际引擎传感器数据的公用数据集创建而来。有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics]（Cortana Intelligence 库预见性维护模板）。
 
@@ -61,7 +60,7 @@ IoT 中心会提供设备命令确认。
 
 ## 事件处理器
 
-**事件处理器**获取已完成周期的平均传感器值。它将这些值传递到 API，后者可用于计算引擎 RUL 的机器学习训练模型。
+**事件处理器**为已完成的周期获取平均传感器值。它将这些值传递到 API，以公开机器学习训练模型来计算引擎 RUL。
 
 ## Azure 机器学习
 
@@ -80,30 +79,25 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 
 ### 观察云解决方案的行为
 
-在 Azure 门户中，可导航到带所选解决方案名称的资源组，查看预配解决方案。
+在 Azure 门户中，导航到具有你选定的解决方案名称的资源组，以查看已预配的资源。
 
-![][img-resource-group]  
+![][img-resource-group]
 
+预配该预配置解决方案时，你会收到一封电子邮件，其中包含机器学习工作区的链接。如果此机器学习工作区处于“**就绪**”状态，你也可以从已预配解决方案的 [azureiotsuite.com][lnk-azureiotsuite] 页面导航到此工作区。
 
-预配该预配置解决方案时，你会收到一封电子邮件，其中包含机器学习工作区的链接。还可导航到 [azureiotsuite.com][lnk-azureiotsuite] 页面的机器学习工作区，了解处于“就绪”状态的预配解决方案。
+![][img-machine-learning]
 
-![][img-machine-learning]  
+在解决方案门户中，你可以看到本示例预配了四个模拟设备，表示各有 2 个引擎的 2 架飞机，以及每个引擎带有的 4 个传感器。当你第一次导航到解决方案门户时，模拟便会停止。
 
+![][img-simulation-stopped]
 
-在解决方案门户中，可看到本示例预配了 4 个模拟设备，表示各有两个引擎的两架飞机，且每个引擎有 4 个传感器。当你第一次导航到解决方案门户时，模拟便会停止。
+单击“**开始模拟**”即可开始模拟，你会看到传感器历史记录、RUL、周期和 RUL 历史记录填充仪表板。
 
-![][img-simulation-stopped]  
+![][img-simulation-running]
 
+当 RUL 小于 160 时（出于演示目的而选择的任意阈值），解决方案门户会在 RUL 旁边显示警告符号，并将飞机引擎标成黄色。你会注意到 RUL 值有整体向下的趋势，但呈上下波动形式。此行为是因为周期长度和模型精确度不同的缘故。
 
-单击“开始模拟”即可开始模拟，在此期间仪表板上将填写传感器历史记录、RUL、周期和 RUL 历史记录。
-
-![][img-simulation-running]  
-
-
-RUL 小于 160 时（出于演示目的而选择的任意阈值），解决方案门户会在 RUL 旁边显示警告符号，并将飞机引擎高亮为黄色。请注意 RUL 值如何整体下滑但倾向于上下波动。此行为的原因是周期长度和模型精确度不同。
-
-![][img-simulation-warning]  
-
+![][img-simulation-warning]
 
 完整模拟需要约 35 分钟的时间才能完成 148 个周期。160 RUL 阈值第一次在大约 5 分钟的时候达到，而这两个引擎在大约 8 分钟的时候同时达到阈值。
 
@@ -121,20 +115,22 @@ RUL 小于 160 时（出于演示目的而选择的任意阈值），解决方�
 
 - [有关 IoT 套件的常见问题][lnk-faq]
 - [从头开始保障 IoT 安全][lnk-security-groundup]
-[img-architecture]: ./media/iot-suite-predictive-walkthrough/architecture.png
-[img-resource-group]: ./media/iot-suite-predictive-walkthrough/resource-group.png
-[img-machine-learning]: ./media/iot-suite-predictive-walkthrough/machine-learning.png
-[img-simulation-stopped]: ./media/iot-suite-predictive-walkthrough/simulation-stopped.png
-[img-simulation-running]: ./media/iot-suite-predictive-walkthrough/simulation-running.png
-[img-simulation-warning]: ./media/iot-suite-predictive-walkthrough/simulation-warning.png
+
+
+[img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
+[img-resource-group]: media/iot-suite-predictive-walkthrough/resource-group.png
+[img-machine-learning]: media/iot-suite-predictive-walkthrough/machine-learning.png
+[img-simulation-stopped]: media/iot-suite-predictive-walkthrough/simulation-stopped.png
+[img-simulation-running]: media/iot-suite-predictive-walkthrough/simulation-running.png
+[img-simulation-warning]: media/iot-suite-predictive-walkthrough/simulation-warning.png
 
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
-[lnk_machine_learning]: /home/features/machine-learning/
-[lnk-remote-monitoring]: /documentation/articles/iot-suite-remote-monitoring-sample-walkthrough/
+[lnk_machine_learning]: https://azure.microsoft.com/services/machine-learning/
+[lnk-remote-monitoring]: iot-suite-remote-monitoring-sample-walkthrough.md
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
-[lnk-azureiotsuite]: https://www.azureiotsuite.cn/
-[lnk-customize]: /documentation/articles/iot-suite-guidance-on-customizing-preconfigured-solutions/
-[lnk-faq]: /documentation/articles/iot-suite-faq/
-[lnk-security-groundup]: /documentation/articles/securing-iot-ground-up/
+[lnk-azureiotsuite]: https://www.azureiotsuite.com/
+[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
+[lnk-faq]: iot-suite-faq.md
+[lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=Mooncake_0926_2016-->
+<!---HONumber=AcomDC_0921_2016-->

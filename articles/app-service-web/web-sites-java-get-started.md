@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure App Service 中创建 Java Web 应用 | Azure"
+	pageTitle="在 Azure App Service 中创建 Java Web 应用 | Microsoft Azure"
 	description="本教程演示了如何将 Java Web 应用部署到 Azure App Service。"
 	services="app-service\web"
 	documentationCenter="java"
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="get-started-article"
 	ms.date="08/11/2016"
-	wacn.date=""/>
+	ms.author="robmcm"/>
 
 # 在 Azure App Service 中创建 Java Web 应用
 
@@ -18,8 +22,9 @@
 
 本教程演示如何通过 [Azure 门户][在 Azure App Service 中创建 Java Web 应用]。Azure 门户是可用于管理 Azure 资源的 Web 界面。
 
-> [AZURE.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以[激活你的 Visual Studio 订户权益]，或者[注册试用帐户]。
+> [AZURE.NOTE] 若要完成本教程，您需要一个 Microsoft Azure 帐户。如果没有帐户，可以[激活 Visual Studio 订户权益]，或者[注册免费试用帐户]。
 >
+> 如果要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用应用服务]。在那里，可以立即在应用服务中创建短期的入门级 Web 应用；无需信用卡，也无需做出承诺。
 
 ## Java 应用程序选项
 
@@ -40,7 +45,7 @@
 	* 你的 Java 应用程序需要的 Tomcat 或 Jetty 版本不受 App Service 的直接支持，或者库中不提供该版本。
 	* 你的 Java 应用程序接受 HTTP 请求，不以 WAR 的形式部署到预先存在的 Web 容器中。
 	* 你想要从头开始自行配置 Web 容器。
-	* 你想要使用的 Java 版本在应用服务中不受支持，因此想要自行上载它。
+	* 你想要使用的 Java 版本在 App Service 中不受支持，因此想要自行上载它。
 
 	对于这样的情况，你可以通过 Azure 门户创建一个应用，然后手动提供相应的运行时文件。在本示例中，这些文件将占用你的应用服务计划的存储空间配额。有关详细信息，请参阅[将自定义 Java Web 应用上载到 Azure]。
 
@@ -56,7 +61,7 @@
 
 4. 在“Web 应用”框中输入 Web 应用的名称。
 
-	该名称在 chinacloudsites.cn 域中必须是唯一的，因为 Web 应用的 URL 将是 {name}.chinacloudsites.cn。如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
+	该名称在 azurewebsites.net 域中必须是唯一的，因为 Web 应用的 URL 将是 {name}.azurewebsites.net。如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
 
 5. 选择“资源组”或新建一个。
 
@@ -122,7 +127,7 @@
 
 7. 在下一个 **Apache Tomcat** 或 **Jetty** 边栏选项卡中，在“Web 应用”框中输入 Web 应用的名称。
 
-	该名称在 chinacloudsites.cn 域中必须是唯一的，因为 Web 应用的 URL 将是 {name}.chinacloudsites.cn。如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
+	该名称在 azurewebsites.net 域中必须是唯一的，因为 Web 应用的 URL 将是 {name}.azurewebsites.net。如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
 
 8. 选择“资源组”或新建一个。
 
@@ -148,7 +153,7 @@
 
 	![使用 Apache Tomcat 的 Web 应用][tomcat]
 
-	如果选择 Jetty，会看到类似于以下示例的页面。Jetty 没有默认页面集，因此这里会重新使用用于空 Java 网站的 JSP。
+	如果选择 Jetty，会看到类似于以下示例的页面。Jetty 没有默认页面集，因此在此处重新使用用于空 Java 网站的 JSP。
 
 	![使用 Jetty 的 Web 应用][jetty]
 
@@ -162,16 +167,16 @@
 
 <!-- URL List -->
 
-[将应用程序或网页添加到 Java Web 应用]: /documentation/articles/web-sites-java-add-app/
-[Azure App Service 计划概述]: /documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/
-[Azure 门户]: https://portal.azure.cn/
-[激活你的 Visual Studio 订户权益]: /pricing/1rmb-trial/
-[注册试用帐户]: /pricing/1rmb-trial/
-[Try App Service]: https://tryappservice.azure.com/
-[在 Azure App Service 中创建 Java Web 应用]: /documentation/services/web-sites/
+[将应用程序或网页添加到 Java Web 应用]: ./web-sites-java-add-app.md
+[Azure App Service 计划概述]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
+[Azure 门户]: https://portal.azure.com/
+[激活 Visual Studio 订户权益]: http://go.microsoft.com/fwlink/?LinkId=623901
+[注册免费试用帐户]: http://go.microsoft.com/fwlink/?LinkId=623901
+[试用应用服务]: http://go.microsoft.com/fwlink/?LinkId=523751
+[在 Azure App Service 中创建 Java Web 应用]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Java 开发中心]: /develop/java/
-[使用 Azure 门户管理 Azure 资源]: /documentation/articles/resource-group-portal/
-[将自定义 Java Web 应用上载到 Azure]: /documentation/articles/web-sites-java-custom-upload/
+[使用 Azure 门户管理 Azure 资源]: ../azure-portal/resource-group-portal.md
+[将自定义 Java Web 应用上载到 Azure]: ./web-sites-java-custom-upload.md
 
 <!-- IMG List -->
 
@@ -187,4 +192,4 @@
 [tomcat]: ./media/web-sites-java-get-started/tomcat.png
 [jetty]: ./media/web-sites-java-get-started/jetty.png
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

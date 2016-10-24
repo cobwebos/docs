@@ -1,21 +1,25 @@
 <properties
-   pageTitle="使用中继消息传送的服务总线 REST 教程 | Azure"
-   description="生成一个简单的服务总线中继主机应用程序来公开基于 REST 的接口。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
-<tags 
-   ms.service="service-bus"
+    pageTitle="使用中继消息传送的服务总线 REST 教程 | Microsoft Azure"
+    description="生成一个简单的服务总线中继主机应用程序来公开基于 REST 的接口。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
+<tags
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
     ms.date="06/03/2016"
-   wacn.date="" />
+    ms.author="sethm" />
 
 # 服务总线 REST 教程
 
 本教程介绍了如何生成简单的服务总线主机应用程序来公开基于 REST 的接口。REST 使 Web 客户端（例如 Web 浏览器）可通过 HTTP 请求访问服务总线 API。
 
-本教程使用 Windows Communication Foundation (WCF) REST 编程模型在服务总线上构建 REST 服务。有关详细信息，请参阅 WCF 文档中的 [WCF REST 编程模型](https://msdn.microsoft.com/zh-cn/library/bb412169.aspx)和[设计和实现服务](https://msdn.microsoft.com/zh-cn/library/ms729746.aspx)。
+本教程使用 Windows Communication Foundation (WCF) REST 编程模型在服务总线上构建 REST 服务。有关详细信息，请参阅 WCF 文档中的 [WCF REST 编程模型](https://msdn.microsoft.com/library/bb412169.aspx)和[设计和实现服务](https://msdn.microsoft.com/library/ms729746.aspx)。
 
 ## 步骤 1：创建服务命名空间
 
@@ -23,7 +27,7 @@
 
 1. 若要创建服务命名空间，请访问 [Azure 经典门户][]。单击左侧的“服务总线”，然后单击“创建”。为你的命名空间键入一个名称，然后单击复选标记。
 
-2. 在 [Azure 经典门户][] 的主窗口中，单击在上一步中创建的命名空间的名称。
+2. 在 [Azure 经典门户][]的主窗口中，单击在上一步中创建的命名空间的名称。
 
 3. 单击“配置”选项卡。
 
@@ -31,9 +35,9 @@
 
 ## 步骤 2：定义基于 REST 的 WCF 服务约定以用于服务总线
 
-与其他服务总线服务一样，创建 REST 样式的服务时，必须定义约定。约定指定主机支持的操作。服务操作可以看作是 Web 服务方法。约定通过定义 C++、C# 或 Visual Basic 接口来创建。接口中的每个方法都对应一个特定的服务操作。必须将 [ServiceContractAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.servicecontractattribute.aspx) 属性应用到每个接口，且必须将 [OperationContractAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.operationcontractattribute.aspx) 属性应用到每个操作。如果具有 [ServiceContractAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.servicecontractattribute.aspx) 的接口中的方法没有 [OperationContractAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.operationcontractattribute.aspx)，则该方法是不公开的。该过程后面的示例中显示了这些任务所用的代码。
+与其他服务总线服务一样，创建 REST 样式的服务时，必须定义约定。约定指定主机支持的操作。服务操作可以看作是 Web 服务方法。约定通过定义 C++、C# 或 Visual Basic 接口来创建。接口中的每个方法都对应一个特定的服务操作。必须将 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性应用到每个接口，且必须将 [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性应用到每个操作。如果具有 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 的接口中的方法没有 [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx)，则该方法是不公开的。该过程后面的示例中显示了这些任务所用的代码。
 
-基本服务总线协定和 REST 样式的协定的主要区别在于是否向 [OperationContractAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.operationcontractattribute.aspx) 添加一个属性：[WebGetAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.web.webgetattribute.aspx)。此属性允许你将接口中的方法映射到该接口另一侧的方法。在此示例中，我们使用 [WebGetAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.web.webgetattribute.aspx) 将一个方法链接到 HTTP GET。这将使服务总线可以准确地检索并解释发送到接口的命令。
+基本服务总线协定和 REST 样式的协定的主要区别在于是否向 [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 添加一个属性：[WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx)。此属性允许你将接口中的方法映射到该接口另一侧的方法。在此示例中，我们使用 [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) 将一个方法链接到 HTTP GET。这将使服务总线可以准确地检索并解释发送到接口的命令。
 
 ### 使用接口创建服务总线约定
 
@@ -60,7 +64,7 @@
 	using System.IO;
 	```
 
-	[System.ServiceModel](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.aspx) 是让你以通过编程方式访问 WCF 基本功能的命名空间。服务总线使用 WCF 的许多对象和属性来定义服务约定。你将在大多数服务总线中继应用程序中使用此命名空间。同样，[System.ServiceModel.Channels](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.channels.aspx) 可帮助定义通道，通道是用来与服务总线和客户端 Web 浏览器通信的对象。最后，[System.ServiceModel.Web](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.web.aspx) 包含的类型可用于创建基于 Web 的应用程序。
+	[System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) 是让你以通过编程方式访问 WCF 基本功能的命名空间。服务总线使用 WCF 的许多对象和属性来定义服务约定。你将在大多数服务总线中继应用程序中使用此命名空间。同样，[System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) 可帮助定义通道，通道是用来与服务总线和客户端 Web 浏览器通信的对象。最后，[System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) 包含的类型可用于创建基于 Web 的应用程序。
 
 7. 将 `ImageListener` 命名空间重命名为 **Microsoft.ServiceBus.Samples**。
 
@@ -124,19 +128,19 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.IO;
-	
+
 namespace Microsoft.ServiceBus.Samples
 {
-	
+
     [ServiceContract(Name = "IImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
         Stream GetImage();
     }
-	
+
     public interface IImageChannel : IImageContract, IClientChannel { }
-	
+
     class Program
     {
         static void Main(string[] args)
@@ -163,7 +167,7 @@ namespace Microsoft.ServiceBus.Samples
 	```
 	与其他接口实现类似，你可以在另一个文件中实现定义。但是，在本教程中，实现所在的文件与接口定义和 `Main()` 方法所在的文件相同。
 
-2. 将 [ServiceBehaviorAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.servicebehaviorattribute.aspx) 属性应用到 **IImageService** 类，以指示该类是 WCF 协定的实现。
+2. 将 [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) 属性应用到 **IImageService** 类，以指示该类是 WCF 协定的实现。
 
 	```
 	[ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -172,12 +176,12 @@ namespace Microsoft.ServiceBus.Samples
 	}
 	```
 
-	如前所述，此命名空间不是传统的命名空间，而是用于标识约定的 WCF 体系结构的一部分。有关详细信息，请参阅 WCF 文档中的[数据约定名称](https://msdn.microsoft.com/zh-cn/library/ms731045.aspx)主题。
+	如前所述，此命名空间不是传统的命名空间，而是用于标识约定的 WCF 体系结构的一部分。有关详细信息，请参阅 WCF 文档中的[数据约定名称](https://msdn.microsoft.com/library/ms731045.aspx)主题。
 
 3. 将一幅 .jpg 图像添加到项目中。
 
 	这是服务在接收浏览器中显示的图片。右键单击你的项目并单击“添加”。然后单击“现有项”。使用“添加现有项”对话框浏览到相应的 .jpg，然后单击“添加”。
-    
+
 	添加文件时，请确保在“文件名:”旁的下拉列表中选择“所有文件(*.*)”。本教程的余下部分假定图像的名称为“image.jpg”。如果你的 .jpg 文件名不是这样，则必须重命名图像，或更改代码进行弥补。
 
 4. 为了确保正在运行的服务可以找到该图像文件，请在“解决方案资源管理器”中右键单击该图像文件，然后单击“属性”。在“属性”窗格中，将“复制到输出目录”设置为“如果较新则复制”。
@@ -197,9 +201,9 @@ namespace Microsoft.ServiceBus.Samples
 	class ImageService : IImageContract
 	{
 		const string imageFileName = "image.jpg";
-  
+
 		Image bitmap;
-  
+
 		public ImageService()
 		{
 			this.bitmap = Image.FromFile(imageFileName);
@@ -214,14 +218,14 @@ namespace Microsoft.ServiceBus.Samples
 	{
 		MemoryStream stream = new MemoryStream();
 		this.bitmap.Save(stream, ImageFormat.Jpeg);
-  
+
 		stream.Position = 0;
 		WebOperationContext.Current.OutgoingResponse.ContentType = "image/jpeg";
-  
+
 		return stream;
 	}
 	```
-  
+
 	此实现使用 **MemoryStream** 检索映像并准备将其流式传输到浏览器。它将流位置设置为从零开始，将流内容声明为 jpeg，然后流式传输信息。
 
 8. 在“生成”菜单中，单击“生成解决方案”。
@@ -230,7 +234,7 @@ namespace Microsoft.ServiceBus.Samples
 
 1. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。
 
-	该 **App.config** 文件与 WCF 配置文件类似，包括服务名称、终结点（即服务总线公开的、让客户端和主机相互通信的位置）和绑定（用于通信的协议类型）。此处的主要差别在于，配置的服务终结点是指 [WebHttpRelayBinding](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.webhttprelaybinding.aspx) 绑定，它不是 .NET Framework 的一部分。
+	该 **App.config** 文件与 WCF 配置文件类似，包括服务名称、终结点（即服务总线公开的、让客户端和主机相互通信的位置）和绑定（用于通信的协议类型）。此处的主要差别在于，配置的服务终结点是指 [WebHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.webhttprelaybinding.aspx) 绑定，它不是 .NET Framework 的一部分。
 
 2. `<system.serviceModel>` XML 元素是一个 WCF 元素，用于定义一个或多个服务。在这里，它用于定义服务名称和终结点。在 `<system.serviceModel>` 元素的下面（仍在 `<system.serviceModel>` 中）添加具有以下内容的 `<bindings>` 元素。这样就定义了应用程序中使用的绑定。你可以定义多个绑定，但在本教程中，你只要定义一个绑定。
 
@@ -244,10 +248,10 @@ namespace Microsoft.ServiceBus.Samples
 		</webHttpRelayBinding>
 	</bindings>
 	```
-  
-	此步骤定义了一个服务总线 [WebHttpRelayBinding](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.webhttprelaybinding.aspx) 绑定，其中的 **relayClientAuthenticationType** 为 **None**。此设置表明使用此绑定的终结点将不需要客户端凭据。
 
-5. 在 `<bindings>` 元素后面添加 `<services>` 元素。与绑定类似，可以在单个配置文件中定义多个服务。但是，在本教程中，你只要定义一个服务。
+	此步骤定义了一个服务总线 [WebHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.webhttprelaybinding.aspx) 绑定，其中的 **relayClientAuthenticationType** 为 **None**。此设置表明使用此绑定的终结点将不需要客户端凭据。
+
+3. 在 `<bindings>` 元素后面添加 `<services>` 元素。与绑定类似，可以在单个配置文件中定义多个服务。但是，在本教程中，你只要定义一个服务。
 
 	```
 	<services>
@@ -263,11 +267,11 @@ namespace Microsoft.ServiceBus.Samples
 		</service>
 	</services>
 	```
-  
+
 	此步骤将配置一个服务，该服务使用前面定义的默认 **webHttpRelayBinding**。此外，它还使用下一步骤中定义的默认 **sbTokenProvider**。
 
-6. 在 `<services>` 元素的后面，使用以下内容创建 `<behaviors>` 元素，并将 “SAS\_KEY” 替换为你在步骤 1 中从 [Azure 管理门户][]中获取的共享访问签名 (SAS) 密钥。
-  
+4. 在 `<services>` 元素后面，使用以下内容创建 `<behaviors>` 元素，并将“SAS\_KEY”替换为在步骤 1 中从 [Azure 经典门户][]获取的*共享访问签名* (SAS) 密钥。
+
 	```
 	<behaviors>
 		<endpointBehaviors>
@@ -293,7 +297,7 @@ namespace Microsoft.ServiceBus.Samples
 	<appSettings>
    	<!-- Service Bus specific app settings for messaging connections -->
    	<add key="Microsoft.ServiceBus.ConnectionString"
-	       value="Endpoint=sb://yourNamespace.servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
+	       value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
 	</appSettings>
 	```
 
@@ -319,7 +323,7 @@ using Microsoft.ServiceBus.Web;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    
+
 
     [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
@@ -351,7 +355,7 @@ namespace Microsoft.ServiceBus.Samples
             WebOperationContext.Current.OutgoingResponse.ContentType = "image/jpeg";
 
             return stream;
-        }    
+        }
     }
 
     class Program
@@ -429,31 +433,29 @@ namespace Microsoft.ServiceBus.Samples
                   bindingConfiguration="default"
                   behaviorConfiguration="sbTokenProvider"
                   address="" />
-      </service>
-    </services>
-
-    <behaviors>
-      <endpointBehaviors>
-        <behavior name="sbTokenProvider">
-          <transportClientEndpointBehavior>
-            <tokenProvider>
-              <sharedAccessSignature keyName="RootManageSharedAccessKey" key="SAS_KEY" />
-            </tokenProvider>
-          </transportClientEndpointBehavior>
-        </behavior>
-      </endpointBehaviors>
-      <serviceBehaviors>
-        <behavior name="default">
-          <serviceDebug httpHelpPageEnabled="false" httpsHelpPageEnabled="false" />
-        </behavior>
-      </serviceBehaviors>
-    </behaviors>
-
-  </system.serviceModel>
+        </service>
+      </services>
+      <behaviors>
+        <endpointBehaviors>
+          <behavior name="sbTokenProvider">
+            <transportClientEndpointBehavior>
+              <tokenProvider>
+                <sharedAccessSignature keyName="RootManageSharedAccessKey" key="[SAS_KEY]" />
+              </tokenProvider>
+            </transportClientEndpointBehavior>
+          </behavior>
+        </endpointBehaviors>
+        <serviceBehaviors>
+          <behavior name="default">
+            <serviceDebug httpHelpPageEnabled="false" httpsHelpPageEnabled="false" />
+          </behavior>
+        </serviceBehaviors>
+      </behaviors>
+    </system.serviceModel>
     <appSettings>
         <!-- Service Bus specific app setings for messaging connections -->
         <add key="Microsoft.ServiceBus.ConnectionString"
-            value="Endpoint=sb://yourNamespace.servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
+            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
     </appSettings>
 </configuration>
 ```
@@ -531,7 +533,7 @@ using Microsoft.ServiceBus.Web;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    
+
     [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
@@ -562,7 +564,7 @@ namespace Microsoft.ServiceBus.Samples
             WebOperationContext.Current.OutgoingResponse.ContentType = "image/jpeg";
 
             return stream;
-        }    
+        }
     }
 
     class Program
@@ -601,10 +603,10 @@ namespace Microsoft.ServiceBus.Samples
 
 在生成使用服务总线中继服务的应用程序后，请参阅以下文章了解有关中继消息传送的详细信息。
 
-- [Azure 服务总线体系结构概述](/documentation/articles/service-bus-fundamentals-hybrid-solutions/#relays)
+- [Azure 服务总线体系结构概述](service-bus-fundamentals-hybrid-solutions.md#relays)
 
-- [如何使用 Service Bus 中继服务](/documentation/articles/service-bus-dotnet-how-to-use-relay/)
-[Azure 管理门户]: http://manage.windowsazure.cn
+- [如何使用 Service Bus 中继服务](service-bus-dotnet-how-to-use-relay.md)
 
+[Azure 经典门户]: http://manage.windowsazure.com
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=AcomDC_0921_2016-->

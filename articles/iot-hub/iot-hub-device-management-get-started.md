@@ -1,5 +1,5 @@
 <properties
-	pageTitle="IoT 中心设备管理入门 | Azure"
+	pageTitle="IoT 中心设备管理入门 | Microsoft Azure"
 	description="面向 C# 的 Azure IoT 中心设备管理入门教程。配合 Microsoft Azure IoT SDK 使用 Azure IoT 中心和 C# 来实现设备管理。"
 	services="iot-hub"
 	documentationCenter=".net"
@@ -9,8 +9,12 @@
 
 <tags
  ms.service="iot-hub"
+ ms.devlang="dotnet"
+ ms.topic="get-started-article"
+ ms.tgt_pltfrm="na"
+ ms.workload="na"
  ms.date="08/11/2016"
- wacn.date=""/>  
+ ms.author="juanpere"/>  
 
 
 # 使用 C# 进行 Azure IoT 中心设备管理入门（预览版）
@@ -29,13 +33,14 @@
 若要完成这些步骤，需要安装以下各项：
 
 - Microsoft Visual Studio 2015。
+
 - Git
 
 - CMake（2.8 版或更高版本）。从 <https://cmake.org/download/> 安装 CMake。对于 Windows PC 上，请选择“Windows Installer (.msi)”选项。确保选中“将 CMake 添加到当前用户 PATH 变量”的复选框。
 
 - Node.js 6.1.0 或更高版本。从 <https://nodejs.org/> 安装适用于平台的 Node.js。
 
-- 一个有效的 Azure 订阅。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用][lnk-free-trial]。
+- 一个有效的 Azure 订阅。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。
 
 ## 创建支持设备管理的 IoT 中心
 
@@ -180,20 +185,19 @@
 若要详细了解 Azure IoT 中心设备管理功能，请参阅[使用示例 UI 了解 Azure IoT 中心设备管理][lnk-sample-ui]教程。
 
 <!-- images and links -->
-
-[img-new-hub]: ./media/iot-hub-device-management-get-started/image1.png
-[img-configure-hub]: ./media/iot-hub-device-management-get-started/image2.png
-[img-monitor]: ./media/iot-hub-device-management-get-started/image3.png
-[img-keys]: ./media/iot-hub-device-management-get-started/image4.png
-[img-connection]: ./media/iot-hub-device-management-get-started/image5.png
-[img-output]: ./media/iot-hub-device-management-get-started/image6.png
+[img-new-hub]: media/iot-hub-device-management-get-started/image1.png
+[img-configure-hub]: media/iot-hub-device-management-get-started/image2.png
+[img-monitor]: media/iot-hub-device-management-get-started/image3.png
+[img-keys]: media/iot-hub-device-management-get-started/image4.png
+[img-connection]: media/iot-hub-device-management-get-started/image5.png
+[img-output]: media/iot-hub-device-management-get-started/image6.png
 [img-dm-ui]: media/iot-hub-device-management-get-started/dmui.png
 
-[lnk-free-trial]: /pricing/free-trial/
-[Azure 门户]: https://portal.azure.cn/
-[Using resource groups to manage your Azure resources]: /documentation/articles/azure-portal/resource-group-portal/
+[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[Azure 门户]: https://portal.azure.com/
+[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-[lnk-sample-ui]: /documentation/articles/iot-hub/iot-hub-device-management-ui-sample/
-[lnk-gateway-SDK]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-get-started/
+[lnk-sample-ui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

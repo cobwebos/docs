@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 ## 下载并了解 ARM 模板
 
 可以从 github 下载用于创建 VNet 和两个子网的现有 ARM 模板，进行任何所需的更改，然后重用该模板。为此，请执行以下步骤。
@@ -35,7 +33,7 @@
 
 		{
 		  "location": {
-		    "value": "China North"
+		    "value": "Central US"
 		  },
 		  "vnetName": {
 		      "value": "TestVNet"
@@ -58,5 +56,6 @@
 		}
 
 11. 保存文件。
+  
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=AcomDC_0921_2016-->

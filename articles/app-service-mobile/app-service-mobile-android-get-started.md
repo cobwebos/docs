@@ -1,5 +1,5 @@
 <properties
-    pageTitle="在 Azure 应用服务移动应用中创建 Android 应用 | Azure"
+    pageTitle="在 Azure App Service 移动应用中创建 Android 应用 | Microsoft Azure"
     description="遵循本教程开始使用 Azure 移动应用后端进行 Android 开发"
     services="app-service\mobile"
     documentationCenter="android"
@@ -8,9 +8,13 @@
     editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.date="07/21/2016"
-	wacn.date=""/>
+    ms.service="app-service-mobile"
+    ms.workload="na"
+    ms.tgt_pltfrm="mobile-android"
+    ms.devlang="java"
+    ms.topic="hero-article"
+    ms.date="08/17/2016"
+    ms.author="ricksal"/>
 
 #创建 Android 应用
 
@@ -28,8 +32,7 @@
 
 * [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。
 * Azure Mobile Android SDK，下载的快速入门项目中会自动引用它。
-* 装有 [Visual Studio Community 2013] 或更高版本的电脑 &mdash; 在 Node.js 后端中不需要。
-* [有效的 Azure 帐户](/pricing/1rmb-trial/)。
+* [有效的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## 创建新的 Azure 移动应用后端
 
@@ -47,7 +50,8 @@
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure portal]: https://portal.azure.cn/
+
+[Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

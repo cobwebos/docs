@@ -1,8 +1,8 @@
 <properties
-	pageTitle="预配置解决方案入门 | Azure"
+	pageTitle="预配置解决方案入门 | Microsoft Azure"
 	description="遵循本教程，了解如何部署 Azure IoT 套件预配置解决方案。"
 	services=""
-	suite="iot-suite"
+    suite="iot-suite"
 	documentationCenter=""
 	authors="dominicbetts"
 	manager="timlt"
@@ -15,23 +15,21 @@
      ms.tgt_pltfrm="na"
      ms.workload="na"
      ms.date="08/16/2016"
-     ms.author="dobett"
-     wacn.date=""/>
+     ms.author="dobett"/>
 
 # 教程：预配置解决方案入门
 
 ## 介绍
 
-Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，以提供可实现常见 IoT 商业应用场景的端到端解决方案。*远程监视*预配置解决方案将连接并监视设备。可使用解决方案分析设备发出的数据流，并让进程自动响应该数据流来提升业务绩效。
+Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，以提供可实现常见 IoT 商业应用场景的端到端解决方案。*远程监视*预配置解决方案将连接并监视设备。可以利用该解决方案分析设备发出的数据流，并通过让流程自动响应该数据流提升业务绩效。
 
-本教程演示如何预配远程监视预配置解决方案。还将逐步解说远程监视解决方案的基本功能。可以通过随预配置解决方案一起部署的解决方案仪表板来访问其中的多项功能：
+本教程演示如何预配远程监视预配置解决方案。还介绍了远程监视解决方案的基本功能。可以通过随预配置解决方案一起部署的解决方案仪表板来访问其中的多项功能：
 
-![远程监控预配置解决方案仪表板][img-dashboard]  
+![远程监控预配置解决方案仪表板][img-dashboard]
 
+若要完成本教程，需要一个有效的 Azure 订阅。
 
-需要有效的 Azure 订阅才能完成此教程。
-
-> [AZURE.NOTE]  如果没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Trial][1rmb-trial]（试用）。
+> [AZURE.NOTE]  如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][lnk_free_trial]。
 
 [AZURE.INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
@@ -68,18 +66,17 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 3.  单击设备列表中的设备，查看设备详细信息。
 
-    ![仪表板中的设备详细信息][img-devicedetails]  
-
+    ![仪表板中的设备详细信息][img-devicedetails]
 
 “设备详细信息”面板包含三个部分：
 
-- “操作”部分列出可以在设备上执行的操作。设备被禁用后，不可再发送遥测数据或接收命令。如果禁用设备，之后可以重新启用它。你可以添加与设备关联的规则，以便在遥测值超出阈值时触发警报。也可以向设备发送命令。设备首次连接时，会告诉解决方案其可响应的命令。
+- “操作”部分列出可以在设备上执行的操作。如果禁用设备，设备将再也无法发送遥测数据或接收命令。如果禁用设备，之后可以重新启用它。你可以添加与设备关联的规则，以便在遥测值超出阈值时触发警报。也可以向设备发送命令。当设备首次连接时，它会告诉解决方案可以响应的命令。
 - “设备属性”部分列出设备元数据。此元数据某些来自设备本身（例如制造商），某些由解决方案生成（例如创建时间）。你可以从此处编辑设备元数据。
 - “身份验证密钥”部分列出设备可用来向解决方案进行身份验证的密钥。
 
 ## 向设备发送命令
 
-设备详细信息窗格显示特定设备支持的所有命令，还可用于向设备发送命令。设备在第一次启动时，会向解决方案发送其支持的命令的相关信息。
+设备详细信息窗格显示特定设备支持的所有命令，并且可让你向设备发送命令。设备在第一次启动时，会向解决方案发送其支持的命令的相关信息。
 
 1.  单击所选设备的设备详细信息窗格中的“命令”。
 
@@ -101,29 +98,27 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 当你部署预配置解决方案时，会自动预配在设备列表中可见的四个示例设备。这些设备是在 Azure Web 作业中运行的*模拟设备*。模拟设备可让你试验预配置解决方案，而不需要部署实际的物理设备。若要将实际设备连接到解决方案，请参阅[将设备连接到远程监视预配置解决方案][lnk-connect-rm]教程。
 
-以下步骤说明了如何向解决方案添加模拟设备：
+以下步骤说明如何将模拟设备添加到解决方案：
 
 1.  导航回到设备列表。
 
-2.  单击左下角的“+添加设备”进行添加。
+2.  单击左下角的“+ 添加设备”添加设备。
 
-    ![将设备添加到预配置解决方案][img-adddevice]  
-
+    ![将设备添加到预配置解决方案][img-adddevice]
 
 3.  单击“模拟设备”磁贴上的“新增”。
 
     ![在仪表板中设置新设备详细信息][img-addnew]
     
-    如果选择创建“自定义设备”，则除了创建新的模拟设备，也可以添加物理设备。若要深入了解如何将物理设备连接到解决方案，请参阅[将设备连接到 IoT 套件远程监视预配置解决方案][lnk-connect-rm]。
+    如果选择创建“自定义设备”，则除了创建新的模拟设备，也可以添加物理设备。若要了解有关将物理设备连接到解决方案的详细信息，请参阅[将设备连接到 IoT 套件远程监视预配置解决方案][lnk-connect-rm]。
 
 4.  选择“自行定义设备 ID”，然后输入唯一的设备 ID 名称，例如 **mydevice\_01**。
 
 5.  单击“创建”。
 
-    ![保存新设备][img-definedevice]  
+    ![保存新设备][img-definedevice]
 
-
-6. 在“添加模拟设备”的步骤 3 中，单击“完成”回到设备列表。
+6. 在“添加模拟设备”的步骤 3 中，单击“完成”返回到设备列表。
 
 7. 可以在设备列表中查看“正在运行”的设备。
 
@@ -136,7 +131,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 ## 编辑设备元数据
 
-设备首次连接到解决方案后，会向该方案发送其元数据。当你通过解决方案仪表板编辑设备元数据时，会将新的元数据值发送到设备，并将新值存储在解决方案的 DocumentDB 数据库中。有关详细信息，请参阅 [Device identity registry and DocumentDB][lnk-devicemetadata]（设备标识注册表和 DocumentDB）。
+当设备首次连接到解决方案时，会将其元数据发送到解决方案。当你通过解决方案仪表板编辑设备元数据时，会将新的元数据值发送到设备，并将新值存储在解决方案的 DocumentDB 数据库中。有关详细信息，请参阅 [Device identity registry and DocumentDB][lnk-devicemetadata]（设备标识注册表和 DocumentDB）。
 
 1.  导航回到设备列表。
 
@@ -157,11 +152,11 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 ## 为新设备添加规则
 
-刚才添加的新设备没有规则。在本部分中，将添加一个规则，以便在新设备报告的温度超过 47 度时触发警报。在开始之前，请注意仪表板上新设备的遥测历史记录显示设备温度绝不会超过 45 度。
+刚才添加的新设备没有规则。在本节中，将添加一个规则，以便在新设备所报告的温度超过 47 度时触发警报。在开始之前，请注意仪表板上新设备的遥测历史记录显示设备温度绝不会超过 45 度。
 
 1.  导航回到设备列表。
 
-2.  在“设备列表”中选择新设备，然后单击“添加规则”来添加设备规则。
+2.  在“设备列表”中选择新设备，然后单击“添加规则”为设备添加规则。
 
 3. 创建一个规则，该规则使用“温度”作为数据字段，使用“AlarmTemp”作为温度超过 47 度时的输出：
 
@@ -178,10 +173,9 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
     ![添加设备规则][img-adddevicerule3]
 
-7.  导航回到解决方案仪表板。片刻之后，当新设备报告的温度超过 47 度阙值时，“警报历史记录”窗格中将显示新条目：
+7.  导航回到解决方案仪表板。一小段时间之后，将在新设备所报告的温度超过 47 度阈值时，在“警报历史记录”窗格中看到新的条目：
 
-    ![添加设备规则][img-adddevicerule4]  
-
+    ![添加设备规则][img-adddevicerule4]
 
 8. 可以在仪表板的“规则”页上查看和编辑所有规则：
 
@@ -210,8 +204,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 当你部署预配置解决方案时，部署过程会在你选择的 Azure 订阅中创建多个资源。你可以在 Azure [门户][lnk-portal]中查看这些资源。部署过程会创建一个**资源组**，其名称基于你为预配置解决方案选择的名称：
 
-![Azure 门户中的预配置解决方案][img-portal]  
-
+![Azure 门户中的预配置解决方案][img-portal]
 
 你可以查看每个资源的设置，方法是在资源组中的资源列表中选择该资源。
 
@@ -221,7 +214,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 - **Simulator** 文件夹包含模拟设备的源代码。
 - **EventProcessor** 文件夹包含后端进程的源代码，可用于处理传入遥测。
 
-完成后，可在 [azureiotsuite.com][lnk-azureiotsuite] 站点的 Azure 订阅中删除预配置解决方案。通过该站点，可轻松删除创建预配置解决方案时预配的所有资源。
+完成后，可以在 [azureiotsuite.com][lnk-azureiotsuite] 站点上删除 Azure 订阅中的预配置解决方案。利用该站点，可以轻松地删除在创建预配置解决方案时预配的所有资源。
 
 > [AZURE.NOTE] 若要确保删除与预配置解决方案相关的所有内容，请在 [azureiotsuite.com][lnk-azureiotsuite] 站点中删除这些内容，而不只是删除门户中的资源组。
 
@@ -233,39 +226,40 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 - [将设备连接到远程监视预配置解决方案][lnk-connect-rm]
 - [azureiotsuite.com 站点权限][lnk-permissions]
 
-[img-launch-solution]: ./media/iot-suite-getstarted-preconfigured-solutions/launch.png
-[img-dashboard]: ./media/iot-suite-getstarted-preconfigured-solutions/dashboard.png
-[img-devicelist]: ./media/iot-suite-getstarted-preconfigured-solutions/devicelist.png
-[img-devicedetails]: ./media/iot-suite-getstarted-preconfigured-solutions/devicedetails.png
-[img-devicecommands]: ./media/iot-suite-getstarted-preconfigured-solutions/devicecommands.png
-[img-pingcommand]: ./media/iot-suite-getstarted-preconfigured-solutions/pingcommand.png
-[img-adddevice]: ./media/iot-suite-getstarted-preconfigured-solutions/adddevice.png
-[img-addnew]: ./media/iot-suite-getstarted-preconfigured-solutions/addnew.png
-[img-definedevice]: ./media/iot-suite-getstarted-preconfigured-solutions/definedevice.png
-[img-runningnew]: ./media/iot-suite-getstarted-preconfigured-solutions/runningnew.png
-[img-runningnew-2]: ./media/iot-suite-getstarted-preconfigured-solutions/runningnew2.png
-[img-rules]: ./media/iot-suite-getstarted-preconfigured-solutions/rules.png
-[img-editdevice]: ./media/iot-suite-getstarted-preconfigured-solutions/editdevice.png
-[img-editdevice2]: ./media/iot-suite-getstarted-preconfigured-solutions/editdevice2.png
-[img-editdevice3]: ./media/iot-suite-getstarted-preconfigured-solutions/editdevice3.png
-[img-adddevicerule]: ./media/iot-suite-getstarted-preconfigured-solutions/addrule.png
-[img-adddevicerule2]: ./media/iot-suite-getstarted-preconfigured-solutions/addrule2.png
-[img-adddevicerule3]: ./media/iot-suite-getstarted-preconfigured-solutions/addrule3.png
-[img-adddevicerule4]: ./media/iot-suite-getstarted-preconfigured-solutions/addrule4.png
-[img-actions]: ./media/iot-suite-getstarted-preconfigured-solutions/actions.png
-[img-portal]: ./media/iot-suite-getstarted-preconfigured-solutions/portal.png
-[img-search]: ./media/iot-suite-getstarted-preconfigured-solutions/solutionportal_07.png
-[img-disable]: ./media/iot-suite-getstarted-preconfigured-solutions/solutionportal_08.png
-[1rmb-trial]: /pricing/1rmb-trial/
-[lnk-preconfigured-solutions]: /documentation/articles/iot-suite/iot-suite-what-are-preconfigured-solutions/
-[lnk-azureiotsuite]: https://www.azureiotsuite.com
-[lnk-logic-apps]: /documentation/services/app-service/logic/
-[lnk-portal]: http://portal.azure.cn/
-[lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
-[lnk-devicemetadata]: /documentation/articles/iot-suite-what-are-preconfigured-solutions/#device-identity-registry-and-documentdb
-[lnk-logicapptutorial]: /documentation/articles/iot-suite-logic-apps-tutorial/
-[lnk-rm-walkthrough]: /documentation/articles/iot-suite-remote-monitoring-sample-walkthrough/
-[lnk-connect-rm]: /documentation/articles/iot-suite-connecting-devices/
-[lnk-permissions]: /documentation/articles/iot-suite-permissions/
+[img-launch-solution]: media/iot-suite-getstarted-preconfigured-solutions/launch.png
+[img-dashboard]: media/iot-suite-getstarted-preconfigured-solutions/dashboard.png
+[img-devicelist]: media/iot-suite-getstarted-preconfigured-solutions/devicelist.png
+[img-devicedetails]: media/iot-suite-getstarted-preconfigured-solutions/devicedetails.png
+[img-devicecommands]: media/iot-suite-getstarted-preconfigured-solutions/devicecommands.png
+[img-pingcommand]: media/iot-suite-getstarted-preconfigured-solutions/pingcommand.png
+[img-adddevice]: media/iot-suite-getstarted-preconfigured-solutions/adddevice.png
+[img-addnew]: media/iot-suite-getstarted-preconfigured-solutions/addnew.png
+[img-definedevice]: media/iot-suite-getstarted-preconfigured-solutions/definedevice.png
+[img-runningnew]: media/iot-suite-getstarted-preconfigured-solutions/runningnew.png
+[img-runningnew-2]: media/iot-suite-getstarted-preconfigured-solutions/runningnew2.png
+[img-rules]: media/iot-suite-getstarted-preconfigured-solutions/rules.png
+[img-editdevice]: media/iot-suite-getstarted-preconfigured-solutions/editdevice.png
+[img-editdevice2]: media/iot-suite-getstarted-preconfigured-solutions/editdevice2.png
+[img-editdevice3]: media/iot-suite-getstarted-preconfigured-solutions/editdevice3.png
+[img-adddevicerule]: media/iot-suite-getstarted-preconfigured-solutions/addrule.png
+[img-adddevicerule2]: media/iot-suite-getstarted-preconfigured-solutions/addrule2.png
+[img-adddevicerule3]: media/iot-suite-getstarted-preconfigured-solutions/addrule3.png
+[img-adddevicerule4]: media/iot-suite-getstarted-preconfigured-solutions/addrule4.png
+[img-actions]: media/iot-suite-getstarted-preconfigured-solutions/actions.png
+[img-portal]: media/iot-suite-getstarted-preconfigured-solutions/portal.png
+[img-search]: media/iot-suite-getstarted-preconfigured-solutions/solutionportal_07.png
+[img-disable]: media/iot-suite-getstarted-preconfigured-solutions/solutionportal_08.png
 
-<!---HONumber=Mooncake_0926_2016-->
+[lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-azureiotsuite]: https://www.azureiotsuite.com
+[lnk-logic-apps]: https://azure.microsoft.com/documentation/services/app-service/logic/
+[lnk-portal]: http://portal.azure.com/
+[lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-devicemetadata]: iot-suite-what-are-preconfigured-solutions.md#device-identity-registry-and-documentdb
+[lnk-logicapptutorial]: iot-suite-logic-apps-tutorial.md
+[lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
+[lnk-connect-rm]: iot-suite-connecting-devices.md
+[lnk-permissions]: iot-suite-permissions.md
+
+<!---HONumber=AcomDC_0921_2016-->

@@ -48,7 +48,7 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
    	单击“注册”后，你将会看到如下所示的“注册已完成”屏幕。单击“Done”（完成）。
 
 
-   ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
+    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 
 3. 在开发人员中心的“App IDs”（应用 ID）下，找到你刚刚创建的应用 ID，然后单击其所在行。
@@ -75,7 +75,7 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
-   	随后将会下载签名证书并将其保存到计算机上的 Downloads 文件夹。
+   	随后将下载证书并将其保存到计算机上的 Downloads 文件夹。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
@@ -131,4 +131,4 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=AcomDC_0921_2016-->

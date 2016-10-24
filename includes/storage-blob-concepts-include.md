@@ -16,7 +16,7 @@ Blob 服务包含以下组件：
 
 ![Blob1][Blob1]
 
-- **存储帐户：**对 Azure 存储服务的所有访问都要通过存储帐户来完成。此存储帐户可以是**常规用途存储帐户**，也可以是专用于存储对象/Blob 的 **Blob 存储帐户**。有关存储帐户的详细信息，请参阅 [Azure 存储帐户](/documentation/articles/storage-create-storage-account)。
+- **存储帐户：**对 Azure 存储服务的所有访问都要通过存储帐户来完成。此存储帐户可以是**常规用途存储帐户**，也可以是专用于存储对象/Blob 的 **Blob 存储帐户**。有关存储帐户的详细信息，请参阅 [Azure 存储帐户](../articles/storage/storage-create-storage-account.md)。
 
 - **容器：**一个容器包含一组 blob 集。所有 blob 必须位于相应的容器中。一个帐户可以包含无限个容器。一个容器可以存储无限个 Blob。请注意，容器名称必须小写。
 
@@ -26,9 +26,9 @@ Blob 服务包含以下组件：
 
     *页 Blob* 最大可达 1 TB 大小，并且对于频繁的读/写操作更加高效。Azure 虚拟机使用页 Blob 作为 OS 和数据磁盘。
 
-	有关命名容器和 Blob 的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://msdn.microsoft.com/zh-cn/library/azure/dd135715.aspx)。
+    有关命名容器和 Blob 的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://msdn.microsoft.com/library/azure/dd135715.aspx)。
 
 
 [Blob1]: ./media/storage-blob-concepts-include/blob1.jpg
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="优化 ExpressRoute 路由 | Azure"
+   pageTitle="优化 ExpressRoute 路由 | Microsoft Azure"
    description="本页详细介绍了在客户可以通过多个 ExpressRoute 线路在 Microsoft 与客户的公司网络之间进行连接时，如何优化路由。"
    documentationCenter="na"
    services="expressroute"
@@ -8,8 +8,12 @@
    editor=""/>
 <tags
    ms.service="expressroute"
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
    ms.date="06/07/2016"
-   wacn.date=""/>
+   ms.author="charwen"/>
 
 # 优化 ExpressRoute 路由
 当你有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。结果就是，你所采用的路由可能不是最理想的 - 也就是说，你的流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达你的网络。网络路径越长，延迟越严重。延迟对应用程序性能和用户体验有直接影响。本文将详述此问题，并说明如何使用标准路由技术来优化路由。
@@ -38,4 +42,4 @@
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-solution.png)
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=AcomDC_0921_2016-->

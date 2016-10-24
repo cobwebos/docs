@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Azure 中的 Active Directory 联合身份验证服务 | Azure"
+	pageTitle="Azure 中的 Active Directory 联合身份验证服务 | Microsoft Azure"
 	description="在本文档中，你将学习如何在 Azure 中部署 AD FS 以实现高可用性。"
-    keywords="AD FS 简介, Azure, Azure AD Connect 概述, Azure 中的 AD FS, iaas, ADFS"
+    keywords="在 Azure 中部署 AD FS, 部署 Azure ADFS, Azure ADFS, Azure AD FS, 部署 ADFS, 部署 AD FS, Azure 中的 ADFS, 在 Azure 中部署 ADFS, 在 Azure 中部署 AD FS, ADFS Azure, AD FS 简介, Azure, Azure 中的 AD FS, IaaS, ADFS, 将 ADFS 移动到 Azure"
 	services="active-directory"
 	documentationCenter=""
 	authors="anandyadavmsft"
@@ -10,13 +10,16 @@
 
 <tags
 	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="07/13/2016"
-	wacn.date=""/>
+	ms.author="anandy;billmath"/>
 
 # Azure 中的 AD FS 部署 
 
-AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。与 Azure AD 或 O365 联合可让用户使用本地凭据进行身份验证，并访问云中的所有资源。这样，就必须建立高可用性的 AD FS 基础结构来确保能够访问本地和云中的资源。在 Azure 中部署 AD FS 有助于以最少量的工作实现所需的高可用性。
-在 Azure 中部署 AD FS 可带来几项优势，下面列出了其中几项：
+AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。与 Azure AD 或 O365 联合可让用户使用本地凭据进行身份验证，并访问云中的所有资源。这样，就必须建立高可用性的 AD FS 基础结构来确保能够访问本地和云中的资源。在 Azure 中部署 AD FS 有助于以最少量的工作实现所需的高可用性。在 Azure 中部署 AD FS 可带来几项优势，下面列出了其中几项：
 
 * **高可用性** – 借助 Azure 可用性集的强大功能可以确保建立高可用性的基础结构。
 * **易于缩放** – 需要更高的性能？ 只需在 Azure 中按几下鼠标就能轻松迁移到更强大的计算机
@@ -49,8 +52,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 
 ![创建虚拟网络](./media/active-directory-aadconnect-azure-adfs/deploynetwork1.png)
 	
-在 Azure 门户中选择虚拟网络，然后，只需单击一下鼠标就能立即部署虚拟网络和一个子网。此外，INT 子网已定义，随时可供要添加的 VM 使用。
-下一步是在网络中添加另一个子网，即外围网络子网。若要创建外围网络子网，只需执行以下操作
+在 Azure 门户中选择虚拟网络，然后，只需单击一下鼠标就能立即部署虚拟网络和一个子网。此外，INT 子网已定义，随时可供要添加的 VM 使用。下一步是在网络中添加另一个子网，即外围网络子网。若要创建外围网络子网，只需执行以下操作
 
 * 选择新建的网络
 * 在属性中选择子网
@@ -64,8 +66,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 
 **1.2.创建网络安全组**
 
-网络安全组 (NSG) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。NSG 可以与子网或该子网中的各个 VM 实例相关联。当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。
-在本指南中，我们将创建两个 NSG：一个应用于内部网络，另一个应用于外围网络。其标签分别为 NSG\_INT 和 NSG\_DMZ。
+网络安全组 (NSG) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。NSG 可以与子网或该子网中的各个 VM 实例相关联。当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。在本指南中，我们将创建两个 NSG：一个应用于内部网络，另一个应用于外围网络。其标签分别为 NSG\_INT 和 NSG\_DMZ。
 
 ![创建 NSG](./media/active-directory-aadconnect-azure-adfs/creatensg1.png)
 
@@ -92,8 +93,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 * 虚拟网络站点到站点
 * ExpressRoute
 
-建议使用 ExpressRoute。使用 ExpressRoute，可在 Azure 数据中心与你的本地环境或并置环境中的基础结构之间创建专用连接。ExpressRoute 连接不通过公共 Internet 。它们能够提供可靠性、速度、延迟和安全性这几个方面均比基于 Internet 的典型连接更胜一筹的专用连接。
-尽管建议使用 ExpressRoute，但你也可以选择最适合你组织的任何连接方法。有关详细了解 ExpressRoute 以及如何使用 ExpressRoute 的各种连接选项，请阅读 [ExpressRoute technical overview（ExpressRoute 技术概述）](https://aka.ms/Azure/ExpressRoute)。
+建议使用 ExpressRoute。使用 ExpressRoute，可在 Azure 数据中心与你的本地环境或并置环境中的基础结构之间创建专用连接。ExpressRoute 连接不通过公共 Internet 。它们能够提供可靠性、速度、延迟和安全性这几个方面均比基于 Internet 的典型连接更胜一筹的专用连接。尽管建议使用 ExpressRoute，但你也可以选择最适合你组织的任何连接方法。有关详细了解 ExpressRoute 以及如何使用 ExpressRoute 的各种连接选项，请阅读 [ExpressRoute technical overview](https://aka.ms/Azure/ExpressRoute)（ExpressRoute 技术概述）。
 
 ### 2\.创建存储帐户
 
@@ -103,8 +103,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 
 ### 3\.创建可用性集
 
-针对每个角色（DC/AD FS 和 WAP）创建可用性集，使每个可用性集至少包含 2 个计算机。这有助于使每个角色实现更高的可用性。 
-在创建可用性集时，必须针对以下项目做出决定：
+针对每个角色（DC/AD FS 和 WAP）创建可用性集，使每个可用性集至少包含 2 个计算机。这有助于使每个角色实现更高的可用性。在创建可用性集时，必须针对以下项目做出决定：
 * **容错域**：同一容错域中的虚拟机共享同一个电源和物体网络交换机。建议至少创建 2 个容错域。默认值为 3，在进行本文所述的部署时，可以保留此默认值。
 * **更新域**：在更新期间，属于同一更新域的计算机将一起重新启动。至少需要 2 个更新域。默认值为 5，在进行本文所述的部署时，可以保留此默认值。
 
@@ -127,9 +126,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 |contosowap1|WAP|外围网络|contosowapset|contososac1|静态|
 |contosowap2|WAP|外围网络|contosowapset|contososac2|静态|
 
-你可能已注意到尚未指定 NSG。这是因为 Azure 允许你在子网级别使用 NSG。然后，你可以使用与子网或 NIC 对象关联的单个 NSG 来控制计算机的网络流量。有关详细信息，请阅读 [What is a Network Security Group (NSG)（什么是网络安全组 (NSG)）](https://aka.ms/Azure/NSG)。
-如果你要管理 DNS，建议你使用静态 IP 地址。你可以使用 Azure DNS，并改为在域的 DNS 记录中按计算机的 Azure FQDN 引用新计算机。
-完成部署后，虚拟机窗格应如下所示：
+你可能已注意到尚未指定 NSG。这是因为 Azure 允许你在子网级别使用 NSG。然后，你可以使用与子网或 NIC 对象关联的单个 NSG 来控制计算机的网络流量。有关详细信息，请阅读 [What is a Network Security Group (NSG)](https://aka.ms/Azure/NSG)（什么是网络安全组 (NSG)）。如果你要管理 DNS，建议你使用静态 IP 地址。你可以使用 Azure DNS，并改为在域的 DNS 记录中按计算机的 Azure FQDN 引用新计算机。完成部署后，虚拟机窗格应如下所示：
 
 ![已部署虚拟机](./media/active-directory-aadconnect-azure-adfs/virtualmachinesdeployed_noadfs.png)
 
@@ -181,12 +178,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 
 在 ILB 设置面板中选择“探测”。
 1.	单击“添加”
-2.	提供探测详细信息
-  a.**名称**：探测名称
-  b.**协议**：TCP
-  c.**端口**：443 (HTTPS)
-  d.**间隔**：5（默认值）– 这是 ILB 在后端池中探测计算机的间隔
-  e.**不正常阈值限制**：2（默认值）– 这是连续探测失败阈值，达到此阈值后，ILB 会将后端池中的计算机声明为无响应，并停止向它发送流量。
+2.	提供探测详细信息 a.**名称**：探测名称 b.**协议**：TCP c.**端口**：443 (HTTPS) d.**间隔**：5（默认值）– 这是 ILB 在后端池中探测计算机的间隔 e.**不正常阈值限制**：2（默认值）– 这是连续探测失败阈值，达到此阈值后，ILB 会将后端池中的计算机声明为无响应，并停止向它发送流量。
 
 ![配置 ILB 探测](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
  
@@ -195,20 +187,13 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 为了有效地平衡流量，应该为 ILB 设置负载平衡规则。若要创建负载平衡规则，请执行以下操作：
 1.	在 ILB 的设置面板中选择“负载平衡规则”
 2.	在“负载平衡规则”面板中单击“添加”
-3.	在“添加负载平衡规则”面板中，指定以下值：
-  a. **名称**：提供规则的名称
-  b.**协议**：选择“TCP”
-  c.**端口**：443
-  d.**后端端口**：443
-  e.**后端池**：选择前面为 AD FS 群集创建的池
-  f.**探测**：选择前面为 AD FS 服务器创建的探测
+3.	在“添加负载平衡规则”面板中，指定以下值：**名称**：提供规则的名称 b.**协议**：选择“TCP”c.**端口**：443 d.**后端端口**：443 e.**后端池**：选择前面为 AD FS 群集创建的池 f.**探测**：选择前面为 AD FS 服务器创建的探测
 
 ![配置 ILB 平衡规则](./media/active-directory-aadconnect-azure-adfs/ilbdeployment5.png)
 
 **6.5.更新 ILB 的 DNS**
 
-转到你的 DNS 服务器，并为 ILB 创建 CNAME。该 CNAME 应适用于 IP 地址指向 ILB 的 IP 地址的联合身份验证服务。例如，如果 ILB DIP 地址是 10.3.0.8，而安装的联合身份验证服务是 fs.contoso.com，请为指向 10.3.0.8 的 fs.contoso.com 创建 CNAME。
-这可确保所有与 fs.contoso.com 相关的通信都在 ILB 上结束，并且会得到适当的路由。
+转到你的 DNS 服务器，并为 ILB 创建 CNAME。该 CNAME 应适用于 IP 地址指向 ILB 的 IP 地址的联合身份验证服务。例如，如果 ILB DIP 地址是 10.3.0.8，而安装的联合身份验证服务是 fs.contoso.com，请为指向 10.3.0.8 的 fs.contoso.com 创建 CNAME。这可确保所有与 fs.contoso.com 相关的通信都在 ILB 上结束，并且会得到适当的路由。
 
 ###7\.配置 Web 应用程序代理服务器
 
@@ -218,9 +203,7 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 
 **7.2.安装 Web 应用程序代理角色**
 
-在确保 Web 应用程序代理服务器能够访问 ILB 后面的 AD FS 服务器之后，接下来可以安装 Web 应用程序代理服务器。 
-不要将 Web 应用程序代理服务器加入域。通过选择“远程访问”角色，将 Web 应用程序代理角色安装在两个 Web 应用程序代理服务器上。服务器管理器将引导你完成 WAP 安装。
-有关如何部署 WAP 的详细信息，请阅读 [Install and Configure the Web Application Proxy Server（安装和配置 Web 应用程序代理服务器）](https://technet.microsoft.com/library/dn383662.aspx)。
+在确保 Web 应用程序代理服务器能够访问 ILB 后面的 AD FS 服务器之后，接下来可以安装 Web 应用程序代理服务器。不要将 Web 应用程序代理服务器加入域。通过选择“远程访问”角色，将 Web 应用程序代理角色安装在两个 Web 应用程序代理服务器上。服务器管理器将引导你完成 WAP 安装。有关如何部署 WAP 的详细信息，请阅读 [Install and Configure the Web Application Proxy Server](https://technet.microsoft.com/library/dn383662.aspx)（安装和配置 Web 应用程序代理服务器）。
 
 ###8\.部署面向 Internet 的（公共）负载平衡器
 
@@ -274,12 +257,11 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 
 |规则|说明|流向|
 |:----|:----|:------:|
-|AllowHTTPSFromDMZ|	允许与外围网络进行 HTTPS 通信 | 入站 |
+|AllowHTTPSFromDMZ| 允许与外围网络进行 HTTPS 通信 | 入站 |
 |DenyAllFromDMZ| 此规则将阻止所有从外围网络到内部子网的流量。规则 AllowHTTPSFromDMZ 将负责确保 HTTPS 通信完成，并阻止其他任何流量 | 入站 |
 |DenyInternetOutbound| 不允许访问 Internet | 出站 |
 
-[comment]: <> (![INT 访问规则（入站）](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png))
-[comment]: <> (![INT 访问规则（出站）](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
+[comment]: <> (![INT 访问规则（入站）](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [comment]: <> (![INT 访问规则（出站）](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
  
 **9.2.保护外围网络子网**
 
@@ -290,16 +272,14 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 |DenyingressexceptHTTPS| 阻止来自 Internet 的所有非 HTTPS 流量 | 入站 |
 |DenyOutToInternet|	阻止流向 Internet 的所有非 HTTPS 流量 | 出站 |
 
-[comment]: <> (![EXT 访问规则（入站）](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png))
-[comment]: <> (![EXT 访问规则（出站）](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
+[comment]: <> (![EXT 访问规则（入站）](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png)) [comment]: <> (![EXT 访问规则（出站）](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
 
 >[AZURE.NOTE] 如果需要使用客户端用户证书身份验证（使用 X509 用户证书进行 clientTLS 身份验证），则 AD FS 要求为入站访问启用 TCP 端口 49443。
 
 ###10\.测试 AD FS 登录
 
 测试 AD FS 的最简单方法是使用 IdpInitiatedSignon.aspx 页。若要执行此操作，必须在 AD FS 属性中启用 IdpInitiatedSignOn。请遵循以下步骤来验证你的 AD FS 设置
-1.	使用 PowerShell 在 AD FS 服务器上运行以下 cmdlet，以将它设置为启用。
-	Set-AdfsProperties -EnableIdPInitiatedSignonPage $true
+1.	使用 PowerShell 在 AD FS 服务器上运行以下 cmdlet，以将它设置为启用。Set-AdfsProperties -EnableIdPInitiatedSignonPage $true
 2.	从任一外部计算机访问 https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx
 3.	你应会看到如下所示的 AD FS 页：
 
@@ -312,15 +292,16 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 ## 其他资源
 * [可用性集](https://aka.ms/Azure/Availability)
 * [Azure 负载平衡器](https://aka.ms/Azure/ILB)
-* [Internal Load Balancer（内部负载平衡器）](https://aka.ms/Azure/ILB/Internal)
-* [Internet Facing Load Balancer（面向 Internet 的负载平衡器）](https://aka.ms/Azure/ILB/Internet)
+* [Internal Load Balancer](https://aka.ms/Azure/ILB/Internal)（内部负载平衡器）
+* [Internet Facing Load Balancer](https://aka.ms/Azure/ILB/Internet)（面向 Internet 的负载平衡器）
 * [存储帐户](https://aka.ms/Azure/Storage)
 * [Azure 虚拟网络](https://aka.ms/Azure/VNet)
-* [AD FS and Web Application Proxy Links（AD FS 和 Web 应用程序代理链接）](http://aka.ms/ADFSLinks)
+* [AD FS and Web Application Proxy Links](http://aka.ms/ADFSLinks)（AD FS 和 Web 应用程序代理链接）
 
 ## 后续步骤
 
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
-* [Configuring and managing your AD FS using Azure AD Connect（使用 Azure AD Connect 配置和管理 AD FS）](/documentation/articles/active-directory-aadconnectfed-whatis/)
+* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+* [Configuring and managing your AD FS using Azure AD Connect（使用 Azure AD Connect 配置和管理 AD FS）](active-directory-aadconnectfed-whatis.md)
+* [使用 Azure 流量管理器在 Azure 中跨地理部署 AD FS 实现高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 
-<!----HONumber=Mooncake_0725_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
- pageTitle="Azure IoT 预配置解决方案 | Azure"
+ pageTitle="Azure IoT 预配置解决方案 | Microsoft Azure"
  description="Azure IoT 预配置解决方案及其体系结构描述，以及指向其他资源的链接。"
  services=""
  suite="iot-suite"
@@ -10,8 +10,12 @@
 
 <tags
  ms.service="iot-suite"
+ ms.devlang="na"
+ ms.topic="get-started-article"
+ ms.tgt_pltfrm="na"
+ ms.workload="na"
  ms.date="08/09/2016"
- wacn.date="05/17/2016"/>  
+ ms.author="dobett"/>  
 
 
 # Azure IoT 套件预配置解决方案是什么？
@@ -25,14 +29,13 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 
 除了在 Azure 中部署和运行解决方案，你还可以下载完整的源代码，然后自定义并扩展解决方案以满足特定的 IoT 要求。
 
-> [AZURE.NOTE] 要部署其中一个预配置的解决方案，请访问 [Azure IoT 套件][lnk-azureiotsuite]。[IoT 预配置解决方案入门][lnk-getstarted-preconfigured]这篇文章介绍了有关如何部署并运行其中一个解决方案的详细信息。
+> [AZURE.NOTE] 若要部署预配置解决方案之一，请访问 [Microsoft Azure IoT 套件][lnk-azureiotsuite]。[IoT 预配置解决方案入门][lnk-getstarted-preconfigured]这篇文章介绍了有关如何部署并运行其中一个解决方案的详细信息。
 
 下表显示了如何将解决方案映射到特定的 IoT 功能：
 
 | 解决方案 | 数据提取 | 设备标识 | 命令和控制 | 规则和操作 | 预测分析 |
 |------------------------|-----|-----|-----|-----|-----|
-| [远程监视][lnk-getstarted-preconfigured] |是 |是 |是 |是 |- |
-| [主动维护][lnk-predictive-maintenance] |是 |是 |是 |是 |是 |
+| [远程监视][lnk-getstarted-preconfigured] |是 |是 |是 |是 |- | | [主动维护][lnk-predictive-maintenance] |是 |是 |是 |是 |是 |
 
 - *数据提取*：向云中大规模输入数据。
 - *设备标识*：管理每个连接设备的唯一标识。
@@ -65,7 +68,7 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 
 ## IoT 中心
 
-在此预配置的解决方案中，IoT 中心实例对应于典型的 [IoT 解决方案体系结构][lnk-what-is-azure-iot]中的 *云网关* 。
+在此预配置的解决方案中，IoT 中心实例对应于典型的 [IoT 解决方案体系结构][lnk-what-is-azure-iot]中的*云网关*。
 
 IoT 中心接收单个终结点上的设备的遥测数据。IoT 中心还维护特定于设备的终结点，终结点中的每个设备可以检索发送给它的命令。
 
@@ -112,20 +115,20 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 
 ## 后续步骤
 
-有关 IoT 解决方案体系结构的详细信息，请参阅 [Azure IoT services: Reference Architecture（Azure IoT 服务：参考体系结构）][lnk-refarch]。
+有关 IoT 解决方案体系结构的详细信息，请参阅 [Microsoft Azure IoT 服务：参考体系结构][lnk-refarch]。
 
-现在你已了解什么是预配置解决方案，接下来你可以通过部署*远程监视* 预配置解决方案来开始入门，请参阅：[Get started with the preconfigured solutions][lnk-getstarted-preconfigured]（预配置解决方案入门）。
+现在你已了解什么是预配置解决方案，接下来你可以通过部署*远程监视*预配置解决方案来开始入门，请参阅：[Get started with the preconfigured solutions][lnk-getstarted-preconfigured]（预配置解决方案入门）。
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
-[lnk-what-is-azure-iot]: /documentation/articles/iot-suite/iot-suite-what-is-azure-iot/
-[lnk-asa]: /documentation/services/stream-analytics/
-[lnk-event-processor]: /documentation/articles/event-hubs/event-hubs-programming-guide/#event-processor-host
-[lnk-web-job]: /documentation/articles/app-service-web/web-sites-create-web-jobs/
-[lnk-identity-registry]: /documentation/articles/iot-hub/iot-hub-devguide/#device-identity-registry
-[lnk-predictive-maintenance]: /documentation/articles/iot-suite/iot-suite-predictive-overview/
+[lnk-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
+[lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
+[lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
+[lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
+[lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
+[lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-[lnk-getstarted-preconfigured]: /documentation/articles/iot-suite/iot-suite-getstarted-preconfigured-solutions/
+[lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,6 +1,7 @@
 > [AZURE.SELECTOR]
-- [Portal](/documentation/articles/media-services-portal-get-started)
-- [.NET](/documentation/articles/media-services-dotnet-get-started)
-- [REST API](/documentation/articles/media-services-rest-get-started)
+- [门户](../articles/media-services/media-services-portal-vod-get-started.md)
+- [.NET](../articles/media-services/media-services-dotnet-get-started.md)
+- [REST API](../articles/media-services/media-services-rest-get-started.md)
+- [Java](../articles/media-services/media-services-java-how-to-use.md)
 
-<!---HONumber=67-->
+<!---HONumber=AcomDC_0921_2016-->

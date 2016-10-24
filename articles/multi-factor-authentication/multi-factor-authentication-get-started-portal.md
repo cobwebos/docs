@@ -1,16 +1,20 @@
 <properties 
-	pageTitle="为 Azure Multi-Factor Authentication 服务器部署用户门户" 
-	description="这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何开始使用 Azure MFA 和用户门户。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="femila" 
+	pageTitle="为 Azure Multi-Factor Authentication 服务器部署用户门户"
+	description="这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何开始使用 Azure MFA 和用户门户。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.date="08/15/2016" 
-	wacn.date=""/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="kgremban"/>
 
 # 为 Azure Multi-Factor Authentication 服务器部署用户门户
 
@@ -97,7 +101,7 @@
 Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项。下表列出了这些选项及其用途的说明。
 
 用户门户设置|说明|
-:------------- | :------------- | 
+:------------- | :------------- |
 用户门户 URL| 用于输入托管门户的 URL。
 主要身份验证| 用于指定在登录门户时要使用的身份验证类型。Windows、Radius 或 LDAP 身份验证。
 允许用户登录|允许用户在用户门户的登录页中输入用户名和密码。如果未选择此项，框将会灰显。
@@ -183,6 +187,4 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 
 现在，用户自我注册已完成，用户将登录到用户门户。用户在将来可以随时重新登录到用户门户，以更改其电话号码、PIN 码、身份验证方法和安全问题（如果其管理员允许）。
 
- 
-
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=AcomDC_0921_2016-->

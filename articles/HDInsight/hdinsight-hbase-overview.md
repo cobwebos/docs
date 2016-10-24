@@ -1,22 +1,21 @@
 <properties
-	pageTitle="HDInsight 中的 HBase 是什么？| Azure"
+	pageTitle="HDInsight 中的 HBase 是什么？| Microsoft Azure"
 	description="介绍 HDInsight 中的 Apache HBase - 在 Hadoop 上构建的 NoSQL 数据库。了解相关用例并将 HBase 与其他 Hadoop 群集进行比较。"
-	keywords="bigtable,nosql,what is hbase"
+	keywords="Bigtable ,NoSql ,什么是 HBase"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian" 
-	manager="paulettm" 
+	manager="jhubbard"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/17/2015"
-	wacn.date="" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/14/2016"
 	ms.author="jgao"/>
 
 
@@ -33,53 +32,66 @@ HDInsight HBase 以集成到 Azure 环境中的托管群集形式提供。这些
 
 HDInsight 实施利用 HBase 的横向扩展架构来提供表自动分片、使读写操作保持高度的一致性，以及支持自动故障转移。性能可通过对读取使用内存中缓存并对写入使用高吞吐量流式处理来提高。可视化网络设置也适用于 HDInsight HBase。有关详细信息，请参阅[在 Azure 虚拟网络上预配 HDInsight 群集][hbase-provision-vnet]。
 
+
 ## 如何在 HDInsight HBase 中管理数据？
+
 数据可以在 HBase 中通过使用 HBase shell 中的 `create`、`get`、`put` 和 `scan` 命令来管理。数据通过使用 `put` 写入到数据库，并通过使用 `get` 读取。`scan` 命令用于从表中的多行获得数据。Data 也可以使用 HBase C# API 进行管理，该 API 在 HBase REST API 顶部提供客户端库。HBase 数据库还可以通过使用 Hive 进行查询。有关这些编程模型的简介，请参阅[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][hbase-get-started]。共同的处理器也适用，这样，便可在托管数据库的节点中处理数据。
- 
+
 
 ## 方案：HBase 用例
 创建 BigTable 以及延伸开来的 HBase 的典型用例就是 Web 搜索。搜索引擎构建索引，用于将词语映射到包含这些词语的 web 页面。然而，还有 HBase 适用的许多其他用例，本部分中列出了其中几个。
 
-- 键值存储：HBase 可用作键值存储，适用于管理消息系统。Facebook 使用 HBase 作为消息系统，它最适用于存储和管理 Internet 通信。WebTable 使用 HBase 搜索和管理从网页中提取的表。
+- 键值存储
 
-- 传感器数据：HBase 用于捕获从各种源逐步收集的数据。这包括社交分析、时间序列、使交互式仪表板与趋势和计数器保持同步，以及管理审计日志系统。具体示例包括：Bloomberg 交易终端以及开放时间序列数据库 (Open Time Series Database, OpenTSDB)，后者用于存储所收集的服务器系统运行状况指标并对其进行访问。
+	HBase 可用作键值存储，适用于管理消息系统。Facebook 使用 HBase 作为消息系统，它最适用于存储和管理 Internet 通信。WebTable 使用 HBase 搜索和管理从网页中提取的表。
 
-- 实时查询：[Phoenix](http://phoenix.apache.org/) 是 Apache HBase 的 SQL 查询引擎。该引擎以 JDBC 驱动程序的形式供用户访问，并且支持使用 SQL 来查询和管理 HBase 表。
+- 传感器数据
 
-- HBase 即平台：应用程序可以将 HBase 作为数据存储库而在其上运行。具体示例包括 Phoenix、OpenTSDB、Kiji 和 Titan。应用程序也可以与 HBase 集成。具体示例包括：Hive、Pig、Solr、Storm、Flume、Impala、Ganglia 和 Drill。
+	HBase 用于捕获从各种源逐步收集的数据。这包括社交分析、时间序列、使交互式仪表板与趋势和计数器保持同步，以及管理审计日志系统。具体示例包括：Bloomberg 交易终端以及开放时间序列数据库 (Open Time Series Database, OpenTSDB)，后者用于存储所收集的服务器系统运行状况指标并对其进行访问。
+
+- 实时查询
+
+	[Phoenix](http://phoenix.apache.org/) 是 Apache HBase 的 SQL 查询引擎。该引擎以 JDBC 驱动程序的形式供用户访问，并且支持使用 SQL 来查询和管理 HBase 表。
+
+- HBase 即平台
+
+	应用程序可以将 HBase 作为数据存储库而在其上运行。具体示例包括 Phoenix、OpenTSDB、Kiji 和 Titan。应用程序也可以与 HBase 集成。具体示例包括：Hive、Pig、Solr、Storm、Flume、Impala、Spark、Ganglia 和 Drill。
 
 
 ##<a name="next-steps"></a>后续步骤
 
 - [开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][hbase-get-started]
 - [在 Azure 虚拟网络上设置 HDInsight 群集][hbase-provision-vnet]
-- [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-geo-replication) 
+- [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-geo-replication.md)
+- [在 HDInsight 中使用 HBase 分析 Twitter 观点][hbase-twitter-sentiment]
 - [借助 Maven 生成可将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序][hbase-build-java-maven]
 
 ##<a name="see-also"></a>另请参阅
 
 - [Apache HBase](https://hbase.apache.org/)
+- [Bigtable：针对结构化数据的分布式存储系统](http://research.google.com/archive/bigtable.html)
 
 
 
 
-[hbase-provision-vnet]: hdinsight-hbase-provision-vnet
+[hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 
+[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
-[hbase-build-java-maven]: hdinsight-hbase-build-java-maven
+[hbase-build-java-maven]: hdinsight-hbase-build-java-maven.md
 
-[hdinsight-use-hive]: hdinsight-use-hive
+[hdinsight-use-hive]: hdinsight-use-hive.md
 
-[hdinsight-storage]: hdinsight-use-blob-storage
+[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 
-[hbase-get-started]: /documentation/articles/hdinsight-hbase-get-started/
+[hbase-get-started]: http://azure.microsoft.com/documentation/articles/hdinsight-hbase-get-started/
 
-[azure-purchase-options]: /pricing/purchase-options/
-
-[azure-trial]: /pricing/1rmb-trial/
-[azure-management-portal]: https://manage.windowsazure.cn/
-[azure-create-storageaccount]: storage-create-storage-account
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-management-portal]: https://portal.azure.com/
+[azure-create-storageaccount]: ../storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
 
-<!---HONumber=76-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -22,4 +22,4 @@
 
      ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-3.png)  
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=AcomDC_0921_2016-->

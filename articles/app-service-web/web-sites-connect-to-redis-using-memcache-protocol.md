@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存 | Azure"
+	pageTitle="通过 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存 | Microsoft Azure"
 	description="使用 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存"
 	services="app-service\web"
 	documentationCenter="php"
@@ -9,12 +9,16 @@
 
 <tags
 	ms.service="app-service-web"
+	ms.devlang="php"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="windows"
+	ms.workload="na"
 	ms.date="02/29/2016"
-	wacn.date=""/>
+	ms.author="cfowler"/>
 
 # 通过 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存
 
-本文将介绍如何使用 [Memcache][13] 协议将 [Azure App Service](/documentation/services/web-sites/) 中的 WordPress Web 应用连接到 [Azure Redis 缓存][12]。如果某个现有 Web 应用使用 Memcached 服务器进行内部缓存，可将其迁移到 Azure App Service 并使用 Azure 中不（几乎不）更改应用程序代码的第一方缓存解决方案。还可利用现有的 Memcache 专业知识在 Azure App Service（带用于内部缓存的 Azure Redis 缓存）中创建高度可缩放的分布式应用，同时使用常用的应用程序框架，例如 .NET、PHP、Node.js、Java 和 Python。
+本文将介绍如何使用 [Memcache][13] 协议将 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 中的 WordPress Web 应用连接到 [Azure Redis 缓存][12]。如果你有将 Memcached 服务器用于内存缓存的现有 Web 应用，则可以将其迁移到 Azure App Service，并使用 Microsoft Azure 中的第一方缓存解决方案，其中对你的应用程序代码进行少量更改或无更改。还可利用现有的 Memcache 专业知识在 Azure App Service（带用于内部缓存的 Azure Redis 缓存）中创建高度可缩放的分布式应用，同时使用常用的应用程序框架，例如 .NET、PHP、Node.js、Java 和 Python。
 
 App Service Web Apps 使用 Web Apps Memcache 填充码启用该应用程序方案，这是充当 Memcache 代理服务器的本地 Memcached 服务器，用于缓存对 Azure Redis 缓存的调用。这使得使用 Memcache 协议通信的任何应用可以使用 Redis 缓存缓存数据。此 Memcache 填充码在协议级别运行，因此只要它使用 Memcached 协议通信，就可以供任何应用程序或应用程序框架使用。
 
@@ -33,7 +37,7 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 
 ## 启用 Web Apps Memcache 填充码
 
-若要配置 Memcache 填充码，你必须创建三项应用设置。可使用多种方法来完成，包括 [Azure 门户](https://manage.windowsazure.cn/)、[经典管理门户][3]、[Azure PowerShell Cmdlet][5] 或 [Azure 命令行接口][5]。本文将使用 [Azure 门户][4]来设置应用设置。从 Redis 缓存实例的“设置”边栏选项卡中，可以检索以下值。
+若要配置 Memcache 填充码，你必须创建三项应用设置。这可以使用多种方法完成，其中包括 [Azure 门户](http://go.microsoft.com/fwlink/?LinkId=529715)、[经典门户][3]、[Azure PowerShell Cmdlet][5] 或 [ Azure 命令行接口][5]。在本文中，我将使用 [Azure 门户][4]来设置应用设置。从 Redis 缓存实例的“设置”边栏选项卡中，可以检索以下值。
 
 ![Azure Redis 缓存设置边栏选项卡](./media/web-sites-connect-to-redis-using-memcache-protocol/1-azure-redis-cache-settings.png)
 
@@ -112,9 +116,11 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 
 在 `wp-config.php` 文件中，将以下代码添加到该文件末尾附近停止编辑备注的上方。
 
-	$memcached_servers = array(
-		'default' => array('localhost:' . getenv("MEMCACHESHIM_PORT"))
-	);
+```php
+$memcached_servers = array(
+	'default' => array('localhost:' . getenv("MEMCACHESHIM_PORT"))
+);
+```
 
 粘贴此代码后，monaco 会自动保存该文档。
 
@@ -156,9 +162,11 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 
 打开你选择的命令行控制台并键入以下命令：
 
-	redis-cli -h <hostname-for-redis-cache> -a <primary-key-for-redis-cache> -p 6379
+```shell
+redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –p 6379
+```
 
-将 **&lt;hostname-for-redis-cache&gt;** 替换为实际的 xxxxx.redis.cache.chinacloudapi.cn 主机名，将 **&lt;primary-key-for-redis-cache&gt;** 替换为缓存的访问密钥，然后按 **Enter**。CLI 连接到 Redis 缓存实例之后，发出任何 Redis 命令。在下面的屏幕截图中，我已选择列出密钥。
+将 **&lt;hostname-for-redis-cache&gt;** 替换为实际的 xxxxx.redis.cache.windows.net 主机名，将 **&lt;primary-key-for-redis-cache&gt;** 替换为缓存的访问密钥，然后按 **Enter**。CLI 连接到 Redis 缓存实例之后，发出任何 Redis 命令。在下面的屏幕截图中，我已选择列出密钥。
 
 ![在终端从 Redis CLI 连接到 Azure Redis 缓存](./media/web-sites-connect-to-redis-using-memcache-protocol/19-redis-cli-terminal.png)
 
@@ -166,25 +174,27 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 
 ## 结束语
 
-祝贺你！ WordPress 应用现在有了集中式的内存中缓存，这将有助于提高吞吐量。请记住，Web Apps Memcache 填充码可以与任何 Memcache 客户端结合使用，无需考虑编程语言或应用程序框架。若要提供反馈或就 Web Apps Memcache 填充码提问，请在 [MSDN 论坛][10]或 [CSDN][11] 上发布相关文章。
+祝贺你！ WordPress 应用现在有了集中式的内存中缓存，这将有助于提高吞吐量。请记住，Web Apps Memcache 填充码可以与任何 Memcache 客户端结合使用，无需考虑编程语言或应用程序框架。若要提供反馈或者提问有关 Web Apps Memcache 填充码的问题，请在 [MSDN 论坛][10]或 [Stackoverflow][11] 上发布相关文章。
+
+>[AZURE.NOTE] 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
 
 ## 发生的更改
-* 有关从网站更改为应用服务的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](/documentation/services/web-sites/)
+* 有关从网站更改为应用服务的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 
-[0]: /documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#create-a-cache
+[0]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache
 [1]: http://bit.ly/1t0KxBQ
-[2]: http://manage.windowsazure.cn
-[3]: http://portal.azure.cn
-[4]: /documentation/articles/powershell-install-configure/
+[2]: http://manage.windowsazure.com
+[3]: http://portal.azure.com
+[4]: ../powershell-install-configure.md
 [5]: /downloads
 [6]: http://pecl.php.net
 [7]: http://pecl.php.net/package/memcache
 [8]: http://blog.syntaxc4.net/post/2015/02/05/how-to-enable-a-site-extension-in-azure-websites.aspx
 [9]: http://redis.io/download#installation
-[10]: https://social.msdn.microsoft.com/Forums/zh-cn/home
-[11]: http://azure.csdn.net/
-[12]: /documentation/services/redis-cache
+[10]: https://social.msdn.microsoft.com/Forums/home?forum=windowsazurewebsitespreview
+[11]: http://stackoverflow.com/questions/tagged/azure-web-sites
+[12]: /services/cache/
 [13]: http://memcached.org
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

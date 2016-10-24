@@ -1,6 +1,6 @@
 <properties
-   pageTitle="如何使用 Azure 门户配置 ExpressRoute 线路的路由 | Azure"
-   description="本文介绍创建和预配 ExpressRoute 线路的专用、公共对等互连的步骤。本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。"
+   pageTitle="如何使用 Azure 门户配置 ExpressRoute 线路的路由 |Microsoft Azure"
+   description="本文将指导你完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
@@ -9,8 +9,12 @@
    tags="azure-resource-manager"/>
 <tags
    ms.service="expressroute"
+   ms.devlang="na"
+   ms.topic="hero-article" 
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
    ms.date="07/19/2016"
-   wacn.date=""/>  
+   ms.author="cherylmc"/>  
 
 
 # 创建和修改 ExpressRoute 线路的路由
@@ -18,9 +22,9 @@
 
 
 > [AZURE.SELECTOR]
-[Azure Portal - Resource Manager](/documentation/articles/expressroute/expressroute-howto-routing-portal-resource-manager/)
-[PowerShell - Resource Manager](/documentation/articles/expressroute/expressroute-howto-routing-arm/)
-[PowerShell - Classic](/documentation/articles/expressroute/expressroute-howto-routing-classic/)
+[Azure Portal - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
+[PowerShell - Resource Manager](expressroute-howto-routing-arm.md)
+[PowerShell - Classic](expressroute-howto-routing-classic.md)
 
 
 
@@ -32,8 +36,8 @@
 
 ## 配置先决条件
 
-- 在开始配置之前，请务必查看[先决条件](/documentation/articles/expressroute/expressroute-prerequisites/)页、[路由要求](/documentation/articles/expressroute/expressroute-routing/)页和[工作流](/documentation/articles/expressroute/expressroute-workflows/)页。
-- 你必须有一个活动的 ExpressRoute 线路。在继续下一步之前，请按说明[创建 ExpressRoute 线路](/documentation/articles/expressroute/expressroute-howto-circuit-arm/)，并通过连接提供商启用该线路。ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
+- 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
+- 你必须有一个活动的 ExpressRoute 线路。在继续下一步之前，请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)，并通过连接提供商启用该线路。ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
 
 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。如果你的服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商将为你设置和管理路由。
 
@@ -226,12 +230,12 @@
 
 ## 后续步骤
 
-下一步，[将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute/expressroute-howto-linkvnet-arm/)。
+下一步，[将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)。
 
--  有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](/documentation/articles/expressroute/expressroute-workflows/)。
+-  有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](expressroute-workflows.md)。
 
--  有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](/documentation/articles/expressroute/expressroute-circuit-peerings/)。
+-  有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 
--  有关使用虚拟网络的详细信息，请参阅[虚拟网络概述](/documentation/articles/virtual-network/virtual-networks-overview/)。
+-  有关使用虚拟网络的详细信息，请参阅[虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 
-<!---HONumber=Mooncake_0905_2016-->
+<!---HONumber=AcomDC_0921_2016-->

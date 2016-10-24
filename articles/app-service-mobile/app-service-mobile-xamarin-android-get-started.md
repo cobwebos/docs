@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
 	ms.date="08/11/2016"
-	wacn.date=""/>
+	ms.author="glenga" />
 
 #创建 Xamarin.Android 应用
 
@@ -18,7 +22,7 @@
 
 ##概述
 
-本教程说明如何向 Xamarin.Android 应用添加基于云的后端服务。有关详细信息，请参阅[什么是移动应用](/documentation/articles/app-service-mobile-value-prop/)。
+本教程说明如何向 Xamarin.Android 应用添加基于云的后端服务。有关详细信息，请参阅[什么是移动应用](app-service-mobile-value-prop.md)。
 
 以下是完成的应用程序的屏幕快照：
 
@@ -30,10 +34,10 @@
 
 若要完成本教程，您需要以下各项：
 
-* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Visual Studio with Xamarin。有关说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx)。
-
+* Visual Studio with Xamarin。有关说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx)。
+ 
 >[AZURE.NOTE] 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到[试用应用服务](https://tryappservice.azure.com/?appServiceName=mobile)，即可在应用服务中立即创建一个生存期较短的入门级移动应用。你不需要使用信用卡，也不需要做出承诺。
 
 ## 创建新的 Azure 移动应用后端
@@ -66,9 +70,9 @@
 
 ##后续步骤
 
-* [向应用添加身份验证](/documentation/articles/app-service-mobile-xamarin-android-get-started-users/) 了解如何使用标识提供者对应用的用户进行身份验证。
-* [向 Xamarin.Android 应用添加推送通知](/documentation/articles/app-service-mobile-xamarin-android-get-started-push/) 了解如何向应用添加推送通知。
-* [如何使用 Azure 移动应用的托管客户端](/documentation/articles/app-service-mobile-dotnet-how-to-use-client-library/) 了解如何在 Xamarin 应用中使用托管客户端 SDK。
+* [向应用添加身份验证](app-service-mobile-xamarin-android-get-started-users.md) 了解如何使用标识提供者对应用的用户进行身份验证。
+* [向 Xamarin.Android 应用添加推送通知](app-service-mobile-xamarin-android-get-started-push.md) 了解如何向应用添加推送通知。
+* [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md) 了解如何在 Xamarin 应用中使用托管客户端 SDK。
 
 
 <!-- Images. -->
@@ -79,7 +83,7 @@
 [10]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-startup-android.png
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.cn/
+[Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

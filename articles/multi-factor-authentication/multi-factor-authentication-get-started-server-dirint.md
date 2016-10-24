@@ -1,16 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication 与 Active Directory 之间的目录集成" 
-	description="这是与 Multi-Factor Authentication 相关的页面，介绍如何将 Multi-Factor Authentication 服务器与 Active Directory 集成以便可以同步目录。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure Multi-Factor Authentication 与 Active Directory 之间的目录集成"
+	description="这是与 Multi-Factor Authentication 相关的页面，介绍如何将 Multi-Factor Authentication 服务器与 Active Directory 集成以便可以同步目录。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.date="08/04/2016" 
-	wacn.date=""/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Azure MFA 服务器与 Active Directory 之间的目录集成
 
@@ -133,4 +137,4 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 
 ![Multi-Factor-Auth 服务器](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=AcomDC_0921_2016-->

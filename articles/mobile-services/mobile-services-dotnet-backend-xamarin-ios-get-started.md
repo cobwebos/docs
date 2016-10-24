@@ -1,5 +1,5 @@
 <properties
-	pageTitle="用于 Xamarin iOS 应用程序的移动服务入门 | Azure"
+	pageTitle="用于 Xamarin iOS 应用的移动服务入门 | Microsoft Azure"
 	description="按照本教程进行操作，开始使用 Azure 移动服务进行 Xamarin iOS 开发"
 	services="mobile-services"
 	documentationCenter="xamarin"
@@ -7,22 +7,25 @@
 	manager="dwrede"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.date="03/16/2016"
-	wacn.date=""/>
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="get-started-article"
+	ms.date="07/21/2016"
+	ms.author="donnam"/>
 
 # <a name="getting-started"></a>移动服务入门
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
-&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-> 有关本主题的对等 Mobile Apps 版本，请参阅[创建 Xamarin.iOS 应用](/documentation/articles/app-service-mobile-xamarin-ios-get-started)。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对等移动应用版本，请参阅[创建 Xamarin.iOS 应用](../app-service-mobile/app-service-mobile-xamarin-ios-get-started.md)。
 
-本教程说明如何使用 Azure 移动服务向 Xamarin iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单_待办事项列表_应用程序。要创建的移动服务将使用支持的 .NET 语言，你可以使用 Visual Studio 来提供服务器端业务逻辑和管理移动服务。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题的 [JavaScript 后端版本]。
+本教程说明如何使用 Azure 移动服务向 Xamarin iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单_待办事项列表_应用程序。要创建的移动服务将使用支持的 .NET 语言，你可以使用 Visual Studio 来提供服务器端业务逻辑和管理移动服务。若要创建允许在 JavaScript 中编写服务器端业务逻辑的移动服务，请参阅本主题的 [JavaScript 后端版本]。
 
->[AZURE.NOTE]本主题演示如何使用 Azure 经典门户创建新的移动服务项目。通过使用 Visual Studio 2013 Update 2，还可以向现有的 Visual Studio 解决方案添加新的移动服务项目。有关详细信息，请参阅[快速入门：添加移动服务（.NET 后端）](http://msdn.microsoft.com/zh-cn/library/windows/apps/dn629482.aspx)
+>[AZURE.NOTE]本主题将介绍如何使用 Azure 经典门户创建新的移动服务项目。通过使用 Visual Studio 2013 Update 2，还可以向现有的 Visual Studio 解决方案添加新的移动服务项目。有关详细信息，请参阅[快速入门：添加移动服务（.NET 后端）](http://msdn.microsoft.com/library/windows/apps/dn629482.aspx)
 
 以下是完成的应用程序的屏幕快照：
 
@@ -31,11 +34,11 @@
 
 只有在完成本教程后，才可以学习有关 Xamarin iOS 应用程序的所有其他移动服务教程。
 
->[AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/">Azure 试用</a>。<br />本教程需要安装 <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a>。可以使用免费试用版。
+>[AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-xamarin-ios-get-started" target="_blank">Azure 免费试用</a>。<br />本教程需要安装 <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a>。可以使用免费试用版。
 
 ## 创建新的移动服务
 
-[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 ## 创建新的 Xamarin iOS 应用程序
 
@@ -43,11 +46,11 @@
 
 在本部分中，你将为移动服务下载新的 Xamarin iOS 应用程序和服务项目。
 
-1. 如果尚未进行此操作，请安装 Visual Studio with Xamarin。有关说明，可查阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx)。你还可以使用 Mac OS X 计算机上的 Xamarin Studio，请参阅 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/zh-cn/library/mt488770.aspx)。
+1. 如果尚未进行此操作，请安装 Visual Studio with Xamarin。可在 [Visual Studio 和 Xamarin 的设置与安装](https://msdn.microsoft.com/library/mt613162.aspx)上找到相关说明。也可以在 Mac OS X 计算机上使用 Xamarin Studio，请参阅 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/library/mt488770.aspx)。
 
-2. 在 [Azure 经典门户]中单击“移动服务”，然后单击你刚刚创建的移动服务。
+2. 在 [Azure 经典门户]中，单击“移动服务”，然后单击刚刚创建的移动服务。
 
-2. 在快速入门选项卡中，单击“选择平台”下的“Xamarin”，然后展开“创建新的 Xamarin 应用程序”。
+3. 在快速入门选项卡中，单击“选择平台”下的“Xamarin”，然后展开“创建新的 Xamarin 应用程序”。
 
    	![][6]
 
@@ -59,15 +62,15 @@
 
   	随即将会下载一个解决方案，其中包含移动服务的项目，以及已连接到移动服务的示例_待办事项列表_应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
-6. 下载发布配置文件，将下载的文件保存到本地计算机，然后记下保存位置。
+5. 下载发布配置文件，将下载的文件保存到本地计算机，然后记下保存位置。
 
 ## 测试移动服务
 
-[AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-test-local-service](../../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 ## 发布移动服务
 
-[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## 运行 Xamarin iOS 应用程序
 
@@ -81,30 +84,28 @@
 
 2. 按“运行”按钮以生成客户端项目，并在 iPhone 模拟器中启动应用程序。
 
-3. 在应用中键入有意义的文本（例如 _完成本教程_），然后单击加号 (**+**) 图标。
+3. 在应用中键入有意义的文本（例如 _Complete the tutorial_），然后单击加号 (**+**) 图标。
 
-	![][10]
+	![][10]  
+
 
 	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在列表中。
 
 >[AZURE.NOTE]你可以在 QSTodoService.cs C# 文件中查看访问你的移动服务以查询和插入数据的代码。
 
-    
+
 ## 后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [脱机数据同步入门]
-  <br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
+* [脱机数据同步入门]<br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
 
-* [身份验证入门]
-  <br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
+* [身份验证入门]<br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
-* [推送通知入门]
-  <br/>了解如何向应用程序发送一条很基本的推送通知。
+* [推送通知入门]<br/>了解如何向应用程序发送一条很基本的推送通知。
 
-* [移动服务 .NET 后端故障排除]
-  <br/>了解如何诊断和修复移动服务 .NET 后端可能会出现的问题。 
-[AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
+* [移动服务 .NET 后端故障排除]<br/>了解如何诊断和修复移动服务 .NET 后端可能会出现的问题。
+
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -122,14 +123,14 @@
 [10]: ./media/mobile-services-dotnet-backend-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[脱机数据同步入门]: /documentation/articles/mobile-services-xamarin-ios-get-started-offline-data
-[身份验证入门]: /documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-users
-[推送通知入门]: /documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-push
+[脱机数据同步入门]: mobile-services-xamarin-ios-get-started-offline-data.md
+[身份验证入门]: mobile-services-dotnet-backend-xamarin-ios-get-started-users.md
+[推送通知入门]: mobile-services-dotnet-backend-xamarin-ios-get-started-push.md
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[JavaScript and HTML]: /documentation/articles/mobile-services-win8-javascript
-[Azure 经典门户]: https://manage.windowsazure.cn/
-[JavaScript 后端版本]: /documentation/articles/mobile-services-ios-get-started
-[移动服务 .NET 后端故障排除]: /documentation/articles/mobile-services-dotnet-backend-how-to-troubleshoot
+[JavaScript and HTML]: mobile-services-win8-javascript/
+[Azure 经典门户]: https://manage.windowsazure.com/
+[JavaScript 后端版本]: mobile-services-ios-get-started.md
+[移动服务 .NET 后端故障排除]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,7 +1,7 @@
 > [AZURE.SELECTOR]
-- [Preview portal](/documentation/articles/virtual-networks-create-vnet-arm-pportal)
-- [PowerShell](/documentation/articles/virtual-networks-create-vnet-arm-ps)
-- [Azure CLI](/documentation/articles/virtual-networks-create-vnet-arm-cli)
-- [ARM template](/documentation/articles/virtual-networks-create-vnet-arm-template-click)
+- [Azure 门户](../articles/virtual-network/virtual-networks-create-vnet-arm-pportal.md)
+- [PowerShell](../articles/virtual-network/virtual-networks-create-vnet-arm-ps.md)
+- [Azure CLI](../articles/virtual-network/virtual-networks-create-vnet-arm-cli.md)
+- [ARM 模板](../articles/virtual-network/virtual-networks-create-vnet-arm-template-click.md)
 
-<!---HONumber=69-->
+<!---HONumber=AcomDC_0921_2016-->

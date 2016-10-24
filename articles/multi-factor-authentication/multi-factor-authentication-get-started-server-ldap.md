@@ -1,18 +1,22 @@
 <properties 
-	pageTitle="LDAP 身份验证和 Azure Multi-Factor Authentication 服务器" 
-	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 LDAP 身份验证和 Azure Multi-Factor Authentication 服务器。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="LDAP 身份验证和 Azure Multi-Factor Authentication 服务器"
+	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 LDAP 身份验证和 Azure Multi-Factor Authentication 服务器。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.date="08/04/2016" 
-	wacn.date=""/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
-# LDAP 身份验证和 Azure Multi-Factor Authentication 服务器 
+# LDAP 身份验证和 Azure Multi-Factor Authentication 服务器
 
 
 默认情况下，Azure Multi-Factor Authentication 服务器配置为从 Active Directory 导入或同步用户。但是，可以将它配置为绑定到不同 LDAP 目录，如 ADAM 目录或特定的 Active Directory 域控制器。配置为通过 LDAP 连接到目录时，Azure Multi-Factor Authentication 服务器可以配置为充当 LDAP 代理来执行身份验证。它还允许将 LDAP 绑定用作 RADIUS 目标，使用 IIS 身份验证时对用户进行预身份验证，或者在 Azure Multi-Factor Authentication 用户门户中进行主要身份验证。
@@ -48,8 +52,7 @@
 18. 在“编辑属性”对话框中，修改你的目录的 LDAP 属性映射。可以通过单击每个字段旁边的“...”按钮来键入或选择属性名称。
 19. 有关属性的详细信息，请单击“帮助”链接。
 20. 单击“确定”按钮。
-21. 单击“公司设置”图标，然后选择“用户名解析”选项卡。
-22. 如果从已加入域的服务器连接到 Active Directory，你应该能够让“使用 Windows 安全标识符 (SID) 匹配用户名”单选按钮处于选中状态。否则，请选中“使用 LDAP 唯一标识符属性匹配用户名”单选按钮。选中此项时，Azure Multi-Factor Authentication 服务器会尝试将每个用户名解析为 LDAP 目录中的唯一标识符。将对“目录集成 -> 属性”选项卡中定义的用户名属性执行 LDAP 搜索。当用户进行身份验证时，会将用户名解析为 LDAP 目录中的唯一标识符，并将使用该唯一标识符来匹配 Azure Multi-Factor Authentication 数据文件中的用户。这允许不区分大小写的比较以及长、短用户名格式。这将完成 Azure Multi-Factor Authentication 服务器配置。服务器现在正在配置的端口上侦听来自配置的客户端的 LDAP 访问请求，并将设置为将这些请求通过代理发送到 LDAP 目录进行身份验证。
+21. 单击“公司设置”图标，然后选择“用户名解析”选项卡。22. 如果从已加入域的服务器连接到 Active Directory，你应该能够让“使用 Windows 安全标识符 (SID) 匹配用户名”单选按钮处于选中状态。否则，请选中“使用 LDAP 唯一标识符属性匹配用户名”单选按钮。选中此项时，Azure Multi-Factor Authentication 服务器会尝试将每个用户名解析为 LDAP 目录中的唯一标识符。将对“目录集成 -> 属性”选项卡中定义的用户名属性执行 LDAP 搜索。当用户进行身份验证时，会将用户名解析为 LDAP 目录中的唯一标识符，并将使用该唯一标识符来匹配 Azure Multi-Factor Authentication 数据文件中的用户。这允许不区分大小写的比较以及长、短用户名格式。这将完成 Azure Multi-Factor Authentication 服务器配置。服务器现在正在配置的端口上侦听来自配置的客户端的 LDAP 访问请求，并将设置为将这些请求通过代理发送到 LDAP 目录进行身份验证。
 
 
 ## LDAP 客户端配置
@@ -60,4 +63,4 @@
 - 将 LDAP 超时配置为 30-60 秒，以便有时间使用 LDAP 目录验证用户的凭据、执行第二重身份验证、接收其响应，然后对 LDAP 访问请求做出响应。
 - 如果使用 LDAPS，进行 LDAP 查询的设备或服务器必须信任 Azure Multi-Factor Authentication 服务器上安装的 SSL 证书。
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

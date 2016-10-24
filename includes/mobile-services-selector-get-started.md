@@ -1,17 +1,17 @@
-> [AZURE.SELECTOR]
-- [(iOS | .NET)](/zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started/)
-- [(iOS | JavaScript)](/zh-cn/documentation/articles/mobile-services-ios-get-started/)
-- [(Windows Runtime 8.1 universal C# | .NET)](/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/)
-- [(Windows Runtime 8.1 universal C# | Javascript)](/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/)
-- [(Windows Runtime 8.1 universal JavaScript | Javascript)](/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started/)
-- [(Android | .NET)](/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started.md)
-- [(Android | Javascript)](/zh-cn/documentation/articles/mobile-services-android-get-started.md)
-- [(Xamarin.iOS | .NET)](/zh-cn/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started.md)
-- [(Xamarin.iOS | Javascript)](/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started.md)
-- [(Xamarin.Android | .NET)](/zh-cn/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started.md)
-- [(Xamarin.Android | Javascript)](/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started.md)
-- [(HTML | Javascript)](/zh-cn/documentation/articles/mobile-services-html-get-started/)
-- [(PhoneGap | Javascript)](/zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/)
-- [(Sencha | Javascript)](/zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/)
+> [AZURE.SELECTOR-LIST (Platform | Backend )]
+- [(iOS | .NET)](../articles/mobile-services-dotnet-backend-ios-get-started.md)
+- [(iOS | JavaScript)](../articles/mobile-services-ios-get-started.md)
+- [（Windows 运行时 8.1 通用 C# | .NET）](../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started.md)
+- [（Windows 运行时 8.1 通用 C# | Javascript）](../articles/mobile-services-javascript-backend-windows-store-dotnet-get-started.md)
+- [（Windows 运行时 8.1 通用 Javascript | Javascript）](../articles/mobile-services-javascript-backend-windows-store-javascript-get-started.md)
+- [(Android | .NET)](../articles/mobile-services-dotnet-backend-android-get-started.md)
+- [(Android | Javascript)](../articles/mobile-services-android-get-started.md)
+- [(Xamarin.iOS | .NET)](../articles/mobile-services-dotnet-backend-xamarin-ios-get-started.md)
+- [(Xamarin.iOS | Javascript)](../articles/partner-xamarin-mobile-services-ios-get-started.md)
+- [(Xamarin.Android | .NET)](../articles/mobile-services-dotnet-backend-xamarin-android-get-started.md)
+- [(Xamarin.Android | Javascript)](../articles/partner-xamarin-mobile-services-android-get-started.md)
+- [(HTML | Javascript)](../articles/mobile-services-html-get-started.md)
+- [(PhoneGap | Javascript)](../articles/mobile-services-javascript-backend-phonegap-get-started.md)
+- [(Sencha | Javascript)](../articles/partner-sencha-mobile-services-get-started.md)
 
-<!---HONumber=82-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -9,14 +9,20 @@
 
 <tags
    ms.service="sql-data-warehouse"
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
    ms.date="06/16/2016"
-    wacn.date=""/>
+   ms.author="lodipalm;barbkess;sonyama" />
 
 # 使用 Power BI 可视化数据
 
 > [AZURE.SELECTOR]
-- [Visual Studio](/documentation/articles/sql-data-warehouse-query-visual-studio)
-- [sqlcmd](/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd) 
+- [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+- [Azure 机器学习](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+- [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
 本教程说明如何使用 Power BI 连接到 SQL 数据仓库，并创建一些基本的视觉效果。
 
@@ -26,7 +32,7 @@
 
 若要逐步完成本教程，你需要：
 
-- 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。若要完成此设置，请参阅[创建 SQL 数据仓库][]，并选择加载示例数据。如果你已有数据仓库但没有示例数据，可以[手动加载示例数据][]。
+- 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。若要完成此预配，请参阅[创建 SQL 数据仓库][]，并选择加载示例数据。如果已有数据仓库但没有示例数据，可以[手动加载示例数据][]。
 
 
 ## 1\.连接到您的数据库
@@ -87,32 +93,32 @@
 你随时可以单击“文件”，并选择“保存”来保存进度。
 
 ## 后续步骤
-既然我们提供了一些时间让你尝试处理示例数据，接下来请了解如何[开发][]、[加载][]或[迁移][]数据。
+既然我们提供了一些时间让你尝试处理示例数据，接下来请了解如何[开发][]、[加载][]或[迁移][]数据。或查看 [Power BI 网站][]。
 
 <!--Image references-->
-[1]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
-[2]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png
-[3]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png
-[4]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png
-[5]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png
-[6]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png
-[7]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png
-[8]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png
-[9]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png
-[10]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png
-[11]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png
-[12]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
+[1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
+[2]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png
+[3]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png
+[4]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png
+[5]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png
+[6]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png
+[7]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png
+[8]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png
+[9]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png
+[10]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png
+[11]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png
+[12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[迁移]: /documentation/articles/sql-data-warehouse-overview-migrate.md
-[开发]: /documentation/articles/sql-data-warehouse-overview-develop.md
-[加载]: /documentation/articles/sql-data-warehouse-overview-load.md
-[手动加载示例数据]: /documentation/articles/sql-data-warehouse-load-sample-databases.md
-[connecting to SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-integrate-power-bi.md
-[创建 SQL 数据仓库]: /documentation/articles/sql-data-warehouse-get-started-provision.md
+[迁移]: sql-data-warehouse-overview-migrate.md
+[开发]: sql-data-warehouse-overview-develop.md
+[加载]: sql-data-warehouse-overview-load.md
+[手动加载示例数据]: sql-data-warehouse-load-sample-databases.md
+[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
-[Azure 门户]: https://manage.windowsazure.cn/
-[Power BI website]: http://www.powerbi.com/
+[Azure 门户]: https://portal.azure.com/
+[Power BI 网站]: http://www.powerbi.com/
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=AcomDC_0921_2016-->

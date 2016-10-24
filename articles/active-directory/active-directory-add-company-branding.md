@@ -4,23 +4,28 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="07/13/2016"
-	wacn.date=""/>
+	ms.author="MarkVi"/>
 
 # 在登录页和访问面板页中添加公司品牌
 
+
 许多公司想要在他们管理的所有网站和服务上应用一致的外观，以免用户感到困惑。Azure Active Directory 提供了此功能，它允许你使用自己的公司徽标和自定义颜色方案来自定义以下网页的外观：
 
-- **登录页** - 当你登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时，将显示此页。在执行主领域发现期间或输入凭据时，你将与此页交互。主领域发现可让系统将联合用户重定向到其本地 STS（例如 AD FS）。
+- **登录页** - 登录到 Office 365 或其他使用 Azure AD 作为标识提供者的基于 Web 的应用程序时，将显示此页。在执行主领域发现期间或输入凭据时，你将与此页交互。主领域发现可让系统将联合用户重定向到其本地 STS（例如 AD FS）。
 
 - **访问面板页** - 访问面板是一个基于 Web 的门户，可让你查看和启动 Azure AD 管理员授权你访问的基于云的应用程序。若要访问“访问面板”，请使用以下 URL：[https://myapps.microsoft.com](https://myapps.microsoft.com)。
 
-本主题说明如何自定义登录页和访问面板页。
+本主题介绍如何自定义登录页和访问面板页。
 
 > [AZURE.NOTE]
 >
@@ -42,7 +47,6 @@
 > [AZURE.NOTE]
 >
 - 在已配置品牌的 Azure 经典门户的“Active Directory”>“目录”>“域”部分中，你的域名必须显示为“活动”。
-
 - 登录页品牌不会带到 Microsoft 的使用者登录页。如果你使用个人 Microsoft 帐户登录，则可以看到 Azure AD 呈现的经过品牌打造的用户磁贴列表，但你组织的品牌将不会应用于 Microsoft 帐户登录页。
 
 
@@ -125,7 +129,7 @@
 
 **若要将公司品牌添加到目录，请执行以下步骤：**
 
-1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
+1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 选择要自定义的目录。
 3. 在顶部菜单栏中，单击“配置”。
 4. 单击“自定义品牌”。
@@ -136,7 +140,7 @@
 
 **若要添加语言特定的公司品牌，请执行以下步骤：**
 
-1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
+1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 选择要自定义的目录。
 3. 在顶部菜单栏中，单击“配置”。
 4. 单击“自定义品牌”。
@@ -147,7 +151,7 @@
 
 **若要从目录中删除公司品牌，请执行以下步骤：**
 
-1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
+1. 以你想要自定义的目录的管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 选择要自定义的目录。
 3. 在顶部菜单栏中，单击“配置”。
 4. 单击“自定义品牌”。
@@ -160,13 +164,12 @@
 
     c.删除所有文本框中的文本。
 
-    d.单击**“下一步”**。
+    d.单击“下一步”。
 
     e.删除所有文本框中的文本。
 
 4. 单击“保存”按钮以删除这些元素。
-5. 如有必要，请再次单击“自定义品牌”，然后对需要删除的所有特定于语言的品牌重复这些步骤。
-当你单击“自定义品牌”并看到未配置任何现有设置的“自定义默认品牌”表单时，所有品牌设置均已删除。
+5. 如有必要，请再次单击“自定义品牌”，然后对需要删除的所有特定于语言的品牌重复这些步骤。当你单击“自定义品牌”并看到未配置任何现有设置的“自定义默认品牌”表单时，所有品牌设置均已删除。
 
 ## 测试和示例
 
@@ -203,8 +206,8 @@ Name | 说明 | 约束 | 建议
 
 ## 后续步骤
 
-- [Azure Active Directory 高级版入门](/documentation/articles/active-directory-get-started-premium/)
-- [查看访问和使用情况报告](/documentation/articles/active-directory-view-access-usage-reports/)
+- [Azure Active Directory 高级版入门](active-directory-get-started-premium.md)
+- [查看访问和使用情况报告](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-add-company-branding/SignInPage_beforecustomization.png
@@ -216,4 +219,4 @@ Name | 说明 | 约束 | 建议
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=AcomDC_0921_2016-->

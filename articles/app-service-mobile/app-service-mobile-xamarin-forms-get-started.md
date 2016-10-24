@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
 	ms.date="08/11/2016"
-	wacn.date=""/>
+	ms.author="glenga"/>
 
 #创建 Xamarin.Forms 应用
 
@@ -26,11 +30,11 @@
 
 若要完成本教程，您需要以下各项：
 
-* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Visual Studio with Xamarin。有关说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx)。
+* Visual Studio with Xamarin。有关说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx)。
 
-* 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx) 和 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/zh-cn/library/mt488770.aspx) (MSDN)。
+* 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 和 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN)。
  
 >[AZURE.NOTE] 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到[试用应用服务](https://tryappservice.azure.com/?appServiceName=mobile)，即可在应用服务中立即创建一个生存期较短的入门级移动应用。你不需要使用信用卡，也不需要做出承诺。
 
@@ -51,7 +55,7 @@
 
 ##下载并运行 Xamarin.Forms 解决方案
 
-在此有两个选项。可以将解决方案下载到 Mac 并在 Xamarin Studio 中打开它，也可以将解决方案下载到 Windows 计算机并使用联网的 Mac 在 Visual Studio 中打开它以生成 iOS 应用。如果需要有关 Xamarin 设置方案的更详细说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx)。
+在此有两个选项。可以将解决方案下载到 Mac 并在 Xamarin Studio 中打开它，也可以将解决方案下载到 Windows 计算机并使用联网的 Mac 在 Visual Studio 中打开它以生成 iOS 应用。如果需要有关 Xamarin 设置方案的更详细说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx)。
 
 让我们继续：
 
@@ -147,17 +151,13 @@
 
 ##后续步骤
 
-* [向应用添加身份验证](/documentation/articles/app-service-mobile-xamarin-forms-get-started-users/) 
-了解如何使用标识提供者对应用的用户进行身份验证。
+* [向应用添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md) 了解如何使用标识提供者对应用的用户进行身份验证。
 
-* [向应用添加推送通知](/documentation/articles/app-service-mobile-xamarin-forms-get-started-push/) 
-了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+* [向应用添加推送通知](app-service-mobile-xamarin-forms-get-started-push.md) 了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 
-* [为应用启用脱机同步](/documentation/articles/app-service-mobile-xamarin-forms-get-started-offline-data/)
-  了解如何使用移动应用后端向应用添加脱机支持。脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+* [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md) 了解如何使用移动应用后端向应用添加脱机支持。脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
 
-* [如何使用 Azure 移动应用的托管客户端](/documentation/articles/app-service-mobile-dotnet-how-to-use-client-library/)
-了解如何在 Xamarin 应用中使用托管客户端 SDK。
+* [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md) 了解如何在 Xamarin 应用中使用托管客户端 SDK。
 
 
 <!-- Anchors. -->
@@ -176,8 +176,8 @@
 
 
 <!-- URLs. -->
-[Visual Studio Professional 2013]: https://www.visualstudio.com/downloads/download-visual-studio-vs
+[Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure 门户]: https://portal.azure.cn/
+[Azure 门户]: https://portal.azure.com/
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

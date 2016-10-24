@@ -1,16 +1,20 @@
 <properties
-	pageTitle="向 Azure Active Directory 添加新用户 | Azure"
+	pageTitle="向 Azure Active Directory 添加新用户 | Microsoft Azure"
 	description="说明如何在 Azure Active Directory 中添加新用户或更改用户信息。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="06/21/2016"
-	wacn.date=""/>
+	ms.author="curtand;viviali"/>
 
 # 向 Azure Active Directory 添加新用户或具有 Microsoft 帐户的用户
 
@@ -27,7 +31,7 @@
 	- **具有现有 Microsoft 帐户的用户** — 将现有 Microsoft 使用者帐户添加到你的目录（例如 Outlook 帐户）
 
 5. 根据“用户类型”输入用户名（适用于新用户）或电子邮件地址（适用于具有 Microsoft 帐户的用户）。
-6. 在用户的“配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户角色。有关用户和管理员角色的详细信息，请参阅 [Assigning administrator roles in Azure AD](active-directory-assign-admin-roles.md)（在 Azure AD 中分配管理员角色）。指定是否要为用户**启用 Multi-Factor Authentication**。
+6. 在用户的“配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户角色。有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)。指定是否要为用户**启用 Multi-Factor Authentication**。
 7. 在“获取临时密码”页上，选择“创建”。
 
 > [AZURE.IMPORTANT] 如果你所在的组织使用多个域，在添加用户帐户时你应知道以下问题：
@@ -51,7 +55,7 @@
 
 来宾在目录中的权利有限。这些权利限制了客户发现有关目录中其他用户的信息。但是，来宾用户仍可与其使用的资源相关联的用户和组交互。来宾用户可以：
 
-- 查看与他们被分配到的 Azure 订阅相关联的用户和组
+- 查看与分配给他们的 Azure 订阅关联的其他用户和组
 - 查看他们所属的组的成员
 - 如果他们已经知道用户的完整电子邮件地址，则可以查找目录中的其他用户
 - 仅能查看他们查找的用户的有限属性集 - 仅限于显示名称、电子邮件地址、用户主体名称 (UPN) 和照片缩略图
@@ -73,13 +77,13 @@
 
 ## 后续步骤
 
-- [在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户](/documentation/articles/active-directory-create-users-external/)
-- [管理 Azure AD](/documentation/articles/active-directory-administer/)
-- [在 Azure AD 中管理密码](/documentation/articles/active-directory-manage-passwords/)
-- [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups/)
+- [在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户](active-directory-create-users-external.md)
+- [管理 Azure AD](active-directory-administer.md)
+- [在 Azure AD 中管理密码](active-directory-manage-passwords.md)
+- [在 Azure AD 中管理组](active-directory-manage-groups.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=AcomDC_0921_2016-->

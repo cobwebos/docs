@@ -1,6 +1,7 @@
 <properties
-	pageTitle="在 Azure Active Directory 中管理组 | Azure"
-	description="如何使用 Azure Active Directory 创建和管理组以管理 Azure 用户。"
+
+	pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
+	description="How to create and manage groups to manage Azure users using Azure Active Directory."
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -8,9 +9,13 @@
 	editor=""/>
 
 <tags
-	ms.service="active-directory" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="08/10/2016"
-	wacn.date=""/>
+	ms.author="curtand"/>
 
 
 # 在 Azure Active Directory 中管理组
@@ -29,9 +34,9 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 - Office 365 帐户门户
 - Windows Intune 帐户门户
 
-我们将介绍在 Azure 经典门户中执行的任务。有关使用非 Azure 门户管理 Azure AD 目录的详细信息，请参阅[管理 Azure AD 目录](/documentation/articles/active-directory-administer/)。
+我们将介绍在 Azure 经典门户中执行的任务。有关使用非 Azure 门户管理 Azure AD 目录的详细信息，请参阅[管理 Azure AD 目录](active-directory-administer.md)。
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.cn)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
 
 2. 选择“组”选项卡。
 
@@ -44,7 +49,7 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 
 **将单个用户添加到组**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.cn)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
 
 2. 选择“组”选项卡。
 
@@ -57,7 +62,7 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 
 **从组中删除单个用户**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.cn)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
 
 2. 选择“组”选项卡。
 
@@ -81,7 +86,7 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 
 **启用组的动态成员身份**
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.cn)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后选择你所在组织的目录的名称。
 
 2. 选择“组”选项卡，然后打开要编辑的组。
 
@@ -93,18 +98,20 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 
 6. 指定所选用户属性的比较值。
 
-若要了解如何为动态组成员身份创建*高级*规则（可包含多个比较条件的规则），请参阅[使用属性创建高级规则](/documentation/articles/active-directory-accessmanagement-groups-with-advanced-rules/)。
+若要了解如何为动态组成员身份创建*高级*规则（可包含多个比较条件的规则），请参阅[使用属性创建高级规则](active-directory-accessmanagement-groups-with-advanced-rules.md)。
 
 ## 其他信息
 
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
-* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups/)
+* [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 
-* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
+* [用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-* [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis/)
+* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
+* [什么是 Azure Active Directory？](active-directory-whatis.md)
 
-<!---HONumber=Mooncake_0822_2016-->
+* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+
+<!---HONumber=AcomDC_0921_2016-->

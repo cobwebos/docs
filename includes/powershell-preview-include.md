@@ -4,4 +4,4 @@
 >
 > 新功能只会添加到 1.0 版本。有关 1.0 版的信息，包括如何安装和卸载该版本，请参阅 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=AcomDC_0921_2016-->

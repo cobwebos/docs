@@ -2,11 +2,11 @@
 
 若要使用 PowerShell 部署下载的 ARM 模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)，并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 
-3. 如有必要，请运行 **New-AzureRMResourceGroup** cmdlet 来创建新资源组。以下命令在*中国北部* Azure 区域创建一个名为 *TestRG* 的资源组。有关资源组的详细信息，请访问 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。
+3. 如有必要，运行 **`New-AzureRmResourceGroup`** cmdlet 创建一个新的资源组。以下命令在*“美国中部”*Azure 区域创建了一个名为 *TestRG* 的资源组。有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/resource-group-overview.md)。
 
-		New-AzureRMResourceGroup -Name TestRG -Location centralus
+		New-AzureRmResourceGroup -Name TestRG -Location centralus
 		
 	下面是上述命令的预期输出：
 
@@ -20,9 +20,9 @@
 		                    *
 		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 
-4. 运行 **New-AzureRMResourceGroupDeployment** cmdlet 以使用你在前面下载并修改的模板和参数文件部署新 VNet。
+4. 运行 **`New-AzureRmResourceGroupDeployment`** cmdlet，使用你在前面下载并修改的模板和参数文件部署新 VNet。
 
-		New-AzureRMResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
+		New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
 			-TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
 			
 	下面是上述命令的预期输出：
@@ -36,7 +36,7 @@
 		Parameters        :
 		                    Name             Type                       Value
 		                    ===============  =========================  ==========
-		                    location         String                     China North
+		                    location         String                     Central US
 		                    vnetName         String                     TestVNet
 		                    addressPrefix    String                     192.168.0.0/16
 		                    subnet1Prefix    String                     192.168.1.0/24
@@ -46,10 +46,10 @@
 		
 		Outputs           :
 
-5. 运行 **Get-AzureRMVirtualNetwork** cmdlet 以查看新 VNet 的属性，如下所示。
+5. 运行 **`Get-AzureRmVirtualNetwork`** cmdlet，查看新 vnet 的属性（如下所示）。
 
 
-		Get-AzureRMVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
+		Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 		
 	下面是上述命令的预期输出：
 		
@@ -92,4 +92,4 @@
 		                      }
 		                    ]
 
-<!---HONumber=79-->
+<!---HONumber=AcomDC_0921_2016-->

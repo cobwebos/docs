@@ -1,18 +1,22 @@
 <properties
-	pageTitle="了解如何使用 Visual Studio Hadoop Tools for HDInsight | Azure"
+	pageTitle="了解如何使用 Visual Studio Hadoop Tools for HDInsight | Microsoft Azure"
 	description="了解如何安装和使用 Visual Studio Hadoop tools for HDInsight 连接到 Hadoop 群集及运行 Hive 查询。"
 	keywords="hadoop 工具,hive 查询,visual studio"
 	services="HDInsight"
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="hdinsight"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
 	ms.date="08/10/2016"
-	wacn.date=""/>
+	ms.author="jgao"/>
 
 # 开始使用 HDInsight 的 Visual Studio Hadoop 工具来运行 Hive 查询
 
@@ -22,9 +26,10 @@
 
 若要完成本教程并使用 Visual Studio 中的 Hadoop 工具，你需要做好以下准备：
 
-- Azure HDInsight 群集：基于 Windows 的群集可用于本文档中的步骤。有关创建群集的详细信息，请参阅下列主题之一：
+- Azure HDInsight 群集：基于 Linux 或 Windows 的群集可用于本文档中的步骤。有关创建群集的详细信息，请参阅下列主题之一：
 
-	- [开始使用基于 Windows 的 HDInsight](/documentation/articles/hdinsight-hadoop-tutorial-get-started-windows-v1/)
+	- [开始使用基于 Linux 的 HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
+	- [开始使用基于 Windows 的 HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md)
 
 - 安装有以下软件的工作站：
 
@@ -36,19 +41,21 @@
 	>[AZURE.NOTE] 目前，适用于 Visual Studio 的 HDInsight 工具仅有英文版本。
 
 
-## <a name="installation" id="install-hdinsight-tools-for-visual-studio"></a>安装用于 Visual Studio 的 HDInsight 工具
+## 安装用于 Visual Studio 的 HDInsight 工具
 
-用于 .NET 的 Azure SDK 版本 2.5.1 或 2.6 中已随附用于 Visual Studio 的 HDInsight 工具和 Microsoft Hive ODBC 驱动程序。目前，Azure 全球已将 HDInsight 更新为 ARM 模型，而 Azure 中国区仍在使用经典部署模型。因此，如果要在 Azure 中国区管理 HDInsight 群集，必须使用用于 .NET 的 Azure SDK 版本 2.5.1 或 2.6。下面是相关的下载链接。
+适用于 Visual Studio 的 HDInsight 工具和 Microsoft Hive ODBC Driver 是随同 用于 .NET 2.5.1 的 Microsoft Azure SDK 或更高版本一起打包的。你可以使用 [Web 平台安装程序](http://go.microsoft.com/fwlink/?LinkId=255386)安装它。你必须选择与你的 Visual Studio 版本匹配的版本。如果你尚未安装 Visual Studio，则可使用 [Web 平台安装程序](http://go.microsoft.com/fwlink/?LinkId=255386)或以下链接安装最新 Visual Studio Community 和 Azure SDK：
 
-- [Visual Studio Community 2015 with Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids)
-- [Visual Studio Community 2013 with Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids)
-- [用于 .NET 的 Azure SDK 2.5.1](https://www.microsoft.com/zh-cn/download/details.aspx?id=44938)
-- [用于 .NET 的 Azure SDK 2.6](https://www.microsoft.com/zh-cn/download/details.aspx?id=46892)
+- [Visual Studio Community 2015 with Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids)
+- [Visual Studio Community 2013 with Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids)
+- [Microsoft Azure SDK for .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids)
+- [Microsoft Azure SDK for .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids)
+
+![Hadoop 工具：HDInsight Tools for Visual Studio Web 平台安装程序。][1]
 
 ## 连接到 Azure 订阅
 适用于 Visual Studio 的 HDInsight 工具允许你连接到 HDInsight 群集，执行一些基本的管理操作，并运行 Hive 查询。
 
->[AZURE.NOTE] 有关连接到常规 Hadoop 群集的信息，请参阅 [Write and submit Hive queries using Visual Studio（使用 Visual Studio 编写和提交 Hive 查询）](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)。
+>[AZURE.NOTE] 有关连接到常规 Hadoop 群集的信息，请参阅 [Write and submit Hive queries using Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)（使用 Visual Studio 编写和提交 Hive 查询）。
 
 
 **连接到 Azure 订阅**
@@ -180,9 +187,7 @@
 
 >[AZURE.NOTE] 此功能仅适用于 HDInsight 群集 3.2 和更高版本。
 
-HDInsight 工具用于通过 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)（也称为 Templeton）提交 Hive 作业。返回作业详细信息和错误信息所需的时间很长。
-为了解决此性能问题，HDInsight 工具通过 HiveServer2 直接在群集中运行 Hive 作业，以便绕过 RDP/SSH。
-除了提升性能，用户还可以在 Tez 图形上查看 Hive 和任务详细信息。
+HDInsight 工具用于通过 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)（也称为 Templeton）提交 Hive 作业。返回作业详细信息和错误信息所需的时间很长。为了解决此性能问题，HDInsight 工具通过 HiveServer2 直接在群集中运行 Hive 作业，以便绕过 RDP/SSH。除了提升性能，用户还可以在 Tez 图形上查看 Hive 和任务详细信息。
 
 使用 HDInsight 群集 3.2 或更高版本时，可以看到“通过 HiveServer2 执行”按钮：
 
@@ -200,7 +205,7 @@ HDInsight 工具用于通过 [WebHCat](https://cwiki.apache.org/confluence/displ
 |---|---|---|
 |执行查询|消除了 WebHCat 的开销（WebHCat 启动名为“TempletonControllerJob”的 MapReduce 作业）。|只要通过 WebHCat 执行查询，WebHCat 就会启动一个 MapReduce 作业，从而造成额外的开销。|
 |向后流式传输日志|接近实时进行。|仅当作业完成时才提供作业执行日志。|
-|查看作业历史记录|如果查询是通过 HiveServer2 执行的，系统将不保留查询的作业历史记录（作业日志、作业输出）。可以在 YARN UI 中查看应用程序的有限信息。|如果查询是通过 WebHCat 执行的，系统将保留查询的作业历史记录（作业日志、作业输出），可以使用 Visual Studio/HDInsight SDK/PowerShell 查看这些记录。 |
+|查看作业历史记录|如果通过 HiveServer2 执行了查询，系统将不保留查询的作业历史记录（作业日志、作业输出）。可以在 YARN UI 中查看应用程序的有限信息。|如果通过 WebHCat 执行了查询，系统将保留查询的作业历史记录（作业日志、作业输出），可以使用 Visual Studio/HDInsight SDK/PowerShell 查看这些记录。 |
 |关闭窗口| 	通过 HiveServer2 执行是一种“同步”方式，因此必须保持窗口打开状态；如果窗口关闭，将会取消执行查询。|通过 WebHCat 提交是一种“异步”方式，因此你可以通过 WebHCat 提交查询，然后关闭 Visual Studio。你随时可以回来查看结果。|
 
 
@@ -208,7 +213,7 @@ HDInsight 工具用于通过 [WebHCat](https://cwiki.apache.org/confluence/displ
 
 HDInsight Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业的性能图。有关启用 Tez 的信息，请参阅[使用 HDInsight 中的 Hive][hdinsight.hive]。提交 Visual Studio 中的 Hive 作业后，Visual Studio 将在作业完成时显示图形。你可能需要单击“刷新”按钮来获取最新的作业状态。
 
-> [AZURE.NOTE] 此功能仅适用于高于 3.2.4.593 版的 HDInsight 群集，并且只能用于已完成的作业（如果你通过 WebHCat 提交作业，将在通过 HiveServer2 执行查询时显示此图形）。它适用于基于 Windows 的群集。
+> [AZURE.NOTE] 此功能仅适用于高于 3.2.4.593 版的 HDInsight 群集，并且只能用于已完成的作业（如果你通过 WebHCat 提交作业，将在通过 HiveServer2 执行查询时显示此图形）。它适用于基于 Windows 和 Linux 的群集。
 
 ![hadoop hive tez 性能图](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
 
@@ -230,7 +235,7 @@ HDInsight Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 
 - 如果结果以 NULL 值开头，则目前不会显示结果。我们已解决此问题，如果你受此问题的困扰，欢迎给我们发送电子邮件，或与支持团队联系。
 
-- Visual Studio 创建的 HQL 脚本将会根据用户的本地区域设置进行编码。如果用户以二进制文件形式将脚本上载到群集，脚本可能无法正常执行。
+- Visual Studio 创建的 HQL 脚本将根据用户的本地区域设置进行编码。如果用户以二进制文件形式将脚本上载到群集，脚本可能无法正常执行。
 
 如果你有任何建议或反馈，或使用此工具时遇到任何问题，欢迎向 hdivstool@microsoft.com 发送电子邮件。
 
@@ -240,6 +245,7 @@ HDInsight Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 - [在 HDInsight 中使用 Hadoop Hive][hdinsight.hive]
 - [开始在 HDInsight 中使用 Hadoop][hdinsight.get.started]
 - [在 HDInsight 中提交 Hadoop 作业][hdinsight.submit.jobs]
+- [使用 HDInsight 中的 Hadoop 分析 Twitter 数据][hdinsight.analyze.twitter.data]
 
 
 <!--Anchors-->
@@ -265,15 +271,15 @@ HDInsight Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 
 
 <!--Link references-->
-[hdinsight.submit.jobs]: /documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
-[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters-v1/
-[hdinsight.introduction]: /documentation/articles/hdinsight-hadoop-introduction/
-[hdinsight.get.started]: /documentation/articles/hdinsight-hadoop-tutorial-get-started-windows-v1/
-[hdinsight.hive]: /documentation/articles/hdinsight-use-hive/
-[hdinsight.submit.jobs]: /documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
-[hdinsight.storm.visual.studio.tools]: /documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology/
-[hdinsight.access.application.logs]: /documentation/articles/hdinsight-hadoop-access-yarn-app-logs/
+[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight.introduction]: hdinsight-hadoop-introduction.md
+[hdinsight.get.started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight.hive]: hdinsight-use-hive.md
+[hdinsight.submit.jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
+[hdinsight.analyze.twitter.data]: hdinsight-analyze-twitter-data.md
+[hdinsight.storm.visual.studio.tools]: hdinsight-storm-develop-csharp-visual-studio-topology.md
+[hdinsight.access.application.logs]: hdinsight-hadoop-access-yarn-app-logs.md
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -76,7 +76,7 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 
     ![添加变量](./media/resource-manager-vs-code/add-variables.png)
 
-5. Intellisense 还可以建议可用的值或函数。若要将某个属性设置为参数值，请创建包含 **""** 和 **Ctrl+Space** 的表达式。可以开始键入函数的名称。找到所需的函数后，请选择 **Tab**。
+5. IntelliSense 还可以建议可用值或函数。若要将某个属性设置为参数值，请创建包含 **""** 和 **Ctrl+Space** 的表达式。可以开始键入函数的名称。找到所需的函数后，请选择 **Tab**。
 
     ![添加参数](./media/resource-manager-vs-code/select-parameters.png)
 
@@ -103,11 +103,11 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 
         Login-AzureRmAccount 
 
-3. 如果你有多个订阅，请使用以下命令获取订阅列表：
+3. 如果具有多个订阅，获得内含以下内容的订阅列表：
 
         Get-AzureRmSubscription
 
-    选择要使用的订阅。
+    然后选择要使用的订阅。
    
         Select-AzureRmSubscription -SubscriptionId <Subscription Id>
 
@@ -121,7 +121,7 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 
         azure login 
 
-3. 如果你有多个订阅，请使用以下命令选择适当的订阅：
+3. 如果具有多个订阅，选择内含以下内容的合适订阅：
 
         azure account set <subscriptionNameOrId> 
 
@@ -134,5 +134,6 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 
 - 若要详细了解模板，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 - 若要了解模板函数，请参阅 [Azure Resource Manager template functions](resource-group-template-functions.md)（Azure Resource Manager 模板函数）。
+- 有关使用 Visual Studio Code 的更多示例，请参阅 [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [演示](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)中的[使用 Visual Studio Code 生成云应用](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code)。有关 HealthClinic.biz 演示的多个快速入门，请参阅 [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)（Azure 开发人员工具快速入门）。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=AcomDC_0921_2016-->

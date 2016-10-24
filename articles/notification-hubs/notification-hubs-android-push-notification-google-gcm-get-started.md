@@ -1,17 +1,20 @@
 <properties
-	pageTitle="通过 Azure 通知中心向 Android 发送推送通知 | Azure"
+	pageTitle="通过 Azure 通知中心向 Android 发送推送通知 | Microsoft Azure"
 	description="在本教程中，你将了解如何使用 Azure 通知中心将通知推送到 Android 设备。"
 	services="notification-hubs"
 	documentationCenter="android"
 	keywords="推送通知、推送通知、android 推送通知"
 	authors="wesmc7777"
 	manager="erikre"
-	editor=""/>  
-
+	editor=""/>
 <tags
 	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="hero-article"
 	ms.date="07/05/2016"
-	wacn.date=""/>
+	ms.author="wesmc"/>
 
 # 通过 Azure 通知中心向 Android 发送推送通知
 
@@ -19,10 +22,9 @@
 
 ##概述
 
-> [AZURE.IMPORTANT] 本主题演示了使用 Google Cloud Messaging (GCM) 的推送通知。如果使用的是 Google 的 Firebase Cloud Messaging (FCM)，请参阅[使用 Azure 通知中心和 FCM 将推送通知发送到 Android](/documentation/articles/notification-hubs-android-push-notification-google-fcm-get-started/)。
+> [AZURE.IMPORTANT] 本主题演示了使用 Google Cloud Messaging (GCM) 的推送通知。如果使用的是 Google 的 Firebase Cloud Messaging (FCM)，请参阅[使用 Azure 通知中心和 FCM 将推送通知发送到 Android](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 
-本教程演示如何使用 Azure 通知中心将推送通知发送到 Android 应用程序。
-你将创建一个空白 Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Android 应用程序。你将创建一个空白 Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。
 
 [AZURE.INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
@@ -31,7 +33,7 @@
 
 ##先决条件
 
-> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/1rmb-trial-full/?form-type=identityauth)。
+> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)。
 
 除了上面提到的有效 Azure 帐户外，本教程只需要最新版本的 [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
 
@@ -102,7 +104,7 @@
 		</service>
 
 
-2. 从实例 ID API 收到 GCM 注册令牌后，我们将使用它[在 Azure 通知中心注册](/documentation/articles/notification-hubs-push-notification-registration-management/)。我们将使用名为 `RegistrationIntentService` 的 `IntentService` 在后台支持此注册。此服务还负责[刷新 GCM 注册令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
+2. 从实例 ID API 收到 GCM 注册令牌后，我们将使用它[在 Azure 通知中心注册](notification-hubs-push-notification-registration-management.md)。我们将使用名为 `RegistrationIntentService` 的 `IntentService` 在后台支持此注册。此服务还负责[刷新 GCM 注册令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
  
 	将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。将 `<your package>` 占位符替换为 `AndroidManifest.xml` 文件顶部显示的实际包名称。
 
@@ -182,7 +184,7 @@
 		};
 
 
-3. 将另一个名为 `RegistrationIntentService` 的新类添加到项目。这是我们的 `IntentService` 实现，用于处理[刷新 GCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[在通知中心注册](/documentation/articles/notification-hubs-push-notification-registration-management/)。
+3. 将另一个名为 `RegistrationIntentService` 的新类添加到项目。这是我们的 `IntentService` 实现，用于处理[刷新 GCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[在通知中心注册](notification-hubs-push-notification-registration-management.md)。
 
 	针对此类使用以下代码。
 
@@ -229,7 +231,7 @@
 		                regID = hub.register(token).getRegistrationId();
 
 		                // If you want to use tags...
-						// Refer to : https://azure.microsoft.com/zh-cn/documentation/articles/notification-hubs-routing-tag-expressions/
+						// Refer to : https://azure.microsoft.com/zh-CN/documentation/articles/notification-hubs-routing-tag-expressions/
 		                // regID = hub.register(token, "tag1", "tag2").getRegistrationId();
 
 		                resultString = "Registered Successfully - RegId : " + regID;
@@ -619,7 +621,7 @@
 	
 	                        // Include any tags
 	                        // Example below targets 3 specific tags
-	                        // Refer to : https://azure.microsoft.com/zh-cn/documentation/articles/notification-hubs-routing-tag-expressions/
+	                        // Refer to : https://azure.microsoft.com/zh-CN/documentation/articles/notification-hubs-routing-tag-expressions/
 	                        // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
 							//		"tag1 || tag2 || tag3");
 	
@@ -716,14 +718,13 @@
 
 
 <!-- URLs. -->
-
-[Get started with push notifications in Mobile Services]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push/
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure Classic Portal]: https://manage.windowsazure.cn/
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[使用通知中心向用户推送通知]: /documentation/articles/notification-hubs-aspnet-backend-android-notify-users/
-[Use Notification Hubs to send breaking news]: /documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/
-[Azure 门户]: https://portal.azure.cn
+[使用通知中心向用户推送通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+[Azure 门户]: https://portal.azure.com
 
-<!---HONumber=Mooncake_0905_2016-->
+<!---HONumber=AcomDC_0921_2016-->

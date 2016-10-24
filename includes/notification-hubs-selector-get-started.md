@@ -1,11 +1,12 @@
 > [AZURE.SELECTOR]
-- [Windows Phone Silverlight 8.x](/documentation/articles/notification-hubs/notification-hubs-windows-phone-get-started)
-- [iOS](/documentation/articles/notification-hubs-ios-get-started)
-- [Android](/documentation/articles/notification-hubs-android-get-started)
-- [Kindle](/documentation/articles/notification-hubs-kindle-get-started)
-- [Baidu](/documentation/articles/notification-hubs-baidu-get-started)
-- [Xamarin.iOS](/documentation/articles/partner-xamarin-notification-hubs-ios-get-started)
-- [Xamarin.Android](/documentation/articles/partner-xamarin-notification-hubs-android-get-started)
-- [Chrome](/documentation/articles/notification-hubs-chrome-get-started)
+- [Android](../articles/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)
+- [百度](../articles/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started.md)
+- [Chrome](../articles/notification-hubs/notification-hubs-chrome-push-notifications-get-started.md)
+- [iOS](../articles/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)
+- [Kindle](../articles/notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)
+- [Windows Phone Silverlight 8.x](../articles/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)
+- [Windows 通用平台](../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+- [Xamarin.Android](../articles/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm.md)
+- [Xamarin.iOS](../articles/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md)
 
-<!---HONumber=82-->
+<!---HONumber=AcomDC_0921_2016-->
