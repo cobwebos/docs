@@ -1,0 +1,328 @@
+<properties
+	pageTitle="HBase 教程：Hadoop 中基于 Linux 的 HBase 群集入门 | Microsoft Azure"
+	description="遵循本 HBase 教程开始在 HDInsight 中将 Apache HBase 与 Hadoop 配合使用。从 HBase shell 创建表，然后使用 Hive 查询这些表。"
+	keywords="apache hbase,hbase,hbase shell,hbase 教程"
+	services="hdinsight"
+	documentationCenter=""
+	authors="mumian"
+	manager="jhubbard"
+	editor="cgronlun"/>
+
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="07/25/2016"
+	ms.author="jgao"/>
+
+
+
+# HBase 教程：开始在 HDInsight 中将 Apache HBase 与基于 Linux 的 Hadoop 配合使用 
+
+[AZURE.INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
+
+了解如何使用 Hive 在 HDInsight 中创建 HBase 群集、创建 HBase 表和查询表。有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
+
+本文档中的信息针对基于 Linux 的 HDInsight 群集。有关基于 Windows 的群集的信息，请使用页面顶部的选项卡选择器进行切换。
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+###先决条件
+
+在开始阅读本 HBase 教程前，你必须具有：
+
+- **一个 Azure 订阅**。请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- [安全外壳 (SSH)](hdinsight-hadoop-linux-use-ssh-unix.md)。
+- [curl](http://curl.haxx.se/download.html)。
+
+## 创建 HBase 群集
+
+下面过程使用 Azure Resource Manager 模板创建 HBase 群集。若要了解该过程与其他群集创建方法中使用的参数，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+
+1. 单击下面的图像即可在 Azure 门户中打开模板。模板位于公共 Blob 容器中。
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/zh-CN/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+2. 在“参数”边栏选项卡中，输入以下内容：
+
+    - **ClusterName**：为要创建的 HBase 群集输入名称。
+    - **群集登录名和密码**：默认登录名是 **admin**。
+    - **SSH 用户名和密码**：默认用户名是 **sshuser**。可以重命名它。
+     
+    其他参数是可选的。
+    
+    每个群集都有一个 Azure Blob 存储帐户依赖项。删除群集后，数据将保留在存储帐户中。群集的默认存储帐户名为群集名称后接“store”。该名称已在模板 variables 节中硬编码。
+        
+3. 单击“确定”保存参数。
+4. 在“自定义部署”边栏选项卡中，单击“资源组”下拉框，然后单击“新建”创建新资源组。资源组是对群集、依赖存储帐户和其他链接资源进行分组的容器。
+5. 单击“法律条款”，然后单击“创建”。
+6. 单击“创建”。创建群集大约需要 20 分钟时间。
+
+
+>[AZURE.NOTE] 在删除 HBase 群集后，你可以通过使用相同的默认 Blob 容器创建另一个 HBase 群集。新群集将选取你在原始群集中创建的 HBase 表。为了避免不一致，建议你在删除群集之前先禁用 HBase 表。
+
+## 创建表和插入数据
+
+可以使用 SSH 连接到 HBase 群集，并使用 HBase Shell 来创建 HBase 表以及插入和查询数据。有关从 Linux、Unix、OS X 和 Windows 使用 SSH 的信息，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)和[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
+ 
+
+对于大多数人而言，数据以表格形式显示：
+
+![hdinsight hbase 表格数据][img-hbase-sample-data-tabular]
+
+在 HBase（BigTable 的一种实现）中，相同的数据看起来类似于：
+
+![hdinsight hbase bigtable 数据][img-hbase-sample-data-bigtable]
+
+在完成下一过程后，数据将更易于理解。
+
+
+**使用 HBase shell**
+
+1. 从 SSH 运行以下命令：
+
+		hbase shell
+
+4. 创建包含两个列系列的 HBase：
+
+		create 'Contacts', 'Personal', 'Office'
+		list
+5. 插入一些数据：
+
+		put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+		put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+		put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+		put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+		scan 'Contacts'
+
+	![hdinsight hadoop hbase shell][img-hbase-shell]
+
+6. 获取单个行
+
+		get 'Contacts', '1000'
+
+	你将看到与使用扫描命令相同的结果，因为只有一个行。
+
+	有关 Hbase 表架构的详细信息，请参阅 [HBase 架构设计简介][hbase-schema]。有关 HBase 命令的详细信息，请参阅 [Apache HBase 参考指南][hbase-quick-start]。
+
+6. 退出 shell
+
+		exit
+
+
+
+**在联系人 HBase 表中批量加载数据**
+
+HBase 提供了多种方法用于将数据载入表中。有关详细信息，请参阅[批量加载](http://hbase.apache.org/book.html#arch.bulk.load)。
+
+
+已将示例数据文件上载到公共 Blob 容器 *wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*。该数据文件的内容为：
+
+	8396	Calvin Raji		230-555-0191	230-555-0191	5415 San Gabriel Dr.
+	16600	Karen Wu		646-555-0113	230-555-0192	9265 La Paz
+	4324	Karl Xie		508-555-0163	230-555-0193	4912 La Vuelta
+	16891	Jonn Jackson	674-555-0110	230-555-0194	40 Ellis St.
+	3273	Miguel Miller	397-555-0155	230-555-0195	6696 Anchor Drive
+	3588	Osa Agbonile	592-555-0152	230-555-0196	1873 Lion Circle
+	10272	Julia Lee		870-555-0110	230-555-0197	3148 Rose Street
+	4868	Jose Hayes		599-555-0171	230-555-0198	793 Crawford Street
+	4761	Caleb Alexander	670-555-0141	230-555-0199	4775 Kentucky Dr.
+	16443	Terry Chander	998-555-0171	230-555-0200	771 Northridge Drive
+
+如果需要，你可以创建一个文本文件并将该文件上载到你自己的存储帐户。有关说明，请参阅[在 HDInsight 中为 Hadoop 作业上载数据][hdinsight-upload-data]。
+
+> [AZURE.NOTE] 此过程使用你在上一个过程中创建的“联系人”HBase 表。
+
+1. 从 SSH 运行以下命令，将数据文件转换成 StoreFiles 并将其存储在 Dimporttsv.bulk.output 指定的相对路径：如果你在 HBase Shell 中操作，请使用退出命令退出。
+
+		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+
+4. 运行以下命令，将数据从 /example/data/storeDataFileOutput 上载到 HBase 表：
+
+		hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
+
+5. 你可以打开 HBase Shell，并使用扫描命令来列出表内容。
+
+
+
+## 使用 Hive 查询 HBase
+
+你可以使用 Hive 查询 HBase 表中的数据。本部分将创建要映射到 HBase 表的 Hive 表，并使用该表来查询 HBase 表中的数据。
+
+1. 打开 **PuTTY** 并连接到群集。参阅前一过程中的说明。
+2. 打开 Hive shell。
+
+	   hive
+3. 运行以下 HiveQL 脚本，以创建映射到 HBase 表的 Hive 表。确保你已创建本教程中前面引用的示例表，方法是在运行此语句前使用 HBase shell。
+
+		CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
+		STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+		WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,Personal:Name,Personal:Phone,Office:Phone,Office:Address')
+		TBLPROPERTIES ('hbase.table.name' = 'Contacts');
+
+2. 运行以下 HiveQL 脚本。Hive 查询会在 HBase 表中查询数据：
+
+     	SELECT count(*) FROM hbasecontacts;
+
+## 通过 Curl 使用 HBase REST API
+
+> [AZURE.NOTE] 使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。此外，还必须使用群集名称作为用来向服务器发送请求的统一资源标识符 (URI) 的一部分。
+>
+> 对本部分中的所有命令，请将 **USERNAME** 替换为在群集上进行身份验证的用户，并将 **PASSWORD** 替换为用户帐户的密码。将 **CLUSTERNAME** 替换为群集名称。
+>
+> REST API 通过[基本身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。你始终应该使用安全 HTTP (HTTPS) 来发出请求，以确保安全地将凭据发送到服务器。
+
+1. 在命令行中，使用以下命令验证你是否可以连接到 HDInsight 群集。
+
+		curl -u <UserName>:<Password> \
+		-G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
+
+	你应会收到类似于下面的响应：
+
+		{"status":"ok","version":"v1"}
+
+	此命令中使用的参数如下：
+
+	* **-u** - 用来对请求进行身份验证的用户名和密码。
+	* **-G** - 指出这是 GET 请求。
+
+2. 使用以下命令列出现有的 HBase 表：
+
+		curl -u <UserName>:<Password> \
+		-G https://<ClusterName>.azurehdinsight.net/hbaserest/
+
+3. 使用以下命令创建包含两个列系列的新 HBase 表：
+
+		curl -u <UserName>:<Password> \
+		-X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" \
+		-H "Accept: application/json" \
+		-H "Content-Type: application/json" \
+		-d "{"@name":"Contact1","ColumnSchema":[{"name":"Personal"},{"name":"Office"}]}" \
+		-v
+
+	架构将以 JSON 格式提供。
+
+4. 使用以下命令插入一些数据：
+
+		curl -u <UserName>:<Password> \
+		-X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
+		-H "Accept: application/json" \
+		-H "Content-Type: application/json" \
+		-d "{"Row":{"key":"MTAwMA==","Cell":{"column":"UGVyc29uYWw6TmFtZQ==", "$":"Sm9obiBEb2xl"}}}" \
+		-v
+
+	必须使用 base64 来为 -d 参数中指定的值编码。在本示例中：
+
+	- MTAwMA==: 1000
+	- UGVyc29uYWw6TmFtZQ==: Personal:Name
+	- Sm9obiBEb2xl: John Dole
+
+	使用 [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) 可以插入多个（批处理）值。
+
+5. 使用以下命令获取行：
+
+		curl -u <UserName>:<Password> \
+		-X GET "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/1000" \
+		-H "Accept: application/json" \
+		-v
+
+有关 HBase Rest 的详细信息，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_rest)。
+
+## 检查群集状态
+
+HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。使用该 Web UI 可以请求有关区域的统计或信息。
+
+还可以使用 SSH 来以隧道方式将本地请求（例如 Web 请求）传送到 HDInsight 群集。然后，请求将路由到请求的资源，就像它是来源于 HDInsight 群集头节点一样。有关详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)。
+
+**建立 SSH 隧道会话**
+
+1. 打开 **PuTTY**。
+2. 如果你在创建用户帐户期间提供了 SSH 密钥，则必须执行以下步骤，以选择向群集进行身份验证时要使用的私钥：
+
+	在“类别”中，依次展开“连接”和“SSH”，然后选择“身份验证”。最后，单击“浏览”，然后选择包含私钥的 .ppk 文件。
+
+3. 在“类别”中，单击“会话”。
+4. 通过 PuTTY 会话屏幕的“基本”选项输入以下值：
+
+	- **主机名**：在“主机名”（或“IP 地址”）字段中输入 HDInsight 服务器的 SSH 地址。SSH 地址是群集名称，后接 **-ssh.azurehdinsight.net**。例如，*mycluster-ssh.azurehdinsight.net*。
+	- **端口**：22。主头节点上的 SSH 端口为 22。
+5. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，然后单击“隧道”。
+6. 提供以下有关“用于控制 SSH 端口转发的选项”窗体的信息：
+
+	- **源端口** - 客户端上要转发的端口。例如，9876。
+	- **动态** - 启用动态 SOCKS 代理路由。
+7. 单击“添加”添加设置。
+8. 在对话框底部单击“打开”即可打开 SSH 连接。
+9. 出现提示时，请使用 SSH 帐户登录到服务器。这将会建立 SSH 会话并启用隧道。
+
+**使用 Ambari 查找 zookeeper 的 FQDN**
+
+1. 浏览到 https://<ClusterName>.azurehdinsight.net/。
+2. 输入你的群集用户帐户凭据两次。
+3. 在左侧菜单中，单击“zookeeper”。
+4. 在“摘要”列表中，单击三个“ZooKeeper 服务器”链接之一。
+5. 复制“主机名”。例如，zk0-CLUSTERNAME.xxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net。
+
+**配置客户端程序 (Firefox) 并检查群集状态**
+
+1. 打开 Firefox。
+2. 单击“打开菜单”按钮。
+3. 单击“选项”。
+4. 依次单击“高级”、“网络”和“设置”。
+5. 选择“手动代理配置”。
+6. 输入以下值：
+
+	- **Socks 主机**：localhost
+	- **端口**：使用在 Putty SSH 隧道中配置的同一端口。例如，9876。
+	- **SOCKS v5**：（已选）
+	- **远程 DNS**：（已选）
+7. 单击“确定”以保存更改。
+8. 浏览到 ZooKeeper>:60010/master-status 的 http://&lt;The FQDN。
+
+在高可用性群集中，你将会找到要托管 WebUI 的当前活动 HBase 主节点的链接。
+
+##删除群集
+
+为了避免不一致，建议你在删除群集之前先禁用 HBase 表。
+
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+## 后续步骤
+
+在针对 HDInsight 的本 HBase 教程中，你已学习如何创建 HBase 群集、如何创建表以及如何从 HBase shell 查看这些表中的数据。你还学习了如何对 HBase 表中的数据使用 Hive 查询，以及如何使用 HBase C# REST API 创建 HBase 表并从该表中检索数据。
+
+若要了解更多信息，请参阅以下文章：
+
+- [HDInsight HBase 概述][hdinsight-hbase-overview]：HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量非结构化和半结构化数据提供随机访问和高度一致性。
+
+
+[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
+[hdinsight-upload-data]: hdinsight-upload-data.md
+[hbase-reference]: http://hbase.apache.org/book.html#importtsv
+[hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf
+[hbase-quick-start]: http://hbase.apache.org/book.html#quickstart
+
+
+
+
+
+[hdinsight-hbase-overview]: hdinsight-hbase-overview.md
+[hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
+[hdinsight-versions]: hdinsight-component-versioning.md
+[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
+[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-portal]: https://portal.azure.com/
+[azure-create-storageaccount]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
+
+[img-hdinsight-hbase-cluster-quick-create]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-quick-create.png
+[img-hdinsight-hbase-hive-editor]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-hive-editor.png
+[img-hdinsight-hbase-file-browser]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-file-browser.png
+[img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
+[img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
+[img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
+
+<!---HONumber=AcomDC_0921_2016-->
