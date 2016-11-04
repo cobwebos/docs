@@ -1,32 +1,32 @@
-<properties
-	pageTitle="什么是 SQL 数据库？ SQL 数据库简介 | Microsoft Azure"
-	description="获取 SQL 数据库简介：Microsoft 在云中的关系数据库管理系统 (RDBMS) 的技术详细信息与功能。"
-	keywords="SQL 简介, 什么是 SQL 数据库"
-	services="sql-database"
-	documentationCenter=""
-	authors="shontnew"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: 什么是 SQL 数据库？ SQL 数据库简介 | Microsoft Docs
+description: 获取 SQL 数据库简介：Microsoft 在云中的关系数据库管理系统 (RDBMS) 的技术详细信息与功能。
+keywords: SQL 简介, 什么是 SQL 数据库
+services: sql-database
+documentationcenter: ''
+author: shontnew
+manager: jhubbard
+editor: cgronlun
 
-<tags
-   ms.service="sql-database"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="data-management"
-   ms.date="08/16/2016"
-   ms.author="shkurhek"/>
+ms.service: sql-database
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: data-management
+ms.date: 08/16/2016
+ms.author: shkurhek
 
+---
 # 什么是 SQL 数据库？ SQL 数据库简介
-
 SQL 数据库是云中的关系数据库服务，它基于行业领先的 Microsoft SQL Server 引擎并提供任务关键型功能。SQL 数据库提供可预测的性能、在不停机的情况下进行缩放、业务连续性和数据保护以及近乎实时的管理功能。你可以将注意力集中在如何快速进行应用开发、加快推向市场，而不是管理虚拟机和基础结构上。由于 SQL 数据库基于 [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) 引擎，所以它支持现有的 SQL Server 工具、库和 API，从而使你可以更轻松地移动和扩展到云中。
 
 本文将介绍 SQL 数据库在性能、缩放性和易管理性方面的核心概念与功能，并提供链接让你进一步了解详细信息。如果已准备就绪，可以在几分钟内[创建第一个 SQL 数据库](sql-database-get-started.md)或[创建弹性数据库池](sql-database-elastic-pool-create-portal.md)。如果想深入了解，请观看这个时长 30 分钟的视频。
 
-> [AZURE.VIDEO azurecon-2015-get-started-with-azure-sql-database]
+> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON326/player]
+> 
+> 
 
 ## 无需停机即可调整性能和规模
-
 SQL 数据库可用于基本、标准和高级*服务层*。每个服务层提供[不同级别的性能和功能](sql-database-service-tiers.md)，以支持从轻型到重型的数据库工作负荷。可以在小型数据库中构建第一个应用，每个月只需花费少量资金。然后在你的应用受到广泛欢迎之后，随时手动或以编程方式[更改服务层](sql-database-scale-up.md)，这不会给你的应用或客户造成停机。
 
 许多业务和应用只要能够创建数据库并按需调高或调低单一数据库的性能即可，尤其是当使用模式相对容易预测时。但如果有无法预测的使用模式，则管理成本和业务模式就会变得相当困难。
@@ -38,11 +38,9 @@ SQL 数据库中的[弹性池](sql-database-elastic-pool.md)可解决此问题�
 但是，要如何比较数据库和数据库池的相对性能？ 当调高和调低性能时，如何知道该在何处停止？ 答案就是使用单一数据库的数据库事务单位 (DTU)，以及弹性数据库和数据库池的弹性 DTU (eDTU)。有关详细信息，请参阅 [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md)。
 
 ## 使应用和业务持续运转
-
 Azure 行业领先的 99.99% 可用性服务级别协议 [(SLA)](http://azure.microsoft.com/support/legal/sla/)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。使用每个 SQL 数据库时，你可以使用内置的数据保护、容错功能，以及可能需要另外设计、购买、构建和管理的数据保护功能。即便如此，根据业务要求，你还可以请求额外级别的保护，以确保在发生灾难、错误或其他事件时，应用和业务可以快速恢复。使用 SQL 数据库时，每个服务层都会提供不同的功能菜单，你可以利用这些菜单立即启动并运行，然后保持该方式。你可以使用时间点还原将数据库还原到以前的状态，最长可还原到 35 天前。此外，如果托管数据库的数据中心发生服务中断，你可以故障转移到其他区域中的数据库副本。或者，你可以使用副本进行升级，或将其重新放置在不同的区域。
 
 ![SQL 数据库异地复制](./media/sql-database-technical-overview/azure_sqldb_map.png)
-
 
 有关可用于不同服务层的其他业务连续性功能的详细信息，请参阅[业务连续性](sql-database-business-continuity.md)。
 
@@ -52,11 +50,11 @@ SQL Server 的数据安全性一贯可靠，SQL 数据库也包含类似的功�
 ## 后续步骤
 现在，你已阅读 SQL 数据库简介并回答了“什么是 SQL 数据库？”这个问题，因此可以继续完成以下内容：
 
-- 有关单一数据库和弹性数据库的成本比较与计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/sql-database/)。
-- 了解[弹性池](sql-database-elastic-pool.md)。
-- 从[创建第一个数据库](sql-database-get-started.md)开始。
-- [使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
-- 使用 C#、Java、Node.js、PHP、Python 或 Ruby 生成第一个应用：[SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
-- 请查看[有关 Azure SQL 数据库服务的所有主题](sql-database-index-all-articles.md)的标题和描述索引。
+* 有关单一数据库和弹性数据库的成本比较与计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/sql-database/)。
+* 了解[弹性池](sql-database-elastic-pool.md)。
+* 从[创建第一个数据库](sql-database-get-started.md)开始。
+* [使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
+* 使用 C#、Java、Node.js、PHP、Python 或 Ruby 生成第一个应用：[SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
+* 请查看[有关 Azure SQL 数据库服务的所有主题](sql-database-index-all-articles.md)的标题和描述索引。
 
 <!---HONumber=AcomDC_0921_2016-->

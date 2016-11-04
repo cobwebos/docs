@@ -1,30 +1,27 @@
-<properties
-	pageTitle="如何通过 .NET 使用服务总线中继 | Microsoft Azure"
-	description="了解如何使用 Azure 服务总线中继服务连接两个托管于不同位置的应用程序。"
-	services="service-bus"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+---
+title: 如何通过 .NET 使用服务总线中继 | Microsoft Docs
+description: 了解如何使用 Azure 服务总线中继服务连接两个托管于不同位置的应用程序。
+services: service-bus
+documentationcenter: .net
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-	ms.service="service-bus"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="get-started-article"
-	ms.date="09/16/2016"
-	ms.author="sethm"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: get-started-article
+ms.date: 09/16/2016
+ms.author: sethm
 
-
+---
 # 如何使用 Azure 服务总线中继服务
-
 本文介绍如何使用服务总线中继服务。相关示例用 C# 编写并使用服务总线程序集中包含的 Windows Communication Foundation (WCF) API 及扩展。有关服务总线中继的详细信息，请参阅[服务总线中继消息传送](service-bus-relay-overview.md)概述。
 
-[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
+[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## 什么是服务总线中继？
-
 [服务总线*中继*](service-bus-relay-overview.md)服务使你能够构建可在 Azure 数据中心和你自己的本地企业环境中运行的混合应用程序。服务总线中继可简化这一过程，它允许你安全地向公有云公开位于企业网络内的 Windows Communication Foundation (WCF) 服务，而无需打开防火墙连接，也无需对企业网络基础结构进行彻底的更改。
 
 ![中继概念](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
@@ -34,40 +31,36 @@
 本文演示如何使用服务总线中继创建 WCF Web 服务，并使用 TCP 通道绑定（可实现双方之间安全的对话）公开该服务。
 
 ## 创建服务命名空间
-
 若要开始在 Azure 中使用服务总线中继，必须先创建一个命名空间。命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
 
 创建服务命名空间：
 
-[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## 获取服务总线 NuGet 包
-
 [服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。若要在项目中安装 NuGet 包，请执行以下操作：
 
-1.  在解决方案资源管理器中，右键单击“引用”，然后单击“管理 NuGet 包”。
-2.  搜索“服务总线”并选择“Microsoft Azure 服务总线”项。单击“安装”完成安装，然后关闭以下对话框：
-
-	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
+1. 在解决方案资源管理器中，右键单击“引用”，然后单击“管理 NuGet 包”。
+2. 搜索“服务总线”并选择“Microsoft Azure 服务总线”项。单击“安装”完成安装，然后关闭以下对话框：
+   
+   ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
 
 ## 使用服务总线通过 TCP 公开和使用 SOAP Web 服务
-
 若要公开现有 WCF SOAP Web 服务以供外部使用，你必须更改服务绑定和地址。这可能需要更改你的配置文件或者可能需要更改代码，具体取决于你如何设置和配置 WCF 服务。请注意，WCF 允许你对同一服务使用多个网络终结点，因此你可以在添加服务总线终结点以便进行外部访问的同时保留现有内部终结点。
 
 在此任务中，你将构建一个简单的 WCF 服务并向其添加服务总线侦听程序。此练习假定你熟悉 Visual Studio，因此不演练创建项目的所有详细信息，而是侧重于代码。
 
 在开始执行这些步骤之前，请完成以下过程以设置你的环境：
 
-1.  在 Visual Studio 中，在解决方案内创建一个包含以下两个项目的控制台应用程序：“客户端”和“服务”。
-2.  向这两个项目添加 Microsoft Azure Service Bus NuGet 包。此程序包将向项目添加所有必需的程序集引用。
+1. 在 Visual Studio 中，在解决方案内创建一个包含以下两个项目的控制台应用程序：“客户端”和“服务”。
+2. 向这两个项目添加 Microsoft Azure Service Bus NuGet 包。此程序包将向项目添加所有必需的程序集引用。
 
 ### 如何创建服务
-
 首先，创建该服务本身。任何 WCF 服务都包含至少三个不同部分：
 
--   描述交换哪些信息以及将调用哪些操作的协定的定义。
--   上述协定的实施方案。
--   托管 WCF 服务并公开多个终结点的主机。
+* 描述交换哪些信息以及将调用哪些操作的协定的定义。
+* 上述协定的实施方案。
+* 托管 WCF 服务并公开多个终结点的主机。
 
 本部分中的代码示例涵盖了其中的每个组成部分。
 
@@ -99,7 +92,6 @@ class ProblemSolver : IProblemSolver
 ```
 
 ### 以编程方式配置服务主机
-
 协定和实施完成后，你现在就可以托管服务了。托管发生在 [System.ServiceModel.ServiceHost](https://msdn.microsoft.com/library/azure/system.servicemodel.servicehost.aspx) 对象内，该对象负责管理服务实例并托管侦听消息的终结点。以下代码使用常规的本地终结点和服务总线终结点配置服务，以便并列展示内部和外部终结点的外观。将字符串 *namespace* 替换为你的命名空间名称，并将 *yourKey* 替换为你在前面的设置步骤中获取的 SAS 密钥。
 
 ```
@@ -126,7 +118,6 @@ sh.Close();
 在本示例中，你将创建两个位于同一协定实施中的终结点。一个是本地的，一个通过服务总线进行投影。两者之间的主要区别是绑定；本地终结点使用 [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx)，而服务总线终结点和地址使用 [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx)。本地终结点有一个使用不同端口的本地网络地址。服务总线终结点有一个由字符串 `sb`、你的命名空间名称、路径“solver”组成的终结点地址。 这将生成 URI `sb://[serviceNamespace].servicebus.windows.net/solver`，将服务终结点标识为具有完全限定的外部 DNS 名称的服务总线 TCP 终结点。如果将替换占位符的代码放入**服务**应用程序的 `Main` 函数中，你将获得一个可正常运行的服务。如果你希望你的服务专门侦听服务总线，请删除本地终结点声明。
 
 ### 在 App.config 文件中配置服务主机
-
 你还可以使用 App.config 文件配置主机。在此情况下，服务托管代码如以下示例所示。
 
 ```
@@ -167,9 +158,7 @@ sh.Close();
 进行这些更改后，该服务将像以前一样启动，但具有两个活动终结点：一个位于本地，一个在云中侦听。
 
 ### 创建客户端
-
 #### 以编程方式配置客户端
-
 若要使用该服务，你可以使用 [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) 对象构造 WCF 客户端。服务总线使用通过 ACS 实现的基于令牌的安全模型。[TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 类代表具有内置工厂方法的安全令牌提供程序，这些方法可返回一些众所周知的令牌提供程序。以下示例使用 [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) 方法处理相应 SAS 令牌的获取。名称和密钥是根据上一部分所述从门户获取的凭据。
 
 首先，在你的客户端项目中引用服务中的 `IProblemSolver` 约定代码或将其复制到你的客户端项目中。
@@ -193,7 +182,6 @@ using (var ch = cf.CreateChannel())
 现在可以生成客户端和服务，运行它们（首先运行服务），客户端将调用该服务并输出 **9**。你可以在不同计算机上，甚至跨网络运行客户端和服务器，通信仍将进行。客户端代码还可以在云中或在本地运行。
 
 #### 在 App.config 文件中配置客户端
-
 以下代码介绍了如何使用 App.config 文件配置客户端。
 
 ```
@@ -227,15 +215,14 @@ using (var ch = cf.CreateChannel())
 ```
 
 ## 后续步骤
-
 现在，你已了解服务总线中继服务的基础知识，请访问以下链接以了解更多信息。
 
-- [服务总线中继消息传送概述](service-bus-relay-overview.md)
-- [Azure 服务总线体系结构概述](service-bus-fundamentals-hybrid-solutions.md)
-- 从 [Azure 示例][]下载服务总线示例，或参阅[服务总线示例概述][]。
+* [服务总线中继消息传送概述](service-bus-relay-overview.md)
+* [Azure 服务总线体系结构概述](service-bus-fundamentals-hybrid-solutions.md)
+* 从 [Azure 示例][Azure 示例]下载服务总线示例，或参阅[服务总线示例概述][服务总线示例概述]。
 
-  [Shared Access Signature Authentication with Service Bus]: service-bus-shared-access-signature-authentication.md
-  [Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
-  [服务总线示例概述]: service-bus-samples.md
+[Shared Access Signature Authentication with Service Bus]: service-bus-shared-access-signature-authentication.md
+[Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+[服务总线示例概述]: service-bus-samples.md
 
 <!---HONumber=AcomDC_0921_2016-->

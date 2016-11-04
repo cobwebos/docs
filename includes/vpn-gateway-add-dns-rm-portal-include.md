@@ -4,7 +4,7 @@
 2. 在“DNS 服务器”页中的“DNS 服务器”下，选择“自定义 DNS”。
 3. 在“主 DNS 服务器”字段中，输入要用于名称解析的 DNS 服务器的 IP 地址。
 4. 单击边栏选项卡顶部的“保存”以保存配置。
-
-	![自定义 DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
+   
+    ![自定义 DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
 
 <!---HONumber=AcomDC_0921_2016-->

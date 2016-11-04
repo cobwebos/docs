@@ -1,29 +1,25 @@
-<properties
-	pageTitle="了解 BizTalk 服务各版本中的功能 | Microsoft Azure"
-	description="比较 BizTalk 服务各个版本的功能：免费版、开发人员版、基本版、标准版和高级版。MABS，WABS。"
-	services="biztalk-services"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""/>
+---
+title: 了解 BizTalk 服务各版本中的功能 | Microsoft Docs
+description: 比较 BizTalk 服务各个版本的功能：免费版、开发人员版、基本版、标准版和高级版。MABS，WABS。
+services: biztalk-services
+documentationcenter: ''
+author: MandiOhlinger
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="biztalk-services"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/15/2016"
-	ms.author="mandia"/>
+ms.service: biztalk-services
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: mandia
 
-
+---
 # BizTalk 服务：版本图表
-
 Azure BizTalk 服务提供多个版本。借助本文确定适合你的方案和业务需求的版本。
 
-
 ## 比较版本
-
 **免费(预览版)**
 
 可以创建和管理混合连接。使用混合连接可以轻松地将 Azure 网站连接到 SQL Server 等本地系统。
@@ -43,7 +39,6 @@ Azure BizTalk 服务提供多个版本。借助本文确定适合你的方案和
 **高级**
 
 包括标准版的所有功能，还增加了混合连接、EAI 桥、EDI 协议和 BizTalk 适配器包连接。另外，还提供存档和高可用性，以及用于缩放服务级别协议 (SLA) 的选项。
-
 
 ## 版本图表
 下表列出差异。
@@ -201,20 +196,21 @@ Azure BizTalk 服务提供多个版本。借助本文确定适合你的方案和
 </tr>
 </table>
 
-> [AZURE.NOTE] 为了针对硬件故障进行恢复，高可用性意味着一个 BizTalk 单位中包含多个 VM。
-
+> [!NOTE]
+> 为了针对硬件故障进行恢复，高可用性意味着一个 BizTalk 单位中包含多个 VM。
+> 
+> 
 
 ## 常见问题
-
 #### BizTalk 单位是什么？
 “单位”是 Azure BizTalk 服务部署的原子级别。每个版本均附带一个具有不同的计算能力和内存的单元。例如，基本单位具有比开发人员单位更多的计算，而标准单位具有比基本单位更多的计算，依此类推。缩放 BizTalk 服务时，将按单位进行缩放。
 
 #### BizTalk 服务和 Azure BizTalk VM 之间的差别是什么？
 BizTalk 服务提供一个真正的“平台即服务”(PaaS) 体系结构，用于在云中生成集成解决方案。使用 PaaS 模型，你可以将工作重心完全放在应用程序逻辑上，而将所有基础结构管理工作都留给 Microsoft 执行，包括：
 
-- 无需管理或修补虚拟机。
-- Microsoft 确保可用性。
-- 通过 Azure 门户请求更多或更少容量即可按需控制缩放。
+* 无需管理或修补虚拟机。
+* Microsoft 确保可用性。
+* 通过 Azure 门户请求更多或更少容量即可按需控制缩放。
 
 Azure 虚拟机上的 BizTalk Server 提供基础结构即服务 (IaaS) 体系结构。你可以完全像本地环境一样创建虚拟机和配置它们，从而更轻松地在云中运行现有应用程序而不必进行代码更改。使用 IaaS 时，仍由你负责配置和管理虚拟机（例如，安装软件和操作系统修补程序）以及相应地设计应用程序以实现高可用性。
 
@@ -224,39 +220,32 @@ Azure 虚拟机上的 BizTalk Server 提供基础结构即服务 (IaaS) 体系�
 BizTalk 适配器服务由 Azure BizTalk 服务使用。BizTalk 适配器服务使用 BizTalk 适配器包连接到本地业务线 (LOB) 系统。使用混合连接可以轻松方便地将 Azure 应用程序（例如 Azure 应用服务中的 Web 应用功能和 Azure 移动服务）连接到本地资源。
 
 #### “每个单位的混合连接数据传输 (GB)”是什么意思？ 是指每分钟/小时/天/周/月吗？ 达到限制时会发生什么？
-
 每个单位的混合连接成本取决于 BizTalk 服务的版本。简而言之，成本取决于传输的数据量。例如，每天传输 10 GB 数据的成本比每天传输 100 GB 数据的成本低。使用 BizTalk 服务[定价计算器](https://azure.microsoft.com/pricing/calculator/?scenario=full)来确定具体成本。通常情况下，系统会每天强制执行该限制。如果超出限制，会按 $1/GB 的费率对超出部分收费。
 
 #### 在 BizTalk 服务中创建协议时，为什么桥数增加 2 而非 1？
-
 每个协议都由两个不同的桥组成：一个发送端通信桥和一个接收端通信桥。
 
-####  达到桥数量或协议数量的配额限制时会发生什么？
-
+#### 达到桥数量或协议数量的配额限制时会发生什么？
 会无法部署任何新桥或创建任何新协议。若要部署更多桥，需要增加更多 BizTalk 服务单位，或升级到更高版本。
 
 #### 如何从 BizTalk 服务的一个等级迁移到另一个等级？
-
 免费版无法迁移或“升级”到其他层，也无法备份和还原到其他层。如果需要其他层，请使用新层创建新的 BizTalk 服务。必须在新的 BizTalk 服务中重新创建使用免费版创建的所有项目，包括混合连接。
 
 对于其他版本，使用备份和还原将项目从一个层迁移到另一个层。例如，在标准层中备份项目，然后将其还原到高级层。[BizTalk 服务：备份和还原](biztalk-backup-restore.md)介绍支持的迁移路径，并列出所备份的项目。请注意，不会备份混合连接。在备份和还原到新层后，需要重新创建混合连接。
 
-
 #### BizTalk 适配器服务是否包含在 BizTalk 服务内？ 我如何接收该软件？
-
 包含在内，BizTalk 适配器服务以及 BizTalk 适配器包已包含在 Azure BizTalk 服务 SDK [下载](http://www.microsoft.com/download/details.aspx?id=39087)中。
 
 ## 后续步骤
-
 若要在 Azure 门户中创建 Azure BizTalk 服务，请转到 [BizTalk 服务：使用 Azure 门户预配](biztalk-provision-services.md)。若要开始创建应用程序，请转到 [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## 其他资源
-- [BizTalk 服务：使用 Azure 门户预配](biztalk-provision-services.md)<br/>
-- [BizTalk 服务：预配状态图表](biztalk-service-state-chart.md)<br/>
-- [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)<br/>
-- [BizTalk 服务：备份和还原](biztalk-backup-restore.md)<br/>
-- [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
-- [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
-- [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [BizTalk 服务：使用 Azure 门户预配](biztalk-provision-services.md)<br/>
+* [BizTalk 服务：预配状态图表](biztalk-service-state-chart.md)<br/>
+* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+* [BizTalk 服务：备份和还原](biztalk-backup-restore.md)<br/>
+* [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
+* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 
 <!---HONumber=AcomDC_0921_2016-->

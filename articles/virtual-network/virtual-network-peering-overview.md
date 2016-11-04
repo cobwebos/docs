@@ -1,40 +1,39 @@
 
-<properties
-   pageTitle="Azure 虚拟网络对等互连 | Microsoft Azure"
-   description="了解 Azure 中的 VNet 对等互连。"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="NarayanAnnamalai"
-   manager="jefco"
-   editor="tysonn" />
-<tags
-   ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/28/2016"
-   ms.author="narayan" />
+---
+title: Azure 虚拟网络对等互连 | Microsoft Docs
+description: 了解 Azure 中的 VNet 对等互连。
+services: virtual-network
+documentationcenter: na
+author: NarayanAnnamalai
+manager: jefco
+editor: tysonn
 
+ms.service: virtual-network
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 07/28/2016
+ms.author: narayan
+
+---
 # VNet 对等互连
-
 VNet 对等互连是一种通过 Azure 主干网络在同一区域连接两个虚拟网络的机制。对等互连后，出于所有连接目的，两个虚拟网络会显示为一个。这两个虚拟网络仍作为单独资源管理，但这些虚拟网络中的虚拟机可直接通过专用 IP 地址彼此通信。
 
 对等虚拟网络中虚拟机之间的流量通过Azure 基础结构路由，与同一虚拟网络中的 VM 间的流量的路由方式一样。使用 VNet 对等互连的部分好处有：
 
-- 不同虚拟网络中资源之间的连接延迟低且带宽高。
-- 能够将诸如网络设备和 VPN 网关等资源用作对等 VNet 中的传输点。
-- 能够连接使用 Azure Resource Manager 模型的虚拟网络与使用经典部署模型的虚拟网络，并使这些虚拟网络中资源之间可完全连接。
+* 不同虚拟网络中资源之间的连接延迟低且带宽高。
+* 能够将诸如网络设备和 VPN 网关等资源用作对等 VNet 中的传输点。
+* 能够连接使用 Azure Resource Manager 模型的虚拟网络与使用经典部署模型的虚拟网络，并使这些虚拟网络中资源之间可完全连接。
 
 VNet 对等互连的要求和关键方面：
 
-- 对等的两个虚拟网络应位于同一 Azure 区域中。
-- 对等的虚拟网络应具有非重叠的 IP 地址空间。
-- VNet 对等互连在两个虚拟网络之间进行，没有任何派生的可传递关系。例如，如果虚拟网络 A 与虚拟网络 B 对等，虚拟网络 B 与虚拟网络 C 对等，这并不表示虚拟网络 A 与虚拟网络 C 对等。
-- 可以在两个不同订阅中的虚拟网络间建立对等互连，只要两个订阅的特权用户授权予对等互连即可。
-- 使用 Resource Manager 部署模型的虚拟网络可与使用此模型的另一个虚拟网络对等，或与使用经典部署模型的虚拟网络对等。但使用经典部署模型的虚拟网络不能彼此对等：
-- 尽管对等虚拟网络中虚拟机之间的通信没有任何额外的带宽限制，但基于 VM 大小的带宽上限仍适用。
-
+* 对等的两个虚拟网络应位于同一 Azure 区域中。
+* 对等的虚拟网络应具有非重叠的 IP 地址空间。
+* VNet 对等互连在两个虚拟网络之间进行，没有任何派生的可传递关系。例如，如果虚拟网络 A 与虚拟网络 B 对等，虚拟网络 B 与虚拟网络 C 对等，这并不表示虚拟网络 A 与虚拟网络 C 对等。
+* 可以在两个不同订阅中的虚拟网络间建立对等互连，只要两个订阅的特权用户授权予对等互连即可。
+* 使用 Resource Manager 部署模型的虚拟网络可与使用此模型的另一个虚拟网络对等，或与使用经典部署模型的虚拟网络对等。但使用经典部署模型的虚拟网络不能彼此对等：
+* 尽管对等虚拟网络中虚拟机之间的通信没有任何额外的带宽限制，但基于 VM 大小的带宽上限仍适用。
 
 ![基本 VNet 对等互连](./media/virtual-networks-peering-overview/figure01.png)
 
@@ -82,10 +81,9 @@ VNet 对等互连是一项特权操作。它是 VirtualNetworks 命名空间下�
 ## 定价
 VNet 对等互连在审核期间免费。正式发布后，会对利用对等互连的入口和出口流量收取少许费用。有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-
 ## 后续步骤
-- [设置虚拟网络间的对等互连](virtual-networks-create-vnetpeering-arm-portal.md)。
-- 了解 [NSG](virtual-networks-nsg.md)。
-- 了解[用户定义的路由和 IP 转发](virtual-networks-udr-overview.md)。
+* [设置虚拟网络间的对等互连](virtual-networks-create-vnetpeering-arm-portal.md)。
+* 了解 [NSG](virtual-networks-nsg.md)。
+* 了解[用户定义的路由和 IP 转发](virtual-networks-udr-overview.md)。
 
 <!---HONumber=AcomDC_0921_2016-->

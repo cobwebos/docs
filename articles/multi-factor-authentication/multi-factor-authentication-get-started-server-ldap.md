@@ -1,35 +1,27 @@
-<properties 
-	pageTitle="LDAP 身份验证和 Azure Multi-Factor Authentication 服务器"
-	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 LDAP 身份验证和 Azure Multi-Factor Authentication 服务器。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: LDAP 身份验证和 Azure Multi-Factor Authentication 服务器
+description: 本 Azure Multi-Factor Authentication 页面将会帮助你部署 LDAP 身份验证和 Azure Multi-Factor Authentication 服务器。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # LDAP 身份验证和 Azure Multi-Factor Authentication 服务器
-
-
 默认情况下，Azure Multi-Factor Authentication 服务器配置为从 Active Directory 导入或同步用户。但是，可以将它配置为绑定到不同 LDAP 目录，如 ADAM 目录或特定的 Active Directory 域控制器。配置为通过 LDAP 连接到目录时，Azure Multi-Factor Authentication 服务器可以配置为充当 LDAP 代理来执行身份验证。它还允许将 LDAP 绑定用作 RADIUS 目标，使用 IIS 身份验证时对用户进行预身份验证，或者在 Azure Multi-Factor Authentication 用户门户中进行主要身份验证。
 
 使用 Azure Multi-Factor Authentication作为 LDAP 代理时，将在 LDAP 客户端（例如 VPN 设备、应用程序）与 LDAP 目录服务器之间插入 Azure Multi-Factor Authentication 服务器，以便添加 Multi-Factor Authentication。要使 Azure Multi-Factor Authentication 起作用，必须将 Azure Multi-Factor Authentication 服务器配置为同时与客户端服务器和 LDAP 目录进行通信。在此配置中，Azure Multi-Factor Authentication 服务器接受来自客户端服务器和应用程序的 LDAP 请求，并将这些请求转发到目标 LDAP 目录服务器以验证主要凭据。如果 LDAP 目录的响应显示主要凭据有效，Azure Multi-Factor Authentication 将执行双重身份验证，并将响应发送回 LDAP 客户端。只有向 LDAP 服务器进行的身份验证和 Multi-Factor Authentication 都成功，整个身份验证才成功。
 
-
-
-
-
 ## LDAP 身份验证配置
-
-
 若要配置 LDAP 身份验证，请在 Windows Server 上安装 Azure Multi-Factor Authentication 服务器。请按以下过程操作：
 
 1. 在 Azure Multi-Factor Authentication 服务器内，单击左侧菜单中的“LDAP 身份验证”图标。
@@ -54,13 +46,11 @@
 20. 单击“确定”按钮。
 21. 单击“公司设置”图标，然后选择“用户名解析”选项卡。22. 如果从已加入域的服务器连接到 Active Directory，你应该能够让“使用 Windows 安全标识符 (SID) 匹配用户名”单选按钮处于选中状态。否则，请选中“使用 LDAP 唯一标识符属性匹配用户名”单选按钮。选中此项时，Azure Multi-Factor Authentication 服务器会尝试将每个用户名解析为 LDAP 目录中的唯一标识符。将对“目录集成 -> 属性”选项卡中定义的用户名属性执行 LDAP 搜索。当用户进行身份验证时，会将用户名解析为 LDAP 目录中的唯一标识符，并将使用该唯一标识符来匹配 Azure Multi-Factor Authentication 数据文件中的用户。这允许不区分大小写的比较以及长、短用户名格式。这将完成 Azure Multi-Factor Authentication 服务器配置。服务器现在正在配置的端口上侦听来自配置的客户端的 LDAP 访问请求，并将设置为将这些请求通过代理发送到 LDAP 目录进行身份验证。
 
-
 ## LDAP 客户端配置
-
 若要配置 LDAP 客户端，请遵循以下准则：
 
-- 将你的设备、服务器或应用程序配置为通过 LDAP 向 Azure Multi-Factor Authentication 服务器进行身份验证，就像它是你的 LDAP 目录一样。应使用通常用于直接连接到你的 LDAP 目录的设置（服务器名称或 IP 地址除外，应使用 Azure Multi-Factor Authentication 服务器的服务器名称或 IP 地址）。
-- 将 LDAP 超时配置为 30-60 秒，以便有时间使用 LDAP 目录验证用户的凭据、执行第二重身份验证、接收其响应，然后对 LDAP 访问请求做出响应。
-- 如果使用 LDAPS，进行 LDAP 查询的设备或服务器必须信任 Azure Multi-Factor Authentication 服务器上安装的 SSL 证书。
+* 将你的设备、服务器或应用程序配置为通过 LDAP 向 Azure Multi-Factor Authentication 服务器进行身份验证，就像它是你的 LDAP 目录一样。应使用通常用于直接连接到你的 LDAP 目录的设置（服务器名称或 IP 地址除外，应使用 Azure Multi-Factor Authentication 服务器的服务器名称或 IP 地址）。
+* 将 LDAP 超时配置为 30-60 秒，以便有时间使用 LDAP 目录验证用户的凭据、执行第二重身份验证、接收其响应，然后对 LDAP 访问请求做出响应。
+* 如果使用 LDAPS，进行 LDAP 查询的设备或服务器必须信任 Azure Multi-Factor Authentication 服务器上安装的 SSL 证书。
 
 <!---HONumber=AcomDC_0921_2016-->

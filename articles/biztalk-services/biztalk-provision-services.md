@@ -1,111 +1,107 @@
-<properties
-	pageTitle="在 Azure 门户中创建 Azure BizTalk 服务 | Microsoft Azure"
-	description="了解如何在 Azure 门户中预配或创建 Azure BizTalk 服务；MABS、WABS"
-	services="biztalk-services"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""/>
+---
+title: 在 Azure 门户中创建 Azure BizTalk 服务 | Microsoft Docs
+description: 了解如何在 Azure 门户中预配或创建 Azure BizTalk 服务；MABS、WABS
+services: biztalk-services
+documentationcenter: ''
+author: MandiOhlinger
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="biztalk-services"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="08/15/2016"
-	ms.author="mandia"/>
+ms.service: biztalk-services
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 08/15/2016
+ms.author: mandia
 
-
-
+---
 # 使用 Azure 门户创建 BizTalk 服务
-
 在 Azure 门户中创建 BizTalk 服务。
 
-> [AZURE.TIP] 若要登录 Azure 门户，需要使用 Azure 帐户和 Azure 订阅。如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。请参阅 [Azure 免费试用](http://go.microsoft.com/fwlink/p/?LinkID=239738)。
+> [!TIP]
+> 若要登录 Azure 门户，需要使用 Azure 帐户和 Azure 订阅。如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。请参阅 [Azure 免费试用](http://go.microsoft.com/fwlink/p/?LinkID=239738)。
+> 
+> 
 
 ## 创建 BizTalk 服务
 你不一定能够使用所有的 BizTalk 服务设置，这取决于你选择的版本。
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
 2. 在导航窗格的底部，选择“新建”：![选择“新建”按钮][NEWButton]
-
 3. 选择“应用程序服务”>“BizTalk 服务”>“自定义创建”：![选择“BizTalk 服务”，然后选择“自定义创建”][NewBizTalkService]
-
 4. 输入 BizTalk 服务设置：
-
-	<table border="1">
-	<tr>
-	<td><strong>BizTalk 服务名称</strong></td>
-	<td>你可以输入任何名称，但请尽量具体。示例包括：<br/><br/>
-	<em>mycompany</em>.biztalk.windows.net<br/>
-	<em>mycompanymyapplication</em>.biztalk.windows.net<br/>
-	<em>myapplication</em>.biztalk.windows.net<br/><br/>“.biztalk.windows.net”将自动添加到你输入的名称上。此时会创建一个用于访问 BizTalk 服务的 URL，例如 <strong>https://<em>myapplication</em>.biztalk.windows.net</strong>。
-	</td>
-	</tr>
-	<tr>
-	<td><strong>版本</strong></td>
-	<td>如果处在开发/测试阶段，则选择“开发人员版”<strong></strong>。如果处在生产阶段，则使用 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302279">BizTalk 服务：版本图表</a>来确定是“高级版”<strong></strong>、“标准版”<strong></strong>还是“基本版”<strong></strong>适合你的业务方案。
-	</td>
-	</tr>
-	<tr>
-	<td><strong>区域</strong></td>
-	<td>选择托管 BizTalk 服务的地理区域。</td>
-	</tr>
-	<tr>
-	<td><strong>域 URL</strong></td>
-	<td><strong>可选</strong>。默认情况下，域 URL 为 <em>YourBizTalkServiceName</em>.biztalk.windows.net。也可以输入自定义域。例如，如果域是 <em>contoso</em>，则可输入： <br/><br/>
-	<em>MyCompany</em>.contoso.com<br/>
-	<em>MyCompanyMyApplication</em>.contoso.com<br/>
-	<em>MyApplication</em>.contoso.com<br/>
-	<em>YourBizTalkServiceName</em>.contoso.com<br/>
-	</td>
-	</tr>
-	</table>
-选择“下一步”箭头。
-
+   
+    <table border="1">
+    <tr>
+    <td><strong>BizTalk 服务名称</strong></td>
+    <td>你可以输入任何名称，但请尽量具体。示例包括：<br/><br/>
+    <em>mycompany</em>.biztalk.windows.net<br/>
+    <em>mycompanymyapplication</em>.biztalk.windows.net<br/>
+    <em>myapplication</em>.biztalk.windows.net<br/><br/>“.biztalk.windows.net”将自动添加到你输入的名称上。此时会创建一个用于访问 BizTalk 服务的 URL，例如 <strong>https://<em>myapplication</em>.biztalk.windows.net</strong>。
+    </td>
+    </tr>
+    <tr>
+    <td><strong>版本</strong></td>
+    <td>如果处在开发/测试阶段，则选择“开发人员版”<strong></strong>。如果处在生产阶段，则使用 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302279">BizTalk 服务：版本图表</a>来确定是“高级版”<strong></strong>、“标准版”<strong></strong>还是“基本版”<strong></strong>适合你的业务方案。
+    </td>
+    </tr>
+    <tr>
+    <td><strong>区域</strong></td>
+    <td>选择托管 BizTalk 服务的地理区域。</td>
+    </tr>
+    <tr>
+    <td><strong>域 URL</strong></td>
+    <td><strong>可选</strong>。默认情况下，域 URL 为 <em>YourBizTalkServiceName</em>.biztalk.windows.net。也可以输入自定义域。例如，如果域是 <em>contoso</em>，则可输入： <br/><br/>
+    <em>MyCompany</em>.contoso.com<br/>
+    <em>MyCompanyMyApplication</em>.contoso.com<br/>
+    <em>MyApplication</em>.contoso.com<br/>
+    <em>YourBizTalkServiceName</em>.contoso.com<br/>
+    </td>
+    </tr>
+    </table>
+   选择“下一步”箭头。
 5. 输入存储和数据库设置：
-
-	<table border="1">
-	<tr>
-	<td><strong>监视/存档存储帐户</strong></td>
-	<td>选择一个现有存储帐户，或创建一个新的存储帐户。<br/><br/>如果要创建新的存储帐户，请输入“存储帐户名称”<strong></strong>。</td>
-	</tr>
-	<tr>
-	<td><strong>跟踪数据库</strong></td>
-	<td>如果你要使用现有的 Azure SQL 数据库，需保证它没有被其他 BizTalk 服务使用。你需要使用创建该 Azure SQL 数据库服务器时输入的登录名和密码。<br/><br/><strong>提示</strong>在与 BizTalk 服务相同的区域中创建跟踪数据库和监视/存档存储帐户。</td>
-	</tr>
-	</table>
-选择“下一步”箭头。
-
+   
+    <table border="1">
+    <tr>
+    <td><strong>监视/存档存储帐户</strong></td>
+    <td>选择一个现有存储帐户，或创建一个新的存储帐户。<br/><br/>如果要创建新的存储帐户，请输入“存储帐户名称”<strong></strong>。</td>
+    </tr>
+    <tr>
+    <td><strong>跟踪数据库</strong></td>
+    <td>如果你要使用现有的 Azure SQL 数据库，需保证它没有被其他 BizTalk 服务使用。你需要使用创建该 Azure SQL 数据库服务器时输入的登录名和密码。<br/><br/><strong>提示</strong>在与 BizTalk 服务相同的区域中创建跟踪数据库和监视/存档存储帐户。</td>
+    </tr>
+    </table>
+   选择“下一步”箭头。
 6. 输入数据库设置：
-
-	<table border="1">
-	<tr>
-	<td><strong>Name</strong></td>
-	<td>如果在上一屏幕中选择了“创建新的 SQL 数据库实例”<strong></strong>，将会提供此设置。
-	<br/><br/>
-	输入 BizTalk 服务要使用的 SQL 数据库名称。</td>
-	</tr>
-	<tr>
-	<td><strong>服务器</strong></td>
-	<td>如果在上一屏幕中选择了“创建新的 SQL 数据库实例”<strong></strong>，将会提供此设置。
-	<br/><br/>
-	选择现有的 SQL 数据库服务器或创建新的 SQL 数据库服务器。</td>
-	</tr>
-	<tr>
-	<td><strong>服务器登录名</strong></td>
-	<td>输入登录用户名。</td>
-	</tr>
-	<tr>
-	<td><strong>服务器登录密码</strong></td>
-	<td>输入登录密码。</td>
-	</tr>
-	<tr>
-	<td><strong>区域</strong></td>
-	<td>如果选择了“创建新的 SQL 数据库实例”<strong></strong>，将会提供此设置。选择用于托管你的 SQL 数据库的地理区域。</td>
-	</tr>
-	</table>
+   
+    <table border="1">
+    <tr>
+    <td><strong>Name</strong></td>
+    <td>如果在上一屏幕中选择了“创建新的 SQL 数据库实例”<strong></strong>，将会提供此设置。
+    <br/><br/>
+    输入 BizTalk 服务要使用的 SQL 数据库名称。</td>
+    </tr>
+    <tr>
+    <td><strong>服务器</strong></td>
+    <td>如果在上一屏幕中选择了“创建新的 SQL 数据库实例”<strong></strong>，将会提供此设置。
+    <br/><br/>
+    选择现有的 SQL 数据库服务器或创建新的 SQL 数据库服务器。</td>
+    </tr>
+    <tr>
+    <td><strong>服务器登录名</strong></td>
+    <td>输入登录用户名。</td>
+    </tr>
+    <tr>
+    <td><strong>服务器登录密码</strong></td>
+    <td>输入登录密码。</td>
+    </tr>
+    <tr>
+    <td><strong>区域</strong></td>
+    <td>如果选择了“创建新的 SQL 数据库实例”<strong></strong>，将会提供此设置。选择用于托管你的 SQL 数据库的地理区域。</td>
+    </tr>
+    </table>
 
 单击复选标记以完成向导操作。将显示进度图标：![完成时显示进度图标][ProgressComplete]
 
@@ -113,12 +109,10 @@
 
 根据 BizTalk 服务的状态，某些操作可能无法完成。有关这些操作的列表，请转到 [BizTalk 服务状态图表](biztalk-service-state-chart.md)。
 
-
 ## 预配后的步骤
-
--  [在本地计算机上安装证书](#InstallCert)
--  [添加生产就绪证书](#AddCert)
--  [获取 Access Control 命名空间](#ACS)
+* [在本地计算机上安装证书](#InstallCert)
+* [添加生产就绪证书](#AddCert)
+* [获取 Access Control 命名空间](#ACS)
 
 #### <a name="InstallCert"></a>在本地计算机上安装证书
 自签名证书是 BizTalk 服务预配的一部分，会随 BizTalk 服务订阅创建和关联。必须下载此证书，然后将它安装到在其中部署 BizTalk 服务应用程序或将消息发送到 BizTalk 服务终结点的计算机上。
@@ -136,11 +130,9 @@
 2. 浏览到包括 BizTalk 服务名称的专有 SSL 证书 (*CertificateName*.pfx)，输入密码，然后单击复选标记。
 
 #### <a name="ACS"></a>获取访问控制命名空间
-
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=213885)。
 2. 在左侧导航窗格中选择“BizTalk 服务”，然后选择你的 BizTalk 服务。
 3. 在任务栏中，选择“连接信息”：![选择“连接信息”][ACSConnectInfo]
-
 4. 复制 Access Control 值。
 
 当你从 Visual Studio 中部署 BizTalk 服务项目时，你进入此 Access Control 命名空间。系统将自动为 BizTalk 服务创建访问控制命名空间。
@@ -151,13 +143,16 @@ Access Control 值可用于任何应用程序。当你创建 Azure BizTalk 服�
 
 Access Control 服务标识是一组凭据，这些凭据允许应用程序或客户端使用 Access Control 直接进行身份验证并接收令牌。
 
-> [AZURE.IMPORTANT] BizTalk 服务将“所有者”用于默认服务标识以及“密码”值。如果使用的是对称密钥值，而不是密码值，可能会出现以下错误。<br/><br/>*无法使用指定的凭据连接到访问控制管理服务帐户*
+> [!IMPORTANT]
+> BizTalk 服务将“所有者”用于默认服务标识以及“密码”值。如果使用的是对称密钥值，而不是密码值，可能会出现以下错误。<br/><br/>*无法使用指定的凭据连接到访问控制管理服务帐户*
+> 
+> 
 
 [管理 ACS 命名空间](https://msdn.microsoft.com/library/azure/hh674478.aspx)列出了一些指导和建议。
 
 ## 要求说明
-
 下列要求不适用于免费版。
+
 <table border="1">
 <tr bgcolor="FAF9F9">
         <td><strong>需要什么</strong></td>
@@ -240,7 +235,6 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 
 
 ## 混合连接
-
 创建 Azure BizTalk 服务时，将会出现“混合连接”选项卡：
 
 ![混合连接选项卡][HybridConnectionTab]
@@ -249,19 +243,17 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 
  有关详细信息，包括如何创建和管理混合连接，请参阅[混合连接](integration-hybrid-connection-overview.md)。
 
-
 ## 后续步骤
-
 现在已创建 BizTalk 服务，可以让自己熟悉以下各个选项卡：[Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)。BizTalk 服务已准备就绪，可用于你的应用程序了。若要开始创建应用程序，请转到 [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## 另请参阅
-- [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)<br/>
-- [BizTalk 服务：状态图表](biztalk-service-state-chart.md)<br/>
-- [BizTalk 服务：备份和还原](biztalk-backup-restore.md)<br/>
-- [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
-- [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
-- [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-- [混合连接](integration-hybrid-connection-overview.md)
+* [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)<br/>
+* [BizTalk 服务：状态图表](biztalk-service-state-chart.md)<br/>
+* [BizTalk 服务：备份和还原](biztalk-backup-restore.md)<br/>
+* [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
+* [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
+* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [混合连接](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png
 [NEWButton]: ./media/biztalk-provision-services/WABS_New.png

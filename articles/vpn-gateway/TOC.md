@@ -1,0 +1,28 @@
+# Overview
+## [About VPN devices for Site-to-Site VPN Gateway connections](vpn-gateway-about-vpn-devices.md)
+## [About VPN Gateway](vpn-gateway-about-vpngateways.md)
+## [About VPN Gateway settings](vpn-gateway-about-vpn-gateway-settings.md)
+## [VPN Gateway FAQ](vpn-gateway-vpn-faq.md)
+# Get Started
+## [Configure a Point-to-Site connection to a VNet using PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+## [Configure a Point-to-Site connection to a VNet using the classic portal](vpn-gateway-point-to-site-create.md)
+## [Configure a VNet-to-VNet connection for Resource Manager using PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+## [Configure a VNet-to-VNet connection for the classic deployment model](virtual-networks-configure-vnet-to-vnet-connection.md)
+## [Configure forced tunneling using the classic deployment model](vpn-gateway-about-forced-tunneling.md)
+## [Connect virtual networks from different deployment models in the portal](vpn-gateway-connect-different-deployment-models-portal.md)
+## [Connect virtual networks from different deployment models using PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+## [Create a VNet with a Site-to-Site connection using PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+## [Create a VNet with a Site-to-Site connection using the Azure classic portal](vpn-gateway-site-to-site-create.md)
+## [Create a VNet with a Site-to-Site connection using the Azure portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+## [How to configure BGP on Azure VPN Gateways using Azure Resource Manager and PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
+## [Overview of BGP with Azure VPN Gateways](vpn-gateway-bgp-overview.md)
+## [Working with self-signed certificates for Point-to-Site connections](vpn-gateway-certificates-point-to-site.md)
+# How To
+## [Configure a VPN gateway for the classic deployment model](vpn-gateway-configure-vpn-gateway-mp.md)
+## [Configure forced tunneling using the Azure Resource Manager deployment model](vpn-gateway-forced-tunneling-rm.md)
+## [Connect multiple on-premises sites to a virtual network](vpn-gateway-multi-site.md)
+## [Modify local network gateway settings using PowerShell](vpn-gateway-modify-local-network-gateway.md)
+## Plan and Design
+### [Planning and design for VPN Gateway](vpn-gateway-plan-design.md)
+## [Reset an Azure VPN Gateway using PowerShell](vpn-gateway-resetgw-classic.md)
+## [Verify a gateway connection](vpn-gateway-verify-connection-resource-manager.md)

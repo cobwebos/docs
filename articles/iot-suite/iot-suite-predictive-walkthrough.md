@@ -1,30 +1,27 @@
-<properties
- pageTitle="预见性维护演练 | Microsoft Azure"
- description="Azure IoT 预见性维护预配置解决方案演练。"
- services=""
- suite="iot-suite"
- documentationCenter=""
- authors="aguilaaj"
- manager="timlt"
- editor=""/>
+---
+title: 预见性维护演练 | Microsoft Docs
+description: Azure IoT 预见性维护预配置解决方案演练。
+services: ''
+suite: iot-suite
+documentationcenter: ''
+author: aguilaaj
+manager: timlt
+editor: ''
 
-<tags
- ms.service="iot-suite"
- ms.devlang="na"
- ms.topic="get-started-article"
- ms.tgt_pltfrm="na"
- ms.workload="na"
- ms.date="08/17/2016"
- ms.author="araguila"/>
+ms.service: iot-suite
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/17/2016
+ms.author: araguila
 
+---
 # 预见性维护预配置解决方案演练
-
 ## 介绍
-
 IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。可以主动对优化维护等活动运用此预配置解决方案。该解决方案结合了关键 Azure IoT 套件服务，包括 [Azure 机器学习][lnk_machine_learning]工作区。此工作区包含基于公用示例数据集的试验，以预测飞机引擎的剩余使用寿命 (RUL)。此解决方案全面实施了完整的 loT 商业应用场景作为规划和实施解决方案的起点，以满足你自己特定的业务需求。
 
 ## 逻辑体系结构
-
 下图概述该预配置解决方案的逻辑组件：
 
 ![][img-architecture]
@@ -38,7 +35,6 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 灰色项表示实现*设备管理*功能的组件。当前的预见性维护预配置解决方案版本不会预配这些资源。若要了解有关设备管理的详细信息，请参阅[远程监视预配置解决方案][lnk-remote-monitoring]。
 
 ## 模拟设备
-
 在该预配置解决方案中，模拟设备代表飞机引擎。该解决方案预配了 2 个映射到单架飞机的引擎。每个引擎发出 4 种遥测：传感器 9、传感器 11、传感器 14 和传感器 15，以提供机器学习模型计算该引擎的剩余使用寿命 (RUL) 所需的数据。每个模拟设备会将下列遥测消息发送到 IoT 中心：
 
 *周期计数*。一个周期表示 2 至 10 小时不等的已完成飞行，在飞行时间内会每半小时捕获一次遥测数据。
@@ -48,37 +44,31 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 模拟设备可以处理从 IoT 中心发送的下列命令：
 
 | 命令 | 说明 |
-|---------|-------------|
-| StartTelemetry | 控制模拟的状态。<br/>使设备开始发送遥测 |
-| StopTelemetry | 控制模拟的状态。<br/>使设备停止发送遥测 |
+| --- | --- |
+| StartTelemetry |控制模拟的状态。<br/>使设备开始发送遥测 |
+| StopTelemetry |控制模拟的状态。<br/>使设备停止发送遥测 |
 
 IoT 中心会提供设备命令确认。
 
 ## Azure 流分析作业
-
 **作业：遥测**会使用两个语句来操作传入设备遥测流。第一个语句会从设备选择所有遥测，然后将这些数据从在 Web 应用中可视化的位置发送到 blob 存储。第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到**事件处理器**。
 
 ## 事件处理器
-
 **事件处理器**为已完成的周期获取平均传感器值。它将这些值传递到 API，以公开机器学习训练模型来计算引擎 RUL。
 
 ## Azure 机器学习
-
 有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics]（Cortana Intelligence 库预见性维护模板）。
 
 ## 让我们开始
-
 本节将逐步解说解决方案的组件、说明预期的用例，并提供示例。
 
 ### 预见性维护仪表板
-
 Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [PowerBI-visuals repository][lnk-powerbi]（PowerBI 可视化效果存储库））以可视化方式呈现：
 
-- blob 存储中流分析作业的输出数据。
-- 每个飞机引擎的 RUL 和周期计数。
+* blob 存储中流分析作业的输出数据。
+* 每个飞机引擎的 RUL 和周期计数。
 
 ### 观察云解决方案的行为
-
 在 Azure 门户中，导航到具有你选定的解决方案名称的资源组，以查看已预配的资源。
 
 ![][img-resource-group]
@@ -106,16 +96,14 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 你可以随时停止模拟，但单击“开始模拟”会从数据集的开头重播模拟。
 
 ## 后续步骤
-
 你已经运行预见性维护预配置解决方案，现在可能想要对其进行修改，请参阅[预配置解决方案自定义指南][lnk-customize]。
 
 [IoT Suite - Under The Hood - Predictive Maintenance](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx)（IoT 套件 - 幕后 -预见性维护）TechNet 博客文章提供有关预见性维护预配置解决方案的其他详细信息。
 
 你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
-- [有关 IoT 套件的常见问题][lnk-faq]
-- [从头开始保障 IoT 安全][lnk-security-groundup]
-
+* [有关 IoT 套件的常见问题][lnk-faq]
+* [从头开始保障 IoT 安全][lnk-security-groundup]
 
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
 [img-resource-group]: media/iot-suite-predictive-walkthrough/resource-group.png

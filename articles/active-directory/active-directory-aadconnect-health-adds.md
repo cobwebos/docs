@@ -1,22 +1,22 @@
 
-<properties
-	pageTitle="在 AD DS 中使用 Azure AD Connect Health | Microsoft Azure"
-	description="本页与 Azure AD Connect Health 相关，介绍如何监视 AD DS。"
-	services="active-directory"
-	documentationCenter=""
-	authors="arluca"
-	manager="samueld"
-	editor="curtand"/>
+---
+title: 在 AD DS 中使用 Azure AD Connect Health | Microsoft Docs
+description: 本页与 Azure AD Connect Health 相关，介绍如何监视 AD DS。
+services: active-directory
+documentationcenter: ''
+author: arluca
+manager: samueld
+editor: curtand
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/14/2016"
-	ms.author="arluca"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 07/14/2016
+ms.author: arluca
 
+---
 # 在 AD DS 中使用 Azure AD Connect Health
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Active Directory 域服务。其中包括 Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 上安装的 AD DS。
 
@@ -51,7 +51,6 @@
 默认情况下，我们已经预先选择四个性能计数器；但是，你可以通过单击筛选命令并选择或取消选择任何所需的性能计数器，来添加其他计数器。此外，如果单击特定的性能计数器图，将打开一个新的边栏选项卡，其中包含每个受监视域控制器各自的数据点。
 
 ## 相关链接
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health 代理安装](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)

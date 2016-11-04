@@ -1,37 +1,38 @@
-<properties
-	pageTitle="使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知 | Microsoft Azure"
-	description="在本教程中，你将学习如何使用 Azure 通知中心和必应空间数据来传送基于位置的推送通知。"
-	services="notification-hubs"
-	documentationCenter="windows"
-    keywords="推送通知,push notification"
-	authors="dend"
-	manager="yuaxu"
-	editor="dend"/>
+---
+title: 使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知 | Microsoft Docs
+description: 在本教程中，你将学习如何使用 Azure 通知中心和必应空间数据来传送基于位置的推送通知。
+services: notification-hubs
+documentationcenter: windows
+keywords: 推送通知,push notification
+author: dend
+manager: yuaxu
+editor: dend
 
-<tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows-phone"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="05/31/2016"
-	ms.author="dendeli"/>
-    
+ms.service: notification-hubs
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-windows-phone
+ms.devlang: dotnet
+ms.topic: hero-article
+ms.date: 05/31/2016
+ms.author: dendeli
+
+---
 # 使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知
- 
- > [AZURE.NOTE] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02)。
+> [!NOTE]
+> 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02)。
+> 
+> 
 
 在本教程中，你将学习如何从通用 Windows 平台应用程序，使用 Azure 通知中心和必应空间数据来传送基于位置的推送通知。
 
-##先决条件
+## 先决条件
 首先，需要确保满足所有的软件和服务先决条件：
 
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/zh-CN/downloads/download-visual-studio-vs.aspx) 或更高版本（[Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) 也行）。
 * 最新版本的 [Azure SDK](https://azure.microsoft.com/downloads/)。
 * [必应地图开发人员中心帐户](https://www.bingmapsportal.com/)（你可以免费创建一个帐户并将此帐户与 Microsoft 帐户相关联）。
 
-##入门
-
+## 入门
 首先，让我们创建项目。在 Visual Studio 中，启动“空白应用(通用 Windows)”类型的新项目。
 
 ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
@@ -39,17 +40,16 @@
 完成创建项目之后，你应该可以控制应用本身。现在让我们完成地域隔离基础结构所需的各项设置。由于我们要使用必应服务来完成此操作，可以使用公共 REST API 终结点来查询特定的位置框架：
 
     http://spatial.virtualearth.net/REST/v1/data/
-    
+
 需要指定以下参数才能让终结点正常工作：
 
 * **数据源 ID** 和**数据源名称** – 在必应地图 API 中，数据源包含各种分门别类的元数据，例如营业地点和营业时间。你可以在此了解其相关信息。
 * **实体名称** – 要用作通知参照点的实体。
 * **必应地图 API 密钥** – 这是前面创建必应开发人员中心帐户时获取的密钥。
- 
+
 接下来，让我们深入了解上述各个元素的设置。
 
-##设置数据源
-
+## 设置数据源
 可以在必应地图开发人员中心进行此设置。只需单击顶部导航栏中的“数据源”，然后选择“管理数据源”。
 
 ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
@@ -63,14 +63,17 @@
     Bing Spatial Data Services, 1.0, TestBoundaries
     EntityID(Edm.String,primaryKey)|Name(Edm.String)|Longitude(Edm.Double)|Latitude(Edm.Double)|Boundary(Edm.Geography)
     1|SanFranciscoPier|||POLYGON ((-122.389825 37.776598,-122.389438 37.773087,-122.381885 37.771849,-122.382186 37.777022,-122.389825 37.776598))
-    
+
 上述代码中显示了以下实体：
 
 ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 
 只需复制上述字符串并粘贴到新文件，将文件另存为 **NotificationHubsGeofence.pipe**，然后将它上载到必应开发人员中心。
 
->[AZURE.NOTE]系统可能会提示你为“主密钥”指定不同于“查询密钥”的新密钥。只需通过仪表板创建新密钥，然后刷新数据源上载页。
+> [!NOTE]
+> 系统可能会提示你为“主密钥”指定不同于“查询密钥”的新密钥。只需通过仪表板创建新密钥，然后刷新数据源上载页。
+> 
+> 
 
 上载数据文件后，需确保发布数据源。
 
@@ -100,8 +103,7 @@
 
 ![](./media/notification-hubs-geofence/bing-maps-nores.png)
 
-##设置 UWP 应用程序
-
+## 设置 UWP 应用程序
 现在我们已准备好数据源，接下来我们可以开始操作前面引导的 UWP 应用程序。
 
 首先，我们必须启用应用程序的位置服务。为此，请在“解决方案资源管理器”中双击 `Package.appxmanifest` 文件。
@@ -198,8 +200,7 @@
         });
     }
 
-##设置后端
-
+## 设置后端
 [从 GitHub 下载 .NET 后端示例](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers)。下载完成后，打开 `NotifyUsers` 文件夹，然后打开 `NotifyUsers.sln` 文件。
 
 将 `AppBackend` 项目设置为“启始项目”并将它启动。
@@ -275,7 +276,10 @@
         }
     }
 
->[AZURE.NOTE] 请务必将 API 终结点替换为前面从必应开发人员中心获取的查询 URL（这一点同样适用于 API 密钥）。
+> [!NOTE]
+> 请务必将 API 终结点替换为前面从必应开发人员中心获取的查询 URL（这一点同样适用于 API 密钥）。
+> 
+> 
 
 如果查询返回了结果，则表示指定位置点位于地域隔离边界内，因此返回 `true`。如果未返回结果，必应将告诉我们位置点位于查找框架外部，因此返回 `false`。
 
@@ -302,8 +306,7 @@
 
 这样，仅当位置点位于边界内时才发送通知。
 
-##在 UWP 应用中测试推送通知
-
+## 在 UWP 应用中测试推送通知
 回到 UWP 应用，现在我们应该可以测试通知。在 `LocationHelper` 类中创建新函数 `SendLocationToBackend`：
 
     public static async Task SendLocationToBackend(string pns, string userTag, string message, string latitude, string longitude)
@@ -325,7 +328,10 @@
         }
     }
 
->[AZURE.NOTE] 将 `POST_URL` 切换为我们在上一部分创建的已部署 Web 应用程序的位置。现在，可以在本地运行该应用，但是由于你要着手部署公共版本，因此需要使用一个外部提供程序来托管该应用。
+> [!NOTE]
+> 将 `POST_URL` 切换为我们在上一部分创建的已部署 Web 应用程序的位置。现在，可以在本地运行该应用，但是由于你要着手部署公共版本，因此需要使用一个外部提供程序来托管该应用。
+> 
+> 
 
 现在，请确保注册 UWP 应用以发送推送通知。在 Visual Studio 中，单击“项目”>“应用商店”>“将应用与应用商店关联”。
 
@@ -370,8 +376,7 @@
 
 ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-##接下来要做什么？
-
+## 接下来要做什么？
 除了上述步骤外，你可能还需要遵循几个步骤来确保解决方案可用于生产环境。
 
 首先，你可能需要确保地域隔离区是动态的。需要对必应 API 进行一些额外的处理，才能在现有数据源内上载新边界。有关该主题的详细信息，请参阅[必应空间数据服务 API 文档](https://msdn.microsoft.com/library/ff701734.aspx)。

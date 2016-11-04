@@ -1,33 +1,30 @@
-<properties
-    pageTitle="在 Azure App Service 移动应用中创建 Android 应用 | Microsoft Azure"
-    description="遵循本教程开始使用 Azure 移动应用后端进行 Android 开发"
-    services="app-service\mobile"
-    documentationCenter="android"
-    authors="RickSaling"
-    manager="erikre"
-    editor=""/>
+---
+title: 在 Azure App Service 移动应用中创建 Android 应用 | Microsoft Docs
+description: 遵循本教程开始使用 Azure 移动应用后端进行 Android 开发
+services: app-service\mobile
+documentationcenter: android
+author: RickSaling
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="app-service-mobile"
-    ms.workload="na"
-    ms.tgt_pltfrm="mobile-android"
-    ms.devlang="java"
-    ms.topic="hero-article"
-    ms.date="08/17/2016"
-    ms.author="ricksal"/>
+ms.service: app-service-mobile
+ms.workload: na
+ms.tgt_pltfrm: mobile-android
+ms.devlang: java
+ms.topic: hero-article
+ms.date: 08/17/2016
+ms.author: ricksal
 
-#创建 Android 应用
-
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+---
+# 创建 Android 应用
+[!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## 概述
-
 本教程说明如何使用 Azure 移动应用后端向 Android 移动应用添加基于云的后端服务。将创建一个新的移动应用后端以及一个简单的_待办事项列表_ Android 应用，此应用将应用数据存储在 Azure 中。
 
 只有在完成本教程后，才可以学习有关使用 Azure 应用服务中的移动应用功能的所有其他 Android 教程。
 
 ## 先决条件
-
 若要完成本教程，您需要以下各项：
 
 * [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。
@@ -35,17 +32,13 @@
 * [有效的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## 创建新的 Azure 移动应用后端
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
+[!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 ## 配置服务器项目
-
-[AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
+[!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## 下载并运行 Android 应用
-
-[AZURE.INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
-
+[!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- Images. -->
 

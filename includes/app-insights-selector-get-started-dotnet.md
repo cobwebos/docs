@@ -7,11 +7,13 @@
 
 安装 SDK，然后为其他数据添加监视功能：
 
-> [AZURE.SELECTOR]
-- [安装 SDK](../articles/application-insights/app-insights-asp-net.md#selector1)
-- [用户和页面数据](../articles/application-insights/app-insights-javascript.md#selector1)
-- [异常](../articles/application-insights/app-insights-asp-net-exceptions.md#selector1)
-- [依赖项](../articles/application-insights/app-insights-asp-net-dependencies.md#selector1)
-- [可用性](../articles/application-insights/app-insights-monitor-web-app-availability.md#selector1)
+> [!div class="op_single_selector"]
+> * [安装 SDK](../articles/application-insights/app-insights-asp-net.md#selector1)
+> * [用户和页面数据](../articles/application-insights/app-insights-javascript.md#selector1)
+> * [异常](../articles/application-insights/app-insights-asp-net-exceptions.md#selector1)
+> * [依赖项](../articles/application-insights/app-insights-asp-net-dependencies.md#selector1)
+> * [可用性](../articles/application-insights/app-insights-monitor-web-app-availability.md#selector1)
+> 
+> 
 
 <!---HONumber=AcomDC_0921_2016-->

@@ -1,23 +1,22 @@
-<properties
-	pageTitle="延伸数据库概述 | Microsoft Azure"
-	description="了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。"
-	services="sql-server-stretch-database"
-	documentationCenter=""
-	authors="douglaslMS"
-	manager=""
-	editor=""/>
+---
+title: 延伸数据库概述 | Microsoft Docs
+description: 了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。
+services: sql-server-stretch-database
+documentationcenter: ''
+author: douglaslMS
+manager: ''
+editor: ''
 
-<tags
-	ms.service="sql-server-stretch-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="06/27/2016"
-	ms.author="douglasl"/>
+ms.service: sql-server-stretch-database
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 06/27/2016
+ms.author: douglasl
 
+---
 # 延伸数据库概述
-
 Stretch Database 可以透明、安全地将冷数据迁移到 Microsoft Azure 云。
 
 如果只是想要立即开始使用 Stretch Database，请参阅[通过运行“为数据库启用延伸”向导开始操作](sql-server-stretch-database-wizard.md)。
@@ -40,9 +39,8 @@ Stretch Database 可以透明、安全地将冷数据迁移到 Microsoft Azure �
 ## 延伸数据库的作用是什么？
 为一个 SQL Server 实例、一个数据库和至少一个表启用 Stretch Database 后，Stretch Database 会以静默方式开始将冷数据迁移到 Azure。
 
--   如果在单独的某个表中存储了冷数据，你可以迁移整个表。
-
--   如果表同时包含热数据和冷数据，你可以指定筛选器函数来选择要迁移的行。
+* 如果在单独的某个表中存储了冷数据，你可以迁移整个表。
+* 如果表同时包含热数据和冷数据，你可以指定筛选器函数来选择要迁移的行。
 
 **无需更改现有的查询和客户端应用。** 即使在数据迁移过程中，你也可以持续顺畅访问本地数据和远程数据。远程查询会出现轻微的延迟，但仅当你查询冷数据时，才会遇到这种延迟。
 
@@ -55,12 +53,12 @@ Stretch Database 可以透明、安全地将冷数据迁移到 Microsoft Azure �
 ## 延伸数据库适合你吗？
 如果你与下表中的表述相符，则延伸数据库可以帮助你满足要求和解决问题。
 
-|如果你是决策人|如果你是数据库管理员|
-|------------------------------|-------------------|
-|我必须长期保留事务数据。|我的表大小正在失控。|
-|我有时需要查询冷数据。|我的用户指出他们想要访问冷数据，但他们极少使用这些数据。|
-|我不想要更新某些应用，包括早期的应用。|我必须不断购置更多的存储。|
-|在存储方面，我想要找到一种省钱的方法。|我无法在 SLA 的规定范围内备份或还原这种大型表。|
+| 如果你是决策人 | 如果你是数据库管理员 |
+| --- | --- |
+| 我必须长期保留事务数据。 |我的表大小正在失控。 |
+| 我有时需要查询冷数据。 |我的用户指出他们想要访问冷数据，但他们极少使用这些数据。 |
+| 我不想要更新某些应用，包括早期的应用。 |我必须不断购置更多的存储。 |
+| 在存储方面，我想要找到一种省钱的方法。 |我无法在 SLA 的规定范围内备份或还原这种大型表。 |
 
 ## 哪种类型的数据库和表符合延伸数据库条件？
 Stretch Database 面向包含大量冷数据的事务数据库，这些数据通常存储在少量的表中。这些表可能包含超过十亿行。

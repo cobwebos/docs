@@ -5,6 +5,6 @@ VNet 对等互连提供公共预览版，须用以下命令注册后才可使用
     Register-AzureRmProviderFeature -FeatureName AllowVnetPeering -ProviderNamespace Microsoft.Network
 
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
- 
+
 
 <!---HONumber=AcomDC_0921_2016-->

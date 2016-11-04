@@ -1,29 +1,30 @@
-<properties
-   pageTitle="恢复服务保管库常见问题 | Microsoft Azure"
-   description="此版常见问题支持 Azure 备份服务公共预览版。针对备份代理、备份和保留、恢复、安全性的常见问题以及针对 Azure 备份解决方案的其他常见问题的答案。"
-   services="backup"
-   documentationCenter=""
-   authors="markgalioto"
-   manager="jwhit"
-   editor=""
-   keywords="备份解决方案; 备份服务"/>
+---
+title: 恢复服务保管库常见问题 | Microsoft Docs
+description: 此版常见问题支持 Azure 备份服务公共预览版。针对备份代理、备份和保留、恢复、安全性的常见问题以及针对 Azure 备份解决方案的其他常见问题的答案。
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: jwhit
+editor: ''
+keywords: 备份解决方案; 备份服务
 
-<tags
-   ms.service="backup"
-   ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="get-started-article"
-	 ms.date="08/21/2016"
-	 ms.author="trinadhk; markgal; jimpark;"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/21/2016
+ms.author: trinadhk; markgal; jimpark;
 
+---
 # 恢复服务保管库 - 常见问题
+> [!div class="op_single_selector"]
+> * [经典模式备份常见问题](backup-azure-backup-faq.md)
+> * [资源管理器模式备份常见问题](backup-azure-backup-ibiza-faq.md)
+> 
+> 
 
-> [AZURE.SELECTOR]
-- [经典模式备份常见问题](backup-azure-backup-faq.md)
-- [资源管理器模式备份常见问题](backup-azure-backup-ibiza-faq.md)
-
-本文提供特定于恢复服务保管库的信息，并对 [Azure 备份常见问题](backup-azure-backup-faq)进行了补充。Azure 备份常见问题提供整套有关 Azure 备份服务的问答。
+本文提供特定于恢复服务保管库的信息，并对 [Azure 备份常见问题](backup-azure-backup-faq.md)进行了补充。Azure 备份常见问题提供整套有关 Azure 备份服务的问答。
 
 你可以在本文或相关章的 Disqus 部分中提出有关 Azure 备份的问题。你也可以在[论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 

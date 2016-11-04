@@ -1,24 +1,25 @@
-<properties
-    pageTitle="在 Azure RemoteApp 中使用 Outlook | Microsoft Outlook" 
-    description="了解在 Azure RemoteApp 中如何配置和使用 Outlook | Microsoft Azure"
-    services="remoteapp"
-    documentationCenter=""
-    authors="pavithir"
-    manager="mbaldwin" />
+---
+title: 在 Azure RemoteApp 中使用 Outlook | Microsoft Docs
+description: 了解在 Azure RemoteApp 中如何配置和使用 Outlook | Microsoft Azure
+services: remoteapp
+documentationcenter: ''
+author: pavithir
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
+---
 # 在 Azure RemoteApp 中使用 Microsoft Outlook
-
-> [AZURE.IMPORTANT]
-正在中断 Azure RemoteApp。请阅读[公告](https://go.microsoft.com/fwlink/?linkid=821148)了解详细信息。
+> [!IMPORTANT]
+> 正在中断 Azure RemoteApp。请阅读[公告](https://go.microsoft.com/fwlink/?linkid=821148)了解详细信息。
+> 
+> 
 
 Azure RemoteApp 支持 Microsoft Outlook O365。请阅读有关 [Office 如何在 Azure RemoteApp 中运行](remoteapp-officesubscription.md)了解详细信息。在 Azure RemoteApp 使用 Outlook 时，建议使用以下设置。
 

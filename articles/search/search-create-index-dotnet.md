@@ -1,29 +1,30 @@
-<properties
-    pageTitle="使用 NET SDK 创建 Azure 搜索索引 | Microsoft Azure | 托管云搜索服务"
-    description="使用 Azure 搜索 .NET SDK 在代码中创建索引。"
-    services="search"
-    documentationCenter=""
-    authors="brjohnstmsft"
-    manager=""
-    editor=""
-    tags="azure-portal"/>
+---
+title: 使用 NET SDK 创建 Azure 搜索索引 | Microsoft Docs
+description: 使用 Azure 搜索 .NET SDK 在代码中创建索引。
+services: search
+documentationcenter: ''
+author: brjohnstmsft
+manager: ''
+editor: ''
+tags: azure-portal
 
-<tags
-    ms.service="search"
-    ms.devlang="dotnet"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="brjohnst"/>
+ms.service: search
+ms.devlang: dotnet
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: brjohnst
 
+---
 # 使用 .NET SDK 创建 Azure 搜索索引
-> [AZURE.SELECTOR]
-- [概述](search-what-is-an-index.md)
-- [门户](search-create-index-portal.md)
-- [.NET](search-create-index-dotnet.md)
-- [REST](search-create-index-rest-api.md)
-
+> [!div class="op_single_selector"]
+> * [概述](search-what-is-an-index.md)
+> * [门户](search-create-index-portal.md)
+> * [.NET](search-create-index-dotnet.md)
+> * [REST](search-create-index-rest-api.md)
+> 
+> 
 
 本文介绍如何使用 [Azure 搜索 .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) 创建 Azure 搜索[索引](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
 
@@ -40,12 +41,13 @@
 
 服务将具有*管理密钥*和*查询密钥*。
 
-  - 主管理密钥和辅助*管理密钥*授予所有操作完全权限，包括可以管理服务，创建和删除索引、索引器和数据源。之所以有两个密钥是为了确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
-  - *查询密钥*授予对索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
+* 主管理密钥和辅助*管理密钥*授予所有操作完全权限，包括可以管理服务，创建和删除索引、索引器和数据源。之所以有两个密钥是为了确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
+* *查询密钥*授予对索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
 
 可以使用主管理密钥或辅助管理密钥来创建索引。
 
 <a name="CreateSearchServiceClient">
+
 ## II.创建 SearchServiceClient 类的实例
 若要开始使用 Azure 搜索 .NET SDK，需要创建 `SearchServiceClient` 类的实例。此类具有几个构造函数。需要将搜索服务名称和 `SearchCredentials` 对象用作参数。`SearchCredentials` 包装 API 密钥。
 
@@ -60,9 +62,13 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 
 `SearchServiceClient` 具有 `Indexes` 属性。此属性提供创建、列出、更新或删除 Azure 搜索索引所需的所有方法。
 
-> [AZURE.NOTE] `SearchServiceClient` 类管理与搜索服务的连接。为了避免打开太多连接，应尝试在应用程序中共享 `SearchServiceClient` 的单个实例（如果可能）。它的方法在启用此类共享时是线程安全的。
+> [!NOTE]
+> `SearchServiceClient` 类管理与搜索服务的连接。为了避免打开太多连接，应尝试在应用程序中共享 `SearchServiceClient` 的单个实例（如果可能）。它的方法在启用此类共享时是线程安全的。
+> 
+> 
 
 <a name="DefineIndex">
+
 ## III.使用 `Index` 类定义 Azure 搜索索引
 只需调用一次 `Indexes.Create` 方法即可创建索引。此方法以定义 Azure 搜索索引的 `Index` 对象作为参数。需要创建 `Index` 对象，并对其进行初始化，如下所示：
 
@@ -101,7 +107,10 @@ var definition = new Index()
 
 上述索引定义对 `description_fr` 字段使用了自定义语言分析器，因为它用于存储法语文本。有关语言分析器的详细信息，请参阅 [MSDN 上的语言支持主题](https://msdn.microsoft.com/library/azure/dn879793.aspx)以及相应的[博客文章](https://azure.microsoft.com/blog/language-support-in-azure-search/)。
 
-> [AZURE.NOTE]  请注意，通过将 `AnalyzerName.FrLucene` 传入构造函数，`Field` 将自动为 `DataType.String` 类型，并且其 `IsSearchable` 将设置为 `true`。
+> [!NOTE]
+> 请注意，通过将 `AnalyzerName.FrLucene` 传入构造函数，`Field` 将自动为 `DataType.String` 类型，并且其 `IsSearchable` 将设置为 `true`。
+> 
+> 
 
 ## IV.创建索引
 获得已初始化的 `Index` 对象后，只需对 `SearchServiceClient` 对象调用 `Indexes.Create` 即可创建索引：
@@ -118,7 +127,10 @@ serviceClient.Indexes.Create(definition);
 serviceClient.Indexes.Delete("hotels");
 ```
 
-> [AZURE.NOTE] 为简单起见，本文中的示例代码使用 Azure 搜索 .NET SDK 的同步方法。建议用户在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。例如，在上面的示例中可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
+> [!NOTE]
+> 为简单起见，本文中的示例代码使用 Azure 搜索 .NET SDK 的同步方法。建议用户在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。例如，在上面的示例中可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
+> 
+> 
 
 ## 下一步
 创建 Azure 搜索索引后，就可以[将内容上载到索引中](search-what-is-data-import.md)，以便可以开始搜索数据。

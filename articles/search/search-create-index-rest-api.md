@@ -1,36 +1,36 @@
-<properties
-    pageTitle="使用 REST API 创建 Azure 搜索索引| Microsoft Azure | 托管云搜索服务"
-    description="使用 Azure 搜索 HTTP REST API 在代码中创建索引。"
-    services="search"
-    documentationCenter=""
-    authors="ashmaka"
-    manager=""
-    editor=""
-    tags="azure-portal"/>
+---
+title: 使用 REST API 创建 Azure 搜索索引| Microsoft Docs
+description: 使用 Azure 搜索 HTTP REST API 在代码中创建索引。
+services: search
+documentationcenter: ''
+author: ashmaka
+manager: ''
+editor: ''
+tags: azure-portal
 
-<tags
-    ms.service="search"
-    ms.devlang="rest-api"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
+---
 # 使用 REST API 创建 Azure 搜索索引
-> [AZURE.SELECTOR]
-- [概述](search-what-is-an-index.md)
-- [门户](search-create-index-portal.md)
-- [.NET](search-create-index-dotnet.md)
-- [REST](search-create-index-rest-api.md)
-
+> [!div class="op_single_selector"]
+> * [概述](search-what-is-an-index.md)
+> * [门户](search-create-index-portal.md)
+> * [.NET](search-create-index-dotnet.md)
+> * [REST](search-create-index-rest-api.md)
+> 
+> 
 
 本文介绍了如何使用 Azure 搜索 REST API 创建 Azure 搜索[索引](https://msdn.microsoft.com/library/azure/dn798941.aspx)。
 
 按照本指南创建索引之前，应已经[创建 Azure 搜索服务](search-create-service-portal.md)。
 
 若要使用 REST API 创建 Azure 搜索索引，需向 Azure 搜索服务的 URL 终结点发出一个 HTTP POST 请求。索引定义作为格式标准的 JSON 内容包含在请求正文中。
-
 
 ## I.标识 Azure 搜索服务的管理 API 密钥
 现在，已预配 Azure 搜索服务，可以使用 REST API 向服务的 URL 终结点发出 HTTP 请求。但是，所有API 请求必须包含为预配的搜索服务所生成的 API 密钥。具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
@@ -41,8 +41,8 @@
 
 服务将具有*管理密钥*和*查询密钥*。
 
- - 主管理密钥和辅助*管理密钥*授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
- - *查询密钥*授予索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
+* 主管理密钥和辅助*管理密钥*授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
+* *查询密钥*授予索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
 
 可以使用主管理密钥或辅助管理密钥来创建索引。
 
@@ -86,9 +86,7 @@
 1. 将索引定义用作请求正文，向 Azure 搜索服务终结点 URL 发出 HTTP POST 请求。在 URL 中，请务必使用服务名称作为主机名，并将适当的 `api-version` 作为查询字符串参数（发布此文档时，当时的 API 版本为 `2015-02-28`）。
 2. 在请求头中，指定 `Content-Type` 作为 `application/json`。还需提供步骤 I 中在 `api-key` 标头中标识的服务管理密钥。
 
-
 必须提供自己的服务名称和 API 密钥，以发出以下请求：
-
 
     POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
     Content-Type: application/json

@@ -1,52 +1,52 @@
-<properties
-   pageTitle="Azure 备份常见问题 | Microsoft Azure"
-   description="有关备份服务、备份代理、备份和保留、恢复、安全性，以及有关备份和灾难恢复的常见问题的解答。"
-   services="backup"
-   documentationCenter=""
-   authors="markgalioto"
-   manager="jwhit"
-   editor=""
-   keywords="备份和灾难恢复;备份服务"/>
+---
+title: Azure 备份常见问题 | Microsoft Docs
+description: 有关备份服务、备份代理、备份和保留、恢复、安全性，以及有关备份和灾难恢复的常见问题的解答。
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: jwhit
+editor: ''
+keywords: 备份和灾难恢复;备份服务
 
-<tags
-   ms.service="backup"
-   ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="get-started-article"
-	 ms.date="08/29/2016"
-	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/29/2016
+ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 
+---
 # Azure 备份服务 - 常见问题
-
-> [AZURE.SELECTOR]
-- [经典模式备份常见问题](backup-azure-backup-faq.md)
-- [资源管理器模式备份常见问题](backup-azure-backup-ibiza-faq.md)
+> [!div class="op_single_selector"]
+> * [经典模式备份常见问题](backup-azure-backup-faq.md)
+> * [资源管理器模式备份常见问题](backup-azure-backup-ibiza-faq.md)
+> 
+> 
 
 本文提供有关 Azure 备份服务常见问题（及相应解答）的列表。我们的社区可在短时间内提供解答，如果某个问题被经常提出，我们会将它添加到本文中。问题的解答通常提供参考或支持信息。你可以在本文或相关章的 Disqus 部分中提出有关 Azure 备份的问题。还可以在[论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
-
 
 ## 我可以在哪些受支持的操作系统上使用 Azure 备份向 Azure 备份数据？<br/>
 Azure 备份支持以下操作系统使用 Azure 备份服务器和 SCDPM 进行文件-文件夹备份和应用程序备份。
 
 | 操作系统 | 平台 | SKU |
-| :------------- |-------------| :-----|
-| Windows 8 和最新的 SP | 64 位 | Enterprise、Pro |
-| Windows 7 和最新的 SP | 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter |
-| Windows 8.1 和最新的 SP | 64 位 | Enterprise、Pro |
-| Windows 10 | 64 位 | Enterprise、Pro、Home |
-|Windows Server 2012 R2 和最新的 SP|	64 位|	Standard、Datacenter、Foundation|
-|Windows Server 2012 和最新的 SP|	64 位|	Datacenter、Foundation、Standard|
-|Windows Storage Server 2012 R2 和最新的 SP |64 位|	Standard、Workgroup|
-|Windows Storage Server 2012 和最新的 SP |64 位 |Standard、Workgroup
-|Windows Server 2012 R2 和最新的 SP |64 位|	Essential|
-|Windows Server 2008 R2 SP1 |64 位|	Standard、Enterprise、Datacenter、Foundation|
-|Windows Server 2008 SP2 |64 位|	Standard、Enterprise、Datacenter、Foundation|
+|:--- | --- |:--- |
+| Windows 8 和最新的 SP |64 位 |Enterprise、Pro |
+| Windows 7 和最新的 SP |64 位 |Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter |
+| Windows 8.1 和最新的 SP |64 位 |Enterprise、Pro |
+| Windows 10 |64 位 |Enterprise、Pro、Home |
+| Windows Server 2012 R2 和最新的 SP |64 位 |Standard、Datacenter、Foundation |
+| Windows Server 2012 和最新的 SP |64 位 |Datacenter、Foundation、Standard |
+| Windows Storage Server 2012 R2 和最新的 SP |64 位 |Standard、Workgroup |
+| Windows Storage Server 2012 和最新的 SP |64 位 |Standard、Workgroup |
+| Windows Server 2012 R2 和最新的 SP |64 位 |Essential |
+| Windows Server 2008 R2 SP1 |64 位 |Standard、Enterprise、Datacenter、Foundation |
+| Windows Server 2008 SP2 |64 位 |Standard、Enterprise、Datacenter、Foundation |
 
 对于 Azure VM 备份，
 
-- **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md)，但 Core OS Linux 除外。只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。
-- **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
+* **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md)，但 Core OS Linux 除外。只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。
+* **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
 
 ## 我可以在哪里下载最新的 Azure 备份代理？<br/>
 可以从[此处](http://aka.ms/azurebackup_agent)下载最新的代理，用于备份 Windows Server、System Center DPM 或 Windows 客户端。如果你想要备份虚拟机，请使用 VM 代理（会自动安装适当的扩展）。从 Azure 资源库创建的虚拟机上已有 VM 代理。
@@ -72,26 +72,26 @@ Azure 备份支持以下操作系统使用 Azure 备份服务器和 SCDPM 进行
 ## 可以从哪些类型的驱动器备份文件和文件夹？<br/>
 无法备份以下驱动器/卷组：
 
-- 可移动介质：驱动器必须报告为固定的，以便用作备份项的源。
-- 只读卷：为使卷影复制服务 (VSS) 起作用，卷必须是可写的。
-- 脱机卷：为使 VSS 起作用，卷必须是联机的。
-- 网络共享：若要使用联机备份进行备份，卷对于服务器而言必须是本地的。
-- Bitlocker 保护的卷：必须先解锁卷，然后才能备份。
-- 文件系统标识：此版本的联机备份服务仅支持 NTFS 文件系统。
+* 可移动介质：驱动器必须报告为固定的，以便用作备份项的源。
+* 只读卷：为使卷影复制服务 (VSS) 起作用，卷必须是可写的。
+* 脱机卷：为使 VSS 起作用，卷必须是联机的。
+* 网络共享：若要使用联机备份进行备份，卷对于服务器而言必须是本地的。
+* Bitlocker 保护的卷：必须先解锁卷，然后才能备份。
+* 文件系统标识：此版本的联机备份服务仅支持 NTFS 文件系统。
 
 ## 可以从我的服务器备份哪些类型的文件和文件夹？<br/>
 支持以下类型：
 
-- 加密
-- 压缩
-- 稀疏
-- 压缩 + 稀疏
-- 硬链接：不支持，跳过
-- 重分析点：不支持，跳过
-- 加密 + 压缩：不支持，跳过
-- 加密 + 稀疏：不支持，跳过
-- 压缩流：不支持，跳过
-- 稀疏流：不支持，跳过
+* 加密
+* 压缩
+* 稀疏
+* 压缩 + 稀疏
+* 硬链接：不支持，跳过
+* 重分析点：不支持，跳过
+* 加密 + 压缩：不支持，跳过
+* 加密 + 稀疏：不支持，跳过
+* 压缩流：不支持，跳过
+* 稀疏流：不支持，跳过
 
 ## 针对缓存文件夹的最小大小要求是什么？<br/>
 缓存文件夹的大小由你正在备份的数据量确定。缓存文件夹应是数据存储所需空间的 5%。
@@ -116,13 +116,13 @@ Azure 备份支持以下操作系统使用 Azure 备份服务器和 SCDPM 进行
 ## 要为 Azure 备份配置哪些防火墙规则？<br/>
 为了妥善保护本地到 Azure 以及工作负荷到 Azure 的数据，建议你允许防火墙与以下 URL 通信：
 
-- www.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+* www.msftncsi.com
+* *.Microsoft.com
+* *.WindowsAzure.com
+* *.microsoftonline.com
+* *.windows.net
 
-##可以在已由 Azure 备份服务备份的 Azure VM 上使用 VM 扩展来安装 Azure 备份代理吗？<br/>
+## 可以在已由 Azure 备份服务备份的 Azure VM 上使用 VM 扩展来安装 Azure 备份代理吗？<br/>
 绝对是。Azure 备份使用 VM 扩展为 Azure VM 提供 VM 级别备份。你可以在来宾 Windows OS 上安装 Azure 备份代理，以保护该来宾 OS 上的文件和文件夹。
 
 ## 可以在 Azure VM 上安装 Azure 备份代理来备份 Azure VM 提供的临时存储中存在的文件和文件夹吗？<br/>
@@ -131,10 +131,10 @@ Azure 备份支持以下操作系统使用 Azure 备份服务器和 SCDPM 进行
 ## 我已安装 Azure 备份代理来保护我的文件和文件夹。现在可以安装 SCDPM 来与 Azure 备份代理配合使用，以便在 Azure 中保护本地应用程序/VM 工作负荷吗？<br/>
 若要将 Azure 备份与 SCDPM 配合使用，我们建议只有在安装 SCDPM 之后，才安装 Azure 备份代理。这可确保 Azure 备份代理能与 SCDPM 紧密集成，并直接通过 SCDPM 管理控制台在 Azure 中保护文件/文件夹、应用程序工作负荷和 VM。既不建议也不支持在安装 Azure 备份代理之后，针对上述目的安装 SCDPM。
 
-## 可以使用 Azure 备份代理指定为 Azure 备份策略的一部分的文件路径的长度是多少？<br/>  
+## 可以使用 Azure 备份代理指定为 Azure 备份策略的一部分的文件路径的长度是多少？<br/>
 Azure 备份代理依赖于 NTFS。[文件路径长度规范受限于 Windows API](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。在备份文件路径长度大于 Windows API 所指定长度的文件时，客户可以选择备份备份文件的父文件夹或磁盘驱动器。
 
-## 使用 Azure 备份代理的 Azure 备份策略的文件路径中允许哪些字符？<br>  
+## 使用 Azure 备份代理的 Azure 备份策略的文件路径中允许哪些字符？<br>
  Azure 备份代理依赖于 NTFS。允许使用 [NTFS 支持的字符](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions)作为文件规范的一部分。
 
 ## 是否可以使用 Azure 备份服务器为物理服务器创建裸机恢复 (BMR) 备份？<br/>
@@ -146,23 +146,23 @@ Azure 备份代理依赖于 NTFS。[文件路径长度规范受限于 Windows AP
 ## 要备份的每个数据源的大小是否有限制？<br/>
 虽然在保管库级别可以备份的数据量没有限制，但 Azure 备份的确会对数据源的最大大小进行限制（就所有实际用途而言，这些限值非常高）。截至 2015 年 8 月，受支持操作系统的数据源大小上限为：
 
-|S.No |	操作系统 |	数据源的最大大小 |
-| :-------------: |:-------------| :-----|
-|1| Windows Server 2012 或更高版本| 54400 GB|
-|2| Windows 8 或更高版本| 54400 GB|
-|3| Windows Server 2008、Windows Server 2008 R2 | 1700 GB|
-|4| Windows 7 | 1700 GB|
+| S.No | 操作系统 | 数据源的最大大小 |
+|:---:|:--- |:--- |
+| 1 |Windows Server 2012 或更高版本 |54400 GB |
+| 2 |Windows 8 或更高版本 |54400 GB |
+| 3 |Windows Server 2008、Windows Server 2008 R2 |1700 GB |
+| 4 |Windows 7 |1700 GB |
 
 下表说明了如何确定每个数据源大小。
 
-|	数据源 |	详细信息 |
-| :-------------: |:-------------|
-|数据量(Volume) |从服务器或客户端计算机的单个卷备份的数据量|
-|Hyper-V 虚拟机 | 所备份虚拟机的所有 VHD 的数据总和|
-|Microsoft SQL Server 数据库 | 所备份的单个 SQL 数据库的大小 |
-|Microsoft SharePoint |所备份 SharePoint 场中内容和配置数据库的总和|
-|Microsoft Exchange |所备份 Exchange 服务器中所有 Exchange 数据库的总和|
-|BMR/系统状态 |所备份计算机的 BMR 或系统状态的每个副本|
+| 数据源 | 详细信息 |
+|:---:|:--- |
+| 数据量(Volume) |从服务器或客户端计算机的单个卷备份的数据量 |
+| Hyper-V 虚拟机 |所备份虚拟机的所有 VHD 的数据总和 |
+| Microsoft SQL Server 数据库 |所备份的单个 SQL 数据库的大小 |
+| Microsoft SharePoint |所备份 SharePoint 场中内容和配置数据库的总和 |
+| Microsoft Exchange |所备份 Exchange 服务器中所有 Exchange 数据库的总和 |
+| BMR/系统状态 |所备份计算机的 BMR 或系统状态的每个副本 |
 
 ## 备份作业每日可计划的次数是否有限制？<br/>
 是的，一天可以在 Windows Server 或 Windows 客户端上运行备份操作最多三次。一天可以在 System Center DPM 上运行备份操作最多两次。一天可以运行 IaaS VM 的备份作业一次。
@@ -222,39 +222,38 @@ Azure 备份代理依赖于 NTFS。[文件路径长度规范受限于 Windows AP
 
 ## 如何更改针对 Azure 备份代理指定的缓存位置？<br/>
  请依次参考以下要点列表来更改缓存位置。
-- 通过在权限提升的命令提示符下运行以下命令来停止备份引擎：
 
+* 通过在权限提升的命令提示符下运行以下命令来停止备份引擎：
+  
   ```PS C:\> Net stop obengine```
+* 请不要移动文件，而是将缓存空间文件夹复制到具有足够空间的其他驱动器。确认备份使用新的缓存空间后，可以删除原始缓存空间。
+* 更新以下注册表项，使路径指向新的缓存空间文件夹。<br/>
 
-- 请不要移动文件，而是将缓存空间文件夹复制到具有足够空间的其他驱动器。确认备份使用新的缓存空间后，可以删除原始缓存空间。
+| 注册表路径 | 注册表项 | 值 |
+| --- | --- | --- |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
 
-- 更新以下注册表项，使路径指向新的缓存空间文件夹。<br/>
-
-|注册表路径 | 注册表项 | 值 |
-| ------ | ------- | ------|
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | *新缓存文件夹位置* |
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | *新缓存文件夹位置* |
-
-- 通过在提升的命令提示符下执行以下命令来重新启动备份引擎：
-
+* 通过在提升的命令提示符下执行以下命令来重新启动备份引擎：
+  
   ```PS C:\> Net start obengine```
-
+  
   在新缓存位置成功完成创建备份后，可以删除原始缓存文件夹。
 
 ## 可以将缓存文件夹放在何处，以便 Azure 备份代理按预期工作？<br/>
 不建议将缓存文件夹放在以下位置：
 
-- 网络共享或可移动媒体：缓存文件夹必须位于需要使用联机备份进行备份的服务器本地。不支持网络位置或可移动媒体，例如 U 盘。
-- 脱机卷：缓存文件夹必须联机才能使用 Azure 备份代理执行预期的备份。
+* 网络共享或可移动媒体：缓存文件夹必须位于需要使用联机备份进行备份的服务器本地。不支持网络位置或可移动媒体，例如 U 盘。
+* 脱机卷：缓存文件夹必须联机才能使用 Azure 备份代理执行预期的备份。
 
 ## 缓存文件夹是否有任何不受支持的属性？<br/>
  缓存文件夹不支持以下属性或其组合：
 
-- 加密
-- 已删除重复数据
-- 压缩
-- 稀疏
-- 重分析点
+* 加密
+* 已删除重复数据
+* 压缩
+* 稀疏
+* 重分析点
 
 为使 Azure 备份代理按预期运行，不建议对缓存文件夹和元数据 VHD 设置上述属性。
 

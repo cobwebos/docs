@@ -1,26 +1,27 @@
-<properties
-    pageTitle="使用 NET SDK 查询 Azure 搜索 | Microsoft Azure | 托管云搜索服务"
-    description="在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。"
-    services="search"
-    documentationCenter=""
-    authors="brjohnstmsft"
-/>
+---
+title: 使用 NET SDK 查询 Azure 搜索 | Microsoft Docs
+description: 在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。
+services: search
+documentationcenter: ''
+author: brjohnstmsft
 
-<tags
-    ms.service="search"
-    ms.devlang="dotnet"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="brjohnst"/>
+ms.service: search
+ms.devlang: dotnet
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: brjohnst
 
+---
 # 使用 .NET SDK 查询 Azure 搜索索引
-> [AZURE.SELECTOR]
-- [概述](search-query-overview.md)
-- [门户](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [概述](search-query-overview.md)
+> * [门户](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 本文介绍如何使用 [Azure 搜索 .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) 查询索引。
 
@@ -37,8 +38,8 @@
 
 服务将具有*管理密钥*和*查询密钥*。
 
-  - 主管理密钥和辅助*管理密钥*授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
-  - *查询密钥*授予索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
+* 主管理密钥和辅助*管理密钥*授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
+* *查询密钥*授予索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
 
 可以使用其中一个查询密钥来查询索引。查询也可使用管理密钥，但最好在应用程序代码中使用查询密钥，因为这更符合[最低特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege)。
 
@@ -65,7 +66,6 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 使用 `Documents.Search` 方法可同时执行搜索和查询。搜索查询可在 `searchText` 参数中传递，而筛选表达式则可在 `SearchParameters` 类的 `Filter` 属性中传递。若要筛选但不搜索，只需传递 `"*"` 作为 `searchText` 参数。若要搜索但不筛选，只需不设置 `Filter` 属性，或不在 `SearchParameters` 实例中传递。
 
 #### 查询示例
-
 下面的示例代码演示查询“hotels”索引的几种不同方法（该索引在[使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#DefineIndex)中定义）。注意，随搜索结果返回的文档是 `Hotel` 类的实例（该类在[使用 .NET SDK 将数据导入 Azure 搜索](search-import-data-dotnet.md#HotelClass)中定义）。示例代码使用 `WriteDocuments` 方法将搜索结果输出到控制台。此方法在下一节介绍。
 
 ```csharp

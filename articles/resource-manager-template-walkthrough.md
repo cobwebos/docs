@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Resource Manager 模板演练 | Microsoft Azure"
-   description="用于预配基本 Azure IaaS 体系结构的 Resource Manager 模板的分步演练。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="navalev"
-   manager=""
-   editor=""/>
+---
+title: Resource Manager 模板演练 | Microsoft Docs
+description: 用于预配基本 Azure IaaS 体系结构的 Resource Manager 模板的分步演练。
+services: azure-resource-manager
+documentationcenter: na
+author: navalev
+manager: ''
+editor: ''
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/04/2016"
-   ms.author="navale;tomfitz"/>
-   
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/04/2016
+ms.author: navale;tomfitz
+
+---
 # Resource Manager 模板演练
-
 创建模板时的首要问题之一是“如何开始？”。用户可以从空白模板开始，按照[创作模板](resource-group-authoring-templates.md#template-format)一文中所述的基本结构操作，并添加资源和相应的参数和变量。一个不错的开始替代方法是，浏览[快速入门库](https://github.com/Azure/azure-quickstart-templates)并寻找与你要创建的模板类似的方案。可以合并多个模板或编辑现有模板以适合你自己的特定方案。
 
 让我们来看一下通用基础结构：
@@ -32,10 +31,12 @@
 
 但是，要立即构建所有这些还有很多工作要做，因此，让我们首先创建一个存储帐户并将其部署。你掌握如何创建存储帐户后，可添加其他资源并重新部署模板以完成基础结构。
 
->[AZURE.NOTE] 创建模板时，你可以使用任何类型的编辑器。Visual Studio 提供了可简化模板开发的工具，但你不需要 Visual Studio 即可完成本教程。有关使用 Visual Studio 创建 Web 应用和 SQL 数据库部署的教程，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+> [!NOTE]
+> 创建模板时，你可以使用任何类型的编辑器。Visual Studio 提供了可简化模板开发的工具，但你不需要 Visual Studio 即可完成本教程。有关使用 Visual Studio 创建 Web 应用和 SQL 数据库部署的教程，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+> 
+> 
 
 ## 创建 Resource Manager 模板
-
 该模板是一个 JSON 文件，用于定义将部署的所有资源。此外，它还允许你定义在部署期间指定的参数、从其他值和表达式构造的变量，以及部署的输出。
 
 让我们从最简单的模板开始：
@@ -78,7 +79,7 @@
 
 ```json
 "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -96,7 +97,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -161,14 +162,15 @@ azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n Exa
 ```
 
 或者，如果你使用 Azure CLI，可以运行以下命令：
+
 ```
     azure provider list
 ```
 本主题假设你要创建包含存储帐户、虚拟机和虚拟网络的模板，因此可以使用：
 
-- Microsoft.Storage
-- Microsoft.Compute
-- Microsoft.Network
+* Microsoft.Storage
+* Microsoft.Compute
+* Microsoft.Network
 
 若要查看特定提供程序的资源类型，请运行以下 PowerShell 命令：
 
@@ -445,12 +447,14 @@ azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n Exa
 }
 ```
 
->[AZURE.NOTE] 对于**第三方供应商**发布的映像，必须指定名为 `plan` 的另一个属性。可从快速入门库的[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)中找到示例。
+> [!NOTE]
+> 对于**第三方供应商**发布的映像，必须指定名为 `plan` 的另一个属性。可从快速入门库的[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)中找到示例。
+> 
+> 
 
 你已定义模板的资源。
 
 ## Parameters
-
 在 parameters 节中，定义可在部署模板时指定的值。只针对你认为应在部署期间更改的值定义参数。如果部署期间不提供默认值，你可以为所用的参数提供默认值。如 **imageSKU** 参数所示，还可以定义允许的值。
 
 ```json
@@ -551,7 +555,6 @@ azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n Exa
 ```
 
 ## 变量
-
 在 variables 节中，可以定义在模板中多处使用的值，或从其他表达式或变量构造的值。我们经常使用变量来简化模板的语法。
 
 ```json
@@ -574,9 +577,8 @@ azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n Exa
 你可以使用部署存储帐户时使用的相同命令，重新部署该模板。在重新部署前无需删除存储帐户，因为 Resource Manager 将跳过重新创建已存在且未发生更改的资源。
 
 ## 后续步骤
-
-- [Azure Resource Manager 模板可视化工具 (ARMViz)](http://armviz.io/#/) 是一个强大的工具，可直观地显示 ARM 模板，因为这些模板只从 json 文件读取可能会变得太大而无法理解。
-- 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
-- 若要了解如何部署模板，请参阅[使用 Azure Resource Manager 模板部署资源组](resource-group-template-deploy.md)
+* [Azure Resource Manager 模板可视化工具 (ARMViz)](http://armviz.io/#/) 是一个强大的工具，可直观地显示 ARM 模板，因为这些模板只从 json 文件读取可能会变得太大而无法理解。
+* 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
+* 若要了解如何部署模板，请参阅[使用 Azure Resource Manager 模板部署资源组](resource-group-template-deploy.md)
 
 <!---HONumber=AcomDC_0921_2016-->

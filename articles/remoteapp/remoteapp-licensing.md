@@ -1,25 +1,25 @@
-<properties
-    pageTitle="Azure RemoteApp 授权 | Microsoft Azure"
-    description="了解如何在 Azure RemoteApp 中进行授权。"
-    services="remoteapp"
-    documentationCenter=""
-    authors="lizap"
-    manager="mbaldwin" />
+---
+title: Azure RemoteApp 授权 | Microsoft Docs
+description: 了解如何在 Azure RemoteApp 中进行授权。
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
+---
 # 如何在 Azure RemoteApp 中进行授权？
-
-> [AZURE.IMPORTANT]
-正在中断 Azure RemoteApp。请阅读[公告](https://go.microsoft.com/fwlink/?linkid=821148)了解详细信息。
+> [!IMPORTANT]
+> 正在中断 Azure RemoteApp。请阅读[公告](https://go.microsoft.com/fwlink/?linkid=821148)了解详细信息。
+> 
+> 
 
 至此，你已经设置了 Azure RemoteApp 服务，创建了模板并准备好将应用发布给你的用户。但还有最后一件事情要解决，那就是授权。如何在 RemoteApp 和你通过 RemoteApp 共享的应用中进行授权？
 

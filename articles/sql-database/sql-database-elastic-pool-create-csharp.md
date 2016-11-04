@@ -1,49 +1,47 @@
-<properties
-    pageTitle="使用 C# 创建弹性数据库池 | Microsoft Azure"
-    description="使用 C# 数据库开发技术在 Azure SQL 数据库中创建可缩放的弹性数据库池，以便可以在多个数据库之间共享资源。"
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+---
+title: 使用 C# 创建弹性数据库池 | Microsoft Docs
+description: 使用 C# 数据库开发技术在 Azure SQL 数据库中创建可缩放的弹性数据库池，以便可以在多个数据库之间共享资源。
+services: sql-database
+documentationcenter: ''
+author: stevestein
+manager: jhubbard
+editor: ''
 
-<tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="csharp"
-    ms.workload="data-management"
-    ms.date="09/14/2016"
-    ms.author="sstein"/>
+ms.service: sql-database
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: csharp
+ms.workload: data-management
+ms.date: 09/14/2016
+ms.author: sstein
 
+---
 # 使用 C&#x23; 创建弹性数据库池
-
-> [AZURE.SELECTOR]
-- [Azure 门户](sql-database-elastic-pool-create-portal.md)
-- [PowerShell](sql-database-elastic-pool-create-powershell.md)
-- [C#](sql-database-elastic-pool-create-csharp.md)
-
+> [!div class="op_single_selector"]
+> * [Azure 门户](sql-database-elastic-pool-create-portal.md)
+> * [PowerShell](sql-database-elastic-pool-create-powershell.md)
+> * [C#](sql-database-elastic-pool-create-csharp.md)
+> 
+> 
 
 本文说明了如何使用 C# 通过[适用于 .NET 的 Azure SQL 数据库的库文件](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)创建 Azure SQL 弹性数据库池。若要创建独立的 SQL 数据库，请参阅[使用 C# 通过适用于 .NET 的 SQL 数据库的库文件创建 SQL 数据库](sql-database-get-started-csharp.md)。
 
 适用于 .NET 的 Azure SQL 数据库库提供了基于 [Azure 资源管理器](../resource-group-overview.md)的 API，用于包装[基于资源管理器的 SQL 数据库 REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx)。
 
-
-> [AZURE.NOTE] 适用于 .NET 的 Azure SQL 数据库库目前以预览版提供。
-
+> [!NOTE]
+> 适用于 .NET 的 Azure SQL 数据库库目前以预览版提供。
+> 
+> 
 
 若要完成本文中的步骤，需要以下各项：
 
-- Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“**免费帐户**”，然后再回来完成本文的相关操作即可。
-- Visual Studio。如需 Visual Studio 的免费副本，请参阅 [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)页。
-
+* Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“**免费帐户**”，然后再回来完成本文的相关操作即可。
+* Visual Studio。如需 Visual Studio 的免费副本，请参阅 [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)页。
 
 ## 创建控制台应用并安装所需的库
-
 1. 启动 Visual Studio。
 2. 单击“文件”>“新建”>“项目”。
 3. 创建一个 C# **控制台应用程序**，并将其命名为：*SqlElasticPoolConsoleApp*
-
 
 若要通过 C# 创建一个 SQL 数据库，加载所需的管理库文件（使用[程序包管理器控制台](http://docs.nuget.org/Consume/Package-Manager-Console)）：
 
@@ -52,17 +50,15 @@
 3. 键入 `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` 安装 [Microsoft Azure 资源管理库](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)。
 4. 键入 `Install-Package Microsoft.Azure.Common.Authentication –Pre` 安装 [Microsoft Azure 常见身份验证库](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)。
 
-
-
-> [AZURE.NOTE] 本文中的示例使用每个 API 请求的同步形式，并会一直阻塞，直到对基础服务的 REST 调用完成。有可用的异步方法。
-
+> [!NOTE]
+> 本文中的示例使用每个 API 请求的同步形式，并会一直阻塞，直到对基础服务的 REST 调用完成。有可用的异步方法。
+> 
+> 
 
 ## 创建 SQL 弹性数据库池 - C# 示例
-
 以下示例将创建资源组、服务器、防火墙规则、弹性池，然后在池中创建 SQL 数据库。请参阅[创建服务主体来访问资源](#create-a-service-principal-to-access-resources)以获取 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` 变量。
 
 将 **Program.cs** 的内容与替换为以下内容，并使用应用值更新 `{variables}`（不包括 `{}`）。
-
 
 ```
 using Microsoft.Azure;
@@ -259,60 +255,56 @@ namespace SqlElasticPoolConsoleApp
 
 
 ## 创建服务主体来访问资源
-
 以下 PowerShell 脚本创建 Active Directory (AD) 应用程序和服务主体，我们需要对 C# 应用进行身份验证。该脚本输出我们需要用于前面 C# 示例的值。有关详细信息，请参阅[使用 Azure PowerShell 创建服务主体以访问资源](../resource-group-authenticate-service-principal.md)。
 
-   
     # Sign in to Azure.
     Add-AzureRmAccount
-    
+
     # If you have multiple subscriptions, uncomment and set to the subscription you want to work with.
     #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
     #Set-AzureRmContext -SubscriptionId $subscriptionId
-    
+
     # Provide these values for your new AAD app.
     # $appName is the display name for your app, must be unique in your directory.
     # $uri does not need to be a real uri.
     # $secret is a password you create.
-    
+
     $appName = "{app-name}"
     $uri = "http://{app-name}"
     $secret = "{app-password}"
-    
+
     # Create a AAD app
     $azureAdApplication = New-AzureRmADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
-    
+
     # Create a Service Principal for the app
     $svcprincipal = New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
-    
+
     # To avoid a PrincipalNotFound error, I pause here for 15 seconds.
     Start-Sleep -s 15
-    
+
     # If you still get a PrincipalNotFound error, then rerun the following until successful. 
     $roleassignment = New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
-    
-    
+
+
     # Output the values we need for our C# application to successfully authenticate
-    
+
     Write-Output "Copy these values into the C# sample app"
-    
+
     Write-Output "_subscriptionId:" (Get-AzureRmContext).Subscription.SubscriptionId
     Write-Output "_tenantId:" (Get-AzureRmContext).Tenant.TenantId
     Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
     Write-Output "_applicationSecret:" $secret
 
 
-  
+
 
 ## 后续步骤
-
-- [管理你的池](sql-database-elastic-pool-manage-csharp.md)
-- [创建弹性作业](sql-database-elastic-jobs-overview.md)：弹性作业可以根据池中数据库的数目来运行 T-SQL 脚本。
-- [使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)：使用弹性数据库工具进行扩展。
+* [管理你的池](sql-database-elastic-pool-manage-csharp.md)
+* [创建弹性作业](sql-database-elastic-jobs-overview.md)：弹性作业可以根据池中数据库的数目来运行 T-SQL 脚本。
+* [使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)：使用弹性数据库工具进行扩展。
 
 ## 其他资源
-
-- [SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)
-- [Azure 资源管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
+* [SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)
+* [Azure 资源管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
 <!---HONumber=AcomDC_0921_2016-->

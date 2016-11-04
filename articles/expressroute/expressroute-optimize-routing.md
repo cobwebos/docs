@@ -1,20 +1,21 @@
-<properties
-   pageTitle="优化 ExpressRoute 路由 | Microsoft Azure"
-   description="本页详细介绍了在客户可以通过多个 ExpressRoute 线路在 Microsoft 与客户的公司网络之间进行连接时，如何优化路由。"
-   documentationCenter="na"
-   services="expressroute"
-   authors="charwen"
-   manager="carmonm"
-   editor=""/>
-<tags
-   ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="06/07/2016"
-   ms.author="charwen"/>
+---
+title: 优化 ExpressRoute 路由 | Microsoft Docs
+description: 本页详细介绍了在客户可以通过多个 ExpressRoute 线路在 Microsoft 与客户的公司网络之间进行连接时，如何优化路由。
+documentationcenter: na
+services: expressroute
+author: charwen
+manager: carmonm
+editor: ''
 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 06/07/2016
+ms.author: charwen
+
+---
 # 优化 ExpressRoute 路由
 当你有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。结果就是，你所采用的路由可能不是最理想的 - 也就是说，你的流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达你的网络。网络路径越长，延迟越严重。延迟对应用程序性能和用户体验有直接影响。本文将详述此问题，并说明如何使用标准路由技术来优化路由。
 
@@ -38,7 +39,10 @@
 
 第二种解决方案是，继续将两种前缀播发到两个 ExpressRoute 线路上，但除此之外你还需提示我们哪个前缀靠近你的哪个办公室。由于我们支持 BGP AS Path 追加，因此你可以对前缀的 AS Path 进行配置，使之影响路由。在此示例中，你可以延长美国东部 172.2.0.0/31 的 AS PATH，这样我们就会首选美国西部的 ExpressRoute 线路来传送目标为该前缀的流量（因为我们的网络会认为在西部，到此前缀的路径较短）。类似地，你可以延长美国西部 172.2.0.2/31 的 AS PATH，这样我们就会首选美国东部的 ExpressRoute 线路。路由是针对这两处办公室进行优化的。根据此设计，如果一个 ExpressRoute 线路断开，Exchange Online 仍可通过其他 ExpressRoute 线路以及你的 WAN 访问你。
 
->[AZURE.IMPORTANT] 对于在 Microsoft 对等互连上接收的前缀，我们会删除 AS PATH 中的专用 AS 数字。需在 AS PATH 中追加公共 AS 数字才能影响 Microsoft 对等互连的路由。
+> [!IMPORTANT]
+> 对于在 Microsoft 对等互连上接收的前缀，我们会删除 AS PATH 中的专用 AS 数字。需在 AS PATH 中追加公共 AS 数字才能影响 Microsoft 对等互连的路由。
+> 
+> 
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-solution.png)
 

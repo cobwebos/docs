@@ -1,60 +1,58 @@
-<properties
-	pageTitle="Azure Active Directory B2C：使用第三方库从 iOS 应用程序调用 Web API | Microsoft Azure"
-	description="本文说明如何创建一个 iOS“待办事项列表”应用，该应用可以使用第三方库和 OAuth 2.0 持有者令牌调用 Node.js Web API"
-	services="active-directory-b2c"
-	documentationCenter="ios"
-	authors="brandwe"
-	manager="mbaldwin"
-	editor=""/>
+---
+title: Azure Active Directory B2C：使用第三方库从 iOS 应用程序调用 Web API | Microsoft Docs
+description: 本文说明如何创建一个 iOS“待办事项列表”应用，该应用可以使用第三方库和 OAuth 2.0 持有者令牌调用 Node.js Web API
+services: active-directory-b2c
+documentationcenter: ios
+author: brandwe
+manager: mbaldwin
+editor: ''
 
-<tags ms.service="active-directory-b2c" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="objectivec" ms.topic="hero-article"
+ms.service: active-directory-b2c
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: objectivec
+ms.topic: hero-article
+ms.date: 07/26/2016
+ms.author: brandwe
 
-	ms.date="07/26/2016"
-	ms.author="brandwe"/>
-
+---
 # Azure AD B2C：使用第三方库从 iOS 应用程序调用 Web API
-
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。这样，开发人员便利用他们想要与服务集成的任何库。为了帮助开发人员将平台与其他库结合使用，我们编写了多份演练（例如本演练），演示如何配置第三方库，使其连接到 Microsoft 标识平台。大部分实施 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749)的库都可连接到 Microsoft 标识平台。
 
-
 对于 OAuth2 或 OpenID Connect 的新手，该示例配置中的大部分内容可能较难理解。建议查看[此处所述的简要协议概述](active-directory-b2c-reference-protocols.md)。
 
-> [AZURE.NOTE]
-    平台中有些功能（例如条件访问和 Intune 策略管理）采用这些标准中的表达式，因此要求使用开放源代码 Microsoft Azure 标识库。
-   
+> [!NOTE]
+> 平台中有些功能（例如条件访问和 Intune 策略管理）采用这些标准中的表达式，因此要求使用开放源代码 Microsoft Azure 标识库。
+> 
+> 
+
 B2C 平台不一定支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 B2C 平台，请阅读 [B2C limitations](active-directory-b2c-limitations.md)（B2C 限制）。
 
-
 ## 获取 Azure AD B2C 目录
-
 只有在创建目录或租户之后，才可使用 Azure AD B2C。目录是所有用户、应用、组等对象的容器。如果没有容器，请先[创建 B2C 目录](active-directory-b2c-get-started.md)，然后再继续。
 
 ## 创建应用程序
-
 接下来，需要在 B2C 目录中创建应用。此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。在本例中，由于应用与 Web API 构成一个逻辑应用，因此由单个**应用程序 ID** 表示。若要创建应用，请遵循[这些说明](active-directory-b2c-app-registration.md)。请务必：
 
-- 在应用程序中包含**移动设备**。
-- 复制分配给应用的**应用程序 ID**。稍后也需要用到此信息。
+* 在应用程序中包含**移动设备**。
+* 复制分配给应用的**应用程序 ID**。稍后也需要用到此信息。
 
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
+[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## 创建策略
-
 在 Azure AD B2C 中，每个用户体验由[策略](active-directory-b2c-reference-policies.md)定义。此应用包含一个标识体验：合并的登录和注册。需要按照[策略参考文章](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)中所述，为每个类型创建此策略。创建策略时，请务必：
 
-- 在策略中选择“显示名称”和注册属性。
-- 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。也可以选择其他声明。
-- 创建每个策略后，请复制策略的**名称**。其前缀应为 `b2c_1_`。稍后需要用到策略名称。
+* 在策略中选择“显示名称”和注册属性。
+* 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。也可以选择其他声明。
+* 创建每个策略后，请复制策略的**名称**。其前缀应为 `b2c_1_`。稍后需要用到策略名称。
 
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
+[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 创建策略后，可以开始构建应用。
 
-
 ## 下载代码
-
 本教程的代码[在 GitHub 上](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c)维护。若要遵循该代码，可以[下载 .zip 格式的应用](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c) (/archive/master.zip) 或克隆该应用：
 
 ```
@@ -68,11 +66,9 @@ git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-na
 ```
 
 ## 下载第三方库 nxoauth2 并启动工作区
-
 在本演练中，将使用 GitHub 中的 OAuth2Client，这是适用于 Mac OS X 和 iOS 的 OAuth2 库（Cocoa 和 Cocoa Touch）。此库以 OAuth2 规范的第 10 版草稿为基础。它将实现本机应用程序配置文件，并支持最终用户授权终结点。需要上述各项才能与 Microsoft 标识平台集成。
 
 ### 使用 CocoaPods 将库添加到项目
-
 CocoaPods 是 Xcode 项目的依赖关系管理器。它会自动管理上述安装步骤。
 
 ```
@@ -82,11 +78,11 @@ $ vi Podfile
 
 ```
  platform :ios, '8.0'
- 
+
  target 'SampleforB2C' do
- 
+
  pod 'NXOAuth2Client'
- 
+
  end
 ```
 
@@ -100,7 +96,6 @@ $ open SampleforB2C.xcworkspace
 ```
 
 ## 项目结构
-
 已在骨干中为项目设置以下结构：
 
 * 具有任务窗格的“主视图”
@@ -110,11 +105,9 @@ $ open SampleforB2C.xcworkspace
 我们将转到项目中的各个文件来添加身份验证。代码的其他部分（如可视代码）虽然与标识无关，但也已提供。
 
 ## 创建应用程序的 `settings.plist` 文件
-
 如果有一个集中位置可以放置配置值，则就很容易配置应用程序。这也可帮助理解每项设置在应用程序中的作用。我们利用“属性列表”将这些值提供给应用程序。
 
 * 在应用程序工作区中创建/打开 `Supporting Files` 下面的 `settings.plist` 文件
-
 * 输入以下值（稍后将逐一详细说明）
 
 ```xml
@@ -122,32 +115,31 @@ $ open SampleforB2C.xcworkspace
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>accountIdentifier</key>
-	<string>B2C_Acccount</string>
-	<key>clientID</key>
-	<string><client ID></string>
-	<key>clientSecret</key>
-	<string></string>
-	<key>authURL</key>
-	<string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/authorize?p=<policy name></string>
-	<key>loginURL</key>
-	<string>https://login.microsoftonline.com/<tenant name>/login</string>
-	<key>bhh</key>
-	<string>urn:ietf:wg:oauth:2.0:oob</string>
-	<key>tokenURL</key>
-	<string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/token?p=<policy name></string>
-	<key>keychain</key>
-	<string>com.microsoft.azureactivedirectory.samples.graph.QuickStart</string>
-	<key>contentType</key>
-	<string>application/x-www-form-urlencoded</string>
-	<key>taskAPI</key>
-	<string>https://aadb2cplayground.azurewebsites.net</string>
+    <key>accountIdentifier</key>
+    <string>B2C_Acccount</string>
+    <key>clientID</key>
+    <string><client ID></string>
+    <key>clientSecret</key>
+    <string></string>
+    <key>authURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/authorize?p=<policy name></string>
+    <key>loginURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/login</string>
+    <key>bhh</key>
+    <string>urn:ietf:wg:oauth:2.0:oob</string>
+    <key>tokenURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/token?p=<policy name></string>
+    <key>keychain</key>
+    <string>com.microsoft.azureactivedirectory.samples.graph.QuickStart</string>
+    <key>contentType</key>
+    <string>application/x-www-form-urlencoded</string>
+    <key>taskAPI</key>
+    <string>https://aadb2cplayground.azurewebsites.net</string>
 </dict>
 </plist>
 ```
 
 让我们详细了解这些值。
-
 
 对于 `authURL`、`loginURL`、`bhh` 和 `tokenURL`，需要填入租户名称。这是分配的 B2C 租户名称。例如 `kidventusb2c.onmicrosoft.com`。如果使用开放源代码 Microsoft Azure 标识库，将使用元数据终结点提取此数据。我们已努力完成为你提取这些值的工作。
 
@@ -164,7 +156,6 @@ $ open SampleforB2C.xcworkspace
 现已创建 `settings.plist` 文件，我们需要代码来读取它。
 
 ## 将 AppData 类设置为读取我们的设置
-
 让我们创建一个简单的文件，它只分析前面创建的 `settngs.plist` 文件，并且让这些设置可在将来用于任何类。由于我们不想在每次类别请求时创建一份新数据，因此使用单一实例模式，并且只返回每次对设置发出请求时创建的同一实例
 
 * 创建 `AppData.h` 文件：
@@ -228,13 +219,10 @@ $ open SampleforB2C.xcworkspace
 
 现在只要在任何类中调用 `  AppData *data = [AppData getInstance];`（如下所示），即可轻松获取数据。
 
-
-
 ## 在 AppDelegate 中设置 NXOAuth2Client 库
-
 NXOAuthClient 库要求设置一些值。完成后，可以使用获取的令牌来调用 REST API。由于我们知道在加载应用程序时随时调用 `AppDelegate`，因此将配置值放入该文件是很合理的。
-* 打开 `AppDelegate.m` 文件
 
+* 打开 `AppDelegate.m` 文件
 * 导入稍后要使用的一些标头文件。
 
 ```objc
@@ -248,9 +236,7 @@ NXOAuthClient 库要求设置一些值。完成后，可以使用获取的令牌
 
 此时应注意一些有关 B2C 服务的事项，使此代码更容易了解：
 
-
 1. Azure AD B2C 使用查询参数提供的*策略*来为请求提供服务。这样可以让 Azure Active Directory 仅充当应用程序的独立服务。为了提供这些额外的查询参数，必须结合自定义策略参数提供 `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` 方法。
-
 2. Azure AD B2C 使用范围的方式非常类似于其他 OAuth2 服务器。但是，由于使用 B2C 的关键在于验证用户与访问资源，因此绝对需要某些范围才能让流程正确运行。这是 `openid` 范围。Microsoft 标识 SDK 自动提供 `openid` 范围，因此 SDK 配置中不会显示该范围。但是，由于我们使用第三方库，因此需要指定此范围。
 
 ```objc
@@ -292,7 +278,6 @@ NXOAuthClient 库要求设置一些值。完成后，可以使用获取的令牌
 
 
 ## 创建用于处理身份验证请求的 `LoginViewController` 类
-
 使用 Web 视图进行帐户登录。这样，便可以提示用户提供其他因素（例如已配置的短信），或者将错误消息返回给用户。将在此处设置 Web 视图，然后编写代码，以便从 Microsoft 标识服务处理 Web 视图中发生的回调。
 
 * 创建 `LoginViewController.h` 类
@@ -308,11 +293,12 @@ NXOAuthClient 库要求设置一些值。完成后，可以使用获取的令牌
 
 将创建以下每个方法。
 
-> [AZURE.NOTE] 
-    确保将 `loginView` 绑定到脚本中的实际 Web 视图。否则，在身份验证时不会弹出 Web 视图。
+> [!NOTE]
+> 确保将 `loginView` 绑定到脚本中的实际 Web 视图。否则，在身份验证时不会弹出 Web 视图。
+> 
+> 
 
 * 创建 `LoginViewController.m` 类
-
 * 添加一些变量以便在身份验证时传递状态
 
 ```objc
@@ -418,8 +404,6 @@ NSURL *authcode; \\ A placeholder for our auth code.
 
 像在上面 `AppDelegate` 中一样创建相同的方法，但这次添加一些 `NSNotification` 来告知服务要发生什么情况。设置观察器，它会在令牌发生任何更改时发出通知。获取令牌后，将用户返回到 `masterView`。
 
-
-
 ```objc
 - (void)setupOAuth2AccountStore {
   [[NSNotificationCenter defaultCenter]
@@ -498,9 +482,7 @@ NSURL *authcode; \\ A placeholder for our auth code.
 
 现已建立与应用程序交互以便登录的主要方式。登录后需要使用收到的令牌。因此，要创建一些调用 REST API 的帮助器代码，以便使用此库。
 
-
 ## 创建 `GraphAPICaller` 类来处理对 REST API 的请求
-
 每次加载应用时将加载一个配置。获取令牌后，现在需要对它执行一些操作。
 
 * 创建 `GraphAPICaller.h` 文件
@@ -632,14 +614,11 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock {
 ```
 
 ## 运行示例应用
-
 最后，在 Xcode 中生成并运行应用。注册或登录应用，并为登录的用户创建任务。注销后，以不同的用户身份重新登录，然后为该用户创建任务。
 
 请注意，这些任务按用户存储在 API 中，因为 API 从它收到的访问令牌中提取用户的标识。
 
-
 ## 后续步骤
-
 现在，可以转到更高级的 B2C 主题。可以尝试：
 
 [Call a Node.js web API from a Node.js web app]()（从 Node.js Web 应用调用 Node.js Web API）

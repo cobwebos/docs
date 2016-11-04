@@ -1,26 +1,27 @@
-<properties
-    pageTitle="使用 REST API 查询 Azure 搜索索引 | Microsoft Azure | 托管云搜索服务"
-    description="在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。"
-    services="search"
-    documentationCenter=""
-	authors="ashmaka"
-/>
+---
+title: 使用 REST API 查询 Azure 搜索索引 | Microsoft Docs
+description: 在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。
+services: search
+documentationcenter: ''
+author: ashmaka
 
-<tags
-    ms.service="search"
-    ms.devlang="na"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
+---
 # 使用 REST API 查询 Azure 搜索索引
-> [AZURE.SELECTOR]
-- [概述](search-query-overview.md)
-- [门户](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [概述](search-query-overview.md)
+> * [门户](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 本文介绍如何使用 [Azure 搜索 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 查询索引。
 
@@ -35,8 +36,8 @@
 
 服务将具有*管理密钥*和*查询密钥*。
 
- - 主管理密钥和辅助*管理密钥*授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
- - *查询密钥*授予索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
+* 主管理密钥和辅助*管理密钥*授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
+* *查询密钥*授予索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
 
 可以使用其中一个查询密钥来查询索引。查询也可使用管理密钥，但最好在应用程序代码中使用查询密钥，因为这更符合[最低特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege)。
 
@@ -49,10 +50,7 @@ POST 和 GET 都需要在请求 URL 中提供*服务名称*、*索引名称*和�
 
 POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 
-
-
 #### 查询示例
-
 以下是名为“hotels”的索引的几个查询示例。这些查询以 GET 和 POST 格式显示。
 
 在整个索引中搜索“budget”一词，仅返回 `hotelName` 字段：
@@ -99,6 +97,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 #### 请求和请求头
 必须为 GET 定义两个请求头，为 POST 定义三个请求头：
+
 1. `api-key` 头必须设置为在上述步骤 I 中找到的查询密钥。注意，还可以使用管理密钥作为 `api-key` 头，但建议使用查询密钥，因为它以独占方式对索引和文档授予只读访问权限。
 2. `Accept` 头必须设置为 `application/json`。
 3. 对于 POST，`Content-Type` 头还应设置为 `application/json`，这也仅适用于 POST。

@@ -1,25 +1,27 @@
-<properties
-	pageTitle="NodeJS 中的 Azure 搜索入门 | Microsoft Azure | 托管云搜索服务"
-	description="介绍使用 NodeJS 作为编程语言，在 Azure 的托管云搜索服务上生成搜索应用程序的方法。"
-	services="search"
-	documentationCenter=""
-	authors="EvanBoyle"
-	manager="pablocas"
-	editor="v-lincan"/>
+---
+title: NodeJS 中的 Azure 搜索入门 | Microsoft Docs
+description: 介绍使用 NodeJS 作为编程语言，在 Azure 的托管云搜索服务上生成搜索应用程序的方法。
+services: search
+documentationcenter: ''
+author: EvanBoyle
+manager: pablocas
+editor: v-lincan
 
-<tags
-	ms.service="search"
-	ms.devlang="na"
-	ms.workload="search"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="na"
-	ms.date="07/14/2016"
-	ms.author="evboyle"/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.date: 07/14/2016
+ms.author: evboyle
 
+---
 # NodeJS 中的 Azure 搜索入门
-> [AZURE.SELECTOR]
-- [门户](search-get-started-portal.md)
-- [.NET](search-howto-dotnet-sdk.md)
+> [!div class="op_single_selector"]
+> * [门户](search-get-started-portal.md)
+> * [.NET](search-howto-dotnet-sdk.md)
+> 
+> 
 
 了解如何生成使用 Azure 搜索作为搜索体验的自定义 NodeJS 搜索应用程序。本教程使用 [Azure 搜索服务 REST API](https://msdn.microsoft.com/library/dn798935.aspx) 构造用于此练习的对象和操作。
 
@@ -28,30 +30,29 @@
 若要运行此示例，必须具有 Azure 搜索服务。可在 [Azure 门户](https://portal.azure.com)中注册此服务。请参阅[在门户中创建 Azure 搜索服务](search-create-service-portal.md)的分步说明。
 
 ## 关于数据
-
 此示例应用程序使用的数据来自[美国地质调查局 (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
 
 在此应用程序中，**DataIndexer** 程序通过使用[索引器](https://msdn.microsoft.com/library/azure/dn798918.aspx)构造，并从公共 Azure SQL 数据库检索筛选的 USGS 数据集，生成并加载索引。程序代码中提供了联机数据源的凭据和连接信息。无需进一步配置。
 
-> [AZURE.NOTE] 此数据集应用了筛选器，使其保持在免费定价层限定的 10,000 个文档以下。若使用标准层，则此限制不适用。有关每个定价层容量的详细信息，请参阅[搜索服务限制](search-limits-quotas-capacity.md)。
-
+> [!NOTE]
+> 此数据集应用了筛选器，使其保持在免费定价层限定的 10,000 个文档以下。若使用标准层，则此限制不适用。有关每个定价层容量的详细信息，请参阅[搜索服务限制](search-limits-quotas-capacity.md)。
+> 
+> 
 
 <a id="sub-2">
-## 查找 Azure 搜索服务的服务名称和 API 密钥
 
+## 查找 Azure 搜索服务的服务名称和 API 密钥
 创建服务后，请返回到门户，获取 URL 或 `api-key`。搜索服务的连接要求具有 URL 和 `api-key` 对调用进行身份验证。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在跳转栏中，单击“搜索服务”，列出为订阅预配的所有 Azure 搜索服务。
 3. 选择要使用的服务。
 4. 在服务仪表板中，可看到基本信息的磁贴，以及用于访问管理密钥的密钥图标。
-
-  	![][3]
-
+   
+      ![][3]
 5. 复制服务 URL、管理密钥和查询密钥。之后将其添加到 config.js 文件时，需要这三项内容。
 
 ## 下载示例文件
-
 使用以下方法之一下载该示例。
 
 1. 转到 [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo)。
@@ -59,9 +60,7 @@
 
 将对此文件夹中的文件进行所有后续文件修改并运行语句。
 
-
 ## 使用搜索服务 URL 和 API 密钥更新 config.js
-
 使用之前复制的 URL 和 API 密钥，指定配置文件中的 URL、管理密钥和查询密钥。
 
 管理密钥授予对所有服务操作的完全控制权限，包括创建或删除索引，以及加载文档。与此相反，查询密钥用于只读操作，通常由连接到 Azure 搜索的客户端应用程序所使用。
@@ -72,26 +71,22 @@
 
 ![][5]
 
-
 ## 托管示例的运行时环境
-
 该示例需要 HTTP 服务器，可以使用 npm 进行全局安装。
 
 使用 PowerShell 窗口运行以下命令。
 
 1. 导航到包含 **package.json** 文件的文件夹。
 2. 键入 `npm install`。
-2. 键入 `npm install -g http-server`。
+3. 键入 `npm install -g http-server`。
 
 ## 生成索引并运行应用程序
-
 1. 键入 `npm run indexDocuments`。
 2. 键入 `npm run build`。
 3. 键入 `npm run start_server`。
 4. 将浏览器指向 `http://localhost:8080/index.html`
 
 ## 搜索 USGS 数据
-
 USGS 数据集包含罗得岛州的相关记录。如果在空白搜索框中单击“搜索”，按照默认设置，将获得前 50 个条目。
 
 输入搜索词，为搜索引擎提供可搜索的内容。尝试输入区域名称。“Roger Williams”是罗得岛的第一任州长。许多公园、建筑和学校都以他的名字命名。
@@ -100,13 +95,11 @@ USGS 数据集包含罗得岛州的相关记录。如果在空白搜索框中单
 
 还可以尝试以下任一词语：
 
-- Pawtucket
-- Pembroke
-- goose +cape
-
+* Pawtucket
+* Pembroke
+* goose +cape
 
 ## 后续步骤
-
 这是第一个基于 NodeJS 和 USGS 数据集的 Azure 搜索教程。日后，本教程将进一步扩展，演示自定义解决方案中可能想要使用的其他搜索功能。
 
 如果已对 Azure 搜索有一定的了解，可以将此教程用作尝试使用建议器（提前键入或自动完成查询）、筛选器和分面导航的跳板。还可以通过添加计数以及批处理文档，改进搜索结果页，以便用户可以翻阅结果。

@@ -1,43 +1,34 @@
-<properties 
-	pageTitle="Windows 身份验证和 Azure Multi-Factor Authentication 服务器"
-	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 Windows 身份验证和 Azure Multi-Factor Authentication 服务器。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: Windows 身份验证和 Azure Multi-Factor Authentication 服务器
+description: 本 Azure Multi-Factor Authentication 页面将会帮助你部署 Windows 身份验证和 Azure Multi-Factor Authentication 服务器。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>  
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
-
+---
 # Windows 身份验证和 Azure Multi-Factor Authentication 服务器
-
 使用“Windows 身份验证”部分，管理员可以为一个或多个应用程序启用和配置 Windows 身份验证。下面列出了在设置 Windows 身份验证之前需要注意的事项。
 
--  只有在重新启动后，用于终端服务的 Azure Multi-Factor Authentication 才会生效。
--  如果选中了“需要 Azure Multi-Factor Authentication 用户匹配”，而你未在用户列表中，则在重新启动后你将无法登录到计算机。
--  受信任 IP 依赖于应用程序是否可以为客户端 IP 提供身份验证。目前只支持终端服务。
+* 只有在重新启动后，用于终端服务的 Azure Multi-Factor Authentication 才会生效。
+* 如果选中了“需要 Azure Multi-Factor Authentication 用户匹配”，而你未在用户列表中，则在重新启动后你将无法登录到计算机。
+* 受信任 IP 依赖于应用程序是否可以为客户端 IP 提供身份验证。目前只支持终端服务。
 
-
-
-
-
-
-
->[AZURE.NOTE]不支持使用此功能为 Windows Server 2012 R2 上的终端服务提供安全保障。
-
-
-
+> [!NOTE]
+> 不支持使用此功能为 Windows Server 2012 R2 上的终端服务提供安全保障。
+> 
+> 
 
 ## 若要使用 Windows 身份验证保护应用程序，请使用以下过程。
-
 1. 在 Azure Multi-Factor Authentication 服务器中，单击“Windows 身份验证”图标。![Windows 身份验证](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
 2. 选中“启用 Windows 身份验证”复选框。默认情况下，此框处于未选中状态。
 3. 使用“应用程序”选项卡，管理员可以为 Windows 身份验证配置一个或多个应用程序。

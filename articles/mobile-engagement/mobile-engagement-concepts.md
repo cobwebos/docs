@@ -1,23 +1,22 @@
-<properties
-	pageTitle="Mobile Engagement 概念 | Microsoft Azure"
-	description="Azure Mobile Engagement 概念"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="dwrede"
-	editor="" />
+---
+title: Mobile Engagement 概念 | Microsoft Docs
+description: Azure Mobile Engagement 概念
+services: mobile-engagement
+documentationcenter: mobile
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/19/2016"
-	ms.author="piyushjo" />
+ms.service: mobile-engagement
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-android
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # Azure Mobile Engagement 概念
-
 Mobile Engagement 定义了所有受支持平台的一些常见概念。本文简要介绍了这些概念。
 
 不熟悉 Mobile Engagement 的用户可先阅读本文。另外，请务必阅读所用平台的特定文档，了解本文所述概念的更多详细信息和示例，以及可能的限制。
@@ -79,10 +78,9 @@ Mobile Engagement 标识用户的方式是为每台设备生成一个唯一标�
 包含键值对的整个树以 JSON 对象形式存储。不过，只能将第一级键值对进行分解，使之可供 Segments 之类的某些高级函数直接访问（例如，可以轻松地定义一个名为“SciFi 球迷”的类型，其中包含的所有用户在上个月至少发送了 10 次名为“content\_viewed”且额外键“content\_type”已设置为“scifi”值的事件）。因此，强烈建议仅发送由简单的键值对列表组成且使用标量值（例如，字符串、日期、整数或布尔值）的附加数据。
 
 ## 后续步骤
-
-- [Windows Universal SDK overview for Azure Mobile Engagement](mobile-engagement-windows-store-sdk-overview.md)（用于 Azure Mobile Engagement 的 Windows Universal SDK 概述）
-- [Windows Phone Silverlight SDK overview for Azure Mobile Engagement](mobile-engagement-windows-phone-sdk-overview.md)（用于 Azure Mobile Engagement 的 Windows Phone Silverlight SDK 概述）
-- [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)（用于 Azure Mobile Engagement 的 iOS SDK）
-- [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)（用于 Azure Mobile Engagement 的 Android SDK）
+* [Windows Universal SDK overview for Azure Mobile Engagement](mobile-engagement-windows-store-sdk-overview.md)（用于 Azure Mobile Engagement 的 Windows Universal SDK 概述）
+* [Windows Phone Silverlight SDK overview for Azure Mobile Engagement](mobile-engagement-windows-phone-sdk-overview.md)（用于 Azure Mobile Engagement 的 Windows Phone Silverlight SDK 概述）
+* [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)（用于 Azure Mobile Engagement 的 iOS SDK）
+* [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)（用于 Azure Mobile Engagement 的 Android SDK）
 
 <!---HONumber=AcomDC_0921_2016-->

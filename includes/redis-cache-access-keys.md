@@ -2,16 +2,12 @@
 
 ![Redis 缓存设置](media/redis-cache-access-keys/redis-cache-settings.png)  
 
-
 ### 主机名和端口
-
 若要访问主机名和端口，请单击“属性”。
 
 ![Redis 缓存属性](media/redis-cache-access-keys/redis-cache-properties.png)  
 
-
 ### 访问密钥
-
 若要检索访问密钥，请单击“访问密钥”。
 
 ![Redis 缓存访问密钥](media/redis-cache-access-keys/redis-cache-access-keys.png)

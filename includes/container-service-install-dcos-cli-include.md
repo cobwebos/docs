@@ -1,24 +1,27 @@
-<properties
-   pageTitle="安装 DC/OS CLI | Microsoft Azure"
-   description="安装 DC/OS CLI。"
-   services="container-service"
-   documentationCenter=""
-   authors="rgardler"
-   manager="timlt"
-   editor=""
-   tags="acs, azure-container-service"
-   keywords="容器, 微服务, DC/OS, Azure"/>
+---
+title: 安装 DC/OS CLI | Microsoft Docs
+description: 安装 DC/OS CLI。
+services: container-service
+documentationcenter: ''
+author: rgardler
+manager: timlt
+editor: ''
+tags: acs, azure-container-service
+keywords: 容器, 微服务, DC/OS, Azure
 
-<tags
-   ms.service="container-service"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/10/2016"
-   ms.author="rogardle"/>
+ms.service: container-service
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/10/2016
+ms.author: rogardle
 
->[AZURE.NOTE] 这适用于基于 DC/OS 的 ACS 群集。无需为基于 Swarm 的 ACS 群集执行此操作。
+---
+> [!NOTE]
+> 这适用于基于 DC/OS 的 ACS 群集。无需为基于 Swarm 的 ACS 群集执行此操作。
+> 
+> 
 
 首先，[连接到基于 DC/OS 的 ACS 群集](../articles/container-service/container-service-connect.md)。完成连接后，可以使用以下命令在客户端计算机上安装 DC/OS CLI。
 

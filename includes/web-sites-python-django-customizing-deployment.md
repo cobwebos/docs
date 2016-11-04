@@ -1,14 +1,14 @@
 **如果这些条件都成立**，Azure 将确定你的应用程序使用 Python：
 
-- 根文件夹中的 requirements.txt 文件
-- 根文件夹中的任何 .py 文件或指定 python 的 runtime.txt
+* 根文件夹中的 requirements.txt 文件
+* 根文件夹中的任何 .py 文件或指定 python 的 runtime.txt
 
 如果是这种情况，它将使用特定于 Python 的部署脚本，此脚本执行文件的标准同步以及其他 Python 操作，例如：
 
-- 自动管理虚拟环境
-- 使用 pip 来安装 requirements.txt 中列出的软件包
-- 根据所选的 Python 版本创建相应的 web.config。
-- 收集 Django 应用程序的静态文件
+* 自动管理虚拟环境
+* 使用 pip 来安装 requirements.txt 中列出的软件包
+* 根据所选的 Python 版本创建相应的 web.config。
+* 收集 Django 应用程序的静态文件
 
 您可以控制默认部署步骤的某些方面，而无需自定义脚本。
 
@@ -25,7 +25,7 @@
     \.deployment
     \deploy.cmd
 
-可使用 [Azure 命令行接口][]创建这些文件。从项目文件夹使用以下命令：
+可使用 [Azure 命令行接口][Azure 命令行接口]创建这些文件。从项目文件夹使用以下命令：
 
     azure site deploymentscript --python
 

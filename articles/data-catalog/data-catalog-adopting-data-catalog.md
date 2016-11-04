@@ -1,21 +1,22 @@
-<properties
-	pageTitle="采用 Azure 数据目录 | Microsoft Azure"
-	description="本文介绍组织考虑采用 Azure 数据目录时可用的方法和过程，包括定义愿景、识别关键业务用例，以及选择试运行项目。"
-	services="data-catalog"
-	documentationCenter=""
-	authors="spelluru"
-	manager="NA"
-	editor=""
-	tags=""/>
-<tags
-	ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="07/25/2016"
-	ms.author="spelluru"/>
+---
+title: 采用 Azure 数据目录 | Microsoft Docs
+description: 本文介绍组织考虑采用 Azure 数据目录时可用的方法和过程，包括定义愿景、识别关键业务用例，以及选择试运行项目。
+services: data-catalog
+documentationcenter: ''
+author: spelluru
+manager: NA
+editor: ''
+tags: ''
 
+ms.service: data-catalog
+ms.devlang: NA
+ms.topic: hero-article
+ms.tgt_pltfrm: NA
+ms.workload: data-catalog
+ms.date: 07/25/2016
+ms.author: spelluru
+
+---
 # 采用 Azure 数据目录
 本文帮助在组织中开始采用 **Azure 数据目录**。若要成功采用 **Azure 数据目录**，必须将重点放在三个要点上：定义愿景、找到组织内的重要业务用例，以及选择试运行项目。
 
@@ -33,10 +34,10 @@
 
 采用计划可帮助传达让人们成功达到和实现其目标的关键因素是什么。典型的计划会解释数据目录将如何让用户的生活变得更轻松，其中包含以下几个部分：
 
--	**愿景声明** - 帮助简要陈述关于用户和项目关系人的采用计划。它相当于一份电梯简报。
--	**试运行团队和具有影响力的人** - 向试运行团队和具有影响力的人学习可以帮助把向团队和用户推行数据目录的方法去芜存菁。具有影响力的人可以牵引出志同道合的用户，同时可以帮助找到阻碍采用和促成采用的用户。
--	**适用于通信和小道消息的计划** - 帮助用户了解数据目录如何帮助他们、让各个团队自然而然地采用，并于最终扩及整个组织。
--	**培训计划** - 一般而言，详实的培训能让组织成功采用服务，并获得想要的成果。
+* **愿景声明** - 帮助简要陈述关于用户和项目关系人的采用计划。它相当于一份电梯简报。
+* **试运行团队和具有影响力的人** - 向试运行团队和具有影响力的人学习可以帮助把向团队和用户推行数据目录的方法去芜存菁。具有影响力的人可以牵引出志同道合的用户，同时可以帮助找到阻碍采用和促成采用的用户。
+* **适用于通信和小道消息的计划** - 帮助用户了解数据目录如何帮助他们、让各个团队自然而然地采用，并于最终扩及整个组织。
+* **培训计划** - 一般而言，详实的培训能让组织成功采用服务，并获得想要的成果。
 
 下面是有关定义 **Azure 数据目录**采用计划的一些提示。
 
@@ -45,13 +46,10 @@
 
 下面是帮助定义愿景的一些提示：
 
--	**识别可促成部署的关键要素** - 思考企业中可通过数据目录解决的特定数据源管理需求。此思考过程还能帮助陈述使用数据目录的几大好处。例如，企业中可能有所有新进员工都需要了解和使用的一般数据源，或者只有少数关键人士深刻了解的重要且复杂数据源。**Azure 数据目录**可简化这些数据源的发现和了解过程，以便通过采用服务直接且及早地解决这些众所周知的难题。
-
--	**务求简洁明确** - 清楚了解愿景可让每个人实现共识，让他们知道数据目录能带给组织的价值，以及愿景如何支持组织的目标。
-
--	**激励人们使用数据目录** - 愿景和沟通计划应该要能激励人们，让他们意识到数据目录有助于他们查找并连接到数据源，以从数据中获取更多好处。
-
--	**陈述特定目标和时间表** - 确保采用计划具有可实现的特定交付成果。时间表可让每个人保持专注，能够设立检查点来衡量是否成功。
+* **识别可促成部署的关键要素** - 思考企业中可通过数据目录解决的特定数据源管理需求。此思考过程还能帮助陈述使用数据目录的几大好处。例如，企业中可能有所有新进员工都需要了解和使用的一般数据源，或者只有少数关键人士深刻了解的重要且复杂数据源。**Azure 数据目录**可简化这些数据源的发现和了解过程，以便通过采用服务直接且及早地解决这些众所周知的难题。
+* **务求简洁明确** - 清楚了解愿景可让每个人实现共识，让他们知道数据目录能带给组织的价值，以及愿景如何支持组织的目标。
+* **激励人们使用数据目录** - 愿景和沟通计划应该要能激励人们，让他们意识到数据目录有助于他们查找并连接到数据源，以从数据中获取更多好处。
+* **陈述特定目标和时间表** - 确保采用计划具有可实现的特定交付成果。时间表可让每个人保持专注，能够设立检查点来衡量是否成功。
 
 下面是 Adventure Works 这家虚构公司的数据目录采用计划愿景声明示例：
 
@@ -66,23 +64,17 @@
 
 下面是有关识别用例的一些提示：
 
--	**定义团队目标** - 团队如何实现其目标？ 别只是专注在数据目录，因为在此阶段必须保持公正客观。请记住重点是业务成果而非技术。
-
--	**定义业务问题** - 团队在查找和了解数据资产方面所面临的问题是什么？ 例如，在网络文件夹的 Excel 工作簿中可能可以找到关于重要数据源的信息，而团队可能花费许多时间在查找这些工作簿。
-
--	**了解与改变有关的团队文化** - 许多采用上的挑战来自对于改变的抗拒，而非来自新工具的实现。在识别用例时，团队对于改变的态度非常重要，由于他们可能早就有现成的处理程序，因而有“我们一直是这样做的”或“既然没有损坏，为何要修理？”的心态。如果受到影响的人员了解改变带来什么价值，他们就乐于采用新工具或处理程序，并因此感谢所要解决的问题有如此重要。
-
--	**将注意力持续放在数据资产上** - 在介绍团队所面临的业务问题时，需要“直捣黄龙”，将注意力放在与更有效利用企业数据资产有关的事务上。
+* **定义团队目标** - 团队如何实现其目标？ 别只是专注在数据目录，因为在此阶段必须保持公正客观。请记住重点是业务成果而非技术。
+* **定义业务问题** - 团队在查找和了解数据资产方面所面临的问题是什么？ 例如，在网络文件夹的 Excel 工作簿中可能可以找到关于重要数据源的信息，而团队可能花费许多时间在查找这些工作簿。
+* **了解与改变有关的团队文化** - 许多采用上的挑战来自对于改变的抗拒，而非来自新工具的实现。在识别用例时，团队对于改变的态度非常重要，由于他们可能早就有现成的处理程序，因而有“我们一直是这样做的”或“既然没有损坏，为何要修理？”的心态。如果受到影响的人员了解改变带来什么价值，他们就乐于采用新工具或处理程序，并因此感谢所要解决的问题有如此重要。
+* **将注意力持续放在数据资产上** - 在介绍团队所面临的业务问题时，需要“直捣黄龙”，将注意力放在与更有效利用企业数据资产有关的事务上。
 
 下面是与数据目录有关的一些示例用例：
 
 ### 示例用例：
-
--	**注册高价值的中心数据源** - IT 部门负责管理组织内使用的数据源。通过注册和批注一般的企业数据源，IT 部门可以开始使用数据目录。
-
--	**注册以团队基于的数据源** -不同的团队拥有有用的业务线数据源。通过识别和注册许多不同团队使用的关键数据源开始使用 **Azure 数据目录**，并在 **Azure 数据目录**批注中捕获团队的封闭知识。
-
--	**自助式商业智能** - 团队花了很多时间来结合多个源的数据。在集中位置注册和批注数据源可以免除手动发现数据源的过程。
+* **注册高价值的中心数据源** - IT 部门负责管理组织内使用的数据源。通过注册和批注一般的企业数据源，IT 部门可以开始使用数据目录。
+* **注册以团队基于的数据源** -不同的团队拥有有用的业务线数据源。通过识别和注册许多不同团队使用的关键数据源开始使用 **Azure 数据目录**，并在 **Azure 数据目录**批注中捕获团队的封闭知识。
+* **自助式商业智能** - 团队花了很多时间来结合多个源的数据。在集中位置注册和批注数据源可以免除手动发现数据源的过程。
 
 这只是 **Azure 数据目录**的一部分用例。有关这些数据目录方案的详细信息，请参阅 [Azure Data Catalog common scenarios](data-catalog-common-scenarios.md)（Azure 数据目录常见方案）。
 
@@ -105,9 +97,8 @@
 
 **Azure 数据目录**解决的其中一个业务问题是将**数据生成者**连接到**数据使用者**。其解决方式是作为企业数据源相关信息的中心存储库。David 使用数据目录注册了 Adventure Works 和 SQL Server 数据源。通过众包，任何找到此数据源的用户就能分享其对于数据的意见，而不必使用其找到的数据。例如，Nancy 在搜索目录后找到数据源，并分享其关于数据的专业知识。现在，组织中的其他人只要搜索数据目录就能从所分享的知识获益。
 
--	有关如何注册数据源的详细信息，请参阅 [Register data sources](data-catalog-get-started.md#exercise-2-registering-data-sources)（注册数据源）。
-
--	有关如何发现数据源的详细信息，请参阅 [Search data sources](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)（搜索数据源）。
+* 有关如何注册数据源的详细信息，请参阅 [Register data sources](data-catalog-get-started.md#exercise-2-registering-data-sources)（注册数据源）。
+* 有关如何发现数据源的详细信息，请参阅 [Search data sources](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)（搜索数据源）。
 
 ### 从小规模着手并保持专注
 对于大多数的企业试运行项目而言，应该在目录中植入高价值的数据源，让业务用户可以快速看到数据目录的价值。IT 部门很适合用于作为试运行团队感兴趣的一般数据源的查找起点。对于支持的数据源（例如 SQL Server），建议使用 **Azure 数据目录**数据源注册工具。使用数据源注册工具可以注册各种数据源，包括 SQL Server 和 Oracle 数据库以及 SQL Server Reporting Services 报表。有关最新数据源的完整列表，请参阅 [Azure Data Catalog supported data sources](data-catalog-dsr.md)（Azure 数据目录支持的数据源）。
@@ -125,7 +116,10 @@
 
 在试运行项目进行过程中，Nancy 的团队也使用 David 所创建并由同事维护的 Excel 工作簿中所描述的数据源。由于企业中的其他团队也使用 Excel 工作簿描述数据源，因此 IT 团队决定创建一个工具来将 Excel 工作簿迁移到数据目录。通过使用数据目录 REST API 导入现有批注，试运行项目团队可以使用数据源注册工具，来创建由数据源中所捕获的元数据所构成的完整数据目录，并填充以前由数据生成者和使用者所记载的信息，而不需要以手动方式重新输入。随着企业的数据目录不断成长，组织可以使用数据源注册工具来处理一般数据源，以及使用数据目录 API 来处理自定义源和不常见的方案。
 
-> [AZURE.NOTE] 我们已编写使用 **Azure 数据目录** API 的示例工具，将 Excel 工作簿迁移到数据目录。有关数据目录 API 和示例工具的详细信息，可以[下载即席工作簿代码示例](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)，并查看 [Azure 数据目录 REST API](https://msdn.microsoft.com/library/azure/mt267593.aspx) 文档。
+> [!NOTE]
+> 我们已编写使用 **Azure 数据目录** API 的示例工具，将 Excel 工作簿迁移到数据目录。有关数据目录 API 和示例工具的详细信息，可以[下载即席工作簿代码示例](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)，并查看 [Azure 数据目录 REST API](https://msdn.microsoft.com/library/azure/mt267593.aspx) 文档。
+> 
+> 
 
 在准备好试运行项目后，可以开始执行数据目录采用计划。
 
@@ -134,15 +128,11 @@
 
 下面是一些入门提示：
 
--	**激发兴趣** - 如果业务用户认为 **Azure 数据目录**可让生活更轻松，便有采用的兴趣。尝试让话题围绕在解决计划本身和它所提供的好处，而非围绕在技术方面。
-
--	**推动改变** - 从小规模着手并与业务用户沟通计划。若要成功，必须让用户从一开始就介入其中，让其影响成果并让他们觉得拥有解决计划。
-
--	**培养早期采用者** - 早期采用者是对他们所要进行的任务感到热情，且乐于向同事宣传 **Azure 数据目录**好处的业务用户。
-
--	**锁定培训目标** - 业务用户不需要知道数据目录的一切，因此请将培训目标锁定在解决具体的团队目标。聚焦在用户进行的任务以及其某些任务可能如何更改，将 **Azure 数据目录**包含到他们的日常例行工作中。
-
--	**有失败的准备** - 如果试运行未达到想要的结果，请重新评估并找到需要改变的部分，先修复试运行中的问题，再转到较大采用范围。
+* **激发兴趣** - 如果业务用户认为 **Azure 数据目录**可让生活更轻松，便有采用的兴趣。尝试让话题围绕在解决计划本身和它所提供的好处，而非围绕在技术方面。
+* **推动改变** - 从小规模着手并与业务用户沟通计划。若要成功，必须让用户从一开始就介入其中，让其影响成果并让他们觉得拥有解决计划。
+* **培养早期采用者** - 早期采用者是对他们所要进行的任务感到热情，且乐于向同事宣传 **Azure 数据目录**好处的业务用户。
+* **锁定培训目标** - 业务用户不需要知道数据目录的一切，因此请将培训目标锁定在解决具体的团队目标。聚焦在用户进行的任务以及其某些任务可能如何更改，将 **Azure 数据目录**包含到他们的日常例行工作中。
+* **有失败的准备** - 如果试运行未达到想要的结果，请重新评估并找到需要改变的部分，先修复试运行中的问题，再转到较大采用范围。
 
 在试运行团队开始使用数据目录之前安排启动会议，介绍对于试运行项目的期望，并提供初始培训。
 
@@ -164,12 +154,12 @@
 本文内容涉及如何在组织中开始使用 **Azure 数据目录**。我们希望能够启动数据目录的试运行项目，并将数据目录扩展到整个组织。
 
 ## 有关 Azure 数据目录的详细信息
--	[Azure 数据目录产品页](https://azure.microsoft.com/services/data-catalog/)
--	[Azure 数据目录文档](https://azure.microsoft.com/documentation/services/data-catalog/)
--	[Azure Data Catalog common scenarios](data-catalog-common-scenarios.md)（Azure 数据目录常见方案）
--	[Register data sources](data-catalog-get-started.md#exercise-2-registering-data-sources)（注册数据源）
--	[Search data sources](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)（搜索数据源）
--	[Annotate data sources](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)（批注数据源）
-- [Crowdsourcing metadata](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)（众包元数据）
+* [Azure 数据目录产品页](https://azure.microsoft.com/services/data-catalog/)
+* [Azure 数据目录文档](https://azure.microsoft.com/documentation/services/data-catalog/)
+* [Azure Data Catalog common scenarios](data-catalog-common-scenarios.md)（Azure 数据目录常见方案）
+* [Register data sources](data-catalog-get-started.md#exercise-2-registering-data-sources)（注册数据源）
+* [Search data sources](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)（搜索数据源）
+* [Annotate data sources](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)（批注数据源）
+* [Crowdsourcing metadata](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)（众包元数据）
 
 <!---HONumber=AcomDC_0921_2016-->

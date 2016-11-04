@@ -1,55 +1,51 @@
-<properties
-   pageTitle="通过 Web UI 进行 Azure 容器服务管理 | Microsoft Azure"
-   description="使用 Marathon Web UI 将容器部署到 Azure 容器服务群集服务。"
-   services="container-service"
-   documentationCenter=""
-   authors="neilpeterson"
-   manager="timlt"
-   editor=""
-   tags="acs, azure-container-service"
-   keywords="Docker, 容器, 微服务, Mesos, Azure"/>
+---
+title: 通过 Web UI 进行 Azure 容器服务管理 | Microsoft Docs
+description: 使用 Marathon Web UI 将容器部署到 Azure 容器服务群集服务。
+services: container-service
+documentationcenter: ''
+author: neilpeterson
+manager: timlt
+editor: ''
+tags: acs, azure-container-service
+keywords: Docker, 容器, 微服务, Mesos, Azure
 
-<tags
-   ms.service="container-service"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/19/2016"
-   ms.author="nepeters"/>
+ms.service: container-service
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/19/2016
+ms.author: nepeters
 
+---
 # 通过 Web UI 进行容器管理
-
 DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，以及底层硬件的抽象化。DC/OS 上方是一种管理计划和执行计算工作负荷的框架。
 
 尽管框架可用于许多常见的工作负荷，本文档介绍了如何通过使用 Marathon 创建和缩放容器部署。开始了解这些示例之前，需要一个在 Azure 容器服务中配置的 DC/OS 群集。还需要具有到此群集的远程连接。有关这些项目的详细信息，请参阅以下文章：
 
-- [部署 Azure 容器服务群集](container-service-deployment.md)
-- [连接到 Azure 容器服务群集](container-service-connect.md)
+* [部署 Azure 容器服务群集](container-service-deployment.md)
+* [连接到 Azure 容器服务群集](container-service-connect.md)
 
 ## 探索 DC/OS UI
-
 建立安全外壳 (SSH) 隧道后，请浏览到 http://localhost/。这会加载 DC/OS Web UI 并显示有关群集的信息，如使用的资源、活动代理和正在运行的服务。
 
 ![DC/OS UI](media/dcos/dcos2.png)
 
 ## 探索 Marathon UI
-
 若要查看 Marathon UI，请浏览到 http://localhost/Marathon。在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。还可以查看有关正在运行的容器和应用程序的信息。
 
 ![Marathon UI](media/dcos/dcos3.png)
 
 ## 部署 Docker 格式容器
-
 若要使用 Marathon 部署新容器，请单击“创建应用程序”按钮，然后在表格中输入以下信息：
 
-字段 | 值
-----------------|-----------
-ID | nginx
-映像 | nginx
-网络 | 桥接
-主机端口 | 80
-协议 | TCP
+| 字段 | 值 |
+| --- | --- |
+| ID |nginx |
+| 映像 |nginx |
+| 网络 |桥接 |
+| 主机端口 |80 |
+| 协议 |TCP |
 
 ![新应用程序 UI - 常规](media/dcos/dcos4.png)
 
@@ -82,7 +78,6 @@ ID | nginx
 ![DC/OS Web UI - 任务群集节点](media/dcos/dcos9.png)
 
 ## 缩放容器
-
 可以使用 Marathon UI 来缩放容器的实例计数。为此，请导航到 **Marathon** 页，选择想要缩放的容器，单击“缩放”按钮。在“缩放应用程序”对话框中，输入想要的容器实例数，然后选择“缩放应用程序”。
 
 ![Marathon UI -“缩放应用程序”对话框](media/dcos/dcos10.png)
@@ -94,11 +89,12 @@ ID | nginx
 ![DC/OS Web UI - 节点](media/dcos/dcos12.png)
 
 ## 后续步骤
-
-- [使用 DC/OS 和 Marathon API](container-service-mesos-marathon-rest.md)
+* [使用 DC/OS 和 Marathon API](container-service-mesos-marathon-rest.md)
 
 深入了解 Azure 容器服务和 Mesos
 
 > [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
+> 
+> 
 
 <!---HONumber=AcomDC_0921_2016-->

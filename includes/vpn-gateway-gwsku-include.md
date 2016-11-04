@@ -2,8 +2,8 @@
 
 VPN 网关可以使用以下 SKU：
 
-- 基本
-- 标准
-- HighPerformance
+* 基本
+* 标准
+* HighPerformance
 
 <!---HONumber=AcomDC_0921_2016-->

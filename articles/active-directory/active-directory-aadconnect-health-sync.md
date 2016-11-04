@@ -1,23 +1,22 @@
 
-<properties
-	pageTitle="使用 Azure AD Connect Health 进行同步 | Microsoft Azure"
-	description="本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。"
-	services="active-directory"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
-	editor="curtand"/>
+---
+title: 使用 Azure AD Connect Health 进行同步 | Microsoft Docs
+description: 本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: stevenpo
+editor: curtand
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/08/2016"
-	ms.author="billmath"/>  
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/08/2016
+ms.author: billmath
 
-
+---
 # 使用用于同步的 Azure AD Connect Health
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅[在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅[在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
 
@@ -44,8 +43,8 @@
 ## 深入了解同步
 用于同步的 Azure AD Connect Health 最新版本添加了以下新功能：
 
-- 同步操作延迟
-- 对象更改趋势
+* 同步操作延迟
+* 对象更改趋势
 
 ### 同步延迟
 此功能提供连接器同步操作（导入、导出等）延迟的图形趋势。这提供了一种快速方便的方式，使你不仅可以了解操作延迟（在发生大量更改时非常有用），而且还可以检测导致延迟的、可能需要进一步调查的异常行为。
@@ -60,7 +59,6 @@
 ![同步延迟](./media/active-directory-aadconnect-health-sync/syncobjectchanges.png)
 
 ## 相关链接
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health 代理安装](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)

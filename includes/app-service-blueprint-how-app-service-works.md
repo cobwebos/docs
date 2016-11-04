@@ -11,7 +11,6 @@
 * [Azure App Service 开发堆栈支持](/blog/windows-azure-websites-development-stacks-support/)
 
 ## 视频
-
 * [Azure App Service 体系结构](/documentation/videos/why-azure-web-sites-plus-architecture/)
 
 <!---HONumber=AcomDC_0921_2016-->

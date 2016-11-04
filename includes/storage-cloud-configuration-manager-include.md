@@ -2,13 +2,13 @@
 
 若要引用 CloudConfigurationManager 包，请将以下 `using` 语句添加到你的类：
 
-	using Microsoft.Azure;	//Namespace for CloudConfigurationManager
+    using Microsoft.Azure;    //Namespace for CloudConfigurationManager
 
 下面的示例演示了如何检索配置文件中的连接字符串：
 
     // Parse the connection string and return a reference to the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-		CloudConfigurationManager.GetSetting("StorageConnectionString"));
+        CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
 不一定要使用 Azure Configuration Manager。还可以使用 API，例如 .NET Framework 的 [ConfigurationManager 类](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)。
 

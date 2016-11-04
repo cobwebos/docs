@@ -1,58 +1,53 @@
-<properties
-    pageTitle="通过 NET 使用服务总线主题 | Microsoft Azure"
-    description="了解如何在 Azure 中通过 .NET 使用服务总线主题和订阅。代码示例是针对 .NET 应用程序编写的。"
-    services="service-bus"
-    documentationCenter=".net"
-    authors="sethmanheim"
-    manager="timlt"
-    editor=""/>
+---
+title: 通过 NET 使用服务总线主题 | Microsoft Docs
+description: 了解如何在 Azure 中通过 .NET 使用服务总线主题和订阅。代码示例是针对 .NET 应用程序编写的。
+services: service-bus
+documentationcenter: .net
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="service-bus"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="get-started-article"
-    ms.date="09/16/2016"
-    ms.author="sethm"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: get-started-article
+ms.date: 09/16/2016
+ms.author: sethm
 
+---
 # 如何使用服务总线主题和订阅
-
-[AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 本文介绍了如何使用服务总线主题和订阅。相关示例用 C# 编写且使用 .NET API。涉及的应用场景包括创建主题和订阅、创建订阅筛选器、将消息发送到主题、从订阅接收消息以及删除主题和订阅。有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)一节。
 
-[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
+[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-[AZURE.INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## 配置应用程序以使用 Service Bus
-
 在您创建使用 Service Bus 的应用程序时，必须添加对 Service Bus 程序集的引用并包括相应的命名空间。执行此操作的最简单方法是下载适当的 [NuGet](https://www.nuget.org) 包。
 
 ## 获取服务总线 NuGet 包
-
 [服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)是获取服务总线 API 并为应用程序配置所有必需服务总线依赖项的最简单方法。若要在项目中安装服务总线 NuGet 包，请执行以下操作：
 
-1.  在解决方案资源管理器中，右键单击“引用”，然后单击“管理 NuGet 包”。
-2.  搜索“服务总线”并选择“Microsoft Azure 服务总线”项。单击“**安装**”以完成安装，然后关闭以下对话框：
-
-    ![][7]
+1. 在解决方案资源管理器中，右键单击“引用”，然后单击“管理 NuGet 包”。
+2. 搜索“服务总线”并选择“Microsoft Azure 服务总线”项。单击“**安装**”以完成安装，然后关闭以下对话框：
+   
+   ![][7]
 
 你现在可以为服务总线编写代码。
 
 ## 创建服务总线连接字符串
-
 服务总线使用连接字符串来存储终结点和凭据。你可以将连接字符串置于配置文件中，而不是对其进行硬编码：
 
-- 在使用 Azure 服务时，建议使用 Azure 服务配置系统（.csdef 和 .cscfg 文件）来存储连接字符串。
-- 在使用 Azure 网站或 Azure 虚拟机时，建议使用 .NET 配置系统（如 Web.config 文件）来存储连接字符串。
+* 在使用 Azure 服务时，建议使用 Azure 服务配置系统（.csdef 和 .cscfg 文件）来存储连接字符串。
+* 在使用 Azure 网站或 Azure 虚拟机时，建议使用 .NET 配置系统（如 Web.config 文件）来存储连接字符串。
 
 在上述两种情况下，你都可以使用 `CloudConfigurationManager.GetSetting` 方法检索连接字符串，本文稍后部分将对此进行介绍。
 
 ### 配置连接字符串
-
-利用该服务配置机制，你可以从 [Azure 门户][]动态更改配置设置，而无需重新部署应用程序。例如，向服务定义 (**.csdef**) 文件中添加一个 `Setting` 标签，如以下示例所示。
+利用该服务配置机制，你可以从 [Azure 门户][Azure 门户]动态更改配置设置，而无需重新部署应用程序。例如，向服务定义 (**.csdef**) 文件中添加一个 `Setting` 标签，如以下示例所示。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -84,7 +79,6 @@
 使用从门户检索到的共享访问签名 (SAS) 密钥名称和密钥值，如前面所述。
 
 ### 在使用 Azure 网站或 Azure 虚拟机时配置连接字符串
-
 在使用网站或虚拟机时，建议你使用 .NET 配置系统（如 Web.config）。你可以使用 `<appSettings>` 元素存储连接字符串。
 
 ```
@@ -96,10 +90,9 @@
 </configuration>
 ```
 
-使用从 [Azure 门户][]检索到的 SAS 名称和密钥值，如前面所述。
+使用从 [Azure 门户][Azure 门户]检索到的 SAS 名称和密钥值，如前面所述。
 
 ## 创建主题
-
 可以通过 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类为服务总线主题和订阅执行管理操作。此类提供了创建、枚举和删除主题的方法。
 
 以下示例使用带连接字符串的 Azure `CloudConfigurationManager` 类构造 `NamespaceManager` 对象，此连接字符串包含服务总线命名空间的基址和有权管理该命名空间的相应 SAS 凭据。此连接字符串的形式如下：
@@ -145,14 +138,15 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-> [AZURE.NOTE] 可以对 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 对象使用 [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) 方法来检查具有指定名称的主题在某个命名空间中是否已存在。
+> [!NOTE]
+> 可以对 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 对象使用 [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) 方法来检查具有指定名称的主题在某个命名空间中是否已存在。
+> 
+> 
 
 ## 创建订阅
-
 也可以使用 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类创建主题订阅。订阅已命名，并且具有一个限制传递到订阅的虚拟队列的消息集的可选筛选器。
 
 ### 创建具有默认 (MatchAll) 筛选器的订阅
-
 如果在创建新订阅时未指定筛选器，则所使用的是默认筛选器 **MatchAll** 筛选器。当你使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。以下示例创建名为“AllMessages”的订阅，并使用默认的 **MatchAll** 筛选器。
 
 ```
@@ -169,12 +163,11 @@ if (!namespaceManager.SubscriptionExists("TestTopic", "AllMessages"))
 ```
 
 ### 创建具有筛选器的订阅
-
 还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
-订阅支持的最灵活的一种筛选器是 [SqlFilter][] 类，它实现了一部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关可用于 SQL 筛选器的表达式的详细信息，请参阅 [SqlFilter.SqlExpression][] 语法。
+订阅支持的最灵活的一种筛选器是 [SqlFilter][SqlFilter] 类，它实现了一部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关可用于 SQL 筛选器的表达式的详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
-以下示例创建了一个名为 **HighMessages** 的订阅，其 [SqlFilter][] 对象仅选择自定义 **MessageNumber** 属性大于 3 的消息。
+以下示例创建了一个名为 **HighMessages** 的订阅，其 [SqlFilter][SqlFilter] 对象仅选择自定义 **MessageNumber** 属性大于 3 的消息。
 
 ```
 // Create a "HighMessages" filtered subscription.
@@ -186,7 +179,7 @@ namespaceManager.CreateSubscription("TestTopic",
    highMessagesFilter);
 ```
 
-类似地，以下示例创建一个名为 **LowMessages** 的订阅，其 [SqlFilter][] 只选择 **MessageNumber** 属性小于或等于 3 的消息。
+类似地，以下示例创建一个名为 **LowMessages** 的订阅，其 [SqlFilter][SqlFilter] 只选择 **MessageNumber** 属性小于或等于 3 的消息。
 
 ```
 // Create a "LowMessages" filtered subscription.
@@ -201,7 +194,6 @@ namespaceManager.CreateSubscription("TestTopic",
 现在，当消息发送到 `TestTopic` 时，始终会将它传送到订阅了 **AllMessages** 主题订阅的接收者，并选择性地传送到订阅了 **HighMessages** 和 **LowMessages** 主题订阅的接收者（具体取决于消息内容）。
 
 ## 将消息发送到主题
-
 若要向服务总线主题发送消息，你的应用程序需要使用连接字符串创建 [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 对象。
 
 以下代码演示了如何使用 [`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.createfromconnectionstring.aspx) API 调用为以前创建的 **TestTopic** 主题创建 [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 对象。
@@ -237,7 +229,6 @@ for (int i=0; i<5; i++)
 服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。标头最大为 64 KB，其中包括标准和自定义应用程序属性。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息传送实体](service-bus-partitioning.md)。
 
 ## 如何从订阅接收消息
-
 从订阅接收消息的建议方法是使用 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 对象。[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 对象可在两种不同模式下工作：[*ReceiveAndDelete* 和 *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx)。
 
 当使用 **ReceiveAndDelete** 模式时，接收是一个单步操作，也就是当服务总线接收订阅中的消息读取请求时，它会将消息标记为“正在使用”并将其返回给应用程序。**ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许出现故障时不处理消息的方案。为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
@@ -284,7 +275,6 @@ Client.OnMessage((message) =>
 此示例使用 [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) 对象配置 [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) 回调。将 [AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) 设置为 **false** 以允许手动控制何时对收到的消息调用 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)。将 [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) 设置为 1 分钟，这会使客户端最多等待一分钟就终止自动续订功能，并且客户端会发起新的调用以检查是否有消息。此属性值会减少客户端无法检索消息时产生的应计费调用次数。
 
 ## 如何处理应用程序崩溃和不可读消息
-
 Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。如果接收方应用程序因某种原因无法处理消息，则可以对收到的消息调用 [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.abandon.aspx) 方法（而不是 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 方法）。这会导致服务总线解锁订阅中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 另外，还存在与订阅中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将自动解锁该消息并使它可再次被接收。
@@ -292,7 +282,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 如果应用程序在处理消息之后，但在发出 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。此情况通常称作*至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。这通常可以通过使用消息的 [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) 属性来实现，该属性在多次传送尝试中保持不变。
 
 ## 删除主题和订阅
-
 以下示例演示了如何从 **HowToSample** 服务命名空间中删除名为 **TestTopic** 的主题。
 
 ```
@@ -307,24 +296,23 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 ```
 
 ## 后续步骤
-
 现在，你已了解有关服务总线主题和订阅的基础知识，单击下面的链接可了解更多信息。
 
--   [队列、主题和订阅][]。
--   [主题筛选器示例][]
--   [SqlFilter][] 的 API 参考。
--   构建向服务总线队列发送消息以及从中接收消息的工作应用程序：[服务总线中转消息传送 .NET 教程][]。
--   服务总线示例：从 [Azure 示例][]下载，或参阅[概述](service-bus-samples.md)。
+* [队列、主题和订阅][队列、主题和订阅]。
+* [主题筛选器示例][主题筛选器示例]
+* [SqlFilter][SqlFilter] 的 API 参考。
+* 构建向服务总线队列发送消息以及从中接收消息的工作应用程序：[服务总线中转消息传送 .NET 教程][服务总线中转消息传送 .NET 教程]。
+* 服务总线示例：从 [Azure 示例][Azure 示例]下载，或参阅[概述](service-bus-samples.md)。
 
-  [Azure 门户]: https://portal.azure.com
+[Azure 门户]: https://portal.azure.com
 
-  [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
+[7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
-  [队列、主题和订阅]: service-bus-queues-topics-subscriptions.md
-  [主题筛选器示例]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
-  [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
-  [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [服务总线中转消息传送 .NET 教程]: service-bus-brokered-tutorial-dotnet.md
-  [Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+[队列、主题和订阅]: service-bus-queues-topics-subscriptions.md
+[主题筛选器示例]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
+[SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[服务总线中转消息传送 .NET 教程]: service-bus-brokered-tutorial-dotnet.md
+[Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
 <!---HONumber=AcomDC_0921_2016-->

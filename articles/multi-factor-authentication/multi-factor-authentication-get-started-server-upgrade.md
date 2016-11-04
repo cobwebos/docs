@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="将 PhoneFactor 代理升级到 Azure Multi-Factor Authentication 服务器"
-	description="本文档介绍如何开始使用 Azure MFA 服务器以及如何从较旧的 phonefactor 代理升级。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: 将 PhoneFactor 代理升级到 Azure Multi-Factor Authentication 服务器
+description: 本文档介绍如何开始使用 Azure MFA 服务器以及如何从较旧的 phonefactor 代理升级。
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # 将 PhoneFactor 代理升级到 Azure Multi-Factor Authentication 服务器
-
 从 PhoneFactor 代理 v5.x 或更旧版本升级到 Azure Multi-Factor Authentication 服务器需要先卸载 PhoneFactor 代理及附属组件，然后才能安装 Multi-Factor Authentication 服务器及其附属组件。
 
 ## 将 PhoneFactor 代理升级到 Azure Multi-Factor Authentication 服务器
@@ -39,6 +38,7 @@
 
 
 <li>如果安装了移动应用 Web 服务：
+
 <ol>
 <li>转到安装文件夹并备份 web.config 文件。默认安装位置为 C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService。</li>
 <li>通过“Windows 程序和功能”卸载移动应用 Web 服务。</li></ol>
@@ -56,6 +56,7 @@
 <li>如果用户门户以前已安装在 PhoneFactor 代理服务器上，请通过Multi-Factor Authentication 服务器用户界面安装新的Multi-Factor Authentication用户门户。请注意，默认虚拟目录名称现在是“MultiFactorAuth”，而不是“PhoneFactor”。如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。否则，如果你允许安装使用新的默认名称，则应单击 Multi-Factor Authentication 服务器中的“用户门户”图标，并更新“设置”选项卡上的用户门户 URL。
 
 <li>如果用户门户和/或移动应用 Web 服务之前安装在了 PhoneFactor 代理中的不同服务器上：
+
 <ol>
 <li>转到安装位置（例如 C:\Program Files\PhoneFactor），并将相应安装程序复制复制到另一台服务器。用户门户和移动应用 Web 服务都有 32 位和 64 位安装程序。它们分别名为 MultiFactorAuthenticationUserPortalSetupXX.msi 和 MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi。</li>
 <li>若要在 Web 服务器上安装用户门户，请以管理员身份打开命令提示符，并运行 MultiFactorAuthenticationUserPortalSetupXX.msi。请注意，默认虚拟目录名称现在是“MultiFactorAuth”，而不是“PhoneFactor”。如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。否则，如果你允许安装使用新的默认名称，则应单击 Multi-Factor Authentication 服务器中的“用户门户”图标，并更新“设置”选项卡上的用户门户 URL。现有用户需知悉新的 URL。</li>

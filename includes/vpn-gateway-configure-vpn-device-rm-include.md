@@ -3,7 +3,7 @@
 
 若要使用 PowerShell 查找虚拟网络网关的公共 IP 地址，请使用以下示例：
 
-	Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
+    Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG
 
 也可以使用 Azure 门户来查看虚拟网络网关的公共 IP 地址。导航到“虚拟网络网关”，然后单击网关的名称。
 

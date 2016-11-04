@@ -1,0 +1,161 @@
+# Overview
+## [About VMs](../virtual-machines-windows-about.md)
+## [Storage](../../virtual-machines/virtual-machines-windows-about-disks-vhds.md)
+## [Virtual networks](../../virtual-network/virtual-networks-overview.md)
+### [Ports, endpoints and security](../../virtual-machines/virtual-machines-windows-endpoints-in-resource-manager.md)
+### [Load balancers](../../virtual-machines/virtual-machines-windows-load-balance.md)
+## [VM sizes](../../virtual-machines/virtual-machines-windows-sizes.md)
+### [Compute-intensive sizes](../../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)
+### [Compute benchmark scores](../../virtual-machines-windows-compute-benchmark-scores.md)
+## [Regions and availability](../../virtual-machines-windows-regions-and-availability.md)
+### [VM availability](../../virtual-machines/virtual-machines-windows-manage-availability.md)
+## [Security Center](../../security-center-virtual-machine)
+## [Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+### [Deployment models](../../azure-resource-manager/resource-manager-deployment-model.md)
+## [VM Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)
+## [Containers](../../virtual-machines/virtual-machines-windows-containers.md)
+## [FAQ](../../virtual-machines/virtual-machines-windows-faq.md)
+
+# Get started
+## [Free account](https://azure.microsoft.com/free/)
+## [Create a VM using the portal](../../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+### [Log on to a VM](../../virtual-machines/virtual-machines-windows-connect-logon.md)
+### [Install a role and open ports](../../virtual-machines-windows-hero-role.md)
+## [Different ways to create a VM](../../virtual-machines/virtual-machines-windows-creation-choices.md)
+## [Install Azure PowerShell](../../powershell-install-configure.md)
+## [Create a VM with PowerShell](../../virtual-machines/virtual-machines-windows-ps-create.md)
+## [Template walkthrough](../../resource-manager-template-walkthrough.md)
+## [Create and deploy complex VM templates](../../virtual-machines-windows-dotnet-core-1-landing.md)
+
+# How to
+## Storage
+### [Attach a data disk using the portal](../../virtual-machines/virtual-machines-windows-attach-disk-portal.md)
+### [Detach a data disk using the portal](../../virtual-machines/virtual-machines-windows-detach-disk.md)
+### [Expand the OS disk](../../virtual-machines/virtual-machines-windows-expand-os-disk.md)
+### [Use D: as a data disk](../../virtual-machines/virtual-machines-windows-classic-change-drive-letter.md)
+### [Disk encryption](../../security/azure-security-disk-encryption.md)
+
+## [Network](../../virtual-machines/virtual-machines-windows-ps-common-network-ref.md)
+### [Allow access to a VM using the portal](../../virtual-machines/virtual-machines-windows-nsg-quickstart-portal.md)
+### [Allow access to a VM using PowerShell](../../virtual-machines/virtual-machines-windows-nsg-quickstart-powershell.md)
+### [Create an FDQN using the portal](../../virtual-machines/virtual-machines-windows-portal-create-fqdn.md)
+### [Create a VM with multiple NICs](../../virtual-machines/virtual-machines-windows-multiple-nics.md)
+### [Create VNETs using the portal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
+### [Create NSGs using the portal](../../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+### [Create a load balancer](../../load-balancer/load-balancer-get-started-internet-portal.md)
+### [Create a static public IP](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)
+### [Connect Classic VNets to Resource Manager VNets](../../virtual-network/virtual-networks-arm-asm-s2s.md)
+
+## Images
+### [Prepare a VHD to upload](../../virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image.md)
+### [Generalize a VM using Sysprep](../../virtual-machines-windows-generalize-vhd.md)
+### [Upload a VM image](../../virtual-machines/virtual-machines-windows-upload-image.md)
+### [Capture a generalized Azure VM](../../virtual-machines-windows-capture-image.md)
+### [Copy a specialized Azure VM](../../virtual-machines/virtual-machines-windows-vhd-copy.md)
+### [Create a VM from a generalized VHD](../../virtual-machines-windows-create-vm-generalized.md)
+### [Create a VM from a specialized VHD](../../virtual-machines-windows-create-vm-specialized.md)
+
+## Deploy
+### [Use Software Assurance licensing](../../virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing.md)
+### [Find VM images using Powershell](../../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)
+### [Use Windows client images](../../virtual-machines/virtual-machines-windows-client-images.md)
+### [Use a template to create a VM](../../virtual-machines/virtual-machines-windows-ps-template.md)
+### [Scale multiple VMs with VMSS](../../virtual-machines/virtual-machines-windows-vmss-powershell-creating.md)
+### [Create a VM with monitoring and diagnostics](../../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+### [Deploy using Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+### [Deploy using C#](../../virtual-machines/virtual-machines-windows-csharp.md)
+### [Deploy using C# and templates](../../virtual-machines/virtual-machines-windows-csharp-template.md)
+### [Deploy application frameworks from a template](../../virtual-machines/virtual-machines-windows-app-frameworks.md)
+
+## Configure
+### [Create availability set](../../virtual-machines/virtual-machines-windows-create-availability-set.md)
+### [Change the availability set for a VM](../../virtual-machines/virtual-machines-windows-change-availability-set.md)
+### [Move a VM between subscriptions](../../virtual-machines/virtual-machines-windows-move-vm.md)
+### [Resize a VM](../../virtual-machines-windows-resize-vm.md)
+### [Use tags](../../resource-group-using-tags.md)
+### [Tag a VM](../../virtual-machines/virtual-machines-windows-tag.md)
+### [Powershell common tasks](../../virtual-machines/virtual-machines-windows-ps-common-ref.md)
+### [CLI common tasks](../../virtual-machines/virtual-machines-windows-cli-manage.md)
+
+## Manage 
+### [Create a work or school identity in Azure Active Directory](../../virtual-machines-windows-create-aad-work-id.md)
+### [Manage access](../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md)
+### [Set up Key Vault](../../virtual-machines/virtual-machines-windows-key-vault-setup.md)
+### [Set up WinRM access](../../virtual-machines/virtual-machines-windows-winrm.md)
+### [Backup using Recovery Services](../../backup/backup-azure-vms-first-look-arm.md)
+### [Manage backups using PowerShell](../../backup/backup-azure-vms-automation.md)
+### [Resource Manager policies](../../virtual-machines-windows-policy.md)
+### [Manage VMs using PowerShell](../../virtual-machines/virtual-machines-windows-ps-manage.md)
+### [Manage VMs using C#](../../virtual-machines/virtual-machines-windows-csharp-manage.md)
+### [Manage VMs using CLI](../../virtual-machines/virtual-machines-windows-cli-deploy-templates.md)
+
+## Automate
+### [VM Extensions overview](../../virtual-machines/virtual-machines-windows-extensions-features.md)
+### [Custom Script extension](../../virtual-machines/virtual-machines-windows-extensions-customscript.md)
+### [PowerShell DSC extension](../../virtual-machines/virtual-machines-windows-extensions-dsc-overview.md)
+#### [PowerShell DSC extension Credential Handling](../../virtual-machines/virtual-machines-windows-extensions-dsc-credentials.md)
+#### [DSC and VMSS with templates](../../virtual-machines-windows-extensions-dsc-template.md)
+### [Azure Log Collector extension](../../virtual-machines-windows-log-collector-extension.md)
+### [Azure diagnostics extension](../../virtual-machines-windows-ps-extensions-diagnostics.md)
+### [Extensions in templates](../../virtual-machines/virtual-machines-windows-extensions-authoring-templates.md)
+### [Configuration samples](../../virtual-machines/virtual-machines-windows-extensions-configuration-samples.md)
+### [Troubleshoot extensions](../../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)
+### [Azure Automation overview](../../virtual-machines-windows-manage-using-azure-automation.md)
+#### [Vertically scale VMs with Azure Automation](../../virtual-machines-windows-vertical-scaling-automation.md)
+### [Download the template for a VM](../../virtual-machines-windows-download-template.md)
+### [Automate with Chef](../../virtual-machines/virtual-machines-windows-chef-automation.md)
+
+## Migrate
+### [Overview of migration](../../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+### [Plan for migration](../../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+### [Migrate using PowerShell](../../virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)
+### [Community tools for migrating](../../virtual-machines-windows-migration-scripts.md)
+
+## Best Practices
+### [Best practices for running a Windows VM on Azure](../../virtual-machines/virtual-machines-windows-guidance-compute-single-vm.md)
+
+## Plan
+### [Infrastructure guidelines](../../virtual-machines/virtual-machines-windows-infrastructure-virtual-machine-guidelines.md)
+### [Subscriptions and accounts](../../virtual-machines/virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md)
+### [Naming](../../virtual-machines/virtual-machines-windows-infrastructure-naming-guidelines.md)
+### [Resource groups](../../virtual-machines/virtual-machines-windows-infrastructure-resource-groups-guidelines.md)
+### [Storage](../../virtual-machines/virtual-machines-windows-infrastructure-storage-solutions-guidelines.md)
+### [Networking](../../virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md)
+### [Availability sets](../../virtual-machines/virtual-machines-windows-infrastructure-availability-sets-guidelines.md)
+### [Infrastructure example](../../virtual-machines/virtual-machines-windows-infrastructure-example.md)
+### [Azure planned maintenance](../../virtual-machines/virtual-machines-windows-planned-maintenance.md)
+#### [Schedule](../../virtual-machines/virtual-machines-windows-planned-maintenance-schedule.md)
+
+## Workloads
+### [High-performance Computing (HPC)](../../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md)
+### [MATLAB](../../virtual-machines/virtual-machines-windows-matlab-mdcs-cluster.md)
+### [MongoDB](../../virtual-machines-windows-install-mongodb.md)
+### [SQL](../../virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md)
+### [SAP](../../virtual-machines/virtual-machines-windows-sap-get-started.md)
+### [SharePoint](../../virtual-machines/virtual-machines-windows-sharepoint-farm.md)
+
+## Troubleshoot
+### [Troubleshoot Remote Desktop connections](../../virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
+### [Reset RDP password](../../virtual-machines/virtual-machines-windows-reset-rdp.md)
+### [Troubleshoot creating a new VM](../../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)
+### [Troubleshoot restarting or resizing a VM](../../virtual-machines/virtual-machines-windows-restart-resize-error-troubleshooting.md)
+### [Troubleshoot application access](../../virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)
+### [Troubleshoot allocation failures](../../virtual-machines/virtual-machines-windows-allocation-failure.md)
+### [Redeploy a VM](../../virtual-machines/virtual-machines-windows-redeploy-to-new-node.md)
+
+# Reference
+## [Author Resource Manager templates](../../resource-group-authoring-templates.md)
+## [Compute REST API](https://msdn.microsoft.com/library/azure/mt163647)
+## [Network REST API](https://msdn.microsoft.com/library/azure/mt163658)
+## [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355)
+## [Virtual Machine Scale Sets REST API](https://msdn.microsoft.com/library/azure/mt705635)
+## [Virtual Machines .NET API](https://msdn.microsoft.com/library/azure/mt131911)
+## [Network .NET API](https://msdn.microsoft.com/library/azure/dn973320)
+## [Storage .NET API](https://msdn.microsoft.com/library/azure/mt131037)
+## [CLI](../../virtual-machines/azure-cli-arm-commands.md)
+## [PowerShell](https://msdn.microsoft.com/library/azure/mt125979)
+## [Community templates](https://azure.microsoft.com/documentation/templates/)
+
+# Resources
+## [Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
+## [Regional availability](https://azure.microsoft.com/regions/services/)

@@ -1,33 +1,31 @@
-<properties
-	pageTitle="Azure 机器学习常见问题 | Microsoft Azure"
-	description="Azure 机器学习简介：包括用于简化型预测建模的云服务计费、功能和限制的常见问题。"
-	keywords="机器学习简介, 预测建模, 什么是机器学习"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: Azure 机器学习常见问题 | Microsoft Docs
+description: Azure 机器学习简介：包括用于简化型预测建模的云服务计费、功能和限制的常见问题。
+keywords: 机器学习简介, 预测建模, 什么是机器学习
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/14/2016"
-	ms.author="garye"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 07/14/2016
+ms.author: garye
 
+---
 # Azure 机器学习常见问题 (FAQ)：计费、功能、限制和支持
-
 本“常见问题”针对 Azure 机器学习问题提供解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。其中涵盖了服务使用方面的问题，包括计费模式、功能、限制和支持。
 
 ## 一般问题
-
 **什么是 Azure 机器学习？**
 
 Azure 机器学习是完全托管的服务，可用于创建、测试、操作和管理云中的预测分析解决方案。只需使用浏览器即可登录、上载数据，以及立即开始机器学习试验。拖放式预测建模、大型模块和用于启动模板的库，简化并加速了常见的机器学习任务。有关详细信息，请参阅 [Azure Machine Learning service overview](https://azure.microsoft.com/services/machine-learning/)（Azure 机器学习服务概述）。有关介绍重要术语和概念的机器学习简介，请参阅 [Introduction to Azure Machine Learning](machine-learning-what-is-machine-learning.md)（Azure 机器学习简介）。
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 **什么是机器学习工作室？**
 
@@ -46,7 +44,6 @@ Azure 机器学习是完全托管的服务，可用于创建、测试、操作�
 经典 Web 服务在[机器学习工作室](http://studio.azureml.net)中的“Web 服务”选项卡上列出。基于 ARM 的新 Web 服务在 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)门户中列出。未提供交叉列表。
 
 ## Microsoft Azure 机器学习 Web 服务问题
-
 **什么是 Azure ML Web 服务？**
 
 外部应用程序使用 Azure 机器学习 Web 服务实时与机器学习服务工作流评分模型通信。机器学习 Web 服务调用将预测结果返回到外部应用程序。若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
@@ -63,57 +60,49 @@ Azure 机器学习有两种类型的服务：
 有关新 Azure 机器学习 Web 服务的详细信息，请参阅[相关文档](machine-learning-whats-new.md)。
 
 ## 机器学习工作室问题
-
 ### 创建试验
-
 **试验图形是否有版本控制或 Git 集成？**
 
 没有。不过，机器学习工作室保留其他用户无法修改的每个试验迭代。有关详细信息，请参阅 [Manage experiment iterations in Machine Learning Studio](machine-learning-manage-experiment-iterations.md)（在机器学习工作室中管理试验迭代）。
 
-
 ### 部署试验
-
 **如果已将预测试验部署为经典 Web 服务，是否可以将它部署为新的（基于 ARM 的）Web 服务？**
 
 不可以部署以前已部署为经典 Web 服务的试验。必须改为创建新的预测试验并进行部署。
 
-
 ### 导入和导出机器学习的数据
-
 **机器学习支持哪种数据源？**
 
 将数据载入机器学习工作室试验的方法有三种：上载本地文件作为数据集、使用模块从云数据服务导入数据，或者从另一个试验导入保存的数据集。有关支持的文件格式的详细信息，请参阅 [Import training data into Machine Learning Studio](machine-learning-data-science-import-data.md)（将训练数据导入 Azure 机器学习工作室）。
 
-
 #### <a id="ModuleLimit"></a>模块适合多大的数据集？
-
 机器学习工作室中的模块针对常见用例支持最多包含 10 GB 密集数字数据的数据集。如果模块接受多个输入，10 GB 是所有输入的大小总计。也可以通过 Hive 或 Azure SQL 数据库查询，或在引入之前通过“按计数学习”预处理，对更大的数据集采样。
 
 以下数据类型可以在特征正则化期间扩展为较大数据集，并限制为小于 10 GB：
 
-- 稀疏
-- 分类
-- 字符串
-- 二进制数据
+* 稀疏
+* 分类
+* 字符串
+* 二进制数据
 
 以下模块限制为小于 10 GB 的数据集：
 
-- 推荐器模块
-- SMOTE 模块
-- 脚本模块：R、Python SQL
-- 输出数据大小可以大于输入数据大小的模块，例如联接或特征哈希。
-- 迭代数目极大时的交叉验证、调整模型超参数、顺序回归和一对多的多类。
+* 推荐器模块
+* SMOTE 模块
+* 脚本模块：R、Python SQL
+* 输出数据大小可以大于输入数据大小的模块，例如联接或特征哈希。
+* 迭代数目极大时的交叉验证、调整模型超参数、顺序回归和一对多的多类。
 
 对于大于几 GB 的数据集，应该将数据上载到 Azure 存储或 Azure SQL 数据库，或者使用 HDInsight，而不要直接从本地文件上载。
 
-
-####<a id="UploadLimit"></a>数据上载的限制是什么？
+#### <a id="UploadLimit"></a>数据上载的限制是什么？
 对于大于 2 GB 的数据集，应该将数据上载到 Azure 存储或 Azure SQL 数据库，或者使用 HDInsight，而不要直接从本地文件上载。
 
 **是否可以从 Amazon S3 读取数据？**
 
 如果数据量较小，并且想要通过 HTTP URL 公开，可以使用[导入数据][import-data]模块。如果数据量较大，请先将它传输到 Azure 存储，然后使用[导入数据][import-data]模块将它导入试验。
 <!--
+
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -122,11 +111,9 @@ Azure 机器学习有两种类型的服务：
 可以在 [Import Images][image-reader]（导入图像）参考中了解图像输入功能。
 
 ### 模块
-
 **查找的算法、数据源、数据格式或数据转换操作不在 Azure 机器学习工作室中。可以使用哪些选项？**
 
 可以访问[用户反馈论坛](http://go.microsoft.com/fwlink/?LinkId=404231)，查看我们跟踪的功能请求。如果要找的功能已有人请求，请为该请求投票。如果要找的功能不存在，请创建新请求。还可以在此论坛中查看请求状态。我们将密切跟踪此列表，并经常更新功能可用性状态。除了使用对 R 和 Python 的内置支持，也可以根据需要创建自定义转换。
-
 
 **是否可将现有的代码放入机器学习工作室？**
 
@@ -140,9 +127,7 @@ Azure 机器学习有两种类型的服务：
 
 最多可以在一个试验中并行执行 4 个模块。
 
-
 ### 数据处理
-
 **是否可以通过某个功能在试验中以交互方式可视化数据（除 R 可视化以外）？**
 
 单击模块的输出即可将数据可视化并获取统计信息。
@@ -152,7 +137,6 @@ Azure 机器学习有两种类型的服务：
 因为数据要传输到浏览器并且可能很大，限制数据大小是为了防止机器学习工作室速度变慢。若要可视化所有数据/结果，最好是下载数据并使用 Excel 或其他工具。
 
 ### 算法
-
 **机器学习工作室支持哪些现有算法？**
 
 机器学习工作室提供顶级算法，例如可缩放的提升决策树、贝叶斯推荐系统、深度神经网络和决策森林（由 Microsoft Research 开发）。此外还包括可缩放的开源机器学习包，例如 Vowpal Wabbit。机器学习工作室支持多类与二进制分类、回归和聚集。请参阅[机器学习模块][machine-learning-modules]的完整列表。
@@ -184,7 +168,6 @@ Azure 机器学习有两种类型的服务：
 目前只能在 R 中创建新的自定义模块。
 
 ### R 模块
-
 **可以在机器学习工作室中使用哪些 R 包？**
 
 机器学习工作室目前支持 400 个以上的 CRAN 包，下面是所有包含的包的[最新列表](http://az754797.vo.msecnd.net/docs/RPackages.xlsx)。此外，若要了解如何自行检索此列表，请参阅 [Extend your experiment with R ](machine-learning-extend-your-experiment-with-r.md)（使用 R 扩展试验）。如果所需的包不在此列表中，请在[用户反馈论坛](http://go.microsoft.com/fwlink/?LinkId=404231)中提供包名称。
@@ -198,7 +181,6 @@ Azure 机器学习有两种类型的服务：
 Studio 中没有适用于 R 的 REPL 环境。
 
 ### Python 模块
-
 **是否可以构建自定义的 Python 模块？**
 
 目前不可以，但可以使用一个或多个[执行 Python 脚本][python]模块来获取相同的结果。
@@ -208,26 +190,21 @@ Studio 中没有适用于 R 的 REPL 环境。
 可以使用机器学习工作室中的 Jupyter 笔记本。有关详细信息，请参阅 [Introducing Jupyter Notebooks in Azure Machine Learning Studio](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)（Azure 机器学习工作室中的 Jupyter 笔记本简介）。
 
 ## Web 服务
-
-###以编程方式重新训练模型
-
+### 以编程方式重新训练模型
 **如何以编程方式重新训练 Azure 机器学习模型？**
 
 使用重新训练 API。有关详细信息，请参阅 [Retrain Machine Learning models programmatically](machine-learning-retrain-models-programmatically.md)（以编程方式重新训练机器学习模型）。[Microsoft Azure Maching Learning Retraining Demo](https://azuremlretrain.codeplex.com/)（Microsoft Azure 机器学习重新训练演示）中也提供了示例代码。
 
 ### 创建
-
 **是否可以在本地或者在没有连接 Internet 的应用程序中部署模型？**
 
 没有。
-
 
 **所有 Web 服务是否有预期的基准延迟？**
 
 请参阅 [Azure subscription limits](../azure-subscription-service-limits.md)（Azure 订阅限制）
 
 ### 使用
-
 **以批处理执行服务的形式或者以请求响应服务的形式运行预测模型的时机是什么？**
 
 请求响应服务 (RRS) 是低延迟的大规模 Web 服务，为从试验环境创建并部署的无状态模型提供接口。批处理执行服务 (BES) 是为一批数据记录进行异步评分的服务。BES 的输入类似于 RRS 中使用的数据输入。主要区别在于，BES 从多种源读取记录块，例如 Blob 服务、Azure 中的表服务、Azure SQL 数据库、HDInsight（Hive 查询）和 HTTP 源。有关详细信息，请参阅 [How to consume Machine Learning web services](machine-learning-consume-web-services.md)（如何使用机器学习 Web 服务）。
@@ -255,16 +232,13 @@ Studio 中没有适用于 R 的 REPL 环境。
 有关错误代码与说明的列表，请参阅 [Machine Learning Module Error Codes](https://msdn.microsoft.com/library/azure/dn905910.aspx)（机器学习模块错误代码）。
 
 ## 可伸缩性
-
 **什么是 Web 服务的可缩放性？**
 
 目前，每个默认终结点上预配了 20 个并发 RRS 请求。可以将每个终结点的并发请求调整为 200 个，还可以将每个 Web 服务的终结点调整为 10,000 个，如 [Scaling API endpoints](machine-learning-scaling-endpoints.md)（缩放 API 终结点）中所述。对于 BES，每个终结点每次可处理 40 个请求，超过 40 个的其他请求将排入队列。这些排队的请求在队列清空后自动运行。
 
-
 **R 作业是否分散在节点之间？**
 
 没有。
-
 
 **可以将多少数据用于训练？**
 
@@ -272,21 +246,20 @@ Studio 中没有适用于 R 的 REPL 环境。
 
 以下数据类型可以在特征正则化期间扩展为较大数据集，并限制为小于 10 GB：
 
-- 稀疏
-- 分类
-- 字符串
-- 二进制数据
+* 稀疏
+* 分类
+* 字符串
+* 二进制数据
 
 以下模块限制为小于 10 GB 的数据集：
 
-- 推荐器模块
-- SMOTE 模块
-- 脚本模块：R、Python SQL
-- 输出数据大小可以大于输入数据大小的模块，例如联接或特征哈希。
-- 迭代数目极大时的交叉验证、调整模型超参数、顺序回归和一对多的多类。
+* 推荐器模块
+* SMOTE 模块
+* 脚本模块：R、Python SQL
+* 输出数据大小可以大于输入数据大小的模块，例如联接或特征哈希。
+* 迭代数目极大时的交叉验证、调整模型超参数、顺序回归和一对多的多类。
 
 对于大于几 GB 的数据集，应该将数据上载到 Azure 存储或 Azure SQL 数据库，或者使用 HDInsight，而不要直接从本地文件上载。
-
 
 **向量大小是否有任何限制？**
 
@@ -297,11 +270,9 @@ Studio 中没有适用于 R 的 REPL 环境。
 没有。
 
 ## 安全性和可用性
-
 **默认情况下，哪些人可以访问 Web 服务的 HTTP 终结点？ 如何限制对终结点的访问？**
 
 部署 Web 服务之后，将为该服务创建默认终结点。可以使用该默认终结点的 API 密钥调用它。可以从 Azure 经典门户，或以编程方式使用 Web 服务管理 API 添加具有自身密钥的其他终结点。需要使用访问密钥来调用 Web 服务。有关详细信息，请参阅 [Connect to a Machine Learning web service](machine-learning-connect-to-azure-machine-learning-web-service.md)（连接到机器学习 Web 服务）。
-
 
 **如果找不到 Azure 存储帐户，会发生什么情况？**
 
@@ -309,20 +280,16 @@ Studio 中没有适用于 R 的 REPL 环境。
 
 如果意外删除了存储帐户，从中恢复的唯一办法是与删除的存储帐户相同的区域中重新创建同名的存储帐户。然后，重新同步访问密钥。
 
-
 **如果存储帐户访问密钥未同步，会发生什么情况？**
 
 在执行工作流时，机器学习工作室依赖用户提供的 Azure 存储帐户来保存元数据。此存储帐户是在创建工作区时提供给机器学习工作室的，访问密钥与该工作区相关联。创建工作区之后，如果更改了访问密钥，该工作区不再能访问存储帐户 - 工作区将停止运行，其中的所有试验将会失败。
 
 如果更改了存储帐户访问密钥，请使用 Azure 经典门户在工作区中重新同步访问密钥。
 
-
 ## Azure 应用商店
-
 请参阅 [FAQ for publishing and using apps in the Machine Learning Marketplace](machine-learning-marketplace-faq.md)（在机器学习应用商店中发布和使用应用的常见问题）。
 
 ## 支持和培训
-
 **在哪里可以获得 Azure 机器学习的培训？**
 
 [Azure 机器学习文档中心](https://azure.microsoft.com/services/machine-learning/)包含视频教程和操作指南。这些分步指南提供服务简介，逐步说明导入数据、清除数据、构建预测模型以及使用 Azure 机器学习将其部署到生产环境的整个数据科研生命周期。
@@ -338,7 +305,6 @@ Studio 中没有适用于 R 的 REPL 环境。
 Azure 机器学习还在 MSDN 上设有社区论坛，可以在那里咨询有关 Azure 机器学习的问题。该论坛由 Azure 机器学习团队监管。访问 [Azure 论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)。
 
 ## 计费问题
-
 **机器学习的计费模式是怎样的？**
 
 Azure 机器学习有两个组件。机器学习工作室和机器学习 Web 服务。
@@ -362,7 +328,7 @@ Azure 机器学习有两个组件。机器学习工作室和机器学习 Web 服
 **机器学习是否有免费试用版？**
 
  Azure 机器学习提供免费订阅选项（请参阅 [Machine Learning Pricing](https://azure.microsoft.com/pricing/details/machine-learning/)（机器学习定价）了解详细信息），机器学习工作室提供 8 小时快速评估试用版（登录[机器学习工作室](https://studio.azureml.net/?selectAccess=true&o=2)获取此试用版）。
- 
+
  此外，注册 Azure 免费试用版后，可以试用任何 Azure 服务一个月。有关 Azure 免费试用版的详细信息，请访问 [Azure Free Trial FAQ](/pricing/free-trial-faq/)（Azure 免费试用常见问题）。
 
 **什么是事务？**
@@ -401,8 +367,7 @@ Azure ML 的新 Web 服务提供多个级别用于预配计费计划。开发/�
 
 机器学习服务属于多租户服务，在后端使用的实际计算资源将各不相同，并会针对性能和可预测性进行优化。
 
-### 新 Web 服务的管理 
-
+### 新 Web 服务的管理
 **如果删除计划，会发生什么情况？**
 
 该计划将从订阅中删除，并按比例计算使用费。
@@ -435,9 +400,7 @@ Azure ML 的新 Web 服务提供多个级别用于预配计费计划。开发/�
 
 该实例将从订阅中删除，并按比例计算使用费。
 
-
 ### 注册新的 Web 服务计划
-
 **如何注册计划？**
 
 可以使用两种方法创建计费计划。
@@ -467,7 +430,6 @@ Azure ML 的新 Web 服务提供多个级别用于预配计费计划。开发/�
 是的。不同的区域有不同的计划定价。将 Web 服务部署到其他区域时，必须为服务分配该区域特定的计划。
 
 ### 新的 Web 服务 - 超额
-
 **如何检查 Web 服务使用量是否超额？**
 
 可以在 Azure 机器学习 Web 服务门户的“计划”页中查看所有计划的使用量。登录门户，然后单击“计划”菜单选项。
@@ -485,11 +447,9 @@ Azure ML 的新 Web 服务提供多个级别用于预配计费计划。开发/�
 对于 BES 工作负荷，将按相同的方式计费，但 API 事务成本表示提交的批处理作业数，计算成本表示与这些批处理作业关联的计算时间。因此，BES 生产 API 事务成本将为提交的作业总数乘以每 1,000 个事务的价格（单个事务按比例计费）。BES API 生产 API 计算小时数成本将为运行作业中的每一行所需的时间量乘以作业中的总行数、作业总数和每个生产 API 计算小时数的价格。使用机器学习计算器时，事务指示器表示计划提交的作业数，而“每个事务的时间”字段表示运行每个作业中的所有行所需的总时间。例如，对于标准 S1 超额而言，如果每天提交 100 个作业，每个作业包含 500 行，每一行的运行时间为 0.72 秒，则每月生产 API 事务成本为 $1.55（100 个作业/天 = 3,100 个作业/月 * $0.50/1000 个 API 事务），生产 API 计算小时数成本为 $620（500 行 * 0.72 秒 * 3100 个作业 * $2/小时），总计为 $621.55。
 
 ### Azure ML 经典 Web 服务
-
 **是否还提供即用即付模式？** 是，Azure 机器学习中仍然提供经典的 Web 服务。
 
 ### Azure 机器学习免费层和标准层
-
 **Azure 机器学习免费层中包括什么？**
 
 Azure 机器学习免费层旨在提供针对 Azure 机器学习工作室的深入介绍。只需使用 Microsoft 帐户即可注册。免费层包括每个 [Microsoft 帐户](https://www.microsoft.com/account/default.aspx)免费访问一个 Azure 机器学习工作室工作区。它可以使用高达 10GB 的存储空间，并可以将模型作为过渡 API 进行操作。免费层工作负载不在 SLA 范围内，只适合开发和个人使用。免费层工作负荷无法通过连接本地 SQL Server 访问数据。上表概述了免费层和标准层的许多差异，但可能存在其他差异，而免费层的功能也可能随时发生更改。
@@ -506,8 +466,8 @@ Azure ML API 服务根据它是经典 Web 服务还是新 Web 服务来计费。
 * 工作室试验小时数 – 该指标聚合了在机器学习工作室中运行试验和在过渡环境中运行生产型 API 调用所产生的所有计算费用。
 * 通过连接用于培训和评分的模型中的本地 SQL Server 访问数据。
 * 对于经典 Web 服务：
-	* 生产 API 计算小时数 - 该指标包括在生产中运行的 Web 服务所产生的计算收费。
-	* 生产 API 事务数（以 1000 次为单位）- 该指标包括每次调用生产 Web 服务所产生的费用。
+  * 生产 API 计算小时数 - 该指标包括在生产中运行的 Web 服务所产生的计算收费。
+  * 生产 API 事务数（以 1000 次为单位）- 该指标包括每次调用生产 Web 服务所产生的费用。
 
 除了上述费用，如果是新的 Web 服务，费用将聚合到选定的计划：
 
@@ -516,7 +476,6 @@ Azure ML API 服务根据它是经典 Web 服务还是新 Web 服务来计费。
 * 标准 S1/S2/S3 超额 API 事务（在 1,000 秒内）- 此指标包括现有实例中包含的数量用完后，对生产环境的新 Web 服务所进行的每个调用所产生的费用。额外的使用量将按照与 S1/S2/S3 计划层关联的超额费率收费。
 * 已包含的 API 计算小时数 - 在新 Web 服务中，此指标表示 API 计算小时数的已包含数量
 * 已包含的 API 事务数（以 1,000 计）- 在新 Web 服务中，此指标表示 API 事务的已包含数量
-
 
 **如何注册 Azure ML 免费层？**
 
@@ -544,15 +503,14 @@ Azure ML API 服务根据它是经典 Web 服务还是新 Web 服务来计费。
 
 若要将免费层中的试验复制到标准层，请遵循下述步骤。
 
-1.	登录到 Azure 机器学习工作室，确保免费工作区和标准工作区均在顶部导航栏的工作区选择器中可见。
-2.	如果当前处于标准工作区，请切换到免费工作区。
-3.	在试验列表视图中，选择要复制的试验，然后单击“复制”命令按钮。
-4.	在弹出的对话框中选择标准工作区，然后单击“复制”按钮。
-5.	请注意，所有关联数据集、训练模型等都将与试验一起复制到标准工作区。
-6.	需要在标准工作区重新运行试验并重新发布 Web 服务。
+1. 登录到 Azure 机器学习工作室，确保免费工作区和标准工作区均在顶部导航栏的工作区选择器中可见。
+2. 如果当前处于标准工作区，请切换到免费工作区。
+3. 在试验列表视图中，选择要复制的试验，然后单击“复制”命令按钮。
+4. 在弹出的对话框中选择标准工作区，然后单击“复制”按钮。
+5. 请注意，所有关联数据集、训练模型等都将与试验一起复制到标准工作区。
+6. 需要在标准工作区重新运行试验并重新发布 Web 服务。
 
 ### 工作室工作区
-
 **机器学习座席订阅是什么？什么时候需要它？**
 
 一个机器学习座席代表一个工作区。建议机器学习座席订阅涵盖在机器学习工作室或生产 API 服务中进行试验的任何用户。
@@ -566,7 +524,6 @@ Azure ML API 服务根据它是经典 Web 服务还是新 Web 服务来计费。
 机器学习服务属于多租户服务，在后端使用的实际计算资源将各不相同，并会针对性能和可预测性进行优化。
 
 ### 来宾访问
-
 **什么是对 Azure 机器学习工作室进行来宾访问？**
 
 来宾访问是受限制的试用体验，可在 Azure 机器学习工作室中创建和运行试验，而无需任何费用，也无需进行身份验证。来宾会话是非永久性的（不可保存），并且时间限制为 8 小时。其他限制包括缺少 R 和 Python 支持、不存在暂存 API，以及数据集大小和存储空间容量受限。相比之下，选择使用 Microsoft 帐户登录的用户将具有对上文描述的机器学习工作室的免费层的完全访问权限，这包括永久工作区和更完整的功能。单击 [https://studio.azureml.net](https://studio.azureml.net) 上的“开始”按钮，选择“来宾访问”或“使用 Microsoft 帐户登录”即可选择免费机器学习体验。

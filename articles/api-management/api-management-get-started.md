@@ -1,29 +1,26 @@
-<properties
-	pageTitle="在 Azure API 管理中管理第一个 API | Microsoft Azure"
-	description="了解如何创建 API、添加操作，以及如何开始使用 API 管理。"
-	services="api-management"
-	documentationCenter=""
-	authors="steved0x"
-	manager="erikre"
-	editor=""/>
+---
+title: 在 Azure API 管理中管理第一个 API | Microsoft Docs
+description: 了解如何创建 API、添加操作，以及如何开始使用 API 管理。
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="api-management"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="08/24/2016"
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 08/24/2016
+ms.author: sdanie
 
+---
 # 在 Azure API 管理中管理第一个 API
-
 ## <a name="overview"> </a>概述
-
 本指南演示如何快速开始使用 Azure API 管理，并进行首次 API 调用。
 
 ## <a name="concepts"> </a>什么是 Azure API 管理？
-
 可以使用 Azure API 管理处理任何后端，并基于它发布正式的 API 程序。
 
 常见方案包括：
@@ -32,36 +29,37 @@
 * **启用 ISV 合作伙伴生态系统** 通过开发人员门户提供快速的合作伙伴加入，并构建 API 外观使其与未准备好供合作伙伴使用的内部实现分离。
 * **运行内部的 API 程序** 通过为组织提供一个集中位置来交流 API 的可用性和最新更改，基于组织帐户控制访问所有这一切都基于 API 网关与后端之间的安全通道。
 
-
 系统由以下组件组成：
 
 * **API 网关**是具有以下功能的终结点：
+  
   * 接受 API 调用，并将调用路由到后端。
   * 验证 API 密钥、JWT 令牌、证书和其他凭据。
   * 强制使用配额和速率限制。
   * 无需修改代码即可随时转换 API。
   * 在设置的位置缓存后端响应。
   * 记录调用元数据以用于分析。
-
 * **发布者门户**是一个管理界面，可以在其中设置 API 程序。使用它可执行以下操作：
-	* 定义或导入 API 架构。
-	* 将 API 打包到产品中。
-	* 设置策略，如 API 的配额或转换。
-	* 从分析中获得见解。
-	* 管理用户。
-
+  
+  * 定义或导入 API 架构。
+  * 将 API 打包到产品中。
+  * 设置策略，如 API 的配额或转换。
+  * 从分析中获得见解。
+  * 管理用户。
 * **开发人员门户**是面向开发人员的主要 Web 平台，可以在其中执行以下操作：
-	* 阅读 API 文档。
-	* 通过交互式控制台试用 API。
-	* 创建帐户并可以订阅以获取 API 密钥。
-	* 访问他们自己的使用情况分析。
-
+  
+  * 阅读 API 文档。
+  * 通过交互式控制台试用 API。
+  * 创建帐户并可以订阅以获取 API 密钥。
+  * 访问他们自己的使用情况分析。
 
 ## <a name="create-service-instance"> </a>创建 API 管理实例
+> [!NOTE]
+> 若要完成本教程，你需要一个 Azure 帐户。如果没有帐户，只需花费几分钟就能创建一个免费帐户。有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。
+> 
+> 
 
->[AZURE.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果没有帐户，只需花费几分钟就能创建一个免费帐户。有关详细信息，请参阅 [Azure 免费试用][]。
-
-使用 API 管理的第一步是创建一个服务实例。登录到 [Azure 经典门户][]，然后单击“新建”、“应用程序服务”、“API 管理”、“创建”。
+使用 API 管理的第一步是创建一个服务实例。登录到 [Azure 经典门户][Azure 经典门户]，然后单击“新建”、“应用程序服务”、“API 管理”、“创建”。
 
 ![API 管理新实例][api-management-create-instance-menu]
 
@@ -73,13 +71,19 @@
 
 为**组织名称**输入 **Contoso Ltd.**，然后在“管理员电子邮件”字段中输入电子邮件地址。
 
->[AZURE.NOTE] 此电子邮件地址用于来自 API 管理系统的通知。有关详细信息，请参阅[如何在 Azure API 管理中配置通知和电子邮件模板][]。
+> [!NOTE]
+> 此电子邮件地址用于来自 API 管理系统的通知。有关详细信息，请参阅[如何在 Azure API 管理中配置通知和电子邮件模板][如何在 Azure API 管理中配置通知和电子邮件模板]。
+> 
+> 
 
 ![新的 API 管理服务][api-management-create-instance-step2]
 
 API 管理服务实例在以下三层中提供：开发人员、标准和高级。默认情况下，在“开发人员”层中创建新的 API 管理服务实例。若要选择“标准”或“高级”层，请在下面的屏幕上选中“高级设置”复选框，然后选择所需的层。
 
->[AZURE.NOTE] “开发人员”层用于开发、测试和试验 API 程序，在其中高可用性不是需要考虑的因素。在“标准”和“高级”层中，可以扩展保留单位计数以处理更多流量。“标准”和“高级”层为 API 管理服务提供最多处理能力和性能。可以使用任何层完成本教程。有关 API 管理层的详细信息，请参阅 [API 管理定价][]。
+> [!NOTE]
+> “开发人员”层用于开发、测试和试验 API 程序，在其中高可用性不是需要考虑的因素。在“标准”和“高级”层中，可以扩展保留单位计数以处理更多流量。“标准”和“高级”层为 API 管理服务提供最多处理能力和性能。可以使用任何层完成本教程。有关 API 管理层的详细信息，请参阅 [API 管理定价][API 管理定价]。
+> 
+> 
 
 单击复选框创建您的服务实例。
 
@@ -88,12 +92,14 @@ API 管理服务实例在以下三层中提供：开发人员、标准和高级�
 创建服务实例后，下一步是创建或导入 API。
 
 ## <a name="create-api"> </a>导入 API
-
 API 包含一组可以从客户端应用程序调用的操作。API 操作代理到现有的 web 服务。
 
 可以手动创建 API（可以添加操作），也可以导入它们。在本教程中，将为 Microsoft 提供的示例计算器 Web 服务导入 API，并在 Azure 上托管它。
 
->[AZURE.NOTE] 有关创建 API 和手动添加操作的信息，请参阅[如何创建 API](api-management-howto-create-apis.md) 和[如何将操作添加到 API](api-management-howto-add-operations.md)。
+> [!NOTE]
+> 有关创建 API 和手动添加操作的信息，请参阅[如何创建 API](api-management-howto-create-apis.md) 和[如何将操作添加到 API](api-management-howto-add-operations.md)。
+> 
+> 
 
 在发布者门户（通过 Azure 经典门户访问）中配置 API。若要访问发布者门户，请在 Azure 经典门户中单击 API 管理服务所对应的“管理”。
 
@@ -112,7 +118,10 @@ API 包含一组可以从客户端应用程序调用的操作。API 操作代理
 
 ![添加新的 API][api-management-import-new-api]
 
->[AZURE.NOTE] **API 管理**目前支持导入 Swagger 文档 1.2 和 2.0 版本。请确保，即使 [Swagger 2.0 规范](http://swagger.io/specification)声明 `host`、`basePath` 和 `schemes` 属性是可选的，Swagger 2.0 文档也**必须**包含这些属性，否则不会导入它。
+> [!NOTE]
+> **API 管理**目前支持导入 Swagger 文档 1.2 和 2.0 版本。请确保，即使 [Swagger 2.0 规范](http://swagger.io/specification)声明 `host`、`basePath` 和 `schemes` 属性是可选的，Swagger 2.0 文档也**必须**包含这些属性，否则不会导入它。
+> 
+> 
 
 导入 API 后，该 API 的摘要页将显示在发布者门户中。
 
@@ -122,15 +131,14 @@ API 部分有几个选项卡。“摘要”选项卡显示有关 API 的基本�
 
 默认情况下，每个 API 管理实例附带两个示例产品：
 
--	**入门**
--	**不受限制**
+* **入门**
+* **不受限制**
 
 在本教程中，导入 API 时已将基本计算器 API 添加到初学者产品中。
 
 为了调用 API，开发人员必须先订阅一个产品，以提供给他们对 API 的访问权。开发人员可以在开发人员门户中订阅产品，管理员可以在发布者门户中为开发人员订阅产品。你是管理员，因为你在本教程的前面步骤中已创建 API 管理实例，所以默认情况下你已订阅每个产品。
 
 ## <a name="call-operation"> </a>从开发人员门户调用操作
-
 可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。在此教程步骤中，将调用基本计算器 API 的“添加两个整数”操作。单击发布者门户右上角菜单中的“开发人员门户”。
 
 ![开发人员门户][api-management-developer-portal-menu]
@@ -154,7 +162,6 @@ API 部分有几个选项卡。“摘要”选项卡显示有关 API 的基本�
 ![响应][api-management-invoke-get-response]
 
 ## <a name="view-analytics"> </a>查看分析
-
 若要查看基本计算器的分析，请选择开发人员门户右上角菜单中的“管理”，切换回发布者门户。
 
 ![管理][api-management-manage-menu]
@@ -165,7 +172,10 @@ API 部分有几个选项卡。“摘要”选项卡显示有关 API 的基本�
 
 将鼠标悬停在**基本计算器**的图表上，以查看给定时间段内 API 使用情况的特定度量值。
 
->[AZURE.NOTE] 如果未在图表上看到任何行，请切换回开发人员门户并对 API 进行一些调用，稍等片刻再返回仪表板。
+> [!NOTE]
+> 如果未在图表上看到任何行，请切换回开发人员门户并对 API 进行一些调用，稍等片刻再返回仪表板。
+> 
+> 
 
 单击“查看详细信息”以查看 API 的摘要页，包括所显示度量的更大版本。
 
@@ -179,14 +189,13 @@ API 部分有几个选项卡。“摘要”选项卡显示有关 API 的基本�
 
 “分析”部分包含以下四个选项卡：
 
--	“概览”提供总体使用情况和运行状况指标，以及热门开发人员、热门产品、热门 API 和热门操作。
--	“使用情况”提供对 API 调用和带宽的深入观察，包含地理位置的表示形式。
--	“运行状况”侧重于状态代码、缓存成功率、响应时间以及 API 和服务响应时间。
--	“活动”提供报告，以向下钻取到开发人员、产品、API 和操作的特定活动。
+* “概览”提供总体使用情况和运行状况指标，以及热门开发人员、热门产品、热门 API 和热门操作。
+* “使用情况”提供对 API 调用和带宽的深入观察，包含地理位置的表示形式。
+* “运行状况”侧重于状态代码、缓存成功率、响应时间以及 API 和服务响应时间。
+* “活动”提供报告，以向下钻取到开发人员、产品、API 和操作的特定活动。
 
 ## <a name="next-steps"></a>后续步骤
-
-- 了解如何[使用速率限制保护 API](api-management-howto-product-with-rules.md)。
+* 了解如何[使用速率限制保护 API](api-management-howto-product-with-rules.md)。
 
 [Azure 免费试用]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
