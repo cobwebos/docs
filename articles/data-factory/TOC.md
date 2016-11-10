@@ -30,11 +30,13 @@
 # How To
 ## Move Data
 ### [Data Factory Copy Wizard](data-factory-copy-wizard.md)
+### [Load 1 TB in 15 minutes with Copy Wizard](data-factory-load-sql-data-warehouse.md)
 ### [Copy Activity](data-factory-data-movement-activities.md)
 ### [Hybrid data movement](data-factory-move-data-between-onprem-and-cloud.md)
 ### [Data Management Gateway](data-factory-data-management-gateway.md)
 ### [Copy Activity Performance & Tuning Guide](data-factory-copy-activity-performance.md)
 ### [Azure Blob Storage](data-factory-azure-blob-connector.md)
+### [Azure Tables](data-factory-azure-table-connector.md)
 ### [Azure Data Lake Store](data-factory-azure-datalake-connector.md)
 ### [Azure DocumentDB](data-factory-azure-documentdb-connector.md)
 ### [Azure SQL Database](data-factory-azure-sql-connector.md)
@@ -57,6 +59,7 @@
 ### [OData sources](data-factory-odata-connector.md)
 ### [ODBC data stores](data-factory-odbc-connector.md)
 ### [FTP](data-factory-ftp-connector.md)
+
 ## Transform Data
 ### [Data transformation activities](data-factory-data-transformation-activities.md)
 ### [HDInsight Hive Activity](data-factory-hive-activity.md)
@@ -83,11 +86,14 @@
 ## Monitor and Manage
 ### [Using Azure portal](data-factory-api-change-log.md)
 ### [Using Monitor and Manage App](data-factory-monitor-manage-app.md)
+### [Azure Data Factory pipelines](data-factory-monitor-manage-pipelines.md)
 ### [Using .NET SDK](data-factory-create-data-factories-programmatically.md)
 ### [Troubleshoot Data Factory issues](data-factory-troubleshoot.md)
+### [Troubleshoot issues with using Data Management Gateway](data-factory-troubleshoot-gateway-issues.md)
 ### [Deploy using Azure Resource Manager templates](data-factory-how-to-use-resource-manager-templates.md)
 # Reference 
-# Related
+## [Azure Data Factory Developer Reference](data-factory-sdks.md)
+
 # Resources:
 ## [Case Studies](data-factory-customer-case-studies.md)
 ### [Product Recommendations](data-factory-product-reco-usecase.md)
@@ -96,4 +102,16 @@
 ## [Frequently asked questions](data-factory-faq.md)
 ## [MSDN Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory)
 ## [Request a feature](https://feedback.azure.com/forums/270578-azure-data-factory)
+## [Release notes for Data Management Gateway](data-factory-gateway-release-notes.md)
+
+
+
+
+
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

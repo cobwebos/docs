@@ -6,7 +6,7 @@
 # Get started
 ##[ASP.NET](cache-web-app-howto.md)
 ##[.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-##[WordPress](../app-service-web/web-sites-connect-to-redis-using-memcache-protocol?toc=%2fazure%2fredis-cache%2ftoc.json)
+##[WordPress](../app-service-web/web-sites-connect-to-redis-using-memcache-protocol.md?toc=%2fazure%2fredis-cache%2ftoc.json)
 ##[Node](cache-nodejs-get-started.md)
 ##[Java](cache-java-get-started.md)
 ##[Python](cache-python-get-started.md)
@@ -21,7 +21,7 @@
 ###[Configure high availability](https://azure.microsoft.com/pricing/details/cache/)
 ###[Connect securely using SSL](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)
 ###[Migrate from Managed Cache Service](cache-migrate-to-redis.md)
-###[Patterns & Practices Caching guidance](../best-practices-caching?toc=%2fazure%2fredis-cache%2ftoc.json)
+###[Patterns & Practices Caching guidance](../best-practices-caching.md?toc=%2fazure%2fredis-cache%2ftoc.json)
 ## Automate
 ###[Deploy and manage using Powershell](cache-howto-manage-redis-cache-powershell.md)
 ###[Deploy and Manage using Azure CLI](cache-manage-cli.md)
@@ -48,3 +48,7 @@
 ## [Redis commands](http://redis.io/commands#)
 #Resources
 ## [Redis cache samples](cache-redis-samples.md)
+
+<!--HONumber=Nov16_HO2-->
+
+

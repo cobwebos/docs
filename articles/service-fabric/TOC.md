@@ -18,7 +18,7 @@
 ## [Deploy and upgrade your application on a local cluster](service-fabric-get-started-with-a-local-cluster.md)
 
 # How To
-## Build a Service Fabric application
+## Build an application
 ### Basics
 #### [Programming model overview](service-fabric-choose-framework.md)
 #### [Application model overview](service-fabric-application-model.md)
@@ -32,7 +32,7 @@
 #### [Configure security policies for your application](service-fabric-application-runas-security.md)
 #### [Configure your application for multiple environments](service-fabric-manage-multiple-environment-app-configuration.md)
 
-### A Reliable Service application
+### Reliable Service application
 #### [Reliable Services overview](service-fabric-reliable-services-introduction.md)
 #### Get started with Reliable Services
 ##### [Using C# on Windows](service-fabric-reliable-services-quick-start.md)
@@ -50,7 +50,7 @@
 #### [Communicate using Service Fabric Reverse Proxy](service-fabric-reverseproxy.md)
 #### [Reliable Services advanced usage](service-fabric-reliable-services-advanced-usage.md)
 
-### A Reliable Actor application
+### Reliable Actor application
 #### [Reliable Actors overview](service-fabric-reliable-actors-introduction.md)
 #### Get Started with Reliable Actors
 ##### [Using C# on Windows](service-fabric-reliable-actors-get-started.md)
@@ -65,11 +65,11 @@
 #### [Configure Reliable Actors state provider](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [Type serialization in Reliable Actors](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
-### A guest executable application
+### Guest executable application
 #### [Deploy a guest executable](service-fabric-deploy-existing-app.md)
 #### [Deploy multiple guest executables](service-fabric-deploy-multiple-apps.md)
 
-### A container application
+### Container application
 #### [Containers overview](service-fabric-containers-overview.md)
 #### Get started with containers
 ##### [Deploy Windows container](service-fabric-deploy-container.md)
@@ -91,15 +91,15 @@
 #### [Cluster disaster recovery](service-fabric-disaster-recovery.md)
 
 ### Clusters on Azure
-#### Create a cluster
+#### Create a cluster on Azure
 ##### [Using Azure portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Using Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 #### [Node types and VM Scale Sets in the cluster](service-fabric-cluster-nodetypes.md)
-#### [Scale a cluster up or down](service-fabric-cluster-scale-up-down.md)
-#### [Upgrade a cluster](service-fabric-cluster-upgrade.md)
-#### [Delete a cluster](service-fabric-cluster-delete.md)
+#### [Scale the cluster up or down](service-fabric-cluster-scale-up-down.md)
+#### [Upgrade the cluster](service-fabric-cluster-upgrade.md)
+#### [Delete the cluster](service-fabric-cluster-delete.md)
 #### [Access control for the cluster](service-fabric-cluster-security-roles.md)
-#### [Configure your cluster](service-fabric-cluster-fabric-settings.md)
+#### [Configure the cluster](service-fabric-cluster-fabric-settings.md)
 #### [Try a Party Cluster on Azure for free](http://aka.ms/tryservicefabric)
 
 ### Standalone clusters
@@ -142,7 +142,7 @@
 ### [Application upgrades advanced topics](service-fabric-application-upgrade-advanced.md)
 ### [REST-based application lifecycle sample](service-fabric-rest-based-application-lifecycle-sample.md)
 
-## Application and cluster health
+## Inspect application and cluster health
 ### [Monitor Service Fabric health](service-fabric-health-introduction.md)
 ### [Report and check service health](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 ### [Add custom health reports](service-fabric-report-health.md)
@@ -180,14 +180,23 @@
 ### [Load test your application](service-fabric-vso-load-test.md)
 
 # Reference
-## [Reliable Actors managed reference](https://msdn.microsoft.com/library/azure/mt406422)
-## [Reliable Actors WCF managed reference](https://msdn.microsoft.com/library/azure/mt694432)
-## [Reliable Services managed reference](https://msdn.microsoft.com/library/azure/mt406633)
-## [Reliable Services WCF managed reference](https://msdn.microsoft.com/library/azure/mt670408)
-## [Data managed reference](https://msdn.microsoft.com/library/azure/mt406529)
-## [Data Interfaces managed reference](https://msdn.microsoft.com/library/azure/mt696072)
-## [System.Fabric managed reference](https://msdn.microsoft.com/library/azure/mt416943)
-## [PowerShell reference](https://msdn.microsoft.com/library/azure/mt125965)
-## [REST API reference](https://go.microsoft.com/fwlink/?LinkID=532910)
-## [Java API Reference](https://azure.github.io/azure-servicefabric-java/)
+## [Reliable Actors managed reference](https://go.microsoft.com/fwlink/p/?linkid=833398)
+## [Reliable Actors WCF managed reference](https://go.microsoft.com/fwlink/p/?linkid=833401)
+## [Reliable Services managed reference](https://go.microsoft.com/fwlink/p/?linkid=833402)
+## [Reliable Services WCF managed reference](https://go.microsoft.com/fwlink/p/?linkid=833403)
+## [Data managed reference](https://go.microsoft.com/fwlink/p/?linkid=833404)
+## [Data Interfaces managed reference](https://go.microsoft.com/fwlink/p/?linkid=833406)
+## [System managed reference](https://go.microsoft.com/fwlink/p/?linkid=833407)
+## [PowerShell reference](https://go.microsoft.com/fwlink/p/?linkid=833408)
+## [REST API reference](https://go.microsoft.com/fwlink/p/?LinkID=532910)
+## [Java API Reference](https://go.microsoft.com/fwlink/p/?linkid=833410)
 ## [Sample code](http://aka.ms/servicefabricsamples)
+
+# Resources
+## [Service Updates](https://azure.microsoft.com/en-us/updates/?product=service-fabric&updatetype=&platform=)
+## [MSDN Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

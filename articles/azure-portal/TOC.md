@@ -33,3 +33,8 @@
 ### [Webhooks for alerts on metrics](insights-webhooks-alerts.md)
 ### [Azure Insights PowerShell quick start samples](insights-powershell-samples.md)
 ### [Azure Insights CLI quick start samples](insights-cli-samples.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

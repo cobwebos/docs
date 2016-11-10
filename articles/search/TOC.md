@@ -66,3 +66,8 @@
 ### [MSDN Forums](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
 ### [Azure Search Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

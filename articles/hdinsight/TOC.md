@@ -210,3 +210,7 @@
 ### [Analyze Twitter data](hdinsight-analyze-twitter-data.md)
 ### [Manage clusters with Azure portal](hdinsight-administer-use-management-portal.md)
 ### [Monitor clusters using the Ambari API](hdinsight-monitor-use-ambari-api.md)
+
+<!--HONumber=Nov16_HO2-->
+
+

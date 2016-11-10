@@ -37,15 +37,7 @@
 ## [Send cloud-to-device messages (Java)](iot-hub-java-java-c2d.md)
 ## [Send cloud-to-device messages (Node)](iot-hub-node-node-c2d.md)
 ## [Get started with device twins](iot-hub-node-node-twin-getstarted.md)
-## [Use direct methods for Node.js](iot-hub-node-node-direct-methods.md)
-## [Use direct methods for .NET](iot-hub-csharp-csharp-direct-methods.md)
-## [Get started with device management for Node.js](iot-hub-node-node-device-management-get-started.md)
-## [Get started with device management for .NET](iot-hub-csharp-csharp-device-management-get-started.md)
 ## [How to use twin properties](iot-hub-node-node-twin-how-to-configure.md)
-## [Use device jobs to update device firmware for Node.js](iot-hub-node-node-firmware-update.md)
-## [Use device jobs to update device firmware for .NET](iot-hub-csharp-csharp-firmware-update.md)
-## [Schedule and broadcast jobs for Node.js](iot-hub-node-node-schedule-jobs.md)
-## [Schedule and broadcast jobs for .NET](iot-hub-csharp-csharp-schedule-jobs.md)
 ## Plan your deployment
 ### [Comparison of IoT Hub to Event Hubs](iot-hub-compare-event-hubs.md)
 ### [Scale your solution](iot-hub-scaling.md)
@@ -63,7 +55,6 @@
 ### [IoT Hub endpoints](iot-hub-devguide-endpoints.md)
 ### [Query language](iot-hub-devguide-query-language.md)
 ### [Quotas and throttling](iot-hub-devguide-quotas-throttling.md)
-### [Pricing](iot-hub-devguide-pricing.md)
 ### [Device and service SDKs](iot-hub-devguide-sdks.md)
 ### [MQTT support](iot-hub-mqtt-support.md)
 ### [Glossary](iot-hub-devguide-glossary.md)
@@ -77,7 +68,7 @@
 ### [Bulk manage IoT devices](iot-hub-bulk-identity-mgmt.md)
 ### [Usage metrics](iot-hub-metrics.md)
 ### [Operations monitoring](iot-hub-operations-monitoring.md)
-### [Configure IP filtering](iot-hub-ip-filtering.md)
+
 ## Security
 ### [Security from the ground up](iot-hub-security-ground-up.md)
 ### [Security best practices](iot-hub-security-best-practices.md)
@@ -87,7 +78,6 @@
 ### [Simulate a device with the Gateway SDK tutorial (Linux)](iot-hub-linux-gateway-sdk-simulated-device.md)
 ### [Simulate a device with the Gateway SDK tutorial (Windows)](iot-hub-windows-gateway-sdk-simulated-device.md)
 ### [Send messages from a real device with the Gateway SDK tutorial](iot-hub-gateway-sdk-physical-device.md)
-### [Enable managed devices behind an IoT gateway](iot-hub-gateway-device-management.md)
 
 # Reference
 ## [Client and device .NET APIs](https://msdn.microsoft.com/library/mt488521.aspx)
@@ -110,3 +100,8 @@
 ## [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot/)
 ## [Azure Certified for IoT device catalog](https://catalog.azureiotsuite.com/)
 ## [Pricing information](https://azure.microsoft.com/pricing/details/iot-hub/)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

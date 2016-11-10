@@ -17,3 +17,8 @@
 ### [Manage and troubleshoot](sql-server-stretch-database-manage.md)
 ### [Backup and restore](sql-server-stretch-database-backup.md)
 ### [Disable Stretch Database](sql-server-stretch-database-disable.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

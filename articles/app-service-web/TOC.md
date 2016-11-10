@@ -1,7 +1,8 @@
-# [Overview](../app-service/app-service-how-works-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+# [Overview](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [Web Apps overview](app-service-web-overview.md)
-## [What is App Service](../app-service/app-service-value-prop-what-is?toc=%2fazure%2fapp-service-web%2ftoc.json)
-## [App Service plans](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [What is App Service](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [App Service plans](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [App Service on Linux](app-service-linux-intro.md)
 
 # Get started
 
@@ -11,7 +12,7 @@
 ### [Python](web-sites-python-ptvs-django-mysql.md)
 ### [Java](web-sites-java-get-started.md)
 ### [Marketplace app](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-php-get-started.md)	
+### [PHP](app-service-web-php-get-started.md)   
 
 ## API Apps
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
@@ -34,24 +35,26 @@
 ## Plan & design
 ### [Best Practices for Azure App Service](app-service-best-practices.md)
 ### [Azure App Service and existing Azure services](app-service-changes-existing-services.md)
-### [Local cache overview](../app-service/app-service-local-cache?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [App Service plans in-depth](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [Local cache overview](../app-service/app-service-local-cache.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [App Service plans in-depth](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Web Apps offerings for the enterprise](web-sites-enterprise-offerings.md)
 ### [Comparison: App Service, Virtual Machines, Service Fabric, and Cloud Services](choose-web-site-cloud-service-vm.md)
 ### [Developing WordPress sites on App Service](develop-wordpress-on-app-service-web-apps.md)
+### [App Service on Linux](../app-service/app-service-linux-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### Azure reference architectures
-#### [Basic web application](../guidance/guidance-web-apps-basic?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Web application with high availability](../guidance/guidance-web-apps-multi-region?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [High-density hosting](../app-service/app-service-high-density-hosting?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [Improving scalability](../guidance/guidance-web-apps-scalability?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Basic web application](../guidance/guidance-web-apps-basic.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Web application with high availability](../guidance/guidance-web-apps-multi-region.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [High-density hosting](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [Improving scalability](../guidance/guidance-web-apps-scalability.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Operating system functionality](web-sites-available-operating-system-functionality.md)
 ### [Use DevOps environments effectively](app-service-web-staged-publishing-realworld-scenarios.md)
-### [Using WebJobs in Azure App Service](../app-service/app-service-webjobs-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [Using WebJobs in Azure App Service](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [App Service Environment](app-service-app-service-environment-intro.md)
-#### [App Service Environment documentation](../app-service/app-service-app-service-environments-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [App Service Environment documentation](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 
 ## Develop
 ### [Add functionality to your first web app](app-service-web-get-started-2.md)
+### [Create a web app on Linux](app-service-linux-how-to-create-a-web-app.md)
 
 ### ASP.NET apps
 #### [Deploy your first .NET web app to Azure in five minutes](app-service-web-get-started-dotnet.md)
@@ -69,7 +72,7 @@
 #### [Deploy your first PHP web app to Azure in five minutes](app-service-web-get-started-php.md)
 #### [Create a PHP-SQL web app and deploy using Git](web-sites-php-sql-database-deploy-use-git.md)
 #### [Create a WordPress web app in Azure App Service](web-sites-php-web-site-gallery.md)
-#### [Create and connect to a MySQL database in Azure](store-php-create-mysql-database.md)
+#### [Create and connect to a MySQL database in Azure](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Enterprise-class WordPress on Azure App Service](web-sites-php-enterprise-wordpress.md)
 
 ### Java apps
@@ -95,7 +98,7 @@
 ### [Deploy your first basic web app to Azure in five minutes](app-service-web-get-started-html.md)
 ### [Get started with test in production for Web Apps](app-service-web-test-in-production-get-start.md)
 
-### [Web Jobs](app-service-webjobs-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [Web Jobs](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [What is the Azure WebJobs SDK](websites-dotnet-webjobs-sdk.md)
 #### [Create a .NET WebJob](websites-dotnet-webjobs-sdk-get-started.md)
 #### [How to use Azure blob storage with the WebJobs SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
@@ -107,8 +110,9 @@
 #### [How to Create an App Service Environment](app-service-web-how-to-create-an-app-service-environment.md)
 #### [Create a web app in an App Service Environment](app-service-web-how-to-create-a-web-app-in-an-ase.md)
 #### [How To Create an ILB ASE Using Azure Resource Manager Templates](app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
+#### [Using an Internal Load Balancer](app-service-environment-with-internal-load-balancer.md)
 
-## [Deploy](../app-service/app-service-deployment-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [Deploy](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Deploy to App Service](web-sites-deploy.md)
 ### [Cloud sync deployment](app-service-deploy-content-sync.md)
 ### [Continuous deployment](app-service-continuous-deployment.md)
@@ -122,17 +126,19 @@
 ### [Migrate from IIS](web-sites-migration-from-iis-server.md)
 ### [Deploy WebJobs using Visual Studio](websites-dotnet-deploy-webjobs.md)
 
-## [Scale](../app-service/app-service-scale-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [Scale](../app-service/app-service-scale-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Scale-up an app](web-sites-scale.md)
-### [App Service Environment](../app-service/app-service-app-service-environments-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Geo Distributed Scale with App Service Environments](app-service-app-service-environment-geo-distributed-scale.md)
 #### [Scaling apps in an App Service Environment](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
-### [Azure CDN](../cdn/cdn-overview?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Autoscaling in an App Service Environment](../app-service/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [Azure CDN](../cdn/cdn-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 
 ## [Manage](web-sites-manage-azure-website.md)
 ### [Configure](web-sites-configure.md)
 #### [Configure PHP](web-sites-php-configure.md)
 #### [Configure Python](web-sites-python-configure.md)
+#### [Configure Node.js startup on Linux](app-service-linux-using-nodejs-pm2.md)
 
 ### Custom domains
 #### [Buy and configure custom domains](custom-dns-web-site-buydomains-web-app.md)
@@ -147,10 +153,10 @@
 ### [Resource groups](app-service-move-resources.md)
 ### [Convert WordPress to Multisite](web-sites-php-convert-wordpress-multisite.md) 
 
-### [Web Jobs](../app-service/app-service-webjobs-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [Web Jobs](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Run Background tasks with WebJobs](web-sites-create-web-jobs.md)
 
-### [App Service Environment](../app-service/app-service-app-service-environments-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Configure](app-service-web-configure-an-app-service-environment.md)
 #### [Custom configuration settings](app-service-app-service-environment-custom-settings.md)
 #### [How to control inbound traffic](app-service-app-service-environment-control-inbound-traffic.md)
@@ -166,15 +172,15 @@
 ### [Enable diagnostics logging ](web-sites-enable-diagnostic-log.md)
 ### [Troubleshoot using Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md)
 
-## [Secure](../app-service/app-service-security-readme?toc=%2fazure%2fapp-service-web%2ftoc.json)
+## [Secure](../app-service/app-service-security-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Secure an app in Azure App Service](web-sites-security.md)
-### [Authentication and authorization](../app-service/app-service-authentication-overview?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [Authentication and authorization](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### Authenticate with identity providers
-#### [Azure Active Directory authentication](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Facebook authentication](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Google authentication](../app-service-mobile/app-service-mobile-how-to-configure-google-authentication?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Microsoft Account authentication](../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Twitter authentication](../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Azure Active Directory authentication](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Facebook authentication](../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Google authentication](../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Microsoft Account authentication](../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Twitter authentication](../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [Authenticate with on-premises Active Directory ](web-sites-authentication-authorization.md)
 
 ### HTTPS
@@ -201,11 +207,11 @@
 ### [Azure Resource Manager deployment](app-service-deploy-complex-application-predictably.md)
 #### [Web + GitHub ](app-service-web-arm-from-github-provision.md)
 #### [Web + SQL ](app-service-web-arm-with-sql-database-provision.md)
-#### [Web + Redis ](../redis-cache/cache-web-app-arm-with-redis-cache-provision?toc=%2fazure%2fapp-service-web%2ftoc.json)
-#### [Redis Cache](../redis-cache/cache-redis-cache-arm-provision?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Web + Redis ](../redis-cache/cache-web-app-arm-with-redis-cache-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Redis Cache](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [MSDeploy with custom hostname and SSL certificate](app-service-web-arm-with-msdeploy-provision.md)
 ### Powershell
-#### [Automate backup and restore](../app-service/app-service-powershell-backup?toc=%2fazure%2fapp-service-web%2ftoc.json)
+#### [Automate backup and restore](../app-service/app-service-powershell-backup.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [App cloning](app-service-web-app-cloning.md)
 #### [SSL Certificate Binding](app-service-web-app-powershell-ssl-binding.md)
 #### [Use Azure Resource Manager with PowerShell](app-service-web-app-azure-resource-manager-powershell.md)
@@ -218,7 +224,7 @@
 ### [Controlling Azure web app traffic with Azure Traffic Manager](web-sites-traffic-manager.md)
 ### Redis cache
 #### [Connect to Redis Cache via the Memcache protocol](web-sites-connect-to-redis-using-memcache-protocol.md)
-#### [Create a Redis Cache using a template](cache-redis-cache-arm-provision.md)
+#### [Create a Redis Cache using a template](../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Manage session state with Azure Redis cache](web-sites-dotnet-session-state-caching.md)
 ### [Create a web app in Azure that connects to MongoDB running on a virtual machine](web-sites-dotnet-store-data-mongodb-vm.md)
 ### [How to sendeEmail using SendGrid](sendgrid-dotnet-how-to-send-email.md)
@@ -247,9 +253,14 @@
 ### [2.8.X releases](azure-sdk-dotnet-release-notes-2-8.md)
 ### [2.7.X releases](azure-sdk-dotnet-release-notes-2-7.md)
 ### [2.6 release](azure-sdk-dotnet-release-notes-2-6.md)
-### [2.5.1 release](../app-service/app-service-release-notes?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [2.5.1 release](../app-service/app-service-release-notes.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 
 # Resources
 ## [Best practices](app-service-best-practices.md)
 ## [List of WebJob resources](websites-webjobs-resources.md)
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

@@ -66,3 +66,8 @@
 
 # Resources
 ## [Frequently Asked Questions](notification-hubs-push-notification-faq.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

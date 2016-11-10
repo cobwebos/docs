@@ -33,3 +33,8 @@
 ## [Power BI community](http://community.powerbi.com/t5/Developer/bd-p/Developer)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
 
+
+
+<!--HONumber=Nov16_HO2-->
+
+

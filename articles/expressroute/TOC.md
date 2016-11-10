@@ -67,3 +67,7 @@
 # Resources
 ## [Networking Blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [Case Studies](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
+
+<!--HONumber=Nov16_HO2-->
+
+

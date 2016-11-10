@@ -1,5 +1,5 @@
 # [Overview](cdn-overview.md)
-## [Azure CDN Best practices](../best-practices-cdn?toc=%2fazure%2fcdn%2ftoc.json)
+## [Azure CDN Best practices](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
 # Get Started
 ## [Using Azure CDN](cdn-create-new-endpoint.md)
 ## Get started with Azure CDN development
@@ -8,7 +8,7 @@
 
 # How To
 ## Integrate
-### [Integrate with Web Apps](../app-service-web/cdn-websites-with-cdn?toc=%2fazure%2fcdn%2ftoc.json)
+### [Integrate with Web Apps](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [Integrate with Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Integrate with Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Cross-origin resource sharing](cdn-cors.md)
@@ -53,5 +53,9 @@
 # Related
 
 # Resources
-## [Best practices](best-practices-cdn.md)
 ## [Azure CDN POP Locations](cdn-pop-locations.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -172,3 +172,8 @@
 ## [Marketing](https://www.microsoft.com/en-us/server-cloud/products/storsimple/explore.aspx)
 ## [Support blog](http://blogs.msdn.com/b/storsimple/)
 ## [Third party notices](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

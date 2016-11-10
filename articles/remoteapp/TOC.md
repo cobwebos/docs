@@ -63,3 +63,8 @@
 ## Troubleshoot
 ### [Troubleshoot a hybrid collection](remoteapp-hybridtrouble.md)
 ### [Troubleshoot a cloud collection](remoteapp-cloudtrouble.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

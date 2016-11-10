@@ -1,7 +1,7 @@
 # Overview
 ## [What is Azure Security Center?](security-center-intro.md)
 ## [Service overview](https://azure.microsoft.com/services/security-center/)
-## [Pricing](https://azure.microsoft.com/pricing/details/security-center/)
+## [Pricing](security-center-pricing.md)
 ## [FAQ](security-center-faq.md)
 ## [Get insights with Power BI](security-center-powerbi.md)
 ## [Data security](security-center-data-security.md)
@@ -11,6 +11,7 @@
 # Get started
 ## [Quick start](security-center-get-started.md)
 ## [Planning and operations](security-center-planning-and-operations-guide.md)
+## [Security Center and SQL Database](security-center-sql-database.md)
 
 # How to
 
@@ -31,6 +32,8 @@
 ### [Azure log integration](security-center-integrating-alerts-with-log-integration.md)
 ### [Vulnerability assessment](security-center-vulnerability-assessment-recommendations.md)
 ### [Types of security alerts](security-center-alerts-type.md)
+### [Threat intelligence report](security-center-threat-report.md)
+
 ### Manage security alerts
 #### [Add a next generation firewall](security-center-add-next-generation-firewall.md)
 #### [Add a web application firewall](security-center-add-web-application-firewall.md)
@@ -60,3 +63,8 @@
 
 # Resources
 ## [Azure Security, Privacy, & Compliance blog](http://blogs.msdn.com/b/azuresecurity/)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

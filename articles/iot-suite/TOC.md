@@ -35,7 +35,12 @@
 
 # Resources
 ## [FAQ](iot-suite-faq.md)
-## [Hardware compatibility](iot-hub-tested-configurations.md)
 
+
+
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

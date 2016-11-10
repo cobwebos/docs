@@ -28,3 +28,8 @@
 ##[Pricing](https://azure.microsoft.com/pricing/details/traffic-manager/)
 ##[SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
 ##[Service Limits](../azure-subscription-service-limits.md#traffic-manager-limits)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

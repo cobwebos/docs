@@ -44,3 +44,8 @@
 ## [Virtual Machine](https://azure.microsoft.com/documentation/services/virtual-machines/)
 ## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 ## [DNS](https://azure.microsoft.com/documentation/services/dns/)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

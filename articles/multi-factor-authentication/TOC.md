@@ -44,3 +44,8 @@
 ## Troubleshoot
 ### [FAQ](multi-factor-authentication-faq.md)
 ### [Ask a question](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

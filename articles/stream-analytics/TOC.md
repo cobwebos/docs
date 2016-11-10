@@ -51,3 +51,8 @@
 ## [MSDN forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Feedback forum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
+
+
+<!--HONumber=Nov16_HO2-->
+
+
