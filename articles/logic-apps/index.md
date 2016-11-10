@@ -7,7 +7,7 @@ author: squillace
 manager: timlt
 editor: 
 tags: billing
-ms.assetid: 1b0df624-f02c-401b-bb1d-846f3a8f375d
+ms.assetid: 4503bcbb-acde-4261-92a4-743ed1f0cb7d
 ms.service: value
 ms.devlang: na
 ms.topic: article
@@ -17,7 +17,7 @@ ms.date: 10/21/2016
 ms.author: tysonn
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8a4763f177790ed04144dffe991d97cc2d29da3b
+ms.openlocfilehash: 697f95f6d9b3ba31b1420c8de593252b32c8b964
 
 
 ---
