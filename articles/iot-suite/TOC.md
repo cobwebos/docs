@@ -1,40 +1,40 @@
-# Overview
-## [Azure and IoT](iot-suite-what-is-azure-iot.md)
-## [What is IoT Suite?](iot-suite-overview.md)
-## [What are the preconfigured solutions?](iot-suite-what-are-preconfigured-solutions.md)
-## [IoT Suite learning path](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
+# 概述
+## [Azure 和 IoT](iot-suite-what-is-azure-iot.md)
+## [什么是 IoT 套件？](iot-suite-overview.md)
+## [什么是预配置的解决方案？](iot-suite-what-are-preconfigured-solutions.md)
+## [IoT 套件学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 
-# Get Started
-## [Get started with the preconfigured solutions](iot-suite-getstarted-preconfigured-solutions.md)
-## [Permissions on azureiotsuite.com](iot-suite-permissions.md)
-## [Predictive maintenance solution overview](iot-suite-predictive-overview.md)
-## [Remote monitoring solution walkthrough](iot-suite-remote-monitoring-sample-walkthrough.md)
-## [Predictive maintenance solution walkthrough](iot-suite-predictive-walkthrough.md)
+# 入门
+## [预配置的解决方案入门](iot-suite-getstarted-preconfigured-solutions.md)
+## [azureiotsuite.com 权限](iot-suite-permissions.md)
+## [前瞻性维护解决方案概述](iot-suite-predictive-overview.md)
+## [远程监视解决方案演练](iot-suite-remote-monitoring-sample-walkthrough.md)
+## [前瞻性维护解决方案演练](iot-suite-predictive-walkthrough.md)
 
-# How To
-## [Connect your device to the remote monitoring solution (Windows)](iot-suite-connecting-devices.md)
-## [Connect your device to the remote monitoring solution (Linux)](iot-suite-connecting-devices-linux.md)
-## [Connect your device to the remote monitoring solution (mbed)](iot-suite-connecting-devices-mbed.md)
-## [Connect your device to the remote monitoring solution (Node)](iot-suite-connecting-devices-node.md)
-## [Connect a Logic App to the remote monitoring solution](iot-suite-logic-apps-tutorial.md)
-## [Customize a preconfigured solution](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
-## [Use dynamic telemetry with the remote monitoring solution](iot-suite-dynamic-telemetry.md)
-## [Device information in the remote monitoring solution](iot-suite-remote-monitoring-device-info.md)
+# 如何
+## [将设备连接到远程监视解决方案 (Windows)](iot-suite-connecting-devices.md)
+## [将设备连接到远程监视解决方案 (Linux)](iot-suite-connecting-devices-linux.md)
+## [将设备连接到远程监视解决方案 (mbed)](iot-suite-connecting-devices-mbed.md)
+## [将设备连接到远程监视解决方案 (Node)](iot-suite-connecting-devices-node.md)
+## [将逻辑应用连接到远程监视解决方案](iot-suite-logic-apps-tutorial.md)
+## [自定义预配置解决方案](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
+## [在远程监视解决方案中使用动态遥测](iot-suite-dynamic-telemetry.md)
+## [远程监视解决方案中的设备信息](iot-suite-remote-monitoring-device-info.md)
 
-# Reference
-## [Security architecture](iot-security-architecture.md)
-## [Security best practices](iot-security-best-practices.md)
-## [Secure your IoT deployment](iot-suite-security-deployment.md)
-## [Security from the ground up](securing-iot-ground-up.md)
+# 引用
+## [安全体系结构](iot-security-architecture.md)
+## [安全最佳实践](iot-security-best-practices.md)
+## [保护 IoT 部署](iot-suite-security-deployment.md)
+## [安全基础知识](securing-iot-ground-up.md)
 
-# Related
-## [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
-## [Event Hubs](https://azure.microsoft.com/services/event-hubs/)
-## [IoT Hub](https://azure.microsoft.com/services/iot-hub/)
-## [Machine Learning](https://azure.microsoft.com/services/machine-learning/)
+# 相关内容
+## [流分析](https://azure.microsoft.com/services/stream-analytics/)
+## [事件中心](https://azure.microsoft.com/services/event-hubs/)
+## [IoT 中心](https://azure.microsoft.com/services/iot-hub/)
+## [机器学习](https://azure.microsoft.com/services/machine-learning/)
 
-# Resources
-## [FAQ](iot-suite-faq.md)
+# 资源
+## [常见问题](iot-suite-faq.md)
 
 
 

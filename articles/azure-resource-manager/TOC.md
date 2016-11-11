@@ -1,62 +1,62 @@
-# Overview
-## [Resource Manager Overview](resource-group-overview.md)
-## [Supported services, regions, and API versions](../resource-manager-supported-services.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## [Understand Resource Manager and Classic deployment](../resource-manager-deployment-model.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## [Prescriptive subscription governance](../resource-manager-subscription-governance.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## [Governance examples for enterprises](../resource-manager-subscription-examples.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-# Get Started
-## [Export template](../resource-manager-export-template.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## [Template walkthrough](../resource-manager-template-walkthrough.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## [Visual Studio with Resource Manager](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## [VS Code with Resource Manager](../resource-manager-vs-code.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+# 概述
+## [Resource Manager 概述](resource-group-overview.md)
+## [支持的服务、区域和 API 版本](../resource-manager-supported-services.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [了解 Resource Manager 部署和经典部署](../resource-manager-deployment-model.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [出于合规目的监管订阅](../resource-manager-subscription-governance.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [企业监管示例](../resource-manager-subscription-examples.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+# 入门
+## [导出模板](../resource-manager-export-template.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [模板演练](../resource-manager-template-walkthrough.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [Visual Studio 与 Resource Manager](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [VS 代码与 Resource Manager](../resource-manager-vs-code.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
-# How To
-## Templates
-### [Best practices for templates](../resource-manager-template-best-practices.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Authoring templates](../resource-group-authoring-templates.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Template functions](../resource-group-template-functions.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Define dependency between resources](../resource-group-define-dependencies.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Create multiple instances of resource type](../resource-group-create-multiple.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Pass secure values during deployment](../resource-manager-keyvault-parameter.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Link to other templates](../resource-group-linked-templates.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Share state between linked templates](../best-practices-resource-manager-state.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Patterns for designing templates](../best-practices-resource-manager-design-templates.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## Deploy
+# 如何
+## 模板
+### [模板最佳实践](../resource-manager-template-best-practices.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [创作模板](../resource-group-authoring-templates.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [模板函数](../resource-group-template-functions.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [定义资源之间的依赖关系](../resource-group-define-dependencies.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [创建资源类型的多个实例](../resource-group-create-multiple.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [在部署期间传递安全值](../resource-manager-keyvault-parameter.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [链接到其他模板](../resource-group-linked-templates.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [在链接模板之间共享状态](../best-practices-resource-manager-state.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [模板设计模式](../best-practices-resource-manager-design-templates.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## 部署
 ### [PowerShell](../resource-group-template-deploy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Azure CLI](../resource-group-template-deploy-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Portal](../resource-group-template-deploy-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [门户](../resource-group-template-deploy-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [REST API](../resource-group-template-deploy-rest.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Development and test environments](../solution-dev-test-environments.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## Manage
+### [开发和测试环境](../solution-dev-test-environments.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## 管理
 ### [PowerShell](../powershell-azure-resource-manager.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Azure CLI](../xplat-cli-azure-resource-manager.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Portal](../azure-portal/resource-group-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [门户](../azure-portal/resource-group-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [REST API](../resource-manager-rest-api.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Use tags to organize resources](../resource-group-using-tags.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Move resources to new group or subscription](../resource-group-move-resources.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Link related resources](../resource-group-link-resources.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Azure Resource Explorer](../resource-manager-resource-explorer.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## Control Access
-### [Create service principal with PowerShell](../resource-group-authenticate-service-principal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Create service principal with Azure CLI](../resource-group-authenticate-service-principal-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Create service principal with portal](../resource-group-create-service-principal-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [App access to subscriptions](../resource-manager-api-authentication.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Set management policies](../resource-manager-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Lock resources](../resource-group-lock-resources.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Security considerations](../best-practices-resource-manager-security.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-## Audit and Troubleshoot
-### [Troubleshoot common deployment errors](../resource-manager-common-deployment-errors.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [View activity logs](../resource-group-audit.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [View deployment operations with portal](../resource-manager-troubleshoot-deployments-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [View deployment operations with PowerShell](../resource-manager-troubleshoot-deployments-powershell.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [View deployment operations with Azure CLI](../resource-manager-troubleshoot-deployments-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [View deployment operations with REST API](../resource-manager-troubleshoot-deployments-rest.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-# Reference
-## [Template schemas](https://github.com/Azure/azure-resource-manager-schemas)
-## [PowerShell cmdlets for Resource Manager](https://msdn.microsoft.com/library/dn757692(v=azure.200).aspx)
-## [REST API for Resource Manager](https://msdn.microsoft.com/en-us/library/azure/dn790568)
-## [.NET client library for Resource Manager](https://msdn.microsoft.com/en-us/library/azure/mt418626)
-## [Throttling requests](../resource-manager-request-limits.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用标记来组织资源](../resource-group-using-tags.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [将资源移到新组或订阅](../resource-group-move-resources.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [链接相关资源](../resource-group-link-resources.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Azure 资源浏览器](../resource-manager-resource-explorer.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## 控制访问
+### [使用 PowerShell 创建服务主体](../resource-group-authenticate-service-principal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用 Azure CLI 创建服务主体](../resource-group-authenticate-service-principal-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用门户创建服务主体](../resource-group-create-service-principal-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [从应用访问订阅](../resource-manager-api-authentication.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [设置管理策略](../resource-manager-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [锁定资源](../resource-group-lock-resources.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [安全注意事项](../best-practices-resource-manager-security.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## 审核和故障排除
+### [排查常见部署错误](../resource-manager-common-deployment-errors.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [查看活动日志](../resource-group-audit.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用门户查看部署操作](../resource-manager-troubleshoot-deployments-portal.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用 PowerShell 查看部署操作](../resource-manager-troubleshoot-deployments-powershell.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用 Azure CLI 查看部署操作](../resource-manager-troubleshoot-deployments-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [使用 REST API 查看部署操作](../resource-manager-troubleshoot-deployments-rest.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+# 引用
+## [模板架构](https://github.com/Azure/azure-resource-manager-schemas)
+## [Resource Manager PowerShell cmdlet](https://msdn.microsoft.com/library/dn757692(v=azure.200).aspx)
+## [Resource Manager REST API](https://msdn.microsoft.com/en-us/library/azure/dn790568)
+## [Resource Manager .NET 客户端库](https://msdn.microsoft.com/en-us/library/azure/mt418626)
+## [限制请求](../resource-manager-request-limits.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 
 <!--HONumber=Nov16_HO2-->

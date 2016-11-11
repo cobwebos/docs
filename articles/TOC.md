@@ -1,74 +1,74 @@
-# Compute
-## [Container Service](/azure/container-service/)
-## [Batch](/azure/batch/)
-## [Cloud Services](/azure/cloud-services/)
-## [Functions](/azure/functions/)
+# 计算
+## [容器服务](/azure/container-service/)
+## [批处理](/azure/batch/)
+## [云服务](/azure/cloud-services/)
+## [函数](/azure/functions/)
 ## [Service Fabric](/azure/service-fabric/)
-## [Virtual Machines](/azure/virtual-machines/)
-### [Linux VMs](/azure/virtual-machines/linux/)
-### [Windows VMs](/azure/virtual-machines/windows/)
-## [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/)
-## [Resource Manager](/azure/azure-resource-manager/)
-# Data and Databases
+## [虚拟机](/azure/virtual-machines/)
+### [Linux VM](/azure/virtual-machines/linux/)
+### [Windows VM](/azure/virtual-machines/windows/)
+## [虚拟机规模集](/azure/virtual-machine-scale-sets/)
+## [资源管理器](/azure/azure-resource-manager/)
+# 数据和数据库
 ## [DocumentDB](/azure/documentdb/)
-## [Redis Cache](/azure/redis-cache/)
-## [SQL Data Warehouse](/azure/sql-data-warehouse/)
-## [SQL Database](/azure/sql-database/)
+## [Redis 缓存](/azure/redis-cache/)
+## [SQL 数据仓库](/azure/sql-data-warehouse/)
+## [SQL 数据库](/azure/sql-database/)
 ## [SQL Server Stretch DB](/azure/sql-server-stretch-database/)
-# Developer Tools
-## [DevTest Lab](/azure/devtest-lab/)
-## [Best Practices](/azure/guidance/)
-# Enterprise Integration
-## [Biztalk Services](/azure/biztalk-services/)
-## [Service Bus](/azure/service-bus/)
+# 开发人员工具
+## [开发测试实验室](/azure/devtest-lab/)
+## [最佳实践](/azure/guidance/)
+# 企业集成
+## [BizTalk 服务](/azure/biztalk-services/)
+## [服务总线](/azure/service-bus/)
 ## [Azure Stack](/azure/azure-stack/)
-# Intelligence & Analytics
-## [Cognitive Services](/azure/cognitive-services/)
-## [Data Catalog](/azure/data-catalog/)
+# 智能与分析
+## [认知服务](/azure/cognitive-services/)
+## [数据目录](/azure/data-catalog/)
 ## [Data Factory](/azure/data-factory/)
 ## [Data Lake Analytics](/azure/data-lake-analytics/)
 ## [HDInsights](/azure/hdinsights/)
-## [Machine Learning](/azure/macine-learning/)
+## [机器学习](/azure/macine-learning/)
 ## [PowerBI Embedded](/azure/powerbi-embedded/)
-## [Stream Analytics](/azure/stream-analytics/)
-# Internet of Things
-## [Event Hubs](/azure/event-hubs/)
-## [IoT Hub](/azure/iot-hub/)
+## [流分析](/azure/stream-analytics/)
+# 物联网
+## [事件中心](/azure/event-hubs/)
+## [IoT 中心](/azure/iot-hub/)
 ## [IoT Suite](/azure/iot-suite/)
-# Monitoring & Management
-## [Billing](/azure/billing/)
+# 监视与管理
+## [计费](/azure/billing/)
 ## [Operations Management Suite](/azure/operations-management-suite/)
 ## [Site Recovery](/azure/site-recovery/)
 ## [Application Insights](/azure/application-insights/)
-# Networking
-## [Application Gateway](/azure/application-gateway/)
+# 联网
+## [应用程序网关](/azure/application-gateway/)
 ## [CDN](/azure/cdn/)
 ## [DNS](/azure/dns/)
 ## [ExpressRoute](/azure/expressroute/)
-## [Load Balancer](/azure/load-balancer/)
-## [Traffic Manager](/azure/traffic-manager/)
-## [Virtual Network](/azure/virtual-network/)
-## [VPN Gateway](/azure/vpn-gateway/)
-# Security & Identity
-## [Security Center](/azure/security-center/)
+## [负载均衡器](/azure/load-balancer/)
+## [流量管理器](/azure/traffic-manager/)
+## [虚拟网络](/azure/virtual-network/)
+## [VPN 网关](/azure/vpn-gateway/)
+# 安全性与标识
+## [安全中心](/azure/security-center/)
 ## [Active Directory](/azure/active-directory/)
 ## [Active Directory B2C](/azure/active-directory-b2c/)
-## [Active Directory Domain Services](/azure/active-directory-domain-services/)
+## [Active Directory 域服务](/azure/active-directory-domain-services/)
 ## [KeyVault](/azure/key-vault/)
-## [Multifactor Authentication](/azure/multi-factor-authentication/)
-# Storage
-## [Backup](/azure/backup/)
+## [多重身份验证](/azure/multi-factor-authentication/)
+# 存储
+## [备份](/azure/backup/)
 ## [Data Lake Store](/azure/data-lake-store/)
-## [Storage](/azure/storage/)
+## [存储](/azure/storage/)
 ## [StorSimple](/azure/storsimple/)
-# Web + Mobile
-## [API Management](/azure/api-management/)
-## [App Service](/azure/app-service/)
-## [Logic Apps](/azure/app-service-logic/)
-## [Media Services](/azure/media-services/)
+# Web + 移动
+## [API 管理](/azure/api-management/)
+## [应用服务](/azure/app-service/)
+## [逻辑应用](/azure/app-service-logic/)
+## [媒体服务](/azure/media-services/)
 ## [Mobile Engagement](/azure/mobile-engagement/)
-## [Notification Hubs](/azure/notification-hubs/)
-## [Search](/azure/search/)
+## [通知中心](/azure/notification-hubs/)
+## [搜索](/azure/search/)
 # [Azure Government](/azure/azure-government/)
 
 <!--HONumber=Nov16_HO2-->
