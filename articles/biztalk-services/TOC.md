@@ -37,3 +37,8 @@
 
 # Resources
 ## [Release Notes](biztalk-release-notes.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

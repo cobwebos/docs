@@ -7,51 +7,52 @@
 ## [First look: Protect Azure VMs with a recovery services vault](backup-azure-vms-first-look-arm.md)
 # How To
 ## Automate
-### [Deploy and manage backup for Azure VMs using PowerShell](backup-azure-vms-classic-automation.md)
-### [Deploy and manage backup to Azure for Data Protection Manager (DPM) servers using PowerShell](backup-dpm-automation.md)
-### [Deploy and manage backup to Azure for Data Protection Manager (DPM) servers using PowerShell](backup-dpm-automation-classic.md)
-### [Deploy and manage backup to Azure for Windows Server/Windows Client using PowerShell](backup-client-automation.md)
-### [Deploy and manage backup to Azure for Windows Server/Windows Client using PowerShell](backup-client-automation-classic.md)
-### [Deploy and manage backups for Resource Manager-deployed VMs using PowerShell](backup-azure-vms-automation.md)
-## Backup application workloads
-### [Back up an Exchange server to Azure Backup with System Center 2012 R2 DPM](backup-azure-backup-exchange-server.md)
-### [Recovering data from another DPM server in the backup vault](backup-azure-alternate-dpm-server.md)
+### [Using PowerShell to back up Azure VMs in classic portal](backup-azure-vms-classic-automation.md)
+### [Using PowerShell to back up DPM in Azure portal](backup-dpm-automation.md)
+### [Using PowerShell to back up DPM in classic portal](backup-dpm-automation-classic.md)
+### [Using PowerShell to back up Windows Server in Azure portal](backup-client-automation.md)
+### [Using PowerShell to back up Windows Server in classic portal](backup-client-automation-classic.md)
+### [Using PowerShell to back up Azure VMs in Azure portal](backup-azure-vms-automation.md)
 ## Backup Application Workloads
-### [Azure Backup for SQL Server workloads using DPM](backup-azure-backup-sql.md)
-### [Back up a SharePoint farm to Azure](backup-azure-backup-sharepoint.md)
-### [Preparing to back up workloads to Azure with DPM](backup-azure-dpm-introduction.md)
-### [Preparing to back up workloads to Azure with DPM](backup-azure-dpm-introduction-classic.md)
-### [Preparing to back up workloads using Azure Backup Server](backup-azure-microsoft-azure-backup.md)
-### [Preparing to back up workloads using Azure Backup Server](backup-azure-microsoft-azure-backup-classic.md)
+### [Preparing to back up DPM workloads to Azure in Azure portalwith DPM](backup-azure-dpm-introduction.md)
+### [Preparing to back up DPM workloads to Azure in classic portal](backup-azure-dpm-introduction-classic.md)
+### [Preparing to back up Azure Backup Server workloads in Azure portal](backup-azure-microsoft-azure-backup.md)
+### [Preparing to back up Azure Backup Server workloads in classic portal](backup-azure-microsoft-azure-backup-classic.md)
+### [Use System Center DPM to back up an Exchange server to Azure](backup-azure-backup-exchange-server.md)
+### [Recover data in the Backup vault to an alternate DPM server](backup-azure-alternate-dpm-server.md)
+### [Use DPM to back up SQL Server workloads to Azure](backup-azure-backup-sql.md)
+### [Use DPM to back up a SharePoint farm to Azure](backup-azure-backup-sharepoint.md)
 ### [Recovery Services vault - FAQ](backup-azure-backup-ibiza-faq.md)
 ## Backup Azure VMs
-### [Back up Azure virtual machines](backup-azure-vms.md)
-### [Back up Azure VMs to a Recovery Services vault](backup-azure-arm-vms.md)
-### [Dealing with encrypted disks during VM backup](backup-azure-vms-encryption.md)
-### [Manage and monitor Azure virtual machine backups](backup-azure-manage-vms-classic.md)
-### [Manage Azure virtual machine backups](backup-azure-manage-vms.md)
-### [Monitor alerts for Azure virtual machine backups](backup-azure-monitor-vms.md)
+### [Preparing to back up Azure virtual machines](backup-azure-vms-prepare.md)
+### [Preparing to back up Resource Manager-deployed virtual machines](backup-azure-arm-vms-prepare.md)
 ### [Plan your VM backup infrastructure in Azure](backup-azure-vms-introduction.md)
-### [Prepare your environment to back up Azure virtual machines](backup-azure-vms-prepare.md)
-### [Prepare your environment to back up Resource Manager-deployed virtual machines](backup-azure-arm-vms-prepare.md)
+### [Back up Azure virtual machines to Backup vault](backup-azure-vms.md)
+### [Back up Azure virtual machines to a Recovery Services vault](backup-azure-arm-vms.md)
+### [Back up and restore encrypted virtual machines](backup-azure-vms-encryption.md)
+### [Manage and monitor Azure VM backups in classic portal](backup-azure-manage-vms-classic.md)
+### [Manage Azure VM backups in Azure portal](backup-azure-manage-vms.md)
+### [Monitor alerts for Azure VM backups in Azure portal](backup-azure-monitor-vms.md)
 ### [Restore virtual machines in Azure](backup-azure-restore-vms.md)
-### [Troubleshoot Azure virtual machine backup](backup-azure-vms-troubleshoot.md)
-### [Troubleshoot Azure virtual machine backup](backup-azure-vms-troubleshoot-classic.md)
-### [Use Azure portal to restore virtual machines](backup-azure-arm-restore-vms.md)
+### [Restore Resource Manager-deployed VMs in Azure portal](backup-azure-arm-restore-vms.md)
 ## Backup Windows Machines
-### [Back up a Windows server or client to Azure using the classic deployment model](backup-configure-vault-classic.md)
-### [Back up a Windows Server or client to Azure using the Resource Manager deployment model](backup-configure-vault.md)
-### [Manage Azure Backup vaults and servers using the classic deployment model](backup-azure-manage-windows-server-classic.md)
-### [Monitor and manage Azure recovery services vaults and servers for Windows machines](backup-azure-manage-windows-server.md)
-### [Restore files to a Windows server or Windows client machine using Resource Manager deployment model](backup-azure-restore-windows-server.md)
-### [Restore files to a Windows server or Windows client machine using the classic deployment model](backup-azure-restore-windows-server-classic.md)
+### [Back up Windows Server to Azure using the classic deployment model](backup-configure-vault-classic.md)
+### [Back up Windows Server to Azure using the Resource Manager deployment model](backup-configure-vault.md)
+### [Manage Azure Backup vaults using the classic deployment model](backup-azure-manage-windows-server-classic.md)
+### [Monitor and manage Recovery Services vaults](backup-azure-manage-windows-server.md)
+### [Recover files to a Windows Server using Resource Manager deployment model](backup-azure-restore-windows-server.md)
+### [Recover files to a Windows Server using the classic deployment model](backup-azure-restore-windows-server-classic.md)
 ## Concepts
 ### [Delete an Azure Backup vault](backup-azure-delete-vault.md)
 ### [Offline-backup workflow in Azure Backup](backup-azure-backup-import-export.md)
 ### [Use Azure Backup to replace your tape infrastructure](backup-azure-backup-cloud-as-tape.md)
 ## Troubleshooting
+### [Troubleshoot Azure VM backup problems in Azure portal](backup-azure-vms-troubleshoot.md)
+### [Troubleshoot Azure VM backup problems in classic portal](backup-azure-vms-troubleshoot-classic.md)
 ### [Azure VM Backup fails: Could not communicate with the VM agent for snapshot status - Snapshot VM sub task timed out](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Troubleshoot slow backup of files and folders in Azure Backup](backup-azure-troubleshoot-slow-backup-performance-issue.md)
-# Reference
-# Related
-# Resources
+
+
+<!--HONumber=Nov16_HO2-->
+
+

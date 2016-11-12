@@ -1,57 +1,61 @@
-# [Overview](cdn-overview.md)
-## [Azure CDN Best practices](../best-practices-cdn?toc=%2fazure%2fcdn%2ftoc.json)
-# Get Started
-## [Using Azure CDN](cdn-create-new-endpoint.md)
-## Get started with Azure CDN development
+# [概述](cdn-overview.md)
+## [Azure CDN 最佳实践](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+# 入门
+## [使用 Azure CDN](cdn-create-new-endpoint.md)
+## Azure CDN 开发入门
 ### [.NET](cdn-app-dev-net.md)
 ### [Node.js](cdn-app-dev-node.md)
 
-# How To
-## Integrate
-### [Integrate with Web Apps](../app-service-web/cdn-websites-with-cdn?toc=%2fazure%2fcdn%2ftoc.json)
-### [Integrate with Cloud Services](cdn-cloud-service-with-cdn.md)
-### [Integrate with Storage](cdn-create-a-storage-account-with-cdn.md)
-### [Cross-origin resource sharing](cdn-cors.md)
+# 如何
+## 集成
+### [与 Web 应用集成](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [与云服务集成](cdn-cloud-service-with-cdn.md)
+### [与存储集成](cdn-create-a-storage-account-with-cdn.md)
+### [跨域资源共享](cdn-cors.md)
 
-## Manage
-### [Manage with PowerShell](cdn-manage-powershell.md)
-### Configure time-to-live
-#### [Web Apps/Cloud Services, ASP.NET, or IIS content](cdn-manage-expiration-of-cloud-service-content.md)
-#### [Storage blob service content](cdn-manage-expiration-of-blob-content.md)
-### [Map a custom domain to CDN](cdn-map-content-to-custom-domain.md)
-### [Restrict access by country](cdn-restrict-access-by-country.md)
-### [Improve performance by compressing files](cdn-improve-performance.md)
-### Cache content by query string
-#### [Standard tier](cdn-query-string.md)
-#### [Premium tier](cdn-query-string-premium.md)
-### [Purge cached assets](cdn-purge-endpoint.md)
-### [Pre-load cached assets](cdn-preload-endpoint.md)
-### [Override behavior with rules](cdn-rules-engine.md)
-### [Get real-time alerts](cdn-real-time-alerts.md)
+## 管理
+### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
+### 配置生存时间
+#### [Web 应用/云服务、ASP.NET 或 IIS 内容](cdn-manage-expiration-of-cloud-service-content.md)
+#### [存储 Blob 服务内容](cdn-manage-expiration-of-blob-content.md)
+### [将自定义域映射到 CDN](cdn-map-content-to-custom-domain.md)
+### [按国家/地区限制访问](cdn-restrict-access-by-country.md)
+### [通过压缩文件来提高性能](cdn-improve-performance.md)
+### 使用查询字符串缓存内容
+#### [标准层](cdn-query-string.md)
+#### [高级层](cdn-query-string-premium.md)
+### [清除缓存资产](cdn-purge-endpoint.md)
+### [预加载缓存资产](cdn-preload-endpoint.md)
+### [用规则覆盖行为](cdn-rules-engine.md)
+### [获取实时警报](cdn-real-time-alerts.md)
 
-## Automate
-### [Manage with PowerShell](cdn-manage-powershell.md)
+## 自动化
+### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
 
-## Analyze
-### [Analyze usage patterns](cdn-analyze-usage-patterns.md)
-### [Generate advanced HTTP reports](cdn-advanced-http-reports.md)
-### [View real-time statistics](cdn-real-time-stats.md)
-### [Analyze edge node performance](cdn-edge-performance.md)
+## 分析
+### [分析使用模式](cdn-analyze-usage-patterns.md)
+### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
+### [查看实时统计信息](cdn-real-time-stats.md)
+### [分析边缘节点性能](cdn-edge-performance.md)
 
-## Develop
-### Get started with Azure CDN development
+## 开发
+### Azure CDN 开发入门
 #### [.NET](cdn-app-dev-net.md)
 #### [Node.js](cdn-app-dev-node.md)
 
-## Troubleshoot
-### [Troubleshoot 404 status](cdn-troubleshoot-endpoint.md)
-### [Troubleshoot file compression](cdn-troubleshoot-compression.md)
+## 故障排除
+### [404 状态故障排除](cdn-troubleshoot-endpoint.md)
+### [排查文件压缩问题](cdn-troubleshoot-compression.md)
 
-# Reference
-## [REST API reference](https://msdn.microsoft.com/library/mt634456.aspx)
+# 引用
+## [REST API 引用](https://msdn.microsoft.com/library/mt634456.aspx)
 
-# Related
+# 相关内容
 
-# Resources
-## [Best practices](best-practices-cdn.md)
-## [Azure CDN POP Locations](cdn-pop-locations.md)
+# 资源
+## [Azure CDN POP 位置](cdn-pop-locations.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

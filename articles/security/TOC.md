@@ -7,22 +7,22 @@
 ## Network security
 ### [Overview](security-network-overview.md)
 ### [Network security best practices](azure-security-network-security-best-practices.md)
-### [Boundary security](../best-practices-network-security?toc=%2fazure%2fsecurity%2ftoc.json)
-### [Secure hybrid network architecture](../guidance/guidance-iaas-ra-secure-vnet-hybrid?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Boundary security](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Secure hybrid network architecture](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## Storage security
 ### [Overview](security-storage-overview.md)
 ### [Data security and encryption best practices](azure-security-data-encryption-best-practices.md)
-### [Storage security guide](../storage/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Storage security guide](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## Compute security
 ### [Overview](security-virtual-machines-overview.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [Disk encryption](azure-security-disk-encryption.md)
-### [Encrypt Azure VM](../security-center/security-center-disk-encryption?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Encrypt Azure VM](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## Security management and monitoring
 ### [Overview](security-management-and-monitoring-overview.md)
 ### [Security management](azure-security-management.md)
 ### [Best practices for software updates on IaaS](azure-security-best-practices-software-updates-iaas.md)
-### [Azure Security Center](../security-center/security-center-intro?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### Azure log integration
 #### [Overview](security-azure-log-integration-overview.md)
 #### [Get started](security-azure-log-integration-get-started.md)
@@ -40,7 +40,7 @@
 ### [Data classification for cloud readiness](azure-security-data-classification.md)
 ### [Application architecture on Azure](security-application-architecture-on-azure.md)
 ### [Security best practices and patterns](security-best-practices-and-patterns.md)
-### [Architecting resilient applications](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Architecting resilient applications](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # Resources
 ## [Trust Center](security-microsoft-trust-center.md)
@@ -53,8 +53,13 @@
 ## [Security videos on Channel 9](security-channel-nine.md)
 
 # Related
-## [Security Center](../security-center/security-center-intro?toc=%2fazure%2fsecurity-center%2ftoc.json)
+## [Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
 ## [Key Vault](../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,52 +1,55 @@
-# Overview
-## [What is Data Lake Analytics?](data-lake-analytics-overview.md)
+# 概述
+## [什么是 Data Lake Analytics？](data-lake-analytics-overview.md)
 
-# Get started
-## [Using Portal](data-lake-analytics-get-started-portal.md)
-## [Using PowerShell](data-lake-analytics-get-started-powershell.md)
-## [Using .NET SDK](data-lake-analytics-get-started-net-sdk.md)
-## [Using Java SDK](data-lake-analytics-get-started-java-sdk.md)
-## [Using Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-## [Using CLI](data-lake-analytics-get-started-cli.md)
-## [Using REST API](data-lake-analytics-get-started-rest-api.md)
-## [Interactive tutorial: Analyze website logs](data-lake-analytics-use-interactive-tutorials.md)
+# 入门
+## [使用门户](data-lake-analytics-get-started-portal.md)
+## [使用 PowerShell](data-lake-analytics-get-started-powershell.md)
+## [使用 .NET SDK](data-lake-analytics-get-started-net-sdk.md)
+## [使用 Java SDK](data-lake-analytics-get-started-java-sdk.md)
+## [使用 Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+## [使用 CLI](data-lake-analytics-get-started-cli.md)
+## [使用 REST API](data-lake-analytics-get-started-rest-api.md)
+## [交互式教程：分析网站日志](data-lake-analytics-use-interactive-tutorials.md)
 
-# How to
-## Develop
-### [Using U-SQL](data-lake-analytics-u-sql-get-started.md)
-### [Using Visual Studio Tools](data-lake-analytics-data-lake-tools-get-started.md)
-### [Using U-SQL window functions](data-lake-analytics-use-window-functions.md)
-### [Using U-SQL user-defined operators](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+# 如何
+## 开发
+### [使用 U-SQL](data-lake-analytics-u-sql-get-started.md)
+### [使用 Visual Studio 工具](data-lake-analytics-data-lake-tools-get-started.md)
+### [使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)
+### [使用 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-## Create solutions
-### [Analyze website logs](data-lake-analytics-analyze-weblogs.md)
+## 创建解决方案
+### [分析网站日志](data-lake-analytics-analyze-weblogs.md)
 
-## Manage
-### [Using Portal](data-lake-analytics-manage-use-portal.md)
-### [Using CLI](data-lake-analytics-manage-use-cli.md)
-### [Using PowerShell](data-lake-analytics-manage-use-powershell.md)
-### [Using .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
-### [Using Node.js](data-lake-analytics-manage-use-nodejs.md)
-### [Use U-SQL Catalog to structure code and data](data-lake-analytics-use-u-sql-catalog.md)
+## 管理
+### [使用门户](data-lake-analytics-manage-use-portal.md)
+### [使用 CLI](data-lake-analytics-manage-use-cli.md)
+### [使用 PowerShell](data-lake-analytics-manage-use-powershell.md)
+### [使用 .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
+### [使用 Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [使用 U-SQL 目录构建代码和数据](data-lake-analytics-use-u-sql-catalog.md)
 
-## Troubleshoot
-### [Monitor and troubleshoot jobs](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-### [Access diagnostic logs](data-lake-analytics-diagnostic-logs.md)
-### [Debug C# code in U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
-### [Use Job Browser and Job View](data-lake-analytics-data-lake-tools-view-jobs.md)
-### [Use Vertex Execution View](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+## 故障排除
+### [作业的监视和故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+### [访问诊断日志](data-lake-analytics-diagnostic-logs.md)
+### [在 U-SQL 中调试 C# 代码](data-lake-analytics-debug-u-sql-jobs.md)
+### [使用作业浏览器和作业视图](data-lake-analytics-data-lake-tools-view-jobs.md)
+### [使用顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 
-# Reference
+# 引用
 ## [.NET SDK](https://msdn.microsoft.com/library/azure/mt572197(Azure.100).aspx)
 ## [PowerShell cmdlets](https://msdn.microsoft.com/library/azure/mt607124.aspx)
-## [U-SQL Language Reference](https://msdn.microsoft.com/library/azure/mt591959(Azure.100).aspx)
+## [U-SQL 语言参考](https://msdn.microsoft.com/library/azure/mt591959(Azure.100).aspx)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 
-# Related
-## [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/what-is-cortana-intelligence-suite)
 
-# Resources
-## [MSDN Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureDataLake)
-## [Stack Overflow Forum](http://stackoverflow.com/questions/tagged/azure-data-lake)
-## [Give feedback on UserVoice](https://feedback.azure.com/forums/327234-data-lake)
-## [Azure Data Lake Blog](https://blogs.msdn.microsoft.com/azuredatalake/)
+# 资源
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureDataLake)
+## [Stack Overflow 论坛](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
+## [Azure Data Lake 博客](https://blogs.msdn.microsoft.com/azuredatalake/)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

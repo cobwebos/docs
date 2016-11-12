@@ -145,7 +145,7 @@
 ### [Insert ads on the client side](media-services-inserting-ads-on-client-side.md)
 
 ## Integrate
-### [CDN Caching Policy in Media Services Extension](../cdn/cdn-caching-policy?toc=%2fazure%2fmedia-services%2ftoc.json)
+### [CDN Caching Policy in Media Services Extension](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### [Licensing Microsoft†" Smooth Streaming Client Porting Kit](media-services-sspk.md)
 ### [Manage assets across multiple Storage accounts](meda-services-managing-multiple-storage-accounts.md)
 ### [Using Axinom to deliver Widevine licenses to Azure Media Services  ](media-services-axinom-integration.md)
@@ -180,5 +180,10 @@
 
 
 
+
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

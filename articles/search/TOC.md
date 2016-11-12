@@ -1,68 +1,83 @@
-# Overview
+# 概述
 ## [What is Azure Search?](search-what-is-azure-search.md)
-## [Choose a SKU](search-sku-tier.md)
-# Get Started
-## [Create a service](search-create-service-portal.md)
-## [Create an index](search-what-is-an-index.md)
-## [Add data](search-what-is-data-import.md)
-## [Search an index](search-query-overview.md)
-## [Handle search results](search-pagination-page-layout.md)
-## Demo sites
-### [Job listings app (external)](http://aka.ms/azjobsdemo)
-### [Live demo apps (external)](https://searchsamples.azurewebsites.net/)
-## Tutorials
+# 入门
+## [选择 SKU](search-sku-tier.md)
+## [创建服务](search-create-service-portal.md)
+## [创建索引](search-what-is-an-index.md)
+### [Azure 门户](search-create-index-portal.md)
+### [.NET](search-create-index-dotnet.md)
+### [REST](search-create-index-rest-api.md)
+## [添加数据](search-what-is-data-import.md)
+### [.NET](search-import-data-dotnet.md)
+### [REST](search-import-data-rest-api.md)
+## [搜索索引](search-query-overview.md)
+### [Azure 门户](search-explorer.md)
+### [.NET](search-query-dotnet.md)
+### [REST](search-query-rest-api.md)
+## [处理搜索结果](search-pagination-page-layout.md)
+## 教程
 ### [.NET](search-howto-dotnet-sdk.md)
-### [Portal](search-get-started-portal.md)
+### [门户](search-get-started-portal.md)
 ### [NodeJS](search-get-started-nodejs.md)
 ### [Java](search-get-started-java.md)
-# How to
-## Develop
-### [How to use the .NET SDK](search-howto-dotnet-sdk.md)
-### [Upgrade the SDK](search-dotnet-sdk-migration.md)
-### [Model complex data types](search-howto-complex-data-types.md)
-## Manage
-### [Manage in the portal](search-manage.md)
-### [Manage programmatically](search-get-started-management-api.md)
-### [Manage using PowerShell](search-manage-powershell.md)
-### [Monitor usage and statistics](search-monitor-usage.md)
-### [Search traffic analytics](search-traffic-analytics.md)
-### [Performance and optimization](search-performance-optimization.md)
-### [Service limits](search-limits-quotas-capacity.md)
-### [Service scalability](search-capacity-planning.md)
-### [Design patterns for multitenancy](search-modeling-multitenant-saas-applications.md)
-## Load data
-### [Indexers overview](search-indexer-overview.md)
-### [Indexer for Blob Storage](search-howto-indexing-azure-blob-storage.md)
-### [Indexer for Azure Tables](search-howto-indexing-azure-tables.md)
-### [Indexer for SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [SQL Server Azure VM Connection configuration](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
-### [Field mappings in indexers](search-indexer-field-mappings.md)
-### [Index CSV blobs with Blob indexer](search-howto-index-csv-blobs.md)
-##  Design search experience
-### [Lucene syntax query examples](search-query-lucene-examples.md)
-### [Scoring profiles](search-get-started-scoring-profiles.md)
-### [Suggesters](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)
-### [Tag boosting](https://azure.microsoft.com/blog/2015/02/05/personalizing-search-results-announcing-tag-boosting-in-azure-search/)
-### [Faceted navigation](search-faceted-navigation.md)
-### [Language analyzers](https://msdn.microsoft.com/library/azure/dn879793)
-### [Custom analyzers](https://msdn.microsoft.com/library/azure/mt605304)
-### [Create an index for multi-lingual search](search-language-support.md)
-# Reference
+# 如何
+## 规划和设计
+### [服务限制](search-limits-quotas-capacity.md)
+### [服务可伸缩性](search-capacity-planning.md)
+### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
+## 开发
+### [升级 SDK](search-dotnet-sdk-migration.md)
+### [为复杂数据类型建模](search-howto-complex-data-types.md)
+## 管理
+### 管理 Azure 搜索
+#### [Azure 门户](search-manage.md)
+#### [REST](search-get-started-management-api.md)
+#### [PowerShell](search-manage-powershell.md)
+### [监视使用情况和统计信息](search-monitor-usage.md)
+### [搜索流量分析](search-traffic-analytics.md)
+### [性能和优化](search-performance-optimization.md)
+## 加载数据
+### [为数据源编制索引](search-indexer-overview.md)
+#### [Blob 存储](search-howto-indexing-azure-blob-storage.md)
+#### [Azure 表](search-howto-indexing-azure-tables.md)
+#### [SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+#### [CSV Blob](search-howto-index-csv-blobs.md)
+### [SQL Server Azure VM 连接配置](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+### [索引器中的字段映射](search-indexer-field-mappings.md)
+##  设计搜索体验
+### [Lucene 语法查询示例](search-query-lucene-examples.md)
+### [为配置文件评分](search-get-started-scoring-profiles.md)
+### [建议器](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)
+### [标记提升](https://azure.microsoft.com/blog/2015/02/05/personalizing-search-results-announcing-tag-boosting-in-azure-search/)
+### [多面导航](search-faceted-navigation.md)
+### [语言分析器](https://msdn.microsoft.com/library/azure/dn879793)
+### [自定义分析器](https://msdn.microsoft.com/library/azure/mt605304)
+### [多语言搜索](search-language-support.md)
+
+# 引用
 ## [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165)
-## [Service REST API](https://msdn.microsoft.com/library/azure/dn798935)
-## [Service REST API (Preview version)](search-api-2015-02-28-preview.md)
-## [Management REST API](https://msdn.microsoft.com/library/azure/dn832684)
-## [API versions](search-api-versions.md)
-## [Lucene query syntax](https://msdn.microsoft.com/library/azure/mt589323)
-## [Simple query syntax](https://msdn.microsoft.com/library/azure/dn798920)
-# Resources
-## Courseware & tutorials
-### [Virtual academy](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)
-### [Videos and tutorials](search-video-demo-tutorial-list.md)
-### [Azure Search Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-## Partner & community
-### [Model relational data](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
-### [Multi-level faceting](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [MSDN Forums](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
-### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
-### [Azure Search Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+## [服务 REST API](https://msdn.microsoft.com/library/azure/dn798935)
+## [服务 REST API（预览版）](search-api-2015-02-28-preview.md)
+## [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684)
+## [API 版本](search-api-versions.md)
+## [Lucene 查询语法](https://msdn.microsoft.com/library/azure/mt589323)
+## [简单的查询语法](https://msdn.microsoft.com/library/azure/dn798920)
+# 资源
+## 演示站点
+### [作业列表应用](http://aka.ms/azjobsdemo)
+### [实时演示应用](https://searchsamples.azurewebsites.net/)
+## 课件和教程
+### [虚拟大学](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)
+### [视频和教程](search-video-demo-tutorial-list.md)
+### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+## 合作伙伴和社区
+### [为关系数据建模](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
+### [多层分面](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
+### [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
+### [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-search)
+### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

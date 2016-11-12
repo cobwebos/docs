@@ -24,14 +24,24 @@
 ### [Batch PowerShell cmdlets](batch-powershell-cmdlets-get-started.md)
 ### [Batch diagnostic logs](batch-diagnostics.md)
 # Reference
-## [Batch REST API reference](https://go.microsoft.com/fwlink/?linkid=833492)
-## [Batch .NET reference](https://go.microsoft.com/fwlink/?linkid=833494)
-## [Batch Python reference](https://go.microsoft.com/fwlink/?linkid=833496)
-## [Batch Node.js reference](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/)
-## [Batch Java reference](https://go.microsoft.com/fwlink/?linkid=833497)
-## [Batch Management .NET reference](https://go.microsoft.com/fwlink/?linkid=833498)
-## [Batch PowerShell reference](https://go.microsoft.com/fwlink/?linkid=833500)
+## [Batch REST API reference](https://go.microsoft.com/fwlink/p/?linkid=833492)
+## [Batch .NET reference](https://go.microsoft.com/fwlink/p/?linkid=833494)
+## [Batch Python reference](https://go.microsoft.com/fwlink/p/?linkid=833496)
+## [Batch Node.js reference](https://go.microsoft.com/fwlink/p/?linkid=833544)
+## [Batch Java reference](https://go.microsoft.com/fwlink/p/?linkid=833497)
+## [Batch Management .NET reference](https://go.microsoft.com/fwlink/p/?linkid=833498)
+## [Batch PowerShell reference](https://go.microsoft.com/fwlink/p/?linkid=833500)
 # Related
 ## [Batch and HPC solutions in the Azure cloud](batch-hpc-solutions.md)
-# Resources
 ## [Big Compute in Azure: Technical resources](big-compute-resources.md)
+# Resources
+## [Service Updates](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=))
+## [MSDN Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
+## [Batch C# code samples](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
+## [Batch Python code samples](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
+
+
+<!--HONumber=Nov16_HO2-->
+
+

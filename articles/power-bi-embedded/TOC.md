@@ -1,35 +1,40 @@
-# Overview
-## [What is Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
-## [What's new in Power BI Embedded](power-bi-embedded-whats-new.md)
+# 概述
+## [什么是 Power BI Embedded？](power-bi-embedded-what-is-power-bi-embedded.md)
+## [Power BI Embedded 中的新增功能](power-bi-embedded-whats-new.md)
 
-# Get started
-## [Get started with Power BI Embedded](power-bi-embedded-get-started.md)
-## [Get started with a sample](power-bi-embedded-get-started-sample.md)
+# 入门
+## [Power BI Embedded 入门](power-bi-embedded-get-started.md)
+## [示例入门](power-bi-embedded-get-started-sample.md)
 
-# How to 
-## Plan and design
-### [Common scenarios](power-bi-embedded-scenarios.md)
+# 如何 
+## 规划和设计
+### [常见方案](power-bi-embedded-scenarios.md)
 
-## Manage
-### [Connect to a data source](power-bi-embedded-connect-datasource.md)
-### [Embed a Power BI report with an IFrame](power-bi-embedded-iframe.md)
-### [Interact with Reports](power-bi-embedded-interact-with-reports.md)
+## 管理
+### [连接到数据源](power-bi-embedded-connect-datasource.md)
+### [嵌入带有 IFrame 的 Power BI 报表](power-bi-embedded-iframe.md)
+### [与报表交互](power-bi-embedded-interact-with-reports.md)
 
-## Secure
-### [Authenticating and authorizing](power-bi-embedded-app-token-flow.md)
-### [Row level security with Power BI Embedded ](power-bi-embedded-rls.md)
+## 安全
+### [身份验证和授权](power-bi-embedded-app-token-flow.md)
+### [Power BI Embedded 的行级别安全性](power-bi-embedded-rls.md)
 
-# Reference
-## [.NET API reference](https://msdn.microsoft.com/en-us/library/azure/mt669800)
+# 引用
+## [.NET API 引用](https://msdn.microsoft.com/en-us/library/azure/mt669800)
 ## [JavaScript SDK](https://github.com/Microsoft/PowerBI-JavaScript)
-## [REST API reference](https://msdn.microsoft.com/en-us/library/azure/mt712303)
-## [.NET SDK download](https://www.nuget.org/profiles/powerbi)
+## [REST API 引用](https://msdn.microsoft.com/en-us/library/azure/mt712303)
+## [.NET SDK 下载](https://www.nuget.org/profiles/powerbi)
 
-# Related 
+# 相关内容 
 
-# Resources
-## [FAQ](power-bi-embedded-faq.md)
-## [Samples](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
-## [Power BI community](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+# 资源
+## [常见问题](power-bi-embedded-faq.md)
+## [示例](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [Power BI 社区](http://community.powerbi.com/t5/Developer/bd-p/Developer)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
+
+
+
+<!--HONumber=Nov16_HO2-->
+
 

@@ -1,51 +1,60 @@
-# Overview
-## [What is Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)
-## [How it works](active-directory-b2c-overview.md)
-## [Types of applications](active-directory-b2c-apps.md)
-## [Pricing](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
-## [Production-scale vs preview B2C tenants](active-directory-b2c-reference-tenant-type.md)
+# 概述
+## [什么是 Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)
+## [工作原理](active-directory-b2c-overview.md)
+## [应用程序的类型](active-directory-b2c-apps.md)
+## [生产规模与 B2C 租户预览](active-directory-b2c-reference-tenant-type.md)
 
-# Get Started
-## [Create an Azure AD B2C Directory](active-directory-b2c-get-started.md)
-## [Register your application](active-directory-b2c-app-registration.md)
-## Quickstart Guides
-### [Build an iOS app](active-directory-b2c-devquickstarts-ios.md)
-### [Build an Android app](active-directory-b2c-devquickstarts-android.md)
-### [Build a Node.Js Web API](active-directory-b2c-devquickstarts-api-node.md)
-### [Build a .NET Web App](active-directory-b2c-devquickstarts-web-dotnet.md)
-#### [Sign up and sign in on an ASP.NET web app](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-### [Build a .NET Web API](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [Build a Windows desktop app](active-directory-b2c-devquickstarts-native-dotnet.md)
-### [Call a web API from a .NET web app](active-directory-b2c-devquickstarts-web-api-dotnet.md)
-### [Use the Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md)
+# 入门
+## [创建 Azure AD B2C 目录](active-directory-b2c-get-started.md)
+## [注册应用程序](active-directory-b2c-app-registration.md)
+## 快速入门指南
+### [构建 iOS 应用](active-directory-b2c-devquickstarts-ios.md)
+### [构建 Android 应用](active-directory-b2c-devquickstarts-android.md)
+### [构建 Node.Js Web API](active-directory-b2c-devquickstarts-api-node.md)
+### [构建 .NET Web 应用](active-directory-b2c-devquickstarts-web-dotnet.md)
+#### [注册和登录 ASP.NET Web 应用](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+### [构建 .NET Web API](active-directory-b2c-devquickstarts-api-dotnet.md)
+### [构建 Windows 桌面应用](active-directory-b2c-devquickstarts-native-dotnet.md)
+### [从 .NET Web 应用调用 Web API](active-directory-b2c-devquickstarts-web-api-dotnet.md)
+### [使用 Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md)
+### [向 Node.js Web 应用添加登录](active-directory-b2c-devquickstarts-web-node.md)
+## [常见问题](active-directory-b2c-faqs.md)
 
-# How To
-## Sign up and sign in
-### [Microsoft Account](active-directory-b2c-setup-msa-app.md)
-### [Facebook](active-directory-b2c-setup-fb-app.md)
-### [Google+](active-directory-b2c-setup-goog-app.md)
-### [Amazon](active-directory-b2c-setup-amzn-app.md)
-### [LinkedIn](active-directory-b2c-setup-li-app.md)
-## [Use custom attributes](active-directory-b2c-reference-custom-attr.md)
-## [Enable multi-factor authentication](active-directory-b2c-reference-mfa.md)
-## [OAuth 2.0 authorization code flow](active-directory-b2c-reference-oauth-code.md)
-## [Web sign-in with OpenID Connect](active-directory-b2c-reference-oidc.md)
-## [Self-service password reset](active-directory-b2c-reference-sspr.md)
-## [Token, session, and SSO configuration](active-directory-b2c-token-session-sso.md)
-## [Customize the user interface](active-directory-b2c-reference-ui-customization.md)
-### [Helper tool for customization](active-directory-b2c-reference-ui-customization-helper-tool.md)
-## Troubleshoot
-### [Frequently asked questions](active-directory-b2c-faqs.md)
-### [Issues when creating a directory](active-directory-b2c-support-create-directory.md)
-### [Filing support requests](active-directory-b2c-support.md)
-### [Active Directory User Voice](http://feedback.azure.com/forums/169401-azure-active-directory)
+# 如何
+## 管理
+### [启用多重身份验证](active-directory-b2c-reference-mfa.md)
+### [设置自助服务密码重置](active-directory-b2c-reference-sspr.md)
+### [令牌、会话和 SSO 配置](active-directory-b2c-token-session-sso.md)
+## 开发
+### 注册和登录
+#### [Microsoft 帐户](active-directory-b2c-setup-msa-app.md)
+#### [Facebook](active-directory-b2c-setup-fb-app.md)
+#### [Google+](active-directory-b2c-setup-goog-app.md)
+#### [Amazon](active-directory-b2c-setup-amzn-app.md)
+#### [LinkedIn](active-directory-b2c-setup-li-app.md)
+### [使用自定义属性](active-directory-b2c-reference-custom-attr.md)
+### [OAuth 2.0 授权代码流](active-directory-b2c-reference-oauth-code.md)
+### [使用 OpenID Connect 进行 Web 登录](active-directory-b2c-reference-oidc.md)
+### [自定义用户界面](active-directory-b2c-reference-ui-customization.md)
+#### [用于自定义的帮助器工具](active-directory-b2c-reference-ui-customization-helper-tool.md)
+## 故障排除
+### [创建目录时出现的问题](active-directory-b2c-support-create-directory.md)
 
-# Reference
-## [Limitations & Restrictions](active-directory-b2c-limitations.md)
-## [Extensible policy framework](active-directory-b2c-reference-policies.md)
-## [Authentication Protocols](active-directory-b2c-reference-protocols.md)
-## [Tokens](active-directory-b2c-reference-tokens.md)
+# 引用
+## [限制和局限性](active-directory-b2c-limitations.md)
+## [可扩展策略框架](active-directory-b2c-reference-policies.md)
+## [身份验证协议](active-directory-b2c-reference-protocols.md)
+## [令牌](active-directory-b2c-reference-tokens.md)
 
-# Related
+# 相关内容
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
-## [Multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
+## [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
+
+# 资源
+## [支持](active-directory-b2c-support.md)
+## [定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [Azure 反馈论坛](http://feedback.azure.com/forums/169401-azure-active-directory)
+
+<!--HONumber=Nov16_HO2-->
+
+

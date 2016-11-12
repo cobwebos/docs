@@ -1,13 +1,13 @@
 ---
 title: To be submitted | Microsoft Azure
 description: To be submitted.
-services: ''
-documentationcenter: ''
+services: 
+documentationcenter: 
 author: squillace
 manager: timlt
-editor: ''
+editor: 
 tags: billing
-
+ms.assetid: 02fdae60-363f-4407-8e66-b08bf0487751
 ms.service: value
 ms.devlang: na
 ms.topic: article
@@ -15,5 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2016
 ms.author: tysonn
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: cf5ca709089b6516e5a3a716daa15ee86bb8e978
+
+
 ---
-# To be submitted.
+# <a name="to-be-submitted"></a>To be submitted.
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,69 +1,79 @@
-# Overview
-## [What is ExpressRoute?](expressroute-introduction.md)
-## [Locations and partners](expressroute-locations.md)
-## [ExpressRoute FAQ](expressroute-faqs.md)
-## [Pricing](https://azure.microsoft.com/pricing/details/expressroute/)
+# 概述
+## [什么是 ExpressRoute？](expressroute-introduction.md)
+## [位置与合作伙伴](expressroute-locations.md)
+## [将线路从经典部署转移到 Resource Manager 部署](expressroute-move.md)
+## 最佳实践
+### [网络安全和云服务最佳实践](../best-practices-network-security.md)
+### [非对称路由](expressroute-asymmetric-routing.md)
+
+
+# 入门
+## [线路和路由域](expressroute-circuit-peerings.md)
+## [工作流](expressroute-workflows.md)
+## [先决条件](expressroute-prerequisites.md)
+## [路由要求](expressroute-routing.md)
+## [优化路由](expressroute-optimize-routing.md)
+## [NAT 要求](expressroute-nat.md)
+## [QoS 要求](expressroute-qos.md)
+## [ExpressRoute 的虚拟网络网关](expressroute-about-virtual-network-gateways.md)
+## [ExpressRoute 常见问题](expressroute-faqs.md)
+
+# 如何
+## 创建和修改线路
+### [使用 Azure 门户创建和修改线路](expressroute-howto-circuit-portal-resource-manager.md)
+### [使用 PowerShell 创建和修改线路](expressroute-howto-circuit-arm.md)
+### [使用 PowerShell 创建和修改线路（经典）](expressroute-howto-circuit-classic.md)
+## 创建和修改路由配置
+### [使用 Azure 门户创建和修改路由配置](expressroute-howto-routing-portal-resource-manager.md)
+### [使用 PowerShell 创建和修改路由配置](expressroute-howto-routing-arm.md)
+### [使用 PowerShell 创建和修改路由配置（经典）](expressroute-howto-routing-classic.md)
+## 将虚拟网络链接到 ExpressRoute 线路
+### [使用 Azure 门户将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [使用 PowerShell 将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
+### [使用 PowerShell 将虚拟网络链接到 ExpressRoute 线路（经典）](expressroute-howto-linkvnet-classic.md)
+## 配置 ExpressRoute 的虚拟网络网关
+### [使用 PowerShell 配置 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)
+### [使用 PowerShell 配置 ExpressRoute 的虚拟网络网关（经典）](expressroute-howto-add-gateway-classic.md)
+## [创建站点到站点与 ExpressRoute 共存连接](expressroute-howto-coexist-classic.md)
+## [将线路从经典部署迁移到 Resource Manager 部署](expressroute-howto-move-arm.md)
+
+## 故障排除
+### [获取 ARP 表](expressroute-troubleshooting-arp-resource-manager.md)
+### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
+
+
+# 引用
+## [API - Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
+## [API - 服务管理](https://msdn.microsoft.com/library/azure/dn606310)
+## [PowerShell Cmdlet - Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
+## [PowerShell Cmdlet - 服务管理](https://msdn.microsoft.com/library/azure/dn683813)
+## [路由器配置设置示例](expressroute-config-samples-routing.md)
+## [NAT 的路由器配置示例](expressroute-config-samples-nat.md)
+
+# 相关内容 
+## [虚拟网络](../virtual-network/index.md)
+## [VPN 网关](../vpn-gateway/index.md)
+## [虚拟机](../virtual-machines/index.md)
+## [负载均衡器](../load-balancer/index.md)
+## [流量管理器](../traffic-manager/index.md)
+
+# 资源
+## [网络博客](https://azure.microsoft.com/blog/topics/networking/)
+## [案例研究](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
+## [定价](https://azure.microsoft.com/pricing/details/expressroute/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
-## [Subscription and Service Limits](../azure-subscription-service-limits.md)
-# Get Started
-## [About circuits and routing domains](expressroute-circuit-peerings.md)
-## [Workflows](expressroute-workflows.md)
-## [Prerequisites](expressroute-prerequisites.md)
-## [Routing requirements](expressroute-routing.md)
-## [Optimize routing](expressroute-optimize-routing.md)
-## [NAT requirements](expressroute-nat.md)
-## [QoS requirements](expressroute-qos.md)
-## [Moving circuits from classic to Resource Manager](expressroute-move.md)
-## [About virtual network gateways for ExpressRoute](expressroute-about-virtual-network-gateways.md)
-# How To
-## Create an modify a circuit
-### [Create and modify a circuit using the Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
-### [Create and modify a circuit using PowerShell](expressroute-howto-circuit-arm.md)
-### [Create and modify a circuit using PowerShell (Classic)](expressroute-howto-circuit-classic.md)
-## Create and modify routing configuration
-### [Create and modify routing configuration using the Azure portal](expressroute-howto-routing-portal-resource-manager.md)
-### [Create and modify routing configuration using PowerShell](expressroute-howto-routing-arm.md)
-### [Create and modify routing configuration using PowerShell (Classic)](expressroute-howto-routing-classic.md)
-## Link a virtual network to an ExpressRoute circuit
-### [Link a virtual network to an ExpressRoute circuit using the Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-### [Link a virtual network to an ExpressRoute circuit using PowerShell](expressroute-howto-linkvnet-arm.md)
-### [Link a virtual network to an ExpressRoute circuit using PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
-## Configure a virtual network gateway for ExpressRoute
-### [Configure a virtual network gateway for ExpressRoute using PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-### [Configure a virtual network gateway for ExpressRoute using PowerShell (Classic)](expressroute-howto-add-gateway-classic.md)
-## [Create Site-to-Site and ExpressRoute coexisting connections](expressroute-howto-coexist-classic.md)
-## [Move a circuit from classic to Resource Manager](expressroute-howto-move-arm.md)
-## Best Practices
-### [Best practices for network security and cloud services](../best-practices-network-security.md)
-### [Asymmetric routing](expressroute-asymmetric-routing.md)
-## Troubleshoot
-### Get ARP Tables
-#### [Getting ARP tables](expressroute-troubleshooting-arp-resource-manager.md)
-#### [Getting ARP tables (Classic)](expressroute-troubleshooting-arp-classic.md)
-## Videos
-### [Create an ExpressRoute circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
-### [How to set up Private Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
-### [Set up Public Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
-### [Set up Microsoft Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
-### [Create a virtual network for ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
-### [Create a virtual network gateway for ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
-### [Cconnect a virtual network gateway to a circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
-### [Evolve your network infrastructure for connectivity](https://go.microsoft.com/fwlink/p/?LinkId=615124)
-### [Hybrid partnerships: Enabling on-premises scenarios](https://go.microsoft.com/fwlink/p/?LinkId=615125)
-# Reference
-## [APIs-Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
-## [APIs-Service Management](https://msdn.microsoft.com/library/azure/dn606310)
-## [PowerShell Cmdlets-Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
-## [PowerShell Cmdlets-Service Management](https://msdn.microsoft.com/library/azure/dn683813)
-## [Router configuration setup samples](expressroute-config-samples-routing.md)
-## [Router configuration samples for NAT](expressroute-config-samples-nat.md)
-# Related 
-## [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)
-## [Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-# Resources
-## [Networking Blog](https://azure.microsoft.com/blog/topics/networking/)
-## [Case Studies](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
+## [订阅和服务限制](../azure-subscription-service-limits.md)
+## 视频
+### [创建 ExpressRoute 线路](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
+### [如何为线路设置专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
+### [为线路设置公共对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
+### [为线路设置 Microsoft 对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
+### [为 ExpressRoute 创建虚拟网络](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
+### [创建 ExpressRoute 的虚拟网络网关](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
+### [将虚拟网络网关连接到线路](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
+### [提升网络基础结构的连接能力](https://go.microsoft.com/fwlink/p/?LinkId=615124)
+### [混合合作关系：启用本地方案](https://go.microsoft.com/fwlink/p/?LinkId=615125)
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -7,6 +7,7 @@
 ## [Deployment prerequisites](azure-stack-deploy.md)
 ## [Deploy](azure-stack-run-powershell-script.md)
 ## [Connect to Azure Stack POC](azure-stack-connect-azure-stack.md)
+## [Redeploy Azure Stack](azure-stack-redeploy.md)
 # Get started
 ## [First tasks](azure-stack-first-scenarios.md)
 ## [Provision a virtual machine](azure-stack-provision-vm.md)
@@ -18,6 +19,7 @@
 ## [Create a plan](azure-stack-create-plan.md)
 ## [Create an offer](azure-stack-create-offer.md)
 ## [Subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md)
+## [Delegating offers in Azure Stack](azure-stack-delegated-provider.md)
 # Using templates
 ## [Template overview](azure-stack-arm-templates.md)
 ## [Deploy templates with the portal](azure-stack-deploy-template-portal.md)
@@ -38,6 +40,7 @@
 ## [Add a custom virtual machine image](azure-stack-add-vm-image.md)
 # Tools
 ## [Tools](azure-stack-tools-paas-services.md)
+## [Updates management in Azure Stack](azure-stack-updates.md)
 # Key Vault
 ## [Introduction](azure-stack-kv-intro.md)
 ## [Getting started](azure-stack-kv-getting-started.md)
@@ -53,6 +56,29 @@
 ## [Manage user permissions](azure-stack-manage-permissions.md)
 ## [Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)
 ## [Deploy Linux virtual machines](azure-stack-linux.md)
+## [Use MySQL databases as PaaS on Azure Stack](azure-stack-mysql-rp-deploy-short.md)
+## [Deploy the SQL Server Resource Provider Adapter on Azure Stack](azure-stack-sql-rp-deploy-long.md)
+## [Use SQL databases on Azure Stack](azure-stack-sql-rp-deploy-short.md)
+
+## Web Apps
+### [Azure Stack Web Apps Overview](azure-stack-webapps-overview.md)
+### [Before you get started with Azure Stack Web Apps](azure-stack-webapps-before-you-get-started.md)
+### [Deploy the MySQL Resource Provider on Azure Stack to use with WebApps](azure-stack-mysql-rp-deploy-long.md)
+### [Web Apps: Adding more web worker roles](azure-stack-webapps-add-worker-roles.md)
+### [Add a Web Apps resource provider to Azure Stack](azure-stack-webapps-deploy.md)
+
+
 # Troubleshooting
 ## [Troubleshooting](azure-stack-troubleshooting.md)
 ## [Frequently asked questions](azure-stack-faq.md)
+## [Rerun a deployment from a failed step](azure-stack-rerun-deploy.md)
+## [Web Apps Resource Provider - Known Issues and Troubleshooting](azure-stack-webapps-troubleshoot-known-issues.md)
+
+
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+
