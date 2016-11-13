@@ -1,31 +1,31 @@
 
 
-# Overview
-## [What is Scheduler?](scheduler-intro.md)
+# 概述
+## [计划程序是什么？](scheduler-intro.md)
 
-# Get started
-## [Create and manage jobs](scheduler-get-started-portal.md)
+# 入门
+## [创建并管理作业](scheduler-get-started-portal.md)
 
-# How to
-## Plan and design
-### [Plans and billing](scheduler-plans-billing.md)
-### [Quotas and limits](scheduler-limits-defaults-errors.md)
-### [High-availability and reliability](scheduler-high-availability-reliability.md)
+# 如何
+## 规划和设计
+### [计划和计费](scheduler-plans-billing.md)
+### [配额和限制](scheduler-limits-defaults-errors.md)
+### [高可用性和可靠性](scheduler-high-availability-reliability.md)
 
-## Develop
-### [Complex schedules using REST API](scheduler-advanced-complexity.md)
+## 开发
+### [使用 REST API 的复杂计划](scheduler-advanced-complexity.md)
 
-## Secure
-### [Outbound authentication](scheduler-outbound-authentication.md)
+## 安全
+### [出站身份验证](scheduler-outbound-authentication.md)
 
-# Reference
-## [Concepts and terminology](scheduler-concepts-terms.md)
+# 引用
+## [概念和术语](scheduler-concepts-terms.md)
 ## [REST API](https://msdn.microsoft.com/library/azure/mt629143)
 ## [PowerShell cmdlets](scheduler-powershell-reference.md)
 
-# Resources
-## [Scheduler Videos](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
+# 资源
+## [计划程序视频](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-scheduler)
 
 
 <!--HONumber=Nov16_HO2-->

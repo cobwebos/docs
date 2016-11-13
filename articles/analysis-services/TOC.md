@@ -1,18 +1,18 @@
-# Overview
-##[What is Azure Analysis Services?](analysis-services-overview.md)
-# Get started
-##[Create a server](analysis-services-create-server.md)
+# 概述
+##[什么是 Azure Analysis Services？](analysis-services-overview.md)
+# 入门
+##[创建服务器](analysis-services-create-server.md)
 
-# How to 
-## [Deploy](analysis-services-deploy.md)
-## Manage
-###[Connect to a server](analysis-services-connect.md)
-###[Manage a server](analysis-services-manage.md)
-## Integrate
-###[On-premise data gateway](analysis-services-gateway.md)
+# 如何 
+## [部署](analysis-services-deploy.md)
+## 管理
+###[连接到服务器](analysis-services-connect.md)
+###[管理服务器](analysis-services-manage.md)
+## 集成
+###[本地数据网关](analysis-services-gateway.md)
 
-# References
-##[Datasource connections](analysis-services-datasource.md)
+# 参考
+##[数据源连接](analysis-services-datasource.md)
 
 <!--HONumber=Nov16_HO2-->
 
