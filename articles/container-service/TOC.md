@@ -1,33 +1,33 @@
-# Overview
-## [ACS introduction](container-service-intro.md)
-# Get Started
+# 概述
+## [ACS 简介](container-service-intro.md)
+# 入门
 
-## [Deploy an ACS cluster](container-service-deployment.md)
-## [Connect with an ACS cluster](container-service-connect.md)
-## [Scale an ACS cluster](container-service-scale.md)
+## [部署 ACS 群集](container-service-deployment.md)
+## [与 ACS 群集连接](container-service-connect.md)
+## [缩放 ACS 群集](container-service-scale.md)
 
-# How To
+# 如何
 
-## Manage with DC/OS
-### [Container management - DC/OS web UI](container-service-mesos-marathon-ui.md)
-### [Container management - DC/OS REST API](container-service-mesos-marathon-rest.md)
-### [DC/OS Agent pools](container-service-dcos-agents.md)
-### [Enable DC/OS public access](container-service-enable-public-access.md)
-### [Load balance containers in DC/OS](container-service-load-balancing.md)
-### [App/User Specific Orchestrator in DC/OS](container-service-application-specific-marathon.md)
-### [Monitor with Datadog (DC/OS)](container-service-monitoring.md)
-### [Monitor with Sysdig (DC/OS)](container-service-monitoring-sysdig.md)
-## Manage with Docker Swarm
-### [Docker Swarm Overview](container-service-docker-swarm.md)
+## 使用 DC/OS 进行管理
+### [容器管理 - DC/OS Web UI](container-service-mesos-marathon-ui.md)
+### [容器管理 - DC/OS REST API](container-service-mesos-marathon-rest.md)
+### [DC/OS 代理池](container-service-dcos-agents.md)
+### [启用 DC/OS 公共访问](container-service-enable-public-access.md)
+### [DC/OS 中的负载均衡容器](container-service-load-balancing.md)
+### [DC/OS 中应用/用户特定的 Orchestrator](container-service-application-specific-marathon.md)
+### [使用 Datadog 进行监视 (DC/OS)](container-service-monitoring.md)
+### [使用 Sysdig 进行监视 (DC/OS)](container-service-monitoring-sysdig.md)
+## 使用 Docker Swarm 进行管理
+### [Docker Swarm 概述](container-service-docker-swarm.md)
 
-# Reference
+# 引用
 
 ## [REST API](https://go.microsoft.com/fwlink/p/?linkid=833499)
 
-# Resources
+# 资源
 
-## [Region availability](https://azure.microsoft.com/regions/services/)
-## [Service Updates](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
+## [上市区域](https://azure.microsoft.com/regions/services/)
+## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
 <!--HONumber=Nov16_HO2-->

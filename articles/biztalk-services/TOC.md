@@ -1,42 +1,42 @@
-# Overview
-## [Hybrid Connections overview](integration-hybrid-connection-overview.md)
+# 概述
+## [混合连接概述](integration-hybrid-connection-overview.md)
 
-# Get Started
-## [Create BizTalk Services using the Azure portal](biztalk-provision-services.md)
-# How To
+# 入门
+## [使用 Azure 门户创建 BizTalk 服务](biztalk-provision-services.md)
+# 如何
 
-## Plan and design
-### [Editions chart](biztalk-editions-feature-chart.md)
-### [Administration and developer task list](biztalk-services-administration-and-development-task-list.md)
+## 规划和设计
+### [版本图表](biztalk-editions-feature-chart.md)
+### [管理员和开发人员任务列表](biztalk-services-administration-and-development-task-list.md)
 
-## Backup
-### [Backup and restore](biztalk-backup-restore.md)
+## 备份
+### [备份和还原](biztalk-backup-restore.md)
 
-## Configure
-### [BizTalk Services: Throttling](biztalk-throttling-thresholds.md)
-### [Review the Dashboard, Monitor, Scale, Configure, and Hybrid Connection tabs](biztalk-dashboard-monitor-scale-tabs.md)
+## 配置
+### [BizTalk 服务：限制](biztalk-throttling-thresholds.md)
+### [查看“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡](biztalk-dashboard-monitor-scale-tabs.md)
 
-## Integrate
-### [Create and Manage Hybrid Connections](integration-hybrid-connection-create-manage.md)
+## 集成
+### [创建和管理混合连接](integration-hybrid-connection-create-manage.md)
 
-## Migrate
-### [Migrating BizTalk Server EDI Solutions to BizTalk Services](biztalk-migrating-to-edi-guide.md)
+## 迁移
+### [将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务](biztalk-migrating-to-edi-guide.md)
 
-## Monitor
-### [BizTalk Services: Service state chart](biztalk-service-state-chart.md)
+## 监视
+### [BizTalk 服务：服务状态图表](biztalk-service-state-chart.md)
 
-## Secure
-### [Issuer name and issuer key](biztalk-issuer-name-issuer-key.md)
+## 安全
+### [颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)
 
-## Troubleshoot
-### [Troubleshoot using operation logs](biztalk-troubleshoot-using-ops-logs.md)
+## 故障排除
+### [使用操作日志进行故障排除](biztalk-troubleshoot-using-ops-logs.md)
 
-# Reference
+# 引用
 
-# Related
+# 相关内容
 
-# Resources
-## [Release Notes](biztalk-release-notes.md)
+# 资源
+## [发行说明](biztalk-release-notes.md)
 
 
 <!--HONumber=Nov16_HO2-->

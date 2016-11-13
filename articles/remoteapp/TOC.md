@@ -1,68 +1,68 @@
-# Overview
-## [What is RemoteApp?](remoteapp-whatis.md)
-## [How does licensing work?](remoteapp-licensing.md)
-## [FAQ](remoteapp-faq.md)
-## [What's new?](remoteapp-whatsnew.md)
-## [What's coming?](remoteapp-roadmap.md)
-## [Azure service limits](../azure-subscription-service-limits.md)
-## Will my app work?
-### [App requirements](remoteapp-appreqs.md)
+# 概述
+## [什么是 RemoteApp？](remoteapp-whatis.md)
+## [许可如何工作？](remoteapp-licensing.md)
+## [常见问题](remoteapp-faq.md)
+## [新增功能](remoteapp-whatsnew.md)
+## [即将推出的功能](remoteapp-roadmap.md)
+## [Azure 服务限制](../azure-subscription-service-limits.md)
+## 应用是否会正常运行？
+### [应用要求](remoteapp-appreqs.md)
 ### [OneDrive for Business](remoteapp-onedrive.md)
 ### [SQL Azure](remoteapp-sql.md)
 ### [Office 365](remoteapp-o365.md)
 ### [Outlook 2013](remoteapp-outlook.md)
-### [Using App-V apps](remoteapp-appv.md)
-### [QuickBooks on Azure RemoteApp](remoteapp-quickbooks.md)
+### [使用 APP-V 应用](remoteapp-appv.md)
+### [Azure RemoteApp 上的 QuickBooks](remoteapp-quickbooks.md)
 ### [Microsoft Dynamics AX](https://mbs.microsoft.com/customersource/global/ax/learning/documentation/msdax2012r3azremappprg)
-### [Secure Apps and resources](remoteapp-secure.md)
+### [保护应用和资源](remoteapp-secure.md)
 
 
-# Get Started
-## Real world scenarios
-### [Run any app on any device](remoteapp-anyapp.md)
-### [Run Office 365 on any device](remoteapp-tutorial-o365anywhere.md)
+# 入门
+## 真实场景
+### [在任何设备上运行任何应用](remoteapp-anyapp.md)
+### [在任何设备上运行 Office 365](remoteapp-tutorial-o365anywhere.md)
 
-# How To
+# 如何
 
-## Create a RemoteApp collection
-### [Which collection do you need?](remoteapp-collections.md)
-### [Create a cloud collection](remoteapp-create-cloud-deployment.md)
-### [Create a hybrid collection](remoteapp-create-hybrid-deployment.md)
-### [Update your collection](remoteapp-update.md)
-### [Create a RemoteApp image](remoteapp-imageoptions.md)
-### [What is in the template image?](remoteapp-images.md)
-### [Image requirements](remoteapp-imagereqs.md)
-### [Upload an image](remoteapp-uploadimage.md)
-### [Create an image from an Azure VM](remoteapp-image-on-azurevm.md)
-## Configure a Virtual Network
-### [Plan your VNET](remoteapp-planvnet.md)
-### [Port and URL info](remoteapp-ports.md)
-### [Validate your VNET](remoteapp-vnet.md)
-### [Migrate to an Azure VNET](remoteapp-migratevnet.md)
-## Publish applications
-### [How to publish an app](remoteapp-publish.md)
-## Manage users
-### [How to add users](remoteapp-user.md)
-### [Configure Active Directory](remoteapp-ad.md)
-### [Change the Azure AD tenant](remoteapp-changetenant.md)
-### [Office 365 user accounts](remoteapp-o365user.md)
-### [Secure Data](remoteapp-secureaccess.md)
-### [User data](remoteapp-upd.md)
-## Client experience
-### [Supported clients](remoteapp-clients.md)
-### [Configure redirection](remoteapp-redirection.md)
-### [Client best practices](remoteapp-clientbestpractices.md)
-## Automate RemoteApp
-### [RemoteApp PowerShell cmdlets](remoteapp-tutorial-arawithpowershell.md)
-### [Manage RemoteApp with Azure Automation](automation-manage-remote-app.md)
-## Stay current with RemoteApp
-### [Forums](http://feedback.azure.com/forums/247748-azure-remoteapp)
-### [Feedback](http://feedback.azure.com/forums/247748-azure-remoteapp)
-### [Support](https://azure.microsoft.com/support/plans/)
-### [Service status](https://azure.microsoft.com/status/)
-## Troubleshoot
-### [Troubleshoot a hybrid collection](remoteapp-hybridtrouble.md)
-### [Troubleshoot a cloud collection](remoteapp-cloudtrouble.md)
+## 创建 RemoteApp 集合
+### [需要哪个集合？](remoteapp-collections.md)
+### [创建云集合](remoteapp-create-cloud-deployment.md)
+### [创建混合集合](remoteapp-create-hybrid-deployment.md)
+### [更新集合](remoteapp-update.md)
+### [创建 RemoteApp 映像](remoteapp-imageoptions.md)
+### [什么是模板映像？](remoteapp-images.md)
+### [映像要求](remoteapp-imagereqs.md)
+### [上载映像](remoteapp-uploadimage.md)
+### [从 Azure VM 创建映像](remoteapp-image-on-azurevm.md)
+## 配置虚拟网络
+### [规划 VNET](remoteapp-planvnet.md)
+### [端口和 URL 信息](remoteapp-ports.md)
+### [验证 VNET](remoteapp-vnet.md)
+### [迁移到 Azure VNET](remoteapp-migratevnet.md)
+## 发布应用程序
+### [如何发布应用](remoteapp-publish.md)
+## 管理用户
+### [如何添加用户](remoteapp-user.md)
+### [配置 Active Directory](remoteapp-ad.md)
+### [更改 Azure AD 租户](remoteapp-changetenant.md)
+### [Office 365 用户帐户](remoteapp-o365user.md)
+### [保护数据](remoteapp-secureaccess.md)
+### [用户数据](remoteapp-upd.md)
+## 客户端体验
+### [支持的客户端](remoteapp-clients.md)
+### [配置重定向](remoteapp-redirection.md)
+### [客户端最佳实践](remoteapp-clientbestpractices.md)
+## 自动化 RemoteApp
+### [RemoteApp PowerShell cmdlet](remoteapp-tutorial-arawithpowershell.md)
+### [使用 Azure 自动化管理 RemoteApp](automation-manage-remote-app.md)
+## 了解 RemoteApp 的最新功能
+### [论坛](http://feedback.azure.com/forums/247748-azure-remoteapp)
+### [反馈](http://feedback.azure.com/forums/247748-azure-remoteapp)
+### [支持](https://azure.microsoft.com/support/plans/)
+### [服务状态](https://azure.microsoft.com/status/)
+## 故障排除
+### [混合集合疑难解答](remoteapp-hybridtrouble.md)
+### [云集合疑难解答](remoteapp-cloudtrouble.md)
 
 
 <!--HONumber=Nov16_HO2-->

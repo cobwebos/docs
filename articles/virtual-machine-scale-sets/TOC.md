@@ -1,34 +1,36 @@
-# Overview
-## [About scale sets](virtual-machine-scale-sets-overview.md)
-## [Design considerations for scale sets](virtual-machine-scale-sets-design-overview.md)
+# 概述
+## [关于规模集](virtual-machine-scale-sets-overview.md)
+## [规模集设计注意事项](virtual-machine-scale-sets-design-overview.md)
 
+# 入门
+## [创建 Windows 规模集](virtual-machine-scale-sets-windows-create.md)
+## [创建 Linux 规模集](virtual-machine-scale-sets-linux-create-cli.md)
 
-# Get Started
-## [Create a Windows scale set](virtual-machine-scale-sets-windows-create.md)
-## [Create a Linux scale set](virtual-machine-scale-sets-linux-create-cli.md)
+# 如何
+## 部署
+### [使用门户的规模集](virtual-machine-scale-sets-portal-create.md)
+### [使用 Visual Studio 的规模集](virtual-machine-scale-sets-vs-create.md)
+### [具有自动缩放功能的 Linux 规模集](virtual-machine-scale-sets-linux-autoscale.md)
+### [具有自动缩放功能的 Windows 规模集](virtual-machine-scale-sets-windows-autoscale.md)
+### [规模集中的应用程序](virtual-machine-scale-sets-deploy-app.md)
 
-# How To
-## Deploy
-### [Scale set using the portal](virtual-machine-scale-sets-portal-create.md)
-### [Scale set using Visual Studio](virtual-machine-scale-sets-vs-create.md)
-### [Linux scale set with autoscale](virtual-machine-scale-sets-linux-autoscale.md)
-### [Windows scale set with autoscale](virtual-machine-scale-sets-windows-autoscale.md)
-### [Applications on scale sets](virtual-machine-scale-sets-deploy-app.md)
-## Manage
-### [Windows scale set using PowerShell](virtual-machine-scale-sets-windows-manage.md)
-### [Autoscale and scale sets](virtual-machine-scale-sets-autoscale-overview.md)
-### [Vertical scaling in a scale set](virtual-machine-scale-sets-vertical-scale-reprovision.md)
-### [Upgrades for scale sets](virtual-machine-scale-sets-upgrade-scale-set.md)
-### [Advanced autoscale](virtual-machine-scale-sets-advanced-autoscale.md)
-### [Using DSC and scale sets](virtual-machine-scale-sets-dsc.md)
-## Troubleshoot
-### [Troubleshoot autoscale](virtual-machine-scale-sets-troubleshoot.md)
+## 管理
+### [使用 PowerShell 管理 Windows 规模集](virtual-machine-scale-sets-windows-manage.md)
+### [自动缩放和规模集](virtual-machine-scale-sets-autoscale-overview.md)
+### [规模集中的垂直缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)
+### [规模集升级](virtual-machine-scale-sets-upgrade-scale-set.md)
+### [高级自动缩放](virtual-machine-scale-sets-advanced-autoscale.md)
+### [使用 DSC 和规模集](virtual-machine-scale-sets-dsc.md)
 
-# Reference
+## 故障排除
+### [对自动缩放进行故障排除](virtual-machine-scale-sets-troubleshoot.md)
+
+# 引用
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
-## [REST APIs](https://msdn.microsoft.com/library/azure/mt163647)
-## [Azure Powershell](https://msdn.microsoft.com/library/azure/dn708514)
-## [Azure templates](https://azure.microsoft.com/documentation/templates/)
+## [规模集 REST API](/rest/api/compute/virtualmachinescalesets)
+## [规模集 VM REST API](/rest/api/compute/virtualmachinescalesetvms)
+## [Azure PowerShell](/powershell/resourcemanager/)
+## [Azure 模板](https://azure.microsoft.com/documentation/templates/?term=vmss)
 
 
 <!--HONumber=Nov16_HO2-->
