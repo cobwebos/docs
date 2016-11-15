@@ -9,20 +9,20 @@ articles/sql-database/sql-database-get-started-tutorial.md
 articles/sql-database/sql-database-configure-firewall-settings
 
 -->
-## 创建新的 Aure SQL 服务器级防火墙
+## <a name="create-a-new-azure-sql-serverlevel-firewall"></a>创建新的 Aure SQL 服务器级防火墙
 在 Azure 门户中使用以下步骤来创建服务器级别防火墙规则，以允许从单个 IP 地址（客户端计算机）或整个 IP 地址范围连接到 SQL 数据库逻辑服务器。
 
 1. 如果当前未连接，请连接到 [Azure 门户](http://portal.azure.com)。
-2. 在默认边栏选项卡中，单击“SQL Server”。
+2. 在默认边栏选项卡中，单击“SQL Server” 。
    
       ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-1.png)
-3. 在“SQL Server”边栏选项卡上，单击要创建防火墙规则的服务器。
+3. 在“SQL Server”  边栏选项卡上，单击要创建防火墙规则的服务器。
    
      ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-2.png)
 4. 检查服务器的属性。
    
      ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-3.png)
-5. 在“设置”边栏选项卡上，单击“防火墙”。
+5. 在“设置”边栏选项卡中，单击“防火墙”。
    
      ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-4.png)
    
@@ -30,7 +30,7 @@ articles/sql-database/sql-database-configure-firewall-settings
    > 还可从“数据库”边栏选项卡的工具栏中访问服务器级“防火墙设置”边栏选项卡。
    > 
    > 
-6. 单击“添加客户端 IP”，让 Azure 为客户端 IP 地址创建规则。
+6. 单击“添加客户端 IP”  ，让 Azure 为客户端 IP 地址创建规则。
    
       ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-5.png)
 7. （可选）若要允许访问一系列 IP 地址，请单击添加的 IP 地址来编辑防火墙地址。
@@ -41,8 +41,12 @@ articles/sql-database/sql-database-configure-firewall-settings
      ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-7.png)
    
    > [!IMPORTANT]
-   > 你的客户端 IP 地址可能会不定时地更改，你可能需要创建新防火墙规则才能访问服务器。可使用“必应”[](http://www.bing.com/search?q=my%20ip%20address)查看 IP 地址。然后添加一个 IP 地址或一系列 IP 地址。有关详细信息，请参阅[管理防火墙设置](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal)。
+   > 客户端 IP 地址可能会不定时地更改，因此可能需要创建新的防火墙规则才能访问服务器。 可通过使用 [Bing](http://www.bing.com/search?q=my%20ip%20address) 来查看 IP 地址。 然后添加一个 IP 地址或 IP 地址范围。 有关详细信息，请参阅[管理防火墙设置](../articles/sql-database/sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal)。
    > 
    > 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+
