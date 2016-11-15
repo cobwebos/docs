@@ -1,26 +1,38 @@
 ---
-title: 设置开发环境 | Microsoft Docs
-description: 安装运行时、SDK 和工具并创建本地开发群集。完成此设置后，你就可以开始生成应用程序。
+title: "设置开发环境 | Microsoft Docs"
+description: "安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，你就可以开始生成应用程序。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/13/2016
+ms.date: 10/26/2016
 ms.author: ryanwi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7ae0fcc689d51479a92c506ea48ab8af2003acfe
+
 
 ---
-# 准备开发环境
- 若要在开发计算机上生成并运行 [Azure Service Fabric 应用程序][1]，请安装运行时、SDK 和工具。此外，还需执行 SDK 中包含的 Windows PowerShell 脚本。
+# <a name="prepare-your-development-environment"></a>准备开发环境
+> [!div class="op_single_selector"]
+> -[ Windows](service-fabric-get-started.md)
+> 
+> * [Linux](service-fabric-get-started-linux.md)
+> * [OSX](service-fabric-get-started-mac.md)
+> 
+> 
 
-## 先决条件
-### 支持的操作系统版本
+ 若要在开发计算机上生成并运行 [Azure Service Fabric 应用程序][1]，请安装运行时、SDK 和工具。 此外，还需执行 SDK 中包含的 Windows PowerShell 脚本。
+
+## <a name="prerequisites"></a>先决条件
+### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 支持使用以下操作系统版本进行开发：
 
 * Windows 7
@@ -29,24 +41,24 @@ ms.author: ryanwi
 * Windows 10
 
 > [!NOTE]
-> 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。Service Fabric PowerShell cmdlet 需要 PowerShell 3.0 或更高版本。可以从 Microsoft 下载中心[下载 Windows PowerShell 5.0][powershell5-download]。
+> 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。 Service Fabric PowerShell cmdlet 需要 PowerShell 3.0 或更高版本。 可以从 Microsoft 下载中心[下载 Windows PowerShell 5.0][powershell5-download]。
 > 
 > 
 
-## 安装运行时、SDK 和工具
+## <a name="install-the-runtime-sdk-and-tools"></a>安装运行时、SDK 和工具
 Web 平台安装程序为 Service Fabric 开发提供两种配置：
 
-* [安装适用于 Visual Studio 2015 的 Service Fabric 运行时、SDK 和工具（需要安装 Visual Studio 2015 Update 2 或更高版本）][full-bundle-vs2015]
+* [安装适用于 Visual Studio 2015 的 Service Fabric 运行时、SDK 和工具（需要 Visual Studio 2015 Update 2 或更高版本）][full-bundle-vs2015]
 * [仅安装 Service Fabric 运行时和 SDK（不安装 Visual Studio 工具）][core-sdk]
 
-## 启用 PowerShell 脚本执行
-Service Fabric 使用 Windows PowerShell 脚本创建本地开发群集和部署 Visual Studio 中的应用程序。默认情况下，Windows 会阻止这些脚本运行。若要启用它们，你必须修改你的 PowerShell 执行策略。以管理员身份打开 PowerShell 并输入以下命令：
+## <a name="enable-powershell-script-execution"></a>启用 PowerShell 脚本执行
+Service Fabric 使用 Windows PowerShell 脚本创建本地开发群集和部署 Visual Studio 中的应用程序。 默认情况下，Windows 会阻止这些脚本运行。 若要启用它们，你必须修改你的 PowerShell 执行策略。 以管理员身份打开 PowerShell 并输入以下命令：
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 完成设置开发环境之后，便可开始生成和运行应用。
 
 * [在 Visual Studio 中创建你的第一个 Service Fabric 应用程序](service-fabric-create-your-first-application-in-visual-studio.md)
@@ -56,11 +68,15 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 * [使用 Service Fabric 资源管理器可视化群集](service-fabric-visualizing-your-cluster.md)
 * [按照 Service Fabric 学习路径获取平台的概括性介绍](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 
-[1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric 活动页"
+[1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Service Fabric 活动页"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI 链接"
-[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI 链接"
-[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI 链接"
-[powershell5-download]: https://www.microsoft.com/zh-CN/download/details.aspx?id=50395
+[full-bundle-vs2015]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
+[full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI 链接"
+[core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI 链接"
+[powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

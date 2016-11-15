@@ -1,110 +1,119 @@
 ---
-title: 如何使用 Azure 媒体服务执行实时传送视频流以通过 .NET 创建多比特率流 | Microsoft Docs
-description: 本教程将指导你使用 .NET SDK 完成创建频道的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
+title: "如何使用 Azure 媒体服务执行实时传送视频流以通过 .NET 创建多比特率流 | Microsoft Docs"
+description: "本教程将指导你使用 .NET SDK 完成创建频道的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/15/2016
+ms.date: 10/12/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
+
 
 ---
-# 如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 > 
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/?WT.mc_id=A261C142F)。
 > 
 > 
 
-## 概述
-本教程将指导你完成创建**频道**的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
+## <a name="overview"></a>概述
+本教程将指导你完成创建 **频道** 的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
 
-有关为实时编码启用的通道的更多相关概念信息，请参阅[使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
+有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
-## 常见的实时流方案
+## <a name="common-live-streaming-scenario"></a>常见的实时流方案
 以下步骤介绍创建常见的实时流式处理应用程序时涉及的任务。
 
 > [!NOTE]
-> 目前，实时事件的最大建议持续时间为 8 小时。如果要运行一个需要更长时间的通道，请通过 Microsoft.com 联系 amslived。
+> 目前，实时事件的最大建议持续时间为 8 小时。 如果要运行一个需要更长时间的通道，请通过 Microsoft.com 联系 amslived。
 > 
 > 
 
-1. 将视频摄像机连接到计算机。启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP、平滑流式处理或 RTP (MPEG-TS)。有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
-   
-    此步骤也可以在创建频道后执行。
-2. 创建并启动频道。
-3. 检索频道引入 URL。
-   
-    实时编码器使用引入 URL 将流发送到频道。
-4. 检索频道预览 URL。
-   
-    使用此 URL 来验证频道是否正常接收实时流。
-5. 创建资源。
-6. 如果你想让资源在播放期间进行动态加密，请执行以下操作：
-7. 创建内容密钥。
-8. 配置内容密钥授权策略。
-9. 配置资产传送策略（由动态打包和动态加密使用）。
-10. 创建节目并指定使用你创建的资产。
-11. 通过创建按需定位器发布与节目关联的资产。
-    
-     确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
-12. 在准备好开始流式传输和存档时，启动节目。
-13. （可选）可以向实时编码器发信号，以启动广告。将广告插入到输出流中。
-14. 在要停止对事件进行流式传输和存档时，停止节目。
-15. 删除节目（并选择性地删除资产）。
+1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP、平滑流式处理或 RTP (MPEG-TS)。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
 
-## 学习内容
-本主题演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。由于许多操作都长时间运行，因此将使用管理长时间运行的操作的 .NET API。
+此步骤也可以在创建频道后执行。
+
+1. 创建并启动频道。
+2. 检索频道引入 URL。
+
+实时编码器使用引入 URL 将流发送到频道。
+
+1. 检索频道预览 URL。
+
+使用此 URL 来验证频道是否正常接收实时流。
+
+1. 创建资源。
+2. 如果你想让资源在播放期间进行动态加密，请执行以下操作：
+3. 创建内容密钥。
+4. 配置内容密钥授权策略。
+5. 配置资产传送策略（由动态打包和动态加密使用）。
+6. 创建节目并指定使用你创建的资产。
+7. 通过创建按需定位器发布与节目关联的资产。
+
+确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
+
+1. 在准备好开始流式传输和存档时，启动节目。
+2. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
+3. 在要停止对事件进行流式传输和存档时，停止节目。
+4. 删除节目（并选择性地删除资产）。
+
+## <a name="what-youll-learn"></a>学习内容
+本主题演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此将使用管理长时间运行的操作的 .NET API。
 
 本主题将介绍如何执行以下操作：
 
-1. 创建并启动通道。将使用长时间运行的 API。
-2. 获取频道引入（输入）终结点。应将此终结点提供给可以发送单比特率实时流的编码器。
-3. 获取预览终结点。此终结点用于预览流。
-4. 创建将用于存储你的内容的资源。还应配置资源传送策略，如此示例中所示。
-5. 创建节目并指定使用你先前创建的资源。启动该节目。将使用长时间运行的 API。
+1. 创建并启动频道。 将使用长时间运行的 API。
+2. 获取频道引入（输入）终结点。 应将此终结点提供给可以发送单比特率实时流的编码器。
+3. 获取预览终结点。 此终结点用于预览流。
+4. 创建将用于存储你的内容的资源。 还应配置资源传送策略，如此示例中所示。
+5. 创建节目并指定使用你先前创建的资源。 启动该节目。 将使用长时间运行的 API。
 6. 为资源创建定位器，以便发布内容，并可以将内容流式传输到客户端。
-7. 显示和隐藏清单。启动和停止广告。将使用长时间运行的 API。
+7. 显示和隐藏清单。 启动和停止广告。 将使用长时间运行的 API。
 8. 清理频道及所有关联的资源。
 
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件。
 
 * 若要完成本教程，你需要一个 Azure 帐户。
-  
-    如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/?WT.mc_id=A261C142F)。获取可用来尝试付费版 Azure 服务的信用额度。即使在信用额度用完之后，也可以保留该帐户，使用免费 Azure 服务和功能，例如 Azure App Service 中的 Web 应用功能。
-* 一个媒体服务帐户。若要创建媒体服务帐户，请参阅[创建帐户](media-services-create-account.md)。
+
+如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费 Azure 服务和功能，例如 Azure App Service 中的 Web 应用功能。
+
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
 * 必须使用适用于 .NET 的媒体服务 SDK 版本 3.2.0.0 或更高版本。
 * 可以发送单比特率实时流的摄像头和编码器。
 
-## 注意事项
-* 目前，实时事件的最大建议持续时间为 8 小时。如果要运行一个需要更长时间的通道，请通过 Microsoft.com 联系 amslived。
+## <a name="considerations"></a>注意事项
+* 目前，实时事件的最大建议持续时间为 8 小时。 如果要运行一个需要更长时间的通道，请通过 Microsoft.com 联系 amslived。
 * 确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
 
-## 下载示例
-从[此处](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)获取并运行示例。
+## <a name="download-sample"></a>下载示例
+从 [此处](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)获取并运行示例。
 
-## 使用用于 .NET 的媒体服务 SDK 进行开发设置
+## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>使用用于 .NET 的媒体服务 SDK 进行开发设置
 1. 使用 Visual Studio 创建控制台应用程序。
 2. 使用媒体服务 NuGet 包将适用于 .NET 的媒体服务 SDK 添加到控制台应用程序。
 
-## 连接到媒体服务
+## <a name="connect-to-media-services"></a>连接到媒体服务
 最佳做法是，应使用 app.config 文件来存储媒体服务名称和帐户密钥。
 
 > [!NOTE]
-> 若要查找名称和密钥值，请转到 Azure 经典门户、选择你的 媒体服务帐户，然后单击门户窗口底部的“管理密钥”图标。单击每个文本框旁边的图标将值复制到系统剪贴板中。
+> 若要查找 Name 和 Key 值，请转到 Azure 门户，然后选择帐户。 “设置”窗口显示在右侧。 在“设置”窗口中，选择“密钥”。 单击每个文本框旁边的图标将值复制到系统剪贴板中。
 > 
 > 
 
@@ -119,7 +128,7 @@ ms.author: juliako;anilmur
     </configuration>
 
 
-## 代码示例
+## <a name="code-example"></a>代码示例
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -507,15 +516,20 @@ ms.author: juliako;anilmur
     }    
 
 
-## 后续步骤
+## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供反馈
+## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### 想要寻找其他内容吗？
+### <a name="looking-for-something-else"></a>想要寻找其他内容吗？
 如果本主题不包含你所期待的内容、缺少某些内容，或在其他方面不符合你的需求，请使用下面的 Disqus 会话向我们提供反馈。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

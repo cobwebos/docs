@@ -1,14 +1,13 @@
 ---
-title: 安装 DC/OS CLI | Microsoft Docs
-description: 安装 DC/OS CLI。
+title: "安装 DC/OS CLI | Microsoft Docs"
+description: "安装 DC/OS CLI。"
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
-keywords: 容器, 微服务, DC/OS, Azure
-
+keywords: "容器, 微服务, DC/OS, Azure"
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,14 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: e664ce9426a2852a35dfdade5d41a9ce8b37a3b7
+ms.openlocfilehash: a8ea47f158c0d666340815d2e039995c7483257f
+
 
 ---
 > [!NOTE]
-> 这适用于基于 DC/OS 的 ACS 群集。无需为基于 Swarm 的 ACS 群集执行此操作。
+> 这适用于基于 DC/OS 的 ACS 群集。 无需为基于 Swarm 的 ACS 群集执行此操作。
 > 
 > 
 
-首先，[连接到基于 DC/OS 的 ACS 群集](../articles/container-service/container-service-connect.md)。完成连接后，可以使用以下命令在客户端计算机上安装 DC/OS CLI。
+首先， [连接到基于 DC/OS 的 ACS 群集](../articles/container-service/container-service-connect.md)。 完成连接后，可以使用以下命令在客户端计算机上安装 DC/OS CLI。
 
 ```bash
 sudo pip install virtualenv
@@ -33,7 +36,7 @@ chmod +x install-optout-dcos-cli.sh
 ./install-optout-dcos-cli.sh . http://localhost --add-path yes
 ```
 
-如果使用的是旧版本的 Python，可能会看到某些“InsecurePlatformWarnings”。可以放心地忽略这些警告。
+如果使用的是旧版本的 Python，可能会看到某些“InsecurePlatformWarnings”。 可以放心地忽略这些警告。
 
 若要在无需重新启动 shell 的情况下开始安装，请运行：
 
@@ -49,4 +52,7 @@ source ~/.bashrc
 dcos --help
 ```
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,52 +1,58 @@
 ---
-title: Azure Multi-Factor Authentication - 入门
-description: 通过询问自己想要保护什么以及用户的位置，选择适合你的 Multi-Factor Authentication 安全解决方案。然后选择云、MFA 服务器或 AD FS。
+title: "Azure MFA 云与服务器 | Microsoft Docs"
+description: "通过询问自己想要保护什么以及用户的位置，选择适合你的 Multi-Factor Authentication 安全解决方案。  然后选择云、MFA 服务器或 AD FS。"
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtland
-
+editor: yossib
+ms.assetid: ec2270ea-13d7-4ebc-8a00-fa75ce6c746d
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
+ms.date: 10/14/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 72347099d980f2ca73f39f984787197e1f87e45a
+
 
 ---
-# 选择适合自己的多因素安全解决方案
-因为 Azure Multi-Factor Authentication 的种类繁多，我们必须从几个重点来判断，以便找出最合适的版本。这些重点包括：
+# <a name="choose-the-azure-multifactor-authentication-solution-for-you"></a>选择适合自己的 Azure 多重身份验证解决方案
+因为 Azure 多重身份验证 (MFA) 的种类繁多，我们必须从以下问题着手，以便找出最合适的版本。  这些问题包括：
 
 * [我要保护什么](#what-am-i-trying-to-secure)
 * [用户位于何处](#where-are-the-users-located)
+* [需要哪些功能？](#what-featured-do-i-need)
 
-以下部分将提供有关如何做出判断的指导。
+以下部分提供有关如何确定这些答案的指导。
 
-## 我要保护什么？
-为了确定适当的 Multi-Factor Authentication 解决方案，首先我们必须回答一个问题：试图使用第二种身份验证方法来保护什么？它是 Azure 中的应用程序， 还是远程访问系统之类的系统？通过判断我们尝试保护的项目，就可以找出要在何处启用 Multi-Factor Authentication 这个问题的答案。
+## <a name="what-am-i-trying-to-secure"></a>我要保护什么？
+为了确定适当的多重验证解决方案，首先我们必须回答一个问题：试图使用第二种身份验证方法来保护什么？  它是 Azure 中的应用程序，  还是远程访问系统？  通过判断我们尝试保护的项目，就可以回答要在何处启用多重身份验证。  
 
 | 你想要保护什么 | 云中的 Multi-Factor Authentication | Multi-Factor Authentication 服务器 |
 | --- |:---:|:---:|
-| 第一方 Microsoft 应用 |* |* |
-| 应用库中的 Saas 应用 |* |* |
-| 通过 Azure AD 应用代理发布的 IIS 应用程序 |* |* |
-| 不是通过 Azure AD 应用代理发布的 IIS 应用程序 | |* |
-| VPN、RDG 等远程访问系统 | |* |
+| 第一方 Microsoft 应用 |● |● |
+| 应用库中的 SaaS 应用 |● |● |
+| 通过 Azure AD 应用代理发布的 IIS 应用程序 |● |● |
+| 不是通过 Azure AD 应用代理发布的 IIS 应用程序 | |● |
+| VPN、RDG 等远程访问系统 | |● |
 
-## 用户位于何处
-接下来，不论是云中的 Multi-Factor Authentication 还使用 MFA 服务器的本地 Multi-Factor Authentication，只要根据用户的所在位置，我们就能确定合适的解决方案。
+## <a name="where-are-the-users-located"></a>用户位于何处
+接下来，了解用户位于何处有助于确定要用的正确解决方案，不论是云中的多重身份验证还使用 MFA 服务器的本地多重身份验证。
 
-| 用户位置 | 解决方案 |
-| --- |:--- |
-| Azure Active Directory |云中的 Multi-Factor Authentication |
-| Azure AD 和使用 AD FS 联合身份验证的本地 AD |云中的 MFA 和 MFA 服务器都是可用选项 |
-| Azure AD 和使用 DirSync、Azure AD Sync、Azure AD Connect 的本地 AD - 没有密码同步 |云中的 MFA 和 MFA 服务器都是可用选项 |
-| Azure AD 和使用 DirSync、Azure AD Sync、Azure AD Connect 的本地 AD - 包含密码同步 |云中的 Multi-Factor Authentication |
-| 本地 Active Directory |Multi-Factor Authentication 服务器 |
+| 用户位置 | 云中的 Multi-Factor Authentication | Multi-Factor Authentication 服务器 |
+| --- |:---:|:---:|
+| Azure Active Directory |● | |
+| Azure AD 和使用 AD FS 联合身份验证的本地 AD |● |● |
+| Azure AD 和使用 DirSync、Azure AD Sync、Azure AD Connect 的本地 AD - 没有密码同步 |● |● |
+| Azure AD 和使用 DirSync、Azure AD Sync、Azure AD Connect 的本地 AD - 包含密码同步 |● | |
+| 本地 Active Directory | |● |
 
-下表是云中 Multi-Factor Authentication 和 Multi-Factor Authentication 服务器的功能比较。
+## <a name="what-features-do-i-need"></a>需要哪些功能？
+下表是云中多重身份验证和多重身份验证服务器的功能比较。
 
 | 云中的 Multi-Factor Authentication | Multi-Factor Authentication 服务器 |
 | --- |:---:|:---:|
@@ -69,8 +75,18 @@ ms.author: kgremban
 | 条件性访问 |● |
 | 缓存 | |
 
-在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。**选择代表你的方案的图标！**
+在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。 **选择代表你的方案的图标！**
 
-<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
+<center>
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+[![云](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</center>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+
