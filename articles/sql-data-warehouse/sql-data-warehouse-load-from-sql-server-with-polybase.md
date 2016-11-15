@@ -1,22 +1,26 @@
 ---
-title: 将数据从 SQL Server 载入 Azure SQL 数据仓库 (PolyBase) | Microsoft Docs
-description: 使用 bcp 将数据从 SQL Server 导出到平面文件，使用 AZCopy 将数据导入 Azure Blob 存储，使用 PolyBase 将数据引入 Azure SQL 数据仓库。
+title: "将数据从 SQL Server 载入 Azure SQL 数据仓库 (PolyBase) | Microsoft Docs"
+description: "使用 bcp 将数据从 SQL Server 导出到平面文件，使用 AZCopy 将数据导入 Azure Blob 存储，使用 PolyBase 将数据引入 Azure SQL 数据仓库。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: 860c86e0-90f7-492c-9a84-1bdd3d1735cd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/30/2016
-ms.author: cakarst;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 33c100dc471bf76230d068bf52f4a96b6123dab0
+
 
 ---
-# 在 SQL 数据仓库中使用 PolyBase 加载数据
+# <a name="load-data-with-polybase-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用 PolyBase 加载数据
 > [!div class="op_single_selector"]
 > * [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 > * [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
@@ -24,7 +28,7 @@ ms.author: cakarst;barbkess;sonyama
 > 
 > 
 
-本教程说明如何使用 AzCopy 和 PolyBase 将数据载入 SQL 数据仓库。完成后，你将了解如何：
+本教程说明如何使用 AzCopy 和 PolyBase 将数据载入 SQL 数据仓库。 完成后，你将了解如何：
 
 * 使用 AzCopy 将数据复制到 Azure Blob 存储
 * 创建数据库对象以定义数据
@@ -34,22 +38,22 @@ ms.author: cakarst;barbkess;sonyama
 > 
 > 
 
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 若要逐步完成本教程中，你需要：
 
 * 一个 SQL 数据仓库数据库。
 * 一个标准本地冗余存储 (Standard-LRS)、标准异地冗余存储 (Standard-GRS) 或标准读取访问权限异地冗余存储 (Standard-RAGRS) 类型的 Azure 存储帐户。
-* AzCopy 命令行实用程序。下载并安装 Microsoft Azure 存储空间工具随附的[最新版本的 AzCopy][最新版本的 AzCopy]。
+* AzCopy 命令行实用程序。 下载并安装 Microsoft Azure 存储工具随附的[最新版本的 AzCopy] [latest version of AzCopy]。
   
     ![Azure 存储空间工具](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
-## 步骤 1：将示例数据添加到 Azure Blob 存储
-为了加载数据，我们需要将一些示例数据放入 Azure Blob 存储。在此步骤中，我们会将示例数据填入 Azure 存储 Blob。稍后我们会使用 PolyBase 将这些示例数据载入 SQL 数据仓库数据库。
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>步骤 1：将示例数据添加到 Azure Blob 存储
+为了加载数据，我们需要将一些示例数据放入 Azure Blob 存储。 在此步骤中，我们会将示例数据填入 Azure 存储 Blob。 稍后我们会使用 PolyBase 将这些示例数据载入 SQL 数据仓库数据库。
 
-### A.准备一个示例文本文件
+### <a name="a-prepare-a-sample-text-file"></a>A. 准备一个示例文本文件
 若要准备示例文本文件，请执行以下操作：
 
-1. 打开记事本并将以下数据行复制到一个新文件。将此文件保存到本地临时目录，路径为 %temp%\\DimDate2.txt。
+1. 打开记事本并将以下数据行复制到一个新文件。 将此文件保存到本地临时目录，路径为 %temp%\DimDate2.txt。
 
 ```
 20150301,1,3
@@ -66,10 +70,10 @@ ms.author: cakarst;barbkess;sonyama
 20150101,1,3
 ```
 
-### B.查找你的 Blob 服务终结点
+### <a name="b-find-your-blob-service-endpoint"></a>B. 查找你的 Blob 服务终结点
 若要查找你的 Blob 服务终结点，请执行以下操作：
 
-1. 在 Azure 门户中，依次选择“浏览”>“存储帐户”。
+1. 在 Azure 门户中，选择“浏览” > “存储帐户”。
 2. 单击你要使用的存储帐户。
 3. 在“存储帐户”边栏选项卡中，单击“Blob”
    
@@ -78,57 +82,57 @@ ms.author: cakarst;barbkess;sonyama
    
     ![Blob 服务终结点](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
-### C.查找你的 Azure 存储密钥
+### <a name="c-find-your-azure-storage-key"></a>C. 查找你的 Azure 存储密钥
 若要查找你的 Azure 存储密钥，请执行以下操作：
 
-1. 在 Azure 门户中，依次选择“浏览”>“存储帐户”。
+1. 在 Azure 门户中，选择“浏览” > “存储帐户”。
 2. 单击你要使用的存储帐户。
-3. 选择“所有设置”>“访问密钥”。
+3. 选择“所有设置” > “访问密钥”。
 4. 单击复制框，将你的访问密钥之一复制到剪贴板。
    
     ![复制 Azure 存储密钥](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### D.将示例文件复制到 Azure Blob 存储
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. 将示例文件复制到 Azure Blob 存储
 若要将数据复制到 Azure Blob 存储，请执行以下操作：
 
-1. 打开命令提示符，然后将目录切换到 AzCopy 安装目录。此命令可将你切换到 64 位 Windows 客户端上的默认安装目录。
+1. 打开命令提示符，然后将目录切换到 AzCopy 安装目录。 此命令可将你切换到 64 位 Windows 客户端上的默认安装目录。
    
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-2. 运行以下命令以上载该文件。指定 <blob service endpoint URL> 的 Blob 服务终结点 URL，以及 <azure\_storage\_account\_key> 的 Azure 存储帐户密钥。
+2. 运行以下命令以上载该文件。 指定 <blob service endpoint URL> 的 BLOB 服务终结点 URL，以及 <azure_storage_account_key> 的 Azure 存储帐户密钥。
    
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-另请参阅 [AzCopy 命令行实用程序入门][latest version of AzCopy]。
+另请参阅 [AzCopy 命令行实用程序入门][最新版本的 AzCopy]。
 
-### E.浏览 Blob 存储容器
+### <a name="e-explore-your-blob-storage-container"></a>E. 浏览 Blob 存储容器
 若要查看已上载到 Blob 存储的文件，请执行以下操作：
 
 1. 返回你的 Blob 服务边栏选项卡。
 2. 在“容器”下，双击“datacontainer”。
-3. 若要浏览数据的路径，请单击文件夹 **datedimension**，你将看到已上载的文件 **DimDate2.txt**。
+3. 若要浏览数据的路径，请单击文件夹 **datedimension**，然后将看到已上传的文件 **DimDate2.txt**。
 4. 若要查看属性，请单击“DimDate2.txt”。
 5. 请注意，在 Blob 属性边栏选项卡中，你可以下载或删除该文件。
    
     ![查看 Azure 存储 Blob](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
-## 步骤 2：为示例数据创建外部表
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>步骤 2：为示例数据创建外部表
 在本部分，我们将创建一个用于定义示例数据的外部表。
 
-PolyBase 使用外部表来访问 Azure Blob 存储中的数据。由于数据不是存储在 SQL 数据仓库中，PolyBase 将使用数据库范围的凭据来处理对外部数据的身份验证。
+PolyBase 使用外部表来访问 Azure Blob 存储中的数据。 由于数据不是存储在 SQL 数据仓库中，PolyBase 将使用数据库范围的凭据来处理对外部数据的身份验证。
 
 本步骤中的示例使用这些 Transact-SQL 语句来创建外部表。
 
-* [Create Master Key (TRANSACT-SQL)][Create Master Key (TRANSACT-SQL)]：加密数据库范围凭据的机密。
+* [Create Master Key (TRANSACT-SQL)][Create Master Key (Transact-SQL)]：加密数据库范围凭据的机密。
 * [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)]：指定 Azure 存储帐户的身份验证信息。
 * [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)]：指定 Azure Blob 存储的位置。
 * [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]：指定数据的格式。
 * [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)]：指定表定义和数据的位置。
 
-请针对你的 SQL 数据仓库数据库运行此查询。它将在 dbo 架构中创建指向 Azure Blob 存储中 DimDate2.txt 示例数据的、名为 DimDate2External 的外部表。
+请针对你的 SQL 数据仓库数据库运行此查询。 它将在 dbo 架构中创建指向 Azure Blob 存储中 DimDate2.txt 示例数据的、名为 DimDate2External 的外部表。
 
 ```sql
 -- A: Create a master key.
@@ -203,10 +207,10 @@ SELECT count(*) FROM dbo.DimDate2External;
 
 ![查看外部表](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
-## 步骤 3：将数据载入 SQL 数据仓库
+## <a name="step-3-load-data-into-sql-data-warehouse"></a>步骤 3：将数据载入 SQL 数据仓库
 创建外部表后，你可以将数据载入新表，或将其插入到现有表。
 
-* 若要将数据载入新表，请运行 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。新表将包含查询中指定的列。列的数据类型将与外部表定义中的数据类型匹配。
+* 若要将数据载入新表，请运行 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 新表将包含查询中指定的列。 列的数据类型将与外部表定义中的数据类型匹配。
 * 若要将数据载入现有表，请使用 [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] 语句。
 
 ```sql
@@ -222,8 +226,8 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-## 步骤 4：基于新加载的数据创建统计信息
-SQL 数据仓库不会自动创建或自动更新统计信息。因此，若要实现较高的查询性能，必须在首次加载后基于每个表的每个列创建统计信息。此外，在对数据做出重大更改后，必须更新统计信息。
+## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>步骤 4：基于新加载的数据创建统计信息
+SQL 数据仓库不会自动创建或自动更新统计信息。 因此，若要实现较高的查询性能，必须在首次加载后基于每个表的每个列创建统计信息。 此外，在对数据做出重大更改后，必须更新统计信息。
 
 本示例将基于新的 DimDate2 表创建单列统计信息。
 
@@ -233,42 +237,45 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-若要了解详细信息，请参阅[统计信息][统计信息]。
+若要了解详细信息，请参阅[统计信息][Statistics]。  
 
-## 后续步骤
-有关在开发使用 PolyBase 的解决方案时应了解的其他信息，请参阅 [PolyBase 指南][PolyBase 指南]。
+## <a name="next-steps"></a>后续步骤
+有关在开发使用 PolyBase 的解决方案时应了解的更多信息，请参阅 [PolyBase 指南][PolyBase guide]。
 
 <!--Image references-->
 
 
 <!--Article references-->
-[PolyBase in SQL Data Warehouse Tutorial]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[SQL 数据仓库中的 PolyBase 教程]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[使用 bcp 加载数据]: ./sql-data-warehouse-load-with-bcp.md
 [统计信息]: ./sql-data-warehouse-tables-statistics.md
 [PolyBase 指南]: ./sql-data-warehouse-load-polybase-guide.md
-[latest version of AzCopy]: ../storage/storage-use-azcopy.md
 [最新版本的 AzCopy]: ../storage/storage-use-azcopy.md
 
 <!--External references-->
-[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
-[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
+[受支持的源/接收器]: https://msdn.microsoft.com/library/dn894007.aspx
+[复制活动]: https://msdn.microsoft.com/library/dn835035.aspx
+[SQL Server 目标适配器]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 
-[Create External Data Source (Transact-SQL)]: https://msdn.microsoft.com/library/dn935022.aspx
-[Create External File Format (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026.aspx
-[Create External Table (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspx
+[CREATE EXTERNAL DATA SOURCE (Transact-SQL)]:https://msdn.microsoft.com/library/dn935022.aspx
+[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]:https://msdn.microsoft.com/library/dn935026.aspx
+[CREATE EXTERNAL TABLE (Transact-SQL)]:https://msdn.microsoft.com/library/dn935021.aspx
 
-[DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/mt146367.aspx
-[DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/mt146379.aspx
-[DROP EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/mt130698.aspx
+[DROP EXTERNAL DATA SOURCE (Transact-SQL)]:https://msdn.microsoft.com/library/mt146367.aspx
+[DROP EXTERNAL FILE FORMAT (Transact-SQL)]:https://msdn.microsoft.com/library/mt146379.aspx
+[DROP EXTERNAL TABLE (Transact-SQL)]:https://msdn.microsoft.com/library/mt130698.aspx
 
-[CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
-[INSERT...SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/ms174335.aspx
-[Create Master Key (TRANSACT-SQL)]: https://msdn.microsoft.com/library/ms174382.aspx
-[CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189522.aspx
-[Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
-[DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
+[CREATE TABLE AS SELECT (Transact-SQL)]:https://msdn.microsoft.com/library/mt204041.aspx
+[INSERT...SELECT (Transact-SQL)]:https://msdn.microsoft.com/library/ms174335.aspx
+[CREATE MASTER KEY (Transact-SQL)]:https://msdn.microsoft.com/library/ms174382.aspx
+[CREATE CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189522.aspx
+[CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/mt270260.aspx
+[DROP CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

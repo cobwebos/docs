@@ -1,12 +1,12 @@
 ---
-title: 将数据从 CSV 文件载入 Azure SQL 数据库 (bcp) | Microsoft Docs
-description: 对于较小的数据，请使用 bcp 将数据导入到 Azure SQL 数据库。
+title: "将数据从 CSV 文件载入 Azure SQL 数据库 (bcp) | Microsoft Docs"
+description: "对于较小的数据，请使用 bcp 将数据导入到 Azure SQL 数据库。"
 services: sql-database
 documentationcenter: NA
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,26 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 09/13/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8d6e201ba5fb8283d883272e0cb2b8e7c11f43e5
+
 
 ---
-# 将数据从 CSV 载入 Azure SQL 数据仓库（平面文件）
+# <a name="load-data-from-csv-into-azure-sql-data-warehouse-flat-files"></a>将数据从 CSV 载入 Azure SQL 数据仓库（平面文件）
 你可以使用 bcp 命令行实用程序将数据从 CSV 文件导入 Azure SQL 数据库。
 
-## 开始之前
-### 先决条件
+## <a name="before-you-begin"></a>开始之前
+### <a name="prerequisites"></a>先决条件
 若要逐步完成本教程，你需要：
 
 * Azure SQL 数据库逻辑服务器和数据库
 * 已安装 bcp 命令行实用工具
 * 已安装 sqlcmd 命令行实用工具
 
-可以从 [Microsoft 下载中心][Microsoft 下载中心]下载 bcp 和 sqlcmd 实用程序。
+可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用程序。
 
-### 采用 ASCII 或 UTF-16 格式的数据
-如果你使用自己的数据尝试学习本教程，则数据需要使用 ASCII 或 UTF-16 编码，因为 bcp 不支持 UTF-8。
+### <a name="data-in-ascii-or-utf16-format"></a>采用 ASCII 或 UTF-16 格式的数据
+如果你使用自己的数据尝试学习本教程，则数据需要使用 ASCII 或 UTF-16 编码，因为 bcp 不支持 UTF-8。 
 
-## 1\.创建目标表
-将 SQL 数据库中的表定义为目标表。该表中的列必须对应于数据文件每一行中的数据。
+## <a name="1-create-a-destination-table"></a>1.创建目标表
+将 SQL 数据库中的某个表定义为目标表。 该表中的列必须对应于数据文件每一行中的数据。
 
 若要创建表，请打开命令提示符并使用 sqlcmd.exe 运行以下命令：
 
@@ -50,8 +54,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## 2\.创建源数据文件
-打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\\Temp\\DimDate2.txt。此数据采用 ASCII 格式。
+## <a name="2-create-a-source-data-file"></a>2.创建源数据文件
+打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
 
 ```
 20150301,1,3
@@ -68,13 +72,13 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 20150101,1,3
 ```
 
-（可选）若要从 SQL Server 数据库导出自己的数据，请打开命令提示符并运行以下命令。将 TableName、ServerName、DatabaseName、Username 和 Password 替换为你自己的信息。
+（可选）若要从 SQL Server 数据库导出自己的数据，请打开命令提示符并运行以下命令。 将 TableName、ServerName、DatabaseName、Username 和 Password 替换为你自己的信息。
 
 ```sql
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
 ```
 
-## 3\.加载数据
+## <a name="3-load-the-data"></a>3.加载数据
 若要加载数据，请打开命令提示符并运行以下命令，请注意将 Server Name、Database Name、Username 和 Password 替换为你自己的信息。
 
 ```sql
@@ -104,14 +108,18 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 若要迁移 SQL Server 数据库，请参阅 [SQL Server 数据库迁移](sql-database-cloud-migrate.md)。
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE 语法]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
 [Microsoft 下载中心]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

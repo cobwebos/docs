@@ -1,40 +1,44 @@
 ---
-title: 使用 Java 按需传送内容入门 | Microsoft Docs
-description: 介绍如何使用 Azure 媒体服务执行编码、加密和流式处理资源等常见任务。
+title: "使用 Java 按需交付内容入门 | Microsoft Docs"
+description: "介绍如何使用 Azure 媒体服务执行编码、加密和流式处理资源等常见任务。"
 services: media-services
 documentationcenter: java
-author: rmcmurray
-manager: wpickett
-editor: jimbe
-
+author: juliako
+manager: erikre
+editor: 
+ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: java
 ms.topic: get-started-article
-ms.date: 08/17/2016
-ms.author: robmcm
+ms.date: 10/19/2016
+ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+
 
 ---
-# 使用 Java 按需传送内容入门
+# <a name="get-started-with-delivering-content-on-demand-using-java"></a>使用 Java 按需传送内容入门
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## 针对媒体服务设置 Azure 帐户
-若要设置你的媒体服务帐户，请使用 Azure 经典门户。请参阅主题[如何创建媒体服务帐户](media-services-create-account.md)。在 Azure 经典门户中创建帐户后，可以设置你的计算机以进行媒体服务开发。
+## <a name="setting-up-an-azure-account-for-media-services"></a>针对媒体服务设置 Azure 帐户
+若要设置你的媒体服务帐户，请使用 Azure 经典门户。 请参阅主题[如何创建媒体服务帐户](media-services-portal-create-account.md)。 在 Azure 经典门户中创建帐户后，可以设置你的计算机以进行媒体服务开发。
 
-## 完成设置以进行媒体服务开发
+## <a name="setting-up-for-media-services-development"></a>完成设置以进行媒体服务开发
 本部分介绍使用用于 Java 的媒体服务 SDK 进行媒体服务开发需要满足的一般性先决条件。
 
-### 先决条件
-* 在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。请参阅主题[如何创建媒体服务帐户](media-services-create-account.md)。
-* 适用于 Java 的 Azure 库，可以从 [Azure Java 开发人员中心][Azure Java 开发人员中心]安装。
+### <a name="prerequisites"></a>先决条件
+* 在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。 请参阅主题[如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* 适用于 Java 的 Azure 库，可以从 [Azure Java 开发人员中心][Azure Java Developer Center]安装。
 
-## 如何：将媒体服务与 Java 配合使用
+## <a name="how-to-use-media-services-with-java"></a>如何：将媒体服务与 Java 配合使用
 以下代码演示了如何创建资产、将媒体文件上载到该资产、使用任务运行某个作业以转换该资产，以及创建定位符流式传输视频。
 
-在使用此代码之前，需要设置一个媒体服务帐户。有关设置帐户的信息，请参阅[如何创建媒体服务帐户](media-services-create-account.md)。
+在使用此代码之前，需要设置一个媒体服务帐户。 有关设置帐户的信息，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 
-将“clientId”和“clientSecret”变量替换为你自己的值。该代码还依赖于本地存储的文件。你需要提供自己的文件以供使用。
+将“clientId”和“clientSecret”变量替换为你自己的值。 该代码还依赖于本地存储的文件。 你需要提供自己的文件以供使用。
 
     import java.io.*;
     import java.security.NoSuchAlgorithmException;
@@ -63,7 +67,6 @@ ms.author: robmcm
     import com.microsoft.windowsazure.services.media.models.MediaProcessor;
     import com.microsoft.windowsazure.services.media.models.MediaProcessorInfo;
     import com.microsoft.windowsazure.services.media.models.Task;
-
 
     public class HelloMediaServices
     {
@@ -178,8 +181,8 @@ ms.author: robmcm
             // Create a task with the specified Media Processor
             String outputAssetName = String.format("%s as %s", assetToEncode.getName(), encodingPreset);
             String taskXml = "<taskBody><inputAsset>JobInputAsset(0)</inputAsset>"
-                    + "<outputAsset assetCreationOptions="0"" // AssetCreationOptions.None
-                    + " assetName="" + outputAssetName + "">JobOutputAsset(0)</outputAsset></taskBody>";
+                    + "<outputAsset assetCreationOptions=\"0\"" // AssetCreationOptions.None
+                    + " assetName=\"" + outputAssetName + "\">JobOutputAsset(0)</outputAsset></taskBody>";
 
             Task.CreateBatchOperation task = Task.create(mediaProcessor.getId(), taskXml)
                     .setConfiguration(encodingPreset).setName("Encoding");
@@ -250,21 +253,23 @@ ms.author: robmcm
     }
 
 
-## 媒体服务学习路径
+## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## 提供反馈
+## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## 其他资源
-有关媒体服务 Javadoc 文档，请参阅[适用于 Java 的 Azure 库文档][适用于 Java 的 Azure 库文档]。
+## <a name="additional-resources"></a>其他资源
+有关媒体服务 Javadoc 文档，请参阅[适用于 Java 的 Azure 库文档][Azure Libraries for Java documentation]。
 
 <!-- URLs. -->
 
 [Azure Java 开发人员中心]: http://azure.microsoft.com/develop/java/
 [适用于 Java 的 Azure 库文档]: http://dl.windowsazure.com/javadoc/
-[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+[媒体服务客户端开发]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
 
 
-<!---HONumber=AcomDC_0921_2016-->
+<!--HONumber=Nov16_HO2-->
+
+
