@@ -1,7 +1,11 @@
 > [!div class="op_single_selector"]
 > * [.NET](../articles/media-services/media-services-dotnet-connect-programmatically.md)
-> * [REST API](../articles/media-services/media-services-rest-connect_programmatically.md)
+> * [REST API](../articles/media-services/media-services-rest-connect-programmatically.md)
 > 
 > 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+
