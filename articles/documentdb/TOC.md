@@ -81,7 +81,7 @@
 ### [使用 Power BI 直观显示数据](documentdb-powerbi-visualize.md)
 
 
-# 引用
+# 参考
 ## [.NET SDK](documentdb-sdk-dotnet.md)
 ## [.NET 示例](documentdb-dotnet-samples.md)
 ## [Java SDK](documentdb-sdk-java.md)
@@ -96,8 +96,10 @@
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/documentdb/)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-documentdb)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-documentdb)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=documentdb) 
+## [服务更新](https://azure.microsoft.com/updates/?product=documentdb) 
 ## [询问 DocumentDB](documentdb-community.md#contact-the-team)
 ## [社区门户](documentdb-community.md)
 ## [活动和录像](documentdb-community.md#events-and-recordings)

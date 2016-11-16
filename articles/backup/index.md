@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Backup Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 50a8865afe60b47b094e3fa64ab622c229a8a4a4
+ms.openlocfilehash: fc7e57b12158c34b2ee0de334f1b08469765f39d
 
-Azure Backup is cloud service you can use to back up (or protect) and restore your data in the Microsoft cloud.  Azure Backup replaces your existing on-premises or off-site backup solution with a cloud-based solution that is reliable, secure, and cost-competitive.  
+---
+#<a name="backup-documentation"></a>备份文档
+
+Azure 备份是一个云服务，可用于在 Microsoft 云中备份（或保护）和还原数据。  Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。  
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Backup</h3>
+                        <h3>了解 Azure 备份</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Backup Video Library</h3>
+                        <h3>Azure 备份视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started backing up files and folders with Azure Backup</h3>
+                        <h3>开始使用 Azure 备份来备份文件和文件夹</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started backing up Azure virtual machines with Azure Backup</h3>
+                        <h3>开始使用 Azure 备份来备份 Azure 虚拟机</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started protecting Azure virtual machines with Azure Backup</h3>
+                        <h3>开始使用 Azure 备份保护 Azure 虚拟机</h3>
                     </div>
                 </div>
             </div>
@@ -100,19 +104,24 @@ Azure Backup is cloud service you can use to back up (or protect) and restore yo
 
 ---
 
-##Reference
+##<a name="reference"></a>参考
 
-###.NET
-[.NET Managed Reference](/dotnet/api)
+###<a name="net"></a>.NET
+[.NET 托管参考](/dotnet/api)
 
-###REST
-[Backup REST API Reference](/rest/api/recoveryservices)
+###<a name="rest"></a>REST
+[备份 REST API 参考](/rest/api/recoveryservices)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/backup.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Azure Backup Documentation
-        </div>
+下载 Azure 备份文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

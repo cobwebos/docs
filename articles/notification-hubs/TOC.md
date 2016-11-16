@@ -1,4 +1,5 @@
-# [概述](notification-hubs-push-notification-overview.md)
+# 概述
+## [什么是 Azure 通知中心](notification-hubs-push-notification-overview.md)
 # 入门
 ## [Android (FCM)](notification-hubs-android-push-notification-google-fcm-get-started.md)
 ## [百度](notification-hubs-baidu-china-android-notifications-get-started.md)
@@ -9,9 +10,9 @@
 ## [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)
 ## [Xamarin.Android](xamarin-notification-hubs-push-notifications-android-gcm.md)
 ## [Xamarin.iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)
+## [常见问题](notification-hubs-push-notification-faq.md)
 
 # 如何
-
 ## 规划和设计
 ### [企业推送架构指南](notification-hubs-enterprise-push-notification-architecture.md)
 
@@ -48,24 +49,26 @@
 ### 安全推送
 #### [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 #### [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
-#### [Windowsh](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
-
-
+#### [Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 
 ## 自动化
 ### [使用 PowerShell 部署和管理通知中心](notification-hubs-deploy-and-manage-powershell.md)
 ### [发送预定通知](notification-hubs-send-push-notifications-scheduled.md)
 
-
 ## 故障排除
 ### [诊断指南](notification-hubs-push-notification-fixer.md)
 
-# 引用
-
-# 相关内容
+# 参考
+## [PowerShell cmdlets](/powershell/resourcemanager/)
+## [.NET](/dotnet/api/)
+## [REST](/rest/api/notificationhubs/)
 
 # 资源
-## [常见问题](notification-hubs-push-notification-faq.md)
+## [定价](https://azure.microsoft.com/pricing/details/notification-hubs/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-notificationhub)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=notification-hubs)
+## [服务更新](https://azure.microsoft.com/updates/?product=notification-hubs)
 
 
 <!--HONumber=Nov16_HO2-->

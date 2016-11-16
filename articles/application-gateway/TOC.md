@@ -37,23 +37,27 @@
 ### [门户](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
-### 管理
+## 管理
 ### [诊断](application-gateway-diagnostics.md)
 ### [故障排除](application-gateway-troubleshooting-502.md)
-# 引用
-## [Resource Manager API](https://msdn.microsoft.com/library/azure/mt684941)
-## [服务管理 API](https://msdn.microsoft.com/library/azure/mt299393)
-## [PowerShell cmdlets](https://go.microsoft.com/fwlink/p/?LinkId=536407)
+# 参考
+## [PowerShell cmdlets](https://docs.microsoft.com/powershell/resourcemanager)
+## [REST](https://msdn.microsoft.com/library/mt684941)
+## [经典 REST](https://msdn.microsoft.com/library/azure/mt299393)
+
 # 相关内容
-## [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)
-## [虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN 网关](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
-## [流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
+## [ExpressRoute](/azure/expressroute/)
+## [虚拟网络](/azure/virtual-network/)
+## [VPN 网关](/azure/vpn-gateway/)
+## [虚拟机](/azure/virtual-machines/)
+## [负载均衡器](/azure/load-balancer/)
+## [流量管理器](/azure/traffic-manager/)
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/application-gateway/)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-application-gateway)  
+## [服务更新](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
+
 
 <!--HONumber=Nov16_HO2-->
 

@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Azure Web Apps Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 29794682e0258a6d30c9b2ac96b6e58272bc3f48
+ms.openlocfilehash: 97a0f22bf72b30e6adc92e9b8d7e58a25e67c14b
 
-App Service Web Apps is a fully managed compute platform that is optimized for hosting websites and web applications. This platform-as-a-service (PaaS) offering of Microsoft Azure lets you focus on your business logic while Azure takes care of the infrastructure to run and scale your apps.
+---
+# <a name="azure-web-apps-documentation"></a>Azure Web 应用文档
+
+应用服务 Web 应用是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 使用 Microsoft Azure 提供的这个平台即服务 (PaaS) 产品，可以在 Azure 维护用于运行和扩展应用的基础结构时重点关注业务逻辑。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Web Apps</h3>
+                        <h3>了解 Web 应用</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Web Apps (Video)</h3>
+                        <h3>Web 应用入门（视频）</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Web Apps Video Library</h3>
+                        <h3>Web 应用视频库</h3>
                     </div>
                 </div>
             </div>
@@ -71,25 +75,43 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using ASP.NET and Visual Studio</h3>
+                        <h3>使用 Visual Studio 创建 ASP.NET Web 应用</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li> 
-     <li>
-        <a href="/azure/app-service-web/web-sites-java-get-started">
+    </li>
+    <li>
+        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/java.svg" alt="" />
+                            <img src="media/index/dotnet.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using Java</h3>
+                        <h3>使用 Visual Studio 创建 ASP.NET Web 应用</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/dotnet.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>使用 Visual Studio 创建 ASP.NET Web 应用</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +129,7 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Web Apps using Node.js </h3>
+                        <h3>Azure 应用服务中的 Node.js Web 应用入门</h3>
                     </div>
                 </div>
             </div>
@@ -125,26 +147,25 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using Python Tools 2.2</h3>
+                        <h3>使用 Python 工具 2.2 创建 Web 应用</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-   
-     <li>
-        <a href="/azure/app-service-web/app-service-web-php-get-started">
+    <li>
+        <a href="/azure/app-service-web/web-sites-java-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/java.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Web Apps using PHP</h3>
+                        <h3>在 Azure 应用服务中创建 Java Web 应用</h3>
                     </div>
                 </div>
             </div>
@@ -162,37 +183,58 @@ App Service Web Apps is a fully managed compute platform that is optimized for h
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with WordPress in Azure App Service</h3>
+                        <h3>在 Azure 应用服务中创建 WordPress Web 应用</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-   
+    <li>
+        <a href="/azure/app-service-web/app-service-web-php-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>创建、配置 PHP Web 应用并将其部署到 Azure</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
 
 ---
 
-## Reference
+## <a name="reference"></a>参考
 
-### Azure CLI
-[Web Apps Azure CLI Reference](/cli/azure/appservice/web)
+### <a name="azure-cli"></a>Azure CLI
+[Web 应用 AzureCLI 参考](/cli/azure/)
 
-### Java
-[Java API Reference](/java/api/)
+### <a name="java"></a>Java
+[Web 应用 Java API 参考](/java/api/)
 
-### .NET
-[.NET Managed Reference](/dotnet/api)
+### <a name="net"></a>.NET
+[Web 应用托管参考](/dotnet/api)
 
-### REST
-[Web Apps REST API Reference](/rest/api/appservice)
+### <a name="rest"></a>REST
+[Web 应用 REST API 参考](/rest/api/appservice)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-web.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Web Apps Documentation
-        </div>
+下载 Web 应用文档 </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO2-->
+
+

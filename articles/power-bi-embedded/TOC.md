@@ -5,8 +5,9 @@
 # 入门
 ## [Power BI Embedded 入门](power-bi-embedded-get-started.md)
 ## [示例入门](power-bi-embedded-get-started-sample.md)
+## [常见问题](power-bi-embedded-faq.md)
 
-# 如何 
+# 如何
 ## 规划和设计
 ### [常见方案](power-bi-embedded-scenarios.md)
 
@@ -20,19 +21,17 @@
 ### [Power BI Embedded 的行级别安全性](power-bi-embedded-rls.md)
 
 # 引用
-## [.NET API 引用](https://msdn.microsoft.com/en-us/library/azure/mt669800)
-## [JavaScript SDK](https://github.com/Microsoft/PowerBI-JavaScript)
-## [REST API 引用](https://msdn.microsoft.com/en-us/library/azure/mt712303)
+## [PowerShell](/powershell/resourcemanager/)
+## [.NET](/dotnet/api/)
 ## [.NET SDK 下载](https://www.nuget.org/profiles/powerbi)
+## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
+## [REST](/rest/api/powerbiembedded/)
 
-# 相关内容 
 
 # 资源
-## [常见问题](power-bi-embedded-faq.md)
 ## [示例](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Power BI 社区](http://community.powerbi.com/t5/Developer/bd-p/Developer)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
-
 
 
 <!--HONumber=Nov16_HO2-->

@@ -1,7 +1,7 @@
 # 概述
-## [批处理基础知识](batch-technical-overview.md)
-## [批处理功能概述](batch-api-basics.md)
-## [批处理配额和限制](batch-quota-limit.md)
+## [什么是 Azure 批处理](batch-technical-overview.md)
+## [功能概述](batch-api-basics.md)
+## [配额和限制](batch-quota-limit.md)
 # 入门
 ## [创建批处理帐户](batch-account-create-portal.md)
 ## [批处理 .NET 教程](batch-dotnet-get-started.md)
@@ -20,26 +20,32 @@
 ### [任务依赖项](batch-task-dependencies.md)
 ### [用于批处理的 Visual Studio 项目模板](batch-visual-studio-templates.md)
 ## 管理
-### [批处理 CLI](batch-cli-get-started.md)
-### [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
+### [批处理 PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
+### [Azure CLI](batch-cli-get-started.md)
 ### [批处理诊断日志](batch-diagnostics.md)
-# 引用
-## [批处理 REST API 参考](https://go.microsoft.com/fwlink/p/?linkid=833492)
-## [批处理 .NET 参考](https://go.microsoft.com/fwlink/p/?linkid=833494)
-## [批处理 Python 参考](https://go.microsoft.com/fwlink/p/?linkid=833496)
-## [批处理 Node.js 参考](https://go.microsoft.com/fwlink/p/?linkid=833544)
-## [批处理 Java 参考](https://go.microsoft.com/fwlink/p/?linkid=833497)
-## [批处理管理 .NET 参考](https://go.microsoft.com/fwlink/p/?linkid=833498)
-## [批处理 PowerShell 参考](https://go.microsoft.com/fwlink/p/?linkid=833500)
+
+# 参考
+## [PowerShell cmdlets](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/)
+## [Java](https://docs.microsoft.com/java/api)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [Python SDK](https://go.microsoft.com/fwlink/p/?linkid=833496)
+## [Node.js](https://go.microsoft.com/fwlink/p/?linkid=833544)
+## [REST](https://docs.microsoft.com/rest/api/batchservice/)
+
 # 相关内容
-## [Azure 云中的 Batch 和 HPC 解决方案](batch-hpc-solutions.md)
+## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
+## [Azure 云中的批处理和 HPC 解决方案](batch-hpc-solutions.md)
 ## [Azure 中的大型计算：技术资源](big-compute-resources.md)
+
 # 资源
-## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)）
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=azurebatch)
+## [定价](https://azure.microsoft.com/pricing/details/batch/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-batch)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=batch)
+## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [批处理 C# 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [批处理 Python 代码示例](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-## [批处理 Shipyard](https://github.com/Azure/batch-shipyard)
+
 
 
 <!--HONumber=Nov16_HO2-->

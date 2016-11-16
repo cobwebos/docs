@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Storage Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
+ms.openlocfilehash: 34ead7be5278478047f8c6e56c56dfb977ca1d7c
 
-Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers.  It is highly scalable, elastic, globally accessible, and automatically load-balances your data based on traffic.  Azure Storage provides the following four services to meet application needs:  Blob storage, Table storage, Queue storage, and File storage.
+---
+#<a name="storage-documentation"></a>存储文档
+
+Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。  它具有高度可伸缩、弹性和全球可访问性，可以自动根据流量对数据进行负载均衡。  Azure 存储提供以下四项服务来满足应用程序的需求：Blob 存储、表存储、队列存储和文件存储。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Storage</h3>
+                        <h3>了解 Azure 存储</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Storage Video Library</h3>
+                        <h3>Azure 存储视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Storage</h3>
+                        <h3>存储入门</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Storage account</h3>
+                        <h3>创建存储帐户</h3>
                     </div>
                 </div>
             </div>
@@ -82,23 +86,23 @@ Azure Storage is the cloud storage solution for modern applications that rely on
 
 ---
 
-##Reference
+##<a name="reference"></a>参考
 
-###PowerShell
+###<a name="powershell"></a>PowerShell
 [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-###Azure CLI 
-[Storage using Azure CLI Reference](/cli/azure/storage)
+###<a name="azure-cli"></a>Azure CLI 
+[有关在 Azure CLI 中使用存储的参考](/cli/azure/storage)
 
-###Java 
-[Storage in Java Reference](/java/api/)
+###<a name="java"></a>Java 
+[Java 中的存储参考](/java/api/)
 
-###.NET 
-[Storage Managed Reference API](https://msdn.microsoft.com/library/azure/mt347887) 
+###<a name="net"></a>.NET 
+[存储托管参考 API](https://msdn.microsoft.com/library/azure/mt347887) 
 
-###REST 
-[Storage REST API Reference](/rest/api/storageservices) 
-[Storage Resource Provider REST API Reference](/rest/api/storagerp)  
+###<a name="rest"></a>REST 
+[存储 REST API 参考](/rest/api/storageservices) 
+[存储资源提供程序 REST API 参考](/rest/api/storagerp)  
 
 
 
@@ -108,7 +112,12 @@ Azure Storage is the cloud storage solution for modern applications that rely on
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Storage Documentation
-        </div>
+下载存储文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

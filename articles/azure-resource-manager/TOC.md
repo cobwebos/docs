@@ -1,5 +1,5 @@
 # 概述
-## [Resource Manager 概述](resource-group-overview.md)
+## [什么是 Resource Manager？](resource-group-overview.md)
 ## [支持的服务、区域和 API 版本](../resource-manager-supported-services.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [了解 Resource Manager 部署和经典部署](../resource-manager-deployment-model.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [出于合规目的监管订阅](../resource-manager-subscription-governance.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -11,7 +11,7 @@
 ## [VS 代码与 Resource Manager](../resource-manager-vs-code.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 # 如何
-## 模板
+## 创建模板
 ### [模板最佳实践](../resource-manager-template-best-practices.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [创作模板](../resource-group-authoring-templates.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [模板函数](../resource-group-template-functions.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -51,13 +51,22 @@
 ### [使用 PowerShell 查看部署操作](../resource-manager-troubleshoot-deployments-powershell.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [使用 Azure CLI 查看部署操作](../resource-manager-troubleshoot-deployments-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [使用 REST API 查看部署操作](../resource-manager-troubleshoot-deployments-rest.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-# 引用
+# 参考
+## [PowerShell cmdlets](/powershell/azureps-cmdlets-docs/)
+## [Azure CLI](/cli/azure)
+## [Java](/java/api)
+## [.NET API](/dotnet/api)
 ## [模板架构](https://github.com/Azure/azure-resource-manager-schemas)
-## [Resource Manager PowerShell cmdlet](https://msdn.microsoft.com/library/dn757692(v=azure.200).aspx)
-## [Resource Manager REST API](https://msdn.microsoft.com/en-us/library/azure/dn790568)
-## [Resource Manager .NET 客户端库](https://msdn.microsoft.com/en-us/library/azure/mt418626)
+## [Resource Manager PowerShell cmdlet](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
+## [Resource Manager REST API](/rest/api/resources/)
+## [Resource Manager .NET 客户端库](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [限制请求](../resource-manager-request-limits.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [REST](/rest/api/resources/)
 
+# 资源
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
+## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager) 
 
 <!--HONumber=Nov16_HO2-->
 

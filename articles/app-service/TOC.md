@@ -1,5 +1,6 @@
-# [概述](app-service-how-works-readme.md)
+# 概述
 ## [什么是应用服务](app-service-value-prop-what-is.md)
+## [工作原理](app-service-how-works-readme.md)
 ## [应用服务计划](azure-web-sites-web-hosting-plans-in-depth-overview.md)
 
 # 入门
@@ -30,7 +31,7 @@
 # 如何
 
 ## 规划和设计
-### [Azure 应用服务的最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [Azure 应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Azure 应用服务和现有的 Azure 服务](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [应用服务计划深入介绍](azure-web-sites-web-hosting-plans-in-depth-overview.md)
 ### [高密度托管](app-service-high-density-hosting.md)
@@ -93,7 +94,7 @@
 #### [使用 ExpressRoute 时的网络配置详细信息](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ## [安全](app-service-security-readme.md)
-### [在 Azure 应用服务中保护应用](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [在 Azure 应用服务中保护应用安全](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [身份验证和授权](app-service-authentication-overview.md)
 ### 使用标识提供者进行身份验证
 #### [Azure Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -144,20 +145,19 @@
 ### [流式传输日志和控制台](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [使用 Visual Studio 进行排除故障](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
-# 引用
+# 参考
 ## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [应用服务参考](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [WebJob 资源](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)
-
-# 相关内容
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+## [REST](https://docs.microsoft.com/rest/api/appservice/)
 
-
-
-
-
-
+# 资源
+## [定价](https://azure.microsoft.com/pricing/details/app-service/)  
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
+## [服务更新](https://azure.microsoft.com/updates/?product=app-service) 
 
 <!--HONumber=Nov16_HO2-->
 

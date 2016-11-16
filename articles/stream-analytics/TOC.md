@@ -1,6 +1,6 @@
 # 概述
 ## [什么是流分析？](stream-analytics-introduction.md)
-## [流分析学习路径](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [Storm 与流分析的比较](stream-analytics-comparison-storm.md)
 
 # 入门
 ## [处理 IoT 流数据](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
@@ -8,12 +8,12 @@
 
 # 如何
 
-## 流式处理解决方案
-### [构建 IoT 解决方案](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
-### [社交媒体分析](stream-analytics-twitter-sentiment-analysis-trends.md)
-### [使用使用 Power BI 分析传感器数据]https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
+## 构建流式处理解决方案
+### [物联网](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
+### [社交媒体](stream-analytics-twitter-sentiment-analysis-trends.md)
+### [使用 Power BI 分析传感器数据](https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
 ### [使用机器学习实现实时评分](stream-analytics-machine-learning-integration-tutorial.md)
-### [引用基础结构：实时事件处理](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [实时事件处理](stream-analytics-real-time-event-processing-reference-architecture.md)
 
 ## 开发
 ### [通用查询模式](stream-analytics-stream-analytics-query-patterns.md)
@@ -39,18 +39,22 @@
 ## 自动化
 ### [一键式 PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
-# 引用
+# 参考
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [.NET](/dotnet/api/)
 ## [查询语言](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST API](https://msdn.microsoft.com/library/azure/dn835031)
-## [PowerShell](https://msdn.microsoft.com/library/azure/mt270341)
-## [.NET SDK](https://msdn.microsoft.com/library/azure/mt416896)
-## [Storm 与流分析的比较](stream-analytics-comparison-storm.md)
+## [REST](/rest/api/streamanalytics/)
 ## [发行说明](stream-analytics-release-notes.md)
+
 # 资源
-## [MSDN 博客](http://blogs.msdn.com/b/streamanalytics/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
+## [学习路径](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [定价](https://azure.microsoft.com/pricing/details/stream-analytics/)
+## [博客](http://blogs.msdn.com/b/streamanalytics/)
+## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [反馈论坛](http://feedback.azure.com/forums/270577-azure-stream-analytics)
+## [服务更新](https://azure.microsoft.com/updates/?product=stream-analytics)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
 <!--HONumber=Nov16_HO2-->

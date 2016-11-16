@@ -127,28 +127,32 @@
 ### [分析](app-insights-analytics-troubleshooting.md)
 ### [Java](app-insights-java-troubleshoot.md)
 
-# 引用
-
+# 参考
+## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [分析](app-insights-analytics-reference.md)
 ## [采样](app-insights-sampling.md)
 ## [IP 地址](app-insights-ip-addresses.md)
 ## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ## [导出数据模型](app-insights-export-data-model.md)
-## [REST API](https://dev.applicationinsights.io/)
-## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [Java SDK API](http://dl.windowsazure.com/applicationinsights/javadoc/)
 ## [从 Azure 终结点监视迁移至可用性测试](app-insights-migrate-azure-endpoint-tests.md)
 ## [开发人员分析：语言、平台和集成](app-insights-platforms.md)
 ### [示例和演练](app-insights-code-samples.md)
-
 #### [演练：为 Microsoft Dynamics CRM Online 启用遥测](app-insights-sample-mscrm.md)
 #### [演练：使用流分析导出到 SQL](app-insights-code-sample-export-sql-stream-analytics.md)
 #### [代码示例：分析导出的数据](app-insights-code-sample-export-telemetry-sql-database.md)
 ## [用于 Windows Phone 和应用商店的 Application Insights SDK 发行说明](app-insights-release-notes-windows.md)
 ## [开发人员分析工具发行说明](app-insights-release-notes-vsix.md)
 ## [SDK 发行说明 - Application Insights](app-insights-release-notes.md)
+## [REST API](https://dev.applicationinsights.io/)
 
 # 资源
+## [定价](https://azure.microsoft.com/pricing/details/application-insights/)  
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/az-application-insights)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=application-insights) 
+## [服务更新](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
 ## [支持](app-insights-get-dev-support.md)
 
 

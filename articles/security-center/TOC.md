@@ -1,17 +1,14 @@
 # 概述
 ## [什么是 Azure 安全中心？](security-center-intro.md)
-## [服务概述](https://azure.microsoft.com/services/security-center/)
-## [定价](security-center-pricing.md)
-## [常见问题](security-center-faq.md)
 ## [使用 Power BI 获取见解](security-center-powerbi.md)
 ## [数据安全](security-center-data-security.md)
-## 常见方案
+## 方案
 ### [事件响应](security-center-incident-response.md)
 
 # 入门
 ## [快速入门](security-center-get-started.md)
 ## [规划和操作](security-center-planning-and-operations-guide.md)
-## [安全中心和 SQL 数据库](security-center-sql-database.md)
+## [常见问题](security-center-faq.md)
 
 # 如何
 
@@ -55,14 +52,18 @@
 ## 故障排除
 ### [故障排除指南](security-center-troubleshooting-guide.md)
 
-# 引用
+# 参考
 ## [REST API](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
 
 # 相关内容
-## [Azure 安全信息](../security/azure-security-getting-started.md)
+## [Azure 安全性](/azure/security/)
 
 # 资源
 ## [Azure 安全性、隐私性与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
+## [定价](security-center-pricing.md)
+## [服务概述](https://azure.microsoft.com/services/security-center/)
+## [服务更新](https://azure.microsoft.com/updates/?product=security-center)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
 
 
 <!--HONumber=Nov16_HO2-->

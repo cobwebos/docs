@@ -66,13 +66,18 @@
 ### [常见错误疑难解答](automation-troubleshooting-automation-errors.md)
 ### [Runbook 作业已挂起](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
 
-# 引用
+# 参考
 ## [发行说明](https://azure.microsoft.com/updates/?product=automation)
 ## [PowerShell cmdlets](https://msdn.microsoft.com/library/azure/dn690262)
 ## [资源管理器 REST API](https://msdn.microsoft.com/library/azure/mt662285.aspx)
 ## [经典部署 Rest](https://msdn.microsoft.com/library/azure/mt163781)
 
 # 资源
+## [定价](https://azure.microsoft.com/pricing/details/automation/)  
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-automation)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
+## [服务更新](https://azure.microsoft.com/updates/?product=automation) 
 ## [Azure 自动化培训](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [自动化简介视频](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)

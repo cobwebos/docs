@@ -1,11 +1,15 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 472f14b049093920b43ef249b0286d78b2fbbece
+ms.openlocfilehash: 48030ab29d18b0963f1770732761a464abaed446
+
 ---
-# Media Services Documentation
+# <a name="media-services-documentation"></a>媒体服务文档
 
-Azure Media Services is an extensible cloud-based platform that enables developers to build scalable media management and delivery applications. Media Services is based on REST APIs that enable you to securely upload, store, encode and package video or audio content for both on-demand and live streaming delivery to various clients (for example, TV, PC, and mobile devices).
+Azure 媒体服务是一个可扩展的基于云的平台，开发人员可以使用它来构建可缩放的媒体管理与传送应用程序。 媒体服务基于 REST API，可以使用这些 API 安全上载、存储、编码和打包视频或音频内容，供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
-You can build end-to-end workflows entirely using Media Services. You can also choose to use third-party components for some parts of your workflow. For example, you can encode using a third-party encoder and then upload, protect, package, and deliver using Media Services.
+可以完全使用媒体服务构建端到端工作流。 也可以选择使用第三方组件来构建工作流的某些组成部分。 例如，可以使用第三方编码器进行编码，然后使用媒体服务上载、保护、打包和传送内容。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -19,7 +23,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Media Services</h3>
+                        <h3>了解媒体服务</h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +41,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Media Services Video Library</h3>
+                        <h3>媒体服务视频库</h3>
                     </div>
                 </div>
             </div>
@@ -55,7 +59,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Azure Media Services using the Azure Portal</h3>
+                        <h3>通过 Azure 门户开始使用 Azure 媒体服务</h3>
                     </div>
                 </div>
             </div>
@@ -73,7 +77,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Azure Media Services account using the Azure Portal</h3>
+                        <h3>使用 Azure 门户创建 Azure 媒体服务帐户</h3>
                     </div>
                 </div>
             </div>
@@ -91,7 +95,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started delivering content using the Azure Portal</h3>
+                        <h3>使用 Azure 门户开始传送内容</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +112,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started delivering content on demand using .NET</h3>
+                        <h3>使用 .NET 开始传送点播内容</h3>
                     </div>
                 </div>
             </div>
@@ -126,7 +130,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started delivering content on demand using Java</h3>
+                        <h3>使用 Java 开始传送点播内容</h3>
                     </div>
                 </div>
             </div>
@@ -144,7 +148,7 @@ You can build end-to-end workflows entirely using Media Services. You can also c
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started delivering content on demand using REST</h3>
+                        <h3>使用 REST 开始传送点播内容</h3>
                     </div>
                 </div>
             </div>
@@ -155,22 +159,27 @@ You can build end-to-end workflows entirely using Media Services. You can also c
 
 ---
 
-## Reference
+## <a name="reference"></a>参考
 
-### PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs/)
+### <a name="powershell"></a>PowerShell
+[Azure PowerShell 参考](/powershell/azureps-cmdlets-docs/)
 
-### .NET
-[.NET Managed Reference API](/dotnet/api/)
+### <a name="net"></a>.NET
+[.NET 托管参考 API](/dotnet/api/)
 
-### REST
-[Media Services REST API Reference](/rest/api/media/)
+### <a name="rest"></a>REST
+[媒体服务 REST API 参考](/rest/api/media/)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/media-services.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Media Services Documentation
-        </div>
+下载媒体服务文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

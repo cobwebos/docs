@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#SQL Database Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: edfc23605c738fbe8aac99c0db89c6f588a09d60
+ms.openlocfilehash: 85bf943fb28348a17e609fff506dddf855b28dfa
 
-Azure SQL Database is a relational database service in the cloud with mission-critical capabilities based on the Microsoft SQL Server engine. It delivers predictable performance, scalability with no downtime, business continuity and data protection - all with minimal administration. Because it's based on the SQL Server engine, SQL Database supports existing SQL Server tools, libraries, and APIs, making it easier to move and extend to the cloud.
+---
+#<a name="sql-database-documentation"></a>SQL 数据库文档
+
+Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQL Server 引擎的任务关键型功能。 SQL 数据库提供可预测的性能、不停机缩放能力、业务连续性和数据保护功能，并且所需的管理工作量极少。 SQL 数据库基于 SQL Server 引擎，因此支持现有的 SQL Server 工具、库和 API，可以更轻松地移动和扩展到云中。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -17,7 +21,7 @@ Azure SQL Database is a relational database service in the cloud with mission-cr
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure SQL Database</h3>
+                        <h3>了解 Azure SQL 数据库</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure SQL Database is a relational database service in the cloud with mission-cr
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure SQL Database Video Library</h3>
+                        <h3>Azure SQL 数据库视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure SQL Database is a relational database service in the cloud with mission-cr
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure SQL Database</h3>
+                        <h3>Azure SQL 数据库入门</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure SQL Database is a relational database service in the cloud with mission-cr
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Elastic Tools</h3>
+                        <h3>弹性工具入门</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure SQL Database is a relational database service in the cloud with mission-cr
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started managing access and permissions</h3>
+                        <h3>开始管理访问和权限</h3>
                     </div>
                 </div>
             </div>
@@ -100,29 +104,34 @@ Azure SQL Database is a relational database service in the cloud with mission-cr
 
 ---
 
-##Reference
+##<a name="reference"></a>参考
 
-###PowerShell
-[Azure PowerShell Reference] (/powershell/azureps-cmdlets-docs)
+###<a name="powershell"></a>PowerShell
+[Azure PowerShell 参考] (/powershell/azureps-cmdlets-docs)
 
-###.NET
-[.NET Managed Reference](/dotnet/api)
+###<a name="net"></a>.NET
+[.NET 托管参考](/dotnet/api)
 
-### Java
-[Java SDK Reference](/java/api)
+### <a name="java"></a>Java
+[Java SDK 参考](/java/api)
 
-###REST
-[SQL Database REST API Reference](/rest/api/sql)
+###<a name="rest"></a>REST
+[SQL 数据库 REST API 参考](/rest/api/sql)
 
-###T-SQL
-[T-SQL Reference](https://msdn.microsoft.com/library/azure/bb510741)
+###<a name="tsql"></a>T-SQL
+[T-SQL 参考](https://msdn.microsoft.com/library/azure/bb510741)
 
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-database.pdf">
         <div class="img"></div>
         <div class="text">
-            Download SQL Database Documentation
-        </div>
+下载 SQL 数据库文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

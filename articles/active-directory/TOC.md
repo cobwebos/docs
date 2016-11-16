@@ -1,21 +1,20 @@
 # 概述
 ## [什么是 Azure Active Directory？](active-directory-whatis.md)
-## [应选择哪个版本？](active-directory-editions.md)
-## [基础知识](fundamentals-identity.md)
+## [选择版本](active-directory-editions.md)
+## [关于 Azure 标识管理](fundamentals-identity.md)
 ## [预览 Azure 门户体验](active-directory-preview-explainer.md)
 
 
 # 入门
-## [如何获取 Azure AD 租户](active-directory-howto-tenant.md)
-## [Azure AD 高级版](active-directory-get-started-premium.md)
+## [获取 Azure AD 租户](active-directory-howto-tenant.md)
+## [注册 Azure AD Premium](active-directory-get-started-premium.md)
 ## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
-## [Azure AD 许可](active-directory-licensing-what-is.md)
+## [管理 AD 许可](active-directory-licensing-what-is.md)
 ## [为组织获取 Azure](sign-up-organization.md)
 ## [常见问题](active-directory-faq.md)
 
 
 # 如何
-
 ## 管理用户
 ### 添加用户
 #### [Azure 门户](active-directory-users-create-azure-portal.md)
@@ -29,27 +28,27 @@
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [重置密码](active-directory-users-reset-password-azure-portal.md)
 ### [管理用户工作信息](active-directory-users-work-info-azure-portal.md)
-### [共享的帐户](active-directory-sharing-accounts.md)
+### [共享帐户](active-directory-sharing-accounts.md)
 
-### [Azure AD 组](active-directory-manage-groups.md)
-#### 管理组
-##### [Azure 门户](active-directory-groups-create-azure-portal.md)
-##### [经典门户](active-directory-accessmanagement-manage-groups.md)
-##### [Powershell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [管理组成员](active-directory-groups-members-azure-portal.md)
-#### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
-#### [管理组成员身份](active-directory-groups-membership-azure-portal.md)
-#### [查看所有组](active-directory-groups-view-azure-portal.md)
-#### [专用组](active-directory-accessmanagement-dedicated-groups.md)
-#### [SaaS 应用访问权限](active-directory-accessmanagement-group-saasapps.md)
-#### 组设置
-##### [Azure 门户](active-directory-groups-settings-azure-portal.md)
-##### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
-#### 高级规则
-##### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
-##### [经典门户](active-directory-accessmanagement-groups-with-advanced-rules.md)
-#### [自助服务组](active-directory-accessmanagement-self-service-group-management.md)
-#### [故障排除](active-directory-accessmanagement-troubleshooting.md)
+## [管理组和成员](active-directory-manage-groups.md)
+### 管理组
+#### [Azure 门户](active-directory-groups-create-azure-portal.md)
+#### [经典门户](active-directory-accessmanagement-manage-groups.md)
+#### [Powershell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+### [管理组成员](active-directory-groups-members-azure-portal.md)
+### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
+### [管理组成员身份](active-directory-groups-membership-azure-portal.md)
+### [查看所有组](active-directory-groups-view-azure-portal.md)
+### [启用专用组](active-directory-accessmanagement-dedicated-groups.md)
+### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
+### 管理组设置
+#### [Azure 门户](active-directory-groups-settings-azure-portal.md)
+#### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
+### 创建高级规则
+#### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
+#### [经典门户](active-directory-accessmanagement-groups-with-advanced-rules.md)
+### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
+### [故障排除](active-directory-accessmanagement-troubleshooting.md)
 
 ## [查看访问和使用情况报告](active-directory-view-access-usage-reports.md)
 ### [Azure AD 报告](active-directory-reporting-getting-started.md)
@@ -58,10 +57,10 @@
 ### [报告指南](active-directory-reporting-guide.md)
 #### [预览](active-directory-reporting-azure-portal.md)
 #### [API](active-directory-reporting-api-getting-started.md)
-##### [审核引用](active-directory-reporting-api-audit-reference.md)
+##### [审核参考](active-directory-reporting-api-audit-reference.md)
 ##### [审核示例](active-directory-reporting-api-audit-samples.md)
 ##### [先决条件](active-directory-reporting-api-prerequisites.md)
-##### [登录引用](active-directory-reporting-api-sign-in-activity-reference.md)
+##### [登录参考](active-directory-reporting-api-sign-in-activity-reference.md)
 ##### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
@@ -81,18 +80,18 @@
 
 ## [管理密码](active-directory-manage-passwords.md)
 ### [更新自己的密码](active-directory-passwords-update-your-own-password.md)
-### [工作原理](active-directory-passwords-how-it-works.md)
-### [策略和限制](active-directory-passwords-policy.md)
+### [了解密码管理](active-directory-passwords-how-it-works.md)
+### [了解策略和限制](active-directory-passwords-policy.md)
 ### 重置密码
 #### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
 #### [经典门户](active-directory-create-users-reset-password.md)
-### [过期策略](active-directory-passwords-set-expiration-policy.md)
-### 密码管理
+### [设置过期策略](active-directory-passwords-set-expiration-policy.md)
+### 启用密码管理
 #### [入门](active-directory-passwords-getting-started.md)
 #### [部署](active-directory-passwords-best-practices.md)
-#### [密码重置](active-directory-passwords.md)
+#### [设置自助服务密码重置](active-directory-passwords.md)
 #### [自定义](active-directory-passwords-customize.md)
-#### [报告](active-directory-passwords-get-insights.md)
+#### [查看报告](active-directory-passwords-get-insights.md)
 #### [了解详细信息](active-directory-passwords-learn-more.md)
 #### [常见问题](active-directory-passwords-faq.md)
 #### [故障排除](active-directory-passwords-troubleshoot.md)
@@ -105,27 +104,27 @@
 #### [入门](active-directory-conditional-access-azuread-connected-apps.md)
 #### [支持的应用](active-directory-conditional-access-supported-apps.md)
 #### [注册设备](active-directory-conditional-access-device-registration-overview.md)
-#### [自动注册](active-directory-conditional-access-automatic-device-registration.md)
+#### [管理自动注册](active-directory-conditional-access-automatic-device-registration.md)
 ##### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
 ##### [Windows 7](active-directory-conditional-access-automatic-device-registration-windows7.md)
 ##### [Windows 8.1](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
-#### [验证器应用](active-directory-conditional-access-azure-authenticator-app.md)
-#### [设备策略](active-directory-conditional-access-device-policies.md)
-#### [访问连接的应用](active-directory-conditional-access-policy-connected-applications.md)
+#### [管理验证器应用](active-directory-conditional-access-azure-authenticator-app.md)
+#### [了解设备策略](active-directory-conditional-access-device-policies.md)
+#### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
 #### [本地部署](active-directory-conditional-access-on-premises-setup.md)
 #### [常见问题](active-directory-conditional-faqs.md)
 #### [故障排除](active-directory-conditional-access-device-remediation.md)
-#### [引用](active-directory-conditional-access-technical-reference.md)
+#### [参考](active-directory-conditional-access-technical-reference.md)
 
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
-#### [部署](active-directory-azureadjoin-deployment-aadjoindirect.md)
-#### [设备注册](active-directory-azureadjoin-setup.md)
+#### [规划](active-directory-azureadjoin-deployment-aadjoindirect.md)
+#### [设置设备注册](active-directory-azureadjoin-setup.md)
 #### [注册新设备](active-directory-azureadjoin-user-frx.md)
-#### [域加入](active-directory-azureadjoin-devices-group-policy.md)
+#### [部署](active-directory-azureadjoin-devices-group-policy.md)
 #### [无密码身份验证](active-directory-azureadjoin-passport.md)
-#### [Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
-#### [Windows 10 指南](active-directory-azureadjoin-windows10-devices-overview.md)
-#### [Windows 10 设备](active-directory-azureadjoin-windows10-devices.md)
+#### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
+#### [了解 Windows 10 集成](active-directory-azureadjoin-windows10-devices-overview.md)
+#### [使用 Windows 10 设备](active-directory-azureadjoin-windows10-devices.md)
 
 ### 基于证书的身份验证
 #### [Android](active-directory-certificate-based-authentication-android.md)
@@ -133,13 +132,13 @@
 
 ## 管理应用
 ### [概述](active-directory-enable-sso-scenario.md)
-### [入门指南](active-directory-integrating-applications-getting-started.md)
+### [入门](active-directory-integrating-applications-getting-started.md)
 
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
-#### [注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-#### [安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
+#### [更新注册表设置](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+#### [了解安全性和隐私性](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
-### [对应用的远程访问](active-directory-application-proxy-get-started.md)
+### [授予对应用的远程访问权限](active-directory-application-proxy-get-started.md)
 #### [启用应用代理](active-directory-application-proxy-enable.md)
 #### [发布应用](active-directory-application-proxy-publish.md)
 #### 在单独的网络上发布
@@ -152,25 +151,25 @@
 #### [条件性访问](active-directory-application-proxy-conditional-access.md)
 #### [无提示安装](active-directory-application-proxy-silent-installation.md)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
-### [应用 SSO](active-directory-appssoaccess-whatis.md)
+### [了解应用的 SSO](active-directory-appssoaccess-whatis.md)
 
 ### 集成 SaaS 应用
 #### [Azure 门户](active-directory-enterprise-apps-manage-sso.md)
 #### [经典门户](active-directory-sso-integrate-saas-apps.md)
 
-### 企业应用
+### 管理企业应用
 #### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)
 #### [自定义品牌](active-directory-coreapps-change-app-logo-user-azure-portal.md)
 #### [禁用用户登录](active-directory-coreapps-disable-app-azure-portal.md)
 #### [删除用户](active-directory-coreapps-remove-assignment-azure-portal.md)
 #### [查看所有应用](active-directory-coreapps-view-azure-portal.md)
-#### [用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
+#### [管理用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
 
-### 开发人员指南
+### 开发
 #### [分配用户](active-directory-applications-guiding-developers-assigning-users.md)
 #### [分配组](active-directory-applications-guiding-developers-assigning-groups.md)
 #### [需要分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)
-#### [LoB 应用](active-directory-applications-guiding-developers-for-lob-applications.md)
+#### [开发 LoB 应用](active-directory-applications-guiding-developers-for-lob-applications.md)
 
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
@@ -270,19 +269,18 @@
 ### [后续步骤](active-directory-hybrid-identity-design-considerations-nextsteps.md)
 ### [工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 
-## [开发](./develop/active-directory-how-to-integrate.md)
-
 ## [在 Azure 中部署 AD FS](active-directory-aadconnect-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [更改签名哈希算法](active-directory-federation-sha256-guidance.md)
 
-## [对 Azure AD 进行故障排除](active-directory-troubleshooting.md)
+## [故障排除](active-directory-troubleshooting.md)
 
 
-# 引用
-## [Azure AD 服务限制和局限性](active-directory-service-limits-restrictions.md)
-## [Active Directory 身份验证库 .NET 引用](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
-## [Azure Active Directory PowerShell 模块](https://msdn.microsoft.com/library/azure/mt757189.aspx)
+# 参考
+## [PowerShell cmdlets](/powershell/ )
+## [Java API 参考](/java/api)
+## [.NET API](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
+## [服务限制和局限性](active-directory-service-limits-restrictions.md)
 
 # 相关内容
 ## [多重身份验证](/azure/multi-factor-authentication/)
@@ -291,7 +289,12 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
 # 资源
-## [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory) 
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
+## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
+## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
 <!--HONumber=Nov16_HO2-->

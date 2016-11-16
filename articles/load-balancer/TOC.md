@@ -32,18 +32,25 @@
 ## [为云服务配置多个 VIP](load-balancer-multivip.md)
 ## [Azure Load Balancer 的 Log Analytics](load-balancer-monitor-log.md)
 ## [为 Linux VM 配置 DHCPv6](load-balancer-ipv6-for-linux.md)
-# 引用
+
+# 参考
+## [PowerShell](https://go.microsoft.com/fwlink/p/?LinkId=536407)
+## [.NET](https://docs.microsoft.com/dotnet/api/)
 ## [Resource Manager API](https://go.microsoft.com/fwlink/p/?LinkId=536405)
-## [Resource Manager PowerShell CmdLet](https://go.microsoft.com/fwlink/p/?LinkId=536407)
 ## [使用网络资源](https://go.microsoft.com/fwlink/p/?LinkId=536403)
+
 # 相关内容
-## [应用程序网关](https://azure.microsoft.com/documentation/services/application-gateway/)
-## [Express Route](https://azure.microsoft.com/documentation/services/expressroute/)
-## [虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN 网关](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-## [DNS](https://azure.microsoft.com/documentation/services/dns/)
+## [应用程序网关](/azure/application-gateway/)
+## [Express Route](/azure/expressroute/)
+## [虚拟网络](/azure/virtual-network/)
+## [VPN 网关](/azure/vpn-gateway/)
+## [虚拟机](/azure/virtual-machines/)
+## [流量管理器](/azure/traffic-manager/)
+## [DNS](/azure/dns/)
+
+# 资源
+## [定价](https://azure.microsoft.com/pricing/details/load-balancer/) 
+## [服务更新](https://azure.microsoft.com/updates/?product=load-balancer) 
 
 
 <!--HONumber=Nov16_HO2-->

@@ -6,7 +6,7 @@
 ## [限制和配额](../azure-subscription-service-limits.md)
 ## [常见问题](../billing-subscription-faq.md)
 # 如何
-## 跟踪使用情况和成本
+## 监视使用情况和成本
 ### [下载发票和使用情况](../billing-download-azure-invoice-daily-usage-date.md)
 ### [了解帐单](billing-understand-your-bill.md)
 ### [了解外部服务费用](../billing-understand-your-azure-marketplace-charges.md)
@@ -23,16 +23,18 @@
 ### [编辑个人资料](../billing-how-to-change-azure-account-profile.md)
 ### [更新支付信息](../billing-how-to-change-credit-card.md)
 ### [链接 Office 365 租户](../billing-add-office-365-tenant-to-azure-subscription.md)
-# 引用
+## 故障排除
+### [注册问题](../billing-troubleshoot-azure-sign-up-issues.md)
+### [银行卡被拒绝](../billing-credit-card-fails-during-azure-sign-up.md)
+### [登录问题](../billing-cannot-login-subscription.md)
+
+# 参考
 ## [API 概述](../billing-usage-rate-card-overview.md)
 ## [REST API 参考](https://msdn.microsoft.com/en-us/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
 ## [合作伙伴解决方案：Cloud Cruiser](../billing-usage-rate-card-partner-solution-cloudcruiser.md)
 ## [合作伙伴解决方案：Cloudyn](../billing-usage-rate-card-partner-solution-cloudyn.md)
-# 故障排除
-## [注册问题](../billing-troubleshoot-azure-sign-up-issues.md)
-## [银行卡被拒绝](../billing-credit-card-fails-during-azure-sign-up.md)
-## [登录问题](../billing-cannot-login-subscription.md)
-# 支持
+
+# 资源
 ## [联系支持人员](../billing-how-to-create-billing-support-ticket.md)
 
 <!--HONumber=Nov16_HO2-->

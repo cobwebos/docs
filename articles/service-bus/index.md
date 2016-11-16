@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Service Bus Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: bfc1bf3d78099ba04a2621bcec9f870f7f88b122
+ms.openlocfilehash: 3eadd4b9bdb7621965057271f0e1b5e034bdcbf8
 
-Service Bus provides cloud-enabled communication with enterprise messaging and relayed communication that helps you connect on-premises solutions with the cloud. 
+---
+#<a name="service-bus-documentation"></a>服务总线文档
+
+通过服务总线，可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Service Bus</h3>
+                        <h3>了解 Azure 服务总线</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Service Bus Video Library</h3>
+                        <h3>Azure 服务总线视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Service Bus using the Azure portal</h3>
+                        <h3>通过 Azure 门户开始使用服务总线</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using .NET</h3>
+                        <h3>通过 .NET 开始使用服务总线队列</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Java</h3>
+                        <h3>通过 Java 开始使用服务总线队列</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +111,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Node.js</h3>
+                        <h3>通过 Node.js 开始使用服务总线队列</h3>
                     </div>
                 </div>
             </div>
@@ -125,7 +129,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using PHP</h3>
+                        <h3>通过 PHP 开始使用服务总线队列</h3>
                     </div>
                 </div>
             </div>
@@ -143,7 +147,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Python</h3>
+                        <h3>通过 Python 开始使用服务总线队列</h3>
                     </div>
                 </div>
             </div>
@@ -161,7 +165,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using Ruby</h3>
+                        <h3>通过 Ruby 开始使用服务总线队列</h3>
                     </div>
                 </div>
             </div>
@@ -179,7 +183,7 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Service Bus queues using REST</h3>
+                        <h3>通过 REST 开始使用服务总线队列</h3>
                     </div>
                 </div>
             </div>
@@ -190,22 +194,27 @@ Service Bus provides cloud-enabled communication with enterprise messaging and r
 
 ---
 
-## Reference
+## <a name="reference"></a>参考
 
-### PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
+### <a name="powershell"></a>PowerShell
+[Azure PowerShell 参考](/powershell/azureps-cmdlets-docs)
 
-### .NET
-[.NET Managed Reference API](/dotnet/api/) 
+### <a name="net"></a>.NET
+[.NET 托管参考 API](/dotnet/api/) 
 
-### REST 
-[Service Bus REST API Reference](/rest/api/servicebus)  
+### <a name="rest"></a>REST 
+[服务总线 REST API 参考](/rest/api/servicebus)  
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Service Bus Documentation
-        </div>
+下载服务总线文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

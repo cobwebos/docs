@@ -125,7 +125,7 @@
 ### [使用 T-SQL 加密](sql-data-warehouse-encryption-tde-tsql.md)
 ### [威胁检测](sql-data-warehouse-security-threat-detection.md)
 
-# 引用
+# 参考
 
 ## [容量限制](sql-data-warehouse-service-capacity-limits.md)
 ## [T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)
@@ -136,6 +136,9 @@
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [服务更新](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## 合作伙伴
 ### [商业智能](sql-data-warehouse-partner-business-intelligence.md)

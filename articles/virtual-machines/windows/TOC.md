@@ -17,7 +17,6 @@
 ## [常见问题](../virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 # 入门
-## [免费帐户](https://azure.microsoft.com/free/)
 ## [使用门户创建 VM](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [登录到 VM](../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [安装角色并打开端口](../virtual-machines-windows-hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -32,9 +31,9 @@
 ### [应用程序部署](../virtual-machines-windows-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 # 如何
-## 存储
-### [使用门户附加数据磁盘](../virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [使用门户分离数据磁盘](../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## 使用存储
+### [附加数据磁盘](../virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [分离数据磁盘](../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [扩展 OS 磁盘](../virtual-machines-windows-expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [使用 D: 作为数据磁盘](../virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [磁盘加密](../../security/azure-security-disk-encryption.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -50,15 +49,6 @@
 ### [创建静态公共 IP](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [将经典 VNet 连接到 Resource Manager VNet](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## 映像
-### [准备要上载的 VHD](../virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [使用 Sysprep 通用化 VM](../virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [上载 VM 映像](../virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [捕获通用 Azure VM](../virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [复制专用 Azure VM](../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [从通用 VHD 创建 VM](../virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [从专用 VHD 创建 VM](../virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
 ## 部署
 ### [使用软件保障许可](../virtual-machines-windows-hybrid-use-benefit-licensing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [使用 Powershell 查找 VM 映像](../virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -71,6 +61,14 @@
 ### [使用 C# 进行部署](../virtual-machines-windows-csharp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [使用 C# 和模板进行部署](../virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [从模板部署应用程序框架](../virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### 映像
+#### [准备要上载的 VHD](../virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [使用 Sysprep 通用化 VM](../virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [上载 VM 映像](../virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [捕获通用 Azure VM](../virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [复制专用 Azure VM](../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [从通用 VHD 创建 VM](../virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [从专用 VHD 创建 VM](../virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## 配置
 ### [创建可用性集](../virtual-machines-windows-create-availability-set.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -84,7 +82,7 @@
 ### [CLI 常见任务](../virtual-machines-windows-cli-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## 管理
-### [在 Azure Active Directory 中创建工作或学校标识](../virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [在 Azure AD 中创建工作或学校标识](../virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [管理访问权限](../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [设置密钥保管库](../virtual-machines-windows-key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [设置 WinRM 访问权限](../virtual-machines-windows-winrm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -107,7 +105,7 @@
 ### [配置示例](../virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [排查扩展问题](../virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Azure 自动化概述](../virtual-machines-windows-manage-using-azure-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [使用 Azure 自动化纵向缩放 VM](../virtual-machines-windows-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [纵向缩放 VM](../virtual-machines-windows-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [下载 VM 模板](../virtual-machines-windows-download-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [使用 Chef 进行自动化](../virtual-machines-windows-chef-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -117,10 +115,8 @@
 ### [使用 PowerShell 迁移](../virtual-machines-windows-ps-migration-classic-resource-manager.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [用于迁移的社区工具](../virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## 最佳实践
-### [在 Azure 上运行 Windows VM 的最佳实践](../virtual-machines-windows-guidance-compute-single-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
 ## 计划
+### [Windows VM 最佳实践](../virtual-machines-windows-guidance-compute-single-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [基础结构指南](../virtual-machines-windows-infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [订阅和帐户](../virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [命名](../virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -132,36 +128,36 @@
 ### [Azure 计划内维护](../virtual-machines-windows-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [计划](../virtual-machines-windows-planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## 工作负荷
+## 管理工作负荷
 ### [高性能计算 (HPC)](../virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [MATLAB](../virtual-machines-windows-matlab-mdcs-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [MongoDB](../virtual-machines-windows-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [SQL](../virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [在 Azure 门户中预配 SQL Server 虚拟机](../virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [使用 Azure PowerShell 预配 SQL Server 虚拟机](../virtual-machines-windows-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [连接到 Azure 上的 SQL Server 虚拟机](../virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [将 SQL Server 数据库迁移到 Azure VM 中的 SQL Server](../virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [在 Azure VM 中手动配置 Always On 可用性组](../virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [在 Azure VM 中自动配置 Always On 可用性组](../virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [在 Azure 中为 AlwaysOn 可用性组配置内部负载均衡器](../virtual-machines-windows-portal-sql-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [在 Azure 门户中预配 VM](../virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [使用 Azure PowerShell 预配 VM](../virtual-machines-windows-ps-sql-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [连接到 VM](../virtual-machines-windows-sql-connect.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [迁移 SQL Server 数据库](../virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [手动配置 Always On 可用性组](../virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [自动配置 Always On 可用性组](../virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [为 AlwaysOn 可用性组配置内部负载均衡器](../virtual-machines-windows-portal-sql-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [配置一个或多个 Always On 可用性组侦听器](../virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [为 Azure VM 上的 SQL Serve 配置 Azure 密钥保管库集成](../virtual-machines-windows-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](../virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure 虚拟机中 SQL Server 的自动备份](../virtual-machines-windows-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure 虚拟机中 SQL Server 的备份和还原](../virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [将 Azure 存储用于 SQL Server 备份和还原](../virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure 虚拟机中 SQL Server 的自动修补](../virtual-machines-windows-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure 虚拟机中 SQL Server 的性能最佳实践](../virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure 虚拟机中的 SQL Server 的安全注意事项](../virtual-machines-windows-sql-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [适用于 SQL Server VM 的 SQL Server 代理扩展](../virtual-machines-windows-sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](../virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [配置 Azure 密钥保管库集成](../virtual-machines-windows-ps-sql-keyvault.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [高可用性和灾难恢复](../virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [自动备份](../virtual-machines-windows-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [备份和还原](../virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [使用 Azure 存储进行备份和还原](../virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [自动修补](../virtual-machines-windows-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [性能最佳实践](../virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [安全注意事项](../virtual-machines-windows-sql-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [SQL Server 代理扩展](../virtual-machines-windows-sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [应用模式和策略](../virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Azure 虚拟机中的 SQL Server 常见问题](../virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [SQL Server VM 的存储配置](../virtual-machines-windows-sql-server-storage-configuration.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [在 Microsoft Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3](../virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Windows 虚拟机 (VM) 上的 SAP NetWeaver - 规划和实施指南](../virtual-machines-windows-sap-planning-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Windows 虚拟机 (VM) 上的 SAP NetWeaver - 高可用性指南](../virtual-machines-windows-sap-high-availability-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Windows 虚拟机 (VM) 上的 SAP NetWeaver - DBMS 部署指南](../virtual-machines-windows-sap-dbms-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-#### [Windows 虚拟机 (VM) 上的 SAP NetWeaver - 部署指南](../virtual-machines-windows-sap-deployment-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [规划和实施指南](../virtual-machines-windows-sap-planning-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [高可用性指南](../virtual-machines-windows-sap-high-availability-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [DBMS 部署指南](../virtual-machines-windows-sap-dbms-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [部署指南](../virtual-machines-windows-sap-deployment-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 
 ### [SAP](../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -172,29 +168,27 @@
 ## 故障排除
 ### [远程桌面连接疑难解答](../virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [重置 RDP 密码](../virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Azure 中 Windows VM 特定 RDP 错误消息疑难解答](../virtual-machines-windows-troubleshoot-specific-rdp-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [特定 RDP 错误消息的疑难解答](../virtual-machines-windows-troubleshoot-specific-rdp-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [排查新建 VM 时遇到的问题](../virtual-machines-windows-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [排查重新启动 VM 或调整其大小时遇到的问题](../virtual-machines-windows-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [排查应用程序访问问题](../virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [排查分配失败](../virtual-machines-windows-allocation-failure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [重新部署 VM](../virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-# 引用
-## [创建 Resource Manager 模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-## [计算 REST API](https://msdn.microsoft.com/library/azure/mt163647)
-## [网络 REST API](https://msdn.microsoft.com/library/azure/mt163658)
-## [存储 REST API](https://msdn.microsoft.com/library/azure/dd179355)
-## [虚拟机规模集 REST API](https://msdn.microsoft.com/library/azure/mt705635)
-## [虚拟机 .NET API](https://msdn.microsoft.com/library/azure/mt131911)
-## [网络 .NET API](https://msdn.microsoft.com/library/azure/dn973320)
-## [存储 .NET API](https://msdn.microsoft.com/library/azure/mt131037)
-## [CLI](../azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-## [PowerShell](https://msdn.microsoft.com/library/azure/mt125979)
+# 参考
+## [Azure CLI](/cli/azure/vm)
+## [Java](/java/api/)
+## [创建 Resource Manager 模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [社区模板](https://azure.microsoft.com/documentation/templates/)
+## [计算 REST](/rest/api/compute/)
+## [网络 REST](/rest/api/)
+## [存储 REST](/rest/api/storageservices/)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/#Windows)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
 <!--HONumber=Nov16_HO2-->

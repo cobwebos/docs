@@ -1,7 +1,6 @@
 # [概述](mobile-engagement-overview.md)
 ## [与相关服务的比较](mobile-engagement-comparison.md)
 ## [功能概述](mobile-engagement-key-features.md)
-## [定价](https://azure.microsoft.com/pricing/details/mobile-engagement/)
 
 # 入门
 ## [Android](mobile-engagement-android-get-started.md)
@@ -117,28 +116,27 @@
 ### [服务限制](../azure-subscription-service-limits.md#mobile-engagement-limits)
 
 # 引用
-## [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
-## [REST API 引用](https://msdn.microsoft.com/en-us/library/azure/mt683754)
-## [REST API Swagger 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)
+## [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
 ## SDK 内容
 ### [Android SDK](mobile-engagement-android-sdk-content.md)
 ### [iOS SDK](mobile-engagement-ios-sdk-content.md)
 ### [Windows Universal 应用 SDK](mobile-engagement-windows-store-sdk-content.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
-
-# 相关内容
-
-# 资源
-## [示例演示应用](mobile-engagement-demo-apps.md)
-## [.NET API 示例](mobile-engagement-dotnet-sdk-service-api.md)
-## [视频和更新](https://azure.microsoft.com/documentation/services/mobile-engagement/)
-## [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
 ## 发行说明
 ### [Android SDK](mobile-engagement-android-release-notes.md)
 ### [iOS SDK](mobile-engagement-ios-release-notes.md)
 ### [Web SDK](mobile-engagement-web-release-notes.md)
 ### [Windows Universal 应用 SDK](mobile-engagement-windows-store-release-notes.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-release-notes.md)
+
+
+# 资源
+## [定价](https://azure.microsoft.com/pricing/details/mobile-engagement/)
+## [示例演示应用](mobile-engagement-demo-apps.md)
+## [.NET API 示例](mobile-engagement-dotnet-sdk-service-api.md)
+## [视频和更新](https://azure.microsoft.com/documentation/services/mobile-engagement/)
+## [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+
 
 
 
