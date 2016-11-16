@@ -1,4 +1,4 @@
-创建虚拟网络网关时，需要指定想要使用的网关 SKU。创建虚拟网络网关时，它作为虚拟硬件生成。选择更高的网关 SKU 时，更多处理能力将分配到该网关，以便路由流量，如果是 VPN 网关，则处理 VPN 加密。网关 SKU 适用于 Resource Manager 和经典部署模型。
+创建虚拟网络网关时，需要指定要使用的网关 SKU。 如果选择更高级的网关 SKU，则将为该网关分配更多的 CPU 和网络带宽，这样使网关能够支持到虚拟网络更高的吞吐量。
 
 VPN 网关可以使用以下 SKU：
 
@@ -6,4 +6,17 @@ VPN 网关可以使用以下 SKU：
 * 标准
 * HighPerformance
 
-<!---HONumber=AcomDC_0921_2016-->
+VPN 网关不使用 UltraPerformance 网关 SKU。 有关 UltraPerformance SKU 的信息，请参阅 [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) 文档。
+
+选择 SKU 时，请注意以下事项：
+
+* 如果想要使用 PolicyBased VPN 类型，必须使用基本 SKU。 任何其他 SKU 均不支持 PolicyBased VPN（之前称为静态路由）。
+* 基本 SKU 不支持 BGP。
+* 基本 SKU 不支持 ExpressRoute-VPN 网关共存配置。
+* 只能在高性能 SKU 上配置主动-主动 S2S VPN 网关连接。
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

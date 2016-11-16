@@ -1,30 +1,34 @@
 ---
-title: Azure Active Directory 常见问题 | Microsoft Docs
-description: Azure Active Directory 常见问题，其中提供了有关访问 Azure 和 Azure Active Directory、密码管理和应用程序访问的问题的解答。
+title: "Azure Active Directory 常见问题解答 | Microsoft Docs"
+description: "Azure Active Directory 常见问题，其中提供了有关访问 Azure 和 Azure Active Directory、密码管理和应用程序访问的问题的解答。"
 services: active-directory
-documentationcenter: ''
-author: markusvi
+documentationcenter: 
+author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2016
+ms.date: 10/31/2016
 ms.author: markusvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0f7070d9d691e2471978a2986025ebfdafbeaa7c
+
 
 ---
-# Azure Active Directory 常见问题
+# <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其涉及到标识、访问管理和安全的方方面面。
 
-有关详细信息，请参阅[什么是 Azure Active Directory？](active-directory-whatis.md)。
+有关详细信息，请参阅 [什么是 Azure Active Directory？](active-directory-whatis.md)。
 
-## 访问 Azure 和 Azure Active Directory
-**问：当我尝试在 Azure 经典门户 (https://manage.windowsazure.com) 中访问 Azure AD 时，为何收到“找不到订阅”？**
+## <a name="accessing-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
+**问：尝试在 Azure 经典门户 (https://manage.windowsazure.com) 中访问 Azure AD 时，为何收到“找不到订阅”？**
 
-**答：**若要访问 Azure 经典门户，每位用户必须拥有 Azure 订阅的权限。如果你使用付费版 Office 365 或 Azure AD，请导航到 [http://aka.ms/accessAAD](http://aka.ms/accessAAD) 完成一次性的激活步骤，否则需要激活完整的 [Azure 试用版](https://azure.microsoft.com/pricing/free-trial/)或付费版订阅。
+**答：** 若要访问 Azure 经典门户，每位用户必须拥有 Azure 订阅的权限。 如果使用付费版 Office 365 或 Azure AD，请导航到 [http://aka.ms/accessAAD](http://aka.ms/accessAAD) 完成一次性激活步骤，否则需要激活完整的 [Azure 试用版](https://azure.microsoft.com/pricing/free-trial/)或付费版订阅。 
 
 有关详细信息，请参阅：
 
@@ -34,97 +38,97 @@ Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其
 - - -
 **问：Azure AD、Office 365 与 Azure 之间有哪种关系？**
 
-**答：**Azure Active Directory 为所有 Microsoft 在线服务提供通用的标识和访问功能。无论你使用 Office 365、Microsoft Azure、Intune 还是其他服务，都可以使用 Azure AD 来为上述所有服务启用登录和访问管理。
+**答：** Azure Active Directory 为所有 Microsoft 在线服务提供通用的标识和访问功能。 无论你使用 Office 365、Microsoft Azure、Intune 还是其他服务，都可以使用 Azure AD 来为上述所有服务启用登录和访问管理。 
 
-事实上，为 Microsoft 在线服务启用的所有用户都定义为一个或多个 Azure AD 实例中的用户帐户。你可以为这些帐户启用免费的 Azure AD 功能，例如云应用程序访问。
+事实上，为 Microsoft 在线服务启用的所有用户都定义为一个或多个 Azure AD 实例中的用户帐户。 你可以为这些帐户启用免费的 Azure AD 功能，例如云应用程序访问。
 
 此外，Azure AD 付费版服务（例如 Azure AD Basic、Premium、EMS 等）可通过综合性的企业级管理和安全解决方案来弥补其他在线服务（例如 Office 365 和 Microsoft Azure）的不足。
 
 - - -
-## 混合 Azure AD 入门
+## <a name="getting-started-with-hybrid-azure-ad"></a>混合 Azure AD 入门
 **问：如何将我的本地目录连接到 Azure AD？**
 
-**答：**可以使用 **Azure AD Connect** 将本地目录连接到 Azure AD。
+**答：**可以使用 **Azure AD Connect** 将本地目录连接到 Azure AD。 
 
-有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
+有关详细信息，请参阅 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
 
 - - -
 **问：如何设置本地目录与云应用程序之间的 SSO？**
 
-**答：**只需在本地目录与 Azure AD 之间设置 SSO。只要通过 Azure AD 访问云应用程序，该服务就会自动让用户使用其本地凭据正确进行身份验证。
+**答：** 只需在本地目录与 Azure AD 之间设置 SSO。 只要通过 Azure AD 访问云应用程序，该服务就会自动让用户使用其本地凭据正确进行身份验证。
 
-通过联合身份验证解决方案（例如 ADFS）或通过配置密码哈希同步，就能轻松地从本地实现 SSO。可以使用 Azure AD Connect 配置向导轻松部署这两个选项。
+通过联合身份验证解决方案（例如 ADFS）或通过配置密码哈希同步，就能轻松地从本地实现 SSO。 可以使用 Azure AD Connect 配置向导轻松部署这两个选项。
 
-有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
+有关详细信息，请参阅 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
 
 - - -
 **问：Azure Active Directory 是否为组织中的用户提供自助服务门户？**
 
-**答：**是的，Azure Active Directory 提供 [Azure AD 访问面板](http://myapps.microsoft.com)，方便用户进行自助服务和应用程序访问。如果你是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
+**答：** 是的，Azure Active Directory 提供 [Azure AD 访问面板](http://myapps.microsoft.com) ，方便用户进行自助服务和应用程序访问。 如果你是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。 
 
-有关详细信息，请参阅[访问面板简介](active-directory-saas-access-panel-introduction.md)。
+有关详细信息，请参阅 [访问面板简介](active-directory-saas-access-panel-introduction.md)。 
 
 - - -
 **问：Azure AD 是否可以帮助我管理本地基础结构？**
 
-**答：**可以。Azure AD Premium Edition 提供 **Connect Health**。Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。
+**答：** 可以。 Azure AD Premium Edition 提供 **Connect Health**。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
 
-有关详细信息，请参阅 [Monitor your on-premises identity infrastructure and synchronization services in the cloud](active-directory-aadconnect-health.md)（在云中监视本地标识基础结构和同步服务）。
+有关详细信息，请参阅 [Monitor your on-premises identity infrastructure and synchronization services in the cloud](active-directory-aadconnect-health.md)（在云中监视本地标识基础结构和同步服务）。  
 
 - - -
-## 密码管理
-**问：是否可以使用 Azure AD 密码写回但不使用密码同步？ （也就是说，我想要使用 Azure AD SSPR 和密码写回，但不想将密码存储在云中。）**
+## <a name="password-management"></a>密码管理
+**问：是否可以使用 Azure AD 密码写回但不使用密码同步？（也就是说，我想要使用 Azure AD SSPR 和密码写回，但不想将密码存储在云中。）**
 
-**答：**无需将 AD 密码同步到 Azure AD 即可启用写回。在联合环境中，Azure AD SSO 依赖本地目录来对用户进行身份验证。在这种情况下，并不需要在 Azure AD 中跟踪本地密码。
+**答：** 无需将 AD 密码同步到 Azure AD 即可启用写回。 在联合环境中，Azure AD SSO 依赖本地目录来对用户进行身份验证。 在这种情况下，并不需要在 Azure AD 中跟踪本地密码。
 
 - - -
 **问：需要多长时间才能将密码写回到 AD 本地？**
 
-**答：**密码写回实时运行。
+**答：** 密码写回实时运行。 
 
-有关详细信息，请参参阅[密码管理入门](active-directory-passwords-getting-started.md)。
+有关详细信息，请参阅 [密码管理入门](active-directory-passwords-getting-started.md) 
 
 - - -
 **问：是否可以对管理员管理的密码使用密码写回？**
 
-**答：**可以。如果已启用密码写回，管理员执行的密码操作将写回到你的本地环境。
+**答：**可以。如果已启用密码写回，管理员执行的密码操作将写回到你的本地环境。  
 
-有关密码相关问题的详细解答，请参阅[密码管理常见问题](active-directory-passwords-faq.md)。
+有关密码相关问题的详细解答，请参阅 [密码管理常见问题](active-directory-passwords-faq.md)。
 
 - - -
-## 应用程序访问
+## <a name="application-access"></a>应用程序访问
 **问：在哪里可以找到与 Azure AD 预先集成的应用程序及其功能的列表？**
 
-**答：**Azure AD 中包含 Microsoft、应用程序服务提供商或第三方提供的 2600 多个预先集成的应用程序。所有预先集成的应用程序都支持 SSO。SSO 允许你使用组织凭据来访问应用。某些应用程序还支持自动预配和自动取消预配
+**答：** Azure AD 中包含 Microsoft、应用程序服务提供商或第三方提供的 2600 多个预先集成的应用程序。 所有预先集成的应用程序都支持 SSO。 SSO 允许你使用组织凭据来访问应用。 某些应用程序还支持自动预配和自动取消预配
 
 有关预先集成的应用程序的完整列表，请参阅 [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)（Active Directory 应用商店）。
 
 - - -
 **问：如果 Azure AD 应用商店中没有我需要的应用程序怎么办？**
 
-**答：**使用 Azure AD Premium，可以添加和配置所需的任何应用程序。你可以根据应用程序的功能和你的喜好来配置 SSO 和自动预配。
+**答：** 使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 你可以根据应用程序的功能和你的喜好来配置 SSO 和自动预配。  
 
 有关详细信息，请参阅：
 
 * [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](active-directory-saas-custom-apps.md)
-* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md)
+* [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](active-directory-scim-provisioning.md) 
 
 - - -
 **问：用户如何使用 Azure Active Directory 来登录应用程序？**
 
-**答：**Azure Active Directory 提供多种方式供用户查看和访问其应用程序，例如：
+**答：** Azure Active Directory 提供多种方式供用户查看和访问其应用程序，例如：
 
 * Azure AD 访问面板
 * Office 365 应用程序启动器
 * 直接登录联合应用
 * 联合、基于密码或现有的应用的深层链接
 
-有关详细信息，请参阅[为用户部署 Azure AD 集成的应用程序](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)。
+有关详细信息，请参阅 [为用户部署 Azure AD 集成的应用程序](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)。
 
 - - -
 **问：Azure Active Directory 可通过哪些不同的方式来启用对应用程序的身份验证和单一登录？**
 
-**答：**Azure Active Directory 支持使用多种标准化协议（例如 SAML 2.0、OpenID Connect、OAuth 2.0 和 WS-Federation）进行身份验证和授权。对于仅支持基于窗体的身份验证的应用程序，Azure AD 还支持密码保管和自动化登录功能。
+**答：** Azure Active Directory 支持使用多种标准化协议（例如 SAML 2.0、OpenID Connect、OAuth 2.0 和 WS-Federation）进行身份验证和授权。 对于仅支持基于窗体的身份验证的应用程序，Azure AD 还支持密码保管和自动化登录功能。  
 
 有关详细信息，请参阅：
 
@@ -135,23 +139,28 @@ Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其
 - - -
 **问：是否可以添加本地运行的应用程序？**
 
-**答：**Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。你可以像访问 Azure Active Directory 中的 SaaS 应用一样访问这些应用程序。不需要设置 VPN 或更改网络基础结构。
+**答：** Azure AD 应用程序代理可让你轻松安全地访问所选的本地 Web 应用程序。 你可以像访问 Azure Active Directory 中的 SaaS 应用一样访问这些应用程序。 不需要设置 VPN 或更改网络基础结构。  
 
-有关详细信息，请参阅[如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)。
+有关详细信息，请参阅 [如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)。
 
 - - -
 **问：如何对访问特定应用程序的用户要求 MFA？**
 
-**答：**使用 Azure AD 条件访问，可以针对每个应用程序分配独特的访问策略。你可以在策略中要求始终进行 MFA，或者在用户未连接到局域网时才进行 MFA。
+**答：** 使用 Azure AD 条件访问，可以针对每个应用程序分配独特的访问策略。 你可以在策略中要求始终进行 MFA，或者在用户未连接到局域网时才进行 MFA。  
 
-有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)。
+有关详细信息，请参阅 [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)。
 
 - - -
 **问：SaaS 应用程序的自动用户预配是什么？**
 
-**答：**Azure Active Directory 允许你在许多流行的云 (SaaS) 应用程序中自动创建、维护和删除用户标识。
+**答：** Azure Active Directory 允许你在许多流行的云 (SaaS) 应用程序中自动创建、维护和删除用户标识。 
 
-有关详细信息，请参阅[使用 Azure Active Directory 自动预配和取消预配 SaaS 应用程序的用户](active-directory-saas-app-provisioning.md)
+有关详细信息，请参阅 [使用 Azure Active Directory 自动预配和取消预配 SaaS 应用程序的用户](active-directory-saas-app-provisioning.md)
 
 - - -
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

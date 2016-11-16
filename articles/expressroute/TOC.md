@@ -42,28 +42,28 @@
 ### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
 
 
-# 引用
-## [API - Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
-## [API - 服务管理](https://msdn.microsoft.com/library/azure/dn606310)
-## [PowerShell Cmdlet - Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
-## [PowerShell Cmdlet - 服务管理](https://msdn.microsoft.com/library/azure/dn683813)
+# 参考
+
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
 ## [路由器配置设置示例](expressroute-config-samples-routing.md)
 ## [NAT 的路由器配置示例](expressroute-config-samples-nat.md)
+## [REST](https://msdn.microsoft.com/library/azure/mt586720)
+## [经典 REST](https://msdn.microsoft.com/library/azure/dn606310)
 
-# 相关内容 
-## [虚拟网络](../virtual-network/index.md)
-## [VPN 网关](../vpn-gateway/index.md)
-## [虚拟机](../virtual-machines/index.md)
-## [负载均衡器](../load-balancer/index.md)
-## [流量管理器](../traffic-manager/index.md)
+# 相关内容
+## [虚拟网络](/azure/virtual-network/)
+## [VPN 网关](/azure/vpn-gateway/)
+## [虚拟机](/azure/virtual-machines/)
+## [负载均衡器](/azure/load-balancer/)
+## [流量管理器](/azure/traffic-manager/)
 
 # 资源
+## [定价](https://azure.microsoft.com/pricing/details/expressroute/)
 ## [网络博客](https://azure.microsoft.com/blog/topics/networking/)
 ## [案例研究](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
-## [定价](https://azure.microsoft.com/pricing/details/expressroute/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [订阅和服务限制](../azure-subscription-service-limits.md)
-## 视频
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=expressroute) 
 ### [创建 ExpressRoute 线路](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [如何为线路设置专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [为线路设置公共对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
@@ -73,6 +73,7 @@
 ### [将虚拟网络网关连接到线路](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [提升网络基础结构的连接能力](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [混合合作关系：启用本地方案](https://go.microsoft.com/fwlink/p/?LinkId=615125)
+## [服务更新](https://azure.microsoft.com/updates/?product=expressroute) 
 
 <!--HONumber=Nov16_HO2-->
 

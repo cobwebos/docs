@@ -1,10 +1,11 @@
-# [概述](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+# 概述
 ## [什么是移动应用？](app-service-mobile-value-prop.md)
-## [什么是应用服务](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [什么是应用服务？](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [工作原理](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # 入门
-## Mobile Apps
+## 创建移动应用
 ### [Android](app-service-mobile-android-get-started.md)
 ### [Cordova](app-service-mobile-cordova-get-started.md)
 ### [iOS](app-service-mobile-ios-get-started.md)
@@ -13,13 +14,13 @@
 ### [Xamarin.Forms](app-service-mobile-xamarin-forms-get-started.md)
 ### [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md)
 
-## API Apps
+## 创建 API 应用
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
 ### [Java](../app-service-api/app-service-api-java-api-app.md)
 ### [Node.js](../app-service-api/app-service-api-nodejs-api-app.md)
 ### [CORS](../app-service-api/app-service-api-cors-consume-javascript.md)
 
-## Web 应用
+## 创建 Web 应用
 ### [.NET](../app-service-web/web-sites-dotnet-get-started.md)
 ### [Node.js](../app-service-web/app-service-web-nodejs-get-started.md)
 ### [Python](../app-service-web/web-sites-python-ptvs-django-mysql.md)
@@ -203,17 +204,20 @@
 #### [Node.JS 后端](app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging)
 ### [启用诊断日志记录](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [流式传输日志和控制台](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [使用 Visual Studio 排除故障](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [使用 Visual Studio 进行排除故障](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# 引用
+# 参考
+## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
 ## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [应用服务引用](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [应用服务参考](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# 相关内容
-
 # 资源
-## [Azure 移动论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
+## [定价](https://azure.microsoft.com/en-us/pricing/details/app-service/)  
+## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## [服务更新](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [WebJob 资源列表](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 

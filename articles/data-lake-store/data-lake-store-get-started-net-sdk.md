@@ -1,22 +1,26 @@
 ---
-title: 使用 Data Lake Store .NET SDK 开发应用程序 | Microsoft Docs
-description: 使用 Azure Data Lake Store .NET SDK 开发应用程序
+title: "使用 Data Lake Store .NET SDK 开发应用程序 | Microsoft 文档"
+description: "使用 Azure Data Lake Store .NET SDK 开发应用程序"
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/15/2016
+ms.date: 09/27/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
+
 
 ---
-# 通过 .NET SDK 实现 Azure Data Lake Store 入门
+# <a name="get-started-with-azure-data-lake-store-using-net-sdk"></a>通过 .NET SDK 实现 Azure Data Lake Store 入门
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,35 +32,28 @@ ms.author: nitinme
 > 
 > 
 
-了解如何使用 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
+了解如何使用 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) 执行基本操作，如创建文件夹、上载和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
 
-## 先决条件
-* **Visual Studio 2013 或 2015**。以下说明使用 Visual Studio 2015。
-* **一个 Azure 订阅**。请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
-* 如果希望应用程序自动进行 Azure Active Directory 身份验证，请**创建 Azure Active Directory 应用程序**。
-  
-  * **非交互式服务主体身份验证** - 必须在 Azure Active Directory 中创建一个 **Web 应用程序**。创建应用程序后，检索以下与应用程序相关的值。
-    
-    * 为应用程序获取**客户端 ID** 和**客户端密码**
-    * 将 Azure Active Directory 应用程序分配给一个角色。该角色可以在要对 Azure Active Directory 应用程序授予权限的范围级别。例如，可以将应用程序分配至订阅级别或资源组级别。
-    
-    有关如何检索这些值、设置权限以及分配角色的说明，请参阅[使用门户创建 Active Directory 应用程序和服务主体](../resource-group-create-service-principal-portal.md)。
+## <a name="prerequisites"></a>先决条件
+* **Visual Studio 2013 或 2015**。 以下说明使用 Visual Studio 2015。
+* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
+* **创建 Azure Active Directory 应用程序**。 使用 Azure AD 应用程序对 Data Lake Store 应用程序进行 Azure AD 身份验证。 有不同的方式可进行 Azure AD 身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[使用 Azure Active Directory 进行 Data Lake Store 身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
-## 创建 .NET 应用程序
+## <a name="create-a-net-application"></a>创建 .NET 应用程序
 1. 打开 Visual Studio，创建一个控制台应用程序。
 2. 在“文件”菜单中，单击“新建”，然后单击“项目”。
-3. 在“新建项目”中，键入或选择以下值：
+3. 在“新建项目”中，键入或选择以下值 ：
    
    | 属性 | 值 |
    | --- | --- |
    | 类别 |模板/Visual C#/Windows |
    | 模板 |控制台应用程序 |
    | Name |CreateADLApplication |
-4. 单击“确定”以创建该项目。
+4. 单击“确定”以创建该项目  。
 5. 将 NuGet 包添加到项目。
    
-   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包”。
+   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” 。
    2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
    3. 搜索并安装以下 NuGet 包：
       
@@ -64,9 +61,9 @@ ms.author: nitinme
       * `Microsoft.Azure.Management.DataLake.StoreUploader` - 本教程使用 v0.10.6 预览版。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.8 预览版。
         
-        ![添加 NuGet 源](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "创建新的 Azure Data Lake 帐户")
-   4. 关闭“NuGet 包管理器”。
-6. 打开“Program.cs”，删除现有代码，然后包含以下语句，添加对命名空间的引用。
+        ![添加 NuGet 源](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "Create a new Azure Data Lake account")
+   4. 关闭“NuGet 包管理器” 。
+6. 打开“Program.cs” ，删除现有代码，然后包含以下语句，添加对命名空间的引用。
    
         using System;
         using System.Threading;
@@ -74,7 +71,7 @@ ms.author: nitinme
         using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
         using Microsoft.Azure.Management.DataLake.StoreUploader;
-7. 按如下所示声明变量，提供已存在的 Data Lake Store 名称和资源组名称的值。此外，确保计算机中必须存在此处提供的本地路径和文件名。在命名空间声明后，添加以下代码片段。
+7. 按如下所示声明变量，提供已存在的 Data Lake Store 名称和资源组名称的值。 此外，确保计算机中必须存在此处提供的本地路径和文件名。 在命名空间声明后，添加以下代码片段。
    
         namespace SdkSample
         {
@@ -86,14 +83,16 @@ ms.author: nitinme
                 private static string _adlsAccountName;
                 private static string _resourceGroupName;
                 private static string _location;
-   
+                private static string _subId;
+
                 private static void Main(string[] args)
                 {
                     _adlsAccountName = "<DATA-LAKE-STORE-NAME>"; // TODO: Replace this value with the name of your existing Data Lake Store account.
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value with the name of the resource group containing your Data Lake Store account.
                     _location = "East US 2";
-   
-                    string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
+                    _subId = "<SUBSCRIPTION-ID>";
+
+                    string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
                     string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                     string remoteFolderPath = "/data_lake_path/";
                     string remoteFilePath = remoteFolderPath + "file.txt";
@@ -103,32 +102,45 @@ ms.author: nitinme
 
 本文的剩余部分介绍如何使用现有的 .NET 方法来执行操作，例如身份验证和文件上传等。
 
-## 身份验证
-可以使用以下代码片段体验交互式登录。
+## <a name="authentication"></a>身份验证
+### <a name="if-you-are-using-enduser-authentication-recommended-for-this-tutorial"></a>如果使用最终用户身份验证（本教程推荐）
+请在现有的 Azure AD“本机客户端”应用程序中使用这种身份验证；下面提供了示例代码。 为了更快完成本教程，我们建议使用此方法。
 
     // User login via interactive popup
-    //    Use the client ID of an existing AAD "Native Client" application.
+    // Use the client ID of an existing AAD "Native Client" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "common"; // Replace this string with the user's Azure Active Directory tenant ID or domain name, if needed.
     var nativeClientApp_clientId = "1950a258-227b-4e31-a9cf-717495945fc2";
-    var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"))
+    var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
     var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
 
-也可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行非交互式身份验证。
+对于上述代码片段，需要注意几个问题。
+
+* 为了帮助读者更快完成本教程，此代码片段使用了为所有 Azure 订阅默认提供的 Azure AD 域和客户端 ID。 因此，可以**在应用程序中按原样使用此代码片段**。
+* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，然后使用所创建的应用程序的 Azure AD 域、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序](../resource-group-create-service-principal-portal.md#create-an-active-directory-application)。
+
+> [!NOTE]
+> 以上链接中的说明适用于 Azure AD web 应用程序。 但是，即使选择创建本地客户端应用程序，步骤也相同。 
+> 
+> 
+
+### <a name="if-you-are-using-servicetoservice-authentication-with-client-secret"></a>如果结合客户端机密使用服务到服务身份验证
+可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../resource-group-create-service-principal-portal.md)使用这种身份验证。
 
     // Service principal / appplication authentication with client secret / key
-    //    Use the client ID and certificate of an existing AAD "Web App" application.
+    // Use the client ID and certificate of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
-    var clientSecret = "<AAD-application-clientid>";
+    var clientSecret = "<AAD-application-client-secret>";
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
-还可以使用以下代码片段通过应用程序证书/服务主体对应用程序进行非交互式身份验证。
+### <a name="if-you-are-using-servicetoservice-authentication-with-certificate"></a>如果结合证书使用服务到服务身份验证
+还可以使用以下代码片段通过应用程序证书/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../resource-group-create-service-principal-portal.md)使用这种身份验证。
 
     // Service principal / application authentication with certificate
-    //    Use the client ID and certificate of an existing AAD "Web App" application.
+    // Use the client ID and certificate of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
@@ -136,19 +148,22 @@ ms.author: nitinme
     var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
     var creds = ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate).Result;
 
-## 创建客户端对象
+## <a name="create-client-objects"></a>创建客户端对象
 以下代码片段创建了 Data Lake Store 帐户和 filesystem 客户端对象，用于向服务发出请求。
 
-    // Create client objects
-    var fileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
+    // Create client objects and set the subscription ID
+    _adlsClient = new DataLakeStoreAccountManagementClient(creds);
+    _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
 
-## 列出某个订阅中的所有 Data Lake Store 帐户
+    _adlsClient.SubscriptionId = _subId;
+
+## <a name="list-all-data-lake-store-accounts-within-a-subscription"></a>列出某个订阅中的所有 Data Lake Store 帐户
 以下代码片段列出了给定 Azure 订阅中的所有 Data Lake Store 帐户。
 
     // List all ADLS accounts within the subscription
     public static List<DataLakeStoreAccount> ListAdlStoreAccounts()
     {
-        var response = _adlsClient.Account.List(_adlsAccountName);
+        var response = _adlsClient.Account.List();
         var accounts = new List<DataLakeStoreAccount>(response);
 
         while (response.NextPageLink != null)
@@ -160,7 +175,7 @@ ms.author: nitinme
         return accounts;
     }
 
-## 创建目录
+## <a name="create-a-directory"></a>创建目录
 以下代码片段演示了 `CreateDirectory` 方法，使用该方法可以在 Data Lake Store 帐户中创建目录。
 
     // Create a directory
@@ -169,7 +184,7 @@ ms.author: nitinme
         _adlsFileSystemClient.FileSystem.Mkdirs(_adlsAccountName, path);
     }
 
-## 上载文件
+## <a name="upload-a-file"></a>上载文件
 以下代码片段演示了 `UploadFile` 方法，使用该方法可以将文件上传到 Data Lake Store 帐户。
 
     // Upload a file
@@ -181,10 +196,10 @@ ms.author: nitinme
         uploader.Execute();
     }
 
-DataLakeStoreUploader 支持在本地文件（或文件夹）路径与 Data Lake Store 之间进行递归上传和下载。
+`DataLakeStoreUploader` 支持在本地文件路径与 Data Lake Store 文件路径之间进行递归上载和下载。    
 
-## 获取文件或目录信息
-以下代码片段演示了 `GetItemInfo` 方法，使用该方法可以检索有关 Data Lake Store 中文件和目录的信息。
+## <a name="get-file-or-directory-info"></a>获取文件或目录信息
+以下代码片段演示了 `GetItemInfo` 方法，使用该方法可以检索有关 Data Lake Store 中文件和目录的信息。 
 
     // Get file or directory info
     public static FileStatusProperties GetItemInfo(string path)
@@ -192,7 +207,7 @@ DataLakeStoreUploader 支持在本地文件（或文件夹）路径与 Data Lake
         return _adlsFileSystemClient.FileSystem.GetFileStatus(_adlsAccountName, path).FileStatus;
     }
 
-## 列出文件或目录
+## <a name="list-file-or-directories"></a>列出文件或目录
 以下代码片段演示了 `ListItem` 方法，使用该方法可以列出 Data Lake Store 帐户中的文件或目录。
 
     // List files and directories
@@ -201,8 +216,8 @@ DataLakeStoreUploader 支持在本地文件（或文件夹）路径与 Data Lake
         return _adlsFileSystemClient.FileSystem.ListFileStatus(_adlsAccountName, directoryPath).FileStatuses.FileStatus.ToList();
     }
 
-## 连接文件
-以下代码片段演示了 `ConcatenateFiles` 方法，使用该方法可以连接文件。
+## <a name="concatenate-files"></a>连接文件
+以下代码片段演示了 `ConcatenateFiles` 方法，使用该方法可以连接文件。 
 
     // Concatenate files
     public static void ConcatenateFiles(string[] srcFilePaths, string destFilePath)
@@ -210,7 +225,7 @@ DataLakeStoreUploader 支持在本地文件（或文件夹）路径与 Data Lake
         _adlsFileSystemClient.FileSystem.Concat(_adlsAccountName, destFilePath, srcFilePaths);
     }
 
-## 附加到文件
+## <a name="append-to-a-file"></a>附加到文件
 以下代片码段演示了 `AppendToFile` 方法，使用该方法可以将数据附加到已存储在 Data Lake Store 帐户中的文件。
 
     // Append to file
@@ -221,7 +236,7 @@ DataLakeStoreUploader 支持在本地文件（或文件夹）路径与 Data Lake
         _adlsFileSystemClient.FileSystem.Append(_adlsAccountName, path, stream);
     }
 
-## 下载文件
+## <a name="download-a-file"></a>下载文件
 下面的代片码段演示了 `DownloadFile` 方法，使用该方法可以从 Data Lake Store 帐户下载文件。
 
     // Download file
@@ -235,11 +250,16 @@ DataLakeStoreUploader 支持在本地文件（或文件夹）路径与 Data Lake
         stream.Close();
     }
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Data Lake Store .NET SDK 参考](https://msdn.microsoft.com/library/mt581387.aspx)
 * [Data Lake Store REST 参考](https://msdn.microsoft.com/library/mt693424.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

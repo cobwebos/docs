@@ -1,16 +1,13 @@
 # [概述](cdn-overview.md)
-## [Azure CDN 最佳实践](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+## [什么是 Azure CDN？](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
 # 入门
-## [使用 Azure CDN](cdn-create-new-endpoint.md)
-## Azure CDN 开发入门
-### [.NET](cdn-app-dev-net.md)
-### [Node.js](cdn-app-dev-node.md)
+## [启用 Azure CDN](cdn-create-new-endpoint.md)
 
 # 如何
 ## 集成
-### [与 Web 应用集成](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
-### [与云服务集成](cdn-cloud-service-with-cdn.md)
-### [与存储集成](cdn-create-a-storage-account-with-cdn.md)
+### [Web 应用](../app-service-web/cdn-websites-with-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+### [云服务](cdn-cloud-service-with-cdn.md)
+### [存储](cdn-create-a-storage-account-with-cdn.md)
 ### [跨域资源共享](cdn-cors.md)
 
 ## 管理
@@ -29,9 +26,6 @@
 ### [用规则覆盖行为](cdn-rules-engine.md)
 ### [获取实时警报](cdn-real-time-alerts.md)
 
-## 自动化
-### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
-
 ## 分析
 ### [分析使用模式](cdn-analyze-usage-patterns.md)
 ### [生成高级 HTTP 报告](cdn-advanced-http-reports.md)
@@ -39,21 +33,25 @@
 ### [分析边缘节点性能](cdn-edge-performance.md)
 
 ## 开发
-### Azure CDN 开发入门
-#### [.NET](cdn-app-dev-net.md)
-#### [Node.js](cdn-app-dev-node.md)
+### [.NET](cdn-app-dev-net.md)
+### [Node.js](cdn-app-dev-node.md)
 
 ## 故障排除
-### [404 状态故障排除](cdn-troubleshoot-endpoint.md)
-### [排查文件压缩问题](cdn-troubleshoot-compression.md)
+### [404 状态](cdn-troubleshoot-endpoint.md)
+### [文件压缩](cdn-troubleshoot-compression.md)
 
-# 引用
-## [REST API 引用](https://msdn.microsoft.com/library/mt634456.aspx)
-
-# 相关内容
+# 参考
+## [PowerShell cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [Azure CDN POP 位置](cdn-pop-locations.md)
+## [REST](https://msdn.microsoft.com/library/mt634456.aspx)
 
 # 资源
-## [Azure CDN POP 位置](cdn-pop-locations.md)
+## [定价](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
+## [服务更新](https://azure.microsoft.com/updates/?product=cdn)
+
 
 
 <!--HONumber=Nov16_HO2-->

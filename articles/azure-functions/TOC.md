@@ -1,5 +1,5 @@
-# [概述](functions-overview.md)
-
+# 概述
+## [什么是 Azure Functions？](functions-overview.md)
 # 入门
 ## [创建第一个函数](functions-create-first-azure-function.md)
 ## [创建 Webhook 函数](functions-create-a-web-hook-or-api-function.md)
@@ -38,10 +38,14 @@
 ## 部署
 ### [Azure Functions 的连续部署](functions-continuous-deployment.md)
 
+# 参考
+## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
 
 # 资源
-## [服务更新](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
+## [定价](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-functions)
+## [服务更新](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
 <!--HONumber=Nov16_HO2-->

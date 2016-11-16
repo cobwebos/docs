@@ -35,7 +35,7 @@
 ### [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 ### [服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)
 ### [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
- 
+
 ## 与 Azure 服务集成
 ### [与 Data Lake Analytics 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [使用门户创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
@@ -51,14 +51,11 @@
 ### [访问诊断日志](data-lake-store-diagnostic-logs.md)
 
 # 引用
-## [.NET SDK](https://msdn.microsoft.com/library/azure/mt581387.aspx)
-## [Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-## [PowerShell cmdlets](https://msdn.microsoft.com/library/azure/mt607120.aspx)
-## [REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
+## [.NET](https://docs.microsoft.com/dotnet/api)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
-
-# 相关内容
-## [Cortana Intelligence Suite](https://www.microsoft.com/en-us/cloud-platform/what-is-cortana-intelligence-suite)
+## [REST](https://docs.microsoft.com/en-us/rest/api/datalakestore/)
 
 # 资源
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)

@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> 若要从 Mobile Engagement 接收推送通知，需要在应用程序中启用 `Silent Remote Notifications`。需要在 Info.plist 文件中，将 remote-notification 值添加到 UIBackgroundModes 数组中。
+> 若要从 Mobile Engagement 接收推送通知，需要在应用程序中启用 `Silent Remote Notifications`。 需要在 Info.plist 文件中，将 remote-notification 值添加到 UIBackgroundModes 数组中。
 > 
 > 
 
@@ -20,8 +20,12 @@
         <array>
         <string>remote-notification</string>
         </array>
-7. 如果使用的是 **Xcode 7+** 和 **iOS 9+**：
+7. 如果使用的是 **Xcode 7+** 和 **iOS 9+**，请执行以下操作：
    
    * 依次启用“目标”中的“推送通知”>“目标名称”>“功能”。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

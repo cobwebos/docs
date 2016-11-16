@@ -1,12 +1,12 @@
 ---
-title: 在 Azure 开发测试实验室中创建实验室 | Microsoft Docs
-description: 在 Azure 开发测试实验室中创建适用于虚拟机的实验室
+title: "在 Azure 开发测试实验室中创建实验室 | Microsoft 文档"
+description: "在 Azure 开发测试实验室中创建适用于虚拟机的实验室"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 8b6d3e70-6528-42a4-a2ef-449575d0f928
 ms.service: devtest-lab
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,36 +14,40 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
+
 
 ---
-# 在 Azure 开发测试实验室中创建实验室
-## 先决条件
+# <a name="create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室
+## <a name="prerequisites"></a>先决条件
 若要创建实验室，需要：
 
-* Azure 订阅。若要了解 Azure 购买选项，请参阅[如何购买 Azure](https://azure.microsoft.com/pricing/purchase-options/) 或[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。必须成为订阅所有者才可以创建实验室。
+* Azure 订阅。 若要了解 Azure 购买选项，请参阅[如何购买 Azure](https://azure.microsoft.com/pricing/purchase-options/) 或[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。 必须成为订阅所有者才可以创建实验室。
 
-## 在 Azure 开发测试实验室中创建实验室的步骤
-以下步骤演示了如何使用 Azure 门户在 Azure 开发测试实验室中创建实验室。
+## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室的步骤
+以下步骤演示了如何使用 Azure 门户在 Azure 开发测试实验室中创建实验室。 
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“更多服务”，然后从列表中选择“开发测试实验室”。
-3. 在“开发测试实验室”边栏选项卡上，选择“添加”。
+3. 在“开发测试实验室”边栏选项卡中，选择“添加”。
    
     ![添加实验室](./media/devtest-lab-create-lab/add-lab-button.png)
-4. 在“创建 开发测试实验室”边栏选项卡上：
+4. 在“创建 开发测试实验室”  边栏选项卡上：
    
-   1. 为新的实验室输入“实验室名称”。
-   2. 选择要与实验室关联的“订阅”。
-   3. 选择用于存储实验室的“位置”。
-   4. 选择“自动关机”，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。
-   5. 选择“存储类型”，指示适用于实验室的 VM 的存储磁盘类型。
-   6. 选择“创建”。
+   1. 为新的实验室输入“实验室名称”  。
+   2. 选择要与实验室关联的“订阅”  。
+   3. 选择用于存储实验室的“位置”  。
+   4. 选择“自动关机”  ，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。
+   5. 选择“存储类型”  ，指示适用于实验室的 VM 的存储磁盘类型。 
+   6. 选择“创建” 。
       
       ![创建实验室边栏选项卡](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 实验室创建完成后，以下是一些可以考虑执行的后续步骤：
 
 * [保护对实验室进行的访问](devtest-lab-add-devtest-user.md)。
@@ -52,4 +56,9 @@ ms.author: tarcher
 * [创建适用于 VM 的自定义项目](devtest-lab-artifact-author.md)。
 * [将含有项目的 VM 添加到实验室](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,12 +1,12 @@
 ---
-title: 适用于 Java 的 Azure IoT 中心入门 | Microsoft Docs
-description: 适用于 Java 的 Azure IoT 中心入门教程。将 Azure IoT 中心和 Java 与 Microsoft Azure IoT SDK 配合使用，实施物联网解决方案。
+title: "适用于 Java 的 Azure IoT 中心入门 | Microsoft Docs"
+description: "适用于 Java 的 Azure IoT 中心入门教程。 将 Azure IoT 中心和 Java 与 Microsoft Azure IoT SDK 配合使用，实施物联网解决方案。"
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 70dae4a8-0e98-4c53-b5a5-9d6963abb245
 ms.service: iot-hub
 ms.devlang: java
 ms.topic: hero-article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7913033d0812d6f6c2ff9a413862cb63c1e5a59e
+
 
 ---
-# 适用于 Java 的 Azure IoT 中心入门
+# <a name="get-started-with-azure-iot-hub-for-java"></a>适用于 Java 的 Azure IoT 中心入门
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 在本教程结束时，你将有三个 Java 控制台应用程序：
 
 * **create-device-identity**，用于创建设备标识和关联的安全密钥以连接模拟设备。
 * **read-d2c-messages**，显示模拟设备发送的遥测数据。
-* **simulated-device**，它使用前面创建的设备标识连接到 IoT 中心，并使用 AMQPS 协议每秒发送遥测消息一次。
+* **simulated-device**，它使用前面创建的设备标识连接到 IoT 中心，并使用 AMQP 协议每秒发送遥测消息一次。
 
 > [!NOTE]
 > [IoT 中心 SDK][lnk-hub-sdks] 一文提供了各种 SDK 的相关信息，你可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序。
@@ -32,38 +36,38 @@ ms.author: dobett
 
 若要完成本教程，您需要以下各项：
 
-* Java SE 8。<br/>[准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Java。
-* Maven 3。<br/>[准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Maven。
-* 有效的 Azure 帐户。（如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。）
+* Java SE 8。 <br/> [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Java。
+* Maven 3。  <br/> [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Maven。
+* 有效的 Azure 帐户。 （如果没有帐户，仅需几分钟即可创建[免费帐户][lnk-free-trial]。）
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-最后，请记下“主密钥”值，然后单击“消息传送”。在“消息传送”边栏选项卡上，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”。创建 **read-d2c-messages** 应用程序时，将要用到这三个值。
+最后，请记下“主密钥”值，然后单击“消息传送”。 在“消息传送”边栏选项卡上，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”。 创建 **read-d2c-messages** 应用程序时，将要用到这三个值。
 
-![][6]
+![Azure 门户 IoT 中心消息传递边栏选项卡][6]
 
-现在，你已创建 IoT 中心并获取了 IoT 中心主机名、IoT 中心连接字符串、IoT 中心主密钥、与事件中心兼容的名称及与事件中心兼容的终结点，接下来需要完成本教程。
+现在，已创建 IoT 中心并有了 IoT 中心主机名、IoT 中心连接字符串、IoT 中心主密钥、与事件中心兼容的名称及与事件中心兼容的终结点，接下来需要完成本教程。
 
-## 创建设备标识
-在本部分中，你将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建新的设备标识。设备无法连接到 IoT 中心，除非它在设备标识注册表中具有条目。有关详细信息，请参阅 [IoT Hub Developer Guide][lnk-devguide-identity]（IoT 中心开发人员指南）的 **Device Identity Registry**（设备标识注册表）部分。当你运行此控制台应用程序时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以使用这些信息标识设备本身。
+## <a name="create-a-device-identity"></a>创建设备标识
+在本部分中，你将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建新的设备标识。 设备无法连接到 IoT 中心，除非它在设备标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]的“设备标识注册表”部分。 当你运行此控制台应用程序时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以使用这些信息标识设备本身。
 
-1. 新建名为 iot-java-get-started 的空文件夹。使用命令提示符中的以下命令，在 iot-java-get-started 文件夹中创建名为 **create-device-identity** 的新 Maven 项目。请注意，这是一条很长的命令：
+1. 新建名为 iot-java-get-started 的空文件夹。 使用命令提示符中的以下命令，在 iot-java-get-started 文件夹中创建名为 **create-device-identity** 的新 Maven 项目。 请注意，这是一条很长的命令：
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 2. 在命令提示符下，导航到新的 create-device-identity 文件夹。
-3. 使用文本编辑器，打开 create-device-identity 文件夹中的 pom.xml 文件，并在 **dependencies** 节点中添加以下依赖项。这可让你在应用程序中使用 iothub-service-sdk 包：
+3. 使用文本编辑器，打开 create-device-identity 文件夹中的 pom.xml 文件，并在 **dependencies** 节点中添加以下依赖项。 这可让你在应用程序中使用 iothub-service-sdk 包：
    
     ```
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.7</version>
+      <version>1.0.9</version>
     </dependency>
     ```
 4. 保存并关闭 pom.xml 文件。
-5. 使用文本编辑器打开 create-device-identity\\src\\main\\java\\com\\mycompany\\app\\App.java 文件。
+5. 使用文本编辑器打开 create-device-identity\src\main\java\com\mycompany\app\App.java 文件。
 6. 在该文件中添加以下 **import** 语句：
    
     ```
@@ -74,7 +78,7 @@ ms.author: dobett
     import java.io.IOException;
     import java.net.URISyntaxException;
     ```
-7. 将以下类级变量添加到 **App** 类，并将 **{yourhubconnectionstring}** 替换为前面记下的值：
+7. 将以下类级变量添加到“应用”类，并将 **{yourhubconnectionstring}** 替换为前面记录的值：
    
     ```
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -86,7 +90,7 @@ ms.author: dobett
     ```
     public static void main( String[] args ) throws IOException, URISyntaxException, Exception
     ```
-9. 添加以下代码作为 **main** 方法的主体。此代码将在 IoT 中心标识注册表中创建名为 *javadevice* 的设备（如果还没有该设备）。然后，显示稍后需要用到的设备 ID 和密钥：
+9. 添加以下代码作为 **main** 方法的主体。 此代码将在 IoT 中心标识注册表中创建名为 *javadevice* 的设备（如果还没有该设备）。 然后，显示稍后需要用到的设备 ID 和密钥：
    
     ```
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
@@ -115,38 +119,38 @@ ms.author: dobett
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
-13. 记下**设备 ID** 和**设备密钥**。稍后在创建连接到作为设备的 IoT 中心的应用程序时需要这些数据。
+13. 记下**设备 ID** 和**设备密钥**。 稍后在创建连接到作为设备的 IoT 中心的应用程序时需要这些数据。
 
 > [!NOTE]
-> IoT 中心标识注册表只存储设备标识，以启用对中心的安全访问。它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志（可用于禁用对单个设备的访问）。如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。有关详细信息，请参阅 [IoT Hub Developer Guide][lnk-devguide-identity]（IoT 中心开发人员指南）。
+> IoT 中心标识注册表只存储设备标识，以启用对中心的安全访问。 它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志（可用于禁用对单个设备的访问）。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
 > 
 > 
 
-## 接收设备到云的消息
-在本部分中，你将创建一个 Java 控制台应用程序，用于读取来自 IoT 中心的设备到云消息。IoT 中心公开与[事件中心][lnk-event-hubs-overview]兼容的终结点，以便你可读取设备到云的消息。为了简单起见，本教程创建的基本读取器不适用于高吞吐量部署。[Process device-to-cloud messages][lnk-process-d2c-tutorial]（处理设备到云的消息）教程介绍了如何大规模处理设备到云的消息。[Get Started with Event Hubs][lnk-eventhubs-tutorial]（事件中心入门）教程更详细地介绍了如何处理来自事件中心的消息，此教程也适用于与 IoT 中心事件中心兼容的终结点。
+## <a name="receive-devicetocloud-messages"></a>接收设备到云的消息
+在本部分中，你将创建一个 Java 控制台应用程序，用于读取来自 IoT 中心的设备到云消息。 IoT 中心公开与[事件中心][lnk-event-hubs-overview]兼容的终结点，以便用户读取设备到云的消息。 为了简单起见，本教程创建的基本读取器不适用于高吞吐量部署。 [处理设备到云消息][lnk-process-d2c-tutorial]教程介绍了如何大规模处理设备到云的消息。 [事件中心入门][lnk-eventhubs-tutorial]教程更详细介绍了如何处理来自事件中心的消息，此教程也适用于与 IoT 中心事件中心兼容的终结点。
 
 > [!NOTE]
-> 读取设备到云消息的事件中心兼容终结点始终使用 AMQPS 协议。
+> 读取设备到云消息的事件中心兼容终结点始终使用 AMQP 协议。
 > 
 > 
 
-1. 在命令提示符下，在*创建设备标识*部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **read-d2c-messages** 的新 Maven 项目。请注意，这是一条很长的命令：
+1. 在命令提示符下，在 *创建设备标识* 部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **read-d2c-messages** 的新 Maven 项目。 请注意，这是一条很长的命令：
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 2. 在命令提示符下，导航到新的 read-d2c-messages 文件夹。
-3. 使用文本编辑器，打开 read-d2c-messages 文件夹中的 pom.xml 文件，并在 **dependencies** 节点中添加以下依赖项。这可让你在应用程序中使用 eventhubs-client 包，以从事件中心兼容的终结点进行读取：
+3. 使用文本编辑器，打开 read-d2c-messages 文件夹中的 pom.xml 文件，并在 **dependencies** 节点中添加以下依赖项。 这可使用户在应用程序中使用 eventhubs-client 包，以从与事件中心兼容的终结点进行读取：
    
     ```
     <dependency> 
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-eventhubs</artifactId> 
-        <version>0.7.1</version> 
+        <version>0.8.2</version> 
     </dependency>
     ```
 4. 保存并关闭 pom.xml 文件。
-5. 使用文本编辑器打开 read-d2c-messages\\src\\main\\java\\com\\mycompany\\app\\App.java 文件。
+5. 使用文本编辑器打开 read-d2c-messages\src\main\java\com\mycompany\app\App.java 文件。
 6. 在该文件中添加以下 **import** 语句：
    
     ```
@@ -162,12 +166,12 @@ ms.author: dobett
     import java.util.function.*;
     import java.util.logging.*;
     ```
-7. 将以下类级变量添加到 **App** 类。将 **{youriothubkey}**、**{youreventhubcompatibleendpoint}** 和 **{youreventhubcompatiblename}** 替换为前面记下的值：
+7. 将以下类级变量添加到 **App** 类。 将 **{youriothubkey}**、**{youreventhubcompatibleendpoint}** 和 **{youreventhubcompatiblename}** 替换为前面记下的值：
    
     ```
     private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
-8. 将以下 **receiveMessages** 方法添加到 **App** 类。此方法创建 **EventHubClient** 实例以连接到与事件中心兼容的终结点，然后以异步方式创建 **PartitionReceiver** 实例，以便从事件中心分区读取。它将持续循环并输出消息详细信息，直到应用程序终止。
+8. 将以下 **receiveMessages** 方法添加到 **App** 类。 此方法创建 **EventHubClient** 实例以连接到与事件中心兼容的终结点，然后以异步方式创建 **PartitionReceiver** 实例，以便从事件中心分区读取。 它将持续循环并输出消息详细信息，直到应用程序终止。
    
     ```
     private static EventHubClient receiveMessages(final String partitionId)
@@ -226,7 +230,7 @@ ms.author: dobett
     ```
    
    > [!NOTE]
-   > 在创建开始运行后只读取发送到 IoT 中心的消息的接收方时，此方法将使用筛选器。这很适合测试环境，因为这样可以看到当前的消息集。在生产环境中，代码应确保它能处理所有消息。有关详细信息，请参阅 [How to process IoT Hub device-to-cloud messages][lnk-process-d2c-tutorial]（如何处理 IoT 中心设备到云的消息）教程。
+   > 在创建开始运行后只读取发送到 IoT 中心的消息的接收方时，此方法将使用筛选器。 这很适合测试环境，因为这样可以看到当前的消息集。 在生产环境中，代码应确保它能处理所有消息。有关详细信息，请参阅[如何处理 IoT 中心设备到云消息][lnk-process-d2c-tutorial]教程。
    > 
    > 
 9. 修改 **main** 方法的签名，包含如下所示的异常：
@@ -234,7 +238,7 @@ ms.author: dobett
     ```
     public static void main( String[] args ) throws IOException
     ```
-10. 在 **App** 类的 **main** 方法中添加以下代码。此代码将创建两个（**EventHubClient** 和 **PartitionReceiver**）实例并让你在处理完消息后关闭应用程序：
+10. 在 **App** 类的 **main** 方法中添加以下代码。 此代码将创建两个（**EventHubClient** 和 **PartitionReceiver**）实例并使用户可在处理完消息后关闭应用程序：
     
     ```
     EventHubClient client0 = receiveMessages("0");
@@ -254,7 +258,7 @@ ms.author: dobett
     ```
     
     > [!NOTE]
-    > 此代码假设已在 F1（免费）层创建 IoT 中心。免费 IoT 中心有“0”和“1”这两个分区。
+    > 此代码假设已在 F1（免费）层创建 IoT 中心。 免费 IoT 中心有“0”和“1”这两个分区。
     > 
     > 
 11. 保存并关闭 App.java 文件。
@@ -264,22 +268,22 @@ ms.author: dobett
     mvn clean package -DskipTests
     ```
 
-## 创建模拟设备应用程序
+## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 在本部分中，你将创建一个 Java 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
 
-1. 在命令提示符下，在*创建设备标识*部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **simulated-device** 的新 Maven 项目。请注意，这是一条很长的命令：
+1. 在命令提示符下，在 *创建设备标识* 部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **simulated-device** 的新 Maven 项目。 请注意，这是一条很长的命令：
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 2. 在命令提示符下，导航到新的 simulated-device 文件夹。
-3. 使用文本编辑器，打开 simulated-device 文件夹中的 pom.xml 文件，并在 **dependencies** 节点中添加以下依赖项。这样，你便可以使用应用程序中的 iothub-java-client 包来与 IoT 中心通信，并将 Java 对象序列化为 JSON：
+3. 使用文本编辑器，打开 simulated-device 文件夹中的 pom.xml 文件，并在 **dependencies** 节点中添加以下依赖项。 这样，你便可以使用应用程序中的 iothub-java-client 包来与 IoT 中心通信，并将 Java 对象序列化为 JSON：
    
     ```
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-device-client</artifactId>
-      <version>1.0.8</version>
+      <version>1.0.14</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -288,7 +292,7 @@ ms.author: dobett
     </dependency>
     ```
 4. 保存并关闭 pom.xml 文件。
-5. 使用文本编辑器打开 simulated-device\\src\\main\\java\\com\\mycompany\\app\\App.java 文件。
+5. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。
 6. 在该文件中添加以下 **import** 语句：
    
     ```
@@ -305,16 +309,16 @@ ms.author: dobett
     import java.util.concurrent.Executors;
     import java.util.concurrent.ExecutorService;
     ```
-7. 将以下类级变量添加到 **App** 类，并将 **{youriothubname}** 替换为你的 IoT 中心名称，将 **{yourdevicekey}** 替换为“创建设备标识”部分中生成的设备密钥值：
+7. 将以下类级变量添加到 **App** 类，并将 **{youriothubname}** 替换为 IoT 中心名称，将 **{yourdevicekey}** 替换为“创建设备标识”部分中生成的设备密钥值：
    
     ```
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
-    private static IotHubClientProtocol protocol = IotHubClientProtocol.AMQPS;
+    private static IotHubClientProtocol protocol = IotHubClientProtocol.AMQP;
     private static String deviceId = "myFirstJavaDevice";
     private static DeviceClient client;
     ```
    
-    本示例应用程序在实例化 **DeviceClient** 对象时使用 **protocol** 变量。你可以使用 HTTPS 或 AMQPS 协议来与 IoT 中心通信。
+    本示例应用程序在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 可以使用 HTTP 或 AMQP 协议来与 IoT 中心通信。
 8. 在 **App** 类中添加以下嵌套的 **TelemetryDataPoint** 类，以指定设备要发送到 IoT 中心的遥测数据：
    
     ```
@@ -328,7 +332,7 @@ ms.author: dobett
       }
     }
     ```
-9. 在 **App** 类中添加以下嵌套的 **EventCallback** 类，以显示 IoT 中心在处理来自模拟设备的消息时返回的确认状态。处理消息时，此方法还会通知应用程序中的主线程：
+9. 在 **App** 类中添加以下嵌套的 **EventCallback** 类，以显示 IoT 中心在处理来自模拟设备的消息时返回的确认状态。 处理消息时，此方法还会通知应用程序中的主线程：
    
     ```
     private static class EventCallback implements IotHubEventCallback
@@ -344,7 +348,7 @@ ms.author: dobett
       }
     }
     ```
-10. 在 **App** 类中添加以下嵌套的 **MessageSender** 类。此类中的 **run** 方法将生成要发送到 IoT 中心的示例遥测数据，并在发送下一条消息之前等待确认：
+10. 在 **App** 类中添加以下嵌套的 **MessageSender** 类。 此类中的 **run** 方法将生成要发送到 IoT 中心的示例遥测数据，并在发送下一条消息之前等待确认：
     
     ```
     private static class MessageSender implements Runnable {
@@ -381,7 +385,7 @@ ms.author: dobett
     }
     ```
     
-    IoT 中心确认前面的消息一秒后，此方法将发送新的设备到云消息。该消息包含具有 deviceId 的 JSON 序列化对象和一个随机生成的编号，用于模拟风速传感器。
+    IoT 中心确认前面的消息一秒后，此方法将发送新的设备到云消息。 该消息包含具有 deviceId 的 JSON 序列化对象和一个随机生成的编号，用于模拟风速传感器。
 11. 将 **main** 方法替换为以下代码，该代码创建用于向 IoT 中心发送设备到云消息的线程：
     
     ```
@@ -408,11 +412,11 @@ ms.author: dobett
     ```
 
 > [!NOTE]
-> 为简单起见，本教程不实现任何重试策略。在生产代码中，你应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，你应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 > 
 > 
 
-## 运行应用程序
+## <a name="run-the-applications"></a>运行应用程序
 现在，你已准备就绪，可以运行应用程序了。
 
 1. 在命令提示符下的 read-d2c 文件夹中，运行以下命令以开始监视 IoT 中心的第一个分区：
@@ -421,28 +425,28 @@ ms.author: dobett
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
    
-    ![][7]
+    ![用于监视设备到云消息的 Java IoT 中心服务客户端应用程序][7]
 2. 在 simulated-device 文件夹中的命令提示符下，运行以下命令开始将遥测数据发送到 IoT 中心：
    
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
    
-    ![][8]
+    ![用于发送设备到云消息的 Java IoT 中心设备客户端应用程序][8]
 3. [Azure 门户][lnk-portal]中的“使用情况”磁贴显示发送到中心的消息数：
    
-    ![][43]
+    ![显示发送到 IoT 中心的消息数的 Azure 门户“使用情况”磁贴][43]
 
-## 后续步骤
-在本教程中，你已在门户中配置了新的 IoT 中心，然后在中心的标识注册表中创建了设备标识。你已使用此设备标识来让模拟设备应用向中心发送设备到云的消息，并创建了用于显示中心所接收消息的应用。
+## <a name="next-steps"></a>后续步骤
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后中心的标识注册表中创建了设备标识。 你已使用此设备标识来让模拟设备应用向中心发送设备到云的消息， 并创建了用于显示中心所接收消息的应用。 
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
-* [连接你的设备][lnk-connect-device]
+* [连接设备][lnk-connect-device]
 * [设备管理入门][lnk-device-management]
-* [网关 SDK 入门][lnk-gateway-SDK]
+* [IoT 网关 SDK 入门][lnk-gateway-SDK]
 
-若要了解如何扩展 IoT 解决方案和如何大规模处理设备到云的消息，请参阅 [Process device-to-cloud messages][lnk-process-d2c-tutorial]（处理设备到云的消息）教程。
+若要了解如何扩展 IoT 解决方案和如何大规模处理设备到云的消息，请参阅[处理设备到云消息][lnk-process-d2c-tutorial]教程。
 
 <!-- Images. -->
 [6]: ./media/iot-hub-java-java-getstarted/create-iot-hub6.png
@@ -454,13 +458,13 @@ ms.author: dobett
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
+[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-[lnk-hub-sdks]: iot-hub-sdks-summary.md
+[lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
@@ -468,4 +472,8 @@ ms.author: dobett
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

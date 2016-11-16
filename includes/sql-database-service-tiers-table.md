@@ -1,4 +1,4 @@
-### 基本服务层
+### <a name="basic-service-tier"></a>基本服务层
 |  |  |
 | --- | --- |
 | 最大 DTU 数 |5 |
@@ -10,7 +10,7 @@
 | 时间点还原 |过去 7 天的任一时间点 |
 | 灾难恢复 |活动异地复制 |
 
-### 标准服务层
+### <a name="standard-service-tier"></a>标准服务层
 |  |  |
 | --- |:---:|
 | **S0** &nbsp;&nbsp;&nbsp;&nbsp; **S1** &nbsp;&nbsp;&nbsp;&nbsp; **S2** &nbsp;&nbsp;&nbsp; **S3** | |
@@ -23,7 +23,7 @@
 | 时间点还原 |过去 35 天的任一时间点 |
 | 灾难恢复 |活动异地复制 |
 
-### 高级服务层
+### <a name="premium-service-tier"></a>高级服务层
 |  |  |
 | --- |:---:|
 | **P1** &nbsp;&nbsp;&nbsp;&nbsp; **P2** &nbsp;&nbsp;&nbsp;&nbsp; **P4** &nbsp;&nbsp;&nbsp; **P6/P3** &nbsp;&nbsp; **P11** &nbsp;&nbsp; **P15** | |
@@ -33,7 +33,11 @@
 | 最大并发辅助进程数 |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
 | 最大并发登录数 |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
 | 最大并发会话数 |2400 &nbsp;4800 &nbsp; 9600 &nbsp;19200 &nbsp;32000 &nbsp;32000 |
-| Point-in-time-restore |过去 35 天的任一时间点 |
+| 时间点还原 |过去 35 天的任一时间点 |
 | 灾难恢复 |活动异地复制 |
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -54,15 +54,19 @@
 ### [自定义分析器](https://msdn.microsoft.com/library/azure/mt605304)
 ### [多语言搜索](search-language-support.md)
 
-# 引用
-## [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165)
-## [服务 REST API](https://msdn.microsoft.com/library/azure/dn798935)
-## [服务 REST API（预览版）](search-api-2015-02-28-preview.md)
-## [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684)
+# 参考
 ## [API 版本](search-api-versions.md)
+## [Java](/java/api/)
+## [.NET](/dotnet/api/)
 ## [Lucene 查询语法](https://msdn.microsoft.com/library/azure/mt589323)
 ## [简单的查询语法](https://msdn.microsoft.com/library/azure/dn798920)
+## [服务 REST](/rest/api/searchservice/)
+## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
+## [管理 REST](/rest/api/searchmanagement/)
+
 # 资源
+## [服务更新](https://azure.microsoft.com/updates/?product=search)
+## [定价](https://azure.microsoft.com/pricing/details/search/)
 ## 演示站点
 ### [作业列表应用](http://aka.ms/azjobsdemo)
 ### [实时演示应用](https://searchsamples.azurewebsites.net/)
@@ -73,7 +77,7 @@
 ## 合作伙伴和社区
 ### [为关系数据建模](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
 ### [多层分面](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
+### [论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-search)
 ### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 

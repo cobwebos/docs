@@ -1,8 +1,8 @@
-## 使用 PowerShell 部署 ARM 模板
+## <a name="deploy-the-arm-template-by-using-powershell"></a>使用 PowerShell 部署 ARM 模板
 若要使用 PowerShell 部署下载的 ARM 模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
-2. 如有必要，运行 **`New-AzureRmResourceGroup`** cmdlet 创建一个新的资源组。以下命令在*“美国中部”*Azure 区域创建了一个名为 *TestRG* 的资源组。有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/resource-group-overview.md)。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) （如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+2. 如有必要，运行 **`New-AzureRmResourceGroup`** cmdlet 创建一个新的资源组。 以下命令在“美国中部”Azure 区域中创建一个名为 *TestRG* 的资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md)。
    
         New-AzureRmResourceGroup -Name TestRG -Location centralus
    
@@ -67,7 +67,7 @@
         Subnets           : [
                               {
                                 "Name": "FrontEnd",
-                                "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+                                "Etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
                                 "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
                                 "AddressPrefix": "192.168.1.0/24",
                                 "IpConfigurations": [],
@@ -77,7 +77,7 @@
                               },
                               {
                                 "Name": "BackEnd",
-                                "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+                                "Etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
                                 "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
                                 "AddressPrefix": "192.168.2.0/24",
                                 "IpConfigurations": [],
@@ -87,4 +87,6 @@
                               }
                             ]
 
-<!---HONumber=AcomDC_0921_2016-->
+<!--HONumber=Nov16_HO2-->
+
+

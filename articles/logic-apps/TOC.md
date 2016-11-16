@@ -27,7 +27,7 @@
 ### [故障排除提示](../app-service-logic/app-service-logic-diagnosing-failures.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [限制和配置](../app-service-logic/app-service-logic-limits-and-config.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
-## Enterprise Integration Pack (EIP)
+## 使用 Enterprise Integration Pack (EIP)
 ### [Enterprise Integration Pack](../app-service-logic/app-service-logic-enterprise-integration-overview.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [集成帐户概述](../app-service-logic/app-service-logic-enterprise-integration-create-integration-account.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [协议](../app-service-logic/app-service-logic-enterprise-integration-agreements.md?toc=%2fazure%2flogic-apps%2ftoc.json)
@@ -54,11 +54,11 @@
 ### [X12 跟踪架构](../app-service-logic/app-service-logic-track-integration-account-x12-tracking-shemas.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [自定义跟踪架构](../app-service-logic/app-service-logic-track-integration-account-custom-tracking-shema.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
-## 网关
+## 使用网关
 ### [连接本地](../app-service-logic/app-service-logic-gateway-connection.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [安装](../app-service-logic/app-service-logic-gateway-install.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
-## 发布
+## 自动化
 ### [自动化模板](../app-service-logic/app-service-logic-create-deploy-template.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [从 VS 发布](../app-service-logic/app-service-logic-deploy-from-vs.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
@@ -67,14 +67,26 @@
 ### [集成帐户](../app-service-logic/app-service-logic-enterprise-integration-accounts.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [定价](../app-service-logic/app-service-logic-pricing.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
-# 引用
+# 参考
 ## 架构历史记录
 ### [GA](../app-service-logic/app-service-logic-schema-2016-04-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [预览](../app-service-logic/app-service-logic-schema-2015-08-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
+## [PowerShell Cmdlets](/powershell/resourcemanager/)
+## [.NET](https://msdn.microsoft.com/library/azure/mt416943)
+## [REST API](/rest/api/logic/)
+
 ## 2014 架构（在 GA 之前）
 ### [Azure 资源连接器](../app-service-logic/app-service-logic-connector-azure-resource.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [文件连接器](../app-service-logic/app-service-logic-connector-file.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+
+# 资源
+## [定价](https://azure.microsoft.com/pricing/details/logic-apps/)  
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps) 
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-logic-apps)
+## [服务更新](https://azure.microsoft.com/updates/?product=logic-apps) 
+
+
 
 <!--HONumber=Nov16_HO2-->
 

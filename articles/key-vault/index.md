@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Key Vault Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: d6059070f8cb8765986763a2ae52068ab692d41d
+ms.openlocfilehash: 9614778d6c7502f16639d2ccb2f259a98be5b0c9
 
-Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud applications and services. By using Key Vault, you can encrypt keys and secrets (such as authentication keys, storage account keys, data encryption keys, .PFX files, and passwords) by using keys that are protected by hardware security modules (HSMs). For added assurance, you can import or generate keys in HSMs.
+---
+# <a name="key-vault-documentation"></a>密钥保管库文档
+
+Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过密钥保管库，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud app
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Key Vault</h3>
+                        <h3>了解密钥保管库</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud app
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Key Vault Video Library</h3>
+                        <h3>密钥保管库视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud app
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Key Vault</h3>
+                        <h3>密钥保管库入门</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud app
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Key Vault from a Web Application</h3>
+                        <h3>通过 Web 应用程序开始使用密钥保管库</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud app
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Set up Azure Key Vault with end-to-end key rotation and auditing</h3>
+                        <h3>使用端到端密钥轮替和审核设置 Azure 密钥保管库</h3>
                     </div>
                 </div>
             </div>
@@ -100,22 +104,22 @@ Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud app
 
 ---
 
-## Reference
+## <a name="reference"></a>参考
 
-### PowerShell
-[Azure PowerShell Reference](/PowerShell/azureps-cmdlets-docs)
+### <a name="powershell"></a>PowerShell
+[Azure PowerShell 参考](/PowerShell/azureps-cmdlets-docs)
 
-### Azure CLI 
-[Key Vault using Azure CLI](/cli/azure/keyvault)
+### <a name="azure-cli"></a>Azure CLI 
+[在 Azure CLI 中使用密钥保管库](/cli/azure/keyvault)
 
-### Java 
-[Key Vault in Java Reference](/java/api/)
+### <a name="java"></a>Java 
+[Java 中的密钥保管库参考](/java/api/)
 
-### .NET 
-[Key Vault Managed Reference API](/dotnet/api/) 
+### <a name="net"></a>.NET 
+[密钥保管库托管参考 API](/dotnet/api/) 
 
-### REST 
-[Key Vault REST API Reference](/rest/api/keyvault) 
+### <a name="rest"></a>REST 
+[密钥保管库 REST API 参考](/rest/api/keyvault) 
 
 ---
 
@@ -123,7 +127,12 @@ Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud app
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/key-vault.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Key Vault Documentation
-        </div>
+下载密钥保管库文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

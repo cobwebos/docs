@@ -1,12 +1,16 @@
 ---
 layout: LandingPage
----
-#Azure Resource Manager Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 00db07b08a15b37c38e6c3a303e3e35cf16b0774
+ms.openlocfilehash: 8976abfecb246fa1f0d5183308f4d2cdf5d5f3dd
 
-Azure Resource Manager enables you to repeatedly deploy your app and have confidence your resources are deployed in a consistent state. You define the infrastructure and dependencies for your app in a single declarative template. The infrastructure for your application is typically made up of many components – maybe a virtual machine, storage account, and virtual network, or a web app, database, database server, and 3rd party services. You do not see these components as separate entities, instead you see them as related and interdependent parts of a single entity. You want to deploy, manage, and monitor them as a group. Azure Resource Manager enables you to work with the resources in your solution as a group. You can deploy, update, or delete all the resources for your solution in a single, coordinated operation. You use a template for deployment and that template can work for different environments such as testing, staging, and production. Resource Manager provides security, auditing, and tagging features to help you manage your resources after deployment. 
+---
+#<a name="azure-resource-manager-documentation"></a>Azure Resource Manager 文档
+
+通过使用 Azure Resource Manager，可以反复部署应用，并可以确保资源部署的一致性。 可在单个说明性模板中定义应用的基础结构和依赖关系。 应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果你希望以组的方式部署、管理和监视这些这些组件， 那么，你可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。 
 
 <ul class="panelContent cardsFTitle">
-	<li>
+    <li>
         <a href="/azure/Azure-Resource-Manager/resource-group-overview">
         <div class="cardSize">
             <div class="cardPadding">
@@ -17,7 +21,7 @@ Azure Resource Manager enables you to repeatedly deploy your app and have confid
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Resource Manager</h3>
+                        <h3>了解 Azure Resource Manager</h3>
                     </div>
                 </div>
             </div>
@@ -35,14 +39,14 @@ Azure Resource Manager enables you to repeatedly deploy your app and have confid
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Resource Manager Video Library</h3>
+                        <h3>Azure Resource Manager 视频库</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-	<li>
+    <li>
         <a href="/azure/resource-manager-template-walkthrough/">
         <div class="cardSize">
             <div class="cardPadding">
@@ -53,14 +57,14 @@ Azure Resource Manager enables you to repeatedly deploy your app and have confid
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Azure Resource Manager Template</h3>
+                        <h3>创建 Azure Resource Manager 模板</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-	<li>
+    <li>
         <a href="/azure/resource-group-define-dependencies/">
         <div class="cardSize">
             <div class="cardPadding">
@@ -71,7 +75,7 @@ Azure Resource Manager enables you to repeatedly deploy your app and have confid
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create dependencies in Azure Resource Manager templates</h3>
+                        <h3>在 Azure Resource Manager 模板中创建依赖关系</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Resource Manager enables you to repeatedly deploy your app and have confid
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create multiple instances of resources in Azure Resource Manager</h3>
+                        <h3>在 Azure Resource Manager 中创建多个资源实例</h3>
                     </div>
                 </div>
             </div>
@@ -100,35 +104,39 @@ Azure Resource Manager enables you to repeatedly deploy your app and have confid
 
 ---
 
-##Reference
+##<a name="reference"></a>参考
 
-###PowerShell
+###<a name="powershell"></a>PowerShell
 [PowerShell cmdlets](/powershell/azureps-cmdlets-docs/)
 
-###Azure CLI
+###<a name="azure-cli"></a>Azure CLI
 [Azure CLI](/cli/azure)
 
-###.NET
-[Manage Azure resources and resource groups with .NET](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-dotnet-resources-and-groups/)
+###<a name="net"></a>.NET
+[使用 .NET 管理 Azure 资源和资源组](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 
-###Java
-[Getting Started with Resources - Manage Resource - in Java](https://azure.microsoft.com/en-us/documentation/samples/resources-java-manage-resource/)
+###<a name="java"></a>Java
+[资源入门 - 在 Java 中管理资源](https://azure.microsoft.com/en-us/documentation/samples/resources-java-manage-resource/)
 
-###Node.js
-[Manage Azure resources and resource groups with Node.js](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-node-resources-and-groups/)
+###<a name="nodejs"></a>Node.js
+[使用 Node.js 管理 Azure 资源和资源组](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-node-resources-and-groups/)
 
-###Python
-[Manage Azure resources and resource groups with Python](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-python-resources-and-groups/)
+###<a name="python"></a>Python
+[使用 Python 管理 Azure 资源和资源组](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-python-resources-and-groups/)
 
-###Ruby
-[Manage Azure resources and resource groups with Ruby](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-ruby-resources-and-groups/)
+###<a name="ruby"></a>Ruby
+[使用 Ruby 管理 Azure 资源和资源组](https://azure.microsoft.com/en-us/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 ---
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-resource-manager.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Azure Resource Manager Documentation
-        </div>
+下载 Azure Resource Manager 文档 </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO2-->
+
+

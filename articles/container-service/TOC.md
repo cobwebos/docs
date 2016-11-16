@@ -1,5 +1,5 @@
 # 概述
-## [ACS 简介](container-service-intro.md)
+## [什么是 Azure 容器服务？](container-service-intro.md)
 # 入门
 
 ## [部署 ACS 群集](container-service-deployment.md)
@@ -20,13 +20,12 @@
 ## 使用 Docker Swarm 进行管理
 ### [Docker Swarm 概述](container-service-docker-swarm.md)
 
-# 引用
-
-## [REST API](https://go.microsoft.com/fwlink/p/?linkid=833499)
+# 参考
+## [REST API](https://docs.microsoft.com/rest/api/compute/containerservices/)
 
 # 资源
-
 ## [上市区域](https://azure.microsoft.com/regions/services/)
+## [定价](https://azure.microsoft.com/pricing/details/container-service/)
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 

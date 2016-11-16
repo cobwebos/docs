@@ -91,8 +91,12 @@
 ### [排查数据工厂问题](data-factory-troubleshoot.md)
 ### [解决数据管理网关的使用问题](data-factory-troubleshoot-gateway-issues.md)
 ### [使用 Azure Resource Manager 模板进行部署](data-factory-how-to-use-resource-manager-templates.md)
-# 引用 
+
+# 引用
 ## [Azure 数据工厂开发人员参考](data-factory-sdks.md)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [.NET](https://docs.microsoft.com/dotnet/api)
+## [REST](https://docs.microsoft.com/rest/api/datafactory/)
 
 # 资源：
 ## [案例研究](data-factory-customer-case-studies.md)
@@ -103,13 +107,6 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory)
 ## [请求功能](https://feedback.azure.com/forums/270578-azure-data-factory)
 ## [数据管理网关的发行说明](data-factory-gateway-release-notes.md)
-
-
-
-
-
-
-
 
 
 <!--HONumber=Nov16_HO2-->

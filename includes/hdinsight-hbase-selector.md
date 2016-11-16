@@ -1,7 +1,11 @@
 > [!div class="op_single_selector"]
-> * [Linux 群集](../articles/hdinsight/hdinsight-hbase-tutorial-get-started-linux.md)
-> * [Windows 群集](../articles/hdinsight/hdinsight-hbase-tutorial-get-started.md)
+> * [Linux cluster](../articles/hdinsight/hdinsight-hbase-tutorial-get-started-linux.md)
+> * [Windows cluster](../articles/hdinsight/hdinsight-hbase-tutorial-get-started.md)
 > 
 > 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

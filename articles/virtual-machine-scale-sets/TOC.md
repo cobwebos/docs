@@ -26,11 +26,12 @@
 ### [对自动缩放进行故障排除](virtual-machine-scale-sets-troubleshoot.md)
 
 # 引用
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
-## [规模集 REST API](/rest/api/compute/virtualmachinescalesets)
-## [规模集 VM REST API](/rest/api/compute/virtualmachinescalesetvms)
-## [Azure PowerShell](/powershell/resourcemanager/)
-## [Azure 模板](https://azure.microsoft.com/documentation/templates/?term=vmss)
+## [REST](/rest/api/compute/)
+
+# 资源
+## [定价](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 
 
 <!--HONumber=Nov16_HO2-->

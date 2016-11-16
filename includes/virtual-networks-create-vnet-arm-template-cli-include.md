@@ -1,7 +1,7 @@
-## 使用 Azure CLI 部署 ARM 模板
+## <a name="deploy-the-arm-template-by-using-the-azure-cli"></a>使用 Azure CLI 部署 ARM 模板
 若要使用 Azure CLI 部署下载的 ARM 模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../articles/xplat-cli-install.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果你从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](../articles/xplat-cli-install.md) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **`azure config mode`** 命令切换到 Resource Manager 模式（如下所示）。
    
         azure config mode arm
@@ -9,7 +9,7 @@
     下面是上述命令的预期输出：
    
         info:    New mode is arm
-3. 如有必要，运行 **`azure group create`** 创建一个新的资源组（如下所示）。请注意命令的输出。在输出后显示的列表说明了所用的参数。有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/resource-group-overview.md)。
+3. 如有必要，运行 **`azure group create`** 创建一个新的资源组（如下所示）。 请注意命令的输出。 在输出后显示的列表说明了所用的参数。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md)。
    
         azure group create -n TestRG -l centralus
    
@@ -27,9 +27,9 @@
         data:
         info:    group create command OK
    
-   * **-n（或 --name）**。新资源组的名称。对于我们的方案，为 *TestRG*。
-   * **-l（或 --location）**。将在其中创建新资源组的 Azure 区域。对于我们的方案，为 *centralus*。
-4. 运行 **`azure group deployment create`** cmdlet，使用你在前面下载并修改的模板和参数文件部署新 VNet。在输出后显示的列表说明了所用的参数。
+   * **-n（或 --name）**。 新资源组的名称。 对于我们的方案，为 *TestRG*。
+   * **-l（或 --location）**。 将在其中创建新资源组的 Azure 区域。 对于我们的方案，为 *centralus*。
+4. 运行 **`azure group deployment create`** cmdlet，使用你在前面下载并修改的模板和参数文件部署新 VNet。 在输出后显示的列表说明了所用的参数。
    
         azure group deployment create -g TestRG -n TestVNetDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
    
@@ -58,9 +58,9 @@
         data:    subnet2Name    String  BackEnd
         info:    group deployment create command OK
    
-   * **-g（或 --resource-group）**。将在其中创建新 VNet 的资源组的名称。
-   * **-f（或 --template-file）**。ARM 模板文件的路径。
-   * **-e（或 --parameters-file）**。ARM 参数文件的路径。
+   * **-g（或 --resource-group）**。 将在其中创建新 VNet 的资源组的名称。
+   * **-f（或 --template-file）**。 ARM 模板文件的路径。
+   * **-e（或 --parameters-file）**。 ARM 参数文件的路径。
 5. 运行 **`azure network vnet show`** 命令，查看新 vnet 的属性（如下所示）。
    
         azure network vnet show -g TestRG -n TestVNet
@@ -85,4 +85,8 @@
         data:
         info:    network vnet show command OK
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

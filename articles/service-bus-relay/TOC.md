@@ -13,18 +13,21 @@
 ## [身份验证和授权](../service-bus-messaging/service-bus-authentication-and-authorization.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
 ## [中断和灾难计划](../service-bus-messaging/service-bus-outages-disasters.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
 
-# 引用
+# 参考
 ## [示例](service-bus-relay-samples.md)
-## [.NET API 参考](https://msdn.microsoft.com/library/azure/jj933424)
 ## [异常](../service-bus-messaging/service-bus-messaging-exceptions.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
 ## [配额](../service-bus-messaging/service-bus-quotas.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [.NET](/dotnet/api/)
+## [REST](/rest/api/servicebus/)
 
 # 资源
 ## [博客](https://blogs.msdn.microsoft.com/servicebus/)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/servicebus)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/forums/home?forum=servbus)
 ## [定价](https://azure.microsoft.com/pricing/details/service-bus/)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
+## [服务更新](https://azure.microsoft.com/updates/?product=service-bus)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
 <!--HONumber=Nov16_HO2-->

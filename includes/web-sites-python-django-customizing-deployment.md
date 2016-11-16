@@ -25,12 +25,15 @@
     \.deployment
     \deploy.cmd
 
-可使用 [Azure 命令行接口][Azure 命令行接口]创建这些文件。从项目文件夹使用以下命令：
+可以使用 [Azure 命令行接口][Azure 命令行接口]创建这些文件。  从项目文件夹使用以下命令：
 
     azure site deploymentscript --python
 
-这些文件不存在时，Azure 创建一个临时部署脚本然后运行此脚本。它等同于使用以上命令创建的脚本。
+这些文件不存在时，Azure 创建一个临时部署脚本然后运行此脚本。  它等同于使用以上命令创建的脚本。
 
 [Azure 命令行接口]: http://azure.microsoft.com/downloads/
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Nov16_HO2-->
+
+

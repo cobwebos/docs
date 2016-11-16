@@ -38,7 +38,7 @@
 ### [IIS Web 应用](multi-factor-authentication-get-started-server-iis.md)
 ### [远程桌面网关](multi-factor-authentication-get-started-server-rdg.md)
 
-## 开发应用程序
+## 开发 
 ### [构建到自定义应用中 (SDK)](multi-factor-authentication-sdk.md)
 
 ## 故障排除

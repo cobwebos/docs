@@ -1,23 +1,27 @@
 ---
-title: 试用 SQL 数据库：使用 C# 创建 SQL 数据库 | Microsoft Docs
-description: 尝试使用 SQL 数据库开发 SQL 和 C# 应用，并使用适用于 .NET 的 SQL 数据库库以 C# 创建 Azure SQL 数据库。
-keywords: 试用 sql, sql c#
+title: "试用 SQL 数据库：使用 C# 创建 SQL 数据库 | Microsoft Docs"
+description: "尝试使用 SQL 数据库开发 SQL 和 C# 应用，并使用适用于 .NET 的 SQL 数据库库以 C# 创建 Azure SQL 数据库。"
+keywords: "试用 sql, sql c#"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: csharp
 ms.workload: data-management
-ms.date: 09/14/2016
+ms.date: 10/04/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0ffe433d9899610d5ff83c66b6cdaaecd16e9c57
+
 
 ---
-# 试用 SQL 数据库：使用 C# 通过适用于 .NET 的 SQL 数据库库创建 SQL 数据库
+# <a name="try-sql-database-use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>试用 SQL 数据库：使用 C# 通过适用于 .NET 的 SQL 数据库库创建 SQL 数据库
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-get-started.md)
 > * [C#](sql-database-get-started-csharp.md)
@@ -25,41 +29,46 @@ ms.author: sstein
 > 
 > 
 
-了解如何使用[适用于 .NET 的 Azure SQL 数据库](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)通过 C# 创建 Azure SQL 数据库。本文将介绍如何使用 SQL 和 C# 创建单一数据库。若要创建弹性数据库池，请参阅[创建弹性数据库池](sql-database-elastic-pool-create-portal.md)。
+了解如何使用[用于 .NET 的 Microsoft Azure SQL 管理库](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)通过 C# 创建 Azure SQL 数据库。 本文将介绍如何使用 SQL 和 C# 创建单一数据库。 若要创建弹性数据库池，请参阅[创建弹性数据库池](sql-database-elastic-pool-create-csharp.md)。
 
-适用于 .NET 的 Azure SQL 数据库库提供了基于 [Azure 资源管理器](../resource-group-overview.md)的 API，用于包装[基于资源管理器的 SQL 数据库 REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx)。
+用于 .NET 的 Azure SQL 数据库管理库提供了基于 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 的 API，用于包装[基于 Resource Manager 的 SQL 数据库 REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx)。
 
 > [!NOTE]
-> 适用于 .NET 的 Azure SQL 数据库库目前以预览版提供。
+> SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型](../azure-resource-manager/resource-group-overview.md)时才可用，因此，始终应该使用最新版本的**用于 .NET 的 Azure SQL 数据库管理库（[文档](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)）**。 以前的[基于经典部署模型的库](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)只是为了向后兼容而受到支持，因此，建议使用较新的基于 Resource Manager 的库。
 > 
 > 
 
 若要完成本文中的步骤，需要以下各项：
 
-* Azure 订阅。如果需要 Azure 订阅，只需单击本页顶部的“免费帐户”，然后再返回完成本文中的相关操作即可。
-* Visual Studio。如需 Visual Studio 的免费副本，请参阅 [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)页。
-
-## 创建控制台应用并安装所需的库
-1. 启动 Visual Studio。
-2. 单击“文件”>“新建”>“项目”。
-3. 创建一个 C# **控制台应用程序**，并将其命名为：*SqlDbConsoleApp*
-
-若要使用 C# 创建 SQL 数据库，请加载所需的管理库（使用[程序包管理器控制台](http://docs.nuget.org/Consume/Package-Manager-Console)）：
-
-1. 依次单击“工具”>“NuGet 包管理器”>“程序包管理器控制台”。
-2. 键入 `Install-Package Microsoft.Azure.Management.Sql –Pre` 安装 [Microsoft Azure SQL 管理库](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)。
-3. 键入 `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` 安装 [Microsoft Azure Resource Manager 库](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)。
-4. 键入 `Install-Package Microsoft.Azure.Common.Authentication –Pre` 安装 [Microsoft Azure 常见身份验证库](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)。
+* Azure 订阅。 如果需要 Azure 订阅，只需单击本页顶部的“免费帐户”  ，然后再返回完成本文中的相关操作即可。
+* Visual Studio。 如需 Visual Studio 的免费副本，请参阅 [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs) 页。
 
 > [!NOTE]
-> 本文中的示例使用每个 API 请求的同步形式，并会一直阻塞，直到对基础服务的 REST 调用完成。有可用的异步方法。
+> 本文将创建一个新的空白 SQL 数据库。 修改以下示例中的 CreateOrUpdateDatabase(...) 方法，即可复制数据库、缩放数据库、在池中创建数据库，等等。有关详细信息，请参阅 [DatabaseCreateMode](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databasecreatemode.aspx) 和 [DatabaseProperties](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databaseproperties.aspx) 类。
 > 
 > 
 
-## 创建 SQL 数据库服务器、防火墙规则和 SQL 数据库 - C# 示例
-以下示例将创建资源组、服务器、防火墙规则和 SQL 数据库。若要获取 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` 变量，请参阅[创建服务主体以访问资源](#create-a-service-principal-to-access-resources)。
+## <a name="create-a-console-app-and-install-the-required-libraries"></a>创建控制台应用并安装所需的库
+1. 启动 Visual Studio。
+2. 单击“文件” > “新建” > “项目”。
+3. 创建一个 C# **控制台应用程序** ，并将其命名为： *SqlDbConsoleApp*
 
-将 **Program.cs** 的内容替换为以下内容，并使用应用值更新 `{variables}`（不要包括 `{}`）。
+若要使用 C# 创建 SQL 数据库，请加载所需的管理库（使用 [程序包管理器控制台](http://docs.nuget.org/Consume/Package-Manager-Console)）：
+
+1. 单击“工具” > “NuGet 包管理器” > “包管理器控制台”。
+2. 键入 `Install-Package Microsoft.Azure.Management.Sql –Pre` 安装最新的 [Microsoft Azure SQL 管理库](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)。
+3. 键入 `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` 安装 [Microsoft Azure Resource Manager 库](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)。
+4. 键入 `Install-Package Microsoft.Azure.Common.Authentication –Pre` 安装 [Microsoft Azure 常见身份验证库](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)。 
+
+> [!NOTE]
+> 本文中的示例使用每个 API 请求的同步形式，并会一直阻塞，直到对基础服务的 REST 调用完成。 有可用的异步方法。
+> 
+> 
+
+## <a name="create-a-sql-database-server-firewall-rule-and-sql-database-c-example"></a>创建 SQL 数据库服务器、防火墙规则和 SQL 数据库 - C# 示例
+以下示例将创建资源组、服务器、防火墙规则和 SQL 数据库。 请参阅[创建用于访问资源的服务主体](#create-a-service-principal-to-access-resources)获取 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` 变量。
+
+将 **Program.cs** 的内容替换为以下内容，使用应用值更新 `{variables}`（请不要包含 `{}`）。
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.ResourceManager;
@@ -218,8 +227,8 @@ ms.author: sstein
 
 
 
-## 创建服务主体以访问资源
-以下 PowerShell 脚本创建 Active Directory (AD) 应用程序和服务主体，我们需要对 C# 应用进行身份验证。该脚本输出我们需要用于前面 C# 示例的值。有关详细信息，请参阅[使用 Azure PowerShell 创建服务主体以访问资源](../resource-group-authenticate-service-principal.md)。
+## <a name="create-a-service-principal-to-access-resources"></a>创建服务主体以访问资源
+以下 PowerShell 脚本创建 Active Directory (AD) 应用程序和服务主体，我们需要对 C# 应用进行身份验证。 该脚本输出我们需要用于前面 C# 示例的值。 有关详细信息，请参阅 [使用 Azure PowerShell 创建服务主体以访问资源](../resource-group-authenticate-service-principal.md)。
 
     # Sign in to Azure.
     Add-AzureRmAccount
@@ -261,12 +270,12 @@ ms.author: sstein
 
 
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 既然你已试用 SQL 数据库并使用 C# 设置了数据库，现在可以阅读以下文章：
 
 * [使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询](sql-database-connect-query-ssms.md)
 
-## 其他资源
+## <a name="additional-resources"></a>其他资源
 * [SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)
 * [数据库类](https://msdn.microsoft.com/library/azure/microsoft.azure.management.sql.models.database.aspx)
 
@@ -281,4 +290,8 @@ ms.author: sstein
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,16 +1,16 @@
 # [概述](media-services-overview.md)
 ## [概念](media-services-concepts.md)
-## [定价](https://azure.microsoft.com/pricing/details/media-services/)
-## [发行说明](media-services-release-notes.md)
+
+
 # 入门
 ## [创建和管理帐户](media-services-portal-create-account.md)
 ## [设置开发环境](media-services-set-up-computer.md)
-## 点播视频
+## 传送点播视频
 ### [门户](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
 ### [Java](media-services-java-how-to-use.md)
 ### [REST](media-services-rest-get-started.md)
-## 实时传送视频流
+## 执行实时传送视频流
 ### [门户](media-services-portal-live-passthrough-get-started.md)
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
@@ -165,13 +165,15 @@
 ###[错误代码](media-services-error-codes.md)
 ###[重试逻辑](media-services-retry-logic-in-dotnet-sdk.md)
 
-# 引用
-## [媒体服务 .NET SDK](media-services-dotnet-how-to-use.md)
-## [媒体服务 REST API](media-services-rest-how-to-use.md)
+# 参考
+## [发行说明](media-services-release-notes.md)
+## [.NET](media-services-dotnet-how-to-use.md)
+## [REST](media-services-rest-how-to-use.md)
 ## [媒体编码器高级工作流格式和编解码器](media-services-premium-workflow-encoder-formats.md)
 ## [Media Encoder Standard 格式和编解码器](media-services-media-encoder-standard-formats.md)
 
-# 相关内容
+# 资源
+## [定价](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure 媒体服务社区](media-services-community.md)
 
 

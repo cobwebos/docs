@@ -1,4 +1,4 @@
-使用[用户之声](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409)论坛提供反馈意见，并提出有关如何改进 Azure 媒体服务的建议。你还可以直接转到以下类别之一：
+使用 [用户之声](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) 论坛提供反馈意见，并提出有关如何改进 Azure 媒体服务的建议。 你还可以直接转到以下类别之一： 
 
 * [Azure 媒体播放器](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
 * [客户端 SDK 库](https://feedback.azure.com/forums/169396-media-services/category/144435-client-sdks/)
@@ -9,4 +9,8 @@
 * [REST API 和平台](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
 * [VoD 流式传输](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

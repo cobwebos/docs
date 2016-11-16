@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Automation Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: d6f53d51a2ceb6d499209b874c79d3d3ccb1758f
+ms.openlocfilehash: b36299b17809bafb0956818d346063e89b86b7c6
 
-Azure Automation provides a way for users to automate the manual, long-running, error-prone, and frequently repeated tasks that are commonly performed in a cloud environment. It saves time and increases the reliability of regular administrative tasks and even schedules them to be automatically performed at regular intervals.
+---
+# <a name="automation-documentation"></a>自动化文档
+
+通过 Azure 自动化，用户可以自动完成通常要在云环境中执行的手动、长时间进行、易出错且重复性高的任务。 它可以节省时间，可以提高常规管理任务的可靠性，甚至可以将这些任务安排成按特定的时间间隔自动执行。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Automation provides a way for users to automate the manual, long-running, 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Automation</h3>
+                        <h3>了解 Azure 自动化</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Automation provides a way for users to automate the manual, long-running, 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Automation Video Library</h3>
+                        <h3>自动化视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Automation provides a way for users to automate the manual, long-running, 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Automation using Runbooks</h3>
+                        <h3>通过 Runbook 开始使用自动化</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Automation provides a way for users to automate the manual, long-running, 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Automation using PowerShell</h3>
+                        <h3>通过 PowerShell 开始使用自动化</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Automation provides a way for users to automate the manual, long-running, 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first PowerShell Workflow Runbook</h3>
+                        <h3>创建第一个 PowerShell 工作流 Runbook</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +111,7 @@ Azure Automation provides a way for users to automate the manual, long-running, 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Automation using PowerShell Workflow</h3>
+                        <h3>通过 PowerShell 工作流开始使用自动化</h3>
                     </div>
                 </div>
             </div>
@@ -119,23 +123,28 @@ Azure Automation provides a way for users to automate the manual, long-running, 
 
 ---
 
-## Reference
+## <a name="reference"></a>参考
 
-### PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
+### <a name="powershell"></a>PowerShell
+[Azure PowerShell 参考](/powershell/azureps-cmdlets-docs)
 
-### .NET
-[Azure Managed Reference API](/dotnet/api)
+### <a name="net"></a>.NET
+[Azure 托管参考 API](/dotnet/api)
 
-### REST
-[Automation REST API Reference](https://msdn.microsoft.com/en-us/library/azure/mt662285)
+### <a name="rest"></a>REST
+[自动化 REST API 参考](https://msdn.microsoft.com/en-us/library/azure/mt662285)
 
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/automation.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Automation Documentation
-        </div>
+下载自动化文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,51 +1,56 @@
 ---
-title: Azure 通知中心入门（Kindle 应用）| Microsoft Docs
-description: 在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。
+title: "Azure 通知中心入门（Kindle 应用）| Microsoft Docs"
+description: "在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。"
 services: notification-hubs
-documentationcenter: ''
-author: wesmc7777
+documentationcenter: 
+author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 346fc8e5-294b-4e4f-9f27-7a82d9626e93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-kindle
 ms.devlang: Java
 ms.topic: hero-article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
+
 
 ---
-# 通知中心入门（Kindle 应用）
+# <a name="get-started-with-notification-hubs-for-kindle-apps"></a>通知中心入门（Kindle 应用）
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## 概述
-本教程演示如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。你将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
+## <a name="overview"></a>概述
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。
+你将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
 
-## 先决条件
+## <a name="prerequisites"></a>先决条件
 本教程需要的内容如下：
 
 * 从 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>获取 Android SDK（我们假设你要使用 Eclipse）。
 * 按照<a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">设置开发环境</a>中的步骤设置 Kindle 的开发环境。
 
-## 向开发人员门户添加新应用程序
+## <a name="add-a-new-app-to-the-developer-portal"></a>向开发人员门户添加新应用程序
 1. 首先，请在 [Amazon 开发人员门户]中创建一个应用。
    
     ![][0]
-2. 复制“应用程序密钥”。
+2. 复制“应用程序密钥” 。
    
     ![][1]
 3. 在门户中单击应用的名称，然后单击“设备消息”选项卡。
    
     ![][2]
-4. 单击“创建新的安全配置文件”，然后创建一个新的安全配置文件（例如 **TestAdm security profile**）。然后单击“保存”。
+4. 单击“创建新的安全配置文件”，然后创建一个新的安全配置文件（例如 **TestAdm security profile**）。 。
    
     ![][3]
-5. 单击“安全配置文件”以查看你刚刚创建的安全配置文件。复制“客户端 ID”和“客户端密码”值以供稍后使用。
+5. 单击“安全配置文件”以查看你刚刚创建的安全配置文件。 复制“客户端 ID”和“客户端密码”值以供稍后使用。
    
     ![][4]
 
-## 创建 API 密钥
+## <a name="create-an-api-key"></a>创建 API 密钥
 1. 使用管理员特权打开命令提示符。
 2. 导航到 Android SDK 文件夹。
 3. 输入以下命令：
@@ -57,10 +62,10 @@ ms.author: wesmc
 5. 复制 **MD5** 指纹。
 6. 返回到开发人员门户，在“消息”选项卡中，单击“Android/Kindle”，输入应用包的名称（例如 **com.sample.notificationhubtest**）和 **MD5** 值，然后单击“生成 API 密钥”。
 
-## 将凭据添加到中心
+## <a name="add-credentials-to-the-hub"></a>将凭据添加到中心
 在门户中，将客户端密码和客户端 ID 添加到通知中心的“配置”选项卡。
 
-## 设置应用程序
+## <a name="set-up-your-application"></a>设置应用程序
 > [!NOTE]
 > 创建应用程序时，请至少使用 API 级别 17。
 > 
@@ -68,8 +73,8 @@ ms.author: wesmc
 
 将 ADM 库添加到你的 Eclipse 项目：
 
-1. 若要获取 ADM 库，请[下载 SDK]。解压缩 SDK zip 文件。
-2. 在 Eclipse 中右键单击你的项目，然后单击“属性”。在左侧选择“Java 生成路径”，然后选择顶部的“库”选项卡。单击“添加外部 Jar”，并从提取 Amazon SDK 的目录中选择文件 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`。
+1. 若要获取 ADM 库，请 [下载 SDK]。 解压缩 SDK zip 文件。
+2. 在 Eclipse 中右键单击你的项目，然后单击“属性”。 在左侧选择“Java 生成路径”，然后选择顶部的“库”选项卡。 单击“添加外部 Jar”，并从提取 Amazon SDK 的目录中选择文件 `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar`。
 3. 下载 NotificationHubs Android SDK（链接）。
 4. 解压缩该包，然后在 Eclipse 中将文件 `notification-hubs-sdk.jar` 拖放到 `libs` 文件夹中。
 
@@ -79,7 +84,7 @@ ms.author: wesmc
 
         xmlns:amazon="http://schemas.amazon.com/apk/res/android"
 
-1. 在清单元素下添加权限作为第一个元素。将 **[YOUR PACKAGE NAME]** 替换为用于创建应用的包。
+1. 在清单元素下添加权限作为第一个元素。 将 **[YOUR PACKAGE NAME]** 替换为用于创建应用的包。
    
         <permission
          android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
@@ -95,7 +100,7 @@ ms.author: wesmc
    
         <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-2. 插入以下元素作为应用程序元素的第一个子级。请记得将 **[YOUR SERVICE NAME]** 替换为你在下一部分中创建的 ADM 消息处理程序的名称（包括包），并将 **[YOUR PACKAGE NAME]** 替换为创建应用时所用的包名称。
+2. 插入以下元素作为应用程序元素的第一个子级。 请记得将 **[YOUR SERVICE NAME]** 替换为你在下一部分中创建的 ADM 消息处理程序的名称（包括包），并将 **[YOUR PACKAGE NAME]** 替换为创建应用时所用的包名称。
    
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
@@ -120,7 +125,7 @@ ms.author: wesmc
             </intent-filter>
         </receiver>
 
-## 创建 ADM 消息处理程序
+## <a name="create-your-adm-message-handler"></a>创建 ADM 消息处理程序
 1. 创建继承自 `com.amazon.device.messaging.ADMMessageHandlerBase` 的新类并将其命名为 `MyADMMessageHandler`，如下图中所示：
    
     ![][6]
@@ -133,7 +138,7 @@ ms.author: wesmc
         import android.support.v4.app.NotificationCompat;
         import com.amazon.device.messaging.ADMMessageReceiver;
         import com.microsoft.windowsazure.messaging.NotificationHub
-3. 在创建的类中添加以下代码。请记得替换中心名称和连接字符串 (listen)：
+3. 在创建的类中添加以下代码。 请记得替换中心名称和连接字符串 (listen)：
    
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
@@ -220,30 +225,30 @@ ms.author: wesmc
                }.execute(null, null, null);
         }
 
-## 将 API 密钥添加到应用
-1. 在 Eclipse 中，在项目的目录资产中创建名为 **api\_key.txt** 的新文件。
+## <a name="add-your-api-key-to-your-app"></a>将 API 密钥添加到应用
+1. 在 Eclipse 中，在项目的目录资产中创建名为 **api_key.txt** 的新文件。
 2. 打开该文件，并复制你在 Amazon 开发人员门户中生成的 API 密钥。
 
-## 运行应用程序
+## <a name="run-the-app"></a>运行应用程序
 1. 启动模拟器。
 2. 在模拟器中，从顶部往下轻扫，单击“设置”，然后单击“我的帐户”并使用有效的 Amazon 帐户注册。
 3. 在 Eclipse 中运行应用程序。
 
 > [!NOTE]
-> 如果出现了问题，请检查模拟器（或设备）的时间。时间值必须准确。若要更改 Kindle 模拟器的时间，可以从 Android SDK platform-tools 目录运行以下命令：
+> 如果出现了问题，请检查模拟器（或设备）的时间。 时间值必须准确。 若要更改 Kindle 模拟器的时间，可以从 Android SDK platform-tools 目录运行以下命令：
 > 
 > 
 
         adb shell  date -s "yyyymmdd.hhmmss"
 
-## 发送消息
+## <a name="send-a-message"></a>发送消息
 若要使用 .NET 发送消息：
 
         static void Main(string[] args)
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("[conn string]", "[hub name]");
 
-            hub.SendAdmNativeNotificationAsync("{"data":{"msg" : "Hello from .NET!"}}").Wait();
+            hub.SendAdmNativeNotificationAsync("{\"data\":{\"msg\" : \"Hello from .NET!\"}}").Wait();
         }
 
 ![][7]
@@ -261,4 +266,8 @@ ms.author: wesmc
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

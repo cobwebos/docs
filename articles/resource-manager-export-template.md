@@ -1,67 +1,71 @@
 ---
-title: 导出 Azure Resource Manager 模板 | Microsoft Docs
-description: 使用 Azure Resource Manager 从现有资源组导出模板。
+title: "导出 Azure Resource Manager 模板 | Microsoft Docs"
+description: "使用 Azure Resource Manager 从现有资源组导出模板。"
 services: azure-resource-manager
-documentationcenter: ''
+documentationcenter: 
 author: tfitzmac
 manager: timlt
 editor: tysonn
-
+ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/03/2016
+ms.date: 10/20/2016
 ms.author: tomfitz
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 18381e2fafb6a1e3883e0dbdf9dcfe5b59a78d32
+
 
 ---
-# 从现有资源导出 Azure Resource Manager 模板
-使用 Resource Manager 可从订阅中的现有资源导出 Resource Manager 模板。你可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。
+# <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>从现有资源导出 Azure Resource Manager 模板
+使用 Resource Manager 可从订阅中的现有资源导出 Resource Manager 模板。 你可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。
 
 必须注意的是，可以使用两种不同的方式来导出模板：
 
-* 可以导出已用于部署的实际模板。导出的模板中包括的所有参数和变量与原始模板中显示的完全一样。如果通过门户部署了资源，此方法很有用。现在讲述如何构造模板来创建这些资源。
-* 你可以导出表示资源组当前状态的模板。导出的模板不基于任何已用于部署的模板。与之相反，它所创建的模板为资源组的快照。导出的模板会有许多硬编码的值，其参数可能没有定义的那么多。如果已通过门户或脚本修改资源组，则可以使用此方法。现在，需要捕获资源组作为模板。
+* 可以导出已用于部署的实际模板。 导出的模板中包括的所有参数和变量与原始模板中显示的完全一样。 如果通过门户部署了资源，此方法很有用。 现在讲述如何构造模板来创建这些资源。
+* 你可以导出表示资源组当前状态的模板。 导出的模板不基于任何已用于部署的模板。 与之相反，它所创建的模板为资源组的快照。 导出的模板会有许多硬编码的值，其参数可能没有定义的那么多。 如果已通过门户或脚本修改资源组，则可以使用此方法。 现在，需要捕获资源组作为模板。
 
-本主题演示这两种方法。[Customize an exported Azure Resource Manager template](resource-manager-customize-template.md)（自定义导出的 Azure Resource Manager 模板）一文介绍了如何获取从资源组的当前状态生成的模板并使之在重新部署解决方案时更有用。
+本主题演示这两种方法。
 
-在本教程中，用户需要登录到 Azure 门户，创建存储帐户，然后导出该存储帐户的模板。需添加虚拟网络以修改资源组。最后，需导出表示其当前状态的新模板。尽管本文重点介绍简化的基础结构，但你也可以使用这些相同的步骤为更复杂的解决方案导出模板。
+在本教程中，用户需要登录到 Azure 门户，创建存储帐户，然后导出该存储帐户的模板。 需添加虚拟网络以修改资源组。 最后，需导出表示其当前状态的新模板。 尽管本文重点介绍简化的基础结构，但你也可以使用这些相同的步骤为更复杂的解决方案导出模板。
 
-## 创建存储帐户
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建”>“数据 + 存储”>“存储帐户”。
+## <a name="create-a-storage-account"></a>创建存储帐户
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建”>“数据 + 存储”>“存储帐户”。 >  > 
    
       ![创建存储](./media/resource-manager-export-template/create-storage.png)
-2. 使用名称 **storage**、你的姓名缩写和日期创建存储帐户。存储帐户名称在 Azure 中必须是唯一的。如果你最初尝试的名称已在使用，请尝试对其进行更改。对于资源组，使用 **ExportGroup**。可以对其他属性使用默认值。选择“创建”。
+2. 使用名称 **storage**、你的姓名缩写和日期创建存储帐户。 存储帐户名称在 Azure 中必须是唯一的。 如果名称已在使用中，将显示错误消息，指示该名称正在使用中。 请试用其他名称。 对于资源组，创建新的资源组并将其命名 **ExportGroup**。 可以对其他属性使用默认值。 选择“创建” 。
    
       ![提供存储的值](./media/resource-manager-export-template/provide-storage-values.png)
 
-部署完成后，订阅将包含存储帐户。
+部署可能需要几分钟时间。 部署完成后，订阅将包含存储帐户。
 
-## 从部署历史记录导出模板
-1. 转到新资源组的资源组边栏选项卡。可以看到，该边栏选项卡列出了上次部署的结果。选择此链接。
+## <a name="view-a-template-from-deployment-history"></a>从部署历史记录查看模板
+1. 转到新资源组的资源组边栏选项卡。 可以看到，该边栏选项卡列出了上次部署的结果。 选择此链接。
    
       ![资源组边栏选项卡](./media/resource-manager-export-template/resource-group-blade.png)
-2. 可以看到该组的部署历史记录。在本例中，边栏选项卡可能只列出了一个部署。选择此部署。
+2. 可以看到该组的部署历史记录。 在本例中，边栏选项卡可能只列出了一个部署。 选择此部署。
    
      ![上次部署](./media/resource-manager-export-template/last-deployment.png)
-3. 边栏选项卡将显示部署摘要。摘要包括此部署及其操作的状态，以及为参数提供的值。若要查看用于部署的模板，请选择“查看模板”。
+3. 边栏选项卡将显示部署摘要。 摘要包括此部署及其操作的状态，以及为参数提供的值。 若要查看用于部署的模板，请选择“查看模板”。
    
      ![查看部署摘要](./media/resource-manager-export-template/deployment-summary.png)
 4. Resource Manager 将检索以下六个文件：
    
-   1. **模板** - 定义解决方案基础结构的模板。通过门户创建存储帐户时，Resource Manager 使用模板来部署该存储帐户，并保存该模板供将来参考。
-   2. **参数** - 可用于在部署过程中传入值的参数文件。它包含在首次部署期间提供的值，但你可以在重新部署该模板时更改其中任何值。
+   1. **模板** - 定义解决方案基础结构的模板。 通过门户创建存储帐户时，Resource Manager 使用模板来部署该存储帐户，并保存该模板供将来参考。
+   2. **参数** - 可用于在部署过程中传入值的参数文件。 它包含在首次部署期间提供的值，但你可以在重新部署该模板时更改其中任何值。
    3. **CLI** - 可用于部署该模板的 Azure 命令行界面 (CLI) 脚本文件。
    4. **PowerShell** - 可用于部署该模板的 Azure PowerShell 脚本文件。
    5. **.NET** - 可用于部署该模板的 .NET 类。
    6. **Ruby** - 可用于部署模板的 Ruby 类。
       
-      可通过边栏选项卡上的链接获取这些文件。默认情况下，边栏选项卡将显示模板。
+      可通过边栏选项卡上的链接获取这些文件。 默认情况下，边栏选项卡将显示模板。
       
        ![查看模板](./media/resource-manager-export-template/view-template.png)
       
-      让我们特别注意该模板。你的模板的外观应类似于：
+      让我们特别注意该模板。 你的模板的外观应类似于：
       
         {
       
@@ -106,10 +110,11 @@ ms.author: tomfitz
           ]
         }
 
-创建你的存储帐户时使用的就是此模板。请注意，该模板包含的参数可用于部署不同类型的存储帐户。若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。有关可在模板中使用的函数的完整列表，请参阅 [Azure Resource Manager template functions](resource-group-template-functions.md)（Azure Resource Manager 模板函数）。
+创建你的存储帐户时使用的就是此模板。 请注意，该模板包含的参数可用于部署不同类型的存储帐户。 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。 有关可在模板中使用的函数的完整列表，请参阅 [Azure Resource Manager template functions](resource-group-template-functions.md)（Azure Resource Manager 模板函数）。
 
-## 添加虚拟网络
-在上一部分中下载的模板表示该原始部署的基础结构。但是，它不会记录在部署之后所做的任何更改。为了说明此问题，让我们通过门户添加虚拟网络来修改资源组。
+## <a name="add-a-virtual-network"></a>添加虚拟网络
+在上一部分中下载的模板表示该原始部署的基础结构。 但是，它不会记录在部署之后所做的任何更改。
+为了说明此问题，让我们通过门户添加虚拟网络来修改资源组。
 
 1. 在资源组边栏选项卡中，选择“添加”。
    
@@ -117,25 +122,28 @@ ms.author: tomfitz
 2. 从可用资源中选择“虚拟网络”。
    
       ![选择虚拟网络](./media/resource-manager-export-template/select-vnet.png)
-3. 将虚拟网络命名为 **VNET**，并对其他属性使用默认值。选择“创建”。
+3. 将虚拟网络命名为 **VNET**，并对其他属性使用默认值。 选择“创建” 。
    
       ![设置警报](./media/resource-manager-export-template/create-vnet.png)
-4. 在虚拟网络已成功部署到资源组后，再次查看部署历史记录。现在，将看到两个部署。如果看不到第二个部署，可能需要关闭资源组边栏选项卡，然后重新打开它。选择更新的部署。
+4. 在虚拟网络已成功部署到资源组后，再次查看部署历史记录。 现在，将看到两个部署。 如果看不到第二个部署，可能需要关闭资源组边栏选项卡，然后重新打开它。 选择更新的部署。
    
       ![部署历史记录](./media/resource-manager-export-template/deployment-history.png)
-5. 查看该部署的模板。请注意，它只定义了添加虚拟网络时所做的更改。
+5. 查看该部署的模板。 注意它仅定义虚拟网络， 而不包括以前部署的存储帐户。 表示资源组中所有资源的模板不复存在。
 
-通常情况下，使用模板的最佳做法是在单个操作中部署解决方案的所有基础结构。这种方法比记住要部署的多个不同模板更可靠。
+## <a name="export-the-template-from-resource-group"></a>从资源组导出模板
+若要获取资源组的当前状态，请导出显示资源组快照的模板。  
 
-## 从资源组导出模板
-虽然每个部署只显示已对资源组所做的更改，但你随时可以导出模板以显示整个资源组的属性。
+> [!NOTE]
+> 无法导出包含超过 200 项资源的资源组模板。
+> 
+> 
 
 1. 若要查看资源组的模板，请选择“自动化脚本”。
    
       ![导出资源组](./media/resource-manager-export-template/export-resource-group.png)
    
-     并非所有资源类型都支持导出模板功能。如果你的资源组仅包含本文中显示的存储帐户和虚拟网络，则不会显示错误。不过，如果你已经创建其他资源类型，则可能会显示一个错误，指出导出存在问题。[修复导出问题](#fix-export-issues)部分介绍了如何处理这些问题。
-2. 此时将再次显示可用于重新部署解决方案的六个文件，但这一次模板稍有不同。该模板只有两个参数：一个用于存储帐户名称，一个用于虚拟网络名称。
+     并非所有资源类型都支持导出模板功能。 如果资源组仅包含本文中显示的存储帐户和虚拟网络，则不会显示错误。 不过，如果你已经创建其他资源类型，则可能会显示一个错误，指出导出存在问题。 [修复导出问题](#fix-export-issues) 部分介绍了如何处理这些问题。
+2. 此时将再次显示可用于重新部署解决方案的六个文件，但这一次模板稍有不同。 该模板只有两个参数：一个用于存储帐户名称，一个用于虚拟网络名称。
    
         "parameters": {
           "virtualNetworks_VNET_name": {
@@ -148,37 +156,172 @@ ms.author: tomfitz
           }
         },
    
-     Resource Manager 未检索到在部署期间使用的模板。但是，它将基于资源的当前配置生成新模板。例如，模板会将存储帐户位置和复制值设置为：
+     Resource Manager 未检索到在部署期间使用的模板。 但是，它将基于资源的当前配置生成新模板。 例如，模板会将存储帐户位置和复制值设置为：
    
         "location": "northeurope",
         "tags": {},
         "properties": {
             "accountType": "Standard_RAGRS"
         },
-3. 下载该模板，以便可以在本地处理它。
+3. 可通过几个选项继续使用此模板。 可以下载模板，并使用 JSON 编辑器本地使用它。 也可将模板保存到库，并通过门户使用它。
+   
+     如果喜欢使用 [VS Code](resource-manager-vs-code.md) 或 [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 等 JSON 编辑器，可本地下载模板并使用该编辑器。 如果不使用 JSON 编辑器进行设置，可通过门户编辑模板。 本主题其余部分假设你已在门户中将模板保存到库。 但无论使用本地 JSON 编辑器还是通过门户，都要对模板进行相同的语法更改。
+   
+     若要在本地使用，请选择“下载”。
    
       ![下载模板](./media/resource-manager-export-template/download-template.png)
-4. 找到你下载的 .zip 文件并将内容解压缩。可以使用这个下载的模板重新部署你的基础结构。
+   
+     若要通过门户使用，请选择“添加到库”。
+   
+      ![添加到库](./media/resource-manager-export-template/add-to-library.png)
+   
+     将模板添加到库时，请为模板提供名称和说明。 然后选择“保存”。
+   
+     ![设置模板值](./media/resource-manager-export-template/set-template-values.png)
+4. 若要查看库中保存的模板，请选择“更多服务”，并键入“模板”以筛选结果，然后选择“模板”。
+   
+      ![查找模板](./media/resource-manager-export-template/find-templates.png)
+5. 选择具有已保存名称的模板。
+   
+      ![选择模板](./media/resource-manager-export-template/select-library-template.png)
 
-## 修复导出问题
-并非所有资源类型都支持导出模板功能。具体而言，Resource Manager 不会导出某些资源类型，以防止公开敏感数据。例如，如果你的站点配置中有一个连接字符串，你可能不希望其显式显示在导出的模板中。你可以手动将缺失的资源添加回模板中，从而解决这个问题。
+## <a name="customize-the-template"></a>自定义模板
+若要为每个部署创建相同的存储帐户和虚拟网络，导出的模板可满足要求。 但是，Resource Manager 提供相关选项，因此使用它可以更灵活地部署模板。 例如，在部署期间，你可能需要指定要创建的存储帐户的类型或要用于虚拟网络地址前缀和子网前缀的值。
+
+在此部分中，你将向导出的模板添加参数，以便在将这些资源部署到其他环境时，可以重新使用该模板。 还将向模板添加某些功能，以减少在部署模板时遇到错误的可能性。 不再需要为存储帐户揣测唯一名称。 模板将代为创建唯一名称。 将可为存储帐户类型指定的值限制为仅包括有效选项。
+
+1. 选择“编辑”以自定义模板。
+   
+     ![显示模板](./media/resource-manager-export-template/show-template.png)
+2. 选择模板。
+   
+     ![编辑模板](./media/resource-manager-export-template/edit-template.png)
+3. 若要能够传入在部署过程中可能需要指定的值，请将 **parameters** 部分替换为新的参数定义。 注意 **storageAccount_accountType** 的 **allowedValues** 的值。 如果你意外地提供了无效的值，则在部署开始之前将识别该错误。 另请注意，你仅提供存储帐户名称的前缀，该前缀限制为 11 个字符。 将前缀限制为 11 个字符时，可确保完整名称不会超过存储帐户的最大字符数。 使用前缀，可将命名约定应用于存储帐户。 在下一步中，你将了解如何创建唯一名称。
+   
+        "parameters": {
+          "storageAccount_prefix": {
+            "type": "string",
+            "maxLength": 11
+          },
+          "storageAccount_accountType": {
+            "defaultValue": "Standard_RAGRS",
+            "type": "string",
+            "allowedValues": [
+              "Standard_LRS",
+              "Standard_ZRS",
+              "Standard_GRS",
+              "Standard_RAGRS",
+              "Premium_LRS"
+            ]
+          },
+          "virtualNetwork_name": {
+            "type": "string"
+          },
+          "addressPrefix": {
+            "defaultValue": "10.0.0.0/16",
+            "type": "string"
+          },
+          "subnetName": {
+            "defaultValue": "subnet-1",
+            "type": "string"
+          },
+          "subnetAddressPrefix": {
+            "defaultValue": "10.0.0.0/24",
+            "type": "string"
+          }
+        },
+4. 模板的 **variables** 节当前为空。 在 **variables** 部分，创建可简化模板其余部分语法的值。 将此部分替换为新的变量定义。 **storageAccount_name** 变量将参数中的前缀连接成一个唯一字符串，该字符串将基于资源组的标识符生成。 提供参数值时无需再揣测唯一名称。
+   
+        "variables": {
+          "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
+        },
+5. 若要在资源定义中使用参数和变量，请将 **resources** 部分替换为新的资源定义。 请注意，除了分配给资源属性的值外，资源定义中几乎未发生更改。 属性与导出的模板中的属性相同。 你只需为参数值分配属性，而不是对值进行硬编码。 资源的位置通过 **resourceGroup().location** 表达式设置为使用资源组所在的位置。 为存储帐户名称创建的变量通过 **variables** 表达式进行引用。
+   
+        "resources": [
+          {
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetwork_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "properties": {
+              "addressSpace": {
+                "addressPrefixes": [
+                  "[parameters('addressPrefix')]"
+                ]
+              },
+              "subnets": [
+                {
+                  "name": "[parameters('subnetName')]",
+                  "properties": {
+                    "addressPrefix": "[parameters('subnetAddressPrefix')]"
+                  }
+                }
+              ]
+            },
+            "dependsOn": []
+          },
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageAccount_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "properties": {
+                "accountType": "[parameters('storageAccount_accountType')]"
+            },
+            "dependsOn": []
+          }
+        ]
+6. 编辑完模板后，选择“确定”。
+7. 选择“保存”以保存对模板所做的更改。
+   
+     ![保存模板](./media/resource-manager-export-template/save-template.png)
+8. 若要部署已更新的模板，请选择“部署”。
+   
+     ![部署模板](./media/resource-manager-export-template/deploy-template.png)
+9. 提供参数值，并选择要将资源部署到的新资源组。
+
+## <a name="update-the-downloaded-parameters-file"></a>更新已下载的参数文件
+如果使用下载的文件（而不是门户库），需更新已下载的参数文件。 它不再与模板中的参数匹配。 你不必使用参数文件，但参数文件可以简化重新部署环境时的过程。 对于许多参数，将使用模板中定义的默认值，因此参数文件只需要两个值。
+
+将 parameters.json 文件的内容替换为以下内容：
+
+```
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccount_prefix": {
+      "value": "storage"
+    },
+    "virtualNetwork_name": {
+      "value": "VNET"
+    }
+  }
+}
+```
+
+更新后的参数文件仅为没有默认值的参数提供值。 如果你需要不同于默认值的值，则可以为其他参数提供值。
+
+## <a name="fix-export-issues"></a>修复导出问题
+并非所有资源类型都支持导出模板功能。 具体而言，Resource Manager 不会导出某些资源类型，以防止公开敏感数据。 例如，如果你的站点配置中有一个连接字符串，你可能不希望其显式显示在导出的模板中。 你可以手动将缺失的资源添加回模板中，从而解决这个问题。
 
 > [!NOTE]
-> 仅当从资源组而不是从部署历史记录中导出时，才会遇到导出问题。如果你的上一个部署能够准确地代表资源组的当前状态，则应从部署历史记录而非资源组中导出模板。只有在你已对资源组进行更改且该更改未在单个模板中定义的情况下，才应从资源组导出。
+> 仅当从资源组而不是从部署历史记录中导出时，才会遇到导出问题。 如果你的上一个部署能够准确地代表资源组的当前状态，则应从部署历史记录而非资源组中导出模板。 只有在你已对资源组进行更改且该更改未在单个模板中定义的情况下，才应从资源组导出。
 > 
 > 
 
-例如，如果你导出的模板所对应的资源组包含一个 Web 应用（SQL 数据库），且在站点配置中包含一个连接字符串，则会显示以下消息。
+例如，如果导出的模板所对应的资源组在站点配置中包含 Web 应用、SQL 数据库和连接字符串，则会显示以下消息。
 
 ![show error](./media/resource-manager-export-template/show-error.png)
 
-选择该消息会具体显示哪些资源类型未导出。
+选择该消息会具体显示哪些资源类型未导出。 
 
 ![show error](./media/resource-manager-export-template/show-error-details.png)
 
-本主题介绍以下常用解决方法。若要实现这些资源，需要将参数添加到模板。有关详细信息，请参阅 [Customize and redeploy exported template](resource-manager-customize-template.md)（自定义和重新部署导出的模板）。
+本主题演示常见的修补程序。
 
-### 连接字符串
+### <a name="connection-string"></a>连接字符串
 在网站资源中，添加数据库连接字符串的定义：
 
 ```
@@ -204,7 +347,7 @@ ms.author: tomfitz
 }
 ```    
 
-### 网站扩展
+### <a name="web-site-extension"></a>网站扩展
 在网站资源中，添加要安装的代码的定义：
 
 ```
@@ -233,10 +376,10 @@ ms.author: tomfitz
 }
 ```
 
-### 虚拟机扩展
-如需虚拟机扩展的示例，请参阅 [Azure Windows VM Extension Configuration Samples](./virtual-machines/virtual-machines-windows-extensions-configuration-samples.md)（Azure Windows VM 扩展配置示例）。
+### <a name="virtual-machine-extension"></a>虚拟机扩展
+如需虚拟机扩展的示例，请参阅 [Azure Windows VM 扩展配置示例](virtual-machines/virtual-machines-windows-extensions-configuration-samples.md)。
 
-### 虚拟网络网关
+### <a name="virtual-network-gateway"></a>虚拟网络网关
 添加虚拟网络网关资源类型。
 
 ```
@@ -271,7 +414,7 @@ ms.author: tomfitz
 },
 ```
 
-### 本地网络网关
+### <a name="local-network-gateway"></a>本地网络网关
 添加本地网络网关资源类型。
 
 ```
@@ -288,7 +431,7 @@ ms.author: tomfitz
 }
 ```
 
-### 连接
+### <a name="connection"></a>连接
 添加连接资源类型。
 
 ```
@@ -312,11 +455,16 @@ ms.author: tomfitz
 ```
 
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 祝贺你！ 你已学习如何从门户中创建的资源导出模板。
 
-* 在本教程的第二部分中，通过添加更多参数自定义下载的模板，然后使用脚本重新部署该模板。请参阅[自定义和重新部署导出的模板](resource-manager-customize-template.md)。
+* 可通过 [PowerShell](resource-group-template-deploy.md)、[Azure CLI](resource-group-template-deploy-cli.md) 或 [REST API](resource-group-template-deploy-rest.md) 部署模板。
 * 若要了解如何通过 PowerShell 导出模板，请参阅 [Using Azure PowerShell with Azure Resource Manager](powershell-azure-resource-manager.md)（将 Azure PowerShell 与 Azure Resource Manager 配合使用）。
 * 若要了解如何通过 Azure CLI 导出模板，请参阅 [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](xplat-cli-azure-resource-manager.md)（将用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用）。
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

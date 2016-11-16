@@ -48,6 +48,10 @@
 ### [对 VMware VM 和物理服务器进行故障回复](site-recovery-failback-azure-to-vmware.md)
 ## [监视和故障排除](site-recovery-monitoring-and-troubleshooting.md)
 
+# 参考
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell 经典](/powershell/servicemanagement/)
+
 # 相关内容
 ## [Azure 自动化](/azure/automation/)
 
@@ -56,6 +60,7 @@
 ## [论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr)
 ## [博客](http://azure.microsoft.com/blog/tag/azure-site-recovery/)
 ## [定价](https://azure.microsoft.com/pricing/details/site-recovery/)
+## [服务更新](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
 <!--HONumber=Nov16_HO2-->

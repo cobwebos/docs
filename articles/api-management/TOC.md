@@ -39,12 +39,12 @@
 ### [管理用户帐户](api-management-howto-create-or-invite-developers.md)
 ### [使用自动化进行管理](automation-manage-api-management.md)
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
-#引用
-## [模板](https://msdn.microsoft.com/en-us/library/azure/mt697540)
-## [服务部署 PowerShell cmdlet 参考](https://msdn.microsoft.com/en-us/library/azure/mt619282)
+#参考
+## [资源管理 PowerShell cmdlet]/powershell/resourcemanager()
+## [经典部署 PowerShell cmdlet 参考](https://msdn.microsoft.com/en-us/library/azure/mt613507)
+## [REST API](/rest/api/apimanagement/)
 ## [策略](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [REST API](https://msdn.microsoft.com/en-us/library/azure/dn776326)
-## [服务管理 PowerShell cmdlet](https://msdn.microsoft.com/en-us/library/azure/mt613507)
+## [模板](https://msdn.microsoft.com/en-us/library/azure/mt697540)
 #资源
 ## [定价](https://azure.microsoft.com/pricing/details/api-management/)
 ## [白皮书：基于云的 API 管理](http://j.mp/ms-apim-whitepaper)

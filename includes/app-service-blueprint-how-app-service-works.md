@@ -10,7 +10,11 @@
   * [练习：创建应用服务环境](../articles/app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
 * [Azure App Service 开发堆栈支持](/blog/windows-azure-websites-development-stacks-support/)
 
-## 视频
+## <a name="videos"></a>视频
 * [Azure App Service 体系结构](/documentation/videos/why-azure-web-sites-plus-architecture/)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,5 +1,9 @@
 --- 
-layout: HubPage 
+layout: HubPage
+translationtype: Human Translation
+ms.sourcegitcommit: ae13eb84d8a28259ba3c737abbac1181d5ebbe0b
+ms.openlocfilehash: b5010bedfb6a0edceaec6f96209cd73b066d683c
+
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -15,7 +19,7 @@ layout: HubPage
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Get Started Guide for Azure Developers</h3>
+                                    <h3>Azure 开发人员入门指南</h3>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +37,7 @@ layout: HubPage
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Get Started Guide for Azure IT Operators</h3>
+                                    <h3>Azure IT 操作人员入门指南</h3>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +55,7 @@ layout: HubPage
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>5-Minute Getting Started Videos</h3>
+                                    <h3>5 分钟入门视频</h3>
                                 </div>
                             </div>
                         </div>
@@ -63,10 +67,10 @@ layout: HubPage
     <div class="container">
         <ul class="pivots">
             <li>
-                <a href="#services">Services</a>
+                <a href="#services">服务</a>
                 <ul id="services">
                     <li>
-                        <a href="#Compute">Compute</a>
+                        <a href="#Compute">计算</a>
                         <ul id="Compute" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-machines/linux/">
@@ -79,8 +83,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Linux Virtual Machines</h3>
-                                                    <p>Provision virtual machines of Ubuntu, Red Hat, and more</p>
+                                                    <h3>Linux 虚拟机</h3>
+                                                    <p>为 Ubuntu、Red Hat 等预配虚拟机</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,8 +102,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Windows Virtual Machines</h3>
-                                                    <p>Provision virtual machines for SQL Server, SharePoint and more</p>
+                                                    <h3>Windows 虚拟机</h3>
+                                                    <p>为 SQL Server、SharePoint 等预配虚拟机</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -117,8 +121,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtual Machine Scale Sets</h3>
-                                                    <p>Create highly available, auto scalable Linux or Windows virtual machines</p>
+                                                    <h3>虚拟机规模集</h3>
+                                                    <p>创建高度可用且可自动缩放的 Linux 或 Windows 虚拟机</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,8 +140,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>App Service</h3>
-                                                    <p>Create web and mobile apps for any platform and any device</p>
+                                                    <h3>应用服务</h3>
+                                                    <p>为任何平台和任何设备创建 Web 应用与移动应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -155,8 +159,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Container Service</h3>
-                                                    <p>Use Docker based tools to deploy and manage containers</p>
+                                                    <h3>Azure 容器服务</h3>
+                                                    <p>使用基于 Docker 的工具部署和管理容器</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,8 +178,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Functions</h3>
-                                                    <p>Process events with serverless code</p>
+                                                    <h3>函数</h3>
+                                                    <p>使用无服务器代码处理事件</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +198,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Fabric</h3>
-                                                    <p>Build and operate always-on, scalable, distributed applications</p>
+                                                    <p>构建和运行始终联机、可缩放的分布式应用程序</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -212,8 +216,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Batch</h3>
-                                                    <p>Run large-scale parallel and batch compute jobs</p>
+                                                    <h3>批处理</h3>
+                                                    <p>运行大规模的并行批处理计算作业</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -231,8 +235,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cloud Services</h3>
-                                                    <p>Create Highly Available, infinitely scalable cloud applications and APIs</p>
+                                                    <h3>云服务</h3>
+                                                    <p>创建高度可用且可无限缩放的云应用程序和 API</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -242,7 +246,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#network">Networking</a>
+                        <a href="#network">网络</a>
                         <ul id="network" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-network/">
@@ -255,8 +259,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtual Network</h3>
-                                                    <p>Provision private networks, optionally connect to on-premises datacenters</p>
+                                                    <h3>虚拟网络</h3>
+                                                    <p>预配专用网络，根据需要连接到本地数据中心</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -274,8 +278,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Load Balancer</h3>
-                                                    <p>Deliver high availability and network performance to your applications</p>
+                                                    <h3>负载平衡器</h3>
+                                                    <p>提高应用程序的可用性和网络性能</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -293,9 +297,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Application Gateway</h3>
-                                                    <p>Layer 7 Load Balancer with built-in HTTP load balancing and delivery
-                                                        control</p>
+                                                    <h3>应用程序网关</h3>
+                                                    <p>具有内置 HTTP 负载均衡和传送控件的第 7 层负载均衡器</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -313,8 +316,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>VPN Gateway</h3>
-                                                    <p>Establish secure, cross-premises connectivity</p>
+                                                    <h3>VPN 网关</h3>
+                                                    <p>建立安全的跨界连接</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,7 +336,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure DNS</h3>
-                                                    <p>Host your DNS domain in Azure</p>
+                                                    <p>在 Azure 中托管 DNS 域</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -352,8 +355,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Deliver content to end-users through a robust network of global data
-                                                        centers </p>
+                                                    <p>通过全球数据中心的稳定网络向最终用户传送内容 </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -371,8 +373,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Traffic Manager</h3>
-                                                    <p>Route incoming traffic for high performance and availability</p>
+                                                    <h3>流量管理器</h3>
+                                                    <p>根据高性能和高可用性要求路由传入流量</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -391,7 +393,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>ExpressRoute</h3>
-                                                    <p>Dedicated private network fiber connections to Azure</p>
+                                                    <p>Azure 专用网络光纤连接</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -401,7 +403,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#storage">Storage</a>
+                        <a href="#storage">存储</a>
                         <ul id="storage" class="cardsA">
                             <li>
                                 <a href="/azure/storage/">
@@ -414,8 +416,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Storage</h3>
-                                                    <p>Durable, highly available and massively scalable cloud storage</p>
+                                                    <h3>存储</h3>
+                                                    <p>持久、高度可用、高度可缩放的云存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -434,7 +436,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Store</h3>
-                                                    <p>Hyperscale repository for big data analytics workloads</p>
+                                                    <p>适用于大数据分析工作负荷的超大规模存储库</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -453,7 +455,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Hybrid cloud storage for enterprises that improves data security</p>
+                                                    <p>可提高数据安全性的面向企业的混合云存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -471,8 +473,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Simple and reliable server backup to the cloud</p>
+                                                    <h3>备份</h3>
+                                                    <p>以简单可靠的方式将服务器数据备份到云中</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -490,8 +492,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Site Recovery</h3>
-                                                    <p>Orchestrate protection and recovery of private clouds</p>
+                                                    <h3>站点恢复</h3>
+                                                    <p>协调私有云的保护和恢复</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -501,7 +503,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#web">Web + Mobile</a>
+                        <a href="#web">Web + 移动</a>
                         <ul id="web" class="cardsA">
                             <li>
                                 <a href="/azure/app-service/">
@@ -514,8 +516,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>App Service</h3>
-                                                    <p>Learn about building scalable web and mobile apps</p>
+                                                    <h3>应用服务</h3>
+                                                    <p>了解如何构建可缩放的 Web 应用与移动应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -533,8 +535,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Web Apps</h3>
-                                                    <p>Quickly create and deploy mission critical Web apps at scale</p>
+                                                    <h3>Web 应用</h3>
+                                                    <p>快速创建并部署可缩放的关键任务 Web 应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -552,8 +554,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Mobile Apps</h3>
-                                                    <p>Build and host the backend for any mobile app</p>
+                                                    <h3>移动应用</h3>
+                                                    <p>构建和承载任何移动应用的后端</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -571,8 +573,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>API Apps</h3>
-                                                    <p>Easily build and consume Cloud API</p>
+                                                    <h3>API 应用</h3>
+                                                    <p>轻松生成和使用云 API</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -590,8 +592,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Logic Apps</h3>
-                                                    <p>Automate the access and use of data across clouds without writing code</p>
+                                                    <h3>逻辑应用</h3>
+                                                    <p>无需编写代码，自动化访问和使用跨云数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -610,8 +612,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Deliver content to end-users through a robust network of global data
-                                                        centers </p>
+                                                    <p>通过全球数据中心的稳定网络向最终用户传送内容 </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -629,8 +630,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Media Services</h3>
-                                                    <p>Encode, store, and stream video and audio at scale</p>
+                                                    <h3>媒体服务</h3>
+                                                    <p>大规模编码、存储和流式传输视频和音频</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -648,8 +649,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Search</h3>
-                                                    <p>Fully-managed search-as-a-service</p>
+                                                    <h3>搜索</h3>
+                                                    <p>完全托管的搜索即服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -668,7 +669,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Engagement</h3>
-                                                    <p>Increase app usage and user retention</p>
+                                                    <p>提高应用使用率和用户保留率</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -678,7 +679,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#databases">Databases</a>
+                        <a href="#databases">数据库</a>
                         <ul id="databases" class="cardsA">
                             <li>
                                 <a href="/azure/sql-database/">
@@ -691,8 +692,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>SQL Database</h3>
-                                                    <p>Managed relational database-as-a-service</p>
+                                                    <h3>SQL 数据库</h3>
+                                                    <p>托管的关系数据库即服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -710,8 +711,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>SQL Data Warehouse</h3>
-                                                    <p>Elastic data warehouse-as-a-service with enterprise-class features</p>
+                                                    <h3>SQL 数据仓库</h3>
+                                                    <p>具有企业级功能的弹性数据仓库即服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -730,7 +731,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Dynamically stretch on-premises SQL Server databases to Azure</p>
+                                                    <p>将本地 SQL Server 数据库动态延伸到 Azure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -749,7 +750,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>DocumentDB</h3>
-                                                    <p>Managed NoSQL document database-as-a-service</p>
+                                                    <p>托管的 NoSQL 文档数据库即服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -767,8 +768,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Redis Cache</h3>
-                                                    <p>High throughput, low latency data access to build fast/scalable applications</p>
+                                                    <h3>Redis 缓存</h3>
+                                                    <p>对数据进行高吞吐量、低延迟访问，构建快速、可缩放的应用程序</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -786,8 +787,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Factory</h3>
-                                                    <p>Orchestrate and manage data transformation and movement</p>
+                                                    <h3>数据工厂</h3>
+                                                    <p>协调和管理数据转换与移动</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -797,7 +798,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#analytics">Intelligence + Analytics</a>
+                        <a href="#analytics">智能 + 分析</a>
                         <ul id="analytics" class="cardsA">
                             <li>
                                 <a href="/azure/hdinsight/">
@@ -811,7 +812,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HDInsight</h3>
-                                                    <p>Provision cloud Hadoop, Spark, R Server, Hbase, and Storm clusters</p>
+                                                    <p>预配云 Hadoop、Spark、R Server、HBase 和 Storm 群集</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -829,8 +830,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning</h3>
-                                                    <p>Powerful cloud based predictive analytics tool to enable predictive maintenance</p>
+                                                    <h3>机器学习</h3>
+                                                    <p>基于云的强大预测分析工具，为前瞻性维护提供支持</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -848,8 +849,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Stream Analytics</h3>
-                                                    <p>Real-time data stream processing from millions of IoT devices</p>
+                                                    <h3>流分析</h3>
+                                                    <p>实时处理来自数百万台 IoT 设备的数据流</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -867,8 +868,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cognitive Services</h3>
-                                                    <p>Add smart API capabilities to enable contextual interactions</p>
+                                                    <h3>认知服务</h3>
+                                                    <p>添加智能 API 功能实现上下文交互</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -887,7 +888,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Analytics</h3>
-                                                    <p>Distributed analytics service that makes big data easy</p>
+                                                    <p>简化大数据分析的分布式分析服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -906,7 +907,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Store</h3>
-                                                    <p>Hyperscale repository for big data analytics workloads</p>
+                                                    <p>适用于大数据分析工作负荷的超大规模存储库</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -924,8 +925,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Factory</h3>
-                                                    <p>Orchestrate and manage data transformation and movement</p>
+                                                    <h3>数据工厂</h3>
+                                                    <p>协调和管理数据转换与移动</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -944,7 +945,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>PowerBI Embedded</h3>
-                                                    <p>Embed fully interactive, stunning data visualizations in your applications</p>
+                                                    <p>在应用程序中嵌入完整交互式的、令人惊叹的数据可视化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -954,7 +955,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">Internet of Things</a>
+                        <a href="#iot">物联网</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="https://azure.microsoft.com/en-us/develop/iot/">
@@ -967,8 +968,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>IoT Developer Center</h3>
-                                                    <p>Get started connecting your devices</p>
+                                                    <h3>IoT 开发人员中心</h3>
+                                                    <p>开始连接设备</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -986,8 +987,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure IoT Hub</h3>
-                                                    <p>Connect, monitor, and control billions of IoT assets</p>
+                                                    <h3>Azure IoT 中心</h3>
+                                                    <p>连接、监视和控制数十亿 IoT 资产</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1005,8 +1006,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Event Hubs</h3>
-                                                    <p>Receive telemetry from millions of devices</p>
+                                                    <h3>事件中心</h3>
+                                                    <p>从数百万个设备接收遥测数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1024,8 +1025,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Stream Analytics</h3>
-                                                    <p>Real-time data stream processing from millions of IoT devices</p>
+                                                    <h3>流分析</h3>
+                                                    <p>实时处理来自数百万台 IoT 设备的数据流</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1043,8 +1044,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning</h3>
-                                                    <p>Powerful cloud based predictive analytics tool to enable predictive maintenance</p>
+                                                    <h3>机器学习</h3>
+                                                    <p>基于云的强大预测分析工具，为前瞻性维护提供支持</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1062,8 +1063,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Notification Hubs</h3>
-                                                    <p>A scalable, push notification engine for quickly sending millions of messages</p>
+                                                    <h3>通知中心</h3>
+                                                    <p>快速发送数百万条消息的可缩放推送通知引擎</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1073,7 +1074,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#integration">Enterprise Integration</a>
+                        <a href="#integration">企业集成</a>
                         <ul id="integration" class="cardsA">
                             <li>
                                 <a href="/azure/logic-apps/">
@@ -1086,8 +1087,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Logic Apps</h3>
-                                                    <p>Automate the access and use of data across clouds without writing code</p>
+                                                    <h3>逻辑应用</h3>
+                                                    <p>无需编写代码，自动化访问和使用跨云数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1105,8 +1106,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Biztalk Services</h3>
-                                                    <p>Seamlessly integrate the enterprise and the cloud</p>
+                                                    <h3>Biztalk 服务</h3>
+                                                    <p>将企业与云无缝集成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1124,8 +1125,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Service Bus</h3>
-                                                    <p>Connect across private and public cloud environments</p>
+                                                    <h3>服务总线</h3>
+                                                    <p>在私有云环境和公有云环境中连接</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1143,8 +1144,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>API Management</h3>
-                                                    <p>Publish APIs to developers, partners and employees securely and at scale</p>
+                                                    <h3>API 管理</h3>
+                                                    <p>将 API 安全发布到开发人员、合作伙伴和员工，可进行扩展</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1163,7 +1164,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Hybrid cloud storage for enterprises that improves data security</p>
+                                                    <p>可提高数据安全性的面向企业的混合云存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1182,7 +1183,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Dynamically stretch on-premises SQL Server databases to Azure</p>
+                                                    <p>将本地 SQL Server 数据库动态延伸到 Azure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1200,8 +1201,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Factory</h3>
-                                                    <p>Orchestrate and manage data transformation and movement</p>
+                                                    <h3>数据工厂</h3>
+                                                    <p>协调和管理数据转换与移动</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1211,7 +1212,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#security">Security + Identity</a>
+                        <a href="#security">安全性 + 标识</a>
                         <ul id="security" class="cardsA">
                             <li>
                                 <a href="/azure/security-center">
@@ -1224,8 +1225,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Security Center</h3>
-                                                    <p>Prevent, detect and respond to threats with increased visibility</p>
+                                                    <h3>安全中心</h3>
+                                                    <p>预防、检测和响应威胁，同时增加可见性</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1243,8 +1244,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Key Vault</h3>
-                                                    <p>Learn how to manage cryptographic keys and secrets</p>
+                                                    <h3>密钥保管库</h3>
+                                                    <p>了解如何管理加密密钥和机密</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1263,7 +1264,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory</h3>
-                                                    <p>Synchronize on-premises directories and enable single sign-on</p>
+                                                    <p>同步本地目录并启用单一登录</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1282,7 +1283,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory B2C</h3>
-                                                    <p>Consumer identity and access management in the cloud</p>
+                                                    <p>云中的使用者标识和访问管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1300,8 +1301,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Active Directory Domain Services</h3>
-                                                    <p>Join Azure virtual machines to a domain without domain controllers</p>
+                                                    <h3>Active Directory 域服务</h3>
+                                                    <p>将 Azure 虚拟机加入到没有域控制器的域</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1319,8 +1320,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Multi-Factor Authentication</h3>
-                                                    <p>Safeguard access to your data and apps with an extra level of authentication</p>
+                                                    <h3>多重身份验证</h3>
+                                                    <p>利用额外的一层身份验证确保安全访问数据和应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1338,8 +1339,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Security Information</h3>
-                                                    <p>Learn how Azure provides a secure infrastructure to build cloud solutions</p>
+                                                    <h3>安全信息</h3>
+                                                    <p>了解 Azure 如何提供安全基础结构用于构建云解决方案</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1349,7 +1350,7 @@ layout: HubPage
                         </ul>
                     </li> 
                     <li>
-                        <a href="#devtools">Developer Tools</a>
+                        <a href="#devtools">开发人员工具</a>
                         <ul id="devtools" class="cardsA">
                             <li>
                                 <a href="https://www.visualstudio.com/en-us/docs/overview">
@@ -1363,7 +1364,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Team Services</h3>
-                                                    <p>Services for teams to share code, track work, and ship software</p>
+                                                    <p>供团队共享代码、跟踪工作和传输软件的服务</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1381,8 +1382,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure DevTest Labs</h3>
-                                                    <p>Quickly create environments using reusable templates and artifacts</p>
+                                                    <h3>Azure 开发测试实验室</h3>
+                                                    <p>通过使用可重用模板和项目，快速创建环境</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1401,7 +1402,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Application Insights</h3>
-                                                    <p>Detect, triage, and diagnose issues in your web apps and services</p>
+                                                    <p>检测、会审和诊断 Web 应用与服务中的问题</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1419,8 +1420,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>API Management</h3>
-                                                    <p>Publish APIs to developers, partners and employees securely and at scale</p>
+                                                    <h3>API 管理</h3>
+                                                    <p>将 API 安全发布到开发人员、合作伙伴和员工，可进行扩展</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1439,7 +1440,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HockeyApp</h3>
-                                                    <p>Deploy mobile apps, collect feedback and crash reports, and monitor usage</p>
+                                                    <p>部署移动应用、收集反馈和崩溃报告以及监视使用情况</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1449,7 +1450,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#mgmt">Monitoring + Management</a>
+                        <a href="#mgmt">监视 + 管理</a>
                         <ul id="mgmt" class="cardsA">
                             <li>
                                 <a href="/azure/application-insights/">
@@ -1463,7 +1464,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Application Insights</h3>
-                                                    <p>Detect, triage, and diagnose issues in your web apps and services</p>
+                                                    <p>检测、会审和诊断 Web 应用与服务中的问题</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1482,7 +1483,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>Learn how to transform machine data into operational intelligence</p>
+                                                    <p>了解如何将计算机数据转变为操作智能</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1500,8 +1501,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Automation</h3>
-                                                    <p>Simplify cloud management with process automation</p>
+                                                    <h3>自动化</h3>
+                                                    <p>使用流程自动化来简化云管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1519,8 +1520,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Simple and reliable server backup to the cloud</p>
+                                                    <h3>备份</h3>
+                                                    <p>以简单可靠的方式将服务器数据备份到云中</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1538,8 +1539,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Site Recovery</h3>
-                                                    <p>Orchestrate protection and recovery of private clouds</p>
+                                                    <h3>站点恢复</h3>
+                                                    <p>协调私有云的保护和恢复</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1557,8 +1558,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Scheduler</h3>
-                                                    <p>Run your jobs on simple or comples recurring schedules</p>
+                                                    <h3>计划程序</h3>
+                                                    <p>根据简单或复杂的定期计划运行作业</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1576,8 +1577,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Traffic Manager</h3>
-                                                    <p>Route incoming traffic for high performance and availability</p>
+                                                    <h3>流量管理器</h3>
+                                                    <p>根据高性能和高可用性要求路由传入流量</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1595,8 +1596,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Monitor</h3>
-                                                    <p>Highly granular and real-time monitorign data for any Azure resource</p>
+                                                    <h3>Azure 监视器</h3>
+                                                    <p>针对任何 Azure 资源的高精度和实时监视数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1614,8 +1615,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Billing</h3>
-                                                    <p>Learn how to read/understand the usage and bill for your Azure subscription</p>
+                                                    <h3>计费</h3>
+                                                    <p>了解如何阅读/理解 Azure 订阅的使用情况和计费</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1653,7 +1654,7 @@ layout: HubPage
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Resource Manager</h3>
-                                                    <p>Work with the resources in as a group for Azure Services</p>
+                                                    <p>以组的形式处理 Azure 服务中的资源</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1663,46 +1664,46 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#all">All</a>
+                        <a href="#all">全部</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
-                                    <h3>Compute</h3>
+                                    <h3>计算</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/virtual-machines/linux/">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
-                                                <p>Linux Virtual Machines</p>
+                                                <p>Linux 虚拟机</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/virtual-machines/windows/">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
-                                                <p>Windows Virtual Machines</p>
+                                                <p>Windows 虚拟机</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/virtual-machine-scale-sets/">
                                                 <img src="media/index/AvailabilitySetOld.svg" alt="" />
-                                                <p>Virtual Machine Scale Sets</p>
+                                                <p>虚拟机规模集</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/app-service/">
                                                 <img src="media/index/AppService.svg" alt="" />
-                                                <p>App Service</p>
+                                                <p>应用服务</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/container-service/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
-                                                <p>Azure Container Service</p>
+                                                <p>Azure 容器服务</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>Functions</p>
+                                                <p>函数</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1714,42 +1715,42 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>Batch</p>
+                                                <p>批处理</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cloud-services/">
                                                 <img src="media/index/CloudService.svg" alt="" />
-                                                <p>Cloud Services</p>
+                                                <p>云服务</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Networking</h3>
+                                    <h3>网络</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>Virtual Network</p>
+                                                <p>虚拟网络</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/load-balancer/">
                                                 <img src="media/index/LoadBalancer.svg" alt="" />
-                                                <p>Load Balancer</p>
+                                                <p>负载均衡器</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/application-gateway/">
                                                 <img src="media/index/ApplicationGateway.svg" alt="" />
-                                                <p>Application Gateway</p>
+                                                <p>应用程序网关</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/vpn-gateway/">
                                                 <img src="media/index/VPNGateway.svg" alt="" />
-                                                <p>VPN Gateway</p>
+                                                <p>VPN 网关</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1767,7 +1768,7 @@ layout: HubPage
                                         <li>
                                         <a href="/azure/traffic-manager/">
                                                 <img src="media/index/TrafficManager.svg" alt="" />
-                                                <p>Traffic Manager</p>
+                                                <p>流量管理器</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1779,12 +1780,12 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Storage</h3>
+                                    <h3>存储</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
                                                 <img src="media/index/Storage.svg" alt="" />
-                                                <p>Storage</p>
+                                                <p>存储</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1802,7 +1803,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>备份</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1816,19 +1817,18 @@ layout: HubPage
                              </li>
                             <li>
                                 <div class="group">
-                                    <h3>Web + Mobile
-                                    </h3>
+                                    <h3>Web + 移动 </h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/app-service/">
                                                 <img src="media/index/AppService.svg" alt="" />
-                                                <p>App Service</p>
+                                                <p>应用服务</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/app-service-web">
                                                 <img src="media/index/app-service-web.svg" alt="" />
-                                                <p>Web Apps</p>
+                                                <p>Web 应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1846,7 +1846,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logic Apps</p>
+                                                <p>逻辑应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1858,13 +1858,13 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/media-services/">
                                                 <img src="media/index/MediaServices.svg" alt="" />
-                                                <p>Media Services</p>
+                                                <p>媒体服务</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Search</p>
+                                                <p>搜索</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1876,18 +1876,18 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Databases</h3>
+                                    <h3>数据库</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/sql-database/">
                                                 <img src="media/index/SQLDatabase.svg" alt="" />
-                                                <p>SQL Database</p>
+                                                <p>SQL 数据库</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/sql-data-warehouse/">
                                                 <img src="media/index/SQLDataWarehouse.svg" alt="" />
-                                                <p>SQL Data Warehouse</p>
+                                                <p>SQL 数据仓库</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1905,19 +1905,19 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/redis-cache/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
-                                                <p>Redis Cache</p>
+                                                <p>Redis 缓存</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Intelligence + Analytics</h3>
+                                    <h3>智能 + 分析</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/hdinsight/">
@@ -1928,19 +1928,19 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning</p>
+                                                <p>机器学习</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/stream-analytics/">
                                                 <img src="media/index/StreamAnalytics.svg" alt="" />
-                                                <p>Stream Analytics</p>
+                                                <p>流分析</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/">
                                                 <img src="media/index/CognitiveServices.svg" alt="" />
-                                                <p>Cognitive Services</p>
+                                                <p>认知服务</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1958,7 +1958,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1978,71 +1978,71 @@ layout: HubPage
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>Internet of Things</h3>
+                                    <h3>物联网</h3>
                                     <ul>
                                         <li>
                                             <a href="https://azure.microsoft.com/develop/iot/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>IoT Developer Center</p>
+                                                <p>IoT 开发人员中心</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/iot-hub/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>Azure IoT Hub</p>
+                                                <p>Azure IoT 中心</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/event-hubs/">
                                                 <img src="media/index/EventHubs.svg" alt="" />
-                                                <p>Event Hubs</p>
+                                                <p>事件中心</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/notification-hubs/">
                                                 <img src="media/index/NotificationHubs.svg" alt="" />
-                                                <p>Notification Hubs</p>
+                                                <p>通知中心</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/stream-analytics/">
                                                 <img src="media/index/StreamAnalytics.svg" alt="" />
-                                                <p>Stream Analytics</p>
+                                                <p>流分析</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning</p>
+                                                <p>机器学习</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Enterprise Integration</h3>
+                                    <h3>企业集成</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logic Apps</p>
+                                                <p>逻辑应用</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/biztalk-services/">
                                                 <img src="media/index/BizTalkServices.svg" alt="" />
-                                                <p>Biztalk Services</p>
+                                                <p>Biztalk 服务</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/service-bus/">
                                                 <img src="media/index/ServiceBus.svg" alt="" />
-                                                <p>Service Bus</p>
+                                                <p>服务总线</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/api-management/">
                                                 <img src="media/index/APIManagement.svg" alt="" />
-                                                <p>API Management</p>
+                                                <p>API 管理</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2060,25 +2060,24 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                  <div class="group">
-                                    <h3>Security + Identity
-                                    </h3>
+                                    <h3>安全性 + 标识 </h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/security-center">
                                                 <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>Security Center</p>
+                                                <p>安全中心</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/key-vault/">
                                                 <img src="media/index/KeyVault.svg" alt="" />
-                                                <p>Key Vault</p>
+                                                <p>密钥保管库</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2096,19 +2095,19 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/active-directory-domain-services">
                                                 <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory Domain Services</p>
+                                                <p>Azure Active Directory 域服务</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/multi-factor-authentication/">
                                                 <img src="media/index/MultiFactorAuthentication.svg" alt="" />
-                                                <p>Multi-Factor Authentication</p>
+                                                <p>多重身份验证</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/security/">
                                                 <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>Security Information</p>
+                                                <p>安全信息</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2116,7 +2115,7 @@ layout: HubPage
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>Developer Tools</h3>
+                                    <h3>开发人员工具</h3>
                                     <ul>
                                         <li>
                                             <a href="https://www.visualstudio.com/docs/overview">
@@ -2127,7 +2126,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/devtest-lab/">
                                                 <img src="media/index/DevTestLabs.svg" alt="" />
-                                                <p>Azure DevTest Labs</p>
+                                                <p>Azure 开发测试实验室</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2139,7 +2138,7 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/api-management/">
                                                 <img src="media/index/APIManagement.svg" alt="" />
-                                                <p>API Management</p>
+                                                <p>API 管理</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2151,8 +2150,7 @@ layout: HubPage
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Monitoring + Management
-                                    </h3>
+                                    <h3>监视 + 管理 </h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/application-insights/">
@@ -2169,13 +2167,13 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/automation/">
                                                 <img src="media/index/Automation.svg" alt="" />
-                                                <p>Automation</p>
+                                                <p>自动化</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>备份</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2187,25 +2185,25 @@ layout: HubPage
                                         <li>
                                             <a href="/azure/scheduler/">
                                                 <img src="media/index/Scheduler.svg" alt="" />
-                                                <p>Scheduler</p>
+                                                <p>计划程序</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/traffic-manager/">
                                                 <img src="media/index/TrafficManager.svg" alt="" />
-                                                <p>Traffic Manager</p>
+                                                <p>流量管理器</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/monitoring-and-diagnostics/">
                                                 <img src="media/index/AzureMonitoring.svg" alt="" />
-                                                <p>Azure Monitor</p>
+                                                <p>Azure 监视器</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/billing/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Billing</p>
+                                                <p>计费</p>
                                             </a>
                                         </li>
                                         <!-- <li>
@@ -2228,10 +2226,10 @@ layout: HubPage
                 </ul>
             </li>
             <li>
-                <a href="#developer">Developer</a>
+                <a href="#developer">开发人员</a>
                 <ul id="developer">
                     <li>
-                        <a href="#languages">Languages &amp; Frameworks</a>
+                        <a href="#languages">语言和框架</a>
                         <ul id="languages" class="cardsF">
                             <li>
                                 <div class="cardSize">
@@ -2244,16 +2242,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/downloads/">Get the .NET SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/downloads/">获取 .NET SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/net/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/net/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/rest/api">API reference</a>
+                                                    <a href="/rest/api">API 参考</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=dotnet">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=dotnet">获取示例</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2271,16 +2269,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">Get the Python SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">获取 Python SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/python/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API reference</a>
+                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API 参考</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">获取示例</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2298,16 +2296,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs/">Get the Nodejs SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs/">获取 Nodejs SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/nodejs">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure.github.io/azure-storage-node/index.html">API reference</a>
+                                                    <a href="http://azure.github.io/azure-storage-node/index.html">API 参考</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">Get  examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=node">获取示例</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2325,16 +2323,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=690320">Get the Java SDK</a>
+                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=690320">获取 Java SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/java/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/java/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/java/api/">API reference</a>
+                                                    <a href="/java/api/">API 参考</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=java">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=java">获取示例</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2352,16 +2350,16 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://azure.microsoft.com/en-us/downloads/">Get the Ruby SDK</a>
+                                                    <a href="https://azure.microsoft.com/en-us/downloads/">获取 Ruby SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/develop/ruby/">Get started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/develop/ruby/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API reference</a>
+                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API 参考</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=ruby">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=ruby">获取示例</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2379,13 +2377,13 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="">Get started with REST</a>
+                                                    <a href="">REST 入门</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/rest/api">Reference</a>
+                                                    <a href="/rest/api">参考</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=rest">Get examples</a>
+                                                    <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&query=rest">获取示例</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2395,7 +2393,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#cli">Command Line Interface (CLI)</a>
+                        <a href="#cli">命令行接口 (CLI)</a>
                         <ul id="cli" class="cardsF">
                             <li>
                                 <div class="cardSize">
@@ -2407,16 +2405,15 @@ layout: HubPage
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure CLI 2.0 Preview
-                                                </h3>
+                                                <h3>Azure CLI 2.0 预览版 </h3>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/cli/azure/get-started/">Get Started</a>
+                                                    <a href="https://docs.microsoft.com/cli/azure/get-started/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-cli">Download Azure CLI 2.0</a>
+                                                    <a href="https://github.com/Azure/azure-cli">下载 Azure CLI 2.0</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure">Reference</a>
+                                                    <a href="/cli/azure">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2435,13 +2432,13 @@ layout: HubPage
                                             <div class="cardText">
                                                 <h3>PowerShell</h3>
                                                 <p>
-                                                    <a href="https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell">Get Started</a>
+                                                    <a href="https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/PowerShell/PowerShell/blob/master/docs/installation/">Download PowerShell</a>
+                                                    <a href="https://github.com/PowerShell/PowerShell/blob/master/docs/installation/">下载 PowerShell</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/">Reference</a>
+                                                    <a href="/powershell/">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2458,22 +2455,21 @@ layout: HubPage
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure CLI
-                                                </h3>
+                                                <h3>Azure CLI </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/">Get Started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/linux-azure-cli">Download Azure CLI for Linux</a>
+                                                    <a href="http://aka.ms/linux-azure-cli">下载用于 Linux 的 Azure CLI</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/mac-azure-cli">Download Azure CLI for Mac</a>
+                                                    <a href="http://aka.ms/mac-azure-cli">下载用于 Mac 的 Azure CLI</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/webpi-azure-cli">Download Azure CLI for Windows</a>
+                                                    <a href="http://aka.ms/webpi-azure-cli">下载用于 Windows 的 Azure CLI</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/azure-cli-arm-commands/">Reference</a>
+                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/azure-cli-arm-commands/">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2483,7 +2479,7 @@ layout: HubPage
                         </ul>
                     </li>
                     <li>
-                        <a href="#tools">Tools &amp; Extensions</a>
+                        <a href="#tools">工具和扩展</a>
                         <ul id="tools" class="cardsF">
                             <li>
                                 <div class="cardSize">
@@ -2496,10 +2492,10 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">Visual Studio Tools for Azure</a>
+                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">用于 Azure 的 Visual Studio 工具</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">Download</a>
+                                                    <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">下载</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2517,19 +2513,19 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://github.com/Microsoft/DockerToolsDocs">Docker Tools</a>
+                                                    <a href="https://github.com/Microsoft/DockerToolsDocs">Docker 工具</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker">Get Started</a>
+                                                    <a href="/en-us/dotnet/articles/core/docker/visual-studio-tools-for-docker">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680&clcid=0x409">Download for Visual Studio</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680&clcid=0x409">适用于 Visual Studio 的下载项</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780681&clcid=0x409">Download for Visual Studio Code</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780681&clcid=0x409">适用于 Visual Studio Code 的下载项</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682&clcid=0x409">Download for Team Services</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682&clcid=0x409">适用于 Team Services 的下载项</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2547,10 +2543,10 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">PowerShell Tools for Visual Studio</a>
+                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">用于 Visual Studio 的 PowerShell 工具</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Download</a>
+                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">下载</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2568,19 +2564,19 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com/">Storage Explorer</a>
+                                                    <a href="http://storageexplorer.com/">存储资源管理器</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">Get Started</a>
+                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">入门</a>
                                                 </p>
                                                 <p>
-                                                     <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">Download for Linux</a>
+                                                     <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">适用于 Linux 的下载项</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708342">Download for Mac</a>
+                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708342">适用于 Mac 的下载项</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708343">Download for Windows</a>
+                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708343">适用于 Windows 的下载项</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2598,13 +2594,13 @@ layout: HubPage
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://github.com/Microsoft/PTVS/releases/v2.2.4">Python Tools for Visual Studio 2015</a>
+                                                    <a href="https://github.com/Microsoft/PTVS/releases/v2.2.4">用于 Visual Studio 的 Python 工具 2015</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://ptvs.azureedge.net/download/PTVS%20Samples%202.2.4.vsix">Samples</a>
+                                                    <a href="https://ptvs.azureedge.net/download/PTVS%20Samples%202.2.4.vsix">示例</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://ptvs.azureedge.net/download/PTVS%202.2.4%20VS%202015.msi">Download</a>
+                                                    <a href="https://ptvs.azureedge.net/download/PTVS%202.2.4%20VS%202015.msi">下载</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2616,16 +2612,14 @@ layout: HubPage
                 </ul>
             </li>
             <li>
-                <a href="#architecture">Architecture</a>
+                <a href="#architecture">体系结构</a>
                 <ul id="architecture">
                     <li>
                         <a href="#architecture1"></a>
                         <ul id="architecture1" class="cardsC">
                             <li>
                                 <div class="container intro">
-                                    <p>A set of recommended architectures for cloud applications. Each architecture includes
-                                        recommended practices, prescriptive steps, and an executable component that embodies
-                                        the recommendations.</p>
+                                    <p>为云应用程序建议的一组体系结构。 每种体系结构包括建议的做法、说明性的步骤以及附带建议的可执行组件。</p>
                                 </div>
                             </li>
                             <li>
@@ -2639,8 +2633,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cloud Fundamentals</h3>
-                                                    <p>Fundamental knowledge to be successful in the cloud. If you’re new to the cloud or new to Azure, start here.</p>
+                                                    <h3>云基础知识</h3>
+                                                    <p>在云中取得成功所要掌握的基础知识。 云或 Azure 的新手可以从此处着手。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2658,8 +2652,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Reference Architectures</h3>
-                                                    <p>A set of recommended architectures for the cloud. Each architecture includes best practices, prescriptive steps, and a deployable solution.</p>
+                                                    <h3>参考体系结构</h3>
+                                                    <p>为云建议的一组体系结构。 每种体系结构包括最佳实践、说明性的步骤和部署解决方案。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2677,8 +2671,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cloud Design Patterns</h3>
-                                                    <p>Design patterns for the cloud. Each pattern describes a problem, a pattern that addresses the problem, and an example based on Azure.</p>
+                                                    <h3>云设计模式</h3>
+                                                    <p>云的设计模式 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2696,9 +2690,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Best Practices for Cloud Applications</h3>
-                                                    <p>A set of best practices for cloud applications, covering aspects such
-                                                        as auto-scaling, caching, data partitioning, API design, and monitoring.</p>
+                                                    <h3>云应用程序最佳实践</h3>
+                                                    <p>适用于云应用程序的一套最佳实践，涉及自动缩放、缓存、数据分区、API 设计和监视等多个方面。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2716,9 +2709,8 @@ layout: HubPage
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Scenario Guides</h3>
-                                                    <p>Guidance for various end-to-end application scenarios in the cloud. Includes
-                                                        written guidance and reference implementations.</p>
+                                                    <h3>方案指南</h3>
+                                                    <p>有关云中各种端到端应用程序方案的指南。 包括书面指南和参考实现。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2732,3 +2724,9 @@ layout: HubPage
         </ul>
     </div>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

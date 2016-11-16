@@ -1,5 +1,5 @@
 
-### 基本弹性池限制
+### <a name="basic-elastic-pool-limits"></a>基本弹性池限制
 |  |  |
 | --- |:---:|
 | 每个池的最大 eDTU 数 |&nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
@@ -16,11 +16,11 @@
 | 灾难恢复 |活动异地复制 |
 |  | |
 
-* 只要所选的池 DTU 大小与每个 DB 的最大 eDTU 数一样大，每个数据库的最大和最小 eDTU 数就可能设置为任何列出的值
+* 只要所选的池 DTU 大小与每个 DB 的最大 eDTU 数一样大，每个数据库的最大和最小 eDTU 数就可能设置为任何列出的值 
 
 ** 弹性数据库共享池存储空间，因此数据库存储空间限制为小于池的剩余存储空间或每个数据库的最大存储空间
 
-### 标准弹性池限制
+### <a name="standard-elastic-pool-limits"></a>标准弹性池限制
 |  |  |
 | --- |:---:|
 | 每个池的最大 eDTU 数 |&nbsp;100 &nbsp;&nbsp;&nbsp; 200 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp;&nbsp;&nbsp; 1200 |
@@ -37,11 +37,11 @@
 | 灾难恢复 |活动异地复制 |
 |  | |
 
-* 只要所选的池 DTU 大小与每个 DB 的最大 eDTU 数一样大，每个数据库的最大和最小 eDTU 数就可能设置为任何列出的值
+* 只要所选的池 DTU 大小与每个 DB 的最大 eDTU 数一样大，每个数据库的最大和最小 eDTU 数就可能设置为任何列出的值 
 
 ** 弹性数据库共享池存储空间，因此数据库存储空间限制为小于池的剩余存储空间或每个数据库的最大存储空间
 
-### 高级弹性池限制
+### <a name="premium-elastic-pool-limits"></a>高级弹性池限制
 |  |  |
 | --- |:---:|
 | 每个池的最大 eDTU 数 |125 &nbsp;&nbsp;&nbsp; 250 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 1000 &nbsp;&nbsp;&nbsp; &nbsp;1500 |
@@ -58,8 +58,12 @@
 | 灾难恢复 |活动异地复制 |
 |  | |
 
-* 只要所选的池 DTU 大小与每个 DB 的最大 eDTU 数一样大，每个数据库的最大和最小 eDTU 数就可能设置为任何列出的值
+* 只要所选的池 DTU 大小与每个 DB 的最大 eDTU 数一样大，每个数据库的最大和最小 eDTU 数就可能设置为任何列出的值 
 
 ** 弹性数据库共享池存储空间，因此数据库存储空间限制为小于池的剩余存储空间或每个数据库的最大存储空间
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+
