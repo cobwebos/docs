@@ -45,7 +45,7 @@
 ## [使用语言理解智能服务进行开发](https://www.luis.ai/Help/)
 
 # 参考
-## [PowerShell cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [PowerShell cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
 ## [REST](https://docs.microsoft.com/rest/api/cognitiveservices/)
 
 # 资源 
@@ -54,6 +54,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=cognitive-services)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

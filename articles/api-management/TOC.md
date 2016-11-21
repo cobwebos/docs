@@ -39,14 +39,18 @@
 ### [管理用户帐户](api-management-howto-create-or-invite-developers.md)
 ### [使用自动化进行管理](automation-manage-api-management.md)
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
-#参考
-## [资源管理 PowerShell cmdlet]/powershell/resourcemanager()
-## [经典部署 PowerShell cmdlet 参考](https://msdn.microsoft.com/en-us/library/azure/mt613507)
-## [REST API](/rest/api/apimanagement/)
-## [策略](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [模板](https://msdn.microsoft.com/en-us/library/azure/mt697540)
+#引用
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [经典 PowerShell](https://msdn.microsoft.com/library/azure/mt613507)
+## [REST](/rest/api/apimanagement/)
+## [策略](https://msdn.microsoft.com/library/azure/dn894081)
+## [模板](https://msdn.microsoft.com/library/azure/mt697540)
 #资源
 ## [定价](https://azure.microsoft.com/pricing/details/api-management/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-api-management)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
+## [服务更新](https://azure.microsoft.com/updates/?product=api-management)
 ## [白皮书：基于云的 API 管理](http://j.mp/ms-apim-whitepaper)
 ## [API 设计指南](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
 ## [API 实现指南](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
@@ -59,6 +63,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

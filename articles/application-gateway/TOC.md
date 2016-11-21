@@ -13,8 +13,8 @@
 #### [门户](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
-#### [CLI](application-gateway-create-gateway-arm-template.md)
-#### [PowerShell（经典）](application-gateway-create-gateway-arm-template.md)
+#### [CLI](application-gateway-create-gateway-cli.md)
+#### [PowerShell（经典）](application-gateway-create-gateway.md)
 ### 面向内部
 #### [PowerShell](application-gateway-ilb-arm.md)
 #### [PowerShell（经典）](application-gateway-ilb.md)
@@ -37,6 +37,7 @@
 ### [门户](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
+## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## 管理
 ### [诊断](application-gateway-diagnostics.md)
 ### [故障排除](application-gateway-troubleshooting-502.md)
@@ -54,11 +55,12 @@
 ## [流量管理器](/azure/traffic-manager/)
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/application-gateway/)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-application-gateway)  
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-application-gateway)
 ## [服务更新](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

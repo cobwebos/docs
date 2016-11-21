@@ -11,7 +11,7 @@
 
 # 如何
 ## 集成
-### 已连接的源
+### 连接的源
 #### [Windows 代理](log-analytics-windows-agents.md)
 #### [Linux 代理](log-analytics-linux-agents.md)
 #### [Azure 虚拟机](log-analytics-azure-vm-extension.md)
@@ -38,7 +38,6 @@
 #### [警报管理](log-analytics-solution-alert-management.md)
 #### [容量管理](log-analytics-capacity.md)
 #### [更改跟踪](log-analytics-change-tracking.md)
-#### [配置评估](log-analytics-configuration-assessment.md)
 #### [容器](log-analytics-containers.md)
 #### [密钥保管库](log-analytics-azure-key-vault.md)
 #### [恶意软件评估](log-analytics-malware.md)
@@ -48,7 +47,6 @@
 #### [Service Fabric](log-analytics-service-fabric.md)
 #### [SQL 评估](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
-#### [系统更新评估](log-analytics-system-update.md)
 #### [VMware](log-analytics-vmware.md)
 #### [传输数据](log-analytics-wire-data.md)
 ## 分析
@@ -63,11 +61,10 @@
 
 # 资源
 ## [升级分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [定价](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -12,7 +12,7 @@
 ## [管理 AD 许可](active-directory-licensing-what-is.md)
 ## [为组织获取 Azure](sign-up-organization.md)
 ## [常见问题](active-directory-faq.md)
-
+## [SaaS 应用教程](active-directory-saas-tutorial-list.md)
 
 # 如何
 ## 管理用户
@@ -291,12 +291,12 @@
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory) 
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

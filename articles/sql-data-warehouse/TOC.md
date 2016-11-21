@@ -28,10 +28,9 @@
 
 ### [概述](sql-data-warehouse-connect-overview.md)
 ### [连接字符串](sql-data-warehouse-connection-strings.md)
-### 查询
-#### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-#### [SSMS](sql-data-warehouse-query-ssms.md)
-#### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [SSMS](sql-data-warehouse-query-ssms.md)
+### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [安装 Visual Studio](sql-data-warehouse-install-visual-studio.md)
 
 ## 开发
@@ -111,6 +110,7 @@
 ## 性能
 
 ### [概述](sql-data-warehouse-overview-manage-user-queries.md)
+### [列存储压缩](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [查询](sql-data-warehouse-manage-monitor.md)
 ### [工作负荷](sql-data-warehouse-develop-concurrency.md)
 ### [排除故障](sql-data-warehouse-troubleshoot.md)
@@ -146,6 +146,6 @@
 ### [数据管理](sql-data-warehouse-partner-data-management.md)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

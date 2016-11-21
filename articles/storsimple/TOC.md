@@ -1,7 +1,4 @@
-# StorSimple 概述
-
 # StorSimple 虚拟阵列
-
 ## 概述
 ### [什么是解决方案？](storsimple-ova-overview.md)
 
@@ -54,8 +51,9 @@
 ### 安装
 #### [查看安全性](storsimple-safety.md)
 #### [解压缩、安装机架，将电缆连接到 8100](storsimple-8100-hardware-installation.md)
+
 #### [解压缩、安装机架，将电缆连接到 8600](storsimple-8600-hardware-installation.md)
-#### [10 GbE 网络接口支持的硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+#### [10-GbE 网络接口支持的硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### 部署
 #### [StorSimple Manager 服务](storsimple-manage-service.md)
@@ -63,6 +61,7 @@
 ##### [Azure 中的物理设备 - Update 1](storsimple-deployment-walkthrough-u1.md)
 ##### [Azure 中的物理设备 - GA](storsimple-deployment-walkthrough.md)
 #### [政务门户中的物理设备 - 最新版](storsimple-deployment-walkthrough-gov-u2.md)
+##### [政务门户中的物理设备 - 最新版](storsimple-deployment-walkthrough-gov.md)
 #### [Azure 中的虚拟设备](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
 #### [StorSimple Adapter for SharePoint](storsimple-adapter-for-sharepoint.md)
@@ -139,7 +138,7 @@
 ##### [创建支持包](storsimple-create-manage-support-package.md)
 
 ### 迁移
-#### [从 5000-7000 系列](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-19253270)
+#### [从 5000-7000 系列](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [从其他存储设备](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
@@ -159,23 +158,27 @@
 ### [Update 0.1](storsimple-october-2014-release-notes.md)
 ### [Release - GA](storsimple-july-2014-release-notes.md)
 
-## 参考
-### [PowerShell](/powershell/servicemanagement/)
+## 引用
+### [Azure PowerShell](/powershell/servicemanagement)
+### [Windows PowerShell for StorSimple cmdlet] (https://technet.microsoft.com/library/dn688168.aspx)
 
 # 相关内容
 ## [StorSimple 5000-7000 系列](http://onlinehelp.storsimple.com)
 
 # 资源
-## [论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [定价](https://azure.microsoft.com/pricing/details/storsimple/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
+## [服务更新](https://azure.microsoft.com/updates/?product=storsimple)
 ## [市场营销博客](http://blogs.technet.com/b/cis/)
 ## [市场营销](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [支持博客](http://blogs.msdn.com/b/storsimple/)
 ## [第三方通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
-## [服务更新](https://azure.microsoft.com/updates/?product=storsimple)
-## [定价](https://azure.microsoft.com/pricing/details/storsimple/)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

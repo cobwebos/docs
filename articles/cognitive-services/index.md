@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Cognitive Services Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: b266164f44b36fbfbe3b8a662653a978877643fc
 
-Cognitive Services (Preview) is a series of APIs which can be used to enable natural and contextual interaction within your applications.  Cognitive Services offers Language, Speech, Vision, Search, and Knowledge APIs.
+---
+#<a name="cognitive-services-documentation"></a>认知服务文档
+
+认知服务（预览版）是可以在应用程序中实现区分上下文的自然交互的一系列 API。  认知服务提供语言、语音、视觉、搜索和知识 API。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -17,7 +21,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Cognitive Services Video Library</h3>
+                        <h3>认知服务视频库</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with the Text Analytics APIs</h3>
+                        <h3>文本分析 API 入门</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with the Recommendations APIs</h3>
+                        <h3>推荐 API 入门</h3>
                     </div>
                 </div>
             </div>
@@ -64,22 +68,65 @@ Cognitive Services (Preview) is a series of APIs which can be used to enable nat
 
 ---
 
-##Reference
+## <a name="reference"></a>引用
 
-###PowerShell
-[Azure PowerShell Reference](/powershell/azureps-cmdlets-docs)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-###.NET
-[Cognitive Services Managed Reference](https://msdn.microsoft.com/library/azure/mt416943)
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/mt416943">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>认知服务托管参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-###REST
-[Cognitive Services REST API Reference](/rest/api/cognitiveservices)
+    <li>
+        <a href="/rest/api/cognitiveservices">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>认知服务 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cognitive-services.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Cognitive Services Documentation
-        </div>
+下载认知服务文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

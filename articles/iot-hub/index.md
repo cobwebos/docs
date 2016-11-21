@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 1b5ea8b5b5fb99fa65a1efd0eeff48af2e39346c
-ms.openlocfilehash: 7e3e54511ef1205d04eef1820a3e20f480386ed1
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: b452e767bb6c2e181f56ab84e92e9225408baf9b
 
 ---
 #<a name="iot-hub-documentation"></a>IoT 中心文档
@@ -104,20 +104,69 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
 
 ---
 
-##<a name="reference"></a>参考
+## <a name="reference"></a>参考
 
-###<a name="azure-cli"></a>Azure CLI 
-[在 Azure CLI 中使用 IoT 中心](/cli/azure/iot)  
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/cli/azure/iot">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure CLI</h3>
+                        <p>使用 Azure CLI 的 IoT 中心</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-###<a name="net"></a>.NET 
-[.NET 托管参考 API](/dotnet/api/) 
+<li>
+        <a href="/dotnet/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>.NET 托管参考 API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-###<a name="java"></a>Java 
-[Java SDK 参考](/java/api/) 
+<li>
+        <a href="/java/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Java SDK 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-###<a name="rest"></a>REST 
-[IoT 中心 REST API 参考](/rest/api/iothub) 
-
+<li>
+        <a href="/rest/api/iothub">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>IoT 中心 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-hub.pdf">
@@ -129,6 +178,6 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

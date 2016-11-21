@@ -1,11 +1,15 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 316f20972fc4d231ef0a6a9e132110dfc6c1a59a
+
 ---
-#Notification Hubs Documentation
+#<a name="notification-hubs-documentation"></a>通知中心文档
 
-Azure Notification Hubs provide an easy-to-use, multiplatform, scaled-out push infrastructure that enables you to send mobile push notifications from any backend (in the cloud or on-premises) to any mobile platform.
+Azure 通知中心提供易用的多平台扩展式推送基础结构，让用户从任何后端（云中或本地）向任何移动平台发送移动推送通知。
 
-With Notification Hubs, you can easily send cross-platform, personalized push notifications, abstracting the details of the different platform notification systems (PNS). With a single API call, you can target individual users or entire audience segments containing millions of users, across all their devices.
+借助通知中心，可以轻松发送跨平台的个性化推送通知，提取不同平台通知系统 (PNS) 的详细信息。 只需 API 调用一次，就可以将通知发送到单个用户或包含数百万用户的整个受众群的所有设备上。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -19,7 +23,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Notification Hubs</h3>
+                        <h3>了解通知中心</h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +41,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Notification Hubs Video Library</h3>
+                        <h3>通知中心视频库</h3>
                     </div>
                 </div>
             </div>
@@ -55,7 +59,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started sending push notifications to Android (FCM) with Azure Notification Hubs</h3>
+                        <h3>开始使用 Azure 通知中心向 Android (FCM) 发送推送通知</h3>
                     </div>
                 </div>
             </div>
@@ -73,7 +77,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Notification Hubs using Baidu</h3>
+                        <h3>通过百度开始使用通知中心</h3>
                     </div>
                 </div>
             </div>
@@ -91,7 +95,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started sending push notifications to Chrome apps with Azure Notification Hubs</h3>
+                        <h3>开始使用 Azure 通知中心向 Chrome 应用发送推送通知</h3>
                     </div>
                 </div>
             </div>
@@ -109,7 +113,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started sending push notifications to iOS with Azure Notification Hubs</h3>
+                        <h3>开始使用 Azure 通知中心向 iOS 发送推送通知</h3>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Notification Hubs for Kindle apps</h3>
+                        <h3>适用于 Kindle 应用的通知中心入门</h3>
                     </div>
                 </div>
             </div>
@@ -145,7 +149,7 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Notification Hubs for Windows Universal Platform Apps</h3>
+                        <h3>适用于 Windows 通用平台应用的通知中心入门</h3>
                     </div>
                 </div>
             </div>
@@ -156,16 +160,52 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
 
 ---
 
-## Reference
+## <a name="reference"></a>引用
 
-### PowerShell
-[Notification Hubs PowerShell Cmdlets](/powershell/resourcemanager/)
-
-### .NET
-[Notification Hubs .NET API Reference](/dotnet/api/)
-
-### REST
-[Notification Hubs REST API Reference](/rest/api/notificationhubs/)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/resourcemanager/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>通知中心 PowerShell Cmdlet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>通知中心 .NET API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/notificationhubs/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>通知中心 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<ul>
 
 ---
 
@@ -173,7 +213,12 @@ With Notification Hubs, you can easily send cross-platform, personalized push no
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/notification-hubs.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Notification Hubs Documentation
-        </div>
+下载通知中心文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -97,10 +97,10 @@
 ### [恢复指南](cloud-services-disaster-recovery-guidance.md)
 ### [云服务常见问题](cloud-services-faq.md)
 
-# 参考
-## [.NET](https://msdn.microsoft.com/library)
+# 引用
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
+## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 ## [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)
 ## 来宾 OS 停用
 ### [停用策略](cloud-services-guestos-retirement-policy.md)
@@ -116,6 +116,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

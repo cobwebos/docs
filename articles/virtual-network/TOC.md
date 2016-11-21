@@ -13,7 +13,7 @@
 
 # 入门
 ## [创建虚拟网络](virtual-networks-create-vnet-arm-pportal.md)
-## [将 VM 部署到虚拟网络](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## [将 VM 部署到虚拟网络](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 # 如何
 ## 规划和设计
@@ -143,6 +143,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

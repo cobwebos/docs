@@ -1,6 +1,6 @@
 # 概述
 ## [什么是 SQL 数据库？](sql-database-technical-overview.md)
-## [SQL 数据库常见问题](sql-database-faq.md)
+
 ## 功能
 ### [服务层](sql-database-service-tiers.md)
 ### [数据库事务单位](sql-database-what-is-a-dtu.md)
@@ -75,6 +75,7 @@
 ## [创建并管理访问权限和许可权限](sql-database-get-started-security.md)
 ## [内存中优化](sql-database-in-memory.md)
 ## [数据同步](sql-database-get-started-sql-data-sync.md)
+## [SQL 数据库常见问题](sql-database-faq.md)
 
 # 如何
 
@@ -264,12 +265,12 @@
 ### [移动数据库](sql-database-troubleshoot-moving-data.md)
 
 # 参考
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [PowerShell 经典](/powershell/servicemanagement/)
 ## [Java](/java/api/)
 ## [.NET](/dotnet/api/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [Azure SQL 数据库 Cmdlet](https://msdn.microsoft.com/library/azure/mt574084(v=azure.300\).aspx)
+## [Azure SQL 数据库 Cmdlet](/powershell/resourcemanager/AzureRM.Sql/v1.0.12/AzureRM.Sql)
 ## [SQL Server Cmdlet](https://msdn.microsoft.com/library/mt740629.aspx)
 ## [REST](/rest/api/sql/)
 
@@ -287,6 +288,9 @@
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/sql-database/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/sql-azure)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-database)
 ## [服务更新](https://azure.microsoft.com/updates/?service=sql-database)
 ## [SQL Server工具](https://msdn.microsoft.com/library/mt238365.aspx)
 ## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
@@ -294,10 +298,10 @@
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
-## [论坛](https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-database)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Logic Apps Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 4885c54a2bc592d0e6da8c1f39ec7360fa97d6fd
 
-Logic Apps provide a way to simplify and implement scalable integrations and workflows in the cloud. It provides a visual designer to model and automate your process as a series of steps known as a workflow. There are many connectors across the cloud and on-premises to quickly integrate across services and protocols. A logic app begins with a trigger (like 'When an account is added to Dynamics CRM') and after firing can begin many combinations actions, conversions, and condition logic.
+---
+# <a name="logic-apps-documentation"></a>逻辑应用文档
+
+逻辑应用是用于建模以及自动化工作流中的过程的设计工具。 它在云中和本地提供多个连接器，可跨服务和协议快速集成。 逻辑应用以触发器开头（例如，“当将帐户添加到 Dynamics CRM 时”），在触发之后许多组合操作、转换和条件逻辑才能开始。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Logic Apps</h3>
+                        <h3>了解逻辑应用</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Librasry</h3>
+                        <h3>应用服务视频库</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +53,11 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a new Logic App connecting SaaS services</h3>
+                        <h3>开始创建连接 SaaS 服务的新逻辑应用</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +71,11 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Logic App using a template</h3>
+                        <h3>开始使用模板创建逻辑应用</h3>
                     </div>
                 </div>
             </div>
@@ -85,11 +89,11 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a custom API to use with Logic Apps</h3>
+                        <h3>开始创建用于逻辑应用的自定义 API</h3>
                     </div>
                 </div>
             </div>
@@ -100,22 +104,64 @@ Logic Apps provide a way to simplify and implement scalable integrations and wor
 
 ---
 
-## Reference
+## <a name="reference"></a>引用
 
-### PowerShell
-[Logic Apps PowerShell Cmdlets](/powershell/resourcemanager/)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/resourcemanager/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>逻辑应用 PowerShell Cmdlet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### .NET
-[Logic Apps Managed Reference](https://msdn.microsoft.com/library/azure/mt416943)
+<li>
+        <a href="https://msdn.microsoft.com/library/azure/mt416943">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>逻辑应用托管参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### REST
-[Logic Apps REST API Reference](/rest/api/logic/)
+    <li>
+        <a href="/rest/api/logic/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>逻辑应用 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/logic-apps.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Logic Apps Documentation
-        </div>
+下载逻辑应用文档 </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO3-->
+
+

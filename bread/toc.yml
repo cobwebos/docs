@@ -51,6 +51,9 @@
   - name: "自动化"
     tocHref: /azure/automation/
     topicHref: /azure/automation/automation-intro
+  - name: "容器注册表"
+    tocHref: /azure/container-registry/
+    topicHref: /azure/container-registry/container-registry-info
   - name: "函数"
     tocHref: /azure/azure-functions/
     topicHref: /azure/azure-functions/functions-overview

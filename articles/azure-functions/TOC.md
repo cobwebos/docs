@@ -38,9 +38,6 @@
 ## 部署
 ### [Azure Functions 的连续部署](functions-continuous-deployment.md)
 
-# 参考
-## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
-
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
@@ -48,6 +45,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

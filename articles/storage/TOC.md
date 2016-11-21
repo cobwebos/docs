@@ -102,7 +102,7 @@
 ### [共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [教程：使用 Azure 密钥保管库加密和解密 Blob](storage-encrypt-decrypt-blobs-key-vault.md)
 ### 客户端加密
-#### [Azure 密钥保管库](storage-client-side-encryption.md)
+#### [.NET](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
 
@@ -181,6 +181,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

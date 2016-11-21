@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Virtual Machine Scale Sets Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 71d5dc02cea9375d9c07ddd6d4a56d446390d5f1
 
-Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy and manage a set of identical VMs.  With all VMs configured the same, VM scale sets are designed to support true autoscale - no pre-provisioning of VMs is required. This makes it easier to build large-scale services targeting big compute, big data, and containerized workloads.
+---
+#<a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
+
+虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。  VM 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,25 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Virtual Machine Scale Sets</h3>
+                        <h3>了解虚拟机规模集</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+       <li>
+        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=virtual-machines">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>虚拟机视频库</h3>
                     </div>
                 </div>
             </div>
@@ -31,11 +53,11 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Windows scale set</h3>
+                        <h3>Windows VM 规模集入门</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +71,33 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Linux scale set</h3>
+                        <h3>Linux VM 规模集入门</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+
+</ul>
+
+---
+
+## <a name="reference"></a>引用
+
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>虚拟机规模集 PowerShell</p>
                     </div>
                 </div>
             </div>
@@ -61,17 +105,27 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=virtual-machines">
+        <a href="/cli/azure/vmss">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Virtual Machines Video Library</h3>
+                        <h3>Azure CLI</h3>
+                        <p>使用 Azure CLI 创建虚拟机规模集</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/compute">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>虚拟机规模集 REST API 参考</p>
                     </div>
                 </div>
             </div>
@@ -80,24 +134,17 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
     </li>
 </ul>
 
----
-
-##Reference
-
-###PowerShell
-[Virtual Machine Scale Sets PowerShell](/powershell/azureps-cmdlets-docs)
-
-###Azure CLI
-[Virtual Machine Scale Sets CLI Reference](/cli/azure/vmss)
-
-###REST
-[Virtual Machine Scale Sets REST API Reference](/rest/api/compute)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machine-scale-sets.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Virtual Machine Scale Sets Documentation
-        </div>
+下载虚拟机规模集文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

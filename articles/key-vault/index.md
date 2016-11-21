@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d6059070f8cb8765986763a2ae52068ab692d41d
-ms.openlocfilehash: 9614778d6c7502f16639d2ccb2f259a98be5b0c9
+ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
+ms.openlocfilehash: ac0840ad98cc34d190d69b4e317a2c446a3d64d1
 
 ---
 # <a name="key-vault-documentation"></a>密钥保管库文档
@@ -106,21 +106,82 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 ## <a name="reference"></a>参考
 
-### <a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/PowerShell/azureps-cmdlets-docs)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/PowerShell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### <a name="azure-cli"></a>Azure CLI 
-[在 Azure CLI 中使用密钥保管库](/cli/azure/keyvault)
+<li>
+        <a href="/cli/azure/keyvault">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure CLI</h3>
+                        <p>在 Azure CLI 中使用密钥保管库</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### <a name="java"></a>Java 
-[Java 中的密钥保管库参考](/java/api/)
+<li>
+        <a href="/java/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Java 中的密钥保管库参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### <a name="net"></a>.NET 
-[密钥保管库托管参考 API](/dotnet/api/) 
+<li>
+        <a href="/dotnet/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>密钥保管库托管参考 API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### <a name="rest"></a>REST 
-[密钥保管库 REST API 参考](/rest/api/keyvault) 
-
+<li>
+        <a href="/rest/api/keyvault">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>密钥保管库 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 ---
 
 <div class="downloadHolder">
@@ -133,6 +194,6 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

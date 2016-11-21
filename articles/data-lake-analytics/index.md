@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Data Lake Analytics Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
+ms.openlocfilehash: aff52fe8a31d7ef9fe30f271a2885dca1cd9a861
 
-Azure Data Lake Analytics is a new service, built to make big data analytics easy. This service lets you focus on writing, running and managing jobs, rather than operating distributed infrastructure. Instead of deploying, configuring and tuning hardware, you write queries to transform your data and extract valuable insights. The analytics service can handle jobs of any scale instantly by simply setting the dial for how much power you need. You only pay for your job when it is running making it cost-effective. The analytics service supports Azure Active Directory letting you simply manage access and roles, integrated with your on-premises identity system. It also includes U-SQL, a language that unifies the benefits of SQL with the expressive power of user code. U-SQL’s scalable distributed runtime enables you to efficiently analyze data in the store and across SQL Servers in Azure, Azure SQL Database and Azure SQL Data Warehouse.
+---
+# <a name="data-lake-analytics-documentation"></a>Data Lake Analytics 文档
+
+Azure Data Lake Analytics 是一项新服务，旨在使大数据分析变得更加轻松。 借助此服务，你可以集中精力编写、运行和管理作业，不用运行分布式基础结构。 无需部署、配置和调整硬件，只需编写查询即可转换数据并提取有价值的见解。 只需将表盘设置为所需值，该分析服务就可以立即处理任何规模的作业。 你只需要为你的运行作业付费，让服务变得更为经济高效。 该分析服务支持 Azure Active Directory，让你可简单管理访问和角色，并与你的本地识别系统集成。 它还包括了 U-SQL 语言，有效结合了 SQL 的优点和用户代码的表达力。 U-SQL 的可缩放分布式运行时可让你高效地分析存储中的数据，以及跨 Azure 中的 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库的数据。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Data Lake Analytics</h3>
+                        <h3>了解 Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Data Lake Analytics Video Library</h3>
+                        <h3>Azure Data Lake Analytics 视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure portal</h3>
+                        <h3>通过 Azure 门户开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure PowerShell</h3>
+                        <h3>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using .NET SDK</h3>
+                        <h3>通过 .NET SDK 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +111,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Java SDK</h3>
+                        <h3>通过 Java SDK 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -125,7 +129,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create U-SQL scripts using Data Lake Tools for Visual Studio</h3>
+                        <h3>使用用于 Visual Studio 的 Data Lake 工具创建 U-SQL 脚本</h3>
                     </div>
                 </div>
             </div>
@@ -143,7 +147,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using Azure CLI</h3>
+                        <h3>通过 Azure CLI 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -161,7 +165,7 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Data Lake Analytics using REST APIs</h3>
+                        <h3>通过 REST API 开始使用 Azure Data Lake Analytics</h3>
                     </div>
                 </div>
             </div>
@@ -172,19 +176,69 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
 
 ---
 
-## Reference
+## <a name="reference"></a>引用
 
-### PowerShell
-[Data Lake Analytics Resource Manager PowerShell Cmdlets](/powershell/resourcemanager/)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/resourcemanager/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Data Lake Analytics Resource Manager PowerShell Cmdlet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### Java
-[Data Lake Analytics Java API Reference](/java/api/)
+    <li>
+        <a href="/java/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Data Lake Analytics Java API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### .NET
-[Data Lake Analytics Managed Reference](/dotnet/api)
+    <li>
+        <a href="/dotnet/api">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Data Lake Analytics 托管参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 
-### REST
-[Data Lake Analytics REST API Reference](/rest/api/datalakeanalytics/)
+    <li>
+        <a href="/rest/api/datalakeanalytics/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Data Lake Analytics REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 ---
 
@@ -192,7 +246,12 @@ Azure Data Lake Analytics is a new service, built to make big data analytics eas
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-lake-analytics.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Data Lake Analytics Documentation
-        </div>
+下载 Data Lake Analytics 文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

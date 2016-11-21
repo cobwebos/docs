@@ -1,13 +1,17 @@
 ---
 layout: LandingPage
----
-# Multi-factor Authentication Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: defa12cb202ce4861a479ac40782248cd50039d3
+ms.openlocfilehash: 2db76cf5af88cc103b0109eb8ead4d63cbae0a0e
 
-Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification solution. Azure MFA helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It delivers strong authentication via a range of verification methods, including phone call, text message, or mobile app verification.
+---
+# <a name="multifactor-authentication-documentation"></a>多重身份验证文档
+
+Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证方法（包括电话、短信或移动应用验证）提供强大的身份验证机制。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/multi-factor-authentication/multi-factor-authentication/">
+        <a href="/azure/multi-factor-authentication/multi-factor-authentication">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +21,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Multi-factor Authentication</h3>
+                        <h3>了解 Azure 多重身份验证</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Multi-factor Authentication Video Library</h3>
+                        <h3>Azure 多重身份验证视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication Deployment options</h3>
+                        <h3>开始使用 Azure 多重身份验证部署选项</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication in the cloud</h3>
+                        <h3>云中的 Azure 多重身份验证入门</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure Multi-factor Authentication Server</h3>
+                        <h3>本地 Azure 多重身份验证入门</h3>
                     </div>
                 </div>
             </div>
@@ -104,7 +108,11 @@ Azure Multi-Factor Authentication (MFA) is Microsoft's two-step verification sol
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/multi-factor-authentication.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Multi-factor Authentication Documentation
-        </div>
+下载多重身份验证文档 </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO3-->
+
+

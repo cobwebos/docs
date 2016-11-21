@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: cd96f7ea32696ea920cd1622ae6d08692b4f8f4c
-ms.openlocfilehash: a244eaf8dff788354caab1c327a22cb5c5b423cf
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 1253538f479de3dc4200956f85229ee4892cf9a7
 
 ---
 #<a name="redis-cache-documentation"></a>Redis 缓存文档
@@ -139,22 +139,80 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
 
 ---
 
-##<a name="reference"></a>参考
+## <a name="reference"></a>参考
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/powershell/azureps-cmdlets-docs)
-
-###<a name="azure-cli"></a>Azure CLI
-[在 Azure CLI 中使用 Redis 缓存](/cli/azure/redis) 
-
-###<a name="net"></a>.NET 
-[Redis 缓存托管参考 API](/dotnet/api/) 
-
-###<a name="java"></a>Java 
-[Azure Java SDK](/java/api/)
-
-###<a name="rest"></a>REST 
-[Redis 缓存 REST API 参考](/rest/api/)  
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/cli/azure/redis">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure CLI</h3>
+                        <p>使用 Azure CLI 的 Redis 缓存</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Redis 缓存托管参考 API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/java/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Azure Java SDK</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Redis 缓存 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<ul>
 
 
 <div class="downloadHolder">
@@ -167,6 +225,6 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

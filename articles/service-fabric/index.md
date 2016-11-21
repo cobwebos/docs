@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Service Fabric Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 3086937d48026ee0a7643c428c8857f1c8ef85d0
 
-Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices. Service Fabric also addresses the significant challenges in developing and managing cloud applications. Developers and administrators can avoid complex infrastructure problems and focus on implementing mission-critical, demanding workloads that are scalable, reliable, and manageable. 
+---
+#<a name="service-fabric-documentation"></a>Service Fabric 文档
+
+Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 还解决了开发和管理云应用程序中的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Service Fabric</h3>
+                        <h3>了解 Service Fabric</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Service Fabric Video Library</h3>
+                        <h3>Service Fabric 视频库</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +53,11 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first application using C# for Windows</h3>
+                        <h3>在 Windows 上通过 C# 开始使用 Service Fabric</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +71,11 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first application using C# for Linux</h3>
+                        <h3>在 Linux 上通过 C# 开始使用 Service Fabric</h3>
                     </div>
                 </div>
             </div>
@@ -89,37 +93,91 @@ Azure Service Fabric is a distributed systems platform that makes it easy to pac
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create your first application using Java</h3>
+                        <h3>通过 Java 开始使用 Service Fabric</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-	
-	
+    
+    
 </ul>
 
 ---
 
-##Reference
-###PowerShell
-[Service Fabric PowerShell](/powershell/servicefabric/vlatest/servicefabric)
+## <a name="reference"></a>引用
 
-###Java
-[Java API Reference](/java/api)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/servicefabric/vlatest/servicefabric">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Service Fabric PowerShell 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/java/api">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Java API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>.NET 托管参考 API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/servicefabric">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Service Fabric REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>   
 
-###.NET
-[Service Fabric Managed Reference API](/dotnet/api/)  
-
-###REST
-[Service Fabric REST API Reference](http://msdn.microsoft.com/library/dn707692.aspx)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-fabric.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Service Fabric Documentation
-        </div>
+下载 Service Fabric 文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

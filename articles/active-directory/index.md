@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 844e18a1ab702773799cf9045844d982d9ee2581
-ms.openlocfilehash: 0e1d5e7e38aa23c0888e166d584b17fdcbdce40f
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: c0302bfd21b4982d13e859bbb1fe2d1557f33b96
 
 ---
 
@@ -89,18 +89,64 @@ Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的�
 
 ## <a name="reference"></a>参考
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell 参考](/powershell/)
-
-###<a name="azure-cli"></a>Azure CLI
-[在 Azure CLI 中使用 Azure Active Directory](/cli/azure/ad)
-
-###<a name="net"></a>.NET
-[Azure Active Directory .NET 参考](https://msdn.microsoft.com/library/azure/microsoft.identitymodel.clients.activedirectory)
-
-###<a name="java"></a>Java
-[Azure Java API 参考](/java/api/)
-
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/cli/azure/ad">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure CLI</h3>
+                        <p>在 Azure CLI 中使用 Azure Active Directory</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/active-directory/adal/microsoft.identitymodel.clients.activedirectory">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Azure Active Directory .NET 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/java/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Azure Java API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   </ul>
 
 ---
 
@@ -114,6 +160,6 @@ Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

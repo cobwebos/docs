@@ -1,26 +1,11 @@
 # 概述
 ## [什么是机器学习？](machine-learning-what-is-machine-learning.md)
-## [新增功能](machine-learning-whats-new.md)
-## [从实时聊天获取帮助](machine-learning-live-chat.md)
-## 机器学习工作室
-### [什么是 Studio？](machine-learning-what-is-ml-studio.md)
-### [Studio 功能](machine-learning-studio-overview-diagram.md)
-### [信息图：ML 基础知识](machine-learning-basics-infographic-with-algorithm-examples.md)
-## Team Data Science Process
-### [概述](http://aka.ms/datascienceprocess)
-### [生命周期](data-science-process-overview.md)
-### [工具和实用程序](machine-learning-data-science-environment-setup.md)
-### [演练](data-science-process-walkthroughs.md)
+## [机器学习工作室](machine-learning-what-is-ml-studio.md)
 ## [确定方案](machine-learning-data-science-plan-your-environment.md)
-## [查看示例方案](machine-learning-data-science-plan-sample-scenarios.md)
 ## 示例
 ### [示例试验](machine-learning-sample-experiments.md)
 ### [示例数据集](machine-learning-use-sample-datasets.md)
 ### [客户流失示例](machine-learning-azure-ml-customer-churn-scenario.md)
-## API
-### [异常情况检测](machine-learning-apps-anomaly-detection.md)
-### [文本分析](machine-learning-apps-text-analytics.md)
-### [认知服务](https://azure.microsoft.com/services/cognitive-services/)
 ### 建议
 #### [概述](machine-learning-recommendation-api-sample-application.md)
 #### [快速启动](machine-learning-recommendation-api-quick-start-guide.md)
@@ -28,19 +13,12 @@
 #### [使用 JavaScript](machine-learning-recommendation-api-javascript-integration.md)
 #### [常见问题](machine-learning-recommendation-api-faq.md)
 ## Cortana Analytics
-### 预见性维护
-#### [概述](cortana-analytics-playbook-predictive-maintenance.md)
+### [前瞻性维护](cortana-analytics-playbook-predictive-maintenance.md)
 #### [体系结构](cortana-analytics-architecture-predictive-maintenance.md)
 #### [技术指南](cortana-analytics-technical-guide-predictive-maintenance.md)
-### 车辆遥测
-#### [概述](cortana-analytics-playbook-vehicle-telemetry.md)
+### [车辆遥测](cortana-analytics-playbook-vehicle-telemetry.md)
 #### [操作手册](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
 #### [设置](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
-## 数据科研过程
-### [使用 Hadoop 群集](machine-learning-data-science-process-hive-walkthrough.md)
-### [将 Hadoop 与 1TB 配合使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)
-### [使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
-### [使用 SQL 数据仓库](machine-learning-data-science-process-sqldw-walkthrough.md)
 ## Web 服务
 ### [使用 R 的示例](machine-learning-r-csharp-web-service-examples.md)
 ### [二元分类器](machine-learning-r-csharp-binary-classifier.md)
@@ -57,6 +35,7 @@
 ### [应用商店常见问题](machine-learning-marketplace-faq.md)
 
 # 入门
+## [查看示例方案](machine-learning-data-science-plan-sample-scenarios.md)
 ## [创建第一个试验](machine-learning-create-experiment.md)
 ## [创建预测解决方案](machine-learning-walkthrough-develop-predictive-solution.md)
 ### [1：创建工作区](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -72,9 +51,17 @@
 ### [4：预测答案](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5：复制他人的工作](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 ## [常见问题](machine-learning-faq.md)
+## Team Data Science Process
+### [生命周期](data-science-process-overview.md)
+### [工具和实用程序](machine-learning-data-science-environment-setup.md)
+### [演练](data-science-process-walkthroughs.md)
+#### [使用 Hadoop 群集](machine-learning-data-science-process-hive-walkthrough.md)
+#### [将 Hadoop 与 1TB 配合使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)
+#### [使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
+#### [使用 SQL 数据仓库](machine-learning-data-science-process-sqldw-walkthrough.md)
 
 # 如何
-## 安装工具 
+## 安装工具
 ### [设置环境](machine-learning-data-science-environment-setup.md)
 ### [设置虚拟机](machine-learning-data-science-virtual-machines.md)
 ### [自定义 Hadoop](machine-learning-data-science-customize-hadoop-cluster.md)
@@ -189,12 +176,14 @@
 #### [使用 Excel 外接程序](machine-learning-excel-add-in-for-web-services.md)
 #### [使用 Web 应用模板](machine-learning-consume-web-service-with-web-app-template.md)
 
-#参考
-## [R 快速入门](machine-learning-r-quickstart.md)
+#引用
+## [发行说明](machine-learning-whats-new.md)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [PowerShell 概述](machine-learning-powershell-module.md)
 ## [使用 PowerShell 创建模型](machine-learning-create-models-and-endpoints-with-powershell.md)
-## [Web 服务 REST API](https://msdn.microsoft.com/library/azure/dn950030.aspx)
+## [R 快速入门](machine-learning-r-quickstart.md)
 ## [Net# 神经网络语言](machine-learning-azure-ml-netsharp-reference-guide.md)
+## [REST](/rest/api/machinelearning/)
 
 # 相关内容
 ## Cortana Intelligence 库
@@ -210,10 +199,23 @@
 ### [自定义模块](machine-learning-gallery-custom-modules.md)
 
 # 资源
+## [学习路径](http://aka.ms/datascienceprocess)
+## [定价](https://azure.microsoft.com/pricing/details/machine-learning/)
+## [服务更新](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [博客](http://blogs.technet.com/b/machinelearning/)
-## [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-machine-learning)
+## [视频](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+## [从实时聊天获取帮助](machine-learning-live-chat.md)
+## 可下载的示意图
+### [Studio 功能](machine-learning-studio-overview-diagram.md)
+### [信息图：ML 基础知识](machine-learning-basics-infographic-with-algorithm-examples.md)
+## API
+### [异常情况检测](machine-learning-apps-anomaly-detection.md)
+### [文本分析](machine-learning-apps-text-analytics.md)
+### [认知服务](https://azure.microsoft.com/services/cognitive-services/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

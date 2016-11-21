@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Traffic Manager Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 2bb861bf0e2d3505b3e2eeeb3ce779ab718e7013
+ms.openlocfilehash: 53f98b140cd1daa82b71a2924312cb0c2b3ac553
 
-Azure Traffic Manager allows you to control the distribution of user traffic for service endpoints in different datacenters.  Traffic Manager uses the Domain Name System (DNS) to direct client requests to the most appropriate endpoint based on a traffic-routing method and the health of the endpoints, giving your application the availability and responsiveness a large-scale application needs.
+---
+#<a name="traffic-manager-documentation"></a>流量管理器文档
+
+使用 Azure 流量管理器可以控制用户流量在不同数据中心内的服务终结点上的分布。  流量管理器根据流量路由方法和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点，提高应用程序的可用性和响应度，满足大规模应用程序的需求。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Traffic Manager allows you to control the distribution of user traffic for
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Traffic Manager</h3>
+                        <h3>了解流量管理器</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Traffic Manager allows you to control the distribution of user traffic for
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Traffic Manager Video Library</h3>
+                        <h3>Azure 流量管理器视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Traffic Manager allows you to control the distribution of user traffic for
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get Started with Azure Traffic Manager</h3>
+                        <h3>Azure 流量管理器入门</h3>
                     </div>
                 </div>
             </div>
@@ -67,11 +71,11 @@ Azure Traffic Manager allows you to control the distribution of user traffic for
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Traffic Manager endpoint</h3>
+                        <h3>开始使用 Azure 门户管理流量管理器终结点</h3>
                     </div>
                 </div>
             </div>
@@ -82,20 +86,49 @@ Azure Traffic Manager allows you to control the distribution of user traffic for
 
 ---
 
-##Reference
+## <a name="reference"></a>引用
 
-###PowerShell
-[Azure PowerShell](/powershell/azurepd-cmdlets-docs)
-
-###REST
-[Traffic Manager REST API Reference](https://msdn.microsoft.com/library/azure/mt163667)
-
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>Azure PowerShell</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/mt163667">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>流量管理器 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/traffic-manager.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Service Fabric Documentation
-        </div>
+下载 Service Fabric 文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

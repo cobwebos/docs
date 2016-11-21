@@ -27,17 +27,21 @@
 ### [故障排除](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 ## [网关 SDK 入门 (Linux)](iot-hub-linux-gateway-sdk-get-started.md)
 ## [网关 SDK 入门 (Windows)](iot-hub-windows-gateway-sdk-get-started.md)
-## 教程
-### [处理设备到云的消息教程 (.NET)](iot-hub-csharp-csharp-process-d2c.md)
-### [处理设备到云的消息教程 (Java)](iot-hub-java-java-process-d2c.md)
-### [从设备上载文件的教程](iot-hub-csharp-csharp-file-upload.md)
-### [发送云到设备的消息 (.NET)](iot-hub-csharp-csharp-c2d.md)
-### [发送云到设备的消息 (Java)](iot-hub-java-java-c2d.md)
-### [发送云到设备的消息 (Node)](iot-hub-node-node-c2d.md)
-### [设备克隆入门](iot-hub-node-node-twin-getstarted.md)
-### [如何使用克隆属性](iot-hub-node-node-twin-how-to-configure.md)
 
 # 如何
+## [处理设备到云的消息教程 (.NET)](iot-hub-csharp-csharp-process-d2c.md)
+## [处理设备到云的消息教程 (Java)](iot-hub-java-java-process-d2c.md)
+## [从设备上载文件的教程](iot-hub-csharp-csharp-file-upload.md)
+## [发送云到设备的消息 (.NET)](iot-hub-csharp-csharp-c2d.md)
+## [发送云到设备的消息 (Java)](iot-hub-java-java-c2d.md)
+## [发送云到设备的消息 (Node)](iot-hub-node-node-c2d.md)
+## [设备克隆入门](iot-hub-node-node-twin-getstarted.md)
+## [如何使用克隆属性](iot-hub-node-node-twin-how-to-configure.md)
+## [使用直接方法](iot-hub-c2d-methods.md)
+## [设备管理入门](iot-hub-device-management-get-started.md)
+## [使用设备作业更新设备固件](iot-hub-firmware-update.md)
+## [计划和广播作业](iot-hub-schedule-jobs.md)
+
 ## 规划部署
 ### [IoT 中心与事件中心的比较](iot-hub-compare-event-hubs.md)
 ### [缩放解决方案](iot-hub-scaling.md)
@@ -68,6 +72,10 @@
 ### [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
 ### [使用指标](iot-hub-metrics.md)
 ### [操作监视](iot-hub-operations-monitoring.md)
+## 网关 SDK
+### [使用网关 SDK 模拟设备的教程 (Linux)](iot-hub-linux-gateway-sdk-simulated-device.md)
+### [使用网关 SDK 模拟设备的教程 (Windows)](iot-hub-windows-gateway-sdk-simulated-device.md)
+### [使用网关 SDK 从实际设备发送消息的教程](iot-hub-gateway-sdk-physical-device.md)
 
 ## 安全
 ### [安全基础知识](iot-hub-security-ground-up.md)
@@ -80,16 +88,14 @@
 ## [Azure CLI](https://docs.microsoft.com/cli/azure)
 ## [Java](https://docs.microsoft.com/java/api)
 ## [.NET API](https://docs.microsoft.com/dotnet/api)
-## 网关 SDK
-### [使用网关 SDK 模拟设备的教程 (Linux)](iot-hub-linux-gateway-sdk-simulated-device.md)
-### [使用网关 SDK 模拟设备的教程 (Windows)](iot-hub-windows-gateway-sdk-simulated-device.md)
-### [使用网关 SDK 从实际设备发送消息的教程](iot-hub-gateway-sdk-physical-device.md)
-## [设备 SDK API](http://azure.github.io/azure-iot-sdks/)
+## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
 ## [网关 SDK API](http://azure.github.io/azure-iot-gateway-sdk)
+## [资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest)
+## [管理标识 REST API](https://docs.microsoft.com/rest/api/iothub/device-identities-rest)
+## [设备消息传送 REST API](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis)
 ## [适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)
 ## [适用于 C 语言的 IoT 设备 SDK：有关 IoTHubClient 的详细信息](iot-hub-device-sdk-c-iothubclient.md)
 ## [适用于 C 语言的 IoT 设备 SDK：有关序列化程序的详细信息](iot-hub-device-sdk-c-serializer.md)
-## [REST](https://docs.microsoft.com/en-us/rest/api/iothub/)
 
 # 相关内容
 ## [Azure IoT 套件](https://azure.microsoft.com/documentation/suites/iot-suite/)
@@ -109,6 +115,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

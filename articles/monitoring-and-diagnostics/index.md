@@ -1,10 +1,14 @@
 ---
-Layout: LandingPage
+layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: ec3f50b8da14b48a0c97942ed326deeb57b2e7a2
+ms.openlocfilehash: 5ff24136d5cede5678ea35499034a64bb2e22d1f
+
 ---
 
-#Monitoring and Diagnostics Documentation
+# <a name="monitoring-and-diagnostics-documentation"></a>监视和诊断文档
 
-Monitoring and Diagnostics is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and addresses the significant challenges in developing and managing cloud applications.  Monitoring and Diagnostics represents the next-generation middleware platform for building and managing these enterprise-class, Tier-1 cloud-scale applications.
+监视和诊断是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务，以及处理在开发和管理云应用程序的过程中遇到的重大难题。  监视和诊断代表着用于生成和管理这些企业级第 1 层云规模应用程序的下一代中间件平台。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +22,7 @@ Monitoring and Diagnostics is a distributed systems platform that makes it easy 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Monitoring and diagnostics</h3>
+                        <h3>了解 Azure 监视和诊断</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@ Monitoring and Diagnostics is a distributed systems platform that makes it easy 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create alerts for Azure Services using Azure Portal</h3>
+                        <h3>使用 Azure 门户为 Azure 服务创建警报</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +58,7 @@ Monitoring and Diagnostics is a distributed systems platform that makes it easy 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create alerts for Azure Services using cross-platform CLI</h3>
+                        <h3>使用跨平台 CLI 为 Azure 服务创建警报</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +76,7 @@ Monitoring and Diagnostics is a distributed systems platform that makes it easy 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create alerts for Azure Services using PowerShell</h3>
+                        <h3>使用 PowerShell 为 Azure 服务创建警报</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +94,7 @@ Monitoring and Diagnostics is a distributed systems platform that makes it easy 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a metric alert with a Resource Manager template</h3>
+                        <h3>使用 Resource Manager 模板创建指标警报</h3>
                     </div>
                 </div>
             </div>
@@ -101,25 +105,76 @@ Monitoring and Diagnostics is a distributed systems platform that makes it easy 
 
 ---
 
-##Reference
+## <a name="reference"></a>引用
 
-###PowerShell
-[Monitoring and Diagnostics PowerShell Cmdlet](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41)
-
-###Azure CLI
-[Monitoring and Diagnostics Azure CLI](/cli/azure)
-
-###.NET
-[Monitoring and Diagnostics Managed Reference](https://msdn.microsoft.com/library/azure/mt416943)
-
-###REST
-[Monitoring and Diagnostics REST API Reference](/rest/api/monitor)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>监视和诊断 PowerShell Cmdlet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/cli/azure">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure CLI</h3>
+                        <p>监视和诊断 Azure CLI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/mt416943">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>监视和诊断托管参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://msdn.microsoft.com/library/azure/dn931943">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>监视和诊断 REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+<ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/monitoring-and-diagnostics.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Monitoring and Diagnostics Documentation
-        </div>
+下载监视和诊断文档 </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO3-->
+
+

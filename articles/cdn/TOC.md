@@ -1,5 +1,6 @@
 # [概述](cdn-overview.md)
 ## [什么是 Azure CDN？](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+
 # 入门
 ## [启用 Azure CDN](cdn-create-new-endpoint.md)
 
@@ -40,20 +41,20 @@
 ### [404 状态](cdn-troubleshoot-endpoint.md)
 ### [文件压缩](cdn-troubleshoot-compression.md)
 
-# 参考
-## [PowerShell cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
+# 引用
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [.NET](/dotnet/api/)
 ## [Azure CDN POP 位置](cdn-pop-locations.md)
-## [REST](https://msdn.microsoft.com/library/mt634456.aspx)
+## [REST](/rest/api/cdn/)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/cdn/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 ## [服务更新](https://azure.microsoft.com/updates/?product=cdn)
+## [定价](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-cdn)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

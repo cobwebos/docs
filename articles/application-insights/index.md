@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-# Visual Studio Application Insights Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: c192cc88c383677abbc356242c08c7cf6f74d289
+ms.openlocfilehash: 6e74ccf90249a2397c6dbe842cf96461b02b7da3
 
-Application Insights is an extensible Application Performance Management (APM) service for web developers. Use it to monitor your live web application. It will automatically detect performance anomalies. It includes powerful analytics tools to help you diagnose issues and to understand what users actually do with your app. It's designed to help you continuously improve performance and usability. It works for apps on a wide variety of platforms including .NET, Node.js and J2EE, hosted on-premises or in the cloud. It also integrates with your devOps process, and has connection points to a wide variety of other tools.
+---
+# <a name="application-insights-documentation"></a>Application Insights 文档
+
+Application Insights 是面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它还可以与 devOps 流程集成，与其他各种工具建立连接。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Application Insights is an extensible Application Performance Management (APM) s
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Visual Studio Application Insights</h3>
+                        <h3>了解 Application Insights</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Application Insights is an extensible Application Performance Management (APM) s
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Visual Studio Application Insights Video Library</h3>
+                        <h3>Application Insights 视频库</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Application Insights is an extensible Application Performance Management (APM) s
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Azure web apps</h3>
+                        <h3>开始使用 Application Insights 监视 Azure Web 应用</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Application Insights is an extensible Application Performance Management (APM) s
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create Application Insights for ASP.NET</h3>
+                        <h3>通过 ASP.NET 开始使用 Application Insights</h3>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ Application Insights is an extensible Application Performance Management (APM) s
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create Application Insights for a Java web project</h3>
+                        <h3>通过 Java 开始使用 Application Insights</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +111,7 @@ Application Insights is an extensible Application Performance Management (APM) s
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Application Insights SDK to monitor a Node.js app</h3>
+                        <h3>适用于 Node.js 应用的 Application Insights 入门</h3>
                     </div>
                 </div>
             </div>
@@ -118,26 +122,77 @@ Application Insights is an extensible Application Performance Management (APM) s
 
 ---
 
-## Reference
+## <a name="reference"></a>引用
 
-### Java
-[Application Insights Java API Reference](https://docs.microsoft.com/java/api/)
-
-### .NET 
-[Application Insights Managed Reference API](https://docs.microsoft.com/dotnet/api/)
-
-### JavaScript
-[Application Insights JS API Reference](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-
-
-### REST 
-[Application Insights REST API Reference](https://dev.applicationinsights.io/)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="https://docs.microsoft.com/java/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java</h3>
+                        <p>Application Insights Java API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+     <li>
+        <a href="https://docs.microsoft.com/dotnet/api/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Application Insights 托管参考 API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+     <li>
+        <a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>JavaScript</h3>
+                        <p>Application Insights JS API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+     <li>
+        <a href="https://dev.applicationinsights.io/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Application Insights REST API 参考</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    </ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-insights.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Visual Studio Application Insights Documentation
-        </div>
+下载 Application Insights 文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

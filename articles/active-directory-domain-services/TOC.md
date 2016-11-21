@@ -1,6 +1,5 @@
 # 概述
-## [什么是 Azure AD 域服务？](https://azure.microsoft.com/services/active-directory-ds/)
-## [工作原理](active-directory-ds-overview.md)
+## [什么是 Azure AD 域服务？](active-directory-ds-overview.md)
 ## [它是否适合你？](active-directory-ds-comparison.md)
 ## [功能](active-directory-ds-features.md)
 ## [方案](active-directory-ds-scenarios.md)
@@ -36,9 +35,11 @@
 
 # 资源 
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory-ds/)
-## [联系我们](active-directory-ds-contact-us.md)
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-ds)
+## [联系我们](active-directory-ds-contact-us.md)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

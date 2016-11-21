@@ -1,28 +1,27 @@
 ---
 layout: LandingPage
-toc_rel: breadcrumb.json
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 334336cb8d5da4761d5c1fa53c8c63cfbdb850a6
+ms.sourcegitcommit: 1cea7999fcb9ba3d4f0febdac5acb298ec5a489a
+ms.openlocfilehash: 76a07ecf333fec4d7e406a6c6b4dc796058e664b
 
 ---
-#<a name="virtual-machines-documentation"></a>虚拟机文档
+# <a name="analysis-services-documentation"></a>Analysis Services 文档
 
-Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。 不过，仍需要维护虚拟机，配置、修补以及维护虚拟机上运行的软件。
+Azure Analysis Services 基于 Microsoft SQL Server Analysis Services 中经验证的分析引擎构建，可在云中提供企业级的数据建模。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/virtual-machines/windows">
+        <a href="/azure/analysis-services/analysis-services-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/virtual-machines.svg" alt="" />
+                            <img src="media/index/analysis-services.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Windows 虚拟机入门</h3>
+                        <h3>了解 Analysis Services</h3>
                     </div>
                 </div>
             </div>
@@ -30,17 +29,35 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/linux">
+        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Linux 虚拟机入门</h3>
+                        <h3>Azure 视频库</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/analysis-services/analysis-services-create-server">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>创建 Analysis Services 服务器</h3>
                     </div>
                 </div>
             </div>
@@ -50,18 +67,17 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 </ul>
 
 ---
-
-## <a name="reference"></a>参考
+## <a name="reference"></a>引用
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/dotnet/api/">
+        <a href="/powershell/resourcemanager">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>虚拟机托管参考 API</p>
+                        <h3>PowerShell</h3>
+                        <p>Powershell 与 Azure Resource Manager cmdlet</p>
                     </div>
                 </div>
             </div>
@@ -69,41 +85,13 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
         </a>
     </li>
     <li>
-        <a href="/rest/api/">
+        <a href="/rest/api/analysisservices">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>虚拟机 REST API 参考</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/cli/azure/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>适用于虚拟机的 Azure CLI</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/java/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>虚拟机 PowerShell Cmdlet</p>
+                        <p>REST 与 Azure Analysis Services REST API 参考</p>
                     </div>
                 </div>
             </div>
@@ -112,11 +100,13 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
     </li>
 </ul>
 
+---
+
 <div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines.pdf">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/analysis-services.pdf">
         <div class="img"></div>
         <div class="text">
-下载虚拟机文档 </div>
+下载 Analysis Services 文档 </div>
     </a>
 </div>
 

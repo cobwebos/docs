@@ -2,12 +2,11 @@
 ## [什么是数据目录？](data-catalog-what-is-data-catalog.md)
 ## [常见方案](data-catalog-common-scenarios.md)
 ## [支持的数据源](data-catalog-dsr.md)
-## [新增功能](data-catalog-whats-new.md)
 
 # 入门
 ## [Azure 数据目录入门](data-catalog-get-started.md)
 ## [采用 Azure 数据目录](data-catalog-adopting-data-catalog.md)
-## [Azure 数据目录先决条件](data-catalog-prerequisites.md)
+## [先决条件](data-catalog-prerequisites.md)
 ## [常见问题](data-catalog-frequently-asked-questions.md)
 
 # 如何
@@ -30,12 +29,16 @@
 ## [针对 Azure 数据目录的键盘快捷方式](data-catalog-keyboard-shortcuts.md)
 ## [术语](data-catalog-terminology.md)
 ## [发行说明](data-catalog-release-notes.md)
-## [REST](https://docs.microsoft.com/rest/api/datacatalog/)
+## [REST](/rest/api/datacatalog/)
 
 # 资源
+## [发行说明](data-catalog-whats-new.md)
+## [服务更新](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [定价](https://azure.microsoft.com/pricing/details/data-catalog/)
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,11 +1,11 @@
 # 概述
-## [什么是 Azure 政府版？](../azure-government-overview.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [什么是 Azure 政府版？](../azure-government-overview.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ## [ITAR](documentation-government-overview-itar.md)
 ## [司法和公共安全](documentation-government-overview-jps.md)
 ## [国防部](documentation-government-overview-dod.md)
 
 # 入门
-## [开发人员指南](../azure-government-developer-guide.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [开发人员指南](../azure-government-developer-guide.md?toc=%2fazure%2fazure-government%2ftoc.json)
 
 # 如何
 ## 计划
@@ -28,10 +28,12 @@
 ### [监视 + 管理](documentation-government-services-monitoringandmanagement.md)
 
 # 资源
-## [试用](https://azuregov.microsoft.com/trial/azuregovtrial)
 ## [定价](https://azure.microsoft.com/pricing/)
+## [试用](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

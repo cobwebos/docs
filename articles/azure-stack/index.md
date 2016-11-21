@@ -1,13 +1,17 @@
 ---
 layout: LandingPage
----
-#Azure Stack Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: b2f3a3776344acf586386f10679b2171385bc465
+ms.openlocfilehash: 93e96d4298228f90d8f05264091ae55ac6679c02
 
-Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliver Azure services from your organization’s datacenter. Microsoft Azure Stack Technical Preview 2 is being made available through a Proof of Concept (POC). The POC is an environment for learning and demonstrating Azure Stack features. It lets you deploy all required components on a single physical machine to create an environment for evaluating key concepts and capabilities, and validating the extensibility model for APIs.
+---
+#<a name="azure-stack-documentation"></a>Azure Stack 文档
+
+Microsoft Azure Stack 是一种新的混合云平台产品，通过它，可从组织的数据中心传送 Azure 服务。 Microsoft Azure Stack Technical Preview 2 正在通过概念证明 (POC) 提供。 POC 是用于学习和演示 Azure Stack 功能的环境。 通过它，可在单台物理计算机上部署所需全部组件，创建用于评估关键概念和功能以及验证 API 可扩展性模型的环境。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/azure-stack/azure-stack-poc/">
+        <a href="/azure/azure-stack/azure-stack-poc">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -17,7 +21,7 @@ Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliv
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Stack</h3>
+                        <h3>了解 Azure Stack</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliv
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Stack Video Library</h3>
+                        <h3>Azure Stack 视频库</h3>
                     </div>
                 </div>
             </div>
@@ -43,17 +47,17 @@ Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliv
         </a>
     </li>
     <li>
-        <a href="/azure/azure-stack/azure-stack-provision-vm/">
+        <a href="/azure/azure-stack/azure-stack-provision-vm">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Tutorial</h3>
+                        <h3>开始预配虚拟机 </h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliv
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Deploy</h3>
+                        <h3>开始使用 PowerShell 进行连接</h3>
                     </div>
                 </div>
             </div>
@@ -79,3 +83,19 @@ Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliv
         </a>
     </li>
 </ul>
+
+---
+
+<div class="downloadHolder">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-stack.pdf">
+        <div class="img"></div>
+        <div class="text">
+下载 Azure Stack 文档 </div>
+    </a>
+</div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,12 +1,13 @@
 # 概述
-## [关于规模集](virtual-machine-scale-sets-overview.md)
-## [规模集设计注意事项](virtual-machine-scale-sets-design-overview.md)
+## [什么是虚拟机规模集？](virtual-machine-scale-sets-overview.md)
 
 # 入门
 ## [创建 Windows 规模集](virtual-machine-scale-sets-windows-create.md)
 ## [创建 Linux 规模集](virtual-machine-scale-sets-linux-create-cli.md)
 
 # 如何
+## 规划和设计
+### [设计注意事项](virtual-machine-scale-sets-design-overview.md)
 ## 部署
 ### [使用门户的规模集](virtual-machine-scale-sets-portal-create.md)
 ### [使用 Visual Studio 的规模集](virtual-machine-scale-sets-vs-create.md)
@@ -23,17 +24,20 @@
 ### [使用 DSC 和规模集](virtual-machine-scale-sets-dsc.md)
 
 ## 故障排除
-### [对自动缩放进行故障排除](virtual-machine-scale-sets-troubleshoot.md)
+### [Autoscale](virtual-machine-scale-sets-troubleshoot.md)
 
 # 引用
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST](/rest/api/compute/)
 
 # 资源
-## [定价](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
+## 定价 
+### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
+### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,10 +1,14 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 84efac2879c77ea2ba71127db8a05970649f6863
+ms.openlocfilehash: 078421d67ae2b2f0854b6f31bb97d146224ef685
+
 
 ---
-# App Service - API Apps Documentation
+# <a name="app-service-api-apps-documentation"></a>应用服务 - API 应用文档
 
-Azure App Service is a cloud service that's designed to solve the practical problems that engineers face today. API apps in Azure App Service offer features that make it easier to develop, host, and consume APIs in the cloud and on-premises. With API apps, you get enterprise grade security, simple access control, hybrid connectivity, automatic SDK generation, and seamless integration with Logic Apps. Azure App Service is a fully managed platform for web, mobile, and integration scenarios. API Apps is one of four app types offered by Azure App Service.
+API 应用是 Azure 应用服务提供的四种应用类型之一。 Azure 应用服务中的 API 应用提供丰富的功能集用于在云中和本地开发、托管与使用 API。 Azure 应用服务是完全托管的平台，适用于 Web、移动和集成方案。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +22,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about API Apps</h3>
+                        <h3>了解 API 应用</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service Video Library</h3>
+                        <h3>应用服务视频库</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +58,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with API Apps, ASP.NET adn Swagger in Azure App Service</h3>
+                        <h3>Azure 应用服务中的 API 应用、ASP.NET 和 Swagger 入门</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +76,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Java API app in Azure App Service</h3>
+                        <h3>在 Azure 应用服务中开始创建 Java API 应用</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +94,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Node.js API</h3>
+                        <h3>开始创建 Node.js API</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +112,7 @@ Azure App Service is a cloud service that's designed to solve the practical prob
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an API app from JavaScript using CORS</h3>
+                        <h3>使用 CORS 从 JavaScript 开始创建 API 应用</h3>
                     </div>
                 </div>
             </div>
@@ -123,7 +127,12 @@ Azure App Service is a cloud service that's designed to solve the practical prob
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Mobile Apps Documentation
-        </div>
+下载移动应用文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -4,6 +4,7 @@
 ## [了解 Resource Manager 部署和经典部署](../resource-manager-deployment-model.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [出于合规目的监管订阅](../resource-manager-subscription-governance.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [企业监管示例](../resource-manager-subscription-examples.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+
 # 入门
 ## [导出模板](../resource-manager-export-template.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [模板演练](../resource-manager-template-walkthrough.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -51,23 +52,22 @@
 ### [使用 PowerShell 查看部署操作](../resource-manager-troubleshoot-deployments-powershell.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [使用 Azure CLI 查看部署操作](../resource-manager-troubleshoot-deployments-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [使用 REST API 查看部署操作](../resource-manager-troubleshoot-deployments-rest.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-# 参考
-## [PowerShell cmdlets](/powershell/azureps-cmdlets-docs/)
+
+# 引用
+## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
 ## [Azure CLI](/cli/azure)
 ## [Java](/java/api)
-## [.NET API](/dotnet/api)
+## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [模板架构](https://github.com/Azure/azure-resource-manager-schemas)
-## [Resource Manager PowerShell cmdlet](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [Resource Manager REST API](/rest/api/resources/)
-## [Resource Manager .NET 客户端库](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [限制请求](../resource-manager-request-limits.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [REST](/rest/api/resources/)
 
 # 资源
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager) 
+## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

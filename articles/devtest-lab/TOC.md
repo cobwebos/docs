@@ -28,11 +28,13 @@
 ### [映像与公式的比较](devtest-lab-comparing-vm-base-image-types.md)
 
 # 资源
-## [服务更新](https://azure.microsoft.com/en-us/updates/?product=devtest-lab&updatetype=&platform=)
+## [服务更新](https://azure.microsoft.com/updates/?product=devtest-lab)
+## [定价](https://azure.microsoft.com/pricing/details/devtest-lab/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

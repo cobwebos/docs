@@ -22,7 +22,7 @@
 ### [查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)
 ### [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-# 参考
+# 相关内容
 ## [Azure Resource Manager 模板函数](../resource-group-template-functions.md)
 ## [自动缩放最佳实践](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [自动缩放的常用指标](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
@@ -32,10 +32,16 @@
 ## [Azure Insights PowerShell 快速入门示例](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [Azure Insights CLI 快速入门示例](../monitoring-and-diagnostics/insights-cli-samples.md)
 
+# 资源
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-management-portal)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

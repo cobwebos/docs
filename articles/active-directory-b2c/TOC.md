@@ -1,6 +1,5 @@
 # 概述
-## [什么是 Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)
-## [工作原理](active-directory-b2c-overview.md)
+## [概述](active-directory-b2c-overview.md)
 ## [应用程序的类型](active-directory-b2c-apps.md)
 ## [生产规模与 B2C 租户预览](active-directory-b2c-reference-tenant-type.md)
 
@@ -51,10 +50,12 @@
 ## [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
 
 # 资源
-## [支持](active-directory-b2c-support.md)
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure 反馈论坛](http://feedback.azure.com/forums/169401-azure-active-directory)
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
+## [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [支持](active-directory-b2c-support.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
