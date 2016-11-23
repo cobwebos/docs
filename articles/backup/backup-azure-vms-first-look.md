@@ -47,7 +47,7 @@ ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
 >
 >
 
-## <a name="step-1-create-a-backup-vault-for-a-vm"></a>步骤 1 - 为 VM 创建备份保管库
+## <a name="step-1---create-a-backup-vault-for-a-vm"></a>步骤 1 - 为 VM 创建备份保管库
 备份保管库是存储所有按时间创建的备份和恢复点的实体。 备份保管库还包含将应用到要备份的虚拟机的备份策略。
 
 1. 登录到 [Azure 经典门户](http://manage.windowsazure.com/)。
@@ -86,7 +86,7 @@ ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
 
 选择好保管库的存储选项后，可以开始将 VM 与保管库相关联。 若要开始关联，请发现及注册 Azure 虚拟机。
 
-## <a name="step-2-discover-and-register-azure-virtual-machines"></a>步骤 2 - 发现并注册 Azure 虚拟机
+## <a name="step-2---discover-and-register-azure-virtual-machines"></a>步骤 2 - 发现并注册 Azure 虚拟机
 向保管库注册 VM 之前，请运行发现过程以识别所有新 VM。 该过程将在订阅中返回虚拟机列表和其他信息，例如云服务名称、区域等。
 
 1. 登录到 [Azure 经典门户](http://manage.windowsazure.com/)
@@ -133,12 +133,12 @@ ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
 
     ![注册状态 2](./media/backup-azure-vms/register-status02.png)
 
-## <a name="step-3-install-the-vm-agent-on-the-virtual-machine"></a>步骤 3 - 在虚拟机中安装 VM 代理
+## <a name="step-3---install-the-vm-agent-on-the-virtual-machine"></a>步骤 3 - 在虚拟机中安装 VM 代理
 Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 如果你的 VM 是从 Azure 库创建的，则该 VM 上已包含 VM 代理。 可以跳到 [保护 VM](backup-azure-vms-first-look.md#step-4---create-the-backup-policy)。
 
 如果你的 VM 是从本地数据中心迁移的，则该 VM 上可能尚未安装 VM 代理。 必须先在虚拟机上安装 VM 代理，然后才能继续保护 VM。 有关安装 VM 代理的详细步骤，请参阅 [“备份 VMs”一文中“VM 代理”部分](backup-azure-vms-prepare.md#vm-agent)。
 
-## <a name="step-4-create-the-backup-policy"></a>步骤 4 - 创建备份策略
+## <a name="step-4---create-the-backup-policy"></a>步骤 4 - 创建备份策略
 在触发初始备份作业之前，请设置计划来规定何时创建备份快照。 规定备份快照创建时间以及快照保留时长的计划就是备份策略。 保留期信息基于祖父-父-子备份轮转方案。
 
 1. 导航到备份保管库（位于 Azure 经典门户的“恢复服务”下），然后单击“已注册项”。
@@ -175,7 +175,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 
 
     现在你已创建策略，接下来请转到下一步骤，运行初始备份。
 
-## <a name="step-5-initial-backup"></a>步骤 5 - 初始备份
+## <a name="step-5---initial-backup"></a>步骤 5 - 初始备份
 在虚拟机受到策略保护后，可以在“ **受保护的项** ”选项卡上查看该关系。 在执行初始备份之前，“保护状态”将显示为“受保护 - (等待初始备份)”。 默认情况下，第一个计划的备份是 *初始备份*。
 
 ![等待中的备份](./media/backup-azure-vms-first-look/protection-pending-border.png)
