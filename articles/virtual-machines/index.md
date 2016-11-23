@@ -122,6 +122,6 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

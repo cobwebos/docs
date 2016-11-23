@@ -144,6 +144,6 @@ Power BI Embedded 是一项 Azure 服务，应用程序开发人员可通过它�
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

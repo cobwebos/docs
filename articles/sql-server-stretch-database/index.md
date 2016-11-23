@@ -96,6 +96,6 @@ SQL Server Stretch Database 能够透明、安全地将冷数据迁移到 Micros
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

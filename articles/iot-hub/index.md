@@ -178,6 +178,6 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

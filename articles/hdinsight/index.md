@@ -193,6 +193,6 @@ Azure HDInsight 是采用云技术的 Apache Hadoop 分发版。  借助 Azure H
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

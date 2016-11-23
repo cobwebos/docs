@@ -114,6 +114,6 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

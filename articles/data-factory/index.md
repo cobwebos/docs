@@ -147,6 +147,6 @@ Azure 数据工厂是一项基于云的数据集成服务，可以自动移动�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

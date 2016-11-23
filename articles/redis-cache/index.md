@@ -225,6 +225,6 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

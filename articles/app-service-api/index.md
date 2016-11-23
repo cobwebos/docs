@@ -6,7 +6,7 @@ ms.openlocfilehash: 078421d67ae2b2f0854b6f31bb97d146224ef685
 
 
 ---
-# <a name="app-service-api-apps-documentation"></a>应用服务 - API 应用文档
+# <a name="app-service---api-apps-documentation"></a>应用服务 - API 应用文档
 
 API 应用是 Azure 应用服务提供的四种应用类型之一。 Azure 应用服务中的 API 应用提供丰富的功能集用于在云中和本地开发、托管与使用 API。 Azure 应用服务是完全托管的平台，适用于 Web、移动和集成方案。
 
@@ -133,6 +133,6 @@ API 应用是 Azure 应用服务提供的四种应用类型之一。 Azure 应�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

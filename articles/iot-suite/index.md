@@ -78,6 +78,6 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

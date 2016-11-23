@@ -77,6 +77,6 @@ BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本�
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

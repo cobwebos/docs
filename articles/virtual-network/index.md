@@ -191,6 +191,6 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的逻辑表示形式。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

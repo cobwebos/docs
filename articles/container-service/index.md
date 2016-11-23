@@ -110,6 +110,6 @@ Azure 容器服务让创建、配置和管理预配置来运行容器化应用�
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

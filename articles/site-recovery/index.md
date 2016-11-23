@@ -107,6 +107,6 @@ Azure Site Recovery 可以协调本地虚拟机与物理服务器的复制，帮
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

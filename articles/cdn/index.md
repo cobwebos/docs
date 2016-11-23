@@ -112,6 +112,6 @@ Azure 内容交付网络 (CDN) 为开发人员提供一个全局解决方案用�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

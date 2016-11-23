@@ -189,6 +189,6 @@ Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

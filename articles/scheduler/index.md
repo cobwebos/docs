@@ -124,6 +124,6 @@ Azure 计划程序允许你以声明方式描述要在云中运行的操作。  
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -115,6 +115,6 @@ Azure Functions 是用于在云中轻松运行小段代码（“函数”）的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

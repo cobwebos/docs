@@ -147,6 +147,6 @@ StorSimple 和 Microsoft Azure 提供独特的集成式主存储档案和灾难�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -193,6 +193,6 @@ Azure 流分析是一种完全托管的实时事件处理引擎，可帮助开�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

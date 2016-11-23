@@ -192,6 +192,6 @@ Azure 应用服务中的移动应用提供面向企业开发人员和系统集�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
