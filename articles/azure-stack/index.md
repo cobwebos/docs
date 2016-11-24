@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: b2f3a3776344acf586386f10679b2171385bc465
-ms.openlocfilehash: 93e96d4298228f90d8f05264091ae55ac6679c02
+ms.sourcegitcommit: cc7cf80b26a0bdc79448fc87d2d8b6fff1931d49
+ms.openlocfilehash: eb675cc7a401583cf0f2dc0605a16d5dda8b306f
 
 ---
 #<a name="azure-stack-documentation"></a>Azure Stack 文档
@@ -29,7 +29,7 @@ Microsoft Azure Stack 是一种新的混合云平台产品，通过它，可从�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=azure-stack">
+        <a href="https://azure.microsoft.com/search/videos/?q=azure+stack">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -40,6 +40,24 @@ Microsoft Azure Stack 是一种新的混合云平台产品，通过它，可从�
                     </div>
                     <div class="cardText">
                         <h3>Azure Stack 视频库</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/azure-stack/azure-stack-run-powershell-script"> 
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/deploy.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>部署 Azure Stack POC</h3>
                     </div>
                 </div>
             </div>
@@ -64,24 +82,6 @@ Microsoft Azure Stack 是一种新的混合云平台产品，通过它，可从�
         </div>
         </a>
     </li>
-    <li>
-        <a href="/azure/azure-stack/azure-stack-run-powershell-script">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/deploy.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>开始使用 PowerShell 进行连接</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
 </ul>
 
 ---
@@ -96,6 +96,6 @@ Microsoft Azure Stack 是一种新的混合云平台产品，通过它，可从�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
