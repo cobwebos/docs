@@ -18,6 +18,7 @@
 #### [Azure 存储](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [配置管理器](log-analytics-sccm.md)
+#### [OMS 网关](log-analytics-oms-gateway.md)
 ### 数据源
 #### [数据源概述](log-analytics-data-sources.md)
 #### [Windows 事件](log-analytics-data-sources-windows-events.md)
@@ -49,6 +50,7 @@
 #### [Surface Hub](log-analytics-surface-hubs.md)
 #### [VMware](log-analytics-vmware.md)
 #### [传输数据](log-analytics-wire-data.md)
+#### [SCOM 评估](log-analytics-scom-assessment.md)
 ## 分析
 ### [仪表板](log-analytics-dashboards.md)
 ### [视图设计器](log-analytics-view-designer.md)
@@ -65,6 +67,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

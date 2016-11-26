@@ -20,7 +20,7 @@
 ### [自动缩放和规模集](virtual-machine-scale-sets-autoscale-overview.md)
 ### [规模集中的垂直缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [规模集升级](virtual-machine-scale-sets-upgrade-scale-set.md)
-### [高级自动缩放](virtual-machine-scale-sets-advanced-autoscale.md)
+### [高级自动缩放](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [使用 DSC 和规模集](virtual-machine-scale-sets-dsc.md)
 
 ## 故障排除
@@ -38,6 +38,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

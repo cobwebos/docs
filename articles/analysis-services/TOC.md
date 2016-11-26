@@ -14,6 +14,6 @@
 # 参考
 ##[数据源连接](analysis-services-datasource.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

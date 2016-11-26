@@ -2,7 +2,7 @@
 ## [什么是 Site Recovery？](site-recovery-overview.md)
 ## [Site Recovery 的工作原理是什么？](site-recovery-components.md)
 ## [可以保护哪些工作负荷？](site-recovery-workload.md)
-## [支持哪些操作系统？](site-recovery-support-matrix.md)
+## [Site Recovery 支持矩阵](site-recovery-support-matrix.md)
 ## [常见问题](site-recovery-faq.md)
 ## [观看简介](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
@@ -63,6 +63,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

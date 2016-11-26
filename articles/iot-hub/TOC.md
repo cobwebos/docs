@@ -10,20 +10,24 @@
 ### [IoT 中心入门 (Node)](iot-hub-node-node-getstarted.md)
 ## Raspberry Pi 入门
 ### [Raspberry Pi 3 入门](iot-hub-raspberry-pi-kit-node-get-started.md)
-### [配置设备](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
-### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
-### [获取工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
-### [获取工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
-### [创建和部署闪烁的应用程序](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
-### [获取 Azure 工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
-### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
-### [获取 Azure 工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
-### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
-### [创建 Azure Function App 和存储帐户](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
-### [运行用于发送消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
-### [阅读存储中保存的消息](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
-### [运行用于接收消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
-### [可选：更改 LED 行为](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
+### 第 1 课：配置设备
+#### [配置设备](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
+#### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+#### [获取工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
+#### [获取工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
+#### [创建和部署闪烁的应用程序](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
+### 第 2 课：创建 IoT 中心
+#### [获取 Azure 工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
+#### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
+#### [获取 Azure 工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
+#### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
+### 第 3 课：发送设备到云的消息
+#### [创建 Azure Function App 和存储帐户](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
+#### [运行用于发送消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
+#### [阅读存储中保存的消息](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
+### 第 4 课：发送云到设备的消息
+#### [运行用于接收消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
+#### [可选：更改 LED 行为](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
 ### [故障排除](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 ## [网关 SDK 入门 (Linux)](iot-hub-linux-gateway-sdk-get-started.md)
 ## [网关 SDK 入门 (Windows)](iot-hub-windows-gateway-sdk-get-started.md)
@@ -35,13 +39,18 @@
 ## [发送云到设备的消息 (.NET)](iot-hub-csharp-csharp-c2d.md)
 ## [发送云到设备的消息 (Java)](iot-hub-java-java-c2d.md)
 ## [发送云到设备的消息 (Node)](iot-hub-node-node-c2d.md)
-## [设备克隆入门](iot-hub-node-node-twin-getstarted.md)
-## [如何使用克隆属性](iot-hub-node-node-twin-how-to-configure.md)
-## [使用直接方法](iot-hub-c2d-methods.md)
-## [设备管理入门](iot-hub-device-management-get-started.md)
-## [使用设备作业更新设备固件](iot-hub-firmware-update.md)
-## [计划和广播作业](iot-hub-schedule-jobs.md)
-
+## [设备克隆入门 (Node)](iot-hub-node-node-twin-getstarted.md)
+## [设备克隆入门 (.NET/Node)](iot-hub-csharp-node-twin-getstarted.md)
+## [在 Node.js 中使用直接方法](iot-hub-node-node-direct-methods.md)
+## [在 .NET/Node 中使用直接方法](iot-hub-csharp-node-direct-methods.md)
+## [设备管理入门（适用于 Node.js）](iot-hub-node-node-device-management-get-started.md)
+## [设备管理入门（适用于 .NET/Node）](iot-hub-csharp-node-device-management-get-started.md)
+## [如何使用克隆属性 (Node)](iot-hub-node-node-twin-how-to-configure.md)
+## [如何使用克隆属性 (.NET/Node)](iot-hub-csharp-node-twin-how-to-configure.md)
+## [在 Node.js 中使用设备作业更新设备固件](iot-hub-node-node-firmware-update.md)
+## [在 .NET/Node 中使用设备作业更新设备固件](iot-hub-csharp-node-firmware-update.md)
+## [在 Node.js 中计划和广播作业](iot-hub-node-node-schedule-jobs.md)
+## [在 .NET/Node 中计划和广播作业](iot-hub-csharp-node-schedule-jobs.md)
 ## 规划部署
 ### [IoT 中心与事件中心的比较](iot-hub-compare-event-hubs.md)
 ### [缩放解决方案](iot-hub-scaling.md)
@@ -50,6 +59,8 @@
 ## 开发
 ### [介绍](iot-hub-devguide.md)
 ### [发送和接收消息](iot-hub-devguide-messaging.md)
+### [设备到云的功能指南](iot-hub-devguide-d2c-guidance.md)
+### [云到设备的功能指南](iot-hub-devguide-c2d-guidance.md)
 ### [从设备上载文件](iot-hub-devguide-file-upload.md)
 ### [管理设备标识](iot-hub-devguide-identity-registry.md)
 ### [控制对 IoT 中心的访问](iot-hub-devguide-security.md)
@@ -59,6 +70,7 @@
 ### [IoT 中心终结点](iot-hub-devguide-endpoints.md)
 ### [查询语言](iot-hub-devguide-query-language.md)
 ### [配额和限制](iot-hub-devguide-quotas-throttling.md)
+### [定价示例](iot-hub-devguide-pricing.md)
 ### [设备和服务 SDK](iot-hub-devguide-sdks.md)
 ### [MQTT 支持](iot-hub-mqtt-support.md)
 ### [术语表](iot-hub-devguide-glossary.md)
@@ -72,17 +84,16 @@
 ### [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
 ### [使用指标](iot-hub-metrics.md)
 ### [操作监视](iot-hub-operations-monitoring.md)
+### [配置 IP 筛选](iot-hub-ip-filtering.md)
 ## 网关 SDK
 ### [使用网关 SDK 模拟设备的教程 (Linux)](iot-hub-linux-gateway-sdk-simulated-device.md)
 ### [使用网关 SDK 模拟设备的教程 (Windows)](iot-hub-windows-gateway-sdk-simulated-device.md)
 ### [使用网关 SDK 从实际设备发送消息的教程](iot-hub-gateway-sdk-physical-device.md)
-
 ## 安全
 ### [安全基础知识](iot-hub-security-ground-up.md)
 ### [安全最佳实践](iot-hub-security-best-practices.md)
 ### [安全体系结构](iot-hub-security-architecture.md)
 ### [保护 IoT 部署](iot-hub-security-deployment.md)
-
 
 # 参考
 ## [Azure CLI](https://docs.microsoft.com/cli/azure)
@@ -105,16 +116,15 @@
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/iot-hub/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub) 
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-iot-hub)
-## [视频](https://azure.microsoft.com/documentation/videos/index/?services=iot-hub) 
-## [服务更新](https://azure.microsoft.com/updates/?product=iot-hub) 
+## [视频](https://azure.microsoft.com/documentation/videos/index/?services=iot-hub)
+## [服务更新](https://azure.microsoft.com/updates/?product=iot-hub)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot/)
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

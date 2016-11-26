@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 47f4cef5a2307e3b5a0c2f700f62727ee47b986a
+ms.sourcegitcommit: 2b15ee71010c4c2aa66621e9ac84c0b90c19ca51
+ms.openlocfilehash: 2ab86738ccbc48c39b6357c62b73de3053d13c75
 
 ---
 #<a name="azure-machine-learning-documentation"></a>Azure 机器学习文档
@@ -47,7 +47,7 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
         </a>
     </li>
     <li>
-        <a href="/azure/machine-learning/machine-learning-data-science-for-beginnings-the-5-questions-data-science-answers">
+        <a href="/azure/machine-learning/machine-learning-data-science-for-beginners-the-5-questions-data-science-answers">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -118,13 +118,13 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
         </a>
     </li>
     <li>
-        <a href="/azure/machine-learning/machine-learning-azure-ml-netsharp-reference-guide">
+        <a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Net#</h3>
-                        <p>Net# 神经网络语言参考</p>
+                        <h3>算法</h3>
+                        <p>算法和模块参考</p>
                     </div>
                 </div>
             </div>
@@ -143,6 +143,6 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

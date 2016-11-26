@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 2bb861bf0e2d3505b3e2eeeb3ce779ab718e7013
-ms.openlocfilehash: 53f98b140cd1daa82b71a2924312cb0c2b3ac553
+ms.sourcegitcommit: 9e86ae23b3fe3b8134f4725035c03837425cc0c4
+ms.openlocfilehash: 9a05d78edbf2c186d4a4d84f38eb6deff0cdafc5
 
 ---
 #<a name="traffic-manager-documentation"></a>流量管理器文档
 
-使用 Azure 流量管理器可以控制用户流量在不同数据中心内的服务终结点上的分布。  流量管理器根据流量路由方法和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点，提高应用程序的可用性和响应度，满足大规模应用程序的需求。
+使用 Azure 流量管理器可以控制用户流量在不同区域内的服务终结点上的分布。 流量管理器根据所选流量路由方法和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点，提高应用程序的可用性和响应度。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -123,12 +123,12 @@ ms.openlocfilehash: 53f98b140cd1daa82b71a2924312cb0c2b3ac553
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/traffic-manager.pdf">
         <div class="img"></div>
         <div class="text">
-下载 Service Fabric 文档 </div>
+下载流量管理器文档 </div>
     </a>
 </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

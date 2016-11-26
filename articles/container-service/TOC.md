@@ -16,6 +16,7 @@
 ### [启用 DC/OS 公共访问](container-service-enable-public-access.md)
 ### [DC/OS 中的负载均衡容器](container-service-load-balancing.md)
 ### [DC/OS 中应用/用户特定的 Orchestrator](container-service-application-specific-marathon.md)
+### [使用 OMS (DC/OS) 进行监视](container-service-monitoring-oms.md)
 ### [使用 Datadog 进行监视 (DC/OS)](container-service-monitoring.md)
 ### [使用 Sysdig 进行监视 (DC/OS)](container-service-monitoring-sysdig.md)
 ## [使用 Kubernetes 进行管理](container-service-kubernetes-walkthrough.md)
@@ -30,6 +31,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

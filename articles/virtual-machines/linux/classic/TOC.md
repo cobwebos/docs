@@ -65,23 +65,24 @@
 ### [VM 部署](../../virtual-machines-linux-classic-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [重启 VM 或调整其大小](../../virtual-machines-linux-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
-# 参考
+# 引用
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](/cli/azure/vm)
-## [Java](/java/api/)
+## [Java](/java/api)
 ## [创建 Resource Manager 模板](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [社区模板](https://azure.microsoft.com/documentation/templates/)
-## [计算 REST](/rest/api/compute/)
-## [网络 REST](/rest/api/)
-## [存储 REST](/rest/api/storageservices/)
+## [社区模板](https://azure.microsoft.com/documentation/templates)
+## [计算 REST](/rest/api/compute)
+## [网络 REST](/rest/api)
+## [存储 REST](/rest/api/storageservices)
 
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
-## [区域可用性](https://azure.microsoft.com/regions/services/)
+## [区域可用性](https://azure.microsoft.com/regions/services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

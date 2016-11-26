@@ -27,6 +27,7 @@
 ### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
 ## 开发
 ### [升级 SDK](search-dotnet-sdk-migration.md)
+### [升级 REST API](search-api-migration.md)
 ### [为复杂数据类型建模](search-howto-complex-data-types.md)
 ## 管理
 ### 管理 Azure 搜索
@@ -37,12 +38,14 @@
 ### [搜索流量分析](search-traffic-analytics.md)
 ### [性能和优化](search-performance-optimization.md)
 ## 加载数据
-### [为数据源编制索引](search-indexer-overview.md)
-#### [Blob 存储](search-howto-indexing-azure-blob-storage.md)
-#### [Azure 表](search-howto-indexing-azure-tables.md)
-#### [SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-#### [CSV Blob](search-howto-index-csv-blobs.md)
-### [SQL Server Azure VM 连接配置](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+### [索引器概述](search-indexer-overview.md)
+### [Azure Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)
+### [Azure 表存储索引器](search-howto-indexing-azure-tables.md)
+### [Azure SQL 索引器](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+### [Azure DocumentDB 索引器](../documentdb/documentdb-search-indexer.md?toc=%2fazure%2fsearch%2ftoc.json)
+### [为 CSV Blob 创建索引](search-howto-index-csv-blobs.md)
+### [为 JSON Blob 创建索引](search-howto-index-json-blobs.md)
+### [配置与 Azure VM 上 SQL Server 的索引器连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [索引器中的字段映射](search-indexer-field-mappings.md)
 ##  设计搜索体验
 ### [Lucene 语法查询示例](search-query-lucene-examples.md)
@@ -56,13 +59,13 @@
 
 # 参考
 ## [API 版本](search-api-versions.md)
-## [Java](/java/api/)
-## [.NET](/dotnet/api/)
-## [Lucene 查询语法](https://msdn.microsoft.com/library/azure/mt589323)
-## [简单的查询语法](https://msdn.microsoft.com/library/azure/dn798920)
+## [服务 .NET](/dotnet/api/microsoft.azure.search)
+## [管理 .NET](/dotnet/api/microsoft.azure.management.search)
 ## [服务 REST](/rest/api/searchservice/)
 ## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
 ## [管理 REST](/rest/api/searchmanagement/)
+## [Lucene 查询语法](https://msdn.microsoft.com/library/azure/mt589323)
+## [简单的查询语法](https://msdn.microsoft.com/library/azure/dn798920)
 
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=search)
@@ -82,6 +85,6 @@
 ### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

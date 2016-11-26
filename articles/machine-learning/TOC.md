@@ -1,43 +1,19 @@
 # 概述
 ## [什么是机器学习？](machine-learning-what-is-machine-learning.md)
-## [机器学习工作室](machine-learning-what-is-ml-studio.md)
-## [确定方案](machine-learning-data-science-plan-your-environment.md)
-## 示例
-### [示例试验](machine-learning-sample-experiments.md)
-### [示例数据集](machine-learning-use-sample-datasets.md)
-### [客户流失示例](machine-learning-azure-ml-customer-churn-scenario.md)
-### 建议
-#### [概述](machine-learning-recommendation-api-sample-application.md)
-#### [快速启动](machine-learning-recommendation-api-quick-start-guide.md)
-#### [参考](machine-learning-recommendation-api-documentation.md)
-#### [使用 JavaScript](machine-learning-recommendation-api-javascript-integration.md)
-#### [常见问题](machine-learning-recommendation-api-faq.md)
-## Cortana Analytics
-### [前瞻性维护](cortana-analytics-playbook-predictive-maintenance.md)
-#### [体系结构](cortana-analytics-architecture-predictive-maintenance.md)
-#### [技术指南](cortana-analytics-technical-guide-predictive-maintenance.md)
-### [车辆遥测](cortana-analytics-playbook-vehicle-telemetry.md)
-#### [操作手册](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
-#### [设置](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
-## Web 服务
-### [使用 R 的示例](machine-learning-r-csharp-web-service-examples.md)
-### [二元分类器](machine-learning-r-csharp-binary-classifier.md)
-### [群集模型](machine-learning-r-csharp-cluster-model.md)
-### [多变量线性回归](machine-learning-r-csharp-multivariate-linear-regression.md)
-### [预测 - 指数平滑](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
-### [预测 - ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
-### [预测 - ARIMA](machine-learning-r-csharp-arima.md)
-### [生存分析](machine-learning-r-csharp-survival-analysis.md)
-### [基于词典的情绪分析](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
-### [比例测试的差异](machine-learning-r-csharp-difference-in-two-proportions.md)
-### [正态分布套件](machine-learning-r-csharp-normal-distribution.md)
-### [二项式分布套件](machine-learning-r-csharp-binomial-distribution.md)
-### [应用商店常见问题](machine-learning-marketplace-faq.md)
-
+## 机器学习工作室
+### [什么是 Studio？](machine-learning-what-is-ml-studio.md)
+### [Studio 功能](machine-learning-studio-overview-diagram.md)
+### [信息图：ML 基础知识](machine-learning-basics-infographic-with-algorithm-examples.md)
+## Team Data Science Process
+### [概述](http://aka.ms/datascienceprocess)
+### [生命周期](data-science-process-overview.md)
+### [演练](data-science-process-walkthroughs.md)
+## [常见问题](machine-learning-faq.md)
+## [新增功能](machine-learning-whats-new.md)
 # 入门
-## [查看示例方案](machine-learning-data-science-plan-sample-scenarios.md)
 ## [创建第一个试验](machine-learning-create-experiment.md)
-## [创建预测解决方案](machine-learning-walkthrough-develop-predictive-solution.md)
+## 示例演练
+### [创建预测解决方案](machine-learning-walkthrough-develop-predictive-solution.md)
 ### [1：创建工作区](machine-learning-walkthrough-1-create-ml-workspace.md)
 ### [2：上载数据](machine-learning-walkthrough-2-upload-data.md)
 ### [3：创建试验](machine-learning-walkthrough-3-create-new-experiment.md)
@@ -50,94 +26,87 @@
 ### [3：询问相关问题](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4：预测答案](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5：复制他人的工作](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
-## [常见问题](machine-learning-faq.md)
-## Team Data Science Process
-### [生命周期](data-science-process-overview.md)
-### [工具和实用程序](machine-learning-data-science-environment-setup.md)
-### [演练](data-science-process-walkthroughs.md)
-#### [使用 Hadoop 群集](machine-learning-data-science-process-hive-walkthrough.md)
-#### [将 Hadoop 与 1TB 配合使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)
-#### [使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
-#### [使用 SQL 数据仓库](machine-learning-data-science-process-sqldw-walkthrough.md)
-
 # 如何
-## 安装工具
+## 设置工具和实用程序
 ### [设置环境](machine-learning-data-science-environment-setup.md)
 ### [设置虚拟机](machine-learning-data-science-virtual-machines.md)
 ### [自定义 Hadoop](machine-learning-data-science-customize-hadoop-cluster.md)
-## 设置虚拟机
-### [DS VM 概述](machine-learning-data-science-virtual-machine-overview.md)
-### [如何使用 DS VM](machine-learning-data-science-vm-do-ten-things.md)
-### [预配 DS VM](machine-learning-data-science-provision-vm.md)
-### [设置 Azure VM](machine-learning-data-science-setup-virtual-machine.md)
-### [设置 SQL VM](machine-learning-data-science-setup-sql-server-virtual-machine.md)
-### [预配 Linux VM](machine-learning-data-science-linux-dsvm-intro.md)
-### [使用 Linux VM](machine-learning-data-science-linux-dsvm-walkthrough.md)
-## 管理工作区
-### [创建工作区](machine-learning-create-workspace.md)
-### [管理工作区](machine-learning-manage-workspace.md)
-### [故障排除](machine-learning-troubleshooting-creating-ml-workspace.md)
-### [使用 ARM 进行部署](machine-learning-deploy-with-resource-manager-template.md)
-### [在另一区域中创建](machine-learning-multi-geo.md)
-## 将数据加载到存储中
-### [概述](machine-learning-data-science-ingest-data.md)
-### [Blob 存储](machine-learning-data-science-move-azure-blob.md)
-### [使用存储资源管理器](machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer.md)
-### [使用 AzCopy](machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
-### [使用 Python](machine-learning-data-science-move-data-to-azure-blob-using-python.md)
-### [使用 SSIS](machine-learning-data-science-move-data-to-azure-blob-using-ssis.md)
-### [移到 VM](machine-learning-data-science-move-sql-server-virtual-machine.md)
-### [移到 SQL 数据库](machine-learning-data-science-move-sql-azure.md)
-### [加载到 hive 表](machine-learning-data-science-move-hive-tables.md)
-### [从本地 SQL 加载](machine-learning-data-science-move-sql-azure-adf.md)
-## 导入培训数据
-### [概述](machine-learning-data-science-import-data.md)
-### [从本地文件](machine-learning-import-data-from-local-file.md)
-### [从联机源](machine-learning-import-data-from-online-sources.md)
-### [从试验](machine-learning-import-data-from-an-experiment.md)
-### [使用 SQL 分区表](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)
-### [使用本地 SQL](machine-learning-use-data-from-an-on-premises-sql-server.md)
-## 浏览和可视化数据
-### [准备数据](machine-learning-data-science-prepare-data.md)
-### 浏览数据
-#### [概述](machine-learning-data-science-explore-data.md)
-#### [使用 Pandas](machine-learning-data-science-explore-data-blob.md)
-#### [使用 SQL VM](machine-learning-data-science-explore-data-sql-server.md)
-#### [使用 Hive 表](machine-learning-data-science-explore-data-hive-tables.md)
-### 样本数据
-#### [概述](machine-learning-data-science-sample-data.md)
-#### [使用 Blob 存储](machine-learning-data-science-sample-data-blob.md)
-#### [使用 SQL Server](machine-learning-data-science-sample-data-sql-server.md)
-#### [使用 Hive 表](machine-learning-data-science-sample-data-hive.md)
-### 处理数据
-#### [使用 Python 进行访问](machine-learning-python-data-access.md)
-#### [处理 blob 数据](machine-learning-data-science-process-data-blob.md)
-#### [使用 Azure Data Lake](machine-learning-data-science-process-data-lake-walkthrough.md)
-#### [使用 SQL VM](machine-learning-data-science-process-sql-server-virtual-machine.md)
-#### [使用 Data Pipeline](machine-learning-automated-data-pipeline-cheat-sheet.md)
-### 使用 Spark
-#### [概述](machine-learning-data-science-spark-overview.md)
-#### [浏览数据](machine-learning-data-science-spark-data-exploration-modeling.md)
-#### [评分模型](machine-learning-data-science-spark-model-consumption.md)
-#### [高级数据浏览](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
-#### [使用 Scala 和 Spark](machine-learning-data-science-process-scala-walkthrough.md)
-## 模型数据
-### 功能设计
+### 设置虚拟机
+#### [DS VM 概述](machine-learning-data-science-virtual-machine-overview.md)
+#### [如何使用 DS VM](machine-learning-data-science-vm-do-ten-things.md)
+#### [预配 DS VM](machine-learning-data-science-provision-vm.md)
+#### [设置 Azure VM](machine-learning-data-science-setup-virtual-machine.md)
+#### [设置 SQL VM](machine-learning-data-science-setup-sql-server-virtual-machine.md)
+#### [预配 Linux VM](machine-learning-data-science-linux-dsvm-intro.md)
+#### [使用 Linux VM](machine-learning-data-science-linux-dsvm-walkthrough.md)
+### 管理工作区
+#### [创建](machine-learning-create-workspace.md)
+#### [管理](machine-learning-manage-workspace.md)
+#### [故障排除](machine-learning-troubleshooting-creating-ml-workspace.md)
+#### [使用 ARM 进行部署](machine-learning-deploy-with-resource-manager-template.md)
+#### [在另一区域中创建](machine-learning-multi-geo.md)
+## 分析业务需求
+### [技术需求](machine-learning-data-science-plan-your-environment.md)
+### [确定方案](machine-learning-data-science-plan-sample-scenarios.md)
+## 获取和了解数据
+### 将数据加载到存储中
+#### [概述](machine-learning-data-science-ingest-data.md)
+#### [Blob 存储](machine-learning-data-science-move-azure-blob.md)
+#### [使用存储资源管理器](machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer.md)
+#### [使用 AzCopy](machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
+#### [使用 Python](machine-learning-data-science-move-data-to-azure-blob-using-python.md)
+#### [使用 SSIS](machine-learning-data-science-move-data-to-azure-blob-using-ssis.md)
+#### [移到 VM](machine-learning-data-science-move-sql-server-virtual-machine.md)
+#### [移到 SQL 数据库](machine-learning-data-science-move-sql-azure.md)
+#### [加载到 hive 表](machine-learning-data-science-move-hive-tables.md)
+#### [从本地 SQL 加载](machine-learning-data-science-move-sql-azure-adf.md)
+#### [从 SQL 分区表加载](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)
+### 导入培训数据
+#### [概述](machine-learning-data-science-import-data.md)
+#### [从本地文件](machine-learning-import-data-from-local-file.md)
+#### [从联机源](machine-learning-import-data-from-online-sources.md)
+#### [从试验](machine-learning-import-data-from-an-experiment.md)
+#### [使用本地 SQL](machine-learning-use-data-from-an-on-premises-sql-server.md)
+### 浏览和可视化数据
+#### [准备数据](machine-learning-data-science-prepare-data.md)
+#### 浏览数据
+##### [概述](machine-learning-data-science-explore-data.md)
+##### [使用 Pandas](machine-learning-data-science-explore-data-blob.md)
+##### [使用 SQL VM](machine-learning-data-science-explore-data-sql-server.md)
+##### [使用 Hive 表](machine-learning-data-science-explore-data-hive-tables.md)
+#### 样本数据
+##### [概述](machine-learning-data-science-sample-data.md)
+##### [使用 Blob 存储](machine-learning-data-science-sample-data-blob.md)
+##### [使用 SQL Server](machine-learning-data-science-sample-data-sql-server.md)
+##### [使用 Hive 表](machine-learning-data-science-sample-data-hive.md)
+#### 处理数据
+##### [使用 Python 进行访问](machine-learning-python-data-access.md)
+##### [处理 blob 数据](machine-learning-data-science-process-data-blob.md)
+##### [使用 Azure Data Lake](machine-learning-data-science-process-data-lake-walkthrough.md)
+##### [使用 SQL VM](machine-learning-data-science-process-sql-server-virtual-machine.md)
+##### [使用 Data Pipeline](machine-learning-automated-data-pipeline-cheat-sheet.md)
+#### 使用 Spark 处理数据
+##### [概述](machine-learning-data-science-spark-overview.md)
+##### [浏览数据](machine-learning-data-science-spark-data-exploration-modeling.md)
+##### [评分模型](machine-learning-data-science-spark-model-consumption.md)
+##### [高级数据浏览](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
+##### [使用 Scala 和 Spark](machine-learning-data-science-process-scala-walkthrough.md)
+## 开发模型
+### 设计和选择功能
 #### [概述](machine-learning-data-science-create-features.md)
 #### [使用 Pandas](machine-learning-data-science-create-features-blob.md)
 #### [使用 SQL + Python](machine-learning-data-science-create-features-sql-server.md)
 #### [使用 Hive 查询](machine-learning-data-science-create-features-hive.md)
-#### [TDSP 概述](machine-learning-data-science-select-features.md)
+#### [TDSP 功能选择](machine-learning-data-science-select-features.md)
 ### 创建模型并定型
-#### [创建第一个试验](machine-learning-create-experiment.md)
 #### [转换为评分](machine-learning-convert-training-experiment-to-scoring-experiment.md)
 #### [管理迭代](machine-learning-manage-experiment-iterations.md)
+#### [使用 PowerShell 创建模型](machine-learning-create-models-and-endpoints-with-powershell.md)
 #### 选择算法
 ##### [选择算法](machine-learning-algorithm-choice.md)
 ##### [算法备忘单](machine-learning-algorithm-cheat-sheet.md)
 ##### [使用线性回归](machine-learning-linear-regression-in-azure.md)
 ##### [使用文本分析](machine-learning-text-analytics-module-tutorial.md)
-##### [算法参考](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 #### 评估和解释结果
 ##### [评估性能](machine-learning-evaluate-model-performance.md)
 ##### [优化参数](machine-learning-algorithm-parameters-optimize.md)
@@ -147,7 +116,7 @@
 ##### [执行 R 脚本](machine-learning-extend-your-experiment-with-r.md)
 ##### [作者自定义 R 模块](machine-learning-custom-r-modules.md)
 ##### [执行 Python 脚本](machine-learning-execute-python-scripts.md)
-## 部署
+## 部署和使用模型
 ### [概述](machine-learning-deploy-consume-web-service-guide.md)
 ### 部署模型
 #### [工作原理](machine-learning-model-progression-experiment-to-web-service.md)
@@ -175,16 +144,36 @@
 #### [使用 Excel](machine-learning-consuming-from-excel.md)
 #### [使用 Excel 外接程序](machine-learning-excel-add-in-for-web-services.md)
 #### [使用 Web 应用模板](machine-learning-consume-web-service-with-web-app-template.md)
-
-#引用
-## [发行说明](machine-learning-whats-new.md)
+## 示例
+### [示例试验](machine-learning-sample-experiments.md)
+### [示例数据集](machine-learning-use-sample-datasets.md)
+### [客户流失示例](machine-learning-azure-ml-customer-churn-scenario.md)
+### 端到端方案
+#### [使用 Hadoop 群集](machine-learning-data-science-process-hive-walkthrough.md)
+#### [将 Hadoop 与 1TB 配合使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)
+#### [使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
+#### [使用 SQL 数据仓库](machine-learning-data-science-process-sqldw-walkthrough.md)
+### Web 服务示例
+#### [使用 R 的示例](machine-learning-r-csharp-web-service-examples.md)
+#### [二元分类器](machine-learning-r-csharp-binary-classifier.md)
+#### [群集模型](machine-learning-r-csharp-cluster-model.md)
+#### [多变量线性回归](machine-learning-r-csharp-multivariate-linear-regression.md)
+#### [预测 - 指数平滑](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
+#### [预测 - ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
+#### [预测 - ARIMA](machine-learning-r-csharp-arima.md)
+#### [生存分析](machine-learning-r-csharp-survival-analysis.md)
+#### [基于词典的情绪分析](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
+#### [比例测试的差异](machine-learning-r-csharp-difference-in-two-proportions.md)
+#### [正态分布套件](machine-learning-r-csharp-normal-distribution.md)
+#### [二项式分布套件](machine-learning-r-csharp-binomial-distribution.md)
+#### [应用商店常见问题](machine-learning-marketplace-faq.md)
+# 引用
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [PowerShell 概述](machine-learning-powershell-module.md)
-## [使用 PowerShell 创建模型](machine-learning-create-models-and-endpoints-with-powershell.md)
+## [用于机器学习的 PowerShell 模块](machine-learning-powershell-module.md)
+## [算法参考](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [R 快速入门](machine-learning-r-quickstart.md)
 ## [Net# 神经网络语言](machine-learning-azure-ml-netsharp-reference-guide.md)
-## [REST](/rest/api/machinelearning/)
-
+## [管理 REST API](/rest/api/machinelearning/index)
 # 相关内容
 ## Cortana Intelligence 库
 ### [概述](machine-learning-gallery-how-to-use-contribute-publish.md)
@@ -197,25 +186,34 @@
 ### [教程](machine-learning-gallery-tutorials.md)
 ### [集合](machine-learning-gallery-collections.md)
 ### [自定义模块](machine-learning-gallery-custom-modules.md)
-
+## Cortana Analytics
+### API
+#### [异常情况检测](machine-learning-apps-anomaly-detection.md)
+#### [文本分析](machine-learning-apps-text-analytics.md)
+#### [认知服务](https://azure.microsoft.com/services/cognitive-services/)
+#### 建议
+##### [概述](machine-learning-recommendation-api-sample-application.md)
+##### [快速启动](machine-learning-recommendation-api-quick-start-guide.md)
+##### [参考](machine-learning-recommendation-api-documentation.md)
+##### [使用 JavaScript](machine-learning-recommendation-api-javascript-integration.md)
+##### [常见问题](machine-learning-recommendation-api-faq.md)
+#### 预见性维护
+##### [概述](cortana-analytics-playbook-predictive-maintenance.md)
+##### [体系结构](cortana-analytics-architecture-predictive-maintenance.md)
+##### [技术指南](cortana-analytics-technical-guide-predictive-maintenance.md)
+#### 车辆遥测
+##### [概述](cortana-analytics-playbook-vehicle-telemetry.md)
+##### [操作手册](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
+##### [设置](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 # 资源
-## [学习路径](http://aka.ms/datascienceprocess)
 ## [定价](https://azure.microsoft.com/pricing/details/machine-learning/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [博客](http://blogs.technet.com/b/machinelearning/)
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning)
+## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-machine-learning)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 ## [从实时聊天获取帮助](machine-learning-live-chat.md)
-## 可下载的示意图
-### [Studio 功能](machine-learning-studio-overview-diagram.md)
-### [信息图：ML 基础知识](machine-learning-basics-infographic-with-algorithm-examples.md)
-## API
-### [异常情况检测](machine-learning-apps-anomaly-detection.md)
-### [文本分析](machine-learning-apps-text-analytics.md)
-### [认知服务](https://azure.microsoft.com/services/cognitive-services/)
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

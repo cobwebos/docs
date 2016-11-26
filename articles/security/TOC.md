@@ -9,6 +9,7 @@
 ### [数据安全与加密最佳实践](azure-security-data-encryption-best-practices.md)
 ### [存储安全指南](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [计算安全](security-virtual-machines-overview.md)
+### [IaaS 工作负荷最佳实践](azure-security-iaas.md)
 ### [Microsoft 反恶意软件](azure-security-antimalware.md)
 ### [磁盘加密](azure-security-disk-encryption.md)
 ### [加密 Azure VM](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -51,6 +52,6 @@
 ## [Virtual Academy 中的安全课程](security-microsoft-virtual-academy.md)
 ## [第 9 频道上的安全视频](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 80f16aef21f41d7040342e5a3907e330efa5f90b
-ms.openlocfilehash: 2219ef9836edfb5356b2591293d9615dd87988b9
+ms.sourcegitcommit: c5ed66f3a060dcd1bac9c04c70c493dcebcf9df8
+ms.openlocfilehash: f8d6ab10622ac6daacaf66551f18eaecd1448dee
 
 ---
 #<a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
@@ -108,6 +108,20 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
 
 <ul class="panelContent cardsW">
     <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>PowerShell Cmdlet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
         <a href="/cli/azure/install-az-cli2">
         <div class="cardSize">
             <div class="cardPadding">
@@ -203,6 +217,6 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -81,8 +81,7 @@
 ### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [从 SQL Server 使用 BCP](sql-data-warehouse-load-from-sql-server-with-bcp.md)
-### [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-### [从 Blob 存储使用数据工厂](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
+### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
 ### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 ### [PolyBase 指南](sql-data-warehouse-load-polybase-guide.md)
 ### [从 Blob 存储使用 PolyBase ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
@@ -146,6 +145,6 @@
 ### [数据管理](sql-data-warehouse-partner-data-management.md)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

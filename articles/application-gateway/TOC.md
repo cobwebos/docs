@@ -6,7 +6,7 @@
 ## [多站点](application-gateway-multi-site-overview.md)
 ## [端到端 SSL](application-gateway-backend-ssl.md)
 ## [Websocket](application-gateway-websocket.md)
-## [订阅和服务限制](../azure-subscription-service-limits.md#application-gateway-limits.md)
+## [服务限制](../azure-subscription-service-limits.md#application-gateway-limits?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 # 入门
 ## 创建应用程序网关
 ### 面向公众
@@ -19,10 +19,10 @@
 #### [PowerShell](application-gateway-ilb-arm.md)
 #### [PowerShell（经典）](application-gateway-ilb.md)
 # 如何
-## 使用 Web 应用程序防火墙进行创建
+## 配置 Web 应用程序防火墙
 ### [门户](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
-## 针对 SSL 进行配置
+## 为 SSL 卸载进行配置
 ### [门户](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell（经典）](application-gateway-ssl.md)
@@ -30,14 +30,14 @@
 ## 创建基于 URL 路径的路由
 ### [门户](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
-## 针对多站点托管进行配置
+## 配置多站点托管
 ### [门户](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-## 创建运行状况探测
+## 配置运行状况探测
 ### [门户](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
-## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
+## [结合使用负载平衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## 管理
 ### [诊断](application-gateway-diagnostics.md)
 ### [故障排除](application-gateway-troubleshooting-502.md)
@@ -61,6 +61,6 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

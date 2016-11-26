@@ -9,7 +9,7 @@
 
 # 如何
 
-## [创建服务主体](../resource-group-create-service-principal-portal.md)
+## [创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json)
 ## [使用注册表进行身份验证](container-registry-authentication.md)
 
 # 引用
@@ -27,6 +27,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

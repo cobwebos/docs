@@ -1,6 +1,6 @@
 # 概述
 ## [消息传送](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)
-## [中继](../service-bus-relay/service-bus-relay-overview.md)
+## [中继](../service-bus-relay/relay-what-is-it.md)
 # 参考
 ## [PowerShell Resource Manager Cmdlet](/powershell/resourcemanager)
 ## [服务总线托管参考 API](/dotnet/api/) 
@@ -15,6 +15,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

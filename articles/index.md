@@ -1,10 +1,11 @@
 ---
 layout: HubPage
 hide_bc: true
-title: "Microsoft Azure 文档"
+title: "Microsoft Azure 文档 | Microsoft 文档"
+description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: 7fe73925e887652b7f0831c8e2381edf05db9548
-ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
+ms.sourcegitcommit: 267a6facc9ed8e6f75c150d627545deafc589040
+ms.openlocfilehash: f4f45ff80a72fd39814ce715628259f2c7883915
 
 ---
 <div id="main" class="v2">
@@ -303,9 +304,15 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/data-catalog/">
+                                                <img src="media/index/data-catalog.svg" alt="" />
+                                                <p>数据目录</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/data-lake-analytics/">
                                                 <img src="media/index/DataLakeStore.svg" alt="" />
-                                                <p>Data Lake Analytics</p>
+                                                <p>数据湖分析</p>
                                             </a>
                                         </li>
                                         <li>
@@ -334,8 +341,8 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                         </li>
                                         <li>
                                             <a href="https://docs.botframework.com/en-us/azure-bot-service/">
-                                                <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Bot 服务</p>
+                                                <img src="media/index/bot-service.svg" alt="" />
+                                                <p>Azure Bot 服务</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -506,20 +513,20 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                         </li>
                                         <li>
                                             <a href="/azure/billing/">
-                                                <img src="media/index/AzureDefaultBlack.svg" alt="" />
+                                                <img src="media/index/billing.svg" alt="" />
                                                 <p>计费</p>
                                             </a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="/azure/azure-advisor/">
-                                                <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure Advisor</p>
+                                        <li>
+                                            <a href="/azure/advisor">
+                                                <img src="media/index/advisor.svg" alt="" />
+                                                <p>Azure 顾问</p>
                                             </a>
-                                        </li> -->
+                                        </li>
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure Resource Manager</p>
+                                                <p>Azure 资源管理器</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -542,13 +549,13 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                         <li>
                                             <a href="/azure/app-service-mobile">
                                                 <img src="media/index/app-service-mobile.svg" alt="" />
-                                                <p>Mobile Apps</p>
+                                                <p>移动应用</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/app-service-api">
                                                 <img src="media/index/app-service-api.svg" alt="" />
-                                                <p>API Apps</p>
+                                                <p>API 应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -622,7 +629,7 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                         </li>
                                         <li>
                                             <a href="/azure/sql-server-stretch-database/">
-                                                <img src="media/index/SQLDataWarehouse.svg" alt="" />
+                                                <img src="media/index/SQLDatabase.svg" alt="" />
                                                 <p>SQL Server Stretch Database</p>
                                             </a>
                                         </li>
@@ -865,7 +872,7 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>负载平衡器</h3>
+                                                    <h3>负载均衡器</h3>
                                                     <p>提高应用程序的可用性和网络性能</p>
                                                 </div>
                                             </div>
@@ -1332,7 +1339,7 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/SQLDataWarehouse.svg" alt="" />
+                                                        <img src="media/index/SQLDatabase.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -1483,6 +1490,25 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/data-catalog/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/data-catalog.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>数据目录</h3>
+                                                    <p>允许在企业间自助发现数据源</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/data-lake-analytics/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -1493,7 +1519,7 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Analytics</h3>
+                                                    <h3>数据湖分析</h3>
                                                     <p>简化大数据分析的分布式分析服务</p>
                                                 </div>
                                             </div>
@@ -1584,11 +1610,11 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/AzureDefaultBlack.svg" alt="" />
+                                                        <img src="media/index/bot-service.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Bot 服务</h3>
+                                                    <h3>Azure Bot 服务</h3>
                                                     <p>可按需缩放的智能无服务器 bot 服务</p>
                                                 </div>
                                             </div>
@@ -1841,7 +1867,7 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/SQLDataWarehouse.svg" alt="" />
+                                                        <img src="media/index/SQLDatabase.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -2274,7 +2300,7 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/AzureDefaultBlack.svg" alt="" />
+                                                        <img src="media/index/billing.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -2286,25 +2312,25 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li>
-                                <a href="/azure/azure-advisor/">
+                            <li>
+                                <a href="/azure/advisor/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/AzureDefaultBlack.svg" alt="" />
+                                                        <img src="media/index/advisor.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Advisor</h3>
-                                                    <p>Improve the cost effectiveness of your Azure resources</p>
+                                                    <h3>Azure 顾问</h3>
+                                                    <p>提高 Azure 资源的成本效益、性能、高可用性和安全性</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li> -->
+                            </li>
                             <li>
                                 <a href="/azure/azure-resource-manager/">
                                     <div class="cardSize">
@@ -2316,8 +2342,8 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Resource Manager</h3>
-                                                    <p>以组的形式处理 Azure 服务中的资源</p>
+                                                    <h3>Azure 资源管理器</h3>
+                                                    <p>部署和管理 Azure 资源</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2377,10 +2403,10 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python/">获取 Python SDK</a>
+                                                    <a href="https://azure.microsoft.com/develop/python">获取 Python SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.visualstudio.com/vs/python/">入门</a>
+                                                    <a href="https://azure.microsoft.com/develop/python">入门</a>
                                                 </p>
                                                 <p>
                                                     <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API 参考</a>
@@ -2702,13 +2728,13 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://github.com/Microsoft/PTVS/releases/v2.2.4">用于 Visual Studio 的 Python 工具 2015</a>
+                                                    <a href="https://www.visualstudio.com/vs/python">Python 工具</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://ptvs.azureedge.net/download/PTVS%20Samples%202.2.4.vsix">示例</a>
+                                                    <a href="https://github.com/Microsoft/PTVS/wiki/PTVS-Installation">Visual Studio 入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://ptvs.azureedge.net/download/PTVS%202.2.4%20VS%202015.msi">下载</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">Visual Studio Code 入门</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2835,6 +2861,6 @@ ms.openlocfilehash: 4c5242f5dbd7c714ae5d5b4efcef5f3b39a9b414
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

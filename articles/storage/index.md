@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d299d9b2d08086fa7a5946d8270437f652edd746
-ms.openlocfilehash: d5a866740ed977f091d750767825ab30eda71c64
+ms.sourcegitcommit: 965b96507d66f3880bdf3b38362d1eb026afdb51
+ms.openlocfilehash: e72557a87088ba66a669d37ba0033da951e7fdb8
 
 ---
 #<a name="storage-documentation"></a>存储文档
 
-Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。  它具有高度可伸缩、弹性和全球可访问性，可以自动根据流量对数据进行负载均衡。  Azure 存储提供以下四项服务来满足应用程序的需求：Blob 存储、表存储、队列存储和文件存储。
+Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。  它具有高度可伸缩、弹性和全球可访问性，可以自动根据流量对数据进行负载均衡。  Azure 存储提供以下四项服务来满足应用程序的需求：Blob 存储、表存储、队列存储、磁盘存储和文件存储。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -182,6 +182,6 @@ Azure 存储是依赖于持续性、可用性和可缩放性来满足客户需�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

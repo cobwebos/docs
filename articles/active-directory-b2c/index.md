@@ -1,10 +1,14 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 3cee8c74ed77a27c8a2006dcd28729f9c077aea9
+ms.openlocfilehash: 330f2c0efed16ae587c6f069d3feae1bb80f3097
+
 ---
 
-#Active Directory B2C Documentation
+#<a name="active-directory-b2c-documentation"></a>Active Directory B2C 文档
 
-Azure Active Directory B2C is a comprehensive cloud identity management solution for your consumer-facing web and mobile applications. It is a highly available global service that scales to hundreds of millions of consumer identities. Built on an enterprise-grade secure platform, Azure Active Directory B2C keeps your applications, your business, and your consumers protected.
+Azure Active Directory B2C 是一个综合性的云标识管理解决方案，适用于面向用户的 Web 和移动应用程序。 这是一个具有高可用性的全球服务，可扩展到亿万用户标识。 以企业级安全平台为基础，Azure Active Directory B2C 可保护你的应用程序、业务和用户。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -18,7 +22,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Active Directory B2C</h3>
+                        <h3>了解 Active Directory B2C</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Active Directory B2C Video Library</h3>
+                        <h3>Azure Active Directory B2C 视频库</h3>
                     </div>
                 </div>
             </div>
@@ -54,7 +58,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Azure AD B2C tenant</h3>
+                        <h3>创建 Azure AD B2C 租户</h3>
                     </div>
                 </div>
             </div>
@@ -72,7 +76,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an iOS app using a third-party libraryC</h3>
+                        <h3>使用第三方库创建 iOS 应用</h3>
                     </div>
                 </div>
             </div>
@@ -90,7 +94,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create an Android application</h3>
+                        <h3>创建 Android 应用程序</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +112,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Node.js Web API</h3>
+                        <h3>创建 Node.js Web API</h3>
                     </div>
                 </div>
             </div>
@@ -126,7 +130,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a .NET web app</h3>
+                        <h3>创建 .NET Web 应用</h3>
                     </div>
                 </div>
             </div>
@@ -144,7 +148,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a .NET web API</h3>
+                        <h3>创建 .NET Web API</h3>
                     </div>
                 </div>
             </div>
@@ -162,7 +166,7 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create Windows desktop app</h3>
+                        <h3>创建 Windows 桌面应用</h3>
                     </div>
                 </div>
             </div>
@@ -177,7 +181,12 @@ Azure Active Directory B2C is a comprehensive cloud identity management solution
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory-b2c.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Active Directory B2C Documentation
-        </div>
+下载 Active Directory B2C 文档 </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+

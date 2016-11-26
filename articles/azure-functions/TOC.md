@@ -8,7 +8,7 @@
 # 如何
 ## 规划和设计
 ### [在流、逻辑应用、函数和 WebJobs 之间进行选择](functions-compare-logic-apps-ms-flow-webjobs.md)
-### [在消耗计划与应用服务计划之间进行选择](functions-scale.md)
+### [在托管计划之间选择](functions-scale.md)
 
 ## 开发
 ### [开发函数应用](functions-reference.md)
@@ -21,7 +21,7 @@
 #### [移动应用绑定](functions-bindings-mobile-apps.md)
 #### [通知中心输出绑定](functions-bindings-notification-hubs.md)
 #### [用于队列和主题的服务总线触发器与绑定](functions-bindings-service-bus.md)
-#### 存储
+#### 存储绑定
 ##### [Blob 绑定](functions-bindings-storage-blob.md)
 ##### [队列绑定](functions-bindings-storage-queue.md)
 ##### [表绑定](functions-bindings-storage-table.md)
@@ -30,6 +30,7 @@
 ### [通过 Azure 门户创建函数](functions-create-first-azure-function-azure-portal.md)
 ### [测试 Azure Functions](functions-test-a-function.md)
 ### [进行本地开发和调试](functions-run-local.md)
+### [Azure Functions 最佳实践](functions-best-practices.md)
 ### [使用 Azure Functions 来执行计划的清理任务](functions-scenario-database-table-cleanup.md)
 
 ## 管理
@@ -38,6 +39,9 @@
 ## 部署
 ### [Azure Functions 的连续部署](functions-continuous-deployment.md)
 
+## 监视
+### [监视 Azure Functions](functions-monitoring.md)
+
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
@@ -45,6 +49,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

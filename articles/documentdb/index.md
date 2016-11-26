@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 6945c867f7514ac99482d94c086ec1a29f0b88a1
-ms.openlocfilehash: 96c971fce7e742a8ae27442954963c62935a2121
+ms.sourcegitcommit: a7f5894e445cad808f38195838376c620a6b5944
+ms.openlocfilehash: 87fab3c99228f127326609a3e614020a982192f0
 
 ---
 #<a name="documentdb-documentation"></a>DocumentDB 文档
@@ -75,7 +75,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 .NET 开始使用 DocumentDb</h3>
+                        <h3>通过 .NET 开始使用 DocumentDB</h3>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 ASP.NET MVC 开始使用 DocumentDB</h3>
+                        <h3>使用 ASP.NET MVC 的 DocumentDB 入门</h3>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 Node.js 开始使用 DocumentDb</h3>
+                        <h3>通过 Node.js 开始使用 DocumentDB</h3>
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 Node.js Express 开始使用 DocumentDB</h3>
+                        <h3>使用 Node.js Express 的 DocumentDB 入门</h3>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 Java JSP 应用开始使用 DocumentDB</h3>
+                        <h3>使用 Java JSP应用的 DocumentDB 入门</h3>
                     </div>
                 </div>
             </div>
@@ -165,7 +165,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 Python Flask Web 应用开始使用 DocumentDB</h3>
+                        <h3>使用 Python Flask Web 应用的 DocumentDB 入门</h3>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
 [SQL 参考](https://msdn.microsoft.com/library/azure/dn782250)
 
 ### <a name="rest"></a>REST
-[REST API 引用](/rest/api/documentdb)
+[REST API 参考](/rest/api/documentdb)
 
 [资源提供程序 API 参考](/rest/api/documentdbresourceprovider)
 
@@ -210,6 +210,6 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

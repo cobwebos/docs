@@ -98,9 +98,8 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
 ## [请求功能](https://feedback.azure.com/forums/270578-azure-data-factory)
-## [所有文章的索引](data-factory-alltopcat.md)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -5,11 +5,11 @@
 
 # 入门
 ## 见解与分析
-###[注册 Log Analytics](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [注册 Log Analytics](../log-analytics/log-analytics-get-started.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## 自动化与控制
-###[第一个 Runbook](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [第一个 Runbook](../automation/automation-first-runbook-graphical.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## 保护与恢复
-###[Azure 备份简介](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Azure 备份简介](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## 安全性和遵从性
 ### [安全和审核](oms-security-getting-started.md)
 ### [数据安全](oms-security-data-security.md)
@@ -44,8 +44,8 @@
 #### [AD 评估](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD 复制状态](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [警报管理](../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-#### [应用程序依赖关系监视器](operations-management-suite-application-dependency-monitor.md)
-##### [配置](operations-management-suite-application-dependency-monitor-configure.md)
+#### [服务地图](operations-management-suite-service-map.md)
+##### [配置](operations-management-suite-service-map-configure.md)
 #### [Azure 网络分析](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [容器](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [密钥保管库分析](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -64,6 +64,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

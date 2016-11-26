@@ -1,17 +1,17 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
+ms.sourcegitcommit: 1420ed40368d21bbf391142782834e781155a72a
+ms.openlocfilehash: 6a413c765bf034dda1917c6a3853bcd2d060b49c
 
 ---
 #<a name="data-catalog-documentation"></a>数据目录文档
 
-数据目录是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务，以及处理在开发和管理云应用程序的过程中遇到的重大难题。  数据目录代表着用于生成和管理这些企业级第 1 层云规模应用程序的下一代中间件平台。
+Azure 数据目录是完全托管的云服务，可让用户发现所需的数据源，理解他们找到的数据源，同时帮助组织从现有投资中获得更大的价值。 任何用户（从分析师到数据专家再到开发人员）都可以使用数据目录提供的功能来发现、理解和使用数据源。 数据目录包含元数据和批注的众包模型，可让所有用户运用他们的知识来构建数据社区和文化。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-getting-started/">
+        <a href="/azure/data-catalog/data-catalog-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -21,7 +21,7 @@ ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>数据目录入门示例</h3>
+                        <h3>Azure 数据目录入门</h3>
                     </div>
                 </div>
             </div>
@@ -29,25 +29,7 @@ ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-management-party-cluster/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure 数据目录 Party 群集</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-core-getting-started/">
+        <a href="/azure/data-catalog/data-catalog-what-is-data-catalog">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -57,7 +39,7 @@ ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 .NET Core 的数据目录入门</h3>
+                        <h3>了解 Azure 数据目录</h3>
                     </div>
                 </div>
             </div>
@@ -72,28 +54,13 @@ ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/rest/api/">
+        <a href="/rest/api/datacatalog">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
                         <p>数据目录 REST API 参考</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt416943">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>数据目录托管参考</p>
                     </div>
                 </div>
             </div>
@@ -112,6 +79,6 @@ ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -24,6 +24,8 @@
 #### [高级层](cdn-query-string-premium.md)
 ### [清除缓存资产](cdn-purge-endpoint.md)
 ### [预加载缓存资产](cdn-preload-endpoint.md)
+### [令牌身份验证](cdn-token-auth.md)
+### [监视资源](cdn-resource-health.md)
 ### [用规则覆盖行为](cdn-rules-engine.md)
 ### [获取实时警报](cdn-real-time-alerts.md)
 
@@ -55,6 +57,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

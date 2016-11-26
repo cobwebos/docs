@@ -14,13 +14,13 @@
 ### [应用商店应用](web-sites-php-web-site-gallery.md)
 ### [PHP](app-service-web-php-get-started.md)   
 
-## API Apps
+## API 应用
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
 ### [Java](../app-service-api/app-service-api-java-api-app.md)
 ### [Node.js](../app-service-api/app-service-api-nodejs-api-app.md)
 ### [CORS](../app-service-api/app-service-api-cors-consume-javascript.md)
 
-## Mobile Apps
+## 移动应用
 ### [Android](../app-service-mobile/app-service-mobile-android-get-started.md)
 ### [Cordova](../app-service-mobile/app-service-mobile-cordova-get-started.md)
 ### [iOS](../app-service-mobile/app-service-mobile-ios-get-started.md)
@@ -153,6 +153,7 @@
 ### [本地连接](web-sites-hybrid-connection-get-started.md)
 ### [Azure 虚拟网络](web-sites-integrate-with-vnet.md)
 ### [高级配置](web-sites-transform-extend.md)
+### [为 Linux 上的应用服务配置容器](app-service-linux-using-custom-docker-image.md)
 ### [资源组](app-service-move-resources.md)
 ### [将 WordPress 转换为多站点](web-sites-php-convert-wordpress-multisite.md) 
 
@@ -265,6 +266,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

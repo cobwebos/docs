@@ -15,10 +15,10 @@
 ### [映像](../azure-government-image-gallery.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ### [应用商店](documentation-government-manage-marketplace.md)
 ### [合作伙伴的应用商店](documentation-government-manage-marketplace-partners.md)
+### [资源管理器](documentation-government-manage-azure-resource-manager.md)
 ### [订阅](documentation-government-manage-subscriptions.md)
 
-# 参考
-## [Resource Manager](documentation-government-manage-azure-resource-manager.md)
+# 引用
 ## [服务](documentation-government-services.md)
 ### [计算](documentation-government-compute.md)
 ### [存储](documentation-government-services-storage.md)
@@ -32,8 +32,6 @@
 ## [试用](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
