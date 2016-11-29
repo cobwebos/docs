@@ -65,7 +65,7 @@ ms.openlocfilehash: 3a0f9501760ba3ea97341d30cd706c971c826430
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>将数据导入 Excel 并创建数据透视图
 创建连接并创建包含数据与连接信息的文件后，便可以导入数据。
 
-1. 在“导入数据”对话框中，单击要在工作表中呈现数据的选项，然后单击“确定”。 **将此数据添加到数据模型**。 你也可以选择创建**新工作表**或**将此数据添加到数据模型**。 有关数据模型的详细信息，请参阅[在 Excel 中创建数据模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。 Click <bpt id="p1">**</bpt>Properties<ept id="p1">**</ept> to explore information about the odc file you created in the previous step and to choose options for refreshing the data.
+1. 在“导入数据”对话框中，单击要在工作表中呈现数据的选项，然后单击“确定”。 **将此数据添加到数据模型**。 你也可以选择创建**新工作表**或**将此数据添加到数据模型**。 有关数据模型的详细信息，请参阅[在 Excel 中创建数据模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。 单击**“属性”**浏览在上一个步骤中创建的 odc 文件的相关信息，并选择用于刷新数据的选项。
    
     ![选择 Excel 中数据的格式](./media/sql-database-connect-excel/import-data.png)
    
