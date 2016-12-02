@@ -1,5 +1,5 @@
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在跳转栏中，依次单击“新建”、“数据 + 存储器”、“DocumentDB (NoSQL)”。
+2. 在跳转栏中，依次单击“新建”、“数据库”、“NoSQL (DocumentDB)”。
    
    ![Azure 门户的屏幕截图，突出显示更多服务和 DocumentDB (NoSQL)](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)  
 3. 在“新建帐户”  边栏选项卡中，为 DocumentDB 帐户指定所需的配置。
@@ -16,11 +16,11 @@
    ![快速创建数据库 — 通知中心的屏幕截图，其中显示正在创建 DocumentDB 帐户](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-4.png)  
    
    ![通知中心的屏幕截图，其中显示 DocumentDB 帐户已成功创建并且部署到资源组 — 在线数据库创建者通知](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
-5. 在创建 DocumentDB 帐户后，可随时将其与默认设置配合使用。 DocumentDB 帐户的默认一致性设置为“会话” 。  可单击资源菜单中的“默认一致性”  调整默认一致性。 若要了解有关 DocumentDB 提供的一致性级别的详细信息，请参阅 [DocumentDB 中的一致性级别](../articles/documentdb/documentdb-consistency-levels.md)。
-   
-   ![“资源组”边栏选项卡的屏幕截图 — 开始应用程序开发](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-6.png)  
-   
-   ![“一致性级别”边栏选项卡的屏幕截图 — 会话一致性](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-7.png)  
+5. 在创建 DocumentDB 帐户后，可随时将其与默认设置配合使用。 若要查看默认设置，请在跳转栏中单击“NoSQL (DocumentDB)”图标，单击你的新帐户，然后在资源菜单中单击“默认一致性”。
+
+   ![显示如何在 Azure 门户中打开 Azure DocumentDB 数据库帐户的屏幕截图](./media/documentdb-create-dbaccount/azure-documentdb-database-open-account-portal.png)  
+
+   DocumentDB 帐户的默认一致性设置为“会话” 。  可单击资源菜单中的“默认一致性”  调整默认一致性。 若要了解有关 DocumentDB 提供的一致性级别的详细信息，请参阅 [DocumentDB 中的一致性级别](../articles/documentdb/documentdb-consistency-levels.md)。
 
 [如何：创建 DocumentDB 帐户]: #Howto
 [后续步骤]: #NextSteps
