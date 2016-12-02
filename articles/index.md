@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure 文档 | Microsoft 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: 267a6facc9ed8e6f75c150d627545deafc589040
-ms.openlocfilehash: f4f45ff80a72fd39814ce715628259f2c7883915
+ms.sourcegitcommit: 392db4d8261f6e927aa5ea4b2f6b30e244bfec50
+ms.openlocfilehash: d602295648e523276528d738d54078e2dc07b8a5
 
 ---
 <div id="main" class="v2">
@@ -2355,11 +2355,11 @@ ms.openlocfilehash: f4f45ff80a72fd39814ce715628259f2c7883915
                 </ul>
             </li>
             <li>
-                <a href="#developer">开发人员</a>
-                <ul id="developer">
+                <a href="#sdktools">SDK/工具</a>
+                <ul id="sdktools">
                     <li>
-                        <a href="#developer-all">全部</a>
-                        <ul id="developer-all" class="cardsF">
+                        <a href="#sdktools-all">全部</a>
+                        <ul id="sdktools-all" class="cardsF">
                             <li>
                                 <div class="container">
                                     <h1>语言和框架</h1>
@@ -2861,6 +2861,6 @@ ms.openlocfilehash: f4f45ff80a72fd39814ce715628259f2c7883915
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

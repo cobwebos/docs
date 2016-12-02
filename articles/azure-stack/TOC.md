@@ -79,7 +79,6 @@
 
 # 故障排除
 ## [排查 Azure Stack 问题](azure-stack-troubleshooting.md)
-## [Web 应用资源提供程序](azure-stack-webapps-troubleshoot-known-issues.md)
 
 # 资源
 ## [工具](azure-stack-tools-paas-services.md)

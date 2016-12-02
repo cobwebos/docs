@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/06/2016
+ms.date: 11/16/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
+ms.sourcegitcommit: 22156a9f3c5a57e10cad96661f50531b309c3a04
+ms.openlocfilehash: a25d394e83d7945f0ea50de1fc65a68a96190a34
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
 我们将使用 Windows Server 2012 R2 Datacenter 映像作为示例，但这只是 Azure 提供的众多映像的其中一个。 映像选择取决于订阅。 例如，一些桌面映像对 [MSDN 订户](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)是可用的。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“中心”菜单上，单击“新建” > “虚拟机” > “Windows Server 2012 R2 Datacenter”。
+2. 在“中心”菜单上，单击“新建” > “计算” > “Windows Server 2012 R2 Datacenter”。
    
     ![显示在门户中可用的 Azure VM 映像的屏幕截图](./media/virtual-machines-windows-hero-tutorial/marketplace-new.png)
 3. 在“Windows Server 2012 R2 Datacenter”边栏选项卡上，确保在“选择部署模型”中选择“Resource Manager”。 单击“创建” 。
@@ -49,7 +49,7 @@ ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
 4. 完成后，单击“ **确定** ”转到下一部分。 
    
     ![显示用于配置 Azure VM 的“基本信息”边栏选项卡上的设置的屏幕截图****](./media/virtual-machines-windows-hero-tutorial/basics-blade.png)
-5. 选择 VM [大小](virtual-machines-windows-sizes.md)，然后单击“ **选择** ”以继续。 
+5. 选择 VM [大小](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，然后单击“ **选择** ”以继续。 
    
     ![显示可以选择的 Azure VM 大小的“大小”边栏选项卡的屏幕截图](./media/virtual-machines-windows-hero-tutorial/size-blade.png)
 6. 在“ **设置** ”边栏选项卡上，可以更改存储和网络选项。 在本教程中接受默认设置。 如果选择了支持它的虚拟机大小，则可以通过选择“磁盘类型”中的“高级(SSD)”来试用 Azure 高级存储。 完成更改后，单击“ **确定**”。
@@ -76,7 +76,7 @@ ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
    
    ![显示有关验证 VM 标识的消息的屏幕截图](./media/virtual-machines-windows-hero-tutorial/cert-warning.png)
 
-如果在尝试连接时遇到故障，请参阅 [对基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](virtual-machines-windows-troubleshoot-rdp-connection.md)。
+如果在尝试连接时遇到故障，请参阅 [对基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 现在可以像使用任何其他服务器一样使用该虚拟机。
 
@@ -88,13 +88,13 @@ ms.openlocfilehash: aaef478107d9c9771a1dc799a101ff9a41f821c6
 准备好再次使用 VM 时，单击“ **启动** ”按钮即可重新启动。
 
 ## <a name="next-steps"></a>后续步骤
-* 可以尝试通过 [安装 IIS](virtual-machines-windows-hero-role.md)使用新的 VM。 本教程还介绍了如何使用网络安全组 (NSG) 对传入的 Web 流量打开端口 80。 
-* 也可以[使用 PowerShell 创建 Windows VM](virtual-machines-windows-ps-create.md) 或使用 Azure CLI [创建 Linux 虚拟机](virtual-machines-linux-quick-create-cli.md)。
-* 如果你对自动化部署感兴趣，请参阅 [使用 Resource Manager 模板创建 Windows 虚拟机](virtual-machines-windows-ps-template.md)。
+* 可以尝试通过 [安装 IIS](virtual-machines-windows-hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)使用新的 VM。 本教程还介绍了如何使用网络安全组 (NSG) 对传入的 Web 流量打开端口 80。 
+* 也可以[使用 PowerShell 创建 Windows VM](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 或使用 Azure CLI [创建 Linux 虚拟机](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 如果你对自动化部署感兴趣，请参阅 [使用 Resource Manager 模板创建 Windows 虚拟机](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

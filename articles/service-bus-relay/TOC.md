@@ -21,7 +21,7 @@
 ## [示例](service-bus-relay-samples.md)
 ## [混合连接 .NET API](/dotnet/api/microsoft.servicebus)
 ## [WCF 中继 .NET API](/dotnet/api/microsoft.servicebus)
-
+## [端口设置](service-bus-relay-port-settings.md)
 
 # 资源
 ## [博客](https://blogs.msdn.microsoft.com/servicebus/)
@@ -33,6 +33,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

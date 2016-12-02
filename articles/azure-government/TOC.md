@@ -15,7 +15,8 @@
 ### [映像](../azure-government-image-gallery.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ### [应用商店](documentation-government-manage-marketplace.md)
 ### [合作伙伴的应用商店](documentation-government-manage-marketplace-partners.md)
-### [资源管理器](documentation-government-manage-azure-resource-manager.md)
+### [Resource Manager](documentation-government-manage-azure-resource-manager.md)
+### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [订阅](documentation-government-manage-subscriptions.md)
 
 # 引用

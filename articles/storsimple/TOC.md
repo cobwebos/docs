@@ -7,16 +7,41 @@
 #### [查看要求](storsimple-ova-system-requirements.md)
 #### [了解限制](storsimple-ova-limits.md)
 #### [查看最佳实践](storsimple-ova-best-practices.md)
-### 部署
+
+### 部署（Azure 门户）
+#### [准备部署](storsimple-virtual-array-deploy1-portal-prep.md)
+##### [部署 StorSimple Manager 服务](storsimple-virtual-array-manage-service.md)
+#### [在 HYPER-V 中预配](storsimple-virtual-array-deploy2-provision-hyperv.md)
+#### [在 VMware 中预配](storsimple-virtual-array-deploy2-provision-vmware.md)
+#### [设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)
+#### [设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md)
+
+### 部署（经典门户）
 #### [准备部署](storsimple-ova-deploy1-portal-prep.md)
-#### [部署 StorSimple Manager 服务](storsimple-ova-manage-service.md)
+##### [部署 StorSimple Manager 服务](storsimple-ova-manage-service.md)
 #### [在 HYPER-V 中预配](storsimple-ova-deploy2-provision-hyperv.md)
 #### [在 VMware 中预配](storsimple-ova-deploy2-provision-vmware.md)
 #### [设置为文件服务器](storsimple-ova-deploy3-fs-setup.md)
 #### [设置为 iSCSI 服务器](storsimple-ova-deploy3-iscsi-setup.md)
 
 ## 如何
-### [通过 Azure 门户管理](storsimple-ova-manager-service-administration.md)
+### [通过 Azure 门户管理](storsimple-virtual-array-manager-service-administration.md)
+#### [安装最新更新](storsimple-virtual-array-install-update.md)
+#### [创建和管理备份](storsimple-virtual-array-backup.md)
+#### [从备份克隆](storsimple-virtual-array-clone.md)
+#### [故障转移和灾难恢复](storsimple-virtual-array-failover-dr.md)
+#### [停用和删除](storsimple-virtual-array-deactivate-and-delete-device.md)
+#### [管理共享](storsimple-virtual-array-manage-shares.md)
+#### [管理卷](storsimple-virtual-array-manage-volumes.md)
+#### [查看服务摘要](storsimple-virtual-array-service-summary.md)
+#### [查看设备摘要](storsimple-virtual-array-device-summary.md)
+#### [管理存储帐户](storsimple-virtual-array-manage-storage-accounts.md)
+#### [管理 ACR](storsimple-virtual-array-manage-acrs.md)
+#### [管理作业](storsimple-virtual-array-manage-jobs.md)
+#### [更改设备密码](storsimple-virtual-array-change-device-admin-password.md)
+#### [在 Windows Server 主机上配置 MPIO](storsimple-virtual-array-configure-mpio-windows-server.md)
+
+### [通过 Azure 经典门户进行管理](storsimple-ova-manager-service-administration.md)
 #### [安装最新更新](storsimple-ova-install-update-01.md)
 #### [创建和管理备份](storsimple-ova-backup.md)
 #### [从备份还原](storsimple-ova-restore.md)
@@ -61,7 +86,7 @@
 ##### [Azure 中的物理设备 - Update 1](storsimple-deployment-walkthrough-u1.md)
 ##### [Azure 中的物理设备 - GA](storsimple-deployment-walkthrough.md)
 #### [政务门户中的物理设备 - 最新版](storsimple-deployment-walkthrough-gov-u2.md)
-##### [政务门户中的物理设备 - 最新版](storsimple-deployment-walkthrough-gov.md)
+##### [政务门户中的物理设备 - Update 1](storsimple-deployment-walkthrough-gov.md)
 #### [Azure 中的虚拟设备](storsimple-virtual-device-u2.md)
 #### [StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)
 #### [StorSimple Adapter for SharePoint](storsimple-adapter-for-sharepoint.md)
@@ -113,9 +138,11 @@
 ##### [使用 StorSimple Snapshot Manager 中的 MMC 操作](storsimple-snapshot-manager-mmc-menu.md)
 
 ### 构建解决方案
-#### [分布式全局命名空间](https://www.microsoft.com/download/details.aspx?id=45507)
 #### [在 Azure 中实现自动化文件服务器灾难恢复](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [通过 Express Route 使用 StorSimple](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
+#### [采用 VMware 的 StorSimple](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
+#### [采用 Hyper-V 的 StorSimple](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
+#### [分布式全局命名空间](https://www.microsoft.com/download/details.aspx?id=45507)
 
 ### 监视
 #### [使用服务仪表板](storsimple-service-dashboard.md)
@@ -160,7 +187,18 @@
 
 ## 引用
 ### [Azure PowerShell](/powershell/servicemanagement)
-### [Windows PowerShell for StorSimple cmdlet] (https://technet.microsoft.com/library/dn688168.aspx)
+### [Windows PowerShell for StorSimple cmdlet](https://technet.microsoft.com/library/dn688168.aspx)
+
+# StorSimple Data Manager（个人预览版）
+
+## 概述
+### [什么是解决方案？](storsimple-data-manager-overview.md)
+
+## 入门
+### [使用 StorSimple Data Manager](storsimple-data-manager-ui.md)
+
+## 如何
+### [使用 .NET 转换数据](storsimple-data-manager-dotnet-jobs.md)
 
 # 相关内容
 ## [StorSimple 5000-7000 系列](http://onlinehelp.storsimple.com)
@@ -179,6 +217,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

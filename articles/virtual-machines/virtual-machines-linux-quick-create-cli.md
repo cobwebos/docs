@@ -1,210 +1,132 @@
 ---
-title: "使用 CLI 在 Azure 上创建 Linux VM | Microsoft Docs"
-description: "使用 CLI 在 Azure 上创建 Linux VM。"
+title: "使用 Azure CLI 2.0（预览版）创建 Linux VM | Microsoft Azure"
+description: "使用 Azure CLI 2.0（预览版）创建 Linux VM。"
 services: virtual-machines-linux
 documentationcenter: 
-author: vlivech
+author: squillace
 manager: timlt
 editor: 
-ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
+ms.assetid: 82005a05-053d-4f52-b0c2-9ae2e51f7a7e
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/27/2016
-ms.author: v-livech
+ms.date: 09/26/2016
+ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd75ab9a37dfc75679427a16c3ecb36adb1c9925
+ms.sourcegitcommit: 2bd363e3c22f4cf4daf2e0fa352fd4a131d1675f
+ms.openlocfilehash: 89db2c9f388b8a5496a306ba0a152ab57481ea50
 
 
 ---
-# <a name="create-a-linux-vm-on-azure-by-using-the-cli"></a>使用 CLI 在 Azure 上创建 Linux VM
-本文说明如何使用 Azure 命令行接口 (LI ) 中的 `azure vm quick-create` 命令在 Azure 上快速部署 Linux 虚拟机 (VM)。 `quick-create` 命令可将 VM 部署在基本且安全的基础结构内，可让你快速构建原型或测试概念。 本文需要以下条件：
 
-* 一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）。
-* 已使用 `azure login` 登录 [Azure CLI](../xplat-cli-install.md)。
-* Azure CLI *必须处于 *Azure Resource Manager 模式`azure config mode arm`。
+# <a name="create-a-linux-vm-using-the-azure-cli-20-preview"></a>使用 Azure CLI 2.0（预览版）创建 Linux VM
+本文说明如何在 Azure CLI 2.0（预览版）中使用 [az vm create](/cli/azure/vm#create) 命令在 Azure 上快速部署 Linux 虚拟机 (VM)。 
 
-你也可以使用 [Azure 门户](virtual-machines-linux-quick-create-portal.md)快速部署 Linux VM。
+> [!NOTE] 
+> Azure CLI 2.0 预览版是下一代的多平台 CLI。 欢迎通过 [GitHub 项目页](https://github.com/Azure/azure-cli)试用该软件，然后告知你的看法。
+>
+> 剩余的文档使用现有 Azure CLI。 若要使用现有 Azure CLI 而不是 CLI 2.0 预览版创建 VM，请参阅 [Create a VM with the Azure CLI](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Azure CLI 创建 VM）。
 
-## <a name="quick-commands"></a>快速命令
-以下示例演示如何部署 CoreOS VM 并附加安全外壳 (SSH) 密钥（参数可能会不同）：
+若要创建 VM，需要： 
 
-```azurecli
-azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
-```
+* 一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）
+* 已安装 [Azure CLI v.2.0（预览版）](https://github.com/Azure/azure-cli#installation)
+* 登录到 Azure 帐户（键入 [az login](/cli/azure/#login)）
 
-## <a name="detailed-walkthrough"></a>详细演练
-以下演练一步步地部署 UbuntuLTS VM，并说明每步的具体操作。
+（也可以使用 [Azure 门户](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速部署 Linux VM。）
 
-## <a name="vm-quickcreate-aliases"></a>VM quick-create 别名
-选择分发的便捷方法是使用映射到最常见 OS 分发的 Azure CLI 别名。 下表列出了别名（截止到 Azure 0.10 版）。 使用 `quick-create` 的所有部署默认为部署到由固态硬盘 (SSD) 存储提供支持的 VM，这些 VM 提供更快的预配性能和高性能磁盘访问。 （这些别名表示 Azure 上的一小部分可用分发。 在 Azure 应用商店中查找更多映像（可以[在 PowerShell 中搜索映像](virtual-machines-linux-cli-ps-findimage.md)，或者[在 Web](https://azure.microsoft.com/marketplace/virtual-machines/) 上搜索），或者[上载自己的自定义映像](virtual-machines-linux-create-upload-generic.md)。）
+以下示例演示如何部署 Debian VM 和附加安全外壳 (SSH) 密钥（你的参数可能与此不同；如果需要不同的映像，[可以搜索映像](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。
 
-| 别名 | 发布者 | 产品 | SKU | 版本 |
-|:--- |:--- |:--- |:--- |:--- |
-| CentOS |OpenLogic |CentOS |7.2 |最新 |
-| CoreOS |CoreOS |CoreOS |Stable |最新 |
-| Debian |credativ |Debian |8 |最新 |
-| openSUSE |SUSE |openSUSE |13.2 |最新 |
-| RHEL |Red Hat |RHEL |7.2 |最新 |
-| UbuntuLTS |Canonical |Ubuntu Server |14.04.4-LTS |最新 |
+## <a name="create-a-resource-group"></a>创建资源组
 
-以下各节对 **ImageURN** 选项 (`-Q`) 使用 `UbuntuLTS` 别名来部署 Ubuntu 14.04.4 LTS Server。
-
-上一个 `quick-create` 示例在禁用 SSH 密码时仅调出 `-M` 标志来标识要上载的 SSH 公钥，因此系统将提示输入以下参数：
-
-* 资源组名称（任何字符串通常都适用于第一个 Azure 资源组）
-* VM 名称
-* 位置（`westus` 或 `westeurope` 都是很好的默认值）
-* linux（让 Azure 知道你需要的 OS）
-* username
-
-以下示例会指定所有值，因此不会再有进一步的提示。 只要具有 `~/.ssh/id_rsa.pub` 作为 ssh rsa 格式公钥文件，它会如期运行：
+首先，键入 [az resource group create](/cli/azure/resource/group#create) 创建包含所有已部署资源的资源组：
 
 ```azurecli
-azure vm quick-create \
-  --resource-group myResourceGroup \
-  --name myVM \
-  --location westus \
-  --os-type Linux \
-  --admin-username myAdminUser \
-  --ssh-public-file ~/.ssh/id_rsa.pub \
-  --image-urn UbuntuLTS
+az resource group create -n myResourceGroup -l westus
 ```
 
-输出应类似于以下输出块：
+输出如下所示（如果需要，可以选择一个不同的 `--output` 选项）：
+
+```json
+{
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup",
+  "location": "westus",
+  "name": "myResourceGroup",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null
+}
+```
+
+## <a name="create-your-vm-using-the-latest-debian-image"></a>使用最新的 Debian 映像创建 VM
+
+现在，可以创建 VM 及其环境。 请记得将 `----public-ip-address-dns-name` 值替换为唯一值；下面的值可能已被使用。
 
 ```azurecli
-info:    Executing command vm quick-create
-+ Listing virtual machine sizes available in the location "westus"
-+ Looking up the VM "myVM"
-info:    Verifying the public key SSH file: /Users/ahmet/.ssh/id_rsa.pub
-info:    Using the VM Size "Standard_DS1"
-info:    The [OS, Data] Disk or image configuration requires storage account
-+ Looking up the storage account cli16330708391032639673
-+ Looking up the NIC "examp-westu-1633070839-nic"
-info:    An nic with given name "examp-westu-1633070839-nic" not found, creating a new one
-+ Looking up the virtual network "examp-westu-1633070839-vnet"
-info:    Preparing to create new virtual network and subnet
-/ Creating a new virtual network "examp-westu-1633070839-vnet" [address prefix: "10.0.0.0/16"] with subnet "examp-westu-1633070839-snet" [address prefix: "10.+.1.0/24"]
-+ Looking up the virtual network "examp-westu-1633070839-vnet"
-+ Looking up the subnet "examp-westu-1633070839-snet" under the virtual network "examp-westu-1633070839-vnet"
-info:    Found public ip parameters, trying to setup PublicIP profile
-+ Looking up the public ip "examp-westu-1633070839-pip"
-info:    PublicIP with given name "examp-westu-1633070839-pip" not found, creating a new one
-+ Creating public ip "examp-westu-1633070839-pip"
-+ Looking up the public ip "examp-westu-1633070839-pip"
-+ Creating NIC "examp-westu-1633070839-nic"
-+ Looking up the NIC "examp-westu-1633070839-nic"
-+ Looking up the storage account clisto1710997031examplev
-+ Creating VM "myVM"
-+ Looking up the VM "myVM"
-+ Looking up the NIC "examp-westu-1633070839-nic"
-+ Looking up the public ip "examp-westu-1633070839-pip"
-data:    Id                              :/subscriptions/2<--snip-->d/resourceGroups/exampleResourceGroup/providers/Microsoft.Compute/virtualMachines/exampleVMName
-data:    ProvisioningState               :Succeeded
-data:    Name                            :exampleVMName
-data:    Location                        :westus
-data:    Type                            :Microsoft.Compute/virtualMachines
-data:
-data:    Hardware Profile:
-data:      Size                          :Standard_DS1
-data:
-data:    Storage Profile:
-data:      Image reference:
-data:        Publisher                   :Canonical
-data:        Offer                       :UbuntuServer
-data:        Sku                         :14.04.4-LTS
-data:        Version                     :latest
-data:
-data:      OS Disk:
-data:        OSType                      :Linux
-data:        Name                        :clic7fadb847357e9cf-os-1473374894359
-data:        Caching                     :ReadWrite
-data:        CreateOption                :FromImage
-data:        Vhd:
-data:          Uri                       :https://cli16330708391032639673.blob.core.windows.net/vhds/clic7fadb847357e9cf-os-1473374894359.vhd
-data:
-data:    OS Profile:
-data:      Computer Name                 :myVM
-data:      User Name                     :myAdminUser
-data:      Linux Configuration:
-data:        Disable Password Auth       :true
-data:
-data:    Network Profile:
-data:      Network Interfaces:
-data:        Network Interface #1:
-data:          Primary                   :true
-data:          MAC Address               :00-0D-3A-33-42-FB
-data:          Provisioning State        :Succeeded
-data:          Name                      :examp-westu-1633070839-nic
-data:          Location                  :westus
-data:            Public IP address       :138.91.247.29
-data:            FQDN                    :examp-westu-1633070839-pip.westus.cloudapp.azure.com
-data:
-data:    Diagnostics Profile:
-data:      BootDiagnostics Enabled       :true
-data:      BootDiagnostics StorageUri    :https://clisto1710997031examplev.blob.core.windows.net/
-data:
-data:      Diagnostics Instance View:
-info:    vm quick-create command OK
+az vm create \
+--image credativ:Debian:8:latest \
+--admin-username ops \
+--ssh-key-value ~/.ssh/id_rsa.pub \
+--public-ip-address-dns-name mydns \
+--resource-group myResourceGroup \
+--location westus \
+--name myVM
 ```
 
-## <a name="log-in-to-the-new-vm"></a>登录到新的 VM
-使用在输出中列出的公共 IP 地址登录到 VM。 也可以使用列出的完全限定域名 (FQDN)：
+
+输出如下所示。 请注意通过 **ssh** 连接到 VM 时使用的 `publicIpAddress` 或 `fqdn` 值。
+
+
+```json
+{
+  "fqdn": "mydns.westus.cloudapp.azure.com",
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "macAddress": "00-0D-3A-32-05-07",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "40.112.217.29",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+使用在输出中列出的公共 IP 地址登录到 VM。 你也可以使用列出的完全限定域名称 (FQDN)。
 
 ```bash
-ssh -i ~/.ssh/id_rsa.pub ahmet@138.91.247.29
+ssh ops@mydns.westus.cloudapp.azure.com
 ```
 
-登录过程应如以下输出块所示：
+根据所选的分发版，应会显示类似于下面的输出：
 
-```bash
-Warning: Permanently added '138.91.247.29' (ECDSA) to the list of known hosts.
-Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-65-generic x86_64)
+```
+The authenticity of host 'mydns.westus.cloudapp.azure.com (40.112.217.29)' can't be established.
+RSA key fingerprint is SHA256:xbVC//lciRvKild64lvup2qIRimr/GB8C43j0tSHWnY.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'mydns.westus.cloudapp.azure.com,40.112.217.29' (RSA) to the list of known hosts.
 
- * Documentation:  https://help.ubuntu.com/
-
-  System information as of Thu Sep  8 22:50:57 UTC 2016
-
-  System load: 0.63              Memory usage: 2%   Processes:       81
-  Usage of /:  39.6% of 1.94GB   Swap usage:   0%   Users logged in: 0
-
-  Graph this data and manage this system at:
-    https://landscape.canonical.com/
-
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
-
-0 packages can be updated.
-0 updates are security updates.
-
-
-
-The programs included with the Ubuntu system are free software;
+The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
-
-myAdminUser@myVM:~$
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+ops@mynewvm:~$ ls /
+bin  boot  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz
 ```
 
 ## <a name="next-steps"></a>后续步骤
-`azure vm quick-create` 命令是一种快速部署 VM 的方法，让你可以登录到 bash shell 并开始使用。 但是，使用 `vm quick-create` 不会提供进一步的控制，也不能使你创建更复杂的环境。  若要部署针对你的基础结构自定义的 Linux VM，可以遵循以下任一文章操作：
+`az vm create` 命令是一种快速部署 VM 的方法，让你可以登录到 bash shell 并开始使用。 但是，使用 `az vm create` 不会提供进一步的控制，也不能使你创建更复杂的环境。  若要部署针对你的基础结构自定义的 Linux VM，可以遵循以下任一文章操作：
 
-* [使用 Azure Resource Manager 模板创建特定部署](virtual-machines-linux-cli-deploy-templates.md)
-* [直接使用 Azure CLI 命令创建自定义的 Linux VM 环境](virtual-machines-linux-create-cli-complete.md)
-* [使用模板在 Azure 上创建受 SSH 保护的 Linux VM](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+* [使用 Azure Resource Manager 模板创建特定部署](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [直接使用 Azure CLI 命令创建自定义的 Linux VM 环境](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用模板在 Azure 上创建受 SSH 保护的 Linux VM](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-还可以[将 `docker-machine` Azure 驱动程序与各种命令配合使用，快速创建 Linux VM 作为 docker 主机](virtual-machines-linux-docker-machine.md)。
-
-
+还可以[将 `docker-machine` Azure 驱动程序与各种命令配合使用来快速创建 Linux VM 作为 docker 主机](virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)；如果使用 Java，请尝试 [create()](/java/api/com.microsoft.azure.management.compute._virtual_machine) 方法。
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Nov16_HO4-->
 
 

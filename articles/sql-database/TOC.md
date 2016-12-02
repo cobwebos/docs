@@ -111,7 +111,7 @@
 ### 学习
 #### [概述](sql-database-business-continuity.md)
 #### [数据库备份](sql-database-automated-backups.md)
-#### [长期保留](sql-database-long-term-retention.md) 
+#### [长期保留](sql-database-long-term-retention.md)
 #### [使用备份恢复数据库](sql-database-recovery-using-backups.md)
 #### [灾难恢复的身份验证要求](sql-database-geo-replication-security-config.md)
 #### [业务连续性设计方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
@@ -160,7 +160,7 @@
 #### [使用 Visual Studio 进行连接](sql-database-connect-query.md)
 #### [构建客户端应用程序](https://www.microsoft.com/sql-server/developer-get-started)
 #### [处理错误消息](sql-database-develop-error-messages.md)
-### 客户实现软件即服务
+### 软件即服务的客户实现
 #### [Daxko/CSI 软件](sql-database-implementation-daxko.md)
 #### [GEP](sql-database-implementation-gep.md)
 #### [SnelStart](sql-database-implementation-snelstart.md)
@@ -210,7 +210,7 @@
 #### [拆分/合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
 #### [使用 Dapper](sql-database-elastic-scale-working-with-dapper.md)
 #### [使用实体框架](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
-#### [数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)
+#### [依赖于数据的路由](sql-database-elastic-scale-data-dependent-routing.md)
 #### [多租户行级别安全性](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 #### [管理凭据](sql-database-elastic-scale-manage-credentials.md)
 #### [部署拆分 / 合并服务](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
@@ -358,8 +358,6 @@
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
-
-
 
 
 <!--HONumber=Nov16_HO4-->

@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 10/30/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 64d085bff08d9a824204851d32504fac3e79024c
+ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
+ms.openlocfilehash: 98bf94960c39565243995a1c4dd45787478b8f40
 
 
 ---
@@ -30,7 +30,7 @@ Site Recovery 可安排本地虚拟机和物理服务器的复制，进而有利
 主站点发生故障时，可故障转移到辅助站点，保证工作负荷可访问且可用。 当主要位置恢复正常时，可故障转移回到该位置。
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Azure 门户中的 Site Recovery
-Azure 具有两种用于创建和处理资源的[部署模型](../resource-manager-deployment-model.md)（两者不同）。 Azure Resource Manager 模型和经典服务管理模型。 Azure 也有两个门户。 [Azure 经典门户](https://manage.windowsazure.com/)和 [Azure 门户](https://portal.azure.com)。
+Azure 具有两种用于创建和处理资源的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md)（两者不同）。 Azure Resource Manager 模型和经典服务管理模型。 Azure 也有两个门户。 [Azure 经典门户](https://manage.windowsazure.com/)和 [Azure 门户](https://portal.azure.com)。
 
 * Site Recovery 可在经典门户和 Azure 门户中进行部署。
 * 在 Azure 经典门户中，可使用经典服务管理模型支持 Site Recovery。
@@ -79,6 +79,6 @@ Site Recovery 提供应用程序感知复制，使工作负荷和应用在出现
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

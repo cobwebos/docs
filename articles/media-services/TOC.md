@@ -1,7 +1,6 @@
 # [概述](media-services-overview.md)
 ## [概念](media-services-concepts.md)
 
-
 # 入门
 ## [创建和管理帐户](media-services-portal-create-account.md)
 ## [设置开发环境](media-services-set-up-computer.md)
@@ -16,20 +15,18 @@
 
 # 如何
 ## 管理
-### [在门户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+### 管理帐户
+#### [PowerShell](media-services-manage-with-powershell.md)
+#### [REST](/rest/api/media/mediaservice)
 ### 管理实体
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
-### [使用 PowerShell 管理帐户](media-services-manage-with-powershell.md)
-### [使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)
-### [如何：轮转存储访问密钥后更新媒体服务](media-services-roll-storage-access-keys.md)
-### [配额和限制](media-services-quotas-and-limitations.md)
-### 筛选器
-#### [使用 Azure 媒体服务 .NET SDK 创建筛选器](media-services-dotnet-dynamic-manifest.md)
-#### [如何使用 Media Encoder Standard 对资产进行编码](media-services-rest-encode-asset.md)
 ### 以编程方式连接
 #### [.NET](media-services-dotnet-connect-programmatically.md)
 #### [REST](media-services-rest-connect-programmatically.md)
+### [在门户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+### [如何：轮转存储访问密钥后更新媒体服务](media-services-roll-storage-access-keys.md)
+### [配额和限制](media-services-quotas-and-limitations.md)
 
 ## 上载内容
 ### 将文件上载到帐户中
@@ -38,49 +35,74 @@
 #### [REST](media-services-rest-upload-files.md)
 ### [复制现有的 Blob](media-services-copying-existing-blob.md)
 
-## 编码
-### [内容](media-services-encode-asset.md)
-#### 使用 Media Encoder Standard 为资产编码
+## [对内容进行编码](media-services-encode-asset.md)
+### [比较编码器](media-services-compare-encoders.md)
+### [错误代码](media-services-encoding-error-codes.md)
+### Media Encoder Standard (MES)
+#### [Media Encoder Standard 格式和编解码器](media-services-media-encoder-standard-formats.md)
+#### MES 架构
+##### [Media Encoder Standard 架构](media-services-mes-schema.md)
+##### [输入元数据](media-services-input-metadata-schema.md)
+##### [输出元数据](media-services-output-metadata-schema.md)
+#### MES 预设 
+##### [H264 多比特率 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md)
+##### [H264 多比特率 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md)
+##### [H264 多比特率 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md)
+##### [H264 多比特率 16x9 SD](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md)
+##### [H264 多比特率 16x9 for iOS](media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md)
+##### [H264 多比特率 4K Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md)
+##### [H264 多比特率 4K](media-services-mes-preset-H264-Multiple-Bitrate-4K.md)
+##### [H264 多比特率 4x3 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md)
+##### [H264 多比特率 4x3 SD](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md)
+##### [H264 多比特率 4x3 for iOS](media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md)
+##### [H264 多比特率 720p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md)
+##### [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md)
+##### [H264 单比特率 1080p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md)
+##### [H264 单比特率 1080p](media-services-mes-preset-H264-Single-Bitrate-1080p.md)
+##### [H264 单比特率 16x9 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md)
+##### [H264 单比特率 16x9 SD](media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md)
+##### [H264 单比特率 4K Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md)
+##### [H264 单比特率 4K](media-services-mes-preset-H264-Single-Bitrate-4K.md)
+##### [H264 单比特率 4x3 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md)
+##### [H264 单比特率 4x3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md)
+##### [H264 单比特率 720p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md)
+##### [H264 单比特率 720p](media-services-mes-preset-H264-Single-Bitrate-720p.md)
+##### [H264 单比特率 720p (Android)](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md)
+##### [H264 单比特率高品质 SD (Android)](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md)
+##### [H264 单比特率低品质 SD (Android)](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md)
+#### 使用 Media Encoder Standard 进行编码
 ##### [门户](media-services-portal-encode.md)
 ##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
-#### [如何使用 Media Encoder Standard 通过 .NET 来生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
-#### [高级编码](media-services-advanced-encoding-with-mes.md)
+##### [REST](media-services-rest-encode-asset.md)
+#### [使用 MES 进行高级编码](media-services-advanced-encoding-with-mes.md)
+##### [如何使用 Media Encoder Standard 通过 .NET 来生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
+##### [使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)
+### 媒体编码器高级工作流
+#### [媒体编码器高级工作流格式和编解码器](media-services-premium-workflow-encoder-formats.md)
+#### 使用媒体编码器高级工作流进行编码
 ##### [媒体编码器高级工作流](media-services-encode-with-premium-workflow.md)
 ##### [媒体编码器高级工作流教程](media-services-media-encoder-premium-workflow-tutorials.md)
 ##### [使用工作流设计器创建高级编码工作流](media-services-workflow-designer.md)
 ##### [使用多个输入的高级工作流](media-services-media-encoder-premium-workflow-multiplefilesinput.md)
-
-#### 架构 
-#####[Media Encoder Standard](media-services-mes-schema.md)
-#####[输入元数据](media-services-input-metadata-schema.md)
-#####[输出元数据](media-services-output-metadata-schema.md)
-
-#### 旧编码器
-##### [使用 Azure Media Packager](media-services-static-packaging.md)
-
-### [实时流](media-services-manage-channels-overview.md)
-#### [本地编码器](media-services-live-streaming-with-onprem-encoders.md)
-#### 本地编码器教程
-##### [门户](media-services-portal-live-passthrough-get-started.md)
-##### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-#### [使用云编码器实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)
-#### 云编码器教程
-##### [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
-##### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-#### [配置用于云编码器的本地编码器](media-services-live-encoders-overview.md)
-#### [处理长时间运行的操作](media-services-dotnet-long-operations.md)
-#### [碎片化的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
-#### [动态打包](media-services-dynamic-packaging-overview.md)
-
-### 媒体处理
+### 媒体处理器
 #### [.NET](media-services-get-media-processor.md)
 #### [REST](media-services-rest-get-media-processor.md)
+### 已放弃
+#### [静态打包和加密](media-services-static-packaging.md)
 
-### 为单比特率实时流配置编码器
+## [实时流](media-services-manage-channels-overview.md)
+### [本地编码器](media-services-live-streaming-with-onprem-encoders.md)
+### [使用云编码器实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)
+### 云编码器教程
+#### [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
+#### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
+### [配置与云编码器一起使用的本地编码器](media-services-live-encoders-overview.md)
 #### [Elemental Live 编码器](media-services-configure-elemental-live-encoder.md)
 #### [FMLE 编码器 ](media-services-configure-fmle-live-encoder.md)
 #### [NewTek TriCaster 编码器](media-services-configure-tricaster-live-encoder.md)
 #### [Wirecast 编码器](media-services-configure-wirecast-live-encoder.md)
+### [处理长时间运行的操作](media-services-dotnet-long-operations.md)
+### [碎片化的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
 
 ## [保护](media-services-content-protection-overview.md)
 ### [在门户中配置内容保护](media-services-portal-protect-content.md)
@@ -106,14 +128,20 @@
 #### [REST](media-services-rest-configure-content-key-auth-policy.md)
 
 ## [分析](media-services-analytics-overview.md)
+### [使用门户分析媒体](media-services-portal-analyze.md)
 ### [使用 Indexer 2 进行处理](media-services-process-content-with-indexer2.md)
 ### [使用 Indexer 进行处理](media-services-index-content.md)
 ### [使用 Hyperlapse 进行处理](media-services-hyperlapse-content.md)
 ### [使用 Face Detector 进行处理](media-services-face-and-emotion-detection.md)
 ### [使用 Motion Detector 进行处理](media-services-motion-detection.md)
 ### [使用 Face Redaction 进行处理](media-services-face-redaction.md)
+#### [Face Redaction 演练](media-services-redactor-walkthrough.md)
 ### [使用视频缩略图进行处理](media-services-video-summarization.md)
 ### [使用 OCR 进行处理](media-services-video-optical-character-recognition.md)
+
+## [配置遥测](media-services-telemetry-overview.md)
+###[.NET](media-services-dotnet-telemetry.md)
+###[REST](media-services-rest-telemetry.md)
 
 ## 缩放
 ### [媒体处理](media-services-scale-media-processing-overview.md)
@@ -124,6 +152,7 @@
 #### [门户](media-services-portal-scale-streaming-endpoints.md)
 
 ## [传送内容](media-services-deliver-content-overview.md)
+### [动态打包](media-services-dynamic-packaging-overview.md)
 ### [筛选器和动态清单概述](media-services-dynamic-manifest-overview.md)
 ### 创建筛选器
 #### [.NET](media-services-dotnet-dynamic-manifest.md)
@@ -162,30 +191,20 @@
 ## 故障排除
 ### [常见问题](media-services-frequently-asked-questions.md)
 ### [实时流式处理故障排除指南](media-services-troubleshooting-live-streaming.md)
-###[错误代码](media-services-error-codes.md)
-###[重试逻辑](media-services-retry-logic-in-dotnet-sdk.md)
+### [错误代码](media-services-error-codes.md)
+### [重试逻辑](media-services-retry-logic-in-dotnet-sdk.md)
 
 # 参考
 ## [发行说明](media-services-release-notes.md)
 ## [.NET](media-services-dotnet-how-to-use.md)
 ## [REST](media-services-rest-how-to-use.md)
-## [媒体编码器高级工作流格式和编解码器](media-services-premium-workflow-encoder-formats.md)
-## [Media Encoder Standard 格式和编解码器](media-services-media-encoder-standard-formats.md)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure 媒体服务社区](media-services-community.md)
+## [视频](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-
-
-
-
-
-
-
-
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -30,7 +30,6 @@
 
 
 ## 使用 Enterprise Integration Pack (EIP)
-### [Enterprise Integration Pack](../app-service-logic/app-service-logic-enterprise-integration-overview.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [集成帐户概述](../app-service-logic/app-service-logic-enterprise-integration-create-integration-account.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [协议](../app-service-logic/app-service-logic-enterprise-integration-agreements.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ### [B2B 处理](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)
@@ -87,10 +86,9 @@
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/logic-apps/)  
-## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps) 
+## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-logic-apps)
-## [服务更新](https://azure.microsoft.com/updates/?product=logic-apps) 
-
+## [服务更新](https://azure.microsoft.com/updates/?product=logic-apps)
 
 
 <!--HONumber=Nov16_HO4-->
