@@ -3,8 +3,8 @@ title: "使用 Azure CLI 在 Resource Manager 中创建面向 Internet 的负载
 description: "了解如何使用 Azure CLI 在 Resource Manager 中创建面向 Internet 的负载平衡器"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
@@ -14,15 +14,19 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: c8f29176c8566c94efeecadbc804f459d8f2a6c3
 
 ---
 # <a name="creating-an-internal-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载平衡器
 
-[!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -59,7 +63,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
 
         info:    New mode is arm
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-frontend-ip-pool"></a>为前端 IP 池创建虚拟网络和公共 IP 地址
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>为前端 IP 池创建虚拟网络和公共 IP 地址
 
 1. 使用名为 *NRPRG* 的资源组在美国东部位置创建名为 *NRPVnet* 的虚拟网络 (VNet)。
 
@@ -91,7 +95,7 @@ ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
     azure network lb create NRPRG NRPlb eastus
     ```
 
-## <a name="create-a-frontend-ip-pool-and-a-backend-address-pool"></a>创建前端 IP 池和后端地址池
+## <a name="create-a-front-end-ip-pool-and-a-backend-address-pool"></a>创建前端 IP 池和后端地址池
 本示例演示如何创建前端和后端 IP 池，前者接收负载均衡器上的传入网络流量，后者发送负载平衡的网络流量。
 
 1. 创建前端 IP 池，它与负载平衡器和上一步中创建的公共 IP 相关联。
@@ -307,6 +311,6 @@ azure network lb delete --resource-group nrprg --name nrplb
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

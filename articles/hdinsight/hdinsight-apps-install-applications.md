@@ -13,25 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/14/2016
+ms.date: 11/23/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b53d8c78817e94ec30bd7cb3becf0c7d4accbd23
+ms.sourcegitcommit: 71aef298af187cd4c370edf9fedc42e75ec10c41
+ms.openlocfilehash: 57fbf532c64621ef7d171fc5092708737cd36c33
 
 
 ---
 # <a name="install-hdinsight-applications"></a>安装 HDInsight 应用程序
 HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安装的应用程序。 这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或你自己开发的。 在本文中，你将了解如何安装已发布的应用程序。 有关安装自己的应用程序的信息，请参阅 [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。 
 
-目前有一个已发布的应用程序：
+目前有三个已发布的应用程序：
 
 * **Datameer**： [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) 提供一种交互方式，让分析师发现、分析和可视化大数据的结果。 轻松拉进其他数据源，以发现新的关系并迅速获取所需的答案。
+* **Streamsets Data Collector for HDnsight** 提供了一个全面集成的开发环境 (IDE)，可让你在其中设计、测试、部署和管理汇合流和批处理数据的全面互通引入管道，并提供各种流中转换 - 所有这一切都无需编写自定义代码。 
+* **Cask CDAP 3.5 for HDInsight** 为大数据提供首个统一的集成平台，可将数据应用程序和数据湖的生产时间缩短 80%。 此应用程序仅支持标准 HBase 3.4 群集。
 
-> [!NOTE]
-> 目前只有 Azure HDInsight 3.2 版群集支持Datameer。
-> 
-> 
 
 本文提供的说明将使用 Azure 门户。 也可以从门户导出 Azure Resource Manager 模板或从供应商处获取 Resource Manage 模板的副本，然后使用 Azure PowerShell 和 Azure CLI 部署模板。  请参阅 [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
@@ -46,14 +44,14 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中单击“HDInsight 群集”  。  如果未看到，请单击“浏览”，然后单击“HDInsight 群集”。
 3. 单击某个 HDInsight 群集。  如果没有群集，必须先创建一个。  请参阅 [创建群集](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)。
-4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。 “已安装的应用”  边栏选项卡将列出所有已安装的应用程序。 
+4. 单击“配置”类别下的“应用程序”。 可以看到已安装应用程序的列表（如果有）。
    
     ![hdinsight 应用程序门户菜单](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. 单击边栏选项卡菜单中的“添加”  。 
    
     ![hdinsight 应用程序已安装的应用](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps.png)
    
-    你应该会看到现有 HDInsight 应用程序的列表。
+    可以看到现有 HDInsight 应用程序的列表。
    
     ![hdinsight 应用程序可用应用程序](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
 6. 单击其中一个应用程序、接受法律条款，然后单击“选择” 。
@@ -120,6 +118,6 @@ HTTP 终结点凭据是你针对 HDInsight 群集配置的 HTTP 用户凭据；S
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

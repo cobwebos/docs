@@ -15,19 +15,14 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: e7d3c82e235d691c4ab329be3b168dcccc19774f
-ms.openlocfilehash: 2809b7f5367a333a7aac99db890d0aee3bc6667a
+ms.sourcegitcommit: 9ad2f55c7db53459c17299ba5015783781c7cd63
+ms.openlocfilehash: 5a6b743d69e1716ae3f48ddf0dfcb0f042133f5c
 
 
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
-> [!div class="op_single_selector"]
-> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
-> * [.NET](cloud-services-dotnet-get-started.md)
->
->
 
-本教程演示如何创建一个在 Azure 云服务中运行的简单 Node.js 应用程序。 云服务是 Azure 中可缩放的云应用程序构建基块。 它们允许进行单独且独立的管理，并允许横向扩展应用程序的前端和后端组件。  云服务为可靠托管每个角色提供强大的专用虚拟机。
+本教程演示如何创建在 Azure 云服务中运行的简单 Node.js 应用程序。 云服务是 Azure 中可缩放的云应用程序构建基块。 它们允许进行单独且独立的管理，并允许横向扩展应用程序的前端和后端组件。  云服务为可靠托管每个角色提供强大的专用虚拟机。
 
 有关云服务以及如何将它们与 Azure 网站和虚拟机进行比较的更多信息，请参阅 [Azure 网站、云服务和虚拟机的比较]。
 
@@ -178,8 +173,8 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 [Azure 网站、云服务和虚拟机的比较]: ../app-service-web/choose-web-site-cloud-service-vm.md
 [使用轻型 Web 应用]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
 [Azure PowerShell]: ../powershell-install-configure.md
-[用于 .NET 2.7 的 Azure SDK]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[连接 PowerShell]: ../powershell-install-configure.md#step-3-connect
+[Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
+[将 PowerShell 连接]: ../powershell-install-configure.md#step-3-connect
 [nodejs.org]: http://nodejs.org/
 [创建 Azure 托管服务概述]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js 开发人员中心]: https://azure.microsoft.com/develop/nodejs/
@@ -196,6 +191,6 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

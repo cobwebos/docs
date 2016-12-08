@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 07/27/2016
+ms.date: 11/17/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6a91c56d774ea81e175fa170e09b39548c6ae4d2
+ms.sourcegitcommit: 088d3d55a437165607e73ac2d6a3abe27e9b2639
+ms.openlocfilehash: 755fafcbc01e1da89d7ef3fa99b92da60c95bf8c
 
 
 ---
@@ -65,7 +65,7 @@ Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选�
 * **群集管理器** - 设置、发布和管理计算资源（或计算节点）。 群集管理器可以自动在计算节点上安装操作系统映像和应用程序，按需缩放计算资源，以及监视节点的性能。
 * **作业计划程序** - 指定应用程序需要的资源（例如处理器或内存）及其运行时的条件。 作业计划程序维护作业队列，并根据分配的优先级或其他特征向这些作业分配资源。
 
-为基于 Windows 的群集和基于 Linux 的群集提供的群集工具与作业计划工具都可以顺利迁移到 Azure。 例如， [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)（Microsoft 推出的免费计算群集解决方案，适用于 Windows 和 Linux HPC 工作负荷）提供多种可在 Azure 中运行的选项。 还可以构建 Linux 群集，以便运行 Torque 和 SLURM 等开源工具。 也可以在 Azure 中部署商用网格解决方案，例如 [TIBCO DataSynapse GridServer](http://www.tibco.com/company/news/releases/2016/tibco-to-accelerate-cloud-adoption-of-banking-and-capital-markets-customers-via-microsoft-collaboration)、[IBM Platform Symphony](http://www-01.ibm.com/support/docview.wss?uid=isg3T1023592) 和 [Univa Grid Engine](http://www.univa.com/products/grid-engine)。
+为基于 Windows 的群集和基于 Linux 的群集提供的群集工具与作业计划工具都可以顺利迁移到 Azure。 例如， [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029)（Microsoft 推出的免费计算群集解决方案，适用于 Windows 和 Linux HPC 工作负荷）提供多种可在 Azure 中运行的选项。 还可以构建 Linux 群集，以便运行 Torque 和 SLURM 等开源工具。 也可以在 Azure 中部署商用网格解决方案，例如 [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/)、[IBM Spectrum Symphony and Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/) 和 [Univa Grid Engine](http://www.univa.com/products/grid-engine)。
 
 如以下部分所示，你还可以利用 Azure 服务来管理计算资源和计划作业，不需要使用传统群集管理工具（也可以在使用传统群集管理工具的基础上进行该操作）。
 
@@ -87,10 +87,10 @@ Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选�
 > 
 
 ### <a name="compute-services"></a>计算服务
-Azure 计算服务是大型计算解决方案的核心，不同的计算服务适用于不同的方案。 在基本级别中，这些服务为使用 Windows Server Hyper-V 技术，由 Azure 提供的基于虚拟机的计算实例上运行的应用程序提供不同模式。 这些实例可以运行标准的和自定义的 Linux 和 Windows 操作系统与工具。 Azure 允许选择 [实例大小](../virtual-machines/virtual-machines-windows-sizes.md) ，可对 CPU 核心、内存、磁盘容量和其他特征进行不同配置。 可以根据需要将实例扩展到数千个核心，在需要较少的资源时减少实例。
+Azure 计算服务是大型计算解决方案的核心，不同的计算服务适用于不同的方案。 在基本级别中，这些服务为使用 Windows Server Hyper-V 技术，由 Azure 提供的基于虚拟机的计算实例上运行的应用程序提供不同模式。 这些实例可以运行标准的和自定义的 Linux 和 Windows 操作系统与工具。 Azure 允许选择 [实例大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ，可对 CPU 核心、内存、磁盘容量和其他特征进行不同配置。 可以根据需要将实例扩展到数千个核心，在需要较少的资源时减少实例。
 
 > [!NOTE]
-> 利用 Azure 计算密集型实例提高 HPC 工作负荷的性能和可缩放性，包括需要低延迟、高吞吐量应用程序网络的并行 MPI 应用程序。 请参阅 [About H-series and compute-intensive A-series VMs](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)（关于 H 系列和计算密集型 A 系列 VM）。  
+> 利用 Azure [计算密集型实例（例如 H 系列）](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)提高 HPC 工作负荷的性能和可伸缩性。 这些实例还支持需要低延迟和高吞吐量应用程序网络的并行 MPI 应用程序。 此外还提供 [N 系列](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/) VM，它使用 NVIDIA GPU 来扩展 Azure 中计算和可视化方案的范围。  
 > 
 > 
 
@@ -124,7 +124,7 @@ Azure 计算服务是大型计算解决方案的核心，不同的计算服务�
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Batch 和 HPC 的技术资源](big-compute-resources.md) ，查找用于生成解决方案的技术指导。
-* 与 Cycle Computing 和 UberCloud 等合作伙伴讨论 Azure 选项。
+* 与 Cycle Computing、Rescale 和 UberCloud 等合作伙伴讨论 Azure 选项。
 * 了解 [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)、[Altair](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/)、[ANSYS](https://azure.microsoft.com/blog/ansys-cfd-and-microsoft-azure-perform-the-best-hpc-scalability-in-the-cloud/) 和 [d3VIEW](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088) 提供的 Azure 大型计算解决方案。
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](https://azure.microsoft.com/blog/tag/hpc/)。
 
@@ -137,6 +137,6 @@ Azure 计算服务是大型计算解决方案的核心，不同的计算服务�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

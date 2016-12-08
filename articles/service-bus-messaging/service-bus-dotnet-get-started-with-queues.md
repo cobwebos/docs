@@ -1,13 +1,13 @@
 ---
 title: "服务总线队列入门 | Microsoft Docs"
 description: "如何编写用于服务总线消息传送的 C# 控制台应用程序"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/23/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
+ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
+ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
 
 
 ---
@@ -177,6 +177,6 @@ ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

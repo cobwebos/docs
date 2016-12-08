@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 658671199cf3454428cc7102566093f7c2b42ae8
+ms.sourcegitcommit: 7d02b9fd741310a39aaadee0358af6c7b5990cf2
+ms.openlocfilehash: dfa7a41c7acd71eca39ac1360b1699bed9309e09
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 658671199cf3454428cc7102566093f7c2b42ae8
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 了解如何使用 Azure 门户来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Azure Data Lake Store 概述](data-lake-store-overview.md)。
@@ -58,8 +59,8 @@ ms.openlocfilehash: 658671199cf3454428cc7102566093f7c2b42ae8
    * **位置**：选择要创建 Data Lake Store 帐户的位置。
    * **加密设置**。 可以选择是否要加密 Data Lake Store 帐户。 如果选择加密，则还可以指定如何管理要用于加密帐户中数据的主加密密钥。
      
-     * （默认）从下拉列表中选择“不启用加密”可以选择不使用加密。
-     * （可选）如果希望 Azure Data Lake Store 管理加密密钥，请选择“使用 Azure Data Lake 管理的密钥”。
+     * （可选）从下拉列表中选择“不启用加密”可以选择不使用加密。
+     * （默认）如果希望 Azure Data Lake Store 管理加密密钥，请选择“使用 Azure Data Lake 管理的密钥”。
        
          ![Data Lake Store 加密](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store encryption")
      * （可选）如果想要使用 Azure 密钥保管库中自己的密钥，请选择“选择 Azure 密钥保管库中的密钥”。 如果使用此选项，则还可以创建密钥保管库帐户和密钥（如果没有）。
@@ -136,6 +137,6 @@ ms.openlocfilehash: 658671199cf3454428cc7102566093f7c2b42ae8
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

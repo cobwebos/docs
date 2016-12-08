@@ -1,13 +1,13 @@
 ---
 title: "通过 NET 使用服务总线主题 | Microsoft Docs"
 description: "了解如何在 Azure 中通过 .NET 使用服务总线主题和订阅。 代码示例是针对 .NET 应用程序编写的。"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 31d0bc29-6524-4b1b-9c7f-aa15d5a9d3b4
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b90d2b49807b39bb7a71315877a8e84550efc9cc
+ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
+ms.openlocfilehash: 71d0049c831b9bbcdef548bc129d6e15256a25b4
 
 
 ---
@@ -51,7 +51,7 @@ ms.openlocfilehash: b90d2b49807b39bb7a71315877a8e84550efc9cc
 在上述两种情况下，你都可以使用 `CloudConfigurationManager.GetSetting` 方法检索连接字符串，本文稍后部分将对此进行介绍。
 
 ### <a name="configure-your-connection-string"></a>配置连接字符串
-利用该服务配置机制，你可以从 [Azure 门户][Azure portal] 动态更改配置设置，而无需重新部署应用程序。 例如，向服务定义 (**.csdef**) 文件中添加 `Setting` 标签，如以下示例所示。
+利用该服务配置机制，你可以从 [Azure 门户][Azure 门户] 动态更改配置设置，而无需重新部署应用程序。 例如，向服务定义 (**.csdef**) 文件中添加 `Setting` 标签，如以下示例所示。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -94,7 +94,7 @@ ms.openlocfilehash: b90d2b49807b39bb7a71315877a8e84550efc9cc
 </configuration>
 ```
 
-使用从 [Azure 门户][Azure portal]检索到的 SAS 名称和密钥值，如前面所述。
+使用从 [Azure 门户][Azure 门户]检索到的 SAS 名称和密钥值，如前面所述。
 
 ## <a name="create-a-topic"></a>创建主题
 可以通过 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类为服务总线主题和订阅执行管理操作。 此类提供了创建、枚举和删除主题的方法。
@@ -307,11 +307,11 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 ## <a name="next-steps"></a>后续步骤
 现在，你已了解有关服务总线主题和订阅的基础知识，单击下面的链接可了解更多信息。
 
-* [队列、主题和订阅][Queues, topics, and subscriptions]。
-* [主题筛选器示例][Topic filters sample]
+* [队列、主题和订阅][队列、主题和订阅]。
+* [主题筛选器示例][主题筛选器示例]
 * [SqlFilter][SqlFilter] 的 API 参考。
-* 构建向服务总线队列发送消息以及从中接收消息的工作应用程序：[服务总线中转消息传送 .NET 教程][Service Bus brokered messaging .NET tutorial]。
-* 服务总线示例：从 [Azure 示例][Azure samples]下载，或参阅[概述](service-bus-samples.md)。
+* 构建向服务总线队列发送消息以及从中接收消息的工作应用程序：[服务总线中转消息传送 .NET 教程][服务总线中转消息传送 .NET 教程]。
+* 服务总线示例：从 [Azure 示例][Azure 示例]下载，或参阅[概述](service-bus-samples.md)。
 
 [Azure 门户]: https://portal.azure.com
 
@@ -326,6 +326,6 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

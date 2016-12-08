@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
+ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
+ms.openlocfilehash: 57af74321c453733daadc1b295dd3df95d0fd052
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 本文介绍如何使用 WebHDFS REST API 和 Data Lake Store REST API 对 Azure Data Lake Store 执行帐户管理和文件系统操作。 Azure Data Lake Store 公开自身的 REST API 用于帐户管理操作。 但是，由于 Data Lake Store 与 HDFS 和 Hadoop 生态系统兼容，因此支持使用 WebHDFS REST API 执行文件系统操作。
@@ -47,7 +48,7 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>如何使用 Azure Active Directory 进行身份验证？
 可以通过两种方法使用 Azure Active Directory 进行身份验证。
 
-### <a name="enduser-authentication-interactive"></a>最终用户身份验证（交互式）
+### <a name="end-user-authentication-interactive"></a>最终用户身份验证（交互式）
 在此方案中，应用程序提示用户登录，所有操作在用户的上下文中执行。 运行以下步骤进行交互式身份验证。
 
 1. 通过应用程序将用户重定向至以下 URL：
@@ -88,7 +89,7 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 
 有关交互式用户身份验证的详细信息，请参阅 [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx)（授权代码授予流）。
 
-### <a name="servicetoservice-authentication-noninteractive"></a>服务到服务身份验证（非交互式）
+### <a name="service-to-service-authentication-non-interactive"></a>服务到服务身份验证（非交互式）
 在此方案中，应用程序提供自身的凭据来执行操作。 为此，必须发出 POST 请求，如下所示。 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -263,6 +264,6 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

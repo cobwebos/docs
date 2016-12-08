@@ -1,13 +1,13 @@
 ---
 title: "使用 Azure 门户创建中继命名空间 | Microsoft Docs"
 description: "需要命名空间才能开始使用 Azure 中继。 下面介绍了如何使用 Azure 门户创建一个。"
-services: service-bus
+services: service-bus-relay
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: 78ab6753-877a-4426-92ec-a81675d62a57
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8a8ee252ee7ebc1f35a05eef5135ca5fee5ad0a
+ms.sourcegitcommit: 8ba8baa1b6500b3300e0bfc1c6b9f00f214f0179
+ms.openlocfilehash: e51dc77e0a0fc3c0a2cc4050d7b896e177a86cc0
 
 
 ---
@@ -39,6 +39,6 @@ ms.openlocfilehash: c8a8ee252ee7ebc1f35a05eef5135ca5fee5ad0a
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/26/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d5b24b28f82c53b880e025dc43169aaad49e8434
+ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
+ms.openlocfilehash: fd5ca2dfb12b7527f49d32d9642a91df9e590b14
 
 
 ---
@@ -68,7 +68,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
    > 你的存储帐户名称在 Azure 中必须是唯一的。 Azure 门户将指出你选择的存储帐户名称是否已被使用。
    > 
    > 
-4. 指定要使用的部署模型：**Resource Manager** 或**经典**。  建议使用“Resource Manager”部署模型。 有关详细信息，请参阅[了解 Resource Manager 部署和经典部署](../resource-manager-deployment-model.md)。
+4. 指定要使用的部署模型：**Resource Manager** 或**经典**。  建议使用“Resource Manager”部署模型。 有关详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
    
    > [!NOTE]
    > 仅可使用 Resource Manager 部署模型来创建 Blob 存储帐户。
@@ -162,6 +162,6 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

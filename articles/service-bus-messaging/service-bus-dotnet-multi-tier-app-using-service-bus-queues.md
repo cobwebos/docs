@@ -1,13 +1,13 @@
 ---
 title: ".NET 多层应用程序 | Microsoft Docs"
 description: "本 .NET 教程可帮助你在 Azure 中开发使用服务总线队列在各层之间进行通信的多层应用。"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
+ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
+ms.openlocfilehash: c90454109c2fcfe69d512b84d411e4fd4e810f65
 
 
 ---
-# <a name="net-multitier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
+# <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 ## <a name="introduction"></a>介绍
 使用 Visual Studio 和免费的 Azure SDK for .NET，可以轻松针对 Microsoft Azure 进行开发。 本教程将指导你完成创建使用在本地环境中运行的多个 Azure 资源的应用程序的步骤。 这些步骤假设你之前未使用过 Azure。
 
@@ -39,7 +39,7 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 
 ![][0]
 
-## <a name="scenario-overview-interrole-communication"></a>方案概述：角色间通信
+## <a name="scenario-overview-inter-role-communication"></a>方案概述：角色间通信
 若要提交处理命令，以 Web 角色运行的前端 UI 组件必须与以辅助角色运行的中间层逻辑进行交互。 此示例使用服务总线中转消息传送在各层之间进行通信。
 
 在 Web 层和中间层之间使用中转消息传送将分离这两个组件。 与直接消息传送（即 TCP 或 HTTP）不同，Web 层不会直接连接到中间层，而是将工作单元作为消息推送到服务总线，服务总线将以可靠方式保留这些工作单元，直到中间层准备好使用和处理它们。
@@ -61,7 +61,7 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 在开始开发 Azure 应用程序之前，需要获取工具并设置开发环境。
 
-1. 在[获取工具和 SDK][Get Tools and SDK] 安装 Azure SDK for .NET。
+1. 在[获取工具和 SDK][获取工具和 SDK] 安装 Azure SDK for .NET。
 2. 单击你正在使用的 Visual Studio 版本的“安装 SDK”  。 本教程中的步骤使用 Visual Studio 2015。
 3. 当提示你是要运行还是保存安装程序时，单击“运行” 。
 4. 在“Web 平台安装程序”中，单击“安装”，然后继续安装。
@@ -410,6 +410,6 @@ ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

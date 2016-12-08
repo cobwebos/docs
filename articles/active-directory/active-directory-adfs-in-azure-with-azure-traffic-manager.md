@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
+ms.sourcegitcommit: 3170abb4f9bd7f7996b1c0dd2e20f648ea1b9fe5
+ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
 
 
 ---
-# <a name="high-availability-crossgeographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS
+# <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>使用 Azure 流量管理器在 Azure 中部署高可用性跨地理区域 AD FS
 [AD FS deployment in Azure](active-directory-aadconnect-azure-adfs.md) （Azure 中的 AD FS 部署）提供了有关如何在 Azure 中为组织部署简单 AD FS 基础结构的分步指导。 本文提供后续步骤，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在 Azure 中创建跨地理区域的 AD FS 部署。 Azure 流量管理器使用各种可用的路由方法来应对基础结构的不同需求，有助于为组织创建分布各地的高可用性和高性能 AD FS 基础结构。
 
 高可用性的跨地理区域 AD FS 基础结构能够：
@@ -76,7 +76,7 @@ ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
    
    **目标资源类型：** 选择公共 IP 地址作为此属性的值。 
    
-   **目标资源：** 此选项用于选择订阅下面可用的不同 DNS 标签。 请选择 DNS 标签。
+   **目标资源：** 此选项用于选择订阅下面可用的不同 DNS 标签。 选择与你在配置的终结点对应的 DNS 标签。
    
    针对要让 Azure 流量管理器将流量路由到的每个地理区域添加终结点。
    有关如何在流量管理器中添加/配置终结点的详细信息和详细步骤，请参阅 [Add, disable, enable or delete endpoints](../traffic-manager/traffic-manager-endpoints.md)
@@ -94,13 +94,13 @@ ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
    
     <code>fs.fabidentity.com IN CNAME mysts.trafficmanager.net</code>
 
-## <a name="test-the-routing-and-ad-fs-signin"></a>测试路由和 AD FS 登录
+## <a name="test-the-routing-and-ad-fs-sign-in"></a>测试路由和 AD FS 登录
 ### <a name="routing-test"></a>路由测试
 一个很简单的路由测试方法就是尝试从每个地理区域中的计算机 ping 联合身份验证服务的 DNS 名称。 根据选择的路由方法，实际 ping 到的终结点将反映在 ping 显示结果中。 例如，如果选择了性能路由，则会访问最靠近客户端区域的终结点。 下面是两个来自两个不同区域客户端计算机的 ping 快照，一个位于东亚区域，一个位于美国西部。 
 
 ![路由测试](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/pingtest.png)
 
-### <a name="ad-fs-signin-test"></a>AD FS 登录测试
+### <a name="ad-fs-sign-in-test"></a>AD FS 登录测试
 测试 AD FS 的最简单方法是使用 IdpInitiatedSignon.aspx 页。 若要执行此操作，必须在 AD FS 属性中启用 IdpInitiatedSignOn。 请遵循以下步骤来验证你的 AD FS 设置
 
 1. 使用 PowerShell 在 AD FS 服务器上运行以下 cmdlet，以将它设置为启用。 
@@ -126,6 +126,6 @@ ms.openlocfilehash: 74f34f72f434c201c48dfcb5fdc72766e6be481a
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

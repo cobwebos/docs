@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/15/2016
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: 9eddde0df61ac7dde9b24f973e7eec786cd48f24
-ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
+ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
+ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
 ![VM 备份过程的高级视图](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
 > [!NOTE]
-> Azure 有两种用于创建和使用资源的部署模型： [Resource Manager 部署模型和经典部署模型](../resource-manager-deployment-model.md)。 本教程适用于可在 Azure 经典门户中创建的 VM。 Azure 备份服务支持基于资源管理器的 VM。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅 [初步了解：使用恢复服务保管库保护 VM](backup-azure-vms-first-look-arm.md)。
+> Azure 有两种用于创建和使用资源的部署模型： [Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本教程适用于可在 Azure 经典门户中创建的 VM。 Azure 备份服务支持基于资源管理器的 VM。 有关将 VM 备份到恢复服务保管库的详细信息，请参阅 [初步了解：使用恢复服务保管库保护 VM](backup-azure-vms-first-look-arm.md)。
 >
 >
 
@@ -211,6 +211,6 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

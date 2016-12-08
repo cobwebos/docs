@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/05/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2dbf639abfa505eb329769bcc346efb5f1db443e
+ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
+ms.openlocfilehash: 00b2e90901d763d218d1118f1d7ef2bf617a2d2f
 
 
 ---
@@ -30,15 +30,15 @@ Azure IoT 中心是一项 Azure 服务，可在一个应用程序后端和数百
 * 从设备接收文件上传。
 * 将云到设备命令发送到特定设备。
 
-你可以使用 IoT 中心来实现自己的解决方案后端。 此外，IoT 中心还包含设备标识注册表，可供用来设置设备、其安全凭据和其连接到中心的权限。 若要了解有关 IoT 中心的详细信息，请参阅 [IoT 中心是什么？][lnk-iot-hub]。
+你可以使用 IoT 中心来实现自己的解决方案后端。 此外，IoT 中心还包含标识注册表，可供用来预配设备、其安全凭据及其连接到 IoT 中心的权限。 若要了解有关 IoT 中心的详细信息，请参阅 [IoT 中心是什么？][lnk-iot-hub]。
 
 若要了解 Azure IoT 中心如何实现标准的设备管理，以便远程管理、配置和更新设备，请参阅 [IoT 中心设备管理概述][lnk-device-management]。
 
-你可以使用 IoT 设备 SDK 在各种设备硬件平台和操作系统上实现客户端应用程序。 IoT 设备 SDK 包含库，可协助将遥测数据发送到 IoT 中心，并接收云到设备的命令。 使用 SDK 时，要与 IoT 中心通信，有多个网络协议可选。 若要了解详细信息，请参阅[设备 SDK 的相关信息][lnk-device-sdks]。
+可以使用 Azure IoT 设备 SDK 在各种设备硬件平台和操作系统上实现客户端应用程序。 设备 SDK 包含库，可协助将遥测数据发送到 IoT 中心，并接收云到设备的命令。 使用设备 SDK 时，要与 IoT 中心通信，有多个网络协议可选。 若要了解详细信息，请参阅[设备 SDK 的相关信息][lnk-device-sdks]。
 
-若要开始编写某些代码并运行示例，请参阅 [IoT 中心入门][lnk-getstarted]教程。
+若要开始编写一些代码并运行一些示例，请参阅 [IoT 中心入门][lnk-getstarted]教程。
 
-你也可能对 [Azure IoT 套件][lnk-iot-suite]感兴趣，这是一套预配置的解决方案。 IoT 套件可让你快速入门和扩展 IoT 项目，以应对常见的 IoT 案例，例如远程监视、资产管理和预测性维护。
+你也可能会对 [Azure IoT 套件][lnk-iot-suite]有兴趣，这是一套预配置的解决方案。 IoT 套件可让你快速入门和扩展 IoT 项目，以应对常见的 IoT 案例，例如远程监视、资产管理和预测性维护。
 
 [lnk-getstarted]: iot-hub-csharp-csharp-getstarted.md
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
@@ -49,6 +49,6 @@ Azure IoT 中心是一项 Azure 服务，可在一个应用程序后端和数百
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

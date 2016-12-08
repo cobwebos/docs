@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
+ms.sourcegitcommit: edeee13457c1098eb1b44efaa97e9a84d29e88e7
+ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
 
 
 ---
@@ -114,7 +114,7 @@ ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
     $myVm = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS1_v2"
     ```
    
-    有关虚拟机的可用大小列表，请参阅 [Azure 中的虚拟机大小](virtual-machines-windows-sizes.md) 。
+    有关虚拟机的可用大小列表，请参阅 [Azure 中的虚拟机大小](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 。
 3. 配置 VM 的操作系统设置。 此命令设置 VM 的计算机名称、操作系统类型和帐户凭据。
    
     ```powershell
@@ -128,13 +128,13 @@ ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
         -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
     ```
    
-    如需详细了解如何选择要使用的映像，请参阅[使用 PowerShell 或 CLI 在 Azure 中导航和选择 Windows 虚拟机映像](virtual-machines-windows-cli-ps-findimage.md)。
+    如需详细了解如何选择要使用的映像，请参阅[使用 PowerShell 或 CLI 在 Azure 中导航和选择 Windows 虚拟机映像](virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 5. 将创建的网络接口添加到配置。
    
     ```powershell
     $myVM = Add-AzureRmVMNetworkInterface -VM $myVM -Id $myNIC.Id
     ```
-6. 定义 VM 硬盘的名称和位置。 虚拟硬盘文件存储在容器中。 此命令在已创建存储帐户的名为 **vhds/WindowsVMosDisk.vhd** 的容器中创建该硬盘。
+6. 定义 VM 硬盘的名称和位置。 虚拟硬盘文件存储在容器中。 以下命令在你创建的存储帐户中名为 **vhds/myOsDisk1.vhd** 的容器中创建该磁盘。
    
     ```powershell
     $blobPath = "vhds/myOsDisk1.vhd"
@@ -143,7 +143,7 @@ ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
 7. 将操作系统磁盘信息添加到 VM 配置。 将 **$diskName** 的值替换为操作系统磁盘的名称。 创建变量并将磁盘信息添加到配置。
    
     ```powershell
-    $vm = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
+    $myVM = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
     ```
 8. 最后，创建虚拟机。
    
@@ -153,12 +153,12 @@ ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
 
 ## <a name="next-steps"></a>后续步骤
 * 如果部署出现问题，请查看[使用 Azure 门户对资源组部署进行故障排除](../resource-manager-troubleshoot-deployments-portal.md)
-* 查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](virtual-machines-windows-ps-manage.md)，了解如何管理创建的虚拟机。
-* 参考 [使用 Resource Manager 模板创建 Windows 虚拟机](virtual-machines-windows-ps-template.md)
+* 查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的虚拟机。
+* 参考 [使用 Resource Manager 模板创建 Windows 虚拟机](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

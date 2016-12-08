@@ -15,15 +15,15 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 84d644e07036f511e685b0fd020cdf8c310fd969
+ms.sourcegitcommit: f426cf4b91941f19714c33abc21ef0c777f5b233
+ms.openlocfilehash: 38f3ca24b7fa136bdb4b64b6cae77078b7ea3c97
 
 
 ---
 # <a name="frequently-asked-questions-for-azure-data-lake-store"></a>Azure Data Lake Store 常见问题
 本文提供有关 Azure Data Lake Store 的常见问题。
 
-## <a name="how-do-i-handle-disaster-recovery-and-data-corruption-for-my-azure-data-lake-store-account"></a>如何处理 Azure Data Lake Store 帐户的灾难恢复和数据损坏？
+## <a name="how-can-i-further-protect-my-data-from-region-wide-disasters-or-accidental-deletions"></a>如何进一步保护我的数据免受区域级灾难或意外删除的危害？
 Azure Data Lake Store 帐户中的数据可通过自动化副本，弹性应对区域中的暂时性硬件故障。 这可以确保持久性和高可用性，满足 Azure Data Lake Store SLA。 下面是有关如何进一步保护数据，防范极其少见的全区域服务中断或意外删除行为的一些指导。
 
 ### <a name="disaster-recovery-guidance"></a>灾难恢复指南
@@ -52,6 +52,6 @@ Azure Data Lake Store 帐户中的数据可通过自动化副本，弹性应对�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

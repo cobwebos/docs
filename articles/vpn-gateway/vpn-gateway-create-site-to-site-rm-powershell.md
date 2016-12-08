@@ -16,39 +16,39 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cdc41f9068de3e1ea796e1a3172a99dd185d9f9c
+ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
+ms.openlocfilehash: 1312babe3317f33c204379f3080c62ecb6297e27
 
 
 ---
-# <a name="create-a-vnet-with-a-sitetosite-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点连接的 VNet
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点连接的 VNet
 > [!div class="op_single_selector"]
 > * [资源管理器 - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [经典 - 经典门户](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 本文逐步讲解如何使用 Azure Resource Manager 部署模型创建一个虚拟网络和一个连接到本地网络的站点到站点 VPN 网关连接。 站点到站点连接可以用于跨界和混合配置。
 
-![站点到站点示意图](./media/vpn-gateway-create-site-to-site-rm-powershell/s2srmps.png "site-to-site") 
+![站点到站点示意图](./media/vpn-gateway-create-site-to-site-rm-powershell/s2srmps.png "site-to-site")
 
-### <a name="deployment-models-and-methods-for-sitetosite-connections"></a>用于站点到站点连接的部署模型和方法
+### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>用于站点到站点连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
-下表显示了站点到站点配置当前可用的部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。 
+下表显示了站点到站点配置当前可用的部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。
 
 [!INCLUDE [site-to-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
 #### <a name="additional-configurations"></a>其他配置
-如果你想要将多个 VNet 连接到一起，但又不想创建连接到本地位置的连接，则请参阅 [配置 VNet 到 VNet 连接](vpn-gateway-vnet-vnet-rm-ps.md)。 如果要向已有连接的 VNet 添加站点到站点连接，请参阅[将 S2S 连接添加到已有 VPN 网关连接的 VNet](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
+如果你想要将多个 VNet 连接到一起，但又不想创建连接到本地位置的连接，则请参阅 [配置 VNet 到 VNet 连接](vpn-gateway-vnet-vnet-rm-ps.md)。 如果想要向已具有连接的 VNet 添加站点到站点连接，请参阅[使用现有 VPN 网关连接将 S2S 连接添加到 VNet](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 在开始配置之前，请确认具有以下各项。
 
 * 一台兼容的 VPN 设备和能够对其进行配置的人员。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 如果不熟悉 VPN 设备的配置，或者不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。
 * 一个用于 VPN 设备的面向外部的公共 IP 地址。 此 IP 地址不得位于 NAT 之后。
-* Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 * 最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。
 
 ## <a name="a-namelogina1-connect-to-your-subscription"></a><a name="Login"></a>1.连接到订阅
@@ -60,7 +60,7 @@ ms.openlocfilehash: cdc41f9068de3e1ea796e1a3172a99dd185d9f9c
 
 检查该帐户的订阅。
 
-    Get-AzureRmSubscription 
+    Get-AzureRmSubscription
 
 指定要使用的订阅。
 
@@ -74,7 +74,7 @@ ms.openlocfilehash: cdc41f9068de3e1ea796e1a3172a99dd185d9f9c
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### <a name="to-create-a-virtual-network-and-a-gateway-subnet"></a>若要创建虚拟网络和网关子网
-使用以下示例创建一个虚拟网络和网关子网。 替换为你自己的值。 
+使用以下示例创建一个虚拟网络和网关子网。 替换为你自己的值。
 
 首先，创建一个资源组：
 
@@ -82,7 +82,7 @@ ms.openlocfilehash: cdc41f9068de3e1ea796e1a3172a99dd185d9f9c
 
 接下来，创建您的虚拟网络。 请验证你指定的地址空间不与本地网络的任一个地址空间相重叠。
 
-以下示例创建一个名为 *testvnet* 的虚拟网络和两个子网，其中一个名为 *GatewaySubnet*，另一个名为 *Subnet1*。 特意创建一个名为 *GatewaySubnet*的子网非常重要。 如果您以其他名称为其命名，则您的连接配置将会失败。 
+以下示例创建一个名为 *testvnet* 的虚拟网络和两个子网，其中一个名为 *GatewaySubnet*，另一个名为 *Subnet1*。 特意创建一个名为 *GatewaySubnet*的子网非常重要。 如果您以其他名称为其命名，则您的连接配置将会失败。
 
 设置变量。
 
@@ -107,18 +107,18 @@ ms.openlocfilehash: cdc41f9068de3e1ea796e1a3172a99dd185d9f9c
 
     Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/28 -VirtualNetwork $vnet
 
-设置配置。 
+设置配置。
 
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 ## <a name="3-a-namelocalnetaadd-your-local-network-gateway"></a>3.<a name="localnet"></a>添加本地网关
-在虚拟网络中，局域网网关通常指你的本地位置。 指定该站点的名称以供 Azure 引用，同时指定局域网网关的地址空间前缀。 
+在虚拟网络中，局域网网关通常指你的本地位置。 指定该站点的名称以供 Azure 引用，同时指定局域网网关的地址空间前缀。
 
-Azure 使用指定的 IP 地址前缀来识别要发送到本地位置的流量。 这意味着你必须指定要与局域网网关关联的每个地址前缀。 如果本地网络出现变化，你可以轻松更新这些前缀。 
+Azure 使用指定的 IP 地址前缀来识别要发送到本地位置的流量。 这意味着你必须指定要与局域网网关关联的每个地址前缀。 如果本地网络出现变化，你可以轻松更新这些前缀。
 
 在使用 PowerShell 示例时，请注意下列事项：
 
-* *GatewayIPAddress* 是本地 VPN 设备的 IP 地址。 VPN 设备不能位于 NAT 之后。 
+* *GatewayIPAddress* 是本地 VPN 设备的 IP 地址。 VPN 设备不能位于 NAT 之后。
 * *AddressPrefix* 是本地地址空间。
 
 若要添加具有单个地址前缀的局域网网关：
@@ -148,17 +148,17 @@ Resource Manager 部署模型的 Azure VPN 网关目前使用动态分配方法�
 
     $vnet = Get-AzureRmVirtualNetwork -Name testvnet -ResourceGroupName testrg
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-    $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id 
+    $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 
 ## <a name="a-namecreategatewaya6-create-the-virtual-network-gateway"></a><a name="CreateGateway"></a>6.创建虚拟网络网关
-本步骤创建虚拟网络网关。 创建网关可能需要很长时间才能完成。 通常需要 45 分钟或更长的时间。 
+本步骤创建虚拟网络网关。 创建网关可能需要很长时间才能完成。 通常需要 45 分钟或更长的时间。
 
 使用以下值：
 
-* 站点到站点配置的 *-GatewayType* 为 *Vpn*。 网关类型永远是你要实现的配置的特定类型。 例如，其他网关配置可能需要 -GatewayType ExpressRoute。 
-* *-VpnType* 可以是 *RouteBased*（在某些文档中称为动态网关）或 *PolicyBased*（在某些文档中称为静态网关）。 有关 VPN 网关类型的详细信息，请参阅 [关于 VPN 网关](vpn-gateway-about-vpngateways.md#vpntype)。
+* 站点到站点配置的 *-GatewayType* 为 *Vpn*。 网关类型永远是你要实现的配置的特定类型。 例如，其他网关配置可能需要 -GatewayType ExpressRoute。
+* *-VpnType* 可以是 *RouteBased*（在某些文档中称为动态网关）或 *PolicyBased*（在某些文档中称为静态网关）。 有关 VPN 网关类型的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
 * *-GatewaySku* 可以是 *Basic*、*Standard* 或 *HighPerformance*。     
-  
+
         New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
         -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
         -VpnType RouteBased -GatewaySku Standard
@@ -171,7 +171,7 @@ Resource Manager 部署模型的 Azure VPN 网关目前使用动态分配方法�
     Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName testrg
 
 ## <a name="a-namecreateconnectiona8-create-the-vpn-connection"></a><a name="CreateConnection"></a>8.创建 VPN 连接
-接下来，将在虚拟网络网关和 VPN 设备之间创建站点到站点 VPN 连接。 请务必替换为你自己的值。 共享密钥必须与你用于 VPN 设备配置的值匹配。 请注意，站点到站点的 `-ConnectionType` 为 *IPsec*。 
+接下来，将在虚拟网络网关和 VPN 设备之间创建站点到站点 VPN 连接。 请务必替换为你自己的值。 共享密钥必须与你用于 VPN 设备配置的值匹配。 请注意，站点到站点的 `-ConnectionType` 为 *IPsec*。
 
 设置变量。
 
@@ -184,7 +184,7 @@ Resource Manager 部署模型的 Azure VPN 网关目前使用动态分配方法�
     -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
     -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
-在一小段时间后，将建立该连接。 
+在一小段时间后，将建立该连接。
 
 ## <a name="a-nametoverifyato-verify-a-vpn-connection"></a><a name="toverify"></a>验证 VPN 连接
 VPN 连接有几种不同的验证方式。
@@ -192,7 +192,7 @@ VPN 连接有几种不同的验证方式。
 [!INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
 ## <a name="a-namemodifyato-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>修改本地网关的 IP 地址前缀
-如果需要更改局域网网关的前缀，请使用以下说明。 提供了两套说明。 要选择哪套说明取决于您是否已创建了网关连接。 
+如果需要更改局域网网关的前缀，请使用以下说明。 提供了两套说明。 要选择哪套说明取决于您是否已创建了网关连接。
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
@@ -200,12 +200,11 @@ VPN 连接有几种不同的验证方式。
 [!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 你可以将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 以获取相关步骤。
+*  连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 * 有关 BGP 的信息，请参阅 [BGP 概述](vpn-gateway-bgp-overview.md)和[如何配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

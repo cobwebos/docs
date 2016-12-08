@@ -7,7 +7,7 @@ author: rgardler
 manager: timlt
 editor: 
 tags: acs, azure-container-service
-keywords: "Docker, 容器, 微服务, Mesos, Azure"
+keywords: "Docker, 容器, 微服务, Mesos, Azure, dcos, swarm, kubernetes, azure 容器服务, acs"
 ms.assetid: 696a736f-9299-4613-88c6-7177089cfc23
 ms.service: container-service
 ms.devlang: na
@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c8c06906a5f99890295ff2b2433ff6f7e02dece5
+ms.sourcegitcommit: a7d957fd4be4c823077b1220dfb8ed91070a0e97
+ms.openlocfilehash: d056b9489eba1f97e8fb87f231b03d104c4cab66
 
 
 ---
 # <a name="deploy-an-azure-container-service-cluster"></a>部署 Azure 容器服务群集
-在 Azure 容器服务中，可以快速部署流行的开源容器群集和协调解决方案。 使用 Azure 容器服务，可以通过 Azure Resource Manager 模板或 Azure 门户部署 DC/OS 和 Docker Swarm 群集。 使用 Azure 虚拟机缩放集部署这些群集，使其可以利用 Azure 网络功能和存储产品。 若要访问 Azure 容器服务，需有一个 Azure 订阅。 如果没有订阅，可以注册 [免费试用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)。
+在 Azure 容器服务中，可以快速部署流行的开源容器群集和协调解决方案。 使用 Azure 容器服务，可以通过 Azure Resource Manager 模板或 Azure 门户部署 DC/OS、Kubernetes 和 Docker Swarm 群集。 使用 Azure 虚拟机缩放集部署这些群集，使其可以利用 Azure 网络功能和存储产品。 若要访问 Azure 容器服务，需有一个 Azure 订阅。 如果没有订阅，可以注册 [免费试用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)。
 
 本文档逐步讲解如何使用 [Azure 门户](#creating-a-service-using-the-azure-portal)、[Azure 命令行接口 (CLI)](#creating-a-service-using-the-azure-cli) 和 [Azure PowerShell 模块](#creating-a-service-using-powershell)部署 Azure 容器服务群集。  
 
@@ -52,15 +52,21 @@ ms.openlocfilehash: c8c06906a5f99890295ff2b2433ff6f7e02dece5
 
 * **DC/OS**：部署 DC/OS 群集。
 * **Swarm**：部署 Docker Swarm 群集。
+* **Kubernetes**：部署 Kubernetes 群集。
 
 准备好继续下一步时，请单击“确定”。
 
-![创建部署 4](media/acs-portal4.png)  <br />
+![创建部署 4](media/acs-portal4-new.png)  <br />
+
+如果在下拉列表中选择了“Kubernetes”，将需要输入服务主体客户端 ID 和服务主体客户端密码。
+若要了解有关如何创建服务主体的详细信息，请访问[此](https://github.com/Azure/acs-engine/blob/master/docs/serviceprincipal.md)页 
+
+![创建部署 4.5](media/acs-portal10.PNG)  <br />
 
 输入以下信息：
 
-* **主机计数**：群集中主机的数目。
-* **代理计数**：对于 Docker Swarm，这是代理缩放集中的初始代理数目。 对于 DC/OS，这是专用缩放集中的初始代理数目。 此外，将创建包含预先确定代理数目的公共缩放集。 此公共缩放集中的代理数目由群集中创建的主机数目确定：一个主机需要一个公共代理，三或五个主机需要两个公共代理。
+* **主机计数**：群集中主机的数目。 如果选择了“Kubernetes”，则主机数将设置为默认值 1
+* **代理计数**：对于 Docker Swarm 和 Kubernetes，这是代理规模集中的初始代理数目。 对于 DC/OS，这是专用缩放集中的初始代理数目。 此外，将创建包含预先确定代理数目的公共缩放集。 此公共缩放集中的代理数目由群集中创建的主机数目确定：一个主机需要一个公共代理，三或五个主机需要两个公共代理。
 * **代理虚拟机大小**：代理虚拟机的大小。
 * **DNS 前缀**：全球唯一的名称，用作服务完全限定域名关键部分的前缀。
 
@@ -85,10 +91,11 @@ ms.openlocfilehash: c8c06906a5f99890295ff2b2433ff6f7e02dece5
 ## <a name="create-a-service-by-using-the-azure-cli"></a>使用 Azure CLI 创建服务
 若要使用命令行创建 Azure 容器服务的实例，需有一个 Azure 订阅。 如果没有订阅，可以注册 [免费试用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)。 还需要[安装](../xplat-cli-install.md)并[配置](../xplat-cli-connect.md) Azure CLI。
 
-若要部署 DC/OS 或 Docker Swarm 群集，请从 GitHub 中选择以下模板之一。 请注意，除了默认协调器选项有所不同外，以下两个模板完全相同。
+若要部署 DC/OS、Docker Swarm 或 Kubernetes 群集，请从 GitHub 中选择以下模板之一。 
 
 * [DC/OS 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [Kubernetes 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
 接下来，请确保 Azure CLI 已连接到 Azure 订阅。 可以使用以下命令来执行此操作：
 
@@ -140,10 +147,11 @@ azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMP
 ## <a name="create-a-service-by-using-powershell"></a>使用 PowerShell 创建服务
 也可以使用 PowerShell 部署 Azure 容器服务群集。 本文档基于 1.0 版 [Azure PowerShell 模块](https://azure.microsoft.com/blog/azps-1-0/)。
 
-若要部署 DC/OS 或 Docker Swarm 群集，请选择以下模板之一。 请注意，除了默认协调器选项有所不同外，以下两个模板完全相同。
+若要部署 DC/OS、Docker Swarm 或 Kubernetes 群集，请选择以下模板之一。 请注意，除了默认协调器选项有所不同外，以下两个模板完全相同。
 
 * [DC/OS 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
 * [Swarm 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [Kubernetes 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
 在 Azure 订阅中创建群集之前，请确认 PowerShell 会话已登录到 Azure。 为此，可以使用 `Get-AzureRMSubscription` 命令：
 
@@ -184,10 +192,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 * [Connect to an Azure Container Service cluster](container-service-connect.md)
 * [Work with Azure Container Service and DC/OS](container-service-mesos-marathon-rest.md)
 * [Work with Azure Container Service and Docker Swarm](container-service-docker-swarm.md)
+* [Work with Azure Container Service and Kubernetes](container-service-kubernetes-walkthrough.md)（使用 Azure 容器服务和 Kubernetes）
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

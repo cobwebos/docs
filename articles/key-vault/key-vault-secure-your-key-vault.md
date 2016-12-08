@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/07/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d58210a155666642cec8c180249c4e43b69fb9c
+ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
+ms.openlocfilehash: 5557dbef45d8599010a909635eebf399a5bcd2c8
 
 
 ---
@@ -71,7 +71,7 @@ Azure 密钥保管库是一种可通过 Azure Resource Manager 部署模型使�
 ## <a name="management-plane-access-control"></a>管理平面访问控制
 管理平面包含影响密钥保管库本身的操作。 例如，可以创建或删除密钥保管库。 可在订阅中获取保管库的列表。 可以检索密钥保管库属性（如 SKU、标记），并设置密钥保管库访问策略，该策略可控制可以访问密钥保管库中的密钥和机密的用户和应用程序。 管理平面访问控制使用 RBAC。 请参阅上一部分的表中可通过管理平面执行的密钥保管库操作的完整列表。 
 
-### <a name="rolebased-access-control-rbac"></a>基于角色的访问控制 (RBAC)
+### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 每个 Azure 订阅都有一个 Azure Active Directory。 可以向来自该目录的用户、组和应用程序授予访问权限，以便在使用 Azure Resource Manager 部署模型的 Azure 订阅中管理资源。 此类型的访问控制称为基于角色的访问控制 (RBAC)。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../xplat-cli-install.md)、[PowerShell](../powershell-install-configure.md) 或 [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
 使用 Azure Resource Manager 模型可以在资源组中创建密钥保管库，并使用 Azure Active Directory 来控制对该密钥保管库的管理平面的访问。 例如，可以向用户或组授予管理特定资源组中的密钥保管库的功能。
@@ -210,7 +210,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
 * [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)
   
   本文详细说明了 RBAC 中所有可用的内置角色。
-* [了解 Resource Manager 部署和经典部署](../resource-manager-deployment-model.md)
+* [了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)
   
   此文介绍了 Resource Manager 部署和经典部署模型，并说明使用 Resource Manager 和资源组的优点
 * [使用 Azure PowerShell 管理基于角色的访问控制](../active-directory/role-based-access-control-manage-access-powershell.md)
@@ -253,6 +253,6 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

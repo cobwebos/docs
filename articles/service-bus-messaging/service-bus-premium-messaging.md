@@ -1,22 +1,22 @@
 ---
 title: "服务总线高级和标准消息传送定价层概述 | Microsoft Docs"
 description: "服务总线高级和标准消息传送"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: djrosanova
 manager: timlt
 editor: 
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/02/2016
-ms.author: darosa;sethm
+ms.author: darosa,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5f4fccdafd9b47794bf625ac51dc650b6e8752f1
+ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
+ms.openlocfilehash: f75dcb6fd74ca2db7944ac76363801f5ee96650d
 
 
 ---
@@ -59,6 +59,6 @@ ms.openlocfilehash: 5f4fccdafd9b47794bf625ac51dc650b6e8752f1
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

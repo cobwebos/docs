@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 23d68a523fa9a79d2b5154eef04a5f6e706bdeb2
+ms.sourcegitcommit: 1c603d37735bbbfdfaaf4a191e2ad1ce6ff5b2b7
+ms.openlocfilehash: 67f3e923680a9a2f399c0839d2ec11ef4615da00
 
 
 ---
@@ -37,12 +38,12 @@ SQL 数据库采用基本、标准和高级服务层。 每个服务层提供[�
 
 [弹性池](sql-database-elastic-pool.md) 可解决此问题。 概念很简单。 你可以向池分配性能，并且仅需为池的总体性能付费，而无需为单一数据库的性能付费。 无需调整数据库的性能。 池中的数据库称为 *弹性数据库*，可自动增大和减小来满足需求。 弹性数据库会使用该池，但不会超出其限制，因此即使数据库的使用情况仍不可预测，你的成本也仍是可预测的。 此外，你可以 [向池添加和删除数据库](sql-database-elastic-pool-manage-portal.md)，将应用从少量数据库扩展到数千个，而一切费用不会超出由你控制的预算范围。 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 
-无论使用单一数据库还是弹性数据库，你都可以随时更改选择。 可将单一数据库与弹性数据库池混合使用，并更改单一数据库和池的服务层，以便进行创新设计。 再者，凭借 Azure 的功能和作用范围，你可以将 Azure 服务与 SQL 数据库搭配使用以满足独特的现代应用程序设计需求，提高成本和资源效益，发掘新的商机。
+无论使用单一数据库还是弹性数据库，你都可以随时更改选择。 可将单一数据库与弹性数据库池混合使用，并快速而轻松地更改单一数据库和池的服务层来适应你的情况。 而且，凭借 Azure 的功能和作用范围，你可以将其他 Azure 服务与 SQL 数据库搭配使用以满足独特的应用程序设计需求，提高成本和资源效益，发掘新的商机。
 
-但是，要如何比较数据库和数据库池的相对性能？ 当调高和调低性能时，如何知道该在何处停止？ 答案就是使用单一数据库的数据库事务单位 (DTU)，以及弹性数据库和数据库池的弹性 DTU (eDTU)。 有关详细信息，请参阅 [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md) 。
+但是，要如何比较数据库和数据库池的相对性能？ 当调高和调低性能时，如何知道该在何处停止？ 答案是依靠内置的性能监视和警报工具，并配合使用基于数据库事务单位 (DTU)（对于单一数据库）和弹性 DTU (eDTU)（对于弹性数据库和数据库池）的性能评级，这使得你可以快速评估根据你的当前需求或项目性能需求向上或向下缩放会带来的影响。 有关详细信息，请参阅 [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md) 。
 
 ## <a name="keep-your-app-and-business-running"></a>使应用和业务持续运转
-Azure 行业领先的 99.99% 可用性服务级别协议 [(SLA)](http://azure.microsoft.com/support/legal/sla/)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。 使用每个 SQL 数据库时，你可以使用内置的数据保护、容错功能，以及可能需要另外设计、购买、构建和管理的数据保护功能。 即便如此，根据业务要求，你还可以请求额外级别的保护，以确保在发生灾难、错误或其他事件时，应用和业务可以快速恢复。 使用 SQL 数据库时，每个服务层都会提供不同的功能菜单，你可以利用这些菜单立即启动并运行，然后保持该方式。 你可以使用时间点还原将数据库还原到以前的状态，最长可还原到 35 天前。 此外，如果托管数据库的数据中心发生服务中断，你可以故障转移到其他区域中的数据库副本。 或者，你可以使用副本进行升级，或将其重新放置在不同的区域。
+Azure 行业领先的 99.99% 可用性服务级别协议 [(SLA)](http://azure.microsoft.com/support/legal/sla/)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。 对于每个 SQL 数据库，你都可以使用内置的安全性、容错和数据保护功能，而使用其他产品时可能需要另外购买或设计、构建并管理这些功能。 而且，根据业务需求，你还可以请求额外级别的保护，以确保在发生灾难、错误或其他中断时，应用和业务可以快速恢复。 对于 SQL 数据库，每个服务层都提供了一组全面的业务连续性功能和选项，可以使用这些功能和选项快速进入工作状态并保持运行。 你可以使用时间点还原将数据库还原到以前的状态，最长可还原到 35 天前。 此外，如果托管数据库的数据中心发生服务中断，你可以从最新备份的地域冗余拷贝还原数据库，或者故障转移到其他区域中的数据库副本。 还可以使用副本进行升级，或者转移到不同的区域。
 
 ![SQL 数据库异地复制](./media/sql-database-technical-overview/azure_sqldb_map.png)
 
@@ -59,11 +60,9 @@ SQL Server 的数据安全性一贯可靠，SQL 数据库也包含类似的功�
 * 从 [创建第一个数据库](sql-database-get-started.md)开始。
 * [使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)
 * 使用 C#、Java、Node.js、PHP、Python 或 Ruby 生成第一个应用： [SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
-* 请查看 [有关 Azure SQL 数据库服务的所有主题](sql-database-index-all-articles.md)的标题和描述索引。
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

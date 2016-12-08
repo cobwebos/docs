@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
+ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
+ms.openlocfilehash: 63d31ae31703a8d43bf2ffec2e6ccdc5da3a46a3
 
 
 ---
-# <a name="about-vpn-devices-for-sitetosite-vpn-gateway-connections"></a>关于站点到站点 VPN 网关连接的 VPN 设备
-配置站点到站点 (S2S) VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每当你想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文介绍兼容的 VPN 设备和配置参数。 
+# <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>关于站点到站点 VPN 网关连接的 VPN 设备
+配置站点到站点 (S2S) VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每当你想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文介绍兼容的 VPN 设备和配置参数。
 
 > [!NOTE]
 > 配置站点到站点连接时，需要为你的 VPN 设备提供面向公众的 IPv4 IP 地址。                                                                                                                                                                               
-> 
-> 
+>
+>
 
 如果你的设备没有出现在[已验证的 VPN 设备表](#devicetable)中，请参阅本文的[非验证的 VPN 设备](#additionaldevices)部分。 你的设备仍可能兼容 Azure。 如需 VPN 设备支持，请联系你的设备制造商。
 
@@ -36,10 +36,10 @@ ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
 * 静态和动态路由的术语已更改。 这两个术语你可能都会碰到。 无功能性更改，只是名称进行了更改。
   * 静态路由 = PolicyBased
   * 动态路由 = RouteBased
-* 除非另有说明，否则高性能 VPN 网关和 RouteBased VPN 网关的规范相同。 例如，经验证与 RouteBased VPN 网关兼容的 VPN 设备也与 Azure 高性能 VPN 网关兼容。 
+* 除非另有说明，否则高性能 VPN 网关和 RouteBased VPN 网关的规范相同。 例如，经验证与 RouteBased VPN 网关兼容的 VPN 设备也与 Azure 高性能 VPN 网关兼容。
 
 ## <a name="a-namedevicetableavalidated-vpn-devices"></a><a name="devicetable"></a>已验证的 VPN 设备
-我们在与设备供应商合作的过程中验证了一系列的标准 VPN 设备。 以下列表中包含的设备系列中的所有设备都应适用于 Azure VPN 网关。 请参阅 [关于 VPN 网关](vpn-gateway-about-vpngateways.md) 以确定需要为要配置的解决方案创建的网关类型。 
+我们在与设备供应商合作的过程中验证了一系列的标准 VPN 设备。 以下列表中包含的设备系列中的所有设备都应适用于 Azure VPN 网关。 请参阅 [关于 VPN 网关](vpn-gateway-about-vpngateways.md) 以确定需要为要配置的解决方案创建的网关类型。
 
 若要获取配置 VPN 设备的帮助，请参考各设备系列相对应的链接。 如需 VPN 设备支持，请联系你的设备制造商。
 
@@ -66,19 +66,19 @@ ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
 | 打开系统 AG |任务控制安全网关 |不适用 |[安装指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |[安装指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan |Openswan |2.6.32 |（即将支持） |不兼容 |
 | Palo Alto Networks |运行 PAN-OS 的所有设备 |PAN-OS 6.1.5 或更高版本 (PolicyBased)、PAN-OS 7.0.5 或更高版本 (RouteBased) |[配置说明](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[配置说明](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| Watchguard |全部 |Fireware XTM v11.x |[配置说明](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) |不兼容 |
+| Watchguard |全部 |Fireware XTM v11.x |[配置说明](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network) |不兼容 |
 
 (*) ISR 7200 系列路由器仅支持 PolicyBased VPN。
 
-## <a name="a-nameadditionaldevicesanonvalidated-vpn-devices"></a><a name="additionaldevices"></a>非验证的 VPN 设备
-如果没有看到你的设备在“已验证的 VPN 设备”表列出中，该设备仍有可能适用于站点到站点连接。 请确保你的 VPN 设备符合 [关于 VPN 网关](vpn-gateway-about-vpngateways.md#gateway-requirements) 一文“网关要求”部分列出的最低要求。 满足最低要求的设备也应该兼容 VPN 网关。 请联系设备制造商，了解更多支持和配置说明。
+## <a name="a-nameadditionaldevicesanon-validated-vpn-devices"></a><a name="additionaldevices"></a>非验证的 VPN 设备
+如果没有看到你的设备在“已验证的 VPN 设备”表列出中，该设备仍有可能适用于站点到站点连接。 请确保 VPN 设备符合[关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文的“网关要求”部分列出的最低要求。 满足最低要求的设备也应该兼容 VPN 网关。 请联系设备制造商，了解更多支持和配置说明。
 
 ## <a name="editing-device-configuration-samples"></a>编辑设备配置示例
-在下载提供的 VPN 设备配置示例后，你需要替换一些值来反映你环境的设置。 
+在下载提供的 VPN 设备配置示例后，你需要替换一些值来反映你环境的设置。
 
 **编辑示例的步骤：**
 
-1. 使用记事本打开示例。 
+1. 使用记事本打开示例。
 2. 搜索所有 <*text*> 字符串并将其替换为与你的环境相关的值。 请确保包含 < 和 >。 指定名称时，你选择的名称应是唯一的。 如果命令无效，请查看设备制造商文档。
 
 | **示例文本** | **更改为** |
@@ -98,8 +98,8 @@ ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
 ## <a name="ipsec-parameters"></a>IPsec 参数
 > [!NOTE]
 > 尽管 Azure VPN 网关支持下表中列出的值，但您目前无法从 Azure VPN 网关中选择或指定特定的组合。 你必须从本地 VPN 设备指定任何约束。 此外，你必须将 MSS 固定在 1350。
-> 
-> 
+>
+>
 
 ### <a name="ike-phase-1-setup"></a>IKE 阶段 1 设置
 | **属性** | **PolicyBased** | **RouteBased 和标准或高性能 VPN 网关** |
@@ -153,7 +153,6 @@ ms.openlocfilehash: 019395d76a1e2d8e75b4ac1474abe45ce1b8aeb1
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

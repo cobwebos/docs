@@ -30,7 +30,7 @@ IoT 项目面临的最大挑战之一是如何可靠且安全地将设备连接�
 * 可能需要使用专属、自定义或行业特定的应用程序协议。
 * 可以使用大量常见的硬件和软件平台来创建。
 
-除了上述需求之外，所有 IoT 解决方案还必须提供可扩展性、安全性和可靠性。 使用传统技术（例如 Web 容器和消息传送代理）时，所产生的一系列连接需求不仅难以实现，而且实现起来非常耗时。 使用 Azure IoT 中心和 IoT 设备 SDK 可以更轻松地实现符合这些要求的解决方案。
+除了上述需求之外，所有 IoT 解决方案还必须提供可扩展性、安全性和可靠性。 使用传统技术（例如 Web 容器和消息传送代理）时，所产生的一系列连接需求不仅难以实现，而且实现起来非常耗时。 使用 Azure IoT 中心和 Azure IoT 设备 SDK 可以更轻松地实现符合这些要求的解决方案。
 
 设备可以直接与云网关终结点通信；如果设备无法使用任何云网关支持的协议，则可以通过中间网关进行连接。 例如，[Azure IoT 协议网关][lnk-protocol-gateway]可以在设备不能使用 IoT 中心支持的任何协议时执行协议转换。
 
@@ -55,11 +55,11 @@ IoT 解决方案可以包含自动反馈循环。 例如，后端中的分析模
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Azure IoT 套件]: http://azure.microsoft.com/solutions/iot
+[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
 [lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

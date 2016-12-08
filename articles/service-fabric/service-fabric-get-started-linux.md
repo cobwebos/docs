@@ -15,19 +15,18 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 567a998102558626df73878865b317b830ba1faa
+ms.sourcegitcommit: 7e33e00a676f4aa7143cede3380adb58ba1d11e4
+ms.openlocfilehash: c27b92d4a1a1bd96ad0bdc46363b8066abc72edd
 
 
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
-> -[ Windows](service-fabric-get-started.md)
-> 
+> * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
 > 
-> 
+>  
 
  若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装适用于 Java 和 .NET Core 的可选 SDK。
 
@@ -71,8 +70,8 @@ ms.openlocfilehash: 567a998102558626df73878865b317b830ba1faa
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
-## <a name="set-up-the-azure-crossplatform-cli"></a>设置 Azure 跨平台 CLI
-[Azure 跨平台 CLI][azure xplat cli github] 包括用于与 Service Fabric 实体（包括群集和应用程序）进行交互的命令。 它基于 Node.js，因此请先[确保已安装 Node][install-node]，然后再按下面的说明继续操作。
+## <a name="set-up-the-azure-cross-platform-cli"></a>设置 Azure 跨平台 CLI
+[Azure 跨平台 CLI][azure-xplat-cli-github] 包括用于与 Service Fabric 实体（包括群集和应用程序）进行交互的命令。 它基于 Node.js，因此请先[确保已安装 Node][install-node]，然后再按下面的说明继续操作。
 
 1. 将 github 存储库克隆到你的开发计算机。
    
@@ -168,6 +167,6 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2381b04e32a6d65075dadf04f717f4946ba4d464
+ms.sourcegitcommit: ae5837b4fce52aad4c8b39434c27c450aafc1310
+ms.openlocfilehash: 466f2e03407a1633c40e96a366f782bf877c0c26
 
 
 ---
@@ -29,7 +29,7 @@ Azure Functions 提供事件驱动、按需计算体验，让你能够创建以�
 ## <a name="prerequisites"></a>先决条件
 必须先具有一个有效的 Azure 帐户，然后才能创建函数。 如果还没有 Azure 帐户， [可以使用免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="create-a-timertriggered-function-from-the-template"></a>通过模板创建计时器触发的函数
+## <a name="create-a-timer-triggered-function-from-the-template"></a>通过模板创建计时器触发的函数
 Function App 在 Azure 中托管函数的执行。 必须先具有一个有效的 Azure 帐户，然后才能创建函数。 如果还没有 Azure 帐户， [可以使用免费帐户](https://azure.microsoft.com/free/)。 
 
 1. 转到 [Azure Functions 门户](https://functions.azure.com/signin) ，然后使用你的 Azure 帐户登录。
@@ -72,13 +72,13 @@ Function App 在 Azure 中托管函数的执行。 必须先具有一个有效�
 * [测试 Azure Functions](functions-test-a-function.md)  
    介绍可用于测试函数的各种工具和技巧。
 * [如何缩放 Azure Functions](functions-scale.md)  
-  讨论 Azure Functions 提供的服务计划（包括动态服务计划）以及如何选择合适的计划。  
+  讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。  
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

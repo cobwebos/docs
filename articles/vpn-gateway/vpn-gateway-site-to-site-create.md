@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cc377f80fa6b9df41081b13a51ff15482b2ba8bc
+ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
+ms.openlocfilehash: b45801d4e6deb25ca8c6af5c3b46de741d4993e0
 
 
 ---
-# <a name="create-a-vnet-with-a-sitetosite-connection-using-the-azure-classic-portal"></a>使用 Azure 经典门户创建具有站点到站点连接的 VNet
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-azure-classic-portal"></a>使用 Azure 经典门户创建具有站点到站点连接的 VNet
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -33,7 +33,7 @@ ms.openlocfilehash: cc377f80fa6b9df41081b13a51ff15482b2ba8bc
 
 ![站点到站点示意图](./media/vpn-gateway-site-to-site-create/site2site.png "site-to-site")
 
-### <a name="deployment-models-and-methods-for-sitetosite-connections"></a>用于站点到站点连接的部署模型和方法
+### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>用于站点到站点连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
 下表显示了站点到站点配置当前可用的部署模型和方法。 当有配置步骤相关的文章发布时，我们会直接从此表格链接到该文章。
@@ -48,7 +48,7 @@ ms.openlocfilehash: cc377f80fa6b9df41081b13a51ff15482b2ba8bc
 
 * 一台兼容的 VPN 设备和能够对其进行配置的人员。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 如果不熟悉 VPN 设备的配置，或者不熟悉本地网络配置中的 IP 地址范围，则需咨询能够为你提供此类详细信息的人员。
 * 一个用于 VPN 设备的面向外部的公共 IP 地址。 此 IP 地址不得位于 NAT 之后。
-* Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
 ## <a name="a-namecreatevnetacreate-your-virtual-network"></a><a name="CreateVNet"></a>创建虚拟网络
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com/)。
@@ -68,7 +68,7 @@ ms.openlocfilehash: cc377f80fa6b9df41081b13a51ff15482b2ba8bc
 * **配置站点到站点 VPN**：选中“配置站点到站点 VPN”复选框。
 * **本地网络**：本地网络代表你的物理本地位置。 你可以选择以前创建的本地网络，也可以创建一个新的本地网络。 但是，如果选择使用之前创建的本地网络，请转到“本地网络”  配置页面，并验证 VPN 设备的 VPN 设备 IP 地址（面向公众的 IPv4 地址）是否正确。
 
-## <a name="a-nameconnectivityasitetosite-connectivity-page"></a><a name="Connectivity"></a>站点到站点连接页
+## <a name="a-nameconnectivityasite-to-site-connectivity-page"></a><a name="Connectivity"></a>站点到站点连接页
 如果要创建新的本地网络，则会看到“站点到站点连接”页。 如果你要使用此前创建的本地网络，则此页不会显示在向导中，你可以转到下一部分。
 
 请输入以下信息，然后单击“下一步”箭头。
@@ -97,11 +97,11 @@ ms.openlocfilehash: cc377f80fa6b9df41081b13a51ff15482b2ba8bc
 配置虚拟网络网关，创建安全的站点到站点连接。 请参阅 [在 Azure 经典门户中配置虚拟网络网关](vpn-gateway-configure-vpn-gateway-mp.md)。
 
 ## <a name="next-steps"></a>后续步骤
-连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅 [虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/) 文档。
+ 连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

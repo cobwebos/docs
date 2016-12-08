@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
+ms.sourcegitcommit: ad50c6c12bc3b328d776f37fc31f44d90a0915a3
+ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 了解如何使用 [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) 执行基本操作，如创建文件夹、上载和下载数据文件等。有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Store](data-lake-store-overview.md)。
@@ -103,7 +104,7 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 本文的剩余部分介绍如何使用现有的 .NET 方法来执行操作，例如身份验证和文件上传等。
 
 ## <a name="authentication"></a>身份验证
-### <a name="if-you-are-using-enduser-authentication-recommended-for-this-tutorial"></a>如果使用最终用户身份验证（本教程推荐）
+### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>如果使用最终用户身份验证（本教程推荐）
 请在现有的 Azure AD“本机客户端”应用程序中使用这种身份验证；下面提供了示例代码。 为了更快完成本教程，我们建议使用此方法。
 
     // User login via interactive popup
@@ -117,14 +118,14 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 对于上述代码片段，需要注意几个问题。
 
 * 为了帮助读者更快完成本教程，此代码片段使用了为所有 Azure 订阅默认提供的 Azure AD 域和客户端 ID。 因此，可以**在应用程序中按原样使用此代码片段**。
-* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，然后使用所创建的应用程序的 Azure AD 域、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序](../resource-group-create-service-principal-portal.md#create-an-active-directory-application)。
+* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，然后使用所创建的应用程序的 Azure AD 域、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
 > [!NOTE]
 > 以上链接中的说明适用于 Azure AD web 应用程序。 但是，即使选择创建本地客户端应用程序，步骤也相同。 
 > 
 > 
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-client-secret"></a>如果结合客户端机密使用服务到服务身份验证
+### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>如果结合客户端机密使用服务到服务身份验证
 可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../resource-group-create-service-principal-portal.md)使用这种身份验证。
 
     // Service principal / appplication authentication with client secret / key
@@ -136,7 +137,7 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-certificate"></a>如果结合证书使用服务到服务身份验证
+### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>如果结合证书使用服务到服务身份验证
 还可以使用以下代码片段通过应用程序证书/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../resource-group-create-service-principal-portal.md)使用这种身份验证。
 
     // Service principal / application authentication with certificate
@@ -260,6 +261,6 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

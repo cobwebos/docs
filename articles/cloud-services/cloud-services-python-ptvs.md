@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio 中的 Python Web 角色和辅助角色 | Microsoft Docs"
+title: "Python 和 Azure 云服务入门 | Microsoft 文档"
 description: "有关使用 Python Tools for Visual Studio 来创建包括 Web 角色和辅助角色的 Azure 云服务的概述。"
 services: cloud-services
 documentationcenter: python
@@ -12,15 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/03/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+ms.sourcegitcommit: 9ad2f55c7db53459c17299ba5015783781c7cd63
+ms.openlocfilehash: 6ec7c5ac984476e3645b45f5e8cf98cf0aa18e5d
 
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
+
 本文概述了如何在[用于 Visual Studio 的 Python 工具][用于 Visual Studio 的 Python 工具]中使用 Python Web 角色和辅助角色。 其中介绍了如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
 
 ## <a name="prerequisites"></a>先决条件
@@ -355,16 +356,16 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 <!--External Link references-->
 
-[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[用于 Visual Studio 的 Python 工具]: http://aka.ms/ptvs
 [Python Tools for Visual Studio 文档]: http://aka.ms/ptvsdocs
 [云服务项目]: http://go.microsoft.com/fwlink/?LinkId=624028
 [用于 VS 2013 的 Azure SDK 工具]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
+[用于 VS 2015 的 Azure SDK 工具]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7（32 位）]: https://www.python.org/downloads/
 [Python 3.5（32 位）]: https://www.python.org/downloads/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

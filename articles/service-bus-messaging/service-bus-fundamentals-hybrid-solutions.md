@@ -1,13 +1,13 @@
 ---
 title: "Azure 服务总线 | Microsoft Docs"
 description: "介绍如何使用服务总线将 Azure 应用程序连接到其他软件。"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 12654cdd-82ab-4b95-b56f-08a5a8bbc6f9
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/31/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
+ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
+ms.openlocfilehash: 57a168e6c595eb76851bf14d19f2949d5693b08d
 
 
 ---
@@ -119,6 +119,6 @@ ms.openlocfilehash: c8d8549db680b0189fa94064b930d4f91ff2472b
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -3,8 +3,8 @@ title: "将公司 Internet 域指向流量管理器域名 | Microsoft Docs"
 description: "本文将帮助你将公司域名指向流量管理器域名。"
 services: traffic-manager
 documentationcenter: 
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 ms.assetid: 29822946-2d45-4434-ba47-fc180a445cc3
 ms.service: traffic-manager
@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 16602ca37e3b62fc628ec3178e6f65e32fc3d345
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
 
 ---
 
@@ -41,6 +41,6 @@ ms.openlocfilehash: 16602ca37e3b62fc628ec3178e6f65e32fc3d345
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

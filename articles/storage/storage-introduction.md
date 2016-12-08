@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
+ms.date: 11/17/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73bd16f44f0848c74ce3edd5042900525e4811db
+ms.sourcegitcommit: 1a6d1497dee72a49705e15bd2907a42f744bd3b5
+ms.openlocfilehash: 3149797c078764fa54c488e8498790ea91d1a1b1
 
 
 ---
@@ -246,9 +246,12 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [如何通过 Python 使用队列存储](storage-python-how-to-use-queue-storage.md)
 * [如何通过 Python 使用文件存储](storage-python-how-to-use-file-storage.md)
 
+## <a name="next-steps"></a>后续步骤
+
+* [创建存储帐户](storage-create-storage-account.md)
+* [Azure 存储五分钟快速入门](storage-getting-started-guide.md)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

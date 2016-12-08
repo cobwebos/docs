@@ -17,12 +17,52 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97f74f845e19ae99cf6c5abbb9f076c7c5171993
+ms.sourcegitcommit: a4882b6fcd75ecaa826cdda3e25ee690b85a0670
+ms.openlocfilehash: 34450e25941e0be97b72c1ba30ee348d73f4bc67
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>连接到 Azure 容器服务群集
+由 Azure 容器服务部署的 DC/OS、Kubernetes 和 Docker Swarm 群集都公开 REST 终结点。  对于 Kubernetes，将在 Internet 上安全地公开此终结点，用户可以直接从连接到 Internet 的任何计算机访问它。 对于 DC/OS 和 Docker Swarm，必须创建 SSH 隧道才能安全地连接到 REST 终结点。 下面说明了上述每个连接。
+
+## <a name="connecting-to-a-kubernetes-cluster"></a>连接到 Kubernetes 群集。
+若要连接到 Kubernetes 群集，需要已安装 `kubectl` 命令行工具。  安装此工具的最简单方法是使用 Azure 2.0 `az` 命令行工具。
+
+```console
+az acs kubernetes install cli [--install-location=/some/directory]
+```
+
+或者，可以直接从[版本页](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146)下载客户端
+
+安装 `kubectl` 后，需要将群集凭据复制到计算机。  执行此操作的最简单方法同样是 `az` 命令行工具：
+
+```console
+az acs kubernetes get-credentials --dns-prefix=<some-prefix> --location=<some-location>
+```
+
+这会将群集凭据下载到 `$HOME/.kube/config`（`kubectl` 预期凭据所在位置）中。
+
+或者，可以使用 `scp` 安全地将该文件从主 VM 中的 `$HOME/.kube/config` 复制到本地计算机上。
+
+```console
+mkdir $HOME/.kube/config
+scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
+```
+
+如果使用的是 Windows，则需要在 Windows 上使用 Bash on Ubuntu 或 Putty 'pscp' 工具。
+
+配置 `kubectl` 后，可以使用以下项测试此功能：
+
+```console
+kubectl get nodes
+```
+
+它应显示群集中的节点。
+
+有关更多说明，可以参阅 [Kubernetes 快速入门](http://kubernetes.io/docs/user-guide/quick-start/)
+
+## <a name="connecting-to-a-dcos-or-swarm-cluster"></a>连接到 DC/OS 或 Swarm 群集
+
 由 Azure 容器服务部署的 DC/OS 和 Docker Swarm 群集将公开 REST 终结点。 但是，这些终结点不对外界开放。 为了管理这些终结点，必须创建安全外壳 (SSH) 隧道。 建立 SSH 隧道后，就可以对群集终结点运行命令，并通过自己系统中的浏览器查看群集 UI。 本文档将介绍从 Linux、OS X 和 Windows 创建 SSH 隧道的步骤。
 
 > [!NOTE]
@@ -126,6 +166,6 @@ export DOCKER_HOST=:2375
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

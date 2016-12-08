@@ -1,6 +1,6 @@
 ## <a name="create-an-event-hub"></a>创建事件中心
 1. 登录到 [Azure 门户][Azure 门户]，然后单击屏幕左上角的“新建”。
-2. 单击“数据 + 分析”，然后单击“事件中心”。
+2. 单击“物联网”，然后单击“事件中心”。
    
     ![](./media/event-hubs-create-event-hub/create-event-hub9.png)
 3. 在“创建命名空间”  边栏选项卡中，输入命名空间名称。 系统会立即检查该名称是否可用。
@@ -34,6 +34,6 @@
 
 [Azure 门户]: https://portal.azure.com/
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

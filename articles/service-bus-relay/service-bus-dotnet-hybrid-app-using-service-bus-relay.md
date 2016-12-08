@@ -1,13 +1,13 @@
 ---
 title: "本地/云混合应用程序 (.NET) | Microsoft Docs"
-description: "了解如何使用 Azure 服务总线中继创建 .NET 本地/云混合应用程序。"
-services: service-bus
+description: "了解如何使用 Azure WCF 中继创建 .NET 本地/云混合应用程序。"
+services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,35 +15,35 @@ ms.topic: hero-article
 ms.date: 09/16/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
+ms.sourcegitcommit: 29ede770e6e63a50ba398cfb0bc8035cacdea392
+ms.openlocfilehash: 2b00b8206189dbed02e03807658c53f81171b111
 
 
 ---
-# <a name="net-onpremisescloud-hybrid-application-using-azure-service-bus-wcf-relay"></a>使用 Azure 服务总线 WCF 中继创建 .NET 本地/云混合应用程序
+# <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
 ## <a name="introduction"></a>介绍
 本文说明如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 本教程假定你之前未使用过 Azure。 在不到 30 分钟的时间内，你就能让使用多个 Azure 资源的应用程序在云中启动并运行。
 
 你将学习以下内容：
 
 * 如何创建或修改现有 Web 服务以供 Web 解决方案使用。
-* 如何使用 Azure 服务总线 WCF 中继服务在 Azure 应用程序和托管于其他某处的 Web 服务之间共享数据。
+* 如何使用 Azure WCF 中继服务在 Azure 应用程序和托管于其他某处的 Web 服务之间共享数据。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="how-the-service-bus-relay-helps-with-hybrid-solutions"></a>服务总线中继功能将为混合解决方案带来哪些帮助
+## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Azure 中继功能将为混合解决方案带来哪些帮助
 业务解决方案通常由为处理独特的新业务需求而编写的自定义代码和已有的解决方案和系统所提供的现有功能组成。
 
 解决方案架构师开始使用云来轻松地处理缩放需求和降低运营成本。 在此过程中，他们发现希望用作其解决方案的构建基块的现有服务资产位于企业防火墙内，无法通过云解决方案轻松访问。 许多内部服务的构建或托管方式使得它们无法在企业网络边缘轻松公开。
 
-服务总线中继的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。 虽然此类服务总线中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的服务总线。 服务总线还会通过使用 [共享访问签名](../service-bus-messaging/service-bus-sas-overview.md) (SAS) 身份验证来保护这些服务，以阻止未经授权的访问。
+Azure 中继的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。 虽然此类中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的中继服务。 Azure 中继还会通过使用[共享访问签名](../service-bus-messaging/service-bus-sas-overview.md) (SAS) 身份验证来保护这些服务，以阻止未经授权的访问。
 
 ## <a name="solution-scenario"></a>解决方案应用场景
 在本教程中，你将创建一个 ASP.NET 网站，用于查看产品库存页上的产品列表。
 
 ![][0]
 
-本教程假定你的产品信息位于现有的本地系统中，而且你使用服务总线中继来访问该系统。 这是由在简单的控制台应用程序中运行的 Web 服务模拟的，并由一系列内存中产品提供支持。 你将能够在你自己的计算机上运行此控制台应用程序并将 Web 角色部署到 Azure 中。 通过此操作，你将看到在 Azure 数据中心运行的 Web 角色确实会调入你的计算机，即使你的计算机几乎肯定会驻留在至少一个防火墙和一个网络地址转换 (NAT) 层后面，情况也是如此。
+本教程假定你的产品信息位于现有的本地系统中，而且你使用 Azure 中继来访问该系统。 这是由在简单的控制台应用程序中运行的 Web 服务模拟的，并由一系列内存中产品提供支持。 你将能够在你自己的计算机上运行此控制台应用程序并将 Web 角色部署到 Azure 中。 通过此操作，你将看到在 Azure 数据中心运行的 Web 角色确实会调入你的计算机，即使你的计算机几乎肯定会驻留在至少一个防火墙和一个网络地址转换 (NAT) 层后面，情况也是如此。
 
 下面是已完成的 Web 应用程序的起始页的屏幕截图。
 
@@ -52,18 +52,18 @@ ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 在开始开发 Azure 应用程序之前，需要获取工具并设置开发环境。
 
-1. 从[获取工具和 SDK][Get Tools and SDK] 页面安装 Azure SDK for .NET。
+1. 从[获取工具和 SDK][获取工具和 SDK] 页面安装 Azure SDK for .NET。
 2. 单击你正在使用的 Visual Studio 版本的“安装 SDK”  。 本教程中的步骤使用 Visual Studio 2015。
 3. 当提示你是要运行还是保存安装程序时，单击“运行” 。
 4. 在“Web 平台安装程序”中，单击“安装”，然后继续安装。
 5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。 如果你未安装 Visual Studio，SDK 还会安装免费的 Visual Studio Express。
 
 ## <a name="create-a-namespace"></a>创建命名空间
-若要开始在 Azure 中使用服务总线功能，必须先创建一个服务命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
+若要开始在 Azure 中使用中继功能，必须先创建一个服务命名空间。 命名空间提供了用于对应用程序中的 Azure 资源进行寻址的范围容器。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-an-onpremises-server"></a>创建本地服务器
+## <a name="create-an-on-premises-server"></a>创建本地服务器
 首先，你将构建 (mock) 本地产品目录系统。 这将非常简单；可以认为，此系统代表一个实际存在的本地产品目录系统，其中包含我们将尝试集成的完整服务图面。
 
 此项目是一个 Visual Studio 控制台应用程序，它使用 [Azure 服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 来包含服务总线库和配置设置。
@@ -434,10 +434,10 @@ ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
     ![][38]
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Service Bus 的详细信息，请参阅以下资源：  
+若要了解有关 Azure 中继的详细信息，请参阅以下资源：  
 
-* [Azure 服务总线][sbwacom]  
-* [如何使用服务总线队列][sbwacomqhowto]  
+* [什么是 Azure 中继？](relay-what-is-it.md)  
+* [如何使用中继](service-bus-dotnet-how-to-use-relay.md)  
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
@@ -467,12 +467,8 @@ ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
 
 
-[sbwacom]: /documentation/services/service-bus/  
-[sbwacomqhowto]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
