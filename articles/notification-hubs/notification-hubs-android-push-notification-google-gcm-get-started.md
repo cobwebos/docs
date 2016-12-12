@@ -53,13 +53,13 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
 ## <a name="configure-a-new-notification-hub"></a>配置新通知中心
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6. 在“设置”边栏选项卡中选择“通知服务”，然后选择“Google (GCM)”。 Enter the API key and click <bpt id="p1">**</bpt>Save<ept id="p1">**</ept>.
+&emsp;&emsp;6. 在“设置”边栏选项卡中选择“通知服务”，然后选择“Google (GCM)”。 Enter the API key and click **Save**.
 
 &emsp;&emsp;![Azure 通知中心 - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 你的通知中心现在已配置为使用 GCM，并且你有连接字符串用于注册你的应用以接收和发送推送通知。
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>将你的应用连接到通知中心
+## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>将你的应用连接到通知中心
 ### <a name="create-a-new-android-project"></a>创建新的 Android 项目
 1. 在 Android Studio 中，启动新的 Android Studio 项目。
    
@@ -664,7 +664,7 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
 [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [引用库项目]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure 经典门户]: https://manage.windowsazure.com/
-[通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [使用通知中心向用户推送通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure 门户]: https://portal.azure.com

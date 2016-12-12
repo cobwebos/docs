@@ -70,7 +70,7 @@ ms.openlocfilehash: 45a3fa5c7190e039fd637c78a41eeb3f6ede9bc7
 
 现在您的通知中心已配置为使用 Firebase Cloud Messagin，并且您具有用于注册您的应用以收发推送通知的连接字符串。
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>将你的应用连接到通知中心
+## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>将你的应用连接到通知中心
 ### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
