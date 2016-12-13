@@ -195,7 +195,7 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

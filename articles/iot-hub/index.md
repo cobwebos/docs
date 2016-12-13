@@ -119,7 +119,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -136,7 +136,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

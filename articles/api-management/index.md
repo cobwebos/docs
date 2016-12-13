@@ -29,7 +29,7 @@ API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=api-management">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=api-management">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -102,7 +102,7 @@ API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -115,7 +115,7 @@ API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

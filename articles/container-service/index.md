@@ -66,7 +66,7 @@ Azure 容器服务让创建、配置和管理预配置来运行容器化应用�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -78,7 +78,7 @@ Azure 容器服务让创建、配置和管理预配置来运行容器化应用�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

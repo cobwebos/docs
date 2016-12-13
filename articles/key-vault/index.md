@@ -29,7 +29,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=key-vault">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=key-vault">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -120,7 +120,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -135,7 +135,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

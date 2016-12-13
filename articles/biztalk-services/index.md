@@ -29,7 +29,7 @@ BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=biztalk-services">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

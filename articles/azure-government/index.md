@@ -30,7 +30,7 @@ Microsoft Azure 政府版提供构建在安全性、隐私性与控制性、合�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=azure-government">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=azure-government">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

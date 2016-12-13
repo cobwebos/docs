@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/27/2016
+ms.date: 12/12/2016
 ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
@@ -50,7 +50,7 @@ ms.openlocfilehash: b2cd9e5db765aa2ffbb00063ae193e39ffe9de4e
 2. 创建新的控制台应用程序项目。 依次单击“文件”菜单、“新建”和“项目”。 在“新建项目”对话框中，选择“Visual C#”（如果不显示“Visual C#”，则在“其他语言”下方查看），再选择“控制台应用程序”模板，然后将其命名为 **Microsoft.ServiceBus.Samples**。 使用默认“位置”。  。
 3. 在 Program.cs 中，确保 `using` 语句如下所示：
    
-    ```
+    ```csharp
     using System;
     using System.Globalization;
     using System.IO;
@@ -62,7 +62,7 @@ ms.openlocfilehash: b2cd9e5db765aa2ffbb00063ae193e39ffe9de4e
 4. 如有需要，将该程序的命名空间从 Visual Studio 默认值重命名为 `Microsoft.ServiceBus.Samples`。
 5. 在 `Program` 类中，添加以下全局变量：
    
-    ```
+    ```csharp
     static string serviceNamespace;
     static string baseAddress;
     static string token;
@@ -70,7 +70,7 @@ ms.openlocfilehash: b2cd9e5db765aa2ffbb00063ae193e39ffe9de4e
     ```
 6. 在 `Main()`中，粘贴以下代码：
    
-    ```
+    ```csharp
     Console.Write("Enter your service namespace: ");
     serviceNamespace = Console.ReadLine();
    
@@ -146,7 +146,7 @@ ms.openlocfilehash: b2cd9e5db765aa2ffbb00063ae193e39ffe9de4e
 ### <a name="create-a-getsastoken-method"></a>创建 GetSASToken() 方法
 在 `Main()` 方法后面的 `Program` 类中粘贴以下代码：
 
-```
+```csharp
 private static string GetSASToken(string SASKeyName, string SASKeyValue)
 {
   TimeSpan fromEpochStart = DateTime.UtcNow - new DateTime(1970, 1, 1);
@@ -165,7 +165,7 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
 在上一步中添加的 `GetSASToken()` 代码后直接粘贴以下代码：
 
-```
+```csharp
 // Uses HTTP PUT to create the queue
 private static string CreateQueue(string queueName, string token)
 {
@@ -193,7 +193,7 @@ private static string CreateQueue(string queueName, string token)
 
 1. 在上一步中添加的 `CreateQueue()` 代码后直接粘贴以下代码：
    
-    ```
+    ```csharp
     // Sends a message to the "queueName" queue, given the name and the value to enqueue
     // Uses an HTTP POST request.
     private static void SendMessage(string queueName, string body)
@@ -208,7 +208,7 @@ private static string CreateQueue(string queueName, string token)
     ```
 2. 标准中转消息属性位于 `BrokerProperties` HTTP 标头中。 中转站属性必须以 JSON 格式序列化。 若要指定 30 秒的 **TimeToLive** 值并向消息添加消息标签“M1”，请在前面的示例所示的 `webClient.UploadData()` 调用之前添加以下代码：
    
-    ```
+    ```csharp
     // Add brokered message properties "TimeToLive" and "Label"
     webClient.Headers.Add("BrokerProperties", "{ \"TimeToLive\":30, \"Label\":\"M1\"}");
     ```
@@ -216,7 +216,7 @@ private static string CreateQueue(string queueName, string token)
     请注意，已添加并将继续添加中转消息属性。 因此，发送请求必须指定支持属于请求一部分的所有中转消息属性的 API 版本。 如果指定的 API 版本不支持中转消息属性，则忽略该属性。
 3. 自定义消息属性被定义为一组键值对。 每个自定义属性都存储在其自身的 TPPT 标头中。 若要添加自定义属性“Priority”和“Customer”，请在前面的示例所示的 `webClient.UploadData()` 调用之前直接添加以下代码：
    
-    ```
+    ```csharp
     // Add custom properties "Priority" and "Customer".
     webClient.Headers.Add("Priority", "High");
     webClient.Headers.Add("Customer", "12345");
@@ -227,7 +227,7 @@ private static string CreateQueue(string queueName, string token)
 
 在上一步中添加的 `SendMessage()` 代码后直接粘贴以下代码：
 
-```
+```csharp
 // Receives and deletes the next message from the given resource (queue, topic, or subscription)
 // using the resourceName and an HTTP DELETE request
 private static string ReceiveAndDeleteMessage(string resourceName)
@@ -251,7 +251,7 @@ private static string ReceiveAndDeleteMessage(string resourceName)
 ### <a name="create-a-topic"></a>创建主题
 在上一步中添加的 `ReceiveAndDeleteMessage()` 代码后直接粘贴以下代码：
 
-```
+```csharp
 // Using an HTTP PUT request.
 private static string CreateTopic(string topicName)
 {
@@ -276,7 +276,7 @@ private static string CreateTopic(string topicName)
 ### <a name="create-a-subscription"></a>创建订阅
 以下代码用于创建在上一步骤中创建的主题的订阅。 在 `CreateTopic()` 定义后直接添加以下代码：
 
-```
+```csharp
 private static string CreateSubscription(string topicName, string subscriptionName)
 {
     var subscriptionAddress = baseAddress + topicName + "/Subscriptions/" + subscriptionName;
@@ -303,7 +303,7 @@ private static string CreateSubscription(string topicName, string subscriptionNa
 ### <a name="retrieve-an-atom-feed-with-the-specified-resources"></a>用指定资源检索 Atom 馈送
 在上一步中添加的 `CreateSubscription()` 方法后直接添加以下代码：
 
-```
+```csharp
 private static string GetResources(string resourceAddress)
 {
     string fullAddress = baseAddress + resourceAddress;
@@ -317,7 +317,7 @@ private static string GetResources(string resourceAddress)
 ### <a name="delete-messaging-entities"></a>删除消息传送实体
 在上一步中添加的代码后直接添加以下代码：
 
-```
+```csharp
 private static string DeleteResource(string resourceName)
 {
     string fullAddress = baseAddress + resourceName;
@@ -333,7 +333,7 @@ private static string DeleteResource(string resourceName)
 ### <a name="format-the-atom-feed"></a>格式化 Atom 馈送
 `GetResources()` 方法包含对 `FormatXml()` 方法的调用，用于对检索到的 Atom 馈送进行再次格式化，以增强其可读性。 以下是 `FormatXml()` 的定义；请在在上一部分中添加的 `DeleteResource()` 代码后直接添加它：
 
-```
+```csharp
 // Formats the XML string to be more human-readable; intended for display purposes
 private static string FormatXml(string inputXml)
 {
@@ -360,7 +360,7 @@ private static string FormatXml(string inputXml)
 ### <a name="example"></a>示例
 下例为完整的代码，它是遵循本教程中所有步骤之后的预期结果。
 
-```
+```csharp
 using System;
 using System.Globalization;
 using System.IO;

@@ -29,7 +29,7 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azur
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=multi-factor-authentication">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=multi-factor-authentication">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

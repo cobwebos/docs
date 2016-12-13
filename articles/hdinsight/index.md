@@ -138,7 +138,7 @@ Azure HDInsight 是采用云技术的 Apache Hadoop 分发版。  借助 Azure H
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -152,7 +152,7 @@ Azure HDInsight 是采用云技术的 Apache Hadoop 分发版。  借助 Azure H
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

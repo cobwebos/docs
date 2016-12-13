@@ -29,7 +29,7 @@ Azure 开发测试实验室是一项可帮助开发人员和测试人员在 Azur
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=devtest-lab">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

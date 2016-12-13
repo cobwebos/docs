@@ -84,7 +84,7 @@ Azure 容器注册表（预览版）是用于托管容器映像的专用注册�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
