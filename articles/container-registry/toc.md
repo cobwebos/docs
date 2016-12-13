@@ -12,10 +12,10 @@
 ## [创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json)
 ## [使用注册表进行身份验证](container-registry-authentication.md)
 
-# 引用
+# 参考
 
-## [Azure CLI](/cli/azure/acr)
-## [REST API](/rest/api/containerregistry)
+## [Azure CLI 2.0 预览版](/cli/azure/acr)
+## [REST](/rest/api/containerregistry)
 
 # 相关内容
 
@@ -27,6 +27,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

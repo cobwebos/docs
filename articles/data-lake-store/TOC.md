@@ -12,6 +12,7 @@
 ## [使用 REST API](data-lake-store-get-started-rest-api.md)
 ## [使用 Azure CLI](data-lake-store-get-started-cli.md)
 ## [使用 Node.js](data-lake-store-manage-use-nodejs.md)
+## [使用 Python](data-lake-store-get-started-python.md)
 
 # 如何
 ## 复制数据
@@ -21,14 +22,6 @@
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [从脱机源上载数据](data-lake-store-offline-bulk-data-upload.md)
 
-## 开发
-### [使用 PowerShell](data-lake-store-get-started-powershell.md)
-### [使用 .NET SDK](data-lake-store-get-started-net-sdk.md)
-### [使用 Java SDK](data-lake-store-get-started-java-sdk.md)
-### [使用 REST API](data-lake-store-get-started-rest-api.md)
-### [使用 Azure CLI](data-lake-store-get-started-cli.md)
-### [使用 Node.js](data-lake-store-manage-use-nodejs.md)
-
 ## 保护数据
 ### [安全性概述](data-lake-store-security-overview.md)
 ### [Data Lake Store 中的访问控制](data-lake-store-access-control.md)
@@ -37,6 +30,7 @@
 ### [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
 
 ## 与 Azure 服务集成
+### [从 Azure VNET 中的 VM 访问](data-lake-store-connectivity-from-vnets.md)
 ### [与 Data Lake Analytics 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [使用门户创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 ### [使用 PowerShell 创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell.md)
@@ -49,13 +43,16 @@
 
 ## 管理
 ### [访问诊断日志](data-lake-store-diagnostic-logs.md)
+### [高可用性规划](data-lake-store-troubleshooting-guidance.md)
 
-# 引用
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Java](/java/api/)
-## [.NET](/dotnet/api/)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/azurerm.datalakestore)
+## [.NET](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datalake.store)
+## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
-## [REST](/rest/api/datalakestore/)
+## [Python（帐户管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
+## [Python（文件系统管理）](http://azure-datalake-store.readthedocs.io/en/latest)
+## [REST](/rest/api/datalakestore)
 
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-store)
@@ -67,6 +64,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

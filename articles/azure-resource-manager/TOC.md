@@ -53,21 +53,22 @@
 ### [使用 Azure CLI 查看部署操作](resource-manager-troubleshoot-deployments-cli.md)
 ### [使用 REST API 查看部署操作](resource-manager-troubleshoot-deployments-rest.md)
 
-# 引用
+# 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [Azure CLI](/cli/azure)
-## [Java](/java/api)
+## [Azure 2.0 CLI（预览版）](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
+## [Java](/java/api/com.microsoft.azure.management.resources)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
 ## [模板架构](https://github.com/Azure/azure-resource-manager-schemas)
-## [限制请求](resource-manager-request-limits.md)
 ## [REST](/rest/api/resources/)
 
 # 资源
+## [限制请求](resource-manager-request-limits.md)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

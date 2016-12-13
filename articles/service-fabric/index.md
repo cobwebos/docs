@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: c6d2e90a58359c809a2b01a97cb25c12f7600008
-ms.openlocfilehash: 798d728c163df6647fb2607e14decf880f43b053
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 2ec806d0d00f8db624820fac72083f3e53b89dfa
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric 文档
@@ -106,7 +106,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -158,7 +158,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Service Fabric REST API 参考</p>
+                        <p>Service Fabric REST API</p>
                     </div>
                 </div>
             </div>
@@ -178,6 +178,6 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

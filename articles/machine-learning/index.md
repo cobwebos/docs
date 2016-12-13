@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 2b15ee71010c4c2aa66621e9ac84c0b90c19ca51
-ms.openlocfilehash: 2ab86738ccbc48c39b6357c62b73de3053d13c75
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 2328b831e3d04b2d974dbc1520f79dcbdcd80128
 
 ---
 #<a name="azure-machine-learning-documentation"></a>Azure 机器学习文档
@@ -86,7 +86,7 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -110,7 +110,7 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>机器学习 REST API 参考</p>
+                        <p>机器学习 REST API</p>
                     </div>
                 </div>
             </div>
@@ -143,6 +143,6 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

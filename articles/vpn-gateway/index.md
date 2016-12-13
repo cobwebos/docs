@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: dca0fb0b2de4943b9a031d2759756654a0c7280f
-ms.openlocfilehash: 6a72b28f95338ebe04e764d7f83e8db3e3e91b78
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 844a2bb0bc702cf8e81684267677db8a8803208f
 
 ---
 #<a name="vpn-gateway-documentation"></a>VPN 网关文档
 
-Azure 虚拟专用网络 (VPN) 网关用于在 Azure 虚拟网络和本地位置之间以及 Azure 中的虚拟网络之间（VNet 到 VNet）发送网络流量。  
+Azure VPN 网关表示虚拟专用网络网关，用于在 Azure 虚拟网络和本地位置之间以及 Azure 中的虚拟网络之间（VNet 到 VNet）发送网络流量。  
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -122,7 +122,7 @@ Azure 虚拟专用网络 (VPN) 网关用于在 Azure 虚拟网络和本地位置
  
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -188,7 +188,7 @@ Azure 虚拟专用网络 (VPN) 网关用于在 Azure 虚拟网络和本地位置
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>VPN 网关 REST API 参考</p>
+                        <p>VPN 网关 REST API</p>
                     </div>
                 </div>
             </div>
@@ -207,6 +207,6 @@ Azure 虚拟专用网络 (VPN) 网关用于在 Azure 虚拟网络和本地位置
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

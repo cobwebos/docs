@@ -23,23 +23,23 @@
 ### [使用 Resource Manager 模板创建和部署事件中心](event-hubs-resource-manager-namespace-event-hub.md)
 ### [使用 Python 启用事件中心存档](event-hubs-archive-python.md)
 
-# 引用
-## [配额和限制](event-hubs-quotas.md)
-## [消息传送异常](event-hubs-messaging-exceptions.md)
-## [Java](/java/api)
-## [.NET](/dotnet/api)
-## [AMQP1.0 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
+# 参考
+## [.NET](/dotnet/api/microsoft.azure.eventhubs)
+## [Java](/java/api/com.microsoft.azure.eventhubs)
 ## [REST](/rest/api/eventhub)
 
 # 资源
+## [配额和限制](event-hubs-quotas.md)
+## [消息传送异常](event-hubs-messaging-exceptions.md)
+## [AMQP1.0 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## [定价](https://azure.microsoft.com/en-us/pricing/details/event-hubs/)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
-## [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)（服务总线资源管理器）
+## [服务总线资源管理器](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 ## [服务更新](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

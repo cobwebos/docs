@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 54d90fa8d337b95a8bb03938ae6f3ce7c4e2de85
-ms.openlocfilehash: a7eda833f1bbaaa64ebfb1a26925dc42cbf6cb9c
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 877d92deebfda835eef37cdc8dc1bca21520d892
 
 ---
 # <a name="media-services-documentation"></a>媒体服务文档
@@ -197,7 +197,7 @@ Azure 媒体服务是一个可扩展的基于云的平台，开发人员可以�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>媒体服务 REST API 参考</p>
+                        <p>媒体服务 REST API</p>
                     </div>
                 </div>
             </div>
@@ -216,6 +216,6 @@ Azure 媒体服务是一个可扩展的基于云的平台，开发人员可以�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

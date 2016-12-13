@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 316f20972fc4d231ef0a6a9e132110dfc6c1a59a
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 54bebbed74b344ff854a83b2b6c4abdb5ba68321
 
 ---
 #<a name="notification-hubs-documentation"></a>通知中心文档
@@ -160,7 +160,7 @@ Azure 通知中心提供易用的多平台扩展式推送基础结构，让用�
 
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -198,7 +198,7 @@ Azure 通知中心提供易用的多平台扩展式推送基础结构，让用�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>通知中心 REST API 参考</p>
+                        <p>通知中心 REST API</p>
                     </div>
                 </div>
             </div>
@@ -219,6 +219,6 @@ Azure 通知中心提供易用的多平台扩展式推送基础结构，让用�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

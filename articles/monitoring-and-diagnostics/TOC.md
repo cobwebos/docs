@@ -2,14 +2,14 @@
 ## [Azure 监视器概述](../monitoring-and-diagnostics/monitoring-overview.md)
 ## [指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 ## [警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
-## [Autoscale](../monitoring-and-diagnostics/monitoring-overview-autoscale.md)
+## [自动缩放](../monitoring-and-diagnostics/monitoring-overview-autoscale.md)
 ## [活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
 ## [诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
 ## [合作伙伴集成](../monitoring-and-diagnostics/monitoring-partners.md)
 
 
 # 入门
-## [Azure Monitor 入门](../monitoring-and-diagnostics/monitoring-get-started.md)
+## [Azure 监视器入门](../monitoring-and-diagnostics/monitoring-get-started.md)
 ## [角色权限和安全](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md)
 
 # 如何
@@ -39,13 +39,16 @@
 ### [REST API 用法演练](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
 
 
-# 引用
-## [PowerShell](../monitoring-and-diagnostics/insights-powershell-samples.md)
-## [Azure CLI](../monitoring-and-diagnostics/insights-cli-samples.md)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
-## [支持的指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-## [REST API](https://msdn.microsoft.com/library/azure/dn931943)
+## [REST](/rest/api/monitor/)
 
-<!--HONumber=Nov16_HO4-->
+# 资源
+## [PowerShell 示例](../monitoring-and-diagnostics/insights-powershell-samples.md)
+## [Azure CLI 2.0（预览版）示例](../monitoring-and-diagnostics/insights-cli-samples.md)
+## [支持的指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
+
+<!--HONumber=Dec16_HO1-->
 
 

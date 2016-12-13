@@ -1,14 +1,11 @@
 # 概述
 ## [什么是 Azure 自动化？](automation-intro.md)
 ## [Azure 自动化中的安全性](automation-security-overview.md)
-
 # 入门
 ## [创建 runbook](automation-first-runbook-graphical.md)
 ## [创建 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ## [创建 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 ## [管理基于角色的访问控制](automation-role-based-access-control.md)
-
-
 # 如何
 ## 创建 Runbook
 ### [Runbook 类型](automation-runbook-types.md)
@@ -36,7 +33,7 @@
 ### [编译 DSC 配置](automation-dsc-compile.md)
 ### [使用 Chocolatey 进行连续部署](automation-dsc-cd-chocolatey.md)
 ## 设置身份验证
-### [Azure 服务管理和资源管理器](automation-sec-configure-aduser-account.md)
+### [Azure 服务管理和 Resource Manager](automation-sec-configure-aduser-account.md)
 ### [Amazon Web Services](automation-sec-configure-aws-account.md)
 ### [Azure RunAs 帐户](automation-sec-configure-azure-runas-account.md)
 ## 管理自动化资产
@@ -55,26 +52,22 @@
 ### [使用 JSON 标记启动/停止 VM](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [删除资源组](automation-scenario-remove-resourcegroup.md)
 ### [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
-
+### [源代码管理与 GitHub Enterprise 的集成](automation-scenario-source-control-integration-with-github-ent.md)
 ## [监视](automation-manage-send-joblogs-log-analytics.md)
-
 ## 迁移
 ### [从 Orchestrator 迁移](automation-orchestrator-migration.md)
 ### [移动自动化帐户](automation-migrate-account-subscription.md)
-
 ## 故障排除
 ### [常见错误疑难解答](automation-troubleshooting-automation-errors.md)
 ### [Runbook 作业已挂起](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
-
-# 引用
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [经典 PowerShell](/powershell/servicemanagement)
-## [.NET](/dotnet/api)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
+## [PowerShell（经典）](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [经典 REST](https://msdn.microsoft.com/library/azure/mt163781)
-## [发行说明](https://azure.microsoft.com/updates/?product=automation)
-
+## [REST（经典）](https://msdn.microsoft.com/library/azure/mt163781)
 # 资源
+## [发行说明](https://azure.microsoft.com/updates/?product=automation)
 ## [定价](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-automation)
@@ -85,6 +78,6 @@
 ## [自动化简介视频](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -2,15 +2,17 @@
 ## [什么是虚拟机规模集？](virtual-machine-scale-sets-overview.md)
 
 # 入门
-## [创建 Windows 规模集](virtual-machine-scale-sets-windows-create.md)
-## [创建 Linux 规模集](virtual-machine-scale-sets-linux-create-cli.md)
+## [在门户中创建规模集](virtual-machine-scale-sets-portal-create.md)
 
 # 如何
 ## 规划和设计
 ### [设计注意事项](virtual-machine-scale-sets-design-overview.md)
+
 ## 部署
-### [使用门户的规模集](virtual-machine-scale-sets-portal-create.md)
-### [使用 Visual Studio 的规模集](virtual-machine-scale-sets-vs-create.md)
+### [使用门户部署规模集](virtual-machine-scale-sets-portal-create.md)
+### [使用 Visual Studio 部署规模集](virtual-machine-scale-sets-vs-create.md)
+### [使用 PowerShell 部署规模集](virtual-machine-scale-sets-windows-create.md)
+### [使用 Azure CLI 部署规模集](virtual-machine-scale-sets-linux-create-cli.md)
 ### [具有自动缩放功能的 Linux 规模集](virtual-machine-scale-sets-linux-autoscale.md)
 ### [具有自动缩放功能的 Windows 规模集](virtual-machine-scale-sets-windows-autoscale.md)
 ### [规模集中的应用程序](virtual-machine-scale-sets-deploy-app.md)
@@ -24,9 +26,9 @@
 ### [使用 DSC 和规模集](virtual-machine-scale-sets-dsc.md)
 
 ## 故障排除
-### [Autoscale](virtual-machine-scale-sets-troubleshoot.md)
+### [自动缩放](virtual-machine-scale-sets-troubleshoot.md)
 
-# 引用
+# 参考
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST](/rest/api/compute/)
@@ -38,6 +40,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

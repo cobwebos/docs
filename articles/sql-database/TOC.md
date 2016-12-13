@@ -19,9 +19,10 @@
 ## [SQL 数据库工具](sql-database-manage-overview.md)
 ## [SQL 数据库教程](sql-database-explore-tutorials.md)
 ## [解决方案快速入门](sql-database-solution-quick-starts.md)
-## “安全”
+## 安全性
 ### [Azure SQL 数据库的 Azure 安全中心](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
 ### [SQL 安全中心](https://msdn.microsoft.com/library/azure/bb510589)
+
 # 入门
 ## 数据库和服务器
 ### 单一数据库
@@ -178,7 +179,7 @@
 ### 学习
 #### [单一数据库](sql-database-single-database-monitor.md)
 #### [SQL 数据库顾问概述](sql-database-advisor.md)
-#### [单个数据库指南](sql-database-performance-guidance.md)
+#### [单一数据库指南](sql-database-performance-guidance.md)
 #### [在 Azure 门户中深入分析工作负荷](sql-database-performance.md)
 #### [使用批处理](sql-database-use-batching-to-improve-performance.md)
 ## SQL 数据库 V11
@@ -189,6 +190,7 @@
 #### [使用 Azure 门户进行升级](sql-database-upgrade-server-portal.md)
 #### [使用 PowerShell 进行升级](sql-database-upgrade-server-powershell.md)
 #### [定价层建议](sql-database-service-tier-advisor.md)
+
 # 如何
 ## 创建和管理
 ### 服务器和数据库
@@ -315,7 +317,6 @@
 #### [Azure 门户](sql-database-geo-replication-failover-portal.md)
 #### [PowerShell](sql-database-geo-replication-failover-powershell.md)
 #### [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-
 ## 故障排除
 ### [连接问题](sql-database-troubleshoot-common-connection-issues.md)
 ### [暂时性连接错误](sql-database-troubleshoot-connection.md)
@@ -325,26 +326,26 @@
 
 
 # 参考
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
-## [PowerShell 经典](/powershell/servicemanagement/)
-## [Java](/java/api/)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql)
+## [PowerShell（弹性数据库）](/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs)
+## [.NET](https://docs.microsoft.com)
+## [Java](/java/api/com.microsoft.azure.management.sql)
+## [Node.js](https://msdn.microsoft.com/library/mt652093.aspx)
+## [Python](https://msdn.microsoft.com/library/mt652092.aspx)
+## [Ruby](https://msdn.microsoft.com/library/mt691981.aspx)
+## [PHP](https://msdn.microsoft.com/library/dn865013.aspx)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [Azure SQL 数据库 Cmdlet](/powershell/resourcemanager/AzureRM.Sql/v1.0.12/AzureRM.Sql)
-## [SQL Server Cmdlet](https://msdn.microsoft.com/library/mt740629.aspx)
 ## [REST](/rest/api/sql/)
 
+# 相关内容
 ## SQL 数据库管理库
-### [SQL 数据库管理库参考](https://msdn.microsoft.com/library/azure/mt349017.aspx)
 ### [获取 SQL 数据库管理库包](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)
 ## [SQL Server 驱动程序](https://msdn.microsoft.com/library/mt654049.aspx)
 ### [ADO.NET](https://msdn.microsoft.com/library/mt657768.aspx)
 ### [JDBC](https://msdn.microsoft.com/library/mt484311.aspx)
-### [Node.js](https://msdn.microsoft.com/library/mt652093.aspx)
+
 ### [ODBC](https://msdn.microsoft.com/library/mt654048.aspx)
-### [PHP](https://msdn.microsoft.com/library/dn865013.aspx)
-### [Python](https://msdn.microsoft.com/library/mt652092.aspx)
-### [Ruby](https://msdn.microsoft.com/library/mt691981.aspx)
+
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/sql-database/)
@@ -360,6 +361,6 @@
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

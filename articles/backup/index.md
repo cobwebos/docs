@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: fc9ecdbafdd81a4e1c4dfce546ea9c9cebc647d6
+ms.sourcegitcommit: 3fb1fc0e1198733d47378ec149082330b6350abc
+ms.openlocfilehash: db1ba8a832b9b5efa380adf804a55b5ca67ef1a2
 
 ---
 #<a name="backup-documentation"></a>备份文档
@@ -103,39 +103,35 @@ Azure 备份是一个云服务，可用于在 Microsoft 云中备份（或保护
 </ul>
 
 ---
-
-## <a name="reference"></a>参考
-
+ 
+<h2>参考</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/dotnet/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET 托管参考</p>
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/recoveryservices">
-        <div class="cardSize">
+        <div class="cardSize"><p />
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST</h3>
-                        <p>备份 REST API 参考</p>
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.backupservices">/dotnet/api/microsoft.azure.management.backupservices</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
+
 
 
 <div class="downloadHolder">
@@ -148,6 +144,6 @@ Azure 备份是一个云服务，可用于在 Microsoft 云中备份（或保护
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -45,7 +45,7 @@
 #### [基本 Web 应用程序](../guidance/guidance-web-apps-basic.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [高可用性 Web 应用程序](../guidance/guidance-web-apps-multi-region.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [高密度托管](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
-### [改善可缩放性](../guidance/guidance-web-apps-scalability.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
+### [改善可伸缩性](../guidance/guidance-web-apps-scalability.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [操作系统功能](web-sites-available-operating-system-functionality.md)
 ### [有效使用 DevOps 环境](app-service-web-staged-publishing-realworld-scenarios.md)
 ### [在 Azure 应用服务中使用 WebJobs](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
@@ -174,7 +174,7 @@
 
 ## [监视](web-sites-monitor.md)
 ### [启用诊断日志记录](web-sites-enable-diagnostic-log.md)
-### [使用 Visual Studio 排除故障](web-sites-dotnet-troubleshoot-visual-studio.md)
+### [使用 Visual Studio 进行故障排除](web-sites-dotnet-troubleshoot-visual-studio.md)
 
 ## [安全](../app-service/app-service-security-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ### [在 Azure 应用服务中保护应用安全](web-sites-security.md)
@@ -246,10 +246,10 @@
 ### [排查 HTTP 502 和 503 错误](app-service-web-troubleshoot-http-502-http-503.md)
 ### [排查 Web 应用性能问题](app-service-web-troubleshoot-performance-degradation.md)
 
-# 引用
-## [Azure CLI](/cli/azure/)
-## [Java](/java/api/)
+# 参考
+## [Azure CLI 2.0 预览版](/cli/azure/appservice)
 ## [.NET](/dotnet/api)
+## [Java](/java/api/)
 ## [REST](/rest/api/appservice)
 
 # 相关内容
@@ -266,6 +266,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

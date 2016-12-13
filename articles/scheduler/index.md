@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 4d856b71ced1f1b9c6c1469bee4f23b84865c7d1
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 7ab6ecc4f1193245e9778d8a92bb2a5591edfff5
 
 ---
 # <a name="scheduler-documentation"></a>计划程序文档
@@ -68,7 +68,7 @@ Azure 计划程序允许你以声明方式描述要在云中运行的操作。  
 
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -106,7 +106,7 @@ Azure 计划程序允许你以声明方式描述要在云中运行的操作。  
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>计划程序 REST API 参考</p>
+                        <p>计划程序 REST API</p>
                     </div>
                 </div>
             </div>
@@ -124,6 +124,6 @@ Azure 计划程序允许你以声明方式描述要在云中运行的操作。  
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

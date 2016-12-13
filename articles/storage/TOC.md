@@ -43,33 +43,25 @@
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
 ### [Python](storage-python-how-to-use-file-storage.md)
 
-
-
 # 如何
-
 ## [创建存储帐户](storage-create-storage-account.md)
-
 ## 使用 Blob
 ### [服务概述](https://msdn.microsoft.com/library/dd179376.aspx)
 ### [热层和冷层](storage-blob-storage-tiers.md)
 ### [自定义域](storage-custom-domain-name.md)
 ### [匿名访问 Blob](storage-manage-access-to-resources.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)
-
 ## 使用队列
 ### [概念](https://msdn.microsoft.com/library/dd179353.aspx)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=queue)
-
 ## 使用表
 ### [概述](https://msdn.microsoft.com/library/dd179463.aspx)
 ### [表设计指南](storage-table-design-guide.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
-
 ## 使用文件
 ### [概述](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
 ### [对 Azure 文件进行故障排除](storage-troubleshoot-file-connection-problems.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
-
 ## 使用虚拟机磁盘
 ### 高级存储
 #### [用于 VM 工作负荷的高性能存储](storage-premium-storage.md)
@@ -77,24 +69,20 @@
 #### [高性能设计](storage-premium-storage-performance.md)
 ### 标准存储
 #### [通过递增快照备份 VM 磁盘](storage-incremental-snapshots.md)
-
 ## 规划和设计
 ### [复制](storage-redundancy.md)
 ### [可伸缩性和性能目标](storage-scalability-targets.md)
-### [性能和可缩放性清单](storage-performance-checklist.md)
+### [性能和可伸缩性清单](storage-performance-checklist.md)
 ### [并发](storage-concurrency.md)
-
 ## 开发
 ### [示例](storage-samples.md)
 ### [配置连接字符串](storage-configure-connection-string.md)
 ### [使用存储模拟器](storage-use-emulator.md)
 ### [设置和检索属性与元数据](storage-properties-metadata.md)
-
 ## 管理
 ### [PowerShell](storage-powershell-guide-full.md)
 ### [Azure CLI](storage-azure-cli.md)
 ### [Azure 自动化](automation-manage-storage.md)
-
 ## 安全
 ### [安全指导](storage-security-guide.md)
 ### [静态数据加密](storage-service-encryption.md)
@@ -105,7 +93,6 @@
 #### [.NET](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
-
 ## 监视和故障排除
 ### 指标和日志记录
 #### [存储分析](storage-analytics.md)
@@ -117,29 +104,29 @@
 #### [在经典部署中](storage-cannot-delete-storage-account-container-vhd.md)
 ### [排查文件存储问题](storage-troubleshoot-file-connection-problems.md)
 ### [灾难恢复指南](storage-disaster-recovery-guidance.md)
-
 ## 传输数据
-### [向/从存储器移动数据](storage-moving-data.md)
-### [AzCopy 命令行实用程序](storage-use-azcopy.md)
+### [向/从存储移动数据](storage-moving-data.md)
+### [AzCopy 命令行实用工具](storage-use-azcopy.md)
 ### [Blob 存储的导入/导出服务](storage-import-export-service.md)
 
-
-
 # 参考
-## [PowerShell](/powershell/storage/)
+## [PowerShell](/powershell/storage)
 ## [Azure CLI](/cli/azure/storage)
-## [Java](/java/api/)
-
 ## .NET
+### [Resource Manager](/dotnet/api/microsoft.azure.management.storage)
+### [数据移动](https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx)
 ### [Blob、队列、表和文件](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-### [资源提供程序](/dotnet/api/)
-### [数据移动](/dotnet/api/)
-
-## REST
-### [Blob、队列、表和文件](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
-### [资源提供程序](/rest/api/storagerp/)
+## [Java](/java/api/)
+## [Node.js](http://azure.github.io/azure-storage-node)
+## [Ruby](http://azure.github.io/azure-storage-ruby)
+## [Python](https://azure-storage.readthedocs.io/en/latest/index.html)
+## [C++](http://azure.github.io/azure-storage-cpp)
+## [iOS](https://github.com/Azure/azure-storage-ios)
+## [Android](http://azure.github.io/azure-storage-android)
+## [REST]
+### [Blob、队列、表和文件](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
+### [资源提供程序](/rest/api/storagerp)
 ### [导入/导出](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
-
 
 # 相关内容
 ## 经典门户
@@ -147,8 +134,6 @@
 ### [启用和查看指标](storage-enable-and-view-metrics-classic-portal.md)
 ### [监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting-classic-portal.md)
 ### [故障排除教程](storage-e2e-troubleshooting-classic-portal.md)
-
-
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/storage/blobs/)
@@ -163,7 +148,7 @@
 ### [使用存储资源管理器（预览版）管理 Blob](../vs-azure-tools-storage-explorer-blobs.md)
 
 ## Nuget 包
-### [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
+### [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 ### [Azure 存储数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 ### [Azure 配置管理器](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 
@@ -181,6 +166,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

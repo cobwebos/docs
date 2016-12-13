@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 9e86ae23b3fe3b8134f4725035c03837425cc0c4
-ms.openlocfilehash: 9a05d78edbf2c186d4a4d84f38eb6deff0cdafc5
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 07d7e13862c252db61136110e04559e51a53e4b7
 
 ---
 #<a name="traffic-manager-documentation"></a>流量管理器文档
@@ -86,7 +86,7 @@ ms.openlocfilehash: 9a05d78edbf2c186d4a4d84f38eb6deff0cdafc5
 
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -110,7 +110,7 @@ ms.openlocfilehash: 9a05d78edbf2c186d4a4d84f38eb6deff0cdafc5
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>流量管理器 REST API 参考</p>
+                        <p>流量管理器 REST API</p>
                     </div>
                 </div>
             </div>
@@ -129,6 +129,6 @@ ms.openlocfilehash: 9a05d78edbf2c186d4a4d84f38eb6deff0cdafc5
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

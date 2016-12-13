@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: b63022d6bfc74dca56cc117913d4288d0ed7fe20
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 64e7a12fea6e6ae837d7ae0aacf3ac7426605707
 
 ---
 #<a name="sql-database-documentation"></a>SQL 数据库文档
@@ -156,7 +156,7 @@ Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQ
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>SQL 数据库 REST API 参考</p>
+                        <p>SQL 数据库 REST API</p>
                     </div>
                 </div>
             </div>
@@ -189,6 +189,6 @@ Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQ
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

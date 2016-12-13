@@ -5,43 +5,36 @@ includes/sql-database-create-new-server-firewall-portal.md
 Latest Freshness check:  2016-11-28 , rickbyh.
 
 As of circa 2016-04-11, the following topics might include this include:
-articles/sql-database/sql-database-get-started-tutorial.md
+articles/sql-database/sql-database-get-started.md
 articles/sql-database/sql-database-configure-firewall-settings
+articles/sql-data-warehouse-get-started-provision.md
 
 -->
-## <a name="create-a-new-azure-sql-server-level-firewall"></a>创建新的 Aure SQL 服务器级防火墙
-在 Azure 门户中使用以下步骤来创建服务器级别防火墙规则，以允许从单个 IP 地址（客户端计算机）或整个 IP 地址范围连接到 SQL 数据库逻辑服务器。
+## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
 
-1. 如果当前未连接，请连接到 [Azure 门户](http://portal.azure.com)。
-2. 在默认边栏选项卡中，单击“SQL Server” 。
-   
-      ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-1.png)
-3. 在“SQL Server”边栏选项卡上，单击要为其创建防火墙规则的服务器。
-   
-     ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-2.png)
-4. 查看服务器的属性，然后单击“防火墙”。
-   
-     ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-3.png)
-   
-   > [!NOTE]
-   > 还可从“数据库”边栏选项卡的工具栏中访问服务器级“防火墙设置”边栏选项卡。
-    
-    
-6. 单击“添加客户端 IP”，让 Azure 将 IP 地址填写到规则框中。
-   
-      ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-5.png)
-7. （可选）若要允许访问一系列 IP 地址，请单击添加的 IP 地址来编辑防火墙地址。
-   
-      ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-6.png)
-8. 单击“保存”以创建服务器级防火墙规则。
-   
-     ![新的服务器防火墙](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-7.png)
-   
-   > [!IMPORTANT]
-   > 客户端 IP 地址可能会不定时地更改，因此可能需要创建新的防火墙规则才能访问服务器。 可通过使用 [Bing](http://www.bing.com/search?q=my%20ip%20address) 来查看 IP 地址。 然后添加一个 IP 地址或 IP 地址范围。 有关详细信息，请参阅[管理防火墙设置](../articles/sql-database/sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal)。
-   > 
-   > 
+1. 在“SQL 服务器”边栏选项卡中的“设置”下面，单击“防火墙”打开 SQL 服务器的“防火墙”边栏选项卡。
 
+    ![SQL 服务器防火墙](../articles/sql-database/media/sql-database-get-started/sql-server-firewall.png)
+    
+2. 查看显示的客户端 IP 地址，并使用所选的浏览器验证该地址是否为你在 Internet 上使用的 IP 地址（确认自己的 IP 地址）。 有时出于各种原因，这些 IP 地址并不匹配。
+
+    ![你的 IP 地址](../articles/sql-database/media/sql-database-get-started/your-ip-address.png)
+
+3. 假设 IP 地址匹配，请在工具栏上单击“添加客户端 IP”。
+
+    ![添加客户端 IP](../articles/sql-database/media/sql-database-get-started/add-client-ip.png)
+
+    > [!NOTE]
+    > 可以在服务器上向单个 IP 地址或整个地址范围打开 SQL 数据库防火墙。 打开防火墙后，SQL 管理员和用户可以登录到服务器上他们拥有有效凭据的任何数据库。
+    >
+
+4. 在工具栏上单击“保存”以保存此服务器级防火墙规则，然后单击“确定”。
+
+    ![添加客户端 IP](../articles/sql-database/media/sql-database-get-started/save-firewall-rule.png)
+
+> [!Tip]
+> 有关教程，请参阅 [SQL 数据库教程：创建服务器、服务器级防火墙规则、示例数据库、数据库级防火墙规则并连接到 SQL Server](../articles/sql-database/sql-database-get-started.md)。    
+>
 
 
 <!--HONumber=Nov16_HO5-->

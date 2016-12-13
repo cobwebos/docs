@@ -40,13 +40,14 @@
 ### [一键式 PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # 参考
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics)
+## [.NET](/dotnet/api/streamanalytics.tests.operationtests)
 ## [查询语言](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST](/rest/api/streamanalytics/)
-## [发行说明](stream-analytics-release-notes.md)
+## [REST](/rest/api/streamanalytics)
+
 
 # 资源
+## [发行说明](stream-analytics-release-notes.md)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
 ## [定价](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [博客](http://blogs.msdn.com/b/streamanalytics/)
@@ -57,6 +58,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

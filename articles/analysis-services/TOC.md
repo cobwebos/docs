@@ -12,8 +12,12 @@
 ###[本地数据网关](analysis-services-gateway.md)
 
 # 参考
+##[PowerShell](/powershell/resourcemanager)
+##[REST](/rest/api/analysisservices/)
+
+# 相关内容
 ##[数据源连接](analysis-services-datasource.md)
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

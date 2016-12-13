@@ -2,13 +2,13 @@
 layout: LandingPage
 toc_rel: breadcrumb.json
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 334336cb8d5da4761d5c1fa53c8c63cfbdb850a6
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 3bd265e2376180e5285c81b011b469b6a46353b0
 
 ---
 #<a name="virtual-machines-documentation"></a>虚拟机文档
 
-Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。 不过，仍需要维护虚拟机，配置、修补以及维护虚拟机上运行的软件。
+Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。 不过，仍需要维护虚拟机 &mdash; 配置、修补以及维护虚拟机上运行的软件。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -75,7 +75,7 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>虚拟机 REST API 参考</p>
+                        <p>虚拟机 REST API</p>
                     </div>
                 </div>
             </div>
@@ -122,6 +122,6 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

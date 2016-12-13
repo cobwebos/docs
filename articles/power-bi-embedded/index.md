@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: d5a00a2035660bfd5c9d1fbf79d630d2a0231f41
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: e17065b92c3bce2463df283f82efae5965c5c02e
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded 文档
@@ -86,7 +86,7 @@ Power BI Embedded 是一项 Azure 服务，应用程序开发人员可通过它�
 
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -124,7 +124,7 @@ Power BI Embedded 是一项 Azure 服务，应用程序开发人员可通过它�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Power BI Embedded REST API 参考</p>
+                        <p>Power BI Embedded REST API</p>
                     </div>
                 </div>
             </div>
@@ -144,6 +144,6 @@ Power BI Embedded 是一项 Azure 服务，应用程序开发人员可通过它�
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 448cccdf35510db9bac9cdb5648739b18302c90b
-ms.openlocfilehash: 146078c8caf1bcd757d3e19aae5860aba9049ab9
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 48de017fea28d3f76097095cfca17fd03ace65b2
 
 ---
 #<a name="expressroute-documentation"></a>ExpressRoute 文档
@@ -69,7 +69,7 @@ ms.openlocfilehash: 146078c8caf1bcd757d3e19aae5860aba9049ab9
 
 ---
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 <ul class="panelContent cardsW">
     <li>
@@ -94,7 +94,7 @@ ms.openlocfilehash: 146078c8caf1bcd757d3e19aae5860aba9049ab9
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>ExpressRoute REST API 参考</p>
+                        <p>ExpressRoute REST API</p>
                     </div>
                 </div>
             </div>
@@ -113,6 +113,6 @@ ms.openlocfilehash: 146078c8caf1bcd757d3e19aae5860aba9049ab9
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,6 +16,7 @@
 #### [Node.js](functions-reference-node.md)
 #### [F#](functions-reference-fsharp.md)
 ### [使用触发器和绑定](functions-triggers-bindings.md)
+#### [DocumentDB 绑定](functions-bindings-documentdb.md)
 #### [事件中心绑定](functions-bindings-event-hubs.md)
 #### [HTTP 和 Webhook 绑定](functions-bindings-http-webhook.md)
 #### [移动应用绑定](functions-bindings-mobile-apps.md)
@@ -49,6 +50,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

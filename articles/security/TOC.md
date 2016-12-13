@@ -33,12 +33,10 @@
 ### [安全最佳实践和模式](security-best-practices-and-patterns.md)
 ### [构建可复原应用程序](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
-# 参考
+# 相关内容
 ## [信任中心](security-microsoft-trust-center.md)
 ## [Microsoft 安全响应中心](azure-security-response-center.md)
 ## [渗透测试](azure-security-pen-testing.md)
-
-# 相关内容
 ## [安全中心](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
 ## [密钥保管库](../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
@@ -52,6 +50,7 @@
 ## [Virtual Academy 中的安全课程](security-microsoft-virtual-academy.md)
 ## [第 9 频道上的安全视频](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO1-->
 
 

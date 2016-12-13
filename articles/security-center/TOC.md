@@ -53,7 +53,7 @@
 ### [故障排除指南](security-center-troubleshooting-guide.md)
 
 # 参考
-## [REST API](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
+## [REST](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
 
 # 相关内容
 ## [Azure 安全性](/azure/security/)
@@ -66,6 +66,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

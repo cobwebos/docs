@@ -20,9 +20,9 @@
 ### [身份验证和授权](power-bi-embedded-app-token-flow.md)
 ### [Power BI Embedded 的行级别安全性](power-bi-embedded-rls.md)
 
-# 引用
-## [PowerShell](/powershell/resourcemanager/)
-## [.NET](/dotnet/api/)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded)
+## [.NET](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK 下载](https://www.nuget.org/profiles/powerbi)
 ## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [REST](/rest/api/powerbiembedded/)
@@ -31,9 +31,9 @@
 # 资源
 ## [示例](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Power BI 社区](http://community.powerbi.com/t5/Developer/bd-p/Developer)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/powerbi)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

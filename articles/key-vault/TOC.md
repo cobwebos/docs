@@ -27,29 +27,27 @@
 ### [使用 CLI 创建和管理](key-vault-manage-with-cli.md)
 
 # 参考
-## [关于密钥和机密](https://msdn.microsoft.com/en-us/library/azure/dn903623)
-## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
-
-## [密钥保管库 Resource Manager PowerShell Cmdlet](/powershell/resourcemanager/)
-## [密钥保管库经典 PowerShell Cmdlet](/powershell/servicemanagement/)
-## [在 Azure CLI 中使用密钥保管库](/cli/azure/)
-## [Java 中的密钥保管库参考](/java/api/)
-## [密钥保管库托管参考 API](/dotnet/api/) 
-## [密钥保管库 REST API 参考](/rest/api/keyvault) 
-## [适用于密钥保管库的 Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
+## [PowerShell](/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault)
+## [Azure 2.0 CLI（预览版）](/cli/azure/keyvault)
+## [.NET](/dotnet/api/microsoft.azure.keyvault)
+## [Java](/java/api/com.microsoft.azure.keyvault)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+## [REST](/rest/api/keyvault)
 
 # 相关内容
 ## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
-## [Azure 权限管理](https://technet.microsoft.com/en-US/dn175750)
+## [Azure Rights Management](https://technet.microsoft.com/en-US/dn175750)
 ## [使用密钥保管库的可扩展密钥管理](https://msdn.microsoft.com/en-us/library/azure/dn198405)
 ## [多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # 资源
+## [关于密钥和机密](https://msdn.microsoft.com/en-us/library/azure/dn903623)
+## [代码示例](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [定价](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [博客](http://blogs.technet.com/b/kv/)
 ## [论坛](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

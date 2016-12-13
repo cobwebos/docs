@@ -72,10 +72,10 @@
 ### [在 Azure Stack 上部署 SQL Server 资源提供程序适配器](azure-stack-sql-resource-provider-deploy.md)
 
 ## 规划和部署应用服务
-### [Azure Stack Web 应用概述](azure-stack-app-service-overview.md)
-### [开始使用 Azure Stack Web 应用之前](azure-stack-app-service-before-you-get-started.md)
-### [Web 应用：添加更多 Web 辅助角色](azure-stack-webapps-add-worker-roles.md)
-### [将 Web 应用资源提供程序添加到 Azure Stack](azure-stack-app-service-deploy.md)
+### [Azure Stack 中的应用服务概述](azure-stack-app-service-overview.md)
+### [准备工作](azure-stack-app-service-before-you-get-started.md)
+### [添加更多 Web 辅助角色](azure-stack-app-service-add-worker-roles.md)
+### [将应用服务资源提供程序添加到 Azure Stack](azure-stack-app-service-deploy.md)
 
 # 故障排除
 ## [排查 Azure Stack 问题](azure-stack-troubleshooting.md)
@@ -86,6 +86,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -39,13 +39,17 @@
 ### [管理用户帐户](api-management-howto-create-or-invite-developers.md)
 ### [使用自动化进行管理](automation-manage-api-management.md)
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
-#引用
+
+# 参考
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [经典 PowerShell](https://msdn.microsoft.com/library/azure/mt613507)
+## [PowerShell（经典）](https://msdn.microsoft.com/library/azure/mt613507)
 ## [REST](/rest/api/apimanagement/)
+## [REST（原始）](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)
+
+
+# 资源
 ## [策略](https://msdn.microsoft.com/library/azure/dn894081)
 ## [模板](https://msdn.microsoft.com/library/azure/mt697540)
-#资源
 ## [定价](https://azure.microsoft.com/pricing/details/api-management/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-api-management)
@@ -63,6 +67,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 # 概述
-## [What is Azure Search?](search-what-is-azure-search.md)
+## [什么是 Azure 搜索？](search-what-is-azure-search.md)
 # 入门
 ## [选择 SKU](search-sku-tier.md)
 ## [创建服务](search-create-service-portal.md)
@@ -25,6 +25,8 @@
 ### [服务限制](search-limits-quotas-capacity.md)
 ### [服务可伸缩性](search-capacity-planning.md)
 ### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
+
+
 ## 开发
 ### [升级 SDK](search-dotnet-sdk-migration.md)
 ### [升级 REST API](search-api-migration.md)
@@ -58,17 +60,17 @@
 ### [多语言搜索](search-language-support.md)
 
 # 参考
-## [API 版本](search-api-versions.md)
-## [服务 .NET](/dotnet/api/microsoft.azure.search)
-## [管理 .NET](/dotnet/api/microsoft.azure.management.search)
-## [服务 REST](/rest/api/searchservice/)
-## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
-## [管理 REST](/rest/api/searchmanagement/)
-## [Lucene 查询语法](https://msdn.microsoft.com/library/azure/mt589323)
-## [简单的查询语法](https://msdn.microsoft.com/library/azure/dn798920)
+## [.NET](/dotnet/api/microsoft.azure.search)
+## [.NET 管理](/dotnet/api/microsoft.azure.management.search)
+## [Java](/java/api/com.microsoft.azure.management.search)
+## [REST](/rest/api/searchservice)
+## [.NET（管理）](/rest/api/searchmanagement)
 
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=search)
+## 使用搜索 API
+##X [API 版本](search-api-versions.md)
+## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
 ## [定价](https://azure.microsoft.com/pricing/details/search/)
 ## 演示站点
 ### [作业列表应用](http://aka.ms/azjobsdemo)
@@ -85,6 +87,6 @@
 ### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

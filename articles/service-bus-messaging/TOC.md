@@ -51,28 +51,30 @@
 ### [使用 PowerShell 预配实体](service-bus-powershell-how-to-provision.md)
 
 # 参考
-## [定价详细信息](service-bus-pricing-billing.md)
-## [示例](service-bus-samples.md)
-## [异常](service-bus-messaging-exceptions.md)
-## [配额](service-bus-quotas.md)
-## [.NET](/dotnet/api/)
-## [REST](/rest/api/servicebus/)
+## [PowerShell](/powershell/resourcemanager/azurerm.scheduler/v0.11.1/azurerm.scheduler)
+## [.NET](/dotnet/api/microsoft.azure.management.servicebus)
+## [Java](/java/api/com.microsoft.azure.servicebus.amqp)
+## [REST](/rest/api/servicebus)
+
+# 资源
 ## [SQLFilter 语法](service-bus-messaging-sql-filter.md)
 ## [SQLRuleAction 语法](service-bus-messaging-sql-rule-action.md)
 ## [AMQP1.0 协议指南](service-bus-amqp-protocol-guide.md)
 ### [AMQP 1.0 基于请求-响应的操作](service-bus-amqp-request-response.md)
-
-# 资源
+## [定价详细信息](service-bus-pricing-billing.md)
+## [示例](service-bus-samples.md)
+## [异常](service-bus-messaging-exceptions.md)
+## [配额](service-bus-quotas.md)
 ## [博客](https://blogs.msdn.microsoft.com/servicebus/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/servicebus)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/forums/home?forum=servbus)
 ## [定价](https://azure.microsoft.com/pricing/details/service-bus/)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
-## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)（服务总线资源管理器）
+## [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [服务更新](https://azure.microsoft.com/updates/?product=service-bus)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

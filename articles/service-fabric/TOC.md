@@ -3,6 +3,7 @@
 ## [了解微服务](service-fabric-overview-microservices.md)
 ## [应用程序方案](service-fabric-application-scenarios.md)
 ## [体系结构](service-fabric-architecture.md)
+## [术语](service-fabric-technical-overview.md)
 
 # 入门
 ## 设置开发环境
@@ -117,7 +118,7 @@
 ### [服务放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
 ### [管理群集](service-fabric-cluster-resource-manager-management-integration.md)
 ### [群集碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-### [平衡群集](service-fabric-cluster-resource-manager-balancing.md)
+### [均衡群集](service-fabric-cluster-resource-manager-balancing.md)
 ### [限制](service-fabric-cluster-resource-manager-advanced-throttling.md)
 ### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
 
@@ -175,22 +176,14 @@
 #### [使用测试方案](service-fabric-testability-scenarios.md)
 ### [对应用程序进行负载测试](service-fabric-vso-load-test.md)
 
-# 引用
-## [术语](service-fabric-technical-overview.md)
-## [Reliable Actors](https://go.microsoft.com/fwlink/p/?linkid=833398)
-## [Reliable Actors WCF](https://go.microsoft.com/fwlink/p/?linkid=833401)
-## [Reliable Services](https://go.microsoft.com/fwlink/p/?linkid=833402)
-## [Reliable Services WCF](https://go.microsoft.com/fwlink/p/?linkid=833403)
-## [数据](https://go.microsoft.com/fwlink/p/?linkid=833404)
-## [数据接口](https://go.microsoft.com/fwlink/p/?linkid=833406)
-## [系统](https://go.microsoft.com/fwlink/p/?linkid=833407)
-## [代码示例](http://aka.ms/servicefabricsamples)
-## [PowerShell](/powershell/servicefabric/vlatest/servicefabric)
-## [Java API](https://go.microsoft.com/fwlink/p/?linkid=833410)
-## [.NET](/dotnet/api)
-## [REST](/rest/api/servicefabric/)
+# 参考
+## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
+## [Java API](/java/api/microsoft.servicefabric.services)
+## [.NET](/dotnet/api/microsoft.servicefabric.services)
+## [REST](/rest/api/servicefabric)
 
 # 资源
+## [代码示例](http://aka.ms/servicefabricsamples)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 ## [定价](https://azure.microsoft.com/pricing/details/service-fabric/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=service-fabric)
@@ -198,6 +191,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

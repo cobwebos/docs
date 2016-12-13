@@ -52,6 +52,10 @@
 ### [Azure VM 备份失败：无法与 VM 代理通信以获取快照状态 - 快照 VM 子任务超时](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [在 Azure 备份中备份文件和文件夹时速度缓慢](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup)
+## [.NET](/dotnet/api/microsoft.azure.management.backupservices)
+
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/backup/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
@@ -59,6 +63,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=backup)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

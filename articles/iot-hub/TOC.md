@@ -8,6 +8,10 @@
 ### [IoT 中心入门 (.NET)](iot-hub-csharp-csharp-getstarted.md)
 ### [IoT 中心入门 (Java)](iot-hub-java-java-getstarted.md)
 ### [IoT 中心入门 (Node)](iot-hub-node-node-getstarted.md)
+## IoT 设备 SDK 入门
+### [适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)
+### [适用于 C 语言的 IoT 设备 SDK：有关 IoTHubClient 的详细信息](iot-hub-device-sdk-c-iothubclient.md)
+### [适用于 C 语言的 IoT 设备 SDK：有关序列化程序的详细信息](iot-hub-device-sdk-c-serializer.md)
 ## Raspberry Pi 入门
 ### [Raspberry Pi 3 入门](iot-hub-raspberry-pi-kit-node-get-started.md)
 ### 第 1 课：配置设备
@@ -32,6 +36,7 @@
 ## [网关 SDK 入门 (Linux)](iot-hub-linux-gateway-sdk-get-started.md)
 ## [网关 SDK 入门 (Windows)](iot-hub-windows-gateway-sdk-get-started.md)
 
+
 # 如何
 ## [处理设备到云的消息教程 (.NET)](iot-hub-csharp-csharp-process-d2c.md)
 ## [处理设备到云的消息教程 (Java)](iot-hub-java-java-process-d2c.md)
@@ -51,7 +56,7 @@
 ## [在 .NET/Node 中使用设备作业更新设备固件](iot-hub-csharp-node-firmware-update.md)
 ## [在 Node.js 中计划和广播作业](iot-hub-node-node-schedule-jobs.md)
 ## [在 .NET/Node 中计划和广播作业](iot-hub-csharp-node-schedule-jobs.md)
-## 规划部署
+## 计划
 ### [IoT 中心与事件中心的比较](iot-hub-compare-event-hubs.md)
 ### [缩放解决方案](iot-hub-scaling.md)
 ### [高可用性和灾难恢复](iot-hub-ha-dr.md)
@@ -74,9 +79,10 @@
 ### [设备和服务 SDK](iot-hub-devguide-sdks.md)
 ### [MQTT 支持](iot-hub-mqtt-support.md)
 ### [术语表](iot-hub-devguide-glossary.md)
-## 管理服务
+## 管理
 ### [使用门户创建 IoT 中心](iot-hub-create-through-portal.md)
-### [使用 CLI 创建 IoT 中心](iot-hub-create-using-cli.md)
+### [使用 CLI 2.0 预览版创建 IoT 中心](iot-hub-create-using-cli.md)
+### [使用 CLI 创建 IoT 中心](iot-hub-create-using-cli-nodejs.md)
 ### [使用 REST 创建 IoT 中心](iot-hub-rm-rest.md)
 ### [使用 PowerShell 创建 IoT 中心](iot-hub-rm-template-powershell.md)
 ### [使用模板创建 IoT 中心](iot-hub-rm-template.md)
@@ -96,17 +102,16 @@
 ### [保护 IoT 部署](iot-hub-security-deployment.md)
 
 # 参考
-## [Azure CLI](https://docs.microsoft.com/cli/azure)
-## [Java](https://docs.microsoft.com/java/api)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [Azure CLI 2.0 预览版](/cli/azure/iot)
+## [.NET（服务）](/dotnet/api/microsoft.azure.devices)
+## [.NET（设备）](/dotnet/api/microsoft.azure.devices.client)
+## [Java（服务）](/java/api/com.microsoft.azure.iot.service.auth)
+## [Java（设备）](/java/api/com.microsoft.azure.iothub)
 ## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
-## [网关 SDK API](http://azure.github.io/azure-iot-gateway-sdk)
-## [资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest)
-## [管理标识 REST API](https://docs.microsoft.com/rest/api/iothub/device-identities-rest)
-## [设备消息传送 REST API](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis)
-## [适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)
-## [适用于 C 语言的 IoT 设备 SDK：有关 IoTHubClient 的详细信息](iot-hub-device-sdk-c-iothubclient.md)
-## [适用于 C 语言的 IoT 设备 SDK：有关序列化程序的详细信息](iot-hub-device-sdk-c-serializer.md)
+## [网关 SDK](http://azure.github.io/azure-iot-gateway-sdk)
+## [REST（资源提供程序）](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest)
+## [REST（设备标识）](https://docs.microsoft.com/rest/api/iothub/device-identities-rest)
+## [REST（设备消息传送）REST API](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis)
 
 # 相关内容
 ## [Azure IoT 套件](https://azure.microsoft.com/documentation/suites/iot-suite/)
@@ -125,6 +130,6 @@
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

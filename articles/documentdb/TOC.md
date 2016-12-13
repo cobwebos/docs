@@ -82,19 +82,21 @@
 ### [使用 Power BI 直观显示数据](documentdb-powerbi-visualize.md)
 
 
-# 引用
-## [Java SDK](documentdb-sdk-java.md)
-## [.NET SDK](documentdb-sdk-dotnet.md)
-## [.NET Core SDK](documentdb-sdk-dotnet-core.md)
-## [.NET 示例](documentdb-dotnet-samples.md)
-## [Node.js SDK](documentdb-sdk-node.md)
-## [Node.js 示例](documentdb-nodejs-samples.md)
-## [Python SDK](documentdb-sdk-python.md)
-## [批处理 Python 示例](documentdb-python-samples.md)
-## [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-## [SQL 语法备忘单](documentdb-sql-query-cheat-sheet.md)
+# 参考
+## [Java](documentdb-sdk-java.md)
+## [.NET](documentdb-sdk-dotnet.md)
+## [.NET Core](documentdb-sdk-dotnet-core.md)
+## [Node.js](documentdb-sdk-node.md)
+## [Python](documentdb-sdk-python.md)
 ## [REST](/rest/api/documentdb/)
 ## [REST 资源提供程序](/rest/api/documentdbresourceprovider/)
+
+# 相关内容
+## [.NET 示例](documentdb-dotnet-samples.md)
+## [Node.js 示例](documentdb-nodejs-samples.md)
+## [批处理 Python 示例](documentdb-python-samples.md)
+## [SQL 语法](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+## [SQL 语法备忘单](documentdb-sql-query-cheat-sheet.md)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/documentdb/)
@@ -110,6 +112,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

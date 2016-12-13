@@ -64,6 +64,13 @@
 #### [经典门户](cloud-services-how-to-scale.md)
 ### [使用 Python 管理 Azure 资源](cloud-services-python-how-to-use-service-management.md)
 
+### [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)
+### 来宾 OS 停用
+#### [停用策略](cloud-services-guestos-retirement-policy.md)
+#### [系列 1 停用通知](cloud-services-guestos-family1-retirement.md)
+### [来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)
+### [云服务角色配置 XPath 备忘单](cloud-services-role-config-xpath.md)
+
 ## 管理证书
 ### [云服务和管理证书](cloud-services-certs-create.md)
 ### 配置 SSL 
@@ -97,16 +104,10 @@
 ### [恢复指南](cloud-services-disaster-recovery-guidance.md)
 ### [云服务常见问题](cloud-services-faq.md)
 
-# 引用
+# 参考
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
-## [来宾 OS 修补程序](cloud-services-guestos-msrc-releases.md)
-## 来宾 OS 停用
-### [停用策略](cloud-services-guestos-retirement-policy.md)
-### [系列 1 停用通知](cloud-services-guestos-family1-retirement.md)
-## [来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)
-## [云服务角色配置 XPath 备忘单](cloud-services-role-config-xpath.md)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/cloud-services/)
@@ -116,6 +117,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

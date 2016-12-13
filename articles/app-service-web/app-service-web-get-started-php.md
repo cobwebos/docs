@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/13/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a9c3850b2eb3db7145d66f8e27f7345600b7a3e5
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 2c31f12bdef63405245f43a48537a02b040248a1
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: a9c3850b2eb3db7145d66f8e27f7345600b7a3e5
 ## <a name="prerequisites"></a>先决条件
 * [Git](http://www.git-scm.com/downloads)。
 * [Azure CLI](../xplat-cli-install.md)。
-* 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
+* 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 无需 Azure 帐户即可 [试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
@@ -112,6 +112,6 @@ ms.openlocfilehash: a9c3850b2eb3db7145d66f8e27f7345600b7a3e5
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -43,13 +43,14 @@
 ### [404 状态](cdn-troubleshoot-endpoint.md)
 ### [文件压缩](cdn-troubleshoot-compression.md)
 
-# 引用
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
-## [Azure CDN POP 位置](cdn-pop-locations.md)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn)
+## [.NET](/dotnet/api/microsoft.azure.management.cdn)
+## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)
 
 # 资源
+## [Azure CDN POP 位置](cdn-pop-locations.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=cdn)
 ## [定价](https://azure.microsoft.com/pricing/details/cdn/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
@@ -57,6 +58,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

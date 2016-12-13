@@ -61,12 +61,15 @@
 ### [日志搜索 API](log-analytics-log-search-api.md)
 ### [警报 API](log-analytics-api-alerts.md)
 
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+
 # 资源
 ## [升级分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 ## [定价](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

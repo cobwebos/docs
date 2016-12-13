@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 5f0cd9a3f3d4b578312e1b9f9f8b9c5ee7d6aa27
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 3042d17ac3ebfc22cc6e35430d0829a6bc22e0e2
 
 ---
 #<a name="cdn-documentation"></a>CDN 文档
@@ -92,7 +92,7 @@ Azure 内容交付网络 (CDN) 为开发人员提供一个全局解决方案用�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>CDN REST API 参考</p>
+                        <p>REST API</p>
                     </div>
                 </div>
             </div>
@@ -112,6 +112,6 @@ Azure 内容交付网络 (CDN) 为开发人员提供一个全局解决方案用�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

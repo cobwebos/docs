@@ -37,15 +37,21 @@
 ### [门户](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
-## [结合使用负载平衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
+## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## 管理
 ### [诊断](application-gateway-diagnostics.md)
 ### [故障排除](application-gateway-troubleshooting-502.md)
-# 参考
-## [PowerShell cmdlets](https://docs.microsoft.com/powershell/resourcemanager)
-## [REST](https://msdn.microsoft.com/library/mt684941)
-## [经典 REST](https://msdn.microsoft.com/library/azure/mt299393)
 
+# 参考
+## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
+## [Azure CLI 2.0 预览版](/cli/azure/network/application-gateway)
+## [.NET](/dotnet/api)
+## [Java](/java/api/com.microsoft.azure.management.network)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)
+## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
+## [REST](https://msdn.microsoft.com/library/mt684941)
+## [REST（经典）](https://msdn.microsoft.com/library/azure/mt299393)
 # 相关内容
 ## [ExpressRoute](/azure/expressroute/)
 ## [虚拟网络](/azure/virtual-network/)
@@ -61,6 +67,6 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -26,6 +26,10 @@
 ### [3：询问相关问题](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4：预测答案](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
 ### [5：复制他人的工作](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
+
+## [R 快速入门](machine-learning-r-quickstart.md)
+
+
 # 如何
 ## 设置工具和实用程序
 ### [设置环境](machine-learning-data-science-environment-setup.md)
@@ -81,10 +85,10 @@
 ##### [使用 Hive 表](machine-learning-data-science-sample-data-hive.md)
 #### 处理数据
 ##### [使用 Python 进行访问](machine-learning-python-data-access.md)
-##### [处理 blob 数据](machine-learning-data-science-process-data-blob.md)
+##### [处理 Blob 数据](machine-learning-data-science-process-data-blob.md)
 ##### [使用 Azure Data Lake](machine-learning-data-science-process-data-lake-walkthrough.md)
 ##### [使用 SQL VM](machine-learning-data-science-process-sql-server-virtual-machine.md)
-##### [使用 Data Pipeline](machine-learning-automated-data-pipeline-cheat-sheet.md)
+##### [使用数据管道](machine-learning-automated-data-pipeline-cheat-sheet.md)
 #### 使用 Spark 处理数据
 ##### [概述](machine-learning-data-science-spark-overview.md)
 ##### [浏览数据](machine-learning-data-science-spark-data-exploration-modeling.md)
@@ -167,14 +171,15 @@
 #### [正态分布套件](machine-learning-r-csharp-normal-distribution.md)
 #### [二项式分布套件](machine-learning-r-csharp-binomial-distribution.md)
 #### [应用商店常见问题](machine-learning-marketplace-faq.md)
-# 引用
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+
+# 参考
+## [PowerShell](/azure/machine-learning/machine-learning-powershell-module)
 ## [用于机器学习的 PowerShell 模块](machine-learning-powershell-module.md)
-## [算法参考](https://msdn.microsoft.com/library/azure/dn905974.aspx)
-## [R 快速入门](machine-learning-r-quickstart.md)
-## [Net# 神经网络语言](machine-learning-azure-ml-netsharp-reference-guide.md)
-## [管理 REST API](/rest/api/machinelearning/index)
+## [算法和模块参考](https://msdn.microsoft.com/library/azure/dn905974.aspx)
+## [REST](/rest/api/machinelearning)
+
 # 相关内容
+
 ## Cortana Intelligence 库
 ### [概述](machine-learning-gallery-how-to-use-contribute-publish.md)
 ### [行业](machine-learning-gallery-industries.md)
@@ -193,7 +198,7 @@
 #### [认知服务](https://azure.microsoft.com/services/cognitive-services/)
 #### 建议
 ##### [概述](machine-learning-recommendation-api-sample-application.md)
-##### [快速启动](machine-learning-recommendation-api-quick-start-guide.md)
+##### [快速入门](machine-learning-recommendation-api-quick-start-guide.md)
 ##### [参考](machine-learning-recommendation-api-documentation.md)
 ##### [使用 JavaScript](machine-learning-recommendation-api-javascript-integration.md)
 ##### [常见问题](machine-learning-recommendation-api-faq.md)
@@ -205,7 +210,10 @@
 ##### [概述](cortana-analytics-playbook-vehicle-telemetry.md)
 ##### [操作手册](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
 ##### [设置](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
+
 # 资源
+## [机器学习 REST 错误代码](/machine-learning/machine-learning-web-service-error-codes)
+## [Net# 神经网络语言](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [定价](https://azure.microsoft.com/pricing/details/machine-learning/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [博客](http://blogs.technet.com/b/machinelearning/)
@@ -214,6 +222,7 @@
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 ## [从实时聊天获取帮助](machine-learning-live-chat.md)
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO1-->
 
 

@@ -80,14 +80,15 @@
 ### [排查数据工厂问题](data-factory-troubleshoot.md)
 ### [解决数据管理网关的使用问题](data-factory-troubleshoot-gateway-issues.md)
 
-# 引用
-## [数据管理网关的发行说明](data-factory-gateway-release-notes.md)
+# 参考
+## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
+## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [Azure 数据工厂开发人员参考](data-factory-sdks.md)
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
 ## [REST](/rest/api/datafactory/)
 
 # 资源
+## [数据管理网关的发行说明](data-factory-gateway-release-notes.md)
+## [学习路径](https://azure.microsoft.com/documentation/learning-paths/data-factory)
 ## [案例研究](data-factory-customer-case-studies.md)
 ### [产品建议](data-factory-product-reco-usecase.md)
 ### [客户分析](data-factory-customer-profiling-usecase.md)
@@ -100,6 +101,6 @@
 ## [请求功能](https://feedback.azure.com/forums/270578-azure-data-factory)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

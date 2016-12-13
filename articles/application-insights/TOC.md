@@ -30,18 +30,20 @@
 
 # 如何
 ## 规划和设计
-
 ### [对 Web 应用和服务进行深度诊断](app-insights-devops.md)
 ### [使用 Application Insights 和 HockeyApp 进行开发人员分析](app-insights-developer-analytics.md)
 ### [在 Web 应用程序中监视性能](app-insights-web-monitor-performance.md)
 ### [Application Insights 使用分析](app-insights-overview-usage.md)
 ### [分隔 Application Insights 资源](app-insights-separate-resources.md)
 ### [如何在 Application Insights 中执行...？](app-insights-how-do-i.md)
+## 迁移
+### [从 Azure 终结点监视迁移至可用性测试](app-insights-migrate-azure-endpoint-tests.md)
 
 ## 配置
-
+### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ### Azure
 #### [诊断](app-insights-azure-diagnostics.md)
+## [IP 地址](app-insights-ip-addresses.md)
 
 ### ASP.NET
 #### [收集更多遥测](app-insights-asp-net-more.md)
@@ -102,7 +104,6 @@
 ### [连续导出](app-insights-export-telemetry.md)
 ### [导出到 Power BI](app-insights-export-power-bi.md)
 
-
 ## 开发
 
 ### [自定义事件和指标 API](app-insights-api-custom-events-metrics.md)
@@ -111,33 +112,30 @@
 
 
 ## 管理
-
 ### [管理定价和配额](app-insights-pricing.md)
 ### [为 SCOM 使用 Application Insights 的应用程序性能监视](app-insights-scom.md)
 
+##导出
+## [导出数据模型](app-insights-export-data-model.md)
 
 ## 安全
-
 ### [数据收集、保留和存储](app-insights-data-retention-privacy.md)
 ### [资源、角色和访问控制](app-insights-resources-roles-access-control.md)
-
-
 ## 故障排除
 ### [没有 .NET 的数据](app-insights-asp-net-troubleshoot-no-data.md)
 ### [分析](app-insights-analytics-troubleshooting.md)
 ### [Java](app-insights-java-troubleshoot.md)
 
 # 参考
-## [Java API](http://dl.windowsazure.com/applicationinsights/javadoc/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [JavaScript API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
+## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
+## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+## [REST](https://dev.applicationinsights.io/)
+
+# 资源
 ## [分析参考](app-insights-analytics-reference.md)
-## [采样](app-insights-sampling.md)
-## [IP 地址](app-insights-ip-addresses.md)
-## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-## [导出数据模型](app-insights-export-data-model.md)
-## [从 Azure 终结点监视迁移至可用性测试](app-insights-migrate-azure-endpoint-tests.md)
+## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [开发人员分析：语言、平台和集成](app-insights-platforms.md)
+### [采样](app-insights-sampling.md)
 ### [示例和演练](app-insights-code-samples.md)
 #### [演练：为 Microsoft Dynamics CRM Online 启用遥测](app-insights-sample-mscrm.md)
 #### [演练：使用流分析导出到 SQL](app-insights-code-sample-export-sql-stream-analytics.md)
@@ -145,9 +143,6 @@
 ## [用于 Windows Phone 和应用商店的 Application Insights SDK 发行说明](app-insights-release-notes-windows.md)
 ## [开发人员分析工具发行说明](app-insights-release-notes-vsix.md)
 ## [SDK 发行说明 - Application Insights](app-insights-release-notes.md)
-## [数据访问 REST API](https://dev.applicationinsights.io/)
-
-# 资源
 ## [定价](https://azure.microsoft.com/pricing/details/application-insights/)  
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/az-application-insights)
@@ -157,6 +152,7 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO1-->
 
 
