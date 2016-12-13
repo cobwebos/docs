@@ -5,7 +5,7 @@ ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
 ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
 
 ---
-#<a name="dns-documentation"></a>DNS 文档
+# <a name="dns-documentation"></a>DNS 文档
 
 Azure DNS（域名系统）是一个 DNS 域服务，它使用 Microsoft Azure 基础结构提供名称解析。  通过在 Azure 中托管你的域，你可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理你的 DNS 记录。
 
@@ -89,7 +89,7 @@ Azure DNS（域名系统）是一个 DNS 域服务，它使用 Microsoft Azure �
 <h2>参考</h2>
 <ul class="panelContent cardsW">
 <li>
-    <div class="cardSize"><p />
+    <div class="cardSize">
         <div class="cardPadding">
             <div class="card">
                 <div class="cardText">

@@ -102,7 +102,7 @@ ms.openlocfilehash: f87947ed5f072ba4f0927ade1b1d3ec0e1424f3c
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -117,7 +117,7 @@ ms.openlocfilehash: f87947ed5f072ba4f0927ade1b1d3ec0e1424f3c
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

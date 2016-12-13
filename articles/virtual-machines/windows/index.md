@@ -120,7 +120,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -135,7 +135,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
