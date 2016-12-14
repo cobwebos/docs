@@ -1,0 +1,152 @@
+---
+title: "步骤 3：创建新机器学习实验 | Microsoft Docs"
+description: "开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。"
+services: machine-learning
+documentationcenter: 
+author: garyericson
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/05/2016
+ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ec6ca6b1f06223b1ce3d38e22117e63f438859ce
+
+
+---
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>演练步骤 3：创建新的 Azure 机器学习实验
+这是演练的第三步，[在 Azure 机器学习中开发预测分析解决方案](machine-learning-walkthrough-develop-predictive-solution.md)
+
+1. [创建机器学习工作区](machine-learning-walkthrough-1-create-ml-workspace.md)
+2. [上载现有数据](machine-learning-walkthrough-2-upload-data.md)
+3. **创建新试验**
+4. [定型和评估模型](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. [部署 Web 服务](machine-learning-walkthrough-5-publish-web-service.md)
+6. [访问 Web 服务](machine-learning-walkthrough-6-access-web-service.md)
+
+- - -
+本演练的下一步是在机器学习工作室中创建一个使用我们上传的数据集的实验。  
+
+1. 在工作室中，单击窗口底部的“+新建”。
+2. 选择“实验”，然后选择“空白实验”。 选择画布顶部的默认实验名称，然后将它重命名为有意义的名称
+   
+   > [!TIP]
+   > 在“属性”窗格中填写实验的“摘要”和“说明”会是一个很好的做法。 这些属性为你提供了记录实验的机会，以便任何看到它的人都能理解你的目标和方法。
+   > 
+   > 
+3. 在实验画布左侧的模块控制板中，展开“已保存的数据集”。
+4. 找到你在“我的数据集”下创建的数据集，并将其拖动到画布上。 此外还可以通过在控制板上方的“搜索”框中输入名称来查找数据集。  
+
+## <a name="prepare-the-data"></a>准备数据
+你可以通过单击数据集的输出端口（底部的小圆圈）并选择“可视化”来查看整个数据集的前 100 行数据和部分统计信息。  
+
+因为数据文件没有列标题，所以工作室提供了通用标题（Col1、Col2 等）。 好标题不是创建模型的关键，但它们使得处理实验中的数据变得更容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
+
+我们可以使用 [编辑元数据] [edit-metadata] 模块来添加列标题。
+你可以使用 [编辑元数据] [edit-metadata ] 模块更改与数据集关联的元数据。 在此情况下，它可以为列标题提供更友好的名称。 
+
+若要使用 [编辑元数据] [edit-metadata]，你需要先指定要修改的列（在本例中为所有列）。接下来，指定要对这些列执行的操作（在此情况下为更改列标题）。
+
+1. 在模块控制板的“搜索”框中键入“元数据”。 你会在模块列表中看到 [编辑元数据] [edit-metadata]。
+2. 单击并将 [编辑元数据] [edit-metadata]模块拖动到画布上，并将其拖放到我们之前添加的数据集的下方。
+3. 将数据集连接到 [编辑元数据] [edit-metadata]：单击数据集的输出端口（数据集底部的小圆圈）。接下来，将其拖动到 [编辑元数据] [edit-metadata]（模块顶部的小圆圈）的输入端口，然后松开鼠标按钮。 即便是在画布上来回移动，数据集和模块仍保持连接。
+   
+   实验现在看起来应当与下图类似：  
+   
+   ![添加编辑元数据][2]
+   
+   红色感叹号表示尚未设置此模块的属性。 我们将在下一步完成该操作。
+   
+   > [!TIP]
+   > 可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在此情况下，请双击 [编辑元数据] [edit-metadata]模块，然后输入注释“添加列标题”。 单击画布上的任意位置以关闭文本框。 若要显示注释，请单击模块上的向下箭头。
+   > 
+   > 
+4. 选择 [编辑元数据] [edit-metadata]，然后在画布右侧的“属性”窗格中，单击“启动列选择器”。
+5. 在“选择列”对话框中，选择“可用列”中的所有行，然后单击 > 以将其移动到“选定列”。
+   对话框应如下所示：![列选择器已选择所有列][4]
+6. 单击“确定”复选标记。
+7. 回到“属性”窗格中，查找“新列名称”参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 你可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
+   
+       Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+   
+   “属性”窗格将如下所示：
+   
+   ![编辑元数据的属性][1]
+
+> [!TIP]
+> 若要验证列标题，请运行实验（单击实验画布下方的“运行”）。 完成运行后（[编辑元数据] [edit-metadata] 上将显示绿色对勾标记），请单击 [编辑元数据] [编辑元数据的输出端口 ] 模块，然后选择“可视化”。 你可以用同样的方式查看任何模块的输出，以通过实验查看数据的进度。
+> 
+> 
+
+## <a name="create-training-and-test-datasets"></a>创建训练和测试数据集
+实验的下一步是生成单独的数据集，该数据集将用于训练和测试模型。
+
+为此，我们使用 [拆分数据] [split] 模块。  
+
+1. 找到 [拆分数据] [split] 模块，将其拖动到画布上，并将其连接到最后一个 [编辑元数据] [edit-metadata] 模块。
+2. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”参数。 这意味着，随机的一半数据通过 [拆分数据] [split] 模块的一个端口输出，另一半通过另一个端口输出。 你可以调整这些参数，以及“随机种子”参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持原样。
+   
+   > [!TIP]
+   > **第一个输出数据集中行的分数**属性决定了通过左输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
+   > 
+   > 
+3. 双击 [拆分数据] [split] 模块，然后输入注释“训练/测试数据拆分 50%”。 
+
+我们可以使用 [拆分数据] [ split ] 模块的输出，但我们选择使用左输出作为训练数据，右输出作为测试数据。  
+
+如 UCI 网站上所述，将高信用风险错误分类为低的成本是将低信用风险错误分类为高的成本的五倍。 考虑到这一点，我们生成一个反映此成本函数的新数据集。 在新数据集中，每个高风险示例会复制五次，而每个低风险示例则不复制。   
+
+我们可以使用 R 代码进行此复制：  
+
+1. 找到并拖动 [执行 R 脚本] [execute-r-script] 模块到实验画布上，并连接 [拆分数据] [split] 模块添加到 [执行 R 脚本] [execute-r-script] 模块的第一个输入端口（“Dataset1”）。
+2. 双击 [执行 R 脚本] [execute-r-script] 模块，然后输入注释“设置成本调整”。
+3. 在“属性”窗格中，删除 **R 脚本**参数中的默认文本，然后输入以下脚本：
+   
+       dataset1 <- maml.mapInputPort(1)
+       data.set<-dataset1[dataset1[,21]==1,]
+       pos<-dataset1[dataset1[,21]==2,]
+       for (i in 1:5) data.set<-rbind(data.set,pos)
+       maml.mapOutputPort("data.set")
+
+我们需要对 [拆分数据] [split] 模块的每个输出执行相同的复制操作，以便训练和测试数据具有相同的成本调整。
+
+1. 右键单击 [执行 R 脚本] [execute-r-script] 模块，然后选择“复制”。
+2. 右键单击实验画布，然后选择“粘贴”。
+3. 将 [执行 R 脚本] [execute-r-script] 模块的第一个输入端口连接到 [拆分数据] [split] 模块。 
+4. 在画布底部，单击“运行”。 
+
+> [!TIP]
+> 执行 R 脚本模块的副本包含与原始模块相同的脚本。 当你在画布上复制和粘贴模块时，副本将保留原始文件的所有属性。  
+> 
+> 
+
+我们的实验现在如下所示：
+
+![添加拆分模块和 R 脚本][3]
+
+有关在实验中使用 R 脚本的详细信息，请参阅[使用 R 扩展实验](machine-learning-extend-your-experiment-with-r.md)。
+
+**下一步：[训练和评估模型](machine-learning-walkthrough-4-train-and-evaluate-models.md)**
+
+[1]: ./media/machine-learning-walkthrough-3-create-new-experiment/create1.png
+[2]: ./media/machine-learning-walkthrough-3-create-new-experiment/create2.png
+[3]: ./media/machine-learning-walkthrough-3-create-new-experiment/create3.png
+[4]: ./media/machine-learning-walkthrough-3-create-new-experiment/columnselector.png
+
+
+<!-- Module References -->
+[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
+[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
+[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
