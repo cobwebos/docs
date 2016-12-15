@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/30/2016
+ms.date: 11/29/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 47a89987b65b442c7b489984a4fc139eb1b82758
-ms.openlocfilehash: 8efde94c5771212b4549f10882a4e55739231d61
+ms.sourcegitcommit: 44e397c7521ba8f0ba11893c364f51177561bee4
+ms.openlocfilehash: a74fc30480068788f33df092594119253df9487b
 
 
 ---
@@ -34,7 +34,7 @@ Azure Functions 提供事件驱动、按需计算体验，让用户能够创建�
 >
 
 ## <a name="create-a-webhook-triggered-function-from-the-template"></a>通过模板创建 Webhook 触发函数
-Function App 在 Azure 中托管函数的执行。 必须先具有一个有效的 Azure 帐户，然后才能创建函数。 如果还没有 Azure 帐户， [可以使用免费帐户](https://azure.microsoft.com/free/)。 
+Function App 在 Azure 中托管函数的执行。 如果尚未创建 Azure 帐户，请查看[试用 Functions](https://functions.azure.com/try) 主题，或[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 1. 转到 [Azure Functions 门户](https://functions.azure.com/signin) ，然后使用你的 Azure 帐户登录。
 
@@ -50,9 +50,12 @@ Function App 在 Azure 中托管函数的执行。 必须先具有一个有效�
 
 1. 复制“函数 URL”和“GitHub 密码”值。 在 GitHub 中创建 Webhook 时，将需要这些值。 
 
-2. 向下滚动到“运行”，注意请求正文中问题注释的预定义 JSON 正文，然后单击“运行”。 
+2. 单击“测试”，注意请求正文中问题注释的预定义 JSON 正文，然后单击“运行”。 
+
+    ![在门户中测试 Webhook 函数](./media/functions-create-a-web-hook-or-api-function/functions-test-webhook-in-portal.png)
    
-    只要提供任意预期正文 JSON 数据，然后单击“运行”按钮，就可以在“开发”选项卡中直接测试基于模板的新函数。 在这种情况下，模板具有问题注释的预定义正文。 
+    > [!NOTE]
+    > 只要提供任意预期正文 JSON 数据，然后单击“运行”按钮，就可以在“开发”选项卡中直接测试基于模板的新函数。 在这种情况下，模板具有问题注释的预定义正文。 
 
 接下来，将在 GitHub 存储库中实际创建 Webhook。
 
@@ -91,6 +94,6 @@ Function App 在 Azure 中托管函数的执行。 必须先具有一个有效�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 900967975694a688b6d5054cb351746819b65f16
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8ac37244d1e691a2f075116f3d78b89923cfb845
 
 
 ---
@@ -78,7 +78,7 @@ ms.openlocfilehash: 900967975694a688b6d5054cb351746819b65f16
 
 现在你已创建保管库，接着就可以通过下载 Microsoft Azure 恢复服务代理和保管库凭据，开始准备基础结构以备份文件和文件夹了。
 
-## <a name="step-3-download-files"></a>步骤 3 - 下载文件
+## <a name="step-3---download-files"></a>步骤 3 - 下载文件
 1. 单击恢复服务保管库仪表板上的“设置”  。
    
     ![打开备份目标边栏选项卡](./media/backup-try-azure-backup-in-10-mins/settings-button.png)
@@ -102,7 +102,7 @@ ms.openlocfilehash: 900967975694a688b6d5054cb351746819b65f16
    
     ![准备基础结构](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
 
-## <a name="step-4-install-and-register-the-agent"></a>步骤 4 - 安装并注册代理
+## <a name="step-4--install-and-register-the-agent"></a>步骤 4 - 安装并注册代理
 > [!NOTE]
 > 通过 Azure 门户启用备份功能即将推出。 目前，可以使用本地 Microsoft Azure 恢复服务代理备份文件和文件夹。
 > 
@@ -184,6 +184,6 @@ ms.openlocfilehash: 900967975694a688b6d5054cb351746819b65f16
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

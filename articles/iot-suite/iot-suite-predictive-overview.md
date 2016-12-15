@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2d44af03b8e16a2bd936fc805ed4f0c4e6c5fbfc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 32da7abc3263e1d76f3f08ccae7ce159ead58bee
 
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>预见性维护预配置解决方案概述
-预见性维护预配置解决方案是 [Microsoft Azure IoT 套件][lnk_iot_suite] 随附的[预配置解决方案][lnk_preconfigured_solutions]之一。 此解决方案将实时设备遥测集合与使用 [Azure 机器学习][lnk_machine_learning]创建的预测模型相集成。
+*预见性维护*预配置解决方案是 [Microsoft Azure IoT 套件][lnk_iot_suite]随附的[预配置解决方案][lnk_preconfigured_solutions]之一。 此解决方案将实时设备遥测收集与使用 [Azure 机器学习][lnk_machine_learning]创建的预测模型相集成。
 
 有了 Azure IoT 套件，企业可以又快又方便地连接和监视资产，并实时分析数据。 预见性维护预配置解决方案会利用该数据及丰富的仪表板与可视化效果，为企业提供新的信息，以提升其效率及增加收入来源。
 
@@ -38,10 +38,10 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器会监�
 
 通过预测必要维护时间点，Fabrikam 可以优化各项作业，进而降低成本。 维护专员与排班专员一起合作，根据飞机在特定地点停机的时间，规划维护的时间，以确保飞机能有足够的停飞时间，不会造成排班中断。 Fabrikam 可以据此安排技术人员，让飞机无需浪费时间等待，就可获得有效率的维修。 库存控制管理员会收到维护计划，因此可以优化其订单流程和备用零件库存。 这一切不仅让 Fabrikam 可以将飞机停飞的时间降至最低，还可以降低运营成本，同时确保了乘客与乘务员的安全。
 
-若要了解 [Azure IoT 套件][lnk_iot_suite]如何提供这些功能，客户需要了解预见性维护的潜力，请查看此[信息图][lnk_infographic]。
+若要了解 [Azure IoT 套件][lnk_iot_suite]如何提供这些功能，客户需要先了解预见性维护，请查看此[信息图][lnk_infographic]。
 
 ## <a name="how-the-predictive-maintenance-solution-is-built"></a>如何生成预见性维护解决方案
-该解决方案利用可作为模板的现有 Azure 机器学习模型，演示这些功能如何运用通过 IoT 套件服务收集而来的设备遥测数据。 Microsoft 已生成飞机引擎的[回归模型][lnk_regression_model]，并发布了完整的模板、数据<sup>\[1\]</sup>，以及有关如何使用该模型的分步指南。
+该解决方案利用可作为模板的现有 Azure 机器学习模型，演示这些功能如何运用通过 IoT 套件服务收集而来的设备遥测数据。 Microsoft 构建了一个飞机引擎的[回归模型][lnk_regression_model]，并发布了完整的模板、数据<sup>\[1\]</sup>以及有关如何使用该模型的分步指南。
 
 Azure IoT 预见性维护预配置解决方案使用通过此模板创建的回归模型；此模型会部署到你的 Azure 订阅中，并通过自动生成的 API 加以公开。 此解决方案包含代表 4 个（共 100 个）引擎和 4 个（共 21 个）传感器数据流的测试数据的子集，可通过定型模型提供精确的结果。
 
@@ -50,7 +50,7 @@ Azure IoT 预见性维护预配置解决方案使用通过此模板创建的回�
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure IoT 如何实现预见性维护方案的详细信息，请阅读[捕获物联网的价值][lnk_capture_value]。
 
-[演练][lnk-predictive-walkthrough] 预见性维护预配置解决方案。
+[演练][lnk-predictive-walkthrough]预见性维护预配置解决方案。
 
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
 [lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
@@ -63,13 +63,13 @@ Azure IoT 预见性维护预配置解决方案使用通过此模板创建的回�
 你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
 * [有关 IoT 套件的常见问题][lnk-faq]
-* [从头开始建立 IoT 安全][lnk-security-groundup]
+* [从源头保障 IoT 的安全][lnk-security-groundup]
 
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

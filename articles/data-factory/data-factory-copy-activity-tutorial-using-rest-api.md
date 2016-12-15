@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 6bb9415180f7235b7521d5a4dc9d8a6f0e060756
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
   2. 获取**客户端 ID** 和**机密密钥**。 
   3. 获取 **租户 ID**。 
   4. 将 **ADFCopyTutorialApp** 应用程序分配给**数据工厂参与者**角色。  
-* 安装 [Azure PowerShell](../powershell-install-configure.md)。  
+* 安装 [Azure PowerShell](/powershell/azureps-cmdlets-docs)。  
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   
   1. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
@@ -84,7 +84,7 @@ ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)（查看、复制和重新生成存储访问密钥）。
+> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)（查看、复制和重新生成存储访问密钥）。
 > 
 > 
 
@@ -272,7 +272,7 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 在示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
 > [!NOTE]
-> 有关上述示例中使用的 JSON 属性的详细信息，请参阅 [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) （管道剖析）。
+> 有关上述示例中使用的 JSON 属性的详细信息，请参阅 [Anatomy of a Pipeline](data-factory-create-pipelines.md) （管道剖析）。
 > 
 > 
 
@@ -495,7 +495,7 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [azure-portal]: http://portal.azure.com
-[download-azure-powershell]: ../powershell-install-configure.md
+[download-azure-powershell]: /powershell/azureps-cmdlets-docs
 [data-factory-introduction]: data-factory-introduction.md
 
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
@@ -504,6 +504,6 @@ JSON 定义用于定义名为 **AzureSqlOutput**的数据集，表示管道中�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

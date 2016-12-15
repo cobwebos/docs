@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 883b3a27b4b06785068d04a143bae6c33fbed99b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0374fea21dbecabc0008cf6cd9096cd8c2d3f206
 
 
 ---
@@ -75,10 +75,10 @@ Azure Multi-Factor Authentication 应用提供一个附加的带外身份验证�
 
 <li>从任何计算机打开 Web 浏览器，然后导航到已安装移动应用 Web 服务的 URL（例如 https://www.publicwebsite.com/PA）。 确保未显示证书警告或错误。</li>
 
-### <a name="configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置移动应用设置
+### <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置移动应用设置
 安装移动应用 Web 服务后，你需要配置 Azure Multi-Factor Authentication 服务器，使其能够与门户配合工作。
 
-#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置移动应用设置
+#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置移动应用设置
 1. 在 Azure Multi-Factor Authentication 服务器中，单击“用户门户”图标。 如果允许用户控制其身份验证方法，请在“设置”选项卡上的“允许用户选择方法”下，选中“移动应用”。 如果未启用此功能，则最终用户将需要联系技术支持才能完成移动应用的激活。
 2. 选中“允许用户激活移动应用”框。
 3. 选中“允许用户注册”框。
@@ -89,6 +89,6 @@ Azure Multi-Factor Authentication 应用提供一个附加的带外身份验证�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a896240331d901ae839c2489c6266daac2780899
 
 
 ---
@@ -44,14 +44,18 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 ## <a name="a-nametoc395637760aprerequisites-for-this-database-tutorial"></a><a name="_Toc395637760"></a>本数据库教程的先决条件
 在按照本文中的说明操作之前，你应确保已拥有下列项：
 
-* 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/) 
+
+    或
+
+    本地安装的 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
 * [Visual Studio 2015](http://www.visualstudio.com/) 、Visual Studio 2013 Update 4 或更高版本。 如果使用的是 Visual Studio 2013，则需安装 [Microsoft.Net.Compilers Nuget 包](https://www.nuget.org/packages/Microsoft.Net.Compilers/) 以添加对 C# 6.0 的支持。 
-* 用于 .NET 的 Azure SDK 2.5.1 或更高版本，可通过 [Microsoft Web 平台安装程序][Microsoft Web 平台安装程序]获取。
+* 用于 .NET 的 Azure SDK 2.5.1 或更高版本，可通过 [Microsoft Web 平台安装程序][Microsoft Web Platform Installer]获取。
 
 本文中的所有屏幕截图都是使用已应用 Update 4 的 Visual Studio 2013 以及 Azure SDK for .NET 2.5.1 版获取的。 如果你的系统配备了不同的版本，那么，你的屏幕和选项可能不会完全相符，但只要你符合上述先决条件，本解决方案应该还是有效。
 
 ## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>步骤 1：创建 DocumentDB 数据库帐户
-让我们首先创建 DocumentDB 帐户。 如果已有帐户，则可以跳到 [创建新的 ASP.NET MVC 应用程序](#_Toc395637762)。
+让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[创建新的 ASP.NET MVC 应用程序](#_Toc395637762)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -78,6 +82,9 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 5. 在模板窗格中，选择“MVC”。
 6. 如果想要在 Azure 中托管应用程序，请选择右下角的“在云中托管”，让 Azure 托管应用程序。 我们已选择要在云中托管，并运行 Azure 网站中托管的应用程序。 选择此选项将会预先预配 Azure 网站，让你在需要部署最终的工作应用程序时更为容易。 如果想要在其他位置托管或者不想预先配置 Azure，只需清除“在云中托管”。
 7. 单击“确定”，让 Visual Studio 围绕空白 ASP.NET MVC 模板基架的搭建执行操作。 
+
+    如果收到错误“处理请求时出错”，请参阅[故障排除](#troubleshooting)部分。
+
 8. 如果你选择在云中托管，则会出现至少一个附加屏幕，要求你登录 Azure 帐户并提供新网站的部分值。 提供所有附加值，然后继续操作。 
    
       我在此处没有选择“数据库服务器”，因为我们并未使用 Azure SQL Database 服务器，稍后我们会在 Azure 门户中创建新的 Azure DocumentDB 帐户。
@@ -423,9 +430,9 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    
     此代码会调用到 DocumentDBRepository，并使用 CreateItemAsync 方法将新的待办事项保存到数据库。 
    
-    **安全说明**：此处所使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 这不仅仅是添加此属性，你的视图也必须使用此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][防止跨站点请求伪造]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
+    **安全说明**：此处所使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 这不仅仅是添加此属性，你的视图也必须使用此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][Preventing Cross-Site Request Forgery]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
    
-    **安全说明**：我们还会在方法参数中使用 **Bind** 属性，帮助防范 over-posting 攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][ASP.NET MVC 中的基本 CRUD 操作]。
+    **安全说明**：我们还会在方法参数中使用 **Bind** 属性，帮助防范 over-posting 攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][Basic CRUD Operations in ASP.NET MVC]。
 
 将新项添加到数据库所需的代码至此结束。
 
@@ -510,7 +517,7 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
    
     ![屏幕截图：本数据库教程创建的待办事项列表 Web 应用程序](./media/documentdb-dotnet-application/image24.png)
    
-    如果使用的是 Visual Studio 2013 并收到“不能在 catch 子句的正文中等待。 ”错误，则需安装 [Microsoft.Net.Compilers Nuget 包](https://www.nuget.org/packages/Microsoft.Net.Compilers/)。 也可将你的代码与 [GitHub][GitHub] 上的示例项目进行比较。 
+    如果使用的是 Visual Studio 2013 并收到“不能在 catch 子句的正文中等待。 ”错误，则需安装 [Microsoft.Net.Compilers Nuget 包](https://www.nuget.org/packages/Microsoft.Net.Compilers/)。 也可将代码与 [GitHub][GitHub] 上的示例项目进行比较。 
 2. 单击“新建”链接，然后在“名称”和“描述”字段中添加值。 将“已完成”复选框保持为未选中状态，否则，新**项**将以已完成状态添加，不会出现在初始列表中。
    
     ![屏幕截图：“创建”视图](./media/documentdb-dotnet-application/image25.png)
@@ -536,20 +543,39 @@ ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
 
 在几秒钟内，Visual Studio 将完成 Web 应用程序发布并启动浏览器，你可从中查看在 Azure 中运行的简单作品！
 
+## <a name="a-nametroubleshootingatroubleshooting"></a><a name="Troubleshooting"></a>故障排除
+
+如果在尝试部署 Web 应用时收到“处理请求时出错”，请执行以下操作： 
+
+1. 关闭该错误消息，然后再次选择“Microsoft Azure Web 应用”。 
+2. 登录，然后选择“新建”创建新的 Web 应用。 
+3. 在“在 Microsoft Azure 上创建 Web 应用”屏幕中执行以下操作： 
+    
+    - Web 应用名称：“todo-net-app”
+    - 应用服务计划：创建名为“todo-net-app”的新计划
+    - 资源组：创建名为“todo-net-app”的新组
+    - 区域：选择最靠近应用用户的区域
+    - 数据库服务器：单击“数据库”，然后单击“创建”。 
+
+4. 在“todo-net-app *”屏幕中，单击“验证连接”。**验证连接后，单击“发布”。** 
+    
+    然后，该应用将显示在浏览器中。
+
+
 ## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>后续步骤
 祝贺你！ 你刚使用 Azure DocumentDB 构建了第一个 ASP.NET MVC 应用程序并将其发布到了 Azure 网站。 可以从 [GitHub][GitHub] 下载或克隆完整应用程序（包括本教程未涵盖的详细信息和删除功能）的源代码。 因此，如果你想将代码添加到应用中，请捕捉代码，再将它添加到此应用中。
 
-若要向应用程序添加其他功能，请查看 [DocumentDB .NET 库](https://msdn.microsoft.com/library/azure/dn948556.aspx)中提供的 API，我们欢迎各位在 [GitHub][GitHub] 上的 DocumentDB .NET 库中补充内容。 
+若要向应用程序添加其他功能，请查看 [DocumentDB .NET 库](https://msdn.microsoft.com/library/azure/dn948556.aspx)中提供的 API，并欢迎在 [GitHub][GitHub] 上的 DocumentDB .NET 库中补充内容。 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web 平台安装程序]: http://www.microsoft.com/web/downloads/platform.aspx
-[防止跨站点请求伪造]: http://go.microsoft.com/fwlink/?LinkID=517254
-[ASP.NET MVC 中的基本 CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

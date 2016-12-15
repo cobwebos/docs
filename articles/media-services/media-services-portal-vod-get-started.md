@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 25d8b204f328514ebcfc69228dcbf9342bdf205b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 473ca94a4b081aee69fa06718790acd61a8b51b3
 
 
 ---
@@ -50,11 +50,11 @@ ms.openlocfilehash: 25d8b204f328514ebcfc69228dcbf9342bdf205b
    
     ![媒体服务创建](./media/media-services-portal-vod-get-started/media-services-new3.png)
    
-   1. 在“帐户名称”中，输入新的 AMS 帐户的名称。 媒体服务帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。
+   1. 在“帐户名”中，输入新的 AMS 帐户的名称。 媒体服务帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。
    2. 在“订阅”中，在你有权访问的不同 Azure 订阅中进行选择。
    3. 在“资源组”中，选择新的或现有的资源。  资源组是共享生命周期、权限和策略的资源的集合。 在[此处](../azure-resource-manager/resource-group-overview.md#resource-groups)了解更多信息。
    4. 在“位置”中，选择用于存储媒体服务帐户的媒体和元数据记录的地理区域。 此区域用于处理和流式传输媒体。 下拉列表中仅显示可用的媒体服务区域。 
-   5. 在“存储帐户”中，选择一个存储帐户以便为媒体服务帐户中的媒体内容提供 Blob 存储。 可选择媒体服务帐户所在的地理区域内的现有存储帐户，也可创建存储帐户。 将在同一区域内创建一个新的存储帐户。 适用于存储帐户名的规则对媒体服务帐户同样适用。
+   5. 在“存储帐户”中，选择一个存储帐户以便提供媒体服务帐户中媒体内容的 Blob 存储。 可选择媒体服务帐户所在的地理区域内的现有存储帐户，也可创建存储帐户。 将在同一区域内创建一个新的存储帐户。 适用于存储帐户名的规则对媒体服务帐户同样适用。
       
        单击[此处](../storage/storage-introduction.md)了解有关存储的详细信息。
    6. 选择“固定到仪表板”以查看帐户部署进度。
@@ -74,7 +74,7 @@ ms.openlocfilehash: 25d8b204f328514ebcfc69228dcbf9342bdf205b
     “设置”窗口显示在右侧。 
 2. 在“设置”窗口中，选择“密钥”。 
    
-    “管理密钥”窗口显示帐户名称，主密钥和辅助密钥也会显示。 
+    “管理密钥”窗口显示帐户名，主密钥和辅助密钥也会显示。 
 3. 按复制按钮复制这些值。
    
     ![媒体服务密钥](./media/media-services-portal-vod-get-started/media-services-keys.png)
@@ -221,6 +221,6 @@ Azure 门户提供可用于测试视频的内容播放器。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

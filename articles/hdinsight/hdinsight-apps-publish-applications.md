@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/18/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ca18e2660d2e59f6dee12010abc9d1780f3a717a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 35a6c06bc4850f3fcfc6221d62998465f3b38251
 
 
 ---
@@ -108,6 +108,6 @@ HDInsight 应用程序使用 *自带许可 (BYOL)* 模型，其中，应用程�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

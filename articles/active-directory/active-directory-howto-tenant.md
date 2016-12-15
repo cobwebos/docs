@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/28/2015
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b72271ca68df3b4b11c41f208fd1e3dd75b5e727
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 151b9bd8f29a1112c9ad839f2729309dba97c283
 
 
 ---
@@ -67,6 +67,6 @@ ms.openlocfilehash: b72271ca68df3b4b11c41f208fd1e3dd75b5e727
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

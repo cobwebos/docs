@@ -3,7 +3,7 @@ title: "Azure Active Directory B2C：使用第三方库从 iOS 应用程序调�
 description: "本文说明如何创建一个 iOS“待办事项列表”应用，该应用可以使用第三方库和 OAuth 2.0 持有者令牌调用 Node.js Web API"
 services: active-directory-b2c
 documentationcenter: ios
-author: brandwe
+author: xerners
 manager: mbaldwin
 editor: 
 ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 07/26/2016
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1b570e66afb7a4d3f7fc9b65600bfa7dc0fcc4b5
+ms.sourcegitcommit: 0175f4e83aace12d8e4607f2ad924893093c6734
+ms.openlocfilehash: cc5e199816668a5a0f936019ab8096e93a7a2f5a
 
 
 ---
@@ -28,9 +28,9 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 对于 OAuth2 或 OpenID Connect 的新手，该示例配置中的大部分内容可能较难理解。 建议查看 [此处所述的简要协议概述](active-directory-b2c-reference-protocols.md)。
 
 > [!NOTE]
-> 平台中有些功能（例如条件访问和 Intune 策略管理）采用这些标准中的表达式，因此要求使用开放源代码 Microsoft Azure 标识库。 
-> 
-> 
+> 平台中有些功能（例如条件访问和 Intune 策略管理）采用这些标准中的表达式，因此要求使用开放源代码 Microsoft Azure 标识库。
+>
+>
 
 B2C 平台不一定支持所有 Azure Active Directory 方案和功能。  若要确定是否应使用 B2C 平台，请阅读 [B2C limitations](active-directory-b2c-limitations.md)（B2C 限制）。
 
@@ -46,7 +46,7 @@ B2C 平台不一定支持所有 Azure Active Directory 方案和功能。  若�
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 需要按照 [策略参考文章](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)中所述，为每个类型创建此策略。 创建策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 需要按照 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述，为每个类型创建此策略。 创建策略时，请务必：
 
 * 在策略中选择“显示名称”和注册属性。
 * 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。 也可以选择其他声明。
@@ -63,7 +63,7 @@ B2C 平台不一定支持所有 Azure Active Directory 方案和功能。  若�
 git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-也可以下载完成的代码并立即开始着手使用： 
+也可以下载完成的代码并立即开始着手使用：
 
 ```
 git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
@@ -240,7 +240,7 @@ NXOAuthClient 库要求设置一些值。 完成后，可以使用获取的令�
 
 此时应注意一些有关 B2C 服务的事项，使此代码更容易了解：
 
-1. Azure AD B2C 使用查询参数提供的 *策略* 来为请求提供服务。 这样可以让 Azure Active Directory 仅充当应用程序的独立服务。 为了提供这些额外的查询参数，必须结合自定义策略参数提供 `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` 方法。 
+1. Azure AD B2C 使用查询参数提供的 *策略* 来为请求提供服务。 这样可以让 Azure Active Directory 仅充当应用程序的独立服务。 为了提供这些额外的查询参数，必须结合自定义策略参数提供 `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` 方法。
 2. Azure AD B2C 使用范围的方式非常类似于其他 OAuth2 服务器。 但是，由于使用 B2C 的关键在于验证用户与访问资源，因此绝对需要某些范围才能让流程正确运行。 这是 `openid` 范围。 Microsoft 标识 SDK 自动提供 `openid` 范围，因此 SDK 配置中不会显示该范围。 但是，由于我们使用第三方库，因此需要指定此范围。
 
 ```objc
@@ -274,7 +274,7 @@ NXOAuthClient 库要求设置一些值。 完成后，可以使用获取的令�
                                         forAccountType:data.accountIdentifier];
 }
 ```
-接下来，请务必在 AppDelegate 中的 `didFinishLaunchingWithOptions:` 方法下调用该范围。 
+接下来，请务必在 AppDelegate 中的 `didFinishLaunchingWithOptions:` 方法下调用该范围。
 
 ```
 [self setupOAuth2AccountStore];
@@ -299,16 +299,16 @@ NXOAuthClient 库要求设置一些值。 完成后，可以使用获取的令�
 
 > [!NOTE]
 > 确保将 `loginView` 绑定到脚本中的实际 Web 视图。 否则，在身份验证时不会弹出 Web 视图。
-> 
-> 
+>
+>
 
 * 创建 `LoginViewController.m` 类
 * 添加一些变量以便在身份验证时传递状态
 
 ```objc
-NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory 
+NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory
 NSURL *myLoadedUrl; \\ The URL loaded for Azure Active Directory
-bool loginFlow = FALSE; 
+bool loginFlow = FALSE;
 bool isRequestBusy; \\ A way to give status to the thread that the request is still happening
 NSURL *authcode; \\ A placeholder for our auth code.
 ```
@@ -387,7 +387,7 @@ NSURL *authcode; \\ A placeholder for our auth code.
 
 * 编写代码以处理 OAuth2 请求的结果
 
-需要使用代码处理 Web 视图返回的重定向 URL。 如果不成功，则再试一次。 同时，库会提供错误，以便可以在控制台中查看或以异步方式处理。 
+需要使用代码处理 Web 视图返回的重定向 URL。 如果不成功，则再试一次。 同时，库会提供错误，以便可以在控制台中查看或以异步方式处理。
 
 ```objc
 - (void)handleOAuth2AccessResult:(NSURL *)accessResult {
@@ -487,7 +487,7 @@ NSURL *authcode; \\ A placeholder for our auth code.
 现已建立与应用程序交互以便登录的主要方式。 登录后需要使用收到的令牌。 因此，要创建一些调用 REST API 的帮助器代码，以便使用此库。
 
 ## <a name="create-a-graphapicaller-class-to-handle-our-requests-to-a-rest-api"></a>创建 `GraphAPICaller` 类来处理对 REST API 的请求
-每次加载应用时将加载一个配置。 获取令牌后，现在需要对它执行一些操作。 
+每次加载应用时将加载一个配置。 获取令牌后，现在需要对它执行一些操作。
 
 * 创建 `GraphAPICaller.h` 文件
 
@@ -511,7 +511,7 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock;
 ```objc
 @implementation GraphAPICaller
 
-// 
+//
 // Gets the tasks from our REST endpoint we specified in settings
 //
 
@@ -564,7 +564,7 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock;
       }];
 }
 
-// 
+//
 // Adds a task from our REST endpoint we specified in settings
 //
 
@@ -631,7 +631,6 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock {
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,8 +1,8 @@
 ### <a name="a-nameserver-authahow-to-authenticate-with-a-provider-server-flow"></a><a name="server-auth"></a>如何：使用提供程序（服务器流）进行身份验证
 若要让移动应用管理应用中的身份验证过程，必须将应用注册到标识提供者。 然后，需要在 Azure App Service 中配置提供者提供的应用程序 ID 和机密。
-有关详细信息，请参阅[向应用添加身份验证](../articles/app-service-mobile/app-service-mobile-ios-get-started-users.md)教程。
+有关详细信息，请参阅[向应用添加身份验证](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md)教程。
 
-注册标识提供者后，只需使用提供者的名称调用 .login() 方法即可。 例如，若要使用 Facebook 登录，请使用以下代码。
+注册标识提供者后，请结合提供者的名称调用 `.login()` 方法。 例如，若要使用 Facebook 登录，请使用以下代码：
 
 ```
 client.login("facebook").done(function (results) {
@@ -11,7 +11,13 @@ client.login("facebook").done(function (results) {
      alert("Error: " + err);
 });
 ```
-在此情况下，Azure App Service 将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成应用服务身份验证令牌。 login 函数在完成时将返回一个 JSON 对象 (user)，该对象分别在 userId 和 authenticationToken 字段中公开用户 ID 和应用服务身份验证令牌。 你可以缓存此令牌，并在它过期之前重复使用。
+
+提供者的有效值为“aad”、“facebook”、“google”、“microsoftaccount”和“twitter”。
+
+> [!NOTE]
+> 目前无法通过服务器流执行 Google 身份验证。  若要使用 Google 进行身份验证，必须使用[客户端流方法](#client-auth)。
+
+在这种情况下，Azure 应用服务将管理 OAuth 2.0 身份验证流。  它显示所选提供者的登录页，并在使用标识提供者成功登录后生成应用服务身份验证令牌。 login 函数在完成时将返回一个 JSON 对象，该对象分别在 userId 和 authenticationToken 字段中公开用户 ID 和应用服务身份验证令牌。 可以缓存此令牌，并在它过期之前重复使用。
 
 ###<a name="a-nameclient-authahow-to-authenticate-with-a-provider-client-flow"></a><a name="client-auth"></a>如何：使用提供程序（客户端流）进行身份验证
 
@@ -57,7 +63,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 ###<a name="a-nameauth-getinfoahow-to-obtain-information-about-the-authenticated-user"></a><a name="auth-getinfo"></a>如何：获取已经过身份验证的用户相关信息
 
-可以使用任何 AJAX 方法从 `/.auth/me` 终结点检索当前用户的身份验证信息。  确保将 `X-ZUMO-AUTH` 标头设置为身份验证令牌。  身份验证令牌存储在 `client.currentUser.mobileServiceAuthenticationToken` 中。  例如，若要使用提取 API：
+可以结合任何 AJAX 库使用 HTTP 调用，从 `/.auth/me` 终结点检索身份验证信息。  确保将 `X-ZUMO-AUTH` 标头设置为身份验证令牌。  身份验证令牌存储在 `client.currentUser.mobileServiceAuthenticationToken` 中。  例如，若要使用提取 API：
 
 ```
 var url = client.applicationUrl + '/.auth/me';
@@ -71,10 +77,9 @@ fetch(url, { headers: headers })
     });
 ```
 
-提取可作为 npm 包，或供浏览器从 CDNJS 进行下载。 也可以使用 jQuery 或其他 AJAX API 提取信息。  数据将接收为 JSON 对象。
+提取的内容以 [npm 包](https://www.npmjs.com/package/whatwg-fetch)的形式提供，或者可以通过浏览器从 [CDNJS](https://cdnjs.com/libraries/fetch) 下载。 也可以使用 jQuery 或其他 AJAX API 提取信息。  数据作为 JSON 对象接收。
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

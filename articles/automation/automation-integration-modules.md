@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ca2343c8915690184e63396afa4e45a22a16ec2b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fb8af84ffcddcfd30f7140bde5ea08a31347d273
 
 
 ---
@@ -210,6 +210,6 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

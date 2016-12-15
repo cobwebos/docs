@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/31/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 96784e006b5986cbc6dfd4f264b22bd1d1bf208d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e082470c8ad3ee02c528a4ca6e3326e5be4752a3
 
 
 ---
-# <a name="azure-active-directory-reporting-preview"></a>Azure Active Directory 报表 - 预览
+# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory 报表 - 预览
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-reporting-azure-portal.md)
 > * [Azure 经典门户](active-directory-reporting-guide.md)
@@ -38,8 +38,8 @@ ms.openlocfilehash: 96784e006b5986cbc6dfd4f264b22bd1d1bf208d
 
 根据查找的数据范围，可以在 [Azure 门户](https://portal.azure.com)中通过单击“用户和组”或者服务列表中的“企业应用程序”来访问这些报告。
 
-## <a name="signin-activities"></a>登录活动
-### <a name="user-signin-activities"></a>用户登录活动
+## <a name="sign-in-activities"></a>登录活动
+### <a name="user-sign-in-activities"></a>用户登录活动
 通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
 
 * 什么是用户的登录模式？
@@ -97,7 +97,7 @@ ms.openlocfilehash: 96784e006b5986cbc6dfd4f264b22bd1d1bf208d
 
 ![报告](./media/active-directory-reporting-azure-portal/column_chooser.png "Reporting")
 
-### <a name="filtering-signins"></a>筛选登录信息
+### <a name="filtering-sign-ins"></a>筛选登录信息
 可以使用以下字段筛选登录信息，以限制显示的数据量：
 
 * 日期和时间 
@@ -203,6 +203,6 @@ Azure 门户中主要有三种与审核相关的活动：
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/17/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 
 ---
-# <a name="getting-started-with-azure-multifactor-authentication-in-the-cloud"></a>云中的 Azure Multi-Factor Authentication 入门
+# <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>云中的 Azure Multi-Factor Authentication 入门
 本文介绍如何在云中开始使用 Azure 多重身份验证。
 
 > [!NOTE]
@@ -41,12 +41,12 @@ ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
 > 
 > 
 
-## <a name="turn-on-twostep-verification-for-users"></a>为用户开启双重验证
+## <a name="turn-on-two-step-verification-for-users"></a>为用户开启双重验证
 若要开始为用户开启双重验证，请将用户状态从禁用更改为启用。  有关用户状态的详细信息，请参阅 [Azure 多重身份验证中的用户状态](multi-factor-authentication-get-started-user-states.md)
 
 可以使用以下过程为用户启用 MFA。
 
-### <a name="to-turn-on-multifactor-authentication"></a>启用 Multi-Factor Authentication
+### <a name="to-turn-on-multi-factor-authentication"></a>启用 Multi-Factor Authentication
 1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 2. 在左侧单击“Active Directory”。
 3. 在“目录”下选择要为用户启用的目录。
@@ -66,8 +66,8 @@ ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
 
 启用用户后，应通过电子邮件通知他们。 下次用户尝试登录时，将需要注册帐户进行双重验证。 一旦开始使用双重验证，还需设置应用密码，以避免被锁在非浏览器应用之外。
 
-## <a name="use-powershell-to-automate-turning-on-twostep-verification"></a>使用 PowerShell 自动开启双重验证
-若要使用 [Azure AD PowerShell](../powershell-install-configure.md) 更改[状态](multi-factor-authentication-whats-next.md)，可以使用以下代码。  可以将 `$st.State` 更改为以下状态之一：
+## <a name="use-powershell-to-automate-turning-on-two-step-verification"></a>使用 PowerShell 自动开启双重验证
+若要使用 [Azure AD PowerShell](/powershell/azureps-cmdlets-docs) 更改[状态](multi-factor-authentication-whats-next.md)，可以使用以下代码。  可以将 `$st.State` 更改为以下状态之一：
 
 * Enabled
 * 强制
@@ -107,6 +107,6 @@ ms.openlocfilehash: d7d909184eb129e46ffc350505101e68c1426c46
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

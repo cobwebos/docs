@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ba48381f2c16a56e2e3f187017fbdbae09544e77
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6d80f266730701dc4e678f4365a2166be72c9143
 
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>预见性维护预配置解决方案演练
 ## <a name="introduction"></a>介绍
-IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。 可以主动对优化维护等活动运用此预配置解决方案。 解决方案结合了关键的 Azure IoT 套件服务，包括 [Azure 机器学习][lnk_machine_learning] 工作区。 此工作区包含基于公用示例数据集的试验，以预测飞机引擎的剩余使用寿命 (RUL)。 此解决方案全面实施了完整的 loT 商业应用场景作为规划和实施解决方案的起点，以满足你自己特定的业务需求。
+IoT 套件预见性维护预配置解决方案是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。 可以主动对优化维护等活动运用此预配置解决方案。 解决方案结合了关键的 Azure IoT 套件服务，包括 [Azure 机器学习][lnk_machine_learning]工作区。 此工作区包含基于公用示例数据集的试验，以预测飞机引擎的剩余使用寿命 (RUL)。 此解决方案全面实施了完整的 loT 商业应用场景作为规划和实施解决方案的起点，以满足你自己特定的业务需求。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 下图概述该预配置解决方案的逻辑组件：
@@ -67,7 +67,7 @@ IoT 中心会提供设备命令确认。
 本节将逐步解说解决方案的组件、说明预期的用例，并提供示例。
 
 ### <a name="predictive-maintenance-dashboard"></a>预见性维护仪表板
-Web 应用程序中的此页面使用 PowerBI JavaScript 控件（请参阅 [PowerBI 可视化效果存储库][lnk-powerbi]）以可视化方式呈现：
+Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [PowerBI 可视化效果存储库][lnk-powerbi]）以可视化方式呈现：
 
 * blob 存储中流分析作业的输出数据。
 * 每个飞机引擎的 RUL 和周期计数。
@@ -77,7 +77,7 @@ Web 应用程序中的此页面使用 PowerBI JavaScript 控件（请参阅 [Pow
 
 ![][img-resource-group]
 
-预配该预配置解决方案时，你会收到一封电子邮件，其中包含机器学习工作区的链接。 还可导航到 [azureiotsuite.com][lnk-azureiotsuite] 页面中的机器学习工作区，了解处于“就绪”状态的预配解决方案。
+预配该预配置解决方案时，你会收到一封电子邮件，其中包含机器学习工作区的链接。 还可导航到 [azureiotsuite.com][lnk-azureiotsuite] 页面的机器学习工作区，了解处于“就绪”状态的预配解决方案。
 
 ![][img-machine-learning]
 
@@ -100,14 +100,14 @@ Web 应用程序中的此页面使用 PowerBI JavaScript 控件（请参阅 [Pow
 可以随时停止模拟，但单击“开始模拟”会从数据集的开头重播模拟。
 
 ## <a name="next-steps"></a>后续步骤
-如果已经运行预见性维护预配置解决方案，现在可能想要对其进行修改，请参阅[自定义预配解决方案的指南][lnk-customize]。
+运行预见性维护预配置解决方案后，接下来可对其进行修改。具体请参阅[预配置解决方案自定义指南][lnk-customize]。
 
 [IoT Suite - Under The Hood - Predictive Maintenance](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx) （IoT 套件 - 幕后 -预见性维护）TechNet 博客文章提供有关预见性维护预配置解决方案的其他详细信息。
 
 你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
 * [有关 IoT 套件的常见问题][lnk-faq]
-* [从头开始建立 IoT 安全][lnk-security-groundup]
+* [从源头保障 IoT 的安全][lnk-security-groundup]
 
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
 [img-resource-group]: media/iot-suite-predictive-walkthrough/resource-group.png
@@ -127,6 +127,6 @@ Web 应用程序中的此页面使用 PowerBI JavaScript 控件（请参阅 [Pow
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

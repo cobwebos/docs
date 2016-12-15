@@ -4,7 +4,7 @@ description: "创建新的存储帐户、管理帐户访问密钥，或删除 Az
 services: storage
 documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 5e4f4360-3f81-4d63-a0b1-e7771b67af11
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 90e9fcf933173b5609eff70fa1ce4bfa027fee3d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 879e199f0c712a46b89a686d6a3dd8dd877821e4
 
 
 ---
@@ -99,7 +99,7 @@ Azure 存储帐户授予你访问 Azure 存储空间中的 Azure Blob、队列�
 
 此外还可以配置用于存储帐户的自定义域名称。 请参阅 [为 Blob 存储终结点配置自定义域名称](storage-custom-domain-name.md) 以了解详细信息。
 
-### <a name="service-colocation-with-an-affinity-group"></a>服务与地缘组的归置
+### <a name="service-co-location-with-an-affinity-group"></a>服务与地缘组的归置
 *地缘组* 是你的 Azure 服务和 VM 及 Azure 存储帐户的地理分组。 通过定位同一数据中心或靠近目标用户受众的计算机工作负载，地缘组可提高服务性能。 此外，当某个存储帐户中的数据被另一个服务访问，而该服务是同一个地缘组的一部分时，不会对出口流量收费。
 
 > [!NOTE]
@@ -175,6 +175,6 @@ Azure 存储帐户授予你访问 Azure 存储空间中的 Azure Blob、队列�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

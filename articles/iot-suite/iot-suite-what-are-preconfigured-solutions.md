@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 597043b17993ebddc9cf730ddce849e1d6ff3bc9
+ms.sourcegitcommit: 7c289437beca78dacc7d3136680c54dde01f3798
+ms.openlocfilehash: fb4b12543ac4910ea9c4789f4ebe5ef0ca5997ae
 
 
 ---
@@ -32,7 +32,7 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 除了在 Azure 中部署和运行解决方案，你还可以下载完整的源代码，然后自定义并扩展解决方案以满足特定的 IoT 要求。
 
 > [!NOTE]
-> 若要部署预配置解决方案之一，请访问 [Microsoft Azure IoT 套件][lnk-azureiotsuite]。 [IoT 预配置解决方案入门][lnk-getstarted-preconfigured]详细介绍了如何部署并运行其中一个解决方案。
+> 若要部署预配置解决方案之一，请访问 [Microsoft Azure IoT 套件][lnk-azureiotsuite]。 [IoT 预配置解决方案入门][lnk-getstarted-preconfigured]一文介绍了有关如何部署并运行其中一个解决方案的详细信息。
 > 
 > 
 
@@ -41,7 +41,7 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 | 解决方案 | 数据提取 | 设备标识 | 命令和控制 | 规则和操作 | 预测分析 |
 | --- | --- | --- | --- | --- | --- |
 | [远程监视][lnk-getstarted-preconfigured] |是 |是 |是 |是 |- |
-| [预测维护] [lnk-predictive-maintenance] |是 |是 |是 |是 |是 |
+| [前瞻性维护][lnk-predictive-maintenance] |是 |是 |是 |是 |是 |
 
 * *数据提取*：向云中大规模输入数据。
 * *设备标识*：管理每个连接设备的唯一标识。
@@ -71,7 +71,7 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 你可以在该解决方案中添加更多可以发出相同遥测数据和对相同命令作出响应的模拟设备。 
 
 ## <a name="iot-hub"></a>IoT 中心
-在此预配置的解决方案中，IoT 中心实例对应于典型的 [IoT 解决方案体系结构][lnk-what-is-azure-iot]中的云网关。
+在此预配置的解决方案中，IoT 中心实例对应于典型的 [IoT 解决方案体系结构][lnk-what-is-azure-iot]中的*云网关*。
 
 IoT 中心接收单个终结点上的设备的遥测数据。 IoT 中心还维护特定于设备的终结点，终结点中的每个设备可以检索发送给它的命令。
 
@@ -80,7 +80,7 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 ## <a name="azure-stream-analytics"></a>Azure 流分析
 此预配置的解决方案使用三种 [Azure 流分析][lnk-asa] (ASA) 作业筛选设备的遥测数据流：
 
-* *DeviceInfo 作业* - 将数据输出到事件中心，该中心将第一次连接设备或者设备响应 **更改设备状态** 命令时发送的特定于设备注册的消息路由到解决方案设备注册表（一种 DocumentDB 数据库）。 
+* *DeviceInfo 作业* - 将数据输出到事件中心，该中心将第一次连接设备或者设备响应**更改设备状态**命令时发送的特定于设备注册的消息路由到解决方案设备注册表（一种 DocumentDB 数据库）。 
 * *遥测数据作业* - 将所有原始遥测数据发送到 Azure blob 存储进行冷存储，并计算在解决方案仪表板中显示的遥测汇总数据。
 * *规则作业* -筛选超出了任何规则阈值的遥测数据流，并将数据输出到事件中心。 当规则触发时，解决方案门户仪表板视图在警报历史记录表中将该事件作为新行显示，并根据解决方案门户中的规则和操作视图上定义的设置触发操作。
 
@@ -89,7 +89,7 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 ## <a name="event-processor"></a>事件处理器
 在此预配置的解决方案中，事件处理器是典型的 [IoT 解决方案体系结构][lnk-what-is-azure-iot]中 **IoT 解决方案后端**的组成部分。
 
-**DeviceInfo** 和**规则** ASA 作业将其输出发送到事件中心以传递到其他后端服务。 该解决方案使用 [WebJob][lnk-web-job] 中运行的 [EventPocessorHost][lnk-event-processor] 实例从这些事件中心读取消息。 **EventProcessorHost** 使用 **DeviceInfo** 数据更新 DocumentDB 数据库中的设备数据，使用**规则**数据调用逻辑应用和更新解决方案门户中显示的警报。
+**DeviceInfo** 和**规则** ASA 作业将其输出发送到事件中心以传递到其他后端服务。 该解决方案使用 [Web 作业][lnk-web-job]中运行的 [EventProcessorHost][lnk-event-processor] 实例从这些事件中心读取消息。 **EventProcessorHost** 使用 **DeviceInfo** 数据更新 DocumentDB 数据库中的设备数据，使用**规则**数据调用逻辑应用和更新解决方案门户中显示的警报。
 
 ## <a name="device-identity-registry-and-documentdb"></a>设备标识注册表和 DocumentDB
 每个 IoT 中心都包括存储设备密钥的[设备标识注册表][lnk-identity-registry]。 IoT 中心使用此信息对设备进行身份验证 - 设备必须已注册，并具有有效的密钥，然后才能连接到中心。
@@ -114,7 +114,7 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 ## <a name="next-steps"></a>后续步骤
 有关 IoT 解决方案体系结构的详细信息，请参阅 [Microsoft Azure IoT 服务：参考体系结构][lnk-refarch]。
 
-现在你已了解什么是预配置解决方案，接下来你可以通过部署远程监视预配置解决方案来开始入门，请参阅：[预配置解决方案入门][lnk-getstarted-preconfigured]。
+了解什么是预配置解决方案后，接下来可以通过部署*远程监视*预配置解决方案来开始入门，请参阅：[预配置解决方案入门][lnk-getstarted-preconfigured]。
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
@@ -130,6 +130,6 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

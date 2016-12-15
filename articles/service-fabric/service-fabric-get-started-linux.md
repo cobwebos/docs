@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 7e33e00a676f4aa7143cede3380adb58ba1d11e4
-ms.openlocfilehash: c27b92d4a1a1bd96ad0bdc46363b8066abc72edd
+ms.sourcegitcommit: ff2e3c27f9fc02ebe30380798be00211113208e3
+ms.openlocfilehash: 4f3c0cee8fe686c5355ce460064a7188d35f3e44
 
 
 ---
@@ -70,8 +70,9 @@ ms.openlocfilehash: c27b92d4a1a1bd96ad0bdc46363b8066abc72edd
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
+
 ## <a name="set-up-the-azure-cross-platform-cli"></a>设置 Azure 跨平台 CLI
-[Azure 跨平台 CLI][azure-xplat-cli-github] 包括用于与 Service Fabric 实体（包括群集和应用程序）进行交互的命令。 它基于 Node.js，因此请先[确保已安装 Node][install-node]，然后再按下面的说明继续操作。
+[Azure 跨平台 CLI][azure-xplat-cli-github] 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。 它基于 Node.js，因此，请[务必先安装 Node][install-node]，然后继续遵照下面的说明操作。
 
 1. 将 github 存储库克隆到你的开发计算机。
    
@@ -149,6 +150,16 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
     ```
+## <a name="updating-the-sdk-and-runtime"></a>更新 SDK 和运行时
+
+若要更新到最新版本的 SDK 和运行时，请运行以下步骤（从列表中删除不想要更新或安装的 SDK）：
+
+    ```bash
+    sudo apt-get update
+    sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
+    ```
+
+若要更新 CLI，请导航到 CLI 克隆到的目录，然后运行 `git pull` 进行更新。 
 
 ## <a name="next-steps"></a>后续步骤
 * [在 Linux 上创建第一个 Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
@@ -167,6 +178,6 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

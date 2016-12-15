@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e031f196e2f86b887c24ba300eac7ab8a8902036
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b8ec2b5df0ae4656630364c5930029e46ee62dbd
 
 
 ---
-# <a name="radius-authentication-and-azure-multifactor-authentication-server"></a>RADIUS 身份验证和 Azure Multi-Factor Authentication 服务器
+# <a name="radius-authentication-and-azure-multi-factor-authentication-server"></a>RADIUS 身份验证和 Azure Multi-Factor Authentication 服务器
 使用“RADIUS 身份验证”部分，你可以为 Azure Multi-Factor Authentication 服务器启用和配置 RADIUS 身份验证。 RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请求。 Azure Multi-Factor Authentication 服务器充当 RADIUS 服务器，并在 RADIUS 客户端（例如 VPN 设备）和身份验证目标（可以是 Active Directory (AD)、LDAP 目录或其他 RADIUS 服务器）之间插入，用于添加 Azure Multi-Factor Authentication。 要使 Azure Multi-Factor Authentication起作用，必须将 Azure Multi-Factor Authentication 服务器配置为可以同时与客户端服务器和身份验证目标进行通信。 Azure Multi-Factor Authentication 服务器将接受来自 RADIUS 客户端的请求，针对身份验证目标验证凭据，添加 Azure Multi-Factor Authentication，并将响应发送回 RADIUS 客户端。 只有主要身份验证和 Azure Multi-Factor Authentication 都成功，整个身份验证才成功。
 
 > [!NOTE]
@@ -48,7 +48,7 @@ ms.openlocfilehash: e031f196e2f86b887c24ba300eac7ab8a8902036
 11. 如果 Azure Multi-Factor Authentication 服务器已安装在 Active Directory 环境中已加入域的服务器上，请选择“Windows 域”。
 12. 如果应针对 LDAP 目录对用户进行身份验证，请选择“LDAP 绑定”。 使用 LDAP 绑定时，必须在“设置”选项卡上单击“目录集成”图标并编辑 LDAP 配置，以便服务器可以绑定到你的目录。 可在 LDAP 代理配置指南中找到配置 LDAP 的说明。
 13. 如果用户应向其他 RADIUS 服务器进行身份验证，请选择“RADIUS 服务器”。
-14. 通过单击“添加...”按钮配置该服务器需要通过代理将 RADIUS 请求发送到的服务器。 按钮。
+14. 通过单击“添加”按钮配置该服务器需要通过代理将 RADIUS 请求发送到的服务器。
 15. 在“添加 RADIUS 服务器”对话框中，输入 RADIUS 服务器的 IP 地址和共享机密。 Azure Multi-Factor Authentication 服务器和 RADIUS 服务器上的共享机密将需要相同。 如果 RADIUS 服务器使用不同端口，请更改身份验证端口和记帐端口。
 16. 单击“确定”按钮。
 17. 必须在其他 RADIUS 服务器中将 Azure Multi-Factor Authentication 服务器添加为 RADIUS 客户端，以便该 RADIUS 服务器处理 Azure Multi-Factor Authentication 服务器发送给它的访问请求。 必须使用 Azure Multi-Factor Authentication 服务器中配置的共享机密。
@@ -64,6 +64,6 @@ ms.openlocfilehash: e031f196e2f86b887c24ba300eac7ab8a8902036
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

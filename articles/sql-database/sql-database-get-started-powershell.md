@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 7d99869b-cec5-4583-8c1c-4c663f4afd4d
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: powershell
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 08/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 87e52fe29f659577d7dc0c9661ebde2c1c475cfc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: daf63815baaf0843f56668b8f310642dbaaf0e54
 
 
 ---
@@ -136,6 +137,6 @@ SQL 数据库在 Azure SQL 数据库服务器中创建。 运行 [New-AzureRmSql
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

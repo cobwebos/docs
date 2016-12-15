@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
-ms.openlocfilehash: 09ad9bb1fee50d6063b9a179377cbe4f1c3c7ab2
+ms.sourcegitcommit: 0b1f6f7ec47e47f39407cdbfd5efef2a18944ecc
+ms.openlocfilehash: 6a2e59f9366e411d322b8560f03b115638619966
 
 
 ---
 # <a name="service-bus-architecture"></a>服务总线体系结构
-本文介绍 Azure 服务总线的消息和中继处理体系结构。
+本文介绍 Azure 服务总线的消息处理体系结构。
 
 ## <a name="service-bus-scale-units"></a>服务总线缩放单位
 服务总线按 *缩放单位*进行组织。 缩放单位是部署单位，包含运行服务所需的全部组件。 每个区域部署一个或多个服务总线缩放单位。
@@ -49,7 +49,7 @@ ms.openlocfilehash: 09ad9bb1fee50d6063b9a179377cbe4f1c3c7ab2
 ![处理传入 WCF 中继请求](./media/service-bus-architecture/IC690645.png)
 
 ## <a name="next-steps"></a>后续步骤
-在阅读有关服务总线体系结构的概述后，请访问以下链接：
+阅读服务总线体系结构的概述后，请参阅以下链接了解详细信息。
 
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
@@ -58,6 +58,6 @@ ms.openlocfilehash: 09ad9bb1fee50d6063b9a179377cbe4f1c3c7ab2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

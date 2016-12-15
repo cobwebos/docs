@@ -8,15 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 37a707ee-9223-43ae-8c35-1ccafde8b83e
 ms.service: sql-database
+ms.custom: sharded databases pool
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: hero-article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: daf8bd6421ae563e542b0874a6e7748a3ca52738
+ms.sourcegitcommit: a877c17a503e58c49ae781aed61ed120d069c737
+ms.openlocfilehash: 19ea620789b31ee68d8e34acd161eeb820947b23
 
 
 ---
@@ -25,28 +26,28 @@ ms.openlocfilehash: daf8bd6421ae563e542b0874a6e7748a3ca52738
 > * [Azure 门户](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
 > * [C#](sql-database-elastic-pool-create-csharp.md)
-> 
-> 
+>
+>
 
-了解如何使用 PowerShell cmdlet 创建 [弹性数据库池](sql-database-elastic-pool.md) 。 
+了解如何使用 PowerShell cmdlet 创建 [弹性数据库池](sql-database-elastic-pool.md) 。
 
 有关常见的错误代码，请参阅 [SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题](sql-database-develop-error-messages.md)。
 
 > [!NOTE]
 > 弹性池在所有 Azure 区域中均已正式发布 (GA)，但美国中北部和印度西部除外，这些区域当前仅发布了预览版。  将尽快在这些区域中正式发布弹性池。 此外，弹性池当前不支持使用 [内存中 OLTP 或内存中分析](sql-database-in-memory.md)的数据库。
-> 
-> 
+>
+>
 
-你需要运行 Azure PowerShell 1.0 或更高版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+你需要运行 Azure PowerShell 1.0 或更高版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="create-a-new-pool"></a>创建新池
-[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) cmdlet 可创建新池。 每个池的 eDTU 值、最小和最大 DTU 受服务器层值（基本、标准或高级）的约束。 请参阅 [弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)。
+[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) cmdlet 可创建新池。 每个池的 eDTU 值、最小和最大 DTU 受服务器层值（基本、标准或高级）的约束。 请参阅 [弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。
 
     New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
 
 ## <a name="create-a-new-elastic-database-in-a-pool"></a>在池中创建新的弹性数据库
-使用 [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx) cmdlet 并将 **ElasticPoolName** 参数设置为目标池。 要将现有数据库移动到池，请参阅 [将数据库移动到弹性池](sql-database-elastic-pool-manage-powershell.md#Move-a-database-into-an-elastic-pool)。
+使用 [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx) cmdlet 并将 **ElasticPoolName** 参数设置为目标池。 要将现有数据库移动到池，请参阅 [将数据库移动到弹性池](sql-database-elastic-pool-manage-powershell.md#move-a-database-into-an-elastic-pool)。
 
     New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
@@ -83,7 +84,6 @@ ms.openlocfilehash: daf8bd6421ae563e542b0874a6e7748a3ca52738
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

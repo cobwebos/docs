@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c57047f9a7eefcc0c4dbf08e705c3193e89f9a7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cafcd1d21e12a3e8dfd020d1e59ee99d8c4d370
 
 
 ---
-# <a name="ldap-authentication-and-azure-multifactor-authentication-server"></a>LDAP 身份验证和 Azure Multi-Factor Authentication 服务器
+# <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 身份验证和 Azure Multi-Factor Authentication 服务器
 默认情况下，Azure Multi-Factor Authentication 服务器配置为从 Active Directory 导入或同步用户。 但是，可以将它配置为绑定到不同 LDAP 目录，如 ADAM 目录或特定的 Active Directory 域控制器。 配置为通过 LDAP 连接到目录时，Azure Multi-Factor Authentication 服务器可以配置为充当 LDAP 代理来执行身份验证。 它还允许将 LDAP 绑定用作 RADIUS 目标，使用 IIS 身份验证时对用户进行预身份验证，或者在 Azure Multi-Factor Authentication 用户门户中进行主要身份验证。
 
 使用 Azure Multi-Factor Authentication作为 LDAP 代理时，将在 LDAP 客户端（例如 VPN 设备、应用程序）与 LDAP 目录服务器之间插入 Azure Multi-Factor Authentication 服务器，以便添加 Multi-Factor Authentication。 要使 Azure Multi-Factor Authentication 起作用，必须将 Azure Multi-Factor Authentication 服务器配置为同时与客户端服务器和 LDAP 目录进行通信。 在此配置中，Azure Multi-Factor Authentication 服务器接受来自客户端服务器和应用程序的 LDAP 请求，并将这些请求转发到目标 LDAP 目录服务器以验证主要凭据。 如果 LDAP 目录的响应显示主要凭据有效，Azure Multi-Factor Authentication 将执行双重身份验证，并将响应发送回 LDAP 客户端。 只有向 LDAP 服务器进行的身份验证和 Multi-Factor Authentication 都成功，整个身份验证才成功。
@@ -61,6 +61,6 @@ ms.openlocfilehash: 1c57047f9a7eefcc0c4dbf08e705c3193e89f9a7
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -3,7 +3,7 @@ title: "Azure RemoteApp 授权 | Microsoft Docs"
 description: "了解如何在 Azure RemoteApp 中进行授权。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 ms.assetid: ff8ebd20-61a1-4f10-87a6-234a170534c9
 ms.service: remoteapp
@@ -11,11 +11,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f4429461139a41644f87185bbb06b1f6a8011345
+ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
+ms.openlocfilehash: 47a60ba7de5ad09f0fc27efd2d041199b71be348
 
 
 ---
@@ -44,6 +44,6 @@ RemoteApp 不需要任何 Windows 许可证或远程桌面 CAL。 你的订阅�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

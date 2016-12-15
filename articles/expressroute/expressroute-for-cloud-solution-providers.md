@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f2c2253132d2c0ca8eefd975af2ac23f196afd0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 26c9420c9b8ba1aff6b016c01b8ed51853c91506
 
 
 ---
@@ -38,7 +38,7 @@ Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure 资源管理
 订阅管理方式将取决于你与客户签署的协定。 可以由 CSP 直接管理资源的创建和维护，也可以始终由客户对 Microsoft Azure 订阅进行控制，并根据需要来创建 Azure 资源。 如果你的客户在其 Microsoft Azure 订阅中管理资源的创建，他们会使用以下两种模型之一：“Connect-Through”模型或“Direct-To”模型。 将在下面各节中详细介绍这些模型。  
 
-### <a name="connectthrough-model"></a>Connect-Through 模型
+### <a name="connect-through-model"></a>Connect-Through 模型
 ![替换文字](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 在 Connect-Through 模型中，CSP 在你的数据中心和你客户的 Azure 订阅之间创建直接连接。 使用 ExpressRoute 进行直接连接，将你的网络与 Azure 相连。 然后，你的客户再连接到你的网络。 此方案要求客户通过 CSP 网络来访问 Azure 服务。 
@@ -49,7 +49,7 @@ Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编
 
 ![替换文字](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
-### <a name="connectto-model"></a>Connect-To 模型
+### <a name="connect-to-model"></a>Connect-To 模型
 ![替换文字](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 在 Connect-To 模型中，服务提供商使用基于客户网络的 ExpressRoute 在其客户的数据中心和 CSP 预配的 Azure 订阅之间创建直接连接。
@@ -82,10 +82,10 @@ ExpressRoute 支持将多个 vNet 连接到单个 ExpressRoute 线路，以便�
 ## <a name="configuring-expressroute"></a>配置 ExpressRoute
 可以将 ExpressRoute 配置为在单个 ExpressRoute 线路上支持三种类型的流量（[路由域](#ExpressRoute-routing-domains)）。 该流量可分成 Microsoft 对等互连、Azure 公共对等互连和专用对等互连。 你可以选择一种类型的或所有类型的需通过单个 ExpressRoute 线路发送的流量，也可以使用多个 ExpressRoute 线路，具体取决于 ExpressRoute 线路的大小以及你客户的隔离要求。 你的客户所面临的安全状况可能不允许公共流量和专用流量经过相同的线路。
 
-### <a name="connectthrough-model"></a>Connect-Through 模型
+### <a name="connect-through-model"></a>Connect-Through 模型
 在 Connect-Through 配置中，你需要负责所有网络基础结构，确保将客户数据中心资源连接到 Azure 中托管的订阅。 每个想要使用 Azure 功能的客户都需要建立自己的 ExpressRoute 连接，这些连接由你来管理。 你将使用客户所用的相同方法来采购 ExpressRoute 线路。 将按照 [ExpressRoute 线路预配工作流和线路状态](expressroute-workflows.md)一文中概述的相同步骤进行操作。 然后，你将配置边界网关协议 (BGP) 路由，以便控制本地网络与 Azure vNet 之间的流量。
 
-### <a name="connectto-model"></a>Connect-To 模型
+### <a name="connect-to-model"></a>Connect-To 模型
 在 Connect-To 配置中，你的客户已经建立了到 Azure 的连接，或者会启动一个到 Internet 服务提供商的连接，将 ExpressRoute 从你客户自己的数据中心直接链接到 Azure 而不是你的数据中心。 你的客户将遵循上述 Connect-Through 模型中描述的步骤来开始预配过程。 建立线路以后，你的客户需先配置本地路由器，然后才能访问你的网络和 Azure vNet。
 
 你可以协助设置连接并配置路由，以便你数据中心的资源能够与你数据中心的客户端资源通信，或者与 Azure 中托管的资源通信。
@@ -116,7 +116,7 @@ ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网�
 
 ![替换文字](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
-### <a name="userdefined-routing-udr"></a>用户定义的路由 (UDR)
+### <a name="user-defined-routing-udr"></a>用户定义的路由 (UDR)
 使用用户定义的路由，你可以控制虚拟网络中从分配的子网到其他子网的出站流量，或者控制经过其他某个预定义网关（ExpressRoute；Internet 或 VPN）的出站流量。 可以将默认的系统路由表替换为用户定义的路由表，以便将默认路由表替换为自定义路由。 使用用户定义的路由，客户可以创建到某些设备（例如防火墙或入侵检测设备）的特定路由，或者阻止他人从托管用户定义的路由的子网访问特定的子网。 有关用户定义的路由的概述，请查看 [此处](../virtual-network/virtual-networks-udr-overview.md)。 
 
 ## <a name="security"></a>“安全”
@@ -141,6 +141,6 @@ ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

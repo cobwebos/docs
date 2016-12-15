@@ -12,11 +12,11 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/23/2016
+ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
-ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
+ms.sourcegitcommit: 560e73eb7129e665d254c3e93b08f29cfb6b1aa9
+ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
 
 
 ---
@@ -51,7 +51,8 @@ ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
 为了将消息发送到队列中，我们将使用 Visual Studio 编写一个 C# 控制台应用程序。
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
-1. 启动 Visual Studio 并创建新的控制台应用程序。
+
+- 启动 Visual Studio 并创建新的控制台应用程序。
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
@@ -62,12 +63,12 @@ ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
 ### <a name="write-some-code-to-send-a-message-to-the-queue"></a>编写一些代码以向队列发送消息
 1. 在 Program.cs 文件的顶部添加以下 using 语句。
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 2. 将以下代码添加到 `Main` 方法，并将 **connectionString** 变量设置为创建命名空间时获取的连接字符串，以及将 **queueName** 设置为创建队列时使用的队列名称。
    
-    ```
+    ```csharp
     var connectionString = "<Your connection string>";
     var queueName = "<Your queue name>";
    
@@ -78,7 +79,7 @@ ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
    
     Program.cs 文件的内容如下所示。
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -107,12 +108,12 @@ ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
 1. 创建新的控制台应用程序并添加对服务总线 NuGet 程序包的引用，类似于前面的发送应用程序。
 2. 在 Program.cs 文件顶部添加以下 `using` 语句。
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 3. 将以下代码添加到 `Main` 方法，并将 **connectionString** 变量设置为创建命名空间时获取的连接字符串，以及将 **queueName** 设置为创建队列时使用的队列名称。
    
-    ```
+    ```csharp
     var connectionString = "";
     var queueName = "samplequeue";
    
@@ -129,7 +130,7 @@ ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
    
     Program.cs 文件的内容如下所示：
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -162,7 +163,7 @@ ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
 祝贺你！ 你已创建队列、发送和接收消息。
 
 ## <a name="next-steps"></a>后续步骤
-查看 [GitHub 存储库](https://github.com/Azure-Samples/azure-servicebus-messaging-samples) 中的示例，了解 Azure 服务总线消息传送的一些更高级的功能。
+查看 [GitHub 存储库](https://github.com/Azure-Samples/azure-servicebus-messaging-samples)中的示例，了解 Azure 服务总线消息传送的一些更高级的功能。
 
 <!--Image references-->
 
@@ -177,6 +178,6 @@ ms.openlocfilehash: 6f138d547a356e47e6e195c236e69ad3ffcc2cc5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

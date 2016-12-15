@@ -16,12 +16,12 @@ ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e2fa11046adf828497b142e1043ac1c2a15443ef
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: e0353fe07c98060c88f8fefdcc3c1052437f23ab
 
 
 ---
-# <a name="introduction-to-apache-storm-on-hdinsight-realtime-analytics-for-hadoop"></a>Apache Storm on HDInsight 简介：面向 Hadoop 的实时分析
+# <a name="introduction-to-apache-storm-on-hdinsight-real-time-analytics-for-hadoop"></a>Apache Storm on HDInsight 简介：面向 Hadoop 的实时分析
 Apache Storm on HDInsight 可让你使用 [Apache Hadoop](http://hadoop.apache.org)在 Azure 环境中创建分布式实时分析解决方案。
 
 ## <a name="what-is-apache-storm"></a>什么是 Apache Storm？
@@ -53,7 +53,7 @@ Apache Storm on HDInsight 是已集成到 Azure 环境中的托管群集。 它�
 你可以在分钟数设置好新的 Storm on HDInsight 群集。 指定群集名称、大小、管理员帐户和存储帐户。 Azure 将创建该群集，包括示例拓扑和 Web 管理仪表板。
 
 > [!NOTE]
-> 也可以使用 [Azure CLI](../xplat-cli-install.md) 或 [Azure PowerShell](../powershell-install-configure.md) 预配 Storm 群集。
+> 也可以使用 [Azure CLI](../xplat-cli-install.md) 或 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 预配 Storm 群集。
 > 
 > 
 
@@ -107,7 +107,7 @@ Apache Storm 的默认配置是只能有一个 Nimbus 节点。 Storm on HDInsig
 ### <a name="support"></a>支持
 Storm on HDInsight 附带全天候企业级支持。 Storm on HDInsight 也提供 99.9% 的 SLA。 这意味着，我们保证至少 99.9% 的时间群集都能建立外部连接。
 
-## <a name="common-use-cases-for-realtime-analytics"></a>实时分析常见用例
+## <a name="common-use-cases-for-real-time-analytics"></a>实时分析常见用例
 以下是你可能使用 Apache storm on HDInsight 的一些常见方案。 有关实际方案的信息，请阅读 [公司如何使用 Storm](https://storm.apache.org/documentation/Powered-By.html)。
 
 * 物联网 (IoT)
@@ -206,6 +206,6 @@ Storm 使用 Apache Log4j 来记录信息。 默认情况下，将记录大量�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

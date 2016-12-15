@@ -3,7 +3,7 @@ title: "Azure AD B2C：使用 Node.js 保护 Web API | Microsoft Docs"
 description: "如何构建可从 B2C 租户接受令牌的 Node.js Web API"
 services: active-directory-b2c
 documentationcenter: 
-author: brandwe
+author: xerners
 manager: mbaldwin
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 08/30/2016
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 833ba11df57e27cf1f5e4045d144550bb14ca1c2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cea04afd22270c77d91148d3c4a95e87f37406db
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: 833ba11df57e27cf1f5e4045d144550bb14ca1c2
 
 > [!NOTE]
 > 将使用 [iOS B2C 示例应用程序](active-directory-b2c-devquickstarts-ios.md)连接到这个编写的示例。 请先完成当前演练，然后遵循该示例。
-> 
-> 
+>
+>
 
 **Passport** 是 Node.js 的身份验证中间件。 Passport 极其灵活且采用模块化结构，可以在不造成干扰的情况下安装在任何基于 Express 的应用程序或 Resitify Web 应用程序中。 一套综合性策略支持使用用户名和密码、Facebook、Twitter 等进行身份验证。 我们针对 Azure Active Directory (Azure AD) 开发了一个策略。 请安装此模块，然后添加 Azure AD `passport-azure-ad` 插件。
 
@@ -52,7 +52,7 @@ ms.openlocfilehash: 833ba11df57e27cf1f5e4045d144550bb14ca1c2
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含两种标识体验：注册和登录。 需要按 [策略参考文章](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)中所述，为每个类型创建一个策略。  创建三个策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含两种标识体验：注册和登录。 需要按 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述，为每个类型创建一个策略。  创建三个策略时，请务必：
 
 * 在注册策略中，选择“显示名称”和其他注册属性。
 * 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。  也可以选择其他声明。
@@ -74,7 +74,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Nod
 完成的应用也[作为 .zip 文件提供](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip)，或者放在同一存储库的 `complete` 分支中。
 
 ## <a name="download-nodejs-for-your-platform"></a>下载适用于平台的 Node.js
-若要成功使用本示例，需要正确安装 Node.js。 
+若要成功使用本示例，需要正确安装 Node.js。
 
 从 [nodejs.org](http://nodejs.org)安装 Node.js。
 
@@ -85,8 +85,8 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Nod
 
 > [!NOTE]
 > 本演练假设对 MongoDB 使用默认的安装和服务器终结点，在编写本文时，该终结点为 `mongodb://localhost`。
-> 
-> 
+>
+>
 
 ## <a name="install-the-restify-modules-in-your-web-api"></a>在 Web API 中安装 Restify 模块
 将使用 Restify 构建 REST API。 Restify 是派生自 Express 的精简弹性 Node.js 应用程序框架。 它提供一套稳健功能用于在 Connect 的顶层构建 REST API。
@@ -163,13 +163,13 @@ Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。 但是，许
     ├── pause@0.0.1
     └── pkginfo@0.2.3
 
-## <a name="add-passportazuread-to-your-web-api"></a>将 passport-azuread 添加到 Web API
+## <a name="add-passport-azuread-to-your-web-api"></a>将 passport-azuread 添加到 Web API
 接下来，使用 `passport-azuread`添加 OAuth 策略，这是一套将 Azure AD 连接到 Passport 的策略。 在 Rest API 示例中，将为持有者令牌使用此策略。
 
 > [!NOTE]
 > 尽管 OAuth2 提供了可以颁发任何已知令牌类型的框架，但只有一部分令牌类型已得到广泛使用。 用于保护终结点的令牌是持有者令牌。 这些类型的令牌是 OAuth2 中最广泛颁发的令牌。 许多实现假设持有者令牌是唯一颁发的令牌类型。
-> 
-> 
+>
+>
 
 在命令行中，将目录切换到 `azuread`（如果不在此目录中）。
 
@@ -215,7 +215,7 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 * `npm install bunyan`
 
 ## <a name="create-a-serverjs-file-with-your-dependencies"></a>创建包含依赖项的 server.js 文件
-`server.js` 文件提供 Web API 服务器的大多数功能。 
+`server.js` 文件提供 Web API 服务器的大多数功能。
 
 在命令行中，将目录切换到 `azuread`（如果不在此目录中）：
 
@@ -258,7 +258,7 @@ clientID: <your client ID for this Web API you created in the portal>
 mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
 audience: '<your audience URI>', // the Client ID of the application that is calling your API, usually a web API or native client
 identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add the B2C tenant name in the <tenant name> area
-tenantName:'<tenant name>', 
+tenantName:'<tenant name>',
 policyName:'b2c_1_<sign in policy name>' // This is the policy you'll want to validate against in B2C. Usually this is your Sign-in policy (as users sign in to this API)
 passReqToCallback: false // This is a node.js construct that lets you pass the req all the way back to any upstream caller. We turn this off as there is no upstream caller.
 };
@@ -270,9 +270,9 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 ### <a name="required-values"></a>必需的值
 `clientID`：Web API 应用程序的客户端 ID。
 
-`IdentityMetadata`：`passport-azure-ad` 在此处查找标识提供者的配置数据。 它还会查找密钥以验证 JSON Web 令牌。 
+`IdentityMetadata`：`passport-azure-ad` 在此处查找标识提供者的配置数据。 它还会查找密钥以验证 JSON Web 令牌。
 
-`audience`：门户中的统一资源标识符 (URI)，用于标识调用应用程序。 
+`audience`：门户中的统一资源标识符 (URI)，用于标识调用应用程序。
 
 `tenantName`：租户名称（例如 **contoso.onmicrosoft.com**）。
 
@@ -280,8 +280,8 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 
 > [!NOTE]
 > 在 B2C 预览版中，请将相同的策略用于客户端与服务器设置。 如果已完成演练并创建这些策略，则不需要再做一次。 因为已完成此演练，不需要在站点上为客户端演练创建新策略。
-> 
-> 
+>
+>
 
 ## <a name="add-configuration-to-your-serverjs-file"></a>将配置添加到 server.js 文件
 若要从创建的 `config.js` 文件中读取值，请在应用程序中添加 `.config` 文件作为必需资源，然后将全局变量设置为 `config.js` 文档中的值。
@@ -386,7 +386,7 @@ var Task = mongoose.model('Task');
 现已创建可以使用的数据库模型，接下来请添加用于 REST API 服务器的路由。
 
 ### <a name="about-routes-in-restify"></a>关于 Restify 中的路由
-Restify 中路由的工作原理与使用 Express 堆栈时的工作原理相同。 可以使用客户端应用程序应该调用的 URI 定义路由。 
+Restify 中路由的工作原理与使用 Express 堆栈时的工作原理相同。 可以使用客户端应用程序应该调用的 URI 定义路由。
 
 Restify 路由的典型模式是：
 
@@ -544,7 +544,7 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ## <a name="create-your-server"></a>创建服务器
 现已定义数据库并准备好路由。 最后一件事是添加服务器实例用于管理调用。
 
-Restify 和 Express 为 REST API 服务器提供深度自定义功能，但此处使用最基本的设置。 
+Restify 和 Express 为 REST API 服务器提供深度自定义功能，但此处使用最基本的设置。
 
 ```Javascript
 
@@ -664,7 +664,7 @@ server.listen(serverPort, function() {
 
 });
 
-``` 
+```
 
 ## <a name="add-authentication-to-your-rest-api-server"></a>将身份验证添加到 REST API 服务器
 设置好正常运行的 REST API 服务器后，可以让它对 Azure AD 发挥作用。
@@ -673,11 +673,11 @@ server.listen(serverPort, function() {
 
 `cd azuread`
 
-### <a name="use-the-oidcbearerstrategy-that-is-included-with-passportazuread"></a>使用 passport-azure-ad 随附的 OIDCBearerStrategy
+### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>使用 passport-azure-ad 随附的 OIDCBearerStrategy
 > [!TIP]
 > 编写 API 时，应始终将数据链接到用户无法证明其在令牌中是唯一的项目。 当服务器存储待办事项时，会根据我们放在“owner”字段的令牌（通过 token.oid 调用）中的用户对象 **oid** 来存储。 此值可确保只有该用户可以访问自己的待办事项。 “owner”API 中不公开任何信息，因此，外部用户可以请求其他人的待办事项，即使他们已经过身份验证。
-> 
-> 
+>
+>
 
 接下来，使用 `passport-azure-ad`随附的持有者策略。
 
@@ -722,8 +722,8 @@ Passport 对其所有策略使用相同的模式。 需要向它传递 `function
 
 > [!IMPORTANT]
 > 上述代码接受正好向服务器进行身份验证的任何用户。 此过程称为自动注册。 在生产服务器中，除非用户先完成注册过程，否则不允许他们访问 API。 此过程是使用者应用中常见的模式，允许使用 Facebook 来注册，但然后要求填写其他信息。 如果此程序不是命令行程序，就只能从返回的令牌对象中提取电子邮件，然后要求用户填写其他信息。 由于这是一个示例，我们要将其添加到内存中的数据库。
-> 
-> 
+>
+>
 
 ## <a name="run-your-server-application-to-verify-that-it-rejects-you"></a>运行服务器应用程序以验证它是否拒绝请求
 可以使用 `curl` 来检查现在是否为终结点提供 OAuth2 保护。 返回的标头应该足以表明执行的操作正确无误。
@@ -763,7 +763,6 @@ Transfer-Encoding: chunked
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

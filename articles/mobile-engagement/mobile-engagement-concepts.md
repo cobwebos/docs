@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1212289f5ba1155ac4cdd1ccbe6f17c76b95195c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2db8af1badf908ec69e4d994755bad87e8653dee
 
 
 ---
@@ -90,6 +90,6 @@ Mobile Engagement 标识用户的方式是为每台设备生成一个唯一标�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

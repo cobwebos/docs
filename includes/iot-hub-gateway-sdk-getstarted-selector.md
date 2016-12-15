@@ -4,7 +4,7 @@
 > 
 > 
 
-本文详细介绍了 [Hello World 示例代码][lnk-helloworld-sample]，说明了 [Azure IoT 网关 SDK][lnk-gateway-sdk]体系结构的基本组件。 该示例使用 IoT 中心网关 SDK 生成一个简单的网关，每隔 5 秒将“hello world”消息记录到文件中。
+本文详细演练 [Hello World 示例代码][lnk-helloworld-sample]，演示 [Azure IoT 网关 SDK][lnk-gateway-sdk] 体系结构的基本组件。 该示例使用 Azure IoT 网关 SDK 生成一个简单的网关，每隔 5 秒将“hello world”消息记录到文件中。
 
 本文介绍的内容包括：
 
@@ -72,6 +72,6 @@ Logger 模块只使用来自中转站的消息，而不会将新消息发布到�
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

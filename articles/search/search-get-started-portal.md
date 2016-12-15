@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/03/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 02623fc3d663a674e2184380915d651dff5760bc
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
 本教程采用 [示例 Azure DocumentDB 数据库](#apdx-sampledata) ，该数据库可以使用数据和指令简单地创建，但用户也可以对 DocumentDB 或 SQL 数据库中的现有数据应用这些步骤。
 
 > [!NOTE]
-> 本入门教程需要 [Azure 订阅](/pricing/free-trial/?WT.mc_id=A261C142F)和 [Azure 搜索服务](search-create-service-portal.md)。 
+> 本入门教程需要 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)和 [Azure 搜索服务](search-create-service-portal.md)。 
 > 
 > 
 
@@ -181,6 +181,6 @@ ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

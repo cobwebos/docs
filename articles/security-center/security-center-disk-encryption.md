@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 05/27/2016
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 65d586405bc79ccf0d5e27c09d750818e5f3dd24
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: 65d586405bc79ccf0d5e27c09d750818e5f3dd24
 > 
 
 ## <a name="install-and-configure-azure-powershell"></a>安装和配置 Azure PowerShell
-需在计算机上安装 Azure PowerShell 1.2.1 或更高版本。 [How to install and configure Azure PowerShell](../powershell-install-configure.md) （如何安装和配置 Azure PowerShell）一文包含预配计算机使之适用于 Azure PowerShell 的所有必需步骤。 最简单的方法是使用该文所述的 Web PI 安装方法。 即使已安装 Azure PowerShell，也请使用 Web PI 方法再次进行安装，确保安装 Azure PowerShell 的最新版本。
+需在计算机上安装 Azure PowerShell 1.2.1 或更高版本。 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell）一文包含预配计算机使之适用于 Azure PowerShell 的所有必需步骤。 最简单的方法是使用该文所述的 Web PI 安装方法。 即使已安装 Azure PowerShell，也请使用 Web PI 方法再次进行安装，确保安装 Azure PowerShell 的最新版本。
 
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>获取并运行 Azure 磁盘加密先决条件配置脚本
 Azure 磁盘加密先决条件配置脚本将设置加密 Azure 虚拟机所需的所有先决条件。
@@ -182,6 +182,6 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

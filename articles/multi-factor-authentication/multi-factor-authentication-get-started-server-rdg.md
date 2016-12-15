@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ee868c5ba1a8429a733633edbc7efaa74e512135
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3b14925f41138904aa10a172f83dffa3c6662700
 
 
 ---
-# <a name="remote-desktop-gateway-and-azure-multifactor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器
+# <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器
 在许多情况下，远程桌面网关使用本地 NPS 对用户进行身份验证。 本文档介绍如何将来自远程桌面网关（通过本地 NPS）的 RADIUS 请求路由到 Multi-Factor Authentication 服务器。
 
 Multi-Factor Authentication 服务器应安装在独立的服务器上，它随后会将 RADIUS 请求通过代理路由回远程桌面网关服务器上的 NPS。 NPS 验证用户名和密码后，将向Multi-Factor Authentication 服务器返回响应，Multi-Factor Authentication 服务器执行第二重身份验证后，将结果返回到网关。
@@ -36,7 +36,7 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication
 3. 展开左侧导航区域中的“策略”部分，然后单击“连接请求策略”。 它应包含配置 RD 网关时创建的名为“TS 网关授权策略”的连接请求策略。 此策略将 RADIUS 请求转发到Multi-Factor Authentication 服务器。
 4. 复制此策略以创建一个新策略。 在新策略中添加一个条件，使客户端友好名称与上面的步骤 2 中为 Azure Multi-Factor Authentication 服务器 RADIUS 客户端设置的友好名称匹配。 将“身份验证提供程序”更改为“本地计算机”。 此策略可确保从 Azure Multi-Factor Authentication 服务器接收 RADIUS 请求时，身份验证在本地进行，而不是将 RADIUS 请求发送回 Azure Multi-Factor Authentication 服务器，后者会导致循环情况。 为了防止循环情况，必须将此新策略的顺序排列在转发到 Multi-Factor Authentication 服务器的原始策略之前。
 
-## <a name="configure-azure-multifactor-authentication"></a>配置 Azure Multi-Factor Authentication
+## <a name="configure-azure-multi-factor-authentication"></a>配置 Azure Multi-Factor Authentication
 - - -
 将 Azure Multi-Factor Authentication 服务器配置为 RD 网关与 NPS 之间的 RADIUS 代理。  应将 Azure Multi-Factor Authentication 服务器安装在不同于 RD 网关服务器的已加入域的服务器上。 使用以下过程可配置 Azure Multi-Factor Authentication 服务器。
 
@@ -50,6 +50,6 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 12/06/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
+ms.sourcegitcommit: 3205077236dd44253b3fa36d6eace36fb307871e
+ms.openlocfilehash: 11754bbe534638d8321f509d7d82e025c667176c
 
 
 ---
@@ -60,8 +60,8 @@ ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一： 
       
-      1. 选择“使用现有资源组”并选择一个现有的资源组。
-      2. 选择“新建”并输入资源组的名称。
+      - 选择“使用现有资源组”并选择一个现有的资源组。
+      - 选择“新建”并输入资源组的名称。
          
           本教程中部分步骤假定你使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
    4. 选择数据工厂的**位置**。
@@ -163,6 +163,6 @@ ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

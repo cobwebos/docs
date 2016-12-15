@@ -17,8 +17,8 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bd214c166190248662634d488d8e7b1427b5738
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
 
 
 ---
@@ -241,16 +241,16 @@ Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 本文已介绍如何使用 Data Lake (HDInsight) 工具包从 Visual Studio 连接到 HDInsight 群集，以及如何运行 Hive 查询。 有关详细信息，请参阅：
 
 * [在 HDInsight 中使用 Hadoop Hive][hdinsight.hive]
-* [在 HDInsight 中开始使用 Hadoop][hdinsight.get.started]
+* [HDInsight 中的 Hadoop 入门][hdinsight.get.started]
 * [在 HDInsight 中提交 Hadoop 作业][hdinsight.submit.jobs]
 * [使用 HDInsight 中的 Hadoop 分析 Twitter 数据][hdinsight.analyze.twitter.data]
 
 <!--Anchors-->
-[安装]: #installation
-[连接到 Azure 订阅]: #connect-to-your-azure-subscription
-[导航链接的资源]: #navigate-the-linked-resources
-[运行 Hive 查询]: #run-hive-queries
-[后续步骤]: #next-steps
+[Installation]: #installation
+[Connect to your Azure subscription]: #connect-to-your-azure-subscription
+[Navigate the linked resources]: #navigate-the-linked-resources
+[Run Hive queries]: #run-hive-queries
+[Next steps]: #next-steps
 
 <!--Image references-->
 [1]: ./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.wpi.png
@@ -281,6 +281,6 @@ Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

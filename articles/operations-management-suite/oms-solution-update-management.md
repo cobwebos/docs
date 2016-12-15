@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 12/06/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+ms.sourcegitcommit: 705bbd78970c6e3c20ef7214704194f722da09a6
+ms.openlocfilehash: 0f00d5a3b8116864d9e66c18d535f319b31b9f9c
 
 
 ---
-# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![更新 OMS 中的管理解决方案](./media/oms-solution-update-management/update-management-solution-icon.png) 更新 OMS 中的管理解决方案
+# <a name="update-management-solution-in-oms"></a>更新 OMS 中的管理解决方案
 OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新。  你可以快速评估所有代理计算机上可用更新的状态并启动为服务器安装所需更新的过程。 
 
 ## <a name="prerequisites"></a>先决条件
@@ -33,7 +33,10 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 * Linux 代理必须具有访问更新存储库的权限。  可以从 [GitHub](https://github.com/microsoft/oms-agent-for-linux) 下载适用于 Linux 的 OMS 代理。 
 
 ## <a name="configuration"></a>配置
-执行以下步骤以将更新管理解决方案添加到 OMS 工作区并添加 Linux 代理。  Windows 代理会自动添加，无额外配置。
+执行以下步骤以将更新管理解决方案添加到 OMS 工作区并添加 Linux 代理。 Windows 代理会自动添加，无额外配置。
+
+> [!NOTE]
+> 当前如果启用此解决方案，连接到 OMS 工作区的任何 Windows 计算机将自动配置为混合 Runbook 辅助角色，以支持将 Runbook 用作此解决方案的一部分。  但是，该计算机不会注册到自动化帐户中创建的任何混合辅助角色组，并且无法将它添加到混合辅助角色组来运行自己的 Runbook。  如果 Windows 计算机已指定为混合 Runbook 辅助角色并已连接到 OMS 工作区，则在添加解决方案之前，需要从 OMS 工作区中删除该计算机，防止 Runbook 无法按预期运行。  
 
 1. 使用从解决方案库中添加 [OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将更新管理解决方案添加到 OMS 工作区。  
 2. 在 OMS 门户中，选择“设置”然后选择“已连接的源”。  记下**工作区 ID** 和**主密钥**或**辅助密钥**。
@@ -41,11 +44,13 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
    
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    通过运行以下命令安装适用于 Linux 的 OMS 代理最新版本。  将 <Workspace ID> 替换为工作区 ID，并将 <Key> 替换为主密钥或辅助密钥。
    
-     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+        cd ~
+        wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh  
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+
+   b. 若要删除代理，请运行以下命令。
    
-   b.保留“数据库类型”设置，即设置为“共享”。 若要删除代理，请运行以下命令。
-   
-     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
 
 ## <a name="management-packs"></a>管理包
 如果 System Center Operations Manager 管理组已连接到 OMS 工作区，则添加此解决方案时会在 Operations Manager 中安装以下管理包。 无需对这些管理包进行任何配置或维护。 
@@ -242,6 +247,6 @@ OMS 中的更新管理解决方案可管理 Windows 和 Linux 计算机的更新
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

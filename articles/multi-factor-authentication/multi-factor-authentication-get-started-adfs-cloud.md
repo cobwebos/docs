@@ -15,18 +15,18 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0a9ab0aca1a77245f360d0d8976aa9b8f59f15a0
 
 
 ---
-# <a name="securing-cloud-resources-with-azure-multifactor-authentication-and-ad-fs"></a>将 Azure Multi-Factor Authentication 与 Azure AD 配合使用来保护云资源
+# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure Multi-Factor Authentication 与 Azure AD 配合使用来保护云资源
 如果你的组织已与 Azure Active Directory 联合，则使用 Azure 多重身份验证或 Active Directory 联合身份验证服务来保护通过 Azure AD 访问的资源。 使用以下过程可通过 Azure 多重身份验证或 Active Directory 联合身份验证服务保护 Azure Active Directory 资源。
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>使用 AD FS 保护 Azure AD 资源
 若要保护云资源，请首先为用户启用帐户，然后设置声明规则。 按照以下过程完成各步骤：
 
-1. 使用[启用多重身份验证](multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users)中所述的步骤来为用户启用帐户。
+1. 使用[启用多重身份验证](multi-factor-authentication-get-started-cloud.md#turn-on-two-step-verification-for-users)中所述的步骤来为用户启用帐户。
 2. 启动 AD FS 管理控制台。
    ![云](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
 3. 导航到“信赖方信任”，然后右键单击“信赖方信任”。 选择“编辑声明规则...”
@@ -34,13 +34,13 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 5. 从下拉列表中选择“使用自定义规则发送声明”，然后单击“下一步”。
 6. 输入声明规则的名称。
 7. 在“自定义规则”下：添加以下文本：
-   
+
     ```
     => issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
     ```
-   
+
     相应的声明：
-   
+
     ```
     <saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
     <saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
@@ -74,7 +74,7 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”，然后单击“下一步”。
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”。
 12. 在“自定义规则”框中，输入：
-    
+
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
@@ -83,7 +83,7 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 15. 单击“确定” 。
 16. 关闭“AD FS 管理”。
 
-### <a name="configure-azure-multifactor-authentication-trusted-ips-with-federated-users"></a>配置联合用户的 Azure Multi-Factor Authentication 受信任 IP
+### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>配置联合用户的 Azure Multi-Factor Authentication 受信任 IP
 创建声明后，可以开始配置受信任的 IP。
 
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
@@ -100,7 +100,6 @@ ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

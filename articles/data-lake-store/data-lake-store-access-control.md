@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 12/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c73d85497e936b0bfb9a0ee97e0172a70e1706ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9637a4dfeaf3d3f95ccdb4bbc5d1f96ec08b6dad
 
 
 ---
@@ -110,11 +110,11 @@ Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又派生�
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-接下来，在“访问”边栏选项卡中，单击“简单视图”查看更简单的视图。
+此边栏选项卡的上半部分显示你拥有的权限的概述（在屏幕截图中，用户为 Bob）。 下半部分显示访问权限。
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-单击“高级视图”查看更高级的视图。
+单击“高级”查看更高级的视图，其中显示了“默认 ACL”、“掩码”和“超级用户”的概念。
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -133,6 +133,10 @@ Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又派生�
 * 等等
 
 具有 Data Lake Store 帐户“所有者”角色的每个人都自动成为该帐户的超级用户。 有关 Azure 基于角色的访问控制 (RBAC) 的详细信息，请参阅[基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
+
+如果想要创建拥有超级用户权限的自定义 RBAC 角色， 该角色需要拥有以下权限：
+* Microsoft.DataLakeStore/accounts/Superuser/action
+* Microsoft.Authorization/roleAssignments/write
 
 ## <a name="the-owning-user"></a>拥有用户
 创建项的用户自动成为该项的拥有用户。 拥有用户可以：
@@ -244,7 +248,11 @@ Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又派生�
 ### <a name="what-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>以递归方式删除文件夹及其内容需要哪些权限？
 * 父文件夹必须拥有“写入 + 执行”权限。
 * 要删除的文件夹及其中的每个文件夹都需要“读取 + 写入 + 执行”权限。
-  >[AZURE.NOTE] 删除文件夹中的文件时不需要这些文件的写入权限。 此外， **永远无法** 删除根文件夹“/”。
+
+> [!NOTE] 
+> 删除文件夹中的文件时不需要这些文件的写入权限。 此外， **永远无法** 删除根文件夹“/”。
+>
+>
 
 ### <a name="who-is-set-as-the-owner-of-a-file-or-folder"></a>谁设置为文件或文件夹的所有者？
 文件或文件夹的创建者将成为所有者。
@@ -254,6 +262,12 @@ Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又派生�
 
 ### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>文件的拥有用户没有所需的 RWX 权限， 我该怎么办？
 拥有用户只需更改文件的权限，即可自动获得所需的任何 RWX 权限。
+
+### <a name="when-i-look-at-acls-in-the-azure-portal-i-see-user-names-but-through-apis-i-see-guids-why-is-that"></a>在 Azure 门户中查看 ACL 时看到的是用户名，但通过 API 查看时，看到的却是 GUID，这是为什么？
+ACL 中的项存储为 GUID，它们对应于 Azure Active Directory (AAD) 中的用户。 API 将按原样返回 GUID。 Azure 门户会尽可能地将 GUID 转换为友好名称，以方便使用 ACL。 
+
+### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-using-the-portal"></a>使用门户时，为什么有时会在 ACL 中看到 GUID？
+如果用户在 AAD 中不再存在，将显示 GUID。 当用户离职，或者其帐户已在 AAD 中删除时，往往会发生这种情况。
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Data Lake Store 是否支持 ACL 继承？
 不是。
@@ -282,6 +296,6 @@ Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又派生�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

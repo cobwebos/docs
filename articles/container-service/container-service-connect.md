@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: a4882b6fcd75ecaa826cdda3e25ee690b85a0670
-ms.openlocfilehash: 34450e25941e0be97b72c1ba30ee348d73f4bc67
+ms.sourcegitcommit: 319978579ae6ad868030d2ec99bce6e6aaa22299
+ms.openlocfilehash: 24a8b9c4e78971199236553802a71134bd12829c
 
 
 ---
@@ -51,13 +51,19 @@ scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 
 如果使用的是 Windows，则需要在 Windows 上使用 Bash on Ubuntu 或 Putty 'pscp' 工具。
 
-配置 `kubectl` 后，可以使用以下项测试此功能：
+配置 `kubectl` 后，可以通过列出群集中的节点进行测试：
 
 ```console
 kubectl get nodes
 ```
 
-它应显示群集中的节点。
+最后可以查看 Kubernetes 仪表板。 首先，请执行：
+
+```console
+kubectl proxy
+```
+
+Kubernetes UI 现已显示在：http://localhost:8001/ui
 
 有关更多说明，可以参阅 [Kubernetes 快速入门](http://kubernetes.io/docs/user-guide/quick-start/)
 
@@ -166,6 +172,6 @@ export DOCKER_HOST=:2375
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

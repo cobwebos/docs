@@ -16,14 +16,14 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 77ca34a56a827e8a69ab9a2b60d14cc7c7a71bfc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 93e02bc36c0502623316d6b896dd802ac8bdc284
 
 
 ---
 # <a name="getting-started-with-password-management"></a>密码管理入门
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password。md)。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， 可按以下方式更改和重置你的密码。
 > 
 > 
 
@@ -126,7 +126,7 @@ ms.openlocfilehash: 77ca34a56a827e8a69ab9a2b60d14cc7c7a71bfc
 ### <a name="step-3-reset-your-azure-ad-password-as-a-user"></a>步骤 3：以用户身份重置密码
 由于你已配置用户重置策略并为用户指定了联系人详细信息，此用户将可以进行自助密码重置。
 
-#### <a name="to-perform-a-selfservice-password-reset"></a>执行自助密码重置
+#### <a name="to-perform-a-self-service-password-reset"></a>执行自助密码重置
 1. 如果转到诸如 [**portal.microsoftonline.com**](http://portal.microsoftonline.com) 的站点，你将看到如下登录屏幕。  单击“无法访问你的帐户?”链接以测试密码重置 UI  。
    
    ![][011]
@@ -365,6 +365,6 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

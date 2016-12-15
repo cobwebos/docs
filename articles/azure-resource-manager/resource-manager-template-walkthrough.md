@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/04/2016
 ms.author: navale;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: 68bec71fd23367a05b405edf9196b28d04fca1e6
+ms.sourcegitcommit: 40687046c832ca39e460f1d7f55f7c188b6242b3
+ms.openlocfilehash: 0479a970e2c3b8abaa9305de37a79e2b4128932e
 
 
 ---
@@ -592,6 +592,6 @@ VM 的创建取决于存储帐户、网络接口和可用性集。 如 `storageP
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

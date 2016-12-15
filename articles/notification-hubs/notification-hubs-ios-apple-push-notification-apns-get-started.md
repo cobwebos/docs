@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
+ms.sourcegitcommit: e17f0e050530a64fdf569176abc5cf3ae88da516
+ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
 ## <a name="prerequisites"></a>先决条件
 本教程需要的内容如下：
 
-* [移动服务 iOS SDK 版本 1.2.4]
+* [移动服务 iOS SDK version 1.2.4]
 * 最新版本的 [Xcode]
 * 支持 iOS 8（或更高版本）的设备
 * [Apple 开发人员计划](https://developer.apple.com/programs/) 成员身份。
@@ -70,24 +70,26 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
 <p>由于此项目用于开发，因此请务必选择“沙盒”模式。<b></b> 仅当想要将推送通知发送给从应用商店购买你应用的用户时，才使用“生产”模式。<b></b></p>
 </li>
 </ol>
-&emsp;&emsp;![在 Azure 门户中配置 APNS](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
+&emsp;&emsp;&emsp;&emsp;![在 Azure 门户中配置 APNS](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
 
-&emsp;&emsp;![在 Azure 门户中配置 APNS 证书](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+&emsp;&emsp;&emsp;&emsp;![在 Azure 门户中配置 APNS 证书](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
 你的通知中心现在已配置为使用 APNS，并且你有连接字符串用于注册你的应用和发送推送通知。
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>将你的 iOS 应用连接到通知中心
 1. 在 Xcode 中，创建新的 iOS 项目，然后选择“单视图应用程序”模板。
    
-       ![Xcode - Single View Application][8]
+    ![Xcode — 单一视图应用程序][8]
+    
 2. 设置新项目的选项时，请务必使用前面在 Apple 开发人员门户上设置捆绑 ID 时使用的同一**产品名称**和**组织标识符**。
    
     ![Xcode — 项目选项][11]
+    
 3. 在“目标”下，单击项目名称，单击“生成设置”选项卡，展开“代码签名标识”，然后在“调试”下设置代码签名标识。 将“级别”从“基本”切换为“全部”，然后将“预配配置文件”设为前面创建的预配配置文件。
    
     如果屏幕未显示在 Xcode 中创建的新预配配置文件，请尝试刷新签名标识的配置文件。 单击菜单栏上的“Xcode”，再依次单击“首选项”、“帐户”选项卡、“查看详细信息”按钮、你的签名标识，然后单击右下角的刷新按钮。
    
-       ![Xcode - provisioning profile][9]
+    ![Xcode — 预配配置文件][9]
 4. 下载[移动服务 iOS SDK version 1.2.4]，然后将文件解压缩。 在 Xcode 中，右键单击项目，然后单击“将文件添加到”选项，将 **WindowsAzureMessaging.framework** 文件夹添加到 Xcode 项目。 选择“需要时复制项”，然后单击“添加”。
    
    > [!NOTE]
@@ -95,7 +97,7 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
    > 
    > 
    
-       ![Unzip Azure SDK][10]
+    ![解压缩 Azure SDK][10]
 5. 将新的标头文件添加到名为 `HubInfo.h`的项目。 此文件将保存通知中心的常量。  添加以下定义，然后将字符串文本占位符替换为*中心名称*以及前面记下的 *DefaultListenSharedAccessSignature*。
    
         #ifndef HubInfo_h
@@ -462,19 +464,19 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
 
 
 <!-- URLs. -->
-[移动服务 iOS SDK 版本 1.2.4]: http://aka.ms/kymw2g
-[移动服务 iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[提交应用页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[移动服务 iOS SDK version 1.2.4]: http://aka.ms/kymw2g
+[Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[移动服务入门]: /develop/mobile/tutorials/get-started-ios
-[Azure 经典门户]: https://manage.windowsazure.com/
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[iOS 预配门户]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[移动服务中的推送通知入门]: ../mobile-services-javascript-backend-ios-get-started-push.md
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
 [Azure 通知中心 - 使用 .NET 后端通知 iOS 用户]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [使用通知中心发送突发新闻]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
@@ -483,6 +485,6 @@ ms.openlocfilehash: 968e24b0441575be7ef17aac8ffaddb8fd16d3c6
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

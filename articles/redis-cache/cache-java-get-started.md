@@ -15,8 +15,8 @@ ms.workload: tbd
 ms.date: 08/24/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 907f75dc02bff7e25712a564410c1974e22f0d99
+ms.sourcegitcommit: 408026a8e75272cea92ad62e3a75aabaadf98351
+ms.openlocfilehash: 00c4d2e31391297955ecba891e919bda65ddaf8e
 
 
 ---
@@ -45,7 +45,7 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。 可�
 ## <a name="retrieve-the-host-name-and-access-keys"></a>检索主机名和访问密钥
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="enable-the-nonssl-endpoint"></a>启用非 SSL 终结点
+## <a name="enable-the-non-ssl-endpoint"></a>启用非 SSL 终结点
 某些 Redis 客户端不支持 SSL，默认情况下， [为新的 Azure Redis 缓存实例禁用了非 SSL 端口](cache-configure.md#access-ports)。 在编写本文时， [Jedis](https://github.com/xetorthio/jedis) 客户端不支持 SSL。 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
@@ -64,8 +64,8 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。 可�
         JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379);
         shardInfo.setPassword("<key>"); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);
-         jedis.set("foo", "bar");
-         String value = jedis.get("foo");
+        jedis.set("foo", "bar");
+        String value = jedis.get("foo");
       }
     }
 
@@ -77,6 +77,6 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。 可�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

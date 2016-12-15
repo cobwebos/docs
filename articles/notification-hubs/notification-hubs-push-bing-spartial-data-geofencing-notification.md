@@ -16,12 +16,12 @@ ms.topic: hero-article
 ms.date: 05/31/2016
 ms.author: dendeli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dc946619fa3134594d3891ffdf78417d054293e3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
 
 
 ---
-# <a name="geofenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知
+# <a name="geo-fenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知
 > [!NOTE]
 > 若要完成本教程，你必须有一个有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02)。
 > 
@@ -81,7 +81,7 @@ ms.openlocfilehash: dc946619fa3134594d3891ffdf78417d054293e3
 
 上载数据文件后，需确保发布数据源。 
 
-如前所述转到“管理数据源”，在列表中找到数据源，然后单击“操作”列中的“发布”。 In a bit, you should see your data source in the <bpt id="p1">**</bpt>Published Data Sources<ept id="p1">**</ept> tab:
+如前所述转到“管理数据源”，在列表中找到数据源，然后单击“操作”列中的“发布”。 In a bit, you should see your data source in the **Published Data Sources** tab:
 
 ![](./media/notification-hubs-geofence/bing-maps-published-data.png)
 
@@ -394,6 +394,6 @@ ms.openlocfilehash: dc946619fa3134594d3891ffdf78417d054293e3
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

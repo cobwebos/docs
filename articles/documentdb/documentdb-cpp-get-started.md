@@ -15,14 +15,15 @@ ms.topic: hero-article
 ms.date: 11/02/2016
 ms.author: aasthan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8770e89cd54dae23ba05fb53382f7d89d19b029a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 31368661906bc8ca0f8ac1d3329bb053d41a94d7
 
 
 ---
 # <a name="nosql-c-tutorial-documentdb-c-console-application"></a>NoSQL C++ 教程：DocumentDB C++ 控制台应用程序
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 > 
@@ -42,7 +43,7 @@ ms.openlocfilehash: 8770e89cd54dae23ba05fb53382f7d89d19b029a
 * 删除文档
 * 删除 C++ DocumentDB 数据库
 
-没有时间？ 不必担心！ [GitHub](https://github.com/stalker314314/DocumentDBCpp)上提供了完整解决方案。 有关快速说明，请参阅 [Get the complete solution](#GetSolution) （获取完整解决方案）。
+没有时间？ 不必担心！ 可在 [GitHub](https://github.com/stalker314314/DocumentDBCpp)上获取完整的解决方案。 有关快速说明，请参阅 [Get the complete solution](#GetSolution) （获取完整解决方案）。
 
 完成 C++ 教程后，请使用本页底部的投票按钮向我们提供反馈。 
 
@@ -292,6 +293,6 @@ DocumentDB 支持删除 JSON 文档，为此，可以复制以下代码并将其
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

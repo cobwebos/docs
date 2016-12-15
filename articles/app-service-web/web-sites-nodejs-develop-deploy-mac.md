@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c63b2b59143b57d6666910e701d8810bd517a42d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2537b0c4dcc71d02d25959a0b21d96bce7deaac6
 
 
 ---
@@ -186,7 +186,7 @@ Node.js 提供可由您的应用程序使用的丰富的模块生态系统。 �
 
 如果将应用程序部署到 Azure 后遇到问题，请参阅 [如何在 Azure App Service 中调试 Node.js 应用程序](web-sites-nodejs-debug.md) ，以了解有关诊断问题的信息。
 
-本文将使用 Azure 门户来创建 Web 应用。 你也可以使用 [Azure 命令行接口](../xplat-cli-install.md)或 [Azure PowerShell](../powershell-install-configure.md) 执行相同的操作。
+本文将使用 Azure 门户来创建 Web 应用。 你也可以使用 [Azure 命令行接口](../xplat-cli-install.md)或 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 执行相同的操作。
 
 有关如何在 Azure 上开发 Node.js 应用程序的详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
 
@@ -202,6 +202,6 @@ Node.js 提供可由您的应用程序使用的丰富的模块生态系统。 �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

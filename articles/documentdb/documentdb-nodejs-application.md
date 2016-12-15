@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d31fdad17c74ffd7ef5e411555c5a5fdb8c7927c
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 
 ![在本 Node.js 教程中创建的 My Todo List 应用程序的屏幕截图](./media/documentdb-nodejs-application/image1.png)
 
-没有时间完成本教程且只想获取完整的解决方案？ 没有问题，可以从 [GitHub][GitHub] 获取完整的示例解决方案。
+没有时间完成本教程且只想获取完整的解决方案？ 没有问题，可以从 [GitHub][GitHub] 获得完整的示例解决方案。
 
 ## <a name="a-nametoc395783176aprerequisites"></a><a name="_Toc395783176"></a>先决条件
 > [!TIP]
@@ -57,13 +57,17 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 
 在按照本文中的说明操作之前，你应确保已拥有下列项：
 
-* 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)
+
+   或
+
+   本地安装的 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
 * [Node.js][Node.js] v0.10.29 或更高版本。
 * [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装）
 * [Git][Git]。
 
 ## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>步骤 1：创建 DocumentDB 数据库帐户
-让我们首先创建 DocumentDB 帐户。 如果你已有帐户，则可以跳到 [步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
+让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -83,7 +87,7 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 4. 运行新应用程序。
    
         npm start
-5. 你可以通过导航浏览器到 [http://localhost:3000](http://localhost:3000)以查看新的应用程序。
+5. 在浏览器中导航到 [http://localhost:3000](http://localhost:3000) 即可查看新应用程序。
    
     ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/documentdb-nodejs-application/image12.png)
 
@@ -531,7 +535,7 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 ## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>后续步骤
 祝贺你！ 你刚使用 Azure DocumentDB 构建第一个 Node.js Express Web 应用程序并将其发布到了 Azure 网站。
 
-可以从 [GitHub][GitHub] 下载完整参考应用程序的源代码。
+可以从 [GitHub][GitHub] 下载完整的参考应用程序的源代码。
 
 有关详细信息，请参阅 [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)。
 
@@ -542,6 +546,6 @@ ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

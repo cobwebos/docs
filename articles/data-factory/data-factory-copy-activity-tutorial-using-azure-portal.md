@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 12/06/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
+ms.sourcegitcommit: 3205077236dd44253b3fa36d6eace36fb307871e
+ms.openlocfilehash: 2fe52756ea5522e0d9d763afc1c89d45bf830877
 
 
 ---
@@ -68,8 +68,8 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
       
-      1. 选择“使用现有资源组”，然后从下拉列表选择现有的资源组。 
-      2. 选择“新建”，然后输入资源组的名称。   
+      - 选择“使用现有资源组”，然后从下拉列表选择现有的资源组。 
+      - 选择“新建”，然后输入资源组的名称。   
          
           本教程中部分步骤假定你使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
    4. 选择数据工厂的**位置**。 下拉列表中只显示数据工厂服务支持的区域。
@@ -90,7 +90,7 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
    ![数据工厂主页](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-home-page.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
-链接服务将数据存储或计算服务链接到 Azure 数据工厂。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md##supported-data-stores-and-formats)。 有关数据工厂支持的计算服务列表，请参阅[计算链接的服务](data-factory-compute-linked-services.md)。 本教程不使用任何计算服务。 
+链接服务将数据存储或计算服务链接到 Azure 数据工厂。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 有关数据工厂支持的计算服务列表，请参阅[计算链接的服务](data-factory-compute-linked-services.md)。 本教程不使用任何计算服务。 
 
 本步骤创建两个链接服务：**AzureStorageLinkedService** 和 **AzureSqlLinkedService**。 AzureStorageLinkedService 和 AzureSqlLinkedService 链接服务分别将 Azure 存储帐户和 Azure SQL 数据库链接到 **ADFTutorialDataFactory**。 稍后要在本教程中创建管道，将数据从 AzureStorageLinkedService 中的 Blob 容器复制到 AzureSqlLinkedService 中的 SQL 表。
 
@@ -407,6 +407,6 @@ ms.openlocfilehash: cee537753b025ed5119c116dfcc644101be3271f
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 58d8043e09cb04ef2cdf4f5c005d549a6cb6f73c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 957dcdd3cef2939ef913eead7ebf332f9b797860
 
 
 ---
@@ -30,10 +30,10 @@ Azure Mobile Engagement 是一个软件即服务 (SaaS) 用户参与平台，可
 
 借助 Azure Mobile Engagement，应用程序发布商和市场营销专业人员可以更好地了解应用用户并与之进行交互。
 
-## <a name="realtime-actionable-analytics-to-maximize-return-on-investment"></a>实时可操作的分析，能够最大化投资回报率
+## <a name="real-time-actionable-analytics-to-maximize-return-on-investment"></a>实时可操作的分析，能够最大化投资回报率
 通过将 `big data` 收集与实时消息处理结合起来，根据用户的行为和人口统计数据创建参与方案。 Mobile Engagement 可以回答几乎任何与你的特定业务需求相关的问题。 例如，你可以创建自定义仪表板来衡量关键性能指标 (KPI)，在用户漏斗路径中快速发现并修复用户遇到的使用瓶颈，跟踪保留率和用户粘性，并确定哪些广告活动能实现最高的投资回报率。 在 Mobile Engagement 的 360° 用户路径视图上，你可以轻松且不断地增强和优化用户体验，从而提高保留率和改善应用使用情况。
 
-## <a name="valueadded-push-and-communications-platform"></a>增值的推送和通信平台
+## <a name="value-added-push-and-communications-platform"></a>增值的推送和通信平台
 Mobile Engagement 提供应用内消息传递功能，并可与本地推送通知网关（如 Google GCM、Apple APNS 和 Microsoft MPNS）完美协同工作。 同时，通过提供用户行为分析功能来标识特定的客户群，使你可创建具有针对性的市场活动，而且其功能还远不止此。
 
 应用程序开发人员以高效且免受干扰的方式覆盖用户，受益匪浅。
@@ -47,13 +47,13 @@ Microsoft 一直致力于保护隐私，这也是我们的产品和服务生命�
 ### <a name="next-steps"></a>后续步骤：
 [创建 Mobile Engagement 的最佳实践和过程](mobile-engagement-getting-started-best-practices.md)
 
-[入门](/documentation/services/mobile-engagement/)
+[入门](/index.md)
 
 [下载包含源代码的演示应用](https://aka.ms/azmedemoapps)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5fa7882653d6a41376cffb0eaca78c8d05044dc2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
 
 
 ---
-# <a name="getting-started-with-an-azure-multifactor-auth-provider"></a>Azure Multi-Factor Auth 提供程序入门
+# <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Azure Multi-Factor Auth 提供程序入门
 双重验证对于具有 Azure Active Directory 和 Office 365 用户的全局管理员默认可用。 但是，如果想充分利用[高级功能](multi-factor-authentication-whats-next.md)，则应购买完整版的 Azure 多重身份验证 (MFA)。
 
 > [!NOTE]
@@ -35,7 +35,7 @@ ms.openlocfilehash: 5fa7882653d6a41376cffb0eaca78c8d05044dc2
 > 
 > 
 
-## <a name="to-create-a-multifactor-auth-provider"></a>创建 Multi-Factor Auth 提供程序
+## <a name="to-create-a-multi-factor-auth-provider"></a>创建 Multi-Factor Auth 提供程序
 使用以下步骤创建 Azure Multi-Factor Auth 提供程序。
 
 1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
@@ -64,6 +64,6 @@ ms.openlocfilehash: 5fa7882653d6a41376cffb0eaca78c8d05044dc2
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

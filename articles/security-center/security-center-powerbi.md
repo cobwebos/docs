@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/22/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f085631264439062f6fccff4cdae535d7f80bbe3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 397f20446e113dd89b5ffa3d5680e7a3a9885476
 
 
 ---
@@ -76,7 +76,7 @@ Azure 安全中心链接可将用户重定向到 Azure 门户。 可以通过图
 > 
 > 
 
-“一段时间内的警报数”、“受攻击的资源”和“攻击者 IP”磁贴对于单击操作具有类似的输出。 This happens because the report aggregates information regarding all those three variables and calls it <bpt id="p1">**</bpt>Resources under Attack<ept id="p1">**</ept> as shown in the following screen:
+“一段时间内的警报数”、“受攻击的资源”和“攻击者 IP”磁贴对于单击操作具有类似的输出。 This happens because the report aggregates information regarding all those three variables and calls it **Resources under Attack** as shown in the following screen:
 
 ![受攻击的资源](./media/security-center-powerbi/security-center-powerbi-fig1-new7.png)
 
@@ -123,6 +123,6 @@ Azure 安全中心链接可将用户重定向到 Azure 门户。 可以通过图
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

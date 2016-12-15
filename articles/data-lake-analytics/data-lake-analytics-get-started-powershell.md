@@ -1,6 +1,6 @@
 ---
 title: "通过 Azure PowerShell 开始使用 Azure Data Lake Analytics | Microsoft 文档"
-description: "了解如何使用 Azure PowerShell 创建 Data Lake Store 帐户，使用 U-SQL 创建 Data Lake Analytics 作业，并提交该作业。 "
+description: "了解如何使用 Azure PowerShell 创建 Data Lake Analytics 帐户，使用 U-SQL 创建 Data Lake Analytics 作业，并提交该作业。 "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 09/21/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 59efa050944059c737654a3f039a058c50865ea6
+ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
+ms.openlocfilehash: a1244ee080d333338b1f0d9e49d1776822f535ed
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 59efa050944059c737654a3f039a058c50865ea6
 在开始阅读本教程前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="create-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
 在运行任何作业之前，首先必须拥有 Data Lake Analytics 帐户。 若要创建 Data Lake Analytics 帐户，必须指定以下各项：
@@ -209,6 +209,6 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

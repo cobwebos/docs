@@ -3,7 +3,7 @@ title: "Azure RemoteApp 常见问题解答 | Microsoft Docs"
 description: "了解有关 Azure RemoteApp 的常见问题解答。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: swadhwa
 editor: 
 ms.assetid: bad66603-91f9-437f-8a70-236405d2a27f
@@ -12,11 +12,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
+ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
+ms.openlocfilehash: 31df73e3fc4142ba8c3634ac9d2b6fea4cc1b2d9
 
 
 ---
@@ -40,12 +40,12 @@ ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
 * **能否免费试用此服务？**  是的。 有可用 30 天的免费试用版。 试用结束后，可以转换为付费帐户（可在产品中使用）或停止使用该服务。 转到 [portal.azure.com](http://portal.azure.com) 创建 RemoteApp 的新实例即可开始免费试用。 使用免费试用版，可以构建 RemoteApp 的 2 个实例，每个实例可以有 10 个用户。 请记住，此试用版仅 30 天 有效。
   
   ## <a name="azure-remoteapp-subscription-details"></a>Azure RemoteApp 订阅详细信息
-* **有哪些服务限制？** 可以在 [Azure 订阅和服务限制、配额与约束](。。/azure-subscription-service-limits。md)。 如果有更多问题，请告知。
+* **有哪些服务限制？** 可以在 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。 如果有更多问题，请告知。
 * **必须要有多少用户？**  至少要有 20 个用户。 为清楚起见再重复一遍 - 最小值是 20。 需要为 20 个用户付费。 
-* **RemoteApp 的费用是多少？** 请查看 [Azure RemoteApp 定价详细信息 ](https://azure。microsoft。com/pricing/details/remoteapp/)。
+* **RemoteApp 的费用是多少？** 请查看 [Azure RemoteApp 定价详细信息 ](https://azure.microsoft.com/pricing/details/remoteapp/)。
 * **一种类型的集合费用会高于另一种吗？**  是的，它会，具体取决于集合需求。 混合集合需要从 Azure RemoteApp 连接到本地网络。 如果使用现有的 VNET/快速路由，则无需额外付费。 但如果使用新的 Azure VNET 和网关或快速路由，则需要支付 [VPN 网关](https://azure.microsoft.com/pricing/details/vpn-gateway)或[快速路由](https://azure.microsoft.com/pricing/details/expressroute/)费用。 此费用（链接中有详细说明）在每月的 Azure RemoteApp 费用的基础上。
 
-## <a name="collections-whats-supported-which-should-you-use-and-others"></a>集合 - 支持的操作、应使用的功能及其他
+## <a name="collections---whats-supported-which-should-you-use-and-others"></a>集合 - 支持的操作、应使用的功能及其他
 * **是否支持自定义的业务线 (LOB) 应用程序？**  是的。 若要在 Azure RemoteApp 中使用自定义应用程序，请创建 [自定义模板映像](remoteapp-create-custom-image.md)，然后将其上载到 RemoteApp 集合。
 * **自定义的 LOB 应用程序是否会在 Azure RemoteApp 中正常工作？**  确定此问题的最好方法就是对其进行测试。 请查看 [RD 兼容中心](http://www.rdcompatibility.com/compatibility/default.aspx)。
 * **哪种部署方法（云或混合）最适合组织？**  如果想与单一登录 (SSO) 完全集成并实现安全的本地网络连接，混合集合能够提供最完整的体验。 云集合使用多个身份验证方法提供一种灵活简单的方式来确定部署问题。 详细了解 [部署选项](remoteapp-whatis.md)。
@@ -69,7 +69,7 @@ ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
 
 * **为什么无法为 Azure Active Directory 帐户指定访问权限？**  Azure Active Directory 用户必须来自与订阅关联的目录。 可以在门户的“设置”选项卡上查看或修改该目录。 有关详细信息，请参阅 [更改 RemoteApp 使用的 Azure Active Directory 租户](remoteapp-changetenant.md) 。
 
-## <a name="clients-what-device-can-i-use-to-access-azure-remoteapp"></a>客户端 - 可以使用哪种设备访问 Azure RemoteApp？
+## <a name="clients---what-device-can-i-use-to-access-azure-remoteapp"></a>客户端 - 可以使用哪种设备访问 Azure RemoteApp？
 可以在 [在 Azure RemoteApp 中访问应用](remoteapp-clients.md)中找到想要的客户端信息，包括安装不同客户端的步骤。
 
 * **客户端应用程序支持哪些设备和操作系统？**
@@ -86,7 +86,7 @@ ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
   * Android 手机
   * Windows Phone
     
-    [下载](https://www.remoteapp.windowsazure.com/Client下载/AllClients.aspx) RemoteApp 客户端。
+    [下载](https://www.remoteapp.windowsazure.com/ClientDownload/AllClients.aspx) RemoteApp 客户端。
 * **Azure RemoteApp 是否支持瘦客户端？**  是，支持以下 Windows 嵌入式瘦客户端：
   
   * Windows Embedded Standard 7
@@ -97,7 +97,7 @@ ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
 
 ## <a name="support-and-feedback"></a>支持和反馈
 * **什么是 RemoteApp 支持计划？**  免费提供计费和订阅管理支持。 可通过 [Azure 服务计划](https://azure.microsoft.com/support/plans/)获取技术支持。 还可以通过 [Azure 论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)获取免费的社区支持。 
-* **如何提交反馈？** 请访问 [反馈论坛](https://feedback。azure。com/forums/247748-azure-remoteapp/)。
+* **如何提交反馈？** 请访问 [反馈论坛](https://feedback.azure.com/forums/247748-azure-remoteapp/)。
 * **如果想要详细了解 Azure RemoteApp，可以与谁联系？** 除了[论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)（是提出问题的好地方）外，还可以加入每周的[询问专家在线研讨会](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html)（可以在其中谈论 RemoteApp 的所有内容）。
 * **RemoteApp 文档怎么样？**  很高兴听到这个问题。 除了门户帮助抽屉（只需在门户的任何页上单击 **？** ）中的帮助内容外，以下文章可帮助用户了解有关 RemoteApp 的所有信息：
   
@@ -126,6 +126,6 @@ ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

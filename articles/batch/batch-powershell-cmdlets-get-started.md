@@ -3,7 +3,7 @@ title: "Azure 批处理 PowerShell 入门 | Microsoft 文档"
 description: "快速介绍可用于管理 Azure Batch 服务的 Azure PowerShell cmdlet"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: f9ad62c5-27bf-4e6b-a5bf-c5f5914e6199
@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 10/20/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9aa49ecfa151b8ab56c0560db47c3b0eb80647a2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1ea51f4053ba0d4e08628d29eca7cb7c82a26d61
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 9aa49ecfa151b8ab56c0560db47c3b0eb80647a2
 ## <a name="prerequisites"></a>先决条件
 执行以下操作，使用 Azure PowerShell 来管理批处理资源。
 
-* [安装和配置 Azure PowerShell](../powershell-install-configure.md)
+* [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * 运行 **Login-AzureRmAccount** cmdlet 连接到订阅（Azure Resource Manager 模块中随附了 Azure 批处理 cmdlet）：
   
     `Login-AzureRmAccount`
@@ -240,6 +240,6 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

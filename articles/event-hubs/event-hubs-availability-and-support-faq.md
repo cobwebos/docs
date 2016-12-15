@@ -1,103 +1,13 @@
 ---
-title: "事件中心常见问题 (FAQ) | Microsoft Docs"
-description: "事件中心常见问题。"
-services: event-hubs
-documentationcenter: na
-author: sethmanheim
-manager: timlt
-editor: 
-ms.assetid: e88cc4aa-3eb1-47ec-8210-b4b00c18cea7
-ms.service: event-hubs
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/01/2016
-ms.author: sethm
+redirect_url: /azure/event-hubs/event-hubs-faq
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3ac353979c20c7e68e85c57bb2129850a2b756b8
-
+ms.sourcegitcommit: f603a3c3304af3e64ef40f2cdef3745e3b2085b3
+ms.openlocfilehash: 28cbf33c12eb036d82a3e59e6ea0f0cd1104f784
 
 ---
-# <a name="event-hubs-faq"></a>事件中心常见问题
-事件中心可以大规模引入、保留和处理来自高吞吐量数据源和/或大量设备的数据事件。 如果与服务总线队列和主题搭配使用，事件中心能够以持续可管控方式实现[物联网 (IoT)](https://azure.microsoft.com/services/iot-hub/) 方案的部署。
-
-本文介绍定价信息，并解答一些有关事件中心的常见问题：
-
-## <a name="pricing-information"></a>定价信息
-有关事件中心定价的完整信息，请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
-
-## <a name="how-are-event-hubs-ingress-events-calculated"></a>事件中心入口事件是怎样计算的？
-发送到事件中心的每个事件都统计为一条可计费消息。 *入口事件*定义为小于等于 64 KB 的数据单位。 任何小于等于 64 KB 的事件均被视为一个计费事件。 如果该事件大于 64 KB，则根据事件大小按 64 KB 的倍数来计算计费事件的数量。 例如，发送到事件中心的 8 KB 事件按一个事件计费，而发送到事件中心的 96 KB 的消息则按两个事件计费。
-
-从事件中心耗用的事件，以及管理操作和控制调用（例如检查点），不统计为计费入口事件，但会累计，上限为吞吐量单元限额。
-
-## <a name="what-are-event-hubs-throughput-units"></a>什么是事件中心吞吐量单元？
-通过 Azure 门户或事件中心 Resource Manager 模板明确选择事件中心吞吐量单位。 吞吐量单位适用于事件中心命名空间中的所有事件中心，每个吞吐量单位为命名空间赋予以下功能：
-
-* 入口事件（发送到事件中心的事件）最多达每秒 1 MB，但每秒不超过 1000 个入口事件、管理操作或控制 API 调用。
-* 出口事件（从事件中心耗用的事件）最多达每秒 2 MB。
-* 事件存储空间最多达 84 GB（对于默认为 24 小时的保留期来说是很充足的）。
-
-事件中心吞吐量单元根据在指定的某个小时内选择的最大单元数量按小时计费。
-
-## <a name="how-are-event-hubs-throughput-unit-limits-enforced"></a>怎样强制实施事件中心吞吐量单元？
-如果命名空间中所有事件中心间的总入口吞吐量或总入口事件率超过了聚合吞吐量单元限额，发送者会受到限制，并会收到指明已超出入口配额的错误信息。
-
-如果命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单元限额，接收者会受到限制，并会收到指明已超出出口配额的错误信息。 入口和出口配额是分开强制实施的，这样，发送者无法使事件耗用速度减慢，接收者也无法阻止事件发送到事件中心。
-
-请注意，吞吐量单元选择与事件中心分区的数量无关。 尽管每个分区都提供入口每秒 1 MB（每秒最多 1000 个事件）、出口每秒 2 MB 的最大吞吐量，但分区本身是没有固定费用的。 费用针对事件中心命名空间中所有事件中心上的聚合吞吐量单位。 利用这种模式，你可以创建足够的分区来支持其系统预计会出现的最大负载，这样，在系统上的事件负载确实要求更高的吞吐量之前不会发生任何吞吐量单元费用，而且，也不需要随着系统上负载的增加而更改系统的结构和体系。
-
-## <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>可选择的吞吐量单元的数量有限制吗？
-默认配额为每个命名空间 20 个吞吐量单元。 你可以通过填写支持票证来要求更大的吞吐量单元配额。 超出 20 个吞吐量单元这一限制时，捆绑包将以 20 个和 100 个吞吐量单元的形式提供。 请注意，使用 20 个以上的吞吐量单元会失去在不填写支持票证的情况下更改吞吐量单元数的能力。
-
-## <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>保留事件中心事件超过 24 小时的话，要收取费用吗？
-事件中心标准允许消息保留期长于 24 小时，最长以 30 天为限。 如果所存储事件总量的大小超过所选吞吐量单位数量的存储限制（每个吞吐量单位 84 GB），超出限制的部分会按公布的 Azure Blob 存储区费率收费。 每个吞吐量单元的存储限制包括 24 小时（默认值）的保留期期间的所有存储成本，即使吞吐量单元已经用到了最大入口限制。
-
-## <a name="what-is-the-maximum-retention-period"></a>保留期最长可以有多久？
-事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。
-
-## <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>怎样对事件中心存储区大小进行计算和收费？
-所有存储的事件的总大小，包括所有事件中心中用于事件标头的或磁盘存储结构上的任何内部开销，在一整天当中都会被测量。 在一天结束时，计算存储区大小峰值。 每天的存储限制根据在当天所选择的吞吐量单元的最小数量（每个吞吐量单元提供 84 GB 的限制）来计算。 如果总大小超过计算出的每日存储限额，超出的存储量会采用 Azure Blob 存储费率（按**本地冗余存储**费率）来计费。
-
-## <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-event-hubs-and-service-bus-queuestopics"></a>是否可以使用单个 AMQP 连接来与事件中心和服务总线队列/主题相互收发数据？
-可以，但前提是所有事件中心、队列和主题都在同一个命名空间中。 这样的话，就能以经济实用且具备高度可伸缩的方式实现对大量设备的双向中转连接，其延迟为次秒级。
-
-## <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>中转连接费用是否适用于事件中心？
-对于发送者，连接费用只在使用 AMQP 协议时适用。 使用 HTTP 发送事件没有连接费用，无论发送系统或设备的数量是多少。 如果打算使用 AMQP（例如，为了实现更高效的事件流式传输，或者为了对 IoT 命令和控制方案启用双向通信），请参阅[服务总线定价信息](https://azure.microsoft.com/pricing/details/service-bus/)页，了解有关中转连接构成方面的信息，以及如何计量它们。
-
-## <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>事件中心基本和标准这两种服务层有什么不同？
-事件中心标准层提供的功能要超出事件中心基本层以及某些竞争对手系统的功能。 这些功能包括：超过 24 小时的保留期，能够使用一个 AMQP 连接将命令发送到大量设备而延迟为次秒级，并且能够从那些设备将遥测发送到事件中心。 有关功能列表，请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
-
-## <a name="geographic-availability"></a>上市地区
-事件中心已在以下区域推出：
-
-| 地域 | 区域 |
-| --- | --- |
-| 美国 |美国中部、美国东部、美国东部 2、美国中南部、美国西部 |
-| 欧洲 |欧洲北部、欧洲西部 |
-| 亚太区 |东亚、东南亚 |
-| 日本 |日本东部、日本西部 |
-| 巴西 |巴西南部 |
-| 澳大利亚 |澳大利亚东部、澳大利亚东南部 |
-
-## <a name="support-and-sla"></a>支持和 SLA
-事件中心的技术支持可通过[社区论坛](https://social.msdn.microsoft.com/forums/azure/home)获得。 计费和订阅管理支持免费提供。
-
-若要详细了解我们的 SLA，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)页面。
-
-## <a name="next-steps"></a>后续步骤
-若要了解有关事件中心的详细信息，请参阅以下文章：
-
-* [事件中心概述][事件中心概述]。
-* 完整的[使用事件中心的完整示例应用程序][使用事件中心的完整示例应用程序]。
-
-[事件中心概述]: event-hubs-overview.md
-[使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

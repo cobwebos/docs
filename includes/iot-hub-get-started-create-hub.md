@@ -19,7 +19,7 @@
 5. 成功创建 IoT 中心后，请在 Azure 门户中单击 IoT 中心对应的新磁贴，以打开新 IoT 中心的边栏选项卡。 记下“主机名”，然后单击“共享访问策略”。
    
     ![新的 IoT 中心边栏选项卡][4]
-6. 在“共享访问策略”边栏选项卡中，单击“iothubowner”策略，然后复制并记下“iothubowner”边栏选项卡中的连接字符串。 有关详细信息，请参阅“Azure IoT 中心开发人员指南”中的[访问控制][lnk-access-control]。
+6. 在“共享访问策略”边栏选项卡中，单击“iothubowner”策略，然后复制并记下“iothubowner”边栏选项卡中的 IoT 中心连接字符串。 有关详细信息，请参阅“IoT 中心开发人员指南”中的[访问控制][lnk-access-control]。
    
     ![共享访问策略边栏选项卡][5]
 
@@ -37,6 +37,6 @@
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

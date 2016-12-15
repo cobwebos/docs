@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: b7cccd1638bfbc79322c88f10d515a282bdb1ad3
-ms.openlocfilehash: 473ed9aa5a744d39befe5dfcb9ed04b6c88c9e26
+ms.sourcegitcommit: f5e9d1a7f26ed3cac5767034661739169968a44e
+ms.openlocfilehash: ba0c710a0c28e9d52021ec966905a007b06f125e
 
 
 ---
@@ -496,6 +496,6 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

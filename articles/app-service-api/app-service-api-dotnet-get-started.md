@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d72cf46c4a93d805ac9586696a6b41d81af733fd
 
 
 ---
@@ -56,7 +56,7 @@ Visual Studio 解决方案包含三个项目：
 
 ## <a name="prerequisites"></a>先决条件
 * ASP.NET Web API - 本教程中的说明假设读者基本了解如何在 Visual Studio 中使用 ASP.NET [Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) 。
-* Azure 帐户 - 可以[建立免费 Azure 帐户](/pricing/free-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
+* Azure 帐户 - 可以[建立免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
   
     如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级应用 - **无需信用卡**，也无需做出承诺。
 * Visual Studio 2015 和 [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/archive-net-downloads/) - SDK 会自动安装 Visual Studio 2015（如果尚未安装）。
@@ -442,6 +442,6 @@ ToDoListAPI 项目已有生成的客户端代码，但在以下步骤中，要�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

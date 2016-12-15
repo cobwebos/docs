@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: df9897894a2a2a09735b0947fd335959e81a46cd
+ms.sourcegitcommit: 05ca343cfdfc602759eb3ea30a7186a0bb47bd74
+ms.openlocfilehash: 4dd8331ed2fd30d61b4a653f04cae9049385ce3c
 
 
 ---
@@ -32,7 +32,7 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 ![事件中心](./media/event-hubs-overview/ehoverview2.png)
 
 ## <a name="conceptual-overview"></a>概念概述
-事件中心通过分区使用者模式提供消息流式处理。 队列和主题使用 [使用者竞争](https://msdn.microsoft.com/library/dn568101.aspx) 模型，在此模型下，每个使用者都尝试从同一队列或资源读取数据。 这种资源争用最终会导致流处理应用程序变复杂并造成缩放限制。 事件中心使用分区使用者模式，在此模式下，每个使用者只读取消息流的特定子集或分区。 此模式支持事件处理的水平缩放，同时提供队列和主题中不可用的其他面向流的功能。
+事件中心通过分区使用者模式提供消息流式处理。 队列和主题使用[*使用者竞争*](https://msdn.microsoft.com/library/dn568101.aspx)模型，在此模型下，每个使用者都尝试从同一队列或资源读取数据。 这种资源争用最终会导致流处理应用程序变复杂并造成缩放限制。 事件中心使用分区使用者模式，在此模式下，每个使用者只读取消息流的特定子集或分区。 此模式支持事件处理的水平缩放，同时提供队列和主题中不可用的其他面向流的功能。
 
 ### <a name="partitions"></a>分区
 分区是事件中心内保留的有序事件。 当较新的事件到达时，它们将添加到此序列的末尾。 可以将分区视为“提交日志”。
@@ -61,7 +61,7 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 共享访问签名 (SAS) 是事件中心的身份验证机制。 服务总线在命名空间和事件中心级别提供 SAS 策略。 SAS 令牌是从 SAS 密钥生成的，它是以特定格式编码的 URL 的 SHA 哈希。 使用密钥（策略）和令牌的名称，可以重新生成哈希，并因此对发送者进行身份验证。 通常，为事件发布者创建的 SAS 令牌只对特定的事件中心具有 **发送** 权限。 此 SAS 令牌 URL 机制是“发布者策略”中介绍的发布者标识的基础。 有关使用 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)。
 
 #### <a name="publishing-an-event"></a>发布事件
-你可以通过 AMQP 1.0 或 HTTPS 发布事件。 服务总线提供了一个 [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) 类，使用该类可从 .NET 客户端向事件中心发送事件。 对于其他运行时和平台，你可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](http://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 256KB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定 *分区键* （如下一部分所述）或其标识。
+你可以通过 AMQP 1.0 或 HTTPS 发布事件。 服务总线提供了一个 [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient?redirectedfrom=MSDN#microsoft_servicebus_messaging_eventhubclient) 类，使用该类可从 .NET 客户端向事件中心发送事件。 对于其他运行时和平台，你可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](http://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 256 KB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定 *分区键* （如下一部分所述）或其标识。
 
 是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 从网络流量的角度讲，这可能是开销较大的操作，但这种操作只会在 AMQP 会话开始时发生。 HTTPS 的初始开销较低，但需要为每个请求提供更多的 SSL 开销。 对于频繁发布事件的发布者而言，AMQP 可以实现明显的性能、延迟和吞吐量节省。
 
@@ -80,8 +80,10 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 
 以下是使用者组 URI 约定的示例：
 
-    //<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
-    //<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
+```
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
+```
 
 下图显示了使用者组内的事件使用者。
 
@@ -119,7 +121,7 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 * 入口：最高每秒 1 MB，或每秒 1000 个事件。
 * 出口：最高每秒 2 MB。
 
-入口限制为购买的吞吐量单位数所提供的容量。 发送超过此容量的数据会导致“超出配额”异常。 此容量为每秒 1MB 或每秒 1000 个事件，以先达到的限制为准。 出口不会生成限制异常，但仅限于所购买吞吐量单位所能提供的数据传输量：每个吞吐量单位每秒 2MB。 如果你收到发布速率异常或者预期会看到更高的出口，请务必检查你为创建事件中心的命名空间购买了多少个吞吐量单位。 若要获取更多的吞吐量单位，可以在 [Azure 经典门户][Azure 经典门户]中“命名空间”页上的“规模”选项卡中调整设置。 也可以使用 Azure API 更改此设置。
+入口限制为购买的吞吐量单位数所提供的容量。 发送超过此容量的数据会导致“超出配额”异常。 此容量为每秒 1MB 或每秒 1000 个事件，以先达到的限制为准。 出口不会生成限制异常，但仅限于所购买吞吐量单位所能提供的数据传输量：每个吞吐量单位每秒 2MB。 如果你收到发布速率异常或者预期会看到更高的出口，请务必检查你为创建事件中心的命名空间购买了多少个吞吐量单位。 若要获取更多的吞吐量单位，可以在 [Azure 经典门户][Azure classic portal]中“命名空间”页上的“缩放”选项卡中调整设置。 也可以使用 Azure API 更改此设置。
 
 分区是一个数据组织概念，而吞吐量单位纯粹是一个容量概念。 吞吐量单位按小时计费，需提前购买。 购买后，吞吐量单位的最短计费时限为一小时。 最多可为一个事件中心命名空间购买 20 个吞吐量单位，一个 Azure 帐户限制为 20 个吞吐量单位。 这些吞吐量单位将在给定命名空间的所有事件中心之间共享。
 
@@ -127,30 +129,32 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 
 建议你认真权衡吞吐量单位和分区数目，以便对事件中心实现最佳缩放性。 一个分区最多只能缩放一个吞吐量单位。 吞吐量单位数应小于或等于事件中心内的分区数。
 
-有关详细定价信息，请参阅 [事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
+有关详细定价信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)页。
 
 ### <a name="publisher-policy"></a>发布者策略
 事件中心可让你通过 *发布者策略*对事件发布者进行精细控制。 发布者策略是一组运行时功能，旨在为大量的独立事件发布者提供方便。 借助发布者策略，每个发布者在使用以下机制将事件发布到事件中心时可以使用自身的唯一标识符。
 
-    //<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
+```
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
+```
 
 你不需要提前创建发布者名称，但它们必须与发布事件时使用的 SAS 令牌匹配，以确保发布者标识保持独立。 有关 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)。 使用发布者策略时， **PartitionKey** 值将设置为发布者名称。 若要正常工作，这些值必须匹配。
 
 ## <a name="summary"></a>摘要
-Azure 事件中心提供缩放性超高的事件与遥测处理服务，可用于任何规模的常见应用和用户工作流监视。 由于能够以较低的延迟和极高的规模提供发布订阅功能，事件中心可以充当大数据的“入口”。 借助基于发布者的标识和吊销列表，可以将这些功能扩展到常见的物联网方案。 有关开发事件中心应用程序的详细信息，请参阅 [事件中心编程指南](event-hubs-programming-guide.md)。
+Azure 事件中心提供缩放性超高的事件与遥测处理服务，可用于任何规模的常见应用和用户工作流监视。 由于能够以较低的延迟和极高的规模提供发布订阅功能，事件中心可以充当大数据的“入口”。 借助基于发布者的标识和吊销列表，可以将这些功能扩展到常见的[物联网](https://docs.microsoft.com/azure/#pivot=services&panel=iot)方案。 有关开发事件中心应用程序的详细信息，请参阅 [事件中心编程指南](event-hubs-programming-guide.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在了解事件中心的相关概念后，你可以继续学习以下主题：
+在了解事件中心的概念后，可以继续学习以下主题：
 
 * 使用 [事件中心教程]入门。
 * [使用事件中心的完整示例应用程序]。
 
-[Azure 经典门户]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 [事件中心教程]: event-hubs-csharp-ephcs-getstarted.md
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

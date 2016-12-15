@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
+ms.sourcegitcommit: c9aa7cebab12eafe71476ee45ef578d3201e69e5
+ms.openlocfilehash: e7c38aa5a778d5e8a653e753e5794d7c7da31dc1
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
 ## <a name="introduction"></a>介绍
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。
 
-本教程说明如何使用 Azure 经典门户创建事件中心。 此外，还将说明如何使用以 C# 编写的控制台应用程序将消息收集到事件中心，以及如何使用 Java 事件处理程序主机库并行检索这些消息。
+本教程说明如何使用 Azure 门户创建事件中心。 此外，还将说明如何使用以 C# 编写的控制台应用程序将消息收集到事件中心，以及如何使用 Java 事件处理程序主机库并行检索这些消息。
 
 若要完成本教程，你需要以下各项：
 
@@ -52,22 +52,22 @@ ms.openlocfilehash: 51d880650ab8059f3346b5c1272c232b49be33e9
 ## <a name="next-steps"></a>后续步骤
 现在，你已生成了一个可以创建事件中心以及发送和接收数据的有效应用程序，接下来请继续学习以下方案：
 
-* 完整的[使用事件中心的示例应用程序][使用事件中心的示例应用程序]。
-* [使用事件中心扩大事件处理][使用事件中心扩大事件处理]示例。
-* [事件中心概述][事件中心概述]
+* [使用事件中心的完整示例应用程序][sample application that uses Event Hubs]。
+* [使用事件中心扩大事件处理][Scale out Event Processing with Event Hubs]示例。
+* [事件中心概述][Event Hubs overview]
 
 <!-- Images. -->
 [21]: ./media/event-hubs-csharp-ephjava-getstarted/ephjava.png
 [22]: ./media/event-hubs-csharp-ephjava-getstarted/cs-send.png
 
 <!-- Links -->
-[Azure 经典门户]: https://manage.windowsazure.com/
-[事件中心概述]: event-hubs-overview.md
-[使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[使用事件中心扩大事件处理]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Azure classic portal]: https://manage.windowsazure.com/
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

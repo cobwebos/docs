@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: c8f29176c8566c94efeecadbc804f459d8f2a6c3
+ms.sourcegitcommit: f3e06e802e8a5b98afc96747dee0db4173da40f0
+ms.openlocfilehash: 9129a1941b138e6f3e9b2d0359015a20fd819565
 
 ---
-# <a name="creating-an-internal-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载平衡器
+# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
 
 > [!div class="op_single_selector"]
 > * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -311,6 +311,6 @@ azure network lb delete --resource-group nrprg --name nrplb
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

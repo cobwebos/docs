@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 10/24/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 46661a5cbe1a31aa8541cfc38c8f5fe519c0f6e4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3e587c9422e008a7b3c46e34fed4d0f1b2a8189c
 
 
 ---
@@ -33,17 +33,17 @@ ms.openlocfilehash: 46661a5cbe1a31aa8541cfc38c8f5fe519c0f6e4
 ## <a name="getting-started"></a>入门
 以下教程是专门针对多种平台编写的，可帮助你快速开始使用 Azure Active Directory 进行开发。 作为先决条件，你必须 [获取一个 Azure Active Directory 租户](active-directory-howto-tenant.md)。
 
-### <a name="mobile-and-pc-application-quickstart-guides"></a>移动和电脑应用程序快速入门指南
+### <a name="mobile-and-pc-application-quick-start-guides"></a>移动和电脑应用程序快速入门指南
 | [![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md) | [![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md) | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md) | [![Windows Universal](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md) | [![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md) | [![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md) | [![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | [iOS](active-directory-devquickstarts-ios.md) |[Android](active-directory-devquickstarts-android.md) |[.NET](active-directory-devquickstarts-dotnet.md) |[Windows Universal](active-directory-devquickstarts-windowsstore.md) |[Xamarin](active-directory-devquickstarts-xamarin.md) |[Cordova](active-directory-devquickstarts-cordova.md) |[直接与 OAuth 2.0 集成](active-directory-protocols-oauth-code.md) |
 
-### <a name="web-application-quickstart-guides"></a>Web 应用程序快速入门指南
+### <a name="web-application-quick-start-guides"></a>Web 应用程序快速入门指南
 | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md) | [![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md) | [![AngularJS](./media/active-directory-developers-guide/angularjs.png)](active-directory-devquickstarts-angular.md) | [![Javascript](./media/active-directory-developers-guide/javascript.png)](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | [![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md) | [![OpenID Connect](./media/active-directory-developers-guide/openid-connect.png)](active-directory-protocols-openid-connect-code.md) |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapp-dotnet.md) |[Java](active-directory-devquickstarts-webapp-java.md) |[AngularJS](active-directory-devquickstarts-angular.md) |[Javascript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |[Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) |[直接与 OpenID Connect 集成](active-directory-protocols-openid-connect-code.md) |
 
-### <a name="web-api-quickstart-guides"></a>Web API 快速入门指南
+### <a name="web-api-quick-start-guides"></a>Web API 快速入门指南
 | [![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapi-dotnet.md) | [![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-webapi-nodejs.md) |
 |:---:|:---:|
 | [.NET](active-directory-devquickstarts-webapi-dotnet.md) |[Node.js](active-directory-devquickstarts-webapi-nodejs.md) |
@@ -53,7 +53,7 @@ ms.openlocfilehash: 46661a5cbe1a31aa8541cfc38c8f5fe519c0f6e4
 |:---:|
 | [Graph API](active-directory-graph-api-quickstart.md) |
 
-## <a name="howtos"></a>操作方法
+## <a name="how-tos"></a>操作方法
 以下文章介绍如何使用 Azure Active Directory 执行特定任务：
 
 * [获取 Azure AD 租户](active-directory-howto-tenant.md)
@@ -116,7 +116,7 @@ ms.openlocfilehash: 46661a5cbe1a31aa8541cfc38c8f5fe519c0f6e4
 * [云标识](http://www.cloudidentity.net)：从 Azure Active Directory PM 原理的角度讲解标识管理即服务的设计理念。  
 * [Twitter 上的 Azure Active Directory](https://twitter.com/azuread)：以 140 个或更少的字符发布的 Azure Active Directory 公告。
 
-## <a name="windows-server-onpremises-development"></a>Windows Server 本地开发
+## <a name="windows-server-on-premises-development"></a>Windows Server 本地开发
 有关使用 Windows Server 和 Active Directory 联合身份验证服务 (ADFS) 开发的指南，请参阅：
 
 * [适用于开发人员的 AD FS 方案](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)：提供 AD FS 组件及其工作原理的概述，并提供有关受支持的身份验证/授权方案的详细信息。
@@ -125,6 +125,6 @@ ms.openlocfilehash: 46661a5cbe1a31aa8541cfc38c8f5fe519c0f6e4
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c0a1cf550c46810624d9eee7722409ff19b75369
 
 
 ---
@@ -98,6 +98,6 @@ ms.openlocfilehash: 8bf0ca0768939cbc99947191eab80a789f551363
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

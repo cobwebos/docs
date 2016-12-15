@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/26/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 36fd6b01dae6aa9a48985a252766d3f2d0b19342
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fd0e8f5bd41fcf105571f76aab2f192c2f6dd21d
 
 
 ---
@@ -101,7 +101,7 @@ Azure 机器学习有两种类型的服务：
 
 **是否可以从 Amazon S3 读取数据？**
 
-如果数据量较小，并且想要通过 HTTP URL 公开，可以使用[导入数据][import-data] 模块。 如果数据量较大，请先将数据传输到 Azure 存储，然后使用[导入数据][import-data] 模块将其导入试验。
+如果数据量较小，并且想要通过 HTTP URL 公开，可以使用[导入数据][import-data]模块。 如果数据量较大，请先将它传输到 Azure 存储，然后使用[导入数据][import-data]模块将它导入试验。
 <!--
 
 <SEE CLOUD DS PROCESS>
@@ -109,7 +109,7 @@ Azure 机器学习有两种类型的服务：
 
 **是否有内置的图像输入功能？**
 
-可以在[导入图像][image-reader] 参考中了解图像输入功能。
+可以在[导入图像][image-reader]参考中了解图像输入功能。
 
 ### <a name="modules"></a>模块
 **查找的算法、数据源、数据格式或数据转换操作不在 Azure 机器学习工作室中。可以使用哪些选项？**
@@ -140,7 +140,7 @@ Azure 机器学习有两种类型的服务：
 ### <a name="algorithms"></a>算法
 **机器学习工作室支持哪些现有算法？**
 
-机器学习工作室提供最先进的算法，例如可缩放的提升决策树、Bayesian 推荐系统、深度神经网络和决策森林（由 Microsoft Research 开发）。 此外还包括可缩放的开源机器学习包，例如 Vowpal Wabbit。 机器学习工作室支持多类与二进制分类、回归和聚集。 请参阅[机器学习模块][machine-learning-modules] 的完整列表。
+机器学习工作室提供最先进的算法，例如可缩放的提升决策树、Bayesian 推荐系统、深度神经网络和决策森林（由 Microsoft Research 开发）。 此外还包括可缩放的开源机器学习包，例如 Vowpal Wabbit。 机器学习工作室支持多类与二进制分类、回归和聚集。 请参阅[机器学习模块][machine-learning-modules]的完整列表。
 
 **是否会自动推荐数据适用的机器学习算法？**
 
@@ -224,7 +224,7 @@ Studio 中没有适用于 R 的 REPL 环境。
 
 **是否可以在某个位置查看 RRS/BES 输出？**
 
-对于 RRS，通常可以在 Web 服务响应中查看结果。 也可以将结果写入 Azure Blob 存储。 对于BES，输出默认写入 Blob。 也可以使用[导出数据][export-data] 模块将输出写入数据库或表。
+对于 RRS，通常可以在 Web 服务响应中查看结果。 也可以将结果写入 Azure Blob 存储。 对于BES，输出默认写入 Blob。 也可以使用[导出数据][export-data]模块将输出写入数据库或表。
 
 **是否只能基于机器学习工作室中创建的模型创建 Web 服务？**
 
@@ -245,7 +245,7 @@ Studio 中没有适用于 R 的 REPL 环境。
 
 **可以将多少数据用于训练？**
 
-机器学习工作室中的模块针对常见用例支持最多包含 10 GB 密集数字数据的数据集。 如果模块接受多个输入，所有输入的大小总计为 10 GB。 也可以通过 Hive 或 Azure SQL 数据库查询，或在引入前通过[按计数学习][counts] 预处理模块，对更大的数据集采样。  
+机器学习工作室中的模块针对常见用例支持最多包含 10 GB 密集数字数据的数据集。 如果模块接受多个输入，所有输入的大小总计为 10 GB。 也可以通过 Hive 或 Azure SQL 数据库查询，或在引入之前通过[按计数学习][counts]模块进行预处理，对更大的数据集采样。  
 
 以下数据类型可以在特征正则化期间扩展为较大数据集，并限制为小于 10 GB：
 
@@ -332,7 +332,7 @@ Azure 机器学习有两个组件。 机器学习工作室和机器学习 Web �
 
  Azure 机器学习提供免费订阅选项（请参阅[机器学习定价](https://azure.microsoft.com/pricing/details/machine-learning/)了解详细信息），机器学习工作室提供 8 小时快速评估试用版（登录[机器学习工作室](https://studio.azureml.net/?selectAccess=true&o=2)获取此试用版）。
 
- 此外，注册 Azure 免费试用版后，可以试用任何 Azure 服务一个月。 有关 Azure 免费试用版的详细信息，请访问 [Azure Free Trial FAQ](/pricing/free-trial-faq/)（Azure 免费试用常见问题）。
+ 此外，注册 Azure 免费试用版后，可以试用任何 Azure 服务一个月。 有关 Azure 免费试用版的详细信息，请访问 [Azure Free Trial FAQ](https://azure.microsoft.com/pricing/free-trial-faq/)（Azure 免费试用常见问题）。
 
 **什么是事务？**
 
@@ -432,7 +432,7 @@ Azure ML 的新 Web 服务提供多个级别用于预配计费计划。 开发/�
 
 是的。 不同的区域有不同的计划定价。 将 Web 服务部署到其他区域时，需要为服务分配该区域特定的计划。
 
-### <a name="new-web-services-overages"></a>新的 Web 服务 - 超额
+### <a name="new-web-services---overages"></a>新的 Web 服务 - 超额
 **如何检查 Web 服务使用量是否超额？**
 
 可以在 Azure 机器学习 Web 服务门户的“计划”页中查看所有计划的使用量。 登录到门户，单击“计划”菜单选项。
@@ -538,13 +538,13 @@ Azure ML API 服务根据它是经典 Web 服务还是新 Web 服务来计费。
 [machine-learning-modules]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[导出数据]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
+[export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

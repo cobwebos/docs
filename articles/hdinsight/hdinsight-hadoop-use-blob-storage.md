@@ -17,12 +17,12 @@ ms.topic: get-started-article
 ms.date: 09/06/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7baf1aa756221df62a36cd975ffb92fc8cd27232
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 74416d2740c4eaa49d508468df68fdb786ea2902
 
 
 ---
-# <a name="use-hdfscompatible-azure-blob-storage-with-hadoop-in-hdinsight"></a>将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用
+# <a name="use-hdfs-compatible-azure-blob-storage-with-hadoop-in-hdinsight"></a>将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用
 学习如何将低成本 Azure Blob 存储与 HDInsight 配合使用、创建 Azure 存储帐户和 Blob 存储容器，然后处理其中的数据。
 
 Azure Blob 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 通过 Hadoop 分布式的文件系统 (HDFS) 界面，可以针对 Blob 存储中的结构化或非结构化数据直接运行 HDInsight 中的整套组件。
@@ -39,7 +39,7 @@ Azure Blob 存储是一种稳健、通用的存储解决方案，它与 HDInsigh
 ## <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
 下图提供了 HDInsight 存储体系结构的抽象视图：
 
-![Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据。](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight Storage Architecture")
+![Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据。](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight 存储体系结构")
 
 HDInsight 提供对在本地附加到计算节点的分布式文件系统的访问。 可使用完全限定 URI 访问该文件系统，例如：
 
@@ -126,7 +126,7 @@ Blob 存储可用于结构化和非结构化数据。 Blob 存储容器将数据
     azure storage container create <containername> --account-name <storageaccountname> --account-key <storageaccountkey>
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
-如果[已安装并配置 Azure PowerShell][powershell-install]，则可以从 Azure PowerShell 提示符使用以下命令来创建存储帐户和容器：
+如果[已安装并配置 Azure PowerShell][powershell-install]，可以从 Azure PowerShell 提示符使用以下命令来创建存储帐户和容器：
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -216,7 +216,7 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
 ![Blob 相关 PowerShell cmdlet 的列表。][img-hdi-powershell-blobcommands]
 
 ### <a name="upload-files"></a>上载文件
-请参阅[将数据上传到 HDInsight][hdinsight-upload-data]。
+请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
 
 ### <a name="download-files"></a>下载文件
 以下脚本将一个块 Blob 下载到当前文件夹。 运行该脚本之前，请将该目录更改为你有写权限的文件夹。
@@ -283,13 +283,13 @@ $clusterName = "<HDInsightClusterName>"
 有关详细信息，请参阅：
 
 * [Azure HDInsight 入门][hdinsight-get-started]
-* [将数据上传到 HDInsight][hdinsight-upload-data]
+* [将数据上载到 HDInsight][hdinsight-upload-data]
 * [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
 * [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据][hdinsight-use-sas]
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
-[powershell-install]: ../powershell-install-configure.md
+[powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-creation]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-tutorial-get-started-windows.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -305,6 +305,6 @@ $clusterName = "<HDInsightClusterName>"
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

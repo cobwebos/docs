@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8ec86ebefccaf74c67cb7917ccf7d538bc95ae07
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f86a70a5207f19063e9992325c8f8d696ca7823e
 
 
 ---
 # <a name="tutorial-get-started-with-the-preconfigured-solutions"></a>教程：预配置解决方案入门
 ## <a name="introduction"></a>介绍
-Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，以提供可实现常见 IoT 商业应用场景的端到端解决方案。 *远程监视* 预配置解决方案将连接并监视设备。 可以利用该解决方案分析设备发出的数据流，并通过让流程自动响应该数据流提升业务绩效。
+Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多项 Azure IoT 服务，提供可实现常见 IoT 商业应用场景的端到端解决方案。 *远程监视* 预配置解决方案将连接并监视设备。 可以利用该解决方案分析设备发出的数据流，并通过让流程自动响应该数据流提升业务绩效。
 
 本教程演示如何预配远程监视预配置解决方案。 还介绍了远程监视解决方案的基本功能。 可以通过随预配置解决方案一起部署的解决方案仪表板来访问其中的多项功能：
 
@@ -78,7 +78,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
    
    ![仪表板中的设备命令][img-devicecommands]
 2. 从命令列表中选择“PingDevice”。
-3. 单击左下角的“+ 添加设备” ****。
+3. 单击左下角的“+ 添加设备” 。
 4. 你可以在命令历史记录中查看命令的状态。
    
    ![仪表板中的命令状态][img-pingcommand]
@@ -112,7 +112,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
     ![查看新设备发出的遥测数据][img-runningnew-2]
 
 ## <a name="edit-the-device-metadata"></a>编辑设备元数据
-当设备首次连接到解决方案时，会将其元数据发送到解决方案。 当你通过解决方案仪表板编辑设备元数据时，会将新的元数据值发送到设备，并将新值存储在解决方案的 DocumentDB 数据库中。 有关详细信息，请参阅 [设备标识注册表和 DocumentDB][lnk-devicemetadata]。
+当设备首次连接到解决方案时，会将其元数据发送到解决方案。 当你通过解决方案仪表板编辑设备元数据时，会将新的元数据值发送到设备，并将新值存储在解决方案的 DocumentDB 数据库中。 有关详细信息，请参阅[设备标识注册表和 DocumentDB][lnk-devicemetadata]。
 
 1. 导航回到设备列表。
 2. 在“设备列表”中选择新设备，然后单击“编辑”以编辑“设备属性”：
@@ -137,7 +137,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 5. 单击新设备的设备详细信息窗格中的“命令”。
    
    ![添加设备规则][img-adddevicerule2]
-6. 从命令列表中选择“ChangeSetPointTemp”并将“SetPointTemp”设置为 45。 Then click <bpt id="p1">**</bpt>Send Command<ept id="p1">**</ept>:
+6. 从命令列表中选择“ChangeSetPointTemp”并将“SetPointTemp”设置为 45。 Then click **Send Command**:
    
    ![添加设备规则][img-adddevicerule3]
 7. 导航回到解决方案仪表板。 一小段时间之后，将在新设备所报告的温度超过 47 度阈值时，在“警报历史记录”  窗格中看到新的条目：
@@ -180,7 +180,7 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 完成后，可在 [azureiotsuite.com][lnk-azureiotsuite] 站点的 Azure 订阅中删除预配置解决方案。 利用该站点，可以轻松地删除在创建预配置解决方案时预配的所有资源。
 
 > [!NOTE]
-> 若要确保删除与预配置解决方案相关的所有内容，请在 [azureiotsuite.com][lnk-azureiotsuite] 站点中删除这些内容，而不只是删除门户中的资源组。
+> 若要确保删除与预配置解决方案相关的所有内容，请在 [azureiotsuite.com][lnk-azureiotsuite] 站点中删除这些内容，而不是删除门户中的资源组。
 > 
 > 
 
@@ -229,6 +229,6 @@ Azure IoT 套件[预配置解决方案][lnk-preconfigured-solutions]结合了多
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

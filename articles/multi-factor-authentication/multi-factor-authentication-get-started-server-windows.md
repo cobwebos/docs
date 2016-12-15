@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1952e103c574f83c2c6285e32c59144816749348
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 84b6df0b45548d3797528c3723f02bd1a124454f
 
 
 ---
-# <a name="windows-authentication-and-azure-multifactor-authentication-server"></a>Windows 身份验证和 Azure Multi-Factor Authentication 服务器
+# <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure Multi-Factor Authentication 服务器
 使用“Windows 身份验证”部分，管理员可以为一个或多个应用程序启用和配置 Windows 身份验证。  下面列出了在设置 Windows 身份验证之前需要注意的事项。
 
 * 只有在重新启动后，用于终端服务的 Azure Multi-Factor Authentication 才会生效。
@@ -49,6 +49,6 @@ ms.openlocfilehash: 1952e103c574f83c2c6285e32c59144816749348
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

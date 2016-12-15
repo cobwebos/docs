@@ -1,9 +1,9 @@
 ## <a name="receive-messages-with-eventprocessorhost"></a>使用 EventProcessorHost 接收消息
-[EventProcessorHost][EventProcessorHost] 是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从这些事件中心接收事件。 使用 [EventProcessorHost][EventProcessorHost]，可跨多个接收方拆分事件，即使在不同节点中托管也是如此。 此示例演示如何对单一接收方使用 [EventProcessorHost][EventProcessorHost]。 [扩大事件处理][扩大事件处理]示例显示如何将 [EventProcessorHost][EventProcessorHost] 用于多个接收方。
+[EventProcessorHost][EventProcessorHost] 是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件。 使用 [EventProcessorHost][EventProcessorHost]，可跨多个接收方拆分事件，即使在不同节点中托管也是如此。 此示例演示如何为单一接收方使用 [EventProcessorHost][EventProcessorHost]。 [扩展的事件处理][Scaled out event processing]示例显示如何将 [EventProcessorHost][EventProcessorHost] 用于多个接收方。
 
-若要使用 [EventProcessorHost][EventProcessorHost]，必须拥有 [Azure 存储帐户][Azure 存储帐户]：
+若要使用 [EventProcessorHost][EventProcessorHost]，必须有一个 [Azure 存储帐户][Azure Storage account]：
 
-1. 登录到 [Azure 门户][Azure 门户]，然后单击屏幕左上角的“新建”。
+1. 登录到 [Azure 门户][Azure portal]，然后单击屏幕左上角的“新建”。
 2. 单击“数据 + 存储”，然后单击“存储帐户”。
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png)
@@ -109,18 +109,18 @@
      ```
 
 > [!NOTE]
-> 本教程使用单个 [EventProcessorHost][EventProcessorHost] 实例。 若要增加吞吐量，建议运行多个 [EventProcessorHost][EventProcessorHost] 实例，如[扩大事件处理][扩大事件处理]示例中所示。 在这些情况下，为了对接收的事件进行负载平衡，各个实例会自动相互协调。 如果希望多个接收方都各自处理 *全部* 事件，则必须使用 **ConsumerGroup** 概念。 在从不同计算机中接收事件时，根据部署 [EventProcessorHost][EventProcessorHost] 实例的计算机（或角色）来指定这些实例的名称可能会很有用。 有关这些主题的详细信息，请参阅[事件中心概述][事件中心概述]和[事件中心编程指南][事件中心编程指南]主题。
+> 本教程使用单个 [EventProcessorHost][EventProcessorHost] 实例。 若要增加吞吐量，建议运行多个 [EventProcessorHost][EventProcessorHost] 实例，如[扩展的事件处理][Scaled out event processing]示例中所示。 在这些情况下，为了对接收的事件进行负载平衡，各个实例会自动相互协调。 如果希望多个接收方都各自处理 *全部* 事件，则必须使用 **ConsumerGroup** 概念。 在从不同计算机中接收事件时，根据部署 [EventProcessorHost][EventProcessorHost] 实例的计算机（或角色）来指定该实例的名称可能会很有用。 有关这些主题的详细信息，请参阅[事件中心概述][Event Hubs Overview]和[事件中心编程指南][Event Hubs Programming Guide]主题。
 > 
 > 
 
 <!-- Links -->
-[事件中心概述]: ../articles/event-hubs/event-hubs-overview.md
-[事件中心编程指南]: ../articles/event-hubs/event-hubs-programming-guide.md
-[扩大事件处理]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure 存储帐户]: ../articles/storage/storage-create-storage-account.md
-[EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Azure 门户]: https://portal.azure.com
+[Event Hubs Overview]: ../articles/event-hubs/event-hubs-overview.md
+[Event Hubs Programming Guide]: ../articles/event-hubs/event-hubs-programming-guide.md
+[Scaled out event processing]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Azure Storage account]: ../articles/storage/storage-create-storage-account.md
+[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Azure portal]: https://portal.azure.com
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

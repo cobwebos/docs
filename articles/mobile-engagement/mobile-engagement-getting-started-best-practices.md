@@ -15,12 +15,12 @@ ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7be266a6f8b3e18f2f6a27908ad75b5c19d3d862
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
 
 
 ---
-# <a name="azure-mobile-engagement-getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - 最佳实践入门指南
+# <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - 最佳实践入门指南
 ## <a name="overview"></a>概述
 **移动屏幕是很拥挤的空间：** 2013 年的一项研究发现，移动设备平均安装 27 个应用程序。 用户通常每月花 30 小时在其应用上。 该时间大部分花在社交网络和游戏上（约 20 小时）。 到 2014 年的时候，Android 市场已经有大约 150 万可供用户选择的应用程序。 Apple Store 有大约 120 万个应用。 移动应用的使用越来越广泛，而开发商在这个不断增长的市场的竞争也越来越剧烈。 
 
@@ -105,7 +105,7 @@ Azure Mobile Engagement 计划旨在通过相关方法收集和分析详细的�
 3. 应用程序的此类数据（即屏幕、设置、系统等）位于何处？
 4. 是否可以针对此 KPI 确定一个用户参与序列？
 
-可以通过[媒体攻略模板][媒体攻略链接]中的 **KPI 生成器**工作表获取示例和指导。
+可以通过[媒体攻略模板][Media Playbook link]中的 **KPI 生成器**工作表获取示例和指导。
 
 ## <a name="step-2-your-engagement-program"></a>步骤 2：用户参与计划
 应该考虑将好的移动用户参与计划作为应用的重要组件。 这种情况下，绝对应在应用中包括一个好的欢迎计划，在用户使用应用的第一天就执行。 这会对应用的用户参与度和保留率产生非常正面的影响。 研究表明，大部分用户在安装后的头几天就会停止使用应用。 需要在用户仍关注应用的时候，尽早激起其兴趣，尽量满足或超过客户的预期。 确保将应用的重要价值和优势呈现给客户。 
@@ -209,13 +209,13 @@ Azure Mobile Engagement 计划旨在通过相关方法收集和分析详细的�
 #### <a name="playbook-exercise-2-create-your-engagement-program"></a>攻略练习 2：创建用户参与计划
 花些时间对目标进行汇总，定义那些预计要使用特定序列开展的活动。 确保在活动中对通知应用 3W 方法。 
 
-使用[媒体攻略模板][媒体攻略链接]中的**用户参与计划**工作表，查看相关示例和指导。
+通过[媒体攻略模板][Media Playbook link]中的**用户参与计划**工作表获取示例和指导。
 
 ## <a name="step-3-app-integration"></a>步骤 3：应用集成
 #### <a name="create-a-tag-plan"></a>创建标记计划
 若要将 Azure Mobile Engagement 集成到应用中，需创建标记计划。 标记计划是项目的基础。 标记计划定义营销规范、应用程序工作流以及在应用中收集的用于衡量 KPI 的真实标记数据的关系。 标记计划指示可在门户中看到的分析内容。 此外，也可使用标记计划定义用户类型，发送有所偏重的推送通知，提高最终用户的参与度。 定义标记计划以后，即可使用 Azure Mobile Engagement SDK 添加代码，将标记计划集成到应用中。
 
-标记计划不应标记应用程序中的所有内容。 而只应包括属于移动用户参与策略的标记数据。 应用程序在这方面很可能各不相同。 可以利用 Azure Mobile Engagement 提供的[媒体攻略模板][媒体攻略链接]，通过给定方法构建标记计划。 使用“标记计划”工作表作为构建标记计划的指南。
+标记计划不应标记应用程序中的所有内容。 而只应包括属于移动用户参与策略的标记数据。 应用程序在这方面很可能各不相同。 可以利用 Azure Mobile Engagement 提供的[媒体攻略模板][Media Playbook link]，通过给定方法构建标记计划。 使用“标记计划”工作表作为构建标记计划的指南。
 
 在工作表中定义标记部分时，请尽量具体。 这很重要，可以避免混淆。 详细指定每种需要发送各个标记的预期方案。 包括已嵌入每个标记的活动的名称。 这些都应该包括在工作表的“信息”部分。 进行测试验证时，应将标记计划工作表用作主要参考。 
 
@@ -322,10 +322,10 @@ Engagement 计划是反复性的，应在试验应用的最佳计划过程中持
 
 
 <!--Link references-->
-[媒体操作手册链接]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
+[Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: timlt
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7b9358183d884dfeda3d200ef5ae8beb60d3957e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e8f1ad596d2b64380876a501ebcf127afdda9ccf
 
 
 ---
@@ -47,7 +47,7 @@ curl localhost/marathon/v2/apps
 {"apps":[]}
 ```
 
-## <a name="deploy-a-dockerformatted-container"></a>部署 Docker 格式容器
+## <a name="deploy-a-docker-formatted-container"></a>部署 Docker 格式容器
 使用描述了预期部署的 JSON 文件通过 Marathon 部署 Docker 格式容器。 以下示例会部署 Nginx 容器，将 DC/OS 代理的端口 80 绑定到容器的端口 80。 另请注意，“acceptedResourceRoles”属性已设置为“slave_public”。 这会在面向公众的代理规模集中将容器部署到代理。
 
 ```json
@@ -174,6 +174,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

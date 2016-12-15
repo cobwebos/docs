@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1e7529de2968b2745b42001cc16b54d70b2a5b86
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
 
 
 ---
@@ -137,7 +137,7 @@ ms.openlocfilehash: 1e7529de2968b2745b42001cc16b54d70b2a5b86
 
 1. 如果你运行的是 Windows 7，已下载并安装了 [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) 。   
     如果运行的是 Windows Server 2012 R2、Windows Server 2012、Windows 2008 R2、Windows 8.1 和 Windows 7 SP1， [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) 已可供安装。
-2. Azure PowerShell 1.0。 有关此版本及其安装方法的信息，请参阅 [How to install and configure Azure PowerShell](../powershell-install-configure.md)（如何安装和配置 Azure PowerShell）。
+2. Azure PowerShell 1.0。 有关此版本及其安装方法的信息，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
 3. 已创建自动化帐户。  以下两个脚本中的 -AutomationAccountName 和 -ApplicationDisplayName 参数值将引用此帐户。
 
 若要在 Azure 门户中获取 *SubscriptionID*、*ResourceGroup* 和 *AutomationAccountName* 的值（这些都是脚本的必需参数），请从“自动化帐户”边栏选项卡中选择自动化帐户，然后选择“所有设置”。  在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。  在“属性”边栏选项卡中，可以记下这些值。<br> ![自动化帐户属性](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
@@ -394,6 +394,6 @@ ms.openlocfilehash: 1e7529de2968b2745b42001cc16b54d70b2a5b86
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

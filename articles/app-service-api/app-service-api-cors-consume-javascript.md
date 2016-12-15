@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/27/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 14de66f6035d8cd0579351d64b85bd7e1c8f2ab2
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: be48f1f0b9c3c749c13fd89f63d41fbaff6a62ee
 
 
 ---
@@ -51,7 +51,7 @@ ms.openlocfilehash: 14de66f6035d8cd0579351d64b85bd7e1c8f2ab2
    单击“保存”后，API 应用将接受来自指定 URL 的 JavaScript 调用。
 
 #### <a name="configure-cors-by-using-azure-resource-manager-tools"></a>使用 Azure Resource Manager工具配置 CORS
-也可以使用 [Azure PowerShell](../powershell-install-configure.md) 和 [Azure CLI](../xplat-cli-install.md) 等命令行工具中的 [Azure Resource Manager 模板](../resource-group-authoring-templates.md)来配置 API 应用的 CORS。 
+也可以使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](../xplat-cli-install.md) 等命令行工具中的 [Azure Resource Manager 模板](../resource-group-authoring-templates.md)来配置 API 应用的 CORS。 
 
 有关可设置 CORS 属性的 Azure Resource Manager 模板的示例，请打开 [本教程的示例应用程序存储库中的 azuredeploy.json 文件](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)。 找到如以下示例中所示的模板部分：
 
@@ -61,7 +61,7 @@ ms.openlocfilehash: 14de66f6035d8cd0579351d64b85bd7e1c8f2ab2
             ]
         }
 
-## <a name="a-idtutorialstarta-continuing-the-net-gettingstarted-tutorial"></a><a id="tutorialstart"></a> 继续学习 .NET 入门教程
+## <a name="a-idtutorialstarta-continuing-the-net-getting-started-tutorial"></a><a id="tutorialstart"></a> 继续学习 .NET 入门教程
 如果学习的是适用于 API 应用的 Node.js 或 Java 入门系列教程，则已经完成了入门系列教程。 请跳到 [后续步骤](#next-steps) 部分查找有关进一步了解 API 应用的建议。
 
 本文余下内容是 .NET 入门系列教程的延续，假设读者已成功完成 [第一篇教程](app-service-api-dotnet-get-started.md)。
@@ -252,6 +252,6 @@ Web API CORS 支持比应用服务 CORS 支持更有弹性。 例如，在代码
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

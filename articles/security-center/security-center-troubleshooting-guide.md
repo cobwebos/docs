@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/18/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0413d5c87d6df4d07b0e3197599aad154b589bb2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9ed6eebd8a0c11158f9812edfc15b29a70ccc905
 
 
 ---
@@ -86,6 +86,6 @@ Azure 安全监视扩展将扫描各种安全相关的配置，并从虚拟机�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

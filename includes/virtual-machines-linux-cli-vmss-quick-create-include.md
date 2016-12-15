@@ -1,16 +1,23 @@
-如果尚未这样做，可以将 [Azure 订阅免费试用版](https://azure.microsoft.com/pricing/free-trial/)和 [Azure CLI](../articles/xplat-cli-install.md) [连接到 Azure 帐户](../articles/xplat-cli-connect.md)。 然后，可以运行以下命令来快速创建缩放集：
+如果尚未这样做，可以将 [Azure 订阅免费试用版](https://azure.microsoft.com/pricing/free-trial/)和 [Azure CLI](../articles/xplat-cli-install.md) [连接到 Azure 帐户](../articles/xplat-cli-connect.md)。 请确保 Azure CLI 处于 Resource Manager 模式，如下所示：
 
-```bash
-# make sure we are in Resource Manager mode (https://azure.microsoft.com/en-us/documentation/articles/resource-manager-deployment-model/)
+```azurecli
 azure config mode arm
+```
 
-# quick-create a scale set
-#
-# generic syntax:
-# azure vmss quick-create -n SCALE-SET-NAME -g RESOURCE-GROUP-NAME -l LOCATION -u USERNAME -p PASSWORD -C INSTANCE-COUNT -Q IMAGE-URN
-#
-# example:
-azure vmss quick-create -n negatvmss -g negatvmssrg -l westus -u negat -p P4ssw0rd -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
+现在，使用 `azure vmss quick-create` 命令创建规模集。 以下示例创建名为 `myVMSS` 的 Linux 规模集，在名为 `myResourceGroup` 的资源组中包含 5 个 VM 实例：
+
+```azurecli
+azure vmss quick-create -n myVMSS -g myResourceGroup -l westus \
+    -u ops -p P@ssw0rd! \
+    -C 5 -Q Canonical:UbuntuServer:16.04.0-LTS:latest
+```
+
+以下示例将创建具有相同配置的 Windows 规模集：
+
+```azurecli
+azure vmss quick-create -n myVMSS -g myResourceGroup -l westus \
+    -u ops -p P@ssw0rd! \
+    -C 5 -Q MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 ```
 
 如果要自定义位置或 image-urn，请查看命令 `azure location list` 和 `azure vm image {list-publishers|list-offers|list-skus|list|show}`。
@@ -30,7 +37,8 @@ line=$(azure network lb list -g negatvmssrg | grep negatvmssrg)
 split_line=( $line )
 lb_name=${split_line[1]}
 
-# now that we have the name of the load balancer, we can show the details to find which Public IP (PIP) is associated to it
+# now that we have the name of the load balancer, we can show the details to find which Public IP (PIP) is 
+# associated to it
 #
 # generic syntax:
 # azure network lb show -g RESOURCE-GROUP-NAME -n LOAD-BALANCER-NAME
@@ -56,6 +64,6 @@ FQDN=${split_line[3]}
 ssh -p 50000 negat@$FQDN
 ```
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

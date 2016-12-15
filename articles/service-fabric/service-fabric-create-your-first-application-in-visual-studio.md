@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/26/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 037dc010a6dc60eb49ad4fdad2861e8653e36199
+ms.sourcegitcommit: e8b2379c750047bf2a4c7342815b5c3aab3883c6
+ms.openlocfilehash: a101ad134e15a0da5e6d3fd5cbf4ca051da34e86
 
 
 ---
@@ -64,7 +64,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
     应用程序项目不直接包含任何代码。 而是引用一组服务项目。 此外，它包含三种其他类型的内容：
    
    * **发布配置文件**：用于为不同环境管理工具首选项。
-   * **脚本**：包括用于部署/升级应用程序的 PowerShell 脚本。 Visual Studio 使用由 Visual Studio 在幕后使用的脚本。 还可以在命令行处直接调用该脚本。
+   * **脚本**：包括用于部署/升级应用程序的 PowerShell 脚本。 Visual Studio 在幕后使用脚本。 还可以在命令行处直接调用该脚本。
    * **应用程序定义**：包括 *ApplicationPackageRoot*下的应用程序清单。 关联应用程序参数文件位于 *ApplicationParameters*下，它们定义应用程序并使您可以专门为给定环境对其进行配置。
      
      有关服务项目的内容概述，请参阅 [Reliable Services 入门](service-fabric-reliable-services-quick-start.md)。
@@ -151,6 +151,6 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 43bb33c1a4386108056b909bef9608087167a30a
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 41bba6660c52d4aa7d10d846ad65e1f6aa5e582c
 
 
 ---
-# <a name="configure-a-pointtosite-connection-to-a-vnet-using-powershell"></a>使用 PowerShell 配置与 VNet 的点到站点连接
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>使用 PowerShell 配置与 VNet 的点到站点连接
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -68,10 +68,10 @@ ms.openlocfilehash: 43bb33c1a4386108056b909bef9608087167a30a
 * **VpnType：RouteBased**
 
 ## <a name="before-beginning"></a>开始之前
-* 确保你拥有 Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。 使用 PowerShell 进行此配置时，请确保以管理员身份运行。 
+* 确保你拥有 Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
+* 安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。 使用 PowerShell 进行此配置时，请确保以管理员身份运行。 
 
-## <a name="a-namedeclareapart-1-log-in-and-set-variables"></a><a name="declare"></a>第 1 部分 - 登录并设置变量
+## <a name="a-namedeclareapart-1---log-in-and-set-variables"></a><a name="declare"></a>第 1 部分 - 登录并设置变量
 在本部分中，将登录并声明用于此配置的值。 声明的值将在示例脚本中使用。 更改这些值以反映自己的环境。 也可以使用声明的值完成这些步骤作为练习。
 
 1. 在 PowerShell 控制台中，登录到你的 Azure 帐户。 该 cmdlet 将提示你提供 Azure 帐户的登录凭据。 登录后它会下载你的帐户设置，以便这些信息可供 Azure PowerShell 使用。
@@ -102,7 +102,7 @@ ms.openlocfilehash: 43bb33c1a4386108056b909bef9608087167a30a
         $GWIPName = "VNet1GWPIP"
         $GWIPconfName = "gwipconf"
 
-## <a name="a-nameconfigurevnetapart-2-configure-a-vnet"></a><a name="ConfigureVNet"></a>第 2 部分 - 配置 VNet
+## <a name="a-nameconfigurevnetapart-2---configure-a-vnet"></a><a name="ConfigureVNet"></a>第 2 部分 - 配置 VNet
 1. 创建资源组。
    
         New-AzureRmResourceGroup -Name $RG -Location $Location
@@ -123,7 +123,7 @@ ms.openlocfilehash: 43bb33c1a4386108056b909bef9608087167a30a
         $pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
         $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
-## <a name="a-namecertificatesapart-3-certificates"></a><a name="Certificates"></a>第 3 部分 - 证书
+## <a name="a-namecertificatesapart-3---certificates"></a><a name="Certificates"></a>第 3 部分 - 证书
 Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 可从企业证书解决方案生成的根证书或自签名根证书中将公共证书数据（非密钥）导出为 Base-64 编码的 X.509 .cer 文件。 然后，将公共证书数据从根证书导入 Azure。 此外，需要从客户端的根证书生成客户端证书。 要使用 P2S 连接连接到虚拟网络的每个客户端必须安装从根证书生成的客户端证书。
 
 ### <a name="a-namecera1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>1.获取根证书的 .cer 文件
@@ -164,7 +164,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 可
         $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
         $p2srootcert = New-AzureRmVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
 
-## <a name="a-namecreategatewayapart-4-create-the-vpn-gateway"></a><a name="creategateway"></a>第 4 部分 - 创建 VPN 网关
+## <a name="a-namecreategatewayapart-4---create-the-vpn-gateway"></a><a name="creategateway"></a>第 4 部分 - 创建 VPN 网关
 为 VNet 配置和创建虚拟网络网关。 -GatewayType 必须是 **Vpn**，且 -VpnType 必须是 **RouteBased**。 此步骤可能最多需要 45 分钟才能完成。
 
         New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -172,7 +172,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 可
         -VpnType RouteBased -EnableBgp $false -GatewaySku Standard `
         -VpnClientAddressPool $VPNClientAddressPool -VpnClientRootCertificates $p2srootcert
 
-## <a name="a-nameclientconfigapart-5-download-the-vpn-client-configuration-package"></a><a name="clientconfig"></a>第 5 部分 - 下载 VPN 客户端配置包
+## <a name="a-nameclientconfigapart-5---download-the-vpn-client-configuration-package"></a><a name="clientconfig"></a>第 5 部分 - 下载 VPN 客户端配置包
 使用 P2S 连接到 Azure 的客户端必须已安装客户端证书和 VPN 客户端配置包。 Windows 客户端有可用的 VPN 客户端配置包。 VPN 客户端包包含用于配置 VPN 客户端软件的信息，该软件内置于 Windows 中并特定于要连接的 VPN。 该程序包不安装额外的软件。 有关详细信息，请参阅 [VPN 网关常见问题解答](vpn-gateway-vpn-faq.md#point-to-site-connections) 。
 
 1. 创建网关后，可下载客户端配置包。 此示例下载 64 位客户端包。 若要下载 32 位客户端，将“Amd64”替换为“x86”。 还可以使用 Azure 门户下载 VPN 客户端。
@@ -187,22 +187,22 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 可
    
     ![VPN 客户端](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN client")
 
-## <a name="a-nameclientcertificateapart-6-install-the-client-certificate"></a><a name="clientcertificate"></a>第 6 部分 - 安装客户端证书
+## <a name="a-nameclientcertificateapart-6---install-the-client-certificate"></a><a name="clientcertificate"></a>第 6 部分 - 安装客户端证书
 每个客户端计算机必须有一个客户端证书才能执行身份验证。 安装客户端证书时，需要使用导出客户端证书时创建的密码。
 
 1. 将 .pfx 文件复制到客户端计算机。
 2. 双击 .pfx 文件将它安装。 请勿修改安装位置。
 
-## <a name="a-nameconnectapart-7-connect-to-azure"></a><a name="connect"></a>第 7 部分：连接到 Azure
+## <a name="a-nameconnectapart-7---connect-to-azure"></a><a name="connect"></a>第 7 部分：连接到 Azure
 1. 要连接到 VNet，请在客户端计算机上，导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”。 可能会出现与使用证书相关的弹出消息。 如果出现此消息，请单击“继续”  以使用提升的权限。 
-2. 在“连接”状态页上，单击“连接”开始连接。 如果看到“选择证书”屏幕，请确保所显示的客户端证书是要用来连接的证书。 如果不是，请使用下拉箭头选择正确的证书，然后单击“确定”。
+2. 在“连接”状态页上，单击“连接”以启动连接。 如果看到“选择证书”屏幕，请确保所显示的客户端证书是要用来连接的证书。 如果不是，请使用下拉箭头选择正确的证书，然后单击“确定”。
    
     ![VPN 客户端连接](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png "VPN client connection")
 3. 现在应已建立连接。
    
     ![已建立连接](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png "Connection established")
 
-## <a name="a-nameverifyapart-8-verify-your-connection"></a><a name="verify"></a>第 8 部分 - 验证连接
+## <a name="a-nameverifyapart-8---verify-your-connection"></a><a name="verify"></a>第 8 部分 - 验证连接
 1. 若要验证你的 VPN 连接是否处于活动状态，请打开提升的命令提示符，然后运行 *ipconfig/all*。
 2. 查看结果。 请注意，你收到的 IP 地址是在配置中指定的点到站点 VPN 客户端地址池中的地址之一。 结果应大致如下所示：
    
@@ -268,7 +268,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 可
 1. 获取要吊销的客户端证书的指纹。
    
         $RevokedClientCert1 = "ClientCert1"
-        $RevokedThumbprint1 = "‎ef2af033d0686820f5a3c74804d167b88b69982f"
+        $RevokedThumbprint1 = "?ef2af033d0686820f5a3c74804d167b88b69982f"
 2. 将指纹添加到吊销的指纹列表。
    
         Add-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
@@ -289,11 +289,11 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 可
         Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $GWName -ResourceGroupName $RG
 
 ## <a name="next-steps"></a>后续步骤
-你可以将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 以获取相关步骤。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

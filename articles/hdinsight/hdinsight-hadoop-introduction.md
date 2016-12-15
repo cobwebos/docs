@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/21/2016
 ms.author: cgronlun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cefda0778fed4ab8d502955dd8eae4bdac70a48e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 66200ad8688928c368146a177130f6e2fad4849b
 
 
 ---
@@ -148,7 +148,7 @@ HDInsight 群集支持以下基于 JVM 的语言：
 * Jython (Python for Java)
 * Scala
 
-### <a name="hadoopspecific-languages"></a>Hadoop 特定的语言
+### <a name="hadoop-specific-languages"></a>Hadoop 特定的语言
 HDInsight 群集支持以下特定于 Hadoop 生态系统的语言：
 
 * 用于 Pig 作业的 Pig Latin
@@ -167,12 +167,12 @@ HDInsight 群集支持以下特定于 Hadoop 生态系统的语言：
 * 虚拟网络支持。 HDInsight 群集可用于 Azure 虚拟网络，以支持隔离云资源或将云资源与数据中心资源相链接的混合方案。
 * 进入成本低。 开始[免费试用](https://azure.microsoft.com/free/)或查阅 [HDInsight 定价详细信息](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-若要详细了解 HDInsight 中的 Hadoop 的优势，请参阅 [HDInsight 的 Azure 功能页面][marketing-page]。
+若要详细了解 HDInsight 中的 Hadoop 的优势，请参阅 [HDInsight 的 Azure 功能页][marketing-page]。
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight 标准版和 HDInsight 高级版
 HDInsight 提供两个类别的大数据云产品：标准和高级。 HDInsight 标准版提供企业级群集，组织可使用它运行其大数据工作负荷。 HDInsight 高级版基于标准版生成，提供针对 HDInsight 群集的高级分析和安全功能。 有关详细信息，请参阅 [Azure HDInsight 高级版](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
-## <a name="a-idresourcesaresources-for-learning-more-about-bigdata-analysis-hadoop-and-hdinsight"></a><a id="resources"></a>用于详细了解大数据分析、Hadoop 和 HDInsight 的资源
+## <a name="a-idresourcesaresources-for-learning-more-about-big-data-analysis-hadoop-and-hdinsight"></a><a id="resources"></a>用于详细了解大数据分析、Hadoop 和 HDInsight 的资源
 使用以下资源在此介绍云中 Hadoop 和大数据分析的简介的基础上构建。
 
 ### <a name="hadoop-documentation-for-hdinsight"></a>HDInsight 的 Hadoop 文档
@@ -204,6 +204,6 @@ HDInsight 提供两个类别的大数据云产品：标准和高级。 HDInsight
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -22,11 +22,11 @@
 
    DocumentDB 帐户的默认一致性设置为“会话” 。  可单击资源菜单中的“默认一致性”  调整默认一致性。 若要了解有关 DocumentDB 提供的一致性级别的详细信息，请参阅 [DocumentDB 中的一致性级别](../articles/documentdb/documentdb-consistency-levels.md)。
 
-[如何：创建 DocumentDB 帐户]: #Howto
-[后续步骤]: #NextSteps
+[How to: Create a DocumentDB account]: #Howto
+[Next steps]: #NextSteps
 [documentdb-manage]:../articles/documentdb/documentdb-manage.md
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

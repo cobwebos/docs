@@ -1,7 +1,7 @@
-请确保已创建服务总线命名空间，如[此处][namespace-how-to] 所示。
+请确保已创建服务总线命名空间，如[此处][namespace-how-to]所示。
 
 1. 登录到 [Azure 门户][azure-portal]。
-2. 在门户的左侧导航窗格中，单击“服务总线”。
+2. 在门户的左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“更多服务”）。
 3. 选择要在其中创建队列的命名空间。 在此示例中，它是“nstest1” 。
    
     ![创建队列][createqueue1]
@@ -21,6 +21,6 @@
 [azure-portal]: https://portal.azure.com
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

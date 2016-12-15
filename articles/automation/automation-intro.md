@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b00cf526bfed1e8d8962127439f1e41225b8023d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 16f6285577294ff49f11a27f48daea090655a2b1
 
 
 ---
@@ -87,6 +87,6 @@ Azure 自动化中的 Runbook 均基于 Windows PowerShell 或 Windows PowerShel
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

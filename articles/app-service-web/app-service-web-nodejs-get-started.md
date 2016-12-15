@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+ms.sourcegitcommit: 2050bda9c1a4390232d32370863e8d6a62ed5c2b
+ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
 
 
 ---
@@ -91,6 +91,7 @@ ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
 8. 保存更改，然后使用 git 将应用部署到 Azure：
    
         git add .
+        git add -f config
         git commit -m "{your commit message}"
         git push azure master
    
@@ -117,7 +118,7 @@ Azure App Service 使用 [iisnode] 运行 Node.js 应用。 Azure CLI 和 Kudu �
   * 自定义 Web.config 以让应用程序准备好使用 Node-Inspector 进行调试。
 
 ## <a name="use-a-nodejs-framework"></a>使用 Node.js 框架
-如果使用常用 Node.js 框架（例如 [Sails.js][SAILSJS] 或 [MEAN.js][MEANJS]）开发应用，则可将这些应用部署到应用服务。 流行的 Node.js 框架有其特定的行为模式，并且其包依赖性不断更新。 但是，应用服务提供 stdout 和 stderr 日志，方便确切了解应用中发生了什么并做出相应更改。 有关详细信息，请参阅[从 iisnode 获取 stdout 和 stderr 日志](#iisnodelog)。
+如果使用流行的 Node.js 框架（例如 [Sails.js][SAILSJS] 或 [MEAN.js][MEANJS]）来开发应用，则可将这些应用部署到应用服务。 流行的 Node.js 框架有其特定的行为模式，并且其包依赖性不断更新。 但是，应用服务提供 stdout 和 stderr 日志，方便确切了解应用中发生了什么并做出相应更改。 有关详细信息，请参阅[从 iisnode 获取 stdout 和 stderr 日志](#iisnodelog)。
 
 以下教程说明如何在应用服务中使用特定框架：
 
@@ -186,7 +187,7 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
    
     ![检查 iisnode 日志文件。][iislog-kudu-console-read]
 
-## <a name="debug-your-app-with-nodeinspector"></a>使用 Node-Inspector 调试应用
+## <a name="debug-your-app-with-node-inspector"></a>使用 Node-Inspector 调试应用
 如果使用 Node-Inspector 调试 Node.js 应用，可将它用于实时应用服务应用。 Node-Inspector 已预先安装在应用服务的 iisnode 安装中。 如果你通过 Git 部署，则从 Kudu 自动生成的 Web.config 已包含启用 Node-Inspector 所需的所有配置。
 
 若要启用 Node-Inspector，请遵循以下步骤：
@@ -221,7 +222,7 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 <!-- URL List -->
 
 [Azure CLI]: ../xplat-cli-install.md
-[Web 应用]: ../app-service/app-service-value-prop-what-is.md
+[Azure 应用服务]: ../app-service/app-service-value-prop-what-is.md
 [激活 Visual Studio 订户权益]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Bower]: http://bower.io/
 [在 Azure App Service 中使用 Socket.IO 创建 Node.js 聊天应用程序]: ./web-sites-nodejs-chat-app-socketio.md
@@ -235,7 +236,7 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 [Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
 [注册免费试用帐户]: http://go.microsoft.com/fwlink/?LinkId=623901
-[Web 应用]: ./app-service-web-overview.md
+[web app]: ./app-service-web-overview.md
 [Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
@@ -247,6 +248,6 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

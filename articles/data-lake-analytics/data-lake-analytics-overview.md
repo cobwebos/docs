@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a6d2d6365afaecab57a100867a72b9aa2def3745
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b1b872279b4139fd90442dd60f3865dfc6f1067c
 
 
 ---
@@ -76,6 +76,6 @@ Azure Data Lake Analytics 是一项新服务，旨在使大数据分析变得更
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

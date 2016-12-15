@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 42d71bf43070e08ae287a7b251c5bb94a6a80548
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
 ## <a name="1-get-data"></a>1.获取数据
 数据位于 AdventureWorksDW 数据库的 dbo.vTargetMail 视图中。 若要读取此数据：
 
-1. 登录到 [Azure 机器学习工作室][Azure Machine Learning studio]并单击我的试验。
+1. 登录到 [Azure 机器学习工作室][Azure Machine Learning studio]并单击“我的试验”。
 2. 单击“+新建”并选择“空白试验”。
 3. 输入试验名称：目标营销。
 4. 将“读取器”模块从模块窗格拖放到画布上。
@@ -142,13 +142,13 @@ FROM [dbo].[vTargetMail]
 
 
 <!--Article references-->
-[Azure 机器学习工作室]:https://studio.azureml.net/
-[Azure 上的机器学习简介]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[手动加载示例数据]: sql-data-warehouse-load-sample-databases.md
-[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
+[Azure Machine Learning studio]:https://studio.azureml.net/
+[Introduction to Machine Learning on Azure]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

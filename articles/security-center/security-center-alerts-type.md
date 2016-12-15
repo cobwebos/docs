@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/20/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4ddc691f4f3d53dbff2e55b7a97446427b93a8a4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
 
 
 ---
@@ -171,7 +171,7 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 
 [AZURE.NOTE] 出于隐私考虑，此屏幕截图删除了实时 IP 地址。
 
-### <a name="possible-outgoing-denialofservice-attack-detected"></a>检测到可能的传出型拒绝服务攻击
+### <a name="possible-outgoing-denial-of-service-attack-detected"></a>检测到可能的传出型拒绝服务攻击
 源自某个虚拟机的异常网络流量可能导致安全中心触发潜在的拒绝服务类型的攻击。
 
 下面是此类警报的示例：
@@ -214,6 +214,6 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

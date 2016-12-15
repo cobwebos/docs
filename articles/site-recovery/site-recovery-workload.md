@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 10/10/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ddeadcf741eb099f7c14a554dd4f31561a408aa1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9a1281e7615501b379fc795ca957a07acfea7171
 
 
 ---
@@ -136,6 +136,6 @@ Azure Site Recovery 可通过以下方式帮助保护 Dynamics AX ERP 解决方�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

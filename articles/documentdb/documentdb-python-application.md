@@ -13,11 +13,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b55d61071dac6d173f37bdde7f9b60e53ae2485f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8dc246755c90686f890d2ac9df05b3a8b2a9341f
 
 
 ---
@@ -47,10 +47,14 @@ ms.openlocfilehash: b55d61071dac6d173f37bdde7f9b60e53ae2485f
 在按照本文中的说明操作之前，你应确保已安装下列项：
 
 * 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+ 
+    或 
+
+    本地安装的 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)。
 * [Visual Studio 2013](http://www.visualstudio.com/) 或更高版本，或者免费版 [Visual Studio Express]()。 本教程中的说明专为 Visual Studio 2015 所编写。 
 * 来自 [GitHub](http://microsoft.github.io/PTVS/)的 Python Tools for Visual Studio。 本教程使用的是 Python Tools for VS 2015。 
 * 2.4 版或更高版本 Azure Python SDK for Visual Studio 在 [azure.com](https://azure.microsoft.com/downloads/)上提供。 我们使用的是 Microsoft Azure SDK for Python 2.7。
-* 来自 [python.org] 的 Python 2.7[2]。 我们使用的是 Python 2.7.11。 
+* 来自 [python.org][2] 的 Python 2.7。 我们使用的是 Python 2.7.11。 
 
 > [!IMPORTANT]
 > 如果首次安装 Python 2.7，请确保在自定义 Python 2.7.11 屏幕中，选择“向路径添加 python.exe”。
@@ -59,10 +63,10 @@ ms.openlocfilehash: b55d61071dac6d173f37bdde7f9b60e53ae2485f
 > 
 > 
 
-* 来自 [Microsoft 下载中心]的Microsoft Visual C++ Compiler for Python 2.7[3]。
+* 来自 [Microsoft 下载中心][3]的Microsoft Visual C++ Compiler for Python 2.7。
 
 ## <a name="step-1-create-a-documentdb-database-account"></a>步骤 1：创建一个 DocumentDB 数据库帐户
-让我们首先创建 DocumentDB 帐户。 如果你已有帐户，则可以跳到 [步骤 2：新建 Python Flask Web 应用程序](#step-2:-create-a-new-python-flask-web-application)。
+让我们首先创建 DocumentDB 帐户。 如果已有一个帐户，或者要在本教程中使用 DocumentDB Emulator，可以跳到[步骤 2：创建新的 Python Flask 应用程序](#step-2:-create-a-new-python-flask-web-application)。
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -404,11 +408,11 @@ def vote():
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [2]: https://www.python.org/downloads/windows/
 [3]: https://www.microsoft.com/download/details.aspx?id=44266
-[Microsoft Web 平台安装程序]: http://www.microsoft.com/web/downloads/platform.aspx
-[Azure 门户]: http://portal.azure.com
+[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
+[Azure portal]: http://portal.azure.com
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

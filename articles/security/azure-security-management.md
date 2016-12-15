@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: f44ecd49d034ef6ec82baa402e613308a5b3e1a9
-ms.openlocfilehash: 5cee18e58bcf505547315e14dd378b36c0b3f651
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b1f757678c9a88bd834482d67bf098279c463bfb
 
 
 ---
@@ -235,6 +235,6 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

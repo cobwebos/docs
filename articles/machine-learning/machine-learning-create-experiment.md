@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 11/21/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 60e47e8fd0933ecd25b3bca6085edcd5785dc580
-ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 
 ---
@@ -131,18 +131,18 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
 
 首先添加一个彻底删除“规范化损失”列的模块，然后添加另一个删除有数据缺失的行的模块。
 
-1. 在模块控制板顶部的“搜索”框中键入“选择列”，查找“[选择数据集中的列][select-columns]”模块，然后将其拖放到试验画布上。 使用此模块可以选择要将哪些列包含在模型中，或者从模型中排除。
+1. 在模块控制板顶部的“搜索”框中键入“选择列”，查找“选择数据集中的列[select-columns]”模块，然后将其拖放到试验画布上。[] 使用此模块可以选择要将哪些列包含在模型中，或者从模型中排除。
 
-2. 将“汽车价格数据(原始)”数据集的输出端口连接到“[选择数据集中的列][select-columns]”模块的输入端口。
+2. 将“汽车价格数据(原始)”数据集的输出端口连接到“选择数据集中的列[select-columns]”模块的输入端口。[]
 
     ![将“选择数据集中的列”模块添加到试验画布并进行连接][type-select-columns]
     <br/>
     ***将“选择数据集中的列”模块添加到试验画布并进行连接***
 
-3. 单击“[选择数据集中的列][select-columns]”模块，然后单击“属性”窗格中的“启动列选择器”。
+3. 单击“选择数据集中的列[select-columns]”模块，然后单击“属性”窗格中的“启动列选择器”。[]
 
     - 在左侧单击“使用规则”
-    - 在“开头为”下面，单击“所有列”。 这会指示“[选择数据集中的列][select-columns]”传入所有列（但要排除的列除外）。
+    - 在“开头为”下面，单击“所有列”。 这会指示“选择数据集中的列[select-columns]”传递所有列（但要排除的列除外）。[]
     - 在下拉列表中，选择“排除”和“列名称”，然后在文本框内部单击。 此时将显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
     - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -157,13 +157,13 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
     ***属性窗格显示“规范化损失”列已排除***
 
     > [!TIP]
-    > 可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击“[选择数据集中的列][select-columns]”模块，然后键入注释“排除规范化损失”。
+    > 可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击“选择数据集中的列[select-columns]”模块，然后输入注释“排除规范化损失”。[]
 
     ![双击要添加注释的模块][add-comment]
     <br/>
     ***双击要添加注释的模块***
 
-3. 将“[清理缺失数据][清理缺失数据]”模块拖到试验画布，然后将其连接到“[选择数据集中的列][select-columns]”模块。 在“属性”窗格的“清理模式”下选择“删除整行”。 这会指示“[清理缺失数据][清理缺失数据]”清理数据，删除存在缺失值的行。 双击该模块并键入注释“删除缺失值行”。
+3. 将“清理缺失数据[clean-missing-data]”模块拖到试验画布，然后将其连接到“选择数据集中的列[select-columns]”模块。[][] 在“属性”窗格的“清理模式”下选择“删除整行”。 这会指示“清理缺失数据[clean-missing-data]”清理数据，删除存在缺失值的行。[] 双击该模块并键入注释“删除缺失值行”。
 
     ![将“清理缺失数据”模块的清理模式设置为“删除整行”][set-remove-entire-row]
     <br/>
@@ -178,9 +178,9 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
 ***运行以后，试验看起来应与上图类似***
 
 > [!TIP]
-> 为什么我们现在运行此试验？ 运行此试验，数据的列定义就会从数据集传入“[选择数据集中的列][select-columns]”模块和“[清理缺失数据][清理缺失数据]”模块。 这意味着，只要连接到“[清理缺失数据][清理缺失数据]”，任何模块也都会有此类相同信息。
+> 为什么我们现在运行此试验？ 运行此试验，数据的列定义就会从数据集传入“选择数据集中的列[select-columns]”模块和“清理缺失数据[clean-missing-data]”模块。[][] 这意味着，只要连接到“清理缺失数据[clean-missing-data]”，任何模块也都会有此类相同信息。[]
 
-试验到目前为止所完成的工作就是清理数据。 若要查看已清理的数据集，请单击“[清理缺失数据][清理缺失数据]”模块左侧的输出端口，然后选择“可视化”。 请注意，此时不再包含“规范化损失”列，并且也没有缺失值。
+试验到目前为止所完成的工作就是清理数据。 若要查看已清理的数据集，请单击“清理缺失数据[clean-missing-data]”模块左侧的输出端口，然后选择“可视化”。[] 请注意，此时不再包含“规范化损失”列，并且也没有缺失值。
 
 现已清理数据，接下来可以指定要在预测模型中使用哪些特征。
 
@@ -195,7 +195,7 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
 
 
-1. 将另一“[选择数据集中的列][select-columns]”模块拖放到试验画布上。 将“[清理缺失数据][清理缺失数据]”模块左侧的输出端口连接到“[选择数据集中的列][select-columns]”模块的输入端口。
+1. 将另一“选择数据集中的列[select-columns]”模块拖放到试验画布上。[] 将“清理缺失数据[clean-missing-data]”模块左侧的输出端口连接到“选择数据集中的列[select-columns]”模块的输入端口。[][]
 
     ![将“选择数据集中的列”模块连接到“清理缺失数据”模块][connect-clean-to-select]
     <br/>
@@ -233,9 +233,9 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
 
 我们会将数据拆分为单独的定型数据集和测试数据集，用于模型定型和测试。
 
-1. 选择“[拆分数据][split]”模块并将其拖放到试验画布上，然后将其连接到最后一个“[选择数据集中的列][select-columns]”模块。
+1. 选择“拆分数据[split]”模块并将其拖到试验画布，然后将其连接到最后一个“选择数据集中的列[select-columns]”模块的输出。[][]
 
-2. 单击“[拆分数据][split]”模块将其选中。 找到“第一个输出数据集中的行的比例”（位于画布右侧的“属性”窗格中），将其设置为 0.75。 这样，我们将使用 75% 的数据进行模型定型，保留 25% 的数据用于测试（可在以后使用不同的百分比进行试验）。
+2. 单击“拆分数据[split]”模块将其选中。[] 找到“第一个输出数据集中的行的比例”（位于画布右侧的“属性”窗格中），将其设置为 0.75。 这样，我们将使用 75% 的数据进行模型定型，保留 25% 的数据用于测试（可在以后使用不同的百分比进行试验）。
 
     ![将“拆分数据”模块的拆分比例设置为 0.75][set-split-data-percentage]
     <br/>
@@ -244,18 +244,18 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
     > [!TIP]
     > 更改“随机种子”参数可为训练和测试生成不同的随机样本。 此参数控制伪随机数生成器的种子。
 
-2. 运行试验。 运行试验时，“[选择数据集中的列][select-columns]”和“[拆分数据][split]”模块会将列定义传递到接下来要添加的模块。  
+2. 运行试验。 运行试验时，“选择数据集中的列[select-columns]”和“拆分数据[split]”模块会将列定义传递到接下来要添加的模块。[][]  
 
-3. 若要选择学习算法，请在画布左侧的模块控制板中展开“机器学习”类别，然后展开“初始化模型”。 此时将显示多个可用于初始化机器学习算法的模块类别。 对于本试验，请选择“回归”类别下的“[线性回归][linear-regression]”模块，然后将其拖放到试验画布上。
+3. 若要选择学习算法，请在画布左侧的模块控制板中展开“机器学习”类别，然后展开“初始化模型”。 此时将显示多个可用于初始化机器学习算法的模块类别。 对于本试验，请选择“回归”类别下的“线性回归[linear-regression]”模块，然后将其拖放到试验画布上。[]
 （也可以在控制板的“搜索”框中键入“线性回归”找到该模块。）
 
-4. 找到“[训练模型][train-model]”模块并将其拖到试验画布。 将“[线性回归][linear-regression]”模块的输出连接到“[定型模型][train-model]”模块左侧的输入，将“[拆分数据][split]”模块的定型数据输出（左端口）连接到“[定型模型][train-model]”模块右侧的输入。
+4. 找到“训练模型[train-model]”模块并将其拖到试验画布。[] 将“线性回归[linear-regression]”模块的输出连接到“定型模型[train-model]”模块左侧的输入，将“拆分数据[split]”模块的定型数据输出（左端口）连接到“定型模型[train-model]”模块右侧的输入。[][][][]
 
     ![将“定型模型”模块连接到“线性回归”和“拆分数据”模块][connect-train-model]
     <br/>
     ***将“定型模型”模块连接到“线性回归”和“拆分数据”模块***
 
-5. 单击“[定型模型][train-model]”模块，单击“属性”窗格中的“启动列选择器”，然后选择“价格”列。 这是模型要预测的值。
+5. 选择“训练模型[train-model]”模块，单击“属性”窗格中的“启动列选择器”，然后选择“价格”列。[] 这是模型要预测的值。
 
     在列选择器中选择“价格”列，方法是将其从“可用列”列表移至“所选列”列表。
 
@@ -275,26 +275,26 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
 
 使用 75% 的数据训练模型后，可以使用该模型为另外 25% 的数据评分，确定模型的运行情况。
 
-1. 找到“[评分模型][评分模型]”模块并将其拖放到试验画布上。 将“[定型模型][train-model]”模块的输出连接到“[评分模型][评分模型]”的左侧输入端口。 将“[拆分数据][split]”模型的测试数据输出（右侧端口）连接到“[评分模型][评分模型]”的右侧输入端口。
+1. 找到“评分模型[score-model]”模块并将其拖放到试验画布上。[] 将“定型模型[train-model]”模块的输出连接到“评分模型[score-model]”的左侧输入端口。[][] 将“拆分数据[split]”模型的测试数据输出（右侧端口）连接到“评分模型[score-model]”[][]
 
     ![将“评分模型”模块连接到“定型模型”和“拆分数据”模块][connect-score-model]
     <br/>
     ***将“评分模型”模块连接到“定型模型”和“拆分数据”模块***
 
-2. 运行试验，查看“[评分模型][评分模型]”模块的输出（单击“[评分模型][评分模型]”的输出端口，然后选择“可视化” ）。 输出显示价格预测值，以及来自测试数据的已知值。  
+2. 运行试验，查看“评分模型[score-model]”模块的输出（单击“评分模型[score-model]”的输出端口，然后选择“可视化”）。[][] 输出显示价格预测值，以及来自测试数据的已知值。  
 
     ![“评分模型”模块的输出][score-model-output]
     <br/>
     ***“评分模型”模块的输出***
 
-3. 最后，我们对结果的质量进行测试。 选择“[评估模型][评估模型]”模块并将其拖放到试验画布上，然后将“[评分模型][评分模型]”模块的输出连接到“[评估模型][评估模型]”的左侧输入。
+3. 最后，我们对结果的质量进行测试。 选择“评估模型[evaluate-model]”模块并将其拖放到试验画布上，然后将“评分模型[score-model]”模块的输出连接到“评估模型[evaluate-model]”的左侧输入。[][][]
 
     > [!TIP]
-    > 之所以“[评估模型][评估模型]”模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用“[评估模型][评估模型]”查看哪一个算法的结果更好。
+    > 之所以“评估模型[evaluate-model]”模块上有两个输入端口，是因为可将其用于并列比较两个模型。[] 可在以后向试验添加另一算法，并使用“评估模型[evaluate-model]”查看哪一个算法的结果更好。[]
 
 4. 运行试验。
 
-若要查看“[评估模型][评估模型]”模块的输出，请单击输出端口，然后选择“可视化”。
+若要查看“评估模型[evaluate-model]”模块的输出，请单击输出端口，然后选择“可视化”。[]
 
 ![试验的评估结果][evaluation-results]
 <br/>
@@ -322,21 +322,21 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
 
 完成第一篇机器学习教程并设置试验后，可以继续改进模型，然后将其作为预测型 Web 服务进行部署。
 
-- **通过反复尝试改进模型** - 例如，可以更改预测时使用的特征。 或者，可以修改[线性回归][linear-regression]算法的属性，或尝试完全不同的算法。 甚至可以同时在试验中添加多个机器学习算法，使用“[评估模型][评估模型]”模块进行比较（两两相比）。
+- **通过反复尝试改进模型** - 例如，可以更改预测时使用的特征。 或者，可以[修改线性回归][linear-regression]算法的属性，或尝试完全不同的算法。 甚至可以同时在试验中添加多个机器学习算法，使用“评估模型[evaluate-model]”模块进行比较（两两相比）。[]
 有关如何在单个试验中比较多个模型的示例，请参阅 [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com)（Cortana Intelligence 库）中的 [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5)（比较回归量）。
 
     > [!TIP]
-    > 若要复制试验的任何迭代，请使用试验画布下面的“另存为”按钮。  可以单击画布下面的“查看运行历史记录”来查看试验的所有迭代。 有关详细信息，请参阅[在 Azure 机器学习工作室中管理试验迭代][runhistory]。
+    > 若要复制试验的任何迭代，请使用试验画布下面的“另存为”按钮。  可以单击画布下面的“查看运行历史记录”来查看试验的所有迭代。 有关详细信息，请参阅 [在 Azure 机器学习工作室中管理试验迭代][runhistory]。
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
-- **将模型部署为预测型 Web 服务** - 如果对模型感到满意，可将其部署为 Web 服务，以便使用新数据预测汽车价格。 有关详细信息，请参阅[部署 Azure 机器学习 Web 服务][发布]。
+- **将模型部署为预测型 Web 服务** - 如果对模型感到满意，可将其部署为 Web 服务，以便使用新数据预测汽车价格。 有关详细信息，请参阅[部署 Azure 机器学习 Web 服务][publish]。
 
-[发布]: machine-learning-publish-a-machine-learning-web-service.md
+[publish]: machine-learning-publish-a-machine-learning-web-service.md
 
-想了解详细信息吗？ 如需更广泛细致地了解如何创建、定型、评分和部署模型，请参阅[使用 Azure 机器学习开发预测解决方案][演练]。
+想了解详细信息吗？ 如需更广泛细致地了解如何创建、定型、评分和部署模型，请参阅[使用 Azure 机器学习开发预测解决方案][walkthrough]。
 
-[演练]: machine-learning-walkthrough-develop-predictive-solution.md
+[walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- Images -->
 [sign-in-to-studio]: ./media/machine-learning-create-experiment/sign-in-to-studio.png
@@ -367,16 +367,16 @@ ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
 [score-model-output]:./media/machine-learning-create-experiment/score-model-output.png
 
 <!-- Module References -->
-[评估模型]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
+[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[清理缺失数据]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
+[clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[评分模型]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
+[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

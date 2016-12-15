@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
 执行本文中的步骤大约需要 30 分钟时间。
 
 ## <a name="step-1-install-azure-powershell"></a>步骤 1：安装 Azure PowerShell
-有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="step-2-create-resources"></a>步骤 2：创建资源
 创建新规模集所需的资源。
@@ -130,7 +130,7 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
    
         $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
    
-    此示例演示了使用三台虚拟机创建规模集。 有关规模集容量的详细信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。 此步骤还包括在规模集中设置虚拟机的大小（也称为 SkuName）。 若要查找符合需要的大小，请查看[虚拟机的大小](../virtual-machines/virtual-machines-windows-sizes.md)。
+    此示例演示了使用三台虚拟机创建规模集。 有关规模集容量的详细信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。 此步骤还包括在规模集中设置虚拟机的大小（也称为 SkuName）。 若要查找符合需要的大小，请查看[虚拟机的大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 5. 将网络接口配置添加到规模集配置中：
    
         Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssConfig -Primary $true -IPConfiguration $ipConfig
@@ -172,7 +172,7 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
         $imageOffer = "WindowsServer"
         $imageSku = "2012-R2-Datacenter"
    
-    若要查找其他要使用的映像的相关信息，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)。
+    若要查找其他要使用的映像的相关信息，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 3. 将 **$vhdContainers** 的值替换为包含虚拟硬盘的存储路径的列表，如“https://mystorage.blob.core.windows.net/vhds”，然后创建变量：
    
         $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
@@ -225,6 +225,6 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "适用于 Java 的 Azure IoT 中心入门 | Microsoft Docs"
-description: "适用于 Java 的 Azure IoT 中心入门教程。 配合 Azure IoT SDK 使用 Azure IoT 中心和 Java 来实施物联网解决方案。"
+title: "Azure IoT 中心入门 (Java) | Microsoft 文档"
+description: "如何使用用于 Java 的 Azure IoT SDK，将设备到云的消息从设备发送到 Azure IoT 中心。 将创建一个用于发送消息的模拟设备、一个用于在注册表中标识注册设备的服务应用，以及一个用于从 IoT 中心读取设备到云消息的服务应用。"
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/23/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: ce514e19370d2b42fb16b4e96b66f212d5fa999c
-ms.openlocfilehash: ae4727b27281be62a79f9387715eccd6b61e8e12
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
 
 
 ---
-# <a name="get-started-with-azure-iot-hub-for-java"></a>适用于 Java 的 Azure IoT 中心入门
+# <a name="get-started-with-azure-iot-hub-java"></a>Azure IoT 中心入门 (Java)
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 在本教程结束时，将获得三个 Java 控制台应用：
@@ -49,9 +49,9 @@ ms.openlocfilehash: ae4727b27281be62a79f9387715eccd6b61e8e12
 现在，已创建 IoT 中心并有了 IoT 中心主机名、IoT 中心连接字符串、IoT 中心主密钥、与事件中心兼容的名称及与事件中心兼容的终结点，接下来需要完成本教程。
 
 ## <a name="create-a-device-identity"></a>创建设备标识
-本部分将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT Hub Developer Guide][lnk-devguide-identity]（IoT 中心开发人员指南）中的 **Identity Registry**（标识注册表）部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
+本部分将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
 
-1. 创建名为 iot-java-get-started 的空文件夹。 使用命令提示符中的以下命令，在 iot-java-get-started 文件夹中创建名为 **create-device-identity** 的 Maven 项目。 请注意，这是一条很长的命令：
+1. 创建名为 iot-java-get-started 的空文件夹。 在命令提示符下使用以下命令，在 iot-java-get-started 文件夹中创建名为 **create-device-identity** 的 Maven 项目。 请注意，这是一条很长的命令：
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -105,7 +105,7 @@ ms.openlocfilehash: ae4727b27281be62a79f9387715eccd6b61e8e12
         iotf.printStackTrace();
       }
     }
-    System.out.println("Device id: " + device.getDeviceId());
+    System.out.println("Device ID: " + device.getDeviceId());
     System.out.println("Device key: " + device.getPrimaryKey());
     ```
 10. 保存并关闭 App.java 文件。
@@ -425,14 +425,14 @@ ms.openlocfilehash: ae4727b27281be62a79f9387715eccd6b61e8e12
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
    
-    ![用于监视设备到云消息的 Java IoT 中心服务客户端应用][7]
+    ![用于监视设备到云消息的 Java IoT 中心服务应用][7]
 2. 在 simulated-device 文件夹中的命令提示符下，运行以下命令开始将遥测数据发送到 IoT 中心：
    
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
    
-    ![用于发送设备到云消息的 Java IoT 中心设备客户端应用][8]
+    ![用于发送设备到云消息的 Java IoT 中心设备应用][8]
 3. [Azure 门户][lnk-portal]中的“使用情况”磁贴显示发送到 IoT 中心的消息数：
    
     ![显示发送到 IoT 中心的消息数的 Azure 门户“使用情况”磁贴][43]
@@ -474,6 +474,6 @@ ms.openlocfilehash: ae4727b27281be62a79f9387715eccd6b61e8e12
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

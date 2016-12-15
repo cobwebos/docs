@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: osamazia
+ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cebf1a1712b6ba7f1f6125369703694ba19d0244
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 10166e6b8b9144f0a5dde4f2fc10b492120e85d7
 
 
 ---
@@ -64,7 +64,7 @@ ms.openlocfilehash: cebf1a1712b6ba7f1f6125369703694ba19d0244
 
 如果想要使用 ExpressRoute 进行身份验证，请确保通过 ExpressRoute（不使用 NAT）播发 ADFS 公共 IP 地址。 这样，源自 Microsoft 前往本地 AD FS 服务器的流量将经过 ExpressRoute。 从客户到 Microsoft 的返回流量使用 ExpressRoute，因为这是基于 Internet 的首选路由。
 
-### <a name="sourcebased-nat"></a>基于源的 NAT
+### <a name="source-based-nat"></a>基于源的 NAT
 解决非对称路由问题的另一种方法是使用 SNAT。 例如，某个用户尚未通过 ExpressRoute 播发本地简单邮件传输协议 (SMTP) 服务器的公共 IP 地址，因为该用户倾向于使用 Internet 进行此类通信。 源自 Microsoft 前往本地 SMTP 服务器的请求将遍历 Internet。 通过 SNAT 将传入请求传递到内部 IP 地址。 来自 SMTP 服务器的反向流量将抵达边缘防火墙（用于 NAT），而不通过 ExpressRoute。 返回流量将通过 Internet 返回。
 
 ![基于源的 NAT 网络配置](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
@@ -75,6 +75,6 @@ ms.openlocfilehash: cebf1a1712b6ba7f1f6125369703694ba19d0244
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

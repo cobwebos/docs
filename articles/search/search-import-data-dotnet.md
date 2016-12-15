@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a63d71de584b526972ff86ba8cb47664e66e22da
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1934fa46b38f36033c427a6ac061db94f4dc760b
 
 
 ---
@@ -60,8 +60,8 @@ SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 | 操作 | 说明 | 每个文档必需的字段 | 说明 |
 | --- | --- | --- | --- |
-| `Upload` |`Upload` 操作类似于“upsert”，当文档是新的时进行插入，当文档已存在时，进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
-| `Merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 将失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 这包括 `DataType.Collection(DataType.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
+| `Upload` |`Upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
+| `Merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 将失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 包括 `DataType.Collection(DataType.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
 | `MergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `Merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `Upload` 。 |关键字段以及要定义的任何其他字段 |- |
 | `Delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都将被忽略。 如果要从文档中删除单个字段，请改用 `Merge` ，只需将该字段显式设置为 null。 |
 
@@ -226,6 +226,6 @@ public partial class Hotel
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

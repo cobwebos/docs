@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/12/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 14a4d55409e9fd6b840f4c856110ae150499bb6f
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 6e29f5b26a06a83bd7f996169f2e53815e24a8e5
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 14a4d55409e9fd6b840f4c856110ae150499bb6f
 
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
-* 遵循 [How to install and configure Azure PowerShell](../powershell-install-configure.md) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
+* 遵循 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
 * 若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md) （创作 Azure Resource Manager 模板）。 
 
 ## <a name="in-this-tutorial"></a>本教程的内容
@@ -379,7 +379,7 @@ JSON 模板中定义了以下数据工厂实体：
 
 **connectionString** 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStroageLinkedService 和 dataFactoryName。 
 
-#### <a name="hdinsight-ondemand-linked-service"></a>HDInsight 按需链接服务
+#### <a name="hdinsight-on-demand-linked-service"></a>HDInsight 按需链接服务
 有关用于定义 HDInsight 按需链接服务的 JSON 属性的详细信息。请参阅 [Compute linked services](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)（计算链接服务）。  
 
       {
@@ -591,6 +591,6 @@ JSON 模板中定义了以下数据工厂实体：
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

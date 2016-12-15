@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/25/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4e9f274b36f4b593605bb12ab9ef763988ff9093
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f20d77a43185a6b22a5da1ee1c2744707df13dae
 
 
 ---
@@ -66,6 +66,6 @@ Azure 监视代理还将故障转储文件复制到存储帐户。  Azure 安全
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

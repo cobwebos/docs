@@ -12,11 +12,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 09/27/2016
+ms.date: 11/30/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c0a778c8dc8786f0c084686b3f8722ff15eed78c
+ms.sourcegitcommit: 64f70aab802ed377de1686fcdb7e641c30299b9c
+ms.openlocfilehash: 6630899081a76d7a8bc54f53a33c76dda9f1b0fa
 
 
 ---
@@ -24,10 +24,10 @@ ms.openlocfilehash: c0a778c8dc8786f0c084686b3f8722ff15eed78c
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
 > * [Python](batch-python-tutorial.md)
-> 
-> 
+>
+>
 
-在介绍以 Python 编写的小型批处理应用程序时，我们了解了 [Azure 批处理][azure_batch]和[批处理 Python][py_azure_sdk] 客户端的基础知识。 我们将探讨两个示例脚本如何使用批处理服务来处理云中 Linux 虚拟机上的并行工作负荷，以及这些脚本如何与 [Azure 存储](../storage/storage-introduction.md)交互来暂存和检索文件。 你将了解常见的 Batch 应用程序工作流，并基本了解 Batch 的主要组件，例如作业、任务、池和计算节点。
+在介绍以 Python 编写的小型 Batch 应用程序时，我们了解了 [Azure 批处理][azure_batch]和[批处理 Python][py_azure_sdk] 客户端的基础知识。 我们将探讨两个示例脚本如何使用批处理服务来处理云中 Linux 虚拟机上的并行工作负荷，以及这些脚本如何与 [Azure 存储](../storage/storage-introduction.md)交互来暂存和检索文件。 你将了解常见的 Batch 应用程序工作流，并基本了解 Batch 的主要组件，例如作业、任务、池和计算节点。
 
 ![Batch 解决方案工作流（基础）][11]<br/>
 
@@ -40,7 +40,7 @@ ms.openlocfilehash: c0a778c8dc8786f0c084686b3f8722ff15eed78c
 * **存储帐户**：请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)中的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
 
 ### <a name="code-sample"></a>代码示例
-Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击“[azure-batch-samples-master.zip][github_samples_zip]”直接下载链接，即可下载所有示例。 解压缩 ZIP 文件的内容后，在 `article_samples` 目录中可找到本教程的两个脚本：
+Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击“azure-batch-samples-master.zip[github_samples_zip]”直接下载链接，即可下载所有示例。[] 解压缩 ZIP 文件的内容后，在 `article_samples` 目录中可找到本教程的两个脚本：
 
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_client.py`<br/>
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_task.py`
@@ -52,25 +52,25 @@ Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batc
 必须为[加密][crypto]库安装 `azure-batch` 和 `azure-storage` Python 包所需的依赖项。 根据平台执行以下操作之一，或参阅[加密程序安装][crypto_install]获取详细信息：
 
 * Ubuntu
-  
+
     `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython-dev python-dev`
 * CentOS
-  
+
     `yum update && yum install -y gcc openssl-dev libffi-devel python-devel`
 * SLES/OpenSUSE
-  
+
     `zypper ref && zypper -n in libopenssl-dev libffi48-devel python-devel`
 * Windows
-  
+
     `pip install cryptography`
 
 > [!NOTE]
 > 如果在 Linux 上安装 Python 3.3+，请使用 Python 依赖项的 python3 对等项。 例如，在 Ubuntu 上：`apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython3-dev python3-dev`
-> 
-> 
+>
+>
 
 ### <a name="azure-packages"></a>Azure 包
-接下来，安装 **Azure 批处理**和 **Azure 存储** Python 包。 使用此处找到的 **pip** 和 *requirements.txt* 即可完成此操作：
+接下来，安装 **Azure 批处理**和 **Azure 存储** Python 包。 可以使用以下位置提供的 **pip** 和 *requirements.txt* 安装这两个包：
 
 `/azure-batch-samples/Python/Batch/requirements.txt`
 
@@ -78,15 +78,15 @@ Python 教程[代码示例][github_article_samples]是 GitHub 上的 [azure-batc
 
 `pip install -r requirements.txt`
 
-或者，可以手动安装 [azure-batch][pypi_batch] 和 [azure-storage][pypi_storage] Python 包。
+或者，可以手动方式安装 [azure-batch][pypi_batch] 和 [azure-storage][pypi_storage] Python 包：
 
 `pip install azure-batch`<br/>
 `pip install azure-storage`
 
 > [!TIP]
 > 如果使用无特权帐户，可能需要在命令前面加上 `sudo`。 例如，`sudo pip install -r requirements.txt`。 有关如何安装 Python 包的详细信息，请参阅 readthedocs.io 中的[安装包][pypi_install]。
-> 
-> 
+>
+>
 
 ## <a name="batch-python-tutorial-code-sample"></a>Batch Python 教程代码示例
 Batch Python 教程代码示例由两个 Python 脚本和若干数据文件组成。
@@ -131,7 +131,7 @@ storage_account_name = "";
 storage_account_key  = "";
 ```
 
-可以在 [Azure 门户][azure_portal]中每项服务的帐户边栏选项卡中查找批处理和存储帐户凭据：
+可以在 [Azure 门户][azure_portal]中每项服务的帐户边栏选项卡中找到批处理和存储帐户凭据：
 
 ![门户中的批处理凭据][9]
 ![门户中的存储凭据][10]<br/>
@@ -177,8 +177,8 @@ Batch 包含的内置支持支持与 Azure 存储空间交互。 存储帐户中
 
 > [!TIP]
 > [如何通过 Python 使用 Azure Blob 存储](../storage/storage-python-how-to-use-blob-storage.md)对如何使用 Azure 存储容器和 Blob 做了全面的概述。 当你开始使用 Batch 时，它应该位于阅读列表顶部附近。
-> 
-> 
+>
+>
 
 ## <a name="step-2-upload-task-script-and-data-files"></a>步骤 2：上载任务脚本和数据文件
 ![将任务应用程序和输入（数据）文件上载到容器][2]
@@ -266,8 +266,8 @@ def upload_file_to_container(block_blob_client, container_name, file_path):
 
 > [!TIP]
 > 请查看有关共享访问签名的两篇系列教程的[第 1 部分：了解 SAS 模型](../storage/storage-dotnet-shared-access-signature-part-1.md)和[第 2 部分：创建 SAS 并将其用于 Blob 服务](../storage/storage-dotnet-shared-access-signature-part-2.md)，详细了解如何提供对存储帐户中数据的安全访问。
-> 
-> 
+>
+>
 
 ## <a name="step-3-create-batch-pool"></a>步骤 3：创建 Batch 池
 ![创建批处理池][3]
@@ -288,7 +288,7 @@ Batch **池** 是 Batch 执行作业任务时所在的计算节点（虚拟机�
      base_url=_BATCH_ACCOUNT_URL)
 ```
 
-接下来，调用 `create_pool`以在 Batch 帐户中创建计算节点池。
+然后，调用 `create_pool`以在 Batch 帐户中创建计算节点池。
 
 ```python
 def create_pool(batch_service_client, pool_id,
@@ -362,7 +362,7 @@ def create_pool(batch_service_client, pool_id,
 * 池的 **ID**（*id* - 必需）<p/>与 Batch 中的大多数实体一样，新池在 Batch 帐户中必须具有唯一 ID。 代码将使用池 ID 引用此池，这也是在 Azure [门户][azure_portal]中识别池的方式。
 * **计算节点数**（*target_dedicated* - 必需）<p/>此属性指定应在池中部署多少个 VM。 必须注意，所有批处理帐户都有默认**配额**，用于限制批处理帐户中的**核心**（因此也包括计算节点）数目。 可以在 [Quotas and limits for the Azure Batch service](batch-quota-limit.md)（Azure 批处理服务的配额和限制）中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)（例如批处理帐户中的核心数目上限）的说明。 如果你有类似于“为什么我的池不能包含 X 个以上的节点？ ”的疑惑，则原因可能在于此核心配额。
 * 节点的**操作系统**（*virtual_machine_configuration* **或** *cloud_service_configuration* - 必需）<p/>在 *python_tutorial_client.py* 中，使用 [VirtualMachineConfiguration][py_vm_config] 创建 Linux 节点池。 `common.helpers` 中的 `select_latest_verified_vm_image_with_node_agent_sku` 函数简化了 [Azure 虚拟机应用商店][vm_marketplace]映像的用法。 有关使用应用商店映像的详细信息，请参阅[在 Azure 批处理池中预配 Linux 计算节点](batch-linux-nodes.md)。
-* **计算节点的大小**（*vm_size* - 必需）<p/>由于我们要为 [VirtualMachineConfiguration][py_vm_config] 指定 Linux 节点，因此应根据 [Azure 中虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md)指定 VM 大小（在本示例中为 `STANDARD_A1`）。 同样，请参阅 [在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md) 获取详细信息。
+* **计算节点的大小**（*vm_size* - 必需）<p/>由于我们要为 [VirtualMachineConfiguration][py_vm_config] 指定 Linux 节点，因此应根据 [Azure 中虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)指定 VM 大小（在本示例中为 `STANDARD_A1`）。 同样，请参阅 [在 Azure Batch 池中预配 Linux 计算节点](batch-linux-nodes.md) 获取详细信息。
 * **启动任务**（*start_task* - 可选）<p/>还可以连同上述物理节点属性一起指定池的 [StartTask][py_starttask]（可选）。 StartTask 在每个节点加入池以及每次重新启动节点时在该节点上运行。 StartTask 特别适合用于准备计算节点，以便执行任务，例如安装任务将要运行的应用程序。<p/>在此示例应用程序中，StartTask 将它从存储下载的文件（使用 StartTask 的 **resource_files** 属性指定），从 StartTask *工作目录*复制到在节点上运行的所有任务可以访问的*共享*目录。 本质上，这会在节点加入池时，将 `python_tutorial_task.py` 复制到每个节点上的共享目录，因此该节点上运行的任何任务都可以访问它。
 
 你可能注意到了对 `wrap_commands_in_shell` helper 函数的调用。 此函数采用不同命令的集合，并针对任务的命令行属性创建适当的单个命令行。
@@ -371,8 +371,8 @@ def create_pool(batch_service_client, pool_id,
 
 > [!TIP]
 > 若要深入了解批处理池中计算节点上可用的环境变量，以及有关任务工作目录的信息，请参阅 [overview of Azure Batch features](batch-api-basics.md)（Azure 批处理功能概述）中的 **Environment settings for tasks**（任务的环境设置）及 **Files and directories**（文件和目录）。
-> 
-> 
+>
+>
 
 ## <a name="step-4-create-batch-job"></a>步骤 4：创建 Batch 作业
 ![创建 Batch 作业][4]<br/>
@@ -460,8 +460,8 @@ def add_tasks(batch_service_client, job_id, input_files,
 
 > [!IMPORTANT]
 > 在访问环境变量（例如 `$AZ_BATCH_NODE_SHARED_DIR`）或执行节点的 `PATH` 中找不到的应用程序时，任务命令行必须显式调用 shell，例如，包含 `/bin/sh -c MyTaskApplication $MY_ENV_VAR`。 如果任务在节点的 `PATH` 中执行应用程序，而且不引用任何环境变量，就不必要满足此要求。
-> 
-> 
+>
+>
 
 在上述代码片段中的 `for` 循环内，可以看到已构造任务的命令行，其中有五个命令行参数已传递到 *python_tutorial_task.py*：
 
@@ -563,8 +563,8 @@ def download_blobs_from_container(block_blob_client,
 
 > [!NOTE]
 > 在 *python_tutorial_client.py* 中调用 `download_blobs_from_container` 可指定应将文件下载到主目录。 可以随意修改此输出位置。
-> 
-> 
+>
+>
 
 ## <a name="step-8-delete-containers"></a>步骤 8：删除容器
 由于你需要对位于 Azure 存储空间中的数据付费，因此我们建议删除 Batch 作业不再需要的所有 Blob。 在 *python_tutorial_client.py* 中，可通过调用 [BlockBlobService.delete_container][py_delete_container] 三次来实现此目的：
@@ -593,16 +593,16 @@ if query_yes_no('Delete pool?') == 'yes':
 
 > [!IMPORTANT]
 > 请记住，你需要支付计算资源的费用，而删除未使用的池可将费用降到最低。 另请注意，删除池也会删除该池内的所有计算节点，并且删除池后，将无法恢复节点上的任何数据。
-> 
-> 
+>
+>
 
 ## <a name="run-the-sample-script"></a>运行示例脚本
 从教程[代码示例][github_article_samples]运行 *python_tutorial_client.py* 脚本时，控制台输出如下所示。 出现 `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` 后将会暂停，此时会创建、启动池的计算节点，然后执行池启动任务中的命令。 在执行期间和之后，可以使用 [Azure 门户][azure_portal]监视池、计算节点、作业和任务。 使用 [Azure 门户][azure_portal]或 [Microsoft Azure 存储资源管理器][storage_explorer]可以查看应用程序创建的存储资源（容器和 Blob）。
 
 > [!TIP]
 > 从 `azure-batch-samples/Python/Batch/article_samples` 目录内部运行 *python_tutorial_client.py* 脚本。 该脚本使用相对路径导入 `common.helpers` 模块，因此，如果不从此目录内部运行该脚本，可能会看到 `ImportError: No module named 'common'`。
-> 
-> 
+>
+>
 
 以默认配置运行本示例时，执行时间通常**大约为 5-7 分钟**。
 
@@ -641,7 +641,7 @@ Press ENTER to exit...
 
 * 如果对 Batch 服务不熟悉，建议查看 [Azure Batch 功能概述](batch-api-basics.md) 一文。
 * 从[批处理学习路径][batch_learning_path]中**有关开发的深度知识**下面列出的其他批处理开发文章着手。
-* 通过 [TopNWords][github_topnwords] 示例了解有关使用批处理来处理“前 N 个单词”工作负荷的不同实现方式。
+* 通过 [TopNWords][github_topnwords] 示例了解有关使用批处理服务处理“前 N 个单词”工作负荷的不同实现方式。
 
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
@@ -689,8 +689,7 @@ Press ENTER to exit...
 [py_vm_config]: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.models.html#azure.batch.models.VirtualMachineConfiguration
 [pypi_batch]: https://pypi.python.org/pypi/azure-batch
 [pypi_storage]: https://pypi.python.org/pypi/azure-storage
-
-[pypi_install]: http://python-packaging-user-guide.readthedocs.io/en/latest/installing/
+[pypi_install]: https://packaging.python.org/installing/
 [storage_explorer]: http://storageexplorer.com/
 [visual_studio]: https://www.visualstudio.com/products/vs-2015-product-editions
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
@@ -709,6 +708,6 @@ Press ENTER to exit...
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

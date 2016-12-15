@@ -1,6 +1,6 @@
 ---
-title: "适用于 Node.js 的 Azure IoT 中心入门 | Microsoft Docs"
-description: "适用于 Node.js 的 Azure IoT 中心入门教程。 配合 Azure IoT SDK 使用 Azure IoT 中心和 Node.js 来实施物联网解决方案。"
+title: "Azure IoT 中心入门 (Node) | Microsoft 文档"
+description: "如何使用用于 Node.js 的 Azure IoT SDK，将设备到云的消息从设备发送到 Azure IoT 中心。 将创建一个用于发送消息的模拟设备、一个用于在注册表中标识注册设备的服务应用，以及一个用于从 IoT 中心读取设备到云消息的服务应用。"
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 09/12/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 6a4275b7fb7501fec4e98f87b09e20b2114b556b
 
 
 ---
-# <a name="get-started-with-azure-iot-hub-for-nodejs"></a>适用于 Node.js 的 Azure IoT 中心入门
+# <a name="get-started-with-azure-iot-hub-node"></a>Azure IoT 中心入门 (Node)
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-在本教程结束时，你会有三个 Node.js 控制台应用程序：
+本教程结束时，将会创建三个 Node.js 控制台应用：
 
 * **CreateDeviceIdentity.js**，用于创建设备标识和关联的安全密钥以连接模拟设备应用。
 * **ReadDeviceToCloudMessages.js**，显示模拟设备应用发送的遥测数据。
@@ -41,17 +41,17 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-现在已创建 IoT 中心。 你已获得完成本教程的其余部分所需的 IoT 中心主机名和 IoT 中心连接字符串。
+现在已创建 IoT 中心。 现已获得完成本教程的其余部分所需的 IoT 中心主机名和 IoT 中心连接字符串。
 
 ## <a name="create-a-device-identity"></a>创建设备标识
-在本部分中，将创建一个 Node.js 控制台应用程序，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT Hub Developer Guide][lnk-devguide-identity]（IoT 中心开发人员指南）的 **Identity Registry**（标识注册表）部分。 当你运行此控制台应用程序时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以使用这些信息标识设备本身。
+在本部分中，将创建一个 Node.js 控制台应用程序，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
 
-1. 新建名为 **createdeviceidentity**的空文件夹。 在命令提示符下的 **createdeviceidentity** 文件夹中，使用以下命令创建 package.json 文件。 接受所有默认值：
+1. 新建名为 **createdeviceidentity**的空文件夹。 在命令提示符下使用以下命令，在 **createdeviceidentity** 文件夹中创建一个 package.json 文件。 接受所有默认值：
    
     ```
     npm init
     ```
-2. 在 **createdeviceidentity** 文件夹的命令提示符处，运行下述命令以安装 **azure-iothub** 服务 SDK 包：
+2. 在命令提示符下运行以下命令，在 **createdeviceidentity** 文件夹中安装 **azure-iothub** 服务 SDK 包：
    
     ```
     npm install azure-iothub --save
@@ -64,14 +64,14 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
    
     var iothub = require('azure-iothub');
     ```
-5. 将以下代码添加到 **CreateDeviceIdentity.js** 文件，并将占位符值替换为在上一节中为 IoT 中心创建的连接字符串： 
+5. 将以下代码添加到 **CreateDeviceIdentity.js** 文件，并将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串： 
    
     ```
     var connectionString = '{iothub connection string}';
    
     var registry = iothub.Registry.fromConnectionString(connectionString);
     ```
-6. 添加以下代码，以便在 IoT 中心的标识注册表中创建设备定义。 如果该设备 ID 在注册表中不存在，此代码将创建一个设备，否则将返回现有设备的密钥：
+6. 添加以下代码，以便在 IoT 中心的标识注册表中创建设备定义。 如果该设备 ID 在标识注册表中不存在，此代码将创建一个设备，否则将返回现有设备的密钥：
    
     ```
     var device = new iothub.Device(null);
@@ -87,7 +87,7 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
    
     function printDeviceInfo(err, deviceInfo, res) {
       if (deviceInfo) {
-        console.log('Device id: ' + deviceInfo.deviceId);
+        console.log('Device ID: ' + deviceInfo.deviceId);
         console.log('Device key: ' + deviceInfo.authentication.symmetricKey.primaryKey);
       }
     }
@@ -101,7 +101,7 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 9. 记下**设备 ID** 和**设备密钥**。 稍后在创建连接到作为设备的 IoT 中心的应用程序时需要这些值。
 
 > [!NOTE]
-> IoT 中心标识注册表只存储设备标识，以启用对 IoT 中心的安全访问。 它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志（可用于禁用对单个设备的访问）。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 有关详细信息，请参阅 [IoT Hub Developer Guide][lnk-devguide-identity]（IoT 中心开发人员指南）。
+> IoT 中心标识注册表只存储设备标识，以启用对 IoT 中心的安全访问。 它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志（可用于禁用对单个设备的访问）。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
 > 
 > 
 
@@ -113,12 +113,12 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 > 
 > 
 
-1. 新建名为 **readdevicetocloudmessages**的空文件夹。 在命令提示符下的 **readdevicetocloudmessages** 文件夹中，使用以下命令创建 package.json 文件。 接受所有默认值：
+1. 新建名为 **readdevicetocloudmessages**的空文件夹。 在命令提示符下使用以下命令，在 **readdevicetocloudmessages** 文件夹中创建一个 package.json 文件。 接受所有默认值：
    
     ```
     npm init
     ```
-2. 在 **readdevicetocloudmessages** 文件夹的命令提示符处，运行以下命令以安装 **azure-event-hubs** 包：
+2. 在命令提示符下运行以下命令，在 **readdevicetocloudmessages** 文件夹中安装 **azure-event-hubs** 包：
    
     ```
     npm install azure-event-hubs --save
@@ -131,7 +131,7 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
    
     var EventHubClient = require('azure-event-hubs').Client;
     ```
-5. 添加以下变量声明，并将占位符值替换为你的 IoT 中心的连接字符串：
+5. 添加以下变量声明，并将占位符值替换为中心的 IoT 中心连接字符串：
    
     ```
     var connectionString = '{iothub connection string}';
@@ -171,12 +171,12 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 在本部分中，将创建一个 Node.js 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
 
-1. 新建名为 **simulateddevice**的空文件夹。 在命令提示符下的 **simulateddevice** 文件夹中，使用以下命令创建 package.json 文件。 接受所有默认值：
+1. 新建名为 **simulateddevice**的空文件夹。 在命令提示符下使用以下命令，在 **simulateddevice** 文件夹中创建一个 package.json 文件。 接受所有默认值：
    
     ```
     npm init
     ```
-2. 在 **simulateddevice** 文件夹的命令提示符处，运行下述命令以安装 **azure-iot-device** 设备 SDK 包和 **azure-iot-device-amqp** 包：
+2. 在命令提示符下运行以下命令，在 **simulateddevice** 文件夹中安装 **azure-iot-device** 设备 SDK 包和 **azure-iot-device-amqp** 包：
    
     ```
     npm install azure-iot-device azure-iot-device-amqp --save
@@ -190,7 +190,7 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
     var clientFromConnectionString = require('azure-iot-device-amqp').clientFromConnectionString;
     var Message = require('azure-iot-device').Message;
     ```
-5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。 将 **{youriothostname}** 替换为在 *创建 IoT 中心* 部分创建的 IoT 中心名称。 将 **{yourdevicekey}** 替换为在 *创建设备标识* 部分生成的设备密钥值：
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。 将 **{youriothostname}** 替换为在 *创建 IoT 中心* 部分创建的 IoT 中心名称。 将 **{yourdevicekey}** 替换为在 *创建设备标识* 部分生成的设备密钥值：
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
@@ -242,20 +242,20 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 ## <a name="run-the-apps"></a>运行应用
 现在可以运行应用了。
 
-1. 在命令提示符下的 **readdevicetocloudmessages** 文件夹中，运行以下命令以开始监视 IoT 中心：
+1. 在命令提示符下的 **readdevicetocloudmessages** 文件夹中，运行以下命令开始监视 IoT 中心：
    
     ```
     node ReadDeviceToCloudMessages.js 
     ```
    
-    ![用于监视设备到云消息的 Node.js IoT 中心服务客户端应用程序][7]
-2. 在命令提示符下的 **simulateddevice** 文件夹中，运行以下命令以开始将遥测数据发送到 IoT 中心：
+    ![用于监视设备到云消息的 Node.js IoT 中心服务应用][7]
+2. 在命令提示符下的 **simulateddevice** 文件夹中，运行以下命令开始将遥测数据发送到 IoT 中心：
    
     ```
     node SimulatedDevice.js
     ```
    
-    ![用于发送设备到云消息的 Node.js IoT 中心设备客户端应用程序][8]
+    ![用于发送设备到云消息的 Node.js IoT 中心设备应用][8]
 3. [Azure 门户][lnk-portal]中的“使用情况”磁贴显示发送到 IoT 中心的消息数：
    
     ![显示发送到 IoT 中心的消息数的 Azure 门户“使用情况”磁贴][43]
@@ -296,6 +296,6 @@ ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

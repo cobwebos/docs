@@ -9,6 +9,7 @@ manager: jhubbard
 editor: CarlRabeler
 ms.assetid: 89e3e9ce-2eeb-4949-b40f-6fc3bf520538
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: NA
 ms.date: 09/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91942517a481a252d631af15e532389256b64108
+ms.sourcegitcommit: 4edae4ef772dc68b1f0efa9e758f26277dd35c44
+ms.openlocfilehash: bbc9bef4039b5c898c44a0e39b78b7b28c225c32
 
 
 ---
@@ -25,14 +26,14 @@ ms.openlocfilehash: 91942517a481a252d631af15e532389256b64108
 本文介绍数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)，以及达到最大 DTU 或 eDTU 时发生的情况。  
 
 ## <a name="what-are-database-transaction-units-dtus"></a>数据库事务单位 (DTU) 的定义
-DTU 是一个资源度量单位，表示保证可用于 [独立数据库服务层](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)内特定性能级别的独立 Azure SQL 数据库的资源。 DTU 是一定比例的 CPU、内存和数据 I/O 以及事务日志 I/O 的混合度量值，该比例由 OLTP 基准工作负荷决定（OLTP 基准工作负荷代表真实的 OLTP 工作负荷）。 提高数据库的性能级别可使 DTU 加倍，这等同于使该数据库可用的资源集增加一倍。 例如，具有 1750 个 DTU 的高级 P11 数据库提供的 DTU 计算能力是具有 5 个 DTU 的基本数据库的 350 倍。 要了解用于确定 DTU 混合比例的 OLTP 基准工作负荷所依据的方法，请参阅 [SQL 数据库基准概述](sql-database-benchmark-overview.md)。
+DTU 是一个资源度量单位，表示保证可用于 [独立数据库服务层](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)内特定性能级别的独立 Azure SQL 数据库的资源。 DTU 是一定比例的 CPU、内存和数据 I/O 以及事务日志 I/O 的混合度量值，该比例由 OLTP 基准工作负荷决定（OLTP 基准工作负荷代表真实的 OLTP 工作负荷）。 提高数据库的性能级别可使 DTU 加倍，这等同于使该数据库可用的资源集增加一倍。 例如，具有 1750 个 DTU 的高级 P11 数据库提供的 DTU 计算能力是具有 5 个 DTU 的基本数据库的 350 倍。 要了解用于确定 DTU 混合比例的 OLTP 基准工作负荷所依据的方法，请参阅 [SQL 数据库基准概述](sql-database-benchmark-overview.md)。
 
 ![SQL 数据库简介：按层和级别统计的单一数据库 DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 可以随时 [更改服务层](sql-database-scale-up.md) ，将应用程序故障时间降至最低（通常在平均 4 秒以下）。 许多业务和应用只要能够创建数据库并按需调高或调低单一数据库的性能即可，尤其是当使用模式相对容易预测时。 但如果有无法预测的使用模式，则管理成本和业务模式就会变得相当困难。 在这种情况下，可以使用具有一定数量 eDTU 的弹性池。
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>弹性数据库事务单位 (eDTU) 的定义
-eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组数据库之间共享的资源集，称为 [弹性池](sql-database-elastic-pool.png)。 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 有关详细信息，请参阅 [弹性池和服务层](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) 。
+eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组数据库之间共享的资源集，称为 [弹性池](sql-database-elastic-pool.md)。 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 有关详细信息，请参阅 [弹性池和服务层](sql-database-service-tiers.md#elastic-database-pool-service-tiers-and-performance-in-edtus) 。
 
 ![SQL 数据库简介：按层和级别统计的 eDTU](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
@@ -57,7 +58,6 @@ eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

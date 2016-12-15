@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 08/31/2016
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 若要完成本教程，你必须准备好以下各项：
 
 * 你正在使用的现有密钥保管库。  
-* Azure PowerShell， **最低版本为 1.0.1**。 若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
+* Azure PowerShell， **最低版本为 1.0.1**。 若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
 * 足够的 Azure 存储空间用于保存密钥保管库日志。
 
 ## <a name="a-idconnectaconnect-to-your-subscriptions"></a><a id="connect"></a>连接到订阅
@@ -66,7 +66,7 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="a-idstorageacreate-a-new-storage-account-for-your-logs"></a><a id="storage"></a>为日志创建新的存储帐户
 尽管你可以使用现有的存储帐户来保存日志，但我们将专门创建一个新的存储帐户来保存密钥保管库日志。 为方便起见，在稍后遇到必须指定此帐户的情况时，我们会将详细信息存储到名为 **sa**的变量中。
@@ -266,6 +266,6 @@ ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

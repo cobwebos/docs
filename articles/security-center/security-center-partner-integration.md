@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 12/01/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 0c946ce6a96f2e3644b9890dad5d60a35ad4bcb7
-ms.openlocfilehash: 10184c52d532eb56e66212fafdea3d059b0c43e3
+ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
+ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
 
 
 ---
@@ -45,23 +45,19 @@ ms.openlocfilehash: 10184c52d532eb56e66212fafdea3d059b0c43e3
 
 ## <a name="how-to-deploy-a-partner-solution"></a>如何部署合作伙伴解决方案？
 
-已部署在安全中心的合作伙伴解决方案可以轻松地从主安全中心仪表板中的“合作伙伴解决方案”磁贴进行访问：
+根据 Azure 环境的配置和定义的安全策略，安全中心可能会建议部署合作伙伴解决方案。 该建议将引导你完成选择和安装合作伙伴解决方案的过程。 此时的总体部署体验可能因解决方案的类型和合作伙伴而异。 有关详细信息，请参阅以下链接：
+
+- [添加 Web 应用程序防火墙](security-center-add-web-application-firewall.md)
+- [添加下一代防火墙](security-center-add-next-generation-firewall.md)
+- [安装终结点保护](security-center-install-endpoint-protection.md)
+- [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md)
+
+## <a name="how-to-manage-partner-solutions"></a>如何管理合作伙伴解决方案？
+
+部署合作伙伴解决方案后，可以查看有关解决方案运行状况的信息，以及通过安全中心主仪表板中的“合作伙伴解决方案”磁贴执行基本管理任务。 有关管理安全中心的合作伙伴解决方案的详细信息，请阅读[监视 Azure 安全中心的合作伙伴解决方案](security-center-partner-solutions.md)。
 
 ![合作伙伴集成](./media/security-center-partner-integration/security-center-partner-integration-fig1.png)
 
-若要根据安全中心建议部署新的合作伙伴解决方案，请执行以下步骤：
-
-> [!NOTE]
-> 以下示例中的步骤假定你有要使用 Web 应用程序防火墙保护的工作负荷。
-
-1. 在安全中心仪表板中，单击“建议”磁贴。
-2. 在“建议”边栏选项卡上，单击“添加 Web 应用程序防火墙”。
-3. 在“添加 Web 应用程序防火墙”边栏选项卡下单击应用程序名称。
-4. 在“添加 Web 应用程序防火墙”边栏选项卡上，单击“新建”。
-5. “新建 Web 应用程序防火墙”边栏选项卡显示当前正在提供 Web 应用程序防火墙功能的合作伙伴的列表。
-6. 选择相应的合作伙伴解决方案并执行步骤（这些步骤可能会因合作伙伴而异）。
-
-此时的总体部署体验可能会因合作伙伴而异。 有关管理安全中心的合作伙伴解决方案的详细信息，请阅读[监视 Azure 安全中心的合作伙伴解决方案](security-center-partner-solutions.md)。
 
 ## <a name="see-also"></a>另请参阅
 在本文档中，已经学习了如何在 Azure 安全中心中集成合作伙伴的解决方案。 要了解有关安全中心的详细信息，请参阅以下内容：
@@ -76,6 +72,6 @@ ms.openlocfilehash: 10184c52d532eb56e66212fafdea3d059b0c43e3
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

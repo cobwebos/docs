@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fda0b3c6c3f262c0f4b2f3ad5f37c4ce44cc0e3
 
 
 ---
-# <a name="setting-up-azure-active-directory-for-selfservice-group-management"></a>为自助组管理设置 Azure Active Directory
+# <a name="setting-up-azure-active-directory-for-self-service-group-management"></a>为自助组管理设置 Azure Active Directory
 自助组管理可让用户在 Azure Active Directory (Azure AD) 中创建和管理安全组或 Office 365 组。 用户也可以请求安全组或 Office 365 组成员身份，然后组所有者可以批准或拒绝成员身份。 如此一来，可以将组成员身份的日常控制委托给了解该成员身份的业务上下文的人员。 自助组管理功能仅适用于安全组和 Office 365 组，而不适用于已启用邮件的安全组或通讯组列表。
 
 自助组管理当前由两个基本方案组成：委派组管理和自助组管理。
@@ -30,7 +30,7 @@ ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
 * **自助组管理**
    以下是该方案的一个示例：两个用户都拥有独立设置的 SharePoint Online 站点。 他们都想为对方的团队提供对其站点的访问权限。 若要实现此目的，他们可以在 Azure AD 中创建一个组，然后各自在 SharePoint Online 中选择该组并为该组提供对其站点的访问权限。 当有人想要访问时，他们从访问面板发出请求，获得批准后便可自动访问这两个 SharePoint Online 站点。 后来，他们中的一人决定，允许访问其站点的所有人也访问特定的 SaaS 应用程序。 SaaS 应用程序的管理员可以将此应用程序的访问权限添加到 SharePoint Online 站点。 从那以后，他批准的任何请求都将提供对这两个 SharePoint Online 站点以及该 SaaS 应用程序的访问权限。
 
-## <a name="making-a-group-available-for-end-user-selfservice"></a>为最终用户启用自助组管理功能
+## <a name="making-a-group-available-for-end-user-self-service"></a>为最终用户启用自助组管理功能
 1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，打开 Azure AD 目录。
 2. 在“配置”选项卡上，将“委派组管理”设置为“已启用”。
 3. 将“用户可以创建安全组”或“用户可以创建 Office 组”设置为“已启用”。
@@ -53,6 +53,6 @@ ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/20/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73fafeff227061feae1fbc0a1c50e5056116e3ea
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 00c4336bd5cef4ddc0b92127d0945d39291b9c7f
 
 
 ---
@@ -40,9 +40,9 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 在本教程中部署的 WordPress 站点使用 MySQL 作为数据库。 如果想要改用 SQL 数据库作为数据库，请参阅 [Project Nami]（Nami 项目），Azure 应用商店中也提供了该项目。
 
 > [!NOTE]
-> 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益][激活]，或者[注册免费试用版][免费试用版]。
+> 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益][activate]，或[注册免费试用帐户][free trial]。
 > 
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service]（试用应用服务）。 在那里，可立刻在应用服务中创建短期的入门级 Web 应用 -- 无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [试用应用服务]。 在那里，可立刻在应用服务中创建短期的入门级 Web 应用 -- 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -127,7 +127,7 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 有关如何使用应用服务 Web 应用的详细信息，请参阅页面左侧（针对宽屏浏览器窗口）或页面顶部（针对窄屏浏览器窗口）的链接。
 
-有关在 Azure 上开发 WordPress Web 应用的详细信息，请参阅[在 Azure 应用服务上开发 WordPress][WordPressOnAzure]。
+有关在 Azure 上开发 WordPress Web 应用的详细信息，请参阅[在 Azure 应用服务中开发 WordPress][WordPressOnAzure]。
 
 <!-- URL List -->
 
@@ -136,7 +136,7 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 [Node.js]: https://azure.microsoft.com/develop/nodejs/
 [Java]: https://azure.microsoft.com/develop/java/
 [Python]: https://azure.microsoft.com/develop/python/
-[激活]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [free trial]: https://azure.microsoft.com/pricing/free-trial/
 [试用应用服务]: http://go.microsoft.com/fwlink/?LinkId=523751
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
@@ -168,6 +168,6 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

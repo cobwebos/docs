@@ -3,7 +3,7 @@ title: "Azure 批处理服务基础知识 | Microsoft 文档"
 description: "了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 93e37d44-7585-495e-8491-312ed584ab79
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2559aae752f319805c2c9f87a2e2a81d9b37e4b2
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 2d83a9a42a17ddade81f891fca4463099a42f5e4
 
 
 ---
@@ -59,7 +59,7 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 ### <a name="azure-accounts-youll-need"></a>需要的 Azure 帐户
 开发 Batch 解决方案时，你将在 Microsoft Azure 中使用以下帐户。
 
-* **Azure 帐户和订阅** - 如果没有 Azure 订阅，可以激活 [MSDN 订户权益][msdn_benefits]或注册 [Azure 免费帐户][free_account]。 创建帐户时，系统为用户创建默认订阅。
+* **Azure 帐户和订阅** - 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益][msdn_benefits]或注册 [Azure 免费帐户][free_account]。 创建帐户时，系统为用户创建默认订阅。
 * **Batch 帐户** - 应用程序与 Batch 服务交互时，使用帐户名、帐户的 URL 和访问密钥作为凭据。 所有 Batch 资源（如池、计算节点、作业和任务）都与 Batch 帐户关联。 可以在 Azure 门户中 [创建 Batch 帐户](batch-account-create-portal.md) 。
 * **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个 Batch 方案都使用 Azure 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 若要创建存储帐户，请参阅 [关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
 
@@ -77,7 +77,7 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 ### <a name="batch-resource-management"></a>Batch 资源管理
 除了客户端 API 以外，还可以使用以下功能来管理 Batch 帐户中的资源。
 
-* [批处理 PowerShell cmdlet][batch_ps]：[Azure PowerShell](../powershell-install-configure.md) 模块中的 Azure 批处理 cmdlet 可让用户使用 PowerShell 管理批处理资源。
+* [批处理 PowerShell cmdlet][batch_ps]：[Azure PowerShell](/powershell/azureps-cmdlets-docs) 模块中的 Azure 批处理 cmdlet 可让用户使用 PowerShell 管理批处理资源。
 * [Azure CLI](../xplat-cli-install.md)：Azure 命令行接口 (Azure CLI) 是一个跨平台工具集，提供用来与许多 Azure 服务（包括 Batch）交互的 shell 命令。
 * [批处理 Management .NET](batch-management-dotnet.md) 客户端库：也可以通过 [NuGet][api_net_mgmt_nuget] 获取。用户可以使用批处理管理 .NET 客户端库以编程方式管理批处理帐户、配额和应用程序包。 [MSDN][api_net_mgmt] 上提供了管理库的参考信息。
 
@@ -115,7 +115,7 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 * 对于准备使用 Batch 的任何人，有必要阅读 [面向开发人员的 Batch 功能概述](batch-api-basics.md)了解基本信息。 本文中包含有关 Batch 服务资源（如池、节点、作业和任务）以及生成你的 Batch 应用程序时可以使用的许多 API 功能的更多详细信息。
 * [Get started with the Azure Batch library for .NET](batch-dotnet-get-started.md) （适用于 .NET 的 Azure Batch 库入门），了解如何使用 C# 和 Batch .NET 库在常见的 Batch 工作流中执行简单的工作负荷。 若要了解如何使用 Batch 服务，应先学习此文。 此外还提供了该教程的 [Python 版本](batch-python-tutorial.md) 。
 * 下载 [GitHub 上的代码示例][github_samples]，了解如何通过综合使用 C# 和 Python 与批处理来计划和处理示例工作负荷。
-* 查看[批处理学习路径][learning_path]，获取在学习使用批处理时可用的资源。
+* 查看[批处理学习路径][learning_path]，了解学习使用批处理时可用的资源。
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: http://azure.github.io/azure-sdk-for-java/
@@ -139,13 +139,13 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 [msdn_benefits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [batch_explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [storage_explorer]: http://storageexplorer.com/
-[门户]: https://portal.azure.com
+[portal]: https://portal.azure.com
 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

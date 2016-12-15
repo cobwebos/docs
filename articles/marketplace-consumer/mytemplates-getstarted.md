@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cada217a967597ecb44d84c469367157c7bc785e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9bc7cc00e9aa9aab982f0b2f08f8befb7c02f46d
 
 
 ---
@@ -136,6 +136,6 @@ ms.openlocfilehash: cada217a967597ecb44d84c469367157c7bc785e
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

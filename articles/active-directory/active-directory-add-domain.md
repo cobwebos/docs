@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand;jeffsta
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d24af6385c24860f40f6aab633e6212431809aea
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7bd889847f07ebbadc5e427f2b1ff3f9f869e69a
 
 
 ---
@@ -89,6 +89,6 @@ ms.openlocfilehash: d24af6385c24860f40f6aab633e6212431809aea
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

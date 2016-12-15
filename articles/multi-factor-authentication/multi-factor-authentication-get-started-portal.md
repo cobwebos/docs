@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b6b6b19d82bfcf77dc72bae8926b8f696bfd9c0c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cdbf4b164af4a8077b8f9a166d6c4ad752b25ff4
 
 
 ---
-# <a name="deploying-the-user-portal-for-the-azure-multifactor-authentication-server"></a>为 Azure Multi-Factor Authentication 服务器部署用户门户
+# <a name="deploying-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>为 Azure Multi-Factor Authentication 服务器部署用户门户
 使用“用户门户”部分，管理员可以安装和配置 Azure Multi-Factor Authentication 用户门户。 用户门户是一个 IIS 网站，它允许用户注册 Azure Multi-Factor Authentication 并维护其帐户。 用户可以在下次登录期间更改其电话号码、更改其 PIN 码或绕过 Azure Multi-Factor Authentication。
 
 用户将使用其普通的用户名和密码登录到用户门户，并将完成 Azure Multi-Factor Authentication 呼叫或回答安全问题以完成其身份验证。 如果允许用户注册，用户将在首次登录到用户门户时配置其电话号码和 PIN 码。
@@ -29,13 +29,13 @@ ms.openlocfilehash: b6b6b19d82bfcf77dc72bae8926b8f696bfd9c0c
 
 <center>![设置](./media/multi-factor-authentication-get-started-portal/install.png)</center>
 
-## <a name="deploying-the-user-portal-on-the-same-server-as-the-azure-multifactor-authentication-server"></a>在与 Azure Multi-Factor Authentication 服务器所在的同一台服务器上部署用户门户
+## <a name="deploying-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>在与 Azure Multi-Factor Authentication 服务器所在的同一台服务器上部署用户门户
 若要在与 Azure Multi-Factor Authentication 服务器所在的同一台服务器上安装用户门户，必须满足以下先决条件：
 
 * 需要安装 IIS，包括 asp.net 和 IIS 6 元数据库兼容性（适用于 IIS 7 或更高版本）
 * 登录用户必须具有计算机和域的管理员权限（如果适用）。  这是因为帐户需有创建 Active Directory 安全组的权限。
 
-### <a name="to-deploy-the-user-portal-for-the-azure-multifactor-authentication-server"></a>为 Azure Multi-Factor Authentication 服务器部署用户门户
+### <a name="to-deploy-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>为 Azure Multi-Factor Authentication 服务器部署用户门户
 1. 在 Azure Multi-Factor Authentication 服务器中：单击左侧菜单中的“用户门户”图标，然后单击“安装用户门户”按钮。
 2. 单击“下一步”。
 3. 单击“下一步”。
@@ -47,7 +47,7 @@ ms.openlocfilehash: b6b6b19d82bfcf77dc72bae8926b8f696bfd9c0c
 
 <center>![设置](./media/multi-factor-authentication-get-started-portal/portal.png)</center>
 
-## <a name="deploying-the-azure-multifactor-authentication-server-user-portal-on-a-separate-server"></a>在不同的服务器上部署 Azure Multi-Factor Authentication 服务器用户门户
+## <a name="deploying-the-azure-multi-factor-authentication-server-user-portal-on-a-separate-server"></a>在不同的服务器上部署 Azure Multi-Factor Authentication 服务器用户门户
 若要使用 Azure Multi-Factor Authentication 应用，需要满足以下先决条件，才能使该应用成功地与用户门户进行通信：
 
 有关硬件和软件要求，请参阅“硬件和软件要求”：
@@ -89,7 +89,7 @@ ms.openlocfilehash: b6b6b19d82bfcf77dc72bae8926b8f696bfd9c0c
 7. 如果已安装用户门户的网站（例如默认网站）尚未与公开签名的证书绑定，请在服务器上安装证书（如果尚未安装），打开 IIS 管理器并将证书绑定到该网站。
 8. 从任何计算机打开 Web 浏览器，然后导航到已安装用户门户的 URL（例如 https://www.publicwebsite.com/MultiFactorAuth）。 确保未显示证书警告或错误。
 
-## <a name="configure-the-user-portal-settings-in-the-azure-multifactor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置用户门户设置
+## <a name="configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置用户门户设置
 安装门户后，你需要配置 Azure Multi-Factor Authentication 服务器，使其能够与门户配合工作。
 
 Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项。  下表列出了这些选项及其用途的说明。
@@ -113,7 +113,7 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 
 ![用户门户设置](./media/multi-factor-authentication-get-started-portal/portalsettings.png)
 
-### <a name="to-configure-the-user-portal-settings-in-the-azure-multifactor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置用户门户设置
+### <a name="to-configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>在 Azure Multi-Factor Authentication 服务器中配置用户门户设置
 1. 在 Azure Multi-Factor Authentication 服务器中，单击“用户门户”图标。 在“设置”选项卡上的“用户门户 URL”文本框中，输入用户门户的 URL。 此 URL 将插入发送给导入到 Azure Multi-Factor Authentication 服务器的用户的电子邮件（如果已启用电子邮件功能）。
 2. 选择要在用户门户中使用的设置。 例如，如果允许用户控制其身份验证方法，请确保选中“允许用户选择方法”以及这些用户可以从中选择的方法。
 3. 单击右上角的“帮助”链接，以便于了解显示的任何设置。
@@ -142,7 +142,7 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 
 ![用户门户中受信任的 IP](./media/multi-factor-authentication-get-started-portal/trusted.png)
 
-## <a name="selfservice-user-enrollment"></a>自助用户注册
+## <a name="self-service-user-enrollment"></a>自助用户注册
 如果要让用户登录并注册，必须选择“允许用户登录”和“允许用户注册”选项。 请记住，选择的设置会影响用户的登录体验。
 
 例如，当用户登录到用户门户并单击“登录”按钮时，便会转到“Azure Multi-Factor Authentication 用户设置”页。  根据 Azure Multi-Factor Authentication 的配置方式，用户也许能够选择身份验证方法。  
@@ -177,6 +177,6 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

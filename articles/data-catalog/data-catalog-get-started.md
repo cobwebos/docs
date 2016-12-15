@@ -16,8 +16,8 @@ ms.workload: data-catalog
 ms.date: 09/20/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7a401cb0cd9c13f2ab1779fbc18bee2a61ba5e77
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 115668dae46557f6d6caefc9e7c1178768e7e775
 
 
 ---
@@ -366,6 +366,6 @@ Azure 数据目录支持众包批注方式。 Azure 数据目录用户可以添�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

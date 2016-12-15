@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e3d6caee50a57648f4f775029a2e381cee0f1e72
 
 
 ---
@@ -49,7 +49,7 @@ ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
 
 完成集成并发布应用程序以后，营销人员即可实时查看分析数据，对受众分类，然后开始发送智能型定向推送通知，确保留住应用内外的最终用户。
 
-### <a name="usecases-to-get-started"></a>用例入门
+### <a name="use-cases-to-get-started"></a>用例入门
 1. 欢迎策略：根据最终用户在启动应用程序后的行为创建多个推送通知活动，然后在第一次会话后按 D+2/5/10/15 模式再来一轮用户参与活动，提高第一轮的保留率。
 2. 根据最终用户的行为推广新内容（功能、文章/视频，或者产品），仅向留住可能性较高的最终用户发送信息。
 3. 对应用程序评级：将目标范围限定为用户群中不到 1% 的用户，即在应用商店中对应用的评级最有可能是 5 星的用户。
@@ -66,13 +66,13 @@ ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
 > 
 > 
 
-### <a name="usecases-and-best-practices"></a>用例和最佳实践
+### <a name="use-cases-and-best-practices"></a>用例和最佳实践
 以下部分简要介绍一些重要的用例，这些用例是在与客户打交道时遇到过的，适合入门用户。
 
 #### <a name="media"></a>媒体
 收集最终用户所使用的那类内容，然后根据相应的行为对受众分类，只向受众发送针对性强且使用可能性较高的那类内容。 这样可避免骚扰整个用户群，确保提高用户保留率。
 
-#### <a name="mcommerce"></a>移动商务
+#### <a name="m-commerce"></a>移动商务
 收集应用程序内访问次数最多的产品类别，针对该类别的特定受众发送折扣或新产品促销信息，提高最终用户购买该类产品的可能性。 以提高收入为目标。 再提醒一次，不要发送垃圾邮件！
 
 #### <a name="gaming"></a>游戏
@@ -134,6 +134,6 @@ ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

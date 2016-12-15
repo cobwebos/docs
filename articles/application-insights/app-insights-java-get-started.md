@@ -1,9 +1,9 @@
 ---
-title: "使用 Application Insights 进行 Java Web 应用分析 | Microsoft Docs"
-description: "使用 Application Insights 监视 Java 网站的性能和使用情况。 "
+title: "使用 Azure Application Insights 进行 Java Web 应用分析 | Microsoft 文档"
+description: "使用 Application Insights 监视 Java Web 应用的应用程序性能。 "
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: harelbr
 manager: douge
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -11,18 +11,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc0167ef78eb3ca84e959599473af5935e5da0d0
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: f7dc72299665a5324de7b9320eb9876c61ced123
 
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
-*Application Insights 以预览版提供。*
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它可以[检测和诊断性能问题与异常](app-insights-detect-triage-diagnose.md)，以及[编写代码 ][api] 来跟踪用户对应用执行的操作。
+
+[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它可以[检测和诊断性能问题与异常](app-insights-detect-triage-diagnose.md)，以及[编写代码][api]来跟踪用户对应用执行的操作。
 
 ![示例数据](./media/app-insights-java-get-started/5-results.png)
 
@@ -31,7 +31,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 需要：
 
 * Oracle JRE 1.6 或更高版本，或者 Zulu JRE 1.6 或更高版本
-* [Microsoft Azure](https://azure.microsoft.com/) 订阅。 （可以从[免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。）
+* [Microsoft Azure](https://azure.microsoft.com/) 订阅。
 
 *如果有活动的 Web 应用，可以遵循替代过程[在运行时将 SDK 添加到 Web 服务器](app-insights-java-live.md)。这种替代方法可以避免重新生成代码，但没有任何选项可以编写代码来跟踪用户活动。*
 
@@ -90,7 +90,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
       // or applicationinsights-core for bare API
     }
 
-* *发生了生成或校验和验证错误？尝试使用特定版本，例如：* `version:'1.0.n'`。 *可以在 [SDK release notes](https://github。com/Microsoft/ApplicationInsights-Java#release-notes)。*
+* *发生了生成或校验和验证错误？尝试使用特定版本，例如：* `version:'1.0.n'`。 *可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)。*
 * *更新到新 SDK*
   *  请刷新项目的依赖项。
 
@@ -148,7 +148,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 * HTTP 请求组件是可选的。 它自动将请求和响应时间的遥测数据发送到门户。
-* 事件关联是对 HTTP 请求组件的补充。 它将标识符分配到服务器收到的每个请求，并将此标识符添加为遥测的每个项的“Operation.Id”属性。 使用它可以通过在[诊断搜索][诊断]中设置筛选器，来关联与每个请求关联的遥测。
+* 事件关联是对 HTTP 请求组件的补充。 它将标识符分配到服务器收到的每个请求，并将此标识符添加为遥测的每个项的“Operation.Id”属性。 使用它可以通过在[诊断搜索][diagnostic]中设置筛选器，来关联与每个请求关联的遥测。
 * 可以从 Azure 门户将 Application Insights 密钥动态传递为系统属性 (-DAPPLICATION_INSIGHTS_IKEY=your_ikey)。 如果未定义任何属性，它将检查 Azure 应用设置中的环境变量 (APPLICATION_INSIGHTS_IKEY)。 如果未定义这两个属性，则使用 ApplicationInsights.xml 中的默认 InstrumentationKey。 此序列有助于动态管理不同环境的不同 InstrumentationKey。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>设置检测密钥的替代方法
@@ -182,7 +182,7 @@ Application Insights SDK 按以下顺序查找密钥：
     </filter-mapping>
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>如果使用 Spring Web MVC 3.1 或更高版本
-编辑以下元素以包含 Application Insights 包：
+编辑 *-servlet.xml 中的以下元素以包含 Application Insights 包：
 
     <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
 
@@ -213,7 +213,7 @@ Application Insights SDK 按以下顺序查找密钥：
 
 ![示例数据](./media/app-insights-java-get-started/5-results.png)
 
-[了解有关指标的详细信息。][指标]
+[了解有关指标的详细信息。][metrics]
 
 单击任一图表可查看详细聚合指标。
 
@@ -244,11 +244,15 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
   
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
+
+* 如果必须通过防火墙路由传出流量，需定义系统属性 `http.proxyHost` 和 `http.proxyPort`。 
+
 * 在 Windows 服务器上，安装：
   
   * [Microsoft Visual C++ Redistributable](http://www.microsoft.com/download/details.aspx?id=40784)
     
     （此组件启用性能计数器。）
+
 
 ## <a name="exceptions-and-request-failures"></a>异常和请求失败
 自动收集未经处理的异常：
@@ -309,7 +313,7 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 * counterName – 性能计数器的名称。
 * instanceName – 性能计数器类别实例的名称，如果类别包含单个实例，则为空字符串 ("")。 如果 categoryName 为 Process，而要收集的性能计数器来自应用运行所在的当前 JVM 进程，请指定 `"__SELF__"`。
 
-性能计数器在[指标资源管理器][指标]中以自定义指标的形式显示。
+性能计数器在[指标资源管理器][metrics]中以自定义指标的形式显示。
 
 ![](./media/app-insights-java-get-started/12-custom-perfs.png)
 
@@ -319,20 +323,20 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 ## <a name="get-user-and-session-data"></a>获取用户和会话数据
 好了，现在正在从 Web 服务发送遥测数据。 若要获取应用程序的 360 度全方位视图，可以添加更多监视：
 
-* [将遥测添加到网页][用法]，监视页面视图和用户指标。
-* [设置 Web 测试][可用性]，确保应用程序处于活动状态且能够做出响应。
+* [将遥测添加到网页][usage]，监视页面视图和用户指标。
+* [设置 Web 测试][availability]，确保应用程序处于活动状态且能够做出响应。
 
 ## <a name="capture-log-traces"></a>捕获日志跟踪
-可以使用 Application Insights 将来自 Log4J、Logback 或其他记录框架的日志切片。 可以将日志与 HTTP 请求及其他遥测数据相关联。 [了解方法][javalogs]。
+可以使用 Application Insights 将来自 Log4J、Logback 或其他记录框架的日志切片。 可以将日志与 HTTP 请求及其他遥测数据相关联。 [了解操作方法][javalogs]。
 
 ## <a name="send-your-own-telemetry"></a>发送自己的遥测数据
 安装 SDK 后，可以使用 API 发送自己的遥测数据。
 
 * [跟踪自定义事件和指标][api]，了解用户正在对应用程序执行的操作。
-* [搜索事件和日志][诊断]，帮助诊断问题。
+* [搜索事件和日志][diagnostic]帮助诊断问题。
 
 ## <a name="availability-web-tests"></a>可用性 Web 测试
-Application Insights 可以定期测试网站，检查网站是否正常运行且做出响应。 [若要设置][可用性]，请单击“Web 测试”。
+Application Insights 可以定期测试网站，检查网站是否正常运行且做出响应。 [若要设置此功能][availability]，请单击“Web 测试”。
 
 ![依次单击“Web 测试”、“添加 Web 测试”](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -340,7 +344,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 
 ![Web 测试示例](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
-[详细了解可用性 Web 测试。][可用性] 
+[详细了解可用性 Web 测试。][availability] 
 
 ## <a name="questions-problems"></a>有疑问？ 遇到问题？
 [Java 故障排除](app-insights-java-troubleshoot.md)
@@ -356,17 +360,17 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 
 <!--Link references-->
 
-[API]: app-insights-api-custom-events-metrics.md
+[api]: app-insights-api-custom-events-metrics.md
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
-[可用性]: app-insights-monitor-web-app-availability.md
-[诊断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [javalogs]: app-insights-java-trace-logs.md
-[指标]: app-insights-metrics-explorer.md
-[使用情况]: app-insights-web-track-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[usage]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

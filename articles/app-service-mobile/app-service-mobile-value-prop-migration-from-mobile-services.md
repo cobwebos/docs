@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a63d15e7b7954fa63d04facc7d440092e24459da
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f3b75c10ed0012d682562eb943cb67fc8176ddbb
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: a63d15e7b7954fa63d04facc7d440092e24459da
 * （适用于 .NET）利用 ASP.NET 的任何功能，包括 MVC
 * （适用于 Node.js）利用 Node 生态系统的任何纯 JavaScript 库，包括常用的 MVC 库。
 
-## <a name="access-onpremises-data-using-vnet"></a>使用 VNet 访问本地数据
+## <a name="access-on-premises-data-using-vnet"></a>使用 VNet 访问本地数据
 有了移动服务，便可以使用混合连接访问本地资源。 但是，在某些情况下，VPN 解决方案更合适。 通过 *Azure 应用服务* ，可以将 Azure VNet 用于移动应用后端代码。
 
 ## <a name="use-your-favorite-backend-language"></a>使用偏好的后端语言
@@ -67,6 +67,6 @@ ms.openlocfilehash: a63d15e7b7954fa63d04facc7d440092e24459da
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

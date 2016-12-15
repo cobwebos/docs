@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 35f58e8664c47c4e7a86c27e90813ad7be3cea04
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
 
 ![IIS 身份验证](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 
-## <a name="using-formbased-iis-authentication-with-azure-multifactor-authentication-server"></a>将基于窗体的 IIS 身份验证用于 Azure Multi-Factor Authentication 服务器
+## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>将基于窗体的 IIS 身份验证用于 Azure Multi-Factor Authentication 服务器
 若要保护使用基于窗体的身份验证的 IIS Web 应用程序，请在 IIS Web 服务器上安装 Azure Multi-Factor Authentication 服务器，并按以下过程配置该服务器。
 
 1. 在 Azure Multi-Factor Authentication 服务器内，单击左侧菜单中的“IIS 身份验证”图标。
@@ -43,7 +43,7 @@ ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
 13. 检测到或输入 URL 和页变量后，网站数据将显示在基于窗体的面板中。
 14. 请参阅下面的“为 Azure Multi-Factor Authentication 服务器启用 IIS 插件”部分完成 IIS 身份验证配置。
 
-## <a name="using-integrated-windows-authentication-with-azure-multifactor-authentication-server"></a>将集成 Windows 身份验证用于 Azure Multi-Factor Authentication 服务器
+## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>将集成 Windows 身份验证用于 Azure Multi-Factor Authentication 服务器
 若要保护使用集成式 Windows HTTP 身份验证的 IIS Web 应用程序，请在 IIS Web 服务器上安装 Azure Multi-Factor Authentication 服务器，并按以下过程配置该服务器。
 
 1. 在 Azure Multi-Factor Authentication 服务器内，单击左侧菜单中的“IIS 身份验证”图标。
@@ -56,7 +56,7 @@ ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
 8. 单击“确定”按钮。
 9. 请参阅下面的 [为 Azure Multi-Factor Authentication 服务器启用 IIS 插件](#enable-iis-plug-ins-for-azure-multi-factor-authentication-server) 部分完成 IIS 身份验证配置。
 
-## <a name="enable-iis-plugins-for-azure-multifactor-authentication-server"></a>为 Azure Multi-Factor Authentication 服务器启用 IIS 插件
+## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>为 Azure Multi-Factor Authentication 服务器启用 IIS 插件
 配置基于窗体的身份验证或 HTTP 身份验证 URL 和设置后，必须在 IIS 中选择应加载并启用 Azure Multi-Factor Authentication IIS 插件的位置。 请按以下过程操作：
 
 1. 如果在 IIS 6 上运行，请单击 ISAPI 选项卡并选择在其中运行 Web 应用程序的网站（例如，默认网站），以便为该网站启用 Azure Multi-Factor Authentication ISAPI 筛选器插件。
@@ -74,6 +74,6 @@ ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

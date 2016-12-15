@@ -9,6 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: a2e47475-c955-4a8d-a65c-cbef9a6d9b9f
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 09/27/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f5fa586bd8902af2129a7157f0549c337ae00d00
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5cda0c5b491f71999da0b7bd70156256ab2d5908
 
 
 ---
@@ -43,18 +44,17 @@ ms.openlocfilehash: f5fa586bd8902af2129a7157f0549c337ae00d00
 性能指标还可以帮助你确定是否能够降级到更低的性能级别。 假定你正在使用一个标准 S2 数据库并且所有性能指标均显示该数据库在任何给定时间平均的使用率不超过 10%。 很可能该数据库在标准 S1 中会很好地正常工作。 但是，在决定转换到更低的性能级别之前，请注意出现峰值或波动情况的工作负荷。
 
 ## <a name="monitor-databases-using-dmvs"></a>使用 DMV 监视数据库
-在门户中公开的相同指标也可以通过系统视图查看：服务器的逻辑 [master](https://msdn.microsoft.com/library/dn269979.aspx) 数据库中的 **sys.resource_stats**，以及用户数据库中的 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)。 如果需要在更长时间段内监视更粗粒度的数据，请使用 **sys.resource_stats**。 如果需要在较小的时间范围内监视更细粒度的数据，请使用 **sys.dm_db_resource_stats**。 有关详细信息，请参阅 [Azure SQL 数据库性能指南](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)。
+在门户中公开的相同指标也可以通过系统视图查看：服务器的逻辑 [master](https://msdn.microsoft.com/library/dn269979.aspx) 数据库中的 **sys.resource_stats**，以及用户数据库中的 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)。 如果需要在更长时间段内监视更粗粒度的数据，请使用 **sys.resource_stats**。 如果需要在较小的时间范围内监视更细粒度的数据，请使用 **sys.dm_db_resource_stats**。 有关详细信息，请参阅 [Azure SQL 数据库性能指南](sql-database-performance-guidance.md#monitor-resource-use)。
 
 > [!NOTE]
 > 如果在已停用的 Web 和 Business Edition 数据库中使用，**sys.dm_db_resource_stats** 将返回空结果集。
-> 
-> 
+>
+>
 
 对于弹性数据库池，可以使用本节中所述的技术来监视池中的单个数据库。 但你还可以在总体上监视池。 有关信息，请参阅 [监视和管理弹性数据库池](sql-database-elastic-pool-manage-portal.md)。
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

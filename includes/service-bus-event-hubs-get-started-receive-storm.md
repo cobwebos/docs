@@ -1,9 +1,9 @@
 ## <a name="receive-messages-with-apache-storm"></a>使用 Apache Storm 接收消息
-[**Apache Storm**](https://storm.incubator.apache.org) 是一个分布式实时计算系统，它简化了对未绑定的数据流进行可靠处理的过程。 本节演示如何使用事件中心 Storm 喷口从事件中心接收事件。 使用 Apache Storm，可以在承载于不同节点的多个进程间拆分事件。 事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
+[Apache Storm](https://storm.incubator.apache.org) 是一个分布式实时计算系统，它简化了对未绑定的数据流进行可靠处理的过程。 本节演示如何使用事件中心 Storm 喷口从事件中心接收事件。 使用 Apache Storm，可以在承载于不同节点的多个进程间拆分事件。 事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
 
-有关事件中心接收模式的详细信息，请参阅[事件中心概述][事件中心概述]。
+有关事件中心接收模式的详细信息，请参阅[事件中心概述][Event Hubs overview]。
 
-本教程使用 [HDInsight Storm][HDInsight Storm] 安装，该安装附带了已经可用的事件中心喷口。
+本教程使用安装的 [HDInsight Storm][HDInsight Storm]，其中随附了现成可用的事件中心 Spout。
 
 1. 请按照 [HDInsight Storm - 入门](../articles/hdinsight/hdinsight-storm-overview.md)过程创建新 HDInsight 群集，并通过远程桌面连接该群集。
 2. 将 `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` 文件复制到本地开发环境。 其中包含 events-storm-spout。
@@ -212,7 +212,7 @@
     此类创建一个新的事件中心喷管，并使用配置文件中的属性对它进行实例化。 请务必注意：此示例创建喷管的数量与事件中心中分区的数量相同，以便使用该事件中心允许的最大并行度。
 
 <!-- Links -->
-[事件中心概述]: ../articles/event-hubs/event-hubs-overview.md
+[Event Hubs overview]: ../articles/event-hubs/event-hubs-overview.md
 [HDInsight Storm]: ../articles/hdinsight/hdinsight-storm-overview.md
 [HDInsight 传感器分析教程]: ../articles/hdinsight/hdinsight-storm-sensor-data-analysis.md
 
@@ -220,6 +220,6 @@
 
 [12]: ./media/service-bus-event-hubs-get-started-receive-storm/create-storm1.png
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

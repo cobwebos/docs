@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心概述 | Microsoft Docs"
-description: "Azure IoT 中心服务概述：什么是 IoT 中心、设备连接、物联网通信模式和服务辅助通信模式"
+description: "Azure IoT 中心服务概述：什么是 IoT 中心、设备连接、物联网通信模式、网关和服务辅助通信模式"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/23/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: b00aab7ea1eac8d34b9b535db2056c7b0ec41354
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 42774f83dc4c53dc8f090acb922b5aae6e8b4bed
 
 
 ---
@@ -77,7 +77,7 @@ IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-gatewa
 Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模式，调节设备与解决方案后端之间的交互。 服务辅助通信的目标是在控制系统（例如 IoT 中心）与专用设备（部署在不受信任的物理空间中）之间，建立可信任的双向通信路径。 该模式会建立下列原则：
 
 * 安全性的优先级高于其他所有功能。
-* 设备不接受未经请求的网络信息。 设备以仅限出站的方式建立所有连接和路由。 若要让设备从后端接收命令，设备必须定期启动连接，以检查是否有任何挂起的命令要处理。
+* 设备不接受未经请求的网络信息。 设备以仅限出站的方式建立所有连接和路由。 若要让设备从解决方案后端接收命令，设备必须定期启动连接，以检查是否有任何挂起的命令要处理。
 * 设备只能同与它们对等的已知服务（例如 IoT 中心）进行连接或建立路由。
 * 设备和服务之间或设备和网关之间的通信路径在应用程序协议层受到保护。
 * 系统级别的授权和身份验证以每个设备的标识为基础。 它们可让访问凭据和权限近乎实时地撤销。
@@ -91,7 +91,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 ## <a name="next-steps"></a>后续步骤
 若要了解 Azure IoT 中心如何实现标准的设备管理，以便远程管理、配置和更新设备，请参阅 [IoT 中心设备管理概述][lnk-device-management]。
 
-可以使用 Azure IoT 设备 SDK 在各种设备硬件平台和操作系统上实现客户端应用程序。 设备 SDK 包含库，可协助将遥测数据发送到 IoT 中心，并接收云到设备的命令。 使用设备 SDK 时，可从各种网络协议中进行选择，以便与 IoT 中心通信。 若要了解详细信息，请参阅[设备 SDK 的相关信息][lnk-device-sdks]。
+可以使用 Azure IoT 设备 SDK 在各种设备硬件平台和操作系统上实现客户端应用程序。 设备 SDK 包含库，可协助将遥测数据发送到 IoT 中心，并接收云到设备的消息。 使用设备 SDK 时，可从各种网络协议中进行选择，以便与 IoT 中心通信。 若要了解详细信息，请参阅[设备 SDK 的相关信息][lnk-device-sdks]。
 
 若要开始编写一些代码并运行一些示例，请参阅 [IoT 中心入门][lnk-get-started]教程。
 
@@ -121,6 +121,6 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [lnk-security-ground-up]: iot-hub-security-ground-up.md
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

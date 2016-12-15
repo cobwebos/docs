@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
 
 注意，本文中的所有示例代码均用 C# 编写。 可以在 [GitHub](http://aka.ms/search-dotnet-howto)上找到完整的源代码。
 
-## <a name="i-identify-your-azure-search-services-query-apikey"></a>I. 标识 Azure 搜索服务的查询 API 密钥
+## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. 标识 Azure 搜索服务的查询 API 密钥
 创建好 Azure 搜索索引后，即可使用 .NET SDK 发出查询。 首先，需要获取为已预配的搜索服务生成的其中一个查询 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 1. 若要查找服务的 API 密钥，必须登录到 [Azure 门户](https://portal.azure.com/)
@@ -170,6 +170,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

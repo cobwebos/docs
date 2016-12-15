@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 07/22/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 370978187cffa2e5a9544bf99e6a15e13f97ac53
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1062af9abfd167dd251621a43943dea399aed027
 
 
 ---
@@ -34,11 +34,11 @@ ms.openlocfilehash: 370978187cffa2e5a9544bf99e6a15e13f97ac53
 * 在应用程序中包含一个 **Web 应用**或 **Web API**。
 * 对 Web 应用使用**重定向统一资源标识符** `https://localhost:44316/`。 这是用于本代码示例的 Web 应用客户端的默认位置。
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此信息。
-  
+
   [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 本代码示例中的客户端包含三个标识体验：注册、登录和编辑配置文件。 需要按照 [策略参考文章](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)中所述，为每个类型创建一个策略。 创建三个策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 本代码示例中的客户端包含三个标识体验：注册、登录和编辑配置文件。 需要按照 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述，为每个类型创建一个策略。 创建三个策略时，请务必：
 
 * 在标识提供者边栏选项卡中，选择“用户 ID 注册”或“电子邮件注册”。
 * 在注册策略中，选择“显示名称”和其他注册属性。
@@ -217,6 +217,6 @@ You can now move onto more advanced B2C topics. You may try:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/20/2016
 ms.author: cfowler;mahender;glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 31d7a8d1abb59e096a657c4a74743adfc0d137b6
-ms.openlocfilehash: 01c1e7b58a7dce3c640ac151b3ac708ce2b7d913
+ms.sourcegitcommit: 30cc3b8749d5b36b89b242e2691003cc6f67f7d2
+ms.openlocfilehash: 00359057d702c556cd8beb91cf17ccf41c96f601
 
 
 ---
@@ -70,10 +70,10 @@ Azure Functions 可与各种 Azure 和第三方服务集成。 这些服务可�
 ## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Functions 的费用是多少？
 Azure Functions 具有以下两种定价计划，请选择最适合需要的一种： 
 
-* **使用计划** - 用户的函数运行时，Azure 提供所有所需的计算资源。 用户不必担心资源管理，只需为自己的代码运行的时间付费。 完整的定价详细信息可在 [Functions 定价页](/pricing/details/functions)中找到。 
-* **应用服务计划** - 运行函数的方式就像运行 web 应用、移动应用和 API 应用一样。 如果已对其他应用程序使用应用服务，可以按相同的计划运行自己的函数，而不用另外付费。 完整的详细信息可以在 [应用服务定价页](/pricing/details/app-service/)中找到。
+* **使用计划** - 用户的函数运行时，Azure 提供所有所需的计算资源。 用户不必担心资源管理，只需为自己的代码运行的时间付费。 
+* **应用服务计划** - 运行函数的方式就像运行 web 应用、移动应用和 API 应用一样。 如果已对其他应用程序使用应用服务，可以按相同的计划运行自己的函数，而不用另外付费。 
 
-有关缩放函数的详细信息，请参阅 [如何缩放 Azure Functions](functions-scale.md)。
+完整的定价详细信息可在 [Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)中找到。 有关缩放函数的详细信息，请参阅 [如何缩放 Azure Functions](functions-scale.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)  
@@ -90,6 +90,6 @@ Azure Functions 具有以下两种定价计划，请选择最适合需要的一�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

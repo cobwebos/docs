@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
-ms.openlocfilehash: 5a7a740ddac54e9b908d17e64b4590aecdc34956
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: aaab182844b685469cff6a5b692d735482a33952
 
 
 ---
-# <a name="monitor-your-onpremises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>在云中监视本地标识基础结构和同步服务
+# <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>在云中监视本地标识基础结构和同步服务
 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  它针对重要的标识组件 - 例如 AD FS 服务器、Azure AD Connect 服务器（即同步引擎）、Active Directory 域控制器等 - 提供监视功能，使你可以与 Office 365 和 Microsoft Online Services 建立可靠的连接。它还可以让用户轻松访问有关这些组件的关键数据点，获取使用情况信息和其他重要见解来做出明智的决策。
 
 这些信息全部显示在 [Azure AD Connect Health 门户](https://aka.ms/aadconnecthealth)中。 使用 Azure AD Connect Health 门户可以查看警报、性能监视、使用情况分析等信息。 Azure AD Connect Health 在一个集中的位置提供重要标识组件的运行状况单一透视图。
@@ -32,7 +32,7 @@ Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结�
 ## <a name="why-use-azure-ad-connect-health"></a>为何使用 Azure AD Connect Health
 将本地目录与 Azure AD 集成可提供通用标识用于访问云和本地资源，从而提高用户的生产率。 但是，这种集成带来的挑战是，必须确保此环境正常运行，才能让用户从任何设备可靠地访问本地和云中的资源。 Azure AD Connect Health 提供简单的基于云的方法可让用户监视和深入分析用于访问 Office 365 或其他 Azure AD 应用程序的本地标识基础结构。 这种方法就像在每个本地标识服务器上安装代理那样简单。
 
-## <a name="azure-ad-connect-health-for-ad-fsactivedirectoryaadconnecthealthadfsmd"></a>[适用于 AD FS 的 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
+## <a name="azure-ad-connect-health-for-ad-fsactive-directory-aadconnect-health-adfsmd"></a>[适用于 AD FS 的 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
 适用于 AD FS 的 Azure AD Connect Health 支持 Windows Server 2008 R2 中的 AD FS 2.0，以及 Windows Server 2012 和 Windows Server 2012R2 中的 AD FS。 它还支持监视为 Extranet 访问提供身份验证支持的 AD FS 代理或 Web 应用程序代理服务器。 适用于 AD FS 的 Azure AD Connect Health 的安装非常简单且费用低廉，同时提供以下重要功能集：
 
 * 使用警报进行监视，以便在 AD FS 和 AD FS 代理服务器状况不正常时知道这一点
@@ -47,7 +47,7 @@ Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结�
 >
 >
 
-## <a name="azure-ad-connect-health-for-syncactivedirectoryaadconnecthealthsyncmd"></a>[用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
+## <a name="azure-ad-connect-health-for-syncactive-directory-aadconnect-health-syncmd"></a>[用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
 用于同步的 Azure AD Connect Health 可以监视和提供有关本地 Active Directory 与 Azure Active Directory 之间发生的同步的信息。 用于同步的 Azure AD Connect Health 提供以下关键功能集：
 
 * 使用警报进行监视，以便在 Azure AD Connect 服务器（即同步引擎）状况不正常时知道这一点
@@ -62,7 +62,7 @@ Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结�
 >
 >
 
-## <a name="azure-ad-connect-health-for-ad-ds-previewactivedirectoryaadconnecthealthaddsmd"></a>[用于 AD DS 的 Azure AD Connect Health（预览版）](active-directory-aadconnect-health-adds.md)
+## <a name="azure-ad-connect-health-for-ad-ds-previewactive-directory-aadconnect-health-addsmd"></a>[用于 AD DS 的 Azure AD Connect Health（预览版）](active-directory-aadconnect-health-adds.md)
 用于 AD DS 的 Azure AD Connect Health 负责监视 Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 上已安装的域控制器。 通过安装简单、低成本的运行状况代理，可以直接从云中监视本地 AD DS 环境。 用于 AD DS 的 Azure AD Connect Health 提供以下关键功能集：
 
 * 检测到域控制器不正常时的监视警报以及关键警报的电子邮件通知。
@@ -121,6 +121,6 @@ Azure AD Connect Health 很容易入门。 请遵循以下步骤进行配置：
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
