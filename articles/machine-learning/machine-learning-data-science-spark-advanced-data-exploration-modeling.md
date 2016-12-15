@@ -61,7 +61,7 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
 若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用以以下内容开头的路径引用附加到 Spark 群集的默认容器：“wasb:///”。 其他位置通过“wasb://”引用。
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>在 WASB 中为存储位置设置目录路径
-以下代码示例指定要读取的数据的位置和模型输出要保存到的模型存储目录的路径：
+以下代码示例指定要读取的数据位置，以及用于保存模型输出的模型存储目录的路径：
 
     # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
 
@@ -190,7 +190,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>绘制出租车小费样本中乘客数频率的直方图
 此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
-* **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数保留 SQL 查询的输出作为 Jupyter 服务器上的 Pandas DataFrame。 这意味着它在本地模式下可用。
+* **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
 * **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 -o 参数结合使用。 -o 参数将本地保留 SQL 查询的输出，然后 %%local magic 将触发下一组代码片段，以针对本地保留的 SQL 查询输出本地运行
 
 该输出在运行代码后自动可视化。
@@ -303,7 +303,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 * 创建标签点对象用于输入到 ML 函数中
 * 创建数据的随机子采样，并将其拆分为训练集和测试集
 * 特征缩放
-* 在内存中缓存数据
+* 在内存中缓存对象
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>通过将小时装入交通时间存储桶来创建新特征
 此代码显示如何通过将小时装入交通时间存储桶创建新特征，然后显示如何在内存中缓存生成的数据。 当重复使用弹性分布式数据集 (RDD) 和数据帧时，缓存导致执行时间改善。 相应地，我们在演练中的多个节点缓存 RDD 和数据帧。
@@ -332,7 +332,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 126050
 
 ### <a name="index-and-one-hot-encode-categorical-features"></a>为分类特征编制索引并进行独热编码
-本部分介绍如何为分类特征编制索引并进行独热编码以输入到建模函数中。 MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行独热编码。 
+本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 
 
 根据模型，需要以不同方式为它们编制索引或进行独热编码。 例如，逻辑和线性回归模型需要独热编码，举例来说，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
@@ -516,7 +516,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 执行以上单元格所花的时间：11.67 秒
 
-### <a name="cache-objects-in-memory"></a>在内存中缓存数据
+### <a name="cache-objects-in-memory"></a>在内存中缓存对象
 可通过缓存用于分类、回归和缩放特征的输入数据帧对象来缩短训练和测试 ML 算法所花的时间。
 
     # RECORD START TIME
@@ -736,7 +736,7 @@ F1 分数 = 0.984174341679
     SELECT * from tmp_results
 
 
-下面是用于进行预测并绘制 ROC 曲线的代码。
+下面是进行预测并绘制 ROC 曲线的代码。
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 

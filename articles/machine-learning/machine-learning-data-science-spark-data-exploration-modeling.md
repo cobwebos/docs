@@ -92,7 +92,7 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
 
 PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用的特殊命令。 在这些代码示例中使用的此类命令有两个。
 
-* **%%local** 后续行中的代码在本地执行。 代码必须是有效的 Python 代码。
+* **%%local** 指定本地执行后续行中的代码。 代码必须是有效的 Python 代码。
 * **%%sql -o <variable name>** 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果将以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
 
 有关 Jupyter 笔记本内核和它们提供的预定义“magic”的详细信息，请参阅[适用于装有 HDInsight 上的 HDInsight Spark Linux 群集的 Jupyter 笔记本的内核](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)。
@@ -285,7 +285,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按车费金额的小费金额](./media/machine-learning-data-science-spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>特征设计、转换和数据准备以供建模
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>用于建模的特征工程、转换和数据准备
 本部分介绍并提供使数据准备好在 ML 建模中使用的过程的代码。 它介绍如何执行以下任务：
 
 * 通过将小时装入交通时间存储桶来创建新特征
@@ -296,7 +296,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 * 在内存中缓存对象
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>通过将小时装入交通时间存储桶来创建新特征
-此代码显示如何通过将小时装入交通时间存储桶创建新特征，以及如何在内存中缓存生成的数据帧。 当重复使用弹性分布式数据集 (RDD) 和数据帧时，缓存导致执行时间改善。 相应地，我们会在演练中的多个阶段缓存 RDD 和数据帧。 
+此代码显示如何通过将小时装入交通时间存储桶创建新特征，以及如何在内存中缓存生成的数据帧。 当重复使用弹性分布式数据集 (RDD) 和数据帧时，缓存导致执行时间改善。 相应地，我们在演练中的多个阶段缓存 RDD 和数据帧。 
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -325,9 +325,9 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 根据模型，需要以不同方式为它们编制索引或进行编码：  
 
 * **基于树的建模**需要将类别编码为数值（例如，具有三个类别的特征可能会使用 0、1、2 进行编码）。 这由 MLlib 的 [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) 函数提供。 此函数将标签的字符串列编码为标签索引列，它们将按标签频率进行排序。 虽然使用输入和数据处理的数值编制索引，但可指定基于树的算法，将其视为类别进行相应处理。 
-* **逻辑和线性回归模型**需要独热编码，例如，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数以便执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
+* **逻辑和线性回归模型**需要独热编码，例如，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
-以下是用于为分类特征编制索引和编码的代码：
+下面是用于为分类特征编制索引和编码的代码：
 
     # INDEX AND ENCODE CATEGORICAL FEATURES
 
@@ -553,7 +553,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 每个模型生成代码部分拆分为多个步骤： 
 
 1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用度量值的**模型评估**
+2. 测试数据集上的使用指标的**模型评估**
 3. 在 blob 中**保存模型**以供将来使用
 
 ### <a name="classification-using-logistic-regression"></a>使用逻辑回归的分类
@@ -802,16 +802,16 @@ ROC 下的面积 = 0.985297691373
 执行以上单元格所花的时间：19.76 秒
 
 ## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>使用回归模型预测出租车行程的小费金额
-本部分介绍如何针对回归任务使用三个模型，以便基于其他小费特征预测某个出租车行程支付的小费金额。 显示的模型包括：
+本部分介绍如何针对基于其他小费特征预测某个出租车行程支付的小费金额的回归任务使用三个模型。 显示的模型包括：
 
 * 正则化线性回归
 * 随机林
 * 梯度提升树
 
-这些模型已在简介中描述。 每个模型生成代码部分拆分为多个步骤： 
+简介中介绍了这些模型。 每个模型生成代码部分拆分为多个步骤： 
 
 1. 带有一个参数集的**模型训练**数据
-2. 测试数据集上的使用度量值的**模型评估**
+2. 测试数据集上的使用指标的**模型评估**
 3. 在 blob 中**保存模型**以供将来使用
 
 ### <a name="linear-regression-with-sgd"></a>使用 SGD 的线性回归
@@ -1061,7 +1061,7 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>后续步骤
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。 高级数据浏览和建模笔记本深入探讨到包括交叉验证、超参数扫描和模型评估。 
 
-**模型使用：**若要了解如何对本主题中创建的分类和回归模型评分和评估，请参阅[对 Spark 生成的机器学习模型评分和评估](machine-learning-data-science-spark-model-consumption.md)。
+**模型使用：**若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](machine-learning-data-science-spark-model-consumption.md)。
 
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
 

@@ -159,7 +159,7 @@ FunctionImport 节点内的其他子节点（CSDL 文档未涉及）为：
 | 类型 |是 |参数类型。 值必须为 **EDMSimpleType** 或模型范围内的复杂类型。 有关详细信息，请参阅“6 种受支持的参数/属性类型”。  （区分大小写！ 第一个字符是大写，其余是小写。）另请参阅[概念模型类型 (CSDL)][MSDNParameterLink](http://msdn.microsoft.com/library/bb399548.aspx)。 **示例：**`<Property Name="LimitedPartnershipID " Type="Int32" />` |
 | Mode |否 |**In**、Out 或 InOut 取决于参数是输入、输出还是输入/输出参数。 （仅“IN”在 Azure 应用商店中可用。）**示例：** `<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
 | MaxLength |否 |允许的参数最长长度。 **示例：**`<Property Name="URI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />` |
-| 精度 |否 |参数的精度。 **示例：**`<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
+| Precision |否 |参数的精度。 **示例：**`<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
 | 缩放 |否 |参数的确定位数。 **示例：** `<Property Name="SICCode" Type="Decimal" Precision="10" Scale="0" />` |
 
 以下是已添加到 CSDL 规范的属性：

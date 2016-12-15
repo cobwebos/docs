@@ -23,7 +23,7 @@ ms.openlocfilehash: 07e124f41662759cc93efa2ee0c24f6a367573ac
 # <a name="use-azure-machine-learning-web-service-parameters"></a>使用 Azure 机器学习 Web 服务参数
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
 
-常见示例为设置[导入数据][读取器]模块，以便 Web 服务受访问时，已发布的 Web 服务的用户能够指定不同的数据源。 或配置[导出数据][编写器]模块以指定其他目标。 其他一些示例包括为[功能哈希][功能哈希] 模块更改位数或为[基于筛选器的功能选择][filter-based-feature-selection] 模块更改所需功能数。 
+常见示例为设置[导入数据][读取器]模块，以便 Web 服务受访问时，已发布的 Web 服务的用户能够指定不同的数据源。 或配置[导出数据][编写器]模块以指定其他目标。 其他一些示例包括为[特征哈希][特征哈希] 模块更改位数或为[基于筛选器的功能选择][filter-based-feature-selection] 模块更改所需功能数。 
 
 可设置 Web 服务参数并在实验中将它们与一个或多个模块参数关联，并且可以指定它们是必需项还是可选项。 然后在调用 Web 服务时，Web 服务的用户可提供这些参数的值。 
 
@@ -80,7 +80,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 
 
 <!-- Module References -->
-[功能哈希]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
+[特征哈希]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [读取器]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [编写器]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/

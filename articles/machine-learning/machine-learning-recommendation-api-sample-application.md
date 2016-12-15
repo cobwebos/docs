@@ -22,7 +22,7 @@ ms.openlocfilehash: 26c492ebdb40bef23247487c2f3015ecd9314cb6
 ---
 # <a name="recommendations-api-sample-application-walkthrough"></a>建议 API 示例应用程序演练
 > [!NOTE]
-> 应开始使用建议 API 认知服务，而非此版本。 建议认知服务将替代此服务，并且所有新功能都将在该处开发。 它提供新的功能，例如批处理支持、更好的 API 资源管理器、更干净的 API 图面、更一致的注册/计费体验等。
+> 应开始使用建议 API 认知服务，而非此版本。 建议认知服务将替代此服务，并且所有新功能都将在该处开发。 它具有新功能，如支持批处理、更好用的 API 资源管理器、更简洁的 API 图面、更一致的注册/计费体验等。
 > 了解有关[迁移到新认知服务](http://aka.ms/recomigrate)的详细信息
 > 
 > 

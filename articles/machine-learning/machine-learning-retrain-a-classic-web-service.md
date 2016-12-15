@@ -39,7 +39,7 @@ ms.openlocfilehash: 139980b62aee440ac5f4160e83c7a5eafb32eec2
 若要创建新的评分终结点，请在可以使用训练模型更新的预测 Web 服务上执行以下操作：
 
 > [!NOTE]
-> 确保将终结点添加到预测 Web 服务，而不是训练 Web 服务。 如果已正确部署训练和预测 Web 服务，应该看到已列出两个单独的 Web 服务。 预测 Web 服务应以“[预测实验]”结尾。
+> 确保将终结点添加到预测 Web 服务，而不是训练 Web 服务。 如果已正确部署训练和预测 Web 服务，应该看到已列出两个单独的 Web 服务。 预测 Web 服务应以“[predictive exp.]”结尾。
 > 
 > 
 
@@ -141,7 +141,7 @@ ms.openlocfilehash: 139980b62aee440ac5f4160e83c7a5eafb32eec2
 通过使用重新训练 API，可以更新预测 Web 服务的训练模型，从而启用如下方案：
 
 * 使用新数据定期重新训练模型。
-* 将模型分发给客户，目标是让他们使用自己的数据重新训练模型。
+* 向客户分配模型，以便他们可以使用自己的数据重新训练模型。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure 机器学习经典 Web 服务重新训练的故障排除](machine-learning-troubleshooting-retraining-models.md)

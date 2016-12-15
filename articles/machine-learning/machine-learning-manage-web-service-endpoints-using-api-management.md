@@ -84,7 +84,7 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 
 ![add-rrs-operation-signature](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-在左侧依次单击“响应” > “添加”，然后选择“200 OK”。 单词“保存”，保存此操作。
+在左侧依次单击“响应” > “添加”，然后选择“200 正常”。 单词“保存”，保存此操作。
 
 ![add-rrs-operation-response](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
@@ -92,16 +92,16 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 BES 操作不包括屏幕截图，因为这些屏幕截图与添加 RRS 操作的屏幕截图类似。
 
 ### <a name="submit-but-not-start-a-batch-execution-job"></a>提交（但不启动）批处理执行作业
-单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“POST”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}”作为“URL 模板”。 键入“BES 提交”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 OK”。 单词“保存”，保存此操作。
+单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“POST”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}”作为“URL 模板”。 键入“BES 提交”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 正常”。 单词“保存”，保存此操作。
 
 ### <a name="start-a-batch-execution-job"></a>启动批处理执行作业
-单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“POST”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}”作为“URL 模板”。 键入“BES 启动”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 OK”。 单词“保存”，保存此操作。
+单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“POST”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}”作为“URL 模板”。 键入“BES 启动”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 正常”。 单词“保存”，保存此操作。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>获取批处理执行作业的状态或结果
-单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“GET”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}”作为“URL 模板”。 键入“BES 状态”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 确定”。 单词“保存”，保存此操作。
+单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“GET”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}”作为“URL 模板”。 键入“BES 状态”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 正常”。 单词“保存”，保存此操作。
 
 ### <a name="delete-a-batch-execution-job"></a>删除批处理执行作业
-单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“DELETE”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}”作为“URL 模板”。 键入“BES 删除”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 确定”。 单词“保存”，保存此操作。
+单击“添加操作”，向 API 添加 AzureML BES 操作。 选择“DELETE”作为“HTTP 谓词”。 键入“/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}”作为“URL 模板”。 键入“BES 删除”作为“显示名称”。 在左侧依次单击“响应” > “添加”，然后选择“200 正常”。 单词“保存”，保存此操作。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>从开发人员门户调用操作
 可以直接从开发人员门户调用操作，这样可以方便地查看和测试 API 的操作。 此指南步骤将调用添加到“AzureML 演示 API”的“RRS 执行”方法。 单击经典门户右上角菜单中的“开发人员门户”。

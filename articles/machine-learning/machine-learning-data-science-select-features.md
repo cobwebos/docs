@@ -40,7 +40,7 @@ ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
 * 第一，特征选择通常通过消除不相关、冗余或高度相关的特征，来提高分类准确度。
 * 第二，它会减少特征数，这使模型定型过程更高效。 这对于训练成本高昂的学习者（例如支持向量机）尤其重要。
 
-虽然特征选择确实试图减少数据集中用于定型模型的特征数，但通常不会将它称为术语“降维”。 特征选择方法提取数据中原始特征的子集，而不会更改它们。  降维方法采用可以转换原始特征并且可对它们进行修改的工程特征。 降维方法示例包括主成分分析、典型相关分析和奇异值分解。
+虽然特征选择确实试图减少数据集中用于定型模型的特征数，但通常不会将它称为术语“降维”。 特征选择方法提取数据中原始特征的子集，而不会改变它们。  降维方法采用可以转换原始特征并且可对它们进行修改的工程特征。 降维方法示例包括主成分分析、典型相关分析和奇异值分解。
 
 其中特征选择方法在监管上下文中的一个广泛应用类别称为“基于筛选器的特征选择”。 通过评估每个特征和目标属性之间的相关性，这些方法应用统计测量来为每个特征分配分数。 将按分数对这些特征排名，从而有助于基于该排名针对保留或消除特定特征设置阈值。 这些方法中使用的统计度量值示例包括积差相关、互信息和卡方分布检验。
 
@@ -48,7 +48,7 @@ ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
 
 ![特征选择示例](./media/machine-learning-data-science-select-features/feature-Selection.png)
 
-例如，考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为了方便起见，我们继续使用上述文本挖掘示例。 假设在通过[特征哈希][feature-hashing]创建了一组 256 个特征后想要生成回归模型，并且响应变量为“Col1”，表示范围为 1 到 5 的书籍审核评分。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 [基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征以及目标属性为“Col1”的数据集。 下图显示了此实验的流程以及我们刚描述的输入参数。
+例如，考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为了方便起见，我们继续使用上述文本挖掘示例。 假设在通过[特征哈希][特征哈希]创建了一组 256 个特征后想要生成回归模型，并且响应变量为“Col1”，表示范围为 1 到 5 的书籍审核评分。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 [基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征以及目标属性为“Col1”的数据集。 下图显示了此实验的流程以及我们刚描述的输入参数。
 
 ![特征选择示例](./media/machine-learning-data-science-select-features/feature-Selection1.png)
 
@@ -68,7 +68,7 @@ ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
 注意，并不总是必须执行特征工程或特征选择。 根据拥有的或收集的数据、选择的算法以及实验的目的决定是否需要。
 
 <!-- Module References -->
-[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
+[特征哈希]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
 

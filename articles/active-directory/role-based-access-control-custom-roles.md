@@ -118,7 +118,7 @@ azure provider operations show "Microsoft.Network/*"
   * [PowerShell](role-based-access-control-manage-access-powershell.md)
   * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
   * [REST API](role-based-access-control-manage-access-rest.md)
-* [内置角色](role-based-access-built-in-roles.md)：获取有关 RBAC 中的标准角色的详细信息。
+* [内置角色](role-based-access-built-in-roles.md)：获取有关 RBAC 中标配角色的详细信息。
 
 
 

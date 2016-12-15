@@ -24,7 +24,7 @@ ms.openlocfilehash: f6747a80773cd76b0821edfd2ebcd6af84bed233
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。  
 
 ## <a name="prerequisites"></a>先决条件
-你必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](machine-learning-retrain-models-programmatically.md)中所示。 
+必须设置训练实验和预测实验，如[以编程方式重新训练机器学习模型](machine-learning-retrain-models-programmatically.md)中所示。 
 
 > [!IMPORTANT]
 > 预测实验必须部署为基于 Azure Resource Manager（全新）的机器学习 Web 服务。 
