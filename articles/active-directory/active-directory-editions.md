@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 9bff89b6bb049e4a5ca1fa54950f67a7cb2eb150
-ms.openlocfilehash: a1b3dd4445ea1dd3ccecc2fd7cfc2d74bdfb0d4d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b241d70ab7c7e8468a3f358fef5af47a89d42e56
 
 
 ---
@@ -103,7 +103,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 |:---:|:---:|:---:|:---:|
 | 最多 500,000 个对象 |无对象限制 |无对象限制 |Office 365 用户帐户没有对象限制 |
 
-#### <a name="usergroup-management-addupdatedelete-user-based-provisioning-device-registration"></a>用户/组管理（添加/更新/删除）/基于用户的预配、设备注册
+#### <a name="usergroup-management-addupdatedelete-user-based-provisioning-device-registration"></a>用户/组管理（添加/更新/删除）, 基于用户的预配、设备注册
 **类型：**常用功能
 
 **可用性：**
@@ -180,7 +180,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-| |![勾选标记][12] | ![勾选标记][12] | |
+| &nbsp; |![勾选标记][12] | ![勾选标记][12] | &nbsp; |
 
 **更多详细信息：**
 
@@ -193,7 +193,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  |![勾选标记][12] |![勾选标记][12] | ![勾选标记][12] |
+| &nbsp; |![勾选标记][12] |![勾选标记][12] | ![勾选标记][12] |
 
 **更多详细信息：**
 
@@ -206,7 +206,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  |![勾选标记][12] |![勾选标记][12] | ![勾选标记][12] |
+| &nbsp; |![勾选标记][12] |![勾选标记][12] | ![勾选标记][12] |
 
 **更多详细信息：**
 
@@ -219,7 +219,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-| |![勾选标记][12] | ![勾选标记][12] | |
+| &nbsp; |![勾选标记][12] | ![勾选标记][12] | &nbsp; |
 
 **更多详细信息：**
 
@@ -232,7 +232,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-| |![勾选标记][12] |![勾选标记][12] | ![勾选标记][12] |
+| &nbsp; |![勾选标记][12] |![勾选标记][12] | ![勾选标记][12] |
 
 **更多详细信息：**
 
@@ -248,7 +248,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  | | ![勾选标记][12]|  |
+| &nbsp; | &nbsp; | ![勾选标记][12]| &nbsp; |
 
 #### <a name="self-service-password-resetchangeunlock-with-on-premises-write-back"></a>通过本地写回实现自助密码重置/更改/解锁
 **类型：**Premium 功能
@@ -257,7 +257,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  | | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 #### <a name="multi-factor-authentication-cloud-and-on-premises-mfa-server"></a>Multi-Factor Authentication（云和本地（MFA 服务器））
 **类型：**Premium 功能
@@ -266,7 +266,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-| | |![勾选标记][12] |对于 Office 365 应用限制为云 |
+| &nbsp; | &nbsp; |![勾选标记][12] |对于 Office 365 应用限制为云 |
 
 **更多详细信息：**
 
@@ -282,7 +282,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-| | |![勾选标记][12] | |
+| &nbsp; | &nbsp; |![勾选标记][12] | &nbsp; |
 
 #### <a name="cloud-app-discovery"></a>Cloud App Discovery
 **类型：**Premium 功能
@@ -291,7 +291,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  | | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 **更多详细信息：**
 
@@ -304,7 +304,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  |  | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 **更多详细信息：**
 
@@ -317,21 +317,21 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  | | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 #### <a name="identity-protection"></a>标识保护
 **类型：**Premium 功能
 
 | 免费版 | 基本版 | Premium P2 版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  | | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 **类型：**Premium 功能
 
 | 免费版 | 基本版 | Premium P2 版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  |  | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 ## <a name="azure-active-directory-join-windows-10-only-related-features"></a>Azure Active Directory Join – 仅适用于 Windows 10 的相关功能
 #### <a name="join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator Bitlocker 恢复
@@ -351,7 +351,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  |  | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 #### <a name="enterprise-state-roaming"></a>企业状态漫游
 **类型：**Azure Active Directory Join - 仅适用于 Windows 10 的相关功能
@@ -360,7 +360,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-|  | | ![勾选标记][12] | |
+| &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
 **更多详细信息：**
 
@@ -387,6 +387,6 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
