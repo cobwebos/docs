@@ -1,6 +1,6 @@
 ---
 title: "什么是 Azure 搜索 | Microsoft Docs"
-description: "Azure 搜索是完全托管的托管云搜索服务。 通过此功能概述了解详细信息。"
+description: "Azure 搜索是完全托管的托管云搜索服务。 通过此功能概述，了解详细信息。"
 services: search
 manager: jhubbard
 author: ashmaka
