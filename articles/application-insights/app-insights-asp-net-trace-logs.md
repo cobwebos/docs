@@ -1,0 +1,175 @@
+---
+title: "在 Application Insights 中查看日志浏览 .NET 跟踪日志"
+description: "搜索使用 Trace、NLog 或 Log4Net 生成的日志。"
+services: application-insights
+documentationcenter: .net
+author: alancameronwills
+manager: douge
+ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
+ms.openlocfilehash: d46407da69184da6b1dba72aeb86e97cf1cae725
+
+
+---
+# <a name="explore-net-trace-logs-in-application-insights"></a>在 Application Insights 中查看日志浏览 .NET 跟踪日志
+如果为 ASP.NET 应用程序中的诊断跟踪使用了 NLog、log4Net 或 System.Diagnostics.Trace，请将日志发送到 [Azure Application Insights][启动]，然后可在其中浏览和搜索日志。 你的日志将与来自应用程序的其他遥测合并，以便你可以标识与处理每个用户请求关联的跟踪，并将它们与其他事件和异常报告相关联。
+
+> [!NOTE]
+> 是否需要日志捕获模块？ 它是非常适用于第三方记录器的适配器，但是如果你未使用 NLog、log4Net 或 System.Diagnostics.Trace，只需考虑直接调用 [Application Insights TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace)。
+> 
+> 
+
+## <a name="install-logging-on-your-app"></a>在你的应用上安装记录
+在你的项目中安装所选的记录框架。 这应使项目出现在 app.config 或 web.config 中。
+
+如果你使用的是 System.Diagnostics.Trace，需要将项目添加到 web.config：
+
+```XML
+
+    <configuration>
+     <system.diagnostics>
+       <trace autoflush="false" indentsize="4">
+         <listeners>
+           <add name="myListener" 
+             type="System.Diagnostics.TextWriterTraceListener" 
+             initializeData="TextWriterOutput.log" />
+           <remove name="Default" />
+         </listeners>
+       </trace>
+     </system.diagnostics>
+   </configuration>
+```
+
+## <a name="configure-application-insights-to-collect-logs"></a>配置 Application Insights 收集日志
+如果尚未执行此操作，**[向项目添加 Application Insights](app-insights-asp-net.md)**。 你将看到一个选项以包括日志收集器。
+
+或者通过在解决方案资源管理器中右键单击你的项目**配置 Application Insights**。 选择“配置跟踪集合”选项。
+
+*没有 Application Insights 菜单或日志收集器选项？* 尝试[故障排除](#troubleshooting)。
+
+## <a name="manual-installation"></a>手动安装
+如果你的项目类型（例如 Windows 桌面项目）不受 Application Insights 安装程序支持，请使用此方法。 
+
+1. 如果计划使用 log4Net 或 NLog，请在项目中安装它。 
+2. 在解决方案资源管理器中，右键单击项目并选择“管理 NuGet 包”。
+3. 搜索“Application Insights”
+   
+    ![获取相应适配器的预发行版本](./media/app-insights-asp-net-trace-logs/appinsights-36nuget.png)
+4. 选择相应的程序包 - 以下各项之一：
+   
+   * Microsoft.ApplicationInsights.TraceListener（用于捕获 System.Diagnostics.Trace 调用）
+   * Microsoft.ApplicationInsights.NLogTarget
+   * Microsoft.ApplicationInsights.Log4NetAppender
+
+NuGet 包安装必要的程序集，并且还修改 web.config 或 app.config。
+
+## <a name="insert-diagnostic-log-calls"></a>插入诊断日志调用
+如果使用 System.Diagnostics.Trace，则典型的调用将是：
+
+    System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+
+如果首选 log4net 或 NLog：
+
+    logger.Warn("Slow response - database01");
+
+
+## <a name="using-the-trace-api-directly"></a>直接使用跟踪 API
+你可以直接调用 Application Insights 跟踪 API。 日志记录适配器使用此 API。 
+
+例如：
+
+    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+    telemetry.TrackTrace("Slow response - database01");
+
+TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 例如，可在此处对 POST 数据进行编码。 
+
+此外，可向你的消息添加严重性级别。 并像其他遥测一样，可以添加用于帮助筛选或搜索不同跟踪集的属性值。 例如：
+
+    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+    telemetry.TrackTrace("Slow database response",
+                   SeverityLevel.Warning,
+                   new Dictionary<string,string> { {"database", db.ID} });
+
+这使你可以在“搜索”[][诊断]中轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
+
+## <a name="explore-your-logs"></a>浏览你的日志
+在调试模式下运行应用，或者实时部署它。
+
+在 [Application Insights 门户][门户]中的应用概述边栏选项卡中，选择“搜索”[][诊断]。
+
+![在 Application Insights 中，选择“搜索”](./media/app-insights-asp-net-trace-logs/020-diagnostic-search.png)
+
+![搜索](./media/app-insights-asp-net-trace-logs/10-diagnostics.png)
+
+例如，你可以：
+
+* 对日志跟踪或具有特定属性的项目进行筛选
+* 检查详细信息中的特定项。
+* 查找与同一用户请求相关的其他遥测（即，具有相同的 OperationId） 
+* 将此页面的配置另存为收藏夹
+
+> [!NOTE]
+> **采样。** 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
+> 
+> 
+
+## <a name="next-steps"></a>后续步骤
+[ASP.NET 中的诊断故障和异常][异常]
+
+[了解有关搜索的详细信息][诊断]。
+
+## <a name="troubleshooting"></a>故障排除
+### <a name="how-do-i-do-this-for-java"></a>对于 Java，我该怎么做？
+使用 [Java 日志适配器](app-insights-java-trace-logs.md)。
+
+### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>项目上下文菜单上没有 Application Insights 选项
+* 检查 Application Insights 工具是否已安装在此开发计算机上。 在 Visual Studio 菜单的工具、扩展和更新中，查找 Application Insights 工具。 如果它不在“已安装”选项卡中，请打开“联机”选项卡并安装它。
+* 这可能是 Application Insights 工具不支持的项目类型。 使用[手动安装](#manual-installation)。
+
+### <a name="no-log-adapter-option-in-the-configuration-tool"></a>配置工具中没有日志适配器选项
+* 需要先安装记录框架。
+* 如果你使用的是 System.Diagnostics.Trace，请确保[已在 `web.config` 中配置它](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)。
+* 已获得最新版本的 Application Insights 工具？ 在 Visual Studio“工具”菜单中，选择“扩展和更新”，然后打开“更新”选项卡。 如果 Application Insights 工具在此处，单击以更新它。
+
+### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>我得到错误“检测密钥不能为空”
+看起来你在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。
+
+在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 你将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。 这应当解决此问题。
+
+### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>我可以看到诊断搜索中的跟踪，但看不到其他事件。
+有时，所有事件和请求都通过管道可能需要一些时间。
+
+### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
+每个应用程序每秒最多保留 500 个事件。 事件保留七天。
+
+### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>我没有看到预期的某些日志条目
+如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
+
+## <a name="a-nameaddanext-steps"></a><a name="add"></a>后续步骤
+* [设置可用性和响应能力测试][可用性]
+* [故障排除][问题与解答]
+
+<!--Link references-->
+
+[可用性]: app-insights-monitor-web-app-availability.md
+[诊断]: app-insights-diagnostic-search.md
+[异常]: app-insights-asp-net-exceptions.md
+[门户]: https://portal.azure.com/
+[问题与解答]: app-insights-troubleshoot-faq.md
+[启动]: app-insights-overview.md
+
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
