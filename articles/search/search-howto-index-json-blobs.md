@@ -12,7 +12,7 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 12/15/2016
 ms.author: eugenesh
 translationtype: Human Translation
 ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
@@ -141,7 +141,7 @@ ms.openlocfilehash: de7af5419aa423734ad06b236e0edf61fbb0cad1
     {
         "name" : "my-blob-datasource",
         "type" : "azureblob",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 

@@ -8,7 +8,7 @@ author: torsteng
 editor: 
 ms.assetid: cad09e15-5561-4448-aa18-b38f54cda004
 ms.service: sql-database
-ms.custom: sharded databases
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
