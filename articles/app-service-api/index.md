@@ -121,8 +121,6 @@ API 应用是 Azure 应用服务提供的四种应用类型之一。 Azure 应�
     </li>     
 </ul>
 
----
-
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
         <div class="img"></div>

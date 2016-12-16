@@ -51,13 +51,18 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager RES
 
 下面是一个响应计划的示例。
 
-    {
+```json
+{
+    "value": [{
         "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
         "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
         "properties": {
-        "Interval": 15,
-        "QueryTimeSpan": 15
-    }
+            "Interval": 15,
+            "QueryTimeSpan": 15
+        }
+    }]
+}
+```
 
 ### <a name="creating-a-schedule"></a>创建计划
 结合使用 Put 方法和唯一计划 ID 创建一个新计划。  请注意，两个计划 ID 不能一样，即使它们与不同的已保存搜索相关联。  在 OMS 控制台中创建计划时，将为计划 ID 创建一个 GUID。
