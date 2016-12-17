@@ -38,31 +38,33 @@ ms.openlocfilehash: 2ed6b838608f0f2249ef16b62ff2fb0159fc6e7f
 ## <a name="define-datasets"></a>定义数据集
 在 Azure 数据工厂中定义数据集如下所示：
 
-    {
-        "name": "<name of dataset>",
-        "properties": {
-            "type": "<type of dataset: AzureBlob, AzureSql etc...>",
-            "external": <boolean flag to indicate external data. only for input datasets>,
-            "linkedServiceName": "<Name of the linked service that refers to a data store.>",
-            "structure": [
-                {
-                    "name": "<Name of the column>",
-                    "type": "<Name of the type>"
-                }
-            ],
-            "typeProperties": {
-                "<type specific property>": "<value>",
-                "<type specific property 2>": "<value 2>",
-            },
-            "availability": {
-                "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
-                "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
-            },
-           "policy":
-            {      
+```json
+{
+    "name": "<name of dataset>",
+    "properties": {
+        "type": "<type of dataset: AzureBlob, AzureSql etc...>",
+        "external": <boolean flag to indicate external data. only for input datasets>,
+        "linkedServiceName": "<Name of the linked service that refers to a data store.>",
+        "structure": [
+            {
+                "name": "<Name of the column>",
+                "type": "<Name of the type>"
             }
+        ],
+        "typeProperties": {
+            "<type specific property>": "<value>",
+            "<type specific property 2>": "<value 2>",
+        },
+        "availability": {
+            "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
+            "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
+        },
+       "policy":
+        {      
         }
     }
+}
+```
 
 下表描述了上述 JSON 中的属性：   
 
@@ -79,22 +81,24 @@ ms.openlocfilehash: 2ed6b838608f0f2249ef16b62ff2fb0159fc6e7f
 ## <a name="dataset-example"></a>数据集示例
 在以下示例中，数据集表示 **Azure SQL 数据库**中名为 **MyTable** 的表。
 
-    {
-        "name": "DatasetSample",
-        "properties": {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties":
-            {
-                "tableName": "MyTable"
-            },
-            "availability":
-            {
-                "frequency": "Day",
-                "interval": 1
-            }
+```json
+{
+    "name": "DatasetSample",
+    "properties": {
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties":
+        {
+            "tableName": "MyTable"
+        },
+        "availability":
+        {
+            "frequency": "Day",
+            "interval": 1
         }
     }
+}
+```
 
 请注意以下几点：
 
@@ -105,16 +109,18 @@ ms.openlocfilehash: 2ed6b838608f0f2249ef16b62ff2fb0159fc6e7f
 
 AzureSqlLinkedService 定义如下：
 
-    {
-        "name": "AzureSqlLinkedService",
-        "properties": {
-            "type": "AzureSqlDatabase",
-            "description": "",
-            "typeProperties": {
-                "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
-            }
+```json
+{
+    "name": "AzureSqlLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "description": "",
+        "typeProperties": {
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
         }
     }
+}
+```
 
 在上述 JSON 中：
 
@@ -134,23 +140,27 @@ AzureSqlLinkedService 定义如下：
 ## <a name="a-namestructureadataset-structure"></a><a name="Structure"></a>数据集结构
 **结构**部分定义数据集的架构。 它包含列的名称和数据类型的集合。  在以下示例中，数据集具有三列 slicetimestamp、projectname 和 pageviews，它们的类型分别为：String、String 和 Decimal。
 
-    structure:  
-    [
-        { "name": "slicetimestamp", "type": "String"},
-        { "name": "projectname", "type": "String"},
-        { "name": "pageviews", "type": "Decimal"}
-    ]
+```json
+structure:  
+[
+    { "name": "slicetimestamp", "type": "String"},
+    { "name": "projectname", "type": "String"},
+    { "name": "pageviews", "type": "Decimal"}
+]
+```
 
 ## <a name="a-nameavailabilitya-dataset-availability"></a><a name="Availability"></a>数据集的可用性
 数据集中的**可用性**部分定义了处理时段（每小时、每天和每周等）或数据集的切片模型。 有关数据集切片和依赖关系模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。
 
 以下可用性部分指定每小时生成输出数据集或每小时提供输入数据集：
 
-    "availability":    
-    {    
-        "frequency": "Hour",        
-        "interval": 1    
-    }
+```json
+"availability":    
+{    
+    "frequency": "Hour",        
+    "interval": 1    
+}
+```
 
 下表介绍了可用于可用性部分的属性：
 
@@ -165,45 +175,50 @@ AzureSqlLinkedService 定义如下：
 ### <a name="offset-example"></a>偏移示例
 从早上 6 点（非默认值 - 午夜）开始的每日切片。
 
-    "availability":
-    {
-        "frequency": "Day",
-        "interval": 1,
-        "offset": "06:00:00"
-    }
+```json
+"availability":
+{
+    "frequency": "Day",
+    "interval": 1,
+    "offset": "06:00:00"
+}
+```
 
 “frequency”设置为“Day”，“interval”设置为“1”（每天一次）：如果要在早上 6 点生成切片（而非默认时间：午夜 12 点）。 请记住此时间为 UTC 时间。
 
 ## <a name="anchordatetime-example"></a>anchorDateTime 示例
 **示例：**从 2007-04-19T08:00:00 开始的 23 个小时的数据集切片
 
-    "availability":    
-    {    
-        "frequency": "Hour",        
-        "interval": 23,    
-        "anchorDateTime":"2007-04-19T08:00:00"    
-    }
+```json
+"availability":    
+{    
+    "frequency": "Hour",        
+    "interval": 23,    
+    "anchorDateTime":"2007-04-19T08:00:00"    
+}
+```
 
 ## <a name="offsetstyle-example"></a>偏移/样式示例
 如果需要每月特定日期和时间（假设每月第三天的上午 8:00）的数据集，请使用 **offset** 标记来设置应该运行的日期和时间。
 
-    {
-      "name": "MyDataset",
-      "properties": {
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "availability": {
-          "frequency": "Month",
-          "interval": 1,
-          "offset": "3.08:10:00",
-          "style": "StartOfInterval"
-        }
-      }
+```json
+{
+  "name": "MyDataset",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "availability": {
+      "frequency": "Month",
+      "interval": 1,
+      "offset": "3.08:10:00",
+      "style": "StartOfInterval"
     }
-
+  }
+}
+```
 
 ## <a name="a-namepolicyadataset-policy"></a><a name="Policy"></a>数据集策略
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。
@@ -217,24 +232,28 @@ AzureSqlLinkedService 定义如下：
 #### <a name="examples"></a>示例
 **minimumSizeMB：**
 
-    "policy":
+```json
+"policy":
 
+{
+    "validation":
     {
-        "validation":
-        {
-            "minimumSizeMB": 10.0
-        }
+        "minimumSizeMB": 10.0
     }
+}
+```
 
 **minimumRows**
 
-    "policy":
+```json
+"policy":
+{
+    "validation":
     {
-        "validation":
-        {
-            "minimumRows": 100
-        }
+        "minimumRows": 100
     }
+}
+```
 
 ### <a name="external-datasets"></a>外部数据集
 外部数据集是不由数据工厂中的运行管道生成的数据集。 如果数据集标记为 **external**，则可定义 **ExternalData** 策略来影响数据集切片可用性的行为。
@@ -256,95 +275,96 @@ AzureSqlLinkedService 定义如下：
 >
 >
 
-    {
-        "name": "CopyPipeline-rdc",
-        "properties": {
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource",
-                            "recursive": false
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+```json
+{
+    "name": "CopyPipeline-rdc",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
                     },
-                    "inputs": [
-                        {
-                            "name": "InputDataset-rdc"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "OutputDataset-rdc"
-                        }
-                    ],
-                    "scheduler": {
-                        "frequency": "Day",
-                        "interval": 1,
-                        "style": "StartOfInterval"
-                    },
-                    "name": "CopyActivity-0"
-                }
-            ],
-            "start": "2016-02-28T00:00:00Z",
-            "end": "2016-02-28T00:00:00Z",
-            "isPaused": false,
-            "pipelineMode": "OneTime",
-            "expirationTime": "15.00:00:00",
-            "datasets": [
-                {
-                    "name": "InputDataset-rdc",
-                    "properties": {
-                        "type": "AzureBlob",
-                        "linkedServiceName": "InputLinkedService-rdc",
-                        "typeProperties": {
-                            "fileName": "emp.txt",
-                            "folderPath": "adftutorial/input",
-                            "format": {
-                                "type": "TextFormat",
-                                "rowDelimiter": "\n",
-                                "columnDelimiter": ","
-                            }
-                        },
-                        "availability": {
-                            "frequency": "Day",
-                            "interval": 1
-                        },
-                        "external": true,
-                        "policy": {}
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
                     }
                 },
-                {
-                    "name": "OutputDataset-rdc",
-                    "properties": {
-                        "type": "AzureBlob",
-                        "linkedServiceName": "OutputLinkedService-rdc",
-                        "typeProperties": {
-                            "fileName": "emp.txt",
-                            "folderPath": "adftutorial/output",
-                            "format": {
-                                "type": "TextFormat",
-                                "rowDelimiter": "\n",
-                                "columnDelimiter": ","
-                            }
-                        },
-                        "availability": {
-                            "frequency": "Day",
-                            "interval": 1
-                        },
-                        "external": false,
-                        "policy": {}
+                "inputs": [
+                    {
+                        "name": "InputDataset-rdc"
                     }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset-rdc"
+                    }
+                ],
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1,
+                    "style": "StartOfInterval"
+                },
+                "name": "CopyActivity-0"
+            }
+        ],
+        "start": "2016-02-28T00:00:00Z",
+        "end": "2016-02-28T00:00:00Z",
+        "isPaused": false,
+        "pipelineMode": "OneTime",
+        "expirationTime": "15.00:00:00",
+        "datasets": [
+            {
+                "name": "InputDataset-rdc",
+                "properties": {
+                    "type": "AzureBlob",
+                    "linkedServiceName": "InputLinkedService-rdc",
+                    "typeProperties": {
+                        "fileName": "emp.txt",
+                        "folderPath": "adftutorial/input",
+                        "format": {
+                            "type": "TextFormat",
+                            "rowDelimiter": "\n",
+                            "columnDelimiter": ","
+                        }
+                    },
+                    "availability": {
+                        "frequency": "Day",
+                        "interval": 1
+                    },
+                    "external": true,
+                    "policy": {}
                 }
-            ]
-        }
+            },
+            {
+                "name": "OutputDataset-rdc",
+                "properties": {
+                    "type": "AzureBlob",
+                    "linkedServiceName": "OutputLinkedService-rdc",
+                    "typeProperties": {
+                        "fileName": "emp.txt",
+                        "folderPath": "adftutorial/output",
+                        "format": {
+                            "type": "TextFormat",
+                            "rowDelimiter": "\n",
+                            "columnDelimiter": ","
+                        }
+                    },
+                    "availability": {
+                        "frequency": "Day",
+                        "interval": 1
+                    },
+                    "external": false,
+                    "policy": {}
+                }
+            }
+        ]
     }
-
+}
+```
 
 
 <!--HONumber=Nov16_HO3-->

@@ -23,7 +23,7 @@ ms.openlocfilehash: e7d0fa43001268fc4747bbf40d3dc209aa037a67
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 ## <a name="connecting-to-virtual-networks"></a>连接到虚拟网络
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>能否连接不同 Azure 区域中的虚拟网络？
-是的。 事实上，没有任何区域约束。 一个虚拟网络可以连接到同一区域中的其他虚拟网络，也可以连接到其他 Azure 区域中的其他虚拟网络。
+是的。 事实上，没有任何区域约束。 一个虚拟网络可以连接到同一区域中的其他虚拟网络，也可以连接到其他 Azure 区域中的其他虚拟网络。 
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>能否连接不同订阅中的虚拟网络？
 是的。

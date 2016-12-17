@@ -40,46 +40,48 @@ ms.openlocfilehash: d841c57dc736f7d690a6dc97863b7568365fd01a
 ## <a name="sample-copy-pipeline"></a>复制管道示例
 在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](data-factory-data-movement-activities.md)将 Azure Blob 存储中的数据复制到 Azure SQL 数据库。 
 
-    {
-      "name": "CopyPipeline",
-      "properties": {
-        "description": "Copy data from a blob to Azure SQL table",
-        "activities": [
+```json
+{
+  "name": "CopyPipeline",
+  "properties": {
+    "description": "Copy data from a blob to Azure SQL table",
+    "activities": [
+      {
+        "name": "CopyFromBlobToSQL",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "CopyFromBlobToSQL",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "InputDataset"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "OutputDataset"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "SqlSink",
-                "writeBatchSize": 10000,
-                "writeBatchTimeout": "60:00:00"
-              }
-            },
-            "Policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "NewestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "InputDataset"
           }
         ],
-        "start": "2016-07-12T00:00:00Z",
-        "end": "2016-07-13T00:00:00Z"
+        "outputs": [
+          {
+            "name": "OutputDataset"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "SqlSink",
+            "writeBatchSize": 10000,
+            "writeBatchTimeout": "60:00:00"
+          }
+        },
+        "Policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "NewestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
       }
-    } 
+    ],
+    "start": "2016-07-12T00:00:00Z",
+    "end": "2016-07-13T00:00:00Z"
+  }
+} 
+```
 
 请注意以下几点：
 
@@ -92,48 +94,50 @@ ms.openlocfilehash: d841c57dc736f7d690a6dc97863b7568365fd01a
 ## <a name="sample-transformation-pipeline"></a>转换管道示例
 在以下示例管道中，**activities** 节有一个 **HDInsightHive** 类型的活动。 在此示例中，[HDInsight Hive 活动](data-factory-hive-activity.md)通过在 Azure HDInsight Hadoop 群集上运行 Hive 脚本文件，转换 Azure Blob 存储中的数据。 
 
-    {
-        "name": "TransformPipeline",
-        "properties": {
-            "description": "My first Azure Data Factory pipeline",
-            "activities": [
-                {
-                    "type": "HDInsightHive",
-                    "typeProperties": {
-                        "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-                        "scriptLinkedService": "AzureStorageLinkedService",
-                        "defines": {
-                            "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
-                            "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
-                        }
-                    },
-                    "inputs": [
-                        {
-                            "name": "AzureBlobInput"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "AzureBlobOutput"
-                        }
-                    ],
-                    "policy": {
-                        "concurrency": 1,
-                        "retry": 3
-                    },
-                    "scheduler": {
-                        "frequency": "Month",
-                        "interval": 1
-                    },
-                    "name": "RunSampleHiveActivity",
-                    "linkedServiceName": "HDInsightOnDemandLinkedService"
-                }
-            ],
-            "start": "2016-04-01T00:00:00Z",
-            "end": "2016-04-02T00:00:00Z",
-            "isPaused": false
-        }
+```json
+{
+    "name": "TransformPipeline",
+    "properties": {
+        "description": "My first Azure Data Factory pipeline",
+        "activities": [
+            {
+                "type": "HDInsightHive",
+                "typeProperties": {
+                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+                    "scriptLinkedService": "AzureStorageLinkedService",
+                    "defines": {
+                        "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
+                        "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "AzureBlobInput"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "AzureBlobOutput"
+                    }
+                ],
+                "policy": {
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "name": "RunSampleHiveActivity",
+                "linkedServiceName": "HDInsightOnDemandLinkedService"
+            }
+        ],
+        "start": "2016-04-01T00:00:00Z",
+        "end": "2016-04-02T00:00:00Z",
+        "isPaused": false
     }
+}
+```
 
 请注意以下几点： 
 
@@ -184,7 +188,9 @@ Azure 数据工厂提供各种机制来创作和部署管道（管道包含一�
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 可在 Azure 数据工厂中使用 Azure PowerShell 创建管道。 假设你已在 c:\DPWikisample.json 处的文件中定义管道 JSON。 可将其上传到 Azure 数据工厂实例，如下例所示：
 
-    New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -Name DPWikisample -DataFactoryName wikiADF -File c:\DPWikisample.json
+```PowerShell
+New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -Name DPWikisample -DataFactoryName wikiADF -File c:\DPWikisample.json
+```
 
 有关使用管道创建数据工厂的端到端演练，请参阅 [Azure 数据工厂入门 (Azure PowerShell)](data-factory-build-your-first-pipeline-using-powershell.md)。 
 
@@ -203,40 +209,44 @@ Azure 数据工厂提供各种机制来创作和部署管道（管道包含一�
 ## <a name="pipeline-json"></a>管道 JSON
 让我们深入了解如何以 JSON 格式定义管道。 管道的泛型结构如下所示：
 
+```json
+{
+    "name": "PipelineName",
+    "properties": 
     {
-        "name": "PipelineName",
-        "properties": 
-        {
-            "description" : "pipeline description",
-            "activities":
-            [
+        "description" : "pipeline description",
+        "activities":
+        [
 
-            ],
-            "start": "<start date-time>",
-            "end": "<end date-time>"
-        }
+        ],
+        "start": "<start date-time>",
+        "end": "<end date-time>"
     }
+}
+```
 
 **activities** 节中可定义有一个或多个活动。 每个活动均具有以下顶级结构：
 
+```json
+{
+    "name": "ActivityName",
+    "description": "description", 
+    "type": "<ActivityType>",
+    "inputs":  "[]",
+    "outputs":  "[]",
+    "linkedServiceName": "MyLinkedService",
+    "typeProperties":
     {
-        "name": "ActivityName",
-        "description": "description", 
-        "type": "<ActivityType>",
-        "inputs":  "[]",
-        "outputs":  "[]",
-        "linkedServiceName": "MyLinkedService",
-        "typeProperties":
-        {
 
-        },
-        "policy":
-        {
-        }
-        "scheduler":
-        {
-        }
+    },
+    "policy":
+    {
     }
+    "scheduler":
+    {
+    }
+}
+```
 
 下表介绍了活动和管道 JSON 定义中的属性：
 

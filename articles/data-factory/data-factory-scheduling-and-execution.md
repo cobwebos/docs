@@ -33,10 +33,12 @@ ms.openlocfilehash: 8b1029075178fbc591645a5fd6a112ad0a7f8b86
 ## <a name="schedule-an-activity"></a>计划活动
 可借助活动 JSON 的计划程序部分指定活动的定期计划。 例如，可将活动计划为每小时进行一次，如下所示：
 
-    "scheduler": {
-        "frequency": "Hour",
-        "interval": 1
-    },  
+```json
+"scheduler": {
+    "frequency": "Hour",
+    "interval": 1
+},  
+```
 
 ![计划程序示例](./media/data-factory-scheduling-and-execution/scheduler-example.png)
 
@@ -53,10 +55,12 @@ ms.openlocfilehash: 8b1029075178fbc591645a5fd6a112ad0a7f8b86
 
 使用数据工厂可以通过活动运行对时间序列数据进行批处理。 通常在输入数据到达和需生成输出数据时存在定期频率。 可通过指定数据集中的 **availability** 对此频率建模，如下所示：
 
-    "availability": {
-      "frequency": "Hour",
-      "interval": 1
-    },
+```json
+"availability": {
+  "frequency": "Hour",
+  "interval": 1
+},
+```
 
 活动运行使用和生成的每个数据单元称为数据切片。 下图显示了具有 1 个输入数据集和 1 个输出数据集的活动示例。 这些数据集的 **availability** 频率设置为每隔一小时。
 
@@ -75,128 +79,131 @@ ms.openlocfilehash: 8b1029075178fbc591645a5fd6a112ad0a7f8b86
 
 **输入：Azure SQL 数据库数据集**
 
-    {
-        "name": "AzureSqlInput",
-        "properties": {
-            "published": false,
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties": {
-                "tableName": "MyTable"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {}
-        }
+```json
+{
+    "name": "AzureSqlInput",
+    "properties": {
+        "published": false,
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties": {
+            "tableName": "MyTable"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
     }
-
+}
+```
 
 在可用性部分中，**Frequency** 设置为 **Hour**，**interval** 设置为 **1**。
 
 **输出：Azure Blob 存储数据集**
 
-    {
-        "name": "AzureBlobOutput",
-        "properties": {
-            "published": false,
-            "type": "AzureBlob",
-            "linkedServiceName": "StorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mypath/{Year}/{Month}/{Day}/{Hour}",
-                "format": {
-                    "type": "TextFormat"
-                },
-                "partitionedBy": [
-                    {
-                        "name": "Year",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "yyyy"
-                        }
-                    },
-                    {
-                        "name": "Month",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "%M"
-                        }
-                    },
-                    {
-                        "name": "Day",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "%d"
-                        }
-                    },
-                    {
-                        "name": "Hour",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "%H"
-                        }
-                    }
-                ]
+```json
+{
+    "name": "AzureBlobOutput",
+    "properties": {
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "StorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mypath/{Year}/{Month}/{Day}/{Hour}",
+            "format": {
+                "type": "TextFormat"
             },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "%M"
+                    }
+                },
+                {
+                    "name": "Day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "%d"
+                    }
+                },
+                {
+                    "name": "Hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "%H"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
+}
+```
 
 在可用性部分中，**Frequency** 设置为 **Hour**，**interval** 设置为 **1**。
 
 **活动：复制活动**
 
-    {
-        "name": "SamplePipeline",
-        "properties": {
-            "description": "copy activity",
-            "activities": [
-                {
-                    "type": "Copy",
-                    "name": "AzureSQLtoBlob",
-                    "description": "copy activity",
-                    "typeProperties": {
-                        "source": {
-                            "type": "SqlSource",
-                            "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 100000,
-                            "writeBatchTimeout": "00:05:00"
-                        }
+```json
+{
+    "name": "SamplePipeline",
+    "properties": {
+        "description": "copy activity",
+        "activities": [
+            {
+                "type": "Copy",
+                "name": "AzureSQLtoBlob",
+                "description": "copy activity",
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlSource",
+                        "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
                     },
-                    "inputs": [
-                        {
-                            "name": "AzureSQLInput"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "AzureBlobOutput"
-                        }
-                    ],
-                       "scheduler": {
-                          "frequency": "Hour",
-                          "interval": 1
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 100000,
+                        "writeBatchTimeout": "00:05:00"
                     }
+                },
+                "inputs": [
+                    {
+                        "name": "AzureSQLInput"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "AzureBlobOutput"
+                    }
+                ],
+                   "scheduler": {
+                      "frequency": "Hour",
+                      "interval": 1
                 }
-            ],
-            "start": "2015-01-01T08:00:00Z",
-            "end": "2015-01-01T11:00:00Z"
-        }
+            }
+        ],
+        "start": "2015-01-01T08:00:00Z",
+        "end": "2015-01-01T11:00:00Z"
     }
-
+}
+```
 
 此示例演示频率设置为每小时的活动计划和数据集可用性部分。 此示例演示如何使用 **WindowStart** 和 **WindowEnd** 选择活动运行的相关数据，并使用相应 **folderPath** 将其复制到 blob。 **FolderPath** 参数化为每小时具有一个单独文件夹。
 
@@ -207,20 +214,23 @@ ms.openlocfilehash: 8b1029075178fbc591645a5fd6a112ad0a7f8b86
 管道部署后，Azure blob 中的填充如下所示：
 
 * 文件 mypath/2015/1/1/8/Data.&lt;Guid&gt;.txt，包含数据
-  
-         10002345,334,2,2015-01-01 08:24:00.3130000
-         10002345,347,15,2015-01-01 08:24:00.6570000
-         10991568,2,7,2015-01-01 08:56:34.5300000
+    ```  
+    10002345,334,2,2015-01-01 08:24:00.3130000
+    10002345,347,15,2015-01-01 08:24:00.6570000
+    10991568,2,7,2015-01-01 08:56:34.5300000
+    ```
   
   > [!NOTE]
   > &lt;Guid&gt; 将替换为实际 guid。 示例文件名称：Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
   > 
   > 
 * 文件 mypath/2015/1/1/9/Data.&lt;Guid&gt;.txt，包含数据：
-  
-         10002345,334,1,2015-01-01 09:13:00.3900000
-         24379245,569,23,2015-01-01 09:25:00.3130000
-         16777799,21,115,2015-01-01 09:47:34.3130000
+
+    ```json  
+    10002345,334,1,2015-01-01 09:13:00.3900000
+    24379245,569,23,2015-01-01 09:25:00.3130000
+    16777799,21,115,2015-01-01 09:47:34.3130000
+    ```
 * 文件 mypath/2015/1/1/10/Data.&lt;Guid&gt;.txt，包含数据。
 
 ## <a name="active-period-for-pipeline"></a>管道的活动周期
@@ -279,82 +289,84 @@ CopyActivity2
 
 以下是示例管道 JSON：
 
-    {
-        "name": "ChainActivities",
-        "properties": {
-            "description": "Run activities in sequence",
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource"
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "copyBehavior": "PreserveHierarchy",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+```json
+{
+    "name": "ChainActivities",
+    "properties": {
+        "description": "Run activities in sequence",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
                     },
-                    "inputs": [
-                        {
-                            "name": "Dataset1"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "Dataset2"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00"
-                    },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    },
-                    "name": "CopyFromBlob1ToBlob2",
-                    "description": "Copy data from a blob to another"
+                    "sink": {
+                        "type": "BlobSink",
+                        "copyBehavior": "PreserveHierarchy",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
                 },
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource"
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+                "inputs": [
+                    {
+                        "name": "Dataset1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "Dataset2"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "CopyFromBlob1ToBlob2",
+                "description": "Copy data from a blob to another"
+            },
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
                     },
-                    "inputs": [
-                        {
-                            "name": "Dataset2"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "Dataset3"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00"
-                    },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    },
-                    "name": "CopyFromBlob2ToBlob3",
-                    "description": "Copy data from a blob to another"
-                }
-            ],
-            "start": "2016-08-25T01:00:00Z",
-            "end": "2016-08-25T01:00:00Z",
-            "isPaused": false
-        }
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "Dataset2"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "Dataset3"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "CopyFromBlob2ToBlob3",
+                "description": "Copy data from a blob to another"
+            }
+        ],
+        "start": "2016-08-25T01:00:00Z",
+        "end": "2016-08-25T01:00:00Z",
+        "isPaused": false
     }
+}
+```
 
 请注意，示例中将第一个复制活动 (Dataset2) 的输出数据集指定为第二个活动的输入。 因此，仅当第一个活动的输出数据集准备就绪后，第二个活动才会运行。  
 
@@ -368,86 +380,87 @@ CopyActivity2
 
 输入：Dataset3、Dataset2。 输出：Dataset4。
 
-    {
-        "name": "ChainActivities",
-        "properties": {
-            "description": "Run activities in sequence",
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource"
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "copyBehavior": "PreserveHierarchy",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+```json
+{
+    "name": "ChainActivities",
+    "properties": {
+        "description": "Run activities in sequence",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
                     },
-                    "inputs": [
-                        {
-                            "name": "Dataset1"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "Dataset2"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00"
-                    },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    },
-                    "name": "CopyFromBlobToBlob",
-                    "description": "Copy data from a blob to another"
+                    "sink": {
+                        "type": "BlobSink",
+                        "copyBehavior": "PreserveHierarchy",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
                 },
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource"
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+                "inputs": [
+                    {
+                        "name": "Dataset1"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "Dataset2"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "CopyFromBlobToBlob",
+                "description": "Copy data from a blob to another"
+            },
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
                     },
-                    "inputs": [
-                        {
-                            "name": "Dataset3"
-                        },
-                        {
-                            "name": "Dataset2"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "Dataset4"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00"
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "Dataset3"
                     },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    },
-                    "name": "CopyFromBlob3ToBlob4",
-                    "description": "Copy data from a blob to another"
-                }
-            ],
-            "start": "2017-04-25T01:00:00Z",
-            "end": "2017-04-25T01:00:00Z",
-            "isPaused": false
-        }
+                    {
+                        "name": "Dataset2"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "Dataset4"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "CopyFromBlob3ToBlob4",
+                "description": "Copy data from a blob to another"
+            }
+        ],
+        "start": "2017-04-25T01:00:00Z",
+        "end": "2017-04-25T01:00:00Z",
+        "isPaused": false
     }
-
+}
+```
 
 请注意，示例中为第二个复制活动指定了两个输入数据集。 如果指定了多个输入，则仅将第一个输入数据集用于复制数据，其他数据集用作依赖项。 仅当满足以下条件后 CopyActivity2 才会启动：
 
@@ -466,105 +479,110 @@ CopyActivity2
 
 删除文件夹中某给定日期的每小时输入文件。 输入的 Availability 设置为 **Hour** (frequency: Hour, interval: 1)。
 
-    {
-      "name": "AzureBlobInput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
-          "partitionedBy": [
-            { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
-            { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
-            { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
-          ],
-          "format": {
-            "type": "TextFormat"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
+```json
+{
+  "name": "AzureBlobInput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
+      "partitionedBy": [
+        { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
+        { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
+        { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
+      ],
+      "format": {
+        "type": "TextFormat"
       }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
-
+  }
+}
+```
 **输出数据集**
 
 每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **Day** (frequency: Day and interval: 1)。
 
-    {
-      "name": "AzureBlobOutput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
-          "partitionedBy": [
-            { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
-            { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
-            { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
-          ],
-          "format": {
-            "type": "TextFormat"
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```json
+{
+  "name": "AzureBlobOutput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
+      "partitionedBy": [
+        { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
+        { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
+        { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
+      ],
+      "format": {
+        "type": "TextFormat"
       }
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
+  }
+}
+```
 
 **活动：管道中的 hive 活动**
 
 Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **WindowStart** 变量，如以下代码段中所示。 hive 脚本使用此变量从正确的文件夹加载当天数据，并运行聚合以生成输出。
 
-        {  
-            "name":"SamplePipeline",
-            "properties":{  
-            "start":"2015-01-01T08:00:00",
-            "end":"2015-01-01T11:00:00",
-            "description":"hive activity",
-            "activities": [
+```json
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2015-01-01T08:00:00",
+    "end":"2015-01-01T11:00:00",
+    "description":"hive activity",
+    "activities": [
+        {
+            "name": "SampleHiveActivity",
+            "inputs": [
                 {
-                    "name": "SampleHiveActivity",
-                    "inputs": [
-                        {
-                            "name": "AzureBlobInput"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "AzureBlobOutput"
-                        }
-                    ],
-                    "linkedServiceName": "HDInsightLinkedService",
-                    "type": "HDInsightHive",
-                    "typeProperties": {
-                        "scriptPath": "adftutorial\\hivequery.hql",
-                        "scriptLinkedService": "StorageLinkedService",
-                        "defines": {
-                            "Year": "$$Text.Format('{0:yyyy}',WindowStart)",
-                            "Month": "$$Text.Format('{0:%M}',WindowStart)",
-                            "Day": "$$Text.Format('{0:%d}',WindowStart)"
-                        }
-                    },
-                    "scheduler": {
-                        "frequency": "Day",
-                        "interval": 1
-                    },            
-                    "policy": {
-                        "concurrency": 1,
-                        "executionPriorityOrder": "OldestFirst",
-                        "retry": 2,
-                        "timeout": "01:00:00"
-                    }
-                 }
-             ]
-           }
-        }
+                    "name": "AzureBlobInput"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "AzureBlobOutput"
+                }
+            ],
+            "linkedServiceName": "HDInsightLinkedService",
+            "type": "HDInsightHive",
+            "typeProperties": {
+                "scriptPath": "adftutorial\\hivequery.hql",
+                "scriptLinkedService": "StorageLinkedService",
+                "defines": {
+                    "Year": "$$Text.Format('{0:yyyy}',WindowStart)",
+                    "Month": "$$Text.Format('{0:%M}',WindowStart)",
+                    "Day": "$$Text.Format('{0:%d}',WindowStart)"
+                }
+            },
+            "scheduler": {
+                "frequency": "Day",
+                "interval": 1
+            },            
+            "policy": {
+                "concurrency": 1,
+                "executionPriorityOrder": "OldestFirst",
+                "retry": 2,
+                "timeout": "01:00:00"
+            }
+         }
+     ]
+   }
+}
+```
 
 下图从数据依赖项的角度演示该方案。
 
@@ -583,139 +601,146 @@ Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **
 
 第一个输入是每日更新的 Azure blob。
 
-    {
-      "name": "AzureBlobInputDaily",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
-          "partitionedBy": [
-            { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
-            { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
-            { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
-          ],
-          "format": {
-            "type": "TextFormat"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```json
+{
+  "name": "AzureBlobInputDaily",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
+      "partitionedBy": [
+        { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
+        { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
+        { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
+      ],
+      "format": {
+        "type": "TextFormat"
       }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
+  }
+}
+```
 
 **Input2：Azure blob**
 
 Input2 是每周更新的 Azure blob。
 
-    {
-      "name": "AzureBlobInputWeekly",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
-          "partitionedBy": [
-            { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
-            { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
-            { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
-          ],
-          "format": {
-            "type": "TextFormat"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 7
-        }
+```json
+{
+  "name": "AzureBlobInputWeekly",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
+      "partitionedBy": [
+        { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
+        { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
+        { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
+      ],
+      "format": {
+        "type": "TextFormat"
       }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 7
     }
+  }
+}
+```
 
 **输出：Azure blob**
 
 每天在当天的文件夹中创建一个输出文件。 输出的 Availability 设置为 **day** (frequency: Day, interval: 1)。
 
-    {
-      "name": "AzureBlobOutputDaily",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
-          "partitionedBy": [
-            { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
-            { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
-            { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
-          ],
-          "format": {
-            "type": "TextFormat"
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```json
+{
+  "name": "AzureBlobOutputDaily",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/{Year}/{Month}/{Day}/",
+      "partitionedBy": [
+        { "name": "Year", "value": {"type": "DateTime","date": "SliceStart","format": "yyyy"}},
+        { "name": "Month","value": {"type": "DateTime","date": "SliceStart","format": "%M"}},
+        { "name": "Day","value": {"type": "DateTime","date": "SliceStart","format": "%d"}}
+      ],
+      "format": {
+        "type": "TextFormat"
       }
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
+  }
+}
+```
 
 **活动：管道中的 hive 活动**
 
 hive 活动每天采用两个输入并且生成输出切片。 可将每天的输出切片指定为依赖每周输入的上一周输入切片，如下所示。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2015-01-01T08:00:00",
-        "end":"2015-01-01T11:00:00",
-        "description":"hive activity",
-        "activities": [
+```json
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2015-01-01T08:00:00",
+    "end":"2015-01-01T11:00:00",
+    "description":"hive activity",
+    "activities": [
+      {
+        "name": "SampleHiveActivity",
+        "inputs": [
           {
-            "name": "SampleHiveActivity",
-            "inputs": [
-              {
-                "name": "AzureBlobInputDaily"
-              },
-              {
-                "name": "AzureBlobInputWeekly",
-                "startTime": "Date.AddDays(SliceStart, - Date.DayOfWeek(SliceStart))",
-                "endTime": "Date.AddDays(SliceEnd,  -Date.DayOfWeek(SliceEnd))"  
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureBlobOutputDaily"
-              }
-            ],
-            "linkedServiceName": "HDInsightLinkedService",
-            "type": "HDInsightHive",
-            "typeProperties": {
-              "scriptPath": "adftutorial\\hivequery.hql",
-              "scriptLinkedService": "StorageLinkedService",
-              "defines": {
-                "Year": "$$Text.Format('{0:yyyy}',WindowStart)",
-                "Month": "$$Text.Format('{0:%M}',WindowStart)",
-                "Day": "$$Text.Format('{0:%d}',WindowStart)"
-              }
-            },
-            "scheduler": {
-              "frequency": "Day",
-              "interval": 1
-            },            
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 2,  
-              "timeout": "01:00:00"
-            }
-           }
-         ]
+            "name": "AzureBlobInputDaily"
+          },
+          {
+            "name": "AzureBlobInputWeekly",
+            "startTime": "Date.AddDays(SliceStart, - Date.DayOfWeek(SliceStart))",
+            "endTime": "Date.AddDays(SliceEnd,  -Date.DayOfWeek(SliceEnd))"  
+          }
+        ],
+        "outputs": [
+          {
+            "name": "AzureBlobOutputDaily"
+          }
+        ],
+        "linkedServiceName": "HDInsightLinkedService",
+        "type": "HDInsightHive",
+        "typeProperties": {
+          "scriptPath": "adftutorial\\hivequery.hql",
+          "scriptLinkedService": "StorageLinkedService",
+          "defines": {
+            "Year": "$$Text.Format('{0:yyyy}',WindowStart)",
+            "Month": "$$Text.Format('{0:%M}',WindowStart)",
+            "Day": "$$Text.Format('{0:%d}',WindowStart)"
+          }
+        },
+        "scheduler": {
+          "frequency": "Day",
+          "interval": 1
+        },            
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 2,  
+          "timeout": "01:00:00"
+        }
        }
-    }
-
+     ]
+   }
+}
+```
 
 ## <a name="data-factory-functions-and-system-variables"></a>数据工厂函数和系统变量
 有关数据工厂支持的函数和系统变量列表，请参阅[数据工厂的函数和系统变量](data-factory-functions-variables.md)。
@@ -729,8 +754,10 @@ hive 活动每天采用两个输入并且生成输出切片。 可将每天的�
 
 若要生成数据集切片 [**start**, **end**]，函数必须将数据集切片映射到其依赖周期。 此函数实质上是公式，它将数据集切片的开始和结束转换为依赖时段的开始和结束时间。 更准确地讲：
 
-    DatasetSlice = [start, end]
-    DependecyPeriod = [f(start, end), g(start, end)]
+```
+DatasetSlice = [start, end]
+DependecyPeriod = [f(start, end), g(start, end)]
+```
 
 **F** 和 **g** 是映射函数，用于计算每个活动输入的依赖周期的开始和结束时间。
 
@@ -754,71 +781,73 @@ hive 活动每天采用两个输入并且生成输出切片。 可将每天的�
 
 与数据工厂生成的数据集类似，外部数据的数据切片需准备就绪后才能处理依赖项切片。
 
+```json
+{
+    "name": "AzureSqlInput",
+    "properties":
     {
-        "name": "AzureSqlInput",
-        "properties":
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties":
         {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties":
+            "tableName": "MyTable"
+        },
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1     
+        },
+        "external": true,
+        "policy":
+        {
+            "externalData":
             {
-                "tableName": "MyTable"
-            },
-            "availability":
-            {
-                "frequency": "Hour",
-                "interval": 1     
-            },
-            "external": true,
-            "policy":
-            {
-                "externalData":
-                {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
-            }  
-        }
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
+            }
+        }  
     }
-
-
+}
+```
 ## <a name="onetime-pipeline"></a>一次性管道
 在管道定义中指定的开始和结束时间内，可创建一个管道并计划为定期运行（例如：每小时或每天）。 请参阅[计划活动](#scheduling-and-execution)了解详细信息。 还可以创建只运行一次的管道。 若要执行此操作，请将管道定义中的 **pipelineMode** 属性设置为 **onetime**，如以下 JSON 示例所示。 此属性的默认值是 **scheduled**。
 
-    {
-        "name": "CopyPipeline",
-        "properties": {
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource",
-                            "recursive": false
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+```json
+{
+    "name": "CopyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource",
+                        "recursive": false
                     },
-                    "inputs": [
-                        {
-                            "name": "InputDataset"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "OutputDataset"
-                        }
-                    ]
-                    "name": "CopyActivity-0"
-                }
-            ]
-            "pipelineMode": "OneTime"
-        }
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset"
+                    }
+                ]
+                "name": "CopyActivity-0"
+            }
+        ]
+        "pipelineMode": "OneTime"
     }
+}
+```
 
 注意以下事项：
 

@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
 ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
@@ -27,6 +27,7 @@ ms.openlocfilehash: a3c0aaae014619fb3f4a2fffa6063a473da691e1
 后端服务器必须响应应用程序网关探测，如[运行状况探测概述](application-gateway-probe-overview.md)部分中所述。 应用程序网关运行状况探测仅限 HTTP/HTTPS，这意味着每个后端服务器都必须响应 HTTP 探测，应用程序网关才能将 WebSocket 流量路由到服务器。
 
 ## <a name="listener-configuration-element"></a>侦听器配置元素
+
 现有的 HTTPListener 可用于支持 WebSocket。 以下是示例模板文件中 HttpListeners 元素的代码片段。 需要同时拥有 HTTP 和 HTTPS 侦听器才能支持 WebSocket 并保护 WebSocket 流量。 同样，可以使用[门户](application-gateway-create-gateway-portal.md)或 [PowerShell](application-gateway-create-gateway-arm.md) 在端口 80/443 上创建具有侦听器的应用程序网关，以支持 WebSocket 通信。
 
 ```json
@@ -62,6 +63,7 @@ ms.openlocfilehash: a3c0aaae014619fb3f4a2fffa6063a473da691e1
 ```
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting 和路由规则配置
+
 如果后端池具有已启用 WebSocket 的服务器，那么应使用 BackendAddressPool 对其进行定义。 只能使用后端端口 80/443 对 BackendHttpSetting 进行定义。 基于 cookie 的相关性和 requestTimeouts 的属性与 WebSocket 流量不相关。 不需更改路由规则。 应继续使用“基本”路由规则，以便将适当的侦听器绑定到相应的后端地址池。 
 
 ```json
@@ -99,8 +101,10 @@ ms.openlocfilehash: a3c0aaae014619fb3f4a2fffa6063a473da691e1
 ```
 
 ## <a name="websocket-enabled-backend"></a>已启用 WebSocket 的后端
+
 后端必须具有在已配置端口（通常为 80/443）上运行的 HTTP/HTTPS Web 服务器，WebSocket 才能运行。 此要求是因为 WebSocket 协议要求初始握手是 HTTP，且标头字段为升级到 WebSocket 协议。
 
+```
     GET /chat HTTP/1.1
     Host: server.example.com
     Upgrade: websocket
@@ -109,10 +113,12 @@ ms.openlocfilehash: a3c0aaae014619fb3f4a2fffa6063a473da691e1
     Origin: http://example.com
     Sec-WebSocket-Protocol: chat, superchat
     Sec-WebSocket-Version: 13
+```
 
 另一个原因是该应用程序网关后端运行状况探测仅支持 HTTP/HTTPS 协议。 如果后端服务器没有响应 HTTP/HTTPS 探测，它将被移出后端池，且包括 WebSocket 请求在内的任何请求都无法到达此后端。
 
 ## <a name="next-steps"></a>后续步骤
+
 了解 WebSocket 支持后，请转到[创建应用程序网关](application-gateway-create-gateway.md)，开始使用已启用 WebSocket 的 Web 应用程序。
 
 
