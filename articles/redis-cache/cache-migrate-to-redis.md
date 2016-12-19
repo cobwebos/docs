@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 09/30/2016
+ms.date: 12/13/2016
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -84,26 +84,30 @@ Microsoft Azure Redis 缓存提供以下层：
 
 确保已从 `configSections` 元素中删除 `dataCacheClients` 条目。 请勿删除整个 `configSections` 元素，只需删除 `dataCacheClients` 条目（如果存在）。
 
-    <configSections>
-      <!-- Existing sections omitted for clarity. -->
-      <section name="dataCacheClients"type="Microsoft.ApplicationServer.Caching.DataCacheClientsSection, Microsoft.ApplicationServer.Caching.Core" allowLocation="true" allowDefinition="Everywhere"/>
-    </configSections>
+```xml
+<configSections>
+  <!-- Existing sections omitted for clarity. -->
+  <section name="dataCacheClients"type="Microsoft.ApplicationServer.Caching.DataCacheClientsSection, Microsoft.ApplicationServer.Caching.Core" allowLocation="true" allowDefinition="Everywhere"/>
+</configSections>
+```
 
 确保已删除 `dataCacheClients` 节。 `dataCacheClients` 节将类似于以下示例。
 
-    <dataCacheClients>
-      <dataCacheClientname="default">
-        <!--To use the in-role flavor of Azure Cache, set identifier to be the cache cluster role name -->
-        <!--To use the Azure Managed Cache Service, set identifier to be the endpoint of the cache cluster -->
-        <autoDiscoverisEnabled="true"identifier="[Cache role name or Service Endpoint]"/>
+```xml
+<dataCacheClients>
+  <dataCacheClientname="default">
+    <!--To use the in-role flavor of Azure Cache, set identifier to be the cache cluster role name -->
+    <!--To use the Azure Managed Cache Service, set identifier to be the endpoint of the cache cluster -->
+    <autoDiscoverisEnabled="true"identifier="[Cache role name or Service Endpoint]"/>
 
-        <!--<localCache isEnabled="true" sync="TimeoutBased" objectCount="100000" ttlValue="300" />-->
-        <!--Use this section to specify security settings for connecting to your cache. This section is not required if your cache is hosted on a role that is a part of your cloud service. -->
-        <!--<securityProperties mode="Message" sslEnabled="true">
-          <messageSecurity authorizationInfo="[Authentication Key]" />
-        </securityProperties>-->
-      </dataCacheClient>
-    </dataCacheClients>
+    <!--<localCache isEnabled="true" sync="TimeoutBased" objectCount="100000" ttlValue="300" />-->
+    <!--Use this section to specify security settings for connecting to your cache. This section is not required if your cache is hosted on a role that is a part of your cloud service. -->
+    <!--<securityProperties mode="Message" sslEnabled="true">
+      <messageSecurity authorizationInfo="[Authentication Key]" />
+    </securityProperties>-->
+  </dataCacheClient>
+</dataCacheClients>
+```
 
 一旦删除托管缓存服务配置，就可以如下一节所述配置缓存客户端。
 
@@ -118,7 +122,9 @@ StackExchange.Redis 缓存客户端的 API 与托管缓存服务类似。 本节
 
 将以下 using 语句添加到要从中访问缓存的任何文件的顶部。
 
-    using StackExchange.Redis
+```c#
+using StackExchange.Redis
+```
 
 如果此命名空间并未解析，请确保你已如[配置缓存客户端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)中所述添加了 StackExchange.Redis NuGet 包。
 
@@ -129,33 +135,37 @@ StackExchange.Redis 缓存客户端的 API 与托管缓存服务类似。 本节
 
 若要连接到 Azure Redis 缓存实例，请调用静态 `ConnectionMultiplexer.Connect` 方法并传入终结点和密钥。 共享应用程序中的 `ConnectionMultiplexer` 实例的一个方法是，拥有返回连接示例的静态属性（与下列示例类似）。 这种线程安全方法，可仅初始化单一连接的 `ConnectionMultiplexer` 实例。 在此示例中，`abortConnect` 设置为 false，这表示即使未建立缓存连接，也可成功调用。 `ConnectionMultiplexer` 的一个关键功能是，一旦还原网络问题和其他原因，它将自动还原缓存连接。
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
-    });
+```c#
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    return ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+});
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
+```
 
 可以从缓存实例的“Redis 缓存”边栏选项卡中获取缓存终结点、密钥和端口。 有关详细信息，请参阅 [Redis 缓存属性](cache-configure.md#properties)。
 
 建立连接后，通过调用 `ConnectionMultiplexer.GetDatabase` 方法返回对 Redis 缓存数据库的引用。 从 `GetDatabase` 方法返回的对象是一个轻型直通对象，不需要存储。
 
-    IDatabase cache = Connection.GetDatabase();
+```c#
+IDatabase cache = Connection.GetDatabase();
 
-    // Perform cache operations using the cache object...
-    // Simple put of integral data types into the cache
-    cache.StringSet("key1", "value");
-    cache.StringSet("key2", 25);
+// Perform cache operations using the cache object...
+// Simple put of integral data types into the cache
+cache.StringSet("key1", "value");
+cache.StringSet("key2", 25);
 
-    // Simple get of data types from the cache
-    string key1 = cache.StringGet("key1");
-    int key2 = (int)cache.StringGet("key2");
+// Simple get of data types from the cache
+string key1 = cache.StringGet("key1");
+int key2 = (int)cache.StringGet("key2");
+```
 
 StackExchange.Redis 客户端使用 `RedisKey` 和 `RedisValue` 类型在缓存中访问和存储项。 这些类型可映射到最基本的语言类型（包括字符串），但通常不直接使用。 Redis 字符串是最基本的一种 Redis 值，可包含许多类型的数据（包括序列化的二进制数据流），你可能不会直接使用此类型，但你会使用在名称中包含 `String` 的方法。 对于最基本的数据类型，你会使用 `StringSet` 和 `StringGet` 方法在缓存中存储和检索项，除非你要在缓存中存储集合或其他 Redis 数据类型。 
 
@@ -165,7 +175,9 @@ StackExchange.Redis 客户端使用 `RedisKey` 和 `RedisValue` 类型在缓存�
 
 要在缓存中指定项的过期时间，请使用 `StringSet` 的 `TimeSpan` 参数。
 
-    cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
+```c#
+cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
+```
 
 Azure Redis 缓存可以处理 .NET 对象以及基元数据类型，但在缓存 .NET 对象之前，必须先将其序列化。 这是应用程序开发人员的责任。 这可让开发人员灵活地选择序列化程序。 有关详细信息和示例代码，请参阅[处理缓存中的 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)。
 

@@ -12,7 +12,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/13/2016
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -123,7 +123,7 @@ ms.openlocfilehash: 74fd40d7cd2ce5aecf364ba8ead4e6dfcbf6ed54
 #### <a name="problem"></a>问题
 我本以为某些数据会出现在我的 Azure Redis 缓存实例中，但这些数据似乎并不在那里。
 
-##### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解决方法
 请参阅 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)（我在 Redis 中的数据发生了什么情况？），了解可能的原因和解决方法。
 
 ## <a name="server-side-troubleshooting"></a>服务器端故障排除
@@ -152,7 +152,7 @@ Redis 公开了两个指标，你可以通过这两个指标来确定此问题�
 4. [缩放](cache-how-to-scale.md)到更大缓存。
 5. 如果使用的是[启用了 Redis 群集的高级缓存](cache-how-to-premium-clustering.md)，则可[增加分片数](cache-how-to-premium-clustering.md#change-the-cluster-size-on-a-running-premium-cache)。
 
-### <a name="high-cpu-usage-server-load"></a>CPU 使用率/服务器负载过高
+### <a name="high-cpu-usage--server-load"></a>CPU 使用率/服务器负载过高
 #### <a name="problem"></a>问题
 CPU 使用率高可能意味着，客户端可能无法及时处理 Redis 发出的响应，即使 Redis 发送响应的速度很快。
 
@@ -194,20 +194,21 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
 ### <a name="steps-to-investigate"></a>调查步骤
 1. 请确保你在使用 StackExchange.Redis 客户端时，按照以下模式进行连接，这是一种最佳做法。
 
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    ```c#
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+    
+    });
+    
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
-
-        });
-
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+    ````
 
     有关详细信息，请参阅[使用 StackExchange.Redis 连接到缓存](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)。
 

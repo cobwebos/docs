@@ -457,7 +457,7 @@ ms.openlocfilehash: d8abb90b19fd3b79324209a2418c414e3b6bb301
             }
         }
 3. 我们需要一个 Web 用户界面来向用户显示。 让我们重新编写之前创建的 index.jsp：
-   
+    ```html
         <html>
         <head>
           <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -544,6 +544,7 @@ ms.openlocfilehash: d8abb90b19fd3b79324209a2418c414e3b6bb301
           <script src="assets/todo.js"></script>
         </body>
         </html>
+    ```
 4. 最后，编写一些客户端 Javascript 将 Web 用户界面和 servlet 绑定在一起：
    
         var todoApp = {

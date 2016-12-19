@@ -48,7 +48,9 @@ ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
   3. 运行 **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext** 选择要使用的订阅。 将 **NameOfAzureSubscription** 替换为 Azure 订阅的名称。
 * 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组：
 
-       New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```PowerShell
+    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```
 
    本教程中的某些步骤假设使用名为 ADFTutorialResourceGroup 的资源组。 如果使用不同的资源组，需使用该资源组的名称取代本教程中的 ADFTutorialResourceGroup。
 
@@ -61,10 +63,12 @@ ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
 >
 >
 
-    {
-        "name": "FirstDataFactoryREST",
-        "location": "WestUS"
-    }
+```JSON
+{
+    "name": "FirstDataFactoryREST",
+    "location": "WestUS"
+}
+```
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
@@ -72,30 +76,34 @@ ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
 >
 >
 
-    {
-        "name": "AzureStorageLinkedService",
-        "properties": {
-            "type": "AzureStorage",
-            "typeProperties": {
-                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+```JSON
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
     }
-
+}
+```
 
 ### <a name="hdinsightondemandlinkedservicejson"></a>hdinsightondemandlinkedservice.json
-    {
-        "name": "HDInsightOnDemandLinkedService",
-        "properties": {
-            "type": "HDInsightOnDemand",
-            "typeProperties": {
-                "version": "3.2",
-                "clusterSize": 1,
-                "timeToLive": "00:30:00",
-                "linkedServiceName": "AzureStorageLinkedService"
-            }
+
+```JSON
+{
+    "name": "HDInsightOnDemandLinkedService",
+    "properties": {
+        "type": "HDInsightOnDemand",
+        "typeProperties": {
+            "version": "3.2",
+            "clusterSize": 1,
+            "timeToLive": "00:30:00",
+            "linkedServiceName": "AzureStorageLinkedService"
         }
     }
+}
+```
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
@@ -117,28 +125,30 @@ ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 
 ### <a name="inputdatasetjson"></a>inputdataset.json
-    {
-        "name": "AzureBlobInput",
-        "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-                "fileName": "input.log",
-                "folderPath": "adfgetstarted/inputdata",
-                "format": {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-                }
-            },
-            "availability": {
-                "frequency": "Month",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {}
-        }
-    }
 
+```JSON
+{
+    "name": "AzureBlobInput",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "fileName": "input.log",
+            "folderPath": "adfgetstarted/inputdata",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            }
+        },
+        "availability": {
+            "frequency": "Month",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}
+```
 
 该 JSON 定义名为 **AzureBlobInput**的数据集，表示管道中活动的输入数据。 此外，它指定要将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中。
 
@@ -155,24 +165,27 @@ ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
 | external |如果输入数据不是由数据工厂服务生成的，此属性设置为 true。 |
 
 ### <a name="outputdatasetjson"></a>outputdataset.json
-    {
-        "name": "AzureBlobOutput",
-        "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-                "folderPath": "adfgetstarted/partitioneddata",
-                "format": {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-                }
-            },
-            "availability": {
-                "frequency": "Month",
-                "interval": 1
+
+```JSON
+{
+    "name": "AzureBlobOutput",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "folderPath": "adfgetstarted/partitioneddata",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
             }
+        },
+        "availability": {
+            "frequency": "Month",
+            "interval": 1
         }
     }
+}
+```
 
 该 JSON 定义名为 **AzureBlobOutput**的数据集，表示管道中活动的输出数据。 此外，它指定要将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
 
@@ -182,42 +195,44 @@ ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
 >
 >
 
-    {
-        "name": "MyFirstPipeline",
-        "properties": {
-            "description": "My first Azure Data Factory pipeline",
-            "activities": [{
-                "type": "HDInsightHive",
-                "typeProperties": {
-                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-                    "scriptLinkedService": "AzureStorageLinkedService",
-                    "defines": {
-                        "inputtable": "wasb://adfgetstarted@<stroageaccountname>.blob.core.windows.net/inputdata",
-                        "partitionedtable": "wasb://adfgetstarted@<stroageaccountname>t.blob.core.windows.net/partitioneddata"
-                    }
-                },
-                "inputs": [{
-                    "name": "AzureBlobInput"
-                }],
-                "outputs": [{
-                    "name": "AzureBlobOutput"
-                }],
-                "policy": {
-                    "concurrency": 1,
-                    "retry": 3
-                },
-                "scheduler": {
-                    "frequency": "Month",
-                    "interval": 1
-                },
-                "name": "RunSampleHiveActivity",
-                "linkedServiceName": "HDInsightOnDemandLinkedService"
+```JSON
+{
+    "name": "MyFirstPipeline",
+    "properties": {
+        "description": "My first Azure Data Factory pipeline",
+        "activities": [{
+            "type": "HDInsightHive",
+            "typeProperties": {
+                "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+                "scriptLinkedService": "AzureStorageLinkedService",
+                "defines": {
+                    "inputtable": "wasb://adfgetstarted@<stroageaccountname>.blob.core.windows.net/inputdata",
+                    "partitionedtable": "wasb://adfgetstarted@<stroageaccountname>t.blob.core.windows.net/partitioneddata"
+                }
+            },
+            "inputs": [{
+                "name": "AzureBlobInput"
             }],
-            "start": "2016-07-10T00:00:00Z",
-            "end": "2016-07-11T00:00:00Z",
-            "isPaused": false
-        }
+            "outputs": [{
+                "name": "AzureBlobOutput"
+            }],
+            "policy": {
+                "concurrency": 1,
+                "retry": 3
+            },
+            "scheduler": {
+                "frequency": "Month",
+                "interval": 1
+            },
+            "name": "RunSampleHiveActivity",
+            "linkedServiceName": "HDInsightOnDemandLinkedService"
+        }],
+        "start": "2016-07-10T00:00:00Z",
+        "end": "2016-07-11T00:00:00Z",
+        "isPaused": false
     }
+}
+```
 
 在 JSON 代码片段中创建一个管道，其中包括在 HDInsight 群集上使用 Hive 处理数据的单个活动。
 
@@ -242,23 +257,26 @@ Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 sc
 >
 >
 
-    $client_id = "<client ID of application in AAD>"
-    $client_secret = "<client key of application in AAD>"
-    $tenant = "<Azure tenant ID>";
-    $subscription_id="<Azure subscription ID>";
+```PowerShell
+$client_id = "<client ID of application in AAD>"
+$client_secret = "<client key of application in AAD>"
+$tenant = "<Azure tenant ID>";
+$subscription_id="<Azure subscription ID>";
 
-    $rg = "ADFTutorialResourceGroup"
-    $adf = "FirstDataFactoryREST"
-
+$rg = "ADFTutorialResourceGroup"
+$adf = "FirstDataFactoryREST"
+```
 
 
 ## <a name="authenticate-with-aad"></a>在 AAD 中进行身份验证
-    $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
-    $responseToken = Invoke-Command -scriptblock $cmd;
-    $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
-    (ConvertFrom-Json $responseToken)
+```PowerShell
+$cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
+$responseToken = Invoke-Command -scriptblock $cmd;
+$accessToken = (ConvertFrom-Json $responseToken).access_token;
 
+(ConvertFrom-Json $responseToken)
+```
 
 
 ## <a name="create-data-factory"></a>创建数据工厂
@@ -268,13 +286,19 @@ Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 sc
 
     确认此处指定的名称 (ADFCopyTutorialDF) 与 **datafactory.json**中指定的名称匹配。
 
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
 
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建数据工厂， **结果**中会显示数据工厂的 JSON；否则，会显示错误消息。
 
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 
 请注意以下几点：
 
@@ -288,11 +312,14 @@ Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 sc
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
-          Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```PowerShell
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
 
       可运行以下命令来确认数据工厂提供程序是否已注册：
-
-          Get-AzureRmResourceProvider
+    ```PowerShell
+    Get-AzureRmResourceProvider
+    ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，然后导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作将自动注册提供程序。
 
 在创建管道之前，需要创建一些数据工厂项。 首先创建链接服务用于将数据存储/计算机链接到数据存储，定义输入和输出数据集来表示链接的数据存储中的数据。
@@ -305,26 +332,38 @@ Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 sc
 
 1. 将命令分配到名为 **cmd**的变量。
 
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
 
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建链接服务， **结果**中会显示该链接服务的 JSON；否则，会显示错误消息。
 
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 
 ### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
 在此步骤中，将按需 HDInsight 群集链接到数据工厂。 HDInsight 群集在运行时自动创建，在处理完成之后删除，并且会空闲指定的一段时间。 可以使用自己的 HDInsight 群集，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [Compute Linked Services](data-factory-compute-linked-services.md) （计算链接服务）。
 
 1. 将命令分配到名为 **cmd**的变量。
 
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
 
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建链接服务， **结果**中会显示该链接服务的 JSON；否则，会显示错误消息。
 
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 
 ## <a name="create-datasets"></a>创建数据集
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 **StorageLinkedService** 。 链接服务指向 Azure 存储帐户，数据集指定用于保存输入和输出数据的存储中的容器、文件夹和文件名。
@@ -334,26 +373,38 @@ Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 sc
 
 1. 将命令分配到名为 **cmd**的变量。
 
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
 
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
 
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 
 ### <a name="create-output-dataset"></a>创建输出数据集
 本步骤创建输出数据集来表示 Azure Blob 存储中存储的输出数据。
 
 1. 将命令分配到名为 **cmd**的变量。
 
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
 
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
 
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 
 ## <a name="create-pipeline"></a>创建管道
 此步骤创建第一个具有 **HDInsightHive** 活动的管道。 每月获取输入切片（frequency：Month；interval：1），每月生成输出切片，活动的计划程序属性也设置为每月。 输出数据集的设置必须与活动计划程序匹配。 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。
@@ -362,30 +413,37 @@ Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 sc
 
 1. 将命令分配到名为 **cmd**的变量。
 
-        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
+    ```PowerShell
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
+    ```
 2. 使用 **Invoke-Command**运行命令。
 
-        $results = Invoke-Command -scriptblock $cmd;
+    ```PowerShell
+    $results = Invoke-Command -scriptblock $cmd;
+    ```
 3. 查看结果。 如果已成功创建数据集， **结果**中会显示该数据集的 JSON；否则，会显示错误消息。
 
-        Write-Host $results
+    ```PowerShell
+    Write-Host $results
+    ```
 4. 恭喜，现已使用 Azure PowerShell 成功创建第一个管道！
 
 ## <a name="monitor-pipeline"></a>监视管道
 本步骤使用数据工厂 REST API 来监视管道生成的切片。
 
-    $ds ="AzureBlobOutput"
+```PowerShell
+$ds ="AzureBlobOutput"
 
-    $cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};
+$cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};
 
-    $results2 = Invoke-Command -scriptblock $cmd;
+$results2 = Invoke-Command -scriptblock $cmd;
 
-    IF ((ConvertFrom-Json $results2).value -ne $NULL) {
-        ConvertFrom-Json $results2 | Select-Object -Expand value | Format-Table
-    } else {
-            (convertFrom-Json $results2).RemoteException
-    }
-
+IF ((ConvertFrom-Json $results2).value -ne $NULL) {
+    ConvertFrom-Json $results2 | Select-Object -Expand value | Format-Table
+} else {
+        (convertFrom-Json $results2).RemoteException
+}
+```
 
 > [!IMPORTANT]
 > 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。

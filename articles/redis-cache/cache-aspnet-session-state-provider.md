@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 09/01/2016
+ms.date: 12/13/2016
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -43,25 +43,27 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 
 NuGet 程序包会下载并添加所需的程序集引用，并将以下部分添加到您的 web.config 文件，包含 ASP.NET 应用程序所需的配置，以使用 Redis Cache 会话状态提供程序。
 
-    <sessionState mode="Custom" customProvider="MySessionStateStore">
-        <providers>
-        <!--
-        <add name="MySessionStateStore"
-               host = "127.0.0.1" [String]
-            port = "" [number]
-            accessKey = "" [String]
-            ssl = "false" [true|false]
-            throwOnError = "true" [true|false]
-            retryTimeoutInMilliseconds = "0" [number]
-            databaseId = "0" [number]
-            applicationName = "" [String]
-            connectionTimeoutInMilliseconds = "5000" [number]
-            operationTimeoutInMilliseconds = "5000" [number]
-        />
-        -->
-        <add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="127.0.0.1" accessKey="" ssl="false"/>
-        </providers>
-    </sessionState>
+```xml
+<sessionState mode="Custom" customProvider="MySessionStateStore">
+    <providers>
+    <!--
+    <add name="MySessionStateStore"
+           host = "127.0.0.1" [String]
+        port = "" [number]
+        accessKey = "" [String]
+        ssl = "false" [true|false]
+        throwOnError = "true" [true|false]
+        retryTimeoutInMilliseconds = "0" [number]
+        databaseId = "0" [number]
+        applicationName = "" [String]
+        connectionTimeoutInMilliseconds = "5000" [number]
+        operationTimeoutInMilliseconds = "5000" [number]
+    />
+    -->
+    <add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="127.0.0.1" accessKey="" ssl="false"/>
+    </providers>
+</sessionState>
+```
 
 注释部分提供了属性及每个属性的示例设置的一个示例。
 
@@ -83,16 +85,18 @@ NuGet 程序包会下载并添加所需的程序集引用，并将以下部分�
 
 别忘了在 web.config 中注释掉标准 InProc 会话状态提供程序部分。
 
-    <!-- <sessionState mode="InProc"
-         customProvider="DefaultSessionProvider">
-         <providers>
-            <add name="DefaultSessionProvider"
-                  type="System.Web.Providers.DefaultSessionStateProvider,
-                        System.Web.Providers, Version=1.0.0.0, Culture=neutral,
-                        PublicKeyToken=31bf3856ad364e35"
-                  connectionStringName="DefaultConnection" />
-          </providers>
-    </sessionState> -->
+```xml
+<!-- <sessionState mode="InProc"
+     customProvider="DefaultSessionProvider">
+     <providers>
+        <add name="DefaultSessionProvider"
+              type="System.Web.Providers.DefaultSessionStateProvider,
+                    System.Web.Providers, Version=1.0.0.0, Culture=neutral,
+                    PublicKeyToken=31bf3856ad364e35"
+              connectionStringName="DefaultConnection" />
+      </providers>
+</sessionState> -->
+```
 
 执行这些步骤后，你的应用程序已配置为使用 Redis 缓存会话状态提供程序。 在应用程序中使用会话状态时，会话状态将存储在 Azure Redis 缓存实例中。
 
