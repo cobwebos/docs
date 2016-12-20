@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: darrmi
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -31,28 +31,30 @@ Azure API 管理服务中的策略可以单纯根据传入的请求、传出的�
 ### <a name="alerting-with-slack"></a>使用 Slack 发出警报
 以下示例演示当 HTTP 响应状态代码大于或等于 500 时如何将消息发送到 Slack 聊天室。 500 范围错误表示后端 API 发生问题，而 API 的客户端无法解决此类问题。 通常我们需要进行某种形式的介入。  
 
-    <choose>
-        <when condition="@(context.Response.StatusCode >= 500)">
-          <send-one-way-request mode="new">
-            <set-url>https://hooks.slack.com/services/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</set-url>
-            <set-method>POST</set-method>
-            <set-body>@{
-                    return new JObject(
-                            new JProperty("username","APIM Alert"),
-                            new JProperty("icon_emoji", ":ghost:"),
-                            new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",
-                                                    context.Request.Method,
-                                                    context.Request.Url.Path + context.Request.Url.QueryString,
-                                                    context.Request.Url.Host,
-                                                    context.Response.StatusCode,
-                                                    context.Response.StatusReason,
-                                                    context.User.Email
-                                                    ))
-                            ).ToString();
-                }</set-body>
-          </send-one-way-request>
-        </when>
-    </choose>
+```xml
+<choose>
+    <when condition="@(context.Response.StatusCode >= 500)">
+      <send-one-way-request mode="new">
+        <set-url>https://hooks.slack.com/services/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</set-url>
+        <set-method>POST</set-method>
+        <set-body>@{
+                return new JObject(
+                        new JProperty("username","APIM Alert"),
+                        new JProperty("icon_emoji", ":ghost:"),
+                        new JProperty("text", String.Format("{0} {1}\nHost: {2}\n{3} {4}\n User: {5}",
+                                                context.Request.Method,
+                                                context.Request.Url.Path + context.Request.Url.QueryString,
+                                                context.Request.Url.Host,
+                                                context.Response.StatusCode,
+                                                context.Response.StatusReason,
+                                                context.User.Email
+                                                ))
+                        ).ToString();
+            }</set-body>
+      </send-one-way-request>
+    </when>
+</choose>
+```
 
 Slack 具有入站 Web Hook 的概念。 配置入站 Web Hook 时，Slack 将生成特殊的 URL，让用户执行简单的 POST 请求，并将消息传递到 Slack 通道。 我们创建的 JSON 主体基于 Slack 定义的格式。
 
@@ -73,22 +75,26 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 ### <a name="extracting-the-token"></a>提取令牌
 第一个步骤是从授权标头撷取令牌。 标头值应该使用 `Bearer` 授权方案、单个空格和授权令牌根据 [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1) 进行格式化。 但是，有一些情况需要省略授权分配。 为了在分析时说明这一点，我们使用空格来分区标头值，并从字符串的返回数组中选择最后一个字符串。 这样可为格式错误的授权标头提供应对措施。
 
-    <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
+```xml
+<set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
+```
 
 ### <a name="making-the-validation-request"></a>发出验证请求
 获取授权令牌后，可以发出请求来验证令牌。 RFC 7662 调用此程序进行自检，并请求将 HTML 窗体 `POST` 到自检资源。 HTML 窗体必须至少包含具有键 `token` 的键/值对。 对授权服务器的请求也必须经过身份验证，确保恶意客户端无法获取有效令牌。
 
-    <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
-      <set-url>https://microsoft-apiappec990ad4c76641c6aea22f566efc5a4e.azurewebsites.net/introspection</set-url>
-      <set-method>POST</set-method>
-      <set-header name="Authorization" exists-action="override">
-        <value>basic dXNlcm5hbWU6cGFzc3dvcmQ=</value>
-      </set-header>
-      <set-header name="Content-Type" exists-action="override">
-        <value>application/x-www-form-urlencoded</value>
-      </set-header>
-      <set-body>@($"token={(string)context.Variables["token"]}")</set-body>
-    </send-request>
+```xml
+<send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
+  <set-url>https://microsoft-apiappec990ad4c76641c6aea22f566efc5a4e.azurewebsites.net/introspection</set-url>
+  <set-method>POST</set-method>
+  <set-header name="Authorization" exists-action="override">
+    <value>basic dXNlcm5hbWU6cGFzc3dvcmQ=</value>
+  </set-header>
+  <set-header name="Content-Type" exists-action="override">
+    <value>application/x-www-form-urlencoded</value>
+  </set-header>
+  <set-body>@($"token={(string)context.Variables["token"]}")</set-body>
+</send-request>
+```
 
 ### <a name="checking-the-response"></a>检查响应
 `response-variable-name` 属性可用于提供所返回响应的访问权限。 此属性中定义的名称可以用于作为 `context.Variables` 字典的键来访问 `IResponse` 对象。
@@ -98,53 +104,57 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 ### <a name="reporting-failure"></a>报告失败
 我们使用 `<choose>` 策略来检测令牌是否无效，如果无效，则返回 401 响应。
 
-    <choose>
-      <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">
-        <return-response response-variable-name="existing response variable">
-          <set-status code="401" reason="Unauthorized" />
-          <set-header name="WWW-Authenticate" exists-action="override">
-            <value>Bearer error="invalid_token"</value>
-          </set-header>
-        </return-response>
-      </when>
-    </choose>
+```xml
+<choose>
+  <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">
+    <return-response response-variable-name="existing response variable">
+      <set-status code="401" reason="Unauthorized" />
+      <set-header name="WWW-Authenticate" exists-action="override">
+        <value>Bearer error="invalid_token"</value>
+      </set-header>
+    </return-response>
+  </when>
+</choose>
+```
 
 根据 [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) 中说明的 `bearer` 令牌的使用方式，我们还返回了 `WWW-Authenticate` 标头以及 401 响应。 WWW-Authenticate 的目的是指示客户端如何构造适当授权的请求。 由于有各式各样可能具有 OAuth2 架构的处理方法，因此很难传达所有必要的信息。 幸好我们仍持续努力来帮助[客户端发现如何适当地将请求授权给资源服务器](http://tools.ietf.org/html/draft-jones-oauth-discovery-00)。
 
 ### <a name="final-solution"></a>最终解决方案
 将所有信息放在一起，就能得到以下策略：
 
-    <inbound>
-      <!-- Extract Token from Authorization header parameter -->
-      <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
+```xml
+<inbound>
+  <!-- Extract Token from Authorization header parameter -->
+  <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
 
-      <!-- Send request to Token Server to validate token (see RFC 7662) -->
-      <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
-        <set-url>https://microsoft-apiappec990ad4c76641c6aea22f566efc5a4e.azurewebsites.net/introspection</set-url>
-        <set-method>POST</set-method>
-        <set-header name="Authorization" exists-action="override">
-          <value>basic dXNlcm5hbWU6cGFzc3dvcmQ=</value>
-        </set-header>
-        <set-header name="Content-Type" exists-action="override">
-          <value>application/x-www-form-urlencoded</value>
-        </set-header>
-        <set-body>@($"token={(string)context.Variables["token"]}")</set-body>
-      </send-request>
+  <!-- Send request to Token Server to validate token (see RFC 7662) -->
+  <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
+    <set-url>https://microsoft-apiappec990ad4c76641c6aea22f566efc5a4e.azurewebsites.net/introspection</set-url>
+    <set-method>POST</set-method>
+    <set-header name="Authorization" exists-action="override">
+      <value>basic dXNlcm5hbWU6cGFzc3dvcmQ=</value>
+    </set-header>
+    <set-header name="Content-Type" exists-action="override">
+      <value>application/x-www-form-urlencoded</value>
+    </set-header>
+    <set-body>@($"token={(string)context.Variables["token"]}")</set-body>
+  </send-request>
 
-      <choose>
-              <!-- Check active property in response -->
-              <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">
-                  <!-- Return 401 Unauthorized with http-problem payload -->
-                  <return-response response-variable-name="existing response variable">
-                      <set-status code="401" reason="Unauthorized" />
-                      <set-header name="WWW-Authenticate" exists-action="override">
-                          <value>Bearer error="invalid_token"</value>
-                      </set-header>
-                  </return-response>
-              </when>
-          </choose>
-      <base />
-    </inbound>
+  <choose>
+          <!-- Check active property in response -->
+          <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">
+              <!-- Return 401 Unauthorized with http-problem payload -->
+              <return-response response-variable-name="existing response variable">
+                  <set-status code="401" reason="Unauthorized" />
+                  <set-header name="WWW-Authenticate" exists-action="override">
+                      <value>Bearer error="invalid_token"</value>
+                  </set-header>
+              </return-response>
+          </when>
+      </choose>
+  <base />
+</inbound>
+```
 
 这是众多示例中唯一一个说明如何使用 `send-request` 策略，通过 API 管理服务将有用的外部服务集成到请求和响应的过程。
 
@@ -166,10 +176,64 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 
 第一个步骤是提取来自传入请求的任何查询参数，以便可以将其转发到后端。 在本示例中，仪表板每隔一段时间显示信息，因此具有 `fromDate` 和 `toDate` 参数。 我们可以使用 `set-variable` 策略来提取请求 URL 中的信息。
 
-    <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
-    <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
+```xml
+<set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
+<set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
+```
 
 获取此信息后，可以对所有后端系统发出请求。 每个请求使用参数信息构造新 URL，调用相应的服务器，并将响应存储在上下文变量中。
+
+```xml
+<send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
+  <set-url>@($"https://accounting.acme.com/salesdata?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+  <set-method>GET</set-method>
+</send-request>
+
+<send-request mode="new" response-variable-name="materialdata" timeout="20" ignore-error="true">
+  <set-url>@($"https://inventory.acme.com/materiallevels?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+  <set-method>GET</set-method>
+</send-request>
+
+<send-request mode="new" response-variable-name="throughputdata" timeout="20" ignore-error="true">
+<set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+  <set-method>GET</set-method>
+</send-request>
+
+<send-request mode="new" response-variable-name="accidentdata" timeout="20" ignore-error="true">
+<set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+  <set-method>GET</set-method>
+</send-request>
+```
+
+这些请求将按顺序执行，但这不是理想的做法。 在即将推出的版本中，将引入名为 `wait` 的新策略，它能使所有这些请求并行执行。
+
+### <a name="responding"></a>响应
+若要构造复合响应，可以使用 [return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) 策略。 `set-body` 元素可以使用表达式构造新的 `JObject` 以及嵌入为属性的所有组件表示形式。
+
+```xml
+<return-response response-variable-name="existing response variable">
+  <set-status code="200" reason="OK" />
+  <set-header name="Content-Type" exists-action="override">
+    <value>application/json</value>
+  </set-header>
+  <set-body>
+    @(new JObject(new JProperty("revenuedata",((IResponse)context.Variables["revenuedata"]).Body.As<JObject>()),
+                  new JProperty("materialdata",((IResponse)context.Variables["materialdata"]).Body.As<JObject>()),
+                  new JProperty("throughputdata",((IResponse)context.Variables["throughputdata"]).Body.As<JObject>()),
+                  new JProperty("accidentdata",((IResponse)context.Variables["accidentdata"]).Body.As<JObject>())
+                  ).ToString())
+  </set-body>
+</return-response>
+```
+
+完整的策略如下所示：
+
+```xml
+<policies>
+    <inbound>
+
+  <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
+  <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
 
     <send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
       <set-url>@($"https://accounting.acme.com/salesdata?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
@@ -191,11 +255,6 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
       <set-method>GET</set-method>
     </send-request>
 
-这些请求将按顺序执行，但这不是理想的做法。 在即将推出的版本中，将引入名为 `wait` 的新策略，它能使所有这些请求并行执行。
-
-### <a name="responding"></a>响应
-若要构造复合响应，可以使用 [return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) 策略。 `set-body` 元素可以使用表达式构造新的 `JObject` 以及嵌入为属性的所有组件表示形式。
-
     <return-response response-variable-name="existing response variable">
       <set-status code="200" reason="OK" />
       <set-header name="Content-Type" exists-action="override">
@@ -209,56 +268,15 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
                       ).ToString())
       </set-body>
     </return-response>
-
-完整的策略如下所示：
-
-    <policies>
-        <inbound>
-
-      <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
-      <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
-
-        <send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
-          <set-url>@($"https://accounting.acme.com/salesdata?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
-          <set-method>GET</set-method>
-        </send-request>
-
-        <send-request mode="new" response-variable-name="materialdata" timeout="20" ignore-error="true">
-          <set-url>@($"https://inventory.acme.com/materiallevels?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
-          <set-method>GET</set-method>
-        </send-request>
-
-        <send-request mode="new" response-variable-name="throughputdata" timeout="20" ignore-error="true">
-        <set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
-          <set-method>GET</set-method>
-        </send-request>
-
-        <send-request mode="new" response-variable-name="accidentdata" timeout="20" ignore-error="true">
-        <set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
-          <set-method>GET</set-method>
-        </send-request>
-
-        <return-response response-variable-name="existing response variable">
-          <set-status code="200" reason="OK" />
-          <set-header name="Content-Type" exists-action="override">
-            <value>application/json</value>
-          </set-header>
-          <set-body>
-            @(new JObject(new JProperty("revenuedata",((IResponse)context.Variables["revenuedata"]).Body.As<JObject>()),
-                          new JProperty("materialdata",((IResponse)context.Variables["materialdata"]).Body.As<JObject>()),
-                          new JProperty("throughputdata",((IResponse)context.Variables["throughputdata"]).Body.As<JObject>()),
-                          new JProperty("accidentdata",((IResponse)context.Variables["accidentdata"]).Body.As<JObject>())
-                          ).ToString())
-          </set-body>
-        </return-response>
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <base />
-        </outbound>
-    </policies>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+</policies>
+```
 
 在占位符操作的配置中，可以将仪表板资源设置为至少缓存一小时，因为我们知道数据的性质意味着即使它在一个小时后就会过期，但仍可以充分有效地向用户传达重要信息。
 

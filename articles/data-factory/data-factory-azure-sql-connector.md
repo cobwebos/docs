@@ -57,30 +57,32 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 
 **Azure SQL 链接服务**
 
-    {
-      "name": "AzureSqlLinkedService",
-      "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-          "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-      }
+```JSON
+{
+  "name": "AzureSqlLinkedService",
+  "properties": {
+    "type": "AzureSqlDatabase",
+    "typeProperties": {
+      "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
     }
-
+  }
+}
+```
 有关此链接服务支持的属性列表，请参阅 [Azure SQL 链接服务](#azure-sql-linked-service-properties)部分。
 
 **Azure Blob 存储链接服务**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 有关此链接服务支持的属性列表，请参阅 [Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service) 一文。
 
 
@@ -90,28 +92,30 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 
 设置“external”: ”true”将告知 Azure 数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
-    {
-      "name": "AzureSqlInput",
-      "properties": {
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
+```JSON
+{
+  "name": "AzureSqlInput",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 有关此数据集类型支持的属性列表，请参阅 [Azure SQL 数据集类型属性](#azure-sql-dataset-type-properties)部分。  
 
@@ -119,111 +123,113 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
-    {
-      "name": "AzureBlobOutput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}/",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "\t",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobOutput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}/",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
+        },
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
+          }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": "\t",
+        "rowDelimiter": "\n"
       }
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
-
+  }
+}
+```
 有关此数据集类型支持的属性列表，请参阅 [Azure Blob 数据集类型属性](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)部分。  
 
 **包含复制活动的管道**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **SqlSource**，**接收器**类型设置为 **BlobSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline for copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline for copy activity",
+    "activities":[  
+      {
+        "name": "AzureSQLtoBlob",
+        "description": "copy activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "AzureSQLtoBlob",
-            "description": "copy activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureSQLInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureBlobOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "SqlSource",
-                "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
-              },
-              "sink": {
-                "type": "BlobSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureSQLInput"
           }
-         ]
-       }
-    }
-
+        ],
+        "outputs": [
+          {
+            "name": "AzureBlobOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
+          },
+          "sink": {
+            "type": "BlobSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+     ]
+   }
+}
+```
 在本例中，为 SqlSource 指定了 **sqlReaderQuery**。 复制活动针对 Azure SQL 数据库源运行此查询以获取数据。 此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程使用参数）。
 
 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则使用在数据集 JSON 的结构部分定义的列来生成针对 Azure SQL 数据库运行的查询。 例如： `select column1, column2 from mytable`。 如果数据集定义不具备该结构，则从表中选择所有列。
@@ -243,30 +249,32 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 
 **Azure SQL 链接服务**
 
-    {
-      "name": "AzureSqlLinkedService",
-      "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-          "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-      }
+```JSON
+{
+  "name": "AzureSqlLinkedService",
+  "properties": {
+    "type": "AzureSqlDatabase",
+    "typeProperties": {
+      "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
     }
-
+  }
+}
+```
 有关此链接服务支持的属性列表，请参阅 [Azure SQL 链接服务](#azure-sql-linked-service-properties)部分。
 
 **Azure Blob 存储链接服务**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 有关此链接服务支持的属性列表，请参阅 [Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service) 一文。
 
 
@@ -274,141 +282,144 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 
 每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 “external”: ”true”设置将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
 
-    {
-      "name": "AzureBlobInput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/",
-          "fileName": "{Hour}.csv",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobInput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/",
+      "fileName": "{Hour}.csv",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
         },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
           }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "rowDelimiter": "\n"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
-
+  }
+}
+```
 有关此数据集类型支持的属性列表，请参阅 [Azure Blob 数据集类型属性](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)部分。
 
 **Azure SQL 输出数据集**
 
 此示例将数据复制到 Azure SQL 中名为“MyTable”的表。 在 Azure SQL 中创建表，其列数与 Blob CSV 文件应包含的列数相同。 每小时向该表添加新行。
 
-    {
-      "name": "AzureSqlOutput",
-      "properties": {
-        "type": "AzureSqlTable",
-        "linkedServiceName": "AzureSqlLinkedService",
-        "typeProperties": {
-          "tableName": "MyOutputTable"
-        },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "AzureSqlOutput",
+  "properties": {
+    "type": "AzureSqlTable",
+    "linkedServiceName": "AzureSqlLinkedService",
+    "typeProperties": {
+      "tableName": "MyOutputTable"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
-
+  }
+}
+```
 有关此数据集类型支持的属性列表，请参阅 [Azure SQL 数据集类型属性](#azure-sql-dataset-type-properties)部分。
 
 **包含复制活动的管道**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **BlobSource**，**接收器**类型设置为 **SqlSink**。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline with copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline with copy activity",
+    "activities":[  
+      {
+        "name": "AzureBlobtoSQL",
+        "description": "Copy Activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "AzureBlobtoSQL",
-            "description": "Copy Activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureBlobInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureSqlOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource",
-                "blobColumnSeparators": ","
-              },
-              "sink": {
-                "type": "SqlSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureBlobInput"
           }
-          ]
-       }
-    }
-
+        ],
+        "outputs": [
+          {
+            "name": "AzureSqlOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource",
+            "blobColumnSeparators": ","
+          },
+          "sink": {
+            "type": "SqlSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+      ]
+   }
+}
+```
 有关 SqlSink 和 BlobSource 支持的属性列表，请参阅 [Sql Sink](#sqlsink) 和 [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) 部分。
 
 ## <a name="azure-sql-linked-service-properties"></a>Azure SQL 链接服务属性
@@ -466,32 +477,35 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 >
 
 ### <a name="sqlsource-example"></a>SqlSource 示例
-    "source": {
-        "type": "SqlSource",
-        "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
-        "storedProcedureParameters": {
-            "stringData": { "value": "str3" },
-            "id": { "value": "$$Text.Format('{0:yyyy}', SliceStart)", "type": "Int"}
-        }
-    }
 
+```JSON
+"source": {
+    "type": "SqlSource",
+    "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
+    "storedProcedureParameters": {
+        "stringData": { "value": "str3" },
+        "identifier": { "value": "$$Text.Format('{0:yyyy}', SliceStart)", "type": "Int"}
+    }
+}
+```
 **存储过程定义：**
 
-    CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
-    (
-        @stringData varchar(20),
-        @id int
-    )
-    AS
-    SET NOCOUNT ON;
-    BEGIN
-         select *
-         from dbo.UnitTestSrcTable
-         where dbo.UnitTestSrcTable.stringData != stringData
-        and dbo.UnitTestSrcTable.id != id
-    END
-    GO
-
+```SQL
+CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
+(
+    @stringData varchar(20),
+    @identifier int
+)
+AS
+SET NOCOUNT ON;
+BEGIN
+     select *
+     from dbo.UnitTestSrcTable
+     where dbo.UnitTestSrcTable.stringData != stringData
+    and dbo.UnitTestSrcTable.identifier != identifier
+END
+GO
+```
 
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** 支持以下属性：
@@ -507,84 +521,89 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 | sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |表类型名称。 |否 |
 
 #### <a name="sqlsink-example"></a>SqlSink 示例
-    "sink": {
-        "type": "SqlSink",
-        "writeBatchSize": 1000000,
-        "writeBatchTimeout": "00:05:00",
-        "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
-        "sqlWriterTableType": "CopyTestTableType",
-        "storedProcedureParameters": {
-            "id": { "value": "1", "type": "Int" },
-            "stringData": { "value": "str1" },
-            "decimalData": { "value": "1", "type": "Decimal" }
-        }
-    }
 
+```JSON
+"sink": {
+    "type": "SqlSink",
+    "writeBatchSize": 1000000,
+    "writeBatchTimeout": "00:05:00",
+    "sqlWriterStoredProcedureName": "CopyTestStoredProcedureWithParameters",
+    "sqlWriterTableType": "CopyTestTableType",
+    "storedProcedureParameters": {
+        "identifier": { "value": "1", "type": "Int" },
+        "stringData": { "value": "str1" },
+        "decimalData": { "value": "1", "type": "Decimal" }
+    }
+}
+```
 ## <a name="identity-columns-in-the-target-database"></a>目标数据库中的标识列
 本部分举例说明了如何将数据从不含标识列的源表复制到含标识列的目标表。
 
 **源表：**
 
-    create table dbo.SourceTbl
-    (
-           name varchar(100),
-           age int
-    )
-
+```SQL
+create table dbo.SourceTbl
+(
+       name varchar(100),
+       age int
+)
+```
 **目标表：**
 
-    create table dbo.TargetTbl
-    (
-           id int identity(1,1),
-           name varchar(100),
-           age int
-    )
-
-
+```SQL
+create table dbo.TargetTbl
+(
+       identifier int identity(1,1),
+       name varchar(100),
+       age int
+)
+```
 请注意，目标表包含标识列。
 
 **源数据集 JSON 定义**
 
-    {
-        "name": "SampleSource",
-        "properties": {
-            "type": " SqlServerTable",
-            "linkedServiceName": "TestIdentitySQL",
-            "typeProperties": {
-                "tableName": "SourceTbl"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {}
-        }
+```JSON
+{
+    "name": "SampleSource",
+    "properties": {
+        "type": " SqlServerTable",
+        "linkedServiceName": "TestIdentitySQL",
+        "typeProperties": {
+            "tableName": "SourceTbl"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
     }
-
+}
+```
 **数据集 JSON 定义**
 
-    {
-        "name": "SampleTarget",
-        "properties": {
-            "structure": [
-                { "name": "name" },
-                { "name": "age" }
-            ],
-            "type": "AzureSqlTable",
-            "linkedServiceName": "TestIdentitySQLSource",
-            "typeProperties": {
-                "tableName": "TargetTbl"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": false,
-            "policy": {}
-        }    
-    }
-
+```JSON
+{
+    "name": "SampleTarget",
+    "properties": {
+        "structure": [
+            { "name": "name" },
+            { "name": "age" }
+        ],
+        "type": "AzureSqlTable",
+        "linkedServiceName": "TestIdentitySQLSource",
+        "typeProperties": {
+            "tableName": "TargetTbl"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }    
+}
+```
 
 请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 **structure** 属性。
 
@@ -596,7 +615,7 @@ ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-### <a name="type-mapping-for-sql-server-azure-sql-database"></a>SQL Server 和 Azure SQL 数据库的类型映射
+### <a name="type-mapping-for-sql-server--azure-sql-database"></a>SQL Server 和 Azure SQL 数据库的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型

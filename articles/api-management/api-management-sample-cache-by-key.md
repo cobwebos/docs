@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: darrmi
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -31,66 +31,81 @@ API 管理服务使用基于租户的共享数据缓存，因此，在扩展到�
 
 假设后端 API 返回了以下 JSON 响应。
 
-    {
-      "airline" : "Air Canada",
-      "flightno" : "871",
-      "status" : "ontime",
-      "gate" : "B40",
-      "terminal" : "2A",
-      "userprofile" : "$userprofile$"
-    }  
+```json
+{
+  "airline" : "Air Canada",
+  "flightno" : "871",
+  "status" : "ontime",
+  "gate" : "B40",
+  "terminal" : "2A",
+  "userprofile" : "$userprofile$"
+}  
+```
 
 `/userprofile/{userid}` 中的辅助资源如下所示：
 
-     { "username" : "Bob Smith", "Status" : "Gold" }
+```json
+{ "username" : "Bob Smith", "Status" : "Gold" }
+```
 
 为了确定要包含哪些适当的用户信息，需要识别最终用户是谁。 此机制与实现相关。 例如，此处使用了 `JWT` 令牌的 `Subject` 声明。 
 
-    <set-variable
-      name="enduserid"
-      value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
+```xml
+<set-variable
+  name="enduserid"
+  value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
+```
 
 我们将此 `enduserid` 值存储在上下文变量中供稍后使用。 下一步是确定前面的请求是否已检索用户信息并将其存储在缓存中。 为此，我们使用了 `cache-lookup-value` 策略。
 
-      <cache-lookup-value
-      key="@("userprofile-" + context.Variables["enduserid"])"
-      variable-name="userprofile" />
+```xml
+<cache-lookup-value
+key="@("userprofile-" + context.Variables["enduserid"])"
+variable-name="userprofile" />
+```
 
 如果缓存中没有任何条目对应于键值，则不会创建 `userprofile` 上下文变量。 使用 `choose` 控制流策略来检查查询是否成功。
 
-    <choose>
-        <when condition="@(!context.Variables.ContainsKey("userprofile"))">
-            <!— If the userprofile context variable doesn’t exist, make an HTTP request to retrieve it.  -->
-        </when>
-    </choose>
-
+```xml
+<choose>
+    <when condition="@(!context.Variables.ContainsKey("userprofile"))">
+        <!— If the userprofile context variable doesn’t exist, make an HTTP request to retrieve it.  -->
+    </when>
+</choose>
+```
 
 如果 `userprofile` 上下文变量不存在，则要发出 HTTP 请求来检索信息。
 
-    <send-request
-      mode="new"
-      response-variable-name="userprofileresponse"
-      timeout="10"
-      ignore-error="true">
+```xml
+<send-request
+  mode="new"
+  response-variable-name="userprofileresponse"
+  timeout="10"
+  ignore-error="true">
 
-      <!-- Build a URL that points to the profile for the current end-user -->
-      <set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),
-          (string)context.Variables["enduserid"]).AbsoluteUri)
-      </set-url>
-      <set-method>GET</set-method>
-    </send-request>
+  <!-- Build a URL that points to the profile for the current end-user -->
+  <set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),
+      (string)context.Variables["enduserid"]).AbsoluteUri)
+  </set-url>
+  <set-method>GET</set-method>
+</send-request>
+```
 
 使用 `enduserid` 来构造用户配置文件资源的 URL。 获得响应后，可以从响应中提取正文文本，并将它存回到上下文变量。
 
-    <set-variable
-        name="userprofile"
-        value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
+```xml
+<set-variable
+    name="userprofile"
+    value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
+```
 
 为了避免当同一用户发出另一个请求时我们必须再次发出此 HTTP 请求，可以将用户配置文件存储在缓存中。
 
-    <cache-store-value
-        key="@("userprofile-" + context.Variables["enduserid"])"
-        value="@((string)context.Variables["userprofile"])" duration="100000" />
+```xml
+<cache-store-value
+    key="@("userprofile-" + context.Variables["enduserid"])"
+    value="@((string)context.Variables["userprofile"])" duration="100000" />
+```
 
 使用最初尝试检索值时使用的同一个键，将值存储在缓存中。 选择将值存储多长时间应该取决于信息更改的频率，以及用户对过期信息的容许度。 
 
@@ -98,64 +113,68 @@ API 管理服务使用基于租户的共享数据缓存，因此，在扩展到�
 
 此过程的最后一步是使用用户配置文件信息更新返回的响应。
 
-    <!—Update response body with user profile-->
-    <find-and-replace
-        from='"$userprofile$"'
-        to="@((string)context.Variables["userprofile"])" />
+```xml
+<!—Update response body with user profile-->
+<find-and-replace
+    from='"$userprofile$"'
+    to="@((string)context.Variables["userprofile"])" />
+```
 
 此处在令牌中包含了引号，目的是即使替换没有发生，响应仍是有效的 JSON。 这主要是为了方便调试。
 
 将所有这些步骤组合到一起后，最终会创建如下所示的策略。
 
-     <policies>
-        <inbound>
-            <!-- How you determine user identity is application dependent -->
-            <set-variable
-              name="enduserid"
-              value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
+```xml
+<policies>
+    <inbound>
+        <!-- How you determine user identity is application dependent -->
+        <set-variable
+          name="enduserid"
+          value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 
-            <!--Look for userprofile for this user in the cache -->
-            <cache-lookup-value
-              key="@("userprofile-" + context.Variables["enduserid"])"
-              variable-name="userprofile" />
+        <!--Look for userprofile for this user in the cache -->
+        <cache-lookup-value
+          key="@("userprofile-" + context.Variables["enduserid"])"
+          variable-name="userprofile" />
 
-            <!-- If we don’t find it in the cache, make a request for it and store it -->
-            <choose>
-                <when condition="@(!context.Variables.ContainsKey("userprofile"))">
-                    <!—Make HTTP request to get user profile -->
-                    <send-request
-                      mode="new"
-                      response-variable-name="userprofileresponse"
-                      timeout="10"
-                      ignore-error="true">
+        <!-- If we don’t find it in the cache, make a request for it and store it -->
+        <choose>
+            <when condition="@(!context.Variables.ContainsKey("userprofile"))">
+                <!—Make HTTP request to get user profile -->
+                <send-request
+                  mode="new"
+                  response-variable-name="userprofileresponse"
+                  timeout="10"
+                  ignore-error="true">
 
-                       <!-- Build a URL that points to the profile for the current end-user -->
-                        <set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),(string)context.Variables["enduserid"]).AbsoluteUri)</set-url>
-                        <set-method>GET</set-method>
-                    </send-request>
+                   <!-- Build a URL that points to the profile for the current end-user -->
+                    <set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),(string)context.Variables["enduserid"]).AbsoluteUri)</set-url>
+                    <set-method>GET</set-method>
+                </send-request>
 
-                    <!—Store response body in context variable -->
-                    <set-variable
-                      name="userprofile"
-                      value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
+                <!—Store response body in context variable -->
+                <set-variable
+                  name="userprofile"
+                  value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 
-                    <!—Store result in cache -->
-                    <cache-store-value
-                      key="@("userprofile-" + context.Variables["enduserid"])"
-                      value="@((string)context.Variables["userprofile"])"
-                      duration="100000" />
-                </when>
-            </choose>
-            <base />
-        </inbound>
-        <outbound>
-            <!—Update response body with user profile-->
-            <find-and-replace
-                  from='"$userprofile$"'
-                  to="@((string)context.Variables["userprofile"])" />
-            <base />
-        </outbound>
-     </policies>
+                <!—Store result in cache -->
+                <cache-store-value
+                  key="@("userprofile-" + context.Variables["enduserid"])"
+                  value="@((string)context.Variables["userprofile"])"
+                  duration="100000" />
+            </when>
+        </choose>
+        <base />
+    </inbound>
+    <outbound>
+        <!—Update response body with user profile-->
+        <find-and-replace
+              from='"$userprofile$"'
+              to="@((string)context.Variables["userprofile"])" />
+        <base />
+    </outbound>
+</policies>
+```
 
 此缓存方法主要用于其 HTML 在服务器端撰写的网站中，能够以单页的形式呈现 HTML。 但是，它也适用于其中的客户端无法执行客户端 HTTP 缓存的 API，或者不需要将此责任施加到客户端的情况。
 
@@ -168,71 +187,86 @@ API 管理服务使用基于租户的共享数据缓存，因此，在扩展到�
 
 第一步是确定用于配置所需版本的标识符。 本示例选择将版本关联到产品订阅密钥。 
 
-        <set-variable name="clientid" value="@(context.Subscription.Key)" />
+```xml
+<set-variable name="clientid" value="@(context.Subscription.Key)" />
+```
 
 然后，执行缓存查找，确定是否已检索所需的客户端版本。
 
-        <cache-lookup-value
-        key="@("clientversion-" + context.Variables["clientid"])"
-        variable-name="clientversion" />
+```xml
+<cache-lookup-value
+key="@("clientversion-" + context.Variables["clientid"])"
+variable-name="clientversion" />
+```
 
 然后，检查缓存中是否没有该值。
 
-    <choose>
-        <when condition="@(!context.Variables.ContainsKey("clientversion"))">
+```xml
+<choose>
+    <when condition="@(!context.Variables.ContainsKey("clientversion"))">
+```
 
 如果没有，则检索该值。
 
-    <send-request
-        mode="new"
-        response-variable-name="clientconfiguresponse"
-        timeout="10"
-        ignore-error="true">
-                <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
-                <set-method>GET</set-method>
-    </send-request>
+```xml
+<send-request
+    mode="new"
+    response-variable-name="clientconfiguresponse"
+    timeout="10"
+    ignore-error="true">
+            <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
+            <set-method>GET</set-method>
+</send-request>
+```
 
 从响应中提取响应正文文本。
 
-    <set-variable
-          name="clientversion"
-          value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
+```xml
+<set-variable
+      name="clientversion"
+      value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
+```
 
 将它存回到缓存供日后使用。
 
-    <cache-store-value
-          key="@("clientversion-" + context.Variables["clientid"])"
-          value="@((string)context.Variables["clientversion"])"
-          duration="100000" />
+```xml
+<cache-store-value
+      key="@("clientversion-" + context.Variables["clientid"])"
+      value="@((string)context.Variables["clientversion"])"
+      duration="100000" />
+```
 
 最后，更新后端 URL 以选择客户端所需的服务版本。
 
-    <set-backend-service
-          base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
+```xml
+<set-backend-service
+      base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
+```
 
 完整的策略如下所示。
 
-     <inbound>
-        <base />
-        <set-variable name="clientid" value="@(context.Subscription.Key)" />
-        <cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
+```xml
+<inbound>
+    <base />
+    <set-variable name="clientid" value="@(context.Subscription.Key)" />
+    <cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
 
-        <!-- If we don’t find it in the cache, make a request for it and store it -->
-        <choose>
-            <when condition="@(!context.Variables.ContainsKey("clientversion"))">
-                <send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
-                    <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
-                    <set-method>GET</set-method>
-                </send-request>
-                <!-- Store response body in context variable -->
-                <set-variable name="clientversion" value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
-                <!-- Store result in cache -->
-                <cache-store-value key="@("clientversion-" + context.Variables["clientid"])" value="@((string)context.Variables["clientversion"])" duration="100000" />
-            </when>
-        </choose>
-        <set-backend-service base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
-    </inbound>
-
+    <!-- If we don’t find it in the cache, make a request for it and store it -->
+    <choose>
+        <when condition="@(!context.Variables.ContainsKey("clientversion"))">
+            <send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
+                <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
+                <set-method>GET</set-method>
+            </send-request>
+            <!-- Store response body in context variable -->
+            <set-variable name="clientversion" value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
+            <!-- Store result in cache -->
+            <cache-store-value key="@("clientversion-" + context.Variables["clientid"])" value="@((string)context.Variables["clientversion"])" duration="100000" />
+        </when>
+    </choose>
+    <set-backend-service base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
+</inbound>
+```
 
 使 API 使用者无需更新和重新部署客户端就能透明控制客户端可以访问的后端版本是一种优雅的解决办法，能够解决 API 版本控制方面的许多问题。
 

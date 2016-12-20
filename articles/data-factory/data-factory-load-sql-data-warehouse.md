@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 12/16/2016
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -78,32 +78,33 @@ ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
   
     若要获得可能的最佳吞吐量，需要使用属于 `xlargerc` 资源类的 SQL 数据仓库用户来执行复制操作。  请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)，了解如何执行该操作。  
 * 通过运行以下 DDL 语句在 Azure SQL 数据仓库数据库中创建目标表架构：
-  
-        CREATE TABLE [dbo].[lineitem]
-        (
-            [L_ORDERKEY] [bigint] NOT NULL,
-            [L_PARTKEY] [bigint] NOT NULL,
-            [L_SUPPKEY] [bigint] NOT NULL,
-            [L_LINENUMBER] [int] NOT NULL,
-            [L_QUANTITY] [decimal](15, 2) NULL,
-            [L_EXTENDEDPRICE] [decimal](15, 2) NULL,
-            [L_DISCOUNT] [decimal](15, 2) NULL,
-            [L_TAX] [decimal](15, 2) NULL,
-            [L_RETURNFLAG] [char](1) NULL,
-            [L_LINESTATUS] [char](1) NULL,
-            [L_SHIPDATE] [date] NULL,
-            [L_COMMITDATE] [date] NULL,
-            [L_RECEIPTDATE] [date] NULL,
-            [L_SHIPINSTRUCT] [char](25) NULL,
-            [L_SHIPMODE] [char](10) NULL,
-            [L_COMMENT] [varchar](44) NULL
-        )
-        WITH
-        (
-            DISTRIBUTION = ROUND_ROBIN,
-            CLUSTERED COLUMNSTORE INDEX
-        )
 
+    ```SQL  
+    CREATE TABLE [dbo].[lineitem]
+    (
+        [L_ORDERKEY] [bigint] NOT NULL,
+        [L_PARTKEY] [bigint] NOT NULL,
+        [L_SUPPKEY] [bigint] NOT NULL,
+        [L_LINENUMBER] [int] NOT NULL,
+        [L_QUANTITY] [decimal](15, 2) NULL,
+        [L_EXTENDEDPRICE] [decimal](15, 2) NULL,
+        [L_DISCOUNT] [decimal](15, 2) NULL,
+        [L_TAX] [decimal](15, 2) NULL,
+        [L_RETURNFLAG] [char](1) NULL,
+        [L_LINESTATUS] [char](1) NULL,
+        [L_SHIPDATE] [date] NULL,
+        [L_COMMITDATE] [date] NULL,
+        [L_RECEIPTDATE] [date] NULL,
+        [L_SHIPINSTRUCT] [char](25) NULL,
+        [L_SHIPMODE] [char](10) NULL,
+        [L_COMMENT] [varchar](44) NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    ```
 完成必需的步骤后，现在可以准备使用复制向导配置复制活动。
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
@@ -139,67 +140,66 @@ ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
 2. 选择“立即运行一次”选项。   
 3. 单击“资源组名称” 的 Azure 数据工厂。  
 
-![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
+    ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>步骤 2：配置源
 本部分说明配置源的步骤：包含 1 TB TPC-H 行项目文件的 Azure Blob。
 
-选择“Azure Blob 存储”作为数据存储，并单击“下一步”。
+1. 选择“Azure Blob 存储”作为数据存储，并单击“下一步”。
 
-![复制向导 - 选择源页](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
+    ![复制向导 - 选择源页](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-填写 Azure Blob 存储帐户的连接信息，并单击“下一步”。
+2. 填写 Azure Blob 存储帐户的连接信息，并单击“下一步”。
 
-![复制向导 - 源连接信息](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
+    ![复制向导 - 源连接信息](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-选择包含 TPC-H 行项目文件的“文件夹”，然后单击“下一步”。
+3. 选择包含 TPC-H 行项目文件的“文件夹”，然后单击“下一步”。
 
-![复制向导 - 选择输入文件夹](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
+    ![复制向导 - 选择输入文件夹](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-单击“下一步”时将自动检测文件格式设置。  请检查，以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”。
+4. 单击“下一步”时将自动检测文件格式设置。  请检查，以确保列分隔符为“|”而非默认的逗号“，”。  预览数据后，单击“下一步”。
 
-![复制向导 - 文件格式设置](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
+    ![复制向导 - 文件格式设置](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>步骤 3：配置目标
 本部分演示如何配置目标：Azure SQL 数据仓库数据库中的 `lineitem` 表。
 
-选择“Azure SQL 数据仓库”作为目标存储，并单击“下一步”。
+1. 选择“Azure SQL 数据仓库”作为目标存储，并单击“下一步”。
 
-![复制向导 - 选择目标数据存储](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
+    ![复制向导 - 选择目标数据存储](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），然后单击“下一步”。 
+2. 填写 Azure SQL 数据仓库的连接信息。  请确保指定作为 `xlargerc` 角色的成员的用户（有关详细说明，请参阅**先决条件**部分），然后单击“下一步”。 
 
-![复制向导 - 目标连接信息](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
+    ![复制向导 - 目标连接信息](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-选择目标表，然后单击“下一步”。
+3. 选择目标表，然后单击“下一步”。
 
-![复制向导 - 表映射页](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
+    ![复制向导 - 表映射页](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-接受列映射的默认设置，然后单击“下一步”。
+4. 接受列映射的默认设置，然后单击“下一步”。
 
-![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/schema-mapping.png)
+    ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/schema-mapping.png)
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
+
 默认选中“允许 polybase”。  单击“资源组名称” 的 Azure 数据工厂。
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>步骤 5：部署和监视加载结果
-单击“完成”按钮以便部署。 
+1. 单击“完成”按钮以便部署。 
 
-![复制向导 - 摘要页](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![复制向导 - 摘要页](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-部署完成后，单击 `Click here to monitor copy pipeline` 以监视副本运行进度。
+2. 部署完成后，单击 `Click here to monitor copy pipeline` 以监视副本运行进度。 选择在“活动窗口”列表中创建的副本管道。
 
-选择在“活动窗口”列表中创建的副本管道。
+    ![复制向导 - 摘要页](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
-![复制向导 - 摘要页](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    可以在右侧面板中的“活动窗口资源管理器”中查看副本运行的详细信息，包括从源中读取和写入到目标中的数据量、持续时间以及运行的平均吞吐量。
 
-可以在右侧面板中的“活动窗口资源管理器”中查看副本运行的详细信息，包括从源中读取和写入到目标中的数据量、持续时间以及运行的平均吞吐量。
+    如以下屏幕截图所示，将 1 TB 数据从 Azure Blob 存储复制到 SQL 数据仓库花费 14 分钟，从而有效地实现了 1.22 GBps 的吞吐量！
 
-如以下屏幕截图所示，将 1 TB 数据从 Azure Blob 存储复制到 SQL 数据仓库花费 14 分钟，从而有效地实现了 1.22 GBps 的吞吐量！
-
-![复制向导 - “成功”对话框](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
+    ![复制向导 - “成功”对话框](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
 ## <a name="best-practices"></a>最佳实践
 以下是运行 Azure SQL 数据仓库数据库的一些最佳做法：

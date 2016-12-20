@@ -51,30 +51,33 @@ Azure 数据工厂当前仅支持将数据从[支持的本地源数据存储](da
 
 **Azure 搜索链接服务：**
 
-    {   
-        "name": "AzureSearchLinkedService",
-        "properties": {
-            "type": "AzureSearch",
-            "typeProperties": {
-                "url": "https://<service>.search.windows.net",
-                "key": "<AdminKey>"
-            }
+```JSON
+{   
+    "name": "AzureSearchLinkedService",
+    "properties": {
+        "type": "AzureSearch",
+        "typeProperties": {
+            "url": "https://<service>.search.windows.net",
+            "key": "<AdminKey>"
         }
     }
-
+}
+```
 
 **SQL Server 链接服务**
 
-    {
-      "Name": "SqlServerLinkedService",
-      "properties": {
-        "type": "OnPremisesSqlServer",
-        "typeProperties": {
-          "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;",
-          "gatewayName": "<gatewayname>"
-        }
-      }
+```JSON
+{
+  "Name": "SqlServerLinkedService",
+  "properties": {
+    "type": "OnPremisesSqlServer",
+    "typeProperties": {
+      "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;",
+      "gatewayName": "<gatewayname>"
     }
+  }
+}
+```
 
 **SQL Server 输入数据集**
 
@@ -82,98 +85,102 @@ Azure 数据工厂当前仅支持将数据从[支持的本地源数据存储](da
 
 设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
-    {
-      "name": "SqlServerDataset",
-      "properties": {
-        "type": "SqlServerTable",
-        "linkedServiceName": "SqlServerLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
+```JSON
+{
+  "name": "SqlServerDataset",
+  "properties": {
+    "type": "SqlServerTable",
+    "linkedServiceName": "SqlServerLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **Azure 搜索输出数据集：**
 
 此示例将数据复制到名为**产品**的 Azure 搜索索引中。 数据工厂不创建索引。 若要测试示例，请创建具有此名称的索引。 创建列数与输入数据集列数相同的 Azure 搜索索引。 每隔一小时会将新条目添加到 Azure 搜索索引。
 
-    {
-        "name": "AzureSearchIndexDataset",
-        "properties": {
-            "type": "AzureSearchIndex",
-            "linkedServiceName": "AzureSearchLinkedService",
-            "typeProperties" : {
-                "indexName": "products",
-            },
-            "availability": {
-                "frequency": "Minute",
-                "interval": 15
-            }
-       }
-    }
-
+```JSON
+{
+    "name": "AzureSearchIndexDataset",
+    "properties": {
+        "type": "AzureSearchIndex",
+        "linkedServiceName": "AzureSearchLinkedService",
+        "typeProperties" : {
+            "indexName": "products",
+        },
+        "availability": {
+            "frequency": "Minute",
+            "interval": 15
+        }
+   }
+}
+```
 
 **包含复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **SqlSource**，**接收器**类型设置为 **AzureSearchIndexSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline for copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline for copy activity",
+    "activities":[  
+      {
+        "name": "SqlServertoAzureSearchIndex",
+        "description": "copy activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "SqlServertoAzureSearchIndex",
-            "description": "copy activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": " SqlServerInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureSearchIndexDataset"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "SqlSource",
-                "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
-              },
-              "sink": {
-                "type": "AzureSearchIndexSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": " SqlServerInput"
           }
-         ]
-       }
-    }
-
+        ],
+        "outputs": [
+          {
+            "name": "AzureSearchIndexDataset"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "SqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
+          },
+          "sink": {
+            "type": "AzureSearchIndexSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+     ]
+   }
+}
+```
 
 
 ## <a name="azure-search-linked-service-properties"></a>Azure 搜索链接服务属性
@@ -247,13 +254,14 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 
 以下示例演示包含三个列（`userid`、`name` 和 `lastlogindate`）的表的结构部分 JSON。
 
-    "structure": 
-    [
-        { "name": "userid"},
-        { "name": "name"},
-        { "name": "lastlogindate"}
-    ],
-
+```JSON
+"structure": 
+[
+    { "name": "userid"},
+    { "name": "name"},
+    { "name": "lastlogindate"}
+],
+```
 若要了解何时加入“结构”信息以及在**结构**部分包含哪些信息，请遵循以下指南。
 
 - 对于存储数据架构、类型信息和数据本身的**结构化数据源**（例如：SQL Server、Oracle、Azure 表等）：仅在将特定源列映射到接收器中的特定列且其名称不相同时，才指定“结构”部分。 请参阅列映射部分，了解详细信息。 

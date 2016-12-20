@@ -49,164 +49,168 @@ ms.openlocfilehash: 4ca6e9a70eeba688912dd1f2c840fe0289a365c9
 
 **Amazon Redshift 链接服务**
 
+```json
+{
+    "name": "AmazonRedshiftLinkedService",
+    "properties":
     {
-        "name": "AmazonRedshiftLinkedService",
-        "properties":
+        "type": "AmazonRedshift",
+        "typeProperties":
         {
-            "type": "AmazonRedshift",
-            "typeProperties":
-            {
-                "server": "< The IP address or host name of the Amazon Redshift server >",
-                "port": <The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>,
-                "database": "<The database name of the Amazon Redshift database>",
-                "username": "<username>",
-                "password": "<password>"
-            }
+            "server": "< The IP address or host name of the Amazon Redshift server >",
+            "port": <The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>,
+            "database": "<The database name of the Amazon Redshift database>",
+            "username": "<username>",
+            "password": "<password>"
         }
     }
-
+}
+```
 
 **Azure 存储链接服务**
 
-    {
-      "name": "AzureStorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```json
+{
+  "name": "AzureStorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 **Amazon Redshift 输入数据集**
 
 设置 **"external": true** 将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。 对于不是由管道中的活动生成的输入数据集，将此属性设置为 true。
 
-    {
-        "name": "AmazonRedshiftInputDataset",
-        "properties": {
-            "type": "RelationalTable",
-            "linkedServiceName": "AmazonRedshiftLinkedService",
-            "typeProperties": {
-                "tableName": "<Table name>"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true
-        }
+```json
+{
+    "name": "AmazonRedshiftInputDataset",
+    "properties": {
+        "type": "RelationalTable",
+        "linkedServiceName": "AmazonRedshiftLinkedService",
+        "typeProperties": {
+            "tableName": "<Table name>"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true
     }
-
+}
+```
 
 **Azure Blob 输出数据集**
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
-    {
-        "name": "AzureBlobOutputDataSet",
-        "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mycontainer/fromamazonredshift/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
-                "format": {
-                    "type": "TextFormat",
-                    "rowDelimiter": "\n",
-                    "columnDelimiter": "\t"
-                },
-                "partitionedBy": [
-                    {
-                        "name": "Year",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "yyyy"
-                        }
-                    },
-                    {
-                        "name": "Month",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "MM"
-                        }
-                    },
-                    {
-                        "name": "Day",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "dd"
-                        }
-                    },
-                    {
-                        "name": "Hour",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "HH"
-                        }
-                    }
-                ]
+```json
+{
+    "name": "AzureBlobOutputDataSet",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mycontainer/fromamazonredshift/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+            "format": {
+                "type": "TextFormat",
+                "rowDelimiter": "\n",
+                "columnDelimiter": "\t"
             },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "Day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                },
+                {
+                    "name": "Hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "HH"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
-
+}
+```
 
 **包含复制活动的管道**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
-    {
-        "name": "CopyAmazonRedshiftToBlob",
-        "properties": {
-            "description": "pipeline for copy activity",
-            "activities": [
-                {
-                    "type": "Copy",
-                    "typeProperties": {
-                        "source": {
-                            "type": "RelationalSource",
-                            "query": "$$Text.Format('select * from MyTable where timestamp >= \\'{0:yyyy-MM-ddTHH:mm:ss}\\' AND timestamp < \\'{1:yyyy-MM-ddTHH:mm:ss}\\'', WindowStart, WindowEnd)"
-                        },
-                        "sink": {
-                            "type": "BlobSink",
-                            "writeBatchSize": 0,
-                            "writeBatchTimeout": "00:00:00"
-                        }
+```json
+{
+    "name": "CopyAmazonRedshiftToBlob",
+    "properties": {
+        "description": "pipeline for copy activity",
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "RelationalSource",
+                        "query": "$$Text.Format('select * from MyTable where timestamp >= \\'{0:yyyy-MM-ddTHH:mm:ss}\\' AND timestamp < \\'{1:yyyy-MM-ddTHH:mm:ss}\\'', WindowStart, WindowEnd)"
                     },
-                    "inputs": [
-                        {
-                            "name": "AmazonRedshiftInputDataset"
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "name": "AzureBlobOutputDataSet"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00",
-                        "concurrency": 1
-                    },
-                    "scheduler": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    },
-                    "name": "AmazonRedshiftToBlob"
-                }
-            ],
-            "start": "2014-06-01T18:00:00Z",
-            "end": "2014-06-01T19:00:00Z"
-        }
+                    "sink": {
+                        "type": "BlobSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "AmazonRedshiftInputDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "AzureBlobOutputDataSet"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1
+                },
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "AmazonRedshiftToBlob"
+            }
+        ],
+        "start": "2014-06-01T18:00:00Z",
+        "end": "2014-06-01T19:00:00Z"
     }
-
+}
+```
 
 
 ## <a name="linked-service-properties"></a>链接服务属性

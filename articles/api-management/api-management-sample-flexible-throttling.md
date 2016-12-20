@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: darrmi
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -32,23 +32,27 @@ ms.openlocfilehash: 2a5078b34f74efd5d394587d8ace7f339ecedb5e
 ## <a name="ip-address-throttling"></a>IP 地址限制
 以下策略限制单个客户端 IP 地址每一分钟只有 10 个调用，等于每个月总数为 1,000,000 个调用和 10,000 KB 带宽。 
 
-    <rate-limit-by-key  calls="10"
-              renewal-period="60"
-              counter-key="@(context.Request.IpAddress)" />
+```xml
+<rate-limit-by-key  calls="10"
+          renewal-period="60"
+          counter-key="@(context.Request.IpAddress)" />
 
-    <quota-by-key calls="1000000"
-              bandwidth="10000"
-              renewal-period="2629800"
-              counter-key="@(context.Request.IpAddress)" />
+<quota-by-key calls="1000000"
+          bandwidth="10000"
+          renewal-period="2629800"
+          counter-key="@(context.Request.IpAddress)" />
+```
 
 如果 Internet 上的所有客户端都使用唯一 IP 地址，这是可能是限制用户使用量的有效方式。 但是，很有可能多个用户共享单个公共 IP 地址，由于他们通过 NAT 设备访问 Internet。 尽管如此，对允许未经身份验证访问的 API 而言，`IpAddress` 可能是最佳选项。
 
 ## <a name="user-identity-throttling"></a>用户标识限制
 如果用户经过身份验证，可以根据该用户的唯一标识生成限制密钥。
 
-    <rate-limit-by-key calls="10"
-        renewal-period="60"
-        counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
+```xml
+<rate-limit-by-key calls="10"
+    renewal-period="60"
+    counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
+```
 
 在本示例中，我们要提取授权标头，将它转换为 `JWT` 对象，然后使用令牌的使用者来识别用户，并将它用作速率限制密钥。 如果用户标识作为声明之一存储在 `JWT` 中，可以改用该值。
 
@@ -58,9 +62,11 @@ ms.openlocfilehash: 2a5078b34f74efd5d394587d8ace7f339ecedb5e
 ## <a name="client-driven-throttling"></a>客户端驱动的限制
 使用[策略表达式](https://msdn.microsoft.com/library/azure/dn910913.aspx)定义限制密钥时，API 提供程序将选择如何设置限制范围。 但是，开发人员可以控制自己客户的速率限制。 API 提供程序可以通过导入自定义标头来做到这一点，允许开发人员的客户端应用程序向 API 传递密钥。
 
-    <rate-limit-by-key calls="100"
-              renewal-period="60"
-              counter-key="@(request.Headers.GetValueOrDefault("Rate-Key",""))"/>
+```xml
+<rate-limit-by-key calls="100"
+          renewal-period="60"
+          counter-key="@(request.Headers.GetValueOrDefault("Rate-Key",""))"/>
+```
 
 这样，开发人员的客户端应用程序便可以选择如何创建速率限制密钥。 加上一些奇思妙想，客户端开发人员可以通过分配密钥集给用户和轮流使用密钥，创建自己的速率层。
 
