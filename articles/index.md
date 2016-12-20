@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure 文档 | Microsoft 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: b6c08febd8c95c1aa6a2af4563ed4fdee8ee022f
-ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
+ms.sourcegitcommit: cee95b80d3e4360d68e6f37ad3c61e15d7d2a42e
+ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
 
 ---
 <div id="main" class="v2">
@@ -264,12 +264,12 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                                                 <p>CDN</p>
                                             </a>
                                         </li>
-                                        <!-- <li>
+                                        <li>
                                         <a href="/azure/traffic-manager/">
                                                 <img src="media/index/TrafficManager.svg" alt="" />
-                                                <p>Traffic Manager</p>
+                                                <p>流量管理器</p>
                                             </a>
-                                        </li> -->
+                                        </li>
                                         <li>
                                             <a href="/azure/expressroute/">
                                                 <img src="media/index/ExpressRoute.svg" alt="" />
@@ -499,12 +499,6 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                                                 <p>计划程序</p>
                                             </a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="/azure/traffic-manager/">
-                                                <img src="media/index/TrafficManager.svg" alt="" />
-                                                <p>Traffic Manager</p>
-                                            </a>
-                                        </li> -->
                                         <li>
                                             <a href="/azure/monitoring-and-diagnostics/">
                                                 <img src="media/index/AzureMonitoring.svg" alt="" />
@@ -956,7 +950,7 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li>
+                            <li>
                                 <a href="/azure/traffic-manager/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -967,14 +961,14 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Traffic Manager</h3>
-                                                    <p>Route incoming traffic for high performance and availability</p>
+                                                    <h3>流量管理器</h3>
+                                                    <p>根据高性能和高可用性要求路由传入流量</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li> -->
+                            </li>
                             <li>
                                 <a href="/azure/expressroute/">
                                     <div class="cardSize">
@@ -1628,7 +1622,7 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                         <a href="#iot">物联网</a>
                         <ul id="iot" class="cardsA">
                             <li>
-                                <a href="https://azure.microsoft.com/en-us/develop/iot/">
+                                <a href="https://azure.microsoft.com/develop/iot/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2042,7 +2036,7 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                         <a href="#devtools">开发人员工具</a>
                         <ul id="devtools" class="cardsA">
                             <li>
-                                <a href="https://www.visualstudio.com/en-us/docs/overview">
+                                <a href="https://www.visualstudio.com/docs/overview">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2255,25 +2249,6 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                                     </div>
                                 </a>
                             </li>
-                            <!-- <li>
-                                <a href="/azure/traffic-manager/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/TrafficManager.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Traffic Manager</h3>
-                                                    <p>Route incoming traffic for high performance and availability</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li> -->
                             <li>
                                 <a href="/azure/monitoring-and-diagnostics/">
                                     <div class="cardSize">
@@ -2362,7 +2337,7 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
-                                    <h1>语言和框架</h1>
+                                    <h1>语言 &amp; 框架</h1>
                                 </div>
                             </li>
                             <li>
@@ -2627,7 +2602,7 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                             </li>
                             <li>
                                 <div class="container">
-                                    <h1>工具和扩展</h1>
+                                    <h1>工具 &amp; 扩展</h1>
                                 </div>
                             </li>
                             <li>
@@ -2716,7 +2691,7 @@ ms.openlocfilehash: 0261823171ab55b2242e34c27c40385f56503a0d
                                                     <a href="http://storageexplorer.com/">存储资源管理器</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/en-us/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">入门</a>
+                                                    <a href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">入门</a>
                                                 </p>
                                                 <p>
                                                      <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">适用于 Linux 的下载项</a>

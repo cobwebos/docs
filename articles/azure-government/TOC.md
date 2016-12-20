@@ -27,12 +27,13 @@
 ### [网络](documentation-government-networking.md)
 ### [安全性 + 标识](documentation-government-services-securityandidentity.md)
 ### [监视 + 管理](documentation-government-services-monitoringandmanagement.md)
+### [Web + 移动](documentation-government-services-webandmobile.md)
 
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/)
 ## [试用](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

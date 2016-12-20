@@ -18,6 +18,7 @@
 ### [Java Web 应用](documentdb-java-application.md)
 ### [Python Flask Web 应用](documentdb-python-application.md)
 ## [在本地开发](documentdb-nosql-local-emulator.md)
+### [导出模拟器证书](documentdb-nosql-local-emulator-export-ssl-certificates.md)
 ## [常见问题](documentdb-faq.md)
 
 # 如何
@@ -41,13 +42,17 @@
 ### [资源配额](documentdb-limits.md)
 ### [增加配额](documentdb-increase-limits.md)
 ### [请求单位](documentdb-request-units.md)
-### [Azure CLI 和 Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
+### Azure CLI
+#### [创建帐户](documentdb-automation-resource-manager-cli.md)
+#### [添加或删除区域](documentdb-automation-region-management.md)
+### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [防火墙支持](documentdb-firewall-support.md)
 ### [提升帐户](documentdb-supercharge-your-account.md)
 
 ## 开发
 ### [SQL 查询](documentdb-sql-query.md)
 ### [存储过程、触发器和 UDF](documentdb-programming.md)
+### [使用更改源跟踪更改](documentdb-change-feed.md)
 ### [性能测试](documentdb-performance-testing.md)
 ### [性能提示](documentdb-performance-tips.md)
 ### 面向 MongoDB 开发人员的 DocumentDB
@@ -112,6 +117,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

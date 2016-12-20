@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 3bf27e3ba3e53aa2f06a078b81fff18fc449bc1c
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: e81571dc2d0d52f8b04c7ff99a76d92c784c259e
 
 ---
 #<a name="application-gateway-documentation"></a>应用程序网关文档
@@ -29,7 +29,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=application-gateway">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=application-gateway">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -112,15 +112,15 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/powershell/resourcemanager">PowerShell cmdlet</a></p>
-                        <p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
+                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0 预览版</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -136,13 +136,13 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST API</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">经典 REST API</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST API 参考</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">经典 REST API 参考</a></p>
                     </div>
                 </div>
             </div>

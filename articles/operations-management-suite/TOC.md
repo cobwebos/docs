@@ -34,6 +34,7 @@
 ### [基线评估](oms-security-baseline.md)
 ### [恶意软件评估](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [系统更新评估](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [连接安全产品](oms-security-connect-products.md)
 ## [与 OMS 集成](operations-management-suite-integration.md)
 
 
@@ -64,6 +65,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
