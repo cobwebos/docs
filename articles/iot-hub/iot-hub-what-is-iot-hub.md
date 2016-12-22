@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 12/12/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 42774f83dc4c53dc8f090acb922b5aae6e8b4bed
+ms.sourcegitcommit: f01a5e7ec081b1c989fc8784c845d6e639b1d73b
+ms.openlocfilehash: 92c5e8c50b281fe1dc7e296dcdf8a6822b187ce3
 
 
 ---
@@ -24,6 +24,7 @@ ms.openlocfilehash: 42774f83dc4c53dc8f090acb922b5aae6e8b4bed
 欢迎使用 Azure IoT 中心。 本文概述 Azure IoT 中心，并描述应该使用此服务实现物联网 (IoT) 解决方案的原因。 Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备和一个解决方案后端之间实现安全可靠的双向通信。 Azure IoT 中心：
 
 * 提供了多个设备到云和云到设备的通信选项，包括单向消息传递、文件传输和请求-答复方法。
+* 将内置的声明性消息路由到其他 Azure 服务。
 * 为设备元数据和同步的状态信息提供可查询存储。
 * 使用每个设备的安全密钥或 X.509 证书来实现安全的通信和访问控制。
 * 可广泛监视设备连接性和设备标识管理事件。
@@ -58,6 +59,7 @@ IoT 中心和设备库可帮助你应对挑战，即如何以可靠且安全的�
 
 * **设备克隆**。 可以使用[设备克隆][lnk-twins]存储、同步和查询设备元数据和状态信息。 设备克隆是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备克隆。 
 * **每个设备的身份验证和安全连接性**。 可以为每台设备预配独有的[安全密钥][lnk-devguide-security]，让它连接到 IoT 中心。 [IoT 中心标识注册表][lnk-devguide-identityregistry]会在解决方案中存储设备标识和密钥。 解决方案后端可添加单独的设备，允许或拒绝列表完全控制设备访问权限。
+* **基于声明性规则将设备到云的消息路由到 Azure 服务**。 IoT 中心根据消息规则定义消息路由，以控制中心发送设备到云消息的位置。 消息规则不要求用户编写任何代码，并且可以代替自定义的引入后消息调度程序。
 * **设备连接操作监视**。 你可以收到有关设备标识管理操作与设备连接事件的详细操作日志。 这种监视功能使 IoT 解决方案能够标识连接问题，例如，尝试使用错误凭据进行连接的设备、消息发送太频繁，或拒绝所有云到设备的消息。
 * **一组丰富的设备库**。 [Azure IoT 设备 SDK][lnk-device-sdks] 适用于各种语言和平台 - C 面向很多 Linux 分发版、Windows 和实时操作系统。 Azure IoT 设备 SDK 也支持 C#、Java 和 JavaScript 等托管语言。
 * **IoT 协议和可扩展性**。 如果解决方案无法使用设备库，则 IoT 中心会公开一个公共协议，它使设备可以通过本机方式使用 MQTT v3.1.1、HTTP 1.1 或 AMQP 1.0 协议。 还可以通过以下方式扩展 IoT 中心，以便为自定义协议提供支持：
@@ -89,7 +91,9 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 支持通过 ExpressRoute 的公共对等互连路径访问 IoT 中心。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解 Azure IoT 中心如何实现标准的设备管理，以便远程管理、配置和更新设备，请参阅 [IoT 中心设备管理概述][lnk-device-management]。
+若要了解如何从设备发送消息并从 IoT 中心接收消息以及如何为 IoT 中心配置消息路由，请参阅[使用 IoT 中心发送和接收消息][lnk-send-messages]。
+
+若要了解 IoT 中心如何实现标准的设备管理，以便远程管理、配置和更新设备，请参阅 [IoT 中心设备管理概述][lnk-device-management]。
 
 可以使用 Azure IoT 设备 SDK 在各种设备硬件平台和操作系统上实现客户端应用程序。 设备 SDK 包含库，可协助将遥测数据发送到 IoT 中心，并接收云到设备的消息。 使用设备 SDK 时，可从各种网络协议中进行选择，以便与 IoT 中心通信。 若要了解详细信息，请参阅[设备 SDK 的相关信息][lnk-device-sdks]。
 
@@ -112,6 +116,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-send-messages]: iot-hub-devguide-messaging.md
 [lnk-device-management]: iot-hub-device-management-overview.md
 
 [lnk-twins]: iot-hub-devguide-device-twins.md
@@ -121,6 +126,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [lnk-security-ground-up]: iot-hub-security-ground-up.md
 
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Dec16_HO2-->
 
 

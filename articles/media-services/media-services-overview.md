@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/12/2016
+ms.date: 12/11/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1a680f20bc9ceee8efd943cd71312372fe56a878
+ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
+ms.openlocfilehash: 698b834ffa82f2a1ab171fb5efc13a2fe916b4ec
 
 
 ---
@@ -47,15 +47,16 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 * [AMS 按需流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ## <a name="prerequisites"></a>先决条件
+
 若要开始使用 Azure 媒体服务，你应该具备以下条件：
 
 1. 一个 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 2. Azure 媒体服务帐户。 使用 Azure 门户、.NET 或 REST API 创建 Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 3. （可选）设置开发环境。 为开发环境选择“.NET”或“REST API”。 有关详细信息，请参阅 [设置环境](media-services-dotnet-how-to-use.md)。
 
-此外，请学习如何以编程方式进行[连接](media-services-dotnet-connect-programmatically.md)。
+    此外，请学习如何以编程方式进行[连接](media-services-dotnet-connect-programmatically.md)。
 
-1. （推荐）分配一个或多个缩放单位。 建议为生产环境中的应用程序分配一个或多个扩展单元。   有关详细信息，请参阅 [管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
+4. （推荐）分配一个或多个缩放单位。 建议为生产环境中的应用程序分配一个或多个扩展单元。   有关详细信息，请参阅 [管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
 
 ## <a name="concepts-and-overview"></a>概念和概述
 有关 Azure 媒体服务的概念，请参阅 [概念](media-services-concepts.md)。
@@ -129,11 +130,11 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 * （可选）将你的流编码为自适应比特率流
 * 预览你的实时流
 * 记录和存储引入的内容，以便稍后进行流式处理（视频点播）
-* 直接通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS、HDS）将内容传递给客户，或传递至内容传送网络 (CDN) 以供进一步分发。
+* 直接通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS）将内容传递给客户，或传递到内容传送网络 (CDN) 以供进一步分发。
 
 **Microsoft Azure 媒体服务** (AMS) 提供了引入、编码、预览、存储和实时传送视频流内容的功能。
 
-在将内容传送给客户时，你的目标就是：将优质视频传递到处于不同网络条件下的各种设备。 为了满足质量和网络条件的要求，使用实时编码器将流编码为多比特率（自适应比特率）视频流。  为满足不同设备的流式处理要求，使用媒体服务 [动态打包](media-services-dynamic-packaging-overview.md) 将流动态地重新打包为不同的协议。 媒体服务支持传送以下自适应比特率流式处理技术：HTTP 实时流式处理 (HLS)、平滑流式处理、MPEG DASH 和 HDS（仅适用于 Adobe PrimeTime/Access 许可证持有人）。
+在将内容传送给客户时，你的目标就是：将优质视频传递到处于不同网络条件下的各种设备。 为了满足质量和网络条件的要求，使用实时编码器将流编码为多比特率（自适应比特率）视频流。  为满足不同设备的流式处理要求，使用媒体服务 [动态打包](media-services-dynamic-packaging-overview.md) 将流动态地重新打包为不同的协议。 媒体服务支持以下自适应比特率流式处理技术的传送：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。
 
 在 Azure 媒体服务中，“频道”、“程序”和“流式处理终结点”处理所有实时传送视频流功能，包括引入、格式化、DVR、安全性、可伸缩性和冗余。
 

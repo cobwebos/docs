@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: edeee13457c1098eb1b44efaa97e9a84d29e88e7
-ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
+ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
+ms.openlocfilehash: 819b40302f158d1d6224878c164cf7ff71947887
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
 若要创建虚拟机，必须执行本文中的所有步骤，这需要花费大约 30 分钟时间。 请将命令中的示例参数值替换为适合自己环境的名称。
 
 ## <a name="step-1-install-azure-powershell"></a>步骤 1：安装 Azure PowerShell
-有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="step-2-create-a-resource-group"></a>步骤 2：创建资源组
 所有资源都必须包含在资源组中，因此先创建资源组。  
@@ -159,6 +159,6 @@ ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

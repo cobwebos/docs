@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 12/12/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: 21ebc8083113238ef70f57dae2381ebcf102c39d
+ms.sourcegitcommit: dabe7d9796ab24a257ea904bc5d978cb71d7e149
+ms.openlocfilehash: 1733edf961c2ce1297fc148d3a844ce141f5d7c2
 
 
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
-应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果你希望以组的方式部署、管理和监视这些这些组件， 那么，你可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助你在部署后管理资源。 
+应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果你希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure Resource Manager 以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助你在部署后管理资源。 
 
 ## <a name="terminology"></a>术语
 如果你不熟悉 Azure Resource Manager，则可能不熟悉某些术语。
@@ -81,6 +81,10 @@ Resource Manager 提供一致的管理层，用于管理通过 Azure PowerShell�
 每个资源提供程序都会提供一组用于 Azure 服务的资源和操作。 例如，若要存储密钥和密码，可以使用 **Microsoft.KeyVault** 资源提供程序。 此资源提供程序提供名为 **vaults** 的资源类型来创建密钥保管库，提供名为 **vaults/secrets** 的资源类型在密钥保管库中创建密码。 
 
 开始部署资源之前，应了解可用的资源提供程序。 了解资源提供程序和资源的名称可帮助确定要部署到 Azure 的资源。
+
+可通过门户查看所有资源提供程序。 在订阅的边栏选项卡中，选择“资源提供程序”：
+
+![查看资源提供程序](./media/resource-group-overview/view-resource-providers.png)
 
 使用以下 PowerShell cmdlet 检索所有资源提供程序：
 
@@ -322,6 +326,6 @@ AutoRest 将这些 RESTful API 规范转换成采用多种语言的客户端库�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

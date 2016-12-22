@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/04/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 4450ad62a9b05ac4c963ae3271590f9431b782ed
-ms.openlocfilehash: 87f5ac490f113a7c0144b20563a4f8f4bbcc6b21
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 05361e08b93c93491111661b5fe997ebf5053d16
 
 
 ---
@@ -110,7 +110,6 @@ Service Fabric 模板包括一组用于生成和部署应用程序的 Gradle 任
 
 应用将在片刻之后生成和部署。 可以从 Service Fabric Explorer 监视其状态。
 
-
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 
 若要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤： 
@@ -121,6 +120,7 @@ Service Fabric 模板包括一组用于生成和部署应用程序的 Gradle 任
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Reliable Actors 的详细信息](service-fabric-reliable-actors-introduction.md)
 * [使用 Azure CLI 与 Service Fabric 群集交互](service-fabric-azure-cli.md)
+* 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
