@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/11/2016
+ms.date: 12/22/2016
 ms.author: arramac
 translationtype: Human Translation
 ms.sourcegitcommit: 994fb8080f053ae3eb72eb1dda92bd5aa46c6988
@@ -96,9 +96,8 @@ DocumentDB 返回在“无”索引模式下对集合进行查询的错误。 �
 
 下面的代码示例演示如何使用.NET SDK 借助针对所有文档插入的一致自动索引创建 DocumentDB 集合。
 
-     // Default collection creates a hash index for all string and numeric    
-     // fields. Hash indexes are compact and offer efficient
-     // performance for equality queries.
+     // Default collection creates a hash index for all string fields and a range index for all numeric    
+     // fields. Hash indexes are compact and offer efficient performance for equality queries.
 
      var collection = new DocumentCollection { Id ="defaultCollection" };
 

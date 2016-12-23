@@ -64,7 +64,7 @@ Azure Active Directory 提供其他选项，也可以检索令牌。 可以根�
           <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.0.4-SNAPSHOT</version>
+            <version>2.1.1</version>
           </dependency>
           <dependency>
             <groupId>org.slf4j</groupId>
