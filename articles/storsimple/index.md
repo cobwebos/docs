@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。"
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 42f5ac0bae68b967378b5e1a090f3b17e4efad20
+ms.sourcegitcommit: 24d70182b209126a71c6a9846136d4d31ab3b7ce
+ms.openlocfilehash: 4eb0e15f1030b4b1e987edc4fc2fa64e302b5851
 
 ---
 #<a name="storsimple-documentation"></a>StorSimple 文档
 
-StorSimple 和 Microsoft Azure 提供独特的集成式主存储档案和灾难恢复解决方案，Azure 作为本地存储的扩展。 了解如何部署和管理 StorSimple 解决方案。
+了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。 教程和其他文档介绍了如何设置存储管理、与位置无关的备份以及灾难恢复。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -147,6 +148,6 @@ StorSimple 和 Microsoft Azure 提供独特的集成式主存储档案和灾难�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

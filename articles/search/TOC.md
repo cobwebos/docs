@@ -69,7 +69,7 @@
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=search)
 ## 使用搜索 API
-##X [API 版本](search-api-versions.md)
+## [API 版本](search-api-versions.md)
 ## [服务 REST（预览版）](search-api-2015-02-28-preview.md)
 ## [定价](https://azure.microsoft.com/pricing/details/search/)
 ## 演示站点
@@ -87,6 +87,6 @@
 ### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

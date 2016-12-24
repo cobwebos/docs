@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用负载均衡器提高应用的网络性能。 管理虚拟机、云资源和跨界虚拟网络中的流量。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8b95ce7f93293a25db4df5858209902ba6347591
+ms.sourcegitcommit: e62704476642d8a519b7bd8b9b101b47ab42e08c
+ms.openlocfilehash: 476eb9f4934d35a808fdd70b6443822eb0a7cfa7
 
 ---
 #<a name="load-balancer-documentation"></a>负载均衡器文档
 
-Azure Load Balancer 可提高应用程序的可用性和网络性能。  可将负载均衡器配置为针对传入虚拟机的 Internet 流量、云资源之间的流量、跨界虚拟网络中的流量，或者发往特定虚拟机的外部流量进行负载均衡。
+了解如何配置负载均衡器，提高应用程序的可用性和网络性能。 文档介绍了如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -141,6 +142,6 @@ Azure Load Balancer 可提高应用程序的可用性和网络性能。  可将�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

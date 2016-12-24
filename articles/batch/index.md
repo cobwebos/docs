@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用批处理有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: acf8bdbd4938583f8259c30cb253ee33b4c971ad
+ms.sourcegitcommit: aafd374ff1d72df90bd09479e18ac7ce83715cef
+ms.openlocfilehash: daf72b1a473e3940e889cd6caf78b709e08428c6
 
 ---
 #<a name="batch-documentation"></a>批处理文档
 
-使用 Azure 批处理可在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 使用批处理服务时，可以定义用于大规模并行执行应用程序的 Azure 计算资源。 可以运行按需作业或计划的作业，无需考虑如何手动创建或管理基础结构。
+了解如何使用批处理在云中有效运行大规模并行和高性能计算应用程序。 教程、API 参考和其他文档介绍了如何定义 Azure 计算资源，以并行执行或大规模执行应用程序，而无需手动配置或管理基础结构。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -157,6 +158,6 @@ ms.openlocfilehash: acf8bdbd4938583f8259c30cb253ee33b4c971ad
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

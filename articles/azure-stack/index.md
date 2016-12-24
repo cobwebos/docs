@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Azure Stack 预览版从数据中心交付 Azure 服务。 通过一个概念认证环境了解和演示功能。"
 translationtype: Human Translation
-ms.sourcegitcommit: cc7cf80b26a0bdc79448fc87d2d8b6fff1931d49
-ms.openlocfilehash: eb675cc7a401583cf0f2dc0605a16d5dda8b306f
+ms.sourcegitcommit: c93027a575b2f9d6507448f9f68011723b165bf3
+ms.openlocfilehash: c964ed3b3fe8b3af31c50f0aacb2ef1c0a8aad74
 
 ---
 #<a name="azure-stack-documentation"></a>Azure Stack 文档
 
-Microsoft Azure Stack 是一种新的混合云平台产品，通过它，可从组织的数据中心传送 Azure 服务。 Microsoft Azure Stack Technical Preview 2 正在通过概念证明 (POC) 提供。 POC 是用于学习和演示 Azure Stack 功能的环境。 通过它，可在单台物理计算机上部署所需全部组件，创建用于评估关键概念和功能以及验证 API 可扩展性模型的环境。
+了解如何使用 Azure Stack 技术预览版从组织的数据中心交付 Azure 服务。 教程和其他文档介绍了如何使用概念认证环境来了解和演示 Azure Stack 功能。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,6 +97,6 @@ Microsoft Azure Stack 是一种新的混合云平台产品，通过它，可从�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

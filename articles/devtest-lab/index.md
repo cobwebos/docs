@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用可重用项目快速创建应用程序测试环境。 教程、视频和其他资源演示了如何创建、管理和保护实验室。"
 translationtype: Human Translation
-ms.sourcegitcommit: 381c936b7e615cc35ddd429f2a70c468d511a8cf
-ms.openlocfilehash: 838593f4b7d1d83b182faf88433a5bfbf5620288
+ms.sourcegitcommit: 6ac97ee4e1c20bcca92d2c4b2d4865e286a12ed3
+ms.openlocfilehash: 079976fbc7e482944916364507aeaacb27acbdcb
 
 ---
 #<a name="devtest-labs-documentation"></a>开发测试实验室文档
 
-Azure 开发测试实验室是一项可帮助开发人员和测试人员在 Azure 中快速创建环境，同时尽量减少浪费并控制成本的服务。  可使用可重用模板和项目通过快速预配 Windows 和 Linux 环境来测试应用程序的最新版本。
+了解如何使用可重用项目通过开发测试实验室快速创建应用程序测试环境。 教程、视频和其他文档演示了如何创建、管理和保护实验室，以及添加和管理项目。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -113,6 +114,7 @@ Azure 开发测试实验室是一项可帮助开发人员和测试人员在 Azur
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何为 Azure 资源设置安全监视和策略管理。 教程、REST API 参考和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8091c1c7cbf6617725bf7620fe0c2232e4e47cec
+ms.sourcegitcommit: 4488a052681c0c146bf6efaf44f8ecebc400fecc
+ms.openlocfilehash: 92eb080a7234cb25a5560127edadfafeafc0253a
 
 ---
 # <a name="security-center-documentation"></a>安全中心文档
 
-安全中心有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+了解如何使用安全中心来深入分析和控制 Azure 资源的安全性。  教程、REST API 参考和其他文档介绍了如何设置适用于各种安全解决方案生态系统的安全监视和策略管理。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -93,6 +94,7 @@ ms.openlocfilehash: 8091c1c7cbf6617725bf7620fe0c2232e4e47cec
 </div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

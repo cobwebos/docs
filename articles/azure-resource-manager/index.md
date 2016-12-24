@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Resource Manager 以组的形式部署和管理解决方案资源，以便创建一个模板来以一致的、可重复的方式进行资源部署。"
 translationtype: Human Translation
-ms.sourcegitcommit: e48fea077e09518ab5005518c8e8a413df458b93
-ms.openlocfilehash: a7b6655d2314b198706177f1adaf1b88eb135307
+ms.sourcegitcommit: 0c80499b4b27b7c21473e0ed6468441fa26e965d
+ms.openlocfilehash: f687fd5682a912cf02efec097c6df4a0c1604938
 
 ---
 #<a name="azure-resource-manager-documentation"></a>Azure Resource Manager 文档
 
-应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果你希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure Resource Manager 以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，帮助用户在部署后管理资源
+了解如何使用 Resource Manager 以组的形式部署、监视和管理解决方案资源。 教程、API 参考和其他文档介绍了如何设置资源组和创建模板，以进行一致、可重复的部署。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -158,6 +159,7 @@ ms.openlocfilehash: a7b6655d2314b198706177f1adaf1b88eb135307
 </div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

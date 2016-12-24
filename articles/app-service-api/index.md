@@ -1,14 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Azure 应用服务中的 API 应用在云中和本地开发、托管与使用 API。 教程、视频和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: ac7a22bd592cbb1e8cdee2e6d2896c0b8ad6ea26
-
+ms.sourcegitcommit: 410479b746b5911d1ebcb51c92a6de74686cffbe
+ms.openlocfilehash: e5b9d9322bcf5860debb93fe579665f778a41e7b
 
 ---
 # <a name="app-service---api-apps-documentation"></a>应用服务 - API 应用文档
 
-API 应用是 Azure 应用服务提供的四种应用类型之一。 Azure 应用服务中的 API 应用提供丰富的功能集用于在云中和本地开发、托管与使用 API。 Azure 应用服务是完全托管的平台，适用于 Web、移动和集成方案。
+了解如何使用 Azure 应用服务中的 API 应用在云中和本地开发、托管与使用 API。 教程、视频和其他文档演示了如何创建及部署 API 应用。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -121,28 +121,6 @@ API 应用是 Azure 应用服务提供的四种应用类型之一。 Azure 应�
     </li>     
 </ul>
 
----
-
-<h2>引用</h2>
-<ul class="panelContent cardsW">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>资源</h3>
-                        <p><a href="/azure/app-service-web/app-service-web-app-azure-portal?toc=%2fazure%2fapp-service-api%2ftoc.json">Azure 门户</a></p>
-                        <p><a href="/azure/app-service-web/app-service-changes-existing-services?toc=%2fazure%2fapp-service-api%2ftoc.json">应用服务参考</a></p>
-                        <p><a href="/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started?toc=%2fazure%2fapp-service-api%2ftoc.json">WebJobs SDK</a></p>
-                   </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-
----
-
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
         <div class="img"></div>
@@ -153,6 +131,6 @@ API 应用是 Azure 应用服务提供的四种应用类型之一。 Azure 应�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

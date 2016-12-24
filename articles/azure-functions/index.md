@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何在不设置特殊基础结构的情况下，使用所选的语言开发和部署函数，以便在后台或者按计划运行任务。"
 translationtype: Human Translation
-ms.sourcegitcommit: 87316969b7849396c6542decde3257774c35c454
-ms.openlocfilehash: dc15cd4e497135ea9ce07d671020af6df49ad3f6
+ms.sourcegitcommit: 76fed1f753b910007be4d9bb16630483aa225760
+ms.openlocfilehash: 91deffe385997c3e658a7fbfe194c9c2b762df58
 
 ---
 #<a name="azure-functions-documentation"></a>Azure Functions 文档
 
-Azure Functions 是用于在云中轻松运行小段代码（“函数”）的一个解决方案。 用户可以编写解决现有问题所需的代码，无需担心要运行该代码的整个应用程序或基础结构。 用户还可以使用所选的语言（例如 C#、F#、Node.js、Python 或 PHP）开发软件。
+了解如何在不设置基础结构的情况下，使用 Functions 以所选的语言在云中开发和部署小型代码片段。 教程、模板和其他文档说明了如何针对想要在后台线程中或按计划运行的任务创建函数。
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -115,6 +116,6 @@ Azure Functions 是用于在云中轻松运行小段代码（“函数”）的�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

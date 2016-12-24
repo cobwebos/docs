@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本地和业务线应用程序的集成。"
 translationtype: Human Translation
-ms.sourcegitcommit: 329bf8f57270c901d54f27a2159287e08e4c355a
-ms.openlocfilehash: dfde406339068f9261fccb87039d18a0dfdedeff
+ms.sourcegitcommit: 74eb1a0a0f532ffe23fdfac0d8b25ee9434175a1
+ms.openlocfilehash: 754a932b8d98bbae8f7e24daab073cbec1d4d16e
 
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk 服务文档
 
-BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本地和业务线应用程序的集成。 通过该服务，可连接任何 HTTP、FTP、SFTP 或 REST 数据源。 可以使用各种 Azure 项目（例如服务总线队列、主题、SQL 数据库和 Blob 存储）传送消息。   
+了解如何使用 BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本地和业务线应用程序的集成。 教程和其他文档介绍了如何将企业与云集成。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -77,6 +78,7 @@ BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本�
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO3-->
 
 

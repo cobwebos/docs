@@ -55,12 +55,15 @@
 ### [使用更改源跟踪更改](documentdb-change-feed.md)
 ### [性能测试](documentdb-performance-testing.md)
 ### [性能提示](documentdb-performance-tips.md)
-### 面向 MongoDB 开发人员的 DocumentDB
-#### [MongoDB 协议支持](documentdb-protocol-mongodb.md)
-#### [创建帐户](documentdb-create-mongodb-account.md)
-#### [连接到帐户](documentdb-connect-mongodb-account.md)
-#### [使用 MongoChef](documentdb-mongodb-mongochef.md)
-#### [协议支持示例](documentdb-mongodb-samples.md)
+
+## 使用 DocumentDB 的 MongoDB 支持
+### [MongoDB 协议支持](documentdb-protocol-mongodb.md)
+### [创建帐户](documentdb-create-mongodb-account.md)
+### [连接到帐户](documentdb-connect-mongodb-account.md)
+### [迁移数据](documentdb-mongodb-migrate.md)
+### [使用 Robomongo](documentdb-mongodb-robomongo.md)
+### [使用 MongoChef](documentdb-mongodb-mongochef.md)
+### [协议支持示例](documentdb-mongodb-samples.md)
 
 ## 使用门户
 ### [创建数据库帐户](documentdb-create-account.md)
@@ -117,6 +120,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

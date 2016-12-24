@@ -31,7 +31,7 @@ sql-database-service-tiers.md
 | 每个数据库的最大 eDTU 数 | {10,20,<br>50} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | 
 ||||||||
 
-### <a name="standard-elastic-pool-limits-continued-"></a>标准弹性池限制（续）**
+### <a name="standard-elastic-pool-limits-continued"></a>标准弹性池限制（续） 
 
 | 池大小 (eDTU)  |  **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
@@ -57,7 +57,7 @@ sql-database-service-tiers.md
 | 每个数据库的最大 eDTU 数 | {25,50,75,<br>125} | {25,50,75,<br>125,250} | {25,50,75,<br>125,250,500} | {25,50,75,<br>125,250,500,<br>1000} | {25,50,75,<br>125,250,500,<br>1000,1500} |  
 ||||||||
 
-### <a name="premium-elastic-pool-limits-continued-"></a>高级弹性池限制（续）**
+### <a name="premium-elastic-pool-limits-continued"></a>高级弹性池限制（续） 
 
 | 池大小 (eDTU)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
 |:---|---:|---:|---:| ---: | ---: | 
@@ -72,9 +72,8 @@ sql-database-service-tiers.md
 
 \* 弹性数据库共享池存储空间，因此数据库存储空间限制为小于池的剩余存储空间或每个数据库的最大存储空间
 
-\** 目前只能通过 PowerShell 和 REST API 为标准弹性池配置包含 3000 个 eDTU 的池大小，为高级弹性池配置包含 4000 个 eDTU 的池大小。 不久之后，即可在 Azure 门户中配置这些池大小。 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -202,6 +202,7 @@
 #### [组策略设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 #### [Windows 10 设置](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 #### [常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
+#### [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 ### [将合作伙伴与 Azure AD B2B 集成](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [概述](active-directory-b2b-collaboration-overview.md)
 #### [工作原理](active-directory-b2b-how-it-works.md)
@@ -296,6 +297,6 @@
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

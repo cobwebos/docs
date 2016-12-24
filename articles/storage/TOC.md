@@ -107,9 +107,44 @@
 ## 传输数据
 ### [向/从存储移动数据](storage-moving-data.md)
 ### [AzCopy 命令行实用工具](storage-use-azcopy.md)
-### [Blob 存储的导入/导出服务](storage-import-export-service.md)
-
-# 参考
+### [使用导入/导出服务](storage-import-export-service.md)
+### [使用导入/导出工具](storage-import-export-tool-how-to.md)
+#### [设置导入/导出工具](storage-import-export-tool-setup.md)
+#### [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import.md)
+##### [在导入过程中设置属性和元数据](storage-import-export-tool-setting-properties-metadata-import.md)
+##### [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+##### [导入作业的常用命令快速参考](storage-import-export-tool-quick-reference.md)
+#### [预览导出作业的驱动器使用情况](storage-import-export-tool-previewing-drive-usage-export-v1.md)
+#### [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)
+#### [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
+#### [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
+#### [排查导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
+#### [导入/导出服务清单文件格式](storage-import-export-file-format-manifest.md)
+#### [导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)
+#### [导入/导出服务日志文件格式](storage-import-export-file-format-log.md)
+### [使用导入/导出工具 (v1)](storage-import-export-tool-how-to-v1.md)
+#### [设置导入/导出工具](storage-import-export-tool-setup-v1.md)
+#### [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import-v1.md)
+##### [在导入过程中设置属性和元数据](storage-import-export-tool-setting-properties-metadata-import-v1.md)
+##### [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
+##### [导入作业的常用命令快速参考](storage-import-export-tool-quick-reference-v1.md)
+#### [预览导出作业的驱动器使用情况](storage-import-export-tool-previewing-drive-usage-export-v1.md)
+#### [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)
+#### [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
+#### [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)
+#### [排查导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
+#### [导入/导出服务清单文件格式](storage-import-export-file-format-manifest.md)
+#### [导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)
+#### [导入/导出服务日志文件格式](storage-import-export-file-format-log.md)
+### [使用 Azure 导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
+#### [创建导入作业](storage-import-export-creating-an-import-job.md)
+#### [创建导出作业](storage-import-export-creating-an-export-job.md)
+#### [检索作业的状态信息](storage-import-export-retrieving-state-info-for-a-job.md)
+#### [枚举作业](storage-import-export-enumerating-jobs.md)
+#### [取消和删除作业](storage-import-export-cancelling-and-deleting-jobs.md)
+#### [备份驱动器清单](storage-import-export-backing-up-drive-manifests.md)
+#### [导入/导出作业的诊断和错误恢复](storage-import-export-diagnostics-and-error-recovery.md)
+# 引用
 ## [PowerShell](/powershell/storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
@@ -123,7 +158,7 @@
 ## [C++](http://azure.github.io/azure-storage-cpp)
 ## [iOS](https://github.com/Azure/azure-storage-ios)
 ## [Android](http://azure.github.io/azure-storage-android)
-## [REST]
+## REST
 ### [Blob、队列、表和文件](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
 ### [资源提供程序](/rest/api/storagerp)
 ### [导入/导出](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
@@ -166,6 +201,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用所选的 Linux 分发版创建虚拟机。 文档介绍了创建 VM 模板的不同方式。"
 translationtype: Human Translation
-ms.sourcegitcommit: f368f2700bd349e106169d1828af7a148daa5cc2
-ms.openlocfilehash: f87947ed5f072ba4f0927ade1b1d3ec0e1424f3c
+ms.sourcegitcommit: eabfc16b3714006f74cdaec68efb46f651ee1b97
+ms.openlocfilehash: 4ae49635b13d564a4bf03ea12e233c1b18985cce
 
 ---
-#<a name="linux-virtual-machine-documentation"></a>Linux 虚拟机文档
+# <a name="linux-virtual-machine-documentation"></a>Linux 虚拟机文档
 
-使用 Azure 虚拟机创建 Linux 虚拟机，并在 Azure 计算机、网络和存储基础结构上运行它。  扩展至数千台计算机以便进行 Internet 范围内的部署，或在几分钟内运行一台虚拟机以便进行繁重的数字运算：同时保证速度与一致性。
+了解如何使用所选的 Linux 分发版在 Azure 上运行虚拟机。 文档、API 参考和示例介绍了创建与部署 VM 模板的不同方式。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -140,6 +141,6 @@ ms.openlocfilehash: f87947ed5f072ba4f0927ade1b1d3ec0e1424f3c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何在云中使用 Analysis Services 设置数据建模。 文档介绍了如何使用表格数据创建企业 BI 解决方案。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: a10f328258bfe7d34d0807d4e15aa4a8ce5bbafb
+ms.sourcegitcommit: fad85d382ef508b65b57559f7f52e079caae9363
+ms.openlocfilehash: 40c79ea2a68c69352d7f14bd138f8131b3b01da9
 
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services 文档
 
-Azure Analysis Services 基于 Microsoft SQL Server Analysis Services 中经验证的分析引擎构建，可在云中提供企业级的数据建模。
+了解如何使用 Analysis Services 设置和管理数据建模。 教程和其他文档介绍了如何在云中或本地使用表格数据创建企业级 BI 解决方案。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -108,6 +109,6 @@ Azure Analysis Services 基于 Microsoft SQL Server Analysis Services 中经验�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

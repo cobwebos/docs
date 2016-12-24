@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "了解如何使用托管的 Docker 注册表服务创建和维护容器注册表来存储部署映像。 教程、API 参考和其他资源。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 2e77ba043efd03ecffd3e5e786046dedbed58877
+ms.sourcegitcommit: ab80e1ef9771caa4369863c0aff1cee2c3055830
+ms.openlocfilehash: c42d5fe49d099fed7b5df9901c313832d966e340
 
 ---
 
 # <a name="azure-container-registry-documentation"></a>Azure 容器注册表文档
 
-Azure 容器注册表（预览版）是用于托管容器映像的专用注册表。 使用 Azure 容器注册表可以存储所有类型的容器部署的、采用 Docker 格式的映像。 Azure 容器注册表与 Azure 容器服务中托管的协调器（包括 Docker Swarm、DC/OS 和 Kubernetes）完美集成。 
+了解如何使用容器注册表来存储和管理所有类型的容器部署的映像。 教程、REST API 参考和其他文档介绍了如何使用此托管的 Docker 注册表服务创建及维护容器注册表。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,6 +99,7 @@ Azure 容器注册表（预览版）是用于托管容器映像的专用注册�
 </ul>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

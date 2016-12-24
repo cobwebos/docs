@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "了解如何在云中部署综合性的使用者标识管理。 文档介绍了如何保护面向使用者的 Web 应用和移动应用。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3cee8c74ed77a27c8a2006dcd28729f9c077aea9
-ms.openlocfilehash: 330f2c0efed16ae587c6f069d3feae1bb80f3097
+ms.sourcegitcommit: e3ffd8f83b4ad25d28f6d0afd82efc6150d98fa2
+ms.openlocfilehash: c5f925446b5e2cc7ea8739e22e9d093428700483
 
 ---
 
 #<a name="active-directory-b2c-documentation"></a>Active Directory B2C 文档
 
-Azure Active Directory B2C 是一个综合性的云标识管理解决方案，适用于面向用户的 Web 和移动应用程序。 这是一个具有高可用性的全球服务，可扩展到亿万用户标识。 以企业级安全平台为基础，Azure Active Directory B2C 可保护你的应用程序、业务和用户。
+了解如何使用 Active Directory B2C 在云中设置和管理综合性的使用者标识管理。 教程、参考和其他文档介绍了如何使用安全登录保护面向使用者的 Web 应用程序和移动应用程序。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -187,6 +188,6 @@ Azure Active Directory B2C 是一个综合性的云标识管理解决方案，�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

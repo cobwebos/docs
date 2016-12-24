@@ -44,7 +44,7 @@
 ##### [Media Encoder Standard 架构](media-services-mes-schema.md)
 ##### [输入元数据](media-services-input-metadata-schema.md)
 ##### [输出元数据](media-services-output-metadata-schema.md)
-#### MES 预设 
+#### [MES 预设](media-services-mes-presets-overview.md) 
 ##### [H264 多比特率 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md)
 ##### [H264 多比特率 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md)
 ##### [H264 多比特率 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md)
@@ -134,8 +134,8 @@
 ### [使用 Hyperlapse 进行处理](media-services-hyperlapse-content.md)
 ### [使用 Face Detector 进行处理](media-services-face-and-emotion-detection.md)
 ### [使用 Motion Detector 进行处理](media-services-motion-detection.md)
-### [使用 Face Redaction 进行处理](media-services-face-redaction.md)
-#### [Face Redaction 演练](media-services-redactor-walkthrough.md)
+### [使用 Face Redactor 进行处理](media-services-face-redaction.md)
+#### [Face Redactor 演练](media-services-redactor-walkthrough.md)
 ### [使用视频缩略图进行处理](media-services-video-summarization.md)
 ### [使用 OCR 进行处理](media-services-video-optical-character-recognition.md)
 
@@ -207,6 +207,6 @@
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

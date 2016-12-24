@@ -19,6 +19,7 @@
 ## [将逻辑应用连接到远程监视解决方案](iot-suite-logic-apps-tutorial.md)
 ## [自定义预配置解决方案](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [在远程监视解决方案中使用动态遥测](iot-suite-dynamic-telemetry.md)
+## [在远程监视解决方案中创建自定义规则](iot-suite-custom-rule.md)
 ## [远程监视解决方案中的设备信息](iot-suite-remote-monitoring-device-info.md)
 
 # 引用
@@ -42,6 +43,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 
