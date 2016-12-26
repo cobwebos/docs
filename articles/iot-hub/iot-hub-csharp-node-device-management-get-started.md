@@ -1,0 +1,258 @@
+---
+title: "Azure IoT 中心设备管理入门 | Microsoft Docs"
+description: "本教程演示如何开始使用 Azure IoT 中心的设备管理"
+services: iot-hub
+documentationcenter: .net
+author: juanjperez
+manager: timlt
+editor: 
+ms.assetid: e044006d-ffd6-469b-bc63-c182ad066e31
+ms.service: iot-hub
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 11/17/2016
+ms.author: juanpere
+translationtype: Human Translation
+ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
+ms.openlocfilehash: cf9741e7bc30ccb5e6b8f79dad7c8ef725cd683a
+
+
+---
+# <a name="tutorial-get-started-with-device-management"></a>教程：设备管理入门
+
+[!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
+## <a name="introduction"></a>介绍
+IoT 后端应用可使用 Azure IoT 中心中的基元（即设备克隆和直接方法）远程启动和监视设备上的设备管理操作。  本文提供了指导和代码，让用户了解 IoT 后端应用和设备如何使用 IoT 中心协同工作，启动和监视远程设备重新启动。
+
+若要从基于云的后端应用启动和监视设备上的设备管理操作，请使用 IoT 中心基元（如[设备克隆][lnk-devtwin]和[直接方法][lnk-c2dmethod]）。 本教程说明后端应用和设备如何协同工作，实现从 IoT 中心启动和监视远程设备重新启动。
+
+使用直接方法可从云中的后端应用启动设备管理操作（如重新启动、恢复出厂设置和固件更新）。 设备负责以下操作：
+
+* 处理从 IoT 中心发送的方法请求。
+* 在设备上启动相应的设备特定操作。
+* 通过向 IoT 中心报告的属性，提供状态更新。
+
+可以使用云中的后端应用运行设备克隆查询，以报告设备管理操作的进度。
+
+本教程演示如何：
+
+* 使用 Azure 门户创建 IoT 中心，以及如何在 IoT 中心创建设备标识。
+* 创建一个具有直接方法的模拟设备应用，以便启用可由云调用的重新启动。
+* 创建一个控制台应用程序，以便通过 IoT 中心调用模拟设备应用中的重新启动直接方法。
+
+本教程结束时，用户会有一个 Node.js 控制台设备应用，以及一个 .NET (C#) 控制台后端应用：
+
+**dmpatterns_getstarted_device.js**，它使用先前创建的设备标识连接到 IoT 中心，接收重新启动直接方法，模拟物理重新启动，并报告上次重新启动的时间。
+
+**TriggerReboot**，它在模拟设备应用中调用直接方法、显示响应以及显示更新的报告属性。
+
+若要完成本教程，您需要以下各项：
+
+* Microsoft Visual Studio 2015。
+* Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
+
+[!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
+
+[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
+
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
+在此部分中，会创建一个 .NET 控制台应用（使用 C#），它直接在设备上启动远程重新启动，并使用设备克隆查询找到该设备上次重新启动的时间。
+
+1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **TriggerReboot**。
+
+    ![新的 Visual C# Windows 经典桌面项目][img-createapp]
+
+2. 在“解决方案资源管理器”中，右键单击“TriggerReboot”项目，然后单击“管理 Nuget 包”。
+3. 在“Nuget 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此过程将下载、安装 [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk]（Microsoft Azure IoT 服务 SDK）NuGet 包及其依赖项并添加对它的引用。
+
+    ![“Nuget 包管理器”窗口][img-servicenuget]
+4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+   
+        using Microsoft.Azure.Devices;
+        
+5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分和目标设备中为 IoT 中心创建的连接字符串。
+   
+        static RegistryManager registryManager;
+        static string connString = "{iot hub connection string}";
+        static ServiceClient client;
+        static JobClient jobClient;
+        static string targetDevice = "{deviceIdForTargetDevice}";
+        
+6. 将以下方法添加到 **Program** 类。  此代码为重新启动的设备获取设备克隆，并输出报告的属性。
+   
+        public static async Task QueryTwinRebootReported()
+        {
+            Twin twin = await registryManager.GetTwinAsync(targetDevice);
+            Console.WriteLine(twin.Properties.Reported.ToJson());
+        }
+        
+7. 将以下方法添加到 **Program** 类。  此代码使用直接方法在设备上启动重启。
+
+        public static async Task StartReboot()
+        {
+            client = ServiceClient.CreateFromConnectionString(connString);
+            CloudToDeviceMethod method = new CloudToDeviceMethod("reboot");
+            method.ResponseTimeout = TimeSpan.FromSeconds(30);
+
+            CloudToDeviceMethodResult result = await client.InvokeDeviceMethodAsync(targetDevice, method);
+
+            Console.WriteLine("Invoked firmware update on device.");
+        }
+
+7. 最后，在 **Main** 方法中添加以下行：
+   
+        registryManager = RegistryManager.CreateFromConnectionString(connString);
+        StartReboot().Wait();
+        QueryTwinRebootReported().Wait();
+        Console.WriteLine("Press ENTER to exit.");
+        Console.ReadLine();
+        
+8. 生成解决方案。
+
+## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
+在本部分中，你将
+
+* 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
+* 触发模拟设备重新启动
+* 通过报告的属性，设备克隆查询可标识设备及设备上次重新启动的时间
+
+1. 新建名为 **manageddevice** 的空文件夹。  在 **manageddevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+   
+    ```
+    npm init
+    ```
+2. 在 **manageddevice** 文件夹的命令提示符处，运行下述命令以安装 **azure-iot-device** 设备 SDK 包和 **azure-iot-device-mqtt** 包：
+   
+    ```
+    npm install azure-iot-device azure-iot-device-mqtt --save
+    ```
+3. 在 **manageddevice** 文件夹中，利用文本编辑器创建新的 **dmpatterns_getstarted_device.js** 文件。
+4. 在 **dmpatterns_getstarted_device.js** 文件开头添加以下“require”语句：
+   
+    ```
+    'use strict';
+   
+    var Client = require('azure-iot-device').Client;
+    var Protocol = require('azure-iot-device-mqtt').Mqtt;
+    ```
+5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。  将连接字符串替换为设备连接字符串。  
+   
+    ```
+    var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
+    var client = Client.fromConnectionString(connectionString, Protocol);
+    ```
+6. 添加以下函数，实现设备上的直接方法
+   
+    ```
+    var onReboot = function(request, response) {
+   
+        // Respond the cloud app for the direct method
+        response.send(200, 'Reboot started', function(err) {
+            if (!err) {
+                console.error('An error occured when sending a method response:\n' + err.toString());
+            } else {
+                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+            }
+        });
+   
+        // Report the reboot before the physical restart
+        var date = new Date();
+        var patch = {
+            iothubDM : {
+                reboot : {
+                    lastReboot : date.toISOString(),
+                }
+            }
+        };
+   
+        // Get device Twin
+        client.getTwin(function(err, twin) {
+            if (err) {
+                console.error('could not get twin');
+            } else {
+                console.log('twin acquired');
+                twin.properties.reported.update(patch, function(err) {
+                    if (err) throw err;
+                    console.log('Device reboot twin state reported')
+                });  
+            }
+        });
+   
+        // Add your device's reboot API for physical restart.
+        console.log('Rebooting!');
+    };
+    ```
+7. 添加以下代码，打开与 IoT 中心的连接并启动直接方法侦听器：
+   
+    ```
+    client.open(function(err) {
+        if (err) {
+            console.error('Could not open IotHub client');
+        }  else {
+            console.log('Client opened.  Waiting for reboot method.');
+            client.onDeviceMethod('reboot', onReboot);
+        }
+    });
+    ```
+8. 保存并关闭 **dmpatterns_getstarted_device.js** 文件。
+   
+   [AZURE.NOTE] 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
+
+
+## <a name="run-the-apps"></a>运行应用
+现在可以运行应用了。
+
+1. 在 **manageddevice** 文件夹的命令提示符处，运行以下命令以开始侦听重新启动直接方法。
+   
+    ```
+    node dmpatterns_getstarted_device.js
+    ```
+2. 运行 C# 控制台应用 **TriggerReboot** - 右键单击“TriggerReboot”项目，然后依次选择“调试”和“启动新实例”。
+
+3. 可在控制台查看对直接方法的设备响应。
+
+## <a name="customize-and-extend-the-device-management-actions"></a>自定义和扩展设备管理操作
+IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设备克隆和云到设备的方法基元启用自定义模式。 设备管理操作的其他示例包括恢复出厂设置、固件更新、软件更新、电源管理、网络和连接管理以及数据加密。
+
+## <a name="device-maintenance-windows"></a>设备维护时段
+通常情况下，将设备配置为在某一时间执行操作，以最大程度减少中断和停机时间。  设备维护时段是一种常用模式，用于定义设备应更新其配置的时间。 后端解决方案使用设备克隆所需属性在设备上定义并激活策略，以启用维护时段。 当设备收到维护时段策略时，它可以使用设备克隆报告属性报告策略状态。 然后，后端应用可以使用设备克隆查询来证明设备和每个策略的符合性。
+
+## <a name="next-steps"></a>后续步骤
+本教程使用直接方法来触发设备的远程重新启动，使用报告的属性来报告设备上次重新启动时间，并查询设备克隆，从云中发现设备上次重新启动的时间。
+
+若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅：
+
+[教程：如何进行固件更新][lnk-fwupdate]
+
+若要了解如何扩展 IoT 解决方案以及在多个设备上计划方法调用，请参阅[计划和广播作业][lnk-tutorial-jobs]教程。
+
+若要继续完成 IoT 中心入门内容，请参阅 [IoT 网关 SDK 入门][lnk-gateway-SDK]。
+
+<!-- images and links -->
+[img-output]: media/iot-hub-get-started-with-dm/image6.png
+[img-dm-ui]: media/iot-hub-get-started-with-dm/dmui.png
+[img-servicenuget]: media/iot-hub-csharp-node-device-management-get-started/servicesdknuget.png
+[img-createapp]: media/iot-hub-csharp-node-device-management-get-started/createnetapp.png
+
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+
+[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-fwupdate]: iot-hub-node-node-firmware-update.md
+[Azure portal]: https://portal.azure.com/
+[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
+[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
+[lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+
+[lnk-devtwin]: iot-hub-devguide-device-twins.md
+[lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
+[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+
+
+<!--HONumber=Nov16_HO5-->
+
+

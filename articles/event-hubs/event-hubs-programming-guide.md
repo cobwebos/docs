@@ -9,14 +9,14 @@ editor:
 ms.assetid: 64cbfd3d-4a0e-4455-a90a-7f3d4f080323
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 08/16/2016
+ms.date: 11/21/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1b7a19868e75811198f54150ced78e51f42d8017
+ms.sourcegitcommit: 188e3638393262a8406f322a5720e7e3eadf3e49
+ms.openlocfilehash: 7b95616b4ce44865477d94452d9b3e646c9c0d1a
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 1b7a19868e75811198f54150ced78e51f42d8017
 本主题介绍如何使用 Azure.NET SDK 进行 Azure 事件中心编程。 内容假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-overview.md)。
 
 ## <a name="event-publishers"></a>事件发布者
-将事件发送到事件中心可以使用 HTTP POST 或通过 AMQP 1.0 连接来实现。 要选择使用哪种方式取决于要解决的特定方案。 AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
+使用 HTTP POST 或通过 AMQP 1.0 连接将事件发送到事件中心。 要选择使用哪种方式取决于要解决的特定方案。 AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
 
 使用 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类创建和管理事件中心。 使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 和 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类。 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 提供 AMQP 通信通道，事件将通过该通道发送到事件中心。 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据和有关事件的标头信息。 其他属性将在通过事件中心传递时添加到 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 对象。
 
@@ -38,14 +38,14 @@ Install-Package WindowsAzure.ServiceBus
 ## <a name="create-an-event-hub"></a>创建事件中心
 可以使用 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类来创建事件中心。 例如：
 
-```
+```csharp
 var manager = new Microsoft.ServiceBus.NamespaceManager("mynamespace.servicebus.windows.net");
 var description = manager.CreateEventHub("MyEventHub");
 ```
 
 在大多数情况下，建议你使用 [CreateEventHubIfNotExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx) 方法，以避免服务重启时生成异常。 例如：
 
-```
+```csharp
 var description = manager.CreateEventHubIfNotExists("MyEventHub");
 ```
 
@@ -56,7 +56,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 ## <a name="create-an-event-hubs-client"></a>创建事件中心客户端
 客户端用来与事件中心交互的主类是 [Microsoft.ServiceBus.Messaging.EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx)类。 此类提供发送者和接收者功能。 可以使用 [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) 方法实例化此类，如以下示例中所示。
 
-```
+```csharp
 var client = EventHubClient.Create(description.Path);
 ```
 
@@ -64,19 +64,19 @@ var client = EventHubClient.Create(description.Path);
 
 另一个选项是从连接字符串创建客户端。 在使用 Azure 辅助角色，此选项非常合适，因为你可以在辅助角色的配置属性中存储字符串。 例如：
 
-```
+```csharp
 EventHubClient.CreateFromConnectionString("your_connection_string");
 ```
 
 连接字符串的格式与前面所用方法的 App.config 文件中显示的格式相同：
 
-```
-Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=Manage;SharedAccessKey=[key]
+```xml
+Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[key]
 ```
 
 最后，还可以从 [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 实例创建 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 对象，如以下代码示例中所示。
 
-```
+```csharp
 var factory = MessagingFactory.CreateFromConnectionString("your_connection_string");
 var client = factory.CreateEventHubClient("MyEventHub");
 ```
@@ -95,7 +95,7 @@ var client = factory.CreateEventHubClient("MyEventHub");
 ## <a name="batch-event-send-operations"></a>批处理事件发送操作
 分批发送事件可以极大地提高吞吐量。 [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) 方法采用 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类型的 **IEnumerable** 参数，并将整批作为一个原子操作发送到事件中心。
 
-```
+```csharp
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
@@ -107,7 +107,7 @@ public void SendBatch(IEnumerable<EventData> eventDataList);
 ## <a name="create-a-partition-sender"></a>创建分区发送者
 尽管最常见的做法是使用分区键将事件发送到事件中心，但在某些情况下，你可能需要将事件直接发送到给定的分区。 例如：
 
-```
+```csharp
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
 ```
 
@@ -119,14 +119,14 @@ var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[
 ### <a name="direct-consumer"></a>直接使用者
 从使用者组中的分区读取数据的最直接方式是使用 [EventHubReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.aspx) 类。 若要创建此类的实例，必须使用 [EventHubConsumerGroup](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.aspx) 类的实例。 在以下示例中，在创建使用者组的接收者时，必须指定分区 ID。
 
-```
+```csharp
 EventHubConsumerGroup group = client.GetDefaultConsumerGroup();
 var receiver = group.CreateReceiver(client.GetRuntimeInformation().PartitionIds[0]);
 ```
 
 [CreateReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.createreceiver.aspx) 方法有多个重载，可以简化对所创建读取者的控制。 这些方法包括以字符串或时间戳的形式指定偏移量，并能够指定是要在返回的流中包含此指定偏移量，还是要在该偏移量的后面启动。 创建接收者后，你可以在返回的对象上开始接收事件。 [Receive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.receive.aspx) 方法有四个重载，它们控制接收操作参数，如批大小和等待时间。 可以使用这些方法的异步版本来提高使用者的吞吐量。 例如：
 
-```
+```csharp
 bool receive = true;
 string myOffset;
 while(receive)
@@ -175,6 +175,6 @@ while(receive)
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

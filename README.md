@@ -19,7 +19,7 @@ GitHub 存储库中存储了 [http://docs.microsoft.com/azure](http://docs.micro
 ## <a name="ways-to-contribute"></a>供稿途径
 可按如下所述将更新内容提交到 [Azure 文档](http://docs.microsoft.com/azure)：
 
-* 在 GitHub 用户界面中可以轻松为技术文章供稿。 在此存储库中找到相应的文章，或者在 [http://docs.microsoft.com/azur](http://docs.microsoft.com/azur) 上访问该文章，然后单击文章中的链接转到该文章的 GitHub 源文件。
+* 在 GitHub 用户界面中可以轻松为技术文章供稿。 在此存储库中找到相应的文章，或者在 [http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) 上访问该文章，然后单击文章中的链接转到该文章的 GitHub 源。
 * 如果要对现有文章进行重大更改、添加或更改图像，或者要补充新文章，则需要派生此存储库，安装 Git Bash、Markdown Pad，并了解一些 git 命令。
 
 ## <a name="code-of-conduct"></a>行为准则
@@ -48,7 +48,7 @@ azure-docs 存储库中的内容遵循 http://docs.microsoft.com/azure 上的文
 ### <a name="markdown-templates"></a>\markdown templates
 此文件夹包含标准标记模板，该模板提供需要在文章中使用的基本标记格式。
 
-### <a name="contributorguide"></a>\contributor-guide
+### <a name="contributor-guide"></a>\contributor-guide
 此文件夹包含属于供稿人指南的文章。  
 
 ## <a name="use-github-git-and-this-repository"></a>使用 GitHub、Git 和本存储库
@@ -87,6 +87,6 @@ azure-docs 存储库中的内容遵循 http://docs.microsoft.com/azure 上的文
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 
