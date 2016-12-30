@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f29eef42855a1dceefdca7715a607a81703f439
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 613e2447c1e47fcd80f2e9ded9ad2669f8283c3d
 
 
 ---
@@ -50,6 +50,6 @@ Azure Active Directory 会强制实施条件性访问策略来确保对 Office 3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

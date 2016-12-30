@@ -69,6 +69,6 @@ OAuth 2.0 和 OpenID Connect 的 Azure AD B2C 实现广泛使用了持有者令�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 1865043ca9c9019b9813f11eb4a55f7f16d79287
-ms.openlocfilehash: 0c7baee5b5d75186cbe41975fe0bd100d913dfc8
+ms.sourcegitcommit: 0175f4e83aace12d8e4607f2ad924893093c6734
+ms.openlocfilehash: 02bcb74d62855b747c6f0b670e7dbed1c58f87ff
 
 
 ---
@@ -269,6 +269,6 @@ public class PublicClient {
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d78bad26df7a9e428481e23ba4316953dfd4401c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fcba586e44396378849d5162e75387e84fca905
 
 
 ---
@@ -84,6 +84,6 @@ ms.openlocfilehash: d78bad26df7a9e428481e23ba4316953dfd4401c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

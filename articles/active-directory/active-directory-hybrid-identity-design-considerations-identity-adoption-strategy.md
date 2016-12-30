@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 47af3ae7fe78fdd794330bb5069bb734b2754eaf
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 47fb1724ac72df8b83012bcacdc435ea847547da
 
 
 ---
@@ -42,7 +42,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 * **联合**：这些标识同时存在于本地和云中。  使用 Azure AD Connect 时，将以现有的 Azure AD 帐户创建或联接这些用户。  
 
 > [!NOTE]
-> 有关同步选项的详细信息，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
+> 有关同步选项的详细信息，请参阅[将本地标识与 Azure Active Directory 集成](connect/active-directory-aadconnect.md)。
 > 
 > 
 
@@ -110,7 +110,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 ![](./media/hybrid-id-design-considerations/single-forest.png) 单林方案。在大型组织甚至小型组织中，拥有多个林很平常，如图 5 所示。
 
 > [!NOTE]
-> 有关不同的本地和 Azure AD 拓扑与 Azure AD Connect 同步的详细信息，请参阅 [Azure AD Connect 的拓扑](active-directory-aadconnect-topologies.md)一文。
+> 有关不同的本地和 Azure AD 拓扑与 Azure AD Connect 同步的详细信息，请参阅 [Azure AD Connect 的拓扑](connect/active-directory-aadconnect-topologies.md)一文。
 > 
 > 
 
@@ -130,7 +130,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 * 如果有链接的邮箱，则在不同的林中还有另一个帐户用于登录。
 
 > [!NOTE]
-> 同时在本地和云中存在的对象将通过唯一标识符相互“关联”。 在目录同步的上下文中，此唯一标识符称为 SourceAnchor。 在单一登录的上下文中，它称为 ImmutableId。 [Azure AD Connect 的设计概念](active-directory-aadconnect-design-concepts.md#sourceanchor)提供了有关使用 SourceAnchor 的更多注意事项。
+> 同时在本地和云中存在的对象将通过唯一标识符相互“关联”。 在目录同步的上下文中，此唯一标识符称为 SourceAnchor。 在单一登录的上下文中，它称为 ImmutableId。 [Azure AD Connect 的设计概念](connect/active-directory-aadconnect-design-concepts.md#sourceanchor)提供了有关使用 SourceAnchor 的更多注意事项。
 > 
 > 
 
@@ -216,6 +216,6 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

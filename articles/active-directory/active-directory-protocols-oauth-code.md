@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 578db36affff53beb441eca68f9bf7217e46a511
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2d3603d051da25fd2b179adfb021d09d90a3e858
 
 
 ---
@@ -379,6 +379,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -55,6 +55,6 @@ Cloud App Discovery 是 Azure Active Directory (AD) Premium 的一项功能，�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -16,8 +16,8 @@ ms.workload: identity
 ms.date: 02/24/2016
 ms.author: asuthar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 407bf5b5c608df6e5942d1abf3601bb2ab599782
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a9a7c0a9adea7fe4fccaa4ec9df0b077cd1e7382
 
 
 ---
@@ -53,6 +53,6 @@ ms.openlocfilehash: 407bf5b5c608df6e5942d1abf3601bb2ab599782
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 92567d36632ae285377f41a6804ef04ef49d5628
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 67575bbbb7d99ffeef3cb5dab74f4a68065bacc1
 
 
 ---
@@ -113,6 +113,6 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

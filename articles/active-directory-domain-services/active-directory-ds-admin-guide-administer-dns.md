@@ -105,6 +105,6 @@ Azure AD 目录中的管理员无权通过远程桌面连接到托管域上的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

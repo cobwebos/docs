@@ -161,6 +161,6 @@ RHEL 7.2 虚拟机已在 Azure 中预配。 下一个任务是远程连接到该
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

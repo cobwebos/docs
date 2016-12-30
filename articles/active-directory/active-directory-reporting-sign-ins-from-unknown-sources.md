@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 04824d96fcce4affc8fb43edebd241f0f7213405
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 90006121e4b3392f6e3ecffb4a56aca330feb02f
 
 
 ---
@@ -30,6 +30,6 @@ ms.openlocfilehash: 04824d96fcce4affc8fb43edebd241f0f7213405
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

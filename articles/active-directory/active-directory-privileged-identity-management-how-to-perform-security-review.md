@@ -55,6 +55,6 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

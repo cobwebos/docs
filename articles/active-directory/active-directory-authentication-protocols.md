@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 09/16/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b21799d7d78b53442c319fc853c9f8560595e85e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f0b3afb1163d4ba728755b236fd685184d464cd3
 
 
 ---
@@ -43,6 +43,6 @@ Azure Active Directory (Azure AD) 支持多个最广泛使用的身份验证和�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/09/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: f54b28df432788cb42027133de09c3579fa41a18
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b30ed9727229c082bff65023bfe4900640caa995
 
 
 ---
@@ -42,6 +42,6 @@ ms.openlocfilehash: f54b28df432788cb42027133de09c3579fa41a18
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 
