@@ -117,7 +117,7 @@ ms.openlocfilehash: 2537b0c4dcc71d02d25959a0b21d96bce7deaac6
 4. 打开命令行，并使用以下命令在本地启动 Web 应用。
    
         node server.js
-5. 打开 web 浏览器并导航到 http://localhost:1337。 
+5. 打开 web 浏览器并导航到 http://localhost:1337 。 
    
     显示“Hello World”的网页随即出现，如以下屏幕截图所示。
    
