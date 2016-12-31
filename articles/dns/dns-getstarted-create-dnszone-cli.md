@@ -1,155 +1,154 @@
 ---
 title: "使用 CLI 创建 DNS 区域 | Microsoft 文档"
-description: "了解如何逐步为 Azure DNS 创建 DNS 区域，开始使用 CLI 托管 DNS 域"
+description: "了解如何在 Azure DNS 中创建 DNS 区域。 这是有关使用 Azure CLI 创建和管理第一个 DNS 区域的分步指南。"
 services: dns
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: 
+author: georgewallace
+manager: timlt
 ms.assetid: 1514426a-133c-491a-aa27-ee0962cea9dc
 ms.service: dns
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
-ms.author: sewhee
+ms.date: 12/05/2016
+ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e2b93d8788f8f36ff6bc04a33d1f35a86cd49973
-
+ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
+ms.openlocfilehash: 5bbd490925e5e25f10044af55af49daa494ee026
 
 ---
+
 # <a name="create-an-azure-dns-zone-using-cli"></a>使用 CLI 创建 Azure DNS 区域
+
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-getstarted-create-dnszone-portal.md)
 > * [PowerShell](dns-getstarted-create-dnszone.md)
 > * [Azure CLI](dns-getstarted-create-dnszone-cli.md)
-> 
-> 
 
-本文将逐步引导完成使用 CLI 创建 DNS 区域。 还可以使用 PowerShell 或 Azure 门户创建 DNS 区域。
+本文将介绍使用跨平台的 Azure CLI（在 Windows、Mac 和 Linux 中可用）创建 DNS 区域的步骤。 还可以使用 PowerShell 或 Azure 门户创建 DNS 区域。
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
+
 ## <a name="before-you-begin"></a>开始之前
-这些说明使用 Microsoft Azure CLI。 请确保更新至最新的 Azure CLI（0.9.8 或更高版本），使用 Azure DNS 命令。 键入 `azure -v` 检查计算机中当前安装的 Azure CLI 版本。
 
-## <a name="step-1-set-up-azure-cli"></a>步骤 1 - 设置 Azure CLI
-### <a name="1-install-azure-cli"></a>1.安装 Azure CLI
-可以在 Windows、Linux 或 Mac 上安装 Azure CLI。 使用 Azure CLI 管理 Azure DNS 前，需要完成以下步骤。 有关详细信息，请参阅 [安装 Azure CLI](../xplat-cli-install.md)。 DNS 命令要求使用 Azure CLI 0.9.8 版或更高版本。
+在开始配置之前，请确认你具有以下各项。
 
-CLI 上的所有网络提供程序命令都可以使用以下命令找到：
+* Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* 需要安装最新版本的 Azure CLI（在 Windows、Linux 或 MAC 中可用）。 有关详细信息，请参阅 [安装 Azure CLI](../xplat-cli-install.md)。
 
-    azure network
+## <a name="step-1---sign-in-and-create-a-resource-group"></a>步骤 1 - 登录并创建资源组
 
-### <a name="2-switch-cli-mode"></a>2.切换 CLI 模式
+### <a name="switch-cli-mode"></a>切换 CLI 模式
+
 Azure DNS 使用 Azure Resource Manager。 确保切换 CLI 模式，使用 ARM 命令。
 
-    azure config mode arm
+```azurecli
+azure config mode arm
+```
 
-### <a name="3-sign-in-to-your-azure-account"></a>3.登录到 Azure 帐户
-系统将提示你使用凭据进行身份验证。 记住，只能使用 ORGID 帐户。
+### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-    azure login -u "username"
+系统将提示你使用凭据进行身份验证。 记住，只能使用 OrgID 帐户。
 
-### <a name="4-select-the-subscription"></a>4.选择订阅
+```azurecli
+azure login
+```
+
+### <a name="select-the-subscription"></a>选择订阅
+
+检查该帐户的订阅。
+
+```azurecli
+azure account list
+```
+
 选择要使用的 Azure 订阅。
 
-    azure account set "subscription name"
+```azurecli
+azure account set "subscription name"
+```
 
-### <a name="5-create-a-resource-group"></a>5.创建资源组
+### <a name="create-a-resource-group"></a>创建资源组
+
 Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
 
 如果使用现有资源组，可跳过此步骤。
 
-    azure group create -n myresourcegroup --location "West US"
+```azurecli
+azure group create -n myresourcegroup --location "West US"
+```
 
+### <a name="register-resource-provider"></a>注册资源提供程序
 
-### <a name="6-register"></a>6.注册
 Azure DNS 服务由 Microsoft.Network 资源提供程序管理。 使用 Azure DNS 前，需要将 Azure 订阅注册为使用此资源提供程序。 对每个订阅而言，这都是一次性操作。
 
-    azure provider register --namespace Microsoft.Network
+```azurecli
+azure provider register --namespace Microsoft.Network
+```
 
+## <a name="step-2---create-a-dns-zone"></a>步骤 2 - 创建 DNS 区域
 
-## <a name="step-2-create-a-dns-zone"></a>步骤 2 - 创建 DNS 区域
-使用 `azure network dns zone create` 命令创建 DNS 区域。 可以选择同时创建 DNS 区域和标记。 标记是名称/值列表，Azure Resource Manager 利用它们来标记资源，进行计费和分组。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../resource-group-using-tags.md)。
+使用 `azure network dns zone create` 命令创建 DNS 区域。 若要查看此命令的帮助，请键入 `azure network dns zone create -h`。
 
-在 Azure DNS 中，区域名称的指定不应以指“.” 结尾。 例如，“**contoso.com**”是正确的，而“**contoso.com.**”是错误的。
+下面的示例在名为“*MyResourceGroup*”的资源组中创建了一个名为“*contoso.com*”的 DNS 区域。 使用该示例创建 DNS 区域，将相应的值替换为你自己的值。
 
-### <a name="to-create-a-dns-zone"></a>创建 DNS 区域
-下面的示例在名为“*MyResourceGroup*”的资源组中创建了一个名为“*contoso.com*”的 DNS 区域。
+```azurecli
+azure network dns zone create MyResourceGroup contoso.com
+```
 
-使用该示例创建 DNS 区域，将相应的值替换为自己的值。
+## <a name="step-3---verify"></a>步骤 3 - 验证
 
-    azure network dns zone create myresourcegroup contoso.com
+### <a name="view-records"></a>查看记录
 
-### <a name="to-create-a-dns-zone-and-tags"></a>创建 DNS 区域和标记。
-Azure DNS CLI 支持通过可选的 *-Tag* 参数指定的 DNS 区域标记。 下面的示例演示了如何使用两个标记（project = demo 和 env = test）来创建 DNS 区域。
-
-使用该示例创建 DNS 区域和标记，将相应的值替换为自己的值。
-
-    azure network dns zone create myresourcegroup contoso.com -t "project=demo";"env=test"
-
-## <a name="view-records"></a>查看记录
 创建 DNS 区域还会创建以下 DNS 记录：
 
 * “授权起始点”(SOA) 记录。 此记录位于每个 DNS 区域的根目录。
 * 授权名称服务器 (NS) 记录。 此记录显示托管该区域的名称服务器。 Azure DNS 使用名称服务器池，因此 Azure DNS 中的不同区域可以分配不同的名称服务器。 有关详细信息，请参阅 [向 Azure DNS 委托域](dns-domain-delegation.md) 。
 
-要查看这些记录，请使用 `azure network dns-record-set show`。<BR>
-*用法：network dns record-set show <resource-group> <dns-zone-name> <name> <type>*
+要查看这些记录，请使用 `azure network dns-record-set list`：
 
-在以下示例中，如果运行的命令包含资源组 *myresourcegroup*、记录集名称 *"@"*（根记录）以及类型 *SOA*，则会生成以下输出：
+```azurecli
+azure network dns record-set list MyResourceGroup contoso.com
 
-    azure network dns record-set show myresourcegroup "contoso.com" "@" SOA
-    info:    Executing command network dns-record-set show
-    + Looking up the DNS record set "@"
-    data:    Id                              : /subscriptions/#######################/resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com/SOA/@
-    data:    Name                            : @
-    data:    Type                            : Microsoft.Network/dnszones/SOA
-    data:    Location                        : global
-    data:    TTL                             : 3600
-    data:    SOA record:
-    data:      Email                         : msnhst.microsoft.com
-    data:      Expire time                   : 604800
-    data:      Host                          : edge1.azuredns-cloud.net
-    data:      Minimum TTL                   : 300
-    data:      Refresh time                  : 900
-    data:      Retry time                    : 300
-    data:                                    :
-<BR>
-要查看随区域一起创建的 NS 记录，请使用以下命令：
-
-    azure network dns record-set show myresourcegroup "contoso.com" "@" NS
-    info:    Executing command network dns-record-set show
-    + Looking up the DNS record set "@"
-    data:    Id                              : /subscriptions/#######################/resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com/NS/@
-    data:    Name                            : @
-    data:    Type                            : Microsoft.Network/dnszones/NS
-    data:    Location                        : global
-    data:    TTL                             : 3600
-    data:    NS records
-    data:        Name server domain name     : ns1-05.azure-dns.com
-    data:        Name server domain name     : ns2-05.azure-dns.net
-    data:        Name server domain name     : ns3-05.azure-dns.org
-    data:        Name server domain name     : ns4-05.azure-dns.info
-    data:
-    info:    network dns-record-set show command OK
+info:    Executing command network dns record-set list
++ Looking up the DNS Record Sets
+data:    Name                            : @
+data:    Type                            : NS
+data:    TTL                             : 172800
+data:    Records:
+data:      ns1-01.azure-dns.com.
+data:      ns2-01.azure-dns.net.
+data:      ns3-01.azure-dns.org.
+data:      ns4-01.azure-dns.info.
+data:
+data:    Name                            : @
+data:    Type                            : SOA
+data:    TTL                             : 3600
+data:    Email                           : azuredns-hostmaster.microsoft.com
+data:    Host                            : ns1-01.azure-dns.com.
+data:    Serial Number                   : 2
+data:    Refresh Time                    : 3600
+data:    Retry Time                      : 300
+data:    Expire Time                     : 2419200
+data:    Minimum TTL                     : 300
+data:
+info:    network dns record-set list command OK
+```
 
 > [!NOTE]
 > DNS 区域根目录（或 *顶点*）的记录集使用 **@** 作为记录集名称。
-> 
-> 
 
-## <a name="test"></a>测试
-可以使用 DNS 工具测试 DNS 区域，如 nslookup、DIG 或 `Resolve-DnsName` PowerShell cmdlet。
+### <a name="test-name-servers"></a>测试名称服务器
+
+可使用 DNS 工具（如 nslookup、dig 或 `Resolve-DnsName` PowerShell cmdlet）测试 DNS 区域是否在 Azure DNS 服务器中。
 
 如果尚未委托域而在 Azure DNS 中使用新的区域，则需要直接向区域的其中一个名称服务器提出 DNS 查询。 区域的名称服务器在 NS 记录中给出，如上面的“azure network dns record-set show”所列。 请确保在下面的命令中将相应的值替换为区域的正确值。
 
-下面的示例使用分配给 DNS 区域的名称服务器，通过 DIG 来查询域 contoso.com。 该查询必须通过 DIG 指向使用 *@<name server for the zone>* 的名称服务器和区域名称。
+以下示例使用分配给 DNS 区域的名称服务器，通过“dig”来查询域 contoso.com。 该查询必须通过 DIG 指向使用 *@\<区域的名称服务器\>* 的名称服务器和区域名称。
 
-     <<>> DiG 9.10.2-P2 <<>> @ns1-05.azure-dns.com contoso.com
+     <<>> DiG 9.10.2-P2 <<>> @ns1-01.azure-dns.com contoso.com
     (1 server found)
     global options: +cmd
      Got answer:
@@ -163,8 +162,7 @@ Azure DNS CLI 支持通过可选的 *-Tag* 参数指定的 DNS 区域标记。 �
     contoso.com.                        IN      A
 
      AUTHORITY SECTION:
-    contoso.com.         300     IN      SOA     edge1.azuredns-cloud.net.
-    msnhst.microsoft.com. 6 900 300 604800 300
+    contoso.com.         3600     IN      SOA     ns1-01.azure-dns.com. azuredns-hostmaster.microsoft.com. 1 3600 300 2419200 300
 
     Query time: 93 msec
     SERVER: 208.76.47.5#53(208.76.47.5)
@@ -172,11 +170,12 @@ Azure DNS CLI 支持通过可选的 *-Tag* 参数指定的 DNS 区域标记。 �
     MSG SIZE  rcvd: 120
 
 ## <a name="next-steps"></a>后续步骤
-创建 DNS 区域后，创建 [记录集和记录](dns-getstarted-create-recordset-cli.md) ，开始解析 Internet 域的名称。
+
+创建 DNS 区域后，[创建记录集和记录](dns-getstarted-create-recordset-cli.md)为 Internet 域创建 DNS 记录。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

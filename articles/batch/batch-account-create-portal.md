@@ -3,7 +3,7 @@ title: "创建 Azure 批处理帐户 | Microsoft 文档"
 description: "了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/21/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1a4e242c2d179d9aaf869d6f95af96ff754adf93
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 8875c5e91a2a1ae848ebf725ca00bd43ec667dce
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 1a4e242c2d179d9aaf869d6f95af96ff754adf93
 > 
 > 
 
-了解如何在 [Azure 门户][azure_portal]中创建 Azure 批处理帐户，以及在何处查找重要帐户属性，例如访问密钥和帐户 URL。 本文还介绍批处理定价，以及如何将 Azure 存储帐户链接到批处理帐户，以便可以使用[应用程序包](batch-application-packages.md)以及[保存作业和任务输出](batch-task-output.md)。
+了解如何在 [Azure 门户][azure_portal] 中创建 Azure Batch 帐户，以及在何处查找重要帐户属性，例如访问密钥和帐户 URL。 本文还介绍批处理定价，以及如何将 Azure 存储帐户链接到批处理帐户，以便可以使用[应用程序包](batch-application-packages.md)以及[保存作业和任务输出](batch-task-output.md)。
 
 ## <a name="create-a-batch-account"></a>创建批处理帐户
 1. 登录到 [Azure 门户][azure_portal]。
@@ -67,7 +67,7 @@ ms.openlocfilehash: 1a4e242c2d179d9aaf869d6f95af96ff754adf93
     ![Azure 门户中的 Batch 帐户密钥][account_keys]
 
 ## <a name="pricing"></a>定价
-Batch 帐户仅在“免费层”中提供，这意味着不需要为 Batch 帐户本身付费。 需要支付的是 Batch 解决方案使用的基础 Azure 计算资源的费用，以及工作负荷运行时其他服务使用的资源的费用。 例如，需要针对池中的计算节点以及存储在 Azure 存储中用作任务的输入或输出的数据付费。 同样，如果使用 Batch 的 [应用程序包](batch-application-packages.md) 功能，则需支付用于存储应用程序包的 Azure 存储资源的费用。 有关详细信息，请参阅[批处理定价][batch_pricing]。
+Batch 帐户仅在“免费层”中提供，这意味着不需要为 Batch 帐户本身付费。 需要支付的是 Batch 解决方案使用的基础 Azure 计算资源的费用，以及工作负荷运行时其他服务使用的资源的费用。 例如，需要针对池中的计算节点以及存储在 Azure 存储中用作任务的输入或输出的数据付费。 同样，如果使用 Batch 的 [应用程序包](batch-application-packages.md) 功能，则需支付用于存储应用程序包的 Azure 存储资源的费用。 有关详细信息，请参阅 [Batch 定价][batch_pricing]。
 
 ## <a name="linked-azure-storage-account"></a>链接的 Azure 存储帐户
 如上文所述，可以（可选）将 **常规用途** 存储帐户链接到 Batch 帐户。 与[批处理文件约定 .NET](batch-task-output.md) 库一样，批处理的[应用程序包](batch-application-packages.md)功能在链接的常规用途存储帐户中使用 Blob 存储。 这些可选功能可帮助部署 Batch 任务运行的应用程序，以及保存它们生成的数据。
@@ -124,6 +124,6 @@ Batch 帐户仅在“免费层”中提供，这意味着不需要为 Batch 帐�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

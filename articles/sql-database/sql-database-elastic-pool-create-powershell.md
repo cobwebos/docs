@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 创建新的弹性数据库池 | Microsoft Docs"
-description: "了解如何通过创建可缩放的弹性数据库池，使用 PowerShell 向外缩放 Azure SQL 数据库资源以管理多个数据库。"
+title: "使用 PowerShell 创建新的弹性池 | Microsoft Docs"
+description: "了解如何通过创建可缩放的弹性池，使用 PowerShell 扩展 Azure SQL 数据库资源来管理多个数据库。"
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -8,20 +8,20 @@ manager: jhubbard
 editor: 
 ms.assetid: 37a707ee-9223-43ae-8c35-1ccafde8b83e
 ms.service: sql-database
-ms.custom: sharded databases pool
+ms.custom: multiple databases
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: a877c17a503e58c49ae781aed61ed120d069c737
-ms.openlocfilehash: 19ea620789b31ee68d8e34acd161eeb820947b23
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 8bf8f24db6b543ec1161cf499e6fc116514f85cb
 
 
 ---
-# <a name="create-a-new-elastic-database-pool-with-powershell"></a>使用 PowerShell 创建新的弹性数据库池
+# <a name="create-a-new-elastic-pool-with-powershell"></a>使用 PowerShell 创建新的弹性池
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -29,7 +29,7 @@ ms.openlocfilehash: 19ea620789b31ee68d8e34acd161eeb820947b23
 >
 >
 
-了解如何使用 PowerShell cmdlet 创建 [弹性数据库池](sql-database-elastic-pool.md) 。
+了解如何使用 PowerShell cmdlet 创建[弹性池](sql-database-elastic-pool.md)。
 
 有关常见的错误代码，请参阅 [SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题](sql-database-develop-error-messages.md)。
 

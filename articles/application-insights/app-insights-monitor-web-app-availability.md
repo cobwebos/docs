@@ -11,20 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/07/2016
+ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: d3478ef704c0029f69cca141bd3fa0b3ac54de15
+ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
+ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
-将 Web 应用或网站部署到任何服务器之后，可以设置 Web 测试来监视其可用性和响应能力。 [Visual Studio Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
+将 Web 应用或网站部署到任何服务器之后，可以设置 Web 测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
 
 ![Web 测试示例](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
-对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置 Web 测试。
+对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置 Web 测试。 无需将任何内容添加到要测试的网站。 它甚至不一定是站点：可以测试你所依赖的 REST API 服务。
 
 Web 测试有两种类型：
 
@@ -34,7 +34,7 @@ Web 测试有两种类型：
 对于每个应用程序资源，最多可以创建 10 个 Web 测试。
 
 ## <a name="a-namecreatea1-create-a-resource-for-your-test-reports"></a><a name="create"></a>1.为测试报告创建资源
-如果已经为此应用程序[设置 Application Insights 资源][启动]，并且想要在同一位置中查看可用性报告，请跳过本步骤。
+如果已经为此应用程序[设置 Application Insights 资源][start]，并且想要在同一位置查看可用性报告，请跳过本步骤。
 
 注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，然后创建 Application Insights 资源。
 
@@ -58,7 +58,7 @@ Web 测试有两种类型：
 
     **HTTP 响应**：视为成功的返回状态代码。 代码 200 指示返回了正常网页。
 
-    **内容匹配**：类似于“欢迎!”的字符串。 将测试它是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
+    **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
 * **警报** 。 某个位置的失败很可能是网络问题，而不是站点问题。 但是，可以将阈值更改为更敏感或更不敏感，也可以更改要将电子邮件发送给哪个人。
 
     可以设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。 （但请注意，查询参数不会以“属性”的形式传递。）
@@ -102,8 +102,20 @@ Web 测试有两种类型：
 
 *看起来正常，但却报告为失败*  检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
 
-## <a name="multistep-web-tests"></a>多步骤 Web 测试
+### <a name="open-the-server-request-and-exceptions"></a>打开服务器请求和异常
+
+根据特定测试的详细属性，可以打开请求和任何其他事件（如异常）的服务器端报告。
+
+![Web 测试运行结果](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
+
+如果看不到相关项，则可能是因为[采样](app-insights-sampling.md)正在进行。
+
+## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
+
+> [!NOTE] 
+> 对多步骤 Web 测试要收取费用。 [定价方案](http://azure.microsoft.com/pricing/details/application-insights/)。
+> 
 
 若要创建多步骤测试，可以使用 Visual Studio 来录制方案，然后将录制内容上载到 Application Insights。 Application Insights 将按特定间隔重放该方案，并验证响应。
 
@@ -153,7 +165,7 @@ Web 测试有两种类型：
 
 请注意，Web 测试必须完全包含在 .webtest 文件中：不能在测试中使用编码的函数。
 
-### <a name="plugging-time-and-random-numbers-into-your-multistep-test"></a>将时间和随机数插入多步骤测试
+### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>将时间和随机数插入多步骤测试
 假设要测试的工具从外部源获取与时间相关的数据（例如股票）。 录制 Web 测试时，必须使用具体的时间，但要将它们设置为测试参数：StartTime 和 EndTime。
 
 ![带参数的 Web 测试。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
@@ -176,7 +188,7 @@ Web 测试插件提供时间参数化方式。
 
 现在，将测试上载到门户。 每次运行测试时，将使用动态值。
 
-## <a name="dealing-with-signin"></a>处理登录
+## <a name="dealing-with-sign-in"></a>处理登录
 如果用户登录应用，可以使用许多选项来模拟登录，以便可以在登录后测试页面。 使用的方法取决于应用提供的安全性类型。
 
 在所有情况下，应该只针对测试目的在应用程序中创建帐户。 如果可能，请限制此测试帐户的权限，以便 Web 测试不会影响实际用户。
@@ -267,21 +279,21 @@ Web 测试插件提供时间参数化方式。
 >
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
-[搜索诊断日志][诊断]
+[搜索诊断日志][diagnostic]
 
-[故障排除][问题与解答]
+[故障排除][qna]
 
 [Web 测试代理 IP 地址](app-insights-ip-addresses.md)
 
 <!--Link references-->
 
-[Azure 可用性]: ../insights-create-web-tests.md
-[诊断]: app-insights-diagnostic-search.md
-[问题与解答]: app-insights-troubleshoot-faq.md
-[启动]: app-insights-overview.md
+[azure-availability]: ../insights-create-web-tests.md
+[diagnostic]: app-insights-diagnostic-search.md
+[qna]: app-insights-troubleshoot-faq.md
+[start]: app-insights-overview.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2016
+ms.date: 12/08/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: bd4d6f59ac4fbaa9bd0cb6a33a697cac0d13eb8c
-ms.openlocfilehash: 7a86469a9513869362eb37b21b155889dcee7942
+ms.sourcegitcommit: cbbc9f29fc4dea49807f1093b673bebac628314b
+ms.openlocfilehash: e886f9c1984003d1bd1391012b26eea39d4a0b76
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: 7a86469a9513869362eb37b21b155889dcee7942
 | --- | --- | --- |
 | **北美** |美国东部、美国西部、美国东部 2 区、美国中部、美国中南部、美国中北部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、拉斯维加斯、洛杉矶、纽约、西雅图、硅谷、华盛顿特区、蒙特利尔+、魁北克市+、多伦多 |
 | **南美洲** |巴西南部 |圣保罗 |
-| **欧洲** |北欧、西欧、英国西部、英国南部 |阿姆斯特丹、都柏林、伦敦、纽波特（威尔士）+、巴黎 |
+| **欧洲** |北欧、西欧、英国西部、英国南部 |阿姆斯特丹、都柏林、伦敦、纽波特（威尔士）、巴黎 |
 | **亚洲** |东亚、东南亚 |中国香港特别行政区、新加坡 |
 | **日本** |日本西部、日本东部 |大坂、东京 |
 | **澳大利亚** |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 |
@@ -134,11 +134,13 @@ ms.openlocfilehash: 7a86469a9513869362eb37b21b155889dcee7942
 
 | **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
+| **伦敦** | Equinix | Exponential E |
 | **纽约** |Equinix |Lightower |
 | **西雅图** |Equinix |Alaska Communications |
 | **硅谷** |Equinix |XO Communications |
 | **新加坡** |Equinix |1CLOUDSTAR |
-| **华盛顿特区** |Equinix |Lightower |
+| **悉尼** | Megaport | Macquarie |
+| **华盛顿特区** |Equinix | Lightower, Masergy |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute 系统集成商
 根据网络的规模，有时，很难启用专用连接来满足需要。 你可以与下表中列出的任一系统集成商合作，以帮助将你加入 ExpressRoute。
@@ -158,6 +160,6 @@ ms.openlocfilehash: 7a86469a9513869362eb37b21b155889dcee7942
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

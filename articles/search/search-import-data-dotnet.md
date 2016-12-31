@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1934fa46b38f36033c427a6ac061db94f4dc760b
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 724edc7894cabfb31f6e43a291f98ab60c0a9981
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 1934fa46b38f36033c427a6ac061db94f4dc760b
 > 
 > 
 
-本文说明如何使用 [Azure 搜索 .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) 将数据导入到 Azure 搜索索引中。
+本文说明如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk) 将数据导入到 Azure 搜索索引中。
 
 在开始本演练前，应已 [创建 Azure 搜索索引](search-what-is-an-index.md)。 本文还假定已创建 `SearchServiceClient` 对象，如 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#CreateSearchServiceClient)中所示。
 
@@ -45,11 +45,11 @@ ms.openlocfilehash: 1934fa46b38f36033c427a6ac061db94f4dc760b
 若要使用 Azure 搜索 .NET SDK 将数据导入到索引中，需要创建 `SearchIndexClient` 类的实例。 可以自己构造此实例，但如果已有可调用其 `Indexes.GetClient` 方法的 `SearchServiceClient` 实例会更容易。 例如，下面是如何从名为 `serviceClient` 的 `SearchServiceClient` 获取名为“hotels”的索引的 `SearchIndexClient`：
 
 ```csharp
-SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 > [!NOTE]
-> 在典型的搜索应用程序中，索引管理和填充由搜索查询中的一个单独的组件处理。 `Indexes.GetClient` 对于填充索引很方便，因为使用它则无需提供另一个 `SearchCredentials`。 它通过向新 `SearchIndexClient` 传递用于创建 `SearchServiceClient` 的管理密钥来实现此目的。 但是，在执行查询的应用程序中，最好直接创建 `SearchIndexClient` ，这样可以传入查询密钥而不是管理密钥。 这与 [最小特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege) 一致，可帮助使应用程序更安全。 可以在 [MSDN 上的 Azure 搜索 REST API 参考](https://msdn.microsoft.com/library/azure/dn798935.aspx)中了解更多有关密钥管理密钥和查询密钥的信息 。
+> 在典型的搜索应用程序中，索引管理和填充由搜索查询中的一个单独的组件处理。 `Indexes.GetClient` 对于填充索引很方便，因为使用它则无需提供另一个 `SearchCredentials`。 它通过向新 `SearchIndexClient` 传递用于创建 `SearchServiceClient` 的管理密钥来实现此目的。 但是，在执行查询的应用程序中，最好直接创建 `SearchIndexClient` ，这样可以传入查询密钥而不是管理密钥。 这与 [最小特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege) 一致，可帮助使应用程序更安全。 可在 [Azure 搜索 REST API 参考](https://docs.microsoft.com/rest/api/searchservice/)中了解管理密钥和查询密钥的详细信息。
 > 
 > 
 
@@ -165,29 +165,43 @@ Thread.Sleep(2000);
 [SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
+    [Key]
+    [IsFilterable]
     public string HotelId { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 
+    [IsSearchable]
     public string Description { get; set; }
 
+    [IsSearchable]
+    [Analyzer(AnalyzerName.AsString.FrLucene)]
     [JsonProperty("description_fr")]
     public string DescriptionFr { get; set; }
 
+    [IsSearchable, IsFilterable, IsSortable]
     public string HotelName { get; set; }
 
+    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
     public string Category { get; set; }
 
+    [IsSearchable, IsFilterable, IsFacetable]
     public string[] Tags { get; set; }
 
+    [IsFilterable, IsFacetable]
     public bool? ParkingIncluded { get; set; }
 
+    [IsFilterable, IsFacetable]
     public bool? SmokingAllowed { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public DateTimeOffset? LastRenovationDate { get; set; }
 
+    [IsFilterable, IsSortable, IsFacetable]
     public int? Rating { get; set; }
 
+    [IsFilterable, IsSortable]
     public GeographyPoint Location { get; set; }
 
     // ToString() method omitted for brevity...
@@ -197,20 +211,20 @@ public partial class Hotel
 要注意的第一个问题是，`Hotel` 的每个公共属性均对应于索引定义中的一个字段，但有一个重要差异：每个字段的名称均以小写字母开头（“骆驼拼写法”），而 `Hotel` 的每个公共属性名称均以大写字母开头（“帕斯卡拼写法”）。 在执行目标架构不受应用程序开发人员控制的数据绑定的 .NET 应用程序中，这种情况很常见。 不必违反 .NET 命名准则将属性名设为 camel 大小写，而可以使用 `[SerializePropertyNamesAsCamelCase]` 属性指示 SDK 将属性名自动映射到 camel 大小写。
 
 > [!NOTE]
-> Azure 搜索 .NET SDK 使用 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) 库将自定义模型对象序列化为 JSON 和从 JSON 反序列化。 如果需要，可以自定义此序列化。 可以在 [升级到 Azure 搜索 .NET SDK 1.1 版](search-dotnet-sdk-migration.md#WhatsNew)中找到更多详细信息。 此类的一个示例是对上面的示例代码中的 `DescriptionFr` 属性使用 `[JsonProperty]` 特性。
+> Azure 搜索 .NET SDK 使用 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) 库将自定义模型对象序列化为 JSON 和从 JSON 反序列化。 如果需要，可以自定义此序列化。 可在[使用 JSON.NET 的自定义序列](search-howto-dotnet-sdk.md#JsonDotNet)中了解更多详细信息。 此类的一个示例是对上面的示例代码中的 `DescriptionFr` 属性使用 `[JsonProperty]` 特性。
 > 
 > 
 
-有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、 `DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。[MSDN](https://msdn.microsoft.com/library/azure/dn931291.aspx) 上的 `Documents.Get` 方法中记录了类型映射的特定规则。
+有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、 `DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。[Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)中的 `Documents.Get` 方法记录了类型映射的具体规则。
 
 使用自己的类作为文档的这种功能可以在这两个方向上正常工作；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，如 [下一篇文章](search-query-dotnet.md)中所示。
 
 > [!NOTE]
-> Azure 搜索 .NET SDK 还使用 `Document` 类支持动态类型化文档，该类是字段名称到字段值的键/值映射。 如果在设计时不知道索引架构，或者绑定到特定模型类不太方便，这很有用。 该 SDK 中处理文档的所有方法都有使用 `Document` 类的重载，以及采用泛型类型参数的强类型重载。 本文中的示例代码仅使用后者。 [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.document.aspx) 上可找到有关 `Document` 类的更多信息。
+> Azure 搜索 .NET SDK 还使用 `Document` 类支持动态类型化文档，该类是字段名称到字段值的键/值映射。 如果在设计时不知道索引架构，或者绑定到特定模型类不太方便，这很有用。 该 SDK 中处理文档的所有方法都有使用 `Document` 类的重载，以及采用泛型类型参数的强类型重载。 本文中的示例代码仅使用后者。
 > 
 > 
 
-**有关数据类型的重要说明**
+**为何应使用可为 null 的数据类型**
 
 设计自己的模型类以映射到 Azure 搜索索引时，建议将值类型的属性（如 `bool` 和 `int`）声明为可以为 null（例如，`bool?` 而不是 `bool`）。 如果使用不可为 null 属性，必须 **保证** 索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索服务都不会帮助强制实施此检查。
 

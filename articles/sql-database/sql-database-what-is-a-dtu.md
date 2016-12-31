@@ -17,8 +17,8 @@ ms.workload: NA
 ms.date: 09/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4edae4ef772dc68b1f0efa9e758f26277dd35c44
-ms.openlocfilehash: bbc9bef4039b5c898c44a0e39b78b7b28c225c32
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: f47aa2afad88f6afea4dae38603ec99e938d89ea
 
 
 ---
@@ -26,14 +26,14 @@ ms.openlocfilehash: bbc9bef4039b5c898c44a0e39b78b7b28c225c32
 本文介绍数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)，以及达到最大 DTU 或 eDTU 时发生的情况。  
 
 ## <a name="what-are-database-transaction-units-dtus"></a>数据库事务单位 (DTU) 的定义
-DTU 是一个资源度量单位，表示保证可用于 [独立数据库服务层](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)内特定性能级别的独立 Azure SQL 数据库的资源。 DTU 是一定比例的 CPU、内存和数据 I/O 以及事务日志 I/O 的混合度量值，该比例由 OLTP 基准工作负荷决定（OLTP 基准工作负荷代表真实的 OLTP 工作负荷）。 提高数据库的性能级别可使 DTU 加倍，这等同于使该数据库可用的资源集增加一倍。 例如，具有 1750 个 DTU 的高级 P11 数据库提供的 DTU 计算能力是具有 5 个 DTU 的基本数据库的 350 倍。 要了解用于确定 DTU 混合比例的 OLTP 基准工作负荷所依据的方法，请参阅 [SQL 数据库基准概述](sql-database-benchmark-overview.md)。
+DTU 是一个资源度量单位，表示保证可用于 [独立数据库服务层](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)内特定性能级别的独立 Azure SQL 数据库的资源。 DTU 是一定比例的 CPU、内存和数据 I/O 以及事务日志 I/O 的混合度量值，该比例由 OLTP 基准工作负荷决定（OLTP 基准工作负荷代表真实的 OLTP 工作负荷）。 提高数据库的性能级别可使 DTU 加倍，这等同于使该数据库可用的资源集增加一倍。 例如，具有 1750 个 DTU 的高级 P11 数据库提供的 DTU 计算能力是具有 5 个 DTU 的基本数据库的 350 倍。 要了解用于确定 DTU 混合比例的 OLTP 基准工作负荷所依据的方法，请参阅 [SQL 数据库基准概述](sql-database-benchmark-overview.md)。
 
-![SQL 数据库简介：按层和级别统计的单一数据库 DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+![SQL 数据库简介：按层和级别统计的独立数据库 DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
-可以随时 [更改服务层](sql-database-scale-up.md) ，将应用程序故障时间降至最低（通常在平均 4 秒以下）。 许多业务和应用只要能够创建数据库并按需调高或调低单一数据库的性能即可，尤其是当使用模式相对容易预测时。 但如果有无法预测的使用模式，则管理成本和业务模式就会变得相当困难。 在这种情况下，可以使用具有一定数量 eDTU 的弹性池。
+可以随时 [更改服务层](sql-database-scale-up.md) ，将应用程序故障时间降至最低（通常在平均 4 秒以下）。 许多业务和应用只要能够创建数据库并按需调高或调低性能即可，尤其是当使用模式相对容易预测时。 但如果有无法预测的使用模式，则管理成本和业务模式就会变得相当困难。 在这种情况下，可以使用具有一定数量 eDTU 的弹性池。
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>弹性数据库事务单位 (eDTU) 的定义
-eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组数据库之间共享的资源集，称为 [弹性池](sql-database-elastic-pool.md)。 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 有关详细信息，请参阅 [弹性池和服务层](sql-database-service-tiers.md#elastic-database-pool-service-tiers-and-performance-in-edtus) 。
+eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组数据库之间共享的资源集，称为 [弹性池](sql-database-elastic-pool.md)。 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 有关详细信息，请参阅 [弹性池和服务层](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) 。
 
 ![SQL 数据库简介：按层和级别统计的 eDTU](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
@@ -45,7 +45,7 @@ eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组
 如果打算将现有的本地或 SQL Server 虚拟机工作负荷迁移到 Azure SQL 数据库，可以使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/) 来估计所需的 DTU 数。 对于现有的 Azure SQL 数据库工作负荷，可以使用 [SQL 数据库 Query Performance Insight](sql-database-query-performance.md) 来了解数据库资源使用量 (DTU)，更深入地了解如何优化工作负荷。 也可以使用 [sys.dm_db_ resource_stats DMV](https://msdn.microsoft.com/library/dn800981.aspx) 获取最近一小时的资源消耗信息。 或者，可以查询目录视图 [sys.resource_stats](http://msdn.microsoft.com/library/dn269979.aspx)，获取最近 14 天的同类数据，不过，五分钟平均值的准确性较低。
 
 ## <a name="how-do-i-know-if-i-could-benefit-from-an-elastic-pool-of-resources"></a>如何知道是否可以从资源的弹性池受益？
-池适合具有特定使用模式的大量数据库。 对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。 SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 有关详细信息，请参阅 [何时使用弹性数据库池？](sql-database-elastic-pool-guidance.md)
+池适合具有特定使用模式的大量数据库。 对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。 SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 有关详细信息，请参阅[何时使用弹性池？](sql-database-elastic-pool-guidance.md)
 
 ## <a name="what-happens-when-i-hit-my-maximum-dtus"></a>达到最大 DTU 时发生的情况
 会校准并控制性能级别，以便在选定服务层/性能级别所允许的最大限制范围内提供所需的资源来运行数据库工作负荷。 如果工作负荷达到了 CPU/数据 IO/日志 IO 限制中的其中一个限制，会继续接收资源直到达到最大允许级别，但是，可能会发现查询延迟不断增加。 这些限制不会导致任何错误，而只会减慢工作负荷，直到严重变慢，以致于查询开始超时。 如果达到了并发用户会话/请求（工作线程）的最大允许数目限制，会看到明确的错误。 有关 CPU、内存、数据 I/O 和事务日志 I/O 以外的资源的限制信息，请参阅 [Azure SQL 数据库资源限制](sql-database-resource-limits.md) 。
@@ -58,6 +58,6 @@ eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

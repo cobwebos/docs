@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
+ms.sourcegitcommit: d0b8e8ec88c39ce18ddfd6405faa7c11ab73f878
+ms.openlocfilehash: 673ce33f0f0836c3df3854b0e6368a6215ee6f5f
 
 
 ---
@@ -29,6 +29,7 @@ ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
 * 在 VNet 中从一个子网到另一个子网。
 * 从 VM 到 Internet。
 * 通过 VPN 网关从一个 VNet 到另一个 VNet。
+* 通过对等互连从一个 VNet 连接到另一个 VNet（服务链接）。
 * 通过 VPN 网关从 VNet 到本地网络。
 
 下图显示了通过一个 VNet、两个子网、数个 VM 以及允许 IP 通信流动的系统路由完成的简单设置。
@@ -111,6 +112,6 @@ ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

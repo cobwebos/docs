@@ -1,6 +1,6 @@
 ---
-title: "使用 IoT 中心进行设备管理的概述 | Microsoft Docs"
-description: "本文概述了 Azure IoT 中心的设备管理：企业设备生命周期、重新启动、恢复出厂设置、固件更新、配置、设备克隆、查询、作业"
+title: "使用 Azure IoT 中心进行设备管理 | Microsoft Docs"
+description: "Azure IoT 中心的设备管理概述：企业设备生命周期和设备管理模式，如重启、恢复出厂设置、固件更新、配置、设备克隆、查询、作业。"
 services: iot-hub
 documentationcenter: 
 author: bzurcher
@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2016
-ms.author: bzurcher
+ms.author: briz
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 4a80d22f0d306035dc3e710d9a1b04f0624e94d6
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 91dcace2d74d44a5d2ab3b9a1352b2fa052ddc44
 
 
 ---
@@ -67,19 +67,19 @@ IoT 带来了一系列独特的设备管理难题，每个企业级解决方案�
 ## <a name="device-management-patterns"></a>设备管理模式
 IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-started]更详细地介绍如何扩展这些模式以适合具体方案，以及如何基于这些核心模板设计新模式。
 
-* **重新启动** - 后端应用程序通过直接方法通知设备它已启动重新启动。  设备使用报告属性来更新设备的重新启动状态。
+* **重启** - 后端应用通过直接方法通知设备它已启动重启。  设备使用报告属性来更新设备的重新启动状态。
   
     ![设备管理重新启动模式图形][img-reboot_pattern]
-* **恢复出厂设置** - 后端应用程序通过直接方法通知设备它已启动恢复出厂设置。  设备使用报告属性来更新设备的恢复出厂设置状态。
+* **恢复出厂设置** - 后端应用通过直接方法通知设备它已启动恢复出厂设置。  设备使用报告属性来更新设备的恢复出厂设置状态。
   
     ![设备管理恢复出厂设置模式图形][img-facreset_pattern]
-* **配置** - 后端应用程序使用所需属性来配置设备上运行的软件。  设备使用报告属性来更新设备的配置状态。
+* **配置** - 后端应用使用所需属性来配置设备上运行的软件。  设备使用报告属性来更新设备的配置状态。
   
     ![设备管理配置模式图形][img-config_pattern]
-* **固件更新** - 后端应用程序通过直接方法通知设备它已启动固件更新。  设备将启动一个多步骤过程，用于下载固件图片、应用固件图片，最后重新连接到 IoT 中心服务。  在整个多步骤过程中，设备使用报告属性来更新设备的进度和状态。
+* **固件更新** - 后端应用通过直接方法通知设备它已启动固件更新。  设备将启动一个多步骤过程，用于下载固件图片、应用固件图片，最后重新连接到 IoT 中心服务。  在整个多步骤过程中，设备使用报告属性来更新设备的进度和状态。
   
     ![设备管理固件更新模式图形][img-fwupdate_pattern]
-* **报告进度和状态** - 应用程序后端在一组设备上运行设备克隆查询，以报告设备上运行的操作的状态和进度。
+* **报告进度和状态** - 解决方案后端在一组设备上运行设备克隆查询，以报告设备上运行的操作的状态和进度。
   
     ![设备管理报告进度和状态模式图形][img-report_progress_pattern]
 
@@ -112,6 +112,6 @@ IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-sta
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

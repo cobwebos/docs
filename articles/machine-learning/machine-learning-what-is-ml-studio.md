@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/09/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a5bcc177d298aecd9fd474bd15fc0331b26e887
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
 
 
 ---
@@ -33,22 +33,27 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 **Azure 机器学习工作室** 提供交互式的可视工作区，可在其中轻松构建、测试和迭代预测分析模型。 可以将***数据集***和分析***模块***拖放到交互式画布，将它们连接在一起构成***试验***，然后在机器学习工作室中运行。 若要迭代模型设计，可以编辑试验，根据需要保存副本，然后重新运行试验。 准备就绪后，可以将***训练实验***转换为***预测试验***，然后将其发布为 ***Web 服务***，使其他人可以访问模型。
 
+不需要编程，只需以可视方式连接数据集和模块，即可构造预测分析模型。
+
 > [!TIP]
 > 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](machine-learning-studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
 > 
 > 
-
-不需要编程，只需以可视方式连接数据集和模块，即可构造预测分析模型。
 
 ![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、写入评分的数据、写入模型。][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>机器学习工作室入门
 首次进入[机器学习工作室](https://studio.azureml.net)时，会看到“主页”。 可在此处查看文档、视频、网络研讨会，以及查找其他重要资源。
 
-顶部有三个选项卡：“主页”（开始位置）、“工作室”和“库”。
+单击左上方的菜单 ![菜单](media/machine-learning-what-is-ml-studio/menu.png) 将看到多个选项。
 
-### <a name="studio"></a>工作室
-单击“工作室”选项卡时，系统会要求使用 Microsoft 帐户或者工作或学校帐户登录。 登录后，左侧会显示以下选项卡：
+### <a name="cortana-intelligence"></a>Cortana Intelligence
+单击“Cortana Intelligence”，将转到 [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) 的主页。 Cortana Intelligence Suite 是一个完全托管的大数据和高级分析套件，用于将数据转换为智能操作。 有关完整文档（包括客户案例分享），请参阅套件主页。
+
+### <a name="azure-machine-learning"></a>Azure 机器学习
+此处有两个选项：**主页**（开始的页面）和**工作室**。
+
+单击“工作室”，将转到 **Azure 机器学习工作室**。 首先系统会要求使用 Microsoft 帐户或者工作或学校帐户登录。 登录后，左侧会显示以下选项卡：
 
 * **项目** - 表示单个项目的试验、数据集、笔记本和其他资源的集合
 * **试验** - 已创建、运行和保存为草稿的试验
@@ -59,7 +64,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * **设置** - 用于配置帐户和资源的设置集合。
 
 ### <a name="gallery"></a>库
-单击“库”选项卡将转到“Cortana Intelligence 库”。 该库是一个社区，数据科研人员和开发人员可在此共享使用 Cortana Intelligence 套件组件创建的解决方案。
+单击“库”，将转到 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)。 社区数据科研人员和开发人员可以在该库中共享使用 Cortana Intelligence Suite 组件创建的解决方案。
 
 有关该库的详细信息，请参阅 [Share and discover solutions in the Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md)（共享和发现 Cortana Intelligence 库中的解决方案）。
 
@@ -93,7 +98,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 模块是可对数据执行的算法。 机器学习工作室有许多模块，包括数据引入函数、训练、评分和验证过程。 下面是随附模块的一些例子：
 
 * [转换为 ARFF][convert-to-arff] - 将 .NET 序列化数据集转换为属性关系文件格式 (ARFF)。
-* [计算基本统计数据][elementary-statistics] - 计算基本统计信息，例如平均值、标准差等。
+* [计算基本统计信息][elementary-statistics] - 计算基本统计信息，例如平均值、标准偏差等。
 * [线性回归][linear-regression] - 创建在线梯度下降线性回归模型。
 * [评分模型][score-model] - 为训练的分类或回归模型评分。
 
@@ -112,10 +117,10 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 [convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/
 [elementary-statistics]: https://msdn.microsoft.com/library/azure/3086b8d4-c895-45ba-8aa9-34f0c944d4d3/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[评分模型]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
+[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

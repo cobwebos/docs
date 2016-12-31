@@ -78,7 +78,7 @@
             }
         }
 
-然后，在稍后的某个时间，设备应用通过更新上述属性报告此操作的成功或失败状态。
+然后，在稍后的某个时间，设备应用将通过更新上述属性报告此操作的成功或失败状态。
 请注意，解决方案后端可以在任何时候跨所有设备查询配置流程的状态。
 
 本教程演示如何：
@@ -93,6 +93,7 @@
 [lnk-twin-tutorial]: ../articles/iot-hub/iot-hub-node-node-twin-getstarted.md
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Dec16_HO2-->
 
 

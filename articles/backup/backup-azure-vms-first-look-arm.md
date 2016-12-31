@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 11/10/2016
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: e29891dc03f8a864ecacc893fd1cc0d3cc1436cb
-ms.openlocfilehash: 3fe4d985c62b8476bd3b3f923fa17e7f364f9352
+ms.sourcegitcommit: d18cd2c117ced64e407e87bcc96da38b0351a341
+ms.openlocfilehash: 0b3409074e0b4929fdf1f5a6b915e3814facedf6
 
 
 ---
@@ -45,6 +45,37 @@ ms.openlocfilehash: 3fe4d985c62b8476bd3b3f923fa17e7f364f9352
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
+根据想要保护的虚拟机数量，可以从不同的起点着手 - 如果想要通过一项操作备份多个虚拟机，请转到恢复服务保管库，从保管库仪表板开始备份。 如果想要备份一个 VM，可以直接从 VM 管理边栏选项卡备份。
+
+## <a name="configure-backup-from-vm-management-blade"></a>从 VM 管理边栏选项卡配置备份
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“虚拟机”。  此时将显示虚拟机列表。 在虚拟机列表中，选择要备份的虚拟机。 此时将打开虚拟机管理边栏选项卡。
+ ![VM 管理边栏选项卡](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
+
+3. 在 VM 管理边栏选项卡中，单击“设置”左下侧显示的“备份”选项。
+![VM 管理边栏选项卡中的“备份”选项](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
+
+4. 此时将打开“启用备份”边栏选项卡。 应在此边栏选项卡中提供两项输入：恢复服务保管库 - 用于存储 VM 备份的 Azure 备份资源；备份策略 - 备份策略指定备份计划，以及备份副本的保留期限。 此边栏选项卡中使用了默认选项。 可以根据备份要求自定义这些选项。
+
+  ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+
+5. 对于恢复服务保管库，可以选择现有的保管库或创建新保管库。 如果创建新保管库，将在与虚拟机相同的资源组中创建该保管库，其位置也与虚拟机相同。 如果想要使用不同的值创建恢复服务保管库，请先[创建恢复服务保管库](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)，然后在步骤 3 中单击“备份”选项，并在此边栏选项卡中选择该保管库。
+
+6. 在“备份策略”边栏选项卡中选择要应用到保管库的备份策略，然后单击“确定”。
+    ![选择备份策略](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+
+    默认策略的详细信息将在详细信息中列出。 如果要创建策略，请从下拉菜单中选择“新建”。 下拉菜单中还提供了一个选项，用于在创建快照时切换时间。 有关定义备份策略的说明，请参阅[定义备份策略](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)。 单击“确定”后，备份策略将与虚拟机相关联。
+
+7. 单击“启用备份”在虚拟机上配置备份。 这会触发部署。
+![“启用备份”按钮](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+
+8. 可以通过通知跟踪配置进度。
+![“启用备份”通知](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
+
+9. 完成“配置备份”的部署后，在 VM 管理边栏选项卡中单击“备份”选项会转到备份的 VM 对应的“备份项”边栏选项卡。
+![VM 备份项视图](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+
+## <a name="configure-backup-from-recovery-services-vault-view"></a>从恢复服务保管库视图配置备份
 概括而言，你将要完成以下这些步骤。  
 
 1. 为 VM 创建恢复服务保管库。
@@ -187,16 +218,16 @@ ms.openlocfilehash: 3fe4d985c62b8476bd3b3f923fa17e7f364f9352
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>在虚拟机中安装 VM 代理
-此信息是根据需要提供的。 Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 但是，如果 VM 创建自 Azure 资源库，则 VM 代理已存在于虚拟机上。 从本地数据中心迁移的 VM 上未安装 VM 代理。 在这种情况下，需要安装 VM 代理。 如果在备份 Azure VM 时遇到问题，请先检查是否已在虚拟机上正确安装 Azure VM 代理（请参阅下表）。 如果要创建自定义 VM，[请先确保已选中“安装 VM 代理”复选框](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)，然后再预配虚拟机。
+此信息是根据需要提供的。 Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。 但是，如果 VM 创建自 Azure 资源库，则 VM 代理已存在于虚拟机上。 从本地数据中心迁移的 VM 上未安装 VM 代理。 在这种情况下，需要安装 VM 代理。 如果在备份 Azure VM 时遇到问题，请先检查是否已在虚拟机上正确安装 Azure VM 代理（请参阅下表）。 如果要创建自定义 VM，[请先确保已选中“安装 VM 代理”复选框](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)，然后再预配虚拟机。
 
-了解 [VM 代理](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)以及[如何安装它](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md)。
+了解 [VM 代理](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)以及[如何安装它](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 下表提供了适用于 Windows 和 Linux VM 的 VM 代理的其他信息。
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | 安装 VM 代理 |<li>下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 你需要有管理员权限才能完成安装。 <li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |<li> 从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent) 。 你需要有管理员权限才能完成安装。 <li> [更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |
-| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/virtual-machines-linux-update-agent.md)上的说明进行操作。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
+| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)上的说明进行操作。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
 | 验证 VM 代理安装 |<li>导航到 Azure VM 中的 *C:\WindowsAzure\Packages* 文件夹。 <li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“**属性**”，然后选择“**详细信息**”选项卡。 “产品版本”字段应为 2.6.1198.718 或更高。 |不适用 |
 
 ### <a name="backup-extension"></a>备份扩展
@@ -215,6 +246,6 @@ ms.openlocfilehash: 3fe4d985c62b8476bd3b3f923fa17e7f364f9352
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

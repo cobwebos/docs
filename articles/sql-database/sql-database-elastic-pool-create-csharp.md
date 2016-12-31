@@ -1,6 +1,6 @@
 ---
-title: "使用 C# 创建弹性数据库池 | Microsoft Docs"
-description: "使用 C# 数据库开发技术在 Azure SQL 数据库中创建可缩放的弹性数据库池，以便可以在多个数据库之间共享资源。"
+title: "使用 C# 创建弹性池 | Microsoft Docs"
+description: "使用 C# 数据库开发技术在 Azure SQL 数据库中创建可缩放的弹性池，以便可以在多个数据库之间共享资源。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,20 +8,20 @@ manager: jhubbard
 editor: 
 ms.assetid: 2dedddbb-618d-462b-80dd-e4a57857c737
 ms.service: sql-database
-ms.custom: sharded databases pool
+ms.custom: multiple databases
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0e670c1bbc6266d24e089ce460529661dbb99b8d
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: b905aa65f46f601121b6774a633e72152e8ef80a
 
 
 ---
-# <a name="create-an-elastic-database-pool-with-cx23"></a>使用 C&#x23; 创建弹性数据库池
+# <a name="create-an-elastic-pool-with-cx23"></a>使用 C&#x23; 创建弹性池
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -29,7 +29,7 @@ ms.openlocfilehash: 0e670c1bbc6266d24e089ce460529661dbb99b8d
 > 
 > 
 
-本文说明了如何使用 C# 通过 [适用于 .NET 的 Azure SQL 数据库的库文件](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)创建 Azure SQL 弹性数据库池。 若要创建独立的 SQL 数据库，请参阅 [使用 C# 通过适用于 .NET 的 SQL 数据库的库文件创建 SQL 数据库](sql-database-get-started-csharp.md)。
+本文说明了如何使用 C# 通过[适用于 .NET 的 Azure SQL 数据库的库文件](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)创建 Azure SQL 弹性池。 若要创建独立的 SQL 数据库，请参阅 [使用 C# 通过适用于 .NET 的 SQL 数据库的库文件创建 SQL 数据库](sql-database-get-started-csharp.md)。
 
 适用于 .NET 的 Azure SQL 数据库提供了基于 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 的 API，用于包装[基于 Resource Manager 的 SQL 数据库 REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx)。
 
@@ -60,7 +60,7 @@ ms.openlocfilehash: 0e670c1bbc6266d24e089ce460529661dbb99b8d
 > 
 > 
 
-## <a name="create-a-sql-elastic-database-pool---c-example"></a>创建 SQL 弹性数据库池 - C# 示例
+## <a name="create-a-sql-elastic-pool---c-example"></a>创建 SQL 弹性池 - C# 示例
 以下示例将创建资源组、服务器、防火墙规则、弹性池，然后在池中创建 SQL 数据库。 请参阅[创建用于访问资源的服务主体](#create-a-service-principal-to-access-resources)获取 `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` 变量。
 
 将 **Program.cs** 的内容替换为以下内容，使用应用值更新 `{variables}`（不包括 `{}`）。

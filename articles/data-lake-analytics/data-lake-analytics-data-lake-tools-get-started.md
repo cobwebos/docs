@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/08/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 28222825d680ed7930dd1f2da46df28728c7c103
-ms.openlocfilehash: 48ff29e7abae511eb75aec8c1569ffdf5a57bc77
+ms.sourcegitcommit: 3c8406efd9d716df56ed3ca10fc596684945c2f2
+ms.openlocfilehash: 3281b001aeab42aace951b5bdd5d4ec901de396f
 
 
 ---
@@ -28,19 +28,19 @@ ms.openlocfilehash: 48ff29e7abae511eb75aec8c1569ffdf5a57bc77
 U-SQL 是高度可缩放、高度可扩展的语言，用于准备、转换和分析 Data Lake 中的所有数据，此外还提供其他功能。 有关详细信息，请参阅 [U-SQL Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)（U-SQL 参考）。
 
 ## <a name="prerequisites"></a>先决条件
-* **Visual Studio 2015、Visual Studio 2013 Update 4 或 Visual Studio 2012。支持 Enterprise (Ultimate/Premium)、Professional、Community 版本；不支持 Express 版本。目前不支持 Visual Studio“15”，我们正在努力提供此项支持。**
+* **Visual Studio 2015、Visual Studio 2013 Update 4 或 Visual Studio 2012。支持 Enterprise (Ultimate/Premium)、Professional、Community 版本；不支持 Express 版本。目前不支持 Visual Studio 2017。**
 * **用于 .NET 的 Microsoft Azure SDK 2.7.1 或更高版本**。  可以使用 [Web 平台安装程序](http://www.microsoft.com/web/downloads/platform.aspx)安装它。
 * **[适用于 Visual Studio 的 Data Lake 工具](http://aka.ms/adltoolsvs)**。
 
     安装用于 Visual Studio 的 Data Lake 工具后，可以在服务器资源管理器的“Azure”节点下看到“Data Lake Analytics”节点（可以按 Ctrl+Alt+S 打开服务器资源管理器）。
-* **完成[在 Azure 门户中开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)** 中的以下两个部分。
 
-  * [创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
-  * [将 SearchLog.tsv 上载到默认的 Data Lake Storage 帐户](data-lake-analytics-get-started-portal.md#prepare-source-data)。
+* **Data Lake Analytics 帐户和示例数据** Data Lake 工具不支持创建 Data Lake Analytics 帐户。 可使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建帐户。
+为方便起见，[附录 A：用于准备教程的 PowerShell 示例](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)部分中提供了用于创建 Data Lake Analytics 服务及上传源数据文件的 PowerShell 脚本。
 
-    为方便起见， [附录 A：用于准备教程的 PowerShell 示例](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)部分中提供了用于创建 Data Lake Analytics 服务及上载源数据文件的 PowerShell 示例脚本。
+    也可浏览[通过 Azure 门户开始使用 Azure Data Lake Analytics ](data-lake-analytics-get-started-portal.md)中的以下两个部分，手动创建帐户和上传数据：
 
-    Data Lake 工具不支持创建 Data Lake Analytics 帐户。 因此必须使用 Azure 门户、Azure PowerShell、.NET SDK 或 Azure CLI 创建该帐户。 若要运行 Data Lake Analytics 作业，需要提供一些数据。 尽管 Data Lake 工具支持上载数据，但为了方便理解本教程，这里将使用门户来上载示例数据。
+    1. [创建 Azure Data Lake Analytics 帐户](data-lake-analytics-get-started-portal.md#create-data-lake-analytics-account)。
+    2. [将 SearchLog.tsv 上载到默认的 Data Lake Storage 帐户](data-lake-analytics-get-started-portal.md#prepare-source-data)。
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 **连接到 Data Lake Analytics**
@@ -352,6 +352,6 @@ Visual Studio 中会显示“本地”帐户，安装程序将在 *C:\LocalRunRo
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
