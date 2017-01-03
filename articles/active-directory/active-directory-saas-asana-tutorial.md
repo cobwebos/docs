@@ -161,7 +161,7 @@ ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-asana-tutorial/create_aaduser_06.png) 
@@ -174,7 +174,7 @@ ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-asana-tutorial/create_aaduser_07.png) 
@@ -219,7 +219,7 @@ ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
 ### <a name="testing-single-sign-on"></a>测试单一登录
 本部分旨在测试 Azure AD 单一登录。
 
-请转到 Asana 登录页。 在“电子邮件地址”文本框中，插入电子邮件地址 britta.simon@contoso.com.、将密码文本框留空，然后单击“登录”。 系统会将你重定向至 Azure AD 登录页。 完成 Azure AD 凭据。 此时你已登录 Asana。
+请转到 Asana 登录页。 在电子邮件地址文本框中插入电子邮件地址 britta.simon@contoso.com。 将密码文本框留空，然后单击“登录”。 系统会将你重定向至 Azure AD 登录页。 完成 Azure AD 凭据。 此时你已登录 Asana。
 
 ## <a name="additional-resources"></a>其他资源
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
@@ -248,6 +248,6 @@ ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

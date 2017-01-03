@@ -1,5 +1,5 @@
 # <a name="azure-technical-documentation-contributor-guide"></a>Azure 技术文档供稿人指南
-GitHub 存储库中存储了 [http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) 上发布的 Azure 技术文档的源文件。
+GitHub 存储库中存储了 [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) 上发布的 Azure 技术文档的源文件。
 
 此存储库还包含有关如何为技术文档供稿的指导。 有关供稿人指南中的文章列表，请参阅[索引](contributor-guide/contributor-guide-index.md)。
 
@@ -17,9 +17,9 @@ GitHub 存储库中存储了 [http://docs.microsoft.com/azure](http://docs.micro
 * [所有供稿人指南文章的索引](contributor-guide/contributor-guide-index.md)（打开新页）
 
 ## <a name="ways-to-contribute"></a>供稿途径
-可按如下所述将更新内容提交到 [Azure 文档](http://docs.microsoft.com/azure)：
+可按如下所述将更新内容提交到 [Azure 文档](https://docs.microsoft.com/azure)：
 
-* 在 GitHub 用户界面中可以轻松为技术文章供稿。 在此存储库中找到相应的文章，或者在 [http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) 上访问该文章，然后单击文章中的链接转到该文章的 GitHub 源。
+* 在 GitHub 用户界面中可以轻松为技术文章供稿。 在此存储库中找到相应的文章，或者在 [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) 上访问该文章，然后单击文章中的链接转到该文章的 GitHub 源。
 * 如果要对现有文章进行重大更改、添加或更改图像，或者要补充新文章，则需要派生此存储库，安装 Git Bash、Markdown Pad，并了解一些 git 命令。
 
 ## <a name="code-of-conduct"></a>行为准则
@@ -27,16 +27,16 @@ GitHub 存储库中存储了 [http://docs.microsoft.com/azure](http://docs.micro
 
 ## <a name="about-your-contributions-to-azure-content"></a>有关在 Azure 中供稿
 ### <a name="minor-corrections"></a>轻微更正
-[docs.microsoft.com 使用条款](/enterprise-mobility-security/termsofuse)涵盖你在此存储库中提交的、对文档和代码示例所做的轻微更正和澄清。
+[docs.microsoft.com 使用条款](https://docs.microsoft.com/legal/termsofuse)涵盖你在此存储库中提交的、对文档和代码示例所做的轻微更正和澄清。
 
 ### <a name="larger-submissions"></a>大型提交件
 如果你不是 Microsoft 的员工，当你提交有关新文件或对文档和代码示例进行的重大更改的提取请求时，我们会在 GitHub 中发送一条意见，要求你提交一份在线供稿许可协议 (CLA)。 在我们接受你的提取请求之前，需要你填写这份在线表单。
 
 ## <a name="repository-organization"></a>存储库组织
-azure-docs 存储库中的内容遵循 http://docs.microsoft.com/azure 上的文档组织方式。 此存储库包含两个根文件夹：
+azure-docs 存储库中的内容遵循 https://docs.microsoft.com/azure 上的文档组织方式。 此存储库包含两个根文件夹：
 
 ### <a name="articles"></a>\articles
-*\articles* 文件夹包含采用标记文件格式、扩展名为 *.md* 的文档文章。 文章通常按 Azure 服务分组。 
+*\articles* 文件夹包含采用标记文件格式、扩展名为 *.md* 的文档文章。 文章通常按 Azure 服务分组。
 
 文章需要遵循严格的文件命名准则 - 有关详细信息，请参阅[文件命名指导原则](contributor-guide/file-names-and-locations.md)。
 
@@ -49,7 +49,7 @@ azure-docs 存储库中的内容遵循 http://docs.microsoft.com/azure 上的文
 此文件夹包含标准标记模板，该模板提供需要在文章中使用的基本标记格式。
 
 ### <a name="contributor-guide"></a>\contributor-guide
-此文件夹包含属于供稿人指南的文章。  
+此文件夹包含属于供稿人指南的文章。
 
 ## <a name="use-github-git-and-this-repository"></a>使用 GitHub、Git 和本存储库
 有关如何供稿、如何使用 GitHub UI 提供轻微更改，以及如何派生和克隆存储库以便提供重大更改的信息，请参阅[安装和设置 GitHub 创作工具](contributor-guide/tools-and-setup.md)。
@@ -87,6 +87,6 @@ azure-docs 存储库中的内容遵循 http://docs.microsoft.com/azure 上的文
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

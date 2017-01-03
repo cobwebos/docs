@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b12985be3822bb605004fc70490f6cf9cb803ec7
+ms.sourcegitcommit: 3ff8fba42e6455b33103c931da731b0affa8a0fb
+ms.openlocfilehash: b5fbd15729da2674b34a227861e65b89548dad39
 
 
 ---
@@ -34,13 +34,13 @@ ms.openlocfilehash: b12985be3822bb605004fc70490f6cf9cb803ec7
 ## <a name="branding-issues-on-verification-email"></a>验证电子邮件中的品牌问题
 默认验证电子邮件包含 Microsoft 品牌。 将来我们会删除它。 现在，你可以使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)将其删除。
 
+## <a name="branding-issues-on-local-account-sign-in-page-in-a-sign-in-policy"></a>有关登录策略中本地帐户登录页的品牌问题
+只能使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)来自定义登录策略中的本地帐户登录页，而不能使用[此处](active-directory-b2c-reference-ui-customization.md)所述的页面 UI 自定义功能进行自定义。 此外，用户名和密码字段中不会提供标签或占位符。 作为解决方法，我们建议改用完全可自定义的“注册或登录策略”。 如果想要完全自定义登录策略中的本地帐户登录页，请在 [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/13062033-b2c-fully-customizable-sign-in-page) 中为该功能投票。
+
 ## <a name="restrictions-on-applications"></a>对应用程序的限制
 Azure AD B2C 中目前不支持以下类型的应用程序。 有关支持的应用程序类型的说明，请参阅 [Azure AD B2C：应用程序类型](active-directory-b2c-apps.md)。
 
-### <a name="single-page-applications-javascript"></a>单页应用程序 (JavaScript)
-许多现代应用程序都有一个单页应用程序 (SPA) 前端，该前端主要是以 JavaScript 编写的，并且通常使用 AngularJS、Ember.js、Durandal 等 SPA 框架。Azure AD B2C 尚未提供此流。
-
-### <a name="daemons-server-side-applications"></a>守护程序/服务器端应用程序
+### <a name="daemons--server-side-applications"></a>守护程序/服务器端应用程序
 包含长时运行进程或不需要用户操作的应用程序还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用程序可以在 [OAuth 2.0 客户端凭据流](active-directory-b2c-reference-protocols.md)中使用应用程序的标识（而不是使用者的委派标识）来进行身份验证和获取令牌。 此流尚不可用于 Azure AD B2C 中，到目前为止，应用程序仅能在发生交互式使用者登录流之后才能获取令牌。
 
 ### <a name="standalone-web-apis"></a>独立 Web API
@@ -96,6 +96,6 @@ Azure AD B2C 租户中不支持 [Azure AD 图形 API 上的差异查询功能](h
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

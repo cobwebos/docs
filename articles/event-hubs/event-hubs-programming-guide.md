@@ -29,7 +29,7 @@ ms.openlocfilehash: 7b95616b4ce44865477d94452d9b3e646c9c0d1a
 使用 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类创建和管理事件中心。 使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 和 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类。 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) 提供 AMQP 通信通道，事件将通过该通道发送到事件中心。 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据和有关事件的标头信息。 其他属性将在通过事件中心传递时添加到 [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 对象。
 
 ## <a name="get-started"></a>入门
-支持事件中心的 .NET 类在 Microsoft.ServiceBus.dll 程序集中提供。 引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载 [服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。 或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 。 为此，请在“Package Manager Console”窗口中发出以下命令 [](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) ：
+支持事件中心的 .NET 类在 Microsoft.ServiceBus.dll 程序集中提供。 引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载 [服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)。 或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 。 为此，请在 [“Package Manager Console”](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) 窗口中发出以下命令：
 
 ```
 Install-Package WindowsAzure.ServiceBus

@@ -35,7 +35,7 @@ ms.openlocfilehash: eb7dce1c0664e34c4946bb08f5b412e1e01c715d
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-benefitsolver-tutorial/IC804820.png "Scenario")
+![方案](./media/active-directory-saas-benefitsolver-tutorial/IC804820.png "方案")
 
 ## <a name="enabling-the-application-integration-for-benefitsolver"></a>支持 Benefitsolver 的应用程序集成
 本部分旨在概述如何为 Benefitsolver 启用应用程序集成。
@@ -44,19 +44,19 @@ ms.openlocfilehash: eb7dce1c0664e34c4946bb08f5b412e1e01c715d
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-benefitsolver-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加一个应用程序](./media/active-directory-saas-benefitsolver-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-benefitsolver-tutorial/IC749322.png "从库添加应用程序")
 6. 在“搜索框”中，键入“Benefitsolver”。
    
-   ![应用程序库](./media/active-directory-saas-benefitsolver-tutorial/IC804821.png "Application Gallery")
+   ![应用程序库](./media/active-directory-saas-benefitsolver-tutorial/IC804821.png "应用程序库")
 7. 在“结果”窗格中，选择“Benefitsolver”，然后单击“完成”，添加该应用程序。
    
    ![Benefitssolver](./media/active-directory-saas-benefitsolver-tutorial/IC804822.png "Benefitssolver")
@@ -67,25 +67,25 @@ ms.openlocfilehash: eb7dce1c0664e34c4946bb08f5b412e1e01c715d
 Benefitsolver 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 **SAML 令牌属性**配置。  
 以下屏幕截图显示一个示例。
 
-![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Attributes")
+![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "属性")
 
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“Benefitsolver”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "配置单一登录")
 2. 在“你希望用户如何登录 Benefitsolver”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "配置单一登录")
 3. 在“配置应用设置”页上，执行以下步骤：
    
-   ![配置应用设置](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
+   ![配置应用设置](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "配置应用设置")
    
    1. 在“登录 URL”文本框中，键入“http://azure.benefitsolver.com”。
    2. 在“回复 URL”文本框中，键入“https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml”。  
-   3. 单击“资源组名称” 的 Azure 数据工厂。
+   3. 单击“下一步”。
 4. 在“配置 Benefitsolver 的单一登录”页面上，单击“下载元数据”，然后将元数据文件本地保存在计算机上。
    
-   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "配置单一登录")
 5. 将下载的元数据文件发送到 Benefitsolver 支持团队。
    
    > [!NOTE]
@@ -95,13 +95,13 @@ Benefitsolver 应用程序需要特定格式的 SAML 断言，这要求将自定
    > 
 6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "Configure Single Sign-On")
-7. 在顶部菜单中单击“属性”，打开“SAML 令牌属性”对话框。
+   ![配置单一登录](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "配置单一登录")
+7. 在顶部菜单中，单击“属性”，打开“SAML 令牌属性”对话框。
    
-   ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "Attributes")
+   ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "属性")
 8. 若要添加所需的属性映射，请执行以下步骤：
    
-   ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Attributes")
+   ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "属性")
    
    | 属性名称 | 属性值 |
    | --- | --- |
@@ -132,16 +132,16 @@ Benefitsolver 应用程序需要特定格式的 SAML 断言，这要求将自定
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“Benefitsolver”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "Assign Users")
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+   ![分配用户](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "分配用户")
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

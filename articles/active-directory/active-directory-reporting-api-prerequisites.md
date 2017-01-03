@@ -62,7 +62,7 @@ ms.openlocfilehash: b0f23cc578fb946247d492b9dee92cf7a9daafa1
    
     b. 选择“Web 应用程序和/或 Web API”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 7. 在“应用属性”对话框中，执行以下步骤： 
    
     ![注册应用程序](./media/active-directory-reporting-api-prerequisites/06.png) 
@@ -168,6 +168,6 @@ ms.openlocfilehash: b0f23cc578fb946247d492b9dee92cf7a9daafa1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

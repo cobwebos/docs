@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2016
+ms.date: 12/16/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9ab8558808dc509855d075c6bba305b8524407ff
+ms.sourcegitcommit: ce9474f2926a856673efbab5103a308d31001343
+ms.openlocfilehash: ed1c66f72b09a14a14c6ecd0bf39cd92f2bd22b8
 
 
 ---
-# <a name="get-started-with-certificate-based-authentication-on-android---public-preview"></a>Android 上基于证书的身份验证入门 — 公共预览版
+# <a name="get-started-with-certificate-based-authentication-on-android"></a>Android 上基于证书的身份验证入门
 > [!div class="op_single_selector"]
 > * [iOS](active-directory-certificate-based-authentication-ios.md)
 > * [Android](active-directory-certificate-based-authentication-android.md)
@@ -50,7 +50,7 @@ ms.openlocfilehash: 9ab8558808dc509855d075c6bba305b8524407ff
 | 应用 | 支持 |
 | --- | --- |
 | Word/Excel/PowerPoint |![勾选标记][1] |
-| OneNote |即将支持 |
+| OneNote |![勾选标记][1] |
 | OneDrive |![勾选标记][1] |
 | Outlook |![勾选标记][1] |
 | Yammer |![勾选标记][1] |
@@ -70,9 +70,14 @@ ms.openlocfilehash: 9ab8558808dc509855d075c6bba305b8524407ff
 
 如果 ADFS 令牌（或任何其他 SAML 令牌）具有这些声明，Azure Active Directory 会将这些声明添加到刷新令牌中。 当需要验证刷新令牌时，此信息可用于检查吊销。 
 
-作为最佳做法，你应该使用有关如何获取用户证书的说明来更新 ADFS 错误页。 
-
+作为最佳做法，你应该使用有关如何获取用户证书的说明来更新 ADFS 错误页。  
 有关更多详细信息，请参阅[自定义 AD FS 登录页面](https://technet.microsoft.com/library/dn280950.aspx)。  
+
+某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会在请求中为 ADFS 将其转换为“*wauth=usernamepassworduri*”（要求 ADFS 执行 U/P 身份验证）和“*wfresh=0*”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 只需将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”即可。 可使用 [MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) cmdlet 执行此任务：
+
+`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
+
+
 
 ### <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync 客户端支持
 支持 Android 5.0 (Lollipop) 或更高版本上的某些 Exchange ActiveSync 应用程序。 若要确定你的电子邮件应用程序是否支持此功能，请联系应用程序开发人员。 
@@ -113,9 +118,9 @@ ms.openlocfilehash: 9ab8558808dc509855d075c6bba305b8524407ff
 
 ### <a name="configuring-your-azure-ad-tenant-for-certificate-based-authentication"></a>为 Azure AD 租户配置基于证书的身份验证
 1. 使用管理员特权启动 Windows PowerShell。 
-2. 安装 Azure AD 模块。 需要安装版本 [1.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) 或更高版本。  
+2. 安装 Azure AD 模块。 需要安装版本 [2.0.0.33 ](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 或更高版本。  
    
-        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
+        Install-Module -Name AzureADPreview –RequiredVersion 2.0.0.33 
 3. 连接到目标租户： 
    
         Connect-AzureAD 
@@ -208,6 +213,6 @@ ms.openlocfilehash: 9ab8558808dc509855d075c6bba305b8524407ff
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -73,6 +73,6 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 873335f5d27b6b52afb8519cbe461952a4e2d4fb
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 686ff35a972e9489c01fbc6e0e68437428a9f4f4
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: 873335f5d27b6b52afb8519cbe461952a4e2d4fb
 
 若要开始，请[下载应用框架](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)。  每个下载项目都是 Visual Studio 2013 解决方案。  你还需要一个用于注册应用程序的 Azure AD 租户。  如果还没有此租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
-## <a name="1-register-an-application-with-azure-ad"></a>*1.  将一个应用程序注册到 Azure AD*
+## <a name="1----register-an-application-with-azure-ad"></a>*1.  将一个应用程序注册到 Azure AD*
 若要保护你的应用程序，首先需要在租户中创建一个应用程序，并为 Azure AD 提供一些关键信息。
 
 * 登录到 [Azure 管理门户](https://manage.windowsazure.com)
@@ -119,7 +119,7 @@ public IEnumerable<TodoItem> Get()
   * `ida:Tenant` 是 Azure AD 租户的名称，例如“contoso.onmicrosoft.com”。
   * `ida:Audience` 是你在 Azure 门户中为应用程序输入的应用程序 ID URI。
 
-## <a name="3-configure-a-client-application-run-the-service"></a>*3.  配置客户端应用程序并运行服务*
+## <a name="3----configure-a-client-application--run-the-service"></a>*3.  配置客户端应用程序并运行服务*
 需要先配置待办事项列表客户端，使它能够从 AAD 获取令牌并可调用服务，然后，你才能看到待办事项服务的运行情况。
 
 * 导航回到 [Azure 管理门户](https://manage.windowsazure.com)
@@ -143,6 +143,6 @@ public IEnumerable<TodoItem> Get()
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

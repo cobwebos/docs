@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/02/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 922219ec12343bd40dd343613e370ddd1813f126
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: acb1cd18cf6e4fa9504d76fcac48dbe85579eab0
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: 922219ec12343bd40dd343613e370ddd1813f126
 | 联合单一登录 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
 | 基于密码的单一登录 |[Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
 | 应用程序代理 |[应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
-| 本地 AD 与 Azure AD 之间的单一登录 |[排查密码同步问题](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshooting-password-synchronization)<br /><br />[排查密码写回问题](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| 本地 AD 与 Azure AD 之间的单一登录 |[排查密码同步问题](connect/active-directory-aadconnectsync-implement-password-synchronization.md#troubleshooting-password-synchronization)<br /><br />[排查密码写回问题](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | 动态组成员身份 |[动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>单一登录 (SSO)
@@ -114,7 +114,7 @@ Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure
 
 条件性访问是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
 
-## <a name="apps-azure-ad"></a>应用和 Azure AD
+## <a name="apps--azure-ad"></a>应用和 Azure AD
 ### <a name="cloud-app-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>Cloud App Discovery：查找组织正在使用哪些 SaaS 应用
 Cloud App Discovery 可帮助 IT 部门了解整个组织正在使用哪些 SaaS 应用。 它可以测量应用程序使用情况，让 IT 可以判断哪些购买的应用程序可在 IT 控制下获得最大益处，且可与 Azure AD 集成。
 
@@ -214,6 +214,6 @@ Azure Active Directory 提供多个报告和警报，以帮助你监视组织对
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

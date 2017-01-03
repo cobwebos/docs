@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0612949c412cf23272bf62d3c0ea424046366b36
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 3b7550b10339762882403a42f114d1b18da9e1ab
 
 
 ---
@@ -32,7 +32,7 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>什么是 Azure AD B2C 中的本地帐户？ 它们与 Azure AD 中的工作或学校帐户有何不同？
 在 Azure AD 租户中，租户中的每个用户（使用现有 Microsoft 帐户的用户除外）都使用 `<xyz>@<tenant domain>` 形式的电子邮件地址登录，其中 `<tenant domain>` 是租户中的一个已验证域或初始 `<...>.onmicrosoft.com` 域。 此类型的帐户是工作或学校帐户。
 
-在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net,、bob@gmail.com,、sarah@contoso.com, 或jim@live.com).）登录。此类型的帐户是本地帐户。 目前，我们还支持任意用户名（仅纯字符串）作为本地帐户（例如，joe、bob、sarah 或 jim）。 可以在 Azure AD B2C 服务中选择这两种本地帐户类型中的一种。
+在 Azure AD B2C 租户中，大多数应用都希望用户使用任意电子邮件地址（例如 joe@comcast.net,、bob@gmail.com,、sarah@contoso.com, 或jim@live.com)）登录。 此类型的帐户是本地帐户。 目前，我们还支持任意用户名（仅纯字符串）作为本地帐户（例如，joe、bob、sarah 或 jim）。 可以在 Azure AD B2C 服务中选择这两种本地帐户类型中的一种。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>现在支持哪些社交标识提供者？ 计划在未来支持哪些？
 目前支持 Facebook、Google+、LinkedIn 和 Amazon。 我们将根据客户需求添加对其他流行社交标志提供者的支持。
@@ -124,6 +124,6 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 12/14/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: f26ca6e30e3070b2d2ee1861b88c52013158ba03
-ms.openlocfilehash: 45f52d4e02896d38726552adbe81261551151683
+ms.sourcegitcommit: 70448a88fb9fc338132c5199aafaac02bd4aeb5a
+ms.openlocfilehash: ac58f3f5498edbd6f7b19db647a9513a485d6dbf
 
 
 ---
@@ -308,7 +308,7 @@ azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
 下次重启或当用户登录到 Windows 时，Windows 10 周年更新和 Windows Server 2016 已加入域的计算机会自动注册到 Azure AD。 执行加入域操作后重启设备，已加入到域的新计算机会注册到 Azure AD。
 
 > [!NOTE]
-> 仅当设置了推出组策略对象时，已加入域的 Windows 10 计算机才会自动注册到 Azure AD。
+> 仅当设置了部署组策略对象时，运行 Windows 10 November Update 的已加入域的 Windows 10 计算机才会自动注册到 Azure AD。
 > 
 > 
 
@@ -317,7 +317,7 @@ azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
 若要推出已加入域的非 Windows 10 计算机的自动注册，可以将 Windows Installer 包部署到所选计算机。
 
 > [!NOTE]
-> 用于控制推出的组策略还会触发已加入域的 Windows 8.1 计算机的注册。 可以将该策略用于注册已加入域的 Windows 8.1 计算机。 或者，如果拥有混合的 Windows 版本（包括 Windows 7 或 Windows Server 版本），可以使用 Windows Installer 包注册所有非 Windows 10 和 Windows Server 2016 计算机。
+> 对于所有非 Windows 10/Windows Server 2016 计算机，建议使用本文档稍后所述的 Windows Installer 包。
 > 
 > 
 
@@ -358,6 +358,6 @@ azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO5-->
 
 

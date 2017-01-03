@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 07/22/2016
+ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
+ms.sourcegitcommit: 03b74607227aed68c6df01e80e4bb87e906ecf31
+ms.openlocfilehash: 48531201029bf09f30cb22852aaf5d3ad0b328fc
 
 
 ---
@@ -61,8 +61,8 @@ ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
 
 如果你有 Visual Studio 2013 并想要使用它，可以 [下载最新的 Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkID=324322)。 某些屏幕可能看起来与这些插图不同。
 
-## <a name="configure-a-new-web-project"></a>配置新的 Web 项目
-下一步是在 Visual Studio 中创建一个 Web 项目，并在 Azure App Service 中创建一个 Web 应用。 在本教程部分，你将配置新的 Web 项目。 
+## <a name="create-a-web-application"></a>创建 Web 应用程序
+下一步是在 Visual Studio 中创建一个 Web 应用程序项目，并在 Azure 应用服务中创建一个 Web 应用。 在本教程部分，你将配置新的 Web 项目。 
 
 1. 打开 Visual Studio 2015。
 2. 单击“文件”>“新建”>“项目”。
@@ -89,7 +89,7 @@ ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
     这些设置将指示 Visual Studio 为你的 Web 项目创建 Azure Web 应用。
 10. 单击 **“确定”**
 
-## <a name="configure-azure-resources-for-a-new-web-app"></a>配置新 Web 应用的 Azure 资源
+## <a name="create-the-azure-resources"></a>创建 Azure 资源
 现在告知 Visual Studio 希望其创建的 Azure 资源。
 
 1. 在“创建应用服务”对话框中，单击“添加帐户”，然后使用用于管理 Azure 订阅的帐户 ID 和密码登录到 Azure。
@@ -128,14 +128,14 @@ ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
 8. 在“配置应用服务计划”对话框中，单击“确定”。
 9. 在“创建应用服务”对话框中，单击“创建”。
 
-## <a name="visual-studio-creates-the-project-and-web-app"></a>Visual Studio 创建项目和 Web 应用
+## <a name="inspect-the-azure-resources-in-visual-studio"></a>检查 Visual Studio 中的 Azure 资源
 通常在不到一分钟的时间内，Visual Studio 就能创建 Web 项目和 Web 应用。  
 
 “解决方案资源管理器”窗口将显示新项目中的文件和文件夹。
 
 ![解决方案资源管理器](./media/web-sites-dotnet-get-started/solutionexplorer.png)
 
-“Azure 应用服务活动”窗口将显示已创建的 Web 应用。
+“Azure 应用服务活动”窗口显示已在 Azure 中创建应用服务资源。 可以单击以下链接，立即开始发布新项目。 但在后面，本教程会介绍如何随时发布文件。
 
 ![在“Azure App Service 活动”窗口中创建的 Web 应用](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
@@ -143,8 +143,8 @@ ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
 
 ![在云资源管理器中创建的 Web 应用](./media/web-sites-dotnet-get-started/siteinse.png)
 
-## <a name="deploy-the-web-project-to-the-azure-web-app"></a>将 Web 项目部署到 Azure Web 应用
-在本部分中，将 Web 项目部署到 Web 应用。
+## <a name="deploy-the-web-project-to-azure"></a>将 Web 项目部署到 Azure
+在此部分，用户将 Web 项目部署到在 Azure 应用服务中创建的 Web 应用资源。
 
 1. 在“解决方案资源管理器”中，右键单击该项目并选择“发布”。
    
@@ -152,7 +152,10 @@ ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
    
     几秒钟后，将显示“发布 Web”向导。 此向导将打开某个*发布配置文件*，其中包含可将 Web 项目部署到新 Web 应用的设置。
    
-    发布配置文件包含用于部署的用户名和密码。  这些凭据已事先生成，因此不需要输入。 密码已在 `Properties\PublishProfiles` 文件夹中某个隐藏的用户特定文件内加密。
+    > [!TIP] 
+    > 发布配置文件包含用于部署的用户名和密码。  这些凭据已事先生成，因此不需要输入。 密码已在 `Properties\PublishProfiles` 文件夹中某个隐藏的用户特定文件内加密。
+    >
+    >
 2. 在“发布 Web”向导的“连接”选项卡中，单击“下一步”。
    
     ![在“发布 Web”向导的“连接”选项卡中单击“下一步”](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
@@ -219,6 +222,6 @@ ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

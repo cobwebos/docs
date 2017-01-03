@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6e5898d94a43b6859ce354f154bdb25948f7686
+ms.sourcegitcommit: dc95c922b71d18cf791ea98f4ab1a02d2bac2c3b
+ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
 
 
 ---
 # <a name="set-up-application-insights-for-aspnet"></a>设置用于 ASP.NET 的 Application Insights
-[Visual Studio Application Insights](app-insights-overview.md) 监视实时应用程序，帮助[检测和诊断性能问题及异常](app-insights-detect-triage-diagnose.md)，同时[了解应用的使用情况](app-insights-overview-usage.md)。  它适用于在自有本地 IIS 服务器或云 VM 上托管的应用，以及 Azure Web 应用。
+[Azure Application Insights](app-insights-overview.md) 监视实时应用程序，帮助[检测和诊断性能问题及异常](app-insights-detect-triage-diagnose.md)，同时[了解应用的使用情况](app-insights-overview-usage.md)。  它适用于在自有本地 IIS 服务器或云 VM 上托管的应用，以及 Azure Web 应用。
 
 ## <a name="before-you-start"></a>开始之前
 你需要：
@@ -59,7 +59,9 @@ ms.openlocfilehash: b6e5898d94a43b6859ce354f154bdb25948f7686
 
 ![在 Visual Studio 中，调试期间会显示“Application Insights”按钮。](./media/app-insights-asp-net/55.png)
 
-此视图显示在应用的服务器端生成的遥测。 使用这些筛选器进行试验，然后单击任何事件以查看更多详细信息。
+此视图（“调试会话中的数据”）显示在应用的服务器端生成的遥测。 使用这些筛选器进行试验，然后单击任何事件以查看更多详细信息。
+
+* *没有数据？请确保时间范围正确，然后单击“搜索”图标。*
 
 [了解有关 Visual Studio 中的 Application Insights Tools 的详细信息](app-insights-visual-studio.md)。
 
@@ -70,15 +72,34 @@ ms.openlocfilehash: b6e5898d94a43b6859ce354f154bdb25948f7686
 
 该门户中的图表、分析工具和仪表板比 Visual Studio 中的多。 
 
-在 [Azure 门户](https://portal.azure.com/)中打开 Application Insights 资源。
+打开 Application Insights 资源 - 可以登录到 [Azure 门户](https://portal.azure.com/)，在门户中找到此资源，也可以右键单击 Visual Studio 中的项目，然后转到相应的位置。
 
 ![右键单击项目，然后打开 Azure 门户](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
-门户会打开应用的遥测视图： ![](./media/app-insights-asp-net/66.png)
+* *访问错误？如果有多组 Microsoft 凭据，可能在登录时使用了错误的凭据组。在门户中注销，然后再次登录。*
 
-* 第一个遥测会在 [实时指标流](app-insights-metrics-explorer.md#live-metrics-stream)中显示。
-* 各个事件在“搜索”  (1) 中显示。 数据可能需要几分钟才会显示。 单击任何事件即可查看其属性。 
-* 聚合指标在图表 (2) 中显示。 数据可能需要一两分钟才会在此处显示。 单击任何图表即可打开包含更多详细信息的边栏选项卡。
+门户会打开应用的遥测视图：![“Application Insights 概述”页](./media/app-insights-asp-net/66.png)
+
+单击任何磁贴或图表以查看更多详细信息。
+
+### <a name="more-detail-in-the-portal"></a>门户中的更多详细信息
+
+* [**实时指标流**](app-insights-metrics-explorer.md#live-metrics-stream)近实时显示遥测。
+
+    ![在“概览”边栏选项卡中单击“实时流”](./media/app-insights-asp-net/livestream.png)
+
+    在应用运行的同时打开实时流，使之进行连接。
+
+    实时流仅在发送遥测后显示遥测一分钟。 如需更多历史调查，请使用“搜索”、“指标资源管理器”和“分析”。 数据可能需要几分钟才会在这些位置显示。
+
+* [**搜索**](app-insights-diagnostic-search.md)显示请求、异常和页面视图等各个事件。 可以按事件类型、术语匹配和属性值进行筛选。 单击任何事件即可查看其属性和相关事件。 
+
+    ![在“概览”边栏选项卡上，单击“搜索”](./media/app-insights-asp-net/search.png)
+
+ * 在开发模式下，可能会看到大量的依赖项 (AJAX) 事件。 这些是在浏览器和服务器模拟器之间的同步。 若要隐藏它们，请单击“依赖项”筛选器。
+* [**聚合指标**](app-insights-metrics-explorer.md)例如图表中显示的请求和失败率。 单击任何图表即可打开包含更多详细信息的边栏选项卡。 单击任意图表的“编辑”标记即可设置筛选器、大小等。
+    
+    ![在“概览”边栏选项卡上，单击任意图表](./media/app-insights-asp-net/metrics.png)
 
 [了解有关在 Azure 门户中使用 Application Insights 的详细信息](app-insights-dashboards.md)。
 
@@ -113,7 +134,7 @@ Application Insights 从应用将遥测发送到 Application Insights 门户（�
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本，并在升级后将更改合并到新版本中。
 
 ## <a name="add-more-telemetry"></a>添加更多遥测
-### <a name="web-pages-and-singlepage-apps"></a>网页和单页应用
+### <a name="web-pages-and-single-page-apps"></a>网页和单页应用
 1. [将 JavaScript 代码片段添加到网页](app-insights-javascript.md)可用以下相关数据点亮浏览器和使用情况边栏选项卡：页面视图、加载时间、浏览器异常、AJAX 调用性能、用户和会话计数。
 2. [为自定义事件编写代码](app-insights-api-custom-events-metrics.md)可对用户操作进行计数、计时或度量。
 
@@ -175,6 +196,6 @@ Application Insights 从应用将遥测发送到 Application Insights 门户（�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cab81c966521c70c79090eaec295765fc147896b
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 4afdde65fe4c69d1944c0e1a3c5dd3300c5b970c
 
 
 ---
@@ -44,11 +44,11 @@ Azure Active Directory 联合身份验证服务 (AD FS) 将在 Microsoft Azure A
    <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
 ## <a name="also-read"></a>另请参阅
-* [Repair Office 365 trust with Azure AD Connect](active-directory-aadconnect-federation-management.md#repairthetrust)（使用 Azure AD Connect 修复 Office 365 信任）
+* [Repair Office 365 trust with Azure AD Connect](connect/active-directory-aadconnect-federation-management.md#repairthetrust)（使用 Azure AD Connect 修复 Office 365 信任）
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

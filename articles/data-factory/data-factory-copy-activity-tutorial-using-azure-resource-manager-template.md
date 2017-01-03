@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 42a1e634ef2c832fd0213fdae12f74db7eb264f5
+ms.sourcegitcommit: d175d3d4d7d7a58f071dab0f32e3fdd3cb3146ce
+ms.openlocfilehash: 8020a4863f0432480dd985870676a714d9abd52e
 
 
 ---
@@ -60,213 +60,216 @@ ms.openlocfilehash: 42a1e634ef2c832fd0213fdae12f74db7eb264f5
 ## <a name="data-factory-json-template"></a>数据工厂 JSON 模板
 用于定义数据工厂的顶级 Resource Manager 模板是： 
 
-    {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": { ...
-        },
-        "variables": { ...
-        },
-        "resources": [
-            {
-                "name": "[parameters('dataFactoryName')]",
-                "apiVersion": "[variables('apiVersion')]",
-                "type": "Microsoft.DataFactory/datafactories",
-                "location": "westus",
-                "resources": [
-                    { ... },
-                    { ... },
-                    { ... },
-                    { ... }
-                ]
-            }
-        ]
-    }
-
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": { ...
+    },
+    "variables": { ...
+    },
+    "resources": [
+        {
+            "name": "[parameters('dataFactoryName')]",
+            "apiVersion": "[variables('apiVersion')]",
+            "type": "Microsoft.DataFactory/datafactories",
+            "location": "westus",
+            "resources": [
+                { ... },
+                { ... },
+                { ... },
+                { ... }
+            ]
+        }
+    ]
+}
+```
 在 **C:\ADFGetStarted** 文件夹中，创建包含以下内容的名为 **ADFCopyTutorialARM.json** 的 JSON 文件：
 
-    {
-        "contentVersion": "1.0.0.0",
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "parameters": {
-          "storageAccountName": { "type": "string", "metadata": { "description": "Name of the Azure storage account that contains the data to be copied." } },
-          "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
-          "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
-          "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-          "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-          "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-          "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
-          "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
-          "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
-          } 
-        },
-        "variables": {
-          "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]",
-          "azureSqlLinkedServiceName": "AzureSqlLinkedService",
-          "azureStorageLinkedServiceName": "AzureStorageLinkedService",
-          "blobInputDatasetName": "BlobInputDataset",
-          "sqlOutputDatasetName": "SQLOutputDataset",
-          "pipelineName": "Blob2SQLPipeline"
-        },
+```json
+{
+    "contentVersion": "1.0.0.0",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "parameters": {
+      "storageAccountName": { "type": "string", "metadata": { "description": "Name of the Azure storage account that contains the data to be copied." } },
+      "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
+      "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
+      "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
+      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
+      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
+      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
+      "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
+      "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
+      } 
+    },
+    "variables": {
+      "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]",
+      "azureSqlLinkedServiceName": "AzureSqlLinkedService",
+      "azureStorageLinkedServiceName": "AzureStorageLinkedService",
+      "blobInputDatasetName": "BlobInputDataset",
+      "sqlOutputDatasetName": "SQLOutputDataset",
+      "pipelineName": "Blob2SQLPipeline"
+    },
+    "resources": [
+      {
+        "name": "[variables('dataFactoryName')]",
+        "apiVersion": "2015-10-01",
+        "type": "Microsoft.DataFactory/datafactories",
+        "location": "West US",
         "resources": [
           {
-            "name": "[variables('dataFactoryName')]",
+            "type": "linkedservices",
+            "name": "[variables('azureStorageLinkedServiceName')]",
+            "dependsOn": [
+              "[variables('dataFactoryName')]"
+            ],
             "apiVersion": "2015-10-01",
-            "type": "Microsoft.DataFactory/datafactories",
-            "location": "West US",
-            "resources": [
-              {
-                "type": "linkedservices",
-                "name": "[variables('azureStorageLinkedServiceName')]",
-                "dependsOn": [
-                  "[variables('dataFactoryName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                  "type": "AzureStorage",
-                  "description": "Azure Storage linked service",
-                  "typeProperties": {
-                    "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-                  }
-                }
-              },
-              {
-                "type": "linkedservices",
-                "name": "[variables('azureSqlLinkedServiceName')]",
-                "dependsOn": [
-                  "[variables('dataFactoryName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                  "type": "AzureSqlDatabase",
-                  "description": "Azure SQL linked service",
-                  "typeProperties": {
-                    "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-                  }
-                }
-              },
-              {
-                "type": "datasets",
-                "name": "[variables('blobInputDatasetName')]",
-                "dependsOn": [
-                  "[variables('dataFactoryName')]",
-                  "[variables('azureStorageLinkedServiceName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                  "type": "AzureBlob",
-                  "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-                  "structure": [
-                    {
-                      "name": "Column0",
-                      "type": "String"
-                    },
-                    {
-                      "name": "Column1",
-                      "type": "String"
-                    }
-                  ],
-                  "typeProperties": {
-                    "folderPath": "[concat(parameters('sourceBlobContainer'), '/')]",
-                    "fileName": "[parameters('sourceBlobName')]",
-                    "format": {
-                      "type": "TextFormat",
-                      "columnDelimiter": ","
-                    }
-                  },
-                  "availability": {
-                    "frequency": "Day",
-                    "interval": 1
-                  },
-                  "external": true
-                }
-              },
-              {
-                "type": "datasets",
-                "name": "[variables('sqlOutputDatasetName')]",
-                "dependsOn": [
-                  "[variables('dataFactoryName')]",
-                  "[variables('azureSqlLinkedServiceName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                  "type": "AzureSqlTable",
-                  "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
-                  "structure": [
-                    {
-                      "name": "FirstName",
-                      "type": "String"
-                    },
-                    {
-                      "name": "LastName",
-                      "type": "String"
-                    }
-                  ],
-                  "typeProperties": {
-                    "tableName": "[parameters('targetSQLTable')]"
-                  },
-                  "availability": {
-                    "frequency": "Day",
-                    "interval": 1
-                  }
-                }
-              },
-              {
-                "type": "datapipelines",
-                "name": "[variables('pipelineName')]",
-                "dependsOn": [
-                  "[variables('dataFactoryName')]",
-                  "[variables('azureStorageLinkedServiceName')]",
-                  "[variables('azureSqlLinkedServiceName')]",
-                  "[variables('blobInputDatasetName')]",
-                  "[variables('sqlOutputDatasetName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                  "activities": [
-                    {
-                      "name": "CopyFromAzureBlobToAzureSQL",
-                      "description": "Copy data frm Azure blob to Azure SQL",
-                      "type": "Copy",
-                      "inputs": [
-                        {
-                          "name": "[variables('blobInputDatasetName')]"
-                        }
-                      ],
-                      "outputs": [
-                        {
-                          "name": "[variables('sqlOutputDatasetName')]"
-                        }
-                      ],
-                      "typeProperties": {
-                        "source": {
-                          "type": "BlobSource"
-                        },
-                        "sink": {
-                          "type": "SqlSink",
-                          "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
-                        },
-                        "translator": {
-                          "type": "TabularTranslator",
-                          "columnMappings": "Column0:FirstName,Column1:LastName"
-                        }
-                      },
-                      "Policy": {
-                        "concurrency": 1,
-                        "executionPriorityOrder": "NewestFirst",
-                        "retry": 3,
-                        "timeout": "01:00:00"
-                      }
-                    }
-                  ],
-                  "start": "2016-10-02T00:00:00Z",
-                  "end": "2016-10-03T00:00:00Z"
-                }
+            "properties": {
+              "type": "AzureStorage",
+              "description": "Azure Storage linked service",
+              "typeProperties": {
+                "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
               }
-            ]
+            }
+          },
+          {
+            "type": "linkedservices",
+            "name": "[variables('azureSqlLinkedServiceName')]",
+            "dependsOn": [
+              "[variables('dataFactoryName')]"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+              "type": "AzureSqlDatabase",
+              "description": "Azure SQL linked service",
+              "typeProperties": {
+                "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
+              }
+            }
+          },
+          {
+            "type": "datasets",
+            "name": "[variables('blobInputDatasetName')]",
+            "dependsOn": [
+              "[variables('dataFactoryName')]",
+              "[variables('azureStorageLinkedServiceName')]"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+              "type": "AzureBlob",
+              "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+              "structure": [
+                {
+                  "name": "Column0",
+                  "type": "String"
+                },
+                {
+                  "name": "Column1",
+                  "type": "String"
+                }
+              ],
+              "typeProperties": {
+                "folderPath": "[concat(parameters('sourceBlobContainer'), '/')]",
+                "fileName": "[parameters('sourceBlobName')]",
+                "format": {
+                  "type": "TextFormat",
+                  "columnDelimiter": ","
+                }
+              },
+              "availability": {
+                "frequency": "Day",
+                "interval": 1
+              },
+              "external": true
+            }
+          },
+          {
+            "type": "datasets",
+            "name": "[variables('sqlOutputDatasetName')]",
+            "dependsOn": [
+              "[variables('dataFactoryName')]",
+              "[variables('azureSqlLinkedServiceName')]"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+              "type": "AzureSqlTable",
+              "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
+              "structure": [
+                {
+                  "name": "FirstName",
+                  "type": "String"
+                },
+                {
+                  "name": "LastName",
+                  "type": "String"
+                }
+              ],
+              "typeProperties": {
+                "tableName": "[parameters('targetSQLTable')]"
+              },
+              "availability": {
+                "frequency": "Day",
+                "interval": 1
+              }
+            }
+          },
+          {
+            "type": "datapipelines",
+            "name": "[variables('pipelineName')]",
+            "dependsOn": [
+              "[variables('dataFactoryName')]",
+              "[variables('azureStorageLinkedServiceName')]",
+              "[variables('azureSqlLinkedServiceName')]",
+              "[variables('blobInputDatasetName')]",
+              "[variables('sqlOutputDatasetName')]"
+            ],
+            "apiVersion": "2015-10-01",
+            "properties": {
+              "activities": [
+                {
+                  "name": "CopyFromAzureBlobToAzureSQL",
+                  "description": "Copy data frm Azure blob to Azure SQL",
+                  "type": "Copy",
+                  "inputs": [
+                    {
+                      "name": "[variables('blobInputDatasetName')]"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "name": "[variables('sqlOutputDatasetName')]"
+                    }
+                  ],
+                  "typeProperties": {
+                    "source": {
+                      "type": "BlobSource"
+                    },
+                    "sink": {
+                      "type": "SqlSink",
+                      "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
+                    },
+                    "translator": {
+                      "type": "TabularTranslator",
+                      "columnMappings": "Column0:FirstName,Column1:LastName"
+                    }
+                  },
+                  "Policy": {
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 3,
+                    "timeout": "01:00:00"
+                  }
+                }
+              ],
+              "start": "2016-10-02T00:00:00Z",
+              "end": "2016-10-03T00:00:00Z"
+            }
           }
         ]
       }
+    ]
+  }
+```
 
 ## <a name="parameters-json"></a>参数 JSON
 创建名为 **ADFCopyTutorialARM-Parameters.json**、包含 Azure Resource Manager 模板参数的 JSON 文件。 
@@ -276,23 +279,25 @@ ms.openlocfilehash: 42a1e634ef2c832fd0213fdae12f74db7eb264f5
 > 
 > 
 
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": { 
-            "storageAccountName": {    "value": "<Name of the Azure storage account>"    },
-            "storageAccountKey": {
-                     "value": "<Key for the Azure storage account>"
-            },
-            "sourceBlobContainer": { "value": "adftutorial" },
-            "sourceBlobName": { "value": "emp.txt" },
-            "sqlServerName": { "value": "<Name of the Azure SQL server>" },
-            "databaseName": { "value": "<Name of the Azure SQL database>" },
-            "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
-            "sqlServerPassword": { "value": "<password for the user>" },
-            "targetSQLTable": { "value": "emp" }
-        }
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": { 
+        "storageAccountName": { "value": "<Name of the Azure storage account>"    },
+        "storageAccountKey": {
+            "value": "<Key for the Azure storage account>"
+        },
+        "sourceBlobContainer": { "value": "adftutorial" },
+        "sourceBlobName": { "value": "emp.txt" },
+        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
+        "databaseName": { "value": "<Name of the Azure SQL database>" },
+        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
+        "sqlServerPassword": { "value": "<password for the user>" },
+        "targetSQLTable": { "value": "emp" }
     }
+}
+```
 
 > [!IMPORTANT]
 > 在同一个数据工厂 JSON 模板中，可为开发、测试和生产环境使用不同的参数 JSON 文件。 使用 Power Shell 脚本可在这些环境中自动部署数据工厂实体。  
@@ -301,14 +306,26 @@ ms.openlocfilehash: 42a1e634ef2c832fd0213fdae12f74db7eb264f5
 
 ## <a name="create-data-factory"></a>创建数据工厂
 1. 启动 **Azure PowerShell** 并运行以下命令：
-   * 运行 `Login-AzureRmAccount` 并输入用于登录 Azure 门户的用户名和密码。  
-   * 运行 `Get-AzureRmSubscription` 查看此帐户的所有订阅。
-   * 运行 `Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext` 选择要使用的订阅。 
+   * 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
+    ```PowerShell
+    Login-AzureRmAccount    
+    ```  
+   * 运行以下命令查看此帐户的所有订阅。
+    ```PowerShell
+    Get-AzureRmSubscription
+    ```   
+   * 运行以下命令选择要使用的订阅。 
+    ```PowerShell
+    Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
+    ```    
 2. 运行以下命令，使用步骤 1 中创建的 Resource Manager 模板来部署数据工厂实体。
-   
-        New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
+
+    ```PowerShell   
+    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
+    ```
 
 ## <a name="monitor-pipeline"></a>监视管道
+
 1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中单击“数据工厂”；或者单击“更多服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。
    
@@ -335,17 +352,21 @@ ms.openlocfilehash: 42a1e634ef2c832fd0213fdae12f74db7eb264f5
 ### <a name="define-data-factory"></a>定义数据工厂
 如以下示例中所示，在 Resource Manager 模板中定义数据工厂：  
 
-    "resources": [
-    {
-        "name": "[variables('dataFactoryName')]",
-        "apiVersion": "2015-10-01",
-        "type": "Microsoft.DataFactory/datafactories",
-        "location": "West US"
-    }
+```json
+"resources": [
+{
+    "name": "[variables('dataFactoryName')]",
+    "apiVersion": "2015-10-01",
+    "type": "Microsoft.DataFactory/datafactories",
+    "location": "West US"
+}
+```
 
 dataFactoryName 定义为： 
 
-    "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+```json
+"dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+```
 
 它是基于资源组 ID 的唯一字符串。  
 
@@ -361,185 +382,199 @@ JSON 模板中定义了以下数据工厂实体：
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](data-factory-azure-blob-connector.md#azure-storage-linked-service)（Azure 存储链接服务）。 
 
-    {
-        "type": "linkedservices",
-        "name": "[variables('azureStorageLinkedServiceName')]",
-        "dependsOn": [
-            "[variables('dataFactoryName')]"
-        ],
-        "apiVersion": "2015-10-01",
-        "properties": {
-            "type": "AzureStorage",
-            "description": "Azure Storage linked service",
-            "typeProperties": {
-                "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-            }
+```json
+{
+    "type": "linkedservices",
+    "name": "[variables('azureStorageLinkedServiceName')]",
+    "dependsOn": [
+        "[variables('dataFactoryName')]"
+    ],
+    "apiVersion": "2015-10-01",
+    "properties": {
+        "type": "AzureStorage",
+        "description": "Azure Storage linked service",
+        "typeProperties": {
+            "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
         }
     }
+}
+```
 
 connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStroageLinkedService 和 dataFactoryName。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
 在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)（Azure SQL 链接服务）。  
 
-    {
-        "type": "linkedservices",
-        "name": "[variables('azureSqlLinkedServiceName')]",
-        "dependsOn": [
-          "[variables('dataFactoryName')]"
-        ],
-        "apiVersion": "2015-10-01",
-        "properties": {
-              "type": "AzureSqlDatabase",
-              "description": "Azure SQL linked service",
-              "typeProperties": {
-                "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-              }
-        }
+```json
+{
+    "type": "linkedservices",
+    "name": "[variables('azureSqlLinkedServiceName')]",
+    "dependsOn": [
+      "[variables('dataFactoryName')]"
+    ],
+    "apiVersion": "2015-10-01",
+    "properties": {
+          "type": "AzureSqlDatabase",
+          "description": "Azure SQL linked service",
+          "typeProperties": {
+            "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
+          }
     }
+}
+```
 
 connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sqlServerPassword 参数，这些参数的值是使用配置文件传递的。 该定义还使用模板中的以下变量：azureSqlLinkedServiceName、dataFactoryName。
 
 #### <a name="azure-blob-dataset"></a>Azure Blob 数据集
 指定包含输入数据的 Blob 容器、文件夹和文件的名称。 有关用于定义 Azure Blob 数据集的 JSON 属性的详细信息，请参阅 [Azure Blob dataset properties](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)（Azure Blob 数据集属性）。 
 
-    {
-        "type": "datasets",
-        "name": "[variables('blobInputDatasetName')]",
-        "dependsOn": [
-          "[variables('dataFactoryName')]",
-          "[variables('azureStorageLinkedServiceName')]"
-        ],
-        "apiVersion": "2015-10-01",
-        "properties": {
-            "type": "AzureBlob",
-              "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-            "structure": [
-            {
-                  "name": "Column0",
-                  "type": "String"
-            },
-            {
-                  "name": "Column1",
-                  "type": "String"
-            }
-              ],
-              "typeProperties": {
-                "folderPath": "[concat(parameters('sourceBlobContainer'), '/')]",
-                "fileName": "[parameters('sourceBlobName')]",
-                "format": {
-                      "type": "TextFormat",
-                      "columnDelimiter": ","
-                }
-              },
-              "availability": {
-                "frequency": "Day",
-                "interval": 1
-              },
-              "external": true
+```json
+{
+    "type": "datasets",
+    "name": "[variables('blobInputDatasetName')]",
+    "dependsOn": [
+      "[variables('dataFactoryName')]",
+      "[variables('azureStorageLinkedServiceName')]"
+    ],
+    "apiVersion": "2015-10-01",
+    "properties": {
+        "type": "AzureBlob",
+          "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+        "structure": [
+        {
+              "name": "Column0",
+              "type": "String"
+        },
+        {
+              "name": "Column1",
+              "type": "String"
         }
+          ],
+          "typeProperties": {
+            "folderPath": "[concat(parameters('sourceBlobContainer'), '/')]",
+            "fileName": "[parameters('sourceBlobName')]",
+            "format": {
+                  "type": "TextFormat",
+                  "columnDelimiter": ","
+            }
+          },
+          "availability": {
+            "frequency": "Day",
+            "interval": 1
+          },
+          "external": true
     }
+}
+```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL 数据集
 指定 Azure SQL 数据库中用于保存从 Azure Blob 存储复制的数据的表的名称。 有关用于定义 Azure SQL 数据集的 JSON 属性的详细信息，请参阅 [Azure SQL dataset properties](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties)（Azure SQL 数据集属性）。 
 
-    {
-        "type": "datasets",
-        "name": "[variables('sqlOutputDatasetName')]",
-        "dependsOn": [
-            "[variables('dataFactoryName')]",
-              "[variables('azureSqlLinkedServiceName')]"
-        ],
-        "apiVersion": "2015-10-01",
-        "properties": {
-              "type": "AzureSqlTable",
-              "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
-              "structure": [
-            {
-                  "name": "FirstName",
-                  "type": "String"
-            },
-            {
-                  "name": "LastName",
-                  "type": "String"
-            }
-              ],
-              "typeProperties": {
-                "tableName": "[parameters('targetSQLTable')]"
-              },
-              "availability": {
-                "frequency": "Day",
-                "interval": 1
-              }
+```json
+{
+    "type": "datasets",
+    "name": "[variables('sqlOutputDatasetName')]",
+    "dependsOn": [
+        "[variables('dataFactoryName')]",
+          "[variables('azureSqlLinkedServiceName')]"
+    ],
+    "apiVersion": "2015-10-01",
+    "properties": {
+          "type": "AzureSqlTable",
+          "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
+          "structure": [
+        {
+              "name": "FirstName",
+              "type": "String"
+        },
+        {
+              "name": "LastName",
+              "type": "String"
         }
+          ],
+          "typeProperties": {
+            "tableName": "[parameters('targetSQLTable')]"
+          },
+          "availability": {
+            "frequency": "Day",
+            "interval": 1
+          }
     }
+}
+```
 
 #### <a name="data-pipeline"></a>数据管道
 定义将数据从 Azure blob 数据集复制到 Azure SQL 数据集的管道。 有关用于定义本示例中所述管道的 JSON 元素的说明，请参阅 [Pipeline JSON](data-factory-create-pipelines.md#pipeline-json)（管道 JSON）。 
 
-    {
-        "type": "datapipelines",
-        "name": "[variables('pipelineName')]",
-        "dependsOn": [
-            "[variables('dataFactoryName')]",
-              "[variables('azureStorageLinkedServiceName')]",
-              "[variables('azureSqlLinkedServiceName')]",
-              "[variables('blobInputDatasetName')]",
-              "[variables('sqlOutputDatasetName')]"
-        ],
-        "apiVersion": "2015-10-01",
-        "properties": {
-              "activities": [
+```json
+{
+    "type": "datapipelines",
+    "name": "[variables('pipelineName')]",
+    "dependsOn": [
+        "[variables('dataFactoryName')]",
+          "[variables('azureStorageLinkedServiceName')]",
+          "[variables('azureSqlLinkedServiceName')]",
+          "[variables('blobInputDatasetName')]",
+          "[variables('sqlOutputDatasetName')]"
+    ],
+    "apiVersion": "2015-10-01",
+    "properties": {
+          "activities": [
+        {
+              "name": "CopyFromAzureBlobToAzureSQL",
+              "description": "Copy data frm Azure blob to Azure SQL",
+              "type": "Copy",
+              "inputs": [
             {
-                  "name": "CopyFromAzureBlobToAzureSQL",
-                  "description": "Copy data frm Azure blob to Azure SQL",
-                  "type": "Copy",
-                  "inputs": [
-                {
-                      "name": "[variables('blobInputDatasetName')]"
-                }
-                  ],
-                  "outputs": [
-                {
-                      "name": "[variables('sqlOutputDatasetName')]"
-                }
-                  ],
-                  "typeProperties": {
-                    "source": {
-                          "type": "BlobSource"
-                    },
-                    "sink": {
-                          "type": "SqlSink",
-                          "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
-                    },
-                    "translator": {
-                          "type": "TabularTranslator",
-                          "columnMappings": "Column0:FirstName,Column1:LastName"
-                    }
-                  },
-                  "Policy": {
-                    "concurrency": 1,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 3,
-                    "timeout": "01:00:00"
-                  }
+                  "name": "[variables('blobInputDatasetName')]"
             }
               ],
-              "start": "2016-10-02T00:00:00Z",
-              "end": "2016-10-03T00:00:00Z"
+              "outputs": [
+            {
+                  "name": "[variables('sqlOutputDatasetName')]"
+            }
+              ],
+              "typeProperties": {
+                "source": {
+                      "type": "BlobSource"
+                },
+                "sink": {
+                      "type": "SqlSink",
+                      "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
+                },
+                "translator": {
+                      "type": "TabularTranslator",
+                      "columnMappings": "Column0:FirstName,Column1:LastName"
+                }
+              },
+              "Policy": {
+                "concurrency": 1,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 3,
+                "timeout": "01:00:00"
+              }
         }
+          ],
+          "start": "2016-10-02T00:00:00Z",
+          "end": "2016-10-03T00:00:00Z"
     }
+}
+```
 
 ## <a name="reuse-the-template"></a>重复使用模板
 本教程创建了一个用于定义数据工厂实体的模板，以及一个用于传递参数值的模板。 管道将数据从 Azure 存储帐户复制到通过参数指定的 Azure SQL 数据库。 若要使用同一个模板将数据工厂实体部署到不同的环境，可为每个环境创建一个参数文件，然后在部署到该环境时使用该文件。     
 
 示例：  
 
-    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Dev.json
-
-    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Test.json
-
-    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Production.json
+```PowerShell
+New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Dev.json
+```
+```PowerShell
+New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Test.json
+```
+```PowerShell
+New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Production.json
+```
 
 请注意，三条命令分别使用开发环境、测试环境和生产环境的参数文件。  
 
@@ -548,6 +583,6 @@ connectionString 使用 sqlServerName、databaseName、sqlServerUserName 和 sql
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

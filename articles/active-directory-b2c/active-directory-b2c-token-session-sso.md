@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b37d419f799e5a56c67344ca634bdecec2f3c1f2
+ms.sourcegitcommit: 9cc0081588f54f77a69ded336d063651b12c8dd8
+ms.openlocfilehash: a185e802a2713c6b6d4101477f0fc61bca0bf29c
 
 
 ---
@@ -25,7 +25,8 @@ ms.openlocfilehash: b37d419f799e5a56c67344ca634bdecec2f3c1f2
 
 1. Azure Active Directory (Azure AD) B2C 发出的安全令牌的生存期。
 2. 由 Azure AD B2C 管理的 Web 应用程序会话的生存期。
-3. B2C 租户中跨多个应用和策略的单一登录 (SSO) 行为。
+3. Azure AD B2C 发出的安全令牌中的重要声明格式。
+4. B2C 租户中跨多个应用和策略的单一登录 (SSO) 行为。
 
 你可以按如下方式在 B2C 租户中使用此功能：
 
@@ -37,8 +38,6 @@ ms.openlocfilehash: b37d419f799e5a56c67344ca634bdecec2f3c1f2
 6. 进行所需的更改。 在后续章节中了解可用的属性。
 7. 单击“确定”。
 8. 单击边栏选项卡顶部的“保存”。
-
-![令牌、会话和单一登录配置的屏幕截图](./media/active-directory-b2c-token-session-sso/token-session-sso.png)
 
 ## <a name="token-lifetimes-configuration"></a>令牌生存期配置
 Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-protocols.md)以启用对受保护资源的安全访问。 若要实现此支持，Azure AD B2C 需发出各种[安全令牌](active-directory-b2c-reference-tokens.md)。 以下是可用于管理 Azure AD B2C 发出的安全令牌的生存期的属性：
@@ -61,7 +60,20 @@ Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-prot
 * 只要用户在移动应用上持续保持活动状态，允许该用户无限期地保持登录此应用。 可以通过将登录策略中的**刷新令牌的滑动窗口生存期（天）**开关设为**无限**来实现此场景。
 * 通过设置合适的访问令牌生存期来满足行业的安全性和合规性要求。
 
-## <a name="session-configuration"></a>会话配置
+## <a name="token-compatibility-settings"></a>令牌兼容性设置
+我们对 Azure AD B2C 发出的安全令牌中的重要声明做出了格式更改。 这样做是为了改善标准协议支持以及与第三方标识库的互操作性。 但是，为了避免破坏现有应用，我们创建了以下属性，使客户能够根据需要选择格式：
+
+* **颁发者 (iss) 声明**：标识颁发令牌的 Azure AD B2C 租户。
+  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`：默认值。
+  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`：此值包含令牌请求中使用的 B2C 租户和策略的 ID。 如果应用或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](http://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
+* **使用者 (sub) 声明**：标识实体，即令牌断言其信息的用户。
+  * **ObjectID**：默认值。 将在令牌的 `sub` 声明中填充目录中用户的对象 ID。
+  * **不支持**：此项只是为了向后兼容而提供的，我们建议尽快改用 **ObjectID**。
+* **表示策略 ID 的声明**：标识要在其中填充令牌请求中使用的策略 ID 的声明类型。
+  * **tfp**：默认值。
+  * **acr**：此项只是为了向后兼容而提供的，我们建议尽快改用 `tfp`。
+
+## <a name="session-behavior"></a>会话行为
 Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-reference-oidc.md)以启用对 Web 应用的安全登录。 以下是可用于管理 Web 应用会话的属性：
 
 * **Web 应用会话生存期（分钟）**：身份验证成功后，存储在用户浏览器上的 Azure AD B2C 会话 Cookie 的生存期。
@@ -86,6 +98,6 @@ Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-ref
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

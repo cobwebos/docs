@@ -158,6 +158,6 @@ Azure AD 会防止意外删除用户对象。 如果从 Azure AD 租户中删除
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

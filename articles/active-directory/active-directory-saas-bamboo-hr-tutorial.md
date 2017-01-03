@@ -35,7 +35,7 @@ ms.openlocfilehash: e675b92ea53c31c014e20735c039db3dbad325cc
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-bamboo-hr-tutorial/IC796685.png "Scenario")
+![方案](./media/active-directory-saas-bamboo-hr-tutorial/IC796685.png "方案")
 
 ## <a name="enabling-the-application-integration-for-bamboohr"></a>为 BambooHR 启用应用程序集成
 本部分旨在概述如何为 BambooHR 启用应用程序集成。
@@ -44,19 +44,19 @@ ms.openlocfilehash: e675b92ea53c31c014e20735c039db3dbad325cc
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-bamboo-hr-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-bamboo-hr-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-bamboo-hr-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-bamboo-hr-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-bamboo-hr-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加一个应用程序](./media/active-directory-saas-bamboo-hr-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-bamboo-hr-tutorial/IC749322.png "从库添加应用程序")
 6. 在搜索框中，键入“BambooHR”。
    
-   ![应用程序库](./media/active-directory-saas-bamboo-hr-tutorial/IC796686.png "Application gallery")
+   ![应用程序库](./media/active-directory-saas-bamboo-hr-tutorial/IC796686.png "应用程序库")
 7. 在“结果”窗格中，选择“BambooHR”，然后单击“完成”以添加该应用程序。
    
    ![BambooHR](./media/active-directory-saas-bamboo-hr-tutorial/IC796687.png "BambooHR")
@@ -70,27 +70,27 @@ ms.openlocfilehash: e675b92ea53c31c014e20735c039db3dbad325cc
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“BambooHR”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![方案](./media/active-directory-saas-bamboo-hr-tutorial/IC796685.png "Scenario")
+   ![方案](./media/active-directory-saas-bamboo-hr-tutorial/IC796685.png "方案")
 2. 在“你希望用户如何登录 BambooHR”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796688.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796688.png "配置单一登录")
 3. 在“配置应用 URL”页的“BambooHR 登录 URL”文本框中，键入用户用于登录 BambooHR 应用程序的 URL（例如：https://company.bamboohr.com），然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-bamboo-hr-tutorial/IC796689.png "Configure app URL")
+   ![配置应用 URL](./media/active-directory-saas-bamboo-hr-tutorial/IC796689.png "配置应用 URL")
 4. 在“配置 BambooHR 的单一登录”页上，单击“下载证书”，然后将该证书文件保存到计算机上。
    
-   ![配置单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796690.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796690.png "配置单一登录")
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录 BambooHR 公司站点。
 6. 在主页上执行以下步骤：
    
-   ![单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796691.png "Single Sign-On")
+   ![单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796691.png "单一登录")
    
    1. 单击“应用”。
    2. 在左侧的应用菜单中，单击“单一登录”。
    3. 单击“SAML 单一登录”。
 7. 在“SAML 单一登录”部分中，执行以下步骤：
    
-   ![SAML 单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML Single Sign-On")
+   ![SAML 单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML 单一登录")
    
    1. 在 Azure 经典门户的“配置 BambooHR 的单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“SSO 登录 URL”文本框中。
    2. 基于下载的证书创建一个 **base-64 编码**的文件。  
@@ -103,7 +103,7 @@ ms.openlocfilehash: e675b92ea53c31c014e20735c039db3dbad325cc
    4. 单击“保存” 。
 8. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796693.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-bamboo-hr-tutorial/IC796693.png "配置单一登录")
    
    ## <a name="configuring-user-provisioning"></a>配置用户设置
 
@@ -114,7 +114,7 @@ ms.openlocfilehash: e675b92ea53c31c014e20735c039db3dbad325cc
 1. 以管理员身份登录到 **BambooHR** 站点。
 2. 在顶部工具栏中，单击“设置”。
    
-   ![设置](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "Setting")
+   ![设置](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "设置")
 3. 单击“概览”。
 4. 在左侧导航窗格中，转到“安全”**\>**“用户”。
 5. 在相关文本框中键入要预配的有效 AAD 帐户的用户名、密码和电子邮件地址。
@@ -132,16 +132,16 @@ ms.openlocfilehash: e675b92ea53c31c014e20735c039db3dbad325cc
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“BambooHR”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-bamboo-hr-tutorial/IC796695.png "Assign users")
+   ![分配用户](./media/active-directory-saas-bamboo-hr-tutorial/IC796695.png "分配用户")
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-bamboo-hr-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-bamboo-hr-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

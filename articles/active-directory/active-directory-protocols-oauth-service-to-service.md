@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
-ms.openlocfilehash: 9d9ddbddb1039f56c420cb8f10dfa9bb82788b72
+ms.sourcegitcommit: 3fdd561bba898b0e790f69a82ed731d7fd87d8c8
+ms.openlocfilehash: 7cf9fe659a91816e42394c1377232e122fe924a6
 
 
 ---
@@ -48,7 +48,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| response_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
+| grant_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
 | client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 若要查找调用应用程序的客户端 ID，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、该应用程序和“配置”。 |
 | client_secret |必填 |在 Azure AD 中输入为调用 Web 服务注册的密钥。 若要创建密钥，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、该应用程序和“配置”。 |
 | resource |必填 |输入接收 Web 服务的应用 ID URI。 若要查找应用 ID URI，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、该应用程序和“配置”。 |
@@ -93,6 +93,6 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

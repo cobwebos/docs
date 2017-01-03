@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 497d8b17fe29328008fd2d13cf61432a913aa898
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5172ce4edbea0f5587075308c97d07aac98e9699
 
 
 ---
@@ -219,7 +219,7 @@ Azure 也很适合替代其他情况下成本高昂的灾难恢复 (DR) 站点�
 | 使用 AD FS 和 DirSync 进行 Office 365 单一登录 | 使用 DirSync + 密码同步进行相同的 Office 365 登录 |
 | --- | --- |
 | 1.用户登录到公司网络，并且针对 Windows Server Active Directory 对用户进行身份验证。 |1.用户登录到公司网络，并且针对 Windows Server Active Directory 对用户进行身份验证。 |
-| 2.用户尝试访问 Office 365（我是 @contoso.com）。 |2.用户尝试访问 Office 365（我是 @contoso.com）。 |
+| 2.用户尝试访问 Office 365（我是 @contoso.com)。 |2.用户尝试访问 Office 365（我是 @contoso.com)。 |
 | 3.Office 365 将用户重定向到 Azure AD。 |3.Office 365 将用户重定向到 Azure AD。 |
 | 4.由于 Azure AD 无法对用户进行身份验证并且了解与本地 AD FS 之间的信任关系，因此它会将用户重定向到 AD FS。 |4.Azure AD 无法直接接受 Kerberos 票证，并不存在任何信任关系，因此它会请求用户输入凭据。 |
 | 5.用户将 Kerberos 票证发送到 AD FS STS。 |5.用户输入同一本地密码，Azure AD 根据 DirSync 同步的用户名和密码对这些凭据进行验证。 |
@@ -393,7 +393,7 @@ SharePoint 部署在 Azure 虚拟机上，并且该应用程序不依赖企业�
 
 VM 在启动时或名称发生更改时自动注册其 DNS 名称。
 
-有关此示例和另一个展示如何预配第一个 VM 并在它上面安装 AD DS 的示例的详细信息，请参阅[在 Microsoft Azure 上安装新 Active Directory 林](active-directory-new-forest-virtual-machine.md)。 有关使用 Windows PowerShell 的详细信息，请参阅[安装 Azure PowerShell](../powershell-install-configure.md) 和 [Azure Management Cmdlets](https://msdn.microsoft.com/library/azure/jj152841)（Azure 管理 Cmdlet）。
+有关此示例和另一个展示如何预配第一个 VM 并在它上面安装 AD DS 的示例的详细信息，请参阅[在 Microsoft Azure 上安装新 Active Directory 林](active-directory-new-forest-virtual-machine.md)。 有关使用 Windows PowerShell 的详细信息，请参阅[安装 Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure Management Cmdlets](https://msdn.microsoft.com/library/azure/jj152841)（Azure 管理 Cmdlet）。
 
 ### <a name="a-namebkmkdistributeddcsageo-distributed-dcs"></a><a name="BKMK_DistributedDCs"></a>地理分散的 DC
 在不同的虚拟网络上托管多个 DC 时，Azure 具有以下优点：
@@ -501,6 +501,6 @@ Windows Server AD FS 联合服务器 (STS) 的配置在某种程度上依赖于�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

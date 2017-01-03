@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/06/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f61d23fec6badb8dd53379d183b177e4c19e5711
+ms.sourcegitcommit: e8b484ec7eff26919d4fb3869baf9f358c2522cb
+ms.openlocfilehash: 6e5d96ff9754954eb745f14c8248609775bbf290
 
 
 ---
@@ -27,11 +27,11 @@ ms.openlocfilehash: f61d23fec6badb8dd53379d183b177e4c19e5711
 > 
 
 ## <a name="introduction"></a>介绍
-管理员和开发人员可以使用此功能指定 Azure AD 颁发的令牌的生存期。 可以针对租户中的所有应用、多租户应用程序或者租户中的特定服务主体配置令牌生存期。
+管理员和开发人员可以使用此功能指定 Azure AD 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体配置令牌生存期。
 
-在 Azure AD 中，策略对象表示针对租户中的单个应用程序或所有应用程序强制实施的一组规则。  每种类型的策略都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
+在 Azure AD 中，策略对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。  每种类型的策略都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
 
-可将某个策略指定为租户的默认策略。 然后，此策略将对该租户中的任何应用程序生效，只要此策略不被更高优先级的策略覆盖即可。 此外，还可以将策略分配到特定的应用程序。 优先顺序根据策略类型的不同而异。
+可将某个策略指定为组织的默认策略。 然后，此策略将对该组织中的任何应用程序生效，只要此策略不被更高优先级的策略覆盖即可。 此外，还可以将策略分配到特定的应用程序。 优先顺序根据策略类型的不同而异。
 
 可为刷新令牌、访问令牌、会话令牌和 ID 令牌配置令牌生存期策略。
 
@@ -82,12 +82,12 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 | 刷新令牌最大期限（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |直到吊销* |
 
 ### <a name="priority-and-evaluation-of-policies"></a>策略的优先级和评估
-可以创建令牌生存期策略并将其分配到特定的应用程序、租户和服务主体。 这意味着，可将多个策略应用到特定的应用程序。 生效的令牌生存期策略遵循以下规则：
+可以创建令牌生存期策略并将其分配到特定的应用程序、组织和服务主体。 这意味着，可将多个策略应用到特定的应用程序。 生效的令牌生存期策略遵循以下规则：
 
 * 如果将某个策略显式分配到服务主体，将强制实施该策略。 
-* 如果未将策略显式分配到服务主体，则强制实施显式分配到服务主体的父租户的策略。 
-* 如果未将策略显式分配到服务主体或租户，则强制实施分配到应用程序的策略。 
-* 如果未将策略分配到服务主体、租户或应用程序对象，则强制实施默认值（请参阅上表）。
+* 如果未将策略显式分配到服务主体，则强制实施显式分配到服务主体的父组织的策略。 
+* 如果未将策略显式分配到服务主体或组织，则强制实施分配到应用程序的策略。 
+* 如果未将策略分配到服务主体、组织或应用程序对象，则强制实施默认值（请参阅上表）。
 
 有关 Azure AD 中应用程序对象与服务主体对象之间的关系的详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](active-directory-application-objects.md)。
 
@@ -98,16 +98,16 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 > 
 > 用户想要访问 2 个 Web 应用程序：A 和 B。 
 > 
-> * 这两个应用程序在同一个父租户中。 
-> * 会话令牌最大期限为 8 小时的令牌生存期策略 1 设置为父租户的默认策略。
+> * 这两个应用程序在同一个父组织中。 
+> * 会话令牌最大期限为 8 小时的令牌生存期策略 1 设置为父组织的默认策略。
 > * Web 应用程序 A 是一个常规用途的 Web 应用程序，未链接到任何策略。 
 > * Web 应用程序 B 用于高度敏感的流程，其服务主体已链接到会话令牌最大期限为 30 分钟的令牌生存期策略 2。
 > 
 > 下午 12:00，用户打开了新浏览器会话，尝试访问 Web 应用程序 A。用户已重定向到 Azure AD 并需要登录。 这会在浏览器中留下一个包含会话令牌的 Cookie。 用户使用可用于访问应用程序的 ID 令牌重定向回到 Web 应用程序 A。
 > 
-> 下午 12:15，用户尝试访问 Web 应用程序 B。浏览器重定向到 Azure AD 并检测会话 Cookie。 Web 应用程序 B 的服务主体已链接到策略 2，但同时也属于使用默认策略 1 的父租户。 由于链接到服务主体的策略优先级高于租户默认策略，因此策略 2 生效。 会话令牌最初是在过去 30 分钟内颁发的，因此被视为有效。 用户使用授予权限的 ID 令牌重定向回到 Web 应用程序 B。
+> 下午 12:15，用户尝试访问 Web 应用程序 B。浏览器重定向到 Azure AD 并检测会话 Cookie。 Web 应用程序 B 的服务主体已链接到策略 2，但同时也属于使用默认策略 1 的父组织。 由于链接到服务主体的策略优先级高于组织默认策略，因此策略 2 生效。 会话令牌最初是在过去 30 分钟内颁发的，因此被视为有效。 用户使用授予权限的 ID 令牌重定向回到 Web 应用程序 B。
 > 
-> 下午 1:00，用户尝试导航到 Web 应用程序 A。该用户已重定向到 Azure AD。 Web 应用程序 A 未链接到任何策略，但由于它在使用默认策略 1 的租户中，因此，此策略将会生效。 已检测到最初在过去 8 小时内颁发的会话 Cookie，用户已使用新 ID 令牌以无提示方式重定向回到 Web 应用程序 A，且无需身份验证。
+> 下午 1:00，用户尝试导航到 Web 应用程序 A。该用户已重定向到 Azure AD。 Web 应用程序 A 未链接到任何策略，但由于它在使用默认策略 1 的组织中，因此，此策略将会生效。 已检测到最初在过去 8 小时内颁发的会话 Cookie，用户已使用新 ID 令牌以无提示方式重定向回到 Web 应用程序 A，且无需身份验证。
 > 
 > 用户立即尝试访问 Web 应用程序 B。用户已重定向到 Azure AD。 如前所述，策略 2 生效。 由于颁发的令牌超过 30 分钟，系统提示用户重新输入其凭据，颁发新的会话和 ID 令牌。 然后，用户可以访问 Web 应用程序 B。
 > 
@@ -169,7 +169,7 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 减少最大期限会强制用户更频繁地进行身份验证。 由于单重身份验证的安全性不如多重身份验证，因此建议为此策略设置一个大于“单因素会话令牌最大期限”策略的值。
 
 ## <a name="sample-token-lifetime-policies"></a>示例令牌生存期策略
-如果能够创建和管理应用、服务主体和整个租户的令牌生存期，就可以在 Azure AD 中实现各种新的方案。  下面逐步讲解一些常见的策略方案，帮助针对以下属性实施新规则：
+如果能够创建和管理应用、服务主体和整个组织的令牌生存期，就可以在 Azure AD 中实现各种新的方案。  下面逐步讲解一些常见的策略方案，帮助针对以下属性实施新规则：
 
 * 令牌生存期
 * 令牌最大非活动时间
@@ -177,26 +177,26 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 
 逐步讲解的方案包括：
 
-* 管理租户的默认策略
+* 管理组织的默认策略
 * 为 Web 登录创建策略
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略 
 
 ### <a name="prerequisites"></a>先决条件
-以下示例方案针对应用、服务主体和总个租户创建、更新、链接和删除策略。  如果你是 Azure AD 新手，请查阅[本文](active-directory-howto-tenant.md)来帮助你入门，然后再开始学习以下示例。  
+以下示例方案针对应用、服务主体和整个组织创建、更新、链接和删除策略。  如果你是 Azure AD 新手，请查阅[本文](active-directory-howto-tenant.md)来帮助你入门，然后再开始学习以下示例。  
 
 1. 首先请下载最新的 [Azure AD PowerShell Cmdlet 预览版](https://www.powershellgallery.com/packages/AzureADPreview)。 
 2. 获取 Azure AD PowerShell Cmdlet 后，运行 Connect 命令登录到 Azure AD 管理员帐户。 每次启动新会话都需要执行此操作。
    
      Connect-AzureAD -Confirm
-3. 运行以下命令，查看租户中创建的所有策略。  在以下方案中执行大多数操作之后，都应该使用此命令。  此命令还可帮助获取策略的**对象 ID**。 
+3. 运行以下命令，查看组织中创建的所有策略。  在以下方案中执行大多数操作之后，都应该使用此命令。  此命令还可帮助获取策略的**对象 ID**。 
    
      Get-AzureADPolicy
 
-### <a name="sample-managing-a-tenants-default-policy"></a>示例：管理租户的默认策略
-本示例将创建一个策略，使用户不需要太频繁地在整个租户中登录。 
+### <a name="sample-managing-a-organizations-default-policy"></a>示例：管理组织的默认策略
+本示例将创建一个策略，使用户不需要太频繁地在整个组织中登录。 
 
-为此，可以针对应用到整个租户的单因素刷新令牌创建一个令牌生存期策略。 此策略将应用到租户中的每个应用程序，以及尚未设置策略的每个服务主体。 
+为此，可以针对应用到整个组织的单因素刷新令牌创建一个令牌生存期策略。 此策略将应用到组织中的每个应用程序，以及尚未设置策略的每个服务主体。 
 
 1. **创建令牌生存期策略。** 
 
@@ -212,7 +212,7 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 
 然后，运行以下命令创建此策略。 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName TenantDefaultPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName OrganizationDefaultPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
 
 若要查看新策略并获取其 ObjectID，请运行以下命令。
 
@@ -221,7 +221,7 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 
 假设第一个策略不像服务要求的那样严格，单因素刷新令牌应该在 2 天后过期。 运行以下命令。 
 
-    Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName TenantDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
+    Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName OrganizationDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
 
 &nbsp;&nbsp;3.**大功告成！** 
 
@@ -232,14 +232,14 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 
 这个用于 Web 登录的策略将访问/ID 令牌生存期和单因素会话令牌最大期限设置为 2 小时。
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
 
 若要查看新策略并获取其 ObjectID，请运行以下命令。
 
     Get-AzureADPolicy
 &nbsp;&nbsp;2.  **将策略分配到服务主体。**
 
-接下来，将此新策略链接到服务主体。  你还需要通过某种方式访问服务主体的 **ObjectId**。 可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) 或转到 [Graph 浏览器工具](https://graphexplorer.cloudapp.net/)，然后登录到 Azure AD 帐户，查看租户的所有服务主体。 
+接下来，将此新策略链接到服务主体。  你还需要通过某种方式访问服务主体的 **ObjectId**。 可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) 或转到 [Graph 浏览器工具](https://graphexplorer.cloudapp.net/)，然后登录到 Azure AD 帐户，查看组织的所有服务主体。 
 
 获取 **ObjectId** 后，运行以下命令。
 
@@ -249,18 +249,13 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
  
 
 ### <a name="sample-creating-a-policy-for-native-apps-calling-a-web-api"></a>示例：为调用 Web API 的本机应用创建策略
-> [!NOTE]
-> 将策略链接到应用程序的功能目前已禁用。  我们正在努力，有望很快就会启用。  一旦有新功能推出，此页面就会更新。
-> 
-> 
-
 在本示例中创建的策略不要求用户太频繁地进行身份验证，这会延长用户可保持非活动状态、不必再次身份验证的时间。 该策略将应用到 Web API，因此，当本机应用以资源形式请求 Web API 时，将应用此策略。
 
 1. **创建令牌生存期策略。** 
 
 此命令将为 Web API 创建一个严格的策略。 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
 
 若要查看新策略并获取其 ObjectID，请运行以下命令。
 
@@ -281,33 +276,33 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 
 1. **创建令牌生存期策略**
 
-现在一切都很简单。 我们已经创建了一个将单因素刷新令牌生存期设置为 30 天的租户默认策略。 
+现在一切都很简单。 我们已经创建了一个将单因素刷新令牌生存期设置为 30 天的组织默认策略。 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
 若要查看新策略并获取其 ObjectID，请运行以下命令。
 
     Get-AzureADPolicy
 
 &nbsp;&nbsp;2.  **将策略分配到服务主体**
 
-现在，已针对整个租户设置了一个策略。  假设我们要为特定的服务主体保留这个 30 天策略，但要将租户默认策略更改为上限“直到吊销”。 
+现在，已针对整个组织设置了一个策略。  假设我们要为特定的服务主体保留这个 30 天策略，但要将组织默认策略更改为上限“直到吊销”。 
 
-首先，将此新策略链接到服务主体。  你还需要通过某种方式访问服务主体的 **ObjectId**。 可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) 或转到 [Graph 浏览器工具](https://graphexplorer.cloudapp.net/)，然后登录到 Azure AD 帐户，查看租户的所有服务主体。 
+首先，将此新策略链接到服务主体。  你还需要通过某种方式访问服务主体的 **ObjectId**。 可以查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) 或转到 [Graph 浏览器工具](https://graphexplorer.cloudapp.net/)，然后登录到 Azure AD 帐户，查看组织的所有服务主体。 
 
 获取 **ObjectId** 后，运行以下命令。
 
     Add-AzureADServicePrincipalPolicy -ObjectId <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 
-&nbsp;&nbsp;3.  **使用以下命令将 IsTenantDefault 标志设置为 false**。 
+&nbsp;&nbsp;3.  **使用以下命令将 IsOrganizationDefault 标志设置为 false**。 
 
-    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsTenantDefault $false
-&nbsp;&nbsp;4.  **创建新的租户默认策略**
+    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsOrganizationDefault $false
+&nbsp;&nbsp;4.  **创建新的组织默认策略**
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsOrganizationDefault $true -Type TokenLifetimePolicy
 
 &nbsp;&nbsp;5.   **大功告成！** 
 
-现在，已将原始策略链接到服务主体，已将新策略设置为租户默认策略。  请务必记住，应用到服务主体的策略优先级高于租户默认策略。 
+现在，已将原始策略链接到服务主体，已将新策略设置为组织默认策略。  请务必记住，应用到服务主体的策略优先级高于组织默认策略。 
 
 ## <a name="cmdlet-reference"></a>Cmdlet 参考
 ### <a name="manage-policies"></a>管理策略
@@ -316,13 +311,13 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 #### <a name="new-azureadpolicy"></a>New-AzureADPolicy
 创建新策略。
 
-    New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsTenantDefault <boolean> -Type <Policy Type> 
+    New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type> 
 
 | Parameters | 说明 | 示例 |
 | --- | --- | --- |
 | -Definition |包含所有策略规则的字符串化 JSON 的数组。 |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
 | -DisplayName |策略名称的字符串 |-DisplayName MyTokenPolicy |
-| -IsTenantDefault |如果为 true，则将策略设置为租户的默认策略；如果为 false，则不执行任何操作 |-IsTenantDefault $true |
+| -IsOrganizationDefault |如果为 true，则将策略设置为组织的默认策略；如果为 false，则不执行任何操作 |-IsOrganizationDefault $true |
 | -Type |策略类型，对于令牌生存期，始终使用“TokenLifetimePolicy” |-Type TokenLifetimePolicy |
 | -AlternativeIdentifier [可选] |设置策略的备用 ID。 |-AlternativeIdentifier myAltId |
 
@@ -360,7 +355,7 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 | -ObjectId |要获取的策略的对象 ID。 |-ObjectId &lt;策略的 ObjectID&gt; |
 | -DisplayName |策略名称的字符串 |-DisplayName MyTokenPolicy |
 | -Definition [可选] |包含所有策略规则的字符串化 JSON 的数组。 |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
-| -IsTenantDefault [可选] |如果为 true，则将策略设置为租户的默认策略；如果为 false，则不执行任何操作 |-IsTenantDefault $true |
+| -IsOrganizationDefault [可选] |如果为 true，则将策略设置为组织的默认策略；如果为 false，则不执行任何操作 |-IsOrganizationDefault $true |
 | -Type [可选] |策略类型，对于令牌生存期，始终使用“TokenLifetimePolicy” |-Type TokenLifetimePolicy |
 | -AlternativeIdentifier [可选] |设置策略的备用 ID。 |-AlternativeIdentifier myAltId |
 
@@ -454,6 +449,6 @@ ID 令牌将传递给网站和本机客户端，包含有关用户的配置文�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

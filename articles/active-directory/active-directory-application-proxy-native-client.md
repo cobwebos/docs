@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bf2d7d35f7cf14b4f5430624f23d5b3b9c3c6be
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8892d5c7bd45c1c1f4c8cad0f3baaafc7cc583be
 
 
 ---
@@ -87,6 +87,6 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

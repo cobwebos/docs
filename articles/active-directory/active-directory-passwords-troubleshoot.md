@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ad322aed5e2e6a42a2600a3995be28a99ee14f3a
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
 
 
 ---
@@ -540,7 +540,7 @@ ms.openlocfilehash: ad322aed5e2e6a42a2600a3995be28a99ee14f3a
               <p>在工作一段时间后，联合用户或密码哈希同步的用户无法重置其密码。</p>
             </td>
             <td>
-              <p>在某些极少见的情况下，当 Azure AD Connect 已重新启动时，密码写回服务可能无法重新启动。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 这可以通过使用 Azure AD Connect 向导或 powershell 来完成（请参阅上面的“操作说明”部分）。如果此功能已启用，请尝试再次通过 UI 或 PowerShell 启用或禁用此功能。 有关如何执行此操作的详细信息，&amp;请参阅<a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">如何启用/禁用密码写回</a>中的“步骤 2：在 Directory Sync 计算机上启用密码写回并配置防火墙规则”。</p>
+              <p>在某些极少见的情况下，当 Azure AD Connect 已重新启动时，密码写回服务可能无法重新启动。 在这些情况下，首先，请检查是否已在本地启用了密码写回。 这可以通过使用 Azure AD Connect 向导或 powershell 来完成（请参阅上面的“操作说明”部分）。如果此功能已启用，请尝试再次通过 UI 或 PowerShell 启用或禁用此功能。 有关如何执行此操作的详细信息，请参阅<a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">如何启用/禁用密码写回</a>中的“步骤 2：在 Directory Sync 计算机上启用密码写回并配置防火墙规则”。&amp;</p>
               <p>
 
               </p>
@@ -584,7 +584,7 @@ ms.openlocfilehash: ad322aed5e2e6a42a2600a3995be28a99ee14f3a
                 <li>
 现在，你尝试启用/禁用密码写回。 向导将使用凭据将连接器的名称构造为“abc.onmicrosoft.com - AAD”并将其传递给密码写回 cmdlet。 此操作将会失败，因为没有使用此名称创建的连接器。<br\><br\></li>
               </ol>
-              <p>此问题在我们的最新内部版本中已修复。 如果你具有较早的内部版本，一个解决方法是使用 powershell cmdlet 来启用/禁用该功能。 有关如何执行此操作的详细信息，&amp;请参阅<a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">如何启用/禁用密码写回</a>中的“步骤 2：在 Directory Sync 计算机上启用密码写回并配置防火墙规则”。</p>
+              <p>此问题在我们的最新内部版本中已修复。 如果你具有较早的内部版本，一个解决方法是使用 powershell cmdlet 来启用/禁用该功能。 有关如何执行此操作的详细信息，请参阅<a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">如何启用/禁用密码写回</a>中的“步骤 2：在 Directory Sync 计算机上启用密码写回并配置防火墙规则”。&amp;</p>
             </td>
           </tr>
           <tr>
@@ -659,7 +659,7 @@ ms.openlocfilehash: ad322aed5e2e6a42a2600a3995be28a99ee14f3a
               <p>尝试通过 Azure 管理门户代表用户重置密码时，你将看到一条消息：“在本地环境中运行的密码重置服务不支持管理员重置用户密码。 请升级到最新版本的 AAD Sync 以解决此问题。”</p>
             </td>
             <td>
-              <p>当同步引擎的版本不支持所使用的特定密码写回操作时，将会发生这种情况。 1.0.0419.0911 以上的 Azure AD Connect 版本支持所有密码管理操作，包括密码重置写回、密码更改写回，以及管理员通过 Azure 管理门户启动的密码重置写回。&nbsp; 1.0.6862 以上的 DirSync 版本仅支持密码重置写回。 若要解决此问题，强烈建议安装最新版本的 Azure AD Connect (Azure Active Directory Connect)。 有关详细信息，请参阅[集成本地标识](active-directory-aadconnect.md)来解决此问题，同时在组织中充分利用密码写回功能。</p>
+              <p>当同步引擎的版本不支持所使用的特定密码写回操作时，将会发生这种情况。 1.0.0419.0911 以上的 Azure AD Connect 版本支持所有密码管理操作，包括密码重置写回、密码更改写回，以及管理员通过 Azure 管理门户启动的密码重置写回。&nbsp; 1.0.6862 以上的 DirSync 版本仅支持密码重置写回。 若要解决此问题，强烈建议安装最新版本的 Azure AD Connect (Azure Active Directory Connect)。 有关详细信息，请参阅[集成本地标识](connect/active-directory-aadconnect.md)来解决此问题，同时在组织中充分利用密码写回功能。</p>
             </td>
           </tr>
         </tbody></table>
@@ -1486,7 +1486,7 @@ MA 服务帐户没有合适的权限在相关的用户帐户上设置新密码�
 重新安装 Azure AD Connect 包可以解决所有可能会影响你在本地 AD 环境中连接到我们的云服务或管理你的密码的配置问题。
 我们建议你仅在尝试了上述前两个步骤后再执行此步骤。
 
-1. 可从[此处](active-directory-aadconnect.md#install-azure-ad-connect)下载最新版本的 Azure AD Connect。
+1. 可从[此处](connect/active-directory-aadconnect.md#install-azure-ad-connect)下载最新版本的 Azure AD Connect。
 2. 由于你已安装 Azure AD Connect，只需执行就地升级将 Azure AD Connect 安装更新到最新版本。
 3. 执行下载的程序包，然后按照屏幕说明进行操作来更新 Azure AD Connect 计算机。  无需执行其他手动步骤，除非自定义了现成的规则，在这种情况下，应该**先备份这些规则，然后再继续进行升级，并在完成后手动重新部署这些规则**。
 
@@ -1519,6 +1519,6 @@ MA 服务帐户没有合适的权限在相关的用户帐户上设置新密码�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

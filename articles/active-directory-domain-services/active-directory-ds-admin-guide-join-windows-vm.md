@@ -90,7 +90,7 @@ ms.openlocfilehash: aad6bcd3eb704f090156d2ace80d2540a9543bd7
     ![指定用于加入域的凭据](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 6. 可以通过以下方式之一指定凭据：
    
-   * UPN 格式：指定在 Azure AD 中配置的用户帐户的 UPN 后缀。 在本示例中，用户“bob”的 UPN 后缀是“bob@domainservicespreview.onmicrosoft.com”。
+   * UPN 格式：指定在 Azure AD 中配置的用户帐户的 UPN 后缀。 在本示例中，用户“bob”的 UPN 后缀为 'bob@domainservicespreview.onmicrosoft.com'。
    * SAMAccountName 格式：可以使用 SAMAccountName 格式指定帐户名。 在本示例中，用户“bob”需要输入“CONTOSO100\bob”。
      
      > [!NOTE]
@@ -128,6 +128,6 @@ ms.openlocfilehash: aad6bcd3eb704f090156d2ace80d2540a9543bd7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

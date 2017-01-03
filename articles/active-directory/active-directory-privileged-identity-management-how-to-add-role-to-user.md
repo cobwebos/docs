@@ -73,6 +73,6 @@ Azure AD Privileged Identity Management 应用程序还允许特权角色管理�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -109,7 +109,7 @@ Azure Active Directory Identity Protection：
 11. 单击“保存” 。
 12. 现在通过使用具有提升的风险级别的用户登录，可以测试基于风险的条件访问。 如果用户风险为中等，根据你的策略配置，登录将受阻止或强制你更改你的密码。 
     <br><br>
-    ![操作手册](./media/active-directory-identityprotection-playbook/201.png "Playbook")
+    ![演练手册](./media/active-directory-identityprotection-playbook/201.png "Playbook")
     <br>
 
 ## <a name="sign-in-risk"></a>登录风险
@@ -131,7 +131,7 @@ Azure Active Directory Identity Protection：
 10. 现在通过模拟不熟悉的位置或匿名 IP 风险事件，可以测试基于风险的条件访问，因为这些事件都是“中等”风险事件。
 
 
-![演练手册](./media/active-directory-identityprotection-playbook/200.png "Playbook")
+![演练手册](./media/active-directory-identityprotection-playbook/200.png "演练手册")
 
 
 ## <a name="see-also"></a>另请参阅
@@ -140,6 +140,6 @@ Azure Active Directory Identity Protection：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

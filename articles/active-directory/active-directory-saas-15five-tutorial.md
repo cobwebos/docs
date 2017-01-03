@@ -34,7 +34,7 @@ ms.openlocfilehash: ce98338e6b21eb35a17f0183f409dd54d1123bb9
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-15five-tutorial/IC784667.png "Scenario")
+![方案](./media/active-directory-saas-15five-tutorial/IC784667.png "方案")
 
 ## <a name="enabling-the-application-integration-for-15five"></a>为 15Five 启用应用程序集成
 本部分旨在概述如何为 15Five 启用应用程序集成。
@@ -43,19 +43,19 @@ ms.openlocfilehash: ce98338e6b21eb35a17f0183f409dd54d1123bb9
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-15five-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-15five-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-15five-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-15five-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-15five-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加应用程序](./media/active-directory-saas-15five-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-15five-tutorial/IC749322.png "从库添加应用程序")
 6. 在**搜索框**中，键入 **15Five**。
    
-   ![应用程序库](./media/active-directory-saas-15five-tutorial/IC784668.png "Application Gallery")
+   ![应用程序库](./media/active-directory-saas-15five-tutorial/IC784668.png "应用程序库")
 7. 在结果窗格中，选择“15Five”，然后单击“完成”以添加该应用程序。
    
    ![15Five](./media/active-directory-saas-15five-tutorial/IC784669.png "15Five")
@@ -67,16 +67,16 @@ ms.openlocfilehash: ce98338e6b21eb35a17f0183f409dd54d1123bb9
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“15Five”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784670.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784670.png "配置单一登录")
 2. 在“你希望用户如何登录 15Five”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784671.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784671.png "配置单一登录")
 3. 在“配置应用 URL”页上的“15Five 登录 URL”文本框中，使用“*https://company.15Five.com*”模式键入 URL，然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-15five-tutorial/IC784672.png "Configure App URL")
+   ![配置应用 URL](./media/active-directory-saas-15five-tutorial/IC784672.png "配置应用 URL")
 4. 在“配置 15Five 的单一登录”页上，单击“下载元数据”，然后将元数据文件转发给 15Five 支持团队。
    
-   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784673.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784673.png "配置单一登录")
    
    > [!NOTE]
    > 单一登录需要由 15Five 支持团队启用。
@@ -84,7 +84,7 @@ ms.openlocfilehash: ce98338e6b21eb35a17f0183f409dd54d1123bb9
    > 
 5. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784674.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-15five-tutorial/IC784674.png "配置单一登录")
    
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
@@ -96,13 +96,13 @@ ms.openlocfilehash: ce98338e6b21eb35a17f0183f409dd54d1123bb9
 1. 以管理员身份登录到 **15Five** 公司站点。
 2. 转到“管理公司”。
    
-   ![管理公司](./media/active-directory-saas-15five-tutorial/IC784675.png "Manage Company")
+   ![管理公司](./media/active-directory-saas-15five-tutorial/IC784675.png "管理公司")
 3. 转到“人员\>添加人员”。
    
-   ![人员](./media/active-directory-saas-15five-tutorial/IC784676.png "People")
+   ![人员](./media/active-directory-saas-15five-tutorial/IC784676.png "人员")
 4. 在“添加新人员”部分中，执行以下步骤：
    
-   ![添加新人员](./media/active-directory-saas-15five-tutorial/IC784677.png "Add New Person")
+   ![添加新人员](./media/active-directory-saas-15five-tutorial/IC784677.png "添加新人员")
    
    1. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”、“姓氏”、“职位”、“电子邮件地址”。
    2. 单击“Done”（完成） 。
@@ -121,16 +121,16 @@ ms.openlocfilehash: ce98338e6b21eb35a17f0183f409dd54d1123bb9
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“15Five”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-15five-tutorial/IC784678.png "Assign users")
+   ![分配用户](./media/active-directory-saas-15five-tutorial/IC784678.png "分配用户")
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-15five-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-15five-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

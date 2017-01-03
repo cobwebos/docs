@@ -4,7 +4,7 @@ description: "此页提供第 7 层负载平衡的应用程序网关服务概述
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: b37a2473-4f0e-496b-95e7-c0594e96f83e
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 93dab7804e03ba55ed17c3160420f2aec029c9ef
-ms.openlocfilehash: e3d36b50ed1253e40dc7a40f0611b840bb5498be
+ms.sourcegitcommit: e982d29f76d521720eea7cbb56c5084572f4a542
+ms.openlocfilehash: 1982b7ec7b7322366382e250b7f27f3da6448aa0
 
 
 ---
@@ -75,9 +75,7 @@ Azure 托管服务形式的应用程序网关负载平衡允许在 Azure 软件�
 | 100K |35 Mbps |100 Mbps |200 Mbps |
 
 > [!NOTE]
-> 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数据，应该运行自己的测试，此处提供的这些值仅用于容量计划指导目的。
->
->
+> 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
 
 ## <a name="health-monitoring"></a>运行状况监视
 
@@ -97,6 +95,6 @@ Azure 应用程序网关会通过基本或自定义运行状况探测，自动�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

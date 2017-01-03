@@ -1,5 +1,5 @@
 ---
-title: "# 为加入 Windows 7 域的设备配置自动设备注册 | Microsoft Docs"
+title: "# 为加入 Windows 7 域的设备配置自动设备注册 | Microsoft 文档cs"
 description: "逐步说明如何配置加入 Windows 7 域的设备，以自动注册到 Azure AD。 以及逐步说明使用软件分发系统（如 System Center Configuration Manager），将设备注册软件包部署到已加入 Windows 7 域的设备中。"
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: MarkVi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2bc945283ca99dc91ae7e824606886a5389f20a6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e31a22237fb6b715c1d5c24d75f645edfbeb7c9e
 
 
 ---
@@ -75,6 +75,6 @@ Windows 7 计算机上的 Windows 事件日志将显示与“工作区加入”�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

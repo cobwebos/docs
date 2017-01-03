@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 10/11/2016
 ms.author: skwan;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 624908a1f65240be1fa9f320d078c30ebcec0788
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 60874690edfe647c97849bd4099052ab7bc33f80
 
 
 ---
@@ -25,9 +25,9 @@ ms.openlocfilehash: 624908a1f65240be1fa9f320d078c30ebcec0788
 
 如果现有应用程序拥有自身的帐户系统，或支持来自其他云提供程序的其他类型的登录方式，则添加来自任何租户的 Azure AD 登录相当简单，只需注册应用程序、通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，然后在应用程序中放置一个“登录到 Microsoft”按钮即可。 单击下面的按钮详细了解如何为应用程序创建品牌。
 
-[![“登录”按钮][AAD-Sign-In]][AAD-App-Branding]
+[![登录按钮][AAD-Sign-In]][AAD-App-Branding]
 
-本文假设你已熟悉如何为 Azure AD 构建单租户应用程序。  如果不熟悉，请返回[开发人员指南主页][AAD-Dev-Guide]，然后尝试学习其中一篇快速入门！
+本文假设你已熟悉如何为 Azure AD 构建单租户应用程序。  如果你不熟悉，请返回[开发人员指南主页][AAD-Dev-Guide]，然后尝试学习其中一篇快速入门！
 
 将应用程序转换成 Azure AD 多租户应用包括四个简单的步骤：
 
@@ -39,7 +39,7 @@ ms.openlocfilehash: 624908a1f65240be1fa9f320d078c30ebcec0788
 让我们详细了解每个步骤。 也可以直接跳转到[此多租户示例列表][AAD-Samples-MT]。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>将注册更新为多租户
-Azure AD 中的 Web 应用/API 注册默认为单租户。  可以将注册转换为多租户，方法是在 [Azure 经典门户][AZURE-classic-portal]中应用程序注册的配置页上找到“应用程序是多租户的”开关并将其设置为“是”。
+Azure AD 中的 Web 应用/API 注册默认为单租户。  可以将注册转换为多租户，方法是在 [Azure 经典门户][AZURE-classic-portal]中的应用程序注册配置页上，找出“应用程序是多租户的”参数并将其设置为“是”。
 
 注意：在将某个应用程序转换为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。  就单租户应用而言，应用 ID URI 在该租户中保持唯一便已足够。  就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。  系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。  例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。  如果租户具有已验证的域 `contoso.com`，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。  如果应用 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
 
@@ -60,7 +60,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。  可以将注册转�
 
 如前所述，多租户应用程序也应该为用户提供一致的登录体验，并遵循 Azure AD 应用程序的品牌指导原则。 单击下面的按钮详细了解如何为应用程序创建品牌。
 
-[![“登录”按钮][AAD-Sign-In]][AAD-App-Branding]
+[![登录按钮][AAD-Sign-In]][AAD-App-Branding]
 
 让我们更详细地了解 /common 终结点的用法和代码实现。
 
@@ -103,7 +103,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 ## <a name="understanding-user-and-admin-consent"></a>了解用户和管理员同意
 若要让用户登录 Azuer AD 中的某个应用程序，必须以用户租户的形式表示该应用程序。  这样，组织便可以采取一些措施，例如，当其租户中的用户登录应用程序时应用唯一策略。  对于单租户应用程序，此注册过程相当简单，也就是在 [Azure 经典门户][AZURE-classic-portal]中注册应用程序所采用的同一个过程。
 
-对于多租户应用程序，应用程序的初始注册过程是在开发人员使用的 Azure AD 租户中进行的。  当来自不同租户的用户首次登录应用程序时，Azure AD 将要求他们同意应用程序所请求的权限。  如果他们同意，系统将在用户的租户中创建一个称为服务主体的应用程序表示形式，然后登录可继续进行。 系统还会在记录用户对应用程序的同意意向的目录中创建委托。 有关应用程序的 Application 和 ServicePrincipal 对象的详细信息，请参阅 [应用程序对象和服务主体对象][AAD-App-SP-Objects]。
+对于多租户应用程序，应用程序的初始注册过程是在开发人员使用的 Azure AD 租户中进行的。  当来自不同租户的用户首次登录应用程序时，Azure AD 将要求他们同意应用程序所请求的权限。  如果他们同意，系统将在用户的租户中创建一个称为服务主体的应用程序表示形式，然后登录可继续进行。 系统还会在记录用户对应用程序的同意意向的目录中创建委托。 有关应用程序的 Application 和 ServicePrincipal 对象的详细信息，请参阅 [Application Objects and Service Principal Objects][AAD-App-SP-Objects]（应用程序对象和服务主体对象）。
 
 ![同意单层应用][Consent-Single-Tier] 
 
@@ -128,7 +128,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 租户管理员可以禁用普通用户同意应用程序的能力。  如果禁用此功能，则始终需要管理员同意，才能在租户中设置应用程序。  如果想要在禁用普通用户同意的情况下测试应用程序，可以在 [Azure 经典门户][AZURE-classic-portal]的 Azure AD 租户配置部分中找到配置开关。
 
 > [!NOTE]
-> 某些应用程序想要提供一种体验，让普通用户能够一开始即表示同意，然后应用程序可让管理员参与操作并请求需要管理员同意的权限。  目前在 Azure AD 中还没有任何办法可以使用单个应用程序注册来实现此目的。  即将推出的 Azure AD v2 终结点可允许应用程序在运行时（而不是在注册时）请求权限，这样会使这种方案成为可能。  有关详细信息，请参阅 [Azure AD 应用模型 v2 开发人员指南][AAD-V2-Dev-Guide]。
+> 某些应用程序想要提供一种体验，让普通用户能够一开始即表示同意，然后应用程序可让管理员参与操作并请求需要管理员同意的权限。  目前在 Azure AD 中还没有任何办法可以使用单个应用程序注册来实现此目的。  即将推出的 Azure AD v2 终结点可允许应用程序在运行时（而不是在注册时）请求权限，这样会使这种方案成为可能。  有关详细信息，请参阅 [Azure AD App Model v2 Developer Guide][AAD-V2-Dev-Guide]（Azure AD 应用模型 v2 开发人员指南）。
 > 
 > 
 
@@ -139,7 +139,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
-可以通过资源[应用程序清单][AAD-App-Manifest]更新此属性，本文末尾的[相关内容](#related-content)部分中的多层本机客户端调用 Web API 示例中也提供了此属性的相关演示。 下图提供了同意多层应用的概览：
+可以通过资源[应用程序的清单][AAD-App-Manifest]更新此属性，本文末尾的[相关内容](#related-content)部分中的多层本机客户端调用 Web API 示例中也提供了此属性的相关演示。 下图提供了同意多层应用的概览：
 
 ![同意已知的多层客户端应用][Consent-Multi-Tier-Known-Client] 
 
@@ -152,8 +152,8 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 ### <a name="revoking-consent"></a>吊销同意
 用户和管理员可以随时吊销对应用程序的同意：
 
-* 用户可通过将单个应用程序从其[访问面板应用程序][AAD-Access-Panel]列表中删除，来撤销对这些应用程序的访问权限。
-* 管理员可以通过使用 [Azure 经典门户][AZURE-classic-portal]的 Azure AD 管理部分将应用程序从 Azure AD 中删除，来撤销对这些应用程序的访问权限。
+* 用户可通过将单个应用程序从其[访问面板应用程序][AAD-Access-Panel]列表中删除，来吊销对这些应用程序的访问权限。
+* 管理员可以通过使用 [Azure 经典门户][AZURE-classic-portal]的 Azure AD 管理部分将应用程序从 Azure AD 中删除，来吊销对这些应用程序的访问权限。
 
 如果是由管理员代表租户中的所有用户对应用程序行使同意权，用户就不能单独吊销访问权限。  只有管理员才能吊销访问权限，并且只能针对整个应用程序吊销。
 
@@ -171,7 +171,7 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
 * [同意框架概述][AAD-Consent-Overview]
 * [Microsoft 图形 API 权限范围][MSFT-Graph-AAD]
-* [Azure AD Graph API 权限范围][AAD-Graph-Perm-Scopes]
+* [Azure AD 图形 API 权限范围][AAD-Graph-Perm-Scopes]
 
 欢迎使用以下 Disqus 意见部分提供反馈，帮助我们改进与制作内容。
 
@@ -239,6 +239,6 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

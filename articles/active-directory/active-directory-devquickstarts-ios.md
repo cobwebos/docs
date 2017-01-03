@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 1865043ca9c9019b9813f11eb4a55f7f16d79287
-ms.openlocfilehash: b0ae22b8af23c50f25740901db4a8ab9cad045be
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d3fb8e98d36c4a031458b5400147614510b1b064
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: b0ae22b8af23c50f25740901db4a8ab9cad045be
 若要开始，请[下载应用框架](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)。  你还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。  如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 > [!TIP]
-> 欢迎试用全新[开发人员门户](https://identity.microsoft.com/Docs/iOS)预览版，只需短短几分钟，就能帮助你开始使用 Azure Active Directory！  在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。  完成上述过程后，将会创建一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌和执行验证的后端。
+> 欢迎试用新的[开发人员门户](https://identity.microsoft.com/Docs/iOS)预览版，只需花费几分钟时间，它就能帮助你开始使用 Azure Active Directory！  在开发人员门户中，可以逐步完成注册应用并将 Azure AD 集成到代码的整个过程。  完成上述过程后，将会创建一个可对租户中的用户进行身份验证的简单应用程序，以及一个可以接受令牌和执行验证的后端。
 >
 >
 
@@ -235,6 +235,6 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO5-->
 
 

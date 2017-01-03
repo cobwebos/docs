@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: csharp
@@ -17,20 +17,14 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 82b042fa17af4bc93989a4f12982530f44755280
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: e051a8828a5d36e08a0ea7d352f3d8aabf00b911
 
 
 ---
-# <a name="try-sql-database-use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>试用 SQL 数据库：使用 C# 通过适用于 .NET 的 SQL 数据库库创建 SQL 数据库
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-get-started.md)
-> * [C#](sql-database-get-started-csharp.md)
-> * [PowerShell](sql-database-get-started-powershell.md)
-> 
-> 
+# <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>使用 C# 通过适用于 .NET 的 SQL 数据库创建 SQL 数据库
 
-了解如何使用[用于 .NET 的 Microsoft Azure SQL 管理库](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)通过 C# 创建 Azure SQL 数据库。 本文将介绍如何使用 SQL 和 C# 创建单一数据库。 若要创建弹性数据库池，请参阅[创建弹性数据库池](sql-database-elastic-pool-create-csharp.md)。
+了解如何使用[用于 .NET 的 Microsoft Azure SQL 管理库](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)通过 C# 创建 Azure SQL 数据库。 本文将介绍如何使用 SQL 和 C# 创建单一数据库。 若要创建弹性池，请参阅[创建弹性池](sql-database-elastic-pool-create-csharp.md)。
 
 用于 .NET 的 Azure SQL 数据库管理库提供了基于 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 的 API，用于包装[基于 Resource Manager 的 SQL 数据库 REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx)。
 
@@ -293,6 +287,6 @@ ms.openlocfilehash: 82b042fa17af4bc93989a4f12982530f44755280
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

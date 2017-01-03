@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 中自定义域名的概念性概述 | Microsoft Docs"
-description: "介绍了在 Azure Active Directory 中使用自定义域名的概念性框架，其中包括用于实现单一登录的联盟"
+description: "介绍在 Azure Active Directory 中使用自定义域名的概念性框架，其中包括用于实现单一登录的联合"
 services: active-directory
 documentationcenter: 
 author: jeffsta
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: curtand;jeffsta
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 12d41a77655c4892a9dc20979ef98b1bd39f94c5
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2faa2c270b192a9b3476fa911333f6abfabb1ee9
 
 
 ---
@@ -65,6 +65,6 @@ Azure Web 应用使用其自身的机制来验证域的所有权。 域必须经
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

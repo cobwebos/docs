@@ -1,9 +1,23 @@
-
 ---
-标题：适用于 Android 的 Azure 验证器 | Microsoft Docs 说明：Microsoft Azure 验证器应用可用于登录以访问工作资源。 Azure 验证器应用对移动设备显示警报，以通知你有一个等待中的双因素验证请求。
-服务：active-directory 文档中心：'' 作者：femila 管理员：swadhwa 编辑：''
+title: "适用于 Android 的 Azure 验证器 | Microsoft 文档"
+description: "Microsoft Azure 身份验证器应用可用于登录以访问工作资源。 Azure 验证器应用对移动设备显示警报，以通知你有一个等待中的双因素验证请求。"
+services: active-directory
+documentationcenter: 
+author: femila
+manager: swadhwa
+editor: 
+ms.assetid: b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 5dd6701f25c69f5e870d3add79c312f9aeec6bf4
 
-ms.assetid：b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c ms.service：active-directory ms.workload：标识 ms.tgt_pltfrm：na ms.devlang：na ms.topic：文章 ms.date：2016/09/27 ms.author：femila
 
 ---
 # <a name="azure-authenticator-for-android"></a>适用于 Android 的 Azure 验证器
@@ -107,6 +121,6 @@ ms.assetid：b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c ms.service：active-directory 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 12/06/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 52360ffc7224ad6ec2009e239ee1aa0b35c7f1cc
+ms.sourcegitcommit: 0ae9ad40f2e32d56fd50c90b86339cbb458d7291
+ms.openlocfilehash: a3276c764ebb6382594cf7002e7c7e8e328862ef
 
 
 ---
@@ -64,7 +64,7 @@ CQhoFA
 
 当 API 收到访问令牌时，必须[验证签名](#token-validation)，证明令牌可信。 API 还必须验证令牌中的一些声明，证明令牌有效。 根据具体的方案要求，应用验证的声明有所不同，但应用在每个方案中均须执行某些[常见声明验证](#token-validation)。
 
-### <a name="claims-in-id-access-tokens"></a>ID 令牌和访问令牌中的声明
+### <a name="claims-in-id--access-tokens"></a>ID 令牌和访问令牌中的声明
 使用 Azure AD B2C 时，必须对令牌内容有精细的控制。 可以配置[策略](active-directory-b2c-reference-policies.md)，在声明中发送应用操作所需的几组特定的用户数据。 这些声明可以包括标准属性，比如用户的 `displayName` 和 `emailAddress` 属性。 还可以包括可在 B2C 目录中定义的[自定义用户属性](active-directory-b2c-reference-custom-attr.md)。 收到的每个 ID 令牌和访问令牌都会包含一组特定的安全相关声明。 应用程序可以使用这些声明来安全地对用户和请求进行身份验证。
 
 请注意，ID 令牌中的声明不按任何特定顺序返回。 此外，新的声明可以在任何时候引入 ID 令牌。 引入新的声明时，不得中断应用。 以下是期望在 Azure AD B2C 颁发的 ID 令牌和访问令牌中存在的声明。 任何其他声明将由策略确定。 练习时，请尝试将示例 ID 令牌中的声明粘贴到 [calebb.net](http://calebb.net) 中进行检查。 可以在 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)中找到进一步的详细信息。
@@ -80,8 +80,9 @@ CQhoFA
 | 代码哈希 |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅当令牌随 OAuth 2.0 授权代码一起颁发时，代码哈希才包含在 ID 令牌中。 代码哈希可用于验证授权代码的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)。 |
 | 访问令牌哈希 |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅当令牌随 OAuth 2.0 访问令牌一起颁发时，访问令牌才包含在 ID 令牌中。 访问令牌哈希可用于验证访问令牌的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)。 |
 | Nonce |`nonce` |`12345` |Nonce 是缓和令牌重放攻击的策略。 应用可通过使用 `nonce` 查询参数，在授权请求中指定 nonce。 在请求中提供的值将仅在 ID 令牌的 `nonce` 声明中发出（未经修改）。 这可让应用根据在请求上指定的值验证此值，使应用的会话与给定的 ID 令牌相关联。 应用可在 ID 令牌验证过程中执行这项验证。 |
-| 使用者 |`sub` |`Not supported currently. Use oid claim.` |这是令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 但是，使用者声明尚未在 Azure AD B2C 中实现。 应该配置策略以包括对象 ID `oid` 声明并将其值用于识别用户，而不是将使用者声明用于授权。 |
-| 身份验证上下文类引用 |`acr` |`b2c_1_sign_in` |这是用于获取 ID 令牌的策略名称。 |
+| 使用者 |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |这是令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 请阅读[此文](active-directory-b2c-token-session-sso.md)了解详细信息。 |
+| 身份验证上下文类引用 |`acr` |不适用 |除非是在旧策略中，否则目前不使用。 请阅读[此文](active-directory-b2c-token-session-sso.md)了解详细信息。 |
+| 信任框架策略 |`tfp` |`b2c_1_sign_in` |这是用于获取 ID 令牌的策略名称。 |
 | 身份验证时间 |`auth_time` |`1438535543` |此声明是用户最后一次输入凭据的时间，以新纪元时间表示。 |
 
 ### <a name="refresh-tokens"></a>刷新令牌
@@ -155,6 +156,6 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

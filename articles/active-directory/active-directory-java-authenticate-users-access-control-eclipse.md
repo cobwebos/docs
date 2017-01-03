@@ -39,7 +39,7 @@ ACS 具有以下可用功能：
 * 一项基于开放数据协议 (OData) 的管理服务，该服务提供对 ACS 设置的编程访问。
 * 一个允许对 ACS 设置进行管理访问的管理门户。
 
-有关 ACS 的详细信息，请参阅[访问控制服务 2.0][访问控制服务 2.0]。
+有关 ACS 的详细信息，请参阅[访问控制服务 2.0][Access Control Service 2.0]。
 
 ## <a name="concepts"></a>概念
 Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创建针对本地运行或在云中运行的应用程序的身份验证机制的一致性方法。 通常，应用程序和服务可使用基于声明的标识来获取所需的有关其组织内、其他组织内以及 Internet 上的用户的标识信息。
@@ -87,7 +87,7 @@ Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创�
 ## <a name="create-an-acs-namespace"></a>创建 ACS 命名空间
 若要开始在 Azure 中使用访问控制服务 (ACS)，必须创建一个 ACS 命名空间。 该命名空间提供了一个唯一范围，用于从应用程序中对 ACS 资源进行寻址。
 
-1. 登录到 [Azure 管理门户][Azure 管理门户]。
+1. 登录到 [Azure 管理门户][Azure Management Portal]。
 2. 单击“Active Directory”。 
 3. 若要创建新的访问控制命名空间，请依次单击“新建”、“应用程序服务”、“访问控制”和“快速创建”。 
 4. 输入该命名空间的名称。 Azure 将验证该名称是否是唯一的。
@@ -100,7 +100,7 @@ Azure 将创建并激活该命名空间。 请等到新命名空间的状态变�
 ## <a name="add-identity-providers"></a>添加标识提供程序
 在此任务中，您将添加与 RP 应用程序一起使用的 IP 来进行身份验证。 出于演示目的，此任务将说明如何将 Windows Live 作为 IP 添加，但您可使用 ACS 管理门户中列出的任何 IP。
 
-1. 在 [Azure 管理门户][Azure 管理门户]中，单击“Active Directory”，选择一个访问控制命名空间，然后单击“管理”。 这将打开 ACS 管理门户。
+1. 在 [Azure 管理门户][Azure Management Portal]中，单击“Active Directory”，选择一个访问控制命名空间，然后单击“管理”。 这将打开 ACS 管理门户。
 2. 在 ACS 管理门户的左侧导航窗格中，单击“标识提供者”。
 3. Windows Live ID 在默认情况下将启用且无法删除。 在本教程中，仅使用 Windows Live ID。 不过，可通过单击“添加”按钮在此屏幕中添加其他 IP。
 
@@ -141,7 +141,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。 紧接着，
 3. 在“添加令牌签名证书或密钥”页上：
    1. 在“用于”部分中，单击“信赖方应用程序”并选择“Azure Web 应用”（之前已将其设置为信赖方应用程序的名称）。
    2. 在“类型”部分中，选择“X.509 证书”。
-   3. 在“证书”部分中，单击“浏览”按钮并导航到要使用的 X.509 证书文件。 这将为 .PFX 文件。 选择此文件，单击“打开”，然后在“密码”文本框中输入证书密码。 请注意，出于测试目的，你可以使用自签名证书。 若要创建自签名证书，请使用“ACS 筛选器库”对话框（后面将介绍）中的“新建”按钮，或使用 Azure Starter Kit for Java 的[项目网站][项目网站]中的 **encutil.exe** 实用程序。
+   3. 在“证书”部分中，单击“浏览”按钮并导航到要使用的 X.509 证书文件。 这将为 .PFX 文件。 选择此文件，单击“打开”，然后在“密码”文本框中输入证书密码。 请注意，出于测试目的，你可以使用自签名证书。 若要创建自签名证书，请使用“ACS 筛选器库”对话框（后面将介绍）中的“新建”按钮，或使用 Azure Starter Kit for Java 的[项目网站][project website]中的 **encutil.exe** 实用程序。
    4. 确保选中“设为主”。 用户的“添加令牌签名证书或密钥”页应与下图中所示类似。
        ![添加令牌签名证书][add_token_signing_cert]
    5. 单击“保存”保存设置并关闭“添加令牌签名证书或密钥”页。
@@ -168,7 +168,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。 紧接着，
    
     ![为 ACS 示例添加 JSP 文件][add_jsp_file_acs]
    
-    单击“资源组名称” 的 Azure 数据工厂。
+    单击“下一步”。
 4. 在“选择 JSP 模板”对话框中，选择“新建 JSP 文件 (html)”，然后单击“完成”。
 5. 在 Eclipse 中打开 index.jsp 文件后，添加文本以显示 **Hello ACS World!** 在现有 `<body>` 元素中。 更新后的 `<body>` 内容应与下图中所示类似：
    
@@ -237,7 +237,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。 紧接着，
 使用完 ACS Hello World 应用程序后，请务必删除部署（可在[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)主题中了解如何删除部署）。
 
 ## <a name="a-namenextstepsanext-steps"></a><a name="next_steps"></a>后续步骤
-有关 ACS 返回给应用程序的安全断言标记语言 (SAML) 的介绍，请参阅[如何查看 Azure 访问控制服务返回的 SAML][如何查看 Azure 访问控制服务返回的 SAML]。 若要进一步了解 ACS 的功能并尝试将其用于更复杂的方案，请参阅[访问控制服务 2.0][访问控制服务 2.0]。
+有关 ACS 返回给你的应用程序的安全断言标记语言 (SAML) 的检查，请参阅[如何查看 Azure 访问控制服务返回的 SAML][How to view SAML returned by the Azure Access Control Service]。 若要进一步探索 ACS 的功能并尝试将其用于更复杂的方案，请参阅[访问控制服务 2.0][Access Control Service 2.0]。
 
 另外，此示例使用了“在 WAR 文件中嵌入证书”选项。 此选项简化了证书的部署。 相反，如果你要将签名证书与 WAR 文件分隔开，可使用以下方法：
 
@@ -258,29 +258,29 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。 紧接着，
        ![添加证书组件][add_cert_component]
    5. 单击“确定”。
 
-此时，你的证书将包含在部署中。 请注意，无论是在 WAR 文件中嵌入证书还是将其作为组件添加到部署中，都需要将证书上载到命名空间，如[将证书上载到 ACS 命名空间][将证书上载到 ACS 命名空间]部分中所述。
+此时，你的证书将包含在部署中。 请注意，无论是在 WAR 文件中嵌入证书还是将其作为组件添加到部署中，都需要将证书上传到命名空间，如[将证书上传到 ACS 命名空间][Upload a certificate to your ACS namespace]部分中所述。
 
-[什么是 ACS？]: #what-is
-[概念]: #concepts
-[先决条件]: #pre
-[创建 Java Web 应用程序]: #create-java-app
-[创建 ACS 命名空间]: #create-namespace
-[添加标识提供程序]: #add-IP
-[添加信赖方应用程序]: #add-RP
-[创建规则]: #create-rules
-[将证书上载到 ACS 命名空间]: #upload-certificate
-[查看“应用程序集成”页]: #review-app-int
-[配置 ACS 和 ASP.NET Web 应用程序之间的信任]: #config-trust
-[将 ACS 筛选器库添加到应用程序]: #add_acs_filter_library
-[部署到计算模拟器]: #deploy_compute_emulator
-[部署到 Azure]: #deploy_azure
-[后续步骤]: #next_steps
-[项目网站]: http://wastarterkit4java.codeplex.com/releases/view/61026
-[如何查看 Azure 访问控制服务返回的 SAML]: /en-us/develop/java/how-to-guides/view-saml-returned-by-acs/
-[访问控制服务 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
+[What is ACS?]: #what-is
+[Concepts]: #concepts
+[Prerequisites]: #pre
+[Create a Java web application]: #create-java-app
+[Create an ACS Namespace]: #create-namespace
+[Add Identity Providers]: #add-IP
+[Add a Relying Party Application]: #add-RP
+[Create Rules]: #create-rules
+[Upload a certificate to your ACS namespace]: #upload-certificate
+[Review the Application Integration Page]: #review-app-int
+[Configure Trust between ACS and Your ASP.NET Web Application]: #config-trust
+[Add the ACS Filter library to your application]: #add_acs_filter_library
+[Deploy to the compute emulator]: #deploy_compute_emulator
+[Deploy to Azure]: #deploy_azure
+[Next steps]: #next_steps
+[project website]: http://wastarterkit4java.codeplex.com/releases/view/61026
+[How to view SAML returned by the Azure Access Control Service]: /en-us/develop/java/how-to-guides/view-saml-returned-by-acs/
+[Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
 [Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
 [Windows Identity Foundation SDK]: http://www.microsoft.com/download/en/details.aspx?id=4451
-[Azure 管理门户]: https://manage.windowsazure.com
+[Azure Management Portal]: https://manage.windowsazure.com
 [acs_flow]: ./media/active-directory-java-authenticate-users-access-control-eclipse/ACSFlow.png
 
 <!-- Eclipse-specific -->
@@ -300,6 +300,6 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。 紧接着，
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

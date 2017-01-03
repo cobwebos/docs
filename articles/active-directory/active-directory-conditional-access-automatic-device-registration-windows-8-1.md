@@ -1,6 +1,6 @@
 ---
 title: "为加入 Windows 8.1 域的设备配置自动设备注册 | Microsoft Docs"
-description: " 逐步说明如何配置组策略，以将加入 Windows 8.1 域的设备自动注册到 Azure AD。 "
+description: " 逐步说明如何配置组策略，以将加入 Windows 8.1 域的设备自动注册到 Azure AD. "
 services: active-directory
 documentationcenter: 
 author: femila
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: Markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 03585694b3934147f1f5d58615155ba8ae4d1bc0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2117267c409afed40094fadf546d53bf9f5d1ec3
 
 
 ---
@@ -54,7 +54,7 @@ ms.openlocfilehash: 03585694b3934147f1f5d58615155ba8ae4d1bc0
 
 此命令必须在已登录到计算机的每个域用户的上下文中运行。
 
-## <a name="event-viewer-errors-for-windows-81-domain-joined-devices"></a>事件查看器和针对已加入 Windows 8.1 域的设备的错误。
+## <a name="event-viewer--errors-for-windows-81-domain-joined-devices"></a>事件查看器和针对已加入 Windows 8.1 域的设备的错误。
 Windows 8.1 计算机上的 Windows 事件日志将显示与设备注册相关的消息。 你可以找到成功和不成功的事件消息。 
 
 可以在事件查看器中的“应用程序和服务日志” > “Microsoft” > “Windows”>“工作区加入”下面找到事件日志。
@@ -70,6 +70,6 @@ Windows 8.1 计算机上的 Windows 事件日志将显示与设备注册相关�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

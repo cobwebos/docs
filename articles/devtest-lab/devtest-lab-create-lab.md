@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
+ms.sourcegitcommit: 29c4c2a2818468a2fa8360eebd4b653bdcbbde19
+ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
 
 
 ---
@@ -39,9 +39,8 @@ ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
    1. 为新的实验室输入“实验室名称”  。
    2. 选择要与实验室关联的“订阅”  。
    3. 选择用于存储实验室的“位置”  。
-   4. 选择“自动关机”  ，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。
-   5. 选择“存储类型”  ，指示适用于实验室的 VM 的存储磁盘类型。 
-   6. 选择“创建” 。
+   4. 选择“自动关机”  ，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。 
+   5. 选择“创建” 。
       
       ![创建实验室边栏选项卡](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
@@ -59,6 +58,6 @@ ms.openlocfilehash: f2e607924f17b42bba73672a2d24257e672e1134
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

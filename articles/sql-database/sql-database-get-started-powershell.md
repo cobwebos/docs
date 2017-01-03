@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 12/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: b557c6d3591b1d56144651e876fa4bb1b0646935
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: d00b7b543f105fd944e91f6ed27e6613366c6716
 
 
 ---
@@ -31,9 +31,9 @@ ms.openlocfilehash: b557c6d3591b1d56144651e876fa4bb1b0646935
 * 创建 Aure SQL 逻辑服务器
 * 查看 Azure SQL Server 属性
 * 创建服务器级防火墙规则
-* 创建 AdventureWorksLT 示例数据库，用作独立数据库
+* 创建 AdventureWorksLT 示例数据库，用作单一数据库
 * 查看 AdventureWorksLT 示例数据库属性
-* 创建空的独立数据库
+* 创建空的单一数据库
 
 本教程的内容还包括：
 
@@ -577,6 +577,6 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 [什么是 SQL 数据库？](sql-database-technical-overview.md)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

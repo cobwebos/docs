@@ -115,7 +115,7 @@ ADP eTime 应用程序需要特定格式的 SAML 断言，这要求将自定义�
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“回复 URL”文本框中，使用以下模式键入用户用于登录 ADP eTime 应用程序的 URL：`https://<server name>.adp.com/affwebservices/public/saml2assertionconsumer`。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 1. 在“配置 ADP eTime 的单一登录”页面上，执行以下步骤：
    
@@ -123,7 +123,7 @@ ADP eTime 应用程序需要特定格式的 SAML 断言，这要求将自定义�
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 2. 若要为应用程序配置 SSO，请联系 ADP eTime 支持团队，并将下载的元数据文件附加到电子邮件中，以便可以针对 SSO 集成配置它们。
    
    > [!NOTE]
@@ -203,7 +203,7 @@ ADP eTime 应用程序需要特定格式的 SAML 断言，这要求将自定义�
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-adpetime-tutorial/create_aaduser_06.png) 
@@ -216,7 +216,7 @@ ADP eTime 应用程序需要特定格式的 SAML 断言，这要求将自定义�
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-adpetime-tutorial/create_aaduser_07.png) 
@@ -285,6 +285,6 @@ ADP eTime 应用程序需要特定格式的 SAML 断言，这要求将自定义�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

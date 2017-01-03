@@ -1,5 +1,5 @@
 
-1. 导航到“Google Cloud Console”[](https://console.developers.google.com/project)，然后使用你的 Google 帐户凭据登录。 
+1. 导航到[“Google Cloud Console”](https://console.developers.google.com/project)，然后使用你的 Google 帐户凭据登录。 
 2. 单击“创建项目”，键入项目名称，然后单击“创建”。 如果系统请求，请执行 SMS 验证，然后再次单击“创建”。
    
     ![创建新项目](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   

@@ -25,7 +25,7 @@ ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
 漏洞是你的环境中可能由攻击者利用的弱点。 我们建议你解决这些漏洞，以提高组织的安全状态并防止攻击者利用它们。
 
 
-![漏洞](./media/active-directory-identityprotection-vulnerabilities/101.png "vulnerabilities")
+![漏洞](./media/active-directory-identityprotection-vulnerabilities/101.png "漏洞")
 
 
 
@@ -64,6 +64,6 @@ Azure 多重身份验证提供用户身份验证的第二层安全。 它可帮�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

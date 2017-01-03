@@ -1,9 +1,23 @@
-
 ---
-标题：Azure Active Directory 条件性访问技术参考 | Microsoft Docs 说明：借助条件性访问控制，Azure Active Directory 在验证用户身份时先检查你选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
-服务：active-directory 文档中心：'' 作者：MarkusVi 管理员：femila 编辑：''
+title: "Azure Active Directory 条件性访问技术参考 | Microsoft 文档"
+description: "借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查你选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"
+services: active-directory
+documentationcenter: 
+author: MarkusVi
+manager: femila
+editor: 
+ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 10/20/2016
+ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
 
-ms.assetid：56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1 ms.service：active-directory ms.devlang：na ms.topic：文章 ms.tgt_pltfrm：na ms.workload：标识 ms.date：2016/10/20/ ms.author：markvi
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory 条件性访问技术参考
@@ -65,6 +79,6 @@ ms.assetid：56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1 ms.service：active-directory 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

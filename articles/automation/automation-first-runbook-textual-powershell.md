@@ -43,7 +43,7 @@ ms.openlocfilehash: 0f8c103b2ce0fcd4596d21af33b0a13e03dad54a
 我们首先创建一个输出文本 *Hello World*的简单 Runbook 。
 
 1. 在 Azure 门户中，打开你的自动化帐户。  
-   通过自动化帐户页面可快速查看此帐户中的资源。 你应该已拥有某些资产。 大多数资产都是自动包括在新的自动化帐户中的模块。 你还应具有在“先决条件”中提到的凭证资产 [](#prerequisites)。
+   通过自动化帐户页面可快速查看此帐户中的资源。 你应该已拥有某些资产。 大多数资产都是自动包括在新的自动化帐户中的模块。 你还应具有在 [“先决条件”](#prerequisites)中提到的凭证资产 。
 2. 单击“Runbook”  磁贴打开 Runbook 的列表。  
    ![RunbooksControl](media/automation-first-runbook-textual-powershell/automation-runbooks-control.png)  
 3. 通过单击“添加 Runbook”按钮，然后单击“创建新 Runbook”，创建一个新 Runbook。
@@ -96,7 +96,7 @@ ms.openlocfilehash: 0f8c103b2ce0fcd4596d21af33b0a13e03dad54a
 12. 你可以在此作业上单击以打开我们启动 Runbook 时查看的相同的作业窗格。 这样你就可以回溯并查看为特定 Runbook 创建的任何作业的详细信息。
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>步骤 5 - 添加身份验证来管理 Azure 资源
-我们已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 我们想要让其管理 Azure 资源。 然而，除非使用“先决条件”中引用的凭据对其进行身份验证，否则它将无法进行管理 [](#prerequisites)。 我们使用 **Add-AzureRmAccount** cmdlet 实现此目的。
+我们已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 我们想要让其管理 Azure 资源。 然而，除非使用[“先决条件”](#prerequisites)中引用的凭据对其进行身份验证，否则它将无法进行管理 。 我们使用 **Add-AzureRmAccount** cmdlet 实现此目的。
 
 1. 通过单击 MyFirstRunbook-PowerShell 窗格上的“编辑”  打开文本编辑器。  
    ![编辑 Runbook](media/automation-first-runbook-textual-powershell/automation-edit-runbook.png)  

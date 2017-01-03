@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 11/30/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0a642046ee26c242900b480a5144f53f2ac23769
+ms.sourcegitcommit: 71eb6a2fecbd76c9715b9a556a7ffd31b5b4950e
+ms.openlocfilehash: 6b788b3120565895e908bdfc4c9267e715bc5bec
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: 0a642046ee26c242900b480a5144f53f2ac23769
 
 > [!NOTE]
 > Privileged Identity Management 仅适用于 Azure Active Directory Premium P2 版本。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
-> 
-> 
+>
+>
 
 组织希望尽量减少拥有访问权限的人员以保护信息或资源安全，因为这样做可以减小恶意用户获得相应访问权限的机会。 但是，用户仍需在 Azure、Office 365 或 SaaS 应用中执行特权操作。 组织会授予用户在 Azure AD 中的特许访问权限，而不会监视这些用户使用其管理员特权执行哪些操作。 Azure AD 特权标识管理可帮助解决这一风险。  
 
@@ -53,8 +53,8 @@ Azure AD Privileged Identity Management 可以管理内置的 Azure AD 组织角
 
 > [!NOTE]
 > 只有拥有组织帐户（例如 @yourdomain.com),）而不是 Microsoft 帐户（例如 @outlook.com),）的全局管理员才能为目录启用 Azure AD Privileged Identity Management。
-> 
-> 
+>
+>
 
 1. 以目录的全局管理员身份登录 [Azure 门户](https://portal.azure.com/) 。
 2. 如果你的组织有多个目录，请在 Azure 门户的右上角选择你的用户名。 选择你将在其中使用 Azure AD Privileged Identity Management 的目录。
@@ -107,6 +107,9 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 
 第二个选项是设置定期[访问权限审查](active-directory-privileged-identity-management-how-to-start-security-review.md)。 指派的审查人（例如团队经理）可以执行这些访问权限审查，员工也可以自行审查。 这是监视哪些人员仍然需要访问权限，哪些人员不再需要访问权限的最佳方法。
 
+## <a name="azure-ad-pim-at-subscription-expiration"></a>订阅过期时的 Azure AD PIM
+在正式版推出之前，Azure AD PIM 以预览版提供，租户预览 Azure AD PIM 时，系统不会检查许可证。  Azure AD PIM 现已推出正式版，在 2016 年 12 月之后，租户中必须有试用版或付费版订阅才能继续使用 PIM。  如果组织没有购买 Azure AD Premium P2 或订阅已过期，Azure AD PIM 在租户中不再可用。  有关详细信息，请参阅 [Azure AD PIM 订阅要求](./privileged-identity-management/subscription-requirements.md)
+
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
@@ -121,6 +124,6 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

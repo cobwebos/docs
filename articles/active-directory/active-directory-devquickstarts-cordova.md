@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: vittorib
 translationtype: Human Translation
-ms.sourcegitcommit: 1865043ca9c9019b9813f11eb4a55f7f16d79287
-ms.openlocfilehash: e4f70db9a5b1675c44af0e106bd6252c243ae0b7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6ec75fcc584fb2371ddd70683bf3938ab1ede275
 
 
 ---
@@ -270,6 +270,6 @@ Azure AD 只会向已知的应用程序颁发令牌。 在从应用程序使用 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO5-->
 
 

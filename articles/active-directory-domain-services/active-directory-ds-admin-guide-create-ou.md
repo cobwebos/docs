@@ -75,6 +75,6 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

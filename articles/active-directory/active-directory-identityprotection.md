@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 11/30/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
-ms.openlocfilehash: 672be3ff8430a93d585d921e019115be5061ae56
+ms.sourcegitcommit: ffc64fc0469cd3588d6d13524411575b423ab4e5
+ms.openlocfilehash: 8672cf1e90bafc370a24a2d00c25926f3fe7b50e
 
 
 ---
@@ -55,7 +55,7 @@ Identity Protection 使用此数据生成报告和警报，使你能够调查这
 
 ## <a name="detection-and-risk"></a>检测和风险
 ### <a name="risk-events"></a>风险事件
-由 Identity Protection 标记为可疑的风险事件，表示标识可能已遭入侵。 有关风险事件的完整列表，请参阅 [Azure Active Directory Identity Protection 检测到的风险事件类型](active-directory-identityprotection-risk-events-types.md)。
+由 Identity Protection 标记为可疑的风险事件，表示标识可能已遭入侵。 有关风险事件的完整列表，请参阅 [Azure Active Directory 检测到的风险事件类型](active-directory-identityprotection-risk-events-types.md)。
 
 ### <a name="risk-level"></a>风险级别
 某个风险事件的风险级别指示该风险事件的严重性（高、中或低）。 风险级别可帮助标识保护用户确定他们为了减少组织遇到的风险，而必须采取的措施的优先级。 风险事件的严重性表示标识入侵（结合它通常引发的干扰）预测的信号强度。
@@ -64,7 +64,7 @@ Identity Protection 使用此数据生成报告和警报，使你能够调查这
 * **中**：高严重性，但置信度较低的风险事件，或反之。 这些事件具有潜在风险，应补救所有受影响的用户帐户。
 * **低**：低置信度和低严重性风险事件。 此事件可能不要求立即采取措施，但与其他风险事件结合时，可能指出标识明显遭到入侵。
 
-![风险级别](./media/active-directory-identityprotection/01.png "Risk Level")
+![风险级别](./media/active-directory-identityprotection/01.png "风险级别")
 
 风险事件以**实时**方式或在风险事件发生后的后处理期间（脱机）识别。 目前，Identity Protection 中的大多数风险事件都是脱机计算的，在 2-4 小时内显示在 Identity Protection 中。
 实时评估时，实时风险事件可在 5-10 分钟内显示在 Identity Protection 控制台中。
@@ -74,7 +74,7 @@ Identity Protection 使用此数据生成报告和警报，使你能够调查这
 ## <a name="investigation"></a>调查
 Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 
-![补救](./media/active-directory-identityprotection/1000.png "Remediation")
+![补救](./media/active-directory-identityprotection/1000.png "补救")
 
 在仪表板中可以访问：
 
@@ -98,7 +98,7 @@ Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 * 这些事件的风险级别
 * 是否已采取任何补救措施
 
-![用户风险](./media/active-directory-identityprotection/1001.png "User risks")
+![用户风险](./media/active-directory-identityprotection/1001.png "用户风险")
 
 可以使用用户风险级别来创建条件性访问策略，阻止有风险的用户进行登录，或强制他们使用安全的方式更改其密码。
 
@@ -112,7 +112,7 @@ Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 由于用户风险计算考虑到“活动”的风险事件，因此你可能需要通过手动关闭风险事件来手动降低风险级别。  
 在调查过程中，可以选择采取以下任何措施更改风险事件的状态：
 
-![操作](./media/active-directory-identityprotection/34.png "Actions")
+![措施](./media/active-directory-identityprotection/34.png "措施")
 
 * **解决** - 如果在调查风险事件之后在 Identity Protection 外部采取适当的补救措施，并且应该将风险事件视为已关闭，请将事件标记为“已解决”。 解决的事件会将风险事件的状态设置为“已关闭”，此风险事件不再算作用户风险。
 * **标记为误报** - 在某些情况下，可以调查某个风险事件，查明该事件是否被错误地标记为有风险。 将风险事件标记为误报，可以减少发生这种情况。 这可以帮助机器学习算法将来改善类似事件的分类。 误报事件的状态为“已关闭”，不再算作用户风险。
@@ -123,18 +123,18 @@ Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 
 1. 在“Azure AD Identity Protection”边栏选项卡中的“调查”下面，单击“风险事件”。
 
-    ![手动重置密码](./media/active-directory-identityprotection/1002.png "Manual password reset")
+    ![手动密码重置](./media/active-directory-identityprotection/1002.png "手动密码重置")
 2. 在“风险事件”列表中，单击一种风险。
 
-    ![手动重置密码](./media/active-directory-identityprotection/1003.png "Manual password reset")
+    ![手动密码重置](./media/active-directory-identityprotection/1003.png "手动密码重置")
 3. 在“风险”边栏选项卡中，右键单击一个用户。
 
-    ![手动重置密码](./media/active-directory-identityprotection/1004.png "Manual password reset")
+    ![手动密码重置](./media/active-directory-identityprotection/1004.png "手动密码重置")
 
 ### <a name="closing-all-risk-events-for-a-user-manually"></a>手动关闭用户的所有风险事件
 在 Azure Active Directory Identity Protection中，只需单击一下鼠标即可关闭用户的所有风险事件，而无需逐个手动关闭。
 
-![操作](./media/active-directory-identityprotection/2222.png "Actions")
+![措施](./media/active-directory-identityprotection/2222.png "措施")
 
 单击“清除所有事件”时，所有事件都会关闭，受影响的用户不再有风险。
 
@@ -156,42 +156,42 @@ Identity Protection 的使用通常从 Identity Protection 仪表板开始。
 
 **临时密码** - 选择“生成临时密码”可立即使现有密码失效，为用户创建新的临时密码。 将新的临时密码发送到用户的备用电子邮件地址或用户的经理。 由于该密码是暂时性的，因此系统会提示用户在登录时更改密码。
 
-![策略](./media/active-directory-identityprotection/1005.png "Policy")
+![策略](./media/active-directory-identityprotection/1005.png "策略")
 
 **若要打开相关的配置对话框**：
 
 1. 在“Azure AD Identity Protection”边栏选项卡中，单击“已标记为存在风险的用户”。
 
-    ![手动重置密码](./media/active-directory-identityprotection/1006.png "Manual password reset")
+    ![手动密码重置](./media/active-directory-identityprotection/1006.png "手动密码重置")
 2. 从用户列表中，选择至少有一个风险事件的用户。
 
-    ![手动重置密码](./media/active-directory-identityprotection/1007.png "Manual password reset")
+    ![手动密码重置](./media/active-directory-identityprotection/1007.png "手动密码重置")
 3. 在用户边栏选项卡中，单击“重置密码”。
 
-    ![手动重置密码](./media/active-directory-identityprotection/1008.png "Manual password reset")
+    ![手动密码重置](./media/active-directory-identityprotection/1008.png "手动密码重置")
 
 ## <a name="user-risk-security-policy"></a>用户风险安全策略
 用户风险安全策略是条件性访问策略，可评估特定用户的风险级别，根据预先定义的条件和规则来应用补救措施和缓解措施。
 
-![用户风险策略](./media/active-directory-identityprotection/1009.png "User ridk policy")
+![用户风险策略](./media/active-directory-identityprotection/1009.png "用户风险策略")
 
 Azure AD Identity Protection 允许执行以下操作，帮助管理标记为有风险的用户的缓解与补救措施：
 
 * 设置要应用策略的用户和组：
 
-    ![用户风险策略](./media/active-directory-identityprotection/1010.png "User ridk policy")
+    ![用户风险策略](./media/active-directory-identityprotection/1010.png "用户风险策略")
 * 设置可触发策略的用户风险级别阈值（低、中或高）：
 
-    ![用户风险策略](./media/active-directory-identityprotection/1011.png "User ridk policy")
+    ![用户风险策略](./media/active-directory-identityprotection/1011.png "用户风险策略")
 * 设置触发策略时要强制实施的控制：
 
-    ![用户风险策略](./media/active-directory-identityprotection/1012.png "User ridk policy")
+    ![用户风险策略](./media/active-directory-identityprotection/1012.png "用户风险策略")
 * 切换策略的状态：
 
-    ![用户风险策略](./media/active-directory-identityprotection/403.png "MFA Registration")
+    ![用户风险策略](./media/active-directory-identityprotection/403.png "MFA 注册")
 * 在激活更改之前查看和评估其影响：
 
-    ![用户风险策略](./media/active-directory-identityprotection/1013.png "User ridk policy")
+    ![用户风险策略](./media/active-directory-identityprotection/1013.png "用户风险策略")
 
 选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。
 但是，这会从策略中排除标记为“低”和“中”风险的用户，因而无法保护以前疑似或已知遭到入侵的标识或设备。
@@ -214,7 +214,7 @@ Azure AD Identity Protection 允许执行以下操作，帮助管理标记为有
 
 1. 在“Azure AD Identity Protection”边栏选项卡上的“配置”部分中，单击“用户风险策略”。
 
-    ![用户风险策略](./media/active-directory-identityprotection/1009.png "User ridk policy")
+    ![用户风险策略](./media/active-directory-identityprotection/1009.png "用户风险策略")
 
 ## <a name="mitigating-user-risk-events"></a>缓解用户风险事件
 管理员可以设置用户风险安全策略，根据风险级别阻止用户登录。
@@ -235,30 +235,30 @@ Azure AD Identity Protection 允许执行以下操作，帮助管理标记为有
 ## <a name="sign-in-risk-security-policy"></a>登录风险安全策略
 登录风险策略是条件性访问策略，可评估特定登录的风险，根据预先定义的条件和规则来应用缓解措施。
 
-![登录风险策略](./media/active-directory-identityprotection/1014.png "Sign-in risk policy")
+![登录风险策略](./media/active-directory-identityprotection/1014.png "登录风险策略")
 
 Azure AD Identity Protection 允许执行以下操作，帮助管理有风险登录的缓解措施：
 
 * 设置要应用策略的用户和组：
 
-    ![登录风险策略](./media/active-directory-identityprotection/1015.png "Sign-in risk policy")
+    ![登录风险策略](./media/active-directory-identityprotection/1015.png "登录风险策略")
 * 设置可触发策略的登录风险级别阈值（低、中或高）：
 
-    ![登录风险策略](./media/active-directory-identityprotection/1016.png "Sign-in risk policy")
+    ![登录风险策略](./media/active-directory-identityprotection/1016.png "登录风险策略")
 * 设置触发策略时要强制实施的控制：  
 
-    ![登录风险策略](./media/active-directory-identityprotection/1017.png "Sign-in risk policy")
+    ![登录风险策略](./media/active-directory-identityprotection/1017.png "登录风险策略")
 * 切换策略的状态：
 
-    ![MFA 注册](./media/active-directory-identityprotection/403.png "MFA Registration")
+    ![MFA 注册](./media/active-directory-identityprotection/403.png "MFA 注册")
 * 在激活更改之前查看和评估其影响：
 
-    ![登录风险策略](./media/active-directory-identityprotection/1018.png "Sign-in risk policy")
+    ![登录风险策略](./media/active-directory-identityprotection/1018.png "登录风险策略")
 
 ### <a name="what-you-need-to-know"></a>需要了解的事项
 可以将登录风险安全策略配置为要求多重身份验证：
 
-![登录风险策略](./media/active-directory-identityprotection/1017.png "Sign-in risk policy")
+![登录风险策略](./media/active-directory-identityprotection/1017.png "登录风险策略")
 
 但是，出于安全原因，此设置仅适用于已注册多重身份验证的用户。 如果尚未注册多重身份验证的用户满足要求多重身份验证的条件，该用户将被阻止。
 
@@ -304,7 +304,7 @@ Identity Protection 控制台中的“风险事件”页列出了所有事件：
 
 1. 在“Azure AD Identity Protection”边栏选项卡上的“配置”部分中，单击“登录风险策略”。
 
-    ![用户风险策略](./media/active-directory-identityprotection/1014.png "User ridk policy")
+    ![用户风险策略](./media/active-directory-identityprotection/1014.png "用户风险策略")
 
 ## <a name="multi-factor-authentication-registration-policy"></a>多重身份验证注册策略
 Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。 它为用户登录和事务提供了附加的安全层。  
@@ -313,7 +313,7 @@ Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名�
 * 提供强式身份验证和一系列简单的验证选项
 * 在帮助组织保护帐户以及在帐户遭到入侵后进行恢复方面发挥关键的作用
 
-![用户风险策略](./media/active-directory-identityprotection/1019.png "User ridk policy")
+![用户风险策略](./media/active-directory-identityprotection/1019.png "用户风险策略")
 
 有关更多详细信息，请参阅[什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
 
@@ -321,16 +321,16 @@ Azure AD Identity Protection 可以通过配置一个策略来帮助管理首次
 
 * 设置要应用策略的用户和组：
 
-    ![MFA 策略](./media/active-directory-identityprotection/1020.png "MFA policy")
+    ![MFA 策略](./media/active-directory-identityprotection/1020.png "MFA 策略")
 * 设置触发策略时要强制实施的控制：  
 
-    ![MFA 策略](./media/active-directory-identityprotection/1021.png "MFA policy")
+    ![MFA 策略](./media/active-directory-identityprotection/1021.png "MFA 策略")
 * 切换策略的状态：
 
-    ![MFA 策略](./media/active-directory-identityprotection/403.png "MFA policy")
+    ![MFA 策略](./media/active-directory-identityprotection/403.png "MFA 策略")
 * 查看当前注册状态：
 
-    ![MFA 策略](./media/active-directory-identityprotection/1022.png "MFA policy")
+    ![MFA 策略](./media/active-directory-identityprotection/1022.png "MFA 策略")
 
 如需相关用户体验的概述，请参阅：
 
@@ -341,11 +341,11 @@ Azure AD Identity Protection 可以通过配置一个策略来帮助管理首次
 
 1. 在“Azure AD Identity Protection”边栏选项卡上的“配置”部分中，单击“多重身份验证注册”。
 
-    ![MFA 策略](./media/active-directory-identityprotection/1019.png "MFA policy")
+    ![MFA 策略](./media/active-directory-identityprotection/1019.png "MFA 策略")
 
 ## <a name="next-steps"></a>后续步骤
 * [第 9 频道：Azure AD 和标识展示：Identity Protection 预览](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-* [Azure Active Directory Identity Protection 检测到的风险事件类型](active-directory-identityprotection-risk-events-types.md)
+* [Azure Active Directory 检测到的风险事件类型](active-directory-identityprotection-risk-events-types.md)
 * [Azure Active Directory Identity Protection 检测到的漏洞](active-directory-identityprotection-vulnerabilities.md)
 * [Azure Active Directory Identity Protection 通知](active-directory-identityprotection-notifications.md)
 * [Azure Active Directory Identity Protection 演练手册](active-directory-identityprotection-playbook.md)
@@ -357,6 +357,6 @@ Azure AD Identity Protection 可以通过配置一个策略来帮助管理首次
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

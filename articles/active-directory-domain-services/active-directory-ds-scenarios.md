@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b76a5c7dfd640e0a398845b6c8f6b0b35574b4ac
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 359653f29adc538a4fe2f2143e8132bdd9a9d15b
 
 
 ---
@@ -86,6 +86,6 @@ Contoso 管理员可以使用 Azure RemoteApp 创建已加入域的集合。 由
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

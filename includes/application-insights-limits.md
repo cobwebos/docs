@@ -4,10 +4,10 @@
 
 | **资源** | **默认限制** | **注意**
 | --- | --- | --- |
-| 每日的总数据量 | 100 GB | 可以通过设置一个上限来减少数据量。
+| 每日的总数据量 | 100 GB | 可以通过设置一个上限来减少数据量。 如果需要更多，请发送邮件至 AIDataCap@microsoft.com 
 | 每月免费数据量<br/> （基本价格计划） | 1 GB | 额外的数据按 GB 收费
 | 数据保留 | 90 天 | 对于[搜索](../articles/application-insights/app-insights-diagnostic-search.md)、[分析](../articles/application-insights/app-insights-analytics.md)和[指标资源管理器](../articles/application-insights/app-insights-metrics-explorer.md)
-| [可用性多步骤测试](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests)详细结果保留 | 30 天 | 每个步骤的详细结果
+| [可用性多步骤测试](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests)详细结果保留 | 90 天 | 每个步骤的详细结果
 | [属性](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties)和[指标](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties)<sup>2</sup> 名称计数 | 200 | 
 | 属性和指标名称长度 | 150 |
 | 属性值字符串长度 | 8192 |
@@ -23,6 +23,6 @@
 
 [关于 Application Insights 中的定价和配额](../articles/application-insights/app-insights-pricing.md)
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

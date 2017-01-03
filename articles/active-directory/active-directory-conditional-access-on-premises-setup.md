@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 453c71fe4636eddb4e96eef7acc7e62b99dca4dd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 02d8de2e37af9ccbf79bb77180b0eda0d187eb5c
 
 
 ---
@@ -169,7 +169,7 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 
 ### <a name="join-a-windows-81-device-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册加入 Windows 8.1 设备
 1. 在 Windows 8.1 设备上，导航到“电脑设置” > “网络” > “工作区”。
-2. 以 UPN 格式输入你的用户名， 例如，dan@contoso.com。
+2. 以 UPN 格式输入你的用户名， 例如，dan@contoso.com.。
 3. 选择“加入”。
 4. 出现提示时，请使用你的凭据登录。 随后将加入该设备。
 
@@ -238,6 +238,6 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

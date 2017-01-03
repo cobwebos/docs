@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: dd1161f2b5cf717246391900a616e51c457f5280
+ms.sourcegitcommit: e3df10acf4a6c123186c72687a56ccb4856c46fe
+ms.openlocfilehash: 07499f9b1c9668d8cb4037405478210e0738e03d
 
 
 ---
@@ -189,7 +189,7 @@ Visual Studio 还提供了 Intellisense 来帮助你了解编辑模板时可以�
    
     属性包括：
    
-   * “其他属性”包含要推送到 Azure 存储的 Web 部署包暂存位置。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 部署应用时需要提供这些值作为参数。 
+   * “其他属性”包含要推送到 Azure 存储的 Web 部署包暂存位置。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。 
    * “包含文件路径”包含创建包所在的路径。 “包含目标”包含部署执行的命令。 
    * 默认值“生成并打包”可让部署生成并创建 Web 部署包 (package.zip)  。  
      
@@ -219,6 +219,6 @@ Visual Studio 还提供了 Intellisense 来帮助你了解编辑模板时可以�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

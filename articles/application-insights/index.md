@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Application Insights（可扩展的应用程序性能管理服务）来检测、会诊和诊断 Web 应用和服务中的问题。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c627e7f936557eb6c4b1f4125a4a5f4e9a0e0b6a
+ms.sourcegitcommit: f0fdb938519737e67849831a0751542f69c269d9
+ms.openlocfilehash: e5425bc1f39c9ca71b6eaf2c928b0d8397319d85
 
 ---
 # <a name="application-insights-documentation"></a>Application Insights 文档
 
-Application Insights 是面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它还可以与 devOps 流程集成，与其他各种工具建立连接。
+了解如何使用面向 Web 开发人员的可扩展应用程序性能管理服务 - Application Insights。 教程、API 参考和其他文档介绍了如何检测、会诊和诊断 Web 应用与服务中的问题。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -132,8 +133,6 @@ Application Insights 是面向 Web 开发人员的可扩展应用程序性能管
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.applicationinsights">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.applicationinsights">Java</a></p>
-                        <p><a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">JavaScript</a></p>
-                        <p><a href="/azure/application-insights/app-insights-analytics-reference">分析参考</a></p>
                     </div>
                 </div>
             </div>
@@ -163,6 +162,6 @@ Application Insights 是面向 Web 开发人员的可扩展应用程序性能管
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

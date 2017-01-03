@@ -1,26 +1,27 @@
 ---
 title: "使用 Azure 门户管理 Azure SQL 数据库 | Microsoft 文档"
-description: "了解如何使用 Azure 门户管理云中的关系数据库。"
+description: "快速参考：如何使用 Azure 门户管理云中的关系数据库。"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 3a56e9de-c21a-40ba-9a35-958172cb4e5b
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: NA
 ms.workload: data-management
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.date: 09/19/2016
-ms.author: sstein
+ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
+ms.sourcegitcommit: 420b2153f6115dd712d3033e30f11f79b18cd80f
+ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 
 
 ---
-# <a name="managing-azure-sql-databases-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 数据库
+# <a name="manage-azure-sql-databases-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 数据库
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-manage-portal.md)
 > * [SSMS](sql-database-manage-azure-ssms.md)
@@ -29,6 +30,9 @@ ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
 > 
 
 在 [Azure 门户](https://portal.azure.com/)中，可以创建、监视和管理 Azure SQL 数据库与服务器。 本文提供更多常见任务的快速说明和详细信息的链接。
+
+> [!TIP]
+> 若需通过教程来了解如何创建服务器、创建基于服务器的防火墙、查看服务器属性、使用 SQL Server Management Studio 进行连接、查询 master 数据库、创建示例数据库和空数据库、查询数据库属性、使用 SQL Server Management Studio 进行连接，以及查询示例数据库，请参阅[入门教程](sql-database-get-started.md)。
 
 ## <a name="view-your-azure-sql-databases-servers-and-pools"></a>查看 Azure SQL 数据库、服务器和池
 若要查看可用的 SQL 数据库服务，请单击“**更多服务**”，然后在搜索框中键入 **SQL**：
@@ -46,7 +50,7 @@ ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
 ![SQL Server](./media/sql-database-manage-portal/sql-servers.png)
 
 ## <a name="how-do-i-create-or-view-sql-elastic-pools"></a>如何创建或查看 SQL 弹性池？
-若要打开“**SQL 弹性池**”边栏选项卡，请单击“**SQL 弹性池**”，然后单击要使用的池，或单击“**+添加**”创建池。 有关详细信息，请参阅[使用 Azure 门户创建弹性数据库池](sql-database-elastic-pool-create-portal.md)。
+若要打开“**SQL 弹性池**”边栏选项卡，请单击“**SQL 弹性池**”，然后单击要使用的池，或单击“**+添加**”创建池。 有关详细信息，请参阅[使用 Azure 门户创建弹性池](sql-database-elastic-pool-create-portal.md)。
 
 ![SQL 弹性池](./media/sql-database-manage-portal/elastic-pools.png)
 
@@ -88,8 +92,8 @@ ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
 ## <a name="how-do-i-configure-geo-replication"></a>如何配置异地复制？
 若要为 SQL 数据库配置异地复制，请在“**SQL 数据库**”边栏选项卡中单击“**异地复制**”。 有关详细信息，请参阅[使用 Azure 门户为 Azure SQL 数据库配置异地复制](sql-database-geo-replication-portal.md)。
 
-## <a name="how-do-i-failover-to-a-geo-replicated-sql-database"></a>如何故障转移到异地复制的 SQL 数据库？
-若要故障转移到异地复制的辅助数据库，请在“**SQL 数据库**”边栏选项卡中单击“**异地复制**”，然后单击“**故障转移**”。 有关详细信息，请参阅[使用 Azure 门户为 Azure SQL 数据库启动计划的或未计划的故障转移](sql-database-geo-replication-failover-portal.md)。
+## <a name="how-do-i-fail-over-to-a-geo-replicated-sql-database"></a>如何故障转移到异地复制的 SQL 数据库？
+若要故障转移到异地复制的辅助数据库，请在“SQL 数据库”边栏选项卡中单击“异地复制”，然后单击“故障转移”。 有关详细信息，请参阅[使用 Azure 门户为 Azure SQL 数据库启动计划的或未计划的故障转移](sql-database-geo-replication-failover-portal.md)。
 
 ## <a name="how-do-i-copy-a-sql-database"></a>如何复制 SQL 数据库？
 若要复制 SQL 数据库，请在“**SQL 数据库**”边栏选项卡中单击“**复制**”。 有关详细信息，请参阅[使用 Azure 门户复制 Azure SQL 数据库](sql-database-copy-portal.md)。
@@ -102,7 +106,7 @@ ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
 ![SQL 数据库导出](./media/sql-database-manage-portal/sql-database-export.png)
 
 ## <a name="how-do-i-restore-a-sql-database-to-a-previous-point-in-time"></a>如何将 SQL 数据库还原到以前的时间点？
-若要还原 SQL 数据库，请在“**SQL 数据库**”边栏选项卡中单击“**还原**”。 有关详细信息，请参阅[使用 Azure 门户将 Azure SQL 数据库还原到以前的时间点](sql-database-point-in-time-restore-portal.md)。
+若要还原 SQL 数据库，请在“**SQL 数据库**”边栏选项卡中单击“**还原**”。 有关详细信息，请参阅[使用 Azure 门户将 Azure SQL 数据库还原到以前的时间点](sql-database-point-in-time-restore.md)。
 
 ![SQL 数据库设置](./media/sql-database-manage-portal/sql-database-restore.png)
 
@@ -121,11 +125,11 @@ ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
 
 ## <a name="additional-resources"></a>其他资源
 * [SQL 数据库](sql-database-technical-overview.md)
-* [使用 Azure 门户监视和管理弹性数据库池](sql-database-elastic-pool-manage-portal.md)
+* [使用 Azure 门户监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

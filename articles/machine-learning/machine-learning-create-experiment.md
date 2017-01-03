@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/21/2016
+ms.date: 12/14/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
+ms.sourcegitcommit: de2c52f8db5445e3e2eee62f673109f6d38cffa0
+ms.openlocfilehash: c58ee1c07e454a711ab0d6365a5cd432b0d939c8
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 >
 >如果不熟悉机器学习，可先观看视频系列：[适合初学者的数据科学](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)。 该视频系列使用日常语言和概念对机器学习进行了很好的介绍。
 >
->如果对机器学习有所了解，但想获取有关机器学习工作室的更多常规信息，以及工作室所包含的机器学习算法，则可参考下述资源：
+>如果已熟悉机器学习，但想获取有关机器学习工作室的更多常规信息，以及工作室所包含的机器学习算法，则可参考下述资源：
 >
 - [什么是机器学习工作室？](machine-learning-what-is-ml-studio.md) - 对工作室的概述。
 - [机器学习基础知识及算法示例](machine-learning-basics-infographic-with-algorithm-examples.md) - 以信息图方式图文并茂地详细介绍了机器学习工作室包含的各类机器学习算法。
@@ -95,7 +95,9 @@ ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 1. 创建新的试验，方法是：单击“机器学习工作室”窗口底部的“+新建”，选择“试验”，然后选择“空白试验”。
 
-2. 试验有一个默认名称，位于画布顶部。 选中该名称，将试验重命名为某个有意义的名称，例如“汽车价格预测”。
+2. 试验有一个默认名称，位于画布顶部。 选中该名称，将试验重命名为某个有意义的名称，例如“汽车价格预测”。 名称不需唯一。
+
+    ![将试验重命名][rename-experiment]
 
 2. 试验画布左侧是数据集和模块的控制板。 在此控制板顶部的“搜索”框中键入**汽车**，找到标有“汽车价格数据(原始)”的数据集。 将该数据集拖放到试验画布上。
 
@@ -111,7 +113,7 @@ ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 > [!TIP]
 > 数据集和模块都有由小圆圈表示的输入和输出端口 - 输入端口位于顶部，输出端口位于底部。
-若要创建贯穿整个试验的数据流，需将这些端口连接到一起。
+若要通过试验创建数据流，需将一个模块的输出端口连接到另一个模块的输入端口。
 可以随时单击数据集或模块的输出端口，查看数据流中的数据在该时刻的情况。
 
 在此示例数据集中，一辆汽车显示为一行，与之相关的变量显式为多个列。 有了特定汽车的变量以后，我们就可以尝试预测汽车的价格，如最右列（第 26 列，名为“价格”）所示。
@@ -169,7 +171,7 @@ ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
     <br/>
     ***将“清理缺失数据”模块的清理模式设置为“删除整行”***
 
-4. 单击试验画布下面的“运行”以运行试验。
+4. 通过单击页面底部的“运行”运行此试验。
 
     试验运行完以后，所有模块都会出现绿色复选标记，表示已成功完成。 另请留意右上角的“已完成运行”状态。
 
@@ -326,7 +328,7 @@ ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 有关如何在单个试验中比较多个模型的示例，请参阅 [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com)（Cortana Intelligence 库）中的 [Compare Regressors](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5)（比较回归量）。
 
     > [!TIP]
-    > 若要复制试验的任何迭代，请使用试验画布下面的“另存为”按钮。  可以单击画布下面的“查看运行历史记录”来查看试验的所有迭代。 有关详细信息，请参阅 [在 Azure 机器学习工作室中管理试验迭代][runhistory]。
+    > 若要复制试验的任何迭代，请使用页面底部的“另存为”按钮。 可以单击页面底部的“查看运行历史记录”来查看试验的所有迭代。 有关详细信息，请参阅 [在 Azure 机器学习工作室中管理试验迭代][runhistory]。
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
@@ -340,6 +342,7 @@ ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 <!-- Images -->
 [sign-in-to-studio]: ./media/machine-learning-create-experiment/sign-in-to-studio.png
+[rename-experiment]: ./media/machine-learning-create-experiment/rename-experiment.png
 [visualize-auto-data]:./media/machine-learning-create-experiment/visualize-auto-data.png
 [select-visualize]: ./media/machine-learning-create-experiment/select-visualize.png
 [showing-excluded-column]:./media/machine-learning-create-experiment/showing-excluded-column.png
@@ -377,6 +380,6 @@ ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

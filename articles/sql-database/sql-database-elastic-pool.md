@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 2c0ee201e719c542cf801372e6a270a7b88598fb
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: c3757dadb09ba070b30820a46007a9c82490d8f2
 
 
 ---
@@ -37,9 +37,9 @@ SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管�
 >
 >
 
-在 SQL 数据库中，对于独立数据库，数据库处理资源需求能力的相对衡量标准为数据库事务单位 (DTU)，对于弹性池中的弹性数据库，则为弹性 DTU (eDTU)。 请参阅 [SQL 数据库简介](sql-database-technical-overview.md)，了解有关 DTU 和 eDTU 的详细信息。
+在 SQL 数据库中，弹性池中单一数据库处理资源需求的能力的相对度量值在数据库事务单位 (DTU) 中表示，而弹性数据库的该能力则在弹性 DTU (eDTU) 中表示。 请参阅 [SQL 数据库简介](sql-database-technical-overview.md)，了解有关 DTU 和 eDTU 的详细信息。
 
-对池提供了固定数量的 eDTU，以获得固定价格。 在池中，单独的数据库都被赋予了在固定参数内自动缩放的灵活性。 高负荷下的数据库可能会消耗更多的 eDTU 以满足需求。 低负荷下的数据库消耗较少的 eDTU，没有任何负荷的数据库不会消耗任何 eDTU。 为整个池（而非单个数据库）预配资源可以简化管理任务。 此外，必须具有该池的可预测预算。
+对池提供了固定数量的 eDTU，以获得固定价格。 在池中，单独的数据库都被赋予了在固定参数内自动缩放的灵活性。 高负荷下的数据库可能会消耗更多的 eDTU 以满足需求。 低负荷下的数据库消耗较少的 eDTU，没有任何负荷的数据库不会消耗任何 eDTU。 设置整个池（而非单个数据库）的资源简化了管理任务。 此外，必须具有该池的可预测预算。
 
 可以对现有池增加额外的 eDTU，这不会造成数据库故障，也不会影响弹性池中的数据库。 同样，你随时可以从现有池中删除不再需要的额外 eDTU。
 
@@ -48,7 +48,7 @@ SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管�
 ## <a name="which-databases-go-in-a-pool"></a>在池中有哪些数据库？
 ![弹性池中共享 eDTU 的 SQL 数据库。][1]
 
-最适合添加到弹性池的数据库通常是有时活动，有时不活动。 在上述示例中，可以看到独立数据库的活动、4 个数据库的活动，最后是包含 20 个数据库的弹性池的活动。 活动随时间而不同的数据库很适合添加到弹性池，因为它们不是永远都在使用中，而且可以共享 eDTU。 并非所有数据库都符合此模式。 具有更稳定的资源需求的数据库更适合“基本”、“标准”和“高级”服务层级，这些层级的资源是单独分配的。
+最适合添加到弹性池的数据库通常是有时活动，有时不活动。 在上述示例中，你可以看到单一数据库的活动、4 个数据库的活动，最后是包含 20 个数据库的弹性池的活动。 活动随时间而不同的数据库很适合添加到弹性池，因为它们不是永远都在使用中，而且可以共享 eDTU。 并非所有数据库都符合此模式。 具有更稳定的资源需求的数据库更适合“基本”、“标准”和“高级”服务层级，这些层级的资源是单独分配的。
 
 [弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
 
@@ -88,7 +88,7 @@ SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管�
 有关其他弹性数据库工具的详细信息，请参阅[使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)。
 
 ## <a name="business-continuity-features-for-databases-in-a-pool"></a>池中数据库的业务连续性功能
-弹性数据库通常支持可用于独立数据库的相同的[业务连续性功能](sql-database-business-continuity.md)。
+弹性数据库通常支持可用于单一数据库的相同的[业务连续性功能](sql-database-business-continuity.md)。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 时间点还原使用自动的数据库备份将池中的数据库恢复到特定的时间点。 请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
@@ -107,6 +107,6 @@ SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

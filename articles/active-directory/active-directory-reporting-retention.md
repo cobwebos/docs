@@ -12,48 +12,55 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/07/2016
+ms.date: 11/30/2016
 ms.author: dhanyahk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7e0e1ede67509de9f47293eb7257ecc56c0df93d
+ms.sourcegitcommit: 8a7d1bd1db8abdac5b741d79b10c9b363afecd24
+ms.openlocfilehash: 9f8d9c845c391ec24aa3b265aa3078840fe3240a
 
 
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
 *本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。*
 
-Azure Active Directory (Azure AD) 报告将保留数据一定天数，如下所示。
 
-| 报表 | 说明 |
-| --- | --- |
-| 从未知源登录 |30 天 |
-| 多次失败后登录 |30 天 |
-| 从多个地理区域登录 |30 天 |
-| 从具有可疑活动的 IP 地址登录 |30 天 |
-| 从可能受感染的设备登录 |30 天 |
-| 异常登录活动 |30 天 |
-| 具有异常登录活动的用户 |30 天 |
-| 具有已泄漏凭据的用户 |30 天 |
-| 审核报告 |180 天 |
-| 密码重置活动 (Azure AD) |30 天 |
-| 密码重置活动 (Identity Manager) |30 天 |
-| 密码重置注册活动 (Azure AD) |30 天 |
-| 密码重置注册活动 (Identity Manager) |30 天 |
-| 自助服务组活动 (Azure AD) |30 天 |
-| 自助服务组活动 (Identity Manager) |30 天 |
-| 应用程序使用情况 |30 天 |
-| 帐户设置活动 |30 天 |
-| 密码滚动更新状态 |30 天 |
-| 帐户设置错误 |30 天 |
-| RMS 使用情况 |30 天 |
-| 最活跃的 RMS 用户 |30 天 |
-| RMS 设备使用情况 |30 天 |
-| 启用了 RMS 的应用程序使用情况 |30 天 |
+本主题解答有关 Azure Active Directory 中不同活动报告的数据保留期的最常见问题。 
+
+如何开始收集活动数据？
+
+| Azure AD 版本 | 开始收集 |
+| :--              | :--   |
+|Premium 和 Premium 2 | 注册许可证时 |
+| 免费 | 首次打开 [Azure Active Directory 边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)或使用[报告 API](https://aka.ms/aadreports) 时  |
 
 
+活动数据何时出现在 Azure 门户中？
+
+- **立即** - 如果已在 Azure 经典门户中使用报告
+- **2 小时内** - 如果尚未在 Azure 经典门户中启用报告
+
+如何开始收集安全信号？  
+当用户选择使用标识防护中心时，收集安全信号的过程将会开始。 
+
+收集的数据将存储多久？
+
+**活动报告**    
+
+| 报表 | Azure AD Free | Azure AD Premium 1 | Azure AD Premium 2 |
+| :--    | :--           | :--                | :--                |
+| 目录审核 | 7 天 | 30 天 | 30 天 |
+| 登录活动 |    7 天 | 30 天 | 30 天 |
+
+**安全信号**
+
+| 报表 | Azure AD Free | Azure AD Premium 1 | Azure AD Premium 2 |
+| :--    | :--           | :--                | :--                |
+| 有风险的登录 | 7 天 | 30 天 | 90 天 |
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+
+<!--HONumber=Dec16_HO5-->
 
 

@@ -43,6 +43,6 @@ Azure AD 目录中的每个用户即为一个用户对象。 在 B2B 协作邀�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

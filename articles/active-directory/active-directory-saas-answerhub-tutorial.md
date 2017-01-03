@@ -35,7 +35,7 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-answerhub-tutorial/IC785165.png "Scenario")
+![方案](./media/active-directory-saas-answerhub-tutorial/IC785165.png "方案")
 
 ## <a name="enabling-the-application-integration-for-answerhub"></a>支持 AnswerHubh 的应用程序集成
 本部分旨在概述如何为 AnswerHub 启用应用程序集成。
@@ -44,19 +44,19 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-answerhub-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-answerhub-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-answerhub-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-answerhub-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-answerhub-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加一个应用程序](./media/active-directory-saas-answerhub-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-answerhub-tutorial/IC749322.png "从库添加应用程序")
 6. 在“搜索框”中，键入“AnswerHub”。
    
-   ![应用程序库](./media/active-directory-saas-answerhub-tutorial/IC785166.png "Application Gallery")
+   ![应用程序库](./media/active-directory-saas-answerhub-tutorial/IC785166.png "应用程序库")
 7. 在“结果”窗格中，选择“AnswerHub”，然后单击“完成”，添加该应用程序。
    
    ![AnswerHub](./media/active-directory-saas-answerhub-tutorial/IC785167.png "AnswerHub")
@@ -69,16 +69,16 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“AnswerHub”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785168.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785168.png "配置单一登录")
 2. 在“你希望用户如何登录 AnswerHub”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785169.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785169.png "配置单一登录")
 3. 在“配置应用 URL”页上的“AnswerHub 登录 URL”文本框中，使用以下模式“*https://company.answerhub.com*”键入 URL，然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-answerhub-tutorial/IC785170.png "Configure App URL")
+   ![配置应用 URL](./media/active-directory-saas-answerhub-tutorial/IC785170.png "配置应用 URL")
 4. 在“配置 AnswerHub 的单一登录”页面上，若要下载证书，请单击“下载证书”，然后在计算机上本地保存该证书文件。
    
-   ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785171.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785171.png "配置单一登录")
 5. 在其他 Web 浏览器窗口中，以管理员身份登录 AnswerHub 公司站点。
    
    > [!NOTE]
@@ -91,7 +91,7 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 9. 单击“IDP 配置”选项卡。
 10. 在“IDP 配置”选项卡上，执行以下步骤：
     
-    ![SAML 设置](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML Setup")
+    ![SAML 设置](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML 设置")
     
     1. 在 Azure 经典门户的“配置 AnswerHub 的单一登录”对话框页面上，复制“远程登录 URL”值，然后将其粘贴到“IDP 登录 URL”文本框。
     2. 在 Azure 经典门户的“配置 AnswerHub 的单一登录”对话框页面上，复制“远程注销 URL”值，然后将其粘贴到“IDP 注销 URL”文本框。
@@ -99,7 +99,7 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
     4. 单击“密钥和证书”。
 11. 在“密钥和证书”选项卡上，执行以下步骤：
     
-    ![密钥和证书](./media/active-directory-saas-answerhub-tutorial/IC785173.png "Keys and Certificates")
+    ![密钥和证书](./media/active-directory-saas-answerhub-tutorial/IC785173.png "密钥和证书")
     
     1. 根据下载的证书创建 **base-64 编码**文件。  
        
@@ -110,9 +110,9 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
     2. 在记事本中打开 base-64 编码证书、将内容复制到剪贴板，然后将其粘贴到“IdP 公钥(x509 格式)”文本框。
     3. 单击“保存” 。
 12. 在“IDP 配置”选项卡上，单击“保存”。
-13. 在 Azure 经典门户中，选择单一登录配置确认，然后单击“完成”，关闭“配置单一登录”对话框。
+13. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
     
-    ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785174.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-answerhub-tutorial/IC785174.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 为了使 Azure AD 用户能够登录 AnswerHub，必须对其进行预配才能使其登录 AnswerHub。  
@@ -124,7 +124,7 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 3. 单击“用户和组”选项卡。
 4. 在左侧导航窗格的“管理用户”部分中，单击“创建或导入用户”。
    
-   ![用户和组](./media/active-directory-saas-answerhub-tutorial/IC785175.png "Users & Groups")
+   ![用户和组](./media/active-directory-saas-answerhub-tutorial/IC785175.png "用户和组")
 5. 键入希望在相关文本框中预配的有效 Azure Active Directory 帐户的“电子邮件地址”、“用户名”和“密码”，然后单击“保存”。
 
 > [!NOTE]
@@ -139,16 +139,16 @@ ms.openlocfilehash: 067d47bdfa5459a8e751292339a0e7ff4a8ad46b
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“AnswerHub”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-answerhub-tutorial/IC785176.png "Assign users")
+   ![分配用户](./media/active-directory-saas-answerhub-tutorial/IC785176.png "分配用户")
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-answerhub-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-answerhub-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

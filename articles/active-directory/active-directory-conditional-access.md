@@ -13,15 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/21/2016
+ms.date: 12/16/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2cd4a7536bcdde717221a8f2d25eadadee03dd4d
+ms.sourcegitcommit: af104d47d316b3e46108e7e2ed0771bd06f360af
+ms.openlocfilehash: 6c3b547b052bca6999e47ddc10fcce5e1e56fe09
 
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
+
+> [!div class="op_single_selector"]
+> * [Azure 经典门户](active-directory-conditional-access.md)
+> * [Azure 门户](active-directory-conditional-access-azure-portal.md)
+
 Azure Active Directory (Azure AD) 条件性访问中的控制功能是帮助保护云中和本地的资源的一种简单方式。 条件性访问策略如多重身份验证可帮助抵御凭据被盗和被骗的风险。 其他条件性访问策略可帮助维持组织的数据的安全。 例如，除了要求提供凭据，你可能还有一个策略，即只有在移动设备管理系统中（如 Microsoft Intune）注册的设备才可以访问你组织的敏感服务。
 
 ## <a name="prerequisites"></a>先决条件
@@ -94,6 +99,6 @@ Azure AD 条件性访问是 [Azure Active Directory Premium](http://www.microsof
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

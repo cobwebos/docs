@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/01/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 654acd092f9e8469d7014e1ff15cb7d812918e8b
-
+ms.sourcegitcommit: 1eada96773b1d9c6adb9326c9100da7cde8abf77
+ms.openlocfilehash: e3143d787104ffbba9fb0c3806b187382d9d5c5b
 
 ---
+
+
 # <a name="troubleshoot-application-proxy"></a>应用程序代理故障排除
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
 
@@ -53,7 +54,7 @@ ms.openlocfilehash: 654acd092f9e8469d7014e1ff15cb7d812918e8b
 | 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：“发生了一个或多个错误。” |如果注册窗口打开后立即关闭，不允许登录，则可能得到此错误。 当系统上存在网络错误时，可能出现此错误。 |确保可从浏览器连接到公共网站，并且端口打开，如[应用程序代理先决条件](active-directory-application-proxy-enable.md)中所指定的。 |
 | 连接器注册已失败：确保计算机连接到 Internet。 错误：“`https://connector.msappproxy.net :9090/register/RegisterConnector` 没有可接受消息的终结点侦听。 这通常由错误地址或 SOAP 操作导致。 有关更多详细信息，请参阅 InnerException(如果存在)。” |如果使用 Azure AD 用户名和密码登录，但随后收到此错误，则可能是因为 8081 以上的所有端口都已被组织。 |确保所需的端口已打开。 有关详细信息，请参阅[应用程序代理先决条件](active-directory-application-proxy-enable.md)。 |
 | 注册窗口中出现明确错误。 无法继续 - 只能关闭窗口。 |输入了错误的用户名或密码。 |重试。 |
-| 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：“AADSTS50059：未在请求中找到或所提供的任何凭据均未暗示任何租户识别信息，并且服务主体 URI 的搜索已失败。 |正尝试使用 Microsoft 帐户登录，而不是作为正尝试登录的目录组织 ID 一部分的域进行登录。 |确保管理员是租户域的相同域名的一部分，例如，如果 Azure AD 域为 contoso.com，则管理员应为 admin@contoso.com。 |
+| 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：AADSTS50059: 未在请求中找到或所提供的任何凭据均未暗示任何租户识别信息，并且服务主体 URI 的搜索已失败。 |正尝试使用 Microsoft 帐户登录，而不是作为正尝试登录的目录组织 ID 一部分的域进行登录。 |确保管理员是租户域的相同域名的一部分，例如，如果 Azure AD 域为 contoso.com，则管理员应为 admin@contoso.com。 |
 | 无法检索运行 PowerShell 脚本的当前执行策略。 |如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。 |打开组策略编辑器。 依次转到“计算机配置” > “管理模板” > “Windows 组件” > **“Windows PowerShell”** ，然后双击“打开脚本执行”。 这可以设置为“未配置”或“已启用”。 如果设置为“已启用”，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”或“允许所有脚本”。 |
 | 连接器无法下载配置。 |用于身份验证的连接器客户端证书已过期。 如果将连接器安装在代理后，则可能发生此情况。 在此情况下，连接器无法访问 Internet，并且将无法向远程用户提供应用程序。 |在 Windows PowerShell 中使用 `Register-AppProxyConnector` cmdlet 手动续订信任。 如果连接器在代理后，则必须向连接器帐户“网络服务”和“本地系统”授予 Internet 访问权限。 可通过向它们授予代理访问权限或将它们设置为绕过代理来实现此目的。 |
 | 连接器注册已失败：若要注册连接器，请确保你是 Active Directory 的全局管理员。 错误：“注册请求被拒绝。” |尝试登录时所使用的别名不是此域上的管理员。 始终为拥有用户域的目录安装连接器。 |确保尝试登录时所使用的管理员身份具有 Azure AD 租户的全局权限。 |
@@ -86,6 +87,6 @@ ms.openlocfilehash: 654acd092f9e8469d7014e1ff15cb7d812918e8b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

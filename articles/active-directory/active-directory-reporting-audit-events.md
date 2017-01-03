@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2016
+ms.date: 12/14/2016
 ms.author: dhanyahk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 23da68e26865a8c3525cce3cb2b3a4db447fcc4c
+ms.sourcegitcommit: 6950072b8970dfc1b80674efe0be6cb7496fd5ce
+ms.openlocfilehash: 2dda60160bbcaa729bc8e5cec4f47efc10d120cf
 
 
 ---
@@ -44,8 +44,6 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | 添加组 |已在目录中创建组。 |
 | 更新组 |已在目录中更新组。 若要查看哪些组属性已更新，请参阅以下部分中的“已审核组属性”[](#update-group-attributes) |
 | 删除组 |已从目录中删除组。 |
-| 将成员添加到组 |已将成员添加到目录中的组。 |
-| 从组中删除成员 |已从目录中的组中删除成员。 |
 | CreateGroupSettings |已创建组设置 |
 | UpdateGroupSettings |已更新组设置。 若要查看哪些组设置已更新，请参阅以下部分中的“已审核组属性”[](#update-group-attributes) |
 | DeleteGroupSettings |已删除组设置 |
@@ -63,21 +61,6 @@ Azure Active Directory 审核报告可帮助客户识别其 Azure Active Directo
 | 添加委派条目 |已在目录中创建 [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity)。 |
 | 设置委派条目 |已在目录中更新 [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity)。 |
 | 删除委派条目 |已在目录中删除 [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity)。 |
-| **角色事件** | |
-| 将角色成员添加到角色 |已将用户添加到目录角色。 |
-| 从角色中删除角色成员 |已从目录角色中删除用户。 |
-| 设置公司联系信息 |已设置公司级的联系方法首选项。 这包括营销电子邮件地址，以及有关 Microsoft Online Services 的技术通知。 |
-| 添加委派条目 |已在目录中创建 [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity)。 |
-| 设置委派条目 |已在目录中更新 [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity)。 |
-| 删除委派条目 |已在目录中删除 [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity)。 |
-| AddSevicePrincipalOwner |已将所有者添加到服务主体。 |
-| RemoveSevicePrincipalOwner |已从服务主体中删除所有者。 |
-| AddApplication |添加应用程序。 |
-| UpdateApplication |更新应用程序。 若要查看哪些应用设置已更新，请参阅以下部分中的“已审核应用程序属性”[](#update-application-attributes) |
-| DeleteApplication |删除应用程序。 |
-| RestoreApplication |还原应用程序。 |
-| AddApplicationOwner |将所有者添加到应用程序。 |
-| RemoveApplicationOwner |从应用程序中删除所有者。 |
 | **角色事件** | |
 | 将角色成员添加到角色 |已将用户添加到目录角色。 |
 | 从角色中删除角色成员 |已从目录角色中删除用户。 |
@@ -346,6 +329,6 @@ Azure AD 审核报告中的事件将保留 180 天。 有关保留报告的详�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

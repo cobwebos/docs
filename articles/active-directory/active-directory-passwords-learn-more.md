@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
 
 
 ---
@@ -32,12 +32,13 @@ ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
   * [密码写回的工作原理](#how-password-writeback-works)
   * [密码写回支持的方案](#scenarios-supported-for-password-writeback)
   * [密码写回安全模型](#password-writeback-security-model)
+  * [密码写回带宽用量](#password-writeback-bandwidth-usage)
 * [**密码重置门户的工作原理**](#how-does-the-password-reset-portal-work)
   * [密码重置使用哪些数据？](#what-data-is-used-by-password-reset)
   * [如何访问用户的密码重置数据](#how-to-access-password-reset-data-for-your-users)
 
 ## <a name="password-writeback-overview"></a>密码写回概述
-密码写回是一个 [Azure Active Directory Connect](active-directory-aadconnect.md) 组件，Azure Active Directory Premium 的当前订户可以启用和使用该组件。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
+密码写回是一个 [Azure Active Directory Connect](connect/active-directory-aadconnect.md) 组件，Azure Active Directory Premium 的当前订户可以启用和使用该组件。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 
 使用此功能，你可将云租户配置为将密码写回本地 Active Directory。  有了此功能，你无需再设置和管理复杂的本地自助服务密码重置解决方案。此功能提供了一种基于云的便利方法，让你的用户能够在任何位置重置本地密码。  有关密码写回的一些主要功能，请继续阅读以下内容：
 
@@ -75,7 +76,7 @@ ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
 10. 如果密码设置操作失败，我们会将错误返回给用户，让他们再试一次。  操作失败的可能原因是服务已关闭、用户选择的密码不符合组织策略、我们在本地 AD 中找不到该用户等。  我们对于许多这类情况都有一个特定消息，并告知用户他们可以执行哪些操作来解决问题。
 
 ### <a name="scenarios-supported-for-password-writeback"></a>密码写回支持的方案
-下表介绍同步功能的各个版本支持哪些方案。  通常情况下，如果要使用密码写回，我们强烈建议安装最新版本的 [Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect)。
+下表介绍同步功能的各个版本支持哪些方案。  通常情况下，如果要使用密码写回，我们强烈建议安装最新版本的 [Azure AD Connect](connect/active-directory-aadconnect.md#install-azure-ad-connect)。
 
   ![][002]
 
@@ -86,6 +87,21 @@ ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
 * **锁定的加密强密码加密密钥** - 创建服务总线中继后，我们创建一个强大的非对称密钥对，用于在经过线路时加密密码。  此密钥仅驻留在公司在云中的密钥存储内，就像目录中的任何密码一样，将被牢牢锁住并接受审核。
 * **行业标准 TLS** - 云中发生密码重置或更改操作时，我们将采用纯文本密码并用公钥对其进行加密。  然后，我们将其置于 HTTPS 消息中，该消息使用 Microsoft 的 SSL 证书通过加密通道发送到服务总线中继。  此消息到达服务总线后，你的本地代理将唤醒、使用先前生成的强密码对服务总线进行身份验证、选取加密消息、使用我们生成的私钥对消息进行解密，然后尝试通过 AD DS SetPassword API 设置密码。  通过此步骤，我们可以在云中强制实施你的 AD 本地密码策略（复杂性、年龄、历史记录、筛选器等）。
 * **消息过期策略** - 最后，如果由于某种原因而使消息位于服务总线中（因为本地服务关闭），消息会超时并在几分钟后删除，以便进一步提高安全性。
+
+### <a name="password-writeback-bandwidth-usage"></a>密码写回带宽用量
+
+密码写回是一种带宽消耗量极低的服务，只在以下情况下，才将请求发回到本地代理：
+
+1. 通过 Azure AD Connect 启用或禁用该功能时发送两条消息。
+2. 在服务运行的持续时间内，如果服务有检测信号，则每隔 5 分钟发送一条消息。
+3. 每次提交新密码时发送两条消息，一条消息是执行操作的请求，后续的另一条消息包含操作结果。 在以下情况下，将发送这些消息。
+4. 每次在用户自助重置密码期间提交新密码时。
+5. 每次在用户执行密码更改操作期间提交新密码时。
+6. 每次在管理员发起的用户密码重置期间提交新密码时（仅限通过 Azure 管理门户）
+
+#### <a name="message-size-and-bandwidth-considerations"></a>消息大小和带宽注意事项
+
+上述每条消息的大小通常小于 1Kb，这意味着，即使是在承受极高负载的情况下，密码写回服务本身消耗的带宽每秒最多也就是几个 Kb。 由于每条消息是只在密码更新操作有需要时才实时发送的，并且消息很小，因此，写回功能的带宽用量确实微不足道，产生的影响可以忽略不计。
 
 ## <a name="how-does-the-password-reset-portal-work"></a>密码重置门户的工作原理
 当某个用户导航到密码重置门户时，工作流将启动以确定此用户帐户是否有效、此用户所属的组织、此用户密码的管理位置以及用户是否已获许可使用该功能。  阅读以下步骤，了解有关密码重置页面背后的逻辑。
@@ -391,6 +407,6 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

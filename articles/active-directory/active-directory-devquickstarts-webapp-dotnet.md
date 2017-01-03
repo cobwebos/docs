@@ -46,7 +46,7 @@ ms.openlocfilehash: 4c66ce2996d3444d02b55bd0214398f69c45b6bd
 * 在左侧的导航栏中单击“Azure Active Directory”。
 * 单击“应用注册”选项卡，然后单击“添加”。
 * 根据提示创建一个新的 **Web 应用程序和/或 WebAPI**。
-  * 应用程序的“名称”将向最终用户描述应用程序
+  * 应用程序的“名称”向最终用户描述你的应用程序
   * “登录 URL”是应用的基本 URL。  框架的默认值为 `https://localhost:44320/`。
 * 完成注册后，AAD 将为应用分配唯一的应用程序 ID。  在后面的部分中将会用到此值，因此，请从应用程序页复制此值。
 
@@ -183,6 +183,6 @@ public ActionResult About()
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO5-->
 
 

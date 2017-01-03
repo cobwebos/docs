@@ -15,32 +15,32 @@ ms.workload: identity
 ms.date: 10/11/2016
 ms.author: dkershaw;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e19d4bf530ca18dc39a57b36650ba7a394b826ce
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 273ace2a45fabc17ce87636d76e9d1c21ce6bf79
 
 
 ---
 # <a name="understanding-the-azure-active-directory-application-manifest"></a>了解 Azure Active Directory 应用程序清单
-与 Azure Active Directory (AD) 集成的应用程序必须向 Azure AD 租户注册，提供应用程序的持久性标识配置。 在运行时查阅此配置，启用允许应用程序通过 Azure AD 外部和代理身份验证/授权的方案。 有关 Azure AD 应用程序模型的详细信息，请参阅[添加、更新和删除应用程序][ADD-UPD-RMV-APP] 一文。
+与 Azure Active Directory (AD) 集成的应用程序必须向 Azure AD 租户注册，提供应用程序的持久性标识配置。 在运行时查阅此配置，启用允许应用程序通过 Azure AD 外部和代理身份验证/授权的方案。 有关 Azure AD 应用程序模型的详细信息，请参阅[添加、更新和删除应用程序][ADD-UPD-RMV-APP]一文。
 
 ## <a name="updating-an-applications-identity-configuration"></a>更新应用程序的标识配置
 实际上有多个可用的选项可以更新应用程序的标识配置属性，这些选项因功能与难度而有所不同，包括：
 
-* **[Azure 经典门户的][AZURE-CLASSIC-PORTAL] Web 用户界面**可让你更新应用程序的最常见属性。 这是更新应用程序属性最快且最不容易出错的方法，但无法像下面两种方法一样提供对所有属性的完全访问权限。
+* 在 **[Azure 经典门户][AZURE-CLASSIC-PORTAL]的 Web 用户界面**中，可以更新应用程序的最常见属性。 这是更新应用程序属性最快且最不容易出错的方法，但无法像下面两种方法一样提供对所有属性的完全访问权限。
 * 对于需要在其中更新 Azure 经典门户中未公开的属性的更高级方案，可以修改**应用程序清单**。 这是本文的重点，将在下一部分中开始详细讨论。
-* 你也可**编写使用[图形 API][GRAPH-API]** 的应用程序来更新应用程序，这是最费力的方法。 如果要编写管理软件或需要自动定期更新应用程序属性，这可能是个不错的选择。
+* 还可以**编写使用[图形 API][GRAPH-API] 的应用程序**来更新应用程序，这是最费力的方法。 如果要编写管理软件或需要自动定期更新应用程序属性，这可能是个不错的选择。
 
 ## <a name="using-the-application-manifest-to-update-an-applications-identity-configuration"></a>使用应用程序清单更新应用程序的标识配置
 使用 [Azure 经典门户][AZURE-CLASSIC-PORTAL]，可以通过下载和上载 JSON 文件表示形式（称为应用程序清单）管理应用程序的标识配置。 不会将实际的文件存储在目录中。 应用程序清单只是 Azure AD 图形 API 应用程序实体上的 HTTP GET 操作，上载是应用程序实体上的 HTTP PATCH 操作。
 
 因此，若要了解应用程序清单的格式和属性，需要参考图形 API [应用程序实体][APPLICATION-ENTITY]文档。 可通过应用程序清单上载执行的更新示例包括：
 
-* **声明 Web API 所公开的权限范围 (oauth2Permissions)**。 有关使用 oauth2Permissions 委派权限范围实现用户模拟的信息，请参阅[将应用程序与 Azure Active Directory 集成][INTEGRATING-APPLICATIONS-AAD] 中的“向其他应用程序公开 Web API”主题。 如前所述，图形 API [实体和复杂类型][APPLICATION-ENTITY]参考文章中介绍了应用程序实体属性，包括属于 [OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 类型集合的 oauth2Permissions 属性。
-* **声明应用公开的应用程序角色 (appRoles)**。 应用程序实体的 appRoles 属性是 [AppRole][APPLICATION-ENTITY-APP-ROLE] 类型的集合。 有关实现示例，请参阅[使用 Azure AD 在云应用程序中执行基于角色的访问控制][RBAC-CLOUD-APPS-AZUREAD]一文。
+* **声明 Web API 所公开的权限范围 (oauth2Permissions)**。 有关使用 oauth2Permissions 委派权限范围实现用户模拟的信息，请参阅[将应用程序与 Azure Active Directory 集成][INTEGRATING-APPLICATIONS-AAD]中的“向其他应用程序公开 Web API”主题。 如前所述，图形 API [Entity and Complex Type][APPLICATION-ENTITY]（实体和复杂类型）参考文章中介绍了应用程序实体属性，包括属于 [OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 类型集合的 oauth2Permissions 属性。
+* **声明应用公开的应用程序角色 (appRoles)**。 应用程序实体的 appRoles 属性是 [AppRole][APPLICATION-ENTITY-APP-ROLE] 类型的集合。 请参阅[使用 Azure AD 在云应用程序中执行基于角色的访问控制][RBAC-CLOUD-APPS-AZUREAD]一文获取实现示例。
 * **声明已知的客户端应用程序 (knownClientApplications)**，可让你以逻辑方式将指定客户端应用程序的许可绑定到资源/Web API。
-* **请求 Azure AD 对登录用户发出组成员资格声明** (groupMembershipClaims)。  还可配置为发出有关用户目录角色成员资格的声明。 有关实现示例，请参阅[使用 AD 组在云应用程序中执行授权][AAD-GROUPS-FOR-AUTHORIZATION]一文。
-* **允许应用程序支持 OAuth 2.0 隐式授权**流 (oauth2AllowImplicitFlow)。 这种类型的授权流可用于嵌入式 JavaScript 网页或单页应用程序 (SPA)。 了解有关隐式授权许可的详细信息，请参阅[了解 Azure Active Directory 中的 OAuth2 隐式授予流][IMPLICIT-GRANT]。
-* **允许使用 X509 证书作为机密密钥** (keyCredentials)。 有关实现示例，请参阅文章[在 Office 365 中构建服务和守护程序应用][O365-SERVICE-DAEMON-APPS]和[使用 Azure Resource Manager API 进行身份验证的开发人员指南][DEV-GUIDE-TO-AUTH-WITH-ARM]。
+* **请求 Azure AD 对登录用户发出组成员资格声明** (groupMembershipClaims)。  还可配置为发出有关用户目录角色成员资格的声明。 请参阅[使用 AD 组在云应用程序中执行授权][AAD-GROUPS-FOR-AUTHORIZATION]一文获取实现示例。
+* **允许应用程序支持 OAuth 2.0 隐式授权**流 (oauth2AllowImplicitFlow)。 这种类型的授权流可用于嵌入式 JavaScript 网页或单页应用程序 (SPA)。 有关隐式授权许可的详细信息，请参阅 [Understanding the OAuth2 implicit grant flow in Azure Active Directory][IMPLICIT-GRANT]（了解 Azure Active Directory 中的 OAuth2 隐式授予流）。
+* **允许使用 X509 证书作为机密密钥** (keyCredentials)。 有关实现示例，请参阅文章 [Build service and daemon apps in Office 365][O365-SERVICE-DAEMON-APPS]（在 Office 365 中构建服务和守护程序应用）和 [Developer’s guide to auth with Azure Resource Manager API][DEV-GUIDE-TO-AUTH-WITH-ARM]（使用 Azure Resource Manager API 进行身份验证的开发人员指南）。
 * 为应用程序（标识符 URI[]）**添加新的应用 ID URI**。 应用 ID URI 用于唯一标识其 Azure AD 租户中的应用程序（或是通过已验证的自定义域限定多个租户方案时跨多个 Azure AD 租户中的应用程序）。 在请求资源应用程序的权限，或获取资源应用程序的访问令牌时使用应用程序 ID URI。 更新此元素时，相应的服务主体的 servicePrincipalNames[] 集合将做出同样的更新，该集合位于应用程序的主租户中。
 
 使用应用程序清单还能很好地跟踪应用程序注册状态。 由于它可以 JSON 格式提供，因此文件表示形式可以签入源代码管理，以及应用程序的源代码。
@@ -114,8 +114,8 @@ ms.openlocfilehash: e19d4bf530ca18dc39a57b36650ba7a394b826ce
 就这么简单。 现在，你的应用程序将使用其新标识配置来运行。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关应用程序的 Application 和 Service Principal 对象之间的关系的更多详细信息，请参阅 [Azure AD 中的应用程序和服务主体对象][AAD-APP-OBJECTS]。
-* 有关某些核心 Azure Active Directory (AD) 开发人员概念的定义，请参阅 [Azure AD 开发人员词汇表][AAD-DEVELOPER-GLOSSARY]。
+* 有关 Azure AD 中应用程序的应用程序对象与服务主体对象之间关系的详细信息，请参阅 [Application and service principal objects in Azure AD][AAD-APP-OBJECTS]（Azure AD 中的应用程序对象和服务主体对象）。
+* 请参阅 [Azure AD developer glossary][AAD-DEVELOPER-GLOSSARY]（Azure AD 开发人员术语表），了解某些核心的 Azure Active Directory (AD) 开发人员概念的定义。
 
 欢迎使用以下 DISQUS 意见部分提供反馈，以帮助我们改进与制作内容。
 
@@ -152,6 +152,6 @@ ms.openlocfilehash: e19d4bf530ca18dc39a57b36650ba7a394b826ce
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

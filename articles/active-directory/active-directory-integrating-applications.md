@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 10/29/2016
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ff5c4cd342814a3a5baf19f711daae586deed5f6
+ms.sourcegitcommit: afb3882364a8c4378705f4e2e90d253f8bd4f789
+ms.openlocfilehash: d79794b2e1a855954281128f0c538dbeb0780c9d
 
 
 ---
@@ -204,7 +204,7 @@ Web 应用程序也可为用户提供注册体验。 如果你确实提供注册
 ### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>为单页面应用程序启用 OAuth 2.0 隐式授权
 通常将单页面应用程序 (SPA) 构建为一个在浏览器中运行的 JavaScript 重型前端，该前端调用应用程序的 Web API 后端来执行其业务逻辑。 对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权对具有 Azure AD 的用户进行身份验证，并获取可用来保护从应用程序 JavaScript 客户端到其后端 web API 的调用的令牌。 用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。 若要了解有关隐式授权的详细信息，并帮助确定其是否适合应用程序方案，请参阅[了解 Azure Active Directory 中的 OAuth2 隐式授权流](active-directory-dev-understanding-oauth2-implicit-grant.md)。
 
-默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。 也可通过在[应用程序清单](active-directory-application-manifest.md)（表示应用程序标识配置的 JSON 文件）中设置 `oauth2AllowImplicitFlow`”` 值，为应用程序启用 OAuth 2.0 隐式授权。
+默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。 也可通过在[应用程序清单](active-directory-application-manifest.md)（表示应用程序标识配置的 JSON 文件）中设置 `oauth2AllowImplicitFlow` 值，为应用程序启用 OAuth 2.0 隐式授权。
 
 #### <a name="to-enable-oauth-20-implicit-grant"></a>启用 OAuth 2.0 隐式授权
 1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
@@ -323,6 +323,6 @@ Web 应用程序也可为用户提供注册体验。 如果你确实提供注册
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -169,6 +169,6 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

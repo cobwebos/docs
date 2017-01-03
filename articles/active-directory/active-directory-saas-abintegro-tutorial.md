@@ -35,7 +35,7 @@ ms.openlocfilehash: 64a7ff2552d2ccc97b1ec90cf524aed6b62ecb82
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-abintegro-tutorial/IC790076.png "Scenario")
+![方案](./media/active-directory-saas-abintegro-tutorial/IC790076.png "方案")
 
 ## <a name="enabling-the-application-integration-for-abintegro"></a>为 Abintegro 启用应用程序集成
 本部分旨在概述如何为 Abintegro 启用应用程序集成。
@@ -44,19 +44,19 @@ ms.openlocfilehash: 64a7ff2552d2ccc97b1ec90cf524aed6b62ecb82
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-abintegro-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-abintegro-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-abintegro-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-abintegro-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-abintegro-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加一个应用程序](./media/active-directory-saas-abintegro-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-abintegro-tutorial/IC749322.png "从库添加应用程序")
 6. 在“搜索框”中，键入 **abintegro**。
    
-   ![应用程序库](./media/active-directory-saas-abintegro-tutorial/IC790077.png "Application Gallery")
+   ![应用程序库](./media/active-directory-saas-abintegro-tutorial/IC790077.png "应用程序库")
 7. 在结果窗格中，选择“Abintegro”，然后单击“完成”以添加该应用程序。
    
    ![Abintegro](./media/active-directory-saas-abintegro-tutorial/IC790078.png "Abintegro")
@@ -68,16 +68,16 @@ ms.openlocfilehash: 64a7ff2552d2ccc97b1ec90cf524aed6b62ecb82
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“Abintegro”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790079.png "Configure Single SignOn")
+   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790079.png "配置单一登录")
 2. 在“你希望用户如何登录 Abintegro”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790080.png "Configure Single SignOn")
+   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790080.png "配置单一登录")
 3. 在“配置应用 URL”页的“Abintegro 登录 URL”文本框中，键入用户用于登录 Abintegro 的 URL（例如 `https://dev.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://dev.abintegro.com/secure/`），然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-abintegro-tutorial/IC790081.png "Configure App URL")
+   ![配置应用 URL](./media/active-directory-saas-abintegro-tutorial/IC790081.png "配置应用 URL")
 4. 在“配置 Abintegro 的单一登录”页上，单击“下载元数据”，然后将元数据文件保存在计算机上。
    
-   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790082.png "Configure Single SignOn")
+   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790082.png "配置单一登录")
 5. 将元数据文件发送给 Abintegro 支持团队。
    
    > [!NOTE]
@@ -86,7 +86,7 @@ ms.openlocfilehash: 64a7ff2552d2ccc97b1ec90cf524aed6b62ecb82
    > 
 6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790083.png "Configure Single SignOn")
+   ![配置单一登录](./media/active-directory-saas-abintegro-tutorial/IC790083.png "配置单一登录")
    
    ## <a name="configuring-user-provisioning"></a>配置用户设置
 
@@ -101,16 +101,16 @@ ms.openlocfilehash: 64a7ff2552d2ccc97b1ec90cf524aed6b62ecb82
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“Abintegro”应用程序集成页面上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-abintegro-tutorial/IC790084.png "Assign Users")
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+   ![分配用户](./media/active-directory-saas-abintegro-tutorial/IC790084.png "分配用户")
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-abintegro-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-abintegro-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

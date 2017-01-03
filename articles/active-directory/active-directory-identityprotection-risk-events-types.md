@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory Identity Protection 检测到的风险事件类型 | Microsoft 文档"
-description: "本主题详细概述了 Azure Active Directory Identity Protection 中的可用风险事件类型"
+title: "Azure Active Directory 检测到的风险事件类型 | Microsoft 文档"
+description: "本主题详细概述了 Azure Active Directory 中的可用风险事件类型"
 services: active-directory
 keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略"
 documentationcenter: 
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 11/30/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fd1fb445a78d12046d52cb27798eaa9d058629c3
+ms.sourcegitcommit: ffc64fc0469cd3588d6d13524411575b423ab4e5
+ms.openlocfilehash: dc04ebb3c205c01ed42c9d8bc3e0eb009881074a
 
 
 ---
-# <a name="types-of-risk-events-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的风险事件类型
-在 Azure Active Directory Identity Protection 中，风险事件是如下事件：
+# <a name="types-of-risk-events-detected-by-azure-active-directory"></a>Azure Active Directory 检测到的风险事件类型 
+在 Azure Active Directory 中，风险事件是指如下所述的事件：
 
 * 已标记为可疑
 * 指示某个标识可能受到威胁。 
@@ -30,7 +30,7 @@ ms.openlocfilehash: fd1fb445a78d12046d52cb27798eaa9d058629c3
 本主题详细概述了可用风险事件类型。
 
 ## <a name="leaked-credentials"></a>已泄漏凭据
-Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据。 这些凭据通常以纯文本形式出现。 针对 Azure AD 凭据检查它们，如果存在匹配项，它们将在 Identity Protection 中报告为“已泄漏凭据”。
+Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据。 这些凭据通常以纯文本形式出现。 针对 Azure AD 凭据检查它们，如果存在匹配项，它们将报告为“已泄漏凭据”。
 
 已泄漏凭据事件归类为“高”严重性风险事件，因为它们明确表示向攻击者提供用户名和密码。
 
@@ -67,7 +67,7 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 ## <a name="azure-ad-anomalous-activity-reports"></a>Azure AD 异常活动报告
 其中的某些风险事件已通过 Azure 门户中的“Azure AD 异常活动报告”提供。 下表列出了各种风险事件类型和相应的“Azure AD 异常活动”报告。 Microsoft 持续在此领域投资，计划持续改进现有风险事件的检测准确性，不断添加新的风险事件类型。 
 
-| Identity Protection 风险事件类型 | 相应的 Azure AD 异常活动报告 |
+| 风险事件类型 | 相应的 Azure AD 异常活动报告 |
 |:--- |:--- |
 | 已泄漏凭据 |具有已泄漏凭据的用户 |
 | 不可能前往异常位置 |异常登录活动 |
@@ -77,7 +77,7 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 | 从不熟悉的位置登录 |- |
 | 锁定事件 |- |
 
-以下 Azure AD 异常活动报告未作为风险事件包含在 Azure AD Identity Protection 中，因此不会通过 Identity Protection 提供。 这些报告仍在 Azure 门户中提供，但未来的某个时间它们将会过时，因为 Identity Protection 中的风险事件会将其取代。
+以下 Azure AD 异常活动报告未作为风险事件包含在 Azure AD 中，因此不会通过 Azure AD 提供。 这些报告仍在 Azure 门户中提供，但未来的某个时间它们将会过时，因为 Azure AD 中的风险事件会将其取代。
 
 * 多次失败后登录
 * 从多个地理区域登录
@@ -88,6 +88,6 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.devlang: na
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 36268d0153f4f61d6e6132f4e6a878b11cf7f6c2
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 8838617f9b7281878ac3561a80bbba5e4506f410
 
 
 ---
@@ -82,6 +82,6 @@ ms.openlocfilehash: 36268d0153f4f61d6e6132f4e6a878b11cf7f6c2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

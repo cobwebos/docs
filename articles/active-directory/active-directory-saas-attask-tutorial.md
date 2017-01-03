@@ -1,6 +1,6 @@
 ---
 title: "教程：Azure Active Directory 与 @Task| 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 @Task 之间配置单一登录。"
+description: "了解如何在 Azure Active Directory 与 @Task 之间配置单一登录。"
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d729d0859a3cdd0e676507c4fa772b7b8d3ed181
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: cba595704af8e48506a25d592770ec273cb9bd30
 
 
 ---
@@ -82,7 +82,7 @@ ms.openlocfilehash: d729d0859a3cdd0e676507c4fa772b7b8d3ed181
 本部分旨在展示如何根据名为“Britta Simon”的测试用户的指令配置和测试 @Task 的 Azure AD 单一登录。
 
 对于单一登录到工作帐户，Azure AD 需要知道 Azure AD 用户在 @Task 中的对应用户是谁。 换句话说，需要建立 Azure AD 用户与 @Task 中相关用户之间的链接关系。   
-通过将 Azure AD 中的 **user name** 值分配为 @Task. 中的 **Username** 值，建立此链接关系
+可以通过将 Azure AD 中“用户名”的值分配为 @Task 中“用户名”的值来建立此链接关系。
 
 若要通过 @Task, 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -162,19 +162,21 @@ ms.openlocfilehash: d729d0859a3cdd0e676507c4fa772b7b8d3ed181
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-attask-tutorial/create_aaduser_06.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-attask-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
-   b. 在“姓氏”文本框中，键入“Simon”。
+    b. 在“姓氏”文本框中，键入“Simon”。
    
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
+    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    d.单击“下一步”。 在“角色”列表中，选择“用户”。
+
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-attask-tutorial/create_aaduser_07.png) 
@@ -187,7 +189,7 @@ ms.openlocfilehash: d729d0859a3cdd0e676507c4fa772b7b8d3ed181
     b. 单击“完成”。   
 
 ### <a name="creating-an-task-test-user"></a>创建 @Task 测试用户
-本部分要在 @Task 中创建名为“Britta Simon”的用户。
+本部分的目的是在 @Task 中创建名为“Britta Simon”的用户。
 
 **若要在 @Task, 中创建名为“Britta Simon”的用户，请执行以下步骤：**
 
@@ -272,6 +274,6 @@ ms.openlocfilehash: d729d0859a3cdd0e676507c4fa772b7b8d3ed181
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

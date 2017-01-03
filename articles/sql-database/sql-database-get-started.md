@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: d772dabf84fc3b6c061c0f4607c989aabf9dd272
-ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
+ms.sourcegitcommit: c2252fc81f97019391ca2ba957f8402c4e97a9c2
+ms.openlocfilehash: f9b17c1cc77918fb1989b94b5bb359a697ceea7c
 
 
 ---
@@ -30,15 +30,15 @@ ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
 * 创建 Aure SQL 逻辑服务器
 * 查看 Azure SQL 逻辑服务器属性
 * 创建服务器级防火墙规则
-* 创建 Adventure Works LT 示例数据库
+* 以单一数据库的形式创建 Adventure Works LT 示例数据库
 * 在 Azure 中查看 Adventure Works LT 示例数据库属性
 
 本教程还使用最新版本的 SQL Server Management Studio 来执行以下操作：
 
 * 连接到逻辑服务器及其 master 数据库
-* 查看 master 数据库属性
+* 查询 master 数据库
 * 连接到示例数据库
-* 查看用户数据库属性
+* 查询示例数据库
 
 完成本教程后，将会创建一个示例数据库，以及一个在 Azure 资源组中运行的并已附加到逻辑服务器的空数据库。 此外，还将创建一个服务器级防火墙规则，它已配置为启用服务器级主体，用于从指定的 IP 地址（或 IP 地址范围）登录到服务器。 
 
@@ -208,7 +208,7 @@ ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
     ![服务器凭据](./media/sql-database-get-started/server-credentials.png)
 
     > [!NOTE]
-    > 将某个数据库添加到服务器时，可将它作为单一数据库添加（默认设置），也可以将它添加到 SQL 弹性池。 有关弹性池的详细信息，请参阅[弹性池](sql-database-elastic-pool.md)。
+    > 将某个数据库添加到服务器时，可将它添加为单一数据库（默认设置），或将其添加到弹性池。 有关弹性池的详细信息，请参阅[弹性池](sql-database-elastic-pool.md)。
     >
 
 7. 在“定价层”下面，将定价层更改为“基本”（以后可以根据需要提高定价层，但在学习过程中，我们建议使用最低的定价层）。
@@ -299,11 +299,13 @@ ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
 * 如果想要开始创建表和其他对象，请参阅[创建表](https://msdn.microsoft.com/library/ms365315.aspx)中的“创建表”主题。
 
 ## <a name="additional-resources"></a>其他资源
-[什么是 SQL 数据库？](sql-database-technical-overview.md)
+
+- 有关技术概述，请参阅[什么是 SQL 数据库？](sql-database-technical-overview.md)。
+- 有关定价信息，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

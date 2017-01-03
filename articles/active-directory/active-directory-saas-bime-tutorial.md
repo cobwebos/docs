@@ -14,8 +14,8 @@ ms.workload: identity
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c1adfe732b88a6a48a3aa9ad3ca7785703667e3d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 19adbe15694a6413842b23c27851ce582bfd727e
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: c1adfe732b88a6a48a3aa9ad3ca7785703667e3d
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-bime-tutorial/IC775552.png "Scenario")
+![方案](./media/active-directory-saas-bime-tutorial/IC775552.png "方案")
 
 ## <a name="enabling-the-application-integration-for-bime"></a>支持 Bime 的应用程序集成
 本部分旨在概述如何为 Bime 启用应用程序集成。
@@ -44,19 +44,19 @@ ms.openlocfilehash: c1adfe732b88a6a48a3aa9ad3ca7785703667e3d
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-bime-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-bime-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-bime-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-bime-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-bime-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加一个应用程序](./media/active-directory-saas-bime-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-bime-tutorial/IC749322.png "从库添加应用程序")
 6. 在“搜索框”中，键入“Bime”。
    
-   ![应用程序库](./media/active-directory-saas-bime-tutorial/IC775553.png "Application Gallery")
+   ![应用程序库](./media/active-directory-saas-bime-tutorial/IC775553.png "应用程序库")
 7. 在“结果”窗格中，选择“Bime”，然后单击“完成”，添加该应用程序。
    
    ![Bime](./media/active-directory-saas-bime-tutorial/IC775554.png "Bime")
@@ -70,23 +70,23 @@ ms.openlocfilehash: c1adfe732b88a6a48a3aa9ad3ca7785703667e3d
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“Bime”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC771709.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC771709.png "配置单一登录")
 2. 在“你希望用户如何登录 Bime”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775555.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775555.png "配置单一登录")
 3. 在“配置应用 URL”页上的“Bime 登录 URL”文本框中，使用以下模式“*https://\<tenant-name\>.Bimeapp.com*”键入 URL，然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-bime-tutorial/IC775556.png "Configure App URL")
+   ![配置应用 URL](./media/active-directory-saas-bime-tutorial/IC775556.png "配置应用 URL")
 4. 在“配置 Bime 的单一登录”页上，若要下载证书，请单击“下载证书”，然后将证书文件本地保存为“c:\\Bime.cer”。
    
-   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775557.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775557.png "配置单一登录")
 5. 在其他 Web 浏览器窗口中，以管理员身份登录 Bime 公司站点。
 6. 在工具栏中，单击“管理员”，然后单击“帐户”。
    
-   ![管理员](./media/active-directory-saas-bime-tutorial/IC775558.png "Admin")
+   ![管理员](./media/active-directory-saas-bime-tutorial/IC775558.png "管理员")
 7. 在帐户配置页面上，执行以下步骤：
    
-   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775559.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775559.png "配置单一登录")
    
    1. 选择“启用 SAML 身份验证”。
    2. 在 Azure 经典门户的“配置 Bime 的单一登录”对话框页面上，复制“远程登录 URL”值，然后将其粘贴到“远程登录 URL”文本框。
@@ -99,7 +99,7 @@ ms.openlocfilehash: c1adfe732b88a6a48a3aa9ad3ca7785703667e3d
    4. 单击“保存” 。
 8. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775560.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-bime-tutorial/IC775560.png "配置单一登录")
    
    ## <a name="configuring-user-provisioning"></a>配置用户设置
 
@@ -110,13 +110,13 @@ ms.openlocfilehash: c1adfe732b88a6a48a3aa9ad3ca7785703667e3d
 1. 登录 **Bime** 租户。
 2. 在工具栏中，单击“管理员”，然后单击“用户”。
    
-   ![管理员](./media/active-directory-saas-bime-tutorial/IC775561.png "Admin")
+   ![管理员](./media/active-directory-saas-bime-tutorial/IC775561.png "管理员")
 3. 在“用户列表”中，单击“添加新用户”(“+”)。
    
-   ![用户](./media/active-directory-saas-bime-tutorial/IC775562.png "Users")
+   ![用户](./media/active-directory-saas-bime-tutorial/IC775562.png "用户")
 4. 在“用户详细信息”对话框页上，执行以下步骤：
    
-   ![用户详细信息](./media/active-directory-saas-bime-tutorial/IC775563.png "User Details")
+   ![用户详细信息](./media/active-directory-saas-bime-tutorial/IC775563.png "用户详细信息")
    
    1. 输入想要预配的有效 AAD 帐户的“名字”、“姓氏”、“登录名”和“电子邮件”。
    2. 单击“保存”。
@@ -133,16 +133,16 @@ ms.openlocfilehash: c1adfe732b88a6a48a3aa9ad3ca7785703667e3d
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“Bime”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-bime-tutorial/IC775564.png "Assign users")
+   ![分配用户](./media/active-directory-saas-bime-tutorial/IC775564.png "分配用户")
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-bime-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-bime-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

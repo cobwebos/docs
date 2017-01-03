@@ -16,14 +16,14 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 93e02bc36c0502623316d6b896dd802ac8bdc284
+ms.sourcegitcommit: 4e2508883998b1435d7c4f099bd6ef0e00bd885e
+ms.openlocfilehash: 4f9127ca06668884e6b6f5dbc81aad0a2b1ea9df
 
 
 ---
 # <a name="getting-started-with-password-management"></a>密码管理入门
 > [!IMPORTANT]
-> **你是否因登录时遇到问题而浏览至此？** 如果是这样， 可按以下方式更改和重置你的密码。
+> **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
 > 
 > 
 
@@ -185,7 +185,7 @@ ms.openlocfilehash: 93e02bc36c0502623316d6b896dd802ac8bdc284
   > 如果你运行的是旧版 Windows Server 2008 或 2008 R2，则你仍然可以使用此功能，但在云中实施本地 AD 密码策略之前，需要先 [下载并安装 KB 2386717](https://support.microsoft.com/kb/2386717) 。
   > 
   > 
-* 已安装了 Azure AD 同步工具，并已准备好 AD 环境，可随时同步到云。  有关详细信息，请参阅 [在云中使用本地标识基础结构](active-directory-aadconnect.md)。
+* 已安装了 Azure AD 同步工具，并已准备好 AD 环境，可随时同步到云。  有关详细信息，请参阅 [在云中使用本地标识基础结构](connect/active-directory-aadconnect.md)。
   
   > [!NOTE]
   > 测试密码写回之前，请确保完成完整导入，并在 Azure AD Connect 中从本地 AD 与 Azure AD 执行完全同步。
@@ -199,7 +199,7 @@ ms.openlocfilehash: 93e02bc36c0502623316d6b896dd802ac8bdc284
   > 
 
 ### <a name="step-1-download-the-latest-version-of-azure-ad-connect"></a>步骤 1：下载最新版本的 Azure AD Connect
-Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure AD Sync 工具中提供了密码写回功能。  Azure AD Connect 发行版或版本号为 **1.0.0485.0222** 或更高的 Azure AD Sync 工具中提供了支持自动帐户解锁的密码写回功能。 如果你运行的是较旧版本，请在继续操作之前至少升级到此版本。 [单击此处下载最新版本的 Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect)。
+Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure AD Sync 工具中提供了密码写回功能。  Azure AD Connect 发行版或版本号为 **1.0.0485.0222** 或更高的 Azure AD Sync 工具中提供了支持自动帐户解锁的密码写回功能。 如果你运行的是较旧版本，请在继续操作之前至少升级到此版本。 [单击此处下载最新版本的 Azure AD Connect](connect/active-directory-aadconnect.md#install-azure-ad-connect)。
 
 #### <a name="to-check-the-version-of-azure-ad-sync"></a>查看 Azure AD Sync 的版本
 1. 导航到 **%ProgramFiles%\Azure Active Directory Sync\**。
@@ -256,12 +256,40 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
   ![][023]
 
 ### <a name="step-3-configure-your-firewall"></a>步骤 3：配置防火墙
-在 Azure AD Connect 工具中启用密码写回之后，需确保服务可连接到云。
+启用密码写回后，需要确保运行 Azure AD Connect 的计算机能够访问 Microsoft 云服务以接收密码写回请求。 此步骤包括更新网络设备（代理服务器、防火墙等）中的连接规则，以允许通过特定网络端口与某些 Microsoft 自有的 URL 和 IP 地址进行出站连接。 这些更改可能会根据 Azure AD Connect 工具的版本而有所不同。 有关更多上下文，可阅读有关[密码写回的工作原理](active-directory-passwords-learn-more.md#how-password-writeback-works)和[密码写回安全模型](active-directory-passwords-learn-more.md#password-writeback-security-model)的详细信息。
 
-1. 安装完成后，如果要阻止环境中的未知出站连接，还需要向防火墙添加以下规则。 确保进行这些更改后重新启动你的 AAD Connect 计算机：
-   * 允许通过端口 443 的出站连接 TCP
-   * 允许出站连接到 https://ssprsbprodncu-sb.accesscontrol.windows.net/
-   * 当使用代理或遇到一般连接问题时，允许通过端口 9350-9354 和端口 5671 TCP 的出站连接
+#### <a name="why-do-i-need-to-do-this"></a>为什么需要执行此操作？
+
+为了使密码写回正常运行，运行 Azure AD Connect 的计算机需要能够建立到 **.servicebus.windows.net* 的出站 HTTPS 连接以及 Azure 使用的特定 IP 地址，如[Microsoft Azure 数据中 IP 范围列表](https://www.microsoft.com/download/details.aspx?id=41653)中所述。
+
+对于 Azure AD Connect 工具版本 1.0.8667.0 以及更高版本：
+
+- **选项 1：**允许通过端口 443 使用 URL 或 IP 地址的所有出站 HTTPS 连接。
+    - 何时使用此选项：
+        - 如果希望最简单的配置不需要随着 Azure 数据中心 IP 范围的更改而更新，请使用此选项。
+    - 所需步骤：
+        - 允许通过端口 443 使用 URL 或 IP 地址的所有出站 HTTPS 连接。
+<br><br>
+- **选项 2：**允许到特定 IP 范围和 URL 的出站 HTTPS 连接
+    - 何时使用此选项：
+        - 如果处于受限网络环境中，或者不愿意允许出站连接，请使用此选项。
+        - 在此配置中，要使密码写回继续工作，需要确保网络设备使用 Microsoft Azure 数据中心 IP 范围列表中的最新 IP 每周更新。 这些 IP 范围可用作每周三（太平洋时间）更新的 XML 文件，并在下一个星期一（太平洋时间）生效。
+    - 所需步骤：
+        - 允许连接到 *.servicebus.windows.net 的所有出站 HTTPS 连接
+        - 允许连接到 Microsoft Azure 数据中心 IP 范围列表中所有 IP 的所有出站 HTTPS 连接，并使此配置每周更新。
+
+> [!NOTE]
+> 如果按照上述说明配置了密码写回，且在 Azure AD Connect 事件日志中没有看到任何错误，但是在测试时遇到连接错误，则可能是环境中的网络设备阻止了连接到 IP 地址的 HTTPS 连接。 例如，虽然允许连接到 *https://*.servicebus.windows.net*，但可能会阻止连接到该范围内的特定 IP 地址。 若要解决此问题，需要配置网络环境以允许通过端口 443 连接到任何 URL 或 IP 地址的所有出站 HTTPS 连接（上述的选项 1），或与你的网络团队协作，明确允许 HTTPS 连接到特定 IP 地址（上述的选项 2）。
+
+**对于较旧版本：**
+
+- 允许通过端口 443、9350-9354 和端口 5671 的出站 TCP 连接 
+- 允许到 *https://ssprsbprodncu-sb.accesscontrol.windows.net/* 的出站连接
+
+> [!NOTE]
+> 如果使用的是 1.0.8667.0 之前的 Azure AD Connect 版本，Microsoft 强烈建议升级到[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)，该版本包括许多写回网络增强功能，可简化配置。
+
+配置网络设备后，重新启动运行 Azure AD Connect 工具的计算机。
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>步骤 4：设置适当的 Active Directory 权限
 对于包含密码将要重置的用户的每个林，如果 X 是（初始配置期间）在配置向导中为该林指定的帐户，则必须为 X 授予对 `lockoutTime` 的“重置密码”、“更改密码”和“写入”权限，对 `pwdLastSet` 的“写入”权限，以及对该林中每个域的根对象的扩展权限。 应当将权限标记为“由所有用户对象继承”。  
@@ -321,7 +349,7 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 ## <a name="links-to-password-reset-documentation"></a>密码重置文档的链接
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* **你是否因登录时遇到问题而浏览至此？** 如果是这样， 可按以下方式更改和重置你的密码。
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
 * [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
 * [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为
 * [**最佳做法**](active-directory-passwords-best-practices.md) - 了解如何快速部署且有效管理组织的密码
@@ -365,6 +393,6 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 
