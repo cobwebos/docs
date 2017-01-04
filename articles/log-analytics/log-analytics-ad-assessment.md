@@ -4,7 +4,7 @@ description: "可以使用 Active Directory 评估解决方案定期评估服务
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -41,11 +41,11 @@ ms.openlocfilehash: 58eee787b54122380b48f1c7a96dbe2e79e4bcef
 * 代理必须安装在属于要评估的域成员的域控制器上。
 * Active Directory 评估解决方案要求在每台具有 OMS 代理的计算机上安装 .NET Framework 4。
 * 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 评估解决方案添加到 OMS 工作区。  无需进一步的配置。
-  
+
   > [!NOTE]
   > 添加该解决方案后，AdvisorAssessment.exe 文件将会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 OMS 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。
-  > 
-  > 
+  >
+  >
 
 ## <a name="active-directory-assessment-data-collection-details"></a>Active Directory 评估数据集合详细信息
 Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数据和性能数据。
@@ -99,11 +99,11 @@ Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数�
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>确定要忽略的建议
 1. 登录到工作区，并打开“日志搜索”。 使用以下查询列出对于你环境中计算机失败的建议。
-   
+
    ```
    Type=ADAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
-   
+
    下面是显示日志搜索查询的屏幕截图：![失败的建议](./media/log-analytics-ad-assessment/ad-failed-recommendations.png)
 2. 选择要忽略的建议。 将 RecommendationId 的值用于接下来的过程。
 
@@ -118,7 +118,7 @@ Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数�
 在下一次计划评估运行后（默认情况下每 7 天），指定的建议会被标记为“*已忽略*”，并且不会在评估仪表板上显示。
 
 1. 可以使用以下日志搜索查询列出所有已忽略的建议。
-   
+
     ```
     Type=ADAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
@@ -170,7 +170,6 @@ Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数�
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 AD 评估数据和建议。
-
 
 
 

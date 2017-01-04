@@ -38,18 +38,18 @@ ms.openlocfilehash: 6b1f72a6d6f5084e804078a4deb984ebace0ac58
 
  单击任意竞赛打开该竞赛的详细信息页，并阅读详细信息。 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送指向竞赛的链接，来邀请其他用户查看页面。
 
-![与朋友分享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![与朋友分享此项](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![添加你自己的备注](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![添加你自己的备注](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="enter-a-competition"></a>进入竞赛
 如果竞赛处于打开状态，详细信息页上的状态将为“活动”。 若要进入竞赛，请单击“进入竞赛”，然后将收到关于所需的资源和需要执行的步骤的说明。
 
-![竞赛已完成](media\\machine-learning-gallery-competitions\\open-competition.png)
+![竞赛已完成](media/machine-learning-gallery-competitions/open-competition.png)
 
 如果竞赛不再打开，它在详细信息页上的状态将是“已完成”，并且**进入竞赛**链接将替换为字词“已完成”。
 
-![竞赛已完成](media\\machine-learning-gallery-competitions\\completed-competition.png)
+![竞赛已完成](media/machine-learning-gallery-competitions/completed-competition.png)
 
 **[将我转到库 >>](http://gallery.cortanaintelligence.com)**
 

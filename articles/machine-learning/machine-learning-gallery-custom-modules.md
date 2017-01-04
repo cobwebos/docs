@@ -39,9 +39,9 @@ Cortana Intelligence 库中提供了大量**[自定义模块](https://gallery.co
 ### <a name="comment-and-share"></a>评论和共享
  单击任何模块，打开模块的详细信息页面，然后阅读有关模块功能和使用方法的信息。 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送自定义模块链接来邀请其他用户查看页面。
 
-![与朋友分享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![与朋友分享此项](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![添加你自己的备注](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![添加你自己的备注](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>下载
 你可在自己的实验中使用库中的任何自定义模块。
@@ -55,7 +55,7 @@ Cortana Intelligence 库中提供了大量**[自定义模块](https://gallery.co
 1. 创建新实验或打开现有实验
 2. 在实验画布左侧的模块面板中，单击“自定义”在工作区中展开自定义模块列表。
    
-    ![工作室面板中的自定义模块列表](media\\machine-learning-gallery-custom-modules\\custom-module-in-studio-palette.png)
+    ![工作室面板中的自定义模块列表](media/machine-learning-gallery-custom-modules/custom-module-in-studio-palette.png)
 3. 选择导入的模块，并将其拖动至实验
 
 ### <a name="from-the-gallery"></a>从库中获取
@@ -64,7 +64,7 @@ Cortana Intelligence 库中提供了大量**[自定义模块](https://gallery.co
 1. 在库中打开模块的详细信息页面
 2. 单击“在工作室中打开”
    
-    ![从库中打开自定义模块](media\\machine-learning-gallery-custom-modules\\open-custom-module-from-gallery.png)
+    ![从库中打开自定义模块](media/machine-learning-gallery-custom-modules/open-custom-module-from-gallery.png)
    
     每个自定义模块包含演示如何使用模块的示例实验。 单击“在工作室中打开”时，此示例将加载到机器学习工作室工作区并打开（如果尚未登录到工作室，在将实验复制到工作区前，系统会提示你使用 Microsoft 帐户进行登录）。
 
@@ -77,7 +77,7 @@ Cortana Intelligence 库中提供了大量**[自定义模块](https://gallery.co
 2. 选择“模块” - 显示可供选择的库模块列表，或者可使用搜索框查找特定模块。
 3. 将鼠标指向模块，然后选择“导入模块”（若要查看有关模块的信息，请选择“在库中查看”，这将你带至库中模块的详细信息页面）
    
-    ![将自定义模块导入机器学习工作室](media\\machine-learning-gallery-custom-modules\\add-custom-module-in-studio.png)
+    ![将自定义模块导入机器学习工作室](media/machine-learning-gallery-custom-modules/add-custom-module-in-studio.png)
 
 自定义模块将复制到工作区，并与其他所有内置或自定义工作室模块一起放置在模块面板中。 此时你可以在工作区中像使用其他任何模块一样使用自定义模块。
 

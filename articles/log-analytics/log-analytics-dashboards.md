@@ -4,7 +4,7 @@ description: "本指南可帮助你了解 Log Analytics 仪表板如何直观显
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -83,7 +83,6 @@ ms.openlocfilehash: afd1e5359edbdfdbd4a8afaac139f5877b306c2b
 
 ## <a name="next-steps"></a>后续步骤
 * 在 Log Analytics 中创建[警报](log-analytics-alerts.md)，以生成通知并解决问题。
-
 
 
 

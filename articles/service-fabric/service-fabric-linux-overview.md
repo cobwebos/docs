@@ -37,6 +37,7 @@ Linux 上的 Service Fabric 在概念上等同于 Windows 上的 Service Fabric�
 > 
 > 
 
+
 ## <a name="supported-tooling"></a>支持的工具
 预览版支持通过 Azure CLI 来与群集交互。 Java 开发人员可以通过 Linux 和 OSX 上支持的 Eclipse 来与 Eclipse 和 Yeoman 集成。 OSX 集成在幕后通过 vagrant 使用 Linux VM。 C# 开发人员可以借助与 Yeoman 的集成来生成应用程序模板。
 

@@ -4,7 +4,7 @@ description: "了解 Log Analytics 如何保护你的隐私和数据安全。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: d0f4323c22858300d95af7407cdb14995507ee60
@@ -116,7 +116,7 @@ OMS Log Analytics 满足以下要求：
 * Microsoft 可信计算
 * 作为一项 Azure 服务，OMS 使用的组件符合 Azure 合规性要求。 可以通过阅读 [Microsoft 信任中心合规性](https://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx)了解详细信息。
 
-> [!NOTE] 
+> [!NOTE]
 > 在某些认证/证明中，Log Analytics 使用其以前的名称 *Operational Insights* 列出。
 >
 >

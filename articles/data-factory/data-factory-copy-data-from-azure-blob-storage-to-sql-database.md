@@ -57,13 +57,13 @@ ms.openlocfilehash: 98a93b683da1bfdc28be1f6e21174f814dd65220
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击左侧菜单上的“更多服务”，然后选择“存储帐户”。
 
-    ![浏览存储帐户](media\\data-factory-copy-data-from-azure-blob-storage-to-sql-database\\browse-storage-accounts.png)
+    ![浏览存储帐户](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. 在“存储帐户”边栏选项卡中，选择要在本教程中使用的“Azure 存储帐户”。
 4. 在“设置”下，选择“访问密钥”链接。
 5. 在“存储帐户名”文本框旁，单击“复制”（图像）按钮，然后将其保存/粘贴到某个位置（例如：文本文件中）。
 6. 重复上一步以复制或记下 **key1**。
 
-    ![存储访问密钥](media\\data-factory-copy-data-from-azure-blob-storage-to-sql-database\\storage-access-key.png)
+    ![存储访问密钥](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
 7. 单击“X”关闭所有边栏选项卡。
 
 ## <a name="collect-sql-server-database-user-names"></a>收集 SQL Server、数据库和用户的名称

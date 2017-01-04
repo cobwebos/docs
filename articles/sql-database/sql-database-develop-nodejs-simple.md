@@ -3,7 +3,7 @@ title: "使用 Node.js 连接到 SQL 数据库| Microsoft 文档"
 description: "演示了一个可以用来连接到 Azure SQL 数据库的 Node.js 代码示例。"
 services: sql-database
 documentationcenter: 
-author: meet-bhagdev
+author: LuisBosquez
 manager: jhubbard
 editor: 
 ms.assetid: 53f70e37-5eb4-400d-972e-dd7ea0caacd4
@@ -13,8 +13,8 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: meetb
+ms.date: 12/24/2016
+ms.author: lbosq
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8d6dfe75c49bcf908325366d774e109a007ff5b5

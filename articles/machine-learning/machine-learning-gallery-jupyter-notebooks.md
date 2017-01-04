@@ -38,9 +38,9 @@ ms.openlocfilehash: a0d44e625d3898f014a9723ff005c00b3aaedcf1
 
  单击任意笔记本以打开笔记本的详细信息页面并了解更多信息。 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 同时可以通过电子邮件发送到该笔记本的链接来邀请其他用户查看此页面。
 
-![与朋友共享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![与朋友共享此项](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![添加你自己的备注](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![添加你自己的备注](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>下载
 你可以从库下载任何笔记本的副本到你的机器学习 Studio 工作室。
@@ -52,7 +52,7 @@ ms.openlocfilehash: a0d44e625d3898f014a9723ff005c00b3aaedcf1
 2. 单击“在工作室中打开”
 3. 选择要使用的区域和工作区
    
-    ![从库中打开 Jupyter 笔记本](media\\machine-learning-gallery-jupyter-notebooks\\open-notebook-from-gallery.png)
+    ![从库中打开 Jupyter 笔记本](media/machine-learning-gallery-jupyter-notebooks/open-notebook-from-gallery.png)
 
 单击“在工作室中打开”时，笔记本将加载到机器学习工作室工作区并打开（如果尚未登录到工作室，在将笔记本复制到工作区前，系统会提示你使用 Microsoft 帐户进行登录）。 稍后，你可以单击工作室首页左侧的“笔记本”，以便重新找到该笔记本。
 
@@ -63,7 +63,7 @@ ms.openlocfilehash: a0d44e625d3898f014a9723ff005c00b3aaedcf1
 2. 选择“笔记本”- 显示库中的笔记本列表，你可以从中选择，或者可以使用搜索框找到特定的笔记本
 3. 将鼠标指向笔记本并选择“打开笔记本”
    
-    ![从机器学习工作室内部打开库笔记本](media\\machine-learning-gallery-jupyter-notebooks\\open-notebook-from-studio.png)
+    ![从机器学习工作室内部打开库笔记本](media/machine-learning-gallery-jupyter-notebooks/open-notebook-from-studio.png)
 
 在机器学习工作室的 Jupyter 笔记本部分下载并打开笔记本的副本。
 该笔记本将与其他笔记本一起列出在工作室的**笔记本**页（位于[工作室首页](https://studio.azureml.net/)上，单击左侧的“笔记本”）。

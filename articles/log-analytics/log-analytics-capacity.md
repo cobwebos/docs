@@ -4,7 +4,7 @@ description: "Log Analytics 中的容量规划解决方案可用于帮助你了�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 57e7fbdaa393e078b62a6d6a0b181b67d532523d
@@ -27,8 +27,8 @@ ms.openlocfilehash: c34cda0da164c711c8effc78d2af38ad8df581aa
 
 > [!NOTE]
 > 不能将容量管理解决方案添加到工作区。 已安装容量管理解决方案的客户可以继续使用该解决方案。  
-> 
-> 
+>
+>
 
 个人预览版提供替换容量和性能解决方案。 此替换解决方案旨在通过原始容量管理解决方案解决以下客户报告的难题：
 
@@ -173,7 +173,6 @@ ms.openlocfilehash: c34cda0da164c711c8effc78d2af38ad8df581aa
 
 ## <a name="next-steps"></a>后续步骤
 * 使用[在 Log Analytics 中进行日志搜索](log-analytics-log-searches.md)查看详细的容量管理数据。
-
 
 
 

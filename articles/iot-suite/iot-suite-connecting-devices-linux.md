@@ -268,7 +268,7 @@ IoT 中心序列化程序客户端库使用一个模型来指定设备发送到 
                     thermostat->Commands = (char*)STRING_c_str(commandsMetadata);
    
                     /* Here is the actual send of the Device Info */
-                    if (SERIALIZE(&buffer, &bufferSize, thermostat->ObjectType, thermostat->Version, thermostat->IsSimulatedDevice, thermostat->DeviceProperties, thermostat->Commands) != IOT_AGENT_OK)
+                    if (SERIALIZE(&buffer, &bufferSize, thermostat->ObjectType, thermostat->Version, thermostat->IsSimulatedDevice, thermostat->DeviceProperties, thermostat->Commands) != CODEFIRST_OK)
                     {
                       (void)printf("Failed serializing\r\n");
                     }
@@ -294,7 +294,7 @@ IoT 中心序列化程序客户端库使用一个模型来指定设备发送到 
    
                   (void)printf("Sending sensor value Temperature = %d, Humidity = %d\r\n", thermostat->Temperature, thermostat->Humidity);
    
-                  if (SERIALIZE(&buffer, &bufferSize, thermostat->DeviceId, thermostat->Temperature, thermostat->Humidity, thermostat->ExternalTemperature) != IOT_AGENT_OK)
+                  if (SERIALIZE(&buffer, &bufferSize, thermostat->DeviceId, thermostat->Temperature, thermostat->Humidity, thermostat->ExternalTemperature) != CODEFIRST_OK)
                   {
                     (void)printf("Failed sending sensor value\r\n");
                   }

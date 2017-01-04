@@ -38,14 +38,14 @@ ms.openlocfilehash: d1020d153c283a7c0bcf71c479e6109f354de173
 
  单击任何解决方案，以打开其详细信息页并了解更多信息。 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送到解决方案的链接，来邀请其他用户查看页面。
 
-![与朋友分享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![与朋友分享此项](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![添加你自己的备注](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![添加你自己的备注](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="deploy"></a>部署
 如果要使用解决方案，请单击“部署”。 按照所示步骤，配置和部署工作区中的解决方案。
 
-![部署库解决方案](media\\machine-learning-gallery-solutions\\deploy-solution.png)
+![部署库解决方案](media/machine-learning-gallery-solutions/deploy-solution.png)
 
 **[将我转到库 >>](http://gallery.cortanaintelligence.com)**
 

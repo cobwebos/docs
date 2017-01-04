@@ -31,17 +31,17 @@ ms.openlocfilehash: a869c52c3e3574e4ffc958a82daaa12b2f6cb6c1
 
 标记和说明非常适合简单批注。 但是，为了帮助数据使用者更好地了解数据源的用法和数据源的业务方案，专家可以提供完整且详尽的文档。 记录数据源很简单。 选择数据资产或容器，然后选择“文档”。
 
-![](media\\data-catalog-documentation\\data-catalog-documentation.png)
+![](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>记录数据资产
 **Azure 数据目录**文档的优点让你可以使用数据目录作为内容存储库，创建完整的数据资产叙述。 可以浏览描述容器和表的详细内容。 如果其他内容存储库中已有内容（例如 SharePoint 或文件共享），可以添加资产文档链接来参考现有内容。 此功能使现有文档更容易被发现。
 
 > [!NOTE]
 > 文档不包括在搜索索引中。
-> 
-> 
+>
+>
 
-![](media\\data-catalog-documentation\\data-catalog-documentation2.png)
+![](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 文档级别范围可以从描述数据资产的特性和值到容器中表架构的详细说明。 应根据业务需求提供相应的文档级别。 但通常情况下，记录数据资产存在以下几种利弊：
 
@@ -51,7 +51,6 @@ ms.openlocfilehash: a869c52c3e3574e4ffc958a82daaa12b2f6cb6c1
 
 ## <a name="summary"></a>摘要
 使用 **Azure 数据目录**记录数据源可以根据需要尽可能详细地叙述数据资产。  通过使用链接，可以链接到现有内容存储库中存储的内容，将现有文档和数据资产结合起来。 用户发现合适的数据资产后，就可以获取一组完整的文档。
-
 
 
 

@@ -4,7 +4,7 @@ description: "Log Analytics 可以读取将诊断写入到表存储或将 IIS �
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -47,8 +47,8 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 
 > [!NOTE]
 > 当前不支持 Azure 网站中的 IIS 日志。
-> 
-> 
+>
+>
 
 对于虚拟机，可以选择将 [Log Analytics 代理](log-analytics-azure-vm-extension.md)安装到虚拟机来支持其他见解。 除了能够分析 IIS 日志和事件日志之外，还可以执行其他分析，包括配置更改跟踪、SQL 评估和更新评估。
 
@@ -57,12 +57,12 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>使用 Azure 门户在虚拟机中启用 Azure 诊断
 1. 创建虚拟机时安装 VM 代理。 如果虚拟机已存在，请验证 VM 代理是否已安装。
-   
+
    * 在 Azure 门户中，导航到虚拟机、选择“可选配置”、选择“诊断”，然后将“状态”设置为“开”。
-     
+
      完成后，VM 已安装 Azure 诊断扩展，并且该扩展正在运行。 此扩展将负责收集诊断数据。
 2. 在现有 VM 中启用监视，并配置事件日志记录。 可以启用 VM 级别的诊断。 若要启用诊断并配置事件日志记录，请执行以下步骤：
-   
+
    1. 选择 VM。
    2. 单击“监视”。
    3. 单击“诊断”。
@@ -143,8 +143,8 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 
 > [!NOTE]
 > 该门户不会验证源是否存在于存储帐户中，或者是否正在写入新数据。
-> 
-> 
+>
+>
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>使用 PowerShell 在虚拟机中为事件日志和 IIS 日志收集启用 Azure 诊断
 通过[将 Log Analytics 配置为编制 Azure 诊断索引](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics)中的步骤，将 PowerShell 用于从写入表存储的 Azure 诊断读取。
@@ -195,7 +195,6 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 * [使用 Blob 存储中的 JSON 文件](log-analytics-azure-storage-json.md)，以读取将诊断以 JSON 格式写入 Blob 存储的 Azure 服务中的日志。
 * [启用解决方案](log-analytics-add-solutions.md)深入分析数据。
 * [使用搜索查询](log-analytics-log-searches.md)分析数据。
-
 
 
 

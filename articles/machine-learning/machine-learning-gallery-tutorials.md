@@ -39,9 +39,9 @@ ms.openlocfilehash: dfeea14e412236b23f411fc4ad2a40223652a291
  单击任何收藏可打开该教程的详细信息页并了解关于该教程的详细信息。
 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 同时可以通过电子邮件发送到该教程的链接来邀请其他用户查看此页面。
 
-![与朋友共享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![与朋友共享此项](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![添加你自己的备注](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![添加你自己的备注](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="contribute"></a>参与
 你可以参与库的教程，以帮助其他用户解决问题或学习概念。
@@ -52,16 +52,16 @@ ms.openlocfilehash: dfeea14e412236b23f411fc4ad2a40223652a291
 * 使用你的 Microsoft 帐户登录到库
 * 单击窗口顶部的图像，然后单击你的姓名
   
-    ![单击帐户名](media\\machine-learning-gallery-tutorials\\click-account-name.png)
+    ![单击帐户名](media/machine-learning-gallery-tutorials/click-account-name.png)
 * 单击“新建项”
   
-    ![单击“新建项”](media\\machine-learning-gallery-collections\\click-new-item.png)
+    ![单击“新建项”](media/machine-learning-gallery-collections/click-new-item.png)
 * 为“**项类型**”选择“**收藏**”，然后为收藏提供名称、简短摘要、说明，以及将有助于用户找到收藏的任何标记
   
-    ![输入新收藏的信息](media\\machine-learning-gallery-tutorials\\create-tutorial-page-1.png)
+    ![输入新收藏的信息](media/machine-learning-gallery-tutorials/create-tutorial-page-1.png)
 * 单击“下一步”，你可以上载图像文件，或选择将与收藏一起显示的库存图像；选择将有助于用户识别内容和收藏用途的内容
   
-    ![输入新收藏的信息](media\\machine-learning-gallery-tutorials\\create-tutorial-page-2.png)
+    ![输入新收藏的信息](media/machine-learning-gallery-tutorials/create-tutorial-page-2.png)
 * 单击“**下一步**”，你可以决定教程是“公共”（任何人都可以查看）还是“未列出”（仅限具有直接链接的人可以查看教程）
   
   > [!IMPORTANT]
@@ -69,7 +69,7 @@ ms.openlocfilehash: dfeea14e412236b23f411fc4ad2a40223652a291
   > 
   > 
   
-    ![选择“公共”或“未列出”](media\\machine-learning-gallery-tutorials\\create-tutorial-page-3.png)
+    ![选择“公共”或“未列出”](media/machine-learning-gallery-tutorials/create-tutorial-page-3.png)
 * 单击“创建” 
 
 你的教程现在是 Cortana Intelligence 库的一部分。 它将在你帐户页的“项”选项卡下列出。

@@ -4,7 +4,7 @@ description: "日志搜索允许你将环境内来自多个源的任意计算机
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 0d7b6712-1722-423b-a60f-05389cde3625
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -180,8 +180,8 @@ Type=Event EventLog="Operations Manager" EventID:[2100..2199]
 
 > [!NOTE]
 > 必须使用的范围语法是冒号 (:) 字段：值分隔符和，而*不是*等号 (=)。 将范围的下限和上限括在方括号内，并用两个句点 (..) 将其分隔。
-> 
-> 
+>
+>
 
 ## <a name="manipulate-search-results"></a>操作搜索结果
 在搜索数据时，你会需要优化搜索查询并对结果拥有较好的控制级别。 检索出结果时，可应用命令将其转换。
@@ -574,7 +574,6 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 
 * 使用 [Log Analytics 中的自定义字段](log-analytics-custom-fields.md)扩展日志搜索。
 * 查看 [Log Analytics 日志搜索引用](log-analytics-search-reference.md)以查看 Log Analytics 中所有可用的搜索字段和 Facet。
-
 
 
 

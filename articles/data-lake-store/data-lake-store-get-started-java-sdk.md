@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 12/23/2016
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24

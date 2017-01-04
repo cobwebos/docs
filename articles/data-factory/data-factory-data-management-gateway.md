@@ -3,7 +3,7 @@ title: "数据工厂的数据管理网关 |Microsoft Docs"
 description: "设置数据网关，在本地和云之间移动数据。 使用 Azure 数据工厂中的数据管理网关移动数据。"
 services: data-factory
 documentationcenter: 
-author: linda33wj
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2016
-ms.author: jingwang
+ms.author: abnarain
 translationtype: Human Translation
 ms.sourcegitcommit: 1b2514e1e6f39bb3ce9d8a46f4af01835284cdcc
 ms.openlocfilehash: f0b3d45ea72ec3e7e0b19bc97ff9d8051067d1fa
@@ -21,7 +21,7 @@ ms.openlocfilehash: f0b3d45ea72ec3e7e0b19bc97ff9d8051067d1fa
 
 ---
 # <a name="data-management-gateway"></a>数据管理网关
-数据管理网关是必须安装到本地环境中的客户端代理，用于在云和本地数据存储之间复制数据。 [支持的数据源](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分列出了数据工厂支持的本地数据存储。 
+数据管理网关是必须安装到本地环境中的客户端代理，用于在云和本地数据存储之间复制数据。 [支持的数据源](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分列出了数据工厂支持的本地数据存储。
 
 > [!NOTE]
 > 目前，网关仅支持数据工厂中的复制活动和存储的过程活动。 不能使用自定义活动中的网关访问本地数据源。

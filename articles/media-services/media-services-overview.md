@@ -42,12 +42,11 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
     * [Azure 门户](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) （Azure 媒体服务资源管理器 (AMSE) 是适用于 Windows 的 Winforms/C# 应用程序）
 
-下图显示了在针对媒体服务 OData 模型开发时，某些最常用的对象。 
+下图显示了在针对媒体服务 OData 模型开发时，某些最常用的对象。
 
 单击图像可查看其完整大小。  
 
-<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
-
+<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a>  
 
 可以在[此处](https://media.windows.net/API/$metadata?api-version=2.14)查看整个模型。  
 
@@ -76,22 +75,22 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 有关介绍 Azure 媒体服务所有主要组件的操作说明系列文章，请参阅 [Azure 媒体服务分步教程](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)。 此系列文章全面概述了各个概念，并使用 AMSE 工具演示了 AMS 任务。 请注意 AMSE 工具是一种 Windows 工具。 使用 [AMS SDK for.NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java) 或 [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 以编程方式完成的大多数任务也可以使用此工具来完成。
 
 ## <a name="a-idvodscenariosadelivering-media-on-demand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>使用 Azure 媒体服务交付按需媒体：常见方案和任务
-本部分描述常见方案并提供相关主题的链接。 下图显示了参与点播内容交付的主要媒体服务平台部分。 
+本部分描述常见方案并提供相关主题的链接。 下图显示了参与点播内容交付的主要媒体服务平台部分。
 
 ![VoD 工作流](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 ### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>保护存储中的内容并以明文（非加密）形式交付流式处理媒体
 1. 将优质夹层文件上载到资产中。
-   
+
     建议向资产应用存储加密选项，以便在内容上载期间以及当内容在存储中处于静态时，为其提供保护。
-2. 编码为一组自适应比特率 MP4 文件。 
-   
+2. 编码为一组自适应比特率 MP4 文件。
+
     建议向输出资产应用存储加密选项，以便保护静态内容。
-3. 配置资产传送策略（由动态打包使用）。 
-   
-    如果你的资产已经过存储加密，则 **必须** 配置资产传送策略。 
+3. 配置资产传送策略（由动态打包使用）。
+
+    如果你的资产已经过存储加密，则 **必须** 配置资产传送策略。
 4. 通过创建 OnDemand 定位符来发布资产。
-   
+
     确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
 5. 流式传输已发布的内容。
 
@@ -104,28 +103,28 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 4. 配置内容密钥授权策略。
 5. 配置资产传送策略（由动态打包和动态加密使用）。
 6. 通过创建 OnDemand 定位符来发布资产。
-7. 流式传输已发布的内容。 
+7. 流式传输已发布的内容。
 
 ### <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>使用媒体分析从视频中汲取可以实施的见解
 媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
 
 1. 将优质夹层文件上载到资产中。
 2. 使用下述媒体分析服务之一来处理你的视频：
-   
+
    * **Indexer** – [使用 Azure Media Indexer 2 来处理视频](media-services-process-content-with-indexer2.md)
    * **Hyperlapse** – [Hyperlapse 媒体文件与 Azure Media Hyperlapse](media-services-hyperlapse-content.md)
    * **动作检测** – [Azure 媒体分析的动作检测](media-services-motion-detection.md)。
    * **面部检测和面部情绪** – [Azure 媒体分析的面部和情绪检测](media-services-face-and-emotion-detection.md)。
    * **视频摘要** – [使用 Azure 媒体视频缩略图创建视频摘要](media-services-video-summarization.md)
-3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，你可以采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，你可以从 Azure Blob 存储下载该文件。 
+3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，你可以采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，你可以从 Azure Blob 存储下载该文件。
 
 ### <a name="deliver-progressive-download"></a>提供渐进式下载
 1. 将优质夹层文件上载到资产中。
 2. 编码为单个 MP4 文件。
 3. 通过创建 OnDemand 或 SAS 定位符来发布资产。
-   
+
     如果使用 OnDemand 定位符，请确保你要从中以渐进方式下载内容的流式处理终结点上至少有一个串流保留单位。
-   
+
     如果使用 SAS 定位符，将从 Azure blob 存储中下载内容。 在这种情况下，不需要串流保留单位。
 4. 渐进式下载内容。
 
@@ -156,8 +155,8 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 > [!NOTE]
 > 当你需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，则可使用直通这种最经济的方法来实时传送视频流。 请参阅 [定价](https://azure.microsoft.com/pricing/details/media-services/) 详细信息。
-> 
-> 
+>
+>
 
 * 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理 （分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
 
@@ -210,7 +209,6 @@ Azure 媒体服务提供你所需的工具，以便你创建适用于大多数�
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 [live-overview1]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
-
 
 
 

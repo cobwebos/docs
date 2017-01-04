@@ -4,7 +4,7 @@ description: "使用 Log Analytics，可以帮助收集和分析处理从 Linux 
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -87,8 +87,8 @@ Operations Management Suite Agent for Linux 包含多个程序包。 发布文�
 
 > [!NOTE]
 > 收集 syslog 消息时需要 rsyslog 或 syslog ng。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 rsyslog 守护程序以替换 sysklog。
-> 
-> 
+>
+>
 
 ## <a name="quick-install"></a>快速安装
 运行以下命令以下载 omsagent，验证校验和，然后安装和载入代理。 这些命令适用于 64 位。 在 OMS 门户中，在“**连接的源**”选项卡上的“**设置**”下，找到工作区 ID 和主键。
@@ -215,8 +215,8 @@ Linux 性能计数器类似于 Windows 性能计数器 — 运行方式类似。
 
 > [!NOTE]
 > 凭据文件必须可供 omsagent 帐户读取。 建议以 omsgent 身份运行 mycimprovauth 命令。
-> 
-> 
+>
+>
 
 ```
 sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
@@ -280,8 +280,8 @@ Syslog-ng：/etc/syslog-ng/syslog-ng.conf
 
 > [!NOTE]
 > 如果编辑 syslog 配置，必须重新启动 syslog 守护程序才能使更改生效。
-> 
-> 
+>
+>
 
 OMS 的 OMS Agent for Linux 默认 syslog 配置如下︰
 
@@ -331,12 +331,12 @@ log { source(src); filter(f_warning_oms); destination(warning_oms); };
 要收集来自 Nagios 服务器的警报，需要进行以下配置更改。
 
 1. 向用户 **omsagent** 授予 Nagios 日志文件（即 /var/log/nagios/nagios.log/var/log/nagios/nagios.log）的读访问权限。 假定 nagios.log 文件归组 **nagios** 所有，你可以将用户 **omsagent** 添加到 **nagios** 组。
-   
+
     ```
     sudo usermod –a -G nagios omsagent
     ```
 2. 修改 omsagent.conf 配置文件 (/ etc/opt/microsoft/omsagent/conf/omsagent.conf)。 确保以下条目存在且未注释掉︰
-   
+
     ```
     <source>
     type tail
@@ -345,13 +345,13 @@ log { source(src); filter(f_warning_oms); destination(warning_oms); };
     format none
     tag oms.nagios
     </source>
-   
+
     <filter oms.nagios>
     type filter_nagios_log
     </filter>
     ```
 3. 重新启动 omsagent 守护程序︰
-   
+
     ```
     sudo service omsagent restart
     ```
@@ -383,7 +383,7 @@ Type=Alert
 #### <a name="to-view-all-nagios-alerts-with-log-analytics"></a>使用 Log Analytics 查看所有 Nagios 警报
 1. 在 Operations Management Suite 门户中，单击“**日志搜索**”磁贴。
 2. 在查询栏中，键入下面的搜索查询
-   
+
     ```
     Type=Alert SourceSystem=Nagios
     ```
@@ -394,7 +394,7 @@ Type=Alert
 ### <a name="to-view-all-zabbix-alerts-with-log-analytics"></a>使用 Log Analytics 查看所有 Zabbix 警报
 1. 在 Operations Management Suite 门户中，单击“**日志搜索**”磁贴。
 2. 在查询栏中，键入下面的搜索查询
-   
+
     ```
     Type=Alert SourceSystem=Zabbix
     ```
@@ -407,14 +407,14 @@ OMS Agent for Linux 与 System Center Operations Manager 代理共享代理二�
 
 > [!NOTE]
 > 如果 OMS Agent for Linux 安装到当前未由 Operations Manager 管理的计算机，而你稍后想要使用 Operations Manager 管理该计算机时，必须修改 OMI 配置才能发现该计算机。 **如果在安装 OMS Agent for Linux 之前安装了 Operations Manager 代理，则不需要此步骤。**
-> 
-> 
+>
+>
 
 ### <a name="to-enable-the-oms-agent-for-linux-to-communicate-with-operations-manager"></a>允许 OMS Agent for Linux 与 Operations Manager 进行通信
 1. 编辑文件 /etc/opt/omi/conf/omiserver.conf
 2. 确保以 **httpsport=** 开头的行定义了端口 1270。 例如，`httpsport=1270`
 3. 重新启动 OMI 服务器︰
-   
+
     ```
     service omiserver restart or systemctl restart omiserver
     ```
@@ -541,8 +541,8 @@ OMI 和 SCX 组件（这些组件提供性能指标数据）的日志位于以�
 
 > [!NOTE]
 > 如果 OMS 门户配置已启用，则将覆盖性能计数器和 syslog 的编辑配置文件。 可以在 OMS 门户中针对所有节点禁用配置，也可以通过运行以下命令针对单个节点禁用配置︰
-> 
-> 
+>
+>
 
 ```
 sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable
@@ -701,11 +701,11 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 * 在某些情况下，OMS Agent for Linux 配置代理可能无法与门户配置服务通信，导致未应用最新配置。
 * 使用以下命令验证是否安装了 `omsconfig` 代理：
-  
+
   * `dpkg --list omsconfig` 或 `rpm -qi omsconfig`
   * 如果未安装，请重新安装最新版本的 OMS Agent for Linux
 * 验证 `omsconfig` 代理是否可与 OMS 服务通信
-  
+
   * 运行 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` 命令
     * 上面的命令返回代理从门户中检索的配置（包括 Syslog 设置、Linux 性能计数器和自定义日志）
     * 如果上面的命令失败，则运行 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` 命令。 此命令会强制 omsconfig 代理与 OMS 服务进行通信以检索最新的配置。
@@ -726,7 +726,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 在 OMS 门户中，在“**数据**”选项卡的“**设置**”下，确保选择“**将下列配置应用于我的 Linux 服务器**”设置  
   ![应用配置](./media/log-analytics-linux-agents/customloglinuxenabled.png)
 * 验证 `omsconfig` 代理是否可与 OMS 服务通信
-  
+
   * 运行 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` 命令
   * 上面的命令返回代理从门户中检索的配置（包括 Syslog 设置、Linux 性能计数器和自定义日志）
   * 如果上面的命令失败，则运行 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` 命令。 此命令会强制 omsconfig 代理与 OMS 服务进行通信并检索最新的配置。
@@ -782,7 +782,6 @@ azure vm extension set <resource-group> <vm-name> LinuxDiagnostic Microsoft.OSTC
 * [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
 * 熟悉[日志搜索](log-analytics-log-searches.md)以查看解决方案收集的详细信息。
 * 使用[仪表板](log-analytics-dashboards.md)保存并显示你自己的自定义搜索。
-
 
 
 

@@ -40,9 +40,9 @@ ms.openlocfilehash: 3b14e3c9513d9e5ef022e3a2db0ab9e95598c0d7
 单击“查看全部”即可查看库中所有特定于行业的资源。
 在此页中，可以浏览库中的所有资源，还可以通过选择页面左侧的“筛选器条件”，并在顶部输入搜索词进行搜索。
 
-![与朋友分享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![与朋友分享此项](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![添加你自己的备注](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![添加你自己的备注](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
  有关详细信息，请单击任何库项，打开该项的详细信息页。
 

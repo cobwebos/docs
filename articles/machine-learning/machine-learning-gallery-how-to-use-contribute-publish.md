@@ -48,7 +48,7 @@ Cortana Intelligence 库包含各种可用于开发自己的分析解决方案�
 
 最后，**[竞赛](machine-learning-gallery-competitions.md)**提供了绝佳机会让你与数据科学家社区竞争，看谁能用 Cortana Intelligence Suite 解决复杂的问题。
 
-![Cortana Intelligence 库主页](media\\machine-learning-gallery-how-to-use-contribute-publish\\gallery-home-page.png)
+![Cortana Intelligence 库主页](media/machine-learning-gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
 ## <a name="discover-and-learn"></a>发现和了解
 任何人都可以浏览和搜索已由 Microsoft 和高级分析社区发表的不同类型的资源。
@@ -60,25 +60,25 @@ Cortana Intelligence 库包含各种可用于开发自己的分析解决方案�
 
 查看特定作者的发表内容，方法是从任何标题内单击作者名称：
 
-![查看作者的发布内容](media\\machine-learning-gallery-how-to-use-contribute-publish\\view-by-author.png)
+![查看作者的发布内容](media/machine-learning-gallery-how-to-use-contribute-publish/view-by-author.png)
 
 可以在每个资源页上评论、提供反馈，或者通过评论部分提问。
 甚至可以使用 LinkedIn 或 Twitter 的共享功能将感兴趣的资源与朋友或同事共享。
 你还可以通过电子邮件发送这些资源都链接，以邀请其他用户查看这些网页。
 
-![与朋友分享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\comment-and-share.png)
+![与朋友分享此项](media/machine-learning-gallery-how-to-use-contribute-publish/comment-and-share.png)
 
 ## <a name="contribute-to-the-gallery"></a>为库作贡献
 在登录到库时你即会成为库社区的一名成员。 这允许你提供自己的库项，以便其他人可以从你发现的解决方案中受益。
 
 当其他人在库中浏览你发布的内容时，你可以了解你的内容的查看数和下载数：
 
-![与朋友分享此项](media\\machine-learning-gallery-how-to-use-contribute-publish\\view-and-download-counts.png)
+![与朋友分享此项](media/machine-learning-gallery-how-to-use-contribute-publish/view-and-download-counts.png)
 
 用户还可以添加注释并与数据科学社区的其他成员共享你发布的内容。
 可以登录到类似于 Disqus 的讨论工具，接收通知以了解对你发布的内容所做的注释。
 
-![跟踪用户注释](media\\machine-learning-gallery-how-to-use-contribute-publish\\follow-comments.png)
+![跟踪用户注释](media/machine-learning-gallery-how-to-use-contribute-publish/follow-comments.png)
 
 你可以对库中的以下各项做出贡献 - 点击这些链接以了解详细信息：
 

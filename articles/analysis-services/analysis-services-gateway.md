@@ -64,8 +64,8 @@ ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
 2. 选择安装位置，并接受许可条款。
 3. 登录 Azure。
 4. 指定 Azure Analysis Server 名称。 每个网关只能指定一台服务器。 单击“配置”便可继续进行后续步骤。
-   
-    ![登录到 Azure](./media\\analysis-services-gateway\\aas-gateway-configure-server.png)
+
+    ![登录到 Azure](./media/analysis-services-gateway/aas-gateway-configure-server.png)
 
 ## <a name="how-it-works"></a>工作原理
 网关在组织网络中的计算机上作为 Windows 服务**本地数据网关**运行。 为与 Azure Analysis Services 配合使用而安装的网关基于用于其他服务（如 Power BI）的同一个网关，但配置方式有所差异。
@@ -93,8 +93,8 @@ ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
 
 > [!NOTE]
 > Azure 数据中心 IP 列表中列出的 IP 地址使用的是 CIDR 表示法。 例如，10.0.0.0/24 并不是指 10.0.0.0 到 10.0.0.24。 深入了解 [CIDR 表示法](http://whatismyipaddress.com/cidr)。
-> 
-> 
+>
+>
 
 以下是该网关所用的完全限定域名。
 
@@ -132,7 +132,6 @@ ms.openlocfilehash: 90584f60864589744888817ea71d0eb0d4d170ff
 ## <a name="next-steps"></a>后续步骤
 * [管理 Analysis Services](analysis-services-manage.md)
 * [从 Azure Analysis Services 获取数据](analysis-services-connect.md)
-
 
 
 

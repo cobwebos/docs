@@ -4,7 +4,7 @@ description: "Active Directory 复制状态解决方案包定期监视 Active Di
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -45,15 +45,15 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 1. 确认计算机是你要使用 AD 复制状态解决方案监视的域成员。
 2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 OMS](log-analytics-windows-agents.md) 或[使用现有 Operations Manager 环境将它连接到 OMS](log-analytics-om-agents.md)。
 3. 在该计算机上，设置以下注册表项：
-   
+
    * 关键值：**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
    * 值：**IsTarge**
    * 值数据：**true**
-   
+
    > [!NOTE]
    > 在重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 之后，这些更改才会生效。
-   > 
-   > 
+   >
+   >
 
 ## <a name="understanding-replication-errors"></a>了解复制错误
 将 AD 复制状态数据发送到 OMS 后，你将在 OMS 仪表板上看到类似如下的磁贴，指示当前的复制错误数。  
@@ -97,8 +97,8 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 > [!NOTE]
 > 所有逻辑删除生存期百分比计算都基于 Active Directory 林的实际逻辑删除生存期，因此，你可以确信这些百分比是准确的（即使你已设置自定义的逻辑删除生存期值）。
-> 
-> 
+>
+>
 
 ### <a name="ad-replication-status-details"></a>AD 复制状态详细信息
 当单击其中一个列表的任何一项时，你可以查看有关使用日志搜索的其他详细信息。 这些结果已经过筛选，只显示与该项相关的错误。 例如，如果单击**目标服务器状态 (ADDC02)** 下列出的第一个域控制器，你会看到搜索结果经过筛选，显示将该域控制器列为目标服务器的错误：
@@ -150,7 +150,6 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 Active Directory 复制状态数据。
-
 
 
 

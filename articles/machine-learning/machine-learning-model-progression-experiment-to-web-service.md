@@ -44,7 +44,7 @@ Azure 机器学习工作室提供交互式画布，允许你开发、运行、�
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>开发和部署预测性 Web 服务
 以下是在你使用机器学习工作室进行开发和部署时典型解决方案所遵循的各个阶段：
 
-![部署流](media\\machine-learning-model-progression-experiment-to-web-service\\model-stages-from-experiment-to-web-service.png)
+![部署流](media/machine-learning-model-progression-experiment-to-web-service/model-stages-from-experiment-to-web-service.png)
 
 *图 1 - 典型预测分析模型的各个阶段*
 

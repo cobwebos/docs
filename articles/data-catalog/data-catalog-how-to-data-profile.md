@@ -48,15 +48,15 @@ ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
 
 > [!NOTE]
 > 此外还可以向资产添加文档，描述如何将数据集成到应用程序。 请参阅[如何记录数据源](data-catalog-how-to-documentation.md)。
-> 
-> 
+>
+>
 
 <a name="howto"/>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>如何在注册数据源时包括数据配置文件
 想要包括数据源的配置文件很简单。 注册数据资产时，在数据源注册工具的“要注册的对象”面板中选择“包括数据配置文件”。
 
-![](media\\data-catalog-data-profile\\data-catalog-register-profile.png)
+![](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
 若要了解有关如何注册数据源的详细信息，请参阅[如何注册数据源](data-catalog-how-to-register.md)和 [Azure 数据目录入门](data-catalog-get-started.md)。
 
@@ -65,13 +65,13 @@ ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
 
 > [!NOTE]
 > 在数据源注册工具中选择“包括数据配置文件”将包括表和列级配置文件信息。 但是，数据目录 API 允许数据资产在只包含一组配置文件信息的情况下进行注册。
-> 
-> 
+>
+>
 
 ## <a name="viewing-data-profile-information"></a>查看数据配置文件信息
 找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 若要查看数据配置文件，请在数据目录门户窗口选择数据资产，然后选择“数据配置文件”。
 
-![](media\\data-catalog-data-profile\\data-catalog-view.png)
+![](media/data-catalog-data-profile/data-catalog-view.png)
 
 “Azure 数据目录”中的数据配置文件显示表和列配置文件信息，包括：
 
@@ -92,7 +92,6 @@ ms.openlocfilehash: 1d825277b63e00d93136161d50d780daa95ea8a7
 ## <a name="see-also"></a>另请参阅
 * [How to register data sources](data-catalog-how-to-register.md)
 * [Azure 数据目录入门](data-catalog-get-started.md)
-
 
 
 
