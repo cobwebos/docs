@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/27/2016
+ms.date: 01/04/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
 ms.sourcegitcommit: c9aa7cebab12eafe71476ee45ef578d3201e69e5
@@ -61,7 +61,6 @@ ms.openlocfilehash: e7c38aa5a778d5e8a653e753e5794d7c7da31dc1
 [22]: ./media/event-hubs-csharp-ephjava-getstarted/cs-send.png
 
 <!-- Links -->
-[Azure classic portal]: https://manage.windowsazure.com/
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3

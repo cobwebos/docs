@@ -55,61 +55,66 @@ ms.openlocfilehash: 21ec253e35b31af770cacb9747210deb4b9f5fa0
 
 此示例使用 **Cassandra** 链接服务。 有关此链接服务支持的属性，请参阅 [Cassandra 链接服务](#onpremisescassandra-linked-service-properties)部分。  
 
+```JSON
+{
+    "name": "CassandraLinkedService",
+    "properties":
     {
-        "name": "CassandraLinkedService",
-        "properties":
+        "type": "OnPremisesCassandra",
+        "typeProperties":
         {
-            "type": "OnPremisesCassandra",
-            "typeProperties":
-            {
-                "authenticationType": "Basic",
-                "host": "mycassandraserver",
-                "port": 9042,
-                "username": "user",
-                "password": "password",
-                "gatewayName": "mygateway"
-            }
+            "authenticationType": "Basic",
+            "host": "mycassandraserver",
+            "port": 9042,
+            "username": "user",
+            "password": "password",
+            "gatewayName": "mygateway"
         }
     }
-
+}
+```
 
 **Azure 存储链接服务**
 
-    {
-        "name": "AzureStorageLinkedService",
-        "properties": {
-        "type": "AzureStorage",
-            "typeProperties": {
-                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+```JSON
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+    "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
     }
+}
+```
 
 **Cassandra 输入数据集**
 
-    {
-        "name": "CassandraInput",
-        "properties": {
-            "linkedServiceName": "CassandraLinkedService",
-            "type": "CassandraTable",
-            "typeProperties": {
-                "tableName": "mytable",
-                "keySpace": "mykeyspace"
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {
-                "externalData": {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
+```JSON
+{
+    "name": "CassandraInput",
+    "properties": {
+        "linkedServiceName": "CassandraLinkedService",
+        "type": "CassandraTable",
+        "typeProperties": {
+            "tableName": "mytable",
+            "keySpace": "mykeyspace"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
             }
         }
     }
+}
+```
 
 将“external”设置为“true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
@@ -117,24 +122,25 @@ ms.openlocfilehash: 21ec253e35b31af770cacb9747210deb4b9f5fa0
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
 
+```JSON
+{
+    "name": "AzureBlobOutput",
+    "properties":
     {
-        "name": "AzureBlobOutput",
-        "properties":
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties":
         {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties":
-            {
-                "folderPath": "adfgetstarted/fromcassandra"
-            },
-            "availability":
-            {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "folderPath": "adfgetstarted/fromcassandra"
+        },
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
+}
+```
 
 **包含复制活动的管道**
 
@@ -142,51 +148,54 @@ ms.openlocfilehash: 21ec253e35b31af770cacb9747210deb4b9f5fa0
 
 有关 RelationalSource 支持的属性的列表，请参阅 [RelationalSource 类型属性](#cassandrasource-type-properties)。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-            "start":"2016-06-01T18:00:00",
-            "end":"2016-06-01T19:00:00",
-            "description":"pipeline with copy activity",
-            "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+        "start":"2016-06-01T18:00:00",
+        "end":"2016-06-01T19:00:00",
+        "description":"pipeline with copy activity",
+        "activities":[  
+        {
+            "name": "CassandraToAzureBlob",
+            "description": "Copy from Cassandra to an Azure blob",
+            "type": "Copy",
+            "inputs": [
             {
-                "name": "CassandraToAzureBlob",
-                "description": "Copy from Cassandra to an Azure blob",
-                "type": "Copy",
-                "inputs": [
-                {
-                    "name": "CassandraInput"
-                }
-                ],
-                "outputs": [
-                {
-                    "name": "AzureBlobOutput"
-                }
-                ],
-                "typeProperties": {
-                    "source": {
-                        "type": "CassandraSource",
-                        "query": "select id, firstname, lastname from mykeyspace.mytable"
-
-                    },
-                    "sink": {
-                        "type": "BlobSink"
-                    }
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "policy": {
-                    "concurrency": 1,
-                    "executionPriorityOrder": "OldestFirst",
-                    "retry": 0,
-                    "timeout": "01:00:00"
-                }
+                "name": "CassandraInput"
             }
-            ]    
+            ],
+            "outputs": [
+            {
+                "name": "AzureBlobOutput"
+            }
+            ],
+            "typeProperties": {
+                "source": {
+                    "type": "CassandraSource",
+                    "query": "select id, firstname, lastname from mykeyspace.mytable"
+
+                },
+                "sink": {
+                    "type": "BlobSink"
+                }
+            },
+            "scheduler": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "policy": {
+                "concurrency": 1,
+                "executionPriorityOrder": "OldestFirst",
+                "retry": 0,
+                "timeout": "01:00:00"
+            }
         }
+        ]    
     }
+}
+```
+
 ## <a name="onpremisescassandra-linked-service-properties"></a>OnPremisesCassandra 链接服务属性
 下表提供特定于 Cassandra 链接服务的 JSON 元素的说明。
 

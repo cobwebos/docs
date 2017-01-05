@@ -55,153 +55,159 @@ ms.openlocfilehash: f27d978eab3aba52ee9a51a5f284b592e3edd6af
 
 请参阅 [FTP 链接服务](#ftp-linked-service-properties)一节，了解各种可使用的身份验证。
 
-    {
-        "name": "FTPLinkedService",
-        "properties": {
-        "type": "FtpServer",
-        "typeProperties": {
-            "host": "myftpserver.com",           
-            "authenticationType": "Basic",
-            "username": "Admin",
-            "password": "123456"
-        }
-      }
+```JSON
+{
+    "name": "FTPLinkedService",
+    "properties": {
+    "type": "FtpServer",
+    "typeProperties": {
+        "host": "myftpserver.com",           
+        "authenticationType": "Basic",
+        "username": "Admin",
+        "password": "123456"
     }
-
+  }
+}
+```
 **Azure 存储链接服务**
 
-    {
-      "name": "AzureStorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "AzureStorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 **FTP 输入数据集** 此数据集指 FTP 文件夹 `mysharedfolder` 和文件 `test.csv`。 该管道将文件复制到目标。
 
 设置 "external": "true" 将告知数据工厂服务：数据集位于数据工厂外且不由数据工厂中的活动生成。
 
-    {
-      "name": "FTPFileInput",
-      "properties": {
-        "type": "FileShare",
-        "linkedServiceName": "FTPLinkedService",
-        "typeProperties": {
-          "folderPath": "mysharedfolder",
-          "fileName": "test.csv",
-          "useBinaryTransfer": true
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "FTPFileInput",
+  "properties": {
+    "type": "FileShare",
+    "linkedServiceName": "FTPLinkedService",
+    "typeProperties": {
+      "folderPath": "mysharedfolder",
+      "fileName": "test.csv",
+      "useBinaryTransfer": true
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
-
+  }
+}
+```
 
 **Azure Blob 输出数据集**
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
-    {
-        "name": "AzureBlobOutput",
-        "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mycontainer/ftp/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
-                "format": {
-                    "type": "TextFormat",
-                    "rowDelimiter": "\n",
-                    "columnDelimiter": "\t"
-                },
-                "partitionedBy": [
-                    {
-                        "name": "Year",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "yyyy"
-                        }
-                    },
-                    {
-                        "name": "Month",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "MM"
-                        }
-                    },
-                    {
-                        "name": "Day",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "dd"
-                        }
-                    },
-                    {
-                        "name": "Hour",
-                        "value": {
-                            "type": "DateTime",
-                            "date": "SliceStart",
-                            "format": "HH"
-                        }
-                    }
-                ]
+```JSON
+{
+    "name": "AzureBlobOutput",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mycontainer/ftp/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+            "format": {
+                "type": "TextFormat",
+                "rowDelimiter": "\n",
+                "columnDelimiter": "\t"
             },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "Day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                },
+                {
+                    "name": "Hour",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "HH"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
+}
+```
 
 
 **包含复制活动的管道**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **FileSystemSource**，将 **sink** 类型设置为 **BlobSink**。
 
-    {
-        "name": "pipeline",
-        "properties": {
-            "activities": [{
-                "name": "FTPToBlobCopy",
-                "inputs": [{
-                    "name": "FtpFileInput"
-                }],
-                "outputs": [{
-                    "name": "AzureBlobOutput"
-                }],
-                "type": "Copy",
-                "typeProperties": {
-                    "source": {
-                        "type": "FileSystemSource"
-                    },
-                    "sink": {
-                        "type": "BlobSink"
-                    }
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "policy": {
-                    "concurrency": 1,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "00:05:00"
-                }
+```JSON
+{
+    "name": "pipeline",
+    "properties": {
+        "activities": [{
+            "name": "FTPToBlobCopy",
+            "inputs": [{
+                "name": "FtpFileInput"
             }],
-            "start": "2016-08-24T18:00:00Z",
-            "end": "2016-08-24T19:00:00Z"
-        }
+            "outputs": [{
+                "name": "AzureBlobOutput"
+            }],
+            "type": "Copy",
+            "typeProperties": {
+                "source": {
+                    "type": "FileSystemSource"
+                },
+                "sink": {
+                    "type": "BlobSink"
+                }
+            },
+            "scheduler": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "policy": {
+                "concurrency": 1,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "00:05:00"
+            }
+        }],
+        "start": "2016-08-24T18:00:00Z",
+        "end": "2016-08-24T19:00:00Z"
     }
+}
+```
 
 ## <a name="ftp-linked-service-properties"></a>FTP 链接服务属性
 下表提供 FTP 链接服务专属的 JSON 元素描述。
@@ -220,62 +226,73 @@ ms.openlocfilehash: f27d978eab3aba52ee9a51a5f284b592e3edd6af
 | enableServerCertificateValidation |指定使用 FTP over SSL/TLS 通道时，是否启用服务器 SSL 证书验证 |否 |是 |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名身份验证
-    {
-        "name": "FTPLinkedService",
-        "properties": {
-            "type": "FtpServer",
-            "typeProperties": {        
-                "authenticationType": "Anonymous",
-                  "host": "myftpserver.com"
-            }
+
+```JSON
+{
+    "name": "FTPLinkedService",
+    "properties": {
+        "type": "FtpServer",
+        "typeProperties": {        
+            "authenticationType": "Anonymous",
+              "host": "myftpserver.com"
         }
     }
+}
+```
 
 ### <a name="using-username-and-password-in-plain-text-for-basic-authentication"></a>使用纯文本用户名和密码进行基本身份验证
-    {
-        "name": "FTPLinkedService",
-          "properties": {
-        "type": "FtpServer",
-            "typeProperties": {
-                "host": "myftpserver.com",
-                "authenticationType": "Basic",
-                "username": "Admin",
-                "password": "123456"
-            }
-          }
-    }
 
+```JSON
+{
+    "name": "FTPLinkedService",
+      "properties": {
+    "type": "FtpServer",
+        "typeProperties": {
+            "host": "myftpserver.com",
+            "authenticationType": "Basic",
+            "username": "Admin",
+            "password": "123456"
+        }
+      }
+}
+```
 
 ### <a name="using-port-enablessl-enableservercertificatevalidation"></a>使用端口、enableSsl、enableServerCertificateValidation
-    {
-        "name": "FTPLinkedService",
-        "properties": {
-            "type": "FtpServer",
-            "typeProperties": {
-                "host": "myftpserver.com",
-                "authenticationType": "Basic",    
-                "username": "Admin",
-                "password": "123456",
-                "port": "21",
-                "enableSsl": true,
-                "enableServerCertificateValidation": true
-            }
+ 
+```JSON
+{
+    "name": "FTPLinkedService",
+    "properties": {
+        "type": "FtpServer",
+        "typeProperties": {
+            "host": "myftpserver.com",
+            "authenticationType": "Basic",    
+            "username": "Admin",
+            "password": "123456",
+            "port": "21",
+            "enableSsl": true,
+            "enableServerCertificateValidation": true
         }
     }
+}
+```
 
 ### <a name="using-encryptedcredential-for-authentication-and-gateway"></a>将 encryptedCredential 用于身份验证和网关
-    {
-        "name": "FTPLinkedService",
-        "properties": {
-            "type": "FtpServer",
-            "typeProperties": {
-                "host": "myftpserver.com",
-                "authenticationType": "Basic",
-                "encryptedCredential": "xxxxxxxxxxxxxxxxx",
-                "gatewayName": "mygateway"
-            }
-          }
-    }
+    
+```JSON
+{
+    "name": "FTPLinkedService",
+    "properties": {
+        "type": "FtpServer",
+        "typeProperties": {
+            "host": "myftpserver.com",
+            "authenticationType": "Basic",
+            "encryptedCredential": "xxxxxxxxxxxxxxxxx",
+            "gatewayName": "mygateway"
+        }
+      }
+}
+```
 
 请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)，了解有关设置本地 FTP 数据源凭据的详细信息。
 

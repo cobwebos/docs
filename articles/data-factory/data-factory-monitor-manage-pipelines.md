@@ -186,21 +186,25 @@ ms.openlocfilehash: 43b828bad5d21fe0f452aa23bbdf6fff758525f2
 
 若要挂起管道，请运行以下 PowerShell 命令：
 
-    Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
-
+```powershell
+Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+```
 例如：
 
-    Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
+```powershell
+Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
+```
 
 使用 **PartitionProductsUsagePipeline** 解决问题后，可通过运行以下 PowerShell 命令来恢复挂起的管道：
 
-    Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
-
+```powershell
+Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+```
 例如：
 
-    Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
-
-
+```powershell
+Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
+```
 ## <a name="debug-pipelines"></a>调试管道
 Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排查管道问题的丰富功能。
 
@@ -221,50 +225,60 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 #### <a name="use-the-powershell-to-debug-an-error"></a>使用 PowerShell 调试错误
 1. 启动 **Azure PowerShell**。
 2. 运行 **Get-AzureRmDataFactorySlice** 命令查看切片及其状态。 可看到“失败”状态的切片。        
-   
-         Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
-   
+
+    ```powershell   
+    Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+    ```   
    例如：
-   
-         Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+
+    ```powershell   
+    Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+    ```
    
    使用为 Set-AzureRmDataFactoryPipelineActivePeriod 指定的 StartDateTime 值替换 **StartDateTime**。
 3. 现在，运行 **Get-AzureRmDataFactoryRun** cmdlet 来获取有关切片活动运行的详细信息。
-   
-        Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] 
-        <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
-   
+
+    ```powershell   
+    Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] 
+    <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
+    ```
+  
     例如：
-   
-        Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+
+    ```powershell   
+    Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+    ```
    
     StartDateTime 的值是上一步中记下的错误/问题切片的开始时间。 date-time 应括在双引号内。
 4. 可看到包含错误详细信息的输出（类似以下内容）：
-   
-        Id                      : 841b77c9-d56c-48d1-99a3-8c16c3e77d39
-        ResourceGroupName       : ADF
-        DataFactoryName         : LogProcessingFactory3
-        DatasetName               : EnrichedGameEventsTable
-        ProcessingStartTime     : 10/10/2014 3:04:52 AM
-        ProcessingEndTime       : 10/10/2014 3:06:49 AM
-        PercentComplete         : 0
-        DataSliceStart          : 5/5/2014 12:00:00 AM
-        DataSliceEnd            : 5/6/2014 12:00:00 AM
-        Status                  : FailedExecution
-        Timestamp               : 10/10/2014 3:04:52 AM
-        RetryAttempt            : 0
-        Properties              : {}
-        ErrorMessage            : Pig script failed with exit code '5'. See wasb://        adfjobs@spestore.blob.core.windows.net/PigQuery
-                                        Jobs/841b77c9-d56c-48d1-99a3-
-                    8c16c3e77d39/10_10_2014_03_04_53_277/Status/stderr' for
-                    more details.
-        ActivityName            : PigEnrichLogs
-        PipelineName            : EnrichGameLogsPipeline
-        Type                    :
+
+    ```   
+    Id                      : 841b77c9-d56c-48d1-99a3-8c16c3e77d39
+    ResourceGroupName       : ADF
+    DataFactoryName         : LogProcessingFactory3
+    DatasetName               : EnrichedGameEventsTable
+    ProcessingStartTime     : 10/10/2014 3:04:52 AM
+    ProcessingEndTime       : 10/10/2014 3:06:49 AM
+    PercentComplete         : 0
+    DataSliceStart          : 5/5/2014 12:00:00 AM
+    DataSliceEnd            : 5/6/2014 12:00:00 AM
+    Status                  : FailedExecution
+    Timestamp               : 10/10/2014 3:04:52 AM
+    RetryAttempt            : 0
+    Properties              : {}
+    ErrorMessage            : Pig script failed with exit code '5'. See wasb://        adfjobs@spestore.blob.core.windows.net/PigQuery
+                                    Jobs/841b77c9-d56c-48d1-99a3-
+                8c16c3e77d39/10_10_2014_03_04_53_277/Status/stderr' for
+                more details.
+    ActivityName            : PigEnrichLogs
+    PipelineName            : EnrichGameLogsPipeline
+    Type                    :
+    ```
 5. 可通过从输出中看到的 ID 值运行 **Save-AzureRmDataFactoryLog** cmdlet，并使用用于 cmdlet 的 **-DownloadLogsoption** 下载日志文件。
    
-        Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
-
+    ```powershell
+    Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
+    ```
 ## <a name="rerun-failures-in-a-pipeline"></a>管道中的重新运行故障
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 排除和调试管道中的故障后，便可通过导航到错误切片并在命令栏上单击“运行”按钮来重新运行失败命令。
@@ -281,8 +295,9 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 
 将 UpdateType 设置为 UpstreamInPipeline，这意味着表中每个切片和所有相关（上游）表的状态都将设置为“等待”。 此参数的其他可能值为“Individual”。
 
-    Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
-
+```powershell
+Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+```
 
 ## <a name="create-alerts"></a>创建警报
 创建、更新或删除 Azure 资源（例如，数据工厂）时 Azure 会记录用户事件。 可以基于这些事件创建警报。 利用数据工厂，可以捕获各种指标并创建指标相关警报。 建议将事件用于实时监视，将指标用于历史查询。 
@@ -304,48 +319,52 @@ Azure 事件可提供有关 Azure 资源中所发生情况的有用见解。 创
 #### <a name="specifying-an-alert-definition"></a>指定警报定义：
 若要指定警报定义，可创建一个 JSON 文件，说明要对其发出警报的操作。 在以下示例中，警报会对 RunFinished 操作发送电子邮件通知。 具体而言，数据工厂中的运行已完成，但未成功运行时将发送电子邮件通知（状态 = FailedExecution）。
 
-    {
-        "contentVersion": "1.0.0.0",
-         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-        "parameters": {},
-        "resources": 
-        [
+```JSON
+{
+    "contentVersion": "1.0.0.0",
+     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "parameters": {},
+    "resources": 
+    [
+        {
+            "name": "ADFAlertsSlice",
+            "type": "microsoft.insights/alertrules",
+            "apiVersion": "2014-04-01",
+            "location": "East US",
+            "properties": 
             {
                 "name": "ADFAlertsSlice",
-                "type": "microsoft.insights/alertrules",
-                "apiVersion": "2014-04-01",
-                "location": "East US",
-                "properties": 
+                "description": "One or more of the data slices for the Azure Data Factory has failed processing.",
+                "isEnabled": true,
+                "condition": 
                 {
-                    "name": "ADFAlertsSlice",
-                    "description": "One or more of the data slices for the Azure Data Factory has failed processing.",
-                    "isEnabled": true,
-                    "condition": 
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition",
+                    "dataSource": 
                     {
-                        "odata.type": "Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition",
-                        "dataSource": 
-                        {
-                            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
-                            "operationName": "RunFinished",
-                            "status": "Failed",
-                            "subStatus": "FailedExecution"   
-                        }
-                    },
-                    "action": 
-                    {
-                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-                        "customEmails": [ "<your alias>@contoso.com" ]
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
+                        "operationName": "RunFinished",
+                        "status": "Failed",
+                        "subStatus": "FailedExecution"   
                     }
+                },
+                "action": 
+                {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails": [ "<your alias>@contoso.com" ]
                 }
             }
-        ]
-    }
+        }
+    ]
+}
+```
 
 如果不想收到特定故障的警报，可从 JSON 定义删除 **subStatus**。
 
 此示例将为订阅中的所有数据工厂设置警报。 如果要为特定数据工厂设置警报，可在 **dataSource** 中指定数据工厂 **resourceUri**：
 
-    "resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>"
+```JSON
+"resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>"
+```
 
 下表提供了可用操作和状态（和子状态）的列表。
 
@@ -362,24 +381,28 @@ Azure 事件可提供有关 Azure 资源中所发生情况的有用见解。 创
 #### <a name="deploying-the-alert"></a>部署警报
 若要部署警报，请使用 Azure PowerShell cmdlet：**New-AzureRmResourceGroupDeployment**，如以下示例所示：
 
-    New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
+```
 
 成功完成资源组部署后，将看到以下消息：
 
-    VERBOSE: 7:00:48 PM - Template is valid.
-    WARNING: 7:00:48 PM - The StorageAccountName parameter is no longer used and will be removed in a future release.
-    Please update scripts to remove this parameter.
-    VERBOSE: 7:00:49 PM - Create template deployment 'ADFAlertFailedSlice'.
-    VERBOSE: 7:00:57 PM - Resource microsoft.insights/alertrules 'ADFAlertsSlice' provisioning status is succeeded
+```
+VERBOSE: 7:00:48 PM - Template is valid.
+WARNING: 7:00:48 PM - The StorageAccountName parameter is no longer used and will be removed in a future release.
+Please update scripts to remove this parameter.
+VERBOSE: 7:00:49 PM - Create template deployment 'ADFAlertFailedSlice'.
+VERBOSE: 7:00:57 PM - Resource microsoft.insights/alertrules 'ADFAlertsSlice' provisioning status is succeeded
 
-    DeploymentName    : ADFAlertFailedSlice
-    ResourceGroupName : adf
-    ProvisioningState : Succeeded
-    Timestamp         : 10/11/2014 2:01:00 AM
-    Mode              : Incremental
-    TemplateLink      :
-    Parameters        :
-    Outputs           :
+DeploymentName    : ADFAlertFailedSlice
+ResourceGroupName : adf
+ProvisioningState : Succeeded
+Timestamp         : 10/11/2014 2:01:00 AM
+Mode              : Incremental
+TemplateLink      :
+Parameters        :
+Outputs           :
+```
 
 > [!NOTE]
 > 可以使用 [Create Alert Rule](https://msdn.microsoft.com/library/azure/dn510366.aspx)（创建警报规则）REST API 来创建警报规则。 JSON 有效负载类似于 JSON 示例。  
@@ -389,17 +412,20 @@ Azure 事件可提供有关 Azure 资源中所发生情况的有用见解。 创
 #### <a name="retrieving-the-list-of-azure-resource-group-deployments"></a>检索 Azure 资源组部署的列表
 若要检索已部署 Azure 资源组部署的列表，请使用 cmdlet：**Get-AzureRmResourceGroupDeployment**，如以下示例所示：
 
-    Get-AzureRmResourceGroupDeployment -ResourceGroupName adf
+```powershell
+Get-AzureRmResourceGroupDeployment -ResourceGroupName adf
+```
 
-    DeploymentName    : ADFAlertFailedSlice
-    ResourceGroupName : adf
-    ProvisioningState : Succeeded
-    Timestamp         : 10/11/2014 2:01:00 AM
-    Mode              : Incremental
-    TemplateLink      :
-    Parameters        :
-    Outputs           :
-
+```
+DeploymentName    : ADFAlertFailedSlice
+ResourceGroupName : adf
+ProvisioningState : Succeeded
+Timestamp         : 10/11/2014 2:01:00 AM
+Mode              : Incremental
+TemplateLink      :
+Parameters        :
+Outputs           :
+```
 
 #### <a name="troubleshooting-user-events"></a>用户事件故障排除
 1. 单击“指标和操作”磁贴后，可查看生成的所有事件。
@@ -420,58 +446,74 @@ Azure 事件可提供有关 Azure 资源中所发生情况的有用见解。 创
 
 请参阅 [Azure Insight Cmdlet](https://msdn.microsoft.com/library/mt282452.aspx) 一文，了解可用于添加/获取/删除警报的 PowerShell cmdlet。 下面是使用 **Get-AlertRule** cmdlet 的几个示例： 
 
-    PS C:\> get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
+```powershell
+get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
+```
 
-            Properties :
-            Action      : Microsoft.Azure.Management.Insights.Models.RuleEmailAction
-            Condition   :
-            DataSource :
-            EventName             :
-            Category              :
-            Level                 :
-            OperationName         : RunFinished
-            ResourceGroupName     :
-            ResourceProviderName  :
-            ResourceId            :
-            Status                : Failed
-            SubStatus             : FailedExecution
-            Claims                : Microsoft.Azure.Management.Insights.Models.RuleManagementEventClaimsDataSource
-            Condition      :
-            Description : One or more of the data slices for the Azure Data Factory has failed processing.
-            Status      : Enabled
-            Name:       : ADFAlertsSlice
-            Tags       :
-            $type          : Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage
-            Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/ADFAlertsSlice
-            Location   : West US
-            Name       : ADFAlertsSlice
+```
+Properties :
+Action      : Microsoft.Azure.Management.Insights.Models.RuleEmailAction
+Condition   :
+DataSource :
+EventName             :
+Category              :
+Level                 :
+OperationName         : RunFinished
+ResourceGroupName     :
+ResourceProviderName  :
+ResourceId            :
+Status                : Failed
+SubStatus             : FailedExecution
+Claims                : Microsoft.Azure.Management.Insights.Models.RuleManagementEventClaimsDataSource
+Condition      :
+Description : One or more of the data slices for the Azure Data Factory has failed processing.
+Status      : Enabled
+Name:       : ADFAlertsSlice
+Tags       :
+$type          : Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage
+Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/ADFAlertsSlice
+Location   : West US
+Name       : ADFAlertsSlice
+```
 
-    PS C:\> Get-AlertRule -res $resourceGroup
+```powershell
+Get-AlertRule -res $resourceGroup
+```
+```
+Properties : Microsoft.Azure.Management.Insights.Models.Rule
+Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
+Location   : West US
+Name       : FailedExecutionRunsWest0
 
-            Properties : Microsoft.Azure.Management.Insights.Models.Rule
-            Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-            Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
-            Location   : West US
-            Name       : FailedExecutionRunsWest0
+Properties : Microsoft.Azure.Management.Insights.Models.Rule
+Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest3
+Location   : West US
+Name       : FailedExecutionRunsWest3
+```
 
-            Properties : Microsoft.Azure.Management.Insights.Models.Rule
-            Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-            Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest3
-            Location   : West US
-            Name       : FailedExecutionRunsWest3
+```powershell
+Get-AlertRule -res $resourceGroup -Name FailedExecutionRunsWest0
+```
 
-    PS C:\> Get-AlertRule -res $resourceGroup -Name FailedExecutionRunsWest0
-
-            Properties : Microsoft.Azure.Management.Insights.Models.Rule
-            Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-            Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
-            Location   : West US
-            Name       : FailedExecutionRunsWest0
+```
+Properties : Microsoft.Azure.Management.Insights.Models.Rule
+Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
+Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
+Location   : West US
+Name       : FailedExecutionRunsWest0
+```
 
 运行以下 get-help 命令，以查看 Get-AlertRule cmdlet 的详细信息和示例。 
 
-    get-help Get-AlertRule -detailed 
-    get-help Get-AlertRule -examples
+```powershell
+get-help Get-AlertRule -detailed
+```
+
+```powershell 
+get-help Get-AlertRule -examples
+```
 
 
 * 如果在门户边栏选项卡上可看到警报生成事件，但无法接收电子邮件通知，请检查是否已将指定的电子邮件地址设置为接收来自外部发件人的电子邮件。 警报电子邮件可能已被电子邮件设置阻止。
@@ -539,43 +581,45 @@ Azure 事件可提供有关 Azure 资源中所发生情况的有用见解。 创
 
 **警报定义：**
 
+```JSON
+{
+    "contentVersion" : "1.0.0.0",
+    "$schema" : "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "parameters" : {},
+    "resources" : [
     {
-        "contentVersion" : "1.0.0.0",
-        "$schema" : "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-        "parameters" : {},
-        "resources" : [
-        {
+            "name" : "FailedRunsGreaterThan5",
+            "type" : "microsoft.insights/alertrules",
+            "apiVersion" : "2014-04-01",
+            "location" : "East US",
+            "properties" : {
                 "name" : "FailedRunsGreaterThan5",
-                "type" : "microsoft.insights/alertrules",
-                "apiVersion" : "2014-04-01",
-                "location" : "East US",
-                "properties" : {
-                    "name" : "FailedRunsGreaterThan5",
-                    "description" : "Failed Runs greater than 5",
-                    "isEnabled" : true,
-                    "condition" : {
-                        "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-                        "odata.type" : "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                        "dataSource" : {
-                            "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-                            "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                            "resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName
-    >/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>",
-                            "metricName" : "FailedRuns"
-                        },
-                        "threshold" : 5.0,
-                        "windowSize" : "PT3H",
-                        "timeAggregation" : "Total"
+                "description" : "Failed Runs greater than 5",
+                "isEnabled" : true,
+                "condition" : {
+                    "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
+                    "odata.type" : "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource" : {
+                        "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
+                        "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName
+>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>",
+                        "metricName" : "FailedRuns"
                     },
-                    "action" : {
-                        "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-                        "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-                        "customEmails" : ["abhinav.gpt@live.com"]
-                    }
+                    "threshold" : 5.0,
+                    "windowSize" : "PT3H",
+                    "timeAggregation" : "Total"
+                },
+                "action" : {
+                    "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
+                    "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "customEmails" : ["abhinav.gpt@live.com"]
                 }
             }
-        ]
-    }
+        }
+    ]
+}
+```
 
 将示例中的 subscriptionId、resourceGroupName 和 dataFactoryName 替换为相应的值。
 
@@ -588,24 +632,27 @@ Azure 事件可提供有关 Azure 资源中所发生情况的有用见解。 创
 
 若要部署警报，请使用 Azure PowerShell cmdlet：**New-AzureRmResourceGroupDeployment**，如以下示例所示：
 
-    New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
+```
 
 部署成功后，可看到以下消息：
 
-    VERBOSE: 12:52:47 PM - Template is valid.
-    VERBOSE: 12:52:48 PM - Create template deployment 'FailedRunsGreaterThan5'.
-    VERBOSE: 12:52:55 PM - Resource microsoft.insights/alertrules 'FailedRunsGreaterThan5' provisioning status is succeeded
+```
+VERBOSE: 12:52:47 PM - Template is valid.
+VERBOSE: 12:52:48 PM - Create template deployment 'FailedRunsGreaterThan5'.
+VERBOSE: 12:52:55 PM - Resource microsoft.insights/alertrules 'FailedRunsGreaterThan5' provisioning status is succeeded
 
 
-    DeploymentName    : FailedRunsGreaterThan5
-    ResourceGroupName : adf
-    ProvisioningState : Succeeded
-    Timestamp         : 7/27/2015 7:52:56 PM
-    Mode              : Incremental
-    TemplateLink      :
-    Parameters        :
-    Outputs           
-
+DeploymentName    : FailedRunsGreaterThan5
+ResourceGroupName : adf
+ProvisioningState : Succeeded
+Timestamp         : 7/27/2015 7:52:56 PM
+Mode              : Incremental
+TemplateLink      :
+Parameters        :
+Outputs           
+```
 
 还可使用 **Add-AlertRule** cmdlet 来部署警报规则。 有关详细信息和示例，请参阅 [Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx) 主题。  
 

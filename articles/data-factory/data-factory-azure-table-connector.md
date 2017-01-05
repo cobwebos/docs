@@ -40,16 +40,17 @@ ms.openlocfilehash: 87031d315f67ac49711639f238e79cdd09540b97
 
 **Azure 存储链接服务：**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorage** 和 **AzureStorageSas**。 对于前者，请指定包括帐户密钥的连接字符串，对于后者，请指定共享访问签名 (SAS) URI。 有关详细信息，请参阅[链接服务](#linked-services)部分。  
 
 **Azure 表输入数据集：**
@@ -58,135 +59,141 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
-    {
-      "name": "AzureTableInput",
-      "properties": {
-        "type": "AzureTable",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "tableName": "MyTable"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
+```JSON
+{
+  "name": "AzureTableInput",
+  "properties": {
+    "type": "AzureTable",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "tableName": "MyTable"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **Azure Blob 输出数据集：**
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
-    {
-      "name": "AzureBlobOutput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "\t",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobOutput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}/hourno={Hour}",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
+        },
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
+          }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": "\t",
+        "rowDelimiter": "\n"
       }
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 **包含复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将**源**类型设置为 **AzureTableSource**，将**接收器**类型设置为 **BlobSink**。 使用 ** AzureTableSourceQuery ** 属性指定的 SQL 查询会每小时从默认分区中选择要复制的数据。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-            "start":"2014-06-01T18:00:00",
-            "end":"2014-06-01T19:00:00",
-            "description":"pipeline for copy activity",
-            "activities":[  
-                {
-                    "name": "AzureTabletoBlob",
-                    "description": "copy activity",
-                    "type": "Copy",
-                    "inputs": [
-                          {
-                            "name": "AzureTableInput"
-                        }
-                    ],
-                    "outputs": [
-                          {
-                                "name": "AzureBlobOutput"
-                          }
-                    ],
-                    "typeProperties": {
-                          "source": {
-                            "type": "AzureTableSource",
-                            "AzureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'"
-                          },
-                          "sink": {
-                            "type": "BlobSink"
-                          }
-                    },
-                    "scheduler": {
-                          "frequency": "Hour",
-                          "interval": 1
-                    },                
-                    "policy": {
-                          "concurrency": 1,
-                          "executionPriorityOrder": "OldestFirst",
-                          "retry": 0,
-                          "timeout": "01:00:00"
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+        "start":"2014-06-01T18:00:00",
+        "end":"2014-06-01T19:00:00",
+        "description":"pipeline for copy activity",
+        "activities":[  
+            {
+                "name": "AzureTabletoBlob",
+                "description": "copy activity",
+                "type": "Copy",
+                "inputs": [
+                      {
+                        "name": "AzureTableInput"
                     }
+                ],
+                "outputs": [
+                      {
+                            "name": "AzureBlobOutput"
+                      }
+                ],
+                "typeProperties": {
+                      "source": {
+                        "type": "AzureTableSource",
+                        "AzureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'"
+                      },
+                      "sink": {
+                        "type": "BlobSink"
+                      }
+                },
+                "scheduler": {
+                      "frequency": "Hour",
+                      "interval": 1
+                },                
+                "policy": {
+                      "concurrency": 1,
+                      "executionPriorityOrder": "OldestFirst",
+                      "retry": 0,
+                      "timeout": "01:00:00"
                 }
-             ]    
-        }
+            }
+         ]    
     }
+}
+```
 
 ## <a name="sample-copy-data-from-azure-blob-to-azure-table"></a>示例：将数据从 Azure Blob 复制到 Azure 表
 以下示例显示：
@@ -200,15 +207,17 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure 存储（适用于 Azure 表和 Blob）链接服务：**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
+  }
+}
+```
 
 Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorage** 和 **AzureStorageSas**。 对于前者，请指定包括帐户密钥的连接字符串，对于后者，请指定共享访问签名 (SAS) URI。 有关详细信息，请参阅[链接服务](#linked-services)部分。
 
@@ -216,137 +225,143 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 设置“external”: ”true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
-    {
-      "name": "AzureBlobInput",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
-          "fileName": "{Hour}.csv",
-          "partitionedBy": [
-            {
-              "name": "Year",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyy"
-              }
-            },
-            {
-              "name": "Month",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "MM"
-              }
-            },
-            {
-              "name": "Day",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "dd"
-              }
-            },
-            {
-              "name": "Hour",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HH"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "rowDelimiter": "\n"
+```JSON
+{
+  "name": "AzureBlobInput",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+      "fileName": "{Hour}.csv",
+      "partitionedBy": [
+        {
+          "name": "Year",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "yyyy"
           }
         },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
+        {
+          "name": "Month",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "MM"
+          }
         },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
+        {
+          "name": "Day",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "dd"
+          }
+        },
+        {
+          "name": "Hour",
+          "value": {
+            "type": "DateTime",
+            "date": "SliceStart",
+            "format": "HH"
           }
         }
+      ],
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "rowDelimiter": "\n"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
+      "externalData": {
+        "retryInterval": "00:01:00",
+        "retryTimeout": "00:10:00",
+        "maximumRetry": 3
       }
     }
+  }
+}
+```
 
 **Azure 表输出数据集：**
 
 此示例将数据复制到 Azure 表中名为“MyTable”的表。 创建 Azure 表，其列数与 Blob CSV 文件要包含的列数相同。 每小时向该表添加新行。
 
-    {
-      "name": "AzureTableOutput",
-      "properties": {
-        "type": "AzureTable",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "tableName": "MyOutputTable"
-        },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "AzureTableOutput",
+  "properties": {
+    "type": "AzureTable",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "tableName": "MyOutputTable"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 **包含复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **BlobSource**，**接收器**类型设置为 **AzureTableSink**。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline with copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline with copy activity",
+    "activities":[  
+      {
+        "name": "AzureBlobtoTable",
+        "description": "Copy Activity",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "AzureBlobtoTable",
-            "description": "Copy Activity",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "AzureBlobInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureTableOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "AzureTableSink",
-                "writeBatchSize": 100,
-                "writeBatchTimeout": "01:00:00"
-              }
-            },
-            "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },                        
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "AzureBlobInput"
           }
-          ]
-       }
-    }
+        ],
+        "outputs": [
+          {
+            "name": "AzureTableOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "AzureTableSink",
+            "writeBatchSize": 100,
+            "writeBatchTimeout": "01:00:00"
+          }
+        },
+        "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },                        
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+      ]
+   }
+}
+```
 
 ## <a name="linked-services"></a>链接服务
 有两种类型的链接服务，可用于将 Azure Blob 存储链接到 Azure 数据工厂。 它们是：**AzureStorage** 链接服务和 **AzureStorageSas** 链接服务。 Azure 存储链接服务为数据工厂提供 Azure 存储的全局访问权限。 而 Azure 存储 SAS（共享访问签名）链接服务为数据工厂提供 Azure 存储的受限/有时限的访问。 这两种链接服务之间没有区别。 请选择适合你需求的链接服务。 以下各部分提供了有关这两种链接服务的详细信息。
@@ -385,12 +400,15 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 示例
 如果 Azure 表列为 string 类型：
 
-    azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)"
+```JSON
+azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)"
+```
 
 如果 Azure 表列为 datetime 类型：
 
-    "azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
-
+```JSON
+"azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
+```
 
 **AzureTableSink** 支持 typeProperties 部分的以下属性：
 
@@ -408,20 +426,22 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 在以下示例中，源列 DivisionID 映射到目标列 DivisionID。  
 
-    "translator": {
-        "type": "TabularTranslator",
-        "columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
-    }
-
+```JSON
+"translator": {
+    "type": "TabularTranslator",
+    "columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
+}
+```
 DivisionID 被指定为分区键。
 
-    "sink": {
-        "type": "AzureTableSink",
-        "azureTablePartitionKeyName": "DivisionID",
-        "writeBatchSize": 100,
-        "writeBatchTimeout": "01:00:00"
-    }
-
+```JSON
+"sink": {
+    "type": "AzureTableSink",
+    "azureTablePartitionKeyName": "DivisionID",
+    "writeBatchSize": 100,
+    "writeBatchTimeout": "01:00:00"
+}
+```
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -451,43 +471,44 @@ DivisionID 被指定为分区键。
 
 将按如下所示定义 Blob 源数据集并指定列的类型定义。
 
+```JSON
+{
+    "name": " AzureBlobInput",
+    "properties":
     {
-        "name": " AzureBlobInput",
-        "properties":
-        {
-             "structure":
-              [
-                    { "name": "userid", "type": "Int64"},
-                    { "name": "name", "type": "String"},
-                    { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
-              ],
-            "type": "AzureBlob",
-            "linkedServiceName": "StorageLinkedService",
-            "typeProperties": {
-                "folderPath": "mycontainer/myfolder",
-                "fileName":"myfile.csv",
-                "format":
-                {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-                }
-            },
-            "external": true,
-            "availability":
+         "structure":
+          [
+                { "name": "userid", "type": "Int64"},
+                { "name": "name", "type": "String"},
+                { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
+          ],
+        "type": "AzureBlob",
+        "linkedServiceName": "StorageLinkedService",
+        "typeProperties": {
+            "folderPath": "mycontainer/myfolder",
+            "fileName":"myfile.csv",
+            "format":
             {
-                "frequency": "Hour",
-                "interval": 1,
-            },
-            "policy": {
-                "externalData": {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
+                "type": "TextFormat",
+                "columnDelimiter": ","
+            }
+        },
+        "external": true,
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1,
+        },
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
             }
         }
     }
-
+}
+```
 对于上述从 Azure 表 OData 类型到 .NET 类型的类型映射，可以使用以下架构来定义 Azure 表中的表。
 
 **Azure 表架构：**
@@ -500,20 +521,22 @@ DivisionID 被指定为分区键。
 
 接下来，按如下所示定义 Azure 表数据集。 不需要指定包含类型信息的“结构”部分，因为类型信息已在基础数据存储中指定。
 
-    {
-      "name": "AzureTableOutput",
-      "properties": {
-        "type": "AzureTable",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "tableName": "MyOutputTable"
-        },
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "AzureTableOutput",
+  "properties": {
+    "type": "AzureTable",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "tableName": "MyOutputTable"
+    },
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
     }
+  }
+}
+```
 
 在此情况下，将数据从 Blob 移到 Azure 表时，数据工厂将自动执行类型转换，包括对使用自定义日期时间格式（使用 fr-fr 区域性）的 Datetime 字段的类型转换。
 

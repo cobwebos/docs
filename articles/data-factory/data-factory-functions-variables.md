@@ -48,10 +48,12 @@ ms.openlocfilehash: 370b2212be8d5f7a537b8fadbfa05355844dcb96
 
 在以下示例中，将 JSON 文件的 **sqlReaderQuery** 属性分配给 **Text.Format** 函数返回的值。 此示例还使用名为 **WindowStart** 的系统变量表示活动运行窗口的开始时间。
 
-    {
-        "Type": "SqlSource",
-        "sqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
-    }
+```JSON
+{
+    "Type": "SqlSource",
+    "sqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
+}
+```
 
 ### <a name="functions"></a>函数
 下表列出了 Azure 数据工厂中的所有函数：
@@ -78,12 +80,15 @@ ms.openlocfilehash: 370b2212be8d5f7a537b8fadbfa05355844dcb96
 | 文本 |Format(X) |X: String variable |设置文本的格式。 |
 
 #### <a name="textformat-example"></a>Text.Format 示例
-    "defines": { 
-        "Year" : "$$Text.Format('{0:yyyy}',WindowStart)",
-        "Month" : "$$Text.Format('{0:MM}',WindowStart)",
-        "Day" : "$$Text.Format('{0:dd}',WindowStart)",
-        "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
-    }
+
+```JSON
+"defines": { 
+    "Year" : "$$Text.Format('{0:yyyy}',WindowStart)",
+    "Month" : "$$Text.Format('{0:MM}',WindowStart)",
+    "Day" : "$$Text.Format('{0:dd}',WindowStart)",
+    "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
+}
+```
 
 请参阅[自定义日期和时间格式字符串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)主题，其中介绍了可用的不同格式设置选项（例如：yy 和 yyyy）。 
 

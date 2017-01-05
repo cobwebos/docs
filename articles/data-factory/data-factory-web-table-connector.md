@@ -45,31 +45,34 @@ ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
 
 **Web 链接服务**：该示例将 Web 链接服务用于匿名身份验证。 有关可使用的身份验证的不同类型，请参阅 [Web 链接服务](#web-linked-service-properties)部分。
 
+```JSON
+{
+    "name": "WebLinkedService",
+    "properties":
     {
-        "name": "WebLinkedService",
-        "properties":
+        "type": "Web",
+        "typeProperties":
         {
-            "type": "Web",
-            "typeProperties":
-            {
-                "authenticationType": "Anonymous",
-                "url" : "https://en.wikipedia.org/wiki/"
-            }
+            "authenticationType": "Anonymous",
+            "url" : "https://en.wikipedia.org/wiki/"
         }
     }
-
+}
+```
 
 **Azure 存储链接服务**
 
-    {
-      "name": "AzureStorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "AzureStorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
+  }
+}
+```
 
 **WebTable 输入数据集** 将“external”设置为“true”会告知数据工厂服务数据集位于数据工厂外，且不由数据工厂中的活动生成。
 
@@ -78,47 +81,49 @@ ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
 >
 >
 
-    {
-        "name": "WebTableInput",
-        "properties": {
-            "type": "WebTable",
-            "linkedServiceName": "WebLinkedService",
-            "typeProperties": {
-                "index": 1,
-                "path": "AFI's_100_Years...100_Movies"
-            },
-            "external": true,
-            "availability": {
-                "frequency": "Hour",
-                "interval":  1
-            }
+```JSON
+{
+    "name": "WebTableInput",
+    "properties": {
+        "type": "WebTable",
+        "linkedServiceName": "WebLinkedService",
+        "typeProperties": {
+            "index": 1,
+            "path": "AFI's_100_Years...100_Movies"
+        },
+        "external": true,
+        "availability": {
+            "frequency": "Hour",
+            "interval":  1
         }
     }
-
+}
+```
 
 
 **Azure Blob 输出数据集**
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
 
+```JSON
+{
+    "name": "AzureBlobOutput",
+    "properties":
     {
-        "name": "AzureBlobOutput",
-        "properties":
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties":
         {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties":
-            {
-                "folderPath": "adfgetstarted/Movies"
-            },
-            "availability":
-            {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "folderPath": "adfgetstarted/Movies"
+        },
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
+}
+```
 
 
 
@@ -128,50 +133,51 @@ ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
 
 有关 WebSource 支持的属性列表，请参阅 [WebSource 类型属性](#websource-copy-activity-type-properties)。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-        "start":"2014-06-01T18:00:00",
-        "end":"2014-06-01T19:00:00",
-        "description":"pipeline with copy activity",
-        "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+    "start":"2014-06-01T18:00:00",
+    "end":"2014-06-01T19:00:00",
+    "description":"pipeline with copy activity",
+    "activities":[  
+      {
+        "name": "WebTableToAzureBlob",
+        "description": "Copy from a Web table to an Azure blob",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "WebTableToAzureBlob",
-            "description": "Copy from a Web table to an Azure blob",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "WebTableInput"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "AzureBlobOutput"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "WebSource"
-              },
-              "sink": {
-                "type": "BlobSink"
-              }
-            },
-           "scheduler": {
-              "frequency": "Hour",
-              "interval": 1
-            },
-            "policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "OldestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "WebTableInput"
           }
-          ]
-       }
-    }
-
+        ],
+        "outputs": [
+          {
+            "name": "AzureBlobOutput"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "WebSource"
+          },
+          "sink": {
+            "type": "BlobSink"
+          }
+        },
+       "scheduler": {
+          "frequency": "Hour",
+          "interval": 1
+        },
+        "policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "OldestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
+      }
+      ]
+   }
+}
+```
 
 ## <a name="web-linked-service-properties"></a>Web 链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
@@ -185,36 +191,40 @@ ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
 | password |基本身份验证的密码。 |是（对于基本身份验证） |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名身份验证
+
+```JSON
+{
+    "name": "web",
+    "properties":
     {
-        "name": "web",
-        "properties":
+        "type": "Web",
+        "typeProperties":
         {
-            "type": "Web",
-            "typeProperties":
-            {
-                "authenticationType": "Anonymous",
-                "url" : "https://en.wikipedia.org/wiki/"
-            }
+            "authenticationType": "Anonymous",
+            "url" : "https://en.wikipedia.org/wiki/"
         }
     }
-
+}
+```
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
+
+```JSON
+{
+    "name": "web",
+    "properties":
     {
-        "name": "web",
-        "properties":
+        "type": "Web",
+        "typeProperties":
         {
-            "type": "Web",
-            "typeProperties":
-            {
-                "authenticationType": "basic",
-                "url" : "http://myit.mycompany.com/",
-                "userName": "Administrator",
-                "password": "password"
-            }
+            "authenticationType": "basic",
+            "url" : "http://myit.mycompany.com/",
+            "userName": "Administrator",
+            "password": "password"
         }
     }
-
+}
+```
 
 ## <a name="webtable-dataset-properties"></a>WebTable 数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
@@ -229,22 +239,24 @@ ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
 
 **示例：**
 
-    {
-        "name": "WebTableInput",
-        "properties": {
-            "type": "WebTable",
-            "linkedServiceName": "WebLinkedService",
-            "typeProperties": {
-                "index": 1,
-                "path": "AFI's_100_Years...100_Movies"
-            },
-            "external": true,
-            "availability": {
-                "frequency": "Hour",
-                "interval":  1
-            }
+```JSON
+{
+    "name": "WebTableInput",
+    "properties": {
+        "type": "WebTable",
+        "linkedServiceName": "WebLinkedService",
+        "typeProperties": {
+            "index": 1,
+            "path": "AFI's_100_Years...100_Movies"
+        },
+        "external": true,
+        "availability": {
+            "frequency": "Hour",
+            "interval":  1
         }
     }
+}
+```
 
 ## <a name="websource---copy-activity-type-properties"></a>WebSource - 复制活动类型属性
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
