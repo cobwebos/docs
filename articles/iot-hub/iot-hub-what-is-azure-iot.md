@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6

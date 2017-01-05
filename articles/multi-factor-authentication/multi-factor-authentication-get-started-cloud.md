@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/17/2016
+ms.date: 01/04/2017
 ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -25,8 +25,6 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 > [!NOTE]
 > 以下文档介绍如何通过 **Azure 经典门户**启用用户。 若要了解如何为 O365 用户设置 Azure 多重身份验证，请参阅[为 Office 365 设置多重身份验证](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)。
-> 
-> 
 
 ![云中的 MFA](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 
@@ -38,8 +36,6 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 > [!NOTE]
 > 许可证将提供给拥有 Azure MFA、Azure AD Premium 或企业移动性套件 (EMS) 的用户。  Azure AD Premium 和 EMS 中包含 MFA。 如果你有足够的许可证，则不需要创建 Auth 提供程序。
-> 
-> 
 
 ## <a name="turn-on-two-step-verification-for-users"></a>为用户开启双重验证
 若要开始为用户开启双重验证，请将用户状态从禁用更改为启用。  有关用户状态的详细信息，请参阅 [Azure 多重身份验证中的用户状态](multi-factor-authentication-get-started-user-states.md)
@@ -75,13 +71,11 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
 
 > [!IMPORTANT]
 > 不建议直接将用户直接从“禁用”状态移到“已强制执行”状态。 基于非浏览器的应用将停止工作，因为用户尚未通过 MFA 注册并获得[应用密码](multi-factor-authentication-whats-next.md#app-passwords)。 如果具有基于非浏览器的应用并且需要应用密码，建议从“已禁用”状态转到“已启用”。 这样，用户便可以注册并获取其应用密码。 之后，就可将他们移到“已强制执行”状态。
-> 
-> 
 
 使用 PowerShell 是批量启用用户的选项。 Azure 门户中目前未提供批量启用功能，需要单独选择每个用户。 如果用户数量众多，则这项任务就很繁琐。 使用上述代码创建 PowerShell 脚本可以循环访问用户列表并启用这些用户。
 
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "\*"
+        $st.RelyingParty = "*"
         $st.State = “Enabled”
         $sta = @($st)
         Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
@@ -92,7 +86,7 @@ ms.openlocfilehash: c6fe00b72d95a3eb40d91f6f7989b7163518c46f
     foreach ($user in $users)
     {
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "\*"
+        $st.RelyingParty = "*"
         $st.State = “Enabled”
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
