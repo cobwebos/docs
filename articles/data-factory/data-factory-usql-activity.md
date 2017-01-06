@@ -45,21 +45,22 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 以下示例为 Azure Data Lake Analytics 链接服务提供 JSON 定义。 
 
-    {
-        "name": "AzureDataLakeAnalyticsLinkedService",
-        "properties": {
-            "type": "AzureDataLakeAnalytics",
-            "typeProperties": {
-                "accountName": "adftestaccount",
-                "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
-                "authorization": "<authcode>",
-                "sessionId": "<session ID>", 
-                "subscriptionId": "<subscription id>",
-                "resourceGroupName": "<resource group name>"
-            }
+```JSON
+{
+    "name": "AzureDataLakeAnalyticsLinkedService",
+    "properties": {
+        "type": "AzureDataLakeAnalytics",
+        "typeProperties": {
+            "accountName": "adftestaccount",
+            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+            "authorization": "<authcode>",
+            "sessionId": "<session ID>", 
+            "subscriptionId": "<subscription id>",
+            "resourceGroupName": "<resource group name>"
         }
     }
-
+}
+```
 
 下表为 JSON 定义中使用的属性提供了描述。 
 
@@ -83,83 +84,87 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用以下部分中的代码以编程方式生成 **sessionId** 和 **authorization** 属性的值。 
 
 ### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>以编程方式生成 sessionId 和 authorization 值
-    if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
-        linkedService.Properties.TypeProperties is AzureDataLakeAnalyticsLinkedService)
+
+```csharp
+if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
+    linkedService.Properties.TypeProperties is AzureDataLakeAnalyticsLinkedService)
+{
+    AuthorizationSessionGetResponse authorizationSession = this.Client.OAuth.Get(this.ResourceGroupName, this.DataFactoryName, linkedService.Properties.Type);
+
+    WindowsFormsWebAuthenticationDialog authenticationDialog = new WindowsFormsWebAuthenticationDialog(null);
+    string authorization = authenticationDialog.AuthenticateAAD(authorizationSession.AuthorizationSession.Endpoint, new Uri("urn:ietf:wg:oauth:2.0:oob"));
+
+    AzureDataLakeStoreLinkedService azureDataLakeStoreProperties = linkedService.Properties.TypeProperties as AzureDataLakeStoreLinkedService;
+    if (azureDataLakeStoreProperties != null)
     {
-        AuthorizationSessionGetResponse authorizationSession = this.Client.OAuth.Get(this.ResourceGroupName, this.DataFactoryName, linkedService.Properties.Type);
-
-        WindowsFormsWebAuthenticationDialog authenticationDialog = new WindowsFormsWebAuthenticationDialog(null);
-        string authorization = authenticationDialog.AuthenticateAAD(authorizationSession.AuthorizationSession.Endpoint, new Uri("urn:ietf:wg:oauth:2.0:oob"));
-
-        AzureDataLakeStoreLinkedService azureDataLakeStoreProperties = linkedService.Properties.TypeProperties as AzureDataLakeStoreLinkedService;
-        if (azureDataLakeStoreProperties != null)
-        {
-            azureDataLakeStoreProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
-            azureDataLakeStoreProperties.Authorization = authorization;
-        }
-
-        AzureDataLakeAnalyticsLinkedService azureDataLakeAnalyticsProperties = linkedService.Properties.TypeProperties as AzureDataLakeAnalyticsLinkedService;
-        if (azureDataLakeAnalyticsProperties != null)
-        {
-            azureDataLakeAnalyticsProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
-            azureDataLakeAnalyticsProperties.Authorization = authorization;
-        }
+        azureDataLakeStoreProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
+        azureDataLakeStoreProperties.Authorization = authorization;
     }
+
+    AzureDataLakeAnalyticsLinkedService azureDataLakeAnalyticsProperties = linkedService.Properties.TypeProperties as AzureDataLakeAnalyticsLinkedService;
+    if (azureDataLakeAnalyticsProperties != null)
+    {
+        azureDataLakeAnalyticsProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
+        azureDataLakeAnalyticsProperties.Authorization = authorization;
+    }
+}
+```
 
 请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 针对 WindowsFormsWebAuthenticationDialog 类向 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 添加引用。 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 以下 JSON 代码段定义了具有 Data Lake Analytics U-SQL 活动的管道。 活动定义具有对之前创建的 Azure Data Lake Analytics 链接服务的引用。   
 
-    {
-        "name": "ComputeEventsByRegionPipeline",
-        "properties": {
-            "description": "This is a pipeline to compute events for en-gb locale and date less than 2012/02/19.",
-            "activities": 
-            [
-                {
-                    "type": "DataLakeAnalyticsU-SQL",
-                    "typeProperties": {
-                        "scriptPath": "scripts\\kona\\SearchLogProcessing.txt",
-                        "scriptLinkedService": "StorageLinkedService",
-                        "degreeOfParallelism": 3,
-                        "priority": 100,
-                        "parameters": {
-                            "in": "/datalake/input/SearchLog.tsv",
-                            "out": "/datalake/output/Result.tsv"
-                        }
-                    },
-                    "inputs": [
-                        {
-                            "name": "DataLakeTable"
-                        }
-                    ],
-                    "outputs": 
-                    [
-                        {
-                            "name": "EventsByRegionTable"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "06:00:00",
-                        "concurrency": 1,
-                        "executionPriorityOrder": "NewestFirst",
-                        "retry": 1
-                    },
-                    "scheduler": {
-                        "frequency": "Day",
-                        "interval": 1
-                    },
-                    "name": "EventsByRegion",
-                    "linkedServiceName": "AzureDataLakeAnalyticsLinkedService"
-                }
-            ],
-            "start": "2015-08-08T00:00:00Z",
-            "end": "2015-08-08T01:00:00Z",
-            "isPaused": false
-        }
+```JSON
+{
+    "name": "ComputeEventsByRegionPipeline",
+    "properties": {
+        "description": "This is a pipeline to compute events for en-gb locale and date less than 2012/02/19.",
+        "activities": 
+        [
+            {
+                "type": "DataLakeAnalyticsU-SQL",
+                "typeProperties": {
+                    "scriptPath": "scripts\\kona\\SearchLogProcessing.txt",
+                    "scriptLinkedService": "StorageLinkedService",
+                    "degreeOfParallelism": 3,
+                    "priority": 100,
+                    "parameters": {
+                        "in": "/datalake/input/SearchLog.tsv",
+                        "out": "/datalake/output/Result.tsv"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "DataLakeTable"
+                    }
+                ],
+                "outputs": 
+                [
+                    {
+                        "name": "EventsByRegionTable"
+                    }
+                ],
+                "policy": {
+                    "timeout": "06:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 1
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "EventsByRegion",
+                "linkedServiceName": "AzureDataLakeAnalyticsLinkedService"
+            }
+        ],
+        "start": "2015-08-08T00:00:00Z",
+        "end": "2015-08-08T01:00:00Z",
+        "isPaused": false
     }
-
+}
+```
 
 下表描述了此活动特有的属性的名称和描述。 
 
@@ -179,87 +184,96 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ### <a name="input-dataset"></a>输入数据集
 在此示例中，输入数据驻留在 Azure Data Lake Store 中（datalake/input 文件夹中的 SearchLog.tsv 文件）。 
 
-    {
-        "name": "DataLakeTable",
-        "properties": {
-            "type": "AzureDataLakeStore",
-            "linkedServiceName": "AzureDataLakeStoreLinkedService",
-            "typeProperties": {
-                "folderPath": "datalake/input/",
-                "fileName": "SearchLog.tsv",
-                "format": {
-                    "type": "TextFormat",
-                    "rowDelimiter": "\n",
-                    "columnDelimiter": "\t"
-                }
-            },
-            "availability": {
-                "frequency": "Day",
-                "interval": 1
+```JSON
+{
+    "name": "DataLakeTable",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "AzureDataLakeStoreLinkedService",
+        "typeProperties": {
+            "folderPath": "datalake/input/",
+            "fileName": "SearchLog.tsv",
+            "format": {
+                "type": "TextFormat",
+                "rowDelimiter": "\n",
+                "columnDelimiter": "\t"
             }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
         }
-    }    
+    }
+}    
+```
 
 ### <a name="output-dataset"></a>输出数据集
 在此示例中，U-SQL 脚本生成的输出数据存储在 Azure Data Lake Store 中（datalake/output 文件夹）。 
 
-    {
-        "name": "EventsByRegionTable",
-        "properties": {
-            "type": "AzureDataLakeStore",
-            "linkedServiceName": "AzureDataLakeStoreLinkedService",
-            "typeProperties": {
-                "folderPath": "datalake/output/"
-            },
-            "availability": {
-                "frequency": "Day",
-                "interval": 1
-            }
+```JSON
+{
+    "name": "EventsByRegionTable",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "AzureDataLakeStoreLinkedService",
+        "typeProperties": {
+            "folderPath": "datalake/output/"
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
         }
     }
+}
+```
 
 ### <a name="sample-data-lake-store-linked-service"></a>Data Lake Store 链接服务示例
 下面是输入/输出数据集使用的示例 Azure Data Lake Store 链接服务的定义。 
 
-    {
-        "name": "AzureDataLakeStoreLinkedService",
-        "properties": {
-            "type": "AzureDataLakeStore",
-            "typeProperties": {
-                "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-                "sessionId": "<session ID>",
-                "authorization": "<authorization URL>"
-            }
+```JSON
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "sessionId": "<session ID>",
+            "authorization": "<authorization URL>"
         }
     }
+}
+```
 
 请参阅[将数据移入和移出 Azure Data Lake Store](data-factory-azure-datalake-connector.md) 一文了解 JSON 属性的说明。 
 
 ## <a name="sample-u-sql-script"></a>示例 U-SQL 脚本
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM @in
-        USING Extractors.Tsv(nullEscape:"#NULL#");
 
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @searchlog
-    WHERE Region == "en-gb";
+```
+@searchlog =
+    EXTRACT UserId          int,
+            Start           DateTime,
+            Region          string,
+            Query           string,
+            Duration        int?,
+            Urls            string,
+            ClickedUrls     string
+    FROM @in
+    USING Extractors.Tsv(nullEscape:"#NULL#");
 
-    @rs1 =
-        SELECT Start, Region, Duration
-        FROM @rs1
-        WHERE Start <= DateTime.Parse("2012/02/19");
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @searchlog
+WHERE Region == "en-gb";
 
-    OUTPUT @rs1   
-        TO @out
-          USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
+@rs1 =
+    SELECT Start, Region, Duration
+    FROM @rs1
+    WHERE Start <= DateTime.Parse("2012/02/19");
+
+OUTPUT @rs1   
+    TO @out
+      USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
+```
 
 ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out** 参数的值。 请参阅管道定义中的“parameters”部分。
 
@@ -268,17 +282,21 @@ ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out*
 ## <a name="dynamic-parameters"></a>动态参数
 在示例管道定义中，in 和 out 参数都分配有硬编码值。 
 
-    "parameters": {
-        "in": "/datalake/input/SearchLog.tsv",
-        "out": "/datalake/output/Result.tsv"
-    }
+```JSON
+"parameters": {
+    "in": "/datalake/input/SearchLog.tsv",
+    "out": "/datalake/output/Result.tsv"
+}
+```
 
 可改为使用动态参数。 例如： 
 
-    "parameters": {
-        "in": "$$Text.Format('/datalake/input/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)",
-        "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"
-    }
+```JSON
+"parameters": {
+    "in": "$$Text.Format('/datalake/input/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)",
+    "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"
+}
+```
 
 在这种情况下，输入文件仍从 /datalake/input 文件夹中获取，输出文件仍在 /datalake/output 文件夹中生成。 文件名则根据切片开始时间动态产生。  
 

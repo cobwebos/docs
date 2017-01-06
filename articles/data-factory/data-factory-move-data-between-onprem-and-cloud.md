@@ -173,47 +173,53 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>为本教程准备本地 SQL Server
 1. 在为本地 SQL Server 链接服务 (**SqlServerLinkedService**) 指定的数据库中，使用以下 SQL 脚本在数据库中创建 **emp** 表。
-   
-        CREATE TABLE dbo.emp
-        (
-            ID int IDENTITY(1,1) NOT NULL, 
-            FirstName varchar(50),
-            LastName varchar(50),
-            CONSTRAINT PK_emp PRIMARY KEY (ID)
-        )
-        GO 
+
+    ```SQL   
+    CREATE TABLE dbo.emp
+    (
+        ID int IDENTITY(1,1) NOT NULL, 
+        FirstName varchar(50),
+        LastName varchar(50),
+        CONSTRAINT PK_emp PRIMARY KEY (ID)
+    )
+    GO
+    ``` 
 2. 在该表中插入几个示例： 
    
-        INSERT INTO emp VALUES ('John', 'Doe')
-        INSERT INTO emp VALUES ('Jane', 'Doe')
+    ```SQL
+    INSERT INTO emp VALUES ('John', 'Doe')
+    INSERT INTO emp VALUES ('Jane', 'Doe')
+    ```
 
 ### <a name="create-input-dataset"></a>创建输入数据集
+
 1. 在“数据工厂编辑器”中，单击“...更多”，单击命令栏中的“新建数据集”，然后单击“SQL Server 表”。 
 2. 将右窗格中的 JSON 替换为以下文本：
-   
-         {        
-             "name": "EmpOnPremSQLTable",
-             "properties": {
-                 "type": "SqlServerTable",
-                 "linkedServiceName": "SqlServerLinkedService",
-                 "typeProperties": {
-                     "tableName": "emp"
-                 },
-                 "external": true,
-                 "availability": {
-                     "frequency": "Hour",
-                     "interval": 1
-                 },
-                 "policy": {
-                     "externalData": {
-                         "retryInterval": "00:01:00",
-                         "retryTimeout": "00:10:00",
-                         "maximumRetry": 3
-                     }
-                 }
-             }
-         }     
-   
+
+    ```JSON   
+    {        
+        "name": "EmpOnPremSQLTable",
+        "properties": {
+            "type": "SqlServerTable",
+            "linkedServiceName": "SqlServerLinkedService",
+            "typeProperties": {
+                "tableName": "emp"
+            },
+            "external": true,
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "policy": {
+                "externalData": {
+                    "retryInterval": "00:01:00",
+                    "retryTimeout": "00:10:00",
+                    "maximumRetry": 3
+                }
+            }
+        }
+    }     
+    ```     
    请注意以下几点： 
    
    * **type** 设置为 **SqlServerTable**。
@@ -225,28 +231,30 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
 3. 单击命令栏上的“部署”来部署数据集。  
 
 ### <a name="create-output-dataset"></a>创建输出数据集
+
 1. 在“数据工厂编辑器”中，单击命令栏上的“新建数据集”，然后单击“Azure Blob 存储”。
 2. 将右窗格中的 JSON 替换为以下文本： 
-   
-         {
-             "name": "OutputBlobTable",
-             "properties": {
-                 "type": "AzureBlob",
-                 "linkedServiceName": "AzureStorageLinkedService",
-                 "typeProperties": {
-                       "folderPath": "adftutorial/outfromonpremdf",
-                       "format": {
-                         "type": "TextFormat",
-                         "columnDelimiter": ","
-                       }
-                 },
-                 "availability": {
-                       "frequency": "Hour",
-                       "interval": 1
-                 }
-               }
-         }
-   
+
+    ```JSON   
+    {
+        "name": "OutputBlobTable",
+        "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "AzureStorageLinkedService",
+            "typeProperties": {
+                "folderPath": "adftutorial/outfromonpremdf",
+                "format": {
+                    "type": "TextFormat",
+                    "columnDelimiter": ","
+                }
+            },
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
+            }
+        }
+     }
+    ```   
    请注意以下几点： 
    
    * **type** 设置为 **AzureBlob**。
@@ -258,20 +266,20 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
    
    若要根据 **SliceStart** 时间动态设置 **folderPath** 和 **fileName**，请使用 partitionedBy 属性。 在以下示例中，folderPath 使用 SliceStart（所处理的切片的开始时间）中的年、月和日，fileName 使用 SliceStart 中的小时。 例如，如果切片生成于 2014-10-20T08:00:00，folderName 将设置为 wikidatagateway/wikisampledataout/2014/10/20，fileName 设置为 08.csv。 
 
-```
-"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-"fileName": "{Hour}.csv",
-"partitionedBy": 
-[
+    ```JSON
+    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+    "fileName": "{Hour}.csv",
+    "partitionedBy": 
+    [
+    
+        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+    ],
+    ```
 
-    { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-    { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-    { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-],
-```
-
-有关 JSON 属性的详细信息，请参阅[将数据移出/移入 Azure Blob 存储](data-factory-azure-blob-connector.md)。
+    有关 JSON 属性的详细信息，请参阅[将数据移出/移入 Azure Blob 存储](data-factory-azure-blob-connector.md)。
 3. 单击命令栏上的“部署”来部署数据集。 确认树视图中显示了这两个数据集。  
 
 ## <a name="create-pipeline"></a>创建管道
@@ -279,50 +287,51 @@ ms.openlocfilehash: 13044cc92a1577185b2aebc3a0ff8be0ec5eca60
 
 1. 在“数据工厂编辑器”中，单击“...更多”，然后单击“新建管道”。 
 2. 将右窗格中的 JSON 替换为以下文本：    
-   
-         {
-             "name": "ADFTutorialPipelineOnPrem",
-             "properties": {
-             "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
-             "activities": [
+
+    ```JSON   
+     {
+         "name": "ADFTutorialPipelineOnPrem",
+         "properties": {
+         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+         "activities": [
+           {
+             "name": "CopyFromSQLtoBlob",
+             "description": "Copy data from on-prem SQL server to blob",
+             "type": "Copy",
+             "inputs": [
                {
-                 "name": "CopyFromSQLtoBlob",
-                 "description": "Copy data from on-prem SQL server to blob",
-                 "type": "Copy",
-                 "inputs": [
-                   {
-                     "name": "EmpOnPremSQLTable"
-                   }
-                 ],
-                 "outputs": [
-                   {
-                     "name": "OutputBlobTable"
-                   }
-                 ],
-                 "typeProperties": {
-                   "source": {
-                     "type": "SqlSource",
-                     "sqlReaderQuery": "select * from emp"
-                   },
-                   "sink": {
-                     "type": "BlobSink"
-                   }
-                 },
-                 "Policy": {
-                   "concurrency": 1,
-                   "executionPriorityOrder": "NewestFirst",
-                   "style": "StartOfInterval",
-                   "retry": 0,
-                   "timeout": "01:00:00"
-                 }
+                 "name": "EmpOnPremSQLTable"
                }
              ],
-             "start": "2016-07-05T00:00:00Z",
-             "end": "2016-07-06T00:00:00Z",
-             "isPaused": false
+             "outputs": [
+               {
+                 "name": "OutputBlobTable"
+               }
+             ],
+             "typeProperties": {
+               "source": {
+                 "type": "SqlSource",
+                 "sqlReaderQuery": "select * from emp"
+               },
+               "sink": {
+                 "type": "BlobSink"
+               }
+             },
+             "Policy": {
+               "concurrency": 1,
+               "executionPriorityOrder": "NewestFirst",
+               "style": "StartOfInterval",
+               "retry": 0,
+               "timeout": "01:00:00"
+             }
            }
-         }
-   
+         ],
+         "start": "2016-07-05T00:00:00Z",
+         "end": "2016-07-06T00:00:00Z",
+         "isPaused": false
+       }
+     }
+    ```   
    > [!IMPORTANT]
    > 将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。
    > 

@@ -279,6 +279,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     ```powershell
     Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
     ```
+
 ## <a name="rerun-failures-in-a-pipeline"></a>管道中的重新运行故障
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 排除和调试管道中的故障后，便可通过导航到错误切片并在命令栏上单击“运行”按钮来重新运行失败命令。

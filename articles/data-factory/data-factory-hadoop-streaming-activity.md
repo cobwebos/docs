@@ -38,49 +38,51 @@ ms.openlocfilehash: 58c0e0cfd862bc421c3b4a9ad042283a22656460
 ## <a name="json-sample"></a>JSON 示例
 HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt) 自动填充。 默认情况下，HDInsight 群集所用的容器名称就是群集本身的名称。 例如，如果群集名称为 myhdicluster，则关联的 blob 容器名称也是 myhdicluster。 
 
-    {
-        "name": "HadoopStreamingPipeline",
-        "properties": {
-            "description": "Hadoop Streaming Demo",
-            "activities": [
-                {
-                    "type": "HDInsightStreaming",
-                    "typeProperties": {
-                        "mapper": "cat.exe",
-                        "reducer": "wc.exe",
-                        "input": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
-                        "output": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
-                        "filePaths": [
-                            "<nameofthecluster>/example/apps/wc.exe",
-                            "<nameofthecluster>/example/apps/cat.exe"
-                        ],
-                        "fileLinkedService": "StorageLinkedService",
-                        "getDebugInfo": "Failure"
-                    },
-                    "outputs": [
-                        {
-                            "name": "StreamingOutputDataset"
-                        }
+```JSON
+{
+    "name": "HadoopStreamingPipeline",
+    "properties": {
+        "description": "Hadoop Streaming Demo",
+        "activities": [
+            {
+                "type": "HDInsightStreaming",
+                "typeProperties": {
+                    "mapper": "cat.exe",
+                    "reducer": "wc.exe",
+                    "input": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
+                    "output": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
+                    "filePaths": [
+                        "<nameofthecluster>/example/apps/wc.exe",
+                        "<nameofthecluster>/example/apps/cat.exe"
                     ],
-                    "policy": {
-                        "timeout": "01:00:00",
-                        "concurrency": 1,
-                        "executionPriorityOrder": "NewestFirst",
-                        "retry": 1
-                    },
-                    "scheduler": {
-                        "frequency": "Day",
-                        "interval": 1
-                    },
-                    "name": "RunHadoopStreamingJob",
-                    "description": "Run a Hadoop streaming job",
-                    "linkedServiceName": "HDInsightLinkedService"
-                }
-            ],
-            "start": "2014-01-04T00:00:00Z",
-            "end": "2014-01-05T00:00:00Z"
-        }
+                    "fileLinkedService": "StorageLinkedService",
+                    "getDebugInfo": "Failure"
+                },
+                "outputs": [
+                    {
+                        "name": "StreamingOutputDataset"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 1
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "RunHadoopStreamingJob",
+                "description": "Run a Hadoop streaming job",
+                "linkedServiceName": "HDInsightLinkedService"
+            }
+        ],
+        "start": "2014-01-04T00:00:00Z",
+        "end": "2014-01-05T00:00:00Z"
     }
+}
+```
 
 请注意以下几点：
 
@@ -107,104 +109,111 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴以下代码，请记住将帐户名和帐户密钥替换为自己的 Azure 存储的名称和密钥。 
 
-    {
-        "name": "StorageLinkedService",
-        "properties": {
-            "type": "AzureStorage",
-            "typeProperties": {
-                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
-            }
+```JSON
+{
+    "name": "StorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
         }
     }
+}
+```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
 接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请将 HDInsight 群集名称替换为自己的 HDInsight 群集的名称，并更改用户名和密码。 
 
-    {
-        "name": "HDInsightLinkedService",
-        "properties": {
-            "type": "HDInsight",
-            "typeProperties": {
-                "clusterUri": "https://<HDInsight cluster name>.azurehdinsight.net",
-                "userName": "admin",
-                "password": "**********",
-                "linkedServiceName": "StorageLinkedService"
-            }
+```JSON
+{
+    "name": "HDInsightLinkedService",
+    "properties": {
+        "type": "HDInsight",
+        "typeProperties": {
+            "clusterUri": "https://<HDInsight cluster name>.azurehdinsight.net",
+            "userName": "admin",
+            "password": "**********",
+            "linkedServiceName": "StorageLinkedService"
         }
     }
+}
+```
 
 ### <a name="datasets"></a>数据集
 #### <a name="output-dataset"></a>输出数据集
 此示例中的管道不采用任何输入。 为 HDInsight Streaming 活动指定输出数据集。 该数据集仅是推动管道计划所需的一个虚拟数据集。 
 
-    {
-        "name": "StreamingOutputDataset",
-        "properties": {
-            "published": false,
-            "type": "AzureBlob",
-            "linkedServiceName": "StorageLinkedService",
-            "typeProperties": {
-                "folderPath": "adftutorial/streamingdata/",
-                "format": {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-                },
+```JSON
+{
+    "name": "StreamingOutputDataset",
+    "properties": {
+        "published": false,
+        "type": "AzureBlob",
+        "linkedServiceName": "StorageLinkedService",
+        "typeProperties": {
+            "folderPath": "adftutorial/streamingdata/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
             },
-            "availability": {
-                "frequency": "Day",
-                "interval": 1
-            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
         }
     }
+}
+```
 
 ### <a name="pipeline"></a>管道
 此示例中的管道仅具有一个 **HDInsightStreaming** 类型的活动。 
 
 HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt) 自动填充。 默认情况下，HDInsight 群集所用的容器名称就是群集本身的名称。 例如，如果群集名称为 myhdicluster，则关联的 blob 容器名称也是 myhdicluster。  
 
-    {
-        "name": "HadoopStreamingPipeline",
-        "properties": {
-            "description": "Hadoop Streaming Demo",
-            "activities": [
-                {
-                    "type": "HDInsightStreaming",
-                    "typeProperties": {
-                        "mapper": "cat.exe",
-                        "reducer": "wc.exe",
-                        "input": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
-                        "output": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
-                        "filePaths": [
-                            "<blobcontainer>/example/apps/wc.exe",
-                            "<blobcontainer>/example/apps/cat.exe"
-                        ],
-                        "fileLinkedService": "StorageLinkedService"
-                    },
-                    "outputs": [
-                        {
-                            "name": "StreamingOutputDataset"
-                        }
+```JSON
+{
+    "name": "HadoopStreamingPipeline",
+    "properties": {
+        "description": "Hadoop Streaming Demo",
+        "activities": [
+            {
+                "type": "HDInsightStreaming",
+                "typeProperties": {
+                    "mapper": "cat.exe",
+                    "reducer": "wc.exe",
+                    "input": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
+                    "output": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
+                    "filePaths": [
+                        "<blobcontainer>/example/apps/wc.exe",
+                        "<blobcontainer>/example/apps/cat.exe"
                     ],
-                    "policy": {
-                        "timeout": "01:00:00",
-                        "concurrency": 1,
-                        "executionPriorityOrder": "NewestFirst",
-                        "retry": 1
-                    },
-                    "scheduler": {
-                        "frequency": "Day",
-                        "interval": 1
-                    },
-                    "name": "RunHadoopStreamingJob",
-                    "description": "Run a Hadoop streaming job",
-                    "linkedServiceName": "HDInsightLinkedService"
-                }
-            ],
-            "start": "2014-01-04T00:00:00Z",
-            "end": "2014-01-05T00:00:00Z"
-        }
+                    "fileLinkedService": "StorageLinkedService"
+                },
+                "outputs": [
+                    {
+                        "name": "StreamingOutputDataset"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 1
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "RunHadoopStreamingJob",
+                "description": "Run a Hadoop streaming job",
+                "linkedServiceName": "HDInsightLinkedService"
+            }
+        ],
+        "start": "2017-01-03T00:00:00Z",
+        "end": "2017-01-04T00:00:00Z"
     }
-
+}
+```
 ## <a name="see-also"></a>另请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
