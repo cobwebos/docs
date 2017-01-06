@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 9a330c88f89205c9a69afc749ba884c9585dbc07
-ms.openlocfilehash: cd044199e7b407d35a87fcd2def12a6bd5b8f36e
+ms.sourcegitcommit: 6c8420a154d998aa95c0220049ee54b3039a872b
+ms.openlocfilehash: a79b78a4e8e683afe5b41a41911e7d5f020eff88
 
 
 ---
@@ -28,8 +28,8 @@ ms.openlocfilehash: cd044199e7b407d35a87fcd2def12a6bd5b8f36e
 
 > [!NOTE]
 > 弹性池在所有 Azure 区域中均已正式发布 (GA)，但印度西部除外，这些区域当前仅发布了预览版。 将尽快在此区域中正式发布弹性池。
-> 
-> 
+>
+>
 
 ## <a name="elastic-pools"></a>弹性池
 SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应用程序。 常见的应用程序模式是为每位客户设置单一数据库。 但不同的客户通常拥有不同和不可预测的使用模式，很难预测每位数据库用户的资源需求。 所以开发人员可能以可观的费用过度设置资源，以确保所有的数据库能有最佳吞吐量和响应时间。 或者，开发人员可以使用较少的费用，让客户承担体验性能不佳的风险。 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
@@ -71,7 +71,7 @@ Azure SQL 数据库中的弹性池可使 SaaS 开发人员将一组数据库的�
 以下数据库计数和数据库使用率相关规则的经验法则可帮助确保池提供相比于使用单一数据库的性能级别降低的成本。
 
 ### <a name="minimum-number-of-databases"></a>数据库的最小数目
-如果单一数据库的性能级别的 DTU 总和比池所需的 eDTU 多 1.5 倍，则弹性池更具成本效益。 有关可用的大小，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。
+如果单一数据库的性能级别的 DTU 总和比池所需的 eDTU 多 1.5 倍，则弹性池更具成本效益。 有关可用的大小，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。
 
 ***示例***<br>
 至少需要 2 个 S3 数据库或 15 个 S0 数据库，才能使 100 个 eDTU 池比使用单一数据库性能级别更具成本效益。
@@ -80,7 +80,7 @@ Azure SQL 数据库中的弹性池可使 SaaS 开发人员将一组数据库的�
 通过共享 eDTU，并非池中的所有数据库都能同时使用 eDTU 达到使用单一数据库的性能级别时的最大限制。 并发高峰的数据库越少，可以设置的池 eDTU 就越低，也就能实现池更大的成本效益。 一般而言，池中不能有 2/3（或 67%）以上的数据库的高峰同时达到其 eDTU 限制。
 
 ***示例***<br>
-为了降低 200 个 eDTU 池内 3 个 S3 数据库的成本，在使用过程中最多可使其中两个数据库同时处于高峰。 否则，如果四个 S3 数据库中超过两个同时高峰，则必须将池缩放为超过 200 个 eDTU。 如果将池缩放大小为超过 200 个 eDTU，则需要加入更多的 S3 数据库到池，使成本始终低于单一数据库的性能级别。 
+为了降低 200 个 eDTU 池内 3 个 S3 数据库的成本，在使用过程中最多可使其中两个数据库同时处于高峰。 否则，如果四个 S3 数据库中超过两个同时高峰，则必须将池缩放为超过 200 个 eDTU。 如果将池缩放大小为超过 200 个 eDTU，则需要加入更多的 S3 数据库到池，使成本始终低于单一数据库的性能级别。
 
 请注意，此示例未考虑池中其他数据库的使用率。 如果在任何给定时间点，所有数据库都有一些使用量，则可以同时处于高峰的数据库应少于 2/3（或 67%）。
 
@@ -96,7 +96,7 @@ Azure SQL 数据库中的弹性池可使 SaaS 开发人员将一组数据库的�
 * 池中所有数据库使用的最大 DTU。
 * 池中所有数据库使用的最大存储字节。
 
-有关可用的大小，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。
+有关可用的大小，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。
 
 SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 除推荐外，内置体验还估算服务器上自定义组数据库的 eDTU 使用率。 这使你可以执行“假设”分析，其方法为：通过交互方式将数据库添加到池并删除它们以在提交所做的更改之前获取资源使用率分析和调整建议。 相关操作方式，请参阅[监视、管理弹性池并调整其大小](sql-database-elastic-pool-manage-portal.md)。
 
@@ -114,10 +114,10 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 在无法使用工具的情况下，以下分步步骤可以帮助你评估池是否比单一数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU：
-   
+
    MAX（<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>
    <并发高峰数据库的数目** X 每一数据库的高峰 DTU 使用率**）
-2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。 有关基于 eDTU 池大小的池存储限制，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。
+2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。 有关基于 eDTU 池大小的池存储限制，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。
 3. 选择步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。
 4. 请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)，查找大于步骤 3 中估计值的最低 eDTU 池大小。
 5. 将步骤 5 的池价格与单一数据库适当性能级别的价格相比较。
@@ -133,7 +133,6 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

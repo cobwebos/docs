@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: 40ae0d242968db83c4d4d04452fbfd93559af31e
+ms.sourcegitcommit: ccf25aab4d6454e27a57f9a18305ef752421896f
+ms.openlocfilehash: 6e4af8f21a3ec9613d9dc36ebceb710c0d8c9906
 
 
 ---
@@ -103,7 +103,7 @@ StorSimple 虚拟设备是软件形式的 StorSimple，在 Microsoft Azure 虚�
 创建虚拟设备之前，请对 Azure StorSimple 服务进行以下更新：
 
 * 针对要用作虚拟设备主机服务器的 VM 添加 [访问控制记录](storsimple-manage-acrs.md) 。
-* 使用与虚拟设备位于同一区域中的 [存储帐户](storsimple-manage-storage-accounts.md#add-a-storage-account) 。 使用不同区域中的存储帐户可能导致性能不佳。 可以配合虚拟设备使用标准或高级存储帐户。 有关如何创建 [标准存储帐户]((../storage/storage-create-storage-account.md) 或[高级存储帐户](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)的详细信息
+* 使用与虚拟设备位于同一区域中的 [存储帐户](storsimple-manage-storage-accounts.md#add-a-storage-account) 。 使用不同区域中的存储帐户可能导致性能不佳。 可以配合虚拟设备使用标准或高级存储帐户。 如何创建[标准存储帐户](../storage/storage-create-storage-account.md)或[高级存储帐户](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)的详细信息
 * 用于创建虚拟设备的存储帐户应该与用于存储数据的存储帐户不同。 使用相同的存储帐户可能会导致性能不佳。
 
 在开始之前，请确保已准备好以下信息：
@@ -259,6 +259,6 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

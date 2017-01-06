@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: e0353fe07c98060c88f8fefdcc3c1052437f23ab
+ms.sourcegitcommit: bccec1e4078c38e1cc9205a36d3a5df579df35b6
+ms.openlocfilehash: d5ff397e947a7edc8310da59ff9fe8896829e35d
 
 
 ---
@@ -36,8 +36,9 @@ Apache Storm on HDInsight 是已集成到 Azure 环境中的托管群集。 它�
   * 支持混用编程语言：使用 Java 读取数据，然后使用 C 处理数据#
     
     > [!NOTE]
-    > C# 拓扑仅在基于 Windows 的 HDInsight 群集上受支持。
+    > 若要将 C# 拓扑与基于 Linux 的群集配合使用，则必须将项目使用的 Microsoft.SCP.Net.SDK NuGet 包更新到版本 0.10.0.6 或更高版本。 包的版本还必须与安装在 HDInsight 上的 Storm 主版本相匹配。 例如，Storm on HDInsight 版本 3.3 和 3.4 使用 Storm 版本 0.10.x，而 HDInsight 3.5 使用 Storm 1.0.x。
     > 
+    > 基于 Linux 的群集上的 C# 拓扑必须使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 大多数情况下会正常工作，但还是应查看[Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档了解可能的不兼容性。
     > 
   * 使用 **Trident** Java 接口创建支持“一次性”消息处理、“事务性”数据存储持久性和一组常见流分析操作的 Storm 拓扑
 * 包括内置的向上缩放和向下缩放功能：在不影响运行 Storm 拓扑的情况下缩放 HDInsight 群集
@@ -206,6 +207,6 @@ Storm 使用 Apache Log4j 来记录信息。 默认情况下，将记录大量�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

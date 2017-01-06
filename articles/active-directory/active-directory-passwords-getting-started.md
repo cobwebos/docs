@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 4e2508883998b1435d7c4f099bd6ef0e00bd885e
-ms.openlocfilehash: 4f9127ca06668884e6b6f5dbc81aad0a2b1ea9df
+ms.sourcegitcommit: e2e5c302d04a41386bfc98dd4e3f8546265dd9f3
+ms.openlocfilehash: e686952a7363e4758f8a3532b54cf5e7f05ce865
 
 
 ---
@@ -236,7 +236,7 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 #### <a name="to-enable-password-writeback-using-windows-powershell"></a>使用 Windows PowerShell 启用密码写回
 1. 在**目录同步计算机**上，打开一个新的**权限提升的 Windows PowerShell 窗口**。
 2. 如果尚未加载该模块，请键入 `import-module ADSync` 命令以将 Azure AD Connect cmdlet 载入当前会话。
-3. 通过运行 `Get-ADSyncConnector` cmdlet 并将结果存储在 `$aadConnectorName` 中，以获取系统中 Azure AD 连接器的列表，例如 `$connectors = ADSyncConnector|where-object {$\_.name -like "\*AAD"}`
+3. 通过运行 `Get-ADSyncConnector` cmdlet 并将结果存储在 `$aadConnectorName` 中，以获取系统中 Azure AD 连接器的列表，例如 `$connectors = Get-ADSyncConnector|where-object {$\_.name -like "\*AAD"}`
 4. 运行以下 cmdlet 获得当前连接器的当前写回状态：`Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
 5. 运行以下 cmdlet 启用密码写回：`Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
@@ -393,6 +393,6 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

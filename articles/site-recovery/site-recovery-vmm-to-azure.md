@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: f5e9d1a7f26ed3cac5767034661739169968a44e
-ms.openlocfilehash: ba0c710a0c28e9d52021ec966905a007b06f125e
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 8de917236d1dcbfdf0c1232380879a33d9425291
 
 
 ---
@@ -46,9 +46,9 @@ ms.openlocfilehash: ba0c710a0c28e9d52021ec966905a007b06f125e
 | **本地限制** |不支持基于 HTTPS 的代理 |
 | **提供程序/代理** |复制的 VM 需要 Azure Site Recovery 提供程序。<br/><br/> Hyper-V 主机需要恢复服务代理。<br/><br/> 请在部署过程中安装它们。 |
 |  **Azure 要求** |Azure 帐户<br/><br/> 恢复服务保管库<br/><br/> 保管库区域中的 LRS 或 GRS 存储帐户<br/><br/> 标准存储帐户<br/><br/> 保管库区域中的 Azure 虚拟网络。 [详细信息](#azure-prerequisites)。 |
-|  **Azure 限制** |如果使用 GRS，则需要另一个 LRS 帐户进行日志记录<br/><br/> 在 Azure 门户中创建的存储帐户不能在同一个或不同的订阅中跨资源组移动。 <br/><br/> 不支持高级存储。<br/><br/> 用于 Site Recovery 的 Azure 网络不能在同一个或不同的订阅中跨资源组移动。 |
-|  **VM 复制** |[VM 必须满足 Azure 先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)<br/><br/> |
-|  **复制限制** |不能复制使用静态 IP 地址运行 Linux 的 VM。<br/><br/> 不能从复制中排除特定的磁盘。 |
+|  **Azure 限制** |如果使用 GRS，则需要另一个 LRS 帐户进行日志记录<br/><br/> 在 Azure 门户中创建的存储帐户不能在同一个或不同的订阅中跨资源组移动。 <br/><br/> 不支持高级存储。<br/><br/> 用于 Site Recovery 的 Azure 网络不能在同一个或不同的订阅中跨资源组移动。 
+|  **VM 复制** |[VM 必须满足 Azure 先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)<br/><br/>
+|  **复制限制** |不能复制使用静态 IP 地址运行 Linux 的 VM。<br/><br/> 可以从复制中排除特定磁盘，但不能排除 OS 磁盘。
 | **部署步骤** |1) 准备 Azure（订阅、存储、网络）-> 2) 准备本地（VMM 和网络映射）-> 3) 创建恢复服务保管库 -> 4) 设置 VMM 和 Hyper-V 主机 -> 5) 配置复制设置 ->  6) 启用复制 -> 7) 测试复制和故障转移。 |
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Azure 门户中的 Site Recovery
@@ -115,13 +115,13 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 * 该网络应位于与恢复服务保管库相同的区域。
 * 根据要用于故障转移 Azure VM 的资源模型，需在 [Resource Manager 模式](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)或[经典模式](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)下设置 Azure 网络。
 * 建议在开始之前先设置网络。 否则，需要在 Site Recovery 部署期间执行此操作。
-注意，用于 Site Recovery 的 Azure 网络不能在同一订阅中或者跨不同的订阅[移动](../resource-group-move-resources.md)。
+注意，用于 Site Recovery 的 Azure 网络不能在同一订阅中或者跨不同的订阅[移动](../azure-resource-manager/resource-group-move-resources.md)。
 
 ### <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 * 需要使用标准 Azure 存储帐户来保存复制到 Azure 的数据。 该帐户必须位于与恢复服务保管库相同的区域中。
 * 根据要用于故障转移 Azure VM 的资源模型，需在 [Resource Manager 模式](../storage/storage-create-storage-account.md)或[经典模式](../storage/storage-create-storage-account-classic-portal.md)下设置帐户。
 * 建议在开始之前设置帐户。 否则，需要在 Site Recovery 部署期间执行此操作。
-- 注意，用于 Site Recovery 的存储帐户不能在同一订阅中或者跨不同的订阅[移动](../resource-group-move-resources.md)。
+- 注意，用于 Site Recovery 的存储帐户不能在同一订阅中或者跨不同的订阅[移动](../azure-resource-manager/resource-group-move-resources.md)。
 
 ### <a name="prepare-the-vmm-server"></a>准备 VMM 服务器
 * 确保 VMM 服务器符合 [先决条件](#on-premises-prerequisites)。
@@ -144,7 +144,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
     ![新保管库](./media/site-recovery-vmm-to-azure/new-vault3.png)
 3. 在“名称”中，指定一个友好名称以标识该保管库。 如果你有多个订阅，请选择其中一个。
-4. [创建一个资源组](../resource-group-template-deploy-portal.md)或选择现有的资源组。 指定 Azure 区域。 计算机将复制到此区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”
+4. [创建一个资源组](../azure-resource-manager/resource-group-template-deploy-portal.md)或选择现有的资源组。 指定 Azure 区域。 计算机将复制到此区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”
 5. 如果要从仪表板快速访问保管库，请单击“固定到仪表板” > “创建保管库”。
 
     ![新保管库](./media/site-recovery-vmm-to-azure/new-vault-settings.png)
@@ -372,6 +372,7 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 2. 默认值为 4。 在“过度预配型”网络中，这些注册表项需要更改，不能使用默认值。 最大值为 32。 监视流量以优化值。
 
 ## <a name="step-6-enable-replication"></a>步骤 6：启用复制
+
 现在，请按如下所述启用复制：
 
 1. 单击“步骤 2: 复制应用程序” > “源”。 首次启用复制后，请在保管库中单击“+复制”，对其他计算机启用复制。
@@ -388,9 +389,20 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 6. 在“虚拟机” > “选择虚拟机”中，单击并选择要复制的每个计算机。 只能选择可以启用复制的计算机。 。
 
     ![启用复制](./media/site-recovery-vmm-to-azure/enable-replication5.png)
-7. 在“属性” > “配置属性”中，选择所选 VM 的操作系统和 OS 磁盘。 。 可以稍后再设置其他属性。
+7. 在“属性” > “配置属性”中，选择所选 VM 的操作系统和 OS 磁盘。 默认情况下，为复制选择了 VM 的所有磁盘。 建议从复制中排除磁盘，以减少向 Azure 复制不必要数据所产生的带宽消耗。 例如，你可能不希望复制包含临时数据的磁盘，或包含每次重启计算机/应用程序时刷新的数据（例如 pagefile.sys 或 Microsoft SQL Server tempdb）的磁盘。 通过取消选中该磁盘，可从复制中排除磁盘。 验证 Azure VM 名称（目标名称）是否符合 [Azure 虚拟机要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)并根据需要对其进行修改。 。 可以稍后再设置其他属性。
 
-    ![启用复制](./media/site-recovery-vmm-to-azure/enable-replication6.png)
+    ![启用复制](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
+    
+    >[!NOTE]
+    > 
+    > * 只能从复制中排除基本磁盘。 不能排除 OS 磁盘，并且不建议排除动态磁盘。 ASR 无法识别来宾 VM 中哪些 VHD 磁盘是基本磁盘或动态磁盘。  如果未排除相关动态卷磁盘，受保护的动态磁盘会在故障转移 VM 上变成故障磁盘，且磁盘上的数据将无法访问。   
+    > * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用 VM 保护，然后重新启用保护。
+    > * 如果某个应用程序需要有排除的磁盘才能正常运行，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 或者，可以将 Azure 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
+    > * 在 Azure 中手动创建的磁盘不会故障回复。 例如，如果对三个磁盘进行故障转移，并直接在 Azure VM 中创建两个磁盘，只会对那三个已故障转移的磁盘进行从 Azure 到 Hyper-V 的故障回复。 在故障回复中或从 Hyper-V 到 Azure 的反向复制中，不能包括手动创建的磁盘。
+    >
+    >
+    
+
 8. 在“复制设置” > “配置复制设置”中，选择要应用于受保护 VM 的复制策略。 。 可以在“设置” > “复制策略”>“策略名称”>“编辑设置”中修改复制策略。 应用的更改将用于已在复制的计算机和新计算机。
 
    ![启用复制](./media/site-recovery-vmm-to-azure/enable-replication7.png)
@@ -426,6 +438,7 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 * 若要运行测试故障转移，我们建议你创建一个与你的 Azure 生产网络相隔离的新 Azure 网络。 这是你在 Azure 中新建网络时的默认行为。 [详细了解](site-recovery-failover.md#run-a-test-failover) 如何运行测试性故障转移。
 * 若要在故障转移到 Azure 时获得最佳性能，请在受保护的计算机上安装 Azure 代理。 这可以加速引导，并帮助进行故障排除。 安装 [Linux](https://github.com/Azure/WALinuxAgent) 或 [Windows](http://go.microsoft.com/fwlink/?LinkID=394789) 代理。
 * 若要全面测试部署，需要一个基础结构，使复制的计算机能够按预期工作。 如果要测试 Active Directory 和 DNS，可以通过 DNS 创建虚拟机作为域控制器，并使用 Azure Site Recovery 将此虚拟机复制到 Azure。 在 [Active Directory 测试性故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)中了解详细信息。
+* 如果已从复制中排除磁盘，则故障转移之后，可能需要在 Azure 中手动创建这些磁盘，以便应用程序可按预期运行。
 * 如果要运行非计划的故障转移而不是测试故障转移，请注意：
 
   * 在运行非计划的故障转移之前，请尽可能关闭主计算机。 这样可确保不会同时运行源计算机和副本计算机。
@@ -496,6 +509,6 @@ Hyper-V 主机上运行的恢复服务代理需有权通过 Internet 访问 Azur
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

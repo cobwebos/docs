@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
-ms.openlocfilehash: cd5d47aa012b21a283e3d6482fe0afddcfa14033
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: cc0faa49daaafe19c71d2c765b8e865be04f81e2
 
 
 ---
@@ -39,7 +39,7 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 > 
 
 ## <a name="manage-server-level-firewall-rules-through-rest-api"></a>通过 REST API 管理服务器级别防火墙规则
-1. 通过 REST API 管理防火墙规则必须进行身份验证。 相关详细信息，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](../resource-manager-api-authentication.md)。
+1. 通过 REST API 管理防火墙规则必须进行身份验证。 相关详细信息，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](../azure-resource-manager/resource-manager-api-authentication.md)。
 2. 可使用 REST API 创建、更新或删除服务器级别规则
    
     若要创建或更新服务器级防火墙规则，请使用以下内容执行 PUT 方法：
@@ -79,7 +79,7 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 若要了解如何导航到数据库，请参阅[管理数据库的访问和登录安全](https://msdn.microsoft.com/library/azure/ee336235.aspx)。
 
 ## <a name="additional-resources"></a>其他资源
-* [保护你的数据库](sql-database-security.md)
+* [保护你的数据库](sql-database-security-overview.md)
 * [SQL Server 数据库引擎和 Azure SQL 数据库安全中心](https://msdn.microsoft.com/library/bb510589)
 
 <!--Image references-->
@@ -91,6 +91,6 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

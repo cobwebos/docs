@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/15/2016
+ms.date: 12/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e048e70714c260fcb13ec5ca53434173026eb8d8
-ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
+ms.sourcegitcommit: f01cd8d3a68776dd12d2930def1641411e6a4994
+ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 
 
 ---
@@ -25,9 +25,9 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 > [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 
-> 
-> 
+> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+>
+>
 
 ## <a name="overview"></a>概述
 本教程将引导你完成使用用于 .NET 的 Azure 媒体服务 (AMS) SDK 实施视频点播 (VoD) 内容传送应用程序的步骤。
@@ -36,11 +36,11 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 ### <a name="ams-model"></a>AMS 模型
 
-下图显示了在针对媒体服务 OData 模型开发 VoD 应用程序时，某些最常用的对象。 
+下图显示了在针对媒体服务 OData 模型开发 VoD 应用程序时，某些最常用的对象。
 
 单击图像可查看其完整大小。  
 
-<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
 可以在[此处](https://media.windows.net/API/$metadata?api-version=2.14)查看整个模型。  
 
@@ -60,8 +60,8 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 ## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件。
 
-* 若要完成本教程，你需要一个 Azure 帐户。 
-  
+* 若要完成本教程，你需要一个 Azure 帐户。
+
     如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费的 Azure 服务和功能，例如 Azure App Service 中的 Web 应用功能。
 * 操作系统：Windows 8 或更高版本、Windows 2008 R2、Windows 7。
 * .NET Framework 4.0 或更高版本
@@ -72,26 +72,26 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 1. 在 [Azure 门户](https://portal.azure.com/)登录。
 2. 单击“+新建” > “媒体 + CDN” > “媒体服务”。
-   
+
     ![媒体服务创建](./media/media-services-portal-vod-get-started/media-services-new1.png)
 3. 在“创建媒体服务帐户”中输入所需的值。
-   
+
     ![媒体服务创建](./media/media-services-portal-vod-get-started/media-services-new3.png)
-   
+
    1. 在“帐户名”中，输入新的 AMS 帐户的名称。 媒体服务帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。
    2. 在“订阅”中，在你有权访问的不同 Azure 订阅中进行选择。
    3. 在“资源组”中，选择新的或现有的资源。  资源组是共享生命周期、权限和策略的资源的集合。 在[此处](../azure-resource-manager/resource-group-overview.md#resource-groups)了解更多信息。
-   4. 在“位置”中，选择用于存储媒体服务帐户的媒体和元数据记录的地理区域。 此区域用于处理和流式传输媒体。 下拉列表中仅显示可用的媒体服务区域。 
+   4. 在“位置”中，选择用于存储媒体服务帐户的媒体和元数据记录的地理区域。 此区域用于处理和流式传输媒体。 下拉列表中仅显示可用的媒体服务区域。
    5. 在“存储帐户”中，选择一个存储帐户以便提供媒体服务帐户中媒体内容的 Blob 存储。 可选择媒体服务帐户所在的地理区域内的现有存储帐户，也可创建存储帐户。 将在同一区域内创建一个新的存储帐户。 适用于存储帐户名的规则对媒体服务帐户同样适用。
-      
+
        单击[此处](../storage/storage-introduction.md)了解有关存储的详细信息。
    6. 选择“固定到仪表板”以查看帐户部署进度。
 4. 单击窗体底部的“创建”。
-   
-    成功创建帐户后，状态将更改为“正在运行”。 
-   
+
+    成功创建帐户后，状态将更改为“正在运行”。
+
     ![媒体服务设置](./media/media-services-portal-vod-get-started/media-services-settings.png)
-   
+
     若要管理 AMS 帐户（例如，上载视频、对资产进行编码、监视作业进度），请使用“设置”窗口。
 
 ## <a name="configure-streaming-endpoints-using-the-azure-portal"></a>使用 Azure 门户配置流式处理终结点
@@ -108,19 +108,19 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 若要创建和更改流式处理保留单元数，请执行以下操作：
 
-1. 在“设置”窗口中，单击“流式处理终结点”。 
-2. 单击默认的流式处理终结点。 
-   
+1. 在“设置”窗口中，单击“流式处理终结点”。
+2. 单击默认的流式处理终结点。
+
     此时会显示“默认流式处理终结点详细信息”窗口。
 3. 若要指定流式处理单元数，请滑动“流式处理单元”滑块。
-   
+
     ![流式处理单位](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
 4. 单击“保存”按钮保存更改。
-   
+
    > [!NOTE]
    > 分配新的单元最多需要 20 分钟即可完成。
-   > 
-   > 
+   >
+   >
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -131,20 +131,20 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 3. 添加对 System.Configuration 程序集的引用。 此程序集包含用于访问配置文件（例如，App.config）的 **System.Configuration.ConfigurationManager** 类。
 
-    若要添加引用，请执行以下操作：在解决方案资源管理器中，在项目名称上单击鼠标右键按钮，选择“添加” > “引用...”，然后在搜索框中键入配置。 
+    若要添加引用，请执行以下操作：在解决方案资源管理器中，在项目名称上单击鼠标右键按钮，选择“添加” > “引用...”，然后在搜索框中键入配置。
 
 4. 打开 App.config 文件（如果该文件未按默认添加到项目中，请添加）并在该文件中添加 *appSettings* 节。 如以下示例中所示设置 Azure 媒体服务帐户名和帐户密钥的值。 若要获取帐户名称和密钥信息，请转到 [Azure 门户](https://portal.azure.com/)并选择 AMS 帐户。 然后，选择“设置” > “密钥”。 “管理密钥”窗口显示帐户名称、主密钥和辅助密钥。 复制帐户名称和主密钥的值。
-   
+
         <configuration>
         ...
           <appSettings>
             <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
             <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
           </appSettings>
-   
+
         </configuration>
 5. 使用以下代码覆盖位于 Program.cs 文件开头的现有 **using** 语句。
-   
+
         using System;
         using System.Collections.Generic;
         using System.Linq;
@@ -266,7 +266,7 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 以下代码演示如何提交编码作业。 该作业所包含的一项任务会指定要使用 **媒体编码器标准**将夹层文件转码成一组自适应比特率 MP4。 代码会提交作业，并等待作业完成。
 
 编码作业完成后，即可发布资产，然后流式处理或渐进式下载 MP4 文件。
- 
+
 将以下方法添加到 Program 类。
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -309,7 +309,7 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 
 ### <a name="some-details-about-url-formats"></a>有关 URL 格式的一些详细信息
 
-创建定位符后，可以生成用来流式处理或下载文件的 URL。 本教程中的示例将输出 URL，可以将其粘贴在适当的浏览器中。 此部分直接提供了多个简短的示例，介绍了各种不同的格式。 
+创建定位符后，可以生成用来流式处理或下载文件的 URL。 本教程中的示例将输出 URL，可以将其粘贴在适当的浏览器中。 此部分直接提供了多个简短的示例，介绍了各种不同的格式。
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH 的流 URL 采用以下格式：
 
@@ -324,7 +324,7 @@ ms.openlocfilehash: 623841606367a319eadf268c8938066d98aa491d
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest
 
 
-用于下载文件的 SAS URL 采用以下格式：
+#### <a name="a-sas-url-used-to-download-files-has-the-following-format"></a>用于下载文件的 SAS URL 采用以下格式：
 
 {blob 容器名称}/{资产名称}/{文件名}/{SAS 签名}
 
@@ -449,14 +449,14 @@ MPEG DASH
 ## <a name="download-sample"></a>下载示例
 下面的代码示例包含本教程中创建的代码：[示例](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)。
 
-## <a name="next-steps-media-services-learning-paths"></a>后续步骤：媒体服务学习路径
+## <a name="next-steps"></a>后续步骤 
+
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### <a name="looking-for-something-else"></a>想要寻找其他内容吗？
-如果本主题不包含所期待的内容、缺少某些内容，或在其他方面不符合需求，请使用下面的 Disqus 会话向我们提供反馈。
+
 
 <!-- Anchors. -->
 
@@ -467,6 +467,6 @@ MPEG DASH
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

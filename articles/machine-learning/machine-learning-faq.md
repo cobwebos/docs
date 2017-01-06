@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/26/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fd0e8f5bd41fcf105571f76aab2f192c2f6dd21d
+ms.sourcegitcommit: c5479dd817e8929ff5e9129d4643d49758e7ab16
+ms.openlocfilehash: 82d4d74a14ec31453f0d3eb9a18140c3569f806c
 
 
 ---
@@ -289,9 +289,6 @@ Studio 中没有适用于 R 的 REPL 环境。
 
 如果更改了存储帐户访问密钥，请使用 Azure 经典门户在工作区中重新同步访问密钥。  
 
-## <a name="azure-marketplace"></a>Azure 应用商店
-请参阅 [FAQ for publishing and using apps in the Machine Learning Marketplace](machine-learning-marketplace-faq.md)（在机器学习应用商店中发布和使用应用的常见问题）。
-
 ## <a name="support-and-training"></a>支持和培训
 **在哪里可以获得 Azure 机器学习的培训？**
 
@@ -545,6 +542,6 @@ Azure ML API 服务根据它是经典 Web 服务还是新 Web 服务来计费。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

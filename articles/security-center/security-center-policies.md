@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2016
+ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7fba0338f6a61998b1c103210cd60c1d37eeffd5
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
 
 
 ---
@@ -63,7 +63,7 @@ ms.openlocfilehash: 7fba0338f6a61998b1c103210cd60c1d37eeffd5
    > 用户可以根据自己的偏好，将不同区域中虚拟机的数据聚合到一个中心存储帐户。 有关详细信息，请参阅 [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）。
    > 
    > 
-9. 在“安全策略”边栏选项卡中，单击“启用”即可启用需要用在此订阅上的安全建议。 Click <bpt id="p1">**</bpt>Prevention policy<ept id="p1">**</ept> to see options like those in the following screenshot:
+9. 在“安全策略”边栏选项卡中，单击“启用”即可启用需要用在此订阅上的安全建议。 Click **Prevention policy** to see options like those in the following screenshot:
    
     ![选择安全策略](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
 
@@ -111,6 +111,6 @@ ms.openlocfilehash: 7fba0338f6a61998b1c103210cd60c1d37eeffd5
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

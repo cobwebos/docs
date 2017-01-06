@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 03b74607227aed68c6df01e80e4bb87e906ecf31
-ms.openlocfilehash: 48531201029bf09f30cb22852aaf5d3ad0b328fc
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 4a0d72f46fada5112563d10d22f61abc439730a7
 
 
 ---
@@ -216,7 +216,7 @@ ms.openlocfilehash: 48531201029bf09f30cb22852aaf5d3ad0b328fc
   * [为 Azure 网站启用 HTTPS](web-sites-configure-ssl-certificate.md)
 * 当你不再使用 Web 应用和任何相关的 Azure 资源时，请删除包含这些资源的资源组。
   
-    有关如何在 Azure 门户中使用资源组的信息，请参阅 [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md)（使用 Resource Manager 模板和 Azure 门户部署资源）。   
+    有关如何在 Azure 门户中使用资源组的信息，请参阅 [Deploy resources with Resource Manager templates and Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)（使用 Resource Manager 模板和 Azure 门户部署资源）。   
 * 有关在应用服务中创建 ASP.NET Web 应用的更多示例，请参阅 [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [演示](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)中的[在 Azure 应用服务中创建和部署 ASP.NET Web 应用](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)和[在 Azure 应用服务中创建和部署移动应用](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service)。 有关 HealthClinic.biz 演示的多个快速入门，请参阅 [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)（Azure 开发人员工具快速入门）。
 
 

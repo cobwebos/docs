@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据库开发概述 | Microsoft 文档"
+title: "SQL 数据库应用程序开发概述 | Microsoft Docs"
 description: "了解可用于连接到 SQL 数据库的连接库和最佳实践。"
 services: sql-database
 documentationcenter: 
@@ -8,20 +8,25 @@ manager: jhubbard
 editor: genemi
 ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
 ms.service: sql-database
+ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: df13648c8a76b216f596df49dd3ef617d0b35ccc
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 18dc3cce7451d90b6b65b990b80c05e7f6decb56
 
 
 ---
-# <a name="sql-database-development-overview"></a>SQL 数据库开发概述
+# <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
+
+> [!TIP]
+> 若需通过教程来了解如何创建服务器、创建基于服务器的防火墙、查看服务器属性、使用 SQL Server Management Studio 进行连接、查询 master 数据库、创建示例数据库和空数据库、查询数据库属性、使用 SQL Server Management Studio 进行连接，以及查询示例数据库，请参阅[入门教程](sql-database-get-started.md)。
+>
 
 ## <a name="language-and-platform"></a>语言和平台
 为各种编程语言和平台提供了代码示例。 可在以下位置找到代码示例的链接： 
@@ -36,7 +41,7 @@ Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源�
 ## <a name="security"></a>“安全”
 Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据和监视活动的资源。
 
-* 详细信息：[保护 SQL 数据库](sql-database-security.md)
+* 详细信息：[保护 SQL 数据库](sql-database-security-overview.md)
 
 ## <a name="authentication"></a>身份验证
 * Azure SQL 数据库支持 SQL Server 身份验证用户和登录名，以及 [Azure Active Directory 身份验证](sql-database-aad-authentication.md)用户和登录名。
@@ -72,6 +77,6 @@ Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

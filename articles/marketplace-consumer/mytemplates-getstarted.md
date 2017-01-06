@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9bc7cc00e9aa9aab982f0b2f08f8befb7c02f46d
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
 
 
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure 门户中的专用模板入门
-[Azure Resource Manager](../resource-group-authoring-templates.md) 模板是声明性模板，用于定义部署。 可以定义要为解决方案部署的资源，以及指定可让用户根据不同的环境输入值的参数和变量。 模板中包含可用于构造部署值的 JSON 和表达式。
+[Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) 模板是声明性模板，用于定义部署。 可以定义要为解决方案部署的资源，以及指定可让用户根据不同的环境输入值的参数和变量。 模板中包含可用于构造部署值的 JSON 和表达式。
 
 可以将 [Azure 门户](https://portal.azure.com)中新的**模板**功能与作为 [Azure 应用商](https://azure.microsoft.com/marketplace/)店扩展的 **Microsoft.Gallery** 资源提供程序一起使用，使用户能够从个人库创建、管理和部署专用模板。
 
@@ -35,16 +35,16 @@ ms.openlocfilehash: 9bc7cc00e9aa9aab982f0b2f08f8befb7c02f46d
 * **模板** 是一种封装的资源，其中包含 Resource Manager 模板和其他元数据。 它的行为非常类似于应用商店中的项目。 关键区别是，与公共应用商店项目完全不同，它是私有项目。
 * **模板** 库非常适合需要自定义部署的用户。
 * **模板** 非常适合在 Azure 中需要简单存储库的用户。
-* 从现有的 Resource Manager 模板开始。 在 [github](https://github.com/Azure/azure-quickstart-templates) 中查找模板，或者从现有的资源组[导出模板](../resource-manager-export-template.md)。
+* 从现有的 Resource Manager 模板开始。 在 [github](https://github.com/Azure/azure-quickstart-templates) 中查找模板，或者从现有的资源组[导出模板](../azure-resource-manager/resource-manager-export-template.md)。
 * **模板** 与发布它们的用户相关联。 对模板具有读取权限的所有用户都可以看到发布者名称。
 * **模板** 是 Resource Manager 资源，发布之后便不能重命名。
 
 ## <a name="add-a-template-resource"></a>添加模板资源
 有两种方法可在 Azure 门户中创建 **模板** 资源。
 
-### <a name="method-1-create-a-new-template-resource-from-a-running-resource-group"></a>方法 1：从正在运行的资源组新建模板资源
+### <a name="method-1--create-a-new-template-resource-from-a-running-resource-group"></a>方法 1：从正在运行的资源组新建模板资源
 1. 导航到 Azure 门户中的现有资源组。 在“设置”中选择“导出模板”。
-2. 导出 Resource Manager 模板后，使用“保存模板”按钮将其保存到“模板”存储库。 可在 [此处](../resource-manager-export-template.md)找到有关导出模板的完整详细信息。
+2. 导出 Resource Manager 模板后，使用“保存模板”按钮将其保存到“模板”存储库。 可在 [此处](../azure-resource-manager/resource-manager-export-template.md)找到有关导出模板的完整详细信息。
    <br /><br />
    ![导出资源组](media/rg-export-portal1.PNG)  <br />
 3. 选择“保存到模板”  命令按钮。
@@ -62,7 +62,7 @@ ms.openlocfilehash: 9bc7cc00e9aa9aab982f0b2f08f8befb7c02f46d
    > 
    > 
 
-### <a name="b-method-2-add-a-new-template-resource-from-browse"></a>B. 方法 2：通过浏览新增模板资源
+### <a name="method-2--add-a-new-template-resource-from-browse"></a>方法 2：通过浏览新增模板资源
 还可以使用“浏览”>“模板”中的“+添加”命令按钮从头开始新增一个模板。 需要提供名称、说明和 Resource Manager 模板 JSON。
 
 ![添加模板](media/add-template-portal1.PNG)  <br />
@@ -129,13 +129,13 @@ ms.openlocfilehash: 9bc7cc00e9aa9aab982f0b2f08f8befb7c02f46d
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解有关创建 Resource Manager 模板的信息，请参阅 [创作模板](../resource-group-authoring-templates.md)
-* 若要了解可在 Resource Manager 模板中使用的函数，请参阅 [模板函数](../resource-group-template-functions.md)
-* 有关如何设计你的模板的指南，请参阅 [设计 Azure 资源管理器模板的最佳实践](../best-practices-resource-manager-design-templates.md)
+* 若要了解有关创建 Resource Manager 模板的信息，请参阅 [创作模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* 若要了解可在 Resource Manager 模板中使用的函数，请参阅 [模板函数](../azure-resource-manager/resource-group-template-functions.md)
+* 有关如何设计你的模板的指南，请参阅 [设计 Azure 资源管理器模板的最佳实践](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

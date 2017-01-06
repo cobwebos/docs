@@ -4,7 +4,7 @@
 # 入门
 ## [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
 ## [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
-## [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
+## [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
 
 # 如何
 ## [安装 Azure AD Connect Health 代理](active-directory-aadconnect-health-agent-install.md)
@@ -20,10 +20,10 @@
 ## [混合标识设计指南](../active-directory-hybrid-identity-design-considerations-overview.md)
 
 # 资源
-##[Azure AD Connect 常见问题](active-directory-aadconnect-health-faq.md)
+##[Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

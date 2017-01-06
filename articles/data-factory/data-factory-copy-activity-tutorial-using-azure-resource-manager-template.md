@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: d175d3d4d7d7a58f071dab0f32e3fdd3cb3146ce
-ms.openlocfilehash: 8020a4863f0432480dd985870676a714d9abd52e
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: 9ad4378ab27433858d14237fe451b16690711f3a
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 8020a4863f0432480dd985870676a714d9abd52e
 ## <a name="prerequisites"></a>先决条件
 * 通读[教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成**先决条件**步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。 本教程使用 PowerShell 部署数据工厂实体。 
-* （可选）若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
+* （可选）若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 本教程创建包含以下数据工厂实体的数据工厂：
@@ -583,6 +583,6 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

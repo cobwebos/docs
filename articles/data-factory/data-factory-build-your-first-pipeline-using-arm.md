@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/12/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7269613c5f181b4b1ce931b335a88e501e345dac
-ms.openlocfilehash: d4db9515f213963722fc181cbf97dc78e7f1bb70
+ms.sourcegitcommit: 9990e3ae2a978f0024c17f445ea07eae8aef5197
+ms.openlocfilehash: 3f36162dd0826270a7e2a69e7d940ba5516ecef0
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: d4db9515f213963722fc181cbf97dc78e7f1bb70
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
-* 若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md) （创作 Azure Resource Manager 模板）。 
+* 若要了解 Azure Resource Manager 模板，请参阅 [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md) （创作 Azure Resource Manager 模板）。 
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 | 实体 | 说明 |
@@ -320,6 +320,7 @@ ms.openlocfilehash: d4db9515f213963722fc181cbf97dc78e7f1bb70
     ```PowerShell
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFTutorialARM-Parameters.json
     ```
+
 ## <a name="monitor-pipeline"></a>监视管道
 1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，然后选择“数据工厂”。
      ![“浏览”->“数据工厂”](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
@@ -618,6 +619,6 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

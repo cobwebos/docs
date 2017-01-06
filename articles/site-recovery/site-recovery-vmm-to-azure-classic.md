@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 069a8619ccec30bb2a575ffd8faf3e6acf60da4a
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 28c41f08bf8eaf7e6679040bb8fbab2e134d08fb
 
 
 ---
@@ -184,7 +184,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
     ![存储帐户](./media/site-recovery-vmm-to-azure-classic/storage.png)
 
 > [!NOTE]
-> 用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../resource-group-move-resources.md)。
+> 用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../azure-resource-manager/resource-group-move-resources.md)。
 >
 >
 
@@ -246,7 +246,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 请注意，如果目标网络具有多个子网，并且其中一个子网与源虚拟机所在的子网同名，则在故障转移后副本虚拟机将连接到该目标子网。 如果没有具有匹配名称的目标子网，则虚拟机将连接到网络中的第一个子网。
 
 > [!NOTE]
-> 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../resource-group-move-resources.md)。
+> 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../azure-resource-manager/resource-group-move-resources.md)。
 >
 >
 
@@ -345,13 +345,12 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
    * 单击“测试故障转移已完成” 。 清理测试环境以自动关闭电源，并删除测试虚拟机。
    * 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果  。
 
->
 
 ## <a name="next-steps"></a>后续步骤
 了解[设置恢复计划](site-recovery-create-recovery-plans.md)和[故障转移](site-recovery-failover.md)。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

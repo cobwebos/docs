@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
-ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: 8b085c94078a8e6c4ded95c85443d14637025dc2
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 在计算机上安装 [Curl](https://curl.haxx.se/dlwiz/) 。 配合使用 CURL 工具与 REST 命令来创建数据工厂。
-* 遵循 [此文](../resource-group-create-service-principal-portal.md) 的说明：
+* 遵循 [此文](../azure-resource-manager/resource-group-create-service-principal-portal.md) 的说明：
   1. 在 Azure Active Directory 中创建名为 **ADFGetStartedApp** 的 Web 应用程序。
   2. 获取**客户端 ID** 和**机密密钥**。
   3. 获取 **租户 ID**。
@@ -487,6 +487,6 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

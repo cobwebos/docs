@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 6bb9415180f7235b7521d5a4dc9d8a6f0e060756
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: ac1c60e04b42e2804ef17ba35368dd28c1d748a4
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: 6bb9415180f7235b7521d5a4dc9d8a6f0e060756
 ## <a name="prerequisites"></a>先决条件
 * 通读 [教程概述](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) ，完成 **先决条件** 步骤。
 * 在计算机上安装 [Curl](https://curl.haxx.se/dlwiz/) 。 配合使用 Curl 工具与 REST 命令来创建数据工厂。 
-* 遵循 [此文](../resource-group-create-service-principal-portal.md) 的说明： 
+* 遵循 [此文](../azure-resource-manager/resource-group-create-service-principal-portal.md) 的说明： 
   1. 在 Azure Active Directory 中创建名为 **ADFCopyTutorialApp** 的 Web 应用程序。
   2. 获取**客户端 ID** 和**机密密钥**。 
   3. 获取 **租户 ID**。 
@@ -578,6 +578,6 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

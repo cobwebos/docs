@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2016
+ms.date: 11/15/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 4a2cd02f6f9b6ac51c32314ce892e572e569eb7c
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
 ## <a name="creating-and-managing-vm-scale-sets"></a>创建和管理 VM 缩放集
 可以在 [Azure 门户](https://portal.azure.com)中选择“新建”，然后在搜索栏中键入“缩放”，来创建 VM 规模集。 结果中会看到“虚拟机规模集”。 从这里，可以填写必填字段，自定义和部署缩放集。 
 
-也可以使用 JSON 模板和 [REST API](https://msdn.microsoft.com/library/mt589023.aspx) 定义和部署 VM 规模集，就像定义和部署单个 Azure Resource Manager VM 一样。 因此，可以使用任何标准的 Azure 资源管理器部署方法。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+也可以使用 JSON 模板和 [REST API](https://msdn.microsoft.com/library/mt589023.aspx) 定义和部署 VM 规模集，就像定义和部署单个 Azure Resource Manager VM 一样。 因此，可以使用任何标准的 Azure 资源管理器部署方法。 有关模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 可以在[此处](https://github.com/Azure/azure-quickstart-templates)的 Azure 快速入门模板 GitHub 存储库中找到一组 VM 规模集示例模板。 （查找名称中包含 *vmss* 的模板）
 
@@ -50,9 +50,9 @@ ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
 若要浏览创建自动缩放的规模集的步骤，请参阅[自动缩放虚拟机规模集中的虚拟机](virtual-machine-scale-sets-windows-autoscale.md)
 
 ## <a name="monitoring-your-vm-scale-set"></a>监视 VM 缩放集
-[Azure 门户](https://portal.azure.com)列出了规模集并显示了基本属性和规模集中的 VM 列表。 有关详细信息，可使用 [Azure 资源浏览器](https://resources.azure.com)来查看 VM 规模集。 VM 缩放集是 Microsoft.Compute 下的资源，因此，你可以通过在此站点中展开以下链接来查看它们：
+[Azure 门户](https://portal.azure.com)会列出规模集并显示基本属性和操作，包括列出该集中的 VM 和显示资源使用情况图表。 有关详细信息，可使用 [Azure 资源浏览器](https://resources.azure.com)来查看 VM 规模集。 VM 缩放集是 Microsoft.Compute 下的资源，因此，你可以通过在此站点中展开以下链接来查看它们：
 
-    subscriptions -> your subscription -> resourceGroups -> providers -> Microsoft.Compute -> virtualMachineScaleSets -> your VM scale set -> etc.
+**订阅 -> 你的订阅 -> resourceGroups -> 提供程序 -> Microsoft.Compute -> virtualMachineScaleSets -> 你的 VM 规模集 -> 等等**
 
 ## <a name="vm-scale-set-scenarios"></a>VM 缩放集方案
 本部分列出了一些典型的 VM 缩放集方案。 一些高级 Azure 服务（如 Batch（批处理）、Service Fabric、Azure 容器服务）将使用这些方案。
@@ -71,15 +71,15 @@ ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
    下面的示例使用 RDP 和 Windows 实现相同的目的：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat)
 * **使用“jumpbox”连接到 VM** - 如果在同一个 VNET 中创建一个 VM 规模集和一个独立 VM，则该独立 VM 和 VM 规模集 VM 能够使用其由 VNET/子网定义的内部 IP 地址彼此连接。 如果创建一个公共 IP 地址并将其分配给独立 VM，则可以通过 RDP 或 SSH 连接到该独立 VM，然后从该虚拟机连接到 VM 缩放集实例。 此时你可能会发现，与使用其默认配置中的公共 IP 地址的简单独立 VM 相比，简单的 VM 缩放集本质上更安全。
   
-   [作为此方法的一个示例，此模板创建了一个简单的 Mesos 群集，其中包含一个独立的主 VM，用于管理由 VM 组成的基于 VM 规模集的群集。](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
+   例如，以下模板将使用一个独立的 VM 部署简单的规模集：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-jumpbox](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-jumpbox)
 * **负载平衡到 VM 规模集实例** - 如果想要使用“轮循机制”方法向 VM 的计算群集交付工作，则可以使用负载平衡规则对 Azure 负载均衡器进行相应的配置。 可以定义探测，通过使用指定的协议、间隔和请求路径对端口执行 ping 操作来验证应用程序是否正在运行。 Azure [应用程序网关](https://azure.microsoft.com/services/application-gateway/)也支持规模集，以及更复杂的负载平衡方案。
   
-   [下面的示例创建了由运行 IIS Web 服务器的 VM 组成的 VM 规模集，并使用负载平衡器来平衡每个 VM 接收的负载。它还使用 HTTP 协议 ping 每个 VM 上的特定 URL。](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json) （查看 Microsoft.Network/loadBalancers 资源类型以及 virtualMachineScaleSet 中的 networkProfile 和 extensionProfile）
-* **在 PaaS 群集管理器中将 VM 规模集部署为计算群集** - VM 规模集有时作为下一代辅助角色进行说明。 这是有效的描述，但也可能导致将缩放集功能与 PaaS v1 辅助角色功能混淆。 在某种意义上，VM 缩放集提供真正的“辅助角色”或辅助角色资源，并在此资源中提供独立于平台/运行时且集成到 Azure 资源管理器 IaaS 中的可自定义通用计算资源。
+   以下示例将创建运行 Apache Web 服务器的 VM 规模集，并使用负载均衡器来均衡每个 VM 接收的负载：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-ubuntu-web-ssl](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-ubuntu-web-ssl)（查看 Microsoft.Network/loadBalancers 资源类型以及 virtualMachineScaleSet 中的 networkProfile 和 extensionProfile）
+* **在 PaaS 群集管理器中将 VM 规模集部署为计算群集** - VM 规模集有时作为下一代辅助角色进行说明。 这是有效的描述，但也可能导致将规模集功能与 PaaS v1 辅助角色功能混淆。 在某种意义上，VM 缩放集提供真正的“辅助角色”或辅助角色资源，并在此资源中提供独立于平台/运行时且集成到 Azure 资源管理器 IaaS 中的可自定义通用计算资源。
   
    PaaS v1 辅助角色虽然在平台/运行时支持方面受到限制（仅 Windows 平台映像），但它也包括多项服务，如 VIP 交换，可配置升级设置，以及*尚未*在 VM 规模集中提供，或者将由 Service Fabric 等其他更高级别 PaaS 服务提供的特定于运行时/应用部署的设置。 考虑到这一点，你可以将 VM 缩放集视为支持 PaaS 的基础结构。 即， 生成 Service Fabric 等 PaaS 解决方案或 Mesos 等群集管理器时，可以在将 VM 缩放集作为可缩放计算层的基础上进行生成。
   
-   [作为此方法的一个示例，此模板创建了一个简单的 Mesos 群集，其中包含一个独立的主 VM，用于管理由 VM 组成的基于 VM 规模集的群集。](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json) [Azure 容器服务](https://azure.microsoft.com/blog/azure-container-service-now-and-the-future/)的将来版本将基于 VM 规模集部署此方案的更复杂/更强化版本。
+   有关 Azure 容器服务如何使用容器协调器部署基于规模集的群集的示例，请参阅：[https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)。
 
 ## <a name="vm-scale-set-performance-and-scale-guidance"></a>VM 缩放集性能和缩放指南
 * 不要一次在多个 VM 规模集中创建超过 500 个 VM。
@@ -100,7 +100,7 @@ ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
 
 **问：** VM 缩放集内是否支持数据磁盘？
 
-**答：** 在首次发行时不支持。 可用于存储数据的选项包括：
+**答：** 初始版本中不支持（数据磁盘目前以预览版提供）。 可用于存储数据的选项包括：
 
 * Azure 文件（SMB 共享驱动器）
 * OS 驱动器
@@ -148,6 +148,6 @@ ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

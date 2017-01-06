@@ -13,21 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 11/16/2016
+ms.date: 12/25/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a896240331d901ae839c2489c6266daac2780899
+ms.sourcegitcommit: 16bff1b5708652a75ea603f596c864901b12a88d
+ms.openlocfilehash: 9b24fe8139d50b7c37a380fcc52b7ac302f5ee5d
 
 
 ---
 # <a name="a-nametoc395809351aaspnet-mvc-tutorial-web-application-development-with-documentdb"></a><a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 DocumentDB 开发 Web 应用程序
 > [!div class="op_single_selector"]
-> * [.NET](documentdb-dotnet-application.md)
-> * [Node.js](documentdb-nodejs-application.md)
-> * [Java](documentdb-java-application.md)
-> * [Python](documentdb-python-application.md) 
-> 
+> * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
+> * [Java](documentdb-java-get-started.md)
+> * [Node.js](documentdb-nodejs-get-started.md)
+> * [C++](documentdb-cpp-get-started.md)
+>  
 > 
 
 为了特别说明你可以如何有效地利用 Azure DocumentDB 来存储和查询 JSON 文档，本文提供了演示如何使用 Azure DocumentDB 构建待办事项应用的完整演练。 任务将存储为 Azure DocumentDB 中的 JSON 文档。
@@ -576,6 +577,6 @@ ms.openlocfilehash: a896240331d901ae839c2489c6266daac2780899
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

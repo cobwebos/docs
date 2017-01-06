@@ -80,6 +80,7 @@
 
 
 # 相关内容
+## [在云中监视本地标识基础结构和同步服务](../connect-health/active-directory-aadconnect-health.md)
 ## [混合标识设计指南](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 
@@ -88,6 +89,6 @@
 ##[DirSync 弃用](active-directory-aadconnect-dirsync-deprecated.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

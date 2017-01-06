@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 09/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 32feb93bf6b6b77d0b14206802c776da3a8eac91
+ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
+ms.openlocfilehash: a6bb1c4b3a4972cdab9b99c548ef918a4d1070a0
 
 
 ---
-# <a name="azure-ad-connect-in-microsoft-cloud-germany-public-preview"></a>德国 Microsoft 云中的 Azure AD Connect - 公共预览版
+# <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>德国 Microsoft 云中的 Azure AD Connect - 公共预览版
 ## <a name="introduction"></a>介绍
 Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间的同步。
 当前， [德国 Microsoft 云](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) 中的许多方案必须由运营商完成。 使用“德国 Microsoft 云”时，必须注意以下几点：
@@ -49,7 +49,7 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 
 你应该看到以下内容：
 
-![Azure AD Connect 边栏选项卡](media\\active-directory-aadconnect-germany\\germany1.png)
+![Azure AD Connect 边栏选项卡](media/active-directory-aadconnect-germany/germany1.png)
 
 下表描述了边栏选项卡中所示的功能。
 
@@ -68,6 +68,6 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

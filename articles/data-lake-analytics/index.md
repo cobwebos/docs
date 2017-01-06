@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Data Lake Analytics 执行大数据分析。 教程介绍了如何运行实时交互式批处理分析，以及如何编写 U-SQL 查询。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 4a9b9a0aef993055e0c5400a15918a05491509eb
+ms.sourcegitcommit: 003cc86e182c55621db9e41fa35d871f37245a91
+ms.openlocfilehash: dcf7aea439c02e2bdb1563c6573376a3f87765d1
 
 ---
 # <a name="data-lake-analytics-documentation"></a>Data Lake Analytics 文档
 
-Azure Data Lake Analytics 是一项新服务，旨在使大数据分析变得更加轻松。 借助此服务，你可以集中精力编写、运行和管理作业，不用运行分布式基础结构。 无需部署、配置和调整硬件，只需编写查询即可转换数据并提取有价值的见解。 只需将表盘设置为所需值，该分析服务就可以立即处理任何规模的作业。 你只需要为你的运行作业付费，让服务变得更为经济高效。 该分析服务支持 Azure Active Directory，让你可简单管理访问和角色，并与你的本地识别系统集成。 它还包括了 U-SQL 语言，有效结合了 SQL 的优点和用户代码的表达力。 U-SQL 的可缩放分布式运行时可让你高效地分析存储中的数据，以及跨 Azure 中的 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库的数据。
+了解如何使用 Data Lake Analytics 运行可扩展为大规模数据集的大数据分析作业。 教程和其他文档介绍了如何创建和管理实时交互式批处理分析作业，以及如何使用 U-SQL 语言执行查询。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -161,7 +162,7 @@ Azure Data Lake Analytics 是一项新服务，旨在使大数据分析变得更
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/placeholder.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -172,11 +173,29 @@ Azure Data Lake Analytics 是一项新服务，旨在使大数据分析变得更
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/data-lake-analytics/data-lake-analytics-get-started-python">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/python.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>通过 Python 使用 Azure Data Lake Store 入门</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
 
 ---
  
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
@@ -231,6 +250,6 @@ Azure Data Lake Analytics 是一项新服务，旨在使大数据分析变得更
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

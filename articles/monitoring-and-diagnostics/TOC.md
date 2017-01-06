@@ -30,7 +30,7 @@
 ### [针对活动日志警报配置 webhook](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 ### [存档活动日志](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
 ### [将活动日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
-### [使用 Resource Manager 执行审核操作](../resource-group-audit.md)
+### [使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)
 ## 管理诊断日志
 ### [存档](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 ### [流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
@@ -49,6 +49,6 @@
 ## [Azure CLI 2.0（预览版）示例](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [支持的指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

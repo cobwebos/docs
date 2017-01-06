@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/30/2016
+ms.date: 12/16/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: 5e32b6fc0c87195fc82eedb00ffc7082b73007a0
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: 2863bfb48d0fed706fbd3c3f14dfb6a8d77eb9ea
 
 
 ---
@@ -42,13 +42,13 @@ ms.openlocfilehash: 5e32b6fc0c87195fc82eedb00ffc7082b73007a0
 
 ## <a name="create-cluster"></a>创建群集
 
-大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，然后删除群集。 本部分使用 [Azure Resource Manager 模板](../resource-group-template-deploy.md)在 HDInsight 中创建基于 Linux 的 Hadoop 群集。 Resource Manager 模板完全可自定义，使用它可以轻松创建 HDInsight 等 Azure 资源。 学习本教程不需要有 Resource Manager 模板方面的经验。 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 使用页面顶部的选择器选择群集创建选项。
+大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，然后删除群集。 本部分使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)在 HDInsight 中创建基于 Linux 的 Hadoop 群集。 Resource Manager 模板完全可自定义，使用它可以轻松创建 HDInsight 等 Azure 资源。 学习本教程不需要有 Resource Manager 模板方面的经验。 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 使用页面顶部的选择器选择群集创建选项。
 
-本教程使用的 Resource Manager 模板位于公共 Blob 容器 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)中。 
+在本教程中使用的 Resource Manager 模板位于 [Github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)。 
 
 1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. 输入或选择下列值：
    
     ![在门户上开始使用 Resource Manager 模板 (HDInsight Linux)](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png)。
@@ -56,7 +56,8 @@ ms.openlocfilehash: 5e32b6fc0c87195fc82eedb00ffc7082b73007a0
     * **订阅**：选择你的 Azure 订阅。
     * **资源组**：创建新资源组或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 
     * **位置**：选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 
-    * **ClusterName**：为将创建的 Hadoop 群集输入名称。
+    * **群集类型**：对于本教程，选择“Hadoop”。
+    * **群集名称**：为将创建的 Hadoop 群集输入名称。
     * **群集登录名和密码**：默认登录名是 **admin**。
     * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。 
      
@@ -65,7 +66,6 @@ ms.openlocfilehash: 5e32b6fc0c87195fc82eedb00ffc7082b73007a0
     * **位置**：群集和依赖的存储帐户所用的位置与资源组使用。
     * **群集版本**：3.4
     * **OS 类型**：Linux
-    * **群集类型**：Hadoop
     * **辅助角色节点数**：2
 
      每个群集都有一个 Azure Blob 存储帐户依赖项。 该帐户通常称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。 在模板中，默认存储帐户名已定义为附加了“store”的群集名称。 
@@ -175,6 +175,6 @@ ms.openlocfilehash: 5e32b6fc0c87195fc82eedb00ffc7082b73007a0
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 
