@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/06/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -35,8 +35,8 @@ ms.openlocfilehash: 03c511f53704f306aa3fce2dd394188e5b3a0fa2
 注册应用后，应用将通过向 v2.0 终结点发送请求来与 Azure AD 通信：
 
 ```
-https://login.microsoftonline.com/common/oauth2/v2.0/authorize
-https://login.microsoftonline.com/common/oauth2/v2.0/token
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
 几乎在所有的 OAuth 和 OpenID Connect 流中，都有四个参与交换的对象：
