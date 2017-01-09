@@ -3,7 +3,7 @@
 2. 转到“设备”  页。 单击“设备”页底部的“创建虚拟设备”。
 3. 在“创建虚拟设备” 对话框中，指定以下详细信息。
    
-     ![StorSimple 创建虚拟设备](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
+    ![StorSimple 创建虚拟设备](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
    
    1. **名称** – 虚拟设备的唯一名称。
    2. **型号** – 选择虚拟设备的型号。 只有在运行 Update 2 或更高版本时，才会显示此字段。 8010 设备型号提供 30 TB 的标准存储，而 8020 提供 64 TB 的高级存储。 指定 8010
@@ -28,6 +28,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
