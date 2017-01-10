@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2016
+ms.date: 01/09/2017
 ms.author: TomSh
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -75,8 +75,8 @@ Microsoft Azure 可让你将虚拟机和设备放在 Azure 虚拟网络上，从
 
 > [!NOTE]
 > 不需要用户定义的路由，默认系统路由适用于大多数情况。
-> 
-> 
+>
+>
 
 有关用户定义的路由及其配置方法的详细信息，请阅读[什么是用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)一文。
 
@@ -235,7 +235,6 @@ Azure 安全中心通过以下方式来帮助优化和监视网络安全：
 Microsoft 创建了[数据中心扩展参考体系结构关系图](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content)和相关支持材料，以帮助你了解此类数据中心扩展的形式。 其中提供了示例参考实现，可用于规划和设计如何安全地将企业数据中心扩展到云。 我们建议你参阅此文档，以大致了解安全解决方案的重要组件。
 
 若要详细了解如何安全地将数据中心扩展到 Azure，请观看视频[将数据中心扩展到 Microsoft Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA)。
-
 
 
 

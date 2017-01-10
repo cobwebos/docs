@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2016
+ms.date: 01/09/2017
 ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: 0821ec479f21ddcc6dc370070d9a40221054877f
@@ -47,7 +47,6 @@ Azure 提供了一个安全的平台，你可以基于其构建你的解决方�
 * 如何学习启用最佳实践
 
 我们期待能提供更多有关 Azure 安全体系结构和最佳实践的文章。 如果你希望我们提供什么主题，请在本页面底部的讨论区提出来。
-
 
 
 

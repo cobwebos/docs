@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -157,7 +157,6 @@ Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/ser
 [数据分类](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏。 没有适当的文件保护，组织将无法获取业务见解、监控滥用，以及防止文件被恶意访问。
 
 有关 Azure RMS 的详细信息，请阅读 [Getting Started with Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx)（Azure Rights Management 入门）一文。
-
 
 
 

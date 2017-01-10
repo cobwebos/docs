@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2016
+ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -39,7 +39,6 @@ Microsoft 服务提供了综合的安全性、标识和网络安全方法。 Mic
 * [事件响应和恢复](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
 [了解更多](https://aka.ms/cyberserv)关于 Microsoft Services Security 咨询服务的信息。
-
 
 
 

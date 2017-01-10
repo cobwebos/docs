@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -39,7 +39,6 @@ Microsoft 奖励计划对研究新型漏洞技术、减少新型漏洞的防范�
 若要了解有关这些计划的详细信息，请访问 [MSRC Bug 奖励](https://technet.microsoft.com/security/dn425036)页和 [MSRC 博客](https://blogs.technet.microsoft.com/msrc/)。
 
 若要了解有关 MSRC 的详细信息，请访问 [MSRC 主页](https://technet.microsoft.com/library/dn440717.aspx)。
-
 
 
 

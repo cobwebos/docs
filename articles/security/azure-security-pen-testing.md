@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2016
+ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -43,7 +43,6 @@ ms.openlocfilehash: 5d58d9dd6c92c81328f89a703b3bc8529aff8dc0
 用户不能执行的一类测试是任何类型的[拒绝服务 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻击。 其中包括：发起 DoS 攻击，或者执行相关的测试，以便确定、演示或模拟任何类型的 DoS 攻击。
 
 做好对 Microsoft Azure 中托管的应用程序进行渗透测试的准备了吗？ 如果已做好准备，则可转到[渗透测试概述](https://security-forms.azure.com/penetration-testing/terms)页，单击页面底部的“创建测试请求”按钮。 用户还会发现有关渗透测试条款和条件的详细信息，并可通过各种有用的链接报告 Azure 或其他 Microsoft 服务的相关安全缺陷。
-
 
 
 
