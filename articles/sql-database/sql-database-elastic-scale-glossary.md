@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: a23a4e81-6706-452d-afc1-a550e5e47af9
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9a07ef9a2599f49a1cffa933920665e5c18e30e3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ebd5224caa41efe61bdea14b4570005880f4411c
 
 
 ---
@@ -94,6 +95,6 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

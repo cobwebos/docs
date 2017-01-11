@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
-ms.author: narayanannamalai;annahar
+ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 2ae62a2e657e3b20e258b5afaa1d03b6825e8019
-ms.openlocfilehash: e40af1e363f7add88ead6e552290926abe4db328
+ms.sourcegitcommit: ed7c37ee5482b3ec91489b7aba9b5a9d5df5c97e
+ms.openlocfilehash: 06130f18bad86dbbe009548ac95ac0e6c4953db2
 
 
 ---
@@ -82,8 +82,7 @@ VNet 对等互连中的每个链接都具有上述这组属性。 从门户中�
 4. 在“添加访问权限”边栏选项卡上，单击以选择角色，并选择“网络参与者”，单击“添加用户”，键入用户 B 的登录名称，然后单击“确定”。
    
     ![RBAC](./media/virtual-networks-create-vnetpeering-arm-portal/figure10.png)
-   
-    这不是必须的，只要请求匹配，即使用户分别提出针对各个 Vnet 的对等互连请求，也可建立对等互连。 添加另一个 VNet 的特权用户作为本地 VNet 用户可以更轻松地在门户中执行安装程序。
+
 5. 然后通过订阅 B 的特权用户 B 登录到 Azure 门户。 按照以上步骤将用户 A 添加为网络参与者。
    
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
@@ -138,6 +137,6 @@ VNet 对等互连中的每个链接都具有上述这组属性。 从门户中�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

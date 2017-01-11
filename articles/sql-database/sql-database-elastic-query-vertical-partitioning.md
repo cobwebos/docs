@@ -7,6 +7,7 @@ manager: jhubbard
 author: torsteng
 ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 76a9208938f0c55e5301c2612b8dd82eb5975679
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
 
 
 ---
@@ -33,7 +34,7 @@ ms.openlocfilehash: 76a9208938f0c55e5301c2612b8dd82eb5975679
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
+3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)（创建外部数据源）
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>创建数据库范围的主密钥和凭据
@@ -184,6 +185,6 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4159001eff9010e126a1f0a0f9d9eb06b8397eb3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: acfa4642ad26f819189bd871d83718b6f579e32d
 
 
 ---
@@ -63,7 +63,7 @@ ms.openlocfilehash: 4159001eff9010e126a1f0a0f9d9eb06b8397eb3
   * **默认路由：**直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包将被删除。
 * 此过程使用用户定义路由 (UDR) 来创建路由表以添加默认路由，然后将路由表关联到 VNet 子网，在这些子网启用强制隧道。
 * 强制隧道必须关联到具有基于路由的 VPN 网关的 VNet。 您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
-* ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅 [ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/)了解详细信息。
+* ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅 [ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/)。
 
 ## <a name="configuration-overview"></a>配置概述
 以下过程将帮助您创建资源组和 VNet。 然后，将创建 VPN 网关，并配置强制隧道。 在此过程中，虚拟网络“MultiTier-VNet”具有 3 个子网：*Frontend*、*Midtier* 和 *Backend*，具有 4 个跨界连接：一个 *DefaultSiteHQ* 和 3 个*分支*。
@@ -74,7 +74,7 @@ ms.openlocfilehash: 4159001eff9010e126a1f0a0f9d9eb06b8397eb3
 在开始配置之前，请确认你具有以下各项。
 
 * Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet（1.0 或更高）。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。
+* 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet（1.0 或更高）。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
 
 ## <a name="configure-forced-tunneling"></a>配置强制隧道
 1. 在 PowerShell 控制台中，登录到你的 Azure 帐户。 该 cmdlet 将提示你提供 Azure 帐户的登录凭据。 登录后它会下载你的帐户设置，以便这些信息可供 Azure PowerShell 使用。
@@ -138,6 +138,6 @@ ms.openlocfilehash: 4159001eff9010e126a1f0a0f9d9eb06b8397eb3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

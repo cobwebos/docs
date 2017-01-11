@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: casoper
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 275869b0b3b705943e1af1c21912acb96f39fe49
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 9b0912edc5adf804e7a3e6dcc6b440fc165d3673
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 275869b0b3b705943e1af1c21912acb96f39fe49
 PowerShell 提供了一种最灵活的方法来管理 Azure CDN 配置文件和终结点。  可以使用 PowerShell 以交互方式或通过编写脚本来自动执行管理任务。  本教程演示了使用 PowerShell 可以完成的几个最常见的任务来管理 Azure CDN 配置文件和终结点。
 
 ## <a name="prerequisites"></a>先决条件
-若要使用 PowerShell 管理 Azure CDN 配置文件和终结点，必须已安装 Azure PowerShell 模块。  若要了解如何安装 Azure PowerShell 以及使用 `Login-AzureRmAccount` cmdlet 连接到 Azure，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+若要使用 PowerShell 管理 Azure CDN 配置文件和终结点，必须已安装 Azure PowerShell 模块。  若要了解如何安装 Azure PowerShell 以及使用 `Login-AzureRmAccount` cmdlet 连接到 Azure，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 > [!IMPORTANT]
 > 执行 Azure PowerShell cmdlet 之前，必须使用 `Login-AzureRmAccount` 登录。
@@ -248,6 +248,6 @@ Remove-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

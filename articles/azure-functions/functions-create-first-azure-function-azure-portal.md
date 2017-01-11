@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 8d7823b6ecbc1a762839fc620f76d0bf4687d8fa
-ms.openlocfilehash: 5b33a36a3415efd2bc4673999806aa797f4a1c9f
+ms.sourcegitcommit: 91e19b321026840a062078d7af2a55967fb3904b
+ms.openlocfilehash: 417c545e34f1d652594c8527a3c8b0a845a4e8fa
 
 
 ---
@@ -30,7 +30,7 @@ Azure Functions 提供事件驱动、按需计算体验，可以扩展现有的 
 ## <a name="create-a-function-app"></a>创建 Function App
 Function App 在 Azure 中托管函数的执行。 请按照下列步骤在 Azure 门户中创建 Function App。
 
-必须先具有有效的 Azure 帐户，然后才能创建你的第一个函数。 如果还没有 Azure 帐户， [可以使用免费帐户](https://azure.microsoft.com/free/)。
+Function App 在 Azure 中托管函数的执行。 如果尚未创建 Azure 帐户，请查看[试用 Functions](https://functions.azure.com/try) 主题，或[免费创建一个 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 1. 转到 [Azure 门户](https://portal.azure.com)，然后使用你的 Azure 帐户登录。
 2. 单击“+新建” > “计算” > “Function App”，选择你的订阅，键入用于标识函数应用的唯一**应用名称**，然后指定以下设置：
@@ -86,6 +86,6 @@ Azure Functions 快速入门包含功能性代码，因此可以立即测试新�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6e0056af13bfa064d740205746a93afeef9b33ab
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: dba809c8d7021357142ec2832b4660c6fb10ec96
 
 
 ---
@@ -135,7 +135,6 @@ Ceridian Dayforce HCM 应用程序需要采用特定格式的 SAML 断言。 请
     对于生产环境，请使用：`https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2`  
     对于测试环境，请使用：`https://fs-test.dayforcehcm.com/sp/ACS.saml2`  
 
-
 1. 在“配置 Ceridian Dayforce HCM 的单一登录”页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_05.png) 
@@ -181,20 +180,21 @@ Ceridian Dayforce HCM 应用程序需要采用特定格式的 SAML 断言。 请
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_06.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
-   b. 在“姓氏”文本框中，键入“Simon”。
+    b. 在“姓氏”文本框中，键入“Simon”。
    
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
+    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
+    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_07.png) 
@@ -260,6 +260,6 @@ Ceridian Dayforce HCM 应用程序需要采用特定格式的 SAML 断言。 请
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

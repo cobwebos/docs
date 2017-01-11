@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/19/2016
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d6bfc5b7141eae5cb755679445176064f2e5b0d4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3ec8800b947c227d4d1087283b0964ce22eca4df
 
 
 ---
@@ -45,6 +45,6 @@ ms.openlocfilehash: d6bfc5b7141eae5cb755679445176064f2e5b0d4
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

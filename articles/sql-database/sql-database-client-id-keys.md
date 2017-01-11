@@ -9,6 +9,7 @@ editor:
 tags: 
 ms.assetid: b43e43bb-6660-49e6-b069-abde97eb5770
 ms.service: sql-database
+ms.custom: development
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7943d1c385ea2dd7a38eff31b068fba9650ee7c7
+ms.sourcegitcommit: 2956ce36ab851de6dd4a6c0725044cf832c213a0
+ms.openlocfilehash: 16a735bf5c0c85a41b960c20dc9ff8877f9a3855
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 7943d1c385ea2dd7a38eff31b068fba9650ee7c7
 要在代码中创建并管理 SQL 数据库，必须在创建 Azure 资源的订阅中的 Azure Active Directory (AAD) 域内注册你的应用。
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>创建服务主体以便从应用程序访问资源
-需要安装并运行最新的 [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx)。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+需要安装并运行最新的 [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx)。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 以下 PowerShell 脚本创建 Active Directory (AD) 应用程序和服务主体，我们需要对 C# 应用进行身份验证。 该脚本输出我们需要用于前面 C# 示例的值。 有关详细信息，请参阅 [使用 Azure PowerShell 创建服务主体以访问资源](../resource-group-authenticate-service-principal.md)。
 
@@ -77,6 +78,6 @@ ms.openlocfilehash: 7943d1c385ea2dd7a38eff31b068fba9650ee7c7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
