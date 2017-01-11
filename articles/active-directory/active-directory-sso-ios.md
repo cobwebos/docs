@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -150,7 +150,7 @@ Microsoft 提供了为来自不同供应商的应用程序之间过渡凭据允�
 3. 请求每个应用程序的相同密钥链授权。
 4. 告知 Microsoft 标识 SDK 你要使用的共享密钥链。
 
-#### <a name="using-the-same-client-id-application-id-for-all-the-applications-in-your-suite-of-apps"></a>对应用套件中的所有应用程序使用相同的客户端 ID/应用程序 ID
+#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>对应用套件中的所有应用程序使用相同的客户端 ID/应用程序 ID
 为了让 Microsoft 标识平台知道你可以跨应用程序共享令牌，每个应用程序需要共享同一个客户端 ID 或应用程序 ID。 这是在门户中注册第一个应用程序时为你提供的唯一标识符。
 
 如果应用使用相同的应用程序 ID，你可能想要知道如何在 Microsoft 标识服务中标识不同的应用。 答案是使用**重定向 URI**。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 下面显示了这种情况的示例：

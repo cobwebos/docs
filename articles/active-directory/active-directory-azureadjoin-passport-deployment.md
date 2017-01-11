@@ -6,7 +6,6 @@ documentationcenter:
 keywords: "配置 Microsoft Passport、Microsoft Windows Hello for Business 部署"
 author: MarkusVi
 manager: femila
-editor: 
 tags: azure-classic-portal
 ms.assetid: 7dbbe3c6-1cd7-429c-a9b2-115fcbc02416
 ms.service: active-directory
@@ -14,7 +13,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb

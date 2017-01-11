@@ -20,7 +20,7 @@
 <!-- images and links -->
 [img-identity]: media/iot-hub-get-started-create-device-identity/devidentity.png
 
-[iot-hub-explorer]: https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer
+[iot-hub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
 
 [lnk-getstarted]: ../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md
 

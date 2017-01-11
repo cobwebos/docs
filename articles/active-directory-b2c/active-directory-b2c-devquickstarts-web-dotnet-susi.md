@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -20,7 +20,7 @@ ms.openlocfilehash: 9d161973b8b299305993162510be7027f05dec39
 
 
 ---
-# <a name="azure-ad-b2c-sign-up-sign-in-in-a-aspnet-web-app"></a>Azure AD B2C：在 ASP.NET Web 应用中注册和登录
+# <a name="azure-ad-b2c-sign-up--sign-in-in-a-aspnet-web-app"></a>Azure AD B2C：在 ASP.NET Web 应用中注册和登录
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 通过使用 Azure Active Directory (Azure AD) B2C，只需几个简短的步骤即可将强大的自助服务标识管理功能添加到 Web 应用。 本文将讨论如何创建包含用户注册、登录和密码重置的 ASP.NET Web 应用。 该应用将支持使用用户名或电子邮件以及使用社交帐户（ Facebook 和 Google）进行注册和登录。
@@ -319,6 +319,6 @@ You can now move on to more advanced B2C topics. You might try:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

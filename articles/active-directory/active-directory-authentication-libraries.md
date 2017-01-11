@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/11/2016
+ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 75d1baccc4babab1233531d8b8ce8e19875e3a34
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5b0367b983fa9e4f76260683d60a3959a5750536
 
 
 ---
@@ -65,6 +65,6 @@ ms.openlocfilehash: 75d1baccc4babab1233531d8b8ce8e19875e3a34
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Nov16_HO3-->
 
 

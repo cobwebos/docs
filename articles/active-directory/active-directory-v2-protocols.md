@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -20,7 +20,7 @@ ms.openlocfilehash: 08bb7e14c0eac8003df7ea867fbd93f86475d0e8
 
 
 ---
-# <a name="v20-protocols---oauth-20-openid-connect"></a>v2.0 协议 - OAuth 2.0 和 OpenID Connect
+# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 协议 - OAuth 2.0 和 OpenID Connect
 v2.0 终结点可以使用 Azure AD，通过行业标准协议（OpenID Connect 与 OAuth 2.0）提供标识即服务。  尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。  如果你选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个开放源代码库，则可以参考此处提供的有用信息。
 <!-- TODO: Need link to libraries above -->
 

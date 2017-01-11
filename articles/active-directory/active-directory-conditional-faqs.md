@@ -5,18 +5,17 @@ services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3980b99206c9f0c81ba3d03778777878e25db7c8
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bca8a683f8a99496d7847a95e7e25ce8b6a777b2
 
 
 ---
@@ -41,6 +40,6 @@ ms.openlocfilehash: 3980b99206c9f0c81ba3d03778777878e25db7c8
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Nov16_HO3-->
 
 

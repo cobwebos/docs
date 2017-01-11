@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
@@ -44,7 +44,7 @@ ms.openlocfilehash: 935ebbe7bd4dde8237cb024992382e4065c637bb
 * 为应用添加 **Web** 平台。
 * 输入正确的**重定向 URI**。 重定向 URI 向 Azure AD 指示身份验证响应应定向到的位置，本教程的默认值为 `https://localhost:44326/`。
 
-## <a name="install-configure-owin-authentication"></a>安装并配置 OWIN 身份验证
+## <a name="install--configure-owin-authentication"></a>安装并配置 OWIN 身份验证
 在这里，我们要将 OWIN 中间件配置为使用 OpenID Connect 身份验证协议。  OWIN 将用于发出登录和注销请求、管理用户的会话、获取有关用户的信息，等等。
 
 * 首先，打开位于项目根目录中的 `web.config` 文件，并在 `<appSettings>` 节中输入应用的配置值。

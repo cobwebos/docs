@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2016
+ms.date: 01/10/2017
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
@@ -31,6 +31,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 * [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)，获取有关报告 API 的详细信息。
 
 有关疑问、问题或反馈，请联系 [AAD 报告帮助](mailto:aadreportinghelp@microsoft.com)。
+
 
 ## <a name="prerequisites"></a>先决条件
 需要先完成[访问 Azure AD 报告 API 的先决条件](active-directory-reporting-api-prerequisites.md)，然后才能使用本主题中的示例。  
@@ -109,7 +110,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
 
     YESTERDAY=$(date --date='1 day ago' +'%Y-%m-%d')
 
-    URL="https://graph.windows.net/$TENANT_DOMAIN/activities/audit?api-version=beta&$filter=eventTime%20gt%20$YESTERDAY"
+    URL="https://graph.windows.net/$TENANT_DOMAIN/activities/audit?api-version=beta&$filter=activityDate%20gt%20$YESTERDAY"
 
 
     REPORT=$(curl -s --header "Authorization: $TOKEN_TYPE $ACCESS_TOKEN" $URL)
@@ -149,7 +150,7 @@ Azure AD 报告向你提供了一个允许你使用代码或相关工具访问�
     yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
 
     header_params = {'Authorization': token_type + ' ' + access_token}
-    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=eventTime%20gt%20' + yesterday   
+    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=activityDate%20gt%20' + yesterday   
     response = requests.get(request_string, headers = header_params)
 
     if response.status_code is 200:

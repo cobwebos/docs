@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 09/13/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2

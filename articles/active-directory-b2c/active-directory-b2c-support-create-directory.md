@@ -4,7 +4,7 @@ description: "创建 Azure Active Directory 租户或 Azure Active Directory B2C
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: msmbaldwin
+manager: mbaldwin
 editor: bryanla
 ms.assetid: 7ba4c6b2-161b-45b5-b3bd-ccb662f5d7a0
 ms.service: active-directory-b2c

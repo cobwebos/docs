@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: objectivec
 ms.topic: hero-article
-ms.date: 07/26/2016
+ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 0175f4e83aace12d8e4607f2ad924893093c6734
@@ -20,7 +20,7 @@ ms.openlocfilehash: cc5e199816668a5a0f936019ab8096e93a7a2f5a
 
 
 ---
-# <a name="azure-ad-b2c-call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C：使用第三方库从 iOS 应用程序调用 Web API
+# <a name="azure-ad-b2c--call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C：使用第三方库从 iOS 应用程序调用 Web API
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。 这样，开发人员便利用他们想要与服务集成的任何库。 为了帮助开发人员将平台与其他库结合使用，我们编写了多份演练（例如本演练），演示如何配置第三方库，使其连接到 Microsoft 标识平台。 大部分实施 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749) 的库都可连接到 Microsoft 标识平台。
@@ -631,6 +631,6 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock {
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -20,7 +20,7 @@ ms.openlocfilehash: e98ec55dbe5ff0411af124b45bd7ef6177aa957e
 
 
 ---
-# <a name="sign-in-microsoft-account-azure-ad-users-in-a-single-app"></a>在单个应用中登录 Microsoft 帐户和 Azure AD 用户
+# <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>在单个应用中登录 Microsoft 帐户和 Azure AD 用户
 在过去，想要支持 Microsoft 帐户和 Azure Active Directory 的应用开发人员需要集成两个单独的系统。  我们现在推出了新的身份验证 API 版本，可让你通过 Azure AD 系统使用这两种帐户类型来登录用户。  这种聚合式身份验证系统称为 **v2.0 终结点**。  借助 v2.0 终结点，通过一个简单的集成就可以与具有个人和工作/学校帐户的数以百万计的用户受众进行沟通。
 
 使用 v2.0 终结点的应用还可以通过其中一种帐户从 [Microsoft Graph](https://graph.microsoft.io) 和 [Office 365](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) 使用 REST API。
@@ -59,6 +59,6 @@ ms.openlocfilehash: e98ec55dbe5ff0411af124b45bd7ef6177aa957e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

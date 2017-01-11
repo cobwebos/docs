@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/31/2016
+ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
 ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b

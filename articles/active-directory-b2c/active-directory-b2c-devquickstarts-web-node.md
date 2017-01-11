@@ -4,7 +4,7 @@ description: "如何生成一个使用 B2C 租户登录用户的 Node.js Web 应
 services: active-directory-b2c
 documentationcenter: 
 author: xerners
-manager: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: db97f84a-1f24-447b-b6d2-0265c6896b27
 ms.service: active-directory-b2c
@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: hero-article
-ms.date: 07/22/2016
+ms.date: 01/09/2017
 ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 0175f4e83aace12d8e4607f2ad924893093c6734

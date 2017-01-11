@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/09/2017
 ms.author: onewth
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -209,8 +209,7 @@ API 返回检测到的语言以及 0 和 1 之间的数值分数。 接近 1 的
         "Errors":[]
     }
 
----
-
+- - -
 ### <a name="getlanguagebatch"></a>GetLanguageBatch
 
 在下面的 POST 调用中，请求两个文本输入的语言检测：
@@ -249,14 +248,14 @@ API 返回检测到的语言以及 0 和 1 之间的数值分数。 接近 1 的
        }],
        "Errors": []
     }
----
 
+- - -
 ## <a name="topic-detection-apis"></a>主题检测 API
 这是新发布的 API，它返回提交的文本记录列表中最常检测到的主题。 主题以关键短语进行标识，可以是一个或多个相关的单词。 请注意，每提交一份文本记录，此 API 就会收取 1 笔交易费用。
 
 此 API 要求至少提交 100 个文本记录，但旨在从几百到几千条记录中检测主题。
 
-### <a name="topics-submit-job"></a>主题 – 提交作业
+### <a name="topics--submit-job"></a>主题 – 提交作业
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection
@@ -287,7 +286,7 @@ API 返回检测到的语言以及 0 和 1 之间的数值分数。 接近 1 的
 
 不应作为主题返回的单个词或多个词短语的列表。 可用于筛选出非常通用的主题。 例如，在关于酒店点评的数据集中，“酒店”和“旅社”可能是合理的驻停短语。  
 
-### <a name="topics-poll-for-job-results"></a>主题 – 作业结果轮询
+### <a name="topics--poll-for-job-results"></a>主题 – 作业结果轮询
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult
