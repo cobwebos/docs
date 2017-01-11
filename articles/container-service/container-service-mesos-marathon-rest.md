@@ -3,7 +3,7 @@ title: "通过 REST API 进行 Azure 容器服务管理 | Microsoft Docs"
 description: "使用 Marathon REST API 将容器部署到 Azure 容器服务 Mesos 群集。"
 services: container-service
 documentationcenter: 
-author: neilpeterson
+author: dlepow
 manager: timlt
 editor: 
 tags: acs, azure-container-service
@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
-ms.author: timlt
+ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e8f1ad596d2b64380876a501ebcf127afdda9ccf
+ms.sourcegitcommit: 54832afbc9a7bf1d660de3fd898ad5c97715ca5d
+ms.openlocfilehash: a01993eb01b9e05b4848d5a81b841fe10ccae035
 
 
 ---
@@ -33,7 +33,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 连接到 Azure 容器服务群集后，可通过 http://localhost:local-port 访问 DC/OS 和相关 REST API。 本文档中的示例假定在端口 80 上实现隧道连接。 例如，可以在 `http://localhost/marathon/v2/`上访问 Marathon 终结点。 有关 [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) 和 [Chronos API](https://mesos.github.io/chronos/docs/api.html) 的详细信息，请参阅 Mesosphere 文档；有关 [Mesos 计划程序 API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) 的详细信息，请参阅 Apache 文档。
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>从 DC/OS 和 Marathon 收集信息
-在将容器部署到 DC/OS 群集之前，收集一些有关 DC/OS 的信息，例如 DC/OS 代理的名称和当前状态。 为此，请查询 DC/OS REST API 的 `master/slaves` 终结点。 如果一切顺利，将会看到 DC/OS 代理列表和每个代理的数个属性。
+在将容器部署到 DC/OS 群集之前，收集一些有关 DC/OS 的信息，例如 DC/OS 代理的名称和当前状态。 为此，请查询 DC/OS REST API 的 `master/slaves` 终结点。 如果一切正常，则查询会返回 DC/OS 代理列表和每个代理的数个属性。
 
 ```bash
 curl http://localhost/mesos/master/slaves
@@ -48,7 +48,7 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>部署 Docker 格式容器
-使用描述了预期部署的 JSON 文件通过 Marathon 部署 Docker 格式容器。 以下示例会部署 Nginx 容器，将 DC/OS 代理的端口 80 绑定到容器的端口 80。 另请注意，“acceptedResourceRoles”属性已设置为“slave_public”。 这会在面向公众的代理规模集中将容器部署到代理。
+使用描述了预期部署的 JSON 文件通过 Marathon 部署 Docker 格式容器。 以下示例部署 Nginx 容器，将 DC/OS 代理的端口 80 绑定到容器的端口 80。 另请注意，“acceptedResourceRoles”属性已设置为“slave_public”。 这会在面向公众的代理规模集中将容器部署到代理。
 
 ```json
 {
@@ -84,7 +84,7 @@ curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-typ
 {"version":"2015-11-20T18:59:00.494Z","deploymentId":"b12f8a73-f56a-4eb1-9375-4ac026d6cdec"}
 ```
 
-现在，如果查询 Marathon 的应用程序，新应用程序将出现在输出中。
+现在，如果查询 Marathon 应用程序，则此新应用程序会出现在输出中。
 
 ```
 curl localhost/marathon/v2/apps
@@ -100,7 +100,7 @@ curl localhost/marathon/v2/apps
 运行以下命令来扩大应用程序。
 
 > [!NOTE]
-> URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序的 ID。 如果使用了此处提供的 Nginx 示例，则 URI 将为 http://localhost/marathon/v2/apps/nginx。
+> URI 为 http://localhost/marathon/v2/apps/，其后接要缩放的应用程序 ID。 如果使用了此处提供的 Nginx 示例，则 URI 将为 http://localhost/marathon/v2/apps/nginx。
 > 
 > 
 
@@ -108,7 +108,7 @@ curl localhost/marathon/v2/apps
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-最后，查询应用程序的 Marathon 终结点。 现在将会出现三个 Nginx 容器。
+最后，查询应用程序的 Marathon 终结点。 此时可看到有 3 个 Nginx 容器。
 
 ```
 curl localhost/marathon/v2/apps
@@ -123,7 +123,7 @@ curl localhost/marathon/v2/apps
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-使用描述了预期部署的 JSON 文件通过 Marathon 部署 Docker 格式容器。 以下示例会部署 Nginx 容器，将 DC/OS 代理的端口 80 绑定到容器的端口 80。
+使用描述了预期部署的 JSON 文件通过 Marathon 部署 Docker 格式容器。 以下示例部署 Nginx 容器，将 DC/OS 代理的端口 80 绑定到容器的端口 80。
 
 ```json
 {
@@ -159,7 +159,7 @@ Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentTy
 运行以下命令来扩大应用程序。
 
 > [!NOTE]
-> URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序的 ID。 如果使用了此处提供的 Nginx 示例，则 URI 将为 http://localhost/marathon/v2/apps/nginx。
+> URI 为 http://localhost/marathon/v2/apps/，其后接要缩放的应用程序 ID。 如果使用了此处提供的 Nginx 示例，则 URI 将为 http://localhost/marathon/v2/apps/nginx。
 > 
 > 
 

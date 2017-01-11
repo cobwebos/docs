@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 267b281c33049e65e82a5e5b2453ff1a80983453
-ms.openlocfilehash: 744e5a093cb99463224d42a69711f41f6132a2ee
+ms.sourcegitcommit: e82cc23dac2b765ee3dc8ae2eb1e4f7f2e49675a
+ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 744e5a093cb99463224d42a69711f41f6132a2ee
 | 数据操作 - 身份验证协议 |OAuth 2.0。 调用必须包含 Azure Active Directory 发布的有效的 JWT（JSON Web 令牌） |基于哈希的消息身份验证代码 (HMAC)。 调用必须包含 Base64 编码的 SHA-256 哈希作为 HTTP 请求的一部分。 |
 | 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可设置基于 Azure Active Directory 标识的 ACL 为文件和文件夹级别。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-account)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/storage-dotnet-shared-access-signature-part-1.md) |
 | 数据操作 - 审核 |可用。 详细信息参见[此处](data-lake-store-diagnostic-logs.md)。 |可用 |
-| 静态数据加密 |透明版服务器端（即将推出）<ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥</li></ul> |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥（即将推出）</li></ul><li>客户端加密</li></ul> |
+| 静态数据加密 |透明版服务器端 <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥</li></ul> |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥（即将推出）</li></ul><li>客户端加密</li></ul> |
 | 管理操作（例如“帐户创建”） |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |
 | Developer SDK |.NET、Java、Node.js |.Net、Java、Python、Node.js、C++、Ruby |
 | 分析工作负荷性能 |并行分析工作负荷的优化性能。 高吞吐量和 IOPS。 |未进行分析工作负荷优化 |
@@ -53,6 +53,6 @@ ms.openlocfilehash: 744e5a093cb99463224d42a69711f41f6132a2ee
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

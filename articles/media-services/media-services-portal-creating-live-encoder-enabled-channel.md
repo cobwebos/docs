@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 99dfabcfcfcef69a43b45994cb4c729bd7faecff
 
 
 ---
-# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-the-azure-portal"></a>如何使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>如何使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -82,7 +82,7 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 * 可以发送单比特率实时流的摄像头和编码器。
 
 ## <a name="configure-streaming-endpoints"></a>配置流式处理终结点
-媒体服务所提供的动态打包可让你以下述流格式传送多比特率 MP4，而无须重新打包成这些流格式：MPEG DASH、HLS、Smooth Streaming 或 HDS。 通过动态打包，你只需要存储及支付一种存储格式的文件，媒体服务将会根据客户端的要求创建并提供适当的响应。
+媒体服务所提供的动态打包可让用户以下述流格式传送多比特率 MP4，而无需重新打包成这些流格式：MPEG DASH、HLS、平滑流式处理。 通过动态打包，你只需要存储及支付一种存储格式的文件，媒体服务将会根据客户端的要求创建并提供适当的响应。
 
 若要利用动态打包，你需要获取计划从中传送内容的流式处理终结点的至少一个流式处理单元。  
 
@@ -229,6 +229,6 @@ ms.openlocfilehash: d8c63c3b8ff853986129403f83b14575fd63264c
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

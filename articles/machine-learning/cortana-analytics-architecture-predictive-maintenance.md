@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7626b27c23373d1e11e8595d7fd7748a8e598dda
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: 9a514c6894ca0b0e212922a72188c57be038504d
 
 
 ---
@@ -27,10 +27,10 @@ ms.openlocfilehash: 7626b27c23373d1e11e8595d7fd7748a8e598dda
 
 ![预见性维护的 Microsoft Cortana Intelligence 解决方案模板体系结构图][image]
 
-[图片]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
+[image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

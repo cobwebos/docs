@@ -2,13 +2,13 @@
 layout: LandingPage
 toc_rel: breadcrumb.json
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 3bd265e2376180e5285c81b011b469b6a46353b0
+ms.sourcegitcommit: c086dc37b8665017de0dbbad9c7ac82931932a72
+ms.openlocfilehash: 57994a1476186696b81b05e0ce7ae645337d35b2
 
 ---
 #<a name="virtual-machines-documentation"></a>虚拟机文档
 
-Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。 不过，仍需要维护虚拟机 &mdash; 配置、修补以及维护虚拟机上运行的软件。
+Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。 但仍需维护虚拟机 &mdash; 配置、修补和维护虚拟机上运行的软件。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -47,69 +47,6 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
         </div>
         </a>
     </li>    
-</ul>
-
----
-
-## <a name="reference"></a>参考
-
-<ul class="panelContent cardsW">
-    <li>
-        <a href="/dotnet/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>虚拟机托管参考 API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p>虚拟机 REST API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/cli/azure/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>适用于虚拟机的 Azure CLI</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/java/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>虚拟机 PowerShell Cmdlet</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
 </ul>
 
 <div class="downloadHolder">

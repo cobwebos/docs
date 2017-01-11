@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
-ms.custom: auth and access
+ms.custom: authentication and authorization
 ms.devlang: NA
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 06/09/2016
 ms.author: thmullan;jackr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 99242d953056ac5b9dd6f7d8ed7ec26c6c3e4c25
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 034f774cb7654e3ab8a0ad1e1a4eddf02d8452ed
 
 
 ---
@@ -40,7 +40,7 @@ ms.openlocfilehash: 99242d953056ac5b9dd6f7d8ed7ec26c6c3e4c25
 
 在为数据库创建逻辑服务器时，你已指定一个包含用户名和密码的“服务器管理员”登录名。 通过这些凭据，你可以使用数据库所有者（即“dbo”）的身份通过服务器上任何数据库的身份验证。 如果想要使用 Azure Active Directory 身份验证，则必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。 有关如何创建 Azure AD 管理员以启用 Azure Active Directory 身份验证的演练，请参阅[通过使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。
 
-作为最佳实践，应用程序应使用不同的帐户进行身份验证 – 这样，就可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 建议的方法是创建[包含的数据库用户](https://msdn.microsoft.com/library/ff929188)，使应用程序能够直接向单一数据库进行身份验证。 可以通过执行以下 T-SQL 命令，在以服务器管理员身份登录连接到用户数据库时，创建使用 SQL 身份验证的包含数据库用户：
+作为最佳实践，应用程序应使用不同的帐户进行身份验证 – 这样，就可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 建议的方法是创建[包含的数据库用户](https://msdn.microsoft.com/library/ff929188)，使应用程序能够直接向数据库进行身份验证。 可以通过执行以下 T-SQL 命令，在以服务器管理员身份登录连接到用户数据库时，创建使用 SQL 身份验证的包含数据库用户：
 
 ```
 CREATE USER ApplicationUser WITH PASSWORD = 'strong_password'; -- SQL Authentication
@@ -101,6 +101,6 @@ SQL 数据库威胁检测除审核之外，还提供额外的安全层。 通过
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

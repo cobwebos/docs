@@ -1,14 +1,13 @@
 ---
 layout: LandingPage
-description: "了解如何使用 Application Insights（可扩展的应用程序性能管理服务）来检测、会诊和诊断 Web 应用和服务中的问题。"
 translationtype: Human Translation
-ms.sourcegitcommit: f0fdb938519737e67849831a0751542f69c269d9
-ms.openlocfilehash: e5425bc1f39c9ca71b6eaf2c928b0d8397319d85
+ms.sourcegitcommit: 7f01669fe78aebfb17ebc6a33ae29d098b62868a
+ms.openlocfilehash: 8100f42cc97155431e4d3ba47f7946b546296700
 
 ---
 # <a name="application-insights-documentation"></a>Application Insights 文档
 
-了解如何使用面向 Web 开发人员的可扩展应用程序性能管理服务 - Application Insights。 教程、API 参考和其他文档介绍了如何检测、会诊和诊断 Web 应用与服务中的问题。
+Application Insights 是面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它还可以与 devOps 流程集成，与其他各种工具建立连接。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -162,6 +161,6 @@ ms.openlocfilehash: e5425bc1f39c9ca71b6eaf2c928b0d8397319d85
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

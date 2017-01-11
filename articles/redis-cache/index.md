@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 99a123b0efaea3e4e298aed44cea72547bfa7094
+ms.sourcegitcommit: 4cd50960b30990f3220788e6613a2815d8e28612
+ms.openlocfilehash: 026c452cd784da14a901cab8e5aecaafda448418
 
 ---
 #<a name="redis-cache-documentation"></a>Redis 缓存文档
@@ -11,7 +11,7 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/redis-cache/cache-premium-tier-intro/">
+        <a href="/azure/redis-cache/cache-premium-tier-intro">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -82,7 +82,7 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
         </a>
     </li>
     <li>
-        <a href="/azure/redis-cache/documentdb-nodejs-get-started">
+        <a href="/azure/redis-cache/cache-nodejs-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -139,81 +139,49 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
 
 ---
 
-## <a name="reference"></a>参考
-
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell 参考</p>
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache">PowerShell</a></p>
+                        <p><a href="/cli/azure/redis">Azure CLI 2.0（预览版）</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/cli/azure/redis">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>使用 Azure CLI 的 Redis 缓存</p>
-                    </div>
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.redis">.NET</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.redis._redis_cache">Java</a></p>
+                        <p><a href="http://redis.io/clients">Redis 客户端</a></p>
+                        <p><a href="http://redis.io/commands#">Redis 命令</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Redis 缓存托管参考 API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/java/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Azure Java SDK</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Redis 缓存 REST API</p>
+                        <p><a href="https://docs.microsoft.com/rest/api/redis/">REST API 参考</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>
-
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">

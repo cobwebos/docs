@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 6a8779a18ee330427efdf13419dc674fcddcc2fc
-ms.openlocfilehash: 16a4a6eceb88b712d328718f79bddc5fd7645df5
+ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
+ms.openlocfilehash: aeccda397ea3c311afddd88b3a8b9c6dab2461d7
 
 ---
 
@@ -50,7 +50,7 @@ ms.openlocfilehash: 16a4a6eceb88b712d328718f79bddc5fd7645df5
  **Azure 要求** | Azure 帐户<br/><br/> 恢复服务保管库<br/><br/> 保管库区域中的 LRS 或 GRS 存储帐户<br/><br/> 标准存储帐户<br/><br/> 保管库区域中的 Azure 虚拟网络。 [详细信息](#azure-prerequisites)。 
  **Azure 限制** | 如果使用 GRS，则需要另一个 LRS 帐户进行日志记录<br/><br/> 在 Azure 门户中创建的存储帐户不能在同一个或不同的订阅中跨资源组移动。 <br/><br/> 不支持高级存储。<br/><br/> 用于 Site Recovery 的 Azure 网络不能在同一个或不同的订阅中跨资源组移动。 
  **VM 复制** | VM 必须满足 [Azure 先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)<br/><br/> 
- **复制限制** | 无法复制运行 Linux 的、使用静态 IP 地址的 Hyper-V VM。<br/><br/> 不能从复制中排除特定的磁盘。 
+ **复制限制** | 无法复制运行 Linux 的、使用静态 IP 地址的 Hyper-V VM。<br/><br/> 可以从复制中排除特定磁盘，但不能排除 OS 磁盘。
  **部署步骤** | **1)** 创建恢复服务保管库 -> **2)** 创建包含所有 Hyper-V 主机的 Hyper-V 站点 -> **3)** 设置 Hyper-V 主机 -> **4**) 准备 Azure（订阅、存储、网络）-> **5)** 配置复制设置 -> **6)** 启用复制 -> **7)** 测试复制和故障转移。 **8)** 如果要执行迁移，请运行计划的故障转移。 
 
 ## <a name="azure-deployment-models"></a>Azure 部署模型
@@ -321,14 +321,25 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 3. 在“目标”中，选择保管库订阅，以及故障转移后要在 Azure 中使用的故障转移模型（经典或资源管理）。
 4. 选择要使用的存储帐户。 如果要使用与现有存储帐户不同的存储帐户，可以 [创建一个](#set-up-an-azure-storage-account)。 若要使用 Resource Manager 模型创建存储帐户，请单击“新建”。 如果想要使用经典模型创建存储帐户，请[在 Azure 门户中](../storage/storage-create-storage-account-classic-portal.md)执行该操作。 。
 5. 选择 Azure VM 在故障转移后启动时所要连接的 Azure 网络和子网。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 若要使用与现有不同的网络，可以[创建一个](#set-up-an-azure-network)。 若要使用 Resource Manager 模型创建网络，请单击“新建”。若要使用经典模型创建网络，请[在 Azure 门户中](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)执行该操作。 选择适用的子网。 。
+   ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication11.png) 
 
-   ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication11.png)
 6. 在“虚拟机” > “选择虚拟机”中，单击并选择要复制的每个计算机。 只能选择可以启用复制的计算机。 。
 
-    ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication5.png)
-7. 在“属性” > “配置属性”中，选择所选 VM 的操作系统和 OS 磁盘。 验证 Azure VM 名称（目标名称）是否符合 [Azure 虚拟机要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)并根据需要对其进行修改。 。 可以稍后再设置其他属性。
+    ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication5-for-exclude-disk.png)
+7. 在“属性” > “配置属性”中，选择所选 VM 的操作系统和 OS 磁盘。 默认情况下，为复制选择了 VM 的所有磁盘。 建议从复制中排除磁盘，以减少向 Azure 复制不必要数据所产生的带宽消耗。 例如，你可能不希望复制包含临时数据的磁盘，或包含每次重启计算机/应用程序时刷新的数据（例如 pagefile.sys 或 Microsoft SQL Server tempdb）的磁盘。 通过取消选中该磁盘，可从复制中排除磁盘。 验证 Azure VM 名称（目标名称）是否符合 [Azure 虚拟机要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)并根据需要对其进行修改。 。 可以稍后再设置其他属性。
 
-   ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication6.png)
+    ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication6-with-exclude-disk.png)
+
+     > [!NOTE]
+     > 
+     > * 只能从复制中排除基本磁盘。 不能排除 OS 磁盘，并且不建议排除动态磁盘。 ASR 无法识别来宾 VM 中哪些 VHD 磁盘是基本磁盘或动态磁盘。  如果未排除相关动态卷磁盘，受保护的动态磁盘会在故障转移 VM 上变成故障磁盘，且磁盘上的数据将无法访问。  
+    > * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用 VM 保护，然后重新启用保护。
+    > * 如果某个应用程序需要有排除的磁盘才能正常运行，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 也可将 Azure 
+    > * 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
+    > * 在 Azure 中手动创建的磁盘不会故障回复。 例如，如果对三个磁盘进行故障转移，并直接在 Azure VM 中创建两个磁盘，只会对那三个已故障转移的磁盘进行从 Azure 到 Hyper-V 的故障回复。 在故障回复中或从 Hyper-V 到 Azure 的反向复制中，不能包括手动创建的磁盘。
+    >
+    >       
+
 8. 在“复制设置” > “配置复制设置”中，选择要应用于受保护 VM 的复制策略。 。 可以在“设置” > “复制策略”>“策略名称”>“编辑设置”中修改复制策略。 应用的更改将用于已在复制的计算机和新计算机。
 
    ![启用复制](./media/site-recovery-hyper-v-site-to-azure/enable-replication7.png)
@@ -366,6 +377,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 * 若要运行测试故障转移，我们建议你创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（这是你在 Azure 中新建网络时的默认行为）。 [详细了解](site-recovery-failover.md#run-a-test-failover) 如何运行测试性故障转移。
 * 若要在故障转移到 Azure 时获得最佳性能，请在受保护的计算机上安装 Azure 代理。 这可以加速引导，并帮助进行故障排除。 安装 [Linux](https://github.com/Azure/WALinuxAgent) 或 [Windows](http://go.microsoft.com/fwlink/?LinkID=394789) 代理。
 * 若要全面测试部署，需要一个基础结构，使复制的计算机能够按预期工作。 如果要测试 Active Directory 和 DNS，可以通过 DNS 创建虚拟机作为域控制器，并使用 Azure Site Recovery 将此虚拟机复制到 Azure。 在 [Active Directory 测试性故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)中了解详细信息。
+* 如果已从复制中排除磁盘，则故障转移之后，可能需要在 Azure 中手动创建这些磁盘，以便应用程序可按预期运行。
 * 如果要运行非计划的故障转移而不是测试故障转移，请注意以下事项：
 
   * 在运行非计划的故障转移之前，请尽可能关闭主计算机。 这样可确保不会同时运行源计算机和副本计算机。
@@ -416,10 +428,11 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
    1. 在 Azure 门户中查看副本虚拟机。 验证虚拟机是否启动成功。
    2. 如果你已设置为从本地网络访问虚拟机，则可以启动与虚拟机的远程桌面连接。
-   3. 单击“完成测试”以完成测试  。
-   4. 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果  。
-   5. 单击“测试故障转移已完成” 。 清理测试环境以自动关闭电源，并删除测试虚拟机。
-   6. 在此阶段，将删除 Site Recovery 在测试故障转移期间自动创建的所有元素或 VM。 不会删除你为测试故障转移创建的其他任何元素。
+   3. 如果已从复制中排除磁盘，则故障转移之后，可能需要在 Azure 中手动创建这些磁盘，以便应用程序可按预期运行。
+   4. 单击“完成测试”以完成测试  。
+   5. 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果  。
+   6. 单击“测试故障转移已完成” 。 清理测试环境以自动关闭电源，并删除测试虚拟机。
+   7. 在此阶段，将删除 Site Recovery 在测试故障转移期间自动创建的所有元素或 VM。 不会删除你为测试故障转移创建的其他任何元素。
 
       > [!NOTE]
       > 如果测试故障转移持续了两周以上，系统会强行将其结束。
@@ -471,6 +484,6 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

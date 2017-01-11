@@ -15,6 +15,7 @@
 ## [Spark 入门](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase 和 NoSQL 入门](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm 入门](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [交互式 Hive 预览版入门](hdinsight-hadoop-use-interactive-hive.md)
 ## [Kafka 预览版入门](hdinsight-apache-kafka-get-started.md)
 ## [Hadoop 沙盒](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake 工具与 Hortonworks 沙盒](hdinsight-hadoop-emulator-visual-studio.md)
@@ -224,6 +225,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

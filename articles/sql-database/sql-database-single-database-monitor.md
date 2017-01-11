@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 09/27/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
-ms.openlocfilehash: f4150149cea4fa31e7b991e15ffcbefa8a202ada
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: c0c9d107ff1642d66e96de5409863e4e894d1b6b
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: f4150149cea4fa31e7b991e15ffcbefa8a202ada
 若要监视 Azure 中的 SQL 数据库的性能，首先需要监视所选数据库性能级别相关的资源利用率。 监视功能可帮助你确定数据库是否超出容量，或者因资源超限而遇到问题，然后确定是否有必要调整数据库的性能级别和 [服务层](sql-database-service-tiers.md)。 你可以使用 [Azure 门户](https://portal.azure.com)中的图形工具或使用 SQL [动态管理视图](https://msdn.microsoft.com/library/ms188754.aspx)来监视数据库。
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 门户监视数据库
-在 [Azure 门户](https://portal.azure.com/)中，可以通过选择数据库并单击“监视”图表来监视单一数据库的利用率。 这将显示“指标”窗口，可通过单击“编辑图表”按钮来对其进行更改。 添加以下指标：
+在 [Azure 门户](https://portal.azure.com/)中，可以通过选择数据库并单击“监视”图表来监视独立数据库的利用率。 这将显示“指标”窗口，可通过单击“编辑图表”按钮来对其进行更改。 添加以下指标：
 
 * CPU 百分比
 * DTU 百分比
@@ -55,6 +55,6 @@ ms.openlocfilehash: f4150149cea4fa31e7b991e15ffcbefa8a202ada
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

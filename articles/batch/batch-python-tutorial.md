@@ -3,7 +3,7 @@ title: "教程 - Azure 批处理 Python 客户端入门 | Microsoft 文档"
 description: "了解 Azure Batch 的基本概念，以及如何使用一个简单方案开发 Batch 服务"
 services: batch
 documentationcenter: python
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 42cae157-d43d-47f8-88f5-486ccfd334f4
@@ -13,10 +13,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 11/30/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 64f70aab802ed377de1686fcdb7e641c30299b9c
-ms.openlocfilehash: 6630899081a76d7a8bc54f53a33c76dda9f1b0fa
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 3c1efaa277c6fba7965d6fe10cc5991cb02281d7
 
 
 ---
@@ -181,7 +181,7 @@ Batch 包含的内置支持支持与 Azure 存储空间交互。 存储帐户中
 >
 
 ## <a name="step-2-upload-task-script-and-data-files"></a>步骤 2：上载任务脚本和数据文件
-![将任务应用程序和输入（数据）文件上载到容器][2]
+![将任务应用程序和输入（数据）文件上传到容器][2]
 <br/>
 
 在文件上载操作中，*python_tutorial_client.py* 先定义**应用程序**和**输入**文件在本地计算机上的路径的集合， 然后将这些文件上载到上一步骤创建的容器。
@@ -270,7 +270,7 @@ def upload_file_to_container(block_blob_client, container_name, file_path):
 >
 
 ## <a name="step-3-create-batch-pool"></a>步骤 3：创建 Batch 池
-![创建批处理池][3]
+![创建 Batch 池][3]
 <br/>
 
 Batch **池** 是 Batch 执行作业任务时所在的计算节点（虚拟机）集合。
@@ -525,7 +525,7 @@ def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
 ```
 
 ## <a name="step-7-download-task-output"></a>步骤 7：下载任务输出
-![从存储空间下载任务输出][7]<br/>
+![从存储下载任务输出][7]<br/>
 
 完成作业后，可以从 Azure 存储空间下载任务的输出。 可通过在 *python_tutorial_client.py* 中调用 `download_blobs_from_container` 来实现此目的：
 
@@ -708,6 +708,6 @@ Press ENTER to exit...
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: d5623b9d9e87731d99d12c6445722acefdc3ff66
-ms.openlocfilehash: 3ac48dba5d4dbb28f06c0cea6ff0526f75cb33ae
+ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
+ms.openlocfilehash: 4edfcbfb011c2296ad499d4ff62a07f0c388432a
 
 
 ---
@@ -116,7 +116,7 @@ ms.openlocfilehash: 3ac48dba5d4dbb28f06c0cea6ff0526f75cb33ae
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    在前面的示例中，OS 磁盘位于 `/dev/sda`，为每个 VM 提供的临时磁盘位于 `/dev/sdb`。 如果有多个数据磁盘，它们应位于 `/dev/sdd`、`/dev/sde`，依此类推。
+    在前面的示例中，OS 磁盘位于 `/dev/sda`，为每个 VM 提供的临时磁盘位于 `/dev/sdb`。 如果有多个数据磁盘，它们应位于 `/dev/sdd`、`/dev/sde`，依次类推。
 
 2. 创建一个目录来装载现有的虚拟硬盘。 以下示例创建一个名为 `troubleshootingdisk` 的目录：
 
@@ -174,11 +174,11 @@ ms.openlocfilehash: 3ac48dba5d4dbb28f06c0cea6ff0526f75cb33ae
 ![更新启动诊断设置](./media/virtual-machines-linux-troubleshoot-recovery-disks/reenable-boot-diagnostics.png)
 
 ## <a name="next-steps"></a>后续步骤
-如果在连接到 VM 时遇到问题，请参阅 [Troubleshoot SSH connections to an Azure VM](virtual-machines-linux-troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（排查 Azure VM 的 SSH 连接问题）。 如果在访问 VM 上运行的应用时遇到问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](virtual-machines-linux-troubleshoot-app-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（排查 Linux VM 上的应用程序连接问题）。
+如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（排查 Linux VM 上的应用程序连接问题）。
 
-有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
