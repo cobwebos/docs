@@ -218,6 +218,7 @@ IoT 中心序列化程序客户端库使用一个模型来指定设备发送到 
           config.iotHubName = hubName;
           config.iotHubSuffix = hubSuffix;
           config.protocol = AMQP_Protocol;
+          config.protocolGatewayHostName = NULL;
           iotHubClientHandle = IoTHubClient_Create(&config);
           if (iotHubClientHandle == NULL)
           {
@@ -383,7 +384,7 @@ int main(void)
     ```
     cmake_minimum_required(VERSION 2.8.11)
    
-    set(AZUREIOT_INC_FOLDER ".." "/usr/include/azureiot")
+    set(AZUREIOT_INC_FOLDER ".." "/usr/include/azureiot" "/usr/include/azureiot/inc")
    
     include_directories(${AZUREIOT_INC_FOLDER})
    

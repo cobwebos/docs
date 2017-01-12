@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/16/2016
+ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: ce9474f2926a856673efbab5103a308d31001343
@@ -125,7 +125,7 @@ iOS 9 或更高版本支持本机 iOS 邮件客户端。 若要确定其他所�
 1. 使用管理员特权启动 Windows PowerShell。 
 2. 安装 Azure AD 模块。 需要安装版本 [2.0.0.33 ](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 或更高版本。  
    
-        Install-Module -Name AzureADPreview –RequiredVersion 2.0.0.33 
+        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33 
 3. 连接到目标租户： 
    
         Connect-AzureAD 
