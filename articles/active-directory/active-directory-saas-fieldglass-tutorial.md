@@ -128,7 +128,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     ![配置单一登录](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_05.png)
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
     b. 单击“资源组名称” 的 Azure 数据工厂。
 5. 若要为应用程序配置 SSO，请联系 Fieldglass 支持团队，并向其提供以下内容： 
@@ -166,7 +166,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_05.png)
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    a. 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
@@ -175,7 +175,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_06.png)
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a. 在“名字”文本框中，键入“Britta”。  
    
     b. 在“姓氏”文本框中，键入“Simon”。
    
@@ -192,7 +192,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_08.png)
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
+    a. 写下“新密码”的值。
    
     b. 单击“完成”。   
 
