@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/22/2016
 ms.author: chrande
+redirect_url: /azure/azure-functions/functions-bindings-storage-blob
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 62516a7ab50724e095d1512239877390e9cf1951
-
 
 ---
 # <a name="azure-functions-triggers-and-bindings-for-azure-storage"></a>适用于 Azure 存储的 Azure Functions 触发器和绑定
