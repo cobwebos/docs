@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/03/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7834aefeb9eb007ffa9daf708250c9f06ec05e67
-ms.openlocfilehash: 96c709d8df311e649a2f8fe9dc177d43615c65ad
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 2c6ffb6c175612c57ddff3a71b2c7a1855c52348
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 96c709d8df311e649a2f8fe9dc177d43615c65ad
 > 
 > 
 
-Azure 当前具有两个管理模型：经典模型和 Resource Manager (RM) 模型。 如果 Azure 已经使用了一段时间，则您的 Azure VM 和实例角色可能是在经典 VNet 上运行。 而较新的 VM 和角色实例可能是在 Resource Manager 中创建的 VNet 上运行。 本文将指导您如何连接经典 VNet 和 Resource Manager Vnet，从而可以通过网关连接使不同部署模型中的资源能够相互通信。 
+Azure 当前具有两个管理模型：经典模型和 Resource Manager (RM) 模型。 如果 Azure 已经使用了一段时间，则您的 Azure VM 和实例角色可能是在经典 VNet 上运行。 而较新的 VM 和角色实例可能是在 Resource Manager 中创建的 VNet 上运行。 本文将指导您如何连接经典 VNet 和 Resource Manager Vnet，从而可以通过网关连接使不同部署模型中的资源能够相互通信。
 
 可以在位于不同订阅、不同区域中的 VNet 之间创建连接。 您还可以连接已连接到本地网络的 VNet，只要它们配置的网关是动态或基于路由的。 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。
 
@@ -53,7 +53,7 @@ Azure 当前具有两个管理模型：经典模型和 Resource Manager (RM) 模
 ### <a name="prerequisites"></a>先决条件
 * 已创建了两个 VNet。
 * 两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
-* 已安装最新的 PowerShell cmdlet（1.0.2 或更高版本）。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 请确保安装服务管理 (SM) 和 Resource Manager (RM) cmdlet。 
+* 已安装最新的 PowerShell cmdlet（1.0.2 或更高版本）。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 请确保安装服务管理 (SM) 和 Resource Manager (RM) cmdlet。 
 
 ### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>示例设置
 可以使用示例设置作为参考。
@@ -185,6 +185,6 @@ VPN 类型 = 基于路由 <br>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

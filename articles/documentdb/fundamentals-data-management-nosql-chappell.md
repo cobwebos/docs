@@ -14,9 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: mimig
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 1445c35231274b816df632f2c81f5d102d8a885f
+
 
 
 ---

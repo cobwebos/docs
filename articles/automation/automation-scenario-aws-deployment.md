@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2016
+ms.date: 01/13/2017
 ms.author: tiandert; bwren
 translationtype: Human Translation
 ms.sourcegitcommit: ff1acafaacc40dd8a04b008df7cd479c811a7af0
@@ -29,8 +29,8 @@ ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
 ## <a name="deploy-amazon-web-services-powershell-module"></a>部署 Amazon Web Services PowerShell 模块
 我们的 VM 预配 Runbook 将利用 AWS PowerShell 模块来执行其功能。 执行以下步骤将模块添加到配置有 AWS 订阅凭据的自动化帐户。  
 
-1. 打开 Web 浏览器并导航到 [PowerShell 库](http://www.powershellgallery.com/packages/AWSPowerShell/)，然后单击“部署到 Azure 自动化”按钮。<br> ![AWS PS 模块导入](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
-2. 你将转到 Azure 登录页，身份验证后，将路由到 Azure 门户，其中显示了以下边栏选项卡。<br> ![导入模块边栏选项卡](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
+1. 打开 Web 浏览器并导航到 [PowerShell 库](http://www.powershellgallery.com/packages/AWSPowerShell/)，然后单击“部署到 Azure 自动化”按钮。<br><br> ![AWS PS 模块导入](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+2. 你将转到 Azure 登录页，身份验证后，将路由到 Azure 门户，其中显示了以下边栏选项卡。<br><br> ![导入模块边栏选项卡](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. 从“资源组” 下拉列表中选择资源组，并在“参数”边栏选项卡上提供以下信息：
    
    * 从“新的或现有的自动化帐户(字符串)”下拉列表中，选择“现有”。  
@@ -53,30 +53,28 @@ ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
 > [!NOTE]
 > 有关其他选项以及此脚本的信息，请访问 [PowerShell 库](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript)。
 > 
-> 
 
 1. 打开 PowerShell 会话并键入以下命令，可从 PowerShell 库下载 PowerShell 脚本 New-AwsVM：<br>
    ```
-   Save-Script -Name New-AwsVM -Path \<path\>
+   Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
 2. 从 Azure 门户打开自动化帐户，然后单击“Runbook”磁贴。  
 3. 在“Runbook”边栏选项卡中，选择“添加 Runbook”。
 4. 在“添加 Runbook”边栏选项卡中，选择“快速创建”（创建新 Runbook）。
-5. 在“Runbook”属性边栏选项卡上的“名称”框中键入 Runbook 的名称，从“Runbook 类型”下拉列表中选择“PowerShell”，然后单击“创建”。<br> ![导入模块边栏选项卡](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
-6. 出现“编辑 PowerShell Runbook”边栏选项卡时，请将 PowerShell 脚本复制并粘贴到 Runbook 创作画布中。<br> ![Runbook PowerShell 脚本](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
+5. 在“Runbook”属性边栏选项卡上的“名称”框中键入 Runbook 的名称，从“Runbook 类型”下拉列表中选择“PowerShell”，然后单击“创建”。<br><br> ![导入模块边栏选项卡](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
+6. 出现“编辑 PowerShell Runbook”边栏选项卡时，请将 PowerShell 脚本复制并粘贴到 Runbook 创作画布中。<br><br> ![Runbook PowerShell 脚本](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
    
-   > [!NOTE]
-   > 使用示例 PowerShell 脚本时，请注意以下事项：
-   > 
-   > * Runbook 包含一些默认参数值。 请评估所有默认值，并根据需要进行更新。
-   > * 如果已将 AWS 凭据存储为名称与 **AWScred** 不同的凭据资产，需更新脚本的第 57 行，以使其匹配。  
-   > * 在 PowerShell 中使用 AWS CLI 命令（特别是使用此示例 Runbook）时，必须指定 AWS 区域。 否则，cmdlet 将会失败。  有关更多详细信息，请查看“用于 PowerShell 的 AWS 工具”文档中的 AWS 主题[指定 AWS 区域](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html)。  
-   >   <br>
-   > 
-   > 
-7. 若要从 AWS 订阅检索映像名称的列表，请启动 PowerShell ISE 并导入 AWS PowerShell 模块。  通过将 ISE 环境中的 **Get-AutomationPSCredential** 替换为 **AWScred = Get-Credential**，向 AWS 进行身份验证。  此时系统会提示输入凭据，你可以提供“访问密钥 ID”作为用户名，提供“机密访问密钥”作为密码。  请参阅以下示例：
-   
+    > [!NOTE]
+    > 使用示例 PowerShell 脚本时，请注意以下事项：
+    > 
+    > * Runbook 包含一些默认参数值。 请评估所有默认值，并根据需要进行更新。
+    > * 如果已将 AWS 凭据存储为名称与 **AWScred** 不同的凭据资产，需更新脚本的第 57 行，以使其匹配。  
+    > * 在 PowerShell 中使用 AWS CLI 命令（特别是使用此示例 Runbook）时，必须指定 AWS 区域。 否则，cmdlet 将会失败。  有关更多详细信息，请查看“用于 PowerShell 的 AWS 工具”文档中的 AWS 主题[指定 AWS 区域](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html)。  
+    >
+
+7. 若要从 AWS 订阅检索映像名称的列表，请启动 PowerShell ISE 并导入 AWS PowerShell 模块。  通过将 ISE 环境中的 **Get-AutomationPSCredential** 替换为 **AWScred = Get-Credential**，向 AWS 进行身份验证。  此时系统会提示输入凭据，你可以提供“访问密钥 ID”作为用户名，提供“机密访问密钥”作为密码。  请参阅以下示例：  
+
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -90,24 +88,25 @@ ms.openlocfilehash: 62b6c09f749aa36307206e23d36bd86b5b8ce455
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-   返回以下输出：<br>
-   ![获取 AWS 映像](./media/automation-scenario-aws-deployment/powershell-ise-output.png)  
-8. 在自动化变量中复制并粘贴一个映像名称，如 Runbook 中作为 **$InstanceType** 所引用的那样。 由于此示例使用的是免费 AWS 分层订阅，我们将对 Runbook 示例使用 **t2.micro**。
+
+    返回以下输出：<br><br>
+   ![获取 AWS 映像](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
+8. 在自动化变量中复制并粘贴一个映像名称，如 Runbook 中作为 **$InstanceType** 所引用的那样。 由于此示例使用的是免费 AWS 分层订阅，我们将对 Runbook 示例使用 **t2.micro**。  
 9. 保存 Runbook，单击“发布”以发布该 Runbook，然后在出现提示时单击“是”。
 
 ### <a name="testing-the-aws-vm-runbook"></a>测试 AWS VM Runbook
-在继续测试 Runbook 之前，需要确认一些事项。 具体而言：
+在继续测试 Runbook 之前，需要确认一些事项。 具体而言：  
 
-* 已创建用于向 AWS 进行身份验证的 **AWScred** 资产，或已更新脚本以引用凭据资产的名称。  
-* 已在 Azure 自动化中导入 AWS PowerShell 模块
-* 已创建新的 Runbook 并根据需要验证和更新了参数值
-* Runbook 设置“日志记录和跟踪”下的“日志详细记录”和可选的“日志进度记录”已设置为“打开”。<br> ![Runbook 日志记录和跟踪](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)
+* 已创建用于向 AWS 进行身份验证的 **AWScred** 资产，或已更新脚本以引用凭据资产的名称。    
+* 已在 Azure 自动化中导入 AWS PowerShell 模块  
+* 已创建新的 Runbook 并根据需要验证和更新了参数值  
+* Runbook 设置“日志记录和跟踪”下的“日志详细记录”和可选的“日志进度记录”已设置为“打开”。<br><br> ![Runbook 日志记录和跟踪](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)  
 
 1. 需启动 Runbook，因此请单击“启动”，然后在“启动 Runbook”边栏选项卡打开时单击“确定”即可。
-2. 在“启动 Runbook”边栏选项卡上提供 **VMname**。  接受前面在脚本中预配置的其他参数的默认值。  单击“确定”启动 Runbook 作业。<br> ![启动 New-AwsVM Runbook](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
+2. 在“启动 Runbook”边栏选项卡上提供 **VMname**。  接受前面在脚本中预配置的其他参数的默认值。  单击“确定”启动 Runbook 作业。<br><br> ![启动 New-AwsVM Runbook](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
 3. 会为我们刚刚创建的 Runbook 作业打开作业窗格。 关闭此窗格。
-4. 从 Runbook 作业边栏选项卡中选择“所有日志”磁贴，即可查看作业进度和输出**流**。<br> ![流输出](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
-5. 若要确认是否正在预配 VM，请登录到 AWS 管理控制台（如果当前尚未登录）。<br> ![AWS 控制台部署的 VM](./media/automation-scenario-aws-deployment/aws-instances-status.png)
+4. 从 Runbook 作业边栏选项卡中选择“所有日志”磁贴，即可查看作业进度和输出**流**。<br><br> ![流输出](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
+5. 若要确认是否正在预配 VM，请登录到 AWS 管理控制台（如果当前尚未登录）。<br><br> ![AWS 控制台部署的 VM](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md)

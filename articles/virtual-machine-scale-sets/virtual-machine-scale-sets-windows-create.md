@@ -3,7 +3,7 @@ title: "使用 PowerShell 创建虚拟机规模集 | Microsoft Docs"
 description: "使用 PowerShell 创建虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: davidmu1
+author: Thraka
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
-ms.author: davidmu
+ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
 ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4

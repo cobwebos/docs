@@ -4,7 +4,7 @@ description: "通过 TTL 功能，Microsoft Azure DocumentDB 能够在一段时�
 services: documentdb
 documentationcenter: 
 keywords: "生存时间"
-author: kiratp
+author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2016
-ms.author: kipandya
+ms.author: arramac
 translationtype: Human Translation
 ms.sourcegitcommit: 9f4105d1ab366994add0f75d634917ab9a063733
 ms.openlocfilehash: 03486c23e4e939f1d84aa13af4308dc2059f9980

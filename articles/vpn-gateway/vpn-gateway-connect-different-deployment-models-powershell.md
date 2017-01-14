@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7834aefeb9eb007ffa9daf708250c9f06ec05e67
-ms.openlocfilehash: 5aa628ce651c3d768f461f5bcea2c63d693f091e
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 42cc83b058f504ba5eb7a918fbcc775f14c632fd
 
 
 ---
@@ -49,7 +49,7 @@ Azure 当前具有两个管理模型：经典模型和 Resource Manager (RM) 模
 ### <a name="prerequisites"></a>先决条件
 * 已创建了两个 VNet。
 * 两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
-* 已安装最新的 PowerShell cmdlet（1.0.2 或更高版本）。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 请确保安装服务管理 (SM) 和 Resource Manager (RM) cmdlet。 
+* 已安装最新的 PowerShell cmdlet（1.0.2 或更高版本）。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 请确保安装服务管理 (SM) 和 Resource Manager (RM) cmdlet。 
 
 ### <a name="a-nameexamplerefaexample-settings"></a><a name="exampleref"></a>示例设置
 可以使用示例设置作为参考。
@@ -256,6 +256,6 @@ VNet 名称 = RMVNet <br>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 02/04/2016
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e763b4e44ecae82bc2dd6e6cf5a8859b8c7edd72
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 68be118bc40e3a62aad73cb43119f49415f5b6a9
 
 
 ---
 # <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>设置 Azure PowerShell 以便为 Azure 应用商店创建产品/服务
-有关如何在 Azure 中设置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 一个简单的方法是使用证书方法，这将下载并导入身份验证所需的证书。 若要获取所需的证书，请使用 **Get-AzurePublishSettingsFile** cmdlet。 在出现提示时，保存文件。 若要将证书导入 PowerShell 会话中，请使用 **Import-AzurePublishSettingsFile** cmdlet。
+有关如何在 Azure 中设置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 一个简单的方法是使用证书方法，这将下载并导入身份验证所需的证书。 若要获取所需的证书，请使用 **Get-AzurePublishSettingsFile** cmdlet。 在出现提示时，保存文件。 若要将证书导入 PowerShell 会话中，请使用 **Import-AzurePublishSettingsFile** cmdlet。
 
 若要为 PowerShell 会话配置和存储常见的 Microsoft Azure 订阅设置，请使用 **Set-AzureSubscription** 和 **Select-AzureSubscription** cmdlet：
 
@@ -37,6 +37,6 @@ ms.openlocfilehash: e763b4e44ecae82bc2dd6e6cf5a8859b8c7edd72
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

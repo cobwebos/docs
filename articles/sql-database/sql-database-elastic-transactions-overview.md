@@ -8,6 +8,7 @@ manager: jhubbard
 editor: torsteng
 ms.assetid: e14df7a3-7788-4cfb-bcd1-7ad6433ef1f9
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,8 +16,8 @@ ms.workload: sql-database
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8efccd03e81bc88c9ec9896a44dee14a29597bd4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3b251edc753575f2235b9741a7c1eb5d1cf2f821
 
 
 ---
@@ -155,6 +156,6 @@ SQL DB 中的弹性数据库事务当前存在以下限制：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/10/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9ce7911ef1d69cae1b7fd7a46dafbdee29174f4e
+ms.sourcegitcommit: 0231c3148d03ffef0a518a68bb79398462da2605
+ms.openlocfilehash: 89721efbb9f05871716ca1b16ad0d54eaf1ffd62
 
 
 ---
@@ -75,7 +75,9 @@ ms.openlocfilehash: 9ce7911ef1d69cae1b7fd7a46dafbdee29174f4e
 “supportExpiryUtc”告诉你指定版本的过期日期。 最新版本没有有效日期 - 它有一个值为“9999-12-31T23:59:59.9999999”，这表示尚未设置其到期日期。
 
 ```REST
-GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/clusterVersions?api-version= 2016-09-01
+GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
+
+Example: https://management.azure.com/subscriptions/1857f442-3bce-4b96-ad95-627f76437a67/providers/Microsoft.ServiceFabric/locations/eastus/clusterVersions?api-version=2016-09-01
 
 Output:
 {
@@ -224,6 +226,6 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们将�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

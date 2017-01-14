@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 270d1a62d3522e154ba63192f11dc4394532c529
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f14f89b10145787bb2729f741ce8620238a7f246
 
 
 ---
@@ -119,7 +119,7 @@ ms.openlocfilehash: 270d1a62d3522e154ba63192f11dc4394532c529
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 2. 若要为应用程序配置 SSO，请通过 jvinci@novatusinc.com. 联系 Novatus 支持团队。将下载的证书文件附加到邮件中，与 Novatus 团队共享元数据 URL（实体 ID、SSO 登录 URL 和注销 URL），以便在团队这边设置 SSO。
 3. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
@@ -153,7 +153,7 @@ ms.openlocfilehash: 270d1a62d3522e154ba63192f11dc4394532c529
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-novatus-tutorial/create_aaduser_06.png) 
@@ -166,7 +166,7 @@ ms.openlocfilehash: 270d1a62d3522e154ba63192f11dc4394532c529
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-novatus-tutorial/create_aaduser_07.png) 
@@ -238,6 +238,6 @@ ms.openlocfilehash: 270d1a62d3522e154ba63192f11dc4394532c529
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

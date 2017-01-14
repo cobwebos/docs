@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 420b193d558d00f574d24c87ab9db6e9e757a952
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: d1b6d12b1976b317e9ed496857439c86e99253f9
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 420b193d558d00f574d24c87ab9db6e9e757a952
 可使用几种不同的方法验证网关连接。 本文将演示如何使用 Azure 门户和 PowerShell 验证 Resource Manager 网关连接的状态。
 
 ## <a name="verify-using-powershell"></a>使用 PowerShell 验证
-你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 有关使用 Resource Manager cmdlet 的详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 有关使用 Resource Manager cmdlet 的详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
 ### <a name="step-1-log-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 1. 使用提升的权限打开 PowerShell 控制台，然后连接到帐户。
@@ -50,6 +50,6 @@ ms.openlocfilehash: 420b193d558d00f574d24c87ab9db6e9e757a952
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 412483cfbce7621612a7283b8a72c24d23b851b5
+ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
+ms.openlocfilehash: ad9cc8765f1a8b83c9dbf5caca573811c6e7f10e
 
 
 ---
@@ -52,7 +52,7 @@ Log Analytics 从 OMS 工作区中已连接的源收集数据并将其存储在 
 ## <a name="data-collection"></a>数据收集
 数据源配置将在几分钟内传送到与 OMS 直接连接的各个代理。  指定的数据从代理收集，并按特定于每个数据源的时间间隔直接传送到 Log Analytics。  请参阅每个数据源的文档以了解详情。
 
-对于在已连接的管理组中的 System Center Operations Manager (SCOM) 代理，数据源配置将按照每 5 分钟的默认间隔转换成管理包并传送到管理组。  代理会下载任何其他的管理包，并收集指定的数据。 根据数据源的不同，数据或者被发送到管理服务器，再由服务器转发到 Log Analytics；或者不通过管理服务器，由代理将数据发送到 Log Analytics。 请参阅[关于 OMS 功能和解决方案的数据收集详细信息](log-analytics-add-solutions.md#data-collection-details-for-oms-features-and-solutions)以了解详细信息。  你可以在[配置与 System Center Operations Manager 的集成](log-analytics-om-agents.md)中阅读有关连接 SCOM 和 OMS 以及修改配置传送频率的详细信息。
+对于在已连接的管理组中的 System Center Operations Manager (SCOM) 代理，数据源配置将按照每 5 分钟的默认间隔转换成管理包并传送到管理组。  代理会下载任何其他的管理包，并收集指定的数据。 根据数据源的不同，数据或者被发送到管理服务器，再由服务器转发到 Log Analytics；或者不通过管理服务器，由代理将数据发送到 Log Analytics。 请参阅[关于 OMS 功能和解决方案的数据收集详细信息](log-analytics-add-solutions.md#data-collection-details)以了解详细信息。  你可以在[配置与 System Center Operations Manager 的集成](log-analytics-om-agents.md)中阅读有关连接 SCOM 和 OMS 以及修改配置传送频率的详细信息。
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 Log Analytics 所收集的所有数据都作为记录存储在 OMS 存储库。  按不同数据源收集的记录具有其自己的属性集，并由其“**类型**”属性来识别。  有关每种记录类型的详细信息，请参阅每个数据源和解决方案的相关文档。
@@ -64,7 +64,6 @@ Log Analytics 所收集的所有数据都作为记录存储在 OMS 存储库。 
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

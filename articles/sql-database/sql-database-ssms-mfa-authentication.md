@@ -9,6 +9,7 @@ editor:
 tags: 
 ms.assetid: fbd6e644-0520-439c-8304-2e4fb6d6eb91
 ms.service: sql-database
+ms.custom: authentication and authorization
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: rick.byham@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3281ce8eba82c2cbfcb34415aa2145419c91332d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c9a37db7c0b2306ce4a29d23e172a8d4b4d3e954
 
 
 ---
@@ -83,6 +84,6 @@ SSMS 现在支持：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

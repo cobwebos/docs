@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ee211328a1c89ca1267c96bdd3b235f24b4fb741
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a7a0c49b6fcac84a61005f330b07f5ea47ce1961
 
 
 ---
@@ -110,12 +110,12 @@ ms.openlocfilehash: ee211328a1c89ca1267c96bdd3b235f24b4fb741
 需要回顾并深入了解索引创建？ [观看本视频](http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh)以了解基本概念。
 
 <!--Anchors-->
-[先决条件]: #sub-1
-[下载示例应用程序]: #sub-2
-[编辑 app.config]: #sub-3
-[了解应用程序]: #sub-4
-[生成并运行应用程序]: #sub-5
-[后续步骤]: #next-steps
+[Prerequisites]: #sub-1
+[Download the sample application]: #sub-2
+[Edit app.config]: #sub-3
+[Explore the application]: #sub-4
+[Build and run the application]: #sub-5
+[Next steps]: #next-steps
 
 <!--Image references-->
 [12]: ./media/search-get-started-scoring-profiles/AzureSearch_CodeplexDownload.PNG
@@ -125,6 +125,6 @@ ms.openlocfilehash: ee211328a1c89ca1267c96bdd3b235f24b4fb741
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

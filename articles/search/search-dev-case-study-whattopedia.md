@@ -14,8 +14,8 @@ ms.workload: search
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 378ed0fdffcfab016af371ae47a99bd126895993
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4a5d12603b2a7364cf8271fb0ae98715bf4e7078
 
 
 ---
@@ -390,12 +390,12 @@ Azure 搜索不是唯一的惊喜。 我们发现，使用 WebJobs 自行执行�
 
 
 <!--Anchors-->
-[副标题 1]: #subheading-1
-[副标题 2]: #subheading-2
-[副标题 3]: #subheading-3
-[副标题 4]: #subheading-4
-[副标题 5]: #subheading-5
-[后续步骤]: #next-steps
+[Subheading 1]: #subheading-1
+[Subheading 2]: #subheading-2
+[Subheading 3]: #subheading-3
+[Subheading 4]: #subheading-4
+[Subheading 5]: #subheading-5
+[Next steps]: #next-steps
 
 <!--Image references-->
 [6]: ./media/search-dev-case-study-whattopedia/lightbulb.png
@@ -405,13 +405,13 @@ Azure 搜索不是唯一的惊喜。 我们发现，使用 WebJobs 自行执行�
 
 
 <!--Link references-->
-[链接 1 指向另一个 azure.microsoft.com 文档主题]: ../virtual-machines-windows-hero-tutorial.md
-[链接 2 指向另一个 azure.microsoft.com 文档主题]: ../web-sites-custom-domain-name.md
-[链接 3 指向另一个 azure.microsoft.com 文档主题]: ../storage-whatis-account.md
+[Link 1 to another azure.microsoft.com documentation topic]: ../virtual-machines-windows-hero-tutorial.md
+[Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
+[Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

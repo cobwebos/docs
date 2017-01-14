@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 3dc9b7a3-4b10-423a-8e44-9174aca5cf3d
 ms.service: sql-database
+ms.custom: sharded databases pool; how to
 ms.devlang: NA
 ms.date: 11/17/2016
 ms.author: ninarn
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 37249c24c3e74ff9f4fcf9362b6053d1ba7b0cbd
-ms.openlocfilehash: 10bb7d9672824b00a1e3ba02e0e3d1db4260b128
+ms.sourcegitcommit: c17cedb24dacc6aeefa02a963b4dffcf22e246ec
+ms.openlocfilehash: 285be87188be8fa426e42d6ec43cd066100f423d
 
 
 ---
@@ -60,20 +61,21 @@ ms.openlocfilehash: 10bb7d9672824b00a1e3ba02e0e3d1db4260b128
 
 可以编辑图表和指标边栏选项卡以显示其他指标，如 CPU 百分比、数据 IO 百分比和已用日志 IO 百分比。
 
-2. 在指标边栏选项卡上，单击“编辑”。
+1. 在指标边栏选项卡上，单击“编辑”。
 
     ![单击“编辑”][6]
 
-- 在“编辑图表”边栏选项卡中，选择新时间范围（前一个小时、今天或过去一周），或单击“自定义”以选择过去两周中的任何日期范围。 选择图表类型（条形图或折线图），然后选择要监视的资源。
+2. 在“编辑图表”边栏选项卡中，选择新时间范围（前一个小时、今天或过去一周），或单击“自定义”以选择过去两周中的任何日期范围。 选择图表类型（条形图或折线图），然后选择要监视的资源。
 
-> [!Note]
-> 仅可同时在图表中显示具有相同度量单位的指标。 例如，如果选择“eDTU 百分比”，那么就只能选择以百分比作为度量单位的其他指标。
->
->
+   > [!Note]
+   > 仅可同时在图表中显示具有相同度量单位的指标。 例如，如果选择“eDTU 百分比”，那么就只能选择以百分比作为度量单位的其他指标。
+   >
 
-    ![Click edit](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
+    ![单击“编辑”](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
 
-- 。
+    
+
+3. 。
 
 
 ## <a name="elastic-database-monitoring"></a>弹性数据库监视
@@ -226,6 +228,6 @@ ms.openlocfilehash: 10bb7d9672824b00a1e3ba02e0e3d1db4260b128
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

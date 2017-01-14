@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a85dc1388701c750af48249c818a5227d73e77e6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 146aa7706b5ff2a613dd94c75f3ad447ace82834
 
 
 ---
@@ -47,9 +47,11 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 ## <a name="to-use-a-property"></a>使用属性
 若要使用策略中的属性，可将属性名称置于一对双的大括号中（例如 `{{ContosoHeader}}`），如以下示例所示。
 
-    <set-header name="{{ContosoHeader}}" exists-action="override">
-      <value>{{ContosoHeaderValue}}</value>
-    </set-header>
+```xml
+<set-header name="{{ContosoHeader}}" exists-action="override">
+  <value>{{ContosoHeaderValue}}</value>
+</set-header>
+```
 
 在此示例中，`ContosoHeader` 用作 `set-header` 策略中一个标头的名称，`ContosoHeaderValue` 用作该标头的值。 在请求或响应 API 管理网关的过程中，如果要对该策略进行评估，则会将 `{{ContosoHeader}}` 和 `{{ContosoHeaderValue}}` 替换为各自的属性值。
 
@@ -57,9 +59,11 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 属性还可以包含策略表达式。 以下示例使用 `ExpressionProperty`。
 
-    <set-header name="CustomHeader" exists-action="override">
-        <value>{{ExpressionProperty}}</value>
-    </set-header>
+```xml
+<set-header name="CustomHeader" exists-action="override">
+    <value>{{ExpressionProperty}}</value>
+</set-header>
+```
 
 评估此策略时，会将 `{{ExpressionProperty}}` 替换为其值：`@(DateTime.Now.ToString())`。 由于值为策略表达式，因此会计算该表达式，然后策略会继续执行相关操作。
 
@@ -151,6 +155,6 @@ API 管理策略是一项强大的系统功能，允许发布者通过配置更�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
