@@ -130,7 +130,7 @@ Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 
    * **展开 * 列**
 
        单击 *的右侧，可以看到 *下面出现蓝色下划线。 将鼠标光标悬停在蓝色下划线上，然后单击向下箭头。
-       ![Data Lake visual studio 工具展开*](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+       ![Data Lake visual studio 工具展开](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        单击“展开列”，工具会将 * 替换为列名称。
    * **自动套用格式**
