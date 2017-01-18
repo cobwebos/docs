@@ -49,6 +49,6 @@
 ## [Azure CLI 2.0（预览版）示例](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [支持的指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 
