@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 01/09/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: d0e596aed6ae784e4c48b3ddacbf946c4849614f
-ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
+ms.sourcegitcommit: c0c33506d134db9fc49bd873e9c95063dd2ab845
+ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
 
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果你拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](active-directory-aadconnect-get-started-express.md)不能满足部署或拓扑的所有情况。
 
-开始安装 Azure AD Connect 之前，确保[下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)，完成 [Azure AD Connect：硬件和先决条件](../active-directory-aadconnect-prerequisites.md)中的预备步骤。 此外请确保你拥有 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md)所述的可用的必需帐户。
+开始安装 Azure AD Connect 之前，确保[下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)，完成 [Azure AD Connect：硬件和先决条件](active-directory-aadconnect-prerequisites.md)中的预备步骤。 此外请确保你拥有 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md)所述的可用的必需帐户。
 
 如果自定义的设置不匹配拓扑，例如，若要升级 DirSync，有关其他情况，请参阅 [相关文档](#related-documentation) 。
 
@@ -43,18 +43,18 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 | 指定自定义同步组 |默认情况下，在安装同步服务时，Azure AD Connect 将在服务器本地创建四个组。 这些组是：管理员组、操作员组、浏览组和密码重置组。 在此你可以指定自己的组。 组必须在服务器本地，并且不能位于域中。 |
 
 ### <a name="user-sign-in"></a>用户登录
-在安装所需的组件后，需要选择用户单一登录方法。 下表提供了可用选项的简短说明。 有关登录方法的完整说明，请参阅[用户登录](../active-directory-aadconnect-user-signin.md)。
+在安装所需的组件后，需要选择用户单一登录方法。 下表提供了可用选项的简短说明。 有关登录方法的完整说明，请参阅[用户登录](active-directory-aadconnect-user-signin.md)。
 
 ![用户登录](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
 
 | 单一登录选项 | 说明 |
 | --- | --- |
-| 密码同步 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。 用户密码将作为密码哈希同步到 Azure AD，并在云中进行身份验证。 有关详细信息，请参阅[密码同步](../active-directory-aadconnectsync-implement-password-synchronization.md)。 |
-|传递身份验证（预览版）|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户密码将传递到本地 Active Directory 控制器进行验证。 
+| 密码同步 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。 用户密码将作为密码哈希同步到 Azure AD，并在云中进行身份验证。 有关详细信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 |
+|传递身份验证（预览版）|用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户密码将传递到本地 Active Directory 控制器进行验证。
 | 使用 AD FS 进行联合身份验证 |用户能够用在其本地网络中使用的相同密码登录到 Microsoft 云服务，例如 Office 365。  用户被重定向到他们的本地 AD FS 实例以进行登录，并在本地完成身份验证。 |
 | 不要配置 |不安装和配置任一功能。 如果你已有第三方联合服务器或部署了另一个现有解决方案，请选择此选项。 |
-|启用单一登录|此选项适用于密码同步和传递身份验证，为企业网络中的桌面用户提供单一登录体验。  有关详细信息，请参阅[单一登录](../active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。</br>（如果同时未发布 PTA）
-|登录选项|此选项适用于密码同步客户，为企业网络中的桌面用户提供单一登录体验。  </br>有关详细信息，请参阅[单一登录](../active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。
+|启用单一登录|此选项适用于密码同步和传递身份验证，为企业网络中的桌面用户提供单一登录体验。  有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。</br>（如果同时未发布 PTA）
+|登录选项|此选项适用于密码同步客户，为企业网络中的桌面用户提供单一登录体验。  </br>有关详细信息，请参阅[单一登录](active-directory-aadconnect-sso.md)。 </br>请注意，此选项不适用于 AD FS 客户，因为 AD FS 已提供相同级别的单一登录。
 
 
 ### <a name="connect-to-azure-ad"></a>连接到 Azure AD
@@ -68,7 +68,7 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 
 全局管理员帐户也可以启用 [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)。
 
-如果收到错误消息并且出现连接问题，请参阅[排查连接问题](../active-directory-aadconnect-troubleshoot-connectivity.md)。
+如果收到错误消息并且出现连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 
 ## <a name="pages-under-the-section-sync"></a>“同步”部分下的页面
 
@@ -95,7 +95,9 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 
 ### <a name="domain-and-ou-filtering"></a>域和 OU 筛选
 默认情况下将同步所有域和 OU。 如果你不想将某些域或 OU 同步到 Azure AD，可以取消选择这些域和 OU。  
-![DomainOU 筛选](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) 向导中的此页面用于配置基于域的筛选。 有关详细信息，请参阅[基于域的筛选](../active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)。
+![DomainOU 筛选](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)向导中的此页用于配置基于域和基于 OU 的筛选。 有关详细信息，请参阅[基于域的筛选](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)和[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)。 如果使用基于 OU 的筛选，以后添加的新 OU 默认会同步。 如果希望行为是不同步新 OU，可在向导完成后，使用[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)来配置此行为。
+
+如果打算使用[基于组的筛选](#sync-filtering-based-on-groups)，请确保包含该组所在的 OU，而未使用 OU 筛选将该 OU 筛选掉。 OU 筛选将在基于组的筛选之前评估。
 
 由于防火墙限制，也可能无法连接到某些域。 默认情况下未选择这些域，并且会出现警告。  
 ![不可访问的域](./media/active-directory-aadconnect-get-started-custom/unreachable.png)  
@@ -108,13 +110,13 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 
 | 设置 | 说明 |
 | --- | --- |
-| [用户在所有林中只呈现一次](../active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |将所有用户在 Azure AD 中创建为单独的对象。 不会在 Metaverse 中联接对象。 |
-| [邮件属性](../active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |如果邮件属性在不同的林中具有相同的值，则此选项将联接用户和联系人。 当已使用 GALSync 创建了联系人时，请使用此选项。 |
-| [ObjectSID 和 msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](../active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |此选项将帐户林中的已启用用户与资源林中的已禁用用户进行联接。 在 Exchange 中，此配置称为链接邮箱。 如果你只使用 Lync 并且资源林中没有 Exchange，则你也可以使用此选项。 |
+| [用户在所有林中只呈现一次](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |将所有用户在 Azure AD 中创建为单独的对象。 不会在 Metaverse 中联接对象。 |
+| [邮件属性](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |如果邮件属性在不同的林中具有相同的值，则此选项将联接用户和联系人。 当已使用 GALSync 创建了联系人时，请使用此选项。 |
+| [ObjectSID 和 msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |此选项将帐户林中的已启用用户与资源林中的已禁用用户进行联接。 在 Exchange 中，此配置称为链接邮箱。 如果你只使用 Lync 并且资源林中没有 Exchange，则你也可以使用此选项。 |
 | sAMAccountName 和 MailNickName |此选项根据预期可以在其中找到用户登录 ID 的属性进行联接。 |
 | 特定的属性 |此选项允许你选择自己的属性。 **限制：** 确保选择已可在 Metaverse 中找到的属性。 如果你选择自定义属性（不在 Metaverse 中），向导将无法完成。 |
 
-**源定位点** - sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属性。 它是链接本地用户与 Azure AD 中用户的主密钥。 由于无法更改该属性，因此你必须规划好要使用的合适属性。 objectGUID 就是不错的候选项。 除非在林/域之间移动用户帐户，否则此属性不会更改。 在要在林间移动帐户的多林环境中，必须使用另一个属性，例如具有 employeeID 的属性。 避免某人结婚时会改变的属性，或会更改分配的属性。 由于不可以使用带有 @-sign, 符号的属性，因此无法使用 email 和 userPrincipalName。 属性也区分大小写，因此在林间移动对象时，请务必保留大写/小写。 二进制属性采用 base64 编码，但其他属性类型会保留未编码状态。 在联合方案和某些 Azure AD 接口中，此属性也称为 immutableID。 可以在[设计概念](../active-directory-aadconnect-design-concepts.md#sourceanchor)中找到有关源定位点的详细信息。
+**源定位点** - sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属性。 它是链接本地用户与 Azure AD 中用户的主密钥。 由于无法更改该属性，因此你必须规划好要使用的合适属性。 objectGUID 就是不错的候选项。 除非在林/域之间移动用户帐户，否则此属性不会更改。 在要在林间移动帐户的多林环境中，必须使用另一个属性，例如具有 employeeID 的属性。 避免某人结婚时会改变的属性，或会更改分配的属性。 由于不可以使用带有 @-sign, 符号的属性，因此无法使用 email 和 userPrincipalName。 属性也区分大小写，因此在林间移动对象时，请务必保留大写/小写。 二进制属性采用 base64 编码，但其他属性类型会保留未编码状态。 在联合方案和某些 Azure AD 接口中，此属性也称为 immutableID。 可以在[设计概念](active-directory-aadconnect-design-concepts.md#sourceanchor)中找到有关源定位点的详细信息。
 
 ### <a name="sync-filtering-based-on-groups"></a>根据组同步筛选
 根据组筛选功能可让你只同步一小部分的对象来进行试验。 若要使用此功能，请在本地 Active Directory 中针对此目的创建一个组。 然后添加应该以直属成员身份与 Azure AD 同步的用户和组。 稍后可以在此组中添加和删除用户，以维护应该要在 Azure AD 中显示的对象列表。 要同步的所有对象必须是组的直属成员。 用户、组、联系人和计算机/设备都必须是直属成员。 系统不会解析嵌套组成员身份。 当你添加某个组作为成员时，只会添加该组本身，而不添加其成员。
@@ -126,7 +128,7 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 >
 >
 
-在成熟的生产部署中，往往很难维护单个要同步所有对象的组。 在这种情况下，应该使用[配置筛选](../active-directory-aadconnectsync-configure-filtering.md)中所述的方法之一。
+在成熟的生产部署中，往往很难维护单个要同步所有对象的组。 在这种情况下，应该使用[配置筛选](active-directory-aadconnectsync-configure-filtering.md)中所述的方法之一。
 
 ### <a name="optional-features"></a>可选功能
 此屏幕可让你针对特定方案选择可选功能。
@@ -140,46 +142,13 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 
 | 可选功能 | 说明 |
 | --- | --- |
-| Exchange 混合部署 |Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Office 365 中共存。 Azure AD Connect 将特定的[属性](../active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)集从 Azure AD 同步回到本地目录。 |
+| Exchange 混合部署 |Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Office 365 中共存。 Azure AD Connect 将特定的[属性](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)集从 Azure AD 同步回到本地目录。 |
 | Azure AD 应用程序和属性筛选 |通过启用 Azure AD 应用和属性筛选，可以定制同步的属性集。 此选项将在向导中额外添加两个配置页。 有关详细信息，请参阅 [Azure AD 应用程序和属性筛选](#azure-ad-app-and-attribute-filtering)。 |
-| 密码同步 |如果你选择了联合作为登录解决方案，则可以启用此选项。 然后，可将密码同步用作备份选项。 有关更多信息，请参阅[密码同步](../active-directory-aadconnectsync-implement-password-synchronization.md)。 </br></br>如果选择了“传递身份验证”，则默认会启用此选项，确保支持旧客户端并可用作备份选项。 有关更多信息，请参阅[密码同步](../active-directory-aadconnectsync-implement-password-synchronization.md)。|
+| 密码同步 |如果你选择了联合作为登录解决方案，则可以启用此选项。 然后，可将密码同步用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。 </br></br>如果选择了“传递身份验证”，则默认会启用此选项，确保支持旧客户端并可用作备份选项。 有关更多信息，请参阅[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。|
 | 密码写回 |通过启用密码写回，源自 Azure AD 的密码更改将写回到本地目录。 有关详细信息，请参阅[密码管理入门](../active-directory-passwords-getting-started.md)。 |
-| 组写回 |如果你使用了“Office 365 组”  功能，则可以在本地 Active Directory 中呈现这些组。 仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。 有关详细信息，请参阅[组写回](../active-directory-aadconnect-feature-preview.md#group-writeback)。 |
-| 设备写回 |允许你将 Azure AD 中的设备对象写回本地 Active Directory 以实现条件性访问方案。 有关详细信息，请参阅[在 Azure AD Connect 中启用设备写回](../active-directory-aadconnect-feature-device-writeback.md)。 |
-| 目录扩展属性同步 |通过启用目录扩展属性同步，可将指定的属性同步到 Azure AD。 有关详细信息，请参阅[目录扩展](../active-directory-aadconnectsync-feature-directory-extensions.md)。 |
-
-### <a name="enabling-single-sign-on-sso"></a>启用单一登录 (SSO)
-配合密码同步或传递身份验证配置单一登录是一个简单的过程，针对要同步到 Azure AD 的每个林，只需完成此过程一次。  配置包括如下所述的两个步骤：
-
-1.  在本地 Active Directory 中创建所需的计算机帐户。
-2.  配置客户端计算机的 Intranet 区域，使其支持单一登录。
-
-#### <a name="creating-the-computer-account-in-active-directory"></a>在 Active Directory 中创建计算机帐户
-对于已通过 AAD Connect 工具添加的每个林，需要提供域管理员凭据，以便在每个林中创建计算机帐户。  凭据仅用于创建帐户，而不会存储，也不会用于其他任何操作。  只需在 AAD Connect 向导的“启用单一登录”页上添加凭据，如下所示：
-
-![启用单一登录](./media/active-directory-aadconnect-get-started-custom/enablesso.png)
-
->[!NOTE]
->如果不想要对某个特定的林使用单一登录，可以选择跳过该林。
-
-#### <a name="configure-the-intranet-zone-for-client-machines"></a>配置客户端计算机的 Intranet 区域
-为了确保客户端在 Intranet 区域中自动登录，需确保 URL 是 Intranet 区域的一部分。  这样就可以确保已加入域的台式计算机在连接到企业网络后，自动发送 Kerberos 票证。
-在装有组策略管理工具的计算机上：
-
-1.  打开组策略管理工具
-2.  编辑要应用到所有用户的组策略。  例如默认的域策略。
-3.  导航到“当前用户\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，然后按下图所示选择“站点到区域分配列表”。
-4.  启用策略，并在对话框中输入以下两项。
-   
-        Value: https://autologon.microsoftazuread-sso.com
-        Data: 1
-        Value: https://aadg.windows.net.nsatc.net 
-        Data: 1
-
-5.  输入内容应类似于：![Intranet 区域](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
-
-6.  单击“确定”两次。
-
+| 组写回 |如果你使用了“Office 365 组”  功能，则可以在本地 Active Directory 中呈现这些组。 仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。 有关详细信息，请参阅[组写回](active-directory-aadconnect-feature-preview.md#group-writeback)。 |
+| 设备写回 |允许你将 Azure AD 中的设备对象写回本地 Active Directory 以实现条件性访问方案。 有关详细信息，请参阅[在 Azure AD Connect 中启用设备写回](active-directory-aadconnect-feature-device-writeback.md)。 |
+| 目录扩展属性同步 |通过启用目录扩展属性同步，可将指定的属性同步到 Azure AD。 有关详细信息，请参阅[目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)。 |
 
 ### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD 应用程序和属性筛选
 如果想要限制同步到 Azure AD 的属性，请通过选择正在使用的服务来启动。 如果在此页面上进行配置更改，则必须通过重新运行安装向导来明确选择新的服务。
@@ -191,7 +160,7 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 ![可选功能 - 属性](./media/active-directory-aadconnect-get-started-custom/azureadattributes2.png)
 
 > [!WARNING]
-> 删除属性可能会影响功能。 有关最佳实践和建议，请参阅[属性同步](../active-directory-aadconnectsync-attributes-synchronized.md#attributes-to-synchronize)。
+> 删除属性可能会影响功能。 有关最佳实践和建议，请参阅[属性同步](active-directory-aadconnectsync-attributes-synchronized.md#attributes-to-synchronize)。
 >
 >
 
@@ -200,7 +169,40 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 
 ![目录扩展](./media/active-directory-aadconnect-get-started-custom/extension2.png)
 
-有关详细信息，请参阅[目录扩展](../active-directory-aadconnectsync-feature-directory-extensions.md)。
+有关详细信息，请参阅[目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)。
+
+### <a name="enabling-single-sign-on-sso"></a>启用单一登录 (SSO)
+配合密码同步或传递身份验证配置单一登录是一个简单的过程，针对要同步到 Azure AD 的每个林，只需完成此过程一次。 配置包括如下所述的两个步骤：
+
+1.  在本地 Active Directory 中创建所需的计算机帐户。
+2.  配置客户端计算机的 Intranet 区域，使其支持单一登录。
+
+#### <a name="create-the-computer-account-in-active-directory"></a>在 Active Directory 中创建计算机帐户
+对于在 Azure AD Connect 中添加的每个林，需要提供域管理员凭据，以便在每个林中创建计算机帐户。 凭据仅用于创建帐户，而不会存储，也不会用于其他任何操作。 只需在 Azure AD Connect 向导的“启用单一登录”页上添加凭据，如下所示：
+
+![启用单一登录](./media/active-directory-aadconnect-get-started-custom/enablesso.png)
+
+>[!NOTE]
+>如果不想要对某个特定的林使用单一登录，可以跳过该林。
+
+#### <a name="configure-the-intranet-zone-for-client-machines"></a>配置客户端计算机的 Intranet 区域
+为了确保客户端在 Intranet 区域中自动登录，需确保两个 URL 是 Intranet 区域的一部分。 这样就可以确保已加入域的计算机在连接到企业网络后，向 Azure AD 自动发送 Kerberos 票证。
+在装有组策略管理工具的计算机上：
+
+1.  打开组策略管理工具
+2.  编辑要应用到所有用户的组策略。 例如默认的域策略。
+3.  导航到“用户配置\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，然后选择“区域分配列表的站点”，如下图所示。
+4.  启用策略，并在对话框中输入以下两项。
+
+        Value: `https://autologon.microsoftazuread-sso.com`  
+        Data: 1  
+        Value: `https://aadg.windows.net.nsatc.net`  
+        Data: 1
+
+5.  如下图所示：  
+![Intranet 区域](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
+
+6.  单击“确定”两次。
 
 ## <a name="configuring-federation-with-ad-fs"></a>配置与 AD FS 的联合
 只需单击几下鼠标，请能使用 Azure AD Connect 配置 AD FS。 配置之前需要做好以下准备。
@@ -210,7 +212,7 @@ ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 * 你想要使用的联合身份验证服务名称（例如 sts.contoso.com）的 SSL 证书
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>AD FS 配置先决条件
-若要使用 Azure AD Connect 配置 AD FS 场，请确保已在远程服务器上启用了 WinRM。 此外，请仔细查看[表 3 - Azure AD Connect 和联合服务器/WAP](../active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) 中列出的端口要求。
+若要使用 Azure AD Connect 配置 AD FS 场，请确保已在远程服务器上启用了 WinRM。 此外，请仔细查看[表 3 - Azure AD Connect 和联合服务器/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) 中列出的端口要求。
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>创建新的 AD FS 场或使用现有的 AD FS 场
 你可以使用现有的 AD FS 场，或选择创建新的 AD FS 场。 如果选择创建新的场，则需要提供 SSL 证书。 如果 SSL 证书受密码保护，系统会提示你输入密码。
@@ -273,7 +275,7 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 在此页上进行配置。
 
 > [!NOTE]
-> 在继续安装之前，如果配置了联合服务器，请确保已配置[联合服务器的名称解析](../active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)。
+> 在继续安装之前，如果配置了联合服务器，请确保已配置[联合服务器的名称解析](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)。
 >
 >
 
@@ -286,7 +288,7 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 
 在过渡模式下，可以对同步引擎进行所需的更改，并复查要导出的内容。 如果配置看起来正常，请再次运行安装向导，并禁用过渡模式。 现在，已将数据从此服务器导出到 Azure AD。 确保同时禁用其他服务器，以便只有一台服务器在主动导出。
 
-有关详细信息，请参阅[过渡模式](../active-directory-aadconnectsync-operations.md#staging-mode)。
+有关详细信息，请参阅[过渡模式](active-directory-aadconnectsync-operations.md#staging-mode)。
 
 ### <a name="verify-your-federation-configuration"></a>验证联合配置
 当你单击“验证”按钮时，Azure AD Connect 将为你验证 DNS 设置。
@@ -304,24 +306,16 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 ## <a name="next-steps"></a>后续步骤
 安装完成后，请注销并再次登录到 Windows，然后即可使用同步服务管理器或同步规则编辑器。
 
-安装 Azure AD Connect 后，可以[验证安装并分配许可证](../active-directory-aadconnect-whats-next.md)。
+安装 Azure AD Connect 后，可以[验证安装并分配许可证](active-directory-aadconnect-whats-next.md)。
 
-若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅[防止意外删除](../active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](../active-directory-aadconnect-health-sync.md)。
+若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅[防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md)。
 
-若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](../active-directory-aadconnectsync-feature-scheduler.md)。
+若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](active-directory-aadconnectsync-feature-scheduler.md)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](../active-directory-aadconnect.md)的详细信息。
-
-## <a name="related-documentation"></a>相关文档
-| 主题 |
-| --- | --- |
-| Azure AD Connect 概述 |
-| 使用快速设置安装 |
-| 从 DirSync 升级 |
-| 用于安装的帐户 |
+了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

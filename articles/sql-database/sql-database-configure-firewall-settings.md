@@ -1,6 +1,6 @@
 ---
-title: "配置 SQL 数据库服务器级防火墙规则 | Microsoft 文档"
-description: "了解如何配置防火墙以允许 IP 地址访问 Azure SQL 服务器。"
+title: "Azure 门户：Azure SQL 数据库服务器级防火墙规则 | Microsoft 文档"
+description: "了解如何使用 Azure 门户，针对访问 Azure SQL 服务器的 IP 地址配置服务器级防火墙规则。"
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 11/28/2016
 ms.author: rickbyh;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: a87bb18aeacbc980fc6859c7c83a102dce0263a8
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: 36938e642853d587cd28405f5e518ac9ac0697ac
 
 
 ---
@@ -51,7 +51,7 @@ ms.openlocfilehash: a87bb18aeacbc980fc6859c7c83a102dce0263a8
 ## <a name="next-steps"></a>后续步骤
 
 - 有关入门教程，请参阅 [SQL 数据库教程：创建服务器、服务器级防火墙规则、示例数据库、数据库级防火墙规则并连接到 SQL Server](sql-database-get-started.md)。
-- 有关安全性入门教程，请参阅[安全性入门](sql-database-get-started-security.md)
+- 有关安全性入门教程，请参阅[安全性入门](sql-database-control-access-sql-authentication-get-started.md)
 - 有关从开放源或第三方应用程序连接到 Azure SQL 数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 - 若要了解如何创建可以连接到数据库的其他用户，请参阅 [SQL 数据库身份验证和授权：授予访问权限](https://msdn.microsoft.com/library/azure/ee336235.aspx)。
 
@@ -64,6 +64,6 @@ ms.openlocfilehash: a87bb18aeacbc980fc6859c7c83a102dce0263a8
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 
