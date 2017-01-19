@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/28/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
 * 可以让用户使用其 Azure AD 帐户自动登录到 Deputy（单一登录）
 * 可在一个中心位置（即 Azure 经典门户）管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要配置 Azure AD 与 Deputy 的集成，需要具有以下项：
@@ -110,18 +110,18 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_04.png)
    
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
    
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com/exec/devapp/samlacs`。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com/exec/devapp/samlacs`。
    
-    c. 单击“下一步”。
+    c. 单击“资源组名称” 的 Azure 数据工厂。
 4. 如果要在“配置应用设置”对话框页上以“SP 发起的模式”配置应用程序，则单击“显示高级设置(可选)”，然后输入“登录 URL”，并单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_05.png)
    
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
    
-    b. 单击“下一步”。
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
    
    > [!NOTE]
    > Deputy 区域后缀是可选的，或者应当使用下列项之一：au | na | eu |as |la |af |an |ent-au |ent-na |ent-eu |ent-as | ent-la | ent-af | ent-an
@@ -131,7 +131,7 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_06.png)
    
-    a. 单击“下载证书”，然后将文件保存在计算机上。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
 6. 导航到以下 URL：https://(your-subdomain).deputy.com/exec/config/system_config。 转到“安全设置”并单击“编辑”。
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_004.png)
@@ -168,7 +168,7 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_09.png)
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_03.png)
@@ -179,7 +179,7 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_05.png)
    
-    a. 对于“用户类型”，选择“组织中的新用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
@@ -188,15 +188,15 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_06.png)
    
-   a. 在“名字”文本框中，键入“Britta”。  
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
    b. 在“姓氏”文本框中，键入“Simon”。
    
    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d. 在“角色”列表中，选择“用户”。
+   d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e. 单击“下一步”。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_07.png)
@@ -204,7 +204,7 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_08.png)
    
-    a. 写下“新密码”的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
    
     b. 单击“完成”。   
 
@@ -286,6 +286,6 @@ ms.openlocfilehash: f0db022251b16c2c3fe1ca93c25d8550a2b899d8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

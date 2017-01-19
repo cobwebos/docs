@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 12/07/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 26d0363d72147f1b72b77652ba9b638bfa260970
+ms.sourcegitcommit: f603a3c3304af3e64ef40f2cdef3745e3b2085b3
+ms.openlocfilehash: 508b1390bee1e61514e6e7499071d0503a051c10
 
 
 ---
@@ -53,20 +53,19 @@ ms.openlocfilehash: 26d0363d72147f1b72b77652ba9b638bfa260970
 ## <a name="next-steps"></a>后续步骤
 现在，你已生成了一个可以创建事件中心以及发送和接收数据的有效应用程序，接下来请继续学习以下方案：
 
-* 完整的[使用事件中心的完整示例应用程序][使用事件中心的完整示例应用程序]。
-* [使用事件中心扩大事件处理][使用事件中心扩大事件处理]示例。
+* [使用事件中心的完整示例应用程序][sample application that uses Event Hubs]。
+* [使用事件中心扩大事件处理][Scale out Event Processing with Event Hubs]示例。
 
 <!-- Images. -->
 [22]: ./media/event-hubs-csharp-storm-getstarted/receive-storm1.png
 
 <!-- Links -->
-[Azure 经典门户]: https://manage.windowsazure.com/
 [事件中心概述]: event-hubs-overview.md
-[使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[使用事件中心扩大事件处理]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

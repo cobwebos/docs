@@ -15,22 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2016
 ms.author: magoedte;paulomarquesc
 translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: 4a9886cf5ee80bafd4b36d0d7f6781aea9b36dd6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0d4098199cec948541eddba8fa88242606e2ec5c
 
 
 ---
 # <a name="azure-automation-scenario-using-json-formatted-tags-to-create-a-schedule-for-azure-vm-startup-and-shutdown"></a>Azure 自动化方案 - 使用 JSON 格式的标记创建 Azure VM 启动和关闭计划
-通常，客户想要计划虚拟机的启动和关闭，以减少订阅成本或支持业务和技术要求。  
+通常，客户想要计划虚拟机的启动和关闭，以减少订阅成本或支持业务和技术要求。
 
-下面的方案允许你使用称为 Schedule 的标记在 Azure 中的资源组级别或虚拟机级别设置 VM 的自动启动和关闭。 可以将此计划配置为从星期日至星期六，并可以配置启动时间和关闭时间。  
+下面的方案允许你使用称为 Schedule 的标记在 Azure 中的资源组级别或虚拟机级别设置 VM 的自动启动和关闭。 可以将此计划配置为从星期日至星期六，并可以配置启动时间和关闭时间。
 
 我们确实有一些现成可用的选项。 其中包括：
 
 * [虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)，具有可进行缩减或扩展的自动缩放设置。
 * [DevTest Labs](../devtest-lab/devtest-lab-overview.md) 服务，提供用于安排启动和关闭操作的内置功能。
 
-但是，这些选项仅支持特定的方案，不适用于基础结构即服务 (IaaS) VM。   
+但是，这些选项仅支持特定的方案，不适用于基础结构即服务 (IaaS) VM。
 
 当 Schedule 标记应用于资源组时，它也将应用于该资源组中的所有虚拟机。 如果计划还直接应用于 VM，则最后一个计划将按以下顺序优先：
 
@@ -67,7 +67,7 @@ ms.openlocfilehash: 4a9886cf5ee80bafd4b36d0d7f6781aea9b36dd6
 6. 对于计划的“开始时间”，请将开始时间设置为一小时增量。
 7. 选择“定期”，并为“重复执行间隔”选择“1 小时”。
 8. 验证“设置过期时间”是否设置为“否”，然后单击“创建”以保存新计划。
-9. 在“计划 Runbook”选项边栏选项卡上，选择“参数和运行设置”。 在 Test-ResourceSchedule“参数”边栏选项卡上，在“SubscriptionName”字段中输入订阅的名称。  这是该 Runbook 所需的唯一参数。  完成后，单击“确定”。  
+9. 在“计划 Runbook”选项边栏选项卡上，选择“参数和运行设置”。 在 Test-ResourceSchedule“参数”边栏选项卡上，在“SubscriptionName”字段中输入订阅的名称。  这是该 Runbook 所需的唯一参数。  完成后，单击“确定”。
 
 Runbook 计划完成后应如下所示：
 
@@ -78,43 +78,47 @@ Runbook 计划完成后应如下所示：
 
 Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么操作。 下面是有关如何设置解决方案格式的示例：
 
-    {
-       "TzId": "Eastern Standard Time",
-        "0": {  
-           "S": "11",
-           "E": "17"
-        },
-        "1": {
-           "S": "9",
-           "E": "19"
-        },
-        "2": {
-           "S": "9",
-           "E": "19"
-        },
-    }
+```json
+{
+    "TzId": "Eastern Standard Time",
+    "0": {
+        "S": "11",
+        "E": "17"
+    },
+    "1": {
+        "S": "9",
+        "E": "19"
+    },
+    "2": {
+        "S": "9",
+        "E": "19"
+    },
+}
+```
 
 下面是有关此结构的详细信息：
 
 1. 此 JSON 结构的格式已经过优化，以避开 Azure 中单个标记值的 256 个字符限制。
 2. *TzId* 表示虚拟机的时区。 可以在 PowerShell 会话中使用 TimeZoneInfo .NET 类 **[System.TimeZoneInfo]::GetSystemTimeZones()** 来获取此 ID。
 
-    ![PowerShell 中的 GetSystemTimeZones](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
+   ![PowerShell 中的 GetSystemTimeZones](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
 
    * 星期几使用数字值 0 到 6 表示。 0 值等于星期日。
    * 开始时间使用 **S** 属性来表示，它的值采用 24 小时格式。
    * 结束或关闭时间使用 **E** 属性来表示，它的值采用 24 小时格式。
 
-     如果 **S** 和 **E** 属性的值均为零 (0)，则虚拟机在评估时将保留其当前状态。   
+     如果 **S** 和 **E** 属性的值均为零 (0)，则虚拟机在评估时将保留其当前状态。
 3. 如果想要在一周中的某天跳过评估，请勿添加一周中该天的部分。 在以下示例中，将仅在星期一评估，并忽略其他星期日期：
 
-        {
-          "TzId": "Eastern Standard Time",
-           "1": {
-             "S": "11",
-             "E": "17"
-           }
+    ```json
+    {
+        "TzId": "Eastern Standard Time",
+        "1": {
+            "S": "11",
+            "E": "17"
         }
+    }
+    ```
 
 ## <a name="tag-resource-groups-or-vms"></a>标记资源组或 VM
 若要关闭 VM，需要标记 VM 或 VM 所在的资源组。 不会评估没有 Schedule 标记的虚拟机。 因此这些虚拟机不会启动，也不会关闭。
@@ -126,82 +130,110 @@ Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么
 
 1. 平展 JSON 字符串，并确认其没有任何空格。  JSON 字符串应如下所示：
 
-        {"TzId":"Eastern Standard Time","0":{"S":"11","E":"17"},"1":{"S":"9","E":"19"},"2": {"S":"9","E":"19"},"3":{"S":"9","E":"19"},"4":{"S":"9","E":"19"},"5":{"S":"9","E":"19"},"6":{"S":"11","E":"17"}}
+    ```json
+    {"TzId":"Eastern Standard Time","0":{"S":"11","E":"17"},"1":{"S":"9","E":"19"},"2": {"S":"9","E":"19"},"3":{"S":"9","E":"19"},"4":{"S":"9","E":"19"},"5":{"S":"9","E":"19"},"6":{"S":"11","E":"17"}}
+    ```
+
 2. 选择要应用此计划的 VM 或资源组旁边的“标记”图标。
 
-![VM 标记选项](./media/automation-scenario-start-stop-vm-wjson-tags/automation-vm-tag-option.png)    
+   ![VM 标记选项](./media/automation-scenario-start-stop-vm-wjson-tags/automation-vm-tag-option.png)
 
-1. 为标记定义以下键/值对。 在“键”字段中键入“Schedule”，然后在“值”字段中粘贴 JSON 字符串。 单击“保存” 。 新标记现在应在资源的标记列表中显示。
+3. 为标记定义以下键/值对。 在“键”字段中键入“Schedule”，然后在“值”字段中粘贴 JSON 字符串。 单击“保存” 。 新标记现在应在资源的标记列表中显示。
 
-![VM schedule 标记](./media/automation-scenario-start-stop-vm-wjson-tags/automation-vm-schedule-tag.png)
+   ![VM schedule 标记](./media/automation-scenario-start-stop-vm-wjson-tags/automation-vm-schedule-tag.png)
 
 ### <a name="tag-from-powershell"></a>从 PowerShell 进行标记
-所有导入的 Runbook 均在脚本的开头包含帮助信息，以说明如何直接从 PowerShell 执行 Runbook。 可以从 PowerShell 调用 Add-ScheduleResource 和 Update-ScheduleResource Runbook。 为此，请传递必需的参数，以便在门户外部的 VM 或资源组上创建或更新 Schedule 标记。  
+所有导入的 Runbook 均在脚本的开头包含帮助信息，以说明如何直接从 PowerShell 执行 Runbook。 可以从 PowerShell 调用 Add-ScheduleResource 和 Update-ScheduleResource Runbook。 为此，请传递必需的参数，以便在门户外部的 VM 或资源组上创建或更新 Schedule 标记。
 
-若要通过 PowerShell 创建、添加和删除标记，首先需要[为 Azure 设置 PowerShell 环境](../powershell-install-configure.md)。 完成设置后，可以继续执行以下步骤。
+若要通过 PowerShell 创建、添加和删除标记，首先需要[为 Azure 设置 PowerShell 环境](/powershell/azureps-cmdlets-docs)。 完成设置后，可以继续执行以下步骤。
 
 ### <a name="create-a-schedule-tag-with-powershell"></a>使用 PowerShell 创建 schedule 标记
-1. 打开 PowerShell 会话。 然后参考以下示例使用运行方式帐户进行身份验证并指定订阅：   
+1. 打开 PowerShell 会话。 然后参考以下示例使用运行方式帐户进行身份验证并指定订阅：
 
-        Conn = Get-AutomationConnection -Name AzureRunAsConnection
-        Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-        -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-        Select-AzureRmSubscription -SubscriptionName "MySubscription"
+    ```powershell
+    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+    Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+    Select-AzureRmSubscription -SubscriptionName "MySubscription"
+    ```
+
 2. 定义计划哈希表。 下面是应如何构造它的示例：
 
-        $schedule= @{ "TzId"="Eastern Standard Time"; "0"= @{"S"="11";"E"="17"};"1"= @{"S"="9";"E"="19"};"2"= @{"S"="9";"E"="19"};"3"= @{"S"="9";"E"="19"};"4"= @{"S"="9";"E"="19"};"5"= @{"S"="9";"E"="19"};"6"= @{"S"="11";"E"="17"}}
+    ```powershell
+    $schedule= @{ "TzId"="Eastern Standard Time"; "0"= @{"S"="11";"E"="17"};"1"= @{"S"="9";"E"="19"};"2"= @{"S"="9";"E"="19"};"3"= @{"S"="9";"E"="19"};"4"= @{"S"="9";"E"="19"};"5"= @{"S"="9";"E"="19"};"6"= @{"S"="11";"E"="17"}}
+    ```
+
 3. 定义 Runbook 所需的参数。 在以下示例中，我们以 VM 为目标：
 
-        $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"; `
-        "VmName"="VM01";"Schedule"=$schedule}
+    ```powershell
+    $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"; "VmName"="VM01";"Schedule"=$schedule}
+    ```
 
     若要标记资源组，请从 $params 哈希表中删除 *VMName* 参数，如下所示：
 
-        $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"; `
-        "Schedule"=$schedule}
+    ```powershell
+    $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"; "Schedule"=$schedule}
+    ```
+
 4. 结合以下参数运行 Add-ResourceSchedule Runbook，以创建 Schedule 标记：
 
-        Start-AzureRmAutomationRunbook -Name "Add-ResourceSchedule" -Parameters $params `
-        -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```powershell
+    Start-AzureRmAutomationRunbook -Name "Add-ResourceSchedule" -Parameters $params `
+    -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```
+
 5. 若要更新资源组或虚拟机标记，请结合以下参数执行 **Update-ResourceSchedule** Runbook：
 
-        Start-AzureRmAutomationRunbook -Name "Update-ResourceSchedule" -Parameters $params `
-        -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```powershell
+    Start-AzureRmAutomationRunbook -Name "Update-ResourceSchedule" -Parameters $params `
+    -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```
 
 ### <a name="remove-a-schedule-tag-with-powershell"></a>使用 PowerShell 删除 schedule 标记
 1. 打开 PowerShell 会话，然后运行以下命令来使用运行方式帐户进行身份验证并选择及指定订阅：
 
-        Conn = Get-AutomationConnection -Name AzureRunAsConnection
-        Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-        -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-        Select-AzureRmSubscription -SubscriptionName "MySubscription"
+    ```powershell
+    Conn = Get-AutomationConnection -Name AzureRunAsConnection
+    Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+    Select-AzureRmSubscription -SubscriptionName "MySubscription"
+    ```
+
 2. 定义 Runbook 所需的参数。 在以下示例中，我们以 VM 为目标：
 
-        $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01" `
-        ;"VmName"="VM01"}
+    ```powershell
+    $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01";"VmName"="VM01"}
+    ```
 
     若要从资源组中删除标记，请从 $params 哈希表中删除 *VMName* 参数，如下所示：
 
-        $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"}
+    ```powershell
+    $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"}
+    ```
+
 3. 执行 Remove-ResourceSchedule Runbook，以删除 Schedule 标记：
 
-        Start-AzureRmAutomationRunbook -Name "Remove-ResourceSchedule" -Parameters $params `
-        -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```powershell
+    Start-AzureRmAutomationRunbook -Name "Remove-ResourceSchedule" -Parameters $params `
+    -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```
+
 4. 若要更新资源组或虚拟机标记，请结合以下参数执行 Remove-ResourceSchedule Runbook：
 
-        Start-AzureRmAutomationRunbook -Name "Remove-ResourceSchedule" -Parameters $params `
-        -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```powershell
+    Start-AzureRmAutomationRunbook -Name "Remove-ResourceSchedule" -Parameters $params `
+    -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
+    ```
 
 > [!NOTE]
-> 建议你主动监视这些 Runbook（和虚拟机状态），以验证虚拟机是否正在相应地关闭和启动。  
->
+> 建议你主动监视这些 Runbook（和虚拟机状态），以验证虚拟机是否正在相应地关闭和启动。
 >
 
-若要在 Azure 门户中查看 Test-ResourceSchedule Runbook 作业的详细信息，请选择 Runbook 的“作业”磁贴。 作业摘要将显示输入参数和输出流，此外，还显示有关作业的一般信息以及发生的任何异常。  
+若要在 Azure 门户中查看 Test-ResourceSchedule Runbook 作业的详细信息，请选择 Runbook 的“作业”磁贴。 作业摘要将显示输入参数和输出流，此外，还显示有关作业的一般信息以及发生的任何异常。
 
 “作业摘要”包括来自输出、警告和错误流的消息。 选择“输出”磁贴可查看 Runbook 执行的详细结果。
 
-![Test-ResourceSchedule 输出](./media/automation-scenario-start-stop-vm-wjson-tags/automation-job-output.png)  
+![Test-ResourceSchedule 输出](./media/automation-scenario-start-stop-vm-wjson-tags/automation-job-output.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)。
@@ -212,6 +244,6 @@ Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

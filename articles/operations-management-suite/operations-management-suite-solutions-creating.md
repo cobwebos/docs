@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
-ms.openlocfilehash: 90c83d286047bcfa7563d75e380559154ca36f5b
+ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
+ms.openlocfilehash: 63b95e205a48e11a5a0717c07ad49cccc8da91b4
 
 
 ---
@@ -34,9 +34,9 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
 例如，管理解决方案可能包含 [Azure 自动化 Runbook](../automation/automation-intro.md)（可使用[计划](../automation/automation-schedules.md)将数据收集到 Log Analytics 存储库）和[视图](../log-analytics/log-analytics-view-designer.md)（可提供所收集数据的各种可视化）。  其他解决方案可能也使用同一计划。  作为管理解决方案作者，你将总共定义三种资源，但要指定在删除解决方案时，Runbook 和视图也应自动删除。    你还将定义该计划，但指定如果在其他解决方案仍在使用该解决方案时将其删除，它应保留在原位。
 
 ## <a name="management-solution-files"></a>管理解决方案文件
-管理解决方案作为[资源管理模板](../resource-manager-template-walkthrough.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何定义典型的解决方案资源的唯一详细信息。
+管理解决方案作为[资源管理模板](../resource-manager-template-walkthrough.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何定义典型的解决方案资源的唯一详细信息。
 
-管理解决方案文件的基本结构与如下所示的 [Resource Manager 模板](../resource-group-authoring-templates.md#template-format) 相同。  以下各节描述了解决方案中的顶级元素及其内容。  
+管理解决方案文件的基本结构与如下所示的 [Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md#template-format) 相同。  以下各节描述了解决方案中的顶级元素及其内容。  
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -48,7 +48,7 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
     }
 
 ## <a name="parameters"></a>parameters
-[parameters](../resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
+[parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
 用户通过 [Azure 应用商店](operations-management-suite-solutions.md#finding-and-installing-management-solutions)或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 安装管理解决方案时，系统会提示他们选择 [OMS 工作区和自动管理帐户](operations-management-suite-solutions-creating.md#oms-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
 
@@ -258,16 +258,16 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
 * [自动化资源](operations-management-suite-solutions-resources-automation.md)
 
 ## <a name="testing-a-management-solution"></a>测试管理解决方案
-在部署管理解决方案之前，建议你使用 [Test-AzureRmResourceGroupDeployment](../resource-group-template-deploy.md#deploy-with-powershell) 测试它。  这将验证你的解决方案文件，并帮助你在尝试部署它之前标识任何问题。
+在部署管理解决方案之前，建议你使用 [Test-AzureRmResourceGroupDeployment](../azure-resource-manager/resource-group-template-deploy.md#deploy) 测试它。  这将验证你的解决方案文件，并帮助你在尝试部署它之前标识任何问题。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)的详细信息。
+* 了解[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)的详细信息。
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。
 * 查看[将视图添加到管理解决方案](operations-management-suite-solutions-resources-views.md)的详细信息。
 * 查看[将自动化资源添加到管理解决方案](operations-management-suite-solutions-resources-automation.md)的详细信息。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -4,7 +4,7 @@ description: "本文提供了一个包含 Azure 安全服务与技术的特选�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: StevenPo
+manager: MBaldwin
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
 ms.service: security
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 12/02/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 354648461adf77ccf753cf24721ab7dd82b34d3c
-ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
+ms.sourcegitcommit: 41239b5164de0d51848431f45f45958af29a9706
+ms.openlocfilehash: 09e078c8f806b91f8a4de55bc3abbb271823c203
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
 
 我们知道在用户要评估云服务提供商技术选项时，有这样的列表会很有帮助，以便用户可以在适当的时候用来进行更深的研究。
 
-下面是我们初步提供的一个列表。 随着时间推移，此列表会像 Azure 那样不断增长变化。 此列表已进行分类，分类列表也会随时间的推移而增多。 请务必定期检查此页面，掌握我们最新的与安全相关的服务和技术。 
+下面是我们初步提供的一个列表。 随着时间推移，此列表会像 Azure 那样不断增长变化。 此列表已进行分类，分类列表也会随时间的推移而增多。 请务必定期检查此页面，掌握我们最新的与安全相关的服务和技术。
 
 ## <a name="azure-security---general"></a>Azure 安全 - 概况
 * [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)
@@ -57,7 +57,7 @@ ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
 * [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Azure Active Directory 域服务](https://azure.microsoft.com/documentation/services/active-directory-ds/)
+* [Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-overview.md)
 * [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>备份和灾难恢复
@@ -75,7 +75,6 @@ ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

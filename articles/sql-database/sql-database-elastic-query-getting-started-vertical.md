@@ -7,6 +7,7 @@ manager: jhubbard
 author: torsteng
 ms.assetid: e5b44b10-c432-4f96-b20e-08615ff4d5dd
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1906835deb4ca413af3a1df7cfb4a86cf26a9bf
+ms.sourcegitcommit: a877c17a503e58c49ae781aed61ed120d069c737
+ms.openlocfilehash: 41c26ebb4737eaf0d198e920892b19da7c389a66
 
 
 ---
@@ -97,7 +98,7 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 ## <a name="cost"></a>成本
 目前，弹性数据库查询功能包含在 Azure SQL 数据库的成本中。  
 
-有关定价信息，请参阅 [SQL 数据库定价](/pricing/details/sql-database)。 
+有关定价信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database)。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -107,6 +108,6 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2016
+ms.date: 12/09/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: badaba3fa8bfe458ff5efc6b618781e9fa2183d5
+ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
+ms.openlocfilehash: e73334373e9909069641cd4ad2c3280e51b5e2db
 
 
 ---
@@ -33,7 +33,7 @@ Service Fabric 群集由群集资源本身及众多其他 Azure 资源组成。 
 这是确保删除与你的群集相关联的所有资源（包括资源组）的最简方法。 可使用 PowerShell 或通过 Azure 门户删除资源组。 如果你的资源组中有与 Service Fabric 群集不相关的资源，你可以删除特定资源。
 
 ### <a name="delete-the-resource-group-using-azure-powershell"></a>使用 Azure PowerShell 删除资源组
-也可通过运行以下 Azure PowerShell cmdlet 删除资源组。 请确保计算机上已安装 Azure PowerShell 1.0 或更高版本。 如果尚未安装，请按照[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 中所述的步骤进行安装
+也可通过运行以下 Azure PowerShell cmdlet 删除资源组。 请确保计算机上已安装 Azure PowerShell 1.0 或更高版本。 如果尚未安装，请按照[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中所述的步骤进行安装
 
 打开 PowerShell 窗口并运行以下 PS cmdlet：
 
@@ -77,7 +77,7 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
     ![带标记的资源][TaggedResources]
 
 ### <a name="delete-the-resources-using-azure-powershell"></a>使用 Azure PowerShell 删除资源
-可通过运行以下 Azure PowerShell cmdlet 逐个删除资源。 请确保计算机上已安装 Azure PowerShell 1.0 或更高版本。 如果尚未安装，请按照[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 中所述的步骤进行安装
+可通过运行以下 Azure PowerShell cmdlet 逐个删除资源。 请确保计算机上已安装 Azure PowerShell 1.0 或更高版本。 如果尚未安装，请按照[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中所述的步骤进行安装
 
 打开 PowerShell 窗口并运行以下 PS cmdlet：
 
@@ -111,6 +111,6 @@ Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Mic
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

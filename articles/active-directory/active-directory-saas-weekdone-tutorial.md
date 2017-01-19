@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b7609a6353b32b9e4fbf05429d5d2ac22fd03f2c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
 
 
 ---
@@ -114,7 +114,7 @@ ms.openlocfilehash: b7609a6353b32b9e4fbf05429d5d2ac22fd03f2c
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure/metadata”**。
 
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
 1. 如果要在“配置应用设置”对话框页上以“SP 发起的模式”配置应用程序，则选择“显示高级设置(可选)”，然后输入“登录 URL”和“标识符”，并单击“下一步”。
    
@@ -124,14 +124,14 @@ ms.openlocfilehash: b7609a6353b32b9e4fbf05429d5d2ac22fd03f2c
    
     b. 在“标识符”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure/metadata”**。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 2. 在“在 Weekdone 处配置单一登录”页上，执行以下步骤并单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_05.png) 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将证书文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 3. 若要为应用程序配置 SSO，请通过 hello@weekdone.com. 联系 Weekdone 支持团队。将下载的证书文件附加到邮件中，与 Weekdone 团队共享元数据 URL（颁发者 URL、SAML SSO URL 和单一注销服务 URL），以便在他们那边设置 SSO。
 4. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
@@ -174,7 +174,7 @@ ms.openlocfilehash: b7609a6353b32b9e4fbf05429d5d2ac22fd03f2c
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
     ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_07.png) 
 8. 在“获取临时密码”对话框页面上，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_08.png) 
@@ -243,6 +243,6 @@ ms.openlocfilehash: b7609a6353b32b9e4fbf05429d5d2ac22fd03f2c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

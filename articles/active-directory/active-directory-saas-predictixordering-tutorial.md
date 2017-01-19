@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b8eab5dd14cf6e3e29cfa9fc62d4a1101a17bec2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6e3d3151bc45f346467781543262052a05018c1e
 
 
 ---
@@ -170,7 +170,7 @@ ms.openlocfilehash: b8eab5dd14cf6e3e29cfa9fc62d4a1101a17bec2
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-predictix-ordering-tutorial/create_aaduser_07.png) 
@@ -235,6 +235,6 @@ ms.openlocfilehash: b8eab5dd14cf6e3e29cfa9fc62d4a1101a17bec2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

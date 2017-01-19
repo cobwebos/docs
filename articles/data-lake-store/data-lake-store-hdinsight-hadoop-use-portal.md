@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 3a9a4df2d260e8eebd8621b22efdb2927e9f5ecf
-ms.openlocfilehash: a4fb47f9f517d66cf0ff9fde039d7bfd8edc29eb
+ms.sourcegitcommit: 015ca80c952110d3289888ed82d7a543be29950c
+ms.openlocfilehash: cfe09bf2f0c8192b93e1e4baec31ff88ddbd031c
 
 
 ---
@@ -50,7 +50,7 @@ ms.openlocfilehash: a4fb47f9f517d66cf0ff9fde039d7bfd8edc29eb
 
 * **Azure Active Directory 服务主体**。 本教程中的步骤用于指导如何在 Azure AD 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 Azure AD 管理员可以跳过此先决条件，继续阅读本教程。
 
-    **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述。
+    **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述。
 
 ## <a name="do-you-learn-faster-with-videos"></a>通过视频学得更快？
 观看以下视频，了解如何设置具有 Data Lake Store 访问权限的 HDInsight 群集。
@@ -65,17 +65,17 @@ ms.openlocfilehash: a4fb47f9f517d66cf0ff9fde039d7bfd8edc29eb
 
 2. 请按照[在 HDInsight 中创建 Hadoop群集](../hdinsight/hdinsight-provision-clusters.md)中的步骤开始设置 HDInsight 群集。
 
-3. 在“数据源”边栏选项卡上，指定是否将 Azure 存储 (WASB) 或 Data Lake Store 作为默认存储。 如果将 Azure Data Lake Store 用作默认存储，请跳到下一步。 
+3. 在“数据源”边栏选项卡上，指定是否将 Azure 存储 (WASB) 或 Data Lake Store 作为默认存储。 如果将 Azure Data Lake Store 用作默认存储，请跳到下一步。
 
     如果将 Azure 存储 Blob 用作默认存储，则对于“主要存储类型”，请单击“Azure 存储”。 指定存储帐户和存储容器的详细信息，将“位置”指定为“美国东部 2”，然后单击“群集 AAD 标识”。
-    
+
     ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "Add service principal to HDInsight cluster")
 
 
 4. 如果将 Azure Data Lake Store 用作默认存储，则对于“主要存储类型”，请单击“Data Lake Store”。 选择已存在的 Data Lake Store 帐户，提供根文件夹路径，将在此路径下存储特定群集的文件（请参阅以下说明），将“位置”指定为“美国东部 2”，然后单击“群集 AAD 标识”。 可将此选项仅用于 HDInsight 3.5 群集。 在 HDInsight 3.5 群集内，此选项不可用于 HBase 群集类型。
 
     在以下屏幕截图中，根文件夹路径是 /clusters/myhdiadlcluster，其中 **myhdiadlcluster** 是正在创建的群集的名称。 在这种情况下，请确保 Data Lake Store 帐户中已存在 **/clusters** 文件夹。 **myhdiadlcluster** 文件夹将在群集创建过程中创建。 同样，如果根路径设置为 /hdinsight/clusters/data/myhdiadlcluter，必须确保 Data Lake Store 帐户中已存在 **/hdinsight/clusters/data/**。
-        
+
     ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Add service principal to HDInsight cluster")
 
 5. 在“群集 AAD 标识”边栏选项卡上，可选择现有服务主体或创建新服务主体。 如果要使用现有服务主体，请跳到下一步。
@@ -149,6 +149,6 @@ Spark 群集可用于对存储在 Data Lake Store 中的数据运行 Spark 作�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

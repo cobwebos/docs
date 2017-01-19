@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 1f5bbbe4285c1635138d40af25cd0cb1d0177300
-ms.openlocfilehash: 76d0ba4334d647008b4b1508d231059d21d0f128
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a3380731657d151b8c6337764069890420927dfc
 
 
 ---
@@ -43,7 +43,7 @@ Azure Analysis Services 与用户熟悉的同一个 SQL Server 2016 Analysis Ser
 ## <a name="use-the-tools-you-already-know"></a>使用已经熟悉的工具
 ![BI 开发人员工具](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-可使用与 SQL Server Analysis Services 相同的工具创建 Azure Analysis Services 数据模型。 使用最新版本的 [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) 或使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 中的 [Azure Powershell](../powershell-install-configure.md) 和 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 模板创作和部署表格模型。
+可使用与 SQL Server Analysis Services 相同的工具创建 Azure Analysis Services 数据模型。 使用最新版本的 [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) 或使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 中的 [Azure Powershell](/powershell/azureps-cmdlets-docs) 和 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 模板创作和部署表格模型。
 
 ## <a name="connect-to-data-sources"></a>连接到数据源
 部署到 Azure 中服务器的数据模型支持连接到组织或云中的本地数据源。 为混合 BI 解决方案合并来自本地和云数据源的数据。
@@ -123,6 +123,6 @@ Azure Analysis Services 中的数据模型可能需要不同的数据提供程�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

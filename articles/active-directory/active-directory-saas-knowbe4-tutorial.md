@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 49767ad0e8fb9222c088217f1c349ed8a1d4f67e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
 
 
 ---
@@ -148,7 +148,7 @@ ms.openlocfilehash: 49767ad0e8fb9222c088217f1c349ed8a1d4f67e
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_06.png) 
@@ -161,7 +161,7 @@ ms.openlocfilehash: 49767ad0e8fb9222c088217f1c349ed8a1d4f67e
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_07.png) 
@@ -232,6 +232,6 @@ ms.openlocfilehash: 49767ad0e8fb9222c088217f1c349ed8a1d4f67e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

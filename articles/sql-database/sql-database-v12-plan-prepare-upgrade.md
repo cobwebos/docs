@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 8020f904-ad27-40c5-8c59-bdf2e690f77d
 ms.service: sql-database
+ms.custom: V11
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 1e72343e419061c5059d27a6fae2d578d2ba6780
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: 237aa26a40c34d8fb511881604cb26bf9380322e
 
 
 ---
@@ -177,10 +178,10 @@ Stop- cmdlet 表示取消，而不是暂停。 你无法在中途恢复升级，
 * Microsoft Azure [预览版功能](https://azure.microsoft.com/services/preview/)
 
 <!--Anchors-->
-[副标题 1]: #subheading-1
+[Subheading 1]: #subheading-1
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

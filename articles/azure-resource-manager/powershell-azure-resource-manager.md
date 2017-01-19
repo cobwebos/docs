@@ -15,21 +15,19 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 83f2818873e2716193004bf1cc2b9da4da360f17
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 14419f36a9404202d6238d5825fb1ae77d46038a
 
 
 ---
 # <a name="using-azure-powershell-with-azure-resource-manager"></a>将 Azure PowerShell 与 Azure 资源管理器配合使用
 > [!div class="op_single_selector"]
-> * [门户](resource-group-portal.md) 
+> * [门户](resource-group-portal.md)
 > * [Azure CLI](xplat-cli-azure-resource-manager.md)
 > * [Azure PowerShell](powershell-azure-resource-manager.md)
 > * [REST API](resource-manager-rest-api.md)
-> 
-> 
 
-Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 首先应构想整个解决方案，而不是创建和管理博客、照片库、SharePoint 门户或 wiki 等各个资源。 可利用模板（即解决方案的声明性表示形式）定义包含支持解决方案时所需资源的资源组。 然后，可以将该资源组作为逻辑单元进行部署和管理。 
+Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 首先应构想整个解决方案，而不是创建和管理博客、照片库、SharePoint 门户或 wiki 等各个资源。 可利用模板（即解决方案的声明性表示形式）定义包含支持解决方案时所需资源的资源组。 然后，可以将该资源组作为逻辑单元进行部署和管理。
 
 在本教程中，你将了解如何将 Azure PowerShell 与 Azure 资源管理器配合使用。 其中会引导你完成部署解决方案，以及使用该解决方案的过程。 你将使用 Azure PowerShell 和 Resource Manager 模板来部署：
 
@@ -38,14 +36,14 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 * 防火墙规则 - 允许 Web 应用连接到数据库
 * App Service 计划 - 用于定义 Web 应用的功能和成本
 * 网站 - 用于运行 Web 应用
-* Web 配置 - 用于存储数据库的连接字符串 
+* Web 配置 - 用于存储数据库的连接字符串
 * 警报规则 - 用于监视性能和错误
 * App Insights - 用于自动缩放设置
 
-若要获取 Azure PowerShell ，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+若要获取 Azure PowerShell ，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="get-help-for-cmdlets"></a>获取有关 cmdlet 的帮助
-若要获得您在此教程中看到的任何 cmdlet 的详细帮助，请使用 Get-Help cmdlet。 
+若要获得您在此教程中看到的任何 cmdlet 的详细帮助，请使用 Get-Help cmdlet。
 
     Get-Help <cmdlet-name> -Detailed
 
@@ -53,7 +51,7 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
     Get-Help Get-AzureRmResource -Detailed
 
-若要获取带有帮助摘要的资源模块中的 cmdlet 列表，请键入： 
+若要获取带有帮助摘要的资源模块中的 cmdlet 列表，请键入：
 
     Get-Command -Module AzureRM.Resources | Get-Help | Format-Table Name, Synopsis
 
@@ -78,21 +76,21 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
     Add-AzureRmAccount
 
-该 cmdlet 将提示您提供您的 Azure 帐户的登录凭据。 登录后它会下载你的帐户设置，以便这些信息可供 Azure PowerShell 使用。 
+该 cmdlet 将提示您提供您的 Azure 帐户的登录凭据。 登录后它会下载你的帐户设置，以便这些信息可供 Azure PowerShell 使用。
 
-帐户设置会过期，因此您需要不时刷新它们。 若要刷新帐户设置，请再次运行 **Add-AzureRmAccount**。 
+帐户设置会过期，因此您需要不时刷新它们。 若要刷新帐户设置，请再次运行 **Add-AzureRmAccount**。
 
 > [!NOTE]
-> Resource Manager 模块要求使用 Add-AzureRmAccount。 一个发布设置文件是不够的。     
-> 
-> 
+> Resource Manager 模块要求使用 Add-AzureRmAccount。 一个发布设置文件是不够的。
+>
+>
 
 如果具有多个订阅，请提供要通过 **Set-AzureRmContext** cmdlet 用于部署的订阅 ID。
 
     Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ## <a name="create-a-resource-group"></a>创建资源组
-必须先创建将包含资源的资源组，才能向订阅部署任何资源。 
+必须先创建将包含资源的资源组，才能向订阅部署任何资源。
 
 请使用 **New-AzureRmResourceGroup** cmdlet 创建资源组。
 
@@ -115,9 +113,10 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
 在创建资源组和模板后，可以将模板中定义的基础结构部署到资源组。 通过 **New-AzureRmResourceGroupDeployment** cmdlet 部署。 该模板指定了我们要使用的许多默认值，因此你不需要提供这些参数的值。 基本语法如下：
 
-    New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -administratorLogin exampleadmin -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json 
+    New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -administratorLogin exampleadmin -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
-指定资源组及模板的位置。 如果模板为本地文件，请使用 **-TemplateFile** 参数并指定模板路径。 可将 **-Mode** 参数设置为 **Incremental** 或 **Complete**。 默认情况下，Resource Manager 会在部署期间执行增量更新；因此，执行**增量**更新时无需设置 **-Mode**。 若要了解这些部署模式之间的区别，请参阅[通过 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)。 
+指定资源组及模板的位置。 如果模板为本地文件，请使用 **-TemplateFile** 参数并指定模板路径。 可将 **-Mode** 参数设置为 **Incremental** 或 **Complete**。 默认情况下，Resource Manager 会在部署期间执行增量更新；因此，执行**增量**更新时无需设置 **-Mode**。
+若要了解这些部署模式之间的区别，请参阅[通过 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)。
 
 ### <a name="dynamic-template-parameters"></a>动态模板参数
 如果你熟悉 PowerShell 的话，就知道你可以通过键入减号 (-) 并按 TAB 键来切换 cmdlet 的可用参数。 对于模板中定义的参数，同样也可以使用此功能。 只要你键入模板名称，该 cmdlet 就会提取该模板、对其进行分析并将模板参数动态地添加到该命令。 这使指定模板参数值变得非常轻松。
@@ -162,42 +161,40 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
     DeploymentDebugLogLevel :
 
-在几个步骤中，我们将创建和部署复杂网站所需的资源。 
+在几个步骤中，我们将创建和部署复杂网站所需的资源。
 
 ### <a name="log-debug-information"></a>日志调试信息
 模板运行期间，可在运行 **New-AzureRmResourceGroupDeployment** 时指定 **-DeploymentDebugLogLevel** 参数，记录有关请求和响应的额外信息。 此信息可帮助排查部署错误。 默认值为“无”，即不记录任何请求或响应内容。 可指定记录请求和/或响应中的内容。  若要深入了解如何排查部署问题和记录调试信息，请参阅 [使用 Azure PowerShell 排除资源组部署问题](resource-manager-troubleshoot-deployments-powershell.md)。 以下示例将记录部署的请求内容和响应内容。
 
-    New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -DeploymentDebugLogLevel All -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json 
+    New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -DeploymentDebugLogLevel All -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 > [!NOTE]
-> 设置 DeploymentDebugLogLevel 参数时，请仔细考虑在部署期间传入的信息类型。 通过记录有关请求或响应的信息，可能会公开通过部署操作检索的机密数据。 
-> 
-> 
+> 设置 DeploymentDebugLogLevel 参数时，请仔细考虑在部署期间传入的信息类型。 通过记录有关请求或响应的信息，可能会公开通过部署操作检索的机密数据。
 
 ## <a name="get-information-about-your-resource-groups"></a>获取有关资源组的信息
 创建资源组之后，可以使用资源管理器模块中的 cmdlet 来管理该资源组。
 
 * 若要获取订阅中的资源组，请使用 **Get-AzureRmResourceGroup** cmdlet：
-  
+
         Get-AzureRmResourceGroup -ResourceGroupName TestRG1
-  
+
     这将返回以下信息：
-  
+
         ResourceGroupName : TestRG1
         Location          : westus
         ProvisioningState : Succeeded
         Tags              :
         ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG
-  
+
         ...
-  
+
     如果未指定资源组名称，该 cmdlet 将返回订阅中的所有资源组。
 * 若要获取资源组中的资源，请使用 **Find-AzureRmResource** cmdlet 及其 **ResourceGroupNameContains** 参数。 若不带参数，Find-AzureRmResource 会获取 Azure 订阅中的所有资源。
-  
+
         Find-AzureRmResource -ResourceGroupNameContains TestRG1
-  
+
      将返回采用以下格式的资源列表：
-  
+
         Name              : sqlservers5wdai7p2k2g4
         ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Sql/servers/sqlservers5wdai7p2k2g4
         ResourceName      : sqlservers5wdai7p2k2g4
@@ -209,9 +206,9 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
         Tags              : {System.Collections.Hashtable}
         ...
 * 可以使用标记以逻辑方式组织订阅中的资源，并使用 **Find-AzureRmResource** 和 **Find-AzureRmResourceGroup** cmdlet 检索资源。
-  
+
         Find-AzureRmResource -TagName displayName -TagValue Website
-  
+
         Name              : webSites5wdai7p2k2g4
         ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Web/sites/webSites5wdai7p2k2g4
         ResourceName      : webSites5wdai7p2k2g4
@@ -219,7 +216,7 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
         ResourceGroupName : TestRG1
         Location          : westus
         SubscriptionId    : {guid}
-  
+
       There is much more you can do with tags. For more information, see [Using tags to organize your Azure resources](resource-group-using-tags.md).
 
 ## <a name="add-to-a-resource-group"></a>添加到资源组
@@ -242,8 +239,7 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
 > [!NOTE]
 > 导出模板功能处于预览状态，并非所有的资源类型目前都支持导出模板。 尝试导出模板时，你可能会看到一个错误，指出未导出某些资源。 如果需要，你可以在下载模板之后，在模板中手动定义这些资源。
-> 
-> 
+
 
 ### <a name="export-template-from-resource-group"></a>从资源组导出模板
 若要查看资源组的模板，请运行 **Export-AzureRmResourceGroup** cmdlet。
@@ -257,16 +253,16 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
 ## <a name="delete-resources-or-resource-group"></a>删除资源或资源组
 * 若要从资源组中删除资源，请使用 **Remove-AzureRmResource** cmdlet。 此 cmdlet 将删除该资源，但不会删除该资源组。
-  
+
     此命令从 TestRG1 资源组中删除 TestSite 网站。
-  
+
         Remove-AzureRmResource -Name TestSite -ResourceGroupName TestRG1 -ResourceType "Microsoft.Web/sites" -ApiVersion 2015-08-01
 * 若要删除资源组，请使用 **Remove-AzureRmResourceGroup** cmdlet。 此 cmdlet 将删除资源组及其资源。
-  
+
         Remove-AzureRmResourceGroup -Name TestRG1
-  
+
     系统将请求你确认删除。
-  
+
         Confirm
         Are you sure you want to remove resource group 'TestRG1'
         [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -325,7 +321,7 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
     #******************************************************************************
     # Script body
-    # Execution begins here 
+    # Execution begins here
     #******************************************************************************
     $ErrorActionPreference = "Stop"
 
@@ -370,6 +366,6 @@ Azure Resource Manager 采用现代方法来控制 Azure 资源生命周期。 �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
