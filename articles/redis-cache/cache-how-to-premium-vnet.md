@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 5f7a4e561a5668804f177ff2186a0ffc02ccbfa1
-ms.openlocfilehash: 5c141e77e00d07dac15c0eafed78ae81d39fb4af
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: a3e1472ed737039157a4593404dce371c57906da
 
 
 ---
@@ -168,6 +168,6 @@ Azure Redis 缓存高级层功能包括群集、持久性和虚拟网络 (VNet) 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: f73bd0a6563f8411877b55182b01f2e3e42c883f
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 618d067bf3b4ab279c7d4fcc72454fe4e69d0364
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: f73bd0a6563f8411877b55182b01f2e3e42c883f
 
 在 Microsoft Azure 登录对话框中指定 Azure 帐户的电子邮件地址及其密码。
 
-或者，可以[使用服务主体采用非交互方式登录](../resource-group-authenticate-service-principal.md)。
+或者，可以[使用服务主体采用非交互方式登录](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
 如果你有多个 Azure 订阅，则需要设置你的 Azure 订阅。 若要查看当前订阅的列表，请运行以下命令。
 
@@ -142,6 +142,6 @@ ms.openlocfilehash: f73bd0a6563f8411877b55182b01f2e3e42c883f
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -4,7 +4,7 @@ description: "对应用程序连接到 SQL 数据库时发生的“服务器上�
 services: sql-database
 documentationcenter: 
 author: dalechen
-manager: felixwu
+manager: cshepard
 editor: 
 keywords: "服务器上的数据库当前不可用, 连接到 SQL 数据库"
 ms.assetid: f61999ac-d46b-448a-8830-3b04978d84ec
@@ -14,7 +14,7 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f

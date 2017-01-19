@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b953b3e2d7518a4bf7af05ee08d33dec3d75005b
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: 8669d9526da27c3b7faebb7b4d3a9128233508f6
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: b953b3e2d7518a4bf7af05ee08d33dec3d75005b
 
 目前，对订阅的同一区域中的所有缓存共享诊断设置。 更新区域中的一个缓存会影响该区域中的所有其他缓存。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 有关完整的模板，请参阅 [Redis 缓存模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
 
@@ -135,6 +135,6 @@ Redis 缓存的位置。 为获得最佳性能，请使用要与缓存配合使�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

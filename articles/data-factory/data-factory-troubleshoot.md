@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/15/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: febc8fef864f88fa07accf91efc9b87727a48b32
-ms.openlocfilehash: 4d4d49801c84fa585b5e54bb16a9604a4891acc9
+ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
+ms.openlocfilehash: d4589b5e9ca7f08b2152605dc26a96d4b5d656c8
 
 
 ---
@@ -29,9 +29,15 @@ ms.openlocfilehash: 4d4d49801c84fa585b5e54bb16a9604a4891acc9
 
 1. 启动 Azure PowerShell。
 2. 使用以下命令登录到 Azure 帐户。
-        Login-AzureRmAccount
+
+    ```powershell
+    Login-AzureRmAccount
+    ```
 3. 运行以下命令来注册 Azure 数据工厂提供程序。
-        Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    
+    ```powershell        
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>问题：运行数据工厂 cmdlet 时出现未授权错误
 你可能未在 Azure PowerShell 中使用正确的 Azure 帐户或订阅。 使用以下 cmdlet 选择要在 Azure PowerShell 中使用的正确 Azure 帐户和订阅。
@@ -60,29 +66,31 @@ ms.openlocfilehash: 4d4d49801c84fa585b5e54bb16a9604a4891acc9
 
 有关此属性的更多详细信息，请参阅[数据集](data-factory-create-datasets.md)一文。
 
-    {
-      "name": "CustomerTable",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "MyLinkedService",
-        "typeProperties": {
-          "folderPath": "MyContainer/MySubFolder/",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "rowDelimiter": ";"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          }
-        }
+```json
+{
+  "name": "CustomerTable",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "MyLinkedService",
+    "typeProperties": {
+      "folderPath": "MyContainer/MySubFolder/",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "rowDelimiter": ";"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
       }
     }
+  }
+}
+```
 
 若要解决该错误，请将 **external** 属性和可选的 **externalData** 节添加到输入表中的 JSON 定义中，然后重新创建表。
 
@@ -92,7 +100,9 @@ ms.openlocfilehash: 4d4d49801c84fa585b5e54bb16a9604a4891acc9
 ### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>问题：按需 HDInsight 预配失败
 使用 HDInsightOnDemand 类型的链接服务时，需指定指向 Azure Blob 存储的 linkedServiceName。 数据工厂服务使用此存储来存储按需 HDInsight 群集的日志和支持文件。  有时，预配按需 HDInsight 群集会失败并出现以下错误：
 
-        Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+```
+Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+```
 
 此错误通常表示 linkedServiceName 中指定的存储帐户的位置，不是预配 HDInsight 时所在的同一个数据中心位置。 示例：如果数据工厂在美国西部，而 Azure 存储在美国东部，则美国西部的按需预配会失败。
 
@@ -143,6 +153,6 @@ ms.openlocfilehash: 4d4d49801c84fa585b5e54bb16a9604a4891acc9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

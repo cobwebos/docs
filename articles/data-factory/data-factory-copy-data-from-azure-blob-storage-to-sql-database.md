@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 01/05/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 0c5ee903840ee10bf296038e10da11662a9e0fbb
-ms.openlocfilehash: 98a93b683da1bfdc28be1f6e21174f814dd65220
+ms.sourcegitcommit: 19436167ad8e82f47b147efc65c635d9bf2d2ae5
+ms.openlocfilehash: 0072e1db4758447445b97021e1624c2210fbd0a7
 
 
 ---
@@ -122,10 +122,9 @@ ms.openlocfilehash: 98a93b683da1bfdc28be1f6e21174f814dd65220
 * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-* [复制向导](data-factory-copy-data-wizard-tutorial.md)
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

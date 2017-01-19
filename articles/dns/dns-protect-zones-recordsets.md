@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: 87ad160e23659dbae8d949346ad0f6c5fa20d188
+ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
+ms.openlocfilehash: f5865e07df4e1f253079ac1c8b257e2525da5ef3
 
 ---
 
@@ -23,7 +23,7 @@ ms.openlocfilehash: 87ad160e23659dbae8d949346ad0f6c5fa20d188
 
 DNS 区域和记录是关键资源。 删除 DNS 区域或单个 DNS 记录都可能导致总服务中断。  因此，重要的是保护关键的 DNS 区域和记录，防止未经授权或意外的更改。
 
-本文介绍了 Azure DNS 如何保护 DNS 区域和记录，避免受到此类更改。  我们应用了 Azure Resource Manager 提供的两个强大的安全功能：[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)和[资源锁](../resource-group-lock-resources.md)。
+本文介绍了 Azure DNS 如何保护 DNS 区域和记录，避免受到此类更改。  我们应用了 Azure Resource Manager 提供的两个强大的安全功能：[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)和[资源锁](../azure-resource-manager/resource-group-lock-resources.md)。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
@@ -161,7 +161,7 @@ azure role create -inputfile <file path>
 
 ## <a name="resource-locks"></a>资源锁
 
-除支持 RBAC 外，Azure Resource Manager 还支持另一种类型的安全控制，即“锁定”资源的能力。 其中 RBAC 规则用于控制特定用户和组的操作，而资源锁将应用于资源且对所有用户和角色都有效。 有关详细信息，请参阅 [使用 Azure Resource Manager 锁定资源](../resource-group-lock-resources.md)。
+除支持 RBAC 外，Azure Resource Manager 还支持另一种类型的安全控制，即“锁定”资源的能力。 其中 RBAC 规则用于控制特定用户和组的操作，而资源锁将应用于资源且对所有用户和角色都有效。 有关详细信息，请参阅 [使用 Azure Resource Manager 锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
 
 有两种类型的资源锁：**DoNotDelete** 和 **ReadOnly**。 它们都可应用到 DNS 区域或单个记录集。  以下各节描述了几种常见情况以及如何使用资源锁支持它们。
 
@@ -200,7 +200,7 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceN
 
 在 Azure DNS 中删除区域时，也将删除区域中的所有记录集。  此操作不可撤消。  意外删除关键区域有可能产生巨大的业务影响。  因此，防止区域意外删除是非常重要的。
 
-在该区域应用 DoNotDelete 锁即可防止区域被删除。  但是由于锁由子资源继承，它还将阻止删除区域中的任何记录集（这可能是不希望发生的）。  此外，如上面的说明中所述，由于记录仍可从现有记录集中删除，因此它也无效。
+在该区域应用 DoNotDelete 锁即可防止区域被删除。  但是由于锁由子资源继承，它还将阻止删除区域中的任何记录集（这可能是不希望发生的）。  此外，如上面的说明中所述，由于记录仍可从现有记录集中删除，因此它也不起作用。
 
 作为替代方法，请考虑将 DoNotDelete 锁应用于该区域的记录集，例如 SOA 记录集。  由于在不删除记录集的情况下不能删除区域，因此这可在防止区域删除的同时允许随意修改区域内的记录集。 如果尝试删除区域，Azure Resource Manager 检测到此操作还将删除 SOA 记录集，由于已锁定 SOA，因此会阻止调用。  而不会删除任何记录集。
 
@@ -220,12 +220,12 @@ New-AzureRmResourceLock -LockLevel DoNotDelete -LockName <lock name> -ResourceNa
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用 RBAC 的详细信息，请参阅 [Azure 门户中的访问管理入门](../active-directory/role-based-access-control-what-is.md)。
-* 有关使用资源锁的详细信息，请参阅[使用 Azure Resource Manager 锁定资源](../resource-group-lock-resources.md)。
+* 有关使用资源锁的详细信息，请参阅[使用 Azure Resource Manager 锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
 * 有关保护 Azure 资源的详细信息，请参阅 [Azure Resource Manager 的安全注意事项](../best-practices-resource-manager-security.md)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

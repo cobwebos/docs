@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2094b6709110b519ac6532181cce56b7d00b5db0
+ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
+ms.openlocfilehash: e8a092bc398e314a111973b6978012909aedc16e
 
 
 ---
@@ -29,14 +29,14 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 应用程序可通过多种方式与 Azure AD 集成。  请根据你的应用程序，利用其中的一个或多个方案。
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>支持使用 Azure AD 作为登录应用程序的方式
-**减少登录阻碍并降低支持成本。** 如果使用 Azure AD 登录你的应用程序，你的用户不需要记住更多的名称和密码。  作为开发人员，你可以减少要存储和保护的密码。  无需重置忘记的密码，单凭这一点就能节省不少的精力。  使用 Azure AD 可以登录世界上最热门的一些云应用程序，包括 Office 365 和 Microsoft Azure。  Azure AD 包含了来自数百万家组织的几亿个用户，你的用户很可能已经登录到了 Azure AD。  深入了解如何[添加 Azure AD 登录支持](../active-directory-authentication-scenarios.md)。
+**减少登录阻碍并降低支持成本。** 如果使用 Azure AD 登录你的应用程序，你的用户不需要记住更多的名称和密码。  作为开发人员，你可以减少要存储和保护的密码。  无需重置忘记的密码，单凭这一点就能节省不少的精力。  使用 Azure AD 可以登录世界上最热门的一些云应用程序，包括 Office 365 和 Microsoft Azure。  Azure AD 包含了来自数百万家组织的几亿个用户，你的用户很可能已经登录到了 Azure AD。  深入了解如何[添加 Azure AD 登录支持](active-directory-authentication-scenarios.md)。
 
 **简化应用程序的注册过程。**  在注册你的应用程序期间，Azure AD 可以发送有关用户的基本信息，以便你可以预先填充注册表单，或者完全清除表单。  用户可以使用其 Azure AD 帐户，通过社交媒体和移动应用程序中常见的许可体验注册你的应用程序。  任何用户都可以注册和登录与 Azure AD 集成的应用程序，而无需 IT 人员的参与。  深入了解如何[注册应用程序进行 Azure AD 帐户登录](../../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>浏览用户，管理用户设置，以及控制对应用程序的访问
-**浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用 Graph API 来帮助用户搜索和浏览其组织中的其他人员，而无需键入电子邮件地址。  用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。  深入了解[图形 API](../active-directory-graph-api.md)。
+**浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用 Graph API 来帮助用户搜索和浏览其组织中的其他人员，而无需键入电子邮件地址。  用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。  深入了解[图形 API](active-directory-graph-api.md)。
 
-**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含你的客户已用于电子邮件分发和管理访问权限的组。  使用 Graph API 时，可以重复使用这些组，而无需要求客户在应用程序中创建并管理一系列不同的组。  还可以在登录令牌中向应用程序发送组信息。  深入了解[图形 API](../active-directory-graph-api.md)。
+**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含你的客户已用于电子邮件分发和管理访问权限的组。  使用 Graph API 时，可以重复使用这些组，而无需要求客户在应用程序中创建并管理一系列不同的组。  还可以在登录令牌中向应用程序发送组信息。  深入了解[图形 API](active-directory-graph-api.md)。
 
 **利用 Azure AD 控制有权访问你应用程序的用户。**  Azure AD 中的管理员和应用程序所有者可以将应用程序访问权限分配给特定的用户和组。  使用 Graph API，可以读取此列表并使用它来控制资源的设置和取消设置，以及应用程序中的访问权限。
 
@@ -69,21 +69,21 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 **条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。  可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。  深入了解 [Azure Active Directory 条件访问](../active-directory-conditional-access.md)。
 
 ### <a name="easy-development"></a>易于开发
-**行业标准协议。**  Microsoft 承诺支持行业标准。  Azure AD 支持 SAML 2.0、OpenID Connect 1.0、OAuth 2.0 和 WS-Federation 1.2 身份验证协议。  Graph API 符合 OData 4.0 规范。  如果你的应用程序已支持使用 SAML 2.0 或 OpenID Connect 1.0 进行联合登录，则可以直接添加对 Azure AD 的支持。  深入了解 [Azure AD 支持的身份验证协议](../active-directory-authentication-protocols.md)。
+**行业标准协议。**  Microsoft 承诺支持行业标准。  Azure AD 支持 SAML 2.0、OpenID Connect 1.0、OAuth 2.0 和 WS-Federation 1.2 身份验证协议。  Graph API 符合 OData 4.0 规范。  如果你的应用程序已支持使用 SAML 2.0 或 OpenID Connect 1.0 进行联合登录，则可以直接添加对 Azure AD 的支持。  深入了解 [Azure AD 支持的身份验证协议](active-directory-authentication-protocols.md)。
 
-**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。  这些源代码已获 Apache 2.0 的授权，你可以在项目中任意衍生和改写。  深入了解 [Azure AD 身份验证库](../active-directory-authentication-libraries.md)。
+**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。  这些源代码已获 Apache 2.0 的授权，你可以在项目中任意衍生和改写。  深入了解 [Azure AD 身份验证库](active-directory-authentication-libraries.md)。
 
 ### <a name="worldwide-presence-and-high-availability"></a>全球存在和高可用性
 **全球数据库中均已部署 Azure AD，且受到全天候的管理和监视。**  Azure AD 是一款面向 Microsoft Azure 和 Office 365 的标识管理系统，已在全球 28 个数据中心进行部署。  我们保证至少将目录数据复制到三个数据中心。  全局负载均衡器确保用户访问包含其数据的最靠近 Azure AD 副本，如果检测到问题，会自动将请求重新路由到其他数据中心。
 
 ## <a name="next-steps"></a>后续步骤
-[开始编写代码](../active-directory-developers-guide.md#getting-started)。
+[开始编写代码](active-directory-developers-guide.md#getting-started)。
 
-[使用 Azure AD 登录用户](../active-directory-authentication-scenarios.md)
-
-
+[使用 Azure AD 登录用户](active-directory-authentication-scenarios.md)
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

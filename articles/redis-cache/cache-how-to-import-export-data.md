@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: dac614de38447bfeaf92f15f156217c9bd44b4ff
-ms.openlocfilehash: d7b2f5f79872b8d3689be76e160af2beac867bce
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: a2cf3abae986d2ab2243a4b2a9123e4c164d2ef1
 
 
 ---
@@ -163,6 +163,6 @@ Azure Redis 缓存持久性可让你将 Redis 中存储的数据持久保存到 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

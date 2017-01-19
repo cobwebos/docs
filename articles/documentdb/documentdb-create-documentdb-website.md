@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2016
+ms.date: 12/08/2016
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
+ms.sourcegitcommit: 08b101f42558280d8ffa690829570257d8d6deca
+ms.openlocfilehash: 6f519ac78d28fac69171b083f18d783cf1d9b24a
 
 
 ---
@@ -73,6 +73,7 @@ ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
       
       ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 选择现有的资源组或提供名称以创建新的资源组，然后选择资源组的位置。
+
     ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. 依次单击“查看法律条款”、“购买”和“创建”以开始部署。  选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
    ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
@@ -113,6 +114,7 @@ ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
       
       ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. 选择现有的资源组或提供名称以创建新的资源组，然后选择资源组的位置。
+
     ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. 依次单击“查看法律条款”、“购买”和“创建”以开始部署。  选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
    ![模板部署 UI 的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
@@ -121,6 +123,7 @@ ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
 8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置”****
     ![资源的快照](./media/documentdb-create-documentdb-website/TemplateDeployment9.png)  
 9. 注意出现的 DocumentDB 终结点和每个 DocumentDB 主密钥的应用程序设置。
+
     ![应用程序设置的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)  
 10. 继续随意浏览 Azure 门户，或按照其中一个 DocumentDB [示例](http://go.microsoft.com/fwlink/?LinkID=402386)来创建自己的 DocumentDB 应用程序。
 
@@ -145,6 +148,6 @@ ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

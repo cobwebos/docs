@@ -12,18 +12,18 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: 20af9a9bfa1086d13a770e4cd7cd8c58a8060b0b
 
 
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>使用模板创建 Web 应用和 Redis 缓存
 在本主题中，将学习如何创建用于部署 Azure Web 应用和 Redis 缓存的 Azure Resource Manager 模板。 你将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 有关完整的模板，请参阅[包含 Redis 缓存的 Web 应用模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)。
 
@@ -43,7 +43,7 @@ ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>名称变量
-此模板使用变量来构造资源的名称。 它使用 [uniqueString](../resource-group-template-functions.md#uniquestring) 函数来构造基于资源组 ID 的值。
+此模板使用变量来构造资源的名称。 它使用 [uniqueString](../azure-resource-manager/resource-group-template-functions.md#uniquestring) 函数来构造基于资源组 ID 的值。
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -58,7 +58,7 @@ ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
 ### <a name="redis-cache"></a>Redis 缓存
 创建用于 Web 应用的 Azure Redis 缓存。 缓存的名称在 **cacheName** 变量中指定。
 
-该模板将在资源组所在的同一位置中创建缓存。 
+该模板将在资源组所在的同一位置中创建缓存。
 
     {
       "name": "[variables('cacheName')]",
@@ -128,8 +128,6 @@ ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
 
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

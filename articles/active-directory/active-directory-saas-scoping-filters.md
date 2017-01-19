@@ -42,7 +42,7 @@ ms.openlocfilehash: 4b95782793956470fd147a98c17759a1a1a3a0de
 
 换而言之，可以将范围组想成通过 OR 连接在一起，将其中的子句想成通过 AND 连接在一起。例如，请考虑以下范围筛选器：
 
-![范围组名称][2]  
+![范围组名称][3]  
 
 按照此范围筛选器，用户必须满足以下条件，才能进行预配：
 
@@ -62,7 +62,7 @@ ms.openlocfilehash: 4b95782793956470fd147a98c17759a1a1a3a0de
 <!--Image references-->
 [1]: ./media/active-directory-saas-scoping-filters/ic782811.png
 [2]: ./media/active-directory-saas-scoping-filters/ic782812.png
-[3]: ./active-directory-saas-scoping-filters/ic782813.png
+[3]: ./media/active-directory-saas-scoping-filters/ic782813.png
 
 
 

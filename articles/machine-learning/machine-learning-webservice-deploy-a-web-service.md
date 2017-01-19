@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7941bdbf2b6a00b14ad589bd90c7169cebd296c6
+ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
+ms.openlocfilehash: 70db87762757c42790047362ded24263157e6ae7
 
 
 ---
@@ -103,6 +103,6 @@ Web 服务“快速入门”页提供了有关在创建新 Web 服务后将执�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

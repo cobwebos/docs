@@ -3,7 +3,7 @@ title: "在 Windows 上开始使用 Azure 文件存储 | Microsoft Docs"
 description: "使用 Azure 文件存储在云中存储文件数据和从 Azure 虚拟机 (VM) 或从运行 Windows 的本地应用程序装载你的云文件共享。"
 services: storage
 documentationcenter: .net
-author: mine-msft
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
@@ -12,8 +12,8 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/18/2016
-ms.author: minet
+/ms.date: 1/18/2017
+ms.author: renash
 translationtype: Human Translation
 ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
 ms.openlocfilehash: b4f13f1b5469ea3d3b2ab69e6435d3e7beb6ace8
@@ -667,6 +667,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 * [Azure 文件存储内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+
 
 
 <!--HONumber=Dec16_HO1-->

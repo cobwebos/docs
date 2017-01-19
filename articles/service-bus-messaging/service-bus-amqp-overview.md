@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/12/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 687ee1a49017b8b4d0c1f0a06f7c7038a0031dba
+ms.sourcegitcommit: 61f31c8ad0463776937f366d145595f04cc42d2e
+ms.openlocfilehash: 539ff0d47279b1c551c3ff0a21dff4633a3c0ac8
 
 
 ---
@@ -104,6 +104,6 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
