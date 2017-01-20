@@ -11,9 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/16/2016
+ms.topic: deprecated
+ms.date: 01/18/2017
 ms.author: bradsev
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: data-science-process-overview
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 49bb8201a93e622774e197801b566caa03ed28a6
