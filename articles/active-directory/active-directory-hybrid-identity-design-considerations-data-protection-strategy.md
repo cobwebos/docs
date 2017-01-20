@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 93ddb2715870348cbaaccfb05f332351dd27ae2c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d4f5d9dbe60e549d270e190e626a87a66696f07c
 
 
 ---
@@ -126,9 +126,9 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 > 
 > 
 
-3. 使用 Microsoft Intune 的 Office 365 应用程序的条件性访问 ：IT 管理员可以预配条件性访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 有关详细信息，请参阅 [Office 365 服务的条件性访问设备策略](active-directory-conditional-access-device-policies.md)。
+3.使用 Microsoft Intune 的 Office 365 应用程序的条件性访问 ：IT 管理员可以预配条件性访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 有关详细信息，请参阅 [Office 365 服务的条件性访问设备策略](active-directory-conditional-access-device-policies.md)。
 
-4. 适用于 SaaS 应用的 Azure 条件性访问：使用[此功能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)可以配置基于应用程序的多重身份验证，以及阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
+4.适用于 SaaS 应用的 Azure 条件性访问：使用[此功能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)可以配置基于应用程序的多重身份验证，以及阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
 
 由于访问控制选项采用多层方式，因此在运行此任务时无法比较这些选项。 请确保针对每个要求控制资源访问权限的方案使用所有适用的选项。
 
@@ -172,6 +172,6 @@ Azure AD 中还提供其他可在事件响应调查期间使用的重要内置�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 
