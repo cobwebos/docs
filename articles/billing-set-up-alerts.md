@@ -4,7 +4,7 @@ description: "介绍如何对 Azure 帐单设置警报，以免帐单出乎你�
 services: 
 documentationcenter: 
 author: vikdesai
-manager: mbaldwin
+manager: vikdesai
 editor: 
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
