@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 门户创建新的弹性池 | Microsoft Docs"
-description: "如何将可缩放的弹性数据库池添加到 SQL 数据库配置，以简化多个数据库的管理和资源共享。"
+description: "如何将可缩放的弹性池添加到 SQL 数据库配置，以简化多个数据库的管理和资源共享。"
 keywords: "可缩放的数据库,数据库配置"
 services: sql-database
 documentationcenter: 
@@ -9,20 +9,20 @@ manager: jhubbard
 editor: 
 ms.assetid: bf12594b-d258-40e6-a9fc-d8a8710c2d65
 ms.service: sql-database
-ms.custom: sharded databases pool
+ms.custom: multiple databases
 ms.devlang: NA
 ms.date: 11/17/2016
 ms.author: ninarn
 ms.workload: data-management
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 1a0b8609acd99ec188f92a32ed4cb44a68edc3b2
-ms.openlocfilehash: 54deca0518d82de59a58e02fc38693179c486b64
+ms.sourcegitcommit: 6c8420a154d998aa95c0220049ee54b3039a872b
+ms.openlocfilehash: 4be8e4f81965fa4d872e29fdb9aaa45909d18c37
 
 
 ---
-# <a name="create-a-new-elastic-database-pool-with-the-azure-portal"></a>使用 Azure 门户创建新的弹性数据库池
+# <a name="create-a-new-elastic-pool-with-the-azure-portal"></a>使用 Azure 门户创建新的弹性池
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -31,7 +31,7 @@ ms.openlocfilehash: 54deca0518d82de59a58e02fc38693179c486b64
 
 本文介绍了如何在 [Azure 门户](https://portal.azure.com/)中创建可缩放的[弹性池](sql-database-elastic-pool.md)。 可以通过两种方法创建池。 如果你知道想要的池设置，可以从头开始创建，或者根据服务的建议进行创建。 SQL 数据库具有内置智能，可以根据数据库的过去的使用遥测数据来推荐更加经济高效的池设置。
 
-可以将多个池添加到服务器，但不能将数据库从不同的服务器添加到同一个池中。 若要创建池，需要在 V12 服务器中至少有一个数据库。 如果你没有这样的数据库，请参阅 [创建首个 Azure SQL 数据库](sql-database-get-started.md)。 可以创建只有一个数据库的池，但是池只有在具有多个数据库时才会经济高效。 请参阅 [弹性数据库池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
+可以将多个池添加到服务器，但不能将数据库从不同的服务器添加到同一个池中。 若要创建池，需要在 V12 服务器中至少有一个数据库。 如果你没有这样的数据库，请参阅 [创建首个 Azure SQL 数据库](sql-database-get-started.md)。 可以创建只有一个数据库的池，但是池只有在具有多个数据库时才会经济高效。 请参阅[弹性池价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
 
 > [!NOTE]
 > 弹性池在所有 Azure 区域中均已正式发布 (GA)，但印度西部除外，这些区域当前仅发布了预览版。  将尽快在此区域中正式发布弹性池。
@@ -58,7 +58,7 @@ ms.openlocfilehash: 54deca0518d82de59a58e02fc38693179c486b64
 
     ![建议的池](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
-3. “弹性数据库池”边栏选项卡随即出现，可以在其中指定池的设置。 如果在上一步骤中单击了“新建池”，则定价层将默认为“标准”，并且尚未选择任何数据库。 可以创建一个空池，或者指定该服务器中要移动到池中的一组现有数据库。 如果要创建建议的池，则会预填充建议的定价层、性能设置和数据库列表，但仍然可以更改它们。
+3. 显示“弹性池”边栏选项卡，可在其中指定池的设置。 如果在上一步骤中单击了“新建池”，则定价层将默认为“标准”，并且尚未选择任何数据库。 可以创建一个空池，或者指定该服务器中要移动到池中的一组现有数据库。 如果要创建建议的池，则会预填充建议的定价层、性能设置和数据库列表，但仍然可以更改它们。
 
     ![配置弹性池](./media/sql-database-elastic-pool-create-portal/configure-elastic-pool.png)
 
@@ -89,7 +89,7 @@ ms.openlocfilehash: 54deca0518d82de59a58e02fc38693179c486b64
 
     如果所使用的数据库具有足够的历史使用情况遥测数据，则将更新“估计的弹性 DTU 和 GB 使用量”图表和“弹性 DTU 实际使用量”条形图，以帮助进行配置决策。 此外，服务可能会向你提供建议消息，以帮助正确调整池大小。 请参阅 [动态建议](#dynamic-recommendations)。
 
-3. 使用“配置池”  页面上的控件浏览设置并配置池。 请参阅 [弹性池限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)，了解有关每个服务层的限制的详细信息，参阅[弹性数据库池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)，了解有关正确调整池大小的详细指南。 有关池设置的详细信息，请参阅[弹性池属性](sql-database-elastic-pool.md#elastic-pool-and-elastic-database-properties)。
+3. 使用“配置池”  页面上的控件浏览设置并配置池。 请参阅[弹性池限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)，了解有关每个服务层限制的详细信息；参阅[弹性池价格和性能注意事项](sql-database-elastic-pool-guidance.md)，了解有关正确调整池大小的详细指南。 有关池设置的详细信息，请参阅[弹性池属性](sql-database-elastic-pool.md#elastic-pool-properties)。
 
     ![配置弹性池](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
@@ -110,7 +110,7 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 - 每个数据库的“弹性 DTU 最大值”和“弹性 DTU 最小值”
 - 池的建议数据库列表
 
-建议池时，服务将考虑过去 30 天的遥测数据。 被视为弹性数据库池候选项的数据库必须至少存在 7 天。 已在弹性数据库池中的数据库不被视为建议的弹性数据库池候选项。
+建议池时，服务将考虑过去 30 天的遥测数据。 数据库若要被视为弹性池的候选项，则必须至少存在 7 天。 已在弹性池中的数据库不会被视为推荐的弹性池候选项。
 
 服务会评估将每个服务层中的单一数据库移到同一层的池的资源需求和成本效益。 例如，评估服务器上的所有标准数据库是否适合标准弹性池。 这意味着，服务不进行跨层建议，例如将标准数据库移到高级池。
 
@@ -129,6 +129,6 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 01/05/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
+ms.sourcegitcommit: aec8fd057bd31fc933d19996567437b2a897623b
+ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 
 
 ---
@@ -54,7 +54,7 @@ ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
 在本部分中，将执行以下步骤从 Azure 门户创建一个新的 Azure 自动化帐户。  这会同时创建运行方式帐户和经典运行方式帐户。  
 
 > [!NOTE]
-> 执行这些步骤的用户 *必须* 是订阅管理员角色的成员，并且是向用户授予订阅访问权限的订阅共同管理员。  此外，该用户还必须添加为订阅默认 Active Directory 的用户；不需要向该帐户分配特权角色。
+> 执行这些步骤的用户必须是“服务管理员”角色的成员，或者是向用户授予订阅访问权限的订阅共同管理员。 此外，该用户还必须添加为订阅默认 Active Directory 的用户；不需要向该帐户分配特权角色。 在添加到订阅订阅“共同管理员”角色之前不属于订阅 Active Directory 成员的用户将作为来宾添加到 Active Directory，并且 会在“添加自动化帐户”边栏选项卡中看到“你无权创建...”警告。 可以先从订阅 Active Directory 中删除已添加到共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。  用户配置文件下的“用户类型”属性值不应等于“来宾”。  
 > 
 > 
 
@@ -63,7 +63,7 @@ ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
 3. 在“自动化帐户”边栏选项卡中，单击“添加”。<br>![添加自动化帐户](media/automation-sec-configure-azure-runas-account/create-automation-account-properties-b.png)
    
    > [!NOTE]
-   > 如果在“添加自动化帐户”边栏选项卡中看到以下警告，这是因为帐户不是订阅的订阅管理员角色和共同管理员的成员。<br>![添加自动化帐户警报](media/automation-sec-configure-azure-runas-account/create-account-without-perms.png)
+   > 如果在“添加自动化帐户”边栏选项卡中看到以下警告，是因为帐户不是订阅管理员角色成员和订阅共同管理员。<br>![添加自动化帐户警报](media/automation-sec-configure-azure-runas-account/create-account-without-perms.png)
    > 
    > 
 4. 在“添加自动化帐户”边栏选项卡的“名称”框中，键入新自动化帐户的名称。
@@ -394,6 +394,6 @@ ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

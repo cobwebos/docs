@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/09/2016
+ms.date: 12/25/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 269d0a0c72d6509b91d7cc8fcffb6641006026f4
-ms.openlocfilehash: 9323eb95ec014a1cc57daa8433e87f9d68b949f5
+ms.sourcegitcommit: 16bff1b5708652a75ea603f596c864901b12a88d
+ms.openlocfilehash: 60d4fec828d620d067b7eb9d0e3cb7e57d1be506
 
 
 ---
@@ -25,6 +25,7 @@ ms.openlocfilehash: 9323eb95ec014a1cc57daa8433e87f9d68b949f5
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 >  
@@ -560,6 +561,6 @@ DocumentDB 支持删除 JSON 文档。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

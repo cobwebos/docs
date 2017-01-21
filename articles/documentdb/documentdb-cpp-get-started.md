@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: hero-article
-ms.date: 11/02/2016
+ms.date: 12/25/2016
 ms.author: aasthan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 31368661906bc8ca0f8ac1d3329bb053d41a94d7
+ms.sourcegitcommit: 16bff1b5708652a75ea603f596c864901b12a88d
+ms.openlocfilehash: f622b9a35c370148a3472fa6924a50933d59601e
 
 
 ---
@@ -24,10 +24,12 @@ ms.openlocfilehash: 31368661906bc8ca0f8ac1d3329bb053d41a94d7
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
+>  
 > 
-> 
+ 
 
 欢迎学习 DocumentDB 认可的 C++ SDK 的 C++ 教程！ 完成本教程后，将会获得一个可以创建并查询 DocumentDB 资源（包括 C++ 数据库）的控制台应用程序。
 
@@ -286,13 +288,11 @@ DocumentDB 支持删除 JSON 文档，为此，可以复制以下代码并将其
 * 在 [DocumentDB 文档页](https://azure.microsoft.com/documentation/services/documentdb/)的“Develop”（开发）部分中了解有关编程模型的详细信息。
 
 [documentdb-create-account]: documentdb-create-account.md
-[documentdb-manage]: documentdb-manage.md
 
 
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

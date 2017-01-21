@@ -1,73 +1,100 @@
 ---
-title: "使用 CLI 为 DNS 区域创建记录集和记录 | Microsoft 文档"
+title: "使用 Azure CLI 创建 DNS 记录 | Microsoft 文档"
 description: "如何为 Azure DNS 创建主机记录。使用 CLI 设置记录集和记录"
 services: dns
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: 
+author: georgewallace
+manager: timlt
 ms.assetid: 02b897d3-e83b-4257-b96d-5c29aa59e843
 ms.service: dns
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
-ms.author: sewhee
+ms.date: 12/21/2016
+ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 40accee35eca32eefd4afc2315c70d51e0edcdcd
-
+ms.sourcegitcommit: 18a21cdc0f9641356dfaf6f6d93edfcac11af210
+ms.openlocfilehash: 790af1544ed86155f5f864f3914b5fd1c4f42f4b
 
 ---
-# <a name="create-dns-record-sets-and-records-by-using-cli"></a>通过使用 CLI 创建 DNS 记录集和记录
+
+# <a name="create-dns-records-using-the-azure-cli"></a>使用 Azure CLI 创建 DNS 记录
+
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-getstarted-create-recordset-portal.md)
 > * [PowerShell](dns-getstarted-create-recordset.md)
 > * [Azure CLI](dns-getstarted-create-recordset-cli.md)
-> 
-> 
 
-本文将指导你通过使用 CLI 完成创建记录和记录集过程。 在创建 DNS 区域后，需要添加域的 DNS 记录。 若要执行此操作，首先需要了解 DNS 记录和记录集。
+本文逐步讲解如何使用 Azure CLI 完成创建记录和记录集的过程。
+
+## <a name="introduction"></a>介绍
+
+在 Azure DNS 中创建 DNS 记录之前，首先需了解 Azure DNS 如何将 DNS 记录组织到 DNS 记录集中。
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
+有关 Azure DNS 中的 DNS 记录的详细信息，请参阅 [DNS 区域和记录](dns-zones-records.md)。
+
 ## <a name="create-a-record-set-and-record"></a>创建记录集和记录
-在此部分中，我们将介绍如何创建记录集和记录。 在此示例中，将在 DNS 区域“contoso.com”中创建具有相对名称“www”的记录集。 记录的完全限定名称为“www.contoso.com”。 记录类型是“A”，并且生存时间 (TTL) 为 60 秒。 在完成此步骤之后，将创建一个空的记录集。
 
-若要在区域（在此例中为“contoso.com”）顶点创建记录集，请使用记录名称 "@",（包括引号）。 这是常见的 DNS 约定。
+本部分介绍如何在 Azure DNS 中创建 DNS 记录。 示例假设你已经[安装并登录 Azure CLI 以及创建了 DNS 区域](dns-getstarted-create-dnszone-cli.md)。
 
-### <a name="1-create-a-record-set"></a>1.创建记录集
-若要创建记录集，请使用 `azure network dns record-set create`。 指定资源组、区域名称、记录集、相对名称、记录类型和 TTL。 如果未定义 `--ttl` 参数，则该值默认为 4（以秒为单位）。 在完成此步骤之后，将创建一个空的“www”记录集。
+此页上所有示例都使用“A”DNS 记录类型。 有关其他记录类型和有关如何管理 DNS 记录和记录集的详细信息，请参阅[使用 Azure CLI 管理 DNS 记录和记录集](dns-operations-recordsets-cli.md)。
 
-*用法：network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>*
+## <a name="create-a-dns-record"></a>创建 DNS 记录
 
-    azure network dns record-set create myresourcegroup  contoso.com  www A  60
+若要创建 DNS 记录，请使用 `azure network dns record-set add-record` 命令。 有关帮助，请参阅 `azure network dns record-set add-record -h`。
 
-### <a name="2-add-records"></a>2.添加记录
-若要使用新创建的“www”记录集，需要为其添加记录。 通过使用 `azure network dns record-set add-record`将记录添加到记录集。
+创建记录时，需指定资源组名称、区域名称、记录集名称、记录类型，以及要创建的记录的详细信息。
 
-添加记录到记录集的参数会因记录集的类型而有所变化。 例如，在使用类型“A”记录集时，将只能使用参数 `-a <IPv4 address>`指定记录。
+如果记录集不存在，此命令将会创建。 如果记录集已存在，此命令会将指定的记录添加到现有记录集。 
 
-可以通过使用以下命令将 IPv4 *A* 记录添加到“www”记录集：
+如果创建了新记录集，将使用默认生存时间 (TTL) 3600。 有关如何使用不同 TTL 的说明，请参阅 [Manage DNS records in Azure DNS using the Azure CLI](dns-operations-recordsets-cli.md)（使用 Azure CLI 管理 Azure DNS 中的 DNS 记录）。
 
-*用法：network dns record-set add-record <resource-group> <dns-zone-name> <record-set-name> <type>*
+以下示例在区域 *contoso.com* 中的资源组 *MyResourceGroup* 内创建名为 *www* 的 A 记录。 该 A 记录的 IP 地址为 *1.2.3.4*。
 
-    azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
+```azurecli
+azure network dns record-set add-record MyResourceGroup contoso.com www A -a 1.2.3.4
+```
 
-## <a name="additional-record-type-examples"></a>其他记录类型示例
-以下示例演示如何创建每个记录类型的记录集。 每个记录集只包含一个单一记录。
+若要在区域（在本例中为“contoso.com”）顶点中创建记录集，请使用记录名称 "@",（包括引号）。
 
-[!INCLUDE [dns-add-record-cli-include](../../includes/dns-add-record-cli-include.md)]
+```azurecli
+azure network dns record-set add-record MyResourceGroup contoso.com "@" A -a 1.2.3.4
+```
+
+用于指定记录数据的参数根据记录类型的不同而异。 例如，对于“A”类型的记录，应使用参数 `-a <IPv4 address>` 指定 IPv4 地址。 若要列出其他记录类型的参数，请参阅 `azure network dns record-set add-record -h`。 有关每种记录类型的示例，请参阅 [Manage DNS records and record sets by using the Azure CLI](dns-operations-recordsets-cli.md)（使用 Azure CLI 管理 DNS 记录和记录集）。
+
+
+## <a name="verify-name-resolution"></a>验证名称解析
+
+可使用 DNS 工具（如 nslookup、dig 或 [Resolve-DnsName PowerShell cmdlet](https://technet.microsoft.com/library/jj590781.aspx)）测试 DNS记录是否在 Azure DNS 服务器中。
+
+如果尚未委托域在 Azure DNS 中使用新的区域，则需要[直接向区域的其中一个名称服务器提出 DNS 查询](dns-getstarted-create-dnszone.md#test-name-servers)。 确保将记录区域的正确值替换到下面命令中。
+
+    nslookup
+    > set type=A
+    > server ns1-01.azure-dns.com
+    > www.contoso.com
+
+    Server:  ns1-01.azure-dns.com
+    Address:  40.90.4.1
+
+    Name:    www.contoso.com
+    Address:  1.2.3.4
 
 ## <a name="next-steps"></a>后续步骤
-若要管理记录集和记录，请参阅 [使用 CLI 管理 DNS 记录和记录集](dns-operations-recordsets-portal.md)。
 
-有关 Azure DNS 的详细信息，请参阅 [Azure DNS 概述](dns-overview.md)。
+了解如何[将域名委托到 Azure DNS 名称服务器](dns-domain-delegation.md)
+
+了解如何[使用 Azure CLI 管理 DNS 区域](dns-operations-dnszones-cli.md)。
+
+了解如何[使用 Azure CLI 管理 DNS 记录和记录集](dns-operations-recordsets-cli.md)。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/25/2016
+ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 8131002ba48a85b5116f13aa72d713526b56ac0a
-ms.openlocfilehash: 20ca7cad38537be3f7f8dce9f9ac24ce82f85e79
+ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
+ms.openlocfilehash: fe40bc372a63735b0130bcbb115c312fa2e45fa6
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 20ca7cad38537be3f7f8dce9f9ac24ce82f85e79
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集只需要约十分钟。 系统将要处理的数据存储在 Azure Blob 存储中。 请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
-![Azure HDInsight 上的 Apache Spark](./media/hdinsight-apache-spark-overview/hdispark.architecture.png "Apache Spark on Azure HDInsight")
+![Azure HDInsight 上的 Apache Spark](./media/hdinsight-apache-spark-overview/hdispark.architecture.png "Azure HDInsight 上的 Apache Spark")
 
 **想要开始在 Azure HDInsight 上使用 Apache Spark 吗？** 请参阅 [快速入门：使用 Jupyter 在 HDInsight Linux 上创建 Spark 群集并运行示例应用程序](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
@@ -43,7 +43,7 @@ Azure HDInsight 提供完全托管的 Spark 服务。 在 HDInsight 上使用 Sp
 | 方便创建群集 |你可以使用 Azure 管理门户、Azure PowerShell 或 HDInsight .NET SDK，在几分钟之内于 HDInsight 上创建新的 Spark 群集。 请参阅 [HDInsight 中的 Spark 群集入门](hdinsight-apache-spark-jupyter-spark-sql.md) |
 | 易于使用 |HDInsight 群集中的 Spark 包含预先配置的 Jupyter 笔记本。 你可以使用这些笔记本执行交互式数据处理和可视化。 Jupyter 笔记本的 URL 为 https://CLUSTERNAME.azurehdinsight.net/jupyter。 将 **CLUSTERNAME** 替换为 Spark HDInsight 群集的名称。 |
 | REST API |HDInsight 中的 Spark 包含 [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是基于 REST-API 的 Spark 作业服务器，用于远程提交和监视正在运行的作业。 |
-| 支持 Azure 数据湖存储 |可将 HDInsight 上的 Spark 配置为使用 Azure 数据湖存储作为附加存储。 有关 Data Lake Store 的详细信息，请参阅 [Azure Data Lake Store 概述](../data-lake-store/data-lake-store-overview.md)。 |
+| 支持 Azure 数据湖存储 |可将 HDInsight 上的 Spark 配置为使用 Azure Data Lake Store 作为附加存储以及主存储（仅适用于 HDInsight 3.5 群集）。 有关 Data Lake Store 的详细信息，请参阅 [Azure Data Lake Store 概述](../data-lake-store/data-lake-store-overview.md)。 |
 | 与 Azure 服务集成 |HDInsight 上的 Spark 随附了 Azure 事件中心的连接器。 除了 Spark 提供的 [Kafka](http://kafka.apache.org/)之外，客户还可以使用事件中心来生成流式处理应用程序。 |
 | 支持 R Server |可以在 HDInsight Spark 群集上设置 R Server，以 Spark 群集承诺的速度运行分布式 R 计算。 有关详细信息，请参阅 [开始使用 HDInsight 上的 R Server](hdinsight-hadoop-r-server-get-started.md)。 |
 | 与 IntelliJ IDEA 集成 |可以使用 IntelliJ 的 HDInsight 插件来创建应用程序，并将应用程序提交到 HDInsight Spark 群集。 有关详细信息，请参阅 [使用 IntelliJ IDEA 的 HDInsight 工具插件为 HDInsight Spark Linux 群集创建 Spark 应用程序](hdinsight-apache-spark-intellij-tool-plugin.md)。 |
@@ -115,6 +115,6 @@ HDInsight 中的 Spark 还提供 [ODBC 驱动程序](http://go.microsoft.com/fwl
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

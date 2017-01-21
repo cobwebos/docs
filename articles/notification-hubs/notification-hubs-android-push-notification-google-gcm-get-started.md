@@ -3,7 +3,7 @@ title: "通过 Azure 通知中心向 Android 发送推送通知 | Microsoft Docs
 description: "在本教程中，你将了解如何使用 Azure 通知中心将通知推送到 Android 设备。"
 services: notification-hubs
 documentationcenter: android
-keywords: "推送通知、推送通知、android 推送通知"
+keywords: "推送通知,push notification,android 推送通知"
 author: ysxu
 manager: erikre
 editor: 
@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
+ms.sourcegitcommit: 84d3aa963f8538c0721f6c0a02cee5b8e7269770
+ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
 
 
 ---
@@ -63,17 +63,17 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
 ### <a name="create-a-new-android-project"></a>创建新的 Android 项目
 1. 在 Android Studio 中，启动新的 Android Studio 项目。
    
-       ![Android Studio - new project][13]
-2. 选择“手机和平板电脑”外形规格和要支持的**最低 SDK 版本**。 。
+     ![Android Studio - 新项目][13]
+2. 选择“手机和平板电脑”外形规格和要支持的“最低 SDK 版本”。 。
    
-       ![Android Studio - project creation workflow][14]
+     ![Android Studio - 项目创建工作流][14]
 3. 选择“空活动”作为主活动，单击“下一步”，然后单击“完成”。
 
 ### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
 ### <a name="adding-azure-notification-hubs-libraries"></a>添加 Azure 通知中心库
-1. 在**应用**的 `Build.Gradle` 文件的 **dependencies** 节中添加以下行。
+1. 在**应用**的 `Build.Gradle` 文件中，在 **dependencies** 部分添加以下行。
    
         compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
         compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
@@ -125,7 +125,7 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
         <uses-permission android:name="<your package>.permission.C2D_MESSAGE"/>
 
 ### <a name="adding-code"></a>添加代码
-1. 在“项目”视图中，展开“应用”>“src”>“main”>“java”。 >  >  >  右键单击 **java** 下的包文件夹，单击“新建”，然后单击“Java 类”。 `NotificationSettings`的新类。 
+1. 在项目视图中，展开 **app** > **src** > **main** > **java** 右键单击 **java** 下的包文件夹，单击“新建”，然后单击“Java 类”。 `NotificationSettings`的新类。 
    
     ![Android Studio - 新 Java 类][6]
    
@@ -137,7 +137,7 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
      
      `NotificationSettings` 代码：
      
-       公共类 NotificationSettings {
+       public class NotificationSettings {
      
            public static String SenderId = "<Your project number>";
            public static String HubName = "<Your HubName>";
@@ -331,7 +331,7 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
                 }
             });
         }
-8. `ToastNotify` 方法使用 "Hello World" `TextView` 控件持续报告应用状态和通知。 在 activity_main.xml 布局中，为该控件添加以下 ID。
+8. `ToastNotify` 方法使用“Hello World”`TextView` 控件持续报告应用状态和通知。 在 activity_main.xml 布局中，为该控件添加以下 ID。
    
        android:id="@+id/text_hello"
 9. 接下来，我们将为 AndroidManifest.xml 中定义的接收者添加一个子类。 将另一个名为 `MyHandler`的新类添加到项目。
@@ -392,7 +392,7 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
 12. 在 Android Studio 的菜单栏上，单击“生成” > “重新生成项目”，确保代码中没有任何错误。
 
 ## <a name="sending-push-notifications"></a>发送推送通知
-可以通过在 [Azure 门户]中发送通知来测试应用接收推送通知的功能，如下所示，可以在中心边栏选项卡中查找“疑难解答”部分来进行此测试。
+可在 [Azure 门户]中发送推送通知，测试应用中的推送通知接收情况：在中心边栏选项卡中查找“疑难解答”部分即可，如下所示。
 
 ![Azure 通知中心 - 测试发送](./media/notification-hubs-android-get-started/notification-hubs-test-send.png)
 
@@ -401,7 +401,7 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>（可选）直接从应用程序发送推送通知
 通常，你会使用后端服务器发送通知。 在某些情况下，你可能希望能够直接从客户端应用程序发送推送通知。 本部分说明了如何使用 [Azure 通知中心 REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)从客户端发送通知。
 
-1. 在 Android Studio 的项目视图中展开“应用” > “src” > “main” > “res” > “layout”。 打开 `activity_main.xml` 布局文件，然后单击“文本”选项卡以更新此文件的文本内容。 使用以下代码更新此文件，此代码将添加新的 `Button` 和 `EditText` 控件，用于将推送通知消息发送到通知中心。 将此代码添加到底部紧靠 `</RelativeLayout>`前面的位置。
+1. 在 Android Studio 项目视图中，展开 **App** > **src** > **main** > **res** > **layout** 打开 `activity_main.xml` 布局文件，然后单击“文本”选项卡以更新此文件的文本内容。 使用以下代码更新此文件，此代码将添加新的 `Button` 和 `EditText` 控件，用于将推送通知消息发送到通知中心。 将此代码添加到底部紧靠 `</RelativeLayout>`前面的位置。
    
         <Button
         android:layout_width="wrap_content"
@@ -420,7 +420,7 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
-2. 在 Android Studio 的项目视图中展开“应用” > “src” > “main” > “res” > “values”。 打开 `strings.xml` 文件，并添加新的 `Button` 和 `EditText` 控件引用的字符串值。 在文件底部紧靠在 `</resources>`前面的位置添加这些值。
+2. 在 Android Studio 项目视图中，展开 **App** > **src** > **main** > **res** > **values** 打开 `strings.xml` 文件，并添加新的 `Button` 和 `EditText` 控件引用的字符串值。 在文件底部紧靠在 `</resources>`前面的位置添加这些值。
    
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
@@ -660,10 +660,10 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
 
 
 <!-- URLs. -->
-[移动服务中的推送通知入门]: ../mobile-services-javascript-backend-android-get-started-push.md  
-[移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[引用库项目]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure 经典门户]: https://manage.windowsazure.com/
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
+[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
+[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [使用通知中心向用户推送通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
@@ -671,6 +671,6 @@ ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

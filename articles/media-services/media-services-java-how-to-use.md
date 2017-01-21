@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 12/20/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+ms.sourcegitcommit: 18054a72c3ead02311465d97dc13b7b5e4d87321
+ms.openlocfilehash: 401b3c931fa046ee2bdf0a12e9e837b820ec5464
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 ## <a name="setting-up-an-azure-account-for-media-services"></a>针对媒体服务设置 Azure 帐户
-若要设置你的媒体服务帐户，请使用 Azure 经典门户。 请参阅主题[如何创建媒体服务帐户](media-services-portal-create-account.md)。 在 Azure 经典门户中创建帐户后，可以设置你的计算机以进行媒体服务开发。
+若要设置媒体服务帐户，请使用 Azure 门户。 请参阅主题[如何创建媒体服务帐户](media-services-portal-create-account.md)。 在 Azure 门户中创建帐户后，便可以设置计算机以进行媒体服务开发。
 
 ## <a name="setting-up-for-media-services-development"></a>完成设置以进行媒体服务开发
 本部分介绍使用用于 Java 的媒体服务 SDK 进行媒体服务开发需要满足的一般性先决条件。
@@ -264,12 +264,12 @@ ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
 
 <!-- URLs. -->
 
-[Azure Java 开发人员中心]: http://azure.microsoft.com/develop/java/
-[适用于 Java 的 Azure 库文档]: http://dl.windowsazure.com/javadoc/
-[媒体服务客户端开发]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+[Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
+[Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

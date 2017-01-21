@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: babanisa,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 8ba8baa1b6500b3300e0bfc1c6b9f00f214f0179
-ms.openlocfilehash: 4329e0f99828f5a0651e6b03be0813d9e68debaa
+ms.sourcegitcommit: 14a5c029eef714134079b960109e58d821d0a609
+ms.openlocfilehash: 34b54d54b20d9aec69486c5ef98c97beee21bd94
 
 
 ---
@@ -40,7 +40,7 @@ Azure 中继具有两项功能：
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |x |
-| **.NET Framework** |x |
+| **.NET Framework** |x |x |
 | **JavaScript/NodeJS*** | |x |
 | **Java*** | |x |
 | **基于标准的开放协议** | |x |
@@ -55,7 +55,7 @@ Azure 中继具有两项功能：
 WCF 中继适用于整个 .NET Framework (NETFX) 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间发起连接。 在幕后，中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。
 
 ## <a name="service-history"></a>服务历史记录
-混合连接取代了以前的“BizTalk 服务”功能，后者构建在 Azure 服务总线 WCF 中继的基础之上。 新的混合连接功能为现有 WCF 中继做了补充，在可预见的未来，这两项服务功能将在中继服务中共存；它们共享一个公用网关，但实现方式有所不同。
+混合连接取代了以前的“BizTalk 服务”功能，后者构建在 Azure 服务总线 WCF 中继的基础之上。 新的混合连接功能为现有 WCF 中继功能做了补充，在可预见的未来，这两项服务功能将在中继服务中共存。 它们共享一个公用网关，但实现方式有所不同。
 
 ## <a name="next-steps"></a>后续步骤：
 * [中继常见问题](relay-faq.md)
@@ -66,6 +66,6 @@ WCF 中继适用于整个 .NET Framework (NETFX) 和 WCF。 可以使用一套 W
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

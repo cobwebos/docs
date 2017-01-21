@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: ff2e3c27f9fc02ebe30380798be00211113208e3
-ms.openlocfilehash: 4f3c0cee8fe686c5355ce460064a7188d35f3e44
+ms.sourcegitcommit: 206b958b4c266b9977a9beb8ffb6a0576f068a9a
+ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
 
 
 ---
@@ -31,6 +31,7 @@ ms.openlocfilehash: 4f3c0cee8fe686c5355ce460064a7188d35f3e44
  若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装适用于 Java 和 .NET Core 的可选 SDK。
 
 ## <a name="prerequisites"></a>先决条件
+
 ### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 支持使用以下操作系统版本进行开发：
 
@@ -59,7 +60,7 @@ ms.openlocfilehash: 4f3c0cee8fe686c5355ce460064a7188d35f3e44
 ## <a name="install-and-set-up-the-sdk"></a>安装和设置 SDK
 源进行更新后，可以安装 SDK。
 
-1. 安装 Service Fabric SDK 包。 系统将要求你确认安装并同意许可协议。
+1. 安装 Service Fabric SDK 包。 系统将要求确认安装并同意许可协议。
    
     ```bash
     sudo apt-get install servicefabricsdkcommon
@@ -72,7 +73,7 @@ ms.openlocfilehash: 4f3c0cee8fe686c5355ce460064a7188d35f3e44
 
 
 ## <a name="set-up-the-azure-cross-platform-cli"></a>设置 Azure 跨平台 CLI
-[Azure 跨平台 CLI][azure-xplat-cli-github] 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。 它基于 Node.js，因此，请[务必先安装 Node][install-node]，然后继续遵照下面的说明操作。
+[Azure 跨平台 CLI][azure-xplat-cli-github] 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。 它基于 Node.js，因此，请[务必先安装 Node][install-node]，然后继续遵照下面的说明操作：
 
 1. 将 github 存储库克隆到你的开发计算机。
    
@@ -110,7 +111,13 @@ ms.openlocfilehash: 4f3c0cee8fe686c5355ce460064a7188d35f3e44
    
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
-此时，你就能够部署预建的 Service Fabric 应用程序包或基于来宾容器或来宾可执行文件的新应用程序包。 若要使用 Java 或 .NET Core SDK 生成新的服务，请按照下面的可选安装程序步骤操作。
+此时，你就能够部署预建的 Service Fabric 应用程序包或基于来宾容器或来宾可执行文件的新应用程序包。 若要使用 Java 或 .NET Core SDK 构建新服务，请遵循后续部分中的可选设置步骤操作。
+
+
+> [!NOTE]
+> 此外，Linux 不支持独立群集 - 预览版仅支持单机群集和 Azure Linux 多计算机群集。
+> 
+> 
 
 ## <a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a>安装 Java SDK 和 Eclipse Neon 插件（可选）
 Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
@@ -142,28 +149,32 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 1. 安装 .NET Core SDK 包。
    
-    ```bash
-    sudo apt-get install servicefabricsdkcsharp
-    ```
+   ```bash
+   sudo apt-get install servicefabricsdkcsharp
+   ```
+
 2. 运行 SDK 安装程序脚本。
    
-    ```bash
-    sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
-    ```
+   ```bash
+   sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
+   ```
+
 ## <a name="updating-the-sdk-and-runtime"></a>更新 SDK 和运行时
 
 若要更新到最新版本的 SDK 和运行时，请运行以下步骤（从列表中删除不想要更新或安装的 SDK）：
 
-    ```bash
-    sudo apt-get update
-    sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
-    ```
+   ```bash
+   sudo apt-get update
+   sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
+   ```
 
 若要更新 CLI，请导航到 CLI 克隆到的目录，然后运行 `git pull` 进行更新。 
 
 ## <a name="next-steps"></a>后续步骤
 * [在 Linux 上创建第一个 Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
+* [在 Linux 上创建第一个 CSharp 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
+* [使用 Azure CLI 管理 Service Fabric 应用程序](service-fabric-azure-cli.md)
 
 <!-- Links -->
 
@@ -178,6 +189,6 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c0a1cf550c46810624d9eee7722409ff19b75369
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
 
 
 ---
@@ -42,20 +42,19 @@ ms.openlocfilehash: c0a1cf550c46810624d9eee7722409ff19b75369
 1. 在安全中心仪表板中，可以看到“安全警报”  磁贴。
    
     ![安全中心的“安全警报”磁贴](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig1-ga.png)
+
 2. 单击该磁贴，打开“安全警报”  边栏选项卡，该边栏选项卡包含以下警报详细信息。
    
    ![安全中心的“安全警报”边栏选项卡](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig2-ga.png)
 
 此边栏选项卡的底部是每个警报的详细信息。 要进行排序，请单击按其排序的列。 下面给出了每个列的定义：
 
-* **警报**：警报的简要说明。
+* **说明**：警报的简要说明。
 * **计数**：在特定日期检测到的此特定类型的所有警报的列表。
 * **检测程序**：负责触发警报的服务。
 * **日期**：事件发生的日期。
 * **状态**：该警报的当前状态。 状态有两种：
-  
   * **活动**：已检测到安全警报。
-  * **已消除**：用户已消除安全警报。 此状态通常用于已调查但已缓解或发现不是真正攻击的警报。
 * **严重性**：严重性级别，分为高、中和低。
 
 ### <a name="filtering-alerts"></a>筛选警报
@@ -63,10 +62,7 @@ ms.openlocfilehash: c0a1cf550c46810624d9eee7722409ff19b75369
 
 1. 单击“安全警报”边栏选项卡上的“筛选器”。 此时将打开“筛选器”  边栏选项卡，选择要查看的日期、状态和严重性值。
    
-    ![筛选安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-ga.png)
-2. 调查某个安全警报后，可能会发现该警报对环境而言为误报，或者指示特定资源的预期行为。 无论哪种情况，如果确定某个安全警报不适用，即可消除该警报，将其从视图中筛除。 有两种方法可消除安全警报。 右键单击某个警报，选择“消除”；或者将鼠标悬停在某个项目上，单击右侧显示的三个点，选择“消除”。 可以单击“筛选器”，选择“已消除”，查看已消除的安全警报。
-   
-   ![消除安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig4-ga.png)
+    ![筛选安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-2017.png)
 
 ### <a name="respond-to-security-alerts"></a>响应安全警报
 选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 安全警报按类型和日期进行分组。 单击某个安全警告会打开一个边栏选项卡，该边栏选项卡中包含一个分组警报列表。
@@ -98,6 +94,6 @@ ms.openlocfilehash: c0a1cf550c46810624d9eee7722409ff19b75369
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

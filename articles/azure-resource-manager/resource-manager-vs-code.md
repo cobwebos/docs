@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/03/2017
 ms.author: chmatsk;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f839784aaef511c60ec1c3eea0b64bfdd5f67a4f
+ms.sourcegitcommit: 10c7051c9b1218081d95cb10403006bfd95126ba
+ms.openlocfilehash: 2ac1c2cce7a9e045990894b0bbaa045df3d48954
 
 
 ---
 # <a name="working-with-azure-resource-manager-templates-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Azure Resource Manager 模板
-Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文件。 这些文件有时可能很大且很复杂，因此工具支持非常重要。 Visual Studio Code 是全新的轻量型开源跨平台代码编辑器。 它通过 [新的扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)支持创建和编辑 Resource Manager 模板。 VS Code 可在任何位置运行，除非你还想要部署 Resource Manager 模板，否则它不需要访问 Internet。
+Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文件。 这些文件有时可能很大且很复杂，因此工具支持非常重要。 Visual Studio Code 是全新的轻量型开源跨平台代码编辑器。 它通过 [新的扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)支持创建和编辑 Resource Manager 模板。 VS Code 可在任何位置运行，仅当要将 Resource Manager 模板部署到 Azure 订阅时，它才需要访问 Internet。
 
 如果你没有 VS Code，可以通过 [https://code.visualstudio.com/](https://code.visualstudio.com/)来安装它。
 
@@ -42,7 +42,7 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 
 1. 将文件的内容从 [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) 存储库复制到剪贴板。
 2. 启动 VS Code 
-3. 在 VS Code 中，可以使用以下方式打开 JSON 代码片段文件：导航到“文件” -> “首选项” -> “用户代码片段” -> “JSON”，或选择 **F1** 并键入**首选项**，直到可以选择“首选项: 代码片段”为止。
+3. 在 VS Code 中，可以导航到“文件” -> “首选项” -> “用户代码片段” -> “JSON”，打开 JSON 代码片段文件。 或选择 **F1** 并键入“首选项”，直到可以选择“首选项: 代码片段”为止。
    
     ![首选项代码片段](./media/resource-manager-vs-code/preferences-snippets.png)
    
@@ -61,22 +61,22 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 1. 如果从资源组导出了模板，请在 VS Code 中打开提取的文件。
    
     ![显示文件](./media/resource-manager-vs-code/show-files.png)
-2. 打开 template.json 文件，以便对它进行编辑并添加一些附加的资源。 在 **"resources": [** 的后面按 Enter，以另起一行。 如果键入 **arm**，你将看到选项列表。 这些选项是你安装的模板代码片段。 它看起来应该如下所示： 
+2. 打开 template.json 文件，以便对它进行编辑并添加一些附加的资源。 在 `"resources": [` 的后面按 Enter，另起一行。 如果键入 **arm**，将看到选项列表。 这些选项是你安装的模板代码片段。 
    
     ![显示代码片段](./media/resource-manager-vs-code/type-snippets.png)
-3. 选择所需的代码片段。 在本文中，我选择了 **arm-ip** 来创建新的公共 IP 地址。 在新建资源的右括号“}”后面插入一个逗号，以确保模板语法有效。
+3. 选择所需的代码片段。 在本文中，我选择了 **arm-ip** 来创建新的公共 IP 地址。 在新建资源的右括号 `}` 后面插入一个逗号，确保模板语法有效。
    
      ![添加逗号](./media/resource-manager-vs-code/add-comma.png)
-4. VS Code 具有内置的 IntelliSense。 当你编辑模板时，VS Code 将建议可用的值。 例如，若要向模板添加变量部分，请添加 **""**（两个双引号），然后选择这两个引号之间的 **Ctrl+Space**。 你将看到包含 **变量**的选项。
+4. VS Code 具有内置的 IntelliSense。 当你编辑模板时，VS Code 将建议可用的值。 例如，若要向模板添加变量部分，请添加 `""`（两个双引号），然后选择这两个引号之间的 **Ctrl+Space**。 将看到包含**变量**的选项。
    
     ![添加变量](./media/resource-manager-vs-code/add-variables.png)
-5. IntelliSense 还可以建议可用值或函数。 若要将某个属性设置为参数值，请创建包含 **""** 和 **Ctrl+Space** 的表达式。 可以开始键入函数的名称。 找到所需的函数后，请选择 **Tab** 。
+5. IntelliSense 还可以建议可用值或函数。 若要将某个属性设置为参数值，请创建包含 `"[]"` 和 **Ctrl+Space** 的表达式。 可以开始键入函数的名称。 找到所需的函数后，请选择 **Tab** 。
    
     ![添加参数](./media/resource-manager-vs-code/select-parameters.png)
-6. 再次选择函数中的 **Ctrl+Space** ，以查看模板中可用参数的列表。
+6. 若要查看模板中可用参数的列表，请在函数中再次选择 **Ctrl+Space**。
    
     ![添加参数](./media/resource-manager-vs-code/select-avail-parameters.png)
-7. 如果模板中出现任何架构验证问题，编辑器中会出现你所熟悉的波浪线。 键入 **Ctrl+Shift+M** 或选择左下角状态栏中的字形，即可查看错误和警告列表。
+7. 如果模板中出现任何架构验证问题，编辑器中会出现熟悉的波浪线。 键入 **Ctrl+Shift+M** 或选择左下角状态栏中的字形，即可查看错误和警告列表。
    
     ![错误](./media/resource-manager-vs-code/errors.png)
    
@@ -85,35 +85,51 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
     ![错误消息](./media/resource-manager-vs-code/unrecognized-function.png)
 
 ## <a name="deploy-your-new-resources"></a>部署新资源
-模板准备就绪后，你可以根据以下说明部署新资源： 
+模板准备就绪后，可以根据以下说明部署新资源： 
 
 ### <a name="windows"></a>Windows
 1. 打开 PowerShell 命令提示符 
 2. 若要登录，请键入： 
    
-        Login-AzureRmAccount 
+  ```powershell
+  Login-AzureRmAccount
+  ```
+
 3. 如果具有多个订阅，获得内含以下内容的订阅列表：
-   
-        Get-AzureRmSubscription
+
+  ```powershell 
+  Get-AzureRmSubscription
+  ```
    
     然后选择要使用的订阅。
-   
-        Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+  ```
+
 4. 更新 parameters.json 文件中的参数
 5. 运行 Deploy.ps1 以在 Azure 上部署模板
 
 ### <a name="osxlinux"></a>OSX/Linux
 1. 打开终端窗口 
 2. 若要登录，请键入：
-   
-        azure login 
+
+  ```azurecli
+  azure login
+  ```
+
 3. 如果具有多个订阅，选择内含以下内容的合适订阅：
-   
-        azure account set <subscriptionNameOrId> 
+
+  ```azurecli
+  azure account set <subscriptionNameOrId> 
+  ```
+
 4. 更新 parameters.json 文件中的参数。
 5. 若要部署模板，请运行：
-   
-        azure group deployment create -f <PathToTemplate> 
+
+  ```azurecli 
+  azure group deployment create -f <PathToTemplate>
+  ``` 
 
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解模板，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
@@ -123,6 +139,6 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

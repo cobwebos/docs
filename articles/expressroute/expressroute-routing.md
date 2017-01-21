@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2016
-ms.author: osamazia
+ms.date: 01/03/2017
+ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 111975ba10aaafb97673f4e8b813ba3523b76ffb
+ms.sourcegitcommit: 4f67c67639eaf33bb1f2aa236164e98030f5b555
+ms.openlocfilehash: c76471f4c0f4e1b751d623f691578d354008d863
 
 
 ---
@@ -117,7 +117,7 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
 > 
 > 
 
-## <a name="support-for-bgp-communities-preview"></a>BGP 社区支持（预览版）
+## <a name="support-for-bgp-communities"></a>BGP 社区支持
 本部分概述如何配合 ExpressRoute 使用 BGP 社区。 Microsoft 将播发公共和 Microsoft 对等互连路径中的路由并为路由标记适当的社区值。 下面将会介绍这种方案的理由以及有关社区值的详细信息。 但是，Microsoft 不遵循向 Microsoft 播发的路由的任何标记社区值。
 
 如果你要在某个地缘政治区域内的任何一个对等互连位置通过 ExpressRoute 连接到 Microsoft，就必须能够访问该地缘政治边界内所有区域中的所有 Microsoft 云服务。 
@@ -126,9 +126,7 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
 
 有关地缘政治地区、关联的 Azure 区域和对应的 ExpressRoute 对等互连位置的详细列表，请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md) 。
 
-可以针对每个地缘政治区域购买多个 ExpressRoute 线路。 如果拥有多个连接，则可以从异地冗余中获得明显的高可用性优势。 如果你多条 ExpressRoute 线路，将从 Microsoft 收到同一组公共对等互连和 Microsoft 对等互连路径的前缀。 这意味着你可以使用多个路径从你的网络接入 Microsoft。 这可能会导致在网络中做出欠佳的路由决策。 因此，你可能会在不同的服务上遇到欠佳的连接体验。 
-
-Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标记通过公共对等互连和 Microsoft 对等互连播发的前缀。 可以依赖社区值做出适当的路由决策，以 [向客户提供最佳路由](expressroute-optimize-routing.md)。
+可以针对每个地缘政治区域购买多个 ExpressRoute 线路。 如果拥有多个连接，则可以从异地冗余中获得明显的高可用性优势。 如果你多条 ExpressRoute 线路，将从 Microsoft 收到同一组公共对等互连和 Microsoft 对等互连路径的前缀。 这意味着你可以使用多个路径从你的网络接入 Microsoft。 这可能会导致在网络中做出欠佳的路由决策。 因此，你可能会在不同的服务上遇到欠佳的连接体验。 可以依赖社区值做出适当的路由决策，[向用户提供最佳路由](expressroute-optimize-routing.md)。
 
 | **Microsoft Azure 区域** | **BGP 社区值** |
 | --- | --- |
@@ -186,6 +184,8 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 > 
 > 
 
+### <a name="bgp-community-support-in-national-clouds-preview"></a>区域云中的 BGP 社区支持（预览版）
+
 | **国家云 Azure 区域**| **BGP 社区值** |
 | --- | --- |
 | **美国政府** |  |
@@ -212,6 +212,6 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

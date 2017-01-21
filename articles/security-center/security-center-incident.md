@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9029b6a0fc97525ff8a462a725a256b3997e44f1
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: 25fef9472f023c37538cfc2f5f7c37c0bfca746e
 
 
 ---
@@ -34,21 +34,23 @@ ms.openlocfilehash: 9029b6a0fc97525ff8a462a725a256b3997e44f1
 1. 在安全中心仪表板中，可以看到“ **安全警报** ”磁贴。
    
     ![安全中心的“安全警报”磁贴](./media/security-center-incident/security-center-incident-fig1.png)
+
 2. 单击此磁贴以展开查看，如果检测到安全事件，它将在安全警报图下方出现，如下所示：
    
-   ![安全事件](./media/security-center-incident/security-center-incident-fig2.png)
+    ![安全事件](./media/security-center-incident/security-center-incident-fig2.png)
+
 3. 请注意，安全事件描述相比其他警报具有不同的图标。 单击事件即可查看有关此事件的更多详细信息。
    
-   ![安全事件](./media/security-center-incident/security-center-incident-fig3.png)
-4. 在“事件”边栏选项卡上，将看到有关此安全事件的详细信息，其中包括其完整的说明、严重程度（这种情况下严重程度较高）、当前状态（这种情况下仍然是活跃，这表明用户尚未执行操作来解除它 - 可以通过右键单击“安全警报”边栏选项卡中的事件完成操作）、被攻击的资源（这种情况下是 VM1）、事件的补救步骤，并且在底部窗格中有包含在此事件中的警报。 如果想要获取每个警报的详细信息，只需单击它，另一个边栏选项卡将会打开，如下所示：
+    ![安全事件](./media/security-center-incident/security-center-incident-fig3.png)
+
+4. 在“事件”边栏选项卡上，将看到有关此安全事件的详细信息，其中包括其完整的说明、严重程度（这种情况下严重程度较高）、当前状态（在本例中仍*在发生*，这表明用户尚未对它采取措施 - 可以通过右键单击“安全警报”边栏选项卡中的事件完成操作）、被攻击的资源（在本例中为 *VM1*）、事件的补救步骤，并且在底部窗格中有包含在此事件中的警报。 如果想要获取每个警报的详细信息，只需单击它，另一个边栏选项卡将会打开，如下所示：
    
-   ![安全事件](./media/security-center-incident/security-center-incident-fig4.png)
+    ![安全事件](./media/security-center-incident/security-center-incident-fig4.png)
 
 此边栏选项卡上的信息将因警报而有所不同。 请参阅 [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) ，了解更多有关如何管理这些警报的详细信息。 有关此功能的一些重要注意事项：
 
 * 使用新的筛选器，你可以自定义视图，以仅显示事件、仅显示警报，或两者。 
 * 同一个警报可以作为事件（如果适用）的一部分，也可以作为独立的警报显示。 
-* 关闭事件不会消除相关警报。
 
 ## <a name="see-also"></a>另请参阅
 在本文档中，已经学习了如何在安全中心使用安全事件功能。 若要了解有关安全中心的详细信息，请参阅以下内容：
@@ -63,6 +65,6 @@ ms.openlocfilehash: 9029b6a0fc97525ff8a462a725a256b3997e44f1
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
