@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5137e0f33497dfe7ee815bb4bc30929364f6df72
+ms.sourcegitcommit: cafe4f2d9ae9a79fd2e27b8734bda43bb774eeb2
+ms.openlocfilehash: e0ef1b006a2b202c08a71caaff4ef4d763d50d0a
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 5137e0f33497dfe7ee815bb4bc30929364f6df72
 
 ## <a name="overview"></a>概述
 本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。
-你将创建一个空白 Xamarin.Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。 完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。 [通知中心应用][GitHub] 示例中提供了完成的代码。
+你将创建一个空白 Xamarin.Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。 完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。 [NotificationHubs 应用][GitHub]示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单广播方案。
 
@@ -68,10 +68,11 @@ ms.openlocfilehash: 5137e0f33497dfe7ee815bb4bc30929364f6df72
 ### <a name="create-a-new-project"></a>创建新项目
 1. 在 Xamarin Studio 中，依次单击“新建解决方案”、“Android 应用”、“下一步”。
    
-       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
+      ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
+
 2. 输入你的“应用名称”和“标识符”。 单击你要支持的“目标平台”，然后单击“下一步”和“创建”。
    
-       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
+      ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
 
     这将会创建一个新的 Android 项目。
 
@@ -84,7 +85,7 @@ ms.openlocfilehash: 5137e0f33497dfe7ee815bb4bc30929364f6df72
    > 
    > 
    
-       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
+      ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
 2. （可选）将“最低 Android 版本”设置为另一个 API 级别。
 3. （可选）将“目标 Android 版本”设置为要针对的另一个 API 版本（必须是 API 级别 8 或更高）。
 
@@ -151,7 +152,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 6. 创建新类 **MyBroadcastReceiver**。
    
    > [!NOTE]
-   > 下面，我们将演练如何从头开始创建 **BroadcastReceiver** 类。 但是，可以使用一种快捷方法来替代手动创建 **MyBroadcastReceiver.cs**：引用 [NotificationHubs 示例] [GitHub] 随附的 Xamarin.Android 项目中的 **GcmService.cs** 文件。 也可以从复制 **GcmService.cs** 并更改类名称着手。
+   > 下面，我们将演练如何从头开始创建 **BroadcastReceiver** 类。 但是，可以使用一种快捷方法来替代手动创建 **MyBroadcastReceiver.cs**：引用 **NotificationHubs 示例**随附的 Xamarin.Android 项目中的 [GcmService.cs][GitHub] 文件。 也可以从复制 **GcmService.cs** 并更改类名称着手。
    > 
    > 
 7. 将以下 using 语句添加到 **MyBroadcastReceiver.cs** （引用前面添加的组件和程序集）：
@@ -343,10 +344,10 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 1. 从“工具”中，单击“打开 Android 模拟器管理器”，选择设备，然后单击“编辑”。
    
-       ![][18]
+      ![][18]
 2. 在“目标”中选择“Google API”，然后单击“确定”。
    
-       ![][19]
+      ![][19]
 3. 在顶部工具栏中，单击“运行”，然后选择应用。 这将启动模拟器并运行该应用程序。
    
    应用将从 GCM 检索 *registrationId* 并注册到通知中心。
@@ -360,7 +361,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 下面是你可能想要查看的有关发送通知的其他教程列表：
 
-* ASP.NET：请参阅 [使用通知中心向用户推送通知]。
+* ASP.NET：请参阅 [使用通知中心将通知推送到用户]。
 * Azure 通知中心 Java SDK：有关从 Java 发送通知的信息，请参阅 [如何通过 Java 使用通知中心](notification-hubs-java-push-notification-tutorial.md) 。 这种方法已在 Eclipse for Android 开发环境中进行测试。
 * PHP：请参阅 [如何通过 PHP 使用通知中心](notification-hubs-php-push-notification-tutorial.md)。
 
@@ -371,7 +372,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 1. 创建新的 Visual C# 控制台应用程序：
    
-       ![][20]
+      ![][20]
 2. 在 Visual Studio 中，依次单击“工具”、“NuGet 包管理器”和“包管理器控制台”。
    
     这会在 Visual Studio 中显示“包管理器控制台”。
@@ -398,17 +399,17 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
          Console.ReadLine();
 7. 按 F5 键以运行应用。 你应会在应用中收到通知。
    
-       ![][21]
+      ![][21]
 
 #### <a name="optional-send-notifications-by-using-a-mobile-service"></a>（可选）使用移动服务发送通知
 1. 按照 [移动服务入门]操作。
 2. 登录到 [Azure 经典门户]并选择你的移动服务。
 3. 选择顶部的“计划程序”选项卡。
    
-       ![][22]
+      ![][22]
 4. 创建新的计划作业，插入名称，然后选择“按需”。
    
-       ![][23]
+      ![][23]
 5. 创建作业时，单击该作业名称。 然后单击顶部栏上的“脚本”选项卡。
 6. 在你的计划程序函数中插入以下脚本。 确保将占位符替换为你先前获取的通知中心名称和 *DefaultFullSharedAccessSignature* 的连接字符串。 单击“保存” 。
    
@@ -432,12 +433,12 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 在这个简单的示例中，你将通知广播到所有 Android 设备。 若要针对特定客户，请参考教程 [使用通知中心将通知推送到用户]。 如果要按兴趣组划分用户，可以阅读 [使用通知中心发送突发新闻]。 在[通知中心指南]和[针对 Android 的通知中心操作指南]中了解有关如何使用通知中心的详细信息。
 
 <!-- Anchors. -->
-[启用 Google Cloud Messaging]: #register
+[Enable Google Cloud Messaging]: #register
 [Configure your Notification Hub]: #configure-hub
-[将应用连接到通知中心]: #connecting-app
-[使用模拟器运行应用]: #run-app
-[从后端发送通知]: #send
-[后续步骤]:#next-steps
+[Connecting your app to the Notification Hub]: #connecting-app
+[Run your app with the emulator]: #run-app
+[Send notifications from your back-end]: #send
+[Next steps]:#next-steps
 
 <!-- Images. -->
 
@@ -458,27 +459,27 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 
 <!-- URLs. -->
-[提交应用页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [移动服务入门]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
-[JavaScript 和 HTML]: /develop/mobile/tutorials/get-started-with-push-js
+[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
 [Azure 经典门户]: https://manage.windowsazure.com/
-[wns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 [针对 Android 的通知中心操作指南]: http://msdn.microsoft.com/library/dn282661.aspx
 
-[使用通知中心向用户推送通知]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心将通知推送到用户]: /manage/services/notification-hubs/notify-users-aspnet
 [使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
-[GCMClient 组件页]: http://components.xamarin.com/view/GCMClient
-[Xamarin.NotificationHub GitHub 页]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
+[GCMClient Component page]: http://components.xamarin.com/view/GCMClient
+[Xamarin.NotificationHub GitHub page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Google Cloud Messaging 客户端组件]: http://components.xamarin.com/view/GCMClient/
 [Azure 消息传送组件]: http://components.xamarin.com/view/azure-messaging
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

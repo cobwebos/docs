@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: ad50c6c12bc3b328d776f37fc31f44d90a0915a3
-ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
+ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
+ms.openlocfilehash: 03faf2594c9c3d7612127d46bdaa99b937c78475
 
 
 ---
@@ -62,7 +62,7 @@ ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
       * `Microsoft.Azure.Management.DataLake.StoreUploader` - 本教程使用 v0.10.6 预览版。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.8 预览版。
         
-        ![添加 NuGet 源](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "Create a new Azure Data Lake account")
+        ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/ADL.Install.Nuget.Package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭“NuGet 包管理器” 。
 6. 打开“Program.cs” ，删除现有代码，然后包含以下语句，添加对命名空间的引用。
    
@@ -126,7 +126,7 @@ ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
 > 
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>如果结合客户端机密使用服务到服务身份验证
-可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../resource-group-create-service-principal-portal.md)使用这种身份验证。
+可以使用以下代码片段通过客户端密码/应用程序密钥/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)使用这种身份验证。
 
     // Service principal / appplication authentication with client secret / key
     // Use the client ID and certificate of an existing AAD "Web App" application.
@@ -138,7 +138,7 @@ ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
 ### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>如果结合证书使用服务到服务身份验证
-还可以使用以下代码片段通过应用程序证书/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../resource-group-create-service-principal-portal.md)使用这种身份验证。
+还可以使用以下代码片段通过应用程序证书/服务主体对应用程序进行非交互式身份验证。 请对现有的 [Azure AD“Web 应用”应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)使用这种身份验证。
 
     // Service principal / application authentication with certificate
     // Use the client ID and certificate of an existing AAD "Web App" application.
@@ -261,6 +261,6 @@ ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 

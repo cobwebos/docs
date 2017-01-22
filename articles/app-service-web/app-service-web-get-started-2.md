@@ -11,17 +11,17 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.date: 05/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 310bf3656db6ae6e0a8d3c1cc13442e2aa4e7752
+ms.sourcegitcommit: b2c501b6e048d569ebf43b8f40d6b08f687ab624
+ms.openlocfilehash: 549b84788259796c2146fa19763fb00d4e03019c
 
 
 ---
 # <a name="add-functionality-to-your-first-web-app"></a>在第一个 Web 应用中添加功能
-通过[在 5 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started.md) 教程，你已将一个示例 Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 在本文中，你将会快速地在所部署的 Web 应用中添加一些强大功能。 只需几分钟，你就能够：
+通过[在 5 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started-cli-nodejs.md) 教程，你已将一个示例 Web 应用部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)。 在本文中，你将会快速地在所部署的 Web 应用中添加一些强大功能。 只需几分钟，你就能够：
 
 * 强制实施用户身份验证
 * 自动缩放应用
@@ -150,13 +150,13 @@ App Service 针对某些常见的身份验证要求提供周全的解决方案�
 * [备份应用](web-sites-backup.md) - 为 Web 应用设置备份和还原。 针对意外的故障做好准备，并能够从中恢复。
 * [启用诊断日志](web-sites-enable-diagnostic-log.md) - 从 Azure 或应用程序跟踪中读取 IIS 日志。 以串流的形式读取日志、下载日志，或者将日志移植到 [Application Insights](../application-insights/app-insights-overview.md) 以进行全方位的分析。
 * [扫描应用中的漏洞](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) -
-  使用 Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) 提供的服务扫描 Web 应用，以查出新型威胁。
+  使用 [Tinfoil Security](https://www.tinfoilsecurity.com/) 提供的服务扫描 Web 应用，以查出新型威胁。
 * [运行后台作业](../azure-functions/functions-overview.md) - 运行作业来进行数据处理、报告，等等。
 * [了解 App Service 的工作方式](../app-service/app-service-how-works-readme.md)
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

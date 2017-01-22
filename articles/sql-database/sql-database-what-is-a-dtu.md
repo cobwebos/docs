@@ -17,8 +17,8 @@ ms.workload: NA
 ms.date: 09/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ad6fb631f05b1e88e8cbaaca83f9863cfb643269
-ms.openlocfilehash: e5a6c17117e0c79d86c45a07f69433a96fdb9052
+ms.sourcegitcommit: 3d619f5d6959594ee9b139d611d7e45390a40c55
+ms.openlocfilehash: d9b0eaa48d71f3ecf0a23f3bddb3c777c98afea7
 
 
 ---
@@ -37,9 +37,9 @@ eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组
 
 ![SQL 数据库简介：按层和级别统计的 eDTU](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-对池提供了固定数量的 eDTU，以获得固定价格。 在池中，单独的数据库都被赋予了在固定参数内自动缩放的灵活性。 高负荷下的数据库可能会消耗更多的 eDTU 以满足需求。 低负荷下的数据库消耗较少的 eDTU，没有任何负荷的数据库不会消耗任何 eDTU。 设置整个池（而非单个数据库）的资源简化了管理任务。 此外，必须具有该池的可预测预算。
+对池提供了固定数量的 eDTU，以获得固定价格。 在弹性池中，单个数据库能够在配置的边界范围内灵活自动缩放。 负载较重的数据库可以消耗更多的 eDTU 来满足需求，负载较轻的数据库消耗更少的 eDTU，完全无负载的数据库则不消耗任何 eDTU。 为整个池而不是每个数据库预配资源可以简化管理任务，使池的预算可预测。
 
-可以对现有池增加额外的 eDTU，这不会造成数据库故障，也不会影响弹性池中的数据库。 同样，你随时可以从现有池中删除不再需要的额外 eDTU。 可以增加或减少池的数据库。 如果可以预测到数据库的资源利用率不足，则将其移出。
+可以对现有池增加额外的 eDTU，这不会造成数据库关闭，也不会影响池中的数据库。 同样，随时可以从现有池中删除不再需要的额外 eDTU。 可以在池中添加或删除数据库，或者限制重负载数据库的 eDTU 用量，以便为其他数据库预留 eDTU。 如果可以预见到某个数据库的资源利用率不高，可将其移出池，并使用所需的可预测资源量将它配置为单一数据库。
 
 ## <a name="how-can-i-determine-the-number-of-dtus-needed-by-my-workload"></a>如何确定工作负荷所需的 DTU 数？
 如果打算将现有的本地或 SQL Server 虚拟机工作负荷迁移到 Azure SQL 数据库，可以使用 [DTU 计算器](http://dtucalculator.azurewebsites.net/) 来估计所需的 DTU 数。 对于现有的 Azure SQL 数据库工作负荷，可以使用 [SQL 数据库 Query Performance Insight](sql-database-query-performance.md) 来了解数据库资源使用量 (DTU)，更深入地了解如何优化工作负荷。 也可以使用 [sys.dm_db_ resource_stats DMV](https://msdn.microsoft.com/library/dn800981.aspx) 获取最近一小时的资源消耗信息。 或者，可以查询目录视图 [sys.resource_stats](http://msdn.microsoft.com/library/dn269979.aspx)，获取最近 14 天的同类数据，不过，五分钟平均值的准确性较低。
@@ -58,6 +58,6 @@ eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

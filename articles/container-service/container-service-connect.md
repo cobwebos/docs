@@ -17,13 +17,17 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 319978579ae6ad868030d2ec99bce6e6aaa22299
-ms.openlocfilehash: 24a8b9c4e78971199236553802a71134bd12829c
+ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
+ms.openlocfilehash: 5296586b9266f432042f847f4dff9e6ff62ebc8b
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>连接到 Azure 容器服务群集
 由 Azure 容器服务部署的 DC/OS、Kubernetes 和 Docker Swarm 群集都公开 REST 终结点。  对于 Kubernetes，将在 Internet 上安全地公开此终结点，用户可以直接从连接到 Internet 的任何计算机访问它。 对于 DC/OS 和 Docker Swarm，必须创建 SSH 隧道才能安全地连接到 REST 终结点。 下面说明了上述每个连接。
+
+> [!NOTE]
+> Azure 容器服务中的 Kubernetes 支持当前为预览版。
+>
 
 ## <a name="connecting-to-a-kubernetes-cluster"></a>连接到 Kubernetes 群集。
 若要连接到 Kubernetes 群集，需要已安装 `kubectl` 命令行工具。  安装此工具的最简单方法是使用 Azure 2.0 `az` 命令行工具。
@@ -172,6 +176,6 @@ export DOCKER_HOST=:2375
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

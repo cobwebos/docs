@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 6d5f4640556f98f9601139c318ffc578e9df2539
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 315fb49ba25c46afaa6571d9249ecd1c8da13e91
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 6d5f4640556f98f9601139c318ffc578e9df2539
 ## <a name="what-is-azure-sql-database"></a>什么是 Azure SQL 数据库？
 Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 数据库可以是：
 
-- 具有[自己的一组资源](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU) 的独立数据库
+- 具有其[自己的一组资源](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU) 的单一数据库
 - [共享一组资源](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTU) 的[弹性池](sql-database-elastic-pool.md)的一部分
 - [向外扩展的一组共享数据库](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)的一部分，可以是单一数据库，也可以是入池数据库
 - 参与[多租户 SaaS 设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)的一组数据库的一部分，数据库可以是单一数据库或入池数据库（或两者） 
@@ -65,12 +65,12 @@ Microsoft Azure SQL 数据库使用的默认数据库排序规则是 **SQL_LATIN
 - 有关 Azure SQL 逻辑服务器的概述，请参阅 [SQL 数据库逻辑服务器概述](sql-database-server-overview.md)
 - 有关 Transact-SQL 支持和差异的信息，请参阅 [Azure SQL 数据库 Transact-SQL 差异](sql-database-transact-sql-information.md)。
 - 了解基于**服务层**的具体资源配额和限制的信息。 有关服务层的概述，请参阅 [SQL 数据库服务层](sql-database-service-tiers.md)。
-- 有关与安全相关的指导原则，请参阅 [Azure SQL 数据库安全指导原则和限制](sql-database-security-guidelines.md)。
+- 有关安全概述，请参阅 [Azure SQL 数据库安全概述](sql-database-security-overview.md)。
 - 有关驱动程序可用性和 SQL 数据库支持的信息，请参阅[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 
