@@ -11,7 +11,7 @@
 ### [Node.js](../app-service-api/app-service-api-nodejs-api-app.md)
 ### [CORS](../app-service-api/app-service-api-cors-consume-javascript.md)
 
-## Mobile Apps
+## 移动应用
 ### [Android](../app-service-mobile/app-service-mobile-android-get-started.md)
 ### [Cordova](../app-service-mobile/app-service-mobile-cordova-get-started.md)
 ### [iOS](../app-service-mobile/app-service-mobile-ios-get-started.md)
@@ -36,7 +36,7 @@
 
 ### [Azure 应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Azure 应用服务和现有的 Azure 服务](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [应用服务计划深入介绍](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [应用服务计划深度介绍](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [高密度托管](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [在 Azure 应用服务中使用 WebJobs](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [应用服务环境](../app-service-web/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -152,14 +152,10 @@
 ### [流式传输日志和控制台](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [使用 Visual Studio 进行排除故障](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
-# 参考
+# 资源
 ## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ## [应用服务参考](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-
-# 相关内容
-
-# 资源
 ## [应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ## [WebJob 资源列表](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
@@ -167,6 +163,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

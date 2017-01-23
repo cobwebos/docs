@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/12/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
+ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
+ms.openlocfilehash: 49779d5d15e81a50e32b87255152d996600d23eb
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
 * 可以让用户使用其 Azure AD 帐户自动登录到 FileCloud（单一登录）
 * 可在一个中心位置（即 Azure 经典门户）管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要配置 Azure AD 与 FileCloud 的集成，需要具有以下项：
@@ -63,19 +63,25 @@ ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。 
    
     ![Active Directory][1]
+
 2. 从“目录”列表中，选择要为其启用目录集成的目录。
+
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
     ![应用程序][2]
+
 4. 在页面底部单击“添加”。
    
     ![应用程序][3]
+
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
     ![应用程序][4]
+
 6. 在搜索框中，键入“FileCloud”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_01.png)
+
 7. 在结果面板中，选择“FileCloud”，然后单击“完成”以添加该应用程序。
    
     ![在库中选择应用](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_0001.png)
@@ -103,50 +109,62 @@ ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
 1. 在经典门户中，在 **FileCloud** 应用程序集成页上，单击“配置单一登录”，以打开“配置单一登录”对话框。
    
     ![配置单一登录][6] 
+
 2. 在“你希望用户如何登录到 FileCloud”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_03.png)
+
 3. 在“配置应用设置”对话框页上，执行以下步骤，然后单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_04.png)
    
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudhosted.com`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.filecloudhosted.com`。
    
     b. 在“标识符”文本框中，键入：`https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`。
    
     c. 单击“下一步”
    
-   > [!NOTE]
-   > 请注意，必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请通过 <mailto:support@codelathe.com> 联系 FileCloud 支持团队。
-   > 
-   > 
+    > [!NOTE]
+    > 请注意，必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请通过 <mailto:support@codelathe.com> 联系 FileCloud 支持团队。
+    > 
+    > 
+
 4. 在“在 FileCloud 处配置单一登录”页上，执行以下步骤并单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_05.png)
    
-    a. 单击“下载元数据”，然后在计算机上保存该文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
    
     b. 单击“下一步”。
+
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 FileCloud 租户。
+
 6. 在左侧导航窗格上，单击“设置”。 
    
     ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
+
 7. 在“设置”部分中单击“SSO”选项卡。 
    
     ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
+
 8. 在“单一登录 (SSO) 设置”面板上选择“SAML”作为“默认 SSO 类型”。
    
     ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
+
 9. 在“SAML 设置”面板上的“IdP 终结点 URL”文本框中，输入 Azure AD 应用程序配置向导中的“实体 ID”值。
    
     ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
+
 10. 在记事本中打开下载的元数据文件，将其内容复制到剪贴板，然后将其粘贴到“SAML 设置”面板上的“IdP 元数据”文本框中。
     
     ![在应用端配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
+
 11. 单击“保存”按钮。
+
 12. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
     
     ![Azure AD 单一登录][10]
+
 13. 在“单一登录确认”页上，单击“完成”。  
     
     ![Azure AD 单一登录][11]
@@ -161,43 +179,50 @@ ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_09.png)
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+
+2. 在“目录”列表中，选择要启用目录集成的目录。
+
 3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_03.png)
+
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_04.png)
+
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_05.png)
    
-    a. 对于“用户类型”，选择“组织中的新用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
     c. 单击“下一步”。
+
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_06.png)
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_06.png)
    
-   a. 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
-   b. 在“姓氏”文本框中，键入“Simon”。
+    b. 在“姓氏”文本框中，键入“Simon”。
    
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
+    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d. 在“角色”列表中，选择“用户”。
+    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e. 单击“下一步”。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_07.png)
+
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-filecloud-tutorial/create_aaduser_08.png)
    
-    a. 写下“新密码”的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
    
     b. 单击“完成”。   
 
@@ -221,13 +246,17 @@ ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
 1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
     ![分配用户][201]
+
 2. 在应用程序列表中，选择“FileCloud”。
    
     ![配置单一登录](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_50.png)
+
 3. 在顶部菜单中，单击“用户”。
    
     ![分配用户][203]
+
 4. 在“用户”列表中，选择“Britta Simon”。
+
 5. 在底部工具栏中，单击“分配”。
    
     ![分配用户][205]
@@ -261,6 +290,6 @@ ms.openlocfilehash: 5368e5a3e75e488487613c76bb4895668d3c3e0e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

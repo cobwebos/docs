@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/26/2016
+ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: e8b2379c750047bf2a4c7342815b5c3aab3883c6
-ms.openlocfilehash: a101ad134e15a0da5e6d3fd5cbf4ca051da34e86
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 76b6934950354f94f4f68e7cfef00e890d9391a6
 
 
 ---
@@ -41,7 +41,7 @@ Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提�
 > 
 
 ## <a name="create-the-application"></a>创建应用程序
-Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 使用新建项目向导可以创建应用程序项目以及你的第一个服务项目。 以后可以添加更多服务。
+Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 使用“新建项目”向导创建应用程序项目以及第一个服务项目。 如果愿意，稍后还可以添加更多服务。
 
 1. 以管理员身份启动 Visual Studio。
 2. 单击“文件”>“新建项目”>“云”>“Service Fabric 应用程序”。
@@ -106,7 +106,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
    
     Service Fabric Explorer 提供群集的可视表示形式--包括部署到其中的应用程序集和构成它的物理节点集。 要了解有关 Service Fabric Explorer 的详细信息，请参阅 [可视化群集](service-fabric-visualizing-your-cluster.md)。
 6. 在左窗格中，展开“群集”>“节点”，然后查找运行代码的节点。
-7. 单击“操作”>“停用（重启）”来模拟计算机重启。 （注意，也可以从左窗格中节点列表视图中的上下文菜单停用计算机。）
+7. 单击“操作”>“停用（重启）”来模拟计算机重启。 或者，从左窗格中的节点列表视图停用节点。）
    
     ![在 Service Fabric 资源管理器中停止节点][sfx-stop-node]
    
@@ -116,14 +116,14 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
     ![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]
 
 ## <a name="switch-cluster-mode"></a>切换群集模式
-默认情况下，将本地开发群集配置为作为 5 节点群集运行，这对于调试在多个节点中部署的服务很有用。 不过，将应用程序部署到 5 节点的开发群集中可能需要一些时间。 如果想要快速循环访问代码更改，而不需要在 5 个节点上运行应用，可以将开发群集切换至单节点模式。 若要在单节点群集上运行代码，请右键单击系统任务栏中的本地群集管理器，并选择“切换群集模式”->“1 个节点”。  
+默认情况下，本地开发群集配置为一个 5 节点群集运行，这对于调试在多个节点中部署的服务很有用。 不过，将应用程序部署到 5 节点的开发群集中可能需要一些时间。 如果想要快速循环访问代码更改，而不需要在 5 个节点上运行应用，可以将开发群集切换到单节点模式。 若要在单节点群集上运行代码，请右键单击系统任务栏中的本地群集管理器，并选择“切换群集模式”->“1 个节点”。  
 
 ![切换群集模式][switch-cluster-mode]
 
-更改群集模式后，开发群集将重置，并删除在该群集上预配或运行的所有应用程序。
+更改群集模式时将重置开发群集，并删除所有在群集上预配或运行的应用程序。
 
 ## <a name="cleaning-up"></a>清理
-  结束之前，请务必记住该本地群集非常真实。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集将继续在后台运行。 可通过几个选项对群集进行管理：
+结束之前，请务必记住该本地群集是真实的。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集将继续在后台运行。 可通过几个选项对群集进行管理：
 
 1. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”  。
 2. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”  。 此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。 仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才删除群集。
@@ -133,6 +133,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 * 尝试使用 [Reliable Services](service-fabric-reliable-services-quick-start.md) 或 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 编程模型创建服务。
 * 了解如何使用 [Web 服务前端](service-fabric-add-a-web-frontend.md)向 Internet 服务公开服务。
 * 演练 [动手实验](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) 并创建一个无状态服务、配置监视和运行状况报告，然后执行应用程序升级。
+* 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 <!-- Image References -->
 
@@ -151,6 +152,6 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

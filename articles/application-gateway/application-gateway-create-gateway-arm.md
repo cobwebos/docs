@@ -4,7 +4,7 @@ description: "本页提供有关使用 Azure Resource Manager 创建、配置、
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 866e9b5f-0222-4b6a-a95f-77bc3d31d17b
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: f4648ea78c07d501164b44389302cedf717b28bd
+ms.sourcegitcommit: cb2b7bc626294e12c6e19647c1e787e1f671595b
+ms.openlocfilehash: 5da4b087131b0adef49f7019297db834d7bb9416
 
 
 ---
@@ -28,8 +28,6 @@ ms.openlocfilehash: f4648ea78c07d501164b44389302cedf717b28bd
 > * [Azure 经典 PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
-> 
-> 
 
 Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)
 
@@ -37,8 +35,6 @@ Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之�
 
 > [!IMPORTANT]
 > 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保你了解 [部署模型和工具](../azure-classic-rm.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。 本文档介绍如何使用 Azure Resource Manager 创建应用程序网关。 若要使用经典版本，请转到 [使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
-> 
-> 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -106,8 +102,6 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 
 > [!NOTE]
 > 如果你需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请查看 [custom probes and health monitoring](application-gateway-probe-overview.md) （自定义探测和运行状况监视）。
-> 
-> 
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
@@ -145,9 +139,9 @@ $subnet=$vnet.Subnets[0]
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway-configuration-object"></a>创建应用程序网关配置对象
+## <a name="create-the-application-gateway-configuration-objects"></a>创建应用程序网关配置对象
 
-在创建应用程序网关之前，必须设置所有配置项。 以下步骤将创建应用程序网关资源所需的配置项。
+在创建应用程序网关之前，需要设置所有配置项。 以下步骤将创建应用程序网关资源所需的配置项。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -215,8 +209,6 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 
 > [!NOTE]
 > **InstanceCount** 的默认值为 2，最大值为 10。 **GatewaySize** 的默认值为 Medium。 可以在 **Standard_Small**、**Standard_Medium** 和 **Standard_Large** 之间进行选择。
-> 
-> 
 
 ## <a name="create-an-application-gateway-by-using-new-azurermapplicationgateway"></a>使用 New-AzureRmApplicationGateway 创建应用程序网关
 
@@ -225,8 +217,6 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
-
-### <a name="step-9"></a>步骤 9
 
 从附加到应用程序网关的公共 IP 资源中检索应用程序网关的 DNS 和 VIP 详细信息。
 
@@ -262,8 +252,6 @@ Remove-AzureRmApplicationGateway -Name $appgwtest -ResourceGroupName appgw-rg -F
 
 > [!NOTE]
 > 可以使用 **-force** 开关来禁止显示该删除的确认消息。
-> 
-> 
 
 若要验证是否已删除服务，可以使用 `Get-AzureRmApplicationGateway` cmdlet。 此步骤不是必需的。
 
@@ -315,6 +303,6 @@ DnsSettings              : {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

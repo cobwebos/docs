@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 891461bd5069bd7ea5b3c20f301c9ddd9b2f035e
+ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
+ms.openlocfilehash: d5d84e7b070e5530ba3ae7da7c2d310150136736
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 891461bd5069bd7ea5b3c20f301c9ddd9b2f035e
 
 
 ## <a name="install-azure-powershell-10-or-greater"></a>安装 Azure PowerShell 1.0 或更高版本
-请参阅 [将 Azure PowerShell 与 Azur Resource Manager 配合使用](../powershell-azure-resource-manager.md#prerequisites)的“先决条件”部分。
+请参阅 [将 Azure PowerShell 与 Azur Resource Manager 配合使用](../powershell-azure-resource-manager.md)的“先决条件”部分。
 
 ## <a name="manage-accounts"></a>管理帐户
 运行任何 Data Lake Analytics 作业之前，必须具有 Data Lake Analytics 帐户。 与 Azure HDInsight 不同，Analytics 帐户未运行作业时无需付费。  只需在其运行作业时付费。  有关详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。  
@@ -269,7 +269,7 @@ Data Lake Analytics 当前支持以下数据源：
         -ItemType Table `
         -Path "master.dbo.mytable"
 
-### <a name="test-existence-of-catalog-item"></a>测试是否存在目录项
+### <a name="test-existence-of--catalog-item"></a>测试是否存在目录项
     Test-AzureRmDataLakeAnalyticsCatalogItem  `
         -Account $adlAnalyticsAccountName `
         -ItemType Database `
@@ -319,7 +319,7 @@ Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数�
 * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ## <a name="appendix-a---data-lake-analytics-arm-template"></a>附录 A - Data Lake Analytics ARM 模板
-以下 ARM 模板可用于部署 Data Lake Analytics 帐户及其从属 Data Lake Store 帐户。  将其保存为 json 文件，然后使用 PowerShell 脚本调用此模板。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../resource-group-template-deploy.md#deploy-with-powershell)和[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+以下 ARM 模板可用于部署 Data Lake Analytics 帐户及其从属 Data Lake Store 帐户。  将其保存为 json 文件，然后使用 PowerShell 脚本调用此模板。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../resource-group-template-deploy.md)和[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
 
     {
       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -377,6 +377,6 @@ Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

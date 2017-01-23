@@ -138,6 +138,9 @@
 ##### [使用 StorSimple Snapshot Manager 中的 MMC 操作](storsimple-snapshot-manager-mmc-menu.md)
 
 ### 构建解决方案
+#### [采用 Veeam 的 StorSimple](storsimple-configure-backup-target-veeam.md)
+#### [采用 Veritas Backup Exec 的 StorSimple](storsimple-configure-backup-target-using-backup-exec.md)
+#### [采用 Veritas NetBackup 的 StorSimple](storsimple-configure-backuptarget-netbackup.md)
 #### [在 Azure 中实现自动化文件服务器灾难恢复](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [通过 Express Route 使用 StorSimple](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 #### [采用 VMware 的 StorSimple](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
@@ -217,6 +220,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

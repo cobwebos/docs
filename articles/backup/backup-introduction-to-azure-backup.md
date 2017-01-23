@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/6/2016
+ms.date: 12/7/2016
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: b9737c3da308aecf25d5f18088f96c319edeafd5
-ms.openlocfilehash: 76ec51a75240710b24c0e91042d6229e60eeada9
+ms.sourcegitcommit: 9de8032bc69b054d5d13857159ff994f505497a6
+ms.openlocfilehash: 08e7d4402ad52835d193b2083e3c9b2776e0332e
 
 
 ---
@@ -33,10 +33,11 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **无限缩放** - Azure 备份利用 Azure 云的基础功能和无限缩放功能实现高可用性 - 无需维护或监视开销。 可设置警报来获取相关事件信息，但无需担忧云端数据的高可用性。
 
-**多个存储选项** - 高可用性的一个方面是存储复制。 Azure 备份提供两种类型的复制：[本地冗余存储](../storage/storage-redundancy.md#locally-redundant-storage)和[异地复制存储](../storage/storage-redundancy.md#geo-redundant-storage)。 根据需要选择备份存储选项：
+**多个存储选项** - 高可用性的一个方面是存储复制。 Azure 备份提供两种类型的复制：[本地冗余存储](../storage/storage-redundancy.md#locally-redundant-storage)和[异地冗余存储](../storage/storage-redundancy.md#geo-redundant-storage)。 根据需要选择备份存储选项：
 
-* 本地冗余存储 (LRS) 将同一区域的成对数据中心内的数据复制三次（创建三个数据副本）。 LRS 选项成本低廉，适合注重价格的客户，因为它保护数据免受本地硬件故障的损害。
-* 异地复制存储 (GRS) 将数据复制在源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但它可让数据更为持久，即使出现区域性中断也是如此。
+* 本地冗余存储 (LRS) 将同一区域的成对数据中心内的数据复制三次（创建三个数据副本）。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
+
+* 异地冗余存储 (GRS) 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 可让数据更为持久，即使出现区域性中断也是如此。
 
 **无限数据传输** - Azure 备份不会限制传输的入站或出站数据量。 Azure 备份也不会对传输的数据收费。 但如果使用 Azure 导入/导出服务来导入大量数据，则入站数据将产生相关费用。 有关此费用的详细信息，请参阅 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。 出站数据是指还原操作期间从备份保管库传输的数据。
 
@@ -176,17 +177,26 @@ Azure 备份代理提供网络限制功能，可用于控制数据传输期间�
 
 ### <a name="backup-and-retention"></a>备份和保留
 
-Azure 备份针对每个备份保管库实施 9999 个恢复点（也称为备份副本或快照）的限制。 下表显示了每个组件的最大备份频率（向保管库备份）。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额将会耗尽。 如果每月创建一个恢复点，可以保留恢复点 833 年。 备份服务未针对恢复点实施过期时间限制。
+Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备份副本或快照）的限制。 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 有关详细信息，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)部分。 保存数据的备份副本时，将保护实例。 数据的备份副本是保护项。 如果源数据丢失或损坏，备份副本可还原源数据。 下表显示了每个组件的最大备份频率。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额将会耗尽。 如果每月创建一个恢复点，可以保留恢复点 833 年。 备份服务未针对恢复点实施过期时间限制。
 
 |  | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 备份频率<br/> （到备份保管库） |每天三次备份 |每天两次备份 |每天两次备份 |每天一次备份 |
 | 备份频率<br/> （到磁盘） |不适用 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔 1 小时 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔 1 小时</p> |不适用 |
 | 保留期选项 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |
-| 每个服务器的恢复点数上限 |9999|9999|9999|9999|
+| 每个受保护实例的恢复点数上限 |9999|9999|9999|9999|
 | 最长数据保留期 |取决于备份频率 |取决于备份频率 |取决于备份频率 |取决于备份频率 |
 | 本地磁盘上的恢复点 |不适用 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |不适用 |
 | 磁带上的恢复点 |不适用 |不受限制 |不适用 |不适用 |
+
+## <a name="what-is-a-protected-instance"></a>什么是受保护实例
+受保护的实例是对 Windows 计算机、服务器（物理或虚拟）或已配置为备份到 Azure 的 SQL 数据库的一般引用。 为计算机、服务器或数据库配置备份策略并创建数据的备份副本后，实例会受到保护。 该受保护实例的备份数据的后续副本（称为恢复点）增加了所使用的存储量。 最多可为受保护实例创建 9999 个恢复点。 如果从存储中删除恢复点，则不会计入 9999 个恢复点总数。
+受保护实例的一些常见示例为虚拟机、应用程序服务器、数据库和运行 Windows 操作系统的个人计算机。 例如：
+
+* 运行 Hyper-V 或 Azure IaaS 虚拟机监控程序结构的虚拟机。 虚拟机的来宾操作系统可以是 Windows Server 或 Linux。
+* 应用程序服务器：它可为运行 Windows Server 和工作负荷（具有需备份的数据）的物理或虚拟机。 常见的工作负荷有 Microsoft SQL Server、Microsoft Exchange 服务器、Microsoft SharePoint 服务器、Microsoft Dynamics 和 Windows Server 上的文件服务器角色。 若要备份这些工作负荷，需要 System Center Data Protection Manager (DPM) 或 Azure 备份服务器。
+* 运行 Windows 操作系统的个人计算机或笔记本电脑。
+
 
 ## <a name="what-is-the-vault-credential-file"></a>什么是保管库凭据文件？
 保管库凭据文件是门户为每个备份保管库生成的证书。 然后，门户会将公钥上载到访问控制服务 (ACS)。 下载凭据时，会向你提供私钥。 可用它来注册要保护的计算机。 私钥可用于对要将备份数据发送至特定备份保管库的服务器或计算机进行身份验证。

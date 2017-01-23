@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/12/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: 5eb4b01718b47bf7dd2adfcb60b6ddfbe01d5ab6
+ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
+ms.openlocfilehash: d46c87480fd198bf4f09e48f4d2ea838a350190c
 
 
 ---
@@ -25,8 +25,6 @@ ms.openlocfilehash: 5eb4b01718b47bf7dd2adfcb60b6ddfbe01d5ab6
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-multisite-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-> 
-> 
 
 托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关将根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载平衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
 
@@ -84,7 +82,7 @@ Get-AzureRmSubscription
 选择要使用的 Azure 订阅。
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 ```
 
 ### <a name="step-4"></a>步骤 4
@@ -107,8 +105,6 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 
 > [!NOTE]
 > 如果你需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请参阅[自定义探测和运行状况监视](application-gateway-probe-overview.md)。
-> 
-> 
 
 ## <a name="create-a-virtual-network-and-subnets"></a>创建虚拟网络和子网
 
@@ -158,7 +154,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicI
 
 ## <a name="create-application-gateway-configuration"></a>创建应用程序网关配置
 
-在创建应用程序网关之前，必须设置所有配置项。 以下步骤将创建应用程序网关资源所需的配置项。
+创建应用程序网关之前，必须设置所有配置项目。 以下步骤将创建应用程序网关资源所需的配置项。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -177,7 +173,7 @@ $pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIP
 $pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIPAddresses 10.0.1.103, 10.0.1.104, 10.0.1.105
 ```
 
-在本示例中，会有两个后端池根据请求的站点路由网络流量。 一个池接收来自站点“contoso.com”的流量，另一个池接收来自站点“fabrikam.com”的流量。 必须替换上述 IP 地址，添加自己的应用程序 IP 地址终结点。 对于后端实例，也可以使用公共 IP 地址、FQDN 或 VM 的 NIC 来替换内部 IP 地址。 在 PowerShell 中使用“-BackendFQDNs”参数来指定 FQDN 而非 IP。
+在本示例中，会有两个后端池根据请求的站点路由网络流量。 一个池接收来自站点“contoso.com”的流量，另一个池接收来自站点“fabrikam.com”的流量。 必须替换上述 IP 地址，添加自己的应用程序 IP 地址终结点。 对于后端实例，也可以使用公共 IP 地址、FQDN 或 VM 的 NIC 来替换内部 IP 地址。 若要指定 FQDN 而非 IP，请在 PowerShell 中使用“-BackendFQDNs”参数。
 
 ### <a name="step-3"></a>步骤 3
 
@@ -254,7 +250,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配 DNS 名称，该名称不友好。 若要确保最终用户可以访问应用程序网关，可以使用 CNAME 记录以指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -289,6 +285,6 @@ DnsSettings              : {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
