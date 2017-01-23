@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2387baad5737998d2ba7f289e0a4fcdd6dd04245
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4aa61eb5fb6c441bdfebd8bcc46ad62fbaf78548
 
 
 ---
@@ -575,7 +575,7 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 * 若要弹出“逻辑应用设计器”，请输入逻辑应用名称和应用服务计划。
 * 选择某个 HTTP 操作并输入下图中显示的参数：
 
-![](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
+![逻辑应用设计器](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>后续步骤
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)了解如何使用交叉验证和超参数扫描训练模型。
@@ -583,6 +583,6 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

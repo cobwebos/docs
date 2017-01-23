@@ -1,6 +1,6 @@
 ---
-title: "使用适用于 C 语言的 Azure IoT 设备 SDK | Microsoft 文档"
-description: "了解并开始使用适用于 C 语言的 Azure IoT 设备 SDK 中的示例代码。"
+title: "适用于 C 语言的 Azure IoT 设备 SDK | Microsoft Docs"
+description: "开始使用适用于 C 语言的 Azure IoT 设备 SDK，并了解如何创建与 IoT 中心通信的设备应用。"
 services: iot-hub
 documentationcenter: 
 author: olivierbloch
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 38dd351fb6acf5b754eb8fd4b768262241ab24c3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 953bc766fca590a4c1517f3671333e537407c241
 
 
 ---
-# <a name="introducing-the-azure-iot-device-sdk-for-c"></a>适用于 C 语言的 Azure IoT 设备 SDK 简介
+# <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 **Azure IoT 设备 SDK** 是一个库集，旨在简化从 **Azure IoT 中心**服务发送事件和接收消息的过程。 有各种不同的 SDK，每个 SDK 都以特定的平台为目标，而本文说明的是**适用于 C 语言的 Azure IoT 设备 SDK**。
 
 适用于 C 语言的 Azure IoT 设备 SDK 以 ANSI C (C99) 编写，以获得最大可移植性。 如此就很适合在一些平台和设备上运行 - 尤其是在以将磁盘和内存占用量降到最低作为优先考虑的情况下。  
@@ -75,7 +75,7 @@ SDK 中包含的[自述文件](https://github.com/Azure/azure-iot-sdks/tree/mast
   ![](media/iot-hub-device-sdk-c-intro/08-CMake.PNG)
 * 在打开 **VS2015 开发人员命令提示符**之前，请先安装 Git 命令行工具。 若要安装这些工具，请完成以下步骤：
   
-  1. 启动 **Visual Studio 2015** 安装程序（或从“**程序和功能**”控制面板选择 **Microsoft Visual Studio 2015**，然后选择“**更改**”）。
+  1. 启动 **Microsoft Visual Studio 2015** 安装程序（或从“程序和功能”控制面板选择“Microsoft Visual Studio 2015”，然后选择“更改”）。
   2. 确保在安装程序中选择 **Git for Windows** 功能，但也可以选中“**Visual Studio 的 GitHub 扩展**”选项以提供 IDE 集成：
      
         ![](media/iot-hub-device-sdk-c-intro/10-GitTools.PNG)
@@ -91,13 +91,13 @@ SDK 中包含的[自述文件](https://github.com/Azure/azure-iot-sdks/tree/mast
 
 SDK 开放源代码存储库中提供了两个工具用来帮助管理 IoT 中心。 一个是称为设备资源管理器的 Windows 应用程序，另一个是称为 iothub-explorer 的基于 node.js 的跨平台 CLI 工具。 你可以在[此处](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md)了解更多有关这两种工具的信息。
 
-本文中所述的在 Windows 上运行这些示例时使用的是设备资源管理器工具。 但是，如果你更喜欢 CLI 工具，也可以使用 iothub-explorer。
+本文中，在 Windows 上运行示例时将使用设备资源管理器工具。 但是，如果你更喜欢 CLI 工具，也可以使用 iothub-explorer。
 
-[设备资源管理器](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer)工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 如果你使用设备资源管理器来添加设备，将会获得相应的连接字符串。 需要此连接字符串才能运行示例应用程序。
+[设备资源管理器](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer)工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 若使用设备资源管理器工具添加设备，会获得相应的连接字符串。 需要此连接字符串才能运行示例应用程序。
 
-如果你不熟悉上述过程，以下过程描述了如何使用设备资源管理器来添加设备和获取设备连接字符串。
+如果不熟悉上述过程，请参阅件以下过程，了解如何使用设备资源管理器工具来添加设备和获取设备连接字符串。
 
-你可以在 [SDK 发布页面](https://github.com/Azure/azure-iot-sdks/releases)中找到设备资源管理器工具的 Windows 安装程序。 但是也可以直接从其代码运行该工具，方法是在 **Visual Studio 2015** 中打开 **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)**，然后生成解决方案。
+你可以在 [SDK 发布页面](https://github.com/Azure/azure-iot-sdks/releases)中找到设备资源管理器工具的 Windows 安装程序。 但是也可以直接从其代码运行该工具，方法是在 **Microsoft Visual Studio 2015** 中打开 **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)**，然后生成解决方案。
 
 运行该程序时，你将看到此界面：
 
@@ -119,7 +119,7 @@ SDK 开放源代码存储库中提供了两个工具用来帮助管理 IoT 中�
 
   ![](media/iot-hub-device-sdk-c-intro/06-RightClickDevice.PNG)
 
-如果你选择“**复制所选设备的连接字符串**”选项，设备的连接字符串将复制到剪贴板。 请保留连接字符串的副本。 在运行后续部分中所述的示例应用程序时，将要用到它。
+如果选择“复制所选设备的连接字符串”选项，会将设备的连接字符串复制到剪贴板。 请保留设备连接字符串的副本。 在运行后续部分中所述的示例应用程序时，将要用到它。
 
 完成上述步骤后，可以开始运行一些代码。 两个示例的主源文件顶部都有一个常量，此常量可让你输入连接字符串。 例如，**iothub\_client\_sample\_amqp** 应用程序中的相应行如下所示。
 
@@ -162,7 +162,7 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
-请注意，我们要将设备连接字符串副本（从设备资源管理器获取的连接字符串）传递给此函数。 我们还需指定要使用的协议。 本示例使用 AMQP，但也可以选择 MQTT 和 HTTP。
+请注意，将向此函数传递设备连接字符串的副本（即从设备资源管理器工具获取的字符串）。 我们还需指定要使用的协议。 本示例使用 AMQP，但也可以选择 MQTT 和 HTTP。
 
 获取有效的 **IOTHUB\_CLIENT\_HANDLE** 后，可以开始调用 API 来发送事件以及从 IoT 中心接收消息。 接下来我们将介绍这种操作。
 
@@ -466,6 +466,6 @@ serializer_deinit();
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

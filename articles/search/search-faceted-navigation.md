@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a044412d138478cf8ebd8ed8768fd4764b8a551
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f70240f2bebca76872194e556cf9cae9130b56db
 
 
 ---
@@ -238,7 +238,7 @@ Azure 搜索根据用户输入的词语返回搜索结果，以及对分面导�
   在表示代码中，你应该在分面上看到一个计数参数，用于显示分面结果数。 在分面结果中，计数指示与分面词语或范围匹配的记录数。
 * `&facet=City,count:12`<br/>
   在分面查询中，可将计数设置为某个值。  默认值为 10，但你可以设置更高或更低的值。 设置 `count:12` 可获取分面结果中按记录计数排序的前 12 个匹配项。
-* “`@odata.count`”<br/>
+* "`@odata.count`"<br/>
   在查询响应中，该值指示搜索结果中匹配项的数目。 一般情况下，该值大于所有合并的分面结果总和，因为存在匹配搜索词但没有分面值匹配结果的项。
 
 **分面导航中的级别** 
@@ -339,15 +339,15 @@ Codeplex 上的 Azure Search Adventure Works 演示包含本文中引用的示�
 你也可以观看 [Azure 搜索深入研究](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
 
 <!--Anchors-->
-[生成方式]: #howtobuildit
-[生成表示层]: #presentationlayer
-[生成索引]: #buildindex
-[检查数据质量]: #checkdata
-[生成查询]: #buildquery
-[有关如何控制分面导航的提示]: #tips
-[基于范围值的分面导航]: #rangefacets
-[基于地理位置的分面导航]: #geofacets
-[试用]: #tryitout
+[How to build it]: #howtobuildit
+[Build the presentation layer]: #presentationlayer
+[Build the index]: #buildindex
+[Check for data quality]: #checkdata
+[Build the query]: #buildquery
+[Tips on how to control faceted navigation]: #tips
+[Faceted navigation based on range values]: #rangefacets
+[Faceted navigation based on GeoPoints]: #geofacets
+[Try it out]: #tryitout
 
 <!--Image references-->
 [1]: ./media/search-faceted-navigation/Facet-1-slide.PNG
@@ -362,18 +362,18 @@ Codeplex 上的 Azure Search Adventure Works 演示包含本文中引用的示�
 [10]: ./media/search-faceted-navigation/Facet-10-appTitle.png
 
 <!--Link references-->
-[针对分面搜索进行设计]: http://www.uie.com/articles/faceted_search/
-[设计模式：分面导航]: http://alistapart.com/article/design-patterns-faceted-navigation
-[创建你的第一个应用程序]: search-create-first-solution.md
-[OData 表达式语法（Azure 搜索）]: http://msdn.microsoft.com/library/azure/dn798921.aspx
-[Azure Search Adventure Works 演示]: https://azuresearchadventureworksdemo.codeplex.com/
+[Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
+[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Create your first application]: search-create-first-solution.md
+[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
-[在 Azure 搜索上分面论坛帖子]: ../faceting-on-azure-search.md?forum=azuresearch
-[搜索记录（Azure 搜索 API）]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
+[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

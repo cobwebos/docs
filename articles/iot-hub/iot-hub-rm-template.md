@@ -1,6 +1,6 @@
 ---
-title: "使用 ARM 模板和 C# 创建 IoT 中心 | Microsoft 文档"
-description: "遵照本教程开始使用 Azure Resource Manager 模板和 C# 程序创建 IoT 中心。"
+title: "使用模板创建 Azure IoT 中心 (.NET) | Microsoft Docs"
+description: "如何使用 Azure Resource Manager 模板和 C# 程序创建 IoT 中心。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 118ab90d7886ad48e7476abd732b16b69375d214
+ms.sourcegitcommit: e4343cfece7286e0a4035239967ab2e0a928b188
+ms.openlocfilehash: cc284c0cd445bbfe2f4424d3251ca07da0538192
 
 
 ---
-# <a name="create-an-iot-hub-using-a-c-program-with-an-azure-resource-manager-template"></a>使用 C# 程序和 Azure Resource Manager 模板创建 IoT 中心
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure Resource Manager 模板创建 IoT 中心 (.NET)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>介绍
@@ -36,7 +36,7 @@ ms.openlocfilehash: 118ab90d7886ad48e7476abd732b16b69375d214
 * Microsoft Visual Studio 2015。
 * 有效的 Azure 帐户。 <br/>如果你没有帐户，只需几分钟就能创建一个[免费帐户][lnk-free-trial]。
 * 可用于存储 Azure Resource Manager 模板文件的 [Azure 存储帐][lnk-storage-account]。
-* [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
+* [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -206,7 +206,7 @@ ms.openlocfilehash: 118ab90d7886ad48e7476abd732b16b69375d214
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: ../powershell-install-configure.md
+[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
@@ -218,6 +218,6 @@ ms.openlocfilehash: 118ab90d7886ad48e7476abd732b16b69375d214
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

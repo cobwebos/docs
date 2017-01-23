@@ -12,33 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 12/1/2016
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eed3bd763edb94d7bea28b4039c03afa7359fee1
+ms.sourcegitcommit: a86819102797b0e243d28cd9ddb3d2c88c74bfca
+ms.openlocfilehash: 7ea593885c1b380236a49ec030c00ad19097e2fa
 
 
 ---
 # <a name="azure-networking-analytics-preview-solution-in-log-analytics"></a>Log Analytics 中的 Azure 网络分析（预览）解决方案
+
+可以使用 Log Analytics 中的 Azure 网络分析解决方案来查看：
+
+* Azure 应用程序网关日志
+* Azure 应用程序网关指标，以及 
+* Azure 网络安全组日志。
+
 > [!NOTE]
-> 这是[预览解决方案](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features)。
+> Azure 网络分析是[预览版解决方案](log-analytics-add-solutions.md#preview-management-solutions-and-features)。
 > 
 > 
 
-可以使用 Log Analytics 中的 Azure 网络分析解决方案，查看 Azure 应用程序网关日志和 Azure 网络安全组日志。
-
-可以为 Azure 应用程序网关日志和 Azure 网络安全组启用日志记录。 这些日志将写入到 Blob 存储，然后 Log Analytics 可以从中为其编制索引，用于搜索和分析。
+若要使用该解决方案，请启用 Azure 应用程序网关日志和 Azure 网络安全组的诊断，并将诊断引导到 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
 
 应用程序网关支持以下日志：
 
 * ApplicationGatewayAccessLog
 * ApplicationGatewayPerformanceLog
+* ApplicationGatewayFirewallLog
+
+应用程序网关支持以下指标：
+
+* 5 分钟吞吐量
 
 网络安全组支持以下日志：
 
 * NetworkSecurityGroupEvent
 * NetworkSecurityGroupRuleCounter
+* NetworkSecurityGroupFlowEvent
 
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明安装和配置 Azure 网络分析解决方案：
@@ -46,18 +57,30 @@ ms.openlocfilehash: eed3bd763edb94d7bea28b4039c03afa7359fee1
 1. 为需要监视的资源启用诊断日志记录：
    * [应用程序网关](../application-gateway/application-gateway-diagnostics.md)
    * [网络安全组](../virtual-network/virtual-network-nsg-manage-log.md)
-2. 使用 [blob 存储中的 JSON 文件](log-analytics-azure-storage-json.md)中所述的过程，将 Log Analytics 配置为从 Blob 存储中读取日志。
-3. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 网络分析解决方案。  
+2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure 网络分析解决方案。  
+
+以下 PowerShell 脚本提供如何启用应用程序网关和网络安全组的诊断日志记录的示例 
+```
+$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+
+$gateway = Get-AzureRmApplicationGateway -Name 'ContosoGateway'
+
+Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+
+$nsg = Get-AzureRmNetworkSecurityGroup -Name 'ContosoNSG'
+
+Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+```
+
 
 如果未针对特定资源类型启用诊断日志记录，该资源的仪表板边栏选项卡将为空白。
 
 ## <a name="review-azure-networking-analytics-data-collection-details"></a>查看 Azure 网络分析数据收集详细信息
-Azure 网络分析解决方案从 Azure 应用程序网关和网络安全组的 Azure Blob 存储中收集诊断数据。
-数据收集无需代理。
+Azure 网络分析管理解决方案直接从 Azure 应用程序网关和网络安全组收集诊断日志。 不需要将日志写入 Azure Blob 存储，且数据收集无需代理。
 
 下表显示了数据收集方法，以及有关如何为 Azure 网络分析收集数据的其他详细信息。
 
-| 平台 | 直接代理 | Systems Center Operations Manager (SCOM) 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | Systems Center Operations Manager 代理 | Azure | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Azure |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |![是](./media/log-analytics-azure-networking/oms-bullet-green.png) |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |![否](./media/log-analytics-azure-networking/oms-bullet-red.png) |10 分钟 |
 
@@ -103,6 +126,6 @@ Azure 网络分析解决方案从 Azure 应用程序网关和网络安全组的 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

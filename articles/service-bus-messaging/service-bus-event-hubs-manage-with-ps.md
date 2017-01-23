@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 管理服务总线和事件中心资源 | Docs"
+title: "使用 PowerShell 管理服务总线和事件中心资源 | Microsoft Docs"
 description: "使用 PowerShell 创建和管理 Service Bus 和事件中心资源"
 services: service-bus-messaging,event-hubs
 documentationcenter: .NET
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 95068f046c57bd65b5258771a272e70124f3dd12
+ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
+ms.openlocfilehash: 41bef0e62c86e5cc3c27d02702a1b330fc76c915
 
 
 ---
@@ -26,8 +26,8 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 ## <a name="prerequisites"></a>先决条件
 在开始之前，你需要具备以下项：
 
-* Azure 订阅。 Azure 是基于订阅的平台。 有关获取订阅的详细信息，请参阅[购买选项][购买选项]、[成员优惠][成员优惠]或[免费帐户][免费帐户]。
-* 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
+* Azure 订阅。 Azure 是基于订阅的平台。 有关获取订阅的详细信息，请参阅[购买选项][purchase options]、[成员优惠][member offers]或[免费帐户][free account]。
+* 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell][Install and configure Azure PowerShell]。
 * 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 
 ## <a name="include-a-reference-to-the-net-assembly-for-service-bus"></a>包含对用于 Service Bus 的 .NET 程序集的引用
@@ -113,7 +113,7 @@ catch [System.Exception]
     ```
 
 ## <a name="provisioning-other-service-bus-entities"></a>设置其他 Service Bus 实体
-若要预配其他实体（如队列、主题和事件中心），可使用[适用于服务总线的 .NET API][适用于服务总线的 .NET API]。 更多详细示例（包括其他实体）将在本文末尾提及。
+若要预配其他实体（如队列、主题和事件中心），可使用[适用于服务总线的 .NET API][.NET API for Service Bus]。 更多详细示例（包括其他实体）将在本文末尾提及。
 
 ### <a name="create-an-event-hub"></a>创建事件中心
 此部分脚本将再创建四个本地变量。 这些变量用于实例化 `EventHubDescription` 对象。 此脚本执行以下任务：
@@ -259,18 +259,18 @@ catch [System.Exception]
 
 <!--Anchors-->
 
-[购买选项]: http://azure.microsoft.com/pricing/purchase-options/
-[成员优惠]: http://azure.microsoft.com/pricing/member-offers/
-[免费帐户]: http://azure.microsoft.com/pricing/free-trial/
-[服务总线 NuGet 包]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/
+[purchase options]: http://azure.microsoft.com/pricing/purchase-options/
+[member offers]: http://azure.microsoft.com/pricing/member-offers/
+[free account]: http://azure.microsoft.com/pricing/free-trial/
+[服务总线 NuGet 包]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/（服务总线 NuGet 包）
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
-[适用于服务总线的 .NET API]: https://msdn.microsoft.com/en-us/library/azure/mt419900.aspx
-[安装和配置 Azure PowerShell]: ../powershell-install-configure.md
+[.NET API for Service Bus]: https://msdn.microsoft.com/en-us/library/azure/mt419900.aspx
+[Install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

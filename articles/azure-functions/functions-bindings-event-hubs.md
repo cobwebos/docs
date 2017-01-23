@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/02/2016
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: bfe0f796c8a15d655f1c5686a0e1e422fee6fbc1
+ms.sourcegitcommit: 593f97bf0fc855e2d122e093961013f923e2e053
+ms.openlocfilehash: b7b6dc01c996527c4ada974cc28b774b30e6b853
 
 
 ---
@@ -82,7 +82,7 @@ ms.openlocfilehash: bfe0f796c8a15d655f1c5686a0e1e422fee6fbc1
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-sample-in-c"></a>C 中的触发示例# #
+### <a name="trigger-sample-in-c"></a>C 中的触发器示例# #
 
 ```cs
 using System;
@@ -95,7 +95,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 
 <a name="triggerfsharp"></a>
 
-### <a name="trigger-sample-in-f"></a>F 中的触发示例# #
+### <a name="trigger-sample-in-f"></a>F 中的触发器示例# #
 
 ```fsharp
 let Run(myEventHubMessage: string, log: TraceWriter) =
@@ -131,6 +131,15 @@ module.exports = function (context, myEventHubMessage) {
 ```
 
 `connection` 必须是应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。
+
+## <a name="output-usage"></a>输出使用情况
+本部分演示如何在函数代码中使用事件中心输出绑定。
+
+可以使用以下参数类型将消息输出到配置的事件中心： 
+
+* `out string`
+* `ICollector<string>`（若要输出多条消息）
+* `IAsyncCollector<string>`（异步版`ICollector<T>`）
 
 <a name="outputsample"></a>
 
@@ -168,6 +177,18 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 }
 ```
 
+或创建多个消息：
+
+```cs
+public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
+{
+    string message = $"Event Hub message created at: {DateTime.Now}";
+    log.Info(message); 
+    outputEventHubMessage.Add("1 " + message);
+    outputEventHubMessage.Add("2 " + message);
+}
+```
+
 <a name="outfsharp"></a>
 
 ### <a name="output-sample-in-f"></a>F 中的输出示例# #
@@ -186,8 +207,23 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 ```javascript
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
-    context.log('TimerTriggerNodeJS1 function ran!', timeStamp);   
-    context.bindings.outputEventHubMessage = "TimerTriggerNodeJS1 ran at : " + timeStamp;
+    context.log('Event Hub message created at: ', timeStamp);   
+    context.bindings.outputEventHubMessage = "Event Hub message created at: " + timeStamp;
+    context.done();
+};
+```
+
+或者，发送多条消息，
+
+```javascript
+module.exports = function(context) {
+    var timeStamp = new Date().toISOString();
+    var message = 'Event Hub message created at: ' + timeStamp;
+
+    context.bindings.outputEventHubMessage = [];
+
+    context.bindings.outputEventHubMessage.push("1 " + message);
+    context.bindings.outputEventHubMessage.push("2 " + message);
     context.done();
 };
 ```
@@ -198,6 +234,6 @@ module.exports = function (context, myTimer) {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

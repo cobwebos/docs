@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/27/2016
+ms.date: 1/10/2017
 ms.author: jimpark;trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -45,7 +45,7 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 
 此策略中指定的“保留点”总数为 90（每日点数） + 40（10 年内的每个季度）= 130。
 
-## <a name="example-putting-both-together"></a>示例 - 组合策略
+## <a name="example--putting-both-together"></a>示例 - 组合策略
 ![示例屏幕](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **每天保留策略**：每天创建的备份存储 7 天。
@@ -64,8 +64,8 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 
 > [!NOTE]
 > Azure 备份对恢复点的数量没有限制。
-> 
-> 
+>
+>
 
 ## <a name="advanced-configuration"></a>高级配置
 通过单击上述屏幕中的“**修改**”，客户可以进一步灵活指定保留计划。
@@ -77,7 +77,6 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 
 * [Azure 备份简介](backup-introduction-to-azure-backup.md)
 * [尝试 Azure 备份](backup-try-azure-backup-in-10-mins.md)
-
 
 
 

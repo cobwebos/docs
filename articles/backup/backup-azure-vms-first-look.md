@@ -4,7 +4,7 @@ description: "使用备份保管库保护 Azure VM。 本教程介绍如何在 A
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 ms.assetid: 722820dc-b65f-425c-a9e5-c1946e896a87
 ms.service: backup
@@ -12,7 +12,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/15/2016
+ms.date: 1/10/2017
 ms.author: markgal; jimpark
 translationtype: Human Translation
 ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2

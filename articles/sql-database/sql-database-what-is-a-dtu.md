@@ -58,6 +58,6 @@ eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

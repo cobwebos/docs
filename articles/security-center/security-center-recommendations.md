@@ -1,5 +1,5 @@
 ---
-title: "管理 Azure 安全中心的安全建议 | Microsoft 文档"
+title: "管理 Azure 安全中心的安全建议 | Microsoft Docs"
 description: "本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。"
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2016
+ms.date: 12/01/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d5ac3ffa4c3e1a916fb7d81b54ae603ea3658cc5
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9db906314998a7f99e3663a4753edec9487ae932
 
 
 ---
@@ -24,9 +24,9 @@ ms.openlocfilehash: d5ac3ffa4c3e1a916fb7d81b54ae603ea3658cc5
 本文档介绍如何使用 Azure 安全中心中的建议帮助你保护 Azure 资源。
 
 > [!NOTE]
-> 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
-> 
-> 
+> 本文档通过使用示例部署介绍该服务。  本文档不是一份分步指南。
+>
+>
 
 ## <a name="what-are-security-recommendations"></a>安全建议是什么？
 安全中心定期分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议将指导你完成配置所需控件的过程。
@@ -57,7 +57,7 @@ ms.openlocfilehash: d5ac3ffa4c3e1a916fb7d81b54ae603ea3658cc5
 * **状态**：描述该建议的当前状态：
   * **未解决**：建议尚未得到处理。
   * **正在进行**：目前已将建议应用到相关资源，不需用户采取行动。
-  * **已解决**：已处理此建议（在这种情况下，该行将灰显）。
+  * **已解决**：已完成处理此建议（在这种情况下，该行将灰显）。
 * **严重性**：描述该特定建议的严重性：
   * **高**：重要资源（如应用程序、VM、网络安全组）存在漏洞，需要提请注意。
   * **中**：存在漏洞，需要采取非关键步骤或额外步骤来消除它或完成某个过程。
@@ -67,8 +67,8 @@ ms.openlocfilehash: d5ac3ffa4c3e1a916fb7d81b54ae603ea3658cc5
 
 > [!NOTE]
 > 想要了解 Azure 资源的[经典部署模型和 Resource Manager 部署模型](../azure-classic-rm.md)之间的差异。
-> 
-> 
+>
+>
 
 | 建议 | 说明 |
 | --- | --- |
@@ -76,20 +76,20 @@ ms.openlocfilehash: d5ac3ffa4c3e1a916fb7d81b54ae603ea3658cc5
 | [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md) |建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |
 | [应用系统更新](security-center-apply-system-updates.md) |建议在 VM 上部署缺少的系统安全和重要更新。 |
 | [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates) |建议重启 VM 以完成应用系统更新的过程。 |
-| [添加 Web 应用程序防火墙](security-center-add-web-application-firewall.md) |建议部署 web 终结点的 Web 应用程序防火墙 (WAF)。 可以通过将应用程序添加到现有的 WAF 部署来保护安全中心中的多个 Web 应用程序。 需要将 WAF 设备（使用 Resource Manager 部署模型创建）部署到单独的虚拟网络。 将 WAF 设备（使用经典部署模型创建）限制为使用网络安全组。 这种支持在将来会扩展为完全自定义的 WAF 设备（经典）部署。 安全中心将建议预配 WAF，有助于防范针对 VM 和应用服务环境 (ASE) 上 Web 应用程序的攻击。 若要了解有关 ASE 的详细信息，请参阅[应用服务环境文档](../app-service/app-service-app-service-environments-readme.md)。 |
-| [完成应用程序保护](security-center-add-web-application-firewall.md#finalize-application-protection) |若要完成 WAF 配置，则流量必须重新路由到 WAF 设备。 遵循此建议将完成必要的安装程序更改。 |
+| [添加 Web 应用程序防火墙](security-center-add-web-application-firewall.md) |建议部署 web 终结点的 Web 应用程序防火墙 (WAF)。 为任何面向公众的 IP（实例级 IP 或负载均衡 IP）显示 WAF 建议，该 IP 具有与开放入站 Web 端口 (80,443) 关联的网络安全组。</br></br>安全中心建议设置 WAF，有助于防范针对虚拟机和应用服务环境上 Web 应用程序的攻击。 应用服务环境 (ASE) 是 Azure 应用服务的[高级](https://azure.microsoft.com/pricing/details/app-service/)服务计划选项，可提供完全隔离和专用的环境，以便安全地运行 Azure 应用服务应用。 若要了解有关 ASE 的详细信息，请参阅[应用服务环境文档](../app-service/app-service-app-service-environments-readme.md)。</br></br>可以通过将应用程序添加到现有的 WAF 部署来保护安全中心中的多个 Web 应用程序。 |
+| [完成应用程序保护](security-center-add-web-application-firewall.md#finalize-application-protection) |若要完成 WAF 配置，则流量必须重新路由到 WAF 设备。 遵循此建议，完成必要的安装程序更改。 |
 | [添加下一代防火墙](security-center-add-next-generation-firewall.md) |建议从 Microsoft 合作伙伴添加下一代防火墙 (NGFW)，以增强安全保护。 |
 | [仅通过 NGFW 路由流量](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |建议配置通过 NGFW 强制将流量入站到 VM 的网络安全组 (NSG) 规则。 |
 | [安装终结点保护](security-center-install-endpoint-protection.md) |建议在 VM（仅 Windows VM）上预配反恶意程序。 |
 | [解决终结点保护运行状况警报](security-center-resolve-endpoint-protection-health-alerts.md) |建议解决终结点保护故障。 |
 | [在子网或虚拟机上启用网络安全组](security-center-enable-network-security-groups.md) |建议在子网或 VM 上启用 NSG。 |
 | [通过面向 Internet 的终结点限制访问](security-center-restrict-access-through-internet-facing-endpoints.md) |建议为 NSG 配置入站流量规则。 |
-| [启用服务器 SQL 审核](security-center-enable-auditing-on-sql-servers.md) |建议启用 Azure SQL 服务器审核（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |
-| [启用数据库 SQL 审核](security-center-enable-auditing-on-sql-databases.md) |建议启用 Azure SQL 数据库审核（仅限 Azure SQL 服务；不包括虚拟机上运行的 SQL）。 |
-| [启用 SQL 数据库的透明数据加密](security-center-enable-transparent-data-encryption.md) |建议启用 SQL 数据库加密（仅限 Azure SQL 服务）。 |
-| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意程序，则必须在 VM 上安装 VM 代理。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
+| [启用服务器 SQL 审核](security-center-enable-auditing-on-sql-servers.md) |建议为 Azure SQL 服务器启用审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
+| [启用数据库 SQL 审核](security-center-enable-auditing-on-sql-databases.md) |建议为 Azure SQL 数据库启用审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。） |
+| [启用 SQL 数据库的透明数据加密](security-center-enable-transparent-data-encryption.md) |建议启用 SQL 数据库加密。 （仅 Azure SQL 服务。） |
+| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意软件程序，则必须在 VM 上安装 VM 代理。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
 | [应用磁盘加密](security-center-apply-disk-encryption.md) |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
-| [提供安全联系人详细信息](security-center-provide-security-contact-details.md) |建议为每个订阅提供安全联系人详细信息。 联系人详细信息为电子邮件地址和电话号码。 如果安全团队发现你的资源遭到损坏，将采用此信息与你联系。 |
+| [提供安全联系人详细信息](security-center-provide-security-contact-details.md) |建议为每个订阅提供安全联系人详细信息。 联系人详细信息为电子邮件地址和电话号码。 如果安全团队发现你的资源遭到盗用，将采用此信息与你联系。 |
 | [更新 OS 版本](security-center-update-os-version.md) |建议将云服务的操作系统 (OS) 版本更新为 OS 系列可用的最新版本。  若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。 |
 | [未安装漏洞评估](security-center-vulnerability-assessment-recommendations.md) |建议在 VM 上安装漏洞评估解决方案。 |
 | [修正漏洞](security-center-vulnerability-assessment-recommendations.md#review-recommendation) |使你可以查看由安装在 VM 上的漏洞评估解决方案检测到的系统和应用程序漏洞。 |
@@ -97,10 +97,10 @@ ms.openlocfilehash: d5ac3ffa4c3e1a916fb7d81b54ae603ea3658cc5
 可筛选和取消建议。
 
 1. 单击“建议”边栏选项卡上的“筛选器”。 此时将打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
-   
+
     ![筛选器建议][2]
 2. 如果确定某个建议不适用，即可取消此建议，将其从视图中筛除。 有两种方法可取消建议。 一种方法是右键单击项目，然后选择“取消”。 另一种方法是将鼠标悬停在某个项目上，单击右侧显示的三个点，选择“取消”。 可以单击“筛选器”，选择“已取消”，查看已取消的建议。
-   
+
     ![取消建议][3]
 
 ### <a name="apply-recommendations"></a>应用建议
@@ -125,6 +125,6 @@ ms.openlocfilehash: d5ac3ffa4c3e1a916fb7d81b54ae603ea3658cc5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

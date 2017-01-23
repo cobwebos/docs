@@ -15,15 +15,15 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f30cfab50407e31ccad61888d7de40e4f0fcba24
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 30dcbe33b359afc3f118effce07f6574bb35d5d5
 
 
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>将 Azure 机器学习与 SQL 数据仓库配合使用
-Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 数据仓库中针对数据创建预测模型，然后将这些模型发布为随时可供使用的 Web 服务。 可以参阅 [Azure 上的机器学习简介][Azure 上的机器学习简介]，了解有关预测分析和机器学习的基本知识。  然后，可以使用[创建试验教程][创建试验教程]，了解如何创建、训练、评分和测试机器学习模型。
+Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 数据仓库中针对数据创建预测模型，然后将这些模型发布为随时可供使用的 Web 服务。 可以阅读 [Azure 上的机器学习简介][Introduction to Machine Learning on Azure]，了解有关预测分析和机器学习的基本知识。  然后，可以使用[创建试验教程][Create experiment tutorial]了解如何创建、训练、评分和测试机器学习模型。
 
-在本文中，将了解如何使用 [Azure 机器学习工作室][Azure 机器学习工作室]来执行以下操作：
+本文将介绍如何使用 [Azure 机器学习工作室][Azure Machine Learning Studio]来执行以下操作：
 
 * 从数据库读取数据以创建、训练和评分预测模型
 * 将数据写入数据库
@@ -42,7 +42,7 @@ Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 
 选择“读取器”模块并填写属性窗格。
 
 1. 选择 Azure SQL 数据库作为数据源。
-2. 数据库服务器名称：键入服务器名称。 可以使用 [Azure 门户][Azure 门户]查找此信息。
+2. 数据库服务器名称：键入服务器名称。 可以使用 [Azure 门户][Azure portal]查找此信息。
 
 ![][server_name]
 
@@ -78,7 +78,7 @@ FROM dbo.DimProduct;
 
 ![][model]
 
-可以使用[创建试验教程][创建试验教程]，了解如何创建、训练、评分和测试机器学习模型。
+若要深入了解如何创建、训练、评分和测试机器学习模型，请使用[创建试验教程][Create experiment tutorial]。
 
 ## <a name="write-data-to-azure-sql-data-warehouse"></a>将数据写入到 Azure SQL 数据仓库
 我们要将结果集写入到 AdventureWorksDW 数据库中的 ProductPriceForecast 表。
@@ -92,7 +92,7 @@ FROM dbo.DimProduct;
 选择“写入器”模块并填写属性窗格。
 
 1. 选择 Azure SQL 数据库作为数据目标。
-2. 数据库服务器名称：键入服务器名称。 可以使用 [Azure 门户][Azure 门户]查找此信息。
+2. 数据库服务器名称：键入服务器名称。 可以使用 [Azure 门户][Azure portal]查找此信息。
 3. 数据库名称：键入刚刚指定的服务器上的数据库名称。
 4. 服务器用户帐户名：键入具有数据库写入访问权限的帐户的用户名。
 5. 服务器用户帐户名：提供指定的用户帐户的密码。
@@ -109,7 +109,7 @@ FROM dbo.DimProduct;
 2. 试验完成时，所有模块将出现绿色复选标记，表示它们已成功完成。
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL 数据仓库开发概述]。
+有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL Data Warehouse development overview]。
 
 <!--Image references-->
 
@@ -123,20 +123,20 @@ FROM dbo.DimProduct;
 
 <!--Article references-->
 
-[SQL 数据仓库开发概述]: ./sql-data-warehouse-overview-develop.md
-[创建试验教程]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
-[Azure 上的机器学习简介]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[Azure 机器学习工作室]: https://studio.azureml.net/Home
-[Azure 门户]: https://portal.azure.com/
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Create experiment tutorial]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
+[Introduction to machine learning on Azure]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[Azure Machine Learning Studio]: https://studio.azureml.net/Home
+[Azure portal]: https://portal.azure.com/
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-[Azure 机器学习文档]: http://azure.microsoft.com/documentation/services/machine-learning/
+[Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

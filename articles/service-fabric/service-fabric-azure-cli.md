@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/24/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1a73f51b182cd9ce4634deeb33153345b935b13b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: caf6dd414bd8f8180c90835dd9744dcd98f7709c
 
 
 ---
@@ -81,7 +81,8 @@ source ~/azure.completion.sh
 
 可以使用 PowerShell 或 CLI 与通过 Azure 门户创建的 Linux Service Fabric 群集进行交互。 
 
-**警告：**这些群集不安全，因此，可以通过在群集清单中添加公共 IP 地址打开你的单机。
+> [!WARNING]
+> 这些群集不安全，因此，可以通过在群集清单中添加公共 IP 地址打开你的单机。
 
 ## <a name="using-the-azure-cli-to-connect-to-a-service-fabric-cluster"></a>使用 Azure CLI 连接到 Service Fabric 群集
 下面的 Azure CLI 命令介绍如何连接到安全的群集。 证书详细信息必须与群集节点上的证书匹配。
@@ -149,6 +150,24 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 
 现在，可以使用 SFX 监视应用程序升级。 在几分钟后，应用程序将得到更新。  你还可以尝试出现错误的更新应用程序，检查 Service Fabric 中的自动回滚功能。
 
+## <a name="converting-from-pfx-to-pem-and-vice-versa"></a>从 PFX 转换到 PEM，反之亦然
+
+可能需要在本地计算机（搭载 Windows 或 Linux）中安装证书以访问不同环境中的安全群集。 例如，从 Windows 计算机访问受保护的 Linux 群集时，需要将证书从 PFX 转换到 PEM；反之，需要从 PEM 转换到 PFX。 
+
+要将 PEM 文件转换为 PFX 文件，请使用以下命令：
+
+```bash
+openssl pkcs12 -export -out certificate.pfx -inkey mycert.pem -in mycert.pem -certfile mycert.pem
+```
+
+要将 PFX 文件转换为 PEM 文件，请使用以下命令：
+
+```bash
+openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
+```
+
+有关详细信息，请参阅 [OpenSSL 文档](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html)。
+
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="copying-of-the-application-package-does-not-succeed"></a>复制应用程序包不成功
 检查是否已安装 `openssh`。 默认情况下，Ubuntu Desktop 不安装它。 使用以下命令安装它：
@@ -176,12 +195,14 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 ```
 尚不支持使用密钥（而是支持使用密码）进行 ssh 身份验证（因为该平台使用 ssh 来复制包），因此改为使用密码身份验证。
 
+
+
 ## <a name="next-steps"></a>后续步骤
 设置开发环境并将 Service Fabric 应用程序部署到 Linux 群集。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

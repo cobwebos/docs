@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 39ebfe20f957b6e211eb5caebe4e064432876d20
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 72f69e334172ad69bedb9c8fc4d270a607d1598f
 
 
 ---
@@ -116,7 +116,7 @@ EngagementReach 对象提供两种方法来管理选择加入/选择退出、`En
 
 你也可以决定通过 Engagement 配置 \<windows phone-sdk-reach-configuration\> 来停用 MPNS。
 
-> 2.9.1) 应用程序必须首先描述要提供的通知，并**获取用户的明确许可（选择加入）**，并且**必须提供用户可以选择不接收推送通知的机制**。 使用 Microsoft 推送通知服务提供的所有通知都必须与提供给用户的说明一致，并且必须遵守所有适用的[应用程序策略][内容策略]和[特定应用程序类型的其他要求]。
+> 2.9.1) 应用程序必须首先描述要提供的通知，并**获取用户的明确许可（选择加入）**，并且**必须提供用户可以选择不接收推送通知的机制**。 使用 Microsoft 推送通知服务提供的所有通知都必须与提供给用户的说明一致，并且必须遵守所有适用的[应用程序策略][Content Policies]和[特定应用程序类型的其他要求]。
 > 
 > 
 
@@ -280,12 +280,12 @@ EngagementReach 对象提供两种方法来管理选择加入/选择退出、`En
 > 
 
 [应用程序策略]:http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
-[内容策略]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
+[Content Policies]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
 [特定应用程序类型的其他要求]:http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 09/26/2016
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9616197bd2b1587290b3beb14cb883e2dba8fb4e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 69a976f1f019cb89780d00c6bc730fae30e92378
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 9616197bd2b1587290b3beb14cb883e2dba8fb4e
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>针对流分析运行 Azure PowerShell cmdlet 的先决条件
-* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](../powershell-install-configure.md)；  
+* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)；  
 
 Azure PowerShell 0.9.8：  
 
@@ -66,7 +66,7 @@ Azure PowerShell 1.0：
 下面的 Azure PowerShell cmdlet 可用于监视和管理 Azure 流分析作业。 请注意，Azure PowerShell 具有不同版本。 
 **在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令将在命令中始终包含“AzureRM”。
 
-### <a name="get-azurestreamanalyticsjob-get-azurermstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzureRMStreamAnalyticsJob
+### <a name="get-azurestreamanalyticsjob--get-azurermstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzureRMStreamAnalyticsJob
 列出所有在 Azure 订阅或指定资源组中定义的流分析作业，或者获取有关某个资源组中特定作业的作业信息。
 
 **示例 1**
@@ -105,7 +105,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令在资源组 StreamAnalytics-Default-Central-US 中返回有关流分析作业 StreamingJob 的信息。
 
-### <a name="get-azurestreamanalyticsinput-get-azurermstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzureRMStreamAnalyticsInput
+### <a name="get-azurestreamanalyticsinput--get-azurermstreamanalyticsinput"></a>Get-AzureStreamAnalyticsInput | Get-AzureRMStreamAnalyticsInput
 列出在指定流分析作业中定义的所有输入，或获取有关特定输入的信息。
 
 **示例 1**
@@ -132,7 +132,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令返回在作业 StreamingJob 中定义的名为 EntryStream 的输入的相关信息。
 
-### <a name="get-azurestreamanalyticsoutput-get-azurermstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzureRMStreamAnalyticsOutput
+### <a name="get-azurestreamanalyticsoutput--get-azurermstreamanalyticsoutput"></a>Get-AzureStreamAnalyticsOutput | Get-AzureRMStreamAnalyticsOutput
 列出在指定流分析作业中定义的所有输出，或获取有关特定输出的信息。
 
 **示例 1**
@@ -159,7 +159,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令返回在作业 StreamingJob 中定义的名为 Output 的输出的相关信息。
 
-### <a name="get-azurestreamanalyticsquota-get-azurermstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzureRMStreamAnalyticsQuota
+### <a name="get-azurestreamanalyticsquota--get-azurermstreamanalyticsquota"></a>Get-AzureStreamAnalyticsQuota | Get-AzureRMStreamAnalyticsQuota
 获取指定区域中流式处理单元配额的相关信息。
 
 **示例 1**
@@ -174,7 +174,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令返回有关美中地区配额和流式处理单位使用情况的信息。
 
-### <a name="get-azurestreamanalyticstransformation-getazurermstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | GetAzureRMStreamAnalyticsTransformation
+### <a name="get-azurestreamanalyticstransformation--getazurermstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | GetAzureRMStreamAnalyticsTransformation
 获取在流分析作业中定义的特定转换的相关信息。
 
 **示例 1**
@@ -189,7 +189,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令返回作业 StreamingJob 中名为 StreamingJob 的转换的相关信息。
 
-### <a name="new-azurestreamanalyticsinput-new-azurermstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzureRMStreamAnalyticsInput
+### <a name="new-azurestreamanalyticsinput--new-azurermstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzureRMStreamAnalyticsInput
 在流分析作业中创建新的输入，或者更新现有的指定输入。
 
 输入的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
@@ -198,7 +198,7 @@ Azure PowerShell 1.0：
 
 如果你指定了 –Force 参数，同时又指定了一个现有的输入名称，则会在不进行确认的情况下替换该输入。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference] 的[创建输入（Azure 流分析）][msdn-rest-api-create-stream-analytics-input] 部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输入（Azure 流分析）][msdn-rest-api-create-stream-analytics-input]部分。
 
 **示例 1**
 
@@ -236,7 +236,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令会使用文件中的定义来替换名为 EntryStream 的现有输入源的定义。
 
-### <a name="new-azurestreamanalyticsjob-new-azurermstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzureRMStreamAnalyticsJob
+### <a name="new-azurestreamanalyticsjob--new-azurermstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzureRMStreamAnalyticsJob
 在 Microsoft Azure 中创建新的流分析作业，或者更新现有的指定作业的定义。
 
 作业的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
@@ -245,7 +245,7 @@ Azure PowerShell 1.0：
 
 如果你指定了 –Force 参数，同时又指定了一个现有的作业名称，则会在不进行确认的情况下替换作业定义。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference] 的[创建流分析作业][msdn-rest-api-create-stream-analytics-job] 部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建流分析作业][msdn-rest-api-create-stream-analytics-job]部分。
 
 **示例 1**
 
@@ -271,7 +271,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令替换 StreamingJob 的作业定义。
 
-### <a name="new-azurestreamanalyticsoutput-new-azurermstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzureRMStreamAnalyticsOutput
+### <a name="new-azurestreamanalyticsoutput--new-azurermstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzureRMStreamAnalyticsOutput
 在流分析作业中创建新的输出，或者更新现有的输出。  
 
 输出的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
@@ -280,7 +280,7 @@ Azure PowerShell 1.0：
 
 如果你指定了 –Force 参数，同时又指定了一个现有的输出名称，则会在不进行确认的情况下替换该输出。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference] 的[创建输出（Azure 流分析）][msdn-rest-api-create-stream-analytics-output] 部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输出（Azure 流分析）][msdn-rest-api-create-stream-analytics-output]部分。
 
 **示例 1**
 
@@ -306,7 +306,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令替换作业 StreamingJob 中“output”的定义。
 
-### <a name="new-azurestreamanalyticstransformation-new-azurermstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzureRMStreamAnalyticsTransformation
+### <a name="new-azurestreamanalyticstransformation--new-azurermstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzureRMStreamAnalyticsTransformation
 在流分析作业中创建新的转换，或者更新现有转换。
 
 转换的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
@@ -315,7 +315,7 @@ Azure PowerShell 1.0：
 
 如果你指定了 –Force 参数，同时又指定了一个现有的转换名称，则会在不进行确认的情况下替换转换。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference] 的[创建转换（Azure 流分析）][msdn-rest-api-create-stream-analytics-transformation] 部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建转换（Azure 流分析）][msdn-rest-api-create-stream-analytics-transformation]部分。
 
 **示例 1**
 
@@ -341,7 +341,7 @@ Azure PowerShell 1.0：
 
  此 PowerShell 命令替换作业 StreamingJob 中 StreamingJobTransform 的定义。
 
-### <a name="remove-azurestreamanalyticsinput-remove-azurermstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzureRMStreamAnalyticsInput
+### <a name="remove-azurestreamanalyticsinput--remove-azurermstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzureRMStreamAnalyticsInput
 以异步方式从 Microsoft Azure 的流分析作业中删除特定的输入。  
 如果指定 -Force 参数，则会在不确认的情况下删除输入。
 
@@ -357,7 +357,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令删除作业 StreamingJob 中的输入 EventStream。  
 
-### <a name="remove-azurestreamanalyticsjob-remove-azurermstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzureRMStreamAnalyticsJob
+### <a name="remove-azurestreamanalyticsjob--remove-azurermstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzureRMStreamAnalyticsJob
 以异步方式删除 Microsoft Azure 中的特定流分析作业。  
 如果指定 -Force 参数，则会在不确认的情况下删除作业。
 
@@ -373,7 +373,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令删除作业 StreamingJob。  
 
-### <a name="remove-azurestreamanalyticsoutput-remove-azurermstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzureRMStreamAnalyticsOutput
+### <a name="remove-azurestreamanalyticsoutput--remove-azurermstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzureRMStreamAnalyticsOutput
 以异步方式从 Microsoft Azure 的流分析作业中删除特定的输出。  
 如果指定 -Force 参数，则会在不确认的情况下删除输出。
 
@@ -389,7 +389,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令删除作业 StreamingJob 中的输出 Output。  
 
-### <a name="start-azurestreamanalyticsjob-start-azurermstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzureRMStreamAnalyticsJob
+### <a name="start-azurestreamanalyticsjob--start-azurermstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzureRMStreamAnalyticsJob
 以异步方式部署和启动 Microsoft Azure 中的流分析作业。
 
 **示例 1**
@@ -404,7 +404,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令启动作业 StreamingJob，并将自定义输出开始时间设置为 2012 年 12 月 12 日 12:12:12（UTC）。
 
-### <a name="stop-azurestreamanalyticsjob-stop-azurermstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzureRMStreamAnalyticsJob
+### <a name="stop-azurestreamanalyticsjob--stop-azurermstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzureRMStreamAnalyticsJob
 以异步方式停止流分析作业在 Microsoft Azure 中的运行，并取消分配所使用的资源。 通过 Azure 门户和管理 API，仍可获取订阅中的作业定义和元数据，因此作业可以编辑和重启。 处于停止状态的作业不收费。
 
 **示例 1**
@@ -419,7 +419,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令停止作业 StreamingJob。  
 
-### <a name="test-azurestreamanalyticsinput-test-azurermstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzureRMStreamAnalyticsInput
+### <a name="test-azurestreamanalyticsinput--test-azurermstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzureRMStreamAnalyticsInput
 测试流分析能否连接到指定的输入。
 
 **示例 1**
@@ -434,7 +434,7 @@ Azure PowerShell 1.0：
 
 此 PowerShell 命令测试 StreamingJob 中输入 EntryStream 的连接状态。  
 
-### <a name="test-azurestreamanalyticsoutput-test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
+### <a name="test-azurestreamanalyticsoutput--test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
 测试流分析能否连接到指定的输出。
 
 **示例 1**
@@ -476,6 +476,6 @@ Azure PowerShell 1.0：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

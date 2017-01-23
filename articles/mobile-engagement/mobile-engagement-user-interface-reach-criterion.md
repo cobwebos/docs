@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: b3d88826050bcdf272e732cb0b51ee2e2618e586
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: afa6625e4c3ebe2a408b4bd956c8d2eb9ac6a34b
 
 
 ---
@@ -25,16 +25,16 @@ ms.openlocfilehash: b3d88826050bcdf272e732cb0b51ee2e2618e586
 
 **另请参阅：**
 
-* [UI 文档 - 市场宣传 - 新推送活动][链接 27]
+* [UI 文档 - 市场宣传 - 新推送活动][Link 27]
 
 ## <a name="audience-criteria-can-include"></a>访问群体条件可以包括：
-* **技术人员：**可以基于可在“分析和监视器”部分中看到的相同技术信息确定目标。 **另请参阅：**[UI 文档 - 分析][链接 15]、[UI 文档 - 监视器][链接 16]
-* **位置：**将“实时位置报告”与地理围栏结合使用的应用程序可将地理位置用作从 GPS 位置确定访问群体的条件。 “简易区域位置报告”调用也可用于从手机位置确定访问群体（“实时位置报告”和“简易区域位置报告”必须从 SDK 中激活）。 **另请参阅：**[SDK 文档 - iOS - 集成][链接 5]、[SDK 文档 - Android - 集成][链接 5]
-* **市场宣传反馈：**可以基于其反馈确定访问群体，这些反馈包括以前市场宣传通知的反馈乃至公告、投票和数据推送的市场宣传反馈。 在参与两个或三个市场宣传活动后，与第一个相比你能够更好地确定访问群体。 通过将活动设置为不发送到已接收到特定的上一个活动的用户，还可用于筛选出已接收到含有类似内容的通知的用户。 你甚至可以禁止仍处于活动状态的特定活动包含的用户接收新推送。 **另请参阅：**[UI 文档 - 市场宣传 - 推送内容][链接 29]
-* **安装跟踪：**可以根据用户安装应用的位置跟踪信息。 **另请参阅：**[UI 文档 - 设置][链接 20]
+* **技术人员：**可以基于可在“分析和监视器”部分中看到的相同技术信息确定目标。 **另请参阅：**[UI 文档 - 分析][Link 15]、[UI 文档 - 监视器][Link 16]
+* **位置：**将“实时位置报告”与地理围栏结合使用的应用程序可将地理位置用作从 GPS 位置确定访问群体的条件。 “简易区域位置报告”调用也可用于从手机位置确定访问群体（“实时位置报告”和“简易区域位置报告”必须从 SDK 中激活）。 **另请参阅：**[SDK 文档 - iOS - 集成][Link 5]、[SDK 文档 - Android - 集成][Link 5]
+* **市场宣传反馈：**可以基于其反馈确定访问群体，这些反馈包括以前市场宣传通知的反馈乃至公告、投票和数据推送的市场宣传反馈。 在参与两个或三个市场宣传活动后，与第一个相比你能够更好地确定访问群体。 通过将活动设置为不发送到已接收到特定的上一个活动的用户，还可用于筛选出已接收到含有类似内容的通知的用户。 你甚至可以禁止仍处于活动状态的特定活动包含的用户接收新推送。 **另请参阅：**[UI 文档 - 市场宣传 - 推送内容][Link 29]
+* **安装跟踪：**可以根据用户安装应用的位置跟踪信息。 **另请参阅：**[UI 文档 - 设置][Link 20]
 * **用户配置文件：**可以基于标准的用户信息确定目标，并且可以基于你已创建的自定义应用信息确定目标。 这包括当前登录的用户和已回答特定问题的用户，你已要求他们在应用自身中进行设置，而不是只是如何对以前的活动进行响应。 为你的应用定义的所有应用信息将显示在此列表上。
-* 段：你还可以根据你已基于包含多个条件的特定用户行为创建的段确定目标。 为你的应用定义的所有段将显示在此列表上。 **另请参阅：**[UI 文档 - 段][链接 18]
-* **应用信息：**自定义应用信息标记可以从“设置”中进行创建以跟踪用户行为。 **另请参阅：**[UI 文档 - 设置][链接 20]
+* 段：你还可以根据你已基于包含多个条件的特定用户行为创建的段确定目标。 为你的应用定义的所有段将显示在此列表上。 **另请参阅：**[UI 文档 - 细分市场][Link 18]
+* **应用信息：**自定义应用信息标记可以从“设置”中进行创建以跟踪用户行为。 **另请参阅：**[UI 文档 - 设置][Link 20]
 
 ## <a name="example"></a>示例：
 如果你想将公告仅推送到已执行应用内购买操作的部分用户。
@@ -146,39 +146,39 @@ ms.openlocfilehash: b3d88826050bcdf272e732cb0b51ee2e2618e586
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[链接 1]: mobile-engagement-user-interface.md
-[链接 2]: mobile-engagement-troubleshooting-guide.md
-[链接 3]: mobile-engagement-how-tos.md
-[链接 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[链接 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[链接 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[链接 7]: https://account.windowsazure.com/PreviewFeatures
-[链接 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[链接 9]: http://azure.microsoft.com/services/mobile-engagement/
-[链接 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[链接 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[链接 12]: mobile-engagement-user-interface-navigation.md
-[链接 13]: mobile-engagement-user-interface-home.md
-[链接 14]: mobile-engagement-user-interface-my-account.md
-[链接 15]: mobile-engagement-user-interface-analytics.md
-[链接 16]: mobile-engagement-user-interface-monitor.md
-[链接 17]: mobile-engagement-user-interface-reach.md
-[链接 18]: mobile-engagement-user-interface-segments.md
-[链接 19]: mobile-engagement-user-interface-dashboard.md
-[链接 20]: mobile-engagement-user-interface-settings.md
-[链接 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[链接 22]: mobile-engagement-troubleshooting-guide-apis.md
-[链接 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[链接 24]: mobile-engagement-troubleshooting-guide-service.md
-[链接 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[链接 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[链接 27]: mobile-engagement-user-interface-reach-campaign.md
-[链接 28]: mobile-engagement-user-interface-reach-criterion.md
-[链接 29]: mobile-engagement-user-interface-reach-content.md
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
+[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[Link 7]: https://account.windowsazure.com/PreviewFeatures
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: mobile-engagement-user-interface-reach-campaign.md
+[Link 28]: mobile-engagement-user-interface-reach-criterion.md
+[Link 29]: mobile-engagement-user-interface-reach-content.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

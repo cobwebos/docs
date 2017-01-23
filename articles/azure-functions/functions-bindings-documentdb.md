@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 3c406de579e3f09b521b60861230106c952f4357
+ms.sourcegitcommit: c9e736f7ce5330823f3890c669da40e2bb1ecf43
+ms.openlocfilehash: 13b69118c6732ed872bec11e880737db3b8fa3c5
 
 
 ---
@@ -159,6 +159,24 @@ DocumentDB 输出绑定允许将新文档写入 Azure DocumentDB 数据库。
 
 当写入函数中的输出参数时，默认情况下数据库中将生成一个新文档，并以自动生成的 GUID 作为文档 ID。 可以通过在输出参数中指定 `id` JSON 属性，来指定输出文档的文档 ID。 如果具有该 ID 的文档已存在，则输出文档将覆盖它。 
 
+可使用以下任意类型写入到输出：
+
+* 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 有助于 JSON 序列化。
+  如果声明自定义输出类型（例如 `out FooType paramName`），Azure Functions 将尝试将对象序列化为 JSON。 如果函数退出时输出参数为 null，则 Functions 运行时将创建一个 blob 作为 null 对象。
+* 字符串 - (`out string paramName`) 适用于文本 blob 数据。 Functions 运行时仅在函数退出时字符串参数为非 null 才创建 blob。
+
+在 C# 函数中，还可输出到以下任意类型：
+
+* `TextWriter`
+* `Stream`
+* `CloudBlobStream`
+* `ICloudBlob`
+* `CloudBlockBlob` 
+* `CloudPageBlob` 
+
+若要输出多个文档，还可以绑定到 `ICollector<T>` 或 `IAsyncCollector<T>`，其中 `T` 是受支持的类型之一。
+
+
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>输出示例
@@ -290,6 +308,7 @@ module.exports = function (context) {
 ```
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO1-->
 
 

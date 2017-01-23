@@ -3,7 +3,7 @@ title: "预测指数平滑 | Microsoft Docs"
 description: "Web 服务：预测指数平滑"
 services: machine-learning
 documentationcenter: 
-author: xueshanz
+author: yijichen
 manager: jhubbard
 editor: cgronlun
 ms.assetid: a4150681-6eac-4145-9eca-0cdf60781dde
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
-ms.author: xueshzha
+ms.date: 12/13/2016
+ms.author: yijichen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 712bfc1ec3bf3dcc8ab3de9a3e610ae86b6f4410
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 47ef9bce59b62bbd5b2c630ee101a655814d96d2
 
 
 ---
@@ -90,7 +90,7 @@ ms.openlocfilehash: 712bfc1ec3bf3dcc8ab3de9a3e610ae86b6f4410
 > 
 > 
 
-从 Azure 机器学习中创建了新的空白实验。 示例输入数据已随预定义数据架构一起上载。 链接到数据架构是通过从 R 使用“ets”和“forecast”函数生成 ETS 预测模型的 [Execute R Script][execute-r-script] 模块。 
+从 Azure 机器学习中创建了新的空白实验。 示例输入数据已随预定义数据架构一起上载。 链接到数据架构的是一种[执行 R 脚本][execute-r-script]模块，该模块通过使用 R 中的“ets”和“forecast”函数生成 ETS 预测模型。 
 
 ![实验流][2]
 
@@ -143,6 +143,6 @@ ms.openlocfilehash: 712bfc1ec3bf3dcc8ab3de9a3e610ae86b6f4410
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

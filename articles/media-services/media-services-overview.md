@@ -46,7 +46,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 单击图像可查看其完整大小。  
 
-<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a>  
+<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
 可以在[此处](https://media.windows.net/API/$metadata?api-version=2.15)查看整个模型。  
 
@@ -79,8 +79,8 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 ![VoD 工作流](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
-    
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+
 ### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>保护存储中的内容并以明文（非加密）形式交付流式处理媒体
 1. 将优质夹层文件上载到资产中。
 
@@ -184,7 +184,8 @@ Azure 媒体服务提供你所需的工具，以便你创建适用于大多数�
 可以通过指定要为帐户预配的**串流保留单位**和**编码保留单位**的数量来缩放**媒体服务**。
 
 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 若要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。
-媒体服务客户可以根据自身需要，选择**标准**流式处理终结点或者一个或多个**高级**流式处理终结点。 标准流式处理终结点适合用于大多数流式处理工作负荷。 它的功能与高级流单元相同。 标准流式处理终结点适合用于大多数流式处理工作负荷。 如果高级工作负荷或流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者你希望通过调整缩放单位（也称为高级流单元）来控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单位。
+媒体服务客户可以根据自身需要，选择**标准**流式处理终结点或者一个或多个**高级**流式处理终结点。 标准流式处理终结点适合用于大多数流式处理工作负荷。 它的功能与高级流单元相同。
+标准流式处理终结点适合用于大多数流式处理工作负荷。 如果高级工作负荷或流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者你希望通过调整缩放单位（也称为高级流单元）来控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单位。
 
 [本](media-services-portal-scale-streaming-endpoints.md) 主题链接到相关的主题。
 

@@ -1,6 +1,6 @@
 ---
-title: "IoT 中心 MQTT 支持 | Microsoft 文档"
-description: "介绍 IoT 中心级别的 MQTT 支持"
+title: "了解 Azure IoT 中心 MQTT 支持 | Microsoft Docs"
+description: "开发人员指南 - 支持设备使用 MQTT 协议连接到面向设备的 IoT 中心终结点。 介绍了 Azure IoT 设备 SDK 中的内置 MQTT 支持。"
 services: iot-hub
 documentationcenter: .net
 author: kdotchkoff
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/24/2016
 ms.author: kdotchko
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: cb771818a437fdacd20fe192a087ebc0c8952f21
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 97317edb8f97360281a0bfcc6d8c11f70b204897
 
 
 ---
@@ -47,7 +47,7 @@ IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] �
 执行此操作时，请确保检查下列各项：
 
 * AMQP 针对许多条件返回错误，而 MQTT 会终止连接。 因此异常处理逻辑可能需要进行一些更改。
-* MQTT 在接收[“云到设备”消息][lnk-messaging]时不支持*拒绝*操作。 如果后端需要从设备应用接收响应，请考虑使用[直接方法][lnk-methods]。
+* MQTT 在接收[“云到设备”消息][lnk-messaging]时不支持*拒绝*操作。 如果后端应用需要接收来自设备应用的响应，请考虑使用[直接方法][lnk-methods]。
 
 ## <a name="using-the-mqtt-protocol-directly"></a>直接使用 MQTT 协议
 如果设备无法使用设备 SDK，仍可使用 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
@@ -60,9 +60,9 @@ IoT 中心让设备能够在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] �
 
     有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌][lnk-sas-tokens]的设备部分。
 
-    测试时也可以使用[设备资源管理器][lnk-device-explorer]工具来快速生成可以复制并粘贴到自己的代码中的 SAS 令牌。
+    测试时也可以使用[设备资源管理器][lnk-device-explorer]工具来快速生成可以复制并粘贴到自己的代码中的 SAS 令牌：
 
-  1. 转到设备资源管理器中的“**管理**”选项卡。
+  1. 转到“设备资源管理器”中的“管理”选项卡。
   2. 单击“**SAS 令牌**”（右上角）。
   3. 在 **SASTokenForm** 上，从 **DeviceID** 下拉列表中选择你的设备。 设置 **TTL**。
   4. 单击“**生成**”创建令牌。
@@ -85,10 +85,10 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 >
 >
 
-设备客户端应用程序还可以使用 `devices/{device_id}/messages/events/{property_bag}` 作为 **Will 主题名称**，来定义要以遥测消息形式转发的 *Will 消息*。
+设备应用还可使用 `devices/{device_id}/messages/events/{property_bag}` 作为 **Will 主题名称**，用于定义要作为遥测消息转发的 Will 消息。
 
-IoT 中心不支持 QoS 2 消息。 如果设备客户端使用 **QoS 2** 发布消息，则 IoT 中心会关闭网络连接。
-IoT 中心不会保存 Retain 消息。 如果设备在 **RETAIN** 标志设置为 1 的情况下发送消息，则 IoT 中心会在消息中添加 **x-opt-retain** 应用程序属性。 在此情况下，IoT 中心不会保存 retain 消息，而会将它传递到后端应用程序。
+IoT 中心不支持 QoS 2 消息。 如果设备应用使用 **QoS 2** 发布消息，IoT 中心将断开网络连接。
+IoT 中心不会保存 Retain 消息。 如果设备在 **RETAIN** 标志设置为 1 的情况下发送消息，则 IoT 中心会在消息中添加 **x-opt-retain** 应用程序属性。 在此情况下，IoT 中心不会存储保留消息，而将其传递到后端应用。
 
 有关详细信息，请参阅[消息传送开发人员指南][lnk-messaging]。
 
@@ -99,14 +99,14 @@ IoT 中心不会保存 Retain 消息。 如果设备在 **RETAIN** 标志设置�
 
 如有任何消息属性，IoT 中心将传送包含**主题名称** `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。 `{property_bag}` 包含 URL 编码的消息属性键/值对。 属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。 系统属性名称具有前缀 **$**，但应用程序属性使用没有前缀的原始属性名称。
 
-当设备客户端使用 **QoS 2** 订阅主题时，IoT 中心将在 **SUBACK** 数据包中授予最大 QoS 级别 1。 之后，IoT 中心会使用 QoS 1 将消息传送到设备。
+当设备应用使用 **QoS 2** 订阅主题时，IoT 中心将在 **SUBACK** 包中授予最高 QoS 级别 1。 之后，IoT 中心会使用 QoS 1 将消息传送到设备。
 
 ### <a name="retrieving-a-device-twins-properties"></a>检索设备克隆的属性
 
 首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题 `$iothub/twin/GET/?$rid={request id}` 发送一条空消息，其中包含 **request id** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备克隆数据，并且使用与请求相同的 **request id**。
 
 request id 可以是消息属性值的任何有效值（如 [IoT 中心消息传送开发人员指南][lnk-messaging]中所述），且需要验证确保状态是整数。
-响应正文将包含设备克隆的属性部分：
+响应正文将包含设备孪生的属性部分：
 
 标识注册表项的正文限制为“属性”成员，例如，
 
@@ -134,7 +134,7 @@ request id 可以是消息属性值的任何有效值（如 [IoT 中心消息传
 
 有关详细信息，请参阅[设备克隆开发人员指南][lnk-devguide-twin]。
 
-### <a name="update-twins-reported-properties"></a>更新克隆的报告属性
+### <a name="update-device-twins-reported-properties"></a>更新设备孪生的报告属性
 
 首先，设备需要订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它会发送一条消息，其中包含 `$iothub/twin/PATCH/properties/reported/?$rid={request id}` 的设备克隆更新，并提供 **request id** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备克隆数据，并且使用与请求相同的 **request id**。
 
@@ -159,7 +159,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 
 ### <a name="receiving-desired-properties-update-notifications"></a>接收所需属性更新通知
 
-设备连接时，IoT 中心会向主题 `$iothub/twin/PATCH/properties/desired/?$version={new version}` 发送通知，其中包含由后端执行的更新的内容。 例如，
+设备连接时，IoT 中心会向主题 `$iothub/twin/PATCH/properties/desired/?$version={new version}` 发送通知，内附解决方案后端执行的更新内容。 例如，
 
         {
             "telemetrySendFrequency": "5m",
@@ -184,7 +184,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 最后，如果需要自定义云端的 MQTT 协议行为，则应检查 [Azure IoT 协议网关][lnk-azure-protocol-gateway]，可以通过它部署直接与 IoT 中心连接的高性能自定义协议网关。 Azure IoT 协议网关可让你自定义设备协议，以适应要重建的 MQTT 部署或其他自定义协议。 但是，这种方法要求运行并使用自定义协议网关。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅“Azure IoT 中心开发人员指南”中的[有关 MQTT 支持的说明][lnk-mqtt-devguide]。
+有关详细信息，请参阅 IoT 中心开发人员指南中的 [MQTT 支持相关说明][lnk-mqtt-devguide]。
 
 若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档][lnk-mqtt-docs]。
 
@@ -197,7 +197,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
@@ -209,7 +209,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdks/tree/master/python/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md
-[lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-client
+[lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-mqtt-devguide]: iot-hub-devguide-messaging.md#notes-on-mqtt-support
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
@@ -228,6 +228,6 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 [lnk-devguide-twin]: iot-hub-devguide-device-twins.md
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

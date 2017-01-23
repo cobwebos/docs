@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/28/2016
+ms.date: 12/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: bedd1c58e6493c8f0c6bb183ffc1bc296c56f46b
+ms.sourcegitcommit: f1c8c5b9bfa14b817efb635cf812242afaa70e35
+ms.openlocfilehash: d536ba2bd44941d036a00a74243cb37b8ae69abb
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: bedd1c58e6493c8f0c6bb183ffc1bc296c56f46b
 在开始阅读本文前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **启用 Azure 订阅** 进行 Data Lake Store 公共预览。 请参阅[说明](data-lake-store-get-started-portal.md)。 
+* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 本文假定用户的群集是具有 Data Lake Store 访问权限的 HDInsight Linux 群集。
 * **Azure SQL 数据库**。 有关如何创建 Azure SQL 数据库的说明，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)
 
@@ -75,7 +75,7 @@ ms.openlocfilehash: bedd1c58e6493c8f0c6bb183ffc1bc296c56f46b
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-store"></a>使用具有 Data Lake Store 帐户访问权限的 Azure HDInsight 群集中的 Sqoop
 HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 群集将 Data Lake Store 用作额外的存储，可使用 Sqoop（不作任何更改）在关系数据库（本例中是 Azure SQL 数据库）和 Data Lake Store 帐户之间导入/导出数据。
 
-1. 本教程假设你已经创建 Linux 群集，因此，应使用 SSH 连接到该群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)。
+1. 本教程假设你已经创建 Linux 群集，因此，应使用 SSH 连接到该群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect)。
 2. 验证是否可从此群集访问 Data Lake Store 帐户。 从 SSH 提示符处运行以下命令：
 
         hdfs dfs -ls adl://<data_lake_store_account>.azuredatalakestore.net/
@@ -134,6 +134,10 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 
         3    Erna    Myers
         4    Annette    Simpson
 
+## <a name="performance-considerations-while-using-sqoop"></a>使用 Sqoop 时的性能注意事项
+
+若要了解为将数据复制到 Data Lake Store 而对 Sqoop 作业进行的性能优化，请参阅 [Sqoop 性能文档](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)。
+
 ## <a name="see-also"></a>另请参阅
 * [从 Azure 存储 blob 复制数据到 Data Lake Store](data-lake-store-copy-data-azure-storage-blob.md)
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
@@ -142,6 +146,6 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 97cadfc4e94e425abf2b6b2268fe3478e92ef47f
 
 
 ---
@@ -59,7 +59,7 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 4. 将数据转换为已清除的表格格式。
 5. 将已转换的数据保存在 Azure blob 中。
 6. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-7. 使用[导入数据][import-data] 模块从 Azure blob 中读取数据。
+7. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
 8. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
 ## <a name="a-namelargelocalascenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>场景 \#3：大型数据集本地文件，针对 Azure blob
@@ -74,13 +74,13 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 6. 提取小到中型数据示例。
 7. 将采样的数据保存在 Azure blob 中。
 8. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-9. 使用[导入数据][import-data] 模块从 Azure blob 中读取数据。
+9. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
 10. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
 ## <a name="a-namesmalllocaltodbascenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>方案 \#4：针对 Azure 虚拟机中 SQL Server 的小型到中型的本地文件数据集
 ![Azure 中 SQL DB 的小型到中型本地文件][4]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 1. 创建运行 SQL Server + IPython Notebook 的 Azure 虚拟机。
 2. 将数据上传到 Azure 存储容器。
 3. 使用 IPython Notebook 预处理并清理 Azure 存储容器中的数据。
@@ -104,13 +104,13 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 7. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
 8. 如果需要和/或想要，请确定数据示例大小。
 9. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-10. 使用[导入数据][import-data] 模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data] 查询中提取字段、创建功能和示例数据。
+10. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
 11. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
 ## <a name="a-namelargelocaltodbascenario-5-large-dataset-in-a-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>场景 \#5：本地文件中的大型数据集，Azure VM 中的目标 SQL Server
 ![Azure 中 SQL DB 的大型本地文件][5]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 1. 创建运行 SQL Server 和 IPython Notebook 服务器的 Azure 虚拟机。
 2. 将数据上传到 Azure 存储容器。
 3. （可选）预处理并清理数据。
@@ -145,13 +145,13 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 5. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
 6. 如果需要和/或想要，请确定数据示例大小。
 7. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-8. 使用[导入数据][import-data] 模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data] 查询中提取字段、创建功能和示例数据。
+8. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
 9. 开始使用上传的数据集对 Azure 机器学习实验流进行采样
 
 ## <a name="a-namelargedbtodbascenario-6-large-dataset-in-a-sql-server-database-on-prem-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>场景 \#6：本地 SQL Server 数据库中的大型数据集，针对 Azure 虚拟机中的 SQL Server
 ![Azure 中 SQL DB 的本地大型 SQL DB][6]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 1. 创建运行 SQL Server 和 IPython Notebook 服务器的 Azure 虚拟机。
 2. 使用一种数据导出方法将数据从 SQL Server 导出到转储文件。
    
@@ -181,13 +181,13 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 5. 浏览数据，根据需要创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
 6. 如果需要和/或想要，请确定数据示例大小。
 7. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-8. 使用[导入数据][import-data] 模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data] 查询中提取字段、创建功能和示例数据。
+8. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
 9. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
 
-### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises-sql-server-to-azure-sql-database"></a>另一个方法是将完整的数据库从本地 SQL Server 复制到 Azure SQL 数据库
+### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>另一个方法是将完整的数据库从本地 SQL Server 复制到 Azure SQL 数据库
 ![分离本地 DB，然后附加到 Azure 中的 SQL DB][7]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 若要复制 SQL Server VM 中的完整 SQL Server 数据库，假定数据库可暂时处于脱机状态，应将数据库从一个位置/服务器复制到另一个。 可在 SQL Server Management Studio 中执行此操作，或使用等效的 Transact-SQL 命令。
 
 1. 在源位置分离数据库。 有关详细信息，请参阅[分离数据库](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)。
@@ -237,7 +237,7 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
    d.单击“下一步”。  在 Hadoop 群集的头节点上的 Hadoop 命令行中运行 Hive 查询，可浏览数据并根据需要创建功能。
 7. 如果需要和/或想要，对数据进行采样以满足 Azure 机器学习工作室。
 8. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
-9. 使用[导入数据][import-data] 模块直接从 `Hive Queries` 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data] 查询中提取字段、创建功能和示例数据。
+9. 使用[导入数据][import-data]模块直接从 `Hive Queries` 中读取数据。 粘贴需要的查询，根据需要，这将直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
 10. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
 
 ## <a name="a-namedecisiontreeadecision-tree-for-scenario-selection"></a><a name="decisiontree"></a>用于方案选择的决策树
@@ -268,6 +268,6 @@ ms.openlocfilehash: 286dfa2ca12ec937b57472444612cff64b3608d3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
