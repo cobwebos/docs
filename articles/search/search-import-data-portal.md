@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a0f4c9c5942ee75b9ca4f3924198e8a8ad8ccc7
+ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
+ms.openlocfilehash: 2d4898694c69b5eb0194747982fa8bfbfea1f6f8
 
 
 ---
@@ -77,7 +77,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”  向导
 4. 如果要在字段级别指定语言分析器，请单击“分析器”  选项卡。 目前，只能指定语言分析器。 使用自定义分析器或非语言分析器（如关键字、模式等）将需要代码。
    
    * 单击“可搜索”  可指定对字段的全文搜索并启用“分析器”下拉列表。
-   * 选择所需的分析器。 有关详细信息，请参阅 [为多语言文档创建索引](search-language-support.md) 。
+   * 选择所需的分析器。 有关详细信息，请参阅[为多语言文档创建索引](search-language-support.md)。
 5. 单击“建议器”  可对所选字段启用“提前键入查询建议”。
 
 ## <a name="import-your-data"></a>导入数据
@@ -93,7 +93,13 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”  向导
 
 不需要重新生成的编辑包括添加新字段、更改评分配置文件、更改建议器或更改语言分析器。 有关详细信息，请参阅 [更新索引](https://msdn.microsoft.com/library/azure/dn800964.aspx) 。
 
-## <a name="next-step"></a>后续步骤
+## <a name="query-an-index-using-search-explorer"></a>使用搜索资源管理器查询索引
+
+门户中提供了“搜索资源管理器”用于查询索引，无需编写任何代码。 可以针对任何索引使用搜索资源管理器。
+
+搜索体验取决于默认设置，例如[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](https://docs.microsoft.com/rest/api/searchservice/search-documents)。 结果将以 JSON 格式返回，方便用户检查整个文档。
+
+## <a name="next-steps"></a>后续步骤
 若要了解有关索引器的详细信息，请查看以下链接：
 
 * [为 Azure SQL 数据库编制索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
@@ -107,6 +113,6 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”  向导
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 
