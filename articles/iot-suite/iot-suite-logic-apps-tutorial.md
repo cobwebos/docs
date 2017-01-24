@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
 
 
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>教程：将逻辑应用连接到 Azure IoT 套件远程监视预配置解决方案
 [Microsoft Azure IoT 套件][lnk-internetofthings]远程监视预配置解决方案以一套端到端功能集演示 IoT 解决方案，是快速入门的好工具。 本教程引导你将逻辑应用连接到 Microsoft Azure IoT 套件远程监视预配置解决方案。 下述步骤演示了如何将 IoT 解决方案连接到业务流程，更进一步地利用该方案。
 
-*如果你要查找有关如何预配远程监视预配置解决方案的演练，请参阅[教程：IoT 预配置解决方案入门][lnk-getstarted]。*
+*如果你要查找有关如何设置远程监视预配置解决方案的演练，请参阅[教程：IoT 预配置解决方案入门][lnk-getstarted]。*
 
 开始本教程之前，必须：
 
 * 在 Azure 订阅中预配远程监视预配置解决方案。
 * 创建 SendGrid 帐户，以便发送可触发业务流程的电子邮件。 你可以在 [SendGrid](https://sendgrid.com/) 中单击“**免费试用**”来注册一个免费试用帐户。 注册免费试用帐户后，需要在 SendGrid 中创建一个用于授权发送邮件的 [API 密钥](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html)。 本教程稍后需要此 API 密钥。
 
-假设预配了远程监视预配置解决方案，请在 [Azure 门户][lnk-azureportal]中导航到该解决方案的资源组。 资源组的名称与你在预配远程监视解决方案时选择的解决方案名称相同。 资源组中会显示解决方案的所有预配 Azure 资源，Azure 经典门户中提供的 Azure Active Directory 应用程序除外。 以下屏幕截图显示了远程监视预配置解决方案的“**资源组**”边栏选项卡示例：
+假设已经设置了远程监视预配置解决方案，请在 [Azure 门户][lnk-azureportal]中导航到该解决方案的资源组。 资源组的名称与你在预配远程监视解决方案时选择的解决方案名称相同。 资源组中会显示解决方案的所有预配 Azure 资源，Azure 经典门户中提供的 Azure Active Directory 应用程序除外。 以下屏幕截图显示了远程监视预配置解决方案的“**资源组**”边栏选项卡示例：
 
 ![](media/iot-suite-logic-apps-tutorial/resourcegroup.png)
 
@@ -97,14 +97,14 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 13. 单击“**请求**”触发器和“**指向此 URL 的 Http Post**”值的副本。 本教程稍后需要此 URL。
 
 > [!NOTE]
-> 通过逻辑应用，你可以运行[多个不同类型的操作][lnk-logic-apps-actions]（包括 Office 365 中的操作）。 
+> 通过逻辑应用，可以运行[多个不同类型的操作][lnk-logic-apps-actions]，包括 Office 365 中的操作。 
 > 
 > 
 
 ## <a name="set-up-the-eventprocessor-web-job"></a>设置 EventProcessor Web 作业
 在本部分中，会将预配置解决方案连接到创建的逻辑应用上。 若要完成此任务，需添加 URL 以触发逻辑应用在设备感应器值超过阙值时执行操作。
 
-1. 使用 git 客户端克隆最新版本的 [azure-iot-remote-monitoring github repository][lnk-rmgithub]。 例如：
+1. 使用 git 客户端克隆最新版的 [azure-iot-remote-monitoring github 存储库][lnk-rmgithub]。 例如：
    
     ```
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
@@ -125,9 +125,9 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 ## <a name="deploy-from-the-command-line"></a>从命令行部署
 在本部分中，你将部署已更新的远程监视解决方案，以替换当前正在 Azure 中运行的版本。
 
-1. 按照 [dev set-up][lnk-devsetup] 说明设置你的部署环境。
-2. 若要以本地方式部署，请按照[本地部署][lnk-localdeploy]说明进行操作。
-3. 若要部署到云并更新现有的云部署，请按照[云部署][lnk-clouddeploy]说明进行操作。 使用原始部署的名称作为部署名称。 例如，如果原始部署称为 **demologicapp**，请使用以下命令：
+1. 遵循[开发设置][lnk-devsetup]说明来设置环境，以便为部署做好准备。
+2. 若要在本地部署，请遵循[本地部署][lnk-localdeploy]说明。
+3. 若要部署到云并更新现有的云部署，请遵循[云部署][lnk-clouddeploy]说明。 使用原始部署的名称作为部署名称。 例如，如果原始部署称为 **demologicapp**，请使用以下命令：
    
    ``
    build.cmd cloud release demologicapp
@@ -144,7 +144,7 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 温度规则触发**引发警报**操作，湿度规则触发 **SendMessage** 操作。 假设为这两个操作的 **ActionRepository** 类使用了相同的 URL，则针对任一规则触发逻辑应用。 这两个规则使用 SendGrid 将电子邮件发送至“**收件人**”地址，其中包含警报的详细信息。
 
 > [!NOTE]
-> 逻辑应用继续在每次达到阙值时触发。 若要避免不必要的电子邮件，可以在解决方案门户中禁用规则，或在 [Azure 门户][lnk-azureportal]中禁用逻辑应用。
+> 逻辑应用继续在每次达到阙值时触发。 为避免不必要的电子邮件，可在解决方案门户中禁用规则或在 [Azure 门户][lnk-azureportal]中禁用逻辑应用。
 > 
 > 
 
@@ -155,7 +155,7 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 ## <a name="next-steps"></a>后续步骤
 现在，你已使用逻辑应用将预配置解决方案连接到业务流程，接下来可以详细了解自定义预配置解决方案的选项：
 
-* [将动态遥测与远程监视预配置解决方案一起使用][lnk-dynamic]
+* [配合使用动态遥测和远程监视预配置解决方案][lnk-dynamic]
 * [远程监视预配置解决方案中的设备信息元数据][lnk-devinfo]
 
 [lnk-dynamic]: iot-suite-dynamic-telemetry.md
@@ -172,6 +172,6 @@ ms.openlocfilehash: 12f8fa60fd5da8dcb7ce8f429f6bc47595a0f9d6
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

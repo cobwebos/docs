@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心缩放 | Microsoft Docs"
-description: "介绍如何缩放 Azure IoT 中心。"
+description: "如何缩放 IoT 中心来支持预期的消息吞吐量。 概括介绍了每层支持的吞吐量和分片选项。"
 services: iot-hub
 documentationcenter: 
 author: fsautomata
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/19/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 992c271fe3426f4a1e59f4e546b0f7f4e0d59e59
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 7683a6c6afa3dbec3fccadc9f095480ed90aa039
 
 
 ---
@@ -29,7 +29,7 @@ Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信
 * 云到设备的消息
 * 标识注册表操作
 
-除了此吞吐量信息，另请参阅 [IoT 中心配额和限制][IoT 中心配额和限制]并相应地设计解决方案。
+除了此吞吐量信息，另请参阅 [IoT 中心配额和限制][IoT Hub quotas and throttles]，并相应地设计解决方案。
 
 ## <a name="device-to-cloud-and-cloud-to-device-message-throughput"></a>设备到云和云到设备的消息吞吐量
 若要基于每个单位评估流量，最佳方式是调整 IoT 中心解决方案的大小。
@@ -45,7 +45,7 @@ Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信
 ## <a name="identity-registry-operation-throughput"></a>标识注册表操作吞吐量
 由于大多数 IoT 中心标识注册表操作都与设备预配相关，因此不认为这些操作是运行时操作。
 
-有关特定突发性能数字，请参阅 [IoT 中心配额和限制][IoT 中心配额和限制]。
+有关具体的突发性能数字，请参阅 [IoT 中心配额和限制][IoT Hub quotas and throttles]。
 
 ## <a name="sharding"></a>分片
 尽管单个 IoT 中心可以扩展到数百万个设备，但有时解决方案所需的具体性能特征无法由单个 IoT 中心提供保证。 在此情况下，建议将设备分区成多个 IoT 中心。 多个 IoT 中心可以缓解流量喷发，并获得所需的吞吐量或操作速率。
@@ -53,17 +53,17 @@ Azure IoT 中心可支持多达一百万台设备同时连接。 有关详细信
 ## <a name="next-steps"></a>后续步骤
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[IoT 中心配额和限制]: iot-hub-devguide-quotas-throttling.md
+[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

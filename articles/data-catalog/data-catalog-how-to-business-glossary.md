@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -38,8 +38,8 @@ Azure 数据目录提供了数据源发现的功能，使用户能够轻松发�
 
 > [!NOTE]
 > 本文中描述的功能仅在 Azure 数据目录标准版中可用。 免费版不提供管控标记或业务术语表功能。
-> 
-> 
+>
+>
 
 ## <a name="glossary-availability-and-privileges"></a>术语表可用性和特权
 业务术语表在 Azure 数据目录标准版中可用。*数据目录免费版不包括术语表。*
@@ -74,8 +74,8 @@ Azure 数据目录提供了数据源发现的功能，使用户能够轻松发�
 
 > [!NOTE]
 > 用户标记是数据目录免费版中唯一支持的标记类型。
-> 
-> 
+>
+>
 
 ### <a name="hover-behavior-on-tags"></a>标记上的悬停行为
 在数据目录门户中，这两种类型的标记看起来有所不同，并具有不同的悬停行为。 用户将鼠标悬停在用户标记上时，可以看到标记文本和添加了该标记的用户。 用户将鼠标悬停在术语表标记上时，还可以看到术语表术语的定义，以及能打开业务术语表以查看该术语的完整定义的链接。
@@ -88,7 +88,6 @@ Azure 数据目录中的业务术语表及其启用的管控标记允许以一�
 
 ## <a name="see-also"></a>另请参阅
 * [用于业务术语表操作的 REST API 文档](https://msdn.microsoft.com/library/mt708855.aspx)
-
 
 
 

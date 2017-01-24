@@ -1,6 +1,6 @@
 ---
-title: "IoT 安全体系结构 | Microsoft Docs"
-description: "IoT 安全体系结构指导原则和注意事项"
+title: "Azure IoT 安全体系结构 | Microsoft Docs"
+description: "IoT 安全体系结构指导原则和注意事项（包括威胁模型）。"
 services: iot-hub
 documentationcenter: 
 author: YuriDio
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e0f47e9badfc2b8b95a44b8baf38a0ae6574e39c
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 9327750b35476fd2a6eca379061a06842daf8d47
 
 
 ---
@@ -35,6 +35,6 @@ ms.openlocfilehash: e0f47e9badfc2b8b95a44b8baf38a0ae6574e39c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 63ed48c874d75904cb7ea56b7ae1e50311f6b7f2
+ms.sourcegitcommit: 4d6bdffe23905f5507332b95e1dc12e2c00c017d
+ms.openlocfilehash: b6fe6dd15dd73e8874ded8b9481ea8a14733e34c
 
 
 ---
@@ -450,17 +450,17 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 若要选择用于机器学习实验的保存数据集，请使用下图中显示的“搜索”框来定位数据集。 然后只需输入给定数据集的部分名称即可访问该数据集，并将其拖动到主面板上。 将其放在主面板上，并选择用于机器学习建模。
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
+![将数据集拖放到主面板上](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
 > 对定型和测试数据集都执行此操作。 此外，请记住使用你为此目的提供的数据库名称和表名称。 图中使用的值仅用于说明目的。**
 > 
 > 
 
-### <a name="a-namestep2a-step-2-create-a-simple-experiment-in-azure-machine-learning-to-predict-clicks-no-clicks"></a><a name="step2"></a>步骤2：在 Azure 机器学习中创建简单实验，以预测单击/无单击
+### <a name="a-namestep2a-step-2-create-a-simple-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>步骤2：在 Azure 机器学习中创建简单实验，以预测单击/无单击
 我们的 Azure ML 实验如下所示：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xRpVfrY.png)
+![机器学习实验](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xRpVfrY.png)
 
 现在，我们来检查一下此实验的关键组件。 提醒一下，我们需要将保存的定型和测试数据集拖到实验画布上。
 
@@ -477,56 +477,56 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 ##### <a name="building-counting-transforms"></a>构建计数转换
 若要构建计数功能，我们使用 Azure 机器学习中提供的“构建计数转换”模块。 模块如下所示：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/e0eqKtZ.png)
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/OdDN0vw.png)
+![“生成计数转换”模块](./media/machine-learning-data-science-process-hive-criteo-walkthrough/e0eqKtZ.png)
+![“生成计数转换”模块](./media/machine-learning-data-science-process-hive-criteo-walkthrough/OdDN0vw.png)
 
 **重要说明**：在“计数列”框中，输入要执行计数的列。 通常，要输入是（正如所提到的）高维分类列。 在开始时，我们提到 Criteo 数据集有 26 个分类列：从 Col15 到 Col40。 在这里，我们对所有分类列进行计数，并给出其指数（从 15 到 40，用逗号分隔，如图所示）。
 
 若要在 MapReduce 模式下使用模块（适用于大型数据集），则需要访问 HDInsight Hadoop 群集（用于功能浏览的群集也可以重复使用于此目的）及其凭据。 前面的图说明了填充值的样式（将为你提供的值替换为与你自己的用例相关的值）。
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/05IqySf.png)
+![模块参数](./media/machine-learning-data-science-process-hive-criteo-walkthrough/05IqySf.png)
 
 在上图中，我们将展示如何输入 blob 位置。 此位置含有为构建计数表保留的数据。
 
-此模块完成运行后，可以右键单击模块并选择“另存为变换”选项保存变换以便稍后使用：
+此模块完成运行后，可以右键单击模块并选择“另存为转换”选项保存转换以便稍后使用：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IcVgvHR.png)
+![“另存为转换”选项](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IcVgvHR.png)
 
-在上面显示的实验体系结构中，数据集“ytransform2”正好与保存的计数变换相对应。 对于本实验的其余部分，我们假设读者对某些数据使用“构建计数变换”模块来生成计数，并可以使用这些计数来在定型和测试数据集上生成计数功能。
+在上面显示的实验体系结构中，数据集“ytransform2”正好与保存的计数转换相对应。 对于本实验的其余部分，我们假设读者对某些数据使用“构建计数转换”模块来生成计数，并可以使用这些计数来在定型和测试数据集上生成计数功能。
 
 ##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>选择要将哪些计数功能作为定型和测试数据集的一部分
-计数变换准备就绪后，用户可以使用“修改计数表参数”模块选择要包括在其定型和测试数据集中的功能。 我们仅在此展示了该模块的完整性，但为了简单起见，在实验中并没有使用它。
+计数转换准备就绪后，用户可以使用“修改计数表参数”模块选择要包括在其定型和测试数据集中的功能。 我们仅在此展示了该模块的完整性，但为了简单起见，在实验中并没有使用它。
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/PfCHkVg.png)
+![修改计数表参数](./media/machine-learning-data-science-process-hive-criteo-walkthrough/PfCHkVg.png)
 
 在此情况下，可以看出，我们选择了仅使用对数几率并忽略退避列。 我们还可以设置参数，例如垃圾桶阈值、要添加的用于平滑处理的伪先验示例数以及是否使用 Laplacian 噪声。 所有这些参数都是高级功能，需要注意的是，对于还不熟悉此类功能生成的用户而言，使用默认值会是一个很好的选择。
 
 ##### <a name="data-transformation-before-generating-the-count-features"></a>生成计数功能前的数据转换
 现在我们关注的重点是在实际生成计数功能之前转换定型和测试数据。 请注意，在对数据应用计数转换之前，要使用两个“执行 R 脚本”模块。
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/aF59wbc.png)
+![“执行 R 脚本”模块](./media/machine-learning-data-science-process-hive-criteo-walkthrough/aF59wbc.png)
 
 下面是第一个 R 脚本：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/3hkIoMx.png)
+![第一个 R 脚本](./media/machine-learning-data-science-process-hive-criteo-walkthrough/3hkIoMx.png)
 
-在此 R 脚本中，将列重命名为“Col1”到“Col40”。 这是因为计数变换需要此格式的名称。
+在此 R 脚本中，将列重命名为“Col1”到“Col40”。 这是因为计数转换需要此格式的名称。
 
 在第二个 R 脚本中，通过对负类进行缩小取样来平衡正类和负类（分别是类 1和 0）之间的分布。 R 脚本将在此处演示如何执行此操作：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/91wvcwN.png)
+![第二个 R 脚本](./media/machine-learning-data-science-process-hive-criteo-walkthrough/91wvcwN.png)
 
 在这一简单的 R 脚本中，使用“pos \_neg\_ratio”设置正类和负类之间的平衡量。 这是十分重要的，因为改进类不平衡通常对类分布存在偏差的分类问题的性能有很大帮助（回想一下，在本例中，有 3.3% 的正类和 96.7% 的负类）。
 
 ##### <a name="applying-the-count-transformation-on-our-data"></a>对我们的数据应用计数转换
 最后，可以使用“应用转换”模块将计数转换应用于定型和测试数据集。 此模块将保存的计数转换作为一个输入，将定型或测试数据集作为另一个输入，并返回具有计数功能的数据。 如下所示：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xnQvsYf.png)
+![“应用转换”模块](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xnQvsYf.png)
 
 ##### <a name="an-excerpt-of-what-the-count-features-look-like"></a>计数功能样式概要
 在本示例中看一下计数功能的样式是有所帮助的。 下面展示了该样式的概要：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/FO1nNfw.png)
+![计数功能](./media/machine-learning-data-science-process-hive-criteo-walkthrough/FO1nNfw.png)
 
 在此概要中，展示了之前进行计数的列，除了任何相关的回退外，我们还得到了计数和对数几率。
 
@@ -536,19 +536,19 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 ##### <a name="choice-of-learner"></a>选择学习者
 首先，我们需要选择一个学习者。 我们将使用二类提升的决策树来作为学习者。 以下是此学习者的默认选项：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/bH3ST2z.png)
+![双类提升决策树参数](./media/machine-learning-data-science-process-hive-criteo-walkthrough/bH3ST2z.png)
 
 对于此次实验，我们选择默认值。 请注意，默认值通常有意义，并且是获得性能的快速基线的有效方法。 如果选择一旦有基线，则可以通过扫描参数来提高性能。
 
 #### <a name="train-the-model"></a>训练模型
 对于定型，只需调用“定型模型”模块。 它的两个输入是二类提升的决策树学习者和我们的定型数据集。 如下所示：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/2bZDZTy.png)
+![“定型模型”模块](./media/machine-learning-data-science-process-hive-criteo-walkthrough/2bZDZTy.png)
 
 #### <a name="score-the-model"></a>为模型评分
 拥有定型的模型后，我们准备对测试数据集进行评分，并评估其性能。 我们使用下图中显示的“评分模型”模块以及“评估模型”模块来完成此操作：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/fydcv6u.png)
+![“评分模型”模块](./media/machine-learning-data-science-process-hive-criteo-walkthrough/fydcv6u.png)
 
 ### <a name="a-namestep5a-step-5-evaluate-the-model"></a><a name="step5"></a>步骤 5：评估模型
 最后，我们想分析模型性能。 通常，对于两类（二进制）分类问题，一种有效地度量值为 AUC。 为了将其可视化，我们将“评分模型”模块连接到“评估模型”模块。 在“评估模型”模块上单击“可视化”将生成如下图所示的图形：
@@ -602,7 +602,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 Web 服务发布后，将会重定向到一个如下所示的页面：
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/YKzxAA5.png)
+![Web 服务仪表板](./media/machine-learning-data-science-process-hive-criteo-walkthrough/YKzxAA5.png)
 
 在左侧可以看到两个 Web 服务的链接：
 
@@ -628,6 +628,6 @@ Web 服务发布后，将会重定向到一个如下所示的页面：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

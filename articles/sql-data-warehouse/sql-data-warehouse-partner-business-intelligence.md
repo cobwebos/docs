@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据仓库商业智能合作伙伴 | Microsoft 文档"
+title: "SQL 数据仓库商业智能合作伙伴 | Microsoft Docs"
 description: "其解决方案支持 SQL 数据仓库的第三方商业智能合作伙伴列表。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e2bdb05c9a99426c665c1564b916724d0c23eadc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 91b3f016497b268d9f7e9d305ec4f69f0a1cd856
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: e2bdb05c9a99426c665c1564b916724d0c23eadc
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解我们的部分其他合作伙伴，请参阅[数据集成合作伙伴] [di_partners] 和[数据管理合作伙伴] [dm_partners]。
+若要详细了解我们的部分其他合作伙伴，请参阅[数据集成合作伙伴][di_partners]和[数据管理合作伙伴][dm_partners]。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png
@@ -153,6 +153,6 @@ ms.openlocfilehash: e2bdb05c9a99426c665c1564b916724d0c23eadc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

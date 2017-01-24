@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -55,8 +55,8 @@ ms.openlocfilehash: ba15ebc176ada48943fb6afa5f9c723e3d906099
 
 > [!NOTE]
 > 使用数据目录数据源注册工具注册数据资产时也可提供标记和专家。
-> 
-> 
+>
+>
 
 选择多个表和视图时，仅所有选定的数据资产共同拥有的列才会在数据目录门户中显示。 这样用户则可以使用所选资产的同一名称为所有列提供标记和说明。
 
@@ -68,7 +68,6 @@ ms.openlocfilehash: ba15ebc176ada48943fb6afa5f9c723e3d906099
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程提供有关如何批注数据源的分步详细说明。
-
 
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 60d3225f276b54e08946744838a5028a02666149
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
 
 
 ---
@@ -321,6 +321,6 @@ CSDL 是用于描述 Web 服务的 XML 语法。 规范本身划分为 4 个主�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

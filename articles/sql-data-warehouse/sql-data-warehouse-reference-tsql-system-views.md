@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cace61299c3d8f3706214306008c7020b9b3eb45
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c73e24c13f69db893d63e9925116d860dccc1120
 
 
 ---
@@ -229,12 +229,12 @@ SQL 数据仓库公开许多 SQL Server 动态管理视图 (DMV)。 在 SQL 数�
 * [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>后续步骤
-有关更多参考信息，请参阅 [SQL 数据仓库参考概述][SQL 数据仓库参考概述]。
+有关更多参考信息，请参阅 [SQL 数据仓库参考概述][SQL Data Warehouse reference overview]。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL 数据仓库参考概述]: sql-data-warehouse-overview-reference.md
+[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
@@ -243,6 +243,6 @@ SQL 数据仓库公开许多 SQL Server 动态管理视图 (DMV)。 在 SQL 数�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

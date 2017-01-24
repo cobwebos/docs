@@ -15,16 +15,16 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e993e8c0cb7b7143f9e7be5bd413f42742666fa8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 96ac017b469405e0eb106bf5eb391b5273600ab2
 
 
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 PowerShell cmdlet 和 REST API
-可以使用 Azure PowerShell cmdlet 或 REST API 来管理许多 SQL 数据仓库管理任务。  下面是如何使用 PowerShell 命令自动执行 SQL 数据仓库中的常见任务的一些示例。  如需一些好的 REST 示例，请参阅[使用 REST 管理可伸缩性][使用 REST 管理可伸缩性]一文。
+可以使用 Azure PowerShell cmdlet 或 REST API 来管理许多 SQL 数据仓库管理任务。  下面是如何使用 PowerShell 命令自动执行 SQL 数据仓库中的常见任务的一些示例。  如需一些典型的 REST 示例，请参阅[使用 REST 管理可伸缩性][Manage scalability with REST]一文。
 
 > [!NOTE]
-> 若要对 SQL 数据仓库使用 Azure PowerShell，需要安装 Azure PowerShell 1.0.3 或更高版本。  可以通过运行 **Get-Module -ListAvailable -Name Azure** 来检查版本。  可通过 [Microsoft Web 平台安装程序][Microsoft Web 平台安装程序]安装最新版本。  有关安装最新版本的详细信息，请参阅 [如何安装和配置 Azure PowerShell][如何安装和配置 Azure PowerShell]。
+> 若要对 SQL 数据仓库使用 Azure PowerShell，需要安装 Azure PowerShell 1.0.3 或更高版本。  可以通过运行 **Get-Module -ListAvailable -Name Azure** 来检查版本。  可通过 [Microsoft Web 平台安装程序][Microsoft Web Platform Installer]安装最新版本。  有关安装最新版本的详细信息，请参阅[如何安装和配置 Azure PowerShell][How to install and configure Azure PowerShell]。
 > 
 > 
 
@@ -88,22 +88,22 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ## <a name="next-steps"></a>后续步骤
 有关更多的 PowerShell 示例，请参阅：
 
-* [使用 PowerShell 创建 SQL 数据仓库][使用 PowerShell 创建 SQL 数据仓库]
-* [数据库还原][数据库还原]
+* [使用 PowerShell 创建 SQL 数据仓库][Create a SQL Data Warehouse using PowerShell]
+* [数据库还原][Database restore]
 
-如需可以使用 PowerShell 自动执行的所有任务的列表，请参阅 [Azure SQL 数据库 Cmdlet][Azure SQL 数据库 Cmdlet]。  如需可以使用 REST 自动执行的任务的列表，请参阅 [Azure SQL 数据库的操作][Azure SQL 数据库的操作]。
+有关可以使用 PowerShell 自动执行的所有任务的列表，请参阅 [Azure SQL 数据库 Cmdlet][Azure SQL Database Cmdlets]。  有关可以使用 REST 自动执行的任务的列表，请参阅 [Azure SQL 数据库的操作][Operations for Azure SQL Databases]。
 
 <!--Image references-->
 
 <!--Article references-->
-[如何安装和配置 Azure PowerShell]: ../powershell-install-configure.md
-[使用 PowerShell 创建 SQL 数据仓库]: ./sql-data-warehouse-get-started-provision-powershell.md
-[数据库还原]: ./sql-data-warehouse-restore-database-powershell.md
-[使用 REST 管理可伸缩性]: ./sql-data-warehouse-manage-compute-rest-api.md
+[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Create a SQL Data Warehouse using PowerShell]: ./sql-data-warehouse-get-started-provision-powershell.md
+[Database restore]: ./sql-data-warehouse-restore-database-powershell.md
+[Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
 
 <!--MSDN references-->
-[Azure SQL 数据库 Cmdlet]: https://msdn.microsoft.com/library/mt574084.aspx
-[Azure SQL 数据库的操作]: https://msdn.microsoft.com/library/azure/dn505719.aspx
+[Azure SQL Database Cmdlets]: https://msdn.microsoft.com/library/mt574084.aspx
+[Operations for Azure SQL Databases]: https://msdn.microsoft.com/library/azure/dn505719.aspx
 [Get-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt603648.aspx
 [Get-AzureRmSqlDeletedDatabaseBackup]: https://msdn.microsoft.com/library/mt693387.aspx
 [Get-AzureRmSqlDatabaseRestorePoints]: https://msdn.microsoft.com/library/mt603642.aspx
@@ -117,10 +117,10 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 [Suspend-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619337.aspx
 
 <!--Other Web references-->
-[Microsoft Web 平台安装程序]: https://aka.ms/webpi-azps
+[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

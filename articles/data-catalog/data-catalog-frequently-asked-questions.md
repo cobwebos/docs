@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -77,15 +77,15 @@ Azure 数据目录的标准版最多支持 100,000 个已注册数据资产。
 
 > [!IMPORTANT]
 > 使用 Azure 数据目录注册数据资产不会将你的数据移动或复制到云。 从数据源注册资产会将资产的元数据复制到 Azure，但数据仍会存在于现有数据源的位置。 如果用户选择在注册资产时上传预览记录或数据配置文件，此规则不适用，这是此规则的唯一例外情况。 上传预览时，将从每个资产复制多达 20 个记录并将其作为快照存储在 Azure 数据目录中。 上传数据配置文件时，将计算聚合信息（如表的大小、每个列的百分比 null 值和列的最小、最大和平均值）并将其包括在存储于目录的元数据中。
-> 
-> 
+>
+>
 
 <br/>
 
 > [!NOTE]
 > 对于数据源（例如具有一流**说明**属性的 SQL Server Analysis Services），Azure 数据目录发布应用程序将提取该属性值。 对于 SQL Server 关系数据库（缺少一流**说明**属性），Azure 数据目录发布应用程序将从对象和列的 ms_description 扩展属性中提取值。 有关详细信息，请参阅 TechNet [对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
-> 
-> 
+>
+>
 
 ## <a name="q-how-long-should-it-take-for-newly-registered-assets-to-appear-in-azure-data-catalog"></a>问：新注册的资产需要多久才能在 Azure 数据目录中显示？
 在 Azure 数据目录中注册资产后，可能需要 5-10 秒钟，才会在 Azure 数据目录门户中显示。
@@ -116,7 +116,7 @@ Azure 数据目录的标准版最多支持 100,000 个已注册数据资产。
 ## <a name="q-will-azure-data-catalog-be-made-available-for-on-premises-deployment-as-well"></a>问：Azure 数据目录将可用于本地部署吗？
 Azure 数据目录是可用于云和本地数据源的云服务，提供混合数据源发现解决方案。 当前没有计划本地运行的 Azure 数据目录服务版本。
 
-## <a name="q-can-we-extract-more-richer-metadata-from-the-data-sources-we-register"></a>问：我们能从注册的数据源中提取更多/更丰富的元数据吗？
+## <a name="q-can-we-extract-more--richer-metadata-from-the-data-sources-we-register"></a>问：我们能从注册的数据源中提取更多/更丰富的元数据吗？
 我们正在努力扩展 Azure 数据目录的功能。 如果你希望在注册期间从数据源中提取其他元数据，请在 [Azure 数据目录论坛](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)中提出建议（若已建议则可为其投票）。 以后我们会允许第三方通过可扩展性 API 添加新的数据源类型。
 
 ## <a name="q-how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>问：如何限制已注册数据资产的可见性，仅允许特定人员发现它们？
@@ -125,9 +125,8 @@ Azure 数据目录是可用于云和本地数据源的云服务，提供混合�
 ## <a name="q-how-do-i-update-the-registration-for-a-data-asset-to-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>问：如何更新数据资产的注册，将数据源中的更改都反映到目录中？
 答：若要更新已在目录中注册的数据资产的元数据，仅需重新注册包含该资产的数据源即可。 数据源中的任何更改（添加列或从表或视图中删除列）将在目录中更新，但用户提供的所有批注都会保留。
 
-## <a name="q-my-question-isnt-answered-here-what-should-i-do"></a>问：如果未在此处找到相关问题怎么办？
+## <a name="q-my-question-isnt-answered-here--what-should-i-do"></a>问：如果未在此处找到相关问题怎么办？
 转到 [Azure 数据目录论坛](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)。 将在此处找到提出的问题。
-
 
 
 

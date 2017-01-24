@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -54,8 +54,8 @@ ms.openlocfilehash: 25c2b279487f099a0e688621e63faaa4ed265e6e
 
 > [!NOTE]
 > 具有大量列的宽表在其预览中可能包含少于 20 条的记录。
-> 
-> 
+>
+>
 
 ## <a name="including-data-profiles"></a>包括数据配置文件
 正如包括预览能为用户在“Azure 数据目录”中搜索数据源提供有价值的上下文一样，包括数据配置文件也可以让理解所发现的数据源变得更简单。
@@ -71,8 +71,8 @@ ms.openlocfilehash: 25c2b279487f099a0e688621e63faaa4ed265e6e
 
 > [!NOTE]
 > 文本和日期列不会在其数据配置文件中包含平均值和标准偏差统计信息。
-> 
-> 
+>
+>
 
 ## <a name="updating-registrations"></a>更新注册
 注册数据源，使它可以通过在注册期间提取的元数据和可选预览在“Azure 数据目录”发现。 如果数据源需要在目录中更新（例如，对象的架构已更改，或者需要包括先前未包括的表，再或者用户想要更新预览中包括的数据），可以重新运行数据源注册工具。
@@ -84,7 +84,6 @@ ms.openlocfilehash: 25c2b279487f099a0e688621e63faaa4ed265e6e
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程提供有关如何注册数据源的分步详细说明。
-
 
 
 

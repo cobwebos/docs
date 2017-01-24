@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -52,8 +52,8 @@ ms.openlocfilehash: 0c90aff38ebe33e8c26f9e46db7e61786ea9a7dd
 
 > [!NOTE]
 > 用户可以根据需要，使用 **Azure 数据目录**门户中的“突出显示”开关关闭命中结果突出显示。
-> 
-> 
+>
+>
 
 查看搜索结果时，即使启用搜索词突出显示，包括某个数据资产的原因也并非总是那么明确。 由于默认会搜索所有属性，可能会由于列级属性上的匹配而返回某数据资产。 而且由于多个用户可以使用自己的标记和说明对已注册的数据资产进行批注，因此并非所有元数据都会显示在搜索结果列表中。
 
@@ -66,7 +66,6 @@ ms.openlocfilehash: 0c90aff38ebe33e8c26f9e46db7e61786ea9a7dd
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程，了解有关如何发现数据源的分步详细说明。
-
 
 
 

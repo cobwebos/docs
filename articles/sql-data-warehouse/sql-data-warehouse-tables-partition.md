@@ -1,5 +1,5 @@
 ---
-title: "对 SQL 数据仓库中的表进行分区 | Microsoft 文档"
+title: "对 SQL 数据仓库中的表进行分区 | Microsoft Docs"
 description: "Azure SQL 数据仓库中的表分区入门。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,20 +15,20 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0aad3cb34a3a2656b2aabce9b88d2a0cd275a62b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0d2ff3ce90c355ba63f3fb66982baa621091ae6e
 
 
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>对 SQL 数据仓库中的表进行分区
 > [!div class="op_single_selector"]
-> * [概述][概述]
-> * [数据类型][数据类型]
-> * [分布][分布]
-> * [索引][索引]
-> * [分区][分区]
-> * [统计信息][统计信息]
-> * [临时][临时]
+> * [概述][Overview]
+> * [数据类型][Data Types]
+> * [分布][Distribute]
+> * [索引][Index]
+> * [分区][Partition]
+> * [统计信息][Statistics]
+> * [临时][Temporary]
 > 
 > 
 
@@ -48,10 +48,10 @@ ms.openlocfilehash: 0aad3cb34a3a2656b2aabce9b88d2a0cd275a62b
 ## <a name="partition-sizing-guidance"></a>分区大小调整指南
 虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用**过多**分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。  若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。  对于多少分区属于分区过多并没有简单的硬性规定，具体取决于你的数据，以及你要同时加载到多少分区。  但通常说来，可以考虑添加数十个到数百个分区，不要添加数千个分区。
 
-在**聚集列存储**表上创建分区时，务请考虑每个分区可容纳的行数。  对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。  在创建分区之前，SQL 数据仓库已将每个表细分到 60 个分布式数据库中。  向表添加的任何分区都是基于在后台创建的分布。  根据此示例，如果销售事实表包含 36 个月的分区，并假设 SQL 数据仓库有 60 个分布区，则销售事实表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。  如果表包含的行数远少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。  另请参阅[索引编制][索引]一文，其中包含的查询可以在 SQL 数据仓库上运行，用于评估群集列存储索引的质量。
+在**聚集列存储**表上创建分区时，务请考虑每个分区可容纳的行数。  对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。  在创建分区之前，SQL 数据仓库已将每个表细分到 60 个分布式数据库中。  向表添加的任何分区都是基于在后台创建的分布。  根据此示例，如果销售事实表包含 36 个月的分区，并假设 SQL 数据仓库有 60 个分布区，则销售事实表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。  如果表包含的行数远少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。  另请参阅[索引编制][Index]一文，其中包含的查询可以在 SQL 数据仓库上运行，用于评估群集列存储索引的质量。
 
 ## <a name="syntax-difference-from-sql-server"></a>与 SQL Server 的语法差异
-SQL 数据仓库引入了简化的分区定义，这与 SQL Server 略有不同。  在 SQL 数据仓库中不像在 SQL Server 中一样使用分区函数和方案。  你只需识别分区列和边界点。  尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。  SQL Server 和 SQL 数据仓库支持一个表一个分区列，后者可以是范围分区。  若要详细了解分区，请参阅[已分区表和已分区索引][已分区表和已分区索引]。
+SQL 数据仓库引入了简化的分区定义，这与 SQL Server 略有不同。  在 SQL 数据仓库中不像在 SQL Server 中一样使用分区函数和方案。  你只需识别分区列和边界点。  尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。  SQL Server 和 SQL 数据仓库支持一个表一个分区列，后者可以是范围分区。  若要了解有关分区的详细信息，请参阅[已分区表和已分区索引][Partitioned Tables and Indexes]。
 
 以下为 SQL 数据仓库分区的 [CREATE TABLE][CREATE TABLE] 语句示例，根据 OrderDateKey 列对 FactInternetSales 表进行了分区：
 
@@ -82,8 +82,8 @@ WITH
 ## <a name="migrating-partitioning-from-sql-server"></a>从 SQL Server 迁移分区
 若要将 SQL Server 分区定义迁移到 SQL 数据仓库，只需执行以下操作即可：
 
-* 消除 SQL Server [partition scheme][partition scheme]。
-* 将[分区函数][分区函数]定义添加到 CREATE TABLE。
+* 消除 SQL Server [分区方案][partition scheme]。
+* 将[分区函数][partition function]定义添加到 CREATE TABLE。
 
 如果你要从 SQL Server 实例迁移分区的表，则可使用以下 SQL 来查询每个分区中的行数。  请记住，如果在 SQL 数据仓库上使用相同的分区粒度，则每个分区的行数将会下降到原来的 1/60。  
 
@@ -122,7 +122,7 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="workload-management"></a>工作负荷管理
-需要纳入表分区决策的最后一项考虑事项是[工作负荷管理][工作负荷管理]。  在 SQL 数据仓库中，工作负荷管理主要是管理内存和并发。  在 SQL 数据仓库中，资源类控制在查询运行期间分配给每个分布的最大内存。  理想情况下，调整分区大小需考虑其他因素，例如在构建聚集列存储索引时的内存需求。  为聚集列存储索引分配更多内存对其有很大好处。  因此，你需要确保重建分区索引不会耗尽内存。 从默认角色 (smallrc) 切换到其他某个角色（例如 largerc），即可增加查询能够使用的内存量。
+需要纳入表分区决策的最后一项考虑事项是[工作负荷管理][workload management]。  在 SQL 数据仓库中，工作负荷管理主要是管理内存和并发。  在 SQL 数据仓库中，资源类控制在查询运行期间分配给每个分布的最大内存。  理想情况下，调整分区大小需考虑其他因素，例如在构建聚集列存储索引时的内存需求。  为聚集列存储索引分配更多内存对其有很大好处。  因此，你需要确保重建分区索引不会耗尽内存。 从默认角色 (smallrc) 切换到其他某个角色（例如 largerc），即可增加查询能够使用的内存量。
 
 查询资源调控器动态管理视图即可获取每个分布的内存分配信息。 事实上，内存授予小于以下数据。 但是，这可以提供指导，以便你在针对数据管理操作调整分区大小时使用。  尽量避免将分区大小调整超过超大型资源类所提供的内存授予。 如果分区成长超过此数据，就冒着内存压力的风险，进而导致比较不理想的压缩。
 
@@ -184,7 +184,7 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> 通过创建统计信息对象，我们可以确保表元数据更加准确。 如果我们省略了创建统计信息这一步，SQL 数据仓库将使用默认值。 有关统计信息的详细信息，请参阅[统计信息][统计信息]。
+> 通过创建统计信息对象，我们可以确保表元数据更加准确。 如果我们省略了创建统计信息这一步，SQL 数据仓库将使用默认值。 有关统计信息的详细信息，请参阅[统计信息][statistics]。
 > 
 > 
 
@@ -349,26 +349,26 @@ DROP TABLE #partitions;
 使用这种方法时，源代码管理中的代码将保持静态，允许动态的分区边界值，并不断地与仓库一起演进。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，请参阅有关[表概述][概述]、[表数据类型][数据类型]、[分布表][分布]、[为表编制索引][索引]、[维护表统计信息][统计信息]和[临时表][临时]中的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL 数据仓库最佳实践]。
+若要了解详细信息，请参阅有关[表概述][Overview]、[表数据类型][Data Types]、[分布表][Distribute]、[为表编制索引][Index]、[维护表统计信息][Statistics]和[临时表][Temporary]的文章。  有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
 
 <!--Image references-->
 
 <!--Article references-->
-[概述]: ./sql-data-warehouse-tables-overview.md
-[数据类型]: ./sql-data-warehouse-tables-data-types.md
-[分布]: ./sql-data-warehouse-tables-distribute.md
-[索引]: ./sql-data-warehouse-tables-index.md
-[分区]: ./sql-data-warehouse-tables-partition.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
-[临时]: ./sql-data-warehouse-tables-temporary.md
-[工作负荷管理]: ./sql-data-warehouse-develop-concurrency.md
-[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[workload management]: ./sql-data-warehouse-develop-concurrency.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!-- MSDN Articles -->
-[已分区表和已分区索引]: https://msdn.microsoft.com/library/ms190787.aspx
+[Partitioned Tables and Indexes]: https://msdn.microsoft.com/library/ms190787.aspx
 [ALTER TABLE]: https://msdn.microsoft.com/en-us/library/ms190273.aspx
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
-[分区函数]: https://msdn.microsoft.com/library/ms187802.aspx
+[partition function]: https://msdn.microsoft.com/library/ms187802.aspx
 [partition scheme]: https://msdn.microsoft.com/library/ms179854.aspx
 
 
@@ -376,6 +376,6 @@ DROP TABLE #partitions;
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

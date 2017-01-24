@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 649984be9aee5253dcd1f3ed3be31795212aa3ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 24d6a25e872eabb7d64d57d5ee66969401e4f1cd
 
 
 ---
-# <a name="example-3-build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>示例 3 – 构建外围网络以通过防火墙、UDR 和 NSG 保护网络
-[返回安全边界最佳实践页面][主页]
+# <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>示例 3 – 构建外围网络以通过防火墙、UDR 和 NSG 保护网络
+[返回安全边界最佳实践页面][HOME]
 
 本示例将创建一个外围网络，其中包含防火墙、四个 Windows 服务器、用户定义的路由、IP 转发和网络安全组。 本示例还将演练每个相关命令，让你更加深入地了解每个步骤。 另外还提供了“流量方案”部分，让你逐步深入了解流量如何流经外围网络的各个防御层。 最后的“参考”部分提供了完整的代码，并说明如何构建此环境来测试和试验各种方案。 
 
@@ -962,7 +962,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "使用 NVA、NSG 和 UDR 的双向外围网络"
-[2]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3firewalllogical.png "防火墙规则逻辑视图"
+[2]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3firewalllogical.png "防火墙规则的逻辑视图"
 [3]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectfrontend.png "创建前端网络对象"
 [4]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectdns.png "创建 DNS 服务器对象"
 [5]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpa.png "默认 RDP 规则的副本"
@@ -981,11 +981,11 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 [18]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/firewallruleactivate.png "防火墙规则激活"
 
 <!--Link References-->
-[主页]: ../best-practices-network-security.md
+[HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

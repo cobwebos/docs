@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/20/2016
+ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 0c89357b2d6e2ab92d6a4a1b771650d77edb5e66
-ms.openlocfilehash: 78716196cb677c95dae5082face6c8ea6499df4b
+ms.sourcegitcommit: 0de569ccf12f3ef428960fe8bb745eb7512c80ce
+ms.openlocfilehash: f81088bcc28e49091f45cdcb1207b30aeb3b70f2
 
 
 ---
@@ -24,19 +24,38 @@ ms.openlocfilehash: 78716196cb677c95dae5082face6c8ea6499df4b
 
 本文汇总了 Azure Site Recovery 支持的操作系统和组件。 每篇相应部署文章中均提供有每种可用部署方案支持的组件和先决条件的列表，本文档是对这些内容的汇总。
 
+## <a name="support-for-azure-replication-scenarios"></a>支持 Azure 复制方案
+
+**部署** | **VMware/物理服务器** | **Hyper-V（不包含 VMM）** | **Hyper-V（包含 VMM）**
+--- | --- | --- | ---
+**Azure 门户** | 本地 VMware VM 到 Azure 存储，使用 Resource Manager 或经典存储和网络。<br/><br/> 故障转移到基于 Resource Manager 或经典模型的 VM。 | 本地 Hyper-V VM（不在 VMM 云中）到 Azure 存储，使用 Resource Manager 或经典存储和网络。<br/><br/> 故障转移到基于 Resource Manager 或经典模型的 VM。 | 本地 Hyper-V VM（在 VMM 云中）到 Azure 存储，使用 Resource Manager 或经典存储和网络。<br/><br/> 故障转移到基于 Resource Manager 或经典模型的 VM。
+**经典门户** | 只能使用维护模式。 无法创建新的保管库。 | 仅限维护模式。 | 只能使用维护模式。
+**PowerShell** | 目前不支持。 | 支持 | 支持
+
+
+## <a name="support-for-secondary-site-replication-scenarios"></a>支持辅助站点复制方案
+
+**部署** | **VMware/物理服务器** | **Hyper-V（不包含 VMM）** | **Hyper-V（包含 VMM）**
+--- | --- | --- | ---
+**Azure 门户** | 本地 VMware VM 到辅助 VMware 站点。<br/><br/> 下载帮助指南](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) InMage Scout 用户指南。 Azure 门户中未提供 | 不支持 | VMM 云中的本地 Hyper-V VM 到辅助 VMM 云<br/><br/> 仅限标准 Hyper-V 复制，不支持 SAN
+**经典门户** | 只能使用维护模式。 无法创建新的保管库。 | 仅限维护模式。 | 只能使用维护模式。
+**PowerShell** | 不支持。 | 不可用 | 支持
+
+
+
 ## <a name="support-for-virtualization-server-operating-systems"></a>虚拟化服务器操作系统支持
 
 ### <a name="host-servers-replicate-to-azure"></a>主机服务器（复制到 Azure）
 
 **VMware VM/物理服务器** | **Hyper-V（不包含 VMM）** | **Hyper-V（包含 VMM）**
 --- | --- | ---
-vCenter 5.5 或 6.0（仅支持 5.5 功能） <br/><br/> vSphere 6.0、5.5 或 5.1（装有最新更新） | 带有最新更新的 Windows Server 2012 R2 | 带有最新更新的 Windows Server 2012 R2
+vCenter 5.5 或 6.0（仅支持 5.5 功能） <br/><br/> vSphere 6.0、5.5 或 5.1（装有最新更新） | Windows Server 2016、带有最新更新的 Windows Server 2012 R2<br/><br/> 当前不支持混合使用主机（运行 Windows Server 2016 和 2012 R2）的 Hyper-V 站点。 | Windows Server 2016、带有最新更新的 Windows Server 2012 R2<br/><br/> Windows Server 2016 主机应由运行 System Center 2016 的 VMM 托管。<br/><br/> 目前不支持混合使用 Windows Server 2016 和 2012 R2 主机的 VMM 2016 云。
 
 ### <a name="host-servers-replicate-to-secondary-site"></a>主机服务器（复制到辅助站点）
 
 **VMware VM/物理服务器** | **Hyper-V（包含 VMM）**
 --- | --- | ---
-vCenter 5.5 或 6.0（仅支持 5.5 功能） <br/><br/> vSphere 6.0、5.5 或 5.1（装有最新更新） | 至少为装有最新更新的 Windows Server 2012
+vCenter 5.5 或 6.0（仅支持 5.5 功能） <br/><br/> vSphere 6.0、5.5 或 5.1（装有最新更新） | Windows Server 2016、Windows Server 2012 R2 或 Windows Server 2012（含最新更新）。<br/><br/> Windows Server 2016 主机应由运行 System Center 2016 的 VMM 托管。<br/><br/> 目前不支持混合使用 Windows Server 2016 和更低版主机的 VMM 2016 云。
 
 
 ## <a name="support-for-replicated-machines"></a>复制的计算机支持
@@ -210,6 +229,29 @@ RDM | 是 | 不可用
 可用性集 | 否 | 否 | 否
 HUB | 是 | 是 | 是
 
+## <a name="support-for-azure-vms"></a>支持 Azure VM
+
+可以部署 Site Recovery 以复制运行受 Azure 支持的任何操作系统的虚拟机和物理服务器。 这包括大多数的 Windows 和 Linux 版本。 要复制的本地 VM 必须符合 Azure 要求。
+
+**功能** | **要求** | **详细信息**
+--- | --- | ---
+**Hyper-V 主机** | 应运行 Windows Server 2012 R2 或更高版本 | 如果操作系统不受支持，先决条件检查将会失败
+**VMware 虚拟机监控程序** | 支持的操作系统 | [检查要求](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)
+**来宾操作系统** | 对于从 Hyper-V 到 Azure 的复制，Site Recovery 支持 [Azure 支持](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)的所有操作系统。 <br/><br/> 对于 VMware 和物理服务器复制，请检查 Windows 和 Linux [先决条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment) | 如果不支持，先决条件检查将会失败。
+**来宾操作系统体系结构** | 64 位 | 如果不支持，先决条件检查将会失败
+**操作系统磁盘大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
+**操作系统磁盘计数** | 1 | 如果不支持，先决条件检查将会失败。
+**数据磁盘计数** | 16 或更少（最大值取决于所创建的虚拟机大小。 16 = XL） | 如果不支持，先决条件检查将会失败
+**数据磁盘 VHD 大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
+**网络适配器** | 支持多个适配器 |
+**静态 IP 地址** | 支持 | 如果主虚拟机使用的是静态 IP 地址，则你可为要在 Azure 中创建的虚拟机指定静态 IP 地址。<br/><br/> **在 Hyper-v 上运行的 Linux VM** 不支持静态 IP 地址。
+**iSCSI 磁盘** | 不支持 | 如果不支持，先决条件检查将会失败
+**共享 VHD** | 不支持 | 如果不支持，先决条件检查将会失败
+**FC 磁盘** | 不支持 | 如果不支持，先决条件检查将会失败
+**硬盘格式** | VHD <br/><br/> VHDX | 尽管 Azure 当前不支持 VHDX，但当你故障转移到 Azure 时，站点恢复会自动将 VHDX 转换为 VHD。 当你故障回复到本地时，虚拟机将继续使用 VHDX 格式。
+**Bitlocker** | 不支持 | 保护虚拟机之前，必须先禁用 Bitlocker。
+**VM 名称** | 介于 1 和 63 个字符之间。 限制为字母、数字和连字符。 应以字母或数字开头和结尾 | 在 Site Recovery 中更新虚拟机属性中的值
+**VM 类型** | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基本”的第 2 代 VM，其中包括一个或两个格式化为 VHDX 的数据卷，并且支持的大小小于 300 GB。<br/><br/>。 不支持 Linux 第 2 代 VM。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/) |
 
 
 
@@ -223,6 +265,6 @@ HUB | 是 | 是 | 是
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

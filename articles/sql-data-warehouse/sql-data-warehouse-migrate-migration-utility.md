@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 560bcd1acb0fa06d7800da9670686a43fbb7111b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 61adb7ae8fddc3cf423ee4558308eb9ded11fea3
 
 
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>数据仓库迁移实用程序（预览版）
 > [!div class="op_single_selector"]
-> * [下载迁移实用程序][下载迁移实用程序]
+> * [下载迁移实用程序][Download Migration Utility]
 > 
 > 
 
@@ -41,7 +41,7 @@ ms.openlocfilehash: 560bcd1acb0fa06d7800da9670686a43fbb7111b
 完成身份验证后，该工具将显示连接到的服务器中的数据库列表。 你可以通过选择想要迁移的数据库，然后单击“迁移选定项目”开始迁移。
 
 ## <a name="migration-report"></a>迁移报告
-在工具中选择“检查数据库兼容性”会生成一份报告，其中汇总了请求迁移的数据库中所有的对象不兼容情况。 未列在 SQL 数据仓库中的部分 SQL Server 功能详细列表可以在[迁移文档][迁移文档]中找到。 生成报告后，可以将它保存并在 Excel 中打开。
+在工具中选择“检查数据库兼容性”会生成一份报告，其中汇总了请求迁移的数据库中所有的对象不兼容情况。 未列在 SQL 数据仓库中的部分 SQL Server 功能详细列表可以在[迁移文档][migration documentation]中找到。 生成报告后，可以将它保存并在 Excel 中打开。
 
 请注意，生成迁移架构时，大多数识别为“对象”的问题将经过调整，以便立即迁移该数据。 请检查这些更改，以确保在应用架构之前不需要做出其他调整。
 
@@ -56,19 +56,19 @@ ms.openlocfilehash: 560bcd1acb0fa06d7800da9670686a43fbb7111b
 填写上述参数后，只需单击“运行迁移”，系统就会在指定的位置生成两个包。 运行导出文件，以将迁移源中的数据导出到平面文件，然后运行导入文件，以将数据导入 SQL 数据仓库。
 
 ## <a name="next-steps"></a>后续步骤
-现在你已迁移一些数据，请继续了解如何[开发][开发]。
+现在你已迁移一些数据，请继续了解如何[开发][develop]。
 
 <!--Image references-->
 
 <!--Article references-->
-[迁移文档]: sql-data-warehouse-overview-migrate.md
-[开发]: sql-data-warehouse-overview-develop.md
+[migration documentation]: sql-data-warehouse-overview-migrate.md
+[develop]: sql-data-warehouse-overview-develop.md
 
 <!--Other Web references--> 
-[下载迁移实用程序]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
+[Download Migration Utility]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

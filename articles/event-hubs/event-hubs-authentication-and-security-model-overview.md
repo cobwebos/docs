@@ -1,5 +1,5 @@
 ---
-title: "事件中心身份验证和安全模型概述 | Microsoft Docs"
+title: "Azure 事件中心身份验证和安全模型概述 | Microsoft Docs"
 description: "事件中心身份验证和安全模型概述。"
 services: event-hubs
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/30/2016
 ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9447b863b62fc71d2619591f78be0494711dc6a3
+ms.sourcegitcommit: 05ca343cfdfc602759eb3ea30a7186a0bb47bd74
+ms.openlocfilehash: 3f20a19c212c082aa766cc2bd67e938aaabf715e
 
 
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>事件中心身份验证和安全模型概述
-事件中心安全模型满足以下要求：
+Azure 事件中心安全模型满足以下要求：
 
 * 只有可提供有效凭据的设备才能将数据发送到事件中心。
 * 一台设备不能模拟另一台设备。
@@ -39,7 +39,7 @@ ms.openlocfilehash: 9447b863b62fc71d2619591f78be0494711dc6a3
 所有令牌使用 SAS 密钥进行签名。 通常，所有令牌使用同一密钥进行签名。 设备不知道该密钥；这可以防止设备生成令牌。
 
 ### <a name="create-the-sas-key"></a>创建 SAS 密钥
-创建事件中心命名空间时，Azure 事件中心将生成名为 **RootManageSharedAccessKey** 的 256 位 SAS 密钥。 此密钥授予对命名空间的发送、侦听和管理权限。 你可以创建其他密钥。 建议你生成一个密钥用于授予对特定事件中心的发送权限。 本主题的余下部分假设已将此密钥命名为 `EventHubSendKey`。
+创建 Azure 事件中心命名空间时，此服务将生成名为 **RootManageSharedAccessKey** 的 256 位 SAS 密钥。 此密钥授予对命名空间的发送、侦听和管理权限。 你可以创建其他密钥。 建议你生成一个密钥用于授予对特定事件中心的发送权限。 对于本主题的其余部分，假设将此密钥命名为 **EventHubSendKey**。
 
 在创建事件中心时，以下示例将创建一个仅限发送的密钥：
 
@@ -103,16 +103,16 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 若要了解有关事件中心的详细信息，请访问以下主题：
 
 * [事件中心概述]
-* 使用服务总线队列的 [队列消息解决方案] 。
-* [使用事件中心的完整示例应用程序]。
+* [SAS 概述]
+* [使用事件中心的完整示例应用程序]
 
 [事件中心概述]: event-hubs-overview.md
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[队列消息解决方案]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[SAS 概述]: ../service-bus-messaging/service-bus-sas-overview.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

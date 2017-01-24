@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/26/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0063c689d4259d15c6aa2c8ca037a512644419fd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
 
 
 ---
@@ -125,6 +125,11 @@ Azure 搜索允许各索引和索引总数的规模增加。 如果选择相应�
 
 此方法可用于实现单独用户帐户的功能、分隔权限级别甚至完全分隔应用程序。
 
+> [!NOTE]
+> 如果使用上面介绍的方法将单个索引配置为为多个租户提供服务，将影响搜索结果的相关性。 搜索相关性分数在索引级范围（而不是租户级范围）内计算，因此所有租户的数据都纳入相关性分数的基础统计数据（如术语频率）。
+> 
+> 
+
 ## <a name="next-steps"></a>后续步骤
 Azure 搜索对于许多应用程序而言都是一个极具吸引力的选择，[阅读有关该服务可靠功能的更多信息](http://aka.ms/whatisazsearch)。 评估多租户应用程序的各个设计模式时，请考虑[各个定价层](https://azure.microsoft.com/pricing/details/search/)和各自的[服务限制](search-limits-quotas-capacity.md)，定制最合适的 Azure 搜索以满足所有大小的应用程序工作负载和体系结构需求。
 
@@ -133,6 +138,6 @@ Azure 搜索对于许多应用程序而言都是一个极具吸引力的选择�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

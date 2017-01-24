@@ -1,5 +1,5 @@
 ---
-title: "使用服务总线提高性能的最佳做法 | Microsoft 文档"
+title: "使用服务总线提高性能的最佳做法 | Microsoft Docs"
 description: "介绍如何使用 Azure 服务总线在交换中转消息时优化性能。"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/25/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5402481a0adc27474f7ddd9b5be1d71dc2c91d44
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a696120a5891f53ee8ff7db80fb53acba213978f
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: 5402481a0adc27474f7ddd9b5be1d71dc2c91d44
 AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与服务总线的连接。 它还实现批处理和预提取。 除非明确提到，本主题中的所有内容都假定使用 AMQP 或 SBMP。
 
 ## <a name="reusing-factories-and-clients"></a>重用工厂和客户端
-[QueueClient][QueueClient] 或 [MessageSender][MessageSender] 等服务总线客户端对象通过 [MessagingFactory][MessagingFactory] 对象创建，该对象还提供连接的内部管理。 发送消息后，不应关闭消息工厂或队列、主题和订阅客户端，然后在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 可以使用 [QueueClient][QueueClient] 对象，安全地从并发异步操作和多个线程发送消息。 
+[QueueClient][QueueClient] 或 [MessageSender][MessageSender] 等服务总线客户端对象是通过 [MessagingFactory][MessagingFactory] 对象创建的，该对象还提供连接的内部管理。 发送消息后，不应关闭消息工厂或队列、主题和订阅客户端，然后在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 你可以使用 [QueueClient][QueueClient] 对象，安全地从并发异步操作和多个线程发送消息。 
 
 ## <a name="concurrent-operations"></a>并发操作
 执行某项操作（发送、接收、删除等）需要花费一定时间。 这一时间包括服务总线服务处理该操作的时间，外加延迟处理请求和答复的时间。 若要增加每次操作的数目，操作必须同时执行。 可以通过几种不同的方式实现：
@@ -89,7 +89,7 @@ AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与
 ## <a name="client-side-batching"></a>客户端批处理
 客户端批处理允许队列或主题客户端延迟一段时间发送消息。 如果客户端在这段时间内发送其他消息，则会将这些消息以单个批次传送。 客户端批处理还会导致队列/订阅客户端将多个**完成**请求批处理为单个的请求。 批处理仅适用于异步**发送**和**完成**操作。 同步操作会立即发送到服务总线服务。 不会针对扫视或接收操作执行批处理，也不会跨客户端执行批处理。
 
-如果批大小超出最大消息大小，将从该批中删除最后一个消息，并且客户端会立即发送该批次。 最后一条消息将成为下一批的第一个消息。 默认情况下，客户端的批处理间隔时间为 20 毫秒。 可通过在创建消息工厂之前，设置 [BatchFlushInterval][BatchFlushInterval] 属性，更改批处理的间隔时间。 此设置会影响此工厂创建的所有客户端。
+默认情况下，客户端的批处理间隔时间为 20 毫秒。 可通过在创建消息工厂之前，设置 [BatchFlushInterval][BatchFlushInterval] 属性，更改批处理的间隔时间。 此设置会影响此工厂创建的所有客户端。
 
 要禁用批处理，则将 [BatchFlushInterval][BatchFlushInterval] 属性设置为 **TimeSpan.Zero**。 例如：
 
@@ -140,7 +140,7 @@ namespaceManager.CreateTopic(td);
 如果要将包含了必不可失的关键信息的消息发送到 express 实体，则发送方可以通过将 [ForcePersistence][ForcePersistence] 属性设置为 **true**，强制服务总线立即将消息保留至稳定的存储区内。
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>使用分区的队列或主题
-在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，分区的队列或主题则被分布在多个节点和消息存储。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 要创建分区的实体，则如以下示例所示，将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**。 有关分区实体的详细信息，请参阅[分区消息传送实体][分区消息传送实体]。
+在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，分区的队列或主题则被分布在多个节点和消息存储。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 若要创建分区的实体，则将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**，如以下示例所示。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
 ```
 // Create partitioned queue.
@@ -152,7 +152,7 @@ namespaceManager.CreateQueue(qd);
 ## <a name="use-of-multiple-queues"></a>使用多个队列
 如果不能使用分区的队列或主题，或不能由单个分区的队列或主题处理预期的负载，则必须使用多个消息实体。 在使用多个实体时，为每个实体创建专用客户端，而不是针对所有实体使用同一个客户端。
 
-## <a name="development-testing-features"></a>开发和测试功能
+## <a name="development--testing-features"></a>开发和测试功能
 服务总线具有一项仅专门用于开发的功能，该功能**永远不应在生产配置中使用**。
 
 [TopicDescription.EnableFilteringMessagesBeforePublishing](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing.aspx)
@@ -241,7 +241,7 @@ namespaceManager.CreateQueue(qd);
 * 将预提取计数设置为预期接收速率的 20 倍（以秒为单位）。 这将减少服务总线客户端协议传输的数量。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关优化服务总线性能的详细信息，请参阅[分区消息传送实体][分区消息传送实体]。
+若要了解有关优化服务总线性能的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
 
 [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
 [MessageSender]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx
@@ -254,10 +254,10 @@ namespaceManager.CreateQueue(qd);
 [SubscriptionClient.PrefetchCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.prefetchcount.aspx
 [ForcePersistence]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.forcepersistence.aspx
 [EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
-[分区消息传送实体]: service-bus-partitioning.md
+[Partitioned messaging entities]: service-bus-partitioning.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

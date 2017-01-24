@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/03/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -65,7 +65,6 @@ ms.openlocfilehash: 975084c19909b0829b6f93cab05373fb71b10cf3
 有时这些数据专家会努力记录他们的知识、将其通过电子邮件或在团队 SharePoint 站点上通过 Word 文档进行分享。 尽管这可能有价值，但它带入了新的发现问题 – 大家如何知道存在什么文档以及在哪里找到它们…
 
 Azure 数据目录提供了用于共享部落知识的位置，让其易于发现。 数据专家可直接批注数据资产，还可包括现有文档的链接。 不仅会捕获知识本身，还会将知识放入用于数据源发现的同一经验中。 某人使用目录发现数据源时，不仅会找到数据源本身，还会找到以前只存在于专家头脑里的专家知识。
-
 
 
 

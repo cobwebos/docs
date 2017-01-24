@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 12/06/2016
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: a38f4a1742748deb11967b9f06a4726e57963d92
+ms.sourcegitcommit: 7583a1c81802bdedabdb70c125aac536b879204d
+ms.openlocfilehash: 38531c1b3cb7c7de9b832b4fbedd8991f40e3424
 
 
 ---
@@ -145,7 +145,7 @@ Azure 服务级别协议独立于我们的本地 Microsofte 许可协议。 我�
 可能的原因包括：
 
 * 从你订阅 Azure 开始算还不到 30 天。
-* 订阅类型是“免费试用”或某项成员产品/服务 (MSDN/Open/BizSpark/DreamSpark)，因此没有信用卡或与之关联的其他付款方式。
+* 订阅类型是“免费试用”或其中一项成员产品/服务（Visual Studio 订户/Open/BizSpark/Imagine 的每月信用额度），因此没有信用卡或与之关联的其他付款方式。
 * 还未到生成发票的日期。
 
 ### <a name="i-am-unable-to-log-in-to-the-azure-portal"></a>我无法登录 Azure 门户
@@ -195,7 +195,7 @@ Azure 支持的包月费涵盖一个帐户，而不考虑该帐户中的订阅�
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，你可以在开发运营团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 有关详细信息，请参阅 [Azure 基于角色的访问控制](active-directory/role-based-access-control-configure.md)。
 
 ### <a name="how-do-i-transfer-ownership-of-my-subscriptions"></a>如何转让我的订阅的所有权？
-用户现在可以轻松地在 Microsoft Azure 帐户中心对即用即付、MSDN、Action Pack 或 BizSpark 订阅执行此操作。 已增加将订阅转给其他用户的功能。 换言之，用户现在可以更改所拥有的任何即用即付、MSDN、Action Pack 或 BizSpark 订阅的帐户管理员。 请注意，接收方的用户帐户必须是在同一国家/地区，而且用户不能转让与应用商店购买相关联的订阅。
+用户现在可以轻松地在 Microsoft Azure 帐户中心执行此操作，不管是针对即用即付、Visual Studio 订户的每月信用额度、Microsoft 合作伙伴网络还是 BizSpark 订阅。 已增加将订阅转给其他用户的功能。 换言之，用户现在可以针对所拥有的任何即用即付、Visual Studio 订户的每月信用额度、Microsoft 合作伙伴网络或 BizSpark 订阅更改帐户管理员。 请注意，接收方的用户帐户必须是在同一国家/地区，而且用户不能转让与应用商店购买相关联的订阅。
 有关详细信息，请参阅文章：[如何转让 Azure 订阅](billing-subscription-transfer.md)。
 
 ### <a name="can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure"></a>可以使用在 Azure 外部购买的现有 Windows 许可证吗？
@@ -242,14 +242,14 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访�
 Azure 适用于旨在构建云级别应用程序和服务的企业。 不过，任何人都可以购买 Azure 服务。
 
 ### <a name="can-i-try-azure-for-free-without-any-risk-of-being-charged"></a>能否免费试用 Azure，而不用担心被收费？
-是的。 利用[支出限制功能](https://azure.microsoft.com/pricing/spending-limits/)，注册免费试用、MSDN、MPN 或 BizSpark 产品/服务的客户可以使用 Azure 而不会被收费，前提是始终启用支出限制功能。 所有注册使用这些产品/服务的新客户都会启用支出限制，其金额设置为 0 美元。
+是的。 利用[支出限制功能](https://azure.microsoft.com/pricing/spending-limits/)，注册免费试用、Visual Studio 订户的每月信用额度、Microsoft 合作伙伴网络或 BizSpark 产品/服务的客户可以使用 Azure 而不会被收费，前提是始终启用支出限制功能。 所有注册使用这些产品/服务的新客户都会启用支出限制，其金额设置为 0 美元。
 
 ### <a name="can-i-turn-the-spending-limit-back-on-if-i-turn-off-it"></a>如果关闭支出限制，能否将其重新打开？
-对于使用我们的成员优惠产品/服务（例如 MSDN）的客户，你们可在下一个计费周期开始时重新启用支出限制功能。 关闭支出限制功能后，即无法在当前计费期间重新启用该功能。
+使用我们的成员优惠产品/服务（例如 Visual Studio 订户的每月信用额度）的客户可在下一个计费周期开始时重新启用支出限制功能。 关闭支出限制功能后，即无法在当前计费期间重新启用该功能。
 有关详细信息，请参阅[更改 Azure 支出限制](https://msdn.microsoft.com/library/azure/dn465781.aspx)。
 
 ### <a name="can-i-adjust-the-amount-of-the-spending-limit"></a>能否调整支出限制的金额？
-对于此功能的初始版本，支出限制设置为“$0”，并且无法调整。 这是为了让免费试用、MSDN、MPN 或 BizSpark 产品/服务的客户可在完全确保不被收费的情况下使用 Azure。
+对于此功能的初始版本，支出限制设置为“$0”，并且无法调整。 其设计目的是让免费试用、Visual Studio 订户的每月信用额度、Microsoft 合作伙伴网络或 BizSpark 产品/服务的客户放心使用 Azure，完全不必担心收费问题。
 有关详细信息，请参阅 [Azure 支出限制](https://azure.microsoft.com/pricing/spending-limits/)。
 
 ### <a name="in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure"></a>Microsoft Azure 在哪些国家和地区销售？哪些货币可以用来购买 Azure？
@@ -297,6 +297,6 @@ Azure 免费试用订阅为新客户提供一个月的免费试用期，并免�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

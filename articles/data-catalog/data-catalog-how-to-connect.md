@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/15/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -69,7 +69,6 @@ ms.openlocfilehash: 5db1a6f8b3ff0369817e69abaa4d95af843cd7f2
 
 ## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程，了解有关如何连接到数据源的分步详细说明。
-
 
 
 

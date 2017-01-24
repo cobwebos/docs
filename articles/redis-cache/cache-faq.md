@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: dac614de38447bfeaf92f15f156217c9bd44b4ff
-ms.openlocfilehash: 580b4b67cf2180e32b2c7d9eb1359d0a9036e3d0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cc669e18d702e5cb59a4ee292f8b0fdb22e1b7fa
 
 
 ---
@@ -93,8 +93,8 @@ Azure Redis 缓存基于流行的开放源代码 [Redis 缓存](http://redis.io)
 
 如果还没有 Azure 帐户，则可以：
 
-* [免费注册 Azure 帐户](/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，你也可以保留帐户和使用免费的 Azure 服务和功能。
-* [激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
+* [免费注册 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，你也可以保留帐户和使用免费的 Azure 服务和功能。
+* [激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
 
 <a name="cache-size"></a>
 
@@ -352,7 +352,7 @@ CLR 线程池具有两种类型的线程 —“辅助角色”和“I/O 完成�
 
 如何配置此设置：
 
-* 在 ASP.NET 中，可使用 web.config 中 `<processModel>` 配置元素下的[“minIoThreads”配置设置][“minIoThreads”配置设置]。 如果在 Azure 网站内部运行，则此设置不会通过配置选项进行公开。 但是，应仍然能够通过 global.asax.cs 中的 Application_Start 方法，以编程方式设置对此进行设置（请参阅下文）。
+* 在 ASP.NET 中，可在 web.config 中的 `<processModel>` 配置元素下使用[“minIoThreads”配置设置]["minIoThreads" configuration setting]。 如果在 Azure 网站内部运行，则此设置不会通过配置选项进行公开。 但是，应仍然能够通过 global.asax.cs 中的 Application_Start 方法，以编程方式设置对此进行设置（请参阅下文）。
 
 > **重要说明：**此配置元素中指定的值是*按核心*设置。 例如，如果使用 4 核计算机，并且希望 minIOThreads 设置在运行时为 200，则使用 `<processModel minIoThreads="50"/>`。
 >
@@ -402,7 +402,7 @@ Redis 缓存“设置”边栏选项卡的“支持 + 故障排除”部分还�
 * 客户端的原因
   * 已重新部署客户端应用程序。
   * 客户端应用程序执行了缩放操作。
-    * 对于云服务或 Web Apps，原因可能在于自动缩放。
+    * 对于云服务或 Web 应用，原因可能在于自动缩放。
   * 客户端上的网络层已更改。
   * 客户端中或客户端与服务器之间的网络节点中发生暂时性错误。
   * 已达到带宽阈值限制。
@@ -435,10 +435,10 @@ Redis 取得成功的另一个重要方面是围绕它构建了健康而充满�
 ### <a name="in-role-cache"></a>角色中缓存
 [计划在 2016 年 11 月 30 日停用角色中缓存。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-[“minIoThreads”配置设置]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
+["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

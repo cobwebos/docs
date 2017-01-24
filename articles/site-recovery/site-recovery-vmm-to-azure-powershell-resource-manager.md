@@ -12,7 +12,7 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 19/01/2017
 ms.author: rajanaki
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -130,7 +130,8 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步骤 3：设置恢复服务保管库上下文
-1. 通过运行以下命令设置保管库上下文。
+
+通过运行以下命令设置保管库上下文。
    
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
@@ -163,7 +164,8 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 
 ## <a name="step-5-create-an-azure-storage-account"></a>步骤 5：创建 Azure 存储帐户
-1. 如果你没有 Azure 存储帐户，请运行以下命令，在与保管库相同的地区创建一个启用异地复制的帐户：
+
+如果你没有 Azure 存储帐户，请运行以下命令，在与保管库相同的地区创建一个启用异地复制的帐户：
    
         $StorageAccountName = "teststorageacc1"    #StorageAccountname
         $StorageAccountGeo  = "Southeast Asia"     

@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -77,7 +77,6 @@ ms.openlocfilehash: 60abdc490cefc7362ca6ed0dec7dbfd53984201f
 
 
 若要找到 RegistrationTool.exe.config 文件，请启动注册工具，然后打开 Windows 任务管理器实用工具。 在任务管理器的“详细信息”选项卡上，右键单击 RegistrationTool.exe，然后从弹出菜单中选择“打开文件位置”。
-
 
 
 

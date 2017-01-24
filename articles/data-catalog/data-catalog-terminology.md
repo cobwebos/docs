@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -57,8 +57,8 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 
 > [!NOTE]
 > 对于大型表和视图，提取数据配置文件可能是一项高成本的操作，并且可能会大大增加注册数据源所需的时间。
-> 
-> 
+>
+>
 
 ## <a name="user-perspective"></a>用户视角
 在 Azure 数据目录中，任何用户都可以为已注册的数据资产提供描述性元数据。 每个用户对数据及其使用具有不同的看法。 例如，负责服务器的管理员可以提供该服务器的服务级别协议 (SLA) 或备份窗口的详细信息；数据专员可以提供数据支持的业务过程的文档链接；而分析员可以对其他分析师相关度最高的条款提供说明，这对需要发现和了解数据的用户非常有价值。
@@ -73,8 +73,8 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 
 > [!NOTE]
 > 所有权和管理仅在标准版的 Azure 数据目录中可用。
-> 
-> 
+>
+>
 
 ## <a name="registration"></a>注册
 注册是从数据资产提取数据资产元数据并将其复制到 Azure 数据目录服务的操作。 然后就可以批注和发现已注册的数据资产。
@@ -82,7 +82,6 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 ## <a name="see-also"></a>另请参阅
 * [什么是 Azure 数据目录？](data-catalog-what-is-data-catalog.md) - 本文概述了 Azure 数据目录服务、它所提供的价值以及所支持的方案。
 * [ Azure 数据目录入门](data-catalog-get-started.md) - 本文提供了介绍如何使用 Azure 数据目录进行数据源发现的端到端教程。  
-
 
 
 

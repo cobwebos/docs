@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -37,8 +37,8 @@ Azure Active Directory (Azure AD) 为企业提供在云中和本地轻松管理�
 
 > [!NOTE]
 > [Azure 门户](http://portal.azure.com/)允许用户使用个人 Microsoft 帐户或 Azure Active Directory 工作或学校帐户进行登录。 若要使用 Azure 门户或[数据目录门户](http://www.azuredatacatalog.com)设置 Azure 数据目录，必须使用 Azure Active Directory 帐户而不是个人帐户进行登录。
-> 
-> 
+>
+>
 
 ## <a name="active-directory-policy-configuration"></a>Active Directory 策略配置
 在某些情况下，用户可能会遇到这种情况：可以登录 Azure 数据目录门户，但在尝试登录数据源注册工具时出现错误消息，导致无法登录。 只有用户处于公司网络时，或者从公司外部网络进行连接时才可能出现这样的错误行为。
@@ -50,7 +50,6 @@ Azure Active Directory (Azure AD) 为企业提供在云中和本地轻松管理�
  ![Active Directory 全局身份验证策略](./media/data-catalog-prerequisites/global-auth-policy.png)
 
 有关详细信息，请参阅 [Configuring Authentication Policies](https://technet.microsoft.com/library/dn486781.aspx)（配置身份验证策略）。
-
 
 
 

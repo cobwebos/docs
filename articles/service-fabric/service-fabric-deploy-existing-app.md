@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 10/22/2016
-ms.author: msfussell;mikhegn
+ms.author: mfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a3766215c00da9d055a1efb4b534f7522f9ded25
+ms.sourcegitcommit: f31c8ab3d2b4fd871c92ac0e7d04bc8d5ab86830
+ms.openlocfilehash: 70d13fd05aeedc9aa6e9f87a9a0223a2e20ef88b
 
 
 ---
@@ -114,7 +114,7 @@ Visual Studio 提供 Service Fabric 服务模板来帮助你将来宾可执行�
 ### <a name="add-the-applications-code-and-configuration-files"></a>添加应用程序的代码和配置文件
 创建了目录结构之后，可以在 code 和 config 目录下添加应用程序的代码和配置文件。 还可以在 code 或 config 目录下创建其他目录或子目录。
 
-Service Fabric 对应用程序根目录下的内容执行了 xcopy，因此除创建 code 和 settings 这两个顶级目录以外没有其他任何预定义结构可以使用。 （如有需要可以选取其他名称。 有关详细信息，请参阅下一节内容。）
+Service Fabric 对应用程序根目录下的内容执行了 `xcopy`，因此除创建 code 和 settings 这两个顶级目录以外没有其他任何预定义结构可以使用。 （如有需要可以选取其他名称。 有关详细信息，请参阅下一节内容。）
 
 > [!NOTE]
 > 请务必添加应用程序需要的所有文件和依赖项。 Service Fabric 会复制群集中所有节点上的应用程序包的内容，将在群集中部署应用程序的服务。 包应包含应用程序运行所需的全部代码。 请不要假定依赖项已安装。
@@ -320,6 +320,16 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 
 ![日志的位置](./media/service-fabric-deploy-existing-app/loglocation.png)
 
+## <a name="creating-a-guest-executable-using-yeoman-for-service-fabric-on-linux"></a>使用 Linux 上的 Yeoman for Service Fabric 创建来宾可执行文件
+
+用于在 Linux 上创建和部署来宾可执行文件的过程与部署 csharp 或 java 应用程序相同。 
+
+1. 在终端中，键入 `yo azuresfguest`。
+2. 命名应用程序。
+3. 选择第一个服务的类型并将其命名。 为来宾可执行文件选择“来宾二进制文件”（并为容器选择“来宾容器”），提供详细信息，其中包括可执行文件的路径和必须调用的参数。
+
+Yeoman 已创建应用程序包，其中包含相应的应用程序和清单文件，以及安装和卸载脚本。
+
 ## <a name="next-steps"></a>后续步骤
 在本文中，我们了解了如何打包来宾可执行文件并将它部署到 Service Fabric。 请参阅下面几篇文章，了解相关信息和任务。
 
@@ -330,6 +340,6 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
