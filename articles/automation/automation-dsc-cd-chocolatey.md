@@ -3,9 +3,9 @@ title: "使用 Chocolatey 进行 Azure 自动化 DSC 持续部署 | Microsoft Do
 description: "使用 Azure Automation DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON ARM 模板和 PowerShell 源代码的示例。"
 services: automation
 documentationcenter: 
-author: sebastus
-manager: stevenka
-editor: 
+author: eslesar
+manager: carmonm
+editor: tysonn
 ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
 ms.devlang: na
