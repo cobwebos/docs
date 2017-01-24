@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 4f39739fe94afe4659e8fd8b1306dda74dcb5a5b
+ms.sourcegitcommit: a7ff82a47b4e972db96929acb47fcce760b244b3
+ms.openlocfilehash: 73bb12643a5c94e364ac4040f6e1678cb1495fb2
 
 
 ---
@@ -71,28 +71,30 @@ ms.openlocfilehash: 4f39739fe94afe4659e8fd8b1306dda74dcb5a5b
 
 在调用生成备份并还原它的 API 之前，必须获取令牌。 以下示例使用 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet 包检索令牌。
 
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    using System;
+```c#
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System;
 
-    namespace GetTokenResourceManagerRequests
+namespace GetTokenResourceManagerRequests
+{
+    class Program
     {
-        class Program
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
-                var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenant id}");
-                var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
+            var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenant id}");
+            var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
 
-                if (result == null) {
-                    throw new InvalidOperationException("Failed to obtain the JWT token");
-                }
-
-                Console.WriteLine(result.AccessToken);
-
-                Console.ReadLine();
+            if (result == null) {
+                throw new InvalidOperationException("Failed to obtain the JWT token");
             }
+
+            Console.WriteLine(result.AccessToken);
+
+            Console.ReadLine();
         }
     }
+}
+```
 
 使用以下说明替换 `{tentand id}`、`{application id}` 和 `{redirect uri}`。
 
@@ -112,10 +114,12 @@ ms.openlocfilehash: 4f39739fe94afe4659e8fd8b1306dda74dcb5a5b
 
 调用以下部分中所述的备份和还原操作之前，为 REST 调用设置授权请求标头。
 
-    request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+```c#
+request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+```
 
 ## <a name="step1"> </a>备份 API 管理服务
-若要备份 API 管理服务，请发出以下 HTTP 请求：
+若要备份 API 管理服务问题，请发送以下 HTTP 请求：
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
 
@@ -128,23 +132,25 @@ ms.openlocfilehash: 4f39739fe94afe4659e8fd8b1306dda74dcb5a5b
 
 在请求正文中，指定目标 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
 
-    '{  
-        storageAccount : {storage account name for the backup},  
-        accessKey : {access key for the account},  
-        containerName : {backup container name},  
-        backupName : {backup blob name}  
-    }'
+```
+'{  
+    storageAccount : {storage account name for the backup},  
+    accessKey : {access key for the account},  
+    containerName : {backup container name},  
+    backupName : {backup blob name}  
+}'
+```
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
 备份是长时间运行的操作，可能需要数分钟才能完成。  如果请求已成功并且已启动备份过程，将收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。  向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 `200 OK` 的响应代码将指示备份操作成功完成。
 
-**注意**：
+发送备份请求时请注意以下限制。
 
 * 请求正文中指定的**容器****必须存在**。
 * 当备份正在进行时，**不应尝试任何服务管理操作**，如 SKU 升级或降级、域名更改等。
 * 从创建时开始，**备份还原仅保证 7 天**。
-* 用于创建分析报表的**用法数据****不包括**在备份中。 使用 [Azure API 管理 REST API][Azure API 管理 REST API] 定期检索分析报表以保证安全。
+* 用于创建分析报表的**用法数据****不包括**在备份中。 使用 [Azure API 管理 REST API][Azure API Management REST API] 定期检索分析报表以保证安全。
 * 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实现定期备份，以及在对 API 管理服务进行重大更改后执行按需备份。
 * 备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所作的**更改****可能不包含在备份中，因此将丢失**。
 
@@ -162,12 +168,14 @@ ms.openlocfilehash: 4f39739fe94afe4659e8fd8b1306dda74dcb5a5b
 
 在请求正文中，指定备份文件位置，即 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
 
-    '{  
-        storageAccount : {storage account name for the backup},  
-        accessKey : {access key for the account},  
-        containerName : {backup container name},  
-        backupName : {backup blob name}  
-    }'
+```
+'{  
+    storageAccount : {storage account name for the backup},  
+    accessKey : {access key for the account},  
+    containerName : {backup container name},  
+    backupName : {backup blob name}  
+}'
+```
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
@@ -188,11 +196,11 @@ ms.openlocfilehash: 4f39739fe94afe4659e8fd8b1306dda74dcb5a5b
 * [Azure API 管理：备份和还原配置](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
   * Stuart 详述的方法与官方指南不匹配，但非常有趣。
 
-[备份 API 管理服务]: #step1
-[还原 API 管理服务]: #step2
+[Backup an API Management service]: #step1
+[Restore an API Management service]: #step2
 
 
-[Azure API 管理 REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
+[Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
 
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 
@@ -206,6 +214,6 @@ ms.openlocfilehash: 4f39739fe94afe4659e8fd8b1306dda74dcb5a5b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

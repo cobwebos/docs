@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/10/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
+ms.sourcegitcommit: 42e682eb8e0a740393648e9fe49244c3a02a9867
+ms.openlocfilehash: eb6bce9be34467e472fbae6cbf154f3b789b6ddc
 
 
 ---
@@ -33,13 +33,13 @@ ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.获取 Application Insights 检测密钥
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)
-2. 新建 Application Insights 资源
-   
-    ![单击“+”，然后选择“Application Insights”](./media/app-insights-java-live/01-create.png)
-3. 将应用程序类型设置为 Java Web 应用程序。
+2. 创建新的 Application Insights 资源并将应用程序类型设置为 Java Web 应用程序。
    
     ![填写名称，选择 Java Web 应用，然后单击“创建”](./media/app-insights-java-live/02-create.png)
-4. 查找新资源的检测密钥。 稍后需要将此密钥粘贴到代码项目中。
+
+    仅需数秒便可创建资源。
+
+4. 打开新资源并获取其检测密钥。 稍后需要将此密钥粘贴到代码项目中。
    
     ![在新资源概述中，单击“属性”，然后复制检测密钥](./media/app-insights-java-live/03-key.png)
 
@@ -53,6 +53,8 @@ ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
 可以在包含 SDK 的文件夹中创建 ApplicationInsights.xml。 将以下 XML 放入该文件。
 
 替换为从 Azure 门户获取的检测密钥。
+
+```XML
 
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
@@ -83,7 +85,7 @@ ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
 
       </TelemetryInitializers>
     </ApplicationInsights>
-
+```
 
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 * HTTP 请求组件是可选的。 它自动将请求和响应时间的遥测数据发送到门户。
@@ -93,6 +95,8 @@ ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
 在项目中找到并打开 web.xml 文件，然后将以下代码片段合并到 Web 应用节点下，即应用程序筛选器的配置位置。
 
 为获得最准确的结果，应该在其他所有筛选器的前面映射该筛选器。
+
+```XML
 
     <filter>
       <filter-name>ApplicationInsightsWebFilter</filter-name>
@@ -104,6 +108,7 @@ ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
+```
 
 ## <a name="5-check-firewall-exceptions"></a>5.检查防火墙例外
 可能需要[设置例外才能发送传出数据](app-insights-ip-addresses.md)。
@@ -135,6 +140,6 @@ ms.openlocfilehash: c2b0a0554b2899b082079f75e9d235edc0f71042
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

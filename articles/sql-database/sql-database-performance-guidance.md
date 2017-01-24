@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 12/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b4bd777b454a68ee06bbc4dffaff91213d58f28c
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: 51cebc84593aec8d7c12dd4061b78354f785d153
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: b4bd777b454a68ee06bbc4dffaff91213d58f28c
 Azure SQL 数据库提供了三个[服务层](sql-database-service-tiers.md)：基本、标准和高级。 每个服务层可严格隔离你的 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化你的应用程序以充分利用 Azure SQL 数据库。
 
 > [!NOTE]
-> 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性数据库池的性能指导，请参阅[弹性数据库池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，你也可以将本文中的多项优化建议应用于弹性数据库池中的数据库，获得类似的性能优势。
+> 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，你也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
 > 
 > 
 
@@ -68,7 +68,7 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 可以使用 **sys.dm_db_resource_stats** 视图来监视 Azure 内存中存储的使用情况。 有关监视的详细信息，请参阅[监视内存中 OLTP 存储](sql-database-in-memory-oltp-monitoring.md)。
 
 > [!NOTE]
-> 目前，Azure 内存中联机事务处理 (OLTP) 预览版仅支持单一数据库。 你不能将其用于弹性数据库池中的数据库。
+> 目前，Azure 内存中联机事务处理 (OLTP) 预览版仅支持单一数据库。 你不能将其用于弹性池中的数据库。
 > 
 > 
 
@@ -93,7 +93,7 @@ SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要�
 如果多个客户端使用相同的连接字符串，该服务也会对每个登录名进行身份验证。 如果 10 个用户使用相同的用户名和密码同时连接到数据库，将有 10 个并发登录。 此限制仅适用于登录和身份验证期间。 如果相同的 10 个用户按顺序连接到数据库，则并发登录数将不会大于 1。
 
 > [!NOTE]
-> 此限制目前不适用于弹性数据库池中的数据库。
+> 此限制目前不适用于弹性池中的数据库。
 > 
 > 
 
@@ -439,12 +439,12 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 
 ## <a name="next-steps"></a>后续步骤
 * 有关服务层的详细信息，请参阅 [SQL 数据库选项和性能](sql-database-service-tiers.md)
-* 有关弹性数据库池的详细信息，请参阅[什么是 Azure 弹性数据库池？](sql-database-elastic-pool.md)
-* 有关性能和弹性数据库池的信息，请参阅[何时考虑弹性数据库池](sql-database-elastic-pool-guidance.md)
+* 有关弹性池的详细信息，请参阅[什么是 Azure 弹性池？](sql-database-elastic-pool.md)
+* 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool-guidance.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

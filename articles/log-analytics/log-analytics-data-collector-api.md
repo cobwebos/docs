@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 12/15/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f574a3cd837e4fc9cf292d672432a7960cae177b
+ms.sourcegitcommit: 8867cda9d4b35fa908db8749aaad74d85cec67f3
+ms.openlocfilehash: 5f82274838de2e6d2a753a685760b5f144065d94
 
 
 ---
@@ -156,13 +156,13 @@ Log Analytics 对每个属性所使用的数据类型取决于新记录的记录
 * 给定类型的推荐最大字段数是 50 个。 这是从可用性和搜索体验角度考虑的现实限制。  
 
 ## <a name="return-codes"></a>返回代码
-HTTP 状态代码 202 表示请求已被接受进行处理，但处理尚未完成。 这表示操作已成功完成。
+HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作已成功完成。
 
 此表列出了服务可能返回的完整状态代码集：
 
 | 代码 | 状态 | 错误代码 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 202 |已接受 | |已成功接受请求。 |
+| 200 |确定 | |已成功接受请求。 |
 | 400 |错误的请求 |InactiveCustomer |工作区已关闭。 |
 | 400 |错误的请求 |InvalidApiVersion |服务无法识别所指定的 API 版本。 |
 | 400 |错误的请求 |InvalidCustomerId |指定的工作区 ID 无效。 |
@@ -173,6 +173,8 @@ HTTP 状态代码 202 表示请求已被接受进行处理，但处理尚未完�
 | 400 |错误的请求 |MissingLogType |未指定所需的值日志类型。 |
 | 400 |错误的请求 |UnsupportedContentType |内容类型未设为“application/json”。 |
 | 403 |禁止 |InvalidAuthorization |服务未能对请求进行身份验证。 验证工作区 ID 和连接密钥是否有效。 |
+| 404 |未找到 | | 提供的 URL 不正确，或请求太大。 |
+| 429 |请求过多 | | 服务遇到来自你帐户的大量数据。 请稍后重试请求。 |
 | 500 |内部服务器错误 |UnspecifiedError |服务遇到内部错误。 请重试请求。 |
 | 503 |服务不可用 |ServiceUnavailable |服务当前不可用于接收请求。 请重试你的请求。 |
 
@@ -416,7 +418,7 @@ def post_data(customer_id, shared_key, body, log_type):
     }
 
     response = requests.post(uri,data=body, headers=headers)
-    if (response.status_code == 202):
+    if (response.status_code >= 200 and response.status_code <= 299):
         print 'Accepted'
     else:
         print "Response code: {}".format(response.status_code)
@@ -430,6 +432,6 @@ post_data(customer_id, shared_key, body, log_type)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

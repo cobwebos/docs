@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/19/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 04ebda0187791772814e40401643583036ca6afa
+ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
+ms.openlocfilehash: 40c4f88bc91773158d416d5e89424b92cf15cf91
 
 
 ---
@@ -158,7 +158,7 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 ![自定义恢复计划](./media/site-recovery-sql/customize-rp.png)
 
-### <a name="step-4-fail-over"></a>第 4 步：故障转移
+#### <a name="step-4--fail-over"></a>第 4 步：故障转移
 将可用性组添加到恢复计划后，可以使用不同的故障转移选项。
 
 | 故障转移 | 详细信息 |
@@ -174,7 +174,7 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 | **选项 1** |1.执行应用程序层和前端层的测试故障转移。<br/><br/>2.更新应用程序层，以便在只读模式下访问副本，并执行应用程序的只读测试。 |
 | **选项 2** |1.创建 SQL Server 虚拟机实例的副本（使用 VMM 克隆进行站点到站点备份或 Azure 备份），并在测试网络中启动该副本<br/><br/> 2.使用恢复计划执行测试故障转移。 |
 
-步骤 5：故障回复
+#### <a name="step-5-fail-back"></a>步骤 5：故障回复
 
 如果你想要再次在本地 SQL Server 上使可用性组成为主节点，可以通过在恢复计划上触发计划的故障转移，并选择从 Microsoft Azure 到本地 VMM 服务器的方向来实现。
 
@@ -188,13 +188,36 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 1. 为脚本创建本地文件，以故障转移可用性组。 此示例脚本将在 Azure 副本上指定可用性组的路径，并将其故障转移到该副本实例。 此脚本将通过使用自定义脚本扩展传递，以便在 SQL Server 副本虚拟机上运行。
 
-     Param(   [string]$SQLAvailabilityGroupPath   )   import-module sqlps   Switch-SqlAvailabilityGroup -Path $SQLAvailabilityGroupPath -AllowDataLoss -force
-2. 将脚本上载到 Azure 存储帐户中的 Blob。 使用以下示例：
+        Param(
+        [string]$SQLAvailabilityGroupPath
+        )
+        import-module sqlps
+        Switch-SqlAvailabilityGroup -Path $SQLAvailabilityGroupPath -AllowDataLoss -force
 
-     $context = New-AzureStorageContext -StorageAccountName "Account" -StorageAccountKey "Key"   Set-AzureStorageBlobContent -Blob "AGFailover.ps1" -Container "script-container" -File "ScriptLocalFilePath" -context $context
-3. 创建 Azure 自动化 Runbook，以便在 Azure 中调用 SQL Server 副本虚拟机上的脚本。 使用此示例脚本来实现此目的。 [详细了解](site-recovery-runbook-automation.md)如何在恢复计划中使用自动化 Runbook。
+1. 将脚本上传到 Azure 存储帐户中的 Blob。 使用以下示例：
 
-     工作流 SQLAvailabilityGroupFailover {
+        $context = New-AzureStorageContext -StorageAccountName "Account" -StorageAccountKey "Key"
+        Set-AzureStorageBlobContent -Blob "AGFailover.ps1" -Container "script-container" -File "ScriptLocalFilePath" -context $context
+
+1. 创建 Azure 自动化 Runbook，以便在 Azure 中调用 SQL Server 副本虚拟机上的脚本。 使用此示例脚本来实现此目的。 [详细了解](site-recovery-runbook-automation.md)如何在恢复计划中使用自动化 Runbook。
+
+1. 创建应用程序的恢复计划时，请添加可调用自动化 Runbook 的“pre-Group 1 boot”脚本步骤以故障转移可用性组。
+
+
+1. **测试性故障转移**：SQL AlwaysOn 原本不支持测试性故障转移。 因此，建议按如下方式操作：
+    1. 在虚拟机上设置 [Azure 备份](../backup/backup-azure-vms.md)，该虚拟机在 Azure 中托管可用性组副本。 
+    1. 触发对恢复计划进行测试性故障转移之前，请从步骤 1 中进行的备份恢复虚拟机
+    1. 对恢复计划进行测试性故障转移
+
+
+> [!NOTE]
+> 以下脚本假定 SQL 可用性组托管在经典 Azure 虚拟机中，在步骤 2 中还原的虚拟机的名称为 SQLAzureVM-Test。 根据已恢复虚拟机的所用名称修改脚本。
+> 
+> 
+
+
+     workflow SQLAvailabilityGroupFailover
+     {
 
          param (
              [Object]$RecoveryPlanContext
@@ -217,9 +240,28 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
           if ($Using:RecoveryPlanContext.FailoverType -eq "Test")
                 {
-                #Skipping TFO in this version.
-                #We will update the script in a follow-up post with TFO support
-                Write-output "tfo: Skipping SQL Failover";
+                    Write-output "tfo"
+                    
+                    Write-Output "Creating ILB"
+                    Add-AzureInternalLoadBalancer -InternalLoadBalancerName SQLAGILB -SubnetName Subnet-1 -ServiceName SQLAzureVM-Test -StaticVNetIPAddress #IP
+                    Write-Output "ILB Created"
+
+                    #Update the script with name of the virtual machine recovered using Azure Backup
+                    Write-Output "Adding SQL AG Endpoint"
+                    Get-AzureVM -ServiceName "SQLAzureVM-Test" -Name "SQLAzureVM-Test"| Add-AzureEndpoint -Name sqlag -LBSetName sqlagset -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName SQLAGILB | Update-AzureVM
+
+                    Write-Output "Added Endpoint"
+        
+                    $VM = Get-AzureVM -Name "SQLAzureVM-Test" -ServiceName "SQLAzureVM-Test" 
+                       
+                    Write-Output "UnInstalling custom script extension"
+                    Set-AzureVMCustomScriptExtension -Uninstall -ReferenceName CustomScriptExtension -VM $VM |Update-AzureVM 
+                    Write-Output "Installing custom script extension"
+                    Set-AzureVMExtension -ExtensionName CustomScriptExtension -VM $vm -Publisher Microsoft.Compute -Version 1.*| Update-AzureVM   
+                    
+                    Write-output "Starting AG Failover"
+                    Set-AzureVMCustomScriptExtension -VM $VM -FileUri $sasuri -Run "AGFailover.ps1" -Argument "-Path sqlserver:\sql\sqlazureVM\default\availabilitygroups\testag"  | Update-AzureVM
+                    Write-output "Completed AG Failover"
                 }
           else
                 {
@@ -230,7 +272,7 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
                 Write-Output "Installing custom script extension"
                 #Install the Custom Script Extension on teh SQL Replica VM
-                Set-AzureVMExtension -ExtensionName CustomScriptExtension -VM $VM -Publisher Microsoft.Compute -Version 1.3| Update-AzureVM;
+                Set-AzureVMExtension -ExtensionName CustomScriptExtension -VM $VM -Publisher Microsoft.Compute -Version 1.*| Update-AzureVM;
 
                 Write-output "Starting AG Failover";
                 #Execute the SQL Failover script
@@ -246,7 +288,6 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
          }
      }
-4. 当你创建应用程序的恢复计划时，请添加可调用自动化 Runbook 的 "pre-Group 1 boot" 脚本化步骤以故障转移可用性组。
 
 ## <a name="integrate-protection-with-sql-alwayson-on-premises-to-on-premises"></a>使用 SQL AlwaysOn（本地至本地）集成保护
 如果 SQL Server 使用可用性组实现高可用性或使用故障转移群集实例，我们建议你也在恢复站点上使用可用性组。 请注意，本指南适用于不使用分布式事务的应用程序。
@@ -301,6 +342,6 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

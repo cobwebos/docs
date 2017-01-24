@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b42658bde128dec9bdc54ffc59c624e957527d5b
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 0f3264abf6216270aa9cdd62ce3acf8640e2375a
 
 
 ---
@@ -27,14 +27,14 @@ ms.openlocfilehash: b42658bde128dec9bdc54ffc59c624e957527d5b
 * 按组随机采样
 * 分层采样
 
-**为什么对数据进行采样？**
-如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和特征工程。 它在团队数据科学过程中的作用是启用数据处理功能和机器学习模型的快速原型设计。
-
-以下**菜单**带有描述如何从不同的存储环境采样数据的主题链接。
+以下**菜单**所链接到的主题将描述如何从不同的存储环境采样数据。
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
-此采样是[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
+**为什么对数据进行采样？**
+如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在团队数据科学过程中的作用是启用数据处理功能和机器学习模型的快速原型设计。
+
+此采样任务是[团队数据科学流程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
 
 ## <a name="how-to-submit-hive-queries"></a>如何提交 Hive 查询
 可从 Hadoop 群集头节点上的 Hadoop 命令行控制台中提交 Hive 查询。 若要执行此操作，可登录到 Hadoop 群集的头节点，打开 Hadoop 命令行控制台，然后从那里提交 Hive 查询。 有关在 Hadoop 命令行控制台中提交 Hive 查询的说明，请参阅[如何提交 Hive 查询](machine-learning-data-science-move-hive-tables.md#submit)。
@@ -111,6 +111,6 @@ ms.openlocfilehash: b42658bde128dec9bdc54ffc59c624e957527d5b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 06be4297bd805a77c2901296071bfa344d076c82
+ms.sourcegitcommit: 1832e584c599384948e7174b377552703ce8bbcd
+ms.openlocfilehash: 11a03d932fc70164640c30acb9808c08e3354de8
 
 
 ---
@@ -86,6 +86,13 @@ ms.openlocfilehash: 06be4297bd805a77c2901296071bfa344d076c82
 在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和静态加密（Azure 中）。
 
 ## <a name="replication"></a>复制
+
+### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>能否通过站点到站点 VPN 复制到 Azure？
+Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 因此，不能通过站点到站点 VPN 进行复制。 可以通过 Azure 虚拟网络创建站点到站点 VPN，且不会干扰 ASR 复制。 
+
+### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>能否使用 ExpressRoute 将虚拟机复制到 Azure？
+能，可以使用 ExpressRoute 将虚拟机复制到 Azure。 Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#public-peering)才能将 ExpressRoute 用于 ASR 复制。 将虚拟机故障转移到 Azure 虚拟网络以后，即可使用通过 Azure 虚拟网络设置的[专用对等互连](../expressroute/expressroute-circuit-peerings.md#private-peering)对其进行访问。 
+
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>将虚拟机复制到 Azure 需要满足任何先决条件吗？
 要复制到 Azure 的虚拟机应符合 [Azure 要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
 
@@ -191,6 +198,6 @@ Azure 具有复原能力。 站点恢复已经能够根据需要故障转移到�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

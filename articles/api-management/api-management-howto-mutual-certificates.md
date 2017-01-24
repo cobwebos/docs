@@ -12,28 +12,28 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ad14ed8b36d6d0a2121c32fd9a54de97e8b02342
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: de47ff52eac40c4b4c57eef89763b71fd525ffa4
 
 
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 API 管理提供的功能可确保使用客户端证书安全地访问 API 的后端服务。 本指南介绍如何在 API 发布者门户中管理证书，以及如何将 API 配置为使用证书访问其后端服务。
 
-有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 [Azure API Management REST API Certificate entity][Azure API Management REST API Certificate entity]。
+有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 [Azure API 管理 REST API 证书实体][Azure API Management REST API Certificate entity]。
 
 ## <a name="prerequisites"> </a>先决条件
-本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 执行本主题中的步骤之前，用户应将后端服务配置为进行客户端证书身份验证（[若要在 Azure 网站中配置证书身份验证，请参阅此文][若要在 Azure 网站中配置证书身份验证，请参阅此文]），并能够访问证书及证书的密码，以便在 API 管理发布者门户中执行上载操作。
+本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 执行本主题中的步骤之前，用户应将后端服务配置为进行客户端证书身份验证（[若要在 Azure 网站中配置证书身份验证，请参阅此文][to configure certificate authentication in Azure WebSites refer to this article]），并能够访问证书及证书的密码，以便在 API 管理发布者门户中执行上传操作。
 
 ## <a name="step1"> </a>上载客户端证书
 若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这将转到 API 管理发布者门户。
 
 ![API 发布者门户][api-management-management-console]
 
-> 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+> 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 > 
 > 
 
@@ -61,7 +61,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API 的�
 
 ![上载的证书][api-management-certificate-uploaded]
 
-证书在上载后显示在“客户端证书”选项卡中。 如果有多个证书，请记下其使用者或指纹的最后四个字符。在将 API 配置为使用证书时，这些信息将用于选择证书，详见下面的[将 API 配置为使用客户端证书进行网关身份验证][将 API 配置为使用客户端证书进行网关身份验证]部分。
+证书在上载后显示在“客户端证书”选项卡中。 如果有多个证书，请记下其使用者或指纹的最后四个字符。在将 API 配置为使用证书时，这些信息将用于选择证书，详见下面的[将 API 配置为使用客户端证书进行网关身份验证][Configure an API to use a client certificate for gateway authentication]部分。
 
 > 若要在使用某个证书（例如自签名证书）时关闭证书链验证，请执行此常见问题[项](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)中描述的步骤。
 > 
@@ -130,32 +130,32 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API 的�
 
 
 
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何添加并发布产品]: api-management-howto-add-products.md
-[监视和分析]: ../api-management-monitoring.md
-[向产品添加 API]: api-management-howto-add-products.md#add-apis
-[发布产品]: api-management-howto-add-products.md#publish-product
-[创建 API 管理服务实例]: api-management-get-started.md
-[API 管理策略参考]: api-management-policy-reference.md
-[缓存策略]: api-management-policy-reference.md#caching-policies
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: ../api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: api-management-get-started.md
+[API Management policy reference]: api-management-policy-reference.md
+[Caching policies]: api-management-policy-reference.md#caching-policies
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[Azure API Management REST API Certificate entity]: http://msdn.microsoft.com/library/azure/dn783483.aspx（Azure API 管理 REST API 证书实体）
+[Azure API Management REST API Certificate entity]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[若要在 Azure 网站中配置证书身份验证，请参阅此文]: https://azure.microsoft.com/en-us/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[to configure certificate authentication in Azure WebSites refer to this article]: https://azure.microsoft.com/en-us/documentation/articles/app-service-web-configure-tls-mutual-auth/
 
-[先决条件]: #prerequisites
-[上载客户端证书]: #step1
-[删除客户端证书]: #step1a
-[将 API 配置为使用客户端证书进行网关身份验证]: #step2
-[通过在开发人员门户中调用操作测试配置]: #step3
-[后续步骤]: #next-steps
-
-
+[Prerequisites]: #prerequisites
+[Upload a client certificate]: #step1
+[Delete a client certificate]: #step1a
+[Configure an API to use a client certificate for gateway authentication]: #step2
+[Test the configuration by calling an operation in the Developer Portal]: #step3
+[Next steps]: #next-steps
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Dec16_HO3-->
 
 

@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: d94d89a6-3234-46c5-8279-5eb8daad10ac
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,12 +16,12 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
+ms.sourcegitcommit: 7b9803d7d0b4982dece276d6f5a7ec8293ce4361
+ms.openlocfilehash: 37725b1abe0ad13124b9206c9aa6fcf1185b6db4
 
 
 ---
-# <a name="configure-geo-replication-for-azure-sql-database-with-transact-sql"></a>使用 Transact-SQL 为 Azure SQL 数据库配置异地复制
+# <a name="configure-active-geo-replication-for-azure-sql-database-with-transact-sql"></a>使用 Transact-SQL 为 Azure SQL 数据库配置活动异地复制
 > [!div class="op_single_selector"]
 > * [概述](sql-database-geo-replication-overview.md)
 > * [Azure 门户](sql-database-geo-replication-portal.md)
@@ -53,8 +53,8 @@ ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
 > 
 
 ## <a name="add-secondary-database"></a>添加辅助数据库
-可以使用 **ALTER DATABASE** 语句在伙伴服务器上创建异地复制的辅助数据库。 在包含要复制的数据库服务器的 master 数据库上执行此语句。 异地复制数据库（“主数据库”）具备与要复制的数据库相同的名称，并且默认与主数据库具有相同的服务级别。 辅助数据库可以是可读或不可读，并且可以是单一数据库或弹性数据库。 有关详细信息，请参阅 [ALTER DATABASE (Transact-SQL) ](https://msdn.microsoft.com/library/mt574871.aspx)和[服务层](sql-database-service-tiers.md)。
-创建辅助数据库并设定种子之后，数据将开始以异步方式从主数据库复制。 以下步骤说明如何使用 Management Studio 配置异地复制。 提供使用单一数据库或弹性数据库创建不可读和可读辅助副本的步骤。
+可以使用 **ALTER DATABASE** 语句在伙伴服务器上创建异地复制的辅助数据库。 在包含要复制的数据库服务器的 master 数据库上执行此语句。 异地复制数据库（“主数据库”）具备与要复制的数据库相同的名称，并且默认与主数据库具有相同的服务级别。 辅助数据库可以是可读或不可读，并且可以是单一数据库或处于弹性池中。 有关详细信息，请参阅 [ALTER DATABASE (Transact-SQL) ](https://msdn.microsoft.com/library/mt574871.aspx)和[服务层](sql-database-service-tiers.md)。
+创建辅助数据库并设定种子之后，数据将开始以异步方式从主数据库复制。 以下步骤说明如何使用 Management Studio 配置异地复制。 提供采用单一数据库形式或是在弹性池中创建不可读和可读辅助副本的步骤。
 
 > [!NOTE]
 > 如果指定的伙伴服务器上的数据库的名称与主数据库相同，该命令会失败。
@@ -88,8 +88,8 @@ ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
            ADD SECONDARY ON SERVER <MySecondaryServer2> WITH (ALLOW_CONNECTIONS = ALL);
 4. 单击“执行”运行查询。
 
-### <a name="add-non-readable-secondary-elastic-database"></a>添加不可读的辅助数据库（弹性数据库）
-可以使用以下步骤将不可读的辅助数据库创建为弹性数据库。
+### <a name="add-non-readable-secondary-elastic-pool"></a>添加不可读的辅助数据库（弹性池）
+可以使用以下步骤在弹性池中创建不可读的辅助数据库。
 
 1. 在 Management Studio 中，连接到你的 Azure SQL 数据库逻辑服务器。
 2. 打开“数据库”文件夹、展开“系统数据库”、右键单击“master”，然后单击“新建查询”。
@@ -100,8 +100,8 @@ ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
            , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 4. 单击“执行”运行查询。
 
-### <a name="add-readable-secondary-elastic-database"></a>添加可读的辅助数据库（弹性数据库）
-可以使用以下步骤将可读的辅助数据库创建为弹性数据库。
+### <a name="add-readable-secondary-elastic-pool"></a>添加可读的辅助数据库（弹性池）
+可以使用以下步骤在弹性池中创建可读的辅助数据库。
 
 1. 在 Management Studio 中，连接到你的 Azure SQL 数据库逻辑服务器。
 2. 打开“数据库”文件夹、展开“系统数据库”、右键单击“master”，然后单击“新建查询”。
@@ -125,10 +125,11 @@ ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
            REMOVE SECONDARY ON SERVER <MySecondaryServer1>;
 4. 单击“执行”运行查询。
 
-## <a name="monitor-geo-replication-configuration-and-health"></a>监视异地复制配置和运行状况
+## <a name="monitor-active-geo-replication-configuration-and-health"></a>监视活动异地复制配置和运行状况
+
 监视任务包括监视异地复制配置和监视数据复制运行状况。  可以使用 master 数据库中的 **sys.dm_geo_replication_links** 动态管理视图返回 Azure SQL 数据库逻辑服务器上每个数据库的所有现有复制链接的相关信息。 此视图针对每个主数据库和辅助数据库之间的复制链接包含一行。 可以使用 **sys.dm_replication_link_status** 动态管理视图针对当前参与复制链接的每个 Azure SQL 数据库返回一行。 这包括主数据库和辅助数据库。 如果给定主数据库有多个连续复制链接，此表将对每种关系包含一行。 将在所有数据库（包括逻辑 master）中创建该视图。 但是，在逻辑 master 中查询此视图会返回空集。 可以使用 **sys.dm_operation_status** 动态管理视图来显示所有数据库操作的状态，包括复制链接的状态。 有关详细信息，请参阅 [sys.geo_replication_links（Azure SQL 数据库）](https://msdn.microsoft.com/library/mt575501.aspx)、[sys.dm_geo_replication_link_status（Azure SQL 数据库）](https://msdn.microsoft.com/library/mt575504.aspx)和 [sys.dm_operation_status（Azure SQL 数据库）](https://msdn.microsoft.com/library/dn270022.aspx)。
 
-使用以下步骤监视异地复制合作关系。
+使用以下步骤监视活动异地复制合作关系。
 
 1. 在 Management Studio 中，连接到你的 Azure SQL 数据库逻辑服务器。
 2. 打开“数据库”文件夹、展开“系统数据库”、右键单击“master”，然后单击“新建查询”。
@@ -148,7 +149,7 @@ ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
 9. 单击“执行”运行查询。
 
 ## <a name="upgrade-a-non-readable-secondary-to-readable"></a>将不可读辅助数据库升级为可读辅助数据库
-非可读辅助类型将在 2017 年 4 月停用，现有的非可读数据库将自动升级到可读辅助数据库。 如果你目前使用的是不可读辅助数据库，而你想要将它们升级为可读辅助数据库，则可以针对每个辅助数据库执行下列简单步骤。
+2017 年 4 月将停用非可读辅助类型数据库，现有的非可读数据库将自动升级到可读辅助数据库。 如果你目前使用的是不可读辅助数据库，而你想要将它们升级为可读辅助数据库，则可以针对每个辅助数据库执行下列简单步骤。
 
 > [!IMPORTANT]
 > 并没有自助升级方法能够将不可读辅助数据库就地升级为可读辅助数据库。 如果删除唯一的辅助数据库，主数据库将会维持未受保护的状态，直到新的辅助数据库完全同步为止。 如果你的应用程序 SLA 要求主数据库始终受到保护，你应该考虑在其他服务器中创建并行辅助数据库，然后再应用上述升级步骤。 请注意，每个主数据库最多可以有 4 个辅助数据库。
@@ -164,12 +165,12 @@ ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
             ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
 
 ## <a name="next-steps"></a>后续步骤
-* 若要深入了解活动异地复制，请参阅 - [活动异地复制](sql-database-geo-replication-overview.md)
+* 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-geo-replication-overview.md)
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "使用规则引擎在 Azure CDN 重写默认 HTTP 行为 | Microsoft Docs"
+title: "使用 Azure 内容交付网络 (CDN) 规则引擎重写默认的 HTTP 行为 |Microsoft Docs"
 description: "规则引擎允许自定义 Azure CDN 如何处理 HTTP 请求，例如，阻止交付某些类型的内容、定义缓存策略以及修改 HTTP 标头。"
 services: cdn
 documentationcenter: 
@@ -15,16 +15,21 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: casoper
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86e0227f147238177d310e58dc126d6a7875bd68
+ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
+ms.openlocfilehash: 41e17c4aeda48c1ff7db1206bf52bb709b109bea
 
 
 ---
-# <a name="override-default-http-behavior-using-the-rules-engine"></a>使用规则引擎重写默认 HTTP 行为
+# <a name="override-default-http-behavior-using-the-azure-content-delivery-network-cdn-rules-engine"></a>使用 Azure 内容交付网络 (CDN) 规则引擎重写默认 HTTP 行为
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>概述
 使用规则引擎，可允许你自定义 HTTP 请求的处理方式，例如，阻止交付某些类型的内容、定义缓存策略以及修改 HTTP 标头。  本教程将演示如何创建一个用于更改 CDN 资产的缓存行为的规则。  “[另请参阅](#see-also)”一节还提供了视频内容。
+
+   > [!TIP] 
+   > 有关语法引用的详细信息，请参阅[规则引擎参考](cdn-rules-engine-reference.md)。
+   > 
+
 
 ## <a name="tutorial"></a>教程
 1. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
@@ -45,12 +50,14 @@ ms.openlocfilehash: 86e0227f147238177d310e58dc126d6a7875bd68
 3. 在“**名称/描述**”文本框中输入一个名称。
 4. 标识该规则将适用的请求类型。  默认情况下，选择“**始终**”匹配条件。  在本教程中将使用“**始终**”条件，因此保留该选择。
    
-    ![CDN 匹配条件](./media/cdn-rules-engine/cdn-request-type.png)
+   ![CDN 匹配条件](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!TIP]
    > 下拉列表中提供了很多类型的匹配条件。  单击匹配条件左侧的蓝色信息图标，将显示当前所选条件的详细信息。
    > 
-   > 有关完整列表的匹配条件的详细信息，请参阅[规则引擎匹配条件和功能详细信息](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_0)。
+   >  有关条件表达式完整列表的详细信息，请参阅[规则引擎条件表达式](cdn-rules-engine-reference-match-conditions.md)。
+   >  
+   > 有关匹配条件完整列表的详细信息，请参阅[规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)。
    > 
    > 
 5. 单击“**功能**”旁边的 **+** 按钮，添加一项新功能。  在左侧的下拉列表中，选择“**强制内部最长时间**”。  在显示的文本框中，输入 **300**。  保留其余默认值。
@@ -60,7 +67,7 @@ ms.openlocfilehash: 86e0227f147238177d310e58dc126d6a7875bd68
    > [!NOTE]
    > 跟匹配条件一样，单击新功能左侧的蓝色信息图标，将显示有关此功能的详细信息。  在使用“**强制内部最长时间**”的情况下，我们将重写该资产的 **Cache-Control** 和 **Expires** 标头，以控制 CDN 边缘节点何时刷新来自源的资产。  此示例为 300 秒，意味着在刷新来自其源的资产之前，CDN 边缘节点将缓存该资产 5 分钟。
    > 
-   > 有关完整列表的功能的详细信息，请参阅[规则引擎匹配条件和功能详细信息](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1)。
+   > 有关功能完整列表的详细信息，请参阅[规则引擎功能详细信息](cdn-rules-engine-reference-features.md)。
    > 
    > 
 6. 单击“**添加**”按钮保存新规则。  新规则现在正在等待批准。 一旦获得批准，状态将从“**挂起 XML**”更改为“**活动 XML**”。
@@ -71,12 +78,15 @@ ms.openlocfilehash: 86e0227f147238177d310e58dc126d6a7875bd68
    > 
 
 ## <a name="see-also"></a>另请参阅
+* [Azure CDN 概述](cdn-overview.md)
+* [规则引擎参考](cdn-rules-engine-reference.md)
+* [规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)
+* [规则引擎条件表达式](cdn-rules-engine-reference-conditional-expressions.md)
+* [规则引擎功能](cdn-rules-engine-reference-features.md)
+* [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)
 * [Azure Fridays: Azure CDN's powerful new Premium Features](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/)（Azure 星期五：Azure CDN 强大的新高级功能）（视频）
-* [规则引擎匹配条件和功能详细信息](https://msdn.microsoft.com/library/mt757336.aspx)
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 
