@@ -3,7 +3,7 @@ title: "排查 Azure CDN 中的文件压缩问题 | Microsoft Docs"
 description: "排查 Azure CDN 文件压缩的问题。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
@@ -12,8 +12,8 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 27561c3c401f93d4024974a19581d79cda9c4eee
