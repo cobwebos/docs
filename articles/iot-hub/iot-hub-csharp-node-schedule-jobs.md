@@ -1,6 +1,6 @@
 ---
-title: "如何使用 Azure IoT 中心安排作业 | Microsoft Docs"
-description: "本教程演示如何安排作业"
+title: "使用 Azure IoT 中心安排作业 (.NET/Node) | Microsoft Docs"
+description: "如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用适用于 Node.js 的 Azure IoT 设备 SDK 实现模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现用于运行作业的服务应用。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: ebda1823464d6148e5ab9f0276a72ed0f716f757
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: fd53e73d6a686581ea2b807ae66716fc36a99ad4
 
 
 ---
-# <a name="tutorial-schedule-and-broadcast-jobs"></a>教程：安排和广播作业
+# <a name="schedule-and-broadcast-jobs"></a>计划和广播作业
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
 ## <a name="introduction"></a>介绍
@@ -35,12 +35,12 @@ Azure IoT 中心是一项完全托管的服务，可使后端应用创建和跟�
 可在以下文章中了解有关所有这些功能的详细信息：
 
 * 设备克隆和属性：[设备克隆入门][lnk-get-started-twin]和[教程：如何使用设备克隆属性][lnk-twin-props]
-* 直接方法：[开发人员指南 - 直接方法][lnk-dev-methods]和[教程：使用直接方法][lnk-c2d-methods]
+* 直接方法：[IoT 中心开发人员指南 - 直接方法][lnk-dev-methods]和[教程：使用直接方法][lnk-c2d-methods]
 
 本教程演示如何：
 
 * 创建一个具有直接方法的模拟设备应用，以便启用可由后端应用调用的 **lockDoor**。
-* 创建一个控制台应用程序，它使用作业在模拟设备应用中调用 **lockDoor** 直接方法，并使用设备作业更新所需属性。
+* 创建 .NET 控制台应用，它使用作业在模拟设备应用中调用 **lockDoor** 直接方法，并使用设备作业更新所需属性。
 
 本教程结束时，用户会有一个 Node.js 控制台设备应用，以及一个 .NET (C#) 控制台后端应用：
 
@@ -66,14 +66,14 @@ Azure IoT 中心是一项完全托管的服务，可使后端应用创建和跟�
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
 2. 在“解决方案资源管理器”中，右键单击“ScheduleJob”项目，然后单击“管理 NuGet 包”。
-3. 在“Nuget 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此过程将下载、安装 [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk]（Microsoft Azure IoT 服务 SDK）NuGet 包及其依赖项并添加对它的引用。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
-    ![“Nuget 包管理器”窗口][img-servicenuget]
+    ![“NuGet 包管理器”窗口][img-servicenuget]
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
         
-5. 将以下字段添加到 **Program** 类。 将多个占位符替换为在上一部分中为 IoT 中心创建的连接字符串。
+5. 将以下字段添加到 **Program** 类。 将占位符替换为在上一部分中为中心创建的 IoT 中心连接字符串。
    
         static string connString = "{iot hub connection string}";
         static ServiceClient client;
@@ -168,7 +168,7 @@ Azure IoT 中心是一项完全托管的服务，可使后端应用创建和跟�
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。  
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
@@ -198,7 +198,7 @@ Azure IoT 中心是一项完全托管的服务，可使后端应用创建和跟�
         if (err) {
             console.error('Could not connect to IotHub client.');
         }  else {
-            console.log('Client connected to IoT Hub.  Waiting for reboot direct method.');
+            console.log('Client connected to IoT Hub.  Waiting for lockDoor direct method.');
             client.onDeviceMethod('lockDoor', onLockDoor);
         }
     });
@@ -241,12 +241,13 @@ Azure IoT 中心是一项完全托管的服务，可使后端应用创建和跟�
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-fwupdate]: iot-hub-node-node-firmware-update.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Dec16_HO1-->
 
 

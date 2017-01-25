@@ -1,6 +1,6 @@
 ---
-title: "IoT 中心 - IP 筛选器 | Microsoft 文档"
-description: "本教程介绍如何为 Azure IoT 中心将特定的 IP 地址列入黑名单或白名单。"
+title: "Azure IoT 中心 IP 筛选器 | Microsoft Docs"
+description: "如何使用 IP 筛选阻止特定 IP 地址到 Azure IoT 中心的连接。 可阻止来自单独 IP 地址或 IP 地址范围的连接。"
 services: iot-hub
 documentationcenter: 
 author: BeatriceOltean
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 01/05/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: 457d0d97601e18de2a19b83be100954d01f9bbf8
-ms.openlocfilehash: 86622918a136da4c478c8d47a677a67e46eb093b
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 784454c3bc0500ac0896177e843b3c194341cdd1
 
 
 ---
 
-# <a name="ip-filter"></a>筛选器
+# <a name="use-ip-filters"></a>使用 IP 筛选器
 
 安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 有时候，作为安全配置的一部分，你需要将特定的 IP 地址列入黑名单或白名单。 使用 _IP 筛选器_功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
 
@@ -34,7 +34,7 @@ ms.openlocfilehash: 86622918a136da4c478c8d47a677a67e46eb093b
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选器规则应用于使用任何受支持协议的设备应用程序和后端应用程序发出的所有连接。
+IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。
 
 来自与 IoT 中心内的拒绝 IP 规则匹配的 IP 地址的任何连接尝试都将收到未经授权 401 状态代码和说明。 响应消息不会提及 IP 规则。
 
@@ -84,7 +84,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [操作监视][lnk-monitor]
-* [IoT 中心指标][lnk-metrics]
+* [IoT 中心度量值][lnk-metrics]
 
 <!-- Images -->
 [img-ip-filter-default]: ./media/iot-hub-ip-filtering/ip-filter-default.png
@@ -96,13 +96,13 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 
 <!-- Links -->
 
-[IoT 中心开发人员指南]: iot-hub-devguide.md
+[IoT Hub developer guide]: iot-hub-devguide.md
 [Azure Express Route]:  https://azure.microsoft.com/en-us/documentation/articles/expressroute-faqs/#supported-services
 
 [lnk-monitor]: iot-hub-operations-monitoring.md
 [lnk-metrics]: iot-hub-metrics.md
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
