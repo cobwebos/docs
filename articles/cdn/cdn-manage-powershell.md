@@ -3,7 +3,7 @@ title: "使用 PowerShell 管理 Azure CDN | Microsoft Docs"
 description: "了解如何使用 Azure PowerShell cmdlet 来管理 Azure CDN。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: fb6f57a5-6e26-4847-8fd9-b51fb05a79eb
@@ -12,8 +12,8 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
 ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
 ms.openlocfilehash: 9b0912edc5adf804e7a3e6dcc6b440fc165d3673

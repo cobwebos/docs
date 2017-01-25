@@ -12,7 +12,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 11/17/2016
+ms.date: 01/23/2017
 ms.author: danlep
 translationtype: Human Translation
 ms.sourcegitcommit: 0bdc5a415b6f7bb40652893d35f7a844e19812a2
