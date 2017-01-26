@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: f06747c35f12802f54b44774dff7f92280ba0dc9
