@@ -12,7 +12,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
