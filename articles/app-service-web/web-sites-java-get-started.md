@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e2785d007aa30d3ef70ce2ca6049cdd4e9733099
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
 
 
 ---
@@ -147,7 +147,7 @@ ms.openlocfilehash: e2785d007aa30d3ef70ce2ca6049cdd4e9733099
 [Azure 门户]: https://portal.azure.com/
 [激活 Visual Studio 订户权益]: http://go.microsoft.com/fwlink/?LinkId=623901
 [注册免费试用帐户]: http://go.microsoft.com/fwlink/?LinkId=623901
-[试用应用服务]: http://go.microsoft.com/fwlink/?LinkId=523751
+[试用应用服务]: https://azure.microsoft.com/try/app-service/
 [Azure App Service 中的 Web 应用]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Java 开发中心]: /develop/java/
 [Resource Manager 概述]: ../azure-resource-manager/resource-group-overview.md
@@ -169,6 +169,6 @@ ms.openlocfilehash: e2785d007aa30d3ef70ce2ca6049cdd4e9733099
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "在 5 分钟内将第一个 Java Web 应用部署到 Azure | Microsoft Docs"
-description: "了解如何通过部署一个示例应用，轻松地在应用服务中运行 Web 应用。 快速学会如何进行实际开发并立即查看结果。"
+title: "在 5 分钟内将第一个 Java Web 应用部署到 Azure（CLI 2.0 预览版）| Microsoft 文档"
+description: "了解如何通过部署一个示例应用，轻松地在应用服务中运行 Web 应用。 快速开始进行实际开发并立即查看结果。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -12,15 +12,26 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 90c1099f7970fc490ca01f2d815679f967c46187
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: af27369b0ae8de0ece6da38a78b434e595fbfc4e
 
 
 ---
-# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes"></a>在 5 分钟内将第一个 Java Web 应用部署到 Azure
+# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes-cli-20-preview"></a>在 5 分钟内将第一个 Java Web 应用部署到 Azure（CLI 2.0 预览版）
+
+> [!div class="op_single_selector"]
+> * [第一个 HTML 站点](app-service-web-get-started-html-cli-nodejs.md)
+> * [第一个 .NET 应用](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [第一个 PHP 应用](app-service-web-get-started-php-cli-nodejs.md)
+> * [第一个 Node.js 应用](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [第一个 Python 应用](app-service-web-get-started-python-cli-nodejs.md)
+> * [第一个 Java 应用](app-service-web-get-started-java.md)
+> 
+> 
+
 本教程帮助用户将一个简单的 Java Web 应用部署到 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。
 应用服务可用于创建 Web 应用、[移动应用后端](/documentation/learning-paths/appservice-mobileapps/)和 [API 应用](../app-service-api/app-service-api-apps-why-best-platform.md)。
 
@@ -35,7 +46,7 @@ ms.openlocfilehash: 90c1099f7970fc490ca01f2d815679f967c46187
 * 获取 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 无需 Azure 帐户即可 [试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -73,7 +84,7 @@ ms.openlocfilehash: 90c1099f7970fc490ca01f2d815679f967c46187
     ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
 2. 在“Java 版本”中，选择“Java 8”，单击“保存”。
    
-    ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
+    ![](./media/app-service-web-get-started-languages/set-java.png)
    
     收到“已成功更新 Web 应用设置”通知时，请导航至 http://*&lt;appname>*.azurewebsites.net，查看操作中的默认 JSP servlet。
 3. 返回 Web 应用边栏选项卡，向下滚动到“ **部署凭据** ”或搜索它，然后单击它。
@@ -120,6 +131,6 @@ ms.openlocfilehash: 90c1099f7970fc490ca01f2d815679f967c46187
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

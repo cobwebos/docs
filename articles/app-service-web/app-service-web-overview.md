@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/28/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 69f3bd4759e879c6f3b55d8126f34e8ebf4be52d
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 18959934c53e2e1c719cc627ffa286acbdcaa967
 
 
 ---
@@ -58,13 +58,25 @@ ms.openlocfilehash: 69f3bd4759e879c6f3b55d8126f34e8ebf4be52d
 除了应用服务中的 Web 应用，Azure 还提供可用来托管网站和 Web 应用程序的其他服务。 大多数情况下，Web Apps 是最佳选择。  对于微服务体系结构，请考虑使用 [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)；如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。 有关如何在这些 Azure 服务之间做出选择的详细信息，请参阅 [Azure App Service、虚拟机、Service Fabric 和云服务的比较](choose-web-site-cloud-service-vm.md)。
 
 ## <a name="getting-started"></a>入门
-若要首先在应用服务中向新 Web 应用部署示例代码，请遵循 [在 5 分钟内将第一个 Web 应用部署到 Azure](app-service-web-get-started.md) 教程。 你需要一个免费 Azure 帐户。
+若要开始在应用服务中向新 Web 应用部署示例代码，请遵循下拉框中的某篇教程。 你需要一个免费 Azure 帐户。
 
-如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> [!div class="op_single_selector"]
+> * [在 5 分钟内将第一个 HTML 站点部署到 Azure](app-service-web-get-started-html-cli-nodejs.md)
+> * [在 5 分钟内将第一个 ASP.NET Web 应用部署到 Azure](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php-cli-nodejs.md)
+> * [在 5 分钟内将第一个 Node.js Web 应用部署到 Azure](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [在 5 分钟内将第一个 Python Web 应用部署到 Azure](app-service-web-get-started-python-cli-nodejs.md)
+> * [在 5 分钟内将第一个 Java Web 应用部署到 Azure](app-service-web-get-started-java.md)
+> 
+> 
+
+> [!NOTE]
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 
+> 
 
 
 
-
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

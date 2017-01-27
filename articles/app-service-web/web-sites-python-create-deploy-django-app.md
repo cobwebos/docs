@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 02/19/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7fbe958a20099f829f2c4c38344969372217e634
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c6679cf7a6b059ee7c28e1754c54afa6414d633a
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 7fbe958a20099f829f2c4c38344969372217e634
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -38,7 +38,7 @@ ms.openlocfilehash: 7fbe958a20099f829f2c4c38344969372217e634
 * Python 2.7 或 3.4
 * setuptools, pip, virtualenv（仅限 Python 2.7）
 * Git
-* [用于 Visual Studio 的 Python 工具][用于 Visual Studio 的 Python 工具] (PTVS) - 注意：这是可选的
+* [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS) - 注意：这是可选的
 
 **注意**：Python 项目目前不支持 TFS 发布。
 
@@ -112,10 +112,10 @@ ms.openlocfilehash: 7fbe958a20099f829f2c4c38344969372217e634
 
 IIS 配置文件。 部署脚本将使用适当的 web.x.y.config，并将其复制为 web.config。
 
-### <a name="optional-files-customizing-deployment"></a>可选文件 - 自定义部署
+### <a name="optional-files---customizing-deployment"></a>可选文件 - 自定义部署
 [!INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
 
-### <a name="optional-files-python-runtime"></a>可选文件 - Python 运行时
+### <a name="optional-files---python-runtime"></a>可选文件 - Python 运行时
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 ### <a name="additional-files-on-server"></a>服务器上的其他文件
@@ -135,7 +135,7 @@ Python 虚拟环境。 如果在 Web 应用上尚不存在兼容的虚拟环境�
 * Windows，具有命令行
 * Mac/Linux，具有命令行
 
-## <a name="web-app-development-windows-python-tools-for-visual-studio"></a>Web 应用开发 - Windows - Python Tools for Visual Studio
+## <a name="web-app-development---windows---python-tools-for-visual-studio"></a>Web 应用开发 - Windows - Python Tools for Visual Studio
 ### <a name="clone-the-repository"></a>克隆存储库
 首先，使用 Azure 门户网站上提供的 URL 来克隆存储库。 有关详细信息，请参阅 [从本地 Git 部署到 Azure App Service](app-service-deploy-local-git.md)。
 
@@ -201,7 +201,7 @@ Visual Studio 不会显示部署的进度。 如果您想要查看输出，请�
 
 浏览到 Azure URL 要查看您的更改。
 
-## <a name="web-app-development-windows-command-line"></a>Web 应用开发 - Windows - 命令行
+## <a name="web-app-development---windows---command-line"></a>Web 应用开发 - Windows - 命令行
 ### <a name="clone-the-repository"></a>克隆存储库
 首先，使用在 Azure 门户中提供的 URL 来克隆存储库，并将 Azure 存储库添加为远程。 有关详细信息，请参阅 [从本地 Git 部署到 Azure App Service](app-service-deploy-local-git.md)。
 
@@ -281,7 +281,7 @@ Visual Studio 不会显示部署的进度。 如果您想要查看输出，请�
 
 浏览到 Azure URL 要查看您的更改。
 
-## <a name="web-app-development-maclinux-command-line"></a>Web 应用开发 - Mac/Linux - 命令行
+## <a name="web-app-development---maclinux---command-line"></a>Web 应用开发 - Mac/Linux - 命令行
 ### <a name="clone-the-repository"></a>克隆存储库
 首先，使用在 Azure 门户中提供的 URL 来克隆存储库，并将 Azure 存储库添加为远程。 有关详细信息，请参阅 [从本地 Git 部署到 Azure App Service](app-service-deploy-local-git.md)。
 
@@ -365,13 +365,13 @@ Visual Studio 不会显示部署的进度。 如果您想要查看输出，请�
 
 浏览到 Azure URL 要查看您的更改。
 
-## <a name="troubleshooting-package-installation"></a>故障排除 - 软件包安装
+## <a name="troubleshooting---package-installation"></a>故障排除 - 软件包安装
 [!INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
 
-## <a name="troubleshooting-virtual-environment"></a>故障排除 - 虚拟环境
+## <a name="troubleshooting---virtual-environment"></a>故障排除 - 虚拟环境
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
-## <a name="troubleshooting-static-files"></a>疑难解答 — 静态文件
+## <a name="troubleshooting---static-files"></a>疑难解答 — 静态文件
 Django 有收集静态文件的概念。 这将从原始位置取用所有静态文件，并将其复制到单个文件夹。 对于此应用程序，将其复制到 `/static`。
 
 这样做是因为静态文件可能来自不同的 Django“应用”。 例如，Django 管理界面中的静态文件位于虚拟环境中的 Django 库子文件夹中。 此应用程序定义的静态文件位于 `/app/static`中。 随着 Django“应用”使用量的增加，将会在多个位置有静态文件。
@@ -392,7 +392,7 @@ Django 有收集静态文件的概念。 这将从原始位置取用所有静态
 
 然后，从 `.gitignore` 中删除 `\static` 文件夹，并将其添加到 Git 存储库。
 
-## <a name="troubleshooting-settings"></a>疑难解答 — 设置
+## <a name="troubleshooting---settings"></a>疑难解答 — 设置
 可以在 `DjangoWebProject/settings.py`中更改应用程序的各种设置。
 
 为开发人员方便起见，已启用调试模式。 这样做的一个额外好处是在本地运行时可以看到图像和其他静态内容，而无需收集静态文件。
@@ -467,6 +467,6 @@ Azure 提供可以从 Django 应用程序方便地使用的数据库服务。 �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

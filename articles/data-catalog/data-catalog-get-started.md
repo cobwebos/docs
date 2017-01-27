@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/20/2016
+ms.date: 01/19/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 115668dae46557f6d6caefc9e7c1178768e7e775
+ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
+ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
 
 
 ---
@@ -117,7 +117,7 @@ Adventure Works 数据库支持一家虚构自行车制造商 (Adventure Works C
 在本练习中，可以使用注册工具将 Adventure Works 数据库中的数据资产注册到目录。 注册是从数据源及其包含的资产中提取关键结构元数据（例如名称、类型和位置），并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。
 
 ### <a name="register-a-data-source"></a>注册数据源
-1. 转到 [Azure 数据目录主页](https://azuredatacatalog.com)，单击“发布数据”。
+1. 转到 [Azure 数据目录主页](http://azuredatacatalog.com)，单击“发布数据”。
    
    ![Azure 数据目录 -“发布数据”按钮](media/data-catalog-get-started/data-catalog-publish-data.png)
 2. 单击“启动应用程序”，在计算机上下载、安装并运行注册工具。
@@ -366,6 +366,6 @@ Azure 数据目录支持众包批注方式。 Azure 数据目录用户可以添�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

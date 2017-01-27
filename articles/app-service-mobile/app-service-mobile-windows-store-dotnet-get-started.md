@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 88f9a6b7e1f49ad58e91165a772e8453163d224c
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1a031c4858bcbc75ee807ba520e1b22c89471498
 
 
 ---
@@ -27,10 +27,10 @@ ms.openlocfilehash: 88f9a6b7e1f49ad58e91165a772e8453163d224c
 本教程说明如何向通用 Windows 平台 (UWP) 应用添加基于云的后端服务。 有关详细信息，请参阅 [什么是移动应用](app-service-mobile-value-prop.md)。 以下是完整应用的截屏：
 
 ![已完成的桌面应用](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)   
- 在桌面上运行。 
+在桌面上运行。 
 
 ![已完成的手机应用](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)  
- 在手机上运行
+在手机上运行
 
 只有在完成本教程后，才可以学习有关 UWP 应用的所有其他移动应用教程。 
 
@@ -41,7 +41,7 @@ ms.openlocfilehash: 88f9a6b7e1f49ad58e91165a772e8453163d224c
 * [Visual Studio Community 2015] 或更高版本。
 
 > [!NOTE]
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/mobile/)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -76,11 +76,11 @@ ms.openlocfilehash: 88f9a6b7e1f49ad58e91165a772e8453163d224c
 
 ## <a name="next-steps"></a>后续步骤
 * [向应用添加身份验证](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-   了解如何使用标识提供者对应用的用户进行身份验证。
+  了解如何使用标识提供者对应用的用户进行身份验证。
 * [向应用添加推送通知](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+  了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-   了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+  了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
 
 <!-- Anchors. -->
 <!-- Images. -->
@@ -91,6 +91,6 @@ ms.openlocfilehash: 88f9a6b7e1f49ad58e91165a772e8453163d224c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

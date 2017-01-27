@@ -1,5 +1,5 @@
 ---
-title: "在 5 分钟内将第一个 Web 应用部署到 Azure | Microsoft Docs"
+title: "在&5; 分钟内将第一个 Web 应用部署到 Azure | Microsoft Docs"
 description: "了解如何通过部署一个示例应用，轻松地在应用服务中运行 Web 应用。 快速开始进行实际开发并立即查看结果。"
 services: app-service\web
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4e86c1c1460f7b6eb312f10a0666f92b33697763
-ms.openlocfilehash: f6356a5a647940796c337e345a8b901dae9eb9b4
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 9f262eb2fa4c0bd8bf1442a7a3d013af6d9ad649
 
 
 ---
@@ -37,8 +37,8 @@ ms.openlocfilehash: f6356a5a647940796c337e345a8b901dae9eb9b4
 
 可以使用以下 CLI 版本之一完成任务：
 
-- [Azure CLI 1.0](app-service-web-get-started-cli-nodejs.md) – 适用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](app-service-web-get-started.md)– 适用于资源管理部署模型的下一代 CLI
+- [Azure CLI 1.0](app-service-web-get-started-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI
+- [Azure CLI 2.0（预览版）](app-service-web-get-started.md)- 适用于资源管理部署模型的下一代 CLI
 
 ## <a name="prerequisites"></a>先决条件
 * [Git](http://www.git-scm.com/downloads)。
@@ -46,7 +46,7 @@ ms.openlocfilehash: f6356a5a647940796c337e345a8b901dae9eb9b4
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 无需 Azure 帐户即可 [试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -161,6 +161,6 @@ ms.openlocfilehash: f6356a5a647940796c337e345a8b901dae9eb9b4
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

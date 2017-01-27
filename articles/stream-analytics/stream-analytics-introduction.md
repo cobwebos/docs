@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2b5d8c4a2bc20bee96f82d6d6394fda983d8a38a
+ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
+ms.openlocfilehash: 493a915fb4e3de4cb70324b22beeaae6720a3492
 
 
 ---
@@ -54,6 +54,6 @@ Azure 流分析是一种完全托管的、经济高效的实时事件处理引�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

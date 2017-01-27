@@ -1,5 +1,5 @@
 ---
-title: "在 5 分钟内将第一个 Python Web 应用部署到 Azure | Microsoft Docs"
+title: "在&5; 分钟内将第一个 Python Web 应用部署到 Azure | Microsoft Docs"
 description: "了解如何通过部署一个示例 Python 应用，轻松地在应用服务中运行 Web 应用。 快速开始进行实际开发并立即查看结果。"
 services: app-service\web
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
-ms.openlocfilehash: 0fd92ba7ef394fd5266d37f64d0dd3e9f1c19c3a
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 16e5e4d9a4dc7cf22baf62539de76b253958c7c9
 
 
 ---
-# <a name="deploy-your-first-python-web-app-to-azure-in-five-minutes"></a>在 5 分钟内将第一个 Python Web 应用部署到 Azure
+# <a name="deploy-your-first-python-web-app-to-azure-in-five-minutes"></a>在&5; 分钟内将第一个 Python Web 应用部署到 Azure
 
 > [!div class="op_single_selector"]
 > * [第一个 HTML 站点](app-service-web-get-started-html-cli-nodejs.md)
@@ -57,7 +57,7 @@ ms.openlocfilehash: 0fd92ba7ef394fd5266d37f64d0dd3e9f1c19c3a
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 无需 Azure 帐户即可 [试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -131,6 +131,6 @@ ms.openlocfilehash: 0fd92ba7ef394fd5266d37f64d0dd3e9f1c19c3a
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f361e9c815ae20874fc2e40e39d2c20a415d58f2
+ms.sourcegitcommit: 7ff7874538f23c8dd8c4aaa789018c77dfe2ab9a
+ms.openlocfilehash: 692a7e0e54dd8ba6b47f79228696b223123dfb9b
 
 
 ---
@@ -49,7 +49,7 @@ ms.openlocfilehash: f361e9c815ae20874fc2e40e39d2c20a415d58f2
 * [**Web 应用**](../app-service-web/app-service-web-overview.md) - 负责托管网站和 Web 应用程序。
 * [**移动应用**](../app-service-mobile/app-service-mobile-value-prop.md) - 负责托管移动应用后端。
 * [**API 应用**](../app-service-api/app-service-api-apps-why-best-platform.md) - 负责托管 RESTful API。
-* [**逻辑应用**](../app-service-logic/app-service-logic-what-are-logic-apps.md) - 用于自动执行业务流程，并跨云集成系统和数据，而无需编写代码。
+* [**逻辑应用**](../logic-apps/logic-apps-what-are-logic-apps.md) - 用于自动执行业务流程，并跨云集成系统和数据，而无需编写代码。
 
 此处的“应用”一词是指专用于运行工作负荷的托管资源。 以“Web 应用”为例，用户可能习惯于将 Web 应用视为计算资源和应用程序代码，二者共同向浏览器提供功能。 但在应用服务中，*Web 应用*是 Azure 提供的用于托管应用程序代码的计算资源。 
 
@@ -82,18 +82,18 @@ ms.openlocfilehash: f361e9c815ae20874fc2e40e39d2c20a415d58f2
 有关应用服务成本的信息，请参阅 [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 
 ## <a name="test-drive-app-service"></a>体验版应用服务
-[创建示例 Web 应用、移动应用或逻辑应用](http://go.microsoft.com/fwlink/?LinkId=523751)，体验它一个小时，无需信用卡，也无需做出承诺，而且毫不费力。
+[创建示例 Web 应用、移动应用或逻辑应用](https://azure.microsoft.com/try/app-service/)，体验它一个小时，无需信用卡，也无需做出承诺，而且毫不费力。
 
 或者打开一个 [免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)，试用以下入门教程之一：
 
 * [教程：创建 Web 应用](../app-service-web/app-service-web-get-started.md)
 * [教程：创建移动应用](../app-service-mobile/app-service-mobile-android-get-started.md)
 * [教程：创建 API 应用](../app-service-api/app-service-api-dotnet-get-started.md)
-* [教程：创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+* [教程：创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 00c4336bd5cef4ddc0b92127d0945d39291b9c7f
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: a04c7129cd2e16c129f3e4b8e8e40f76ff37114d
 
 
 ---
@@ -138,7 +138,7 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 [Python]: https://azure.microsoft.com/develop/python/
 [activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [free trial]: https://azure.microsoft.com/pricing/free-trial/
-[试用应用服务]: http://go.microsoft.com/fwlink/?LinkId=523751
+[试用应用服务]: https://azure.microsoft.com/try/app-service/
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
@@ -168,6 +168,6 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
