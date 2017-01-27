@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/31/2016
+ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
-ms.openlocfilehash: 57a168e6c595eb76851bf14d19f2949d5693b08d
+ms.sourcegitcommit: 8f82ce3494822b13943ad000c24582668bb55fe8
+ms.openlocfilehash: 74d032b37a856b141350fb6a1f73b7067624f926
 
 
 ---
@@ -53,17 +53,17 @@ ms.openlocfilehash: 57a168e6c595eb76851bf14d19f2949d5693b08d
 
 过程很简单：发送方将消息发送至服务总线队列，接收方在随后的某个时间内接收该消息。 一个队列可能只有一个接收方，如图 2 所示。 否则多个应用程序可从同一个队列读取。 在后一种情况下，每条消息通常仅由一个接收方读取。 对于多播服务，应改用主题。
 
-每条消息均由两部分组成：一组属性（每个都是键/值对）和二进制消息正文。 使用的方式取决于应用程序尝试执行的操作。 例如，发送近期销售消息的应用程序可能包含属性 Seller="Ava" 和 Amount=10000。 消息正文可能包含已签署的销售合同的扫描图像，如果不包含该合同，只需留空。
+每条消息均由两部分组成：一组属性（每个都是键/值对）和消息有效负载。 有效负载可为二进制值、文本甚至 XML。 使用的方式取决于应用程序尝试执行的操作。 例如，发送近期销售消息的应用程序可能包含属性 Seller="Ava" 和 Amount=10000。 消息正文可能包含已签署的销售合同的扫描图像，如果不包含该合同，只需留空。
 
-接收方可采用两种不同方式从服务总线队列中读取消息。 第一种方式称作 *ReceiveAndDelete*，即，从队列中移除消息并立即将其删除。 此操作很简单，但如果接收方在完成处理消息之前崩溃，则该消息将丢失。 因为消息已从队列中移除，所以接收方无法访问该消息。 
+接收方可采用两种不同方式从服务总线队列中读取消息。 第一种方式称作 *[ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)*，即，从队列中移除消息并立即将其删除。 此操作很简单，但如果接收方在完成处理消息之前崩溃，则该消息将丢失。 因为消息已从队列中移除，所以接收方无法访问该消息。 
 
-第二种方式 *PeekLock*旨在帮助解决这个问题。 与 **ReceiveAndDelete** 类似，**PeekLock** 可从队列中移除消息。 但是，它不会删除该消息。 相反，它会锁定该消息，使其对其他接收方不可见，然后等待以下三个事件之一：
+第二种方式 *[PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)* 旨在帮助解决这个问题。 与 **ReceiveAndDelete** 类似，**PeekLock** 可从队列中移除消息。 但是，它不会删除该消息。 相反，它会锁定该消息，使其对其他接收方不可见，然后等待以下三个事件之一：
 
-* 如果接收方成功处理了该消息，将调用 **Complete**，并且队列将删除该消息。 
-* 如果接收方判定它无法成功处理该消息，将调用 **Abandon**。 队列即会解除对该消息的锁定，使其可供其他接收方使用。
+* 如果接收方成功处理了该消息，将调用 **[Complete()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)**，并且队列将删除该消息。 
+* 如果接收方判定它无法成功处理该消息，将调用 **[Abandon()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon)**。 队列即会解除对该消息的锁定，使其可供其他接收方使用。
 * 如果接收方在可配置时间段（默认为 60 秒）内没有调用这两个命令，队列将假定接收方失败。 在这种情况下，队列的行为就像接收方已调用 **Abandon**一样，即，使消息可供其他接收方使用。
 
-请注意此处可能发生的情况：同一条消息可能发送两次，可能将其发送给两个不同的接收方。 使用服务总线队列的应用程序必须为这种情况做好准备。 为了更轻松地进行重复检测，每条消息都具有一个唯一的 **MessageID** 属性，无论从队列中读取消息多少次，该属性在默认情况下始终保持不变。 
+请注意此处可能发生的情况：同一条消息可能发送两次，可能将其发送给两个不同的接收方。 使用服务总线队列的应用程序必须为这种情况做好准备。 为了更轻松地进行重复检测，每条消息都具有一个唯一的 **[MessageID](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)** 属性，无论从队列中读取消息多少次，该属性在默认情况下始终保持不变。 
 
 队列在很多情况下都非常有用。 即使两个应用程序没有同时运行，队列也可使这两个应用程序之间相互通信，这对于批处理和移动应用程序尤为方便。 当所发送的消息传播给多个接收方时，具有这些接收方的队列还提供自动负载平衡。
 
@@ -80,7 +80,7 @@ ms.openlocfilehash: 57a168e6c595eb76851bf14d19f2949d5693b08d
 * 订户 2 接收包含属性 Seller="Ruby" 和/或包含的 Amount 属性值大于 100,000 的消息。 Ruby 可能是销售经理，因此她希望查看她自己的销售和其他人所做的所有大单销售。
 * 订户 3 将其筛选器设置为 *True*，这意味着它将接收所有消息。 例如，此应用程序可能负责维护审核跟踪，因此它需要查看所有消息。
 
-与队列一样，某主题的订户可使用 **ReceiveAndDelete** 或 **PeekLock** 读取消息。 不过与队列不同的是，发送至主题的单个消息可由多个订阅接收。 此方法通常称作发布和订阅（或 pub/sub），在当多个应用程序对相同消息感兴趣时非常有用。 通过定义适当的筛选器，每位订户可以只访问需要查看的消息流部分。
+与队列一样，某主题的订户可使用 [**ReceiveAndDelete** 或 **PeekLock**](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 读取消息。 不过与队列不同的是，发送至主题的单个消息可由多个订阅接收。 此方法通常称作发布和订阅（或 pub/sub），在当多个应用程序对相同消息感兴趣时非常有用。 通过定义适当的筛选器，每位订户可以只访问需要查看的消息流部分。
 
 ## <a name="relays"></a>中继
 队列和主题均通过代理提供单向异步通信。 流量只按一个方向流动，发送方和接收方之间没有直接连接。 但是，如果您不希望这样怎么办？ 假设你的应用程序需要同时发送和接收消息，或者可能你希望应用程序之间进行直接链接，而不需要使用代理存储消息。 为解决此类情况，服务总线提供了 *中继*，如图 4 所示。
@@ -119,6 +119,6 @@ ms.openlocfilehash: 57a168e6c595eb76851bf14d19f2949d5693b08d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

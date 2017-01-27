@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: e982d29f76d521720eea7cbb56c5084572f4a542
-ms.openlocfilehash: 1982b7ec7b7322366382e250b7f27f3da6448aa0
+ms.sourcegitcommit: 3c1fda0661d577e3042f1ad7103017eed74704ad
+ms.openlocfilehash: bb979cde449a7e6d8038f6ea392c3529ced29853
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 1982b7ec7b7322366382e250b7f27f3da6448aa0
 
 Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)，借此为应用程序提供各种第 7 层负载平衡功能。 它使客户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关上来优化 Web 场生产率。 它还提供其他第 7 层路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 应用程序网关还具有 Web 应用程序防火墙 (WAF)，可保护应用程序免受 OWASP 前 10 种常见 Web 漏洞中的大多数漏洞的危害。 可以将应用程序网关配置为面向 Internet 的网关、仅内部网关或这两者的组合。 应用程序网关完全由 Azure 托管，可缩放且高度可用。 它提供一组丰富的诊断和日志记录功能，以便更好地进行管理。 应用程序网关可与虚拟机、云服务以及面向内部或外部的 Web 应用程序配合使用。
 
-应用程序网关是为应用程序提供的专用虚拟设备，由多个辅助角色实例组成，以实现可伸缩性和高可用性。 创建应用程序网关时，将与一个终结点（公共 VIP 或内部 ILB IP）相关联并将其用于流入网络流量。 此 VIP 或 ILB IP 由在传输层 (TCP/UDP) 工作并将所有传入的网络流量负载平衡到应用程序网关辅助角色实例的 Azure Load Balancer 提供。 然后，应用程序网关根据其配置（是虚拟机、云服务还是内部或外部 IP 地址）来路由 HTTP/HTTPS 流量。 有关 SLA 和定价，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/) 和[定价](https://azure.microsoft.com/pricing/details/application-gateway/)页。
+应用程序网关是为应用程序提供的专用虚拟设备，由多个辅助角色实例组成，实现可伸缩性和高可用性。 创建应用程序网关时，将与一个终结点（公共 VIP 或内部 ILB IP）相关联并将其用于流入网络流量。 此 VIP 或 ILB IP 由在传输层 (TCP/UDP) 工作并将所有传入的网络流量负载平衡到应用程序网关辅助角色实例的 Azure Load Balancer 提供。 然后，应用程序网关根据其配置（是虚拟机、云服务还是内部或外部 IP 地址）来路由 HTTP/HTTPS 流量。 有关 SLA 和定价，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/) 和[定价](https://azure.microsoft.com/pricing/details/application-gateway/)页。
 
 ## <a name="features"></a>功能
 
@@ -95,6 +95,6 @@ Azure 应用程序网关会通过基本或自定义运行状况探测，自动�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

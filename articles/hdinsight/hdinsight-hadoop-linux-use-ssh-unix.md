@@ -1,6 +1,6 @@
 ---
-title: "在 Linux、Unix 或 OS X 中将 SSH 密钥与基于 Linux 的 Hadoop 配合使用 | Microsoft 文档"
-description: " 你可以使用安全外壳 (SSH) 访问基于 Linux 的 HDInsight。 本文档提供有关在 Linux、Unix 或 OS X 客户端中将 SSH 与 HDInsight 配合使用的信息。"
+title: "在 Windows、Linux、Unix 或 OS X 中将 SSH 与 HDInsight (Hadoop) 配合使用 | Microsoft 文档"
+description: " 可以使用安全外壳 (SSH) 访问 HDInsight。 本文档提供有关在 Windows、Linux、Unix 或 OS X 客户端中将 SSH 与 HDInsight 配合使用的信息。."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,21 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/13/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 72ca562c53f813599f19069cfac7ef3ac1957968
-ms.openlocfilehash: f64cca8823a74c1c0f52e5d9112836661dc51d8e
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 37409ad3f50cdd4a7a384c96a57a35ef8c83fb8f
 
 
 ---
-# <a name="use-ssh-with-linux-based-hadoop-on-hdinsight-from-linux-unix-or-os-x"></a>在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用
+# <a name="use-ssh-with-hdinsight-hadoop-from-windows-linux-unix-or-os-x"></a>在 Windows、Linux、Unix 或 OS X 中将 SSH 与 HDInsight (Hadoop) 配合使用
 
 > [!div class="op_single_selector"]
-> * [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-> * [Linux、Unix、OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
->
->
+> * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
+> * [SSH（Windows、Linux、Unix、OS X）](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 在[安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 中，可以使用命令行接口登录到基于 Linux 的 HDInsight 群集并运行命令。 本文档提供有关 SSH 的基本信息，以及有关在 HDInsight 中使用 SSH 的具体信息。
 
@@ -233,6 +231,6 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

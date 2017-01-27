@@ -1,6 +1,6 @@
 ---
-title: "使用 T-SQL 配置 Azure SQL 数据库服务器级和数据库级防火墙规则 | Microsoft 文档"
-description: "了解如何配置防火墙以允许 IP 地址访问 Azure SQL 数据库。"
+title: "T-SQL：Azure SQL 数据库防火墙规则 | Microsoft 文档"
+description: "了解如何使用 Transact-SQL，针对访问 Azure SQL 数据库的 IP 地址配置服务器级和数据库级防火墙规则。"
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: a49bc9cd8fb50dcc753fbb04bf7f2d96cf79f3ab
+ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
+ms.openlocfilehash: ef51f63984d342422ee5f2a93acfee6357df57ca
 
 
 ---
@@ -76,6 +76,11 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 
 有关这些存储过程的详细信息，请参阅 [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) 和 [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx)。
 
+> [!NOTE]
+> 有关演示数据库级防火墙用法的教程，请参阅 [SQL 数据库教程：SQL Server 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md)。
+>
+
+
 ## <a name="next-steps"></a>后续步骤
 有关如何使用其他方式创建服务器级防火墙规则的指导文章，请参阅： 
 
@@ -94,6 +99,6 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

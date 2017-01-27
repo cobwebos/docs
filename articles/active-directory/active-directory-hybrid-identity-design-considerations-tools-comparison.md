@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/08/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2fb248f3e71b248ce0b5ae02ebeff291bbd28dce
+ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
+ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
 
 
 ---
@@ -57,7 +57,7 @@ PP = 公开预览版
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 设备写回 |● | |● | | |
 | 属性写回（适用于 Exchange 混合部署） |● |● |● |● |● |
-| 用户和组对象写回 |● | | | | |
+| 组对象写回 |● | | | | |
 | 密码写回（通过自助密码重置 (SSPR) 和密码更改） |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>身份验证功能支持
@@ -95,6 +95,6 @@ PP = 公开预览版
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

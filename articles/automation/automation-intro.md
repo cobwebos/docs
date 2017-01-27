@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 16f6285577294ff49f11a27f48daea090655a2b1
+ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
+ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
 
 
 ---
@@ -36,7 +36,7 @@ Azure 自动化中的 Runbook 均基于 Windows PowerShell 或 Windows PowerShel
 [Runbook 库](automation-runbook-gallery.md#runbooks-in-runbook-gallery) 包含来自 Microsoft 和社区的 Runbook，既可以在您的环境中使用未经修改的 Runbook，也可以根据自己的目的对其进行自定义。 您还可以将它们作为学习如何创建自己的 Runbook 的参考。 您甚至可以将您认为对其他用户有用的自己的 Runbook 分享到库中。 
 
 ## <a name="creating-runbooks-with-azure-automation"></a>使用 Azure 自动化创建 Runbook
-可以从头开始[创建自己的 Runbook](automation-creating-importing-runbook.md)，根据自己的需要修改 [Runbook 库](http://msdn.microsoft.com/library/azure/dn781422.aspx)中的 Runbook。 有三种不同的 [Runbook 类型](automation-runbook-types.md) ，可根据自身需求和 PowerShell 体验从中进行选择。 如果想要直接使用 PowerShell 代码，则可以使用 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 或 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)，这两种你可以脱机编辑或使用 Azure 门户中的[文本编辑器](http://msdn.microsoft.com/library/azure/dn879137.aspx)进行编辑。 如果想要在不公开给底层代码的情况下编辑 Runbook，则可以使用 Azure 门户中的[图形编辑器](automation-graphical-authoring-intro.md)创建[图形 Runbook](automation-runbook-types.md#graphical-runbooks)。 
+可以从头开始[创建自己的 Runbook](automation-creating-importing-runbook.md)，根据自己的需要修改 [Runbook 库](http://msdn.microsoft.com/library/azure/dn781422.aspx)中的 Runbook。 有四种不同的 [Runbook 类型](automation-runbook-types.md)，可根据自身需求和 PowerShell 体验从中进行选择。 如果想要直接使用 PowerShell 代码，则可以使用 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 或 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)，这两种你可以脱机编辑或使用 Azure 门户中的[文本编辑器](http://msdn.microsoft.com/library/azure/dn879137.aspx)进行编辑。 如果想要在不公开给底层代码的情况下编辑 Runbook，则可以使用 Azure 门户中的[图形编辑器](automation-graphical-authoring-intro.md)创建[图形 Runbook](automation-runbook-types.md#graphical-runbooks)。 
 
 你更喜欢观看视频而不喜欢阅读文档？ 请看一下下面的来自 2015 年 5 月 Microsoft Ignite 会话的视频。 请注意：虽然此视频中所述的概念和功能是正确的，但 Azure 自动化自录制此视频以来已取得很大进展，它现在具有 Azure 门户中更广泛的 UI，并支持其他功能。
 
@@ -82,11 +82,11 @@ Azure 自动化中的 Runbook 均基于 Windows PowerShell 或 Windows PowerShel
 * [Azure 自动化 Cmdlet](https://msdn.microsoft.com/library/mt244122.aspx) 提供有关自动化管理任务的信息。 它包含的 cmdlet 可用于管理自动化帐户、资产、Runbook、DSC。
 
 ## <a name="can-i-provide-feedback"></a>我是否可以提供反馈？
-**欢迎提供反馈！**  如果您正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。 如果您有关于 Azure 自动化的反馈或功能请求，请将其发布在 [用户之声](http://feedback.windowsazure.com/forums/34192--general-feedback)。 谢谢！ 
+**欢迎提供反馈！** 如果您正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。 如果您有关于 Azure 自动化的反馈或功能请求，请将其发布在 [用户之声](http://feedback.windowsazure.com/forums/34192--general-feedback)。 谢谢！ 
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

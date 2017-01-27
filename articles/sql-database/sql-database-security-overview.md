@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 06/09/2016
 ms.author: thmullan;jackr
 translationtype: Human Translation
-ms.sourcegitcommit: f4712d70c0323e607ddcc021809f8097a621730d
-ms.openlocfilehash: 9ebf3cd290151449c05c89307500fa5679de3b09
+ms.sourcegitcommit: 69faa86ddbc43793146653fc8d8dc2bf35c40aa1
+ms.openlocfilehash: f3a7bcbc80580232f2704087eb529ee9ec8ead46
 
 
 ---
@@ -54,7 +54,7 @@ SQL 数据库通过限制对数据库的访问来保护数据，具体措施包�
 SQL 数据库身份验证是指连接到数据库时如何证明用户的身份。 SQL 数据库支持两种类型的身份验证：
 
 * **SQL 身份验证**，使用用户名和密码。 在为数据库创建逻辑服务器时，你已指定一个包含用户名和密码的“服务器管理员”登录名。 通过这些凭据，你可以使用数据库所有者（即“dbo”）的身份通过服务器上任何数据库的身份验证。 
-* **Azure Active Directory 身份验证**，使用 Azure Active Directory 管理的标识，并支持托管域和集成域。 请[尽可能](https://msdn.microsoft.com/library/ms144284.aspx)使用 Active Directory 身份验证（集成安全性）。 如果想要使用 Azure Active Directory 身份验证，则必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。 有关如何创建 Azure AD 管理员以启用 Azure Active Directory 身份验证的演练，请参阅[通过使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。
+* **Azure Active Directory 身份验证**，使用 Azure Active Directory 管理的标识，支持托管域和集成域。 请[尽可能](https://msdn.microsoft.com/library/ms144284.aspx)使用 Active Directory 身份验证（集成安全性）。 如果想要使用 Azure Active Directory 身份验证，则必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。 有关如何创建 Azure AD 管理员以启用 Azure Active Directory 身份验证的演练，请参阅[通过使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。
 
 ### <a name="authorization"></a>授权
 授权是指用户可以在 Azure SQL 数据库中执行哪些操作，这由用户帐户的数据库角色成员身份和对象级权限来控制。 作为最佳实践，应向用户授予所需的最低权限。 用于连接的服务器管理员帐户是 db_owner 所有者的成员，该帐户有权在数据库中执行任何操作。 请保存此帐户，以便部署架构升级并执行其他管理操作。 权限受到更多限制的“ApplicationUser”帐户可让用户使用应用程序所需的最低权限从应用程序连接到数据库。
@@ -71,9 +71,14 @@ SQL 数据库通过提供审核和威胁检测功能来保护数据。
 ### <a name="auditing"></a>审核
 Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到 Azure 存储帐户中的审核日志，帮助用户保持合规性。 使用审核可以了解正在进行的数据库活动，以及分析和调查历史活动，标识潜在威胁或可疑的滥用行为和安全违规。 有关更多信息，请参阅 [SQL 数据库审核入门](sql-database-auditing-get-started.md)。  
 
-### <a name="threat-detection"></a>威胁检测
+### <a name="auditing--threat-detection"></a>审核和威胁检测 
+Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到 Azure 存储帐户中的审核日志，帮助用户保持合规性。 使用审核可以了解正在进行的数据库活动，以及分析和调查历史活动，标识潜在威胁或可疑的滥用行为和安全违规。 有关更多信息，请参阅 [SQL 数据库审核入门](sql-database-auditing-get-started.md)。  
+ 
 威胁检测是审核的补充，它在 Azure SQL 数据库服务中提供一个内置的附加安全智能层。 它会全天候探查、分析和检测异常数据库活动。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 用户可以遵照提供的参考说明与可行的说明对警报做出响应。 有关详细信息，请参阅 [SQL 数据库威胁检测入门](sql-database-threat-detection-get-started.md)。  
-
+ 
+### <a name="data-masking"></a>数据屏蔽 
+SQL 数据库动态数据屏蔽通过向无特权用户屏蔽敏感数据来控制此类数据的透漏。 动态数据屏蔽可自动发现 Azure SQL 数据库中潜在的敏感数据，提供可行的建议来屏蔽这些字段，对应用程序层造成的影响可忽略不计。 它的工作原理是在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。 有关详细信息，请参阅 [SQL 数据库动态数据屏蔽入门](sql-database-dynamic-data-masking-get-started.md)。
+ 
 ## <a name="compliance"></a>合规性
 除了上述可帮助应用程序符合各项安全法规要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，你可以从中找到 [SQL 数据库法规认证](https://azure.microsoft.com/support/trust-center/services/)的最新列表。
 
@@ -84,6 +89,7 @@ Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记�
 - 有关主动监视的介绍，请参阅 [SQL 数据库审核入门](sql-database-auditing-get-started.md)和 [SQL 数据库威胁检测入门](sql-database-threat-detection-get-started.md)。
 
 
-<!--HONumber=Dec16_HO4-->
+
+<!--HONumber=Jan17_HO2-->
 
 

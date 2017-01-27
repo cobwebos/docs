@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 12/07/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 73369c2aed062bb3fe1ec37c4650d1f86b0afb68
-ms.openlocfilehash: b2d4a153f472d350dbcb21c35ef73430e1657844
+ms.sourcegitcommit: d2eefb6b99955f9b9a1bd5b5c94617d538f079ec
+ms.openlocfilehash: 8e1b8cee12406628dae1deff15406beb13778b40
 
 
 ---
@@ -65,7 +65,7 @@ ms.openlocfilehash: b2d4a153f472d350dbcb21c35ef73430e1657844
 
 | 企业<br/>连接器 |  |
 | --- | --- |
-|![API 图标][MQicon]<br/>**MQ**|![API 图标][SAPicon]<br/>**SAP**|
+|![API 图标][MQicon]<br/>**MQ**|![API 图标][SAPicon]<br/>**SAP**<br/>[sapconnector]|
 
 
 
@@ -151,6 +151,7 @@ ms.openlocfilehash: b2d4a153f472d350dbcb21c35ef73430e1657844
 [youtubedoc]: ./connectors-create-api-youtube.md "连接到 YouTube，可与视频和频道交互。"
 [sparkpostdoc]: ./connectors-create-api-sparkpost.md "连接到 SparkPost，可用于通信。"
 [filesystemdoc]: ..//app-service-logic/app-service-logic-use-file-connector.md "使用文件系统连接器与本地文件系统进行通信。"
+[sapconnector]: ..//app-service-logic/app-service-logic-enterprise-connector-sap-connector.md "了解 SAP 连接器"
 
 <!--Icon references-->
 [appFiguresicon]: ./media/apis-list/appfigures.png
@@ -248,6 +249,6 @@ ms.openlocfilehash: b2d4a153f472d350dbcb21c35ef73430e1657844
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

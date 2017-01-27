@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
-ms.openlocfilehash: e8be3cd9aeb3ff39c808f5ee39bdf3091d45feec
+ms.sourcegitcommit: cea81f16ecc6203f487fdf15310638b123312dde
+ms.openlocfilehash: caee6a14bd988f2355c9683519b5f5480428a709
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: e8be3cd9aeb3ff39c808f5ee39bdf3091d45feec
 
 ## <a name="create-a-sql-data-warehouse"></a>创建 SQL 数据仓库
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“+新建” > “数据+存储” > “SQL 数据仓库”。
+2. 单击“+ 新建” > “数据库” > “SQL 数据仓库”。
 
     ![创建](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
 3. 在“SQL 数据仓库”  边栏选项卡中，填写所需的信息，然后按“创建”进行创建。
@@ -102,6 +102,6 @@ ms.openlocfilehash: e8be3cd9aeb3ff39c808f5ee39bdf3091d45feec
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

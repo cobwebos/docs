@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 
 ---
 
@@ -36,10 +36,10 @@ ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
 
 为了使用 REST API 将文档推送到索引中，需要对索引的 URL 终结点发出 HTTP POST 请求。 HTTP 请求的正文是一个 JSON 对象，包含要添加、修改或删除的文档。
 
-## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. 确定 Azure 搜索服务的管理 API 密钥
+## <a name="identify-your-azure-search-services-admin-api-key"></a>确定 Azure 搜索服务的管理 API 密钥
 使用 REST API 对服务发出 HTTP 请求时， *每个* API 请求必须包含为已预配的搜索服务生成的 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-1. 若要查找服务的 API 密钥，必须登录 [Azure 门户](https://portal.azure.com/)
+1. 若要查找服务的 API 密钥，可登录到 [Azure 门户](https://portal.azure.com/)
 2. 转到 Azure 搜索服务的边栏选项卡
 3. 单击“密钥”图标
 
@@ -50,7 +50,7 @@ ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
 
 可以使用主管理密钥或辅助管理密钥将数据导入到索引中。
 
-## <a name="ii-decide-which-indexing-action-to-use"></a>II. 确定要使用的索引操作
+## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
 使用 REST API 时，将向 Azure 搜索索引的终结点 URL 发出具有 JSON 请求正文的 HTTP POST 请求。 HTTP 请求正文中的 JSON 对象包含一个名为“value”的 JSON 数组，该数组中包含一系列 JSON 对象，表示要添加到索引、更新或删除的文档。
 
 “value”数组中的每个 JSON 对象表示要索引的文档。 每个对象都包含文档密钥，并指定所需的索引操作（upload、merge、delete 等）。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
@@ -60,9 +60,9 @@ ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
 | `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
 | `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 将失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 包括 `Collection(Edm.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
 | `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |关键字段以及要定义的任何其他字段 |- |
-| `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都将被忽略。 如果要从文档中删除单个字段，请改用 `merge`，只需将该字段显式设置为 null。 |
+| `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都将被忽略。 如果要从文档中删除单个字段，请改用 `merge` ，只需将该字段显式设置为 null。 |
 
-## <a name="iii-construct-your-http-request-and-request-body"></a>III. 构造 HTTP 请求和请求正文
+## <a name="construct-your-http-request-and-request-body"></a>构造 HTTP 请求和请求正文
 既然已经为索引操作收集了必要的字段值，就可以构造实际的 HTTP 请求和 JSON 请求正文来导入数据。
 
 #### <a name="request-and-request-headers"></a>请求和请求头
@@ -126,7 +126,7 @@ ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
 
 另请注意，一个索引请求中最多只能包含 1000 个（或者 16 MB）文档。
 
-## <a name="iv-understand-your-http-response-code"></a>IV. 了解 HTTP 响应代码
+## <a name="understand-your-http-response-code"></a>了解 HTTP 响应代码
 #### <a name="200"></a>200
 成功提交索引请求后，会收到状态代码为 `200 OK`的 HTTP 响应。 HTTP 响应的 JSON 正文如下所示：
 
@@ -177,11 +177,11 @@ ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
 
 有关文档操作以及成功/错误响应的详细信息，请参阅 [添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)。 有关请求失败时可能返回的其他 HTTP 状态代码的详细信息，请参阅 [HTTP 状态代码（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
 
-## <a name="next"></a>下一步
+## <a name="next-steps"></a>后续步骤
 填充 Azure 搜索索引后，即可发出查询，搜索文档。 有关详细信息，请参阅 [查询 Azure 搜索索引](search-query-overview.md) 。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

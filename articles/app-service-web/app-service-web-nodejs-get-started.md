@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 9667d805fee3277275a71e6907d0abffb35a3c48
+ms.sourcegitcommit: 88405a9e67eb748acc9564022283004b5ebfcf48
+ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
 
 
 ---
@@ -114,13 +114,13 @@ ms.openlocfilehash: 9667d805fee3277275a71e6907d0abffb35a3c48
    
         az appservice web deployment user set --user-name <username> --password <password>
 
-3. 创建新[资源组](../azure-resource-manager/resource-group-overview.md)。 对于此 PHP 教程，实际上并不需要知道什么是资源组。
+3. 创建新[资源组](../azure-resource-manager/resource-group-overview.md)。 对于本 node.js 教程，实际上并不需要知道什么是资源组。
 
         az group create --location "<location>" --name my-nodejs-app-group
 
     若要查看可为 `<location>` 使用的可能值，请使用 `az appservice list-locations` CLI 命令。
 
-3. 创建新的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于此 PHP 教程，只需知道此计划中的 Web 应用不会产生费用。
+3. 创建新的“免费”[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。 对于本 node.js 教程，只需知道此计划中的 Web 应用不会产生费用。
 
         az appservice plan create --name my-nodejs-appservice-plan --resource-group my-nodejs-app-group --sku FREE
 
@@ -303,6 +303,6 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

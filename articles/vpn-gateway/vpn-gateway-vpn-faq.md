@@ -1,10 +1,10 @@
 ---
 title: "虚拟网络 VPN 网关常见问题 | Microsoft Docs"
-description: "VPN 网关常见问题。 Microsoft Azure 虚拟网络跨界连接、混合配置连接和 VPN 网关的常见问题"
+description: "VPN 网关常见问题。 Microsoft Azure 虚拟网络跨界连接、混合配置连接和 VPN 网关的常见问题。"
 services: vpn-gateway
 documentationcenter: na
-author: yushwang
-manager: rossort
+author: cherylmc
+manager: timlt
 editor: 
 ms.assetid: 6ce36765-250e-444b-bfc7-5f9ec7ce0742
 ms.service: vpn-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2016
-ms.author: yushwang
+ms.date: 01/10/2017
+ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e7d0fa43001268fc4747bbf40d3dc209aa037a67
+ms.sourcegitcommit: 2dda1cd384cf365504811a260872703f2c5c484e
+ms.openlocfilehash: ccb0dc6172b234412558b9175f3872d690d4ea3a
 
 
 ---
@@ -102,7 +102,7 @@ ms.openlocfilehash: e7d0fa43001268fc4747bbf40d3dc209aa037a67
 点到站点 VPN 中当前不支持自动重新连接和 DDNS。
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>对于同一虚拟网络，站点到站点和点到站点配置能否共存？
-是的。 如果你网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 我们不支持对静态路由 VPN 网关或使用 -VpnType PolicyBased 的网关使用点到站点连接。
+是的。 如果你网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 不支持对静态路由 VPN 网关或使用 `-VpnType PolicyBased` cmdlet 的网关使用点到站点连接。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 是的，可以这样做。 但虚拟网络的 IP 前缀不得重叠，并且点到站点地址空间在虚拟网络之间不得重叠。
@@ -129,7 +129,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 ### <a name="can-i-use-other-authentication-options"></a>能否使用其他身份验证选项？
 我们仅限使用预共享密钥 (PSK) 进行身份验证。
 
-### <a name="what-is-the-gateway-subnet-and-why-is-it-needed"></a>什么是“网关子网”？为何它是必需的？
+### <a name="what-is-the-gatewaysubnet-and-why-is-it-needed"></a>什么是“GatewaySubnet”？为何需要它？
 我们有一个网关服务，运行它即可启用跨界连接。
 
 若要配置 VPN 网关，需要为 VNet 创建网关子网。 所有网关子网都必须命名为 GatewaySubnet 才能正常工作。 不要对网关子网使用其他名称。 此外，不要在网关子网中部署 VM 或其他组件。
@@ -140,7 +140,14 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 否。
 
 ### <a name="how-do-i-specify-which-traffic-goes-through-the-vpn-gateway"></a>如何指定通过 VPN 网关的流量？
-如果你是使用 Azure 经典门户，请在“本地网络”下的“网络”页上为虚拟网络添加要通过网关发送的每个范围。
+
+####<a name="resource-manager-deployment-model"></a>Resource Manager 部署模型
+* PowerShell：使用“AddressPrefix”指定本地网络网关的流量。
+* Azure 门户：导航到“本地网络网关”>“配置”>“地址空间”。
+
+####<a name="classic-deployment-model"></a>经典部署模型
+* Azure 门户：导航到“经典虚拟网络”>“VPN 连接”>“站点到站点 VPN 连接”>“本地站点名称”>“本地站点”>“客户端地址空间”。 
+* 经典门户：在“本地网络”下的“网络”页上为虚拟网络添加要通过网关发送的每个范围。 
 
 ### <a name="can-i-configure-forced-tunneling"></a>能否配置强制隧道？
 是的。 请参阅 [配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
@@ -167,7 +174,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 安全，它通过 IPsec/IKE 加密进行保护。
 
 ### <a name="does-vnet-to-vnet-traffic-travel-over-the-azure-backbone"></a>VNet 到 VNet 流量是否会流经 Azure 主干？
-是的。
+是的，此流量遍历 Azure 主干。 它不会通过 Internet。
 
 ### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to"></a>一个虚拟网络可以连接到多少个本地站点和虚拟网络？
 最大 基本和标准动态路由网关合起来最多 10 个；高性能 VPN 网关最多 30 个。
@@ -176,7 +183,7 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 能，可以将点到站点 (P2S) VPN 用于连接到多个本地站点的 VPN 网关和其他虚拟网络。
 
 ### <a name="can-i-configure-multiple-tunnels-between-my-virtual-network-and-my-on-premises-site-using-multi-site-vpn"></a>能否使用多站点 VPN 在我的虚拟网络和本地站点之间配置多个隧道？
-不能，不支持 Azure 虚拟网络与本地站点之间的冗余隧道。
+是，但必须在两个隧道上配置与同一位置之间的 BGP。
 
 ### <a name="can-there-be-overlapping-address-spaces-among-the-connected-virtual-networks-and-on-premises-local-sites"></a>连接的虚拟网络与内部本地站点之间能否存在重叠的地址空间？
 否。 重叠的地址空间将导致网络配置文件上载或“创建虚拟网络”失败。
@@ -185,10 +192,12 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 不会，所有 VPN 隧道（包括点到站点 VPN）共享同一 Azure VPN 网关和可用带宽。
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>能否使用 Azure VPN 网关在我的本地站点之间传输流量或将流量传输到其他虚拟网络？
-**经典部署模型**<br>
+
+####<a name="resource-manager-deployment-model"></a>Resource Manager 部署模型
+是的。 相关详细信息，请参阅 [BGP](#bgp) 部分。
+
+####<a name="classic-deployment-model"></a>经典部署模型
 使用经典部署模型通过 Azure VPN 网关传输流量是可行的，但需要依赖网络配置文件中静态定义的地址空间。 使用经典部署模型的 Azure 虚拟网络和 VPN 网关尚不支持 BGP。 没有 BGP，手动定义传输地址空间很容易出错，不建议这样做。<br>
-** 部署模型**<br>
-如果使用 Resource Manager 部署模型，请参阅 [BGP](#bgp) 部分了解更多信息。
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Azure 会为同一虚拟网络的所有 VPN 连接生成同一 IPsec/IKE 预共享密钥吗？
 不会。默认情况下，Azure 会为不同 VPN 连接生成不同的预共享密钥。 但是，你可以使用设置 VPN 网关密钥 REST API 或 PowerShell cmdlet 设置你想要的密钥值。 该密钥必须是长度介于 1 到 128 个字符之间的字母数字字符串。
@@ -216,6 +225,6 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

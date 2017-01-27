@@ -1,107 +1,138 @@
 ---
 title: "连接到 Azure 容器服务群集 | Microsoft Docs"
-description: "使用 SSH 隧道连接到 Azure 容器服务群集。"
+description: "通过远程计算机连接到 Azure 容器服务中的 Kubernetes、DC/OS 或 Docker Swarm 群集"
 services: container-service
 documentationcenter: 
-author: rgardler
+author: dlepow
 manager: timlt
 editor: 
 tags: acs, azure-container-service
-keywords: "Docker, 容器, 微服务, DC/OS, Azure"
+keywords: "Docker, 容器, 微服务, Kubernetes, DC/OS, Azure"
 ms.assetid: ff8d9e32-20d2-4658-829f-590dec89603d
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 01/12/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
-ms.openlocfilehash: 5296586b9266f432042f847f4dff9e6ff62ebc8b
+ms.sourcegitcommit: ea59ff3f527d051e01baf12f596ff44af8a0dfc1
+ms.openlocfilehash: 7fe3bc6a5eab1d1b9a8b73ab3c88f9808817369a
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>连接到 Azure 容器服务群集
-由 Azure 容器服务部署的 DC/OS、Kubernetes 和 Docker Swarm 群集都公开 REST 终结点。  对于 Kubernetes，将在 Internet 上安全地公开此终结点，用户可以直接从连接到 Internet 的任何计算机访问它。 对于 DC/OS 和 Docker Swarm，必须创建 SSH 隧道才能安全地连接到 REST 终结点。 下面说明了上述每个连接。
+创建 Azure 容器服务群集后，需要连接到该群集才能部署和管理工作负荷。 本文介绍如何通过远程计算机连接到群集的主 VM。 Kubernetes、DC/OS 和 Docker Swarm 群集都会公开 REST 终结点。 对于 Kubernetes，此终结点在 Internet 上安全公开，用户可在连接到 Internet 的任意计算机上通过运行 `kubectl` 命令行工具来访问此终结点。 对于 DC/OS 和 Docker Swarm，必须创建安全外壳 (SSH) 隧道才能安全连接到 REST 终结点。 
 
 > [!NOTE]
 > Azure 容器服务中的 Kubernetes 支持当前为预览版。
 >
 
-## <a name="connecting-to-a-kubernetes-cluster"></a>连接到 Kubernetes 群集。
-若要连接到 Kubernetes 群集，需要已安装 `kubectl` 命令行工具。  安装此工具的最简单方法是使用 Azure 2.0 `az` 命令行工具。
+## <a name="prerequisites"></a>先决条件
 
-```console
-az acs kubernetes install cli [--install-location=/some/directory]
+* [部署在 Azure 容器服务中](container-service-deployment.md)的 Kubernetes、DC/OS 或 Swarm 群集。
+* SSH 私钥文件，对应于在部署期间添加到群集的公钥。 这些命令假设 SSH 私钥位于计算机上的 `$HOME/.ssh/id_rsa` 中。 有关详细信息，请参阅适用于 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 的说明。 如果 SSH 连接不起作用，可能需要[重置 SSH 密钥](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)。
+
+## <a name="connect-to-a-kubernetes-cluster"></a>连接到 Kubernetes 群集
+
+遵循以下步骤在计算机上安装和配置 `kubectl`。
+
+> [!NOTE] 
+> 在 Linux 或 OS X 上，可能需要使用 `sudo` 运行本部分中的命令。
+> 
+
+### <a name="install-kubectl"></a>安装 kubectl
+安装此工具的方法之一是使用 `az acs kubernetes install cli` Azure CLI 2.0（预览版）命令。 若要运行此命令，请确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0（预览版）并已登录到 Azure 帐户 (`az login`)。
+
+```azurecli
+# Linux or OS X
+az acs kubernetes install-cli [--install-location=/some/directory/kubectl]
+
+# Windows
+az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 ```
 
-或者，可以直接从[版本页](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146)下载客户端
+或者，可以直接从[版本页](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146)下载客户端。
 
-安装 `kubectl` 后，需要将群集凭据复制到计算机。  执行此操作的最简单方法同样是 `az` 命令行工具：
+### <a name="download-cluster-credentials"></a>下载群集凭据
+安装 `kubectl` 后，需要将群集凭据复制到计算机。 获取凭据的方法之一是使用 `az acs kubernetes get-credentials` 命令。 传递资源组的名称和容器服务资源的名称：
 
-```console
-az acs kubernetes get-credentials --dns-prefix=<some-prefix> --location=<some-location>
+
+```azurecli
+az acs kubernetes get-credentials --resource-group=<cluster-resource-group> --name=<cluster-name>
 ```
 
-这会将群集凭据下载到 `$HOME/.kube/config`（`kubectl` 预期凭据所在位置）中。
+此命令将群集凭据下载到 `$HOME/.kube/config`（`kubectl` 预期凭据所在的位置）。
 
-或者，可以使用 `scp` 安全地将该文件从主 VM 中的 `$HOME/.kube/config` 复制到本地计算机上。
+或者，可以使用 `scp` 安全地将该文件从主 VM 中的 `$HOME/.kube/config` 复制到本地计算机。 例如：
 
 ```console
 mkdir $HOME/.kube/config
 scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 ```
 
-如果使用的是 Windows，则需要在 Windows 上使用 Bash on Ubuntu 或 Putty 'pscp' 工具。
+如果在 Windows 上操作，需要使用 Windows 上的 Ubuntu Bash、PuTTy 安全文件复制客户端或类似的工具。
 
-配置 `kubectl` 后，可以通过列出群集中的节点进行测试：
+
+
+### <a name="use-kubectl"></a>使用 kubectl
+
+配置 `kubectl` 后，可以通过列出群集中的节点来测试连接：
 
 ```console
 kubectl get nodes
 ```
 
-最后可以查看 Kubernetes 仪表板。 首先，请执行：
+可以尝试其他 `kubectl` 命令。 例如，查看 Kubernetes 仪表板。 首先，运行一个代理连接到 Kubernetes API 服务器：
 
 ```console
 kubectl proxy
 ```
 
-Kubernetes UI 现已显示在：http://localhost:8001/ui
+Kubernetes UI 现已显示在 `http://localhost:8001/ui` 上。
 
-有关更多说明，可以参阅 [Kubernetes 快速入门](http://kubernetes.io/docs/user-guide/quick-start/)
+有关详细信息，请参阅 [Kubernetes 快速入门](http://kubernetes.io/docs/user-guide/quick-start/)。
 
-## <a name="connecting-to-a-dcos-or-swarm-cluster"></a>连接到 DC/OS 或 Swarm 群集
+## <a name="connect-to-a-dcos-or-swarm-cluster"></a>连接到 DC/OS 或 Swarm 群集
 
-由 Azure 容器服务部署的 DC/OS 和 Docker Swarm 群集将公开 REST 终结点。 但是，这些终结点不对外界开放。 为了管理这些终结点，必须创建安全外壳 (SSH) 隧道。 建立 SSH 隧道后，就可以对群集终结点运行命令，并通过自己系统中的浏览器查看群集 UI。 本文档将介绍从 Linux、OS X 和 Windows 创建 SSH 隧道的步骤。
+由 Azure 容器服务部署的 DC/OS 和 Docker Swarm 群集将公开 REST 终结点。 但是，这些终结点不对外界开放。 若要管理这些终结点，必须创建安全外壳 (SSH) 隧道。 建立 SSH 隧道后，就可以对群集终结点运行命令，并通过自己系统中的浏览器查看群集 UI。 以下部分逐步讲解如何从运行 Linux、OS X 和 Windows 操作系统的计算机创建 SSH 隧道。
 
 > [!NOTE]
-> 可以使用群集管理系统来创建 SSH 会话。 但不建议这样做。 直接在管理系统上操作会引致无意配置更改所带来的风险。   
-> 
-> 
-
-## <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>在 Linux 或 OS X 上创建 SSH 隧道
-在 Linux 或 OS X 上创建 SSH 隧道的首要事项是查找负载平衡主机的公用 DNS 名称。 若要执行此操作，请展开资源组，显示每个资源。 查找并选择主机的公用 IP 地址。 这会打开一个边栏选项卡，提供有关公用 IP 地址的信息，包括 DNS 名称。 保存此名称以供稍后使用。 <br />
-
-![公用 DNS 名称](media/pubdns.png)
-
-现在打开外壳程序并运行以下命令：
-
-**PORT** 是想要公开的终结点的端口。 对于 Swarm，端口为 2375。 对于 DC/OS，端口为 80。  
-**USERNAME** 是部署群集时提供的用户名。  
-**DNSPREFIX** 是部署群集时提供的 DNS 前缀。  
-**REGION** 是资源组所在的区域。  
-**PATH_TO_PRIVATE_KEY** [可选] 是创建容器服务群集时提供的与公钥相对应的私钥的路径。 使用此带有 -i 标志的选项。
-
-```bash
-ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
-```
-> SSH 连接端口为 2200，而不是标准端口 22。
-> 
+> 可以使用群集管理系统来创建 SSH 会话。 但不建议这样做。 直接在管理系统上操作会引致无意配置更改所带来的风险。
 > 
 
-## <a name="dcos-tunnel"></a>DC/OS 隧道
-若要打开通向与 DC/OS 相关的终结点的隧道，请执行如下命令：
+### <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>在 Linux 或 OS X 上创建 SSH 隧道
+在 Linux 或 OS X 上创建 SSH 隧道的首要事项是查找负载平衡主机的公用 DNS 名称。 执行以下步骤:
+
+
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到包含容器服务群集的资源组。 展开资源组，显示每个资源。 
+
+2. 找到并选择主资源的虚拟机。 在 DC/OS 群集中，此资源的名称以 **dcos-master-** 开头。 
+
+    “虚拟机”边栏选项卡包含有关公共 IP 地址的信息，包括 DNS 名称。 保存此名称以供稍后使用。 
+
+    ![公用 DNS 名称](media/pubdns.png)
+
+3. 现在，打开 shell 并结合以下值运行 `ssh` 命令： 
+
+    **PORT** 是想要公开的终结点的端口。 对于 Swarm，请使用端口 2375。 对于 DC/OS，请使用端口 80。  
+    **USERNAME** 是部署群集时提供的用户名。  
+    **DNSPREFIX** 是部署群集时提供的 DNS 前缀。  
+    **REGION** 是资源组所在的区域。  
+    **PATH_TO_PRIVATE_KEY** [可选] 是创建群集时提供的与公钥相对应的私钥的路径。 请结合 `-i` 标志使用此选项。
+
+    ```bash
+    ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
+    ```
+    > [!NOTE]
+    > SSH 连接端口为 2200，而不是标准端口 22。 在包含多个主 VM 的群集中，这是第一个主 VM 的连接端口。
+    > 
+
+请参阅以下部分中的 DC/OS 和 Swarm 示例。    
+
+### <a name="dcos-tunnel"></a>DC/OS 隧道
+若要打开 DC/OS 相关终结点的隧道，请运行类似于下面的命令：
 
 ```bash
 sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
@@ -115,8 +146,8 @@ sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.az
 
 同样，可以通过此隧道到达每个应用程序的剩余 API。
 
-## <a name="swarm-tunnel"></a>Swarm 隧道
-若要打开通向 Swarm 终结点隧道，请执行如下命令：
+### <a name="swarm-tunnel"></a>Swarm 隧道
+若要打开 Swarm 终结点的隧道，请运行类似于下面的命令：
 
 ```bash
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
@@ -128,54 +159,58 @@ ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azu
 export DOCKER_HOST=:2375
 ```
 
-## <a name="create-an-ssh-tunnel-on-windows"></a>在 Windows 上创建 SSH 隧道
-有多种方法可在 Windows 上创建 SSH 隧道。 本文档将介绍如何使用 PuTTY 进行创建。
+### <a name="create-an-ssh-tunnel-on-windows"></a>在 Windows 上创建 SSH 隧道
+有多种方法可在 Windows 上创建 SSH 隧道。 本部分介绍如何使用 PuTTY 创建隧道。
 
-将 PuTTY 下载到 Windows 系统中并运行该应用程序。
+1. [将 PuTTY 下载](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)到 Windows 系统。
 
-输入主机名 - 由群集管理员用户名和群集中第一个主机的公用 DNS 名组成。 “主机名”将如下所示：`adminuser@PublicDNS`。 输入 2200 作为“端口” 。
+2. 运行应用程序。
 
-![PuTTY 配置 1](media/putty1.png)
+3. 输入主机名 - 由群集管理员用户名和群集中第一个主机的公用 DNS 名组成。 “主机名”类似于 `adminuser@PublicDNSName`。 输入 2200 作为“端口” 。
 
-选择“SSH”和“身份验证”。 添加私钥文件进行身份验证。
+    ![PuTTY 配置 1](media/putty1.png)
 
-![PuTTY 配置 2](media/putty2.png)
+4. 选择“SSH”>“身份验证”。 添加用于身份验证的专用密钥文件（.ppk 格式）的路径。 可以使用 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 等工具，通过用于创建群集的 SSH 密钥生成此文件。
 
-选择 **隧道** 并配置以下各转发端口：
+    ![PuTTY 配置 2](media/putty2.png)
 
-* **源端口：** 对于 DC/OS 优先使用 80，对于 Swarm 优先使用 2375。
-* **目标：** DC/OS 使用 localhost:80，Swarm 使用 localhost:2375。
+5. 选择“SSH”>“隧道”并配置以下转发端口：
 
-以下示例适用于 DC/OS，但 Docker Swarm 与之类似。
+    * **源端口：**为 DC/OS 使用 80，为 Swarm 使用 2375。
+    * **目标：** DC/OS 使用 localhost:80，Swarm 使用 localhost:2375。
 
-> [!NOTE]
-> 创建此隧道时，不能使用端口 80。
-> 
-> 
+    以下示例适用于 DC/OS，但 Docker Swarm 与之类似。
 
-![PuTTY 配置 3](media/putty3.png)
+    > [!NOTE]
+    > 创建此隧道时，不能使用端口 80。
+    > 
 
-完成后，保存连接配置，并连接 PuTTY 会话。 连接时，可以在 PuTTY 事件日志中看到端口配置。
+    ![PuTTY 配置 3](media/putty3.png)
 
-![PuTTY 事件日志](media/putty4.png)
+6. 完成后，单击“会话”>“保存”保存连接配置。
 
-为 DC/OS 配置隧道后，可以从这些位置访问相关终结点：
+7. 若要连接到 PuTTY 会话，请单击“打开”。 连接时，可以在 PuTTY 事件日志中看到端口配置。
+
+    ![PuTTY 事件日志](media/putty4.png)
+
+为 DC/OS 配置隧道后，可从以下位置访问相关的终结点：
 
 * DC/OS： `http://localhost/`
 * Marathon： `http://localhost/marathon`
 * Mesos： `http://localhost/mesos`
 
-为 Docker Swarm 配置隧道后，可以通过 Docker CLI 访问 Swarm 群集。 首先需要将名为 `DOCKER_HOST` 的 Windows 环境变量配置为值 ` :2375`。
+为 Docker Swarm 配置隧道后，请打开 Windows 设置，配置一个名为 `DOCKER_HOST`、值为 `:2375` 的系统环境变量。 然后，可以通过 Docker CLI 访问 Swarm 群集。
 
 ## <a name="next-steps"></a>后续步骤
-使用 DC/OS 或 Swarm 部署或管理容器：
+在群集中部署和管理容器：
 
+* [Work with Azure Container Service and Kubernetes](container-service-kubernetes-ui.md)（使用 Azure 容器服务和 Kubernetes）
 * [使用 Azure 容器服务和 DC/OS](container-service-mesos-marathon-rest.md)
 * [使用 Azure 容器服务和 Docker Swarm](container-service-docker-swarm.md)
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

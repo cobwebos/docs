@@ -11,14 +11,14 @@ keywords: "容器, DC/OS, Azure"
 ms.assetid: 91d9a28a-3a52-4194-879e-30f2fa3d946b
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6df2b6ee0064a2baa79a154641f097b11cb55059
+ms.sourcegitcommit: 5da28eecf2df764f71906897450ebe67b3048b3f
+ms.openlocfilehash: d57212a8c858c4fb53cc619a578b59da92176bb2
 
 
 ---
@@ -54,9 +54,10 @@ Sysdig 是允许监视群集中容器的监视服务。 大家都知道 Sysdig �
 
 安装该程序包后，请导航回 Sysdig UI，然后你就可以浏览容器在群集中的不同使用情况指标。 
 
+还可以通过[新仪表板向导](https://app.sysdigcloud.com/#/dashboards/new)安装 Mesos 和 Marathon 特定的仪表板。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 
