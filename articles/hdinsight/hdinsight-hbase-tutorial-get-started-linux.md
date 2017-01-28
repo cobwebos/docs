@@ -13,16 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/23/2016
+ms.date: 01/19/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2c7b46521c5da3290af244652b5ac20d4c309d5d
-ms.openlocfilehash: 5ec4b260ce82ec78b614ae442d3f14063ce590b5
+ms.sourcegitcommit: 86f339b1a8f8c18fd898dc06b87245b265b3adb1
+ms.openlocfilehash: 34e173c6b54bc49cf8966de459e6c03c2260cbf8
 
 
 ---
-# <a name="hbase-tutorial-get-started-using-apache-hbase-with-linux-based-hadoop-in-hdinsight"></a>HBase 教程：开始在 HDInsight 中将 Apache HBase 与基于 Linux 的 Hadoop 配合使用
-[!INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
+# <a name="hbase-tutorial-get-started-using-apache-hbase-in-hdinsight"></a>HBase 教程：开始使用 HDInsight 中的 Apache HBase
 
 了解如何使用 Hive 在 HDInsight 中创建 HBase 群集、创建 HBase 表和查询表。 有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
 
@@ -45,7 +44,7 @@ ms.openlocfilehash: 5ec4b260ce82ec78b614ae442d3f14063ce590b5
 
 1. 单击下面的图像即可在 Azure 门户中打开该模板。 模板位于公共 Blob 容器中。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. 在“自定义部署”边栏选项卡中输入以下信息：
    
    * **订阅**：选择用于创建群集的 Azure 订阅。
@@ -124,7 +123,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-如果需要，你可以创建一个文本文件并将该文件上载到你自己的存储帐户。 有关说明，请参阅[在 HDInsight 中为 Hadoop 作业上传数据][hdinsight-upload-data]。
+如果需要，你可以创建一个文本文件并将该文件上载到你自己的存储帐户。 有关说明，请参阅[在 HDInsight 中为 Hadoop 作业上载数据][hdinsight-upload-data]。
 
 > [!NOTE]
 > 此过程使用你在上一个过程中创建的“联系人”HBase 表。
@@ -207,7 +206,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
         -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
-        -d "{\"Row\":{\"key\":\"MTAwMA==\",\"Cell\":{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}}}" \
+        -d "{\"Row\":[{\"key\":\"MTAwMA==\",\"Cell\": [{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}]}]}" \
         -v
    
     必须使用 base64 来为 -d 参数中指定的值编码。  在本示例中：
@@ -286,6 +285,6 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 
