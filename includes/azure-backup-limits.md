@@ -1,24 +1,3 @@
----
-title: "Azure 备份限制表"
-description: "描述 Azure 备份的系统限制。"
-services: backup
-documentationcenter: NA
-author: Jim-Parker
-manager: jwhit
-editor: 
-ms.service: backup
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 10/05/2015
-ms.author: trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: 4b234af8249a64e8d56e9f4c41815749f154af3e
-ms.openlocfilehash: e7147f7712fd22fc07d7af551a12a07808bca9b9
-
-
----
 以下限制适用于 Azure 备份。
 
 | 限制标识符 | 默认限制 |
@@ -33,7 +12,6 @@ ms.openlocfilehash: e7147f7712fd22fc07d7af551a12a07808bca9b9
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 
