@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: jimpark; markgal;genli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 87387e4f182214fa0c34a6a1358c6cc2648be906
+ms.sourcegitcommit: 5cd91d74ea09e4fc77437a310f39b769983bd123
+ms.openlocfilehash: 005d6b220135302a85495d0840e545c13feb0705
 
 
 ---
@@ -65,7 +65,8 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 ### <a name="solution"></a>解决方案
 对于 Linux VM，与代理或扩展相关的大多数失败是由于影响旧 VM 代理的问题所造成的。 作为一般指导，排查此问题的首要步骤如下：
 
-1. [安装最新的 Azure VM 代理](https://github.com/Azure/WALinuxAgent)。
+1. 按照[更新 Linux VM 代理](../virtual-machines/virtual-machines-linux-update-agent.md)上的说明进行操作。
+我们**强烈建议**只通过分发存储库更新代理。 不建议直接从 github 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 可以在 github 存储库中查看最新的 [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases)（Windows Azure Linux 代理）信息。 
 2. 确保 Azure 代理在 VM 上运行。 为此，请运行以下命令：```ps -e```
    
     如果此进程未运行，请使用以下命令来重新启动它。
@@ -133,6 +134,6 @@ The following conditions can cause snapshot task failure:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 
