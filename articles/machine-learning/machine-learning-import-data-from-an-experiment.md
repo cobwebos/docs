@@ -13,18 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/14/2016
 ms.author: garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7488faa54481f0f524c2274e7e2575bf0fc02690
+ms.sourcegitcommit: 1738899a271045e37cdcedaaf862553f29ec92f1
+ms.openlocfilehash: b1c06135cf8628197fb9601affd6a7131b41d0ca
 
 
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>将数据从另一个试验导入 Azure 机器学习工作室
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
-有时候你想要从实验中提取直接结果，并将其用作其他实验的一部分。  为此，请将模块另存为数据集：
+有时候想要从实验中提取直接结果，并将其用作其他实验的一部分。 为此，请将模块另存为数据集：
 
 1. 单击想要另存为数据集的模块的输出。
 2. 单击“另存为数据集”。
@@ -36,6 +36,6 @@ ms.openlocfilehash: 7488faa54481f0f524c2274e7e2575bf0fc02690
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

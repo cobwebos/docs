@@ -12,23 +12,28 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 12/15/2016
 ms.author: antonba
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7dfbf0e460dc8de13a4a71c1f925c93f6238df5d
+ms.sourcegitcommit: d2c9961e67fd1380ba734b6fa6f5fa859144e8ae
+ms.openlocfilehash: 1e814f0db36c9cad1b4f4f062b1e235994054621
 
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
-使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，你可以使用多种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
+使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 
 可将 Azure API 管理连接到虚拟网络 (VNET)，以便可以访问网络中的后端服务，并从网络内部访问开发人员门户和 API 网关。
 
+> [!NOTE]
+> Azure API 管理同时支持经典 VNet 和 Azure Resource Manager VNet。
+> 
+> 
+
 ## <a name="enable-vpn"></a>启用 VNET 连接
-> 只有**高级**层和**开发人员**层才提供 VNET 连接。 若要在层之间切换，请在 Azure 门户中打开 API 管理服务，然后打开“规模和定价”选项卡。 在“定价层”部分下面选择“高级”层，然后单击“保存”。
-> 
-> 
+> [!NOTE]
+> **高级**层和**开发人员**层中提供了 VNET 连接。 若要在层之间切换，请在 Azure 门户中打开 API 管理服务，然后打开“规模和定价”选项卡。 在“定价层”部分下，选择“高级”层或“开发人员”层，然后单击“保存”。
+>
 
 若要启用 VNET 连接，请在 Azure 门户中打开 API 管理服务，然后打开“虚拟网络”页。
 
@@ -44,45 +49,66 @@ ms.openlocfilehash: 7dfbf0e460dc8de13a4a71c1f925c93f6238df5d
 
 ![专用对等互连][api-management-vnet-private]
 
-此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了 Azure 订阅中提供的经典和 ARM 虚拟网络，这些网络是在配置的区域中设置的。
+此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了在你配置的区域中设置的 Azure 订阅中可用的经典和 Resource Manager 虚拟网络。
+
+> [!IMPORTANT]
+> 将 Azure API 管理实例部署到 Resource Manager VNET 时，该服务必须位于除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的 Resource Manager VNET 子网，则部署将失败。
+> 
+> 
 
 ![选择 VPN][api-management-setup-vpn-select]
 
 单击屏幕顶部的“保存”。 
 
-> 在更新时，无法针对 API 管理服务执行管理操作。 API 管理网关和开发人员门户将保持可用。
-> 请注意，每次启用或禁用 VNET 时，API 管理实例的 VIP 地址可能更改。
-> 
+> [!NOTE]
+> 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。  
+> 当 API 管理从**外部**移动到**内部**时或者反向移动时，VIP 地址也会更改。
 > 
 
 ## <a name="enable-vnet-powershell"> </a>使用 PowerShell cmdlet 启用 VNET 连接
-还可以使用 PowerShell cmdlet [Set-AzureRmApiManagementVirtualNetworks](https://msdn.microsoft.com/library/mt619277.aspx) 启用 VNET 连接。
+还可以使用 PowerShell cmdlet 启用 VNET 连接
+
+* **在 VNET 内创建 API 管理服务**：使用 cmdlet [New-AzureRmApiManagement](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/new-azurermapimanagement) 在 VNET 内创建 Azure API 管理服务。
+
+* **在 VNET 内部署现有 API 管理服务**：使用 cmdlet [Update-AzureRmApiManagementDeployment](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.apimanagement/v3.1.0/update-azurermapimanagementdeployment) 将现有 Azure API 管理服务移动到虚拟网络内。
 
 ## <a name="connect-vnet"> </a>连接到虚拟网络中托管的 Web 服务
 将 API 管理服务连接到 VNET 后，访问 VNET 中的后端服务与访问公共服务无异。 在创建新的 API 或编辑现有 API 时，只需将 Web 服务的本地 IP 地址或主机名（如果为 VNET 配置了 DNS 服务器）键入“Web 服务 URL”字段。
 
 ![从 VPN 添加 API][api-management-setup-vpn-add-api]
 
-## <a name="custom-dns"> </a>自定义 DNS 服务器设置
-API 管理依赖于多个 Azure 服务。 在包含自定义 DNS 服务器的 VNET 中托管 API 管理时，API 管理需要能够解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)进行自定义 DNS 设置。 请参考下面的示意图和端口表。
+## <a name="network-configuration-issues"> </a>常见网络配置问题
+下面是将 API 管理服务部署到虚拟网络时可能会发生的常见错误配置问题的列表。
 
-## <a name="ports-required"> </a>API 管理所需的端口
-> 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，最常见的配置错误是阻止了一个或多个此类端口。
-> 
-> 
+* **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
+
+* **API 管理所需的端口**：可以使用[网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
 在 VNET 中托管 API 管理服务实例时，将使用下表中的端口。
 
-| 端口 | Direction | 传输协议 | 目的 | 源/目标 | 访问类型 |
+| 源 / 目标端口 | 方向 | 传输协议 | 目的 | 源/目标 | 访问类型 |
 | --- | --- | --- | --- | --- | --- |
-| 80、443 |入站 |TCP |客户端与 API 管理的通信 |INTERNET/VIRTUAL_NETWORK |外部 |
-| 3443 |入站 |TCP |管理终结点 |INTERNET/VIRTUAL_NETWORK |外部和内部 |
-| 80、443 |出站 |TCP |与 Azure 存储和 Azure 服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| 1433 |出站 |TCP |与 Azure SQL 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| 9350, 9351, 9352, 9353, 9354 |出站 |TCP |与服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| 5671 |出站 |AMQP |与事件中心策略日志记录的依赖项关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| 6381, 6382, 6383 |入站/出站 |UDP |与 Redis 缓存的依赖关系 |VIRTUAL_NETWORK/VIRTUAL_NETWORK |外部和内部 |
-| 445 |出站 |TCP |与适用于 GIT 的 Azure 文件共享的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| 80、443 / 80、443 |入站 |TCP |客户端与 API 管理的通信 |INTERNET/VIRTUAL_NETWORK |外部 |
+| * / 3443 |入站 |TCP |管理终结点 |INTERNET/VIRTUAL_NETWORK |外部和内部 |
+| 80、443 / 80、443 |出站 |TCP |与 Azure 存储和 Azure 服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| 1433 / 1433 |出站 |TCP |与 Azure SQL 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| 9350 - 9354 / 9350 - 9354 |出站 |TCP |与服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| 5671 / 5671 |出站 |AMQP |与事件中心策略日志记录的依赖项关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| 6381 - 6383 / 6381 - 6383 |入站和出站 |UDP |与 Redis 缓存的依赖关系 |VIRTUAL_NETWORK/VIRTUAL_NETWORK |外部和内部 |-
+| * / 445 |出站 |TCP |与适用于 GIT 的 Azure 文件共享的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / * | 入站 |TCP |Azure 基础结构负载均衡器 | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部和内部 |
+| * / * | 出站 |TCP |Azure 基础结构负载均衡器 | VIRTUAL_NETWORK / AZURE_LOAD_BALANCER |外部和内部 |
+
+* **SSL 功能**：若要启用 SSL 证书链构建和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。
+
+* **ExpressRoute 设置**：一种常见的客户配置是定义其自己的默认路由 (0.0.0.0/0)，以强制出站 Internet 流量改为流向本地。 此流量流一定会中断与 Azure API 管理的连接，因为已在本地阻止出站流量，或者已 NAT 到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 解决方案是在包含 Azure API 管理的子网上定义一个（或多个）用户定义的路由 ([UDR][UDRs])。 UDR 定义了要遵循的子网特定路由，而不是默认路由。
+  如果可能，建议使用以下配置：
+ * ExpressRoute 配置播发 0.0.0.0/0 并默认使用强制隧道将所有输出流量发送到本地。
+ * 应用于包含 Azure API 管理的子网的 UDR 定义 0.0.0.0/0 以及 Internet 的下一个跃点类型。
+ 这些步骤的组合效应是子网级 UDR 将优先于 ExpressRoute 强制隧道，从而确保来自 Azure API 管理的出站 Internet 访问。
+
+>[!WARNING]  
+>**从公共对等路径到专用对等路径未正确交叉播发路由**的 ExpressRoute 配置不支持 Azure API 管理。 已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的大量 Microsoft Azure IP 地址范围的路由播发。 如果这些地址范围在专用对等路径上未正确交叉播发，最后的结果是来自 Azure API 管理实例子网的所有出站网络数据包都不会正确地使用强制隧道发送到客户的本地网络基础结构。 此网络流会破坏 Azure API 管理。 此问题的解决方法是停止从公共对等路径到专用对等路径的交叉播发路由。
 
 ## <a name="limitations"> </a>限制
 * 包含 API 管理实例的子网不能包含其他任何 Azure 资源类型。
@@ -91,9 +117,11 @@ API 管理依赖于多个 Azure 服务。 在包含自定义 DNS 服务器的 VN
 * 使用内部虚拟网络时，只能从 [RFC 1918](https://tools.ietf.org/html/rfc1918) 所述的范围中使用一个内部 IP 地址，不能提供公共 IP 地址。
 * 对于配置了内部虚拟网络的多区域 API 管理部署，用户需负责管理自己的负载均衡，因为 DNS 由他们拥有。
 
+
 ## <a name="related-content"></a>相关内容
-* [使用 Azure 门户创建具有站点到站点 VPN 连接的虚拟网络][使用 Azure 门户创建具有站点到站点 VPN 连接的虚拟网络]
-* [如何使用 API 检查器跟踪 Azure API 管理中的调用][如何使用 API 检查器跟踪 Azure API 管理中的调用]
+* [使用 Vpn 网关将虚拟网络连接到后端][Different topologies to connect to Vpn Gateway]
+* [通过不同的部署模型连接虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
+* [如何使用 API 检查器跟踪 Azure API 管理中的调用](api-management-howto-api-inspector.md)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png
@@ -102,16 +130,16 @@ API 管理依赖于多个 Azure 服务。 在包含自定义 DNS 服务器的 VN
 [api-management-vnet-private]: ./media/api-management-using-with-vnet/api-management-vnet-private.png
 [api-management-vnet-public]: ./media/api-management-using-with-vnet/api-management-vnet-public.png
 
-[启用 VPN 连接]: #enable-vpn
-[连接到 VPN 后面的 Web 服务]: #connect-vpn
-[相关内容]: #related-content
+[Enable VPN connections]: #enable-vpn
+[Connect to a web service behind VPN]: #connect-vpn
+[Related content]: #related-content
+
+[Different topologies to connect to Vpn Gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site
+[UDRs]: ../virtual-network/virtual-networks-udr-overview.md
+[Network Security Group]: ../virtual-network/virtual-networks-nsg.md
 
 
-[使用 Azure 门户创建具有站点到站点 VPN 连接的虚拟网络]: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
-[如何使用 API 检查器跟踪 Azure API 管理中的调用]: api-management-howto-api-inspector.md
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

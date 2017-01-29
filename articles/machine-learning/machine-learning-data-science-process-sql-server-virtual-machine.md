@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/14/2016
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dac57c04453c071279534795464907a67d88a3b0
+ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
+ms.openlocfilehash: 3e565090d751344a8ad3efd6ebdc3f26d5ee55ec
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: dac57c04453c071279534795464907a67d88a3b0
 本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。
 
 > [!NOTE]
-> 本文档中的示例 SQL 语句假定数据在 SQL Server 中。 如果不是这样，请参阅云数据科学过程映射，了解如何将数据移动到 SQL Server。
+> 本文档中的示例 SQL 语句假定数据在 SQL Server 中。 如果不是这样，请参阅云数据科学进程映射，了解如何将数据移到 SQL Server。
 > 
 > 
 
@@ -68,7 +68,7 @@ ms.openlocfilehash: dac57c04453c071279534795464907a67d88a3b0
 > 
 
 ### <a name="a-namesql-countfeatureacount-based-feature-generation"></a><a name="sql-countfeature"></a>生成基于计数的功能
-本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 之后这些新表格可与原始表结合（使用主键列），使其具有原始数据的计数功能。
+以下示例演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 之后这些新表格可与原始表结合（使用主键列），使其具有原始数据的计数功能。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -110,7 +110,7 @@ ms.openlocfilehash: dac57c04453c071279534795464907a67d88a3b0
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-如前面所述，可以进一步使用上述基于位置的功能来生成其他计数功能。 
+如前面所述：可以进一步使用上述基于位置的功能来生成其他计数功能。 
 
 > [!TIP]
 > 可以使用设定语言，以编程方式插入记录。 可能需要以块形式插入数据以提高写入效率（有关如何使用 pyodbc 执行此操作的示例，请参阅[使用 python 访问 SQLServer 的 HelloWorld 示例](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)）。 另一种方法是使用 [BCP 实用工具](https://msdn.microsoft.com/library/ms162802.aspx)将数据插入数据库中。
@@ -125,7 +125,7 @@ ms.openlocfilehash: dac57c04453c071279534795464907a67d88a3b0
 ## <a name="a-namepythonausing-a-programming-language-like-python"></a><a name="python"></a>使用 Python 等编程语言
 如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](machine-learning-data-science-process-data-blob.md)中所述。 需要将数据从数据库加载到 pandas 数据帧，然后才可以进行进一步的处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
 
-以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（替换服务器名、dbname、用户名和密码替换为特定值）：
+以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
 
     #Set up the SQL Azure connection
     import pyodbc    
@@ -150,6 +150,6 @@ Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

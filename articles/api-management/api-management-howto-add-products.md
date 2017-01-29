@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d9c5e52bc42116b03983ed3a9f5b4a7d9e87977
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 1568bbba999018e26493654e0286a6b8d93f3ae7
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 4d9c5e52bc42116b03983ed3a9f5b4a7d9e87977
 
 ![发布者门户][api-management-management-console]
 
-> 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+> 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 > 
 > 
 
@@ -42,7 +42,7 @@ ms.openlocfilehash: 4d9c5e52bc42116b03983ed3a9f5b4a7d9e87977
 
 API 管理中的产品可处于“打开”或“受保护”状态。 必须先订阅受保护的产品，然后才能使用它们，但公开的产品无需订阅即可使用。 选中“需要订阅”创建需要订阅的受保护产品。 此设置为默认设置。
 
-如果希望管理员审查并接受或拒绝此产品的订阅尝试，请选中“需要订阅审批”。 如果未选中此框，则将自动批准订阅尝试。 有关订阅的详细信息，请参阅[查看产品的订户][查看产品的订户]。
+如果希望管理员审查并接受或拒绝此产品的订阅尝试，请选中“需要订阅审批”。 如果未选中此框，则将自动批准订阅尝试。 有关订阅的详细信息，请参阅[查看产品的订户][View subscribers to a product]。
 
 若要允许开发人员帐户多次订阅产品，请选中“允许多个订阅”复选框。 如果未选中此框，则每个开发人员帐户只能订阅产品一次。
 
@@ -98,7 +98,7 @@ API 管理中的产品可处于“打开”或“受保护”状态。 必须先
 
 若要启用或禁用组中对开发人员的产品的可见性，请选中或取消选中组旁边的复选框，然后单击“保存”。
 
-> 有关详细信息，请参阅[如何创建和使用组来管理 Azure API 管理中的开发人员帐户][如何创建和使用组来管理 Azure API 管理中的开发人员帐户]。
+> 有关详细信息，请参阅[如何创建和使用组以管理 Azure API 管理中的开发人员帐户][How to create and use groups to manage developer accounts in Azure API Management]。
 > 
 > 
 
@@ -108,7 +108,7 @@ API 管理中的产品可处于“打开”或“受保护”状态。 必须先
 ![开发人员][api-management-developer-list]
 
 ## <a name="next-steps"> </a>后续步骤
-一旦添加所需的 API 且产品发布，开发人员可以订阅该产品并开始调用 API。 有关演示这些项目以及高级产品配置的教程，请参阅[如何在 Azure API 管理中创建和配置高级产品设置][如何在 Azure API 管理中创建和配置高级产品设置]。
+一旦添加所需的 API 且产品发布，开发人员可以订阅该产品并开始调用 API。 有关演示这些项目以及高级产品配置的教程，请参阅[如何在 Azure API 管理中创建和配置高级产品设置][How create and configure advanced product settings in Azure API Management]。
 
 有关演练产品的详细信息，请参阅以下视频。
 
@@ -116,13 +116,13 @@ API 管理中的产品可处于“打开”或“受保护”状态。 必须先
 > 
 > 
 
-[创建产品]: #create-product
-[将 API 添加到产品]: #add-apis
-[将描述性产品添加到产品]: #add-description
-[发布产品]: #publish-product
-[使产品对开发人员可见]: #make-visible
-[查看产品的订户]: #view-subscribers
-[后续步骤]: #next-steps
+[Create a product]: #create-product
+[Add APIs to a product]: #add-apis
+[Add descriptive information to a product]: #add-description
+[Publish a product]: #publish-product
+[Make a product visible to developers]: #make-visible
+[View subscribers to a product]: #view-subscribers
+[Next steps]: #next-steps
 
 [api-management-management-console]: ./media/api-management-howto-add-products/api-management-management-console.png
 [api-management-add-product]: ./media/api-management-howto-add-products/api-management-add-product.png
@@ -144,16 +144,16 @@ API 管理中的产品可处于“打开”或“受保护”状态。 必须先
 [api-management-]: ./media/api-management-howto-add-products/
 
 
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何创建和发布产品]: api-management-howto-add-products.md
-[创建 API 管理服务实例]: api-management-get-started.md
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
-[后续步骤]: #next-steps
-[如何创建和使用组来管理 Azure API 管理中的开发人员帐户]: api-management-howto-create-groups.md
-[如何在 Azure API 管理中创建和配置高级产品设置]: api-management-howto-product-with-rules.md 
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Next steps]: #next-steps
+[How to create and use groups to manage developer accounts in Azure API Management]: api-management-howto-create-groups.md
+[How create and configure advanced product settings in Azure API Management]: api-management-howto-product-with-rules.md 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

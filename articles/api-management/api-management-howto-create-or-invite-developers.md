@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8ba349a3d247f0d42e869baef456cde2e6ee62b1
+ms.sourcegitcommit: a7ff82a47b4e972db96929acb47fcce760b244b3
+ms.openlocfilehash: eb2e260e71d9ebc3000b440d0413c7d557e15258
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 8ba349a3d247f0d42e869baef456cde2e6ee62b1
 在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南将演示如何进行创建并邀请开发人员使用 API 和产品，您向 API 管理实例提供。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](https://msdn.microsoft.com/library/azure/dn776326.aspx)参考中的[用户实体](https://msdn.microsoft.com/library/azure/dn776330.aspx)文档。
 
 ## <a name="create-developer"> </a>创建新开发人员
-若要创建新开发人员，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这将转到 API 管理发布者门户。 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+若要创建新开发人员，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这将转到 API 管理发布者门户。 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 
 ![发布者门户][api-management-management-console]
 
@@ -40,7 +40,7 @@ ms.openlocfilehash: 8ba349a3d247f0d42e869baef456cde2e6ee62b1
 
 ![新的开发人员][api-management-new-developer]
 
-处于“活动”状态的开发人员帐户可用于访问它们具有订阅的所有 API。 若要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][如何将组与开发人员关联]。
+处于“活动”状态的开发人员帐户可用于访问它们具有订阅的所有 API。 若要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][How to associate groups with developers]。
 
 ## <a name="invite-developer"> </a>邀请开发人员
 若要邀请开发人员，请单击左侧“API 管理“菜单中的“用户”，然后单击“邀请用户”。
@@ -55,7 +55,7 @@ ms.openlocfilehash: 8ba349a3d247f0d42e869baef456cde2e6ee62b1
 
 ![邀请确认][api-management-invite-developer-confirmation]
 
-当邀请一名开发人员时，会将一封电子邮件发送给开发人员。 此电子邮件使用一个模板生成并可自定义。 有关详细信息，请参阅[配置电子邮件模板][配置电子邮件模板]。
+当邀请一名开发人员时，会将一封电子邮件发送给开发人员。 此电子邮件使用一个模板生成并可自定义。 有关详细信息，请参阅[配置电子邮件模板][Configure email templates]。
 
 一旦接受邀请，该帐户将变为活动状态。
 
@@ -79,7 +79,7 @@ ms.openlocfilehash: 8ba349a3d247f0d42e869baef456cde2e6ee62b1
 ![待处理的验证][api-management-pending-verification]
 
 ## <a name="next-steps"> </a>后续步骤
-创建开发人员帐户后，可以将其与角色相关联，并订阅产品和 API。 有关详细信息，请参阅[如何创建和使用组][如何创建和使用组]。
+创建开发人员帐户后，可以将其与角色相关联，并订阅产品和 API。 有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png
@@ -91,21 +91,21 @@ ms.openlocfilehash: 8ba349a3d247f0d42e869baef456cde2e6ee62b1
 [api-management-pending-verification]: ./media/api-management-howto-create-or-invite-developers/api-management-pending-verification.png
 [api-management-view-developer]: ./media/api-management-howto-create-or-invite-developers/api-management-view-developer.png
 [api-management-reset-password]: ./media/api-management-howto-create-or-invite-developers/api-management-reset-password.png
-[]: ./media/api-management-howto-create-or-invite-developers/.png
-
-[创建新开发人员]: #create-developer
-[邀请开发人员]: #invite-developer
-[停用或重新激活开发人员帐户]: #block-developer
-[后续步骤]: #next-steps
-[如何创建和使用组]: api-management-howto-create-groups.md
-[如何将组与开发人员关联]: api-management-howto-create-groups.md#associate-group-developer
-
-[创建 API 管理服务实例]: api-management-get-started.md
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
-[配置电子邮件模板]: api-management-howto-configure-notifications.md#email-templates
 
 
+[Create a new developer]: #create-developer
+[Invite a developer]: #invite-developer
+[Deactivate or reactivate a developer account]: #block-developer
+[Next steps]: #next-steps
+[How to create and use groups]: api-management-howto-create-groups.md
+[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 
-<!--HONumber=Nov16_HO3-->
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Configure email templates]: api-management-howto-configure-notifications.md#email-templates
+
+
+
+<!--HONumber=Dec16_HO3-->
 
 

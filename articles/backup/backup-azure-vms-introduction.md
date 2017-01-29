@@ -13,16 +13,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 12/08/2016
 ms.author: trinadhk; jimpark; markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: e29891dc03f8a864ecacc893fd1cc0d3cc1436cb
-ms.openlocfilehash: f61bba12edc94a55d781ced373d12e7ce4a09818
+ms.sourcegitcommit: a4045fc0fc6e2c263da06ed31a590714e80fb4d4
+ms.openlocfilehash: ac13b82c885720fa6d3d127b8e8dbbace5b09ef5
 
 
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
-本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-vms-prepare.md)，则在开始[备份 VM](backup-azure-vms.md) 之前，请执行此步骤。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
+本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-vms-prepare.md)，则可执行此步骤，然后开始[备份 VM](backup-azure-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Azure 虚拟机备份原理
 当 Azure 备份服务在计划的时间启动备份作业时，它将触发进行时间点快照拍摄所需的备份扩展。 创建此快照时，将借助卷影复制服务 (VSS) 来获取虚拟机中磁盘的一致性快照，不必关闭该虚拟机。
@@ -53,8 +53,8 @@ Azure 备份将在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 
 | 一致性 | 基于 VSS | 解释和详细信息 |
 | --- | --- | --- |
-| 应用程序一致性 |是 |这是适合 Microsoft 工作负荷的理想一致性类型，因为它可以确保：<ol><li> VM 启动。 <li>无数据损坏。 <li>无数据丢失。<li> 对于使用数据的应用程序，数据将保持一致，因为备份时会使用 VSS 将应用程序纳入考虑。</ol> 大多数 Microsoft 工作负荷都有 VSS 写入器，负责执行与数据一致性相关的工作负荷特定操作。 例如，Microsoft SQL Server 的 VSS 编写器可确保正确写入事务日志文件和数据库。<br><br> 对于 Azure VM 备份，获取应用程序一致恢复点意味着备份扩展可以调用 VSS 工作流，并在获取 VM 快照之前正确完成。 当然，这也意味着会调用 Azure VM 中所有应用程序的 VSS 编写器。<br><br>（了解 [VSS 基本信息](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx)，并深入了解其[工作原理](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)详细信息）。 |
-| 文件系统一致性 |是 - 对于基于 Windows 的计算机 |在两种情况下，恢复点可做到文件系统一致：<ul><li>在 Azure 中备份 Linux VM，因为 Linux 没有与 VSS 等效的平台。<li>在 Azure 中备份 Windows VM 时出现 VSS 故障。</li></ul> 在这两种情况下，最佳做法是确保： <ol><li> VM 启动。 <li>无数据损坏。<li>无数据丢失。</ol> 应用程序需要对还原的数据实施自己的“修复”机制。 |
+| 应用程序一致性 |是 |这是适合 Microsoft 工作负荷的理想一致性类型，因为它可以确保：<ol><li> VM *启动*。 <li>无数据损坏。 <li>无数据丢失。<li> 对于使用数据的应用程序，数据将保持一致，因为备份时会使用 VSS 将应用程序纳入考虑。</ol> 大多数 Microsoft 工作负荷都有 VSS 写入器，负责执行与数据一致性相关的工作负荷特定操作。 例如，Microsoft SQL Server 的 VSS 编写器可确保正确写入事务日志文件和数据库。<br><br> 对于 Azure VM 备份，获取应用程序一致恢复点意味着备份扩展可以调用 VSS 工作流，并在获取 VM 快照之前正确完成。 当然，这也意味着会调用 Azure VM 中所有应用程序的 VSS 编写器。<br><br>（了解 [VSS 基本信息](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx)，并深入了解其[工作原理](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)详细信息）。 |
+| 文件系统一致性 |是 - 对于基于 Windows 的计算机 |在两种情况下，恢复点可做到文件系统一致：<ul><li>在 Azure 中备份 Linux VM，因为 Linux 没有与 VSS 等效的平台。<li>在 Azure 中备份 Windows VM 时出现 VSS 故障。</li></ul> 在这两种情况下，最佳做法是确保： <ol><li> VM *启动*。 <li>无数据损坏。<li>无数据丢失。</ol> 应用程序需要对还原的数据实施自己的“修复”机制。 |
 | 崩溃一致性 |否 |这种情况相当于虚拟机“崩溃”（通过软重置或硬重置）。 这通常发生于 Azure 虚拟机在备份期间关闭时。 对于 Azure 虚拟机备份，获取崩溃一致恢复点意味着 Azure 备份不保证存储媒体上的数据一致 - 无论从操作系统还是应用程序的观点来说都一样。 备份时已存在磁盘上的数据才被捕获和备份。 <br/> <br/> 尽管并无十足保证，但大多数情况下操作系统都会启动。 随后通常是运行磁盘检查过程（如 chkdsk）以修复任何损坏错误。 内存中任何未完全刷新到磁盘的数据或写入操作都将丢失。 如果需要执行数据回滚，应用程序通常会接着执行其自身的验证机制。 <br><br>例如，如果事务日志中的条目不在数据库中，则数据库软件将执行回滚，直到数据一致。 当数据分散在多个虚拟磁盘上时（例如跨区卷），崩溃一致恢复点不保证数据的正确性。 |
 
 ## <a name="performance-and-resource-utilization"></a>性能和资源利用率
@@ -92,13 +92,18 @@ Azure 备份将在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 * 快照时间，即触发某个快照所花费的时间。 在接近计划的备份时间时，将会触发快照。
 * 队列等待时间。 由于备份服务要处理来自多个客户的备份，可能不会立即将备份数据从快照复制到备份或恢复服务保管库。 在负载高峰期，由于要处理的备份数过多，等待时间可能会长达 8 小时。 但是，每日备份策略规定的 VM 备份总时间不会超过 24 小时。
 
+## <a name="total-restore-time"></a>总还原时间
+还原操作包括两个主要的子任务：将数据从保管库复制回所选的客户存储帐户和创建虚拟机。 从保管库复制回数据取决于 Azure 中内部存储备份的位置以及存储客户存储帐户的位置。 复制数据所花的时间取决于：
+* 队列等待时间 - 由于服务同时处理来自多个客户的还原，因此还原请求放入队列中。
+* 数据复制时间 - 复制数据的方法与保管库到客户存储帐户的第一次备份过程相似。 如果备份服务需要从保管库写入数据的客户存储帐户已加载，复制时间可能增加。 因此，在还原期间，请确保选择未加载其他应用程序写入和读取的存储帐户，从而优化复制时间。 
+
 ## <a name="best-practices"></a>最佳实践
 建议在为虚拟机配置备份时遵循以下做法：
 
-* 请勿计划同时备份同一云服务中的 4 个以上经典 VM。 如果要备份同一云服务中的多个 VM，建议将备份开始时间错开一小时。
-* 请勿计划同时备份超出 40 个由 Resource Manager 部署的 VM。
+* 请勿计划同时备份同一云服务中的 10 个以上经典 VM。 如果要备份同一云服务中的多个 VM，建议将备份开始时间错开一小时。
+* 请勿计划同时备份 40 个以上 VM。
 * 在非高峰期安排 VM 备份，以便备份服务使用 IOPS 将数据从客户存储帐户传输到备份或恢复服务保管库。
-* 确保策略可处理分布于不同存储帐户的 VM。 单个策略所保护的来自单个存储帐户的磁盘总数不应超过 20 个。 如果一个存储帐户中有超过 20 个磁盘，请将这些 VM 分配到多个策略，以获取备份过程传输阶段所需的 IOPS。
+* 确保策略在分布于不同存储帐户的 VM 上应用。 同一个备份计划所保护的来自单个存储帐户的磁盘总数不应超过 20 个。 如果一个存储帐户中有超过 20 个磁盘，请将这些 VM 分配到多个策略，以获取备份过程传输阶段所需的 IOPS。
 * 请勿将高级存储上运行的 VM 还原到同一存储帐户。 如果还原操作过程和备份操作同时进行，将减少备份的可用 IOPS。
 * 建议在不同的高级存储帐户上运行每个高级 VM，以此来确保最佳备份性能。
 
@@ -136,6 +141,6 @@ Azure 备份将在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

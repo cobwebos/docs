@@ -12,25 +12,25 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 3d78af41bbe13bcec9336452110a857d114ad006
 
 
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 在 Azure API 管理中，策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包括从 XML 到 JSON 的格式转换，并调用速率限制来限制从一名开发人员的传入调用。 许多策略开箱即用。
 
-请参阅[策略参考][策略参考]，了解策略语句的完整列表及其设置。
+请参阅[策略参考][Policy Reference]了解政策说明完整列表及其设置。
 
 策略在网关内部应用，该网关位于 API 使用者和托管 API 之间。 该网关接收所有请求，并通常将其原封不动地转发到基础 API。 但是策略可以将更改应用于入站的请求和出站响应。
 
-在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流][控制流]和[设置变量][设置变量]策略）基于策略表达式。 有关详细信息，请参阅[高级策略][高级策略]和[Policy expressions][Policy expressions]。
+在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流][Control flow]和[设置变量][Set variable]策略）基于策略表达式。 有关详细信息，请参阅[高级策略][Advanced policies]和[策略表达式][Policy expressions]。
 
 ## <a name="scopes"> </a>如何配置策略
-可在全局范围内配置策略，也可在[产品][产品]范围、[API][API] 范围或[操作][操作]范围内配置。 若要配置策略，请导航到发布服务器门户中的策略编辑器。
+可在全局范围内配置策略或[产品][Product]的范围、[API][API] 或[操作][Operation]。 若要配置策略，请导航到发布服务器门户中的策略编辑器。
 
 ![策略菜单][policies-menu]
 
@@ -55,11 +55,11 @@ ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
 单击启用的语句将在定义视图中的光标位置添加相应的 XML。 
 
 > [!NOTE]
-> 如果无法启用要添加的策略，请确保为该策略设置的范围是正确的。 每个策略语句都设计有特定的使用范围，需在特定的策略部分使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][策略参考]中该策略的“用法”部分。
+> 如果无法启用要添加的策略，请确保为该策略设置的范围是正确的。 每个策略语句都设计有特定的使用范围，需在特定的策略部分使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][Policy Reference]中该策略的“用法”部分。
 > 
 > 
 
-策略语句的完整列表及其设置在[策略参考][策略参考]中提供。
+[策略参考][Policy Reference]提供策略语句的完整列表以及其设置。
 
 例如，若要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。
 
@@ -67,16 +67,20 @@ ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
 
 这会将 XML 代码片段添加到 `inbound` 元素，提供如何配置该语句的指导。
 
-    <ip-filter action="allow | forbid">
-        <address>address</address>
-        <address-range from="address" to="address"/>
-    </ip-filter>
+```xml
+<ip-filter action="allow | forbid">
+    <address>address</address>
+    <address-range from="address" to="address"/>
+</ip-filter>
+```
 
 要限制入站请求并接受来自 IP 地址 1.2.3.4 的那些，请修改 XML，如下所示：
 
-    <ip-filter action="allow">
-        <address>1.2.3.4</address>
-    </ip-filter>
+```xml
+<ip-filter action="allow">
+    <address>1.2.3.4</address>
+</ip-filter>
+```
 
 ![保存][policies-save]
 
@@ -85,21 +89,23 @@ ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
 ## <a name="sections"> </a>了解策略配置
 策略是一系列按请求和响应顺序执行的语句。 配置相应地划分为 `inbound`、`backend`、`outbound` 和 `on-error` 部分，如以下配置所示。
 
-    <policies>
-      <inbound>
-        <!-- statements to be applied to the request go here -->
-      </inbound>
-      <backend>
-        <!-- statements to be applied before the request is forwarded to 
-             the backend service go here -->
-      </backend>
-      <outbound>
-        <!-- statements to be applied to the response go here -->
-      </outbound>
-      <on-error>
-        <!-- statements to be applied if there is an error condition go here -->
-      </on-error>
-    </policies> 
+```xml
+<policies>
+  <inbound>
+    <!-- statements to be applied to the request go here -->
+  </inbound>
+  <backend>
+    <!-- statements to be applied before the request is forwarded to 
+         the backend service go here -->
+  </backend>
+  <outbound>
+    <!-- statements to be applied to the response go here -->
+  </outbound>
+  <on-error>
+    <!-- statements to be applied if there is an error condition go here -->
+  </on-error>
+</policies> 
+```
 
 如果在处理请求的过程中出错，则会忽略 `inbound`、`backend` 或 `outbound` 部分的其余步骤，跳到 `on-error` 部分执行相关语句。 将策略语句置于 `on-error` 部分以后，即可使用 `context.LastError` 属性查看错误、使用 `set-body` 策略检查和自定义错误响应，以及配置发生错误时的应对措施。 错误代码可针对内置步骤，也可针对在处理策略语句的过程中会发生的错误。 有关详细信息，请参阅 [Error handling in API Management policies](https://msdn.microsoft.com/library/azure/mt629506.aspx)（API 管理策略中的错误处理）。
 
@@ -116,13 +122,15 @@ ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
 
 例如，如果在全局级别有一个策略并且为 API 配置了一个策略，则只要使用该特定 API，这两种策略都将被应用。 API 管理允许通过基础元素实现组合策略声明的确定性排序。 
 
-    <policies>
-        <inbound>
-            <cross-domain />
-            <base />
-            <find-and-replace from="xyz" to="abc" />
-        </inbound>
-    </policies>
+```xml
+<policies>
+    <inbound>
+        <cross-domain />
+        <base />
+        <find-and-replace from="xyz" to="abc" />
+    </inbound>
+</policies>
+```
 
 在上述示例策略定义中，`cross-domain` 语句将在执行任何更高版本的策略前执行，之后是 `find-and-replace` 策略。
 
@@ -137,15 +145,15 @@ ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
 > 
 > 
 
-[策略参考]: api-management-policy-reference.md
-[产品]: api-management-howto-add-products.md
+[Policy Reference]: api-management-policy-reference.md
+[Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md#add-apis 
-[操作]: api-management-howto-add-operations.md
+[Operation]: api-management-howto-add-operations.md
 
-[高级策略]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[控制流]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[设置变量]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx（策略表达式）
+[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
+[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
+[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
+[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
 
 [policies-menu]: ./media/api-management-howto-policies/api-management-policies-menu.png
 [policies-editor]: ./media/api-management-howto-policies/api-management-policies-editor.png
@@ -157,6 +165,6 @@ ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

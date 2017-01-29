@@ -12,27 +12,27 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: d99e2d885d56e3752a3b1caf51e52c801acaab52
-ms.openlocfilehash: 98201867fd8b1b5f074aa6135e04b04faf384224
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 62a69761575d4d0afdc58e43117407c2c0ca916f
 
 
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 API 管理多区域部署，该部署可使 API 发布者在任意数量的所需 Azure 区域中分配单个 API 管理服务。 这有助于减少地理上分散的 API 使用者所感知的请求延迟，并且还改善其中一个区域处于离线状态时的服务可用性。 
 
-最初创建 API 管理服务时，它只包含一个[单位][单位]，并且驻留在单个 Azure 区域中，该区域指定为主要区域。 可通过 Azure 门户轻松添加其他区域。 API 管理网关服务器部署到每个区域，并且调用流量将路由到最近的网关。 如果一个区域处于离线状态，则传入流量自动重定向到下一个最近的网关。 
+最初创建 API 管理服务时，它只包含一个[单位][unit]，并且驻留在单个 Azure 区域中（该区域指定为主要区域）。 可通过 Azure 门户轻松添加其他区域。 API 管理网关服务器部署到每个区域，并且调用流量将路由到最近的网关。 如果一个区域处于离线状态，则传入流量自动重定向到下一个最近的网关。 
 
 > [!IMPORTANT]
-> 多区域部署仅在**[高级][高级]**层中可用。
+> 多区域部署仅在**[高级][Premium]**层中可用。
 > 
 > 
 
 ## <a name="add-region"> </a>将 API 管理服务实例部署到新区域
 > [!NOTE]
-> 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+> 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 > 
 > 
 
@@ -70,18 +70,18 @@ API 管理多区域部署，该部署可使 API 发布者在任意数量的所�
 [api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
 [api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
-[创建 API 管理服务实例]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: api-management-get-started.md
 
-[将 API 管理服务实例部署到新区域]: #add-region
-[从区域中删除 API 管理服务实例]: #remove-region
+[Deploy an API Management service instance to a new region]: #add-region
+[Delete an API Management service instance from a region]: #remove-region
 
-[单位]: http://azure.microsoft.com/pricing/details/api-management/
-[高级]: http://azure.microsoft.com/pricing/details/api-management/
-
-
+[unit]: http://azure.microsoft.com/pricing/details/api-management/
+[Premium]: http://azure.microsoft.com/pricing/details/api-management/
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Dec16_HO3-->
 
 

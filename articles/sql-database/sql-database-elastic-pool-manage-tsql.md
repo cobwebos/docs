@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 4e288e17-bc3e-4255-9fbe-0a2ac0dbd7dd
 ms.service: sql-database
-ms.custom: sharded databases pool; how to
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,12 +16,12 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 17ec1ad8218824048179e32ae5059b6a6d77a367
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: 9688c3b402b7961675e06e804a68ff454126d5f3
 
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-transact-sql"></a>使用 Transact-SQL 监视和管理弹性数据库池
+# <a name="monitor-and-manage-an-elastic-pool-with-transact-sql"></a>使用 Transact-SQL 监视和管理弹性池
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -74,16 +74,16 @@ ms.openlocfilehash: 17ec1ad8218824048179e32ae5059b6a6d77a367
     ORDER BY end_time DESC;
 
 ## <a name="get-resource-usage-for-an-elastic-database"></a>获取弹性数据库的资源使用情况
-使用 [sys.dm\_ db\_ resource\_stats 视图](https://msdn.microsoft.com/library/dn800981.aspx)或 [sys.resource \_stats 视图](https://msdn.microsoft.com/library/dn269979.aspx)来检查弹性池中数据库的资源使用情况统计信息。 此过程类似于查询任何单一数据库的资源使用情况。
+使用 [sys.dm\_ db\_ resource\_stats 视图](https://msdn.microsoft.com/library/dn800981.aspx)或 [sys.resource \_stats 视图](https://msdn.microsoft.com/library/dn269979.aspx)来检查弹性池中数据库的资源使用情况统计信息。 此过程类似于查询单一数据库的资源使用情况。
 
 ## <a name="next-steps"></a>后续步骤
-创建弹性数据库池后，你可以通过创建弹性作业来管理池中的弹性数据库。 弹性作业可以用来根据池中数据库的数目来运行 T-SQL 脚本。 有关详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
+创建弹性池后，你可以通过创建弹性作业来管理池中的弹性数据库。 弹性作业可以用来根据池中数据库的数目来运行 T-SQL 脚本。 有关详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
 
 请参阅[使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)：使用弹性数据库工具扩展、移动数据、查询或创建事务。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

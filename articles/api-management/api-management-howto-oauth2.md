@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 8650ad41d1d6ef3ee94c2792f435b84676a72d27
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
 ![发布者门户][api-management-management-console]
 
 > [!NOTE]
-> 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+> 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 > 
 > 
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
 
 输入“授权终结点 URL”。 对于 Azure Active Directory，此 URL 将类似于以下 URL，其中 `<client_id>` 将替换为客户端 ID，用于向 OAuth 2.0 服务器标识应用程序。
 
-    https://login.windows.net/<client_id>/oauth2/authorize
+`https://login.windows.net/<client_id>/oauth2/authorize`
 
 “授权请求方法”指定如何向 OAuth 2.0 服务器发送授权请求。 默认选择 **GET**。
 
@@ -76,7 +76,7 @@ ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
 
 对于 Azure Active Directory OAuth 2.0 服务器，“令牌终结点 URL”将具有如下格式，其中 `<APPID>` 的格式为 `yourapp.onmicrosoft.com`。
 
-    https://login.windows.net/<APPID>/oauth2/token
+`https://login.windows.net/<APPID>/oauth2/token`
 
 “客户端身份验证方法”的默认设置为“基本”，“访问令牌发送方法”为“Authorization 标头”。 这些值以及“默认范围”在窗体的此部分配置。
 
@@ -155,28 +155,28 @@ ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 
 
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何添加并发布产品]: api-management-howto-add-products.md
-[监视和分析]: api-management-monitoring.md
-[向产品添加 API]: api-management-howto-add-products.md#add-apis
-[发布产品]: api-management-howto-add-products.md#publish-product
-[创建 API 管理服务实例]: api-management-get-started.md
-[API 管理策略参考]: api-management-policy-reference.md
-[缓存策略]: api-management-policy-reference.md#caching-policies
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: api-management-get-started.md
+[API Management policy reference]: api-management-policy-reference.md
+[Caching policies]: api-management-policy-reference.md#caching-policies
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
-[先决条件]: #prerequisites
-[在 API 管理中配置 OAuth 2.0 授权服务器]: #step1
-[配置 API 以使用 OAuth 2.0 用户授权]: #step2
-[在开发人员门户中测试 OAuth 2.0 用户授权]: #step3
-[后续步骤]: #next-steps
+[Prerequisites]: #prerequisites
+[Configure an OAuth 2.0 authorization server in API Management]: #step1
+[Configure an API to use OAuth 2.0 user authorization]: #step2
+[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Next steps]: #next-steps
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

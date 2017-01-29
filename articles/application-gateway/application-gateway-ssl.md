@@ -4,7 +4,7 @@ description: "本文提供有关使用 Azure 经典部署模型创建支持 SSL 
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 63f28d96-9c47-410e-97dd-f5ca1ad1b8a4
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1cb291817462a2af59a17693a29b8667750c877f
-ms.openlocfilehash: b4fc6b09069022967b572327647dd5d848712932
+ms.sourcegitcommit: 1506729fb346a8a67930a5a2cd4c15f375c52e3f
+ms.openlocfilehash: 0f565431f03527c4fac463f93c5664504a90662f
 
 
 ---
@@ -26,8 +26,6 @@ ms.openlocfilehash: b4fc6b09069022967b572327647dd5d848712932
 > * [Azure 门户](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-ssl.md)
-> 
-> 
 
 可将 Azure 应用程序网关配置为在网关上终止安全套接字层 (SSL) 会话，以避免 Web 场中出现开销较高的 SSL 解密任务。 SSL 卸载还简化了 Web 应用程序的前端服务器设置与管理。
 
@@ -92,8 +90,6 @@ State..........: Provisioned
 
 > [!NOTE]
 > 证书密码的长度必须是 4 到 12 个字符，可包含字母或数字。 不接受特殊字符。
-> 
-> 
 
 ## <a name="configure-the-gateway"></a>配置网关
 
@@ -218,6 +214,6 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e63da27c70ed171251cef21a361e04c6c0641fc8
+ms.sourcegitcommit: e6c45f4be168cef1a05958624f666097779e76f6
+ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
 
 
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据 | Microsoft Azure
+# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据
 本文档介绍如何构建分区表来快速将数据并行批量导入 SQL Server 数据库。 若要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>创建一个新数据库和一组文件组
 * [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）
 * 将数据库文件组添加到将保存已分区物理文件的数据库
   
-  注意：该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成。
+  该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成
 * 向每个数据库文件组中添加一个或多个文件（根据需要）
   
   > [!NOTE]
@@ -76,7 +76,7 @@ ms.openlocfilehash: e63da27c70ed171251cef21a361e04c6c0641fc8
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  提示：若要根据函数/方案验证每个分区中的有效范围，请运行以下查询：
+  若要根据函数/方案验证每个分区中的有效范围，请运行以下查询：
   
         SELECT psch.name as PartitionScheme,
             prng.value AS ParitionValue,
@@ -185,6 +185,6 @@ ms.openlocfilehash: e63da27c70ed171251cef21a361e04c6c0641fc8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

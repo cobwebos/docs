@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: aee1ef8c4275f64865ff830739fc818d6bf02bd2
+ms.sourcegitcommit: 09554b64f31c909e413f5a93dfd6d74186bf6e21
+ms.openlocfilehash: b9e49d3637b3e3aff1a89e57c125a59877544e01
 
 
 ---
@@ -124,7 +124,7 @@ npm install
 祝贺你！ 你已成功为 Pi 创建了第一个示例应用程序。
 
 ## <a name="deploy-and-run-the-sample-application"></a>部署并运行示例应用程序
-### <a name="install-nodejs-and--on-pi"></a>在 Pi 上安装 Node.js 和 NPM
+### <a name="install-nodejs-and-npm-on-pi"></a>在 Pi 上安装 Node.js 和 NPM
 通过运行以下命令在 Pi 上安装 Node.js 和 NPM：
 
 ```bash
@@ -153,6 +153,6 @@ gulp deploy && gulp run
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

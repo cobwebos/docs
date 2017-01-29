@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 126fd84259c604785cdd5db0543f78539c1db9c7
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: b69c8e918bb0380a10b1505fbf9792e284149de0
 
 
 ---
@@ -28,10 +28,10 @@ API 和它们的操作可以使用以下格式导入。
 * WADL
 * Swagger
 
-本指南演示如何创建一个新的 API，并在一个步骤中导入它。 有关手动创建一个 API 和添加操作的信息，请参阅[如何创建 API][如何创建 API] 和[如何将操作添加到 API][如何将操作添加到 API]。
+本指南演示如何创建一个新的 API，并在一个步骤中导入它。 有关手动创建一个 API 和添加操作的信息，请参阅[如何创建 API][How to create APIs]和[如何将操作添加到 API][How to add operations to an API]。
 
 ## <a name="import-api"> </a>导入 API
-API 在发布者门户中创建并发布。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+API 在发布者门户中创建并发布。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 
 ![发布者门户][api-management-management-console]
 
@@ -73,8 +73,8 @@ API 在发布者门户中创建并发布。 若要访问发布者门户，请在
 ## <a name="next-steps"> </a>后续步骤
 API 创建并导入操作后，您可以查看和配置任何其他设置，将 API 添加到一种产品并将其发布，这样就可提供给开发人员。 有关详细信息，请参阅下面的指南。
 
-* [如何配置 API 设置][如何配置 API 设置]
-* [如何创建和发布产品][如何创建和发布产品]
+* [如何配置 API 设置][How to configure API settings]
+* [如何创建和发布产品][How to create and publish a product]
 
 [api-management-management-console]: ./media/api-management-howto-import-api/api-management-management-console.png
 [api-management-import-apis]: ./media/api-management-howto-import-api/api-management-api-import-apis.png
@@ -82,21 +82,21 @@ API 创建并导入操作后，您可以查看和配置任何其他设置，将 
 [api-management-export-api]: ./media/api-management-howto-import-api/api-management-export-api.png
 [api-management-export-api-format]: ./media/api-management-howto-import-api/api-management-export-api-format.png
 
-[导入 API]: #import-api
-[导出 API]: #export-api
-[配置 API 设置]: #configure-api-settings
-[后续步骤]: #next-steps
+[Import an API]: #import-api
+[Export an API]: #export-api
+[Configure API settings]: #configure-api-settings
+[Next steps]: #next-steps
 
-[创建 API 管理服务实例]: api-management-get-started.md
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何创建和发布产品]: api-management-howto-add-products.md
-[如何创建 API]: api-management-howto-create-apis.md
-[如何配置 API 设置]: api-management-howto-create-apis.md#configure-api-settings
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
+[How to create APIs]: api-management-howto-create-apis.md
+[How to configure API settings]: api-management-howto-create-apis.md#configure-api-settings
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

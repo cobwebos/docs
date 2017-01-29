@@ -12,23 +12,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2016
+ms.date: 12/20/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: f1d7df6163336cd66600dc22ff72a2bc1f29a1d5
-ms.openlocfilehash: 138ac79846a2e7d0ae4af59ce13b6d36cce05047
+ms.sourcegitcommit: 55c988bf74ff0f2e519e895a735dc68f3dc99855
+ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
 
 ---
 
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据推送到 Azure 搜索索引
 本文介绍如何使用“复制活动”将数据从数据工厂服务支持的本地数据存储推送到 Azure 搜索索引。 [支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表的“源”列中列出了支持的源数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
 
-Azure 数据工厂当前仅支持将数据从[支持的本地源数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)移动到 Azure 搜索。 不支持将数据从 Azure 搜索移动到其他数据存储。
-
 ## <a name="enabling-connectivity"></a>启用连接
-若要允许数据工厂服务连接到本地数据存储，需在本地环境中安装数据管理网关。 可在托管源数据存储的同一计算机上安装网关，或者在不同计算机上安装以避免与数据存储争用资源。 
+若要允许数据工厂服务连接到本地数据存储，需在本地环境中安装数据管理网关。 可在托管源数据存储的同一计算机上安装网关，或者在不同计算机上安装以避免与数据存储争用资源。
 
-数据管理网关以安全和托管的方式将本地数据源连接到云服务。 有关数据管理网关的详细信息，请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 
+数据管理网关以安全和托管的方式将本地数据源连接到云服务。 有关数据管理网关的详细信息，请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 ## <a name="copy-data-wizard"></a>复制数据向导
 若要创建可将数据从任何支持的源数据存储复制到 Azure 搜索的管道，最简单的方法是使用复制数据向导。 有关快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
@@ -45,14 +43,14 @@ Azure 数据工厂当前仅支持将数据从[支持的本地源数据存储](da
 4.  [AzureSearchIndex](#azure-search-index-dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 4.  包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) 和 [AzureSearchIndexSink](#azure-search-index-sink-properties)。
 
-本示例每小时将时间序列数据从本地 SQL Server 数据库复制到 Azure 搜索索引。 此示例中使用的 JSON 属性会在示例后的各部分进行说明。 
+本示例每小时将时间序列数据从本地 SQL Server 数据库复制到 Azure 搜索索引。 此示例中使用的 JSON 属性会在示例后的各部分进行说明。
 
 第一步，在本地计算机上设置数据管理网关。 有关说明，请参考[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 **Azure 搜索链接服务：**
 
 ```JSON
-{   
+{
     "name": "AzureSearchLinkedService",
     "properties": {
         "type": "AzureSearch",
@@ -182,6 +180,19 @@ Azure 数据工厂当前仅支持将数据从[支持的本地源数据存储](da
 }
 ```
 
+如果要将数据从云数据存储复制到 Azure 搜索中，则 `executionLocation` 属性是必需的。 下面显示在“复制活动 `typeProperties`”下所需的更改作为示例。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
+
+```JSON
+"typeProperties": {
+  "source": {
+    "type": "BlobSource"
+  },
+  "sink": {
+    "type": "AzureSearchIndexSink"
+  },
+  "executionLocation": "West US"
+}
+```
 
 ## <a name="azure-search-linked-service-properties"></a>Azure 搜索链接服务属性
 
@@ -210,7 +221,7 @@ Azure 数据工厂当前仅支持将数据从[支持的本地源数据存储](da
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。| 合并（默认值）<br/>上载| 否 | 
+| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。| 合并（默认值）<br/>上载| 否 |
 | WriteBatchSize | 缓冲区大小达到 writeBatchSize 时将数据上传到 Azure 搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。 | 1 到 1,000。 默认值为 1000。 | 否 |
 
 ### <a name="writebehavior-property"></a>WriteBehavior 属性
@@ -226,22 +237,37 @@ AzureSearchSink（通过使用 AzureSearch SDK）提供以下两种 upsert 行�
 ### <a name="writebatchsize-property"></a>WriteBatchSize 属性
 Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个操作。 每个操作处理一个文档以执行上传/合并操作。
 
-### <a name="data-type-support"></a>数据类型支持 
-下表指定是否支持某个 Azure 搜索数据类型。 
+### <a name="data-type-support"></a>数据类型支持
+下表指定是否支持某个 Azure 搜索数据类型。
 
 | Azure 搜索数据类型 | 在 Azure 搜索接收器中受到支持 |
 | ---------------------- | ------------------------------ |
-| String | Y | 
+| String | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
 | 布尔 | Y |
-| DataTimeOffset | Y | 
-| String Array | N | 
+| DataTimeOffset | Y |
+| String Array | N |
 | GeographyPoint | N |
 
+## <a name="copy-from-a-cloud-source"></a>从云源复制
+如果要将数据从云数据存储复制到 Azure 搜索中，则 `executionLocation` 属性是必需的。 下面显示在“复制活动 `typeProperties`”下所需的更改作为示例。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
+
+```JSON
+"typeProperties": {
+  "source": {
+    "type": "BlobSource"
+  },
+  "sink": {
+    "type": "AzureSearchIndexSink"
+  },
+  "executionLocation": "West US"
+}
+```
+
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形数据集的结构定义
-数据集 JSON 中的结构部分是矩形表（包括行与列）的**可选**部分，其中包含该表的列集合。 结构部分用于提供类型转换的类型信息或执行列映射。 以下部分更详细说明了这些功能。 
+数据集 JSON 中的结构部分是矩形表（包括行与列）的**可选**部分，其中包含该表的列集合。 结构部分用于提供类型转换的类型信息或执行列映射。 以下部分更详细说明了这些功能。
 
 每个列包含以下属性：
 
@@ -255,7 +281,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 以下示例演示包含三个列（`userid`、`name` 和 `lastlogindate`）的表的结构部分 JSON。
 
 ```JSON
-"structure": 
+"structure":
 [
     { "name": "userid"},
     { "name": "name"},
@@ -264,27 +290,27 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 ```
 若要了解何时加入“结构”信息以及在**结构**部分包含哪些信息，请遵循以下指南。
 
-- 对于存储数据架构、类型信息和数据本身的**结构化数据源**（例如：SQL Server、Oracle、Azure 表等）：仅在将特定源列映射到接收器中的特定列且其名称不相同时，才指定“结构”部分。 请参阅列映射部分，了解详细信息。 
+- 对于存储数据架构、类型信息和数据本身的**结构化数据源**（例如：SQL Server、Oracle、Azure 表等）：仅在将特定源列映射到接收器中的特定列且其名称不相同时，才指定“结构”部分。 请参阅列映射部分，了解详细信息。
 
     如前所述，“结构”部分中的类型信息可选。 对于结构化源，类型信息可用作数据存储中数据集定义的一部分，因此包含“结构”部分时不应包含类型信息。
 - **对于读取数据源（尤其是 Azure Blob）的架构**：可以选择存储数据但不存储有关数据的任何架构或类型信息。 对于这些类型的数据源，应在以下两种情况中包含“结构”：
     - 将源列映射到接收器列。
     - 数据集是复制活动的源时，可在“结构”中提供类型信息。 数据工厂使用此类型信息以便转换为接收器的本机类型。 有关详细信息，请参阅[将数据移入和移出 Azure Blob](data-factory-azure-blob-connector.md) 一文。
 
-### <a name="supported-net-based-types"></a>支持的基于 .NET 的类型 
+### <a name="supported-net-based-types"></a>支持的基于 .NET 的类型
 数据工厂支持使用以下符合 CLS 标准、基于 .NET 的类型值在“结构”中为读取数据源（如 Azure Blob）的架构提供类型信息。
 
 - Int16
-- Int32 
+- Int32
 - Int64
 - Single
 - Double
 - 小数
 - Bool
-- String 
+- String
 - Datetime
 - Datetimeoffset
-- Timespan 
+- Timespan
 
 对于 Datetime 和 Datetimeoffset，可以选择性地指定“culture”和“format”字符串来帮助分析自定义的 Datetime 字符串。 请参阅下面部分有关类型转换的示例：
 
@@ -298,12 +324,12 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 若要了解影响数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章： 
+请参阅以下文章：
 
-* [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，了解创建包含复制活动的管道的分步说明。 
+* [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，了解创建包含复制活动的管道的分步说明。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 
