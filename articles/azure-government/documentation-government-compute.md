@@ -1,14 +1,13 @@
 ---
 title: "Azure 政府版计算 | Microsoft Docs"
 description: "这里提供了针对 Azure 政府版的应用程序开发使用到的功能和指南对比"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: fb11f60c-5a70-46a9-82a0-abb2a4f4239b
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na

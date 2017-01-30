@@ -65,8 +65,8 @@ Service Fabric 不在 OS X 本机上运行。为了运行本地 Service Fabric �
   
    此步骤包括：下载预配置的 VM 映像，在本地启动它，然后在其中设置本地 Service Fabric 群集。 完成此步骤预计需要几分钟的时间。 如果成功完成安装，输出中会出现一条消息，指示群集正在启动。
    
-
     ![群集安装将在 VM 设置后启动][cluster-setup-script]
+    
 5. 导航到 http://192.168.50.50:19080/Explorer 的 Service Fabric Explorer（假设保留了默认的专用网络 IP 地址），测试是否已正确安装群集。
 
     ![从主机 Mac 查看的 Service Fabric Explorer][sfx-mac]
