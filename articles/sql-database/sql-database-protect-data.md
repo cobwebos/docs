@@ -116,12 +116,12 @@ SQL 数据库威胁检测除审核之外，还提供额外的安全层。 通过
 ## <a name="compliance"></a>合规性
 除了上述可帮助应用程序符合各项安全法规要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，你可以从中找到 [SQL 数据库法规认证](https://azure.microsoft.com/support/trust-center/services/)的最新列表。
 
+
 ## <a name="next-steps"></a>后续步骤
 
 - 有关所有 SQL 数据库安全功能的概述，请参阅 [SQL 安全概述](sql-database-security-overview.md)。
 - 有关使用 SQL 数据库中的访问控制功能的介绍，请参阅[控制访问](sql-database-control-access.md)。
 - 有关主动监视的介绍，请参阅 [SQL 数据库审核入门](sql-database-auditing-get-started.md)和 [SQL 数据库威胁检测入门](sql-database-threat-detection-get-started.md)。
-
 
 
 
