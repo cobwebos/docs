@@ -17,8 +17,8 @@ ms.workload: NA
 ms.date: 11/22/2016
 ms.author: carlrab; sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 92a2cca71380ac609e900d223908eda1a40be635
-ms.openlocfilehash: 17de9fd999b904b66c4e9d574fb4754069ae133a
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 8b13faf1f6cdac355cc4d22b825cc2362a50e8f9
 
 
 ---
@@ -69,6 +69,14 @@ Azure SQL 数据库的长期保留按 [Azure 备份服务定价费率](https://a
 
 在 Azure SQL 数据库服务器边栏选项卡上，可配置长期保留并根据需要创建 Azure 恢复服务保管库。
 
+- 若要在 Azure 恢复服务保管库中配置自动备份的长期保留，请参阅[配置长期备份保留](sql-database-configure-long-term-retention.md)
+- 若要从长期保留的备份中恢复数据库，请参阅[从长期保留的备份中恢复](sql-database-restore-from-long-term-retention.md)
+- 若要查看 Azure 恢复服务保管库中的备份，请参阅[查看长期保留的备份](sql-database-view-backups-in-vault.md)
+
+> [!TIP]
+> 有关教程，请参阅[数据保护和恢复的备份和还原入门](sql-database-get-started-backup-recovery.md)
+>
+
 ## <a name="configuring-long-term-retention-using-powershell"></a>使用 PowerShell 配置长期保留
 
 通过以下步骤，使用 PowerShell 配置长期保留。
@@ -102,7 +110,7 @@ Azure SQL 数据库的长期保留按 [Azure 备份服务定价费率](https://a
    #for your database you can select any policy created in the vault with which your server is registered
    Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy –ResourceGroupName 'RG1' –ServerName 'Server1' -DatabaseName 'DB1' -State 'enabled' -ResourceId $policy.Id
    ```
-5. 列出与保管库关联的服务器。 每个服务器都与保管库中的特定容器关联。 可通过运行以下命令列出已注册的服务器。
+5. 列出与保管库关联的服务器。 每个服务器都与保管库中的特定容器关联。 可通过运行以下命令列出已注册的服务器：
    
    ```
    #each server has an associated container in the vault
@@ -193,25 +201,25 @@ Azure SQL 数据库的长期保留按 [Azure 备份服务定价费率](https://a
 ## <a name="long-term-retention-faq"></a>长期保留常见问题解答：
 
 1. 问：可否手动删除保管库中的特定备份？
-   答：目前不可以，保管库将在保留期到期后自动清理备份。
+   答：目前不可以，保管库会在保留期到期后自动清理备份。
 2. 问：可否将服务器注册为将备份存储到多个存储库？
-   答：不可以，目前，在同一时间只能将备份存储到 1 个保管库。
+   答：不可以，目前，在同一时间只能将备份存储到一个保管库。
 3. 问：保管库和服务器可否位于不同订阅中？
    答：不可以，目前，保管库和服务器必须位于相同的订阅和资源组中。
 4. 问：可否使用在服务器所在区域之外创建的保管库？
    答：不可以，保管库和服务器必须位于同一区域，以便尽量减少复制时间、节省流量费。
-5. 问：1 个保管库中可存储多少个数据库？
+5. 问：一个保管库中可存储多少个数据库？
    答：目前，每个保管库仅支持至多 1000 个数据库。 
 6. 问： 每个订阅可创建多少保管库？答：每个订阅最多可创建 25 个保管库。
 7. 问： 每个保管库每天可配置多少个数据库？答：每个保管库每天只能设置 200 个数据库。
-8. 问：长期保留可否用于于弹性数据库池？
+8. 问：长期保留可否用于弹性池？
    答：是的。 可为池中任意数据库配置保留策略。
 9. 问：可否选择创建备份的时间？
-   答：不可以，由 SQL 数据库控制备份计划，以便尽量减少对数据库性能的影响。
-10. 问：我为数据库启用了 TDE。 可否从保管库将其还原？答：可以，支持 TDE。 即使原始数据库不复存在，也可从保管库还原该数据库。
+   答：不可以，由 SQL 数据库控制备份计划，以尽量减少对数据库性能的影响。
+10. 问：我为数据库启用了 TDE。 可否将 TDE 与保管库配合使用？答：可以，支持 TDE。 即使原始数据库不复存在，也可从保管库还原该数据库。
 11. 问： 如果订阅被挂起，保管库中的备份会出现什么情况？答：如果订阅被挂起，将保留现有数据库和备份，但不会将新的备份复制到保管库。 重新激活订阅后，该服务会继续将备份复制到保管库。 使用订阅挂起前复制到保管库的备份的还原操作可访问保管库。 
 12. 问：可否访问 SQL 数据库备份文件，以便下载/还原到 SQL Server？
-   答：目前不行。
+   答：目前不可以。
 13. 问：SQL 保留策略中可否存在多个计划（日计划、周计划、月计划、年计划）？
    答：不可以，目前这仅适用于虚拟机备份。
 
@@ -221,6 +229,6 @@ Azure SQL 数据库的长期保留按 [Azure 备份服务定价费率](https://a
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 0e947e0eaa6755f499860d5ce6d8bf354bc7eca4
-ms.openlocfilehash: 35a281cf40cc5bb0a23c17990438ba696b22bc54
+ms.sourcegitcommit: 91474f61ab724d3fd7a70c51dcd097fade8953dd
+ms.openlocfilehash: 3789079412932d56be1c9697fc23c56de5afba6f
 
 
 ---
@@ -73,12 +73,12 @@ ms.openlocfilehash: 35a281cf40cc5bb0a23c17990438ba696b22bc54
 * 端口（必需）
   * 10250
 * 数据库（可选）
-  * 连接使用的默认数据库
+  * 连接使用的默认数据库（如果未提供数据库，则默认数据库为“test”）
 * ssl=true（必需）
 
 以上面“连接字符串信息”中显示的帐户为例。  有效的连接字符串为：
 
-    mongodb://contoso123:<password@anhohmongo.documents.azure.com:10250/mydatabase?ssl=true
+    mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@anhohmongo.documents.azure.com:10250/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何配合具有 MongoDB 协议支持的 DocumentDB 帐户[使用 MongoChef](documentdb-mongodb-mongochef.md)。
@@ -86,6 +86,6 @@ ms.openlocfilehash: 35a281cf40cc5bb0a23c17990438ba696b22bc54
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

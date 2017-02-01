@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 0d0264857f552b65f5934eea686329e8d36a1204
-ms.openlocfilehash: e86b1990ea38f9f8af4e5401fe37eec321075e64
+ms.sourcegitcommit: 6c5bf8907a5f69e45e7b62fb466bdc53460e9029
+ms.openlocfilehash: 86a5911e99e7631b09604afcb0f53ed2887b576b
 
 
 ---
@@ -122,9 +122,9 @@ DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目�
 
 ### <a name="command-line-syntax"></a>命令行语法
 
-    DocumentDB.LocalEmulator.exe [/shutdown] [/datapath] [/port] [/mongoport] [/directports] [/key] [/?]
+    DocumentDB.Emulator.exe [/shutdown] [/datapath] [/port] [/mongoport] [/directports] [/key] [/?]
 
-若要查看选项列表，请在命令提示符下键入 `DocumentDB.LocalEmulator.exe /?`。
+若要查看选项列表，请在命令提示符下键入 `DocumentDB.Emulator.exe /?`。
 
 <table>
 <tr>
@@ -136,61 +136,61 @@ DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目�
 <tr>
   <td>[无参数]</td>
   <td>使用默认设置启动 DocumentDB 模拟器</td>
-  <td>DocumentDB.LocalEmulator.exe</td>
+  <td>DocumentDB.Emulator.exe</td>
   <td></td>
 </tr>
 <tr>
   <td>关机</td>
   <td>关闭 DocumentDB 模拟器</td>
-  <td>DocumentDB.LocalEmulator.exe /Shutdown</td>
+  <td>DocumentDB.Emulator.exe /Shutdown</td>
   <td></td>
 </tr>
 <tr>
   <td>帮助</td>
   <td>显示命令行参数的列表</td>
-  <td>DocumentDB.LocalEmulator.exe /?</td>
+  <td>DocumentDB.Emulator.exe /?</td>
   <td></td>
 </tr>
 <tr>
   <td>数据路径</td>
   <td>指定要在其中存储数据文件的路径</td>
-  <td>DocumentDB.LocalEmulator.exe /datapath=&lt;datapath&gt;</td>
+  <td>DocumentDB.Emulator.exe /datapath=&lt;datapath&gt;</td>
   <td>&lt;datapath&gt;：可访问的路径</td>
 </tr>
 <tr>
   <td>端口</td>
   <td>指定用于模拟器的端口号。  默认值为 8081</td>
-  <td>DocumentDB.LocalEmulator.exe /port=&lt;port&gt;</td>
+  <td>DocumentDB.Emulator.exe /port=&lt;port&gt;</td>
   <td>&lt;port&gt;：单个端口号</td>
 </tr>
 <tr>
   <td>MongoPort</td>
   <td>指定用于 MongoDB 兼容性 API 的端口号。 默认值为 10250</td>
-  <td>DocumentDB.LocalEmulator.exe /mongoport=&lt;mongoport&gt;</td>
+  <td>DocumentDB.Emulator.exe /mongoport=&lt;mongoport&gt;</td>
   <td>&lt;mongoport&gt;：单个端口号</td>
 </tr>
 <tr>
   <td>DirectPorts</td>
   <td>指定用于直接连接的端口。 默认值为 10251、10252、10253、10254</td>
-  <td>DocumentDB.LocalEmulator.exe /directports:&lt;directports&gt;</td>
+  <td>DocumentDB.Emulator.exe /directports:&lt;directports&gt;</td>
   <td>&lt;directports&gt;：以逗号分隔的 4 个端口的列表</td>
 </tr>
 <tr>
   <td>键</td>
   <td>模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码</td>
-  <td>DocumentDB.LocalEmulator.exe /key:&lt;key&gt;</td>
+  <td>DocumentDB.Emulator.exe /key:&lt;key&gt;</td>
   <td>&lt;key&gt;：密钥必须是 64 字节向量的 base 64 编码</td>
 </tr>
 <tr>
   <td>EnableThrottling</td>
   <td>指定启用了请求限制行为</td>
-  <td>DocumentDB.LocalEmulator.exe /enablethrottling</td>
+  <td>DocumentDB.Emulator.exe /enablethrottling</td>
   <td></td>
 </tr>
 <tr>
   <td>DisableThrottling</td>
   <td>指定禁用了请求限制行为</td>
-  <td>DocumentDB.LocalEmulator.exe /disablethrottling</td>
+  <td>DocumentDB.Emulator.exe /disablethrottling</td>
   <td></td>
 </tr>
 </table>
@@ -211,6 +211,6 @@ DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

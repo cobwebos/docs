@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2016
+ms.date: 12/12/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 3098845eb6cf39eff7cb7b0c26c9e715c1688142
-ms.openlocfilehash: fa74439938fc97a06e8a8f767f5928721dd5affe
+ms.sourcegitcommit: e2e59da29897a40f0fe538d6fe8063ae5edbaccd
+ms.openlocfilehash: 4dd4e54f3e2514570ff5cbffcb926f274491cb65
 
 
 ---
@@ -47,18 +47,22 @@ ms.openlocfilehash: fa74439938fc97a06e8a8f767f5928721dd5affe
 
 本主题中描述了以下错误代码：
 
-* [InvalidTemplate](#invalidtemplate)
-* [NotFound 和 ResourceNotFound](#notfound-and-resourcenotfound)
-* [ParentResourceNotFound](#parentresourcenotfound)
-* [StorageAccountAlreadyExists 和 StorageAccountAlreadyTaken](#storageaccountalreadyexists-and-storageaccountalreadytaken)
 * [AccountNameInvalid](#accountnameinvalid)
-* [BadRequest](#badrequest)
-* [NoRegisteredProviderFound](#noregisteredproviderfound)
-* [QuotaExceeded 和 OperationNotAllowed](#quotaexceeded-and-operationnotallowed)
-* [InvalidContentLink](#invalidcontentlink)
-* [RequestDisallowedByPolicy](#requestdisallowedbypolicy)
 * [授权失败](#authorization-failed)
+* [BadRequest](#badrequest)
+* [InvalidContentLink](#invalidcontentlink)
+* [InvalidTemplate](#invalidtemplate)
+* [MissingSubscriptionRegistration](#noregisteredproviderfound)
+* [NotFound](#notfound)
+* [NoRegisteredProviderFound](#noregisteredproviderfound)
+* [OperationNotAllowed](#quotaexceeded)
+* [ParentResourceNotFound](#parentresourcenotfound)
+* [QuotaExceeded](#quotaexceeded)
+* [RequestDisallowedByPolicy](#requestdisallowedbypolicy)
+* [ResourceNotFound](#notfound)
 * [SkuNotAvailable](#skunotavailable)
+* [StorageAccountAlreadyExists](#storagenamenotunique)
+* [StorageAccountAlreadyTaken](#storagenamenotunique)
 
 ### <a name="invalidtemplate"></a>InvalidTemplate
 此错误可能由几种不同类型的错误导致。
@@ -142,6 +146,7 @@ ms.openlocfilehash: fa74439938fc97a06e8a8f767f5928721dd5affe
 
    再次确认模板中允许的值，并在部署期间提供一个允许值。
 
+<a id="notfound" />
 ### <a name="notfound-and-resourcenotfound"></a>NotFound 和 ResourceNotFound
 模板包含无法解析的资源的名称时，会收到类似于以下的错误消息：
 
@@ -195,6 +200,7 @@ ms.openlocfilehash: fa74439938fc97a06e8a8f767f5928721dd5affe
         "[variables('databaseServerName')]"
     ]
 
+<a id="storagenamenotunique" />
 ### <a name="storageaccountalreadyexists-and-storageaccountalreadytaken"></a>StorageAccountAlreadyExists 和 StorageAccountAlreadyTaken
 对于存储帐户，必须为此资源提供一个在 Azure 中唯一的名称。 如果不提供唯一名称，则会收到如下所示的错误：
 
@@ -215,20 +221,38 @@ ms.openlocfilehash: fa74439938fc97a06e8a8f767f5928721dd5affe
 
 若提供的属性值无效，可能会遇到 BadRequest 状态。 例如，如果为存储帐户提供的 SKU 值不正确，则部署失败。 
 
-### <a name="noregisteredproviderfound"></a>NoRegisteredProviderFound
+<a id="noregisteredproviderfound" />
+### <a name="noregisteredproviderfound-and-missingsubscriptionregistration"></a>NoRegisteredProviderFound 和 MissingSubscriptionRegistration
 部署资源时，你可能会收到以下错误代码和消息：
 
     Code: NoRegisteredProviderFound
     Message: No registered resource provider found for location {ocation}
     and API version {api-version} for type {resource-type}.
 
-你会因以下三种原因之一收到此错误：
+或者，可能收到类似的消息，指出：
 
-1. 资源类型不支持该位置
+    Code: MissingSubscriptionRegistration
+    Message: The subscription is not registered to use namespace {resource-provider-namespace}
+
+可能由于下三种原因之一而收到此错误：
+
+1. 尚未为订阅注册资源提供程序
 2. 资源类型不支持该 API 版本
-3. 尚未为订阅注册资源提供程序
+3. 资源类型不支持该位置
 
 错误消息应提供有关支持的位置和 API 版本的建议。 可以将模板更改为建议的值之一。 Azure 门户或正在使用的命令行接口会自动注册大多数提供程序；但非全部。 如果你以前未使用特定的资源提供程序，则可能需要注册该提供程序。 可以通过 PowerShell 或 Azure CLI 发现更多关于资源提供程序的信息。
+
+**门户**
+
+可以通过门户查看注册状态，并注册资源提供程序命名空间。
+
+1. 对于你的订阅，选择“资源提供程序”。
+
+   ![选择资源提供程序](./media/resource-manager-common-deployment-errors/select-resource-provider.png)
+
+2. 查看资源提供程序的列表，根据需要选择“注册”链接，注册尝试部署的类型的资源提供程序。
+
+   ![列出资源提供程序](./media/resource-manager-common-deployment-errors/list-resource-providers.png)
 
 **PowerShell**
 
@@ -262,6 +286,7 @@ ms.openlocfilehash: fa74439938fc97a06e8a8f767f5928721dd5affe
 
     azure provider show -n Microsoft.Compute --json > compute.json
 
+<a id="quotaexceeded" />
 ### <a name="quotaexceeded-and-operationnotallowed"></a>QuotaExceeded 和 OperationNotAllowed
 当部署超出配额（可能是根据资源组、订阅、帐户和其他范围指定的）时，可能会遇到问题。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署超过允许核心数目的虚拟机，则会收到指出超过配额的错误消息。
 有关完整的配额信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
@@ -431,7 +456,29 @@ Message: The requested tier for resource '<resource>' is currently not available
       }
     }
 
-或者，假设遇到你认为与不正确设置的依赖项相关的部署错误。 通过将模板分解为多个简化模板进行测试。 首先，创建仅部署单个资源（如 SQL Server）的模板。 确定已正确定义该资源后，添加依赖于该资源的资源（如 SQL 数据库）。 正确定义这两个资源后，添加其他从属资源（如审核策略）。 在每个测试部署之间，删除资源组以确保充分测试依赖项。 
+或者，假设遇到你认为与不正确设置的依赖项相关的部署错误。 通过将模板分解为多个简化模板进行测试。 首先，创建仅部署单个资源（如 SQL Server）的模板。 确定已正确定义该资源后，添加依赖于该资源的资源（如 SQL 数据库）。 正确定义这两个资源后，添加其他从属资源（如审核策略）。 在每个测试部署之间，删除资源组，以确保充分测试依赖关系。 
+
+### <a name="check-deployment-sequence"></a>检查部署顺序
+
+如果以意外的顺序部署资源，可能发生许多部署错误。 依赖关系设置不当就会出现这些错误。 一项资源尝试使用另一资源的值，但后者尚不存在。 查看部署操作顺序的方法如下：
+
+1. 选择资源组的部署历史记录。
+
+   ![选择部署历史记录](./media/resource-manager-common-deployment-errors/select-deployment.png)
+
+2. 从历史记录中选择一个部署，然后选择“事件”。
+
+   ![选择部署事件](./media/resource-manager-common-deployment-errors/select-deployment-events.png)
+
+3. 检查每项资源的事件的顺序。 注意每个操作的状态。 例如，下图显示了并行部署的三个存储帐户。 请注意，这三个存储帐户是同时启动的。
+
+   ![并行部署](./media/resource-manager-common-deployment-errors/deployment-events-parallel.png)
+
+   下图显示了非并行部署的三个存储帐户。 第二个存储帐户被标记为依赖于第一个存储帐户，第三个存储帐户又依赖于第二个存储帐户。 因此，启动、接受并处理完成第一个存储帐户后才开始对下一个进行操作。
+
+   ![连续部署](./media/resource-manager-common-deployment-errors/deployment-events-sequence.png)
+
+浏览部署事件，查看是否跟预期一样，有一项资源更早启动。 如果是这样，请检查此资源的依赖关系。
 
 ## <a name="troubleshooting-other-services"></a>其他服务故障排除
 如果上述部署错误代码无法帮助排除故障，可以查找有关该错误的特定 Azure 服务的更详细的故障排除指南。
@@ -455,8 +502,7 @@ Message: The requested tier for resource '<resource>' is currently not available
 | --- | --- |
 | 自动化 |[Azure 自动化中常见错误的疑难解答提示](../automation/automation-troubleshooting-automation-errors.md) |
 | Azure Stack |[Microsoft Azure Stack 故障排除](../azure-stack/azure-stack-troubleshooting.md) |
-| Azure Stack |[Web 应用和 Azure Stack](../azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) |
-| Data Factory |[排查数据工厂问题](../data-factory/data-factory-troubleshoot.md) |
+| 数据工厂 |[排查数据工厂问题](../data-factory/data-factory-troubleshoot.md) |
 | Service Fabric |[排查在 Azure Service Fabric 上部署服务时遇到的常见问题](../service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
 | 站点恢复 |[监视虚拟机和物理服务器的保护及其故障排除](../site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
 | 存储 |[监视、诊断和排查 Microsoft Azure 存储问题](../storage/storage-monitoring-diagnosing-troubleshooting.md) |
@@ -470,6 +516,6 @@ Message: The requested tier for resource '<resource>' is currently not available
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

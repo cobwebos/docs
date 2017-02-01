@@ -1,31 +1,31 @@
 ---
-title: "Azure 自动化错误处理 | Microsoft Docs"
-description: "本文提供了排查并解决常见 Azure 自动化错误的基本错误处理步骤。"
+title: "Azure 自动化故障排除 | Microsoft Docs"
+description: "本文介绍如何排查并解决常见的 Azure 自动化错误。"
 services: automation
 documentationcenter: 
 author: mgoedtel
 manager: stevenka
 editor: tysonn
 tags: top-support-issue
-keywords: "自动化错误, 错误处理"
+keywords: "自动化错误, 故障排除, 问题"
 ms.assetid: 5f3cfe61-70b0-4e9c-b892-d02daaeee07d
 ms.service: automation
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2016
+ms.date: 12/12/2016
 ms.author: sngun; v-reagie
 translationtype: Human Translation
-ms.sourcegitcommit: a9e855afcf9da703efd6653b19d9cc8e406f8bd3
-ms.openlocfilehash: 0c7e2373a4c3dc5fe878f0761586665bc4fc0a7a
+ms.sourcegitcommit: 15a8ff89ae7a7d335c9d8584aaef0b21f092566f
+ms.openlocfilehash: f86942e399385efbb8c9cb6f250a8668fe260602
 
 
 ---
-# <a name="error-handling-tips-for-common-azure-automation-errors"></a>常见 Azure 自动化错误的错误处理提示
-本文介绍你可能会遇到的一些常见 Azure 自动化错误并建议可能的错误处理步骤。
+# <a name="troubleshoot-azure-automation"></a>Azure 自动化故障排除 
+本文介绍如何排除会在 Azure 自动化中遇到的常见错误，并提供可能的解决方案建议。
 
-## <a name="troubleshoot-authentication-errors-when-working-with-azure-automation-runbooks"></a>解决使用 Azure 自动化 Runbook 时遇到的身份验证错误
+## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>使用 Azure 自动化 Runbook 时遇到的身份验证错误
 ### <a name="scenario-sign-in-to-azure-account-failed"></a>场景：登录 Azure 帐户失败
 **错误：**使用 Add-AzureAccount 或 Login-AzureRmAccount cmdlet 时收到“Unknown_user_type: 用户类型未知”错误。
 
@@ -63,7 +63,7 @@ ms.openlocfilehash: 0c7e2373a4c3dc5fe878f0761586665bc4fc0a7a
 
 **疑难解答提示：**若要将证书用于 Azure 服务管理 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure Resource Manager cmdlet，请参阅[使用 Azure 门户创建服务主体](../resource-group-create-service-principal-portal.md)和[通过 Azure Resource Manager 对服务主体进行身份验证](../resource-group-authenticate-service-principal.md)。
 
-## <a name="troubleshoot-common-errors-when-working-with-runbooks"></a>排查使用 Runbook 时发生的常见错误
+## <a name="common-errors-when-working-with-runbooks"></a>使用 Runbook 时的常见错误
 ### <a name="scenario-runbook-fails-because-of-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
 **错误：**Runbook 失败，出现错误“无法绑定参数 ``<ParameterName>``。 无法将反序列化 ``<ParameterType>`` 类型的 ``<ParameterType>`` 值转换成 ``<ParameterType>`` 类型”。
 
@@ -105,7 +105,7 @@ ms.openlocfilehash: 0c7e2373a4c3dc5fe878f0761586665bc4fc0a7a
 
 **疑难解答提示：**避免此问题的有记录解决方法是在工作流中使用检查点。  若要了解详细信息，请参阅[了解 PowerShell 工作流](automation-powershell-workflow.md#checkpoints)。  [在 Runbook 中使用检查点](https://azure.microsoft.com/en-us/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)博客文章中提供了有关“公平份额”和检查点的更全面说明。
 
-## <a name="troubleshoot-common-errors-when-importing-modules"></a>排查导入模块时发生的常见错误
+## <a name="common-errors-when-importing-modules"></a>导入模块时的常见错误
 ### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a>场景：模块无法导入，或者 cmdlet 在导入后无法执行
 **错误：**模块无法导入，或者虽然导入成功，但无法提取 cmdlet。
 
@@ -124,7 +124,7 @@ ms.openlocfilehash: 0c7e2373a4c3dc5fe878f0761586665bc4fc0a7a
 * 打开 .psd1 文件，看模块是否有任何依赖项。  如果有，则将这些模块上载到自动化帐户。  
 * 确保任何引用的 .dll 都存在于模块文件夹中。  
 
-## <a name="troubleshoot-common-errors-when-working-with-desired-state-configuration-dsc"></a>解决使用所需状态配置 (DSC) 时的常见错误
+## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>使用所需状态配置 (DSC) 时的常见错误
 ### <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a>场景：节点处于失败状态，出现“未找到”错误
 **错误：**节点的报告显示“失败”状态，并包含“从服务器 https://``<url>``//accounts/``<account-id>``/Nodes(AgentId=``<agent-id>``)/GetDscAction 获取操作的尝试失败，因为未找到有效配置 ``<guid>``”错误。
 
@@ -166,7 +166,7 @@ ms.openlocfilehash: 0c7e2373a4c3dc5fe878f0761586665bc4fc0a7a
 * 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。 有关详细信息，请参阅 [Azure Automation DSC 中的资产](automation-dsc-compile.md#assets)。
 
 ## <a name="next-steps"></a>后续步骤
-如果你在完成上述疑难解答步骤以后仍对本文中的内容存有疑问，你可以：
+如果执行了上述故障排除步骤但仍找不到答案，则可查看下面的其他支持选项。
 
 * 从 Azure 专家那里获取帮助。 向 [MSDN Azure 或 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)提交问题。
 * 提出 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，单击“技术和帐单支持”下的“获得支持”。
@@ -175,6 +175,6 @@ ms.openlocfilehash: 0c7e2373a4c3dc5fe878f0761586665bc4fc0a7a
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

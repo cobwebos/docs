@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 12/09/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: fadf6cddbcc0b5090e60084713141358aa4c511d
-ms.openlocfilehash: 5b01563ec92aa941d7c447eb05889ffdeb43c027
+ms.sourcegitcommit: adb787b4ff1b4164bcf7ac08e7b6a227acfce423
+ms.openlocfilehash: 1f29554cce2ba5fe7b02c546c705cce3d9e13019
 
 ---
 
 # <a name="startstop-vms-during-off-hours-preview-solution-in-automation"></a>自动化中的非工作时间启动/停止 VM [预览版] 解决方案
 
-在非工作时间启动/停止 VM [预览版] 解决方案根据用户定义的计划启动和停止 Azure Resource Manager 虚拟机，通过 OMS Log Analytics 提供成功启动和停止虚拟机的自动化见解。  
+在非工作时间启动/停止 VM [预览版] 解决方案根据用户定义的计划启动和停止 Azure Resource Manager 和经典虚拟机，通过 OMS Log Analytics 提供成功启动和停止虚拟机的自动化见解。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -247,6 +247,6 @@ StreamType | 作业流的类型。 可能的值包括：<br>- Progress（进度�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: d0b29822-714f-4633-a5ab-fb1a09d43ced
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 11/22/2016
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: afcdae9ae0224e12ad874b389dad9882d9269fdf
-ms.openlocfilehash: e3d4b3f7a628a058e7b761788a3f63a57228f39c
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 9faff06ee1856ca6490add759acd3c5f36719853
 
 
 ---
@@ -51,7 +51,7 @@ ms.openlocfilehash: e3d4b3f7a628a058e7b761788a3f63a57228f39c
 
 只有订阅所有者或共有者才能添加辅助数据库。
 
-辅助数据库具有与主数据库相同的名称，并默认使用相同的服务级别。 辅助数据库可以是单一数据库，也可以是弹性数据库。 有关详细信息，请参阅[服务层](sql-database-service-tiers.md)。
+辅助数据库具有与主数据库相同的名称，并默认使用相同的服务级别。 辅助数据库可以是独立数据库，也可以是弹性池中的数据库。 有关详细信息，请参阅[服务层](sql-database-service-tiers.md)。
 创建辅助数据库并设定种子后，会开始将数据从主数据库复制到新的辅助数据库。
 
 > [!NOTE]
@@ -67,7 +67,7 @@ ms.openlocfilehash: e3d4b3f7a628a058e7b761788a3f63a57228f39c
 3. 选择或配置辅助数据库的服务器和定价层。
    
     ![配置辅助数据库](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. 可以选择性地将辅助数据库添加到弹性数据库池。 若要在池中创建辅助数据库，单击“弹性数据库池”，然后在目标服务器上选择一个池。 目标服务器上必须已存在一个池。 此工作流不会创建池。
+4. 可以选择将辅助数据库添加到弹性池中。 若要在池中创建辅助数据库，单击“弹性池”，然后在目标服务器上选择一个池。 目标服务器上必须已存在一个池。 此工作流不会创建池。
 5. 单击“创建”添加辅助数据库。
 6. 此时会创建辅助数据库，种子设定过程开始。
    
@@ -94,6 +94,6 @@ ms.openlocfilehash: e3d4b3f7a628a058e7b761788a3f63a57228f39c
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,12 +16,15 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: bradsev;garye
 translationtype: Human Translation
-ms.sourcegitcommit: bac1b01a40b3e7bed2edaf1f694daf0ab70de68c
-ms.openlocfilehash: 26353f84e22aec1964f520edc60d036c2ab57c28
+ms.sourcegitcommit: 701c54bac16cbf208fd655fd72f2d4acfc0ba891
+ms.openlocfilehash: 89856f6509d0d2e2e472a61db70b9b04dc1ac7b7
 
 
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>使用“导入数据”模块将数据从各种联机数据源导入 Azure 机器学习工作室
+
+[!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
+
 本文介绍针对从各种源导入联机数据的支持，以及将数据从这些源移入 Azure 机器学习试验所需的信息。
 
 > [!NOTE]
@@ -31,10 +34,8 @@ ms.openlocfilehash: 26353f84e22aec1964f520edc60d036c2ab57c28
 
 <!-- -->
 
-[!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
-
 ## <a name="introduction"></a>介绍
-运行试验时，可以使用[导入数据][import-data]模块在 Azure 机器学习工作室中访问多个联机数据源之一的数据：
+使用[导入数据][import-data]模块运行试验时，可以在 Azure 机器学习工作室中访问多个联机数据源之一的数据：
 
 * 使用 HTTP 的 Web URL
 * 使用 HiveQL 的 Hadoop
@@ -44,12 +45,12 @@ ms.openlocfilehash: 26353f84e22aec1964f520edc60d036c2ab57c28
 * 本地 SQL Server 数据库
 * 数据馈送提供程序（目前为 OData）
 
-在 Azure 机器学习工作室中展开试验的工作流包括将组件拖放到画布上的操作。 若要访问联机数据源，请将[导入数据][import-data]模块添加到试验，选择“数据源”，然后提供访问数据所需的参数。 下表列举了支持的联机数据源。 此表还汇总了支持的文件格式，以及用于访问数据的参数。
+在 Azure 机器学习工作室中展开试验的工作流包括将组件拖放到画布上的操作。 若要访问联机数据源，请将[导入数据][import-data]模块添加到试验中，选择“数据源”，然后提供访问数据时所需的参数。 下表列举了支持的联机数据源。 此表还汇总了支持的文件格式，以及用于访问数据的参数。
 
 请注意，此训练数据是在运行试验时访问的，因此只能在该试验中使用。 相比之下，存储在数据集模块中的数据可供工作区中的任何试验使用。
 
 > [!IMPORTANT]
-> [导入数据][import-data]和[导出数据][导出数据]模块目前只能在使用经典部署模型创建的 Azure 存储中读取和写入数据。 换言之，目前尚不支持可提供热存储访问层或冷存储访问层的新式 Azure Blob 存储帐户类型。 
+> [导入数据][import-data]和[导出数据][export-data]模块目前只能在使用经典部署模型创建的 Azure 存储中读取和写入数据。 换言之，目前尚不支持可提供热存储访问层或冷存储访问层的新式 Azure Blob 存储帐户类型。 
 > 
 > 一般情况下，在此服务选项推出之前创建的任何 Azure 存储帐户应该不受影响。 
 > 如果需要创建新帐户，请为“部署模型”选择“经典”或使用“Resource Manager”；对于“帐户类型”，请选择“常规用途”而不是“Blob 存储”。 
@@ -78,10 +79,10 @@ Azure 机器学习**导入数据**模块支持以下数据源：
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[导出数据]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C/
+[export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
