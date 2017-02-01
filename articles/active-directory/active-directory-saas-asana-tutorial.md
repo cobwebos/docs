@@ -128,7 +128,7 @@ ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录页 URL”文本框中，粘贴 Azure AD 的 SAML 登录 URL。
    
     b. 在“X.509 证书”文本框中，粘贴从 Azure AD 复制的 X.509 证书。
-5. 单击“保存” 。 如果需要进一步的协助，请转到“设置 SSO 的 Asana 指南”[](https://asana.com/guide/help/premium/authentication#gl-saml)。
+5. 单击“保存” 。 如果需要进一步的协助，请转到 [“设置 SSO 的 Asana 指南”](https://asana.com/guide/help/premium/authentication#gl-saml)。
 6. 在 Azure AD 中转到“配置 Asana 的单一登录”、选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]

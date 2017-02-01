@@ -28,7 +28,7 @@ Microsoft Azure IoT 套件使用内置于 Azure 平台中的安全和隐私功�
 
 为了以最佳方式传达内置于 Azure IoT 套件的安全和隐私功能，我们已将套件细分为三个主要安全领域。 
 
-![Azure IoT 套件](media/iot-security-ground-up/securing-iot-ground-up-fig2.png)
+![Azure IoT 套件](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>安全的设备预配和身份验证
 当设备不在现场时，Azure IoT 套件将保护它们，方法是为每个设备提供唯一的标识密钥，在设备运行时，IoT 基础结构可用于与其进行通信。 该过程非常快速且可轻松设置。 使用用户选择的设备 ID 生成的密钥将形成令牌的基础，可以在设备和 Azure IoT 中心之间的所有通信中使用。
