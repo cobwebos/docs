@@ -62,7 +62,7 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
    * 如果已使用状态监视器在运行时检测 Web 应用，则在 IIS 的应用根目录中查找 ApplicationInsights.config。 在每个服务器实例的该位置更新它。
 3. 编辑性能收集器指令：
    
-   ```XML
+```XML
    
     <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
       <Counters>
@@ -84,17 +84,23 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 ### <a name="collecting-performance-counters-in-code"></a>收集代码中的性能计数器
 若要收集系统性能计数器并将它们发送到 Application Insights，可以改编下面的片段：
 
+
+``` C#
+
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\.NET CLR Memory([replace-with-application-process-name])\# GC Handles", "GC Handles")));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+```
 
 或者，可以执行与所创建自定义指标相同的操作：
 
+``` C#
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(photo)\# Items Sold", "Photo sales"));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+```
 
 ## <a name="performance-counters-in-analytics"></a>分析中的性能计数器
 可以在[分析](app-insights-analytics.md)中搜索并显示性能计数器报告。
