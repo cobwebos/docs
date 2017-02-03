@@ -3,7 +3,7 @@ title: "Azure Batch 诊断日志记录 | Microsoft 文档"
 description: "记录并分析 Azure Batch 帐户资源（诸如池和任务）的诊断日志事件。"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: e14e611d-12cd-4671-91dc-bc506dc853e5
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 10/12/2016
-ms.author: marsma
+ms.date: 01/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2c66486f9716ed8ac093685b10e9294beb43c381
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: f1aa23d2865ec8401a59b2370c8157d2458c60f7
 
 
 ---
@@ -79,11 +79,11 @@ Batch 服务当前会生成以下服务日志事件。 此列表可能不完整�
 | **服务日志事件** |
 | --- |
 | [池创建][pool_create] |
-| [池删除开始][pool_delete_start] |
+| [池删除启动][pool_delete_start] |
 | [池删除完成][pool_delete_complete] |
-| [池大小调整开始][pool_resize_start] |
-| [池大小调整完成][pool_resize_complete] |
-| [任务开始][task_start] |
+| [池调整大小启动][pool_resize_start] |
+| [池调整大小完成][pool_resize_complete] |
+| [任务启动][task_start] |
 | [任务完成][task_complete] |
 | [任务失败][task_fail] |
 
@@ -108,6 +108,6 @@ Batch 服务当前会生成以下服务日志事件。 此列表可能不完整�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/12/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
+ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
+ms.openlocfilehash: 19707c2b8855db456c69e77603bc6742d799ed2c
 
 
 ---
@@ -60,19 +60,25 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。 
    
     ![Active Directory][1]
+
 2. 从“目录”列表中，选择要为其启用目录集成的目录。
+
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
     ![应用程序][2]
+
 4. 在页面底部单击“添加”。
    
     ![应用程序][3]
+
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
     ![应用程序][4]
+
 6. 在搜索框中，键入“SilkRoad Life Suite”。
    
     ![应用程序][5]
+
 7. 在结果窗格中，选择“SilkRoad Life Suite”，然后单击“完成”以添加该应用程序。
    
     ![应用程序][50]
@@ -98,21 +104,25 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
 
 1. 以管理员身份登录 SilkRoad 公司站点。 
 
-    > [AZURE.NOTE] 若要获取对 SilkRoad Life Suite 身份验证应用程序的访问权限以配置 Microsoft Azure AD 的联合身份验证，请联系 SilkRoad 支持或 SilkRoad 服务代表。
-
+    > [!NOTE] 
+    > 若要获取对 SilkRoad Life Suite 身份验证应用程序的访问权限以配置 Microsoft Azure AD 的联合身份验证，请联系 SilkRoad 支持或 SilkRoad 服务代表。
 
 1. 转到“服务提供商”，然后单击“联合身份验证详细信息”。 
    
     ![Azure AD 单一登录][10] 
+
 2. 单击“下载联合元数据”，然后在计算机上保存该元数据文件。
    
     ![Azure AD 单一登录][11] 
+
 3. 在 Azure 经典门户的“SilkRoad Life Suite”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录][6] 
+
 4. 在“你希望用户如何登录 SilkRoad Life Suite”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
    
     ![Azure AD 单一登录][7] 
+
 5. 在“配置应用设置”对话框页上，执行以下步骤：
    
     ![Azure AD 单一登录][8] 
@@ -127,20 +137,24 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
    
     d.单击“下一步”。 将值粘贴到“回复 URL”文本框中。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 6. 在“配置 SilkRoad Life Suite 的单一登录”页上，执行以下步骤：
    
     ![Azure AD 单一登录][9] 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
+
 7. 在 **SilkRoad** 应用程序中，单击“身份验证源”。
    
     ![Azure AD 单一登录][12] 
+
 8. 单击“添加身份验证源”。 
    
     ![Azure AD 单一登录][13] 
+
 9. 在“添加身份验证源”部分中，执行以下步骤： 
    
     ![Azure AD 单一登录][14] 
@@ -148,9 +162,11 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“选项 2 - 元数据文件”下，单击“浏览”以上载已下载的元数据文件。
    
     b.保留“数据库类型”设置，即设置为“共享”。 单击“使用文件数据创建标识提供者”。
+
 10. 在“身份验证源”部分中，单击“编辑”。 
     
      ![Azure AD 单一登录][15] 
+
 11. 在“编辑身份验证源”对话框中，执行以下步骤： 
     
      ![Azure AD 单一登录][16] 
@@ -162,12 +178,15 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
      c. 在“IdP 名称”文本框中，键入特定于配置的名称（例如：*Azure SP*）。
     
      d.单击“下一步”。 单击“保存” 。
+
 12. 禁用所有其他身份验证源。 
     
      ![Azure AD 单一登录][17]
+
 13. 在 Azure 经典门户中的“单一登录确认”页上，单击“下一步”。  
     
      ![Azure AD 单一登录][18]
+
 14. 在“单一登录确认”页上，单击“完成”。
     
      ![Azure AD 单一登录][19]
@@ -182,13 +201,17 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_09.png)  
+
 2. 在“目录”列表中，选择要启用目录集成的目录。
+
 3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_03.png) 
+
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。 
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_04.png) 
+
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤： 
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_05.png)  
@@ -197,22 +220,26 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
+
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_06.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
-   b. 在“姓氏”文本框中，键入“Simon”。
+    b. 在“姓氏”文本框中，键入“Simon”。
    
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
+    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    d.单击“下一步”。 在“角色”列表中，选择“用户”。
+
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_07.png) 
+
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_08.png) 
@@ -226,7 +253,7 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
 
 **若要在 SilkRoad Life Suite 中创建名为“Britta Simon”的用户，请执行以下步骤：**
 
-1. 要求 SilkRoad Life Suite 支持团队创建一个用户，该用户的 **SSO ID** 属性值与 Azure AD 中 Britta Simon 的 **emailaddress** 相同。
+- 要求 SilkRoad Life Suite 支持团队创建一个用户，该用户的 **SSO ID** 属性值与 Azure AD 中 Britta Simon 的 **emailaddress** 相同。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 本部分的目的是通过授予 Britta Simon 访问 SilkRoad Life Suite 的权限，允许她使用 Azure 单一登录。
@@ -238,13 +265,17 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
 1. 在 Azure 经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
     ![分配用户][201] 
+
 2. 在应用程序列表中，选择“SilkRoad Life Suite”。
    
     ![分配用户][202] 
+
 3. 在顶部菜单中，单击“用户”。
    
     ![分配用户][203] 
+
 4. 在“用户”列表中，选择“Britta Simon”。
+
 5. 在底部工具栏中，单击“分配”。
    
     ![分配用户][205]
@@ -300,6 +331,6 @@ ms.openlocfilehash: 97d775186f0f43ae77e6cf4e5d0f68be91d0209c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

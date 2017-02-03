@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ed3d5ddbbdff9ec568f513d15ecb1ea28ba8855
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: e9ff351232f68c81122efb74275a1f255b51b72f
 
 
 ---
 # <a name="extend-your-experiment-with-r"></a>使用 R 扩展试验
-可使用[执行 R 脚本][execute-r-script]模块通过 R 语言扩展机器学习工作室功能。
+如何使用[执行 R 脚本][execute-r-script]模块通过 R 语言扩展 Azure 机器学习工作室的功能。
 
 此模块接受多个输入数据集，并且生成单个数据集作为输出。 可将 R 脚本键入[执行 R 脚本][execute-r-script]模块的 **R 脚本**参数。
 
@@ -29,30 +29,33 @@ ms.openlocfilehash: 7ed3d5ddbbdff9ec568f513d15ecb1ea28ba8855
 
     dataset1 <- maml.mapInputPort(1)
 
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
 ## <a name="listing-all-currently-installed-packages"></a>列出所有当前安装的程序包
-已安装程序包列表可更改。 若要获取已安装程序包的最新完整列表，包括每个程序包的描述，请将以下代码输入[执行 R 脚本][execute-r-script]模块：
+已安装程序包列表可更改。 可在 [Azure 机器学习支持的 R 包](https://msdn.microsoft.com/library/azure/mt741980.aspx)中找到当前安装的包的列表。
+
+还可获取已安装程序包的最新完整列表，方法是将以下代码输入[执行 R 脚本][execute-r-script]模块：
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
 
-这将程序包列表发送至[执行 R 脚本][execute-r-script]模块的输出端口。
-若要查看程序包列表，请将诸如[连接到 CSV][convert-to-csv]等转换模块连接到[执行 R 脚本][execute-r-script]模块的左输出、运行实验，然后单击转换模块的输出并选择“下载”。 
+将程序包列表发送至[执行 R 脚本][execute-r-script]模块的输出端口。
+若要查看程序包列表，请将诸如[连接到 CSV][convert-to-csv] 等转换模块连接到[执行 R 脚本][execute-r-script]模块的左输出，运行实验然后单击转换模块的输出并选择“下载”。 
 
-![](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
+![下载“转换为 CSV”模块的输出](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
+
 
 <!--
 For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
 -->
 
 ## <a name="importing-packages"></a>导入程序包
-通过在[执行 R 脚本][execute-r-script]模块和压缩程序包存档中使用以下命令，还可导入尚未从暂存的机器学习工作室存储库中安装的程序包：
+可通过在[执行 R 脚本][execute-r-script]模块中使用以下命令，导入尚未安装的包：
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
 
-`my_favorite_package.zip` 包含程序包的 zip 文件。
+其中 `my_favorite_package.zip` 文件包含你的包。
+
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 <!--
 
@@ -514,6 +517,6 @@ To get the complete list of packages that are currently available, see the secti
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

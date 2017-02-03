@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
-ms.author: dkshir;chackdan
+ms.date: 12/06/2016
+ms.author: ryanwi;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 913726bb57f727bd62cdee0aee16bc886b38884f
+ms.sourcegitcommit: f9e0835a9b84c09eb42708606472a4ede34b1c0a
+ms.openlocfilehash: 89bd97f6746503344f016cf8a473fb641beb9dde
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 913726bb57f727bd62cdee0aee16bc886b38884f
 本文将引导你使用 Service Fabric 的独立包在本地完成创建群集的步骤，不过，你也可以针对其他任何环境（例如其他云提供商）轻松地进行调整。
 
 > [!NOTE]
-> 此独立 Windows Server 包中的功能目前为预览版，不支持用于商用目的。 若要查看处于预览中的功能的列表，请参阅“此包中包含的预览功能”。 现在，还可以[下载 EULA 的副本](http://go.microsoft.com/fwlink/?LinkID=733084)。
+> 可购买此独立 Windows Server 包并将其用于生产部署。 此包可能包含“预览”形式的新 Service Fabric 功能。 向下滚动到“此包中包括的预览功能。”部分， 预览功能列表部分。 现在，可以[下载 EULA 的副本](http://go.microsoft.com/fwlink/?LinkID=733084)。
 > 
 > 
 
@@ -35,6 +35,7 @@ ms.openlocfilehash: 913726bb57f727bd62cdee0aee16bc886b38884f
 ## <a name="get-support-for-the-service-fabric-standalone-package"></a>获取 Service Fabric 独立包的支持
 * 在 [Azure Service Fabric 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?)中询问社区关于 Windows Server 的 Service Fabric 独立包的信息。
 * 打开 [Service Fabric 专业支持](http://support.microsoft.com/oas/default.aspx?prid=16146)票证。  了解有关 [Microsoft 专业支持](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)的详细信息。
+* 还可通过 [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)获取对此包的支持，作为顶级支持的一部分 
 
 <a id="downloadpackage"></a>
 
@@ -77,7 +78,7 @@ ms.openlocfilehash: 913726bb57f727bd62cdee0aee16bc886b38884f
 * 建议至少提供 40 GB 的可用磁盘空间。
 * 建议提供 4 核或更高的 CPU。
 * 所有计算机与安全网络连接。
-* Windows Server 2012 R2 或 Windows Server 2012（需要系统安装 [KB2858668](https://support.microsoft.com/kb/2858668)）。
+* Windows Server 2012 R2 或 Windows Server 2016。 
 * [.NET Framework 4.5.1 或更高版本](https://www.microsoft.com/download/details.aspx?id=40773)的完整安装版。
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)。
 * 应在所有计算机上运行 [RemoteRegistry 服务](https://technet.microsoft.com/library/cc754820)。
@@ -241,23 +242,25 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ## <a name="preview-features-included-in-this-package"></a>此包中包括的预览功能
 无。
 
+
 > [!NOTE]
-> 使用[适用于 Windows Server 的独立群集的新 GA 版本（版本 5.3.204.x）](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/)，可以将群集手动或自动升级到未来版本。 由于此功能在预览版本中不可用，你需要使用 GA 版本创建一个群集并从预览群集迁移数据和应用程序。 请继续关注此功能的详细信息。
+> 从[适用于 Windows Server 的独立群集的新 GA 版本（版本 5.3.204.x）](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/)开始，可以将群集手动或自动升级到未来版本。 请参阅[升级独立 Service Fabric 群集版本](service-fabric-cluster-upgrade-windows-server.md)文档以获取详细信息。
 > 
 > 
 
 ## <a name="next-steps"></a>后续步骤
 * [独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)
 * [在独立 Service Fabric 群集中添加或删除节点](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [升级独立 Service Fabric 群集版本](service-fabric-cluster-upgrade-windows-server.md)
 * [使用运行 Windows 的 Azure VM 创建独立 Service Fabric 群集](service-fabric-cluster-creation-with-windows-azure-vms.md)
 * [使用 Windows 安全性保护 Windows 上的独立群集](service-fabric-windows-cluster-windows-security.md)
 * [使用 X509 证书保护 Windows 上的独立群集](service-fabric-windows-cluster-x509-security.md)
 
 <!--Image references-->
-[受信任的区域]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
+[Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

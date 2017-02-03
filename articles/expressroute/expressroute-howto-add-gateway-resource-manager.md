@@ -16,15 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 61817e1bd5b4af9aa9e3fda2043acc1036b7268a
+ms.sourcegitcommit: 2a0db85dc5699b362aa6a920cc26c40bdfdfc28d
+ms.openlocfilehash: 80ffdd66a02f84b844b660e6c88586d4e99ff9e7
 
 
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-resource-manager-and-powershell"></a>使用 Resource Manager 和 PowerShell 为 ExpressRoute 配置虚拟网络网关
 > [!div class="op_single_selector"]
-> * [PowerShell - 资源管理器](expressroute-howto-add-gateway-resource-manager.md)
-> * [PowerShell - 经典](expressroute-howto-add-gateway-classic.md)
+> * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
+> * [经典 - PowerShell](expressroute-howto-add-gateway-classic.md)
+> * [视频 - Azure 门户](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
@@ -35,7 +36,7 @@ ms.openlocfilehash: 61817e1bd5b4af9aa9e3fda2043acc1036b7268a
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>开始之前
-确认已安装此配置所需的 Azure PowerShell cmdlet（1.0.2 或更高版本）。 如果尚未安装 cmdlet，必须先安装，然后才能开始执行配置步骤。 有关安装 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+确认已安装此配置所需的 Azure PowerShell cmdlet（1.0.2 或更高版本）。 如果尚未安装 cmdlet，必须先安装，然后才能开始执行配置步骤。 有关安装 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 [!INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
@@ -45,6 +46,6 @@ ms.openlocfilehash: 61817e1bd5b4af9aa9e3fda2043acc1036b7268a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

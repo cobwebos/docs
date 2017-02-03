@@ -8,6 +8,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 6fa47cf2-1162-4534-a206-6e2d95b78580
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d601ce76281cac6df6d3184d9c65980b4bf7948a
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 7e24e362811d1921523ca45037ad0ef1f5e06de9
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: d601ce76281cac6df6d3184d9c65980b4bf7948a
 若要管理扩大的分区数据库，可使用**弹性数据库作业**功能（预览版）在一组数据库中可靠地执行 Transact-SQL (T-SQL) 脚本，这些数据库包括：
 
 * 自定义的数据库集合（下面将会介绍）
-* [弹性数据库池中的所有数据库](sql-database-elastic-pool.md)
+* [弹性池](sql-database-elastic-pool.md)中的所有数据库
 * 分片集（使用[弹性数据库客户端](sql-database-elastic-database-client-library.md)创建）。 
 
 ## <a name="documentation"></a>文档
@@ -72,7 +73,7 @@ ms.openlocfilehash: d601ce76281cac6df6d3184d9c65980b4bf7948a
 
 ## <a name="elastic-database-jobs-end-to-end"></a>弹性数据库作业：端到端
 1. 安装**弹性数据库作业**组件。 有关详细信息，请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)。 如果安装失败，请参阅[如何卸载](sql-database-elastic-jobs-uninstall.md)。
-2. 使用 PowerShell API 可以访问更多功能，例如创建自定义数据库集合、添加计划和/或收集结果集。 使用门户可以方便安装和创建/监视限制为针对**弹性数据库池**执行的作业。 
+2. 使用 PowerShell API 可以访问更多功能，例如创建自定义数据库集合、添加计划和/或收集结果集。 使用门户可方便安装并将创建/监视限制为针对“弹性池”执行的作业。 
 3. 针对作业执行创建加密的凭据，并将[用户（或角色）添加到组中的每个数据库](sql-database-security.md)。
 4. 创建可针对组中每个数据库运行的幂等 T-SQL 脚本。 
 5. 使用 Azure 门户遵循以下步骤来创建作业：[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)。 
@@ -146,6 +147,6 @@ ms.openlocfilehash: d601ce76281cac6df6d3184d9c65980b4bf7948a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

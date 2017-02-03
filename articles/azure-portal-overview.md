@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7383380ee07f9ee52858038bd4d623be4689a31a
+ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
+ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
 
 
 ---
@@ -59,16 +59,6 @@ Azure 应用商店提供数千商品，您可以在一个位置集中创建商�
 5. 选择用户和角色。
 
 ![管理资源][ManageResource]
-
-## <a name="how-to-customize-a-resource-blade"></a>如何自定义资源边栏选项卡
-Azure 会为您的资源预配置边栏选项卡，但这些边栏选项卡上的磁贴由您控制。  您可以轻松地转到自定义模式来添加、删除、调整或重新排列磁贴。 若要自定义边栏选项卡，请执行以下操作：
-
-1. 浏览您的资源。
-2. 单击 要自定义的边栏选项卡顶部的“...”。
-3. 单击“添加部件”。
-4. 开始拖放部件。  
-
-![自定义边栏选项卡][CustomizeBlades]
 
 ## <a name="how-to-get-help"></a>如何获取帮助
 如果您遇到问题，请随时与我们联系。  预览门户具有帮助和支持页面，可以为您指引正确的方向。  根据 [支持计划](https://azure.microsoft.com/support/plans/)，你还可以直接在门户中创建支持请求。  创建支持请求之后，您可以在门户内管理请求的生命周期。 您可以导航到“浏览”->“帮助 + 支持”，访问帮助和支持页面。  

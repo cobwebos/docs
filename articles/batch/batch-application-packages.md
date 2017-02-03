@@ -3,7 +3,7 @@ title: "在 Azure Batch 中轻松安装和管理应用程序 | Microsoft Docs"
 description: "使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。"
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 10/21/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: de20208ebc796d22de26280d73be94dfb0cb04dc
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 8bd78e80347175161053b28e4350fdeb78b3299b
 
 
 ---
@@ -45,7 +45,7 @@ ms.openlocfilehash: de20208ebc796d22de26280d73be94dfb0cb04dc
 ## <a name="about-applications-and-application-packages"></a>关于应用程序和应用程序包
 在 Azure Batch 中，应用程序是指一组已创建版本的二进制文件，这些文件可自动下载到池中的计算节点。 应用程序包指的是这些二进制文件中的一组特定组合，其代表应用程序的特定版本。
 
-![应用程序和应用程序包的统括示意图][1]
+![应用程序和应用程序包的概要关系图][1]
 
 ### <a name="applications"></a>应用程序
 Batch 中的应用程序包含一个或多个应用程序包，指定应用程序的配置选项。 例如，应用程序可以指定要安装在计算节点上的默认应用程序包版本，以及应用程序的包是否可以更新或删除。
@@ -75,7 +75,7 @@ Batch 中的应用程序包含一个或多个应用程序包，指定应用程�
 池的启动工作不需要指定在节点上安装一长串的单个资源文件。 不需要在 Azure 存储中或在节点上手动管理应用程序的多个版本。 而且，也不必费心生成 [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md) 来提供这些文件在存储帐户中的访问权限。 Batch 在后台与 Azure 存储协作来存储应用程序包，并将其部署到计算节点。
 
 ## <a name="upload-and-manage-applications"></a>上载和管理应用程序
-可以使用 [Azure 门户][portal]或 [Batch Management .NET](batch-management-dotnet.md) 库来管理 Batch 帐户中的应用程序包。 在后面几个部分中，将先链接存储帐户，然后介绍如何使用门户来添加应用程序和包以及管理它们。
+可以使用 [Azure 门户][portal]或 [Batch 管理 .NET](batch-management-dotnet.md) 库来管理批处理帐户中的应用程序包。 在后面几个部分中，将先链接存储帐户，然后介绍如何使用门户来添加应用程序和包以及管理它们。
 
 ### <a name="link-a-storage-account"></a>链接存储帐户
 若要使用应用程序包，必须先将 Azure 存储帐户链接到 Batch 帐户。 如果还没有为 Batch 帐户配置存储帐户，第一次单击“Batch 帐户”边栏选项卡中的“应用程序”磁贴时，Azure 门户在会显示警告。
@@ -184,7 +184,7 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 
 单击“删除”时，系统会要求确认是否要删除包版本，随后 Batch 从 Azure 存储中删除该包。 如果删除应用程序的默认版本，系统会删除应用程序的“默认版本”设置。
 
-![删除应用程序 ][12]
+![删除应用程序][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>将应用程序安装在计算节点上
 了解如何使用 Azure 门户管理应用程序包之后，接下来介绍如何使用 Batch 任务将它们部署到计算节点并运行它们。
@@ -293,7 +293,7 @@ await boundPool.CommitAsync();
 配置新版本后，任何加入池的新节点都将部署 2.76b 版。 若要将 2.76b 安装到已在池中的节点上，请重新启动或重置映像这些节点。 请注意，重新启动的节点保留前次包部署的文件。
 
 ## <a name="list-the-applications-in-a-batch-account"></a>列出 Batch 帐户中的应用程序
-可以使用 [ApplicationOperations][net_appops].[ListApplicationSummaries][net_appops_listappsummaries] 方法列出 Batch 帐户中的应用程序和应用程序包。
+可以使用 [ApplicationOperations][net_appops].[ListApplicationSummaries][net_appops_listappsummaries] 方法列出批处理帐户中的应用程序和应用程序包。
 
 ```csharp
 // List the applications and their application packages in the Batch account.
@@ -335,20 +335,20 @@ foreach (ApplicationSummary app in applications)
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [rest_add_pool_with_packages]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_apkgreference
 
-[1]: ./media/batch-application-packages/app_pkg_01.png "应用程序包统括示意图"
+[1]: ./media/batch-application-packages/app_pkg_01.png "应用程序包概要关系图"
 [2]: ./media/batch-application-packages/app_pkg_02.png "Azure 门户中的应用程序磁贴"
 [3]: ./media/batch-application-packages/app_pkg_03.png "Azure 门户中的应用程序边栏选项卡"
 [4]: ./media/batch-application-packages/app_pkg_04.png "Azure 门户中的应用程序详细信息边栏选项卡"
 [5]: ./media/batch-application-packages/app_pkg_05.png "Azure 门户中的新建应用程序边栏选项卡"
 [7]: ./media/batch-application-packages/app_pkg_07.png "Azure 门户中的更新或删除包下拉列表"
 [8]: ./media/batch-application-packages/app_pkg_08.png "Azure 门户中的新建应用程序包边栏选项卡"
-[9]: ./media/batch-application-packages/app_pkg_09.png "未链接的存储帐户警报"
+[9]: ./media/batch-application-packages/app_pkg_09.png "未链接存储帐户警报"
 [10]: ./media/batch-application-packages/app_pkg_10.png "在 Azure 门户中选择存储帐户边栏选项卡"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Azure 门户中的更新包边栏选项卡"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 门户中的删除包确认对话框"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

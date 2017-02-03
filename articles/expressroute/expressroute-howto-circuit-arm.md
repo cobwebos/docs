@@ -14,20 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: ganesr
+ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: a68481073ea07b4c7775da6682e1753b32f0793c
+ms.sourcegitcommit: 5c6ee9ef23e8594391a4fce313f945b31e6870a7
+ms.openlocfilehash: b6ee329480e0f8ef14175b636377d20496f3a7a3
 
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
-> * [Azure 门户 - Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell - 资源管理器](expressroute-howto-circuit-arm.md)
-> * [PowerShell - 经典](expressroute-howto-circuit-classic.md)
+> * [Resource Manager - Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
+> * [经典 - PowerShell](expressroute-howto-circuit-classic.md)
+> * [视频 - Azure 门户](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
-> 
+>
 
 本文介绍如何使用 Windows PowerShell cmdlet 和 Azure Resource Manager 部署模型创建 Azure ExpressRoute 线路。 本文还将介绍如何查看线路状态，以及如何更新、删除和取消预配线路。
 
@@ -36,8 +37,9 @@ ms.openlocfilehash: a68481073ea07b4c7775da6682e1753b32f0793c
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>开始之前
-* 获取最新版本的 Azure PowerShell 模块（至少 1.0 版）。 有关如何配置计算机以使用 PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 中的说明。
+* 获取最新版本的 Azure PowerShell 模块（至少 1.0 版）。 有关如何配置计算机以使用 PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明。
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
+
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>创建和预配 ExpressRoute 线路
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到你的 Azure 帐户，然后选择你的订阅
@@ -81,7 +83,7 @@ PowerShell cmdlet `Get-AzureRmExpressRouteServiceProvider` 将返回此信息，
 请确保指定合适的 SKU 层和 SKU 系列：
 
 * SKU 层决定是否启用 ExpressRoute 标准版或 ExpressRoute 高级版外接程序。 可以指定“Standard”以获取标准 SKU，或指定“Premium”以获取高级版外接程序。
-* SKU 系列确定计费类型。 可以指定“Metereddata”以获取数据流量套餐，指定“Unlimiteddata”以获取无限制流量套餐。 注意，可以将计费类型从 Metereddata 更改为 Unlimiteddata，但不能将类型从 Unlimiteddata 更改为 Metereddata。
+* SKU 系列确定计费类型。 可以指定“Metereddata”以获取数据流量套餐，指定“Unlimiteddata”以获取无限制流量套餐。 注意，可以将计费类型从 Metereddata 更改为 *Unlimiteddata*，但不能将类型从 Unlimiteddata 更改为 *Metereddata*。
 
 > [!IMPORTANT]
 > 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 确保连接服务提供商准备好预配线路后就执行此操作。
@@ -376,6 +378,7 @@ PowerShell cmdlet `Get-AzureRmExpressRouteServiceProvider` 将返回此信息，
 
 
 ## <a name="next-steps"></a>后续步骤
+
 创建你的线路后，请确保执行以下操作：
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-arm.md)
@@ -384,6 +387,6 @@ PowerShell cmdlet `Get-AzureRmExpressRouteServiceProvider` 将返回此信息，
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

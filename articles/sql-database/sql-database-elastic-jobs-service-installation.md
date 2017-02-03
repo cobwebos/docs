@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,19 +16,19 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56f8270666f4d132c5e07053f5a6d476878c9b5f
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 970767e091a172b8e66405c2b03d22a595529442
 
 
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
 可以通过 PowerShell 或 Azure 经典门户安装[**弹性数据库作业**](sql-database-elastic-jobs-overview.md)。只有安装了 PowerShell 程序包，才能获取使用 PowerShell API 创建和管理作业的权限。 此外，PowerShell API 目前提供的功能明显多于门户。
 
-如果从现有的**弹性数据库池**通过门户安装了**弹性数据库作业**，最新的 Powershell 预览包含用于升级现有安装的脚本。 强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
+如果从现有的“弹性池”通过门户安装了“弹性数据库作业”，最新的 Powershell 预览包含用于升级现有安装的脚本。 强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如需免费试用，请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* Azure PowerShell。 使用 [Web 平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376)安装最新版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* Azure PowerShell。 使用 [Web 平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376)安装最新版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 * [NuGet 命令行实用程序](https://nuget.org/nuget.exe)用于安装弹性数据库作业包。 有关详细信息，请参阅 http://docs.nuget.org/docs/start-here/installing-nuget。
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>下载并导入弹性数据库作业 PowerShell 程序包
@@ -146,11 +147,11 @@ ms.openlocfilehash: 56f8270666f4d132c5e07053f5a6d476878c9b5f
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>使用门户安装弹性数据库作业组件
-[创建弹性数据库池](sql-database-elastic-pool-create-portal.md)后，可以安装**弹性数据库作业**组件，以便对弹性数据库池中的每个数据库执行管理任务。 与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
+[创建弹性池](sql-database-elastic-pool-create-portal.md)后，可以安装**弹性数据库作业**组件，以便对弹性池中的每个数据库执行管理任务。 与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
 
 **估计完成时间：**10 分钟。
 
-1. 在 [Azure 门户](https://portal.azure.com/#)上的弹性数据库池的仪表板视图中，单击“**创建作业**”。
+1. 在 [Azure 门户](https://portal.azure.com/#)上的弹性池的仪表板视图中，单击“创建作业”。
 2. 如果是首次创建作业，必须通过单击“**预览版条款**”安装“**弹性数据库作业**”。
 3. 单击相应的复选框接受条款。
 4. 在“安装服务”视图中，单击“**作业凭据**”。
@@ -180,6 +181,6 @@ ms.openlocfilehash: 56f8270666f4d132c5e07053f5a6d476878c9b5f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

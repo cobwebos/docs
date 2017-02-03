@@ -3,7 +3,7 @@ title: "在 Azure Batch 中使用多实例任务运行 MPI 应用程序 | Micros
 description: "了解如何在 Azure Batch 中使用多实例任务类型执行消息传递接口 (MPI) 应用程序。"
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 10/21/2016
-ms.author: marsma
+ms.date: 01/20/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 7a51cca5f6e0c70978d45f7576a1e893b5eca536
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 90e41fc2a2a0109aa69bfd0d826444b6d3d559ea
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: 7a51cca5f6e0c70978d45f7576a1e893b5eca536
 5. 在主要任务和所有子任务成功完成协调命令*以后*，主要任务会在主节点上执行**应用程序命令**。 应用程序命令是多实例任务本身的命令行，只由主要任务执行。 在基于 [MS-MPI][msmpi_msdn] 的解决方案中，用户将在此处使用 `mpiexec.exe` 执行已启用 MPI 的应用程序。
 
 > [!NOTE]
-> 虽然“多实例任务”在功能上不同，但不是特殊的任务类型，例如 [StartTask][net_starttask] 或 [JobPreparationTask][net_jobprep]。 多实例任务只是已设置多实例设置的标准 Batch 任务（Batch .NET 中的 [CloudTask][net_task]）。 在本文中，我们将它称为**多实例任务**。
+> 虽然“多实例任务”在功能上不同，但并不是特殊的任务类型，例如 [StartTask][net_starttask] 或 [JobPreparationTask][net_jobprep]。 多实例任务只是已配置多实例设置的标准 Batch 任务（Batch .NET 中的 [CloudTask][net_task]）。 在本文中，我们将它称为**多实例任务**。
 >
 >
 
@@ -104,7 +104,7 @@ await myCloudPool.CommitAsync();
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>使用 Batch .NET 创建多实例任务
-我们已讨论池的要求和 MPI 包安装，现在让我们创建多实例任务。 在此代码段中，我们将创建一个标准 [CloudTask][net_task]，然后配置其 [MultiInstanceSettings][net_multiinstance_prop] 属性。 如前所述，多实例任务不是独特的任务类型，而只是已配置多实例设置的标准 Batch 任务。
+我们已讨论池的要求和 MPI 包安装，现在让我们创建多实例任务。 在此代码片段中，我们将创建一个标准 [CloudTask][net_task]，然后配置其 [MultiInstanceSettings][net_multiinstance_prop] 属性。 如前所述，多实例任务不是独特的任务类型，而只是已配置多实例设置的标准 Batch 任务。
 
 ```csharp
 // Create the multi-instance task. Its command line is the "application command"
@@ -168,7 +168,7 @@ cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIAp
 >
 
 ## <a name="environment-variables"></a>环境变量
-批处理创建的多个[环境变量][msdn_env_var] 特定于已分配给某个多实例任务的计算节点上的多实例任务。 协调命令行和应用程序命令行可以引用这些环境变量，就像其所执行的脚本和程序一样。
+Batch 创建的多个[环境变量][msdn_env_var]特定于已分配给某个多实例任务的计算节点上的多实例任务。 协调命令行和应用程序命令行可以引用这些环境变量，就像其所执行的脚本和程序一样。
 
 以下环境变量由多实例任务所使用的批处理服务创建：
 
@@ -179,10 +179,10 @@ cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIAp
 * `AZ_BATCH_TASK_SHARED_DIR`
 * `AZ_BATCH_IS_CURRENT_NODE_MASTER`
 
-如需这些环境变量以及其他批处理计算节点环境变量的完整详细信息（包括内容和可见性），请参阅 [Compute node environment variables][msdn_env_var]（计算节点环境变量）。
+如需这些环境变量以及其他 Batch 计算节点环境变量的完整详细信息（包括内容和可见性），请参阅[计算节点环境变量][msdn_env_var]。
 
 > [!TIP]
-> 此批处理 Linux MPI 代码示例包含一个示例，介绍了如何使用这些环境变量中的其中几个。 [coordination-cmd][coord_cmd_example] Bash 脚本可从 Azure 存储下载常用应用程序和输入文件、在主节点上启用网络文件系统 (NFS) 共享，以及将其他分配给多实例任务的节点配置为 NFS 客户端。
+> 此批处理 Linux MPI 代码示例包含一个示例，介绍了如何使用这些环境变量中的其中几个。 [coordination-cmd][coord_cmd_example] Bash 脚本可从 Azure 存储下载常用应用程序和输入文件，在主节点上启用网络文件系统 (NFS) 共享，以及将其他分配给多实例任务的节点配置为 NFS 客户端。
 >
 >
 
@@ -205,7 +205,7 @@ cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIAp
 
 当你删除多实例任务时，Batch 服务也会删除主要任务和所有子任务。 所有子任务目录及其文件从计算节点中删除，如同在标准任务中一样。
 
-用于多实例任务的 [TaskConstraints][net_taskconstraints]，如 [MaxTaskRetryCount][net_taskconstraint_maxretry]、[MaxWallClockTime][net_taskconstraint_maxwallclock] 和 [RetentionTime][net_taskconstraint_retention] 属性，因用于标准任务而被遵循，且适用于主要子任务和所有子任务。 但是，如果在多实例任务添加到作业之后更改 [RetentionTime][net_taskconstraint_retention] 属性，此更改只应用到主要任务。 所有的子任务继续使用原始 [RetentionTime][net_taskconstraint_retention]。
+多实例任务的 [TaskConstraints][net_taskconstraints]（例如 [MaxTaskRetryCount][net_taskconstraint_maxretry]、[MaxWallClockTime][net_taskconstraint_maxwallclock] 和 [RetentionTime][net_taskconstraint_retention] 属性）都视为用于标准任务，并应用到主要任务和所有子任务。 但是，如果在多实例任务添加到作业之后更改 [RetentionTime][net_taskconstraint_retention] 属性，此更改只应用到主要任务。 所有的子任务继续使用原始 [RetentionTime][net_taskconstraint_retention]。
 
 如果最近的任务是多实例任务的一部分，计算节点的最近任务列表反映子任务的 ID。
 
@@ -257,13 +257,13 @@ await subtasks.ForEachAsync(async (subtask) =>
 ```
 
 ## <a name="code-sample"></a>代码示例
-GitHub 上的 [MultiInstanceTasks][github_mpi] 代码示例演示了如何通过多实例任务在批处理计算节点上运行 [MS-MPI][msmpi_msdn] 应用程序。 按[准备](#preparation)和[执行](#execution)中的步骤运行该示例。
+GitHub 上的 [MultiInstanceTasks][github_mpi] 代码示例演示了如何通过多实例任务在 Batch 计算节点上运行 [MS-MPI][msmpi_msdn] 应用程序。 按[准备](#preparation)和[执行](#execution)中的步骤运行该示例。
 
 ### <a name="preparation"></a>准备工作
-1. 执行 [How to compile and run a simple MS-MPI program][msmpi_howto]（如何编译和运行简单的 MS-MPI 程序）中的头两个步骤。 这样即可满足下一步的先决条件。
-2. 生成 [MPIHelloWorld][helloworld_proj] 示例 MPI 程序的*发行* 版。 该程序是将在计算节点上通过多实例任务运行的程序。
+1. 执行[如何编译和运行简单的 MS-MPI 程序][msmpi_howto]中的开始两个步骤。 这样即可满足下一步的先决条件。
+2. 生成 [MPIHelloWorld][helloworld_proj] 示例 MPI 程序的发行版。 该程序是将在计算节点上通过多实例任务运行的程序。
 3. 创建包含 `MPIHelloWorld.exe`（在步骤 2 构建）和 `MSMpiSetup.exe`（在步骤 1 下载）的 zip 文件。 需在下一步将此 zip 文件作为应用程序包上传。
-4. 通过 [Azure 门户][portal] 创建名为“MPIHelloWorld”的批处理[应用程序](batch-application-packages.md)，并将在上一步创建的 zip 文件指定为“1.0”版应用程序包。 有关详细信息，请参阅[上载和管理应用程序](batch-application-packages.md#upload-and-manage-applications)。
+4. 通过 [Azure 门户][portal]创建名为“MPIHelloWorld”的 Batch [应用程序](batch-application-packages.md)，并将在上一步创建的 zip 文件指定为“1.0”版应用程序包。 有关详细信息，请参阅[上载和管理应用程序](batch-application-packages.md#upload-and-manage-applications)。
 
 > [!TIP]
 > 生成*发行*版 `MPIHelloWorld.exe`，这样就不需在应用程序包中包括任何其他依赖项（例如 `msvcp140d.dll` 或 `vcruntime140d.dll`）。
@@ -277,7 +277,7 @@ GitHub 上的 [MultiInstanceTasks][github_mpi] 代码示例演示了如何通过
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. 将批处理和存储帐户凭据输入 **Microsoft.Azure.Batch.Samples.Common** 项目中的 `AccountSettings.settings`。
 4. **生成并运行** MultiInstanceTasks 解决方案，在批处理池中的计算节点上执行 MPI 示例应用程序。
-5. *可选*：通过 [Azure 门户][portal] 或 [批处理资源管理器][batch_explorer] 检查示例池、作业和任务（“MultiInstanceSamplePool”、“MultiInstanceSampleJob”、“MultiInstanceSampleTask”），然后再删除这些资源。
+5. 可选：通过 [Azure 门户][portal]或 [Batch 资源管理器][batch_explorer]检查示例池、作业和任务（“MultiInstanceSamplePool”、“MultiInstanceSampleJob”、“MultiInstanceSampleTask”），然后再删除这些资源。
 
 > [!TIP]
 > 如果没有 Visual Studio，可下载免费版 [Visual Studio Community][visual_studio]。
@@ -320,7 +320,7 @@ Sample complete, hit ENTER to exit...
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* Microsoft HPC 和 Azure 批处理团队博客讨论 [MPI support for Linux on Azure Batch][blog_mpi_linux]（Azure 批处理上针对 Linux 的 MPI 支持），并介绍如何将 [OpenFOAM][openfoam] 与批处理配合使用。 可以查找适用于 [OpenFOAM example on GitHub][github_mpi]（GitHub 上的 OpenFOAM 示例）的 Python 代码示例。
+* Microsoft HPC 和 Azure Batch 团队博客讨论 [Azure Batch 上针对 Linux 的 MPI 支持][blog_mpi_linux]，并介绍如何将 [OpenFOAM][openfoam] 与 Batch 配合使用。 可以查找适用于 [GitHub 上的 OpenFOAM 示例][github_mpi]的 Python 代码示例。
 * 了解如何[创建 Linux 计算节点池](batch-linux-nodes.md)，以便将其用在 Azure 批处理 MPI 解决方案中。
 
 [helloworld_proj]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld
@@ -369,6 +369,6 @@ Sample complete, hit ENTER to exit...
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

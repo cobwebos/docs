@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 289f6e91458a1a4799941ccea46f7ee6d1a296c4
+ms.sourcegitcommit: 86711ba89442c3569b570bbf3ea2d1661a469011
+ms.openlocfilehash: 34be29749075b9953950ffd64d2526430307d33e
 
 
 ---
@@ -148,7 +148,9 @@ Data Lake Analytics 通过 Azure Active Directory 使用基于角色的访问控
 3. 在“用户”边栏选项卡中，单击“添加”。
 4. 选择一个角色并添加用户，然后单击“确定”。
 
-**注意：如果此用户或安全组需要提交作业，也需要为其授予 Data Lake Store 上的权限。有关详细信息，请参阅[保护 Data Lake Store 中的数据](../data-lake-store/data-lake-store-secure-data.md)。**
+>[!NOTE]
+>如果此用户或安全组需要提交作业，也需要为其授予 Data Lake Store 上的权限。 有关详细信息，请参阅[保护 Data Lake Store 中的数据](../data-lake-store/data-lake-store-secure-data.md)
+>
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -248,6 +250,6 @@ Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

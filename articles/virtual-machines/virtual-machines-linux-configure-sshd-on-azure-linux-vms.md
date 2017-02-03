@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/21/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: fa6c9b6b60aef689568c58699eeb89d14b1ae2bf
-ms.openlocfilehash: 73c47bcfbe018947930bb23fbbcc201b91a49944
+ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
+ms.openlocfilehash: a606f06de55b1db4392d066a3e1d026eb3b54d74
 
 
 ---
@@ -77,7 +77,7 @@ ClientAliveCountMax 0
 
 SSHD 是在 Linux VM 上运行的 SSH 服务器。  SSH 是一个客户端，通过 MacBook、Linux 工作站上的 shell 或 Windows 上的 Bash 运行。  SSH 也是一个协议，用于保护和加密工作站与 Linux VM 之间的通信，让 SSH 也充当 VPN（虚拟专用网络）。
 
-在本文中，必须让用户在 Linux VM 中保持登录状态，使整个演练得以顺畅进行。  SSH 连接一旦建立就始终是一个打开的会话，除非窗口关闭。  只要有一个终端处于登录状态，即可对 SSHD 服务进行更改，而不会被系统锁定（如果所做更改为重大更改）。  如果用户在进行重大 SSHD 配置时被锁定在 Linux VM 之外，则可利用 Azure 提供的功能，通过 [Azure VM 访问扩展](virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)重置重大的 SSHD 配置。
+在本文中，必须让用户在 Linux VM 中保持登录状态，使整个演练得以顺畅进行。  SSH 连接一旦建立就始终是一个打开的会话，除非窗口关闭。  只要有一个终端处于登录状态，即可对 SSHD 服务进行更改，而不会被系统锁定（如果所做更改为重大更改）。  如果用户在进行重大 SSHD 配置时被锁定在 Linux VM 之外，则可利用 Azure 提供的功能，通过 [Azure VM 访问扩展](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)重置重大的 SSHD 配置。
 
 因此，我们会打开两个终端，并从它们通过 SSH 登录到 Linux VM。  我们使用第一个终端更改 SSHD 配置文件，然后重新启动 SSHD 服务。  重新启动服务后，我们会使用第二个终端测试这些更改。  由于我们要禁用 SSH 密码并严重依赖于 SSH 密钥，因此如果 SSH 密钥不正确而关闭 VM 连接，VM 将永久被锁定，并且没有人能够登录。这样，只能将它删除后再重新创建。
 
@@ -177,14 +177,14 @@ azure vm reset-access \
 
 在 Linux VM 上配置并锁定 SSH 服务器以后，即可按照其他安全方面的最佳实践进行操作。  
 
-* [管理用户、SSH，并使用 VMAccess 扩展检查或修复 Azure Linux VM 上的磁盘](virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [管理用户、SSH，并使用 VMAccess 扩展检查或修复 Azure Linux VM 上的磁盘](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [使用 Azure CLI 加密 Linux VM 上的磁盘](virtual-machines-linux-encrypt-disks?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用 Azure CLI 加密 Linux VM 上的磁盘](virtual-machines-linux-encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [Azure Resource Manager 模板中的访问权限和安全性](virtual-machines-linux-dotnet-core-3-access-security?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Resource Manager 模板中的访问权限和安全性](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -13,19 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: 1442295477760e7f528621be42b72f1c02625c50
+ms.sourcegitcommit: ec5e547b88bedd50f451997616c7d72b0b1b4bd4
+ms.openlocfilehash: 66c06ab6beb5e1de9cba25382834f4f9f209fa2f
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的路由
 > [!div class="op_single_selector"]
-> * [Azure 门户 - Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> * [PowerShell - 资源管理器](expressroute-howto-routing-arm.md)
-> * [PowerShell - 经典](expressroute-howto-routing-classic.md)
+> * [资源管理器 - Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-routing-arm.md)
+> * [经典 - PowerShell](expressroute-howto-routing-classic.md)
+> * [视频 - 专用对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [视频 - 公共对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [视频 - Microsoft 对等互连](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > 
 > 
 
@@ -36,7 +39,7 @@ ms.openlocfilehash: 1442295477760e7f528621be42b72f1c02625c50
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
-* 你将需要最新版本的 Azure PowerShell 模块。 可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)的 PowerShell 部分下载最新 PowerShell 模块。 按照[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 页上的说明操作，以便获取有关如何配置计算机以使用 Azure PowerShell 模块的分步指导。 
+* 你将需要最新版本的 Azure PowerShell 模块。 可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)的 PowerShell 部分下载最新 PowerShell 模块。 按照[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 页上的说明操作，以便获取有关如何配置计算机以使用 Azure PowerShell 模块的分步指导。 
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
 * 你必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
 
@@ -310,6 +313,6 @@ ms.openlocfilehash: 1442295477760e7f528621be42b72f1c02625c50
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

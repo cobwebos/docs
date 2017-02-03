@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: f858344d-085b-4022-935e-1b5fa20adbac
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 923bc7102e5cc506307da25ee8125780076167ab
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 7b81ae0dd265c7c23cff7ce7862f52a2bbe89857
 
 
 ---
@@ -27,11 +28,11 @@ ms.openlocfilehash: 923bc7102e5cc506307da25ee8125780076167ab
 > 
 > 
 
-**弹性数据库作业**可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测收集等管理操作，简化多组数据库的管理。 目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。 但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性数据库池（预览）](sql-database-elastic-pool.md)中的所有数据库执行。 若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](sql-database-elastic-scale-introduction.md)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。 有关作业的详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
+**弹性数据库作业**可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测收集等管理操作，简化多组数据库的管理。 目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。 但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性池（预览）](sql-database-elastic-pool.md)中的所有数据库执行操作。 若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](sql-database-elastic-scale-introduction.md)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。 有关作业的详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如需免费试用，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个弹性数据库池。 请参阅[关于弹性数据库池](sql-database-elastic-pool.md)
+* 弹性池。 请参阅[关于弹性池](sql-database-elastic-pool.md)的信息
 * 安装弹性数据库作业服务组件。 请参阅[安装弹性数据库作业服务](sql-database-elastic-jobs-service-installation.md)。
 
 ## <a name="creating-jobs"></a>创建作业
@@ -88,7 +89,7 @@ ms.openlocfilehash: 923bc7102e5cc506307da25ee8125780076167ab
 ## <a name="checking-job-status"></a>检查作业状态
 作业开始后，你可以检查其进度。
 
-1. 在弹性数据库池页中，单击“**管理作业**”。
+1. 在弹性池页中，单击“管理作业”。
    
     ![单击“管理作业”][2]
 2. 单击作业的名称 (a)。 “**状态**”可能是“已完成”或“失败”。 将显示作业的详细信息 (b) 及其创建和运行日期与时间。 以下列表 (c) 显示了针对池中每个数据库运行的脚本的进度，同时还提供了该脚本的日期和时间详细信息。
@@ -113,6 +114,6 @@ ms.openlocfilehash: 923bc7102e5cc506307da25ee8125780076167ab
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

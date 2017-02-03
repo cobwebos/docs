@@ -3,8 +3,8 @@ title: "通过 .NET 开始使用 Azure Blob 存储（对象存储） | Microsoft
 description: "使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 services: storage
 documentationcenter: .net
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: d18a8fc8-97cb-4d37-a408-a6f8107ea8b3
 ms.service: storage
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 11/17/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: fe4b9c356e5f7d56cb7e1fa62344095353d0b699
-ms.openlocfilehash: d2d1a5aae3e1965e7010b11218b6b1aa27ec524d
+ms.sourcegitcommit: 12ce6b6bccf3ea2aa2945ddd775716f29cf01e1f
+ms.openlocfilehash: 24b23c412ae4e092427b4e68b16df0369f9e9f0e
 
 ---
 
 # <a name="get-started-with-azure-blob-storage-using-net"></a>通过 .NET 开始使用 Azure Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
+[!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="overview"></a>概述
 Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
@@ -33,7 +33,7 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 **先决条件：**
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
 * [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * 一个 [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
@@ -403,13 +403,13 @@ Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
 [Blob8]: ./media/storage-dotnet-how-to-use-blobs/blob8.png
 [Blob9]: ./media/storage-dotnet-how-to-use-blobs/blob9.png
 
-[Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-[配置连接字符串]: http://msdn.microsoft.com/library/azure/ee758697.aspx
-[.NET 客户端库参考]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[REST API 参考]: http://msdn.microsoft.com/library/azure/dd179355
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
+[.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
+[REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

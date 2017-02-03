@@ -33,7 +33,7 @@
 ## 规划和设计
 ### [Azure 应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Azure 应用服务和现有的 Azure 服务](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [应用服务计划深入介绍](azure-web-sites-web-hosting-plans-in-depth-overview.md)
+### [应用服务计划深度介绍](azure-web-sites-web-hosting-plans-in-depth-overview.md)
 ### [高密度托管](app-service-high-density-hosting.md)
 ### [Linux 上的应用服务](app-service-linux-readme.md)
 ### [在 Azure 应用服务中使用 WebJobs](app-service-webjobs-readme.md)
@@ -145,20 +145,19 @@
 ### [流式传输日志和控制台](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [使用 Visual Studio 进行排除故障](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
-# 参考
+# 资源
 ## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [应用服务参考](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [WebJob 资源](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [REST](https://docs.microsoft.com/rest/api/appservice/)
-
-# 资源
 ## [定价](https://azure.microsoft.com/pricing/details/app-service/)  
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
 ## [服务更新](https://azure.microsoft.com/updates/?product=app-service) 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO2-->
 
 

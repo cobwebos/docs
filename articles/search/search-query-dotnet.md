@@ -11,11 +11,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
 > 
 > 
 
-本文介绍如何使用 [Azure 搜索 .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)查询索引。
+本文介绍如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)查询索引。
 
 开始本演练前，应已[创建 Azure 搜索索引](search-what-is-an-index.md)并[填充数据](search-what-is-data-import.md)。
 
@@ -37,7 +37,7 @@ ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
 ## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. 标识 Azure 搜索服务的查询 API 密钥
 创建好 Azure 搜索索引后，即可使用 .NET SDK 发出查询。 首先，需要获取为已预配的搜索服务生成的其中一个查询 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-1. 若要查找服务的 API 密钥，必须登录到 [Azure 门户](https://portal.azure.com/)
+1. 若要查找服务的 API 密钥，必须登录 [Azure 门户](https://portal.azure.com/)
 2. 转到 Azure 搜索服务的边栏选项卡
 3. 单击“密钥”图标
 
@@ -162,7 +162,6 @@ Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 Search the entire index for the term 'motel':
 
 ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
-
 ```
 
 上面的示例代码使用控制台来输出搜索结果。 同样需要在自己的应用程序中显示搜索结果。 请在 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) 上查看此示例，查看如何在基于 ASP.NET MVC 的 Web 应用程序中呈现搜索结果。

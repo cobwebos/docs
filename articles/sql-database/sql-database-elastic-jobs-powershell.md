@@ -7,6 +7,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 737d8d13-5632-4e18-9cb0-4d3b8a19e495
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: bd673f8ec8bbe6a9971dbcfcf52fe34466e3d3b3
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如需免费试用，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
 * 使用弹性数据库工具创建的一组数据库。 请参阅[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)。
-* Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 * **弹性数据库作业** PowerShell 包：请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>选择 Azure 订阅
@@ -483,7 +484,7 @@ ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
     Remove-AzureSqlJob -JobName $jobName
 
 ## <a name="to-create-a-custom-database-target"></a>创建自定义数据库目标
-你可以定义各种可以直接执行或包括到自定义数据库组中的自定义数据库目标。 例如，由于**弹性数据库池**尚不能通过 PowerShell API 直接使用，你可以创建自定义数据库目标和自定义数据库集合目标，其中包含池中的所有数据库。
+你可以定义各种可以直接执行或包括到自定义数据库组中的自定义数据库目标。 例如，由于**弹性池**尚不能通过 PowerShell API 直接使用，可创建自定义数据库目标和自定义数据库集合目标，其中包含池中的所有数据库。
 
 设置以下变量以反映所需的数据库信息：
 
@@ -651,6 +652,6 @@ ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

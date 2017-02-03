@@ -12,15 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 12/11/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3600f03c22805789b1f75f892962e0d054e84058
+ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
+ms.openlocfilehash: 7c2709d472d7512eda927f4f70f82e7f74adca0c
 
 
 ---
 # <a name="using-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine DRM 动态通用加密
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-drm.md)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
@@ -49,6 +50,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 可以从 [此处](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)下载本文所述的示例。
 
 ## <a name="configuring-dynamic-common-encryption-and-drm-license-delivery-services"></a>配置动态通用加密和 DRM 许可证传送服务
+
 下面是使用 PlayReady 保护资产时需要执行的常规步骤，这些步骤使用媒体服务许可证传送服务，也使用动态加密。
 
 1. 创建资产并将文件上载到资产。
@@ -56,13 +58,13 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 3. 创建内容密钥并将其与编码资产相关联。 在媒体服务中，内容密钥包含资产的加密密钥。
 4. 配置内容密钥授权策略。 你必须配置内容密钥授权策略，客户端必须遵守该策略，才能将内容密钥传送到客户端。
 
-在创建内容密钥授权策略时，需要指定以下信息：传送方法（PlayReady 或 Widevine）、限制（开放或令牌），以及用于定义如何将密钥传送到客户端的密钥传送类型的具体信息（[PlayReady](media-services-playready-license-template-overview.md) 或 [Widevine](media-services-widevine-license-template-overview.md) 许可证模板）。
+    在创建内容密钥授权策略时，需要指定以下信息：传送方法（PlayReady 或 Widevine）、限制（开放或令牌），以及用于定义如何将密钥传送到客户端的密钥传送类型的具体信息（[PlayReady](media-services-playready-license-template-overview.md) 或 [Widevine](media-services-widevine-license-template-overview.md) 许可证模板）。
 
-1. 为资产配置传送策略。 传送策略配置包括：传送协议（例如 MPEG DASH、HLS、HDS、平滑流式处理或全部）、动态加密类型（例如常用加密）、PlayReady 或 Widevine 许可证获取 URL。
+5. 为资产配置传送策略。 传送策略配置包括：传送协议（例如 MPEG DASH、HLS、平滑流式处理或全部）、动态加密类型（例如常用加密）、PlayReady 或 Widevine 许可证获取 URL。
 
-你可以将不同的策略应用到同一资产上的每个协议。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果你根本没有定义任何传送策略，则情况不是这样。 此时，将允许所有明文形式的协议。
+    你可以将不同的策略应用到同一资产上的每个协议。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果你根本没有定义任何传送策略，则情况不是这样。 此时，将允许所有明文形式的协议。
 
-1. 创建 OnDemand 定位符以获取流 URL。
+6. 创建 OnDemand 定位符以获取流 URL。
 
 你可以在主题末尾找到完整的 .NET 示例。
 
@@ -101,7 +103,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 为资产配置传送策略。 资产传送策略配置包括：
 
 * DRM 许可证获取 URL。
-* 资产传送协议（例如 MPEG DASH、HLS、HDS、平滑流或全部）。
+* 资产传送协议（例如 MPEG DASH、HLS、平滑流式处理或全部）。
 * 动态加密类型（在本示例中为“常用加密”）。
 
 有关详细信息，请参阅 [配置资产传送策略 ](media-services-rest-configure-asset-delivery-policy.md)。
