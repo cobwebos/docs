@@ -111,7 +111,7 @@
 6. 使用以下命令编辑 *ifcfg-eth0:0* 文件：
 
     ```bash
-    vi ifcfg-eth1
+    vi ifcfg-eth0:0
     ```
 
 7. 使用以下命令在文件中将设备更改为适当的名称，在本例中为 *eth0:0*：
@@ -131,7 +131,7 @@
 
     ```bash
     /etc/init.d/network restart
-    Ipconfig
+    ifconfig
     ```
 
     应会在返回的列表中看到添加的 IP 地址 *eth0:0*。
