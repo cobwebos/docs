@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 11/01/2016
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 844abce7941b7285c88aa0eda9eca43e1e5e42da
+ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
+ms.openlocfilehash: 801a9d0e92a248d2e9843f13cfce74b948cf0d4b
 
 
 ---
@@ -42,7 +42,7 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 当前支持以下数据源：
 
 * **Azure SQL 数据库**和 **Azure VM 上的 SQL Server**。 若要获取有针对性的演练，请参阅[本文](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。 
-* **Azure DocumentDB**。 若要获取有针对性的演练，请参阅[本文](../documentdb/documentdb-search-indexer.md)。 
+* **Azure DocumentDB**。 若要获取有针对性的演练，请参阅[本文](search-howto-index-documentdb.md)。 
 * **Azure Blob 存储**，包括以下文档格式：PDF、Microsoft Office（DOCX/DOC、XSLX/XLS、PPTX/PPT、MSG）、HTML、XML、ZIP 和纯文本文件（包括 JSON）。 若要获取有针对性的演练，请参阅[本文](search-howto-indexing-azure-blob-storage.md)。
 * **Azure 表存储**。 若要获取有针对性的演练，请参阅[本文](search-howto-indexing-azure-tables.md)。
 
@@ -799,6 +799,6 @@ Azure 搜索可以与某些常见数据源直接集成，无需编写代码即�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

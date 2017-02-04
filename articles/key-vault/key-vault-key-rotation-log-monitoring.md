@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
 translationtype: Human Translation
-ms.sourcegitcommit: 4115a3638519896c3710ddc33dd0caa2e8d9d720
-ms.openlocfilehash: 05e33c56e6aa6bedfa2e6b8ff18fe182d87ed80e
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: cc872e8d9bc0662f46d5f394f9c98885e34fe67a
 
 
 ---
@@ -416,7 +416,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ### <a name="azure-logic-app"></a>Azure 逻辑应用
 接下来，必须创建一个 Azure 逻辑应用，用于选取函数推送到服务总线队列的事件、分析内容，然后根据匹配的条件发送电子邮件。
 
-通过转到“新建”>“逻辑应用”，[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+通过转到“新建”>“逻辑应用”，[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 创建逻辑应用后，导航到它，然后选择“编辑”。 在逻辑应用编辑器中，选择“服务总线队列”，并输入你的服务总线凭据以将其连接到队列。
 
@@ -440,6 +440,6 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

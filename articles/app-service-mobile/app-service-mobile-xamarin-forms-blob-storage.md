@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2e8cdbbd7f97c5095a151d0ef228cfdeb671345a
-ms.openlocfilehash: 1f5eb285e061b1e221e1d68f894bbd9dd0a50b32
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c8568846837f404eee0293be284c70bd27f06380
 
 
 ---
@@ -37,7 +37,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
 * 完成[创建 Xamarin.Forms 应用]教程，其中列出了其他先决条件。 本文使用该教程中完成的应用。
 
 > [!NOTE]
-> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://azure.microsoft.com/try/app-service/mobile/)（试用应用服务）。 在那里，可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -691,6 +691,6 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

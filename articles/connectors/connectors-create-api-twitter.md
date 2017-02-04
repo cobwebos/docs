@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a9a1bcd75dbea49a4eff8e7eb9113cc47f7ab86f
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: a9a1bcd75dbea49a4eff8e7eb9113cc47f7ab86f
 * 访问时间线、好友和关注者
 * 执行下面所述的任意其他操作和触发器  
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../app-service-logic/app-service-logic-create-a-logic-app.md)开始操作。  
+若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。  
 
 ## <a name="connect-to-twitter"></a>连接到 Twitter
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
@@ -39,7 +39,7 @@ ms.openlocfilehash: a9a1bcd75dbea49a4eff8e7eb9113cc47f7ab86f
 > 
 
 ## <a name="use-a-twitter-trigger"></a>使用 Twitter 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 在此示例中，我将演示如何使用“发布新推文时”触发器搜索 #Seattle，如果找到了 #Seattle，则使用推文中的文本更新 Dropbox 中的文件。 在企业示例中，可搜索公司名称并使用推文中的文本更新 SQL 数据库。
 
@@ -80,7 +80,7 @@ ms.openlocfilehash: a9a1bcd75dbea49a4eff8e7eb9113cc47f7ab86f
    ![Twitter 条件图 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>使用 Twitter 操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。  
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
 
 现已添加触发器，按照以下步骤添加操作，该操作将发布带有该触发器找到的推文内容的新推文。 在本演练中，将仅发布来自具有多于 50 个关注者的用户推文。  
 
@@ -384,11 +384,11 @@ TriggerBatchResponse[TweetModel]
 | default |操作失败。 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

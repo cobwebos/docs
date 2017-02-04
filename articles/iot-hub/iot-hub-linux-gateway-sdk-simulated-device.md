@@ -1,6 +1,6 @@
 ---
-title: "使用 IoT 网关 SDK 模拟设备 | Microsoft 文档"
-description: "使用 Linux 的 Azure IoT 网关 SDK 演练，说明了如何使用 Azure IoT 网关 SDK 从模拟设备发送遥测数据。"
+title: "使用 Azure IoT 网关 SDK 模拟设备 (Linux) | Microsoft Docs"
+description: "如何在 Linux 上使用 Azure IoT 网关 SDK 创建模拟设备，从而通过网关发送遥测数据到 IoT 中心。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/29/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: a6a97202c8221680f13bd8b29fe8d616578629cd
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: ce70835a4f8f39d320b1effdb0dee11abd22cd81
 
 
 ---
-# <a name="azure-iot-gateway-sdk--send-device-to-cloud-messages-with-a-simulated-device-using-linux"></a>Azure IoT 网关 SDK - 使用 Linux 通过模拟设备发送“设备到云”消息
+# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-simulated-device-linux"></a>使用 Azure IoT 网关 SDK，通过模拟设备发送设备到云的消息 (Linux)
 [!INCLUDE [iot-hub-gateway-sdk-simulated-selector](../../includes/iot-hub-gateway-sdk-simulated-selector.md)]
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
@@ -34,7 +34,7 @@ ms.openlocfilehash: a6a97202c8221680f13bd8b29fe8d616578629cd
 
 1. 打开 shell。
 2. 浏览到本地 **azure-iot-gateway-sdk** 存储库副本中的根文件夹。
-3. 运行 **tools/build.sh** 脚本。 此脚本使用 **cmake** 实用工具在 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中创建一个名为 **build** 的文件夹，并生成一个生成文件。 然后，该脚本将生成解决方案并运行测试。
+3. 运行 **tools/build.sh** 脚本。 此脚本使用 **cmake** 实用工具在 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中创建一个名为 **build** 的文件夹，并生成一个生成文件。 然后，该脚本将生成解决方案并跳过单元测试和端到端测试。 如果想要生成并运行单元测试，请添加 **--run-unittests** 参数。 如果想要生成并运行端到端测试，请添加 **--run-e2e-tests**。 
 
 > [!NOTE]
 > 每次运行 **build.sh** 脚本时，都会删除 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中的 **build** 文件夹并重新生成。
@@ -152,11 +152,11 @@ ms.openlocfilehash: a6a97202c8221680f13bd8b29fe8d616578629cd
 
 运行示例：
 
-1. 在 shell 中，浏览到 **azure-iot-gateway-sdk** 存储库本地副本中的根文件夹。
+1. 在 shell 中，浏览到 **azure-iot-gateway-sdk/build** 文件夹。
 2. 运行以下命令：
    
     ```
-    ./build/samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
+    ./samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./../samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
     ```
 3. 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具来监视 IoT 中心从网关接收的消息。
 
@@ -168,7 +168,7 @@ ms.openlocfilehash: a6a97202c8221680f13bd8b29fe8d616578629cd
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [从根本上保护 IoT 解决方案][lnk-securing]
 
 <!-- Links -->
@@ -185,6 +185,6 @@ ms.openlocfilehash: a6a97202c8221680f13bd8b29fe8d616578629cd
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

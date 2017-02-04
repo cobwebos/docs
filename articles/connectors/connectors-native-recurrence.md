@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d85eb09283bc464e78bf84401eeb0ff366ef5773
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: fe558958c316c8dba42163e277ae01451f712e5a
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: d85eb09283bc464e78bf84401eeb0ff366ef5773
 * 将工作流计划为每天运行 SQL 存储过程。
 * 通过电子邮件发送上周内关于特定井号标签的所有推文的摘要。
 
-若要开始在逻辑应用中使用重复触发器，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要开始在逻辑应用中使用重复触发器，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="use-a-recurrence-trigger"></a>使用重复触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。
@@ -59,11 +59,11 @@ ms.openlocfilehash: d85eb09283bc464e78bf84401eeb0ff366ef5773
 <br>
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

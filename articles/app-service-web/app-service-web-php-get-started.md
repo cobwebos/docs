@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 6bbbf253b9735695e7ace0c27e4bc96df7a0c779
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: cddcfcc816a2af74fbdd68e4e1031051c42b45a7
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: 6bbbf253b9735695e7ace0c27e4bc96df7a0c779
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 查看实际应用中的 Web 应用。 立即[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，创建短期的入门级应用 — 无需信用卡，也无需做出任何承诺。
+> 查看实际应用中的 Web 应用。 立即[试用应用服务](https://azure.microsoft.com/try/app-service/)，创建短期的入门级应用 — 无需信用卡，也无需做出任何承诺。
 > 
 > 
 
@@ -278,6 +278,6 @@ ms.openlocfilehash: 6bbbf253b9735695e7ace0c27e4bc96df7a0c779
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

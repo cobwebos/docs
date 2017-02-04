@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3d2ce46a66079ef2737b7ca6fbe46ff988e2bc84
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 92c0892128655141f29380890c31451e62ca8853
 
 
 ---
@@ -37,7 +37,7 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 > 
 > 
 
-若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../app-service-logic/app-service-logic-what-are-logic-apps.md)和[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="connect-to-office-365"></a>连接到 Office 365
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 Office 365 Outlook，首先需要 Office 365 *连接*。 若要创建连接，请输入通常用于访问要连接到的服务的凭据。 因此，在 Office 365 Outlook 中，将凭据输入到 Office 365 帐户以创建连接。
@@ -48,7 +48,7 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 > 
 
 ## <a name="use-a-trigger"></a>使用触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以你希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以你希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 1. 在逻辑应用中，键入“office 365”获取触发器列表：  
    
@@ -69,7 +69,7 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 4. **保存**更改（工具栏的左上角）。 你的逻辑应用将保存，并且可能自动启用。
 
 ## <a name="use-an-action"></a>使用操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
    
@@ -734,11 +734,11 @@ Contact：联系人
 | default |操作失败。 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

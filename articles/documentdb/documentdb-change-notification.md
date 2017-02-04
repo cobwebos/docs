@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/23/2016
 ms.author: b-hoedid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 115d35bd56918ad8e93a9032cbff6e84a7b70e0c
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 5f3e1f264d126ab5b1fdda312f8e4f47d0b114e7
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 115d35bd56918ad8e93a9032cbff6e84a7b70e0c
 
 我已使用 BizTalk 服务器许多年，这是使用 [WCF LOB](https://msdn.microsoft.com/library/bb798128.aspx) 适配器时非常常见的案例。 因此，我决定试试看能否在 DocumentDB 中对新增和/或已修改的文档重现此功能。
 
-本文概述了更改通知解决方案的组件，其中包括[触发器](documentdb-programming.md#trigger)和[逻辑应用](../app-service-logic/app-service-logic-what-are-logic-apps.md)。 重要代码段以内联方式提供，你可以在 [GitHub](https://github.com/HEDIDIN/DocDbNotifications) 上获取整个解决方案。
+本文概述了更改通知解决方案的组件，其中包括[触发器](documentdb-programming.md#trigger)和[逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)。 重要代码段以内联方式提供，你可以在 [GitHub](https://github.com/HEDIDIN/DocDbNotifications) 上获取整个解决方案。
 
 ## <a name="use-case"></a>使用案例
 下列案例是本文的使用案例。
@@ -77,7 +77,7 @@ IT 部门表示他们可以轻松提供此通知。 他们还表示可以将文�
 你现在已了解该工作流的用途，让我们看看其实施方式。
 
 ### <a name="lets-start-with-the-main-logic-app"></a>从主要逻辑应用开始
-如果你不熟悉逻辑应用，可以从 [Azure 应用商店](https://portal.azure.com/)中获取，而且你可以在[什么是逻辑应用？](../app-service-logic/app-service-logic-what-are-logic-apps.md)中进一步了解
+如果你不熟悉逻辑应用，可以从 [Azure 应用商店](https://portal.azure.com/)中获取，而且你可以在[什么是逻辑应用？](../logic-apps/logic-apps-what-are-logic-apps.md)中进一步了解
 
 创建新的逻辑应用时，系统会询问你**你要如何开始？**
 
@@ -887,7 +887,7 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 
 ```
 
-此触发器已设置为 24 个小时重复一次。 操作为 HTTP POST，该操作使用主要逻辑应用的回叫 URL。 主体包含 JSON 架构中指定的参数。 
+此触发器已设置为&24; 个小时重复一次。 操作为 HTTP POST，该操作使用主要逻辑应用的回叫 URL。 主体包含 JSON 架构中指定的参数。 
 
 #### <a name="operations"></a>操作
 ##### <a name="request"></a>请求
@@ -1132,6 +1132,6 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

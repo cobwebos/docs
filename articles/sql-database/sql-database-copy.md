@@ -1,5 +1,5 @@
 ---
-title: "复制 Azure SQL 数据库 | Microsoft 文档"
+title: "复制 Azure SQL 数据库 | Microsoft Docs"
 description: "创建 Azure SQL 数据库的副本"
 services: sql-database
 documentationcenter: 
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.date: 10/24/2016
 ms.author: sstein; sashan
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3e6152f6539962653a582ba4921af82e4447fd76
+ms.sourcegitcommit: 3686f262a0a3fc01abd179aef337c272e97c0b3c
+ms.openlocfilehash: b12bf1a08780c6888f518a800aea1065fd1283c5
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 3e6152f6539962653a582ba4921af82e4447fd76
 > 
 > 
 
-可以使用 Azure [SQL 数据库自动备份](sql-database-automated-backups.md)创建 SQL 数据库的副本。 数据库副本使用相同的技术作为异地复制功能。 不过，与异地复制不同的是，只要种子设定阶段完成，就会终止复制链接。 因此，复制数据库是源数据库自复制请求发出时起的快照。  
+可以使用 Azure [活动异地复制](sql-database-geo-replication-overview.md)功能创建 SQL 数据库的副本。 不过，与异地复制不同的是，只要种子设定阶段完成，就会终止复制链接。 因此，复制数据库是源数据库自复制请求发出时起的快照。  
 可以在相同或不同的服务器上创建数据库副本。 默认情况下，数据库副本的服务层和性能级别（定价层）都与源数据库相同。 使用 API 时，可以在同一服务层（版本）中选择不同的性能级别。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，你可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。  
 
 将某个数据库复制到同一逻辑服务器时，可以在这两个数据库上使用相同的登录名。 用于复制该数据库的安全主体将成为新数据库上的数据库所有者 (DBO)。 所有数据库用户、其权限及安全标识符 (SID) 都复制到数据库副本中。  
@@ -57,6 +58,6 @@ ms.openlocfilehash: 3e6152f6539962653a582ba4921af82e4447fd76
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

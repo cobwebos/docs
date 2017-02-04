@@ -13,15 +13,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 1/18/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 8a7ca492d846f274019eb228fc027defac0aa390
-ms.openlocfilehash: be590e72e30b4b8cf506a43a9de2e54a0200356d
+ms.sourcegitcommit: 9f1222e797446a5835726a10e5c9e8b535a8cf4d
+ms.openlocfilehash: c1c13f21fff7ba201eb00f6c9f594131a75c44fc
 
 
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight 上的 Hadoop 组件发行说明
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ##<a name="notes-for-11182016-release-of-spark-201-on-hdinsight-35"></a>Spark 2.0.1 on HDInsight 3.5 11/18/2016 版发行说明
 Spark 2.0.1 现已在 Spark 群集（HDInsight 版本 3.5）上发行。
@@ -1144,7 +1147,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 </tr>
 <tr>
 <td>在 IHdInsightClient.DeleteCluster 中指定地区名称的能力 </td>
-<td>Azure HDInsight SDK 现在提供在使用 **DeleteCluster** 时指定区域名称的功能。 这有助于解除封锁在不同的地区拥有 2 个同名资源，而且已无法删除任一资源的客户。</td>
+<td>Azure HDInsight SDK 现在提供在使用 **DeleteCluster** 时指定区域名称的功能。 这有助于解除封锁在不同的地区拥有&2; 个同名资源，而且已无法删除任一资源的客户。</td>
 <td>SDK 中 IsInRole 中的声明</td>
 <td>全部</td>
 <td>不适用</td>
@@ -1526,6 +1529,6 @@ SQL Server 的 Java 数据库连接 (JDBC) 驱动程序由 HDInsight 在内部�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

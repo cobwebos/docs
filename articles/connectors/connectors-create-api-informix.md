@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1b9ea0593e0ae6dc9e1b6b07665fc3b3fad264bf
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 614400a8787fdd2081fa8e981c0fc6b6dd794a58
 
 
 ---
@@ -40,7 +40,7 @@ Microsoft Informix 连接器可将逻辑应用连接到在 IBM Informix 数据�
 
 本主题介绍了如何在逻辑应用中使用连接器来处理数据库操作。
 
-若要了解有关逻辑应用的详细信息，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要了解有关逻辑应用的详细信息，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="available-actions"></a>可用操作
 此连接器支持以下逻辑应用操作：
@@ -404,11 +404,11 @@ TablesList
 * IBM Informix 11.7
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d45ada934ad9211dbe8534b210ff06653c40afd1
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: a992fa17a07d6167297c4cf5fe9fb3b58181d7df
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: d45ada934ad9211dbe8534b210ff06653c40afd1
 * 为来自数据库的所有高优先级记录创建任务。
 * 将电子邮件的所有 PDF 附件保存到 Azure blob 中。
 
-若要开始在逻辑应用中使用查询操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要开始在逻辑应用中使用查询操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="use-the-query-action"></a>使用查询操作
 操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息](connectors-overview.md)。  
@@ -78,11 +78,11 @@ ms.openlocfilehash: d45ada934ad9211dbe8534b210ff06653c40afd1
 | 已筛选的数组 |数组 |为每个已筛选的结果包含一个对象的数组 |
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

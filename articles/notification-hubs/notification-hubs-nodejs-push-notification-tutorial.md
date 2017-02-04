@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 40b1c0870bca02fd6d948dfc1f67ba5c76c698aa
+ms.sourcegitcommit: 88e8ead2b22bf53510c9c6008e34647272326690
+ms.openlocfilehash: 32d93f1ff6cf4ae78051b7208e38b6915509210f
 
 
 ---
@@ -45,7 +45,7 @@ ms.openlocfilehash: 40b1c0870bca02fd6d948dfc1f67ba5c76c698aa
 Azure 通知中心提供用于向移动设备发送推送通知的易于使用、多平台且可缩放的基础结构。 有关服务基础结构的详细信息，请参阅 [Azure 通知中心](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)页。
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
-本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建并部署 Node.js 应用程序到 Azure 网站][nodejswebsite]，使用 Windows PowerShell 创建并部署 [Node.js 云服务][Node.js 云服务]，或者[使用 WebMatrix 创建并部署 Node.js 网站]。
+本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell [创建 Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站]。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>将应用程序配置为使用通知中心
 若要使用 Azure 通知中心，需要下载和使用 Node.js [azure 包](https://www.npmjs.com/package/azure)，其中包括一组可与推送通知 REST 服务通信的内置帮助程序库。
@@ -80,7 +80,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 ![Azure 门户 — 通知中心](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> 还可以使用 [Azure PowerShell](../powershell-install-configure.md) 提供的 **Get-AzureSbNamespace** cmdlet 或者在 [Azure 命令行接口 (Azure CLI)](../xplat-cli-install.md) 中使用 **azure sb namespace show** 命令检索连接字符串。
+> 还可以使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 提供的 **Get-AzureSbNamespace** cmdlet 或者在 [Azure 命令行接口 (Azure CLI)](../xplat-cli-install.md) 中使用 **azure sb namespace show** 命令检索连接字符串。
 > 
 > 
 
@@ -182,39 +182,39 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 * 请访问 GitHub 上的 [Azure SDK for Node] 存储库以获取更多示例和实施详细信息。
 
 [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-[后续步骤]: #nextsteps
-[什么是服务总线主题和订阅？]: #what-are-service-bus-topics
-[创建服务命名空间]: #create-a-service-namespace
-[获取命名空间的默认管理凭据]: #obtain-default-credentials
-[创建 Node.js 应用程序]: #Create_a_Nodejs_Application
-[配置应用程序以使用服务总线]: #Configure_Your_Application_to_Use_Service_Bus
-[如何创建主题]: #How_to_Create_a_Topic
-[如何创建订阅]: #How_to_Create_Subscriptions
-[如何将消息发送到主题]: #How_to_Send_Messages_to_a_Topic
-[如何从订阅接收消息]: #How_to_Receive_Messages_from_a_Subscription
-[如何处理应用程序崩溃和不可读消息]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
-[如何删除主题和订阅]: #How_to_Delete_Topics_and_Subscriptions
+[Next Steps]: #nextsteps
+[What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
+[Create a Service Namespace]: #create-a-service-namespace
+[Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
+[Create a Node.js Application]: #Create_a_Nodejs_Application
+[Configure Your Application to Use Service Bus]: #Configure_Your_Application_to_Use_Service_Bus
+[How to: Create a Topic]: #How_to_Create_a_Topic
+[How to: Create Subscriptions]: #How_to_Create_Subscriptions
+[How to: Send Messages to a Topic]: #How_to_Send_Messages_to_a_Topic
+[How to: Receive Messages from a Subscription]: #How_to_Receive_Messages_from_a_Subscription
+[How to: Handle Application Crashes and Unreadable Messages]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
+[How to: Delete Topics and Subscriptions]: #How_to_Delete_Topics_and_Subscriptions
 [1]: #Next_Steps
-[主题概念]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
-[Azure 经典门户]: http://manage.windowsazure.com
-[图片]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
+[Topic Concepts]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
+[Azure Classic Portal]: http://manage.windowsazure.com
+[image]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
 [2]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-04.png
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
 [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure 服务总线通知中心]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
+[Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
 [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-[使用 WebMatrix 创建并部署 Node.js 网站]: /develop/nodejs/tutorials/web-site-with-webmatrix/
-[Node.js 云服务]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[以前的管理门户]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
+[使用 WebMatrix 创建网站]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+[Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
 [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
-[使用存储构建 Node.js 云服务]: /develop/nodejs/tutorials/web-app-with-storage/
-[使用存储构建 Node.js Web 应用程序]: /develop/nodejs/tutorials/web-site-with-storage/
+[Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
+[Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure 门户]: https://portal.azure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

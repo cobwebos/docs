@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 705d548661fd0a33a077aab563af415d959b6ebf
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 84b5f28fcd0640fd85b5f8c9d655105790c70d62
 
 
 ---
@@ -56,7 +56,7 @@ ms.openlocfilehash: 705d548661fd0a33a077aab563af415d959b6ebf
 > * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可以保留帐户和使用免费的 Azure 服务（如 Web 应用）。
 > * 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
 >
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 >
 >
 
@@ -298,7 +298,7 @@ ms.openlocfilehash: 705d548661fd0a33a077aab563af415d959b6ebf
 现在，你的更改已在 beta 槽中运行，因此接下来可以执行试验部署。
 
 ## <a name="validate-route-traffic-to-the-beta-app"></a>验证：将流量路由到 beta 应用
-在本部分中，你要将流量路由到 beta 应用。 为了能够清楚演示，请将用户流量的重要部分路由到该应用。 实际上，将路由的流量取决于特定情况。 例如，如果站点属于 microsoft.com 层级，则你可能只需要不到 1% 总流量即可获取有用的数据。
+在本部分中，你要将流量路由到 beta 应用。 为了能够清楚演示，请将用户流量的重要部分路由到该应用。 实际上，将路由的流量取决于特定情况。 例如，如果站点属于 microsoft.com 层级，则你可能只需要不到&1;% 总流量即可获取有用的数据。
 
 1. 在 Git Shell 会话中运行以下命令，将一半的生产流量路由到 beta 槽：
 
@@ -351,7 +351,7 @@ Azure 应用服务可让中小型企业轻松地在生产环境中测试其客�
 * [使用 Azure 应用服务进行敏捷软件开发](app-service-agile-software-development.md)
 * [为 Azure 应用服务中的 Web 应用设置过渡环境](web-sites-staged-publishing.md)
 * [通过可预测的方式在 Azure 中部署复杂应用程序](app-service-deploy-complex-application-predictably.md)
-* [创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 * [JSONLint - JSON 验证程序](http://jsonlint.com/)
 * [Git 分支 - 基本分支和合并](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 * [Azure PowerShell](/powershell/azureps-cmdlets-docs)
@@ -359,6 +359,6 @@ Azure 应用服务可让中小型企业轻松地在生产环境中测试其客�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/20/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 93b77197d69d8c6261ea786aecb653c69129dc9d
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 2977404fb408ea5301c88caa7ce6767a906ca9c7
 
 
 ---
 # <a name="get-started-with-the-sftp-connector"></a>SFTP 连接器入门
 使用 SFTP 连接器访问 SFTP 帐户以发送和接收文件。 你可以执行各种操作，如创建、更新、获取或删除文件。  
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../app-service-logic/app-service-logic-create-a-logic-app.md)开始操作。
+若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
 
 ## <a name="connect-to-sftp"></a>连接到 SFTP
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
@@ -35,7 +35,7 @@ ms.openlocfilehash: 93b77197d69d8c6261ea786aecb653c69129dc9d
 > 
 
 ## <a name="use-an-sftp-trigger"></a>使用 SFTP 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。  
+触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
 
 在此示例中，我将演示如何使用“SFTP - 添加或修改文件时”触发器，在 SFTP 服务器上添加或修改文件时启动逻辑应用工作流。 在示例中，你还将了解如何添加用于检查新的或已修改文件内容的条件，并在其内容指示应在使用该内容前提取文件时作出提取文件的决策。 最后，你将了解如何添加提取文件内容并将提取的内容放置在 SFTP 服务器上某个文件夹中的操作。 
 
@@ -51,7 +51,7 @@ ms.openlocfilehash: 93b77197d69d8c6261ea786aecb653c69129dc9d
 > 
 
 ## <a name="use-an-sftp-action"></a>使用 SFTP 操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。  
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
 
 > [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
 > 
@@ -341,11 +341,11 @@ BlobMetadata
 | default |操作失败。 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

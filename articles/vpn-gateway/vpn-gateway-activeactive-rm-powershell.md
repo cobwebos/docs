@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/26/2016
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: d1c1fa1638a37c23bb4c37933b74bf703290f7ca
+ms.sourcegitcommit: b8b663d802fde83f3435f2d97ceb51d5b5c802bb
+ms.openlocfilehash: ef17c0226528fef35c0317cebbaa14b7bbe28b1d
 
 
 ---
@@ -56,7 +56,7 @@ ms.openlocfilehash: d1c1fa1638a37c23bb4c37933b74bf703290f7ca
 
 ### <a name="before-you-begin"></a>开始之前
 * 确保你拥有 Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 你需要安装 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。
+* 你需要安装 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>步骤 1 - 创建并配置 VNet1
 #### <a name="1-declare-your-variables"></a>1.声明变量
@@ -227,14 +227,15 @@ ms.openlocfilehash: d1c1fa1638a37c23bb4c37933b74bf703290f7ca
 #### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3.第二个本地 VPN 设备的 VPN 和 BGP 参数
 下面列出了要输入到第二个 VPN 设备的参数：
 
-    - Site5 ASN：65050
-    - Site5 BGP IP：10.52.255.254
-    - 要公布的前缀：（例如）10.51.0.0/16 和 10.52.0.0/16
-    - Azure VNet ASN：65010
-    - Azure VNet BGP IP 1：10.12.255.4，用于到 40.112.190.5 的隧道
-    - Azure VNet BGP IP 2：10.12.255.5，用于到 138.91.156.129 的隧道
-    - 静态路由：目标 10.12.255.4/32，nexthop 为到 40.112.190.5 的 VPN 隧道接口                        目标 10.12.255.5/32，nexthop 为到 138.91.156.129 的 VPN 隧道接口
-    - eBGP Multihop：确保在必要时已在设备上启用 eBGP 的“multihop”选项
+      - Site5 ASN            : 65050
+      - Site5 BGP IP         : 10.52.255.254
+      - Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+      - Azure VNet ASN       : 65010
+      - Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
+      - Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
+      - Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
+                             Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
+      - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 
 建立连接（隧道）后，便已获得了连接到本地网络和 Azure 的双重冗余 VPN 设备和隧道：
 
@@ -381,6 +382,6 @@ ms.openlocfilehash: d1c1fa1638a37c23bb4c37933b74bf703290f7ca
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

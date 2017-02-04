@@ -17,19 +17,20 @@ ms.workload: na
 ms.date: 11/02/2016
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 593f97bf0fc855e2d122e093961013f923e2e053
-ms.openlocfilehash: b7b6dc01c996527c4ada974cc28b774b30e6b853
+ms.sourcegitcommit: c8e9f9709d13295c9414e525f1f60abf0d0accb7
+ms.openlocfilehash: 0bfbfd3828aacdee0b6630ced034f2c1e0451abd
 
 
 ---
 # <a name="azure-functions-event-hub-bindings"></a>Azure Functions 事件中心绑定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-本文介绍如何对 Azure Functions 的 [Azure 事件中心](../event-hubs/event-hubs-overview.md)绑定进行配置和编写代码。 Azure Functions 支持事件中心的触发器和输出绑定。
+本文介绍如何对 Azure Functions 的 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)绑定进行配置和编写代码。
+Azure Functions 支持事件中心的触发器和输出绑定。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-如果不熟悉 Azure 事件中心，请参阅 [Azure 事件中心概述](../event-hubs/event-hubs-overview.md)。
+如果不熟悉 Azure 事件中心，请参阅 [Azure 事件中心概述](../event-hubs/event-hubs-what-is-event-hubs.md)。
 
 <a name="trigger"></a>
 
@@ -44,13 +45,14 @@ ms.openlocfilehash: b7b6dc01c996527c4ada974cc28b774b30e6b853
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
     "path": "<Name of the Event Hub>",
-    "consumerGroup": "Consumer group to use - see below", 
+    "consumerGroup": "Consumer group to use - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
 ```
 
-`consumerGroup` 是一个可选属性，用于设置[使用者组](../event-hubs/event-hubs-overview.md#consumer-groups)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。  
-`connection` 必须是应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。
+`consumerGroup` 是一个可选属性，用于设置[使用者组](../event-hubs/event-hubs-what-is-event-hubs.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。  
+`connection` 必须是应用设置的名称，该名称中包含事件中心命名空间的连接字符串。
+单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。
 
 可在 host.json 文件中提供[其他设置](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)来进一步优化事件中心触发器。  
 
@@ -116,9 +118,9 @@ module.exports = function (context, myEventHubMessage) {
 <a name="output"></a>
 
 ## <a name="event-hub-output-binding"></a>事件中心输出绑定
-使用事件中心输出绑定将事件写入到事件中心事件流。 必须具有事件中心的发送权限才可将事件写入到其中。 
+使用事件中心输出绑定将事件写入到事件中心事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
-输出绑定在 function.json 的 `bindings` 数组中使用以下 JSON 对象： 
+输出绑定在 function.json 的 `bindings` 数组中使用以下 JSON 对象：
 
 ```json
 {
@@ -130,12 +132,13 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-`connection` 必须是应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。
+`connection` 必须是应用设置的名称，该名称中包含事件中心命名空间的连接字符串。
+单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。
 
 ## <a name="output-usage"></a>输出使用情况
 本部分演示如何在函数代码中使用事件中心输出绑定。
 
-可以使用以下参数类型将消息输出到配置的事件中心： 
+可以使用以下参数类型将消息输出到配置的事件中心：
 
 * `out string`
 * `ICollector<string>`（若要输出多条消息）
@@ -183,7 +186,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
 {
     string message = $"Event Hub message created at: {DateTime.Now}";
-    log.Info(message); 
+    log.Info(message);
     outputEventHubMessage.Add("1 " + message);
     outputEventHubMessage.Add("2 " + message);
 }
@@ -233,7 +236,6 @@ module.exports = function(context) {
 
 
 
-
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7a43c010945c6b1601fac5b2fbf934c3d48811e5
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 5e13e126fecda66a453b4ced619016121af98b2c
 
 
 ---
@@ -29,7 +29,7 @@ RSS 是一种流行的 Web 联合格式，用于发布频繁更新的内容，�
 > 
 > 
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 RSS 连接器可用作操作；它具有触发器。 所有连接器都支持采用 JSON 和 XML 格式的数据。 
@@ -119,11 +119,11 @@ RSS 连接器可用作操作；它具有触发器。 所有连接器都支持采
 | updatedOn |字符串 |否 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: e564a1a277e559c10b13932ed7e017a28780c334
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 0b1f13f816c7836557cd6f646f2d9b38f7bc5b14
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: e564a1a277e559c10b13932ed7e017a28780c334
 > * 可以 [免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可以保留帐户和使用免费的 Azure 服务（如 Web 应用）。
 > * 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
 > 
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -101,7 +101,7 @@ ms.openlocfilehash: e564a1a277e559c10b13932ed7e017a28780c334
 > 
 > 
 
-1. 现在，导航到 CDN 终结点地址。 如果终结点已准备就绪，你应该会看到 Web 应用显示。 如果收到 **HTTP 404** 错误，则说明 CDN 终结点尚未准备好。 CDN 配置传播到所有边缘节点可能需要长达 1 小时的等待。 
+1. 现在，导航到 CDN 终结点地址。 如果终结点已准备就绪，你应该会看到 Web 应用显示。 如果收到 **HTTP 404** 错误，则说明 CDN 终结点尚未准备好。 CDN 配置传播到所有边缘节点可能需要长达&1; 小时的等待。 
    
     ![](media/cdn-websites-with-cdn/11-access-success.png)
 2. 接下来，可尝试访问 ASP.NET 项目中的 **~/Content/bootstrap.css** 文件。 在浏览器窗口中，导航到 **http://*&lt;cdnName>*.azureedge.net/Content/bootstrap.css**。 在我的设置中，此 URL 为：
@@ -548,6 +548,6 @@ ms.openlocfilehash: e564a1a277e559c10b13932ed7e017a28780c334
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

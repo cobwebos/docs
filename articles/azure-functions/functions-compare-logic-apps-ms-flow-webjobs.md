@@ -1,6 +1,6 @@
 ---
 title: "在流、逻辑应用、函数和 Web 作业之间进行选择 | Microsoft Docs"
-description: "比较和对比来自 Microsoft 的 4 个云集成服务，并决定应使用哪个服务。"
+description: "比较和对比来自 Microsoft 的&4; 个云集成服务，并决定应使用哪个服务。"
 services: functions,app-service\logic
 documentationcenter: na
 author: cephalin
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/08/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: a06126707ad9942ba3b269b0e2e2a52f9cf0c61e
-ms.openlocfilehash: 4d6735772ff36a730ccb369f7fce653a91bc9d4f
+ms.sourcegitcommit: ee94e074c574bc2e6e1a52dbfd6bd0ae102cb342
+ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
 
 
 ---
@@ -48,8 +48,8 @@ ms.openlocfilehash: 4d6735772ff36a730ccb369f7fce653a91bc9d4f
 | --- | --- | --- |
 | 目标受众 |办公室工作人员、业务用户 |IT 专业人士、开发人员 |
 | 方案 |自助服务 |关键任务 |
-| 设计工具 |仅浏览器、UI |浏览器和 [Visual Studio](../app-service-logic/app-service-logic-deploy-from-vs.md)、[代码视图](../app-service-logic/app-service-logic-author-definitions.md)可用 |
-| DevOps |临时，在生产中开发 |[Azure 资源管理](../app-service-logic/app-service-logic-arm-provision.md)中的源控件、测试、支持及自动化和可管理性 |
+| 设计工具 |仅浏览器、UI |浏览器和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[代码视图](../logic-apps/logic-apps-author-definitions.md)可用 |
+| DevOps |临时，在生产中开发 |[Azure 资源管理](../logic-apps/logic-apps-arm-provision.md)中的源控件、测试、支持及自动化和可管理性 |
 | 管理员体验 |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | “安全” |标准做法：对敏感数据的[数据主权](https://wikipedia.org/wiki/Technological_Sovereignty)、[静态加密](https://wikipedia.org/wiki/Data_at_rest#Encryption)等。 |Azure 的安全保证：[Azure 安全性](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[安全中心](https://azure.microsoft.com/services/security-center/)、[审核日志](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)等等。 |
 
@@ -107,7 +107,7 @@ ms.openlocfilehash: 4d6735772ff36a730ccb369f7fce653a91bc9d4f
 通过创建第一个流、逻辑应用、函数应用或 WebJob，开始使用每个服务。 单击以下任一链接：
 
 * [开始使用 Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
-* [创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+* [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)
 * [使用 Visual Studio 部署 WebJobs](../app-service-web/websites-dotnet-deploy-webjobs.md)
 
@@ -122,6 +122,6 @@ ms.openlocfilehash: 4d6735772ff36a730ccb369f7fce653a91bc9d4f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

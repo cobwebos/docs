@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
+ms.sourcegitcommit: 44a756ba437b2ce9f625017998d9ae7d09acae1f
+ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
 
 每个连接器操作或触发器都有其自己的要配置的属性集。  可单击信息按钮了解关于操作的详细信息，或参考其文档[了解详细信息](apis-list.md)。
 
-如果要与尚不是连接器的服务或 API 集成，还可通过[自定义连接器](../app-service-logic/app-service-logic-create-api-app.md)扩展逻辑应用，或通过 HTTP 之类的协议直接向服务调用。
+如果要与尚不是连接器的服务或 API 集成，还可通过[自定义连接器](../logic-apps/logic-apps-create-api-app.md)扩展逻辑应用，或通过 HTTP 之类的协议直接向服务调用。
 
 ## <a name="triggers"></a>触发器
 某些连接器具有触发器，这意味着来自该连接器的事件将触发逻辑应用，并传入任何数据作为触发器的一部分。  触发器始终是逻辑应用中的第一步。  常用触发器包含如下操作：
@@ -56,9 +56,9 @@ ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
 可通过单击“浏览”并选择“API 连接”在 Azure 中查看和管理连接。  从 API 连接资源，可以查看、编辑、更新或重新创作任何已创建的连接。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建第一个逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
-* [了解逻辑应用的常见用途和示例](../app-service-logic/app-service-logic-examples-and-scenarios.md)
-* [企业集成触发器和操作入门](../app-service-logic/app-service-logic-enterprise-integration-overview.md)
+* [创建第一个逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+* [了解逻辑应用的常见用途和示例](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [企业集成触发器和操作入门](../logic-apps/logic-apps-enterprise-integration-overview.md)
 
 <!--Image References -->
 [1]: ./media/connectors-overview/addAction.png
@@ -66,6 +66,6 @@ ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

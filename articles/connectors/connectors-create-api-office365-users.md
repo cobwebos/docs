@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1f9877f6bbf57da525ad988a6f6dafa6822a7503
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 2e4af1c9369a97d518d027dc4679b9f01ca53d4c
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 1f9877f6bbf57da525ad988a6f6dafa6822a7503
 * 根据从 Office 365 用户中获取的数据生成你的业务流。 
 * 使用获取直接下属、获取经理的用户配置文件等操作。 这些操作可获得响应，然后使输出可用于其他操作。 例如，获取用户的直接下属，然后获取此信息并更新 SQL Azure 数据库。 
 
-若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 Office 365 用户连接器具有以下可用操作。 没有任何触发器。
@@ -173,7 +173,7 @@ Office 365 用户连接器具有以下可用操作。 没有任何触发器。
 | mobilePhone |字符串 |否 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 返回到 [API 列表](apis-list.md)。
 
@@ -187,6 +187,6 @@ Office 365 用户连接器具有以下可用操作。 没有任何触发器。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

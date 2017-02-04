@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 7ac9d7eb9e322d8c44434add381030b51c9e9a4b
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: b8a66308c4f4f1df610cdacd092ef133bd605665
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 7ac9d7eb9e322d8c44434add381030b51c9e9a4b
 * 在收到新发布时使用触发器。
 * 使用发布到时间线、获取页面源等操作。 这些操作可获得响应，然后使输出可用于其他操作。 例如，当时间线上有新发布时，你可以获取该发布并将其推送到 Twitter 源。 
 
-若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 Facebook 连接器包括以下触发器和操作。 
@@ -415,11 +415,11 @@ Facebook 连接器包括以下触发器和操作。
 | rsvp_status |字符串 |是 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d8ce7baafbc722af58e9f3dae49777170de0ba6
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 992b4b7bab8878355cbe936b75768e67b086286e
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 5d8ce7baafbc722af58e9f3dae49777170de0ba6
 > 
 > 
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 OneDrive for Business 连接器可用作操作；它具有触发器。 所有连接器都支持采用 JSON 和 XML 格式的数据。
@@ -319,11 +319,11 @@ OneDrive for Business 连接器可用作操作；它具有触发器。 所有连
 
 ### <a name="object"></a>对象
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

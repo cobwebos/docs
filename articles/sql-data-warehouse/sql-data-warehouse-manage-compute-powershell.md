@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5749b37408be8eeab6a3fba40d6768ca1d035096
+ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
+ms.openlocfilehash: a4cde433850ab3627f870b51f5a897c6f846c2f0
 
 
 ---
@@ -29,16 +29,6 @@ ms.openlocfilehash: 5749b37408be8eeab6a3fba40d6768ca1d035096
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
 > 
 > 
-
-通过扩大计算资源和内存来提升性能，从而满足工作负荷不断变化的需求。 通过在非高峰时段缩减资源或同时暂停计算来节省成本。
-
-此任务集合使用 Azure 门户实现：
-
-* 缩放计算
-* 暂停计算
-* 恢复计算
-
-若要了解相关信息，请参阅[管理计算概述][Manage compute overview]。
 
 ## <a name="before-you-begin"></a>开始之前
 ### <a name="install-the-latest-version-of-azure-powershell"></a>安装最新版本的 Azure PowerShell
@@ -141,6 +131,6 @@ $resultDatabase
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

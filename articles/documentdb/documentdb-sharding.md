@@ -1,22 +1,11 @@
 ---
-title: "如何使用 SDK 实现客户端分区 |Microsoft Docs"
-description: "了解如何使用 Azure DocumentDB SDK 对数据进行分区（分片）和跨多个集合路由请求"
-services: documentdb
-author: arramac
-manager: jhubbard
-editor: cgronlun
-documentationcenter: 
-ms.assetid: ab2a63f0-4601-42d8-b5e5-ba943319c1c8
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2016
-ms.author: arramac
+
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c31763a9676ec45e493cdecc76997db8fe64c38a
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: d0a616d27c653e8d3749d93f565f5e8616fdf909
+
 
 
 ---
@@ -32,7 +21,7 @@ Azure DocumentDB 支持[对集合自动分区](documentdb-partition-data.md)。 
 * ACID 事务（即存储过程和触发器）不能跨越集合。 事务的作用域在集合内的单个分区键值内。
 * 集合不强制实施架构，因此它们可以用于相同类型或不同类型的 JSON 文档。
 
-从 [Azure DocumentDB SDK 1.5.x](documentdb-sdk-dotnet.md) 版本开始，可以直接对数据库进行文档操作。 在内部，[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 使用为数据库指定的 PartitionResolver 将请求路由到相应的集合。
+从 [Azure DocumentDB SDK&1;.5.x](documentdb-sdk-dotnet.md) 版本开始，可以直接对数据库进行文档操作。 在内部，[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) 使用为数据库指定的 PartitionResolver 将请求路由到相应的集合。
 
 > [!NOTE]
 > REST API 2015-12-16 和 SDKs 1.6.0+ 中引入的[服务器端分区](documentdb-partition-data.md)弃用了用于简单用例的客户端分区解析程序。 但是，客户端分区更灵活，并可让你跨分区键控制性能隔离，在读取多个分区中的结果时控制并行度，并使用范围/空间分区方法与哈希。
@@ -165,12 +154,11 @@ foreach (UserProfile activeUser in query)
 * [Partitioning code samples on Github](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)（Github 上的分区代码示例）
 * [DocumentDB .NET SDK Documentation at MSDN](https://msdn.microsoft.com/library/azure/dn948556.aspx)（MSDN 中的 DocumentDB .NET SDK 文档）
 * [DocumentDB .NET samples](https://github.com/Azure/azure-documentdb-net)（DocumentDB .NET 示例）
-* [DocumentDB 限制](documentdb-limits.md)
 * [DocumentDB Blog on Performance Tips](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)（DocumentDB 性能提示博客）
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -8,7 +8,7 @@ manager: erikre
 editor: 
 tags: connectors
 ms.assetid: cb0ae033-aba7-4ac9-beaa-be561a0f0cac
-ms.service: app-service-logic
+ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/15/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0038c582d1a597dfcbb1fe8255b3a0fac1235e25
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: a8ecad3552f35c02c07fe33aa8531fb462b27002
 
 
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>Dropbox 连接器入门
 连接到 Dropbox 管理你的文件。 你可以在 Dropbox 中执行各种操作，例如上传、更新、获取和删除文件。
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../app-service-logic/app-service-logic-create-a-logic-app.md)开始操作。
+若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
 
 ## <a name="connect-to-dropbox"></a>连接到 Dropbox
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 Dropbox，首先需要 Dropbox *连接*。 若要创建连接，需要提供通常用于访问要连接到的服务的凭据。 因此，在 Dropbox 示例中，需要 Dropbox 帐户的凭据，才能创建到 Dropbox 的连接。 [了解有关连接的详细信息]()
@@ -35,7 +35,7 @@ ms.openlocfilehash: 0038c582d1a597dfcbb1fe8255b3a0fac1235e25
 > 
 
 ## <a name="use-a-dropbox-trigger"></a>使用 Dropbox 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 在此示例中，我们将使用“创建文件时”触发器。 发生此触发器时，我们将调用“使用路径获取文件内容”Dropbox 操作。 
 
@@ -45,7 +45,7 @@ ms.openlocfilehash: 0038c582d1a597dfcbb1fe8255b3a0fac1235e25
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
 
 ## <a name="use-a-dropbox-action"></a>使用 Dropbox 操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 现已添加触发器，按照以下步骤添加将获取新文件内容的操作。
 
@@ -354,11 +354,11 @@ BlobMetadata
 | default |操作失败。 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -8,7 +8,7 @@ manager: erikre
 editor: 
 tags: connectors
 ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
-ms.service: app-service-logic
+ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/15/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7e70351bda39d58b653273a5c3a795a1c6048c2c
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: 3a0fdef111fbd4a9f7491e247f2236cf70b89dca
 
 
 ---
 # <a name="get-started-with-the-smtp-connector"></a>SMTP 连接器入门
 连接到 SMTP 以发送电子邮件。
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../app-service-logic/app-service-logic-create-a-logic-app.md)开始操作。
+若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
 
 ## <a name="connect-to-smtp"></a>连接到 SMTP
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SMTP，首先需要 SMTP *连接*。 若要创建连接，需要提供通常用于访问要连接到的服务的凭据。 因此在 SMTP 示例中，需要连接名称、SMTP 服务器地址和用户登录信息的凭据，以便创建到 SMTP 的连接。 [了解有关连接的详细信息]()  
@@ -35,7 +35,7 @@ ms.openlocfilehash: 7e70351bda39d58b653273a5c3a795a1c6048c2c
 > 
 
 ## <a name="use-an-smtp-trigger"></a>使用 SMTP 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 在此示例中，由于 SMTP 没有自己的触发器，因此使用“Salesforce - 创建对象时”触发器。 此触发器将在 Salesforce 中新建对象时激活。 对于此示例，我们将设置为每次在 Salesforce 中新建潜在客户时，通过 SMTP 连接器发生“发送电子邮件”操作，并附带要创建的新潜在客户的通知。
 
@@ -49,7 +49,7 @@ ms.openlocfilehash: 7e70351bda39d58b653273a5c3a795a1c6048c2c
    ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
 
 ## <a name="use-an-smtp-action"></a>使用 SMTP 操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 现在已添加触发器，请按照以下步骤添加 SMTP 操作，该操作将在 Salesforce 中新建潜在客户时发生。
 
@@ -116,11 +116,11 @@ SMTP 具有以下操作：
 | default |操作失败。 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

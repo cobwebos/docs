@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6468b7e9cde47ca4caf9be14d0ad780a431e6f2
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 6f336db8c8719b99420b353dca82e36a0d837769
 
 
 ---
@@ -29,7 +29,7 @@ GitHub 是用于托管服务的基于 Web 的 Git 存储库。 它提供 Git 的
 > 
 > 
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 GitHub 连接器可用作操作；它具有触发器。 所有连接器都支持采用 JSON 和 XML 格式的数据。 
@@ -167,11 +167,11 @@ GitHub 连接器可用作操作；它具有触发器。 所有连接器都支持
 | repository_url |字符串 |否 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

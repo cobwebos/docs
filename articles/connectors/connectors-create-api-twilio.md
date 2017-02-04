@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 09/19/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0999d96b4819d6bf03faa843750c5c4b19649774
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 6770aa8387fe3d381fd9c566ca0c38c88a4b1e55
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 0999d96b4819d6bf03faa843750c5c4b19649774
 * 根据从 Twilio 中获取的数据生成业务流。 
 * 使用获取消息、列出消息等的操作。 这些操作可获得响应，然后使输出可用于其他操作。 例如，收到新 Twilio 消息时，可接受此消息并在服务总线工作流中使用它。 
 
-若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 Twilio 连接器包括以下操作。 没有任何触发器。 
@@ -238,11 +238,11 @@ Twilio 连接器包括以下操作。 没有任何触发器。
 | end_date |字符串 |否 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

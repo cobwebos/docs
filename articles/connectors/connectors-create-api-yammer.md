@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 274ddce2bd3586dfba9ee214055accdba52f3ba9
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: c69f7af9f9427eb295481657eaefcdad76b48ccb
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 274ddce2bd3586dfba9ee214055accdba52f3ba9
 * 针对组或关注的源中有新消息的情况使用触发器。
 * 使用操作发布消息、获取所有消息等。 这些操作可获得响应，然后使输出可用于其他操作。 例如，出现新消息时，可使用 Office 365 发送电子邮件。
 
-若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 Yammer 包括以下触发器和操作。 
@@ -180,7 +180,7 @@ Yammer 包括以下触发器和操作。
 | full_name |字符串 |否 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 [1]: ./media/connectors-create-api-yammer/connectionconfig1.png
 [2]: ./media/connectors-create-api-yammer/connectionconfig2.png 
@@ -190,6 +190,6 @@ Yammer 包括以下触发器和操作。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -17,19 +17,19 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 04b081d265c53ddcf77c79bf604296a0d44be4ed
+ms.sourcegitcommit: c0edbe421050ad46f6d31fd6416df4b344b233ad
+ms.openlocfilehash: ade380b7fc6adfb929f42c0e6c75b3fa613c45b1
 
 
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger 操作入门
 借助 HTTP + Swagger 操作，可以通过 [Swagger 文档](https://swagger.io)向任意 REST 终结点创建一流连接器。 还可以扩展逻辑应用以调用带有一流逻辑应用设计器体验的任何 REST 终结点。
 
-若要开始在逻辑应用中使用 HTTP + Swagger 操作，请参阅[创建新逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要开始在逻辑应用中使用 HTTP + Swagger 操作，请参阅[创建新逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 - - -
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>将 HTTP + Swagger 用作触发器或操作
-HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功能相同，但通过在设计器中显示来自 [Swagger 元数据](https://swagger.io)的 API 和输出形状提供更好的设计体验。 此外，可以将 HTTP + Swagger 用作触发器。 如果要实现轮询触发器，它应遵循[创建用于逻辑应用的自定义 API](../app-service-logic/app-service-logic-create-api-app.md#polling-triggers) 中所述的轮询模式。
+HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功能相同，但通过在设计器中显示来自 [Swagger 元数据](https://swagger.io)的 API 和输出形状提供更好的设计体验。 此外，可以将 HTTP + Swagger 用作触发器。 如果要实现轮询触发器，它应遵循[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md#polling-triggers) 中所述的轮询模式。
 
 [了解有关逻辑应用触发器和操作的详细信息。](connectors-overview.md)
 
@@ -117,11 +117,11 @@ HTTP 响应
 
 - - -
 ## <a name="next-steps"></a>后续步骤
-现在试用平台并[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 
