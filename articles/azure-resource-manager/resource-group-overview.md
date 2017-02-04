@@ -319,7 +319,7 @@ AutoRest 将这些 RESTful API 规范转换成采用多种语言的客户端库�
 
 下面是本概述主题的演示视频：
 
->[!视频 https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Resource-Manager-Overview/player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Resource-Manager-Overview/player]
 
 
 [powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources

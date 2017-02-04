@@ -3,7 +3,7 @@ title: "教程 - Azure 批处理 .NET 库入门 | Microsoft 文档"
 description: "了解 Azure Batch 的基本概念，以及如何使用示例方案针对 Batch 服务进行开发。"
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 76cb9807-cbc1-405a-8136-d1e53e66e82b
@@ -13,10 +13,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 11/22/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ecf07295a2e56e1aae8fc8fce77ca219db1f371e
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 8243e2304d846e02ecf0114b79be73c0016941df
 
 
 ---
@@ -189,7 +189,7 @@ private static async Task CreateContainerIfNotExistAsync(
 >
 
 ## <a name="step-2-upload-task-application-and-data-files"></a>步骤 2：上载任务应用程序和数据文件
-![将任务应用程序和输入（数据）文件上载到容器][2]
+![将任务应用程序和输入（数据）文件上传到容器][2]
 <br/>
 
 在文件上载操作中，*DotNetTutorial* 先定义**应用程序**和**输入**文件在本地计算机上的路径的集合， 然后将这些文件上载到上一步骤创建的容器。
@@ -287,7 +287,7 @@ DotNetTutorial 示例应用程序不使用 JobPreparationTask 或 JobReleaseTask
 >
 
 ## <a name="step-3-create-batch-pool"></a>步骤 3：创建 Batch 池
-![创建批处理池][3]
+![创建 Batch 池][3]
 <br/>
 
 Batch **池** 是 Batch 执行作业任务时所在的计算节点（虚拟机）集合。
@@ -593,7 +593,7 @@ private static async Task<bool> MonitorTasks(
 ```
 
 ## <a name="step-7-download-task-output"></a>步骤 7：下载任务输出
-![从存储空间下载任务输出][7]<br/>
+![从存储下载任务输出][7]<br/>
 
 完成作业后，可以从 Azure 存储空间下载任务的输出。 可以在 *DotNetTutorial* 的 `Program.cs` 中调用 `DownloadBlobsFromContainerAsync` 来实现此目的：
 

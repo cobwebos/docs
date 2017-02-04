@@ -3,7 +3,7 @@ title: "Azure Batch 中的任务依赖关系 | Microsoft 文档"
 description: "在 Azure Batch 中创建依赖于其他任务的成功完成的任务，以处理 MapReduce 样式工作负荷和类似的大数据工作负荷。"
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 09/28/2016
-ms.author: marsma
+ms.date: 01/05/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c16850788a4c22c964037f28bf955e570551142d
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 5883417c6f7a0ce45c9c34ac2d37e5c1bea95ab1
 
 
 ---
@@ -35,7 +35,7 @@ Batch 任务依赖关系允许创建的任务在计算节点上按计划执行�
 本文讨论如何使用 [Batch .NET][net_msdn] 库配置任务依赖关系。 我们首先说明如何为作业[启用任务依赖关系](#enable-task-dependencies)，然后演示如何[为任务配置依赖关系](#create-dependent-tasks)。 最后介绍 Batch 支持的[依赖关系方案](#dependency-scenarios)。
 
 ## <a name="enable-task-dependencies"></a>启用任务依赖关系
-若要在 Batch 应用程序中使用任务依赖关系，必须先告知 Batch 服务：作业使用任务依赖关系。 在 Batch .NET 中，为 [CloudJob][net_cloudjob] 启用任务依赖关系，方法是将其 [UsesTaskDependencies][net_usestaskdependencies] 属性设置为 `true`：
+若要在 Batch 应用程序中使用任务依赖关系，必须先告知 Batch 服务：作业使用任务依赖关系。 在 Batch .NET 中，为 [CloudJob][net_cloudjob] 启用任务依赖关系的方法是将其 [UsesTaskDependencies][net_usestaskdependencies] 属性设置为 `true`：
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -48,7 +48,7 @@ unboundJob.UsesTaskDependencies = true;
 在以上代码片段中，“batchClient”是 [BatchClient][net_batchclient] 类的一个实例。
 
 ## <a name="create-dependent-tasks"></a>创建依赖任务
-若要创建一个依赖于一个或多个其他任务的成功完成的任务，需告知 Batch：该任务“依赖于”其他任务。 在 Batch .NET 中，用 [TaskDependencies][net_taskdependencies] 类的一个实例配置 [CloudTask][net_cloudtask].[DependsOn][net_dependson] 属性：
+若要创建一个依赖于一个或多个其他任务的成功完成的任务，需告知 Batch：该任务“依赖于”其他任务。 在 Batch .NET 中，为 [CloudTask][net_cloudtask].[DependsOn][net_dependson] 属性配置 [TaskDependencies][net_taskdependencies] 类的一个实例：
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -81,7 +81,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > 
 
 ### <a name="one-to-one"></a>一对一
-若要创建一个任务，且该任务依赖于另一个任务的成功完成，可在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，向 [TaskDependencies][net_taskdependencies].[OnId][net_onid] 静态方法提供单个任务 ID。
+若要创建依赖于一个其他任务的成功完成的任务，可在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，向 [TaskDependencies][net_taskdependencies].[OnId][net_onid] 静态方法提供单个任务 ID。
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -95,7 +95,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>一对多
-若要创建一个任务，且该任务依赖于多个任务的成功完成，可在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，向 [TaskDependencies][net_taskdependencies].[OnId][net_onids] 静态方法提供一个任务 ID 的集合。
+若要创建依赖于多个任务的成功完成的任务，可在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，向 [TaskDependencies][net_taskdependencies].[OnIds][net_onids] 静态方法提供任务 ID 的集合。
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -111,7 +111,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 ```
 
 ### <a name="task-id-range"></a>任务 ID 范围
-若要创建一个任务，且该任务依赖于一组任务（其 ID 在某个范围内）的成功完成，可在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，向 [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静态方法提供该范围内的第一个和最后一个任务 ID。
+若要创建依赖于一组任务（其 ID 在某个范围内）的成功完成的任务，可在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，向 [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静态方法提供该范围内的第一个和最后一个任务 ID。
 
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖关系时，范围内的任务 ID 必须采用整数值的字符串表示形式。 此外，范围内的每项任务必须成功完成，依赖任务才能按计划执行。
@@ -137,14 +137,14 @@ new CloudTask("4", "cmd.exe /c echo 4")
 ```
 
 ## <a name="code-sample"></a>代码示例
-[TaskDependencies][github_taskdependencies] 示例项目是 GitHub 上的 [Azure Batch 代码示例][github_samples] 之一。 此 Visual Studio 2015 解决方案演示了如何在作业上启用任务依赖关系、创建依赖于其他任务的任务，以及如何在计算节点池中执行这些任务。
+[TaskDependencies][github_taskdependencies] 示例项目是 GitHub 上的 [Azure Batch 代码示例][github_samples]之一。 此 Visual Studio 2015 解决方案演示了如何在作业上启用任务依赖关系、创建依赖于其他任务的任务，以及如何在计算节点池中执行这些任务。
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="application-deployment"></a>应用程序部署
 使用 Batch 的[应用程序包](batch-application-packages.md)功能，可以轻松地部署任务在计算节点上执行的应用程序并对其进行版本控制。
 
 ### <a name="installing-applications-and-staging-data"></a>安装应用程序和暂存数据
-有关准备节点以运行任务的各种方法的概述，请查看 Azure Batch 论坛中的帖子 [Installing applications and staging data on Batch compute nodes][forum_post]（在 Batch 计算节点上安装应用程序和暂存数据）。 此帖子由 Azure Batch 团队的一名成员撰写，是一个很好的入门教程，它介绍了如何在计算节点上以不同方式获取文件（包括应用程序和任务输入数据）。
+有关准备节点以运行任务的各种方法的概述，请查看 Azure 批处理论坛中的帖子[在 Batch 计算节点上安装应用程序和暂存数据][forum_post]。 此帖子由 Azure Batch 团队的一名成员撰写，是一个很好的入门教程，它介绍了如何在计算节点上以不同方式获取文件（包括应用程序和任务输入数据）。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
@@ -169,6 +169,6 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 12/06/2016
 ms.author: telmos
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6b178c399cd3e29c97bc68c6c1494a015920a0a1
+ms.sourcegitcommit: b574360cce92350a9bf52c21678bf0e91ceb270e
+ms.openlocfilehash: 479cf8cf358d0b242d8ce030d8639b493e4767d8
 
 
 ---
@@ -54,7 +54,7 @@ ms.openlocfilehash: 6b178c399cd3e29c97bc68c6c1494a015920a0a1
 
 * 易于使用：不需要配置就能使用 Azure 提供的名称解析。
 * Azure 提供的名称解析服务高度可用，你无需创建和管理你自己的 DNS 服务器的群集。
-* 可以与你自己的 DNS 服务器配合使用，以便解析本地主机名和 Azure 主机名。
+* 可以与自己的 DNS 服务器配合使用，解析本地主机名和 Azure 主机名。
 * 在相同云服务中的角色实例/VM 之间提供名称解析，无需 FQDN。
 * 无需 FQDN 即可在使用 Resource Manager 部署模型的虚拟网络中的 VM 之间提供名称解析。 经典部署模型中的虚拟网络需要使用 FQDN 来解析不同云服务中的名称。 
 * 你可以使用最能描述你的部署的主机名，而不必使用自动生成的名称。
@@ -123,7 +123,7 @@ resolv.conf 文件通常是自动生成的，不应进行编辑。  添加“opt
 ## <a name="name-resolution-using-your-own-dns-server"></a>使用你自己的 DNS 服务器的名称解析
 在很多情况下，Azure 所提供的功能可能无法满足你的名称解析需求，例如，你可能需要使用 Active Directory 域，或者需要在虚拟网络 (VNet) 之间进行 DNS 解析。  考虑到这些情况，Azure 为你提供了使用你自己的 DNS 服务器的功能。  
 
-虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名。  例如，在 Azure 中运行的域控制器 (DC) 可以响应自身域的 DNS 查询，而将所有其他查询转发到 Azure。  这样一来，VM 就可以查看你的本地资源（通过 DC）以及 Azure 提供的主机名（通过转发器）。  可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。
+虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名。  例如，在 Azure 中运行的域控制器 (DC) 可以响应自身域的 DNS 查询，而将所有其他查询转发到 Azure。  这样一来，VM 就可以（通过 DC）查看你的本地资源以及（通过转发器）查看 Azure 提供的主机名。  可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。
 
 DNS 转发还可用于在 VNet 之间进行 DNS 解析，可以通过本地计算机来解析 Azure 提供的主机名。  为了解析 VM 的主机名，DNS 服务器 VM 必须驻留在同一虚拟网络中，并且必须配置为将主机名查询转发到 Azure。  由于 DNS 后缀在每个 VNet 中是不同的，因此可使用条件性转发规则将 DNS 查询发送到正确的 VNet 进行解析。  下图显示了如何通过两个 VNet 和一个本地网络使用该方法在 VNet 之间进行 DNS 解析。  DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。
 
@@ -182,6 +182,6 @@ Resource Manager 部署模型：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

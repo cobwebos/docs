@@ -1,0 +1,146 @@
+---
+title: "Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明"
+description: "Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明"
+services: app-service\web
+documentationcenter: .net
+author: Juliako
+manager: erikre
+editor: 
+ms.assetid: 877d070a-9bd5-49b3-8fac-6bb5f65c3554
+ms.service: app-service
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 10/17/2016
+ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 877fb34d2fe5d4b85157a8338e180358d2226ef1
+
+
+---
+# <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明
+## <a name="overview"></a>概述
+本文档包含 Azure SDK for .NET 2.7 发行版的发行说明。 
+
+本文档还包含 Azure SDK for .NET 2.7.1 发行版的发行说明。
+
+只有 Visual Studio 2015 和 Visual Studio 2013 才支持 Azure SDK 2.7。 [Azure SDK 2.6](https://azure.microsoft.com/downloads/) 是 Visual Studio 2012 支持的最后一个 SDK。
+
+有关此版本的详细信息，请参阅 [Azure SDK 2.7 通告文章](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)和 [Azure SDK 2.7.1 通告文章](http://go.microsoft.com/fwlink/?LinkId=623850)。
+
+## <a name="azure-sdk-for-net-27"></a>Azure SDK for .NET 2.7
+### <a name="sign-in-improvements-for-visual-studio-2015"></a>Visual Studio 2015 的登录改进
+适用于 Visual Studio 2015 的 Azure SDK 2.7 支持 Visual Studio 2015 中的新标识管理功能。  这包括支持通过基于角色的访问控制、云解决方案提供者、DreamSpark 以及其他帐户和订阅类型访问 Azure 的帐户。
+
+只能在 Visual Studio 2015 中使用 Azure SDK 2.7 附带的登录改进。 Azure SDK 2.7.1 中附带了对 Visual Studio 2013 的支持。
+
+### <a name="mobile-sdk"></a>移动 SDK
+更新了**移动应用**模板，反映最新的 [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/)和设置过程。
+
+### <a name="service-bus"></a>服务总线
+一般性的 Bug 修复与改进。 有关更新和功能的详细信息，请参阅最新[服务总线 NuGet](http://www.nuget.org/packages/WindowsAzure.ServiceBus/) 的发行说明。
+
+### <a name="hdinsight-tools"></a>HDInsight 工具
+此版本做了以下更新。 这些更新目前以预览版提供。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=619108)。
+
+* 为 Tez 上的 Hive 作业绘制 Hive 图形
+* 完全支持 Hive DML IntelliSense
+* Pig 模板支持
+* Azure 服务的 Storm 模板
+
+#### <a name="breaking-changes"></a>重大变化
+* 使用此版本的工具时，必须先升级旧的 **Storm** 项目。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=619108)。
+* 不再支持 Visual Studio Web Express。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=619108)。
+
+### <a name="azure-app-service-tools"></a>Azure App Service 工具
+此版本对 Web 工具扩展做了以下更新。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)。 
+
+* 添加了对 DreamSpark 帐户的支持
+* 对 Azure 工具做了全面的更改，以支持新的 Azure 资源管理 API
+* 在[云资源管理器](#cloud_explorer)中添加了对 Azure 应用服务的支持
+
+#### <a name="known-issues"></a>已知问题
+服务器资源管理器的“槽”节点下面不会出现 Web 应用部署槽节点，而云资源管理器下面不会加载 Web 应用部署槽的子节点。 此问题已解决，下一个 SDK 版本将不再发生。 
+
+### <a name="a-namecloudexploreracloud-explorer-for-visual-studio-2015"></a><a name="cloud_explorer"></a>适用于 Visual Studio 2015 的云资源管理器
+Azure SDK 2.7 包含适用于 Visual Studio 2015 的云资源管理器，可让你从 Visual Studio 中查看 Azure 资源、检查其属性，以及执行重要的开发人员操作。 
+
+云资源管理器支持以下功能：
+
+* Azure 资源的“资源组”和“资源类型”视图 
+* 按名称搜索资源（可在“资源类型”视图中使用）
+* 支持应用了基于角色的访问控制 (RBAC) 的订阅和资源 
+* 集成式“操作”面板，针对特定选择的资源显示以开发人员为焦点的操作。 例如：附加使用资源管理器堆栈创建的虚拟机的远程调试器、查看虚拟机的诊断数据，等等。
+* 集成式“属性”面板，显示以开发人员为焦点，在开发/测试期间经常需要的属性 
+* 快速切换枚举资源时要使用的帐户（使用工具栏上的“设置”命令） 
+* 筛选枚举资源时要使用的订阅（使用工具栏上的“设置”命令） 
+* 用于管理资源与资源组的 Azure 门户深层链接 
+
+### <a name="azure-resource-manager-tools"></a>Azure 资源管理器工具
+Azure Resource Manager 工具已更新为使用基于角色的访问控制 (RBAC) 和新的订阅类型。  除了经典存储之外，这些更改还附带了使用新存储帐户在部署期间存储项目的功能。  
+
+如果在 SDK 2.7 中使用旧版 SDK 中的 Azure 资源组，则需要使用新的存储帐户而不是经典存储帐户来部署新的部署脚本。  在你更改项目以添加新的脚本之前，系统会发出提示。  旧脚本将重命名，你需要手动修改新的脚本。
+
+### <a name="storage-explorer-tools"></a>存储资源管理器工具
+* 支持查看附加 Blob。 有关详细信息，请参阅[此博客文章](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)。 
+* 支持通过服务器资源管理器查看高级存储帐户。 服务器资源管理器只显示高级存储帐户的页 Blob，因为它们是高级存储帐户唯一支持的类型。
+
+### <a name="azure-data-factory-tools-for-visual-studio"></a>适用于 Visual Studio 的 Azure 数据工厂工具
+即将引入适用于 Visual Studio 的 **Azure 数据工厂工具**。 以下是启用的功能。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=617530)。
+
+* **基于模板的创作**：选择基于用例的模板、数据移动模板或数据处理模板，部署端到端数据集成解决方案，以及快速开始使用数据工厂。 
+* **与解决方案资源管理器集成，方便创作和部署数据工厂实体**：创建和部署管道与相关实体作为 Visual Studio 项目。 
+* **与图表视图集成，以便在创作时进行可视互动**：借助图表视图，以可视方式创作管道和数据集。 
+* **与服务器资源管理器集成，方便浏览已部署的实体并与之互动**：利用服务器资源管理器浏览已部署的数据工厂和相应的实体。 将已部署的数据工厂或任何实体（管道、链接的服务、数据集）导入你的项目。 
+* **使用架构验证与丰富智能感知进行 JSON 编辑**：使用丰富智能感知与架构验证，有效地配置和编辑数据工厂实体的 JSON 文档 
+* **多环境发布**：通过为每个环境创建不同的配置文件，将创作的管道发布到开发、测试或生产环境。
+* **支持基于 Pig、Hive 和 .Net 的数据处理**：支持在数据工厂项目中使用 Pig 和 Hive 脚本。 支持引用 C# 项目来管理 .Net 活动。
+
+## <a name="azure-sdk-for-net-271"></a>Azure SDK for .NET 2.7.1
+以下部分包含的更新是 Azure SDK for .NET 2.7.1 发行版中引入的。
+
+### <a name="hdinsight-tools"></a>HDInsight 工具
+有关 HDInsight 工具更新的更多详细说明，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=623831)。
+
+* Hive 作业运算符视图（新功能）
+  
+    为了帮助你更好地了解 Hive 查询，我们添加了 Hive 运算符视图功能。 若要查看某个顶点中的所有运算符，可双击作业图的相应顶点。 若要查看特定运算符的更多详细信息，可将鼠标悬停在该运算符上方。
+* Hive 错误标记（新功能）
+  
+    为了让你能够即时查看语法错误，我们添加了 Hive 错误标记功能。 此外，我们还增强了错误消息功能，你现在可以即时查看详细的语法错误（在此版本发布之前，你需要将 Hive 脚本提交给群集，然后再等待一段时间才能获得详细的错误消息）。  
+* Storm 拓扑图（新功能）
+  
+    当你想要了解你的拓扑是否正常工作时，可视化十分重要。 在此版本中，我们添加了 Storm 图的可视化功能。 你可以将拓扑的重要度量值可视化（例如，可以用颜色来表示某个 Bolt 是否“忙碌”）。 也可双击“Bolt/Spout”来查看更多详细信息。
+* 对 Azure 门户中创建的 HDInsight 群集的支持（Bug 修复）
+  
+    现在，你可以使用 Visual Studio 来查看作业并将其提交给所有 HDInsight 群集，不管群集是在哪里创建的。
+* 更多 IntelliSense 支持，更快的 Hive 元数据加载速度（改进）
+  
+    我们改进了 IntelliSense，添加了更多用户友好建议。 例如，现在还可以在 IntelliSense 中提供表别名建议，方便你撰写查询。 此外，我们还改进了 Hive 元数据加载，只需数秒即可列出 Hive 源存储中的所有数据库、表和列。
+
+有关 HDInsight 工具更新的更多详细说明，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=623831)。
+
+### <a name="improvements-in-visual-studio-2013"></a>Visual Studio 2013 中的改进
+* 有了 Azure SDK 2.7.1，Visual Studio 2013 就可以通过基于角色的访问控制、云解决方案提供程序和 Dreamspark 访问 Azure 帐户和订阅。
+* 现在，由于有了 Azure SDK 2.7.1，在 Visual Studio 2013 中还可以使用新的云资源管理器工具窗口。
+
+### <a name="known-issues"></a>已知问题
+在非英语 OS 上安装适用于 Visual Studio Community 2013 的 Azure SDK 2.6 或 2.7.1 会显示一个警告，指出 Visual Studio 的英语资源和非英语资源可能不匹配。 此警告可以忽略，不会出什么问题。 仅当计算机此前没有安装 Visual Studio Community 2013，而你是在非英语 OS 上安装 SDK 时，才会出现这种情况。 只有在语言包向 Visual Studio 应用 RTM 资源后，才会显示此警告，此时尚未应用 Update 4。 忽略此警告后，语言包就可以继续应用语言包内容的 Update 4 版本。
+
+LightSwitch 项目与此版本不兼容。 下一个 SDK 版本将解决此问题。
+
+## <a name="also-see"></a>另请参阅
+[Azure SDK 2.7.1 通告文章](http://go.microsoft.com/fwlink/?LinkId=623850)
+
+[Azure SDK 2.7 通告文章](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
+
+[用于 .NET 的 Azure SDK 和 API 支持与停用信息](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
+
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

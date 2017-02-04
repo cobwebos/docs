@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 877d92deebfda835eef37cdc8dc1bca21520d892
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 78433e8f6d66d55f7917e4abbbbe1c24e662a400
 
 ---
 # <a name="media-services-documentation"></a>媒体服务文档
@@ -159,52 +159,46 @@ Azure 媒体服务是一个可扩展的基于云的平台，开发人员可以�
 
 ---
 
-## <a name="reference"></a>参考
-
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell 参考</p>
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.media/v0.3.1/azurerm.media">PowerShell (Resource Manager)</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.compute/v3.1.0/azure.compute">PowerShell（服务管理）</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET 托管参考 API</p>
-                    </div>
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.windowsazure.mediaservices.client">.NET</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/media/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>媒体服务 REST API</p>
+                        <p><a href="/rest/api/media">REST API 参考</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/media-services.pdf">

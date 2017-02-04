@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: b23fd70f2941898524a848d5c0f353542f416e59
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 5742326de5bbe91340df69402bc551f87dafca78
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure 数据工厂文档
@@ -85,7 +85,7 @@ Azure 数据工厂是一项基于云的数据集成服务，可以自动移动�
 </ul>
 
 ---
- 
+
 <h2>参考</h2>
 <ul class="panelContent cardsW">
     <li>
@@ -101,25 +101,25 @@ Azure 数据工厂是一项基于云的数据集成服务，可以自动移动�
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
                         <p><a href="/azure/data-factory/data-factory-sdks">Azure 数据工厂开发人员参考</a></p>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/datafactory/">REST API</a></p>
+                        <p><a href="/rest/api/datafactory/">REST API 参考</a></p>
                     </div>
                 </div>
             </div>

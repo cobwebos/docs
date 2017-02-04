@@ -4,7 +4,7 @@ description: "了解如何在 Resource Manager 中使用 Azure CLI 创建应用�
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
-ms.openlocfilehash: 3e3e563f941ad4ad58f96b03e98f49a7d99844d9
+ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
+ms.openlocfilehash: 165289acd1d2a5bc098e9a83f43613d16a023045
 
 
 ---
@@ -40,8 +40,6 @@ Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之�
 
 > [!NOTE]
 > 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/sign-up-organization.md)。
-> 
-> 
 
 ## <a name="scenario"></a>方案
 
@@ -58,8 +56,6 @@ Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之�
 
 > [!NOTE]
 > 针对应用程序网关进行的其他配置（包括自定义运行状况探测、后端池地址以及其他规则）是在对应用程序网关配置以后配置的，不是在初始部署期间配置的。
-> 
-> 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -125,11 +121,9 @@ azure network application-gateway create -n AdatumAppGateway -l eastus -g Adatum
 
 > [!NOTE]
 > 如需在创建过程中能够提供的参数的列表，请运行以下命令：**azure network application-gateway create --help**。
-> 
-> 
 
 此示例会创建基本的应用程序网关，提供的默认设置适用于侦听器、后端池、后端 http 设置以及规则。 它还会配置 SSL 卸载。 预配成功后，即可根据部署修改这些设置。
-如果在之前的步骤中已使用后端池定义 Web 应用程序，则在创建后，负载平衡即会开始。
+如果在之前的步骤中已使用后端池定义 Web 应用程序，则在创建后，负载均衡即会开始。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -146,6 +140,6 @@ azure network application-gateway create -n AdatumAppGateway -l eastus -g Adatum
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

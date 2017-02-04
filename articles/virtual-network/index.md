@@ -2,11 +2,11 @@
 layout: LandingPage
 +toc_rel: breadcrumb.json
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c3607bf6699b83fb3fedf7cb7ccf9f1d97ad4c56
+ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
+ms.openlocfilehash: c285a2be335bed0adada1877f94c7999d7c8b7e5
 
 ---
-#<a name="virtual-network-documentation"></a>虚拟网络文档
+# <a name="virtual-network-documentation"></a>虚拟网络文档
 
 Azure 虚拟网络 (VNet) 是你自己的网络在云中的逻辑表示形式。  使用 VNet 可以完全控制网络的各个要素；可以将 VNet 划分为子网，然后使用它来启动 Azure 虚拟机或云服务。  此外，可以使用 Azure 中提供的连接选项之一将 VNet 连接到本地网络，这样，既可以将网络扩展到云，同时还能保持对资源的控制权。
 
@@ -105,81 +105,48 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的逻辑表示形式。
 
 ---
 
-## <a name="reference"></a>参考
-
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-doc">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell 参考</p>
+                        <h3>命令行</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation">PowerShell (Resource manager)</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation">PowerShell（经典）</a></p>
+                        <p><a href="/cli/azure">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/cli/azure/network/vnet">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Azure CLI</h3>
-                        <p>虚拟网络 Azure CLI</p>
-                    </div>
+                        <h3>语言</h3>
+                        <p><a href="/java/api/">Java</a></p>
+                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>.NET API 参考</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>   
-    <li>
-        <a href="/java/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java API 参考</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt163658">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>虚拟网络 REST API</p>
+                        <p><a href="https://msdn.microsoft.com/library/mt163658.aspx">REST (Resource Manager)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/jj157182.aspx">REST（经典）</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
-
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-network.pdf">

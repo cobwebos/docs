@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 12/13/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: d5674c6b903aac74260f1dc0ca549ddcf87d183d
-ms.openlocfilehash: 0baacb37e4c5b21860bf9ec2fbbd2eb7c067beb6
+ms.sourcegitcommit: 1803478efefae69f21c485df94c3608bd24f2224
+ms.openlocfilehash: 3d0b4137560abb69ff0ca0f2bb7703750778fb7e
 
 
 ---
@@ -62,24 +62,24 @@ Azure Active Directory Connect 由三个主要组件构成：同步服务、可�
 [安装后](active-directory-aadconnect-whats-next.md) ，你应该验证程序是否按预期工作，并将许可证分配给用户。
 
 ### <a name="next-steps-to-install-azure-ad-connect"></a>Azure AD Connect 安装后续步骤
-|主题 | 链接 
-|--- | ---
-|下载 Azure AD Connect | [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
-|使用快速设置安装 | [Azure AD Connect 的快速安装](./connect/active-directory-aadconnect-get-started-express.md)
-|使用自定义设置安装 | [Azure AD Connect 的自定义安装](./connect/active-directory-aadconnect-get-started-custom.md)
-|从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](./connect/active-directory-aadconnect-dirsync-upgrade-get-started.md)
-|安装后 | [验证安装并分配许可证 ](active-directory-aadconnect-whats-next.md)
+|主题 |链接|  
+| --- | --- |
+|下载 Azure AD Connect | [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)|
+|使用快速设置安装 | [Azure AD Connect 的快速安装](./connect/active-directory-aadconnect-get-started-express.md)|
+|使用自定义设置安装 | [Azure AD Connect 的自定义安装](./connect/active-directory-aadconnect-get-started-custom.md)|
+|从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](./connect/active-directory-aadconnect-dirsync-upgrade-get-started.md)|
+|安装后 | [验证安装并分配许可证 ](active-directory-aadconnect-whats-next.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>了解有关安装 Azure AD Connect 的详细信息
 你还要预先了解 [操作](active-directory-aadconnectsync-operations.md) 注意事项。 可能要部署一台待机服务器，以便在发生 [灾难](active-directory-aadconnectsync-operations.md#disaster-recovery)时轻松故障转移。 如果要频繁进行配置更改，应该计划部署一台 [暂存模式](active-directory-aadconnectsync-operations.md#staging-mode) 服务器。
 
-主题 |  
---------- | ---------
-支持的拓扑 | [Azure AD Connect 的拓扑](active-directory-aadconnect-topologies.md)
-设计概念 | [Azure AD Connect 设计概念](active-directory-aadconnect-design-concepts.md)
-用于安装的帐户 | [有关 Azure AD Connect 凭据和权限的详细信息](./connect/active-directory-aadconnect-accounts-permissions.md)
-操作规划 | [Azure AD Connect 同步：操作任务和注意事项](active-directory-aadconnectsync-operations.md)
-用户登录选项 | [Azure AD Connect 用户登录选项](active-directory-aadconnect-user-signin.md)
+|主题 |链接|  
+| --- | --- |
+|支持的拓扑 | [Azure AD Connect 的拓扑](active-directory-aadconnect-topologies.md)|
+|设计概念 | [Azure AD Connect 设计概念](active-directory-aadconnect-design-concepts.md)|
+|用于安装的帐户 | [有关 Azure AD Connect 凭据和权限的详细信息](./connect/active-directory-aadconnect-accounts-permissions.md)|
+|操作规划 | [Azure AD Connect 同步：操作任务和注意事项](active-directory-aadconnectsync-operations.md)|
+|用户登录选项 | [Azure AD Connect 用户登录选项](active-directory-aadconnect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>配置同步功能
 Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能。 在某些方案和拓扑中，有些功能可能需要进行其他配置。
@@ -97,7 +97,14 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 [自动升级](active-directory-aadconnect-feature-automatic-upgrade.md) ，这可确保 Azure AD Connect 始终保持最新版本。
 
 ### <a name="next-steps-to-configure-sync-features"></a>同步功能配置后续步骤
-配置筛选 | [Azure AD Connect 同步：配置筛选](active-directory-aadconnectsync-configure-filtering.md) 密码同步 | [Azure AD Connect 同步：实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md) 密码写回 | [密码管理入门](active-directory-passwords-getting-started.md) 设备写回 | [在 Azure AD Connect 中启用设备写回](active-directory-aadconnect-feature-device-writeback.md) 防止意外删除 | [Azure AD Connect 同步：防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) 自动升级 | [Azure AD Connect：自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)
+|主题 |链接|  
+| --- | --- |
+|配置筛选 | [Azure AD Connect 同步：配置筛选](active-directory-aadconnectsync-configure-filtering.md)|
+|密码同步 | [Azure AD Connect 同步：实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)|
+|密码写回 | [密码管理入门](active-directory-passwords-getting-started.md)|
+|设备写回 | [在 Azure AD Connect 中启用设备写回](active-directory-aadconnect-feature-device-writeback.md)|
+|防止意外删除 | [Azure AD Connect 同步：防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|
+|自动升级 | [Azure AD Connect：自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)|
 
 ## <a name="customize-azure-ad-connect-sync"></a>自定义 Azure AD Connect 同步
 Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配置。 但总会有一些情况使得默认配置不适用，因此必须进行调整。 你可以根据本部分和链接主题中所述进行更改。
@@ -109,14 +116,14 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 同步的配置模型称为 [声明性预配](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)。 高级属性流程使用 [函数](active-directory-aadconnectsync-functions-reference.md) 来表示属性转换。 你可以使用 Azure AD Connect 随附的工具来检查整个配置。 如果需要进行配置更改，请确保遵循 [最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) ，以便可以更轻松地采用新版本。
 
 ### <a name="next-steps-to-customize-azure-ad-connect-sync"></a>Azure AD Connect 同步自定义后续步骤
-主题 |  
---------- | ---------
-所有 Azure AD Connect 同步文章 | [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)
-技术概念 | [Azure AD Connect 同步：技术概念](active-directory-aadconnectsync-technical-concepts.md)
-了解默认配置 | [Azure AD Connect 同步：了解默认配置](active-directory-aadconnectsync-understanding-default-configuration.md)
-了解用户和联系人 | [Azure AD Connect 同步：了解用户和联系人](active-directory-aadconnectsync-understanding-users-and-contacts.md)
-声明性预配 | [Azure AD Connect Sync：了解声明性设置表达式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
-更改默认配置 | [更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
+|主题 |链接|  
+| --- | --- |
+|所有 Azure AD Connect 同步文章 | [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)|
+|技术概念 | [Azure AD Connect 同步：技术概念](active-directory-aadconnectsync-technical-concepts.md)|
+|了解默认配置 | [Azure AD Connect 同步：了解默认配置](active-directory-aadconnectsync-understanding-default-configuration.md)|
+|了解用户和联系人 | [Azure AD Connect 同步：了解用户和联系人](active-directory-aadconnectsync-understanding-users-and-contacts.md)|
+|声明性预配 | [Azure AD Connect Sync：了解声明性设置表达式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)|
+|更改默认配置 | [更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>配置联合身份验证功能
 可将 ADFS 配置为支持 [多个域](active-directory-aadconnect-multiple-domains.md)。 例如，你可能在联合身份验证功能中需要使用多个顶级域。
@@ -124,24 +131,22 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 如果你的 ADFS 服务器未配置为自动更新 Azure AD 中的证书，或者如果你使用非 ADFS 解决方案，则在需要 [更新证书](active-directory-aadconnect-o365-certs.md)时会通知你。
 
 ### <a name="next-steps-to-configure-federation-features"></a>配置联合身份验证功能的后续步骤
-
-主题 |  
---------- | ---------
-所有 AD FS 文章 | [Azure AD Connect 和联合身份验证](active-directory-aadconnectfed-whatis.md)
-配置带有子域的 ADFS | [与 Azure AD 联合的多域支持](active-directory-aadconnect-multiple-domains.md)
-管理 AD FS 场 | [使用 Azure AD Connect 管理和自定义 AD FS](active-directory-aadconnect-federation-management.md)
-手动更新联合身份验证证书 | [续订 Office 365 和 Azure AD 的联合身份验证证书](active-directory-aadconnect-o365-certs.md)
+|主题 |链接|  
+| --- | --- |
+|所有 AD FS 文章 | [Azure AD Connect 和联合身份验证](active-directory-aadconnectfed-whatis.md)|
+|配置带有子域的 ADFS | [与 Azure AD 联合的多域支持](active-directory-aadconnect-multiple-domains.md)|
+|管理 AD FS 场 | [使用 Azure AD Connect 管理和自定义 AD FS](active-directory-aadconnect-federation-management.md)|
+|手动更新联合身份验证证书 | [续订 Office 365 和 Azure AD 的联合身份验证证书](active-directory-aadconnect-o365-certs.md)|
 
 ## <a name="more-information-and-references"></a>详细信息和参考
-
-主题 |  
---------- | ---------
-版本历史记录 | [版本历史记录](active-directory-aadconnect-version-history.md)
-比较 DirSync、Azure ADSync 和 Azure AD Connect | [目录集成工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
-Azure AD 的非 ADFS 兼容性列表 | [Azure AD 联合身份验证兼容性列表](active-directory-aadconnect-federation-compatibility.md)
-同步的属性 | [同步的属性](active-directory-aadconnectsync-attributes-synchronized.md)
-使用 Azure AD Connect Health 进行监视 | [Azure AD Connect Health](active-directory-aadconnect-health.md)
-常见问题 | [Azure AD Connect 常见问题](active-directory-aadconnect-faq.md)
+|主题 |链接|  
+| --- | --- |
+|版本历史记录 | [版本历史记录](active-directory-aadconnect-version-history.md)|
+|比较 DirSync、Azure ADSync 和 Azure AD Connect | [目录集成工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)|
+|Azure AD 的非 ADFS 兼容性列表 | [Azure AD 联合身份验证兼容性列表](active-directory-aadconnect-federation-compatibility.md)|
+|同步的属性 | [同步的属性](active-directory-aadconnectsync-attributes-synchronized.md)|
+|使用 Azure AD Connect Health 进行监视 | [Azure AD Connect Health](active-directory-aadconnect-health.md)|
+|常见问题 | [Azure AD Connect 常见问题](active-directory-aadconnect-faq.md)|
 
 **其他资源**
 
