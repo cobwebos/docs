@@ -4,7 +4,7 @@ description: "使用 OMS 网关连接 OMS 管理的设备和 Operations Manager 
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dc6cdf1630407d1c4439d89aca5a8254bb806eba
-ms.openlocfilehash: 41382ba85fee1c3f5b1570748cd3d5b0641b9593
+ms.sourcegitcommit: a3d79c2df96c21d1af77c8ea1f53a2cc4e28343e
+ms.openlocfilehash: 30b1a9144e06db92ba12030dfe37a83e79d62857
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 41382ba85fee1c3f5b1570748cd3d5b0641b9593
 
 所有代理数据并不是由每个代理直接发送到 OMS（这样就需要建立直接 Internet 连接），而是通过一台建立了 Internet 连接的计算机发送。 网关就是在这台计算机上安装和使用的。 在此方案中，可以在想要收集数据的任何计算机上安装代理。 然后，网关会直接将数据从代理传输到 OMS，但不对传输的任何数据进行分析。
 
-若要监视 OMS 网关以及分析装有该网关的服务器的性能或事件数据，必须在同样装有该网关的计算机上安装 OMS 代理。
+你必须在也安装了网关的计算机上安装 OMS 代理。 这样，你便可以监视 OMS 网关并分析安装它的服务器的性能或事件数据。 此外，该代理可帮助 OMS 网关标识它需要与之进行通信的服务终结点。
 
 网关必须能够访问 Internet 才能将数据上载到 OMS。 每个代理也必须与其网关建立网络连接，这样，代理才能自动与网关相互传输数据。 为获得最佳效果，请不要在同时充当域控制器的计算机上安装网关。
 
@@ -41,26 +41,72 @@ ms.openlocfilehash: 41382ba85fee1c3f5b1570748cd3d5b0641b9593
 
 ![Operations Manager 示意图](./media/log-analytics-oms-gateway/scom-mgt-server.png)
 
+## <a name="language-availability"></a>语言可用性
+
+OMS 网关提供了以下语言：
+
+- 中文(简体)
+- 中文(繁体)
+- 捷克语
+- 荷兰语
+- 英语
+- 法语
+- 德语
+- 匈牙利语
+- 意大利语
+- 日语
+- 朝鲜语
+- 波兰语
+- 葡萄牙语(巴西)
+- 葡萄牙语(葡萄牙)
+- 俄语
+- 西班牙语(国际)
+
+## <a name="download-the-oms-gateway"></a>下载 OMS 网关
+
+可通过三种方法获取 OMS 网关安装程序文件。
+
+### <a name="microsoft-download-center"></a>Microsoft 下载中心
+
+- 从 [Microsoft 下载中心](http://download.microsoft.com/download/2/5/C/25CF992A-0347-4765-BD7D-D45D5B27F92C/OMS%20Gateway.msi)下载最新版本的 OMS 网关。
+
+### <a name="oms-portal"></a>OMS 门户
+
+1.  登录 OMS 工作区。
+2.  选择“设置” > “连接的源” > “Windows 服务器”。
+3.  单击“下载 OMS 网关”。
+
+
+### <a name="azure-portal"></a>Azure 门户
+
+1. 转到 [Azure 门户](https://portal.azure.com)并登录，浏览服务列表，然后选择“Log Analytics”。
+2. 选择工作区。
+3. 在工作区边栏选项卡中“常规”下面，单击“快速启动”。
+4. 在“选择要连接到工作区的数据源”下面，单击“计算机”。
+4. 在“直接代理”边栏选项卡中，单击“下载 OMS 网关”。  
+    ![下载 OMS 网关](./media/log-analytics-oms-gateway/download-gateway.png)
+
+
 ## <a name="install-the-oms-gateway"></a>安装 OMS 网关
 安装此网关会取代以前已安装的网关版本 (Log Analytics Forwarder)。
 
 先决条件：.Net Framework 4.5、Windows Server 2012 R2 SP1 和更高版本
 
-1. 从 [Microsoft 下载中心](http://download.microsoft.com/download/2/5/C/25CF992A-0347-4765-BD7D-D45D5B27F92C/OMS%20Gateway.msi)下载最新版本的 OMS 网关。
-2. 若要开始安装，请双击“OMS Gateway.msi”。
-3. 在“欢迎”页上，单击“下一步”。  
+
+1. 若要开始安装，请双击“OMS Gateway.msi”。
+2. 在“欢迎”页上，单击“下一步”。  
     ![网关安装向导](./media/log-analytics-oms-gateway/gateway-wizard01.png)
-4. 在“许可协议”页上，选择“我接受许可协议中的条款”表示同意 EULA，然后单击“下一步”。
-5. 在端口和代理地址页上执行以下操作：
+3. 在“许可协议”页上，选择“我接受许可协议中的条款”表示同意 EULA，然后单击“下一步”。
+4. 在端口和代理地址页上执行以下操作：
    1. 键入网关使用的 TCP 端口号。 安装程序将在 Windows 防火墙中打开此端口号。 默认值为 8080。
       端口号的有效范围为 1 - 65535。 如果输入的端口号不在此范围内，会出现一条错误消息。
    2. （可选）如果安装网关的服务器需要使用代理，请键入网关需要连接到的代理地址， 例如 `http://myorgname.corp.contoso.com:80`。如果将此地址留空，网关将尝试直接连接到 Internet。 否则，网关将连接到代理。 如果代理服务器要求身份验证，请键入你的用户名和密码。
        ![网关向导代理配置](./media/log-analytics-oms-gateway/gateway-wizard02.png)  
    3. 单击“下一步”
-6. 如果尚未启用 Microsoft 更新，将会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，然后单击“下一步”。 否则，继续执行下一步。
-7. 在“目标文件夹”页上，保留默认文件夹 **%ProgramFiles%\OMS Gateway** 或键入网关的安装位置，然后单击“下一步”。
-8. 在“准备安装”页上，单击“安装”。 此时可能会显示“用户帐户控制”，请求提供安装权限。 在此情况下，请单击“是”。
-9. 安装完成后，单击“完成”。 可以验证该服务是否正在运行，方法是打开 services.msc 管理单元，然后检查服务列表中是否出现“OMS 网关”。  
+5. 如果尚未启用 Microsoft 更新，将会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，然后单击“下一步”。 否则，继续执行下一步。
+6. 在“目标文件夹”页上，保留默认文件夹 **%ProgramFiles%\OMS Gateway** 或键入网关的安装位置，然后单击“下一步”。
+7. 在“准备安装”页上，单击“安装”。 此时可能会显示“用户帐户控制”，请求提供安装权限。 在此情况下，请单击“是”。
+8. 安装完成后，单击“完成”。 可以验证该服务是否正在运行，方法是打开 services.msc 管理单元，然后检查服务列表中是否出现“OMS 网关”。  
     ![服务 - OMS 网关](./media/log-analytics-oms-gateway/gateway-service.png)
 
 ## <a name="install-an-agent-on-devices"></a>在设备上安装代理
@@ -184,7 +230,7 @@ Operations Manager 代理通过管理服务器发送某些数据，例如 Operat
 | `Get-OMSGatewayAllowedClientCertificate` | |获取当前允许的客户端证书使用者（仅限本地配置的允许使用者，不包括自动下载的允许使用者） |`Get-OMSGatewayAllowedClientCertificate` |
 
 ## <a name="troubleshoot"></a>故障排除
-建议在装有网关的计算机上安装 OMS 代理。 然后，便可以使用该代理来收集网关记录的事件。
+必须在装有网关的计算机上安装 OMS 代理。 然后，便可以使用该代理来收集网关记录的事件。
 
 ![事件查看器 – OMS 网关日志](./media/log-analytics-oms-gateway/event-viewer.png)
 
@@ -234,6 +280,6 @@ Operations Manager 代理通过管理服务器发送某些数据，例如 Operat
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

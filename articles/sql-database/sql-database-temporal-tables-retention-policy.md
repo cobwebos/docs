@@ -8,7 +8,7 @@ manager: drasumic
 editor: 
 ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
 ms.service: sql-database
-ms.custom: db development
+ms.custom: development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,8 +16,8 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bb68239d36203e74faa54859b20a4198ce3cba91
+ms.sourcegitcommit: 239d009a1fc7273a50d335a0d55d61f414d99b11
+ms.openlocfilehash: dac4a96f9b62f390aeb84fe237788350c70ea5cd
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: bb68239d36203e74faa54859b20a4198ce3cba91
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ````
 
-在上面的示例中，假设 **ValidTo** 列对应于 SYSTEM_TIME 期限结束时间。
+在前面的示例中，假设 **ValidTo** 列对应于 SYSTEM_TIME 期限结束时间。
 
 ## <a name="how-to-configure-retention-policy"></a>如何配置保留策略？
 在为临时表配置保留策略之前，请先检查是否*在数据库级别*启用了临时历史记录保留策略。
@@ -42,7 +42,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-数据库标志 **is_temporal_history_retention_enabled** 默认设置为 ON，但用户可以使用 ALTER DATABASE 语句更改此值。 在执行[时间点还原](sql-database-point-in-time-restore-portal.md)操作后，它会自动设置为 OFF。 若要为数据库启用临时历史记录保留策略清理，请执行以下语句：
+数据库标志 **is_temporal_history_retention_enabled** 默认设置为 ON，但用户可以使用 ALTER DATABASE 语句更改此值。 在执行[时间点还原](sql-database-point-in-time-restore.md)操作后，它会自动设置为 OFF。 若要为数据库启用临时历史记录保留策略清理，请执行以下语句：
 
 ````
 ALTER DATABASE <myDB>
@@ -117,7 +117,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 当工作负荷快速生成大量的历史数据时，优异的数据压缩和高效的保留数据清理使得聚集列存储索引成为完美的选择。 使用临时表进行更改跟踪和审核、趋势分析或 IoT 数据引入的密集型[事务处理工作负荷](https://msdn.microsoft.com/library/mt631669.aspx)往往使用该模式。
 
 ## <a name="index-considerations"></a>索引注意事项
-针对具有行存储聚集索引的表的清理任务要求索引的开头为对应于 SYSTEM_TIME 期限结束时间的列。 如果不存在这样的索引，将无法配置有限保留期：
+针对具有行存储聚集索引的表的清理任务要求索引的开头为对应于 SYSTEM_TIME 期限结束时间的列。 如果不存在这样的索引，则无法配置有限保留期：
 
 *消息 13765，级别 16，状态 1 <br></br>在版本由系统控制的临时表 'temporalstagetestdb.dbo.WebsiteUserInfo' 中设置有限保留期失败，因为历史记录表 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' 不包含所需的聚集索引。请考虑在历史记录表中创建聚集列存储，或者创建开头为与 SYSTEM_TIME 期限结束时间匹配的列的 B 树索引。*
 
@@ -158,7 +158,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 ````
 
-该查询计划包含的附加筛选器已应用到历史记录表上“聚集索引扫描”运算符中的期限结束时间列 (ValidTo)（已突出显示）。 此示例假设已在 WebsiteUserInfo 表中设置了 1 个月 (1 MONTH) 的保留期。
+该查询计划包含的附加筛选器已应用到历史记录表上“聚集索引扫描”运算符中的期限结束时间列 (ValidTo)（已突出显示）。 此示例假设已在 WebsiteUserInfo 表中设置了一个月 (1 MONTH) 的保留期。
 
 ![保留查询筛选器](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
 
@@ -169,7 +169,7 @@ SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 不要依赖于业务逻辑来读取超过保留期的历史记录表，否则可能会收到不一致或意外的结果。 建议配合 FOR SYSTEM_TIME 子句使用临时查询来分析临时表中的数据。
 
 ## <a name="point-in-time-restore-considerations"></a>时间点还原注意事项
-通过[将现有数据库还原到特定时间点](sql-database-point-in-time-restore-portal.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
+通过[将现有数据库还原到特定时间点](sql-database-point-in-time-restore.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
 
 假设为某个临时表指定了一个月的保留期。 如果数据库是在高级服务层中创建的，则你可以使用保持过去最多 35 天前状态的数据库创建数据库副本。 这样，便可以通过直接查询历史记录表，有效分析保留时间最长为 65 天前的历史行。
 
@@ -190,6 +190,6 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

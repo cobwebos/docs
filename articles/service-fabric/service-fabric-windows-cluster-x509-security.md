@@ -1,9 +1,9 @@
 ---
-title: "保护独立群集 | Microsoft 文档"
+title: "使用证书在 Windows 上保护群集 | Microsoft Docs"
 description: "本文介绍如何保护独立群集或专用群集内部的通信，以及客户端与群集之间的通信。"
 services: service-fabric
 documentationcenter: .net
-author: dsk-2015
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: fe0ed74c-9af5-44e9-8d62-faf1849af68c
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/08/2016
-ms.author: dkshir
+ms.date: 12/12/2016
+ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 885b5102d19df786ae6f1f380e3f791033041838
+ms.sourcegitcommit: 4fb6ef56d694aff967840ab26b75b66a2e799cc1
+ms.openlocfilehash: 48fd90c7ffb6748642ed02804117ff92cb060016
 
 
 ---
@@ -43,26 +43,33 @@ ms.openlocfilehash: 885b5102d19df786ae6f1f380e3f791033041838
                 "ThumbprintSecondary": "[Thumbprint]",
                 "X509StoreName": "My"
             },
-            "ClientCertificateThumbprints": [{
-                "CertificateThumbprint": "[Thumbprint]",
-                "IsAdmin": false
-            }, {
-                "CertificateThumbprint": "[Thumbprint]",
-                "IsAdmin": true
-            }],
-            "ClientCertificateCommonNames": [{
-                "CertificateCommonName": "[CertificateCommonName]",
-                "CertificateIssuerThumbprint" : "[Thumbprint]",
-                "IsAdmin": true
-            }]
-            "HttpApplicationGatewayCertificate":{
+            "ClientCertificateThumbprints": [
+                {
+                    "CertificateThumbprint": "[Thumbprint]",
+                    "IsAdmin": false
+                }, 
+                {
+                    "CertificateThumbprint": "[Thumbprint]",
+                    "IsAdmin": true
+                }
+            ],
+            "ClientCertificateCommonNames": [
+                {
+                    "CertificateCommonName": "[CertificateCommonName]",
+                    "CertificateIssuerThumbprint" : "[Thumbprint]",
+                    "IsAdmin": true
+                }
+            ]
+            "ReverseProxyCertificate":{
                 "Thumbprint": "[Thumbprint]",
+                "ThumbprintSecondary": "[Thumbprint]",
                 "X509StoreName": "My"
             }
         }
     }
 
-该部分描述保护独立 Windows 群集所需的证书。 若要启用基于证书的安全性，请将 **ClusterCredentialType** 和 **ServerCredentialType** 的值设为 *X509*。
+该部分描述保护独立 Windows 群集所需的证书。 如果指定群集证书，请将 **ClusterCredentialType** 的值设置为 _**X509**_。 如果为外部连接指定服务器证书，请将 **ServerCredentialType** 设置为 _**X509**_。 虽然并非强制，但为了妥善保护群集，我们建议同时拥有这两个证书。 如果将这些值设置为 *X509*，还必须指定相应的证书，否则 Service Fabric 将引发异常。 在某些情况下，仅需要指定 _ClientCertificateThumbprints_ 或 _ReverseProxyCertificate_。 在这些情况下，不需要将 _ClusterCredentialType_ 或 _ServerCredentialType_ 设置为 _X509_。
+
 
 > [!NOTE]
 > [指纹](https://en.wikipedia.org/wiki/Public_key_fingerprint)是证书的主要标识。 请阅读[如何检索证书的指纹](https://msdn.microsoft.com/library/ms734695.aspx)，找到你创建的证书的指纹。
@@ -77,7 +84,7 @@ ms.openlocfilehash: 885b5102d19df786ae6f1f380e3f791033041838
 | ServerCertificate |当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 *ClusterCertificate* 和 *ServerCertificate* 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 **Thumbprint** 部分中设置主证书的指纹，在 **ThumbprintSecondary** 变量中设置辅助证书的指纹。 |
 | ClientCertificateThumbprints |这是需要在经过身份验证的客户端上安装的一组证书。 可以在想要允许其访问群集的计算机上安装许多不同的客户端证书。 在 **CertificateThumbprint** 变量中设置每个证书的指纹。 如果 **IsAdmin** 设置为 *true*，则安装了此证书的客户端可以在群集上执行管理员管理活动。 如果 **IsAdmin** 设置为 *false*，则使用此证书的客户端只能执行用户有权执行的操作（通常为只读）。 有关角色的详细信息，请阅读[基于角色的访问控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
 | ClientCertificateCommonNames |在 **CertificateCommonName** 中设置第一个客户端证书的公用名称。 **CertificateIssuerThumbprint** 是此证书的颁发者的指纹。 请阅读[使用证书](https://msdn.microsoft.com/library/ms731899.aspx)，详细了解公用名称和颁发者。 |
-| HttpApplicationGatewayCertificate |这是可选证书，如果要保护 Http 应用程序网关，可指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
+| ReverseProxyCertificate |如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
 
 下面是群集配置示例，其中提供了群集证书、服务器证书和客户端证书。
 
@@ -94,16 +101,16 @@ ms.openlocfilehash: 885b5102d19df786ae6f1f380e3f791033041838
         "faultDomain": "fd:/dc1/r0",
         "upgradeDomain": "UD0"
     }, {
-      "nodeName": "vm1",
-              "metadata": "Replace the localhost with valid IP address or FQDN",
+        "nodeName": "vm1",
+        "metadata": "Replace the localhost with valid IP address or FQDN",
         "iPAddress": "10.7.0.4",
         "nodeTypeRef": "NodeType0",
         "faultDomain": "fd:/dc1/r1",
         "upgradeDomain": "UD1"
     }, {
         "nodeName": "vm2",
-      "iPAddress": "10.7.0.6",
-              "metadata": "Replace the localhost with valid IP address or FQDN",
+        "iPAddress": "10.7.0.6",
+        "metadata": "Replace the localhost with valid IP address or FQDN",
         "nodeTypeRef": "NodeType0",
         "faultDomain": "fd:/dc1/r2",
         "upgradeDomain": "UD2"
@@ -142,7 +149,9 @@ ms.openlocfilehash: 885b5102d19df786ae6f1f380e3f791033041838
         "nodeTypes": [{
             "name": "NodeType0",
             "clientConnectionEndpointPort": "19000",
-            "clusterConnectionEndpoint": "19001",
+            "clusterConnectionEndpointPort": "19001",
+            "leaseDriverEndpointPort": "19002",
+            "serviceConnectionEndpointPort": "19003",
             "httpGatewayEndpointPort": "19080",
             "applicationPorts": {
                 "startPort": "20001",
@@ -177,9 +186,9 @@ ms.openlocfilehash: 885b5102d19df786ae6f1f380e3f791033041838
 对于用于测试的群集，可以选择使用自签名证书。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>可选：创建自签名证书
-创建能够得到适当保护的自签名证书的一种方法是，使用位于 *C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure* 目录的 Service Fabric SDK 文件夹中的 *CertSetup.ps1* 脚本。 编辑此文件，用其创建具有合适名称的证书。
+创建能够得到适当保护的自签名证书的一种方法是，使用位于 *C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure* 目录的 Service Fabric SDK 文件夹中的 *CertSetup.ps1* 脚本。 编辑此文件以更改证书的默认名称（查找值 *CN=ServiceFabricDevClusterCert*）。 以 `.\CertSetup.ps1 -Install` 的方式运行此脚本。
 
-现在，请将证书导出到使用受保护密码的 PFX 文件。 首先需获取证书的指纹。 运行 certmgr.exe 应用程序。 转到 **Local Computer\Personal** 文件夹，找到刚刚创建的证书。 双击证书将其打开，选择“*详细信息*”选项卡，然后向下滚动到“*指纹*”字段。 将指纹值复制到下面的 PowerShell 命令中，删除空格。  将 *$pswd* 值更改为一个合适的安全密码，以确保其受保护，然后运行 PowerShell：
+现在，请将证书导出到使用受保护密码的 PFX 文件。 首先获取证书的指纹。 从“开始”菜单，运行“管理计算机证书”。 转到 **Local Computer\Personal** 文件夹，找到刚刚创建的证书。 双击证书将其打开，选择“*详细信息*”选项卡，然后向下滚动到“*指纹*”字段。 删除空格之后，将指纹值复制到下面的 PowerShell 命令中。  将 `String` 值更改为一个合适的安全密码来保护它，然后在 PowerShell 中运行以下内容：
 
 ```   
 $pswd = ConvertTo-SecureString -String "1234" -Force –AsPlainText
@@ -206,7 +215,7 @@ Write-Host $cert.ToString($true)
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. 接下来，你需要通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书指纹以及“NETWORK SERVICE”。 你可以使用 certmgr.exe 工具来查看证书上的“管理私钥”，以确保证书上的 ACL 是正确的。
+3. 接下来，通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书指纹以及“NETWORK SERVICE”。 可检查证书上的 ACL 是否正确，方法是在“开始” > “管理计算机证书”中打开证书，并查看“所有任务” > “管理私钥”。
    
     ```
     param
@@ -249,25 +258,23 @@ Write-Host $cert.ToString($true)
 配置 **ClusterConfig.X509.MultiMachine.json** 文件的 **security** 部分后，可以继续阅读[创建群集](service-fabric-cluster-creation-for-windows-server.md#createcluster)部分，配置节点并创建独立群集。 创建群集时，请务必使用 **ClusterConfig.X509.MultiMachine.json** 文件。 例如，你的命令可能如下所示：
 
 ```
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -AcceptEULA $true
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 成功运行安全的独立 Windows 群集，并设置可连接到该群集的经过身份验证的客户端之后，请按[使用 PowerShell 连接安全群集](service-fabric-connect-to-secure-cluster.md#connectsecurecluster)部分的说明操作，连接到该群集。 例如：
 
 ```
-Connect-ServiceFabricCluster -ConnectionEndpoint 10.7.0.4:19000 -KeepAliveIntervalInSec 10 -X509Credential -ServerCertThumbprint 057b9544a6f2733e0c8d3a60013a58948213f551 -FindType FindByThumbprint -FindValue 057b9544a6f2733e0c8d3a60013a58948213f551 -StoreLocation CurrentUser -StoreName My
+$ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
+Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-如果你已登录到群集中的某台计算机，由于已在本地安装证书，因此你可以直接运行 Powershell 命令连接到该群集，然后就会显示节点的列表：
+然后可运行其他 PowerShell 命令来处理此群集。 例如，运行 `Get-ServiceFabricNode` 可显示此安全群集上的节点列表。
+
+
+若要删除群集，请连接到已下载 Service Fabric 程序包的群集上的节点、打开命令行，然后导航到程序包文件夹。 现在，运行以下命令：
 
 ```
-Connect-ServiceFabricCluster
-Get-ServiceFabricNode
-```
-若要删除群集，请调用以下命令：
-
-```
-.\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json   -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab
+.\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 > [!NOTE]
@@ -278,6 +285,6 @@ Get-ServiceFabricNode
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -8,6 +8,7 @@ manager: jhubbard
 editor: monicar
 ms.assetid: 265beec9-7478-4abd-9ab5-4094e2e75fe4
 ms.service: sql-database
+ms.custom: v11
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/08/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 1596e1d146af13fba965a0db45c2d9bbc0c6f6be
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: abb5d3ad9ba052af191c0a3f50fb5724ce3f70a3
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 1596e1d146af13fba965a0db45c2d9bbc0c6f6be
  定价层建议将会推荐最适合用于运行现有 Azure SQL 数据库工作负荷的服务层和性能级别。
 
 > [!NOTE]
-> 定价层建议仅适用于 Web 和企业数据库及弹性数据库池，并且只会在 [Azure 门户](https://portal.azure.com/)中提供。
+> 定价层建议仅适用于 Web 和企业数据库及弹性池，并且只会在 [Azure 门户](https://portal.azure.com/)中提供。
 >
 >
 
@@ -33,7 +34,7 @@ ms.openlocfilehash: 1596e1d146af13fba965a0db45c2d9bbc0c6f6be
 * [更改 SQL 数据库的服务层和性能级别（定价层）](sql-database-scale-up.md)
 * [将 Azure SQL 服务器升级到 V12](sql-database-upgrade-server-portal.md)
 * 浏览到 V12 服务器。 请参阅 [SQL 数据库定价层建议](sql-database-service-tier-advisor.md)。
-* [创建弹性数据库池](sql-database-elastic-pool.md#which-databases-go-in-a-pool)
+* [创建弹性池](sql-database-elastic-pool.md#which-databases-go-in-a-pool)
 
 ## <a name="overview"></a>概述
 SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来分析当前的性能和功能要求。 此外，会根据数据库大小和启用的[业务连续性](sql-database-business-continuity.md)功能确定可接受的最低服务层。
@@ -81,6 +82,6 @@ SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

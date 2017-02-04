@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/29/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff3e8fe622bdd6ecba01bc08b26a243c592c3c8b
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 73f5413fb7dd0ca179bf5012478a453963e996a1
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: ff3e8fe622bdd6ecba01bc08b26a243c592c3c8b
 > 
 
 ### <a name="geographic-distribution"></a>地理分布
-[全世界目前有 26 个 Azure 区域][azure-regions]（最近又宣布了几个）。 根据需求和适当位置的可用性（还有其他因素），单个区域可以包含一个或多个物理数据中心。 但请注意，即使在包含多个物理数据中心的区域中，也不能保证群集的 VM 平均分散在这些物理位置。 实际上，给定群集的所有 VM 目前都预配在单个物理站点中。
+[全世界目前有 30 个 Azure 区域][azure-regions]（最近又宣布了几个）。 根据需求和适当位置的可用性（还有其他因素），单个区域可以包含一个或多个物理数据中心。 但请注意，即使在包含多个物理数据中心的区域中，也不能保证群集的 VM 平均分散在这些物理位置。 实际上，给定群集的所有 VM 目前都预配在单个物理站点中。
 
 ## <a name="dealing-with-failures"></a>应对故障
 有多种类型的故障可能会影响群集，而每种类型都有其自身的缓解方式。 我们将按照发生故障的可能性大小进行探讨。
@@ -55,7 +55,7 @@ ms.openlocfilehash: ff3e8fe622bdd6ecba01bc08b26a243c592c3c8b
 一般而言，只要大多数节点保持可用，群集就会继续运行，不过，在容量较低时，有状态副本将打包到少量的一组计算机中，并提供较少的无状态实例用于分散负载。
 
 #### <a name="quorum-loss"></a>仲裁丢失
-如果有状态服务分区的大多数副本关闭，则该分区将进入所谓的“仲裁丢失”状态。 此时，Service Fabric 会停止允许写入该分区，以确保其状态保持一致且可靠。 实际上，我们会选择接受一段不可用的时间，以确保客户端不被告知其数据已保存（但事实并非如此）。 请注意，如果选择允许从该有状态服务的辅助副本读取，可以在此状态下继续执行读取操作。 分区保持仲裁丢失的状态，直到恢复足量的副本，或群集管理员强迫系统继续使用 [Repair-ServiceFabricPartition API][repair-partition-ps] 为止。
+如果有状态服务分区的大多数副本关闭，则该分区将进入所谓的“仲裁丢失”状态。 此时，Service Fabric 会停止允许写入该分区，以确保其状态保持一致且可靠。 实际上，我们会选择接受一段不可用的时间，以确保客户端不被告知其数据已保存（但事实并非如此）。 请注意，如果选择允许从该有状态服务的辅助副本读取，可以在此状态下继续执行读取操作。 分区将保持仲裁丢失的状态，直到恢复足量的副本或群集管理员强迫系统继续使用 [Repair-ServiceFabricPartition API][repair-partition-ps]为止。
 
 > [!WARNING]
 > 在主要副本关闭时执行修复操作将导致数据丢失。
@@ -70,7 +70,7 @@ ms.openlocfilehash: ff3e8fe622bdd6ecba01bc08b26a243c592c3c8b
 请考虑以下示例，其中假设你已将服务的 MinReplicaSetSize 配置为 3，即生产运行服务的建议最小数字。 当 TargetReplicaSetSize 为 3 时（一个主副本和两个辅助副本），升级期间的硬件故障（两个副本关闭）将导致仲裁丢失，并且服务将变为只读。 或者，如果有 5 个副本，则你可以在升级期间承受两次故障（三个副本关闭），因为剩余的两个副本仍可在最小的副本集中构成仲裁。
 
 ### <a name="data-center-outages-or-destruction"></a>数据中心服务中断或损坏
-在极少数情况下，物理数据中心可能会由于电源或网络连接中断而暂时不可用。 在这种情况下，Service Fabric 群集和应用程序同样不可用，但会保留你的数据。 对于在 Azure 中运行的群集，可以在 [Azure 状态页][azure-status-dashboard] 上查看有关中断的最新信息。
+在极少数情况下，物理数据中心可能会由于电源或网络连接中断而暂时不可用。 在这种情况下，Service Fabric 群集和应用程序同样不可用，但会保留你的数据。 对于在 Azure 中运行的群集，可以在 [Azure 状态页][azure-status-dashboard]上查看有关中断的最新信息。
 
 在整个物理数据中心遭到损坏（这种情况很少见）时，该数据中心托管的所有 Service Fabric 群集及其状态将会丢失。
 
@@ -94,6 +94,7 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
   * [可用性清单](../best-practices-availability-checklist.md)
   * [执行灾难恢复演练](../sql-database/sql-database-disaster-recovery-drills.md)
   * [Azure 应用程序的灾难恢复和高可用性][dr-ha-guide]
+* 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 <!-- External links -->
 
@@ -109,6 +110,6 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

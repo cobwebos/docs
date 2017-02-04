@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/13/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8bfadc110b8b2e0de470185ec9d84343125c960d
+ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
+ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
 
 
 ---
@@ -31,9 +31,8 @@ ms.openlocfilehash: 8bfadc110b8b2e0de470185ec9d84343125c960d
 3. 标记计划实施：[如何在 iOS 应用中使用高级 Mobile Engagement 标记 API](mobile-engagement-ios-use-engagement-api.md)
 
 ## <a name="release-notes"></a>发行说明
-### <a name="400-09122016"></a>4.0.0 (09/12/2016)
-* 修复了 iOS 10 设备上不起作用的通知。
-* 弃用了 XCode 7。
+### <a name="401-12132016"></a>4.0.1 (12/13/2016)
+* 改进了后台的日志传送。
 
 对于较早版本，请参阅[完整的发行说明](mobile-engagement-ios-release-notes.md)
 
@@ -108,12 +107,15 @@ XCode 8 可能会重置你的应用推送功能，请在你选定目标的 `capa
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-#### <a name="if-you-already-have-your-own-unusernotificationcenterdelegate-implementation"></a>如果你已经有自己的 UNUserNotificationCenterDelegate 实现
-SDK 具有其自身的 UNUserNotificationCenterDelegate 协议实现。 SDK 使用它来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 如果 SDK 检测到委派，它将不使用其自身的实现，因为每个应用程序只有一个 UNUserNotificationCenter 委派。 这意味着你需要将 Engagement 逻辑添加到自己的委派。
+#### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>解决 UNUserNotificationCenter 委托冲突
+
+如果应用程序或其中一个第三方库实现了 `UNUserNotificationCenterDelegate`，则可以跳过此部分。
+
+SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版本的设备上的 Engagement 通知的生命周期。 SDK 具有其自己实现的 `UNUserNotificationCenterDelegate` 协议，但每个应用程序只能有一个 `UNUserNotificationCenter` 委托。 任何其他添加到 `UNUserNotificationCenter` 对象的委托将与 Engagement 委托冲突。 如果 SDK 检测到你或任何其他第三方的委托，则不会使用其自己的实现来提供解决此冲突的可能性。 需要将 Engagement 逻辑添加到自己的委托中来解决此冲突。
 
 可通过两种方式实现此目的：
 
-只需将委派调用转发到 SDK：
+方案 1：只需将委托调用转发到 SDK；
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -140,7 +142,7 @@ SDK 具有其自身的 UNUserNotificationCenterDelegate 协议实现。 SDK 使�
     }
     @end
 
-或通过继承自 `AEUserNotificationHandler` 类
+方案 2：通过继承自 `AEUserNotificationHandler` 类
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -168,12 +170,20 @@ SDK 具有其自身的 UNUserNotificationCenterDelegate 协议实现。 SDK 使�
 
 > [!NOTE]
 > 通过将通知的 `userInfo` 字典传递到代理 `isEngagementPushPayload:` 类方法，你可以确定该通知是否来自于 Engagement。
-> 
-> 
+
+请确保 `UNUserNotificationCenter` 对象的委托在你的应用程序委托的 `application:willFinishLaunchingWithOptions:` 或 `application:didFinishLaunchingWithOptions:` 方法内设置为你的委托。
+例如，如果已实现上述协议 1：
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Any other code
+  
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        return YES;
+      }
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

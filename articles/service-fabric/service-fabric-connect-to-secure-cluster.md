@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4ba0f864dc28beebb80567d3fac7f12cc42df677
-ms.openlocfilehash: 09557bd9c83318b2bdff8ecdefedc141eb7f80db
+ms.sourcegitcommit: 65775053918e12ef8881f417dacc0a63f080d093
+ms.openlocfilehash: 6de98012e768abc7f8450e97648444a74474b5e9
 
 
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
-当客户端连接到 Service Fabric 群集节点时，可以使用证书安全性或 Azure Active Directory (AAD) 与客户端建立经过身份验证的安全通信。 此身份验证可确保只有经过授权的用户才能访问该群集和部署的应用程序，以及执行管理任务。  创建群集时，必须事先在该群集上启用证书或 AAD 安全性。  有关群集安全方案的详细信息，请参阅[群集安全性](service-fabric-cluster-security.md)。 若要连接到使用证书进行保护的群集，请在将要连接到群集的计算机上[设置客户端证书](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert)。
+当客户端连接到 Service Fabric 群集节点时，可以使用证书安全性或 Azure Active Directory (AAD) 与客户端建立经过身份验证的安全通信。 此身份验证可确保只有经过授权的用户才能访问该群集和部署的应用程序，以及执行管理任务。  创建群集时，必须事先在该群集上启用证书或 AAD 安全性。  有关群集安全方案的详细信息，请参阅[群集安全性](service-fabric-cluster-security.md)。 若要连接到使用证书进行保护的群集，请在将要连接到群集的计算机上[设置客户端证书](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert)。 
 
 <a id="connectsecureclustercli"></a> 
 
@@ -56,7 +56,7 @@ azure servicefabric cluster connect --connection-endpoint https://ip:19080 --cli
 azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false --reject-unauthorized-false
 ```
 
-在连接后，你应能够运行其他 CLI 命令以与群集进行交互。 
+在连接后，你应能够[运行其他 CLI 命令](service-fabric-azure-cli.md)以与群集进行交互。 
 
 <a id="connectsecurecluster"></a>
 
@@ -111,7 +111,7 @@ Service Fabric SDK 提供用于群集管理的 [FabricClient](https://msdn.micro
 
 ### <a name="connect-to-an-unsecure-cluster"></a>连接到不安全的群集
 
-若要连接到远程的不安全群集，可直接创建 FabricClient 实例并提供群集地址：
+若要连接到远程的不安全群集，请创建 FabricClient 实例并提供群集地址：
 
 ```csharp
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
@@ -330,6 +330,6 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
