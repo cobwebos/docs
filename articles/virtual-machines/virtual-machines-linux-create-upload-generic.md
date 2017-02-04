@@ -13,7 +13,7 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: 8ba7633f7d5c4bf9e7160b27f5d5552676653d55
@@ -143,6 +143,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 * 在某些情况下，Azure Linux 代理可能与 NetworkManager 不兼容。 分发提供的许多 RPM/Deb 包会将 NetworkManager 配置为与 waagent 包冲突，因此当你安装 Linux 代理包时将卸载 NetworkManager。
 
 ## <a name="general-linux-system-requirements"></a>一般 Linux 系统要求
+
 * 修改 GRUB 或 GRUB2 中的内核引导行，以便包含以下参数。 这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题：
   
         console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
@@ -153,13 +154,14 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
   
         rhgb quiet crashkernel=auto
   
-    图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。
-  
-    根据需要可以配置 `crashkernel` 选项，但请注意此参数会使虚拟机中的可用内存量减少 128MB 或更多，这在较小的虚拟机上可能会出现问题。
+    图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 根据需要可以配置 `crashkernel` 选项，但请注意此参数会使虚拟机中的可用内存量减少 128MB 或更多，这在较小的虚拟机上可能会出现问题。
+
 * 安装 Azure Linux 代理
   
     Azure Linux 代理是在 Azure 上设置 Linux 映像所必需的。  许多分发将该代理提供为 RPM 或 Deb 包（该包通常称为“WALinuxAgent”或“walinuxagent”）。  还可以按照 [Linux 代理指南](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的步骤手动安装该代理。
+
 * 请确保已安装 SSH 服务器且已将其配置为在引导时启动。  这通常是默认设置。
+
 * 不要在操作系统磁盘上创建交换空间
   
     Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是*临时*磁盘，并可能在取消预配 VM 时被清空。 在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 /etc/waagent.conf 中修改以下参数：
@@ -169,6 +171,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+
 * 最后一步，请运行以下命令以取消设置虚拟机：
   
         # sudo waagent -force -deprovision
@@ -179,6 +182,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
   > 运行“waagent -force -deprovision”之后，在 Virtualbox 上可能看到以下错误：`[Errno 5] Input/output error`。 此错误消息并不关键，可以忽略。
   > 
   > 
+
 * 然后，需要关闭虚拟机并将 VHD 上载到 Azure。
 
 
