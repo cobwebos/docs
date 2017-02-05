@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 271e2bd40fb605dc6be229bea8fb479effae4298
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: a932b617d57184ef714bf18f1e1e23599db52487
 
 
 ---
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 对于 B2C 租户，与图形 API 通信有两种主要模式。
 
 * 对于一次性运行的交互式任务，用户应在执行这些任务时充当 B2C 租户中的管理员帐户。 此模式需要管理员使用凭据登录，然后才能执行对图形 API 的任何调用。
-* 对于自动化的连续任务，应该使用你提供有所需特权的某些类型的服务帐户来执行管理任务。 在 Azure AD 中，可以通过注册应用程序并向 Azure AD 进行身份验证来执行此操作。 这通过利用使用 [OAuth 2.0 客户端凭据授予](../active-directory/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)的**应用程序 ID** 来完成。 在这种情况下，应用程序作为其本身而不是用户来调用图形 API。
+* 对于自动化的连续任务，应该使用你提供有所需特权的某些类型的服务帐户来执行管理任务。 在 Azure AD 中，可以通过注册应用程序并向 Azure AD 进行身份验证来执行此操作。 这通过利用使用 [OAuth 2.0 客户端凭据授予](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)的**应用程序 ID** 来完成。 在这种情况下，应用程序作为其本身而不是用户来调用图形 API。
 
 在本文中，我们将讨论如何执行自动使用案例。 为了演示，我们将构建一个执行用户创建、读取、更新和删除 (CRUD) 操作的 .NET 4.5 `B2CGraphClient`。 客户端将拥有一个 Windows 命令行接口 (CLI)，允许用户调用各种方法。 然而，代码被编写为以非交互式自动化的方式表现。
 
@@ -364,6 +364,6 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

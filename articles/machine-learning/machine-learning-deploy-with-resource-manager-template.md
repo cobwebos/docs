@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 12/12/2016
 ms.author: ahgyger
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cf6c80aa82edc6753700975f2bf3919f0c48ec75
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: e0a06c070159a87932cda4b31d9363e54c008a35
 
 
 ---
@@ -139,7 +139,7 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 预配工作区后，还可使用[用于 Azure 机器学习的 PowerShell 模块](http://aka.ms/amlps)自动化许多 Azure 机器学习工作室任务。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[编写 Azure Resource Manager 模板](../resource-group-authoring-templates.md)的详细信息 
+* 了解有关[编写 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)的详细信息 
 * 请查看 [Azure 快速启动模板存储库](https://github.com/Azure/azure-quickstart-templates)。 
 * 观看有关 [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39) 的视频。 
 
@@ -152,6 +152,6 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/28/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47d2b871ea8f169a04250c7d00c996bd27516600
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 40f0e2b1b1b6144b2f9aa5814a4408b4964ede97
 
 
 ---
@@ -26,8 +26,8 @@ ms.openlocfilehash: 47d2b871ea8f169a04250c7d00c996bd27516600
 ## <a name="developing-building-blocks"></a>开发构建基块
 必须先决定解决方案的构建基块，然后再继续使用发布门户上的解决方案模板。 下面是一些指向文档的链接，可在该过程中起到帮助作用：
 
-1. [设计 Azure Resource Manager 模板的最佳实践](../best-practices-resource-manager-design-templates.md)
-2. [创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)
+1. [设计 Azure Resource Manager 模板的最佳实践](../azure-resource-manager/best-practices-resource-manager-design-templates.md)
+2. [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 3. Azure 快速入门模板：
    * [https://azure.microsoft.com/zh-cn/documentation/templates/](https://azure.microsoft.com/documentation/templates/)
    * [https://github.com/azure/azure-quickstart-templates](https://github.com/azure/azure-quickstart-templates)
@@ -39,6 +39,6 @@ ms.openlocfilehash: 47d2b871ea8f169a04250c7d00c996bd27516600
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/16/2015
 ms.author: adamab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a20b0b2f3967f64d2248e017b6888e21be6ef26a
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: b4c8ad69674c553f8b521a85765edbad0ce1faf2
 
 
 ---
@@ -27,16 +27,16 @@ ms.openlocfilehash: a20b0b2f3967f64d2248e017b6888e21be6ef26a
 链接是 Azure 资源管理器的一项功能。  它可以让你声明资源之间的关系，即使它们不是驻留在相同的资源组中。 链接不会影响资源的运行时、计费，以及基于角色的访问。  它只是一个可用来表示关系的机制，使磁贴库等工具可以提供丰富的管理体验。  你的工具可以使用链接 API 来检查链接，并提供自定义的关系管理体验。 
 
 ## <a name="how-do-i-link-my-resources"></a>如何链接我的资源？
-当你通过门户或者通过 Azure PowerShell 或 Azure CLI 部署模板来创建资源时，就会自动为某些依赖资源创建链接。 你还可以使用[链接资源 REST API](https://msdn.microsoft.com/library/azure/mt238499.aspx) 或者通过在模板中声明关系，以编程方式链接资源。 如需使用链接资源的完整介绍，请参阅[在 Azure 资源管理器中链接资源](../resource-group-link-resources.md)。
+当你通过门户或者通过 Azure PowerShell 或 Azure CLI 部署模板来创建资源时，就会自动为某些依赖资源创建链接。 你还可以使用[链接资源 REST API](https://msdn.microsoft.com/library/azure/mt238499.aspx) 或者通过在模板中声明关系，以编程方式链接资源。 如需使用链接资源的完整介绍，请参阅[在 Azure 资源管理器中链接资源](../azure-resource-manager/resource-group-link-resources.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关编写 Azure 资源管理器模板的简介，请参阅[创作模板](../resource-group-authoring-templates.md)。
-* 若要深入了解有关在资源之间创建链接的详细信息，请参阅[在 Azure 资源管理器中链接资源](../resource-group-link-resources.md)。
-* 若要了解如何通过预览门户使用资源组，请参阅[使用 Azure 预览门户管理 Azure 资源](resource-group-portal.md)。
+* 有关编写 Azure 资源管理器模板的简介，请参阅[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+* 若要深入了解有关在资源之间创建链接的详细信息，请参阅[在 Azure 资源管理器中链接资源](../azure-resource-manager/resource-group-link-resources.md)。
+* 若要了解如何通过预览门户使用资源组，请参阅[使用 Azure 预览门户管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

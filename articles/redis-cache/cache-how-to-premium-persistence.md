@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d7c37eca11bdf1a9d7dbf4dffe7e32580df9091b
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: 628dfc48c00e61fe5c4883f6237a44e0f1309f0e
 
 
 ---
@@ -116,6 +116,6 @@ Azure Redis 缓存使用 [RDB 模型](http://redis.io/topics/persistence)提供 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

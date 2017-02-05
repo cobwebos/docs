@@ -3,7 +3,7 @@ title: "Azure DocumentDB 中的数据建模 |Microsoft Docs"
 description: "了解 DocumentDB，一个 NoSQL 文档数据库的数据建模。"
 keywords: "数据建模"
 services: documentdb
-author: kiratp
+author: arramac
 manager: jhubbard
 editor: mimig1
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2016
-ms.author: kipandya
+ms.date: 01/03/2016
+ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ba0dbc287964aa700cbded834e4b5da09144efe8
+ms.sourcegitcommit: 09f42bae67f794f12c7c37cd25c25f4c991fe893
+ms.openlocfilehash: 93d0d7276e4ff426e87bdc3dadd736de8d6525fb
 
 
 ---
@@ -119,11 +119,6 @@ ms.openlocfilehash: ba0dbc287964aa700cbded834e4b5da09144efe8
     }
 
 如果我们要对一个典型博客或 CMS 系统建模，那么具有嵌入式评论的发布实体可能就如上面的代码所示。 此示例中的问题是评论数组**没有限制**，这意味着任何单个发布的评论数都没有（实际）限制。 随着文档大小的显著增长，这将成为一个问题。
-
-> [!TIP]
-> DocumentDB 中的文档大小具有最大值。 有关此方面的详细信息，请参阅 [DocumentDB 限制](documentdb-limits.md)。
-> 
-> 
 
 随着文档大小的不断增长，通过网络传输数据和大规模读取和更新文档的能力将受到影响。
 
@@ -409,6 +404,6 @@ ms.openlocfilehash: ba0dbc287964aa700cbded834e4b5da09144efe8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

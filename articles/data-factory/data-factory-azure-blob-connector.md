@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 01/24/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 701d82971b7da92fb0946cbfc7f708ad32501ef3
-ms.openlocfilehash: 69b530c085cc99959e66e75f2c8ebb391c9d26f4
+ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
+ms.openlocfilehash: aa2aabee72d1ca381502f9332df7fb88cf2384a2
 
 
 ---
@@ -87,7 +87,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure Blob 输入数据集：**
 
-每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 “external”: “true” 设置将告知数据工厂：表在数据工厂外部，且不由数据工厂中的活动生成。
+从新 blob 获取数据，每隔一小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，将对 blob 的文件夹路径和文件名进行动态计算。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 “external”: “true” 设置将告知数据工厂：表在数据工厂外部，且不由数据工厂中的活动生成。
 
 ```json
 {
@@ -294,7 +294,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据正在处理中的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {
@@ -405,7 +405,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 ## <a name="linked-services"></a>链接服务
 在示例中，已使用 **AzureStorage** 类型的链接服务将 Azure 存储帐户链接到数据工厂。 下表提供 Azure 存储链接服务专属 JSON 元素的描述。
 
-有两种类型的链接服务，可用于将 Azure Blob 存储链接到 Azure 数据工厂。 它们是：**AzureStorage** 链接服务和 **AzureStorageSas** 链接服务。 Azure 存储链接服务为数据工厂提供 Azure 存储的全局访问权限。 而 Azure 存储 SAS（共享访问签名）链接服务为数据工厂提供 Azure 存储的受限/有时限的访问。 这两种链接服务之间没有其他区别。 选择适合你需求的链接服务。 以下各部分提供了有关这两种链接服务的详细信息。
+有两种类型的链接服务，可用于将 Azure Blob 存储链接到 Azure 数据工厂。 它们是：**AzureStorage** 链接服务和 **AzureStorageSas** 链接服务。 Azure 存储链接服务为数据工厂提供 Azure 存储的全局访问权限。 而 Azure 存储 SAS（共享访问签名）链接服务为数据工厂提供 Azure 存储的受限/有时限的访问。 这两种链接服务之间没有其他区别。 请选择适合你需求的链接服务。 以下各部分提供了有关这两种链接服务的详细信息。
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
@@ -421,8 +421,8 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称将采用以下格式：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 请参阅[使用 partitionedBy 属性](#using-partitionedBy-property)部分，了解详细信息和示例。 |否 |
-| 格式 |支持以下格式类型：**TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[指定 TextFormat](#specifying-textformat)、[指定 AvroFormat](#specifying-avroformat)、[指定 JsonFormat](#specifying-jsonformat)、[指定 OrcFormat](#specifying-orcformat) 和[指定 ParquetFormat](#specifying-parquetformat) 部分。 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression |指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate** 和 **BZip2**，支持的级别为：**Optimal** 和 **Fastest**。 有关详细信息，请参阅[压缩支持](#compression-support)部分。 目前采用 **AvroFormat**、**OrcFormat** 或 **ParquetFormat** 的数据不支持压缩设置。 对于这些格式，数据工厂使用元数据中的压缩编解码器来读取数据。 但是，以这些格式对文件执行写入操作时，数据工厂将为该格式选择默认压缩代码。 例如为 ParquetFormat 使用 SNAPPY，为 OrcFormat 使用 ZLIB。 |否 |
+| 格式 | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](#specifying-textformat)、[Json 格式](#specifying-jsonformat)、[Avro 格式](#specifying-avroformat)、[Orc 格式](#specifying-orcformat)和 [Parquet 格式](#specifying-parquetformat)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别为：**Optimal** 和 **Fastest**。 有关详细信息，请参阅[指定压缩](#specifying-compression)部分。 |否 |
 
 ### <a name="using-partitionedby-property"></a>使用 partitionedBy 属性
 如前面部分中所提到的，可以通过 **partitionedBy** 部分、数据工厂宏和系统变量（SliceStart 和 SliceEnd，它们指示给定数据切片的开始和结束时间）指定时序数据的动态 folderPath 和文件名。
@@ -472,7 +472,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值），False |否 |
+| recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
 **BlobSink** 支持以下 **typeProperties** 属性部分：
 
@@ -520,10 +520,10 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 [!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

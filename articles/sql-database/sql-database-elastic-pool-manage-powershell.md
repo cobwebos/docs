@@ -1,6 +1,6 @@
 ---
-title: "管理弹性数据库池 (PowerShell) | Microsoft 文档"
-description: "了解如何使用 PowerShell 管理弹性数据库池。"
+title: "管理弹性池 (PowerShell) | Microsoft Docs"
+description: "了解如何使用 PowerShell 管理弹性池。"
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 61289770-69b9-4ae3-9252-d0e94d709331
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -15,12 +16,12 @@ ms.workload: data-management
 ms.date: 06/22/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 8b0893b159b6ed086cd3fcb41f7671c7c41cd176
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 3aed717fac9cdc0aca21fc99bc8cb7e979d198c8
 
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-powershell"></a>使用 PowerShell 监视和管理弹性数据库池
+# <a name="monitor-and-manage-an-elastic-pool-with-powershell"></a>使用 PowerShell 监视和管理弹性池
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -29,15 +30,15 @@ ms.openlocfilehash: 8b0893b159b6ed086cd3fcb41f7671c7c41cd176
 >
 >
 
-使用 PowerShell cmdlet 管理[弹性数据库池](sql-database-elastic-pool.md)。
+使用 PowerShell cmdlet 管理[弹性池](sql-database-elastic-pool.md)。
 
 有关常见的错误代码，请参阅 [SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题](sql-database-develop-error-messages.md)。
 
-可以在 [eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)中找到有关池的值。
+可以在 [eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)中找到有关池的值。
 
 ## <a name="prerequisites"></a>先决条件
-* Azure PowerShell 1.0 或更高版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
-* 弹性数据库池只能在 SQL 数据库 V12 服务器中使用。 如果你有一个 SQL 数据库 V11 服务器，可以通过一个步骤[使用 PowerShell 升级到 V12 并创建池](sql-database-upgrade-server-portal.md)。
+* Azure PowerShell 1.0 或更高版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* 弹性池只能在 SQL 数据库 V12 服务器中使用。 如果你有一个 SQL 数据库 V11 服务器，可以通过一个步骤[使用 PowerShell 升级到 V12 并创建池](sql-database-upgrade-server-portal.md)。
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>将数据库移入弹性池
 使用 [Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433\(v=azure.300\).aspx) 可以将数据库移入或移出池。
@@ -45,15 +46,15 @@ ms.openlocfilehash: 8b0893b159b6ed086cd3fcb41f7671c7c41cd176
     Set-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
 ## <a name="change-performance-settings-of-a-pool"></a>更改池的性能设置
-当性能受到影响时，可以更改池的设置以适应增长。 使用 [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511\(v=azure.300\).aspx) cmdlet。 将 -Dtu 参数设置为每个池的 eDTU。 有关该参数可能的值，请参阅 [eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。  
+当性能受到影响时，可以更改池的设置以适应增长。 使用 [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511\(v=azure.300\).aspx) cmdlet。 将 -Dtu 参数设置为每个池的 eDTU。 有关该参数可能的值，请参阅 [eDTU 和存储限制](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools)。  
 
-    Set-AzureRmSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50
+    Set-AzureRmSqlElasticPool -ResourceGroupName “resourcegroup1” -ServerName “server1” -ElasticPoolName “elasticpool1” -Dtu 1200 -DatabaseDtuMax 100 -DatabaseDtuMin 50
 
 
 ## <a name="get-the-status-of-pool-operations"></a>获取池操作的状态
 创建一个池需要一些时间。 你可以使用 [Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812\(v=azure.300\).aspx) cmdlet 跟踪池操作（包括创建和更新）的状态。
 
-    Get-AzureRmSqlElasticPoolActivity –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1”
+    Get-AzureRmSqlElasticPoolActivity -ResourceGroupName “resourcegroup1” -ServerName “server1” -ElasticPoolName “elasticpool1”
 
 
 ## <a name="get-the-status-of-moving-an-elastic-database-into-and-out-of-a-pool"></a>获取将弹性数据库移入和移出池的状态
@@ -91,7 +92,7 @@ ms.openlocfilehash: 8b0893b159b6ed086cd3fcb41f7671c7c41cd176
 
 
 ## <a name="get-resource-usage-data-for-an-elastic-database"></a>获取弹性数据库的资源使用情况数据
-这些 API 与当前用来监视单独数据库的资源使用情况的 (V12) API 相同，但存在以下语义差异。
+这些 API 与当前用来监视单一数据库的资源使用情况的 (V12) API 相同，但存在以下语义差异。
 
 就此 API 来说，检索的指标表示为为该池设置的单个最大 eDTU（或者 CPU、IO 等基础指标的等效最大值）的百分比。 例如，对于任何此类指标来说，50% 的使用率表示特定资源消耗为父池中该资源的每个数据库上限的 50%。
 
@@ -270,6 +271,6 @@ Stop- cmdlet 表示取消，而不是暂停。 你无法在中途恢复升级，
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

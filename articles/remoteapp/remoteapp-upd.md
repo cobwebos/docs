@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 40874984ca29f6a284270e743b7cf70a396f81d1
+ms.sourcegitcommit: dd281ead7d2c06af98ea0baea31d897b5be0d9d7
+ms.openlocfilehash: 04d8031a4c5f06d56afc1d08d4a4fa5fb50f8a25
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 40874984ca29f6a284270e743b7cf70a396f81d1
 > 
 > 
 
-Azure RemoteApp 跨设备和会话保存用户标识和自定义项。 此用户数据存储在一个每用户每集合磁盘中，该磁盘称为用户配置文件磁盘 (UPD)。 该磁盘跟随用户，无论用户在什么位置登录，都可以确保用户获得一致的体验。 保存 
+Azure RemoteApp 跨设备和会话保存用户标识和自定义项。 此用户数据存储在一个每用户每集合磁盘中，该磁盘称为用户配置文件磁盘 (UPD)。 该磁盘跟随用户，无论用户在什么位置登录，都可以确保用户获得一致的体验。
 
 用户配置文件磁盘对于用户是完全透明的，用户可以照常将文档保存到其“文档”文件夹（看起来就像是在本地驱动器的文件夹上）并更改其应用设置。 同时，从任何设备连接到 Azure RemoteApp 时，都会保留所有个人设置。 用户所看到的全部就是其处于同一位置的数据。
 
@@ -149,6 +149,6 @@ Azure RemoteApp 会保存各个会话之间的 Outlook 状态（邮箱、PST）�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,7 +1,8 @@
+
 ---
-title: "在现有群集配置中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置 - Azure Resource Manager | Microsoft 文档"
-description: "Windows 虚拟机上的多 SID 高可用性 SAP NetWeaver 指南"
-services: virtual-machines-windows,virtual-network,storage
+title: "创建 SAP 多 SID 配置 | Microsoft 文档"
+description: "Windows 虚拟机上的高可用性 SAP NetWeaver 多 SID 配置指南"
+services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
@@ -17,12 +18,13 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 translationtype: Human Translation
-ms.sourcegitcommit: 5f9e2901d0bd06655861fd2398bb6369e2138237
-ms.openlocfilehash: 214a5c7952891e23d551edf44742f213eb67e49d
+ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
+ms.openlocfilehash: ebbdd83950047ba987a01714412a4988d210d0c1
 
 
 ---
-# <a name="configure-additional-sap-ascsscs-instance-into-an-existing-cluster-to-create-a-sap-multi-sid-configuration"></a>在现有群集中配置附加的 SAP ASCS/SCS 实例以创建 SAP 多 SID 配置
+
+# <a name="create-an-sap-multi-sid-configuration"></a>创建 SAP 多 SID 配置
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -90,7 +92,7 @@ ms.openlocfilehash: 214a5c7952891e23d551edf44742f213eb67e49d
 [dbms-guide-figure-800]:./media/virtual-machines-shared-sap-dbms-guide/800-azure-vm-sap-content-server.png
 [dbms-guide-figure-900]:./media/virtual-machines-shared-sap-dbms-guide/900-sap-cache-server-on-premises.png
 
-[deployment-guide]:virtual-machines-windows-sap-deployment-guide.md (Windows 虚拟机 (VM) 上的 SAP NetWeaver - 部署指南) [deployment-guide-2.2]:virtual-machines-windows-sap-deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 (SAP 资源) [deployment-guide-3.1.2]:virtual-machines-windows-sap-deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab (使用自定义映像部署 VM) [deployment-guide-3.2]:virtual-machines-windows-sap-deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 (方案 1：为 SAP 部署来自 Azure 应用商店的 VM) [deployment-guide-3.3]:virtual-machines-windows-sap-deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (方案 2：使用自定义映像为 SAP 部署 VM) [deployment-guide-3.4]:virtual-machines-windows-sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (方案 3：使用包含 SAP 的非通用化 Azure VHD 从本地移动 VM) [deployment-guide-3]:virtual-machines-windows-sap-deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e (Microsoft Azure 上 SAP 的 VM 部署方案) [deployment-guide-4.1]:virtual-machines-windows-sap-deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (部署 Azure PowerShell cmdlet) [deployment-guide-4.2]:virtual-machines-windows-sap-deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (下载并导入 SAP 相关的 PowerShell cmdlet) [deployment-guide-4.3]:virtual-machines-windows-sap-deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (将 VM 加入本地域 - 仅限 Windows) [deployment-guide-4.4.2]:virtual-machines-windows-sap-deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux) [deployment-guide-4.4]:virtual-machines-windows-sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (下载、安装并启用 Azure VM 代理) [deployment-guide-4.5.1]:virtual-machines-windows-sap-deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell) [deployment-guide-4.5.2]:virtual-machines-windows-sap-deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI) [deployment-guide-4.5]:virtual-machines-windows-sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (配置适用于 SAP 的 Azure 增强型监视扩展) [deployment-guide-5.1]:virtual-machines-windows-sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (适用于 SAP 的 Azure 增强型监视的就绪状态检查) [deployment-guide-5.2]:virtual-machines-windows-sap-deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Azure 监视基础结构配置的运行状况检查) [deployment-guide-5.3]:virtual-machines-windows-sap-deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (对适用于 SAP 的 Azure 监视基础结构进一步执行故障排除)
+[deployment-guide]:virtual-machines-windows-sap-deployment-guide.md (Windows 虚拟机 (VM) 上的 SAP NetWeaver - 部署指南) [deployment-guide-2.2]:virtual-machines-windows-sap-deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 (SAP 资源) [deployment-guide-3.1.2]:virtual-machines-windows-sap-deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab (使用自定义映像部署 VM) [deployment-guide-3.2]:virtual-machines-windows-sap-deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 (方案 1：为 SAP 部署来自 Azure 应用商店的 VM) [deployment-guide-3.3]:virtual-machines-windows-sap-deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (方案 2：使用自定义映像为 SAP 部署 VM) [deployment-guide-3.4]:virtual-machines-windows-sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (方案 3：使用包含 SAP 的非通用化 Azure VHD 从本地移动 VM) [deployment-guide-3]:virtual-machines-windows-sap-deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e (Microsoft Azure 上 SAP 的 VM 部署方案) [deployment-guide-4.1]:virtual-machines-windows-sap-deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (部署 Azure PowerShell cmdlet) [deployment-guide-4.2]:virtual-machines-windows-sap-deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (下载并导入 SAP 相关的 PowerShell cmdlet) [deployment-guide-4.3]:virtual-machines-windows-sap-deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (将 VM 加入本地域：仅限 Windows) [deployment-guide-4.4.2]:virtual-machines-windows-sap-deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux) [deployment-guide-4.4]:virtual-machines-windows-sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (下载、安装并启用 Azure VM 代理) [deployment-guide-4.5.1]:virtual-machines-windows-sap-deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell) [deployment-guide-4.5.2]:virtual-machines-windows-sap-deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI) [deployment-guide-4.5]:virtual-machines-windows-sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (配置适用于 SAP 的 Azure 增强型监视扩展) [deployment-guide-5.1]:virtual-machines-windows-sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (适用于 SAP 的 Azure 增强型监视的就绪状态检查) [deployment-guide-5.2]:virtual-machines-windows-sap-deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Azure 监视基础结构配置的运行状况检查) [deployment-guide-5.3]:virtual-machines-windows-sap-deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (对适用于 SAP 的 Azure 监视基础结构进一步执行故障排除)
 
 [deployment-guide-configure-monitoring-scenario-1]:virtual-machines-windows-sap-deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Configure Monitoring)
 [deployment-guide-configure-proxy]:virtual-machines-windows-sap-deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (Configure Proxy)
@@ -118,9 +120,9 @@ ms.openlocfilehash: 214a5c7952891e23d551edf44742f213eb67e49d
 [deployment-guide-install-vm-agent-windows]:virtual-machines-windows-sap-deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
 [deployment-guide-troubleshooting-chapter]:virtual-machines-windows-sap-deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Checks and Troubleshooting for End-to-End Monitoring Setup for SAP on Azure)
 
-[deploy-template-cli]:../resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows
-[deploy-template-portal]:../resource-group-template-deploy.md#deploy-with-the-preview-portal
-[deploy-template-powershell]:../resource-group-template-deploy.md#deploy-with-powershell
+[deploy-template-cli]:../azure-resource-manager/resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows
+[deploy-template-portal]:../azure-resource-manager/resource-group-template-deploy.md#deploy-with-the-preview-portal
+[deploy-template-powershell]:../azure-resource-manager/resource-group-template-deploy.md#deploy-with-powershell
 
 [dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
 
@@ -147,7 +149,7 @@ ms.openlocfilehash: 214a5c7952891e23d551edf44742f213eb67e49d
 
 [msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
-[planning-guide]:virtual-machines-windows-sap-planning-guide.md (Windows 虚拟机 (VM) 上的 SAP NetWeaver - 规划和实施指南) [planning-guide-1.2]:virtual-machines-windows-sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (资源) [planning-guide-11]:virtual-machines-windows-sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 (Azure 虚拟机上运行的 SAP NetWeaver 的高可用性 (HA) 和灾难恢复 (DR)) [planning-guide-11.4.1]:virtual-machines-windows-sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 (SAP 应用程序服务器的高可用性) [planning-guide-11.5]:virtual-machines-windows-sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f (对 SAP 实例使用 Autostart) [planning-guide-2.1]:virtual-machines-windows-sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 (仅限云 - 在不将依赖项部署到本地客户网络的情况下将虚拟机部署到 Azure 中) [planning-guide-2.2]:virtual-machines-windows-sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 (跨界 - 将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络) [planning-guide-3.1]:virtual-machines-windows-sap-planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a (Azure 区域) [planning-guide-3.2.1]:virtual-machines-windows-sap-planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 (容错域) [planning-guide-3.2.2]:virtual-machines-windows-sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (升级域) [planning-guide-3.2.3]:virtual-machines-windows-sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure 可用性集) [planning-guide-3.2]:virtual-machines-windows-sap-planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure 虚拟机的概念) [planning-guide-3.3.2]:virtual-machines-windows-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure 高级存储) [planning-guide-5.1.1]:virtual-machines-windows-sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (使用非通用化磁盘将 VM 从本地移至 Azure) [planning-guide-5.1.2]:virtual-machines-windows-sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (使用特定于客户的映像为 SAP 部署 VM) [planning-guide-5.2.1]:virtual-machines-windows-sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (准备使用非通用化磁盘将 VM 从本地移至 Azure) [planning-guide-5.2.2]:virtual-machines-windows-sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 (准备使用特定于客户的映像为 SAP 部署 VM) [planning-guide-5.2]:virtual-machines-windows-sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 (为 Azure 准备包含 SAP 的 VM) [planning-guide-5.3.1]:virtual-machines-windows-sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 (Azure 磁盘与 Azure 映像之间的差异) [planning-guide-5.3.2]:virtual-machines-windows-sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a (将 VHD 从本地上载到 Azure) [planning-guide-5.4.2]:virtual-machines-windows-sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (在 Azure 存储帐户之间复制磁盘) [planning-guide-5.5.1]:virtual-machines-windows-sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP 部署的 VM/VHD 结构) [planning-guide-5.5.3]:virtual-machines-windows-sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (为附加的磁盘设置自动装载) [planning-guide-7.1]:virtual-machines-windows-sap-planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (用于 SAP NetWeaver 演示/培训的单一 VM 方案) [planning-guide-7]:virtual-machines-windows-sap-planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP 实例的仅限云部署的概念) [planning-guide-9.1]:virtual-machines-windows-sap-planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (适用于 SAP 的 Azure 监视解决方案) [planning-guide-azure-premium-storage]:virtual-machines-windows-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure 高级存储)
+[planning-guide]:virtual-machines-windows-sap-planning-guide.md (Windows 虚拟机 (VM) 上的 SAP NetWeaver - 规划和实施指南) [planning-guide-1.2]:virtual-machines-windows-sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (资源) [planning-guide-11]:virtual-machines-windows-sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 (Azure 虚拟机上运行的 SAP NetWeaver 的高可用性 (HA) 和灾难恢复 (DR)) [planning-guide-11.4.1]:virtual-machines-windows-sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 (SAP 应用程序服务器的高可用性) [planning-guide-11.5]:virtual-machines-windows-sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f (对 SAP 实例使用 Autostart) [planning-guide-2.1]:virtual-machines-windows-sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 (仅限云：在不将依赖项部署到本地客户网络的情况下将虚拟机部署到 Azure 中) [planning-guide-2.2]:virtual-machines-windows-sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 (跨界：将单个或多个 SAP VM 部署到 Azure 中并要求完全集成到本地网络) [planning-guide-3.1]:virtual-machines-windows-sap-planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a (Azure 区域) [planning-guide-3.2.1]:virtual-machines-windows-sap-planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 (容错域) [planning-guide-3.2.2]:virtual-machines-windows-sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (升级域) [planning-guide-3.2.3]:virtual-machines-windows-sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure 可用性集) [planning-guide-3.2]:virtual-machines-windows-sap-planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure 虚拟机的概念) [planning-guide-3.3.2]:virtual-machines-windows-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure 高级存储) [planning-guide-5.1.1]:virtual-machines-windows-sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (使用非通用化磁盘将 VM 从本地移至 Azure) [planning-guide-5.1.2]:virtual-machines-windows-sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (使用特定于客户的映像为 SAP 部署 VM) [planning-guide-5.2.1]:virtual-machines-windows-sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (准备使用非通用化磁盘将 VM 从本地移至 Azure) [planning-guide-5.2.2]:virtual-machines-windows-sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 (准备使用特定于客户的映像为 SAP 部署 VM) [planning-guide-5.2]:virtual-machines-windows-sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 (为 Azure 准备包含 SAP 的 VM) [planning-guide-5.3.1]:virtual-machines-windows-sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 (Azure 磁盘与 Azure 映像之间的差异) [planning-guide-5.3.2]:virtual-machines-windows-sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a (将 VHD 从本地上传到 Azure) [planning-guide-5.4.2]:virtual-machines-windows-sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (在 Azure 存储帐户之间复制磁盘) [planning-guide-5.5.1]:virtual-machines-windows-sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP 部署的 VM/VHD 结构) [planning-guide-5.5.3]:virtual-machines-windows-sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (为附加的磁盘设置自动装载) [planning-guide-7.1]:virtual-machines-windows-sap-planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (用于 SAP NetWeaver 演示/培训的单一 VM 方案) [planning-guide-7]:virtual-machines-windows-sap-planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP 实例的仅限云部署的概念) [planning-guide-9.1]:virtual-machines-windows-sap-planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (适用于 SAP 的 Azure 监视解决方案) [planning-guide-azure-premium-storage]:virtual-machines-windows-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure 高级存储)
 
 [planning-guide-figure-100]:./media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:./media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -263,8 +265,8 @@ ms.openlocfilehash: 214a5c7952891e23d551edf44742f213eb67e49d
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
 
 [powershell-install-configure]:/powershell/azureps-cmdlets-docs
-[resource-group-authoring-templates]:../resource-group-authoring-templates.md
-[resource-group-overview]:../resource-group-overview.md
+[resource-group-authoring-templates]:../azure-resource-manager/resource-group-authoring-templates.md
+[resource-group-overview]:../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../virtual-network/resource-groups-networking.md
 [networking-limits-azure-resource-manager]:../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-pam]:https://support.sap.com/pam (SAP Product Availability Matrix)
@@ -310,13 +312,13 @@ ms.openlocfilehash: 214a5c7952891e23d551edf44742f213eb67e49d
 [virtual-machines-manage-availability]:virtual-machines-windows-manage-availability.md
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:virtual-machines-windows-ps-create.md
 [virtual-machines-sizes]:virtual-machines-windows-sizes.md
-[virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
-[virtual-machines-windows-classic-ps-sql-int-listener]:virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[virtual-machines-windows-portal-sql-alwayson-int-listener]:virtual-machines-windows-portal-sql-alwayson-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:virtual-machines-windows-sql-performance.md
+[virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
+[virtual-machines-windows-classic-ps-sql-int-listener]:./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
+[virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:./windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:./windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./windows/sql/virtual-machines-windows-sql-high-availability-dr.md
+[virtual-machines-sql-server-infrastructure-services]:./windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
+[virtual-machines-sql-server-performance-best-practices]:./windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -343,117 +345,106 @@ ms.openlocfilehash: 214a5c7952891e23d551edf44742f213eb67e49d
 [xplat-cli-azure-resource-manager]:../xplat-cli-azure-resource-manager.md
 
 
-在 9 月份，Microsoft 推出了一项可用于管理 [Azure 内部负载均衡器的多个虚拟 IP 地址][load-balancer-multivip-overview]的功能。 Azure 外部负载均衡器已有类似的功能。
+2016 年 9 月，Microsoft 推出了一项可让用户通过 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址的功能。 Azure 外部负载均衡器已包含此功能。
 
-在 SAP 部署中，Azure ILB 用于创建 SAP ASCS/SCS 的 Windows 群集配置，如主要文档 [High-availability SAP NetWeaver on Windows virtual machines guide][sap-ha-guide]（Windows 虚拟机上的高可用性 SAP NetWeaver 指南）中所述。
+在 SAP 部署中，可以根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述，使用内部负载均衡器创建 SAP ASCS/SCS 的 Windows 群集配置。
 
-本文重点介绍如何根据该文档中的现有内容，通过在现有 Windows 故障转移服务器群集 (WSFC) 中安装附加的 SAP ASCS/SCS 群集实例，从此类单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 这样，便可以配置所谓的 SAP 多 SID 群集。
+本文重点介绍如何通过在现有 Windows Server 故障转移群集 (WSFC) 中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置一个 SAP 多 SID 群集。
 
 > [!NOTE]
 > 此功能仅在 Azure Resource Manager 部署模型中可用。
->
->
 
 ## <a name="prerequisites"></a>先决条件
-已根据以下文档配置了用于一个 SAP ASCS/SCS 实例的 WSFC：[High-availability SAP NetWeaver on Windows virtual machines guide][sap-ha-guide]（Windows 虚拟机上的高可用性 SAP NetWeaver 指南）。
+已根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中的介绍和下图所示，配置了用于一个 SAP ASCS/SCS 实例的 WSFC 群集。
 
-![图 1：高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
-
-_**图 1：**Azure 中有一个 SAP ASCS/SCS 群集实例_
-
+![高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
 
 ## <a name="target-architecture"></a>目标体系结构
 
-目标是能够在同一个 WSAFC 群集中安装多个 **SAP ABAP ASCS** 或 **SAP Java SCS** 群集实例。
+目标是在同一个 WSFC 群集中安装多个 SAP ABAP ASCS 或 SAP Java SCS 群集实例，如下图所示：
 
-![图 2：Azure 中有多个 SAP ASCS/SCS 群集实例][sap-ha-guide-figure-6002]
-
-_**图 2：**Azure 中有多个 SAP ASCS/SCS 群集实例_
+![Azure 中有多个 SAP ASCS/SCS 群集实例][sap-ha-guide-figure-6002]
 
 > [!NOTE]
->**每个 Azure 内部负载均衡器的专用前端 IP** 的最大数目有限制。
+>每个 Azure 内部负载均衡器的专用前端 IP 数有限制。
 >
->这意味着，**一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数**等于**每个 Azure 内部负载均衡器的最大专用前端 IP 数**。
+>一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数等于每个 Azure 内部负载均衡器的最大专用前端 IP 数。
 >
 
-有关负载均衡器限制的信息，请参阅 [Networking Limits - Azure Resource Manager][networking-limits-azure-resource-manager]（网络限制 - Azure Resource Manager）下面的 **Private front end IP per load balancer**（每个负载均衡器的专用前端 IP）。
+有关负载均衡器限制的详细信息，请参阅 [Networking Limits: Azure Resource Manager][networking-limits-azure-resource-manager]（网络限制：Azure Resource Manager）中的“Private front end IP per load balancer”（每个负载均衡器的专用前端 IP）。
 
-包含两个高可用性 SAP 系统的完整布局的大体形势如下所示：
+包含两个高可用性 SAP 系统的完整布局如下所示：
 
-![图 3：包含两个 SAP 系统的 SAP 高可用性多 SID 设置][sap-ha-guide-figure-6003]
-
-_**图 3：**包含两个 SAP 系统的 SAP 高可用性多 SID 设置_
+![包含两个 SAP 系统 SID 的 SAP 高可用性多 SID 设置][sap-ha-guide-figure-6003]
 
 > [!IMPORTANT]
-> 要点如下：
-> - **SAP ASCS/SCS** 实例**共享同一个 WSFC 群集**。
-> - 每个 **DBMS SID** 具有**自身的专用 WSFC 群集**。
->- 属于一个 SAP 系统 SID 的 **SAP 应用程序服务器**具有**自身的专用 VM**。
->
+> 该设置必须满足以下条件：
+> - SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。
+> - 每个 DBMS SID 必须有自身的专用 WSFC 群集。
+> - 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
+
 
 ## <a name="prepare-the-infrastructure"></a>准备基础结构
-假设要使用以下参数安装**附加的** SAP ASCS/SCS 实例：
+若要准备基础结构，可以使用以下参数安装附加的 SAP ASCS/SCS 实例：
 
 | 参数名称 | 值 |
 | --- | --- |
-|SAP ASC/SCS SID |pr1-lb-ascs |
+| SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS 内部负载平衡器 | PR5 |
 | SAP 虚拟主机名 | pr5-sap-cl |
-| SAP ASCS/SCS 虚拟主机 IP 地址（附加的 Azure 负载均衡 IP 地址） | 10.0.0.50 |
+| SAP ASCS/SCS 虚拟主机 IP 地址（附加的 Azure Load Balancer IP 地址） | 10.0.0.50 |
 | SAP ASCS/SCS 实例编号 | 50 |
 | 附加 SAP ASCS/SCS 实例的 ILB 探测端口 | 62350 |
 
 > [!NOTE]
-> 对于 SAP ASCS/SCS 群集实例，每个 IP 地址需要特定的探测端口。 例如，如果 Azure 内部负载均衡器上有一个 IP 地址使用探测端口 62300，该负载均衡器上的其他任何 IP 地址就不能使用探测端口 62300。
+> 对于 SAP ASCS/SCS 群集实例，每个 IP 地址需要唯一的探测端口。 例如，如果 Azure 内部负载均衡器上有一个 IP 地址使用探测端口 62300，该负载均衡器上的其他任何 IP 地址就不能使用探测端口 62300。
 >
->在本例中，探测端口 62300 已被保留，因此我们使用另一个探测端口 62350。
->
+>在本例中，由于探测端口 62300 已被保留，因此我们将使用探测端口 62350。
 
-我们要在**现有**的 WSFC 群集中安装包含两个节点的附加 SAP ASCS/SCS 实例：
+可在现有的 WSFC 群集中安装包含两个节点的附加 SAP ASCS/SCS 实例：
 
 | 虚拟机角色 | 虚拟机主机名 | 静态 IP 地址 |
 | --- | --- | --- |
-| ASCS/SCS 实例的第 1 个群集节点 |pr1-ascs-0 |10.0.0.10 |
-| ASCS/SCS 实例的第 2 个群集节点 |pr1-ascs-1 |10.0.0.9 |
+| ASCS/SCS 实例的第&1; 个群集节点 |pr1-ascs-0 |10.0.0.10 |
+| ASCS/SCS 实例的第&2; 个群集节点 |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>在 DNS 服务器上创建 SAP ASCS/SCS 群集实例的虚拟主机名
 
-使用以下参数创建 ASCS/SCS 实例虚拟主机名的 DNS 项：
+可以使用以下参数创建 ASCS/SCS 实例虚拟主机名的 DNS 项：
 
 | 新的 SAP ASCS/SCS 虚拟主机名 | 关联的 IP 地址 |
 | --- | --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
-![图 4：定义附加的新 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 项][sap-ha-guide-figure-6004]
+新主机名和 IP 地址显示在 DNS 管理器中，如以下屏幕截图所示：
 
-_**图 4：**定义附加的新 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 项_
+![DNS 管理器列表，其中突出显示了新 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的已定义 DNS 项][sap-ha-guide-figure-6004]
 
-主要文档 [Windows 虚拟机 (VM) 上的 SAP NetWeaver - 高可用性指南][sap-ha-guide-9.1.1] 中也详细介绍了如何创建 DNS 项。
+主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9.1.1] 中也详细介绍了创建 DNS 项的过程。
 
 > [!NOTE]
-> 请记住，分配给附加 ASCS/SCS 实例虚拟主机名的新 IP 地址必须与分配给 SAP Azure Load Balancer 的新 IP 地址相同。
+> 分配给附加 ASCS/SCS 实例虚拟主机名的新 IP 地址必须与分配给 SAP Azure Load Balancer 的新 IP 地址相同。
 >
 >在本例中，该 IP 地址为 10.0.0.50。
 
-### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-with-powershell"></a>使用 PowerShell 将 IP 地址添加到现有 Azure 内部负载均衡器
+### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>使用 PowerShell 将 IP 地址添加到现有 Azure 内部负载均衡器
 
-若要在同一个 WSFC 群集中使用多个 SAP ASCS/SCS 实例，请使用 PowerShell 将附加的 IP 地址添加到现有的 Azure 内部负载均衡器。 每个 IP 地址需要有自身的负载均衡规则、探测端口、前端 IP 池和后端池。
+若要在同一个 WSFC 群集中创建多个 SAP ASCS/SCS 实例，请使用 PowerShell 将 IP 地址添加到现有的 Azure 内部负载均衡器。 每个 IP 地址需有自身的负载均衡规则、探测端口、前端 IP 池和后端池。
 
 以下脚本将新的 IP 地址添加到现有负载均衡器。 更新环境的 PowerShell 变量。 该脚本将为所有 SAP ASCS/SCS 端口创建全部所需的负载均衡规则。
 
 ```powershell
 
-# Login-AzureRmAccount
 # Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 Clear-Host
-$ResourceGroupName = "SAP-MULTI-SID-Landscape"      # Existing Resource group name
-$VNetName = "pr2-vnet"                        # Existing Virtual network name
-$SubnetName = "Subnet"                        # Existing Subnet name
+$ResourceGroupName = "SAP-MULTI-SID-Landscape"      # Existing resource group name
+$VNetName = "pr2-vnet"                        # Existing virtual network name
+$SubnetName = "Subnet"                        # Existing subnet name
 $ILBName = "pr2-lb-ascs"                      # Existing ILB name                      
 $ILBIP = "10.0.0.50"                          # New IP address
-$VMNames = "pr2-ascs-0","pr2-ascs-1"          # Existing cluster Virtual machine names
-$SAPInstanceNumber = 50                       # SAP ASCS/SCS Instance Number - must be unique value per cluster
-[int]$ProbePort = "623$SAPInstanceNumber"     # Probe port - MUST be unique value per IP and load balancer
+$VMNames = "pr2-ascs-0","pr2-ascs-1"          # Existing cluster virtual machine names
+$SAPInstanceNumber = 50                       # SAP ASCS/SCS instance number: must be a unique value for each cluster
+[int]$ProbePort = "623$SAPInstanceNumber"     # Probe port: must be a unique value for each IP and load balancer
 
 $ILB = Get-AzureRmLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName
 
@@ -461,29 +452,27 @@ $count = $ILB.FrontendIpConfigurations.Count + 1
 $FrontEndConfigurationName ="lbFrontendASCS$count"
 $LBProbeName = "lbProbeASCS$count"
 
-# Get the Azure VNet and Subnet
+# Get the Azure VNet and subnet
 $VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
 $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
-# Add Second Frontend and Probe config
+# Add second front-end and probe configuration
 Write-Host "Adding new front end IP Pool '$FrontEndConfigurationName' ..." -ForegroundColor Green
 $ILB | Add-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id
 $ILB | Add-AzureRmLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 10  | Set-AzureRmLoadBalancer
 
-#Get new updated config
+# Get new updated configuration
 $ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 # Get new updated LP FrontendIP COnfig
 $FEConfig = Get-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
 $HealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
-# Add new backend config into existign ILB
+# Add new back-end configuration into existing ILB
 $BackEndConfigurationName  = "backendPoolASCS$count"
 Write-Host "Adding new backend Pool '$BackEndConfigurationName' ..." -ForegroundColor Green
 $BEConfig = Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB | Set-AzureRmLoadBalancer
 
-
-
-#Get new updated config
+# Get new updated config
 $ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
 # Assign VM NICs to backend pool
@@ -499,7 +488,7 @@ foreach($VMName in $VMNames){
 }
 
 
-# Create Load Balancing Rules
+# Create load-balancing rules
 $Ports = "445","32$SAPInstanceNumber","33$SAPInstanceNumber","36$SAPInstanceNumber","39$SAPInstanceNumber","5985","81$SAPInstanceNumber","5$SAPInstanceNumber`13","5$SAPInstanceNumber`14","5$SAPInstanceNumber`16"
 $ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 $FEConfig = get-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
@@ -520,91 +509,71 @@ $ILB | Set-AzureRmLoadBalancer
 
 Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
-
 ```
+运行脚本后，结果将显示在 Azure 门户中，如以下屏幕截图所示：
 
-运行完脚本后，可在 Azure 门户中看到结果。
+![Azure 门户中的新前端 IP 池][sap-ha-guide-figure-6005]
 
-![图 5：Azure 端口中的新前端 IP 池][sap-ha-guide-figure-6005]
+### <a name="add-disks-to-cluster-machines-and-configure-the-sios-cluster-share-disk"></a>将磁盘添加到群集计算机并配置 SIOS 群集共享磁盘
 
-_**图 5：**Azure 端口中的新前端 IP 池_
+必须为每个附加的 SAP ASCS/SCS 实例添加一个新的群集共享磁盘。 在 Windows Server 2012 R2 中，目前使用的 WSFC 群集共享磁盘是 SIOS DataKeeper 软件解决方案。
 
-### <a name="add-additional-disks-to-cluster-machines-and-configure-sios-cluster-share-disk"></a>将附加磁盘添加到群集计算机并配置 SIOS 群集共享磁盘
+请执行以下操作：
+1. 将一个或多个相同大小的附加磁盘（需要条带化）添加到每个群集节点，然后将其格式化。
+2. 使用 SIOS DataKeeper 配置存储复制。
 
-需要使用一个新的群集共享磁盘来存储新的附加 SAP ASCS/SCS 实例。 在 Windows Server 2012 R2 中，WSFC 群集共享磁盘目前由 SIOS DataKeeper 软件解决方案使用。
+此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.12.3.3] 中详细介绍了该过程。  
 
-因此：
--   请将相同大小的附加磁盘（或其他要条带化的磁盘）添加到每个群集节点，然后将其格式化。
--   使用 SIOS DataKeeper 配置存储复制。
-
-假设已在 WSFC 群集计算机上安装 SIOS DataKeeper，因此只需在两者之间配置复制即可。
-
-主要文档 [Windows 虚拟机 (VM) 上的 SAP NetWeaver - 高可用性指南][sap-ha-guide-8.12.3.3] 中对此做了详细介绍。  
-
-![图 6：新的 SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像处于活动状态][sap-ha-guide-figure-6006]
-
-_**图 6：**新的 SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像处于活动状态_
+![新 SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像][sap-ha-guide-figure-6006]
 
 ### <a name="deploy-vms-for-sap-application-servers-and-dbms-cluster"></a>为 SAP 应用程序服务器和 DBMS 群集部署 VM
 
-若要完成第二个 SAP 系统的基础结构准备，需要：
+若要完成第二个 SAP 系统的基础结构准备，请执行以下操作：
 
-- 为 SAP 应用程序服务器部署专用 VM，并将这些 VM 放在其自身的专用可用性组中
-- 为 DBMS 群集部署专用 VM，并将这些 VM 放在其自身的专用可用性组中
+1. 为 SAP 应用程序服务器部署专用 VM，并将这些 VM 放在其自身的专用可用性组中。
+2. 为 DBMS 群集部署专用 VM，并将这些 VM 放在其自身的专用可用性组中。
 
 
 ## <a name="install-the-second-sap-sid2-netweaver-system"></a>安装第二个 SAP SID2 NetWeaver 系统
 
-现在，可以安装第二个 SAP **SID2** 系统。
+主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9] 中介绍了安装第二个 SAP SID2 系统的完整过程。
 
-主要文档 [Windows 虚拟机 (VM) 上的 SAP NetWeaver - 高可用性指南][sap-ha-guide-9] 中介绍了整个过程。
+概要过程如下所述：
 
-下面说明了概要过程：
+1. [安装 SAP 的第一个群集节点][sap-ha-guide-9.1.2]。  
+ 此步骤在**现有 WSFC 群集节点 1** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
-- [安装 SAP 第一个群集节点][sap-ha-guide-9.1.2]
+2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-ha-guide-9.1.3]。
 
-    在**现有 WSFC 群集节点 1** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
+3. [配置探测端口][sap-ha-guide-9.1.4]。  
+ 此步骤使用 PowerShell 配置 SAP 群集资源 SAP-SID2-IP 探测端口。 应在其中一个 SAP ASCS/SCS 群集节点上执行此配置。
 
-- [修改 ASCS/SCS 实例的 SAP 配置文件][sap-ha-guide-9.1.3]
+4. [安装数据库实例][sap-ha-guide-9.2]。  
+ 此步骤在专用 WSFC 群集上安装 DBMS。
 
-- [配置探测端口][sap-ha-guide-9.1.4]
+5. [安装第二个群集节点][sap-ha-guide-9.3]。  
+ 此步骤在现有 WSFC 群集节点 2 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
-    使用 PowerShell 配置 SAP 群集资源 **SAP-SID2-IP** 探测端口。 在其中一个 SAP ASCS/SCS 群集节点上执行此操作。
+6. 打开 SAP ASCS/SCS 实例的 Windows 防火墙端口和探测端口。  
+ 在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.8] 中列出了这些端口。  
+ 此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。
 
-- [安装数据库实例][sap-ha-guide-9.2]
+7. [更改 SAP ERS Windows 服务实例的启动类型][sap-ha-guide-9.4]。
 
-    在**专用 WSFC 群集**上安装 DBMS。
+8. 在新的专用 VM 上 [安装 SAP 主应用程序服务器][sap-ha-guide-9.5]。
 
-- [安装第二个群集节点][sap-ha-guide-9.3]
+9. 在新的专用 VM 上 [安装 SAP 附加应用程序服务器][sap-ha-guide-9.6]。
 
-    在**现有 WSFC 群集节点 2** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
-
-- **打开 SAP ASCS/SCS 实例的 Windows 防火墙端口和探测端口**
-
-    在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 端口使用的所有 Windows 防火墙端口。 [此处][sap-ha-guide-8.8] 列出了这些端口。
-
-    此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。
-
-- [更改 SAP ERS Windows 服务实例的启动类型][sap-ha-guide-9.4]
-
-- [安装 SAP 主应用程序服务器][sap-ha-guide-9.5]
-
-    在**新的专用 VM** 上安装 SAP 主应用程序服务器。
-
-- [安装 SAP 附加应用程序服务器][sap-ha-guide-9.6]
-
-    在**新的专用 VM** 上安装 SAP SID2 附加应用程序服务器。
-
-- [测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制][sap-ha-guide-10]
+10. [测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制][sap-ha-guide-10]。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [网络限制 - Azure Resource Manager][networking-limits-azure-resource-manager]
+- [网络限制：Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer 的多个 VIP][load-balancer-multivip-overview]
-- [Windows 虚拟机上的高可用性 SAP NetWeaver 主要指南][sap-ha-guide]
+- [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

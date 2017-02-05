@@ -5,25 +5,25 @@ services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2d717f906bd4aad35cb46852baf84c4e088b953e
+ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
+ms.openlocfilehash: 8fb880a03548540059ad896925adb57577d1aed2
 
 
 ---
 # <a name="automatic-device-registration-with-azure-active-directory-for-windows-domain-joined-devices"></a>将已加入域的 Windows 设备自动注册到 Azure Active Directory
 作为 IT 管理员，你可以选择以自动静默方式向 Azure Active Directory (Azure AD) 注册已加入 Windows 域的设备。 如果你已针对 Office365 应用程序或者由 AD FS 在本地管理的应用程序配置了基于设备的条件性访问策略，则这种方式非常有效。 可以阅读 [Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)来详细了解设备注册方案。
 
-> AZURE.NOTE 有关如何设置自动设备注册的最新说明，请参阅[如何使用 Azure Active Directory 设置已加入 Windows 域的设备的自动注册](active-directory-conditional-access-automatic-device-registration-setup.md)。
+> [!NOTE]
+>  有关如何设置自动设备注册的最新说明，请参阅[如何使用 Azure Active Directory 设置已加入 Windows 域的设备的自动注册](active-directory-conditional-access-automatic-device-registration-setup.md)。
 > 
 > 
 
@@ -31,7 +31,6 @@ ms.openlocfilehash: 2d717f906bd4aad35cb46852baf84c4e088b953e
 
 若要开始向 Azure AD 注册已加入域的 Windows 设备，需确保满足以下先决条件。 满足先决条件后，请为加入域的 Windows 设备配置自动设备注册。
 
-## <a name="prerequisites-for-automatic-device-registration-of-domain-joined-windows-devices-with-azure-active-directory"></a>将已加入域的 Windows 设备自动注册到 Azure Active Directory 所要满足的先决条件
 ## <a name="deploy-ad-fs-and-connect-to-azure-active-directory-using-azure-active-directory-connect"></a>部署 AD FS 并使用 Azure Active Directory Connect 连接到 Azure Active Directory
 1. 使用 Azure Active Directory Connect 将 Active Directory 联合身份验证服务 (AD FS) 部署到 Windows Server 2012 R2，并设置与 Azure Active Directory 的联合关系。
 2. 配置其他 Azure Active Directory 信赖方信任声明规则。
@@ -100,6 +99,6 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

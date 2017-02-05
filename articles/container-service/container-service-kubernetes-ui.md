@@ -8,7 +8,7 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
 keywords: 
-ms.assetid: what-goes-here?
+ms.assetid: 
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: ba0848c14344f137a7032a0098d2c1e07e387960
-ms.openlocfilehash: 6ede8e11361c9df2a83c71d97cf47e2306d25371
+ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
+ms.openlocfilehash: 9ae6e606bf215d9f53f725899b8ac7c466b781f1
 
 
 ---
@@ -27,6 +27,10 @@ ms.openlocfilehash: 6ede8e11361c9df2a83c71d97cf47e2306d25371
 
 ## <a name="prerequisites"></a>先决条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
+
+> [!NOTE]
+> Azure 容器服务中的 Kubernetes 支持当前为预览版。
+>
 
 并已安装 azure cli 和 kubectl 工具。
 
@@ -125,7 +129,7 @@ $ az acs kubernetes browse
 
 将 `spec.replicas` 字段编辑为“2”，然后按“更新”。
 
-这样会删除一个 Pod，导致副本数降到 2。
+这样会删除一个 Pod，导致副本数降到&2;。
 
  
 

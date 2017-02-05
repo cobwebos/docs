@@ -13,16 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 120e7819535dca314ae9bc8cc266ec8771516735
+ms.sourcegitcommit: 2d9feed054fb4641e660c685d396260246ed1d54
+ms.openlocfilehash: 6a02bb20ff2ed10ed528bfe2a3aae51ab20e4a60
 
 
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>适用于 Azure 机器学习的 R 编程语言快速入门教程
-Stephen F Elston, Ph.D.
+
+<!-- Stephen F Elston, Ph.D. -->
 
 ## <a name="introduction"></a>介绍
 此快速入门教程有助于你使用 R 编程语言快速开始扩展 Azure 机器学习的功能。 按照此 R 编程教程在 Azure 机器学习中创建、测试和执行 R 代码。 当你完成本教程时，将在 Azure 机器学习中使用 R 语言创建完整的预测解决方案。  
@@ -38,7 +39,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 在此快速入门指南中我们将使用加利福尼亚州的乳品生产和价格数据。 该数据包括几种乳品的生产和基准商品乳脂的价格的月度信息。
 
-可以在[此处下载][下载]本文使用的数据和 R 脚本。 此数据最初是从威斯康星州大学提供的信息中合成的，网址为 http://future.aae.wisc.edu/tab/production.html。
+可以在[此处下载][download]本文使用的数据和 R 脚本。 此数据最初是从威斯康星州大学提供的信息中合成的，网址为 http://future.aae.wisc.edu/tab/production.html。
 
 ### <a name="organization"></a>组织
 我们将通过几个步骤来了解如何在 Azure 机器学习环境中创建、测试并执行分析和数据操作 R 代码。  
@@ -52,27 +53,27 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 ## <a name="a-idmlstudioainteract-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>在机器学习工作室中与 R 语言交互
 本节向你演示在机器学习工作室环境中与 R 编程语言交互的一些基础知识。 R 语言提供了功能强大的工具用于在 Azure 机器学习环境中创建自定义的分析和数据操作模块。
 
-我将使用 RStudio 开发、测试和调试小规模的 R 代码。 之后将此代码剪切和粘贴到机器学习工作室中的[执行 R 脚本] [execute-r-script] 模块以供运行。  
+我将使用 RStudio 开发、测试和调试小规模的 R 代码。 之后将此代码剪切和粘贴到机器学习工作室中的[执行 R 脚本][execute-r-script]模块以供运行。  
 
 ### <a name="the-execute-r-script-module"></a>执行 R 脚本模块
-在机器学习工作室中，R 脚本在[执行 R 脚本] [execute-r-script] 模块中运行。 图 1 显示了机器学习工作室中的[执行 R 脚本] [execute-r-script] 模块的一个示例。
+在机器学习工作室中，R 脚本在[执行 R 脚本][execute-r-script]模块中运行。 图 1 显示了机器学习工作室中的[执行 R 脚本][execute-r-script]模块的一个示例。
 
  ![R 编程语言：机器学习工作室中选择的执行 R 脚本模块][1]
 
 *图 1.显示选择的执行 R 脚本模块的机器学习工作室环境*
 
-参考图 1，让我们看一些使用[执行 R 脚本] [execute-r-script] 模块的机器学习工作室环境的主要部分。
+参考图 1，让我们看一些使用[执行 R 脚本][execute-r-script]模块的机器学习工作室环境的主要部分。
 
 * 用于试验的模块在中间窗格中显示。
 * 右窗格的上半部分包含一个窗口可查看和编辑 R 脚本。  
-* 右窗格的下半部分显示[执行 R 脚本] [execute-r-script] 的某些属性。 可以通过单击此窗格中的适当位置查看错误和输出日志。
+* 右窗格的下半部分显示[执行 R 脚本][execute-r-script]的某些属性。 可以通过单击此窗格中的适当位置查看错误和输出日志。
 
-当然，我们会在本文的其余部分更详细地讨论[执行 R 脚本] [execute-r-script]。
+当然，我们会在本文的其余部分更详细地讨论[执行 R 脚本][execute-r-script]。
 
-使用复杂的 R 函数时，建议在 RStudio 中编辑、测试和调试。 与任何软件开发一样，逐步扩展你的代码，并在小型简单的测试用例上测试代码。 然后将函数剪切并粘贴到[执行 R 脚本] [execute-r-script] 模块的 R 脚本窗口中。 此方法允许你利用 RStudio 集成开发环境 (IDE) 和 Azure 机器学习的强大功能。  
+使用复杂的 R 函数时，建议在 RStudio 中编辑、测试和调试。 与任何软件开发一样，逐步扩展你的代码，并在小型简单的测试用例上测试代码。 然后将函数剪切并粘贴到[执行 R 脚本][execute-r-script]模块的 R 脚本窗口中。 此方法允许你利用 RStudio 集成开发环境 (IDE) 和 Azure 机器学习的强大功能。  
 
 #### <a name="execute-r-code"></a>执行 R 代码
-单击“运行”按钮运行此试验时，将执行[执行 R 脚本] [execute-r-script] 模块中的任何 R 代码。 执行完成后，在[执行 R 脚本] [execute-r-script] 图标上将显示一个对勾。
+单击“运行”按钮运行此试验时，将执行[执行 R 脚本][execute-r-script]模块中的任何 R 代码。 执行完成后，在[执行 R 脚本][execute-r-script]图标上将显示一个对勾。
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>适用于 Azure 机器学习的防御性 R 编码
 如果使用 Azure 机器学习为 Web 服务开发 R 代码，你一定会对代码如何处理意外的数据输入和异常进行规划。 为了保持代码的清晰度，在显示的大部分代码示例中未包含太多检查或异常处理方面的代码。 但是，后面我会提供几个使用 R 的异常处理功能的函数示例。  
@@ -80,13 +81,13 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 如果需要 R 异常处理的更全面的内容，我建议你阅读[附录 B — 深入阅读](#appendixb)中列出的由 Wickham 创作的书籍中的相关部分。
 
 #### <a name="debug-and-test-r-in-machine-learning-studio"></a>在机器学习工作室中调试和测试 R
-重申一下，我建议在 RStudio 中测试和调试小规模的 R 代码。 但是，在某些情况下需要跟踪[执行 R 脚本] [execute-r-script] 本身的 R 代码问题。 此外，在机器学习工作室中检查结果是一个不错的做法。
+重申一下，我建议在 RStudio 中测试和调试小规模的 R 代码。 但是，在某些情况下需要跟踪[执行 R 脚本][execute-r-script]本身的 R 代码问题。 此外，在机器学习工作室中检查结果是一个不错的做法。
 
 在 Azure 机器学习平台上执行 R 代码的输出结果主要在 output.log 文件中。 其他一些信息可在 error.log 中看到。  
 
-如果运行 R 代码时机器学习工作室发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请单击包含错误的“执行 R 脚本 [execute-r-script]”的“属性”窗格上的“查看错误日志”。[]
+如果运行 R 代码时机器学习工作室发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请单击包含错误的“执行 R 脚本”的“属性”窗格上的“查看错误日志”。[][execute-r-script]
 
-例如，我在[执行 R 脚本] [execute-r-script] 模块中运行下面的 R 代码，其中 y 为未定义变量：
+例如，我在[执行 R 脚本][execute-r-script]模块中运行下面的 R 代码，其中 y 为未定义变量：
 
     x <- 1.0
     z <- x + y
@@ -97,7 +98,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 *图 2.弹出错误消息*
 
-看来我们需要打开 output.log 文件查看此 R 错误消息。 单击“执行 R 脚本 [execute-r-script]”后，单击右侧的“属性”窗格上的“查看 output.log”。[] 打开了新的浏览器窗口，我看到以下内容。
+看来我们需要打开 output.log 文件查看此 R 错误消息。 单击“执行 R 脚本[execute-r-script]”后，单击右侧的“属性”窗格上的“查看 output.log”。[] 打开了新的浏览器窗口，我看到以下内容。
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -112,7 +113,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 若要检查 R 中的任何对象的值，可以将这些值打印到 output.log 文件。 检查对象的值的规则本质上与交互式 R 会话中的相同。 例如，如果在行上键入一个变量名，则该对象的值将打印到 output.log 文件。  
 
 #### <a name="packages-in-machine-learning-studio"></a>机器学习工作室中的包
-Azure 机器学习附带了超过 350 个预安装的 R 语言包。 可以在[执行 R 脚本] [execute-r-script] 模块中使用下面的代码来检索预安装的包列表。
+Azure 机器学习附带了超过 350 个预安装的 R 语言包。 可以在[执行 R 脚本][execute-r-script]模块中使用下面的代码来检索预安装的包列表。
 
     data.set <- data.frame(installed.packages())
     maml.mapOutputPort("data.set")
@@ -120,7 +121,7 @@ Azure 机器学习附带了超过 350 个预安装的 R 语言包。 可以在[�
 如果你此时不了解此代码的最后一行，请继续阅读。 本文剩余部分将全面讨论在 Azure 机器学习环境中使用 R。
 
 ### <a name="introduction-to-rstudio"></a>RStudio 简介
-RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使用 RStudio 编辑、测试和调试此快速入门指南中使用的一些 R 代码。 测试并准备好 R 代码后，只需将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室的[执行 R 脚本] [execute-r-script] 模块中。  
+RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使用 RStudio 编辑、测试和调试此快速入门指南中使用的一些 R 代码。 测试并准备好 R 代码后，只需将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室的[执行 R 脚本][execute-r-script]模块中。  
 
 如果还没有在台式计算机上安装 R 编程语言，我建议立即安装。 可以从 Comprehensive R Archive Network (CRAN) 免费下载开放源代码 R 语言，网址为 [http://www.r-project.org/](http://www.r-project.org/)。 该网站提供了适用于 Windows、Mac OS 和 Linux/UNIX 的 R 语言下载。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
 
@@ -128,10 +129,10 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Using-RStudio 获取。
 
-我在[附录 A] [appendixa] 中提供了一些其他有关使用 RStudio 的信息。  
+我在[附录 A] [appendixa]中提供了一些其他有关使用 RStudio 的信息。  
 
 ## <a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>在执行 R 脚本模块中输入和输出数据
-本节我们讨论如何在[执行 R 脚本] [execute-r-script] 模块中输入和输出数据。 我们将复习如何在[执行 R 脚本][execute-r-script] 模块中处理各种数据类型的输入和输出。
+本节我们讨论如何在[执行 R 脚本][execute-r-script]模块中输入和输出数据。 我们将复习如何在[执行 R 脚本][execute-r-script]模块中处理各种数据类型的输入和输出。
 
 本节的完整代码在前面下载的 zip 文件中。
 
@@ -153,9 +154,9 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 * 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”标题。 例如，将其改为“CA 乳品分析”。
 * 在试验页面的左侧，展开“保存的数据集”，然后选择“我的数据集”。 可看到之前上载的 **cadairydata.csv**。
 * 将 **csdairydata.csv 数据集**拖放到试验。
-* 在左窗格顶部的“搜索试验项”框中，键入“执行 R 脚本 [execute-r-script]”。[] 可以看到模块在搜索列表中显示。
-* 将[执行 R 脚本] [execute-r-script] 拖放到托盘上。  
-* 将 **csdairydata.csv 数据集**的输出连接到[执行 R 脚本] [execute-r-script] 最左侧输入 (**Dataset1**)。
+* 在左窗格顶部的“搜索试验项”框中，键入“执行 R 脚本[execute-r-script]”。[] 可以看到模块在搜索列表中显示。
+* 将[执行 R 脚本][execute-r-script]拖放到托盘上。  
+* 将 **csdairydata.csv 数据集**的输出连接到[执行 R 脚本][execute-r-script]最左侧输入 (**Dataset1**)。
 * **别忘了单击“保存”！**  
 
 此时试验如图 3 所示。
@@ -190,14 +191,14 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 现在，需要将此脚本移到 Azure 机器学习工作室。 我只需要剪切并粘贴。 但是，在该例中，我通过 zip 文件传输 R 脚本。
 
 ### <a name="data-input-to-the-execute-r-script-module"></a>输入到执行 R 脚本模块的数据
-让我们看看[执行 R 脚本] [execute-r-script] 模块的输入。 在本示例中，我们向[执行 R 脚本] [execute-r-script] 模块读入加利福尼亚州乳品数据。  
+让我们看看[执行 R 脚本][execute-r-script]模块的输入。 在本示例中，我们向[执行 R 脚本][execute-r-script]模块读入加利福尼亚州乳品数据。  
 
-[执行 R 脚本] [execute-r-script] 模块可能有三个输入。 可以使用任何一个或所有输入，具体取决于你的应用程序。 使用没有任何输入的 R 脚本也是非常合理的。  
+[执行 R 脚本][execute-r-script]模块可能有三个输入。 可以使用任何一个或所有输入，具体取决于你的应用程序。 使用没有任何输入的 R 脚本也是非常合理的。  
 
 让我们从左到右查看每个输入。 将光标置于输入上并阅读工具提示可看到每个输入的名称。  
 
 #### <a name="script-bundle"></a>脚本包
-脚本包输入允许将 zip 文件的内容传递到[执行 R 脚本] [execute-r-script] 模块。 可以使用以下任一命令将 zip 文件的内容读入 R 代码。
+脚本包输入允许将 zip 文件的内容传递到[执行 R 脚本][execute-r-script]模块。 可以使用以下任一命令将 zip 文件的内容读入 R 代码。
 
     source("src/yourfile.R") # Reads a zipped R script
     load("src/yourData.rdata") # Reads a zipped R data file
@@ -224,11 +225,11 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 2. 创建一个 zip 文件，并将脚本复制到此 zip 文件。 在 Windows 上，右键单击该文件并选择“发送到”，然后选择“压缩文件夹”。 此时将创建包含"simpleplot.R"文件的新的 zip 文件。
 3. 将文件添加到机器学习工作室中的**数据集**，并指定类型为 **zip**。 现在可在数据集中看到此 zip 文件。
 4. 将 zip 文件从**数据集**拖放到**机器学习工作室画布**。
-5. 将 **zip 数据**输出图标连接到[执行 R 脚本] [execute-r-script] 模块的**脚本包**输入。
-6. 在[执行 R 脚本] [execute-r-script] 模块的代码窗口中键入具有 zip 文件名的 `source()` 函数。 在本例中我键入 `source("src/simpleplot.R")`。  
+5. 将 **zip 数据**输出图标连接到[执行 R 脚本][execute-r-script]模块的**脚本包**输入。
+6. 在[执行 R 脚本][execute-r-script]模块的代码窗口中键入具有 zip 文件名的 `source()` 函数。 在本例中我键入 `source("src/simpleplot.R")`。  
 7. 请确保单击“保存”。
 
-这些步骤完成后，运行试验时，[执行 R 脚本] [execute-r-script] 模块将执行 zip 文件中的 R 脚本。 此时试验如图 5 所示。
+这些步骤完成后，运行试验时，[执行 R 脚本][execute-r-script]模块将执行 zip 文件中的 R 脚本。 此时试验如图 5 所示。
 
 ![使用压缩的 R 脚本的试验][6]
 
@@ -239,7 +240,7 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 
     cadairydata <- maml.mapInputPort(1)
 
-单击“运行”按钮执行试验。 执行完成后，单击“执行 R 脚本 [execute-r-script]”模块，然后单击“属性”窗格上的“查看 output.log”。[] 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
+单击“运行”按钮执行试验。 执行完成后，单击“执行 R 脚本[execute-r-script]”模块，然后单击“属性”窗格上的“查看 output.log”。[] 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -277,7 +278,7 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 这些结果大多和预期的一样，数据框中包含 228 个观测值和 9 个列。 我们可以看到列名称、R 数据类型和每个列的示例。
 
 > [!NOTE]
-> 可以从[执行 R 脚本] [execute-r-script] 模块的 R 设备输出中方便地获取此相同的打印输出。 我们将在下一节讨论[执行 R 脚本] [execute-r-script] 模块的输出。  
+> 可以从[执行 R 脚本][execute-r-script]模块的 R 设备输出中方便地获取此相同的打印输出。 我们将在下一节讨论[执行 R 脚本][execute-r-script]模块的输出。  
 > 
 > 
 
@@ -299,7 +300,7 @@ Dataset2 的输入行为与 Dataset1 相同。 使用此输入可以将另一个
 该输出看起来和输入一样，和我们的预期完全相同。  
 
 ### <a name="r-device-output"></a>R 设备输出
-[执行 R 脚本] [execute-r-script] 模块的设备输出包含消息和图形输出。 R 的标准输出和标准错误消息都会发送到 R 设备输出端口。  
+[执行 R 脚本][execute-r-script]模块的设备输出包含消息和图形输出。 R 的标准输出和标准错误消息都会发送到 R 设备输出端口。  
 
 若要查看 R 设备输出，请单击该端口，然后单击“可视化”。 在图 7 中可看到 R 脚本的标准输出和标准错误。
 
@@ -321,7 +322,7 @@ Dataset2 的输入行为与 Dataset1 相同。 使用此输入可以将另一个
 本节的完整 R 代码在前面下载的 zip 文件中。
 
 ### <a name="type-transformations"></a>类型转换
-现在，我们可以将加利福尼亚州乳品数据读入[执行 R 脚本] [execute-r-script] 模块中的 R 代码，我们需要确保列中的数据具有预期的类型和格式。  
+现在，我们可以将加利福尼亚州乳品数据读入[执行 R 脚本][execute-r-script]模块中的 R 代码，我们需要确保列中的数据具有预期的类型和格式。  
 
 R 是一个具有动态类型的语言，这表示可以根据需要将数据类型从一种类型强制转换为另一种类型。 R 的基本数据类型包括数字、逻辑和字符。 因子类型用于以简洁方式存储分类数据。 可以在[附录 B — 深入阅读](#appendixb)的参考文献中找到有关数据类型的更多信息。
 
@@ -338,7 +339,7 @@ R 是一个具有动态类型的语言，这表示可以根据需要将数据类
 
 看一看上一节中输入的列的数据类型：所有列都为数值类型，除了标记为“Month”的列为字符类型。 让我们将该列转换为一个因子并测试结果。  
 
-我删除了创建散点图矩阵的行，并添加了将“Month”列转换为因子的行。 在试验中我只需将 R 代码剪切并粘贴到[执行 R 脚本] [execute-r-script] 模块的代码窗口中。 你也可以更新 zip 文件，并将其上载到 Azure 机器学习工作室中，但这需要几个步骤。  
+我删除了创建散点图矩阵的行，并添加了将“Month”列转换为因子的行。 在试验中我只需将 R 代码剪切并粘贴到[执行 R 脚本][execute-r-script]模块的代码窗口中。 你也可以更新 zip 文件，并将其上载到 Azure 机器学习工作室中，但这需要几个步骤。  
 
     ## Only one of the following two lines should be used
     ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
@@ -427,11 +428,11 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 我们要对数据集进行一点筛选。 如果看一下 cadairydata 数据框中的列，会发现两个不必要的列。 第一列只包含一行数字，不是很有用。 第二列 Year.Month 包含冗余的信息。 使用以下 R 代码可轻松地排除这两列。
 
 > [!NOTE]
-> 本节从现在开始，我只展示在[执行 R 脚本] [execute-r-script] 模块中添加的附加代码。 我将在 `str()` 函数**前面**添加一个新行。 我使用此函数验证 Azure 机器学习工作室中的结果。
+> 本节从现在开始，我只展示在[执行 R 脚本][execute-r-script]模块中添加的附加代码。 我将在 `str()` 函数**前面**添加一个新行。 我使用此函数验证 Azure 机器学习工作室中的结果。
 > 
 > 
 
-将以下行添加到[执行 R 脚本] [execute-r-script] 模块中的我的 R 代码。
+将以下行添加到[执行 R 脚本][execute-r-script]模块中的我的 R 代码。
 
     # Remove two columns we do not need
     cadairydata <- cadairydata[, c(-1, -2)]
@@ -594,7 +595,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 可以看到值已被转换。 现在牛奶生产大大超过了所有其他乳品生产，回忆一下，我们现在是以对数尺度查看数据。
 
-此时数据已清理，我们可以进行一些建模操作。 查看[执行 R 脚本] [execute-r-script] 模块的结果数据集输出的可视化摘要，会看到“Month”列的类型为“分类”，具有 12 个唯一值，这又和我们希望的一样。
+此时数据已清理，我们可以进行一些建模操作。 查看[执行 R 脚本][execute-r-script]模块的结果数据集输出的可视化摘要，会看到“Month”列的类型为“分类”，具有 12 个唯一值，这又和我们希望的一样。
 
 ## <a name="a-idtimeseriesatime-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>时序对象和相关性分析
 本节我们将探讨几个基本的 R 时序对象，并分析一些变量之间的相关性。 我们的目的是输出包含几个滞后时间内的成对相关性信息的数据框。
@@ -608,7 +609,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 <!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ### <a name="time-series-object-example"></a>时序对象示例
-让我们开始使用示例。 将**新的**[执行 R 脚本] [execute-r-script] 模块拖放到试验中。 将现有的[执行 R 脚本] [execute-r-script] 模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本] [execute-r-script] 模块的 Dataset1 输入端口。
+让我们开始使用示例。 将**新的**[执行 R 脚本][execute-r-script]模块拖放到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
 
 正如第一个示例中所演示的，在完成示例中的步骤时，在某些时候我只展示每个步骤中 R 代码的附加行。  
 
@@ -869,7 +870,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 2. `do.call()` 函数对 `lapply()` 返回的列表的元素应用 `rbind()` 函数。
 3. `data.frame()` 函数将 `do.call()` 生成的结果强制转换为数据框。
 
-请注意，行名在数据框的一个列中。 这样使行名从[执行 R 脚本] [execute-r-script] 中输出后保留这些行名。
+请注意，行名在数据框的一个列中。 这样使行名从[执行 R 脚本][execute-r-script]中输出后保留这些行名。
 
 运行此代码并**可视化**结果数据集端口的输出，可生成如图 19 所示的输出。 和预期的一样，行名在第一列中。
 
@@ -885,7 +886,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 本节的完整 R 代码在前面下载的 zip 文件中。
 
 ### <a name="creating-the-dataframe-for-analysis"></a>创建用于分析的数据框
-首先将**新的**[执行 R 脚本] [execute-r-script] 模块添加到试验中。 将现有的[执行 R 脚本] [execute-r-script] 模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
+首先将**新的**[执行 R 脚本][execute-r-script]模块添加到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
 
 ![已添加新执行 R 脚本模块的实验][21]
 
@@ -1017,7 +1018,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 这个结果看起来好多了。 所有项都重要。 但是，2e-16 值是默认值，不必太关心。  
 
-在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我在 Azure 机器学习的[执行 R 脚本] [execute-r-script] 模型（而不是 RStudio）中添加了以下代码，用于创建模型并绘图。 结果如图 23 所示。
+在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我在 Azure 机器学习的[执行 R 脚本][execute-r-script]模型（而不是 RStudio）中添加了以下代码，用于创建模型并绘图。 结果如图 23 所示。
 
     milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1074,7 +1075,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 我们看到该模型不再具有截距项，并且有 12 个重要的月因子。 这正是我们想要看到的。
 
-让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我在 Azure 机器学习的[执行 R 脚本] [execute-r-script] 中添加了以下代码，用于创建模型并绘图。
+让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我在 Azure 机器学习的[执行 R 脚本][execute-r-script]中添加了以下代码，用于创建模型并绘图。
 
     milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
@@ -1246,7 +1247,7 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 * DataCamp：在浏览器中舒适地观看 DataCamp 的 R 课程的视频和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 可从以下网址获取免费的互动式 R 教程：https://www.datacamp.com/courses/introduction-to-r  
 * Clarkson 大学的 Kelly Black 编写的快速 R 教程，网址为 http://www.cyclismo.org/tutorial/R/
-* 以下网址中列出了 60 多个 R 资源：http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
+* 以下网址中列出了&60; 多个 R 资源：http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 
 <!--Image references-->
 [1]: ./media/machine-learning-r-quickstart/fig1.png
@@ -1276,7 +1277,7 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 <!--links-->
 [appendixa]: #appendixa
-[下载]: https://azurebigdatatutorials.blob.core.windows.net/rquickstart/RFiles.zip
+[download]: https://azurebigdatatutorials.blob.core.windows.net/rquickstart/RFiles.zip
 
 
 <!-- Module References -->
@@ -1284,6 +1285,6 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

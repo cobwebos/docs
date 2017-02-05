@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 970767e091a172b8e66405c2b03d22a595529442
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
 
 
 ---
@@ -170,7 +170,7 @@ ms.openlocfilehash: 970767e091a172b8e66405c2b03d22a595529442
 如果需要卸载，请删除资源组。 请参阅[如何卸载弹性数据库作业组件](sql-database-elastic-jobs-uninstall.md)。
 
 ## <a name="next-steps"></a>后续步骤
-确保已在组中的每个数据库上创建具有适当脚本执行权限的凭据。有关详细信息，请参阅[保护你的 SQL 数据库](sql-database-security.md)。
+确保已在组中的每个数据库上创建具有适当脚本执行权限的凭据。有关详细信息，请参阅[保护你的 SQL 数据库](sql-database-manage-logins.md)。
 请参阅[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)以开始操作。
 
 <!--Image references-->
@@ -181,6 +181,6 @@ ms.openlocfilehash: 970767e091a172b8e66405c2b03d22a595529442
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

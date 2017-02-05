@@ -5,69 +5,74 @@ metacanonical:
 keywords: "连接到 sql 数据库, sql server management studio"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
 ms.service: sql-database
+ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.topic: article
+ms.date: 11/22/2016
 ms.author: sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0eb25eb76c6c6c2446ac0b2b07c65975c3719db0
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: a6b147521525fad343376db0454f786a77b55c42
 
 
 ---
-# <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-tsql-query"></a>使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询
+# <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-t-sql-query"></a>使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询
 > [!div class="op_single_selector"]
 > * [Visual Studio](sql-database-connect-query.md)
 > * [SSMS](sql-database-connect-query-ssms.md)
 > * [Excel](sql-database-connect-excel.md)
-> 
 > 
 
 本文将介绍如何使用 SQL Server Management Studio (SSMS) 连接到 Azure SQL 数据库。 成功连接后，我们将运行一个简单的 Transact-SQL (T-SQL) 查询，验证与数据库的通信。
 
 [!INCLUDE [SSMS Install](../../includes/sql-server-management-studio-install.md)]
 
-[!INCLUDE [SSMS Connect](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
+1. 使用“下载 SQL Server Management Studio”下载并安装最新版本的 SSMS（如果尚未这样做）。[](https://msdn.microsoft.com/library/mt238290.aspx) 为保持最新状态，最新版本的 SSMS 会提示你有新版本可供下载。
 
-## <a name="run-sample-queries"></a>运行示例查询
-连接到服务器后，可以连接到数据库并运行示例查询。 如果不熟悉编写查询，请参阅 [编写 Transact-SQL 语句](https://msdn.microsoft.com/library/ms365303.aspx)。
+2. 安装后，在 Windows 搜索框中键入 **Microsoft SQL Server Management Studio**，然后单击 **Enter** 打开 SSMS：
 
-1. 在“对象资源管理器”中，导航到服务器上的数据库，例如 **AdventureWorks** 示例数据库。
-2. 右键单击该数据库，然后选择“新建查询” ：
+    ![SQL Server Management Studio](./media/sql-database-get-started/ssms.png)
+3. 在“连接到服务器”对话框中输入所需的信息，以便使用 SQL Server 身份验证连接到 SQL 服务器。
+
+    ![连接到服务器](./media/sql-database-get-started/connect-to-server.png)
+4. 单击“连接”。
+
+    ![已连接到服务器](./media/sql-database-get-started/connected-to-server.png)
+5. 在“对象资源管理器”中，展开“数据库”，展开任何数据库以查看该数据库中的对象。
+
+    ![使用 SSMS 查看新示例数据库对象](./media/sql-database-get-started/new-sample-db-objects-ssms.png)
+6. 右键单击此数据库，然后单击“新建查询”。
+
+    ![使用 SSMS 新建示例数据库查询](./media/sql-database-get-started/new-sample-db-query-ssms.png)
+7. 在查询窗口中键入以下查询：
+
+   ```select * from sys.objects```
    
-    ![新建查询。 连接到 SQL 数据库服务器：SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
-3. 在查询窗口中，复制并粘贴以下内容：
-   
-        SELECT
-        CustomerId
-        ,Title
-        ,FirstName
-        ,LastName
-        ,CompanyName
-        FROM SalesLT.Customer;
-4. 单击“执行”  按钮：
-   
-    ![成功。 连接到 SQL 数据库服务器：SQL Server Management Studio](./media/sql-database-connect-query-ssms/5-success.png)
+8.  在工具栏上单击“执行”，返回示例数据库中所有系统对象的列表。
+
+    ![使用 SSMS 查询新示例数据库的系统对象](./media/sql-database-get-started/new-sample-db-query-objects-ssms.png)
+
+> [!Tip]
+> 有关教程，请参阅 [SQL 数据库教程：创建服务器、服务器级防火墙规则、示例数据库、数据库级防火墙规则并连接到 SQL Server](sql-database-get-started.md)。    
+>
 
 ## <a name="next-steps"></a>后续步骤
-可以按照与 SQL Server 基本相同的方法，使用 T-SQL 语句来创建和管理 Azure 中的数据库。 如果熟悉 T-SQL 与 SQL Server 的用法，请参阅 [Azure SQL 数据库 Transact-SQL 信息）](sql-database-transact-sql-information.md) ，大致了解它们之间的差异。
 
-如果不熟悉 T-SQL，请参阅[教程：编写 Transact-SQL 语句](https://msdn.microsoft.com/library/ms365303.aspx)和 [Transact-SQL 参考（数据库引擎）](https://msdn.microsoft.com/library/bb510741.aspx)。
-
-若要开始创建数据库用户和数据库用户管理员，请参阅 [Azure SQL 数据库安全性入门](sql-database-get-started-security.md)
-
-有关 SSMS 的详细信息，请参阅 [使用 SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。
+- 可以按照与 SQL Server 基本相同的方法，使用 T-SQL 语句来创建和管理 Azure 中的数据库。 如果熟悉 T-SQL 与 SQL Server 的用法，请参阅 [Azure SQL 数据库 Transact-SQL 信息）](sql-database-transact-sql-information.md) ，大致了解它们之间的差异。
+- 如果不熟悉 T-SQL，请参阅[教程：编写 Transact-SQL 语句](https://msdn.microsoft.com/library/ms365303.aspx)和 [Transact-SQL 参考（数据库引擎）](https://msdn.microsoft.com/library/bb510741.aspx)。
+- 若要开始创建数据库用户和数据库用户管理员，请参阅 [Azure SQL 数据库安全性入门](sql-database-control-access-sql-authentication-get-started.md)
+- 有关 SSMS 的详细信息，请参阅 [使用 SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

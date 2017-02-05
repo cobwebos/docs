@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 5939119e2b42b13acaf08678cae11b99d45fdf51
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 547a2c0ab49c0b79d85bab1bd3abd800c9288ccf
 
 
 ---
@@ -101,7 +101,7 @@ ms.openlocfilehash: 5939119e2b42b13acaf08678cae11b99d45fdf51
    | 使用远程网关 |使用对等方的 VNet 网关。 对等 VNet 必须已配置网关并且已选中“允许网关传输”。 如果你已配置了网关，则无法使用此选项。 |否 |
    
     VNet 对等互连中的每个链接都有上述属性集。 例如，可针对 VNet1 到 VNet2 的 VNet 对等互连链接将“允许虚拟网络访问”设置为“Ture”，而针对另一方向的 VNet 对等互连链接设置为“False”。
-4. 若要部署模板文件，可以运行 New-AzureRmResourceGroupDeployment cmdlet 来创建或更新部署。 有关使用 Resource Manager 模板的详细信息，请参阅此 [文章](../resource-group-template-deploy.md)。
+4. 若要部署模板文件，可以运行 New-AzureRmResourceGroupDeployment cmdlet 来创建或更新部署。 有关使用 Resource Manager 模板的详细信息，请参阅此 [文章](../azure-resource-manager/resource-group-template-deploy.md)。
    
         New-AzureRmResourceGroupDeployment -ResourceGroupName <resource group name> -TemplateFile <template file path> -DeploymentDebugLogLevel all
    
@@ -382,6 +382,6 @@ ms.openlocfilehash: 5939119e2b42b13acaf08678cae11b99d45fdf51
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

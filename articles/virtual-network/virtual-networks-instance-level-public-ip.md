@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: f1a4dc135721a1c2a134806fbae031ee60e23074
-ms.openlocfilehash: 1aa0990f53059fa832100f9fcf88f93633ca93ce
+ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
+ms.openlocfilehash: f1919d84cf912e184d87a5eeb462355e8ee3da07
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 1aa0990f53059fa832100f9fcf88f93633ca93ce
 实例级公共 IP (ILPIP) 是可直接向 VM 或角色实例（而非 VM 或角色实例所在的云服务）分配的公共 IP 地址。 这不会取代分配给你的云服务的 VIP（虚拟 IP）。 而是可以用来直接连接到 VM 或角色实例的其他 IP 地址。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器。 请确保你了解 [IP 地址](virtual-network-ip-addresses-overview-classic.md)在 Azure 中的工作原理。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器。 请确保你了解 [IP 地址](virtual-network-ip-addresses-overview-classic.md)在 Azure 中的工作原理。
 
 ![ILPIP 和 VIP 之间的差异](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
@@ -146,6 +146,6 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

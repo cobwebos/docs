@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 536cb4cd7975283dd61c8c4f2fe1a707a735504e
-ms.openlocfilehash: 9b55a6e994e94257fd506a9d759a820dcd5d84e3
+ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
+ms.openlocfilehash: 55071ffe1bcc17b2181b4c52f51d28571a2f0eff
 
 
 ---
@@ -34,7 +34,7 @@ Azure 中的 IP 地址分为两类：动态 IP 地址和保留 IP 地址。 由 
 若要防止 IP 地址更改，可将其设置为保留 IP 地址。 保留 IP 只能用作 VIP，可确保云服务的 IP 地址即使在关闭资源或释放资源的情况下也是相同的。 此外，还可以将用作 VIP 的现有动态 IP 转换为保留 IP 地址。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何使用 [Resource Manager 部署模型](virtual-network-ip-addresses-overview-arm.md)保留静态公共 IP 地址。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何使用 [Resource Manager 部署模型](virtual-network-ip-addresses-overview-arm.md)保留静态公共 IP 地址。
 
 若要详细了解 Azure 中的 IP 地址，请阅读 [IP 地址](virtual-network-ip-addresses-overview-classic.md)一文。
 
@@ -57,7 +57,7 @@ Azure 中的 IP 地址分为两类：动态 IP 地址和保留 IP 地址。 由 
 
 ## <a name="manage-reserved-vips"></a>管理保留 VIP
 
-确保已根据[安装和配置 PowerShell](../powershell-install-configure.md) 一文中的步骤安装和配置 PowerShell。 
+确保已根据[安装和配置 PowerShell](/powershell/azureps-cmdlets-docs) 一文中的步骤安装和配置 PowerShell。 
 
 在使用保留 IP 之前，必须先将其添加到订阅。 若要从*美国中部*位置提供的公共 IP 地址池创建保留 IP，请运行以下命令：
 
@@ -168,6 +168,6 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

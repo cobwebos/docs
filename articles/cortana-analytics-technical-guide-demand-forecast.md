@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
 translationtype: Human Translation
-ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
-ms.openlocfilehash: db4d25e4236f568851b23976bd805ab7cc346ded
+ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
+ms.openlocfilehash: c3bbef8fee018dc54e7d3edb86e3f9434999bdae
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: db4d25e4236f568851b23976bd805ab7cc346ded
 本文档旨在说明参考体系结构以及随此解决方案模板预配在订阅中的不同组件。 本文档还将演示如何使用自己的实际数据来替换示例数据，以便看到自己的数据的见解/预测。 此外，本文档将说明如果想要以自己的数据自定义解决方案，需要修改的解决方案模板部分。 最后提供有关构建此解决方案模板的 Power BI 仪表板的说明。
 
 ## <a name="big-picture"></a>**大图**
-![](media\\cortana-analytics-technical-guide-demand-forecast\\ca-topologies-energy-forecasting.png)
+![](media/cortana-analytics-technical-guide-demand-forecast/ca-topologies-energy-forecasting.png)
 
 ### <a name="architecture-explained"></a>体系结构说明
 部署解决方案时，将激活 Cortana Analytics Suite 中的各种 Azure 服务（*例如*事件中心、流分析、HDInsight、数据工厂、机器学习，*等等*）。 上面所示的体系结构图全面展示了如何从端到端构造能源需求预测解决方案模板。 可以调查这些服务，单击随解决方案部署创建的解决方案模板图表即可。 以下部分说明每个片段。
@@ -83,7 +83,7 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
 可通过以下方式找到 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)查询：
 
 * 登录到 [Azure 管理门户](https://manage.windowsazure.com/)
-* 找到部署解决方案时生成的流分析作业 ![](media\\cortana-analytics-technical-guide-demand-forecast\\icon-stream-analytics.png)。 一个作业用于将数据推送到 Blob 存储（例如 mytest1streaming432822asablob），另一种作业用于将数据推送到 Power BI（例如 mytest1streaming432822asapbi）。
+* 找到部署解决方案时生成的流分析作业 ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png)。 一个作业用于将数据推送到 Blob 存储（例如 mytest1streaming432822asablob），另一种作业用于将数据推送到 Power BI（例如 mytest1streaming432822asapbi）。
 * 选择
 
   * “输入”可查看查询输入
@@ -97,13 +97,13 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
 其他 Azure 流分析作业将所有[事件中心](https://azure.microsoft.com/services/event-hubs/)事件输出到 [Azure 存储](https://azure.microsoft.com/services/storage/)，由于将完整的事件信息流到存储，因此无论数据格式为何都无需进行修改。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
-[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务协调数据的移动和处理。 在能源需求预测解决方案模板中，数据工厂由 12 个[管道](data-factory/data-factory-create-pipelines.md)组成，使用不同的技术移动和处理数据。
+[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务协调数据的移动和处理。 在能源需求预测解决方案模板中，数据工厂由&12; 个[管道](data-factory/data-factory-create-pipelines.md)组成，使用不同的技术移动和处理数据。
 
   可以打开随解决方案部署创建的解决方案模板图示底部的数据工厂节点来访问数据工厂。 这会转到 Azure 管理门户上的数据工厂。 如果在数据集下看到错误，可将其忽略，这些错误的原因是启动数据生成器之前已部署数据工厂。 这些错误不会防碍数据工厂的正常运行。
 
 本部分介绍 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)中包含的必要[管道](data-factory/data-factory-create-pipelines.md)和[活动](data-factory/data-factory-create-pipelines.md)。 下面是解决方案的图示视图。
 
-![](media\\cortana-analytics-technical-guide-demand-forecast\\ADF2.png)
+![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
 此工厂的五个管道包含 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，用于分区及聚合数据。 可以看到，脚本位在安装期间创建的 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户中。 其位置为：demandforecasting\\\\script\\\\hive\\\\（或 https://[解决方案名称].blob.core.windows.net/demandforecasting）。
 
@@ -150,7 +150,7 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
     某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Azure Blob 存储”组件，然后在右窗格中单击“打开”，将会转到 [Azure 管理门户](https://portal.azure.com)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“energysadata”。 在随后出现的面板中，可以看到“demandongoing”文件夹。 在 rawdata 文件夹内，可以看到具有 date=2016-01-28 等名称的文件夹。如果看到这些文件夹，则表示原始数据已成功在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的文件。
 2. 检查 Azure SQL 数据库中的数据。
 
-    管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 2 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 管理门户](https://manage.windowsazure.com/)。 在左侧面板中找到“SQL 数据库![](media\\cortana-analytics-technical-guide-demand-forecast\\SQLicon2.png)”并单击它。 然后找到自己的数据库（例如 demo123456db）并单击它。 在下一页的“连接到数据库”部分下，单击“对 SQL 数据库运行 Transact-SQL 查询”。
+    管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 2 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 管理门户](https://manage.windowsazure.com/)。 在左侧面板中找到“SQL 数据库![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png)”并单击它。 然后找到自己的数据库（例如 demo123456db）并单击它。 在下一页的“连接到数据库”部分下，单击“对 SQL 数据库运行 Transact-SQL 查询”。
 
     随后，可以单击“新建查询”，然后查询行数（例如，"select count(*) from DemandRealHourly"。随着数据库成长，表中的行数也应会增加）。
 3. 检查 Power BI 仪表板中的数据。
@@ -176,14 +176,14 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
 3. 创建“按时间戳列出的需求”磁贴：
 
    * 在左侧面板“数据集”部分中单击数据集“EnergyStreamData”。
-   * 单击“折线图”图标 ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic8.png)。
+   * 单击“折线图”图标 ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic8.png)。
    * 在“字段”面板中单击“EnergyStreamData”。
    * 单击“时间戳”，确保它显示在“轴”下面。 单击“加载”，确保它显示在“值”下面。
    * 单击顶部的“保存”，将报告命名为“EnergyStreamDataReport”。 名为“EnergyStreamDataReport”的报告随即显示在左侧“导航”窗格的“报告”部分中。
-   * 单击此折线图右上角的“固定视觉对象”![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic6.png) 图标，“固定到仪表板”窗口随即出现，可在其中选择仪表板。 请选择“EnergyStreamDataReport”，然后单击“固定”。
+   * 单击此折线图右上角的“固定视觉对象”![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) 图标，“固定到仪表板”窗口随即出现，可在其中选择仪表板。 请选择“EnergyStreamDataReport”，然后单击“固定”。
    * 在仪表板上将鼠标悬停在此磁贴中，单击右上角的“编辑”图标，将其标题更改为“按时间戳列出的需求”
 4. 根据相应的数据集创建其他仪表板磁贴。 最终的仪表板视图如下所示。
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PBIFullScreen.png)
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
 ### <a name="setup-cold-path-dashboard"></a>设置冷路径仪表板
 在冷路径数据管道中，基本目标是获取每个区域的需求预测。 Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 数据库。
@@ -207,7 +207,7 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
    * 在下载的“DemandForecastingDataGeneratorv1.0”文件夹中，双击“Power BI Template\DemandForecastPowerBI.pbix”文件。 初始的可视化效果基于虚构数据。 **注意：**如果看到错误消息，请确保已安装最新版本的 Power BI Desktop。
 
      打开该文件后，请在顶部单击“编辑查询”。 在弹出窗口中，双击右侧面板上的“源”。
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic1.png)
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic1.png)
    * 在弹出窗口中，将“服务器”和“数据库”替换为自己的服务器和数据库名称，然后单击“确定”。 对于服务器名称，请确保指定端口 1433 (**YourSolutionName.database.windows.net, 1433**)。 忽略屏幕上出现的警告消息。
    * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”和“数据库”）。 单击“数据库”，填充“用户名”和“密码”（这是首次部署解决方案和创建 Azure SQL 数据库时输入的用户名与密码）。 在“选择要将这些设置应用到的级别”中，选中数据库级别选项。 然后单击“连接”。
    * 返回上一页后，请关闭窗口。 此时会弹出一条消息 - 请单击“应用”。 最后，单击“保存”保存更改。 Power BI 文件现在已与服务器建立连接。 如果可视化效果是空的，请务必单击图例右上角的橡皮擦图标清除可视化效果中的选择内容，这样即可查看所有数据。 使用刷新按钮显示可视化效果中的新数据。 最初，只会在可视化效果中看到种子数据，因为数据工厂计划为每隔 3 小时刷新一次。 3 小时后，刷新数据时，可以看到新预测数据反映在可视化效果中。
@@ -215,16 +215,16 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
 
    * 单击“发布”，几秒钟后会出现一个窗口，显示“发布到 Power BI 成功!”和 一个绿色的复选标记。 单击“在 Power BI 中打开 demoprediction.pbix”下面的链接。 若要查找详细说明，请参阅 [Publish from Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)（从 Power BI Desktop 发布）。
    * 若要创建新仪表板，请在左侧窗格中单击“仪表板”部分旁边的 **+** 号。 为此新仪表板输入名称“需求预测演示”。
-   * 打开报告后，请单击 ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic6.png)，将所有可视化效果固定到仪表板。 若要查找详细说明，请参阅[从报表将磁贴固定到 Power BI 仪表板](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)。
+   * 打开报告后，请单击 ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png)，将所有可视化效果固定到仪表板。 若要查找详细说明，请参阅[从报表将磁贴固定到 Power BI 仪表板](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)。
      转到仪表板页并调整可视化效果的大小和位置并编辑其标题。 若要查找有关如何编辑磁贴的详细说明，请参阅[编辑磁贴 - 重设大小、移动、重命名、固定、删除、添加超链接](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)。 下面是固定了一些冷路径可视化效果的仪表板示例。
 
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic7.png)
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic7.png)
 4. （可选）计划数据源的刷新。
 
-   * 若要计划数据刷新，请将鼠标悬停在 **EnergyBPI-Final** 数据集上，单击 ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic3.png)，然后选择“计划刷新”。
+   * 若要计划数据刷新，请将鼠标悬停在 **EnergyBPI-Final** 数据集上，单击 ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic3.png)，然后选择“计划刷新”。
      **注意：**如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
 
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic4.png)
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic4.png)
    * 展开“计划刷新”部分。 打开“将数据保持最新”。
    * 根据需要计划刷新。 若要查找详细信息，请参阅 [Data refresh in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)（Power BI 中的数据刷新）。
 
@@ -242,6 +242,6 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

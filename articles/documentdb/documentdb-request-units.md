@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 39b4ccba7ad3ba6734dd23548db3c506c8095759
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 8b2d13dd16f629fbb2108856cd1e1b2954ece8bf
 
 
 ---
@@ -224,7 +224,6 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 若要了解有关 Azure DocumentDB 数据库的保留吞吐量的详细信息，请浏览以下资源：
 
 * [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)
-* [管理 DocumentDB 容量](documentdb-manage.md) 
 * [为 DocumentDB 中的数据建模](documentdb-modeling-data.md)
 * [DocumentDB 性能级别](documentdb-partition-data.md)
 
@@ -240,6 +239,6 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/16/2016
+ms.date: 01/12/2017
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5f270d383750dc6308f01807e04469e3873d70f9
-ms.openlocfilehash: 6d2a72831726f59ff79a7f4c1ff0e258275bfe4f
+ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
+ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
 
 
 ---
@@ -35,11 +35,6 @@ BGP 是可用于 Azure 基于路由的 VPN 网关的可选功能。 在启用此
 使用 BGP，你只需通过 IPsec S2S VPN 隧道为特定 BGP 对等节点声明最小前缀。 它最小可为本地 VPN 设备的 BGP 对等节点 IP 地址的主机前缀（/32）。 你可以控制要将哪些本地网络前缀播发到 Azure 以允许 Azure 虚拟网络访问。
 
 你还可以播发更大的前缀，可以包括一些 VNet 地址前缀，如大型专用 IP 地址空间（例如，10.0.0.0/8）。 但请注意，这些前缀不能与任一 VNet 前缀相同。 与 VNet 前缀相同的这些路由将被拒绝。
-
-> [!IMPORTANT]
-> 目前，向 Azure VPN 网关播发默认路由 (0.0.0.0/0) 将被阻止。 启用此功能后，将提供进一步更新。
-> 
-> 
 
 ### <a name="support-multiple-tunnels-between-a-vnet-and-an-on-premises-site-with-automatic-failover-based-on-bgp"></a>支持 VNet 与本地站点之间的多个隧道基于 BGP 自动进行故障转移
 你可以在同一位置的 Azure VNet 和本地 VPN 设备之间建立多个连接。 在主-主配置中，此功能在两个网络之间提供多个隧道（路径）。 如果其中一个隧道断开连接，则将通过 BGP 撤消相应的路由，流量将会自动转移到其余隧道。
@@ -64,6 +59,6 @@ BGP 使多个网关可以从不同网络获知和传播前缀，而无论它们�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

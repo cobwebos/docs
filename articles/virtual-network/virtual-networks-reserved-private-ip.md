@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 117c65ebcc566aa1898dc8655ee608cb42673d79
+ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
+ms.openlocfilehash: 41b98df79b9ab9ee179ab8984d14c9e9c15fa646
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 117c65ebcc566aa1898dc8655ee608cb42673d79
 大多数情况下，不需要指定虚拟机的静态内部 IP 地址。 虚拟网络中的 VM 将自动从指定的范围接收内部 IP 地址。 但在某些情况下，需要为特定 VM 指定静态 IP 地址。 例如，在你的 VM 需要运行 DNS 或将要成为域控制器的情况下。 静态内部 IP 地址会始终与 VM 关联在一起，即使经历“停止/取消预配”状态变化。 
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用[资源管理器部署模型](virtual-networks-static-private-ip-arm-ps.md)。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用[资源管理器部署模型](virtual-networks-static-private-ip-arm-ps.md)。
 > 
 > 
 
@@ -111,6 +111,6 @@ ms.openlocfilehash: 117c65ebcc566aa1898dc8655ee608cb42673d79
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

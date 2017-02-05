@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: f946ef41f0fc5ab39351d85c37ed24715b92b882
-ms.openlocfilehash: cd58f24c356e6d1ec0ebe77b1c336ee8370a4a9a
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 32d26fa811f1b5b34981e40d20e6c941d5f08477
 
 
 ---
@@ -84,7 +84,7 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 审核日志和属性定义的详细信息，请参阅：
 
-* [使用资源管理器执行审核操作](../resource-group-audit.md)
+* [使用资源管理器执行审核操作](../azure-resource-manager/resource-group-audit.md)
 * [列出订阅中的管理事件](https://msdn.microsoft.com/library/azure/dn931934.aspx) - 检索审核日志事件。
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
@@ -95,6 +95,6 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

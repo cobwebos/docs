@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a5d98d804697a9b5c745d4fa236cb0ee5b7c456b
+ms.sourcegitcommit: c5479dd817e8929ff5e9129d4643d49758e7ab16
+ms.openlocfilehash: 32e74821309507fed4a20b005dbfbba12ffb0703
 
 
 ---
@@ -111,11 +111,9 @@ Web 服务可能已定义一个或多个终结点。
 * “**日志记录**”允许启用或禁用终结点上的错误记录。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](machine-learning-web-services-logging.md)。
 * “**启用示例数据**”允许提供可用于测试请求 - 响应服务的示例数据。 如果在机器学习工作室中创建 Web 服务，示例数据将来自你用于训练模型的数据。 如果以编程方式创建服务，则从作为 JSON 包的一部分提供的示例数据中获取数据。
 
-[使用]: machine-learning-consume-web-services.md
-[marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

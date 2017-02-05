@@ -11,14 +11,14 @@ keywords: "Docker, 容器, 微服务, Mesos, Azure"
 ms.assetid: 52da4163-1182-4b2e-be00-4951e5c1da16
 ms.service: container-service
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 12/20/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 3edc4bf663244805fc184d9598621b3fbca72d5d
-ms.openlocfilehash: 430f895a783cbbe6b7454ccd24c2dd8d99f6228b
+ms.sourcegitcommit: f8a2b63c381ceafb23b31697916796066ea549f9
+ms.openlocfilehash: d5652134cc2c660395cfb83a1a2727acf306f5e9
 
 
 ---
@@ -27,7 +27,11 @@ Azure 容器服务让创建、配置和管理预配置来运行容器化应用�
 
 ![Azure 容器服务提供了在 Azure 的多个主机上管理容器化应用程序的方法。](./media/acs-intro/acs-cluster-new.png)
 
-Azure 容器服务利用 Docker 容器格式，确保应用程序容器完全可移植。 它也支持选择 Marathon 和 DC/OS、Docker Swarm 或 Kubernetes，以便用户可将这些应用程序扩展到数千个，甚至数万个容器中。
+Azure 容器服务利用 Docker 容器格式，确保应用程序容器完全可移植。 它也支持选择 Marathon 和 DC/OS、Docker Swarm 或 Kubernetes，使用户能够将这些应用程序扩展到数千个，甚至数万个容器中。
+
+>[!NOTE]
+> Azure 容器服务中的 Kubernetes 支持当前为预览版。
+>
 
 通过 Azure 容器服务，可利用 Azure 的企业级功能，同时保留应用程序的可移植性，包括业务流程层的可移植性。
 
@@ -85,11 +89,11 @@ Kubernetes 是一种常用的开源生产级容器业务流程工具，用于自
 
 它具有一组丰富的功能，包括：
 * 水平扩展
-* 服务发现和负载平衡
+* 服务发现和负载均衡
 * 机密和配置管理
 * 基于 API 的自动推出和回滚
 * 自我修复 
-* 及更多...
+* 及更多。
 
 
 
@@ -109,6 +113,6 @@ Azure 容器服务入门 (101)：
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

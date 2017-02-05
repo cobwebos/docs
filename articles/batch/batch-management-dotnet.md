@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 10/19/2016
+ms.date: 01/20/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 0eff62c62bb256fead360423c20b98fd7f720a51
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: ce2b316c9e04c46c1b45139b2ba84c1ca8843f29
 
 
 ---
@@ -158,7 +158,7 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 ## <a name="sample-project-on-github"></a>GitHub 上的示例项目
 查看 GitHub 上的 [AccountManagment][acct_mgmt_sample] 示例项目，了解 Batch Management .NET 的操作实践。 此控制台应用程序将显示 [BatchManagementClient][net_mgmt_client] 和 [ResourceManagementClient][resman_client] 的创建与使用方式。 此外，还演示了两个客户端所需的 Azure [Active Directory 身份验证库][aad_adal] (ADAL) 使用方式。
 
-若要成功运行该示例应用程序，你必须先使用 Azure 门户将它注册到 Azure AD。 按照[将应用程序与 Azure Active Directory 集成][aad_integrate]的[添加应用程序](../active-directory/active-directory-integrating-applications.md#adding-an-application)部分中的步骤操作，在自己帐户的默认目录中注册示例应用程序。 确保选择“本机客户端应用程序”作为应用程序类型，但可以指定任何有效的 URI（例如 `http://myaccountmanagementsample`）作为“重定向 URI”--不需要是真实的终结点。
+若要成功运行该示例应用程序，你必须先使用 Azure 门户将它注册到 Azure AD。 按照[将应用程序与 Azure Active Directory 集成][aad_integrate]的[添加应用程序](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application)部分中的步骤操作，在自己帐户的默认目录中注册示例应用程序。 确保选择“本机客户端应用程序”作为应用程序类型，但可以指定任何有效的 URI（例如 `http://myaccountmanagementsample`）作为“重定向 URI”--不需要是真实的终结点。
 
 添加应用程序以后，请在门户的应用程序设置中将“以组织形式访问 Azure 服务管理”权限委派给 *Microsoft Azure 服务管理 API* 应用程序：
 
@@ -228,6 +228,6 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

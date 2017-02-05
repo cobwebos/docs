@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 09/20/2016
 ms.author: denlee
 translationtype: Human Translation
-ms.sourcegitcommit: f480b8155c7bee797f1fed0f80200eec500e95a2
-ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 35eb6b7c8a2aa3ddfb1723eebdb92dc47a49f65a
 
 
 ---
 # <a name="a-namedocumentdb-hdinsightarun-a-hadoop-job-using-documentdb-and-hdinsight"></a><a name="DocumentDB-HDInsight"></a>使用 DocumentDB 和 HDInsight 运行 Hadoop 作业
-展示如何在带有 DocumentDB 的 Hadoop 连接器的 Azure HDInsight 上运行 [Apache Hive][apache-hive]、[Apache Pig][apache-pig] 和 [Apache Hadoop][apache-hadoop] MapReduce 作业的教程。 DocumentDB 的 Hadoop 连接器使 DocumentDB 可以充当 Hive、Pig 以及 MapReduce 作业的源和接收器。 本教程将 DocumentDB 用作 Hadoop 作业的数据源和目的地。
+本教程演示如何在带有 DocumentDB 的 Hadoop 连接器的 Azure HDInsight 上运行 [Apache Hive][apache-hive]、[Apache Pig][apache-pig] 和 [Apache Hadoop][apache-hadoop] MapReduce 作业。 DocumentDB 的 Hadoop 连接器使 DocumentDB 可以充当 Hive、Pig 以及 MapReduce 作业的源和接收器。 本教程将 DocumentDB 用作 Hadoop 作业的数据源和目的地。
 
 完成本教程后，你将能够回答以下问题：
 
@@ -37,11 +37,11 @@ ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
 然后，返回到本文，在这里你将获得有关如何对 DocumentDB 数据运行分析作业的完整详细信息。
 
 > [!TIP]
-> 本教程假定你之前有使用 Apache Hadoop、Hive 和/或 Pig的经验。 如果不熟悉 Apache Hadoop、Hive 和 Pig，建议访问 [Apache Hadoop 文档][apache-hadoop-doc]。 本教程还假定你具有使用 DocumentDB 的经验，并且拥有一个 DocumentDB 帐户。 如果你不熟悉 DocumentDB 或没有 DocumentDB 帐户，请查阅[入门][getting-started]页。
+> 本教程假定你之前有使用 Apache Hadoop、Hive 和/或 Pig的经验。 如果你不熟悉 Apache Hadoop、Hive 和 Pig，建议访问 [Apache Hadoop 文档][apache-hadoop-doc]。 本教程还假定你具有使用 DocumentDB 的经验，并且拥有一个 DocumentDB 帐户。 如果你不熟悉 DocumentDB 或没有 DocumentDB 帐户，请查看[入门][getting-started]页。
 >
 >
 
-没有时间完成教程，只想获得有关 Hive、Pig 和 MapReduce 的完整示例 PowerShell 脚本？ 没问题，请访问[此处][documentdb-hdinsight-samples]。 此下载还包含对于这些示例的 hql、pig 及 java 文件。
+没有时间完成教程，只想获得有关 Hive、Pig 和 MapReduce 的完整示例 PowerShell 脚本？ 没问题，可在[此处][documentdb-hdinsight-samples]获得。 此下载还包含对于这些示例的 hql、pig 及 java 文件。
 
 ## <a name="a-namenewestversionanewest-version"></a><a name="NewestVersion"></a>最新版本
 <table border='1'>
@@ -62,11 +62,11 @@ ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
 ## <a name="a-nameprerequisitesaprerequisites"></a><a name="Prerequisites"></a>先决条件
 在按照本教程中的说明操作之前，请确保已有下列各项：
 
-* DocumentDB 帐户、数据库，以及内部已有文档的集合。 有关详细信息，请参阅 [DocumentDB 入门][getting-started]。 使用 [DocumentDB 导入工具][documentdb-import-data]将示例数据导入到你的 DocumentDB 帐户。
-* 吞吐量。 从 HDInsight 进行的读取和写入操作将计入你为集合分配的请求单位。 有关详细信息，请参阅[预配的吞吐量、请求单位和数据库操作][documentdb-manage-throughput]。
-* 在每个输出集合中用于其他存储的步骤的容量。 存储过程用于传输生成的文档。 有关详细信息，请参阅[集合和预配的吞吐量][documentdb-manage-document-storage]。
-* 从 Hive、Pig 或 MapReduce 作业生成的文档的容量。 有关详细信息，请参阅[管理 DocumentDB 容量和性能][documentdb-manage-collections]。
-* [可选]其他集合的容量。 有关详细信息，请参阅[预配的文档存储和索引开销][documentdb-manage-document-storage]。
+* DocumentDB 帐户、数据库，以及内部已有文档的集合。 有关详细信息，请参阅 [DocumentDB 入门][getting-started]。 使用 [DocumentDB 导入工具][documentdb-import-data]将示例数据导入到 DocumentDB 帐户中。
+* 吞吐量。 从 HDInsight 进行的读取和写入操作将计入你为集合分配的请求单位。
+* 在每个输出集合中用于其他存储的步骤的容量。 存储过程用于传输生成的文档。
+* 从 Hive、Pig 或 MapReduce 作业生成的文档的容量。
+* [可选]其他集合的容量。
 
 > [!WARNING]
 > 为了避免在任何作业期间创建一个新集合，你可以将结果打印到 stdout，将输出保存到你的 WASB 容器，或指定一个现有集合。 指定现有集合时，将在集合内创建新文档，如果 ID 中有冲突，只会影响现有文档。 **连接器将自动覆盖出现 ID 冲突的现有文档**。 通过将 upsert 选项设置为 false 可以关闭此功能。 如果 upsert 为 false，并且发生冲突，则 Hadoop 作业将失败；并报告 ID 冲突错误。
@@ -74,7 +74,7 @@ ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
 >
 
 ## <a name="a-nameprovisionhdinsightastep-1-create-a-new-hdinsight-cluster"></a><a name="ProvisionHDInsight"></a>步骤 1：创建新的 HDInsight 群集
-本教程使用 Azure 门户中的脚本操作自定义 HDInsight 群集。 在本教程中，我们将使用 Azure 门户来创建 HDInsight 群集。 有关如何使用 PowerShell cmdlet 或 HDInsight .NET SDK 的说明，请参阅[使用脚本操作自定义 HDInsight 群集][hdinsight-custom-provision]文章。
+本教程使用 Azure 门户中的脚本操作自定义 HDInsight 群集。 在本教程中，我们将使用 Azure 门户来创建 HDInsight 群集。 有关如何使用 PowerShell cmdlet 或 HDInsight .NET SDK 的说明，请查看[使用脚本操作自定义 HDInsight 群集][hdinsight-custom-provision]一文。
 
 1. 登录到 [Azure 门户][azure-portal]。
 2. 单击左侧导航栏顶部的“+ 新建”，在“新建”边栏选项卡的顶部搜索栏中，搜索“HDInsight”。
@@ -143,7 +143,7 @@ ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
 1. 安装 Azure PowerShell 中的说明进行操作。 可在[此处][powershell-install-configure]找到说明。
 
    > [!NOTE]
-   > 或者，只需了解 Hive 查询，可以使用 HDInsight 的联机 Hive 编辑器。 若要这样做，请登录到 [Azure 门户][azure-portal]，单击左侧窗格中的“HDInsight”以查看 HDInsight 群集的列表。 单击要对其运行 Hive 查询的群集，然后单击“查询控制台”。
+   > 或者，只需了解 Hive 查询，可以使用 HDInsight 的联机 Hive 编辑器。 若要这样做，请登录到 [Azure 门户][azure-portal]，单击左侧窗格中的“HDInsight”查看 HDInsight 群集的列表。 单击要对其运行 Hive 查询的群集，然后单击“查询控制台”。
    >
    >
 2. 打开 Azure PowerShell 集成脚本环境：
@@ -392,7 +392,7 @@ ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
 ## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>后续步骤
 祝贺你！ 你只需使用 Azure DocumentDB 和 HDInsight 运行你的第一个 Hive、Pig 和 MapReduce 作业。
 
-我们的 Hadoop Connector 是开源的。 如果你感兴趣，可以在 [GitHub][documentdb-github] 上参与。
+我们的 Hadoop Connector 是开源的。 如果你有兴趣，欢迎在 [GitHub][documentdb-github] 上供稿。
 
 若要了解更多信息，请参阅下列文章：
 
@@ -416,9 +416,6 @@ ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
 [documentdb-hdinsight-samples]: http://portalcontent.blob.core.windows.net/samples/documentdb-hdinsight-samples.zip
 [documentdb-github]: https://github.com/Azure/azure-documentdb-hadoop
 [documentdb-java-application]: documentdb-java-application.md
-[documentdb-manage-collections]: documentdb-manage.md#database-collections
-[documentdb-manage-document-storage]: documentdb-manage.md#provisioned-document-storage-and-index-overhead
-[documentdb-manage-throughput]: documentdb-manage.md#request-units-and-database-operations
 [documentdb-import-data]: documentdb-import-data.md
 
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md
@@ -435,10 +432,10 @@ ms.openlocfilehash: 43620fed5713f76fcc6e1cebb11c97624eada676
 [image-mapreduce-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/mapreducequeryresults.PNG
 [image-pig-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/pigqueryresults.PNG
 
-[powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2016
+ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 2f0dc39815e9fbed86e22109cdf7b289af1f836e
+ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
+ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
 
 
 ---
@@ -72,7 +72,7 @@ ms.openlocfilehash: 2f0dc39815e9fbed86e22109cdf7b289af1f836e
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-audit-log"></a>在哪里可以找到审核日志中的属性定义？
 请参阅：
 
-* [使用 Resource Manager 执行审核操作](../resource-group-audit.md)
+* [使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)
 * [在 Azure Monitor REST API 中列出订阅的管理事件](https://msdn.microsoft.com/library/azure/dn931934.aspx)
 
 ## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>哪里可以找到 Azure 安全中心警报的详细信息？
@@ -104,13 +104,13 @@ ms.openlocfilehash: 2f0dc39815e9fbed86e22109cdf7b289af1f836e
 
 完成更改后，检查存储帐户，以确保收集正确的事件。
 
-如果有关于 Azure 日志集成方面的问题，请发送电子邮件至 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+如果存在关于 Azure 日志集成的问题，请发送电子邮件至 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

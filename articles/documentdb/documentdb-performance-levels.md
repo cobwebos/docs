@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2016
+ms.date: 12/13/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: c2bdd3adc9f22005dbaca971472bdc65fead1a76
-ms.openlocfilehash: a6e415f6b8f2203209c1cfe3de37193fe18ce2b4
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 237a92713ee8dca72a09550c47519189f2fd23cc
 
 
 ---
@@ -37,7 +37,7 @@ DocumentDB 支持**用户定义**的性能级别和**预定义**的性能级别�
 
 |性能类型|详细信息|吞吐量|存储|版本|API|
 |----------------|-------|----------|-------|-------|----|
-|用户定义的性能|用户设置以 100 RU/s 为单位的吞吐量|不受限制。 <br><br>默认为每秒 400 - 250,000 请求单位（应请求可更高）|不受限制。 <br><br>默认为 250 GB（应请求可更高）|V2|API 2015-12-16 及更新版本|
+|用户定义的性能|用户以 100 RU/s 为单位设置吞吐量|不受限制|不受限制|V2|API 2015-12-16 及更新版本|
 |预定义性能|10 GB 保留存储。<br><br>S1 = 250 RU/s<br>S2 = 1000 RU/s<br>S3 = 2500 RU/s|2500 RU/s|10 GB|V1|任意|
 
 吞吐量是按集合所保留的，且仅可用于该集合。 吞吐量按[请求单位 (RUs)](documentdb-request-units.md)来衡量，它将识别执行各种 DocumentDB 数据库操作所需的资源量。
@@ -169,7 +169,6 @@ DocumentDB 支持**用户定义**的性能级别和**预定义**的性能级别�
 若要了解更多有关 Azure DocumentDB 的定价和管理数据的信息，请浏览以下资源：
 
 * [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)
-* [管理 DocumentDB 容量](documentdb-manage.md)
 * [为 DocumentDB 中的数据建模](documentdb-modeling-data.md)
 * [对 DocumentDB 中的数据进行分区](documentdb-partition-data.md)
 * [请求单位](http://go.microsoft.com/fwlink/?LinkId=735027)
@@ -183,6 +182,6 @@ DocumentDB 支持**用户定义**的性能级别和**预定义**的性能级别�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
