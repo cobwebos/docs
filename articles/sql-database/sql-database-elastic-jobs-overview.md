@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 7e24e362811d1921523ca45037ad0ef1f5e06de9
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 0d95f9f0e0c5b69aed6ba74a2488e46540589c00
 
 
 ---
@@ -74,7 +74,7 @@ ms.openlocfilehash: 7e24e362811d1921523ca45037ad0ef1f5e06de9
 ## <a name="elastic-database-jobs-end-to-end"></a>弹性数据库作业：端到端
 1. 安装**弹性数据库作业**组件。 有关详细信息，请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)。 如果安装失败，请参阅[如何卸载](sql-database-elastic-jobs-uninstall.md)。
 2. 使用 PowerShell API 可以访问更多功能，例如创建自定义数据库集合、添加计划和/或收集结果集。 使用门户可方便安装并将创建/监视限制为针对“弹性池”执行的作业。 
-3. 针对作业执行创建加密的凭据，并将[用户（或角色）添加到组中的每个数据库](sql-database-security.md)。
+3. 针对作业执行创建加密的凭据，并将[用户（或角色）添加到组中的每个数据库](sql-database-security-overview.md)。
 4. 创建可针对组中每个数据库运行的幂等 T-SQL 脚本。 
 5. 使用 Azure 门户遵循以下步骤来创建作业：[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)。 
 6. 或使用 PowerShell 脚本：[使用 PowerShell 创建和管理 SQL 数据库弹性数据库作业（预览版）](sql-database-elastic-jobs-powershell.md)。
@@ -135,7 +135,7 @@ ms.openlocfilehash: 7e24e362811d1921523ca45037ad0ef1f5e06de9
    在作业执行期间，可以随时使用 PowerShell API 来查看作业执行的当前状态。 PowerShell API 返回的所有时间都以 UTC 表示。 如果需要，你可以启动取消请求来停止作业。 
 
 ## <a name="next-steps"></a>后续步骤
-[安装组件](sql-database-elastic-jobs-service-installation.md)，然后[创建一个登录名并将其添加到数据库组的每个数据库中](sql-database-security.md)。 若要进一步了解作业创建和管理过程，请参阅[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)。 另请参阅[弹性数据库作业入门](sql-database-elastic-jobs-getting-started.md)。
+[安装组件](sql-database-elastic-jobs-service-installation.md)，然后[创建一个登录名并将其添加到数据库组的每个数据库中](sql-database-manage-logins.md)。 若要进一步了解作业创建和管理过程，请参阅[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)。 另请参阅[弹性数据库作业入门](sql-database-elastic-jobs-getting-started.md)。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -147,6 +147,6 @@ ms.openlocfilehash: 7e24e362811d1921523ca45037ad0ef1f5e06de9
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 
