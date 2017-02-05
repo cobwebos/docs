@@ -1,6 +1,6 @@
 ---
-title: "使用 IoT 中心发送“云到设备”消息 | Microsoft 文档"
-description: "遵照本教程了解如何将 Azure IoT 中心与 Java 配合使用，以发送“云到设备”消息。"
+title: "使用 Azure IoT 中心发送云到设备消息 (Node) | Microsoft Docs"
+description: "如何使用 Azure IoT SDK for Node.js 将云到设备的消息从 Azure IoT 中心发送到设备。 修改模拟设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。"
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 09/23/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: fdd0a695675aae56d87bb62a3299bbadf1b1676f
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 05ccc7f419a420cb80f9fd71d5c59912468eb8f8
 
 
 ---
-# <a name="tutorial-how-to-send-cloud-to-device-messages-with-iot-hub-and-nodejs"></a>教程：如何使用 IoT 中心和 Node.js 发送“云到设备”消息
+# <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>使用 IoT 中心发送云到设备的消息 (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>介绍
-Azure IoT 中心是一项完全托管的服务，有助于在数百万个设备和一个应用程序后端之间实现安全可靠的双向通信。 [IoT 中心入门]教程演示了如何创建 IoT 中心、在其中预配设备标识，以及编写用来发送“设备到云”消息的模拟设备应用。
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [IoT 中心入门]教程演示了如何创建 IoT 中心、在其中预配设备标识，以及编写用来发送“设备到云”消息的模拟设备应用。
 
 本教程是在 [IoT 中心入门]的基础上制作的。 其中了说明了如何：
 
-* 通过 IoT 中心从应用程序云后端将云到设备的消息发送到单个设备。
+* 通过 IoT 中心，将云到设备的消息从解决方案后端发送到单个设备。
 * 在设备上接收云到设备的消息。
-* 从你的应用程序云后端，请求对从 IoT 中心发送到设备的消息进行传递确认（*反馈*）。
+* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈）。
 
-可以在 [IoT 中心开发人员指南][IoT Hub Developer Guide - C2D]中找到有关“云到设备”消息的详细信息。
+可以在 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]中找到有关云到设备消息的详细信息。
 
-在本教程结束时，你将运行两个 Node.js 控制台应用程序：
+在本教程结束时，会运行两个 Node.js 控制台应用：
 
 * **SimulatedDevice**，[IoT 中心入门]中创建的应用程序的修改版本，它连接到 IoT 中心并接收云到设备的消息。
 * **SendCloudToDeviceMessage**，它将云到设备的消息通过 IoT 中心发送到模拟设备应用，然后接收其传递确认。
@@ -78,12 +78,12 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万个设备�
     ```
    
    > [!NOTE]
-   > 如果使用 HTTP（而不使用 MQTT 或 AMQP）作为传输，则 **DeviceClient** 实例将不太频繁地（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTP 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub Developer Guide - C2D]。
+   > 如果使用 HTTP（而不使用 MQTT 或 AMQP）作为传输，则 **DeviceClient** 实例将不太频繁地（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTP 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]。
    > 
    > 
 
-## <a name="send-a-cloud-to-device-message"></a>发送“云到设备”消息
-在本部分中，创建一个 Node.js 控制台应用程序，它将云到设备的消息发送到模拟设备应用程序。 你需要使用 [IoT 中心入门]教程中添加的设备的设备 ID。 还需要可在 [Azure 门户]中找到的你的 IoT 中心的连接字符串。
+## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
+在本部分中，创建一个 Node.js 控制台应用程序，它将云到设备的消息发送到模拟设备应用程序。 需要使用 [IoT 中心入门]教程中添加的设备的设备 ID。 还需要中心的 IoT 中心连接字符串（位于 [Azure 门户]）。
 
 1. 创建名为 **sendcloudtodevicemessage** 的空文件夹。 在命令提示符处，使用以下命令在 **sendcloudtodevicemessage** 文件夹中创建一个 package.json 文件。 接受所有默认值：
    
@@ -104,7 +104,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万个设备�
     var Client = require('azure-iothub').Client;
     var Message = require('azure-iot-common').Message;
     ```
-5. 将以下代码添加到 **SendCloudToDeviceMessage.js** 文件。 将连接字符串占位符值替换为在 [IoT 中心入门]教程中为 IoT 中心创建的连接字符串。 将目标设备占位符替换为在 [IoT 中心入门]教程中所添加的设备 id：
+5. 将以下代码添加到 **SendCloudToDeviceMessage.js** 文件。 将 IoT 中心连接字符串占位符值替换为在 [IoT 中心入门]教程中创建的中心的 IoT 中心连接字符串。 将目标设备占位符替换为在 [IoT 中心入门]教程中添加的设备的设备 ID：
    
     ```
     var connectionString = '{iot hub connection string}';
@@ -154,14 +154,14 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万个设备�
 ## <a name="run-the-applications"></a>运行应用程序
 现在，你已准备就绪，可以运行应用程序了。
 
-1. 在 **simulateddevice** 文件夹中的命令提示符下，运行以下命令以开始将遥测发送到 IoT 中心，并侦听云到设备的消息：
+1. 在 **simulateddevice** 文件夹中的命令提示符下，运行以下命令将遥测发送到 IoT 中心，并侦听云到设备的消息：
    
     ```
     node SimulatedDevice.js 
     ```
    
     ![运行模拟设备应用][img-simulated-device]
-2. 在 **sendcloudtodevicemessage** 文件夹中的命令提示符下，运行以下命令以发送“云到设备”消息并等待确认反馈：
+2. 在 **sendcloudtodevicemessage** 文件夹中的命令提示符下，运行以下命令发送云到设备的消息并等待确认反馈：
    
     ```
     node SendCloudToDeviceMessage.js 
@@ -188,7 +188,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万个设备�
 <!-- Links -->
 
 [IoT 中心入门]: iot-hub-node-node-getstarted.md
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide-messaging.md
+[IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT 中心开发人员指南]: iot-hub-devguide.md
 [Azure IoT 开发人员中心]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -199,6 +199,6 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万个设备�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

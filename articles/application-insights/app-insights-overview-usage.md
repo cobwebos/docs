@@ -1,5 +1,5 @@
 ---
-title: "Application Insights 使用分析"
+title: "使用 Azure Application Insights 进行使用情况分析 | Microsoft docs"
 description: "Application Insights 使用分析概述"
 services: application-insights
 documentationcenter: 
@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/08/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff52467bb9634de2c58a7e87323abe4014cc4a29
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: 94b619cfce15f93bc50f10266c6dc21da78e3481
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: ff52467bb9634de2c58a7e87323abe4014cc4a29
 Application Insights 适用于两个独立应用（位于 iOS、Android 和 Windows 上）以及 Web 应用（托管在 .NET 或 J2EE 上）。 
 
 ## <a name="add-application-insights-to-your-project"></a>将 Application Insights 添加到项目
-开始前，使用 [Microsoft Azure](https://azure.com) 获取免费帐户。 （试用期到期后，可以继续使用服务免费层。）
+若要开始，使用 [Microsoft Azure](https://azure.com) 获取帐户。 （只需为所使用的部分付费，特定量的试验性使用不收费。）
 
 在 [Azure 门户](https://portal.azure.com)中，创建 Application Insights 资源。 此处将看到有关应用的使用情况和性能数据。
 
@@ -201,7 +201,7 @@ Web 会话处于非活动状态 30 分钟后将计入。 当应用暂停时间�
 
 ![在“搜索”字段中键入一个值](./media/app-insights-overview-usage/12-searchEvents.png)
 
-## <a name="a-b-testing"></a>A | B 测试
+## <a name="a--b-testing"></a>A | B 测试
 如果不知道哪个功能变体将更有成效，可同时发布这两项，使不同用户都能访问它们。 评估每个项的成效，然后移至统一的版本。
 
 对于此技术，可将不同标记附加到应用的每个版本所发送的所有遥测。 为此，可以在活动的 TelemetryContext 中定义属性。 这些默认属性将添加到应用程序发送的每个遥测消息（并非仅自定义消息），不过标准遥测也是这样。
@@ -271,6 +271,6 @@ Web 会话处于非活动状态 30 分钟后将计入。 当应用暂停时间�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

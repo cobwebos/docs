@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 10/24/2016
 ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 61985bf2e112fe7b0a46ece07fd56eb14ccc3d45
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d06ec1c7a643c92fd11b532abc26fb1597d969f5
 
 
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>azureiotsuite.com 站点权限
 ## <a name="what-happens-when-you-sign-in"></a>登录时发生的情况
-当你在 [azureiotsuite.com][lnk-azureiotsuite] 上首次登录时，站点会基于当前所选 Azure Active Directory (AAD) 租户和 Azure 订阅确定你拥有的权限级别。
+在 [azureiotsuite.com][lnk-azureiotsuite] 上首次登录时，站点会基于当前所选 Azure Active Directory (AAD) 租户和 Azure 订阅来确定你拥有的权限级别。
 
 1. 站点首先从 Azure 查明你所属的 AAD 租户以便已登录用户名旁显示的租户列表。 当前，站点一次只能获取一个租户的用户令牌。 因此，当你使用右上角的下拉列表切换到不同租户时，站点会使你重新登录到该租户，以获取该租户的令牌。
 2. 接下来，站点从 Azure 查明你所具有的与所选租户关联的订阅。 创建新的预配置解决方案时，你会看到可用订阅。
@@ -34,11 +34,11 @@ ms.openlocfilehash: 61985bf2e112fe7b0a46ece07fd56eb14ccc3d45
 ## <a name="aad-roles"></a>AAD 角色
 AAD 角色可控制设置预配置解决方案以及在预配置解决方案中管理用户的能力。
 
-可以在[在 Azure AD 中分配管理员角色][lnk-aad-admin]中找到有关 AAD 中的管理员角色的详细信息，但本文主要侧重于预配置解决方案使用的**全局管理员**和**域用户/成员**角色。
+可以在[在 Azure AD 中分配管理员角色][lnk-aad-admin]中找到有关 AAD 中的管理员角色的详细信息，但本文主要侧重于预配置解决方案使用的“全局管理员”和“域用户/成员”角色。
 
 **全局管理员：**对于每个 AAD 租户，可以存在多个全局管理员。 你在创建某个 AAD 租户时，默认情况下会成为该租户的全局管理员。 全局管理员可以预配已预配置的解决方案，以及为 AAD 租户内的应用程序分配 **ADMINISTRATOR** 角色。 但是，如果相同 AAD 租户中的其他用户创建应用程序，则向全局管理员授予的默认角色是 **IMPLICIT READ ONLY**。 全局管理员可以使用 [Azure 经典门户][lnk-classic-portal]为应用程序分配角色。
 
-**域用户/成员：**对于每个 AAD 租户，可以存在多个域用户/成员。 域用户可以通过 [azureiotsuite.com][lnk-azureiotsuite] 站点预配已预配置的解决方案。 对于他们预配的应用程序，向他们授予的默认角色是 **ADMINISTRATOR**。 他们可以使用 [azure-iot-remote-monitoring][lnk-rm-github-repo] 或 [azure-iot-predictive-maintenance][lnk-pm-github-repo] 存储库中的 build.cmd 脚本创建应用程序，但是向他们授予的默认角色是 **IMPLICIT READONLY**，因为他们没有分配角色的权限。 如果 AAD 租户中的其他用户创建应用程序，则默认情况下对于该应用程序，会向他们分配 **IMPLICIT READONLY** 角色。 他们无法为应用程序分配角色；因此无法为应用程序添加用户或用户的角色（即使是他们设置的应用程序）。
+**域用户/成员：**对于每个 AAD 租户，可以存在多个域用户/成员。 域用户可以通过 [azureiotsuite.com][lnk-azureiotsuite] 站点设置预配置解决方案。 对于他们预配的应用程序，向他们授予的默认角色是 **ADMINISTRATOR**。 他们可以使用 [azure-iot-remote-monitoring][lnk-rm-github-repo] 或 [azure-iot-predictive-maintenance][lnk-pm-github-repo] 存储库中的 build.cmd 脚本创建应用程序，但是向他们授予的默认角色是 **IMPLICIT READONLY**，因为他们没有分配角色的权限。 如果 AAD 租户中的其他用户创建应用程序，则默认情况下对于该应用程序，会向他们分配 **IMPLICIT READONLY** 角色。 他们无法为应用程序分配角色；因此无法为应用程序添加用户或用户的角色（即使是他们设置的应用程序）。
 
 **来宾用户/来宾：**对于每个 AAD 租户，可以存在多个来宾用户/来宾。 来宾用户在 AAD 租户中拥有有限的权利集。 因此，来宾用户无法在 AAD 租户中设置预配置解决方案。
 
@@ -59,7 +59,7 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AD 租户的能力。
 
 * **ADMINISTRATOR：**拥有添加、管理和删除设备的完全控制权限
 * **READ ONLY：**可以查看设备
-* **IMPLICIT READ ONLY：**这与只读相同，但是会授予给 AAD 租户的所有用户。 这样做是为了在开发过程中方便操作。 可以通过修改 [RolePermissions.cs][lnk-resource-cs] 源文件删除此角色。
+* **IMPLICIT READ ONLY：**这与只读相同，但是会授予给 AAD 租户的所有用户。 这样做是为了在开发过程中方便操作。 可以通过修改 [RolePermissions.cs][lnk-resource-cs] 源文件来删除此角色。
 
 ### <a name="changing-application-roles-for-a-user"></a>更改用户的应用程序角色
 可以使用下面的过程在 Active Directory 中使用户成为预配置解决方案的管理员。
@@ -131,6 +131,6 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AD 租户的能力。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

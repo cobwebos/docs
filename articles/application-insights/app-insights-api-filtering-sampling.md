@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9ade7b48b16d79c23355a8dbd46e9367abe4abd6
-ms.openlocfilehash: fc1ccf194b2733a741272678969abaa747c7a07d
+ms.sourcegitcommit: 4813610bc938c1a2fb6581bc9d8352b519a2d8ef
+ms.openlocfilehash: ea5285a7997beed926e35649362cee7de53e1efe
 
 
 ---
@@ -187,7 +187,7 @@ public void Process(ITelemetry item)
 {
     var request = item as DependencyTelemetry;
 
-    if (request != null && request.Duration.Milliseconds < 100)
+    if (request != null && request.Duration.TotalMilliseconds < 100)
     {
         return;
     }
@@ -346,27 +346,27 @@ public void Process(ITelemetry item)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
-* [搜索事件和日志][诊断]
+* [搜索事件和日志][diagnostic]
 * [采样](app-insights-sampling.md)
-* [故障排除][问题与解答]
+* [故障排除][qna]
 
 <!--Link references-->
 
-[客户端]: app-insights-javascript.md
-[配置]: app-insights-configuration-with-applicationinsights-config.md
-[创建]: app-insights-create-new-resource.md
-[数据]: app-insights-data-retention-privacy.md
-[诊断]: app-insights-diagnostic-search.md
-[异常]: app-insights-asp-net-exceptions.md
+[client]: app-insights-javascript.md
+[config]: app-insights-configuration-with-applicationinsights-config.md
+[create]: app-insights-create-new-resource.md
+[data]: app-insights-data-retention-privacy.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-asp-net-exceptions.md
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
-[指标]: app-insights-metrics-explorer.md
-[问题与解答]: app-insights-troubleshoot-faq.md
-[跟踪]: app-insights-search-diagnostic-logs.md
-[Windows]: app-insights-windows-get-started.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
+[trace]: app-insights-search-diagnostic-logs.md
+[windows]: app-insights-windows-get-started.md
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

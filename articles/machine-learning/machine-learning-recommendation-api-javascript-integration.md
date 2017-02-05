@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/08/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 53a57ed45276e793dab16a3b62dd1477339e5331
+ms.sourcegitcommit: dc07007eec860e0ad7342a4926c6797341719c5b
+ms.openlocfilehash: 20791d5729a65497b5f76f929bf331906ac65818
 
 
 ---
@@ -76,10 +76,10 @@ ms.openlocfilehash: 53a57ed45276e793dab16a3b62dd1477339e5331
          if (typeof AzureMLRecommendationsEvent=="undefined") {         
                      AzureMLRecommendationsEvent = []; } AzureMLRecommendationsEvent.push({ event: "click", item: "18321116" });   </script>
 
-### <a name="31-limitations-and-browser-support"></a>3.1.    限制和浏览器支持
+### <a name="31----limitations-and-browser-support"></a>3.1.    限制和浏览器支持
 这是一个参考实现，按原样提供。 它应支持所有主流浏览器。
 
-### <a name="32-type-of-events"></a>3.2.    事件类型
+### <a name="32----type-of-events"></a>3.2.    事件类型
 该库支持 5 种类型的事件：单击、建议单击、添加到购物车、从购物车中删除和购买。 还有用于设置名为登录的用户上下文的其他事件。
 
 #### <a name="321-click-event"></a>3.2.1. 单击事件
@@ -235,6 +235,6 @@ ms.openlocfilehash: 53a57ed45276e793dab16a3b62dd1477339e5331
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

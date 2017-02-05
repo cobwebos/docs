@@ -11,11 +11,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 11/29/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5975bd5b2a2e7fe8799155ab47d96c3ecd0093ee
+ms.sourcegitcommit: d5800e53349c3f2f6146a7d62381a531537dba90
+ms.openlocfilehash: 990c679bc9937b3a684a7933fb7b8656eb798b69
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 5975bd5b2a2e7fe8799155ab47d96c3ecd0093ee
 ## <a name="find-azure-search-in-the-azure-portal"></a>在 Azure 门户中找到 Azure 搜索
 1. 转到 [Azure 门户](https://portal.azure.com/)并登录。
 2. 单击左上角的加号（“+”）。
-3. 选择“数据 + 存储”。
+3. 选择“Web + 移动”。
 4. 选择“Azure 搜索”。
 
 ![](./media/search-create-service-portal/find-search.png)
@@ -67,8 +67,7 @@ ms.openlocfilehash: 5975bd5b2a2e7fe8799155ab47d96c3ecd0093ee
 1. 转到 Azure 门户中的 Azure 搜索服务的管理边栏选项卡。
 2. 在“设置”边栏选项卡中，选择“扩展”。
 3. 通过添加副本或分区，扩展你的服务。
-   * 不能将你的服务扩展到超过 36 个搜索单位。 搜索单位总数通过你的副本和分区计算得出（副本 * 分区 = 总搜索单位）。
-   * 如果你已选择基本层，可以仅扩展到 3 个副本。 基本服务将绑定到单个分区。
+   * 每个服务层对于单个服务中允许的搜索单位总数都有不同的[限制](search-limits-quotas-capacity.md)（副本 * 分区 = 搜索单位总数）。
 
 ![](./media/search-create-service-portal/scale-service.png)
 
@@ -80,6 +79,6 @@ ms.openlocfilehash: 5975bd5b2a2e7fe8799155ab47d96c3ecd0093ee
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

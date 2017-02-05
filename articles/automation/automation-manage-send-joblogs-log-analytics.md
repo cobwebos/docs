@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: 6a58b75b1bc198e26e7ddc776a668cb2a4bf9553
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 22a8a7541da572445ab0d6a822b56bd9a03339b7
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: 6a58b75b1bc198e26e7ddc776a668cb2a4bf9553
    > 该存储帐户*必须*位于自动化帐户所在的同一个区域中。
    >
    >
-3. 装有 Operational Insights cmdlet 1.0.8 或更高版本的 Azure PowerShell。 有关此版本及其安装方法的信息，请参阅 [How to install and configure Azure PowerShell](../powershell-install-configure.md)（如何安装和配置 Azure PowerShell）。
+3. 装有 Operational Insights cmdlet 1.0.8 或更高版本的 Azure PowerShell。 有关此版本及其安装方法的信息，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
 4. Azure Diagnostic and Log Analytics PowerShell。  有关此版本及其安装方法的更多信息，请参阅 [Azure Diagnostic and Log Analytics](https://www.powershellgallery.com/packages/AzureDiagnosticsAndLogAnalytics/0.1)。  
 5. 从 [PowerShell 库](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/1.0/DisplayScript)下载 PowerShell 脚本 **Enable-AzureDiagnostics.ps1**。 此脚本将配置以下各项：
    * 一个存储帐户，用于保存你指定的自动化帐户的 Runbook 作业状态和流数据。
@@ -156,6 +156,6 @@ ms.openlocfilehash: 6a58b75b1bc198e26e7ddc776a668cb2a4bf9553
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

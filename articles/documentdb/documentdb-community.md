@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/21/2016
+ms.date: 11/30/2016
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 3ab93acf3088b6c93c8ec231dc606f50de108fea
-ms.openlocfilehash: 5620a19c64913e0754c5433a8cc3f21ef01f1fb2
+ms.sourcegitcommit: bbf3b7b1d7e28bfd6bf0d6ca506963eff755e7a2
+ms.openlocfilehash: 615324a8ae0cd50e68286b467dfefce91628fb35
 
 
 ---
@@ -69,7 +69,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 * [**A Journey to Social**](https://medium.com/@Ealsur/a-journey-to-social-c47636bf25c9#.an669sx41)（社交之旅） - 作者：Matías Quaranta 
 * [**Azure DocumentDB protocol support for MongoDB in Preview, my test with Sitecore**](https://alwaysupalwayson.blogspot.ca/2016/05/azure-documentdb-protocol-support-for.html)（Azure DocumentDB 的 MongoDB 协议支持预览版，采用 Sitecore 的测试） - 作者：Mathieu Benoit 
 * [**Going Social with DocumentDB**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/)（使用 DocumentDB 展开社交） - 作者：Matías Quaranta
-* [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/)（UWP、Azure App Service 和 DocumentDB Soup：一个照片分享应用） - 作者：Eric Langland
+* [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/)（UWP、Azure 应用服务和 DocumentDB Soup：一个照片分享应用） - 作者：Eric Langland
 * [**使用逻辑应用的新的或更改后的 DocumentDB 资源通知**](documentdb-change-notification.md) - 作者：Howard Edidin
 * [**Collecting logs in to Azure DocumentDB using fluent-plugin-documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/)（使用 fluent-plugin-documentdb 将日志收集到 Azure DocumentDB） - 作者：Yoichi Kawasaki
 * [**DocumentDB revisited Part 1/2 – The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/)（重新访问的 DocumentDB 第 1 部分（共 2 部分）- 理论） - 作者：Peter Mannerhult
@@ -159,7 +159,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 | 显示 | 主讲人 | 日期 | 剧集 |
 | --- | --- | --- | --- |
 | Azure Friday |Kirill Gavrylyuk |2016 年 10 月 31 日 |[What's new in Azure DocumentDB?](https://channel9.msdn.com/Shows/Azure-Friday/AzureFridayNewinDocumentDB)（Azure DocumentDB 中有哪些新功能？） |
-| Channel 9: Microsoft + Open Source |Jose Miguel Parrella |2016 年 4 月 14 日 |[From MEAN to DEAN in Azure with Bitnami, VM Scale Sets and DocumentDB](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB)（使用 Bitnami、VM 缩放集和 DocumentDB 在 Azure 中从 MEAN 到 DEAN） |
+| Channel 9: Microsoft + Open Source |Jose Miguel Parrella |2016 年 4 月 14 日 |[From MEAN to DEAN in Azure with Bitnami, VM Scale Sets and DocumentDB](https://channel9.msdn.com/Blogs/Open/From-MEAN-to-DEAN-in-Azure-with-Bitnami-VM-Scale-Sets-and-DocumentDB)（使用 Bitnami、VM 规模集和 DocumentDB 在 Azure 中从 MEAN 到 DEAN） |
 | Wired2WinWebinar |Sai Sankar Kunnathukuzhiyil |2016 年 3 月 9 日 |[Developing Solutions with Azure DocumentDB](https://www.youtube.com/watch?v=xKttEwXv_bs)（使用 Azure DocumentDB 开发解决方案） |
 | Integration User Group |Han Wong |2016 年 2 月 17 日 |[Analyze and visualize non-relational data with DocumentDB + Power BI](http://www.integrationusergroup.com/analyze-visualize-non-relational-data-documentdb-power-bi/)（使用 DocumentDB + Power BI 分析和可视化非相关数据） |
 | The Azure Podcast |Cale Teeter |2016 年 1 月 14 日 |[Episode 110: Using DocumentDB & Search](http://azpodcast.azurewebsites.net/post/Episode-110-Using-DocumentDB-Search)（剧集 110：使用 DocumentDB 和搜索） |
@@ -201,7 +201,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 ## <a name="contact-the-team"></a>与团队联系
 ![团队](./media/documentdb-community/documentdb-team.png)
 
-你需要技术协助吗？ 有任何疑问吗？ 想知道 NoSQL 是否适合你？ 可以[直接安排与 DocumentDB 工程团队进行 1 对 1 聊天](http://www.askdocdb.com/)。 还可以给我们发送[电子邮件](mailto:askdocdb@microsoft.com)或通过 tweet [@DocumentDB](https://twitter.com/DocumentDB) 与我们联系。 
+你需要技术协助吗？ 有任何疑问吗？ 想知道 NoSQL 是否适合你？ 可发送[电子邮件](mailto:askdocdb@microsoft.com)给我们，或在 [@DocumentDB](https://twitter.com/DocumentDB) 推文给我们，直接安排与 DocumentDB 工程团队进行 1 对 1 交谈。
 
 ## <a name="open-source-projects"></a>开放源代码项目
 这些项目由 Azure DocumentDB 团队与我们的开放源代码社区共同积极开发。
@@ -239,6 +239,6 @@ DocumentDB 奇才是社区领导者，他们是帮助其他人充分利用他们
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

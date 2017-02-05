@@ -1,6 +1,6 @@
 ---
 title: "为 Azure Data Lake Analytics 作业开发 U-SQL 用户定义的运算符 | Microsoft Docs"
-description: "了解如何开发可在 Data Lake 分析作业中使用和重复使用的用户定义运算符。 "
+description: "了解如何开发可在 Data Lake Analytics 作业中使用和重复使用的用户定义的运算符。 "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 88a00c2b0a5aac85bbcaef5b21b10f44121c7d38
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
 
 
 ---
 # <a name="develop-u-sql-user-defined-operators-for-azure-data-lake-analytics-jobs"></a>为 Azure Data Lake Analytics 作业开发 U-SQL 用户定义的运算符
-了解如何开发可在 Data Lake 分析作业中使用和重复使用的用户定义运算符。 你将开发一个转换国家/地区名称的自定义运算符。
+了解如何开发可在 Data Lake Analytics 作业中使用和重复使用的用户定义的运算符。 你将开发一个转换国家/地区名称的自定义运算符。
+
+有关为 U-SQL 开发通用程序集的说明，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)
 
 ## <a name="prerequisites"></a>先决条件
 * Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012
 * 用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本。  可以使用 Web 平台安装程序安装它。
-* Data Lake Analytics 帐户。  请参阅 [通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
+* Data Lake Analytics 帐户。  请参阅[通过 Azure 门户实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
 * 请通读 [Get started with Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL Studio 入门）教程。
 * 连接到 Azure。
 * 若要上传源数据，请参阅 [Get started with Azure Data Lake Analytics U-SQL Studio](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL Studio 入门）。 
@@ -126,8 +128,8 @@ ms.openlocfilehash: 88a00c2b0a5aac85bbcaef5b21b10f44121c7d38
         OUTPUT @drivers_CountryName
             TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
-7. 在“解决方案资源管理器”中，右键单击 “Script.usql”，然后单击“生成脚本”。
-8. 在“解决方案资源管理器”中，右键单击 “Script.usql”，然后单击“提交脚本”。
+7. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“生成脚本”。
+8. 在“解决方案资源管理器”中，右键单击“Script.usql”，然后单击“提交脚本”。
 9. 如果尚未连接到你的 Azure 订阅，将提示输入 Azure 帐户凭据。
 10. 单击“提交”。 完成提交后，“结果”窗口中会出现提交结果和作业链接。
 11. 必须单击“刷新”按钮才能看到最新的作业状态和刷新屏幕。
@@ -144,6 +146,6 @@ ms.openlocfilehash: 88a00c2b0a5aac85bbcaef5b21b10f44121c7d38
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

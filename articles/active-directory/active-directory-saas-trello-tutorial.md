@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5af430daa609f1838c640949f535f1d84cbe5f13
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 36cc4206b81312f8f4ff287cd36d9dba56611fde
 
 
 ---
@@ -61,19 +61,25 @@ ms.openlocfilehash: 5af430daa609f1838c640949f535f1d84cbe5f13
 1. 在 **Azure 经典门户**的左侧导航窗格上，单击“Active Directory”。 
    
     ![Active Directory][1]
+
 2. 从“目录”列表中，选择要为其启用目录集成的目录。
+
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
     ![应用程序][2]
+
 4. 在页面底部单击“添加”。
    
     ![应用程序][3]
+
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
     ![应用程序][4]
+
 6. 在搜索框中，键入“Trello”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/tutorial_trello_01.png)
+
 7. 在结果窗格中，选择“Trello”，然后单击“完成”以添加该应用程序。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/tutorial_trello_02.png)
@@ -102,6 +108,7 @@ Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序
 1. 在 Azure 经典门户的“Trello”应用程序集成页上，单击顶部菜单中的“属性”。
    
     ![配置单一登录][5]
+
 2. 在“SAML 令牌属性”对话框中，对于下表中显示的每个行，执行以下步骤：
 
     | 属性名称 | 属性值 |
@@ -123,24 +130,27 @@ Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序
 1. 在顶部菜单中，单击“快速启动”。
    
     ![配置单一登录][6]
+
 2. 在经典门户中的“Trello”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
     ![配置单一登录][7] 
+
 3. 在“你希望用户如何登录 Trello”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-trello-tutorial/tutorial_trello_06.png)
+
 4. 在“配置应用设置”对话框页上，如果要在“IDP 发起的模式”下配置应用程序，请执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-trello-tutorial/tutorial_trello_07.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
-> [!NOTE]
-> 应从 Trello 获取**\<企业\>**数据域。 如果没有数据域值，请通过 <mailto:support@trello.com> 联系 Trello 支持团队，以获取企业数据域。
-> 
-> 
+    > [!NOTE]
+    > 应从 Trello 获取**\<企业\>**数据域。 如果没有数据域值，请通过 <mailto:support@trello.com> 联系 Trello 支持团队，以获取企业数据域。
+    > 
+    > 
 
 1. 如果要在“配置应用设置”对话框页上以“SP 发起的模式”配置应用程序，则单击“显示高级设置(可选)”，然后输入“登录 URL”：
    
@@ -149,13 +159,16 @@ Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
    
     b. 单击“下一步”
+
 2. 在“配置 Trello 的单一登录”页上，单击“下载证书”，然后在计算机上保存该文件。
    
     ![配置单一登录](./media/active-directory-saas-trello-tutorial/tutorial_trello_09.png)
+
 3. 若要为应用程序配置 SSO，请转到 [Trello 企业 SSO 配置](https://trello.com/sso-configuration)页，向 Trello 团队发送登录 URL 并附加下载的证书。
 4. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
+
 5. 在“单一登录确认”页上，单击“完成”。  
    
     ![Azure AD 单一登录][11]
@@ -170,13 +183,17 @@ Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_09.png) 
+
 2. 在“目录”列表中，选择要启用目录集成的目录。
+
 3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_03.png) 
+
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_04.png) 
+
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_05.png) 
@@ -185,23 +202,26 @@ Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
+
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_06.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
-   b. 在“姓氏”文本框中，键入“Simon”。
+    b. 在“姓氏”文本框中，键入“Simon”。
    
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
+    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
+    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_07.png) 
+
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-trello-tutorial/create_aaduser_08.png) 
@@ -223,12 +243,15 @@ Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序
 1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
     ![分配用户][201] 
+
 2. 在应用程序列表中，选择“Trello”。
    
     ![配置单一登录](./media/active-directory-saas-trello-tutorial/tutorial_trello_10.png) 
+
 3. 在顶部菜单中，单击“用户”。
    
     ![分配用户][203] 
+
 4. 在“所有用户”列表中，选择“Britta Simon”。
 5. 在底部工具栏中，单击“分配”。
    
@@ -266,6 +289,6 @@ Trello 应用程序需要 SAML 断言包含特定属性。 请为此应用程序
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

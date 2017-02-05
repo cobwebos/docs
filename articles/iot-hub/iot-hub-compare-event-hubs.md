@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT 中心与 Azure 事件中心的比较 | Microsoft Docs"
-description: "将 Azure IoT 中心与 Azure 事件中心服务进行比较，重点为功能和用例方面的差异。"
+description: "比较 IoT 中心与事件中心这两个 Azure服务，重点介绍功能差异和用例。 比较内容包括支持的协议、设备管理、监视和文件上传。"
 services: iot-hub
 documentationcenter: 
 author: fsautomata
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: ce514e19370d2b42fb16b4e96b66f212d5fa999c
-ms.openlocfilehash: 9c7e33ceebb28f6a263d2c92e0c0208434e64ffc
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 34a0aee589e242639b1707ba7d872999ada0c600
 
 
 ---
@@ -28,7 +28,7 @@ IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，
 | 区域 | IoT 中心 | 事件中心 |
 | --- | --- | --- |
 | 通信模式 | 启用[设备到云通信][lnk-d2c-guidance]（消息传递、文件上传及报告属性）和[云到设备通信][lnk-c2d-guidance]（直接方法、所需属性、消息传递）。 |仅支持事件引入（通常视为设备到云的方案）。 |
-| 设备状态信息 | [设备克隆][lnk-twins]可存储和查询设备状态信息。 | 没有可存储的设备状态信息。 |
+| 设备状态信息 | [设备孪生][lnk-twins]可存储和查询设备状态信息。 | 没有可存储的设备状态信息。 |
 | 设备协议支持 |支持 MQTT、基于 WebSockets 的 MQTT、AMQP、基于 WebSockets 的 AMQP 和 HTTP。 此外，IoT 中心还可使用 [Azure IoT 协议网关][lnk-azure-protocol-gateway]（一种可自定义协议网关实现）以支持自定义协议。 |支持 AMQP、基于 WebSockets 的 AMQP 和 HTTP。 |
 | “安全” |提供每个设备的标识与可吊销的访问控制权限。 请参阅 [IoT 中心开发人员指南的“安全性”部分]。 |提供事件中心范围的[共享访问策略][Event Hubs - security]，通过[发布者策略][Event Hubs publisher policies]提供有限的权限吊销支持。 IoT 解决方案通常需要实现自定义解决方案来支持每个设备的凭据以及防欺骗措施。 |
 | 操作监视 |允许 IoT 解决方案订阅丰富的设备标识管理和连接事件集，例如单个设备的身份验证错误、限制和错误格式异常。 这些事件可让你快速识别单个设备级别的连接问题。 |仅公开聚合度量值。 |
@@ -45,7 +45,7 @@ IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
 
 [lnk-twins]: iot-hub-devguide-device-twins.md
@@ -66,6 +66,6 @@ IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

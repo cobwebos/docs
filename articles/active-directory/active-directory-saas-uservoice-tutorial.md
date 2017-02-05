@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2016
+ms.date: 12/05/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0bb23a4c2be40c6304d7a09a6ff978db0666ea18
+ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
+ms.openlocfilehash: 593decb7595371396787a04e4a3252cfa65b2643
 
 
 ---
@@ -43,23 +43,29 @@ ms.openlocfilehash: 0bb23a4c2be40c6304d7a09a6ff978db0666ea18
 ### <a name="to-enable-the-application-integration-for-uservoice-perform-the-following-steps"></a>若要启用 UserVoice 的应用程序集成，请执行以下步骤：
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
-   ![Active Directory](./media/active-directory-saas-uservoice-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-uservoice-tutorial/IC700993.png "Active Directory")
+
 2. 从“目录”列表中，选择要为其启用目录集成的目录。
+
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-uservoice-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-uservoice-tutorial/IC700994.png "Applications")
+
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-uservoice-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-uservoice-tutorial/IC749321.png "Add application")
+
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加应用程序](./media/active-directory-saas-uservoice-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库中添加应用程序](./media/active-directory-saas-uservoice-tutorial/IC749322.png "Add an application from gallerry")
+
 6. 在“搜索框”中，键入“UserVoice”。
    
-   ![应用程序库](./media/active-directory-saas-uservoice-tutorial/IC777513.png "Application gallery")
+    ![应用程序库](./media/active-directory-saas-uservoice-tutorial/IC777513.png "Application gallery")
+
 7. 在“结果”窗格中，选择“UserVoice”，然后单击“完成”以添加该应用程序。
    
-   ![UserVoice](./media/active-directory-saas-uservoice-tutorial/IC777810.png "UserVoice")
+    ![UserVoice](./media/active-directory-saas-uservoice-tutorial/IC777810.png "UserVoice")
 
 ## <a name="configuring-single-sign-on"></a>配置单一登录
 此部分旨在概述如何使用基于 SAML 协议的联合身份验证，使用户通过其 Azure AD 中的帐户对 UserVoice 进行身份验证。  
@@ -69,40 +75,52 @@ ms.openlocfilehash: 0bb23a4c2be40c6304d7a09a6ff978db0666ea18
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户的“UserVoice”应用程序集成页上，单击“配置单一登录”打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777515.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777515.png "Configure single sign-on")
+
 2. 在“你希望用户如何登录 UserVoice”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777516.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777516.png "Configure single sign-on")
+
 3. 在“配置应用 URL”页上的“UserVoice 登录 URL”文本框中，使用以下模式“https://\<tenant-name\>.UserVoice.com”键入 URL，然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-uservoice-tutorial/IC777517.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-uservoice-tutorial/IC777517.png "Configure App URL")
+
 4. 在“配置 UserVoice 的单一登录”页上，若要下载证书，请单击“下载证书”，然后将证书文件本地保存为“c:\\UserVoice.cer”。
    
-   ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777518.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777518.png "Configure single sign-on")
+
 5. 在其他 Web 浏览器窗口中，以管理员身份登录到 UserVoice 公司站点。
+
 6. 在顶部工具栏中，单击“设置”，然后从菜单中选择“Web 门户”。
    
-   ![设置](./media/active-directory-saas-uservoice-tutorial/IC777519.png "Settings")
+    ![设置](./media/active-directory-saas-uservoice-tutorial/IC777519.png "Settings")
+
 7. 在“Web 门户”选项卡的“用户身份验证”部分中，单击“编辑”以打开“编辑用户身份验证”对话框页
    
-   ![Web 门户](./media/active-directory-saas-uservoice-tutorial/IC777520.png "Web portal")
+    ![Web 门户](./media/active-directory-saas-uservoice-tutorial/IC777520.png "Web portal")
+
 8. 在“编辑用户身份验证”对话框页上，执行以下步骤：
    
-   ![编辑用户身份验证](./media/active-directory-saas-uservoice-tutorial/IC777521.png "Edit user authentication")
+    ![编辑用户身份验证](./media/active-directory-saas-uservoice-tutorial/IC777521.png "Edit user authentication")
    
-   1. 单击“单一登录(SSO)”。
-   2. 在 Azure 经典门户的“配置 UserVoice 的单一登录”对话框页上，复制“远程登录 URL”值，然后将其粘贴到“SSO 远程登录”文本框。
-   3. 在 Azure 经典门户的“配置 UserVoice 的单一登录”对话框页上，复制“远程注销 URL”值，然后将其粘贴到“SSO 远程注销”文本框。
-   4. 从导出的证书中复制“指纹”值，然后将其粘贴到“当前证书 SHA1 指纹”文本框中。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“单一登录(SSO)”。
+ 
+    b.保留“数据库类型”设置，即设置为“共享”。 在 Azure 经典门户的“配置 UserVoice 的单一登录”对话框页上，复制“远程登录 URL”值，然后将其粘贴到“SSO 远程登录”文本框。
+
+    c. 在 Azure 经典门户的“配置 UserVoice 的单一登录”对话框页上，复制“远程注销 URL”值，然后将其粘贴到“SSO 远程注销”文本框。
+ 
+    d.单击“下一步”。 从导出的证书中复制“指纹”值，然后将其粘贴到“当前证书 SHA1 指纹”文本框中。  
       
-      > [!TIP]
-      > 有关详细信息，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)
-      > 
-      > 
-   5. 单击“保存身份验证设置”。
+    > [!TIP]
+    > 有关详细信息，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)
+    > 
+    > 
+  
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“保存身份验证设置”。
+
 9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777522.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-uservoice-tutorial/IC777522.png "Configure single sign-on")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 为了使 Azure AD 用户能够登录到 UserVoice，必须将其预配到 UserVoice 中。  
@@ -110,22 +128,28 @@ ms.openlocfilehash: 0bb23a4c2be40c6304d7a09a6ff978db0666ea18
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
 1. 登录到 **UserVoice** 租户。
+
 2. 转到“设置”。
    
-   ![设置](./media/active-directory-saas-uservoice-tutorial/IC777811.png "Settings")
+    ![设置](./media/active-directory-saas-uservoice-tutorial/IC777811.png "Settings")
+
 3. 单击“常规”。
+
 4. 单击“代理和权限”。
    
-   ![代理和权限](./media/active-directory-saas-uservoice-tutorial/IC777812.png "Agents and permissions")
+    ![代理和权限](./media/active-directory-saas-uservoice-tutorial/IC777812.png "Agents and permissions")
+
 5. 单击“添加管理员”。
    
-   ![添加管理员](./media/active-directory-saas-uservoice-tutorial/IC777813.png "Add admins")
+    ![添加管理员](./media/active-directory-saas-uservoice-tutorial/IC777813.png "Add admins")
+
 6. 在“邀请管理员”对话框中，执行以下步骤：
    
-   ![邀请管理员](./media/active-directory-saas-uservoice-tutorial/IC777814.png "Invite admins")
+    ![邀请管理员](./media/active-directory-saas-uservoice-tutorial/IC777814.png "Invite admins")
    
-   1. 在“电子邮件”文本框中，键入要预配帐户的电子邮件地址，然后单击“添加”。
-   2. 单击“邀请”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“电子邮件”文本框中，键入要预配帐户的电子邮件地址，然后单击“添加”。
+   
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“邀请”。
 
 > [!NOTE]
 > 可以使用 UserVoice 提供的任何其他 UserVoice 用户帐户创建工具或 API 来预配 AAD 用户帐户。
@@ -139,16 +163,17 @@ ms.openlocfilehash: 0bb23a4c2be40c6304d7a09a6ff978db0666ea18
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“UserVoice”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-uservoice-tutorial/IC777523.png "Assign users")
+    ![分配用户](./media/active-directory-saas-uservoice-tutorial/IC777523.png "Assign users")
+
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
