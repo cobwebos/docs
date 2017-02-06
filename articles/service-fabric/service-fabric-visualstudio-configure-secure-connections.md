@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/08/2015
-ms.author: cawaMS
+ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2d0009e23a9eb3a87628c8b4b70ba1d00f8a4fa2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a02d3840555df0d9c16d179023b3bc763274701a
 
 
 ---
@@ -41,7 +41,7 @@ Visual Studio Service Fabric 工具支持所有用于连接到群集来进行发
 1. 请确保你可以访问目标群集所信任的某个客户端证书。 证书通常以个人信息交换 (.pfx) 文件的形式共享。 有关如何配置服务器以授予客户端访问权限，请参阅[从 Azure 门户设置 Service Fabric 群集](service-fabric-cluster-creation-via-portal.md)。
 2. 安装受信任的证书。 为此，请双击 .pfx 文件，或使用 PowerShell 脚本 Import-PfxCertificate 来导入证书。 将证书安装到 **Cert:\LocalMachine\My**。 导入证书时，可以接受所有默认设置。
 3. 在项目的快捷菜单上选择“**发布...**”命令，打开“**发布 Azure 应用程序**”对话框，然后选择目标群集。 该工具将自动解析连接，并将安全连接参数保存在发布配置文件中。
-4. [可选]: You can edit the publish profile to specify a secure cluster connection.
+4. [Optional]: You can edit the publish profile to specify a secure cluster connection.
    
    由于你正在手动编辑“发布配置文件”XML 文件以指定证书信息，因此请务必记下证书存储名称、存储位置以及证书指纹。 稍后需要为证书的存储名称和存储位置提供这些值。 有关详细信息，请参阅[如何：检索证书的指纹](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)。
    
@@ -53,7 +53,7 @@ Visual Studio Service Fabric 工具支持所有用于连接到群集来进行发
    
    下面是连接到基于 x509 证书的安全群集的示例：
    
-   ```
+   ```xml
    <ClusterConnectionParameters
    ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
    X509Credential="true"
@@ -74,6 +74,6 @@ Visual Studio Service Fabric 工具支持所有用于连接到群集来进行发
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

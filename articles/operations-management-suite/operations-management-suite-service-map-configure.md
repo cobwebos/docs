@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cbed591d15daf8060f13d0e9b009d65c85d256aa
-ms.openlocfilehash: ad8666b46a5b404ab1caf85c32549a1a01de3b73
+ms.sourcegitcommit: 6cc30ace0b57555ea2b5815906d3e6a4f79d8fce
+ms.openlocfilehash: 94bf7729ceb55eaed5efc0290c1a34227888211f
 
 
 ---
 # <a name="configuring-service-map-solution-in-operations-management-suite-oms"></a>配置 Operations Management Suite (OMS) 中的服务映射解决方案
-![警报管理图标](media/oms-service-map/icon.png) 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许你如所想一般作为提供重要服务的互连系统查看服务器。  服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许你如所想一般作为提供重要服务的互连系统查看服务器。  服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
 
 本文介绍了配置服务映射和载入代理的详细信息。  有关使用服务映射的信息，请参阅[使用 Operations Management Suite (OMS) 中的服务映射解决方案](operations-management-suite-service-map.md)
 
@@ -93,12 +93,12 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 #### <a name="microsoft-windows"></a>Microsoft Windows
 需要管理员特权才能安装或卸载代理。
 
-依赖关系代理安装在具有 Dependency-Agent-Windows.exe 的 Windows 计算机上。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个向导，此向导以交互方式指导用户进行安装。  
+使用 InstallDependencyAgent-Windows.exe 在 Windows 计算机上安装依赖关系代理。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个向导，此向导以交互方式指导用户进行安装。  
 
 使用以下步骤在每台 Windows 计算机上安装依赖关系代理：
 
 1.  确保按照“将计算机直接连接到 OMS”中的说明安装 OMS 代理。
-2.  下载 Windows 代理，并使用以下命令运行它： <br>*Dependency-Agent-Windows.exe*
+2.  下载 Windows 代理，并使用以下命令运行它： <br>*InstallDependencyAgent-Windows.exe*
 3.  按照向导安装代理。
 4.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 *C:\Program Files\Microsoft Dependency Agent\logs*。 
 
@@ -108,12 +108,12 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 #### <a name="linux"></a>Linux
 需要根目录访问才能安装或配置代理。
 
-依赖关系代理安装在具有 Dependency-Agent-Linux64.bin（这是包含自解压缩二进制文件的 Shell 脚本）的 Linux 计算机上。 可运行具有 sh 的文件或将执行权限添加到文件本身。
+使用 InstallDependencyAgent-Linux64.bin（具有自解压二进制文件的 Shell 脚本）在 Linux 计算机上安装依赖关系代理。 可运行具有 sh 的文件或将执行权限添加到文件本身。
  
 使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
 
 1.  确保按照[从 Linux 计算机收集和管理数据。OMS 代理需要在 Linux 依赖关系代理之前安装](https://technet.microsoft.com/library/mt622052.aspx)中的说明安装 OMS 代理。
-2.  使用以下命令将 Linux 依赖关系代理安装为根：<br>*sh Dependency-Agent-Linux64.bin*。
+2.  使用以下命令将 Linux 依赖关系代理安装为根：<br>*sh InstallDependencyAgent-Linux64.bin*。
 3.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>卸载 Linux 上的依赖关系代理
@@ -128,7 +128,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 #### <a name="windows"></a>Windows
 使用下表中的选项从命令行进行安装。 若要查看安装标志列表，请运行带有 /? 标志的安装程序，如下所示。
 
-    Dependency-Agent-Windows.exe /?
+    InstallDependencyAgent-Windows.exe /?
 
 | 标志 | 说明 |
 |:--|:--|
@@ -140,7 +140,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 #### <a name="linux"></a>Linux
 使用下表中的选项进行安装。 若要查看安装标志列表，请运行带有 -help 标志的安装程序，如下所示。
 
-    Dependency-Agent-Linux64.bin -help
+    InstallDependencyAgent-Linux64.bin -help
 
 | 标志说明
 |:--|:--|
@@ -167,7 +167,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 #### <a name="microsoft-dependency-agent"></a>Microsoft 依赖关系代理
 若要从依赖关系代理生成疑难解答数据，请以管理员身份打开“命令提示符”并使用以下命令运行 CollectDependencyAgentData.vbs 脚本。  可添加 --help 标志，显示其他选项。
 
-    cd C:\Program Files\Bluestripe\Collector\scripts
+    cd C:\Program Files\Microsoft Dependency Agent\scripts
     cscript CollectDependencyData.vbs
 
 支持数据包保存在 %USERPROFILE% 目录中，可供当前用户使用。  你可以使用 --file <filename> 选项将它保存到其他位置。
@@ -325,6 +325,6 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

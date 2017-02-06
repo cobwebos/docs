@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 01ce02974d18d56421f161126e3541ac7d4997fa
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f7c5269387b044a025afaa59316703d0988e85d8
 
 
 ---
@@ -129,7 +129,7 @@ ms.openlocfilehash: 01ce02974d18d56421f161126e3541ac7d4997fa
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 2. 若要为应用程序配置 SSO，请联系 Bynder 支持团队。 附加下载的元数据文件，与 Bynder 团队共享该文件以在他们那边设置 SSO。
 3. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
@@ -163,7 +163,7 @@ ms.openlocfilehash: 01ce02974d18d56421f161126e3541ac7d4997fa
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-bynder-tutorial/create_aaduser_06.png)
@@ -176,7 +176,7 @@ ms.openlocfilehash: 01ce02974d18d56421f161126e3541ac7d4997fa
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-bynder-tutorial/create_aaduser_07.png)
@@ -248,6 +248,6 @@ ms.openlocfilehash: 01ce02974d18d56421f161126e3541ac7d4997fa
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

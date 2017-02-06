@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 09/26/2016
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3f3f7633f5ef863d42e1f0e3e26b58f38817ac01
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 3fd3387ec44e00d6f357b4ea4ef81914e43a6d0e
 
 
 ---
@@ -33,7 +33,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 * 安装 Visual Studio 2012 或 2013
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](../powershell-install-configure.md)；  
+* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)；  
 
         # Log in to your Azure account
         Add-AzureAccount
@@ -350,6 +350,6 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
