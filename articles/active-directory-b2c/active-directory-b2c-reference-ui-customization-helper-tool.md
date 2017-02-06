@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/07/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e20618b60f8bb517618a994cdb5c2fde18c10e43
+ms.sourcegitcommit: f9c1e41c423cc0d638d5c1d273d58b2fe713fa1c
+ms.openlocfilehash: 2aeb1f20255264ca97b8aff6bd506b5fa1832e28
 
 
 ---
@@ -64,14 +64,6 @@ ms.openlocfilehash: e20618b60f8bb517618a994cdb5c2fde18c10e43
 6. 为容器提供“名称”（例如“b2c”），然后选择“Blob”作为“访问类型”。 单击 **“确定”**。
 7. 创建的容器将显示在“Blob”边栏选项卡上的列表中。 记下容器的 URL；例如，它应该看起来类似于 `https://contoso.blob.core.windows.net/b2c`。 关闭“Blob”边栏选项卡。
 8. 在存储帐户边栏选项卡上，单击“密钥”，并记下“存储帐户名称”和“主访问密钥”字段的值。
-9. 登录到 [Azure 门户](https://portal.azure.com/)。
-10. 单击“+ 新建” > “数据 + 存储设备” > “存储帐户”。 需要有一个 Azure 订阅来创建 Azure Blob 存储帐户。 可以在 [Azure 网站](https://azure.microsoft.com/pricing/free-trial/)注册免费试用版。
-11. 在“帐户类型”下选择“Blob 存储”，并将其他值保留为默认值。  如果希望，可以编辑“资源组和位置”。  单击“创建” 。
-12. 返回到启动板，然后单击刚刚创建的存储帐户。
-13. 在“摘要”部分中，单击“+ 容器”。
-14. 为容器提供“名称”（例如“b2c”），然后选择“Blob”作为“访问类型”。 单击 **“确定”**。
-15. 打开容器**属性**，记下容器的 URL；例如，它应该看起来类似于 `https://contoso.blob.core.windows.net/b2c`。 关闭容器边栏选项卡。
-16. 在存储帐户边栏选项卡上，单击“密钥图标”，并记下“存储帐户名称”和“主访问密钥”字段的值。
 
 > [!NOTE]
 > “主访问密钥”是一个非常重要的安全凭据。
@@ -98,6 +90,6 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

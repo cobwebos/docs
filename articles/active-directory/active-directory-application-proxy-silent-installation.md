@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 01c62e1e3074d7f9addd75ba51d6131921a4ecc7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 01c62e1e3074d7f9addd75ba51d6131921a4ecc7
 ## <a name="enabling-access"></a>启用访问
 应用程序代理的工作原理是通过在网络内部安装一个名为“连接器”的精简 Windows Server 服务。 若要使应用程序代理连接器工作，必须使用全局管理员和密码将其注册到 Azure AD 目录。 通常这在弹出窗口对话框中的连接器安装期间输入。 或者，可以使用 Windows PowerShell 创建用于输入注册信息的凭据对象，或创建自己的令牌，使用它输入注册信息。
 
-## <a name="step-1-install-the-connector-without-registration"></a>步骤 1：安装连接器而不注册
+## <a name="step-1--install-the-connector-without-registration"></a>步骤 1：安装连接器而不注册
 安装 Connector MSI 而不注册连接器，如下所示：
 
 1. 打开命令提示符。
@@ -127,6 +127,6 @@ ms.openlocfilehash: 01c62e1e3074d7f9addd75ba51d6131921a4ecc7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

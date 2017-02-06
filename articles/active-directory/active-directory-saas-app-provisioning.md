@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a8b4a5b3293d379844d6456494f71b51265d2e8
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 1bee9573e23e1c814626d19a3df1eb7ab12486ab
 
 
 ---
@@ -116,6 +116,6 @@ Azure AD 通过连接到由每个应用程序供应商所提供的设置终结�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -196,7 +196,7 @@ BenSelect 应用程序需要采用特定格式的 SAML 断言。 请为此应用
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-benselect-tutorial/create_aaduser_07.png) 
@@ -266,6 +266,6 @@ BenSelect 应用程序需要采用特定格式的 SAML 断言。 请为此应用
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 
