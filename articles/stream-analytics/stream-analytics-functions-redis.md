@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/26/2016
 ms.author: ryancraw
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 26808d4d73e5b6256b56dd3c5d5ae5d075eaac5a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e792f8c8b1ffddbd534b1660421e4cc89a63d35a
 
 
 ---
@@ -34,7 +34,7 @@ Azure 流分析可帮助快速开发和部署低成本分析解决方案，以�
 如上图所示，流分析允许查询流输入数据并将其发送到输出。 根据输出，Azure Functions 可以触发某种类型的事件。 
 
 在本博客中，我们着重于此管道中 Azure Functions 的部分，更具体地说，则触发将欺诈数据存储到缓存的事件。
-完成[实时欺诈检测教程][fraud-detection]之后，已配置并运行输入（事件中心）、查询和输出（blob 存储）。 在本博客中，我们将输出改为使用服务总线队列。 接下来，我们将一个 Azure 函数连接到此队列。 
+完成[实时欺诈检测][fraud-detection]教程后，已配置并运行输入（事件中心）、查询和输出（Blob 存储）。 在本博客中，我们将输出改为使用服务总线队列。 接下来，我们将一个 Azure 函数连接到此队列。 
 
 ## <a name="create-and-connect-a-service-bus-queue-output"></a>创建并连接服务总线队列输出
 若要创建服务总线队列，请遵循[服务总线队列入门][servicebus-getstarted]的 .NET 部分中的步骤 1 和 2。
@@ -69,13 +69,13 @@ Azure 流分析可帮助快速开发和部署低成本分析解决方案，以�
     ```
 
 ## <a name="create-an-azure-redis-cache"></a>创建 Azure Redis 缓存
-按照[如何使用 Azure Redis 缓存][use-rediscache]中 .NET 部分到***配置缓存客户端***部分的内容，创建 Azure Redis 缓存。
+遵循[如何使用 Azure Redis 缓存][use-rediscache]中从 .NET 部分到***配置缓存客户端***部分的内容，创建 Azure Redis 缓存。
 完成后，将获得新的 Redis 缓存。 在“所有设置”下，选择“访问密钥”并记下“主要连接字符串”。
 
 ![体系结构屏幕截图](./media/stream-analytics-functions-redis/redis-cache-keys.png)
 
 ## <a name="create-an-azure-function"></a>创建 Azure 函数
-按照[创建第一个 Azure 函数][functions-getstarted]教程开始使用 Azure Functions。 如果已经有想要使用的 Azure 函数，请直接跳到[写入 Redis 缓存](#Writing-to-Redis-Cache)
+遵循[创建第一个 Azure 函数][functions-getstarted]教程开始使用 Azure Functions。 如果已经有想要使用的 Azure 函数，请直接跳到[写入 Redis 缓存](#Writing-to-Redis-Cache)
 
 1. 在门户中，从左侧导航栏中选择“应用服务”，然后单击 Azure 函数应用名称，获取函数的应用网站。
     ![应用服务函数列表的屏幕截图](./media/stream-analytics-functions-redis/app-services-function-list.png)
@@ -207,6 +207,6 @@ Azure 流分析可帮助快速开发和部署低成本分析解决方案，以�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -146,7 +146,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 * [如何更新自己的密码](active-directory-passwords-update-your-own-password.md)
 
-#### <a name="connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）
+#### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）
 **类型：**常用功能
 
 **可用性：**
@@ -273,7 +273,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 * [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
 
 
-#### <a name="a-namemim-cal-mim-serveramim-cal-mim-server"></a><a name="mim-cal-mim-server"></a>MIM CAL + MIM 服务器
+#### <a name="a-namemim-cal-mim-serveramim-cal--mim-server"></a><a name="mim-cal-mim-server"></a>MIM CAL + MIM 服务器
 Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任意版本）一起授予。 由于 Microsoft 标识管理器在 Windows Server 操作系统上运行，只要服务器正在运行有效的、经过许可的 Windows Server 副本，就能在该服务器上安装和使用 Microsoft 标识管理器。 Microsoft 标识管理器服务器不需要其他单独的许可证。
 
 **类型：**Premium 功能
@@ -333,7 +333,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 |:---:|:---:|:---:|:---:|
 | &nbsp; | &nbsp; | ![勾选标记][12] | &nbsp; |
 
-## <a name="azure-active-directory-join-windows-10-only-related-features"></a>Azure Active Directory Join – 仅适用于 Windows 10 的相关功能
+## <a name="azure-active-directory-join--windows-10-only--related-features"></a>Azure Active Directory Join – 仅适用于 Windows 10 的相关功能
 #### <a name="join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator Bitlocker 恢复
 **类型：**Azure Active Directory Join - 仅适用于 Windows 10 的相关功能
 

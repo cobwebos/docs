@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ba7486f76710095a35d602805876cae0cde8694e
+ms.sourcegitcommit: 82e5a947d48f8a289deb2f6e85bbb47990a9fcd7
+ms.openlocfilehash: 76d52c52489cb3cc85223066fb5821b1b9915b96
 
 
 ---
@@ -130,7 +130,7 @@ The Funding Portal 应用程序需要 SAML 断言包含名为“externalId1”�
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net/`。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
 
 1. 在“配置 The Funding Portal 的单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上。
    
@@ -168,20 +168,21 @@ The Funding Portal 应用程序需要 SAML 断言包含名为“externalId1”�
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_06.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
-   b. 在“姓氏”文本框中，键入“Simon”。
+    b. 在“姓氏”文本框中，键入“Simon”。
    
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
+    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
+    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_07.png) 
@@ -249,6 +250,6 @@ The Funding Portal 应用程序需要 SAML 断言包含名为“externalId1”�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

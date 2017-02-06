@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f760494cbe7341391f0ce51bb1161cb1395cbe5c
-ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
+ms.sourcegitcommit: 2284b12c87eee6a453844e54cdcb2add5874218b
+ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
-[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍了 Analytics 查询语言。
+[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Analytics 查询语言。
 
 * **[观看介绍视频](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
@@ -235,7 +235,7 @@ ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-请注意 `bin` 函数（又称 `floor`）的使用方法。 如果只使用 `by timestamp`，则每个输入行最终会位于其自己的小组内。 对于连续标量（如时间或数字），必须将连续范围分成可管理数量的离散值，而最简单的方法是采用 `bin`（即常用的向下舍入 `floor` 函数）。
+请注意 `bin` 函数（又称 `floor`）的使用方法。 如果只使用 `by timestamp`，则每个输入行最终会位于其自己的小组内。 对于任何连续标量（例如时间或数字），我们必须将连续范围分解为便于管理的离散值数。 `bin` 是熟悉的向下舍入 `floor` 函数，也是执行该操作的最简方法。
 
 可使用相同的技巧来缩小字符串范围：
 
@@ -292,7 +292,7 @@ ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
 ![时间表](./media/app-insights-analytics-tour/080.png)
 
 ## <a name="multiple-series"></a>多个序列
-`summarize` 中的多个表达式可创建多个列。
+`summarize` 子句中的多个表达式可创建多个列。
 
 `by` 子句中的多个表达式可创建多个行，每行针对每个值组合。
 
@@ -334,7 +334,7 @@ ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
 
 ![划分分析图表](./media/app-insights-analytics-tour/110.png)
 
-必须先选择“不分割”，才能选择多个数值列。不能在按字符串列进行分割时，显示多个数值列。
+在可以选择多个数字列前，必须选择“不拆分”。 无法在显示多个数字列的同时拆分字符串列。
 
 ## <a name="daily-average-cycle"></a>每日平均周期
 平均一天的使用情况如何变化？
@@ -459,7 +459,7 @@ ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
 在同一子句中，重命名时间戳列。
 
 ## <a name="letapp-insights-analytics-referencemdlet-clause-assign-a-result-to-a-variable"></a>[Let](app-insights-analytics-reference.md#let-clause)：将结果分配给变量
-使用 *let* 分离出上一个表达式的各部分。 结果不变：
+使用 `let` 分离出上一个表达式的各部分。 结果不变：
 
 ```AIQL
 
@@ -471,7 +471,7 @@ ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
     | take 30
 ```
 
-> 提示：在 Analytics 客户端中，请勿在此各部分间放入空白行。 请务必执行所有运算。
+> 提示：在 Analytics 客户端中，请勿在此查询的各部分间放入空白行。 请务必执行所有运算。
 >
 >
 
@@ -547,7 +547,7 @@ ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
 
 ## <a name="combine-with-imported-data"></a>结合导入的数据
 
-Analytics 报表在仪表板上看起来不错，但有时需要将数据转换为更易理解的形式。 例如，假设遥测通过别名识别出了已经过验证的用户。 此时希望在结果中显示其实际名称。 为此，只需一个从别名映射到实际名称的 CSV 文件。 
+Analytics 报表在仪表板上看起来不错，但有时需要将数据转换为更易理解的形式。 例如，假设遥测通过别名识别出了已经过验证的用户。 此时希望在结果中显示其实际名称。 为此，需要一个从别名映射到实际名称的 CSV 文件。 
 
 可导入数据文件，其使用方式与标准表（请求、例外等）相同。 可对其进行查询或将其与其他表联接。 例如，如果有一个名为“用户映射”的表，且它具有 `realName` 和 `userId` 列，则可将其用于在请求遥测中转换 `user_AuthenticatedId` 字段：
 
@@ -562,7 +562,9 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
     | summarize count() by realName
 ```
 
-若要导入表，依次打开“设置”、“数据源”，然后按说明添加源。 使用此定义上传表。
+若要导入表，请在“架构”边栏选项卡的“其他数据源”下，遵循说明，通过上传数据示例，添加新数据源。 然后使用此定义上传表。 
+
+导入功能当前处于预览状态，因此一开始将在“其他数据源”下看到“联系我们”的链接。 使用此链接登录预览计划，然后该链接将替换为“添加新数据源”按钮。 
 
 
 ## <a name="tables"></a>表
@@ -681,6 +683,6 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

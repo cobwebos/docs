@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9921bce954186ba5d3fa21312aa596dcddfe827f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f4ae3395c44f175603556711bfe2f90f0f987c94
 
 
 ---
@@ -27,8 +27,8 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡上，选择“提供安全联系人详细信息”。
@@ -36,7 +36,7 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 2. 这会打开“提供安全联系人详细信息”边栏选项卡。 选择要对其提供联系人信息的 Azure 订阅。
    ![提供安全联系人详细信息][2]
 3. 会再打开一个“提供安全联系人详细信息”边栏选项卡。
-   
+
    * 输入安全联系人的电子邮件地址或地址，用逗号隔开。 输入的电子邮件地址数量无限制。
    * 输入一个安全联系人的国际电话号码。
    * 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”。
@@ -60,6 +60,6 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

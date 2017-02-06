@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/03/2016
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 51452ce98a02f3bcea9914b741c611b00f862cc6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 408394e529c262c0a47aae680c8f6ea1bc8eb7c6
 
 
 ---
@@ -117,6 +117,6 @@ ms.openlocfilehash: 51452ce98a02f3bcea9914b741c611b00f862cc6
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

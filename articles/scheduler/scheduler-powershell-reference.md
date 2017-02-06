@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e36a52f44bc30662a01299d2d4a2f3c36d9033a7
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 26eb1469bc508ef518103a955fa0fbc6db2be46d
 
 
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>计划程序 PowerShell Cmdlet 参考
 下表介绍 Azure 计划程序中每个主要 cmdlet 的参考页并链接到该页。
 
-若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 
+若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 
 
 有关 [Azure Resource Manager cmdlet](https://msdn.microsoft.com/library/mt125356\(v=azure.200\).aspx) 的详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
@@ -79,6 +79,6 @@ Get-Help <cmdlet name> -Full
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -14,20 +14,26 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/08/2016
+ms.date: 11/30/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: d809636cae48dd0ccca4c99370f41996430d89e4
-ms.openlocfilehash: b5d8d38f03514d89bf6c0b5e36adf0379f1bef1a
+ms.sourcegitcommit: ee24bcff625c5ea28dbf3cbc5332078721544ddc
+ms.openlocfilehash: ef6f3de0da6e051826bcb9bf4a6ebaa78fbaac7c
 
 
 ---
+
 # <a name="azure-functions-triggers-and-bindings-developer-reference"></a>Azure Functions 触发器和绑定开发人员参考
 本主题提供有关触发器和绑定的常规参考。 其中包含一些受所有绑定类型支持的高级绑定功能和语法。  
 
-若要了解对特定类型的触发器或绑定进行配置和编写代码的详细信息，可单击下列其中一个触发器或绑定：
+有关使用特定类型的触发器或绑定的详细信息，请参阅以下参考主题之一：
 
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+| | | | |  
+| --- | --- | --- | --- |  
+| [HTTP/Webhook](functions-bindings-http-webhook.md) | [计时器](functions-bindings-timer.md) | [移动应用](functions-bindings-mobile-apps.md) | [服务总线](functions-bindings-service-bus.md)  |  
+| [DocumentDB](functions-bindings-documentdb.md) |  [存储 Blob](functions-bindings-storage-blob.md) | [存储队列](functions-bindings-storage-queue.md) |  [存储表](functions-bindings-storage-table.md) |  
+| [事件中心](functions-bindings-event-hubs.md) | [通知中心](functions-bindings-notification-hubs.md) | [Twilio](functions-bindings-twilio.md) |   
+| | | | |  
 
 这些文章假定用户已阅读了 [Azure Functions 开发人员参考](functions-reference.md)、[C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md) 或 [Node.js](functions-reference-node.md) 开发人员参考文章。
 
@@ -61,7 +67,7 @@ ms.openlocfilehash: b5d8d38f03514d89bf6c0b5e36adf0379f1bef1a
 }
 ```
 
-代码可能会发送不同类型的输出，发送的类型具体取决于处理新队列项的方式。 例如，用户可能想要将新的记录写入 Azure 存储表。  为此，可设置到 Azure 存储表的输出绑定。 下面是一个示例 function.json，其中包含可用于队列触发器的存储表输出绑定。 
+代码可能会发送不同类型的输出，发送的类型具体取决于处理新队列项的方式。 例如，用户可能想要将新的记录写入 Azure 存储表。  若要执行此操作，请创建到 Azure 存储表的输出绑定。 下面是一个示例 function.json，其中包含可用于队列触发器的存储表输出绑定。 
 
 ```json
 {
@@ -125,7 +131,7 @@ public class Person
 若要在 Azure 门户中使用更高级的绑定功能，请单击函数“集成”选项卡上的“高级编辑器”选项。 通过高级编辑器，可直接在门户中编辑 function.json。
 
 ## <a name="random-guids"></a>随机 GUID
-Azure Functions 向绑定提供语法来生成随机 GUID。 下面的绑定语法将输出写入到 Azure 存储容器中具有唯一名称的新 BLOB： 
+Azure Functions 向绑定提供语法来生成随机 GUID。 下面的绑定语法将输出写入到存储容器中具有唯一名称的新 BLOB： 
 
 ```json
 {
@@ -182,7 +188,7 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 ```
 
 
-以下演示了 Node.js 的同一方法。
+以下演示了 Node.js 的同一方法：
 
 ```javascript
 module.exports = function (context, input) {
@@ -192,7 +198,7 @@ module.exports = function (context, input) {
 }
 ```
 
-下面提供了 F# 示例。
+下面是 F# 的示例：
 
 ```fsharp
 let Run(input: WorkItem, log: TraceWriter) =
@@ -229,7 +235,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 ```json
 {
   "name" : "Customer Name",
-  "address" : "Customer's Address".
+  "address" : "Customer's Address",
   "mobileNumber" : "Customer's mobile number in the format - +1XXXYYYZZZZ."
 }
 ```
@@ -305,53 +311,61 @@ module.exports = function (context, myNewOrderItem) {
 使用 function.json 的标准输入和输出绑定模式称为[*声明性*](https://en.wikipedia.org/wiki/Declarative_programming)绑定，其中绑定由 JSON 声明定义。 但是，可使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定。 通过此模式，可动态绑定到函数代码中受支持的任意数量的输入和输出绑定。
 在绑定路径计算或其他输入在函数中需要在运行时（而不是在设计时）发生的情况下，可能需要命令式绑定。 
 
-若要执行命令性绑定，请执行以下操作：
+如下所示定义命令性绑定：
 
 - 对于所需的命令性绑定，**不要**包含 function.json 中的条目。
 - 传递输入参数 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。 
 - 使用下面的 C# 模式执行数据绑定。
 
-        using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
-        {
-                ...
-        }
+```cs
+using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
+{
+    ...
+}
+```
 
 其中，`BindingTypeAttribute` 是定义绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 也不能是 `out` 参数类型 （例如 `out JObject`）。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，可仅使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
     
 下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#storage-blob-output-binding)，然后将字符串写入此 blob。
 
-        using Microsoft.Azure.WebJobs;
-        using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-        
-        public static async Task Run(string input, Binder binder)
-        {
-                using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
-                {
-                        writer.Write("Hello World!!");
-                }
-        }
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
+    {
+        writer.Write("Hello World!!");
+    }
+}
+```
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) 是支持的输出绑定类型。
 以其原本方式，此代码会获取存储帐户连接字符串（即 `AzureWebJobsStorage`）的默认应用设置。 通过添加 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 和将属性数组传递到 `BindAsync<T>()`，可指定要使用的自定义应用设置。 例如，
 
-        using Microsoft.Azure.WebJobs;
-        using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-        
-        public static async Task Run(string input, Binder binder)
-        {
-                var attributes = new Attribute[]
-                {
-                        new BlobAttribute("samples-output/path"),
-                        new StorageAccountAttribute("MyStorageAccount")
-                };
-                using (var writer = await binder.BindAsync<TextWriter>(attributes))
-                {
-                        writer.Write("Hello World!");
-                }
-        }
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    var attributes = new Attribute[]
+    {    
+        new BlobAttribute("samples-output/path"),
+        new StorageAccountAttribute("MyStorageAccount")
+    };
+
+    using (var writer = await binder.BindAsync<TextWriter>(attributes))
+    {
+        writer.Write("Hello World!");
+    }
+}
+```
 
 下表显示了对于每个绑定类型要使用的相应 .NET 属性和要引用的包。
 
+> [!div class="mx-codeBreakAll"]
 | 绑定 | 属性 | 添加引用 |
 |------|------|------|
 | DocumentDB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.DocumentDB"` |
@@ -362,7 +376,7 @@ module.exports = function (context, myNewOrderItem) {
 | 存储队列 | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | 存储 blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | 存储表 | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions"` |
+| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 
 
@@ -375,6 +389,6 @@ module.exports = function (context, myNewOrderItem) {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: huvalo;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1efa86208ef45f84de5143a6a906c871d958e9d
+ms.sourcegitcommit: 045e40bccad59586987c0a18253dafff2f955a93
+ms.openlocfilehash: ea5005e7cff775c798b030748324781ef7dcfe7d
 
 
 ---
@@ -78,7 +78,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 
 * 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。  尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
 
-![](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
+![授权令牌](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
 
 * 请求升级为所有者角色。  若要执行此操作，当前工作区所有者需要先将你从工作区中删除，然后重新邀请你作为所有者加入。
 
@@ -114,11 +114,11 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 
 将鼠标悬停在模块输出节点上，可确定格式。 工具提示中同时会显示节点名。
 
-一些模块，如[拆分][split]模块，会输出名为 `Dataset` 的格式，而 Python 客户端库不支持此格式。
+一些模块（如[拆分][split]模块）会输出名为 `Dataset` 的格式，而 Python 客户端库不支持此格式。
 
 ![数据集格式][dataset-format]
 
-需要使用转换模块，如[转换为 CSV][convert-to-csv]，以获取受支持格式的输出。
+需要使用转换模块，如[转换为 CSV][convert-to-csv]，以将输出转换为受支持的格式。
 
 ![GenericCSV 格式][csv-format]
 
@@ -129,7 +129,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 3. 插入[拆分][split]模块，并将其输入连接到数据集模块输出。
 4. 插入[转换为 CSV][convert-to-csv] 模块，并将其输入连接到其中一个[拆分][split]模块输出。
 5. 保存此实验并运行，然后等待运行完成。
-6. 单击[转换为 CSV][convert-to-csv]模块上的输出节点。
+6. 单击[转换为 CSV][convert-to-csv] 模块上的输出节点。
 7. 上下文菜单出现时，选择“生成数据访问代码”。
    
     ![上下文菜单][experiment]
@@ -338,6 +338,6 @@ Python 客户端库可以将 Pandas DataFrame 序列化为以下格式（这些�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

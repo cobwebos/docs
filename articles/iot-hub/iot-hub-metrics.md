@@ -1,6 +1,6 @@
 ---
-title: "IoT 中心诊断度量值"
-description: "概述了 Azure IoT 中心内的度量值，用户可以通过这些指标评估其资源的总体运行状况"
+title: "Azure IoT 中心度量值 | Microsoft Docs"
+description: "如何使用 Azure IoT 中心度量值评估和监视 IoT 中心的总体运行状况。"
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: ce514e19370d2b42fb16b4e96b66f212d5fa999c
-ms.openlocfilehash: e2739f9f47495c4502af3aff95d2d3f3975a881b
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 689e3a07fd9bdd82d8c57cbe714562a780a14714
 
 
 ---
-# <a name="introduction-to-diagnostic-metrics"></a>诊断度量值简介
-诊断度量值提供有关 Azure 订阅中 Azure 资源状态的更清晰的数据。 你可以使用度量值评估服务以及连接到服务的设备的总体运行状况。 面向用户的统计信息非常重要，因为它们可以帮助你了解其 IoT 中心的情况，帮助你在不联系 Azure 支持人员的情况下解决根本问题。
+# <a name="iot-hub-metrics"></a>IoT 中心度量值
+IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure IoT 资源状态。 通过 IoT 中心度量值，可评估 IoT 中心服务及其所连接的设备的总体运行状况。 面向用户的统计信息非常重要，因为它们可以帮助你了解其 IoT 中心的情况，帮助你在不联系 Azure 支持人员的情况下解决根本问题。
 
-可以从 Azure 门户启用诊断度量值。
+可从 Azure 门户启用 IoT 中心度量值。
 
-## <a name="how-to-enable-diagnostic-metrics"></a>如何启用诊断度量值
+## <a name="how-to-enable-iot-hub-metrics"></a>如何启用 IoT 中心度量值
 1. 创建 IoT 中心。 有关如何创建 IoT 中心的说明，请参阅[入门][lnk-get-started]指南。
 2. 打开 IoT 中心的边栏选项卡。 在其中单击“**诊断**”。
    
@@ -37,27 +37,27 @@ ms.openlocfilehash: e2739f9f47495c4502af3aff95d2d3f3975a881b
    
     ![][3]
 
-## <a name="metrics-and-how-to-use-them"></a>度量值及其用法
+## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT 中心度量值及其用法
 IoT 中心提供了多个度量值，使你可以大致了解中心的运行状况以及已连接的设备总数。 可以结合多个度量值的信息，更清楚地了解 IoT 中心的状态。 下表描述了每个 IoT 中心所跟踪的度量值，以及每个度量值与 IoT 中心总体状态的关联。
 
 | 度量值 | 度量值说明 | 度量值用途 |
 | --- | --- | --- |
 | d2c.telemetry.ingress.allProtocol |所有设备上发送的消息数目 |有关消息发送操作的概述数据 |
 | d2c.telemetry.ingress.success |成功传入 IoT 中心的消息总数 |成功传入 IoT 中心的消息的概述 |
-| c2d.commands.egress.complete.success |接收设备在所有设备上完成的所有命令消息计数 |结合有关放弃或拒绝的度量值，概述了“云到设备”命令的总体成功率 |
+| c2d.commands.egress.complete.success |接收设备在所有设备上完成的所有命令消息计数 |结合有关放弃或拒绝的度量值，概述了云到设备消息的总体成功率 |
 | c2d.commands.egress.abandon.success |接收设备在所有设备上成功放弃的消息总数 |如果消息被放弃的频率超出预期，则突显潜在问题 |
 | c2d.commands.egress.reject.success |接收设备在所有设备上成功拒绝的消息总数 |如果消息被拒绝的频率超出预期，则突显潜在问题 |
 | devices.totalDevices |向 IoT 中心注册的设备的平均数目、最小数目和最大数目 |已注册到 IoT 中心的设备的数目 |
 | devices.connectedDevices.allProtocol |同时连接的设备的平均数目、最小数目和最大数目 |已连接到 IoT 中心的设备数概述 |
 
 ## <a name="next-steps"></a>后续步骤
-现在你已大概了解了诊断度量值，接下来请单击以下链接来了解有关管理 Azure IoT 中心的详细信息：
+现已大致了解了 IoT 中心度量值，请单击此链接，深入了解如何管理 Azure IoT 中心：
 
 * [操作监视][lnk-monitor]
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
 
 <!-- Links and images -->
@@ -77,6 +77,6 @@ IoT 中心提供了多个度量值，使你可以大致了解中心的运行状�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

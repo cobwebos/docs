@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2d31f2643ac39fb6227b57d2b064058af1dbe20d
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: 20f3a8b006e45e3a94e95b516bca292a82c5fd03
 
 
 ---
@@ -139,46 +139,47 @@ ms.openlocfilehash: 2d31f2643ac39fb6227b57d2b064058af1dbe20d
     ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_12.png)
 6. 若要在应用程序中配置 SSO，请执行以下步骤：
    
-   a. 使用管理员凭据登录到 Marketo。
+    a. 使用管理员凭据登录到 Marketo。
    
-   b. 单击顶部导航窗格上的“管理”按钮。
+    b. 单击顶部导航窗格上的“管理”按钮。
    
-   ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
+    ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
    
-   c. 导航到“集成”菜单，然后单击“单一登录”
+    c. 导航到“集成”菜单，然后单击“单一登录”
    
-   ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png) 
+    ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png) 
    
-   d. 若要启用 SAML 设置，请单击“编辑”按钮
+    d. 若要启用 SAML 设置，请单击“编辑”按钮
    
-   ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png) 
+    ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png) 
    
-   e. **启用**单一登录设置
+    e. **启用**单一登录设置
    
-   f. 输入你从 Azure AD 配置向导复制的颁发者 ID。
+    f. 输入你从 Azure AD 配置向导复制的颁发者 ID。
    
-   g. 在“实体 ID”文本框中，输入 **http://saml.marketo.com/sp** 作为 URL
+    g. 在“实体 ID”文本框中，输入 **http://saml.marketo.com/sp** 作为 URL
    
-   h. 对于“名称标识符元素”，选择“用户 ID 位置”
+    h. 对于“名称标识符元素”，选择“用户 ID 位置”
    
-   ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
+    ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
    
-   > [!NOTE]
-   > 如果用户标识符不是 UPN 值，则在“属性”选项卡中更改该值。
-   > 
-   > 
+    > [!NOTE]
+    > 如果用户标识符不是 UPN 值，则在“属性”选项卡中更改该值。
+    > 
+    > 
    
-   i. 上载你从 Azure AD 配置向导下载的证书。 保存设置。
+    i. 上载你从 Azure AD 配置向导下载的证书。 保存设置。
    
-   j. 编辑重定向页面设置
+    j. 编辑重定向页面设置
    
-   k. 将 Azure AD 配置向导中的登录 URL 复制到“登录 URL”文本框中。
+    k. 将 Azure AD 配置向导中的登录 URL 复制到“登录 URL”文本框中。
    
-   l. 将 Azure AD 配置向导中的注销 URL 复制到“注销 URL”文本框中。
+    l. 将 Azure AD 配置向导中的注销 URL 复制到“注销 URL”文本框中。
    
-   m. 在“错误 URL”中，复制 Marketo 实例 URL 并单击“保存”按钮以保存设置。
+    m. 在“错误 URL”中，复制 Marketo 实例 URL 并单击“保存”按钮以保存设置。
    
-   ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
+    ![配置单一登录](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
+
 7. 若要为用户启用 SSO，请完成以下操作：
    
     a. 使用管理员凭据登录到 Marketo。
@@ -225,17 +226,18 @@ ms.openlocfilehash: 2d31f2643ac39fb6227b57d2b064058af1dbe20d
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
     c. 单击“资源组名称” 的 Azure 数据工厂。
-6. 在“用户配置文件”对话框页面上，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-marketo-tutorial/create_aaduser_06.png) 
+6. 在“用户配置文件”对话框页面上，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-marketo-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
-   b. 在“姓氏”文本框中，键入“Simon”。
+    b. 在“姓氏”文本框中，键入“Simon”。
    
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
+    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
+    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-marketo-tutorial/create_aaduser_07.png) 
@@ -329,6 +331,6 @@ ms.openlocfilehash: 2d31f2643ac39fb6227b57d2b064058af1dbe20d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
