@@ -26,7 +26,7 @@ ms.openlocfilehash: 04a5e190a69b1a1a4d0fe6c49c16ddb15593ba38
 
 ##<a name="overview"></a>概述
 
-本文提供实现 Function App 时需考虑的最佳做法集合。 请记住，Azure Function App 是一种 Azure App Service。 因此，这些最佳做法适用。  
+本文提供实现 Function App 时需考虑的最佳做法集合。 请记住，Azure Function App 是一种 Azure App Service。 因此，这些最佳做法适用。
 
 
 ## <a name="avoid-large-long-running-functions"></a>避免使用长时间运行的大型函数

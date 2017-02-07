@@ -14,7 +14,7 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 02/03/2017
 ms.author: genemi
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -23,6 +23,7 @@ ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
 
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
+
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 你需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。 扩展事件数据最简单的目标是[环形缓冲区目标](http://msdn.microsoft.com/library/ff878182.aspx)。
@@ -44,6 +45,7 @@ ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
 8. 删除事件会话和演示表。
 
 ## <a name="prerequisites"></a>先决条件
+
 * Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
   
@@ -55,6 +57,7 @@ ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
   * [直接指向下载位置的链接。](http://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>代码示例
+
 只要稍加修改，就可以在 Azure SQL 数据库或 Microsoft SQL Server 上运行以下环形缓冲区的代码示例。 不同之处在于步骤 5 的 FROM 子句中使用的某些动态管理视图 (DMV) 名称出现了节点“_database”。 例如：
 
 * sys.dm_xe**_database**_session_targets
@@ -62,7 +65,7 @@ ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
 
 &nbsp;
 
-```
+```tsql
 GO
 ----  Transact-SQL.
 ---- Step set 1.
@@ -216,6 +219,7 @@ GO
 &nbsp;
 
 ## <a name="ring-buffer-contents"></a>环形缓冲区内容
+
 我们使用了 ssms.exe 来运行该代码示例。
 
 为了查看结果，我们单击了 **target_data_XML** 列标题下的单元格。
@@ -315,9 +319,10 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 
 #### <a name="release-resources-held-by-your-ring-buffer"></a>释放环形缓冲区占用的资源
+
 处理完环形缓冲区后，可以发出 **ALTER** 将它删除并释放其资源，如下所示：
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     DROP TARGET package0.ring_buffer;
@@ -327,7 +332,7 @@ GO
 
 事件会话的定义将会更新，但不会删除。 然后可以将环形缓冲区的另一个实例添加到事件会话：
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     ADD TARGET
@@ -339,6 +344,7 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 
 ## <a name="more-information"></a>详细信息
+
 有关 Azure SQL 数据库中扩展事件的主要主题是：
 
 * [SQL 数据库中扩展事件的注意事项](sql-database-xevent-db-diff-from-svr.md)，对比 Azure SQL 数据库与 Microsoft SQL Server 的扩展事件的某些方面。
