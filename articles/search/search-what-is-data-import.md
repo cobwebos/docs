@@ -59,6 +59,6 @@ Azure 搜索识别的数据格式为 JSON，数据集中的所有文档必须包
 > 有大量的 [Azure 搜索代码示例](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)包含了嵌入的或随时可用的数据集，帮助用户轻松入门。 门户中还提供了一个示例索引器，以及一个由小型房地产数据集组成的数据源（名为“realestate-us-sample”）。 针对示例数据源运行预配置的索引器时，将会创建索引并连同文档一起加载该索引，然后，可以使用搜索资源管理器或编写的代码查询该索引。
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

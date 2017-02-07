@@ -3,7 +3,7 @@ title: "如何执行访问权限审查 | Microsoft 文档"
 description: "了解如何使用 Azure Privileged Identity Management 应用程序执行审查。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 49ee2feb-7d2e-4acf-82c1-40ff23062862
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2016
-ms.author: kgremban
+ms.date: 02/03/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5b5dabe301fae4000112aa467a22cc5c37b9b592

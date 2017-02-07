@@ -95,6 +95,6 @@ azure network dns record-set add-record MyResourceGroup contoso.com "@" A -a 1.2
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

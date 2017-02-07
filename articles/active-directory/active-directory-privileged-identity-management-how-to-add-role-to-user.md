@@ -3,7 +3,7 @@ title: "如何添加或删除用户角色 | Microsoft 文档"
 description: "了解如何使用 Azure Active Directory Privileged Identity Management 应用程序将角色添加到特权标识。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 6a47ced8-cf34-4ce8-bea2-e4fc548cfe22
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
-ms.author: kgremban
+ms.date: 02/03/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5dde6b98f72306d6fe78f3c12377d3ce2ec5ddea
@@ -32,8 +32,6 @@ Azure AD Privileged Identity Management 应用程序还允许特权角色管理�
 
 > [!NOTE]
 > 如果尚未在 Azure 门户中启用 PIM，请转到 [Azure AD PIM 入门](active-directory-privileged-identity-management-getting-started.md)了解详细信息。
-> 
-> 
 
 如果想要授权其他用户访问 PIM 本身，请参阅 [how to give access to PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)（如何授予对 PIM 的访问权限），其中进一步说明了 PIM 要求该用户必须拥有哪些角色。
 
@@ -49,8 +47,6 @@ Azure AD Privileged Identity Management 应用程序还允许特权角色管理�
 > [!NOTE]
 > 充当某个角色的新用户默认仅为该角色的合格用户。 如果想要让该用户永久充当该角色，请在列表中单击该用户。 该用户的信息随即显示在新的边栏选项卡中。 在用户信息菜单中，选择“设为永久”。  
 > 如果用户无法注册 Azure 多重身份验证 (MFA) 或使用 Microsoft 帐户（通常是 @outlook.com),，则需要将他们充当的所有角色设为永久。 系统将要求合格的管理员在激活期间注册 MFA。
-> 
-> 
 
 使用户符合某个角色的资格后，请告诉他们，可以根据[如何激活或停用角色](active-directory-privileged-identity-management-how-to-activate-role.md)中的说明来激活该角色。
 
@@ -66,7 +62,6 @@ Azure AD Privileged Identity Management 应用程序还允许特权角色管理�
 
 如果不确定哪些用户仍然需要其角色分配，可以[启动角色的访问权限评审](active-directory-privileged-identity-management-how-to-start-security-review.md)。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

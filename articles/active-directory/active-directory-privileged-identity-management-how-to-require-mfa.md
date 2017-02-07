@@ -3,7 +3,7 @@ title: "如何请求多重身份验证 | Microsoft 文档"
 description: "了解如何使用 Azure Active Directory Privileged Identity Management 扩展请求多重身份验证 (MFA) 用于特权标识。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 1e3dc4ad-3a6a-4a52-8417-3ca4f84ae05c
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/01/2016
-ms.author: kgremban
+ms.date: 02/03/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d36fb97f22802b040d2d527ccfd7a48327fe0cb4
