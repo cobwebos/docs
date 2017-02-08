@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2017
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: c0c33506d134db9fc49bd873e9c95063dd2ab845
