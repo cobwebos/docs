@@ -4,7 +4,7 @@ description: "本文档介绍 Azure 安全中心提供的安全警报类型。"
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
 ms.service: security-center
@@ -12,7 +12,7 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2016
+ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -25,8 +25,8 @@ ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
 
 > [!NOTE]
 > 若要启用高级检测，请升级到 Azure 安全中心标准版。 它可以免费试用 90 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 若要了解详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/security-center/) 。
-> 
-> 
+>
+>
 
 ## <a name="what-type-of-alerts-are-available"></a>提供了哪类警报？
 Azure 安全中心按网络攻击链的不同阶段提供多种警报。 下图提供了与部分阶段相关的各种警报的一些示例。
@@ -65,8 +65,8 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志（�
 
 > [!NOTE]
 > 有关安全中心检测功能工作原理的详细信息，请参阅 [Azure Security Center Detection Capabilities](security-center-detection-capabilities.md)（Azure 安全中心检测功能）。
-> 
-> 
+>
+>
 
 ### <a name="crash-analysis"></a>故障分析
 故障转储内存分析是一种用于检测复杂恶意软件的方法，此类恶意软件能够避开传统安全解决方案的检测。 很多形式的恶意软件从不向磁盘写入内容，或者会加密写入到磁盘中的软件组件，尝试减少被防病毒产品检测到的机会。 因此，使用传统的反恶意软件方法难以检测到恶意软件。 但是，此类恶意软件可以通过内存分析检测到，因为恶意软件一运行就必然会在内存中留下踪迹。
@@ -88,7 +88,7 @@ Shellcode 是在恶意软件利用软件漏洞之后运行的有效负载。 此
 
 下面是此类警报的示例：
 
-![Shellcode 警报](./media/security-center-alerts-type/security-center-alerts-type-fig2.png) 
+![Shellcode 警报](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
 
 ### <a name="module-hijacking-discovered"></a>发现模块劫持
 Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系统功能。 DLL 劫持发生在恶意软件通过更改 DLL 加载顺序将恶意的有效负载加载到内存中时，可以在内存中执行任意代码。 此警报指示故障转储分析检测到从两个不同路径加载了一个类似名称的模块，其中一个加载路径来自常用的 Windows 系统二进制文件位置。
@@ -104,7 +104,7 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 
 下面是此类警报的示例：
 
-![模块劫持警报](./media/security-center-alerts-type/security-center-alerts-type-fig3.png) 
+![模块劫持警报](./media/security-center-alerts-type/security-center-alerts-type-fig3.png)
 
 ### <a name="masquerading-windows-module-detected"></a>检测到伪装 Windows 模块
 恶意软件可能会使用 Windows 系统二进制文件（例如 SVCHOST.EXE）或模块（例如 NTDLL.DLL）的常用名，目的是在系统管理员面前“蒙混过关”，避免暴露恶意软件的性质。 此警报指示故障转储分析检测到故障转储文件包含的模块使用 Windows 系统模块名称，但不满足Windows 模块通常会有的其他标准。 分析伪装模块在磁盘上的副本也许可以进一步揭示该模块的性质，即到底是合法模块还是恶意模块。 分析可能包括：
@@ -123,7 +123,7 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 
 下面是此类警报的示例：
 
-![伪装 Windows 警报](./media/security-center-alerts-type/security-center-alerts-type-fig4.png) 
+![伪装 Windows 警报](./media/security-center-alerts-type/security-center-alerts-type-fig4.png)
 
 ### <a name="modified-system-binary-discovered"></a>发现修改的系统二进制文件
 恶意软件可能会修改核心的系统二进制文件，目的是偷偷访问数据或秘密存留在受攻击系统中。 此警报指示故障转储分析检测到核心的 Windows OS 二进制文件已在内存中或磁盘上被修改。
@@ -136,7 +136,7 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 
 下面是此类警报的示例：
 
-![系统二进制警报](./media/security-center-alerts-type/security-center-alerts-type-fig5.png) 
+![系统二进制警报](./media/security-center-alerts-type/security-center-alerts-type-fig5.png)
 
 ### <a name="suspicious-process-executed"></a>执行了可疑进程
 安全中心在目标虚拟机中确定正在执行的可疑进程后，就会触发警报。 检测时查找的不是具体的名称，而是参数，因此即使攻击者重命名可执行文件，安全中心也可以检测到。
@@ -158,7 +158,7 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 ### <a name="suspicious-outgoing-traffic-detected"></a>检测到可疑的传出流量
 网络设备的发现和分析方式大致与其他类型的系统相同。 攻击者一开始通常会进行端口扫描。 下面的示例显示了来自 VM 的可疑 SSH 流量，该流量可能在对外部资源执行 SSH 暴力破解或端口扫描攻击。
 
-![可疑传出流量警报](./media/security-center-alerts-type/security-center-alerts-type-fig8.png) 
+![可疑传出流量警报](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
 
 利用此警报提供的信息，用户可以确定用于发起该攻击的资源、受攻击的计算机、检测时间、所使用的协议和端口。 此边栏选项卡还提供了一个列表，其中包含的补救步骤可以用来缓解此问题。
 
@@ -169,7 +169,10 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 
 利用此警报提供的信息，用户可以确定用于发起该攻击的资源、受攻击的资源、受害 IP、攻击者 IP 以及检测时间。
 
-[AZURE.NOTE] 出于隐私考虑，此屏幕截图删除了实时 IP 地址。
+> [!NOTE]
+> 出于隐私考虑，此屏幕截图删除了实时 IP 地址。
+>
+>
 
 ### <a name="possible-outgoing-denial-of-service-attack-detected"></a>检测到可能的传出型拒绝服务攻击
 源自某个虚拟机的异常网络流量可能导致安全中心触发潜在的拒绝服务类型的攻击。
@@ -184,8 +187,8 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 ### <a name="potential-sql-injection"></a>潜在 SQL 注入
 SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传递给 SQL Server 实例进行分析和执行。 应该对构建 SQL 语句的任何过程进行检查，检查其中是否存在注入漏洞，因为 SQL Server 会执行其接收的所有在语法上有效的查询。 SQL 威胁检测通过机器学习、行为分析和异常检测确定可能在 Azure SQL 数据库中发生的可疑事件。 例如：
 
-* 前员工尝试进行数据库访问 
-* SQL 注入攻击 
+* 前员工尝试进行数据库访问
+* SQL 注入攻击
 * 用户在家对生产数据库进行异常访问
 
 ![潜在 SQL 注入警报](./media/security-center-alerts-type/security-center-alerts-type-fig11.png)
@@ -210,7 +213,6 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
 * [Azure 安全中心常见问题解答](security-center-faq.md) — 查找有关使用该服务的常见问题解答。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
-
 
 
 

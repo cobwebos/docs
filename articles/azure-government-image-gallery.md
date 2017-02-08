@@ -1,14 +1,13 @@
 ---
 title: "Azure 政府版映像库 | Microsoft Docs"
 description: "本文概述了 Azure Government 映像库和包含在内的映像"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: brendalee
 manager: zakramer
-editor: 
 ms.assetid: f6dd4386-7b79-448a-8ae3-409258cc257b
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na

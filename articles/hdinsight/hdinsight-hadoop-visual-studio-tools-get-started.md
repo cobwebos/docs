@@ -14,7 +14,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -232,7 +232,7 @@ Data Lake Visual Studio 工具支持显示 Tez 执行引擎运行的 Hive 作业
 ## <a name="run-pig-scripts"></a>运行 Pig 脚本
 用于 Visual Studio 的 Data Lake 工具支持创建 Pig 脚本并将其提交到 HDInsight 群集。 用户可基于模板创建 Pig 项目，然后将脚本提交到 HDInsight 群集。
 
-## <a name="feedbacks-known-issues"></a>反馈和已知问题
+## <a name="feedbacks--known-issues"></a>反馈和已知问题
 * 目前 HiveServer2 结果以纯文本形式显示，这不是很理想。 我们正在努力解决该问题。
 * 如果结果以 NULL 值开头，则目前不会显示结果。 我们已解决此问题，如果你受此问题的困扰，欢迎给我们发送电子邮件，或与支持团队联系。
 * Visual Studio 创建的 HQL 脚本将根据用户的本地区域设置进行编码。 如果用户以二进制文件形式将脚本上载到群集，脚本可能无法正常执行。
