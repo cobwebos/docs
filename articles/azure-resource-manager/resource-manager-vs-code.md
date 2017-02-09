@@ -32,7 +32,7 @@ Azure Resource Manager 模板是用于描述资源和相关依赖性的 JSON 文
 2. 运行“快速打开”(Ctrl+P) 
 3. 运行以下命令： 
    
-        ext install azurerm-vscode-tools
+        ext install msazurermtools.azurerm-vscode-tools
 4. 在系统提示时重新启动 VS Code 以启用该扩展。 
    
    操作已完成！
