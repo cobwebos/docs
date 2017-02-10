@@ -93,17 +93,18 @@ New-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName
 
 如果尚未委托域在 Azure DNS 中使用新的区域，则需要[直接向区域的其中一个名称服务器提出 DNS 查询](dns-getstarted-create-dnszone.md#test-name-servers)。 确保将记录区域的正确值替换到以下示例中：
 
-    nslookup
-    > set type=A
-    > server ns1-01.azure-dns.com
-    > www.contoso.com
+```
+nslookup
+> set type=A
+> server ns1-01.azure-dns.com
+> www.contoso.com
 
-    Server:  ns1-01.azure-dns.com
-    Address:  40.90.4.1
+Server:  ns1-01.azure-dns.com
+Address:  40.90.4.1
 
-    Name:    www.contoso.com
-    Address:  1.2.3.4
-
+Name:    www.contoso.com
+Address:  1.2.3.4
+```
 
 ## <a name="next-steps"></a>后续步骤
 
