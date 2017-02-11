@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -35,11 +35,11 @@ ms.openlocfilehash: 63695f358bda5852e300c5c352ca767d89961a3b
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
-   
+
    ![打开“用户管理”](./media/active-directory-branding-localize-azure-portal/user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“公司品牌元素”。
 4. 在“用户和组 - 公司品牌元素”边栏选项卡上，选择“添加语言”命令。
-   
+
     ![添加特定于语言的品牌元素](./media/active-directory-branding-localize-azure-portal/add-language.png)
 5. 修改要自定义的元素。 所有元素都是可选的。
 6. 单击“保存” 。
@@ -48,7 +48,6 @@ ms.openlocfilehash: 63695f358bda5852e300c5c352ca767d89961a3b
 
 ## <a name="next-steps"></a>后续步骤
 [在登录页中添加公司品牌元素](active-directory-branding-custom-signon-azure-portal.md)
-
 
 
 

@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
@@ -26,16 +26,16 @@ ms.openlocfilehash: da120b0ea1bfa7a0afcb6eed864c4eadbd2bbec0
 ## <a name="to-create-the-advanced-rule"></a>创建高级规则
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
-   
+
    ![打开“用户管理”](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“所有组”。
-   
+
    ![打开“组”边栏选项卡](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
 4. 在“用户和组 - 所有组”边栏选项卡中，选择“添加”命令。
-   
+
    ![添加新组](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
 5. 在“组”边栏选项卡上，输入新组的名称和说明。 根据是要为用户还是设备创建规则，在“成员身份类型”中选择“动态用户”或“动态设备”，然后选择“添加动态查询”。 有关用于设备规则的属性，请参阅[使用属性创建设备对象的规则](#using-attributes-to-create-rules-for-device-objects)。
-   
+
    ![添加动态成员身份规则](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
 6. 在“动态成员身份规则”边栏选项卡上的“添加动态成员身份高级规则”框中输入规则，然后在边栏选项卡底部选择“创建”。
 7. 在“组”边栏选项卡中，选择“创建”以创建该组。
@@ -61,8 +61,8 @@ ms.openlocfilehash: da120b0ea1bfa7a0afcb6eed864c4eadbd2bbec0
 > [!NOTE]
 > 字符串和正则表达式运算不区分大小写。 你还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
 > 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
-> 
-> 
+>
+>
 
 ## <a name="supported-expression-rule-operators"></a>支持的表达式规则运算符
 下表列出所有要在高级规则正文中使用的支持表达式规则运算符及其语法：
@@ -174,11 +174,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 1. 根据[创建高级规则](#to-create-the-advanced-rule)中的步骤 1-5 操作，然后在“成员身份类型”中选择“动态用户”。
 2. 在“动态成员身份规则”边栏选项卡上，使用以下语法输入规则：
-   
+
     Direct Reports for *Direct Reports for {obectID_of_manager}*。 下面是有效的直接下属规则示例：
-   
+
                     Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-   
+
     其中，"62e19b97-8b3d-4d4a-a106-4ce66896a863" 是管理员的 objectID。 可以在 Azure AD 的管理员用户的用户页上的“个人资料”选项卡中找到该对象 ID。
 3. 保存此规则时，满足该规则的所有用户将会加入为该组的成员。 最初填充该组可能需要几分钟时间。
 
@@ -202,7 +202,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [管理组的设置](active-directory-groups-settings-azure-portal.md)
 * [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](active-directory-groups-dynamic-membership-azure-portal.md)
-
 
 
 

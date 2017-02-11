@@ -73,7 +73,7 @@ ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
 
 为了进一步简化管理，我们还使用了包含密钥保管库的同一个资源组。 在 [入门教程](key-vault-get-started.md)中，此资源组的名称为 **ContosoResourceGroup** ，我们将继续使用“东亚”位置。 请根据情况将这些值替换成你自己的值：
 
-    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
+    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 
 
 > [!NOTE]

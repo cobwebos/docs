@@ -186,6 +186,6 @@ Azure Resource Manager 模板使用自定义脚本扩展在 VM 上下载并执�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

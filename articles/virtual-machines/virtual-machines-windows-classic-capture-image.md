@@ -82,6 +82,6 @@ Azure 将映像存储在“我的映像”下。 上传的任何映像都会存�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

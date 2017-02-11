@@ -332,6 +332,6 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

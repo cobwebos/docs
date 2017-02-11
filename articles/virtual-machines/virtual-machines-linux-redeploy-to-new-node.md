@@ -44,6 +44,6 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -242,6 +242,6 @@ Azure HD Insight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasuppor
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
