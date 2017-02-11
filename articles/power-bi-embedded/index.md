@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何在应用中嵌入 Power BI 数据可视化和交互式报表。 教程、API 参考和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: b15e8e9676cba8969505728e6b9f7f2db4559e9a
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c18bbb0b1e40d03be35c7d6375bb7520f0e0d4e4
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded 文档
 
-Power BI Embedded 是一项 Azure 服务，应用程序开发人员可通过它将交互式 Power BI 报表添加到自己的应用程序中。 Power BI Embedded 可配合现有应用程序使用，无需重新设计或更改用户登录方式。
+了解如何使用 Power BI Embedded 将数据可视化和交互式报表添加到应用程序。 教程、API 参考和其他文档介绍了如何在应用中无缝嵌入 Power BI 报表和仪表板。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -128,15 +129,9 @@ Power BI Embedded 是一项 Azure 服务，应用程序开发人员可通过它�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/power-bi-embedded.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Power BI Embedded 文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

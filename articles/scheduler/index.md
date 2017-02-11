@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用计划程序来计划及调用重复性应用程序操作和例行维护等作业。 教程、API 参考和其他资源。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: ee469905e6b1f55def062c1d7291bde47a5518ea
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 008c96351a252737178c9e45e92de3f0106a2a2b
 
 ---
 # <a name="scheduler-documentation"></a>计划程序文档
 
-Azure 计划程序允许你以声明方式描述要在云中运行的操作。  然后，它自动计划并运行这些操作。  计划程序保留用户可以查看的作业执行结果历史记录。
+了解如何使用计划程序在云中计划和自动调用重复性作业。 教程、API 参考和其他文档介绍了如何计划及监视重复性应用程序操作和例行维护等作业。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,15 +97,10 @@ Azure 计划程序允许你以声明方式描述要在云中运行的操作。  
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/scheduler.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载计划程序文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

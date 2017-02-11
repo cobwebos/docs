@@ -18,6 +18,9 @@
 ### [Resource Manager](documentation-government-manage-azure-resource-manager.md)
 ### [Operations Management Suite](documentation-government-manage-oms.md)
 ### [订阅](documentation-government-manage-subscriptions.md)
+## 部署
+### Web + 移动
+#### [应用服务](documentation-government-howto-deploy-webandmobile.md)
 
 # 引用
 ## [服务](documentation-government-services.md)
@@ -32,8 +35,10 @@
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/)
 ## [试用](https://azuregov.microsoft.com/trial/azuregovtrial)
+## [博客](https://blogs.msdn.microsoft.com/azuregov/)
+## [Azure Government 网站](https://azure.microsoft.com/overview/clouds/government/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

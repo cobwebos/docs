@@ -1,13 +1,26 @@
 ---
+title: "VPN 网关文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何配置虚拟专用网络 (VPN) 网关，用于管理云虚拟网络与本地之间或者云 VNet 之间的流量。"
+services: vpn-gateway
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: vpn-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: ff8e5a68ada52f93c1f50e73a1a7857273d7f9c3
+ms.sourcegitcommit: 2e7486833ae23cdfed037aa1afb930997586a158
+ms.openlocfilehash: e3179c060380c07dde9058597b0d77861d14d848
+
 
 ---
-#<a name="vpn-gateway-documentation"></a>VPN 网关文档
+# <a name="vpn-gateway-documentation"></a>VPN 网关文档
 
-Azure VPN 网关表示虚拟专用网络网关，用于在 Azure 虚拟网络和本地位置之间以及 Azure 中的虚拟网络之间（VNet 到 VNet）发送网络流量。  
+了解如何配置 VPN 网关（虚拟专用网络网关）。 文档介绍了如何在 Azure 虚拟网络与本地位置或其他 Azure 虚拟网络 (VNet) 之间发送网络流量。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -130,7 +143,7 @@ Azure VPN 网关表示虚拟专用网络网关，用于在 Azure 虚拟网络和
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt163510(v=azure.300)">PowerShell (resource manager)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt163510(v=azure.300)">PowerShell (Resource Manager)</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt270335(v=azure.300)">PowerShell（经典）</a></p>
                     </div>
                 </div>
@@ -152,16 +165,10 @@ Azure VPN 网关表示虚拟专用网络网关，用于在 Azure 虚拟网络和
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/vpn-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure VPN 网关文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

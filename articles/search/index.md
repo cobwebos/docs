@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何向自定义 Web 应用程序或移动应用程序添加强大的搜索功能，包括活动监视功能。 API 参考和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 680083cd9df823bf0ff89a0b4099c411fa0be078
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c99d4b8d8db7739f615d566afa4617221b1c34a0
 
 ---
 # <a name="azure-search-documentation"></a>Azure 搜索文档
 
-Azure 搜索是一种托管的云搜索服务，可帮助在自定义应用中提供强大的搜索体验，以及通过门户视图监视服务、索引和查询活动。 主要功能包括可扩展的多语言全文搜索、地理空间搜索、筛选和多面导航、提前键入查询、命中突出显示以及自定义分析器。
+了解如何使用 Azure 搜索（托管的云搜索服务）向自定义 Web 应用或移动应用添加搜索功能。 教程、API 参考和其他文档介绍了如何添加可缩放的多语言全文搜索、地理空间搜索、筛选和多面导航、提前键入查询、命中突出显示以及自定义分析器。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -131,8 +132,8 @@ Azure 搜索是一种托管的云搜索服务，可帮助在自定义应用中�
                     <div class="cardText">
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.search">.NET</a></p>
-                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET 管理</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.search">Java</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET（管理）</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python（管理）</a></p>
                    </div>
                 </div>
             </div>
@@ -153,16 +154,10 @@ Azure 搜索是一种托管的云搜索服务，可帮助在自定义应用中�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/search.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure 搜索文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

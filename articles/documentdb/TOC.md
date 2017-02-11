@@ -35,6 +35,7 @@
 ### [为数据建模](documentdb-modeling-data.md)
 ### [使用地理空间数据](documentdb-geospatial.md)
 ### [针对多个区域进行开发](documentdb-developing-with-multiple-regions.md)
+### [区域故障转移](documentdb-regional-failovers.md)
 ### [使数据自动过期](documentdb-time-to-live.md)
 ### [自定义索引](documentdb-indexing-policies.md)
 ### [保护对数据的访问](documentdb-secure-access-to-data.md)
@@ -54,6 +55,9 @@
 ### [使用更改源跟踪更改](documentdb-change-feed.md)
 ### [性能测试](documentdb-performance-testing.md)
 ### [性能提示](documentdb-performance-tips.md)
+### 最佳实践
+#### [多主设置](documentdb-multi-region-writers.md)
+#### [日期时间](documentdb-working-with-dates.md)
 
 ## 使用 DocumentDB 的 MongoDB 支持
 ### [MongoDB 协议支持](documentdb-protocol-mongodb.md)
@@ -78,10 +82,10 @@
 
 ## 集成
 ### [使用 Azure 应用服务部署网站](documentdb-create-documentdb-website.md)
-### [使用逻辑应用进行应用程序日志记录](../app-service-logic/app-service-logic-scenario-error-and-exception-handling.md)
+### [使用逻辑应用进行应用程序日志记录](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 ### [绑定到 Azure Functions](../azure-functions/functions-bindings-documentdb.md)
 ### [使用 Hadoop 分析数据](documentdb-run-hadoop-with-hdinsight.md)
-### [与 Azure 搜索集成](documentdb-search-indexer.md)
+### [与 Azure 搜索集成](../search/search-howto-index-documentdb.md)
 ### [使用 Azure 数据工厂移动数据](../data-factory/data-factory-azure-documentdb-connector.md)
 ### [使用 Azure 流分析分析实时数据](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
 ### [使用逻辑应用获取通知](documentdb-change-notification.md)
@@ -119,6 +123,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

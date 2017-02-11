@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何通过部署和管理复制，为物理服务器和虚拟机设置云灾难恢复和业务连续性。"
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: e13f18042677dd1cea5913d7f6658f0c5d3e1d98
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: b8fe2704e7c68c1fe815d204d424f28fcbdfe75c
 
 ---
 # <a name="site-recovery-documentation"></a>Site Recovery 文档
 
-Azure Site Recovery 可以协调本地虚拟机与物理服务器的复制，帮助实现业务连续性和灾难恢复 (BCDR) 策略。 可将服务器和 VM 从本地主数据中心复制到 Azure 或辅助数据中心。 如果主站点发生故障，可以故障转移到辅助站点，保证工作负荷可访问且可用。
+了解如何使用 Site Recovery 在私有云中实现业务连续性和灾难恢复策略。 教程和其他文档介绍了如何规划、部署和管理本地物理服务器与虚拟机到云或到辅助数据中心的协调复制。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -79,16 +80,10 @@ Azure Site Recovery 可以协调本地虚拟机与物理服务器的复制，帮
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/site-recovery.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Site Recovery 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

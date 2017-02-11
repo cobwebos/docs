@@ -14,14 +14,17 @@
 ### [启用 DC/OS 公共访问](container-service-enable-public-access.md)
 ### [DC/OS 中的负载均衡容器](container-service-load-balancing.md)
 ### [DC/OS 中应用/用户特定的 Orchestrator](container-service-application-specific-marathon.md)
-### [使用 OMS (DC/OS) 进行监视](container-service-monitoring-oms.md)
-### [使用 Datadog 进行监视 (DC/OS)](container-service-monitoring.md)
-### [使用 Sysdig 进行监视 (DC/OS)](container-service-monitoring-sysdig.md)
-### [使用 Dynatrace 进行监视 (DC/OS)](container-service-monitoring-dynatrace.md)
+### [使用 OMS 进行监视](container-service-monitoring-oms.md)
+### [使用 Datadog 进行监视](container-service-monitoring.md)
+### [使用 Sysdig 进行监视](container-service-monitoring-sysdig.md)
+### [使用 Dynatrace 进行监视](container-service-monitoring-dynatrace.md)
 ## 使用 Kubernetes 进行管理
 ### [Kubernetes 入门](container-service-kubernetes-walkthrough.md)
 ### [配置服务主体](container-service-kubernetes-service-principal.md)
 ### [与 Kubernetes Web UI 交互](container-service-kubernetes-ui.md)
+### [使用 OMS 进行监视](container-service-kubernetes-oms.md)
+### [使用 Datadog 进行监视](container-service-kubernetes-datadog.md)
+### [使用 Sysdig 进行监视](container-service-kubernetes-sysdig.md)
 ## 使用 Docker Swarm 进行管理
 ### [Docker 和 Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm 持续集成](container-service-docker-swarm-setup-ci-cd.md)
@@ -35,6 +38,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

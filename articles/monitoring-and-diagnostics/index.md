@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "了解如何使用监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 API 参考、最佳实践和其他资源。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 23978b98ce1ffab18f4fb843ca8904062bf4253e
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: e59d88dbd538aad3e21a31fd721361cd9ffd4919
 
 ---
 
 # <a name="monitoring-and-diagnostics-documentation"></a>监视和诊断文档
 
-监视和诊断是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务，以及处理在开发和管理云应用程序的过程中遇到的重大难题。  监视和诊断代表着用于生成和管理这些企业级第 1 层云规模应用程序的下一代中间件平台。
+了解如何使用 Azure 监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 教程、API 参考、最佳实践和其他文档可帮助你了解如何使用监视和诊断，以及如何规划和部署可缩放的可靠解决方案。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -145,15 +146,10 @@ ms.openlocfilehash: 23978b98ce1ffab18f4fb843ca8904062bf4253e
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/monitoring-and-diagnostics.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载监视和诊断文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

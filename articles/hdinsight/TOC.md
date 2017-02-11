@@ -61,9 +61,10 @@
 ### [预测 HVAC 性能](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [预测食品检测结果](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [分析网站日志](hdinsight-apache-spark-custom-library-website-log-analysis.md)
-### [使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
+### [使用 Zeppelin 笔记本](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter 笔记本内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-### [适用于 Jupyter 笔记本的包](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [通过单元 Magic 将外部包与 Jupyter 配合使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [通过脚本操作将外部包与 Jupyter 配合使用](hdinsight-apache-spark-python-package-installation.md)
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
 ### [使用 Eclipse 开发应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
@@ -227,6 +228,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

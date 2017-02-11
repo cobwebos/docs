@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用事件中心从各种平台上已连接的 IoT 设备和应用程序每秒引入数百万个事件。"
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8244f410fa3337ae161657fe11ae5db2a2f378cd
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 29d6165596d3e98264285b6471c8f54b66aa2c3a
 
 ---
 #<a name="event-hubs-documentation"></a>事件中心文档
 
-事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或者任何批处理或存储适配器来转换和存储这些数据。
+了解如何使用事件中心从已连接的 IoT 设备和应用程序每秒收集数百万个事件并对其进行管理。 教程、API 参考和其他文档介绍了如何针对各种平台上的事件设置可伸缩性引入。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -115,16 +116,10 @@ ms.openlocfilehash: 8244f410fa3337ae161657fe11ae5db2a2f378cd
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/event-hubs.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载事件中心文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 
