@@ -20,8 +20,9 @@
 ### [使用 Dynatrace 进行监视 (DC/OS)](container-service-monitoring-dynatrace.md)
 ## 使用 Kubernetes 进行管理
 ### [Kubernetes 入门](container-service-kubernetes-walkthrough.md)
+### [配置服务主体](container-service-kubernetes-service-principal.md)
 ### [与 Kubernetes Web UI 交互](container-service-kubernetes-ui.md)
-## [使用 Docker Swarm 进行管理](container-service-docker-swarm.md)
+## 使用 Docker Swarm 进行管理
 ### [Docker 和 Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm 持续集成](container-service-docker-swarm-setup-ci-cd.md)
 # 引用
@@ -34,6 +35,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

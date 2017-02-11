@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 99d5facce236b82ea84c708edf5e934a0d69919c
-ms.openlocfilehash: 1c0891c79081f068fd6e4a60a05a6b58ebdc9598
+ms.sourcegitcommit: b3a8cdab9e609994b1c4c4d50e9571718e8091de
+ms.openlocfilehash: 2d6af667dcca78e3bfbc108e9c38a99d7a79cd24
 
 
 ---
-# <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络链接到 ExpressRoute 线路
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
-> * [Azure 门户 - Resource Manager](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [PowerShell - 资源管理器](expressroute-howto-linkvnet-arm.md)
-> * [PowerShell - 经典](expressroute-howto-linkvnet-classic.md)
+> * [Resource Manager - Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [经典 - PowerShell](expressroute-howto-linkvnet-classic.md)
+> * [视频 - Azure 门户](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > 
 > 
 
@@ -36,7 +37,7 @@ ms.openlocfilehash: 1c0891c79081f068fd6e4a60a05a6b58ebdc9598
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
-1. 你需要最新版本的 Azure PowerShell 模块。 可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)的 PowerShell 部分下载最新 PowerShell 模块。 有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 中的说明。
+1. 你需要最新版本的 Azure PowerShell 模块。 可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)的 PowerShell 部分下载最新 PowerShell 模块。 有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明。
 2. 在开始配置之前，需要查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 3. 你必须有一个活动的 ExpressRoute 线路。
    * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)，并让连接提供商启用该线路。
@@ -162,6 +163,6 @@ ms.openlocfilehash: 1c0891c79081f068fd6e4a60a05a6b58ebdc9598
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

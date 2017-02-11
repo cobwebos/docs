@@ -12,41 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 12/13/2016
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c836558426b44633993f9f52de39d0a843039614
+ms.sourcegitcommit: 0dc22f03c114508190a8da7ae4ca385c39690d2c
+ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
 
 
 ---
 # <a name="event-hubs-archive-walkthrough-python"></a>事件中心存档演练：Python
-事件中心存档是事件中心的一项新功能，允许用户自动将事件中心中的流数据传送到所选的 Azure Blob 存储帐户。 这样易于对实时流数据执行批处理操作。 本文介绍如何通过 Python 使用事件中心存档功能。 有关事件中心存档的详细信息，请参阅[概述文章](event-hubs-archive-overview.md)。
+事件中心存档是事件中心的一项新功能，用户 可借助此自动将事件中心中的流数据传送到所选的 Azure Blob 存储帐户。 这样易于对实时流数据执行批处理操作。 本文介绍如何通过 Python 使用事件中心存档功能。 有关事件中心存档的详细信息，请参阅[概述文章](event-hubs-archive-overview.md)。
 
-此示例使用 Azure Python SDK 来演示如何使用存档功能。 Sender.py 以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心已配置为使用存档功能将此数据成批地写入到 blob 存储。 然后 archivereader.py 读取这些 blob，为每个设备创建一个附加文件并将数据写入到 .csv 文件中。
+此示例使用 Azure Python SDK 来演示存档功能。 Sender.py 程序以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心已配置为使用存档功能将此数据成批地写入到 blob 存储。 然后 archivereader.py 应用读取这些 blob，为每个设备创建一个附加文件，然后将数据写入到 .csv 文件中。
 
 将要完成的任务
 
-1. 使用 Azure 门户创建 Azure Blob 存储帐户及其中的 blob 容器
-2. 使用 Azure 门户创建事件中心命名空间
-3. 使用 Azure 门户创建启用了存档功能的事件中心
-4. 使用 Python 脚本将数据发送到事件中心
-5. 使用另一个 Python 脚本从存档中读取文件并处理这些文件
+1. 使用 Azure 门户创建 Azure Blob 存储帐户及其中的 blob 容器。
+2. 使用 Azure 门户创建事件中心命名空间。
+3. 使用 Azure 门户创建启用了存档功能的事件中心。
+4. 使用 Python 脚本将数据发送到事件中心。
+5. 使用另一个 Python 脚本从存档中读取文件并处理这些文件。
 
 先决条件
 
-1. Python 2.7.x
-2. Azure 订阅
+- Python 2.7.x
+- Azure 订阅
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
-1. 登录到 [Azure 门户][Azure 门户]。
+1. 登录到 [Azure 门户][Azure portal]。
 2. 在门户的左侧导航窗格中，依次单击“新建”、“数据 + 存储”和“存储帐户”。
 3. 完成“存储帐户”边栏选项卡中的字段，然后单击“创建”。
    
    ![][1]
-4. 看到“部署成功”消息后，单击新存储帐户，然后在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 将容器命名为“archive”，然后关闭“Blob 服务”边栏选项卡。
+4. 看到“部署成功”消息后，单击新存储帐户名，然后在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 将容器命名为“archive”，然后关闭“Blob 服务”边栏选项卡。
 5. 单击左侧边栏选项卡中的“访问密钥”，复制存储帐户名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。
 
 [!INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
@@ -155,27 +155,27 @@ ms.openlocfilehash: c836558426b44633993f9f52de39d0a843039614
     python archivereader.py
     ```
 
-此存档处理器使用本地目录下载存储帐户/容器中的所有 blob。 它将处理任何不为空的内容，并将结果以 .csv 文件的形式写入到本地目录。
+    此存档处理器使用本地目录下载存储帐户/容器中的所有 blob。 它将处理任何不为空的内容，并将结果以 .csv 文件的形式写入到本地目录。
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：
 
-* [事件中心概述存档][事件中心存档概述]
-* 完整的[使用事件中心的完整示例应用程序][使用事件中心的完整示例应用程序]。
-* [使用事件中心扩大事件处理][使用事件中心扩大事件处理]示例。
-* [事件中心概述][事件中心概述]
+* [事件中心存档概述][Overview of Event Hubs Archive]
+* [使用事件中心的完整示例应用程序][sample application that uses Event Hubs]。
+* [使用事件中心扩大事件处理][Scale out Event Processing with Event Hubs]示例。
+* [事件中心概述][Event Hubs overview]
 
-[Azure 门户]: https://portal.azure.com/
-[事件中心存档概述]: event-hubs-archive-overview.md
+[Azure portal]: https://portal.azure.com/
+[Overview of Event Hubs Archive]: event-hubs-archive-overview.md
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
-[有关 Azure 存储帐户]: https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
+[About Azure storage accounts]: https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
 [Visual Studio Code]: https://code.visualstudio.com/
-[事件中心概述]: event-hubs-overview.md
-[使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[使用事件中心扩大事件处理]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

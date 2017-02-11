@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 6a8779a18ee330427efdf13419dc674fcddcc2fc
-ms.openlocfilehash: 1f3fd47db507f2cdb4fb822004efe365a2991b03
+ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
+ms.openlocfilehash: 20ffa261ef17847a665e7c83defeb19e9029fb63
 
 
 ---
@@ -578,7 +578,8 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 * 只能从复制中排除基本磁盘。 不能排除 OS 磁盘或动态磁盘。
 * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用计算机保护，然后重新启用保护。
 * 如果某个应用程序需要有排除的磁盘才能正常运行，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 或者，可以将 Azure 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
-* 在 Azure 中手动创建的磁盘将故障回复。 例如，如果要故障转移三个磁盘，并直接在 Azure 中创建两个磁盘，则会故障回复所有五个磁盘。 无法从故障回复中排除手动创建的磁盘。
+* Windows VM：在 Azure 中手动创建的磁盘不会进行故障回复。 例如，如果直接在 Azure VM 中故障转移三个磁盘并创建两个，则只会将进行过故障转移的三个磁盘故障回复。 不能包括在故障回复过程中或从本地到 Azure 的反向保护过程中手动创建的磁盘。
+* Linux VM：在 Azure 中手动创建的磁盘将故障回复。 例如，如果要故障转移三个磁盘，并直接在 Azure 中创建两个磁盘，则会故障回复所有五个磁盘。 无法从故障回复中排除手动创建的磁盘。
 
 **现在，请按如下所述启用复制**：
 
@@ -815,6 +816,6 @@ The information in Section B is regarding Third Party Code components that are b
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: daa6f079-13ed-462f-b346-e201aa61681b
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.date: 09/19/2016
 ms.author: sstein
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 8e96b9f053cf1cfab39cc41911e7e1548d752730
 
 
 ---
@@ -33,7 +34,7 @@ ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
 
 若要复制 SQL 数据库，需要做好以下项：
 
-* Azure 订阅。 如果需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
+* Azure 订阅。 如果你需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
 * 要复制的 SQL 数据库。 如果你没有 SQL 数据库，请按照[创建你的第一个 Azure SQL 数据库](sql-database-get-started.md)文章中的步骤创建一个。
 
 ## <a name="copy-your-sql-database"></a>复制 SQL 数据库
@@ -46,7 +47,7 @@ ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
    ![SQL 数据库](./media/sql-database-copy-portal/sql-database-copy.png)
 4. 在“复制”页上，提供了一个默认的数据库名称。 根据需要键入不同的名称（服务器上的所有数据库必须具有唯一的名称）。
 5. 选择**目标服务器**。 目标服务器是要在其中创建数据库副本的位置。 可以将数据库复制到相同或不同的服务器。 可以创建新的服务器，或者从列表中选择现有的服务器。 
-6. 选择**目标服务器**后，将启用“弹性数据库池”和“定价层”选项。 如果服务器包含一个池，可以将数据库复制到该池中。
+6. 选择“目标服务器”后，将启用“弹性池”和“定价层”选项。 如果服务器包含一个池，可以将数据库复制到该池中。
 7. 单击“确定”开始复制过程。
    
    ![SQL 数据库](./media/sql-database-copy-portal/copy-page.png)
@@ -86,6 +87,6 @@ ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

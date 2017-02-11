@@ -34,7 +34,10 @@
 ## [保护 DNS 区域和记录](dns-protect-zones-recordsets.md)
 ## [使用 .NET SDK 自动化 DNS 操作](dns-sdk.md)
 
-# 参考
+## 故障排除
+### [故障排除指南](dns-troubleshoot.md)
+
+# 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.dns/v2.3.0/azurerm.dns)
 ## [Azure CLI 2.0（预览版）](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)

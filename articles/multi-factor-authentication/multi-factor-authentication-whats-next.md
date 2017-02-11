@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/23/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d904de6370c1c6bd5116471465ec63fd8999a7ee
+ms.sourcegitcommit: e4ef793b2c1bc0026581fa4b414300721678d7d3
+ms.openlocfilehash: ecf2afc7a6e35b99a110e2e259e005e2164ebb27
 
 
 ---
@@ -157,7 +157,7 @@ ms.openlocfilehash: d904de6370c1c6bd5116471465ec63fd8999a7ee
 <center>![云](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
 ## <a name="trusted-ips"></a>受信任的 IP
-受信任的 IP 是一项 Multi-Factor Authentication 功能，它允许托管或联合租户的管理员跳过对从公司本地 Intranet 登录的用户进行的 Multi-Factor Authentication。 这些功能适用于拥有 Azure AD Premium、Enterprise Mobility Suite 或 Azure Multi-Factor Authentication 许可证的 Azure AD 租户。
+受信任的 IP 是一项 Multi-Factor Authentication 功能，它允许托管或联合租户的管理员跳过对从公司本地 Intranet 登录的用户进行的 Multi-Factor Authentication。 Azure 多重身份验证的完整版本中可提供此功能。 （若要深入了解如何获取 Azure 多重身份验证的完整版本，请参阅[如何获取 Azure 多重身份验证](multi-factor-authentication.md#how-to-get-azure-multi-factor-authentication)。）
 
 | AZURE AD 租户类型	 | 可用的受信任 IP 选项 |
 |:--- |:--- |
@@ -349,6 +349,6 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

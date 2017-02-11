@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/21/2016
-ms.author: darosa,sethm
+ms.date: 1/06/2016
+ms.author: darosa,sethm,jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: d36b40444af4ba68b016351f9ff016351e9fe58c
-ms.openlocfilehash: a4ccfdbc079a989477a80af7ac701dc77dce5a4f
+ms.sourcegitcommit: ed1469b7d12af84970d0675ac2af29580e319042
+ms.openlocfilehash: 11bac0e1877fa2c1cacc9a0a6e6d7870a17a44a2
 
 
 ---
@@ -31,9 +31,9 @@ ms.openlocfilehash: a4ccfdbc079a989477a80af7ac701dc77dce5a4f
 | --- | --- |
 | 高吞吐量 |可变吞吐量 |
 | 可预测性能 |可变滞后时间 |
-| 可预测定价 |即用即付可变定价 |
-| 增加和缩减工作负荷的能力 |不适用 |
-| 消息大小 > 256 KB |消息大小 = 256 KB |
+| 固定价格 |即用即付可变定价 |
+| 可以扩展和缩减工作负荷 |不适用 |
+| 消息大小最大为 1 MB |消息大小最大为 256 KB |
 
 **服务总线高级消息传送** 在 CPU 和内存层提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 你可以为每个服务总线高级命名空间购买 1、2 或 4 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，尽管计费以 24 小时或每天的费率收取，但仍然可以随意更改消息传送单元数。 从而为基于服务总线的解决方案提供可预测和稳定的性能。
 
@@ -43,10 +43,19 @@ ms.openlocfilehash: a4ccfdbc079a989477a80af7ac701dc77dce5a4f
 以下是高级和标准消息传送层之间的部分差异。
 
 ### <a name="partitioned-queues-and-topics"></a>分区的队列和主题
-分区的队列和主题在高级消息传送中受支持，但它们的工作方式不同于标准和基本层的服务总线消息传送方式。 高级消息传送不使用 SQL 作为数据存储，并且也不再具有与共享平台相关联的可能的资源竞争。 因此，不必进行分区。 此外，分区计数已从标准消息传送的 16 个减少到高级中的 2 个分区。 使用两个分区可确保可用性并且更适合高级运行时环境所要求的分区数。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
+分区的队列和主题在高级消息传送中受支持，但它们的工作方式不同于标准和基本层的服务总线消息传送方式。 高级消息传送不使用 SQL 作为数据存储，并且也不再具有与共享平台相关联的可能的资源竞争。 因此，不需要为提高性能而分区。 此外，分区计数已从标准消息传送的 16 个减少到高级中的 2 个分区。 使用两个分区可确保可用性并且更适合高级运行时环境所要求的分区数。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
 
 ### <a name="express-entities"></a>快速实体
 由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
+
+## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
+
+高级消息传送很容易入门，其操作过程类似于标准消息传送。 首先[创建一个命名空间](service-bus-create-namespace-portal.md)。 请确保在“定价层”下选择“高级”。
+
+![create-premium-namespace][create-premium-namespace]
+
+也可以[使用 Azure Resource Manager 模板创建高级命名空间](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/)。
+
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题。
@@ -56,9 +65,12 @@ ms.openlocfilehash: a4ccfdbc079a989477a80af7ac701dc77dce5a4f
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [如何使用 Service Bus 队列](service-bus-dotnet-get-started-with-queues.md)
 
+<!--Image references-->
+
+[create-premium-namespace]: ./media/service-bus-premium-messaging/select-premium-tier.png
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

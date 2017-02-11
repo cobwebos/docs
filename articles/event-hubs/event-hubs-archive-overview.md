@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 12/13/2016
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c21d4fbcfef17c204d74850f740fd8ee18d65856
+ms.sourcegitcommit: 539c04ef95804cc0af9924db8b1d2d1f2ea6eef3
+ms.openlocfilehash: 37d8ff4c2e95fddc1daefa650f2407236bc9cda5
 
 
 ---
@@ -36,36 +36,36 @@ Azure 事件中心存档可让用户处理同一个流中的实时和基于 Batc
 事件中心存档可让用户设置用于控制存档的窗口。 此窗口最小并具有使用“第一个获胜”策略的时间配置，意味着遇到的第一个触发器将触发存档操作。 如果使用 15 分钟/100 MB 的存档窗口，且发送速度为 1 MB/秒，则大小窗口将在时间窗口之前触发。 每个分区独立存档，并在存档时写入已完成的块 blob，在遇到存档间隔时针对时间进行命名。 命名约定如下所示：
 
 ```
-<Namespace>/<EventHub>/<Partition>/<YYYY>/<MM>/<DD>/<HH>/<mm>/<ss>
+[Namespace]/[EventHub]/[Partition]/[YYYY]/[MM]/[DD]/[HH]/[mm]/[ss]
 ```
 
 ### <a name="scaling-to-throughput-units"></a>缩放到吞吐量单位
-事件中心流量由[吞吐量单位](event-hubs-overview.md#capacity-and-security)控制。 单个吞吐量单位允许 1 MB/秒或 1000 个入口事件/秒（是出口事件量的两倍）。 标准事件中心可以配置 1 到 20 个吞吐量单位，更多吞吐量单位可以通过发出增加配额[支持请求][支持请求]来购买。 超出购买的吞吐量单位的使用将受到限制。 事件中心存档直接从内部事件中心存储复制数据，从而绕过吞吐量单位出口配额，为流分析或 Spark 等其他处理读取器节省了出口量。
+事件中心流量由[吞吐量单位](event-hubs-overview.md#capacity-and-security)控制。 单个吞吐量单位允许 1 MB/秒或 1000 个入口事件/秒（是出口事件量的两倍）。 标准事件中心可以配置 1 到 20 个吞吐量单位，可以通过发出增加配额[支持请求][support request]来购买更多吞吐量单位。 使用在超出购买的吞吐量单位时将受到限制。 事件中心存档直接从内部事件中心存储复制数据，从而绕过吞吐量单位出口配额，为流分析或 Spark 等其他处理读取器节省了出口量。
 
 事件中心存档配置后，在用户发送第一个事件时，就立即自动运行。 它始终继续运行。 为了让下游处理更便于了解该进程正在运行，事件中心在没有数据时写入空文件。 这提供了可预测的频率以及可以供给 Batch 处理器的标记。
 
 ## <a name="setting-up-event-hubs-archive"></a>设置事件中心存档
 可以通过门户或 Azure Resource Manager 在创建事件中心时配置事件中心存档。 只需单击“启用”按钮即可启用存档。 单击边栏选项卡的“容器”部分可配置存储帐户和容器。 由于事件中心存档对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure Resource Manager，必须以字符串形式显式提供此 URI。
 
-默认时间窗口为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
+默认时间段为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
 
 ![][1]
 
 ## <a name="adding-archive-to-an-existing-event-hub"></a>将存档添加到现有的事件中心
-可以在事件中心命名空间中的现有事件中心上配置存档。 较早的消息类型或混合类型命名空间中未提供此功能。 若要对现有的事件中心启用“存档”，或者要更改存档设置，请单击命名空间以加载“概要”边栏选项卡，然后单击要启用或更改存档设置的事件中心。 最后，单击打开的边栏选项卡的“属性”部分，如下图中所示。
+可以在事件中心命名空间中的现有事件中心上配置存档。 较早的**消息类型**或**混合类型**命名空间中未提供此功能。 若要对现有的事件中心启用“存档”，或者要更改存档设置，请单击命名空间以加载“概要”边栏选项卡，然后单击要启用或更改存档设置的事件中心。 最后，单击打开的边栏选项卡的“属性”部分，如下图中所示。
 
 ![][2]
 
 还可以通过 Azure Resource Manager 模板配置事件中心存档。 有关详细信息，请参阅[此文章](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)。
 
 ## <a name="exploring-the-archive-and-working-with-avro"></a>浏览存档和使用 Avro
-配置后，事件中心存档在配置的时间窗口中提供的 Azure 存储帐户和容器中创建文件。 可以在任何工具（例如 [Azure 存储资源管理器][Azure 存储资源管理器]）中查看这些文件。 可以本地下载这些文件以进行处理。
+配置后，事件中心存档在配置的时间窗口中提供的 Azure 存储帐户和容器中创建文件。 可以在任何工具（例如 [Azure 存储资源管理器][Azure Storage Explorer]）中查看这些文件。 可以本地下载这些文件以进行处理。
 
 事件中心存档生成的文件具有以下 Avro 架构：
 
 ![][3]
 
-浏览 Avro 文件的简单方法是使用 Apache 中的 [Avro 工具][Avro 工具] jar。 下载此 jar 后，运行以下命令即可查看特定 Avro 文件的架构：
+浏览 Avro 文件的简单方法是使用 Apache 中的 [Avro 工具][Avro Tools] jar。 下载此 jar 后，运行以下命令即可查看特定 Avro 文件的架构：
 
 ```
 java -jar avro-tools-1.8.1.jar getschema \<name of archive file\>
@@ -99,30 +99,30 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 ## <a name="how-event-hubs-archive-is-charged"></a>事件中心存档如何收费
 事件中心存档的计量方式与吞吐量单位类似，并按小时付费。 费用直接与为命名空间购买的吞吐量单位数成正比。 随着吞吐量单位增加和减少，事件中心存档也相应地增加和减少以提供匹配的性能。 计量器一前一后地发生。 事件中心存档的费用为每小时每个吞吐量单位 0.10 美元，在预览期间以 50%的折扣提供。
 
-事件中心存档真正是将数据导入 Azure 的最简单方法。 使用 Azure Data Lake、Azure 数据工厂和 Azure HDInsight，可以执行 Batch 操作和其他所选的分析，请使用熟悉的工具和平台，以所需的任何规模执行。
+事件中心存档是将数据导入 Azure 的最简单方法。 使用 Azure Data Lake、Azure 数据工厂和 Azure HDInsight，可以执行 Batch 操作和其他所选的分析，请使用熟悉的工具和平台，以所需的任何规模执行。
 
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：
 
-* 完整的[使用事件中心的完整示例应用程序][使用事件中心的完整示例应用程序]。
-* [使用事件中心扩大事件处理][使用事件中心扩大事件处理]示例。
-* [事件中心概述][事件中心概述]
+* [使用事件中心的完整示例应用程序][sample application that uses Event Hubs]。
+* [使用事件中心扩大事件处理][Scale out Event Processing with Event Hubs]示例。
+* [事件中心概述][Event Hubs overview]
 
 [Apache Avro]: http://avro.apache.org/
-[支持请求]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
+[support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [1]: ./media/event-hubs-archive-overview/event-hubs-archive1.png
 [2]: media/event-hubs-archive-overview/event-hubs-archive2.png
-[Azure 存储资源管理器]: http://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: http://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-archive-overview/event-hubs-archive3.png
-[Avro 工具]: http://www-us.apache.org/dist/avro/avro-1.8.1/java/avro-tools-1.8.1.jar
+[Avro Tools]: http://www-us.apache.org/dist/avro/avro-1.8.1/java/avro-tools-1.8.1.jar
 [Java]: http://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: http://avro.apache.org/docs/current/gettingstartedpython.html
-[事件中心概述]: event-hubs-overview.md
-[使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[使用事件中心扩大事件处理]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,13 +1,26 @@
 ---
 layout: LandingPage
+description: "了解如何创建 Windows 虚拟机。 文档可帮助你在云中规划、部署和管理虚拟机计算环境。"
+title: "适用于 Windows 的 Azure 虚拟机文档、教程和 API 参考 | Microsoft 文档"
+services: virtual-machines
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: cd8dfa8b436cd165b3438a1823a571feebb0f4f4
-ms.openlocfilehash: 0a2b4c08e5da4d9c16e12f33c5f1a3f9ae863498
+ms.sourcegitcommit: c3b5f79fe9ee312b5f45eff460b43224b9c254fe
+ms.openlocfilehash: 927fb368a7d0e0c7c996a591dfe8536ea3509164
+
 
 ---
-#<a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
+# <a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
 
-Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源之一。 通常情况下，如果需要对计算环境进行控制，而使用 VM 相对于其他选择来说可以更好地进行控制，则应选择 VM。 使用 Azure VM 可以灵活进行虚拟化，而无需购买和维护运行 VM 的物理硬件。 此外，用户可以控制 VM 上运行的软件的配置、修补和安装。
+了解如何创建 Windows 虚拟机。 教程、API 参考和其他文档可帮助你在云中规划、部署和管理虚拟机计算环境。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,16 +161,10 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/windows.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Windows 虚拟机文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

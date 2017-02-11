@@ -1,5 +1,5 @@
 ---
-title: "将 SQL Server 数据库迁移到 SQL 数据库 | Microsoft 文档"
+title: "将 SQL Server 数据库迁移到 Azure SQL 数据库 | Microsoft 文档"
 description: "了解如何将本地 SQL Server 数据库迁移到云中的 Azure SQL 数据库。 在执行数据库迁移之前使用数据库迁移工具测试兼容性。"
 keywords: "数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库"
 services: sql-database
@@ -17,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 0e3e2d24196158b9bfc737cd0be0b797b636841b
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: 61fb027dfdd5830d87fe4fcfff57f685db71475e
 
 
 ---
@@ -118,6 +118,6 @@ SQL Server 提供多种方法来完成每个任务。 本文概述了每个任�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

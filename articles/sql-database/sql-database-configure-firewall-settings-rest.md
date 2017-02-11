@@ -1,6 +1,6 @@
 ---
-title: "使用 REST API 配置 Azure SQL 数据库服务器级防火墙规则 | Microsoft 文档"
-description: "了解如何配置防火墙以允许 IP 地址访问 Azure SQL 数据库。"
+title: "REST API：Azure SQL 数据库服务器级防火墙规则 | Microsoft 文档"
+description: "了解如何使用 REST API，针对访问 Azure SQL 数据库的 IP 地址配置服务器级防火墙规则。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
-ms.openlocfilehash: cc0faa49daaafe19c71d2c765b8e865be04f81e2
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: 6ac9bdf34e8cf0a8ca8e06ae3ed6cd2dd1cf408b
 
 
 ---

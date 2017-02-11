@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "了解如何为 Azure 资源设置安全监视和策略管理。 教程、REST API 参考和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 4488a052681c0c146bf6efaf44f8ecebc400fecc
-ms.openlocfilehash: 92eb080a7234cb25a5560127edadfafeafc0253a
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 5600b20d3c04547e2002a779fde70769bb6a5e59
 
 ---
 # <a name="security-center-documentation"></a>安全中心文档
@@ -85,13 +85,7 @@ ms.openlocfilehash: 92eb080a7234cb25a5560127edadfafeafc0253a
     </li>
 </ul>   
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security-center.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载安全中心文档 </div>
-    </a>
-</div>
+
 
 
 

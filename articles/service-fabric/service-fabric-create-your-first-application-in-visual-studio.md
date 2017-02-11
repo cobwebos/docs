@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
-ms.openlocfilehash: 76b6934950354f94f4f68e7cfef00e890d9391a6
+ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
+ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
 
 
 ---
@@ -131,6 +131,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[在 Azure 中创建群集](service-fabric-cluster-creation-via-portal.md)或[在 Windows 上创建独立群集](service-fabric-cluster-creation-for-windows-server.md)。
 * 尝试使用 [Reliable Services](service-fabric-reliable-services-quick-start.md) 或 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 编程模型创建服务。
+* 尝试将 [Windows 容器](service-fabric-deploy-container.md)或现有应用部署为[来宾可执行文件](service-fabric-deploy-existing-app.md)。
 * 了解如何使用 [Web 服务前端](service-fabric-add-a-web-frontend.md)向 Internet 服务公开服务。
 * 演练 [动手实验](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) 并创建一个无状态服务、配置监视和运行状况报告，然后执行应用程序升级。
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
@@ -152,6 +153,6 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

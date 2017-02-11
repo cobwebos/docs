@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
-ms.openlocfilehash: fd5ca2dfb12b7527f49d32d9642a91df9e590b14
+ms.sourcegitcommit: a762a0e4753b73b11b2c903fa97c67176199b8d9
+ms.openlocfilehash: 5a1845ac32d2e7454a94d6678521b5e74561933a
 
 
 ---
@@ -59,7 +59,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“中心”菜单上，选择“新建” -> “数据 + 存储” -> “存储帐户”。
+2. 在“中心”菜单上，选择“新建” -> “存储” -> “存储帐户”。
 3. 输入你的存储帐户的名称。 有关如何使用存储帐户名称在 Azure 存储空间中定位你的对象的详细信息，请参阅 [存储帐户终结点](#storage-account-endpoints) 。
    
    > [!NOTE]
@@ -162,6 +162,6 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

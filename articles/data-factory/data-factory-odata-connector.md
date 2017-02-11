@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/07/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 5e6a61011e201dad2220d2851212ac04bed1342c
+ms.sourcegitcommit: 4521a236bfc13e6aca7e13e7400c11d353bc3a66
+ms.openlocfilehash: 9c385adfa3da73bef2d05352049d1f71aa5c5847
 
 
 ---
@@ -47,9 +47,9 @@ ms.openlocfilehash: 5e6a61011e201dad2220d2851212ac04bed1342c
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#odata-copy-activity-type-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties)。
 
-此示例每小时将数据从针对 OData 源的查询复制到 Azure Blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从针对 OData 源的查询复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
-**OData 链接服务** 此示例使用基本身份验证。 请参阅 [OData 链接服务](#odata-linked-service-properties)部分，了解各种可用的身份验证。
+**OData 链接服务** 此示例使用匿名身份验证。 请参阅 [OData 链接服务](#odata-linked-service-properties)部分，了解各种可用的身份验证。
 
     {
         "name": "ODataLinkedService",
@@ -109,7 +109,7 @@ ms.openlocfilehash: 5e6a61011e201dad2220d2851212ac04bed1342c
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
     {
         "name": "AzureBlobODataDataSet",
@@ -328,10 +328,10 @@ ms.openlocfilehash: 5e6a61011e201dad2220d2851212ac04bed1342c
 [!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

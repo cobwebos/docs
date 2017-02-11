@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
-ms.author: douglaslMS
+ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 12b91dddb976a65a642fddc3610f1551e330154f
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: a8a2c05bb341869e6dd67a9d6872fba6a35ffabe
 
 
 ---
@@ -61,6 +61,6 @@ TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
 ms.service: sql-database
-ms.custom: app development case study; app development
+ms.custom: app development case study
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/08/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: da2e3e4f9a33860141d94352fd2e657b14b0d03d
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 7137d38e4e9fef7dfaa309ad81cfed94d547a393
 
 
 ---
@@ -65,7 +65,7 @@ SMART by GEP 应用程序的核心是为企业采购管理解决方案提供技�
 
 使用 Azure SQL 数据库与将同样的花费用在本地环境中进行工程相比，GEP 可自动拥有更强大的灾难恢复功能，因为 Azure SQL 数据库内置容错功能。 GEP 使用 Azure SQL 数据库中的活动异地复制功能，结合了不同地理区域中的多个活动、可读取的联机辅助副本（Always On 可用性组），构成高可用性对。 在各个区域复制 SMART by GEP 数据意味着如果发生区域范围的灾难，GEP 只需根据最低恢复点目标 (RPO) 和恢复时间目标 (RTO)，即可轻松恢复客户数据。
 
-每个 SMART by GEP 客户有两个 Azure SQL 数据库实例：一个用于联机事务处理 (OLTP)，一个用于分析（例如客户开支和报表分析）。 Azure SQL 数据库弹性数据库池可让 GEP 轻松管理全球数千个数据库，处理无法预测的数据库资源需求。 弹性池为 GEP 提供一种方式，既能确保客户数据库可根据需要缩放，而不会出现过度预配或预配不足的情况，同时使 GEP 能够控制成本。 此外，由于这是一项 PaaS 服务，GEP 可在自动升级的过程中获取所有新的 Azure SQL 数据库功能。
+每个 SMART by GEP 客户有两个 Azure SQL 数据库实例：一个用于联机事务处理 (OLTP)，一个用于分析（例如客户开支和报表分析）。 Azure SQL 数据库弹性池可让 GEP 轻松管理全球数千个数据库，处理无法预测的数据库资源需求。 弹性池为 GEP 提供一种方式，既能确保客户数据库可根据需要缩放，而不会出现过度预配或预配不足的情况，同时使 GEP 能够控制成本。 此外，由于这是一项 PaaS 服务，GEP 可在自动升级的过程中获取所有新的 Azure SQL 数据库功能。
 
 ## <a name="unstructured-and-semi-structured-data"></a>非结构化和半结构化数据
 但是，有些 SMART by GEP 客户数据需要不太严格的结构化存储。 针对此类数据，GEP 采用 Azure Blob 存储、Azure 表存储和 Azure Redis 缓存。 Azure Blob 存储容装 SMART by GEP 用户上载到应用程序中的所有附件。 它也是 SMART by GEP 存储静态内容（例如级联样式表 (CSS) 和 JavaScript 文件）的位置。
@@ -107,6 +107,6 @@ GEP 采用了其他一些 Azure 服务，使 SMART by GEP 能够响应客户需�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

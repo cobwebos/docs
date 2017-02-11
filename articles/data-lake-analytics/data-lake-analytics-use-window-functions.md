@@ -1,5 +1,5 @@
 ---
-title: "对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数 | Microsoft Docs"
+title: "对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数 | Microsoft 文档"
 description: "了解如何使用 U-SQL 开窗函数。 "
 services: data-lake-analytics
 documentationcenter: 
@@ -11,12 +11,12 @@ ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/16/2016
+ms.workload: big-data`
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 22aafaa80d8d7a5d7e57819acadc6c7985bf2c93
-ms.openlocfilehash: fde657c6c59852a07fd8f565572732f7a25d9e55
+ms.sourcegitcommit: 5137ccfd2c809fe17cc7fdf06941ebd797288d81
+ms.openlocfilehash: 7afbd2de08b5702371ef7dc8676fcd8d75d5e7fd
 
 
 ---
@@ -31,7 +31,7 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
 
 * [报表聚合函数](#reporting-aggregation-functions)，例如 SUM 或 AVG
 * [排名函数](#ranking-functions)，例如 DENSE_RANK、ROW_NUMBER、NTILE 和 RANK
-* [分析函数](#analytic-functions)，例如累积分布、百分位或从同一结果集中不使用自连接访问数据
+* [分析函数](#analytic-functions)（例如累积分布、百分位），不使用自联接访问上一行中的数据（在同一结果集中）
 
 **先决条件：**
 
@@ -53,7 +53,7 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
     - 延迟 - 查询返回到用户的速度（以毫秒为单位）。
     - 纵向 - 用户感兴趣的内容类型（Web 链接、图像、视频）。
   
-    复制并粘贴以下脚本到 U-SQL 项目中构造 QueryLog 行集：
+    将以下脚本复制并粘贴到 U-SQL 项目中以构造 QueryLog 行集：
   
     ```
     @querylog = 
@@ -70,7 +70,7 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
         AS T(Query,Latency,Vertical);
     ```
 
-    在实践中，数据大多存储在数据文件中。 可使用以下代码访问制表符分隔文件中的数据： 
+    在实践中，数据通常存储在文件中。 可使用以下代码访问制表符分隔的文件中的数据： 
   
     ```
     @querylog = 
@@ -91,7 +91,7 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
         - DeptID - Deparment ID.
         - Salary - Employee salary.
   
-    复制并粘贴以下脚本到 U-SQL 项目中构造员工行集：
+    将以下脚本复制并粘贴到 U-SQL 项目中以构造员工行集：
   
         @employees = 
             SELECT * FROM ( VALUES
@@ -120,7 +120,7 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
 
 测试教程中的示例时，必须包含行集定义。 U SQL 要求仅定义使用的行集。 部分示例只需要一个行集。
 
-必须添加以下语句将结果行集输出到数据文件中：
+添加以下语句将结果行集输出到数据文件中：
 
     OUTPUT @result TO "/wfresult.csv" 
         USING Outputters.Csv();
@@ -143,7 +143,7 @@ ISO/ANSI SQL 标准于 2003 年引入开窗函数。 U-SQL 采用 ANSI SQL 标�
 > 
 > 
 
-其结果是一个具有单列的单行。 $165000 是整个表中的薪资值的总数。 
+其结果是一个具有单列的单行。 $165000 是整个表中的薪资值的总和。 
 
 | TotalSalary |
 | --- |
@@ -175,12 +175,12 @@ SalaryByDept 列的总计是 $165000，与上一脚本中的数量一致。
 这两种情况下，输出行数都比输入行数少：
 
 * 不使用 GROUP BY，则聚合会将所有行折叠到一个单行中。 
-* 使用 GROUP BY，会出现 N 输出行，其中，N 是出现在此数据中的非重复值的数目。本例中，输出中有 4 行。
+* 使用 GROUP BY，会出现 N 个输出行，其中，N 是出现在此数据中的非重复值的数目。  在本例中，输出了四行。
 
 ### <a name="use-a-window-function"></a>使用开窗函数
-下面的示例中的 OVER 子句为空。 这会定义“开窗”包括所有行。 此示例中的 SUM 应用到其前的 OVER 子句中。
+以下示例中的 OVER 子句为空，因此该窗口包括所有行。 此示例中的 SUM 应用到其前的 OVER 子句中。
 
-可将此查询读为“所有行窗口间的薪资总计”。
+可将此查询读为“所有行窗口内的薪资总计”。
 
     @result=
         SELECT
@@ -316,10 +316,10 @@ SalaryByDept 列的总计是 $165000，与上一脚本中的数量一致。
 | 8 |Ava |Marketing |400 |15000 |10000 |
 | 9 |Ethan |Marketing |400 |10000 |10000 |
 
-使用 MAX 替换 MIN，然后再试一试。
+若要查看每个部门的最高薪金，请将 MIN 替换为 MAX，然后重新运行查询。
 
 ## <a name="ranking-functions"></a>排名函数
-排名函数返回 PARTITION BY 和 OVER 字句定义的每个分区中每行的排名值（long 类型）。 OVER 字句中的 ORDER BY 控制排名的顺序。
+排名函数返回 PARTITION BY 和 OVER 字句定义的每个分区中每行的排名值（LONG 类型）。 OVER 字句中的 ORDER BY 控制排名的顺序。
 
 以下支持排名函数：
 
@@ -336,10 +336,10 @@ SalaryByDept 列的总计是 $165000，与上一脚本中的数量一致。
             [ORDER BY <identifier, > …[n] [ASC|DESC]] 
     ) AS <alias>
 
-* 排名函数中 ORDER BY 为可选字句。 如果指定 ORDER BY，则其决定排名的顺序。 如不指定 ORDER BY，则 U-SQL 会基于其读取记录的顺序分配值。 从而产生行号、排序或密集排名的非确定性值，本例中，未指定 ORDER BY 字句。
+* 排名函数中 ORDER BY 为可选字句。 如果未指定 ORDER BY，则 U-SQL 将基于它读取记录的顺序分配值，从而为 ROW_NUMBER、RANK 或 DENSE_RANK 生成非确定性的值。
 * NTILE 需要一个求值结果为正整数值的表达式。 该数值指定每个分区必须分成的组的数目。 此标识符仅用于 NTILE 排名函数。 
 
-有关 OVER 子句的详细信息，请参阅 [U SQL 参考]()。
+有关 OVER 子句的详细信息，请参阅 [U-SQL 参考](http://go.microsoft.com/fwlink/p/?LinkId=691348)。
 
 ROW_NUMBER、RANK 和 DENSE_RANK 都会分配数字到开窗中的行。 与单独覆盖不同，查看他们如何响应同一输入会更加直观。
 
@@ -353,7 +353,7 @@ ROW_NUMBER、RANK 和 DENSE_RANK 都会分配数字到开窗中的行。 与单�
 
 请注意 OVER 子句完全相同。 结果：
 
-| 查询 | Latency:int | 垂直 | RowNumber | Rank | DenseRank |
+| 查询 | 延迟：INT | 垂直 | RowNumber | Rank | DenseRank |
 | --- | --- | --- | --- | --- | --- |
 | 香蕉 |300 |映像 |1 |1 |1 |
 | 樱桃 |300 |映像 |2 |1 |1 |
@@ -366,25 +366,25 @@ ROW_NUMBER、RANK 和 DENSE_RANK 都会分配数字到开窗中的行。 与单�
 | 榴莲 |500 |Web |6 |6 |5 |
 
 ### <a name="rownumber"></a>ROW_NUMBER
-每个开窗（垂直、映像或 Web）中，行号按延迟排序，依次递增 1.  
+每个窗口（垂直，映像或 Web）中，行号按延迟排序，依次递增 1.  
 
 ![U-SQL 开窗函数 ROW_NUMBER](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-row-number-result.png)
 
 ### <a name="rank"></a>RANK
-与 ROW_NUMBER() 不同，RANK() 会考虑 ORDER BY 字句中为开窗指定的延迟值。
+与 ROW_NUMBER() 不同，RANK() 会使用 ORDER BY 字句中为窗口指定的延迟值。
 
-由于延迟的最初的两个值相同，因此 RANK 会以 (1,1,3) 开始。 由于延迟值已移动至 500，因此下一个值是 3。 关键点是即使给予重复数值相同的排名，RANK 号也将“跳至”下一 ROW_NUMBER 值。 Web 垂直中会对序列 (2,2,4) 重复此模式。
+由于延迟的前两个值相同，因此 RANK 会以 (1, 1, 3) 开始。 由于延迟值已移动至 500，因此下一个值是 3。 关键点是即使给予重复数值相同的排名，RANK 号也将跳至下一 ROW_NUMBER 值。 Web 垂直中会对序列 (2, 2, 4) 重复此模式。
 
 ![U-SQL 开窗函数 RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
 
 ### <a name="denserank"></a>DENSE_RANK
-DENSE_RANK 与 RANK 类似，但不会“跳至”下一 ROW_NUMBER，而是转到此序列中的下一数字。 请注意本示例中的序列 (1,1,2) 和 (2,2,3)。
+DENSE_RANK 就像 RANK 一样，不同的是，它不会跳到下一 ROW_NUMBER。 DENSE_RANK 会转到序列中的下一编号。 请注意本示例中的序列 (1, 1, 2) 和 (2, 2, 3)。
 
 ![U-SQL 开窗函数 DENSE_RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-dense-rank-result.png)
 
 ### <a name="remarks"></a>备注
-* 如不指定 ORDER BY，则排名函数将应用到不具任何排序的行集。 这会导致排名函数应用方式的非确定性行为
-* 除非满足以下条件，否则每次执行时无法保证使用 ROW_NUMBER 的查询返回的行排序完全相同。
+* 如果未指定 ORDER BY，则排名函数将无序地应用于行集，从而导致非确定性的行为。
+* 必须满足以下条件，才能保证每次执行时使用 ROW_NUMBER 的查询返回的行排序完全相同。
   
   * 已分区的列的值唯一。
   * ORDER BY 列的值唯一。
@@ -393,11 +393,11 @@ DENSE_RANK 与 RANK 类似，但不会“跳至”下一 ROW_NUMBER，而是转�
 ### <a name="ntile"></a>NTILE
 NTILE 将已排序分区中的行分发到指定数目的组。 会对组从 1 开始进行编号。 
 
-下面的示例按查询延迟的顺序将每个分区（垂直）中的行集拆分为 4 个组，并返回每个行的组编号。 
+下面的示例按延迟的顺序将每个分区（垂直）中的行集拆分为 4 个组，并返回每个行的组编号。 
 
-映像垂直具有 3 行，因此其具有 3 个组。 
+映像垂直具有三个行，因此它具有三个组。 
 
-Web 垂直具有 6 行，两个额外行分发到的前两个组中。 这就是组 1 和组 2 中存在 2 行，而组 3 和组 4 中只存在 1 行的原因。  
+Web 垂直具有六个行。  两个额外的行将分配给前两个组。 这就是组 1 和组 2 中存在两行，而组 3 和组 4 中只存在一行的原因。  
 
     @result =
         SELECT 
@@ -421,8 +421,8 @@ Web 垂直具有 6 行，两个额外行分发到的前两个组中。 这就是
 
 NTILE 采用一个参数（“numgroups”）。 Numgroups 是一个正整数或较长的常数表达式，其指定每个分区必须分成的组的数量。 
 
-* 如果分区中的行数可由 numgroups 均匀划分，则组具有相同大小。 
-* 如果分区中的行数不可被 numgroups 划分，这会导致产生两种大小的组（相差一个成员）。 较大组按 OVER 字句指定的顺序位于较小组之前。 
+* 如果分区中的行数可被 numgroups 整除，则组具有相同大小。 
+* 如果分区中的行数不可被 numgroups 整除，这会导致产生两种大小的组（相差一个成员）。 较大组按 OVER 字句指定的顺序位于较小组之前。 
 
 例如：
 
@@ -430,7 +430,7 @@ NTILE 采用一个参数（“numgroups”）。 Numgroups 是一个正整数或
 * 102 行被划分为 4 个组：[ 26, 26, 25, 25 ]
 
 ### <a name="top-n-records-per-partition-via-rank-denserank-or-rownumber"></a>每个分区中通过 RANK、DENSE_RANK 或 ROW_NUMBER 的前 N 个记录
-许多用户仅希望选择每个组的前 n 个行。 传统的 GROUP BY 无法实现此目的。 
+许多用户想要仅选择每个组的前 n 行，而这使用传统的 GROUP BY 无法实现。 
 
 排名函数部分的开头已列出过下面的示例。 此示例不会显示每个分区的前 N 个记录：
 
@@ -457,7 +457,7 @@ NTILE 采用一个参数（“numgroups”）。 Numgroups 是一个正整数或
 | 榴莲 |500 |Web |6 |5 |6 |
 
 ### <a name="top-n-with-dense-rank"></a>TOP N with DENSE RANK
-以下示例返回每个组中前 3 个记录，每个开窗分区中的行的顺序排名编号中无间隔。
+以下示例返回每个组的前三条记录，每个分区中行的顺序排名编号中无间隔。
 
     @result =
     SELECT 
@@ -529,7 +529,7 @@ NTILE 采用一个参数（“numgroups”）。 Numgroups 是一个正整数或
 | 番木瓜 |200 |Web |3 |
 
 ### <a name="assign-globally-unique-row-number"></a>分配全局唯一行号
-给每行分配一个全局唯一行号通常有用。 对于排名函数，这非常简单（较使用 reducer 而言效率更高）。
+给每行分配一个全局唯一行号通常有用。 比起使用化简器，排名函数更方便且更高效。
 
     @result =
         SELECT 
@@ -549,9 +549,9 @@ NTILE 采用一个参数（“numgroups”）。 Numgroups 是一个正整数或
 * PERCENTILE_DISC
 
 ### <a name="cumedist"></a>CUME_DIST
-CUME_DIST 计算一组值中指定值的相对位置。 CUME_DIST 会计算查询的百分比，这些要计算的查询的延迟小于或等于同一垂直中的当前查询延迟。 对于行 R，假定按升序排序，R 的 CUME_DIST 是行数，其值小于或等于 R 值，使其除以分区或查询结果集中计算的行数。 CUME_DIST 会返回 0 < x <= 1范围之中的数字。
+CUME_DIST 计算一组值中指定值的相对位置。 CUME_DIST 会计算查询的百分比，这些要计算的查询的延迟小于或等于同一垂直中的当前查询延迟。 对于行 R，假定按升序排序，CUME_DIST 是行数，其值小于或等于 R 值，使其除以分区中计算的行数。 CUME_DIST 会返回 0 < x <= 1范围之中的数字。
 
-**语法**
+**语法：**
 
     CUME_DIST() 
         OVER (
@@ -581,27 +581,27 @@ CUME_DIST 计算一组值中指定值的相对位置。 CUME_DIST 会计算查�
 | 番木瓜 |200 |Web |0.5 |
 | 苹果 |100 |Web |0.166666666666667 |
 
-分区键是“Web”（第 4 行及以下）的分区中有 6 行：
+分区键是“Web”（第 4 行及以下）的分区中有六行：
 
-* 有 6 行的值等于或小于 500，因此 CUME_DIST 等于 6/6=1
-* 有 5 行的值等于或小于 400，因此 CUME_DIST 等于 5/6=0.83
-* 有 4 行的值等于或小于 300，因此 CUME_DIST 等于 4/6=0.66
-* 有 3 行的值等于或小于 200，因此 CUME_DIST 等于 3/6=0.5。 有两行延迟值相同。
-* 有 1 行的值等于或小于 100，因此 CUME_DIST 等于 1/6=0.16。 
+* 有六行的值等于或小于 500，因此 CUME_DIST 等于 6/6=1
+* 有五行的值等于或小于 400，因此 CUME_DIST 等于 5/6=0.83
+* 有四行的值等于或小于 300，因此 CUME_DIST 等于 4/6=0.66
+* 有三行的值等于或小于 200，因此 CUME_DIST 等于 3/6=0.5。 有两行延迟值相同。
+* 有一行的值等于或小于 100，因此 CUME_DIST 等于 1/6=0.16。 
 
 **使用注意事项：**
 
 * Tie 值始终会计算为相同的累积分布值。
 * NULL 值被视为最低的可能值。
-* 必须指定 ORDER BY 字句来计算 CUME_DIST。
+* 若要计算 CUME_DIST，需使用 ORDER BY 子句。
 * CUME_DIST 类似于 PERCENT_RANK 函数
 
-注意：如果 SELECT 语句后面没有 OUTPUT，则不允许 ORDER BY 子句。 OUTPUT 语句中的 ORDER BY 字句决定结果集的显示顺序。
+注意：如果 SELECT 语句后面没有 OUTPUT，则不允许使用 ORDER BY 子句。
 
 ### <a name="percentrank"></a>PERCENT_RANK
 PERCENT_RANK 计算一组行内的行的相对排名。 PERCENT_RANK 用于计算行集或分区内值的相对位置。 PERCENT_RANK 返回的值的范围大于 0 且小于或等于 1。 不同于 CUME_DIST，PERCENT_RANK 第一行始终为 0。
 
-**语法**
+**语法：**
 
     PERCENT_RANK() 
         OVER (
@@ -613,7 +613,7 @@ PERCENT_RANK 计算一组行内的行的相对排名。 PERCENT_RANK 用于计�
 
 * 任何集中的第一行的 PERCENT_RANK 都为 0。
 * NULL 值被视为最低的可能值。
-* 必须指定 ORDER BY 字句来计算 PERCENT_RANK。
+* PERCENT_RANK 需要 ORDER BY 子句。
 * CUME_DIST 类似于 PERCENT_RANK 函数 
 
 下面的示例使用 PERCENT_RANK 函数来计算垂直中每个查询的延迟时间百分位数。 
@@ -630,7 +630,7 @@ PERCENT_RANK 函数返回的值将垂直内的查询延迟排名表现为百分�
 
 结果：
 
-| 查询 | Latency:int | 垂直 | PercentRank |
+| 查询 | 延迟：INT | 垂直 | PercentRank |
 | --- | --- | --- | --- |
 | 香蕉 |300 |映像 |0 |
 | 樱桃 |300 |映像 |0 |
@@ -642,10 +642,10 @@ PERCENT_RANK 函数返回的值将垂直内的查询延迟排名表现为百分�
 | 樱桃 |400 |Web |0.8 |
 | 榴莲 |500 |Web |1 |
 
-### <a name="percentilecont-percentiledisc"></a>PERCENTILE_CONT 和 PERCENTILE_DISC
+### <a name="percentilecont--percentiledisc"></a>PERCENTILE_CONT 和 PERCENTILE_DISC
 这两个函数基于列值的连续或离散分布来计算百分位数。
 
-**语法**
+**语法：**
 
     [PERCENTILE_CONT | PERCENTILE_DISC] ( numeric_literal ) 
         WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ] )
@@ -653,7 +653,7 @@ PERCENT_RANK 函数返回的值将垂直内的查询延迟排名表现为百分�
 
 **numeric_literal** - 要计算的百分位数。 该值范围必须介于 0.0 和 1.0 之间。
 
-WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ]) - 指定一列数值来排序和计算百分位数。 仅允许一个列标识符。 该表达式计算结果必须为数值类型。 不允许其他数据类型。 默认排序顺序为升序。
+WITHIN GROUP (ORDER BY <identifier> [ ASC | DESC ]) - 指定一列数值来排序和计算百分位数。 仅允许一个列标识符。 该表达式计算结果必须为数值类型。 不允许其他数据类型。 默认排序顺序为升序。
 
 OVER ([ PARTITION BY <identifier,>…[n] ] ) - 将输出集分为分区，作为分区键，此百分位数函数将应用于此分区键。 有关详细信息，请参阅本文档的 RANKING 部分。
 注意：会忽略数据集中的所有空值。
@@ -679,7 +679,7 @@ OVER ([ PARTITION BY <identifier,>…[n] ] ) - 将输出集分为分区，作为
 
 结果：
 
-| 查询 | Latency:int | 垂直 | PercentileCont50 | PercentilDisc50 |
+| 查询 | 延迟：INT | 垂直 | PercentileCont50 | PercentilDisc50 |
 | --- | --- | --- | --- | --- |
 | 香蕉 |300 |映像 |300 |300 |
 | 樱桃 |300 |映像 |300 |300 |
@@ -697,7 +697,7 @@ PERCENTILE_DISC 不会插入值，因此 Web 的中值是 200（输出行中的�
 
 ## <a name="see-also"></a>另请参阅
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
+* [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
 * [通过 Azure PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [使用 Azure Data Lake Analytics 交互式教程](data-lake-analytics-use-interactive-tutorials.md)
@@ -710,6 +710,6 @@ PERCENTILE_DISC 不会插入值，因此 Web 的中值是 200（输出行中的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

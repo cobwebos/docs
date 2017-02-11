@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用密钥保管库来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 09d20c4c035a072d78118cb0e2184773f4642c81
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 0c53b569e45569fd7a7c56142d66fbab8d8b0a05
 
 ---
 # <a name="key-vault-documentation"></a>密钥保管库文档
 
-Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过密钥保管库，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。
+了解如何使用 Azure 密钥保管库来保护及管理云应用程序与服务使用的加密密钥和机密。 教程、API 参考和其他文档介绍了如何创建及维护用于访问和加密资源与解决方案的密钥。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -150,16 +151,9 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/key-vault.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载密钥保管库文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -3,7 +3,7 @@ title: "配置独立群集 | Microsoft 文档"
 description: "本文介绍如何配置独立的或专用的 Service Fabric 群集。"
 services: service-fabric
 documentationcenter: .net
-author: dsk-2015
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2016
-ms.author: dkshir
+ms.date: 12/12/2016
+ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b19d1ed96cf8e294cb105fa62f8623b28e3cc7fc
+ms.sourcegitcommit: 4fb6ef56d694aff967840ab26b75b66a2e799cc1
+ms.openlocfilehash: 977de9160be63a91b5926daa45528e5ee205e448
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: b19d1ed96cf8e294cb105fa62f8623b28e3cc7fc
 
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2015-01-01-alpha",
+    "apiVersion": "2016-09-26",
 
 可为 Service Fabric 群集指定任何友好名称，只需将该名称分配到 **name** 变量即可。 **clusterConfigurationVersion** 是群集的版本号；每次升级 Service Fabric 群集时，都应该递增该号码。 不过，应该将 **apiVersion** 保留为默认值。
 
@@ -132,6 +132,7 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
         "leaseDriverEndpointPort": "19002"
         "serviceConnectionEndpointPort": "19003",
         "httpGatewayEndpointPort": "19080",
+        "reverseProxyEndpointPort": "19081",
         "applicationPorts": {
             "startPort": "20575",
             "endPort": "20605"
@@ -171,11 +172,11 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
 建议使用非 OS 驱动器作为 FabricDataRoot 和 FabricLogRoot，因为它能够更可靠地防范 OS 崩溃。 请注意，如果只自定义数据根目录，则会将日志根目录放置在比数据根目录低一级的位置。
 
 ## <a name="next-steps"></a>后续步骤
-根据独立群集设置配置一个完整的 ClusterConfig.JSON 文件后，可以遵循[在本地或云中创建 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)文中所述步骤部署群集，然后继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
+根据独立群集设置配置一个完整的 ClusterConfig.JSON 文件后，可以遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)一文中所述步骤部署群集，然后继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -17,8 +17,9 @@
 ### [网络映射 (VMM)](site-recovery-network-mapping.md)
 ### [本地站点之间的存储映射](site-recovery-storage-mapping.md)
 ## 复制
-### [VMWare VM 和服务器到 Azure](site-recovery-vmware-to-azure.md)
-### [VMware VM 和服务器到辅助站点](site-recovery-vmware-to-vmware.md)
+### [将 VMware VM 和物理服务器复制到 Azure](site-recovery-vmware-to-azure.md)
+### [将 VMware VM 和物理服务器复制到辅助站点](site-recovery-vmware-to-vmware.md)
+### [使用 CSP 程序将支持多租户的 VMware VM 复制到 Azure](site-recovery-multi-tenant-support-vmware-using-csp.md)
 ### [Hyper-V VM 到 Azure（包含 VMM）](site-recovery-vmm-to-azure.md)
 ### [Hyper-V VM 到 Azure（不包含 VMM）](site-recovery-hyper-v-site-to-azure.md)
 ### [Hyper-V VM 到辅助站点](site-recovery-vmm-to-vmm.md)
@@ -49,8 +50,9 @@
 ## [监视和故障排除](site-recovery-monitoring-and-troubleshooting.md)
 
 # 参考
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [PowerShell 经典](/powershell/servicemanagement/)
+## [PowerShell](/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery)
+## [PowerShell 经典](/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery)
+## [REST](https://msdn.microsoft.com/en-us/library/mt750497)
 
 # 相关内容
 ## [Azure 自动化](/azure/automation/)
@@ -63,6 +65,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

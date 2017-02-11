@@ -1,10 +1,10 @@
 ---
 title: "什么是 Azure 备份？ | Microsoft 文档"
-description: "使用 Azure 备份和恢复服务，可以从 Windows 服务器、Windows 客户端计算机、System Center DPM 服务器和 Azure 虚拟机备份和还原数据与应用程序。"
+description: "使用 Azure 备份和恢复服务，可以从 Windows 服务器、Windows 计算机、System Center DPM 服务器和 Azure 虚拟机备份和还原数据与应用程序。"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "备份和还原;恢复服务;备份解决方案"
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/7/2016
+ms.date: 1/4/2017
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 9de8032bc69b054d5d13857159ff994f505497a6
-ms.openlocfilehash: 08e7d4402ad52835d193b2083e3c9b2776e0332e
+ms.sourcegitcommit: 0eb7b5c283c95503d076da486ba08df833f1acbd
+ms.openlocfilehash: 5235a09822dc14040ca6d4353d00e938fefd0e43
 
 
 ---
@@ -53,8 +53,8 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | 组件 | 优点 | 限制 | 保护哪些内容？ | 备份存储在何处？ |
 | --- | --- | --- | --- | --- |
 | Azure 备份 (MARS) 代理 |<li>将文本和文件夹备份到物理或虚拟 Windows OS（VM 可以在本地或在 Azure 中）<li>无需单独的备份服务器。 |<li>每天备份三次 <li>不感知应用程序；仅支持文件、文件夹和卷级别的还原， <li>  不支持 Linux。 |<li>文件、 <li>文件夹 |Azure 备份保管库 |
-| System Center DPM |<li>应用感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持 <li>使用 DPM 2012 R2 保护 VMware VM |无法备份 Oracle 工作负荷。|<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘、<li>  磁带（仅限本地） |
-| Azure 备份服务器 |<li>应用感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Linux 支持（如果托管在 Hyper-V 上）<li>使用 DPM 2012 R2 保护 VMware VM<li>不需要 System Center 许可证 |<li>无法备份 Oracle 工作负荷。<li>始终需要实时 Azure 订阅<li>不支持磁带备份 |<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘 |
+| System Center DPM |<li>应用程序感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持 <li>使用 DPM 2012 R2 备份和还原 VMware VM |无法备份 Oracle 工作负荷。|<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘、<li>  磁带（仅限本地） |
+| Azure 备份服务器 |<li>应用感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持<li>备份和还原 VMware VM <li>不需要 System Center 许可证 |<li>无法备份 Oracle 工作负荷。<li>始终需要实时 Azure 订阅<li>不支持磁带备份 |<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘 |
 | Azure IaaS VM 备份 |<li>针对 Windows/Linux 的本地备份<li>无需安装特定代理<li>无需使用备份基础结构进行结构级备份 |<li>每天备份 VM 一次 <li>仅在磁盘级还原 VM<li>无法本地备份 |<li>VM、 <li>所有磁盘（使用 PowerShell） |<p>Azure 备份保管库</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>每个组件适用哪些部署方案？
@@ -234,6 +234,6 @@ Azure 备份保护本地和云端的数据。 Azure Site Recovery 就虚拟机�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

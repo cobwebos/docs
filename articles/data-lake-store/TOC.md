@@ -29,6 +29,13 @@
 ### [服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)
 ### [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
 
+## 性能
+### [Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-guidance.md)
+### [Spark on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-spark.md)
+### [Hive on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-hive.md)
+### [MapReduce on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-mapreduce.md)
+### [Storm on HDInsight 和 Azure Data Lake Store 性能优化指南](data-lake-store-performance-tuning-storm.md)
+
 ## 与 Azure 服务集成
 ### [从 Azure VNET 中的 VM 访问](data-lake-store-connectivity-from-vnets.md)
 ### [与 Data Lake Analytics 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -64,6 +71,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

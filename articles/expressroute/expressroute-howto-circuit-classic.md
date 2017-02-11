@@ -16,18 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: 5fb3200bb2a21624f8718bd50e4c7bb2fc607ba9
+ms.sourcegitcommit: 5c6ee9ef23e8594391a4fce313f945b31e6870a7
+ms.openlocfilehash: ec5f37c7b24c36b20ecd36148c1dd12185bcecb4
 
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
-> * [Azure 门户 - Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell - 资源管理器](expressroute-howto-circuit-arm.md)
-> * [PowerShell - 经典](expressroute-howto-circuit-classic.md)
+> * [Resource Manager - Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
+> * [经典 - PowerShell](expressroute-howto-circuit-classic.md)
+> * [视频 - Azure 门户](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
-> 
+>
 
 本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和经典部署模型创建 Azure ExpressRoute 线路。 本文还将向你显示如何查看状态，以及如何更新、删除和预配 ExpressRoute 线路。
 
@@ -40,7 +41,7 @@ ms.openlocfilehash: 5fb3200bb2a21624f8718bd50e4c7bb2fc607ba9
 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。  
 
 ### <a name="2-install-the-latest-versions-of-the-azure-powershell-modules"></a>2.安装最新版本的 Azure PowerShell 模块
-有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 中的说明。
+有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明。
 
 ### <a name="3-log-in-to-your-azure-account-and-select-a-subscription"></a>3.登录到 Azure 帐户并选择订阅
 1. 使用权限提升的 Windows PowerShell 提示符运行以下 cmdlet：
@@ -332,6 +333,6 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

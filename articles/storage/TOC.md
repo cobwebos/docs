@@ -59,7 +59,7 @@
 ### [表设计指南](storage-table-design-guide.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## 使用文件
-### [概述](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
+### [概述](/rest/api/storageservices/fileservices/File-Service-Concepts)
 ### [对 Azure 文件进行故障排除](storage-troubleshoot-file-connection-problems.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## 使用虚拟机磁盘
@@ -75,13 +75,17 @@
 ### [性能和可伸缩性清单](storage-performance-checklist.md)
 ### [并发](storage-concurrency.md)
 ## 开发
-### [示例](storage-samples.md)
+### 示例
+#### [.NET](storage-samples-dotnet.md)
+#### [Java](storage-samples-java.md)
+### [使用 RA-GRS 设计 HA 应用](storage-designing-ha-apps-with-ragrs.md)
 ### [配置连接字符串](storage-configure-connection-string.md)
 ### [使用存储模拟器](storage-use-emulator.md)
 ### [设置和检索属性与元数据](storage-properties-metadata.md)
 ## 管理
 ### [PowerShell](storage-powershell-guide-full.md)
-### [Azure CLI](storage-azure-cli.md)
+### [Azure CLI 2.0（预览版）](storage-azure-cli.md)
+### [Azure CLI 1.0](storage-azure-cli-nodejs.md)
 ### [Azure 自动化](automation-manage-storage.md)
 ## 安全
 ### [安全指导](storage-security-guide.md)
@@ -148,8 +152,8 @@
 ## [PowerShell](/powershell/storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
-### [Resource Manager](/dotnet/api/microsoft.azure.management.storage)
-### [数据移动](https://msdn.microsoft.com/en-us/library/azure/mt684990.aspx)
+### [资源管理器](/dotnet/api/microsoft.azure.management.storage)
+### [数据移动](https://msdn.microsoft.com/library/azure/mt684990.aspx)
 ### [Blob、队列、表和文件](https://msdn.microsoft.com/library/azure/mt347887.aspx)
 ## [Java](/java/api/)
 ## [Node.js](http://azure.github.io/azure-storage-node)
@@ -159,7 +163,7 @@
 ## [iOS](https://github.com/Azure/azure-storage-ios)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
-### [Blob、队列、表和文件](/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference)
+### [Blob、队列、表和文件](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
 ### [资源提供程序](/rest/api/storagerp)
 ### [导入/导出](/rest/api/storageimportexport)
 
@@ -182,7 +186,7 @@
 ### [存储资源管理器（预览版）](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 ### [使用存储资源管理器（预览版）管理 Blob](../vs-azure-tools-storage-explorer-blobs.md)
 
-## Nuget 包
+## NuGet 包
 ### [适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 ### [Azure 存储数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 ### [Azure 配置管理器](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
@@ -201,6 +205,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

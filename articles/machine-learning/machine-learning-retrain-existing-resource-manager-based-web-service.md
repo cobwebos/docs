@@ -128,7 +128,7 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 从输出结果中复制 *BaseLocation*、*RelativeLocation* 和 *SasBlobToken*。
 
 ## <a name="retrain-the-web-service"></a>重新训练 Web 服务
-重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新训练的模型。 Web 服务定义是 Web 服务训练模型的内部表示形式，它不能直接进行修改。 请确保为预测实验而不是训练实验检索 Web 服务定义。
+重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。 Web 服务定义是 Web 服务训练模型的内部表示形式，它不能直接进行修改。 请确保为预测实验而不是训练实验检索 Web 服务定义。
 
 ## <a name="sign-in-to-azure-resource-manager"></a>登录到 Azure Resource Manager
 首先必须使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境中登录 Azure 帐户。

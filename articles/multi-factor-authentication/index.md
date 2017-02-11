@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用可提供简单登录过程的多种验证方法来部署多重身份验证。 教程、SDK 和其他资源。"
 translationtype: Human Translation
-ms.sourcegitcommit: defa12cb202ce4861a479ac40782248cd50039d3
-ms.openlocfilehash: 2db76cf5af88cc103b0109eb8ead4d63cbae0a0e
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 6ff0e1c42ad151c56500596d99f63bae200368ed
 
 ---
 # <a name="multi-factor-authentication-documentation"></a>多重身份验证文档
 
-Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证方法（包括电话、短信或移动应用验证）提供强大的身份验证机制。
+了解如何部署和管理 Azure 多重身份验证（双步骤身份验证系统）。 教程、SDK 和其他文档介绍了如何使用多种验证方法，在提供简单登录过程的同时实现增强的身份验证。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -104,15 +105,10 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azur
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/multi-factor-authentication.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载多重身份验证文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

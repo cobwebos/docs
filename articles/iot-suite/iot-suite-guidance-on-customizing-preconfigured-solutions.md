@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2016
-ms.author: aguilaaj
+ms.author: araguila
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6cca62c7245304bf49b47c1548aa3352b7c2a76e
+ms.sourcegitcommit: 45fd461defc00c5dc018496b85b8bf85614f03dd
+ms.openlocfilehash: 0037b9e28b20c9a85f810cba45aa5b4cbcf6ab6b
 
 
 ---
@@ -57,9 +57,9 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 除了更改预配置的 Azure 流分析作业，也可以使用 Azure 门户添加新作业或添加对现有作业的新查询。
 
 ## <a name="customizing-devices"></a>自定义设备
-最常见的扩展活动之一是使用方案特定的设备。 使用设备的方法有数种。 这些方法包括更改模拟设备以符合你的方案，或使用 [IoT Device SDK][IoT Device SDK] 将物理设备连接到解决方案。
+最常见的扩展活动之一是使用方案特定的设备。 使用设备的方法有数种。 这些方法包括更改模拟设备以符合你的方案，或使用 [IoT 设备 SDK][IoT Device SDK] 将物理设备连接到解决方案。
 
-有关向远程监视预配置解决方案添加设备的分步指南，请参阅 [Iot 套件连接设备](iot-suite-connecting-devices.md)和[远程监视 C SDK 示例](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring)（旨在搭配远程监视预配置解决方案）。
+有关向远程监视预配置解决方案添加设备的分步指南，请参阅 [Iot 套件连接设备](iot-suite-connecting-devices.md)和[远程监视 C SDK 示例](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring)（旨在搭配远程监视预配置解决方案）。
 
 ### <a name="creating-your-own-simulated-device"></a>创建你自己的模拟设备
 之前提及的远程监视解决方案源代码中包含 .NET 模拟器。 此模拟器是解决方案中预配的模拟器，并且可以更改以发送不同的元数据、遥测数据或响应不同的命令。
@@ -67,7 +67,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 远程监视预配置解决方案中的预配置模拟器是发出温度和湿度遥测的冷却设备，当你分叉 GitHub 存储库后，可以在 [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) 项目中修改模拟器。
 
 ### <a name="available-locations-for-simulated-devices"></a>模拟设备的可用位置
-默认的位置集为美国华盛顿州西雅图/雷德蒙德。 可以在 [SampleDeviceFactory.cs][lnk-sample-device-factory] 中更改这些位置。
+默认的位置集为美国华盛顿州西雅图/雷德蒙德。 可以 [SampleDeviceFactory.cs][lnk-sample-device-factory] 中更改这些位置。
 
 ### <a name="building-and-using-your-own-physical-device"></a>生成并使用你自己的（物理）设备
 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 提供用于将各种设备类型（语言和操作系统）连接到 IoT 解决方案中的库。
@@ -80,7 +80,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 默认值为 200。 可以在 [TelemetryApiController.cs][lnk-telemetry-api-controller-01] 中更改此数字。
 
 ### <a name="time-period-of-telemetry-graph"></a>遥测图形的时间段
-默认值为 10 分钟。 可以在 [TelmetryApiController.cs][lnk-telemetry-api-controller-02] 中更改此数字。
+默认值为 10 分钟。 可以在 [TelmetryApiController.cs][lnk-telemetry-api-controller-02] 中更改此值。
 
 ## <a name="manually-setting-up-application-roles"></a>手动设置应用程序角色
 以下过程描述如何将 **Admin** 和 **ReadOnly** 应用程序角色添加到预配置解决方案中。 请注意，从 azureiotsuite.com 站点预配的预配置解决方案已经包含 **Admin** 和 **ReadOnly** 角色。
@@ -127,7 +127,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 9. 保存更新后的 .json 文件（可以覆盖现有文件）。
 10. 在 Azure 管理门户中，选择页面底部的“**管理清单**”，然后选择“**上载清单**”上载你在上一步保存的 .json 文件。
 11. 现在已将 **Admin** 和 **ReadOnly** 角色添加到应用程序中。
-12. 若要将其中一个角色分配给你目录中的用户，请参阅 [azureiotsuite.com 站点上的权限][lnk-permissions]。
+12. 若要将其中一个角色分配给目录中的用户，请参阅 [azureiotsuite.com 站点上的权限][lnk-permissions]。
 
 ## <a name="feedback"></a>反馈
 本文档是否涵盖你感兴趣的自定义内容？ 请在“[用户心声](https://feedback.azure.com/forums/321918-azure-iot)”中添加功能建议，或在本文下方留言。 
@@ -136,7 +136,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 若要详细了解自定义预配置解决方案的选项，请参阅：
 
 * [将逻辑应用连接到 Azure IoT 套件远程监视预配置解决方案][lnk-logicapp]
-* [将动态遥测与远程监视预配置解决方案一起使用][lnk-dynamic]
+* [配合使用动态遥测和远程监视预配置解决方案][lnk-dynamic]
 * [远程监视预配置解决方案中的设备信息元数据][lnk-devinfo]
 
 [lnk-logicapp]: iot-suite-logic-apps-tutorial.md
@@ -153,6 +153,6 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 12/09/2016
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 5e182811adc29ae00d40355bb4813c30eb0b904c
-ms.openlocfilehash: 1a4a2ed7cd2b8cfe3ed328c696cd6ba4d2cc03bc
+ms.sourcegitcommit: efd154811ebbcf2170ffb001344a954be72b1d92
+ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
 
 
 ---
@@ -50,10 +50,14 @@ ms.openlocfilehash: 1a4a2ed7cd2b8cfe3ed328c696cd6ba4d2cc03bc
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
-> [!IMPORTANT]
-> 从版本 1.9.2 发行版开始，在查询已分区的集合时，可能会收到 System.NotSupportedException。 若要避免此错误，确保主机进程是 64 位。 对于可执行项目，在生成选项卡的项目属性窗口中，通过取消“Prefer 32 位”选项可实现以上目的。
-> 
-> 
+
+### <a name="a-name11101110httpswwwnugetorgpackagesmicrosoftazuredocumentdb1110"></a><a name="1.11.0"/>[1.11.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.0)
+* 支持新类和方法，可处理集合内的文档[更改源](documentdb-change-feed.md)。
+* 支持跨分区查询延续和跨分区查询的一些性能改进。
+* 添加 CreateDatabaseIfNotExistsAsync 和 CreateDocumentCollectionIfNotExistsAsync 方法。
+* 针对系统函数 IsDefined、IsNull 和 IsPrimitive 的 LINQ 支持。
+* 修复了将 Nuget 包与具有 project.json 工具的项目搭配使用时，自动将 Microsoft.Azure.Documents.ServiceInterop.dll 和 DocumentDB.Spatial.Sql.dll 程序集自动 binplace 到应用程序的 bin 文件夹中的问题。
+* 支持发出客户端侧 ETW 跟踪，这对调试方案很有用。
 
 ### <a name="a-name11001100httpswwwnugetorgpackagesmicrosoftazuredocumentdb1100"></a><a name="1.10.0"/>[1.10.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.10.0)
 * 添加已分区集合得直接连接支持。
@@ -179,7 +183,7 @@ ms.openlocfilehash: 1a4a2ed7cd2b8cfe3ed328c696cd6ba4d2cc03bc
 ### <a name="a-name09x-preview09x-previewhttpswwwnugetorgpackagesmicrosoftazuredocumentsclient"></a><a name="0.9.x-preview"/>[0.9.x-preview](https://www.nuget.org/packages/Microsoft.Azure.Documents.Client)
 * 预览版 SDK[已过时]
 
-## <a name="release-retirement-dates"></a>发布和停用日期
+## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
@@ -195,6 +199,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.11.0](#1.11.0) |2016 年 12 月 08 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 9 月 27 日 |--- |
 | [1.9.5](#1.9.5) |2016 年 9 月 1 日 |--- |
 | [1.9.4](#1.9.4) |2016 年 8 月 24 日 |--- |
@@ -231,6 +236,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

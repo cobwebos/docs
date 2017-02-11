@@ -14,21 +14,21 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
+ms.sourcegitcommit: ee9ebc23ce805bb4665669077a4d3fddf4c43e32
+ms.openlocfilehash: a190b1990a4ae4e7ad52cc1a7e802c8002522917
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>在运行时使用 Application Insights 检测 Web 应用
-*Application Insights 以预览版提供。*
 
-无需修改或重新部署代码，即可使用 Visual Studio Application Insights 检测实时 Web 应用。 如果应用由本地 IIS 服务器托管，请安装“状态监视器”；如果应用是 Azure Web 应用或者在 Azure VM 中运行，可以安装 Application Insights 扩展。 （我们还单独提供了有关检测[实时 J2EE Web 应用](app-insights-java-live.md)和 [Azure 云服务](app-insights-cloudservices.md)的文章。）
+
+无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 如果应用由本地 IIS 服务器托管，请安装“状态监视器”；如果应用是 Azure Web 应用或者在 Azure VM 中运行，可以安装 Application Insights 扩展。 （我们还单独提供了有关检测[实时 J2EE Web 应用](app-insights-java-live.md)和 [Azure 云服务](app-insights-cloudservices.md)的文章。）
 
 ![示例图表](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
 可以选择三种途径将 Application Insights 应用到 .NET Web 应用程序：
 
-* **构建时：** [将 Application Insights SDK 添加][greenbrown] 到 Web 应用代码。
+* **生成时：**[将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
 * **运行时：** 如下所述检测服务器上的 Web 应用，无需重建并重新部署代码。
 * **结合两种方法：** 将 SDK 构建到 Web 应用代码中，同时应用运行时扩展。 这样就充分利用了两种方法的优势。
 
@@ -38,8 +38,8 @@ ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
 | --- | --- | --- |
 | 请求和异常 |是 |是 |
 | [更详细异常](app-insights-asp-net-exceptions.md) | |是 |
-| [依赖项诊断](app-insights-asp-net-dependencies.md) |在 .NET 4.6+ 上 |是 |
-| [系统性能计数器](app-insights-performance-counters.md) | |IIS 或 Azure 云服务，而不是 Azure Web 应用 |
+| [依赖项诊断](app-insights-asp-net-dependencies.md) |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
+| [系统性能计数器](app-insights-performance-counters.md) |是 |是 |
 | [自定义遥测 API][api] |是 | |
 | [跟踪日志集成](app-insights-asp-net-trace-logs.md) |是 | |
 | [页面视图和用户数据](app-insights-javascript.md) |是 | |
@@ -55,29 +55,23 @@ ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
 
 ### <a name="if-your-app-is-hosted-on-your-iis-server"></a>如果应用托管在 IIS 服务器上
 1. 在 IIS Web 服务器上，使用管理员凭据登录。
-2. 下载并运行 [状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)。
-3. 在安装向导中，登录到 Microsoft Azure。
-
-    ![使用 Microsoft 帐户凭据登录 Azure](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
-
-    *连接错误？请参阅[故障排除](#troubleshooting)。*
-4. 选择要监视的已安装 Web 应用程序或网站，然后配置在 Application Insights 门户中查看结果时要使用的资源。
+2. 下载并运行 [状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)。  
+3. 选择要监视的已安装 Web 应用程序或网站，然后配置在 Application Insights 门户中查看结果时要使用的资源。 应登录到 Microsoft Azure。
 
     ![选择应用和资源。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
-    通常，可以选择配置新的资源和[资源组][角色]。
+    通常，可以选择配置新的资源和[资源组][roles]。
 
-    否则，如果已经为站点设置了 [Web 测试][可用性]，或者设置了 [Web 客户端监视][客户端]，请使用现有资源。
-5. 重新启动 IIS。
+    否则，如果已经为站点设置了 [Web 测试][availability]，或者设置了 [Web 客户端监视][client]，请使用现有资源。
+4. 重新启动 IIS。
 
     ![选择对话框顶部的“重新启动”。](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
     Web 服务将中断片刻时间。
-6. 可以看到，ApplicationInsights.config 已插入想要监视的 Web 应用。
+5. 可以看到，ApplicationInsights.config 已插入想要监视的 Web 应用。
 
     ![找到 Web 应用的 .config 文件以及代码文件。](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
-
-   web.config 也有一些改动。
+   
 
 #### <a name="want-to-reconfigure-later"></a>稍后再（重新）配置可以吗？
 完成向导后，随时可以重新配置代理。 如果已安装代理但初始设置有问题，也可以这样做。
@@ -105,7 +99,7 @@ ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
 ![依赖项](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
 
 ## <a name="performance-counters"></a>性能计数器
-（不适用于 Azure Web 应用。）在“概述”边栏选项卡上单击“服务器”，查看服务器性能计数器的图表，例如 CPU 占用率和内存用量。
+在“概述”边栏选项卡上单击“服务器”，查看服务器性能计数器的图表，例如 CPU 占用率和内存用量。
 
 如果有多个服务器实例，可以编辑图表，以便按角色实例分组。
 
@@ -146,10 +140,11 @@ ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
 * Windows Server 2008 R2
 * Windows Server 2012
 * Windows server 2012 R2
+* Windows Server 2016
 
-（装有最新版 SP 及 .NET Framework 4.0 和 4.5）
+（装有最新 SP 及 .NET Framework 4.5）
 
-在客户端 Windows 7、8 和 8.1 上，同样需要安装 .NET Framework 4.0 和 4.5
+在客户端 Windows 7、8、8.1 和 10 上，同样需要安装 .NET Framework 4.5
 
 IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
@@ -214,24 +209,24 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 * 将最新的 Application Insights SDK 下载到服务器。
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
-* [创建 Web 测试][可用性]，确保站点保持活动状态。
-* [搜索事件和日志][诊断]，帮助诊断问题。
-* [添加 Web 客户端遥测][用法]，查看网页代码中的异常并可以插入跟踪调用。
-* [将 Application Insights SDK 添加到 Web 服务代码][greenbrown]，以便可以将跟踪和日志调用插入到服务器代码中。
+* [创建 Web 测试][availability]，确保站点保持活动状态。
+* [搜索事件和日志][diagnostic]帮助诊断问题。
+* [添加 Web 客户端遥测][usage]，查看网页代码中的异常并将其插入跟踪调用。
+* [将 Application Insights SDK 添加到 Web 服务代码][greenbrown]，以便可以将跟踪和日志调用插入服务器代码。
 
 <!--Link references-->
 
-[API]: app-insights-api-custom-events-metrics.md
-[可用性]: app-insights-monitor-web-app-availability.md
-[客户端]: app-insights-javascript.md
-[诊断]: app-insights-diagnostic-search.md
+[api]: app-insights-api-custom-events-metrics.md
+[availability]: app-insights-monitor-web-app-availability.md
+[client]: app-insights-javascript.md
+[diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
-[问题与解答]: app-insights-troubleshoot-faq.md
-[角色]: app-insights-resources-roles-access-control.md
-[使用情况]: app-insights-web-track-usage.md
+[qna]: app-insights-troubleshoot-faq.md
+[roles]: app-insights-resources-roles-access-control.md
+[usage]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

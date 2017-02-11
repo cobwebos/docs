@@ -8,23 +8,23 @@ manager: jhubbard
 editor: 
 ms.assetid: fab506b2-439d-4f1a-bdc5-d1d25c80d267
 ms.service: sql-database
-ms.custom: app development case study; app development
+ms.custom: app development case study
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/08/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 66360bc0a8618d250cc07e3e806af6c9a157afaf
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 40ad0b85072c3a54c7791500663c4dd88133c095
 
 
 ---
 # <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>借助 Azure，SnelStart 以每月 1,000 个新 Azure SQL 数据库的速度快速扩展其业务服务
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
 
-SnelStart 为荷兰的中小企业 (SMB) 编写流行的财务和业务管理软件。 它的 55,000 家客户由 110 名员工提供服务，其中包括 35 名 IT 人员。 通过从桌面软件转移到 Azure 上的软件即服务 (SaaS) 产品，SnelStart 不仅能够使用 C# 中的熟悉环境将管理自动化，而且还能使用弹性数据库池避免过度预配或预配不足，优化性能与可缩放性，从而充分利用内置服务。 Azure 使得 SnelStart 能够在本地环境与云之间灵活移动客户。
+SnelStart 为荷兰的中小企业 (SMB) 编写流行的财务和业务管理软件。 它的 55,000 家客户由 110 名员工提供服务，其中包括 35 名 IT 人员。 通过从桌面软件转移到 Azure 上的服务型软件 (SaaS) 产品，SnelStart 不仅能够使用 C# 中的熟悉环境将管理自动化，而且还能使用弹性池避免过度预配或预配不足，优化性能与可缩放性，从而充分利用内置服务。 Azure 使得 SnelStart 能够在本地环境与云之间灵活移动客户。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Database-Case-Study-SnelStart/player]
 > 
@@ -55,7 +55,7 @@ SnelStart 是一家现代化的敏捷型高科技企业，其渊源可追溯到 
 现今，SnelStart 是主要的业务线 (LOB) 及业务管理应用程序提供商，目标用户是荷兰的中小企业和创业者。 IT 架构师 Carlo Kuip 说道，“我们的目标是要为客户提供 100% 的业务管理服务自动化。”
 
 ## <a name="optimizing-performance-and-cost-with-elastic-pools"></a>通过弹性池优化性能和成本
-SnelStart 是弹性数据库池的早期大规模采用者。 弹性池可帮助该公司控制成本，更有效地管理性能要求。 Been 表示，“使用弹性数据库池，我们可以根据客户的需求优化性能，而不会发生过度预配的情况。 如果我们必须根据高峰负载预配，费用将相当高昂。 在多个低使用量数据库之间共享资源的做法，使我们能够创建既能顺畅运行又能符合成本效益的解决方案。”
+SnelStart 是弹性池的早期大规模采用者。 弹性池可帮助该公司控制成本，更有效地管理性能要求。 Been 表示，“使用弹性池，我们可以根据客户的需求优化性能，而不会发生过度预配的情况。 如果我们必须根据高峰负载预配，费用将相当高昂。 在多个低使用量数据库之间共享资源的做法，使我们能够创建既能顺畅运行又能符合成本效益的解决方案。”
 
 ## <a name="azure-sql-databases-help-containerize-data-for-isolation-and-security"></a>Azure SQL 数据库帮助容器化数据，实现隔离和安全性
 Azure SQL 数据库使得 SnelStart 能够以轻松通透的方式将客户的本地业务管理数据转移到 Azure。 Azure SQL 数据库是一个便利的容器，提供隔离、身份验证和授权边界，以及轻松备份与还原功能。 数据库为业务管理提供了一个适当的概念模型。 IT 架构师 Carlo Kuip 表示，“此容器边界内的项目包含对企业到关重要的敏感数据，将这些项目存储在隔离的数据库中可为它们提供严密的防护。 我们可以在数据库级别管理授权，甚至将管理自动化以及横向扩展这些数据库，而无需雇用数据库管理员 (DBA)。”
@@ -63,7 +63,7 @@ Azure SQL 数据库使得 SnelStart 能够以轻松通透的方式将客户的�
 Azure SQL 数据仓库在 SnelStart 安全与管理方案中帮助公司收集遥测数据（例如入侵检测、用户活动记录和连接），因此也扮演着相当重要的角色。
 
 ## <a name="azure-removes-overhead-so-that-developers-can-spend-more-time-delivering-value"></a>Azure 消除了开销，使开发人员可以更专注于创造价值
-Azure 平台模型消除了基础结构开销，使 SnelStart 能够使用 C# 管理库将部署自动化。 Kuip 指出，“我们能够以很少的人员来拓展当前的运营，同时能为客户增强可缩放性、速度及灾难恢复选项。 过渡到服务开发释放了资源，让我们专注于新服务和功能，而不只是更新现有的代码来跟上新法规或税务条例的要求。” 他补充道，“通过将管理自动化和使用 SaaS 产品，我们能够为客户提供更大价值，无需在操作人员上大量投资。” 例如，使用 Azure 和弹性数据库池，SnelStart 可以添加各种新功能，包括与银行的更健全客户数据集成、新帐务服务、小型企业背景检查，以及电子邮件服务。
+Azure 平台模型消除了基础结构开销，使 SnelStart 能够使用 C# 管理库将部署自动化。 Kuip 指出，“我们能够以很少的人员来拓展当前的运营，同时能为客户增强可缩放性、速度及灾难恢复选项。 过渡到服务开发释放了资源，让我们专注于新服务和功能，而不只是更新现有的代码来跟上新法规或税务条例的要求。” 他补充道，“通过将管理自动化和使用 SaaS 产品，我们能够为客户提供更大价值，无需在操作人员上大量投资。” 例如，使用 Azure 和弹性池，SnelStart 可以添加各种新功能，包括与银行的更健全客户数据集成、新帐务服务、小型企业背景检查，以及电子邮件服务。
 
 > “仅仅是 2016 年的头几个月，我们便将 Azure SQL 数据库部署从 5,500 个扩展到超过 12,000 个，而我们目前正以每月 1,000 个数据库的速度持续增加。”
 > 
@@ -88,7 +88,7 @@ Azure 平台模型消除了基础结构开销，使 SnelStart 能够使用 C# �
 
 ![SnelStart 体系结构](./media/sql-database-implementation-snelstart/figure1.png)
 
-图 1. 截至 2016 年 6 月，SnelStart 拥有超过 11,000 个数据库，以及超过 50 个弹性数据库池
+图 1. 截至 2016 年 6 月，SnelStart 拥有超过 11,000 个数据库，以及超过 50 个弹性池
 
 ## <a name="simplicity-from-the-cloud"></a>云的简便性
 自从转移到基于 Azure 云的解决方案之后，SnelStart 能够为快速增长的客户提供支持，同时提供创新的功能和服务。 Been 指出，“通过 Azure，我们可以为客户提供几乎持续不断的更新，而无需扩大操作人员编制。 我们顺便还获得了其他所有的优异 Azure 功能，例如可缩放性和灾难恢复。”
@@ -103,7 +103,7 @@ SnelStart 也很赞赏与 Microsoft Azure SQL 数据库团队发展出的密切�
 SnelStart 当前的目标是不断拓展客户群体并使他们感到满意。 Been 说道，“消除了过去作为 ISV 的技术与资源限制，我们的发展便没有束缚。”
 
 ## <a name="more-information"></a>详细信息
-* 有关 Azure 弹性数据库池的详细信息，请参阅[弹性数据库池](sql-database-elastic-pool.md)。
+* 有关 Azure 弹性池的详细信息，请参阅[弹性池](sql-database-elastic-pool.md)。
 * 有关 Web 角色和辅助角色的详细信息，请参阅[辅助角色](../fundamentals-introduction-to-azure.md#compute)。    
 * 有关 Azure SQL 数据仓库的详细信息，请参阅 [SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * 有关 SnelStart 的详细信息，请参阅 [SnelStart](http://www.snelstart.nl)。
@@ -111,6 +111,6 @@ SnelStart 当前的目标是不断拓展客户群体并使他们感到满意。 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

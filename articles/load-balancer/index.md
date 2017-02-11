@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "了解如何使用负载均衡器提高应用的网络性能。 管理虚拟机、云资源和跨界虚拟网络中的流量。"
 translationtype: Human Translation
-ms.sourcegitcommit: e62704476642d8a519b7bd8b9b101b47ab42e08c
-ms.openlocfilehash: 476eb9f4934d35a808fdd70b6443822eb0a7cfa7
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 53a3e534f9c93c73ef6d28696c5a9d6430a7a258
 
 ---
 #<a name="load-balancer-documentation"></a>负载均衡器文档
@@ -132,13 +132,7 @@ ms.openlocfilehash: 476eb9f4934d35a808fdd70b6443822eb0a7cfa7
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/load-balancer.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载负载均衡器文档 </div>
-    </a>
-</div>
+
 
 
 

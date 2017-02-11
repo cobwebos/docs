@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 07/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 38416deeb583c78bca9ded2e514bf3ddff716c52
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 071cc504cc4111e20391af86ffdc7819644ec434
 
 
 ---
@@ -55,11 +55,11 @@ Azure SQL 数据库提供的性能工具通过提供智能优化操作和建议�
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)
-* [何时使用弹性数据库池？](sql-database-elastic-pool-guidance.md)
+* [何时应使用弹性池？](sql-database-elastic-pool-guidance.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

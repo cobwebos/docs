@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解 HDInsight 上的 Hadoop。 文档介绍了如何使用 Hadoop、Spark、HBase、R-Server 和其他技术来处理、分析大数据以及从中获得见解。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 28b6ebfae16a5c2e119fc4f1af0dcee6a348d47f
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: d78d12c6844e88da8b5d8b7cd99a38d6f4d36774
 
 ---
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight 文档
 
-Azure HDInsight 是采用云技术的 Apache Hadoop 分发版。  借助 Azure HDInsight，可以在云中使用 Hortonworks 数据平台 (HDP) 分发版中的 Hadoop 组件，并且可以部署和预配具有高可靠性与可用性的托管群集。  Azure HDInsight 为 Apache Hadoop、Spark、HBase 和 Storm 提供群集配置。  用户还可以通过脚本操作使用自定义群集。  
+了解如何在 HDInsight 上使用云中的 Hadoop 来分析流数据或历史数据。 教程和其他文档介绍了如何使用 Hadoop 生态系统中的 Hadoop、Spark、HBase、R-Server、Storm 和其他技术来创建群集、处理与分析大数据，以及开发解决方案。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -166,16 +167,10 @@ Azure HDInsight 是采用云技术的 Apache Hadoop 分发版。  借助 Azure H
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/hdinsight.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 HDInsight 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

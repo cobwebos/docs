@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6c9e285834707b668086ceab7fdde582f0cd87cc
+ms.sourcegitcommit: d9f6c8c73cb7803547053ec495812f993eb44c43
+ms.openlocfilehash: b2f8683be1dea938cba84766efe32287eeebb712
 
 
 ---
@@ -108,7 +108,7 @@ Azure DocumentDB 可确保所有属性通过其[自动索引](documentdb-indexin
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
-至于关注者，则需要有更多的技巧来处理。 DocumentDB 的文档大小限制为 512Kb，因此你可以考虑使用以下结构，以文档形式存储关注者：
+至于关注者，则需要有更多的技巧来处理。 DocumentDB 具有文档大小限制，而且读取/写入大型文档会影响应用程序的可伸缩性。 因此，可考虑使用以下结构，以文档形式存储关注者：
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -121,7 +121,7 @@ Azure DocumentDB 可确保所有属性通过其[自动索引](documentdb-indexin
         ]
     }
 
-这可能适用于有数千位关注者的用户，但是，如果有一些名人添加我们的行列，此处理方法最终将达到文档大小上限。
+这对于拥有数千位关注者的用户可能有用，但如果有名人加入我们的排名，此方法会生成大型文档，并可能最终达到文档大小上限。
 
 为了解决此问题，我们可以使用一种混合方法。 我们可以在用户统计信息文档中存储关注者人数：
 
@@ -234,6 +234,6 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -3,7 +3,7 @@ title: "Batch 服务配额和限制 | Microsoft Docs"
 description: "了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,11 +12,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2016
-ms.author: marsma
+ms.date: 01/05/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 1a530bf6e9afca9a7cdc1f68e8eefdbf077dc516
 
 
 ---
@@ -49,7 +49,7 @@ ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
 <sup>1</sup> 最大的块 Blob 大小的 Azure 存储空间限制
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
-可在 [Azure 门户][portal]中查看 Batch 帐户配额。
+可在 [Azure 门户][portal]中查看批处理帐户配额。
 
 1. 在门户中选择“Batch 帐户”，然后选择所需的 Batch 帐户。
 2. 在 Batch 帐户的菜单边栏选项卡中选择“属性”
@@ -77,7 +77,7 @@ ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 根据[业务影响情况][support_sev]选择“严重性”。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
+    b. 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
    
     单击“下一步”。
 5. 在“联系信息”边栏选项卡上：
@@ -103,6 +103,6 @@ ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

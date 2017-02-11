@@ -10,7 +10,6 @@
 
 # 入门
 ## [Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [交互式 Hive 预览版入门](hdinsight-hadoop-use-interactive-hive.md)
 ## [从 R Server 开始](hdinsight-hadoop-r-server-get-started.md)
 ## [Spark 入门](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [HBase 和 NoSQL 入门](hdinsight-hbase-tutorial-get-started-linux.md)
@@ -62,10 +61,12 @@
 ### [预测 HVAC 性能](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [预测食品检测结果](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [分析网站日志](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+### [使用 Zeppelin 笔记本](hdinsight-apache-spark-use-zeppelin-notebook.md)
 ### [Jupyter 笔记本内核](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 ### [适用于 Jupyter 笔记本的包](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 ### [使用本地 Jupyter 笔记本](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [远程作业与 Livy](hdinsight-apache-spark-livy-rest-interface.md)
+### [使用 Eclipse 开发应用](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [使用 IntelliJ 开发应用](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [使用 IntelliJ 远程调试](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [管理资源](hdinsight-apache-spark-resource-manager.md)
@@ -157,6 +158,7 @@
 #### [使用 Azure CLI](hdinsight-administer-use-command-line.md)
 ### [使用 Ambari Web UI 管理群集](hdinsight-hadoop-manage-ambari.md)
 #### [使用 Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+### [添加存储帐户](hdinsight-hadoop-add-storage.md)
 ### [上载 Hadoop 作业的数据](hdinsight-upload-data.md)
 ### [使用 Sqoop 导入和导出数据](hdinsight-use-sqoop.md)
 #### [使用 SSH 进行连接](hdinsight-use-sqoop-mac-linux.md)
@@ -225,6 +227,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

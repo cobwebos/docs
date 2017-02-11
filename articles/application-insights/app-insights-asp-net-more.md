@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5b7f1533aca3b5391252e4195e2edeb6443827fd
+ms.sourcegitcommit: e1f9c62765e414e194330419f26c2b7437da21b3
+ms.openlocfilehash: 79cfe90bb883b5cadf707272d31a990c8886dbe4
 
 
 ---
@@ -63,7 +63,7 @@ ms.openlocfilehash: 5b7f1533aca3b5391252e4195e2edeb6443827fd
 将 Application Insights JavaScript 代码段添加到每个网页，从客户端浏览器获取遥测。
 
 1. 在 Azure 中，打开你的应用的 Application Insights 资源。
-2. 依次打开“开始使用”、“监视客户端”，然后复制该代码片段。
+2. 依次打开“开始使用”、“监视和诊断客户端应用程序”，然后复制该代码片段。
 3. 粘贴代码段，以便它显示在每个网页的页眉，你通常可以通过将其粘贴到主布局页面中实现此目的。
 
 ![在 Azure 中扩展](./media/app-insights-asp-net-more/100.png)
@@ -133,6 +133,6 @@ ms.openlocfilehash: 5b7f1533aca3b5391252e4195e2edeb6443827fd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

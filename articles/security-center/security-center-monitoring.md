@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 01/10/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
-ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
+ms.sourcegitcommit: b0694222548e39718f6626c1b1666584445f8398
+ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 在“资源安全运行状况”磁贴中，可以监视资源的安全状态。 在下面的示例中，可以看到许多问题严重级别为“高”和“中”，需要引起注意。 启用的安全策略会影响受监视控件的类型。
 
-![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
+![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
 
 如果安全中心确定需要解决的漏洞（例如虚拟机缺少安全更新，或者子网没有[网络安全组](/virtual-network/virtual-networks-nsg.md)），会将其列在此处。
 
@@ -169,7 +169,8 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 此边栏选项卡底部为对此虚拟机的建议，与前述内容类似。 单击某个建议即可了解其详细信息或应用所需的安全控制或配置。
 
 ### <a name="monitor-data"></a>监视数据
-在“资源安全运行状况”磁贴中单击“数据”时，“数据资源”边栏选项卡将会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读“Enable encryption for Azure storage account in Azure Security Center”（在 Azure 安全中心为 Azure 存储帐户启用加密）。
+
+在“资源安全运行状况”磁贴中单击“SQL 和数据”时，“数据资源”边栏选项卡将会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
 
 ![数据资源](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
@@ -217,6 +218,6 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

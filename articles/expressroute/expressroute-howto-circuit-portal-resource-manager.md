@@ -14,20 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: cherylmc
+ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: 8eb67e0800671f4d41612780db52a243023b9e5a
+ms.sourcegitcommit: 5c6ee9ef23e8594391a4fce313f945b31e6870a7
+ms.openlocfilehash: ed4bd2e039196e60b7366fd9d2e8a8b43ce00f30
 
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
-> * [Azure 门户 - Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell - 资源管理器](expressroute-howto-circuit-arm.md)
-> * [PowerShell - 经典](expressroute-howto-circuit-classic.md)
+> * [Resource Manager - Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
+> * [经典 - PowerShell](expressroute-howto-circuit-classic.md)
+> * [视频 - Azure 门户](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
-> 
+>
 
 本文介绍如何使用 Azure 门户和 Azure Resource Manager 部署模型创建 Azure ExpressRoute 线路。 以下步骤还说明如何查看线路状态，以及如何更新、删除和取消预配线路。
 
@@ -39,6 +40,7 @@ ms.openlocfilehash: 8eb67e0800671f4d41612780db52a243023b9e5a
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 确保有权访问 [Azure 门户](https://portal.azure.com)。
 * 确保你有权创建新的网络资源。 如果你没有适当的权限，请与帐户管理员联系。
+* 可以在开始前[观看一段视频](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)，以更好地了解步骤。
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>创建和预配 ExpressRoute 线路
 ### <a name="1-sign-in-to-the-azure-portal"></a>1.登录到 Azure 门户
@@ -127,7 +129,7 @@ ms.openlocfilehash: 8eb67e0800671f4d41612780db52a243023b9e5a
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
 * 增加 ExpressRoute 线路的带宽。 请注意，不支持对线路的带宽进行降级。 
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 请注意，不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
-* 可以启用和禁用“允许经典操作”。
+* 可以启用和禁用允许经典操作。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
 
@@ -147,6 +149,6 @@ ms.openlocfilehash: 8eb67e0800671f4d41612780db52a243023b9e5a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

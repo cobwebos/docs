@@ -13,16 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/08/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 8c295a4207e9d12eb0cb978205a75d536d6a55e7
+ms.sourcegitcommit: 5a9b3e94faee1db7c38b9f60045637640d820208
+ms.openlocfilehash: b11d9d67234c85af8f9fcb9992864ef9e1662a79
 
 
 ---
 # <a name="import-data-to-documentdb-with-the-database-migration-tool"></a>使用数据库迁移工具将数据导入到 DocumentDB 
 本文介绍如何使用官方开放源代码 DocumentDB 数据迁移工具将数据从各种源（包括 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 和 DocumentDB集合）导入到 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)。
+
+如果要将数据导入具有 MongoDB 支持的 DocumentDB 帐户，请按照[将数据迁移到具有 MongoDB 协议支持的 DocumentDB](documentdb-mongodb-migrate.md) 中的说明操作。
 
 阅读本文之后，你将能够回答以下问题：  
 
@@ -78,6 +80,12 @@ DocumentDB 数据迁移工具是一个开源解决方案，它将数据从多个
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
 ## <a name="a-idmongodbaimport-from-mongodb"></a><a id="MongoDB"></a>从 MongoDB 中导入
+
+> [!IMPORTANT]
+> 如果要导入到具有 MongoDB 支持的 DocumentDB 帐户，请按照这些[说明](documentdb-mongodb-migrate.md)操作。
+> 
+> 
+
 借助 MongoDB 源导入程序选项，可从单个 MongoDB 集合中导入，并且选择使用查询筛选文档和/或使用投影来修改文档结构。  
 
 ![MongoDB 源选项的屏幕截图 - documentdb 与 mongodb 对比](./media/documentdb-import-data/mongodbsource.png)
@@ -102,6 +110,12 @@ DocumentDB 数据迁移工具是一个开源解决方案，它将数据从多个
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
 ## <a name="a-idmongodbexportaimport-mongodb-export-files"></a><a id="MongoDBExport"></a>导入 MongoDB 导出文件
+
+> [!IMPORTANT]
+> 如果要导入到具有 MongoDB 支持的 DocumentDB 帐户，请按照这些[说明](documentdb-mongodb-migrate.md)操作。
+> 
+> 
+
 借助 MongoDB 导出 JSON 文件源导入程序选项，可以导入一个或多个通过 mongoexport 实用程序生成的 JSON 文件。  
 
 ![MongoDB 导出源选项的屏幕截图 - documentdb 与 mongodb 对比](./media/documentdb-import-data/mongodbexportsource.png)
@@ -512,6 +526,6 @@ DocumentDB - 顺序记录导入程序具有下列高级附加选项︰
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

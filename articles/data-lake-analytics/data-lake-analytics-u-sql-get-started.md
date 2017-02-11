@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3ffeeb2e96510342abb0c0f8718273f41729cc2d
+ms.sourcegitcommit: 5137ccfd2c809fe17cc7fdf06941ebd797288d81
+ms.openlocfilehash: 496c3c1cc0f203a58a6f81476393b369e6a76215
 
 
 ---
 # <a name="tutorial-get-started-with-azure-data-lake-analytics-u-sql-language"></a>教程：Azure Data Lake Analytics U-SQL 语言入门
-U SQL 是一种统一了 SQL 优点的语言，让你的代码富有表达力，能够处理任何规模的所有数据。 U-SQL 的可缩放分布式查询功能可让你高效分析存储中以及跨关系存储（如 Azure SQL 数据库）中的数据。  通过对读取应用构架、插入自定义逻辑和 UDF 以及包括可扩展性以允许大规模精细化控制，让你能够处理非结构化数据。 若要了解 U-SQL 设计理念的详细信息，请参阅此 [Visual Studio 博客文章](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
+U SQL 是一种统一了 SQL 优点的语言，让你的代码富有表达力，能够处理任何规模的数据。 借助 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。  通过对读取应用构架、插入自定义逻辑和 UDF 以及包括可扩展性以允许大规模精细化控制，让你能够处理非结构化数据。 若要了解 U-SQL 设计理念的详细信息，请参阅此 [Visual Studio 博客文章](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
 从 ANSI SQL 或 T-SQL 处理会有一些差异。 例如，其关键字（如 SELECT）必须所有字母都大写。
 
 它是类型系统，表达式语言位于选择子句中，在这些子句中谓词等均为 C#。
-这意味着数据类型为 C# 类型且数据类型使用 C# NULL 语义，并且谓词内的比较操作遵循 C# 语法（例如，== "foo"）。  这也意味着值是完整的.NET 对象，让你可以轻松使用任何方法来操作对象 （例如 "f o o o"。Split(' ')）。
+这意味着数据类型为 C# 类型且数据类型使用 C# NULL 语义，并且谓词内的比较操作遵循 C# 语法（例如，== "foo"）。  这也意味着值是完整的.NET 对象，让你可以轻松使用任何方法来操作对象（例如 "f o o o".Split(' ')）。
 
 有关详细信息，请参阅 [U-SQL Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)（U-SQL 参考）。
 
 ### <a name="prerequisites"></a>先决条件
-必须完成[教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
+完成[教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
 
 在本教程中，可以使用以下 U-SQL 脚本运行 Data Lake Analytics 作业：
 
@@ -69,7 +69,7 @@ U SQL 是一种统一了 SQL 优点的语言，让你的代码富有表达力，
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
   
   > [!NOTE]
-  > 当前不支持对含公共 blob 的 Azure Blob 容器或公共容器的访问权限。
+  > 当前不支持对含公共 Blob 的 Azure Blob 容器或公共容器的访问权限。
   > 
   > 
 
@@ -151,7 +151,7 @@ WHERE 子句使用 [C# 布尔表达式](https://msdn.microsoft.com/library/6a71f
 ## <a name="aggregate-rowsets"></a>聚合行集
 U-SQL 为你提供了熟悉的 **ORDER BY****GROUP BY** 和聚合。
 
-以下查询查找每个区域的总持续时间，并按顺序输出前 5 个持续时间。
+以下查询查找每个区域的总持续时间，并按顺序输出前五个持续时间。
 
 U-SQL 行集不为下一个查询保留其顺序。 因此，若要对输出进行排序，需要向 OUTPUT 语句添加 ORDER BY，如下所示：
 
@@ -365,7 +365,7 @@ U-SQL 让你可以使用数据库和架构上下文中的数据。 因此你不�
 
 
 ### <a name="query-tables"></a>查询表
-可以通过与查询数据文件相同的方式查询表（在前面的脚本中创建）。 现在可以只是引用表名，而不是通过 EXTRACT 创建行集。
+可以通过与查询数据文件相同的方式查询表（在前面的脚本中创建）。 现在可以引用表名，而不是通过 EXTRACT 创建行集。
 
 修改以前使用的转换脚本，从表中读取：
 
@@ -392,7 +392,7 @@ U-SQL 让你可以使用数据库和架构上下文中的数据。 因此你不�
 ## <a name="conclusion"></a>结束语
 本教程介绍的内容仅为 U-SQL 的一小部分。 由于本教程范围所限，不能涵盖所有内容，如：
 
-* 使用 CROSS APPLY 部分字符串、数组和映射解压到行。
+* 使用 CROSS APPLY 将部分字符串、数组和映射解压到行。
 * 操作数据的分区集（文件集和分区表）。
 * 开发用户定义的运算符，如提取程序、outputters、处理器、用户定义的 C# 聚合函数。
 * 使用 U-SQL 开窗函数。
@@ -414,6 +414,6 @@ U-SQL 让你可以使用数据库和架构上下文中的数据。 因此你不�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

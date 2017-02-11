@@ -3,7 +3,7 @@ title: "向独立 Service Fabric 群集添加或删除节点 | Microsoft 文档"
 description: "了解如何向运行 Windows Server 的本地或任意云中物理计算机或虚拟机上的 Azure Service Fabric 群集添加节点。"
 services: service-fabric
 documentationcenter: .net
-author: dsk-2015
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2016
-ms.author: dkshir;chackdan
+ms.date: 12/06/2016
+ms.author: ryanwi;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
+ms.sourcegitcommit: 3f7d2861512ba02e3b158db78fbee771da1c788b
+ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 
 
 ---
@@ -29,20 +29,22 @@ ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
 3. 通过远程桌面 (RDP) 方式进入需要向群集添加的 VM/计算机。
 4. 向此 VM/计算机复制或[下载适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并解压该包。
 5. 以管理员身份运行 Powershell，并导航到解压缩包所在的位置。
-6. 使用描述要添加的新节点的参数运行 *AddNode.ps1* Powershell。 以下示例将名为 VM5、类型为 NodeType0 且 IP 地址为 182.17.34.52 的新节点添加到 UD1 和 FD1 中。 *ExistingClusterConnectionEndPoint* 是现有群集中已有节点的连接终结点。 对于此终结点，可以选择群集中*任何*节点的 IP 地址。
+6. 使用描述要添加的新节点的参数运行 *AddNode.ps1* Powershell。 以下示例将名为 VM5、类型为 NodeType0 且 IP 地址为 182.17.34.52 的新节点添加到 UD1 和 fd:/dc1/r0 中。 *ExistingClusterConnectionEndPoint* 是现有群集中已有节点的连接终结点。 对于此终结点，可以选择群集中*任何*节点的 IP 地址。
 
 ```
-.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain FD1 -AcceptEULA
+.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
 
 ```
+可以检查新节点是否是通过运行 cmdlet [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/servicefabric/vlatest/Get-ServiceFabricNode) 进行添加的。
+
 
 ## <a name="remove-nodes-from-your-cluster"></a>从群集中删除节点
-1. 根据针对群集选择的可靠性级别，有时无法删除主节点类型的前 n 个 (3/5/7/9) 节点
-2. 不支持在开发群集上运行 RemoveNode 命令。
-3. 通过远程桌面 (RDP) 方式进入需要从群集中删除的 VM/计算机。
-4. 复制或[下载适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并将该包解压缩到此 VM/计算机。
-5. 以管理员身份运行 Powershell，并导航到解压缩包所在的位置。
-6. 在 Powershell 中运行 *RemoveNode.ps1*。 以下示例从群集中删除当前节点。 *ExistingClientConnectionEndpoint* 是将保留在群集中的任何节点的客户端连接终结点。 选择群集中*任何***其他节点**的 IP 地址和终结点端口。 **另一个节点**反过来将更新已删除节点的群集配置。 
+根据针对群集选择的可靠性级别，有时无法删除主节点类型的前 n 个 (3/5/7/9) 节点。 另请注意，不支持在开发群集上运行 RemoveNode 命令。
+
+1. 通过远程桌面 (RDP) 方式进入需要从群集中删除的 VM/计算机。
+2. 复制或[下载适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并将该包解压缩到此 VM/计算机。
+3. 以管理员身份运行 Powershell，并导航到解压缩包所在的位置。
+4. 在 Powershell 中运行 *RemoveNode.ps1*。 以下示例从群集中删除当前节点。 *ExistingClientConnectionEndpoint* 是将保留在群集中的任何节点的客户端连接终结点。 选择群集中*任何***其他节点**的 IP 地址和终结点端口。 **另一个节点**反过来将更新已删除节点的群集配置。 
 
 ```
 .\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
@@ -64,6 +66,6 @@ ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

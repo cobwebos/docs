@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "了解如何使用云中的 Azure 存储 - Blob、表、队列、文件和虚拟机磁盘存储。 教程、API 参考和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: a6c333ae45868d5c29ce2f2587f1417fa9fafc0b
-ms.openlocfilehash: 27fd664b69ca4467daa2b0abc6e53c9cece221ae
+ms.sourcegitcommit: df6bc6a92950efeed61db2f2ef7fd5f65189e0fa
+ms.openlocfilehash: 130a9a105ac7ff50fbc3b5baefd080f272e77d0b
 
 ---
 
 # <a name="storage-documentation"></a>存储文档
 
-Azure 存储是依赖于持续性、可用性和可伸缩性来满足客户需求的现代应用程序的云存储解决方案。  它具有高度可伸缩、弹性和全球可访问性，可以自动根据流量对数据进行负载均衡。  Azure 存储提供以下四项服务来满足应用程序的需求：Blob 存储、表存储、队列存储、磁盘存储和文件存储。
+了解如何使用 Azure 存储 - 一种持久、高度可用、可缩放的云存储服务。 教程、API 参考和其他文档介绍了如何设置及管理 Blob、表、队列、文件和虚拟机磁盘存储。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -129,8 +130,9 @@ Azure 存储是依赖于持续性、可用性和可伸缩性来满足客户需�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference">REST：导入/导出</a></p>
+                        <p><a href="/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference">Blob、队列、表和文件</a></p>
                         <p><a href="/rest/api/storagerp">REST：资源提供程序</a></p>
+                        <p><a href="/rest/api/storageimportexport">REST：导入/导出</a></p>
                    </div>
                 </div>
             </div>
@@ -148,6 +150,6 @@ Azure 存储是依赖于持续性、可用性和可伸缩性来满足客户需�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

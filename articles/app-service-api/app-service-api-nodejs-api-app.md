@@ -1,5 +1,5 @@
 ---
-title: "Azure 应用服务中的 Node.js API 应用 | Microsoft Docs"
+title: "Azure 应用服务中的 Node.js API 应用 | Microsoft 文档"
 description: "了解如何创建 Node.js RESTful API 并将其部署到 Azure 应用服务中的 API 应用。"
 services: app-service\api
 documentationcenter: node
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
+ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
+ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
    
     示例 API 提供两个终结点：针对 `/contacts` 的 Get 请求返回包含名称和电子邮件地址的 JSON 格式列表，`/contacts/{id}` 只返回所选的联系人。
 
-## <a name="scaffold-autogenerate-nodejs-code-based-on-swagger-metadata"></a>根据 Swagger 元数据创建（自动生成）Node.js 代码基架
+## <a name="scaffold-auto-generate-nodejs-code-based-on-swagger-metadata"></a>根据 Swagger 元数据创建（自动生成）Node.js 代码基架
 [Swagger](http://swagger.io/) 是描述 RESTful API 的元数据的文件格式。 Azure 应用服务提供 [Swagger 元数据的内置支持](app-service-api-metadata.md)。 本教程部分为 API 开发工作流建模，将在其中先创建 Swagger 元数据，然后以此创建（自动生成）API 服务器代码基架。 
 
 > [!NOTE]
@@ -131,7 +131,7 @@ ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
         app.use(bodyParser.json());
    
         app.use(swaggerize({
-            api: path.resolve('./config/api.json'), // third change
+            api: path.resolve('./config/swagger.json'), // third change
             handlers: path.resolve('./handlers'),
             docspath: '/swagger' // fourth change
         }));
@@ -275,6 +275,6 @@ ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

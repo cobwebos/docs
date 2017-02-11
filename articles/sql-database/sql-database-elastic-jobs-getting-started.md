@@ -7,6 +7,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 2540de0e-2235-4cdd-9b6a-b841adba00e5
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: a75137f0918d646516d3cf75c89f3e0131bc224d
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 273b02072a10ca45717b9bb20f89de278bb2b456
 
 
 ---
@@ -288,7 +289,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
     Remove-AzureSqlJob -JobName $jobName
 
 ## <a name="create-a-custom-database-target"></a>创建自定义数据库目标
-自定义数据库目标可以在弹性数据库作业中定义，可用于直接执行或包含在自定义数据库组内。 由于**弹性数据库池**尚不能通过 PowerShell API 直接支持，你只需创建自定义数据库目标和自定义数据库集合目标，其中包含池中的所有数据库。
+自定义数据库目标可以在弹性数据库作业中定义，可用于直接执行或包含在自定义数据库组内。 由于尚不能通过 PowerShell API 直接支持**弹性池**，只需创建自定义数据库目标和自定义数据库集合目标，其中包含池中的所有数据库。
 
 设置以下变量以反映所需的数据库信息：
 
@@ -427,6 +428,6 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

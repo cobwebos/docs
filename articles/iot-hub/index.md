@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 62cc285a4dc0b85f364a6306e3fc4b0727c439db
-ms.openlocfilehash: 4a165d2f3e4447d2490296a76934cba98b9dcd79
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: da0387255c538afd5490f313c10509a1b40e6dd9
 
 ---
 #<a name="iot-hub-documentation"></a>IoT 中心文档
 
-Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备和一个解决方案后端之间实现安全可靠的双向通信。  IoT 中心针对设备连接提供广泛的监视功能，并且包含最流行语言和平台的设备库。 
+了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档可帮助你在 IoT 设备与解决方案后端之间部署可靠的双向通信。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -141,9 +142,10 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest">REST API（资源提供程序）</a></p>
-                        <p><a href="/rest/api/iothub/device-identities-rest">REST API（管理标识）</a></p>
-                        <p><a href="/rest/api/iothub/device-messaging-rest-apis">REST API（设备消息传送）</a></p>
+                        <p><a href="/rest/api/iothub/iothubresource">REST（资源提供程序）</a></p>
+                        <p><a href="/rest/api/iothub/deviceapi">REST（设备标识）</a></p>
+                        <p><a href="/rest/api/iothub/httpruntime">REST（设备消息传送）</a></p>
+                        <p><a href="/rest/api/iothub/jobapi">REST（作业）</a></p>
                     </div>
                 </div>
             </div>
@@ -151,16 +153,10 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-hub.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 IoT 中心文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

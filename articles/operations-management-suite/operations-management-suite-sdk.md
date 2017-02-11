@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2016
+ms.date: 12/08/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b040697591dc94952239bf7897869d8a0ea4818c
+ms.sourcegitcommit: 5d1ace8c6dab1655b0c2b512376b69444434f1ad
+ms.openlocfilehash: 414699ef94a6679f1b3bc777669674247a3449e9
 
 
 ---
@@ -43,7 +43,10 @@ ms.openlocfilehash: b040697591dc94952239bf7897869d8a0ea4818c
 * [Log Analytics PowerShell Cmdlet](https://msdn.microsoft.com/library/mt188224.aspx)
 * [Log Analytics .NET 库](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/0.16.0-preview)
 
-## <a name="site-recovery"></a>站点恢复
+## <a name="service-map"></a>服务映射
+* [服务映射文档](operations-management-suite-service-map.md)
+
+## <a name="site-recovery"></a>Site Recovery
 * [站点恢复 PowerShell cmdlet](https://msdn.microsoft.com/library/mt637930.aspx)
 * [站点恢复 REST API](https://msdn.microsoft.com/library/azure/mt750497.aspx)
 * [将 Azure 自动化 Runbook 添加到恢复计划](../site-recovery/site-recovery-runbook-automation.md)
@@ -56,6 +59,6 @@ ms.openlocfilehash: b040697591dc94952239bf7897869d8a0ea4818c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

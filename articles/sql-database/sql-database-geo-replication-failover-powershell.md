@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 5849b600-89cb-4995-ae9f-0188a17b4e1b
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 
 ---
@@ -81,12 +81,12 @@ ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
 * 若要了解如何使用活动异地复制进行灾难恢复，包括恢复前后步骤和执行灾难恢复演练，请参阅[灾难恢复演练](sql-database-disaster-recovery.md)
 * 有关活动异地复制的 Sasha Nosov 博客文章，请参阅[聚焦异地复制新功能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 * 若要了解如何设计云应用程序以使用活动异地复制，请参阅[设计云应用程序以使用异地复制实现业务连续性](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* 若要了解如何通过弹性数据库池使用活动异地复制，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+* 有关将活动异地复制与弹性池配合使用的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 * 有关业务连续性概述，请参阅[业务连续性概述](sql-database-business-continuity.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,12 +12,12 @@ ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/24/2016
+ms.topic: get-started-article
+ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5adb83a7b8e19ca78dd4d837b497e1ceb4444f86
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 915292a191da82af9e24e89460d46dc61a062b18
 
 
 ---
@@ -37,7 +37,7 @@ SQL Server Management Studio (SSMS) 和 SQL Server Data Tools (SSDT) 是在计�
 >  
 
 ## <a name="powershell"></a>PowerShell
-你可以使用 PowerShell 管理数据库和弹性数据库池，并自动执行 Azure 资源部署。 Microsoft 建议在生产环境中使用此工具来管理大量的数据库并自动进行部署和资源更改。
+用户可以使用 PowerShell 管理数据库和弹性池，并自动执行 Azure 资源部署。 Microsoft 建议在生产环境中使用此工具来管理大量的数据库并自动进行部署和资源更改。
 
 有关详细信息，请参阅[使用 PowerShell 管理 SQL 数据库](sql-database-manage-powershell.md)
 
@@ -56,6 +56,6 @@ SQL Server Management Studio (SSMS) 和 SQL Server Data Tools (SSDT) 是在计�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

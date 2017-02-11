@@ -1,5 +1,5 @@
 ---
-title: " 使用 Azure 门户创建 Azure 媒体服务帐户| Microsoft Docs"
+title: " 使用 Azure 门户创建 Azure 媒体服务帐户| Microsoft 文档s"
 description: "本教程介绍了使用 Azure 门户创建 Azure 媒体服务帐户的步骤。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 312231f395f19fde98431c24b71ce7cec3061eaf
-ms.openlocfilehash: 4a1d5d706cbfb5c42a36fd03033aa361ef3d4d11
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 01c1297a6b107f91d8e6e73f17d76499d67849de
 
 
 ---
@@ -54,10 +54,10 @@ ms.openlocfilehash: 4a1d5d706cbfb5c42a36fd03033aa361ef3d4d11
 1. 在 [Azure 门户](https://portal.azure.com/)登录。
 2. 单击“+新建” > “Web + 移动” > “媒体服务”。
    
-    ![媒体服务创建](./media/media-services-portal-vod-get-started/media-services-new1.png)
+    ![媒体服务创建](./media/media-services-create-account/media-services-new1.png)
 3. 在“创建媒体服务帐户”中输入所需的值。
    
-    ![媒体服务创建](./media/media-services-portal-vod-get-started/media-services-new3.png)
+    ![媒体服务创建](./media/media-services-create-account/media-services-new3.png)
    
    1. 在“帐户名”中，输入新的 AMS 帐户的名称。 媒体服务帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。
    2. 在“订阅”中，在你有权访问的不同 Azure 订阅中进行选择。
@@ -69,9 +69,12 @@ ms.openlocfilehash: 4a1d5d706cbfb5c42a36fd03033aa361ef3d4d11
    6. 选择“固定到仪表板”以查看帐户部署进度。
 4. 单击窗体底部的“创建”。
    
-    成功创建帐户后，状态将更改为“正在运行”。 
+    成功创建帐户后，将会打开概述页。 在流式处理终结点表中，帐户包含一个处于“已停止”状态的默认流式处理终结点。 
+
+    >[!NOTE]
+    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
    
-    ![媒体服务设置](./media/media-services-portal-vod-get-started/media-services-settings.png)
+    ![媒体服务设置](./media/media-services-create-account/media-services-settings.png)
    
     若要管理 AMS 帐户（例如，上载视频、对资产进行编码、监视作业进度），请使用“设置”窗口。
 
@@ -86,7 +89,7 @@ ms.openlocfilehash: 4a1d5d706cbfb5c42a36fd03033aa361ef3d4d11
     “管理密钥”窗口显示帐户名，主密钥和辅助密钥也会显示。 
 3. 按复制按钮复制这些值。
    
-    ![媒体服务密钥](./media/media-services-portal-vod-get-started/media-services-keys.png)
+    ![媒体服务密钥](./media/media-services-create-account/media-services-keys.png)
 
 ## <a name="next-steps"></a>后续步骤
 现在可以将文件上载到 AMS 帐户。 有关详细信息，请参阅 [上载文件](media-services-portal-upload-files.md)。
@@ -100,6 +103,6 @@ ms.openlocfilehash: 4a1d5d706cbfb5c42a36fd03033aa361ef3d4d11
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

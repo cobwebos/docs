@@ -16,6 +16,7 @@
 ## [创建存储帐户](azure-stack-provision-storage-account.md)
 ## [使用 CLI 连接](azure-stack-connect-cli.md)
 ## [使用 PowerShell 连接](azure-stack-connect-powershell.md)
+## [安装 Visual Studio](azure-stack-install-visual-studio.md)
 ## [常见问题](azure-stack-faq.md)
 
 # 为租户提供服务
@@ -28,6 +29,7 @@
 # 使用模板
 ## [模板概述](azure-stack-arm-templates.md)
 ## [开发模板](azure-stack-develop-templates.md)
+## [检查模板](azure-stack-validate-templates.md)
 ## [通过门户部署模板](azure-stack-deploy-template-portal.md)
 ## [通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)
 ## [通过 Visual Studio 部署模板](azure-stack-deploy-template-visual-studio.md)
@@ -86,6 +88,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -128,7 +128,6 @@
 #### [部署 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)
 #### [使用外部数据](machine-learning-web-services-that-use-import-export-modules.md)
 #### [在多区域部署](machine-learning-how-to-deploy-to-multiple-regions.md)
-#### [发布到应用商店](machine-learning-publish-web-service-to-azure-marketplace.md)
 #### [使用 Web 服务参数](machine-learning-web-service-parameters.md)
 #### [启用日志记录](machine-learning-web-services-logging.md)
 ### 管理 Web 服务
@@ -157,23 +156,10 @@
 #### [将 Hadoop 与 1TB 配合使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)
 #### [使用 SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 #### [使用 SQL 数据仓库](machine-learning-data-science-process-sqldw-walkthrough.md)
-### Web 服务示例
-#### [使用 R 的示例](machine-learning-r-csharp-web-service-examples.md)
-#### [二元分类器](machine-learning-r-csharp-binary-classifier.md)
-#### [群集模型](machine-learning-r-csharp-cluster-model.md)
-#### [多变量线性回归](machine-learning-r-csharp-multivariate-linear-regression.md)
-#### [预测 - 指数平滑](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
-#### [预测 - ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
-#### [预测 - ARIMA](machine-learning-r-csharp-arima.md)
-#### [生存分析](machine-learning-r-csharp-survival-analysis.md)
-#### [基于词典的情绪分析](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
-#### [比例测试的差异](machine-learning-r-csharp-difference-in-two-proportions.md)
-#### [正态分布套件](machine-learning-r-csharp-normal-distribution.md)
-#### [二项式分布套件](machine-learning-r-csharp-binomial-distribution.md)
-#### [应用商店常见问题](machine-learning-marketplace-faq.md)
 
-# 参考
-## [PowerShell](machine-learning-powershell-module.md)
+# 引用
+## [PowerShell 模块（新式）](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
+## [PowerShell 模块（经典）](machine-learning-powershell-module.md)
 ## [算法和模块参考](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [REST](/rest/api/machinelearning)
 
@@ -192,7 +178,7 @@
 ### [自定义模块](machine-learning-gallery-custom-modules.md)
 ## Cortana Analytics
 ### API
-#### [异常情况检测](machine-learning-apps-anomaly-detection.md)
+#### [异常情况检测](machine-learning-apps-anomaly-detection-api.md)
 #### [文本分析](machine-learning-apps-text-analytics.md)
 #### [认知服务](https://azure.microsoft.com/services/cognitive-services/)
 #### 建议
@@ -222,6 +208,6 @@
 ## [从实时聊天获取帮助](machine-learning-live-chat.md)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

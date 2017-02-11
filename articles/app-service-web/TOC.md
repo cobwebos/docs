@@ -7,12 +7,13 @@
 # 入门
 
 ## Web 应用
-### [.NET](web-sites-dotnet-get-started.md)
-### [Node.js](app-service-web-nodejs-get-started.md)
-### [Python](web-sites-python-ptvs-django-mysql.md)
-### [Java](web-sites-java-get-started.md)
+### [HTML](app-service-web-get-started-html.md)
+### [.NET](app-service-web-get-started-dotnet.md)
+### [Node.js](app-service-web-get-started-nodejs.md)
+### [Python](app-service-web-get-started-python.md)
+### [Java](app-service-web-get-started-java.md)
 ### [应用商店应用](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-php-get-started.md)   
+### [PHP](app-service-web-get-started-php.md)   
 
 ## API 应用
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
@@ -60,11 +61,12 @@
 ### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
 ### ASP.NET 应用
-#### [在 5 分钟内将第一个 .NET Web 应用部署到 Azure](app-service-web-get-started-dotnet.md)
+#### [使用 Visual Studio 在 Azure 中创建 ASP.NET 应用](web-sites-dotnet-get-started.md)
 #### [使用 ASP.NET Web API 创建 REST 服务](web-sites-dotnet-rest-service-aspnet-api-sql-database.md)
 #### [在 Visual Studio Code 中创建 ASP.NET 5 Web 应用](web-sites-create-web-app-using-vscode.md)
 
 ### Node.js 应用
+#### [为应用服务开发 Node.js](app-service-web-nodejs-get-started.md)
 #### [创建 Node.js Web 应用](web-sites-nodejs-develop-deploy-mac.md)
 #### [使用 Socket.IO 创建 Node.js 聊天应用程序](web-sites-nodejs-chat-app-socketio.md)
 #### [如何在 Web 应用中使用 io.js](web-sites-nodejs-iojs.md)
@@ -72,14 +74,13 @@
 #### [使用 WebMatrix 进行构建和部署](web-sites-nodejs-use-webmatrix.md)
 
 ### PHP 应用
-#### [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php.md)
+#### [为应用服务开发 PHP 应用](app-service-web-php-get-started.md) 
 #### [创建 PHP-SQL Web 应用并使用 Git 进行部署](web-sites-php-sql-database-deploy-use-git.md)
 #### [在 Azure 应用服务中创建 WordPress Web 应用](web-sites-php-web-site-gallery.md)
 #### [在 Azure 中创建 MySQL 数据库并连接到该数据库](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Azure 应用服务上的企业级 WordPress](web-sites-php-enterprise-wordpress.md)
 
 ### Java 应用
-#### [在 5 分钟内将第一个 Java Web 应用部署到 Azure](web-sites-java-get-started.md)
 #### 创建 Hello World 应用
 ##### [Eclipse](app-service-web-eclipse-create-hello-world-web-app.md)
 ##### [IntelliJ](app-service-web-intellij-create-hello-world-web-app.md)

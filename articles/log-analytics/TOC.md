@@ -10,7 +10,7 @@
 ## [Log Analytics 常见问题解答](log-analytics-faq.md)
 
 # 如何
-## 集成
+## 收集数据
 ### 连接的源
 #### [Windows 代理](log-analytics-windows-agents.md)
 #### [Linux 代理](log-analytics-linux-agents.md)
@@ -27,11 +27,15 @@
 #### [IIS 日志](log-analytics-data-sources-iis-logs.md)
 #### [自定义日志](log-analytics-data-sources-custom-logs.md)
 #### [自定义字段](log-analytics-custom-fields.md)
-## 开发
+## 查询数据
 ### [日志搜索概述](log-analytics-log-searches.md)
 ### [搜索参考](log-analytics-search-reference.md)
 ### [计算机组](log-analytics-computer-groups.md)
 ### [警报](log-analytics-alerts.md)
+## 分析数据
+### [仪表板](log-analytics-dashboards.md)
+### [视图设计器](log-analytics-view-designer.md)
+### [Power BI](log-analytics-powerbi.md)
 ### 解决方案
 #### [解决方案概述](log-analytics-add-solutions.md)
 #### [AD 评估](log-analytics-ad-assessment.md)
@@ -52,11 +56,7 @@
 #### [VMware](log-analytics-vmware.md)
 #### [传输数据](log-analytics-wire-data.md)
 #### [SCOM 评估](log-analytics-scom-assessment.md)
-## 分析
-### [仪表板](log-analytics-dashboards.md)
-### [视图设计器](log-analytics-view-designer.md)
-### [Power BI](log-analytics-powerbi.md)
-## 自动化
+## 开发
 ### [数据收集器 API](log-analytics-data-collector-api.md)
 ### [PowerShell cmdlets](log-analytics-powershell-workspace-configuration.md)
 ### [日志搜索 API](log-analytics-log-search-api.md)
@@ -71,6 +71,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

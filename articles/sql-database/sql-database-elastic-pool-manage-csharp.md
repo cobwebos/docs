@@ -1,6 +1,6 @@
 ---
-title: "使用 C# 监视和管理弹性数据库池 | Microsoft 文档"
-description: "使用 C# 数据库开发技术来管理 Azure SQL 数据库弹性数据库池。"
+title: "使用 C# 监视和管理弹性池 | Microsoft Docs"
+description: "使用 C# 数据库开发技术来管理 Azure SQL 数据库弹性池。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: f6e6ff3b-6b60-43c1-afe9-575991e38237
 ms.service: sql-database
-ms.custom: sharded databases pool; how to
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: csharp
@@ -16,12 +16,12 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: a6d5b0ccb1b160be4f8f3c09814202634759c8c6
 
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-cx23"></a>使用 C&#x23; 监视和管理弹性数据库池
+# <a name="monitor-and-manage-an-elastic-pool-with-cx23"></a>使用 C# 监视和管理弹性池
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
 > 
 > 
 
-了解如何使用 C&#x23; 管理[弹性数据库池](sql-database-elastic-pool.md)。 
+了解如何使用 C# 管理[弹性池](sql-database-elastic-pool.md)。 
 
 > [!NOTE]
 > SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型](../azure-resource-manager/resource-group-overview.md)时才可用，因此，始终应该使用最新版本的**用于 .NET 的 Azure SQL 数据库管理库（[文档](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)）**。 由于早期版本的[基于经典部署模型的库](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)只能实现向后兼容性，因此我们建议使用较高版本的基于 Resource Manager 的库。
@@ -39,7 +39,7 @@ ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
 
 若要完成本文中的步骤，需要准备好以下项：
 
-* 弹性池（想要管理的池）。 若要创建池，请参阅[使用 C# 创建弹性数据库池](sql-database-elastic-pool-create-csharp.md)。
+* 弹性池（想要管理的池）。 若要创建池，请参阅[使用 C# 创建弹性池](sql-database-elastic-pool-create-csharp.md)。
 * Visual Studio。 如需 Visual Studio 的免费副本，请参阅 [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs) 页。
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>将数据库移入弹性池
@@ -107,13 +107,13 @@ ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
 * [SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题](sql-database-develop-error-messages.md)。
 * [SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)
 * [Azure 资源管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
-* [使用 C# 新建弹性数据库池](sql-database-elastic-pool-create-csharp.md)
-* [何时使用弹性数据库池？](sql-database-elastic-pool-guidance.md)
+* [使用 C# 创建新的弹性池](sql-database-elastic-pool-create-csharp.md)
+* [何时应使用弹性池？](sql-database-elastic-pool-guidance.md)
 * 请参阅[使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)：使用弹性数据库工具扩展、移动数据、查询或创建事务。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

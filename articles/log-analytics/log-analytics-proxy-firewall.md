@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 01/06/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 16af0b801cd6955a8edc88aae5dd5199f4f2a713
+ms.sourcegitcommit: d5d86a0f7177b9a1e96e50a3e3e7d1f5800974bf
+ms.openlocfilehash: 427d5d7ed43f19611e99705dab33a0c80a8bf9f9
 
 
 ---
@@ -31,6 +31,7 @@ ms.openlocfilehash: 16af0b801cd6955a8edc88aae5dd5199f4f2a713
 | \*.ods.opinsights.azure.com |443 |是 |
 | \*.oms.opinsights.azure.com |443 |是 |
 | \*.blob.core.windows.net |443 |是 |
+| \*.azure-automation.net |443 |是 |
 | ods.systemcenteradvisor.com |443 | |
 
 可通过以下过程，使用控制面板为 Microsoft Monitoring Agent 配置代理设置。 需要对每个服务器使用此过程。 如果需要配置多台服务器，使用脚本自动执行此过程可能更加轻松。 如果是，请参阅下一过程：[使用脚本配置 Microsoft Monitoring Agent 的代理设置](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)。
@@ -105,6 +106,7 @@ ms.openlocfilehash: 16af0b801cd6955a8edc88aae5dd5199f4f2a713
 | data.systemcenteradvisor.com |443 | |
 | ods.systemcenteradvisor.com |443 | |
 | \*.ods.opinsights.azure.com |443 |是 |
+| \*.azure-automation.net |443 |是 |
 
 <br>
 以下是 OMS 和 Operations Manager 控制台资源和端口的列表。<br>
@@ -131,45 +133,46 @@ ms.openlocfilehash: 16af0b801cd6955a8edc88aae5dd5199f4f2a713
 ### <a name="to-configure-the-proxy-server-in-the-operations-manager-console"></a>在 Operations Manager 控制台中配置代理服务器
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 展开“Operational Insights”，然后选择“Operational Insights 连接”。<br>  
-    ![Operations Manager OMS 连接](./media/log-analytics-proxy-firewall/proxy-om01.png)
+   ![Operations Manager OMS 连接](./media/log-analytics-proxy-firewall/proxy-om01.png)
 3. 在“OMS 连接”视图中，单击“**配置代理服务器**”。<br>  
-    ![Operations Manager OMS 连接配置代理服务器](./media/log-analytics-proxy-firewall/proxy-om02.png)
+   ![Operations Manager OMS 连接配置代理服务器](./media/log-analytics-proxy-firewall/proxy-om02.png)
 4. 在“Operational Insights 设置向导：代理服务器”中，选择“使用代理服务器访问 Operational Insights Web 服务”，然后键入具有端口号的 URL，如 **http://myproxy:80**。<br>  
-    ![Operations Manager OMS 代理地址](./media/log-analytics-proxy-firewall/proxy-om03.png)
+   ![Operations Manager OMS 代理地址](./media/log-analytics-proxy-firewall/proxy-om03.png)
 
 ### <a name="to-specify-credentials-if-the-proxy-server-requires-authentication"></a>如果代理服务器需要身份验证，请指定凭据
  需要将代理服务器凭据和设置传播到要向 OMS 报告的托管计算机。 这些服务器应位于 Microsoft System Center Advisor Monitoring Server Group 内。 在组中每个服务器的注册表中加密凭据。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 在“**运行方式配置**”下面，选择“**配置文件**”。
-3. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。  
-    ![System Center Advisor 运行方式代理配置文件的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
-4. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以新建运行方式帐户，或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。  
-    ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
-5. 若要设置管理的帐户，请选择“选定的类、组或对象”以打开对象搜索框。  
-    ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct2-1.png)
-6. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。  
-    ![对象搜索框的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct3.png)
-7. 单击“确定”以关闭“添加运行方式帐户”框。  
-    ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
-8. 完成向导并保存更改。  
-    ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct5.png)
+3. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。<br>  
+   ![System Center Advisor 运行方式代理配置文件的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
+4. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以新建运行方式帐户，或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。<br>   
+   ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
+5. 若要设置管理的帐户，请选择“选定的类、组或对象”以打开对象搜索框。<br>  
+   ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct2-1.png)
+6. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。<br>  
+   ![对象搜索框的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct3.png)
+7. 单击“确定”以关闭“添加运行方式帐户”框。<br>  
+   ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
+8. 完成向导并保存更改。<br>  
+   ![运行方式配置文件向导的图片](./media/log-analytics-proxy-firewall/proxy-proxyacct5.png)
 
 ### <a name="to-validate-that-oms-management-packs-are-downloaded"></a>验证已下载 OMS 管理包
-如果已将解决方案添加到 OMS，可在 Operations Manager 控制台中“管理”之下看到它们显示为管理包。 搜索 System Center Advisor 可快速找到它们。  
-    ![管理包](./media/log-analytics-proxy-firewall/proxy-mpdownloaded.png)还可在 Operations Manager 管理服务器中使用以下 Windows PowerShell 命令查看 OMS 管理包：
+如果已将解决方案添加到 OMS，可在 Operations Manager 控制台中“管理”之下看到它们显示为管理包。 搜索 System Center Advisor 可快速找到它们。<br>  
+   ![下载的管理包](./media/log-analytics-proxy-firewall/proxy-mpdownloaded.png)  <br>  
+还可在 Operations Manager 管理服务器中使用以下 Windows PowerShell 命令查看 OMS 管理包：
 
-    ```
+   ```  
     Get-ScomManagementPack | where {$_.DisplayName -match 'Advisor'} | select Name,DisplayName,Version,KeyToken
-    ```
+   ```  
 
 ### <a name="to-validate-that-operations-manager-is-sending-data-to-the-oms-service"></a>验证 Operations Manager 将数据发送到 OMS 服务
 1. 在“Operations Manager 管理服务器”中，打开性能监视器 (perfmon.exe)，然后选择“性能监视器”。
 2. 单击“添加”，然后选择“运行状况服务管理组”。
-3. 添加以 **HTTP** 开头的所有计数器。  
-    ![添加计数器](./media/log-analytics-proxy-firewall/proxy-sendingdata1.png)
-4. 如果 Operations Manager 配置正确，则根据在 OMS 中添加的管理包和已配置的日志收集策略，可看到事件和其它数据项的运行状况服务管理计数器活动。  
-    ![性能监视器显示活动](./media/log-analytics-proxy-firewall/proxy-sendingdata2.png)
+3. 添加以 **HTTP** 开头的所有计数器。<br>  
+   ![添加计数器](./media/log-analytics-proxy-firewall/proxy-sendingdata1.png)
+4. 如果 Operations Manager 配置正确，则根据在 OMS 中添加的管理包和已配置的日志收集策略，可看到事件和其它数据项的运行状况服务管理计数器活动。<br>  
+   ![性能监视器显示活动](./media/log-analytics-proxy-firewall/proxy-sendingdata2.png)
 
 ## <a name="next-steps"></a>后续步骤
 * [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
@@ -177,6 +180,6 @@ ms.openlocfilehash: 16af0b801cd6955a8edc88aae5dd5199f4f2a713
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

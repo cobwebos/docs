@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
+ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 206b958b4c266b9977a9beb8ffb6a0576f068a9a
-ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
+ms.sourcegitcommit: fc04c5f8a9cdee4b51c67b480d70678c3dca7c93
+ms.openlocfilehash: 49391b604446ae1b08d04ca42c5bdcd132f8cf31
 
 
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
-> * [Windows](service-fabric-get-started.md) 
+> * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
-> 
+>
 >  
 
  若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装适用于 Java 和 .NET Core 的可选 SDK。
@@ -42,17 +42,17 @@ ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
 
 1. 打开终端。
 2. 将 Service Fabric 存储库添加到源列表。
-   
+
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 3. 将新的 GPG 密钥添加到你 apt keyring。
-   
+
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     ```
 4. 根据新添加的存储库刷新包列表。
-   
+
     ```bash
     sudo apt-get update
     ```
@@ -61,12 +61,12 @@ ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
 源进行更新后，可以安装 SDK。
 
 1. 安装 Service Fabric SDK 包。 系统将要求确认安装并同意许可协议。
-   
+
     ```bash
     sudo apt-get install servicefabricsdkcommon
     ```
 2. 运行 SDK 安装程序脚本。
-   
+
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
@@ -76,39 +76,42 @@ ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
 [Azure 跨平台 CLI][azure-xplat-cli-github] 包含用来与 Service Fabric 实体（包括群集和应用程序）交互的命令。 它基于 Node.js，因此，请[务必先安装 Node][install-node]，然后继续遵照下面的说明操作：
 
 1. 将 github 存储库克隆到你的开发计算机。
-   
+
     ```bash
     git clone https://github.com/Azure/azure-xplat-cli.git
     ```
 2. 切换到克隆存储库并使用节点包管理器 (npm) 安装 CLI 的依赖项。
-   
+
     ```bash
     cd azure-xplat-cli
     npm install
     ```
 3. 从克隆存储库的 bin/azure 文件夹创建到 /usr/bin/azure 的符号链接，以便将其添加到你的路径，并且可从任何目录获取命令。
-   
+
     ```bash
     sudo ln -s $(pwd)/bin/azure /usr/bin/azure
     ```
 4. 最后，启用自动完成 Service Fabric 命令。
-   
+
     ```bash
     azure --completion >> ~/azure.completion.sh
     echo 'source ~/azure.completion.sh' >> ~/.bash_profile
     source ~/azure.completion.sh
     ```
 
+> [!NOTE]
+> Service Fabric 命令在 Azure CLI 2.0 中尚不可用。
+
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
 如果所有内容都已成功安装，则应该能够启动本地群集。
 
 1. 运行群集安装程序脚本。
-   
+
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 2. 打开 Web 浏览器并导航到 http://localhost:19080/Explorer。 如果群集已开始，你应看到 Service Fabric Explorer 仪表板。
-   
+
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
 此时，你就能够部署预建的 Service Fabric 应用程序包或基于来宾容器或来宾可执行文件的新应用程序包。 若要使用 Java 或 .NET Core SDK 构建新服务，请遵循后续部分中的可选设置步骤操作。
@@ -116,19 +119,19 @@ ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
 
 > [!NOTE]
 > 此外，Linux 不支持独立群集 - 预览版仅支持单机群集和 Azure Linux 多计算机群集。
-> 
-> 
+>
+>
 
 ## <a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a>安装 Java SDK 和 Eclipse Neon 插件（可选）
 Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 1. 安装 Java SDK 包。
-   
+
     ```bash
     sudo apt-get install servicefabricsdkjava
     ```
 2. 运行 SDK 安装程序脚本。
-   
+
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
@@ -139,7 +142,7 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 2. 若要安装 Service Fabric 插件，请选择“帮助”>“安装新软件...”
 3. 在“使用”文本框中，输入：http://dl.windowsazure.com/eclipse/servicefabric
 4. 单击“添加”。
-   
+
     ![Eclipse 插件][sf-eclipse-plugin]
 5. 选择 Service Fabric 插件，然后单击“下一步”。
 6. 继续执行安装并接受最终用户许可协议。
@@ -148,13 +151,13 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 .NET Core SDK 提供使用跨平台 .NET Core 生成 Service Fabric 服务所需的库和模板。
 
 1. 安装 .NET Core SDK 包。
-   
+
    ```bash
    sudo apt-get install servicefabricsdkcsharp
    ```
 
 2. 运行 SDK 安装程序脚本。
-   
+
    ```bash
    sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
    ```
@@ -168,7 +171,7 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
    sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
    ```
 
-若要更新 CLI，请导航到 CLI 克隆到的目录，然后运行 `git pull` 进行更新。 
+若要更新 CLI，请导航到 CLI 克隆到的目录，然后运行 `git pull` 进行更新。
 
 ## <a name="next-steps"></a>后续步骤
 * [在 Linux 上创建第一个 Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)

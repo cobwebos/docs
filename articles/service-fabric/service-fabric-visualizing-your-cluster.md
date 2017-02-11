@@ -12,24 +12,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2016
+ms.date: 12/13/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b97cd5d2f9a29d3fa8f13363b937ace276e556ff
+ms.sourcegitcommit: 5bc5e9d9e15dcc3c8f01957d4ab08d159ecbc2e0
+ms.openlocfilehash: 30460532f6847e8b0188c468a638aa4d5131d92e
 
 
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 Service Fabric Explorer 是一个用于检验和管理 Azure Service Fabric 群集中的应用程序和节点的 Web 工具。 Service Fabric Explorer 管理器直接托管在群集内，因此，无论群集在何处运行，它都始终可供使用。
 
+## <a name="video-tutorial"></a>视频教程
+
+观看下面的 Microsoft 虚拟大学视频，了解如何使用 Service Fabric Explorer：
+
+[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
+
 ## <a name="connect-to-service-fabric-explorer"></a>连接到 Service Fabric Explorer
 如果已根据说明[准备开发环境](service-fabric-get-started.md)，则可以通过导航到 http://localhost:19080/Explorer 来启动本地群集上的 Service Fabric Explorer。
 
 > [!NOTE]
 > 如果你使用 Internet Explorer 配合 Service Fabric Explorer 来管理远程群集，则需要配置一些 Internet Explorer 设置。 转到“**工具**” > “**兼容性视图设置**”，然后取消选中“**在兼容性视图中显示 Intranet 站点**”，以确保正确加载所有信息。
-> 
-> 
+>
+>
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
 可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
@@ -66,8 +72,8 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 
 > [!TIP]
 > 可以通过单击每个元素旁边的省略号来执行相同的操作。
-> 
-> 
+>
+>
 
 下表列出了可对每个实体执行的操作：
 
@@ -86,8 +92,8 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 
 > [!TIP]
 > 可以通过 Service Fabric Explorer 执行的每个操作也可以通过 PowerShell 或 REST API 执行，以实现自动化。
-> 
-> 
+>
+>
 
 你还可以使用 Service Fabric Explorer 为指定应用程序类型和版本创建新的应用程序实例。 在树视图中选择应用程序类型，在右窗格中单击想要的版本旁边的“**创建应用实例**”链接。
 
@@ -95,8 +101,8 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 
 > [!NOTE]
 > 当前无法对通过 Service Fabric Explorer 创建的应用程序实例进行参数化。 它们是使用默认参数值创建的。
-> 
-> 
+>
+>
 
 ## <a name="connect-to-a-remote-service-fabric-cluster"></a>连接到远程 Service Fabric 群集
 由于 Service Fabric Explorer 是基于 Web 的工具并且在群集内部运行，因此你只要知道群集的终结点且有足够的访问权限，就可以从任何浏览器访问它。
@@ -106,7 +112,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 
 http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 
-Azure 门户的群集基本信息窗格中也提供了完整 URL。
+对于 Azure 群集，Azure 门户的群集基本信息窗格中也提供了 Azure 群集的完整 URL。
 
 ### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
@@ -128,6 +134,6 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,13 +1,25 @@
 ---
 layout: LandingPage
+description: "了解如何使用虚拟机规模集为大型计算、大数据和容器化解决方案创建自动缩放的 Windows 或 Linux VM。"
+title: "Azure 虚拟机规模集文档、教程和 API 参考 | Microsoft 文档"
+services: virtual-machine-scale-sets
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machine-scale-sets
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
+ms.sourcegitcommit: 7b2af8e58e050100b1778d977dabe25538b84cfe
+ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
 
-虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。  VM 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
+了解如何使用虚拟机规模集来部署和管理一组相同的、自动缩放的 Windows 或 Linux VM。 文档介绍了如何使用规模集来支持面向大型计算、大数据和容器化解决方案的服务。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,16 +110,10 @@ ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machine-scale-sets.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载虚拟机规模集文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

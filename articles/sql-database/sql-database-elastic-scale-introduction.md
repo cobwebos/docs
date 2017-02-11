@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: d15a2e3f-5adf-41f0-95fa-4b945448e184
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 95232dff95c3f2593d16719492f480b44be9f525
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 47396de9d9f831d82568cb0c6a9e30b0dcb1ced4
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: 95232dff95c3f2593d16719492f480b44be9f525
 
 1. 一组使用分片体系结构的 **Azure SQL 数据库**托管在 Azure 上。
 2. **弹性数据库客户端库**用于管理分片集。
-3. 一个数据库子集已放入**弹性数据库池**。 （请参阅[什么是池？](sql-database-elastic-pool.md)）。
+3. 一个数据库子集已放入**弹性池**。 （请参阅[什么是池？](sql-database-elastic-pool.md)）。
 4. **弹性数据库作业**针对所有数据库运行计划或即席的 T-SQL 脚本。
 5. **拆分/合并工具**用于将数据从一个分片移到另一个分片。
 6. 使用**弹性数据库查询**可以编写跨分片集中所有数据库运行的查询。
@@ -92,7 +93,7 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 
 若要转换现有的数据库以使用该工具，请参阅[迁移要扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
 
-若要查看弹性数据库池的具体信息，请参阅[弹性数据库池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)，或者参考[教程](sql-database-elastic-pool-create-portal.md)创建新池。  
+若要查看弹性池的具体信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)，或者参考[教程](sql-database-elastic-pool-create-portal.md)创建新池。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -106,6 +107,6 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

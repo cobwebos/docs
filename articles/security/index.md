@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何根据服务部署以及云中数据的要求，在 Azure 服务中自定义安全选项。"
 translationtype: Human Translation
-ms.sourcegitcommit: d06c292b36ef6dd6bd4f858603debfe93d498cb6
-ms.openlocfilehash: 622e8ccb62538110991c4f882ada9014ea03ffb4
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 349a83224dd154cf81f641cac33baa020adc0b77
 
 ---
 # <a name="security-documentation"></a>安全文档
 
-Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 此外，Azure 还提供广泛的可配置安全选项以及对这些选项进行控制的功能，方便你自定义安全措施来满足部署的独特要求。
+了解如何使用 Azure 安全性来保护云中的服务和数据。 教程和其他文档可帮助你根据部署要求，在 Azure 服务中自定义安全选项。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -104,16 +105,10 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/security.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载安全文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

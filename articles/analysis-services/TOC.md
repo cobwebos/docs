@@ -4,20 +4,20 @@
 ##[创建服务器](analysis-services-create-server.md)
 
 # 如何 
-## [部署](analysis-services-deploy.md)
-## 管理
-###[连接到服务器](analysis-services-connect.md)
-###[管理服务器](analysis-services-manage.md)
-## 集成
-###[本地数据网关](analysis-services-gateway.md)
+##[部署到服务器](analysis-services-deploy.md)
+##[从客户端连接](analysis-services-connect.md)
 
-# 参考
+##[管理服务器](analysis-services-manage.md)
+##[集成本地数据网关](analysis-services-gateway.md)
+
+# 引用
 ##[PowerShell](/powershell/resourcemanager)
-##[REST](/rest/api/analysisservices/)
+##[REST](/rest/api/analysisservices)
 
-# 相关内容
+# 资源
 ##[数据源连接](analysis-services-datasource.md)
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Jan17_HO1-->
 
 

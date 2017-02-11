@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何管理传入的流量以实现最佳应用程序性能。 文档介绍了如何将流量分配到 Azure 或外部服务终结点。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 07d7e13862c252db61136110e04559e51a53e4b7
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: a915eb8aca8a547036a13f3cc2128d205e83fdf2
 
 ---
 #<a name="traffic-manager-documentation"></a>流量管理器文档
 
-使用 Azure 流量管理器可以控制用户流量在不同区域内的服务终结点上的分布。 流量管理器根据所选流量路由方法和终结点的运行状况，使用域名系统 (DNS) 将客户端请求定向到最合适的终结点，提高应用程序的可用性和响应度。
+了解如何使用流量管理器来路由传入的流量，以实现最佳的应用程序性能与可靠性。 教程、API 参考和其他文档介绍了如何管理传入 Azure 或外部服务终结点的流量。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -119,16 +120,10 @@ ms.openlocfilehash: 07d7e13862c252db61136110e04559e51a53e4b7
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/traffic-manager.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载流量管理器文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

@@ -24,7 +24,9 @@
 ### 以编程方式连接
 #### [.NET](media-services-dotnet-connect-programmatically.md)
 #### [REST](media-services-rest-connect-programmatically.md)
-### [在门户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+### [管理流式处理终结点](media-services-streaming-endpoints-overview.md)
+#### [门户](media-services-portal-manage-streaming-endpoints.md)
+#### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
 ### [如何：轮转存储访问密钥后更新媒体服务](media-services-roll-storage-access-keys.md)
 ### [配额和限制](media-services-quotas-and-limitations.md)
 
@@ -92,6 +94,9 @@
 
 ## [实时流](media-services-manage-channels-overview.md)
 ### [本地编码器](media-services-live-streaming-with-onprem-encoders.md)
+#### [门户](media-services-portal-live-passthrough-get-started.md)
+#### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+#### [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [使用云编码器实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)
 ### 云编码器教程
 #### [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -207,6 +212,6 @@
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

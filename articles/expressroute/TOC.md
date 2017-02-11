@@ -45,9 +45,9 @@
 ### [非对称路由](expressroute-asymmetric-routing.md)
 
 ## 故障排除
+### [验证 ExpressRoute 连接](expressroute-troubleshooting-expressroute-overview.md)
 ### [获取 ARP 表](expressroute-troubleshooting-arp-resource-manager.md)
 ### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
-
 
 # 参考
 ## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
@@ -80,6 +80,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=expressroute)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b2d7ba14c7cbc5c082a5f962559936e1a60827f2
-ms.openlocfilehash: fd018ed25e5c309a85bb2078d00f2bb0b504e5d2
+ms.sourcegitcommit: 45b3c231f28b810c5fe1361cee1c896c58b52993
+ms.openlocfilehash: ae966cd39f8763e038acb5e992f388b8c0ad28ef
 
 
 ---
@@ -150,8 +150,9 @@ ms.openlocfilehash: fd018ed25e5c309a85bb2078d00f2bb0b504e5d2
 | **连接服务提供商** | **Exchange** | **位置** |
 | --- | --- | --- |
 | **[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |新加坡 |
-| **[Arteria-Net](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |东京 |
+| **[Arteria Networks Corporation](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |东京 |
 | **[Alaska Communications](http://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |西雅图 |
+| **[Eurofiber](https://eurofiber.nl/microsoft-azure/)** | Equinix | 阿姆斯特丹 |
 | **[Exponential E](http://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | 伦敦 |
 | **[HSO](http://www.hso.co.uk/products/cloud-direct)** |Equinix | 伦敦、斯劳 |
 | **[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)** |Equinix |纽约、华盛顿特区 |
@@ -173,6 +174,8 @@ ms.openlocfilehash: fd018ed25e5c309a85bb2078d00f2bb0b504e5d2
 | **[Avanade Inc.](http://www.avanade.com/)** |亚洲、欧洲、美国 |
 | **[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)** |欧洲 |
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** |美国 |
+| **[IT Consultancy](http://itconsult.com.au/microsoft-expressroute)** | 澳大利亚 |
+| **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | 欧洲（德国） |
 | **[Nelite](http://nelite.com/)** |欧洲 |
 | **[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** |亚洲 |
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** |美国 |
@@ -188,6 +191,6 @@ ms.openlocfilehash: fd018ed25e5c309a85bb2078d00f2bb0b504e5d2
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

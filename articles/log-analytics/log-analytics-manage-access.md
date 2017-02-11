@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 01/06/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
+ms.sourcegitcommit: 6862723b774951fe4cca0303ee2a39a0d5f2089d
+ms.openlocfilehash: eec688e33ff55334ebe0c1bc6d08e4753aadb85c
 
 
 ---
@@ -60,7 +60,7 @@ ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
 
 #### <a name="view-workspace-information-the-azure-portal"></a>在 Azure 门户中查看工作区信息
 
-1. 如果你尚未登录 [Azure 门户](https://portal.azure.com) ，请使用你的 Azure 订阅登录。
+1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
 2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“Log Analytics”。 当你开始键入时，会根据你的输入筛选该列表。 单击“Log Analytics”。  
     ![Azure 中心](./media/log-analytics-manage-access/hub.png)  
 3. 在 Log Analytics 订阅边栏选项卡中选择一个工作区。
@@ -242,6 +242,24 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 6. 刷新 Azure 门户中的视图后，可看到所选计划的已更新**定价层**。  
     ![更新的计划](./media/log-analytics-manage-access/manage-access-change-plan04.png)
 
+## <a name="change-how-long-log-analytics-stores-data"></a>更改 Log Analytics 的数据存储期限
+
+在免费定价层中，Log Analytics 会提供过去 7 天的数据。
+在标准定价层中，Log Analytics 会提供过去 30 天的数据。
+在高级定价层中，Log Analytics 会提供过去 365 天的数据。
+在独立和 OMS 定价层中，Log Analytics 默认会提供过去 31 天的数据。
+
+使用独立和 OMS 定价层时，可将数据保留长达 2 年（730 天）之久。 如果数据的存储超过默认的 31 天，将产生数据保留费。 有关价格详细信息，请参阅[超额费用](https://azure.microsoft.com/pricing/details/log-analytics/)。
+
+若要更改数据保留期，请执行以下操作：
+
+1. 登录到 [Azure 门户](http://portal.azure.com)。
+2. 浏览到 **Log Analytics**，然后选择它。
+3. 随即会看到现有工作区列表。 选择工作区。  
+4. 在工作区边栏选项卡中“常规”下面，单击“保留期”。  
+5. 使用滑块增加或减少保留天数，然后单击“保存”
+“更改保留期”****![](./media/log-analytics-manage-access/manage-access-change-retention01.png)
+
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>更改工作区的 Azure Active Directory 组织
 
 可以更改工作区的 Azure Active Directory 组织 更改 Azure Active Directory 组织可将该目录中的用户和组添加到工作区。
@@ -275,6 +293,6 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

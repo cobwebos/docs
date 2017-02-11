@@ -12,11 +12,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 08/16/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6d1a948cd9b0b2b8b50ba04579de5455e7a44730
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: ac73ab86ba17df9b71a4f07776fef0f4c6e687e8
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: 6d1a948cd9b0b2b8b50ba04579de5455e7a44730
 ## <a name="retrieve-the-host-name-and-access-keys"></a>检索主机名和访问密钥
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="enable-the-nonssl-endpoint"></a>启用非 SSL 终结点
+## <a name="enable-the-non-ssl-endpoint"></a>启用非 SSL 终结点
 某些 Redis 客户端不支持 SSL，默认情况下， [为新的 Azure Redis 缓存实例禁用了非 SSL 端口](cache-configure.md#access-ports)。 在编写本文时， [redis-py](https://github.com/andymccurdy/redis-py) 客户端不支持 SSL。 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
@@ -64,6 +64,6 @@ ms.openlocfilehash: 6d1a948cd9b0b2b8b50ba04579de5455e7a44730
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

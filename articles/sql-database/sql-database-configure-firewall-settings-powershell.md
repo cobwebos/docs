@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 配置 Azure SQL 数据库服务器级防火墙规则 | Microsoft 文档"
-description: "了解如何配置防火墙以允许 IP 地址访问 Azure SQL 数据库。"
+title: "PowerShell：配置 Azure SQL 数据库防火墙规则 | Microsoft 文档"
+description: "了解如何使用 PowerShell，针对访问 Azure SQL 数据库的 IP 地址配置服务器级防火墙规则。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 1f7a1f6f4cc970cf12851e48d0f1b3c6ae46279c
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: d80bd1fbb5cdb0492e521a4d600f657fac0e3325
 
 
 ---
@@ -49,11 +49,11 @@ Azure SQL 数据库使用防火墙规则，以便允许连接到服务器和数�
 
 若要修改现有服务器级别防火墙规则，请执行 [Set-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603789\(v=azure.300\).aspx) cmdlet。 以下示例更改名为 ContosoFirewallRule 的规则的可接受 IP 地址的范围。
 
-    Set-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' –StartIPAddress 192.168.1.4 –EndIPAddress 192.168.1.10 –FirewallRuleName 'ContosoFirewallRule' –ServerName 'Contoso'
+    Set-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' -StartIPAddress 192.168.1.4 -EndIPAddress 192.168.1.10 -FirewallRuleName 'ContosoFirewallRule' -ServerName 'Contoso'
 
 若要删除现有服务器级别防火墙规则，请执行 [Remove-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603588\(v=azure.300\).aspx) cmdlet。 以下示例删除名为 ContosoFirewallRule 的规则。
 
-    Remove-AzureRmSqlServerFirewallRule –FirewallRuleName 'ContosoFirewallRule' –ServerName 'Contoso'
+    Remove-AzureRmSqlServerFirewallRule -FirewallRuleName 'ContosoFirewallRule' -ServerName 'Contoso'
 
 
 ## <a name="manage-firewall-rules-by-using-powershell"></a>使用 PowerShell 管理防火墙规则
@@ -87,6 +87,6 @@ Azure SQL 数据库使用防火墙规则，以便允许连接到服务器和数�
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

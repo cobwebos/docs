@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 8c851d8e-8fd5-4327-89c1-9178b20ddd69
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 44dd0842f23fc7e454153984836ccd7e10af6b8c
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 610429cc19b856988f8143b6f24f22469c78128e
 
 
 ---
@@ -70,11 +71,11 @@ ms.openlocfilehash: 44dd0842f23fc7e454153984836ccd7e10af6b8c
 
 ![列表映射][1]
 
-多租户模型将数个租户分配给单一数据库（你可以跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
+多租户模型将数个租户分配给独立数据库（可跨多个数据库分布租户组。） 当希望每个租户具有较小数据需求时使用此模型。 在此模型中，我们使用**范围映射**将一系列用户分配到数据库。 
 
 ![范围映射][2]
 
-或者你可以使用*列表映射*来实现多租户数据库模型，以将多个租户分配给单一数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
+或可以使用列表映射来实现多租户数据库模型，以将多个租户分配给独立数据库。 例如，DB1 用于存储租户 ID 1 和 5 的相关信息，而 DB2 用于存储租户 7 和租户 10 的数据。 
 
 ![单一数据库上的多个租户][3] 
 
@@ -99,7 +100,7 @@ ms.openlocfilehash: 44dd0842f23fc7e454153984836ccd7e10af6b8c
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>选项 3：单一数据库上的列表映射
+### <a name="option-3-list-mappings-on-a-standalone-database"></a>选项 3：独立数据库上的列表映射
 设置此模式也需要创建列表映射，如步骤 2，选项 1 中所示。
 
 ## <a name="step-3-prepare-individual-shards"></a>步骤 3：准备各个分片
@@ -139,7 +140,7 @@ ms.openlocfilehash: 44dd0842f23fc7e454153984836ccd7e10af6b8c
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>步骤 4，选项 3：映射单一数据库上多个租户的数据
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-standalone-database"></a>步骤 4，选项 3：映射独立数据库上多个租户的数据
 对于每个租户，运行 Add-ListMapping（上面的选项 1）。 
 
 ## <a name="checking-the-mappings"></a>检查映射
@@ -173,6 +174,6 @@ GitHub 上也提供了这些工具：[Azure/elastic-db-tools](https://github.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
