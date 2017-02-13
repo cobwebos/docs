@@ -3,7 +3,7 @@ title: "Azure 顾问入门 | Microsoft Docs"
 description: "Azure 顾问入门。"
 services: advisor
 documentationcenter: NA
-author: kumudd
+author: manbeenkohli
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -12,8 +12,8 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
-ms.author: kumud
+ms.date: 02/10/2017
+ms.author: makohli
 translationtype: Human Translation
 ms.sourcegitcommit: 14e9e494d6e824964b9164ff36d9938341e244be
 ms.openlocfilehash: 7adaa1a457e19c66bdc31a01f4e04b7911e58062

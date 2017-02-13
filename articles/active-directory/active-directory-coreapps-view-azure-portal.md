@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -27,7 +27,7 @@ ms.openlocfilehash: 33b036537211e3bdeacba7f388aca334404385cb
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入 **Azure Active Directory**，然后选择“Enter”。
 3. 在“Azure Active Directory - ***目录名称***”边栏选项卡中（即所管理目录的 Azure AD 边栏选项卡），选择“企业应用程序”。
-   
+
     ![打开企业应用](./media/active-directory-coreapps-view-azure-portal/open-enterprise-apps.png)
 4. 在“企业应用程序”边栏选项卡中，选择“所有应用程序”。 可以通过此边栏选项卡选择要管理的应用、更改显示的列，或者通过筛选列表查找所需的应用（例如，仅查看禁用的应用）。
 
@@ -36,7 +36,6 @@ ms.openlocfilehash: 33b036537211e3bdeacba7f388aca334404385cb
 * [删除企业应用的用户或组分配](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [禁用企业应用的用户登录](active-directory-coreapps-disable-app-azure-portal.md)
 * [更改企业应用的名称或徽标](active-directory-coreapps-change-app-logo-user-azure-portal.md)
-
 
 
 
