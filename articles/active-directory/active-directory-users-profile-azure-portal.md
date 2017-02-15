@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -26,14 +26,14 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 ## <a name="to-change-profile-information"></a>更改个人资料信息
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
-   
+
    ![打开“用户管理”](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“用户”。
-   
+
    ![打开“用户”边栏选项卡](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
 4. 在“用户和组 - 用户”边栏选项卡中，从列表中选择一个用户。
 5. 在所选用户的边栏选项卡中，选择“个人资料”。
-   
+
     ![打开工作信息](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
 6. 添加或更改个人资料信息。 然后在命令栏中，选择“保存”。
 
@@ -43,7 +43,6 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 * [在 Azure Active Directory 预览版中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)
 * [在 Azure Active Directory 预览版中添加或更改用户的个人资料信息](active-directory-users-work-info-azure-portal.md)
 * [从 Azure Active Directory 预览版的目录中删除用户](active-directory-users-delete-user-azure-portal.md)
-
 
 
 
