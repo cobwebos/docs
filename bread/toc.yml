@@ -178,7 +178,7 @@
   - name: "监视和诊断"
     tocHref: /azure/monitoring-and-diagnostics/
     topicHref: /azure/monitoring-and-diagnostics/../azure-portal/monitoring-get-started
-  - name: "Multi-Factor Authentication"
+  - name: "多重身份验证"
     tocHref: /azure/multi-factor-authentication/
     topicHref: /azure/multi-factor-authentication/multi-factor-authentication
     items:
