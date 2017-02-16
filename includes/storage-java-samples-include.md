@@ -9,6 +9,6 @@
 * [Java 中 Azure 表服务入门](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
 * [存储 Java 客户端库示例](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

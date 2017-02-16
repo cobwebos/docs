@@ -253,6 +253,6 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

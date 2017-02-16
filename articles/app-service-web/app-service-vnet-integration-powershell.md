@@ -706,6 +706,6 @@ Resource Manager 虚拟网络具有 Azure Resource Manager API，与经典虚拟
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

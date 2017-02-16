@@ -342,6 +342,6 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

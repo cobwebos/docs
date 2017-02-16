@@ -160,6 +160,6 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

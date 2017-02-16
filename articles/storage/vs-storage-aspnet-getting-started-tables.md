@@ -715,6 +715,6 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
   * [开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)](./vs-storage-aspnet-getting-started-queues.md)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

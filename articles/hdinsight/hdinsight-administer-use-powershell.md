@@ -231,6 +231,6 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

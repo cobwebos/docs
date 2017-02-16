@@ -247,6 +247,6 @@ Azure CDN 允许你指定[自定义域名](cdn/cdn-map-content-to-custom-domain.
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

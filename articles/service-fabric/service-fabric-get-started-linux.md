@@ -192,6 +192,6 @@ Java SDK 提供使用 Java 生成 Service Fabric 服务所需的库和模板。
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

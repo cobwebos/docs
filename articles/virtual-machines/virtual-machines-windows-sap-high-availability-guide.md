@@ -1650,6 +1650,6 @@ _**图 62：**在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到�
   _**图 64：**SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A_
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

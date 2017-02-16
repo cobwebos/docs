@@ -58,6 +58,6 @@ HDInsight 中的外围安全性是使用虚拟网络和网关服务实现的。 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

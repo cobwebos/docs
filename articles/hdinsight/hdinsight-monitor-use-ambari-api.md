@@ -173,6 +173,6 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
