@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2016
+ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 668cd65309eefee8094103686734f12a8db52715
+ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
+ms.openlocfilehash: 2f31d8bf78d63e207d5f26ad37c5cf7bd2bac5bb
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 668cd65309eefee8094103686734f12a8db52715
 
 Azure 开发测试实验室是一项可帮助开发人员和测试人员在 Azure 中快速创建环境，同时尽量减少浪费并控制成本的服务。 可使用可重用模板和项目通过快速预配 Windows 和 Linux 环境来测试应用程序的最新版本。 轻松地将部署管道与开发测试实验室集成，以预配按需环境。 通过预配多个测试代理，增加负载测试，并为培训和演示创建预先预配的环境。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/What-is-Azure-DevTest-Labs/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 > 
 > 
 
@@ -47,6 +47,6 @@ Azure 开发测试实验室是一项可帮助开发人员和测试人员在 Azur
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

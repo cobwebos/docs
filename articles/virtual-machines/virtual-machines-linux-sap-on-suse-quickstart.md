@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 04833ac3adae6ed7dd8c1c61c2ca5b63ea97660b
+ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
+ms.openlocfilehash: fe07622d3a3e60c6d3520b6983195b410c3edc6a
 
 
 ---
@@ -109,7 +109,7 @@ SAP“增强型监视”是在 Azure 上运行 SAP 的必要先决条件。 请�
    azure group deployment create "<deployment name>" -g "<resource group name>" --template-file "<../../filename.json>"
 
    ```
-有关 JSON 模板文件的更多详细信息，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)和 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)。
+有关 JSON 模板文件的更多详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)和 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)。
 
 有关 CLI 和 Azure Resource Manager 的更多详细信息，请参阅 [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](../xplat-cli-azure-resource-manager.md)（将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用）。
 
@@ -159,6 +159,6 @@ SUSE 提供了一个名为“sapconf”的包，该包可管理一组特定于 S
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

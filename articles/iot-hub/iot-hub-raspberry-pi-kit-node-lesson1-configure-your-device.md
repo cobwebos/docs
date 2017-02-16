@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 68647c83f30fddd69aa920cae6f407f2728e14c8
 
 
 ---
@@ -50,7 +50,7 @@ ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
 你还需要：
 
 * Pi 要连接到的有线或无线连接。
-* 一个 USB-SD 适配器或 miniSD 卡，用于将 OS 映像刻录到 microSD 卡上。
+* USB-SD 适配器或 miniSD 卡，用于将操作系统映像刻录到 microSD 卡中。
 * 运行 Windows、Mac 或 Linux 的计算机。 该计算机用来在 microSD 卡上安装 Raspbian。
 * 用于下载必需的工具和软件的 Internet 连接。
 
@@ -117,6 +117,6 @@ ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

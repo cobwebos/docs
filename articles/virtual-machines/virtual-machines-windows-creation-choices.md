@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: a5e0ba0128b7f20d6307f5dea784de007e71321c
+ms.sourcegitcommit: bc3921003bf3b91de88e70ff18b5c397687c288c
+ms.openlocfilehash: 6f4a825faac413652b1dc3880d899e0e40caedbc
 
 
 ---
-# <a name="different-ways-to-create-a-windows-virtual-machine-with-resource-manager"></a>使用资源管理器创建 Windows 虚拟机的不同方式
+# <a name="different-ways-to-create-a-windows-vm"></a>创建 Windows VM 的不同方法
 Azure 提供不同方式来创建虚拟机，因为虚拟机适合于不同的用户和目的。 这意味着，你需要在虚拟机及其创建方式上做出一些选择。 本文提供了这些选项的摘要和说明链接。
 
 ## <a name="azure-portal"></a>Azure 门户
@@ -47,6 +47,6 @@ Azure 提供不同方式来创建虚拟机，因为虚拟机适合于不同的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

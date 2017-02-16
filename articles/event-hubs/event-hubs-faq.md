@@ -1,6 +1,6 @@
 ---
 title: "事件中心常见问题 (FAQ) | Microsoft Docs"
-description: "事件中心常见问题。"
+description: "事件中心常见问题"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2016
+ms.date: 12/07/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb8a1f5b46ed5bfbdc61789ffc48a79927d9c19d
+ms.sourcegitcommit: a584086e459c5446a814bbca3e50ac343fa9201e
+ms.openlocfilehash: f7b3974bf789df8c87254cc4186d8c7c85282aaa
 
 
 ---
@@ -71,16 +71,8 @@ ms.openlocfilehash: eb8a1f5b46ed5bfbdc61789ffc48a79927d9c19d
 事件中心标准层提供的功能要超出事件中心基本层以及某些竞争对手系统的功能。 这些功能包括：超过 24 小时的保留期，能够使用一个 AMQP 连接将命令发送到大量设备而延迟为次秒级，并且能够从那些设备将遥测发送到事件中心。 有关功能列表，请参阅[事件中心定价详细信息](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 ## <a name="geographic-availability"></a>上市地区
-事件中心已在以下区域推出：
 
-| 地域 | 区域 |
-| --- | --- |
-| 美国 |美国中部、美国东部、美国东部 2、美国中南部、美国西部 |
-| 欧洲 |欧洲北部、欧洲西部 |
-| 亚太区 |东亚、东南亚 |
-| 日本 |日本东部、日本西部 |
-| 巴西 |巴西南部 |
-| 澳大利亚 |澳大利亚东部、澳大利亚东南部 |
+在所有支持的 Azure 区域中都可使用 Azure 事件中心。 有关列表，请访问 [Azure 区域][]页。  
 
 ## <a name="support-and-sla"></a>支持和 SLA
 事件中心的技术支持可通过[社区论坛](https://social.msdn.microsoft.com/forums/azure/home)获得。 计费和订阅管理支持免费提供。
@@ -90,14 +82,15 @@ ms.openlocfilehash: eb8a1f5b46ed5bfbdc61789ffc48a79927d9c19d
 ## <a name="next-steps"></a>后续步骤
 若要了解有关事件中心的详细信息，请参阅以下文章：
 
-* [事件中心概述][事件中心概述]。
-* 完整的[使用事件中心的完整示例应用程序][使用事件中心的完整示例应用程序]。
+* [事件中心概述][Event Hubs overview]。
+* [使用事件中心的完整示例应用程序][sample application that uses Event Hubs]。
 
-[事件中心概述]: event-hubs-overview.md
-[使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Azure 区域]: https://azure.microsoft.com/regions/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

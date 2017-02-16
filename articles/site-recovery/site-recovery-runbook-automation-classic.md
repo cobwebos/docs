@@ -1,5 +1,5 @@
 ---
-title: "将 Azure 自动化 Runbook 添加到恢复计划 | Microsoft 文档"
+title: "在经典门户中将 Azure 自动化 Runbook 添加到恢复计划 | Microsoft 文档"
 description: "本指南介绍了如何借助 Azure Site Recovery，在恢复到 Azure 期间使用 Azure 自动化完成复杂任务，从而扩展恢复计划"
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: required
-ms.date: 10/23/2016
+ms.date: 02/06/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 946719d1cef70c841c119c49df8d17482f1e9b98
+ms.sourcegitcommit: 44b6ff6e588d529fd833a4a7fdd61df7e933ddd8
+ms.openlocfilehash: b4105e98323b5161a22fa65707d376a7155611d6
 
 
 ---
-# <a name="add-azure-automation-runbooks-to-recovery-plans---classic"></a>将 Azure 自动化 Runbook 添加到恢复计划 - 经典
+# <a name="add-azure-automation-runbooks-to-recovery-plans-in-the-classic-portal"></a>在经典门户中将 Azure 自动化 Runbook 添加到恢复计划
 本教程介绍 Azure Site Recovery 如何与 Azure 自动化集成以便为恢复计划提供可扩展性。 恢复计划可以协调使用 Azure Site Recovery 保护的虚拟机的恢复，以便复制到辅助云和 Azure 方案。 恢复计划还有助于实现恢复的**一致准确性**、**可重复性**和**自动化**。 如果你要将虚拟机故障转移到 Azure，则与 Azure 自动化集成可扩展恢复计划，并使你能够执行 Runbook，从而可以执行强大的自动化任务。
 
 如果你还没有听说过 Azure 自动化，请单击[此处](https://azure.microsoft.com/services/automation/)进行注册，然后从[此处](https://azure.microsoft.com/documentation/scripts/)下载示例脚本。 若要详细了解 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)，以及如何使用恢复计划来安排 Azure 恢复，请单击[此处](https://azure.microsoft.com/blog/?p=166264)。
@@ -67,10 +67,10 @@ ms.openlocfilehash: 946719d1cef70c841c119c49df8d17482f1e9b98
 1. 在 Azure 自动化“资产”中添加新设置 ![](media/site-recovery-runbook-automation/04.png) 并选择 ![](media/site-recovery-runbook-automation/05.png)
 2. 选择“**字符串**”作为变量类型
 3. 指定变量名称 **AzureSubscriptionName**
-   
+
    ![](media/site-recovery-runbook-automation/06.png)
 4. 指定你的实际 Azure 订阅名称作为变量值。
-   
+
    ![](media/site-recovery-runbook-automation/07_1.png)
 
 可从 Azure 门户上的帐户设置页中找到订阅名称。
@@ -82,7 +82,7 @@ Azure 自动化使用 Azure PowerShell 连接到订阅，并对该处的项目�
 1. 在 Azure 自动化“资产”中添加新设置 ![](media/site-recovery-runbook-automation/04.png) 并选择 ![](media/site-recovery-runbook-automation/09.png)
 2. 选择“**Windows PowerShell 凭据**”作为凭据类型
 3. 指定凭据名称 **AzureCredential**
-   
+
    ![](media/site-recovery-runbook-automation/10.png)
 4. 指定用于登录的用户名和密码。
 
@@ -90,7 +90,7 @@ Azure 自动化使用 Azure PowerShell 连接到订阅，并对该处的项目�
 
 ![](media/site-recovery-runbook-automation/11.png)
 
-若要详细了解如何通过 PowerShell 连接订阅，请单击[此处](../powershell-install-configure.md)。
+若要详细了解如何通过 PowerShell 连接订阅，请单击[此处](/powershell/azureps-cmdlets-docs)。
 
 接下来，你将要在 Azure 自动化中创建一个 Runbook，用于在故障转移后为前端虚拟机添加终结点。
 
@@ -139,31 +139,31 @@ ASR 会将上下文变量传递给 Runbook，以帮助你编写确定性的脚�
 现在，请创建用于在前端虚拟机上打开端口 80 的 Runbook。
 
 1. 在 Azure 自动化帐户中，创建新的 Runbook，并命名为 **OpenPort80**
-   
+
    ![](media/site-recovery-runbook-automation/14.png)
 2. 导航到 Runbook 的“创作”视图，并进入草稿模式。
 3. 首先指定要用作恢复计划上下文的变量
-   
+
    ```
        param (
            [Object]$RecoveryPlanContext
        )
-   
+
    ```
 4. 接下来，使用凭据和订阅名称连接到订阅
-   
+
    ```
        $Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-   
+
        # Connect to Azure
        $AzureAccount = Add-AzureAccount -Credential $Cred
        $AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
        Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
    ```
-   
+
    请注意，本文使用了 Azure 资产 **AzureCredential** 和 **AzureSubscriptionName**。
 5. 现在，请指定终结点详细信息和你要公开其终结点的虚拟机的 GUID。 在本例中为前端虚拟机。
-   
+
    ```
        # Specify the parameters to be used by the script
        $AEProtocol = "TCP"
@@ -172,22 +172,22 @@ ASR 会将上下文变量传递给 Runbook，以帮助你编写确定性的脚�
        $AEName = "Port 80 for HTTP"
        $VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
    ```
-   
+
    这将指定 Azure 终结点协议、VM 上的本地端口及其映射的公共端口。 这些变量是向 VM 添加终结点的 Azure 命令的必需参数。 VMGUID 包含你要对其执行操作的虚拟机的 GUID。
 6. 现在，脚本提取给定 VM GUID 的上下文，并在它引用的虚拟机上创建终结点。
-   
+
    ```
        #Read the VM GUID from the context
        $VM = $RecoveryPlanContext.VmMap.$VMGUID
-   
+
        if ($VM -ne $null)
        {
            # Invoke pipeline commands within an InlineScript
-   
+
            $EndpointStatus = InlineScript {
                # Invoke the necessary pipeline commands to add a Azure Endpoint to a specified Virtual Machine
                # Commands include: Get-AzureVM | Add-AzureEndpoint | Update-AzureVM (including parameters)
-   
+
                $Status = Get-AzureVM -ServiceName $Using:VM.CloudServiceName -Name $Using:VM.RoleName | `
                    Add-AzureEndpoint -Name $Using:AEName -Protocol $Using:AEProtocol -PublicPort $Using:AEPublicPort -LocalPort $Using:AELocalPort | `
                    Update-AzureVM
@@ -262,10 +262,10 @@ ASR 会将上下文变量传递给 Runbook，以帮助你编写确定性的脚�
 
 1. 选择恢复计划并启动测试故障转移。
 2. 在执行计划期间，你可以通过状态了解 Runbook 是否已执行。
-   
+
    ![](media/site-recovery-runbook-automation/17.png)
 3. 你也可以在 Runbook 的 Azure 自动化作业页上查看详细的 Runbook 执行状态。
-   
+
    ![](media/site-recovery-runbook-automation/18.png)
 4. 在故障转移完成后，除了 Runbook 执行结果以外，你还可以通过访问 Azure 虚拟机页并查看终结点，来了解执行是否成功。
 
@@ -281,7 +281,6 @@ ASR 会将上下文变量传递给 Runbook，以帮助你编写确定性的脚�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,3 +1,4 @@
+
 ---
 title: "Mobile Engagement 导出 API 概述"
 description: "了解有关导出由你的用户设备生成的原始数据的基础知识，以在你自己的工具中加以利用"
@@ -15,8 +16,8 @@ ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c17a1cb33616ad297d0fad9b8ea674de75bd8fb
+ms.sourcegitcommit: b1e2ddb613e713972820621d0fa836c41eb61f91
+ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
 
 
 ---
@@ -63,6 +64,9 @@ Mobile Engagement 允许其用户收集许多类型的数据，因此，它有�
 * 导出的类型（快照或历史记录）
 * 数据类型，
 * 将在其中写入导出结果的 **Azure 存储容器**（包括一个具有写入访问权限的有效 SAS）。
+* 例如，示例容器 URL 参数应为 https://[StorageAccountName].blob.core.windows.net/[ContainerName]?[SASWritePermissionsToken]  
+
+下面是一个实际示例。 https://testazmeexport.blob.core.windows.net/test1234azme?sv=2015-12-11&ss=b&srt=sco&sp=rwdlac&se=2016-12-17T04:59:26Z&st=2016-12-16T20:59:26Z&spr=https&sig=KRF3aVWjp2NEJDzjlmoplmu0M9HHlLdkBWRPAFmw90Q%3D
 
 请注意，可能需要几分钟才能启动你的作业，然后，对于微小应用，你的作业可能会运行几秒，而对于包含大量用户或活动的应用，可能会运行几个小时。
 
@@ -73,6 +77,6 @@ Mobile Engagement 允许其用户收集许多类型的数据，因此，它有�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

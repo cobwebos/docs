@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fdf26c779c73c67f8abc7770415787fd90397e05
+ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
+ms.openlocfilehash: 2464b54f70dc38b79a883b08664f4f165ec4c2d3
 
 
 ---
@@ -61,11 +61,11 @@ ms.openlocfilehash: fdf26c779c73c67f8abc7770415787fd90397e05
 系统会要求你确认你需要移动指定资源。 键入 **Y** 确认删除资源。
 
 ## <a name="next-steps"></a>后续步骤
-可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../resource-group-move-resources.md)。    
+可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。    
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

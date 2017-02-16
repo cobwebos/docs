@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/08/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 53b827f15fcba26630dd470c2c9e5bbc87919c84
-ms.openlocfilehash: 79270aa5650f4ac149b582204b3c0e41d099765b
+ms.sourcegitcommit: 4faf01ca10f263a5ecc18f51659b5004bf4f7c36
+ms.openlocfilehash: 3ca870da1a01bc216604cdd1142ba68dfd5e96e2
 
 
 ---
@@ -68,12 +68,13 @@ Enterprise Integration Pack 是 Microsoft 基于云的解决方案，用于无�
 * [XML 消息验证](app-service-logic-enterprise-integration-xml.md "了解如何使用逻辑应用验证 XML 消息")
 * [XML 转换](app-service-logic-enterprise-integration-transform.md "了解企业集成映射")
 * [企业集成连接器](../connectors/apis-list.md "了解 Enterprise Integration Pack 连接器")
+* [集成帐户元数据](app-service-logic-enterprise-integration-metadata.md "了解集成帐户元数据")
 * [监视 B2B 消息](app-service-logic-monitor-b2b-message.md "深入了解 B2B 消息")
 * [在 OMS 门户中跟踪 B2B 消息](app-service-logic-track-b2b-messages-omsportal.md "深入了解在 OMS 门户中跟踪 B2B 消息")
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

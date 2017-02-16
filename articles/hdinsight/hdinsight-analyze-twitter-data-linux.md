@@ -13,21 +13,22 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 660524509b523ae2edb72cb8c80d75437730c119
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 64324eb5258a060f31902cfb30c97425304b7e33
 
 
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析 Twitter 数据
-在此文档中，你将通过使用 Twitter 流式处理 API 获取推文，然后在基于 Linux 的 HDInsight 群集上使用 Apache Hive 处理 JSON 格式数据。 结果将是发送最多包含某个特定词的推文的 Twitter 用户列表。
 
-> [!NOTE]
-> 尽管可以将本文档的各个部分（如 Python）用于基于 Windows 的 HDInsight 群集，但很多步骤的基础是使用基于 Linux 的 HDInsight 群集。 有关特定于基于 Windows 的群集的步骤，请参阅[在 HDInsight 中使用 Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data.md)。
-> 
-> 
+在此文档中，将通过使用 Twitter 流式处理 API 获取推文，然后在 HDInsight 群集上使用 Apache Hive 处理 JSON 格式数据。 结果将是发送最多包含某个特定词的推文的 Twitter 用户列表。
+
+> [!IMPORTANT]
+> 本文档中的步骤已在基于 Linux 的 HDInsight 群集上进行测试。
+>
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ### <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，你必须具有：
@@ -61,8 +62,7 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
 
 > [!NOTE]
 > 在 Windows 中使用 curl 命令时，请使用双引号（而不是单引号）括起选项值。
-> 
-> 
+
 
 ### <a name="download-tweets"></a>下载推文
 以下 Python 代码将从 Twitter 下载 10,000 篇推文并将其保存到一个名为 **tweets.txt** 的文件中。
@@ -316,6 +316,6 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

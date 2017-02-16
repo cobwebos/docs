@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/03/2016
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1eba96054017cbb163d276f5d4fb12c01b2a668e
-ms.openlocfilehash: 9c921acbce59199f07207ccf783b1451b767c965
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: f349dea2ba1a080312cf07f19eded201775c9cd1
 
 ---
 
@@ -99,7 +99,7 @@ ms.openlocfilehash: 9c921acbce59199f07207ccf783b1451b767c965
 
 ### <a name="monitoring-function-app-log-files-with-powershell"></a>使用 PowerShell 监视 Function App 日志文件
 
-若要开始，请[安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+若要开始，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 通过运行以下命令添加 Azure 帐户：
 
@@ -128,6 +128,6 @@ ms.openlocfilehash: 9c921acbce59199f07207ccf783b1451b767c965
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "在虚拟网络中创建和配置具有内部负载平衡器 (ILB) 的应用程序网关 | Microsoft Docs"
+title: "搭配使用 Azure 应用程序网关和内部负载均衡器 | Microsoft Docs"
 description: "本页说明如何配置具有内部负载平衡终结点的 Azure 应用程序网关"
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: bb514e1a65fc051d6a36123820c68998bed36fb9
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: d6f3af61934c8c645be1f2c6b4c056fc7ee2e3aa
 
 
 ---
@@ -226,6 +226,6 @@ DnsName       : appgw-b2a11563-2b3a-4172-a4aa-226ee4c23eed.cloudapp.net
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

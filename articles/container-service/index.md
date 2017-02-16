@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "了解如何使用容器服务通过 DC/OS、Docker Swarm 或 Kubernetes 来部署和管理应用程序容器。 教程、API 参考和其他资源。"
 translationtype: Human Translation
-ms.sourcegitcommit: 445c13f0ff0106aa1d919be81ca373377464b32a
-ms.openlocfilehash: 5e027ac1a0a9ec4d11c76bbce1e0c944742ffaf9
+ms.sourcegitcommit: aaed834dd697bece735fa9297f0228b75346ffc7
+ms.openlocfilehash: 219dfe4950339d7a68d0a5f06135acb4b247b1fd
 
 ---
 
 # <a name="azure-container-service-documentation"></a>Azure 容器服务文档
 
-Azure 容器服务让创建、配置和管理预配置来运行容器化应用程序的虚拟机群集变得更简单。 容器服务使用热门开源计划和业务流程工具的优化配置。 通过此服务，可以使用现有技能或利用不断增加的大量社区专业知识，在 Microsoft Azure 上部署和管理基于容器的应用程序。
+了解如何使用容器服务来部署和管理完全可移植的应用程序容器。 教程、API 参考和其他文档介绍了如何使用 DC/OS、Docker Swarm 或 Kubernetes 来缩放与协调容器。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -100,6 +101,7 @@ Azure 容器服务让创建、配置和管理预配置来运行容器化应用�
 </div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/17/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ede557e1678aa6c24f50bd120552345dcd00cdc3
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: d6bf108a4d03855171d2b9c5552c57f8ee6f1f9b
 
 
 ---
@@ -65,7 +65,7 @@ ms.openlocfilehash: ede557e1678aa6c24f50bd120552345dcd00cdc3
 7. 单击“**购买**”可安装解决方案。
 
 ### <a name="deploy-azure-resource-manager-template"></a>部署 Azure Resource Manager 模板
-对于从社区获取或[自己创建](#creating-a-solution)的解决方案，将作为 Resource Manager 模板实施，并且可以使用任何标准方法[部署模板](../resource-group-template-deploy-portal.md)。  请注意，在安装解决方案之前，必须创建并链接 [OMS 工作区和自动化帐户](#oms-workspace-and-automation-account)。
+对于从社区获取或[自己创建](#creating-a-solution)的解决方案，将作为 Resource Manager 模板实施，并且可以使用任何标准方法[部署模板](../azure-resource-manager/resource-group-template-deploy-portal.md)。  请注意，在安装解决方案之前，必须创建并链接 [OMS 工作区和自动化帐户](#oms-workspace-and-automation-account)。
 
 ## <a name="oms-workspace-and-automation-account"></a>OMS 工作区和自动化帐户
 大多数管理解决方案需要 [OMS 工作区](../log-analytics/log-analytics-manage-access.md)来包含视图，也需要[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。 工作区和帐户必须满足以下要求。
@@ -116,6 +116,6 @@ ms.openlocfilehash: ede557e1678aa6c24f50bd120552345dcd00cdc3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

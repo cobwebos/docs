@@ -1,6 +1,6 @@
 ---
-title: "将 MapReduce 与 HDInsight 上的 Hadoop 配合使用 | Microsoft Docs"
-description: "学习如何在 HDInsight 上的 Hadoop 群集中运行 MapReduce 作业。 你将运行一个实现为 Java MapReduce 作业的基本单词计数操作。"
+title: "将 MapReduce 与 Hadoop on HDInsight 配合使用 | Microsoft Docs"
+description: "学习如何在 Hadoop on HDInsight 群集中运行 MapReduce 作业。 你将运行一个实现为 Java MapReduce 作业的基本单词计数操作。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: b72443c0ca60196535ac093a6ac03df456f776ea
-ms.openlocfilehash: 068cd703d0d06206b3caa72e765dbe51b819ff17
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: ab40eb8b53e2e685be52d24ecf2c32b193b12b85
 
 
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>在 HDInsight 上的 Hadoop 中使用 MapReduce
+# <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>在 Hadoop on HDInsight 中使用 MapReduce
 
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-在本文中，你将学习如何在 HDInsight 上的 Hadoop 群集中运行 MapReduce 作业。 我们将运行一个实现为 Java MapReduce 作业的基本单词计数操作。
+本文介绍了如何在 HDInsight 群集中的 Hadoop 上运行 MapReduce 作业。 我们将运行一个实现为 Java MapReduce 作业的基本单词计数操作。
 
 ## <a name="a-idwhatisawhat-is-mapreduce"></a><a id="whatis"></a>什么是 MapReduce？
 
@@ -168,6 +168,9 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 | [Windows PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell** 远程提交作业 |Linux 或 Windows |Windows |
 | [远程桌面](hdinsight-hadoop-use-mapreduce-remote-desktop.md) |通过**远程桌面**使用 Hadoop 命令 |Windows |Windows |
 
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 ## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
 
 虽然 MapReduce 提供了强大的诊断功能，但掌握起来可能会比较困难。 有多个基于 Java 的框架可让你更轻松地定义 MapReduce 应用程序，还有一些技术（例如 Pig 和 Hive）可让你更方便地在 HDInsight 中处理数据。 若要了解更多信息，请参阅下列文章：
@@ -187,12 +190,12 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 [hdinsight-samples]: hdinsight-run-samples.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
-[powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

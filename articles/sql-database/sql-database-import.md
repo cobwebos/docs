@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: cf9a9631-56aa-4985-a565-1cacc297871d
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.date: 08/31/2016
 ms.author: sstein
@@ -15,13 +16,12 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 26364edba47c4ac77b2125e067b99f87eefb434c
+ms.sourcegitcommit: 16f4e287a955b787a08cc6949094bd0f5224421a
+ms.openlocfilehash: f3c1eeec5c56ca5945ecb744935db61d985ab2b1
 
 
 ---
 # <a name="import-a-bacpac-file-to-create-an-azure-sql-database"></a>导入 BACPAC 文件以创建 Azure SQL 数据库
-**单个数据库**
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-import.md)
@@ -63,7 +63,7 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。 数据库是使用
 5. 单击“存储”并选择存储帐户、blob 容器和 .bacpac 文件，然后单击“确定”。
    
    ![配置存储选项][2]
-6. 为新数据库选择定价层，然后单击“选择”。 不支持直接将数据库导入弹性池，但可先导入单一数据库，然后将数据库移入池中。
+6. 为新数据库选择定价层，然后单击“选择”。 不支持直接将数据库导入弹性池，但可先导入为独立数据库，然后将数据库移入池中。
    
    ![选择定价层][3]
 7. 对通过 BACPAC 文件创建的数据库输入**数据库名称**。
@@ -82,8 +82,7 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。 数据库是使用
    ![导入导出历史记录][5]
    ![导入导出历史记录][6]
 
-## <a name="verify-the-database-is-live-on-the-server"></a>验证数据库位于服务器上
-1. 单击“SQL 数据库”并验证新数据库处于“联机”状态。
+4. 若要验证数据库在服务器上是否处于活动状态，请单击“SQL 数据库”并验证新数据库是否为“联机”。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何连接到并查询导入的 SQL 数据库，请参阅[使用 SQL Server Management Studio 连接到 SQL 数据库执行示例 T-SQL 查询](sql-database-connect-query-ssms.md)
@@ -98,6 +97,6 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。 数据库是使用
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

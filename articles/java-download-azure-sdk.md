@@ -1,6 +1,6 @@
 ---
-title: "下载 Azure SDK for Java"
-description: "了解如何下载 Azure SDK for Java，并提供 Maven 项目的示例代码，以及 Azure Tookit for Eclipse 的基本安装步骤。"
+title: "下载 Azure SDK for Java | Microsoft Docs"
+description: "了解如何下载 Azure SDK for Java，其中附带了为 Maven 项目提供的示例代码。"
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -12,42 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
-ms.author: robmcm
+ms.date: 12/22/2016
+ms.author: robmcm;asirveda
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 25b7e591172ea810ce370f946eb46258c801ba36
+ms.sourcegitcommit: 0933eabf99ef94f2c4b425f1435530edfde65e3f
+ms.openlocfilehash: 9e55eb52797f1363cbb65050574e549c575ca5d8
 
 
 ---
 # <a name="download-the-azure-sdk-for-java"></a>下载 Azure SDK for Java
-本文包含有关下载和安装适用于 Java 的 Azure 库的说明。
+本文包含有关下载和安装适用于 Java 的 Azure 管理库的说明。
 
-**注意：**将根据 [Apache 许可证 2.0 版][license]分发 Azure Libraries for Java。
+> [!NOTE]
+> 根据 [Apache 许可证 2.0 版][license]分发适用于 Java 的 Azure 管理库。
+>
 
 ## <a name="azure-libraries-for-java---manual-download"></a>适用于 Java 的 Azure 库 – 手动下载
-若要手动安装适用于 Java 的 Azure 库，请单击 <http://go.microsoft.com/fwlink/?LinkId=690320> 下载包含所有库及所有依赖项的 ZIP 文件。
+若要手动安装适用于 Java 的 Azure 管理库，请单击 <http://go.microsoft.com/fwlink/?LinkId=690320> 下载包含所有库及所有依赖项的 ZIP 文件。
 
 将 zip 文件下载到计算机之后，请提取其内容，然后使用以下选项之一将 JAR 文件添加你的项目中：
 
-* 在 Eclipse 中将 JAR 文件导入你的 Java 项目。
-* 在 Eclipe 中为项目配置**生成路径**，将该路径包含在 JAR 文件的路径中。
+* 在 Eclipse 或 IntelliJ 中将 JAR 文件导入 Java 项目。
+* 在 Eclipe 或 IntelliJ 中配置 Java 项目的生成路径，以包含 JAR 文件的路径。
 
-有关在 Eclipse 中设置生成路径的详细信息，请参阅 Eclipse 网站上的 [Java 生成路径]一文。
+> [!NOTE]
+> 有关许可证和其他信息，请参阅 ZIP 文件中的 license.txt 和 ThirdPartyNotices.txt 文件。
+>
 
-**注意：**有关许可证和其他信息，请参阅 ZIP 文件中的 license.txt 和 ThirdPartyNotices.txt 文件。
-
-## <a name="azure-libraries-for-java---building-with-maven"></a>适用于 Java 的 Azure 库 - 使用 Maven 生成
+## <a name="azure-management-libraries-for-java---building-with-maven"></a>适用于 Java 的 Azure 管理库 - 使用 Maven 生成
 ### <a name="step-1---set-up-your-project-to-use-maven-for-build"></a>步骤 1 - 将项目设置为使用 Maven 来生成
-若要在 Eclipse 中创建使用适用于 Java 的 Azure 库的 Maven 项目，请遵循[适用于 Java 的 Azure 管理库入门][maven-getting-started]一文。 
+若要在 Eclipse 中创建使用适用于 Java 的 Azure 管理库的 Maven 项目，请遵循[适用于 Java 的 Azure 管理库入门][maven-getting-started]一文中的说明。
 
 ### <a name="step-2---configure-your-maven-settings-with-the-requisite-dependencies"></a>步骤 2 - 使用必要的依赖项配置 Maven 设置
 将项目配置为使用 Maven 生成之后，可以使用类似于以下示例的语法，将必要的依赖项添加到 pom.xml 文件中。 请注意，你无需添加以下示例中所列的每个依赖项，而只需添加项目所需的特定依赖项。
 
 > [!NOTE]
 > 在以下示例中的每个 `<version>` 元素中，将此示例中的“n.n.n”占位符替换为有效版本号，可从 [Maven 上的 Azure 库存储库]获取此版本号。
-> 
-> 
+>
+>
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -95,45 +97,43 @@ ms.openlocfilehash: 25b7e591172ea810ce370f946eb46258c801ba36
         <version>n.n.n</version>
     </dependency>
 
-## <a name="installing-the-azure-toolkit-for-eclipse"></a>安装用于 Eclipse 的 Azure 工具包
-本部分包含有关安装用于 Eclipse 的 Azure 工具包的基本说明；有关详细说明，请参阅[安装用于 Eclipse 的 Azure 工具包]。
-
-### <a name="prerequisites"></a>先决条件
-1. [用于 Eclipse 的 Azure 工具包的新增功能]一文中所列的 Windows 操作系统。
-2. [用于 Eclipse 的 Azure 工具包的新增功能]一文中所列的 Macintosh 或 Linux 操作系统。
-3. Eclipse IDE for Java EE Developers, Indigo 或更高版本。 可从 <http://www.eclipse.org/downloads/> 下载。
-
-### <a name="basic-installation-steps"></a>基本安装步骤
-1. 在 Eclipse 中，从“帮助”菜单中选择“安装新软件”。
-2. 输入站点位置 <http://dl.microsoft.com/eclipse>，然后按 **Enter**。
-3. 选择要安装的项目，然后单击“完成”。
-
-Azure Toolkit for Eclipse 使用最新版本的 Azure SDK。 可使用 Web 平台安装程序 (WebPI) 从 <http://go.microsoft.com/fwlink/?LinkID=252838> 下载。 但是，如果你尚未安装 Azure SDK，则在你创建第一个 Azure 部署项目时，适用于 Eclipse 的 Azure 工具包将自动安装相应版本的 Azure SDK。
-
 ## <a name="see-also"></a>另请参阅
-[用于 Eclipse 的 Azure 工具包]
+有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
-[安装用于 Eclipse 的 Azure 工具包] 
-
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+* [用于 Eclipse 的 Azure 工具包]
+  * [安装用于 Eclipse 的 Azure 工具包]
+  * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
+  * [用于 Eclipse 的 Azure 工具包的新增功能]
+* [用于 IntelliJ 的 Azure 工具包]
+  * [安装用于 IntelliJ 的 Azure 工具包]
+  * [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
+  * [用于 IntelliJ 的 Azure 工具包的新增功能]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
+> [!NOTE]
+> 有关在 Eclipse 中设置生成路径的详细信息，请参阅 Eclipse 网站上的 [Java 生成路径]一文。
+>
+
 <!-- URL List -->
+
+[用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse.md
+[用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij.md
+[在 Eclipse 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[安装用于 Eclipse 的 Azure 工具包]: ./azure-toolkit-for-eclipse-installation.md
+[安装用于 IntelliJ 的 Azure 工具包]: ./azure-toolkit-for-intellij-installation.md
+[用于 Eclipse 的 Azure 工具包的新增功能]: ./azure-toolkit-for-eclipse-whats-new.md
+[用于 IntelliJ 的 Azure 工具包的新增功能]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Maven 上的 Azure 库存储库]: http://go.microsoft.com/fwlink/?LinkID=286274
-[用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkID=699529
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
-[安装用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkId=699546
 [Java 生成路径]: http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-properties-build-path.htm
 [license]: http://www.apache.org/licenses/LICENSE-2.0.html
 [maven-getting-started]: http://go.microsoft.com/fwlink/?LinkID=622998
-[zip-download]: http://go.microsoft.com/fwlink/?LinkId=690320
-[用于 Eclipse 的 Azure 工具包的新增功能]: http://go.microsoft.com/fwlink/?LinkId=690333
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2016
+ms.date: 01/19/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0ecbaaf030e5c87ff05228af852477b865329596
-ms.openlocfilehash: 3b06c7c32c6ec27659365ca4da6193457fff7162
+ms.sourcegitcommit: 89d32955506afdfb9c45c5b0ce3d38d40f012e72
+ms.openlocfilehash: 570a0f0a0c0932a00bbe92b1e137951ceffcd660
 
 
 ---
@@ -159,18 +159,13 @@ Azure Active Directory 的当前实现允许配置以下要求：
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件性访问是否适用于 Exchange ActiveSync？
  
-可以在 Exchange ActiveSync 中使用条件性访问策略；对这种方案的支持会受到限制。  
-包含 Exchange ActiveSync 的策略存在以下限制：
+不适用，此时不能在条件性访问策略中使用 Exchange ActiveSync。
 
-- 只能选择 **Exchange Online** 作为**云应用**分配。
 
-- 如果需要设置**控制**，只能选择“要求合规的设备”。 
- 
-    ![授权](./media/active-directory-conditional-access-azure-portal/22.png)
- 
-- 如果需要配置**条件**，只能配置**客户端应用**。   
+### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>如果需要进行多重身份验证或需要兼容设备会出现何种状况？
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+目前，无论使用何种设备，均将提示用户进行多重身份验证。
+
 
 
 ## <a name="common-scenarios"></a>常见方案
@@ -201,6 +196,6 @@ Azure Active Directory 的当前实现允许配置以下要求：
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

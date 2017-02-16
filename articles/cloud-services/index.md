@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "教程、API 参考和其他文档介绍了如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
+ms.sourcegitcommit: 2b32d1a06f7db06ad3f443548b33d3c8e2032a9e
+ms.openlocfilehash: 69bcbae09192ecbb6b375bac522b433f8cd5391f
 
 ---
 # <a name="cloud-services-documentation"></a>云服务文档
 
-云服务是平台即服务 (PaaS) 实现的一个例子。 这种技术旨在支持运行可缩放、可靠且经济高效的应用程序。 使用云服务可以享受虚拟化的好处，同时还能操控虚拟机来配置、修补和安装软件。  
+了解如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。  教程、API 参考和其他文档介绍了如何管理虚拟机主机以及配置、修补和安装软件。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,6 +126,6 @@ ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

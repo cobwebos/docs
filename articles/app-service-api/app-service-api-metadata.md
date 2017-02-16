@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53f5c17d51622dbc27a27c750999a925c3f80bff
+ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
+ms.openlocfilehash: 3b41340f30239dc0102808b5e492ee7300dcd12b
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 53f5c17d51622dbc27a27c750999a925c3f80bff
 ![](./media/app-service-api-metadata/apidefblade.png)
 
 ### <a name="azure-resource-manager-property"></a>Azure Resource Manager 属性
-也可以在 [Azure PowerShell](../powershell-install-configure.md) 和 [Azure CLI](../xplat-cli-install.md) 等命令行工具中使用[资源浏览器](https://resources.azure.com/)或 [Azure Resource Manager 模板](../resource-group-authoring-templates.md) 配置 API 应用的 API 定义 URL。 
+也可以在 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](../xplat-cli-install.md) 等命令行工具中使用[资源浏览器](https://resources.azure.com/)或 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md) 配置 API 应用的 API 定义 URL。 
 
 在“资源浏览器”中，转到“订阅”>“{订阅}”>“resourceGroups”>“{资源组}”>“提供程序”>“Microsoft.Web”>“站点”>“{站点}”>“配置”>“Web”，即可查看 `apiDefinition` 属性：
 
@@ -60,6 +60,6 @@ ms.openlocfilehash: 53f5c17d51622dbc27a27c750999a925c3f80bff
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

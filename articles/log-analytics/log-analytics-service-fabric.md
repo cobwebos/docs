@@ -1,5 +1,5 @@
 ---
-title: "使用 Log Analytics 中的 Service Fabric 解决方案优化环境 | Microsoft Docs"
+title: "评估 Azure Service Fabric 应用程序和微服务| Microsoft Docs"
 description: "可以使用 Service Fabric 解决方案访问 Service Fabric 应用程序、微服务、节点和群集的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6697c85194e18fcaac0f6d55bf00c3b005f6f00
+ms.sourcegitcommit: 7695debd9f8152efbbc04b6d63a0b44e70646f16
+ms.openlocfilehash: 7cf1174791187cd7d751c4e2d2646282f4a0a5ce
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: e6697c85194e18fcaac0f6d55bf00c3b005f6f00
 > [!div class="op_single_selector"]
 > * [资源管理器](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
-> 
-> 
+>
+>
 
 本文介绍了如何通过了解 Service Fabric 节点的执行状况及应用程序和微服务的运行状况来使用 Log Analytics 中的 Service Fabric 解决方案帮助识别和解决 Service Fabric 群集中的问题。
 
@@ -43,8 +43,8 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 
 > [!NOTE]
 > 必须将 Azure 诊断扩展配置为将日志上载到与 OMS 搜索目标匹配的存储表。 请参阅 [如何使用 Azure 诊断收集日志](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md) 了解有关如何收集日志的详细信息。 本文中的配置设置示例将显示存储表的名称。 在群集上设置“诊断”且并将日志上载到存储帐户后，下一步是配置 OMS 以收集这些日志。
-> 
-> 
+>
+>
 
 请确保先更新“**template.json**”中的“**EtwEventSourceProviderConfiguration**”部分，以为新的 EventSources 添加条目，然后再通过运行“**deploy.ps1**”应用配置更新。 要上载的表与 (ETWEventTable) 相同。 目前，OMS 仅可以读取此表中的应用程序 ETW 事件。 但是，正在开发对自定义 ETW 表的支持。
 
@@ -369,8 +369,8 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.Res
 
 > [!NOTE]
 > 可以通过单击仪表板顶部的“**基于最近 7 天的数据**”，更改这些事件在 Service Fabric 解决方案中的作用域。 还可以显示最近 7 天、1 天或 6 小时内生成的事件。 或者，可以选择“**自定义**”来指定自定义的日期范围。
-> 
-> 
+>
+>
 
 ## <a name="troubleshoot-your-service-fabric-and-oms-configuration"></a>Service Fabric 和 OMS 配置故障排除
 如果因无法在 OMS 中查看事件数据而需要检查 OMS 配置，请使用以下脚本。 该脚本读取 Service Fabric 诊断配置，检查要写入表中的数据，并验证是否将 OMS 配置为从表中读取。
@@ -542,7 +542,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
         Write-Debug ("Found WADcfg")
         Write-Debug $scaleSetDiagnostics.WadCfg
         $serviceFabricProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwEventSourceProviderConfiguration
-        $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration 
+        $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration
     } else
     {
         Write-Error "Unable to parse Azure Diagnostics setting for $id"
@@ -639,7 +639,6 @@ foreach($storageAccount in $storageAccountsToCheck)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

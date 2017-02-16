@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2016
+ms.date: 12/19/2016
 ms.author: garye;haining
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 490647feb058279da05092622404c131ebc57ccb
+ms.sourcegitcommit: de2c4d3d354ef3665134302655f602b043aa8ab0
+ms.openlocfilehash: b10cb3446462989caf9cbb856dab07dc1f5ef71e
 
 
 ---
@@ -25,6 +25,9 @@ ms.openlocfilehash: 490647feb058279da05092622404c131ebc57ccb
 Azure 机器学习 PowerShell 模块是一个功能强大的工具，让你可以使用 Windows PowerShell 来管理工作区、试验、数据集、Web 服务等。
 
 如需查看文档并下载该模块以及完整的源代码，请前往： [https://aka.ms/amlps](https://aka.ms/amlps)。 
+
+> [!NOTE]
+> Azure 机器学习 PowerShell 模块当前处于预览模式。 此预览期间，我们会持续改进和扩展该模块。 如需新闻和信息，敬请关注 [Cortana Intelligence 和机器学习博客](https://blogs.technet.microsoft.com/machinelearning/) 。
 
 ## <a name="what-is-the-machine-learning-powershell-module"></a>机器学习 PowerShell 模块是什么？
 机器学习 PowerShell 模块是基于 .NET 的 DLL 模块，让你可以完全通过 Windows PowerShell 来管理 Azure 机器学习工作区、试验、数据集、Web 服务和 Web 服务终结点。 你可以连同该模块一起下载完整的源代码，其中包括完全分隔的 [C# API 层](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs)。 这意味着你可以从自己的 .NET 项目中引用此 DLL，并通过 .NET 代码管理 Azure 机器学习。 此外，对于 DLL 依赖的基础 REST API，你可以从最喜欢的客户端直接利用。
@@ -49,14 +52,17 @@ Azure 机器学习 PowerShell 模块是一个功能强大的工具，让你可�
 若要深入了解使用案例，请参阅此文章了解如何使用 PowerShell 模块自动执行非常普遍请求的任务︰ [使用 PowerShell 从一个试验中创建许多机器学习模型和 Web 服务终结点](machine-learning-create-models-and-endpoints-with-powershell.md)。
 
 ## <a name="how-do-i-get-started"></a>如何开始？
-若要开始使用机器学习 PowerShell，请从 GitHub 下载[发行包](https://github.com/hning86/azuremlps/releases)并按照[安装说明](https://github.com/hning86/azuremlps/blob/master/README.md)执行操作。 你将需要取消阻止已下载/解压缩的 DLL，然后将它导入到 PowerShell 环境。 大多数 cmdlet 都要求你提供工作区 ID、工作区授权令牌和工作区所在的 Azure 区域。 提供这些信息的最简单方法是使用默认 config.json 文件，安装说明中对其进行了详细解说。 当然，你也可以使用 Visual Studio 克隆 git 树并在本地修改/编译代码。
+若要开始使用机器学习 PowerShell，请从 GitHub 下载[发行包](https://github.com/hning86/azuremlps/releases)并按照[安装说明](https://github.com/hning86/azuremlps/blob/master/README.md)执行操作。 这些说明解释了如何取消阻止已下载/解压缩的 DLL，然后将它导入到 PowerShell 环境。 大多数 cmdlet 都要求你提供工作区 ID、工作区授权令牌和工作区所在的 Azure 区域。 提供这些内容的最简单方法是通过默认 config.json 文件。 这些说明也解释了如何配置此文件。 
+
+如果你需要，则可以克隆 git 树，修改代码，并使用 Visual Studio 在本地编译它。
 
 ## <a name="next-steps"></a>后续步骤
-此预览期间，我们会持续改进和扩展 PowerShell 模块。 如需更多新闻和信息，敬请关注 [Cortana Intelligence 和机器学习博客](https://blogs.technet.microsoft.com/machinelearning/) 。
+你可以 [https://aka.ms/amlps](https://aka.ms/amlps) 处找到 PowerShell 模块的完整文档。 
+
+有关如何在实际方案中使用该模块的扩展示例，请查看深入用例[使用 PowerShell 从一个实验中创建多个机器学习模型和 Web 服务终结点](machine-learning-create-models-and-endpoints-with-powershell.md)。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

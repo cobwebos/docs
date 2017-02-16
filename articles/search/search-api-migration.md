@@ -15,14 +15,17 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 165ab7363efaf90eaab41098f71e2f1b846c346e
-ms.openlocfilehash: 5ac292729d236bd539e71ba431283ca417ea3980
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
 
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>升级到 Azure 搜索服务 REST API 版本 2016-09-01
 如果使用的是 [Azure 搜索服务 REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) 的版本 2015-02-28 或 2015-02-28-Preview，本文有助于你升级应用程序，以便使用接下来正式发布的 API 版本：2016-09-01。
 
 REST API 的版本 2016-09-01 包含某些针对早期版本进行的更改。 这些更改主要涉及向后兼容性，因此更改代码只需最小的工作量，具体取决于之前使用的是哪个版本。 请参阅[升级步骤](#UpgradeSteps)，获取有关如何更改代码以使用新 API 版本的说明。
+
+> [!NOTE]
+> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 你可以不使用最新版本，但是我们建议迁移你的代码，以便使用最新版本。
 
 <a name="WhatsNew"></a>
 
@@ -67,6 +70,6 @@ REST API 的版本 2016-09-01 包含某些针对早期版本进行的更改。 �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

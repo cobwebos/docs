@@ -3,20 +3,21 @@ title: "使用 Azure 门户将 Azure SQL 数据库存档到 BACPAC 文件"
 description: "使用 Azure 门户将 Azure SQL 数据库存档到 BACPAC 文件"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 41d63a97-37db-4e40-b652-77c2fd1c09b7
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
-ms.date: 08/15/2016
-ms.author: sstein
+ms.date: 12/20/2016
+ms.author: sstein;carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 035a4b394c446d3b92e17ec6d938690504f463c5
-ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
+ms.sourcegitcommit: df14225e6c2a1b9bf83623df172b9be9b5777add
+ms.openlocfilehash: 33699b00d50c623661292e5a9b21a97726c47611
 
 
 ---
@@ -32,7 +33,11 @@ ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
 
 需要创建 Azure SQL 数据库的存档时，可以将数据库架构和数据导出到 BACPAC 文件。 BACPAC 文件只是一个扩展名为 BACPAC 的 ZIP 文件。 之后可将 BACPAC 文件存储在 Azure blob 存储中或存储在本地位置的本地存储中，之后可以导入回 Azure SQL 数据库或 SQL Server 本地安装。 
 
-***注意事项***
+> [!IMPORTANT]
+> Azure SQL 数据库自动导出现在处于预览状态，将在 2017 年 3 月 1 日停用。 从 2016 年 12 月 1 日开始，你将无法再对任何 SQL 数据库配置自动导出。 所有现有自动导出作业将继续正常运行，直到 2017 年 3 月 1 日。 2016 年 12 月 1 日之后，你可以使用[长期备份保留](sql-database-long-term-retention.md)或 [Azure 自动化](../automation/automation-intro.md)，以根据所选计划定期使用 PowerShell 存档 SQL 数据库。 对于示例脚本，可以从 [Github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) 下载示例脚本。 
+>
+
+## <a name="considerations"></a>注意事项
 
 * 为保证存档的事务处理方式一致，须确保导出期间未发生写入活动，或者正在从 Azure SQL 数据库的[事务处理方式一致性副本](sql-database-copy.md)中导出。
 * 存档到 Azure Blob 存储的 BACPAC 文件的大小上限为 200 GB。 可使用 [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) 命令提示实用工具将更大的 BACPAC 文件存到本地存储。 此实用程序随 Visual Studio 和 SQL Server 一起提供。 你还可以[下载](https://msdn.microsoft.com/library/mt204009.aspx)最新版本的 SQL Server Data Tools 以获取此实用程序。
@@ -43,11 +48,10 @@ ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
   * 对所有大型表格上的非 null 值使用[聚集索引](https://msdn.microsoft.com/library/ms190457.aspx)。 如果不使用聚集索引，当时间超过 6-12 个小时时，导出可能会失败。 这是因为导出服务需要完成表格扫描，才能尝试导出整个表格。 确认表格是否针对导出进行优化的一个好方法是，运行 **DBCC SHOW_STATISTICS** 并确保 *RANGE_HI_KEY* 不是 null 并且值分布良好。 相关详细信息，请参阅 [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)。
 
 > [!NOTE]
-> BACPAC 不能用于备份和还原操作。 Azure SQL 数据库会自动为每个用户数据库创建备份。 有关详细信息，请参阅[业务连续性概述](sql-database-business-continuity.md)。
-> 
+> BACPAC 不能用于备份和还原操作。 Azure SQL 数据库会自动为每个用户数据库创建备份。 有关详细信息，请参阅[业务连续性概述](sql-database-business-continuity.md)。  
 > 
 
-若要完成本文，你需要以下各项：
+若要完成本文，需要以下各项：
 
 * Azure 订阅。
 * Azure SQL 数据库。 
@@ -57,7 +61,7 @@ ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
 打开要导出的数据库对应的 SQL 数据库边栏选项卡。
 
 > [!IMPORTANT]
-> 若要确保获得事务处理一致性 BACPAC 文件，应首先[创建数据库的副本](sql-database-copy.md)，然后导出该数据库副本。 
+> 若要确保获得事务处理一致的 BACPAC 文件，应首先[创建数据库的副本](sql-database-copy.md)，然后导出该数据库副本。 
 > 
 > 
 
@@ -67,18 +71,18 @@ ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
 4. 在 SQL 数据库边栏选项卡中，单击“导出”以打开“导出数据库”边栏选项卡：
    
    ![导出按钮][1]
-5. 单击“存储”并选择将在其中存储 BACPAC 的存储帐户和 blob 容器：
+5. 单击“存储”并选择存储帐户和 blob 容器以存储 BACPAC：
    
    ![导出数据库][2]
 6. 选择身份验证类型。 
 7. 为包含要导出的数据库的 Azure SQL Server 输入相应的身份验证凭据。
-8. 单击“确定”将数据库存档。 单击“确定”会创建一个导出数据库请求并将其提交给服务。 导出所需要的时间取决于数据库的大小和复杂程度，以及你的服务级别。 你将收到通知。
+8. 单击“确定”将数据库存档。 单击“确定”会创建一个导出数据库请求并将其提交给服务。 导出所需要的时间取决于数据库的大小和复杂程度，以及你的服务级别。 查看收到的通知。
    
    ![导出通知][3]
 
 ## <a name="monitor-the-progress-of-the-export-operation"></a>监视导出操作的进度
 1. 单击“SQL Server”。
-2. 单击包含你刚存档的原始（源）数据库的服务器。
+2. 单击包含你存档的原始（源）数据库的服务器。
 3. 向下滚动到操作。
 4. 在 SQL 服务器边栏选项卡中，单击“导入/导出历史记录”：
    
@@ -105,6 +109,6 @@ ms.openlocfilehash: 8fbc4febad665d66c857876eb60f0165c5fc5c8e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

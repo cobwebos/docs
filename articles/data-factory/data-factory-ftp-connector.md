@@ -1,5 +1,5 @@
 ---
-title: "从 FTP 服务器移动数据 | Microsoft Docs"
+title: "使用 Azure 数据工厂从 FTP 服务器移动数据 | Microsoft Docs"
 description: "了解如何使用 Azure 数据工厂从 FTP 服务器移动数据。"
 services: data-factory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 01/24/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: f27d978eab3aba52ee9a51a5f284b592e3edd6af
+ms.sourcegitcommit: 5e7abf7b5cd6042ce64e6e09683b259bac82d6df
+ms.openlocfilehash: 492c383865e86a19e56af816a77e02922adbc790
 
 
 ---
@@ -108,7 +108,7 @@ ms.openlocfilehash: f27d978eab3aba52ee9a51a5f284b592e3edd6af
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -323,6 +323,6 @@ ms.openlocfilehash: f27d978eab3aba52ee9a51a5f284b592e3edd6af
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

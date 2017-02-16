@@ -12,15 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 02/01/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: f06747c35f12802f54b44774dff7f92280ba0dc9
-ms.openlocfilehash: fb6dbb6da0ad2cfdfee519c8ce254d983d34fe5e
+ms.sourcegitcommit: 2fe28e7b52af579038ec145c028a6d2796d6cc6e
+ms.openlocfilehash: f47b719f7b1a78264e054ee15edacc32ca35aaf7
 
 
 ---
 # <a name="stream-analytics-release-notes"></a>流分析发行说明
+## <a name="notes-for-02012017-release-of-stream-analytics"></a>流分析 02/01/2017 版说明
+此版本包含以下更新。
+
+| 标题 | 说明 |
+| --- | --- |
+| 引入了 JavaScript 用户定义的函数 (UDF) |[Java 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)现已推出，可在创建查询时提高灵活性。 |
+| 引入了用于 Visual Studio 和流分析的工具 |[用于 Visual Studio 的工具](stream-analytics-tools-for-visual-studio.md)现已推出，它们是一套可用于调试的极佳实用工具。 |
+| 引入了诊断日志记录 |[诊断日志记录](stream-analytics-job-diagnostic-logs.md)现已推出，这是附加的故障排除选项。 |
+| 引入了地理空间函数 |[地理空间函数](http://msdn.microsoft.com/library/mt778980(Azure.100).aspx)现已推出正式版。 |
+
 ## <a name="notes-for-04152016-release-of-stream-analytics"></a>流分析 04/15/2016 版说明
 此版本包含以下更新。
 
@@ -136,6 +146,6 @@ ms.openlocfilehash: fb6dbb6da0ad2cfdfee519c8ce254d983d34fe5e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

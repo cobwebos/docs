@@ -1,5 +1,5 @@
 ---
-title: "服务总线事务 | Microsoft 文档"
+title: "Azure 服务总线中事务处理概述 | Microsoft Docs"
 description: "Azure 服务总线原子事务和发送方式概述"
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: clemensv;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 926eeec8186b8136f41355030e5382911bfc0322
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: d9386e08adc4646c7bfcf8bfcb4407ddb5681334
 
 
 ---
@@ -78,11 +78,11 @@ using (scope = new TransactionScope())
 * [自动转发示例](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AutoForward)
 * [Atomic Transactions with Service Bus sample](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions)（服务总线中的原子事务示例）
 * [Azure 队列和服务总线队列比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-* [如何使用 Service Bus 队列](service-bus-dotnet-get-started-with-queues.md)
+* [如何使用服务总线队列](service-bus-dotnet-get-started-with-queues.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

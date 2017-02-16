@@ -1,6 +1,6 @@
 ---
-title: "二项式分布套件 | Microsoft Docs"
-description: "二项式分布套件"
+title: "（已弃用）二项式分布套件 - Azure | Microsoft Docs"
+description: "（已弃用）二项式分布套件"
 services: machine-learning
 documentationcenter: 
 author: ireiter
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/04/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: ireiter
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3f274408b370466af4eb9bd6e2ecbce32ce03857
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 4d4a343be86909acf054eaaf9cc4a1b0df5a4209
 
 
 ---
-# <a name="binomial-distribution-suite"></a>二项式分布套件
+# <a name="deprecated-binomial-distribution-suite"></a>（已弃用）二项式分布套件
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 二项式分布套件是一组示例 Web 服务（[二项式生成器](https://datamarket.azure.com/dataset/aml_labs/bdg5)、[概率计算器](https://datamarket.azure.com/dataset/aml_labs/bdp4)、[分位计算器](https://datamarket.azure.com/dataset/aml_labs/bdq5)），有助于生成和处理二项式分布。 这些服务允许生成任意长度的二项式分布序列，计算超出给定概率的分位以及计算给定分位的概率。 每个服务都会根据所选服务发出不同输出（请参见下面的说明）。 二项式分布套件基于 R 函数 qbinom、rbinom 和 pbinom，这些函数包含在 R 统计包中。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -289,6 +296,6 @@ ms.openlocfilehash: 3f274408b370466af4eb9bd6e2ecbce32ce03857
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

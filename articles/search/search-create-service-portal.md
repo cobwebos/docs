@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.date: 11/29/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: d5800e53349c3f2f6146a7d62381a531537dba90
-ms.openlocfilehash: 990c679bc9937b3a684a7933fb7b8656eb798b69
+ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
+ms.openlocfilehash: 5046b3fc1444e37388505f2662a28486342c8822
 
 
 ---
 # <a name="create-an-azure-search-service-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 搜索服务
-本指南介绍了使用 [Azure 门户](https://portal.azure.com/)创建（或预配）Azure 搜索服务的过程。
+本文介绍了使用 [Azure 门户](https://portal.azure.com/)创建（或预配）Azure 搜索服务的过程。
 
-本指南假设你已具有可登录到 Azure 门户的 Azure 订阅。
+本文假设你已具有可登录到 Azure 门户的 Azure 订阅。
 
 ## <a name="find-azure-search-in-the-azure-portal"></a>在 Azure 门户中找到 Azure 搜索
 1. 转到 [Azure 门户](https://portal.azure.com/)并登录。
@@ -58,7 +58,7 @@ ms.openlocfilehash: 990c679bc9937b3a684a7933fb7b8656eb798b69
 ![](./media/search-create-service-portal/create-service.png)
 
 ## <a name="scale-your-service"></a>扩展你的服务
-预配服务后，你可以对其进行扩展以满足你的需求。 如果你已为 Azure 搜索服务选择标准层，可采用两个维度扩展你的服务：副本和分区。 如果你已选择基本层，可以仅添加副本。
+预配服务后，你可以对其进行扩展以满足你的需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果你已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
 
 ***分区***允许你的服务存储和搜索更多文档。
 
@@ -71,7 +71,7 @@ ms.openlocfilehash: 990c679bc9937b3a684a7933fb7b8656eb798b69
 
 ![](./media/search-create-service-portal/scale-service.png)
 
-## <a name="next"></a>下一步
+## <a name="next-steps"></a>后续步骤
 预配 Azure 搜索服务后，即可[定义 Azure 搜索索引](search-what-is-an-index.md)，从而上传和搜索你的数据。
 
 有关快速教程，请参阅[开始在 Azure 门户中使用 Azure 搜索](search-get-started-portal.md)。
@@ -79,6 +79,6 @@ ms.openlocfilehash: 990c679bc9937b3a684a7933fb7b8656eb798b69
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

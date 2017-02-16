@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/25/2016
+ms.date: 01/18/2017
 ms.author: markgal; jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
+ms.sourcegitcommit: 152285bee4631acca7610eb5bd9167ec37296a26
+ms.openlocfilehash: d1ec8112b9fc347d9de5901c4b39a3291701da45
 
 
 ---
@@ -26,7 +26,8 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
 ## <a name="supported-scenarios"></a>支持的方案
 > [!NOTE]
 > 1. 仅资源管理器部署的虚拟机支持加密 VM 的备份和还原。 而经典虚拟机不支持。 <br>
-> 2. 仅同时使用 BitLocker 加密密钥和 Key 加密秘钥加密的虚拟机支持。 仅使用 BitLocker 加密密钥加密的虚拟机不支持。 <br>
+> 2. 使用 Azure 磁盘加密（利用 Windows 行业标准的 BitLocker 功能和 Linux 的 DM-Crypt 功能来提供磁盘的加密）的 Windows 和 Linux 虚拟机支持。 <br>
+> 3. 仅同时使用 BitLocker 加密密钥和 Key 加密秘钥加密的虚拟机支持。 仅使用 BitLocker 加密密钥加密的虚拟机不支持。 <br>
 > 
 > 
 
@@ -80,7 +81,7 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
 按文章[将 Azure VM 备份到恢复服务保管库](backup-azure-arm-vms.md)中所述步骤触发备份作业。
 
 ## <a name="restore-encrypted-vm"></a>还原加密 VM
-加密和非加密虚拟机的还原体验都是相同的。 按[在 Azure 门户中还原虚拟机](backup-azure-arm-restore-vms.md)中所述步骤还原加密 VM。 如需还原密钥和机密，则必须确保用于还原它们的密钥保管库已存在。
+若要还原已加密的 VM，请先使用[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)的**还原已备份磁盘**部分中提到的步骤还原磁盘。 之后，使用[基于还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)中提到的 PowerShell 步骤基于还原的磁盘创建完整的 VM。
 
 ## <a name="troubleshooting-errors"></a>排查错误
 | 操作 | 错误详细信息 | 解决方法 |
@@ -88,10 +89,11 @@ ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
 | 备份 |验证失败，因为虚拟机仅使用 BEK 进行加密。 只能对同时使用 BEK 和 KEK 加密的虚拟机启用备份。 |应使用 BEK 和 KEK 加密虚拟机。 之后，应启用备份。 |
 | 还原 |无法还原此加密 VM，因为与之关联的密钥保管库不存在。 |通过 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)来创建密钥保管库。 请参阅文章[使用 Azure 备份还原密钥保管库秘钥和机密](backup-azure-restore-key-secret.md)，还原密钥和机密（如果它们不存在）。 |
 | 还原 |无法还原此加密 VM，因为与之关联的密钥和机密不存在。 |请参阅文章[使用 Azure 备份还原密钥保管库秘钥和机密](backup-azure-restore-key-secret.md)，还原密钥和机密（如果它们不存在）。 |
+| 还原 |备份服务没有权限访问你的订阅中的资源。 |如上所述，先使用[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)的**还原已备份磁盘**部分中提到的步骤还原磁盘。 之后，使用 PowerShell [从还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure 应用服务中的 Node.js API 应用 | Microsoft 文档"
+title: "Azure 应用服务中的 Node.js API 应用 | Microsoft Docs"
 description: "了解如何创建 Node.js RESTful API 并将其部署到 Azure 应用服务中的 API 应用。"
 services: app-service\api
 documentationcenter: node
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
-ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
+ms.sourcegitcommit: 633caca05835aa204d4fec5fe216043a50520000
+ms.openlocfilehash: 87d2792d4f7610c62ed96cb522958844d4dc982b
 
 
 ---
@@ -230,23 +230,29 @@ ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
         git init
    
      ![新的本地 Git 存储库](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
-3. 执行以下命令添加 API 应用存储库的 Git 远程设置。 
+3. 如果已完成本教程的第一部分并复制了 `ContactList` 文件夹，副本可能已包含 `node_modules` 文件夹。 不需要在源代码管理中包含 `node_modules` 文件夹，因为在部署过程中，系统会通过 `package.json` 文件和 `npm install` 创建该文件夹。 因此，请运行以下命令，在项目的根目录中添加 `.gitignore` 文件。
+
+         touch .gitignore
+      
+   打开 .gitignore 文件，并将 `node_modules` 添加到该文件的第一行。 如果运行 `git status` 后列表中未出现该目录，则可以确认源代码管理忽略了 `node_modules` 文件夹。 如果想要添加更多规则，可以使用一个 GitHub 项目 [https://github.com/github/gitignore/blob/master/Node.gitignore] 在 NodeJS 项目中忽略建议的文件。
+ 
+4. 执行以下命令添加 API 应用存储库的 Git 远程设置。 
    
         git remote add azure YOUR_GIT_CLONE_URL_HERE
    
     **注意**：请将“YOUR_GIT_CLONE_URL_HERE”字符串替换为前面复制的你自己的 Git 克隆 URL。 
-4. 执行以下命令创建包含所有代码的提交内容。 
+5. 执行以下命令创建包含所有代码的提交内容。 
    
         git add .
         git commit -m "initial revision"
    
     ![Git 提交输出](media/app-service-api-nodejs-api-app/git-commit-output.png)
-5. 运行以下命令将代码推送到 Azure。 当系统提示输入密码时，请输入前面在 Azure 门户中创建的密码。
+6. 运行以下命令将代码推送到 Azure。 当系统提示输入密码时，请输入前面在 Azure 门户中创建的密码。
    
         git push azure master
    
     这会触发 API 应用的部署。  
-6. 在浏览器中，导航回到 API 应用的“部署”边栏选项卡，然后会看到部署正在进行。 
+7. 在浏览器中，导航回到 API 应用的“部署”边栏选项卡，然后会看到部署正在进行。 
    
     ![部署正在进行](media/app-service-api-nodejs-api-app/deployment-happening.png)
    
@@ -275,6 +281,6 @@ ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

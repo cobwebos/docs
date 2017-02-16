@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2016
+ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 75f2cddad471c89fd826097831362d9d51a6dccf
+ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
+ms.openlocfilehash: 799ef33c924a0067bb5e8da9d1b4e50091dbabf6
 
 
 ---
@@ -52,11 +52,11 @@ Azure 服务总线支持一组基于云的、面向消息的中间件技术，�
 文章[创建使用服务总线队列的应用程序](service-bus-create-queues.md)介绍了如何注册 Azure 帐户以及如何创建服务命名空间。 若要使用服务总线命名空间，应用程序必须引用服务总线程序集，特别是 Microsoft.ServiceBus.dll。 引用服务总线依赖项的最简单方法是安装服务总线 [Nuget 程序包](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)。 还可以作为 Azure SDK 的一部分查找该程序集。 可从 [Azure SDK 下载页](https://azure.microsoft.com/downloads/)下载。
 
 ### <a name="create-the-topic-and-subscriptions"></a>创建主题和订阅
-服务总线消息传送实体（队列和发布/订阅主题）的管理操作通过 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类执行。 需要适当的凭据才能为特定命名空间创建 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 实例。 服务总线使用基于安全模型的[共享访问签名 (SAS)](service-bus-sas-overview.md)。 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 类代表具有内置工厂方法的安全令牌提供程序，这些方法可返回一些众所周知的令牌提供程序。 我们将使用 [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) 方法来保留 SAS 凭据。 然后使用服务总线命名空间和令牌提供程序的基址构建 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 实例。
+服务总线消息传送实体（队列和发布/订阅主题）的管理操作通过 [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) 类执行。 需要适当的凭据才能为特定命名空间创建 **NamespaceManager** 实例。 服务总线使用基于安全模型的[共享访问签名 (SAS)](service-bus-sas-overview.md)。 [TokenProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.tokenprovider#microsoft_servicebus_tokenprovider) 类代表具有内置工厂方法的安全令牌提供程序，这些方法可返回一些众所周知的令牌提供程序。 我们将使用 [CreateSharedAccessSignatureTokenProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) 方法来保留 SAS 凭据。 然后使用服务总线命名空间和令牌提供程序的基址构建 [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) 实例。
 
-[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类提供了创建、枚举和删除消息传送实体的方法。 此处显示的代码介绍了创建 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 实例并用它创建 **DataCollectionTopic** 主题的方法。
+[NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) 类提供了创建、枚举和删除消息传送实体的方法。 此处显示的代码介绍了创建 **NamespaceManager** 实例并用它创建 **DataCollectionTopic** 主题的方法。
 
-```
+```csharp
 Uri uri = ServiceBusEnvironment.CreateServiceUri("sb", "test-blog", string.Empty);
 string name = "RootManageSharedAccessKey";
 string key = "abcdefghijklmopqrstuvwxyz";
@@ -67,42 +67,42 @@ NamespaceManager namespaceManager = new NamespaceManager(uri, tokenProvider);
 namespaceManager.CreateTopic("DataCollectionTopic");
 ```
 
-请注意，存在 [CreateTopic](https://msdn.microsoft.com/library/azure/hh293080.aspx) 方法的重载，你可通过该方法设置主题的属性。 例如，可为发送给主题的消息设置默认生存期 (TTL) 值。 接下来，添加**清单**和**仪表板**订阅。
+请注意，存在 [CreateTopic](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateTopic_System_String_) 方法的重载，你可通过该方法设置主题的属性。 例如，可为发送给主题的消息设置默认生存期 (TTL) 值。 接下来，添加**清单**和**仪表板**订阅。
 
-```
+```csharp
 namespaceManager.CreateSubscription("DataCollectionTopic", "Inventory");
 namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard");
 ```
 
 ### <a name="send-messages-to-the-topic"></a>将消息发送到主题
-为了对服务总线实体进行运行时操作（例如发送和接收消息），应用程序必须首先创建 [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 对象。 类似于 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类，[MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 实例也从服务命名空间和令牌提供程序的基址创建。
+为了对服务总线实体进行运行时操作（例如发送和接收消息），应用程序必须首先创建 [MessagingFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory#microsoft_servicebus_messaging_messagingfactory) 对象。 类似于 [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) 类，**MessagingFactory** 实例也从服务命名空间和令牌提供程序的基址创建。
 
 ```
 MessagingFactory factory = MessagingFactory.Create(uri, tokenProvider);
 ```
 
-在服务总线主题中发送和接收的消息是 [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 类的实例。 此类包含一组标准属性（如 [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) 和 [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)）、一个用来保存应用程序属性的词典以及大量随机应用程序数据。 应用程序可以通过传入任何可序列化对象来设置正文（下面的示例传入 **SalesData** 对象，表示来自 POS 终端的销售数据），它将使用 [DataContractSerializer](https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx) 来序列化该对象。 或者，也可以提供 [Stream](https://msdn.microsoft.com/library/azure/system.io.stream.aspx) 对象。
+在服务总线主题中发送和接收的消息是 [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的实例。 此类包含一组标准属性（如 [Label](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) 和 [TimeToLive](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)）、一个用来保存应用程序属性的词典以及大量随机应用程序数据。 应用程序可以通过传入任何可序列化对象来设置正文（下面的示例传入 **SalesData** 对象，表示来自 POS 终端的销售数据），它将使用 [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx) 来序列化该对象。 或者，也可以提供 [Stream](https://msdn.microsoft.com/library/system.io.stream.aspx) 对象。
 
-```
+```csharp
 BrokeredMessage bm = new BrokeredMessage(salesData);
 bm.Label = "SalesReport";
 bm.Properties["StoreName"] = "Redmond";
 bm.Properties["MachineID"] = "POS_1";
 ```
 
-将消息发送到主题的最简单方法是使用 [CreateMessageSender](https://msdn.microsoft.com/library/azure/hh322659.aspx) 从 [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 实例直接创建 [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx) 对象。
+将消息发送到主题的最简单方法是使用 [CreateMessageSender](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_CreateMessageSender_System_String_) 从 [MessagingFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 实例直接创建 [MessageSender](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesender) 对象。
 
-```
+```csharp
 MessageSender sender = factory.CreateMessageSender("DataCollectionTopic");
 sender.Send(bm);
 ```
 
 ### <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
-类似于使用队列，若要从订阅接收消息，可以使用 [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) 对象，可使用 [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) 从 [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 直接创建它。 可以使用两种不同接收模式之一（**ReceiveAndDelete** 和 **PeekLock**），如[创建使用服务总线队列的应用程序](service-bus-create-queues.md)中所述。
+类似于使用队列，若要从订阅接收消息，可以使用 [MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 对象，可使用 [CreateMessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_CreateMessageReceiver_System_String_) 从 [MessagingFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 直接创建它。 可以使用两种不同接收模式之一（**ReceiveAndDelete** 和 **PeekLock**），如[创建使用服务总线队列的应用程序](service-bus-create-queues.md)中所述。
 
-请注意，为订阅创建 [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) 时，*entityPath* 参数的形式为 `topicPath/subscriptions/subscriptionName`。 因此，若要为 **DataCollectionTopic** 主题的**库存**订阅创建 [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx)，必须将 *entityPath* 设置为 `DataCollectionTopic/subscriptions/Inventory`。 代码将如下所示：
+请注意，为订阅创建 **MessageReceiver** 时，*entityPath* 参数的形式为 `topicPath/subscriptions/subscriptionName`。 因此，若要为 **DataCollectionTopic** 主题的**库存**订阅创建 **MessageReceiver**，必须将 *entityPath* 设置为 `DataCollectionTopic/subscriptions/Inventory`。 代码将如下所示：
 
-```
+```csharp
 MessageReceiver receiver = factory.CreateMessageReceiver("DataCollectionTopic/subscriptions/Inventory");
 BrokeredMessage receivedMessage = receiver.Receive();
 try
@@ -117,7 +117,7 @@ catch (Exception e)
 ```
 
 ## <a name="subscription-filters"></a>订阅筛选器
-到目前为止，在该情况下，发送到主题的所有消息都提供给所有已注册的订阅。 这里的关键词是“可供使用”。 虽然服务总线订阅可看到发送到主题的所有消息，你可以仅将这些消息的一个子集复制到虚拟订阅队列。 可使用订阅*筛选器*执行此操作。 创建订阅时，可以用 SQL92 样式谓词的形式提供筛选器表达式，对消息的属性进行操作，包括系统属性（例如 [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)）和应用程序属性（例如以上示例中的 **StoreName**）。
+到目前为止，在该情况下，发送到主题的所有消息都提供给所有已注册的订阅。 这里的关键词是“可供使用”。 虽然服务总线订阅可看到发送到主题的所有消息，你可以仅将这些消息的一个子集复制到虚拟订阅队列。 可使用订阅*筛选器*执行此操作。 创建订阅时，可以用 SQL92 样式谓词的形式提供筛选器表达式，对消息的属性进行操作，包括系统属性（例如 [Label](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label)）和应用程序属性（例如以上示例中的 **StoreName**）。
 
 推演此方案以说明这一点，向我们的零售方案中加入第二家零售店。 来自两家零售店所有 POS 终端的销售数据仍必须路由到集中库存管理系统，但使用仪表板工具的零售店经理只对本店绩效感兴趣。 可以使用订阅筛选来实现此目的。 请注意，当 POS 终端发布消息时，会在消息上设置 **StoreName** 应用程序属性。 给定两个零售店，例如 **Redmond** 和 **Seattle**，Redmond 商店中的 POS 终端使其销售数据消息带上等于 **Redmond** 的 **StoreName** 戳记，而 Seattle 商店 POS 终端使用的 **StoreName** 等于 **Seattle**。 Redmond 商店经理仅希望查看来自其 POS 终端的数据。 系统将如下所示：
 
@@ -125,12 +125,12 @@ catch (Exception e)
 
 若要设置此路由，请创建**仪表板**订阅，如下所示：
 
-```
+```csharp
 SqlFilter dashboardFilter = new SqlFilter("StoreName = 'Redmond'");
 namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboardFilter);
 ```
 
-使用此订阅筛选器，仅 **StoreName** 属性设置为 **Redmond** 的消息将被复制到**仪表板**订阅的虚拟队列。 但是，还有很多消息需要订阅筛选。 除了在将消息传递到订阅的虚拟队列时修改其属性的能力之外，对于每个订阅，应用程序可以具有多个筛选器规则。
+使用此[订阅筛选器](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter)，仅 **StoreName** 属性设置为 **Redmond** 的消息将被复制到**仪表板**订阅的虚拟队列。 但是，还有很多消息需要订阅筛选。 除了在将消息传递到订阅的虚拟队列时修改其属性的能力之外，对于每个订阅，应用程序可以具有多个筛选器规则。
 
 ## <a name="summary"></a>摘要
 [创建使用服务总线队列的应用程序](service-bus-create-queues.md)中所述的所有使用队列的理由也适用于主题，具体如下：
@@ -146,6 +146,6 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

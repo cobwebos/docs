@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/14/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: db3705c26ecb1b939c17829cc121c9ef0f3eaa31
+ms.sourcegitcommit: 0e74a1784f39fe934d36c0391de7d01bf7699868
+ms.openlocfilehash: b0c207190fcfb23cc75c4aaa661c76c561265ef8
 
 
 ---
@@ -177,7 +177,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 1. 在 HPC 群集管理器中的“**节点管理**”（在最新版本的 HPC Pack 中称为“**资源管理**”）中，进入“**操作**”窗格，单击“**添加节点**”。
    
     ![添加节点][add_node1]
-2. 在添加节点向导的“**选择部署方法**”页上，单击“**添加 Azure 节点**”，然后单击“**下一步**”。
+2. 在“添加节点”向导的“选择部署方法”页上，单击“添加 Windows Azure 节点”，然后单击“下一步”。
    
     ![添加 Azure 节点][add_node1_1]
 3. 在“**指定新节点**”页上，选择你之前创建的 Azure 节点模板（默认称作“**默认 AzureNode 模板**”）。 然后指定大小为“**小**”的 **2** 个节点，然后单击“**下一步**”。
@@ -197,7 +197,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 1. 在 HPC 群集管理器中的“**节点管理**”（在最新版本的 HPC Pack 中称为“**资源管理**”）中，单击这两个或其中一个节点，然后在“**操作**”窗格中，单击“**启动**”。
    
    ![启动节点][add_node4]
-2. 在“**启动 Azure 节点**”对话框中，单击“**启动**”。
+2. 在“停止 Windows Azure 节点”对话框中，单击“启动”。
    
     ![启动节点][add_node5]
    
@@ -250,7 +250,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 1. 在 HPC 群集管理器中的“**节点管理**”（在最新版本的 HPC Pack 中称为“**资源管理**”）中，选择这两个 Azure 节点。 然后，在“**操作**”窗格中，单击“**停止**”。
    
     ![停止节点][stop_node1]
-2. 在“**停止 Azure 节点**”对话框中，单击“**停止**”。
+2. 在“停止 Windows Azure 节点”对话框中，单击“停止”。
    
     ![停止节点][stop_node2]
 3. 节点将转换到“**正在停止**”状态。 几分钟后，HPC 群集管理器将显示节点处于“**未部署**”状态。
@@ -268,7 +268,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 * 有关在 Azure 中创建 HPC Pack 群集的其他方法，包括使用 Azure Resource Manager 模板，请参阅[在 Azure 中使用 Microsoft HPC Pack 时的 HPC 群集选项](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关 Azure 中的大型计算和 HPC 云解决方案范围的详细信息，请参阅 [Azure 中的大型计算：用于批处理和高性能计算 (HPC) 的技术资源](../batch/big-compute-resources.md)。
 
-[概述]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
+[Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
 [install_hpc1]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc1.png
 [install_hpc2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc2.png
 [install_hpc3]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc3.png
@@ -307,6 +307,6 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

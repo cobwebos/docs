@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 502991093c2f3c38f37a6cb4e3770459b7d5ee78
-ms.openlocfilehash: 9a06ba91dea57ef2298f2b0651a01e56f0b5c4ae
+ms.sourcegitcommit: 5ef6819df027fac095dddd7c69cb27d6eff636b8
+ms.openlocfilehash: 823e551bd60d252786c917fd1aefa9e2c06f03a0
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 9a06ba91dea57ef2298f2b0651a01e56f0b5c4ae
 可在将数据加载到 Azure SQL 数据仓库时指定是否使用 PolyBase。 建议在将数据加载到 Azure SQL 数据仓库时使用 PolyBase 实现最佳性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
 
 ## <a name="copy-data-wizard"></a>复制数据向导
-若要创建从/向 Azure SQL 数据仓库复制数据的管道，最简单的方法是使用复制数据向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，了解有关使用复制数据向导创建管道的快速演练。
+若要创建从/向 Azure SQL 数据仓库复制数据的管道，最简单的方法是使用复制数据向导。 有关使用“复制数据”向导创建管道的快速演练，请参阅[教程：使用数据工厂将数据载入 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)。
 
 
 以下示例提供示例 JSON 定义，该定义可用于通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)或 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何从/向 Azure SQL 数据仓库和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -668,6 +668,6 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

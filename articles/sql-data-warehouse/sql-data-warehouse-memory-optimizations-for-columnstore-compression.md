@@ -1,5 +1,5 @@
 ---
-title: "内存优化 - Azure SQL 数据仓库中的列存储索引 | Microsoft 文档"
+title: "提高 Azure SQL 中列存储索引的性能 | Microsoft Docs"
 description: "减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 11/18/2016
 ms.author: shigu;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 4884813a8ea73fe1104dea0b7423420d20a6a743
-ms.openlocfilehash: 847dfe2d32c199cb4e55a8025f903111d87b9c68
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 966d353dd8de46946ff2cdcd1d9cac7cd3e09579
 
 
 ---
@@ -131,6 +131,6 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

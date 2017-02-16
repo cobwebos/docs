@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 536cb4cd7975283dd61c8c4f2fe1a707a735504e
-ms.openlocfilehash: 7e05ab9c6ba1d23399d2ded63eb9b413c422f7bc
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 67f2f420eecc89a9ffce2fb9ba4781a8fcb0d03b
 
 
 ---
@@ -116,7 +116,7 @@ ms.openlocfilehash: 7e05ab9c6ba1d23399d2ded63eb9b413c422f7bc
 
 若要使用 PowerShell 部署下载的模板，请执行以下步骤。
 
-1. 如果从未用过 Azure PowerShell，请完成[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 一文中的步骤。
+1. 如果从未用过 Azure PowerShell，请完成[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 一文中的步骤。
 2. 在 PowerShell 控制台中，根据需要运行 `New-AzureRmResourceGroup` cmdlet 创建新资源组。 如果已创建资源组，请转到步骤 3。
 
     ```powershell
@@ -207,6 +207,6 @@ ms.openlocfilehash: 7e05ab9c6ba1d23399d2ded63eb9b413c422f7bc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

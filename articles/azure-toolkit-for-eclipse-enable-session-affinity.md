@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a7320a7e5052ffb4171307bc8636182447ddfc50
+ms.sourcegitcommit: 3fb7a0361717d4616ec21e55c0a202ed8bf8991d
+ms.openlocfilehash: a537a71a43b49d510a12d1293d8ee898d66efe63
 
 
 ---
@@ -42,26 +42,23 @@ Eclipse 工具包是通过在角色实例中安装名为应用程序请求路由
 * 初始化每个角色需要更长的时间。
 * 将会添加一个充当上述流量路由器的内部终结点。
 
-有关如何在启用会话相关性的情况下维护会话数据的示例，请参阅[如何使用会话相关性来维护会话数据][如何使用会话相关性来维护会话数据]。
 
 ## <a name="see-also"></a>另请参阅
-[用于 Eclipse 的 Azure 工具包][用于 Eclipse 的 Azure 工具包]
+[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]
 
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序][在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+[在 Eclipse 中为 Azure 创建 Hello World 应用程序][Creating a Hello World Application for Azure in Eclipse]
 
-[安装用于 Eclipse 的 Azure 工具包][安装用于 Eclipse 的 Azure 工具包] 
+[安装用于 Eclipse 的 Azure 工具包][Installing the Azure Toolkit for Eclipse] 
 
-[如何使用会话相关性来维护会话数据][如何使用会话相关性来维护会话数据]
-
-有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java 开发人员中心]。
+有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java Developer Center]。
 
 <!-- URL List -->
 
-[Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
-[用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkID=699529
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
-[如何使用会话相关性来维护会话数据]: http://go.microsoft.com/fwlink/?LinkID=699539
-[安装用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[How to Maintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
@@ -71,6 +68,6 @@ Eclipse 工具包是通过在角色实例中安装名为应用程序请求路由
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

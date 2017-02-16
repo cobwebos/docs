@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 1b439e2b48cc009e727a49c271318cfd4ead9ef2
+ms.sourcegitcommit: a287ebd634a9305229424d0efea266146f88a952
+ms.openlocfilehash: 234032630cb3911deb7c7d32cfc4963ad6aee43f
 
 
 ---
@@ -29,13 +29,18 @@ ms.openlocfilehash: 1b439e2b48cc009e727a49c271318cfd4ead9ef2
 或者，在某个 DirectQuery 模型连接到本地数据源时，如果使用了本机提供程序，则可能会看到错误消息：**“创建 OLE DB 行集时出错。‘LIMIT’附近的语法不正确”**。
 
 ## <a name="data-source-providers"></a>数据源提供程序
-连接到本地或云数据源时，内存中或直接查询数据模型支持以下数据源提供程序：
+连接到云或本地的数据源时，内存中或直接查询数据模型支持以下数据源提供程序：
 
-|  | **数据源** | **内存中** | **直接查询** |
-| --- | --- | --- | --- |
-| **云** |Azure SQL 数据仓库 |用于 SQL Server 的 .NET Framework 数据提供程序 |用于 SQL Server 的 .NET Framework 数据提供程序 |
+### <a name="cloud"></a>云
+| **数据源** | **内存中** | **直接查询** |
+|  --- | --- | --- |
+| Azure SQL 数据仓库 |用于 SQL Server 的 .NET Framework 数据提供程序 |用于 SQL Server 的 .NET Framework 数据提供程序 |
 | Azure SQL 数据库 |用于 SQL Server 的 .NET Framework 数据提供程序 |用于 SQL Server 的 .NET Framework 数据提供程序 | |
-| **本地**（通过网关） |SQL Server |SQL Server Native Client 11.0 |用于 SQL Server 的 .NET Framework 数据提供程序 |
+
+### <a name="on-premises-via-gateway"></a>本地（通过网关）
+|**数据源** | **内存中** | **直接查询** |
+|  --- | --- | --- |
+| SQL Server |SQL Server Native Client 11.0 |用于 SQL Server 的 .NET Framework 数据提供程序 |
 | SQL Server |Microsoft OLE DB Provider for SQL Server |用于 SQL Server 的 .NET Framework 数据提供程序 | |
 | SQL Server |用于 SQL Server 的 .NET Framework 数据提供程序 |用于 SQL Server 的 .NET Framework 数据提供程序 | |
 | Oracle |Microsoft OLE DB Provider for Oracle |用于 .Net 的 Oracle 数据提供程序 | |
@@ -75,6 +80,6 @@ ms.openlocfilehash: 1b439e2b48cc009e727a49c271318cfd4ead9ef2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

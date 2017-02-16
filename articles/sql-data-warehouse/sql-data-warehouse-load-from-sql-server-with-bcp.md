@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e61865c903f168e35cff6a7ce8ccd27dbaaff104
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 8dc7c2fb833c1c51ecef772ba1cbe5f0405fe494
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: e61865c903f168e35cff6a7ce8ccd27dbaaff104
 * 将表从平面文件导入 SQL 数据仓库。
 * 针对加载的数据创建统计信息。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
 > 
 
@@ -48,7 +48,7 @@ ms.openlocfilehash: e61865c903f168e35cff6a7ce8ccd27dbaaff104
 * 已安装 bcp 命令行实用工具
 * 已安装 sqlcmd 命令行实用工具
 
-可以从 [Microsoft 下载中心][Microsoft 下载中心]下载 bcp 和 sqlcmd 实用程序。
+可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用工具。
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>采用 ASCII 或 UTF-16 格式的数据
 如果你使用自己的数据尝试学习本教程，则数据需要使用 ASCII 或 UTF-16 编码，因为 bcp 不支持 UTF-8。 
@@ -134,7 +134,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151201 |4 |2 |
 
 ## <a name="4-create-statistics"></a>4.创建统计信息
-SQL 数据仓库尚不支持自动创建或自动更新统计信息。 为了获得最佳查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。 有关统计信息的详细说明，请参阅[统计信息][统计信息]。 
+SQL 数据仓库尚不支持自动创建或自动更新统计信息。 为了获得最佳查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。 有关统计信息的详细说明，请参阅[统计信息][Statistics]。 
 
 运行以下命令针对新加载的表创建统计信息。
 
@@ -178,28 +178,28 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 可以使用 bcp 的 **queryout** 函数导出查询结果，而无需导出整个表。 
 
 ## <a name="next-steps"></a>后续步骤
-有关加载数据的概述，请参阅[将数据载入 SQL 数据仓库][将数据载入 SQL 数据仓库]。
-有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL 数据仓库开发概述]。
-若要详细了解如何在 SQL 数据仓库中创建表，请参阅[表概述][表概述]或 [CREATE TABLE 语法][CREATE TABLE 语法]。
+有关加载数据的概述，请参阅[将数据载入 SQL 数据仓库][Load data into SQL Data Warehouse]。
+有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL Data Warehouse development overview]。
+有关在 SQL 数据仓库中创建表的详细信息，请参阅[表概述][Table Overview]或 [CREATE TABLE 语法][CREATE TABLE syntax]。
 
 <!--Image references-->
 
 <!--Article references-->
 
-[将数据载入 SQL 数据仓库]: ./sql-data-warehouse-overview-load.md
-[SQL 数据仓库开发概述]: ./sql-data-warehouse-overview-develop.md
-[表概述]: ./sql-data-warehouse-tables-overview.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Table Overview]: ./sql-data-warehouse-tables-overview.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE 语法]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft 下载中心]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

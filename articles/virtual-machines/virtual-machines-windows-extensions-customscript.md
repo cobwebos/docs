@@ -1,9 +1,9 @@
 ---
-title: "在 Windows VM 上使用模板的自定义脚本 | Microsoft Docs"
-description: "通过将自定义脚本扩展与 Resource Manager 模板配合使用，自动完成 Windows VM 配置任务"
+title: "适用于 Windows 的 Azure 自定义脚本扩展 | Microsoft 文档"
+description: "使用自定义脚本扩展自动执行 Windows VM 配置任务"
 services: virtual-machines-windows
 documentationcenter: 
-author: kundanap
+author: neilpeterson
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,70 +13,130 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/29/2016
-ms.author: kundanap
+ms.date: 01/17/2017
+ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: ac63fd346f158d52b359f2d6b398d0d00ea0c67e
+ms.sourcegitcommit: f9ea0d14a99a7881b816606058e5ad72a0fef499
+ms.openlocfilehash: 01adbd43c5c77c3a80c5141e06a2ab14a49b8454
 
 
 ---
-# <a name="windows-vm-custom-script-extensions-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板的 Windows VM 自定义脚本扩展
-[!INCLUDE [virtual-machines-common-extensions-customscript](../../includes/virtual-machines-common-extensions-customscript.md)]
+# <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
-## <a name="template-example-for-a-windows-vm"></a>Windows VM 模板示例
-在模板的 Resource 节中定义以下资源。
+自定义脚本扩展在 Azure 虚拟机上下载并执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 自定义脚本扩展与 Azure Resource Manager 模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
 
-       {
-       "type": "Microsoft.Compute/virtualMachines/extensions",
-       "name": "MyCustomScriptExtension",
-       "apiVersion": "2015-05-01-preview",
-       "location": "[parameters('location')]",
-       "dependsOn": [
-           "[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'))]"
-       ],
-       "properties": {
-           "publisher": "Microsoft.Compute",
-           "type": "CustomScriptExtension",
-           "typeHandlerVersion": "1.7",
-           "autoUpgradeMinorVersion":true,
-           "settings": {
-               "fileUris": [
-               "http://Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
-           ],
-           "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File start.ps1"
-         }
-       }
-     }
+本文档详细说明如何通过 Azure PowerShell 模块、Azure Resource Manager 模板使用自定义脚本扩展，同时详细说明 Windows 系统上的故障排除步骤。
 
-在前述示例中，请将文件 URL 和文件名替换为自己的设置。
-创作模板之后，可以使用 Azure PowerShell 部署模板。
+## <a name="prerequisites"></a>先决条件
 
-如果要将脚本 URL 和参数保留为专用，可以将脚本 URL 设置为“专用”。 如果将脚本 URL 设置为“专用”，则只能使用作为受保护设置发送的存储帐户名和密钥来访问它。 对于 1.7 版或更高版本的自定义脚本扩展，也可以受保护设置的形式提供脚本参数。
+### <a name="operating-system"></a>操作系统
 
-## <a name="template-example-for-a-windows-vm-with-protected-settings"></a>使用受保护设置的 Windows VM 模板示例
-        {
+可以针对 Windows Server 2008 R2、2012、2012 R2 和 2016 版本运行适用于 Windows 的自定义脚本扩展。
+
+### <a name="script-location"></a>脚本位置
+
+脚本需要存储在 Azure 存储中或可通过有效 URL 访问的任何其他位置。
+
+### <a name="internet-connectivity"></a>Internet 连接
+
+适用于 Windows 的自定义脚本扩展要求目标虚拟机已连接到 Internet。 
+
+## <a name="extension-schema"></a>扩展架构
+
+以下 JSON 显示自定义脚本扩展的架构。 该扩展需要脚本位置（Azure 存储或具有有效 URL 的其他位置），以及要执行的命令。 如果使用 Azure 存储作为脚本源，则需要 Azure 存储帐户名称和帐户密钥。 这些项应视为敏感数据，并且应在扩展保护的设置配置中指定。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。
+
+```json
+{
+    "apiVersion": "2015-06-15",
+    "type": "extensions",
+    "name": "config-app",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
+        "[variables('musicstoresqlName')]"
+    ],
+    "tags": {
+        "displayName": "config-app"
+    },
+    "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.7",
+        "typeHandlerVersion": "1.8",
+        "autoUpgradeMinorVersion": true,
         "settings": {
-        "fileUris": [
-        "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
-        ]
+            "fileUris": [
+                "script location"
+            ]
         },
         "protectedSettings": {
-        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -start.ps1",
-        "storageAccountName": "yourStorageAccountName",
-        "storageAccountKey": "yourStorageAccountKey"
+            "commandToExecute": "myExecutionCommand",
+            "storageAccountName": "myStorageAccountName",
+            "storageAccountKey": "myStorageAccountKey"
         }
-        }
-有关最新版自定义脚本扩展的架构信息，请参阅 [Azure Windows VM 扩展配置示例](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+    }
+}
+```
 
-有关使用自定义脚本扩展的 VM 上的应用程序配置的示例，请参阅 [Windows VM 上的自定义脚本扩展](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)。
+### <a name="property-values"></a>属性值
+
+| Name | 值/示例 |
+| ---- | ---- |
+| apiVersion | 2015-06-15 |
+| 发布者 | Microsoft.Compute |
+| type | 扩展 |
+| typeHandlerVersion | 1.8 |
+| fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 |
+| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 |
+| storageAccountName（例如） | examplestorageacct |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== |
+
+## <a name="template-deployment"></a>模板部署
+
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure Resource Manager 模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure Resource Manager 模板部署过程中运行自定义脚本扩展。 可在此处（[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)）中找到包含自定义脚本扩展的示例模板。
+
+## <a name="powershell-deployment"></a>PowerShell 部署
+
+可以使用 `Set-AzureRmVMCustomScriptExtension` 命令将自定义脚本扩展添加到现有虚拟机。 有关详细信息，请参阅 [Set-AzureRmVMCustomScriptExtension ](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.compute/v2.1.0/set-azurermvmcustomscriptextension)。
+
+```powershell
+Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
+-VMName myVM `
+-Location myLocation `
+-FileUri myURL `
+-Run 'myScript.ps1' `
+-Name DemoScriptExtension
+```
+
+## <a name="troubleshoot-and-support"></a>故障排除和支持
+
+### <a name="troubleshoot"></a>故障排除
+
+有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请运行以下命令。
+
+```powershell
+Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+```
+
+扩展执行输出将记录到可在目标虚拟机上的以下目录中找到的文件中。
+
+```cmd
+C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
+```
+
+脚本本身将下载到目标虚拟机上的以下目录中。
+
+```cmd
+C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads
+```
+
+### <a name="support"></a>支持
+
+如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/en-us/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/en-us/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO3-->
 
 

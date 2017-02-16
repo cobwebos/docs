@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b2baa9ea093a36cadb2251bbd1f4390552d8ec0e
+ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
+ms.openlocfilehash: e5f643d444fb2bf00aa91083f5d09962372e0dbb
 
 
 ---
@@ -29,11 +29,13 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 ## <a name="related-documentation"></a>相关文档
 如果尚未阅读文档了解如何[将本地标识与 Azure Active Directory 集成](../active-directory-aadconnect.md)，请查看下表获取相关主题的链接。
 
-| 主题 |
+|主题 |链接|  
 | --- | --- |
-| 使用快速设置安装 |
-| 使用自定义设置安装 |
-| 从 DirSync 升级 |
+|下载 Azure AD Connect | [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)|
+|使用快速设置安装 | [Azure AD Connect 的快速安装](./active-directory-aadconnect-get-started-express.md)|
+|使用自定义设置安装 | [Azure AD Connect 的自定义安装](./active-directory-aadconnect-get-started-custom.md)|
+|从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
+|安装后 | [验证安装并分配许可证 ](active-directory-aadconnect-whats-next.md)|
 
 ## <a name="express-settings-installation"></a>快速设置安装
 在快速设置中，安装向导要求提供 AD DS 企业管理员凭据，以便配置本地 Active Directory，使其具有 Azure AD Connect 所需的权限。 如果从 DirSync 升级，AD DS 企业管理员凭据可用于重置 DirSync 所用帐户的密码。 此外，还需要 Azure AD 全局管理员凭据。
@@ -45,7 +47,7 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 | 连接到 AD DS |本地 Active Directory 凭据 |Active Directory 中企业管理员 (EA) 组的成员 |<li>在 Active Directory 中创建[帐户](#active-directory-account)并向其授予权限。 同步期间，所创建的该帐户将用于读取和写入目录信息。</li> |
 
 ### <a name="enterprise-admin-credentials"></a>企业管理员凭据
-这些凭据只能在安装期间使用，而不能在安装完成后使用。 需由企业管理员而不是域管理员确保可以在所有域中设置 Active Directory 中的权限。
+这些凭据只能在安装期间使用，而不能在安装完成后使用。 由企业管理员而不是域管理员确保可以在所有域中设置 Active Directory 中的权限。
 
 ### <a name="global-admin-credentials"></a>全局管理员凭据
 这些凭据只能在安装期间使用，而不能在安装完成后使用。 它用于创建 [Azure AD 帐户](#azure-ad-service-account)，以便将更改同步到 Azure AD。 该帐户还会在 Azure AD 中启用同步作为功能。
@@ -84,9 +86,9 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 | 功能 | 权限 |
 | --- | --- |
 | 密码同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
-| Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](../active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
+| Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
 | 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions)。 |
-| 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](../active-directory-aadconnect-feature-device-writeback.md)。 |
+| 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](active-directory-aadconnect-feature-device-writeback.md)。 |
 | 组写回 |在分发组应该放置到的 OU 中读取、创建、更新和删除组对象。 |
 
 ## <a name="upgrade"></a>升级
@@ -134,6 +136,6 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

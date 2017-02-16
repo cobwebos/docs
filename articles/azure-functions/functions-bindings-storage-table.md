@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 768de7b221474f9143ba8e960581893229dca051
+ms.sourcegitcommit: 0d37eb09a6c8a0bb39a331e51a8993c114202b91
+ms.openlocfilehash: 88858cffa5ddc6ba83152d3430f5400a1c66a26a
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: 768de7b221474f9143ba8e960581893229dca051
 {
     "name": "<Name of input parameter in function signature>",
     "type": "table",
-    "direction": "in"
+    "direction": "in",
     "tableName": "<Name of Storage table>",
     "partitionKey": "<PartitionKey of table entity to read - see below>",
     "rowKey": "<RowKey of table entity to read - see below>",
@@ -59,8 +59,8 @@ ms.openlocfilehash: 768de7b221474f9143ba8e960581893229dca051
 
 注意以下事项： 
 
-* 协同使用 `partitionKey` 和 `rowKey` 读取单个实体。 这些属性是可选的。
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。 
+* 协同使用 `partitionKey` 和 `rowKey` 读取单个实体。 这些属性是可选的。 
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#application-settings)。  
 
 <a name="inputusage"></a>
 
@@ -167,7 +167,7 @@ module.exports = function (context, myQueueItem) {
 {
     "name": "<Name of input parameter in function signature>",
     "type": "table",
-    "direction": "out"
+    "direction": "out",
     "tableName": "<Name of Storage table>",
     "partitionKey": "<PartitionKey of table entity to write - see below>",
     "rowKey": "<RowKey of table entity to write - see below>",
@@ -178,7 +178,7 @@ module.exports = function (context, myQueueItem) {
 注意以下事项： 
 
 * 协同使用 `partitionKey` 和 `rowKey` 写入单个实体。 这些属性是可选的。 当在函数代码中创建实体对象时还可以指定 `PartitionKey` 和 `RowKey`。
-* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。 
+* `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 还可以[手动配置此应用设置](functions-how-to-use-azure-function-app-settings.md#application-settings)。 
 
 <a name="outputusage"></a>
 
@@ -190,6 +190,7 @@ module.exports = function (context, myQueueItem) {
 * 实现 `ITableEntity` 的任何类型
 * `ICollector<T>`（若要输出多个实体。 请参阅[示例](#outcsharp)。）
 * `IAsyncCollector<T>`（异步版`ICollector<T>`）
+* `CloudTable`（使用 Azure 存储 SDK。 请参阅[示例](#readmulti)。）
 
 <a name="outputsample"></a>
 
@@ -342,6 +343,6 @@ public class Person : TableEntity
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

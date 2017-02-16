@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: d71bbf32196bd249bdefb94e0e760847cc6ec5e0
-ms.openlocfilehash: 85a1ca7542220b8b3e84e7bad811f7f961b26ba0
+ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
+ms.openlocfilehash: 489037b0ff43c7041f3e12a49525184e7eda0290
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 85a1ca7542220b8b3e84e7bad811f7f961b26ba0
 * 有关如何部署 Web 服务的演练，请参阅[部署 Azure 机器学习 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)。
 * 有关如何创建和部署 Web 服务的完整演练，请参阅[演练步骤 1：创建机器学习工作区](machine-learning-walkthrough-1-create-ml-workspace.md)。
 * 有关部署 Web 服务的特定示例，请参阅：
-  
+
   * [演练步骤 5：部署 Azure 机器学习 Web 服务](machine-learning-walkthrough-5-publish-web-service.md)
   * [如何将 Web 服务部署到多个区域](machine-learning-how-to-deploy-to-multiple-regions.md)
 
@@ -48,7 +48,7 @@ ms.openlocfilehash: 85a1ca7542220b8b3e84e7bad811f7f961b26ba0
 ### <a name="with-powershell-cmdlets"></a>使用 PowerShell cmdlet
 用于 Web 服务的 Azure 机器学习资源提供程序支持使用 PowerShell cmdlet 来部署和管理 Web 服务。
 
-要使用 cmdlet，必须先使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境内登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure Resource Manager 结合使用](../powershell-azure-resource-manager.md#login-to-your-azure-account)。
+要使用 cmdlet，必须先使用 [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet 从 PowerShell 环境内登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure Resource Manager 结合使用](../azure-resource-manager/powershell-azure-resource-manager.md#log-in-to-your-azure-account)。
 
 若要导出预测实验，则使用[此代码示例](https://github.com/ritwik20/AzureML-WebServices)。 从代码创建 .exe 文件后，可以键入：
 
@@ -57,10 +57,10 @@ ms.openlocfilehash: 85a1ca7542220b8b3e84e7bad811f7f961b26ba0
 运行应用程序将创建 Web 服务 JSON 模板。 若要使用模板部署 Web 服务，必须添加以下信息：
 
 * 存储帐户名和密钥
-  
+
     可以从 [Azure 门户](https://portal.azure.com/)或 [Azure 经典门户](http://manage.windowsazure.com/)获取存储帐户名和密钥。
 * 承诺计划 ID
-  
+
     通过登录并单击计划名称，可以从 [Azure 机器学习 Web 服务](https://services.azureml.net)获取计划 ID。
 
 在与 *MachineLearningWorkspace* 节点相同的级别上，将它们添加到 JSON 模板作为 *Properties* 节点的子节点。
@@ -99,7 +99,6 @@ Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

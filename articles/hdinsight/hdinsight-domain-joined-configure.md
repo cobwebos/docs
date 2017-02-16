@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c28ad5efa3cfcdc63559b50056ca6c79f8d600c9
+ms.sourcegitcommit: 86a0f6f2bc27f1411652b273325e73144582eee0
+ms.openlocfilehash: b0122a87ec64d16d6e026f9b37a563125a5f1920
 
 
 ---
@@ -31,9 +31,9 @@ ms.openlocfilehash: c28ad5efa3cfcdc63559b50056ca6c79f8d600c9
 
 最终拓扑的示例如下所示：
 
-![已加入域的 HDInsight 拓扑](.\\media\\hdinsight-domain-joined-configure\\hdinsight-domain-joined-topology.png)
+![已加入域的 HDInsight 拓扑](./media/hdinsight-domain-joined-configure/hdinsight-domain-joined-topology.png)
 
-由于 Azure AD 当前仅支持经典虚拟网络 (Vnet)，并且基于 Linux 的 HDInsight 群集仅支持基于 Azure Resource Manager 的 Vnet，因此 HDInsight Azure AD 集成需要两个 Vnet 以及两者间的对等互联。 有关两个部署模型之间的比较信息，请参阅 [Azure Resource Manager 与经典部署：了解资源的部署模型和状态](../resource-manager-deployment-model.md)。 两个 VNet 必须与 Azure AD DS 位于同一区域。
+由于 Azure AD 当前仅支持经典虚拟网络 (Vnet)，并且基于 Linux 的 HDInsight 群集仅支持基于 Azure Resource Manager 的 Vnet，因此 HDInsight Azure AD 集成需要两个 Vnet 以及两者间的对等互连。 有关两个部署模型之间的比较信息，请参阅 [Azure Resource Manager 与经典部署：了解资源的部署模型和状态](../azure-resource-manager/resource-manager-deployment-model.md)。 两个 VNet 必须与 Azure AD DS 位于同一区域。
 
 Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso 是虚构的名称。 完成本教程的过程中，必须使用其他名称替代 *contoso*。 
 
@@ -324,7 +324,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 8. 单击 **“确定”**。
 
 ## <a name="create-hdinsight-cluster"></a>创建 HDInsight 群集
-在本部分中，将在 HDInsight 中使用 Azure 门户或 [Azure Resource Manager 模板](../resource-group-template-deploy.md)创建基于 Linux 的 Hadoop 群集。 若要了解其他群集创建方法和设置，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 若要深入了解如何在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集，请参阅[在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
+在本部分中，将在 HDInsight 中使用 Azure 门户或 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)创建基于 Linux 的 Hadoop 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 若要深入了解如何在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集，请参阅[在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 
 **使用 Azure 门户创建已加入域的 HDInsight 群集**
 
@@ -343,7 +343,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
        
        单击“选择”保存更改。
    * **凭据**：为群集用户和 SSH 用户配置凭据。
-   * **数据源**：创建新的存储帐户或使用现有的存储帐户，作为 HDInsight 群集的默认存储帐户。 位置必须与两个 VNet 的位置相同。  HDInsight 群集也位于此位置。
+   * **数据源**：创建新的存储帐户或使用现有的存储帐户，作为 HDInsight 群集的默认存储帐户。 位置必须与两个 VNet 的位置相同。  这个位置也是 HDInsight 群集的位置。
    * **定价**：选择群集的辅助角色节点数量。
    * **高级配置**： 
      
@@ -356,7 +356,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
          * **域密码**：输入域用户密码。
          * **组织单位**：输入此前配置的 OU 的可分辨名称。 例如：OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com
          * **LDAPS URL**：ldaps://contoso.onmicrosoft.com:636
-         * **访问用户组**：指定其用户要同步到群集的安全组。 例如 HiveUsers。
+         * **访问用户组**：指定其用户要同步到群集的安全组。 例如，HiveUsers。
            
            单击“选择”保存更改。
            
@@ -375,13 +375,13 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 
 1. 单击以下映像可在 Azure 门户中打开 Resource Manager 模板。 Resource Manager 模板位于公共 Blob 容器中。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="./media/hdinsight-domain-joined-configure/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. 在“参数”边栏选项卡中，输入以下值：
    
    * **订阅**：（选择你的 Azure 订阅）。
-   * **资源组**：单击“使用现有的”，并指定正在使用的同一资源组。  例如 contosohdirg。 
+   * **资源组**：单击“使用现有的”，并指定正在使用的同一资源组。  例如，contosohdirg。 
    * **位置**：指定资源组位置。
-   * **群集名称**：为将创建的 Hadoop 群集输入名称。 例如 contosohdicluster。
+   * **群集名称**：为将创建的 Hadoop 群集输入名称。 例如，contosohdicluster。
    * **群集类型**：选择群集类型。  默认值为 **hadoop**。
    * **位置**：为群集选择位置。  默认存储帐户将使用同一位置。
    * **群集辅助角色节点数**：选择辅助角色节点的数量。
@@ -392,7 +392,7 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
    * **域名**：contoso.onmicrosoft.com
    * **组织单位 DN**：OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com
    * **群集用户组 D Ns**："\"CN=HiveUsers,OU=AADDC Users,DC=<DomainName>,DC=onmicrosoft,DC=com\""
-   * **LDAPUrls**: ["ldaps://contoso.onmicrosoft.com:636"]
+   * **LDAPUrls**：["ldaps://contoso.onmicrosoft.com:636"]
    * **DomainAdminUserName**：（输入域管理员用户名）
    * **DomainAdminPassword**：（输入域管理员用户密码）
    * **我同意上述条款和条件**：（检查）
@@ -404,11 +404,11 @@ Azure 服务名称必须全局唯一。 本教程涉及以下名称。 Contoso �
 ## <a name="next-steps"></a>后续步骤
 * 若要使用 Azure PowerShell 配置已加入域的 HDInsight 群集，请参阅[使用 Azure PowerShell 配置已加入域的 HDInsight 群集](hdinsight-domain-joined-configure-use-powershell.md)。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
-* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
+* 有关使用 SSH 连接到已加入域的 HDInsight 群集，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5190ea90ae80d5cfbee36a7b01d8fdf614514ef8
+ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
+ms.openlocfilehash: 866d2b54b0b517cb9984fd5e98840fe3a6c69965
 
 
 ---
@@ -63,6 +63,6 @@ ms.openlocfilehash: 5190ea90ae80d5cfbee36a7b01d8fdf614514ef8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

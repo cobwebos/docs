@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: asirveda;robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 08e833420420522e5b903afba0bcc8bd624d3b8f
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 8a4f22442d030dae602171555bafb3733d61ebd7
 
 
 ---
@@ -77,7 +77,7 @@ ms.openlocfilehash: 08e833420420522e5b903afba0bcc8bd624d3b8f
 
 <!-- URL List -->
 
-[Azure 应用服务]: http://go.microsoft.com/fwlink/?LinkId=529714
+[Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 [用于 Eclipse 的 Azure 工具包]: ../azure-toolkit-for-eclipse.md
 [安装用于 Eclipse 的 Azure 工具包]: ../azure-toolkit-for-eclipse-installation.md
 [在 Eclipse 中创建用于 Azure 的 Hello World Web 应用]: ./app-service-web-eclipse-create-hello-world-web-app.md
@@ -97,6 +97,6 @@ ms.openlocfilehash: 08e833420420522e5b903afba0bcc8bd624d3b8f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
 
 
 ---
@@ -114,7 +114,7 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 * **概述** - 返回到应用概述边栏选项卡。
 * **活动日志** - 警报和 Azure 管理事件。
 * [**访问控制**](app-insights-resources-roles-access-control.md) - 向团队成员和其他人提供访问权限。
-* [**标记**](../resource-group-using-tags.md) - 使用标记将你的应用与其他应用分组。
+* [**标记**](../azure-resource-manager/resource-group-using-tags.md) - 使用标记将你的应用与其他应用分组。
 
 调查
 
@@ -141,7 +141,7 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 
 设置
 
-* [**锁定**](../resource-group-lock-resources.md) - 锁定 Azure 资源
+* [**锁定**](../azure-resource-manager/resource-group-lock-resources.md) - 锁定 Azure 资源
 * [**自动化脚本**](app-insights-powershell.md) - 导出 Azure 资源的定义，以便可以将它用作模板来创建新资源。
 
 支持
@@ -157,6 +157,6 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

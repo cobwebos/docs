@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 12/15/2016
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
+ms.sourcegitcommit: 714045750ab16364ecd1095f1f346d3da1d4c4a5
+ms.openlocfilehash: 4bfcf719cb071a28421c64dbb4d6c132f45ba9f9
 
 ---
 
@@ -34,7 +34,7 @@ ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
 
 1. 创建数据源
    * 将 `type` 参数设置为 `azuretable`
-   * 作为 `credentials.connectionString` 参数传入存储帐户连接字符串
+   * 作为 `credentials.connectionString` 参数传入存储帐户连接字符串。 可以通过导航到存储帐户边栏选项卡 >“设置” > “密钥”（对于经典存储帐户）或“设置” > “访问密钥”（对于 ARM 存储帐户），从 Azure 门户获取连接字符串。 请注意，Azure 搜索当前不支持共享访问签名凭据。 如果你要使用 SAS，请为[此 UserVoice 建议](https://feedback.azure.com/forums/263029-azure-search/suggestions/12368244-support-shared-access-signature-for-blob-datasourc)投票。
    * 使用 `container.name` 参数指定表名称
    * （可选）使用 `container.query` 参数指定查询。 如有可能，请在 PartitionKey 上使用筛选器，以获得最佳性能；任何其他查询将导致全表扫描，这可能会导致大型表性能降低。
 2. 使用与要编制索引的表中的列对应的模式创建搜索索引。
@@ -48,7 +48,7 @@ ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
     {
         "name" : "table-datasource",
         "type" : "azuretable",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
@@ -123,6 +123,6 @@ ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

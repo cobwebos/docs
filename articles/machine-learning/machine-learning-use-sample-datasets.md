@@ -1,6 +1,6 @@
 ---
 title: "在机器学习工作室中使用示例数据集 | Microsoft Docs"
-description: "机器学习工作室中包含的示例模型中使用的数据集的说明。 可以将这些示例数据集用于你的实验。"
+description: "机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -12,29 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/14/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a19e10d9bc4c2d0f6579518583f100b5ca76c23
+ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
+ms.openlocfilehash: c4adae8125a6780ddb4c7c64baf4df6aae139104
 
 
 ---
-# <a name="use-the-sample-data-sets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
-[返回页首]: #machine-learning-sample-datasets
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
+[top]: #machine-learning-sample-datasets
 
-在 Azure 机器学习中创建新的工作区时，默认包含大量的示例数据集和实验。 其中的许多示例数据集供 [Azure Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的示例模型使用，其他示例数据集作为机器学习中常用的各种类型的数据示例包括。
+在 Azure 机器学习中创建新工作区时，默认包含大量的示例数据集和实验。 其中许多示例数据集由 [Azure Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
 
-其中的一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在你的实验中通过使用[导入数据][import-data]模块来使用这些数据集。
+一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在实验中通过使用[导入数据][import-data]模块使用这些数据集。
 
-在机器学习工作室中打开或创建新的实验时，这些示例数据集的其余部分会列在实验画布左侧的模块控制板中的“已保存的数据集”下。
-通过将其中的任何数据集拖放到你的实验画布中，即可在你自己的实验中使用它们。
+在机器学习工作室中打开或创建新实验时，这些示例数据集的其余部分会列在实验画布左侧模块控制板中的“已保存的数据集”下的工作区中。
+通过将其中的任何数据集拖放到实验画布中，即可在自己的实验中使用它们。
 
-<!--
-For a list of sample experiments available in ML Studio, see [Machine Learning Sample Experiments][sample-experiments].
-
-[sample-experiments]: machine-learning-sample-experiments.md
--->
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -61,7 +56,7 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 <tr>
   <td valign=top>汽车价格数据（原始）</td>
   <td valign=top>
-有关汽车品牌和型号的信息，包括价格、汽缸数和 MPG 等特性以及保险风险评分。<p> </p>风险评分最初与汽车价格相关联，然后针对精算师所熟知符号化过程中的实际风险进行调整。 值为 +3 表明汽车存在风险，值为 -3 表明汽车相当安全。<p> </p><b>用途：</b>按特性、使用回归或多元分类预测风险评分。 <p> </p><b>相关研究：</b>Schlimmer, J.C. （1987 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+有关汽车品牌和型号的信息，包括价格、汽缸数和 MPG 等特性以及保险风险评分。<p> </p>风险评分最初与汽车价格相关联，然后针对精算师所熟知符号化过程中的实际风险进行调整。 值为 +3 表明汽车存在风险，值为 -3 表明汽车可能安全。<p> </p><b>用途：</b>按特性、使用回归或多元分类预测风险评分。 <p> </p><b>相关研究：</b>Schlimmer, J.C. （1987 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr ID=bike-rental-uci-dataset>
@@ -75,7 +70,7 @@ UCI 自行车租赁数据集基于 Capital Bikeshare 公司的实际数据，该
 <tr ID=bill-gates-rgb-image>
   <td valign=top>Bill Gates RGB 图像</td>
   <td valign=top>
-转换为 CSV 数据的公开可用的图像文件。<p> </p>在<strong>使用 K 平均值聚类的颜色量化</strong>模型详细信息页中提供了用于转换该图像的代码。
+转换为 CSV 数据的公开可用的映像文件。<p> </p>在<strong>使用 K 平均值聚类的颜色量化</strong>模型详细信息页中提供了用于转换该图像的代码。
   </td>
 </tr>
 
@@ -143,13 +138,13 @@ Amazon 中图书的评论，由宾夕法尼亚大学的研究人员摘自 amazon
 <tr>
   <td valign=top>能效回归数据</td>
   <td valign=top>
-模拟能量分布的集合，基于 12 种不同的建筑形状。 建筑物区别于 8 个特征，例如玻璃窗面积、玻璃窗面积分布和取向。<p> </p><b>用途：</b>使用回归或分类来预测基于两个实值响应之一的能效等级。 对于多类分类，将响应变量舍入为最接近的整数。 <p> </p><b>相关研究：</b>Xifara, A. 和 Tsanas, A.（2012 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+模拟能量分布的集合，基于 12 种不同的建筑形状。 建筑物通过 8 个特征区分，例如玻璃窗面积、玻璃窗面积分布和取向。<p> </p><b>用途：</b>使用回归或分类来预测基于两个实值响应之一的能效等级。 对于多类分类，将响应变量舍入为最接近的整数。 <p> </p><b>相关研究：</b>Xifara, A. 和 Tsanas, A.（2012 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr ID=flight-delays-data>
   <td valign=top>航班延误数据</td>
   <td valign=top>
-从美国的 TranStats 数据收集中获得的客运航班正常率数据。交通部（<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">准时</a>）。<p> </p>数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：<ul><li>数据集经筛选，仅包含美国本土 70 个最繁忙的机场</li><li>取消的航班标记为延误超过 15 分钟</li><li>转机航班已筛选掉</li><li>已选择以下各列：Year、Month、DayofMonth、DayOfWeek、Carrier、OriginAirportID、DestAirportID、CRSDepTime、DepDelay、DepDel15、CRSArrTime、ArrDelay、ArrDel15、Cancelled</li></ul>
+从美国的 TranStats 数据收集中获得的客运航班正常率数据。交通部（<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">准时</a>）。<p> </p>数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：<ul><li>数据集经筛选，仅包含美国本土 70 个最繁忙的机场</li><li>取消的航班标记为延误超过 15 分钟</li><li>转机航班已筛选掉</li><li>已选择以下各列：Year、Month、DayofMonth、DayOfWeek、Carrier、OriginAirportID、DestAirportID、CRSDepTime、DepDelay、DepDel15、CRSArrTime、ArrDelay、ArrDel15、Canceled</li></ul>
 </td>
 </tr>
 
@@ -177,7 +172,7 @@ Amazon 中图书的评论，由宾夕法尼亚大学的研究人员摘自 amazon
 <tr ID=imdb-movie-titles>
   <td valign=top>IMDB 电影标题</td>
   <td valign=top>
-数据集包含 Twitter 推文中给电影评分的有关信息：IMDB 电影 ID、电影名称和风格、制作年份。 数据集中有 17K 个电影。 报告“S. Dooms、T. De Pessemier 和 L. Martens. MovieTweetings：从 Twitter 收集的电影评分数据集。 有关适用于推荐器系统 (CrowdRec at RecSys 2013) 的众包和人工计算研讨会。”中引用了该数据集。
+数据集包含 Twitter 推文中给电影评分的有关信息：IMDB 电影 ID、电影名称、风格和制作年份。 数据集中有 17K 个电影。 报告“S. Dooms、T. De Pessemier 和 L. Martens. MovieTweetings：从 Twitter 收集的电影评分数据集。 有关适用于推荐器系统 (CrowdRec at RecSys 2013) 的众包和人工计算研讨会。”中引用了该数据集。
   </td>
 </tr>
 
@@ -209,28 +204,28 @@ Amazon 中图书的评论，由宾夕法尼亚大学的研究人员摘自 amazon
 <tr>
   <td valign=top>餐馆客户数据</td>
   <td valign=top>
-一组关于客户的元数据，其中包括人口统计信息和偏好。<p> </p><b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，来训练和测试推荐器系统。 <p> </p><b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+一组关于客户的元数据，其中包括人口统计信息和偏好。<p> </p><b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 <p> </p><b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
 <tr>
   <td valign=top>餐馆特色数据</td>
   <td valign=top>
-一组关于餐馆及其特色的元数据，如食物种类、就餐样式和位置。<p> </p><b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，来训练和测试推荐器系统。 <p> </p><b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+一组关于餐馆及其特色的元数据，如食物种类、就餐样式和位置。<p> </p><b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 <p> </p><b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
 <tr>
   <td valign=top>餐馆评分</td>
   <td valign=top>
-包含用户对餐馆的评分，分数范围从 0 到 2。<p> </p><b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，来训练和测试推荐器系统。 <p> </p><b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+包含用户对餐馆的评分，分数范围从 0 到 2。<p> </p><b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 <p> </p><b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
 <tr>
   <td valign=top>钢退火多类数据集</td>
   <td valign=top>
-该数据集包含钢退火实验的一系列记录，其中含有生成钢种的物理属性（宽度、厚度、类型（卷材、板材等））。<p> </p><b>用途：</b>预测两个数值类属性的任何一个：硬度或强度。 还可以分析这些属性之间的相关性。<p> </p>钢种遵循由 SAE 和其他组织定义的一组标准。 正在寻找特定“种类”（类变量），并想要了解所需值。 <p> </p><b>相关研究：</b>Sterling, D. 和 Buntine, W. (NA)。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 <p> </p>可以在以下位置找到钢种的有用指南：<a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+该数据集包含钢退火实验的一系列记录，其中含有生成钢种的物理属性（宽度、厚度、类型（卷材、板材等））。<p> </p><b>用途：</b>预测两个数值类属性的任何一个：硬度或强度。 还可以分析这些属性之间的相关性。<p> </p>钢种遵循由 SAE 和其他组织定义的一组标准。 正在寻找特定“种类”（类变量），并想要了解所需值。 <p> </p><b>相关研究：</b>Sterling, D. 和 Buntine, W.(NA)。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 <p> </p>可以在以下位置找到钢种的有用指南：<a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -282,7 +277,7 @@ RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具�
 <tr ID=intrusion-detection>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td valign=top>
-来自 KDD Cup 1999 知识发现和数据挖掘工具竞赛 (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>) 的数据集。<p> </p>该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) 中，包含训练和测试数据集。 训练数据集中包含大约 126K 行和 43 列（包括标签在内）；3 列是标签信息的组成部分，40 列由数字和字符串/分类特征组成，可用于训练模型。 测试数据具有大约 22.5K 个测试示例，具有与训练数据相同的 43 列。
+来自 KDD Cup 1999 知识发现和数据挖掘工具竞赛 (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>) 的数据集。<p> </p>该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) 中，包含训练和测试数据集。 训练数据集大约有 12.6 万行和 43 列，包括标签。 3 列是标签信息的组成部分，40 列由数字和字符串/分类特征组成，可用于训练模型。 测试数据具有大约 22.5K 个测试示例，具有与训练数据相同的 43 列。
 
   </td>
 </tr>
@@ -290,14 +285,14 @@ RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具�
 <tr ID=rcv1-v2-topics-qrels>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td valign=top>
-RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配给新闻文章多个主题。 每行的格式为“<topic name> <document id> 1”。 数据集包含 2.6M 个主题分配。 数据集由 David 提供。 D. Lewis。
+RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配给新闻文章多个主题。 每行的格式为“&lt;主题名称&gt; &lt;文档 ID&gt; 1”。 数据集包含 2.6M 个主题分配。 数据集由 David 提供。 D. Lewis。
   </td>
 </tr>
 
 <tr ID=student-performance>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td valign=top>
-此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. （2010 年）。 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 或 <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a> 中找到该数据。<p> </p>该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) 中，包含学生辅导系统中的日志文件。 提供的特征包含问题 ID 及其简要描述、学生 ID、时间戳以及学生在正确解决该问题之前尝试的次数。 原始数据集具有 8.9M 条记录，此数据集已降低取样为前 100K 行。 该数据集具有 23 个制表符分隔的各种类型的列：数值、分类和时间戳。
+此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. （2010 年）。 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 或 <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a> 中找到该数据。<p> </p>该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) 中，包含学生辅导系统中的日志文件。 提供的特征包含问题 ID 及其简要描述、学生 ID、时间戳以及学生在正确解决该问题之前尝试的次数。 原始数据集具有 890 万条记录，此数据集已降低取样为前 10 万行。 该数据集具有 23 个制表符分隔的各种类型的列：数值、分类和时间戳。
 
   </td>
 </tr>
@@ -313,6 +308,6 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

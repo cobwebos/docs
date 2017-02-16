@@ -1,5 +1,5 @@
 ---
-title: "Azure 队列和服务总线队列 - 比较与对照 | Microsoft 文档"
+title: "Azure 队列和服务总线队列 - 比较与对照 | Microsoft Docs"
 description: "分析 Azure 提供的两种队列类型之间的差异和相似性。"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: tbd
 ms.date: 09/23/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0740427b1cd990fb94e82f1f045cc9e7f11468cd
+ms.sourcegitcommit: a925285f94fc7b1a53e605f19bb8c1ff81ce6718
+ms.openlocfilehash: c9088b2472a6e72367666391a322068c1fdf662e
 
 
 ---
@@ -130,7 +130,7 @@ Azure 队列和服务总线队列都是 Microsoft Azure 目前提供的消息队
 * 若要查找 Azure 队列中的“有害”消息，则在消息取消排队时，应用程序检查该消息的 **[DequeueCount](https://msdn.microsoft.com/library/azure/dd179474.aspx)** 属性。 如果 **DequeueCount** 超出给定的阈值，应用程序将消息移到应用程序定义的“死信”队列。
 * Azure 队列使你可以获取针对该队列执行的所有事务的详细日志以及聚合度量值。 这两个选项可用于调试和了解你的应用程序如何使用 Azure 队列。 它们还用于对应用程序进行性能优化并降低使用队列的成本。
 * 服务总线支持的“消息会话”概念允许属于特定逻辑组的消息与给定的接收者关联，而这样一来又能在消息与其各自接收者之间创建类似于会话的关联。 可通过对消息设置 [SessionID](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.sessionid.aspx) 属性，在服务总线中启用此高级功能。 然后，接收者可以侦听特定会话 ID，并接收共享特定会话标识符的消息。
-* 根据 [MessageID](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) 属性的值，服务总线队列支持的重复项检测功能会自动删除发送到队列或主题的重复消息。
+* 根据 [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) 属性的值，服务总线队列支持的重复项检测功能会自动删除发送到队列或主题的重复消息。
 
 ## <a name="capacity-and-quotas"></a>容量和配额
 本节从适用的[容量和配额](service-bus-quotas.md)角度比较 Azure 队列和服务总线队列。
@@ -145,11 +145,11 @@ Azure 队列和服务总线队列都是 Microsoft Azure 目前提供的消息队
 
 ### <a name="additional-information"></a>其他信息
 * 服务总线强制实施队列大小限制。 在创建队列时指定最大队列大小，其值可以在 1 至 80 GB 之间。 如果达到创建队列时设置的队列大小值，则将拒绝其他传入消息，并且调用代码将收到一个异常。 有关服务总线中配额的详细信息，请参阅[服务总线配额](service-bus-quotas.md)。
-* 你可以创建 1、2、3、4 或 5 GB 大小的服务总线队列（默认值为 1 GB）。 启用分区（这是默认值）时，服务总线将为你指定的每个 GB 创建 16 个分区。 因此，如果你创建了一个大小为 5 GB 的队列，由于每 GB 16 个分区，最大队列大小将变为 (5 * 16) = 80 GB。 可通过在 [Azure 门户][Azure 门户]中查看分区队列或主题的条目来了解该队列或主题的最大大小。
+* 你可以创建 1、2、3、4 或 5 GB 大小的服务总线队列（默认值为 1 GB）。 启用分区（这是默认值）时，服务总线将为你指定的每个 GB 创建 16 个分区。 因此，如果你创建了一个大小为 5 GB 的队列，由于每 GB 16 个分区，最大队列大小将变为 (5 * 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中查看分区队列或主题的条目来了解该队列或主题的最大大小。
 * 在 Azure 队列中，如果消息的内容不属于 XML 安全内容，则必须对其进行 **Base64** 编码。 如果你使用 **Base64** 编码此消息，则用户有效负载可高达 48 KB，而不是 64 KB。
 * 对于服务总线队列，存储在队列中的每条消息由两个部分组成：标头和正文。 消息的总大小不能超过服务层支持的最大消息大小。
 * 当客户端通过 TCP 协议与服务总线队列进行通信时，到单个服务总线队列的最大并发连接数不得超过 100。 此数值在发送者和接收者之间共享。 如果达到此配额，将拒绝后续的其他连接请求，调用代码将收到一个异常。 使用基于 REST 的 API 连接到队列的客户端不受此限制。
-* 如果在单个服务总线服务命名空间中需要超过 10,000 个队列，你可以联系 Azure 支持团队并请求增加数目。 若要使用服务总线扩展到 10,000 个以上的队列，还可使用 [Azure 门户][Azure 门户]创建其他服务命名空间。
+* 如果在单个服务总线服务命名空间中需要超过 10,000 个队列，你可以联系 Azure 支持团队并请求增加数目。 若要使用服务总线扩展到 10,000 个以上的队列，还可使用 [Azure 门户][Azure portal]创建其他命名空间。
 
 ## <a name="management-and-operations"></a>管理和操作
 本部分对 Azure 队列和服务总线队列提供的管理功能进行了比较。
@@ -226,11 +226,11 @@ Azure 队列和服务总线队列都是 Microsoft Azure 目前提供的消息队
 * [在 Azure 中使用队列服务](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 * [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)（了解 Azure 存储计费 - 带宽、事务和容量）
 
-[Azure 门户]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

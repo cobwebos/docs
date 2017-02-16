@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: a425de26cacc9525d0dc9a6842b5060f8c37a462
+ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
+ms.openlocfilehash: 2c19472c93d097f29692af18063404f3bf28b6bd
 
 
 ---
-# <a name="designing-your-network-infrastructure-for-disaster-recovery"></a>设计用于灾难恢复的网络基础结构
+# <a name="designing-your-network-for-disaster-recovery"></a>设计用于灾难恢复的网络
 本文面向 IT 专业人员，他们负责构建、实施和支持业务连续性和灾难恢复 (BCDR) 基础结构，而且想要利用 Microsoft Azure Site Recovery (ASR) 来支持并增强其 BCDR 服务。 本白皮书将讨论 System Center Virtual Machine Manager 服务器部署的实际注意事项、外延式子网与子网故障转移的优缺点比较，以及如何构建 Microsoft Azure 中虚拟站点的灾难恢复。
 
 ## <a name="overview"></a>概述
@@ -83,9 +83,8 @@ ASR 让故障转移变为可能，第一步是将指定的虚拟机从主要数�
 
 ![保留 IP 地址](./media/site-recovery-network-design/network-design4.png)
 
-图 5
 
-图 5 显示副本虚拟机的故障转移 TCP/IP 设置（在 Hyper-V 控制台上）。 系统会在虚拟机启动之前、故障转移之后填充这些设置
+上图显示副本虚拟机的故障转移 TCP/IP 设置（在 Hyper-V 控制台上）。 系统会在虚拟机启动之前、故障转移之后填充这些设置
 
 如果找不到相同的 IP，ASR 会分配已定义的 IP 地址池中一些其他可用的 IP 地址。
 
@@ -137,15 +136,13 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
 
 ![不同的 IP — 在故障转移之前](./media/site-recovery-network-design/network-design10.png)
 
-图 11
 
-在图 11 中，某些应用程序承载于主站点上的子网 192.168.1.0/24 中，它们被配置为在故障转移之后来到恢复站点上的子网 172.16.1.0/24 中。 已经正确配置 VPN 连接/网络路由，使所有三个站点都能相互访问。
+在上图中，某些应用程序托管于主站点上的子网 192.168.1.0/24 中，它们被配置为在故障转移之后来到恢复站点上的子网 172.16.1.0/24 中。 已经正确配置 VPN 连接/网络路由，使所有三个站点都能相互访问。
 
-如图 12 所示，在对一个或多个应用程序进行故障转移之后，它们将在恢复子网中还原。 在此情况下，我们不受同时故障转移整个子网的限制。 不需要进行任何更改来重新配置 VPN 或网络路由。 故障转移和某些 DNS 更新会确保应用程序仍然可供访问。 如果 DNS 配置为允许动态更新，则虚拟机会在故障转移之后的启动时使用新的 IP 自行注册。
+如下图所示，在对一个或多个应用程序进行故障转移之后，它们将在恢复子网中还原。 在此情况下，我们不受同时故障转移整个子网的限制。 不需要进行任何更改来重新配置 VPN 或网络路由。 故障转移和某些 DNS 更新会确保应用程序仍然可供访问。 如果 DNS 配置为允许动态更新，则虚拟机会在故障转移之后的启动时使用新的 IP 自行注册。
 
 ![不同的 IP — 在故障转移之后](./media/site-recovery-network-design/network-design11.png)
 
-图 12
 
 在故障转移之后，副本虚拟机的 IP 地址可能与主虚拟机的 IP 地址不同。 虚拟机在启动后将更新它们使用的 DNS 服务器。 DNS 条目通常必须改变或在整个网络中刷新，并且网络表中的缓存条目必须更新或刷新，因此在这些状态改变发生时面临停机并不是少见的事情。 可以通过以下方式来缓解该问题：
 
@@ -162,7 +159,7 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
         $newrecord.RecordData[0].IPv4Address  =  $IP
         Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
-### <a name="changing-the-ip-addresses-dr-to-azure"></a>更改 IP 地址 — 灾难恢复到 Azure
+### <a name="changing-the-ip-addresses--dr-to-azure"></a>更改 IP 地址 — 灾难恢复到 Azure
 [为作为灾难恢复站点的 Azure 设置网络基础结构](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)这篇博客文章解释了在不需要保留 IP 地址时如何设置所需的 Microsoft Azure 网络基础结构。 文章一开始描述应用程序，接着探讨如何在本地及 Azure 设置网络，最后说明如何执行测试故障转移和计划的故障转移。
 
 ## <a name="next-steps"></a>后续步骤
@@ -170,6 +167,6 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

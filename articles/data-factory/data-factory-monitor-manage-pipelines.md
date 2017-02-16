@@ -1,5 +1,5 @@
 ---
-title: "监视和管理 Azure 数据工厂管道"
+title: "使用 Azure 门户/PowerShell 监视和管理管道 | Microsoft Docs"
 description: "了解如何使用 Azure 门户和 Azure PowerShell 监视和管理 Azure 数据工厂及已创建的管道。"
 services: data-factory
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 6a816e56400abe281b0422abbcd3415f3762a96e
-ms.openlocfilehash: 43b828bad5d21fe0f452aa23bbdf6fff758525f2
+ms.sourcegitcommit: eb9126d21c5eaa605a8ca292ab1f444085dd6612
+ms.openlocfilehash: 5bc3a81d82a838f04051fa1cbd6d567532e4824a
 
 
 ---
-# <a name="monitor-and-manage-azure-data-factory-pipelines"></a>监视和管理 Azure 数据工厂管道
+# <a name="monitor-and-manage-azure-data-factory-pipelines-using-azure-portalpowershell"></a>使用 Azure 门户/PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
 > * [使用 Azure 门户/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
 > * [使用监视和管理应用](data-factory-monitor-manage-app.md)
@@ -88,7 +88,7 @@ ms.openlocfilehash: 43b828bad5d21fe0f452aa23bbdf6fff758525f2
 
 ![管道状态](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
-在图示视图中双击“PartitionedProductsUsageTable”，可展示管道内不同活动运行所生成的所有切片。 可以看到过去 8 个月中每个月都成功运行了 **BlobPartitionHiveActivity**，并生成了处于“就绪”状态的切片。
+在图示视图中双击“PartitionedProductsUsageTable”，可展示管道内不同活动运行所生成的所有切片。 可以看到过去&8; 个月中每个月都成功运行了 **BlobPartitionHiveActivity**，并生成了处于“就绪”状态的切片。
 
 数据工厂中的数据集切片可以具有以下任一状态：
 
@@ -668,6 +668,6 @@ Outputs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,19 +12,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
+ms.date: 1/4/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4ac624ea4427edf03e4530e879df96fee950ff80
+ms.sourcegitcommit: 9349c6c60801c87726eb9f848706b39b08eb2b5d
+ms.openlocfilehash: 7c6d232bce7ac9d364ad9d7b26c3164e00fc18ac
 
 
 ---
 # <a name="preview-service-fabric-and-containers"></a>预览：Service Fabric 和容器
 > [!NOTE]
-> 此功能在 Linux 上以预览版提供，在 Windows Server 2016 上目前不可用。 推出 Windows Server 2016 正式版后发布下一个 Azure Service Fabric 版本时，将在 Windows Server 上提供此功能的预览版，后续的 Windows Server 版本将会正式支持此功能。
-> 
-> 
+> 此功能在 Linux 和 Windows Server 2016 上以预览版提供。 
+>   
 
 ## <a name="introduction"></a>介绍
 Azure Service Fabric 是跨计算机群集的服务[协调器](service-fabric-cluster-resource-manager-introduction.md)。 开发服务的方式多种多样：从使用 [Service Fabric 编程模型](service-fabric-choose-framework.md)，到部署[来宾可执行文件](service-fabric-deploy-existing-app.md)，不一而足。 默认情况下，Service Fabric 以进程形式部署和激活这些服务。 进程能够以最快的速度激活、以最高的密度使用群集中的资源。 Service Fabric 还可以部署容器映像中的服务。 重要的是，你可以在同一应用程序中混合进程中的服务和容器中的服务。 你可以根据具体的方案充分利用这些优势。
@@ -93,6 +92,6 @@ Service Fabric 提供多种容器功能，可帮助你构建由容器化的微�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

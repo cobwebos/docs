@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据仓库还原 | Microsoft 文档"
+title: "还原 Azure 数据仓库 - 本地和异地冗余 | Microsoft Docs"
 description: "在 Azure SQL 数据仓库中恢复数据库时的数据库还原选项概述。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,15 +15,15 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2147967edc1dadcc8bda5e5a33bbdedd62a22b4f
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 104986e88ededf2137725fe258b6ce51f608b37d
 
 
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL 数据仓库还原
 > [!div class="op_single_selector"]
-> * [概述][概述]
-> * [门户][门户]
+> * [概述][Overview]
+> * [门户][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
 > 
@@ -59,7 +59,7 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 如果使用的是异地冗余存储，则可将数据仓库还原到另一地理区域的[配对数据中心](../best-practices-availability-paired-regions.md)。 从上次的每日备份还原数据仓库。 
 
 ## <a name="restore-timeline"></a>还原时间线
-可以将数据库还原到过去 7 天的任何可用还原点。 快照 4 到 8 小时启动一次，可供使用 7 天。 快照超过 7 天将过期，其还原点不再可用。
+可以将数据库还原到过去&7; 天的任何可用还原点。 快照&4; 到&8; 小时启动一次，可供使用&7; 天。 快照超过&7; 天将过期，其还原点不再可用。
 
 ## <a name="restore-costs"></a>还原费用
 已还原的数据仓库的存储费用按 Azure 高级存储费率计算。 
@@ -71,7 +71,7 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 ## <a name="uses-for-restore"></a>还原的用途
 数据仓库还原的主要用途是在意外丢失或损坏数据后恢复数据。
 
-数据仓库还原还可用于保留那些时间超过 7 天的备份。 还原备份以后，数据仓库处于联机状态，可以无限次将其暂停以节省计算费用。 暂停的数据库按 Azure 高级存储费率收取存储费用。 
+数据仓库还原还可用于保留那些时间超过&7; 天的备份。 还原备份以后，数据仓库处于联机状态，可以无限次将其暂停以节省计算费用。 暂停的数据库按 Azure 高级存储费率收取存储费用。 
 
 ## <a name="related-topics"></a>相关主题
 ### <a name="scenarios"></a>方案
@@ -90,9 +90,9 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL 数据库业务连续性概述]: ../sql-database/sql-database-business-continuity.md
-[概述]: ./sql-data-warehouse-restore-database-overview.md
-[门户]: ./sql-data-warehouse-restore-database-portal.md
+[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
+[Overview]: ./sql-data-warehouse-restore-database-overview.md
+[Portal]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
 [REST]: ./sql-data-warehouse-restore-database-rest-api.md
 
@@ -103,6 +103,6 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

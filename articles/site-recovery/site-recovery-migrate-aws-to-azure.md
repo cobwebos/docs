@@ -1,5 +1,5 @@
 ---
-title: "使用 Site Recovery 将虚拟机从 Amazon Web Services 迁移到 Azure | Microsoft 文档"
+title: "将 VM 从 AWS 迁移到 Azure | Microsoft 文档"
 description: "本文介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 中运行的虚拟机迁移到 Azure。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: c7238d677b315390bc5f53e54ab7dbded2871c5a
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: 5cf068dd64084d39e353dab6629e832112e15843
 
 
 ---
@@ -34,12 +34,12 @@ ms.openlocfilehash: c7238d677b315390bc5f53e54ab7dbded2871c5a
 ## <a name="supported-operating-systems"></a>支持的操作系统
 Site Recovery 可用于迁移运行以下任意操作系统的 EC2 实例
 
-### <a name="windows64-bit-only"></a>Windows（仅 64 位）
+### <a name="windows64-bit-only"></a>Windows（仅&64; 位）
 * Windows Server 2008 R2 SP1+（仅适用于 Citrix PV 驱动程序或 AWS PV 驱动程序；**不支持运行 RedHat PV 驱动程序的实例**）
 * Windows Server 2012
 * Windows Server 2012 R2
 
-### <a name="linux-64-bit-only"></a>Linux（仅 64 位）
+### <a name="linux-64-bit-only"></a>Linux（仅&64; 位）
 * Red Hat Enterprise Linux 6.7（仅适用于 HVM 虚拟化实例）
 
 ## <a name="prerequisites"></a>先决条件
@@ -66,6 +66,6 @@ Site Recovery 可用于迁移运行以下任意操作系统的 EC2 实例
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

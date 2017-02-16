@@ -5,27 +5,27 @@
 > 
 > 
 
-建议不要对生产工作负荷使用单个 VM，因为 Azure 上的单个 VM 没有正常运行时间服务级别协议 (SLA)。 若要获取 SLA，必须在[可用性集][availability-set]中部署多个 VM。 有关详细信息，请参阅[在 Azure 上运行多个 Windows VM][multi-vm]。 
+不建议针对任务关键型工作负荷使用单个 VM，因为这会产生单一故障点。 为了提高可用性，请在[可用性集][availability-set]中部署多个 VM。 有关详细信息，请参阅 [Running multiple VMs on Azure][multi-vm]（在 Azure 上运行多个 VM）。 
 
 ## <a name="architecture-diagram"></a>体系结构关系图
 
 在 Azure 中预配 VM 涉及更多移动部件，而不只是 VM 本身。 有计算、网络和存储元素。
 
-> [Microsoft 下载中心][visio-download]提供了一份可下载的 Visio 文档，其中包含此体系结构示意图。 此示意图位于“Compute - single VM”（计算 - 单个 VM”页中。
+> 可从 [Microsoft 下载中心][visio-download]下载包含此体系结构图的 Visio 文档。 此示意图位于“Compute - single VM”（计算 - 单个 VM”页中。
 > 
 > 
 
 ![[0]][0]
 
-* **资源组。** [*资源组*][resource-manager-overview]是包含相关资源的容器。 创建资源组以保存此 VM 的资源。
+* **资源组。** [*资源组*][resource-manager-overview]是保存相关资源的容器。 创建资源组以保存此 VM 的资源。
 * **VM**。 可以基于已发布的映像列表或上载到 Azure Blob 存储的虚拟硬盘 (VHD) 文件预配 VM。
 * **OS 磁盘。** OS 磁盘是存储在 [Azure 存储][azure-storage]中的一个 VHD。 这意味着它一直存在，即使主机出现故障，也是如此。
 * **临时磁盘。** 使用临时磁盘（Windows 上的 `D:` 驱动器）创建 VM。 此磁盘存储在主机的物理驱动器上。 它*不会*保存在 Azure 存储中，重新启动和发生其他 VM 生命周期事件期间，它可能会被删除。 只使用此磁盘存储临时数据，如页面文件或交换文件。
-* **数据磁盘。** [数据磁盘][data-disk]是用于应用程序数据的持久性 VHD。 数据磁盘像 OS 磁盘一样，存储在 Azure 存储中。
+* **数据磁盘。** [数据磁盘][data-disk]是用于保存应用程序数据的持久性 VHD。 数据磁盘像 OS 磁盘一样，存储在 Azure 存储中。
 * **虚拟网络 (VNet) 和子网。** Azure 中的每个 VM 都部署在 VNet 中，后者进一步划分为多个子网。
 * **公共 IP 地址。** 需要使用公共 IP 地址来与 VM 通信 &mdash; 例如，通过远程桌面 (RDP)。
 * **网络接口 (NIC)**。 NIC 使 VM 能够与虚拟网络进行通信。
-* **网络安全组 (NSG)**。 [NSG][nsg] 用于允许/拒绝发往子网的网络流量。 可以将 NSG 与单个 NIC 或与子网相关联。 如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
+* **网络安全组 (NSG)**。 [NSG][nsg] 用于允许/拒绝到子网的网络流量。 可以将 NSG 与单个 NIC 或与子网相关联。 如果将 NSG 与一个子网相关联，则 NSG 规则适用于该子网中的所有 VM。
 * **诊断。** 诊断日志记录对于 VM 管理和故障排除至关重要。
 
 ## <a name="recommendations"></a>建议
@@ -34,11 +34,11 @@
 
 ### <a name="vm-recommendations"></a>VM 建议
 
-Azure 提供许多不同的虚拟机大小，但我们建议使用 DS 和 GS 系列，因为这些计算机大小支持[高级存储][premium-storage]。 除非运行专用工作负荷（例如高性能计算），否则请选择其中的一种计算机大小。 有关详细信息，请参阅[虚拟机大小][virtual-machine-sizes]。 
+Azure 可提供多种虚拟机大小，但建议使用 DS 和 GS 系列，因为相关计算机大小支持[高级存储][premium-storage]。 除非运行专用工作负荷（例如高性能计算），否则请选择其中的一种计算机大小。 有关详细信息，请参阅[虚拟机大小][virtual-machine-sizes]。 
 
-如果要将现有工作负荷转移到 Azure，开始时请先使用与本地服务器最匹配的 VM 大小。 然后测量与 CPU、内存和每秒磁盘输入/输出操作次数 (IOPS) 有关的实际工作负荷的性能，并根据需要调整大小。 如果需要在 VM 上使用多个 NIC，请注意，NIC 的最大数目取决于 [VM 大小][vm-size-tables]。   
+如果要将现有工作负荷转移到 Azure，开始时请先使用与本地服务器最匹配的 VM 大小。 然后测量与 CPU、内存和每秒磁盘输入/输出操作次数 (IOPS) 有关的实际工作负荷的性能，并根据需要调整大小。 如果 VM 需要多个 NIC，请注意 NIC 的最大数量取决于 [VM 大小][vm-size-tables]。   
 
-在预配 VM 和其他资源时，必须指定区域。 通常，请选择离你的内部用户或客户最近的区域。 但是，并非所有 VM 大小都可在所有区域中使用。 有关详细信息，请参阅[按区域列出的服务][services-by-region]。 若要查看给定区域中可用的 VM 大小，请运行以下 Azure 命令行接口 (CLI) 命令：
+在预配 VM 和其他资源时，必须指定区域。 通常，请选择离你的内部用户或客户最近的区域。 但是，并非所有 VM 大小都可在所有区域中使用。 有关详细信息，请参阅[服务（按区域）][services-by-region]。 若要查看给定区域中可用的 VM 大小，请运行以下 Azure 命令行接口 (CLI) 命令：
 
 ```
 azure vm sizes --location <location>
@@ -62,32 +62,32 @@ azure vm sizes --location <location>
 
 公共 IP 地址可以是动态的或静态的。 默认是动态的。
 
-* 如果需要使用一个不会更改的固定 IP 地址（例如，需要在 DNS 中创建 A 记录，或者将 IP 地址添加到安全列表），请保留一个[静态 IP 地址][static-ip]。
-* 你还可以为 IP 地址创建完全限定域名 (FQDN)。 然后，可以在 DNS 中注册指向 FQDN 的 [CNAME 记录][cname-record]。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名][fqdn]。
+* 如果需要不会更改的固定 IP 地址（例如，如果需要在 DNS 中创建 A 记录，或者需要将 IP 地址添加到安全列表），请保留[静态 IP 地址][static-ip]。
+* 你还可以为 IP 地址创建完全限定域名 (FQDN)。 然后，可在 DNS 中注册指向 FQDN 的 [CNAME 记录][cname-record]。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名][fqdn]。
 
-所有 NSG 都包含一组[默认规则][nsg-default-rules]，其中包括阻止所有入站 Internet 流量的规则。 无法删除默认规则，但其他规则可以覆盖它们。 若要启用 Internet 流量，请创建允许特定端口 &mdash; 例如，将端口 80 用于 HTTP）的入站流量的规则。  
+所有 NSG 都包含一组[默认规则][nsg-default-rules]，其中包括阻止所有入站 Internet 流量的规则。 无法删除默认规则，但其他规则可以覆盖它们。 若要启用 Internet 流量，请创建允许特定端口的入站流量的规则 &mdash; 例如，将端口 80 用于 HTTP。  
 
 若要启用 RDP，请添加允许 TCP 端口 3389 的入站流量的 NSG 规则。
 
 ## <a name="scalability-considerations"></a>可伸缩性注意事项
 
-可以通过[更改 VM 大小][vm-resize]来扩展或缩减 VM。 若要水平扩大，请将两个或更多 VM 放入负载均衡器后面的可用性集中。 有关详细信息，请参阅[在 Azure 上运行多个 VM 以提高可伸缩性和可用性][multi-vm]。
+可以通过[更改 VM 大小][vm-resize]来扩展或缩小 VM。 若要水平扩大，请将两个或更多 VM 放入负载均衡器后面的可用性集中。 有关详细信息，请参阅[在 Azure 上运行多个 VM 以实现可伸缩性和可用性][multi-vm]。
 
 ## <a name="availability-considerations"></a>可用性注意事项
 
-如前所述，单个 VM 没有 SLA。 若要获取 SLA，必须在可用性集中部署多个 VM。
+为了提高可用性，请在可用性集中部署多个 VM。 这样还可提供更高的[服务级别协议][vm-sla] (SLA)。 
 
 VM 可能会受到[计划内维护][planned-maintenance]或[计划外维护][manage-vm-availability]的影响。 可以使用 [VM 重新启动日志][reboot-logs]来确定 VM 重新启动是否是由计划内维护导致的。
 
-VHD 存储在 [Azure 存储][azure-storage]中，为确保持久性和可用性，Azure 存储中的内容将会复制。 
+VHD 存储在 [Azure 存储][azure-storage]中，Azure 存储会复制，实现持久性和可用性。 
 
-若要防止在正常操作期间意外数据丢失（例如，由于用户错误），还应使用 [Blob 快照][blob-snapshot]或其他工具实现时间点备份。
+若要防止在正常操作期间意外数据丢失（例如，由于用户错误），则还应使用 [Blob 快照][blob-snapshot]或其他工具实现时间点备份。
 
 ## <a name="manageability-considerations"></a>可管理性注意事项
 
-**资源组。** 将共享相同生命周期的紧密耦合资源放入同一[资源组][resource-manager-overview]中。 资源组可让你以组的形式部署和监视资源，并按资源组汇总计费成本。 你还可以删除作为集的资源，这对于测试部署非常有用。 为资源指定有意义的名称。 这样，可更轻松地找到特定资源并了解其角色。 请参阅 [Azure 资源的建议命名约定][命名约定]。
+**资源组。** 将共享相同生命周期的紧密耦合资源放入同一[资源组][resource-manager-overview]中。 资源组可让你以组的形式部署和监视资源，并按资源组汇总计费成本。 你还可以删除作为集的资源，这对于测试部署非常有用。 为资源指定有意义的名称。 这样，可更轻松地找到特定资源并了解其角色。 请参阅 [Azure 资源的建议命名约定][naming conventions]。
 
-**VM 诊断。** 启用监视和诊断，包括基本运行状况指标、诊断基础结构日志和[启动诊断][boot-diagnostics]。 如果 VM 陷入不可启动状态，启动诊断可帮助诊断启动失败的原因。 有关详细信息，请参阅[启用监视和诊断][enable-monitoring]。 使用 [Azure 日志收集][log-collector]扩展可以收集 Azure 平台日志并将其上载到 Azure 存储。   
+**VM 诊断。** 启用监视和诊断，包括基本运行状况指标、诊断基础结构日志和[启动诊断][boot-diagnostics]。 如果 VM 陷入不可启动状态，启动诊断可帮助诊断启动失败的原因。 有关详细信息，请参阅[启用监视和诊断][enable-monitoring]。 使用 [Azure 日志收集][log-collector]扩展收集 Azure 平台日志并将其上载到 Azure 存储。   
 
 以下 CLI 命令可启用诊断：
 
@@ -105,19 +105,19 @@ azure vm deallocate <resource-group> <vm-name>
 
 在 Azure 门户中，“停止”按钮可解除分配 VM。 但是，如果在已登录时通过 OS 关闭，VM 将会停止，但*不*会解除分配，因此仍会产生费用。
 
-**删除 VM。** 如果你删除 VM，则不会删除 VHD。 这意味着你可以安全地删除 VM，而不会丢失数据。 但是，仍将向你收取存储费用。 若要删除 VHD，请从 [Blob 存储][blob-storage]中删除相应文件。
+**删除 VM。** 如果你删除 VM，则不会删除 VHD。 这意味着你可以安全地删除 VM，而不会丢失数据。 但是，仍将向你收取存储费用。 若要删除 VHD，请从 [Blob 存储][blob-storage]中删除相应的文件。
 
 若要防止意外删除，请使用[资源锁][resource-lock]锁定整个资源组或锁定单个资源（如 VM）。 
 
 ## <a name="security-considerations"></a>安全注意事项
 
-使用 [Azure 安全中心][security-center]可以获取 Azure 资源安全状态的统一视图。 安全中心监视潜在的安全问题，并全面描述了你的部署的安全运行状况。 安全中心针对每个 Azure 订阅进行配置。 根据[使用安全中心]中所述启用安全数据收集。 启用数据收集后，安全中心将自动扫描该订阅下创建的所有 VM。
+使用 [Azure 安全中心][security-center]可在一个中心视图中获得 Azure 资源的安全状态。 安全中心监视潜在的安全问题，并全面描述了你的部署的安全运行状况。 安全中心针对每个 Azure 订阅进行配置。 根据[使用安全中心]中所述启用安全数据收集。 启用数据收集后，安全中心将自动扫描该订阅下创建的所有 VM。
 
-**修补程序管理。** 如果启用，安全中心将检查是否缺少安全更新和关键更新。 使用 VM 上的[组策略设置][group-policy]可启用自动系统更新。
+**修补程序管理。** 如果启用，安全中心将检查是否缺少安全更新和关键更新。 使用 VM 上的[组策略设置][group-policy]可实现自动系统更新。
 
 **反恶意软件。** 如果启用，安全中心将检查是否已安装反恶意软件。 还可以使用安全中心从 Azure 门户中安装反恶意软件。
 
-**操作。** 使用[基于角色的访问控制][rbac] (RBAC) 可以控制对部署的 Azure 资源的访问。 RBAC 允许你将授权角色分配给开发运营团队的成员。 例如，“读者”角色可以查看 Azure 资源，但不能创建、管理或删除这些资源。 某些角色特定于特定的 Azure 资源类型。 例如，“虚拟机参与者”角色可以执行重启或解除分配 VM、重置管理员密码、创建新的 VM 等操作。 可能对此参考体系结构有用的其他[内置 RBAC 角色][rbac-roles]包括[开发测试实验室用户][rbac-devtest]和[网络参与者][rbac-network]。 可将用户分配给多个角色，并且可以创建自定义角色以实现更细化的权限。
+**操作。** 使用[基于角色的访问控制][rbac] (RBAC) 来控制对部署的 Azure 资源的访问。 RBAC 允许你将授权角色分配给开发运营团队的成员。 例如，“读者”角色可以查看 Azure 资源，但不能创建、管理或删除这些资源。 某些角色特定于特定的 Azure 资源类型。 例如，“虚拟机参与者”角色可以执行重启或解除分配 VM、重置管理员密码、创建新的 VM 等操作。 可能对此参考体系结构有用的其他[内置 RBAC 角色][rbac-roles]包括[开发测试实验室用户][rbac-devtest]和[网络参与者][rbac-network]。 可将用户分配给多个角色，并且可以创建自定义角色以实现更细化的权限。
 
 > [!NOTE]
 > RBAC 不限制已登录到 VM 的用户可以执行的操作。 这些权限由来宾 OS 上的帐户类型决定。   
@@ -136,7 +136,7 @@ azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 
 ## <a name="solution-deployment"></a>解决方案部署
 
-[GitHub][github-folder] 上提供了此参考体系结构的部署。 它包括一个 VNet、NSG 和单个 VM。 若要部署该体系结构，请执行以下步骤： 
+[GitHub][github-folder] 中提供了此参考体系结构的部署。 它包括一个 VNet、NSG 和单个 VM。 若要部署该体系结构，请执行以下步骤： 
 
 1. 右键单击下面的按钮，然后选择“在新标签页中打开链接”或“在新窗口中打开链接”。  
    [![部署到 Azure](../articles/guidance/media/blueprints/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
@@ -151,25 +151,25 @@ azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 3. 等待部署完成。
 4. 参数文件包含硬编码的管理员用户名和密码，强烈建议马上更改这两项信息。 在 Azure 门户中单击名为 `ra-single-vm0 ` 的 VM。 然后，在“支持 + 故障排除”边栏选项卡中单击“重置密码”。 在“模式”下拉框中选择“重置密码”，然后选择新**用户名**和**密码**。 单击“更新”按钮保存新用户名和密码。
 
-有关部署此参考体系结构的其他方式的信息，请参阅 [guidance-single-vm][github-folder]] Github 文件夹中的 readme 文件。 
+有关部署此参考体系结构的其他方式的信息，请参阅 [guidance-single-vm][github-folder]] Github 文件夹中的自述文件。 
 
 ## <a name="customize-the-deployment"></a>自定义部署
-如果需要更改部署，请遵循 [readme][github-folder] 中的说明。 
+如果需要更改部署以满足自己的需求，请遵照[自述文件][github-folder]中的说明。 
 
 ## <a name="next-steps"></a>后续步骤
-要使[虚拟机的 SLA][vm-sla] 适用，必须在一个可用性集中部署两个或更多个实例。 有关详细信息，请参阅[在 Azure 中运行多个 VM][multi-vm]。
+为了提高可用性，请在负载均衡器后面部署两个或更多个 VM。 有关详细信息，请参阅 [Running multiple VMs on Azure][multi-vm]（在 Azure 上运行多个 VM）。
 
 <!-- links -->
 
 [audit-logs]: https://azure.microsoft.com/en-us/blog/analyze-azure-audit-logs-in-powerbi-more/
 [availability-set]: ../articles/virtual-machines/virtual-machines-windows-create-availability-set.md
-[azure-cli]: ../articles/virtual-machines-command-line-tools.md
+[azure-cli]: /cli/azure/get-started-with-az-cli2
 [azure-storage]: ../articles/storage/storage-introduction.md
 [blob-snapshot]: ../articles/storage/storage-blob-snapshots.md
 [blob-storage]: ../articles/storage/storage-introduction.md
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
-[data-disk]: ../articles/virtual-machines/virtual-machines-windows-about-disks-vhds.md
+[data-disk]: ../articles/storage/storage-about-disks-and-vhds-windows.md
 [disk-encryption]: ../articles/security/azure-security-disk-encryption.md
 [enable-monitoring]: ../articles/monitoring-and-diagnostics/insights-how-to-use-diagnostics.md
 [fqdn]: ../articles/virtual-machines/virtual-machines-windows-portal-create-fqdn.md
@@ -178,7 +178,7 @@ azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 [log-collector]: https://azure.microsoft.com/en-us/blog/simplifying-virtual-machine-troubleshooting-using-azure-log-collector/
 [manage-vm-availability]: ../articles/virtual-machines/virtual-machines-windows-manage-availability.md
 [multi-vm]: ../articles/guidance/guidance-compute-multi-vm.md
-[命名约定]: ../articles/guidance/guidance-naming-conventions.md
+[naming conventions]: ../articles/guidance/guidance-naming-conventions.md
 [nsg]: ../articles/virtual-network/virtual-networks-nsg.md
 [nsg-default-rules]: ../articles/virtual-network/virtual-networks-nsg.md#default-rules
 [planned-maintenance]: ../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md
@@ -190,7 +190,7 @@ azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 [reboot-logs]: https://azure.microsoft.com/en-us/blog/viewing-vm-reboot-logs/
 [resize-os-disk]: ../articles/virtual-machines/virtual-machines-windows-expand-os-disk.md
 [Resize-VHD]: https://technet.microsoft.com/en-us/library/hh848535.aspx
-[调整虚拟机大小]: https://azure.microsoft.com/en-us/blog/resize-virtual-machines/
+[Resize virtual machines]: https://azure.microsoft.com/en-us/blog/resize-virtual-machines/
 [resource-lock]: ../articles/resource-group-lock-resources.md
 [resource-manager-overview]: ../articles/azure-resource-manager/resource-group-overview.md
 [security-center]: https://azure.microsoft.com/en-us/services/security-center/
@@ -204,13 +204,13 @@ azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 [visio-download]: http://download.microsoft.com/download/1/5/6/1569703C-0A82-4A9C-8334-F13D0DF2F472/RAs.vsdx
 [vm-disk-limits]: ../articles/azure-subscription-service-limits.md#virtual-machine-disk-limits
 [vm-resize]: ../articles/virtual-machines/virtual-machines-linux-change-vm-size.md
-[vm-sla]: https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_0/
+[vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
 [vm-size-tables]: ../articles/virtual-machines/virtual-machines-windows-sizes.md#size-tables
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Azure 中的单一 Windows VM 体系结构"
 [readme]: https://github.com/mspnp/reference-architectures/blob/master/guidance-compute-single-vm
 [blocks]: https://github.com/mspnp/template-building-blocks
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

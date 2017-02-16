@@ -1,5 +1,5 @@
 ---
-title: "更改 Microsoft Azure StorSimple 虚拟阵列设备管理员密码 | Microsoft 文档"
+title: "更改 StorSimple 虚拟阵列设备管理员密码 | Microsoft 文档"
 description: "介绍如何使用 Azure 门户或 StorSimple 虚拟阵列 Web UI 更改设备管理员密码。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 4645ec88f804908916f7cf9b090376753c089119
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 2ff0b7796b8e31cc3b26a951647bb483fd131c14
 
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password"></a>更改 StorSimple Virtual Array 设备管理员密码
@@ -80,6 +80,6 @@ ms.openlocfilehash: 4645ec88f804908916f7cf9b090376753c089119
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

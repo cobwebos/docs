@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 12/21/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
-ms.openlocfilehash: 40c4f88bc91773158d416d5e89424b92cf15cf91
+ms.sourcegitcommit: ea2078722beb7c76c59f1f6cfe3bf82aac5e4a77
+ms.openlocfilehash: 20e64a0f9319596167c1f8d1a0b22c0fa8c514c7
 
 
 ---
@@ -89,11 +89,11 @@ Site Recovery 可与下表中汇总的本机 SQL Server BCDR 技术集成，以�
 
 本文档中的说明假设辅助位置提供了域控制器。 [详细了解](site-recovery-active-directory.md)如何使用 Site Recovery 保护 Active Directory。
 
-## <a name="integrate-protection-with-sql-server-always-on-on-premises-to-azure"></a>使用 SQL Server Always-On（本地至 Azure）集成保护
+## <a name="integrate-protection-with-sql-server-always-on-in-classic-azure-portal-on-premises-to-azure"></a>在经典 Azure 门户中使用 SQL Server Always-On 集成保护（本地至 Azure）
 Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组并且 Azure 虚拟机设置为“辅助”，则可以使用 Site Recovery 来管理可用性组的故障转移。
 
 > [!NOTE]
-> 此功能目前处于预览阶段。当主数据中心的 Hyper-V 主机服务器由 VMM 云管理，且 VMware 设置由[配置服务器](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)管理时，可以使用此功能。 此功能目前尚无法在新的 Azure 门户中使用。
+> 此功能目前处于预览阶段。当主数据中心的 Hyper-V 主机服务器由 VMM 云管理，且 VMware 设置由[配置服务器](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)管理时，可以使用此功能。 此功能目前尚无法在新的 Azure 门户中使用。 如果使用新 Azure 门户，请按照[本部分](site-recovery-sql.md#protect-machines-in-new-azure-portal-or-without-a-vmm-server-or-a-configuration-server-in-classic-azure-portal)中的步骤操作。 
 >
 >
 
@@ -146,7 +146,7 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 #### <a name="step-3-create-a-recovery-plan"></a>步骤 3：创建恢复计划
 下一步是使用虚拟机和可用性组创建恢复计划。
-选择在步骤 1 中所用的同一 VMM 服务器或配置服务器作为源，并选择 Microsoft Azure 作为目标。
+选择在步骤&1; 中所用的同一 VMM 服务器或配置服务器作为源，并选择 Microsoft Azure 作为目标。
 
 ![创建恢复计划](./media/site-recovery-sql/create-rp1.png)
 
@@ -183,7 +183,7 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 >
 >
 
-### <a name="protect-machines-without-a-vmm-server-or-a-configuration-server"></a>在没有 VMM 服务器或配置服务器的情况下对计算机进行保护
+### <a name="protect-machines-in-new-azure-portal-or-without-a-vmm-server-or-a-configuration-server-in-classic-azure-portal"></a>在新的 Azure 门户、没有 VMM 服务器的情况下或者经典 Azure 门户的配置服务器中保护计算机
 对于不由 VMM 服务器或配置服务器管理的环境，可以使用 Azure 自动化 Runbook 来配置 SQL 可用性组的脚本化故障转移。 以下是配置步骤：
 
 1. 为脚本创建本地文件，以故障转移可用性组。 此示例脚本将在 Azure 副本上指定可用性组的路径，并将其故障转移到该副本实例。 此脚本将通过使用自定义脚本扩展传递，以便在 SQL Server 副本虚拟机上运行。
@@ -206,12 +206,12 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 1. **测试性故障转移**：SQL AlwaysOn 原本不支持测试性故障转移。 因此，建议按如下方式操作：
     1. 在虚拟机上设置 [Azure 备份](../backup/backup-azure-vms.md)，该虚拟机在 Azure 中托管可用性组副本。 
-    1. 触发对恢复计划进行测试性故障转移之前，请从步骤 1 中进行的备份恢复虚拟机
+    1. 触发对恢复计划进行测试性故障转移之前，请从步骤&1; 中进行的备份恢复虚拟机
     1. 对恢复计划进行测试性故障转移
 
 
 > [!NOTE]
-> 以下脚本假定 SQL 可用性组托管在经典 Azure 虚拟机中，在步骤 2 中还原的虚拟机的名称为 SQLAzureVM-Test。 根据已恢复虚拟机的所用名称修改脚本。
+> 以下脚本假定 SQL 可用性组托管在经典 Azure 虚拟机中，在步骤&2; 中还原的虚拟机的名称为 SQLAzureVM-Test。 根据已恢复虚拟机的所用名称修改脚本。
 > 
 > 
 
@@ -342,6 +342,6 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

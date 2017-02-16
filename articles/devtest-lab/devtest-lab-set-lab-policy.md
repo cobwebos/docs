@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4222de44e426c449a42822994b1c15b44c3fec54
+ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
+ms.openlocfilehash: 2b16840e5e9fc6e0268d83f9177a6fc6ad02841c
 
 
 ---
 # <a name="define-lab-policies-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中定义实验室策略
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/How-to-set-VM-policies-in-a-DevTest-Lab/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-VM-policies-in-a-DevTest-Lab/player]
 > 
 > 
 
@@ -116,6 +116,6 @@ ms.openlocfilehash: 4222de44e426c449a42822994b1c15b44c3fec54
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

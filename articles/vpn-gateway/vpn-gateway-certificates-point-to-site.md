@@ -4,7 +4,7 @@ description: "本文包含在 Windows 10 上使用 makecert 创建自签名证�
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 27b99f7c-50dc-4f88-8a6e-d60080819a43
@@ -13,30 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/22/2016
+ms.date: 01/19/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b44f46273c6ddb439ec3793f193986011c222ee3
+ms.sourcegitcommit: 64c6e8fa5288ce9a25bcb434217511425aebfe21
+ms.openlocfilehash: beb873c99d956eafebecc69f9afc480c558efabb
 
 
 ---
 # <a name="working-with-self-signed-certificates-for-point-to-site-connections"></a>为点到站点连接使用自签名证书
-本文介绍如何使用 **makecert** 创建自签名证书，然后从中生成客户端证书。 以下步骤专为在 Windows 10 上使用 makecert 所编写。 已对 makecert 进行了验证，以创建与 P2S 连接相兼容的证书。 
+本文介绍如何使用 **makecert** 创建自签名证书，然后从自签名证书中生成客户端证书。 对于 P2S 连接，生成证书的首选方法是使用企业证书解决方案。 请确保使用常见名称值格式 'name@yourdomain.com', 颁发客户端证书，不要使用“NetBIOS 域名\用户名”的格式。
 
-对于 P2S 连接，证书的首选方法是使用企业证书解决方案，确保颁发常见名称值格式为“'name@yourdomain.com',”的客户端证书，而不是“NetBIOS domain name\username”格式。
-
-如果没有企业解决方案，则需要自签名证书以允许 P2S 客户端连接到虚拟网络。 我们知道虽然 makecert 已被弃用，但它仍然是创建与 P2S 连接相兼容的自签名证书的有效方法。 我们正在研究创建自签名证书的另一种解决方案，但目前，makecert 是首选方法。
+如果没有企业解决方案，则需要自签名证书以允许 P2S 客户端连接到虚拟网络。 虽然可以使用 PowerShell 创建证书，但使用 PowerShell 生成的证书不包含 Azure 进行 P2S 身份验证所需的必需字段。 已对 makecert 进行了验证，以创建与 P2S 连接相兼容的证书。 在 P2S 配置中 Makecert 并未弃用。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
-Makecert 是创建自签名证书的方式之一。 以下步骤将演示如何使用 makecert 创建自签名证书。 这些步骤并非特定于部署模型。 它们同样适用于 Resource Manager 和经典部署模型。
+以下步骤将演示如何使用 makecert 创建自签名证书。 这些步骤并非特定于部署模型。 它们同样适用于 Resource Manager 和经典部署模型。
 
 ### <a name="to-create-a-self-signed-certificate"></a>创建自签名证书
 1. 从运行 Windows 10 的计算机中下载并安装[用于 Windows 10 的 Windows 软件开发包 (SDK)](https://dev.windows.com/en-us/downloads/windows-10-sdk)。
 2. 安装之后，可以在以下路径中找到 makecert.exe 实用工具：C:\Program Files (x86)\Windows Kits\10\bin\<arch>。 
    
     示例：`C:\Program Files (x86)\Windows Kits\10\bin\x64`
-3. 接下来，在计算机上的“个人”证书存储中创建并安装证书。 以下示例将创建一个相应的 *.cer* 文件，在配置 P2S 时需要将此文件上传到 Azure。 以管理员身份运行以下命令。 使用想要用于证书的名称替换 *ARMP2SRootCert* 和 *ARMP2SRootCert.cer*<br><br>该证书位于“证书”-“当前用户\个人\证书”中。
+3. 接下来，在计算机上的“个人”证书存储中创建并安装证书。 以下示例将创建一个相应的 *.cer* 文件，在配置 P2S 时需要将此文件上传到 Azure。 以管理员身份运行以下命令。 使用想要用于证书的名称替换 *ARMP2SRootCert* 和* ARMP2SRootCert.cer*。<br><br>该证书位于“证书”-“当前用户\个人\证书”中。
    
         makecert -sky exchange -r -n "CN=ARMP2SRootCert" -pe -a sha1 -len 2048 -ss My "ARMP2SRootCert.cer"
 
@@ -84,10 +82,10 @@ Makecert 是创建自签名证书的方式之一。 以下步骤将演示如何�
 想要使用点到站点连接与虚拟网络连接的每个客户端都必须安装客户端证书。 除了必需的 VPN 配置包以外，还必须安装此证书。 以下步骤将演示如何手动安装客户端证书。
 
 1. 找到 *.pfx* 文件并将其复制到客户端计算机。 在客户端计算机上，双击 *.pfx* 文件以进行安装。 将“**存储位置**”保留为“**当前用户**”，然后单击“**下一步**”。
-2. 在“要导入的**文件**”页上，不要进行任何更改。 单击**下一步**。
+2. 在“要导入的**文件**”页上，不要进行任何更改。 单击“下一步”。
 3. 在“**私钥保护**”页上，如果使用了密码，请输入证书的密码，或验证安装证书的安全主体是否正确，然后单击“**下一步**”。
 4. 在“**证书存储**”页上，保留默认位置，然后单击“**下一步**”。
-5. 单击“**完成**”。 在证书安装的“**安全警告**”上，单击“**是**”。 现已成功导入证书。
+5. 单击“**完成**”。 在证书安装的“**安全警告**”上，单击“**是**”。 可随时单击“是”，因为证书已生成。 现已成功导入证书。
 
 ## <a name="next-steps"></a>后续步骤
 继续使用点到站点配置。 
@@ -98,6 +96,6 @@ Makecert 是创建自签名证书的方式之一。 以下步骤将演示如何�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

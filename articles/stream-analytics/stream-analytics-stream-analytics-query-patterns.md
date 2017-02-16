@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: da6ac042a55c7c145895d15a735f77fb2e82d394
+ms.sourcegitcommit: 4c3f32cd6159052f17557c51e08e7e3f611aa338
+ms.openlocfilehash: 7a1e705e40cd8f7b260c38f41e81e2f199555059
 
 
 ---
@@ -133,7 +133,7 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
 | Toyota |2015-01-01T00:00:02.0000000Z |
 | Toyota |2015-01-01T00:00:03.0000000Z |
 
-**输出 1**：
+**输出&1;**：
 
 | 制造商 | 时间 |
 | --- | --- |
@@ -143,7 +143,7 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
 | Toyota |2015-01-01T00:00:02.0000000Z |
 | Toyota |2015-01-01T00:00:03.0000000Z |
 
-**输出 2**：
+**输出&2;**：
 
 | 制造商 | 时间 | 计数 |
 | --- | --- | --- |
@@ -212,27 +212,17 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
 
 **解决方案：**
 
-    WITH Makes AS (
-        SELECT
-            Make,
-            COUNT(*) AS CountMake
-        FROM
-            Input TIMESTAMP BY Time
-        GROUP BY
-              Make,
-              TumblingWindow(second, 2)
-    )
-    SELECT
-        COUNT(*) AS Count,
-        System.TimeStamp AS Time
-    FROM
-        Makes
-    GROUP BY
-        TumblingWindow(second, 1)
+````
+SELECT
+     COUNT(DISTINCT Make) AS CountMake,
+     System.TIMESTAMP AS TIME
+FROM Input TIMESTAMP BY TIME
+GROUP BY 
+     TumblingWindow(second, 2)
+````
 
 
-**说明：**我们会进行一个初始的聚合来获得该时段内通过的车辆所属的不同制造商以及车辆的计数。
-然后，我们会进行一个聚合来计算有多少个制造商 – 在提供了某个时段内所有唯一值的情况下，我们可以获得相同的时间戳，然后，第二个聚合窗口需要尽可能小，不能聚合第一步中的 2 个窗口。
+**说明：**COUNT(DISTINCT Make) 返回一段时间内的“Make”列的非重复值的数量。
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>查询示例：确定某个值是否已更改
 **说明**：查看以前的值，确定其是否不同于当前值。例如，收费公路上前一辆车的制造商是否与目前这辆车的制造商相同？
@@ -509,7 +499,7 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**说明**：此查询每隔 5 秒生成事件，并输出前面收到的最后一个事件。 [跳跃窗口](https://msdn.microsoft.com/library/dn835041.aspx "跳跃窗口 - Azure 流分析")持续时间确定多久后查询将查找最新事件（在本例中为 300 秒）。
+**说明**：此查询每隔 5 秒生成事件，并输出前面收到的最后一个事件。 [跳跃窗口](https://msdn.microsoft.com/library/dn835041.aspx "跳跃窗口 - Azure 流分析")持续时间确定多久后查询将查找最新事件（在本例中为&300; 秒）。
 
 ## <a name="get-help"></a>获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
@@ -524,6 +514,6 @@ Azure 流分析中的查询采用类似 SQL 的查询语言来表述，该语言
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

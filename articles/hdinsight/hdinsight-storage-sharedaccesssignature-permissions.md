@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f2e5bbd2516c0f697084a802d6963c3d1023914
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: 6187106a9aa98107d89e65fe4c7a0e8a27befa87
 
 
 ---
@@ -29,9 +29,13 @@ HDInsight 使用 Azure 存储空间 Blob 来存储数据。 HDInsight 必须对�
 * Azure 订阅
 * C# 或 Python。 已提供 C# 示例代码作为 Visual Studio 解决方案。
   
-  * Visual Studio 的版本必须是 2013 或 2015。
+  * Visual Studio 的版本必须是 2013 或 2015
   * Python 的版本必须是 2.7 或更高
 * 基于 Linux 的 HDInsight 群集或 [Azure PowerShell][powershell] - 如果拥有现有的基于 Linux 的群集，可以使用 Ambari 将共享访问签名添加到群集。 如果没有，则可以使用 Azure PowerShell 创建新的群集，并在创建群集期间添加共享访问签名。
+
+    > [!IMPORTANT]
+    > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * 示例文件来源于 [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)。 此存储库包含以下项目：
   
   * Visual Studio 项目，可以创建存储容器、存储策略，以及配合 HDInsight 使用的 SAS
@@ -42,7 +46,7 @@ HDInsight 使用 Azure 存储空间 Blob 来存储数据。 HDInsight 必须对�
 共享访问签名有两种形式：
 
 * 即席：在你创建一个临时 SAS 时，针对该 SAS 的开始时间、到期时间和权限全都在 SAS URI 上指定（在省略开始时间的情况下，也可以是隐式的）。
-* 存储访问策略：存储访问策略是对资源容器（Blob 容器、表、队列或文件共享）定义的，可用于管理针对一个或多个共享访问签名的约束。 在你将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
+* 存储访问策略：存储访问策略是对资源容器（Blob 容器、表、队列或文件共享）定义的，可用于管理针对一个或多个共享访问签名的约束。 在将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
 这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 一个 SAS 就是一个 URL，因此，获取该 SAS 的任何人都可以使用它，而与是谁请求它以便开始的无关。 如果某一 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 是有效的：
 
@@ -71,12 +75,12 @@ HDInsight 使用 Azure 存储空间 Blob 来存储数据。 HDInsight 必须对�
    * StorageConnectionString：想要为其创建存储策略和 SAS 的存储帐户的连接字符串。 格式应为 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是存储帐户名称，`mykey` 是存储帐户密钥。
    * ContainerName：想要限制访问的存储帐户中的容器。
    * SASPolicyName：要创建的存储策略所用的名称。
-   * FileToUpload：将上载到容器的文件的路径。
+   * FileToUpload：将上传到容器的文件的路径。
 4. 运行该项目。 将显示控制台窗口。生成 SAS 之后，将显示如下所示的信息：
    
         Container SAS token using stored access policy: sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
    
-    保存 SAS 策略令牌，因为在将存储帐户关联到 HDInsight 群集时需要用到此信息。 你还需要使用存储帐户名称和容器名称。
+    保存 SAS 策略令牌，因为在将存储帐户关联到 HDInsight 群集时需要用到此信息。 还需要使用存储帐户名称和容器名称。
 
 ### <a name="create-a-stored-policy-and-sas-using-python"></a>使用 Python 创建存储策略和 SAS
 1. 打开 SASToken.py 文件并更改以下值：
@@ -90,7 +94,7 @@ HDInsight 使用 Azure 存储空间 Blob 来存储数据。 HDInsight 必须对�
    
         sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
    
-    保存 SAS 策略令牌，因为在将存储帐户关联到 HDInsight 群集时需要用到此信息。 你还需要使用存储帐户名称和容器名称。
+    保存 SAS 策略令牌，因为在将存储帐户关联到 HDInsight 群集时需要用到此信息。 还需要使用存储帐户名称和容器名称。
 
 ## <a name="use-the-sas-with-hdinsight"></a>配合 HDInsight 使用 SAS
 创建 HDInsight 群集时，必须指定主存储帐户，可以选择性地指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
@@ -127,7 +131,7 @@ HDInsight 使用 Azure 存储空间 Blob 来存储数据。 HDInsight 必须对�
     例如，将 `'mycluster'` 更改为要创建的群集的名称。 创建存储帐户和 SAS 令牌时，SAS 值应该与先前步骤中的值匹配。
    
     更改值之后，请保存该文件。
-2. 打开新的 Azure PowerShell 提示符。 如果不熟悉或尚未安装 Azure PowerShell，请参阅[安装和配置 Azure PowerShell][powershell]。
+2. 打开新的 Azure PowerShell 提示符。 如果你不熟悉或尚未安装 Azure PowerShell，请参阅[安装和配置 Azure PowerShell][powershell]。
 3. 在提示符下使用以下命令对 Azure 订阅进行身份验证：
    
         Login-AzureRmAccount
@@ -197,7 +201,7 @@ HDInsight 使用 Azure 存储空间 Blob 来存储数据。 HDInsight 必须对�
    
         hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
    
-    这会列出容器的内容，其中应包含创建容器和 SAS 时上载的文件。
+    这会列出容器的内容，其中应包含创建容器和 SAS 时上传的文件。
 2. 使用以下命令验证是否可以读取该文件的内容。 如上一步中所述，替换 **SASCONTAINER** 和 **SASACCOUNTNAME**。 将 **FILENAME** 替换为前一个命令中显示的名称：
    
         hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
@@ -249,10 +253,10 @@ HDInsight 使用 Azure 存储空间 Blob 来存储数据。 HDInsight 必须对�
 * [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
-[powershell]: ../powershell-install-configure.md
+[powershell]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

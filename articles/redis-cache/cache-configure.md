@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 12/20/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 15997f889228ca1668f4aa4752ba6f6b0f157873
-ms.openlocfilehash: ee99c3ef9ac5ce4716214736c782cede30e2c662
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: 530530952a4f69ae0a78e02cc1c079532f0c5b0f
 
 
 ---
@@ -71,7 +71,7 @@ Azure Redis 缓存在“资源菜单”中提供以下设置。
 
 ### <a name="activity-log"></a>活动日志
 
-单击“活动日志”可查看已对缓存执行的操作。 也可以使用筛选来展开此视图，以包含其他资源。 有关使用审核日志的详细信息，请参阅[查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)以及[使用 Resource Manager 执行审核操作](../resource-group-audit.md)。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
+单击“活动日志”可查看已对缓存执行的操作。 也可以使用筛选来展开此视图，以包含其他资源。 有关使用审核日志的详细信息，请参阅[查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)以及[使用 Resource Manager 执行审核操作](../azure-resource-manager/resource-group-audit.md)。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
 
 ### <a name="access-control-iam"></a>访问控制 (IAM)
 
@@ -79,7 +79,7 @@ Azure Redis 缓存在“资源菜单”中提供以下设置。
 
 ### <a name="tags"></a>标记
 
-“标记”部分可帮助用户整理资源。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../resource-group-using-tags.md)。
+“标记”部分可帮助用户整理资源。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
 
 
 ### <a name="diagnose-and-solve-problems"></a>诊断并解决问题
@@ -113,7 +113,7 @@ Azure Redis 缓存在“资源菜单”中提供以下设置。
 ![Redis 缓存访问密钥](./media/cache-configure/redis-cache-manage-keys.png)
 
 ### <a name="advanced-settings"></a>高级设置
-在“高级设置”边栏选项卡上可以配置以下设置。
+在“高级设置”边栏选项卡上配置以下设置。
 
 * [访问端口](#access-ports)
 * [Maxmemory-policy 和 maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)
@@ -265,11 +265,11 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 ![Redis 缓存属性](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>锁
-“锁定”部分可用来锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 有关详细信息，请参阅 [使用 Azure Resource Manager 锁定资源](../resource-group-lock-resources.md)。
+“锁定”部分可用来锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 有关详细信息，请参阅 [使用 Azure Resource Manager 锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
 
 ### <a name="automation-script"></a>自动化脚本
 
-单击“自动化模板”可生成并导出已部署资源的模板，以用于将来部署。 有关使用模板的详细信息，请参阅[使用 Azure Resource Manager 模板部署资源](../resource-group-template-deploy.md)。
+单击“自动化模板”可生成并导出已部署资源的模板，以用于将来部署。 有关使用模板的详细信息，请参阅[使用 Azure Resource Manager 模板部署资源](../azure-resource-manager/resource-group-template-deploy.md)。
 
 ## <a name="administration-settings"></a>管理设置
 可以通过“管理”部分的设置针对高级缓存执行以下管理任务。 
@@ -468,7 +468,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 
 ![移动 Redis 缓存](./media/cache-configure/redis-cache-move.png)
 
-有关在资源组之间以及订阅之间移动资源的信息，请参阅[将资源移到新的资源组或订阅](../resource-group-move-resources.md)。
+有关在资源组之间以及订阅之间移动资源的信息，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)。
@@ -476,6 +476,6 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

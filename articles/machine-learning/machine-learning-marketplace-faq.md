@@ -1,6 +1,6 @@
 ---
-title: "常见问题解答：在 Azure 应用商店中发布和使用机器学习应用 | Microsoft Docs"
-description: "常见问题"
+title: "（已弃用）常见问题解答 - 在 Azure 应用商店中发布和使用机器学习应用 | Microsoft Docs"
+description: "（已弃用）在 Azure 应用商店中发布机器学习应用的相关常见问题解答"
 services: machine-learning
 documentationcenter: 
 author: bharaths
@@ -11,16 +11,24 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/11/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: bharaths
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f8ae758a406dfed48968531ae20a9bbd2383db92
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 9e2d4a2d46bd461a71217cd2b2d75f5a50e8b617
 
 
 ---
-# <a name="publishing-and-using-machine-learning-apps-in-the-azure-marketplace-faq"></a>在 Azure 机器应用商店中发布和使用机器学习：常见问题
+# <a name="deprecated-publishing-and-using-machine-learning-apps-in-the-azure-marketplace-faq"></a>（已弃用）在 Azure 机器应用商店中发布和使用机器学习应用：常见问题解答
+
+> [!NOTE]
+> 将停用 DataMarket 和数据服务，并从 2017/3/31 起停用和取消现有订阅。 因此将弃用这篇文章。 
+> 
+> 转而，可选择将机器学习试验发布到 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)，便于数据科学社区使用。 有关详细信息，请参阅[在 Cortana Intelligence 库中共享和发现资源](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-gallery-how-to-use-contribute-publish)。
+
+
 ## <a name="questions-about-consuming-from-marketplace"></a>有关在应用商店中使用服务的问题
 **1.键入 Web 服务的输入内容后，为什么收到以下错误消息：**
 
@@ -72,6 +80,6 @@ ms.openlocfilehash: f8ae758a406dfed48968531ae20a9bbd2383db92
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

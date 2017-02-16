@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d0c334a0b1e047208f6f61e5181864b1c2e3a6a
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 81706c6c95199b25a07589780d2a27fc0f8dffa7
 
 
 ---
-# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>使用 Azure Resource Manager 与 C 来管理 Azure 虚拟机
+# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>使用 Azure Resource Manager 与 C 来管理 Azure 虚拟机# #
 本文中的任务显示了如何管理虚拟机，如启动、停止和更新。 若要完成本文中的任务，资源组中必须有一个虚拟机。
 
 若要完成本文中的任务，你需要：
 
 * [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
-* [身份验证令牌](../resource-group-authenticate-service-principal.md)
+* [身份验证令牌](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="create-a-visual-studio-project-and-install-packages"></a>创建 Visual Studio 项目并安装包
 使用 NuGet 包可以最轻松地安装本文中任务所需的库。 要为本文安装的库是 Azure Active Directory 身份验证库和计算资源提供程序库。 在 Visual Studio 中完成以下步骤获取这些库：
@@ -435,11 +435,11 @@ ms.openlocfilehash: 4d0c334a0b1e047208f6f61e5181864b1c2e3a6a
 5. 在 Visual Studio 中单击“启动”，然后使用用于订阅的相同用户名和密码登录到 Azure AD。
 
 ## <a name="next-steps"></a>后续步骤
-如果部署出现问题，请参阅[使用 Azure 门户对资源组部署进行故障排除](../resource-manager-troubleshoot-deployments-portal.md)
+如果部署出现问题，可以参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

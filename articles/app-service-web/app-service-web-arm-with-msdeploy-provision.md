@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9c748f4f65ec4a2ba32bca97648fb7ccdbb8d749
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
 
 
 ---
 # <a name="deploy-a-web-app-with-msdeploy-custom-hostname-and-ssl-certificate"></a>使用 MSDeploy、自定义主机名和 SSL 证书部署 Web 应用
 本指南逐步说明如何通过利用 MSDeploy，以及将自定义主机名和 SSL 证书添加到 ARM 模板，来创建 Azure Web 应用的端到端部署。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ### <a name="create-sample-application"></a>创建示例应用程序
 你将部署一个 ASP.NET Web 应用程序。 第一步是创建简单的 Web 应用程序（或者，可以选择使用现有的应用程序 - 在这种情况下，可以跳过此步骤）。
@@ -200,6 +200,6 @@ ms.openlocfilehash: 9c748f4f65ec4a2ba32bca97648fb7ccdbb8d749
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

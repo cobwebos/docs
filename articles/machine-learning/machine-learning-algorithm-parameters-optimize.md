@@ -1,5 +1,5 @@
 ---
-title: "选择参数优化 Azure 机器学习中的算法 | Microsoft Docs"
+title: "优化 Azure 机器学习中的算法 | Microsoft 文档"
 description: "说明如何为 Azure 机器学习中的算法选择最佳参数集。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: b3be7f31ac31c656744fb809e3972af0ac4ad4f1
 
 
 ---
@@ -48,17 +48,17 @@ ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
 ![双类提升决策树，参数范围](./media/machine-learning-algorithm-parameters-optimize/fig3.png)
 
 ## <a name="define-cross-validation-folds"></a>定义交叉验证折叠
-[分区和示例][partition-and-sample] 模块可用于随机将折叠分配到数据。 在模块的以下示例配置中，我们定义 5 个折叠并随机将折叠号分配到示例实例。
+[分区和示例][partition-and-sample]模块可用于随机将折叠分配到数据。 在模块的以下示例配置中，我们定义&5; 个折叠并随机将折叠号分配到示例实例。
 
 ![分区和采样](./media/machine-learning-algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>定义指标
-[优化模型超参数] [tune-model-hyperparameters] 模块支持为给定算法和数据集凭经验选择最佳参数集。 除了有关训练模型的其他信息，此模块的“属性”窗格包括确定最佳参数集的指标。 它分别具有两个不同的下拉列表框用于分类和回归算法。 如果正在考虑的算法是分类算法，则忽略回归指标，反之亦然。 在此特定示例中，该指标为**准确性**。   
+[优化模型超参数][tune-model-hyperparameters] 模块支持为给定算法和数据集凭经验选择最佳参数集。 除了有关训练模型的其他信息，此模块的“属性”窗格包括确定最佳参数集的指标。 它分别具有两个不同的下拉列表框用于分类和回归算法。 如果正在考虑的算法是分类算法，则忽略回归指标，反之亦然。 在此特定示例中，该指标为**准确性**。   
 
 ![扫描参数](./media/machine-learning-algorithm-parameters-optimize/fig5.png)
 
 ## <a name="train-evaluate-and-compare"></a>训练、评估和比较
-相同的[优化模型超参数][tune-model-hyperparameters]模块训练所有对应于参数集的模型、评估各种指标并基于所需指标创建训练最佳的模型。 此模块具有两个必需输入：
+相同的[优化模型超参数][tune-model-hyperparameters] 模块训练所有对应于参数集的模型、评估各种指标并基于所选指标创建训练最佳的模型。 此模块具有两个必需输入：
 
 * 未训练的学习器
 * 数据集
@@ -79,6 +79,6 @@ ms.openlocfilehash: e1075e73a67130453701842f3b328484a327f5ec
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB Node.js API 和 SDK | Microsoft Docs"
+title: "Node.js API 和 SDK 资源 - Azure DocumentDB | Microsoft 文档"
 description: "了解有关 Node.js API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Node.js SDK 各版本之间所做的更改。"
 services: documentdb
 documentationcenter: nodejs
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 12/22/2016
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 5e182811adc29ae00d40355bb4813c30eb0b904c
-ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 43d658a67eb55a2d2e35f79080d63c3effb6387e
 
 
 ---
@@ -54,6 +54,11 @@ ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11011101a"></a><a name="1.10.1"/>1.10.1</a>
+* 使用 SDK 定位模拟器 (hostname=localhost) 时禁用 SSL 验证。
+* 添加了在存储过程执行期间对启用脚本日志记录的支持。
+
 ### <a name="a-name11001100a"></a><a name="1.10.0"/>1.10.0</a>
 * 添加了对跨分区并行查询的支持。
 * 已对分区集合添加 TOP/ORDER BY 查询支持。
@@ -129,22 +134,18 @@ ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
 ### <a name="a-name100100a"></a><a name="1.0.0"/>1.0.0</a>
 * GA SDK。
 
-## <a name="release-retirement-dates"></a>发布和停用日期
+## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议你始终尽早升级到最新 SDK 版本。
 
 使用已停用的 SDK 对 DocumentDB 发出的任何请求都将被服务拒绝。
 
-> [!WARNING]
-> Azure DocumentDB SDK for Node.js 在 **1.0.0** 版之前的所有版本都将在 **2016 年 2 月 29 日**停用。
-> 
-> 
-
 <br/>
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.10.1](#1.10.1) |2016 年 12 月 22 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 10 月 3 日 |--- |
 | [1.9.0](#1.9.0) |2016 年 7 月 7 日 |--- |
 | [1.8.0](#1.8.0) |2016 年 6 月 14 日 |--- |
@@ -167,11 +168,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.0.2](#1.0.2) |2015 年 5 月 23 日 |--- |
 | [1.0.1](#1.0.1) |2015年 5 月 15日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
-| 0.9.4-prerelease |2015 年 4 月 6 日 |2016 年 2 月 29 日 |
-| 0.9.3-prerelease |2015 年 1 月 14日 |2016 年 2 月 29 日 |
-| 0.9.2-prerelease |2014 年 12 月 18 日 |2016 年 2 月 29 日 |
-| 0.9.1-prerelease |2014 年 8 月 22 日 |2016 年 2 月 29 日 |
-| 0.9.0-prerelease |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
 
 ## <a name="faq"></a>常见问题
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -182,6 +178,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

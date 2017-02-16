@@ -1,9 +1,9 @@
 ---
-title: "如何使用审核日志 | Microsoft 文档"
+title: "如何在 Azure AD Privileged Identity Management 中使用审核日志 | Microsoft 文档"
 description: "了解如何在 Azure Privileged Identity Management 扩展中使用审核日志。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 5d13a6dd-1fcb-4e76-82fb-cb2f4f0e4357
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5ac402f1a5f76c02f22a189eec8cada0cc9b4a0f
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: a36231d9326158068e9460ed4594a79c744d3087
 
 
 ---
-# <a name="how-to-use-the-audit-log-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中使用审核日志
+# <a name="using-the-audit-log-in-pim"></a>在 PIM 中使用审核日志
 你可以使用 Privileged Identity Management (PIM) 审核日志查看给定时间段内的所有用户分配和激活。 如果你想要在租户中查看活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 访问和使用情况报告。](active-directory-view-access-usage-reports.md)
 
 ## <a name="navigate-to-the-audit-log"></a>导航到审核日志
@@ -62,6 +62,6 @@ ms.openlocfilehash: 5ac402f1a5f76c02f22a189eec8cada0cc9b4a0f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

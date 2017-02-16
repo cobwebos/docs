@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 01/04/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: e7d3c82e235d691c4ab329be3b168dcccc19774f
-ms.openlocfilehash: 5fc94be5e7be09432d735e1cf1293a4e65cbe99e
+ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
+ms.openlocfilehash: 39ee9cc1027958d85b2af2781adab0fe06c9a433
 
 
 ---
@@ -25,12 +25,12 @@ ms.openlocfilehash: 5fc94be5e7be09432d735e1cf1293a4e65cbe99e
 
 在开始之前，请特别注意以下几点：
 
-1. 本教程使用 PowerShell，因此请确保 Azure PowerShell 已安装并已准备就绪。 有关设置 Azure PowerShell 的帮助，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+1. 本教程使用 PowerShell，因此请确保 Azure PowerShell 已安装并已准备就绪。 有关设置 Azure PowerShell 的帮助，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 2. AD 域控制器和 Web/辅助角色实例需要在 VNet 中。
 
 请遵循以下分步指南，如果你遇到任何问题，请在下面留言。 我们将回复你（没错，我们真的会阅读留言）。
 
-1. 由云服务引用的网络<mark>必须为</mark>**经典虚拟网络**。
+由云服务引用的网络必须为**经典虚拟网络**。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 你可以使用 Azure 经典门户或 PowerShell 在 Azure 中创建虚拟网络。 在本教程中，我们将使用 PowerShell。 若要使用 Azure 经典门户创建虚拟网络，请参阅[创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
@@ -158,6 +158,6 @@ help New-AzureServiceADDomainExtensionConfig
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

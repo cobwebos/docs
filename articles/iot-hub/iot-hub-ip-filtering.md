@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT 中心 IP 筛选器 | Microsoft Docs"
+title: "Azure IoT 中心 IP 连接筛选器 | Microsoft Docs"
 description: "如何使用 IP 筛选阻止特定 IP 地址到 Azure IoT 中心的连接。 可阻止来自单独 IP 地址或 IP 地址范围的连接。"
 services: iot-hub
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 784454c3bc0500ac0896177e843b3c194341cdd1
+ms.sourcegitcommit: ddb729d29072724f691c178967b6181f6ce06df4
+ms.openlocfilehash: a9207d116e9b7360865c950ba00210ed67c3e028
 
 
 ---
@@ -61,6 +61,9 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 可以通过双击包含某个现有规则的行编辑该规则。
 
+> [!NOTE]
+> 拒绝 IP 地址即可阻止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心交互。
+
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 
 若要删除 IP 筛选器规则，请在网格中选择一个或多个规则，然后单击“删除”。
@@ -71,7 +74,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
-例如，如果希望接受 192.168.100.0/22 范围中的地址并拒绝任何其他地址，则网格中的第一个规则应接受 192.168.100.0/22 地址范围。 下一个规则应通过使用 0.0.0.0/0 范围拒绝所有地址。 如果添加了拒绝 0.0.0.0/0 范围的最后一个规则，则意味着你将默认行为更改为列入白名单。
+例如，如果希望接受 192.168.100.0/22 范围中的地址并拒绝任何其他地址，则网格中的第一个规则应接受 192.168.100.0/22 地址范围。 下一个规则应通过使用 0.0.0.0/0 范围拒绝所有地址。
 
 可以通过单击行开头的三个竖直点并使用拖放操作更改 IP 筛选器规则在网格中的顺序。
 
@@ -103,6 +106,6 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 [lnk-metrics]: iot-hub-metrics.md
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

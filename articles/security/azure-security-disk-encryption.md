@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2016
-ms.author: krkhan
+ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: ca5b12c90814b9906389a12e8c72e2b4c266483f
-ms.openlocfilehash: 3eb295e0ccec9a9410c0bb64e6ead10202b30289
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: deb3a3544311d0fbd5207f97898fde716f07704c
 
 
 ---
@@ -303,7 +303,7 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 
 | CLI |[Azure 命令行接口](../xplat-cli-install.md) |
 | DM-Crypt |[DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux IaaS VM 上启用磁盘加密 |
 | KEK |密钥加密密钥是非对称密钥 (RSA 2048)，用于在需要时保护或包装机密。 你可以提供 HSM 保护的密钥或软件保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档 |
-| PS cmdlet |[Azure PowerShell cmdlet](../powershell-install-configure.md) |
+| PS cmdlet |[Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs) |
 
 ### <a name="setting-and-configuring-azure-key-vault-for-azure-disk-encryption-usage"></a>根据 Azure 磁盘加密的使用方式设置和配置 Azure 密钥保管库
 Azure 磁盘加密将保护 Azure 密钥保管库中的磁盘加密密钥和机密。 请遵循以下每个部分中的步骤，根据 Azure 磁盘加密使用方式设置密钥保管库。
@@ -398,7 +398,7 @@ Azure 平台需要访问 Azure 密钥保管库中的加密密钥或机密，才�
 | keyVaultResourceID |用于标识 ARM 中密钥保管库资源的 ResourceID。 你可以使用 PowerShell cmdlet 获取该 ID：(Get-AzureRmKeyVault -VaultName &lt;yourKeyVaultName&gt; -ResourceGroupName &lt;yourResourceGroupName&gt;).ResourceId |
 | keyVaultSecretUrl |密钥保管库中预配的磁盘加密密钥的 URL |
 | keyVaultKekUrl |用于加密所生成磁盘加密密钥的密钥加密密钥的 URL |
-| vmName |IaaS VM 的名称 |
+| ?vmName |IaaS VM 的名称 |
 
 #### <a name="using-powershell-cmdlets"></a>使用 PowerShell cmdlet
 可以使用[此处](https://msdn.microsoft.com/library/azure/mt603746.aspx)发布的 PS cmdlet 对客户加密的 VHD 启用磁盘加密。  
@@ -408,9 +408,9 @@ Azure 平台需要访问 Azure 密钥保管库中的加密密钥或机密，才�
 
 1. 设置对密钥保管库的访问策略：
    * 设置“EnabledForDiskEncryption”标志：`azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true`
-   * 向 Azure AD 应用设置将机密写入 KeyVault 的权限：`azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys [\"all\"] --perms-to-secrets [\"all\"]`
-2. 若要在现有/正在运行的 VM 上启用加密，请键入： *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 获取加密状态：*“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
+   * 向 Azure AD 应用设置将机密写入 KeyVault 的权限：`azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys '["wrapKey"]' --perms-to-secrets '["set"]'`
+2. 若要在现有/正在运行的 VM 上启用加密，请键入：`azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId> --volume-type [All|OS|Data]`
+3. 获取加密状态：`azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json`
 4. 若要从客户加密的 VHD 在新 VM 上启用加密，请将以下参数与“azure vm create”命令结合使用：
    * disk-encryption-key-vault-id <disk-encryption-key-vault-id>
    * disk-encryption-key-url <disk-encryption-key-url>
@@ -427,13 +427,13 @@ Azure 平台需要访问 Azure 密钥保管库中的加密密钥或机密，才�
 
 | 参数 | 说明 |
 | --- | --- |
-| AADClientID |有权可将机密写入密钥保管库的 Azure AD 应用的客户端 ID |
-| AADClientSecret |有权可将机密写入密钥保管库的 Azure AD 应用的客户端机密 |
+| ?AADClientID |?有权将机密写入密钥保管库的 Azure AD 应用的客户端 ID |
+| AADClientSecret |?有权将机密写入密钥保管库的 Azure AD 应用的客户端机密 |
 | KeyVaultName |应将 BitLocker 密钥上载到的密钥保管库的名称。 可以使用 cmdlet 获取此名称：(Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>)。 Vaultname |
-|  keyEncryptionKeyURL |用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择 `nokek`，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择 `kek`，则必须输入 keyEncryptionKeyURL 值 |
-| volumeType |执行加密操作的卷的类型。 有效值为“OS”、“Data”、“All” |
+| ? keyEncryptionKeyURL |用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择 `nokek`，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择 `kek`，则必须输入 keyEncryptionKeyURL 值 |
+| ?volumeType |?执行加密操作的卷的类型。 有效值为“OS”、“Data”、“All” |
 | sequenceVersion |BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘加密操作时，此版本号便会递增 |
-| vmName |执行加密操作的 VM 的名称 |
+| ?vmName |?要执行加密操作的 VM 的名称 |
 
 **注意：**KeyEncryptionKeyURL 是可选参数。 你可以使用自己的 KEK，在密钥保管库中进一步保护数据加密密钥（BitLocker 加密机密）。
 
@@ -444,10 +444,10 @@ Azure 平台需要访问 Azure 密钥保管库中的加密密钥或机密，才�
 遵循以下步骤，使用 CLI 命令在 Azure 中现有/正在运行的 IaaS Windows VM 上启用加密：
 
 1. 设置对密钥保管库的访问策略：
-   * 设置 ‘EnabledForDiskEncryption’ 标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-   * 向 Azure AD 应用设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys [\"all\"] --perms-to-secrets [\"all\"]”
-2. 若要在现有/正在运行的 VM 上启用加密，请键入： *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 获取加密状态：*“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
+   * 设置“EnabledForDiskEncryption”标志：`azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true`
+   * 向 Azure AD 应用设置将机密写入 KeyVault 的权限：`azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys '["wrapKey"]' --perms-to-secrets '["set"]'`
+2. 若要在现有/正在运行的 VM 上启用加密：`azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId> --volume-type [All|OS|Data]`
+3. 获取加密状态：`azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json`
 4. 若要从客户加密的 VHD 在新 VM 上启用加密，请将以下参数与“azure vm create”命令结合使用：
    * disk-encryption-key-vault-id <disk-encryption-key-vault-id>
    * disk-encryption-key-url <disk-encryption-key-url>
@@ -461,13 +461,13 @@ Azure 平台需要访问 Azure 密钥保管库中的加密密钥或机密，才�
 
 | 参数 | 说明 |
 | --- | --- |
-| AADClientID |有权可将机密写入密钥保管库的 Azure AD 应用的客户端 ID |
-| AADClientSecret |有权可将机密写入密钥保管库的 Azure AD 应用的客户端机密 |
+| ?AADClientID |?有权将机密写入密钥保管库的 Azure AD 应用的客户端 ID |
+| AADClientSecret |?有权将机密写入密钥保管库的 Azure AD 应用的客户端机密 |
 | KeyVaultName |应将 BitLocker 密钥上载到的密钥保管库的名称。 可以使用 cmdlet 获取此名称：(Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>)。 Vaultname |
-|  keyEncryptionKeyURL |用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”，则必须输入 keyEncryptionKeyURL 值 |
-| volumeType |执行加密操作的卷的类型。 受支持的有效值为“OS”/“All”（对于 RHEL 7.2、CentOS 7.2 和 Ubuntu 16.04）和“Data”（对于所有其他发行版）。 |
+| ? keyEncryptionKeyURL |用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”，则必须输入 keyEncryptionKeyURL 值 |
+| ?volumeType |?执行加密操作的卷的类型。 受支持的有效值为“OS”/“All”（对于 RHEL 7.2、CentOS 7.2 和 Ubuntu 16.04）和“Data”（对于所有其他发行版）。 |
 | sequenceVersion |BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘加密操作时，此版本号便会递增 |
-| vmName |执行加密操作的 VM 的名称 |
+| ?vmName |?要执行加密操作的 VM 的名称 |
 | passPhrase |键入强通行短语作为数据加密密钥 |
 
 **注意：**KeyEncryptionKeyURL 是可选参数。 你可以使用自己的 KEK，在密钥保管库中进一步保护数据加密密钥（通行短语机密）。
@@ -476,10 +476,10 @@ Azure 平台需要访问 Azure 密钥保管库中的加密密钥或机密，才�
 可以使用从[此处](../xplat-cli-install.md)安装的 CLI 命令，在客户加密的 VHD 上启用磁盘加密。 遵循以下步骤，使用 CLI 命令在 Azure 中现有/正在运行的 IaaS Linux VM 上启用加密：
 
 1. 设置对密钥保管库的访问策略：
-   * 设置 ‘EnabledForDiskEncryption’ 标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-   * 向 Azure AD 应用设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys [\"all\"] --perms-to-secrets [\"all\"]”
-2. 若要在现有/正在运行的 VM 上启用加密，请键入： *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 获取加密状态：“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”
+   * 设置“EnabledForDiskEncryption”标志：`azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true`
+   * 向 Azure AD 应用设置将机密写入 KeyVault 的权限：`azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys '["wrapKey"]' --perms-to-secrets '["set"]'`
+2. 若要在现有/正在运行的 VM 上启用加密：`azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId> --volume-type [All|OS|Data]`
+3. 获取加密状态：`azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json`
 4. 若要从客户加密的 VHD 在新 VM 上启用加密，请将以下参数与“azure vm create”命令结合使用：
    * *disk-encryption-key-vault-id <disk-encryption-key-vault-id>*
    * *disk-encryption-key-url <disk-encryption-key-url>*
@@ -551,9 +551,9 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“Encrypted”，表明�
 
 用于在正在运行的 IaaS VM 上禁用加密的资源管理器模板参数详细信息：
 
-| vmName | 执行加密操作的 VM 的名称 |
+| ?vmName | ?要执行加密操作的 VM 的名称 |
 | --- | --- |
-| volumeType |执行解密操作的卷的类型。 有效值为“OS”、“Data”、“All”。 **注意：**如果未在“Data”卷上禁用加密，则无法在运行中的 Windows IaaS VM OS/引导卷上禁用加密。 **注意**：在 Linux VM 上不允许禁用 OS 磁盘上的加密。 |
+| ?volumeType |?执行解密操作的卷的类型。 有效值为“OS”、“Data”、“All”。 **注意：**如果未在“Data”卷上禁用加密，则无法在运行中的 Windows IaaS VM OS/引导卷上禁用加密。 **注意**：在 Linux VM 上不允许禁用 OS 磁盘上的加密。 |
 | sequenceVersion |BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘解密操作时，此版本号便会递增 |
 
 ##### <a name="disable-encryption-on-existingrunning-iaas-vm-in-azure-using-ps-cmdlet"></a>使用 PS cmdlet 在 Azure 中的现有/正在运行的 IaaS VM 上禁用加密
@@ -1113,6 +1113,6 @@ to
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

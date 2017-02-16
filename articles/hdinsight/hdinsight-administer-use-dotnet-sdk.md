@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
+ms.sourcegitcommit: ec710057c2016175f65578a9d6884f7273b65169
+ms.openlocfilehash: f2a762ad64feeef91802429cdd959cec67b73473
 
 
 ---
@@ -33,6 +33,7 @@ ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="connect-to-azure-hdinsight"></a>连接到 Azure HDInsight
+
 需要以下 Nuget 包：
 
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -79,10 +80,6 @@ ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
             /// <summary>
             /// Authenticate to an Azure subscription and retrieve an authentication token
             /// </summary>
-            /// <param name="TenantId">The AAD tenant ID</param>
-            /// <param name="ClientId">The AAD client ID</param>
-            /// <param name="SubscriptionId">The Azure subscription ID</param>
-            /// <returns></returns>
             static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + TenantId);
@@ -167,14 +164,14 @@ ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
     
     HDInsight 群集上提供了 Storm Web UI：
     
-    ![hdinsight storm 缩放重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![HDInsight Storm 缩放重新平衡](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
     
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
     
-    ## <a name="reconfigure-the-topology-mytopology-to-use-5-worker-processes"></a>重新配置拓扑“mytopology”以使用 5 个辅助角色进程，
-    ## <a name="the-spout-blue-spout-to-use-3-executors-and"></a>重新配置 Spout“blue-spout”以使用 3 个执行器，以及
-    ## <a name="the-bolt-yellow-bolt-to-use-10-executors"></a>重新配置 Blot“yellow-bolt”以使用 10 个执行器
-      $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+        ## Reconfigure the topology "mytopology" to use 5 worker processes,
+        ## the spout "blue-spout" to use 3 executors, and
+        ## the bolt "yellow-bolt" to use 10 executors
+        $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
 以下代码片段将显示如何以同步或异步方式调整群集的大小：
 
@@ -254,14 +251,14 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 请参阅[在 HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流](hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>将数据上载到 Azure Blob 存储
-请参阅[将数据上传到 HDInsight][hdinsight-upload-data]。
+请参阅[将数据上载到 HDInsight][hdinsight-upload-data]。
 
 ## <a name="see-also"></a>另请参阅
 * [HDInsight .NET SDK 参考文档](https://msdn.microsoft.com/library/mt271028.aspx)
 * [使用 Azure 门户管理 HDInsight][hdinsight-admin-portal]
 * [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]
-* [将数据上传到 HDInsight][hdinsight-upload-data]
+* [将数据上载到 HDInsight][hdinsight-upload-data]
 * [Azure HDInsight 入门][hdinsight-get-started]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -285,6 +282,6 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

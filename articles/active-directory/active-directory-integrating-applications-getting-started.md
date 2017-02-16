@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: inhenk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e35ac9ae791f7fa917cccbba5d06319f28b7033c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 66276b94f0b2fa124ba2b197d6e8467632f93ce8
 
 
 ---
@@ -95,6 +95,6 @@ ms.openlocfilehash: e35ac9ae791f7fa917cccbba5d06319f28b7033c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

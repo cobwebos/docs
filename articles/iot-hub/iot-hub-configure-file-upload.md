@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 门户配置文件上载 | Microsoft Docs"
-description: "有关如何使用 Azure 门户配置文件上载的概述"
+description: "如何使用 Azure 门户配置 IoT 中心，以便从连接的设备上传文件。 包括有关配置目标 Azure 存储帐户的信息。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/05/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e3ac3e8cee2724b76f51423d1a6757382cca04f0
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: aadbee1388e2c2aafaf0a5c50d2af195284d2bec
 
 
 ---
-# <a name="configure-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置文件上载
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置 IoT 中心文件上传
 ## <a name="file-upload"></a>文件上载
-若要使用 [IoT 中心中的文件上载功能][lnk-upload]，必须先将 Azure 存储帐户与你的中心关联。 选择“**文件上载**”设置，即可显示正在修改的 IoT 中心的文件上载属性列表。
+若要使用 [IoT 中心的文件上传功能][lnk-upload]，必须先将 Azure 存储帐户与中心关联。 选择“**文件上载**”设置，即可显示正在修改的 IoT 中心的文件上载属性列表。
 
 ![][13]
 
@@ -41,17 +41,17 @@ ms.openlocfilehash: e3ac3e8cee2724b76f51423d1a6757382cca04f0
 ![][15]
 
 ## <a name="next-steps"></a>后续步骤
-有关 IoT 中心的文件上载功能的详细信息，请参阅开发人员指南中的[从设备上载文件][lnk-upload]。
+有关 IoT 中心文件上传功能的详细信息，请参阅 IoT 中心开发人员指南中的[从设备上传文件][lnk-upload]。
 
 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [批量管理 IoT 设备][lnk-bulk]
-* [使用情况指标][lnk-metrics]
+* [IoT 中心度量值][lnk-metrics]
 * [操作监视][lnk-monitor]
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
 * [从根本上保护 IoT 解决方案][lnk-securing]
 
@@ -71,6 +71,6 @@ ms.openlocfilehash: e3ac3e8cee2724b76f51423d1a6757382cca04f0
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "中继异常 | Microsoft 文档"
+title: "Azure 中继异常以及解决方法 | Microsoft Docs"
 description: "中继异常和建议操作列表。"
 services: service-bus-relay
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3feece5fc2497aec59bd065c345b21e800c87fd2
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: f5323820b49f2dcbf8a2d1b669e2faea91c2f724
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: 3feece5fc2497aec59bd065c345b21e800c87fd2
 | [参数异常](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [参数为 Null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[参数超出范围](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |提供给该方法的一个或多个参数均无效。<br /> 提供给 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 或 [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.create.aspx) 的 URI 包含路径段。<br /> 提供给 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 或 [Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.create.aspx) 的 URI 方案无效。 <br />属性值大于 32KB。 |检查调用代码并确保参数正确。 |重试不会解决问题。 |
 | [服务器忙](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx) |服务目前无法处理请求。 |客户端可以等待一段时间，然后重试操作。 |客户端可在特定的时间间隔后重试操作。 如果重试导致其他异常，请检查该异常的重试行为。 |
 | [超出配额](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.quotaexceededexception.aspx) |消息实体已达到其最大允许大小。 |通过从实体或其子队列接收消息在该实体中创建空间。 请参阅[QuotaExceededException](#quotaexceededexception)。 |如果同时已删除消息，则重试可能会有帮助。 |
-| [超出消息大小](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) |消息负载超出 256K 限制。 请注意，256K 限制是指总消息大小，可能包括系统属性和任何 .NET 开销。 |减少消息有效负载的大小，然后重试操作。 |重试不会解决问题。 |
+| [超出消息大小](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) |消息负载超出 256K 限制。 请注意，256K 限制是指总消息大小，可能包括系统属性和任何 .NET 开销。 |减少消息负载的大小，然后重试操作。 |重试不会解决问题。 |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.quotaexceededexception.aspx) 指示已超出某个特定实体的配额。
@@ -83,6 +83,6 @@ ms.openlocfilehash: 3feece5fc2497aec59bd065c345b21e800c87fd2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

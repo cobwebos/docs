@@ -1,6 +1,6 @@
 ---
-title: "从 Web 表移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从网页中的本地表移动数据。"
+title: "使用 Azure 数据工厂从 Web 表移动数据 | Microsoft Docs"
+description: "了解如何使用 Azure 数据工厂从网页中的表移动数据。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 7b55f6730c6a2bf8637f312c452fe552f82dbaeb
-ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
+ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
+ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
 
 
 ---
@@ -295,10 +295,10 @@ ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

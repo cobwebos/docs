@@ -1,6 +1,6 @@
 ---
 title: "启用 Azure 安全中心中的数据收集 | Microsoft 文档"
-description: " 了解如何启用 Azure 安全中心中的数据收集。 "
+description: " 了解如何启用 Azure 安全中心中的数据收集功能。. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 01/04/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 48742fdbd1335ae519e4537ccd3779dc4f120a4d
+ms.sourcegitcommit: 486ab53ede1465da2cba16ff4160599b50c2b092
+ms.openlocfilehash: 7cad771f5f134a9dffe7846a2c82017e3da9d9bc
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: 48742fdbd1335ae519e4537ccd3779dc4f120a4d
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。 这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 选择“安全中心”边栏选项卡上的“建议”磁贴。  这将打开“建议”边栏选项卡。
@@ -35,7 +35,9 @@ ms.openlocfilehash: 48742fdbd1335ae519e4537ccd3779dc4f120a4d
    ![“建议”边栏选项卡][2]
 3. 在“启用数据收集”边栏选项卡，选择你的订阅。 将打开该订阅的“安全策略”边栏选项卡。
 4. 在“安全策略”边栏选项卡，选择“数据收集”下方的“打开”以自动收集日志。 启用数据收集还将对订阅中的所有当前和新支持的 VM 设置监视扩展。
+
    ![安全策略边栏选项卡][3]
+
 5. 选择“保存”。
 6. 选择“选择每个区域的存储帐户”。 对于每个有虚拟机运行的区域，可选择相应的存储帐户存储从这些虚拟机收集的数据。 如果用户没有为每个区域选择存储帐户，系统便会自动创建一个存储帐户。 在此示例中，将选择 **newstoracct**。 通过返回到订阅的安全策略并选择不同的存储帐户，可以稍后更改存储帐户。
    ![选择存储帐户][4]
@@ -43,19 +45,19 @@ ms.openlocfilehash: 48742fdbd1335ae519e4537ccd3779dc4f120a4d
 
 > [!NOTE]
 > 建议启用数据收集，并首先选择订阅级别的存储帐户。 虽然可以在 Azure 订阅级别和资源组级别设置安全策略，但只能在订阅级别配置数据收集和存储帐户。
-> 
-> 
+>
+>
 
 ## <a name="after-data-collection-is-enabled"></a>启用数据收集之后
 可通过 Azure 监视代理和 Azure 安全监视扩展启用数据收集。 Azure 安全监视扩展会扫描各种安全相关配置，并将其发送到 [Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 的跟踪中。 此外，操作系统会创建事件日志条目。 Azure 监视代理读取事件日志条目和 ETW 跟踪，并将其复制到存储帐户进行分析。 监视代理还将故障转储文件复制到存储帐户。 这是在安全策略中配置的存储帐户。
 
 ## <a name="disabling-data-collection"></a>禁用收集数据
-可以随时禁用数据收集，这将删除安全中心在以前安装的任何监视代理。  必须选择订阅以关闭数据收集。
+可以随时禁用数据收集，此操作可自动删除安全中心以前安装的任何监视代理。  必须选择订阅以关闭数据收集。
 
 > [!NOTE]
 > 虽然可以在 Azure 订阅级别和资源组级别设置安全策略，但必须选择一个订阅以关闭数据收集。
-> 
-> 
+>
+>
 
 1. 返回到“安全中心”边栏选项卡，然后选择“策略”磁贴。 这将打开“安全策略 - 定义每个订阅或资源组的策略”边栏选项卡。
    ![选择策略磁贴][5]
@@ -63,7 +65,7 @@ ms.openlocfilehash: 48742fdbd1335ae519e4537ccd3779dc4f120a4d
    ![选择要禁用数据收集的订阅][6]
 3. 将打开该订阅的“安全策略”边栏选项卡。  选择数据集下方的“关闭”。
 4. 在顶部的功能区中选择“保存”。
-5. 在顶部的功能区中选择“删除代理”，以从现有的虚拟机中删除代理。
+
 
 ## <a name="see-also"></a>另请参阅
 本文档演示如何实现安全中心建议“启用数据收集”。 若要了解有关安全中心的详细信息，请参阅以下文章：
@@ -86,6 +88,6 @@ ms.openlocfilehash: 48742fdbd1335ae519e4537ccd3779dc4f120a4d
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

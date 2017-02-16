@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9937ede727d50cf4bc72ef65c513de9ba0a6a513
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e2d2f6edc8e17ee4e3eff852e6a2608dac7e16a7
 
 
 ---
@@ -119,7 +119,7 @@ ms.openlocfilehash: 9937ede727d50cf4bc72ef65c513de9ba0a6a513
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 5. 若要为应用程序配置 SSO，请联系 Verisae 的客户经理，他会帮助你设置组织的 SSO。 向其提供以下信息：
    
     • 下载的**元数据**
@@ -164,7 +164,7 @@ ms.openlocfilehash: 9937ede727d50cf4bc72ef65c513de9ba0a6a513
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_07.png) 
@@ -229,6 +229,6 @@ ms.openlocfilehash: 9937ede727d50cf4bc72ef65c513de9ba0a6a513
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

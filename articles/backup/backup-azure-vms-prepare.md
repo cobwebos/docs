@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 12/20/2016
 ms.author: trinadhk; jimpark; markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: b5b18d063a5926ad4acb7d0aa3935978d0fedb8c
-ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
+ms.sourcegitcommit: cbd7e36c5ef5c78b38a2cc7791b442cac1711b95
+ms.openlocfilehash: 92e8e25abc047811fc0ff45f424bd1b97a045e1f
 
 
 ---
@@ -36,6 +36,11 @@ ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
 
 如果确定环境满足这些条件，请转到[备份 VM 的文章](backup-azure-vms.md)。 否则，请继续阅读本文，其中将会引导你逐步完成准备环境来备份 Azure VM 的过程。
 
+##<a name="supported-operating-system-for-backup"></a>支持用于备份的操作系统
+ * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ，但 Core OS Linux 除外。 _只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。但是，我们不赞同将这些分发版用于备份。_
+ * **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
+
+
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>备份和还原 VM 时的限制
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 以下列表提供了在经典模型中部署时的限制。
@@ -49,8 +54,6 @@ ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
 * 不支持跨区域备份和恢复。
 * Azure 的所有公共区域都支持使用 Azure 备份服务来备份虚拟机（请参阅受支持区域的[清单](https://azure.microsoft.com/regions/#services)）。 在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 * 只有特定的操作系统版本才支持使用 Azure 备份服务备份虚拟机。
-  * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ，但 Core OS Linux 除外。 只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。
-  * **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
 * 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。 阅读有关[还原多 DC 域控制器](backup-azure-restore-vms.md#restoring-domain-controller-vms)的详细信息。
 * 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。 还原操作完成后，在 UI 中使用还原工作流创建的虚拟机将不采用这些网络配置。 若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations)。
   * 采用负载平衡器配置的虚拟机（内部和外部）
@@ -231,6 +234,6 @@ VM 代理已存在于从 Azure 库创建的 VM 中。 但是，从本地数据�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "如何在 Service Fabric 服务中调用数据丢失 | Microsoft 文档"
+title: "如何在 Service Fabric 服务中调用数据丢失 | Microsoft Docs"
 description: "介绍如何使用数据丢失 API"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/19/2016
 ms.author: lemai
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3cef3af0662ae12c301c6bca76bae05a61ce67e1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8771556954be77543b0eaa21b7201f93ffa0ed70
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: 3cef3af0662ae12c301c6bca76bae05a61ce67e1
 
 1. 命令已成功完成。  如果你在这种情况下对其调用“GetProgress”，则进度对象的“状态”将为“已完成”。
 2. 命令遇到致命错误。  如果你在这种情况下对其调用“GetProgress”，则进度对象的“状态”将为“出错”
-3. 可通过 [CancelTestCommandAsync][cancel] API 或 [Stop-ServiceFabricTestCommand][cancelps] PowerShell cmdlet 取消该命令。  如果你在这种情况下对其调用“GetProgress”，则进度对象的“状态”将为“已取消”或“已强制取消”，具体取决于该 API 的参数。  如需了解更多详情，请参阅 [CancelTestCommandAsync][cancel] 相关文档。
+3. 可通过 [CancelTestCommandAsync][cancel] API 或 [Stop-ServiceFabricTestCommand][cancelps] PowerShell cmdlet 取消该命令。  如果你在这种情况下对其调用“GetProgress”，则进度对象的“状态”将为“已取消”或“已强制取消”，具体取决于该 API 的参数。  如需更多详细信息，请参阅 [CancelTestCommandAsync][cancel] 的文档。
 
 ## <a name="details-of-running-a-command"></a>运行命令的详细信息
 若要启动命令，请使用预期的参数来调用启动 API。  所有启动 API 都有名为 operationId 的 GUID 参数。  应跟踪 operationId 参数，因为该参数用于跟踪此命令的进度。  必须将该参数传入“GetProgress”API 中，然后才能跟踪命令的进度。  OperationId 必须是唯一的。
@@ -237,6 +237,6 @@ ms.openlocfilehash: 3cef3af0662ae12c301c6bca76bae05a61ce67e1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

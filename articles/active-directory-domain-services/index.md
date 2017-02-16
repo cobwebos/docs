@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器并使用组策略来管理这些虚拟机。"
 translationtype: Human Translation
-ms.sourcegitcommit: 55dedcab5b8e62b3666cffcfc7d9a0a31c624784
-ms.openlocfilehash: d3a6b967921edad13479c615ebec8edc9e568458
+ms.sourcegitcommit: 5c25e7f81a4f2219c244044ea70416d1e0c63b4e
+ms.openlocfilehash: b05e7bfbc89de74937daa7daf578aa8a9bb39d64
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory 域服务文档
 
-Azure AD 域服务 (DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。  用户可借助此服务灵活部署各种计算解决方案。
+了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器。 教程和其他文档介绍了如何使用组策略管理虚拟机。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -168,6 +169,6 @@ Azure AD 域服务 (DS) 提供与 Windows Server Active Directory 完全兼容�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

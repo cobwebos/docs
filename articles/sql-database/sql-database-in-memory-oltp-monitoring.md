@@ -13,26 +13,26 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 12/19/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 475af239e4c77626d4c069f1238bc32d3b440a0e
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: 86b2358b045bd5bc0c9f4fc2674efd03b098212f
 
 
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>监视 In-Memory OLTP 存储
-使用[内存中 OLTP](sql-database-in-memory.md) 时，内存优化表中的数据和表变量将驻留在内存中 OLTP 存储内。 每个高级服务层都有最大的内存中 OLTP 存储大小，如 [SQL 数据库服务层](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)一文中所述。 一旦超过此限制，插入和更新操作可能会开始失败（错误 41823）。 到时，你需要删除数据以回收内存，或升级数据库的性能层。
+使用[内存中 OLTP](sql-database-in-memory.md) 时，内存优化表中的数据和表变量将驻留在内存中 OLTP 存储内。 每个高级服务层都有最大的内存中 OLTP 存储大小，如 [SQL 数据库服务层](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)一文中所述。 一旦超过此限制，插入和更新操作可能会开始失败（错误 41823）。 到时，你需要删除数据以回收内存，或升级数据库的性能层。
 
 ## <a name="determine-whether-data-will-fit-within-the-in-memory-storage-cap"></a>确定数据是否在内存中存储容量限制范围内
-确定存储限制：有关不同高级服务层的存储限制的信息，请参阅 [SQL 数据库服务层](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)一文。
+确定存储限制：有关不同高级服务层的存储限制的信息，请参阅 [SQL 数据库服务层](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)一文。
 
 估计内存优化表的内存要求，如同在 Azure SQL 数据库中估计 SQL Server 的内存要求一样。 花费几分钟时间查看 [MSDN](https://msdn.microsoft.com/library/dn282389.aspx) 上的相关主题。
 
 请注意，表和表变量行以及索引都将计入最大用户数据大小。 此外，ALTER TABLE 需要足够的空间来创建新版的完整表及其索引。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
-可以在 Azure [门户](https://portal.azure.com/)中，通过[性能层的存储限制](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)百分比来监视内存中存储用量： 
+可以在 Azure [门户](https://portal.azure.com/)中，通过[性能层的存储限制](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)百分比来监视内存中存储用量： 
 
 * 在“数据库”边栏选项卡上，找出“资源使用率”框并单击“编辑”。
 * 然后选择指标 `In-Memory OLTP Storage percentage`。
@@ -58,6 +58,6 @@ ms.openlocfilehash: 475af239e4c77626d4c069f1238bc32d3b440a0e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

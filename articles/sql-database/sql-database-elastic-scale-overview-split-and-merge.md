@@ -7,6 +7,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 204fd902-0397-4185-985a-dea3ed7c7d9f
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d6fc4d314adf02e9c6d5a72b3b7d58db3c2f5731
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: b2e45a77b900092390a2ca66a8d1286193023f29
 
 
 ---
@@ -55,7 +56,7 @@ ms.openlocfilehash: d6fc4d314adf02e9c6d5a72b3b7d58db3c2f5731
 
 在一个数据库中具有多个租户情况下，将 shardlet 分配到分片可能导致某些分片上出现容量瓶颈。 这就要求重新分配 shardlet 或将工作中的 shardlet 移动到新的或容量使用较少的分片上。 
 
-## <a name="concepts-key-features"></a>概念和主要功能
+## <a name="concepts--key-features"></a>概念和主要功能
 **客户托管服务**
 
 拆分/合并将作为客户托管服务交付。 你必须在 Microsoft Azure 订阅中部署并托管该服务。 您从 NuGet 下载的程序包将包含一个要使用您的特定部署信息完成的配置模板。 有关详细信息，请参阅[拆分 / 合并教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。 你的 Azure 订阅运行有该服务，你可以控制和配置该服务的大多数安全设置。 默认模板包括配置 SSL 的选项、基于证书的客户端身份验证、存储凭据的加密、DoS 防护和 IP 限制。 你可以在以下[拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)文档中找到有关安全方面的详细信息。
@@ -200,7 +201,7 @@ ms.openlocfilehash: d6fc4d314adf02e9c6d5a72b3b7d58db3c2f5731
 
 无需设置新的元数据数据库，即可升级拆分/合并。 新版本会自动将现有的元数据数据库升级到新版本。 
 
-## <a name="best-practices-troubleshooting"></a>最佳实践和疑难解答
+## <a name="best-practices--troubleshooting"></a>最佳实践和疑难解答
 * 定义一个测试租户，并使用该测试租户在几个分片上对最重要的拆分/合并/移动操作进行实验。 确保已在你的分片映射中正确定义所有元数据，并且这些操作不违反约束或外键。
 * 请使测试租户的数据大小始终大于最大租户的最大数据大小，以确保您不会遇到与数据大小有关的问题。 这将会帮助你评估移动单个租户所需时间的上限。 
 * 确保你的架构允许删除操作。 拆分/合并服务要求在将数据成功地复制到目标分片后，能够从源分片中删除数据。 例如，**删除触发器**可以阻止该服务删除源分片上的数据，并且可能导致操作失败。
@@ -218,6 +219,6 @@ ms.openlocfilehash: d6fc4d314adf02e9c6d5a72b3b7d58db3c2f5731
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

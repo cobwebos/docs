@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 03466b412405d45553d80ebf4e283038b7894727
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: febecd5f53077c2e3daa0845964e95025b97893b
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 03466b412405d45553d80ebf4e283038b7894727
 ## <a name="connection-security"></a>连接安全性
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
-服务器和数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。 作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。  若要从你的本地计算机访问 Azure SQL 数据仓库，请确保你的网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。  有关详细信息，请参阅 [Azure SQL 数据库防火墙][Azure SQL 数据库防火墙]、[sp_set_firewall_rule][sp_set_firewall_rule] 和 [sp_set_database_firewall_rule][sp_set_database_firewall_rule]。
+服务器和数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。 作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。  若要从你的本地计算机访问 Azure SQL 数据仓库，请确保你的网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。  有关详细信息，请参阅 [Azure SQL 数据库防火墙][Azure SQL Database firewall]、[sp_set_firewall_rule][sp_set_firewall_rule] 和 [sp_set_database_firewall_rule][sp_set_database_firewall_rule]。
 
 默认加密到 SQL 数据仓库的连接。  将忽略通过修改连接设置禁用加密的操作。
 
@@ -60,7 +60,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-如果用户需要执行其他操作（例如创建登录名或新数据库），则还需在 master 数据库中为其分配 `Loginmanager` 和 `dbmanager` 角色。 如需详细了解这些额外的角色，以及如何在 SQL 数据库上进行身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名][在 Azure SQL 数据库中管理数据库和登录名]。  如需详细了解用于 SQL 数据仓库的 Azure AD，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据仓库][使用 Azure Active Directory 身份验证连接到 SQL 数据仓库]。
+如果用户需要执行其他操作（例如创建登录名或新数据库），则还需在 master 数据库中为其分配 `Loginmanager` 和 `dbmanager` 角色。 如需详细了解这些额外的角色，以及如何在 SQL 数据库上进行身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名][Managing databases and logins in Azure SQL Database]。  如需详细了解用于 SQL 数据仓库的 Azure AD，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据仓库][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]。
 
 ## <a name="authorization"></a>授权
 授权是指你可以在 Azure SQL 数据仓库数据库中执行哪些操作，这由你的用户帐户角色成员身份和权限来控制。 作为最佳实践，应向用户授予所需的最低权限。 Azure SQL 数据仓库可让你在 T-SQL 中使用角色方便管理这种权限：
@@ -74,44 +74,44 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 有许多方式可以进一步限制用户通过 Azure SQL 数据库可以执行的操作：
 
-* 通过细化[权限][权限]可控制能对数据库中各个列、表、视图、过程和其他对象执行的操作。 使用细化的权限可以进行最精细的控制，可以根据用户需要授予其最低权限。 细化权限系统有点复杂，需要进行一定程度的学习才能有效使用。
-* 除 db_datareader 和 db_datawriter 以外的[数据库角色][数据库角色]可用于创建权限较大的应用程序用户帐户或权限较小的管理帐户。 内置的固定的数据库角色可以方便地用来授予权限，但可能会导致所授权限超出需要的情况。
-* [存储过程][存储过程]可用于限制可对数据库执行的操作。
+* 通过细化[权限][Permissions]可控制能对数据库中单个列、表、视图、过程和其他对象执行的操作。 使用细化的权限可以进行最精细的控制，可以根据用户需要授予其最低权限。 细化权限系统有点复杂，需要进行一定程度的学习才能有效使用。
+* 除 db_datareader 和 db_datawriter 以外的[数据库角色][Database roles]可用于创建权限较大的应用程序用户帐户或权限较小的管理帐户。 内置的固定的数据库角色可以方便地用来授予权限，但可能会导致所授权限超出需要的情况。
+* [存储过程][Stored procedures]可用于限制可对数据库执行的操作。
 
-从 Azure 经典门户或使用 Azure Resource Manager API 管理数据库和逻辑服务器的操作将会根据你的门户用户帐户的角色分配进行控制。 有关此主题的详细信息，请参阅 [Azure 门户中基于角色的访问控制][Azure 门户中基于角色的访问控制]。
+从 Azure 经典门户或使用 Azure Resource Manager API 管理数据库和逻辑服务器的操作将会根据你的门户用户帐户的角色分配进行控制。 有关此主题的详细信息，请参阅 [Azure 门户中基于角色的访问控制][Role-based access control in Azure Portal]。
 
 ## <a name="encryption"></a>加密
-Azure SQL 数据仓库透明数据加密 (TDE) 可以对静态数据进行实时加密和解密，避免恶意活动造成的威胁。  在加密数据库时，可以对关联的备份和事务日志文件加密，无需对应用程序进行任何更改。 TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 SQL 数据库服务器都是唯一的。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 SQL 数据仓库使用的加密算法为 AES-256。 有关 TDE 的一般描述，请参阅[透明数据加密][透明数据加密]。
+Azure SQL 数据仓库透明数据加密 (TDE) 可以对静态数据进行实时加密和解密，避免恶意活动造成的威胁。  在加密数据库时，可以对关联的备份和事务日志文件加密，无需对应用程序进行任何更改。 TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 SQL 数据库服务器都是唯一的。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 SQL 数据仓库使用的加密算法为 AES-256。 有关 TDE 的一般描述，请参阅[透明数据加密][Transparent Data Encryption]。
 
-可使用 [Azure 门户][门户加密]或 [T-SQL][TSQL 加密]加密数据库。
+可以使用 [Azure 门户][Encryption with Portal]或 [T-SQL][Encryption with TSQL] 加密数据库。
 
 ## <a name="next-steps"></a>后续步骤
-有关通过不同协议连接到 SQL 数据仓库的详细信息和示例，请参阅[连接到 SQL 数据仓库][连接到 SQL 数据仓库]。
+如需了解通过不同协议连接到 SQL 数据仓库的详细信息和示例，请参阅[连接到 SQL 数据仓库][Connect to SQL Data Warehouse]。
 
 <!--Image references-->
 
 <!--Article references-->
-[连接到 SQL 数据仓库]: ./sql-data-warehouse-connect-overview.md
-[门户加密]: ./sql-data-warehouse-encryption-tde.md
-[TSQL 加密]: ./sql-data-warehouse-encryption-tde-tsql.md
-[使用 Azure Active Directory 身份验证连接到 SQL 数据仓库]: ./sql-data-warehouse-authentication.md
+[Connect to SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
+[Encryption with Portal]: ./sql-data-warehouse-encryption-tde.md
+[Encryption with TSQL]: ./sql-data-warehouse-encryption-tde-tsql.md
+[Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
-[Azure SQL 数据库防火墙]: https://msdn.microsoft.com/library/ee621782.aspx
+[Azure SQL Database firewall]: https://msdn.microsoft.com/library/ee621782.aspx
 [sp_set_firewall_rule]: https://msdn.microsoft.com/library/dn270017.aspx
 [sp_set_database_firewall_rule]: https://msdn.microsoft.com/library/dn270010.aspx
-[数据库角色]: https://msdn.microsoft.com/library/ms189121.aspx
-[在 Azure SQL 数据库中管理数据库和登录名]: https://msdn.microsoft.com/library/ee336235.aspx
-[权限]: https://msdn.microsoft.com/library/ms191291.aspx
-[存储过程]: https://msdn.microsoft.com/library/ms190782.aspx
-[透明数据加密]: https://msdn.microsoft.com/library/bb934049.aspx
-[Azure 门户]: https://portal.azure.com/
+[Database roles]: https://msdn.microsoft.com/library/ms189121.aspx
+[Managing databases and logins in Azure SQL Database]: https://msdn.microsoft.com/library/ee336235.aspx
+[Permissions]: https://msdn.microsoft.com/library/ms191291.aspx
+[Stored procedures]: https://msdn.microsoft.com/library/ms190782.aspx
+[Transparent Data Encryption]: https://msdn.microsoft.com/library/bb934049.aspx
+[Azure portal]: https://portal.azure.com/
 
 <!--Other Web references-->
-[Azure 门户中基于角色的访问控制]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
+[Role-based access control in Azure Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

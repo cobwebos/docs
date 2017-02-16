@@ -16,25 +16,16 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fa3f1215c809fe2b45293c56cdca4496fa352afb
+ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
+ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
 
 
 ---
-# <a name="ports-beyond-1433-for-adonet-45-and-sql-database-v12"></a>用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口
-本主题介绍 Azure SQL 数据库 V12 对于使用 ADO.NET 4.5 或更高版本的客户端连接行为所带来的变化。
+# <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
+本主题介绍使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为。
 
-## <a name="v11-of-sql-database-port-1433"></a>SQL 数据库 V11：端口 1433
-当客户端程序使用 ADO.NET 4.5 来连接并查询 SQL 数据库 V11 时，内部顺序如下：
-
-1. ADO.NET 尝试连接到 SQL 数据库。
-2. ADO.NET 使用端口 1433 来调用中间件模块，中间件将连接到 SQL 数据库。
-3. SQL 数据库将其响应发回给中间件，中间件将响应转发给 ADO.NET 端口 1433。
-
-**术语：**我们使用代理路由来描述 ADO.NET 与 SQL 数据库交互的上述顺序。 如果没有涉及到中间件，使用的是直接路由。
-
-## <a name="v12-of-sql-database-outside-vs-inside"></a>SQL 数据库 V12：内部与外部
-对于 V12 的连接，我们必须询问客户端程序是在 Azure 云边界外部还是内部运行。 以下小节讨论了两种常见方案。
+## <a name="outside-vs-inside"></a>内部的外部
+对于 Azure SQL 数据库的连接，首先必须询问客户端程序是在 Azure 云边界*外部*还是*内部*运行。 以下小节讨论了两种常见方案。
 
 #### <a name="outside-client-runs-on-your-desktop-computer"></a>外部：客户端在台式机上运行
 端口 1433 是托管 SQL 数据库客户端应用程序的台式机上唯一必须打开的端口。
@@ -64,11 +55,6 @@ ms.openlocfilehash: fa3f1215c809fe2b45293c56cdca4496fa352afb
 * ADO.NET 4.0 支持 TDS 7.3 协议，但不支持 7.4。
 * ADO.NET 4.5 和更高版本支持 TDS 7.4 协议。
 
-#### <a name="sql-database-v11-and-v12"></a>SQL 数据库 V11 和 V12
-本主题重点说明 SQL 数据库 V11 和 V12 之间的客户端连接差异。
-
-注意：Transact-SQL 语句 `SELECT @@version;` 返回以数字开头的值，例如“11.” 或“12.”，它们与 SQL 数据库的 V11 和 V12 版本名称相匹配。
-
 ## <a name="related-links"></a>相关链接
 * ADO.NET 4.6 已于 2015 年 7 月 20 日发布。 可以在[这里](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)访问 .NET 团队的博客通告。
 * ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在[这里](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)访问 .NET 团队的博客通告。
@@ -82,6 +68,6 @@ ms.openlocfilehash: fa3f1215c809fe2b45293c56cdca4496fa352afb
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

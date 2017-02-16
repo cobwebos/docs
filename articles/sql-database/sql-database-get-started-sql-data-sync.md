@@ -1,9 +1,9 @@
 ---
-title: "SQL 数据库数据同步入门"
+title: "Azure SQL 数据同步入门（预览版） | Microsoft Docs"
 description: "本教程帮助你 Azure SQL 数据同步（预览版）入门。"
 services: sql-database
 documentationcenter: 
-author: jennieHubbard
+author: dearandyxu
 manager: jhubbard
 editor: 
 ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/11/2016
 ms.author: jhubbard
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
+ms.sourcegitcommit: c8e285fc6fb82ab5c929236ac9cb5dc858924e57
+ms.openlocfilehash: 6535260a1650a2d3cc665eeb9d3ea33ae2de2650
 
 
 ---
@@ -28,8 +28,8 @@ ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
 
 > [!NOTE]
 > 有关 Azure SQL 数据同步的完整技术文档集以前位于 MSDN 中，现在以 .pdf 文件提供。 可从[此处](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)下载。
-> 
-> 
+>
+>
 
 ## <a name="step-1-connect-to-the-azure-sql-database"></a>步骤 1：连接到 Azure SQL 数据库
 1. 登录到[经典门户](http://manage.windowsazure.com)。
@@ -37,11 +37,12 @@ ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
 3. 单击页面底部的“**同步**”。 单击“同步”后，将显示可供添加内容的列表 -“**新建同步组**”和“**新建同步代理**”。
 4. 若要启动“新建 SQL 数据同步代理向导”，请单击“**新建同步代理**”。
 5. 如果你之前没有添加代理，请“**单击此处进行下载**”。
-   
+
     ![Image1](./media/sql-database-get-started-sql-data-sync/SQLDatabaseScreen-Figure1.PNG)
 
 ## <a name="step-2-add-a-client-agent"></a>步骤 2：添加客户端代理
-仅当要在同步组中包含本地 SQL Server 数据库时，才需要执行此步骤。 如果同步组只具有 SQL 数据库实例，则请跳到步骤 4。
+仅当要在同步组中包含本地 SQL Server 数据库时，才需要执行此步骤。
+如果同步组只具有 SQL 数据库实例，则请跳到步骤 4。
 
 <a id="InstallRequiredSoftware"></a>
 
@@ -49,13 +50,13 @@ ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
 确保安装客户端代理的计算机上安装有下列软件。
 
 * **.NET Framework 4.0**
-  
+
   你可以从[此处](http://go.microsoft.com/fwlink/?linkid=205836)安装 .NET Framework 4.0。
 * **Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86)**
-  
+
   从[此处](http://www.microsoft.com/download/en/details.aspx?id=26728)安装 Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86)
 * **Microsoft SQL Server 2008 R2 SP1 共享管理对象 (x86)**
-  
+
   从[此处](http://www.microsoft.com/download/en/details.aspx?id=26728)安装 Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86)
 
 <a id="InstallClient"></a>
@@ -83,7 +84,7 @@ ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
 1. 返回到[经典门户](http://manage.windowsazure.com)。
 2. 单击“**SQL 数据库**”。
 3. 单击页面底部的“**添加同步**”，然后从下拉列表中选择“新建同步组”。
-   
+
    ![Image2](./media/sql-database-get-started-sql-data-sync/NewSyncGroup-Figure2.png)
 
 <a id=""></a>
@@ -92,7 +93,7 @@ ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
 1. 为该同步组输入一个有意义的名称。
 2. 从下拉列表中，选择托管此同步组的“**区域**”（数据中心）。
 3. 单击右箭头。
-   
+
     ![Image3](./media/sql-database-get-started-sql-data-sync/NewSyncGroupName-Figure3.PNG)
 
 <a id="DefineHubDB"></a>
@@ -102,13 +103,13 @@ ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
 2. 输入此 SQL 数据库实例的凭据 –“**中心用户名**”和“**中心密码**”。
 3. 等待 SQL 数据同步确认该用户名和密码。 确认凭据后，可以在密码右侧看到一个绿色复选标记。
 4. 从下拉列表中，选择“**冲突解决**”策略。
-   
+
    **中心 Wins** – 写入中心数据库的任何更改都会写入引用数据库，覆盖同一引用数据库记录中的更改。 从功能上看，这意味着写入中心的首次更改会传播到其他数据库。
 
  **客户端 Wins** – 写入中心的更改会由引用数据库中的更改覆盖。 从功能上看，这意味着写入中心的最后一次更改会被保留并传播到其他数据库。
 
 1. 单击右箭头。
-   
+
    ![Image4](./media/sql-database-get-started-sql-data-sync/NewSyncGroupHub-Figure4.PNG)
 
 <a id="AddRefDB"></a>
@@ -117,19 +118,19 @@ ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
 对要额外添加到同步组中的每个数据库重复此步骤。
 
 1. 从下拉列表中，选择要添加的数据库。
-   
+
     下拉列表中的数据库包含已向代理进行注册的 SQL Server 数据库，以及 SQL 数据库实例。
 2. 输入此数据库的凭据 –“**用户名**”和“**密码**”。
 3. 从下拉列表中，选择此数据库的“**同步方向**”。
-   
+
    **双向** – 引用数据库中的更改将写入中心数据库，对中心数据库的更改将写入引用数据库。
-   
+
    **从中心同步** - 数据库从中心接收更新。 而不将更改发送到中心。
-   
+
    **同步到中心** - 数据库将更新发送到中心。 中心的更改不会写入此数据库。
 4. 若要完成同步组的创建，请单击向导右下方的复选标记。 等待 SQL 数据同步确认凭据。 绿色复选标记表示已确认凭据。
 5. 再次单击复选标记。 此操作会返回到 SQL 数据库下的“**同步**”页。 现在，此同步组会与其他同步组和代理一同列出。
-   
+
    ![Image5](./media/sql-database-get-started-sql-data-sync/NewSyncGroupReference-Figure5.PNG)
 
 ## <a name="step-5-define-the-data-to-sync"></a>步骤 5：定义要同步的数据
@@ -149,7 +150,7 @@ Azure SQL 数据同步允许选择要同步的表和列。 如果还希望对列
    * 若要选择/取消选择全部表，请单击屏幕底部的“选择”。
 10. 单击“**保存**”，然后等待同步组完成预配。
 11. 若要返回到数据同步登陆页，请单击屏幕左上角（同步组名称的上方）的后退箭头。
-    
+
     ![Image6](./media/sql-database-get-started-sql-data-sync/NewSyncGroupSyncRules-Figure6.PNG)
 
 ## <a name="step-6-configure-your-sync-group"></a>步骤 6：配置同步组
@@ -181,7 +182,6 @@ Azure SQL 数据同步允许选择要同步的表和列。 如果还希望对列
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

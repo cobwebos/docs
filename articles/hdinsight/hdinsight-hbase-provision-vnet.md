@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/18/2016
+ms.date: 11/18/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: 6dd149808a89ccf7da2989751788e074d5340d5c
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 * **配备 Azure PowerShell 的工作站**。 请参阅 [Install and use Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)（安装并使用 Azure PowerShell）。
 
 ## <a name="create-hbase-cluster-into-virtual-network"></a>在虚拟网络上创建 HBase 群集
-本部分将使用 [Azure Resource Manager 模板](../resource-group-template-deploy.md)在 Azure 虚拟网络中通过相关的 Azure 存储帐户创建基于 Linux 的 HBase 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 有关使用模板在 HDInsight 中创建 Hadoop 群集的详细信息，请参阅[使用 Azure Resource Manager 模板在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
+在本部分中，通过 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)在 Azure 虚拟网络中使用从属 Azure 存储帐户创建基于 Linux 的 HBase 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 有关使用模板在 HDInsight 中创建 Hadoop 群集的详细信息，请参阅[使用 Azure Resource Manager 模板在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 
 > [!NOTE]
 > 某些属性已在模板中硬编码。 例如：
@@ -45,25 +45,25 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 > * **位置**：美国东部 2
 > * _群集版本：3.4
 > * **群集辅助角色节点计数**：4
-> * **默认存储帐户**：&lt;群集名称>store
+> * **默认存储帐户**：唯一字符串
 > * **虚拟网络名称**：&lt;群集名称>-vnet
 > * **虚拟网络地址空间**：10.0.0.0/16
-> * **子网名称**：默认
+> * **子网名称**：subnet1
 > * **子网地址范围**：10.0.0.0/24
 >
-> &lt;群集名称> 将替换为你在使用模板时提供的群集名称。
+> &lt;群集名称> 会替换为使用模板时提供的群集名称。
 >
 >
 
-1. 单击下面的图像即可在 Azure 门户中打开该模板。 模板位于公共 Blob 容器中。
+1. 单击下面的图像即可在 Azure 门户中打开该模板。 模板位于 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)中。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. 在“自定义部署”边栏选项卡中输入以下信息：
 
    * **订阅**：选择用来创建 HDInsight 群集的 Azure 订阅、相关存储帐户和 Azure 虚拟网络。
    * **资源组**：选择“新建”，然后指定新的资源组名称。
    * **位置**：选择资源组的位置。
-   * **ClusterName**：为将创建的 Hadoop 群集输入名称。
+   * **ClusterName**：为要创建的 Hadoop 群集输入名称。
    * **群集登录名和密码**：默认登录名是 **admin**。
    * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。
    * **我同意上述条款和条件**：（选择）
@@ -74,17 +74,18 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 要开始处理新 HBase 群集，可以按照[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用](hdinsight-hbase-tutorial-get-started.md)中的步骤操作。
 
 ## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>使用 HBase Java RPC API 连接到 HBase 群集。
-1. 将基础结构即服务 (IaaS) 虚拟机创建到相同的 Azure 虚拟网络和子网中。 有关创建新 IaaS 虚拟机的说明，请参阅[创建运行 Windows Server 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 按照本文档中的步骤进行操作时，必须对网络配置使用以下值：
+1. 将基础结构即服务 (IaaS) 虚拟机创建到相同的 Azure 虚拟网络和子网中。 有关创建新 IaaS 虚拟机的说明，请参阅[创建运行 Windows Server 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)。 按照本文档中的步骤进行操作时，必须对网络配置使用以下值：
 
    * **虚拟网络**：&lt;群集名称>-vnet
-   * **子网**：默认
+   * **子网**：subnet1
 
    > [!IMPORTANT]
    > 将 &lt;群集名称> 替换为在先前步骤中创建 HDInsight 群集时使用的名称。
    >
    >
 
-   使用这些值会将虚拟机配置为使用与 HDInsight 群集相同的虚拟网络和子网。 这让它们可以直接地互相进行通信。
+   使用这些值可将虚拟机放置在与 HDInsight 群集相同的虚拟网络和子网中。 此配置让它们能够直接相互通信。 有一种方法可使用空的边缘节点创建 HDInsight 群集。 该边缘节点可用于管理群集。  有关详细信息，请参阅[在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)。
+
 2. 使用 Java 应用程序远程连接到 HBase 时，必须使用完全限定域名 (FQDN)。 若要确定这一点，你必须获取 HBase 群集的连接特定的 DNS 后缀。 为此，可以使用以下方法之一：
 
    * 使用 Web 浏览器发出 Ambari 调用：
@@ -98,7 +99,7 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 
          curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
 
-     在返回的 JavaScript 对象表示法 (JSON) 数据中，找到“host_name”条目。 这将包含群集中的节点的 FQDN。 例如：
+     在返回的 JavaScript 对象表示法 (JSON) 数据中，找到“host_name”条目。 此条目包含群集中的节点的 FQDN。 例如：
 
          ...
          "host_name": "wordkernode0.<clustername>.b1.cloudapp.net
@@ -243,7 +244,8 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 在本教程中，你已学习了如何创建 HBase 群集。 若要了解更多信息，请参阅以下文章：
 
 * [HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
-* [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-geo-replication.md)
+* [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)
+* [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-replication.md)
 * [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)
 * [开始在 HDInsight 中将 HBase 与 Hadoop 配合使用](hdinsight-hbase-tutorial-get-started.md)
 * [在 HDInsight 中使用 HBase 分析 Twitter 观点](hdinsight-hbase-analyze-twitter-sentiment.md)
@@ -274,7 +276,7 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
 
-[powershell-install]: powershell-install-configure.md
+[powershell-install]: /powershell/azureps-cmdlets-docs
 
 
 [hdinsight-customize-cluster]: hdinsight-hadoop-customize-cluster.md
@@ -297,6 +299,6 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

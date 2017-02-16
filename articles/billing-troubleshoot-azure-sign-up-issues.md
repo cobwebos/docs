@@ -4,7 +4,7 @@ description: "说明如何解决某些常见的 Azure 注册问题。"
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: felixwu
+manager: adpick
 editor: 
 tags: billing,top-support-issue
 ms.assetid: a0907da1-cb2d-41d1-a97f-43841fabe355
@@ -13,23 +13,39 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/24/2016
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e2e22b767ce1d54e7b90158fb6adb877e3a165b8
+ms.sourcegitcommit: 73c4ff6fdbde09dd08d1bcacf0ec87c7fa43f3b2
+ms.openlocfilehash: 7ded94f432f8e61153ee8dfbf2508b288a4ad5fd
 
 
 ---
 # <a name="i-cant-sign-up-for-azure"></a>不能注册 Azure
 如果无法注册 Azure，可以通过几种方法来检查并解决此问题。
 
+## <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>“使用卡进行身份验证”部分中的进度条挂起
+
+在 Azure 注册过程中，有一个称为“使用卡进行身份验证”的部分。 如果进度条挂起：
+
+![注册时使用卡进行身份验证的进度条挂起屏幕截图](./media/billing-troubleshoot-azure-sign-up-issues/identity-verification-hangs.PNG)
+
+当你的浏览器阻止第三方 cookie 时会出现此问题。
+
+### <a name="suggestion"></a>建议
+
+1. 在浏览器设置中允许第三方 cookie。
+  * 在 Edge 中，转到“设置”->“查看高级设置”->“Cookie”，选择“不阻止 cookie”。
+  * 在 Chrome 中，转到“设置”->“显示高级设置”->“隐私”->“内容设置”，取消选中“阻止第三方 cookie 和站点数据”。
+2. 刷新 Azure 注册页，并检查问题是否得以解决。
+3. 如果刷新后未解决此问题，请退出并重新启动你的浏览器，然后重试。
+
 ## <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>注册帐户验证过程中没有收到短信或电话
 * 请确认你的电话号码可以接收短信。
 * 再次确认你输入的电话号码，包括下拉菜单中的国家/地区代码选择。
 * 请确保你的电话可以接收短信 (SMS)（如果使用“发送短信”）或接听来电（如果选择“呼叫我”替代项）。
 * 如果使用手机，请确保手机连接通畅。
-* 如果选择“发送短信”，最多等候 4 分钟，消息传送系统就会将文本代码发送给你。
+* 如果选择“发送短信”，最多等候&4; 分钟，消息传送系统就会将文本代码发送给你。
 * 收到短信后，请在文本框中插入代码，然后单击“验证”按钮以继续。
 
 ### <a name="suggestions"></a>建议
@@ -39,8 +55,8 @@ ms.openlocfilehash: e2e22b767ce1d54e7b90158fb6adb877e3a165b8
 
 > [!NOTE]
 > 可以稍后通过[更新个人资料信息](billing-how-to-change-azure-account-profile.md)更改首选电话号码。
-> 
-> 
+>
+>
 
 ## <a name="credit-card-declined-or-not-accepted"></a>信用卡被拒绝或不被接受
 请确保注册时使用的付款方式是 Azure 激活或付款所支持的方式。
@@ -77,15 +93,14 @@ ms.openlocfilehash: e2e22b767ce1d54e7b90158fb6adb877e3a165b8
 是否曾经使用过 Azure 订阅？ Azure 使用条款协议仅向 Azure 新用户授予免费试用版激活权限。 如果已拥有任何其他类型的 Azure 订阅，则无法激活免费试用版。
 
 ### <a name="suggestion"></a>建议
-* 如果以前激活过 Azure 订阅并且免费试用版激活失败，请考虑使用即用即付订阅。 
+* 如果以前激活过 Azure 订阅并且免费试用版激活失败，请考虑使用即用即付订阅。
 * 查看是否有资格使用权限产品/服务。 若要了解详细信息，请参阅 [Microsoft Azure 产品/服务详细信息页](https://azure.microsoft.com/support/legal/offer-details/)。 权益计划需要特定的先决条件。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

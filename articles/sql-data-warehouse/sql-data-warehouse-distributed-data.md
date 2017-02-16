@@ -1,5 +1,5 @@
 ---
-title: "适用于 SQL 数据仓库和并行数据仓库大规模并行处理 (MPP) 系统的分布式数据和分布式表选项 | Microsoft 文档"
+title: "分布式数据在 Azure SQL 数据仓库中的工作原理 | Microsoft Docs"
 description: "了解如何分布数据以便进行大规模并行处理 (MPP)，以及在 Azure SQL 数据仓库和并行数据仓库中分布表的选项。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1090c2156df11adc6f18dffe00a9d37921c0a3a3
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 1090c2156df11adc6f18dffe00a9d37921c0a3a3
 
 选择分布列时需考虑到性能，例如特异性、数据偏斜，以及在系统上运行的查询的类型。
 
-![分布式表](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Distributed table")  
+![分布式表](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分布式表")  
 
 * 一个行属于一个分布区。  
 * 通过确定性哈希算法将一个行分配到一个分布区。  
@@ -56,7 +56,7 @@ ms.openlocfilehash: 1090c2156df11adc6f18dffe00a9d37921c0a3a3
 ## <a name="difference-between-a-distribution-and-a-compute-node"></a>分布区和计算节点的差异
 分布区是存储分布式数据和处理并行查询的基本单位。 可以将分布区组合到计算节点中。 每个计算节点跟踪一个或多个分布区。  
 
-* 分析平台系统使用计算节点作为硬件体系结构和向外缩放功能的中心组件。 该系统始终对每个计算节点使用 8 个分布区，如哈希分布表的对应图所示。 计算节点数（即分布区数）取决于为设备购买的计算节点数。 例如，如果购买 8 个计算节点，则会获得 64 个分布区（8 个计算节点 x 8 个分布区/节点）。 
+* 分析平台系统使用计算节点作为硬件体系结构和向外缩放功能的中心组件。 该系统始终对每个计算节点使用&8; 个分布区，如哈希分布表的对应图所示。 计算节点数（即分布区数）取决于为设备购买的计算节点数。 例如，如果购买 8 个计算节点，则会获得 64 个分布区（8 个计算节点 x 8 个分布区/节点）。 
 * SQL 数据仓库的分布区数是固定的，即 60 个，而计算节点数则是可变的。 计算节点使用 Azure 计算和存储资源实现。 计算节点数可能会根据用户为数据仓库指定的后端服务工作负荷和计算能力 (DWU) 而变化。 计算节点数变化时，每个计算节点的分布区数也变化。 
 
 ### <a name="can-i-view-the-compute-nodes"></a>能否查看计算节点？
@@ -69,7 +69,7 @@ ms.openlocfilehash: 1090c2156df11adc6f18dffe00a9d37921c0a3a3
 
 下图显示了一个存储在每个计算节点上的复制表。 复制表存储在分配给计算节点的所有磁盘上。 此磁盘策略通过 SQL Server 文件组实现。  
 
-![复制表](media/sql-data-warehouse-distributed-data/replicated-table.png "Replicated table") 
+![复制表](media/sql-data-warehouse-distributed-data/replicated-table.png "复制表") 
 
 ## <a name="next-steps"></a>后续步骤
 若要有效地使用分布式表，请参阅[在 SQL 数据仓库中分布表](sql-data-warehouse-tables-distribute.md)  
@@ -77,6 +77,6 @@ ms.openlocfilehash: 1090c2156df11adc6f18dffe00a9d37921c0a3a3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: "重置 Azure VPN 网关 | Microsoft 文档"
-description: "本文将指导你完成重置 Azure VPN 网关。 本文适用于经典和 Resource Manager 部署模型中的 VPN 网关。"
+title: "重置 Azure VPN 网关以重建 IPsec 隧道：PowerShell | Microsoft 文档"
+description: "本文逐步讲解如何通过重置 Azure VPN 网关来重建 IPsec 隧道。 本文适用于经典和 Resource Manager 部署模型中的 VPN 网关。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/23/2016
+ms.date: 01/25/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 97ee3599f2eded9800dbb441af7299547c502397
+ms.sourcegitcommit: 691afc6aca6efe074e76eab5129d109cb2e7163f
+ms.openlocfilehash: ce6d77b8ad4a5b81f7a1237267accaa617f0dcf7
 
 
 ---
 # <a name="reset-an-azure-vpn-gateway-using-powershell"></a>使用 PowerShell 重置 Azure VPN 网关
+
+重置 Azure VPN 网关，十分有助于丢失一个或多个 S2S VPN 隧道上的跨界 VPN 连接的情况。 在此情况下，你的本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。
+
 本文介绍了如何使用 PowerShell cmdlet 重置 Azure VPN 网关。 这些说明涉及到经典部署模型和 Resource Manager 部署模型。
 
-重置 Azure VPN 网关，十分有助于丢失一个或多个 S2S VPN 隧道上的跨界 VPN 连接的情况。 在此情况下，你的本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 
+每个 Azure VPN 网关是一个虚拟网络网关，由以主动-待机配置运行的两个 VM 实例组成。 使用 PowerShell cmdlet 重置网关时，它会重新启动网关，然后对其重新应用跨界配置。 该网关将保持已有的公共 IP 地址。 这意味着不需要使用 Azure VPN 网关的新公共 IP 地址更新 VPN 路由器配置。  
 
-每个 Azure VPN 网关由运行在活动备用配置中的 VM 实例组成。 使用 PowerShell cmdlet 重置网关时，它会重新启动网关，然后对其重新应用跨界配置。 该网关将保持已有的公共 IP 地址。 这意味着不需要使用 Azure VPN 网关的新公共 IP 地址更新 VPN 路由器配置。  
-
-发出命令后，将立即重新启动 Azure VPN 网关的当前活动实例。 从活动实例（正在重新启动）故障转移到备用实例期间会有一个短暂的时间间隔。 该时间间隔应不超过 1 分钟。
+发出命令后，将立即重新启动 Azure VPN 网关的当前活动实例。 从活动实例（正在重新启动）故障转移到备用实例期间会有一个短暂的时间间隔。 该时间间隔应不超过&1; 分钟。
 
 如果在首次重新启动后未恢复连接，再次发出同一命令以重新启动第二个 VM 实例（新活动网关）。 如果连续请求两次重新启动，则重新启动这两个 VM 实例（活动和备用）的时间可能会略长一些。 这将导致 VPN 连接出现较长的时间间隔，VM 需要最多 2 到 4 分钟才能完成重新启动。
 
@@ -43,14 +44,16 @@ ms.openlocfilehash: 97ee3599f2eded9800dbb441af7299547c502397
 * 在 Azure 和本地 VPN 网关上，预共享的密钥必须相同。
 * 如果应用特定的 IPsec/IKE 配置，如加密、哈希算法和 PFS（完全向前保密），请确保 Azure 和本地 VPN 网关具有相同配置。
 
-## <a name="reset-a-vpn-gateway-using-the-resource-management-deployment-model"></a>使用 Resource Management 部署模型重置 VPN 网关
-用于重置网关的 PowerShell Resource Manager cmdlet 为 `Reset-AzureRmVirtualNetworkGateway`。 以下示例重置资源组“TestRG1”中的 Azure VPN 网关“VNet1GW”。
+## <a name="reset---resource-manager"></a>重置 - Resource Manager
+
+需要安装最新版本的 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 用于重置网关的 PowerShell Resource Manager cmdlet 为 `Reset-AzureRmVirtualNetworkGateway`。 以下示例重置资源组“TestRG1”中的 Azure VPN 网关“VNet1GW”。
 
     $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
     Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 
-## <a name="reset-a-vpn-gateway-using-the-classic-deployment-model"></a>使用经典部署模型重置 VPN 网关
-用于重置 Azure VPN 网关的 PowerShell cmdlet 为 `Reset-AzureVNetGateway`。 下面的示例为名为“ContosoVNet”的虚拟网络重置了 Azure VPN 网关。
+## <a name="reset---classic"></a>重置 - 经典
+
+需要安装最新版本的 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 用于重置 Azure VPN 网关的 PowerShell cmdlet 为 `Reset-AzureVNetGateway`。 下面的示例为名为“ContosoVNet”的虚拟网络重置了 Azure VPN 网关。
 
     Reset-AzureVNetGateway –VnetName “ContosoVNet” 
 
@@ -70,6 +73,6 @@ ms.openlocfilehash: 97ee3599f2eded9800dbb441af7299547c502397
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

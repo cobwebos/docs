@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2016
-ms.author: msfussell
+ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 9c45513f7d2987a83026adab39257d298292b7a5
+ms.sourcegitcommit: f31c8ab3d2b4fd871c92ac0e7d04bc8d5ab86830
+ms.openlocfilehash: 963ca79f83d9ae4b3c5a0e5da6c5fb7985e9ca77
 
 
 ---
@@ -47,9 +47,9 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 
 ## <a name="create-the-application"></a>创建应用程序
 1. 在终端中，键入 **yo azuresfguest**。
-2. 选择**容器**作为框架。
-3. 命名应用程序，例如 SimpleContainerApp
-4. 提供 DockerHub 存储库中容器映像的 URL。 该操作使用 [存储库]/[映像名] 窗体
+2. 对于框架，选择“容器”。
+3. 为应用程序命名，例如 SimpleContainerApp
+4. 提供 DockerHub 存储库中容器映像的 URL。 此映像参数采用的格式为 [repo]/[image name]
 
 ![适用于容器的 Service Fabric Yeoman 生成器][sf-yeoman]
 
@@ -74,6 +74,14 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
     ./uninstall.sh
     ```
 
+## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
+
+若要将其他容器服务添加到使用 `yo` 创建的应用程序，请执行以下步骤： 
+1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
+2. 运行 `yo azuresfguest:AddService`
+
+
+
 ## <a name="next-steps"></a>后续步骤
 * [Service Fabric 和容器概述](service-fabric-containers-overview.md)
 * [使用 Azure CLI 与 Service Fabric 群集交互](service-fabric-azure-cli.md)
@@ -83,6 +91,6 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

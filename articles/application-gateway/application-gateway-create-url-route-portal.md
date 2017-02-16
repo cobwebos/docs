@@ -4,7 +4,7 @@ description: "了解如何使用门户为应用程序网关创建基于路径的
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 87bd93bc-e1a6-45db-a226-555948f1feb7
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/13/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0cae4172b9317784e7ed6f671c5722304e2f0e92
+ms.sourcegitcommit: 09aeb63d4c2e68f22ec02f8c08f5a30c32d879dc
+ms.openlocfilehash: 2889716d6b5b6079c311d6a7f1eb97b001098b45
 
 
 ---
@@ -26,8 +26,6 @@ ms.openlocfilehash: 0cae4172b9317784e7ed6f671c5722304e2f0e92
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
-> 
-> 
 
 借助基于 URL 路径的路由，可根据 Http 请求的 URL 路径来关联路由。 它将检查是否有路由连接到针对应用程序网关中的 URL 列表配置的后端池，并将网络流量发送到定义的后端池。 基于 URL 的路由的常见用法是将不同内容类型的请求负载平衡到不同的后端服务器池。
 
@@ -46,7 +44,7 @@ ms.openlocfilehash: 0cae4172b9317784e7ed6f671c5722304e2f0e92
 
 ### <a name="step-1"></a>步骤 1
 
-导航到 http://portal.azure.com，然后选择现有的应用程序网关。 单击“规则”
+导航到 [Azure 门户](http://portal.azure.com)，然后选择现有的应用程序网关。 单击“规则”
 
 ![应用程序网关概述][1]
 
@@ -74,8 +72,6 @@ ms.openlocfilehash: 0cae4172b9317784e7ed6f671c5722304e2f0e92
 
 > [!IMPORTANT]
 > 路径：要匹配的路径模式列表。 每个模式必须以 / 开头，“\*”只允许放在末尾处。 有效示例包括 /xyz、/xyz* 或 /xyz/*。  
-> 
-> 
 
 ![添加填写了信息的“基于路径的规则”边栏选项卡][2]
 
@@ -94,6 +90,6 @@ ms.openlocfilehash: 0cae4172b9317784e7ed6f671c5722304e2f0e92
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

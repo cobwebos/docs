@@ -15,8 +15,8 @@ ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 814ad11e130c197f91e597091fca3afbe8f61cbd
+ms.sourcegitcommit: fc61aa855fbcdb8f3ee90f64cbfc73f070f4bbfe
+ms.openlocfilehash: f0d079fd13be7fb2b10d1a3556046f93d59b640c
 
 
 ---
@@ -24,16 +24,10 @@ ms.openlocfilehash: 814ad11e130c197f91e597091fca3afbe8f61cbd
 通过受支持的逻辑应用连接器可以配置连接，以便通过本地数据网关访问本地数据。  以下步骤将逐步引导你完成如何安装和配置本地数据网关以使用逻辑应用的过程。
 
 ## <a name="prerequisites"></a>先决条件
-* 必须在 Azure 中使用工作或学校电子邮件地址将本地数据网关与帐户（基于 Azure Active Directory 的帐户）相关联
-  * 如果在使用 Microsoft 帐户（例如 @outlook.com, @live.com)），则可以[按照此处的步骤](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)，使用 Azure 帐户创建工作或学校电子邮件地址
-
-> [!WARNING]
-> 当前存在一个限制，即仅当使用已向 Power BI 注册的帐户时，本地网关安装才会完成。  在此期间，请向“Power BI（免费）”注册任何帐户以成功完成安装。
-> 
-> 
-
-* 必须将本地数据网关[安装在本地计算机上](app-service-logic-gateway-install.md)。
-* 网关不得由另一个 Azure 本地数据网关进行声明（[声明随下面步骤 2 的创建一起进行](#2-create-an-azure-on-premises-data-gateway-resource)）- 一个安装只能关联到一个网关资源。
+  * 必须在 Azure 中使用工作或学校电子邮件地址将本地数据网关与帐户（基于 Azure Active Directory 的帐户）相关联
+  * 如果在使用 Microsoft 帐户（例如 @outlook.com, @live.com)），则可以[按照此处的步骤](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)，使用 Azure 帐户创建工作或学校电子邮件地址 
+  * 必须将本地数据网关[安装在本地计算机上](app-service-logic-gateway-install.md)。
+  * 网关不得由另一个 Azure 本地数据网关进行声明（[声明随下面步骤 2 的创建一起进行](#2-create-an-azure-on-premises-data-gateway-resource)）- 一个安装只能关联到一个网关资源。
 
 ## <a name="installing-and-configuring-the-connection"></a>安装和配置连接
 ### <a name="1-install-the-on-premises-data-gateway"></a>1.安装本地数据网关
@@ -73,6 +67,6 @@ ms.openlocfilehash: 814ad11e130c197f91e597091fca3afbe8f61cbd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,9 +1,9 @@
 ---
-title: "PIM 中的角色 | Microsoft 文档"
+title: "Azure AD Privileged Identity Management 中的角色 | Microsoft 文档"
 description: "了解可以在 Azure Privileged Identity Management 扩展中针对特权标识使用哪些角色。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/01/2016
-ms.author: kgremban
+ms.date: 01/23/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0831755c619fb33c49a6df87141ca3a0a4714f71
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: b79308a3dfd50ac9fa43398cae7cd583a1442fde
 
 
 ---
-# <a name="roles-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management 中的角色
+# <a name="roles-in-azure-ad-pim"></a>Azure AD PIM 中的角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 可以将组织中的用户分配到 Azure AD 中的不同管理角色。 这些角色分配控制用户可以针对 Azure AD、Office 365 和其他 Microsoft Online Services 与连接的应用程序执行哪些任务，例如添加或删除用户或更改服务设置。  
@@ -92,6 +92,6 @@ Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure �
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

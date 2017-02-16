@@ -15,8 +15,8 @@ ms.workload: integration
 ms.date: 11/22/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: e2b83e0381dbd323dd03ff359cda8ce35d3c8a39
-ms.openlocfilehash: aed3bee0b5e533ae1a82536e977849ea1831a183
+ms.sourcegitcommit: b5545e089a67a16d20cac6bb1d8067a6ff9fcb17
+ms.openlocfilehash: e27e4f42722cd819f03f7271e72463b5781d2725
 
 
 ---
@@ -51,7 +51,7 @@ ms.openlocfilehash: aed3bee0b5e533ae1a82536e977849ea1831a183
 
 #### <a name="creating-callback-urls-with-an-expiration-date"></a>创建附带过期日期的回调 URL
 
-如果要与其他人共享 URL，可以生成附带所需特定密钥和过期日期的 URL。  这样便可以顺利地滚动更新密钥，或者将触发应用的访问活动限定为特定的时间范围。  可按如下所示，通过[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers.md) 为 URL 指定过期日期：
+如果要与其他人共享 URL，可以生成附带所需特定密钥和过期日期的 URL。  这样便可以顺利地滚动更新密钥，或者将触发应用的访问活动限定为特定的时间范围。  可按如下所示，通过[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) 为 URL 指定过期日期：
 
 ``` http
 POST 
@@ -62,7 +62,7 @@ POST
 
 #### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>创建附带主要或辅助机密密钥的 URL
 
-生成或列出基于请求的触发器的回调 URL 时，还可以指定要使用哪个密钥来为 URL 签名。  可按如下所示，通过[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers.md) 生成由特定密钥签名的 URL：
+生成或列出基于请求的触发器的回调 URL 时，还可以指定要使用哪个密钥来为 URL 签名。  可按如下所示，通过[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) 生成由特定密钥签名的 URL：
 
 ``` http
 POST 
@@ -280,6 +280,7 @@ POST
 [诊断逻辑应用的错误和问题](app-service-logic-diagnosing-failures.md)  
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Jan17_HO1-->
 
 

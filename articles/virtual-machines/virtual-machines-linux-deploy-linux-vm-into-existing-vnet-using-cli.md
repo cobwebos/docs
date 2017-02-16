@@ -1,5 +1,5 @@
 ---
-title: "使用 CLI 将 Linux VM 部署到现有的 Azure 虚拟网络 | Microsoft Docs"
+title: "将 Linux VM 部署到现有网络 - Azure CLI | Microsoft 文档"
 description: "使用 CLI 将 Linux VM 部署到现有的虚拟网络。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,86 +13,27 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 12/05/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2fad20978f40150ef9f1cb44054da2ba66848bda
-ms.openlocfilehash: 613ce9b27bc26643b2f46c490d7f550b370df998
+ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
+ms.openlocfilehash: 93fa2521b81b423d663df6e04ef201839bca2814
 
 
 ---
 
-# <a name="deploy-a-linux-vm-into-an-existing-vnet--nsg-using-the-cli"></a>使用 CLI 将 Linux VM 部署到现有的 VNet 和 NSG
+# <a name="deploy-a-linux-vm-into-an-existing-azure-virtual-network-using-the-cli"></a>使用 CLI 将 Linux VM 部署到现有 Azure 虚拟网络
 
-本文介绍如何使用 CLI 标志将 VM 部署到现有的虚拟网络 (VNet)，该网络受现有的网络安全组 (NSG) 保护。  要求如下：
+本文说明如何使用 CLI 标志将 VM 部署到现有的虚拟网络 (VNet)。  要求如下：
 
 - [一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)
-
 - [SSH 公钥和私钥文件](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>快速命令
 
-将任何示例替换为你自己的设置。
+如果需要快速完成任务，以下部分详细介绍所需的命令。 本文档的余下部分（[从此处开始](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#detailed-walkthrough)）提供了每个步骤的更详细信息和上下文。
 
-### <a name="create-the-resource-group"></a>创建资源组
-
-```azurecli
-azure group create myResourceGroup \
--l westus
-```
-
-### <a name="create-the-vnet"></a>创建 VNet
-
-```azurecli
-azure network vnet create myVNet \
--g myResourceGroup \
--a 10.10.0.0/24 \
--l westus
-```
-
-### <a name="create-the-nsg"></a>创建 NSG
-
-```azurecli
-azure network nsg create myNSG \
--g myResourceGroup \
--l westus
-```
-
-### <a name="add-an-inbound-ssh-allow-rule"></a>添加入站 SSH 允许规则
-
-```azurecli
-azure network nsg rule create inboundSSH \
--g myResourceGroup \
--a myNSG \
--c Allow \
--p Tcp \
--r Inbound \
--y 100 \
--f Internet \
--o 22 \
--e 10.10.0.0/24 \
--u 22
-```
-
-### <a name="add-a-subnet-to-the-vnet"></a>将子网添加到 VNet
-
-```azurecli
-azure network vnet subnet create mySubNet \
--g myResourceGroup \
--e myVNet \
--a 10.10.0.0/26 \
--o myNSG
-```
-
-### <a name="add-a-vnic-to-the-subnet"></a>将 VNic 添加到子网
-
-```azurecli
-azure network nic create myVNic \
--g myResourceGroup \
--l westus \
--m myVNet \
--k mySubNet
-```
+前提条件： 资源组、VNet、将 SSH 入站的 NSG、子网。 将任何示例替换为你自己的设置。
 
 ### <a name="deploy-the-vm-into-the-vnet-nsg-and-connect-the-vnic"></a>将 VM 部署到 VNet、NSG 并连接 VNic
 
@@ -220,6 +161,6 @@ azure vm create myVM \
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

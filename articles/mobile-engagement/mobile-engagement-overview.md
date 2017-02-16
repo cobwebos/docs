@@ -41,7 +41,7 @@ Mobile Engagement 提供应用内消息传递功能，并可与本地推送通�
 ## <a name="open-apis-and-ease-of-integration"></a>开放 API 和易于集成性
 借助开放 API 和易于集成的 SDK，可以使用现有的 CRM、CMS 或其他后端系统中的现有数据。 这样，你就可以进一步提高受众定位并保护你的投资。
 
-## <a name="data-protection-privacy-across-the-globe"></a>全球范围内的数据保护和隐私
+## <a name="data-protection--privacy-across-the-globe"></a>全球范围内的数据保护和隐私
 Microsoft 一直致力于保护隐私，这也是我们的产品和服务生命周期必不可少的组成部分。 我们通过向客户提供有意义的隐私选择，努力实现隐私实践的透明化，并负责任地管理我们所存储的数据。 如同所有 Azure 服务一样，Mobile Engagement 不会分享或出售客户财产的相关信息。 Mobile Engagement 是可以在全球范围内部署的解决方案，因此它遵守地区或国家特定的数据隐私法律。
 
 ### <a name="next-steps"></a>后续步骤：

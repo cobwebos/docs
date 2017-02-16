@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4ba6ce876df3ec426e02e10eda062b67d0d42c4e
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: efe0eeb6c9389545f51f22bbf0a2d6389939c375
 
 
 ---
@@ -66,7 +66,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 ![删除视图](media/log-analytics-view-designer/edit-menu-delete.png)
 
 ### <a name="export-an-existing-view"></a>导出现有视图
-可以将视图导出为 JSON 文件，该文件可以导入到另一个工作区，也可以在 [Azure Resource Manager 模板](../resource-group-authoring-templates.md)中使用。  若要导出现有视图，请通过以下方式打开该视图：在 OMS 主仪表板中单击其磁贴。  然后单击“导出”按钮即可在浏览器的下载文件夹中创建一个文件。  该文件的名称将为该视图的名称，扩展名为 *omsview*。
+可以将视图导出为 JSON 文件，该文件可以导入到另一个工作区，也可以在 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)中使用。  若要导出现有视图，请通过以下方式打开该视图：在 OMS 主仪表板中单击其磁贴。  然后单击“导出”按钮即可在浏览器的下载文件夹中创建一个文件。  该文件的名称将为该视图的名称，扩展名为 *omsview*。
 
 ![导出视图](media/log-analytics-view-designer/edit-menu-export.png)
 
@@ -99,6 +99,6 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

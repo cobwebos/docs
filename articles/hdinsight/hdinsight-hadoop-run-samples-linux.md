@@ -1,6 +1,6 @@
 ---
-title: "在基于 Linux 的 HDInsight 上运行 Hadoop MapReduce 示例 | Microsoft Docs"
-description: "开始将 MapReduce 示例与基于 Linux 的 HDInsight 配合使用。 使用 SSH 连接到群集，然后使用 Hadoop 命令来运行示例作业。"
+title: "在 HDInsight 上运行 Hadoop MapReduce 示例 | Microsoft Docs"
+description: "开始将 MapReduce 示例与 HDInsight 配合使用。 使用 SSH 连接到群集，然后使用 Hadoop 命令来运行示例作业。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,29 +13,34 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d4b6db263becb722cabfab2160c0a460034eae72
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: b3c56871ec23c7595d18006943be19c38d2fb5c9
 
 
 ---
 # <a name="run-the-hadoop-samples-in-hdinsight"></a>在 HDInsight 中运行 Hadoop 示例
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-基于 Linux 的 HDInsight 群集提供了一组 MapReduce 示例，你可以通过这些示例来熟悉如何运行 Hadoop MapReduce 作业。 在本文档中，学习提供的示例并了解如何运行部分示例。
+HDInsight 群集提供了一组 MapReduce 示例，可以通过这些示例来熟悉如何运行 Hadoop MapReduce 作业。 在本文档中，你将学习提供的示例并了解如何运行部分示例。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure 订阅**：请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
+
+
 * **基于 Linux 的 HDInsight 群集**：请参阅[在 Linux 上的 HDInsight 中开始将 Hadoop 与 Hive 配合使用](hdinsight-hadoop-linux-tutorial-get-started.md)
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * **SSH 客户端**：有关如何将 SSH 与 HDInsight 配合使用的信息，请参阅以下文章：
   
   * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
   * [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ## <a name="the-samples"></a>示例
-**位置**：这些示例位于 HDInsight 群集的 **/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar** 中
+**位置**：这些示例位于 **/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar** 中的 HDInsight 群集
 
 **内容**：下面的示例都包含在该存档文件中：
 
@@ -204,9 +209,9 @@ GraySort 是一个基准排序，其指标为在给巨量数据（通常至少 1
 ## <a name="next-steps"></a>后续步骤
 在本文中，你学习了如何运行基于 Linux 的 HDInsight 群集附带的示例。 有关 Pig、Hive 和 MapReduce 如何与 HDInsight 配合使用的教程，请参阅以下主题：
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用][hdinsight-use-pig]
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用][hdinsight-use-hive]
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用][hdinsight-use-mapreduce]
+* [将 Pig 与 Hadoop on HDInsight 配合使用][hdinsight-use-pig]
+* [将 Hive 与 Hadoop on HDInsight 配合使用][hdinsight-use-hive]
+* [将 MapReduce 与 Hadoop on HDInsight 配合使用][hdinsight-use-mapreduce]
 
 [hdinsight-errors]: hdinsight-debug-jobs.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
@@ -224,6 +229,6 @@ GraySort 是一个基准排序，其指标为在给巨量数据（通常至少 1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

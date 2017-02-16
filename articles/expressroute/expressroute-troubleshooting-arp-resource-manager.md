@@ -1,5 +1,5 @@
 ---
-title: "ExpressRoute 故障排除指南：获取 ARP 表 | Microsoft Docs"
+title: "获取 ARP 表：Resource Manager：Azure ExpressRoute 故障排除 | Microsoft 文档"
 description: "此页说明了如何为 ExpressRoute 线路获取 ARP 表"
 documentationcenter: na
 services: expressroute
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 01/30/2017
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: e63a0e17d7c3794608130ad0b654c5c903d404a0
+ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
+ms.openlocfilehash: 2a5a12899ea3bcc89be0244e252c552515f57150
 
 
 ---
-# <a name="expressroute-troubleshooting-guide---getting-arp-tables-in-the-resource-manager-deployment-model"></a>ExpressRoute 故障排除指南 - 在 Resource Manager 部署模型中获取 ARP 表
+# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
 > * [PowerShell - 资源管理器](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - 经典](expressroute-troubleshooting-arp-classic.md)
@@ -145,7 +145,7 @@ ARP 表示例：
          10 On-Prem           65.0.0.1 ffff.eeee.dddd
           0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
 
-### <a name="arp-table-when-on-premises-connectivity-provider-side-has-problems"></a>当本地端/连接提供商端出现问题时的 ARP 表
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>当本地端/连接提供商端出现问题时的 ARP 表
 * 只有一个条目会出现在 ARP 表中。 此时会显示在 Microsoft 端使用的 MAC 地址与 IP 地址之间的映射。 
   
        Age InterfaceProperty IpAddress  MacAddress    
@@ -171,6 +171,6 @@ ARP 表示例：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

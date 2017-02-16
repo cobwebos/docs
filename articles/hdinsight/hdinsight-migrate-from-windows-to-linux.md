@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/28/2016
+ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
+ms.sourcegitcommit: 0d5b68d26d708a28edee13ff3d9a57588ce83e12
+ms.openlocfilehash: 856d75c58cd911c641ec74b78f5c6133e605b2ec
 
 
 ---
@@ -27,8 +27,6 @@ ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
 
 > [!NOTE]
 > HDInsight 群集使用 Ubuntu 长期支持 (LTS) 作为群集中节点的操作系统。 有关可用于 HDInsight 的 Ubuntu 的版本信息，以及其他组件版本控制信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。
->
->
 
 ## <a name="migration-tasks"></a>迁移任务
 以下是一般迁移工作流。
@@ -56,10 +54,13 @@ ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
 
 1. 查找现有群集的存储帐户和默认容器信息。 为此，可以使用以下 Azure PowerShell 脚本。
 
-        $clusterName="Your existing HDInsight cluster name"
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
-        write-host "Default container: $clusterInfo.DefaultStorageContainer"
+    ```powershell
+    $clusterName="Your existing HDInsight cluster name"
+    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
+    write-host "Default container: $clusterInfo.DefaultStorageContainer"
+    ```
+
 2. 根据“Create Linux-based clusters in HDInsight”（在 HDInsight 中创建基于 Linux 的群集）文档中的步骤创建新测试环境。 在创建群集之前停止，并改为选择“可选配置”。
 3. 从“可选配置”边栏选项卡中，选择“链接的存储帐户”。
 4. 选择“添加存储密钥”，并在出现提示时选择步骤 1 中由 PowerShell 脚本返回的存储帐户。 在每个边栏选项卡上单击“选择”可关闭该边栏选项卡。 最后，创建群集。
@@ -71,7 +72,8 @@ ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
 
         hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
 
-    [AZURE.NOTE] 如果包含数据的目录结构不在测试环境中，你可以使用以下命令创建它。
+    > [!NOTE]
+    > 如果包含数据的目录结构不在测试环境中，你可以使用以下命令创建它。
 
         hdfs dfs -mkdir -p /new/path/to/create
 
@@ -81,7 +83,7 @@ ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
 或者，你可能想要使用 `Start-AzureStorageBlobCopy` Azure PowerShell cmdlet 在 HDInsight 以外的存储帐户之间复制 Blob。 有关详细信息，请参阅“Using Azure PowerShell with Azure Storage”（在 Azure 存储空间中使用 Azure PowerShell）一文中的“How to manage Azure Blobs”（如何管理 Azure Blob）部分。
 
 ## <a name="client-side-technologies"></a>客户端技术
-一般而言，客户端技术（例如 [Azure PowerShell cmdlet](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) 或 [.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/)）在基于 Linux 的群集上都将以相同的方式运行，因为在这两个群集 OS 类型中，它们依赖的 REST API 相同。
+一般而言，客户端技术（例如 [Azure PowerShell cmdlet](/powershell/azureps-cmdlets-docs)、[Azure CLI](../xplat-cli-install.md) 或 [.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/)）在基于 Linux 的群集上都将以相同的方式运行，因为在这两个群集 OS 类型中，它们依赖的 REST API 相同。
 
 ## <a name="server-side-technologies"></a>服务器端技术
 以下表提供了迁移 Windows 特定的服务器端组件的指导。
@@ -90,7 +92,7 @@ ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
 | --- | --- |
 | **PowerShell**（服务器端脚本，包含群集创建期间使用的脚本操作） |重新编写为 Bash 脚本。 有关脚本操作的信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)和[针对基于 Linux 的 HDInsight 的脚本操作开发](hdinsight-hadoop-script-actions-linux.md)。 |
 | **Azure CLI**（服务器端脚本） |尽管 Azure CLI 可在 Linux 上使用，但它并没有预先安装在 HDInsight 群集头节点上。 如果需要使用它来编写服务器端脚本，请参阅[安装 Azure CLI](../xplat-cli-install.md)，了解如何在基于 Linux 的平台上进行安装。 |
-| **.NET 组件** |.NET 在基于 Linux 的 HDInsight 群集上不完全受支持。 2017 年 10 月 28 日后创建的基于 Linux 的 Storm on HDInsight 群集支持使用 SCP.NET 框架的 C# Storm 拓扑。 在未来更新中将添加对 .NET 的更多支持。 |
+| **.NET 组件** |对于所有基于 Linux 的 HDInsight 群集类型，.NET 不完全受支持。 2016/10/28 后创建的基于 Linux 的 Storm on HDInsight 群集支持使用 SCP.NET 框架的 C# Storm 拓扑。 在未来更新中将添加对 .NET 的更多支持。 |
 | **Win32 组件或其他仅限 Windows 的技术** |具体的指导取决于组件或技术；需要找到与 Linux 兼容的版本、找到替代解决方案，或者重新编写此组件。 |
 
 ## <a name="cluster-creation"></a>群集创建
@@ -135,8 +137,6 @@ Ambari 提供能够通知群集潜在问题的警报系统。 警报将以红色
 > Ambari 警报表示可能有问题，而不表示已发生问题。 例如，你可能会收到无法访问 HiveServer2 的警报，但实际上仍可以正常访问它。
 >
 > 许多警报都是针对某项服务实现为基于间隔的查询，并预期在特定的时间范围内收到响应。 因此警报本身并不代表服务已关闭，而只是单纯表示该服务没有在预期时间范围内返回结果。
->
->
 
 一般情况下，你应该先评估某个警报是否已长时间持续发生，或者是否与用户先前针对群集报告的某个问题有关联，然后对它采取措施。
 
@@ -222,6 +222,6 @@ Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

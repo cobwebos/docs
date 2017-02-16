@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/22/2016
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5d66c03926008f89fe53102847e541a41385d43c
+ms.sourcegitcommit: b0abc4df06849ef2a887a190a8ea306849d40b3d
+ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
 
 
 ---
@@ -99,7 +99,7 @@ ms.openlocfilehash: 5d66c03926008f89fe53102847e541a41385d43c
 
 “[端到端跟踪]”一节介绍了如何关联各种日志文件中包含的信息和度量值数据。
 
-“[故障排除指南]”一节针对你可能会遇到的一些与存储相关的常见问题，提供了故障排除指南。
+“[故障排除指南]”一节针对可能遇到的一些与存储相关的常见问题，提供了故障排除指南。
 
 “[附录]”提供了有关如何使用其他工具的信息，例如如何使用 Wireshark 和 Netmon 分析网络数据包数据，如何使用 Fiddler 分析 HTTP/HTTPS 消息，以及如何使用 Microsoft Message Analyzer 关联日志数据等。
 
@@ -144,7 +144,7 @@ ms.openlocfilehash: 5d66c03926008f89fe53102847e541a41385d43c
 若要帮助估算各种存储对象（如 Blob）的大小，请参阅博客文章[了解 Microsoft Azure 存储空间计费 - 带宽、事务和容量](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)。
 
 ### <a name="a-namemonitoring-availabilityamonitoring-availability"></a><a name="monitoring-availability"></a>监视可用性
-应通过监视以下每小时或每分钟度量值表中的“可用性”列中的值来监视存储帐户中存储服务的可用性：**$MetricsHourPrimaryTransactionsBlob**、**$MetricsHourPrimaryTransactionsTable**、**$MetricsHourPrimaryTransactionsQueue**、**$MetricsMinutePrimaryTransactionsBlob**、**$MetricsMinutePrimaryTransactionsTable**、**$MetricsMinutePrimaryTransactionsQueue**、**$MetricsCapacityBlob**。 “可用性”列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
+应通过监视以下每小时或每分钟度量值表中的“可用性”列中的值来监视存储帐户中存储服务的可用性：**$MetricsHourPrimaryTransactionsBlob**、**$MetricsHourPrimaryTransactionsTable**、**$MetricsHourPrimaryTransactionsQueue**、**$MetricsMinutePrimaryTransactionsBlob**、**$MetricsMinutePrimaryTransactionsTable**、**$MetricsMinutePrimaryTransactionsQueue**、**$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
 
 任何小于 100% 的值指示某些存储请求将失败。 可以通过检查度量值数据中显示具有不同错误类型（如 **ServerTimeoutError**）的请求数的其他列来了解失败原因。 由于以下原因，应该会看到“可用性”暂时低于 100%：比如在该服务移动分区以更好地负载均衡请求时，出现暂时性服务器超时；客户端应用程序中的重试逻辑应处理此类间歇性情况。 [Storage Analytics Logged Operations and Status Messages](http://msdn.microsoft.com/library/azure/hh343260.aspx)（存储分析记录的操作和状态消息）一文列出了存储度量值纳入其“可用性”计算中的事务类型。
 
@@ -267,36 +267,37 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 下面的代码示例演示如何通过附加 **OperationContext** 对象（向存储服务发出的请求）设置自定义 **ClientRequestId** 值。 它还演示了如何从响应消息中检索 **ServerRequestId** 值。
 
-    //Parse the connection string for the storage account.
-    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+```csharp
+//Parse the connection string for the storage account.
+const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
-    OperationContext oc = new OperationContext();
-    oc.ClientRequestID = String.Format("{0} {1} {2} {3}", HOSTNAME, APPNAME, USERID, Guid.NewGuid().ToString());
+// Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
+OperationContext oc = new OperationContext();
+oc.ClientRequestID = String.Format("{0} {1} {2} {3}", HOSTNAME, APPNAME, USERID, Guid.NewGuid().ToString());
 
-    try
+try
+{
+    CloudBlobContainer container = blobClient.GetContainerReference("democontainer");
+    ICloudBlob blob = container.GetBlobReferenceFromServer("testImage.jpg", null, null, oc);  
+    var downloadToPath = string.Format("./{0}", blob.Name);
+    using (var fs = File.OpenWrite(downloadToPath))
     {
-        CloudBlobContainer container = blobClient.GetContainerReference("democontainer");
-        ICloudBlob blob = container.GetBlobReferenceFromServer("testImage.jpg", null, null, oc);  
-        var downloadToPath = string.Format("./{0}", blob.Name);
-        using (var fs = File.OpenWrite(downloadToPath))
-        {
-            blob.DownloadToStream(fs, null, null, oc);
-            Console.WriteLine("\t Blob downloaded to file: {0}", downloadToPath);
-        }
+        blob.DownloadToStream(fs, null, null, oc);
+        Console.WriteLine("\t Blob downloaded to file: {0}", downloadToPath);
     }
-    catch (StorageException storageException)
+}
+catch (StorageException storageException)
+{
+    Console.WriteLine("Storage exception {0} occurred", storageException.Message);
+    // Multiple results may exist due to client side retry logic - each retried operation will have a unique ServiceRequestId
+    foreach (var result in oc.RequestResults)
     {
-        Console.WriteLine("Storage exception {0} occurred", storageException.Message);
-        // Multiple results may exist due to client side retry logic - each retried operation will have a unique ServiceRequestId
-        foreach (var result in oc.RequestResults)
-        {
-                Console.WriteLine("HttpStatus: {0}, ServiceRequestId {1}", result.HttpStatusCode, result.ServiceRequestID);
-        }
+            Console.WriteLine("HttpStatus: {0}, ServiceRequestId {1}", result.HttpStatusCode, result.ServiceRequestID);
     }
-
+}
+```
 
 ### <a name="a-nametimestampsatimestamps"></a><a name="timestamps"></a>时间戳
 你还可以使用时间戳来查找相关日志项，但应注意客户端和服务器之间可能存在的时钟偏差。 在客户端上基于时间戳搜索服务器端的相应条目时，应加/减 15 分钟。 请记住，包含度量值的 Blob 的 Blob 元数据指示 Blob 中存储的度量值的时间范围；如果你在同一分钟或小时内使用多个度量值 Blob，则此信息会很有用。
@@ -364,11 +365,13 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 对于表和队列服务，Nagle 算法也可能会导致高 **AverageE2ELatency**（与 **AverageServerLatency** 相比）：有关详细信息，请参阅博客文章 [Nagle’s Algorithm is Not Friendly towards Small Requests](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)（Nagle 算法对小型请求不友好）。 可以通过使用 **System.Net** 命名空间中的 **ServicePointManager** 类在代码中禁用 Nagle 算法。 应在应用程序中调用表或队列服务之前执行此操作，因为这样做不会影响已打开的连接。 下面的示例来自辅助角色中的 **Application_Start** 方法。
 
-    var storageAccount = CloudStorageAccount.Parse(connStr);
-    ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-    tableServicePoint.UseNagleAlgorithm = false;
-    ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
-    queueServicePoint.UseNagleAlgorithm = false;
+```csharp
+var storageAccount = CloudStorageAccount.Parse(connStr);
+ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
+tableServicePoint.UseNagleAlgorithm = false;
+ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
+queueServicePoint.UseNagleAlgorithm = false;
+```
 
 你应查看客户端日志以了解客户端应用程序正在提交多少个请求，并检查客户端中与 .NET 相关的常规性能瓶颈（如 CPU、.NET 垃圾回收、网络利用率或内存）。 作为排查 .NET 客户端应用程序问题的起点，请参阅[调试、跟踪和分析](http://msdn.microsoft.com/library/7fe0dd2y)。
 
@@ -397,7 +400,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 有关使用 Microsoft Message Analyzer 排查网络问题的详细信息，请参阅“[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]”。
 
 ### <a name="a-namemetrics-show-high-averageserverlatencyametrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>度量值显示高 AverageServerLatency
-如果 Blob 下载请求出现高 **AverageServerLatency**，则应使用存储日志记录日志来了解对于同一 Blob（或一组 Blob）是否存在重复的请求。 对于 Blob 上载请求，应调查客户端正在使用的数据块大小（例如，小于 64k 的数据块大小可能会导致开销，除非读取操作也在小于 64k 的区块中进行），以及是否有多个客户端正在并行将数据块上载到同一 Blob。 还应检查每分钟度量值以了解导致超出每秒可伸缩性目标的请求数峰值：另请参阅“[度量值显示 PercentTimeoutError 增加]”。
+如果 blob 下载请求出现高 **AverageServerLatency**，则应使用存储日志记录日志来了解对于同一 blob（或一组 blob）是否存在重复的请求。 对于 Blob 上载请求，应调查客户端正在使用的数据块大小（例如，小于 64k 的数据块大小可能会导致开销，除非读取操作也在小于 64k 的区块中进行），以及是否有多个客户端正在并行将数据块上载到同一 Blob。 还应检查每分钟度量值以了解导致超出每秒可伸缩性目标的请求数峰值：另请参阅“[度量值显示 PercentTimeoutError 增加]”。
 
 如果当对于同一 Blob（或一组 Blob）存在重复的请求时，会看到 Blob 下载请求显示高 **AverageServerLatency**，则应考虑使用 Azure 缓存或 Azure 内容传送网络 (CDN) 缓存这些 Blob。 对于上载请求，你可以通过使用较大的数据块大小来提高吞吐量。 对于表查询，也可以在执行相同的查询操作并且数据不会频繁更改的客户端上实施客户端缓存。
 
@@ -413,7 +416,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 * 验证应用程序是否成功地将该消息添加到队列。 检查应用程序在成功添加前是否未多次重试 **AddMessage** 方法。 存储客户端库日志将显示存储操作的任何重复重试。
 * 验证将消息添加到队列的辅助角色与从队列读取该消息的辅助角色之间不存在任何时钟偏差，使得处理看起来就像出现延迟。
-* 检查从队列中读取该消息的辅助角色是否出现故障。 如果队列客户端调用了 **GetMessage** 方法，但无法使用确认进行响应，则该消息将一直在队列中保持不可见，直到 **invisibilityTimeout** 期限过期。 此时，该消息可供再次处理。
+* 检查从队列中读取该消息的辅助角色是否出现故障。 如果队列客户端调用了 **GetMessage** 方法，但无法响应确认消息，则该消息将一直在队列中保持不可见，直到 **invisibilityTimeout** 期限过期。 此时，该消息可供再次处理。
 * 检查队列长度是否随着时间的推移不断增长。 如果没有足够多的工作线程可用于处理其他工作线程放入队列的所有消息，会出现这种情况。 此外，还应检查度量值以了解删除请求是否失败，并应查看消息的出队计数，该计数可能指示删除消息的重复失败尝试次数。
 * 检查存储日志记录日志以查找在长于平常的时间段内具有高于预期的 **E2ELatency** 和 **ServerLatency** 值的任何队列操作。
 
@@ -436,7 +439,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 > 
 
 #### <a name="a-namepermanent-increase-in-percentthrottlingerrorapermanent-increase-in-percentthrottlingerror-error"></a><a name="permanent-increase-in-PercentThrottlingError"></a>PercentThrottlingError 错误永久增加
-在事务量永久增加后，或者在对应用程序进行初始负载测试时，如果看到 **PercentThrottlingError** 的值一直很高，则需要评估应用程序使用存储分区的方式，以及它是否接近存储帐户的可伸缩性目标。 例如，如果你在一个队列（它视为单个分区）上看到限制错误，则应考虑使用其他队列以将事务分布到多个分区上。 如果你在表上看到限制错误，则需要考虑使用不同的分区方案，以便使用更多种分区键值将你的事务分布到多个分区。 此问题的一个常见原因是由于“前面预置/追加”反模式，在该模式下你选择日期作为分区键，然后将某一天的所有数据都写入到一个分区：负载过轻，这可能会导致写入瓶颈。 你应考虑使用不同的分区设计，或者评估使用 Blob 存储是否可能是更好的解决方案。 你还应该检查出现限制是否是由于流量达到峰值而导致的，并应调查平滑处理请求模式的方式。
+事务量永久增加后，或者对应用程序进行初始负载测试时，如果看到 **PercentThrottlingError** 的值一直很高，则需要评估应用程序使用存储分区的方式，以及它是否接近存储帐户的可伸缩性目标。 例如，如果你在一个队列（它视为单个分区）上看到限制错误，则应考虑使用其他队列以将事务分布到多个分区上。 如果你在表上看到限制错误，则需要考虑使用不同的分区方案，以便使用更多种分区键值将你的事务分布到多个分区。 此问题的一个常见原因是由于“前面预置/追加”反模式，在该模式下你选择日期作为分区键，然后将某一天的所有数据都写入到一个分区：负载过轻，这可能会导致写入瓶颈。 你应考虑使用不同的分区设计，或者评估使用 Blob 存储是否可能是更好的解决方案。 你还应该检查出现限制是否是由于流量达到峰值而导致的，并应调查平滑处理请求模式的方式。
 
 如果你将事务分布到多个分区中，必须仍要注意为存储帐户设置的可伸缩性限制。 例如，如果你使用 10 个队列（每个队列每秒最多处理 2000 条 1KB 消息），你将达到存储帐户每秒 20,000 条消息的总体限制。 如果你每秒需要处理的实体数超过 20,000 个，则应考虑使用多个存储帐户。 你还应牢记，请求和实体的大小对存储服务何时限制你的客户端有影响：如果你使用较大的请求和实体，则可能会更快地受到限制。
 
@@ -509,9 +512,9 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 | 请求 ID | 操作 |
 | --- | --- |
-| 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
-| e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
-| de8b1c3c-... |**UploadFromStream** 方法，用于创建 Blob。 **PUT** 请求失败，显示 404 消息 |
+| 07b26a5d-... |**DeleteIfExists** 方法，用于删除 blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
+| e2d06d78-... |**CreateIfNotExists** 方法，用于创建 blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
+| de8b1c3c-... |**UploadFromStream** 方法，用于创建 blob。 **PUT** 请求失败，显示 404 消息 |
 
 日志项：
 
@@ -563,53 +566,29 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 下表显示了存储日志记录日志文件中的示例服务器端日志消息：
 
-<table>
-  <tr>
-    <td>请求开始时间</td>
-    <td>2014-05-30T06:17:48.4473697Z</td>
-  </tr>
-  <tr>
-    <td>操作类型</td>
-    <td>GetBlobProperties</td>
-  </tr>
-  <tr>
-    <td>请求状态</td>
-    <td>SASAuthorizationError</td>
-  </tr>
-  <tr>
-    <td>HTTP 状态代码</td>
-    <td>404</td>
-  </tr>
-  <tr>
-    <td>身份验证类型</td>
-    <td>Sas</td>
-  </tr>
-  <tr>
-    <td>服务类型</td>
-    <td>Blob</td>
-  </tr>
-  <tr>
-    <td>请求 URL</td>
-    <td>
-    https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;amp;sr=c&amp;amp;si=mypolicy&amp;amp;sig=XXXXX&amp;amp;api-version=2014-02-14&amp;amp;</td>
-  </tr>
-  <tr>
-    <td>请求 ID 标头</td>
-    <td>a1f348d5-8032-4912-93ef-b393e5252a3b</td>
-  </tr>
-  <tr>
-    <td>客户端请求 ID</td>
-    <td>2d064953-8436-4ee0-aa0c-65cb874f7929</td>
-  </tr>
-</table>
+| Name | 值 |
+| --- | --- |
+| 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
+| 操作类型     | GetBlobProperties            |
+| 请求状态     | SASAuthorizationError        |
+| HTTP 状态代码   | 404                          |
+| 身份验证类型| Sas                          |
+| 服务类型       | Blob                         |
+| 请求 URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| nbsp;              |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
+| 请求 ID 标头  | a1f348d5-8032-4912-93ef-b393e5252a3b |
+| 客户端请求 ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
+
 
 你应调查客户端应用程序尝试执行尚未向其授予权限的操作的原因。
 
 #### <a name="a-namejavascript-code-does-not-have-permissionaclient-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>客户端 JavaScript 代码无权访问该对象
 如果你使用的是 JavaScript 客户端并且存储服务返回 HTTP 404 消息，则应在浏览器中检查以下 JavaScript 错误：
 
-    SEC7120: Origin http://localhost:56309 not found in Access-Control-Allow-Origin header.
-    SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
+```
+SEC7120: Origin http://localhost:56309 not found in Access-Control-Allow-Origin header.
+SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
+```
 
 > [!NOTE]
 > 在排查客户端 JavaScript 问题时，可以使用 Internet Explorer 中的 F12 开发人员工具来跟踪浏览器与存储服务之间交换的消息。
@@ -622,19 +601,21 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 下面的代码示例演示如何配置 Blob 服务，以允许在 Contoso 域中运行的 JavaScript 访问 Blob 存储服务中的 Blob：
 
-    CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
-    // Set the service properties.
-    ServiceProperties sp = client.GetServiceProperties();
-    sp.DefaultServiceVersion = "2013-08-15";
-    CorsRule cr = new CorsRule();
-    cr.AllowedHeaders.Add("*");
-    cr.AllowedMethods = CorsHttpMethods.Get | CorsHttpMethods.Put;
-    cr.AllowedOrigins.Add("http://www.contoso.com");
-    cr.ExposedHeaders.Add("x-ms-*");
-    cr.MaxAgeInSeconds = 5;
-    sp.Cors.CorsRules.Clear();
-    sp.Cors.CorsRules.Add(cr);
-    client.SetServiceProperties(sp);
+```csharp
+CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
+// Set the service properties.
+ServiceProperties sp = client.GetServiceProperties();
+sp.DefaultServiceVersion = "2013-08-15";
+CorsRule cr = new CorsRule();
+cr.AllowedHeaders.Add("*");
+cr.AllowedMethods = CorsHttpMethods.Get | CorsHttpMethods.Put;
+cr.AllowedOrigins.Add("http://www.contoso.com");
+cr.ExposedHeaders.Add("x-ms-*");
+cr.MaxAgeInSeconds = 5;
+sp.Cors.CorsRules.Clear();
+sp.Cors.CorsRules.Add(cr);
+client.SetServiceProperties(sp);
+```
 
 #### <a name="a-namenetwork-failureanetwork-failure"></a><a name="network-failure"></a>网络故障
 在某些情况下，丢失的网络数据包可能会导致存储服务向客户端返回 HTTP 404 消息。 例如，当客户端应用程序从表服务中删除某个实体时，你看到客户端从表服务引发报告“HTTP 404 (未找到)”状态消息的存储异常。 调查表存储服务中的表时，你看到该服务确实删除了请求的实体。
@@ -657,16 +638,16 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 | 05:10:13.8987407 |GetContainerProperties |404 |mmcont |bc881924-... |
 | 05:10:14.2147723 |CreateContainer |409 |mmcont |bc881924-... |
 
-客户端应用程序中的代码先删除 Blob 容器，然后立即使用同一名称重新创建该容器：**CreateIfNotExists** 方法（客户端请求 ID bc881924-...）最终失败，显示“HTTP 409 (冲突)”错误。 当客户端删除 Blob 容器、表或队列时，需要经过一段较短的时间，该名称才能再次变为可用。
+客户端应用程序中的代码先删除 blob 容器，然后立即使用同一名称重新创建该容器：**CreateIfNotExists** 方法（客户端请求 ID bc881924-...）最终失败，显示“HTTP 409 (冲突)”错误。 当客户端删除 Blob 容器、表或队列时，需要经过一段较短的时间，该名称才能再次变为可用。
 
 客户端应用程序在创建新容器时应使用唯一的容器名称（如果“删除/重新创建”模式很常见）。
 
 ### <a name="a-namemetrics-show-low-percent-successametrics-show-low-percentsuccess-or-analytics-log-entries-have-operations-with-transaction-status-of-clientothererrors"></a><a name="metrics-show-low-percent-success"></a>度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作
-**PercentSuccess** 度量值根据操作的 HTTP 状态代码捕获已成功的操作的百分比。 状态代码为 2XX 的操作将计为成功，而状态代码在 3XX、4XX 和 5XX 范围内的操作将计为失败并降低 **PercentSucess** 度量值。 在服务器端存储日志文件中，这些操作将使用事务状态 **ClientOtherErrors** 进行记录。
+**PercentSuccess** 度量值根据操作的 HTTP 状态代码捕获已成功操作的百分比。 状态代码为 2XX 的操作将计为成功，而状态代码在 3XX、4XX 和 5XX 范围内的操作将计为失败并降低 **PercentSucess** 度量值。 在服务器端存储日志文件中，这些操作将使用事务状态 **ClientOtherErrors** 进行记录。
 
 请务必注意，这些操作已成功完成，因此不会影响其他度量值，如可用性。 成功执行但可能会导致失败的 HTTP 状态代码的一些操作示例包括：
 
-* **ResourceNotFound**（未找到 404），例如，对不存在的 Blob 进行 GET 请求时生成。
+* **ResourceNotFound**（未找到 404），例如，对不存在的 blob 进行 GET 请求时生成。
 * **ResouceAlreadyExists**（冲突 409），例如，在资源已存在的情况下进行 **CreateIfNotExist** 操作时生成。
 * **ConditionNotMet**（未修改 304），例如，进行条件操作时生成，例如仅在自上次操作以来映像已更新时，客户端才会发送 **ETag** 值和一个 HTTP **If-None-Match** 标头来请求此映像。
 
@@ -681,11 +662,11 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 通常，虚拟机对 VHD 进行的每个单独的输入或输出操作都会转换为对基础页 Blob 进行的“Get 页”或“Put 页”操作。 因此，你可以根据应用程序的特定行为，对环境使用估计的 IOPS 以优化可以在单个存储帐户中设置的 VHD 数。 我们不建议在单个存储帐户中设置超过 40 个的磁盘。 有关存储帐户的当前可伸缩性目标的详细信息（尤其是您所用的存储帐户类型的总请求速率和总带宽），请参阅 [Azure 存储空间可伸缩性和性能目标](storage-scalability-targets.md)。
 如果你即将超过存储帐户的可伸缩性目标，则应将你的 VHD 放入多个不同的存储帐户中，以减少每个帐户中的活动。
 
-### <a name="a-nameyour-issue-arises-from-using-the-storage-emulatorayour-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator"></a>您的问题是由于使用存储模拟器进行开发或测试而导致
+### <a name="a-nameyour-issue-arises-from-using-the-storage-emulatorayour-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator">该问题是由于使用存储模拟器进行开发或测试而导致</a>
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
 * [功能“X”在存储模拟器中无法正常工作]
-* [使用存储模拟器时出现错误“其中一个 HTTP 标头的值的格式不正确”]
+* [使用存储模拟器时出现错误“其中一个 HTTP 标头值的格式不正确”]
 * [运行存储模拟器需要管理权限]
 
 #### <a name="a-namefeature-x-is-not-workingafeature-x-is-not-working-in-the-storage-emulator"></a><a name="feature-X-is-not-working"></a>功能“X”在存储模拟器中无法正常工作
@@ -694,9 +675,9 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 对于存储模拟器不支持的这些功能，请使用云中的 Azure 存储服务。
 
 #### <a name="a-nameerror-http-header-not-correct-formataerror-the-value-for-one-of-the-http-headers-is-not-in-the-correct-format-when-using-the-storage-emulator"></a><a name="error-HTTP-header-not-correct-format"></a>使用存储模拟器时出现错误“其中一个 HTTP 标头的值的格式不正确”
-正在针对本地存储模拟器测试使用存储客户端库的应用程序，方法调用（如 **CreateIfNotExists**）失败并显示错误消息“其中一个 HTTP 标头的值的格式不正确”。 这指示你所用的存储模拟器版本不支持你所用的存储客户端库版本。 存储客户端库会为它发出的所有请求添加标头 **x-ms-version**。 如果存储模拟器无法识别 **x-ms-version** 标头中的值，则将拒绝该请求。
+正在针对本地存储模拟器测试使用存储客户端库的应用程序，方法调用（如 **CreateIfNotExists**）失败并显示错误消息“其中一个 HTTP 标头值的格式不正确”。 这指示你所用的存储模拟器版本不支持你所用的存储客户端库版本。 存储客户端库会为它发出的所有请求添加标头 **x-ms-version**。 如果存储模拟器无法识别 **x-ms-version** 标头中的值，则将拒绝该请求。
 
-可以使用存储库客户端日志来查看它发送的 **x-ms-version header** 的值。 如果使用 Fiddler 跟踪客户端应用程序发出的请求，则也可以查看 **x-ms-version header** 的值。
+可以使用存储库客户端日志来查看其发送的 **x-ms-version header** 值。 如果使用 Fiddler 跟踪客户端应用程序发出的请求，也可以查看 **x-ms-version header** 的值。
 
 如果你安装并使用了存储客户端库的最新版本，但未更新存储模拟器，通常会出现这种情况。 你应安装存储模拟器的最新版本，或者使用云存储而不是模拟器进行开发和测试。
 
@@ -713,10 +694,12 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 原因是现有 LocalDB 安装有问题。 默认情况下，存储模拟器在模拟 Azure 存储服务时使用 LocalDB 持久保存数据。 你可以在尝试安装 SDK 之前，通过在命令提示符窗口中运行以下命令，来重置 LocalDB 实例。
 
-    sqllocaldb stop v11.0
-    sqllocaldb delete v11.0
-    delete %USERPROFILE%\WAStorageEmulatorDb3*.*
-    sqllocaldb create v11.0
+```
+sqllocaldb stop v11.0
+sqllocaldb delete v11.0
+delete %USERPROFILE%\WAStorageEmulatorDb3*.*
+sqllocaldb create v11.0
+```
 
 **delete** 命令可从以前安装的存储模拟器中删除任何旧的数据库文件。
 
@@ -729,7 +712,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 有关使用 Fiddler 的详细信息，请参阅“[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 通信]”。
 
-有关 Wireshark 的详细信息，请参阅“[附录 2：使用 Wireshark 捕获网络流量]”。
+有关使用 Wireshark 的详细信息，请参阅“[附录 2：使用 Wireshark 捕获网络流量]”。
 
 有关使用 Microsoft Message Analyzer 的详细信息，请参阅“[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]”。
 
@@ -751,7 +734,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 * 停止和启动捕获流量。 在主菜单上，转到“文件”，然后可单击“捕获流量”在打开和关闭捕获之间进行切换。
 * 保存捕获的通信数据。 在主菜单上，转到“文件”，单击“保存”，然后单击“所有会话”：可以将流量保存在一个会话存档文件中。 以后可以重新加载会话存档以进行分析，或者将其发送到 Microsoft 技术支持（如有需要）。
 
-若要限制 Fiddler 捕获的通信量，可以使用在“筛选器”选项卡中配置的筛选器。 下面的屏幕截图显示了只捕获发送到 **contosoemaildist.table.core.windows.net** 存储终结点的流量的筛选器：
+若要限制 Fiddler 捕获的通信量，可以使用在“筛选器”选项卡中配置的筛选器。 下面的屏幕截图显示了只捕获发送到 **contosoemaildist.table.core.windows.net** 存储终结点流量的筛选器：
 
 ![][5]
 
@@ -789,7 +772,9 @@ WireShark 将在 **packetlist** 窗口中突出显示存在的任何错误。 �
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 配置 Web 跟踪会话
 若要使用 Microsoft Message Analyzer 为 HTTP 和 HTTPS 通信配置 Web 跟踪会话，请运行 Microsoft Message Analyzer 应用程序的，然后在“文件”菜单上单击“捕获/跟踪”。 在可用的跟踪方案列表中，选择“Web 代理”。 然后在“跟踪方案配置”面板的“HostnameFilter”文本框中，添加存储终结点的名称（可以在 [Azure 门户](https://portal.azure.com)中查找这些名称）。 例如，如果 Azure 存储帐户的名称是 **contosodata**，则应将以下内容添加到 **HostnameFilter** 文本框：
 
-    contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
+```
+contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
+```
 
 > [!NOTE]
 > 空格字符分隔主机名。
@@ -800,12 +785,12 @@ WireShark 将在 **packetlist** 窗口中突出显示存在的任何错误。 �
 
 有关 Microsoft Message Analyzer **Web 代理**跟踪的详细信息，请参阅 [Microsoft-PEF-WebProxy Provider](http://technet.microsoft.com/library/jj674814.aspx)（Microsoft-PEF-WebProxy 提供程序）。
 
-Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它可以捕获客户端 HTTPS 通信，并显示未加密的 HTTPS 消息。 “Web 代理”跟踪的工作原理是通过为所有 HTTP 和 HTTPS 通信配置本地代理使其可以访问未加密的消息。
+Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它可以捕获客户端 HTTPS 通信，并显示未加密的 HTTPS 消息。 **Web 代理**跟踪的工作原理是通过为所有 HTTP 和 HTTPS 流量配置本地代理使其可以访问未加密的消息。
 
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 诊断网络问题
-除了使用 Microsoft Message Analyzer“Web 代理”跟踪来捕获客户端应用程序和存储服务之间的 HTTP/HTTPS 通信的详细信息外，还可以使用内置的“本地链路层”跟踪来捕获网络数据包信息。 此能够实现捕获类似于使用 Wireshark 捕获的数据，并诊断丢弃的数据包等网络问题。
+除了使用 Microsoft Message Analyzer **Web 代理**跟踪来捕获客户端应用程序和存储服务之间的 HTTP/HTTPS 流量的详细信息外，还可以使用内置的**本地链路层**跟踪来捕获网络数据包信息。 此能够实现捕获类似于使用 Wireshark 捕获的数据，并诊断丢弃的数据包等网络问题。
 
-下面的屏幕截图显示了“本地链路层”跟踪的一个示例，其中一些“信息性”消息显示在 **DiagnosisTypes** 列中。 单击 **DiagnosisTypes** 列中的图标可显示消息的详细信息。 在此示例中，服务器重新传输了消息 #305，因为它未收到来自客户端的确认消息：
+下面的屏幕截图显示了**本地链路层**跟踪的一个示例，其中一些**信息性**消息显示在 **DiagnosisTypes** 列中。 单击 **DiagnosisTypes** 列中的图标可显示消息的详细信息。 在此示例中，服务器重新传输了消息 #305，因为它未收到来自客户端的确认消息：
 
 ![][9]
 
@@ -883,7 +868,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [具有大量附加 VHD 的虚拟机出现意外重启]: #you-are-experiencing-unexpected-reboots
 [该问题是由于使用存储模拟器进行开发或测试而导致]: #your-issue-arises-from-using-the-storage-emulator
 [功能“X”在存储模拟器中无法正常工作]: #feature-X-is-not-working
-[使用存储模拟器时出现错误“其中一个 HTTP 标头的值的格式不正确”]: #error-HTTP-header-not-correct-format
+[使用存储模拟器时出现错误“其中一个 HTTP 标头值的格式不正确”]: #error-HTTP-header-not-correct-format
 [运行存储模拟器需要管理权限]: #storage-emulator-requires-administrative-privileges
 [安装 Azure SDK for .NET 时遇到问题]: #you-are-encountering-problems-installing-the-Windows-Azure-SDK
 [遇到了其他存储服务问题]: #you-have-a-different-issue-with-a-storage-service
@@ -908,6 +893,6 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

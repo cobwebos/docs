@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: 3cf91abf83359f2157d0f8cd53e0b450bfd58d80
 
 
 ---
@@ -26,7 +26,10 @@ ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
 
 本文档演练了如何使用 Pig 命令从到基于 Windows 的 HDInsight 群集的远程桌面连接运行 Pig Latin 语句。 Pig Latin 可让你通过描述数据转换来创建 MapReduce 应用程序，而不是创建映射和化简函数。
 
-在本文档中，学习如何
+> [!IMPORTANT]
+> 远程桌面只能在使用 Windows 作为操作系统的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
+>
+> 有关 HDInsight 3.4 或更高版本，请参阅[将 Pig 与 HDInsight 和 SSH 配合使用](hdinsight-hadoop-use-pig-ssh.md)，了解如何通过命令行直接在群集上以交互方式运行 Pig 作业。
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
@@ -35,29 +38,29 @@ ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
 * 运行 Windows 10、Windows 8 或 Windows 7 的客户端计算机
 
 ## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>使用远程桌面进行连接
-为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#rdp)中的说明连接到该群集。
+为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)中的说明连接到该群集。
 
 ## <a name="a-idpigause-the-pig-command"></a><a id="pig"></a>使用 Pig 命令
 1. 在建立远程桌面连接后，通过使用桌面上的图标来启动 **Hadoop 命令行**。
 2. 使用以下命令来启动 Pig 命令行：
-   
+
         %pig_home%\bin\pig
-   
+
     系统将为你提供 `grunt>` 提示符。
 3. 输入以下语句：
-   
+
         LOGS = LOAD 'wasbs:///example/data/sample.log';
-   
+
     此命令会将 sample.log 文件的内容加载到 LOGS 文件中。 你可以通过使用以下方法查看该文件的内容：
-   
+
         DUMP LOGS;
 4. 通过应用正则表达式从每个记录中仅提取日志记录级别来转换数据：
-   
+
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-   
+
     转换后，可以使用 **DUMP** 来查看数据。 在本例中为 `DUMP LEVELS;`。
 5. 使用以下语句继续应用转换。 使用 `DUMP` 查看每个步骤后的转换结果。
-   
+
     <table>
     <tr>
     <th>语句</th><th>作用</th>
@@ -76,15 +79,15 @@ ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
     </tr>
     </table>
 6. 你也可以使用 `STORE` 语句保存转换结果。 例如，以下命令将 `RESULT` 保存到群集的默认存储容器中的 **/example/data/pigout**目录：
-   
+
         STORE RESULT into 'wasbs:///example/data/pigout'
-   
+
    > [!NOTE]
    > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，则你将会收到错误消息。
-   > 
-   > 
+   >
+   >
 7. 若要退出 grunt 提示符，请输入以下语句。
-   
+
         QUIT;
 
 ### <a name="pig-latin-batch-files"></a>Pig Latin 批处理文件
@@ -92,7 +95,7 @@ ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
 
 1. 退出 grunt 提示符之后，请打开“记事本”，并在 **%PIG_HOME%** 目录中创建名为 **pigbatch.pig** 的新文件。
 2. 在 **pigbatch.pig** 文件中键入或粘贴以下行，然后保存它：
-   
+
         LOGS = LOAD 'wasbs:///example/data/sample.log';
         LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
         FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
@@ -101,11 +104,11 @@ ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
         RESULT = order FREQUENCIES by COUNT desc;
         DUMP RESULT;
 3. 使用以下命令，以使用 pig 命令运行 **pigbatch.pig** 文件。
-   
+
         pig %PIG_HOME%\pigbatch.pig
-   
+
     在批处理作业完成后，你应该会看到以下输出，该输出应该与先前步骤中使用 `DUMP RESULT;` 时相同：
-   
+
         (TRACE,816)
         (DEBUG,434)
         (INFO,96)
@@ -128,7 +131,6 @@ ms.openlocfilehash: 28499d1778db75fa164afe20ae1adc6736f7bb93
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

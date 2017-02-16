@@ -1,13 +1,14 @@
 ---
 title: "用于识别适用于池的单一数据库的 Powershell 脚本 | Microsoft 文档"
-description: "弹性数据库池是由一组弹性数据库共享的可用资源的集合。 本文档提供一个 Powershell 脚本来帮助你评估是否适合对一组数据库使用弹性数据库池。"
+description: "弹性池是由一组弹性数据库共享的可用资源的集合。 本文档提供一个 Powershell 脚本来帮助你评估是否适合对一组数据库使用弹性池。"
 services: sql-database
 documentationcenter: 
 author: stevestein
 manager: jhubbard
 editor: 
 ms.assetid: db541e94-abc8-4578-bae0-9b8c8ad0170e
-ms.service: sql-database
+ms.service: multiple databases
+ms.custom: V11
 ms.devlang: NA
 ms.date: 09/28/2016
 ms.author: sstein
@@ -15,15 +16,15 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 47b4890482752d8954a84c59b333b6607d997da3
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: 0ed098ee8dca7cd812302a962ab98bf30e85ff38
 
 
 ---
-# <a name="powershell-script-for-identifying-databases-suitable-for-an-elastic-database-pool"></a>用于识别适用于弹性数据库池的数据库的 PowerShell 脚本
+# <a name="powershell-script-for-identifying-databases-suitable-for-an-elastic-pool"></a>用于识别适用于弹性池的数据库的 PowerShell 脚本
 本文中的示例 PowerShell 脚本用于估算 SQL 数据库服务器中用户数据库的聚合 eDTU 值。 此脚本在运行时收集数据，而对于典型的生产工作负荷，你应至少运行该脚本一天。 理想情况下，应该针对代表数据库典型工作负荷的持续时间运行该脚本。 运行该脚本足够长的时间，以便捕获代表数据库正常和高峰使用率的数据。 运行此脚本一周或更长的时间可能会提供更准确的估计。
 
-此脚本适合用于评估 v11 服务器上要迁移到 v12 服务器（支持池）的数据库。 在 v12 服务器上， SQL 数据库有内置的智能，它能分析历史使用情况遥测数据并在更具成本效益的时候推荐使用池。 有关信息，请参阅[监视、管理和调整弹性数据库池](sql-database-elastic-pool-manage-portal.md)
+此脚本适合用于评估 v11 服务器上要迁移到 v12 服务器（支持池）的数据库。 在 v12 服务器上， SQL 数据库有内置的智能，它能分析历史使用情况遥测数据并在更具成本效益的时候推荐使用池。 有关信息，请参阅[监视、管理和调整弹性池](sql-database-elastic-pool-manage-portal.md)
 
 > [!IMPORTANT]
 > 运行该脚本时，请保持打开 PowerShell 窗口。 在运行脚本未达到所需的时间前，请不要关闭 PowerShell 窗口。 
@@ -33,7 +34,7 @@ ms.openlocfilehash: 47b4890482752d8954a84c59b333b6607d997da3
 ## <a name="prerequisites"></a>先决条件
 运行该脚本之前，请安装以下各项：
 
-* 最新的 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* 最新的 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 * [SQL Server 2014 功能包](https://www.microsoft.com/download/details.aspx?id=42295)。
 
 ## <a name="script-details"></a>脚本详细信息
@@ -54,7 +55,7 @@ ms.openlocfilehash: 47b4890482752d8954a84c59b333b6607d997da3
 
 该脚本需要使用一个输出数据库来存储中间数据以供分析。 你可以使用新的或现有的数据库。 输出数据库应该在不同的服务器，以免影响分析结果，不过，从技术上讲，不需要满足该条件也能运行该工具。 输出数据库的性能级别至少应为 S0 或更高。 长时间收集大量数据库的数据时，可以考虑将输出数据库升级为较高的性能级别。
 
-该脚本需要你提供用于连接目标服务器（弹性数据库池候选项）的凭据与完整服务器名称 <dbname>**.database.windows.net**。 该脚本不支持一次分析多个服务器。
+该脚本需要你提供用于连接目标服务器（弹性池候选项）的凭据与完整服务器名称 <dbname>**.database.windows.net**。 该脚本不支持一次分析多个服务器。
 
 提交初始参数集的值之后，系统会提示使用 Azure 帐户登录。 这是用于登录目标服务器而不是输出数据库服务器的帐户。
 
@@ -63,7 +64,7 @@ ms.openlocfilehash: 47b4890482752d8954a84c59b333b6607d997da3
 * 警告: Switch-AzureMode cmdlet 已过时。
 * 警告: 无法获取 SQL Server 服务信息。 尝试连接到 'Microsoft.Azure.Commands.Sql.dll' 上的 WMI 时失败并出现以下错误: RPC 服务器不可用。
 
-脚本完成时，会输出池要包含目标服务器中所有候选数据库所需要的 eDTU 估算数目。 此估算的 eDTU 可用于创建和配置池。 创建池并将数据库移动到池中后，请密切监控池数天，并根据需要对池 eDTU 配置进行调整。 请参阅[监视、管理和调整弹性数据库池](sql-database-elastic-pool-manage-portal.md)。
+脚本完成时，会输出池要包含目标服务器中所有候选数据库所需要的 eDTU 估算数目。 此估算的 eDTU 可用于创建和配置池。 创建池并将数据库移动到池中后，请密切监控池数天，并根据需要对池 eDTU 配置进行调整。 请参阅[监视、管理弹性池并调整其大小](sql-database-elastic-pool-manage-portal.md)。
 
 ```
 param (
@@ -96,7 +97,7 @@ else
 $version = $server.ServerVersion
 }
 
-# For Elastic database pool candidates, we exclude master, and any databases that are already in a pool. You may add more databases to the excluded list below as needed
+# For elastic pool candidates, we exclude master, and any databases that are already in a pool. You may add more databases to the excluded list below as needed
 $ListOfDBs = Get-AzureRmSqlDatabase -ServerName $servername.Split('.')[0] -ResourceGroupName $ResourceGroupName | Where-Object {$_.DatabaseName -notin ("master") -and $_.CurrentServiceLevelObjectiveName -notin ("ElasticPool") -and $_.CurrentServiceObjectiveName -notin ("ElasticPool")}
 
 $outputConnectionString = "Data Source=$outputServerName;Integrated Security=false;Initial Catalog=$outputdatabaseName;User Id=$outputDBUsername;Password=$outputDBpassword"
@@ -276,6 +277,6 @@ $data | %{'{0}' -f $_[0]}
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

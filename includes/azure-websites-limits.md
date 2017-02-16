@@ -23,7 +23,7 @@
 | [WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
 | [Azure 计划程序](https://azure.microsoft.com/services/scheduler/)支持 | |X |X |X |X |
 | [终结点监视](../articles/app-service-web/web-sites-monitor.md) | | |X |X |X |
-| [过渡槽（预览）](../articles/app-service-web/web-sites-staged-publishing.md) | | | |5 |20 |
+| [过渡槽](../articles/app-service-web/web-sites-staged-publishing.md) | | | |5 |20 |
 | 每个应用的自定义域数</a> | |500 |500 |500 |500 |
 | SLA | |<p> |99.9% |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
 
@@ -40,6 +40,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

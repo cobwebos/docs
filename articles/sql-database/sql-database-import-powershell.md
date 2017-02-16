@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 8d78da13-43fe-4447-92e0-0a41d0321fd4
 ms.service: sql-database
-ms.custom: migrate and move; how to
+ms.custom: migrate and move
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -16,13 +16,12 @@ ms.workload: data-management
 ms.date: 08/31/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4e1cf312cf8213cbeea84b4fb0ab605248800fcd
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: 211f416d05b0ca998cd71a78d091b8efa39f6a7b
 
 
 ---
 # <a name="import-a-bacpac-file-to-create-an-azure-sql-database-by-using-powershell"></a>使用 PowerShell 导入 BACPAC 文件以创建 Azure SQL 数据库
-**单个数据库**
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-database-import.md)
@@ -51,7 +50,7 @@ ms.openlocfilehash: 4e1cf312cf8213cbeea84b4fb0ab605248800fcd
 ## <a name="set-up-the-variables-for-your-environment"></a>设置适合环境的变量
 有几个变量需要你将示例值替换为你的数据库和存储帐户的特定值。
 
-服务器名称应是上一步骤选择的订阅中当前存在的服务器。 它应该是要在其中创建数据库的服务器。 不支持直接将数据库导入弹性池。 但是可以先导入到单一数据库，然后将该数据库移入池中。
+服务器名称应是上一步骤选择的订阅中当前存在的服务器。 它应该是要在其中创建数据库的服务器。 不支持直接将数据库导入弹性池。 但是可以先导入为单一数据库，然后将该数据库移入池中。
 
 数据库名称是要为新数据库赋予的名称。
 
@@ -78,7 +77,7 @@ Blob 名称是要从中创建数据库的现有 BACPAC 文件的名称。 需要
 ## <a name="import-the-database"></a>导入数据库
 此命令会将导入数据库请求提交到服务。 根据数据库的大小，导入操作可能需要一些时间才能完成。
 
-    $importRequest = New-AzureRmSqlDatabaseImport –ResourceGroupName $ResourceGroupName –ServerName $ServerName –DatabaseName $DatabaseName –StorageKeytype $StorageKeyType –StorageKey $StorageKey -StorageUri $StorageUri –AdministratorLogin $credential.UserName –AdministratorLoginPassword $credential.Password –Edition Standard –ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
+    $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -StorageKeytype $StorageKeyType -StorageKey $StorageKey -StorageUri $StorageUri -AdministratorLogin $credential.UserName -AdministratorLoginPassword $credential.Password -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
 
 
 ## <a name="monitor-the-progress-of-the-operation"></a>监视导入操作的进度
@@ -100,7 +99,7 @@ Blob 名称是要从中创建数据库的现有 BACPAC 文件的名称。 需要
 
     $credential = Get-Credential
 
-    $importRequest = New-AzureRmSqlDatabaseImport –ResourceGroupName $ResourceGroupName –ServerName $ServerName –DatabaseName $DatabaseName –StorageKeytype $StorageKeyType –StorageKey $StorageKey -StorageUri $StorageUri –AdministratorLogin $credential.UserName –AdministratorLoginPassword $credential.Password –Edition Standard –ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
+    $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -StorageKeytype $StorageKeyType -StorageKey $StorageKey -StorageUri $StorageUri -AdministratorLogin $credential.UserName -AdministratorLoginPassword $credential.Password -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
 
     Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
 
@@ -112,6 +111,6 @@ Blob 名称是要从中创建数据库的现有 BACPAC 文件的名称。 需要
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

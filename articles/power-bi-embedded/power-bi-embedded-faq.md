@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2204034d9a39f9773a6e12ca5ed9504939a6ebf6
+ms.sourcegitcommit: f57b400dc20dc08221c0a8a770fd78f5885f634c
+ms.openlocfilehash: 0beb98220f043dc7c66cc494c3de00e0993798a6
 
 
 ---
@@ -52,16 +52,6 @@ Power BI Embedded 具有 Azure 标准 SLA。 有关详细信息，请参阅[服�
 ## <a name="how-is-this-service-priced"></a>此服务是如何定价的？
 有关定价信息，请参阅 [Power BI Embedded 定价](http://go.microsoft.com/fwlink/?LinkId=760527)。
 
-## <a name="what-is-a-render-and-how-is-it-billed"></a>什么是呈现以及它是如何计费的？
-> [!NOTE]
-> Power BI Embedded 在预览阶段提供了按呈现的折扣定价，但根据用户反馈，以后将停止使用这种定价方式，而采用按会话定价。 从按呈现定价转换为按会话定价将从 2016 年 9 月 1 日起生效。
-> 
-> 
-
-呈现是显示给最终用户的可视元素，结果是产生对服务的查询。 例如，如果一个用户查看包含 4 个视觉对象的报表，它将会产生 4 个呈现。 如果用户刷新报表并且向服务发送更多的查询，它将会产生另外 4 个呈现。 服务所有者将控制最终用户可以推动结果为付费呈现的新查询的程度，以限制成本风险并最小化静态数据方案中的成本。
-
-呈现按每 1,000 个呈现计费。 少于 1,000 个的呈现数量按比例计费。 客户每月会接收到 1,000 个免费的呈现。 通过批量许可协议购买的客户应该咨询他们的 Microsoft 合作伙伴或卖家有关定价的信息。
-
 ## <a name="what-is-a-report-session-and-how-is-it-billed"></a>什么是报表会话，它是如何计费的？
 会话是指最终用户和 Power BI Embedded 报表之间的一组交互活动。 每次向用户显示 Power BI Embedded 报表时，就会启动一个会话，并向订阅持有者收取使用会话的费用。 会话按统一收费率计费，独立于报表中的视觉对象元素数量或报表内容的刷新频率。 当用户关闭报表时或者会话于一小时后超时时，会话结束。
 
@@ -85,7 +75,7 @@ Power BI Embedded 服务使用“应用令牌”进行身份验证和授权，�
 并发送应用令牌，以指示服务来呈现所请求的报表。 此设计不要求应用使用 Azure AD 进行用户身份验证和授权，但仍然可以这样做。 可以[在此处](power-bi-embedded-app-token-flow.md)了解应用令牌的详细信息。 Power BI Embedded 中还引入了行级安全性 (RLS) 功能以用于高级安全性筛选方案。
 
 ## <a name="what-data-sources-are-currently-supported-with-power-bi-embedded"></a>Power BI Embedded 当前支持哪些数据源？
-将支持通过直接查询对使用基本凭据的云数据源进行访问。 这意味着目前支持的源有 Azure SQL DB 和 Azure SQL DW 等。 在未来几个月中将添加对其他数据源和访问类型的支持。 将在 Power BI 开发人员论坛 ([https://dev.powerbi.com](https://dev.powerbi.com/)) 上公布受支持的新数据源。
+将支持通过直接查询对使用基本凭据的云数据源进行访问。 这意味着目前支持的源有 Azure SQL DB 和 Azure SQL DW 等。 在未来几个月中将添加对其他数据源和访问类型的支持。 有关详细信息，请参阅[连接到数据源](power-bi-embedded-connect-datasource.md)。
 
 ## <a name="how-does-the-tenancy-model-work-for-power-bi-embedded"></a>Power BI Embedded 的租户模型如何工作？
 在 Power BI Embedded 模型中，明确要求 Azure AD 租户中必须存在客户。 可以为客户选择是否需要 Azure AD。 这样，应用程序的体系结构和基础结构就可以用来确定 Power BI Embedded 要求的租户模型。
@@ -102,9 +92,11 @@ Power BI Embedded 服务使用“应用令牌”进行身份验证和授权，�
 * [Microsoft Power BI Embedded 是什么](power-bi-embedded-what-is-power-bi-embedded.md)
 * [Microsoft Power BI Embedded 入门](power-bi-embedded-get-started.md)
 
+有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO3-->
 
 

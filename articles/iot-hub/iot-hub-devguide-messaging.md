@@ -1,6 +1,6 @@
 ---
-title: "开发人员指南 - 消息传送 | Microsoft Docs"
-description: "Azure IoT 中心开发人员指南 - 设备到云和云到设备的消息传送"
+title: "了解 Azure IoT 中心消息传送 | Microsoft Docs"
+description: "开发人员指南 - 使用 IoT 中心进行设备到云和云到设备的消息传送。 包括消息格式和支持的通信协议的相关信息。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 1951ea9d876ccb962e0bc84873bfb71ee42aa535
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 768e21205e341f4915f8be50129fd246285a2efc
 
 
 ---
@@ -24,14 +24,14 @@ ms.openlocfilehash: 1951ea9d876ccb962e0bc84873bfb71ee42aa535
 ## <a name="overview"></a>概述
 IoT 中心提供了用于与设备通信的以下消息传送基元：
 
-* [从设备到云][lnk-d2c]：从设备到应用程序后端。
-* [从云到设备][lnk-c2d]：从应用程序后端（*服务*或*云*）。
+* [设备到云][lnk-d2c]：从设备到后端应用。
+* [云到设备][lnk-c2d]：从后端应用（服务或云）。
 
 IoT 中心消息传送功能的核心属性是消息的可靠性和持久性。 这些属性可在设备端上恢复间歇性连接，以及在云恢复事件处理的负载高峰。 IoT 中心对从设备到云和从云到设备的消息传送实施*至少一次*传送保证。
 
 IoT 中心支持多个[面向设备的协议][lnk-protocols]（例如 MQTT、AMQP 和 HTTP）。 为了支持无缝的跨协议互操作性，IoT 中心定义了所有面向设备的协议均可支持的[通用消息格式][lnk-message-format]。
 
-IoT 中心公开[与事件中心兼容的终结点][lnk-compatible-endpoint]，让后端应用程序能读取 IoT 中心收到的从设备到云的消息。
+IoT 中心公开内置的[与事件中心兼容的终结点][lnk-compatible-endpoint]，使后端应用能够读取中心收到的设备到云消息。 通过将订阅中的其他服务链接到中心，还可以在 IoT 中心创建自定义终结点。
 
 ### <a name="when-to-use"></a>使用时机
 使用从设备到云的消息从设备应用发送时序遥测数据和警报，使用从云到设备的消息向设备应用发送单向通知。
@@ -42,30 +42,26 @@ IoT 中心公开[与事件中心兼容的终结点][lnk-compatible-endpoint]，�
 有关 IoT 中心与事件中心服务的比较，请参阅 [IoT 中心与事件中心的比较][lnk-compare]。
 
 ## <a name="device-to-cloud-messages"></a>设备到云的消息
-通过面向设备的终结点 (**/devices/{deviceId}/messages/events**) 发送从设备到云的消息。 后端服务通过面向服务的与[事件中心][lnk-event-hubs]兼容的终结点 (**/messages/events**) 接收从设备到云的消息。 因此，可以使用标准[事件中心集成和 SDK][lnk-compatible-endpoint] 接收从设备到云的消息。
+通过面向设备的终结点 (**/devices/{deviceId}/messages/events**) 发送从设备到云的消息。 路由规则随后将消息路由到 IoT 中心内面向服务的终结点之一。 路由规则使用流经中心的设备到云消息的属性来确定将消息路由到的位置。 默认情况下，消息将路由到与[事件中心][lnk-event-hubs]兼容的内置面向服务的终结点 (messages/events) 中。 因此，可以使用标准[事件中心集成和 SDK][lnk-compatible-endpoint] 接收从设备到云的消息。
 
-IoT 中心使用类似于[事件中心][lnk-event-hubs]的方式实现从设备到云的消息传递。 IoT 中心的从设备到云的消息更像是事件中心*事件*，而不是[服务总线][lnk-servicebus]*消息*。
+IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与[事件中心][lnk-event-hubs]*事件*和[服务总线][lnk-servicebus]*消息*相比，IoT 中心的设备到云消息更类似前者，类似之处在于有大量事件通过可供多个读取器读取的服务。
 
 这种实现具有以下含义：
 
-* 与事件中心事件类似，从设备到云的消息可持久保留在 IoT 中心长达 7 天（请参阅[从设备到云的配置选项][lnk-d2c-configuration]）。
-* 从设备到云的消息分区存放到创建时设置的一组固定分区中（请参阅[从设备到云的配置选项][lnk-d2c-configuration]）。
-* 与事件中心类似，读取设备到云消息的客户端必须处理数据分区和检查点。 请参阅[事件中心 - 使用事件][lnk-event-hubs-consuming-events]。
-* 如同事件中心的事件，设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 批最大可为 256 KB，最多包含 500 条消息。
+* 与事件中心事件类似，设备到云的消息可持久保留在 IoT 中心的默认 **messages/events** 终结点多达&7; 天。
+* 如同事件中心的事件，设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 Batch 最大可为 256 KB。
 
 不过，IoT 中心的设备到云的消息传递与事件中心之间还有一些重要差异：
 
 * 如[控制 IoT 中心的访问权限][lnk-devguide-security]部分所述，IoT 中心允许基于设备的身份验证和访问控制。
+* IoT 中心最多允许创建 10 个自定义终结点。 基于 IoT 中心上配置的路由，将消息传递到终结点。
 * IoT 中心允许同时连接数百万个设备（请参阅[配额和限制][lnk-quotas]），而事件中心则限制为每个命名空间 5000 个 AMQP 连接。
 * IoT 中心不允许使用 **PartitionKey** 任意分区。 从设备到云的消息根据其源于的 **deviceId** 进行分区。
 * IoT 中心的缩放方式与事件中心稍有不同。 有关详细信息，请参阅[缩放 IoT 中心][lnk-guidance-scale]。
 
-> [!NOTE]
-> 在所有情况下，都不能使用 IoT 中心代替事件中心。 例如，在某些事件处理计算中，可能需要在分析数据流之前，根据不同属性或字段重新分区事件。 在这种情况下，你可以使用事件中心来减少流处理管道的两个部分。 有关详细信息，请参阅 [Azure 事件中心概述][lnk-eventhub-partitions]中的*分区*。
-> 
-> 
-
 有关如何使用从设备到云的消息传送的详细信息，请参阅 [Azure IoT SDK][lnk-sdks]。
+
+有关如何设置消息路由的详细信息，请参阅[路由规则](#routing-rules)。
 
 > [!NOTE]
 > 使用 HTTP 发送设备到云的消息时，属性名称和值只能包含 ASCII 字母数字字符加上 ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}``。
@@ -73,17 +69,33 @@ IoT 中心使用类似于[事件中心][lnk-event-hubs]的方式实现从设备�
 > 
 
 ### <a name="non-telemetry-traffic"></a>非遥测流量
-通常，除了遥测数据点之外，设备还会发送消息以及要求执行和处理应用程序业务逻辑层的请求。 例如，必须在后端触发特定操作的关键警报，或者对由后端发送的命令做出的设备响应。
+通常，除了遥测数据点以外，设备还会发送消息以及要求单独执行和处理应用程序业务逻辑层的请求。 例如，关键警报必须在后端触发特定操作。 可轻松编写路由规则，将这些类型的消息发送到专用于其处理的终结点。
 
 有关此类消息的最佳处理方式的详细信息，请参阅[教程：如何处理 IoT 中心从设备到云的消息][lnk-d2c-tutorial]教程。
 
-### <a name="device-to-cloud-configuration-options"></a>设备到云的配置选项
-IoT 中心公开以下属性让你控制设备到云的消息传送。
+### <a name="routing-rules"></a>路由规则
+
+IoT 中心允许基于消息属性将消息路由到 IoT 中心终结点。 使用路由规则可将消息灵活发送到所需目标位置，无需借助其他服务来处理消息，也无需编写其他代码。 配置的每个路由规则包含以下属性：
+
+* **名称**。 用于标识规则的唯一名称。
+* **源**。 要处理的数据流的来源。 例如，设备遥测。
+* **条件**。 路由规则的查询表达式，针对消息的属性运行，用于确定消息是否与终结点匹配。 有关构造路由条件的详细信息，请参阅[参考 - 设备孪生和作业的查询语言][lnk-devguide-query-language]。
+* **终结点**。 IoT 中心将匹配条件的消息发送到的终结点的名称。 终结点应与 IoT 中心位于同一区域，否则跨区域写入将产生费用。
+
+一条消息可能与多个路由规则中的条件匹配，在这种情况下，IoT 中心会将该消息传递到与每个匹配规则关联的终结点。 IoT 中心还会自动删除重复的消息传递，因此如果消息与具有相同目标的多个规则匹配，则仅会将其写入该目标位置一次。
+
+有关在 IoT 中心创建自定义终结点的详细信息，请参阅 [IoT 中心终结点][lnk-devguide-endpoints]。
+
+### <a name="built-in-endpoint-messagesevents"></a>内置终结点：messages/events
+
+IoT 中心公开以下属性以允许用户控制内置消息传送终结点 **messages/events**。
 
 * **分区计数**。 在创建时设置此属性，以便为设备到云事件引入定义分区数。
 * **保留时间**。 此属性指定设备到云消息的保留时间。 默认值为一天，但可以增加到七天。
 
-此外，类似于事件中心，IoT 中心也可让你管理设备到云接收终结点上的使用者组。
+IoT 中心还支持用户管理内置设备到云接收终结点上的使用者组。
+
+默认情况下，不显式匹配消息路由规则的所有消息都将写入到内置终结点。 如果禁用此回退路由，将删除不显式匹配任何消息路由规则的消息。
 
 可以通过 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式修改上述所有属性，或使用 [Azure 门户][lnk-management-portal]进行修改。
 
@@ -120,7 +132,7 @@ IoT 中心公开以下属性让你控制设备到云的消息传送。
 > 
 
 ### <a name="message-lifecycle"></a>消息生命周期
-为了保证至少一次消息传递，IoT 中心将从云到设备的消息保留在每个设备队列中。 设备必须显式确认*完成*，IoT 中心才会从队列中将其删除。 这是为了保证连接失败和设备故障时能够恢复。
+为了保证至少一次消息传递，IoT 中心将云到设备的消息保留在每个设备队列中。 设备必须显式确认*完成*，IoT 中心才会从队列中将其删除。 这是为了保证连接失败和设备故障时能够恢复。
 
 下图显示了云到设备消息的生命周期状态图。
 
@@ -140,7 +152,7 @@ IoT 中心公开以下属性让你控制设备到云的消息传送。
 有关从云到设备的消息的教程，请参阅[教程：如何使用 IoT 中心发送从云到设备的消息][lnk-c2d-tutorial]。 有关不同 Azure IoT SDK 如何公开从云到设备的功能的参考主题，请参阅 [Azure IoT SDK][lnk-sdks]。
 
 > [!NOTE]
-> 通常只要丢失消息不影响应用程序逻辑，就会完成云到设备的消息。 例如，消息内容已成功保留在本地存储空间中，或已成功执行某操作。 该消息还可能携带暂时性信息，该信息的丢失不会影响应用程序的功能。 有时，对于长时间运行的任务，你可以在将任务说明保留到本地存储空间后完成该云到设备的消息。 然后，在作业进度的不同阶段，你可以使用一条或多条设备到云的消息通知应用程序后端。
+> 通常只要丢失消息不影响应用程序逻辑，就会完成云到设备的消息。 例如，消息内容已成功保留在本地存储空间中，或已成功执行某操作。 该消息还可能携带暂时性信息，该信息的丢失不会影响应用程序的功能。 有时，对于长时间运行的任务，你可以在将任务说明保留到本地存储空间后完成该云到设备的消息。 然后，在作业进度的不同阶段，可以使用一条或多条设备到云的消息通知解决方案后端。
 > 
 > 
 
@@ -220,21 +232,30 @@ IoT 中心公开以下属性让你控制设备到云的消息传送。
 有关详细信息，请参阅[创建 IoT 中心][lnk-portal]。
 
 ## <a name="read-device-to-cloud-messages"></a>读取设备到云的消息
-IoT 中心向后端服务公开终结点，以便让后端服务读取中心收到的设备到云的消息。 该终结点与事件中心兼容，因此可以使用事件中心服务支持的任何机制读取消息。
+IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端服务读取中心收到的设备到云消息。 此终结点与事件中心兼容，这样就可以使用事件中心服务支持的任何机制读取消息。
+
+也可以在 IoT 中心创建自定义终结点。 IoT 中心目前支持将事件中心、服务总线队列和服务总线主题用作自定义终结点。 有关从这些服务中读取信息的详细信息，请参阅：从[事件中心][lnk-getstarted-eh]读取信息、从[服务总线队列][lnk-getstarted-queue]读取信息，以及从[服务总线主题][lnk-getstarted-topic]读取信息。
+
+### <a name="reading-from-the-built-in-endpoint"></a>从内置终结点读取信息
 
 使用[适用于 .NET 的 Azure 服务总线 SDK][lnk-servicebus-sdk] 或[事件中心 - 事件处理器主机][lnk-eventprocessorhost]时，可以将任何 IoT 中心连接字符串与正确的权限配合使用。 然后使用**消息/事件**作为事件中心名称。
 
 使用无法识别 IoT 中心的 SDK（或产品集成）时，必须从 [Azure 门户][lnk-management-portal]中的 IoT 中心设置检索与事件中心兼容的终结点和与事件中心兼容的名称：
 
-1. 在 IoT 中心边栏选项卡中单击“消息传递”。
-2. 在“从设备到云的设置”部分中，可以看到以下值：“事件中心兼容的终结点”、“事件中心兼容的名称”和“分区”。
+1. 单击“IoT 中心边栏选项卡”中的“终结点”。
+2. 在“内置终结点”部分，单击“事件”。 边栏选项卡包含以下值：“事件中心兼容的终结点”、“事件中心兼容的名称”、“分区”、“保留时间”和“使用者组”。
    
     ![设备到云的设置][img-eventhubcompatible]
 
 > [!NOTE]
-> 如果 SDK 需要“主机名”或“命名空间”值，请从“事件中心兼容的终结点”中删除方案。 例如，如果事件中心兼容的终结点为 **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**，则**主机名**为 **iothub-ns-myiothub-1234.servicebus.windows.net**，**命名空间**为 **iothub-ns-myiothub-1234**。
+> IoT 中心 SDK 需要 IoT 中心终结点名称，即“终结点”边栏选项卡中所示的 **messages/events**。
+>
+>
+
+> [!NOTE]
+> 如果当前使用的 SDK 需要“主机名”或“命名空间”值，请从“事件中心兼容的终结点”中删除方案。 例如，如果事件中心兼容的终结点为 **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**，则**主机名**为 **iothub-ns-myiothub-1234.servicebus.windows.net**，**命名空间**为 **iothub-ns-myiothub-1234**。
 > 
-> 
+>
 
 然后，可以使用具有 **ServiceConnect** 权限的任何共享访问策略连接到指定的事件中心。
 
@@ -327,31 +348,31 @@ IoT 中心允许设备使用 [MQTT][lnk-mqtt]、基于 WebSocket 的 MQQT、[AMQ
 ## <a name="notes-on-mqtt-support"></a>有关 MQTT 支持的说明
 IoT 中心实现 MQTT v3.1.1 协议，但具有以下限制和特定行为：
 
-* **不支持 QoS 2**。 如果设备客户端使用 **QoS 2** 发布消息，IoT 中心将关闭网络连接。 当设备客户端使用 **QoS 2** 订阅主题时，IoT 中心将在 **SUBACK** 数据包中授予最大 QoS 级别 1。
-* **不会持续保留消息**。 如果设备客户端发布 RETAIN 标志设置为 1 的消息，IoT 中心将在消息中添加 **x-opt-retain** 应用程序属性。 在此情况下，IoT 中心不会持续保留消息，而是将它传递到后端应用程序。
+* **不支持 QoS 2**。 如果设备应用使用 **QoS 2** 发布消息，IoT 中心将关闭网络连接。 当设备应用使用 **QoS 2** 订阅主题时，IoT 中心将在 **SUBACK** 包中授予最高 QoS 级别 1。
+* **不会持续保留消息**。 如果设备应用发布 RETAIN 标志设置为 1 的消息，IoT 中心将在消息中添加 **x-opt-retain** 应用程序属性。 在此情况下，IoT 中心不会持续保留消息，而是将它传递到后端应用。
 
 有关详细信息，请参阅 [IoT 中心 MQTT 支持][lnk-devguide-mqtt]。
 
 最后请检查 [Azure IoT 协议网关][lnk-azure-protocol-gateway]，可以通过它部署直接与 IoT 中心连接的高性能自定义协议网关。 Azure IoT 协议网关可让你自定义设备协议，以适应要重建的 MQTT 部署或其他自定义协议。 但是，这种方法要求运行并使用自定义协议网关。
 
 ## <a name="additional-reference-material"></a>其他参考资料
-开发人员指南中的其他参考主题包括：
+IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点][lnk-endpoints]，说明了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
-* [限制和配额][lnk-quotas]，说明了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
-* [Azure IoT 设备和服务 SDK][lnk-sdks]，列出了在开发与 IoT 中心交互的设备和服务应用程序时可以使用的各种语言 SDK。
-* [设备克隆和作业的 IoT 中心查询语言][lnk-query]，介绍从 IoT 中心检索有关设备克隆和作业的信息时可以使用的 IoT 中心查询语言。
+* [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+* [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
+* [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
+* [设备克隆和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的 IoT 中心查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-现在已了解如何使用 IoT 中心发送和接收消息，你可能对以下开发人员指南主题感兴趣：
+了解如何使用 IoT 中心发送和接收消息后，可以根据兴趣参阅以下开发人员指南主题：
 
 * [从设备上载文件][lnk-devguide-upload]
 * [管理 IoT 中心的设备标识][lnk-devguide-identities]
 * [控制对 IoT 中心的访问][lnk-devguide-security]
 * [使用设备克隆来同步状态和配置][lnk-devguide-device-twins]
 * [在设备上调用直接方法][lnk-devguide-directmethods]
-* [在多个设备上计划作业][lnk-devguide-jobs]
+* [在多台设备上安排作业][lnk-devguide-jobs]
 
 如果要尝试本文中介绍的一些概念，你可能对以下 IoT 中心教程感兴趣：
 
@@ -374,6 +395,9 @@ IoT 中心实现 MQTT v3.1.1 协议，但具有以下限制和特定行为：
 [lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-portal]: iot-hub-create-through-portal.md
+[lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+[lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+[lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
@@ -388,7 +412,6 @@ IoT 中心实现 MQTT v3.1.1 协议，但具有以下限制和特定行为：
 [lnk-compatible-endpoint]: iot-hub-devguide-messaging.md#read-device-to-cloud-messages
 [lnk-protocols]: iot-hub-devguide-messaging.md#communication-protocols
 [lnk-message-format]: iot-hub-devguide-messaging.md#message-format
-[lnk-d2c-configuration]: iot-hub-devguide-messaging.md#device-to-cloud-configuration-options
 [lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
 [lnk-ttl]: iot-hub-devguide-messaging.md#message-expiration-time-to-live
 [lnk-c2d-configuration]: iot-hub-devguide-messaging.md#cloud-to-device-configuration-options
@@ -405,7 +428,8 @@ IoT 中心实现 MQTT v3.1.1 协议，但具有以下限制和特定行为：
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-servicebus-sdk]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
 [lnk-eventprocessorhost]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx
-
+[lnk-devguide-query-language]: iot-hub-devguide-query-language.md
+[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
@@ -413,6 +437,6 @@ IoT 中心实现 MQTT v3.1.1 协议，但具有以下限制和特定行为：
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO5-->
 
 

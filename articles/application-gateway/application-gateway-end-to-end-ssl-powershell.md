@@ -4,7 +4,7 @@ description: "本文介绍如何使用 Azure Resource Manager PowerShell 通过�
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: e6d80a33-4047-4538-8c83-e88876c8834e
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: 6f061810b865e7855877bf08b02e758351f3e63c
+ms.sourcegitcommit: 09aeb63d4c2e68f22ec02f8c08f5a30c32d879dc
+ms.openlocfilehash: c76dc14998ebf01a938c67d6c78384e169f83266
 
 
 ---
@@ -29,9 +29,7 @@ ms.openlocfilehash: 6f061810b865e7855877bf08b02e758351f3e63c
 应用程序网关支持的另一个功能是禁用特定 SSL 协议版本。 应用程序网关支持禁用以下协议版本：**TLSv1.0**、**TLSv1.1** 和 **TLSv1.2**。
 
 > [!NOTE]
-> SSL 2.0 和 SSL 3.0 默认处于禁用状态且无法启用。 这些版本被视为不安全的版本，不能用于应用程序网关
-> 
-> 
+> SSL 2.0 和 SSL 3.0 默认处于禁用状态且无法启用。 这些版本被视为不安全的版本，不能用于应用程序网关。
 
 ![方案图像][scenario]
 
@@ -135,8 +133,6 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 
 > [!IMPORTANT]
 > 应用程序网关不支持使用通过定义的域标签创建的公共 IP 地址。 仅支持具有动态创建的域标签的公共 IP 地址。 如果需要应用程序网关具有友好的 DNS 名称，建议使用 CNAME 记录作为别名。
-> 
-> 
 
 ## <a name="create-an-application-gateway-configuration-object"></a>创建应用程序网关配置对象
 
@@ -167,9 +163,7 @@ $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendI
 ```
 
 > [!NOTE]
-> 完全限定的域名 (FQDN) 也是可以通过 -BackendFqdns 开关替换后端服务器 IP 地址的有效值。
-> 
-> 
+> 完全限定的域名 (FQDN) 也是可以通过 -BackendFqdns 开关替换后端服务器 IP 地址的有效值。 
 
 ### <a name="step-4"></a>步骤 4
 
@@ -189,8 +183,6 @@ $cert = New-AzureRmApplicationGatewaySslCertificate -Name cert01 -CertificateFil
 
 > [!NOTE]
 > 此示例配置用于 SSL 连接的证书。 该证书需采用 .pfx 格式，并且密码必须为 4 到 12 个字符。
-> 
-> 
 
 ### <a name="step-6"></a>步骤 6
 
@@ -206,8 +198,6 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol
 
 > [!NOTE]
 > 默认探测从后端的 IP 地址上的**默认** SSL 绑定获取公钥，并将其收到的公钥值与用户在此处提供的公钥值进行比较。 **如果**用户使用后端的主机标头和 SNI，则检索到的公钥不一定是预期会将流量传输到其中的站点。 如果有疑问，请访问后端的 https://127.0.0.1/，确认用于**默认** SSL 绑定的证书。 本部分使用该请求中的公钥。 如果对 HTTPS 绑定使用主机头和 SNI，但未从后端上 https://127.0.0.1/ 的手动浏览器请求收到响应和证书，则必须在后端设置默认 SSL 绑定。 如果不这样做，探测会失败，系统就不会将后端列入允许名单。
-> 
-> 
 
 ```powershell
 $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
@@ -215,8 +205,6 @@ $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitel
 
 > [!NOTE]
 > 此步骤中提供的证书应该是后端中存在的 pfx 证书的公钥。 以 .CER 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的白名单。
-> 
-> 
 
 ### <a name="step-8"></a>步骤 8
 
@@ -244,8 +232,6 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 
 > [!NOTE]
 > 进行测试时，可以选择 1 作为实例计数。 必须知道的是，2 以下的实例计数不受 SLA 支持，因此不建议使用。 小型网关用于开发/测试，不用于生产。
-> 
-> 
 
 ### <a name="step-11"></a>步骤 11
 
@@ -337,6 +323,6 @@ DnsSettings              : {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

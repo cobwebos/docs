@@ -1,6 +1,7 @@
 ---
-title: "使用 SQL Server Management Studio 将 SQL Server 数据库导出到 BACPAC 文件 | Microsoft 文档"
-description: "Microsoft Azure SQL 数据库, 数据库迁移, 导出数据库, 导出 BACPAC 文件,“导出数据层应用程序”向导"
+title: "SSMS：将 SQL Server 数据库导出到 BACPAC 文件 (Azure) | Microsoft Docs"
+description: "本文说明如何使用 SQL Server Management Studio 中的“导出数据层应用程序”向导将 SQL Server 数据库导出到 BACPAC 文件。"
+keywords: "Microsoft Azure SQL 数据库, 数据库迁移, 导出数据库, 导出 BACPAC 文件,“导出数据层应用程序”向导"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: f6f64479f6ddfda4badb8e826e03369c476d6d1d
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: f0238ac34a4a047bd0286a1a87d2427caf0e06fd
 
 
 ---
@@ -67,6 +68,6 @@ ms.openlocfilehash: f6f64479f6ddfda4badb8e826e03369c476d6d1d
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -30,7 +30,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * 磁贴（仅 Windows Phone）
 
 ## <a name="content-of-announcements"></a>公告的内容
- ![市场宣传内容 1][30] 
+ ![市场宣传内容&1;][30] 
 
 ### <a name="choose-the-type-of-your-announcement"></a>选择公告的类型：
 * 仅通知：这是一个简单的标准通知。 也就是说，如果用户单击它，不会出现其他视图，但会发生仅与其关联的操作
@@ -75,8 +75,8 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
   * 示例：geo:0,0?q=starbucks,paris
 * **仅限 iOS 操作**
   * 从 App Store 下载应用程序
-  * http://itunes.apple.com/[国家/地区]/app/[应用名称]/id[应用 ID]?mt=8 
-  * 示例：http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
+  * 示例:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Windows 操作
   * 打开网页
   * http://\[网站域\] 
@@ -113,7 +113,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * [UI 文档 - 市场宣传 - 新推送条件][Link 28]
 
 ## <a name="content-of-polls"></a>投票内容
-![市场宣传内容 2][31] 
+![市场宣传内容&2;][31] 
 
 填写公告的标题、说明和按钮文本。 然后，添加问题以及问题答案的选项。
 你可以基于用户对此活动的响应方式的市场宣传反馈确定未来活动的访问群体。 可以基于是只推送、回复、操作还是退出此活动确定访问群体。 也可以基于投票结果反馈（其中问题和答案选项用作条件）确定访问群体。
@@ -122,7 +122,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * [UI 文档 - 市场宣传 - 新推送条件][Link 28]
 
 ## <a name="content-of-data-pushes"></a>数据推送的内容
-![市场宣传内容 3][32] 
+![市场宣传内容&3;][32] 
 
 ### <a name="choose-the-type-of-your-data"></a>选择数据的类型：
 * 文本
@@ -138,7 +138,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * [UI 文档 - 市场宣传 - 新推送条件][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>磁贴的内容（仅 Windows Phone）
-![市场宣传内容 4][33]
+![市场宣传内容&4;][33]
 
 ### <a name="define-the-content-of-your-tile"></a>定义磁贴的内容
 磁贴有效负载是要在 Windows Phone 设备上的应用的磁贴中显示的文本。

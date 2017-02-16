@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 12/14/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fe034613c537ce0940f7220e4695727bdc2277c2
+ms.sourcegitcommit: 7b1b50f71158e62da6b8ceb741a5b8cf9795e3a4
+ms.openlocfilehash: 8e171d56bb67c971337fa383014988074ec828b1
 
 
 ---
@@ -219,7 +219,7 @@ namespace WorkerRole1
 ## <a name="network-traffic-rules-to-control-role-communication"></a>用于控制角色通信的网络流量规则
 在定义内部终结点之后，可以根据创建的终结点添加网络流量规则以控制各角色实例之间的通信方式。 下图演示了一些用于控制角色通信的常见方案：
 
-![网络流量规则方案](./media/cloud-services-enable-communication-role-instances/scenarios.png "Network Traffic Rules Scenarios")
+![网络通信规则方案](./media/cloud-services-enable-communication-role-instances/scenarios.png "网络通信规则方案")
 
 以下代码示例演示了上图中显示的角色的角色定义。 每个角色定义包含至少一个已定义的内部终结点：
 
@@ -375,6 +375,6 @@ namespace WorkerRole1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

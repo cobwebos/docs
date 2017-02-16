@@ -1,10 +1,10 @@
 ---
 title: "将 Azure VM 备份到恢复服务保管库 | Microsoft Docs"
-description: "使用本文中的 Azure 虚拟机备份过程来发现 Azure 虚拟机并将其注册和备份到恢复服务保管库。"
+description: "发现、注册和备份 Azure 虚拟机到恢复服务保管库。"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "虚拟机备份; 备份虚拟机; 备份和灾难恢复; arm vm 备份"
 ms.assetid: 5c68481d-7be3-4e68-b87c-0961c267053e
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.date: 1/30/2017
+ms.author: trinadhk;jimpark;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: ac8df40db8ddcc84a0a6221dddd0f17fecbe6586
-ms.openlocfilehash: e80d4fdb6f189bf46096422602508b0827f41a67
+ms.sourcegitcommit: 39147f2db1e660a21d6ed622206787ea0c569056
+ms.openlocfilehash: 28a5014f7ee73b30f879d249811e7fc303b13ac6
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: e80d4fdb6f189bf46096422602508b0827f41a67
 >
 >
 
-本文介绍了将 Azure VM（资源管理器部署和经典部署）备份到恢复服务保管库的过程。 备份 VM 的大部分工作是进行准备。 在进行备份或保护 VM 之前，必须完成[先决条件](backup-azure-arm-vms-prepare.md)中的步骤来准备好保护 VM 的环境。 完成先决条件后，可以启动备份操作来创建 VM 的快照。
+本文详细介绍如何将 Azure VM（使用 Resource Manager 部署和经典模型部署）备份到恢复服务保管库。 备份 VM 的大部分工作是进行准备。 在进行备份或保护 VM 之前，必须完成[先决条件](backup-azure-arm-vms-prepare.md)中的步骤来准备好保护 VM 的环境。 完成先决条件后，可以启动备份操作来创建 VM 的快照。
 
 
 [!INCLUDE [learn about backup deployment models](../../includes/backup-deployment-models.md)]
@@ -82,6 +82,6 @@ ms.openlocfilehash: e80d4fdb6f189bf46096422602508b0827f41a67
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

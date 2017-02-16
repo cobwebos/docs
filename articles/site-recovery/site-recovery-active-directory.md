@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/16/2016
+ms.date: 12/19/2016
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8e9b7dcc2c7011a616d96c8623335c913f647a9b
+ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
+ms.openlocfilehash: 9f3d87fe08b13f08622b4bd169240a2ec0683b00
 
 
 ---
@@ -75,17 +75,21 @@ Site Recovery 是一项 Azure 服务，可通过协调虚拟机的复制、故�
 大多数应用程序还需要域控制器和 DNS 服务器存在，因此在应用程序故障转移之前，需要在隔离的网络中创建域控制器以用于测试故障转移。 若要这样做，最简单的方法是在运行应用程序恢复计划的测试故障转移之前，先使用站点恢复在域控制器/DNS 虚拟机上启用保护，然后对该虚拟机运行测试故障转移。 下面介绍了操作方法：
 
 1. 在站点恢复中为域控制器/DNS 虚拟机启用保护。
-2. 创建独立的网络。 默认情况下，在 Azure 中创建的任何虚拟网络都是独立于其他网络的。 建议将此网络的 IP 地址范围设置为与生产网络相同。 不要在此网络上启用站点到站点连接。
-3. 提供创建的网站的 DNS IP 地址作为 DNS 虚拟机应该获取的 IP 地址。 如果要复制到 Azure，请在 VM 属性的“**目标 IP**”设置中提供 VM 用于故障转移的 IP 地址。 如果要复制到其他本地站点并使用 DHCP，请按照说明来[针对测试故障转移设置 DNS 和 DHCP](site-recovery-failover.md#prepare-dhcp)
+1. 创建独立的网络。 默认情况下，在 Azure 中创建的任何虚拟网络都是独立于其他网络的。 建议将此网络的 IP 地址范围设置为与生产网络相同。 不要在此网络上启用站点到站点连接。
+1. 提供创建的网站的 DNS IP 地址作为 DNS 虚拟机应该获取的 IP 地址。 如果要复制到 Azure，请在 VM 属性的“**目标 IP**”设置中提供 VM 用于故障转移的 IP 地址。 如果要复制到其他本地站点并使用 DHCP，请按照说明来[针对测试故障转移设置 DNS 和 DHCP](site-recovery-failover.md#prepare-dhcp)
 
-> [!NOTE]
-> 如果 IP 地址可用于测试故障转移网络，则在测试故障转移期间分配给虚拟机的 IP 地址与在运行计划或非计划的故障转移时获取的 IP 地址相同。 如果该 IP 地址不可用，则虚拟机收到的 IP 地址与测试故障转移网络中提供的 IP 地址不同。
-> 
-> 
+    > [!NOTE]
+    > 如果 IP 地址可用于测试故障转移网络，则在测试故障转移期间分配给虚拟机的 IP 地址与在运行计划或非计划的故障转移时获取的 IP 地址相同。 如果该 IP 地址不可用，则虚拟机收到的 IP 地址与测试故障转移网络中提供的 IP 地址不同。
+    > 
+    > 
 
-1. 在域控制器虚拟机上，在隔离的网络中对它运行测试故障转移。 使用域控制器虚拟机的最新可用的应用程序一致的恢复点来执行测试故障转移。 
-2. 运行应用程序恢复计划的测试故障转移。
-3. 测试完成后，在 Site Recovery 门户的“**作业**”选项卡中将针对域控制器虚拟机和恢复计划进行的故障转移作业标记为“完成”。
+1. 在域控制器虚拟机上，在隔离的网络中对它运行测试故障转移。 使用域控制器虚拟机的最新可用的**应用程序一致**的恢复点来执行测试故障转移。 
+1. 运行应用程序恢复计划的测试故障转移。
+1. 测试完成后，在 Site Recovery 门户的“**作业**”选项卡中将针对域控制器虚拟机和恢复计划进行的故障转移作业标记为“完成”。
+
+### <a name="removing-reference-to-other-domain-controllers"></a>删除对其他域控制器的引用
+进行测试性故障转移时，不需将所有域控制器都带到测试网络中。 若要删除生产环境中存在的其他域控制器的引用，需针对缺失的域控制器[获取 FSMO Active Directory 角色并执行元数据清理](http://aka.ms/ad_seize_fsmo)。 
+
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>不同计算机上的 DNS 和域控制器
 如果 DNS 与域控制器不在同一个虚拟机上，则需创建一个可以进行测试性故障转移的 DNS VM。 如果它们位于同一 VM 上，则可跳过本部分。
@@ -114,6 +118,6 @@ Site Recovery 是一项 Azure 服务，可通过协调虚拟机的复制、故�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

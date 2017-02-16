@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: 63b95e205a48e11a5a0717c07ad49cccc8da91b4
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: ab33a7610b8e7bbf64e9f1bfde3753f95956a82f
 
 
 ---
@@ -34,7 +34,7 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
 例如，管理解决方案可能包含 [Azure 自动化 Runbook](../automation/automation-intro.md)（可使用[计划](../automation/automation-schedules.md)将数据收集到 Log Analytics 存储库）和[视图](../log-analytics/log-analytics-view-designer.md)（可提供所收集数据的各种可视化）。  其他解决方案可能也使用同一计划。  作为管理解决方案作者，你将总共定义三种资源，但要指定在删除解决方案时，Runbook 和视图也应自动删除。    你还将定义该计划，但指定如果在其他解决方案仍在使用该解决方案时将其删除，它应保留在原位。
 
 ## <a name="management-solution-files"></a>管理解决方案文件
-管理解决方案作为[资源管理模板](../resource-manager-template-walkthrough.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何定义典型的解决方案资源的唯一详细信息。
+管理解决方案作为[资源管理模板](../azure-resource-manager/resource-manager-template-walkthrough.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何定义典型的解决方案资源的唯一详细信息。
 
 管理解决方案文件的基本结构与如下所示的 [Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md#template-format) 相同。  以下各节描述了解决方案中的顶级元素及其内容。  
 
@@ -181,7 +181,7 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
     ]
 
 ### <a name="dependencies"></a>依赖项
-**dependsOn** 元素指定对另一个资源的[依赖](../resource-group-define-dependencies.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](operations-management-suite-solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](operations-management-suite-solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
+**dependsOn** 元素指定对另一个资源的[依赖](../azure-resource-manager/resource-group-define-dependencies.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](operations-management-suite-solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](operations-management-suite-solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="oms-workspace-and-automation-account"></a>OMS 工作区和自动化帐户
 管理解决方案需要 [OMS 工作区](../log-analytics/log-analytics-manage-access.md)来包含视图，也需要[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)，但作为作者，你应考虑以下几点。
@@ -228,7 +228,7 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
 
 
 ### <a name="dependencies"></a>依赖项
-解决方案资源必须具有针对解决方案中所有其他资源的[依赖](../resource-group-define-dependencies.md)，因为它们在解决方案创建之前必须已经存在。  通过在 **dependsOn** 元素中添加每个资源的项实现此目的。
+解决方案资源必须具有针对解决方案中所有其他资源的[依赖](../azure-resource-manager/resource-group-define-dependencies.md)，因为它们在解决方案创建之前必须已经存在。  通过在 **dependsOn** 元素中添加每个资源的项实现此目的。
 
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
@@ -268,6 +268,6 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

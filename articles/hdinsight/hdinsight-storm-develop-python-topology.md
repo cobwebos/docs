@@ -12,23 +12,29 @@ ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4b667dda33c61c44090cf89ebeebece0b19c84ea
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
 
 
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
+
 Apache Storm 支持多种语言，甚至允许将几种语言的组件组合到一个拓扑中。 在本文档中，将学习如何在 HDInsight 上基于 Java 和 Clojure 的 Storm 拓扑中使用 Python 组件。
 
+> [!IMPORTANT]
+> 本文档提供了使用基于 Windows 和基于 Linux 的 HDInsight 群集的步骤。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 ## <a name="prerequisites"></a>先决条件
+
 * Python 2.7 或更高版本
 * Java JDK 1.7 或更高版本
 * [Leiningen](http://leiningen.org/)
 
 ## <a name="storm-multi-language-support"></a>Storm 多语言支持
+
 Storm 旨在与用任何编程语言编写的组件配合使用，但这需要这些组件了解如何处理 [Storm 的 Thrift 定义](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)。 对于 Python，会以 Apache Storm 项目的一部分提供模块，让用户可以轻松与 Storm 进行交互。 可以在 [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) 上找到此模块。
 
 由于 Apache Storm 是在 Java 虚拟机 (JVM) 上运行的 Java 进程，使用其他语言编写的组件将作为子进程执行。 在 JVM 中运行的 Storm 位使用通过 stdin/stdout 发送的 JSON 消息与这些子进程进行通信。 有关组件间通信的更多详细信息，请参阅 [Multi-lang Protocol](https://storm.apache.org/documentation/Multilang-protocol.html)（多语言协议）文档。
@@ -181,6 +187,6 @@ Java 在此处调用 Python 并运行包含实际 bolt 逻辑的脚本。 Java s
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

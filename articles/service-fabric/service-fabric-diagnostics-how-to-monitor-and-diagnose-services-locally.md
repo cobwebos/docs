@@ -1,5 +1,5 @@
 ---
-title: "在本地监视和诊断使用 Azure Service Fabric 编写的服务 | Microsoft 文档"
+title: "调试 Windows 中的 Azure 微服务 | Microsoft Docs"
 description: "了解如何监视和诊断本地开发计算机上使用 Microsoft Azure Service Fabric 编写的服务。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/06/2016
+ms.date: 01/04/2017
 ms.author: toddabel
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57e281b5e3a86b2a7bc78d47163b0475898869f0
+ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
+ms.openlocfilehash: 5421cf66449892bb7bbc46cd8727a0642b7d66f3
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 57e281b5e3a86b2a7bc78d47163b0475898869f0
 > 
 > 
 
-监视、检测、诊断和故障排除允许服务继续运行，同时对用户体验造成最小中断。 虽然监视和诊断在实际部署的生产环境中相当重要，但是效力将取决于在服务开发过程中采用类似的模型，以便在你移到实际安装时能确保其正常工作。 Service Fabric 使服务开发人员能够轻松实现可以跨单个计算机本地开发安装和实际生产群集安装无缝工作的诊断。
+监视、检测、诊断和故障排除允许服务继续运行，同时对用户体验造成最小中断。 虽然监视和诊断在实际部署的生产环境中相当重要，但是效率将取决于在服务开发过程中采用类似的模型，以便在你移到实际安装时能确保其正常工作。 Service Fabric 使服务开发人员能够轻松实现可以跨单个计算机本地开发安装和实际生产群集安装无缝工作的诊断。
 
 ## <a name="the-benefits-of-event-tracing-for-windows"></a>Windows 事件跟踪的优势
 [Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 是推荐的用于跟踪 Service Fabric 中的消息的技术。 这是因为：
@@ -65,11 +65,11 @@ Service Fabric Visual Studio 项目模板包含示例代码。 该代码演示�
 你添加到上述应用程序用于进行本地诊断的相同跟踪代码将与工具一起工作，在 Azure 群集上运行应用程序时，你可以使用这些工具查看这些事件。 请查看以下文章，其中介绍了不同的工具选项，以及如何设置这些选项。
 
 * [如何使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-wad.md)
-* [将 ElasticSearch 用作 Service Fabric 应用程序跟踪存储](service-fabric-diagnostic-how-to-use-elasticsearch.md)
+* [直接从服务进程收集日志](service-fabric-diagnostic-collect-logs-without-an-agent.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

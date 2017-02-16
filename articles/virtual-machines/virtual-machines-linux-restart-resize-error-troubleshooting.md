@@ -13,11 +13,11 @@ ms.topic: support-article
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.workload: required
-ms.date: 09/09/2016
+ms.date: 01/10/2017
 ms.author: delhan
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 9f85988268d4c832c46da1790c83d4a78141f489
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: f237c5ffe9e95d538959e2d622bb643c9986f0d2
 
 
 ---
@@ -26,12 +26,12 @@ ms.openlocfilehash: 9f85988268d4c832c46da1790c83d4a78141f489
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="collect-audit-logs"></a>收集审核日志
-若要开始故障排除，请收集审核日志，以识别与问题相关的错误。 以下链接包含有关过程的详细信息：
+## <a name="collect-activity-logs"></a>收集活动日志
+若要开始故障排除，请收集活动日志，以识别与问题相关的错误。 以下链接包含有关过程的详细信息：
 
-[使用 Azure 门户对资源组部署进行故障排除](../resource-manager-troubleshoot-deployments-portal.md)
+[查看部署操作](../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[使用 Resource Manager 执行审核操作](../resource-group-audit.md)
+[通过查看活动日志管理 Azure 资源](../azure-resource-manager/resource-group-audit.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>问题：启动已停止的 VM 时发生错误
 你尝试启动已停止的 VM，但出现分配失败。
@@ -68,6 +68,6 @@ ms.openlocfilehash: 9f85988268d4c832c46da1790c83d4a78141f489
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 10/27/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: b2cd533ab24feb3ce521db5f8406576f86e460d9
+ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
+ms.openlocfilehash: 12da49e49782869153dcecbf6e4ca0ec24fa5960
 
 
 ---
@@ -87,7 +87,7 @@ azure vm create \
     --vm-size Standard_DS2_v2 \
     --storage-account-name mystorageaccount \
     --image-urn UbuntuLTS \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
@@ -131,7 +131,7 @@ azure vm create \
     --vm-size Standard_DS2_v2 \
     --storage-account-name mystorageaccount \
     --image-urn UbuntuLTS \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
@@ -145,7 +145,7 @@ Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可�
 }
 ```
 
-阅读有关[使用 *copy* 创建多个实例](../resource-group-create-multiple.md)的详细信息。 
+阅读有关[使用 *copy* 创建多个实例](../azure-resource-manager/resource-group-create-multiple.md)的详细信息。 
 
 也可以使用 `copyIndex()` 并在资源名称中追加一个数字，来创建 `myNic1`、`myNic2`，等等。下面显示了追加索引值的示例：
 
@@ -163,6 +163,6 @@ Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

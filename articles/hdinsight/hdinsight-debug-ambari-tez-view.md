@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1099d742e555bcc7b7730409c85c10778967678
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: 0c288989a2b1662bcbec6fd2c74dffaefedc82b8
 
 
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>使用 Ambari 视图来调试 HDInsight 上的 Tez 作业
 适用于 HDInsight 的 Ambari Web UI 所含的 Tez 视图可用于了解和调试将 Tez 用作执行引擎的作业。 利用 Tez 视图，你可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
 
-> [!NOTE]
-> 本文档中的信息针对基于 Linux 的 HDInsight 群集。 如需了解如何使用基于 Windows 的 HDInsight 来调试 Tez 作业，请参阅[使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业](hdinsight-debug-tez-ui.md)。
-> 
-> 
+> [!IMPORTANT]
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
 
 ## <a name="prerequisites"></a>先决条件
 * 基于 Linux 的 HDInsight 群集。 有关创建新群集的步骤，请参阅[开始使用基于 Linux 的 HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)。
@@ -133,6 +131,6 @@ Tez 视图包含数据的前提是使用 Tez 引擎的作业当前正在运行�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

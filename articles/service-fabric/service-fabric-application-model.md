@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/01/2016
+ms.date: 1/05/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b27f818d5f91fe1272017cf6b7e859bc1673fe92
+ms.sourcegitcommit: 62374d57829067b27bb5876e6bbd9f869cff9187
+ms.openlocfilehash: 4991992f15b941ab9250705e20ff5f37defc30d0
 
 
 ---
@@ -70,6 +70,10 @@ ms.openlocfilehash: b27f818d5f91fe1272017cf6b7e859bc1673fe92
         <Program>MyServiceHost.exe</Program>
       </ExeHost>
     </EntryPoint>
+    <EnvironmentVariables>
+      <EnvironmentVariable Name="MyEnvVariable" Value=""/>
+      <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+    </EnvironmentVariables>
   </CodePackage>
   <ConfigPackage Name="MyConfig" Version="ConfigVersion1" />
   <DataPackage Name="MyData" Version="DataVersion1" />
@@ -81,6 +85,8 @@ ms.openlocfilehash: b27f818d5f91fe1272017cf6b7e859bc1673fe92
 **ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 请注意，在清单级别而不是代码包级别声明服务类型。 因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都将被激活。
 
 **SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
+
+**EnvironmentVariables** 提供为此代码包设置的环境变量列表。 这些变量可以在 `ApplicationManifest.xml` 中重写，以便为不同的服务实例提供不同的值。 
 
 **DataPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程将在运行时使用的静态数据。
 
@@ -125,6 +131,8 @@ For more information about other features supported by service manifests, refer 
   <Description>An example application manifest</Description>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="MyServiceManifest" ServiceManifestVersion="SvcManifestVersion1"/>
+    <ConfigOverrides/>
+    <EnvironmentOverrides CodePackageRef="MyCode"/>
   </ServiceManifestImport>
   <DefaultServices>
      <Service Name="MyService">
@@ -138,7 +146,8 @@ For more information about other features supported by service manifests, refer 
 
 类似于服务清单，**Version** 特性是未结构化的字符串，并且不由系统进行分析。 这些特性也用于对每个组件进行版本控制，以进行升级。
 
-**ServiceManifestImport** 包含对组成此应用程序类型的服务清单的引用。 导入的服务清单将确定此应用程序类型中哪些服务类型有效。
+**ServiceManifestImport** 包含对组成此应用程序类型的服务清单的引用。 导入的服务清单将确定此应用程序类型中哪些服务类型有效。 在 ServiceManifestImport 中，可以重写 Settings.xml 文件中的配置值和 ServiceManifest.xml 文件中的环境变量。 
+
 
 **DefaultServices** 声明每当一个应用程序依据此应用程序类型进行实例化时自动创建的服务实例。 默认服务只是提供便利，创建后，它们的行为在每个方面都与常规服务类似。 它们与应用程序实例中的任何其他服务一起升级，并且也可以将它们删除。
 
@@ -188,6 +197,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 * 设置和初始化服务可执行文件所需的环境变量。 这并不限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
 
+有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)  
+
+### <a name="configure"></a>配置 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
 如果使用 Visual Studio 2015 创建应用程序，你可以使用“包”命令自动创建符合上述布局的包。
 
@@ -196,6 +208,13 @@ D:\TEMP\MYAPPLICATIONTYPE
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
 打包完成后，该包的位置将显示在“**输出**”窗口中。 请注意，当你在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+
+### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
+还可以使用 `msbuild.exe` 以编程方式打包你的应用程序。 这是 Visual Studio 实际运行的操作，因此输出是相同的。
+
+```shell
+D:\Temp> msbuild HelloWorld.sfproj /t:Package
+```
 
 ### <a name="test-the-package"></a>测试包
 可以使用 **Test-ServiceFabricApplicationPackage** 命令，通过 PowerShell 在本地验证包结构。 此命令将检查是否存在清单分析问题，并验证所有引用。 请注意，此命令只验证包中文件与目录结构的正确性。 它不验证任何代码或数据包内容，而只检查所有必要的文件是否存在。
@@ -236,11 +255,11 @@ PS D:\temp>
 正确打包应用程序并通过验证后，应用程序即已准备就绪，可供部署。
 
 ## <a name="next-steps"></a>后续步骤
-[部署和删除应用程序][10]
+[部署和删除应用程序][10]介绍如何使用 PowerShell 来管理应用程序实例
 
-[管理多个环境的应用程序参数][11]
+[管理多个环境的应用程序参数][11]介绍如何配置不同应用程序实例的参数和环境变量。
 
-[RunAs：使用不同的安全权限运行 Service Fabric 应用程序][12]
+[配置应用程序的安全策略][12]介绍如何在安全策略下运行服务，从而对访问进行限制。
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
@@ -255,6 +274,6 @@ PS D:\temp>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

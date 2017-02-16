@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 06/22/2015
 ms.author: rashimg
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 89618f7549d8589d5ac684772832748ab9765d1a
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0a79029fef54dc8beaaa9daea690a67ae1940c44
 
 
 ---
@@ -100,7 +100,7 @@ Hive 提供了三种不同的机制用于对 JSON 文档运行查询：
 * 使用 GET\_JSON\_OBJECT UDF （用户定义的函数）
 * 使用 JSON_TUPLE UDF
 * 使用自定义 SerDe
-* 使用 Python 或其他语言编写你自己的 UDF。 请参阅[本文][hdinsight-python]，了解如何使用 Hive 运行自己的 Python 代码。
+* 使用 Python 或其他语言编写你自己的 UDF。 请参阅[此文][hdinsight-python]，了解如何使用 Hive 运行自己的 Python 代码。
 
 ### <a name="use-the-getjsonobject-udf"></a>使用 GET\_JSON_OBJECT UDF
 Hive 提供了名为 [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) 的内置 UDF，它可以在运行时执行 JSON 查询。 此方法采用两个参数 – 表名称和方法名称，具有平展的 JSON 文档和需要进行分析的 JSON 字段。 让我们来探讨一个示例，以了解此 UDF 的工作原理。
@@ -142,7 +142,7 @@ SerDe 是用于分析嵌套 JSON 文档的最佳选择，它可让你定义 JSON
 
 **使用自定义 SerDe：**
 
-1. 安装 [Java SE 开发工具包 7u55 JDK 1.7.0_55](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u55-oth-JPR)。 如果你要使用 HDInsight 的 Windows 部署，请选择 Windows X64 版本的 JDK
+1. 安装 [Java SE 开发工具包 7u55 JDK 1.7.0_55](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u55-oth-JPR)。 如果你要使用 HDInsight 的 Windows 部署，请选择 Windows X64 版本的 JDK。
    
    > [!WARNING]
    > JDK 1.8 不适用于此 SerDe。
@@ -167,7 +167,7 @@ SerDe 是用于分析嵌套 JSON 文档的最佳选择，它可让你定义 JSON
 
 4：转到此包下载到的文件夹，然后键入“mvn package”。 这应会创建必要的 jar 文件，然后你可以将其复制到群集。
 
-5：转到根文件夹下存放所下载包的目标文件夹。 将 json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar 文件上传到群集的头节点。 我通常会将它放在 hive bin 文件夹下：C:\apps\dist\hive-0.13.0.2.1.11.0-2316\bin 或类似的文件夹。
+5：转到根文件夹下存放所下载包的目标文件夹。 将 json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar 文件上载到群集的头节点。 我通常会将它放在 hive bin 文件夹下：C:\apps\dist\hive-0.13.0.2.1.11.0-2316\bin 或类似的文件夹。
 
 6：在 hive 提示符下，键入“add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar”。 由于在我的示例中，jar 在 C:\apps\dist\hive-0.13.x\bin 文件夹中，因此我可以直接添加名称如下的 jar：
 
@@ -260,6 +260,6 @@ SerDe 是用于分析嵌套 JSON 文档的最佳选择，它可让你定义 JSON
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 95ae4f86cb95382eae103c454d209eba4d601adc
-ms.openlocfilehash: cdea2d2ea07c744535bb169e6fd8326a592d5856
+ms.sourcegitcommit: f06bf515accd8507189ecd5f1759f14f4f06fd33
+ms.openlocfilehash: faac9909993895b3e8a27b2cbaa7b62b3e508933
 
 ---
 
@@ -27,7 +27,10 @@ ms.openlocfilehash: cdea2d2ea07c744535bb169e6fd8326a592d5856
 
 DNS 区域文件是一个文本文件，其中包含区域中每个域名系统 (DNS) 记录的详细信息。 它会遵循标准格式，使其适合在 DNS 系统之间传输 DNS 记录。 使用区域文件是从 Azure DNS 传入或传出 DNS 区域的快速、可靠和方便的方法。
 
-Azure DNS 支持通过使用 Azure 命令行接口 (CLI) 导入和导出区域文件。 Azure CLI 是用于管理 Azure 服务的跨平台命令行工具。 它适用于 Windows、Mac 和 Linux 平台，可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)获取。 跨平台支持对导入和导出区域文件尤其重要，因为最常见的名称服务器软件 [BIND](https://www.isc.org/downloads/bind/) 通常在 Linux 上运行。
+Azure DNS 支持通过使用 Azure 命令行接口 (CLI) 导入和导出区域文件。 当前**不**支持通过 Azure PowerShell 或 Azure 门户导入区域文件。
+
+Azure CLI 是用于管理 Azure 服务的跨平台命令行工具。 它适用于 Windows、Mac 和 Linux 平台，可以从 [Azure 下载页](https://azure.microsoft.com/downloads/)获取。 跨平台支持对导入和导出区域文件尤其重要，因为最常见的名称服务器软件 [BIND](https://www.isc.org/downloads/bind/) 通常在 Linux 上运行。
+
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>获取现有的 DNS 区域文件
 
@@ -210,6 +213,6 @@ azure network dns zone import [options] <resource group> <zone name> <zone file 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

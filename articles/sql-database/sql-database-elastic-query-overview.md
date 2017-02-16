@@ -7,6 +7,7 @@ manager: jhubbard
 author: torsteng
 ms.assetid: a8bf0e2c-bc74-44d0-9b1e-bcc9a6aa2e33
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 04/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b86649db4afb6208212647c4858fe25ed2398170
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 21b2c50e79a8a60e7ffe94f7d41dfe3048ec5174
 
 
 ---
@@ -59,7 +60,7 @@ ms.openlocfilehash: b86649db4afb6208212647c4858fe25ed2398170
 弹性查询的客户方案的特征包括以下拓扑：
 
 * **垂直分区 - 跨数据库查询**（拓扑 1）：在数据层中的多个数据库之间对数据进行垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
-* **水平分区 - 分片**（拓扑 2）：将数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。
+* **水平分区 - 分片**（拓扑 2）：对数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。
 
 > [!NOTE]
 > 弹性数据库查询最适合于其中大部分处理可以在数据层上执行的临时报告方案。 对于使用更复杂查询的大量报表工作负荷或数据仓库方案，还可以考虑使用 [Azure SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)。
@@ -67,7 +68,7 @@ ms.openlocfilehash: b86649db4afb6208212647c4858fe25ed2398170
 > 
 
 ## <a name="elastic-database-query-topologies"></a>弹性数据库查询拓扑
-### <a name="topology-1-vertical-partitioning-cross-database-queries"></a>拓扑 1：垂直分区 - 跨数据库查询
+### <a name="topology-1-vertical-partitioning---cross-database-queries"></a>拓扑 1：垂直分区 - 跨数据库查询
 若要开始编写代码，请参阅[跨数据库查询（垂直分区）入门](sql-database-elastic-query-getting-started-vertical.md)。
 
 弹性查询可用于使位于 SQLDB 数据库中的数据可供其他 SQLDB 数据库使用。 这允许从一个数据库的查询引用任何其他远程 SQLDB 数据库中的表。 第一步是定义每个远程数据库的外部数据源。 外部数据源在你要从中获取对远程数据库中的表的访问权限的本地数据库中定义。 在远程数据库上不必进行任何更改。 对于不同数据库具有不同架构的典型垂直分区方案，可以使用弹性查询来实现常见使用案例（例如，访问引用数据和跨数据库查询）。
@@ -84,7 +85,7 @@ ms.openlocfilehash: b86649db4afb6208212647c4858fe25ed2398170
 
 ![垂直分区 - 使用弹性查询来跨多个数据库查询][4]
 
-### <a name="topology-2-horizontal-partitioning-sharding"></a>拓扑 2：水平分区 - 分片
+### <a name="topology-2-horizontal-partitioning---sharding"></a>拓扑 2：水平分区 - 分片
 使用弹性查询对分片（即，水平分区）的数据层执行报表任务需要[弹性数据库分片映射](sql-database-elastic-scale-shard-map-management.md)来表示数据层的数据库。 通常情况下，仅在此方案中使用单个分片映射，并且具有弹性查询功能的专用数据库将作为报表查询的入口点。 只有此专用数据库需要访问分片映射。 图 4 说明了此拓扑及其使用弹性查询数据库和分片映射的配置。 数据层中的数据库可以是任何 Azure SQL 数据库版本。 有关弹性数据库客户端库和创建分片映射的详细信息，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。
 
 **图 4** 水平分区 - 使用弹性查询实现分片数据层上的报告
@@ -173,6 +174,6 @@ ms.openlocfilehash: b86649db4afb6208212647c4858fe25ed2398170
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "用于开发、 测试和生产的单独 Application Insight 资源"
+title: "在 Azure Application Insights 中监视开发、测试和产品 | Microsoft Docs"
 description: "在开发的不同阶段监视应用程序的性能和使用情况"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: bd4ba58715b216473caa4193567f6d3b95d9d347
+ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
+ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
 
 
 ---
@@ -119,6 +119,6 @@ ms.openlocfilehash: bd4ba58715b216473caa4193567f6d3b95d9d347
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 门户创建 IoT 中心 | Microsoft Docs"
-description: "概述如何通过 Azure 门户创建和管理 Azure IoT 中心"
+description: "如何通过 Azure 门户创建、管理和删除 Azure IoT 中心。 包括有关定价层、缩放、安全性和消息传递配置的信息。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/05/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 53f14e6fe115ed5f96d25b9ec5ab04abe23712d5
-ms.openlocfilehash: ee072749e080264b4fa2b6cd0305071ed33b665e
+ms.sourcegitcommit: d4eb942db51af9c8136e9e0f5f8683cc15679d08
+ms.openlocfilehash: 5a0cd9ac88f30bb5f1ccba43260b86392dba6d7b
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: ee072749e080264b4fa2b6cd0305071ed33b665e
 * 通过应用商店创建 IoT 中心：单击“**创建**”打开边栏选项卡，与前面使用“**+ 新建**”时显示的边栏选项卡完全相同。 后续部分列出了涉及创建 IoT 中心的几个步骤。
 
 ### <a name="choose-the-name-of-the-iot-hub"></a>选择 IoT 中心的名称
-若要创建 IoT 中心，必须为 IoT 中心命名。 此名称在所有 IoT 中心间必须唯一。 后端不允许重复的中心，因此，中心的名称越独特越好。
+若要创建 IoT 中心，必须为 IoT 中心命名。 此名称在所有 IoT 中心间必须唯一。 解决方案后端不允许中心重复，因此，中心的名称越独特越好。
 
 ### <a name="choose-the-pricing-tier"></a>选择定价层
 可以从四个层中做选择：**免费**、**标准 1**、**标准 2** 和**标准 S3**。 免费层只允许 500 台设备连接到 IoT 中心，并且每天最多传输 8,000 条信息。
@@ -58,7 +58,7 @@ ms.openlocfilehash: ee072749e080264b4fa2b6cd0305071ed33b665e
 > 
 
 ### <a name="iot-hub-units"></a>IoT 中心单位
-一个 IoT 中心单位每天包含一定数量的消息。 此中心支持的消息总数等于单位数乘以该层每天的消息数。 例如，如果希望 IoT 中心支持 700,000 条消息输入，则选择两个 S1 层单位。
+每日每单位允许的消息数取决于中心的定价层。 例如，如果希望 IoT 中心支持 700,000 条消息输入，则选择两个 S1 层单位。
 
 ### <a name="device-to-cloud-partitions-and-resource-group"></a>设备到云分区和资源组
 可以更改 IoT 中心的分区数目。 默认的分区设置为 4 个。但是，你可以从下拉列表中选择不同的分区数目。
@@ -86,7 +86,7 @@ Azure IoT 中心自动显示用户帐户所链接的 Azure 订阅列表。 可�
 **共享访问策略**：这些策略定义设备与服务连接到 IoT 中心所需的权限。 可以单击“常规”下面的“共享访问策略”来访问这些策略。 在此边栏选项卡中，可以修改现有的策略或添加新策略。
 
 ### <a name="create-a-policy"></a>创建策略
-* 单击“**添加**”打开边栏选项卡。 可在此处输入新的策略名称以及想要与此策略关联的权限，如下图所示。
+* 单击“**添加**”打开边栏选项卡。 可在此处输入新的策略名称以及想要与此策略关联的权限，如下图所示：
   
     有许多权限可与这些共享策略相关联。 前两个策略（**注册表读取**和**注册表写入**）用于向设备标识存储或标识注册表授予读取和写入访问权限。 选择写入选项会自动选择读取选项。
   
@@ -95,11 +95,14 @@ Azure IoT 中心自动显示用户帐户所链接的 Azure 订阅列表。 可�
 
 ![][10]
 
-## <a name="messaging"></a>消息传递
-单击“**消息传送**”可显示正在修改的 IoT 中心的消息传送属性列表。 可修改或复制两种主要类型的属性：“**云到设备**”和“**设备到云**”。
+## <a name="endpoints"></a>终结点
+单击“终结点”可显示要修改的 IoT 中心的终结点列表。 主要有两种类型的终结点：内置到 IoT 中心的终结点，以及创建后添加到 IoT 中心的终结点。
 
-* “**云到设备**”设置：此设置两项子设置：消息的“**云到设备 TTL**”（生存时间）和“**保留时间**”。 首次创建 IoT 中心时，这两项设置的默认值为一小时。 若要调整这些值，请使用滑块或键入值。
-* “**设备到云**”设置：此设置有多项子设置，其中一些已在创建 IoT 中心时命名/分配，并且只能复制到其他可自定义的子设置。 下一部分列出了这些子设置。
+### <a name="built-in-endpoints"></a>内置终结点
+主要有两个内置终结点：**云到设备反馈**和**事件**。
+
+* **云到设备反馈**设置：此设置有两项子设置：消息的**云到设备 TTL**（生存时间）和**保留时间**。 首次创建 IoT 中心时，这两项设置的默认值为一小时。 若要调整这些值，请使用滑块或键入值。
+* **事件**设置：此设置有多项子设置，其中一些已在创建 IoT 中心时命名/分配，并且只能复制到其他可自定义的子设置。 下一部分列出了这些子设置。
 
 **分区**：此值在创建 IoT 中心时设置，并可通过此设置进行更改。
 
@@ -115,6 +118,22 @@ Azure IoT 中心自动显示用户帐户所链接的 Azure 订阅列表。 可�
 > 
 
 ![][11]
+
+### <a name="custom-endpoints"></a>自定义终结点
+可通过门户将自定义终结点添加到 IoT 中心。 在终结点边栏选项卡中，单击边栏选项卡顶部的“添加”，打开“添加终结点”边栏选项卡。 在边栏选项卡中输入所需信息，然后单击“确定”。 自定义终结点随后会在主终结点边栏选项卡中显示。
+
+![][13]
+
+有关自定义终结点的详细信息，请阅读[参考 - IoT 中心终结点][lnk-devguide-endpoints]。
+
+## <a name="routes"></a>路由
+单击“路由”，管理 IoT 中心发送设备到云消息的方式。
+
+![][14]
+
+单击边栏选项卡顶部的“添加”，在边栏选项卡中输入所需信息，然后单击“确定”，即可将其他路由添加到 IoT 中心。 路由随后会在主终结点边栏选项卡中显示。 可通过在路由列表中单击路由并进行修改来编辑路由。 若要启用路由，请在路由列表中单击它，然后将启用/禁用切换按钮设置为“关”。 单击边栏选项卡底部的“确定”保存更改。
+
+![][15]
 
 ## <a name="pricing-and-scale"></a>定价和缩放
 现有 IoT 中心的定价可通过“**定价**”设置来更改，但存在以下例外情况：
@@ -133,12 +152,12 @@ Azure IoT 中心自动显示用户帐户所链接的 Azure 订阅列表。 可�
 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [批量管理 IoT 设备][lnk-bulk]
-* [使用指标][lnk-metrics]
-* [操作监控][lnk-monitor]
+* [IoT 中心度量值][lnk-metrics]
+* [操作监视][lnk-monitor]
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
 * [从根本上保护 IoT 解决方案][lnk-securing]
 
@@ -148,6 +167,9 @@ Azure IoT 中心自动显示用户帐户所链接的 Azure 订阅列表。 可�
 [10]: ./media/iot-hub-create-through-portal/shared-access-policies.png
 [11]: ./media/iot-hub-create-through-portal/messaging-settings.png
 [12]: ./media/iot-hub-create-through-portal/pricing-error.png
+[13]: ./media/iot-hub-create-through-portal/endpoint-creation.png
+[14]: ./media/iot-hub-create-through-portal/routes-list.png
+[15]: ./media/iot-hub-create-through-portal/route-edit.png
 
 [lnk-bulk]: iot-hub-bulk-identity-mgmt.md
 [lnk-metrics]: iot-hub-metrics.md
@@ -156,9 +178,10 @@ Azure IoT 中心自动显示用户帐户所链接的 Azure 订阅列表。 可�
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-securing]: iot-hub-security-ground-up.md
+[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

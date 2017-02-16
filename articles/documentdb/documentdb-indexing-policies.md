@@ -16,13 +16,13 @@ ms.workload: data-services
 ms.date: 12/22/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 994fb8080f053ae3eb72eb1dda92bd5aa46c6988
-ms.openlocfilehash: a48cdb58dd48cc033f69de15fc19f313bc12cdfa
+ms.sourcegitcommit: 7f5e33b7f80e3c1e1e3e66b3cab879a5bc30e823
+ms.openlocfilehash: 6941a0a5e108617ebb16354edc9917392b7cb786
 
 
 ---
 # <a name="documentdb-indexing-policies"></a>DocumentDB 索引策略
-尽管许多客户都愿意让 Azure DocumentDB 自动处理[索引的方方面面](documentdb-indexing.md)，但 DocumentDB 还支持在创建过程中为集合指定自定义**索引策略**。 与其他数据库平台中提供的辅助索引相比，DocumentDB 中的索引策略更加灵活且功能强大，因为它允许你设计和自定义索引形状，而无需牺牲架构的灵活性。 若要了解 DocumentDB 中的索引工作原理，就必须通过管理索引策略来了解它，你可以在索引存储开销、写入和查询吞吐量以及查询一致性之间进行详细权衡。  
+尽管许多客户都愿意让 Azure DocumentDB 自动处理索引的方方面面，但 DocumentDB 还支持在创建过程中为集合指定自定义**索引策略**。 与其他数据库平台中提供的辅助索引相比，DocumentDB 中的索引策略更加灵活且功能强大，因为它允许你设计和自定义索引形状，而无需牺牲架构的灵活性。 若要了解 DocumentDB 中的索引工作原理，就必须通过管理索引策略来了解它，你可以在索引存储开销、写入和查询吞吐量以及查询一致性之间进行详细权衡。  
 
 在本文中，我们将仔细研究 DocumentDB 索引策略、自定义索引策略的方法和相关的权衡方案。 
 
@@ -413,6 +413,6 @@ JSON 规范中实现了以下更改︰
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

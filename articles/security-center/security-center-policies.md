@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/12/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
-ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
+ms.sourcegitcommit: fc82aaf3300a8d40fe00a2ae4dc008ccee6e2a66
+ms.openlocfilehash: 66cdc1fbe5afea4790e5c8ef34b4fcf2d7e89d84
 
 
 ---
@@ -50,7 +50,7 @@ ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
    > 建议为每个订阅启用数据收集功能，确保对所有现有 VM 和新 VM 进行安全监视。 启用数据收集功能需安装监视代理。 如果不希望现在从这个位置启用数据收集功能，可以以后在“运行状况”和“建议”视图中这样做。 也可仅对此订阅或选定 VM 启用数据收集功能。 请参阅 [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题），详细了解受支持的 VM。
    > 
    > 
-5. 如果存储帐户尚未进行配置，则可能会在打开“安全策略”时看到一个警告，如以下屏幕截图所示： 
+5. 如果存储帐户尚未进行配置，则可能会在打开“安全策略”时看到一个警告，如以下屏幕截图所示。 如果不为每个区域选择一个存储帐户，则会创建一个帐户。
    
     ![存储选择](./media/security-center-policies/security-center-policies-fig2.png)
 6. 如果看到此警告，可单击此选项，然后选择相应的区域，如以下屏幕截图所示：
@@ -111,6 +111,6 @@ ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

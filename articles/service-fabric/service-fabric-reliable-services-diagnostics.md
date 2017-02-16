@@ -1,5 +1,5 @@
 ---
-title: "有状态 Reliable Services 诊断 | Microsoft 文档"
+title: "有状态 Reliable Services 诊断 | Microsoft Docs"
 description: "有状态 Reliable Services 的诊断功能"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/17/2016
+ms.date: 01/04/2017
 ms.author: alanwar
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7064de917505223eadc07cde67c373de1cac36ef
+ms.sourcegitcommit: 3ed67788fbbe0c4fb820cfd1525d8c9ee5154446
+ms.openlocfilehash: 5da5707900b35be69018ba4e9c8efb05d8a74a9d
 
 
 ---
@@ -46,9 +46,11 @@ StatefulRunAsyncInvocation、StatefulRunAsyncCompletion 和 StatefulRunAsyncCanc
 
 每当 RunAsync 任务的取消请求花费的时间超过四秒时，都会发出 StatefulRunAsyncSlowCancellation。 当服务花费过长时间完成取消时，它会影响在另一个节点快速重启服务的能力。 这可能会影响服务的总体可用性。
 
+## <a name="next-steps"></a>后续步骤
+* [PerfView 中的 EventSource 提供程序](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "设备克隆入门 | Microsoft Docs"
-description: "本教程演示如何使用设备克隆"
+title: "Azure IoT 中心设备孪生入门 (.NET/Node) | Microsoft Docs"
+description: "如何使用 Azure IoT 中心设备孪生添加标记，然后使用 IoT 中心查询。 使用适用于 Node.js 的 Azure IoT 设备 SDK 实现模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现可添加标记并运行 IoT 中心查询的服务应用。"
 services: iot-hub
 documentationcenter: node
 author: fsautomata
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: f233f75d464ec2796d02f6760ef07512abfe3b2a
 
 
 ---
-# <a name="tutorial-get-started-with-device-twins"></a>教程：设备克隆入门
+# <a name="get-started-with-device-twins-netnode"></a>设备孪生入门 (.NET/Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-在本教程结束时，你将具有 .NET 和 Node.js 控制台应用程序：
+在本教程结束时，你将拥有一个 .NET 控制台应用和一个 Node.js 控制台应用：
 
-* **AddTagsAndQuery.sln**，它是应从后端运行的 .NET 应用程序，用于添加标记并查询设备克隆。
+* **AddTagsAndQuery.sln**，一个 .NET 后端应用，用于添加标记并查询设备孪生。
 * **TwinSimulatedDevice.js**，它是 Node.js 应用程序，用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
 
 > [!NOTE]
-> [Azure IoT SDK][lnk-hub-sdks] 一文提供了可用于构建设备和后端应用程序的 Azure IoT SDK 的信息。
+> [Azure IoT SDK][lnk-hub-sdks] 文章介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 > 
 > 
 
@@ -44,19 +44,19 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-the-service-app"></a>创建服务应用
-在本部分中，会创建一个 Node.js 控制台应用，该应用将位置元数据添加到与 **myDeviceId** 关联的设备克隆。 然后，该应用会选择位于美国的设备来查询存储在 IoT 中心的设备克隆，然后查询报告移动电话网络连接的设备克隆。
+在本部分中，将创建一个 Node.js 控制台应用，该应用将位置元数据添加到与 **myDeviceId** 关联的设备克隆。 然后，该应用会选择位于美国的设备来查询存储在 IoT 中心的设备克隆，然后查询报告移动电话网络连接的设备克隆。
 
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 将项目命名为 **AddTagsAndQuery**。
    
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
-2. 在“解决方案资源管理器”中，右键单击“**AddTagsAndQuery**”项目，然后单击“**管理 NuGet 程序包**”。
-3. 在“Nuget 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此过程将下载、安装 [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk]（Microsoft Azure IoT 服务 SDK）NuGet 包及其依赖项并添加对它的引用。
+2. 在“解决方案资源管理器”中，右键单击“AddTagsAndQuery”项目，然后单击“管理 NuGet 程序包”。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
    
-    ![“Nuget 包管理器”窗口][img-servicenuget]
+    ![“NuGet 包管理器”窗口][img-servicenuget]
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
-5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分中为 IoT 中心创建的连接字符串。
+5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
@@ -116,7 +116,7 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. 使用文本编辑器，在 **reportconnectivity** 文件夹中创建一个新的 **ReportConnectivity.js** 文件。
-4. 将以下代码添加到 **ReportConnectivity.js** 文件中，并将 **{设备连接字符串}** 占位符替换为你在创建 **myDeviceId** 设备标识时复制的连接字符串：
+4. 将以下代码添加到 **ReportConnectivity.js** 文件，并将 **{device connection string}** 占位符替换为创建 **myDeviceId** 设备标识时复制的设备连接字符串：
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -154,7 +154,7 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
         }
         });
    
-    **Client** 对象公开从该设备与设备克隆交互所需的所有方法。 上面的代码在初始化“客户端”对象后会检索 **myDeviceId** 的设备克隆，并使用连接信息更新其报告属性。
+    **Client** 对象公开从该设备与设备克隆交互所需的所有方法。 上面的代码在初始化 **Client** 对象后会检索 **myDeviceId** 的设备克隆，并使用连接信息更新其报告属性。
 5. 运行设备应用
    
         node ReportConnectivity.js
@@ -165,7 +165,7 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
     ![][img-addtagapp2]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用程序以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备克隆中的设备连接信息。 你还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询此信息。
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，然后在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 你还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询此信息。
 
 使用下列资源了解如何执行以下操作：
 
@@ -194,11 +194,11 @@ ms.openlocfilehash: 4b90b2529fa6d763ed3ce9c3b4da07afeb860f0e
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-twin-how-to-configure]: iot-hub-csharp-node-twin-how-to-configure.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

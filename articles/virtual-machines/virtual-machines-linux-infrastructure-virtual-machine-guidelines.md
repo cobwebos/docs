@@ -1,5 +1,5 @@
 ---
-title: "Linux 虚拟机准则 | Microsoft Docs"
+title: "Azure Linux 虚拟机准则 | Microsoft Docs"
 description: "了解将 Linux 虚拟机部署到 Azure 中的关键设计和实施准则"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 186abaff67bf4435e0ceb4490e600052e728428f
+ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
+ms.openlocfilehash: 80044c0b16a16a214b4d8879a2d7f38012608ba0
 
 
 ---
-# <a name="virtual-machines-guidelines"></a>虚拟机准则
+# <a name="azure-virtual-machines-guidelines-for-linux"></a>Linux 的 Azure 虚拟机准则
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 本文重点介绍在 Azure 环境中创建和管理虚拟机 (VM) 所需的规划步骤。
@@ -41,7 +41,7 @@ ms.openlocfilehash: 186abaff67bf4435e0ceb4490e600052e728428f
 * 使用 Azure CLI、Web 门户或 Resource Manager 模板创建虚拟机。
 
 ## <a name="virtual-machines"></a>虚拟机
-Azure 环境中的主要组件之一很可能是 VM。 可以在其中运行应用程序、数据库、身份验证服务等。
+Azure 环境中的主要资源之一很可能是 VM。 可以在此资源中运行应用程序、数据库、身份验证服务等。
 
 务必了解[不同 VM 大小](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)以便从性能和成本的角度确定环境的适当大小。 如果 VM 的 CPU 核心数或内存不足，则无论应用程序的设计和开发如何完善，其性能都将受到影响。 在确定要用于基础结构中每个组件的 VM 大小之前，请首先检查每个 VM 系列的建议工作负荷。 完成部署后，可以[更改 VM 大小](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -59,6 +59,6 @@ VM 等组件在逻辑上组合在一起，以便使用 [Azure 资源组](../azur
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

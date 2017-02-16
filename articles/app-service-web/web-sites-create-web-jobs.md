@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2016
+ms.date: 11/27/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9dd4539122de38221e229ad5799961b62a4f648a
+ms.sourcegitcommit: 10320f338d902ffefd8a98fd59f3e8fb22682b00
+ms.openlocfilehash: 578575877fc706076ac2fdf034cb1ac0e92b16ef
 
 
 ---
 # <a name="run-background-tasks-with-webjobs"></a>使用 Web 作业运行后台任务
 ## <a name="overview"></a>概述
-有 3 种方式可在[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用的 WebJobs 中运行程序或脚本：按需、连续或按计划。 使用 Web 作业无需支付额外的费用。
+可使用 3 种方式在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用的 WebJobs 中运行程序或脚本：按需、连续或按计划。 使用 Web 作业无需支付额外的费用。
 
 本文说明如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs。 有关如何使用 Visual Studio 或连续交付过程进行部署的信息，请参阅[如何将 Azure WebJobs 部署到 Web 应用](websites-dotnet-deploy-webjobs.md)。
 
 Azure WebJobs SDK 简化了许多 Web 作业编程任务。 有关详细信息，请参阅[什么是 WebJobs SDK](websites-dotnet-webjobs-sdk.md)。
 
- Azure Functions（当前提供预览版）是在 Azure App Service 中运行程序和脚本的另一种方法。 有关详细信息，请参阅 [Azure Functions 概述](../azure-functions/functions-overview.md)。
+ Azure Functions 提供了另一种从无服务器环境或从应用服务应用运行程序和脚本的方法。 有关详细信息，请参阅 [Azure Functions 概述](../azure-functions/functions-overview.md)。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -207,6 +207,6 @@ Azure 门户尚不能创建计划 WebJob，但在增添该功能之前，可使�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/01/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 51501cc5e344c321652982a3a7f448d84f892392
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8fc8917555028d3045166e462362d502e677e4a0
 
 
 ---
@@ -67,6 +67,6 @@ Azure 安全中心每天对 Windows 和 Linux 虚拟机 (VM) 进行监控以找�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

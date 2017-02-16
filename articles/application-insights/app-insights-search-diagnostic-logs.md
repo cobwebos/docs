@@ -1,5 +1,5 @@
 ---
-title: "Application Insights 中 ASP.NET 的日志、异常和自定义诊断"
+title: "Azure Application Insights 中的 ASP.NET 日志和诊断 | Microsoft Docs"
 description: "通过搜索使用 Trace、NLog 或 Log4Net 生成的请求、异常和日志诊断 ASP.NET Web 应用中的问题。"
 services: application-insights
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 04/08/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 68d4b62b4915950dd18b6aa69b43043b4a90d9ff
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 
 
 ---
 # <a name="logs-exceptions-and-custom-diagnostics-for-aspnet-in-application-insights"></a>Application Insights 中 ASP.NET 的日志、异常和自定义诊断
-[Application Insights][启动]包含功能强大的[诊断搜索][诊断]工具，可使用户从应用程序探索并钻取到 Application Insights SDK 发送的遥测。 许多事件（如用户页面视图）由 SDK 自动发送。
+[Application Insights][start] 包含功能强大的[诊断搜索][diagnostic]工具，可使用户从应用程序探索并钻取到 Application Insights SDK 发送的遥测。 许多事件（如用户页面视图）由 SDK 自动发送。
 
 还可编写代码以发送自定义事件、异常、报表和跟踪。 如果已经使用 log4J、log4net、NLog 或 System.Diagnostics.Trace 之类的记录框架，则可以捕获这些日志并将它们包含在搜索中。 这使将日志跟踪与用户操作、异常和其他事件关联起来更容易。
 
 ## <a name="a-namesendabefore-you-write-custom-telemetry"></a><a name="send"></a>编写自定义遥测前
-如果尚未[为项目设置 Application Insights][启动]，请立即执行该操作。
+如果尚未[为项目设置 Application Insights][start]，请立即执行该操作。
 
 运行应用程序时，它将发送某些将在“诊断搜索”中显示的遥测，包括服务器接收的请求、在客户端记录的页面视图和未捕获的异常。
 
@@ -41,7 +41,7 @@ ms.openlocfilehash: 68d4b62b4915950dd18b6aa69b43043b4a90d9ff
 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
 
 ## <a name="a-nameeventsacustom-events"></a><a name="events"></a>自定义事件
-自定义事件显示在[诊断搜索][诊断]和[指标资源管理器][指标]中。 可从设备、网页和服务器应用程序发送它们。 它们可用于诊断目的和[了解使用模式][跟踪]。
+自定义事件显示在[诊断搜索][diagnostic]和[指标资源管理器][metrics]中。 可从设备、网页和服务器应用程序发送它们。 它们可用于诊断目的和[了解使用模式][track]。
 
 自定义事件具有名称，还可携带可与数字度量值一起作为过滤条件的属性。
 
@@ -96,7 +96,7 @@ ms.openlocfilehash: 68d4b62b4915950dd18b6aa69b43043b4a90d9ff
 ![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-4.png)
 
 ## <a name="a-namepagesa-page-views"></a><a name="pages"></a> 页面视图
-页面视图遥测由[在网页中插入的 JavaScript 代码片段][使用情况]中的 trackPageView() 调用发送。 它的主要目标是构成页面上显示的页面视图计数。
+页面视图遥测由[在网页中插入的 JavaScript 代码片段][usage]中的 trackPageView() 调用进行发送。 它的主要目标是构成页面上显示的页面视图计数。
 
 通常在每个 HTML 页面中调用它一次，但可以插入更多调用，例如，如果你有一个单页应用，并且希望每当用户获取更多数据时都记录新页面。
 
@@ -149,7 +149,7 @@ NuGet 包安装必要的程序集，并且还修改 web.config 或 app.config。
 ### <a name="a-nameexceptionsaexceptions"></a><a name="exceptions"></a>异常
 在 Application Insights 中获取异常报表可提供功能强大的体验，尤其是因为用户可以在失败的请求和异常之间导航，并读取异常堆栈。
 
-在某些情况下，需要[插入一些代码行][异常]以确保自动捕获异常。
+在某些情况下，需要[插入一些代码行][exceptions]以确保自动捕获异常。
 
 还可以编写显式代码以发送异常遥测：
 
@@ -217,9 +217,9 @@ VB
 还可以直接打开“诊断搜索”、筛选异常并选择要查看的异常类型。
 
 ### <a name="reporting-unhandled-exceptions"></a>报告未经处理的异常
-在可能的情况下，Application Insights 会从设备、[web 浏览器][使用情况]或 Web 服务器报告未经处理的异常（无论是否由[状态监视器][redfield]或 [Application Insights SDK][greenbrown] 检测）。 
+在可能的情况下，Application Insights 会从设备、[web 浏览器][usage]或 Web 服务器报告未经处理的异常（无论是否由[状态监视器][redfield]或 [Application Insights SDK][greenbrown] 检测）。 
 
-但是，在某些情况下它并非始终能够执行此操作，因为 .NET framework 会捕获异常。  因此，若要确保看到所有异常，必须编写一个小型异常处理程序。 最佳过程因技术而异。 有关详细信息，请参阅 [ASP.NET 的异常遥测][异常]。 
+但是，在某些情况下它并非始终能够执行此操作，因为 .NET framework 会捕获异常。  因此，若要确保看到所有异常，必须编写一个小型异常处理程序。 最佳过程因技术而异。 有关详细信息，请参阅 [ASP.NET 的异常遥测][exceptions]。 
 
 ### <a name="correlating-with-a-build"></a>与版本关联
 阅读诊断日志时，由于曾部署实时代码，源代码可能已发生更改。
@@ -251,7 +251,7 @@ VB
 
 如果要发送其他事件，可以使用 TrackRequest() API。
 
-## <a name="a-namequestionsaq-a"></a><a name="questions"></a>问题解答
+## <a name="a-namequestionsaq--a"></a><a name="questions"></a>问题解答
 ### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>我得到错误“检测密钥不能为空”
 看起来你在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。
 
@@ -264,26 +264,26 @@ VB
 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](app-insights-sampling.md)
 
 ## <a name="a-nameaddanext-steps"></a><a name="add"></a>后续步骤
-* [设置可用性和响应能力测试][可用性]
-* [故障排除][问题与解答]
+* [设置可用性和响应能力测试][availability]
+* [故障排除][qna]
 
 <!--Link references-->
 
-[可用性]: app-insights-monitor-web-app-availability.md
-[诊断]: app-insights-diagnostic-search.md
-[异常]: app-insights-asp-net-exceptions.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-asp-net-exceptions.md
 [greenbrown]: app-insights-asp-net.md
-[指标]: app-insights-metrics-explorer.md
-[问题与解答]: app-insights-troubleshoot-faq.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[启动]: app-insights-overview.md
-[跟踪]: app-insights-api-custom-events-metrics.md
-[使用情况]: app-insights-web-track-usage.md
+[start]: app-insights-overview.md
+[track]: app-insights-api-custom-events-metrics.md
+[usage]: app-insights-web-track-usage.md
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

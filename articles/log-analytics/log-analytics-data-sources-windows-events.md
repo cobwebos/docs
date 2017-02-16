@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics 中的 Windows 事件日志 | Microsoft Docs"
+title: "收集和分析 OMS Log Analytics 中的 Windows 事件日志 | Microsoft Docs"
 description: "Windows 事件日志 Log Analytics 使用的最常见的数据源之一。  本文介绍如何配置 Windows 事件日志集合，以及它们在 OMS 存储库中创建记录的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 055a60c174c280ba56ea40cb47779e233b54fe8e
-ms.openlocfilehash: 867dc9fd84793debc8c8dcd2a27dfc0b0ccf69c4
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: b6627ed7e3b08e0a94dec229d735114b3ed1b9df
 
 
 ---
@@ -35,9 +35,11 @@ Log Analytics 仅从在设置中指定的 Windows 事件日志收集事件。  �
 ![配置 Windows 事件](media/log-analytics-data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>数据收集
-Log Analytics 在事件创建时从受监视的事件日志中收集与所选严重级别相匹配的每个事件。  代理会在将其收集到的每个事件日志的位置记录下来。  如果代理在一段时间内处于脱机状态，则 Log Analytics 从其上次脱机的位置收集事件，即使这些事件是在代理脱机期间创建的。
+Log Analytics 在事件创建时从受监视的事件日志中收集与所选严重级别相匹配的每个事件。  代理会在将其收集到的每个事件日志的位置记录下来。  如果代理在一段时间内处于脱机状态，则 Log Analytics 从其上次脱机的位置收集事件，即使这些事件是在代理脱机期间创建的。  如果事件日志在代理脱机时，还有未收集的事件正在被覆盖，则可能无法收集这些事件。
 
-## <a name="windows-event-records-properties"></a>Windows 事件的录属性
+
+
+## <a name="windows-event-records-properties"></a>Windows 事件的记录属性
 Windows 事件记录都有一个**事件**类型，并且具有下表中的属性：
 
 | 属性 | 说明 |
@@ -76,6 +78,6 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,16 +12,16 @@ ms.devlang: R
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/15/2016
+ms.date: 01/09/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 3743a1c9539f6e0077448aff4470cb8f5363ef2f
-ms.openlocfilehash: ac1e2c269d59d9e3262c385450a4912de0c9debe
+ms.sourcegitcommit: 841e70fa3a80bbeb7e2281246bac2f99c0de899f
+ms.openlocfilehash: 169743012b1f50d67d5eafdb279e706719752eb8
 
 
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>Compute context options for R Server on HDInsight（适用于 HDInsight 上的 R Server 的计算上下文选项）
-Microsoft R Server on Azure HDInsight 提供最新的基于 R 的分析功能。 它在 [Azure Blob](../storage/storage-introduction.md "Azure Blob 存储")存储帐户或本地 Linux 文件系统中使用存储在容器的 HDFS 中的数据。 由于 R Server 基于开放源代码的 R 构建，因此你构建的基于 R 的应用程序可以利用超过 8000 个任意开放源代码 R 包。 这些应用程序还可以利用 [ScaleR](http://www.revolutionanalytics.com/revolution-r-enterprise-scaler "Revolution Analytics ScaleR")（R Server 附带的 Microsoft 的大数据分析包）中的例程。  
+Microsoft R Server on Azure HDInsight 提供最新的基于 R 的分析功能。 它在 [Azure Blob](../storage/storage-introduction.md "Azure Blob 存储")存储帐户、Data Lake Store 或本地 Linux 文件系统中使用存储在容器的 HDFS 中的数据。 由于 R Server 基于开放源代码的 R 构建，因此你构建的基于 R 的应用程序可以利用超过 8000 个任意开放源代码 R 包。 这些应用程序还可以利用 [ScaleR](http://www.revolutionanalytics.com/revolution-r-enterprise-scaler "Revolution Analytics ScaleR")（R Server 附带的 Microsoft 的大数据分析包）中的例程。  
 
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。 使用边缘节点，可以选择跨边缘节点服务器的各个核心运行 ScaleR 的并行化分布式函数。 还可以选择通过使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文跨群集的各个节点运行这些函数。
 
@@ -30,12 +30,12 @@ Microsoft R Server on Azure HDInsight 提供最新的基于 R 的分析功能。
 
 “Local”和“localpar”选项的区别只体现在 rxExec 调用的执行方式。 这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 ScaleR numCoresToUse 作了其他指定，例如，rxOptions(numCoresToUse=6)。 下面汇总了各种计算上下文选项
 
-| 计算上下文 | 设置方式 | 执行上下文 |
-| --- | --- | --- |
-| 本地顺序 |rxSetComputeContext(‘local’) |跨边缘节点服务器的核心并行执行，但 rxExec 调用除外（这种调用是串行执行的） |
-| 本地并行 |rxSetComputeContext(‘localpar’) |跨边缘节点服务器的核心并行执行 |
-| Spark |RxSpark() |通过 Spark 跨 HDI 群集的各个节点并行化分布式执行 |
-| Map Reduce |RxHadoopMR() |通过 Map Reduce 跨 HDI 群集的各个节点并行化分布式执行 |
+| 计算上下文  | 设置方式                      | 执行上下文                        |
+| ---------------- | ------------------------------- | ---------------------------------------- |
+| 本地顺序 | rxSetComputeContext(‘local’)    | 跨边缘节点服务器的核心并行执行，但 rxExec 调用除外（这种调用是串行执行的） |
+| 本地并行   | rxSetComputeContext(‘localpar’) | 跨边缘节点服务器的核心并行执行 |
+| Spark            | RxSpark()                       | 通过 Spark 跨 HDI 群集的各个节点并行化分布式执行 |
+| Map Reduce       | RxHadoopMR()                    | 通过 Map Reduce 跨 HDI 群集的各个节点并行化分布式执行 |
 
 假设希望并行化执行以改进性能，有三个选项可供选择。 要选择哪个选项取决于分析工作的性质，以及数据的大小和位置。
 
@@ -55,7 +55,7 @@ Microsoft R Server on Azure HDInsight 提供最新的基于 R 的分析功能。
 * 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过“local”或“localpar”进行分析。
 
 ### <a name="hadoop-spark"></a>Hadoop Spark
-* 如果要分析的数据量较大，可将它导入到 HDFS 中的 XDF（除非存储有问题），然后通过“Spark”进行分析。
+* 如果要分析的数据量较大，可使用 RxHiveData 或 RxParquetData 将它导入到 Spark DataFrame，或导入到 HDFS 中的 XDF（除非存储有问题），然后通过“Spark”进行分析。
 
 ### <a name="hadoop-map-reduce"></a>Hadoop Map Reduce
 * 仅当使用 Spark 计算上下文遇到无法解决的问题时才使用这种方式，因为它的速度通常较慢。  
@@ -65,19 +65,19 @@ Microsoft R Server on Azure HDInsight 提供最新的基于 R 的分析功能。
 
     > ?rxSetComputeContext
 
-也可以参考 [R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx "R Server on MSDN") 库中提供的“ScaleR 分布式计算指南”。
+也可以参考 [R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx "R Server on MSDN") 库中提供的“[ScaleR 分布式计算指南](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing)”。
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解如何创建包含 R Server 的新 HDInsight 群集。 此外，你还了解了有关从 SSH 会话使用 R 控制台的基本知识。 接下来，你可以阅读以下文章，探索在 HDInsight 上使用 R Server 的其他方法：
 
 * [Hadoop 的 R Server 概述](hdinsight-hadoop-r-server-overview.md)
 * [R Server for Hadoop 入门](hdinsight-hadoop-r-server-get-started.md)
-* [将 RStudio Server 添加到 HDInsight](hdinsight-hadoop-r-server-install-r-studio.md)
+* [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中添加）](hdinsight-hadoop-r-server-install-r-studio.md)
 * [适用于 R Server on HDInsight 的 Azure 存储选项](hdinsight-hadoop-r-server-storage.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

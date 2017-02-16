@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 928a93793b0b5e346fc02427c670a4c5c6ad80cc
-ms.openlocfilehash: 5d0609b826d489eb789cc86612b495bbd05afbe0
+ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
+ms.openlocfilehash: 2d8e851810b4ec5b7ae3f3b17c4aee11d7e51de4
 
 
 ---
+
 # <a name="application-gateway-web-application-firewall-preview"></a>应用程序网关 Web 应用程序防火墙（预览版）
 
 Web 应用程序防火墙 (WAF) 是 Azure 应用程序网关的一项功能，它为利用应用程序网关实现标准应用程序传递控制 (ADC) 功能的 Web 应用程序提供保护。 Web 应用程序防火墙通过保护这些应用程序，免受 OWASP 前 10 个常见的 Web 漏洞中的大多数漏洞的威胁，来实现此目的。 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码遭受此类攻击颇具挑战性，并且可能需要对应用程序拓扑的多个层进行严格的维护、修补和监视。 可防止 Web 攻击的集中式 Web 应用程序防火墙，可简化安全管理，并可针对入侵威胁为应用程序提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 现有应用程序网关可以轻松地转换为带有 Web 应用程序防火墙的应用程序网关。
@@ -51,7 +52,7 @@ Web 应用程序防火墙 (WAF) 是 Azure 应用程序网关的一项功能，�
 
 应用程序网关 WAF 可配置为在以下两种模式中运行：
 
-* **检测模式** - 配置为在检测模式下运行时，应用程序网关 WAF 将监视所有威胁警报并将其记录到日志文件中。 需要确保通过“诊断”部分打开应用程序网关的日志记录诊断。 还需要确保已选择并打开 WAF 日志。
+* **检测模式** - 配置为在检测模式下运行时，应用程序网关 WAF 将监视所有威胁警报并将其记录到日志文件中。 需要确保通过“诊断”部分打开应用程序网关的日志记录诊断。 还需确保已选择并打开 WAF 日志。
 * **阻止模式** - 配置为在阻止模式下运行时，应用程序网关主动阻止其规则检测到的入侵和攻击。 攻击者会收到 403 未授权访问异常，且连接会终止。 阻止模式会继续在 WAF 日志中记录此类攻击。
 
 ## <a name="application-gateway-waf-reports"></a>应用程序网关 WAF 报告
@@ -91,6 +92,6 @@ Web 应用程序防火墙 (WAF) 是 Azure 应用程序网关的一项功能，�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

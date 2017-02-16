@@ -12,19 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 01/30/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 8867cda9d4b35fa908db8749aaad74d85cec67f3
-ms.openlocfilehash: 5f82274838de2e6d2a753a685760b5f144065d94
+ms.sourcegitcommit: 2b5899ba43f651ae6f5fdf84d7aa5ee35d81b738
+ms.openlocfilehash: be27695cd1d998eedff0ca76f6ae9d4ff69bb97b
 
 
 ---
-# <a name="log-analytics-http-data-collector-api"></a>Log Analytics HTTP 数据收集器 API
-当使用 Azure Log Analytics HTTP 数据收集器 API 时，可以从能调用 REST API 的任何客户端将 POST JavaScript 对象表示法 (JSON) 数据添加到 Log Analytics 存储库。 通过使用此方法，可以从第三方应用程序或脚本（例如从 Azure 自动化中的 Runbook）发送数据。  
+# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>使用 HTTP 数据收集器 API 将数据发送到 Log Analytics
+本文说明如何使用 HTTP 数据收集器 API 从 REST API 客户端将数据发送到 Log Analytics。  它说明对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Log Analytics 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
+
+## <a name="concepts"></a>概念
+可以使用 HTTP 数据收集器 API 从任何可以调用 REST API 的客户端将数据发送到 Log Analytics。  这可能是 Azure 自动化中从 Azure 或另一个云收集管理数据的 runbook，也可能是使用 Log Analytics 合并并分析数据的备用管理系统。
+
+Log Analytics 存储库中的所有数据都存储为具有某种特定记录类型的记录。  可以将要发送到 HTTP 数据收集器 API 的数据格式化为采用 JSON 格式的多条记录。  提交数据时，将针对请求负载中的每条记录在存储库中创建单独的记录。
+
+
+![HTTP 数据收集器概述](media/log-analytics-data-collector-api/overview.png)
+
+
 
 ## <a name="create-a-request"></a>创建请求
-接下来的两个表列出了对 Log Analytics HTTP 数据收集器 API 的每个请求所需的属性。 在本文的后面部分将更详细地介绍每个属性。
+若要使用 HTTP 数据收集器 API，可以创建一个 POST 请求，其中包含要以 JavaScript 对象表示法 (JSON) 格式发送的数据。  接下来的三个表列出了每个请求所需的属性。 在本文的后面部分将更详细地介绍每个属性。
 
 ### <a name="request-uri"></a>请求 URI
 | 属性 | 属性 |
@@ -280,39 +290,43 @@ Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.E
 ```
 using System;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace OIAPIExample
 {
     class ApiExample
     {
-// An example JSON object, with key/value pairs
-        static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField1"":""DemoValue3"",""DemoField2"":""DemoValue4""}]";
+        // An example JSON object, with key/value pairs
+        static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-// Update customerId to your Operations Management Suite workspace ID
+        // Update customerId to your Operations Management Suite workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
-// For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
+        // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-// LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of the event type that is being submitted to Log Analytics
         static string LogName = "DemoExample";
 
-// You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
         static string TimeStampField = "";
 
         static void Main()
         {
-// Create a hash for the API signature
+            // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;
-
+    
             PostData(signature, datestring, json);
         }
 
-// Build the API signature
+        // Build the API signature
         public static string BuildSignature(string message, string secret)
         {
             var encoding = new System.Text.ASCIIEncoding();
@@ -325,22 +339,36 @@ namespace OIAPIExample
             }
         }
 
-// Send a request to the POST API endpoint
+        // Send a request to the POST API endpoint
         public static void PostData(string signature, string date, string json)
         {
-            string url = "https://"+ customerId +".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
-            using (var client = new WebClient())
+            try
+            { 
+                string url = "https://" + customerId + ".ods.opinsights.azure.com/api/logs?api-version=2016-04-01";
+    
+                System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                client.DefaultRequestHeaders.Add("Log-Type", LogName);
+                client.DefaultRequestHeaders.Add("Authorization", signature);
+                client.DefaultRequestHeaders.Add("x-ms-date", date);
+                client.DefaultRequestHeaders.Add("time-generated-field", TimeStampField);
+    
+                System.Net.Http.HttpContent httpContent = new StringContent(json, Encoding.UTF8);
+                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                Task<System.Net.Http.HttpResponseMessage> response = client.PostAsync(new Uri(url), httpContent);
+    
+                System.Net.Http.HttpContent responseContent = response.Result.Content;
+                string result = responseContent.ReadAsStringAsync().Result;
+                Console.WriteLine("Return Result: " + result);
+            }
+            catch (Exception excep)
             {
-                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                client.Headers.Add("Log-Type", LogName);
-                client.Headers.Add("Authorization", signature);
-                client.Headers.Add("x-ms-date", date);
-                client.Headers.Add("time-generated-field", TimeStampField);
-                client.UploadString(new Uri(url), "POST", json);
+                Console.WriteLine("API Post Exception: " + excep.Message);
             }
         }
     }
 }
+
 ```
 
 ### <a name="python-sample"></a>Python 示例
@@ -427,11 +455,10 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 使用[视图设计器](log-analytics-view-designer.md)在提交的数据上生成自定义视图。
+- 使用[日志搜索 API](log-analytics-log-search-api.md) 从 Log Analytics 存储库中检索数据。
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

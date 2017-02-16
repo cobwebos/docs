@@ -1,6 +1,6 @@
 ---
-title: "Azure 容器服务群集中的负载平衡容器 | Microsoft Docs"
-description: "在 Azure 容器服务群集中跨多容器进行负载平衡。"
+title: "Azure DC/OS 群集中的负载均衡容器 | Microsoft Docs"
+description: "在 Azure 容器服务 DC/OS 群集中跨多容器进行负载均衡。"
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -11,18 +11,18 @@ keywords: "容器, 微服务, DC/OS, Azure"
 ms.assetid: f0ab5645-2636-42de-b23b-4c3a7e3aa8bb
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cf255856302ad5bdb1f6022d231833610acbcac5
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 27ad7100f6203db3ba3dcc88ffdc191b9b9d45cb
 
 
 ---
-# <a name="load-balance-containers-in-an-azure-container-service-cluster"></a>Azure 容器服务群集中的负载平衡容器
+# <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Azure 容器服务 DC/OS 群集中的负载均衡容器
 在本文中，将探讨如何使用 Marathon-LB 在 DC/OS 托管 Azure 容器服务中创建内部负载均衡器。 这使你能够水平扩展应用程序。 还能通过将负载均衡器和应用程序容器分别放在公用群集和专用群集上来利用公用和专用代理群集。
 
 ## <a name="prerequisites"></a>先决条件
@@ -39,14 +39,14 @@ Marathon 负载均衡器基于已部署容器对自身进行动态配置。 还�
 
 若要安装 Marathon 负载均衡器，可使用 DC/OS Web UI 或命令行。
 
-### <a name="install-marathonlb-using-dcos-web-ui"></a>使用 DC/OS Web UI 安装 Marathon-LB
+### <a name="install-marathon-lb-using-dcos-web-ui"></a>使用 DC/OS Web UI 安装 Marathon-LB
 1. 单击“通用”
 2. 搜索“Marathon-LB”
 3. 单击“安装”
 
 ![通过 DC/OS Web 界面安装 marathon-lb](./media/dcos/marathon-lb-install.png)
 
-### <a name="install-marathonlb-using-the-dcos-cli"></a>使用 DC/OS CLI 安装 Marathon-LB
+### <a name="install-marathon-lb-using-the-dcos-cli"></a>使用 DC/OS CLI 安装 Marathon-LB
 安装 DC/OS CLI 并确保可连接到群集后，从客户端计算机上运行以下命令：
 
 ```bash
@@ -136,6 +136,6 @@ Azure lb:8080 -> marathon-lb:1002 -> mycontainer2:33432
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

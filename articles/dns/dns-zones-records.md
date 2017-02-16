@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/17/2016
-ms.author: jtuliani
+ms.date: 12/05/2016
+ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
-ms.openlocfilehash: b99bc20b66787c7a87fa49143b4cbf861e0e68a2
+ms.sourcegitcommit: f4c17d03ff637659a7bc7cde378878d8a4827b80
+ms.openlocfilehash: 38ff556271a84fbf385dab03a7551b3eb7413c81
 
 ---
 
@@ -28,51 +28,19 @@ ms.openlocfilehash: b99bc20b66787c7a87fa49143b4cbf861e0e68a2
 
 域名系统是域的层次结构。 该层次结构从名为“**.**”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  再往下是二级域，例如“org.uk”或“co.jp”。 DNS 层次结构中的域遍布全球，由世界各地的 DNS 名称服务器托管。
 
-域名注册机构是一个组织，可以通过该组织购买域名，例如“contoso.com”。  购买域名便有权控制该域名下的 DNS 层次结构，例如可将名称“www.contoso.com”定向到公司网站。 注册机构会代表用户在域自身的名称服务器中托管域，或者用户可以指定可选名称服务器。
+域名注册机构是一个组织，可以通过该组织购买域名，例如“contoso.com”。  购买域名便有权控制该域名下的 DNS 层次结构，例如可将名称“www.contoso.com”定向到公司网站。 注册机构会代表用户在域自身的名称服务器中托管域，或者允许用户指定可选名称服务器。
 
 Azure DNS 提供全球分布的高可用性名称服务器基础结构，可将其用于托管域。 通过在 Azure DNS 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具、计费和支持来管理 DNS 记录。
 
-Azure DNS 当前不支持购买域名。 如果想要购买域名，需要使用第三方域名注册机构。 注册机构通常将收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
+Azure DNS 当前不支持购买域名。 如果想要购买域名，需要使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
 
 ## <a name="dns-zones"></a>DNS 区域
 
-DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后将在此 DNS 区域内为每个 DNS 记录创建域。
-
-例如，域“contoso.com”可能包含几条 DNS 记录，如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。
-
-在 Azure DNS 中创建 DNS 区域时，区域名称在资源组中必须唯一。 可在不同资源组或不同 Azure 订阅中重复使用同一区域名称。 当多个区域共享相同的名称时，将为每个实例分配不同的名称服务器地址。 使用域名注册机构仅可配置一组地址。
-
-> [!NOTE]
-> 不必拥有域名即可在 Azure DNS 中以该域名创建 DNS 区域。 但是，需要拥有域才能通过域名注册机构将 Azure DNS 名称服务器配置为域名的正确名称服务器。
-
-有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
+[!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
 ## <a name="dns-records"></a>DNS 记录
 
-### <a name="record-types"></a>记录类型
-
-每个 DNS 记录都有一个名称和类型。 这些记录根据其所包含的数据分为各种类型。 最常见的类型为“A”记录，这种记录将名称映射到 IPv4 地址。 另一种常见类型是“MX”记录，这种记录将名称映射到邮件服务器。
-
-Azure DNS 支持所有常见 DNS 记录类型：A、AAAA、CNAME、MX、NS、PTR、SOA、SRV 和 TXT。
-
-### <a name="record-names"></a>记录名称
-
-在 Azure DNS 中，记录使用相对名称指定。 完全限定的域名 (FQDN) 包括区域名称，而相对域名则不包括。 例如，“contoso.com”区域中的相对记录名称“www”会提供完全限定的记录名称“www.contoso.com”。
-
-顶点记录是位于 DNS 区域的根（或顶点）中的 DNS 记录。 例如，在 DNS 区域“contoso.com”中，顶点记录还具有完全限定的名称“contoso.com”（有时称为裸域）。  按照惯例，相对名称 '@' 用于创建顶点记录。
-
-### <a name="record-sets"></a>记录集
-
-有时，需要创建具有给定名称和类型的多个 DNS 记录。 例如，假设在两个不同的 IP 地址上托管“www.contoso.com”网站。 该网站需要两个不同的 A 记录，每个 IP 地址一个。 这就是记录集：
-
-    www.contoso.com.        3600    IN    A    134.170.185.46
-    www.contoso.com.        3600    IN    A    134.170.188.221
-
-Azure DNS 使用记录集管理 DNS 记录。 记录集（也称为资源记录集）是某个区域中具有相同名称、相同类型的 DNS 记录的集合。 大多数记录集都包含单个记录，但像这样的包含多个记录的记录集也不少见。
-
-例如，假设已在区域“contoso.com”中创建 A 记录“www”，指向 IP 地址“134.170.185.46”（上述第一条记录）。  若要创建第二条记录，应将此记录添加到现有记录集而非创建新记录集。
-
-SOA 和 CNAME 记录类型例外。 对于这些类型，DNS 标准不允许多个记录具有相同的名称，因此这些记录集仅可包含单个记录。
+[!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
 ### <a name="time-to-live"></a>生存时间
 
@@ -82,7 +50,7 @@ SOA 和 CNAME 记录类型例外。 对于这些类型，DNS 标准不允许多�
 
 ### <a name="wildcard-records"></a>通配符记录
 
-Azure DNS 支持 [通配符记录](https://en.wikipedia.org/wiki/Wildcard_DNS_record)。 具有匹配名称的任何查询都会返回通配符记录（除非存在与非通配符记录集更接近的匹配项）。 除 NS 和 SOA 外的所有记录类型都支持通配符记录集。
+Azure DNS 支持 [通配符记录](https://en.wikipedia.org/wiki/Wildcard_DNS_record)。 具有匹配名称的任何查询都会返回通配符记录（除非存在与非通配符记录集更接近的匹配项）。 对于除 NS 和 SOA 外的所有记录类型，Azure DNS 都支持通配符记录集。
 
 若要创建通配符记录集，请使用记录集名称“\*”。 或者，还可以使用将“\*”作为最左边的标签的名称，例如，“\*.foo”。
 
@@ -121,17 +89,45 @@ DNS RFC 最初引入了新的“SPF”记录类型来支持这种方案。 为�
 * 服务和协议 必须指定为前面带下划线的记录集名称的一部分。  例如，“\_sip.\_tcp.name”。  对于区域顶点处的记录，无需在记录名称中指定 '@'，只需使用服务和协议，例如“\_sip.\_tcp”。
 * 将 priority、weight、port 和 target 指定为记录集中每个记录的参数。
 
+### <a name="txt-records"></a>TXT 记录
+
+TXT 记录用于将域名映射到任意文本字符串。 它们在多个应用程序中使用，特别是与电子邮件配置相关（如[发件人策略框架 (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework)和[域密钥识别邮件 (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail)）。
+
+DNS 标准允许单个 TXT 记录包含多个字符串，其中每个字符串的长度可以最多为 254 个字符。 使用多个字符串时，它们由客户端连接在一起，被视为单个字符串。
+
+调用 Azure DNS REST API 时，需要单独指定每个 TXT 字符串。  使用 Azure 门户、PowerShell 或 CLI 接口时，应对每个记录指定单个字符串（这会在需要时自动划分为 254 个字符的段）。
+
+DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆。  TXT 记录集可以包含多个记录，其中每个可以包含多个字符串。  Azure DNS 在每个 TXT 记录集（跨所有合并的记录）中支持总长度最多 1024 个字符。 
+
 ## <a name="tags-and-metadata"></a>标记和元数据
 
 ### <a name="tags"></a>标记
 
-标记是名称/值列表，Azure Resource Manager 利用它们来标记资源。  Azure Resource Manager 使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../resource-group-using-tags.md)。
+标记是名称/值列表，Azure Resource Manager 利用它们来标记资源。  Azure Resource Manager 使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
 
-Azure DNS 支持使用 DNS 区域资源上的 Azure Resource Manager 标记。  它不支持 DNS 记录集上的标记。
+Azure DNS 支持使用 DNS 区域资源上的 Azure Resource Manager 标记。  它不支持 DNS 记录集的标记，不过作为替代方法，在 DNS 记录集上支持“元数据”，如下所述。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 作为记录集标记的替代方法，Azure DNS 支持使用“元数据”批注记录集。  与标记相类似，通过元数据可将名称/值对与每个记录集相关联。  这非常有用，例如可用于记录每个记录集的用途。  与标记不同的是，元数据不能用于提供 Azure 帐单的筛选视图，且不能在 Azure Resource Manager 策略中指定。
+
+## <a name="etags"></a>Etag
+
+假设两个人或两个进程尝试同时修改一条 DNS 记录。 哪一个占先？ 占先方是否知道他们/它们覆盖了其他人/进程创建的更改？
+
+Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag 与 [Azure 资源管理器“标记”](#tags)不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 只要检索资源，就会检索其 Etag。 当更新资源时，可以选择传递回 Etag 的选项以便 Azure DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 当创建新的资源时也可以使用 Etag，以确保该资源不存在。
+
+默认情况下，Azure DNS PowerShell 使用 Etag 来阻止对区域和记录集的并发更改。 可选 -Overwrite 开关可用于取消 Etag 检查，这种情况下会覆盖发生的所有并发更改。
+
+Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给出了它们的行为：
+
+| 标头 | 行为 |
+| --- | --- |
+| 无 |PUT 始终成功（没有 Etag 检查） |
+| If-match <etag> |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
+| If-match * |只有当资源存在时，PUT 才会成功 |
+| If-none-match * |只有当资源不存在时，PUT 才会成功 |
+
 
 ## <a name="limits"></a>限制
 
@@ -142,11 +138,11 @@ Azure DNS 支持使用 DNS 区域资源上的 Azure Resource Manager 标记。  
 ## <a name="next-steps"></a>后续步骤
 
 * 若要开始使用 Azure DNS，请了解如何[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)和[创建 DNS 记录](dns-getstarted-create-recordset-portal.md)。
-* 若要迁移现有 DNS 区域，请了解如何[导入 DNS 区域文件](dns-import-export.md)。
+* 若要迁移现有 DNS 区域，请了解如何[导入和导出 DNS 区域文件](dns-import-export.md)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

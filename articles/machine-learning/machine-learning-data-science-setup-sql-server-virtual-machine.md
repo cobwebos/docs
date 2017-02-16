@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 353f09a8a6fa3798d764d41618a8f0b3ba83e3d0
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 777dc11be139b20363e2060776ac0227883591ff
 
 
 ---
@@ -233,7 +233,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
 3. 在“服务器用户帐户名”文本框中输入 SQL 用户名。
 4. 在“服务器用户帐户密码”文本框中输入 SQL 用户密码。
    
-   ![Azure ML 导入数据][13]
+   ![Azure 机器学习导入数据][13]
 
 ## <a name="a-nameshutdownashutdown-and-deallocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>关闭并解除分配未使用的虚拟机
 Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未使用虚拟机时不会计费，它必须处于“已停止(已解除分配)”状态。
@@ -277,6 +277,6 @@ Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

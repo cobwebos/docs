@@ -11,17 +11,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 71cf6cd6e7a33b3aeb3e0e20b9b047377412786d
 
 
 ---
 # <a name="reference-for-analytics"></a>分析参考
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Analytics 查询语言。
 
+其他信息源：
+
+* 键入时，Analytics 会提供很多参考资料。 只要开始输入查询，系统就会提示可能的完整形式。
+* [此教程页面](app-insights-analytics-tour.md)提供语言功能的分步介绍。
 * [SQL 用户的备忘单](https://aka.ms/sql-analytics)转换最常见的惯用语言。
 * [针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)（如果应用尚未将数据发送到 Application Insights）。
  
@@ -29,7 +33,7 @@ ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
 ## <a name="index"></a>索引
 **Let** [let](#let-clause)
 
-**查询和运算符** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**查询和运算符** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
 
 **聚合** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -364,6 +368,70 @@ traces
     Age = now() - timestamp
 ```
 
+### <a name="find-operator"></a>find 运算符
+
+    find in (Table1, Table2, Table3) where id=='42'
+
+在一组表中查找与谓词相匹配的行。
+
+**语法**
+
+    find in (Table1, ...) 
+    where Predicate 
+    [project Column1, ...]
+
+**参数**
+
+* Table1 表名称或查询。 它可以是 let 定义的表，但不能是函数。 使用表名的效果优于使用查询。
+* 谓词 计算指定表中每一行的布尔表达式。
+* Column1`project` 选项可指定哪些列必须始终出现在输出中。 
+
+**结果**
+
+默认情况下，输出表包含：
+
+* `source_` - 每行的源表标记。
+* 谓词中显式提及的列
+* 所有输入表共有的非空列。
+* `pack_` - 包含其他列中的数据的属性包。
+
+请注意，此格式可能随输入数据或谓词的更改而更改。 若要指定一组固定的列，请使用 `project`。
+
+**示例**
+
+获取所有请求和异常，来自可用性测试和机器人的请求和异常除外：
+
+```AIQL
+
+    find in (requests, exceptions) where isempty(operation_SyntheticSource)
+```
+
+查找来自 UK 的所有请求和异常，来自可用性测试和机器人的请求和异常除外：
+
+```AIQL
+
+    let requk = requests
+    | where client_CountryOrRegion == "United Kingdom";
+    let exuk = exceptions
+    | where client_CountryOrRegion == "United Kingdom";
+    find in (requk, exuk) where isempty(operation_SyntheticSource)
+```
+
+查找其字段包含术语“test”的最近遥测：
+
+```AIQL
+
+    find in (traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions) 
+    where * has 'test' 
+    | top 100 by timestamp desc
+```
+
+**性能提示**
+
+* 向 `where` 谓词添加基于时间的术语。
+* 使用 `let` 子句，而不是编写内联查询。
+
+
 
 ### <a name="join-operator"></a>join 运算符
     Table1 | join (Table2) on CommonColumn
@@ -387,10 +455,10 @@ traces
 
 * 一列，用于每个表中的每一列，包括匹配键。 如果存在名称冲突，将自动重命名右侧列。
 * 一行，用于输入表之间的所有匹配项。 匹配项是从表中选出的一行，该表中的所有 `on` 字段值与其他表中的值相同。 
-* `Kind` 未指定
+* 未指定 `Kind` 或 `= innerunique`
   
     左侧中仅有一行与 `on` 键的每个值匹配。 输出包含一行，用于此行与右侧行的每一个匹配项。
-* `Kind=inner`
+* `kind=inner`
   
      输出中存在一行，用于左侧和右侧匹配行的每个组合。
 * `kind=leftouter`（或 `kind=rightouter` 或 `kind=fullouter`）
@@ -399,8 +467,10 @@ traces
 * `kind=leftanti`
   
      返回左侧中与右侧不具有匹配项的所有记录。 结果表中只有左侧的列。 
+* `kind=leftsemi`（或 `leftantisemi`）
 
-如果这些字段有多个行具有相同的值，则将获得所有合并的行。
+    无论右表中是否存在匹配，左表中返回一行。 结果不包括右侧的数据。
+
 
 **提示**
 
@@ -713,7 +783,7 @@ range Steps from 1 to 8 step 3
 
     range LastWeek from bin(ago(7d),1d) to now() step 1d
 
-过去 7 天午夜时分的表。 bin (floor) 函数将每次时间缩减到当天的开始。
+过去&7; 天午夜时分的表。 bin (floor) 函数将每次时间缩减到当天的开始。
 
 **示例**  
 
@@ -836,9 +906,8 @@ Traces
 
 结果具有多个行，因为 `by` 值存在不同组合。 如果希望汇总数值的范围，请使用 `bin()` 将范围减少为离散值。
 
-**注意**
-
-尽管可为聚合和分组表达式提供任意表达式，但使用简单列名称或将 `bin()` 应用于数值列会更加高效。
+> [!NOTE]
+> 尽管可为聚合和分组表达式提供任意表达式，但使用简单列名称或将 `bin()` 应用于数值列会更加高效。
 
 ### <a name="take-operator"></a>take 运算符
 [limit](#limit-operator) 的别名
@@ -937,13 +1006,13 @@ Traces
 ```AIQL
 
     exceptions
-    | where Timestamp > ago(1d)
+    | where Timestamp > ago(12h)
     | union withsource=SourceTable kind=outer 
-       (Command | where Timestamp > ago(1d))
+       (Command | where Timestamp > ago(12h))
     | summarize dcount(UserId)
 ```
 
-### <a name="forcing-an-order-of-results"></a>强制形成结果顺序
+#### <a name="forcing-an-order-of-results"></a>强制形成结果顺序
 
 联合无法保证结果行中存在特定排序。
 若要在每次运行查询后获取相同顺序，需将标记列附加到每个输入表：
@@ -953,6 +1022,9 @@ Traces
     let r3 = (pageViews | count | extend tag = 'r3');
     r1 | union r2,r3 | sort by tag
 
+#### <a name="see-also"></a>另请参阅
+
+请考虑将 [join 运算符](#join-operator)作为替代。
 
 ### <a name="where-operator"></a>where 运算符
      requests | where resultCode==200
@@ -964,11 +1036,13 @@ Traces
 **语法**
 
     T | where Predicate
+    T | where * has Term
 
 **参数**
 
 * *T*：待筛选行的表格输入。
 * *Predicate*：针对 *T* 的列的 `boolean` [表达式](#boolean)。对 *T* 中的每一行执行此计算。
+* 术语 - 必须完全匹配列中的单词的字符串。
 
 **返回**
 
@@ -1621,7 +1695,7 @@ true 或 false 具体取决于值是否为 null。
 
 最接近以下 *value* 的 *roundTo* 倍数。  
 
-    (toint((value/roundTo)-0.5)) * roundTo
+    (toint(value/roundTo)) * roundTo
 
 **示例**
 
@@ -1705,14 +1779,14 @@ true 或 false 具体取决于值是否为 null。
 
 ### <a name="toint"></a>toint
     toint(100)        // cast from long
-    toint(20.7) == 21 // nearest int from double
-    toint(20.4) == 20 // nearest int from double
+    toint(20.7) == 20 // nearest int below double
+    toint(20.4) == 20 // nearest int below double
     toint("  123  ")  // parse string
     toint(a[0])       // cast from dynamic
     toint(b.c)        // cast from dynamic
 
 ### <a name="tolong"></a>tolong
-    tolong(20.7) == 21 // conversion from double
+    tolong(20.7) == 20 // conversion from double
     tolong(20.4) == 20 // conversion from double
     tolong("  123  ")  // parse string
     tolong(a[0])       // cast from dynamic
@@ -2607,6 +2681,6 @@ range(1, 8, 3)
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

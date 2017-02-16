@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6dffec166ffe8e04c5d7b701aef009bf7b72d45
+ms.sourcegitcommit: 349b8dc78ace79efca771efb78e453a47e51023e
+ms.openlocfilehash: 6e80064adadcc542523acb1d2478e6b8f0163acb
 
 
 ---
 # <a name="download-the-template-for-a-vm"></a>下载 VM 模板
-使用门户或 PowerShell 在 Azure 中创建 VM 时，系统会自动创建一个 Resource Manager 模板。 可以使用此模板快速复制部署。 该模板包含有关资源组中所有资源的信息。 对于虚拟机而言，这意味着该模板包含为于在该资源组中支持该 VM 而创建的所有资源，包括网络资源。
+使用门户或 PowerShell 在 Azure 中创建 VM 时，系统会自动创建一个 Resource Manager 模板。 可以使用此模板快速复制部署。 该模板包含有关资源组中所有资源的信息。 对于虚拟机而言，这意味着该模板包含为在该资源组中支持该 VM 而创建的所有资源，包括网络资源。
 
 ## <a name="download-the-template-using-the-portal"></a>使用门户下载模板
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -39,7 +39,7 @@ ms.openlocfilehash: b6dffec166ffe8e04c5d7b701aef009bf7b72d45
    * parameters.json
    * template.json
 
-.json 文件是模板。
+template.json 文件是模板。
 
 ## <a name="download-the-template-using-powershell"></a>使用 PowerShell 下载模板
 也可以使用 [Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx) cmdlet 下载 .json 模板文件。 可以使用 `-path` 参数提供 .json 文件的文件名和路径。 本示例演示如何将名为 **myResourceGroup** 的资源组的模板下载到本地计算机上的 **C:\users\public\downloads** 文件夹。
@@ -54,6 +54,6 @@ ms.openlocfilehash: b6dffec166ffe8e04c5d7b701aef009bf7b72d45
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

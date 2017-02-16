@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ce288a512e685694cf6c606f7a5b47f0fcf21e5
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: 524cdd0177ae96e1953c40343f3a37634b4255e6
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 6ce288a512e685694cf6c606f7a5b47f0fcf21e5
 
 你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
-* [预防性维护预配置解决方案概述][lnk-predictive-overview]
+* [预见性维护预配置解决方案概述][lnk-predictive-overview]
 * [有关 IoT 套件的常见问题][lnk-faq]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
@@ -38,6 +38,6 @@ ms.openlocfilehash: 6ce288a512e685694cf6c606f7a5b47f0fcf21e5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

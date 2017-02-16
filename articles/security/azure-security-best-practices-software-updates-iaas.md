@@ -1,6 +1,6 @@
 ---
-title: "有关 Microsoft Azure IaaS 上软件更新的最佳做法 | Microsoft Docs"
-description: "本文提供了有关 Microsoft Azure IaaS 环境中软件更新的最佳实践集合。  本文面向每天要进行变更控制、软件更新和资产管理的 IT 专业人员和安全分析人员（包括负责其组织安全和合规性工作的人员）。"
+title: "Azure IaaS 的软件更新最佳实践 | Microsoft 文档"
+description: "本文提供有关 Microsoft Azure IaaS 环境中软件更新的最佳实践集合。  本文面向每天要进行变更控制、软件更新和资产管理的 IT 专业人员和安全分析人员（包括负责其组织安全和合规性工作的人员）。"
 services: security
 documentationcenter: na
 author: YuriDio
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c52a2d6be31b1a8f581313932c0af87120ccd9fe
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: 43d760ffcc108a70212e47ee8eab9ec2aca02a17
 
 
 ---
@@ -27,14 +27,14 @@ ms.openlocfilehash: c52a2d6be31b1a8f581313932c0af87120ccd9fe
 
 最左侧列显示组织应考虑的七个责任（在后面的部分中定义），所有这些责任都与计算环境的安全和隐私相关。
 
-数据分类和责任以及客户端和终结点保护是单独针对客户域的责任，而物理、主机和网络责任则针对 PaaS 和 SaaS 模型中云服务提供商的域。 
+数据分类和责任以及客户端和终结点保护是单独针对客户域的责任，而物理、主机和网络责任则针对 PaaS 和 SaaS 模型中云服务提供商的域。
 
 其余的责任由客户与云服务提供商共同承担。 某些责任需要 CSP 和客户共同管理，包括对其域的审核。 例如，考虑使用 Azure Active Directory 服务时的标识和访问权管理；虽然服务（如多重身份验证）的配置取决于客户，但确保有效的功能是 Microsoft Azure 的责任。
 
 > [!NOTE]
-> 有关云中的共担责任的详细信息，请参阅[云计算的共担责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) 
-> 
-> 
+> 有关云中的共担责任的详细信息，请参阅[云计算的共担责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)
+>
+>
 
 这些原则在混合方案中同样适用。在混合方案中，公司将使用 Azure IaaS VM 与本地资源通信，如下图所示。
 
@@ -110,7 +110,6 @@ Azure IaaS 的某些备份选项包括：
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

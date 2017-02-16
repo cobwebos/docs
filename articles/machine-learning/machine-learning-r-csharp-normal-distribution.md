@@ -1,6 +1,6 @@
 ---
-title: "正态分布 Web 服务套件 | Microsoft Docs"
-description: "正态分布 Web 服务套件"
+title: "（已弃用）正态分布 Web 服务套件 - Azure | Microsoft Docs"
+description: "（已弃用）正态分布 Web 服务套件"
 services: machine-learning
 documentationcenter: 
 author: ireiter
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/04/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: ireiter
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cd4f532d69f9380ac96675d403dbad1c83e89636
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: da7b70171d13c82e9269064069e69a35b9b2daaa
 
 
 ---
-# <a name="normal-distribution-suite"></a>正态分布套件
+# <a name="deprecated-normal-distribution-suite"></a>（已弃用）正态分布套件
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 正态分布套件是一组示例 Web 服务（[生成器](https://datamarket.azure.com/dataset/aml_labs/ndg7)、[分位计算器](https://datamarket.azure.com/dataset/aml_labs/ndq5)、[概率计算器](https://datamarket.azure.com/dataset/aml_labs/ndp5)），有助于生成和处理正态分布。 这些服务允许生成任意长度的正态分布序列，计算来自给定概率的分位以及计算给定分位的概率。 每个服务都会根据所选服务发出不同输出（请参见下面的说明）。 正态分布套件基于 R 函数 qnorm、rnorm 和 pnorm，这些函数包含在 R 统计包中。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -269,6 +276,6 @@ ms.openlocfilehash: cd4f532d69f9380ac96675d403dbad1c83e89636
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91490e33ab2d524da90ae75bd71abe8005e45c54
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 9ef430dfaa43f9bc4294593c8abbdaf457ef07c8
 
 
 ---
@@ -53,9 +53,9 @@ ms.openlocfilehash: 91490e33ab2d524da90ae75bd71abe8005e45c54
 创建存储帐户可能需要几分钟时间。 创建后，请单击“确定”关闭“添加存储帐户”对话框，新的存储帐户将添加到可用存储帐户列表中。
 
 ## <a name="to-add-an-existing-storage-account-to-the-list"></a>将现有存储帐户添加到列表
-1. 如果没有 Azure 存储帐户，可以遵照上面“创建新的存储帐户”部分中列出的步骤创建一个存储帐户。 （或者，也可以在 [Azure 管理门户][Azure 管理门户]中创建新的存储帐户。）
+1. 如果没有 Azure 存储帐户，可以遵照上面“创建新的存储帐户”部分中列出的步骤创建一个存储帐户。 （或者，也可以在 [Azure 管理门户][Azure Management Portal]中创建新的存储帐户。）
 2. 在“存储帐户”对话框中，单击“添加”。
-3. 在“添加存储帐户”对话框中，输入“名称”和“访问密钥”的值。 这必须是现有 Azure 存储帐户的帐户名称和访问密钥。 可通过 [Azure 管理门户][Azure 管理门户]的“存储”部分查看存储帐户名称和密钥。 “添加存储帐户”对话框如下所示。
+3. 在“添加存储帐户”对话框中，输入“名称”和“访问密钥”的值。 这必须是现有 Azure 存储帐户的帐户名称和访问密钥。 使用 [Azure 管理门户][Azure Management Portal]的“存储”部分查看存储帐户名称和密钥。 “添加存储帐户”对话框如下所示。
    
     ![][ic719497]
 4. 单击“确定”关闭“添加存储帐户”对话框。
@@ -75,22 +75,22 @@ ms.openlocfilehash: 91490e33ab2d524da90ae75bd71abe8005e45c54
 > 
 
 ## <a name="see-also"></a>另请参阅
-[用于 Eclipse 的 Azure 工具包][用于 Eclipse 的 Azure 工具包]
+[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]
 
-[安装用于 Eclipse 的 Azure 工具包][安装用于 Eclipse 的 Azure 工具包] 
+[安装用于 Eclipse 的 Azure 工具包][Installing the Azure Toolkit for Eclipse] 
 
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序][在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+[在 Eclipse 中为 Azure 创建 Hello World 应用程序][Creating a Hello World Application for Azure in Eclipse]
 
-有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java 开发人员中心]。
+有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java Developer Center]。
 
 <!-- URL List -->
 
-[Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
-[用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure 管理门户]: http://go.microsoft.com/fwlink/?LinkID=512959
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
-[安装用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkId=699546
-[用于 Eclipse 的 Azure 工具包的新增功能]: http://go.microsoft.com/fwlink/?LinkID=699552
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
 
@@ -101,6 +101,6 @@ ms.openlocfilehash: 91490e33ab2d524da90ae75bd71abe8005e45c54
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

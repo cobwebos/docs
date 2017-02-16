@@ -1,6 +1,6 @@
 ---
-title: "Azure 网络安全概述 | Microsoft 文档"
-description: " 本文便于你了解 Microsoft Azure 在网络安全领域内必须要提供的内容。 我们提供了核心网络安全概念和要求的基本说明，以及 Azure 在每个领域内必须要提供的内容的相关信息。 "
+title: "Azure 网络安全的概念和要求 | Microsoft Docs"
+description: " 本文便于你了解 Microsoft Azure 在网络安全领域内必须要提供的内容。 我们提供了核心网络安全概念和要求的基本说明，以及 Azure 在每个领域内必须要提供的内容的相关信息. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f62d964dc5da9200a9f1944c00a4983e8d01b997
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 8b0266a86221b379a105b87f130cd0a4f97385f7
 
 
 ---
@@ -161,14 +161,14 @@ Azure 网络支持以下安全远程访问方案：
 * 提高性能 – 在跨多个设备对连接进行负载平衡时，单个设备占用处理器命中。 相反，提供内容的处理和内存需求遍布多个设备。
 
 ### <a name="http-based-load-balancing"></a>基于 HTTP 的负载平衡
-运行基于 Web 的服务的组织通常希望在这些 Web 服务前面具有基于 HTTP 的负载平衡器，以帮助确保足够级别的性能和高可用性。 与传统的基于网络的负载平衡器相比，由基于 HTTP 的负载平衡器所做的负载平衡决策基于 HTTP 协议的特征，而不是基于网络和传输层协议的特征。
+运行基于 Web 的服务的组织通常希望在这些 Web 服务前面具有基于 HTTP 的负载均衡器，以帮助确保足够级别的性能和高可用性。 与传统的基于网络的负载均衡器相比，由基于 HTTP 的负载均衡器所做的负载平衡决策基于 HTTP 协议的特征，而不是基于网络和传输层协议的特征。
 
 为了给你的基于 Web 的服务提供基于 HTTP 的负载平衡，Azure 为你提供了 Azure 应用程序网关。 Azure 应用程序网关支持：
 
 * 基于 HTTP 的负载平衡 – 负载平衡决策都是基于特定于 HTTP 协议的特征做出的。
-* 基于 cookie 的会话相关性 – 此功能可确保建立到负载平衡器后面的服务器之一的连接在客户端和服务器之间保持不变。 这确保了事务的稳定性。
-* SSL 卸载 – 当使用负载平衡器建立客户端连接时，客户端与负载平衡器之间的会话使用 HTTPS (SSL/) 协议进行加密。 但是，为了提高性能，你可以选择让负载平衡器和该负载平衡器后面的 Web 服务器之间的连接使用 HTTP（未加密）协议。 这称为“SSL 卸载”，因为负载平衡器后面的 Web 服务器不会遇到涉及加密的处理器开销，因此应能更快地为请求提供服务。
-* 基于 URL 的内容路由 – 此功能可使负载平衡器决定在哪里转发基于目标 URL 的连接。 与基于 IP 地址做出负载平衡决策的解决方案相比，这提供了更多的灵活性。
+* 基于 cookie 的会话相关性 – 此功能可确保建立到负载均衡器后面的服务器之一的连接在客户端和服务器之间保持不变。 这确保了事务的稳定性。
+* SSL 卸载 – 当使用负载均衡器建立客户端连接时，客户端与负载均衡器之间的会话使用 HTTPS (SSL/) 协议进行加密。 但是，为了提高性能，你可以选择让负载均衡器和该负载均衡器后面的 Web 服务器之间的连接使用 HTTP（未加密）协议。 这称为“SSL 卸载”，因为负载均衡器后面的 Web 服务器不会遇到涉及加密的处理器开销，因此应能更快地为请求提供服务。
+* 基于 URL 的内容路由 – 此功能可使负载均衡器决定在哪里转发基于目标 URL 的连接。 与基于 IP 地址做出负载平衡决策的解决方案相比，这提供了更多的灵活性。
 
 了解更多：
 
@@ -176,18 +176,18 @@ Azure 网络支持以下安全远程访问方案：
 
 ### <a name="network-level-load-balancing"></a>网络级别的负载平衡
 与基于 HTTP 的负载平衡相比，网络级别负载平衡基于 IP 地址和端口（TCP 或 UDP）号做出负载平衡决策。
-通过使用 Azure 负载平衡器，你可以在 Azure 中获得网络级别负载平衡的优点。 Azure 负载平衡器的一些主要特征包括：
+通过使用 Azure 负载均衡器，你可以在 Azure 中获得网络级别负载平衡的优点。 Azure 负载均衡器的一些主要特征包括：
 
 * 基于 IP 地址和端口号的网络级别负载平衡
 * 支持任何应用程序层协议
 * 对 Azure 虚拟机和云服务角色实例进行负载平衡
 * 可用于面向 Internet（外部负载平衡）和面向非 Internet（内部负载平衡）的应用程序和虚拟机
-* 终结点监视，用于确定负载平衡器后面的任何服务是否已变得不可用
+* 终结点监视，用于确定负载均衡器后面的任何服务是否已变得不可用
 
 了解更多：
 
-* [多个虚拟机或服务之间的面向 Internet 的负载平衡器](../load-balancer/load-balancer-internet-overview.md)
-* [内部负载平衡器概述](../load-balancer/load-balancer-internal-overview.md)
+* [多个虚拟机或服务之间的面向 Internet 的负载均衡器](../load-balancer/load-balancer-internet-overview.md)
+* [内部负载均衡器概述](../load-balancer/load-balancer-internal-overview.md)
 
 ### <a name="global-load-balancing"></a>全局负载平衡
 某些组织可能会需要最高级别的可用性。 实现此目标的一种方法是在全球分布的数据中心中托管应用程序。 在分布于世界各地的数据中心中托管应用程序时，整个地缘政治区域可能会变得不可用，并且仍然让应用程序启动和运行。
@@ -270,6 +270,6 @@ Azure 安全中心通过以下方式来帮助优化和监视网络安全：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

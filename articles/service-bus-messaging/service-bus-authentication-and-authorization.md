@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
+ms.date: 01/13/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 96fa98dda9353a5c8047f872d2507ac1d94f666c
-ms.openlocfilehash: 676c66999b43fd2ada5b470dd48b1ba3a8c73202
+ms.sourcegitcommit: 2c1a1f3b73466526b13bcfeb4580335390506c23
+ms.openlocfilehash: 14dfe58f6296a4ec516845bace456ffd59fa608a
 
 
 ---
@@ -31,29 +31,29 @@ ms.openlocfilehash: 676c66999b43fd2ada5b470dd48b1ba3a8c73202
 
 可以在服务总线命名空间上配置用于 SAS 的密钥。 该密钥将应用到该命名空间中的所有消息传送实体。 可在服务总线队列和主题上配置密钥。 服务总线中继上也支持 SAS。
 
-若要使用 SAS，可在由以下项构成的命名空间、队列或主题上配置 [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 对象：
+若要使用 SAS，可在由以下项构成的命名空间、队列或主题上配置 [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象：
 
 * 标识此规则的 KeyName。
 * PrimaryKey，用于对 SAS 令牌进行签名/验证的加密密钥。
 * SecondaryKey，用于对 SAS 令牌进行签名/验证的加密密钥。
 * Rights，表示授予的侦听、发送或管理权限的集合。
 
-通过在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有实体的访问权限。 在服务总线命名空间、队列或主题上最多可配置 12 个此类规则。 默认情况下，首次预配时，将为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx)。
+通过在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有实体的访问权限。 在服务总线命名空间、队列或主题上最多可配置 12 个此类规则。 默认情况下，首次预配时，将为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。
 
-若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的过期时间组成。
+若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的过期时间组成。
 
-Azure.NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
+Azure.NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
 
 ## <a name="acs-authentication"></a>ACS 身份验证
-使用 ACS 的服务总线身份验证通过随附的“-sb”ACS 命名空间进行管理。 如果要为服务总线命名空间创建随附 ACS 命名空间，则不能使用 Azure 经典门户创建服务总线命名空间，而必须使用 [New-AzureSBNamespace](https://msdn.microsoft.com/library/azure/dn495165.aspx) PowerShell cmdlet 来创建命名空间。 例如：
+使用 ACS 的服务总线身份验证通过随附的“-sb”ACS 命名空间进行管理。 如果要为服务总线命名空间创建随附 ACS 命名空间，则不能使用 Azure 经典门户创建服务总线命名空间，而必须使用 [New-AzureSBNamespace](https://docs.microsoft.com/powershell/servicemanagement/azure.compute/v1.6.1/New-AzureSBNamespace) PowerShell cmdlet 来创建命名空间。 例如：
 
-```
+```powershell
 New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $true
 ```
 
 若要避免创建 ACS 命名空间，请发出以下命令：
 
-```
+```powershell
 New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
 ```
 
@@ -63,18 +63,15 @@ New-AzureSBNamespace <namespaceName> "<Region>” -CreateACSNamespace $false
 
 客户端通过提供其凭据，从具有相应声明的 ACS 请求 SWT 令牌，从而访问某个实体。 随后必须将 SWT 令牌作为请求的一部分发送到服务总线，以便启用客户端身份验证，从而访问该实体。
 
-Azure.NET SDK 2.0 版和更高版本支持服务总线的 ACS 身份验证。 此身份验证支持 [SharedSecretTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.sharedsecrettokenprovider.aspx)。 允许将连接字符串作为参数的所有 API 都支持 ACS 连接字符串。
+Azure.NET SDK 2.0 版和更高版本支持服务总线的 ACS 身份验证。 此身份验证支持 [SharedSecretTokenProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)。 允许将连接字符串作为参数的所有 API 都支持 ACS 连接字符串。
 
 ## <a name="next-steps"></a>后续步骤
 有关 SAS 的详细信息，请继续阅读[使用服务总线进行共享访问签名身份验证](service-bus-shared-access-signature-authentication.md)。
 
 有关服务总线中的 SAS 的高级概述，请参阅[共享访问签名](service-bus-sas-overview.md)。
 
-可在[操作方法：通过 OAuth WRAP 协议从 ACS 请求令牌](https://msdn.microsoft.com/library/hh674475.aspx)中找到详细信息。
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

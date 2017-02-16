@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/13/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 248a205b0cca42642014069269e20a52af52b7bf
+ms.sourcegitcommit: 8afc15321db5c6d3b7c6cae2692a9a0d61ccdf6a
+ms.openlocfilehash: d62431f3fae21388d8ccfc0d411267f69823b700
 
 
 ---
@@ -46,27 +46,27 @@ DocumentDB 是面向 NoSQL 文档的数据库，以 JSON 格式存储数据。  
 ### <a name="how-does-documentdb-offer-predictable-performance"></a>DocumentDB 如何提供可预测的性能？
 [请求单位](documentdb-request-units.md)是 DocumentDB 中吞吐量的衡量单位。 1 个 RU 相当于获取 1KB 文档的吞吐量。 在 DocumentDB 中进行的每个操作（包括读、写、SQL 查询和执行存储过程）都具有一个确定的 RU 值，该值基于完成该操作所需的吞吐量。 你无需考虑 CPU、IO 和内存，以及它们会怎样影响你的应用程序吞吐量，而是从单个 RU 度量值的角度进行考虑。
 
-每个 DocumentDB 集合都可以保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，你都可以将单个请求设为基准以测量其 RU 值，并预配集合以处理所有请求的请求单位总和。 你也可以随着应用程序的发展需求，相应增加或减少集合的吞吐量。 如需请求单位的详细信息以及帮助确定你的集合需求，请阅读[管理性能和容量](documentdb-manage.md)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。
+每个 DocumentDB 集合都可以保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，你都可以将单个请求设为基准以测量其 RU 值，并预配集合以处理所有请求的请求单位总和。 你也可以随着应用程序的发展需求，相应增加或减少集合的吞吐量。 有关请求单位的详细信息以及确定集合需求方面的帮助，请阅读[估计吞吐量需求](documentdb-request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。
 
 ### <a name="is-documentdb-hipaa-compliant"></a>DocumentDB 是否符合 HIPAA 标准？
 是，DocumentDB 符合 HIPAA 标准。 HIPAA 针对可识别个人身份的健康信息的使用、泄露与保护制定了要求。 有关详细信息，请参阅 [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)（Microsoft 信任中心）。
 
 ### <a name="what-are-the-storage-limits-of-documentdb"></a>DocumentDB 的存储限制有哪些？
-对于集合可以存储在 DocumentDB 中的数据总量没有任何限制。 如果想在单个集合中存储超过 250 GB 的数据，请[与支持部门联系](documentdb-increase-limits.md)，增加帐户配额。
+对于集合可以存储在 DocumentDB 中的数据总量并没有任何限制。
 
 ### <a name="what-are-the-throughput-limits-of-documentdb"></a>DocumentDB 的吞吐量限制有哪些？
-如果工作负荷可以大致平均分配给足够大量的分区键，则在 DocumentDB 中集合可以支持的吞吐量总量没有限制。 如果希望每个集合或帐户每秒的请求单位数超过 250,000 个，请[与支持部门联系](documentdb-increase-limits.md)以增加你的帐户配额。
+如果工作负荷可以大致平均分配给足够大量的分区键，则在 DocumentDB 中集合可以支持的吞吐量总量没有限制。
 
 ### <a name="how-much-does-microsoft-azure-documentdb-cost"></a>Microsoft Azure DocumentDB 的费用是多少？
 请参考 [DocumentDB 定价详细信息](https://azure.microsoft.com/pricing/details/documentdb/)页面了解详细信息。 DocumentDB 使用量费用取决于正在使用的集合数目、集合的在线小时数，以及每个集合的已使用存储和已预配吞吐量。
 
 ### <a name="is-there-a-free-account-available"></a>有免费的帐户吗？
-如果不熟悉 Azure，可以注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，这样可以得到 30 天试用期和 200 美元，让你试用所有 Azure 服务。 或者，如果有 Visual Studio 订阅，则有资格[免费获取每月 150 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。  
+如果不熟悉 Azure，可以注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，这样可以得到 30 天试用期和 200 美元，让你试用所有 Azure 服务。 或者，如果有 Visual Studio 订阅，则有资格[免费获取每月&150; 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。  
 
 也可以使用 [Azure DocumentDB 模拟器](documentdb-nosql-local-emulator.md) 在本地免费开发和测试应用程序，无需创建 Azure 订阅。 如果对应用程序在 DocumentDB Emulator 中的工作情况感到满意，可以改为在云中使用 Azure DocumentDB 帐户。
 
 ### <a name="how-can-i-get-additional-help-with-documentdb"></a>如何获取 DocumentDB 的其他帮助？
-如果需要任何帮助，请在 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb)（[Azure DocumentDB MSDN 开发人员论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)）上联系我们，或者安排[与 DocumentDB 工程团队进行 1 对 1 交谈](http://www.askdocdb.com/)。 若想及时了解最新的 DocumentDB 新闻和功能，请关注我们的 [Twitter](https://twitter.com/DocumentDB)。
+如需任何帮助，请在 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) 上联系我们，或者通过向 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) 发送邮件安排与 DocumentDB 工程团队进行 1 对 1 交谈。 若想及时了解最新的 DocumentDB 新闻和功能，请关注我们的 [Twitter](https://twitter.com/DocumentDB)。
 
 ## <a name="set-up-microsoft-azure-documentdb"></a>设置 Microsoft Azure DocumentDB
 ### <a name="how-do-i-sign-up-for-microsoft-azure-documentdb"></a>如何注册 Microsoft Azure DocumentDB？
@@ -76,7 +76,7 @@ DocumentDB 是面向 NoSQL 文档的数据库，以 JSON 格式存储数据。  
 主密钥是用于访问帐户的所有资源的安全令牌。 拥有此密钥的人对数据库帐户中的所有资源具有读取和写入访问权。 分发主密钥时要格外谨慎。 [Azure 门户][azure-portal]的“密钥”边栏选项卡中提供主要主密钥和辅助主密钥。 有关密钥的详细信息，请参阅[查看、复制和重新生成访问密钥](documentdb-manage-account.md#keys)。
 
 ### <a name="how-do-i-create-a-database"></a>我如何创建数据库？
-你可以如[创建 DocumentDB 数据库](documentdb-create-database.md)中所述使用 [Azure 门户]()、利用某个 [DocumentDB SDK](documentdb-sdk-dotnet.md) 或通过 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 来创建数据库。  
+可以根据[创建 DocumentDB 集合和数据库](documentdb-create-collection.md)中所述使用 [Azure 门户]()、利用某个 [DocumentDB SDK](documentdb-sdk-dotnet.md) 或通过 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 来创建数据库。  
 
 ### <a name="what-is-a-collection"></a>什么是集合？
 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。 集合是一个计费实体，其[成本](documentdb-performance-levels.md)由所使用的吞吐量和存储确定。 集合可以跨一个或多个分区/服务器，并且能伸缩以处理几乎无限制增长的存储或吞吐量。
@@ -93,7 +93,7 @@ DocumentDB 是面向 NoSQL 文档的数据库，以 JSON 格式存储数据。  
 GitHub 上提供 DocumentDB [.NET](documentdb-dotnet-samples.md)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](documentdb-nodejs-samples.md) 和 [Python](documentdb-python-samples.md) SDK 的示例。
 
 ### <a name="does-documentdb-support-sql"></a>DocumentDB 是否支持 SQL？
-DocumentDB SQL 查询语言是 SQL 支持的查询功能增强子集。 DocumentDB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及可扩展性。 JSON 语法允许将 JSON 文档模型化为以标签作为树节点的树状，由 DocumentDB 的自动索引技术及 DocumentDB 的 SQL 查询方言使用。  有关如何使用 SQL 语法的详细信息，请参阅[查询 DocumentDB][query]一文。
+DocumentDB SQL 查询语言是 SQL 支持的查询功能增强子集。 DocumentDB SQL 查询语言通过基于 JavaScript 的用户定义函数 (UDF)，提供丰富的分层和关系运算符以及可扩展性。 JSON 语法允许将 JSON 文档模型化为以标签作为树节点的树状，由 DocumentDB 的自动索引技术及 DocumentDB 的 SQL 查询方言使用。  有关如何使用 SQL 语法的详细信息，请参阅[查询 DocumentDB][query] 一文。
 
 ### <a name="what-are-the-data-types-supported-by-documentdb"></a>DocumentDB 支持什么数据类型？
 DocumentDB 支持的基元数据类型与 JSON 相同。 JSON 有一套简单的类型系统，包含字符串、数值（IEEE754 双精度）和布尔值（true、false 和 Null）。  通过使用 { } 运算符创建嵌套对象和使用 [ ] 运算符创建数组，可以在 JSON 和 DocumentDB 中表示更复杂的数据类型（例如 DateTime、Guid、Int64 和 Geometry）。
@@ -117,13 +117,13 @@ DocumentDB 通过 JavaScript 存储过程和触发器支持语言集成式事务
 是，因为 DocumentDB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 DocumentDB 客户端可以指定“If-None-Match”标头来读取任何资源，例如文档或集合，且只有当服务器版本更改时才会更新本地副本。
 
 ### <a name="is-a-local-instance-of-documentdb-available"></a>DocumentDB 的本地实例是否可用？
-是的。 [Azure DocumentDB 模拟器](documentdb-nosql-local-emulator.md)提供对 DocumentDB 服务的高保真模拟。 它支持与 Azure DocumentDB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 DocumentDB 模拟器开发和测试应用程序，然后只需对 DocumentDB 的连接终结点进行单一的配置更改，将其部署到全局范围的 Azure。
+是的。 [Azure DocumentDB 模拟器](documentdb-nosql-local-emulator.md)提供对 DocumentDB 服务的高保真模拟。 它支持与 Azure DocumentDB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 DocumentDB 模拟器开发和测试应用程序，并通过对 DocumentDB 的连接终结点进行单一配置更改将其部署到全局范围的 Azure。
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

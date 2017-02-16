@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: 44980a015f74110442f8684479ab0c911f605e8d
-ms.openlocfilehash: e2f1024f428647c05fb0faced70e779acbd86489
+ms.sourcegitcommit: a3df293a056f4b06281bf8b80717529286d528b8
+ms.openlocfilehash: 48f26113d129ebfa613f1b8f2a372d0e7286aea1
 
 
 ---
@@ -66,19 +66,16 @@ Linux Web 应用只能在专用应用服务计划中使用，没有免费层或�
 
 在资源组中创建 Linux Web 应用时，该资源组不得在同一区域包含非 Linux Web 应用。
 
-由于 Web 应用缺少重复循环，因此在重启 Web 应用时，客户会经历短时间的停机。
-
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，开始使用 Linux 应用服务。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
 * [在 Linux 应用服务中创建 Web 应用](app-service-linux-how-to-create-a-web-app.md)
 * [如何在 Linux 上使用应用服务自定义 Docker 映像](app-service-linux-using-custom-docker-image.md)
 * [在 Linux Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
-* [在 Linux 上的 Azure 应用服务 Web 应用中使用 .NET Core](app-service-linux-intro.md)
+* [在 Linux 上的 Azure 应用服务 Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
-ms.author: markusvi
+ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 10ebc5878b65778471fb47f1b47d7c9d2dcb2a16
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: 69c65d0ac948563c4eaebee7319b5e5a84a0a8d8
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: 10ebc5878b65778471fb47f1b47d7c9d2dcb2a16
 ## <a name="create-an-azure-virtual-network"></a>创建 Azure 虚拟网络
 1. 登录到 Azure 经典门户。
 2. 创建虚拟网络。 单击“网络” > “创建虚拟网络”。 使用下表中的值来完成向导操作。
-   
+
    | 在此向导页上... | 指定这些值 |
    | --- | --- |
    |  **虚拟网络详细信息** |<p>名称：输入虚拟网络的名称</p><p>区域：选择最靠近的区域</p> |
@@ -60,7 +60,7 @@ ms.openlocfilehash: 10ebc5878b65778471fb47f1b47d7c9d2dcb2a16
 若要使用 Windows PowerShell 而不是 UI 创建 VM，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../virtual-machines/virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 1. 在经典门户中，单击“新建” > “计算” > “虚拟机” > “从库中”。 使用以下值来完成向导。 除非建议或必须使用其他值，否则请接受默认的设置值。
-   
+
    | 在此向导页上... | 指定这些值 |
    | --- | --- |
    |  **选择映像** |Windows Server 2012 R2 Datacenter |
@@ -69,8 +69,8 @@ ms.openlocfilehash: 10ebc5878b65778471fb47f1b47d7c9d2dcb2a16
    |  **虚拟机配置** |<p>选择“安装 VM 代理”，以及所需的任何其他扩展。<b></b></p> |
 2. 将磁盘附加到要运行 DC 服务器角色的每个 VM。 需要提供额外的磁盘来存储 AD 数据库、日志和 SYSVOL。 指定磁盘的大小（例如 10 GB）并将“主机缓存首选项”设置为“无”。 有关步骤，请参阅[如何将数据磁盘附加到 Windows 虚拟机](../virtual-machines/virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 3. 在首次登录 VM 之后，请打开“服务器管理器” > “文件和存储服务”，使用 NTFS 在该磁盘上创建一个卷。
-4. 为要运行 DC 角色的 VM 保留静态 IP 地址。 若要保留静态 IP 地址，请下载 Microsoft Web 平台安装程序，[安装 Azure PowerShell](../powershell-install-configure.md) 并运行 Set-AzureStaticVNetIP cmdlet。 例如：
-   
+4. 为要运行 DC 角色的 VM 保留静态 IP 地址。 若要保留静态 IP 地址，请下载 Microsoft Web 平台安装程序，[安装 Azure PowerShell](/powershell/azureps-cmdlets-docs) 并运行 Set-AzureStaticVNetIP cmdlet。 例如：
+
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
 有关如何设置静态 IP 地址的详细信息，请参阅[为 VM 配置静态内部 IP 地址](../virtual-network/virtual-networks-reserved-private-ip.md)。
@@ -92,7 +92,7 @@ ms.openlocfilehash: 10ebc5878b65778471fb47f1b47d7c9d2dcb2a16
 
 ## <a name="create-vms-for-domain-members"></a>为域成员创建 VM
 1. 重复以下步骤，创建作为应用程序服务器运行的 VM。 除非建议或必须使用其他值，否则请接受默认的设置值。
-   
+
    | 在此向导页上... | 指定这些值 |
    | --- | --- |
    |  **选择映像** |Windows Server 2012 R2 Datacenter |
@@ -113,7 +113,7 @@ ms.openlocfilehash: 10ebc5878b65778471fb47f1b47d7c9d2dcb2a16
 * [Microsoft Azure IT Pro IaaS：(01) 虚拟机基础知识](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 * [Microsoft Azure IT Pro IaaS：(05) 创建虚拟网络和跨界连接](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 * [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
-* [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)
+* [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
 * [Azure Cmdlet 参考](https://msdn.microsoft.com/library/azure/jj554330.aspx)
 * [设置 Azure VM 静态 IP 地址](http://windowsitpro.com/windows-azure/set-azure-vm-static-ip-address)
@@ -126,6 +126,6 @@ ms.openlocfilehash: 10ebc5878b65778471fb47f1b47d7c9d2dcb2a16
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

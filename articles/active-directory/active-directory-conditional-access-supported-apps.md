@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/26/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fbc03ebf0c66950ae92ca75cf34da86dfb15a349
+ms.sourcegitcommit: b9605eb10f87f107dffd9f631d043bf550cf030b
+ms.openlocfilehash: 5e293d7d3fa6b0a763663a5428878944660fc03e
 
 
 ---
@@ -41,8 +41,8 @@ ms.openlocfilehash: fbc03ebf0c66950ae92ca75cf34da86dfb15a349
 | Office 365 Exchange Online |Windows 8.1、Windows 7 |Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） |
 | Office 365 Exchange Online |iOS、Android |Outlook 移动应用 |
 | Office 365 Exchange Online |Mac OS X |仅限多重身份验证和位置的 Outlook 2016；计划将来提供的基于设备的策略支持、计划将来提供的 Skype for Business 支持 |
-| Office 365 SharePoint Online |Windows 10 |Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、计划将来提供的 OneDrive for Business 应用（新一代同步客户端，或称 NGSC）支持、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持 |
-| Office 365 SharePoint Online |Windows 8.1、Windows 7 |Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive for Business 应用（Groove 同步客户端） |
+| Office 365 SharePoint Online |Windows 10 |Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持 |
+| Office 365 SharePoint Online |Windows 8.1、Windows 7 |Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)） |
 | Office 365 SharePoint Online |iOS、Android |Office 移动应用 |
 | Office 365 SharePoint Online |Mac OS X |仅限多重身份验证和位置的 Office 2016 应用；计划将来提供的基于设备的策略支持 |
 | Office 365 Yammer |Windows 10、iOS 和 Android |Office Yammer 应用 |
@@ -111,6 +111,6 @@ Exchange 提供两种主要类型的协议。 查看以下选项，然后选择�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

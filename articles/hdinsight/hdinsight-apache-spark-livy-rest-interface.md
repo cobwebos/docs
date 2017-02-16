@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 564bd1f3095446edf839d0353b92e0df256e1007
+ms.sourcegitcommit: 0866581d6feebc71ed82aa48f6e41a58068af900
+ms.openlocfilehash: 0b8c9f9395f034355c8f10574e750fcf40e870de
 
 
 ---
@@ -33,7 +33,7 @@ Azure HDInsight 上的 Apache Spark 群集包含 Livy，这是一个 REST 接口
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
-## <a name="submit-a-batch-job-the-cluster"></a>向群集提交批处理作业
+## <a name="submit-a-batch-job"></a>提交批处理作业
 在提交批处理作业之前，必须将应用程序 jar 上载到与群集关联的群集存储。 可以使用命令行实用工具 [**AzCopy**](../storage/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上载数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
 
     curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches'
@@ -154,6 +154,17 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
    
     输出的最后一行显示批已成功删除。 如果删除正在运行的作业，实际上是终止该作业。 如果删除已完成的作业，则不管该作业是否已成功完成，都将完全删除该作业的信息。
 
+## <a name="using-livy-on-hdinsight-35-spark-clusters"></a>在 HDInsight 3.5 Spark 群集上使用 Livy
+
+HDInsight 3.5 群集默认情况下禁止使用本地文件路径访问示例数据文件或 jar。 建议改用 `wasb://` 路径访问群集中的 jar 或示例数据文件。 如果要使用本地路径，则必须相应地更新 Ambari 配置。 为此，请执行以下操作：
+
+1. 转到群集的 Ambari 门户。 Ambari Web UI 在 HDInsight 群集上提供，网址为 https://**CLUSTERNAME**.azurehdidnsight.net，其中 CLUSTERNAME 是群集的名称。
+
+2. 在左侧导航中，单击“Livy”，然后单击“配置”。
+
+3. 如果要允许完全访问文件系统，请在 **livy-default** 下添加属性名称 `livy.file.local-dir-whitelist`，并将其值设置为 **"/"**。 如果要仅允许访问特定目录，请提供该目录的路径作为值。
+
+
 ## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](hdinsight-apache-spark-overview.md)
 
@@ -182,6 +193,6 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是一些�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

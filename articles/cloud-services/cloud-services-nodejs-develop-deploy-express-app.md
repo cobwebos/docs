@@ -12,17 +12,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: ba4c04880913996b9744cdf2a3d19e9bedf36c16
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 331d82a987aebe422ca2f560d856dad9f1b733f3
 
 
 ---
 # <a name="build-a-nodejs-web-application-using-express-on-an-azure-cloud-service"></a>使用 Express 在 Azure 云服务中生成 Node.js Web 应用程序
 Node.js 包含核心运行时中最小的一个功能集。
-开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 在本教程中，将使用 [Express][Express] 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
+开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 在本教程中，你将使用 [Express][Express] 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
 
 以下是已完成应用程序的屏幕快照：
 
@@ -119,7 +119,7 @@ Node.js 包含核心运行时中最小的一个功能集。
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
 
-[Node.js Web 应用程序]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
+[Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: http://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
 
@@ -127,6 +127,6 @@ Node.js 包含核心运行时中最小的一个功能集。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

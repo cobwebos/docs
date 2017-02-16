@@ -8,7 +8,7 @@
 | 每个数据集的并发切片数 |10 |10 |
 | 每个管道的每个对象字节数 <sup>1</sup> |200 KB |200 KB |
 | 数据集和关联的服务对象的每个对象字节数 <sup>1</sup> |100 KB |2000 KB |
-| 订阅中的 HDInsight 按需群集核心数 <sup>2</sup> |48 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| 订阅中的 HDInsight 按需群集核心数 <sup>2</sup> |60 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 云数据移动单位 <sup>3</sup> |8 |[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 管道活动运行的重试次数 |1000 |MaxInt（32 位） |
 
@@ -29,6 +29,6 @@ Azure Resource Manager 限制 API 调用。 可以根据 [Azure Resource Manager
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

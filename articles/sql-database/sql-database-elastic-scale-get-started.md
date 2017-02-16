@@ -8,6 +8,7 @@ author: ddove
 editor: CarlRabeler
 ms.assetid: b6911f8d-2bae-4d04-9fa8-f79a3db7129d
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a42f6ed3bce42cbd5841f241c2f735b87252cb3f
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
 
 
 ---
@@ -49,7 +50,7 @@ ms.openlocfilehash: a42f6ed3bce42cbd5841f241c2f735b87252cb3f
    
     ![进度][4]
 
-祝贺你 - 你已成功地使用弹性数据库池在 Azure SQL 数据库上生成并运行了第一个分片应用程序。 通过将 Visual Studio 或 SQL Server Management Studio 连接到 Azure DB 服务器，快速查看一下该示例创建的分片。 你将会看到该示例创建的新示例分片数据库和分片映射管理器数据库。
+恭喜 - 你已成功使用弹性数据库池在 Azure SQL 数据库上生成并运行了第一个分片应用程序。 通过将 Visual Studio 或 SQL Server Management Studio 连接到 Azure DB 服务器，快速查看一下该示例创建的分片。 你将会看到该示例创建的新示例分片数据库和分片映射管理器数据库。
 
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
@@ -88,10 +89,10 @@ ms.openlocfilehash: a42f6ed3bce42cbd5841f241c2f735b87252cb3f
 * 要测量性能：[分片映射管理器的性能计数器](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->
-[弹性缩放示例应用程序]: #The-Elastic-Scale-Sample-Application
-[下载并运行示例应用]: #Download-and-Run-the-Sample-App
-[成本]: #Cost
-[后续步骤]: #next-steps
+[The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application
+[Download and Run the Sample App]: #Download-and-Run-the-Sample-App
+[Cost]: #Cost
+[Next steps]: #next-steps
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-get-started/newProject.png
@@ -102,6 +103,6 @@ ms.openlocfilehash: a42f6ed3bce42cbd5841f241c2f735b87252cb3f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

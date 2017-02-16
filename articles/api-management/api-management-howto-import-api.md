@@ -1,6 +1,6 @@
 ---
-title: "API 管理关键概念"
-description: "了解有关 API、产品、角色、组和其他 API 管理关键概念。"
+title: "将 API 导入 Azure API 管理 | Microsoft 文档"
+description: "了解如何将 API 及其操作导入 Azure API 管理。"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: b69c8e918bb0380a10b1505fbf9792e284149de0
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: c851b88fc1067e65044266d07775717c028e75d9
 
 ---
 # <a name="how-to-import-the-definition-of-an-api-with-operations-in-azure-api-management"></a>如何通过 Azure API 管理中的操作导入 API 的定义
@@ -97,6 +96,6 @@ API 创建并导入操作后，您可以查看和配置任何其他设置，将 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

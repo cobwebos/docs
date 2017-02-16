@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9713d8b952f79f3ea4010a2d504b5174e70ce9ca
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: 35e3f4ee07414927cd93e3fbe54d7c96f4681ba4
 
 
 ---
@@ -53,7 +53,7 @@ Jack Richins 向 [Scott](https://channel9.msdn.com/Niners/Glucose) 讲述了如�
 * 了解数据保护 API、主密钥和证书
 * 使用 SQL 命令来创建主密钥和证书，并对数据库进行加密
 
-[如何在开发测试实验室中设置安全性](https://channel9.msdn.com/Blogs/Windows-Azure/How-to-set-security-in-your-DevTest-Lab)
+[如何在开发测试实验室中设置安全性](https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab)
 
 作为实验室的所有者，你可以通过以下两种实验室角色来保护实验室访问的安全︰所有者和开发测试实验室用户。 拥有“所有者”角色的用户在实验室中拥有完全访问权限，而拥有“开发测试实验室用户”角色中的用户只有受限的访问权限。 在本视频中，我们将向你演示如何将拥有其中一种角色的用户添加到实验室。
 
@@ -81,6 +81,6 @@ Amit Bapat 将 Scott 引入 Azure 密钥保管库中。 借助 Azure 密钥保�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

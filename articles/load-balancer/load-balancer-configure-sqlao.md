@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: 75f05f003b691ee6464168453fa7935f1fae166e
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 68aad6253f185d53fdd7f11c8660c7287ef12655
 
 ---
 
@@ -55,7 +55,7 @@ SQL Server AlwaysOn 可用性组现在可与 ILB 配合运行。 可用性组是
 
     在上述示例中，有 2 个分别名为“sqlsvc1”和“sqlsvc2”的 VM 在云服务“Sqlsvc”中运行。 使用 `DirectServerReturn` 开关创建 ILB 后，可以将经过负载均衡的终结点添加到 ILB，以便 SQL 为可用性组配置侦听器。
 
-有关 SQL AlwaysOn 的详细信息，请参阅[在 Azure 中为 AlwaysOn 可用性组配置内部负载平衡器](../virtual-machines/virtual-machines-windows-portal-sql-alwayson-int-listener.md?toc=%2fazure%2fload-balancer%2ftoc.json)。
+有关 SQL AlwaysOn 的详细信息，请参阅[在 Azure 中为 AlwaysOn 可用性组配置内部负载平衡器](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
 
 ## <a name="see-also"></a>另请参阅
 [开始配置面向 Internet 的负载平衡器](load-balancer-get-started-internet-arm-ps.md)
@@ -68,6 +68,6 @@ SQL Server AlwaysOn 可用性组现在可与 ILB 配合运行。 可用性组是
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

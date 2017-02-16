@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: ce8244bbad3aa73f98ab9bd7e967cd69309c80da
+ms.sourcegitcommit: 0dee2c3b92adc4098a51014dd7379aa3d53c1627
+ms.openlocfilehash: 6f352b000ce4e284a1f1cc9ba9b384827ee62003
 
 
 ---
@@ -255,7 +255,7 @@ Azure 门户中显示的一个示例入站 NAT 规则。 在部署中为每个�
 
 `copyIndex` 函数在“音乐应用商店”示例模板中多次使用。 利用 `copyIndex` 的资源和函数包括特定于单个虚拟机实例的任何对象，例如网络接口、负载均衡器规则以及依赖于函数的任何对象。 
 
-有关复制函数的详细信息，请参阅 [Create multiple instances of resources in Azure Resource Manager](../resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
+有关复制函数的详细信息，请参阅 [Create multiple instances of resources in Azure Resource Manager](../azure-resource-manager/resource-group-create-multiple.md)（在 Azure Resource Manager 中创建多个资源实例）。
 
 ## <a name="next-step"></a>后续步骤
 <hr>
@@ -265,6 +265,6 @@ Azure 门户中显示的一个示例入站 NAT 规则。 在部署中为每个�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

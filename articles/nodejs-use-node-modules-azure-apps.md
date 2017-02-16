@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f2fb432881c606c29d4ee7bc810bff984ddec2c
+ms.sourcegitcommit: f9a216f3f76ef84e745ef29575d20da971e5eb61
+ms.openlocfilehash: 2ccd414e0eec04dbee7c412cef245e1ab0da2bff
 
 
 ---
@@ -46,6 +46,7 @@ ms.openlocfilehash: 7f2fb432881c606c29d4ee7bc810bff984ddec2c
 Azure App Service 不支持部分本机模块，并且在编译具有高度专用先决条件的本机模块时可能失败。 一些常用模块（如 MongoDB）需要的本机依赖项是可选的，如果没有这些依赖项可勉强正常工作。对于当今几乎所有的可用本机模块而言，有两种成功的解决方法：
 
 * 在安装了所有系统必备组件的 Windows 计算机运行 **npm install**。 然后，将创建的 **node\_modules** 文件夹作为应用程序的一部分部署到 Azure 应用服务。
+  * 在编译之前, 检查本地 Node.js 安装是否具有匹配的体系结构以及版本是否尽可能接近在 Azure 中使用的版本（可以在运行时从属性 **process.arch** 和 **process.version** 中检查当前值）。
 * 可以将 Azure 应用服务配置为在部署期间执行自定义 bash 或 shell 脚本，以便能够执行自定义命令并精确配置 **npm install** 的运行方式。 有关如何执行此操作的视频，请参阅[使用 Kudu 自定义网站部署脚本]。
 
 ### <a name="using-a-packagejson-file"></a>使用 package.json 文件
@@ -85,13 +86,13 @@ Azure App Service 不支持部分本机模块，并且在编译具有高度专�
 
 [指定 Node.js 版本]: nodejs-specify-node-version-azure-apps.md
 [如何使用适用于 Mac 和 Linux 的 Azure 命令行接口]: xplat-cli-install.md
-[生成和部署 Node.js Web 应用]: web-sites-nodejs-develop-deploy-mac.md
-[使用 MongoDB 中的存储的 Node.js Web 应用程序 (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
-[生成 Node.js 应用程序并将其部署到 Azure 云服务]: cloud-services-nodejs-develop-deploy-app.md
+[build and deploy a Node.js web app]: web-sites-nodejs-develop-deploy-mac.md
+[Node.js Web Application with Storage on MongoDB (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
+[Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [使用 Kudu 自定义网站部署脚本]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

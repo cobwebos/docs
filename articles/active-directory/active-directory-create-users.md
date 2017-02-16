@@ -20,7 +20,7 @@ ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 
 
 ---
-# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>向 Azure Active Directory 添加新用户或具有 Microsoft 帐户的用户
+# <a name="add-new-users--or-users-with-microsoft-accounts-to-azure-active-directory"></a>向 Azure Active Directory 添加新用户或具有 Microsoft 帐户的用户
 请添加用户以填充你的目录。 本文说明如何在组织中添加新用户，以及如何添加具有 Microsoft 帐户的用户。 有关在 Azure Active Directory 中添加来自其他目录的用户或添加来自合作伙伴公司的用户的详细信息，请参阅 [在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户](active-directory-create-users-external.md)。 默认情况下，添加的用户没有管理员权限，但你随时可以向他们分配角色。
 
 ## <a name="add-a-user"></a>添加用户

@@ -12,23 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 085a4cc1adb4925760f9f2755f4f2c7fcb0bfcf3
+ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
+ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
 
 
 ---
 # <a name="customize-azure-hdinsight-hadoop-clusters-for-the-team-data-science-process"></a>为 Team Data Science Process 自定义 Azure HDInsight Hadoop 群集
 本文介绍群集设置为 HDInsight 服务时，如何通过在每个节点上安装 64 位的 Anaconda (Python 2.7) 来自定义 HDInsight Hadoop 群集。 另外，演示如何访问头节点，将自定义作业提交到群集。 在用户指定来处理群集中的 Hive 记录的函数 (UDFs)中，自定义让 Anaconda 中许多常用的 Python 模板方便可用。 有关此方案中所用步骤的说明，请参阅 [如何提交 Hive 查询](machine-learning-data-science-move-hive-tables.md#submit)。
 
-下面的菜单链接到相关主题，介绍如何设置用于[Team Data Science Process (TDSP)](data-science-process-overview.md) 的各种数据科学环境。
+以下菜单链接到介绍如何设置各种数据科学环境（这些环境将用于[团队数据科学过程 (TDSP)](data-science-process-overview.md)）的主题。
 
 [!INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
 ## <a name="a-namecustomizeacustomize-azure-hdinsight-hadoop-cluster"></a><a name="customize"></a>自定义 Azure HDInsight Hadoop 群集
-若要创建自定义的 HDInsight Hadoop 群集，用户需要登录到 [**Azure 经典门户**](https://manage.windowsazure.com/)，请单击左下角的“新建”，然后选择数据服务-> HDINSIGHT-> “自定义创建”以打开“群集详细信息”窗口。 
+若要创建自定义的 HDInsight Hadoop 群集，请先登录到 [**Azure 经典门户**](https://manage.windowsazure.com/)，单击左下角的“新建”，然后选择数据服务-> HDINSIGHT-> “自定义创建”以打开“群集详细信息”窗口。 
 
 ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
 
@@ -39,7 +39,7 @@ ms.openlocfilehash: 085a4cc1adb4925760f9f2755f4f2c7fcb0bfcf3
 在下一页中，输入“DATA NODES”的数量，选择“REGION/VIRTUAL NETWORK”，然后选择“HEAD NODE”和“DATA NODE”。 单击箭头转到下一个配置页。
 
 > [!NOTE]
-> **REGION/VIRTUAL NETWORK**必须与 HDInsight Hadoop 群集的存储帐户所用的区域相同。 否则，在第 4 个配置页中，用户想要使用的存储帐户不会出现在“帐户名”下拉列表中。
+> **REGION/VIRTUAL NETWORK**必须与 HDInsight Hadoop 群集的存储帐户所用的区域相同。 否则在第 4 个配置页中，存储帐户不会出现在“帐户名”下拉列表中。
 > 
 > 
 
@@ -49,17 +49,17 @@ ms.openlocfilehash: 085a4cc1adb4925760f9f2755f4f2c7fcb0bfcf3
 
 ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img4.png)
 
-在第 4 个配置页中，指定存储帐户名称，即 HDInsight Hadoop 群集的默认容器。 如果用户选择“默认容器”下拉列表中“创建默认容器”，将创建具有相同名称的容器的群集。 单击箭头转到最后一页配置页。
+在第 4 个配置页中，指定存储帐户名称，即 HDInsight Hadoop 群集的默认容器。 如果选择“默认容器”下拉列表中的“创建默认容器”，将创建具有相同名称的容器的群集。 单击箭头转到最后一页配置页。
 
 ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img5.png)
 
 在最后一页“脚本操作”配置页上，单击“添加脚本操作”按钮，然后使用以下值填充文本字段。
 
-* **名称**作为此脚本操作的名称任何字符串。 
-* **节点类型** - 选择“所有节点”。 
+* **名称**作为此脚本操作的名称任何字符串
+* **节点类型** - 选择“所有节点”
 * **脚本 URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1* 
   * *publicscripts* 是存储帐户中的公共容器 
-  * *getgoing* 使用共享 PowerShell 脚本文件，以便帮助用户在 Azure 中工作。 
+  * *getgoing* 使用共享 PowerShell 脚本文件，以便帮助用户在 Azure 中工作
 * **参数**：（将此选项留空）
 
 最后，单击复选标记，开始创建自定义 HDInsight Hadoop 群集。 
@@ -67,9 +67,9 @@ ms.openlocfilehash: 085a4cc1adb4925760f9f2755f4f2c7fcb0bfcf3
 ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png)
 
 ## <a name="a-nameheadnodea-access-the-head-node-of-hadoop-cluster"></a><a name="headnode"></a> 访问 Hadoop 群集的头节点
-用户必须启用对 Azure 中的 Hadoop 群集的远程访问，然后才能通过 RDP 访问 Hadoop 群集的头节点。 
+必须启用对 Azure 中的 Hadoop 群集的远程访问，然后才能通过 RDP 访问 Hadoop 群集的头节点。 
 
-1. 登录到“zure 经典门户”[](https://manage.windowsazure.com/)，选择左侧的“HDInsight”，然后从群集列表中选择Hadoop 群集，请单击“配置”选项卡，然后单击页面底部的“启用远程”图标。
+1. 登录到“Azure 经典门户”[](https://manage.windowsazure.com/)，选择左侧的“HDInsight”，然后从群集列表中选择Hadoop 群集，请单击“配置”选项卡，然后单击页面底部的“启用远程”图标。
    
     ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png)
 2. 在“配置远程桌面”窗口中，输入用户名和密码字段中，然后选择用于远程访问的到期日期。 然后单击复选标记以启用对 Hadoop 群集的头节点的远程访问权限。
@@ -77,7 +77,7 @@ ms.openlocfilehash: 085a4cc1adb4925760f9f2755f4f2c7fcb0bfcf3
     ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-2.png)
 
 > [!NOTE]
-> 远程访问的用户名和密码不是创建 Hadoop 群集时使用的用户名和密码。 它们是一组单独的凭据。 此外，远程访问的到期日期必须是从当日起的 7 天内。
+> 远程访问的用户名和密码不是创建 Hadoop 群集时使用的用户名和密码。 这是一组单独的凭据。 此外，远程访问的到期日期必须是从当日起的 7 天内。
 > 
 > 
 
@@ -85,13 +85,13 @@ ms.openlocfilehash: 085a4cc1adb4925760f9f2755f4f2c7fcb0bfcf3
 
 ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png)
 
-进一步的分析过程中的下一个步骤映射在[团队数据科学进程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中，并且可能包括将数据移到 HDInsight 的步骤，并对该步骤进行采样、处理，以便使用 Azure 机器学习来学习数据。
+进一步的分析过程中的下一个步骤映射在[团队数据科学进程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中，并且可能包括将数据移到 HDInsight 的步骤，然后对该步骤进行采样、处理，以便使用 Azure 机器学习来学习数据。
 
 请参阅 [如何提交 Hive 查询](machine-learning-data-science-move-hive-tables.md#submit)如何访问从函数 (UDFs) - 即用户指定来处理群集中的 Hive 记录的函数 - 中的群集头节点纳入 Anaconda 的 Python 模块。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

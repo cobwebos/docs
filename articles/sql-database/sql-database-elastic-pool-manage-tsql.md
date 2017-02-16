@@ -1,6 +1,6 @@
 ---
-title: "使用 T-SQL 创建 Azure SQL 数据库或将其移入弹性池 | Microsoft 文档"
-description: "使用 T-SQL 在弹性池中创建 Azure SQL 数据库。 或使用 T-SQL 将数据库移入和移出池。"
+title: "T-SQL：管理 Azure SQL 数据库弹性池 | Microsoft Docs"
+description: "使用 T-SQL 管理 Azure SQL 数据库弹性池。"
 services: sql-database
 documentationcenter: 
 author: srinia
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
-ms.openlocfilehash: 9688c3b402b7961675e06e804a68ff454126d5f3
+ms.sourcegitcommit: 918e331e135003870cf22080609cb276ef3f72af
+ms.openlocfilehash: 91928c9d859ceb69e6242e6563be2db8d3da104e
 
 
 ---
@@ -84,6 +84,6 @@ ms.openlocfilehash: 9688c3b402b7961675e06e804a68ff454126d5f3
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

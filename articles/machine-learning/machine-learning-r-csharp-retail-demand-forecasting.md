@@ -1,6 +1,6 @@
 ---
-title: "预测 - ETS + STL | Microsoft Docs"
-description: "预测 - ETS + STL"
+title: "（已弃用）预测 - ETS + STL - Azure | Microsoft Docs"
+description: "（已弃用）预测 - ETS + STL"
 services: machine-learning
 documentationcenter: 
 author: xueshanz
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/31/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: yijichen
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5f9f7366b6e957215bed717e94c8138add6506d6
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: cdf6661a36e38bf7a6fca241682be796712bd5d9
 
 
 ---
-# <a name="forecasting---ets-stl"></a>预测 - ETS + STL
+# <a name="deprecated-forecasting---ets--stl"></a>（已弃用）预测 - ETS + STL
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 此 [Web 服务](https://datamarket.azure.com/dataset/aml_labs/demand_forecast)实现季节性趋势分解 (STL) 和指数平滑 (ETS) 模型来基于用户提供的历史数据生成预测。 今年对特定产品的需求会增加吗？ 我能预测圣诞季的产品销售额以便我可以有效地规划我的库存吗？ 预测模型倾向于解决此类问题。 基于过去的数据，这些模型可找到隐藏的趋势和季节性，以预测未来趋势。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -141,6 +148,6 @@ ms.openlocfilehash: 5f9f7366b6e957215bed717e94c8138add6506d6
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

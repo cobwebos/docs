@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 门户管理 DNS 记录 | Microsoft Docs"
+title: "使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录 | Microsoft Docs"
 description: "当在 Azure DNS 上托管域时在 Azure DNS 上管理 DNS 记录集和记录。 记录集和记录上的操作的所有 PowerShell 命令。"
 services: dns
 documentationcenter: na
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 0244225f0194d35307ad039249ca6e29a860829f
-ms.openlocfilehash: 46549794394f54264c1fdcc4c8f54bec8ea080f8
+ms.sourcegitcommit: f8dcbdb573fb50d32dfdefbb52c7af71bdc1cb95
+ms.openlocfilehash: 2264acb9c78a162adb7b9937568838ab5ec2c720
 
 ---
 
-# <a name="manage-dns-records-and-record-sets-by-using-powershell"></a>使用 PowerShell 管理 DNS 记录和记录集
+# <a name="manage-dns-records-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-operations-recordsets-portal.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-本文介绍如何使用 Azure PowerShell 管理 DNS 区域的记录集和记录。 也可使用跨平台的 [Azure CLI](dns-operations-recordsets-cli.md) 或 [Azure 门户](dns-operations-recordsets-portal.md)管理 DNS 记录。
+本文介绍如何使用 Azure PowerShell 管理 DNS 区域的 DNS 记录。 也可使用跨平台的 [Azure CLI](dns-operations-recordsets-cli.md) 或 [Azure 门户](dns-operations-recordsets-portal.md)管理 DNS 记录。
 
-本文中的示例假设用户已经[安装并登录 Azure PowerShell 以及创建了 DNS 区域](dns-getstarted-create-dnszone.md)。
+本文中的示例假设用户已经[安装并登录 Azure PowerShell 以及创建了 DNS 区域](dns-operations-dnszones.md)。
 
 ## <a name="introduction"></a>介绍
 
@@ -49,7 +49,7 @@ ms.openlocfilehash: 46549794394f54264c1fdcc4c8f54bec8ea080f8
 
 添加记录到记录集的参数会因记录集的类型而有所变化。 例如，在使用类型“A”记录集时，需使用参数 `-IPv4Address` 指定 IP 地址。 其他参数用于其他记录类型。 有关详细信息，请参阅[其他记录类型示例](#additional-record-type-examples)。
 
-以下示例在 DNS 区域“contoso.com”中创建具有相对名称“www”的新记录集。 记录集的完全限定名称为“www.contoso.com”。 记录类型为“A”，TTL 为 3600 秒。 记录集包含单个记录，IP 地址为“1.2.3.4”
+下面的示例在 DNS 区域“contoso.com”中创建具有相对名称“www”的记录集。 记录集的完全限定名称为“www.contoso.com”。 记录类型为“A”，TTL 为 3600 秒。 记录集包含单个记录，IP 地址为“1.2.3.4”
 
 ```powershell
 New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4) 
@@ -61,7 +61,7 @@ New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceG
 New-AzureRmDnsRecordSet -Name "@" -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4) 
 ```
 
-如需创建包含多个记录的新记录集，请先创建本地数组并添加记录，然后将数组传递到 `New-AzureRmDnsRecordSet`，如下所示：
+如需创建包含多条记录的记录集，请先创建本地数组并添加记录，然后将数组传递到 `New-AzureRmDnsRecordSet`，如下所示：
 
 ```powershell
 $aRecords = @()
@@ -70,7 +70,7 @@ $aRecords += New-AzureRmDnsRecordConfig -IPv4Address 2.3.4.5
 New-AzureRmDnsRecordSet -Name www –ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-可以使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键值对的形式将特定于应用程序的数据与每个记录集相关联。 以下示例说明如何使用“dept=finance”和“environment=production”这两个元数据条目创建记录集
+可使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将应用程序特定的数据与每个记录集相关联。 以下示例说明如何使用“dept=finance”和“environment=production”这两个元数据条目创建记录集
 
 ```powershell
 New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4) -Metadata @{ dept="finance"; environment="production" } 
@@ -86,7 +86,7 @@ New-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceG
 
 详细了解如何创建“A”记录以后，还可通过以下示例了解如何创建 Azure DNS 支持的其他记录类型的记录。
 
-在每个示例中，我们演示了如何创建包含单个记录的新记录集。 可以对“A”记录此前的示例进行修改，以便使用元数据创建其他类型的包含多个记录的记录集，或者创建空记录集。
+每个示例中都演示了如何创建包含单条记录的记录集。 可以对“A”记录此前的示例进行修改，以便使用元数据创建其他类型的包含多个记录的记录集，或者创建空记录集。
 
 我们没有提供创建 SOA 记录集的示例，因为 SOA 是随每个 DNS 区域一起创建和删除的，不能单独创建或删除。 但是，[可以修改 SOA，如后面的示例所示](#to-modify-an-SOA-record)。
 
@@ -125,7 +125,7 @@ New-AzureRmDnsRecordSet -Name test-ns -RecordType NS -ZoneName contoso.com -Reso
 
 ### <a name="create-a-ptr-record-set-with-a-single-record"></a>创建一个包含一条记录的 PTR 记录集
 
-在此示例中，“my-arpa-zone.com”表示代表用户 IP 范围的 ARPA 区域。 此区域中的每个 PTR 记录集对应于此 IP 范围内的一个 IP 地址。
+在此示例中，“my-arpa-zone.com”表示代表用户 IP 范围的 ARPA 区域。 此区域中的每个 PTR 记录集对应于此 IP 范围内的一个 IP 地址。 记录名称“10”是此 IP 范围内由此记录表示的 IP 地址的最后一个八位字节。
 
 ```powershell
 New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName my-arpa-zone.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Ptrdname myservice.contoso.com) 
@@ -145,7 +145,7 @@ New-AzureRmDnsRecordSet -Name _sip._tls -RecordType SRV -ZoneName contoso.com -R
 以下示例说明如何创建 TXT 记录。 如需详细了解 TXT 记录中支持的最大字符串长度，请参阅 [TXT 记录](dns-zones-records.md#txt-records)。
 
 ```powershell
-New-AzureRmDnsRecordSet -Name test-txt -RecordType TXT -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Value "This is a TXT record" 
+New-AzureRmDnsRecordSet -Name test-txt -RecordType TXT -ZoneName contoso.com -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Value "This is a TXT record") 
 ```
 
 
@@ -190,7 +190,7 @@ $recordsets = Get-AzureRmDnsRecordSet -RecordType A -ZoneName contoso.com -Resou
 $recordsets = Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup | where {$_.Name.Equals("www")}
 ```
 
-在上述所有示例中，区域都可以通过 `-ZoneName` 和 `-ResourceGroupName` 参数指定（如下所示），或者通过指定区域对象来指定：
+在上述所有示例中，区域都可以通过 `-ZoneName` 和 `-ResourceGroupName` 参数指定（如下所示），或者通过指定区域对象进行指定：
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
@@ -313,7 +313,7 @@ Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ### <a name="to-modify-record-set-metadata"></a>修改记录集元数据
 
-可以使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键值对的形式将特定于应用程序的数据与每个记录集相关联。
+可使用[记录集元数据](dns-zones-records.md#tags-and-metadata)，以键-值对的形式将应用程序特定的数据与每个记录集相关联。
 
 以下示例说明如何修改现有记录集的元数据：
 
@@ -387,6 +387,6 @@ Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName contoso.com -ResourceG
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

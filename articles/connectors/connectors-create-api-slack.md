@@ -1,10 +1,10 @@
 ---
-title: " 在逻辑应用中使用 Slack 连接器 | Microsoft Docs"
-description: "在 Microsoft Azure App Service 逻辑应用中开始使用 Slack 连接器"
+title: " 在逻辑应用中使用 Slack 连接器 | Microsoft 文档s"
+description: "开始在逻辑应用中使用 Slack 连接器"
 services: 
 documentationcenter: 
 author: msftman
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cacaa4a4a0089e1c3df54ae466af251026e1a55b
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: 404776283ee10aa9410d002597e054757516bcab
 
 
 ---
@@ -33,7 +33,7 @@ Slack 是一款团队通信工具，可将所有团队通信归于一处，可�
 
 * 使用它生成逻辑应用
 
-若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="lets-talk-about-triggers-and-actions"></a>让我们谈谈触发器和操作
 Slack 连接器可用作操作；没有触发器。 所有连接器都支持采用 JSON 和 XML 格式的数据。 
@@ -109,7 +109,7 @@ Slack 连接器可用作操作；没有触发器。 所有连接器都支持采�
 
 - - -
 ## <a name="object-definitions"></a>对象定义：
- **消息**：Yammer 消息
+ **消息**：Slack 消息
 
 Message 的必需属性：
 
@@ -141,7 +141,7 @@ Message 的必需属性：
 | liked_by |未定义 |
 | system_message |布尔值 |
 
- **PostOperationRequest**：表示使 Yammer 连接器向 yammer 进行发布的发布请求
+ **PostOperationRequest**：表示使 Slack 连接器向 Slack 进行发布的发布请求
 
 PostOperationRequest 的必需属性：
 
@@ -231,7 +231,7 @@ YammmerEntity 的必需属性：
 | full_name |字符串 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 ## <a name="object-definitions"></a>对象定义：
  **WebResultModel**：必应 Web 搜索结果
@@ -400,7 +400,7 @@ MessageItem 的必需属性：
 | is_user-deleted |布尔值 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 [1]: ./media/connectors-create-api-slack/connectionconfig1.png
 [2]: ./media/connectors-create-api-slack/connectionconfig2.png 
@@ -411,6 +411,6 @@ MessageItem 的必需属性：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

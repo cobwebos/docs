@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 354648461adf77ccf753cf24721ab7dd82b34d3c
-ms.openlocfilehash: 0af729f798a88aa299becd474fff69ad36436521
+ms.sourcegitcommit: 3451bdde3be60df0f1e1ed977f23db65d39f535f
+ms.openlocfilehash: eb4f55ab1f463d3351c74d9996eb8611281abe41
 
 
 ---
@@ -65,8 +65,8 @@ ms.openlocfilehash: 0af729f798a88aa299becd474fff69ad36436521
 
 > [!NOTE]
 > 是否使用 SSO 的决定会影响到如何将本地目录与云目录集成。 如果要使用 SSO，则需要使用联合，因为目录同步只提供[相同登录体验](../active-directory/active-directory-aadconnect.md)。
-> 
-> 
+>
+>
 
 不对其用户和应用程序实施 SSO 的组织更容易遇到这种情况：用户需要设置多个密码，这直接增大了重复使用密码或使用弱密码的可能性。
 
@@ -108,14 +108,14 @@ ms.openlocfilehash: 0af729f798a88aa299becd474fff69ad36436521
 
 > [!NOTE]
 > 这与 RBAC 不同，实际上它利用 RBAC 来对有权创建这些资源的用户进行身份验证。
-> 
-> 
+>
+>
 
 若组织只希望在关联有适当成本中心时允许操作，否则就拒绝请求，此时可以利用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 来创建自定义策略。
 
 无法控制资源创建方式的组织更容易遇到用户创建的资源超过所需数目，因而滥用服务的情况。 强化资源创建过程是保护多租户方案的重要步骤。
 
-有关使用 Azure Resource Manager 创建策略的详细信息，请阅读[使用策略来管理资源和控制访问](../resource-manager-policy.md)一文。
+有关使用 Azure Resource Manager 创建策略的详细信息，请阅读[使用策略来管理资源和控制访问](../azure-resource-manager/resource-manager-policy.md)一文。
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>指导开发人员利用适用于 SaaS 应用的标识功能
 在许多情况下，当用户访问可集成到本地或云目录的 [SaaS 应用](https://azure.microsoft.com/marketplace/active-directory/all/)时，将会利用用户标识。 第一点也是最重要的一点，建议开发人员使用安全方法（如 [Microsoft 安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx)）来开发这些应用。 Azure AD 通过以下方式简化了对开发人员的身份验证：将标识提供为一项服务、支持行业标准协议（例如 [OAuth 2.0](http://oauth.net/2/) 和 [OpenID Connect](http://openid.net/connect/)），并提供用于不同平台的开源库。
@@ -138,7 +138,6 @@ ms.openlocfilehash: 0af729f798a88aa299becd474fff69ad36436521
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

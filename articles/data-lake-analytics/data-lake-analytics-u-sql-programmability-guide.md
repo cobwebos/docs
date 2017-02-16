@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: mrys
 translationtype: Human Translation
-ms.sourcegitcommit: 8da474fbc9eae750bbd2e1f6908046d2e7e7be55
-ms.openlocfilehash: 42e1d0cdde66f4bf4a6f3b23421e137716d05beb
+ms.sourcegitcommit: 6d05de6ac944b69402583e939d6b498515945461
+ms.openlocfilehash: f8b13b2b39cf0c860ad59f43eb341c5924804dd9
 
 
 ---
@@ -65,7 +65,7 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-在上面的示例中，有一个由**本地变量** @input_file. 定义的**输入文件** - 文件 input_file.tsv
+在上面的示例中，有一个由**本地变量** @input_file 定义的**输入文件** - 文件 input_file.tsv。
 
 以下操作的执行基于以上 U-SQL 脚本的执行结果：
 
@@ -112,7 +112,7 @@ U-SQL 基本脚本示例：
     DECLARE @default_dt DateTime = Convert.ToDateTime("06/01/2016");
 ```
 
-将列作为行集的一部分进行操作时，C# 表达式可提供扩展的功能。 例如，若要将日期/时间列转换为具有 0 小时的日期，则可以使用 U-SQL 基本脚本的以下 SELECT 部分：
+将列作为行集的一部分进行操作时，C# 表达式可提供扩展的功能。 例如，若要将日期/时间列转换为具有&0; 小时的日期，则可以使用 U-SQL 基本脚本的以下 SELECT 部分：
 
 ```sql
 @rs1 =
@@ -449,7 +449,7 @@ REFERENCE ASSEMBLY JSONBlog.[NewtonSoft.Json];
 REFERENCE ASSEMBLY JSONBlog.[Microsoft.Analytics.Samples.Formats];
 ```
 
-如果希望使用 XML 功能，可向注册的程序集中添加一个系统程序集引用和一个程序集：
+如果希望使用 XML 功能，请添加一个系统程序集引用以及对已注册程序集的引用：
 
 ```
 REFERENCE SYSTEM ASSEMBLY [System.Xml];
@@ -932,9 +932,9 @@ SqlUserDefinedType 是 UDT 定义必需的特性。
 `IColumnWriter` 编写器 / `IColumnReader` 读取者 - 基本列流。  
 `ISerializationContext` 上下文 - 用于定义一组标志的枚举，这些标志在序列化期间指定流的源和定义上下文。 
  
-    * *Intermediate* - 指定源或定义上下文不是持久存储区
+   * *Intermediate* - 指定源或定义上下文不是持久存储区
 
-    * *Persistence* - 指定源或定义上下文是持久存储区
+   * *Persistence* - 指定源或定义上下文是持久存储区
 
 U-SQL UDT 定义是常规 C# 类型，可能包括对运算符（如 +/==/!= 等）的替代。可能包括静态方法等。 例如，如果将此 UDT 用作 U-SQL MIN 聚合函数的参数，则必须定义 < 运算符替代。
 
@@ -1288,7 +1288,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 ### <a name="udts-from-built-in-types"></a>内置类型中的 UDT
 即将支持
 
-## <a name="user-defined-aggregates-udagg"></a>用户定义的聚合 - UDAGG
+## <a name="user-defined-aggregates--udagg"></a>用户定义的聚合 - UDAGG
 用户定义的聚合是非随时随附于 U-SQL 的任何与聚合相关的函数。 示例包括：用于执行自定义数学计算、执行字符串串联或字符串操作的聚合等。
 
 用户定义的聚合基类定义为
@@ -1424,7 +1424,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 在此用例场景中，将串联特定用户的类 GUID。
 
-## <a name="user-defined-objects-udo"></a>用户定义的对象 – UDO
+## <a name="user-defined-objects--udo"></a>用户定义的对象 – UDO
 U-SQL 提供定义自定义可编程性对象的功能，此类对象称为用户定义的对象或 UDO。
 
 以下是 U-SQL 中的 UDO 列表
@@ -2608,6 +2608,6 @@ OUTPUT @rs2 TO @output_file USING Outputters.Text();
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

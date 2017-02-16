@@ -1,6 +1,7 @@
 ---
-title: "使用 SqlPackage 将 SQL Server 数据库导出到 BACPAC 文件 | Microsoft 文档"
-description: "Microsoft Azure SQL 数据库, 数据库迁移, 导出数据库, 导出 BACPAC 文件, sqlpackage"
+title: "SqlPackage：将 SQL Server 数据库导出到 BACPAC 文件 (Azure) | Microsoft Docs"
+description: "本文说明如何使用 SqlPackage 命令行实用程序将 SQL Server 数据库导出到 BACPAC 文件。"
+keywords: "Microsoft Azure SQL 数据库, 数据库迁移, 导出数据库, 导出 BACPAC 文件, sqlpackage"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 47c4c2e78432746a0a03f98692ddcd4602637212
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: e38c42ea1c078f9f2e11ae51be37d66671392828
 
 
 ---
@@ -61,6 +62,6 @@ ms.openlocfilehash: 47c4c2e78432746a0a03f98692ddcd4602637212
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

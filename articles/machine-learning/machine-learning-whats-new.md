@@ -1,5 +1,5 @@
 ---
-title: "机器学习新增功能 | Microsoft Docs"
+title: "Azure 机器学习中的新增功能 | Microsoft 文档"
 description: "Azure 机器学习中的新增功能。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 528ae3db20815cf7409cf0e2c7eb5c4473ba16ce
+ms.sourcegitcommit: 0813611f581a68efb8f09a1e041cfbe429bf0c5c
+ms.openlocfilehash: c3662dee7feb6373dd733300a9af2fc112ab270f
 
 
 ---
@@ -44,6 +44,6 @@ ms.openlocfilehash: 528ae3db20815cf7409cf0e2c7eb5c4473ba16ce
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

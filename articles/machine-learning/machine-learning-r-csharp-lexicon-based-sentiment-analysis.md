@@ -1,6 +1,6 @@
 ---
-title: "基于词典的情绪分析 | Microsoft Docs"
-description: "基于词典的情绪分析"
+title: "（已弃用）基于词典的情绪分析 | Microsoft Docs"
+description: "（已弃用）基于词典的情绪分析"
 services: machine-learning
 documentationcenter: 
 author: pengxia
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/15/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: pengxia
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: baf4a5e27febb0a26c4bee860957a4e740bd3275
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 02a6005c47734419903f324f6fb60440f9d62664
 
 
 ---
-# <a name="lexicon-based-sentiment-analysis"></a>基于词典的情绪分析
+# <a name="deprecated-lexicon-based-sentiment-analysis"></a>（已弃用）基于词典的情绪分析
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 如何测量用户在联机社交网络中（例如 Facebook 帖子、推文、评论等）关于品牌或主题的意见和态度？ 情绪分析提供用于分析此类问题的方法。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -158,6 +165,6 @@ ms.openlocfilehash: baf4a5e27febb0a26c4bee860957a4e740bd3275
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

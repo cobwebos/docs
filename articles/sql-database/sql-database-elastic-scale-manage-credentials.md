@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bbe3370442ad4117a1a08d0b23595dd98aaba5b5
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 16e8c4ba332cbaba86a13d7b815d0561618cb28b
 
 
 ---
@@ -66,12 +66,12 @@ ms.openlocfilehash: bbe3370442ad4117a1a08d0b23595dd98aaba5b5
 
     "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 
-与管理员凭据一样，请不要使用 "username@server".格式的值，只需使用“username”格式的值。  另请注意，连接字符串不包含服务器名称和数据库名称。 这是因为，**OpenConnectionForKey** 调用基于键自动将连接指向正确的分片。 因此，不需提供数据库名称和服务器名称。 
+与管理员凭据一样，请不要使用 "username@server" 格式的值， 而应使用“用户名”格式的值。  另请注意，连接字符串不包含服务器名称和数据库名称。 这是因为，**OpenConnectionForKey** 调用基于键自动将连接指向正确的分片。 因此，不需提供数据库名称和服务器名称。 
 
 ## <a name="see-also"></a>另请参阅
 [在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)
 
-[保护 SQL 数据库](sql-database-security.md)
+[保护 SQL 数据库](sql-database-security-overview.md)
 
 [弹性数据库作业入门](sql-database-elastic-jobs-getting-started.md)
 
@@ -80,6 +80,6 @@ ms.openlocfilehash: bbe3370442ad4117a1a08d0b23595dd98aaba5b5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

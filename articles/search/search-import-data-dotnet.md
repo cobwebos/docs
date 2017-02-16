@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 01/13/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 724edc7894cabfb31f6e43a291f98ab60c0a9981
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: 724edc7894cabfb31f6e43a291f98ab60c0a9981
 2. 创建包含要添加、修改或删除的文档的 `IndexBatch` 。
 3. 调用 `SearchIndexClient` 的 `Documents.Index` 方法，将 `IndexBatch` 发送到搜索索引。
 
-## <a name="i-create-an-instance-of-the-searchindexclient-class"></a>I. 创建 SearchIndexClient 类的实例
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>创建 SearchIndexClient 类的实例
 若要使用 Azure 搜索 .NET SDK 将数据导入到索引中，需要创建 `SearchIndexClient` 类的实例。 可以自己构造此实例，但如果已有可调用其 `Indexes.GetClient` 方法的 `SearchServiceClient` 实例会更容易。 例如，下面是如何从名为 `serviceClient` 的 `SearchServiceClient` 获取名为“hotels”的索引的 `SearchIndexClient`：
 
 ```csharp
@@ -55,7 +55,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 `SearchIndexClient` 具有 `Documents` 属性。 此属性提供在索引中添加、修改、删除或查询文档所需的所有方法。
 
-## <a name="ii-decide-which-indexing-action-to-use"></a>II. 确定要使用的索引操作
+## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
 若要使用 .NET SDK 导入数据，需要将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索要对该文档上执行什么操作（上传、合并、删除等）。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
 
 | 操作 | 说明 | 每个文档必需的字段 | 说明 |
@@ -67,7 +67,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 可以指定要用于 `IndexBatch` 和 `IndexAction` 类的各个静态方法的操作，如下一部分中所示。
 
-## <a name="iii-construct-your-indexbatch"></a>III. 构造 IndexBatch
+## <a name="construct-your-indexbatch"></a>构造 IndexBatch
 知道要对文档执行哪些操作后，就可以构造 `IndexBatch`了。 以下示例演示如何创建包含几个不同操作的 Batch。 请注意，此示例使用一个名为 `Hotel` 的自定义类，它映射到“hotels”索引中的文档。
 
 ```csharp
@@ -130,7 +130,7 @@ var batch = IndexBatch.New(actions);
 > 
 > 
 
-## <a name="iv-import-data-to-the-index"></a>IV. 将数据导入到索引
+## <a name="import-data-to-the-index"></a>将数据导入到索引
 获得已初始化的 `IndexBatch` 对象后，便可以通过对 `SearchIndexClient` 对象调用 `Documents.Index` 将其发送到索引。 以下示例说明如何调用 `Index`，以及需要执行的一些额外步骤：
 
 ```csharp
@@ -152,7 +152,7 @@ Console.WriteLine("Waiting for documents to be indexed...\n");
 Thread.Sleep(2000);
 ```
 
-注意对 `Index` 的调用周围的 `try`/`catch` catch 块处理编制索引可能出现的重要错误情况。 如果 Azure 搜索服务无法为 Batch 中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生这种情况。 **强烈建议在代码中显式处理这种情况。**  可以延迟为失败的文档编制索引，然后重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
+注意对 `Index` 的调用周围的 `try`/`catch` catch 块处理编制索引可能出现的重要错误情况。 如果 Azure 搜索服务无法为 Batch 中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生这种情况。 **强烈建议在代码中显式处理这种情况。** 可以延迟为失败的文档编制索引，然后重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
 
 最后，上面示例中的代码延迟了两秒钟。 编制索引在 Azure 搜索服务中异步进行，因此，示例应用程序需要等待很短时间，以确保文档可用于搜索。 此类延迟通常仅在演示、测试和示例应用程序中是必需的。
 
@@ -215,7 +215,7 @@ public partial class Hotel
 > 
 > 
 
-有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、 `DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。[Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)中的 `Documents.Get` 方法记录了类型映射的具体规则。
+有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、`DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。 [Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)中的 `Documents.Get` 方法记录了类型映射的具体规则。
 
 使用自己的类作为文档的这种功能可以在这两个方向上正常工作；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，如 [下一篇文章](search-query-dotnet.md)中所示。
 
@@ -234,12 +234,12 @@ public partial class Hotel
 
 由于此原因，最佳做法是建议在模型类中使用可以为 null 的类型。
 
-## <a name="next"></a>下一步
+## <a name="next-steps"></a>后续步骤
 填充 Azure 搜索索引后，即可发出查询，搜索文档。 有关详细信息，请参阅 [查询 Azure 搜索索引](search-query-overview.md) 。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

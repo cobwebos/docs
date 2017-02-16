@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB 防火墙支持 | Microsoft Docs"
+title: "Azure DocumentDB 防火墙支持和 IP 访问控制 | Microsoft Docs"
 description: "了解如何将 IP 访问控制策略用于 Azure DocumentDB 数据库帐户上的防火墙支持。"
 keywords: "IP 访问控制, 防火墙支持"
 services: documentdb
@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 12/20/2016
 ms.author: ankshah; kraman
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb3c5c2adbaedc4bfb1e68f26b88079aeabe50f5
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: f96c0b7b7edcd19a041c803e268a2dc4bf25b137
 
 
 ---
@@ -48,32 +48,16 @@ ms.openlocfilehash: eb3c5c2adbaedc4bfb1e68f26b88079aeabe50f5
 从 Internet 上的计算机访问 DocumentDB 数据库帐户时，必须将客户端 IP 地址或计算机的 IP 地址范围添加到 DocumentDB 数据库帐户 IP 地址的允许列表中。 
 
 ## <a name="a-idconfigure-ip-policya-configuring-the-ip-access-control-policy"></a><a id="configure-ip-policy"></a>配置 IP 访问控制策略
-使用 Azure 门户通过 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)提出请求，以启用数据库帐户上的 IP 访问控制策略。
+更新 `ipRangeFilter` 属性后，可以通过 [Azure CLI](documentdb-automation-resource-manager-cli.md)、[Azure Powershell](documentdb-manage-account-with-powershell.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 以编程方式设置 IP 访问控制策略。 IP 地址/范围必须以逗号分隔，且不能包含空格。 示例：“13.91.6.132,13.91.6.1/24”。 通过这些方法更新数据库帐户时，请确保填充所有属性以防止重置为默认设置。
 
-1. 在[帮助 + 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)边栏选项卡上，选择“新建支持请求”。
-2. 在“新建支持请求”边栏选项卡上，选择“基本”。
-3. 在“基本”边栏选项卡中，选择以下项：
-   * “问题类型”：“配额”
-   * “订阅”：与要在其中添加 IP 访问控制策略的帐户相关联的订阅。
-   * “配额类型”：“DocumentDB”
-   * “支持计划”：“配额支持 - 已包括”。
-4. 在“问题”边栏选项卡中执行以下操作：
-   * “严重性”：选择 C - 影响最小
-   * “详细信息”：将以下文本复制到该框中，包含帐户名和 IP 地址：“我要对 DocumentDB 数据库帐户启用防火墙支持。 数据库帐户：包含帐户名。 允许的 IP 地址/范围：包括 CIDR 格式的 IP 地址/范围，例如 13.91.6.132、13.91.6.1/24。”
-   * 单击“资源组名称” 的 Azure 数据工厂。 
-5. 在“联系信息”边栏选项卡中，填写详细联系信息，然后单击“创建”。 
-
-收到请求后，系统将在 24 小时内启用 IP 访问控制。 请求完成后，用户将收到通知。
-
-![“帮助 + 支持”边栏选项卡的屏幕截图](./media/documentdb-firewall-support/documentdb-firewall-support-request-access.png)
-
-![“问题”边栏选项卡的屏幕截图](./media/documentdb-firewall-support/documentdb-firewall-support-request-access-ticket.png)
+> [!NOTE]
+> 通过启用 DocumentDB 数据库帐户的 IP 访问控制策略，阻止从 IP 地址范围已配置的允许列表外部的计算机访问 DocumentDB 数据库帐户。 通过此模型，也将阻止从门户浏览数据平面操作，以确保访问控制的完整性。
 
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>IP 访问控制策略的故障排除
 ### <a name="portal-operations"></a>门户操作
 通过启用 DocumentDB 数据库帐户的 IP 访问控制策略，阻止从 IP 地址范围已配置的允许列表外部的计算机访问 DocumentDB 数据库帐户。 通过此模型，也将阻止从门户浏览数据平面操作，以确保访问控制的完整性。 
 
-### <a name="sdk-rest-api"></a>SDK & Rest API
+### <a name="sdk--rest-api"></a>SDK & Rest API
 出于安全考虑，通过 SDK 或 REST API 从允许列表以外的计算机进行的访问将返回通用的“404 未找到”响应，不包含任何其他详细信息。 请验证 DocumentDB 数据库帐户配置的 IP 允许列表，以确保将正确的策略配置应用到 DocumentDB 数据库帐户。
 
 ## <a name="next-steps"></a>后续步骤
@@ -82,6 +66,6 @@ ms.openlocfilehash: eb3c5c2adbaedc4bfb1e68f26b88079aeabe50f5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

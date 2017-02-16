@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d1020d153c283a7c0bcf71c479e6109f354de173
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 0fc014ad8fe4ab0b36b0c941564c5c531079ce4d
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: d1020d153c283a7c0bcf71c479e6109f354de173
  “[解决方案](https://gallery.cortanaintelligence.com/solutions)”****
 页显示最近添加的解决方案列表。
 单击“查看所有”可查看所有解决方案。
-在此页中，可以浏览库中的所有解决方案，还可以通过选择页面左侧的“筛选器条件”，并在顶部输入搜索词进行搜索。
+在本页中，可以浏览库中的所有解决方案。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 
  单击任何解决方案，以打开其详细信息页并了解更多信息。 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送到解决方案的链接，来邀请其他用户查看页面。
 
@@ -54,6 +54,6 @@ ms.openlocfilehash: d1020d153c283a7c0bcf71c479e6109f354de173
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

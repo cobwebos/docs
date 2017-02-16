@@ -13,110 +13,122 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 12/20/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: d4324ac080bc68af467652a9942fd3e97eb2d517
+ms.sourcegitcommit: a423975e8a091183154217678706817694f3e346
+ms.openlocfilehash: d5256250d6d3a6d7df3a90ae4a0801af131b830e
 
 
 ---
 # <a name="create-non-interactive-authentication-net-hdinsight-applications"></a>创建非交互式身份验证 .NET HDInsight 应用程序
-你可以在应用程序自身的标识（非交互式）或应用程序的已登录用户标识（交互式）下执行 .NET Azure HDInsight 应用程序。 有关交互式应用程序的示例，请参阅[使用 HDInsight .NET SDK 提交 Hive/Pig/Sqoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)。 本文介绍了如何创建非交互式身份验证 .NET 应用程序，以连接到 Azure HDInsight 并提交 Hive 作业。
+可以在应用程序自身的标识（非交互式）或应用程序的已登录用户标识（交互式）下运行 .NET Azure HDInsight 应用程序。 有关交互式应用程序的示例，请参阅[连接到 Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)。 本文介绍了如何创建非交互式身份验证 .NET 应用程序以连接到 Azure 并管理 HDInsight。
 
-从 .NET 应用程序，你将需要：
+需要从非交互式 .NET 应用程序中获取：
 
-* Azure 订阅租户 ID
-* Azure Directory 应用程序客户端 ID
-* Azure Directory 应用程序密钥。  
-
-主要过程包括以下步骤：
-
-1. 创建 Azure Directory 应用程序。
-2. 将角色分配给 AD 应用程序。
-3. 开发客户端应用程序。
+* Azure 订阅租户 ID（A.K.A 目录 ID）。 请参阅[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)。
+* Azure Directory 应用程序客户端 ID。 请参阅[创建 Active Directory 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-active-directory-application)和[获取应用程序 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)
+* Azure Directory 应用程序密钥。 请参阅[获取应用程序身份验证密钥](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)
 
 ## <a name="prerequisites"></a>先决条件
-* HDInsight 群集。 可以使用[入门教程](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)中找到的说明进行创建。
+* HDInsight 群集。 请参阅[获取入门教程](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)。
 
-## <a name="create-azure-directory-application"></a>创建 Azure Directory 应用程序
-创建 Active Directory 应用程序时，实际上会同时创建该应用程序和一个服务主体。 可以在应用程序的标识下执行应用程序。
 
-目前，必须使用 Azure 经典门户来创建新的 Active Directory 应用程序。 在以后的版本中，此功能将添加到 Azure 门户。 你也可以通过 Azure PowerShell 或 Azure CLI 执行这些步骤。 有关将 PowerShell 或 CLI 与服务主体一起使用的详细信息，请参阅[使用 Azure Resource Manager 对服务主体进行身份验证](../resource-group-authenticate-service-principal.md)。
-
-**创建 Azure Directory 应用程序**
-
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com/)。
-2. 在左侧窗格中选择“Active Directory”。
-
-   ![Azure 经典门户 Active Directory](.\\media\\hdinsight-create-non-interactive-authentication-dotnet-application\\active-directory.png)
-3. 选择你要用来创建新应用程序的目录。 应为现有的一个目录。
-4. 单击顶部的“应用程序”以列出现有的应用程序。
-5. 单击底部的“添加”以添加新应用程序。
-6. 输入“名称”，选择“Web 应用程序和/或 Web API”，然后单击“下一步”。
-
-   ![新的 Azure Active Directory 应用程序](.\\media\\hdinsight-create-non-interactive-authentication-dotnet-application\\hdinsight-add-ad-application.png)
-7. 输入“登录 URL”和“应用 ID URI”。 对于“登录 URL”，请提供用于描述应用程序的网站 URI。 将不验证网站是否存在。 对于“应用程序 ID URI”，请提供用于标识应用程序的 URI。 然后，单击“完成”。
-   片刻之后即可创建应用程序。  创建应用程序后，门户将显示新的应用程序的速览页面。 不要关闭门户。
-
-   ![新的 Azure Active Directory 应用程序属性](.\\media\\hdinsight-create-non-interactive-authentication-dotnet-application\\hdinsight-add-ad-application-properties.png)
-
-**获取应用程序客户端 ID 和密钥**
-
-1. 在新建的 AD 应用程序页中，单击顶部菜单的“配置”。
-2. 创建“客户端 ID”的副本。 稍后在 .NET 应用程序中需要使用它。
-3. 在“密钥”下，单击“选择持续时间”下拉列表，然后选择“1 年”或“2 年”。 保存配置之前，将不会显示密钥值。
-4. 单击页面底部的“保存”。 出现密钥时，创建该密钥的副本。 稍后在 .NET 应用程序中需要使用它。
 
 ## <a name="assign-ad-application-to-role"></a>将 AD 应用程序分配到角色
-必须将应用程序分配到某个[角色](../active-directory/role-based-access-built-in-roles.md)，以授予它执行操作的权限。 可将作用域设置为订阅、资源组或资源级别。 作用域的较低级别将继承权限（例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源）。 在本教程中，你将在资源组级别设置作用域。  由于 Azure 经典门户不支持资源组，所以此部分必须从 Azure 门户执行。
+必须将应用程序分配到某个[角色](../active-directory/role-based-access-built-in-roles.md)，以授予它执行操作的权限。 可将作用域设置为订阅、资源组或资源级别。 作用域的较低级别将继承权限（例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源）。 在本教程中，你将在资源组级别设置作用域。 更多详细信息，请参阅[使用角色分配，管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)
 
 **将“所有者”角色添加到 AD 应用程序**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击左侧窗格中的“资源组”。
 3. 单击包含 HDInsight 群集（在本教程中，将在其中运行 Hive 查询）的资源组。 如果有过多资源组，可以使用筛选器。
-4. 在群集边栏选项卡中单击“访问”。
-
-   ![云和闪电图标 = 快速启动](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png)
+4. 从“资源组”菜单中单击“访问控制 (IAM)”。
 5. 单击“用户”边栏选项卡上的“添加”。
 6. 按照说明，将“所有者”角色添加到上一个过程中创建的 AD 应用程序。 成功完成后，应该可在具有“所有者”角色的“用户”边栏选项卡中看到列出的应用程序。
 
 ## <a name="develop-hdinsight-client-application"></a>开发 HDInsight 客户端应用程序
-按照[在 HDInsight 中提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)中找到的说明，创建 C# .net 控制台应用程序。 然后，将 GetTokenCloudCredentials 方法替换为：
 
-    public static TokenCloudCredentials GetTokenCloudCredentials(string tenantId, string clientId, SecureString secretKey)
-    {
-        var authFactory = new AuthenticationFactory();
+1. 创建 C# 控制台应用程序。
+2. 添加以下 Nuget 包：
 
-        var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
+        Install-Package Microsoft.Azure.Common.Authentication -Pre
+        Install-Package Microsoft.Azure.Management.HDInsight -Pre
+        Install-Package Microsoft.Azure.Management.Resources -Pre
 
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+3. 使用以下代码示例：
 
-        var accessToken =
-            authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never)
-                .AccessToken;
+        using System;
+        using System.Security;
+        using Microsoft.Azure;
+        using Microsoft.Azure.Common.Authentication;
+        using Microsoft.Azure.Common.Authentication.Factories;
+        using Microsoft.Azure.Common.Authentication.Models;
+        using Microsoft.Azure.Management.Resources;
+        using Microsoft.Azure.Management.HDInsight;
+        
+        namespace CreateHDICluster
+        {
+            internal class Program
+            {
+                private static HDInsightManagementClient _hdiManagementClient;
+        
+                private static Guid SubscriptionId = new Guid("<Enter Your Azure Subscription ID>");
+                private static string tenantID = "<Enter Your Tenant ID (A.K.A. Directory ID)>";
+                private static string applicationID = "<Enter Your Application ID>";
+                private static string secretKey = "<Enter the Application Secret Key>";
+        
+                private static void Main(string[] args)
+                {
+                    var key = new SecureString();
+                    foreach (char c in secretKey) { key.AppendChar(c); }
 
-        return new TokenCloudCredentials(accessToken);
-    }
+                    var tokenCreds = GetTokenCloudCredentials(tenantID, applicationID, key);
+                    var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+        
+                    var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
+                    resourceManagementClient.Providers.Register("Microsoft.HDInsight");
+        
+                    _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
+        
+                    var results = _hdiManagementClient.Clusters.List();
+                    foreach (var name in results.Clusters)
+                    {
+                        Console.WriteLine("Cluster Name: " + name.Name);
+                        Console.WriteLine("\t Cluster type: " + name.Properties.ClusterDefinition.ClusterType);
+                        Console.WriteLine("\t Cluster location: " + name.Location);
+                        Console.WriteLine("\t Cluster version: " + name.Properties.ClusterVersion);
+                    }
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                }
 
-通过 PowerShell 来检索租户 ID：
+                /// Get the access token for a service principal and provided key                
+                public static TokenCloudCredentials GetTokenCloudCredentials(string tenantId, string clientId, SecureString secretKey)
+                {
+                    var authFactory = new AuthenticationFactory();
+                    var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
+                    var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                    var accessToken =
+                        authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
+        
+                    return new TokenCloudCredentials(accessToken);
+                }
+        
+                public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(SubscriptionCloudCredentials creds, Guid subId)
+                {
+                    return new TokenCloudCredentials(subId.ToString(), ((TokenCloudCredentials)creds).Token);
+                }
+            }
+        }
 
-    Get-AzureRmSubscription
-
-也可以使用 Azure CLI：
-
-    azure account show --json
-
-
-## <a name="see-also"></a>另请参阅
-* [在 HDInsight 中提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md)
-* [使用门户创建 Active Directory 应用程序和服务主体](../resource-group-create-service-principal-portal.md)
-* [通过 Azure Resource Manager 对服务主体进行身份验证](../resource-group-authenticate-service-principal.md)
+## <a name="next-steps"></a>后续步骤
+* [使用门户创建 Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+* [通过 Azure Resource Manager 对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

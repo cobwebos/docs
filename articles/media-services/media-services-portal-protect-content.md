@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f9b0cf4e88a1ab27546063ae89cde8de7761609
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 4256201f2fd505ed86734e900496eb7364c9a575
 
 
 ---
@@ -32,6 +32,7 @@ ms.openlocfilehash: 0f9b0cf4e88a1ab27546063ae89cde8de7761609
 AMS 提供用于向已授权客户端传送 DRM 许可证和 AES 明文密钥的服务。 通过 Azure 门户，可创建适用于所有类型加密的一个**密钥/许可证授权策略**。
 
 本文演示如何使用 Azure 门户配置内容保护策略。 本文还演示如何为资产应用动态加密。
+
 
 > [!NOTE]
 > 如果使用 Azure 经典门户创建保护策略，[Azure 门户](https://portal.azure.com/)中可能不会显示策略。 但是，所有旧的策略仍然存在。 可以使用 Azure 媒体服务 .NET SDK 或 [Azure 媒体服务资源管理器](https://github.com/Azure/Azure-Media-Services-Explorer/releases)工具进行检查（若要查看这些策略，右键单击此资产 ->“显示信息 (F4)”->单击“内容密钥”选项卡 ->单击此密钥）。 
@@ -93,10 +94,7 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 ![保护内容](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
 ## <a name="apply-dynamic-encryption-to-your-asset"></a>将动态加密应用于资产
-若要使用动态加密，需要执行下列操作：
-
-* 将源文件编码为一组自适应比特率 MP4 文件。
-* 针对计划要从其中传送内容的流式处理终结点，获取至少一个按需流式处理单位。 有关详细信息，请参阅[如何缩放按需流式处理保留单位](media-services-portal-manage-streaming-endpoints.md)。
+若要利用动态加密，需要将源文件编码为一组自适应比特率 MP4 文件。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>选择要加密的资产
 若要查看所有资产，选择“设置” > “资产”。
@@ -137,6 +135,6 @@ AMS 支持通过多种方式对发出密钥或许可证请求的用户进行身�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

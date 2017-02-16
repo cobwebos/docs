@@ -11,26 +11,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/14/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 040556d42f246ab2876cc5bab031036ec78e13bc
+ms.sourcegitcommit: 6c644b124ad8c994170152006ff61c11e363e7ab
+ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
 
 
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
-[Application Insights][启动] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，你也可以创建自己的自定义指标和事件。
+[Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，你也可以创建自己的自定义指标和事件。
 
 指标和事件计数显示在聚合值图表（例如总和、平均值或计数）中。
 
-下面是一个示例图表：
+下面是示例图表集：
 
-![在 Azure 门户中打开应用程序的概览边栏选项卡](./media/app-insights-metrics-explorer/01-overview.png)
+![](./media/app-insights-metrics-explorer/01-overview.png)
 
-某些图表经过分段：任何点的图表高度总计为显示的指标的总和。 图例默认显示最大数量。
-
-虚线显示前一周的指标值。
+可在 Application Insights 门户中的任何位置找到指标图表。 在大多数情况下，它们可以进行自定义，你可以向边栏选项卡添加更多图表。 在概览边栏选项卡中，单击浏览更详细的图表（它们具有诸如“服务器响应”这类的标题），或单击“指标资源管理器”以打开新边栏，可以在其中创建自定义图表。
 
 ## <a name="time-range"></a>时间范围
 可以在任何边栏选项卡上更改图表或网格覆盖的时间范围。
@@ -62,33 +60,6 @@ ms.openlocfilehash: 040556d42f246ab2876cc5bab031036ec78e13bc
 
 可提供的粒度取决于选择的时间范围。 显式粒度可替代时间范围内的“自动”粒度。
 
-## <a name="metrics-explorer"></a>指标资源管理器
-单击概览边栏选项卡上的任一图表可查看更详细的一组相关图表和网格。 可以编辑这些图表和网格，重点查看感兴趣的详细信息。
-
-或者，也可以单击概览边栏选项卡顶部的“指标资源管理器”按钮。
-
-例如，单击 Web 应用的“失败的请求”图表：
-
-![在概览边栏选项卡上单击图表](./media/app-insights-metrics-explorer/14-trix.png)
-
-## <a name="what-do-the-figures-mean"></a>图中各部分的含义是什么？
-旁边的图例通常默认显示图表在这段期间的聚合值。 如果将鼠标悬停在图表上，将显示该点的值。
-
-图表上的每个数据点是在以前采样间隔或“粒度”中所收到的数据值聚合。 粒度显示在边栏选项卡顶部，随着图表的时幅而有所不同。
-
-指标可以用不同方式聚合：
-
-* **总和**：将采样间隔或图表期间收到的所有数据点的值相加。
-* **平均**：将总和除以间隔期间收到的数据点数目。
-* **唯一计数**：用于用户和帐户的计数。 在采样间隔或图表期间，图形显示在该时间看到的不同用户的计数。
-
-可以更改聚合方法：
-
-![选择图表，然后选择聚合](./media/app-insights-metrics-explorer/05-aggregation.png)
-
-创建新图表或取消选择所有指标时，系统会显示每个指标的默认方法：
-
-![取消选择所有指标可查看默认值](./media/app-insights-metrics-explorer/06-total.png)
 
 ## <a name="editing-charts-and-grids"></a>编辑图表和网格
 在边栏选项卡中添加新图表：
@@ -101,7 +72,7 @@ ms.openlocfilehash: 040556d42f246ab2876cc5bab031036ec78e13bc
 
 可以在图表上显示多个指标，但是，可以一起显示的组合有一些限制。 只要选择一个指标，就会禁用其他一些指标。
 
-如果在应用中编写了[自定义指标][跟踪]（对 TrackMetric 和 TrackEvent 的调用），此处会列出这些指标。
+如果在应用中编写了[自定义指标][track]（对 TrackMetric 和 TrackEvent 的调用），此处会列出这些指标。
 
 ## <a name="segment-your-data"></a>将数据分段
 可以根据属性拆分指标 - 例如，比较使用不同操作系统的客户端上的页面视图。
@@ -115,11 +86,35 @@ ms.openlocfilehash: 040556d42f246ab2876cc5bab031036ec78e13bc
 >
 >
 
-如果在应用中编写了[自定义指标][跟踪]并且这些指标包含属性值，可以在列表中选择该属性。
+如果在应用中编写了[自定义指标][track]并且这些指标包含属性值，可以在列表中选择该属性。
 
 图表是否对分段的数据而言太小？ 调整图表高度：
 
 ![调整滑块](./media/app-insights-metrics-explorer/18-height.png)
+
+## <a name="aggregation-types"></a>聚合类型
+旁边的图例通常默认显示图表在这段期间的聚合值。 如果将鼠标悬停在图表上，将显示该点的值。
+
+图表上的每个数据点是在以前采样间隔或“粒度”中所收到的数据值聚合。 粒度显示在边栏选项卡顶部，随着图表的时幅而有所不同。
+
+指标可以用不同方式聚合：
+
+* **计数**是在采样间隔中接收的事件的计数。 它用于诸如请求这类的事件。 图表高度的变化指示事件发生速率的变化。 但请注意，数值会在更改采样间隔时更改。
+* **总和**：将采样间隔或图表期间收到的所有数据点的值相加。
+* **平均**：将总和除以间隔期间收到的数据点数目。
+* **唯一计数**：用于用户和帐户的计数。 在采样间隔或图表期间，图形显示在该时间看到的不同用户的计数。
+* **%** - 每个聚合的百分比版本仅用于分段图表。 总计始终加起来等于 100%，图表显示总计的不同组成部分的相对比例。
+
+    ![百分比聚合](./media/app-insights-metrics-explorer/percentage-aggregation.png)
+
+### <a name="change-the-aggregation-type"></a>更改聚合类型
+
+![编辑图表，然后选择聚合](./media/app-insights-metrics-explorer/05-aggregation.png)
+
+创建新图表或取消选择所有指标时，系统会显示每个指标的默认方法：
+
+![取消选择所有指标可查看默认值](./media/app-insights-metrics-explorer/06-total.png)
+
 
 ## <a name="filter-your-data"></a>筛选数据
 若只要查看选定的一组属性值的指标：
@@ -224,11 +219,11 @@ ms.openlocfilehash: 040556d42f246ab2876cc5bab031036ec78e13bc
 <!--Link references-->
 
 [alerts]: app-insights-alerts.md
-[启动]: app-insights-overview.md
-[跟踪]: app-insights-api-custom-events-metrics.md
+[start]: app-insights-overview.md
+[track]: app-insights-api-custom-events-metrics.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

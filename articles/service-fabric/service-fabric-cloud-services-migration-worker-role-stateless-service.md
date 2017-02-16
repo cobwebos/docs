@@ -1,5 +1,5 @@
 ---
-title: "将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南 | Microsoft 文档"
+title: "将 Azure 云服务应用转换为微服务 |Microsoft Docs"
 description: "本指南将云服务 Web 角色和辅助角色与 Service Fabric 无状态服务进行比较，以帮助你从云服务迁移到 Service Fabric。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 752d0c9cb32c602dd7721773057f113e0c8f57a0
+ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
+ms.openlocfilehash: def92885587b11ce8275292680a524d0c8e31751
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 752d0c9cb32c602dd7721773057f113e0c8f57a0
 ## <a name="web-role-to-stateless-service"></a>Web 角色到无状态服务
 与辅助角色类似，Web 角色也代表无状态的工作负荷，因此在概念上也能映射到 Service Fabric 无状态服务。 不过，与 Web 角色不同的是，Service Fabric 不支持 IIS。 若要将 Web 应用程序从 Web 角色迁移到无状态服务，需要先移动到可以自我托管且不依赖 IIS 或 System.Web 的 Web 框架（例如 ASP.NET Core 1）。
 
-| **应用程序** | **受支持** | **迁移路径** |
+| **应用程序** | **支持** | **迁移路径** |
 | --- | --- | --- |
 | ASP.NET Web 窗体 |否 |转换为 ASP.NET Core 1 MVC |
 | ASP.NET MVC |使用迁移 |升级到 ASP.NET Core 1 MVC |
@@ -263,6 +263,6 @@ Service Fabric 中的启动入口点是在 ServiceManifest.xml 中针对每个�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/22/2016
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 160d6a41fc1ea3eecd39e8ad199bc5e69f236061
+ms.sourcegitcommit: ef4d5bb9b8b25d940aca26117d759a4152639730
+ms.openlocfilehash: bc8009e0ba0b604c995ce24f883eb03d586d667b
 
 
 ---
@@ -51,6 +51,7 @@ Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 * 使用 Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) 和 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 编程模型，开始生成无状态和有状态服务。
+* 详细了解[模式和方案](service-fabric-patterns-and-scenarios.md)。
 * 此外，请参阅以下主题：
   * [介绍微服务](service-fabric-overview-microservices.md)
   * [定义和管理服务状态](service-fabric-concepts-state.md)
@@ -63,6 +64,6 @@ Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

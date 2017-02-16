@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据库审核入门 | Microsoft Azure"
+title: "SQL 数据库审核入门 | Microsoft Docs"
 description: "SQL 数据库审核入门"
 services: sql-database
 documentationcenter: 
@@ -8,19 +8,20 @@ manager: jhubbard
 editor: 
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
+ms.custom: secure and protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
-ms.author: CarlRabeler; ronitr; giladm
+ms.author: ronitr; giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 80680647559fe8b42cfa09985b9da3713b9c9305
-ms.openlocfilehash: cf0152b0cbcc85befa1b753b92f1593af958dd89
+ms.sourcegitcommit: 7b3c6d29ad7ded2ea65f378a1f807235c688d738
+ms.openlocfilehash: 9f51fcdb291021064dc02a71afdf849f1f4a3d85
 
 
 ---
-# <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
+# <a name="get-started-with-sql-database--auditing"></a>SQL 数据库审核入门
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志内。
 
 审核可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
@@ -183,7 +184,7 @@ Blob 审核日志以 Blob 文件集合的形式保存在名为“**sqldbauditlog
 3. 返回到审核配置边栏选项卡，将“存储访问密钥”从“辅助”切换为“主要”，然后单击底部的“确定”。 然后，单击审核配置边栏选项卡顶部的“保存”。
 4. 返回到存储配置边栏选项卡并**重新生成***辅助访问密钥*（为下一个密钥刷新周期做好准备）。
 
-## <a name="a-idsubheading-7aautomation-powershell-rest-api"></a><a id="subheading-7"></a>自动化 (PowerShell/REST API)
+## <a name="a-idsubheading-7aautomation-powershell--rest-api"></a><a id="subheading-7"></a>自动化 (PowerShell/REST API)
 也可以使用以下自动化工具在 Azure SQL 数据库中配置审核：
 
 1. **PowerShell cmdlets**
@@ -213,9 +214,9 @@ Blob 审核日志以 Blob 文件集合的形式保存在名为“**sqldbauditlog
 [Azure SQL 数据库审核概述]: #subheading-1
 [为数据库设置审核]: #subheading-2
 [分析审核日志和报告]: #subheading-3
-[生产环境中的用法实践]: #subheading-5
-[重新生成存储密钥]: #subheading-6
-[自动化 (PowerShell/REST API)]: #subheading-7
+[Practices for usage in production]: #subheading-5
+[Storage Key Regeneration]: #subheading-6
+[Automation (PowerShell / REST API)]: #subheading-7
 
 
 <!--Image references-->
@@ -241,6 +242,6 @@ Blob 审核日志以 Blob 文件集合的形式保存在名为“**sqldbauditlog
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

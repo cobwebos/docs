@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 03/31/2016
 ms.author: mattrow
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 45cfb660db9ea1d93d136d223d65602f3a373574
+ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
+ms.openlocfilehash: c920a206d6f3288f6cba0d2658d556749fc4d574
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 45cfb660db9ea1d93d136d223d65602f3a373574
 当你在开发人员计算机上运行服务时，可以轻松使用 [Visual Studio 的调试工具](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。 对于远程群集而言，[运行状况报告](service-fabric-view-entities-aggregated-health.md)始终是一个不错的起点。 访问这些报告的最简单方法是使用 PowerShell 或 [SFX](service-fabric-visualizing-your-cluster.md)。 本文假设你要调试远程群集，并且基本了解如何使用这些工具。
 
 ## <a name="application-crash"></a>应用程序崩溃
-“分区低于目标副本或实例计数”报告很好地反映了你的服务即将崩溃。 若要找出服务发生崩溃的位置，需要稍作一番调查。 如果服务的运行强度很高，那么，你最好有一组详尽的跟踪数据。  我们建议你尝试使用 [Azure 诊断](service-fabric-diagnostics-how-to-setup-wad.md)来收集这些跟踪，并使用[弹性搜索](service-fabric-diagnostic-how-to-use-elasticsearch.md)等解决方案来查看和搜索跟踪。
+“分区低于目标副本或实例计数”报告很好地反映了你的服务即将崩溃。 若要找出服务发生崩溃的位置，需要稍作一番调查。 如果服务的运行强度很高，那么，你最好有一组详尽的跟踪数据。  建议使用 [Azure 诊断](service-fabric-diagnostics-how-to-setup-wad.md)来收集这些跟踪，并使用 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 等解决方案来查看和搜索跟踪。
 
 ![SFX 分区运行状况](./media/service-fabric-diagnostics-troubleshoot-common-scenarios/crashNewApp.png)
 
@@ -55,6 +55,6 @@ ms.openlocfilehash: 45cfb660db9ea1d93d136d223d65602f3a373574
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

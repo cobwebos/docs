@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2016
+ms.date: 01/05/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 049f524cd683b2b2a10430ef0add19a48b8c74b1
+ms.sourcegitcommit: a7b05db6af721a62b7cbb795c329b383bd391e0a
+ms.openlocfilehash: fbb3933ef2dff882467fb2db34f9aa14dec13b1f
 
 
 ---
@@ -98,6 +98,6 @@ ms.openlocfilehash: 049f524cd683b2b2a10430ef0add19a48b8c74b1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

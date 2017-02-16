@@ -1,6 +1,6 @@
 ---
-title: "读取 Azure 表存储中保存的消息 |Microsoft Docs"
-description: "将消息从 Intel NUC 保存到 IoT 中心， 将其写入到 Azure 表存储，然后从云中读取它们。"
+title: "模拟设备和 Azure IoT 网关 - 第 4 课：表存储 | Microsoft Docs"
+description: "将消息从 Intel NUC 保存到 IoT 中心，将其写入到 Azure 表存储，然后从云中读取它们。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: e229c919db797133d3dc30fc65b482e5135f7cc5
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: b12e16a5a532448cf2e939cfcad322225b9ee811
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: e229c919db797133d3dc30fc65b482e5135f7cc5
 
 ## <a name="what-you-will-learn"></a>你要学习的知识
 
-如何使用 gulp 工具运行示例代码以读取 Azure 表存储中的消息。
+如何使用 gulp 工具运行示例代码，以读取 Azure 表存储中的消息。
 
 ## <a name="what-you-need"></a>所需条件
 
@@ -63,9 +63,9 @@ az storage account show-connection-string -g iot-gateway -n {storage name}
 
 ## <a name="configure-the-device-connection"></a>配置设备连接
 
-更新 `config-azure.json` 文件，以便在主机计算机上运行的示例代码可以读取 Azure 表存储中的消息。 若要配置设备连接，请执行以下步骤：
+更新 `config-azure.json` 文件，以便在主计算机上运行的示例代码可以读取 Azure 表存储中的消息。 若要配置设备连接，请执行以下步骤：
 
-1. 通过运行以下命令来打开设备配置文件 `config-azure.json`：
+1. 通过运行以下命令，打开设备配置文件 `config-azure.json`：
 
    ```bash
    # For Windows command prompt
@@ -78,7 +78,7 @@ az storage account show-connection-string -g iot-gateway -n {storage name}
 
 2. 将 `[Azure storage connection string]` 替换为获取的 Azure 存储连接字符串。
 
-   `[IoT hub connection string]` 应已在课程 3 的[从 Azure IoT Hub 读取消息](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)部分中进行了替换。
+   `[IoT hub connection string]` 应已在第&3; 课的[从 Azure IoT 中心读取消息](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)部分中进行了替换。
 
 ## <a name="read-messages-in-your-azure-table-storage"></a>读取 Azure 表存储中的消息
 
@@ -88,20 +88,20 @@ az storage account show-connection-string -g iot-gateway -n {storage name}
 gulp run --table-storage
 ```
 
-IoT 中心会在新消息到达时触发 Azure 函数应用程序以将消息保存到 Azure 表存储中。
+IoT 中心会在新消息到达时触发 Azure 函数应用程序，以将消息保存到 Azure 表存储中。
 `gulp run` 命令运行将消息发送到 IoT 中心的网关示例应用程序。 借助 `table-storage` 参数，它还生成子进程以接收 Azure 表存储中的已保存消息。
 
-要发送和接收的消息均立即显示在主机的相同控制台窗口中。 示例应用程序实例将在 40 秒后自动终止。
+要发送和接收的消息全部立即显示在主机的相同控制台窗口中。 示例应用程序实例将在 40 秒后自动终止。
 
    ![gulp 读取](media/iot-hub-gateway-kit-lessons/lesson4/gulp_run_read_table_simudev.png)
 
 
 ## <a name="summary"></a>摘要
 
-你已运行示例代码以读取由 Azure 函数应用程序保存在 Azure 表存储中的消息。
+已运行示例代码，可读取由 Azure 函数应用程序保存在 Azure 表存储中的消息。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

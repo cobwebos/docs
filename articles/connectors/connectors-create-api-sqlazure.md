@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/18/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 003cd98347c2a461f2a3ce78ae7f6a0e6fb2e4a2
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: ce3a622db8667df8b3f1d1391c2aa0d7e1e012a5
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 003cd98347c2a461f2a3ce78ae7f6a0e6fb2e4a2
 > 
 > 
 
-若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../app-service-logic/app-service-logic-what-are-logic-apps.md)和[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要了解有关逻辑应用的详细信息，请参阅[什么是逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)和[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="connect-to-azure-sql-database"></a>连接到 Azure SQL 数据库
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SQL 数据库，首先创建 SQL 数据库*连接*。 若要创建连接，输入通常用于访问要连接到的服务的凭据。 因此在 SQL 数据库中，输入 SQL 数据库凭据以创建连接。 
@@ -47,10 +47,10 @@ ms.openlocfilehash: 003cd98347c2a461f2a3ce78ae7f6a0e6fb2e4a2
 > 
 
 ## <a name="use-a-trigger"></a>使用触发器
-此连接器没有任何触发器。 使用其他触发器启动逻辑应用，例如重复触发器、HTTP Webhook 触发器、可用于其他连接器的触发器等。 [创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)提供了一个示例。
+此连接器没有任何触发器。 使用其他触发器启动逻辑应用，例如重复触发器、HTTP Webhook 触发器、可用于其他连接器的触发器等。 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)提供了一个示例。
 
 ## <a name="use-an-action"></a>使用操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
 
 1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
    
@@ -219,11 +219,11 @@ TablesList
 | default |操作失败。 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

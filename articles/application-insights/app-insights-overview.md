@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: c719a82e6c2ae46080811190f9ca7783414f38f4
+ms.sourcegitcommit: 3e9476f8edc4186af026495bc575b8203c35c619
+ms.openlocfilehash: b01de7724ec116e5e27369f7c0f852f82ab0348b
 
 
 ---
@@ -264,7 +264,7 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 不同于指标资源管理器，实时指标流显示一组固定指标。 数据只会在图表上显示时才会得到保留，不显示时将被丢弃。
 
 ### <a name="annotations"></a>批注
-指标图表上的[版本批注](app-insights-annotations.md)会显示新版本的部署位置。 通过该批注可轻松查看更改是否对应用程序的性能产生了任何影响。 [Visual Studio Team Services 生成系统](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)可自动创建批注，还可[从 PowerShell 进行创建](#create-annotations-from-powershell)。
+指标图表上的[版本批注](app-insights-annotations.md)会显示新版本的部署位置。 通过该批注可轻松查看更改是否对应用程序的性能产生了任何影响。 [Visual Studio Team Services 生成系统](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)和 Visual Studio 的 Web 部署均可自动创建批注。 还可[从 PowerShell 进行创建](#create-annotations-from-powershell)。
 
 ![显示与服务器响应时间相关联的批注示例](./media/app-insights-overview/00.png)
 
@@ -329,7 +329,7 @@ Application Insights 提供三种类型的警报，均通过电子邮件发送�
 
 ## <a name="support-and-feedback"></a>支持和反馈
 * 问题：
-  * [故障排除][问题与解答]
+  * [故障排除][qna]
   * [MSDN 论坛](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
   * [获取开发人员支持](app-insights-get-dev-support.md)
@@ -354,21 +354,21 @@ Application Insights 提供三种类型的警报，均通过电子邮件发送�
 <!--Link references-->
 
 [android]: https://github.com/Microsoft/ApplicationInsights-Android
-[Azure]: ../insights-perf-analytics.md
-[客户端]: app-insights-javascript.md
-[桌面]: app-insights-windows-desktop.md
-[检测]: app-insights-detect-triage-diagnose.md
+[azure]: ../insights-perf-analytics.md
+[client]: app-insights-javascript.md
+[desktop]: app-insights-windows-desktop.md
+[detect]: app-insights-detect-triage-diagnose.md
 [greenbrown]: app-insights-asp-net.md
 [ios]: https://github.com/Microsoft/ApplicationInsights-iOS
 [java]: app-insights-java-get-started.md
-[了解用户]: app-insights-overview-usage.md
-[平台]: app-insights-platforms.md
-[门户]: http://portal.azure.com/
-[问题与解答]: app-insights-troubleshoot-faq.md
+[knowUsers]: app-insights-overview-usage.md
+[platforms]: app-insights-platforms.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

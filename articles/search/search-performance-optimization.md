@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: liamca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 733aa17ef53cac654cbd2bc7ceed7059b07a0f13
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9024c47e7d483129d66105012e0d67cfa9700cb9
 
 
 ---
@@ -116,6 +116,6 @@ STA 是一个重要的工具，可用于从 Azure 搜索的角度了解延迟速
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 856043148b3fc28594850ae27bedd57d48292582
+ms.sourcegitcommit: 7ade85d98c41bddddb61fe75d212b351ff62eef0
+ms.openlocfilehash: 1e24cebace0e6b7de7ae318f06d6430b3caa342a
 
 
 ---

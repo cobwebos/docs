@@ -1,5 +1,5 @@
 ---
-title: "NoSQL tutorial 教程：DocumentDB .NET SDK | Microsoft 文档"
+title: "NoSQL 教程：DocumentDB .NET SDK | Microsoft 文档"
 description: "使用 DocumentDB .NET SDK 创建联机数据库和 C# 控制台应用程序的 NoSQL 教程。 DocumentDB 是用于 JSON 的 NoSQL 数据库。"
 keywords: "nosql 教程, 联机数据库, c# 控制台应用程序"
 services: documentdb
@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 414c41cbccb755e058fb76f10bba62bd1ffa1835
-ms.openlocfilehash: d2989a3292117ada029fb26536bfffbce83f5e1b
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 4ddd790efde26b6c2d2215c72e42bd9e2839e50e
 
 
 ---
@@ -627,11 +627,10 @@ DocumentDB 支持删除 JSON 文档。
 * 在 [DocumentDB 文档页](https://azure.microsoft.com/documentation/services/documentdb/)的“Develop”（开发）部分中了解有关编程模型的详细信息。
 
 [documentdb-create-account]: documentdb-create-account.md
-[documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

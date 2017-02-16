@@ -12,11 +12,11 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: 550ca15e68c2bb6bf1958e5a24417a3efa9532d0
+ms.sourcegitcommit: e4851e872349fa6483e1f1a340d0968e845a3518
+ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
 
 
 ---
@@ -34,6 +34,11 @@ ms.openlocfilehash: 550ca15e68c2bb6bf1958e5a24417a3efa9532d0
 目前，并非每种服务都支持门户或资源管理器。 对于这些服务，需要使用[经典门户](https://manage.windowsazure.com)。 若要了解每种服务的状态，请参阅 [Azure 门户可用性图表](https://azure.microsoft.com/features/azure-portal/availability/)。
 
 ## <a name="manage-resource-groups"></a>管理资源组
+
+资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。 
+
+资源组存储与资源有关的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
+
 1. 若要查看订阅中的所有资源组，请选择“资源组”。
    
     ![浏览资源组](./media/resource-group-portal/browse-groups.png)
@@ -128,8 +133,8 @@ ms.openlocfilehash: 550ca15e68c2bb6bf1958e5a24417a3efa9532d0
 ![删除组](./media/resource-group-portal/delete-group.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 若要查看审核日志，请参阅[使用 Resource Manager 进行审核操作](resource-group-audit.md)。
-* 若要排查部署错误，请参阅[使用 Azure 门户对资源组部署进行故障排除](resource-manager-troubleshoot-deployments-portal.md)。
+* 若要查看活动日志，请参阅[使用 Resource Manager 进行审核操作](resource-group-audit.md)。
+* 若要查看有关部署的详细信息，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
 * 若要通过门户部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](resource-group-template-deploy-portal.md)。
 * 若要管理对资源的访问，请参阅[使用角色分配管理对 Azure 订阅资源的访问](../active-directory/role-based-access-control-configure.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
@@ -137,6 +142,6 @@ ms.openlocfilehash: 550ca15e68c2bb6bf1958e5a24417a3efa9532d0
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

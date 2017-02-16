@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 12/19/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9867dcb3300aab020bdda341b5b14e40c3a01075
+ms.sourcegitcommit: 51c5694379d3f35ed2595f0cafeb00c6cc527854
+ms.openlocfilehash: 94549905816707fa3dcce3c3e443122162a2c4e8
 
 
 ---
@@ -43,11 +43,11 @@ DocumentDB 管理的数据库实体被称为**资源**。 每个资源都通过�
 ![DocumentDB 分层资源模型][1]  
 **分层资源模型**   
 
-若要开始使用资源，必须使用 Azure 订阅[创建 DocumentDB 数据库帐户](documentdb-create-account.md)。 数据库帐户可以包含的一组**数据库**、每个数据库都包含多个**集合**，每个集合又包含**存储过程、触发器、UDF、文档**及相关**附件**（预览功能）。 数据库也有关联的**用户**，每个用户都有一组**权限**，用于访问集合、存储过程、触发器、UDF、文档或附件。 而数据库、用户、权限和集合就是系统定义的资源，其中已知的架构、文档和附件包含用户定义的任意 JSON 内容。  
+若要开始使用资源，必须使用 Azure 订阅[创建 DocumentDB 数据库帐户](documentdb-create-account.md)。 数据库帐户可以包含的一组**数据库**、每个数据库都包含多个**集合**，每个集合又包含**存储过程、触发器、UDF、文档**及相关**附件**。 数据库也有关联的**用户**，每个用户都有一组**权限**，用于访问集合、存储过程、触发器、UDF、文档或附件。 而数据库、用户、权限和集合就是系统定义的资源，其中已知的架构、文档和附件包含用户定义的任意 JSON 内容。  
 
 | 资源 | 说明 |
 | --- | --- |
-| 数据库帐户 |每个数据库帐户都与一组数据库和一个固定大小的附件（预览功能）blob 存储相关联。 你可以使用 Microsoft Azure 订阅创建一个或多个数据库帐户。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。 |
+| 数据库帐户 |每个数据库帐户都与一组数据库和一个固定大小的附件 blob 存储相关联。 你可以使用 Microsoft Azure 订阅创建一个或多个数据库帐户。 有关详细信息，请访问[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。 |
 | 数据库 |数据库是跨集合分区的文档存储的逻辑容器。 它也是一个用户容器。 |
 | 用户 |范围权限的逻辑命名空间。 |
 | 权限 |与用户关联用于访问特定资源的授权令牌。 |
@@ -56,7 +56,7 @@ DocumentDB 管理的数据库实体被称为**资源**。 每个资源都通过�
 | 触发器 |在插入、替换或删除操作之前或之后执行的以 JavaScript 编写的应用程序逻辑。 |
 | UDF |用 JavaScript 编写的应用程序逻辑。 UDF 让你可以建立自定义查询运算符模型，从而扩展核心 DocumentDB 查询语言。 |
 | 文档 |用户定义的（任意）JSON 内容。 默认情况下，不需要定义任何架构，也不需要为所有添加到集合的文档提供辅助索引。 |
-| （预览）附件 |附件是一个特殊文档，包含引用和与外部 blob/媒体相关联的元数据。 开发人员可以选择由 DocumentDB 来管理 blob 或者使用外部 blob 服务提供程序（OneDrive、Dropbox 等）来存储它。 |
+| 附件 |附件是一个特殊文档，包含引用和与外部 blob/媒体相关联的元数据。 开发人员可以选择由 DocumentDB 来管理 blob 或者使用外部 blob 服务提供程序（OneDrive、Dropbox 等）来存储它。 |
 
 ## <a name="system-vs-user-defined-resources"></a>系统定义的资源对比用户定义的资源
 资源（例如数据库帐户、数据库、集合、用户、权限、存储过程、触发器和 UDF）都具有固定的架构并且都称为系统资源。 与此相反，文档和附件这一类资源的架构不受限制，这一类资源就是用户定义的资源。 在 DocumentDB 中，系统和用户定义的资源均由符合标准的 JSON 表示并进行管理。 所有系统或用户定义的资源都具有以下公共属性。
@@ -413,11 +413,6 @@ DocumentDB 查询模型尝试在功能、效率和简单性之间取得平衡。
 与所有其他资源一样，可以使用 REST API 或任一[客户端 SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) 轻松创建、替换、删除、读取、枚举和查询文档。 删除文档将立即释放与所有嵌套附件相对应的配额。 文档的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据你的应用程序的数据一致性要求在每个请求中重写此策略。 查询文档时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
 
 ## <a name="attachments-and-media"></a>附件和媒体
-> [!NOTE]
-> 附件和媒体资源是预览功能。
-> 
-> 
-
 DocumentDB 可通过 DocumentDB 存储二进制 blob/媒体，或将其存储到远程媒体存储区。 对于被称为附件的特殊文档而言，它还可以用于表示媒体的元数据。 DocumentDB 中的附件是引用存储在其他位置的媒体/blob 的特殊 (JSON) 文档。 附件只是捕获存储在远程媒体存储中的媒体的元数据（例如位置、作者等）的特殊文档。 
 
 考虑到一款社交阅读应用程序，它使用 DocumentDB 来存储墨迹注释，以及与某位给定用户的电子书相关联的元数据（包含评论、重点、书签、评分、喜欢/厌恶，等等）。   
@@ -469,6 +464,6 @@ DocumentDB 用户是指对权限进行分组的逻辑命名空间。 DocumentDB 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure StorSimple 虚拟阵列的灾难恢复和设备故障转移 | Microsoft 文档"
+title: "StorSimple 虚拟阵列灾难恢复和设备故障转移 | Microsoft 文档"
 description: "了解有关如何对 StorSimple Virtual Array 进行故障转移的详细信息。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: 34de93b8133649aaedc3cb89a8cd478eda92c7aa
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: d31f10f660dc05290363825c089664a70ecdd037
 
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array"></a>StorSimple Virtual Array 的灾难恢复和设备故障转移
@@ -76,7 +76,7 @@ ms.openlocfilehash: 34de93b8133649aaedc3cb89a8cd478eda92c7aa
   
   * 有效 ACR 名称。
   * 有效 IQN（不超过 220 个字符）。
-  * 有效 CHAP 密码（长并为 12-16 个字符）。
+  * 有效 CHAP 密码（长并为&12;-16 个字符）。
 
 如果上述任一预检查失败，都无法继续执行 DR。 需要解决这些问题，然后重试 DR。
 
@@ -182,6 +182,6 @@ ms.openlocfilehash: 34de93b8133649aaedc3cb89a8cd478eda92c7aa
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

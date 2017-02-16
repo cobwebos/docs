@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98333c8721274c207ed3d7f2bd05cc20bcd10562
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: be19590bca7c7fb45e32f5a5e29c88ab5dd21deb
 
 
 ---
@@ -30,6 +30,10 @@ ms.openlocfilehash: 98333c8721274c207ed3d7f2bd05cc20bcd10562
 
 ## <a name="when-your-app-is-an-overnight-success"></a>当你的应用突然获得成功时
 SQL 数据库即刻便能轻松地扩展规模。 所以如果你的应用突然获得成功，只需单击一下便能适应新的性能需求。 另外，由于最大程度地减少了停机时间，不用担心在需要增加或减少性能时，应用会受到影响。
+
+>
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
+>
 
 [阅读文档](http://go.microsoft.com/fwlink/?LinkID=787569)
 
@@ -57,6 +61,6 @@ SQL 数据库包含最前沿的内存技术，可执行极快的事务，同时�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

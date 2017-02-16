@@ -1,6 +1,6 @@
 ---
-title: "云灾难恢复解决方案 - SQL 数据库活动异地复制 | Microsoft 文档"
-description: "了解如何使用 Azure SQL 数据库中应用程序数据备份的异地复制功能为业务连续性规划设计云灾难恢复解决方案。"
+title: "灾难恢复应用设计 - Azure SQL 数据库 | Microsoft Docs"
+description: "了解通过异地复制为 SQL 数据库灾难恢复设计应用程序。"
 keywords: "云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划"
 services: sql-database
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.workload: data-management
 ms.date: 07/20/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 5afcde0df03cb953eb8387cc8beea8851f36c516
+ms.sourcegitcommit: 7e607debe47efb6a22ca6fa47a40554d13d29359
+ms.openlocfilehash: dd56a8d1ee428b1845ed80f0b899cc73c2c4b7f6
 
 
 ---
-# <a name="design-an-application-for-cloud-disaster-recovery-using-active-geo-replication-in-sql-database"></a>使用 SQL 数据库中的活动异地复制功能为云灾难恢复设计应用程序
+# <a name="application-design-for-cloud-disaster-recovery-using-active-geo-replication-in-sql-database"></a>使用 SQL 数据库中的活动异地复制功能为云灾难恢复设计应用程序
 > [!NOTE]
 > [活动异地复制](sql-database-geo-replication-overview.md)现在可供所有层中的所有数据库使用。
 >
@@ -187,6 +187,6 @@ ms.openlocfilehash: 5afcde0df03cb953eb8387cc8beea8851f36c516
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

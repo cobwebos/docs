@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 12/21/2016
 ms.author: elbutter
 translationtype: Human Translation
-ms.sourcegitcommit: 5bb75bf36892c737568b8129b30bb30b02d01bf2
-ms.openlocfilehash: 1227903652a944d9d144917922fe36a4f149f820
+ms.sourcegitcommit: fe9de0ffad3fe5d4acbf3caf2f08101f6a13daaf
+ms.openlocfilehash: 12f500c01671799612b0d1988e0d07bbfda600da
 
 
 ---
@@ -63,7 +63,7 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
 
 3. 填写部署详细信息
 
-    **数据库名称**：填写所需的任何名称。 如果有多个 SQL 数据仓库实例，我们建议在该名称中包含区域、环境等详细信息，例如 *mydw-westus-1-test*
+    **数据库名称**：填写所需的任何名称。 如果有多个 SQL 数据仓库实例，我们建议在名称中包含区域、环境等详细信息，例如 *mydw-westus-1-test*
 
     **订阅**：你的 Azure 订阅
 
@@ -120,7 +120,7 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
 
 ### <a name="creating-a-user-of-a-larger-resource-class"></a>创建较大资源类的用户
 
-1. 针对服务器的 **master** 数据库创建一个新查询
+1. 查询服务器的 **master** 数据库
 
     ![针对 Master 新建查询](./media/sql-data-warehouse-get-started-tutorial/query-on-server.png)
 
@@ -133,7 +133,7 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
     CREATE USER LoadingUser FOR LOGIN XLRCLOGIN;
     ```
 
-3. 基于服务器登录名创建新数据库用户
+3. 查询 SQL 数据仓库数据库，基于服务器登录名创建新的数据库用户 
     ```sql
     CREATE USER LoadingUser FOR LOGIN XLRCLOGIN;
     ```
@@ -148,7 +148,7 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
 
 5. 将数据库用户添加到 **xlargerc** 资源类角色
     ```sql
-    EXEC sp_addrolememeber 'xlargerc', 'LoadingUser';
+    EXEC sp_addrolemember 'xlargerc', 'LoadingUser';
     ```
 
 6. 使用新凭据登录到数据库
@@ -159,9 +159,11 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
 ## <a name="loading-data"></a>加载数据
 
 ### <a name="defining-external-data"></a>定义外部数据
-1. 定义外部数据源
+1. 创建主密钥并定义外部数据源
 
     ```sql
+    CREATE MASTER KEY;
+
     CREATE EXTERNAL DATA SOURCE NYTPublic
     WITH
     (
@@ -519,7 +521,7 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
     > 请注意，缩放操作会**终止**当前正在运行的查询，并阻止运行新的查询。
     >
     
-5. 选择所有列中的前 100 万个条目，针对行程数据执行扫描操作。 如果希望很快就能获得结果，请选择更少的行。
+5. 选择所有列中的前&100; 万个条目，针对行程数据执行扫描操作。 如果希望很快就能获得结果，请选择更少的行。
 
     ```sql
     SELECT TOP(1000000) * FROM dbo.[Trip]
@@ -569,9 +571,9 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
     on tr.DateID = dt.DateID
     ```
 
-    与我们预料到的一样，在节点之间随机切换数据时，查询花费的时间要长得多，尤其是在如上所示的联接方案中。
+    与你可能预料到的一样，数据分布在各个节点时，查询花费的时间要长得多，尤其是在类似此查询的联接方案中。
 
-2. 让我们运行以下查询，看看基于联接的列创建统计信息时会有什么不同：
+2. 让我们运行以下语句，看看基于所联接的列创建统计信息时此查询会有什么不同：
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -626,6 +628,6 @@ Azure SQL 数据仓库的入门教程。 本教程讲解有关预配 SQL 数据�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

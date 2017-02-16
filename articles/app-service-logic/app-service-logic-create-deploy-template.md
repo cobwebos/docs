@@ -15,13 +15,13 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6337e171e29e11da14b22fdda0814ac84be7deb1
+ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
+ms.openlocfilehash: d0015760fe086b00a264aabd38cc2625f55f4926
 
 
 ---
 # <a name="create-a-logic-app-deployment-template"></a>创建逻辑应用的部署模板
-创建逻辑应用之后，可能想要将其创建为 Azure Resource Manager 模板。 这样，可以轻松地将逻辑应用部署到任何需要它的环境或资源组。 有关 Resource Manager 模板的简介，请务必查阅文章[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)和[使用 Azure Resource Manager 模板部署资源](../resource-group-template-deploy.md)。
+创建逻辑应用之后，可能想要将其创建为 Azure Resource Manager 模板。 这样，可以轻松地将逻辑应用部署到任何需要它的环境或资源组。 有关 Resource Manager 模板的简介，请务必查阅文章[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)和[使用 Azure Resource Manager 模板部署资源](../azure-resource-manager/resource-group-template-deploy.md)。
 
 ## <a name="logic-app-deployment-template"></a>逻辑应用的部署模板
 逻辑应用具有三个基本组件：
@@ -41,8 +41,8 @@ ms.openlocfilehash: 6337e171e29e11da14b22fdda0814ac84be7deb1
 
 > [!NOTE]
 > 连接必须位于和逻辑应用一样的资源组中。
-> 
-> 
+>
+>
 
 ### <a name="install-the-logic-app-template-powershell-module"></a>安装逻辑应用模板 PowerShell 模块
 安装此模块的最简单方法是通过 [PowerShell 库](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1)中的命令 `Install-Module -Name LogicAppTemplate` 进行安装。  
@@ -65,7 +65,7 @@ ms.openlocfilehash: 6337e171e29e11da14b22fdda0814ac84be7deb1
 创建逻辑应用模板后，可以继续添加或修改可能需要的参数。 例如，如果定义在 Azure 函数或嵌套工作流中包括资源 ID，并且打算在单个部署中部署此函数或工作流，那么可以将更多资源添加到模板，并根据需要参数化 ID。 上述情况同样适用于对要与每个资源组一起部署的自定义 API 或 Swagger 终结点的任何引用。
 
 ## <a name="deploy-a-logic-app-template"></a>部署逻辑应用模板
-可以使用任意数量的工具来部署模板，包括 PowerShell、REST API、Visual Studio Release Management 和 Azure 门户模板部署。 要获取更多信息，请参阅有关[使用 Azure Resource Manager 模板部署资源](../resource-group-template-deploy.md)的文章。 另外，我们建议创建[参数文件](../resource-group-template-deploy.md#parameter-file)来存储参数的值。
+可以使用任意数量的工具来部署模板，包括 PowerShell、REST API、Visual Studio Release Management 和 Azure 门户模板部署。 要获取更多信息，请参阅有关[使用 Azure Resource Manager 模板部署资源](../azure-resource-manager/resource-group-template-deploy.md)的文章。 另外，我们建议创建[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameters)来存储参数的值。
 
 ### <a name="authorize-oauth-connections"></a>授权 OAuth 连接
 部署后，逻辑应用使用有效参数进行端到端的运行。 但是，仍需要对 OAuth 连接授权以生成有效的访问令牌。 要执行此操作，可以在设计器中打开逻辑应用，然后授权连接。 或者，如果想要自动执行，可以使用脚本来同意每个 OAuth 连接。 在 GitHub 的 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) 项目下有一个示例脚本。
@@ -74,7 +74,7 @@ ms.openlocfilehash: 6337e171e29e11da14b22fdda0814ac84be7deb1
 部署和管理环境的一个常用方案是将 Visual Studio Release Management 之类的工具用于逻辑应用部署模板。 Visual Studio Team Services 包括可以添加到任何内部版本或发布管道的[部署 Azure 资源组](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup)任务。 授权需要有[服务主体](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)才能部署，然后生成发布定义。
 
 1. 在 Release Management 中若要创建新的定义，请选择“空”来首先创建一个空定义。
-   
+
     ![创建新的空定义][1]   
 2. 选择该定义所需的任何资源。 可能是手动生成或生成过程中生成的逻辑应用模板。
 3. 添加“Azure 资源组部署”任务。
@@ -86,6 +86,6 @@ ms.openlocfilehash: 6337e171e29e11da14b22fdda0814ac84be7deb1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

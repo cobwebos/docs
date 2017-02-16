@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: e4ea8b18a9aba44906ed9085fa046859cc186aa1
+ms.sourcegitcommit: f28c528b51fdf08129f78fce74dba298be7326dd
+ms.openlocfilehash: 20f820a4883643e8941be3ec59667242d727b0c1
 
 
 ---
@@ -84,7 +84,11 @@ VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和�
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>水平缩放和垂直缩放
-自动缩放仅以水平方式增加资源的规模，即只增加（“放”）或减少（“缩”）VM 实例的数目。  水平缩放在使用云服务的情况下更为灵活，因为这样可以运行数千个处理负载的 VM。 垂直缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 功能按内存、CPU 速度、磁盘空间等指标衡量。垂直缩放有更多的限制。 它取决于更大型硬件的可用性，后者存在地区差异，并会快速达到上限。 垂直缩放通常还需要启动和停止 VM。 有关详细信息，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/virtual-machines-linux-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+自动缩放仅以横向方式调整资源的规模，即只增加（“放”）或减少（“缩”）VM 实例的数目。  横向缩放在使用云服务的情况下更为灵活，因为这样可以运行数千个处理负载的 VM。 
+
+纵向缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 功能按内存、CPU 速度、磁盘空间等指标衡量。垂直缩放有更多的限制。 具体取决于更大型硬件的可用性，此可用性会快速达到上限，并因区域而异。 纵向缩放通常还需要停止和重新启动 VM。 
+
+有关详细信息，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/virtual-machines-linux-vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="methods-of-access"></a>访问方法
 可以通过以下方式设置自动缩放：
@@ -116,6 +120,6 @@ VM 规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

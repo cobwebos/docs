@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0f49f7b9a1db2498d6a78031496a2d3c51888d8b
-ms.openlocfilehash: 926b0e9b75e84ecfef48d1c27524a8e33ef8c3fd
+ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
+ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
 
 
 ---
@@ -79,7 +79,7 @@ ms.openlocfilehash: 926b0e9b75e84ecfef48d1c27524a8e33ef8c3fd
 
 有关详细信息，请参阅[在 Azure App Service 中监视应用](web-sites-monitor.md)
 
-另外，有关终结点监视的视频，请参阅[保持 Azure 网站运行以及终结点监视 - Stefan Schackow](/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/)。
+另外，有关终结点监视的视频，请参阅[保持 Azure 网站运行以及终结点监视 - Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow)。
 
 #### <a name="application-performance-monitoring-using-extensions"></a>使用扩展的应用程序性能监视
 还可以利用*站点扩展*监视应用程序的性能。
@@ -113,7 +113,7 @@ Web 应用环境为 Web 服务器和 Web 应用中的日志记录信息提供了
 #### <a name="use-remote-profiling"></a>使用远程分析
 在 Azure App Service 中，可以远程分析 Web 应用、API 应用和 WebJob。 如果进程运行速度比预期缓慢，或者 HTTP 请求的延迟高于平时并且进程的 CPU 使用率偏高，则你可以远程分析进程并获取 CPU 采样调用堆栈，以分析进程活动和代码繁忙的路径。
 
-有关详细信息，请参阅 [Azure 应用服务中的远程分析支持](/blog/remote-profiling-support-in-azure-app-service)。
+有关详细信息，请参阅 [Azure 应用服务中的远程分析支持](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)。
 
 #### <a name="use-the-azure-app-service-support-portal"></a>使用 Azure App Service 支持门户
 在 Web 应用中，可通过查看 HTTP 日志、事件日志、进程转储等信息来排查与 Web 应用相关的问题。 可以使用支持门户 (**http://&lt;your app name>.scm.azurewebsites.net/Support**) 访问所有这些信息。
@@ -130,7 +130,7 @@ Azure App Service 支持门户具有三个不同的选项卡，用于支持常�
 
 如果你想要下载数据，数据默认情况下会存储在 D:\home\data\DaaS 文件夹中。
 
-有关 Azure 应用服务支持门户的详细信息，请参阅[用于支持 Azure 网站的站点扩展的最新更新](/blog/new-updates-to-support-site-extension-for-azure-websites)。
+有关 Azure 应用服务支持门户的详细信息，请参阅[用于支持 Azure 网站的站点扩展的最新更新](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites)。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 Web Apps 随附可用于调试、浏览和上载文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为 Web 应用的 *Kudu 控制台*或 *SCM 仪表板*。
@@ -146,7 +146,7 @@ Kudu 提供的一些信息和功能包括：
 
 Kudu 的另一项有用功能是，如果应用程序引发第一次异常，你可以使用 Kudu 和 SysInternals 工具 Procdump 创建内存转储。 这些内存转储是进程的快照，通常可以帮助你排查较复杂的 Web 应用问题。
 
-有关 Kudu 提供的功能的详细信息，请参阅 [Azure Websites Team Services tools you should know about](/blog/windows-azure-websites-online-tools-you-should-know-about/)（应该了解的 Azure Websites Team Services 工具）。
+有关 Kudu 提供的功能的详细信息，请参阅 [Azure Websites Team Services tools you should know about](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)（应该了解的 Azure Websites Team Services 工具）。
 
 <a name="mitigate" />
 
@@ -163,7 +163,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，你
 #### <a name="use-autoheal"></a>使用 AutoHeal
 AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间），回收应用程序的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动 Web 应用，但 AutoHeal 可以自动为你执行此操作。 你只需在 Web 应用的根 web.config 中添加一些触发器即可。 请注意，即使你的应用程序并非 .Net 应用程序，这些设置的工作方式也仍然相同。
 
-有关详细信息，请参阅[自动修复 Azure 网站](/blog/auto-healing-windows-azure-web-sites/)。
+有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 
 #### <a name="restart-the-web-app"></a>重新启动 Web 应用
 这通常是在发生一次性问题后进行恢复的最简单方式。 [Azure 门户](https://portal.azure.com/)上的 Web 应用边栏选项卡中提供了用于停止或重新启动应用的选项。
@@ -174,6 +174,6 @@ AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

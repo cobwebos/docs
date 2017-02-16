@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/14/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: f57bdd0c1d8efc37b90430f829184eb3c44aede5
-ms.openlocfilehash: ea31150ef186c9bcd8c943e39a7cb51559e94bd2
+ms.sourcegitcommit: 1ce2e980dc71ede4f8cd8ec7c9166efac7b25d2e
+ms.openlocfilehash: 554ef45d7fba5f2ff314a162ae33c6cc27206933
 
 
 ---
@@ -66,7 +66,7 @@ Azure 门户为你提供两种创建和部署云服务的方法：*快速创建*
 
 ## <a name="create-and-deploy"></a>创建和部署
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“**新建 ”>“ 虚拟机**”，然后向下滚动到“**云服务**”并单击它。
+2. 单击“新建”>“计算”，然后向下滚动到“云服务”并单击它。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. 在显示的信息页面底部，单击“**创建**”。
@@ -76,7 +76,7 @@ Azure 门户为你提供两种创建和部署云服务的方法：*快速创建*
 7. 单击“**包**”。 此时会打开“**上载包**”边栏选项卡。 填写必填字段。 如果你的任何角色包含单个实例，请确保选中“**即使一个或多个角色包含单个实例也进行部署**”。
 
     > [!IMPORTANT]
-    > 云服务仅可与[经典存储帐户](../resource-manager-deployment-model.md)关联。 如果出现一条消息，显示针对你的订阅和位置未找到任何存储帐户，请确保已在该位置为云服务创建了经典存储帐户。
+    > 云服务仅可与[经典存储帐户](../azure-resource-manager/resource-manager-deployment-model.md)关联。 如果出现一条消息，显示针对你的订阅和位置未找到任何存储帐户，请确保已在该位置为云服务创建了经典存储帐户。
 
 8. 请确保选中“**开始部署**”。
 9. 单击“**确定**”，此时会关闭“**上载包**”边栏选项卡。
@@ -111,6 +111,6 @@ Azure 门户为你提供两种创建和部署云服务的方法：*快速创建*
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

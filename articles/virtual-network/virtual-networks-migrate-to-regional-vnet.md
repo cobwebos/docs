@@ -1,6 +1,6 @@
 ---
-title: "如何从地缘组迁移到区域虚拟网络 (VNet)"
-description: "了解如何从地缘组迁移到区域 VNet"
+title: "将 Azure 虚拟网络从地缘组迁移到某个区域 | 经典 | Microsoft 文档"
+description: "了解如何将虚拟网络从地缘组迁移到某个区域。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 198a726229f4950906e79272da6913f1a1afd15d
+ms.sourcegitcommit: f74379c3e310a7bbcf659ef610727bff19639022
+ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
 
 
 ---
-# <a name="how-to-migrate-from-affinity-groups-to-a-regional-virtual-network-vnet"></a>如何从地缘组迁移到区域虚拟网络 (VNet)
+# <a name="how-to-migrate-a-virtual-network-from-an-affinity-group-to-a-region"></a>如何将虚拟网络从地缘组迁移到某个区域
 可以使用地缘组来确保在相同地缘组中创建的资源由彼此靠近的服务器实际托管，从而加快这些资源的通信速度。 过去，地缘组是创建虚拟网络 (VNet) 的必要条件。 当时，托管 VNet 的网络管理器服务只能在一组物理服务器或缩放单位内工作。 体系结构改进已将网络管理的范畴扩大到了区域。
 
 由于这些体系结构的改进，不再建议或需要对虚拟网络使用地缘组。 对 VNet 使用地缘组将被区域取代。 与区域关联的虚拟网络称为区域 VNet。
@@ -74,6 +74,6 @@ ms.openlocfilehash: 198a726229f4950906e79272da6913f1a1afd15d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

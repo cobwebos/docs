@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: b6b5b7ab2d48f7f15a437f807db2485f55376bd2
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 101d0b2733a43b99b32efae8a9510ffca2a2e467
 
 
 ---
@@ -143,7 +143,7 @@ ms.openlocfilehash: b6b5b7ab2d48f7f15a437f807db2485f55376bd2
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
 ### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>使用适用于 Mac 和 Linux 的命令行工具上载 VHD
-借助 [Linux 命令行工具](../virtual-machines-command-line-tools.md)，使用以下项：azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
+借助 [Linux 命令行工具](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)，使用以下项：azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## <a name="see-also"></a>另请参阅
 * [为应用商店创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
@@ -152,6 +152,6 @@ ms.openlocfilehash: b6b5b7ab2d48f7f15a437f807db2485f55376bd2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

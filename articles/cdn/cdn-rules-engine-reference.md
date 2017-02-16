@@ -1,6 +1,6 @@
 ---
-title: "Azure 内容交付网络规则引擎参考 | Microsoft Docs"
-description: "本主题介绍规则引擎的匹配条件和功能"
+title: "Azure CDN 规则引擎参考 | Microsoft 文档"
+description: "Azure CDN 规则引擎匹配条件和功能的参考文档。"
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: 61a544f177ab820f1b13ca2bcd4afe623af597af
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: c10145661a8c575381493c9aaa901c3ef92c2e81
 
 
 ---
-# <a name="azure-content-delivery-network-rules-engine"></a>Azure 内容交付网络规则引擎
+# <a name="azure-cdn-rules-engine"></a>Azure CDN 规则引擎
 本主题列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件和功能的详细说明。
 
 设计 HTTP 规则引擎的目的，是让其充当一个最终授权机构，控制 CDN 处理特定类型请求的方式。
@@ -83,6 +83,6 @@ Character | 说明
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b1f72a6d6f5084e804078a4deb984ebace0ac58
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 0e7f5b3ed4e9a23b2d2fe1acdf35450f36ef1ad4
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 6b1f72a6d6f5084e804078a4deb984ebace0ac58
  “[竞赛](https://gallery.cortanaintelligence.com/competitions)”****
 页显示最热门竞赛的列表。
 单击“查看所有”查看所有竞赛。
-在此页中，可以浏览库中的所有竞赛，或者可以通过选择页面左侧的“筛选器条件”，并在顶部输入搜索词进行搜索。
+可在本页浏览库中的所有竞赛。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 
  单击任意竞赛打开该竞赛的详细信息页，并阅读详细信息。 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送指向竞赛的链接，来邀请其他用户查看页面。
 
@@ -47,7 +47,7 @@ ms.openlocfilehash: 6b1f72a6d6f5084e804078a4deb984ebace0ac58
 
 ![竞赛已完成](media/machine-learning-gallery-competitions/open-competition.png)
 
-如果竞赛不再打开，它在详细信息页上的状态将是“已完成”，并且**进入竞赛**链接将替换为字词“已完成”。
+如果竞赛已关闭，它在详细信息页上的状态将是“已完成”，并且**参加竞赛**链接将替换为字词“已完成”。
 
 ![竞赛已完成](media/machine-learning-gallery-competitions/completed-competition.png)
 
@@ -58,6 +58,6 @@ ms.openlocfilehash: 6b1f72a6d6f5084e804078a4deb984ebace0ac58
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

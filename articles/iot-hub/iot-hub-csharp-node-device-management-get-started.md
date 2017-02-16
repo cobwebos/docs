@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT 中心设备管理入门 | Microsoft Docs"
-description: "本教程演示如何开始使用 Azure IoT 中心的设备管理"
+title: "Azure IoT 中心设备管理入门 (.NET/Node) | Microsoft Docs"
+description: "如何使用 Azure IoT 中心设备管理启动远程设备重启。 使用适用于 Node.js 的 Azure IoT 设备 SDK 实现包含直接方法的模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现调用直接方法的服务应用。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: cf9741e7bc30ccb5e6b8f79dad7c8ef725cd683a
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: e4072903a0040d34ad4d41e6c28793d3594fa2f2
 
 
 ---
-# <a name="tutorial-get-started-with-device-management"></a>教程：设备管理入门
+# <a name="get-started-with-device-management-netnode"></a>设备管理入门 (.NET/Node)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 ## <a name="introduction"></a>介绍
-IoT 后端应用可使用 Azure IoT 中心中的基元（即设备克隆和直接方法）远程启动和监视设备上的设备管理操作。  本文提供了指导和代码，让用户了解 IoT 后端应用和设备如何使用 IoT 中心协同工作，启动和监视远程设备重新启动。
+后端应用可以使用 Azure IoT 中心的基元（即设备孪生和直接方法）远程启动和监视设备上的设备管理操作。  此文章提供有关后端应用和设备如何使用 IoT 中心协同工作来启动和监视远程设备重新启动的指导和代码。
 
 若要从基于云的后端应用启动和监视设备上的设备管理操作，请使用 IoT 中心基元（如[设备克隆][lnk-devtwin]和[直接方法][lnk-c2dmethod]）。 本教程说明后端应用和设备如何协同工作，实现从 IoT 中心启动和监视远程设备重新启动。
 
-使用直接方法可从云中的后端应用启动设备管理操作（如重新启动、恢复出厂设置和固件更新）。 设备负责以下操作：
+使用直接方法可从云中的后端应用启动设备管理操作，例如重新启动、恢复出厂设置以及固件更新。 设备负责以下操作：
 
 * 处理从 IoT 中心发送的方法请求。
 * 在设备上启动相应的设备特定操作。
@@ -40,7 +40,7 @@ IoT 后端应用可使用 Azure IoT 中心中的基元（即设备克隆和直�
 
 * 使用 Azure 门户创建 IoT 中心，以及如何在 IoT 中心创建设备标识。
 * 创建一个具有直接方法的模拟设备应用，以便启用可由云调用的重新启动。
-* 创建一个控制台应用程序，以便通过 IoT 中心调用模拟设备应用中的重新启动直接方法。
+* 创建一个 .NET 控制台应用，其通过 IoT 中心在模拟设备应用上调用重新启动直接方法。
 
 本教程结束时，用户会有一个 Node.js 控制台设备应用，以及一个 .NET (C#) 控制台后端应用：
 
@@ -65,15 +65,15 @@ IoT 后端应用可使用 Azure IoT 中心中的基元（即设备克隆和直�
 
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
-2. 在“解决方案资源管理器”中，右键单击“TriggerReboot”项目，然后单击“管理 Nuget 包”。
-3. 在“Nuget 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此过程将下载、安装 [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk]（Microsoft Azure IoT 服务 SDK）NuGet 包及其依赖项并添加对它的引用。
+2. 在“解决方案资源管理器”中，右键单击“TriggerReboot”项目，然后单击“管理 NuGet 包”。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
-    ![“Nuget 包管理器”窗口][img-servicenuget]
+    ![“NuGet 包管理器”窗口][img-servicenuget]
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
         
-5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分和目标设备中为 IoT 中心创建的连接字符串。
+5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分和目标设备中为中心创建的 IoT 中心连接字符串。
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -138,7 +138,7 @@ IoT 后端应用可使用 Azure IoT 中心中的基元（即设备克隆和直�
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。  将连接字符串替换为设备连接字符串。  
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  将连接字符串替换为设备连接字符串。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
@@ -237,7 +237,7 @@ IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设�
 [img-servicenuget]: media/iot-hub-csharp-node-device-management-get-started/servicesdknuget.png
 [img-createapp]: media/iot-hub-csharp-node-device-management-get-started/createnetapp.png
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-fwupdate]: iot-hub-node-node-firmware-update.md
@@ -253,6 +253,6 @@ IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设�
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "H264 单比特率 4x3 SD | Microsoft Docs"
-description: "本主题概述“H264 单比特率 4x3 SD”任务预设。"
+description: "本主题概述 **H264 单比特率 4x3 SD** 任务预设。"
 author: Juliako
 manager: erikre
 editor: 
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
-ms.openlocfilehash: b28b80e8ddff9e5ce3ebd5b21dc2045dce42fad0
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: b3a3dc08f410b54626ab44a18e0556f69099b165
 
 
 ---
 
 # <a name="h264-single-bitrate-4x3-sd"></a>H264 单比特率 4x3 SD
-`Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
+`Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
  本主题介绍 XML 和 JSON 格式的 `H264 Single Bitrate 4x3 SD` 预设。  
   
- 此预设可生成比特率为 18000 kbps 的单个 MP4 文件和立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等详细信息，请检查下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
+ 此预设可生成比特率为 1800 kbps 的单个 MP4 文件和立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   
  XML  
   
@@ -118,6 +118,7 @@ ms.openlocfilehash: b28b80e8ddff9e5ce3ebd5b21dc2045dce42fad0
 ```
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Jan17_HO2-->
 
 

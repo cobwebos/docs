@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 Azure 域名系统管理 DNS 记录。 文档介绍了如何设置及管理域名的 DNS 区域和记录。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
+ms.sourcegitcommit: 1e30c21b967e9862ae24907ac5db56a341c11cf5
+ms.openlocfilehash: a0110b01879360e4558dffed6343da1ef72cfe86
 
 ---
 # <a name="dns-documentation"></a>DNS 文档
 
-Azure DNS（域名系统）是一个 DNS 域服务，它使用 Microsoft Azure 基础结构提供名称解析。  通过在 Azure 中托管你的域，你可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理你的 DNS 记录。
+了解如何使用 Azure 域名系统（一个托管服务）来管理 DNS 记录。 教程、API 参考和其他文档介绍了如何设置及管理域名的 DNS 区域和记录。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -141,6 +142,6 @@ Azure DNS（域名系统）是一个 DNS 域服务，它使用 Microsoft Azure �
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: b52cf6f7c472d169608bc3e40096e1891f9a687b
+ms.sourcegitcommit: 59288709e706ba7f0162f5f857019ce2972e2743
+ms.openlocfilehash: 55193e8570f480b9c6b2ef9a0785ddb538749cb5
 
 
 ---
@@ -102,10 +102,10 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
      **使用情况**：
 
-     ![Azure 门户中的 hdinsight 群集使用情况](./media/hdinsight-administer-use-management-portal/hdinsight-portal-cluster-usage.png)
+     ![Azure 门户 HDInsight 群集使用情况](./media/hdinsight-administer-use-management-portal/hdinsight-portal-cluster-usage.png)
 5. 单击“设置”。
 
-    ![Azure 门户中的 hdinsight 群集使用情况](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
+    ![Azure 门户 HDInsight 群集使用情况](./media/hdinsight-administer-use-management-portal/hdinsight.portal.cluster.settings.png)
 
    * **属性**：查看群集属性。
    * **群集 AAD 标识**：
@@ -188,10 +188,10 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
 
-    ## <a name="reconfigure-the-topology-mytopology-to-use-5-worker-processes"></a>重新配置拓扑“mytopology”以使用 5 个辅助角色进程，
-    ## <a name="the-spout-blue-spout-to-use-3-executors-and"></a>重新配置 Spout“blue-spout”以使用 3 个执行器，以及
-    ## <a name="the-bolt-yellow-bolt-to-use-10-executors"></a>重新配置 Blot“yellow-bolt”以使用 10 个执行器
-      $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+        ## Reconfigure the topology "mytopology" to use 5 worker processes,
+        ## the spout "blue-spout" to use 3 executors, and
+        ## the bolt "yellow-bolt" to use 10 executors
+        $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
 **缩放群集**
 
@@ -327,7 +327,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 3. 从顶部菜单中单击“设置”，然后单击“远程桌面”。
 4. 输入**到期日期**、**远程桌面用户名**和**远程桌面密码**，然后单击“启用”。
 
-    ![hdinsight 启用禁用配置远程桌面](./media/hdinsight-administer-use-management-portal/hdinsight.portal.remote.desktop.png)
+    ![HDInsight 启用/禁用配置远程桌面](./media/hdinsight-administer-use-management-portal/hdinsight.portal.remote.desktop.png)
 
     “到期日期”的默认值是“一周”。
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 机器学习的生存分析 | Microsoft Docs"
-description: "生存分析事件匹配项概率"
+title: "（已弃用）使用 Azure 机器学习的生存分析 | Microsoft Docs"
+description: "（已弃用）生存分析事件发生概率"
 services: machine-learning
 documentationcenter: 
 author: zhangya
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: zhangya
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8a9ec607cf4e8ae6ee5c69f4ed4db5f1a0854400
+ms.sourcegitcommit: 2d9feed054fb4641e660c685d396260246ed1d54
+ms.openlocfilehash: 32ae345bb1d4bc364440543ea5c273e9b358ae40
 
 
 ---
-# <a name="survival-analysis"></a>生存分析
+# <a name="deprecated-survival-analysis"></a>（已弃用）生存分析
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 在许多情况下，主要评估结果是所感兴趣事件的时间。 换言之，询问的问题是“何时将发生此事件？” 。 例如，考虑数据描述所感兴趣事件（疾病复发、取得博士学位、刹车片失灵）发生前已用时间（天、年、里程数等）的情形。 数据中的每个实例代表特定对象（病患、学生、汽车等）。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -32,7 +39,7 @@ ms.openlocfilehash: 8a9ec607cf4e8ae6ee5c69f4ed4db5f1a0854400
 > 
 
 ## <a name="consumption-of-web-service"></a>Web 服务的使用
-Web 服务的输入数据架构如下表所示。 需要以下六条信息作为输入：训练数据、测试数据、感兴趣的时间、“时间”维度的索引、“事件”维度的索引和变量类型（连续或因素）。 训练数据用字符串表示，其中以逗号分隔行，以分号分隔列。 数据的特征数是灵活的。 输入字符串中的所有元素必须都是数字。 在训练数据中，“时间”维度表示自研究的起点（病患接受药物治疗方案、学生开始攻读博士学位、汽车开始发动等），到发生感兴趣的事件（病患再度用药、学生取得博士学位、汽车刹车片失灵等）所经过的时间单位数（天、年、里程数等）。 “事件”维度指示感兴趣的事件是否发生在研究结束时。 “事件 = 1”的值表示感兴趣的事件发生在“时间”维度所指示的时间；而“事件 = 0”表示到“时间”维度所指示的时间为止都未发生感兴趣的事件。
+Web 服务的输入数据架构如下表所示。 需要以下六条信息作为输入：训练数据、测试数据、感兴趣的时间、“时间”维度的索引、“事件”维度的索引和变量类型（连续或因素）。 训练数据用字符串表示，其中以逗号分隔行，以分号分隔列。 数据的特征数是灵活的。 输入字符串中的所有元素必须都是数字。 在训练数据中，“时间”维度表示自研究的起点（病患接受药物治疗方案、学生开始攻读博士学位、汽车开始发动等），到发生感兴趣的事件（病患再度用药、学生取得博士学位、汽车刹车片失灵等）所经过的时间单位数（天、年、里程数等）。 “事件”维度指示感兴趣的事件是否发生在研究结束时。 “事件 =&1;”的值表示感兴趣的事件发生在“时间”维度所指示的时间；而“事件 =&0;”表示到“时间”维度所指示的时间为止都未发生感兴趣的事件。
 
 * trainingdata - 字符串。 行由逗号分隔，列由分号分隔。 每个行包含“时间”维度、“事件”维度和预测器变量。
 * testingdata - 包含特定对象预测器变量的一行数据。
@@ -91,7 +98,7 @@ Web 服务的输入数据架构如下表所示。 需要以下六条信息作为
 > 
 > 
 
-在 Azure 机器学习内，已创建新的空白实验，并将两个[执行 R 脚本][execute-r-script]模块提取到了工作区。 数据架构使用简单的[执行 R 脚本][execute-r-script]进行创建，后者定义了 Web 服务的输入数据架构。 然后，此模块会链接到第二个[执行 R 脚本][execute-r-script]模块，这将执行主要工作。 此模块执行数据预处理、模型生成和预测。 在数据预处理步骤中，长字符串所表示的输入数据会转换为数据帧。 在模型生成步骤中，将先安装外部 R 包“survival_2.37-7.zip”以进行生存分析。 然后，“coxph”函数在一系列数据处理任务之后执行。 可以从 R 文档读取生存分析的“coxph”函数详细信息。 在预测步骤中，会使用“surfit”函数将测试实例提供给训练模型，并且此测试实例的生存曲线会生成为“curve”变量。 最后，获取所感兴趣时间的概率。 
+在 Azure 机器学习内，创建了新的空白实验，并将两个[执行 R 脚本][execute-r-script]模块提取到工作区。 数据架构使用简单的[执行 R 脚本][execute-r-script]进行创建，这定义了 Web 服务的输入数据架构。 然后，此模块会链接到第二个[执行 R 脚本][execute-r-script]模块，这将执行主要工作。 此模块执行数据预处理、模型生成和预测。 在数据预处理步骤中，长字符串所表示的输入数据会转换为数据帧。 在模型生成步骤中，将先安装外部 R 包“survival_2.37-7.zip”以进行生存分析。 然后，“coxph”函数在一系列数据处理任务之后执行。 可以从 R 文档读取生存分析的“coxph”函数详细信息。 在预测步骤中，会使用“surfit”函数将测试实例提供给训练模型，并且此测试实例的生存曲线会生成为“curve”变量。 最后，获取所感兴趣时间的概率。 
 
 ### <a name="experiment-flow"></a>实验流：
 ![实验流][1]
@@ -209,6 +216,6 @@ Web 服务的输入数据架构如下表所示。 需要以下六条信息作为
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

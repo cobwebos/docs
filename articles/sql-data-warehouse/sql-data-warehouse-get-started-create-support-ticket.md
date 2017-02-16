@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: bd85b9eae0e1cb281116748edcad6643b1ec537f
-ms.openlocfilehash: 6ad20a246fce996e6a11ce6fa4715c0d734c4323
+ms.sourcegitcommit: 889776269aa3d722115ea0632b7c3db2775924eb
+ms.openlocfilehash: cc3bc8a0463842ba11b9cdcc996319e2d811ce8a
 
 
 ---
@@ -60,7 +60,7 @@ ms.openlocfilehash: 6ad20a246fce996e6a11ce6fa4715c0d734c4323
      如果你购买了顶级支持计划，还可以在 [Microsoft Premier 在线门户][Microsoft Premier online portal]中报告 SQL 数据仓库的相关问题。  若要深入了解各种支持计划（包括范围、响应时间、定价等），请参阅 [Azure 支持计划][Azure support plan]。有关 Azure 支持的常见问题，请参阅 [Azure 支持常见问题][Azure support FAQs]。  
      
      ![支持计划](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. 选择“问题类型”和“类别”。
+8. 选择“问题类型”和“类别”。 在本示例中，我们已选择“工具”作为问题类型，选择“客户端工具”作为类别。 
    
     ![问题类型和类别](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
 9. 描述问题并选择业务影响级别。
@@ -101,6 +101,6 @@ ms.openlocfilehash: 6ad20a246fce996e6a11ce6fa4715c0d734c4323
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

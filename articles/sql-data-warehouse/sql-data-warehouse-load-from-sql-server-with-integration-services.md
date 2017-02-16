@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a4230f1dc65e0b5bb5c4904a1c2780f0c3c907f1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a8c557ea07cbccb913bc47c510f6759dd832c861
 
 
 ---
@@ -47,15 +47,15 @@ SQL Server Integration Services (SSIS) 是一套灵活的工具，可提供连�
 
 1. 使用 ADO NET 目标连接到 SQL 数据仓库。 本教程使用 ADO NET 目标，因为它的配置选项最少。
 2. 使用 OLE DB 目标连接到 SQL 数据仓库。 此选项可能会提供比 ADO NET 目标稍好的性能。
-3. 使用 Azure Blob 上传任务将数据暂存在 Azure Blob 存储中。 然后使用 SSIS 执行 SQL 任务以启动将数据加载到 SQL 数据仓库的 Polybase 脚本。 此选项可提供此处列出的三个选项的最佳性能。 要获取 Azure Blob 上传任务，请下载[适用于 Azure 的 Microsoft SQL Server 2016 Integration Services 功能包][适用于 Azure 的 Microsoft SQL Server 2016 Integration Services 功能包]。 若要了解有关 Polybase 的详细信息，请参阅 [PolyBase 指南][PolyBase 指南]。
+3. 使用 Azure Blob 上传任务将数据暂存在 Azure Blob 存储中。 然后使用 SSIS 执行 SQL 任务以启动将数据加载到 SQL 数据仓库的 Polybase 脚本。 此选项可提供此处列出的三个选项的最佳性能。 若要获取 Azure Blob 上传任务，请下载[用于 Azure 的 Microsoft SQL Server 2016 Integration Services 功能包][Microsoft SQL Server 2016 Integration Services Feature Pack for Azure]。 若要了解有关 Polybase 的详细信息，请参阅 [PolyBase 指南][PolyBase Guide]。
 
 ## <a name="before-you-start"></a>开始之前
 若要逐步完成本教程，你需要：
 
-1. **SQL Server 集成服务 (SSIS)**。 SSIS 是 SQL Server 的一个组件，且需要使用 SQL Server 的评估版或许可的版本。 若要获取 SQL Server 2016 预览版的评估版本，请参阅 [SQL Server 评估][SQL Server 评估]。
-2. **Visual Studio**。 若要获取免费的 Visual Studio 2015 Community 版本，请参阅 [Visual Studio Community][Visual Studio Community]。
-3. **适用于 Visual Studio 的 SQL Server Data Tools (SSDT)**。 若要获取 SQL Server Data Tools for Visual Studio 2015，请参阅[下载 SQL Server Data Tools (SSDT)][下载 SQL Server Data Tools (SSDT)]。
-4. **示例数据**。 本教程使用 AdventureWorks 示例数据库存储在 SQL Server 中的示例数据作为要加载到 SQL 数据仓库的源数据。 若要获取 AdventureWorks 示例数据库，请参阅 [AdventureWorks 2014 示例数据库][AdventureWorks 2014 示例数据库]。
+1. **SQL Server 集成服务 (SSIS)**。 SSIS 是 SQL Server 的一个组件，且需要使用 SQL Server 的评估版或许可的版本。 若要获取 SQL Server 2016 预览版的评估版本，请参阅 [SQL Server 评估][SQL Server Evaluations]。
+2. **Visual Studio**。 若要获取免费的 Visual Studio 2015 Community Edition，请参阅 [Visual Studio Community][Visual Studio Community]。
+3. **适用于 Visual Studio 的 SQL Server Data Tools (SSDT)**。 若要获取 SQL Server Data Tools for Visual Studio 2015，请参阅[下载 SQL Server Data Tools (SSDT)][Download SQL Server Data Tools (SSDT)]。
+4. **示例数据**。 本教程使用 AdventureWorks 示例数据库存储在 SQL Server 中的示例数据作为要加载到 SQL 数据仓库的源数据。 若要获取 AdventureWorks 示例数据库，请参阅 [AdventureWorks 2014 示例数据库][AdventureWorks 2014 Sample Databases]。
 5. **SQL 数据仓库数据库和权限**。 本教程连接到 SQL 数据仓库实例，并将数据加载到其中。 必须具有权限才能创建表并加载数据。
 6. **防火墙规则**。 将数据上传到 SQL 数据仓库之前，必须使用本地计算机的 IP 地址创建用于 SQL 数据仓库的防火墙规则。
 
@@ -144,7 +144,7 @@ Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然
    
    1. 将目标表的名称更改为 **SalesOrderDetail**。
    2. 删除 **rowguid** 列。 SQL 数据仓库不支持 **uniqueidentifier** 数据类型。
-   3. 将 **LineTotal** 列的数据类型更改为“资金”。 SQL 数据仓库不支持 **decimal** 数据类型。 有关支持的数据类型，请参阅 [CREATE TABLE（Azure SQL 数据仓库，并行数据仓库）][CREATE TABLE（Azure SQL 数据仓库，并行数据仓库）]。
+   3. 将 **LineTotal** 列的数据类型更改为“资金”。 SQL 数据仓库不支持 **decimal** 数据类型。 有关受支持的数据类型，请参阅 [CREATE TABLE（Azure SQL 数据仓库，并行数据仓库）][CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)]。
       
        ![][12b]
    4. 单击“确定”以创建表并返回到“ADO.NET 目标编辑器”。
@@ -167,9 +167,9 @@ Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然
 祝贺你！ 你已成功使用 SQL Server Integration Services 将数据加载到 Azure SQL 数据仓库。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关 SSIS 数据流的详细信息。 从此处开始：[数据流][数据流]。
-* 了解如何直接在设计环境中对包进行调试和故障排除。 从此处开始︰[用于包开发的故障排除工具][用于包开发的故障排除工具]。
-* 了解如何将 SSIS 项目和包部署到 Integration Services 服务器或另一个存储位置。 从此处开始︰[项目和包的部署][项目和包的部署]。
+* 了解有关 SSIS 数据流的详细信息。 从此处开始：[数据流][Data Flow]。
+* 了解如何直接在设计环境中对包进行调试和故障排除。 从此处开始：[用于包开发的故障排除工具][Troubleshooting Tools for Package Development]。
+* 了解如何将 SSIS 项目和包部署到 Integration Services 服务器或另一个存储位置。 从此处开始：[项目和包的部署][Deployment of Projects and Packages]。
 
 <!-- Image references -->
 [01]:  ./media/sql-data-warehouse-load-from-sql-server-with-integration-services/ssis-designer-01.png
@@ -192,21 +192,21 @@ Visual Studio 将打开并创建新的 Integration Services (SSIS) 项目。 然
 <!-- Article references -->
 
 <!-- MSDN references -->
-[PolyBase 指南]: https://msdn.microsoft.com/library/mt143171.aspx
-[下载 SQL Server Data Tools (SSDT)]: https://msdn.microsoft.com/library/mt204009.aspx
-[CREATE TABLE（Azure SQL 数据仓库，并行数据仓库）]: https://msdn.microsoft.com/library/mt203953.aspx
-[数据流]: https://msdn.microsoft.com/library/ms140080.aspx
-[用于包开发的故障排除工具]: https://msdn.microsoft.com/library/ms137625.aspx
-[项目和包的部署]: https://msdn.microsoft.com/library/hh213290.aspx
+[PolyBase Guide]: https://msdn.microsoft.com/library/mt143171.aspx
+[Download SQL Server Data Tools (SSDT)]: https://msdn.microsoft.com/library/mt204009.aspx
+[CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)]: https://msdn.microsoft.com/library/mt203953.aspx
+[Data Flow]: https://msdn.microsoft.com/library/ms140080.aspx
+[Troubleshooting Tools for Package Development]: https://msdn.microsoft.com/library/ms137625.aspx
+[Deployment of Projects and Packages]: https://msdn.microsoft.com/library/hh213290.aspx
 
 <!--Other Web references-->
-[适用于 Azure 的 Microsoft SQL Server 2016 Integration Services 功能包]: http://go.microsoft.com/fwlink/?LinkID=626967
-[SQL Server 评估]: https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2016
+[Microsoft SQL Server 2016 Integration Services Feature Pack for Azure]: http://go.microsoft.com/fwlink/?LinkID=626967
+[SQL Server Evaluations]: https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2016
 [Visual Studio Community]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
-[AdventureWorks 2014 示例数据库]: https://msftdbprodsamples.codeplex.com/releases/view/125550
+[AdventureWorks 2014 Sample Databases]: https://msftdbprodsamples.codeplex.com/releases/view/125550
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

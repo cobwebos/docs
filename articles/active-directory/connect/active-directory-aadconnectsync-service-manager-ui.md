@@ -12,18 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9665a1bae782f4f77e28449cbdc7cbebdb780b3f
+ms.sourcegitcommit: 898b3d317aac7c1a3e5593e8c5ab5aaedee179e1
+ms.openlocfilehash: 06e738c2d81665baa4e21a574cdbd2997a17ff73
 
 
 ---
 # <a name="azure-ad-connect-sync-synchronization-service-manager"></a>Azure AD Connect 同步：Synchronization Service Manager
-| [操作](active-directory-aadconnectsync-service-manager-ui-operations.md) | [连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) |
-| --- | --- | --- | --- |
-|  | | | |
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
@@ -41,7 +38,6 @@ ms.openlocfilehash: 9665a1bae782f4f77e28449cbdc7cbebdb780b3f
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

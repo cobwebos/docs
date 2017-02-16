@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 10/06/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 57faf185f88a56cf1b5b871a4a2d7ab6c8ca3dd6
+ms.sourcegitcommit: 37ab64cb40def50342eb31c240aa301e9d751055
+ms.openlocfilehash: 6fa33715484a4bb371148410b43c5ac606744160
 
 
 ---
-# <a name="deploy-azure-resources-using-c"></a>使用 C 部署 Azure 资源
+# <a name="deploy-azure-resources-using-c"></a>使用 C 部署 Azure 资源# #
 本文演示了如何使用 C# 创建 Azure 资源。
 
 首先需确保已完成以下任务：
 
 * 安装 [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 * 验证是否安装了 [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)
-* 获取[身份验证令牌](../resource-group-authenticate-service-principal.md)
+* 获取[身份验证令牌](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 完成这些步骤大约需要 30 分钟。
 
@@ -456,26 +456,28 @@ ms.openlocfilehash: 57faf185f88a56cf1b5b871a4a2d7ab6c8ca3dd6
 
 1. 若要删除资源组，请将以下方法添加到 Program 类：
    
-     public static async void DeleteResourceGroupAsync(
-   
-       TokenCredentials credential,
-       string groupName,
-       string subscriptionId)
-     {
-   
-       Console.WriteLine("Deleting resource group...");
-       var resourceManagementClient = new ResourceManagementClient(credential)
-         { SubscriptionId = subscriptionId };
-       await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
-     }
+   ```
+   public static async void DeleteResourceGroupAsync(
+     TokenCredentials credential,
+     string groupName,
+     string subscriptionId)
+   {
+     Console.WriteLine("Deleting resource group...");
+     var resourceManagementClient = new ResourceManagementClient(credential)
+       { SubscriptionId = subscriptionId };
+     await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
+   }
+   ```
+
 2. 若要调用前面添加的方法，请将以下代码添加到 Main 方法：
    
-     DeleteResourceGroupAsync(
-   
-       credential,
-       groupName,
-       subscriptionId);
-     Console.ReadLine();
+   ```   
+   DeleteResourceGroupAsync(
+     credential,
+     groupName,
+     subscriptionId);
+   Console.ReadLine();
+   ```
 
 ## <a name="step-5-run-the-console-application"></a>步骤 5：运行控制台应用程序
 1. 若要运行控制台应用程序，请在 Visual Studio 中单击“启动”，然后使用用于订阅的相同用户名和密码登录到 Azure AD。
@@ -493,6 +495,6 @@ ms.openlocfilehash: 57faf185f88a56cf1b5b871a4a2d7ab6c8ca3dd6
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

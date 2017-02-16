@@ -1,5 +1,5 @@
 ---
-title: "Windows 虚拟机准则 | Microsoft Docs"
+title: "Azure 虚拟机准则 | Microsoft Docs"
 description: "了解将 Windows 虚拟机部署到 Azure 中的关键设计和实施准则"
 documentationcenter: 
 services: virtual-machines-windows
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 923f2128eef294a4d5f14638f4be622618ed812d
+ms.sourcegitcommit: 310dc34634f7104ddfc7dfab13f09ab945b53cf4
+ms.openlocfilehash: 513edca959a3a9a8d6a8bf7d7620da9ad8a7d879
 
 
 ---
-# <a name="virtual-machines-guidelines"></a>虚拟机准则
+# <a name="azure-virtual-machines-guidelines-for-windows"></a>Windows 的 Azure 虚拟机准则
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 本文重点介绍在 Azure 环境中创建和管理虚拟机 (VM) 所需的规划步骤。
@@ -41,7 +41,7 @@ ms.openlocfilehash: 923f2128eef294a4d5f14638f4be622618ed812d
 * 使用 Azure PowerShell、Web 门户或 Resource Manager 模板创建虚拟机。
 
 ## <a name="virtual-machines"></a>虚拟机
-Azure 环境中的主要组件之一很可能是 VM。 可以在其中运行应用程序、数据库、身份验证服务等。
+Azure 环境中的主要资源之一很可能是 VM。 可以在此资源中运行应用程序、数据库、身份验证服务等。
 
 务必了解[不同 VM 大小](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)以便从性能和成本的角度确定环境的适当大小。 如果 VM 的 CPU 核心数或内存不足，则无论应用程序的设计和开发如何完善，其性能都将受到影响。 在确定要用于基础结构中每个组件的 VM 大小之前，请首先检查每个 VM 系列的建议工作负荷。 完成部署后，可以[更改 VM 大小](https://azure.microsoft.com/blog/resize-virtual-machines/)。
 
@@ -59,6 +59,6 @@ VM 等组件在逻辑上组合在一起，以便使用 [Azure 资源组](../azur
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

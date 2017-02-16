@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect：端口 | Microsoft Docs"
+title: "混合标识所需的端口和协议 - Azure | Microsoft 文档"
 description: "此技术参考页面描述了需要为 Azure AD Connect 打开的端口"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 954c3d138b0fde54c1866135a20f0fc5ff05b85d
+ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
+ms.openlocfilehash: c727e19c1fd8decadfd27c97d25834a9c17c1f73
 
 
 ---
@@ -77,9 +77,9 @@ ms.openlocfilehash: 954c3d138b0fde54c1866135a20f0fc5ff05b85d
 |协议|端口号|说明
 | --- | --- | ---
 |HTTP|80|启用出站 HTTP 流量以进行安全验证，例如 SSL。
-|HTTPS|443| 针对 Azure AD 启用用户身份验证
-|HTTPS|10100–10120| 启用连接器向 Azure AD 返回响应。 
-|Azure 服务总线|9352、5671|  为传入请求启用连接器到 Azure 服务之间的通信。
+|HTTPS|443|    针对 Azure AD 启用用户身份验证
+|HTTPS|10100–10120|    启用连接器向 Azure AD 返回响应。 
+|Azure 服务总线|9352、5671|    为传入请求启用连接器到 Azure 服务之间的通信。
 |HTTPS|9350|    可选，提高传入请求的性能
 |HTTPS|8080/443|    启用连接器启动序列和连接器自动更新
 |HTTPS|9090|    启用连接器注册（只有连接器注册过程才需要）
@@ -102,6 +102,6 @@ ms.openlocfilehash: 954c3d138b0fde54c1866135a20f0fc5ff05b85d
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

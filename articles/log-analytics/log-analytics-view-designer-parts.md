@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 视图设计器 | Microsoft Docs"
+title: "用于 OMS Log Analytics 中视图设计器的部分参考 | Microsoft Docs"
 description: "Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义视图，以包含 OMS 存储库中数据的多种可视化效果。 本文针对可在自定义视图中使用的每个可视化部分提供了设置参考。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 58d9f258bbfa582cf4059eeed939a87fb03cd232
+ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
+ms.openlocfilehash: 07edc26f62fada8b5e32693a172cb23b48d36e1f
 
 
 ---
@@ -58,7 +58,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 | 搜索查询 |要运行的查询。 |
 | 友好名称 |要向用户显示的查询的描述性名称。 |
 
-## <a name="number-list-part"></a>编号和列表部分
+## <a name="number--list-part"></a>编号和列表部分
 标头具有单个数字，用于表示来自日志搜索查询中的记录数。  列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
 ![查询列表视图](media/log-analytics-view-designer/view-number-list.png)
@@ -86,7 +86,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此项可启用阈值。  有关详细信息，请参阅[通用设置](#thresholds)。 |
 
-## <a name="two-numbers-list-part"></a>两个数字和列表部分
+## <a name="two-numbers--list-part"></a>两个数字和列表部分
 标头具有两个数字，用于表示来自单独日志搜索查询中的记录数。  列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
 ![两个数字和列表视图](media/log-analytics-view-designer/view-two-numbers-list.png)
@@ -115,7 +115,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此项可启用阈值。  有关详细信息，请参阅[通用设置](#thresholds)。 |
 
-## <a name="donut-list-part"></a>圆环图和列表部分
+## <a name="donut--list-part"></a>圆环图和列表部分
 标头显示从日志查询中的值列汇总的单个数字。  此圆环图以图形方式显示了前三个记录的结果。
 
 ![圆环图和列表视图](media/log-analytics-view-designer/view-donut-list.png)
@@ -155,7 +155,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此项可启用阈值。  有关详细信息，请参阅[通用设置](#thresholds)。 |
 
-## <a name="two-timelines-list-part"></a>两个时间线和列表部分
+## <a name="two-timelines--list-part"></a>两个时间线和列表部分
 标头将一段时间内两个日志查询的结果显示为带有标注的柱形图，以显示从日志查询中的值列汇总的单个数字。  列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
 ![两个时间线和列表视图](media/log-analytics-view-designer/view-two-timelines-list.png)
@@ -206,7 +206,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 | 标题 |为每个项的标题显示的文本。 |
 | 内容 |为每个项显示的文本。 |
 
-## <a name="line-chart-callout-list-part"></a>折线图、标注和列表部分
+## <a name="line-chart-callout--list-part"></a>折线图、标注和列表部分
 标头显示一段时间内来自一个日志查询中的具有多个系列的折线图和具有汇总值的标注。  列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
 ![折线图、标注和列表视图](media/log-analytics-view-designer/view-line-chart-callout-list.png)
@@ -245,7 +245,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此项可启用阈值。  有关详细信息，请参阅[通用设置](#thresholds)。 |
 
-## <a name="line-chart-list-part"></a>折线图和列表部分
+## <a name="line-chart--list-part"></a>折线图和列表部分
 标头显示一段时间内来自一个日志查询中的具有多个系列的折线图。  列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
 ![折线图和列表视图](media/log-analytics-view-designer/view-line-chart-callout-list.png)
@@ -304,7 +304,7 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 ## <a name="common-settings"></a>通用设置
 以下部分介绍了对几个可视化部件通用的设置。
 
-### <a name="a-namename-value-separatorname-value-separatora"></a><a name="name-value-separator">名称和值分隔符</a>
+### <a name="a-namename-value-separatorname--value-separatora"></a><a name="name-value-separator">名称和值分隔符</a>
 如果要将列表查询中的文本属性分析为多个值，则使用单字符分隔符。  如果指定了分隔符，你可以在“名称”框中提供以该分隔符分隔的每个字段的名称。
 
 例如，考虑一个名为 Location 的属性，该属性包括 Redmond-Building 41 和 Bellevue-Building12 等值。  可以指定“–”作为“名称和值分隔符”，“*City-Building*”作为“名称”。  这会将每个值分析为两个称作“*City*”和“*Building*”的属性。 
@@ -346,6 +346,6 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

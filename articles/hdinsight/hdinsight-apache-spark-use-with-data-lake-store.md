@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 85752f9286fc7fe8d9cc3acf6be66cca623934f5
-ms.openlocfilehash: b65ad7ed4e975bafb9a578d89fa5eb32c3066ee8
+ms.sourcegitcommit: a5e2bc4e29ac91ec17a7778e33509ec54f167ca2
+ms.openlocfilehash: 3e8c6d358602b6061447feb216d1e0e07fd950ee
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: b65ad7ed4e975bafb9a578d89fa5eb32c3066ee8
 
 ## <a name="prepare-the-data"></a>准备数据
 
-如果已创建将 Data Lake Store 作为默认存储的 HDInsight 群集，则需执行此步骤，因为群集创建过程会在创建群集时指定的 Data Lake Store 帐户中添加一些示例数据。
+如果已创建将 Data Lake Store 作为默认存储的 HDInsight 群集，则无需执行此步骤，因为群集创建过程会在创建群集时指定的 Data Lake Store 帐户中添加一些示例数据。
 
 如果创建了将 Data Lake Store 作为附加存储并将 Azure 存储 Blob 作为默认存储的 HDInsight 群集，则应先将一些示例数据复制到 Data Lake Store 帐户。 可以使用与 HDInsight 群集关联的 Azure 存储 Blob 中的示例数据。 为此，可使用 [ADLCopy 工具](http://aka.ms/downloadadlcopy)。 从此链接下载并安装该工具。
 
@@ -137,6 +137,7 @@ ms.openlocfilehash: b65ad7ed4e975bafb9a578d89fa5eb32c3066ee8
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Nov16_HO5-->
 
 

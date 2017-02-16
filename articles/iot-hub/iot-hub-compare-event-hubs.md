@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 01/31/2017
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 34a0aee589e242639b1707ba7d872999ada0c600
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 2075c7a1b8f3393e100ab92ae7d497c56965f887
 
 
 ---
@@ -35,8 +35,9 @@ IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，
 | 缩放 |已经过优化，可支持数百万个同时连接的设备。 |可支持的同时连接数具有更大的限制：根据 [Azure 服务总线配额][Azure Service Bus quotas]，最多只支持 5,000 个 AMQP 连接。 另一方面，事件中心可让你为每个发送的消息指定分区。 |
 | 设备 SDK |除直接 MQTT、AMQP 和 HTTP API 外，还为各种平台和语言提供[设备 SDK][Azure IoT SDKs]。 |在 .NET、Java、C 以及 AMQP 和 HTTP 发送接口上受支持。 |
 | 文件上载 |可让 IoT 解决方案将文件从设备上载到云。 包含一个用于集成工作流的文件通知终结点，以及一个用于支持调试的操作监视类别。 | 不支持。 |
+| 将消息路由到多个终结点 | 最多支持 10 个自定义终结点。 规则确定如何将消息路由到自定义终结点。 有关详细信息，请参阅[使用 IoT 中心发送和接收消息][lnk-devguide-messaging]。 | 要求为消息发送编写和托管附加代码。 |
 
-总之，即使唯一的用例是设备到云的遥测引入，IoT 中心也能专门为 IoT 设备连接提供一种服务。 对于这些使用 IoT 特定功能的方案，它会持续完善价值主张。 无论对于数据中心之间还是数据中心内部的方案，事件中心主要用于大规模事件引入。
+总而言之，即使唯一的用例是设备到云遥测流入，IoT 中心也能提供专为 IoT 设备连接设计的服务。 对于这些使用 IoT 特定功能的方案，它会持续完善价值主张。 无论对于数据中心之间还是数据中心内部的方案，事件中心主要用于大规模事件引入。
 
 在同一解决方案中同时使用 IoT 中心和事件中心并不少见。 IoT 中心处理设备到云的通信，而事件中心处理的是将后期事件引入实时处理引擎。
 
@@ -55,17 +56,18 @@ IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，
 [Azure Event Hubs]: ../event-hubs/event-hubs-what-is-event-hubs.md
 [IoT 中心开发人员指南的“安全性”部分]: iot-hub-devguide-security.md
 [Event Hubs - security]: ../event-hubs/event-hubs-authentication-and-security-model-overview.md
-[Event Hubs publisher policies]: ../event-hubs/event-hubs-overview.md#common-publisher-tasks
+[Event Hubs publisher policies]: ../event-hubs/event-hubs-what-is-event-hubs.md#event-publishers
 [Azure Service Bus quotas]: ../service-bus-messaging/service-bus-quotas.md
-[Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
+[Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

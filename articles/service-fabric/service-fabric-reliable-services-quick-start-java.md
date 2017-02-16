@@ -1,5 +1,5 @@
 ---
-title: "Reliable Services 入门 | Microsoft 文档"
+title: "Reliable Services 入门 | Microsoft Docs"
 description: "介绍如何创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/04/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 224538560a50f9ab24b8c2746e99de1ab87f084b
+ms.sourcegitcommit: 4450ad62a9b05ac4c963ae3271590f9431b782ed
+ms.openlocfilehash: 2a2378dbeb5e7994039291deffd35cb04bf8057c
 
 
 ---
@@ -27,7 +27,9 @@ ms.openlocfilehash: 224538560a50f9ab24b8c2746e99de1ab87f084b
 > 
 > 
 
-本文介绍 Azure Service Fabric Reliable Services 的基础知识，并演示如何创建和部署以 Java 编写的简单 Reliable Service 应用程序。
+本文介绍 Azure Service Fabric Reliable Services 的基础知识，并演示如何创建和部署以 Java 编写的简单 Reliable Service 应用程序。 此 Microsoft Virtual Academy 视频还演示了如何创建无状态可靠服务：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+<img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
 
 ## <a name="installation-and-setup"></a>安装和设置
 在开始之前，请确保已在计算机上设置 Service Fabric 开发环境。
@@ -177,6 +179,6 @@ $ ./install.sh
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

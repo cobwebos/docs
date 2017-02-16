@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 01/11/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7a4105feb1621891e1777078c67e080c44e7be51
+ms.sourcegitcommit: 0c2677b388f7a88ff88715a05212633565393cc2
+ms.openlocfilehash: 2d5d1d5123ca718b2e7dcdf426b77f91969dc9dc
 
 
 ---
@@ -37,10 +37,65 @@ ms.openlocfilehash: 7a4105feb1621891e1777078c67e080c44e7be51
 
 按应用缩放在缩放应用时独立于所属的应用服务计划。 可通过这种方式将应用服务计划配置为提供 10 个实例，而应用则可设置为仅缩放成其中 5 个的规模。
 
-以下 Azure Resource Manager 模板所创建的应用服务计划扩展成 10 个实例，而所创建的应用配置为使用每个应用缩放，仅缩放成 5 个实例。
+   >[!NOTE]
+   >按应用缩放仅适用于**高级** SKU 应用服务计划
+   >
 
-应用服务计划将**每个站点缩放**属性设置为 true ( `"perSiteScaling": true`)。 应用将要使用的**辅助角色数量** 设置为 5 (`"properties": { "numberOfWorkers": "5" }`)。
+### <a name="per-app-scaling-using-powershell"></a>使用 PowerShell 的按应用缩放
 
+通过将 ```-perSiteScaling $true``` 属性传入 ```New-AzureRmAppServicePlan``` commandlet，可创建配置为“按应用缩放”计划的新计划
+
+```
+New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
+                            -Location $Location `
+                            -Tier Premium -WorkerSize Small `
+                            -NumberofWorkers 5 -PerSiteScaling $true
+```
+
+如果想要更新现有应用服务计划以使用此功能，可： 
+
+- 获取目标计划 ```Get-AzureRmAppServicePlan```
+- 本地修改属性```$newASP.PerSiteScaling = $true```
+- 将更改发布回 Azure ```Set-AzureRmAppServicePlan``` 
+
+```
+    # Get the new App Service Plan and modify the "PerSiteScaling" property.
+    $newASP = Get-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan
+    $newASP
+
+    #Modify the local copy to use "PerSiteScaling" property.
+    $newASP.PerSiteScaling = $true
+    $newASP
+    
+    #Post updated app service plan back to azure
+    Set-AzureRmAppServicePlan $newASP
+```
+
+拥有已配置的计划后，可设置每个应用的最大实例数。
+
+在以下示例中，无论基础应用服务计划扩展到多少个实例，应用都被限制为最多两个实例。
+
+```
+    # Get the app we want to configure to use "PerSiteScaling"
+    $newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
+    
+    # Modify the NumberOfWorkers setting to the desired value.
+    $newapp.SiteConfig.NumberOfWorkers = 2
+    
+    # Post updated app back to azure
+    Set-AzureRmWebApp $newapp
+```
+
+### <a name="per-app-scaling-using-azure-resource-manager"></a>使用 Azure Resource Manager 的按应用缩放
+
+以下 Azure Resource Manager 模板创建：
+
+- 扩展到 10 个实例的应用服务计划
+- 配置为最多扩展到&5; 个实例的应用。
+
+应用服务计划将 **PerSiteScaling** 属性设置为 true ```"perSiteScaling": true```。 应用将要使用的**辅助角色数量** 设置为 5 ```"properties": { "numberOfWorkers": "5" }```。
+
+```
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
@@ -53,10 +108,10 @@ ms.openlocfilehash: 7a4105feb1621891e1777078c67e080c44e7be51
             "comments": "App Service Plan with per site perSiteScaling = true",
             "type": "Microsoft.Web/serverFarms",
             "sku": {
-                "name": "S1",
-                "tier": "Standard",
-                "size": "S1",
-                "family": "S",
+                "name": "P1",
+                "tier": "Premium",
+                "size": "P1",
+                "family": "P",
                 "capacity": 10
                 },
             "name": "[parameters('appServicePlanName')]",
@@ -85,7 +140,7 @@ ms.openlocfilehash: 7a4105feb1621891e1777078c67e080c44e7be51
              } ]
          }]
     }
-
+```
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>高密度托管的建议配置
 按应用缩放是一项功能，在公共的 Azure 区域和应用服务环境中均可启用。 但是，根据建议的策略，应通过应用服务环境充分利用其高级功能以及更大型的容量池。  
@@ -94,13 +149,13 @@ ms.openlocfilehash: 7a4105feb1621891e1777078c67e080c44e7be51
 
 1. 配置应用服务环境，选择专用于高密度托管方案的辅助池。
 2. 创建单个应用服务计划，通过缩放即可使用辅助池的所有可用容量。
-3. 在应用服务计划中将按站点缩放标志设置为 true。
-4. 创建了新站点，并将该站点分配给 **numberOfWorkers** 属性设置为 **1** 的应用服务计划。 使用此配置，让该辅助池中产生可能的最高密度。
-5. 可以按站点独立配置辅助角色数，根据需要授予其他资源。 例如，使用率高的站点可通过将 **numberOfWorkers** 设置为 **3** 来提高应用的处理能力，使用率低的站点则可将 **numberOfWorkers** 设置为 **1**。
+3. 在应用服务计划中将 PerSiteScaling 标志设置为 true。
+4. 将 **numberOfWorkers** 属性设置为 **1**，创建新应用并将其分配给该应用服务计划。 使用此配置，让该辅助池中产生可能的最高密度。
+5. 可按应用独立配置辅助角色数，根据需要授予其他资源。 例如，使用率高的应用可通过将 **numberOfWorkers** 设置为 **3** 来提高应用的处理能力，使用率低的应用则可将 **numberOfWorkers** 设置为 **1**。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

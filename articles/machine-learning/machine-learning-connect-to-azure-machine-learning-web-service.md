@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56bee9c0a2da3e522290c2274b6d0301defe3f71
+ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
+ms.openlocfilehash: 2dfcdf2207d1437a917c493075e3245bd58381ac
 
 
 ---
@@ -44,7 +44,7 @@ Azure 机器学习有两种类型的服务：
 ## <a name="get-an-azure-machine-learning-authorization-key"></a>获取 Azure 机器学习授权密钥
 部署实验时，会为 Web 服务生成 API 密钥。 可从多个位置检索密钥。
 
-## <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
+### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
 登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net)门户。
 
 为新的机器学习 Web 服务检索 API 密钥：
@@ -62,14 +62,14 @@ Azure 机器学习有两种类型的服务：
 4. 单击顶部菜单上的“使用”。
 5. 复制并保存“主密钥”。
 
-## <a name="classic-web-service"></a>经典 Web 服务
- 还可以从机器学习工作室或 Azure 门户来检索经典 Web 服务的密钥。
+### <a name="classic-web-service"></a>经典 Web 服务
+ 还可以从机器学习工作室或 Azure 经典门户来检索经典 Web 服务的密钥。
 
-### <a name="machine-learning-studio"></a>机器学习工作室
+#### <a name="machine-learning-studio"></a>机器学习工作室
 1. 在机器学习工作室左侧，单击“Web 服务”。
 2. 单击一个 Web 服务。 “API 密钥”位于“仪表板”选项卡。
 
-### <a name="azure-portal"></a>Azure 门户
+#### <a name="azure-classic-portal"></a>Azure 经典门户
 1. 在左侧单击“机器学习”。
 2. 单击 Web 服务所在的工作区。
 3. 单击“Web 服务”。
@@ -127,6 +127,6 @@ Azure 机器学习有两种类型的服务：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

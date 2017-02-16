@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2016
+ms.date: 01/05/2017
 ms.author: seanmck;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d2766c64f4ffdcaf8e583493060116a244e89f3d
+ms.sourcegitcommit: 60d440c75d6352d5e65e0158e439df9db2315ecd
+ms.openlocfilehash: 70c393f1185844bb26ff1f89cb69cb06b51fc155
 
 
 ---
@@ -40,7 +40,7 @@ ms.openlocfilehash: d2766c64f4ffdcaf8e583493060116a244e89f3d
 #### <a name="to-set-the-application-debug-mode-property"></a>设置“应用程序调试模式”属性
 1. 在应用程序项目的快捷菜单上，选择“**属性**”（或按 **F4** 键）。
 2. 在“**属性**”窗口中，设置“**应用程序调试模式**”属性。
-   
+
     ![设置“应用程序调试模式”属性][debugmodeproperty]
 
 下面介绍了可用的“**应用程序调试模式**”选项。
@@ -55,8 +55,8 @@ ms.openlocfilehash: d2766c64f4ffdcaf8e583493060116a244e89f3d
 
 > [!NOTE]
 > 1.1 版之前的适用于 Visual Studio 的 Service Fabric 工具版本不具有此属性。 对于 1.1 版及更低版本，请使用“**启动时保留数据**”属性实现相同的效果。 “保留应用程序”选项是在用于 Visual Studio 的 Service Fabric 工具 1.2 版本中引入的。
-> 
-> 
+>
+>
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加服务
 可以向你的应用程序中添加新的服务来扩展其功能。  为了确保应用程序包中包含服务，请通过“**新建 Fabric 服务...**”菜单项添加服务。
@@ -81,8 +81,8 @@ ms.openlocfilehash: d2766c64f4ffdcaf8e583493060116a244e89f3d
 
 > [!TIP]
 > 有关更丰富的群集管理功能，请参阅[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
-> 
-> 
+>
+>
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
@@ -102,6 +102,6 @@ ms.openlocfilehash: d2766c64f4ffdcaf8e583493060116a244e89f3d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

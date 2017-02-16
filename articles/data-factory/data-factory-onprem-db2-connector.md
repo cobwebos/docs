@@ -1,5 +1,5 @@
 ---
-title: "从 DB2 移动数据 | Microsoft Docs"
+title: "使用 Azure 数据工厂从 DB2 移动数据 | Microsoft Docs"
 description: "了解如何使用 Azure 数据工厂从 DB2 数据库移动数据"
 services: data-factory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: e4c1ef1d52a3e0618bed572695b7a9f2b4b46e88
+ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
+ms.openlocfilehash: 78adfcb8431305a94982b11586fce5d183fe35ec
 
 
 ---
@@ -135,7 +135,7 @@ ms.openlocfilehash: e4c1ef1d52a3e0618bed572695b7a9f2b4b46e88
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -193,7 +193,7 @@ ms.openlocfilehash: e4c1ef1d52a3e0618bed572695b7a9f2b4b46e88
 }
 ```
 
-**包含复制活动的管道：**
+**复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为**查询**属性指定的 SQL 查询从 Orders 表中选择数据。
 
@@ -258,7 +258,7 @@ ms.openlocfilehash: e4c1ef1d52a3e0618bed572695b7a9f2b4b46e88
 请参阅[使用数据管理网关在本地源和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)，了解有关设置本地 DB2 数据源凭据的详细信息。 
 
 ## <a name="db2-dataset-type-properties"></a>DB2 数据集类型属性
-有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
+有关可用于定义数据集的节和属性的完整列表，请参阅 [Creating datasets](data-factory-create-datasets.md)（创建数据集）一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 RelationalTable 类型数据集（包括 DB2 数据集）的 typeProperties 部分具有以下属性。
 
@@ -347,10 +347,10 @@ ms.openlocfilehash: e4c1ef1d52a3e0618bed572695b7a9f2b4b46e88
 [!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

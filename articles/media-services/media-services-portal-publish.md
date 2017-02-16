@@ -1,5 +1,5 @@
 ---
-title: "  使用 Azure 门户发布内容 | Microsoft Docs"
+title: "  使用 Azure 门户发布内容 | Microsoft Docscs"
 description: "本教程逐步演示如何使用 Azure 门户发布内容。"
 services: media-services
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 96a8342dc782a9270a6de5b67387c35ea45b860e
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 72b0b7feef583799613b1cb2c18b2020c1401b36
 
 
 ---
@@ -62,7 +62,7 @@ SAS URL 采用以下格式。
 > 
 > 
 
-若要更新定位符的过期日期，请使用 [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。 请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
+若要更新定位符的过期日期，请使用 [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。 请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>使用门户发布资产
 若要使用门户发布资产，请执行以下操作：
@@ -90,7 +90,6 @@ Azure 门户提供可用于测试视频的内容播放器。
 * 确保视频已发布。
 * 此“Media Player”  从默认的流式处理终结点播放。 如果要从非默认流式处理终结点播放，请单击复制该 URL，然后使用其他播放器。 例如 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 * 用于进行流式处理的流式处理终结点必须处于运行状态。  
-* 要从一个流式处理终结点进行流式处理，应添加至少一个流式处理单元。 有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)主题。   
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。
@@ -103,6 +102,6 @@ Azure 门户提供可用于测试视频的内容播放器。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

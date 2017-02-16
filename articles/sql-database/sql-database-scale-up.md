@@ -1,6 +1,6 @@
 ---
-title: "更改 Azure SQL 数据库的服务层和性能级别 | Microsoft 文档"
-description: "“更改 Azure SQL 数据库的服务层和性能级别”介绍如何扩展或缩减 SQL 数据库。 更改 Azure SQL 数据库的定价层。"
+title: "Azure 门户：更改 Azure SQL 数据库定价层 | Microsoft Docs"
+description: "了解如何使用 Azure 门户来更改 Azure SQL 数据库的服务层和性能级别，以及增加和减少 SQL 数据库的资源和定价。"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: cbd67e88-08d5-40e2-a223-0fb0c718a782
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: NA
 ms.date: 10/12/2016
 ms.author: sstein
@@ -15,16 +16,15 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 1e297de81be07a107691c54875ca638ae73d43df
-ms.openlocfilehash: 3f283166f09437611aa04d7cadf5b161d0e52f8a
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 88104e0684281f77da497ef4dd608c6a0c64b274
 
 
 ---
 # <a name="change-the-service-tier-and-performance-level-pricing-tier-of-a-sql-database-using-the-azure-portal"></a>使用 Azure 门户更改 SQL 数据库的服务层和性能级别（定价层）
 > [!div class="op_single_selector"]
 > * [**Azure 门户**](sql-database-scale-up.md)
-> * [PowerShell](sql-database-scale-up-powershell.md)
-> 
+> * [PowerShell](sql-database-scale-up-powershell.md)> 
 > 
 
 服务层和性能级别描述了适用于你的 SQL 数据库的功能和资源，并且可以随着应用程序更改的需要进行更新。 有关详细信息，请参阅“[服务层](sql-database-service-tiers.md)”。
@@ -88,6 +88,6 @@ ms.openlocfilehash: 3f283166f09437611aa04d7cadf5b161d0e52f8a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

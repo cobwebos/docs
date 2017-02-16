@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/01/2016
+ms.date: 11/28/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
+ms.sourcegitcommit: 2df9b83132711e199b58fa92841a3dca74c7282a
+ms.openlocfilehash: 0164ad801b11a6c6124df8106bd7b71b737f81f1
 
 
 ---
@@ -36,20 +36,21 @@ ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
 
 在 [Azure 门户](https://portal.azure.com)中：
 
-1. 对于使用经典部署模型创建的 VM，请选择“浏览” > “虚拟机(经典)” >  *VM 名称*。
+1. 对于使用 Resource Manager 模型创建的 VM，请选择“虚拟机” >  VM 名称。
    
     - 或 -
    
-    对于使用 Resource Manager 模型创建的 VM，请选择“浏览” > “虚拟机” >  *VM 名称*。
+    对于使用经典部署模型创建的 VM，请选择“虚拟机(经典)” >  VM 名称。
    
     VM 的状态窗格应显示“正在运行”。 向下滚动以显示计算、存储和网络资源的最近活动。
+
 2. 选择“设置”以检查终结点、IP 地址和其他设置。
    
     若要识别 VM 中使用 Resource Manager 创建的终结点，请验证是否已定义[网络安全组](../virtual-network/virtual-networks-nsg.md)。 此外，请验证对网络安全组应用的规则，以及子网中是否引用了这些规则。
 
 在 [Azure 经典门户](https://manage.windowsazure.com)中，针对使用经典部署模型创建的 VM 执行以下操作：
 
-1. 选择“虚拟机” >  *VM 名称*。
+1. 选择“虚拟机” >  VM 名称。
 2. 选择 VM 的“仪表板”查看 VM 的状态。
 3. 选择“监视器”，查看计算、存储和网络资源的最近活动。
 4. 选择“终结点”，确保 SSH 流量有终结点。
@@ -59,7 +60,7 @@ ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
 在执行这些步骤之后，重新尝试 SSH 连接。
 
 ## <a name="find-the-source-of-the-issue"></a>查找问题的来源
-如果计算机上的 SSH 客户端无法连接到 Azure VM 上的 SSH 服务，则原因可能是以下来源存在问题或配置错误：
+如果计算机上的 SSH 客户端无法连接到 Azure VM 上的 SSH 服务，则原因可能是以下区域存在问题或配置错误：
 
 * [SSH 客户端计算机](#source-1-ssh-client-computer)
 * [组织边缘设备](#source-2-organization-edge-device)
@@ -72,7 +73,7 @@ ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
 
 ![突出显示 SSH 客户端计算机组件的图表](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
 
-如果连接失败，请检查计算机上是否有以下项：
+如果连接失败，请检查计算机上是否存在以下问题：
 
 * 本地防火墙设置阻止了入站或出站 SSH 流量 (TCP 22)
 * 本地安装的客户端代理软件阻止了 SSH 连接
@@ -106,21 +107,19 @@ ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>来源 3：云服务终结点和 ACL
 > [!NOTE]
 > 此来源仅适用于使用经典部署模型创建的 VM。 对于使用 Resource Manager 创建的 VM，请跳转到[来源 4：网络安全组](#nsg)。
-> 
-> 
 
 若要将云服务终结点和 ACL 从失败原因中排除，请验证同一虚拟网络中的其他 Azure VM 是否可与 VM 建立 SSH 连接。
 
 ![突出显示云服务终结点和 ACL 的图表](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-如果同一虚拟网络中没有其他 VM，你可以轻松创建一个新 VM。 有关详细信息，请参阅[使用 CLI 在 Azure 上创建 Linux VM](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 测试完成后，请删除多余的 VM。
+如果同一虚拟网络中没有其他 VM，可以轻松创建一个 VM。 有关详细信息，请参阅[使用 CLI 在 Azure 上创建 Linux VM](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 测试完成后，请删除多余的 VM。
 
-如果可以与同一虚拟网络中的某个 VM 建立 SSH 连接，请检查以下各项：
+如果可以与同一虚拟网络中的某个 VM 建立 SSH 连接，请检查以下区域：
 
-* **目标 VM 上 SSH 流量的终结点配置。** 终结点的专用 TCP 端口应该与 VM 上的 SSH 服务正在侦听的 TCP 端口匹配。 （默认端口为 22）。 对于使用 Resource Manager 部署模型创建的 VM，请在 Azure 门户中选择“浏览” > “虚拟机(v2)” >  *VM 名称*  > “设置” > “终结点”来验证 SSH TCP 端口号。
+* **目标 VM 上 SSH 流量的终结点配置。** 终结点的专用 TCP 端口应该与 VM 上的 SSH 服务正在侦听的 TCP 端口匹配。 （默认端口为 22）。 对于使用 Resource Manager 部署模型创建的 VM，请在 Azure 门户中选择“虚拟机” >  VM 名称  > “设置” > “终结点”来验证 SSH TCP 端口号。
 * **目标虚拟机上的 SSH 流量终结点的 ACL。** ACL 允许你指定基于源 IP 地址允许或拒绝的从 Internet 传入的流量。 错误配置的 ACL 可能会阻止 SSH 流量传入终结点。 检查你的 ACL 以确保允许从你的代理服务器或其他边缘服务器的公共 IP 地址传入的流量。 有关详细信息，请参阅[关于网络访问控制列表 (ACL)](../virtual-network/virtual-networks-acl.md)。
 
-若要将终结点从问题原因中排除，请删除当前终结点，创建一个新的终结点，然后指定 SSH 名称（公共和专用端口号为 TCP 端口 22）。 有关详细信息，请参阅[在 Azure 中的虚拟机上设置终结点](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+若要将终结点从问题原因中排除，请删除当前终结点，创建另一个终结点，然后指定 SSH 名称（公共和专用端口号为 TCP 端口 22）。 有关详细信息，请参阅[在 Azure 中的虚拟机上设置终结点](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 <a id="nsg"></a>
 
@@ -138,7 +137,7 @@ ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
 再次尝试从你的计算机建立连接。 如果仍然失败，则可能存在以下问题：
 
 * 目标虚拟机上未运行 SSH 服务。
-* TCP 端口 22 上未侦听 SSH 服务。 若要测试这一点，可在本地计算机上安装一个远程登录客户端，然后运行“telnet *cloudServiceName*.cloudapp.net 22”。 这将确定虚拟机是否允许与 SSH 终结点进行入站和出站通信。
+* TCP 端口 22 上未侦听 SSH 服务。 若要进行测试，可在本地计算机上安装一个远程登录客户端，然后运行“telnet *cloudServiceName*.cloudapp.net 22”。 此步骤将确定虚拟机是否允许与 SSH 终结点进行入站和出站通信。
 * 目标虚拟机上的本地防火墙具有阻止入站或出站 SSH 流量的规则。
 * Azure 虚拟机上运行的入侵检测或网络监视软件阻止了 SSH 连接。
 
@@ -148,6 +147,6 @@ ms.openlocfilehash: 9333062851e070a93afc6935e58594711b741f48
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

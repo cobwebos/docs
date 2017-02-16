@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 0de569ccf12f3ef428960fe8bb745eb7512c80ce
-ms.openlocfilehash: f81088bcc28e49091f45cdcb1207b30aeb3b70f2
+ms.sourcegitcommit: 1a2ea0753d12915075c055f9983773618bf6777d
+ms.openlocfilehash: 85c6a2296a4487ae549321d3ff07129bcbab5adf
 
 
 ---
@@ -189,7 +189,7 @@ SAN (ISCSI) | 是 | 是
 **存储（来宾 VM/物理服务器）** | **VMware/物理服务器** | **Hyper-V（包含 VMM）**
 --- | --- | ---
 VMDK | 是 | 不可用
-VHD/VHDX | 不可用 | 是（最多 64 个磁盘）
+VHD/VHDX | 不可用 | 是（最多 16 个磁盘）
 第 2 代 VM | 不可用 | 是
 共享群集磁盘 | 是  | 否
 加密磁盘 | 否 | 否
@@ -265,6 +265,6 @@ HUB | 是 | 是 | 是
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

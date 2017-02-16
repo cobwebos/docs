@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4b827760c2095ace72831ed579b9c309b4d8991b
+ms.sourcegitcommit: 5c4b5e09ac5e336504be32533ad011aad102af75
+ms.openlocfilehash: fdc0d76741d5078978e1bfeadd156e84cac3a48a
 
 
 ---
@@ -31,6 +31,19 @@ ms.openlocfilehash: 4b827760c2095ace72831ed579b9c309b4d8991b
 | 将表、列和数据导入或复制到报表的数据集。 若要查看对基础数据所做的更改，必须刷新，或重新导入完整的当前数据集。 |仅会将表和列导入或复制到报表的数据集中。 始终可以查看最新的数据。 |
 
 目前，通过 Power BI Embedded，可以将 DirectQuery 与云数据源一起使用，但不能与本地数据源一起使用。
+
+> [!NOTE]
+> Power BI Embedded 当前不支持本地数据网关。 这意味着无法将 DirectQuery 与本地数据源结合使用。
+
+## <a name="supported-data-sources"></a>支持的数据源
+
+**DirectQuery**
+* Azure SQL 数据库
+* Azure SQL 数据仓库
+
+**导入**
+
+可以在 Power BI Desktop 中使用所有可用数据源进行导入。 **不**能在 Power BI Embedded 中刷新该数据。 必须将对 PBIX 文件进行的更改上传到 Power BI Embedded。 这是因为没有可用网关。 
 
 ## <a name="benefits-of-using-directquery"></a>使用 DirectQuery 的优点
 使用 **DirectQuery** 具有两个主要优点：
@@ -56,9 +69,11 @@ ms.openlocfilehash: 4b827760c2095ace72831ed579b9c309b4d8991b
 * [Microsoft Power BI Embedded 入门](power-bi-embedded-get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
+有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO3-->
 
 

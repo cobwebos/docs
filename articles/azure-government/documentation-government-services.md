@@ -16,8 +16,8 @@ ms.workload: azure-government
 ms.date: 10/14/2016
 ms.author: zakramer
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 256dd290abcf0326330c9a6079437d8701d290e8
+ms.sourcegitcommit: 083ffff3a99c82a518bcc370e6d40c7500ba6907
+ms.openlocfilehash: f48fd6856346e1fd0be12fec2391d0c16287f106
 
 
 ---
@@ -46,13 +46,21 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 
 ## <a name="storagedocumentation-government-services-storagemd"></a>[存储](documentation-government-services-storage.md)
 * [Azure 存储](documentation-government-services-storage.md#azure-storage)
+* [Blob 存储](documentation-government-services-storage.md#azure-storage)
+* [表存储](documentation-government-services-storage.md#azure-storage)
+* [队列存储](documentation-government-services-storage.md#azure-storage)
+* [文件存储](documentation-government-services-storage.md#azure-storage)
+* [冷/热存储](documentation-government-services-storage.md#azure-storage)
+* [存储服务加密](documentation-government-services-storage.md#azure-storage)
+* [高级存储](documentation-government-services-storage.md#azure-storage)
+* [Blob 导入/导出](documentation-government-services-storage.md#azure-storage)
+* [StorSimple](documentation-government-services-storage.md)
+* [备份](documentation-government-services-backup.md)
+* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * 导入/导出
-* StorSimple
-* 备份
-* Site Recovery
 
-## <a name="web--mobile"></a>Web + 移动
-* Web 应用
+## <a name="web--mobiledocumentation-government-services-webandmobilemd"></a>[Web 与移动](documentation-government-services-webandmobile.md)
+* [应用服务](documentation-government-services-webandmobile.md#app-services)
 * 媒体服务
 
 ## <a name="databasesdocumentation-government-services-databasemd"></a>[数据库](documentation-government-services-database.md)
@@ -66,7 +74,7 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 
 ## <a name="enterprise-integration"></a>企业集成
 * 服务总线
-* StorSimple
+* [StorSimple](documentation-government-services-storage.md)
 * SQL Server Stretch Database
 
 ## <a name="security--identitydocumentation-government-services-securityandidentitymd"></a>[安全性 + 标识](documentation-government-services-securityandidentity.md)
@@ -76,9 +84,9 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 
 ## <a name="monitoring--managementdocumentation-government-services-monitoringandmanagementmd"></a>[监视 + 管理](documentation-government-services-monitoringandmanagement.md)
 * [自动化](documentation-government-services-monitoringandmanagement.md#automation)
-* 备份
+* [备份](documentation-government-services-backup.md) 
 * [Log Analytics](documentation-government-services-monitoringandmanagement.md#log-analytics)
-* 站点恢复
+* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * 计划程序
 * 流量管理器
 * 监视和诊断
@@ -89,6 +97,6 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

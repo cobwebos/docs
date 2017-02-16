@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/06/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 060bcf7cfac365e93b988cda0f402df6ba605dfc
-ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: 0a70398010bb06590e981430edabffa889c213ae
 
 
 ---
@@ -73,7 +73,7 @@ ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
 * 输入数据的存储帐户
 * 输出数据的存储帐户
 
-为了简化本教程，使用一个存储帐户来实现 3 个目的。 本节中提供的 Azure CLI 和 Azure PowerShell 示例脚本执行以下任务：
+为了简化本教程，使用一个存储帐户来实现&3; 个目的。 本节中提供的 Azure CLI 和 Azure PowerShell 示例脚本执行以下任务：
 
 1. 登录 Azure。
 2. 创建 Azure 资源组。
@@ -198,7 +198,7 @@ ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
 7. 打开文件夹，并检查文件夹中的文件。
 
 ## <a name="create-data-factory"></a>创建数据工厂
-准备好存储帐户、输入数据和 HiveQL 脚本后，你便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 在本教程中，使用 Azure 门户调用自定义 Resource Manager 模板。 还可从 [Azure CLI](../resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy) 中调用 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/data-factory-build-your-first-pipeline.md)。
+准备好存储帐户、输入数据和 HiveQL 脚本后，你便可以创建 Azure 数据工厂了。 有几种方法可以创建数据工厂。 在本教程中，使用 Azure 门户调用自定义 Resource Manager 模板。 还可从 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy) 中调用 Resource Manager 模板。 有关其他数据工厂创建方法，请参阅[教程：构建第一个数据工厂](../data-factory/data-factory-build-your-first-pipeline.md)。
 
 顶层 Resource Manager 模板包含：
 
@@ -227,7 +227,7 @@ ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
 
 该模板包含一个名为 *hdinsight-hive-on-demand* 的数据工厂资源（屏幕截图中未显示该名称）。 目前，仅美国西部区域和北欧区域支持数据工厂。
 
-*hdinsight-hive-on-demand* 资源包含 4 个资源：
+*hdinsight-hive-on-demand* 资源包含&4; 个资源：
 
 * 存储帐户的链接服务，该存储帐户用作默认 HDInsight 存储帐户、输入数据存储和输出数据存储。
 * 要创建的 HDInsight 群集的链接服务：
@@ -358,7 +358,7 @@ ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
 
     ![Azure 数据工厂 HDInsight 按需 Hive 活动管道输出](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-year.png)
 
-    如果向下钻取列表，可看到 3 个文件夹，分别为“1月”、“2 月”和“3 月”。 并且每个月均有日志。
+    如果向下钻取列表，可看到&3; 个文件夹，分别为“1月”、“2 月”和“3 月”。 并且每个月均有日志。
 
     ![Azure 数据工厂 HDInsight 按需 Hive 活动管道输出](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-month.png)
 
@@ -444,6 +444,6 @@ ms.openlocfilehash: 4dcc519e74cf1a5fbc7be3ddbd506fcbc25ed882
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

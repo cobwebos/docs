@@ -12,15 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7ea1ec9bddff60d91bdd47d7d9e5312563386ae4
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: c3f383a792994aaf1ff266338ca5b64c7e4362ec
 
 
 ---
 # <a name="frequently-asked-questions"></a>常见问题
+
+本文介绍由 Azure 媒体服务 (AMS) 用户社区提出的常见问题。
+
 ## <a name="general-ams-faqs"></a>一般性的 AMS 常见问题
 问：如何缩放索引？
 
@@ -28,7 +31,7 @@ ms.openlocfilehash: 7ea1ec9bddff60d91bdd47d7d9e5312563386ae4
 
 问：我已经上载、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 
-答：最常见的一种原因是，你没有在尝试播放的流式处理终结点上分配至少一个保留流式处理单位。  请遵循[如何缩放流式处理保留单位](media-services-portal-scale-streaming-endpoints.md)中的说明。
+答：最常见的原因之一是，你没有“正在运行”状态下从其播放的流式处理终结点。  
 
 问：我是否可以在实时流上进行合成操作？
 
@@ -40,7 +43,7 @@ ms.openlocfilehash: 7ea1ec9bddff60d91bdd47d7d9e5312563386ae4
 
 问：Azure 媒体服务是否支持存储图像？
 
-答：如果需要存储 JPEG 或 PNG 图像，应将其存储在 Azure Blob 存储中。 除非你想要将图像与你的视频或音频资产相关联，否则将图像放入媒体服务帐户毫无益处。 或者，你可能需要在视频编码器中将图像用作叠加。媒体编码器标准版支持在视频上叠加图像，且它将 JPEG 和 PNG 列为支持的输入格式。 有关详细信息，请参阅[创建覆盖](media-services-custom-mes-presets-with-dotnet.md#overlay)。
+答：如果需要存储 JPEG 或 PNG 图像，应将其存储在 Azure Blob 存储中。 除非你想要将图像与你的视频或音频资产相关联，否则将图像放入媒体服务帐户毫无益处。 或者，你可能需要在视频编码器中将图像用作叠加。媒体编码器标准版支持在视频上叠加图像，且它将 JPEG 和 PNG 列为支持的输入格式。 有关详细信息，请参阅[创建覆盖](media-services-advanced-encoding-with-mes.md#overlay)。
 
 问：如何将资产从一个媒体服务帐户复制到另一个媒体服务帐户？
 
@@ -48,15 +51,15 @@ ms.openlocfilehash: 7ea1ec9bddff60d91bdd47d7d9e5312563386ae4
 
 问：AMS 支持使用哪些字符来为文件命名？
 
-答：构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[保留的百分号编码字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]".。此外，文件扩展名中 文件名扩展名。
+答：构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
 
 问：如何使用 REST 进行连接？
 
-答：成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须按[使用 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)中所述，对新的 URI 执行后续调用。 
+答：成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须按[使用 REST API 连接到媒体服务](media-services-rest-connect-programmatically.md)中所述，对新的 URI 执行后续调用。
 
 问：如何在编码过程中旋转视频。
 
-答：[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 90/180/270 度。 默认行为是“自动”，即尝试在传入的 MP4/MOV 文件中检测旋转元数据并对其进行补偿。 包含[此处](http://msdn.microsoft.com/library/azure/mt269960.aspx)定义的 json 预设之一的以下 **Sources** 元素：
+答：[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 90/180/270 度。 默认行为是“自动”，即尝试在传入的 MP4/MOV 文件中检测旋转元数据并对其进行补偿。 包含[此处](media-services-mes-presets-overview.md)定义的 json 预设之一的以下 **Sources** 元素：
 
     "Version": 1.0,
     "Sources": [
@@ -82,7 +85,6 @@ ms.openlocfilehash: 7ea1ec9bddff60d91bdd47d7d9e5312563386ae4
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: ca799d03076175d6a7193c0e58b349a6cb61693b
-ms.openlocfilehash: 35f07fba1421af1db9c8b6190737c3c220a911e1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 091a753c8a183975c7aa340fa2f089adf4fe5574
 
 
 
@@ -37,7 +37,7 @@ ms.openlocfilehash: 35f07fba1421af1db9c8b6190737c3c220a911e1
 
 2. 需要使用 HDInsight 3.4 Spark 1.6 群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”菜单中指定群集类型和版本。 
 
-![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
+![配置群集](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
 <!-- -->
 
@@ -107,11 +107,11 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter 笔记本执行代码
 可以从 Azure 门户启动 Jupyter 笔记本。 在仪表板上找到 Spark 群集，然后单击进入群集管理页面。 若要打开与 Spark 群集相关联的笔记本，请依次单击“群集仪表板” -> “Jupyter 笔记本”。
 
-![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
+![群集仪表板](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
 还可以浏览到 ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** 访问 Jupyter 笔记本。 将此 URL 的 CLUSTERNAME 部分替换为你自己的群集名称。 需要使用管理员帐户密码才能访问笔记本。
 
-![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
+![浏览 Jupyter 笔记本](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
 选择 PySpark 查看包含几个使用 PySpark API 的预打包笔记本示例的目录。包含这一系列 Spark 主题的代码示例的笔记本可在 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上获取
 
@@ -154,6 +154,6 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

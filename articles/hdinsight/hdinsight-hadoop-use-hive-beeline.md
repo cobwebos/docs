@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/10/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 685d77363c451fbc28c39a34241dc34f796f7a77
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: c4fb98946a41ee37d8676eca52ff26f81d0ff56a
 
 
 ---
@@ -28,13 +28,15 @@ ms.openlocfilehash: 685d77363c451fbc28c39a34241dc34f796f7a77
 
 > [!NOTE]
 > Beeline 使用 JDBC 连接到 Hive。 有关将 JDBC 与 Hive 配合使用的详细信息，请参阅[使用 Hive JDBC 驱动程序连接到 Hive on Azure HDInsight](hdinsight-connect-hive-jdbc-driver.md)。
-> 
-> 
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集。
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * SSH 客户端。 SSH 客户端上应该装有 Linux、Unix 和 Mac OS。 Windows 用户必须下载 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 之类的客户端。
 
 ## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>使用 SSH 进行连接
@@ -247,6 +249,6 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。 使用以下步骤创
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

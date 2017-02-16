@@ -1,6 +1,6 @@
 ---
 title: "用于部署 Linux HPC 群集的 PowerShell 脚本 | Microsoft Docs"
-description: "运行 PowerShell 脚本，以在 Azure 虚拟机中部署 Linux HPC Pack 群集"
+description: "运行 PowerShell 脚本，以在 Azure 虚拟机中部署 Linux HPC Pack 2012 R2 群集"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -13,27 +13,29 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
-ms.date: 07/07/2016
+ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 5dcbadd1e7f855f72539a9b6cd619ed3f014119c
+ms.sourcegitcommit: ff9fb5f0b2229a470ea3f5c736622ee1e9228c93
+ms.openlocfilehash: 34920aa6cb351f52fd630cde2f97850266268f96
 
 
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>使用 HPC Pack IaaS 部署脚本创建 Linux 高性能计算 (HPC) 群集
-运行 HPC Pack IaaS 部署 PowerShell 脚本，以便为 Azure 虚拟机中的 Linux 工作负荷部署完整的 HPC 群集。 群集包含一个运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点和多个运行 HPC Pack 支持的 Linux 分发之一的计算节点。 如果想要在 Azure 中部署适用于 Windows 工作负荷的 HPC Pack 群集，请参阅 [Create a Windows HPC cluster with the HPC Pack IaaS deployment script](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（使用 HPC Pack IaaS 部署脚本创建 Windows HPC 群集）。 你还可以使用 Azure 资源管理器模板来部署 HPC Pack 群集。 有关示例，请参阅 [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)（使用 Linux 计算节点创建 HPC 群集）。
+运行 HPC Pack IaaS 部署 PowerShell 脚本，以便为 Azure 虚拟机中的 Linux 工作负荷部署完整的 HPC Pack 2012 R2 群集。 群集包含一个运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点和多个运行 HPC Pack 支持的 Linux 分发之一的计算节点。 如果想要在 Azure 中部署适用于 Windows 工作负荷的 HPC Pack 群集，请参阅 [Create a Windows HPC cluster with the HPC Pack IaaS deployment script](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（使用 HPC Pack IaaS 部署脚本创建 Windows HPC 群集）。 你还可以使用 Azure 资源管理器模板来部署 HPC Pack 群集。 有关示例，请参阅 [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)（使用 Linux 计算节点创建 HPC 群集）。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> 本文中介绍的 PowerShell 脚本使用经典部署模型在 Azure 中创建 Microsoft HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用资源管理器模型。
+> 此外，本文中所述的脚本不支持 HPC Pack 2016。
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
 ## <a name="example-configuration-file"></a>示例配置文件
-以下配置文件将创建新的域控制器和域林并部署 HPC Pack 群集，其中包含 1 个具有本地数据库的头节点和 10 个 Linux 计算节点。 所有云服务直接在“亚洲东部”位置创建。 Linux 计算节点在 2 个云服务和 2 个存储帐户中创建（即，*MyLnxCNService01* 和 *mylnxstorage01* 中的 *MyLnxCN-0001* 到 *MyLnxCN-0005*，以及 *MyLnxCNService02* 和 *mylnxstorage02* 中的 *MyLnxCN-0006* 到 *MyLnxCN-0010*）。 计算节点是基于 OpenLogic CentOS 7.0 版 Linux 映像创建的。 
+以下配置文件创建域控制器和域林并部署 HPC Pack 群集，其中包含 1 个具有本地数据库的头节点和 10 个 Linux 计算节点。 所有云服务直接在“亚洲东部”位置创建。 Linux 计算节点在&2; 个云服务和&2; 个存储帐户中创建（即，*MyLnxCNService01* 和 *mylnxstorage01* 中的 *MyLnxCN-0001* 到 *MyLnxCN-0005*，以及 *MyLnxCNService02* 和 *mylnxstorage02* 中的 *MyLnxCN-0006* 到 *MyLnxCN-0010*）。 计算节点是基于 OpenLogic CentOS 7.0 版 Linux 映像创建的。 
 
 将订阅名称以及帐户和服务名称替换为自己的值。
 
-```
+```Xml
 <?xml version="1.0" encoding="utf-8" ?>
 <IaaSClusterConfig>
   <Subscription>
@@ -74,12 +76,11 @@ ms.openlocfilehash: 5dcbadd1e7f855f72539a9b6cd619ed3f014119c
 </IaaSClusterConfig>
 ```
 ## <a name="troubleshooting"></a>故障排除
-* **“VNet 不存在”错误** - 如果运行 HPC Pack IaaS 部署脚本以便在 Azure 中的一个订阅下同时部署多个群集，一个或多个部署可能会失败并显示错误“VNet *VNet\_名称* 不存在”。
+* **“VNet 不存在”错误**。 如果运行 HPC Pack IaaS 部署脚本以便在 Azure 中的一个订阅下同时部署多个群集，那么一个或多个部署可能会失败并显示错误“VNet *VNet\_Name* 不存在”。
   如果发生此错误，请对失败的部署重新运行该脚本。
-* **从 Azure 虚拟网络访问 Internet 时出现问题** - 如果通过使用部署脚本创建 HPC Pack 群集和新的域控制器，或者手动将头节点 VM 提升为域控制器，则在将 Azure 虚拟网络中的 VM 连接到 Internet 时可能会遇到问题。 如果已在域控制器上自动配置转发器 DNS 服务器，但此转发器 DNS 服务器未正确解析，则会出现这种情况。
+* **从 Azure 虚拟网络访问 Internet 时出现问题**。 如果使用部署脚本创建具有新域控制器的 HPC Pack 群集，或将头节点 VM 手动提升为域控制器，则将 Azure 虚拟网络中的 VM 连接到 Internet 时可能会遇到问题。 如果已在域控制器上自动配置转发器 DNS 服务器，但此转发器 DNS 服务器未正确解析，则会出现这种情况。
   
-    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 为此，请在服务器管理器中单击“工具” >
-  “DNS”打开 DNS 管理器，然后双击“转发器”。****  ********
+    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 为此，请在服务器管理器中单击“工具” > “DNS”打开 DNS 管理器，然后双击“转发器”。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)，了解有关支持的 Linux 分发、移动数据、以及使用 Linux 计算节点将作业提交到 HPC Pack 群集的信息。
@@ -91,6 +92,6 @@ ms.openlocfilehash: 5dcbadd1e7f855f72539a9b6cd619ed3f014119c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

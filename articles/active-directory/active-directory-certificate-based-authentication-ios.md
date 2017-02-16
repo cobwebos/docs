@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2017
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: ce9474f2926a856673efbab5103a308d31001343
-ms.openlocfilehash: fe00603de855e621b751004fdbd74acafaee017f
+ms.sourcegitcommit: 6ae6529b601d1607ab1245b4aeaa24ae68ce2db8
+ms.openlocfilehash: 6b65ef30b6afe1d545afb86a57197d3d157de4f5
 
 
 ---
@@ -61,7 +61,7 @@ ms.openlocfilehash: fe00603de855e621b751004fdbd74acafaee017f
 
 必须配置联合服务器。  
 
-iOS 设备上的 Office 应用需要安装 Azure Authenticator。  
+iOS 设备上的 Office 应用程序需要安装 Microsoft Authenticator。  
 
 若要让 Azure Active Directory 吊销客户端证书，ADFS 令牌必须具有以下声明：  
 
@@ -74,7 +74,7 @@ iOS 设备上的 Office 应用需要安装 Azure Authenticator。
 
 作为最佳做法，应该根据以下内容更新 ADFS 错误页：
 
-* 在 iOS 设备上安装 Azure Authenticator 的要求
+* 在 iOS 设备上安装 Microsoft Authenticator 的要求
 * 有关如何获取用户证书的说明。 
 
 有关更多详细信息，请参阅[自定义 AD FS 登录页面](https://technet.microsoft.com/library/dn280950.aspx)。
@@ -219,6 +219,6 @@ iOS 9 或更高版本支持本机 iOS 邮件客户端。 若要确定其他所�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

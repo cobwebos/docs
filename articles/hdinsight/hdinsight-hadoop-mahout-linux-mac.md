@@ -1,6 +1,6 @@
 ---
-title: "使用 Mahout 和基于 Linux 的 HDInsight 生成推荐 | Microsoft Docs"
-description: "了解如何使用 Apache Mahout 机器学习库通过基于 Linux 的 HDInsight (Hadoop) 生成电影推荐。"
+title: "使用 Mahout 和 HDInsight (SSH) 生成推荐 | Microsoft Docs"
+description: "了解如何使用 Apache Mahout 机器学习库通过 HDInsight (Hadoop) 生成电影推荐。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,28 +13,28 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 3c3944118ca986009711aee032b45c302b63e63b
-ms.openlocfilehash: 2cd1c44552183b3167ea1cfec6b2c1d7c6b3fd0c
+ms.sourcegitcommit: 0d5b68d26d708a28edee13ff3d9a57588ce83e12
+ms.openlocfilehash: be8146ae3dd34f4c8d5e02b06fd1b1f8d5d63dc1
 
 
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight"></a>通过 HDInsight 中基于 Linux 的 Hadoop 使用 Apache Mahout 生成电影推荐
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>通过 HDInsight (SSH) 中基于 Linux 的 Hadoop 使用 Apache Mahout 生成电影推荐
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
 了解如何使用 [Apache Mahout](http://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。
 
-Mahout 是 Apache Hadoop 的[机器学习][ml]库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 本文介绍了如何使用推荐引擎根据用户的好友看过的电影为用户生成电影推荐。
-
-> [!NOTE]
-> 本文档中的步骤要求在 HDInsight 群集上存在基于 Linux 的 Hadoop。 有关如何将 Mahout 用于基于 Windows 的群集的信息，请参阅[通过 HDInsight 中基于 Windows 的 Hadoop 使用 Apache Mahout 生成电影推荐](hdinsight-mahout.md)
+Mahout 是适用于 Apache Hadoop 的[机器学习][ml]库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 本文介绍了如何使用推荐引擎根据用户的好友看过的电影为用户生成电影推荐。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 基于 Linux 的 HDInsight 上的 Hadoop 群集。 有关创建该群集的信息，请参阅[开始在 HDInsight 中使用基于 Linux 的 Hadoop][getstarted]
+* 基于 Linux 的 HDInsight 群集。 有关创建该群集的信息，请参阅[开始在 HDInsight 中使用基于 Linux 的 Hadoop][getstarted]。
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
 
 ## <a name="mahout-versioning"></a>Mahout 版本控制
 
@@ -254,22 +254,22 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 * [Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [MapReduce 和 HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
-[生成]: http://mahout.apache.org/developers/buildingmahout.html
+[build]: http://mahout.apache.org/developers/buildingmahout.html
 [movielens]: http://grouplens.org/datasets/movielens/
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
 [getstarted]: hdinsight-hadoop-linux-tutorial-get-started.md
-[上传]: hdinsight-upload-data.md
+[upload]: hdinsight-upload-data.md
 [ml]: http://en.wikipedia.org/wiki/Machine_learning
-[林]: http://en.wikipedia.org/wiki/Random_forest
-[管理]: https://manage.windowsazure.com/
+[forest]: http://en.wikipedia.org/wiki/Random_forest
+[management]: https://manage.windowsazure.com/
 [enableremote]: ./media/hdinsight-mahout/enableremote.png
-[连接]: ./media/hdinsight-mahout/connect.png
+[connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
-[工具]: https://github.com/Blackmist/hdinsight-tools
+[tools]: https://github.com/Blackmist/hdinsight-tools
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

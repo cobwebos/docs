@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用 API 管理来安全、大规模地发布 API。 文档介绍了如何为现有后端服务创建现代 API 网关。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 79b75ae11af07735449714d3a3034c867224ebf4
+ms.sourcegitcommit: bc1895fc3b10c9fab96a120359e25324a1132a51
+ms.openlocfilehash: cd5342474c551bfb9eb1496ffd67f3b36933f1d8
 
 ---
 # <a name="api-management-documentation"></a>API 管理文档
 
-API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发人员，以充分发挥其数据和服务的潜力。  API 管理提供了核心能力，通过开发人员参与、商业洞察力、分析、安全和保护确保成功的 API 程序。
+了解如何使用 API 管理来安全、大规模地将 API 发布到外部、合作伙伴和雇用的开发人员。 教程、API 参考和其他文档介绍了如何为任意位置托管的现有后端服务创建和管理现代 API 网关。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -141,6 +142,6 @@ API 管理可帮助组织将 API 发布给外部、合作伙伴和内部开发�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

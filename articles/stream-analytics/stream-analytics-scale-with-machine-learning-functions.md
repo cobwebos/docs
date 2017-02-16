@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 机器学习函数缩放流分析作业 | Microsoft 文档"
+title: "使用 Azure 流分析和 Azure ML 函数缩放作业 | Microsoft Docs"
 description: "了解在使用 Azure 机器学习函数时，如何正确缩放流分析作业（分区、SU 数量等）。"
 keywords: 
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ad7ac0056cead32332b63add61655dbc1d2cb37c
+ms.sourcegitcommit: b36fd0b4a52ae2e13a5b5dcde412994a0656e3d3
+ms.openlocfilehash: 27f2ac3d54226501e254d9a8fef6cc378eb9a860
 
 
 ---
@@ -36,17 +36,17 @@ ms.openlocfilehash: ad7ac0056cead32332b63add61655dbc1d2cb37c
 
 一般情况下，除 1 个 SU 作业和 3 个 SU 作业可获得 20 个并发连接外，每 6 个 SU 也具有 20 个机器学习 Web 服务的并发连接。  例如，如果输入数据率为每秒 200000 个事件，并且批大小仍为默认的 1000，则生成的、具有 1000 项事件微批处理的 Web 服务为 200 毫秒。 这意味着每个连接在一秒内可以请求 5 次机器学习 Web 服务。 通过 20 个连接，流分析作业可在 200 毫秒内处理 20000 个事件，因而在 1 秒内可处理 100000 个事件。 因此，若要每秒处理 200000 个事件，流分析作业需要 40 个并发连接，这也就是 12 个 SU。 下图显示了从流分析作业到机器学习 Web 服务终结点的请求：每 6 个 SU 最多具有 20 个机器学习 Web 服务的并发连接。
 
-![使用机器学习函数 2 作业缩放流分析的示例](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Scale Stream Analytics with Machine Learning Functions 2 job example")
+![使用机器学习函数 2 缩放流分析的作业示例](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "使用机器学习函数 2 缩放流分析的作业示例")
 
 一般情况下，“B”代表批大小、“L”代表批大小为 B 时的 Web 服务延迟（以毫秒为单位），“N”个 SU 的流分析作业的吞吐量为：
 
-![使用机器学习函数公式缩放流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Scale Stream Analytics with Machine Learning Functions Formula")
+![使用机器学习函数公式缩放流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "使用机器学习函数公式缩放流分析")
 
-另外需要考虑的可能是机器学习 Web 服务端上的“最大并发调用数”，建议将其设置为最大值（当前是 200）。
+另外需要考虑的可能是机器学习 Web 服务端上的“最大并发调用数”，建议将其设置为最大值（当前是&200;）。
 
 有关此设置的详细信息，请参阅[机器学习 Web 服务的缩放文章](../machine-learning/machine-learning-scaling-webservice.md)。
 
-## <a name="example-sentiment-analysis"></a>示例 – 情绪分析
+## <a name="example--sentiment-analysis"></a>示例 – 情绪分析
 以下示例包括具有情绪分析机器学习函数的流分析作业，如[流分析机器学习集成教程](stream-analytics-machine-learning-integration-tutorial.md)所述。
 
 查询是简单的、已完全分区的查询，后跟**情绪**函数，如下所示：
@@ -95,7 +95,7 @@ ms.openlocfilehash: ad7ac0056cead32332b63add61655dbc1d2cb37c
 ## <a name="new-function-related-monitoring-metrics"></a>与函数相关的新监视指标
 在流分析作业的“监视”区域，新增了三个与函数相关的指标。 它们是“函数请求数”、“函数事件数”和“失败的函数请求数”，如下图所示。
 
-![使用机器学习函数指标缩放流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Scale Stream Analytics with Machine Learning Functions Metrics")
+![使用机器学习函数指标缩放流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "使用机器学习函数指标缩放流分析")
 
 它们的定义如下：
 
@@ -125,6 +125,6 @@ ms.openlocfilehash: ad7ac0056cead32332b63add61655dbc1d2cb37c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

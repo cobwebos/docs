@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 6cc30ace0b57555ea2b5815906d3e6a4f79d8fce
-ms.openlocfilehash: 94bf7729ceb55eaed5efc0290c1a34227888211f
+ms.sourcegitcommit: 496e00c2b9a0b374450f9a6f9dff5d41c805261c
+ms.openlocfilehash: 591f3440977b1c952b1b360f6d3f221cdbc5a7a7
 
 
 ---
@@ -75,7 +75,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 
 
 ## <a name="configuration"></a>配置
-除了 Windows 和 Linux 计算机已安装代理并连接到 OMS 之外，还必须从服务映射解决方案下载依赖关系代理安装程序，然后将其作为根或管理安装在每个托管服务器上。  在向 OMS 报告的服务器上安装了服务映射代理后，服务映射依赖关系映射将在 10 分钟内显示。  如果有任何问题，请向 [oms-adm-support@microsoft.com](mailto:oms-adm-support@microsoft.com) 发送电子邮件。
+除了 Windows 和 Linux 计算机已安装代理并连接到 OMS 之外，还必须从服务映射解决方案下载依赖关系代理安装程序，然后将其作为根或管理安装在每个托管服务器上。  在向 OMS 报告的服务器上安装了服务映射代理后，服务映射依赖关系映射将在 10 分钟内显示。
 
 
 ### <a name="migrating-from-bluestripe-factfinder"></a>从 BlueStripe FactFinder 迁移
@@ -117,7 +117,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 3.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>卸载 Linux 上的依赖关系代理
-若要完全从 Linux 中卸载依赖关系代理，必须删除代理本身以及使用该代理自动安装的代理。  可使用以下单个命令同时卸载这两项：
+若要从 Linux 中彻底卸载依赖关系代理，必须删除代理本身以及随该代理自动安装的连接器。  可使用以下单个命令同时卸载这两项：
 
     rpm -e dependency-agent dependency-agent-connector
 
@@ -227,7 +227,7 @@ omsconfig（代理配置）的日志位于 */var/opt/microsoft/omsconfig/log/*�
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-以下部分列出了依赖关系代理支持的操作系统。   任何操作系统都不支持 32 位体系结构。
+以下部分列出了依赖关系代理支持的操作系统。   任何操作系统都不支持&32; 位体系结构。
 
 ### <a name="windows-server"></a>Windows Server
 - Windows Server 2016
@@ -325,6 +325,6 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

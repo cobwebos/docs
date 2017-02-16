@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: ae5a946be74131d52d25e9d7d36c116e707a4be3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 67f6427ab8dec58778c75b9b3826853c84ab7fe6
 
 
 ---
@@ -277,43 +277,43 @@ Web 视图是包含 Web 内容的弹出窗口。 当最终用户单击了推送�
 [32]: ./media/mobile-engagement-how-tos/WebView5.png
 
 <!--Link references-->
-[链接 1]: mobile-engagement-user-interface.md
-[链接 2]: mobile-engagement-troubleshooting-guide.md
-[链接 3]: mobile-engagement-how-tos.md
-[链接 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[链接 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[链接 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[链接 7]: https://account.windowsazure.com/PreviewFeatures
-[链接 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[链接 9]: http://azure.microsoft.com/services/mobile-engagement/
-[链接 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[链接 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[链接 12]: mobile-engagement-user-interface-navigation.md
-[链接 13]: mobile-engagement-user-interface-home.md
-[链接 14]: mobile-engagement-user-interface-my-account.md
-[链接 15]: mobile-engagement-user-interface-analytics.md
-[链接 16]: mobile-engagement-user-interface-monitor.md
-[链接 17]: mobile-engagement-user-interface-reach.md
-[链接 18]: mobile-engagement-user-interface-segments.md
-[链接 19]: mobile-engagement-user-interface-dashboard.md
-[链接 20]: mobile-engagement-user-interface-settings.md
-[链接 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[链接 22]: mobile-engagement-troubleshooting-guide-apis.md
-[链接 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[链接 24]: mobile-engagement-troubleshooting-guide-service.md
-[链接 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[链接 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[链接 27]: ../mobile-engagement-how-tos-first-push.md
-[链接 28]: ../mobile-engagement-how-tos-test-campaign.md
-[链接 29]: ../mobile-engagement-how-tos-personalize-push.md
-[链接 30]: ../mobile-engagement-how-tos-differentiate-push.md
-[链接 31]: ../mobile-engagement-how-tos-schedule-campaign.md
-[链接 32]: ../mobile-engagement-how-tos-text-view.md
-[链接 33]: ../mobile-engagement-how-tos-web-view.md
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
+[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[Link 7]: https://account.windowsazure.com/PreviewFeatures
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: ../mobile-engagement-how-tos-first-push.md
+[Link 28]: ../mobile-engagement-how-tos-test-campaign.md
+[Link 29]: ../mobile-engagement-how-tos-personalize-push.md
+[Link 30]: ../mobile-engagement-how-tos-differentiate-push.md
+[Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
+[Link 32]: ../mobile-engagement-how-tos-text-view.md
+[Link 33]: ../mobile-engagement-how-tos-web-view.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "联合使用 Site Recovery 与 Azure 自动化 DSC，将 VMware 虚拟机复制到 Azure | Microsoft 文档"
-description: "介绍如何使用 Azure 自动化 DSC 将适用于虚拟机/物理机的 Azure Site Recovery 移动服务和 Azure 代理自动部署到 Azure。"
+title: "使用 Azure Automation DSC 部署 Site Recovery 移动服务 | Microsoft 文档"
+description: "介绍如何使用 Azure Automation DSC 将适用于 VMware VM 和物理机服务器复制的 Azure Site Recovery 移动服务与 Azure 代理自动部署到 Azure"
 services: site-recovery
 documentationcenter: 
 author: krnese
@@ -12,15 +12,15 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/06/2017
 ms.author: krnese
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b5895b772d411f783480275ee990163f662b7ee2
+ms.sourcegitcommit: efacf5d10b80fbeea7bd3d2569d878bd8bfa002b
+ms.openlocfilehash: ac6b72bbb70f838493a7e4857217f7c0e669841c
 
 
 ---
-# <a name="replicate-vmware-virtual-machines-to-azure-by-using-site-recovery-with-azure-automation-dsc"></a>联合使用 Site Recovery 与 Azure 自动化 DSC，将 VMware 虚拟机复制到 Azure
+# <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>使用 Azure Automation DSC 部署移动服务以复制 VM
 在 Operations Management Suite 中，我们提供了全面的备份和灾难恢复解决方案，方便你在业务连续性计划中使用。
 
 我们可以通过使用 Hyper-V 副本，先从 Hyper-V 开启这段学习旅程。 但我们在支持异类安装方面已经进行了扩展，因为客户在自己的云中拥有多个虚拟机监控程序和平台。
@@ -50,31 +50,31 @@ ms.openlocfilehash: b5895b772d411f783480275ee990163f662b7ee2
 ## <a name="prerequisites"></a>先决条件
 * 一个存储库，用于存储所需设置
 * 一个存储库，用于存储注册到管理服务器时所需的通行短语
-  
+
   > [!NOTE]
   > 将会为每个管理服务器生成一个唯一的通行短语。 若要部署多个管理服务器，需确保将正确的通行短语存储在 passphrase.txt 文件中。
-  > 
-  > 
+  >
+  >
 * 在计算机上安装 Windows Management Framework (WMF) 5.0，需要启用以获取保护（Automation DSC 的要求）
-  
+
   > [!NOTE]
   > 如需将 DSC 用于安装了 WMF 4.0 的 Windows 计算机上，请参阅[在断开连接的环境中使用 DSC](#Use DSC in disconnected environments) 部分。
-  > 
-  > 
+  >
+  >
 
 移动服务可以通过命令行安装，并可接受多个参数。 因此，在从安装中提取二进制文件后，需要保留这些文件，并将其存储在能够使用 DSC 配置进行检索的某个位置。
 
 ## <a name="step-1-extract-binaries"></a>步骤 1：提取二进制文件
 1. 若要提取进行此安装所需的文件，请在管理服务器上浏览到以下目录：
-   
+
     **\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**
-   
+
     在此文件夹中，应会看到一个 MSI 文件，其名称为：
-   
+
     **Microsoft-ASR_UA_version_Windows_GA_date_Release.exe**
-   
+
     使用以下命令来提取安装程序：
-   
+
     **.\Microsoft-ASR_UA_9.1.0.0_Windows_GA_02May2016_release.exe /q /x:C:\Users\Administrator\Desktop\Mobility_Service\Extract**
 2. 选择所有文件，将其发送到压缩的文件夹 (zip)。
 
@@ -205,8 +205,8 @@ configuration ASRMobilityService {
 
 > [!NOTE]
 > 请记住，需根据实际的管理服务器替换配置中的 CSIP，这样代理才会正确进行连接并使用正确的通行短语。
-> 
-> 
+>
+>
 
 ## <a name="step-3-upload-to-automation-dsc"></a>步骤 3：上载到 Automation DSC
 由于所进行的 DSC 配置会导入所需的 DSC 资源模块 (xPSDesiredStateConfiguration)，因此，需要先将该模块导入 Automation 中，然后才能上载 DSC 配置。
@@ -255,8 +255,8 @@ $AAAccount | Start-AzureRmAutomationDscCompilationJob -ConfigurationName ASRMobi
 ## <a name="step-4-onboard-machines-to-automation-dsc"></a>步骤 4 ：将计算机加入 Automation DSC
 > [!NOTE]
 > 完成此方案的一个先决条件是，你的 Windows 计算机已使用最新版的 WMF 进行了更新。 可以从[下载中心](https://www.microsoft.com/download/details.aspx?id=50395)下载和安装正确版本的平台。
-> 
-> 
+>
+>
 
 现在将创建需应用到节点的 DSC 元配置。 若要成功，你需要检索适用于 Azure 中所选自动化帐户的终结点 URL 和主密钥。 可以在 Automation 帐户的“**所有设置**”边栏选项卡上的“**密钥**”下找到这些值。
 
@@ -514,7 +514,6 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

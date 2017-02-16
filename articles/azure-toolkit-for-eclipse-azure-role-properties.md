@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
 
 
 ---
@@ -70,7 +70,7 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 * 当应用程序作为云服务运行时，用于保存缓存状态的存储帐户名称；如果你不想保存缓存状态，则为“无”。 （在计算模拟器中运行应用程序时，不使用存储帐户名称。）如果将存储帐户名称设置为“(自动)”（这是默认值），则缓存配置将自动使用在“发布到 Azure”对话框中选择的同一存储帐户。
 
 > [!NOTE]
-> 仅使用 Eclipse 工具包的发布向导发布部署时，“(自动)”设置才能产生所需的效果。 如果改为使用外部机制（如 [Azure 管理门户][Azure 管理门户]）手动发布 .cspkg 文件，部署将不能正常工作。
+> 仅使用 Eclipse 工具包的发布向导发布部署时，“(自动)”设置才能产生所需的效果。 如果改为使用外部机制（如 [Azure 管理门户][Azure Management Portal]）手动发布 .cspkg 文件，部署将不能正常工作。
 > 
 > 
 
@@ -93,7 +93,7 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 若要删除某个缓存，请在“缓存”属性页中选择该缓存并单击“删除”按钮，然后单击“是”以确认删除。
 
-有关如何使用缓存的详细信息，请参阅[如何使用并置缓存][如何使用并置缓存]。
+有关如何使用缓存的详细信息，请参阅[如何使用并置缓存][How to Use Co-located Caching]。
 
 <a name="certificates_properties"></a> 
 
@@ -102,7 +102,7 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 ![][ic710964]
 
-在此对话框中，可以添加或删除由 Eclipse 项目引用的证书。 请注意，此处列出的证书不会自动存储在任何 Java 密钥库内，因此不会自动可供从 Java 应用程序中进行任何使用。 它们仅注册到 Azure 中，以便可以预先加载到运行你的部署的虚拟机上的 Windows 证书存储中，随后供其他 Windows 软件使用。 目前，在“证书”对话框中，以这种引用方式使用证书的工具包的唯一功能是 [SSL 卸载][SSL Offloading]，因为它依赖于 Internet Information Services (IIS) 和应用程序请求路由 (ARR)，这些软件和模块需要正确的证书才能以这种方式可供使用。
+在此对话框中，可以添加或删除由 Eclipse 项目引用的证书。 请注意，此处列出的证书不会自动存储在任何 Java 密钥库内，因此不会自动可供从 Java 应用程序中进行任何使用。 它们仅注册到 Azure 中，以便可以预先加载到运行你的部署的虚拟机上的 Windows 证书存储中，随后供其他 Windows 软件使用。 目前，使用“证书”对话框中以这种方式引用的证书的工具包的唯一功能是 [SSL 卸载][SSL Offloading]，因为它依赖于 Internet Information Services (IIS) 和应用程序请求路由 (ARR)，这些软件和模块需要正确的证书才能以这种方式可供使用。
 
 当你使用发布向导将项目部署到 Azure 时，系统将提示你指向与这些证书对应的个人信息交换 (PFX) 文件并提供其密码，以便自动将其上载到 Azure 服务，但前提是这些文件以前尚未上载到那里。
 
@@ -181,7 +181,7 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 ![][ic719504]
 
-有关调试的信息，请参阅[在 Eclipse 中调试 Azure 应用程序][在 Eclipse 中调试 Azure 应用程序]。
+有关调试的信息，请参阅[在 Eclipse 中调试 Azure 应用程序][Debugging Azure Applications in Eclipse]。
 
 <a name="endpoints_properties"></a> 
 
@@ -204,9 +204,9 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 如果要使用单个端口号（而不是范围），请将范围结束的文本框留空。
 
-对于设为自动的端口，如果需要确定在运行时实际使用哪个端口，应用程序可以使用 [com.microsoft.windowsazure.serviceruntime 包摘要][com.microsoft.windowsazure.serviceruntime 包摘要]中所述的 Azure 服务运行时 API。
+对于设为自动的端口，如果需要确定在运行时实际使用哪个端口，应用程序可以使用 [com.microsoft.windowsazure.serviceruntime 包摘要][com.microsoft.windowsazure.serviceruntime package summary]中所述的 Azure 服务运行时 API。
 
-若要了解如何使用实例输入终结点来帮助调试多实例部署，请参阅[调试多实例部署中的特定角色实例][调试多实例部署中的特定角色实例]。
+若要了解如何使用实例输入终结点来帮助调试多实例部署，请参阅[调试多实例部署中的特定角色实例][Debugging a specific role instance in a multi-instance deployment]。
 
 若要修改某个终结点，请在“终结点”属性页上选择该终结点，然后单击“编辑”按钮。 此时将打开一个对话框让你修改终结点名称、类型以及公用和专用端口。 按“确定”保存修改的终结点值。
 
@@ -256,7 +256,7 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 ![][ic719492]
 
-如需相关信息，请参阅[会话相关性][会话相关性]。 另外，请注意此功能在 SSL 卸载上下文中的行为，如 [SSL 卸载][SSL 卸载]中所述。
+如需相关信息，请参阅[会话相关性][Session Affinity]。 另外，请注意此功能在 SSL 卸载上下文中的行为，如 [SSL 卸载][SSL Offloading]中所述。
 
 <a name="local_storage_properties"></a> 
 
@@ -267,7 +267,7 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 （可选）还可以指定对应于本地存储的环境变量。
 
-默认情况下，部署到 Azure 中的所有内容都放置（并解压缩）在角色实例的 **approot** 文件夹中。 虽然大多数简单部署在解压缩后都适合那里，但为 **approot** 目录分配的空间是有限的并且未明确定义（小于 1 GB 是合理的经验法则）。 因此，为了确保 Azure 为可能不适合 **approot** 文件夹的较大部署分配足够的磁盘空间，应使用“本地存储”对话框设置本地存储资源。 有关执行此操作的简单方法，请参阅[实施大型部署][实施大型部署]。
+默认情况下，部署到 Azure 中的所有内容都放置（并解压缩）在角色实例的 **approot** 文件夹中。 虽然大多数简单部署在解压缩后都适合那里，但为 **approot** 目录分配的空间是有限的并且未明确定义（小于 1 GB 是合理的经验法则）。 因此，为了确保 Azure 为可能不适合 **approot** 文件夹的较大部署分配足够的磁盘空间，应使用“本地存储”对话框设置本地存储资源。 有关执行此操作的简单方法，请参阅[实施大型部署][Deploying Large Deployments]。
 
 可以轻松地使用由 Eclipse 工具包自动关联到资源的环境变量从启动脚本（例如，**startup.cmd**）引用存储资源，如“本地存储”对话框中所示。 该环境变量将包含在执行启动脚本时已配置的本地资源的完整路径。 
 
@@ -398,38 +398,38 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 ![][ic719481]
 
-在此对话框中，你可以启用 SSL 卸载，以便可以在 Azure 上的 Java 部署中轻松地启用安全超文本传输协议 (HTTPS) 支持，而无需在 Java 应用程序服务器中配置 SSL。 有关详细信息，请参阅 [SSL 卸载][SSL Offloading]和[如何使用 SSL 卸载][如何使用 SSL 卸载]。
+在此对话框中，你可以启用 SSL 卸载，以便可以在 Azure 上的 Java 部署中轻松地启用安全超文本传输协议 (HTTPS) 支持，而无需在 Java 应用程序服务器中配置 SSL。 有关详细信息，请参阅 [SSL 卸载][SSL Offloading]和[如何使用 SSL 卸载][How to Use SSL Offloading]。
 
 ## <a name="see-also"></a>另请参阅
-[用于 Eclipse 的 Azure 工具包][用于 Eclipse 的 Azure 工具包]
+[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]
 
-[安装用于 Eclipse 的 Azure 工具包][安装用于 Eclipse 的 Azure 工具包]
+[安装用于 Eclipse 的 Azure 工具包][Installing the Azure Toolkit for Eclipse]
 
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序][在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+[在 Eclipse 中为 Azure 创建 Hello World 应用程序][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure 项目属性][Azure 项目属性]
+[Azure 项目属性][Azure Project Properties]
 
-[Azure 存储帐户列表][Azure 存储帐户列表]
+[Azure 存储帐户列表][Azure Storage Account List]
 
-有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java 开发人员中心]。
+有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java Developer Center]。
 
 <!-- URL List -->
 
-[Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure 管理门户]: http://go.microsoft.com/fwlink/?LinkID=512959
-[用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure 项目属性]: http://go.microsoft.com/fwlink/?LinkID=699524
-[Azure 存储帐户列表]: http://go.microsoft.com/fwlink/?LinkID=699528
-[com.microsoft.windowsazure.serviceruntime 包摘要]: http://azure.github.io/azure-sdk-for-java/com/microsoft/windowsazure/serviceruntime/package-summary.html
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
-[调试多实例部署中的特定角色实例]: http://go.microsoft.com/fwlink/?LinkID=699535#debugging_specific_role_instance
-[在 Eclipse 中调试 Azure 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699535
-[实施大型部署]: http://go.microsoft.com/fwlink/?LinkID=699536
-[如何使用并置缓存]: http://go.microsoft.com/fwlink/?LinkID=699542
-[如何使用 SSL 卸载]: http://go.microsoft.com/fwlink/?LinkID=699545
-[安装用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkId=699546
-[会话相关性]: http://go.microsoft.com/fwlink/?LinkID=699548
-[SSL 卸载]: http://go.microsoft.com/fwlink/?LinkID=699549
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Azure Project Properties]: http://go.microsoft.com/fwlink/?LinkID=699524
+[Azure Storage Account List]: http://go.microsoft.com/fwlink/?LinkID=699528
+[com.microsoft.windowsazure.serviceruntime package summary]: http://azure.github.io/azure-sdk-for-java/com/microsoft/windowsazure/serviceruntime/package-summary.html
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Debugging a specific role instance in a multi-instance deployment]: http://go.microsoft.com/fwlink/?LinkID=699535#debugging_specific_role_instance
+[Debugging Azure Applications in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699535
+[Deploying Large Deployments]: http://go.microsoft.com/fwlink/?LinkID=699536
+[How to Use Co-located Caching]: http://go.microsoft.com/fwlink/?LinkID=699542
+[How to Use SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699545
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699548
+[SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549
 
 <!-- IMG List -->
 
@@ -460,6 +460,6 @@ ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

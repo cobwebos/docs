@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/04/2016
-ms.author: vturecek
+ms.date: 01/04/2017
+ms.author: bharatn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fcc939fc1a70e179f714e73bc5757ed750974f17
+ms.sourcegitcommit: c738b9d6461da032f216b8a51c69204066d5cfd3
+ms.openlocfilehash: 9487209a8e5d976d56da50b8c70e69950d0ad129
 
 
 ---
@@ -47,7 +47,7 @@ Service Fabric 反向代理在群集的所有节点上运行。 它会代表客�
 ![外部通信][0]
 
 > [!WARNING]
-> 在负载平衡器上配置反向代理的端口以后，即可从群集外部访问群集中公开了 HTTP 终结点的所有微服务。
+> 在负载均衡器上配置反向代理的端口以后，即可从群集外部访问群集中公开了 HTTP 终结点的所有微服务。
 > 
 > 
 
@@ -58,7 +58,7 @@ Service Fabric 反向代理在群集的所有节点上运行。 它会代表客�
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&Timeout=<timeout_in_seconds>
 ```
 
-* **http(s)：**可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 如果为 HTTPS 流量，则会在反向代理中出现 SSL 终止的情况。 由反向代理转发到群集中服务的请求是通过 HTTP 进行的。
+* **http(s)：**可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 如果为 HTTPS 流量，则会在反向代理中出现 SSL 终止的情况。 由反向代理转发到群集中服务的请求是通过 HTTP 进行的。 **请注意，当前不支持 HTTPS 服务。**
 * **群集 FQDN | 内部 IP：**对于外部客户端，可以配置反向代理，这样则可通过群集域（例如，mycluster.eastus.cloudapp.azure.com）访问反向代理。 默认情况下，反向代理在每个节点上运行，因此对于内部流量，可以在本地主机或任意内部节点 IP（例如 10.0.0.1）上访问。
 * **Port：**为反向代理指定的端口。 例如：19008。
 * **ServiceInstanceName：**这是要在不使用“fabric:/”方案的情况下访问的服务的完全限定的已部署服务实例名称。 例如，若要访问服务 *fabric:/myapp/myservice/*，可使用 *myapp/myservice*。
@@ -131,7 +131,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 获得要部署的群集的模板以后（不管你是通过示例模板获得，还是通过创建自定义 Resource Manager 模板来获得），即可通过以下步骤在模板中启用反向代理。
 
-1. 在模板的[“参数”部分](../resource-group-authoring-templates.md)定义反向代理的端口。
+1. 在模板的[“参数”部分](../azure-resource-manager/resource-group-authoring-templates.md)定义反向代理的端口。
    
     ```json
     "SFReverseProxyPort": {
@@ -142,7 +142,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         }
     },
     ```
-2. 为**群集**的[“资源类型”部分](../resource-group-authoring-templates.md)中的每个 nodetype 对象指定端口
+2. 为**群集**的[“资源类型”部分](../azure-resource-manager/resource-group-authoring-templates.md)中的每个 nodetype 对象指定端口
    
     对于“2016-09-01”之前的 apiVersion，端口使用参数名称 ***httpApplicationGatewayEndpointPort*** 标识
    
@@ -229,7 +229,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         ]
     }
     ```
-4. 若要在反向代理的端口上配置 SSL 证书，请在**群集**的[“资源类型”部分](../resource-group-authoring-templates.md)将证书添加到 httpApplicationGatewayCertificate 属性中
+4. 若要在反向代理的端口上配置 SSL 证书，请在**群集**的[“资源类型”部分](../azure-resource-manager/resource-group-authoring-templates.md)将证书添加到 httpApplicationGatewayCertificate 属性中
    
     对于“2016-09-01”之前的 apiVersion，证书使用参数名称 ***httpApplicationGatewayCertificate*** 标识
    
@@ -287,6 +287,6 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

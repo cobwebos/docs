@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ebbd4166bc3f76c91823ee17b8b9c460feb9e194
+ms.sourcegitcommit: 244cc5e4f053901a8de94adb8fc983edf30ca516
+ms.openlocfilehash: 46b3ade8bb58ccd0637ce4f2cf5c484f599e6173
 
 
 ---
@@ -75,7 +75,7 @@ OpsGenie 充当 Azure 所生成的警报的发送器。 OpsGenie 根据值勤计
 [查看相关文档。][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提供一流的支持。 如今，除了 Azure 服务的平台级指标通知以外，PagerDuty 还支持 Azure 应用程序的 Azure 监视器警报通知、自动缩放通知和审核日志事件通知。 这些增强功能使用户能够进一步洞察核心 Azure 平台，充分使用 PagerDuty 的实时响应事件管理功能。 通过 Webhook 可以实现扩展的 Azure 集成，以便快速轻松地完成设置和自定义。
+PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提供一流的支持。 如今，除了 Azure 服务的平台级指标通知以外，PagerDuty 还支持  Azure Monitor 警报通知、自动缩放通知和审核日志事件通知。 这些增强功能使用户能够进一步洞察核心 Azure 平台，充分使用 PagerDuty 的实时响应事件管理功能。 通过 Webhook 可以实现扩展的 Azure 集成，以便快速轻松地完成设置和自定义。
 
 [查看相关文档。][pagerduty-doc]
 
@@ -90,7 +90,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [了解详细信息。][sumologic-doc]
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解活动日志（以前称为审核日志）](../resource-group-audit.md)
+* [详细了解活动日志（以前称为审核日志）](../azure-resource-manager/resource-group-audit.md)
 * [将 Azure 活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
 
 <!--Connectors Documentation-->
@@ -137,6 +137,6 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

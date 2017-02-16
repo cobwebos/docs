@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Namely 集成 | Microsoft 文档"
+title: "教程：Azure Active Directory 与 Namely 集成 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Namely 之间配置单一登录。"
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c2f2665b217b2de1656e77dae0d9b6c2b439ff5
+ms.sourcegitcommit: 66b1c7769f1141aa2853f77fdb82ad16f5b4e6d3
+ms.openlocfilehash: ec2f9618c4cd4a2944eec8efec83d325da058bb1
 
 
 ---
@@ -117,7 +117,7 @@ ms.openlocfilehash: 3c2f2665b217b2de1656e77dae0d9b6c2b439ff5
    
     ![配置单一登录](./media/active-directory-saas-namely-tutorial/tutorial_namely_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
     b. 单击“下一步”。
 5. 在另一个浏览器窗口中，以管理员身份登录到你的 Namely 公司站点。
@@ -136,7 +136,7 @@ ms.openlocfilehash: 3c2f2665b217b2de1656e77dae0d9b6c2b439ff5
    
     a. 单击“启用 SAML”。 
    
-    b. 在 Azure 经典门户中，在“在 Namely 处配置单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“标识提供程序 DDO URL”文本框中。 
+    b. 在 Azure 经典门户中，在“在 Namely 处配置单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“标识提供程序 SSO URL”文本框中。 
    
     c. 在记事本中打开下载的证书，复制其内容，然后将其粘贴到“标识提供程序证书”文本框中。    
    
@@ -173,7 +173,7 @@ ms.openlocfilehash: 3c2f2665b217b2de1656e77dae0d9b6c2b439ff5
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-namely-tutorial/create_aaduser_06.png) 
@@ -185,7 +185,7 @@ ms.openlocfilehash: 3c2f2665b217b2de1656e77dae0d9b6c2b439ff5
    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-namely-tutorial/create_aaduser_07.png) 
@@ -276,6 +276,6 @@ ms.openlocfilehash: 3c2f2665b217b2de1656e77dae0d9b6c2b439ff5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

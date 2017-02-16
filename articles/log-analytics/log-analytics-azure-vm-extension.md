@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 05e9e10d9a37f90b679175a3ed9d78ed05d9e447
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
 
 
 ---
@@ -121,7 +121,7 @@ $location = $vm.Location
 
 通过将 Log Analytics 代理作为资源管理器模板的一部分，可以确保将每个虚拟机预配置为向 Log Analytics 工作区报告。
 
-有关资源管理器模板的详细信息，请参阅 [创作 Azure 资源管理器模板](../resource-group-authoring-templates.md)。
+有关资源管理器模板的详细信息，请参阅 [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 以下是用于部署已安装 Microsoft Monitoring Agent 扩展并运行 Windows 的虚拟机的资源管理器模板示例。 该模板是典型的虚拟机模板，具有以下添加件：
 
@@ -161,7 +161,7 @@ $location = $vm.Location
     "workspaceName": {
       "type": "string",
       "metadata": {
-         "description": "OMD workspace name"
+         "description": "OMS workspace name"
       }
     },
     "windowsOSVersion": {
@@ -404,6 +404,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

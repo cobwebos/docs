@@ -1,5 +1,5 @@
 ---
-title: "Azure 数据目录 | Microsoft Docs"
+title: "针对 Azure 数据目录的键盘快捷方式 | Microsoft Docs"
 description: "本文介绍 Azure 数据目录的键盘快捷方式。"
 services: data-catalog
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: data-catalog
 ms.date: 01/19/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 190f46f9994be1a0699488eb813955070070ee51
+ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
+ms.openlocfilehash: 809b010fbbc0b5c1cbc2d5d5474374a4467defb4
 
 
 ---
@@ -89,6 +89,6 @@ ms.openlocfilehash: 190f46f9994be1a0699488eb813955070070ee51
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

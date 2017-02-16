@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: be100e88e5d10c317be10aa829124a9be30e28b4
+ms.sourcegitcommit: 3dc6373c9aaa01000a7da282e48557f175f040e7
+ms.openlocfilehash: a6588718fdc0b561a70f25ac4d674c5edf08d8cb
 
 
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
 
-在应用中安装 [Visual Studio Application Insights][启动] SDK 后，它会将有关应用的遥测数据发送到云中。 负责的开发人员自然想要确切了解发送了哪些数据、数据的后续情况，以及如何控制数据。 具体而言，是否发送了敏感数据？数据存储在何处？其安全性怎样？ 
+在应用中安装 [Azure Application Insights][start] SDK 后，它会将有关应用的遥测数据发送到云中。 负责的开发人员自然想要确切了解发送了哪些数据、数据的后续情况，以及如何控制数据。 具体而言，是否发送了敏感数据？数据存储在何处？其安全性怎样？ 
 
 首先，简短的答案是：
 
 * “按原样”运行的标准遥测模块不太可能将敏感数据发送到服务。 遥测考虑到负载、性能和使用指标、异常报告和其他诊断数据。 诊断报告中显示的主要用户数据是 URL；但是，应用在任何情况下都不应该将敏感数据以明文形式放在 URL 中。
-* 可以编写发送其他自定义遥测数据的代码，帮助进行诊断与监视使用情况。 （这种可扩展性是 Application Insights 的突出特性之一）。在编写此代码时，有可能不小心包含个人数据和其他敏感数据。 如果应用程序使用此类数据，应对编写的代码采取严格的审查过程。
+* 可以编写发送其他自定义遥测数据的代码，帮助进行诊断与监视使用情况。 （这种可扩展性是 Application Insights 的突出特性之一）。在编写此代码时，有可能不小心包含个人数据和其他敏感数据。 如果应用程序可处理此类数据，则应对编写的所有代码进行彻底审查。
 * 开发和测试应用时，可以轻松检查 SDK 发送的内容。 数据将显示在 IDE 和浏览器的调试输出窗口中。 
 * 数据保存在美国的 [Microsoft Azure](http://azure.com) 服务器中。 （但应用可在任何位置运行）。Azure 有[严格的安全过程，并符合各种法规标准](https://azure.microsoft.com/support/trust-center/)。 只有你和指定的团队可以访问数据。 Microsoft 工作人员只会在你知情的情况下和受限的具体情况下，才对数据拥有受限的访问权限。 数据在传输时经过加密，但在服务器中不会加密。
 
 本文的余下部分详细阐述上述答案。 本文的内容简单直白，因此，你可以将其转达给不属于你的直属团队的同事。
 
 ## <a name="what-is-application-insights"></a>什么是 Application Insights？
-[Visual Studio Application Insights][启动] 是 Microsoft 提供的一项服务，可帮助改进实时应用程序的性能和可用性。 它在应用程序运行时全程进行监视，包括测试期间以及发布或部署之后。 Application Insights 可创建图表和表格来显示多种信息，例如，一天中的哪些时间用户最多、应用的响应能力如何，以及应用依赖的任何外部服务是否顺利地为其提供服务。 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 此外，如果应用的可用性和性能有任何变化，服务会向你发送电子邮件。
+[Azure Application Insights][start] 是 Microsoft 提供的一项服务，可帮助改进实时应用程序的性能和可用性。 它在应用程序运行时全程进行监视，包括测试期间以及发布或部署之后。 Application Insights 可创建图表和表格来显示多种信息，例如，一天中的哪些时间用户最多、应用的响应能力如何，以及应用依赖的任何外部服务是否顺利地为其提供服务。 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 此外，如果应用的可用性和性能有任何变化，服务会向你发送电子邮件。
 
 若要获取此功能，需在应用程序中安装 Application Insights SDK，该 SDK 将成为应用程序代码的一部分。 当应用运行时，SDK 将监视其操作，并将遥测发送到 Application Insights 服务。 这是 [Microsoft Azure](http://azure.com) 托管的云服务。 （不过，Application Insights 适用于任何应用程序，而不只是 Azure 中托管的应用程序）。
 
@@ -86,9 +86,9 @@ Application Insights SDK 可用于多种应用程序类型：托管在你自己�
 可以编写[遥测处理器插件](app-insights-api-filtering-sampling.md)来实现此目的。
 
 ## <a name="how-long-is-the-data-kept"></a>数据保留多长时间？
-原始数据点（即，可以在 Analytics 中查询，在“搜索”中检查的项）保留 90 天。 如果需要将数据保留 7 天以上，可以使用[连续导出](app-insights-export-telemetry.md)将它复制到存储帐户。
+原始数据点（即，可以在 Analytics 中查询，在“搜索”中检查的项）保留 90 天。 如果需要将数据保留&7; 天以上，可以使用[连续导出](app-insights-export-telemetry.md)将它复制到存储帐户。
 
-1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）保留 30 天，1 小时或 1 天粒度（具体取决于类型）的数据至少保留 90 天。
+1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）可保留 90 天。
 
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 你和你的团队成员（如果使用组织帐户）可以看到数据。 
@@ -153,7 +153,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 Application Insights 不会筛选或删除数据。 你应该适当地管理数据，避免将此类数据发送到 Application Insights。
 
 ## <a name="data-sent-by-application-insights"></a>Application Insights 发送的数据
-不同的平台有不同的 SDK，并且有多个可安装的组件。 （请参阅 [Application Insights - 概述][启动]。）每个组件发送不同的数据。
+不同的平台有不同的 SDK，并且有多个可安装的组件。 （请参阅 [Application Insights - 概述][start]。）每个组件发送不同的数据。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>不同情况下发送的数据类
 | 操作 | 收集的数据类（参阅下一表格） |
@@ -161,14 +161,14 @@ Application Insights 不会筛选或删除数据。 你应该适当地管理数�
 | [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>请求<br/>**异常**<br/>会话<br/>users |
 | [在 IIS 上安装状态监视器][redfield] |依赖项<br/>ServerContext<br/>推断<br/>性能计数器 |
 | [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
-| [将 JavaScript SDK 添加到网页][客户端] |ClientContext <br/>推断<br/>Page<br/>ClientPerf<br/>Ajax |
+| [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>Page<br/>ClientPerf<br/>Ajax |
 | [定义默认属性][apiproperties] |所有标准事件和自定义事件的**属性** |
-| [调用 TrackMetric][api] |数字值<br/>**属性** |
+| [调用 TrackMetricapi][api] |数字值<br/>**属性** |
 | [调用跟踪*][api] |事件名称<br/>**属性** |
 | [调用 TrackException][api] |**异常**<br/>堆栈转储<br/>**属性** |
 | SDK 无法收集数据。 例如： <br/> - 无法访问性能计数器<br/> - 遥测初始值设定项异常 |SDK 诊断 |
 
-有关[适用于其他平台的 SDK][平台]，请参阅相关文档。
+有关[适用于其他平台的 SDK][platforms]，请参阅相关文档。
 
 #### <a name="the-classes-of-collected-data"></a>收集的数据类
 | 收集的数据类 | 包含（此列表并不详尽） |
@@ -193,7 +193,7 @@ Application Insights 不会筛选或删除数据。 你应该适当地管理数�
 | 可用性 |Web 测试响应代码、每个测试步骤的持续时间、测试名称、时间戳、成功结果、响应时间、测试位置 |
 | SDK 诊断 |跟踪消息或异常 |
 
-可以[通过编辑 ApplicationInsights.config][配置] 来关闭某些数据
+可以通过[编辑 ApplicationInsights.config 来关闭某些数据][config]
 
 ## <a name="credits"></a>致谢
 此产品包含 MaxMind 创建的 GeoLite2 数据，可从 [http://www.maxmind.com](http://www.maxmind.com) 获取。
@@ -213,18 +213,18 @@ Application Insights 不会筛选或删除数据。 你应该适当地管理数�
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[客户端]: app-insights-javascript.md
-[配置]: app-insights-configuration-with-applicationinsights-config.md
+[client]: app-insights-javascript.md
+[config]: app-insights-configuration-with-applicationinsights-config.md
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
-[平台]: app-insights-platforms.md
-[定价]: http://azure.microsoft.com/pricing/details/application-insights/
+[platforms]: app-insights-platforms.md
+[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[启动]: app-insights-overview.md
+[start]: app-insights-overview.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

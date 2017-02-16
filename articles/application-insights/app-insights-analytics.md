@@ -14,17 +14,18 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f760494cbe7341391f0ce51bb1161cb1395cbe5c
-ms.openlocfilehash: b56ac6e0b75492e8d784c5fc67e555f8f450b65f
+ms.sourcegitcommit: 70f77fd155627ef1d06cf466d19768a0eaad6856
+ms.openlocfilehash: 4d3393b935d2ebd24bccd0fe040f1948402f6e5b
 
 
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights 中的 Analytics
-[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍了 Analytics 查询语言。 
+[Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Analytics 查询语言。 
 
 * **[观看介绍视频](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
 * **[SQL 用户的备忘单](https://aka.ms/sql-analytics)**转换最常见的惯用语言。
+* **[语言参考](app-insights-analytics-reference.md)**了解如何使用 Analytics 查询语言的所有强大功能。
 
 ## <a name="queries-in-analytics"></a>Analytics 中的查询
 典型的查询是一个*源*表，后跟一系列以 `|` 隔开的*运算符*。 
@@ -80,6 +81,6 @@ ms.openlocfilehash: b56ac6e0b75492e8d784c5fc67e555f8f450b65f
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

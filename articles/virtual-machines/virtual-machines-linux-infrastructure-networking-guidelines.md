@@ -1,5 +1,5 @@
 ---
-title: "网络基础结构准则 | Microsoft Docs"
+title: "Azure 网络基础结构准则 | Microsoft Docs"
 description: "了解用于在 Azure 基础结构服务中部署虚拟网络的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7bf465a884a5adcf86d0039d096a3ba8663b6979
+ms.sourcegitcommit: 70e52cefccee4b963e512724b96525bcbacf330c
+ms.openlocfilehash: 906ea9308ffee9dc719e1f17171deaba394a26d6
 
 
 ---
-# <a name="networking-infrastructure-guidelines"></a>网络基础结构准则
+# <a name="azure-networking-infrastructure-guidelines"></a>Azure 网络基础结构准则
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 本文着重于了解 Azure 内虚拟网络的必要计划步骤，以及现有本地环境之间的连接性。
@@ -106,6 +106,6 @@ ms.openlocfilehash: 7bf465a884a5adcf86d0039d096a3ba8663b6979
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

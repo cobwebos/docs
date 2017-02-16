@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: d36d806d14fbaa813ea9e8e6ec132fda998bb22c
+ms.sourcegitcommit: f0b0c3bc9daf1e44dfebecedf628b09c97394f94
+ms.openlocfilehash: d993ba4bdff690ee6f0867cdbf0a8059fb5847ee
 
 
 ---
@@ -27,8 +27,10 @@ ms.openlocfilehash: d36d806d14fbaa813ea9e8e6ec132fda998bb22c
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
-创建一个空的 Node.js 应用程序。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][创建 Node.js 应用程序并将其部署到 Azure 网站]或[Node.js 云服务][Node.js 云服务]（使用 Windows PowerShell）。
+创建一个空的 Node.js 应用程序。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][Create and deploy a Node.js application to an Azure Website]或 [Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用 Service Bus
 若要使用 Azure 服务总线，请下载并使用 Node.js Azure 包。 此包包括一组用来与服务总线 REST 服务通信的库。
@@ -55,27 +57,27 @@ ms.openlocfilehash: d36d806d14fbaa813ea9e8e6ec132fda998bb22c
 ### <a name="import-the-module"></a>导入模块
 使用记事本或其他文本编辑器将以下内容添加到应用程序的 **server.js** 文件的顶部：
 
-```
+```javascript
 var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>设置 Azure 服务总线连接
 Azure 模块将读取环境变量 AZURE\_SERVICEBUS\_NAMESPACE and AZURE\_SERVICEBUS\_ACCESS\_KEY 以获取连接到服务总线所需的信息。 如果未设置这些环境变量，则在调用 **createServiceBusService** 时必须指定帐户信息。
 
-有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][使用存储构建 Node.js 云服务]。
+有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储的 Node.js 云服务][Node.js Cloud Service with Storage]。
 
-有关在 [Azure 经典门户][Azure 经典门户]中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][使用存储构建 Node.js Web 应用程序]。
+有关在 [Azure 经典门户][Azure classic portal]中为 Azure 网站设置环境变量的示例，请参阅[使用存储的 Node.js Web 应用程序][Node.js Web Application with Storage]。
 
 ## <a name="create-a-queue"></a>创建队列
 可以通过 **ServiceBusService** 对象处理服务总线队列。 以下代码创建 **ServiceBusService** 对象。 将它添加到靠近 **server.js** 文件顶部、用于导入 Azure 模块的语句之后的位置：
 
-```
+```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
 通过对 **ServiceBusService** 对象调用 **createQueueIfNotExists**，将返回指定的队列（如果存在），否则将使用指定的名称创建一个新队列。 以下代码使用 **createQueueIfNotExists** 创建或连接到名为 `myqueue` 的队列：
 
-```
+```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
     if(!error){
         // Queue exists
@@ -85,7 +87,7 @@ serviceBusService.createQueueIfNotExists('myqueue', function(error){
 
 **createServiceBusService** 也支持其他选项，这些选项允许重写默认队列设置，如消息生存时间或最大队列大小。 以下示例将最大队列大小设置为 5 GB，将生存时间 (TTL) 值设置为 1 分钟：
 
-```
+```javascript
 var queueOptions = {
       MaxSizeInMegabytes: '5120',
       DefaultMessageTimeToLive: 'PT1M'
@@ -101,13 +103,13 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 ### <a name="filters"></a>筛选器
 可选的筛选操作可应用于使用 **ServiceBusService** 执行的操作。 筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
 
-```
+```javascript
 function handle (requestOptions, next)
 ```
 
 在对请求选项执行预处理后，该方法必须调用 `next` 并传递具有以下签名的回调：
 
-```
+```javascript
 function (returnObject, finalCallback, next)
 ```
 
@@ -115,7 +117,7 @@ function (returnObject, finalCallback, next)
 
 Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码创建一个 **ServiceBusService** 对象，该对象使用 **ExponentialRetryPolicyFilter**：
 
-```
+```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
 ```
@@ -125,7 +127,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 
 以下示例演示如何使用 **sendQueueMessage** 向名为 `myqueue` 的队列发送一条测试消息：
 
-```
+```javascript
 var message = {
     body: 'Test message',
     customProperties: {
@@ -138,7 +140,7 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][服务总线配额]。
+服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
 对 **ServiceBusService** 对象使用 **receiveQueueMessage**方法可从队列接收消息。 默认情况下，消息被读取后即从队列删除；但是你可以读取（速览）并锁定消息而不将其从队列删除，只要将可选参数 **isPeekLock** 设置为 **true** 即可。
@@ -149,7 +151,7 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 
 以下示例演示如何使用 **receiveQueueMessage** 接收和处理消息。 该示例先接收并删除一条消息，然后使用设置为 **true** 的 **isPeekLock** 接收一条消息，最后使用 **deleteMessage** 删除该消息：
 
-```
+```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
     if(!error){
         // Message received and deleted
@@ -177,22 +179,22 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 ## <a name="next-steps"></a>后续步骤
 若要了解有关队列的详细信息，请参阅以下资源。
 
-* [队列、主题和订阅][队列、主题和订阅]
-* GitHub 上的[Azure SDK for Node][Azure SDK for Node] 存储库
-* [Node.js 开发人员中心](/develop/nodejs/)
+* [队列、主题和订阅][Queues, topics, and subscriptions]
+* GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 存储库
+* [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
-[Azure 经典门户]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 
-[Node.js 云服务]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[队列、主题和订阅]: service-bus-queues-topics-subscriptions.md
-[创建 Node.js 应用程序并将其部署到 Azure 网站]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-[使用存储构建 Node.js 云服务]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
-[使用存储构建 Node.js Web 应用程序]: ../storage/storage-nodejs-how-to-use-table-storage.md
-[服务总线配额]: service-bus-quotas.md
+[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[Create and deploy a Node.js application to an Azure Website]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[Node.js Cloud Service with Storage]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
+[Node.js Web Application with Storage]: ../storage/storage-nodejs-how-to-use-table-storage.md
+[Service Bus quotas]: service-bus-quotas.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 门户将 VMM 云中的 Hyper-V 虚拟机复制到辅助 VMM 站点 | Microsoft 文档"
+title: "使用 Azure Site Recovery 将 VMM 中的 Hyper-V VM 复制到辅助站点 | Microsoft 文档"
 description: "介绍如何部署 Azure Site Recovery，以便使用 Azure 门户来协调 VMM 云中 Hyper-V VM 到辅助 VMM 站点的复制、故障转移和恢复。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 4e1521d1a49a83c4936bf64ba0177c5834a6c374
-ms.openlocfilehash: 0737a9015ff1584a8c82681dbb809f86ae44f48c
+ms.sourcegitcommit: 32c6e6d5f18dd0ec105b7ba66bb2ff1aed10558a
+ms.openlocfilehash: b3ac842794665030a7c99383b221a5e61282dd81
 
 
 ---
@@ -202,7 +202,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 5. 安装完成后，单击“注册”，以便在保管库中注册服务器。
 
     ![安装位置](./media/site-recovery-vmm-to-vmm/provider-register.png)
-6. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。 单击“资源组名称” 的 Azure 数据工厂。
+6. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。 单击“下一步”。
 
     ![服务器注册](./media/site-recovery-vmm-to-vmm-classic/vaultcred.PNG)
 7. 在“Internet 连接”中，指定在 VMM 服务器上运行的提供程序如何连接到 Internet。 **使用现有代理设置进行连接** ”以使用服务器上配置的默认 Internet 连接设置。
@@ -448,6 +448,6 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

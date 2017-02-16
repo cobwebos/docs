@@ -15,8 +15,8 @@ ms.workload: required
 ms.date: 10/05/2016
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: ef381ef234608e0ccbf7f3814bd1f23816100d25
-ms.openlocfilehash: 3d78ec39d75da4118cc06f49ece3aa852eefd538
+ms.sourcegitcommit: 1663126f43b8e1cd3e68b9e9b2bbbb67298bb8c1
+ms.openlocfilehash: 893e2f64377b9b00596dfdc00e6eba36c024fa66
 
 
 ---
@@ -57,7 +57,7 @@ ms.openlocfilehash: 3d78ec39d75da4118cc06f49ece3aa852eefd538
 
 * 如果你对物理服务器进行了故障转移，则会始终故障回复到新的 VMware VM。
   * 在故障回复物理计算机之前，请注意：
-    * 当从 Azure 故障转移回复到 VMware 时，受保护的物理计算机将回复成虚拟机。 受保护且已故障转移到 Azure 的 Windows Server 2008 R2 SP1 计算机无法故障回复。
+    * 当从 Azure 故障转移回复到 VMware 时，受保护的物理计算机将回复成虚拟机。 受保护且已故障转移到 Azure 的 Windows Server 2008 R2 SP1 物理计算机无法故障回复。 作为本地虚拟机启动的 WS 2008R2 SP1 能执行故障回复
     * 确保除了需要故障回复到的必要 ESX/ESXi 主机之外，还发现至少一台主目标服务器。
 * 如果故障回复到原始 VM，则需满足以下条件：
   
@@ -237,7 +237,7 @@ ms.openlocfilehash: 3d78ec39d75da4118cc06f49ece3aa852eefd538
 4. 如果使用 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版，则故障转移会成功，但故障回复不会成功。 需要升级为评估许可证才能启用故障回复。
 5. 如果无法从进程服务器访问 CS，可以针对 CS 计算机上的端口 443 运行 Telnet，检查进程服务器与 CS 之间的连接。 还可以尝试从 PS 计算机 ping CS。 连接到 CS 后，PS 服务器也应会发出检测信号。
 6. 如果尝试故障回复到备用 vCenter，请确保已发现新 vCenter，同时已发现主目标服务器。 一种典型的症状是，“重新保护”对话框中显示数据存储不可访问/不可见。
-7. 作为物理或虚拟本地计算机保护的 WS2008R2SP1 计算机无法从 Azure 故障回复到本地。
+7. 作为物理本地计算机保护的 WS2008R2SP1 计算机无法从 Azure 故障回复到本地。
 
 ## <a name="failing-back-with-expressroute"></a>使用 ExpressRoute 进行故障回复
 可以通过 VPN 连接或 Azure ExpressRoute 进行故障回复。 若要使用 ExpressRoute，请注意：
@@ -248,6 +248,6 @@ ms.openlocfilehash: 3d78ec39d75da4118cc06f49ece3aa852eefd538
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
-ms.openlocfilehash: bcb91660500484210c342a84595386ebb5e0bbbd
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: 8294842893742dcbc7a987421b454ceb7691450c
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: bcb91660500484210c342a84595386ebb5e0bbbd
 以下是它的工作原理：Azure AD B2C 在使用者的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 的现代方法从策略中指定的 URL 加载内容。 可以为不同的页面指定不同的 URL。 该代码合并 Azure AD B2C 中的 UI 元素与从 URL 加载的内容，并向使用者显示页面。 只需要：
 
 1. 使用位于 `<body>` 中某处的 `<div id="api"></div>` 元素（需要为空元素）创建格式正确的 HTML5 内容。 此元素标记插入 Azure AD B2C 内容的位置。
-2. 在 HTTPS 终结点上托管内容（允许 CORS）。
+2. 在 HTTPS 终结点上托管内容（允许 CORS）。 请注意，配置 CORS 时需要启用 GET 和 OPTIONS 请求方法。
 3. 为 Azure AD B2C 插入的 UI 元素设置样式。
 
 ## <a name="test-out-the-ui-customization-feature"></a>测试 UI 自定义功能
@@ -342,18 +342,13 @@ ms.openlocfilehash: bcb91660500484210c342a84595386ebb5e0bbbd
 * 在登录、注册和配置文件编辑策略提供的所有页面（错误页除外）中，所提供的样式表必须覆盖我们在 <head> 片段中添加到这些页面的默认样式表。 在注册或登录和密码重置策略提供的所有页面中，以及所有策略的错误页上，必须自行提供所有样式。
 * 出于安全考虑，我们不允许你在自己的内容中包含任何 JavaScript。 你所需的大部分功能应该都是现成的。 如果不是，请使用[User Voice](http://feedback.azure.com/forums/169401-azure-active-directory)（用户之声）请求新功能。
 * 支持的浏览器版本：
-  * Internet Explorer 11
-  * Internet Explorer 10
-  * Internet Explorer 9（受限）
-  * Internet Explorer 8（受限）
-  * Google Chrome 43.0
-  * Google Chrome 42.0
-  * Mozilla Firefox 38.0
-  * Mozilla Firefox 37.0
+  * Internet Explorer 11、10、Edge
+  * 对 Internet Explorer 9 和 8 的支持有限
+  * Google Chrome 42.0 和更高版本
+  * Mozilla Firefox 38.0 和更高版本
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

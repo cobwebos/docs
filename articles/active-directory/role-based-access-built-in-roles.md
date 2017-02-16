@@ -1,5 +1,5 @@
 ---
-title: "RBAC：内置角色 | Microsoft Docs"
+title: "Action 和 NotAction - Azure RBAC 中的角色 | Microsoft Docs"
 description: "本主题介绍适用于基于角色的访问控制 (RBAC) 的内置角色。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/25/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 386e8479a64af20469e3e03180348f674b08ef8f
+ms.sourcegitcommit: d00ba4e6d1abd62e5a0d5a9d5bb229d3fa64b473
+ms.openlocfilehash: 8df9faed82a6cf11001e083b7849dd7654bf3c24
 
 
 ---
@@ -28,8 +28,8 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 
 > [!NOTE]
 > Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 若适用，请使用 cmdlet `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions`。
-> 
-> 
+>
+>
 
 | 角色名称 | 说明 |
 | --- | --- |
@@ -555,7 +555,6 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

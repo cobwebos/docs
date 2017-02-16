@@ -4,7 +4,7 @@ description: "网络性能监视器帮助你近乎实时地监视网络性能，
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
-ms.openlocfilehash: 2334540ec0eeec32d0c4b3a6d9597a290bad6ec0
+ms.sourcegitcommit: 820a9463c0e58054cf70324b680c5af8fdcacade
+ms.openlocfilehash: 794d9b7d5031730f9ea0f8daae251c825f7b05b0
 
 
 ---
@@ -158,7 +158,7 @@ ms.openlocfilehash: 2334540ec0eeec32d0c4b3a6d9597a290bad6ec0
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![是](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![否](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |每隔 5 秒钟进行 TCP 握手，每隔 3 分钟发送数据 |
 
-该解决方案利用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理会与另一个代理交换 TCP 数据包，并且在该过程中了解往返时间和数据包丢失（如果存在）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和数据包丢失图。 代理每隔 5 秒钟重复执行测试，聚合数据持续 3 分钟，然后再将数据上传到 OMS。
+该解决方案利用综合事务来评估网络的运行状况。 网络中各个点安装的 OMS 代理会与另一个代理交换 TCP 数据包，并且在该过程中了解往返时间和数据包丢失（如果存在）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和数据包丢失图。 代理每隔&5; 秒钟重复执行测试，聚合数据持续&3; 分钟，然后再将数据上传到 OMS。
 
 > [!NOTE]
 > 尽管代理相互频繁地通信，但它们在进行测试时并不会产生大量网络流量。 代理仅仅依靠 TCP SYN-SYNACK-ACK 握手数据包确定丢失和延迟 - 不会交换任何数据包。 在此过程中，代理只在需要时才会进行相互通信，并且会对代理通信拓扑进行优化以减少网络流量。
@@ -246,6 +246,6 @@ ms.openlocfilehash: 2334540ec0eeec32d0c4b3a6d9597a290bad6ec0
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

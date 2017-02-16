@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: c3a92451195bb3eab79fd1153678527913ffdefd
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 93be5aa26cc66d7cfc89b88f9273cb40acaa1b17
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: c3a92451195bb3eab79fd1153678527913ffdefd
 
 ## <a name="prerequisites"></a>先决条件
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
-* 确保在运行流式处理终结点时，至少为其分配了一个流式处理单元。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+* 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 * 启动该工具并连接到你的 AMS 帐户。
 
@@ -47,13 +47,14 @@ ms.openlocfilehash: c3a92451195bb3eab79fd1153678527913ffdefd
 ## <a name="create-a-channel"></a>创建频道
 1. 在 AMSE 工具中，导航到“实时”选项卡，然后右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
 
-![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
+    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
-1. 指定频道名称，说明字段为可选字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。
+2. 指定频道名称，说明字段为可选字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。
 
-确保选中“立即启动新频道”。
+    确保选中“立即启动新频道”。
 
-1. 单击“创建频道”。
+3. 单击“创建频道”。
+
    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
@@ -108,7 +109,8 @@ ms.openlocfilehash: c3a92451195bb3eab79fd1153678527913ffdefd
    * 配置文件：主
    * 关键帧间隔：60 帧
 
-     **音频**
+    **音频**
+
    * 目标比特率：192 千位/秒
    * 采样速率：44.100 kHz
 
@@ -141,7 +143,8 @@ ms.openlocfilehash: c3a92451195bb3eab79fd1153678527913ffdefd
 >
 
 ## <a name="test-playback"></a>测试播放
-1. 导航回 AMSE 工具，然后右键单击要测试的频道。 在菜单中，将鼠标悬停在“播放预览”上方，然后选择“使用 Azure 媒体播放器”。  
+
+导航回 AMSE 工具，然后右键单击要测试的频道。 在菜单中，将鼠标悬停在“播放预览”上方，然后选择“使用 Azure 媒体播放器”。  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
@@ -157,7 +160,9 @@ ms.openlocfilehash: c3a92451195bb3eab79fd1153678527913ffdefd
 3. 选中“立即启动节目”框。
 4. 单击“创建节目”。  
 
-    注意：创建节目需要的时间比创建频道需要的时间少。    
+   >[!NOTE]
+   >创建节目需要的时间比创建频道需要的时间少。
+       
 5. 可以运行节目以后，可通过下述方式来确认其是否能够播放：右键单击该节目，导航到“播放节目”，然后选择“使用 Azure Media Player”。  
 6. 确认以后，再次右键单击该节目，然后选择“将输出 URL 复制到剪贴板”（也可通过菜单从“节目信息和设置”选项检索此信息）。
 
@@ -174,6 +179,6 @@ ms.openlocfilehash: c3a92451195bb3eab79fd1153678527913ffdefd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

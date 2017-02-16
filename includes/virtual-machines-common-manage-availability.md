@@ -44,17 +44,17 @@
 
 1. **将与同一 VM 关联的所有磁盘（OS 和数据）放置在同一存储帐户中**
 2. 向存储帐户中添加更多 VHD 时，**应当考虑存储帐户[限制](../articles/storage/storage-scalability-targets.md)**
-3. **为每个可用性集使用多个存储帐户。** 为可用性集中的每个 VM 使用单独的存储帐户。 同一可用性集中的多个 VM 不能共享相同的存储帐户。 不同可用性集中的 VM 共享存储帐户是可以接受的，只要遵循上述最佳做法即可。
+3. **为可用性集中的每个 VM 使用单独的存储帐户。** 同一可用性集中的多个 VM 不能共享相同的存储帐户。 不同可用性集中的 VM 共享存储帐户是可以接受的，只要遵循上述最佳做法即可。
 
 <!-- Link references -->
 [在可用性集中配置多个虚拟机以确保冗余]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
 [将每个应用程序层配置到不同的可用性集中]: #configure-each-application-tier-into-separate-availability-sets
 [将负载均衡器与可用性集组合在一起]: #combine-a-load-balancer-with-availability-sets
-[避免可用性集中出现单实例虚拟机]: #avoid-single-instance-virtual-machines-in-availability-sets
+[Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [为每个可用性集使用多个存储帐户]: #use-multiple-storage-accounts-for-each-availability-set
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

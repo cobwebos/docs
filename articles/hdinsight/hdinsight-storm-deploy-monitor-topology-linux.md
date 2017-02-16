@@ -12,32 +12,39 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/07/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d5c33fc7d24eb2b14db9cdf3211a06e6fcc1cb68
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: ca8f3ac0dd5301e1fd06abaf3a292872eb631f47
 
 
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上部署和管理 Apache Storm 拓扑
-在本文档中，你将了解有关如何在 HDInsight 群集上管理和监视基于 Linux 的 Storm 上运行的 Storm 拓扑的基本知识。
+# <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>在 HDInsight 上部署和管理 Apache Storm 拓扑
+
+本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 Storm 拓扑的基本知识。
 
 > [!IMPORTANT]
-> 本文中的步骤需要使用 HDInsight 群集上基于 Linux 的 Storm。 有关在基于 Windows 的 HDInsight 上部署和监视拓扑的详细信息，请参阅 [在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology.md)
+> 本文中的步骤需要使用 HDInsight 群集上基于 Linux 的 Storm。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 
 > 
-> 
+> 有关在基于 Windows 的 HDInsight 上部署和监视拓扑的详细信息，请参阅 [在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology.md)
+
 
 ## <a name="prerequisites"></a>先决条件
 * **基于 Linux 的 Storm on HDInsight 群集**：请参阅 [Apache Storm on HDInsight 入门](hdinsight-apache-storm-tutorial-get-started-linux.md)获取群集创建步骤
+
 * **熟悉 SSH 和 SCP**：有关如何将 SSH 和 SCP 与 HDInsight 配合使用的详细信息，请参阅以下文档：
   
   * **Linux、Unix 或 OS X 客户端**：请参阅 [在 Linux、OS X 或 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+
   * **Windows 客户端**：请参阅 [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+
 * **SCP 客户端**：此客户端已随附所有的 Linux、Unix 和 OS X 系统。 对于 Windows 客户端，建议使用可从 [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)（PuTTY 下载页面）中获取的 PSCP。
 
 ## <a name="start-a-storm-topology"></a>启动 Storm 拓扑
+
 ### <a name="using-ssh-and-the-storm-command"></a>使用 SSH 和 Storm 命令
+
 1. 使用 SSH 连接到 HDInsight 群集。 将 **USERNAME** 替换为 SSH 登录名。 将 **CLUSTERNAME** 替换为 HDInsight 群集名：
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
@@ -45,10 +52,12 @@ ms.openlocfilehash: d5c33fc7d24eb2b14db9cdf3211a06e6fcc1cb68
     有关如何使用 SSH 连接到 HDInsight 群集的详细信息，请参阅以下文档：
    
    * **Linux、Unix 或 OS X 客户端**：请参阅 [在 Linux、OS X 或 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+
    * **Windows 客户端**：请参阅 [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+
 2. 使用以下命令启动示例拓扑：
    
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology WordCount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm.starter.WordCountTopology WordCount
    
     随后将在群集上启动示例 WordCount 拓扑。 该拓扑将随机生成句子，并统计句子中每个单词的出现次数。
    
@@ -60,9 +69,11 @@ ms.openlocfilehash: d5c33fc7d24eb2b14db9cdf3211a06e6fcc1cb68
    > 
 
 ### <a name="programmatically"></a>以编程方式
+
 可以通过与群集中托管的 Nimbus 服务进行通信，以编程方式将拓扑部署到 Storm on HDInsight。 [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) 提供了 Java 应用程序示例，演示如何通过 Nimbus 服务部署和启动拓扑。
 
 ## <a name="monitor-and-manage-using-the-storm-command"></a>使用 Storm 命令进行监视和管理
+
 通过 `storm` 实用工具，可以从命令行使用正在运行的拓扑。 下面是常用命令的列表。 使用 `storm -h` 可以获取完整的命令行列表。
 
 ### <a name="list-topologies"></a>列出拓扑
@@ -179,6 +190,6 @@ Storm UI 是以 REST API 为基础生成的，因此，你可以使用 API 执�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

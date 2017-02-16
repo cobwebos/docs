@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aa0b90781d10be6a87fdad6f04c8630317efd4e4
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
 
 
 ---
@@ -157,7 +157,7 @@ else
 [购买选项]: http://azure.microsoft.com/pricing/purchase-options/
 [成员优惠]: http://azure.microsoft.com/pricing/member-offers/
 [免费试用]: http://azure.microsoft.com/pricing/free-trial/
-[安装和配置 Azure PowerShell]: ../powershell-install-configure.md
+[安装和配置 Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [通知中心的 .NET API]: https://msdn.microsoft.com/library/azure/mt414893.aspx
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
@@ -166,6 +166,6 @@ else
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

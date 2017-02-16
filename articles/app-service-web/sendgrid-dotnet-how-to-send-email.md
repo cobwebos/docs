@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: team-pi@sendgrid.com
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae05e89346fe6bb85408cd560505dab3c03837cc
+ms.sourcegitcommit: dc1dac6e590088b45aa7afb87cf2d41027506635
+ms.openlocfilehash: 5ad1d7f026836e90d04d493bd1c0454b83f936ef
 
 
 ---
@@ -60,7 +60,8 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 4. 搜索 **SendGrid**，然后在结果列表中选择 **SendGrid** 项。
    
    ![SendGrid NuGet 包][SendGrid-NuGet-package]
-5. 单击“安装”以完成安装，然后关闭此对话框。
+5. 从版本下拉列表中选择“6.3.4 版”的 Nuget 包，以便能够使用本文中演示的对象模型和 API
+6. 单击“安装”以完成安装，然后关闭此对话框。
 
 SendGrid 的 .NET 类库名为 **SendGridMail**。 其中包含以下命名空间：
 
@@ -251,6 +252,6 @@ SendGrid 提供了基于 Web 的 API 和 Webhook，可通过这些 API 从 Azure
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

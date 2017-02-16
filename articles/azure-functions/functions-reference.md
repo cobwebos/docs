@@ -1,28 +1,28 @@
 ---
-title: "Azure Functions 开发人员参考 | Microsoft Docs"
-description: "了解所有语言和绑定通用的 Azure Functions 概念和组件。"
+title: "Azure Functions 开发指南 | Microsoft 文档"
+description: "了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。"
 services: functions
 documentationcenter: na
 author: christopheranderson
 manager: erikre
 editor: 
 tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
+keywords: "开发人员指南, Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/20/2016
+ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 635cc1300f25b7820a0abe4d6f3a6f9e4a2ce8c8
-ms.openlocfilehash: 44a14988119cc121b111718e1c03a788e819dbbe
+ms.sourcegitcommit: 0d75654e00e033eab7de97779157c43ee4493a9f
+ms.openlocfilehash: 2032426e473cb859ad60b48684bcf620e314ed6c
 
 
 ---
-# <a name="azure-functions-developer-reference"></a>Azure Functions developer reference（Azure Functions 开发人员参考）
+# <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
 
 本文假定你已阅读了 [Azure Functions 概述](functions-overview.md)且熟悉[触发器、绑定和 JobHost 运行时间等 WebJobs SDK 概念](../app-service-web/websites-dotnet-webjobs-sdk.md)。 Azure Functions 以 WebJobs SDK 为基础。 
@@ -138,6 +138,6 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,33 +1,33 @@
 ---
-title: "使用 Azure AD 应用程序代理连接器 | Microsoft Docs"
+title: "安装和管理连接器 - Azure AD 应用代理 | Microsoft Docs"
 description: "介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。"
 services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
+editor: harshja
 ms.assetid: 5404372d-3092-4054-aeee-26afb1399f33
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ba87b73be45cb0893f418453bc0efb3293772c95
+ms.sourcegitcommit: 7ed296a6773763f7aaae55e9a1667efca7d9e590
+ms.openlocfilehash: c4fd1eb4637c310ff0c012a3aad5f4b8af47d50f
 
 
 ---
-# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups---public-preview"></a>使用连接器组在单独的网络和位置上发布应用程序 - 公共预览版
+# <a name="publish-applications-on-separate-networks-and-locations-using-connectors---public-preview"></a>使用连接器在单独的网络和位置上发布应用程序 - 公共预览版
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-application-proxy-connectors-azure-portal.md)
 > * [Azure 经典门户](active-directory-application-proxy-connectors.md)
-> 
-> 
+>
+>
 
-连接器组可用于各种方案，包括：
+连接器和连接器组可用于各种方案，包括：
 
 * 带有多个互联数据中心的站点。 在此情况下，需要在数据中心内保留尽可能多的流量，因为跨数据中心链接昂贵而缓慢。 可在每个数据中心中部署连接器，仅服务驻留在数据中心内的应用程序。 此方法可最大程度减少跨数据中心链接，并向用户提供完全透明的体验。
 * 管理安装在不属于主要公司网络的隔离网络中的应用程序。 可使用连接器组在隔离网络上安装专用连接器，以便同样隔离到网络的应用程序。
@@ -64,7 +64,6 @@ ms.openlocfilehash: ba87b73be45cb0893f418453bc0efb3293772c95
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

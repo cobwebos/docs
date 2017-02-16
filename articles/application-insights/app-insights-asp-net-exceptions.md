@@ -1,5 +1,5 @@
 ---
-title: "使用 Application Insights 诊断 ASP.NET 应用中的故障和异常 | Microsoft 文档"
+title: "使用 Azure Application Insights 诊断 Web 应用中的故障和异常 | Microsoft Docs | Microsoft Docs"
 description: "从 ASP.NET 应用中捕获异常以及请求遥测。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 2dbbe59f71500c31de8568de4e92cc41131d0970
 
 
 ---
@@ -445,6 +445,6 @@ VB
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

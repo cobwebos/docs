@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8892d5c7bd45c1c1f4c8cad0f3baaafc7cc583be
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: 34cacff4e8b13fa9d91387ca8762439908ed01fd
 
 
 ---
@@ -25,7 +25,7 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 
 ![用户、Azure Active Directory 和已发布应用程序之间的关系](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
-发布此类应用程序的建议方法是使用 Azure AD 身份验证库，此库负责所有身份验证事宜，并且支持许多不同的客户端环境。 应用程序代理适合[本机应用程序到 Web API 方案](active-directory-authentication-scenarios.md#native-application-to-web-api)。 完成此目的的过程如下所示：
+发布此类应用程序的建议方法是使用 Azure AD 身份验证库，此库负责所有身份验证事宜，并且支持许多不同的客户端环境。 应用程序代理适合[本机应用程序到 Web API 方案](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。 完成此目的的过程如下所示：
 
 ## <a name="step-1-publish-your-application"></a>步骤 1：发布应用程序
 像任何其他应用程序一样发布代理应用程序、配置用户并为他们提供高级或基本许可证。 有关详细信息，请参阅[使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)。
@@ -74,7 +74,7 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 
 ![新的本机应用程序配置页屏幕截图](./media/active-directory-application-proxy-native-client/new_native_app.png)
 
-有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](active-directory-authentication-scenarios.md#native-application-to-web-api)。
+有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)。
 
 ## <a name="see-also"></a>另请参阅
 * [使用你自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
@@ -87,6 +87,6 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

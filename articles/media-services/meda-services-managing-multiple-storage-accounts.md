@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 5724a9c66bef01972f41e66a84844aae9b300296
 
 
 ---
@@ -37,10 +37,10 @@ ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
 
 其他注意事项：
 
-生成流式处理内容的 URL 时，媒体服务会使用 **IAssetFile.Name** 属性的值（如 http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[保留的百分号编码字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]".。此外，文件扩展名中 只能含有一个“.”。
+生成流式处理内容的 URL 时，媒体服务会使用 **IAssetFile.Name** 属性的值（如 http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
 
 ## <a name="to-attach-a-storage-account-with-azure-service-management-rest-api"></a>使用 Azure 服务管理 REST API 附加存储帐户
-目前，只能使用 [Azure 服务管理 REST API](http://msdn.microsoft.com/library/azure/dn167014.aspx) 附加多个存储帐户。 [如何：使用媒体服务管理 REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) 主题中的代码示例定义了将存储帐户附加到指定媒体服务帐户的 **AttachStorageAccountToMediaServiceAccount** 方法。 同一主题中的代码定义 **ListStorageAccountDetails** 方法，其中列出了附加到指定媒体服务帐户的所有存储帐户。
+目前，只能使用 [Azure 服务管理 REST API](https://docs.microsoft.com/rest/api/media/management/media-services-management-rest) 附加多个存储帐户。 [如何：使用媒体服务管理 REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) 主题中的代码示例定义了将存储帐户附加到指定媒体服务帐户的 **AttachStorageAccountToMediaServiceAccount** 方法。 同一主题中的代码定义 **ListStorageAccountDetails** 方法，其中列出了附加到指定媒体服务帐户的所有存储帐户。
 
 ## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产
 以下代码使用最新的媒体服务 SDK 执行下列任务：
@@ -257,6 +257,6 @@ ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

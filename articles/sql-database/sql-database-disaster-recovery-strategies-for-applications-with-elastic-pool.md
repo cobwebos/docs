@@ -16,13 +16,13 @@ ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc256d2a164445a4ebbbaec9876d3fa86b56f65c
+ms.sourcegitcommit: 16f4e287a955b787a08cc6949094bd0f5224421a
+ms.openlocfilehash: 26a3e54b00b37d4488a3f1c787c44bbbb5078268
 
 
 ---
-# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pool"></a>使用 SQL 数据库弹性池的应用程序的灾难恢复策略
-这些年来，我们已经认识到云服务并不能做到万无一失，可能并且将会发生灾难性事件。 SQL 数据库具备许多功能，可在发生这些事件时保证应用程序的业务连续性。 [弹性池](sql-database-elastic-pool.md)和独立数据库支持相同类型的灾难恢复功能。 本文介绍了几种针对利用这些 SQL 数据库业务连续性功能的弹性池的 DR 策略。
+# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>使用 SQL 数据库弹性池的应用程序的灾难恢复策略
+这些年来，我们已经认识到云服务并不能做到万无一失，可能并且将会发生灾难性事件。 SQL 数据库具备许多功能，可在发生这些事件时保证应用程序的业务连续性。 [弹性池](sql-database-elastic-pool.md)和单一数据库支持相同类型的灾难恢复功能。 本文介绍了几种针对利用这些 SQL 数据库业务连续性功能的弹性池的 DR 策略。
 
 为实现本文目的，我们将使用规范的 SaaS ISV 应用程序模式：
 
@@ -33,7 +33,7 @@ ms.openlocfilehash: cc256d2a164445a4ebbbaec9876d3fa86b56f65c
 ## <a name="scenario-1-cost-sensitive-startup"></a>方案 1. 关注成本的创业公司
 <i>我们是一家创业公司，非常关注成本问题。我希望简化应用程序的部署和管理，并愿意为各个客户提供有限的 SLA。但是我希望确保应用程序整体不会脱机。</i>
 
-为满足简单性要求，应将所有租户数据库部署到所选的 Azure 区域中的一个弹性池中，同时将管理数据库部署为异地复制的独立数据库。 对于租户的灾难恢复，请使用异地还原，无需额外付费。 为确保管理数据库的可用性，应将数据库异地复制到另一区域（步骤 1）。 此方案中的灾难恢复配置持续成本等于辅助数据库的总成本。 下图说明了此配置。
+为满足简单性要求，应将所有租户数据库部署到所选的 Azure 区域中的一个弹性池中，同时将管理数据库部署为异地复制的单一数据库。 对于租户的灾难恢复，请使用异地还原，无需额外付费。 为确保管理数据库的可用性，应将数据库异地复制到另一区域（步骤 1）。 此方案中的灾难恢复配置持续成本等于辅助数据库的总成本。 下图说明了此配置。
 
 ![图 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
@@ -71,7 +71,7 @@ ms.openlocfilehash: cc256d2a164445a4ebbbaec9876d3fa86b56f65c
 
 ![图 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
-如方案一所示，管理数据库将会非常活跃，因此需为其使用独立的异地复制数据库 (1)。 这将确保新的客户订阅、配置文件更新和其他管理操作具有可预测性能。 管理数据库的主数据库所在的区域将会成为主要区域，而管理数据库的辅助数据库所在的区域则会成为 DR 区域。
+如方案一所示，管理数据库将会非常活跃，因此应该为其使用异地复制的单一数据库 (1)。 这将确保新的客户订阅、配置文件更新和其他管理操作具有可预测性能。 管理数据库的主数据库所在的区域将会成为主要区域，而管理数据库的辅助数据库所在的区域则会成为 DR 区域。
 
 付费客户的租户数据库将具备主要区域所预配的“付费”池中的活动数据库。 应预配与 DR 区域中的辅助池具有相同名称的辅助池。 将每位租户异地复制到辅助池 (2)。 这将使用故障转移来实现快速恢复所有租户数据库。 
 
@@ -116,7 +116,7 @@ ms.openlocfilehash: cc256d2a164445a4ebbbaec9876d3fa86b56f65c
 
 ![图 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
-如前面的方案所示，管理数据库将会非常活跃，因此需将其配置为独立的异地复制数据库 (1)。 这将确保新的客户订阅、配置文件更新和其他管理操作具有可预测性能。 区域 A 将是管理数据库的主要区域，而区域 B 将用于恢复管理数据库。
+如前面的方案所示，管理数据库将会非常活跃，因此应该将其配置为异地复制的单一数据库 (1)。 这将确保新的客户订阅、配置文件更新和其他管理操作具有可预测性能。 区域 A 将是管理数据库的主要区域，而区域 B 将用于恢复管理数据库。
 
 同样会对付费客户的租户数据库进行异地复制，但将在区域 A 和区域 B 之间拆分主数据库和辅助数据库 (2)。 这样，受中断影响的租户主要数据库就可以故障转移到其他区域并变得可用。 租户数据库的另一半不会受到任何影响。 
 
@@ -176,6 +176,6 @@ ms.openlocfilehash: cc256d2a164445a4ebbbaec9876d3fa86b56f65c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

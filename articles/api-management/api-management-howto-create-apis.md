@@ -12,25 +12,25 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 67e0007c7a40cf59609b1030b7f0ddbee90fa237
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 496aa7754b35877900da020283c8b7efe0e04cef
 
 
 ---
 # <a name="how-to-create-apis-in-azure-api-management"></a>如何在 Azure API 管理中创建 API
 API 管理中的 API 表示一组可由客户端应用程序调用的操作。 在发布者门户中创建新的 API，然后添加所需的操作。 一旦添加操作，该 API 添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
 
-本指南演示此过程的第一步：如何在 API 管理中创建和配置新的 API。 有关添加操作和发布产品的详细信息，请参阅[如何将操作添加到 API][如何将操作添加到 API]以及[如何创建和发布产品][如何创建和发布产品]。
+本指南演示此过程的第一步：如何在 API 管理中创建和配置新的 API。 有关添加操作和发布产品的详细信息，请参阅[如何将操作添加到 API][How to add operations to an API]以及[如何创建和发布产品][How to create and publish a product]。
 
 ## <a name="create-new-api"> </a>创建新的 API
 API 在发布者门户中创建并发布。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”。
 
 ![发布者门户][api-management-management-console]
 
-> 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+> 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 > 
 > 
 
@@ -59,9 +59,9 @@ API 在发布者门户中创建并发布。 若要访问发布者门户，请在
 
 ![API 设置][api-management-api-settings]
 
-若要为实现 API 的后端服务配置网关身份验证，请选择“安全”选项卡。 “使用凭据”下拉列表可用于配置“HTTP BASIC”或“客户端证书”身份验证。 若要使用 HTTP BASIC 身份验证，只需输入所需的凭据。 有关使用客户端证书身份验证的信息，请参阅[如何在 Azure API 管理中使用客户端证书身份验证确保后端服务安全][如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全]。
+若要为实现 API 的后端服务配置网关身份验证，请选择“安全”选项卡。 “使用凭据”下拉列表可用于配置“HTTP BASIC”或“客户端证书”身份验证。 若要使用 HTTP BASIC 身份验证，只需输入所需的凭据。 有关使用客户端证书身份验证的信息，请参阅[如何在 Azure API 管理中使用客户端证书身份验证确保后端服务安全][How to secure back-end services using client certificate authentication in Azure API Management]。
 
-“安全”选项卡还可用于使用 OAuth 2.0 配置“用户授权”。 有关详细信息，请参阅[如何在 Azure API 管理中使用 OAuth 2.0 授权开发人员帐户][如何在 Azure API 管理中使用 OAuth 2.0 授权开发人员帐户]。
+“安全”选项卡还可用于使用 OAuth 2.0 配置“用户授权”。 有关详细信息，请参阅[如何在 Azure API 管理中使用 OAuth 2.0 授权开发人员帐户][How to authorize developer accounts using OAuth 2.0 in Azure API Management]。
 
 ![基本身份验证设置][api-management-api-settings-credentials]
 
@@ -70,8 +70,8 @@ API 在发布者门户中创建并发布。 若要访问发布者门户，请在
 ## <a name="next-steps"> </a>后续步骤
 一旦创建 API 并配置设置，接下来的步骤是将操作添加到该 API，将 API 添加到产品并将其发布，这样就可用于开发人员。 有关详细信息，请参阅以下文章。
 
-* [如何将操作添加到 API][如何将操作添加到 API]
-* [如何创建和发布产品][如何创建和发布产品]
+* [如何将操作添加到 API][How to add operations to an API]
+* [如何创建和发布产品][How to create and publish a product]
 
 [api-management-create-api]: ./media/api-management-howto-create-apis/api-management-create-api.png
 [api-management-management-console]: ./media/api-management-howto-create-apis/api-management-management-console.png
@@ -81,22 +81,22 @@ API 在发布者门户中创建并发布。 若要访问发布者门户，请在
 [api-management-api-summary]: ./media/api-management-howto-create-apis/api-management-api-summary.png
 [api-management-echo-operations]: ./media/api-management-howto-create-apis/api-management-echo-operations.png
 
-[什么是 API？]: #what-is-api
-[创建新 API]: #create-new-api
-[配置 API 设置]: #configure-api-settings
-[配置 API 操作]: #configure-api-operations
-[后续步骤]: #next-steps
+[What is an API?]: #what-is-api
+[Create a new API]: #create-new-api
+[Configure API settings]: #configure-api-settings
+[Configure API operations]: #configure-api-operations
+[Next steps]: #next-steps
 
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何创建和发布产品]: api-management-howto-add-products.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
 
-[创建 API 管理服务实例]: api-management-get-started.md
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
-[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全]: api-management-howto-mutual-certificates.md
-[如何在 Azure API 管理中使用 OAuth 2.0 授权开发人员帐户]: api-management-howto-oauth2.md
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[How to secure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
+[How to authorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

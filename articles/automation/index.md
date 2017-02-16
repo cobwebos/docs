@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何使用自动化服务将过程和配置管理自动化，以节省时间，提高例行管理任务的可靠性。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c9444c341bc5746c96719e6ebfa464f294adf2f8
+ms.sourcegitcommit: 9f7b84331bd0575062518834ce1cd3db60fa6289
+ms.openlocfilehash: 98ddde79d422b692a1ded866fb12061bf942fc8a
 
 ---
 # <a name="automation-documentation"></a>自动化文档
 
-通过 Azure 自动化，用户可以自动完成通常要在云环境中执行的手动、长时间进行、易出错且重复性高的任务。 它可以节省时间，可以提高常规管理任务的可靠性，甚至可以将这些任务安排成按特定的时间间隔自动执行。
+了解如何使用自动化服务来节省时间，提高云环境中执行的例行管理任务的可靠性。 教程、API 参考和其他文档介绍了如何使用 Runbook 将过程自动化，或者使用 Desired State Configuration 将配置管理自动化。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -175,6 +176,6 @@ ms.openlocfilehash: c9444c341bc5746c96719e6ebfa464f294adf2f8
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

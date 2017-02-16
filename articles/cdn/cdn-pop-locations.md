@@ -1,9 +1,9 @@
 ---
 title: "Azure CDN 的 POP 位置 |Microsoft 文档"
-description: "本主题列出了 Azure CDN 的 POP 位置。"
+description: "本主题列出了 Azure CDN 的接入点位置。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3e7e4ae6b889ef86d03106c9653bf9247ac21636
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
 
 
 ---
@@ -44,11 +44,11 @@ ms.openlocfilehash: 3e7e4ae6b889ef86d03106c9653bf9247ac21636
 | 澳大利亚和新西兰 |澳大利亚墨尔本<br />澳大利亚悉尼 |**&#x2713;**\* |
 
 ## <a name="see-also"></a>另请参阅
-* [来自 Verizon 的 Azure CDN 边缘服务器 IP 范围](https://msdn.microsoft.com/library/mt757330.aspx)
+* [用于获取允许列表最新 IP 地址的 Azure CDN 边缘节点 API ](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

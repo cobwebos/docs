@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: java
 ms.topic: article
-ms.date: 08/16/2016
+ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 1b4573db5c4e03aba8b98408765e7c2debfb9a30
+ms.sourcegitcommit: 33a960ae39ab8fa89126201fd67f13e5536413ef
+ms.openlocfilehash: 7bad4df26d10ba8edae311b41d0c07be2db374f4
 
 
 ---
@@ -51,31 +51,29 @@ ms.openlocfilehash: 1b4573db5c4e03aba8b98408765e7c2debfb9a30
    ![][23]
 
 > [!NOTE]
->  在本教程中，只出于开发目的以本地模式使用 Storm。 请参阅 [HDInsight Storm 概述]和官方 [Apache Storm] 文档，了解 Storm 部署和模式的详细信息。
-> 
-> 
+> 在本教程中，只出于开发目的以本地模式使用 Storm。 请参阅 [HDInsight Storm 概述]和官方 [Apache Storm] 文档，了解 Storm 部署和模式的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 以下资源可用于开发集成事件中心和 Storm 的应用程序。
 
-* [用 Storm 和 HDInsight 分析传感器数据][使用 Storm 和 HDInsight 分析传感器数据]是一个完整方案教程，它用到了事件中心、Storm 和 HBase，以在 Hadoop 群集中引入传感器数据。
-* [使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序][使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序]是有关如何使用 C# 编写 Storm 管道的教程。
+* [使用 Storm 和 HDInsight 分析传感器数据][Analyzing sensor data with Storm and HDInsight]是一个完整方案教程，它用到了事件中心、Storm 和 HBase，以在 Hadoop 群集中引入传感器数据。
+* [使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序][Develop streaming data processing applications with SCP.NET and C# on Storm and HDInsight]是有关如何使用 C# 编写 Storm 管道的教程。
 
 <!-- Images. -->
 [23]: ./media/event-hubs-c-storm-getstarted/receive-storm3.png
 
 <!-- Links -->
-[Azure 经典门户]: https://manage.windowsazure.com/
-[事件处理程序主机]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[Azure classic portal]: https://manage.windowsazure.com/
+[Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [事件中心概述]: event-hubs-overview.md
 
 [Apache Storm]: https://storm.incubator.apache.org
 [HDInsight Storm 概述]: ../hdinsight/hdinsight-storm-overview.md
-[使用 Storm 和 HDInsight 分析传感器数据]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
-[使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
+[Analyzing sensor data with Storm and HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
+[Develop streaming data processing applications with SCP.NET and C# on Storm and HDInsight]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

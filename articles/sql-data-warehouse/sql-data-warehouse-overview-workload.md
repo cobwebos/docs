@@ -1,5 +1,5 @@
 ---
-title: "数据仓库工作负荷"
+title: "了解 Azure SQL 数据仓库操作 | Microsoft Docs"
 description: 'SQL Data Warehouse''s elasticity lets you grow, shrink, or pause compute power by using a sliding scale of data warehouse units (DWUs). This article explains the data warehouse metrics and how they relate to DWUs. '
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess;mausher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 43ee395fab826549ddd9ede3c3aa45aa8e97c7dd
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 79fedaabc438bc4cd884af6b494e43d32361950a
 
 
 ---
@@ -65,13 +65,13 @@ ms.openlocfilehash: 43ee395fab826549ddd9ede3c3aa45aa8e97c7dd
 * 若要执行分析，可以在数据仓库中创建分析多维数据集，然后针对数据仓库运行分析，或是预先处理数据，然后再导出到分析服务器做进一步的分析。
 
 ## <a name="next-steps"></a>后续步骤
-对 SQL 数据仓库有了初步的认识后，请继续了解如何快速[创建 SQL 数据仓库][创建 SQL 数据仓库]和[加载示例数据][加载示例数据]。
+对 SQL 数据仓库有了初步的认识后，请继续学习如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。
 
 <!--Image references-->
 
 <!--Article references-->
-[加载示例数据]: ./sql-data-warehouse-load-sample-databases.md
-[创建 SQL 数据仓库]: ./sql-data-warehouse-get-started-provision.md
+[load sample data]: ./sql-data-warehouse-load-sample-databases.md
+[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
@@ -79,6 +79,6 @@ ms.openlocfilehash: 43ee395fab826549ddd9ede3c3aa45aa8e97c7dd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

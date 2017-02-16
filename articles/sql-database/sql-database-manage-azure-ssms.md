@@ -8,16 +8,16 @@ manager: jhubbard
 editor: tysonn
 ms.assetid: da6f3608-5993-4134-a497-ff2811e9f31f
 ms.service: sql-database
-ms.custom: how to
+ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 09/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4dc2137ce42e3ed8e85d57dacc1acecc6de243e
+ms.sourcegitcommit: d9ff74a49742fa77f5989b8b05e0567e3ca81dc5
+ms.openlocfilehash: 89cb8827745b31b3a77b64d5cafd586957d60d30
 
 
 ---
@@ -30,6 +30,10 @@ ms.openlocfilehash: b4dc2137ce42e3ed8e85d57dacc1acecc6de243e
 > 
 
 你可以使用 SQL Server Management Studio (SSMS) 来管理 Azure SQL 数据库服务器与数据库。 本主题逐步讲解如何使用 SSMS 完成常见任务。 在开始之前，应事先在 Azure SQL 数据库中创建服务器和数据库。 有关详细信息，请参阅[创建第一个 Azure SQL 数据库](sql-database-get-started.md)及[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)。
+
+> [!TIP]
+> 若需通过教程来了解如何创建服务器、创建基于服务器的防火墙、查看服务器属性、使用 SQL Server Management Studio 进行连接、查询 master 数据库、创建示例数据库和空数据库、查询数据库属性、使用 SQL Server Management Studio 进行连接，以及查询示例数据库，请参阅[入门教程](sql-database-get-started.md)。
+>
 
 建议你每当使用 Azure SQL 数据库时，都使用最新版本的 SSMS。 
 
@@ -142,6 +146,6 @@ SQL 数据库支持多个您可用于监视单个数据库的动态管理视图�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

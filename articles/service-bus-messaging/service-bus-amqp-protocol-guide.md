@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2016
+ms.date: 01/07/2017
 ms.author: clemensv;jotaub;hillaryc;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 946384b5986ee56f16f5b3fe3be07d09f9837076
+ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
+ms.openlocfilehash: 72bfbc4c3cc4a3941d842f4fc688df5d6fb46ba8
 
 
 ---
@@ -48,7 +48,7 @@ AMQP 1.0 协议被设计为可扩展，允许进一步规范以增强其功能�
 ## <a name="basic-amqp-scenarios"></a>基本 AMQP 方案
 本部分说明 AMQP 1.0 与 Azure 服务总线的基本使用方式，其中包括创建连接、会话和链接，以及与服务总线实体（例如队列、主题和订阅）相互传输消息。
 
-了解 AMQP 工作原理的最权威来源是 AMQP 1.0 规范，但此规范是为了精确引导实现而编写，而非用于传授协议知识。 本部分着重于尽可能介绍描述服务总线如何使用 AMQP 1.0 的术语。 有关 AMQP 的更完整介绍，以及 AMQP 1.0 的更广泛介绍，可查看[视频课程][视频课程]。
+了解 AMQP 工作原理的最权威来源是 AMQP 1.0 规范，但此规范是为了精确引导实现而编写，而非用于传授协议知识。 本部分着重于尽可能介绍描述服务总线如何使用 AMQP 1.0 的术语。 有关 AMQP 的更完整介绍，以及 AMQP 1.0 的更广泛介绍，可查看[此视频课程][this video course]。
 
 ### <a name="connections-and-sessions"></a>连接和会话
 ![][1]
@@ -125,7 +125,7 @@ Azure 服务总线不支持链接恢复；如果客户端失去对服务总线�
 
 当传输进入“已接受”、“已拒绝”或“已解除”终端状态的其中一种时，消息锁定就会解除。 终端的状态为“已接受”时，将从服务总线中删除消息。 它保留在服务总线中，并将在传输达到任何其他状态时传递给下一个接收者。 服务总线在因为重复拒绝或解除而达到实体所允许的最大传递计数时，自动将消息转到实体死信队列中。
 
-即使是正式的服务总线 API 现今也不直接公开这种选项，较低级别的 AMQP 协议客户端可以使用链接信用额度模型，通过核发非常大量的链接信用额度，将针对每个接收请求核发一单位信用额度的“提取式”模型变成“推送式”模型，然后接收可用的消息，而不需要任何进一步的交互。 通过 [MessagingFactory.PrefetchCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.prefetchcount.aspx) 或 [MessageReceiver.PrefetchCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.prefetchcount.aspx) 属性设置来支持推送。 如果两者均不为零，则 AMQP 客户端使用它作为链接信用额度。
+即使是正式的服务总线 API 现今也不直接公开这种选项，较低级别的 AMQP 协议客户端可以使用链接信用额度模型，通过核发非常大量的链接信用额度，将针对每个接收请求核发一单位信用额度的“提取式”模型变成“推送式”模型，然后接收可用的消息，而不需要任何进一步的交互。 通过 [MessagingFactory.PrefetchCount](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PrefetchCount) 或 [MessageReceiver.PrefetchCount](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) 属性设置来支持推送。 如果两者均不为零，则 AMQP 客户端使用它作为链接信用额度。
 
 在此内容中，务必了解实体内消息锁定的过期时钟在从实体获取消息时启动，而不是在消息放在网络上时启动。 每当客户端通过颁发链接信用额度来表示接收消息的整备性，因此预期主动提取网络上的消息并准备好处理它们。 否则消息锁定可能在消息传递之前过期。 使用链接信用流量控制应直接反映出可立即准备处理分派给接收者的可用消息。
 
@@ -193,32 +193,32 @@ Azure 服务总线不支持链接恢复；如果客户端失去对服务总线�
 | --- | --- | --- |
 | durable |- |- |
 | priority |- |- |
-| ttl |消息生存时间 |[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) |
+| ttl |消息生存时间 |[TimeToLive](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
 | first-acquirer |- |- |
-| delivery-count |- |[DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
+| delivery-count |- |[DeliveryCount](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
 #### <a name="properties"></a>properties
 | 字段名称 | 使用情况 | API 名称 |
 | --- | --- | --- |
-| message-id |应用程序为此消息定义的自由格式标识符。 用于重复检测。 |[MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) |
+| message-id |应用程序为此消息定义的自由格式标识符。 用于重复检测。 |[MessageId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | user-id |应用程序定义的用户标识符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
-| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.to.aspx) |
-| subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) |
-| reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.replyto.aspx) |
-| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.correlationid.aspx) |
-| content-type |应用程序定义的内容类型指示符，服务总线无法进行解释。 |[ContentType](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) |
+| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
+| subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[Label](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
+| reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
+| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
+| content-type |应用程序定义的内容类型指示符，服务总线无法进行解释。 |[ContentType](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
 | content-encoding |应用程序定义的内容编码指示符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
-| absolute-expiry-time |声明消息过期的绝对时刻。 在输入时忽略（观察到标头 ttl），在输出时授权具权威性。 |[ExpiresAtUtc](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.expiresatutc.aspx) |
+| absolute-expiry-time |声明消息过期的绝对时刻。 在输入时忽略（观察到标头 ttl），在输出时授权具权威性。 |[ExpiresAtUtc](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
 | creation-time |声明消息的创建时间。 不由服务总线使用 |无法通过服务总线 API 访问。 |
-| group-id |应用程序为相关的消息集定义的标识符。 用于服务总线会话。 |[SessionId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.sessionid.aspx) |
+| group-id |应用程序为相关的消息集定义的标识符。 用于服务总线会话。 |[SessionId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
 | group-sequence |用于标识消息在会话内的相对序列号的计数器。 服务总线会将其忽略。 |无法通过服务总线 API 访问。 |
-| reply-to-group-id |- |[ReplyToSessionId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.replytosessionid.aspx) |
+| reply-to-group-id |- |[ReplyToSessionId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
 ## <a name="advanced-service-bus-capabilities"></a>高级服务总线功能
 本部分介绍 Azure 服务总线的高级功能，这些功能基于 AMQP 的 OASIS 技术委员会目前正在开发的 AMQP 草稿扩展。 Azure 服务总线实现这些草稿的最新状态，并且采用这些草稿达到标准状态时所引进的更改。
 
 > [!NOTE]
-> 服务总线消息高级操作通过请求/响应模式受到支持。 文档 [AMQP 1.0 in Service Bus: request/response-based operations](https://msdn.microsoft.com/library/azure/mt727956.aspx)（服务总线中的 AMQP 1.0：基于请求/响应的操作）中介绍了这些操作的详细信息。
+> 服务总线消息高级操作通过请求/响应模式受到支持。 [服务总线中的 AMQP 1.0：基于请求/响应的操作](service-bus-amqp-request-response.md)文档中详细介绍了这些操作。
 > 
 > 
 
@@ -301,7 +301,7 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 * [针对服务总线分区队列和主题的 AMQP 1.0 支持]
 * [适用于 Windows Server 的服务总线中的 AMQP]
 
-[视频课程]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
+[this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp/amqp1.png
 [2]: ./media/service-bus-amqp/amqp2.png
 [3]: ./media/service-bus-amqp/amqp3.png
@@ -313,6 +313,6 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

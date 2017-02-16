@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: bec8c8347b3e29e2d87d7565a29187f22bd10652
+ms.sourcegitcommit: 94c18aa0c4fe38fb74931d5ed61fece207c8b5ce
+ms.openlocfilehash: 5b876185db505ec4bdbaff1d641b85c393e82559
 
 
 ---
@@ -26,12 +26,12 @@ ms.openlocfilehash: bec8c8347b3e29e2d87d7565a29187f22bd10652
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="collect-audit-logs"></a>收集审核日志
-若要开始故障排除，请收集审核日志，以识别与问题相关的错误。 以下链接包含有关要遵循的过程的详细信息。
+## <a name="collect-activity-logs"></a>收集活动日志
+若要开始故障排除，请收集活动日志，以识别与问题相关的错误。 以下链接包含有关要遵循的过程的详细信息。
 
-[使用 Azure 门户排查资源组部署问题](../resource-manager-troubleshoot-deployments-portal.md)
+[查看部署操作](../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[使用 Resource Manager 执行审核操作](../resource-group-audit.md)
+[通过查看活动日志管理 Azure 资源](../azure-resource-manager/resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -88,6 +88,6 @@ ms.openlocfilehash: bec8c8347b3e29e2d87d7565a29187f22bd10652
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

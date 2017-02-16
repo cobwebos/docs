@@ -1,10 +1,10 @@
 ---
-title: "关于虚拟网关的 VPN 网关设置 | Microsoft 文档"
-description: "了解 Azure 虚拟网络的 VPN 网关设置。"
+title: "跨界 Azure 连接的 VPN 网关设置 | Microsoft Docs"
+description: "了解 Azure 虚拟网络网关的 VPN 网关设置。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fc3c8469657b50e4e09a1849d9c63f4ef1e0c414
+ms.sourcegitcommit: bf262073b46daa8b7dcf50fabf5f455d7d5850e7
+ms.openlocfilehash: 7a4efebcfc1ed38e9efdac293845f4be632e5b08
 
 
 ---
 # <a name="about-vpn-gateway-settings"></a>关于 VPN 网关设置
-VPN 网关连接解决方案依赖于使用多个资源的配置在虚拟网络与本地位置之间发送网络流量。 每个资源包含可配置的设置。 资源与设置的组合决定了连接结果。
+VPN 网关是一种虚拟网络网关，可跨公共连接在虚拟网络和本地位置发送加密的流量。 还可使用 VPN 网关在虚拟网络间发送流量。
 
-本文的各个部分将介绍与**资源管理器**部署模型中 VPN 网关相关的资源和设置。 使用连接拓扑图可能会有助于查看可用配置。 可以在 [关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中找到每种连接解决方案的介绍和拓扑图。 
+VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置的设置。 本文的各个部分介绍与在 **Resource Manager** 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在 [关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中找到每种连接解决方案的介绍和拓扑图。  
 
 ## <a name="a-namegwtypeagateway-types"></a><a name="gwtype"></a>网关类型
 每个虚拟网络只能有一种类型的虚拟网络网关。 创建虚拟网络网关时，必须确保用于配置的网关类型正确。
@@ -145,6 +145,6 @@ VPN 网关需要 `-GatewayType` *Vpn*。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

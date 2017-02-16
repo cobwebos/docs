@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: f5ea64ffc044faceec08e9a2b756a414e446a1b1
+ms.sourcegitcommit: 7ff4286d6006eb362b6fba705e2afca1fd872f72
+ms.openlocfilehash: afefa826577999897a537add7a6c6301144fa38c
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: f5ea64ffc044faceec08e9a2b756a414e446a1b1
         "name" : "<Name of input parameter in function signature>",
         "queueName" : "<Name of the queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
@@ -57,7 +57,7 @@ ms.openlocfilehash: f5ea64ffc044faceec08e9a2b756a414e446a1b1
         "topicName" : "<Name of the topic>",
         "subscriptionName" : "<Name of the subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
@@ -196,7 +196,7 @@ module.exports = function(context, myQueueItem) {
   Functions 将对象反序列化为 JSON 消息。 如果函数结束时输出值为 null，Functions 将创建具有 null 对象的消息。
 * `string` - 参数定义外观类似 `out string paraName` (C#)。 如果函数结束时参数值为非 null，Functions 将创建消息。
 * `byte[]` - 参数定义外观类似 `out byte[] paraName` (C#)。 如果函数结束时参数值为非 null，Functions 将创建消息。
-* `BrokeredMessage` - 参数定义外观类似 `out byte[] paraName` (C#)。 如果函数结束时参数值为非 null，Functions 将创建消息。
+* `BrokeredMessage` - 参数定义外观类似 `out BrokeredMessage paraName` (C#)。 如果函数结束时参数值为非 null，Functions 将创建消息。
 
 有关如何在 C# 函数中创建多条消息，可以使用 `ICollector<T>` 或 `IAsyncCollector<T>`。 调用 `Add` 方法时创建了一条消息。
 
@@ -303,6 +303,6 @@ module.exports = function (context, myTimer) {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

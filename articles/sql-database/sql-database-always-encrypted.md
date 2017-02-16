@@ -1,6 +1,6 @@
 ---
-title: "始终加密：使用数据库加密保护 Azure SQL 数据库中的敏感数据 | Microsoft 文档"
-description: "在数分钟内保护 SQL 数据库中的敏感数据。"
+title: "Always Encrypted：Azure SQL 数据库 - Windows 证书存储 | Microsoft Docs"
+description: "本文演示如何使用 SQL Server Management Studio (SSMS) 中的 Always Encrypted 向导，通过数据加密来保护 SQL 数据库中的敏感数据。 它还演示如何将加密密钥存储在 Windows 证书存储中。"
 keywords: "加密数据, sql 加密, 数据库加密, 敏感数据, 始终加密"
 services: sql-database
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 66044ef8353e61f0de5afb8c61d91335ecd6dcbb
+ms.sourcegitcommit: cffa8955cf044398e526b1ad6158eefebbf91b3b
+ms.openlocfilehash: 9cd3d1b2da7f941673003b566cd92b0eb9acf6f4
 
 
 ---
@@ -526,6 +526,6 @@ SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

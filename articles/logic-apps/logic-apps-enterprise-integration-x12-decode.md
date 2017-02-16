@@ -1,6 +1,6 @@
 ---
-title: "了解 Enterprise Integration Pack 解码 X12 消息连接器 | Microsoft Docs"
-description: "了解如何将合作伙伴与 Enterprise Integration Pack 和逻辑应用一起使用"
+title: "在 Azure 逻辑应用中为 X12 消息解码 | Microsoft 文档"
+description: "如何在逻辑应用中使用 Enterprise Integration Pack 内的 X12 解码器"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -12,49 +12,52 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: b6ce911b8435f3d6ed1c12c78ba81abe180346a2
+ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
+ms.openlocfilehash: 2fa435d5a52ee7a9c18926912a7212ee862b3832
 
 
 ---
-# <a name="get-started-with-decode-x12-message"></a>解码 X12 消息入门
+# <a name="get-started-with-decode-x12-messages"></a>解码 X12 消息入门
 验证 EDI 和特定于合作伙伴的属性，为每个事务集生成 XML 文档并为处理的事务生成确认。
 
-## <a name="create-the-connection"></a>创建连接
-### <a name="prerequisites"></a>先决条件
+## <a name="prereqs"></a>先决条件
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
 * 使用解码 X12 消息连接器需要集成帐户。 请参阅有关如何创建[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)和 [X12 协议](../logic-apps/logic-apps-enterprise-integration-x12.md)的详细信息
 
-### <a name="connect-to-decode-x12-message-using-the-following-steps"></a>可使用以下步骤连接到解码 X12 消息：
+## <a name="decode-x12-messages"></a>解码 X12 消息
+
 1. [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)提供了一个示例
-2. 此连接器没有任何触发器。 使用其他触发器启动逻辑应用（如请求触发器）。  在逻辑应用设计器中，添加触发器和操作。  在下拉列表中选择“显示 Microsoft 托管的 API”，然后在搜索框中输入“x12”。  选择“X12 – 解码 X12 消息”
+2. 此连接器没有任何触发器。 使用其他触发器启动逻辑应用（如请求触发器）。  在逻辑应用设计器中，添加触发器和操作。  在下拉列表中选择“显示 Microsoft 托管的 API”，然后在搜索框中输入“x12”。  选择“X12 – 解码 X12 消息”：
    
     ![搜索 x12](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
-3. 如果以前尚未创建任何与集成帐户的连接，则系统提示你输入连接详细信息
+3. 如果事先未与集成帐户建立任何连接，系统会提示输入连接详细信息：
    
     ![集成帐户连接](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)     
-4. 输入集成帐户详细信息。  带星号的属性是必填的
+4. 输入集成帐户详细信息。  带星号的属性是必填的：
    
    | 属性 | 详细信息 |
    | --- | --- |
    | 连接名称 * |为连接输入任何名称 |
    | 集成帐户 * |输入集成帐户名称。 确保集成帐户和逻辑应用处于相同 Azure 位置 |
    
-    完成之后，连接详细信息与下面的内容类似
+    完成之后，连接详细信息会类似于下面这样：
    
     ![集成帐户连接已创建](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
-5. 选择“创建”
-6. 请注意，连接已创建。
+5. 选择“创建” 。
+6. 可以看到，已创建连接：
    
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
-7. 选择要解码的 X12 平面文件消息
+7. 选择要解码的 X12 平面文件消息：
    
     ![提供必填字段](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
-## <a name="x12-decode-does-following"></a>X12 解码执行以下操作
+## <a name="x12-decode-details"></a>X12 解码详细信息
+
+X12 解码连接器执行以下操作：
+
 * 针对贸易合作伙伴协议验证信封
 * 为每个事务集生成 XML 文档。
 * 验证 EDI 和特定于合作伙伴的属性
@@ -82,6 +85,6 @@ ms.openlocfilehash: b6ce911b8435f3d6ed1c12c78ba81abe180346a2
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

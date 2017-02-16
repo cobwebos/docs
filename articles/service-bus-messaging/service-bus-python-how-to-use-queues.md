@@ -1,5 +1,5 @@
 ---
-title: "如何通过 Python 使用服务总线队列 | Microsoft 文档"
+title: "如何通过 Python 使用 Azure 服务总线队列 | Microsoft Docs"
 description: "了解如何使用 Python 中的 Azure 服务总线队列"
 services: service-bus-messaging
 documentationcenter: python
@@ -12,51 +12,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 01/11/2017
 ms.author: sethm;lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a162dc04f8eb5002cae3bf708ae2fcd4c2aa694
+ms.sourcegitcommit: 0f9f732d6998a6ee50b0aea4edfc615ac61025ce
+ms.openlocfilehash: 775959d93105ca9fb28ce72e4ee4adf6b956e815
 
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>如何使用 Service Bus 队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本文介绍了如何使用服务总线队列。 相关示例采用 Python 编写，并使用了 [Python Azure 服务总线包][Python Azure 服务总线包]。 涉及的任务包括**创建队列、发送和接收消息**以及**删除队列**。
+本文介绍了如何使用服务总线队列。 相关示例采用 Python 编写，并使用了 [Python Azure 服务总线包][Python Azure Service Bus package]。 涉及的任务包括**创建队列、发送和接收消息**以及**删除队列**。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
 > [!NOTE]
-> 若要安装 Python 或 [Python Azure 服务总线包][Python Azure 服务总线包]，请参阅 [Python 安装指南](../python-how-to-install.md)。
+> 若要安装 Python 或 [Python Azure 服务总线包][Python Azure Service Bus package]，请参阅 [Python 安装指南](../python-how-to-install.md)。
 > 
 > 
 
 ## <a name="create-a-queue"></a>创建队列
 可以通过 **ServiceBusService** 对象处理队列。 将以下代码添加到任何 Python 文件的顶部附近，你希望在其中以编程方式访问服务总线：
 
-```
+```python
 from azure.servicebus import ServiceBusService, Message, Queue
 ```
 
 以下代码创建 **ServiceBusService** 对象。 将 `mynamespace`、`sharedaccesskeyname` 和 `sharedaccesskey` 替换为你的命名空间、共享访问签名 (SAS) 密钥名称和值。
 
-```
+```python
 bus_service = ServiceBusService(
     service_namespace='mynamespace',
     shared_access_key_name='sharedaccesskeyname',
     shared_access_key_value='sharedaccesskey')
 ```
 
-SAS 密钥名称和值可以在 [Azure 经典门户][Azure 经典门户]连接信息中找到，也可以在服务器资源管理器中选择服务总线命名空间后，在 Visual Studio“**属性**”窗格中找到（如前一部分中所示）。
+SAS 密钥名称和值可以在 [Azure 经典门户][Azure classic portal]连接信息中找到，也可以在服务器资源管理器中选择服务总线命名空间后，在 Visual Studio“属性”窗格中找到（如前一部分中所示）。
 
-```
+```python
 bus_service.create_queue('taskqueue')
 ```
 
 **create_queue** 还支持其他选项，通过这些选项可以重写默认队列设置，例如消息生存时间 (TTL) 或最大队列大小。 以下示例将最大队列大小设置为 5GB，将 TTL 值设置为 1 分钟：
 
-```
+```python
 queue_options = Queue()
 queue_options.max_size_in_megabytes = '5120'
 queue_options.default_message_time_to_live = 'PT1M'
@@ -69,17 +71,17 @@ bus_service.create_queue('taskqueue', queue_options)
 
 下面的示例演示如何使用 **send\_queue\_message** 向名为“taskqueue”的队列发送一条测试消息：
 
-```
+```python
 msg = Message(b'Test Message')
 bus_service.send_queue_message('taskqueue', msg)
 ```
 
-服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][服务总线配额]。
+服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
 对 **ServiceBusService** 对象使用 **receive\_queue\_message**方法可从队列接收消息：
 
-```
+```python
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=False)
 print(msg.body)
 ```
@@ -90,7 +92,7 @@ print(msg.body)
 
 如果将 **peek\_lock** 参数设置为 **True**，则接收将变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完消息（或安全存储该消息以供将来处理）后，会通过对 **Message** 对象调用 **delete** 方法来完成接收过程的第二个阶段。 **delete** 方法会将消息标记为已使用，并从队列中将其删除。
 
-```
+```python
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=True)
 print(msg.body)
 
@@ -105,18 +107,18 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 如果应用程序在处理消息之后，但在调用 **delete** 方法之前崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作**至少处理一次**，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你已了解有关服务总线队列的基础知识，单击下面的链接可了解更多信息。
+现在，你已了解有关服务总线队列的基础知识，请参阅下面的文章了解更多信息。
 
-* [队列、主题和订阅][队列、主题和订阅]。
+* [队列、主题和订阅][Queues, topics, and subscriptions]
 
-[Azure 经典门户]: https://manage.windowsazure.com
-[Python Azure 服务总线包]: https://pypi.python.org/pypi/azure-servicebus  
-[队列、主题和订阅]: service-bus-queues-topics-subscriptions.md
-[服务总线配额]: service-bus-quotas.md
-
-
+[Azure classic portal]: https://manage.windowsazure.com
+[Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[Service Bus quotas]: service-bus-quotas.md
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Jan17_HO2-->
 
 

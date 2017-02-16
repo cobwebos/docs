@@ -1,5 +1,5 @@
 ---
-title: "订阅和帐户准则 | Microsoft Docs"
+title: "Azure 订阅和帐户准则 | Microsoft Docs"
 description: "了解 Azure 中订阅和帐户的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-windows
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b410436de11550aab2160421abfb27107f7874b0
+ms.sourcegitcommit: 310dc34634f7104ddfc7dfab13f09ab945b53cf4
+ms.openlocfilehash: bfa4f4938a52a7a1b9ebe5ee9efd37198468a0a6
 
 
 ---
-# <a name="subscription-and-accounts-guidelines"></a>订阅和帐户准则
+# <a name="azure-subscription-and-accounts-guidelines"></a>Azure 订阅和帐户准则
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 本文重点介绍如何随环境和用户群的增长实行订阅和帐户管理。
@@ -57,7 +57,7 @@ ms.openlocfilehash: b410436de11550aab2160421abfb27107f7874b0
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-该组织看起来可能如下所示：
+该组织看起来可能如下例所示：
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
@@ -69,6 +69,6 @@ ms.openlocfilehash: b410436de11550aab2160421abfb27107f7874b0
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

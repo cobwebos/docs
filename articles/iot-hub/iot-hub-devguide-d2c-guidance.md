@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT 中心设备到云通信指南 | Microsoft Docs"
-description: "Azure IoT 中心开发人员指南 - 有关何时使用设备到云消息、报告属性或文件上传的指南。"
+title: "Azure IoT 中心从设备到云选项 | Microsoft Docs"
+description: "开发人员指南 - 指导用户何时使用从设备到云的消息、报告属性或文件上传，以进行从云到设备的通信。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 53f14e6fe115ed5f96d25b9ec5ab04abe23712d5
-ms.openlocfilehash: 6d5608cd86e3f042a7d63bd4e43e75a06141dfab
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 8c3479e29b55eacc30842ffdfee23b4a00a13126
 
 
 ---
-# <a name="device-to-cloud-communications-guidance"></a>设备到云通信指南
-将信息从设备应用发送到后端时，IoT 中心提供三个选项：
+# <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南
+将信息从设备应用发送到解决方案后端时，IoT 中心会公开三个选项：
 
 * [设备到云 (D2C) 消息][lnk-d2c]，用于时序遥测和警报；
 * [报告属性][lnk-twins]，用于报告设备状态信息，例如可用功能、条件和长时间运行的工作流（如配置和软件更新）的状态；
@@ -38,7 +38,7 @@ ms.openlocfilehash: 6d5608cd86e3f042a7d63bd4e43e75a06141dfab
 | 协议 | 适用于所有协议。 | 目前仅在使用 MQTT 时提供。 | 在使用任何协议时可用，但设备上必须具备 HTTP。 |
 
 > [!NOTE]
-> 应用程序可能需要将信息作为遥测时序或警报发送，并且使其在设备克隆中可用。 在这些情况下，设备应用可以发送 D2C 消息并报告属性更改，或者后端可以在接收到消息时，将信息存储在设备克隆标签中。 由于 D2C 消息允许的吞吐量远高于设备克隆更新，因此有时需要避免为每个 D2C 消息更新设备克隆。
+> 应用程序可能需要将信息作为遥测时序或警报发送，并且使其在设备克隆中可用。 不管什么情况，既可以通过设备应用发送 D2C 消息并报告属性更改，也可以通过解决方案后端在收到消息时将信息存储在设备孪生的标记中。 由于 D2C 消息允许的吞吐量远高于设备克隆更新，因此有时需要避免为每个 D2C 消息更新设备克隆。
 > 
 > 
 
@@ -50,6 +50,6 @@ ms.openlocfilehash: 6d5608cd86e3f042a7d63bd4e43e75a06141dfab
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

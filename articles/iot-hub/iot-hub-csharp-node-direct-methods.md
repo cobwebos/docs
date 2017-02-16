@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure IoT 中心的直接方法 (C#) | Microsoft Docs"
-description: "本教程介绍如何使用直接方法"
+title: "使用 Azure IoT 中心的直接方法 (.NET/Node) | Microsoft Docs"
+description: "如何使用 Azure IoT 中心直接方法。 使用适用于 Node.js 的 Azure IoT 设备 SDK 实现包含直接方法的模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现调用直接方法的服务应用。"
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/11/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: f2af421140f4f6640578a372993c2553f8c590a4
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
 
 
 ---
-# <a name="tutorial-use-direct-methods-c"></a>教程：使用直接方法 (C#)
+# <a name="use-direct-methods-netnode"></a>使用直接方法(.NET/Node)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-在本教程结束时，你将具有 .NET 和 Node.js 控制台应用程序：
+在本教程结束时，你将拥有一个 .NET 控制台应用和一个 Node.js 控制台应用：
 
-* **CallMethodOnDevice.js**，一个应从后端运行的 .NET 应用，调用模拟设备应用中的方法并显示响应。
+* **CallMethodOnDevice.sln**：一个 .NET 后端应用，可调用模拟设备应用上的方法并显示响应。
 * **SimulatedDevice.js**，一个 Node.js 应用，可模拟使用早先创建的设备标识连接到 IoT 中心的设备，并响应通过云调用的方法。
 
 > [!NOTE]
@@ -44,9 +44,9 @@ ms.openlocfilehash: f2af421140f4f6640578a372993c2553f8c590a4
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
-在本部分，用户需创建一个 Node.js 控制台应用，用于响应通过后端调用的方法。
+在本部分，用户需创建一个 Node.js 控制台应用，用于响应解决方案后端调用的方法。
 
-1. 新建名为 **simulateddevice**的空文件夹。 在命令提示符下的 **simulateddevice** 文件夹中，使用以下命令创建 package.json 文件。 接受所有默认值：
+1. 新建名为 **simulateddevice**的空文件夹。 在命令提示符下使用以下命令，在 **simulateddevice** 文件夹中创建一个 package.json 文件。 接受所有默认值：
    
     ```
     npm init
@@ -65,7 +65,7 @@ ms.openlocfilehash: f2af421140f4f6640578a372993c2553f8c590a4
     var Mqtt = require('azure-iot-device-mqtt').Mqtt;
     var DeviceClient = require('azure-iot-device').Client;
     ```
-5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。 将 **{device connection string}** 替换为在*创建设备标识*部分创建的连接字符串：
+5. 添加 **connectionString** 变量，并使用它创建 **DeviceClient** 实例。 将 **{device connection string}** 替换为在“创建设备标识”部分生成的设备连接字符串：
    
     ```
     var connectionString = '{device connection string}';
@@ -111,16 +111,16 @@ ms.openlocfilehash: f2af421140f4f6640578a372993c2553f8c590a4
 1. 在 Visual Studio 中，使用“ **控制台应用程序** ”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 确保 .NET Framework 版本为 4.5.1 或更高。 将项目命名为 **CallMethodOnDevice**。
    
     ![新的 Visual C# Windows 经典桌面项目][10]
-2. 在“解决方案资源管理器”中，右键单击“CallMethodOnDevice”项目，然后单击“管理 Nuget 包”。
-3. 在“Nuget 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此过程将下载、安装 [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk]（Microsoft Azure IoT 服务 SDK）NuGet 包及其依赖项并添加对它的引用。
+2. 在“解决方案资源管理器”中，右键单击“CallMethodOnDevice”项目，然后单击“管理 NuGet 包”。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
    
-    ![“Nuget 包管理器”窗口][11]
+    ![“NuGet 包管理器”窗口][11]
 
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using System.Threading.Tasks;
         using Microsoft.Azure.Devices;
-5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分中为 IoT 中心创建的连接字符串。
+5. 将以下字段添加到 **Program** 类。 将占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
    
         static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
@@ -183,7 +183,7 @@ ms.openlocfilehash: f2af421140f4f6640578a372993c2553f8c590a4
 <!-- Links -->
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -201,6 +201,6 @@ ms.openlocfilehash: f2af421140f4f6640578a372993c2553f8c590a4
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

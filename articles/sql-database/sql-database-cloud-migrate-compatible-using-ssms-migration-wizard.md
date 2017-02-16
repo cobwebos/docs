@@ -1,6 +1,7 @@
 ---
-title: "使用“将数据库部署到 Microsoft Azure 数据库”向导将 SQL Server 数据库迁移到 SQL 数据库 | Microsoft 文档"
-description: "Microsoft Azure SQL 数据库, 数据库迁移, Microsoft Azure 数据库向导"
+title: "SSMS：将 SQL Server 数据库迁移到 Azure SQL 数据库 | Microsoft Docs"
+description: "本文介绍如何使用 SQL Server Management Studio 中的“将数据库部署到 Microsoft Azure 数据库”向导将兼容的 SQL Server 数据库直接迁移到 Azure SQL 数据库服务器。"
+keywords: "Microsoft Azure SQL 数据库, 数据库迁移, Microsoft Azure 数据库向导"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 08/24/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 6f0dc3b3df76dcb7a43fcdfad49ddfdb747e0747
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: f4cbfc1a277cbe80edbfbb4dc651adb1972f41b4
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 6f0dc3b3df76dcb7a43fcdfad49ddfdb747e0747
 > 
 > 
 
-SQL Server Management Studio 中的“将数据库部署到 Microsoft Azure 数据库”向导可将[兼容的 SQL Server 数据库](sql-database-cloud-migrate.md)直接迁移到 Azure SQL 数据库服务器。
+本文介绍如何使用 SQL Server Management Studio 中的“将数据库部署到 Microsoft Azure 数据库”向导将[兼容的 SQL Server 数据库](sql-database-cloud-migrate.md)直接迁移到 Azure SQL 数据库服务器。
 
 ## <a name="use-the-deploy-database-to-microsoft-azure-database-wizard"></a>使用“将数据库部署到 Microsoft Azure 数据库”向导
 > [!NOTE]
@@ -51,7 +52,7 @@ SQL Server Management Studio 中的“将数据库部署到 Microsoft Azure 数�
 4. 在部署向导中，单击“下一步”，然后单击“连接”以配置与 SQL 数据库服务器的连接。
    
    ![通过“任务”菜单部署到 Azure](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard002.png)
-5. 在“连接到服务器”对话框中，输入用于连接到 SQL 数据库服务器的连接信息。
+5. 在“连接到服务器”对话框中，输入用于连接到 SQL 数据库服务器的连接信息。 若要获取现有服务器的服务器名称，请转到[查看和更新 SQL Server 数据库服务器和其设置](sql-database-view-update-server-settings.md)。
    
     ![通过“任务”菜单部署到 Azure](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard00.png)
 6. 为 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 文件提供以下内容，该文件是此向导在迁移过程中创建的：
@@ -79,6 +80,6 @@ SQL Server Management Studio 中的“将数据库部署到 Microsoft Azure 数�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/01/2016
+ms.date: 01/25/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
+ms.sourcegitcommit: ec708440fd3ab5d18cb7482002e5432e3a5d373c
+ms.openlocfilehash: 535b4ba102d8fe4d715a31dec610b8f10e04a5b7
 
 
 ---
@@ -42,18 +42,29 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 本步骤使用 Azure PowerShell 创建名为 **FirstDataFactoryPSH**的 Azure 数据工厂。 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换输入数据的 HDInsight Hive 活动。 首先，在此步骤中创建数据工厂。
 
 1. 启动 Azure PowerShell 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行这些命令。
-   * 运行 `Login-AzureRmAccount` 并输入用于登录 Azure 门户的用户名和密码。
-   * 运行 `Get-AzureRmSubscription` 查看此帐户的所有订阅。
-   * 运行 `Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext` 选择要使用的订阅。 此订阅应与 Azure 门户中使用的订阅相同。
+   * 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
+    ```PowerShell
+    Login-AzureRmAccount
+    ```    
+   * 运行以下命令查看此帐户的所有订阅。
+    ```PowerShell
+    Get-AzureRmSubscription 
+    ```
+   * 运行以下命令选择要使用的订阅。 此订阅应与 Azure 门户中使用的订阅相同。
+    ```PowerShell
+    Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
+    ```     
 2. 运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组：
-
-        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
-
+    
+    ```PowerShell
+    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```
     本教程中的某些步骤假设使用名为 ADFTutorialResourceGroup 的资源组。 如果使用不同的资源组，需使用该资源组取代本教程中的 ADFTutorialResourceGroup。
 3. 运行 **New-AzureRmDataFactory** cmdlet，创建名为 **FirstDataFactoryPSH** 的数据工厂。
 
-        New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
-
+    ```PowerShell
+    New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
+    ```
 注意以下几点：
 
 * Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
@@ -63,11 +74,14 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
-          Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
-
+    ```PowerShell
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
       可运行以下命令来确认数据工厂提供程序是否已注册：
 
-          Get-AzureRmResourceProvider
+    ```PowerShell
+    Get-AzureRmResourceProvider
+    ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，然后导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作将自动注册提供程序。
 
 在创建管道之前，需要创建一些数据工厂项。 首先创建链接服务用于将数据存储/计算机链接到数据存储，然后定义输入和输出数据集来表示链接的数据存储中的输入/输出数据，接下来创建管道，其中的某个活动使用这些数据集。
@@ -80,30 +94,35 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 
 1. 在 C:\ADFGetStarted 文件夹中，创建包含以下内容的名为 StorageLinkedService.json 的 JSON 文件。 创建 ADFGetStarted 文件夹（如果不存在）。
 
-        {
-            "name": "StorageLinkedService",
-            "properties": {
-                "type": "AzureStorage",
-                "description": "",
-                "typeProperties": {
-                    "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-                }
+    ```json
+    {
+        "name": "StorageLinkedService",
+        "properties": {
+            "type": "AzureStorage",
+            "description": "",
+            "typeProperties": {
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
             }
         }
-
+    }
+    ```
     将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请在[管理你的存储帐户](../storage/storage-create-storage-account.md#manage-your-storage-account)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
 2. 在 Azure PowerShell 中，切换到 ADFGetStarted 文件夹。
 3. 可以使用 **New-AzureRmDataFactoryLinkedService** cmdlet 创建链接服务。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值。 或者，可以使用 **Get-AzureRmDataFactory** 获取 **DataFactory** 对象并传递该对象，这样就不需要在每次运行 cmdlet 时键入 *ResourceGroupName* 和 *DataFactoryName*。 运行以下命令，将 **Get-AzureRmDataFactory** cmdlet 的输出分配给 **$df** 变量。
 
-        $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    ```PowerShell
+    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    ```
 4. 现在，运行 **New-AzureRmDataFactoryLinkedService** cmdlet 创建 **StorageLinkedService** 链接服务。
 
-        New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
-
+    ```PowerShell
+    New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
+    ```
     如果尚未运行 **Get-AzureRmDataFactory** cmdlet 并将输出分配给 **$df** 变量，则必须指定 *ResourceGroupName* 和 *DataFactoryName* 参数的值，如下所示。
 
-        New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
-
+    ```PowerShell
+    New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
+    ```
     如果在教程的中途关闭 Azure PowerShell，则下次启动 Azure PowerShell 时必须运行 **Get-AzureRmDataFactory** cmdlet 才能完成教程。
 
 ### <a name="create-azure-hdinsight-linked-service"></a>创建 Azure HDInsight 链接服务
@@ -111,19 +130,20 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 
 1. 在 **C:\ADFGetStarted** 文件夹中，创建包含以下内容的名为 **HDInsightOnDemandLinkedService**.json 的 JSON 文件。
 
-        {
-          "name": "HDInsightOnDemandLinkedService",
-          "properties": {
-            "type": "HDInsightOnDemand",
-            "typeProperties": {
-              "version": "3.2",
-              "clusterSize": 1,
-              "timeToLive": "00:30:00",
-              "linkedServiceName": "StorageLinkedService"
-            }
-          }
+    ```json
+    {
+      "name": "HDInsightOnDemandLinkedService",
+      "properties": {
+        "type": "HDInsightOnDemand",
+        "typeProperties": {
+          "version": "3.2",
+          "clusterSize": 1,
+          "timeToLive": "00:30:00",
+          "linkedServiceName": "StorageLinkedService"
         }
-
+      }
+    }
+    ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
    | 属性 | 说明 |
@@ -143,8 +163,10 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 
      有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 2. 运行 **New-AzureRmDataFactoryLinkedService** cmdlet 创建名为 HDInsightOnDemandLinkedService 的链接服务。
-
-        New-AzureRmDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
+    
+    ```PowerShell
+    New-AzureRmDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
+    ```
 
 ## <a name="create-datasets"></a>创建数据集
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 **StorageLinkedService** 。 链接服务指向 Azure 存储帐户，数据集指定用于保存输入和输出数据的存储中的容器、文件夹和文件名。
@@ -152,28 +174,29 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 ### <a name="create-input-dataset"></a>创建输入数据集
 1. 在 **C:\ADFGetStarted** 文件夹中，创建包含以下内容的名为 **InputTable.json** 的 JSON 文件：
 
-        {
-            "name": "AzureBlobInput",
-            "properties": {
-                "type": "AzureBlob",
-                "linkedServiceName": "StorageLinkedService",
-                "typeProperties": {
-                    "fileName": "input.log",
-                    "folderPath": "adfgetstarted/inputdata",
-                    "format": {
-                        "type": "TextFormat",
-                        "columnDelimiter": ","
-                    }
-                },
-                "availability": {
-                    "frequency": "Month",
-                    "interval": 1
-                },
-                "external": true,
-                "policy": {}
-            }
+    ```json
+    {
+        "name": "AzureBlobInput",
+        "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "StorageLinkedService",
+            "typeProperties": {
+                "fileName": "input.log",
+                "folderPath": "adfgetstarted/inputdata",
+                "format": {
+                    "type": "TextFormat",
+                    "columnDelimiter": ","
+                }
+            },
+            "availability": {
+                "frequency": "Month",
+                "interval": 1
+            },
+            "external": true,
+            "policy": {}
         }
-
+    }
+    ```
     该 JSON 定义名为 **AzureBlobInput**的数据集，表示管道中活动的输入数据。 此外，它指定要将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中。
 
     下表提供了代码片段中使用的 JSON 属性的描述：
@@ -189,36 +212,41 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
    | external |如果输入数据不是由数据工厂服务生成的，此属性设置为 true。 |
 2. 在 Azure PowerShell 中运行以下命令，创建数据工厂数据集：
 
-        New-AzureRmDataFactoryDataset $df -File .\InputTable.json
+    ```PowerShell
+    New-AzureRmDataFactoryDataset $df -File .\InputTable.json
+    ```
 
 ### <a name="create-output-dataset"></a>创建输出数据集
 现在，创建输出数据集来表示 Azure Blob 存储中存储的输出数据。
 
 1. 在 **C:\ADFGetStarted** 文件夹中，创建包含以下内容的名为 **OutputTable.json** 的 JSON 文件：
 
-        {
-          "name": "AzureBlobOutput",
-          "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "StorageLinkedService",
-            "typeProperties": {
-              "folderPath": "adfgetstarted/partitioneddata",
-              "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ","
-              }
-            },
-            "availability": {
-              "frequency": "Month",
-              "interval": 1
-            }
+    ```json
+    {
+      "name": "AzureBlobOutput",
+      "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "StorageLinkedService",
+        "typeProperties": {
+          "folderPath": "adfgetstarted/partitioneddata",
+          "format": {
+            "type": "TextFormat",
+            "columnDelimiter": ","
           }
+        },
+        "availability": {
+          "frequency": "Month",
+          "interval": 1
         }
-
+      }
+    }
+    ```
     该 JSON 定义名为 **AzureBlobOutput**的数据集，表示管道中活动的输出数据。 此外，它指定要将结果存储在名为 **adfgetstarted** 的 Blob 容器及名为 **partitioneddata** 的文件夹中。 **availability** 节指定每月生成输出数据集一次。
 2. 在 Azure PowerShell 中运行以下命令，创建数据工厂数据集：
 
-        New-AzureRmDataFactoryDataset $df -File .\OutputTable.json
+    ```PowerShell
+    New-AzureRmDataFactoryDataset $df -File .\OutputTable.json
+    ```
 
 ## <a name="create-pipeline"></a>创建管道
 此步骤创建第一个具有 **HDInsightHive** 活动的管道。 每月获取输入切片（frequency：Month；interval：1），每月生成输出切片，活动的计划程序属性也设置为每月。 输出数据集的设置必须与活动计划程序匹配。 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 本部分结尾说明以下 JSON 中使用的属性。
@@ -230,49 +258,50 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
    >
    >
 
-        {
-            "name": "MyFirstPipeline",
-            "properties": {
-                "description": "My first Azure Data Factory pipeline",
-                "activities": [
-                    {
-                        "type": "HDInsightHive",
-                        "typeProperties": {
-                            "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-                            "scriptLinkedService": "StorageLinkedService",
-                            "defines": {
-                                "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
-                                "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
-                            }
-                        },
-                        "inputs": [
-                            {
-                                "name": "AzureBlobInput"
-                            }
-                        ],
-                        "outputs": [
-                            {
-                                "name": "AzureBlobOutput"
-                            }
-                        ],
-                        "policy": {
-                            "concurrency": 1,
-                            "retry": 3
-                        },
-                        "scheduler": {
-                            "frequency": "Month",
-                            "interval": 1
-                        },
-                        "name": "RunSampleHiveActivity",
-                        "linkedServiceName": "HDInsightOnDemandLinkedService"
-                    }
-                ],
-                "start": "2016-04-01T00:00:00Z",
-                "end": "2016-04-02T00:00:00Z",
-                "isPaused": false
-            }
+    ```json
+    {
+        "name": "MyFirstPipeline",
+        "properties": {
+            "description": "My first Azure Data Factory pipeline",
+            "activities": [
+                {
+                    "type": "HDInsightHive",
+                    "typeProperties": {
+                        "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+                        "scriptLinkedService": "StorageLinkedService",
+                        "defines": {
+                            "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
+                            "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
+                        }
+                    },
+                    "inputs": [
+                        {
+                            "name": "AzureBlobInput"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "name": "AzureBlobOutput"
+                        }
+                    ],
+                    "policy": {
+                        "concurrency": 1,
+                        "retry": 3
+                    },
+                    "scheduler": {
+                        "frequency": "Month",
+                        "interval": 1
+                    },
+                    "name": "RunSampleHiveActivity",
+                    "linkedServiceName": "HDInsightOnDemandLinkedService"
+                }
+            ],
+            "start": "2016-04-01T00:00:00Z",
+            "end": "2016-04-02T00:00:00Z",
+            "isPaused": false
         }
-
+    }
+    ```
     在 JSON 代码片段中创建一个管道，其中包括在 HDInsight 群集上使用 Hive 处理数据的单个活动。
 
     Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **StorageLinkedService**）中，以及 **adfgetstarted** 容器的 **script** 文件夹中。
@@ -288,7 +317,9 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 
 2. 确认在 Azure Blob 存储的 **adfgetstarted/inputdata** 文件夹中看到了**input.log** 文件，然后运行以下命令部署管道。 由于 **start** 和 **end** 时间设置为过去的时间，**isPaused** 设置为 false，因此管道（管道中的活动）在部署后立即运行。
 
-       New-AzureRmDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
+    ```PowerShell
+    New-AzureRmDataFactoryPipeline $df -File .\MyFirstPipelinePSH.json
+    ```
 3. 恭喜，现已使用 Azure PowerShell 成功创建第一个管道！
 
 ## <a name="monitor-pipeline"></a>监视管道
@@ -296,47 +327,55 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 
 1. 运行 **Get-AzureRmDataFactory** 并将输出分配给 **$df** 变量。
 
-        $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    ```PowerShell
+    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
+    ```
 2. 运行 **Get-AzureRmDataFactorySlice**，获取有关 **EmpSQLTable**（管道的输出表）所有切片的详细信息。
 
-        Get-AzureRmDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2016-04-01
-
+    ```PowerShell
+    Get-AzureRmDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2016-04-01
+    ```
     请注意，此处指定的 StartDateTime 与在管道 JSON 中指定的开始时间是相同的。 您应该会看到与下面类似的输出。
 
-        ResourceGroupName : ADFTutorialResourceGroup
-        DataFactoryName   : FirstDataFactoryPSH
-        DatasetName       : AzureBlobOutput
-        Start             : 4/1/2016 12:00:00 AM
-        End               : 4/2/2016 12:00:00 AM
-        RetryCount        : 0
-        State             : InProgress
-        SubState          :
-        LatencyStatus     :
-        LongRetryCount    : 0
+    ```PowerShell
+    ResourceGroupName : ADFTutorialResourceGroup
+    DataFactoryName   : FirstDataFactoryPSH
+    DatasetName       : AzureBlobOutput
+    Start             : 4/1/2016 12:00:00 AM
+    End               : 4/2/2016 12:00:00 AM
+    RetryCount        : 0
+    State             : InProgress
+    SubState          :
+    LatencyStatus     :
+    LongRetryCount    : 0
+    ```
 3. 运行 **Get-AzureRmDataFactoryRun** ，获取特定切片的活动运行详细信息。
 
-        Get-AzureRmDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2016-04-01
+    ```PowerShell
+    Get-AzureRmDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2016-04-01
+    ```
 
     您应该会看到与下面类似的输出。
 
-        Id                  : 0f6334f2-d56c-4d48-b427-d4f0fb4ef883_635268096000000000_635292288000000000_AzureBlobOutput
-        ResourceGroupName   : ADFTutorialResourceGroup
-        DataFactoryName     : FirstDataFactoryPSH
-        DatasetName         : AzureBlobOutput
-        ProcessingStartTime : 12/18/2015 4:50:33 AM
-        ProcessingEndTime   : 12/31/9999 11:59:59 PM
-        PercentComplete     : 0
-        DataSliceStart      : 4/1/2016 12:00:00 AM
-        DataSliceEnd        : 4/2/2016 12:00:00 AM
-        Status              : AllocatingResources
-        Timestamp           : 12/18/2015 4:50:33 AM
-        RetryAttempt        : 0
-        Properties          : {}
-        ErrorMessage        :
-        ActivityName        : RunSampleHiveActivity
-        PipelineName        : MyFirstPipeline
-        Type                : Script
-
+    ```PowerShell
+    Id                  : 0f6334f2-d56c-4d48-b427-d4f0fb4ef883_635268096000000000_635292288000000000_AzureBlobOutput
+    ResourceGroupName   : ADFTutorialResourceGroup
+    DataFactoryName     : FirstDataFactoryPSH
+    DatasetName         : AzureBlobOutput
+    ProcessingStartTime : 12/18/2015 4:50:33 AM
+    ProcessingEndTime   : 12/31/9999 11:59:59 PM
+    PercentComplete     : 0
+    DataSliceStart      : 4/1/2016 12:00:00 AM
+    DataSliceEnd        : 4/2/2016 12:00:00 AM
+    Status              : AllocatingResources
+    Timestamp           : 12/18/2015 4:50:33 AM
+    RetryAttempt        : 0
+    Properties          : {}
+    ErrorMessage        :
+    ActivityName        : RunSampleHiveActivity
+    PipelineName        : MyFirstPipeline
+    Type                : Script
+    ```
     可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
@@ -374,6 +413,6 @@ ms.openlocfilehash: 110a1a0ee760b5afe00f63443ee71c60c938ef55
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

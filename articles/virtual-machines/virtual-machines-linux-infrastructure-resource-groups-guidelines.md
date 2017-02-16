@@ -1,5 +1,5 @@
 ---
-title: "资源组准则 | Microsoft Docs"
+title: "Azure 资源组准则 | Microsoft Docs"
 description: "了解用于在 Azure 基础结构服务中部署资源组的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ed79850fc238e4406e9525dfb1986a1e0e155799
+ms.sourcegitcommit: 70e52cefccee4b963e512724b96525bcbacf330c
+ms.openlocfilehash: 092c07fb22dcc09e1ff21258fde5d0149ade1ef3
 
 
 ---
@@ -49,7 +49,7 @@ ms.openlocfilehash: ed79850fc238e4406e9525dfb1986a1e0e155799
 * 针对每个应用程序部署的资源组，此类部署包含存储帐户、虚拟网络和子网、VM、负载均衡器等。
 * 包含核心虚拟网络和子网或存储帐户的集中式资源组。 因此，应用程序所在的资源组只包含 VM、负载均衡器、网络接口等。
 
-随着规模的扩大，为虚拟网络和子网创建集中式资源组可让用户更轻松地为混合连接选项生成跨界网络连接。 另一种方法是让每个应用程序都有自己的需要配置和维护的虚拟网络。 [基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)提供一种精细的方式来控制资源组访问。 对于生产应用程序，可以控制能访问那些资源的用户；对于核心基础结构资源，可以限制为只有基础结构工程师可以使用它们。 应用程序所有者只能访问其资源组内的应用程序组件，而不能访问环境的核心 Azure 基础结构。 在设计环境时，请考虑需要访问资源的用户，并据此设计资源组。 
+随着规模的扩大，为虚拟网络和子网创建集中式资源组可让用户更轻松地为混合连接选项生成跨界网络连接。 另一种方法是让每个应用程序都有自己的需要配置和维护的虚拟网络。 [基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)提供一种精细方式，控制对资源组的访问。 对于生产应用程序，可以控制能访问那些资源的用户；对于核心基础结构资源，可以限制为只有基础结构工程师可以使用它们。 应用程序所有者只能访问其资源组内的应用程序组件，而不能访问环境的核心 Azure 基础结构。 在设计环境时，请考虑需要访问资源的用户，并据此设计资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
@@ -57,6 +57,6 @@ ms.openlocfilehash: ed79850fc238e4406e9525dfb1986a1e0e155799
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

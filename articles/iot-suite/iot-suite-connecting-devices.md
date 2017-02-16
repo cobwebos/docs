@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: af83b55210d1e31c548b9b178272f7e75be7b98e
+ms.sourcegitcommit: ba7a47bf66c106c75565682a71f870aa561cd827
+ms.openlocfilehash: 61373e3cf9c1630747fc70ab289e125217f4af82
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: af83b55210d1e31c548b9b178272f7e75be7b98e
    * Microsoft.Azure.IoTHub.Serializer
    * Microsoft.Azure.IoTHub.IoTHubClient
    * Microsoft.Azure.IoTHub.HttpTransport
-6. 在“**解决方案资源管理器**”中，右键单击 **RMDevice** 项目，然后单击“**属性**”打开该项目的“**属性页**”对话框。 有关详细信息，请参阅 [设置 Visual C++ 项目属性][lnk-c-project-properties]。 
+6. 在“**解决方案资源管理器**”中，右键单击 **RMDevice** 项目，然后单击“**属性**”打开该项目的“**属性页**”对话框。 有关详细信息，请参阅[设置 Visual C++ 项目属性][lnk-c-project-properties]。 
 7. 单击 **Linker** 文件夹，然后单击“**输入**”属性页。
 8. 将 **crypt32.lib** 添加到“**其他依赖项**”属性。 单击“**确定**”，然后再次单击“**确定**”以保存项目属性值。
 
@@ -257,7 +257,7 @@ IoT 中心客户端库使用一个模型来指定设备发送到 IoT 中心的�
                   thermostat->Commands = (char*)STRING_c_str(commandsMetadata);
    
                   /* Here is the actual send of the Device Info */
-                  if (SERIALIZE(&buffer, &bufferSize, thermostat->ObjectType, thermostat->Version, thermostat->IsSimulatedDevice, thermostat->DeviceProperties, thermostat->Commands) != IOT_AGENT_OK)
+                  if (SERIALIZE(&buffer, &bufferSize, thermostat->ObjectType, thermostat->Version, thermostat->IsSimulatedDevice, thermostat->DeviceProperties, thermostat->Commands) != CODEFIRST_OK)
                   {
                     (void)printf("Failed serializing\r\n");
                   }
@@ -283,7 +283,7 @@ IoT 中心客户端库使用一个模型来指定设备发送到 IoT 中心的�
    
                 (void)printf("Sending sensor value Temperature = %d, Humidity = %d\r\n", thermostat->Temperature, thermostat->Humidity);
    
-                if (SERIALIZE(&buffer, &bufferSize, thermostat->DeviceId, thermostat->Temperature, thermostat->Humidity, thermostat->ExternalTemperature) != IOT_AGENT_OK)
+                if (SERIALIZE(&buffer, &bufferSize, thermostat->DeviceId, thermostat->Temperature, thermostat->Humidity, thermostat->ExternalTemperature) != CODEFIRST_OK)
                 {
                   (void)printf("Failed sending sensor value\r\n");
                 }
@@ -358,6 +358,6 @@ IoT 中心客户端库使用一个模型来指定设备发送到 IoT 中心的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

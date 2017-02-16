@@ -1,5 +1,5 @@
 ---
-title: "StorSimple Device Manager - 排查 Microsoft Azure StorSimple 虚拟阵列问题 | Microsoft 文档"
+title: "排查 StorSimple 虚拟阵列问题 | Microsoft 文档"
 description: "介绍 StorSimple Device Manager 诊断功能并说明如何使用它来排查 StorSimple 虚拟阵列问题。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 849e567a68998d4ceb91c3f5c84324653c4c51dc
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务排查 StorSimple 虚拟阵列问题
@@ -46,6 +46,6 @@ StorSimple Device Manager 在服务摘要边栏选项卡中提供了“诊断并
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f8d2941b30079463954b4f9b8b9dfb10cfa3ea1
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 532a953c02ef40eb55705eac885d74c5574deed5
 
 
 ---
@@ -60,7 +60,7 @@ ms.openlocfilehash: 0f8d2941b30079463954b4f9b8b9dfb10cfa3ea1
 3. 虽然各个注册机构的具体情况不同，但是一般而言，是 *从* 自定义域名（例如 **contoso.com**）映射 *到* 用于 Web 应用的流量管理器域名 (**contoso.trafficmanager.net**)。
    
    > [!NOTE]
-   > 另外，如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，要提前将 **www.contoso.com** 绑定到 Web 应用，请创建一条从 **awverify.www** 到 **contoso.trafficmanager.net** 的 CNAME 记录。 然后，可以将 "www.contoso.com" 添加到 Web 应用，而不更改 "www" CNAME 记录。 有关详细信息，请参阅 [Create DNS records for a web app in a custom domain][CREATEDNS]（在自定义域中为 web 应用创建 DNS 记录）。
+   > 另外，如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，要提前将 **www.contoso.com** 绑定到 Web 应用，请创建一条从 **awverify.www** 到 **contoso.trafficmanager.net** 的 CNAME 记录。 然后，可以将 "www.contoso.com" 添加到 Web 应用，而不更改 "www" CNAME 记录。 有关详细信息，请参阅[在自定义域中为 Web 应用创建 DNS 记录][CREATEDNS]。
    > 
    > 
 4. 在注册机构添加或修改完 DNS 记录后，请保存这些更改。
@@ -83,6 +83,6 @@ ms.openlocfilehash: 0f8d2941b30079463954b4f9b8b9dfb10cfa3ea1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

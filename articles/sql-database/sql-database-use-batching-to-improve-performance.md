@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a4310e365148e94a7d9b61df354e7328863f8662
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 28c847137bda93886a2ae80151e3834f149a4858
 
 
 ---
@@ -622,11 +622,11 @@ OrderID 表中的 PurchaseOrderDetail 列必须引用 PurchaseOrder 表的订单
 * 请考虑对大小和时间进行缓冲，为更多方案实现批处理。
 
 ## <a name="next-steps"></a>后续步骤
-本文着重于与批处理相关的数据库设计和代码编写技术，以及如何改善应用程序的性能和缩放性。 但这只是整体策略中的一个因素。 有关其他可改善性能和缩放性的方式，请参阅 [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)及[弹性数据库池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
+本文着重于与批处理相关的数据库设计和代码编写技术，以及如何改善应用程序的性能和缩放性。 但这只是整体策略中的一个因素。 有关其他可改善性能和缩放性的方式，请参阅 [Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md)及[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 16071ba6c99e41af9fe7614fcc3254cd7e786e89
-ms.openlocfilehash: 497f54903bef564bab687103a763c7a7b58da074
+ms.sourcegitcommit: 9919cd4735f1f915ba77d41d8b9e92b3411fef3f
+ms.openlocfilehash: 38d9eca04780493d03bb5ceb79e5b59fab0a93d2
 
 
 ---
@@ -31,7 +31,7 @@ Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 该中
 首先一个是侦听器，指示处理传入连接的准备情况，然后在这些连接到达时进行接受。 在另一端，是一个连接客户端，连接至侦听器，希望该连接被接受以建立双向通信路径。
 “连接”、“侦听”和“接受”与将要在大多数套接字 API 上看到的术语相同。
 
-任何中继通信模型都会使其中一方生成针对服务终结点的出站连接，这使得“侦听器”也被常说成“客户端”，而导致其他术语名称相同；因此，我们用于混合连接的准确术语如下所述：
+任何中继通信模型都会使其中一方生成针对服务终结点的出站连接（Azure 中继混合连接协议指南），这使得“侦听器”也被常说成“客户端”，而导致其他术语名称相同；因此，我们用于混合连接的准确术语如下所述：
 
 连接两端上的程序称为“客户端”，因为相对于服务它们是客户端。 等待和接受连接的客户端是“侦听器”，或者称其在“侦听器角色”中。 通过服务向侦听器启动新连接的客户端称为“发送方”，或者称其在“发送方角色”中。
 
@@ -231,7 +231,7 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=
 
 | Param | 必需？ | 说明 |
 | --- | --- | --- |
-| sb-hc-action |是 |对于侦听器角色，该参数必须是 `action=connect`。 |
+| sb-hc-action |是 |对于发送方角色，该参数必须是 `action=connect`。 |
 | {path} |是 |（请参阅下文） |
 | sb-hc-token |是\* |侦听器必须为命名空间或混合连接提供有效的 URL 编码的服务总线共享访问令牌，以授予“**发送**”权限。 |
 | sb-hc-id |否 |启用端到端诊断跟踪的可选 ID，在接受握手期间会将其提供至侦听器。 |
@@ -271,6 +271,6 @@ wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

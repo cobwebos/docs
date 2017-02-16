@@ -1,9 +1,9 @@
 ---
-title: "如何在将数据库还原到新的服务器或将数据库故障转移到辅助数据库副本后进行安全管理 | Microsoft 文档"
-description: "本主题介绍在数据库还原或故障转移后进行安全管理时的安全注意事项。"
+title: "配置灾难恢复的 Azure SQL 数据库安全性 | Microsoft Docs"
+description: "本主题介绍在发生数据中心中断或其他灾难时数据库还原或故障转移到辅助服务器后配置和管理安全性的注意事项"
 services: sql-database
 documentationcenter: na
-author: CarlRabeler
+author: anosov1960
 manager: jhubbard
 editor: monicar
 ms.assetid: c7c898c9-69d4-4e16-8b7e-720bbb3353dd
@@ -14,18 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
-ms.author: carlrab
+ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3c8a05cb86522253bbbf85da2d29ba38f114120b
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
 
 
 ---
-# <a name="how-to-manage-azure-sql-database-security-after-disaster-recovery"></a>灾难恢复后如何管理 Azure SQL 数据库安全性
+# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性 
 > [!NOTE]
 > [活动异地复制](sql-database-geo-replication-overview.md)现在可供所有服务层中的所有数据库使用。
-> 
-> 
+>  
 
 ## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>灾难恢复身份验证要求概述
 本主题介绍了配置和控制[活动异地复制](sql-database-geo-replication-overview.md)所需的身份验证要求，以及设置辅助数据库的用户访问权限所需的步骤。 它还介绍了使用[异地还原](sql-database-recovery-using-backups.md#geo-restore)后如何启用对已恢复数据库的访问权限。 相关详细信息，请参阅[业务连续性概述](sql-database-business-continuity.md)。
@@ -103,10 +102,9 @@ ms.openlocfilehash: 3c8a05cb86522253bbbf85da2d29ba38f114120b
 * 若要了解如何使用和配置活动异地复制息，请参阅[活动异地复制](sql-database-geo-replication-overview.md)
 * 若要了解如何使用异地还原，请参阅[异地还原](sql-database-recovery-using-backups.md#geo-restore)
 
-## <a name="additional-resources"></a>其他资源
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

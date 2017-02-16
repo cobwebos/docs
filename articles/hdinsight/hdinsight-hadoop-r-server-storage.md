@@ -12,18 +12,18 @@ ms.devlang: R
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/16/2016
+ms.date: 01/09/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 089b5691673abce3ffa51b8dff1835f366c51d2e
-ms.openlocfilehash: c8487a14990396dcdd2eac5a7a9adc822bcd5177
+ms.sourcegitcommit: 2df17cddf629cb72b7fa4d590dfaa69311c96aa4
+ms.openlocfilehash: 3e47a7e0382009a07b885a28c6e8d90f9bff9cfb
 
 
 ---
 # <a name="azure-storage-options-for-r-server-on-hdinsight"></a>适用于 R Server on HDInsight 的 Azure 存储选项
 Microsoft R Server on HDInsight 有权访问 Azure Blob，并且有权访问 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)，作为保持分析中的数据、代码、结果对象等的方式。
 
-在 HDInsight 中创建 Hadoop 群集时，将指定 Azure 存储帐户。 该帐户中的一个特定 Blob 存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 出于性能目的，HDInsight 群集将在与你指定的主存储帐户相同的数据中心内创建。 有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md "Use Azure Blob storage with HDInsight")。   
+在 HDInsight 中创建 Hadoop 群集时，将指定 Azure 存储帐户或 Data Lake Store。 该帐户中的某个特定存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 出于性能目的，HDInsight 群集将在与你指定的主存储帐户相同的数据中心内创建。 有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md "Use Azure Blob storage with HDInsight")。   
 
 ## <a name="use-multiple-azure-blob-storage-accounts"></a>使用多个 Azure Blob 存储帐户
 如果需要，可以使用 HDI 群集访问多个 Azure 存储帐户或容器。 为此，需要在创建群集时在 UI 中指定其他存储帐户，并按照下列步骤进行操作，以在 R 中使用它们。  
@@ -31,36 +31,36 @@ Microsoft R Server on HDInsight 有权访问 Azure Blob，并且有权访问 [Az
 1. 使用存储帐户名 **storage1** 并使用名为 **container1** 的默认容器创建 HDInsight 群集。
 2. 指定名为 **storage2** 的另一个存储帐户。  
 3. 将 mycsv.csv 文件复制到 /share 目录，然后对该文件执行分析。  
-   
+
         hadoop fs –mkdir /share
         hadoop fs –copyFromLocal myscsv.scv /share  
 
 4. 在 R 代码中，将名称节点设置为 **default**，并设置要处理的目录和文件。  
-   
+
         myNameNode <- "default"
         myPort <- 0
-   
+
     数据的位置：  
-   
+
         bigDataDirRoot <- "/share"  
-   
+
     定义 Spark 计算上下文：
-   
+
         mySparkCluster <- RxSpark(consoleOutput=TRUE)
-   
+
     设置计算上下文：
-   
+
         rxSetComputeContext(mySparkCluster)
-   
+
     定义 Hadoop 分布式文件系统 (HDFS)：
-   
+
         hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
-   
+
     指定 HDFS 中要分析的输入文件：
-   
+
         inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
 
-所有目录和文件引用均指向存储帐户 wasbs://container1@storage1.blob.core.windows.net.，这是与 HDInsight 群集相关联的**默认存储帐户**。
+所有目录和文件引用都指向存储帐户 wasbs://container1@storage1.blob.core.windows.net。 这是与 HDInsight 群集关联的**默认存储帐户**。
 
 现在，假设你要处理名为 mySpecial.csv 的文件，其所在位置为 **storage2** 的 **container2** 中的 /private 目录。
 
@@ -101,7 +101,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mySpecial.csv")
 ````
 
-所有目录和文件引用现在均指向存储帐户 wasbs://container2@storage2.blob.core.windows.net.，这是已指定的**名称节点**。
+所有目录和文件引用现在都指向存储帐户 wasbs://container2@storage2.blob.core.windows.net。 这是已指定的**名称节点**。
 
 请注意，必须在 **storage2** 上配置 /user/RevoShare/<SSH username> 目录，如下所示：
 
@@ -119,15 +119,14 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 
 ### <a name="to-add-a-service-principal"></a>添加服务主体
 1. 创建 HDInsight 群集时，请在“数据源”选项卡中选择“群集 AAD 标识”。
-2. 在“群集 AAD 标识”对话框中的“选择 AD 服务主体”下面，选择“新建”。
 
-为服务主体命名并创建密码后，将会打开一个新选项卡，你可以在其中将该服务主体与 Data Lake Store 相关联。
+2. 在“群集 AAD 标识”对话框中的“选择 AD 服务主体”下，选择“新建”。
 
-请注意，以后你也可以通过在 Azure 门户中打开 Data Lake Store，然后转到“数据资源管理器” > “访问”，来添加对 Data Lake Store 的访问权限。  下面是一个对话框示例，其中显示了如何创建服务主体，并将它与“rkadl11”Data Lake Store 相关联。
+为服务主体命名并创建密码后，单击“管理 ADLS 访问”将该服务主体与 Data Lake Store 相关联。
 
-![创建 Data Lake Store 服务主体 1](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp1.png)
+还可以在创建群集后，打开 Data Lake Store 的 Azure 门户条目并转到“数据资源管理器”>“访问权限”>“添加”，向一个或多个 Data Lake Store 添加群集访问权限。 
 
-![创建 Data Lake Store 服务主体 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
+有关向 Data Lake Store 添加 HDI 群集访问权限的其他详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#create-an-hdinsight-cluster-with-access-to-azure-data-lake-store)一文
 
 ## <a name="use-the-data-lake-store-with-r-server"></a>在 R Server 中使用 Data Lake Store
 获取 Data Lake Store 访问权限后，便可以在 HDInsight 上的 R Server 中使用 Data Lake Store，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
@@ -185,16 +184,16 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 使用 Azure 文件的主要好处之一是，装有受支持 OS（例如 Windows 或 Linux）的系统都可以装载和使用文件共享。 例如，你自己或者团队成员拥有的另一个 HDInsight 群集、Azure VM 甚至本地系统均可使用 Azure 文件。
 
 ## <a name="next-steps"></a>后续步骤
-现在，你已了解有关如何从 SSH 会话使用 R 控制台，以及创建包括 R Server 的新 HDInsight 群集的基础知识，请使用以下链接探索使用 HDInsight 上的 R Server 的其他方法。
+现在，你已了解 Azure 存储选项，请使用以下链接来发现使用 HDInsight 上的 R Server 的其他方法。
 
 * [HDInsight 上的 R Server 概述](hdinsight-hadoop-r-server-overview.md)
 * [Hadoop 上的 R Server 入门](hdinsight-hadoop-r-server-get-started.md)
-* [将 RStudio Server 添加到 HDInsight](hdinsight-hadoop-r-server-install-r-studio.md)
+* [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中添加）](hdinsight-hadoop-r-server-install-r-studio.md)
 * [适用于 HDInsight 上的 R Server 的计算上下文选项](hdinsight-hadoop-r-server-compute-contexts.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

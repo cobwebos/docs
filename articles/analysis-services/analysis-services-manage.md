@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 55a016a0943885a3aaa636316808939777afb0f8
+ms.sourcegitcommit: 17df0dfc32078fc08d2e744d4e83f1a1d77a9da1
+ms.openlocfilehash: d6fbb7febc05548e1e89e12394bbb7064e5da1c9
 
 
 ---
@@ -55,51 +55,8 @@ ms.openlocfilehash: 55a016a0943885a3aaa636316808939777afb0f8
 
 由于在 Azure 中使用 SSMS 管理服务器与管理本地服务器大体相同，因此不在此处详细介绍。 所需的全部帮助均可参阅 MSDN 上的 [Analysis Services 实例管理](https://msdn.microsoft.com/library/hh230806.aspx)。
 
-## <a name="server-administrators"></a>服务器管理员
-可查找 Azure 门户或 SSMS 中服务器的控制边栏选项卡，使用“Analysis Services 管理员”管理服务器管理员。 Analysis Services 管理员是数据库服务器管理员，有权执行常用数据库管理任务，例如添加和删除数据库以及管理用户。 默认情况下，在 Azure 门户中创建服务器的用户将自动添加为 Analysis Services 管理员。
-
-还应了解：
-
-* Windows Live ID 不是 Azure Analysis Services 支持的标识类型。  
-* Analysis Services 管理员必须是有效的 Azure Active Directory 用户。
-* 如果通过 Azure Resource Manager 模板创建 Azure Analysis Services 服务器，则 Analysis Services 管理员将获取应作为管理员添加的用户的 JSON 数组。
-
-Analysis Services 管理员可与管理 Azure 订阅资源的 Azure 资源管理员不同。 这可保持与 Analysis Services 中现有 XMLA 和 TSML 管理行为的兼容性，允许不同人员负责 Azure 资源管理和 Analysis Services 数据库管理。
-
-若要查看 Azure Analysis Services 资源的所有角色和访问类型，请在控制边栏选项卡上使用访问控制 (IAM)。
-
-## <a name="database-users"></a>数据库用户
-Azure Analysis Services 模型数据库用户必须位于 Azure Active Directory 中。 为模型数据库指定的用户名必须是组织电子邮件地址或 UPN。 这不同于通过 Windows 域用户名支持用户的本地模型数据库。
-
-可采用以下方式添加用户：在 Azure Active Directory 中使用[角色分配](../active-directory/role-based-access-control-configure.md)或在 SQL Server Management Studio 中使用[表格模型脚本语言](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL)。
-
-**示例 TMSL 脚本**
-
-```
-{
-  "createOrReplace": {
-    "object": {
-      "database": "SalesBI",
-      "role": "Users"
-    },
-    "role": {
-      "name": "Users",
-      "description": "All allowed users to query the model",
-      "modelPermission": "read",
-      "members": [
-        {
-          "memberName": "user1@contoso.com",
-          "identityProvider": "AzureAD"
-        },
-        {
-          "memberName": "group1@contoso.com",
-          "identityProvider": "AzureAD"
-        }
-      ]
-    }
-  }
-}
-```
+## <a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
+Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 这不同于通过 Windows 域用户名支持服务器管理员和数据库用户的本地表格模型数据库。 有关详细信息，请参阅[管理 Azure Analysis Services 中的用户](analysis-services-manage-users.md)。
 
 ## <a name="enable-azure-active-directory-authentication"></a>启用 Azure Active Directory 身份验证
 若要在注册表中启用 SSMS 的 Azure Active Directory 身份验证功能，请创建一个名为 EnableAAD.reg 的文本文件，然后复制粘贴以下内容：
@@ -128,6 +85,6 @@ Windows Registry Editor Version 5.00
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

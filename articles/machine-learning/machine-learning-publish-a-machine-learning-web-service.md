@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 44afeaa05ff2a8ab5a685d9f82880b0fa50f490b
+ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
+ms.openlocfilehash: df8aebc78969ac6ceb00ee8b20a60cb153e8891b
 
 
 ---
@@ -27,7 +27,7 @@ Azure 机器学习让用户能够生成、测试和部署预测分析解决方�
 
 * **[创建训练实验]** - Azure 机器学习工作室是一个协作的可视化开发环境，可用于使用你所提供的训练数据来训练和测试预测分析模型。
 * **[将其转换为预测实验]** - 利用现有数据训练模型后，你就可以使用它来对新数据进行评分，为预测准备并简化你的实验。
-* **将其部署为 Web 服务** - 可将预测实验部署为[全新]或[经典] Azure Web 服务。 用户可以将数据发送到你的模型并接收该模型的预测。
+* **[将其部署为 Web 服务]** - 可将预测实验部署为[全新]或[经典] Azure Web 服务。 用户可以将数据发送到你的模型并接收该模型的预测。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -54,12 +54,16 @@ Azure 机器学习让用户能够生成、测试和部署预测分析解决方�
 
 以下步骤描述如何将预测实验部署为新的 Web 服务。 还可将实验部署为经典 Web 服务。
 
-## <a name="deploy-the-predictive-experiment-as-a-new-web-service"></a>将预测实验部署为新 Web 服务
-现在，预测实验已做好准备，可将其部署为 Azure Web 服务。 使用 web 服务，用户可以将数据发送到模型，该模型将返回其预测。
+## <a name="deploy-it-as-a-web-service"></a>将实验部署为 Web 服务
+
+可以将预测实验部署为新 Web 服务或经典 Web 服务。
+
+### <a name="deploy-the-predictive-experiment-as-a-new-web-service"></a>将预测实验部署为新 Web 服务
+现在，已准备好预测实验，可将其部署为新 Azure Web 服务。 使用 web 服务，用户可以将数据发送到模型，该模型将返回其预测。
 
 若要部署预测实验，请单击实验画布底部的“运行”。 实验运行完毕后，单击“部署 Web 服务”或“部署 Web 服务[新]”。  将打开机器学习 Web 服务门户的部署页。
 
-### <a name="machine-learning-web-service-portal-deploy-experiment-page"></a>机器学习 Web 服务门户部署实验页
+#### <a name="machine-learning-web-service-portal-deploy-experiment-page"></a>机器学习 Web 服务门户部署实验页
 在“部署实验”页上，输入 Web 服务的名称。
 选择定价计划。 如果你有现有的定价计划，可以选择它，否则你必须为该服务创建新的定价计划。
 
@@ -73,7 +77,7 @@ Web 服务快速入门页面提供了有关在创建 Web 服务后将执行的�
 
 <!-- ![Deploy the web service](./media/machine-learning-publish-a-machine-learning-web-service/figure-2.png)-->
 
-### <a name="test-your-web-service"></a>测试 Web 服务
+#### <a name="test-your-new-web-service"></a>测试新 Web 服务
 若要测试新 Web 服务，请在常见任务下单击“测试 Web 服务”。 在测试页上，可将 Web 服务作为请求 - 响应服务 (RRS) 或 Batch 执行服务 (BES) 进行测试。
 
 RRS 测试页显示你为实验定义的输入、输出和任何全局参数。 若要测试 Web 服务，可手动输入适当的输入值，或提供包含测试值的逗号分隔值 (CSV) 格式的文件。
@@ -104,22 +108,25 @@ RRS 测试页显示你为实验定义的输入、输出和任何全局参数。 
 * 通过 Azure 机器学习 Web 服务门户或 Azure 经典门户进行**管理**。
 * 如果模型发生更改则对其进行**更新**。
 
-### <a name="access-the-web-service"></a>访问 Web 服务
+#### <a name="access-your-new-web-service"></a>访问新 Web 服务
 从机器学习工作室部署 Web 服务后，可向服务发送数据并以编程方式接收响应。
 
 **使用**页提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问。
 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用已部署的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
-### <a name="manage-your-new-web-service"></a>管理新 Web 服务
+#### <a name="manage-your-new-web-service"></a>管理新 Web 服务
 可管理经典 Web 服务机器学习 Web 服务门户。 在[主门户页](https://services.azureml-test.net/)中，单击“Web 服务”。 在 Web 服务页中，可删除或复制服务。 若要监视特定服务，请单击该服务，然后单击“仪表板”。 若要监视与 Web 服务相关联的 Batch 作业，请单击“Batch 请求日志”。
 
-## <a name="deploy-the-predictive-experiment-as-a-classic-web-service"></a>将预测实验部署为经典 Web 服务
-现在，预测试验已充分做好准备，可将其部署为 Azure web 服务。 使用 web 服务，用户可以将数据发送到模型，该模型将返回其预测。
+### <a name="deploy-the-predictive-experiment-as-a-classic-web-service"></a>将预测实验部署为经典 Web 服务
+
+现在，已充分准备好预测试验，可将其部署为经典 Azure Web 服务。 使用 web 服务，用户可以将数据发送到模型，该模型将返回其预测。
 
 若要部署预测实验，请单击实验画布底部的“运行”，然后单击“部署 Web 服务”。 已设置 Web 服务，你现在正位于 Web 服务仪表板中。
 
 ![部署 Web 服务](./media/machine-learning-publish-a-machine-learning-web-service/figure-2.png)
+
+#### <a name="test-your-classic-web-service"></a>测试经典 Web 服务
 
 可在机器学习 Web 服务门户或机器学习工作室中测试 Web 服务。
 
@@ -141,14 +148,14 @@ RRS 测试页显示你为实验定义的输入、输出和任何全局参数。 
 
 还可在 Azure 机器学习 Web 服务门户中配置 Web 服务的终结点，类似于之前在“新建 Web 服务”部分中显示的过程。 选项有所不同，你可以添加或更改服务描述、启用日志记录，并启用样本数据进行测试。
 
-### <a name="access-the-web-service"></a>访问 Web 服务
+#### <a name="access-your-classic-web-service"></a>访问经典 Web 服务
 从机器学习工作室部署 Web 服务后，可向服务发送数据并以编程方式接收响应。
 
 仪表板提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问，并提供 API 帮助页以帮助你开始编写代码。
 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用已部署的 Azure 机器学习 Web 服务](machine-learning-consume-web-services.md)。
 
-### <a name="manage-the-web-service"></a>管理 Web 服务
+#### <a name="manage-your-classic-web-service"></a>管理经典 Web 服务
 可通过执行各种操作来监视 Web 服务。 可以将其更新，也可以将其删除。 除了部署经典 Web 服务时创建的默认终结点外，还可向其添加其他终结点。
 
 有关详细信息，请参阅[管理 Azure 机器学习工作区](machine-learning-manage-workspace.md)和[使用 Azure 机器学习 Web 服务门户管理 Web 服务](machine-learning-manage-new-webservice.md)。
@@ -174,14 +181,15 @@ For more information on how to manage Azure Machine Learning web service endpoin
 <!-- internal links -->
 [创建训练实验]: #create-a-training-experiment
 [将其转换为预测实验]: #convert-the-training-experiment-to-a-predictive-experiment
+[将其部署为 Web 服务]: #deploy-it-as-a-web-service
 [全新]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [经典]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[访问]: #access-the-Web-service
-[管理]: #manage-the-Web-service-in-the-azure-management-portal
-[更新]: #update-the-Web-service
+[Access]: #access-the-Web-service
+[Manage]: #manage-the-Web-service-in-the-azure-management-portal
+[Update]: #update-the-Web-service
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

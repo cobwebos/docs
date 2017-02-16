@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 226134e11a87f6bd847192661d3120b78ea6cf7c
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: ba6129382b6ec367428aa451ee74d5bceaa4ad35
 
 
 ---
@@ -108,7 +108,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 3. 当浏览器窗口打开时，输入一个昵称，然后按 Enter。
    这样，您就可以以特定昵称发布消息。 要测试多用户功能，请使用同一 URL 打开另外的浏览器窗口但输入不同的昵称。
    
-   ![显示来自用户 1 和用户 2 的聊天消息的两个浏览器窗口](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
+   ![显示来自用户&1; 和用户&2; 的聊天消息的两个浏览器窗口](./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png)
 4. 测试应用程序之后，发出以下命令停止仿真程序：
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
@@ -145,28 +145,28 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
 [chatwebsite]: /develop/nodejs/tutorials/website-using-socketio/
 
 [Azure SLA]: http://www.windowsazure.com/support/sla/
-[用于 Node.js GitHub 存储库的 Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node
+[Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
-[用于 Node.js 的 Azure SDK]: https://www.windowsazure.com/develop/nodejs/
-[Node.js Web 应用程序]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
+[Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/
+[Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Socket.IO GitHub 存储库]: https://github.com/LearnBoost/socket.io/tree/0.9.14
-[Azure 注意事项]: #windowsazureconsiderations
-[在辅助角色中托管聊天示例]: #hostingthechatexampleinawebrole
-[总结和后续步骤]: #summary
+[Azure Considerations]: #windowsazureconsiderations
+[Hosting the Chat Example in a Worker Role]: #hostingthechatexampleinawebrole
+[Summary and Next Steps]: #summary
 [powershell-menu]: ./media/cloud-services-nodejs-chat-app-socketio/azure-powershell-start.png
 
-[聊天示例]: https://github.com/LearnBoost/socket.io/tree/master/examples/chat
+[chat example]: https://github.com/LearnBoost/socket.io/tree/master/examples/chat
 [chat-example-view]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png
 
 
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
-[Publish-AzureService 命令的输出]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
+[The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

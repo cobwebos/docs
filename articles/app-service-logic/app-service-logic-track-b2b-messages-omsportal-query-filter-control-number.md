@@ -1,6 +1,6 @@
 ---
-title: "在 OMS 门户中跟踪 B2B 消息 | Microsoft Docs"
-description: "如何在 OMS 门户中跟踪 B2B 消息"
+title: "使用查询在 Operations Management Suite 门户中跟踪 B2B 消息 | Microsoft Docs"
+description: "了解如何使用查询在 Operations Management Suite 门户中跟踪 B2B 消息。"
 author: padmavc
 manager: erikre
 editor: 
@@ -15,52 +15,53 @@ ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 6e56dae0ab30612a7794bd39e6eba2f84bcecc19
-ms.openlocfilehash: eae37a357e3e1c00310c7c638d3164118403ee9f
+ms.sourcegitcommit: 684ab31903369070a235b35eb0b8c9adffd309e7
+ms.openlocfilehash: 08689b8f57d5b29a47b98eac812eaee285cd13a0
 
 
 ---
-# <a name="create-a-query-in-oms-portal"></a>在 OMS 门户中创建查询 
-创建查询（用于筛选特定交换控制编号的数据）的步骤
+# <a name="track-b2b-messages-in-the-operations-management-suite-portal-by-using-a-query"></a>使用查询在 Operations Management Suite 门户中跟踪 B2B 消息
+若要在 Operations Management Suite 门户中跟踪企业到企业 (B2B) 消息，可创建一个用于筛选特定交换控制编号的数据的查询。
 
 ## <a name="prerequisites"></a>先决条件
 
-为[集成帐户](app-service-logic-monitor-b2b-message.md)和[逻辑应用](app-service-logic-monitor-your-logic-apps.md#azure-diagnostics-and-alerts)启用诊断，这二者都拥有 X12 控制器，可提供丰富的详细信息和调试选项。  请按照[此处](app-service-logic-track-b2b-messages-omsportal.md)的步骤将诊断数据发布到 OMS 门户。
+对于调试和更详细的诊断信息，请在“集成帐户”[](app-service-logic-monitor-b2b-message.md)中为具有 X12 控制器的“逻辑应用”[](app-service-logic-monitor-your-logic-apps.md#azure-diagnostics-and-alerts)启用诊断。 然后，按照此处的步骤[发布诊断数据](app-service-logic-track-b2b-messages-omsportal.md)到 Operations Management Suite 门户。
 
-## <a name="create-a-query-to-search-data-for-a-specific-interchange-control-number"></a>创建查询搜索特定交换控制编号的数据
+## <a name="to-create-a-query-to-search-for-a-specific-interchange-control-number"></a>创建查询，搜索特定交换控制编号
 
-1. 在主页上选择“日志搜索”  
+1. 在主页上，选择“日志搜索”。  
 ![选择“日志搜索”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
-2. 在搜索窗口键入 **Type="AzureDiagnostics"**，拉取所有数据。  单击“添加”筛选数据  
+2. 在搜索框中，键入 **Type="AzureDiagnostics"**。 若要筛选数据，请选择“添加”。  
 ![选择“查询”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
 
-3. 键入 **interchange**，选择 **event_record_messageProperties_interchangeControlNumber_s**，并单击“添加”  
-![选择“控制编号”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query2.png)
+3. 键入 **interchange**，选择 **event_record_messageProperties_interchangeControlNumber_s**，然后选择“添加”。  
+![添加筛选器](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query2.png)
 
-4. 选择想要筛选数据的控制编号，并单击“应用”  
-![选择“控制编号”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query3.png)
+4. 选择想要筛选数据的控制编号，然后选择“应用”。  
+![对控制编号进行搜索](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query3.png)
 
-5. 将显示为筛选所选控制编号的数据而建的查询   
-![选择“控制编号”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query4.png)
+5. 查找为筛选所选控制编号的数据而创建的查询。   
+![查找查询](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query4.png)
 
-6. 命名查询并保存   
-![选择“控制编号”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query5.png) 
+6. 键入查询名称，然后进行保存。   
+![保存查询](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query5.png)
 
-7. 选择“收藏夹”，查看查询并将其用在以后的搜索中  
-![选择“控制编号”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query7.png)
+7. 若要查看查询并将其用在以后的搜索中，请选择“收藏夹”。  
+![查看查询](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query7.png)
 
-8. 可更新查询以搜索新的交换控制编号  
-![选择“控制编号”](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query6.png) 
+8. 可更新查询，搜索新的交换控制编号。  
+![更新查询](./media/app-service-logic-track-b2b-messages-omsportal-query-filter-control-number/query6.png)
 
 
 ## <a name="next-steps"></a>后续步骤
-[自定义跟踪架构](app-service-logic-track-integration-account-custom-tracking-shema.md "Learn about Custom Tracking Schema")   
-[AS2 跟踪架构](app-service-logic-track-integration-account-as2-tracking-shemas.md "Learn about AS2 Tracking Schema")    
-[X12 跟踪架构](app-service-logic-track-integration-account-x12-tracking-shemas.md "Learn about X12 Tracking Schema")  
-[了解有关 Enterprise Integration Pack 的详细信息](app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack") 
+* 了解有关[自定义跟踪架构](app-service-logic-track-integration-account-custom-tracking-shema.md)的详细信息。   
+* 了解有关 [AS2 跟踪架构](app-service-logic-track-integration-account-as2-tracking-shemas.md)的详细信息。    
+* 了解有关 [X12 跟踪架构](app-service-logic-track-integration-account-x12-tracking-shemas.md)的详细信息。  
+* 了解有关 [Enterprise Integration Pack](app-service-logic-enterprise-integration-overview.md) 的详细信息。
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO3-->
 
 

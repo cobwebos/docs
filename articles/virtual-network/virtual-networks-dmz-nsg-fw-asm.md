@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 178771fb235e8b2786e4b6d0ac117d5c90540c67
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 
 
 ---
-# <a name="example-2-build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>示例 2 – 构建外围网络以通过防火墙和 NSG 保护应用程序
-[返回安全边界最佳实践页面][主页]
+# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>示例 2 – 构建外围网络以通过防火墙和 NSG 保护应用程序
+[返回安全边界最佳实践页面][HOME]
 
 本示例将创建一个带防火墙的外围网络、四个 Windows 服务器，以及网络安全组。 本示例还将演练每个相关命令，让你更加深入地了解每个步骤。 另外还提供了“流量方案”部分，让你逐步深入了解流量如何流经外围网络的各个防御层。 最后的“参考”部分提供了完整的代码，并说明如何构建此环境来测试和试验各种方案。 
 
@@ -79,9 +79,9 @@ ms.openlocfilehash: 178771fb235e8b2786e4b6d0ac117d5c90540c67
 
 将这些规则绑定到每个子网后，如果有从 Internet 到 Web 服务器的入站 HTTP 请求，那么规则 3（允许）和规则 5（拒绝）均适用，但由于规则 3 具有较高的优先级，因此只应用规则 3 并忽略规则 5。 这样就会允许 HTTP 请求传往防火墙。 如果相同的流量尝试传往 DNS01 服务器，则会先应用规则 5（拒绝），因此不允许该流量传递到服务器。 规则 6（拒绝）阻止前端子网与后端子网对话（规则 1 和 4 允许的流量除外），这可在攻击者入侵前端上的 Web 应用程序时保护后端网络，攻击者只能对后端的“受保护”网络进行有限访问（只能访问 AppVM01 服务器上公开的资源）。
 
-有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 若要锁定双向流量需要用户定义的路由，这在另一示例中进行了探究，你可以在[主要安全边界文档][主页]中查找。
+有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 若要锁定双向流量需要用户定义的路由，这在另一示例中进行了探究，你可以在[主要安全边界文档][HOME]中查找。
 
-上述 NSG 规则与[示例 1 - 使用 NSG 构建简单的外围网络][示例 1] 中的 NSG 规则非常相似。 请查看该文档中的 NSG 说明，详细了解每个 NSG 规则及其属性。
+上述 NSG 规则与[示例 1 - 使用 NSG 构建简单的外围网络][Example1]中的 NSG 规则非常相似。 请查看该文档中的 NSG 说明，详细了解每个 NSG 规则及其属性。
 
 ## <a name="firewall-rules"></a>防火墙规则
 电脑上必须安装管理客户端才能管理防火墙和创建所需的配置。 有关如何管理设备的信息，请参阅防火墙（或其他 NVA）供应商提供的文档。 本部分的其余内容将介绍如何通过供应商的管理客户端（即，不使用 Azure 门户或 PowerShell）来配置防火墙本身。
@@ -218,7 +218,7 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
 ## <a name="conclusion"></a>结束语
 这种使用防火墙保护应用程序并隔离后端子网与输入流量的方式相当直截了当。
 
-可以在[此处][主页]找到更多示例和网络安全边界的概述。
+可以在[此处][HOME]找到更多示例和网络安全边界的概述。
 
 ## <a name="references"></a>参考
 ### <a name="main-script-and-network-config"></a>主脚本和网络配置
@@ -576,12 +576,12 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
 [4]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallruleactivate.png "防火墙规则激活"
 
 <!--Link References-->
-[主页]: ../best-practices-network-security.md
+[HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
-[示例 1]: ./virtual-networks-dmz-nsg-asm.md
+[Example1]: ./virtual-networks-dmz-nsg-asm.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

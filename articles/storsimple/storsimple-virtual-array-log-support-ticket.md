@@ -1,5 +1,5 @@
 ---
-title: "StorSimple Device Manager - 记录 Microsoft Azure StorSimple 虚拟阵列的支持票证 | Microsoft 文档"
+title: "通过 StorSimple 设备管理器记录支持票证 | Microsoft 文档"
 description: "介绍 StorSimple Device Manager 诊断功能并说明如何使用它来排查 StorSimple 虚拟阵列问题。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: adf6454fef9cfdea60241909453266c79416ac4e
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务记录 StorSimple 虚拟阵列的支持请求
@@ -70,6 +70,6 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

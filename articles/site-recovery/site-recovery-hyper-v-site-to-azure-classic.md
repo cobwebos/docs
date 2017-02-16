@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 8ff2423f5b546864757a75cd7af1e6c76f047b19
-ms.openlocfilehash: 221027027e57413b6244c97e3e5c57d6423d94ea
+ms.sourcegitcommit: ea89244efea6afa7d7b9d60f400117284fb5d1e1
+ms.openlocfilehash: 3c5e51c562d9251f2ad40eeb1939d1651c845391
 
 
 ---
@@ -95,7 +95,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 2. 展开“**数据服务**” > “**恢复服务**”，并单击“**Site Recovery 保管库**”。
 3. 单击“**新建**” > “**快速创建**”。
 4. 在“名称”中，输入一个友好名称以标识此保管库。
-5. 在“区域” 中，为保管库选择地理区域。 若要查看受支持的区域，请参阅 Azure Site Recovery 价格详细信息中的“地域可用性” [](https://azure.microsoft.com/pricing/details/site-recovery/)。
+5. 在“区域” 中，为保管库选择地理区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息中的](https://azure.microsoft.com/pricing/details/site-recovery/) “地域可用性”。
 6. 单击“创建保管库” 。
 
     ![新保管库](./media/site-recovery-hyper-v-site-to-azure-classic/vault.png)
@@ -168,13 +168,13 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 * **/proxyAddress**；**/proxyport**；**/proxyUsername**；**/proxyPassword**：可选。 如果想要使用自定义代理，或现有的代理需要身份验证，请指定代理参数。
 
 ## <a name="step-4-create-an-azure-storage-account"></a>步骤 4：创建 Azure 存储帐户
-1. 在“**准备资源**”中，选择“**创建存储帐户**”以创建一个 Azure 存储帐户（如果你没有的话）。 该帐户应已启用地域复制。 该帐户应位于 Azure Site Recovery 保管库所在的同一区域，并与同一订阅相关联。
+* 在“**准备资源**”中，选择“**创建存储帐户**”以创建一个 Azure 存储帐户（如果你没有的话）。 该帐户应已启用地域复制。 该帐户应位于 Azure Site Recovery 保管库所在的同一区域，并与同一订阅相关联。
 
     ![创建存储帐户](./media/site-recovery-hyper-v-site-to-azure-classic/create-resources.png)
 
 > [!NOTE]
-> 1. 我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。                               2. 用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../resource-group-move-resources.md)。
->
+> 1. 我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。
+> 2. 用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../azure-resource-manager/resource-group-move-resources.md)。
 >
 
 ## <a name="step-5-create-and-configure-protection-groups"></a>步骤 5：创建并配置保护组
@@ -218,19 +218,21 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
      * **网络适配器**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 查看[虚拟机大小规格](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)，了解虚拟机大小所支持的 NIC 数目。
 
-            When you modify the size for a virtual machine and save the settings, the number of network adapter will change when you open **Configure** page the next time. The number of network adapters of target virtual machines is minimum of the number of network adapters on source virtual machine and maximum number of network adapters supported by the size of the virtual machine chosen. It is explained below:
+       修改虚拟机的大小并保存设置后，下一次打开“ **配置** ”页时，网络适配器的数量将会改变。 目标虚拟机的网络适配器数目是源虚拟机上网络适配器的最小数目和所选虚拟机大小支持的网络适配器的最大数目。 解释如下：
 
+       * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
+       * 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
+       * 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。
+       
+     * **Azure 网络**：指定虚拟机应故障转移到的网络。 如果虚拟机有多个网络适配器，所有适配器应连接到同一个 Azure 网络。
+     * **子网**：对于虚拟机上的每个网络适配器，请在 Azure 网络中选择故障转移后计算机应连接到的子网。
+     * **目标 IP 地址**：如果源虚拟机的网络适配器配置为使用静态 IP 地址，那么你可以指定目标虚拟机的 IP 地址，以确保计算机在故障转移后具有相同的 IP 地址。  如果不指定 IP 地址，将在故障转移时分配任何可用的地址。 如果指定了正在使用的地址，故障转移将会失败。
 
-            - If the number of network adapters on the source machine is less than or equal to the number of adapters allowed for the target machine size, then the target will have the same number of adapters as the source.
-            - If the number of adapters for the source virtual machine exceeds the number allowed for the target size then the target size maximum will be used.
-            - For example if a source machine has two network adapters and the target machine size supports four, the target machine will have two adapters. If the source machine has two adapters but the supported target size only supports one then the target machine will have only one adapter.     
-        - **Azure 网络**：指定虚拟机应故障转移到的网络。 如果虚拟机有多个网络适配器，所有适配器应连接到同一个 Azure 网络。
-        - **子网**：对于虚拟机上的每个网络适配器，请在 Azure 网络中选择故障转移后计算机应连接到的子网。
-        - **目标 IP 地址**：如果源虚拟机的网络适配器配置为使用静态 IP 地址，那么你可以指定目标虚拟机的 IP 地址，以确保计算机在故障转移后具有相同的 IP 地址。  如果不指定 IP 地址，将在故障转移时分配任何可用的地址。 如果指定了正在使用的地址，故障转移将会失败。
+     > [!NOTE] 
+     > 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../azure-resource-manager/resource-group-move-resources.md)。
+     >
 
-        > [AZURE.NOTE] 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../resource-group-move-resources.md)。
-
-        ![配置虚拟机属性](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
+     ![配置虚拟机属性](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
 
 
 
@@ -284,6 +286,6 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 

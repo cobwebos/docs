@@ -1,5 +1,5 @@
 ---
-title: "演练：使用 Application Insights 监视 Microsoft Dynamics CRM"
+title: "Microsoft Dynamics CRM 和 Azure Application Insights | Microsoft docs"
 description: "使用 Application Insights 从 Microsoft Dynamics CRM Online 获取遥测。 设置、获取数据、可视化和导出的演练。"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/17/2015
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 9304b26711226fc9a7e672f59441ae65c0d5a023
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 8a000ecda94edbeab8c0438c63d6b66dc7f0902b
 
 
 ---
@@ -146,6 +146,6 @@ ms.openlocfilehash: 9304b26711226fc9a7e672f59441ae65c0d5a023
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

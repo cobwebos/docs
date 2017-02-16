@@ -4,31 +4,31 @@ description: "将针对到 Web 应用的失败请求速率的异常变化向用�
 services: application-insights
 documentationcenter: 
 author: yorac
-manager: douge
+manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/09/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 090de10c0520d90811e64bd72c5d993f163df090
+ms.sourcegitcommit: 3e9476f8edc4186af026495bc575b8203c35c619
+ms.openlocfilehash: 503bfe92c32b2a7a0803b1facd017079882a676b
 
 
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
-如果 Web 应用的失败请求速率出现异常上升，[Application Insights](app-insights-overview.md) 会几乎实时地自动通知你。 它会对报告为失败的 HTTP 请求速率的异常上升进行检测。 它们通常是具有 400- 到 500- 范围内的响应代码的项。 为了帮助会审和诊断问题，失败请求及相关遥测的特征分析会在通知中提供。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
+如果 Web 应用的失败请求速率出现异常上升，[Application Insights](app-insights-overview.md) 会几乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知中会提供失败及相关遥测的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
 
-此功能适用于 Java 和 ASP.NET Web 应用，它们托管在云中或自己的服务器上。 它也适用于生成请求遥测的任何应用，例如当你具有用于调用 [TrackRequest()](app-insights-api-custom-events-metrics.md#track-request) 的辅助角色时。 
+此功能适用于 Java 和 ASP.NET Web 应用，它们托管在云中或自己的服务器上。 它也适用于生成请求或依赖项遥测的任何应用，例如当你具有用于调用 [TrackRequest()](app-insights-api-custom-events-metrics.md#track-request) 或 [TrackDependency()](app-insights-api-custom-events-metrics.md#track-dependency) 的辅助角色时。 
 
 在设置[适用于你的项目的 Application Insights](app-insights-overview.md) 后，如果应用生成特定最低遥测量，在进行切换和发送警报前，智能检测失败异常将花费 24 小时来了解应用的正常行为。
 
 下面是一个示例警报。 
 
-![围绕失败显示群集分析的示例智能检测警报](./media/app-insights-proactive-failure-diagnostics/010.png)
+![围绕失败显示群集分析的示例智能检测警报](./media/app-insights-proactive-failure-diagnostics/013.png)
 
 > [!NOTE]
 > 默认情况下，你会收到比该示例中更短的格式邮件。 但是你可以[切换为这一详细格式](#configure-alerts)。
@@ -40,22 +40,22 @@ ms.openlocfilehash: 090de10c0520d90811e64bd72c5d993f163df090
 * 相较于正常应用行为的失败率。
 * 受影响的用户数，因此你知道需要有多担心。
 * 与失败关联的特征模式。 在此示例中，有特定的响应代码、请求名称（操作）和应用版本。 这将立即通知在代码中开始查找的位置。 其他可能性可能是特定的浏览器或客户端操作系统。
-* 似乎与特征失败请求相关联的异常、日志跟踪和依赖项错误（数据库或其他外部组件）。
+* 似乎与特征失败相关联的异常、日志跟踪和依赖项失败（数据库或其他外部组件）。
 * 直接指向 Application Insights 中遥测的相关搜索的链接。
 
 ## <a name="benefits-of-smart-detection"></a>智能检测的优点
 普通[指标警报](app-insights-alerts.md)会通知你可能存在问题。 但是，智能检测将开始诊断工作，并执行以往都需要你自行进行的大量分析。 结果将整齐地打包，以帮助你快速找到问题的根源。
 
 ## <a name="how-it-works"></a>工作原理
-智能检测监视从应用收到的遥测数据，特别是失败的请求速率。 此指标对 `Successful request` 属性为 false 的请求次数进行计数。 默认情况下，`Successful request== (resultCode < 400)`（除非已将自定义代码写入[筛选器](app-insights-api-filtering-sampling.md#filtering)或生成自己的 [TrackRequest](app-insights-api-custom-events-metrics.md#track-request) 调用）。 
+智能检测监视从应用收到的遥测数据，特别是失败率。 此规则计算 `Successful request` 属性为 False 的请求数，和 `Successful call` 属性为 False 的依赖项调用数。 对于请求而言，默认情况下，`Successful request == (resultCode < 400)`（除非已将自定义代码写入[筛选器](app-insights-api-filtering-sampling.md#filtering)或生成自己的 [TrackRequest](app-insights-api-custom-events-metrics.md#track-request) 调用）。 
 
-应用性能具有典型的行为模式。 某些请求比其他请求更容易出现失败；而且总体失败率可能会随着负载的增加而上升。 智能检测使用机器学习来查找这些异常。 
+应用性能具有典型的行为模式。 某些请求或依赖项调用更容易出现失败，而且总体失败率可能会随着负载的增加而上升。 智能检测使用机器学习来查找这些异常。 
 
 由于遥测数据从 Web 应用提供给 Application Insights，因此智能检测会将当前行为与过去几天看到的模式进行比较。 如果通过与先前性能比较观察到失败率中有异常上升，将触发分析。
 
 分析触发后，服务将对失败的请求执行群集分析，以尝试标识特征化失败的值的模式。 在上面的示例中，分析发现大多数失败都是关于特定结果代码、请求名称、服务器 URL 主机和角色实例。 相比之下，分析已发现客户端操作系统属性分布在多个值上，因此它未列出。
 
-当使用这些遥测检测服务时，分析器查找与已标识群集中的请求关联的异常和依赖项失败，以及与这些请求关联的任何跟踪日志的示例。
+当使用这些遥测调用检测服务时，分析器查找与已标识群集中的请求关联的异常和依赖项失败，以及与这些请求关联的任何跟踪日志的示例。
 
 生成的分析将以警报形式发送给用户，除非已将它配置为不这样做。
 
@@ -64,18 +64,18 @@ ms.openlocfilehash: 090de10c0520d90811e64bd72c5d993f163df090
 ## <a name="configure-alerts"></a>配置警报
 可以禁用智能检测、更改电子邮件收件人、创建 webhook，或者选择启用更详细的警报消息。
 
-打开“警报”页。 包括智能检测 - 失败异常以及已手动设置的任何警报，你可以看它当前是否处于警报状态。
+打开“警报”页。 包括失败异常以及已手动设置的任何警报，并可以查看其当前是否处于警报状态。
 
 ![在“概述”页上单击“警报”磁贴。 或者，在任何“指标”页上，单击“警报”按钮。](./media/app-insights-proactive-failure-diagnostics/021.png)
 
 单击警报以配置它。
 
-![配置](./media/app-insights-proactive-failure-diagnostics/031.png)
+![配置](./media/app-insights-proactive-failure-diagnostics/032.png)
 
 请注意，你可以禁用智能检测，但不能删除它（或创建另一个）。
 
 #### <a name="detailed-alerts"></a>详细的警报
-如果选择“接收详细的分析”，电子邮件将包含更多诊断信息。 有时，你可以仅通过电子邮件中的数据诊断问题。 
+如果选择“获取更详细的诊断”，电子邮件将包含更多诊断信息。 有时，你可以仅通过电子邮件中的数据诊断问题。 
 
 存在更详细的警告消息可能包含敏感信息的轻微危险性，因为它包括异常和跟踪消息。 但是，只有代码允许敏感信息包含在这些消息中，才会发生这种情形。 
 
@@ -90,20 +90,16 @@ ms.openlocfilehash: 090de10c0520d90811e64bd72c5d993f163df090
 
 若要进一步调查，每个部分中的链接可直接转到[搜索页](app-insights-diagnostic-search.md)，该页面已针对相关请求、异常、依赖项或跟踪进行筛选。 或者，可以打开 [Azure 门户](https://portal.azure.com)，导航到应用的 Application Insights 资源并打开“失败”边栏选项卡。
 
-在此示例中，单击“查看依赖项失败详细信息”链接以在 SQL 语句上打开 Application Insights 搜索边栏选项卡，其中该语句的根本原因为 NULL，这已在强制字段中提供，但未在保存操作期间通过验证。
+在此示例中，单击“查看依赖项失败详细信息”链接将打开 Application Insights 搜索边栏选项卡。 它显示包含根本原因的示例的 SQL 语句：在必填字段提供 NULL，并且在保存操作期间未通过验证。
 
 ![诊断搜索](./media/app-insights-proactive-failure-diagnostics/051.png)
 
 ## <a name="review-recent-alerts"></a>查看最近的警报
-若要在门户中查看警报，请打开“设置，审核日志”。
 
-![警报摘要](./media/app-insights-proactive-failure-diagnostics/041.png)
-
-单击任何警报以查看其完整的详细信息。
-
-或者，单击“智能检测”以直接转到最近警报：
+单击“智能检测”以转到最近警报：
 
 ![警报摘要](./media/app-insights-proactive-failure-diagnostics/070.png)
+
 
 ## <a name="whats-the-difference-"></a>区别是什么...
 智能检测失败异常对其他类似但又不同的 Application Insight 功能进行补充。 
@@ -159,6 +155,6 @@ ms.openlocfilehash: 090de10c0520d90811e64bd72c5d993f163df090
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

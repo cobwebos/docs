@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/07/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bddd581b5164b03ccba75370cd89a7831101cf37
-ms.openlocfilehash: c7abb31a222a5e817dc7b4f73c9cf54ce4d26255
+ms.sourcegitcommit: 60f41890912eee3be364f5b3a47ded71991ee342
+ms.openlocfilehash: 780fb6d69dab0b27e13f1e358be048f834dfc185
 
 
 ---
@@ -34,30 +34,51 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
 
+## <a name="113800"></a>1.1.380.0
+发布日期：2016 年 12 月
+
+**修复的问题：**
+
+* 修复了本版本中缺少针对 ADFS 的 issuerid 声明规则的问题。
+
+>[!NOTE]
+>不通过 Azure AD Connect 自动升级功能向客户提供此内部版本。
+
 ## <a name="113710"></a>1.1.371.0
 发布日期：2016 年 12 月
+
+**已知问题：**
+
+* 本版本中缺少针对 ADFS 的 issuerid 声明规则。 若要将多个域与 Azure AD 联合，需使用 issuerid 声明规则。 如果使用 Azure AD Connect 管理本地 ADFS 部署，则升级到此版本将从 ADFS 配置中删除现有 issuerid 声明规则。 可在安装/升级后添加 issuerid 声明规则来解决此问题。 有关添加 issuerid 声明规则的详细信息，请参阅[与 Azure AD 联合的多域支持](active-directory-aadconnect-multiple-domains.md)一文。
 
 **修复的问题：**
 
 * 如果未打开用于出站连接的端口 9090，Azure AD Connect 安装或升级将失败。
 
+>[!NOTE]
+>不通过 Azure AD Connect 自动升级功能向客户提供此内部版本。
+
 ## <a name="113700"></a>1.1.370.0
 发布日期：2016 年 12 月
+
+**已知问题：**
+
+* 本版本中缺少针对 ADFS 的 issuerid 声明规则。 若要将多个域与 Azure AD 联合，需使用 issuerid 声明规则。 如果使用 Azure AD Connect 管理本地 ADFS 部署，则升级到此版本将从 ADFS 配置中删除现有 issuerid 声明规则。 可在安装/升级后添加 issuerid 声明规则来解决此问题。 有关添加 issuerid 声明规则的详细信息，请参阅[与 Azure AD 联合的多域支持](active-directory-aadconnect-multiple-domains.md)一文。
+* 必须打开用于出站连接的端口 9090 才能完成安装。
 
 **新功能：**
 
 * 直通身份验证（预览）。
-
-
-**已知问题：**
-
-* 必须打开用于出站连接的端口 9090 才能完成安装。
 
 >[!NOTE]
 >不通过 Azure AD Connect 自动升级功能向客户提供此内部版本。
 
 ## <a name="113430"></a>1.1.343.0
 发布日期：2016 年 11 月
+
+**已知问题：**
+
+* 本版本中缺少针对 ADFS 的 issuerid 声明规则。 若要将多个域与 Azure AD 联合，需使用 issuerid 声明规则。 如果使用 Azure AD Connect 管理本地 ADFS 部署，则升级到此版本将从 ADFS 配置中删除现有 issuerid 声明规则。 可在安装/升级后添加 issuerid 声明规则来解决此问题。 有关添加 issuerid 声明规则的详细信息，请参阅[与 Azure AD 联合的多域支持](active-directory-aadconnect-multiple-domains.md)一文。
 
 **已解决的问题：**
 
@@ -356,6 +377,6 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

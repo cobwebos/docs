@@ -1,5 +1,5 @@
 ---
-title: "对远程桌面进行详细故障排除 | Microsoft Docs"
+title: "在 Azure 中对远程桌面进行详细故障排除 | Microsoft Docs"
 description: "查看针对无法连接到 Azure 中的 Windows 虚拟机时出现的远程桌面错误提供的详细故障排除步骤"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/27/2016
+ms.date: 12/20/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 1f42e8f320e061fed8428b7ef88f3cb5247b81a2
+ms.sourcegitcommit: 8835427415e8e01e851796eaf323bce7d1918c8c
+ms.openlocfilehash: 5c9d51d633b07497c230be9da2646bf49b6e8c0e
 
 
 ---
@@ -28,8 +28,6 @@ ms.openlocfilehash: 1f42e8f320e061fed8428b7ef88f3cb5247b81a2
 
 > [!IMPORTANT]
 > 若要消除更常见的远程桌面错误，请务必先阅读[远程桌面的基本故障排除文章](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，然后再继续。
-> 
-> 
 
 你可能遇到不像[基本远程桌面故障排除指南](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中所述的任何特定错误消息的远程桌面错误消息。 请遵循以下步骤来确定远程桌面 (RDP) 客户端为何无法连接到 Azure VM 上的 RDP 服务。
 
@@ -141,7 +139,7 @@ RDP 连接涉及以下组件：
 
 对于使用经典部署模型创建的 VM，可以使用与 Azure 虚拟机的远程 Azure PowerShell 会话。 首先，需要安装虚拟机托管云服务的证书。 转到[为 Azure 虚拟机配置安全远程 PowerShell 访问](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)，将 **InstallWinRMCertAzureVM.ps1** 脚本文件下载到本地计算机。
 
-接下来，安装 Azure PowerShell（如果尚未安装）。 请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+接下来，安装 Azure PowerShell（如果尚未安装）。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 接下来，打开 Azure PowerShell 命令提示符，将当前文件夹更改为 **InstallWinRMCertAzureVM.ps1** 脚本文件所在的位置。 若要运行 Azure PowerShell 脚本，必须设置正确的执行策略。 运行 **Get-ExecutionPolicy** 命令，确定当前的策略级别。 有关设置相应级别的信息，请参阅 [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx)。
 
@@ -192,7 +190,7 @@ PortNumber 属性显示当前端口号。 如果需要，可使用此命令将�
 
 [如何为 Windows 虚拟机重置密码或远程桌面服务](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)
+[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -201,6 +199,6 @@ PortNumber 属性显示当前端口号。 如果需要，可使用此命令将�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

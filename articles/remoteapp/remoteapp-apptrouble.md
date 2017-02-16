@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a91bea6a7a015ea4a61fd15ba34bcb1a86445b40
+ms.sourcegitcommit: 4e6c6571be85cd5fe374c7df644741ae017ccd19
+ms.openlocfilehash: 6db4cf048147cb9559ca1a2e6921c679fe6ec9e5
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: a91bea6a7a015ea4a61fd15ba34bcb1a86445b40
 继续阅读以获取有关由于应用启动和连接故障导致的常见错误消息的信息。
 
 ## <a name="were-getting-you-set-up-try-again-in-10-minutes"></a>我们正在准备...请在 10 分钟后重试。
-此错误表示 Azure RemoteApp 正在扩大以满足你的用户的容量需求。 在后台将创建更多的 Azure RemoteApp VM 实例以处理你的用户的容量需求。 通常，这需要大约 5 分钟，但可能多达 10 分钟。 有时，此操作进行地并不快，并且立即需要资源。 例如，9 AM 方案中很多用户需要在 Azure RemoteAppn 中同时使用你的应用。 如果你遇到这种情况，我们可以在后端启用**容量模式**。 若要这样做，请打开 Azure 支持票证和/或发送电子邮件给我们（地址为 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com)）。 请务必在请求中包括你的订阅 ID。  
+此错误表示 Azure RemoteApp 正在扩大以满足你的用户的容量需求。 在后台将创建更多的 Azure RemoteApp VM 实例以处理你的用户的容量需求。 通常，这需要大约 5 分钟，但可能多达 10 分钟。 有时，此操作进行地并不快，并且立即需要资源。 例如，9 AM 方案中很多用户需要在 Azure RemoteAppn 中同时使用你的应用。 如果你遇到这种情况，我们可以在后端启用**容量模式**。 若要执行此操作，请打开 Azure 支持票证。 请务必在请求中包括你的订阅 ID。  
 
 ![我们正在准备](./media/remoteapp-apptrouble/ra-apptrouble1.png)
 
@@ -40,21 +40,21 @@ ms.openlocfilehash: a91bea6a7a015ea4a61fd15ba34bcb1a86445b40
 ![无法自动重新连接到你的应用程序](./media/remoteapp-apptrouble/ra-apptrouble2.png) 
 
 ## <a name="problems-with-the-temp-profile"></a>临时配置文件问题
-当用户配置文件（用户配置文件磁盘）无法装载且用户收到了临时配置文件时，将发生此错误。  管理员应导航到 Azure 门户中的集合，然后转到“**会话**”选项卡，并尝试“**注销**”用户。 这将强制完全注销用户会话，然后让用户再次尝试启动应用。 如果操作失败，请联系 Azure 支持人员或发送电子邮件给我们（地址为 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com)）。
+当用户配置文件（用户配置文件磁盘）无法装载且用户收到了临时配置文件时，将发生此错误。  管理员应导航到 Azure 门户中的集合，然后转到“**会话**”选项卡，并尝试“**注销**”用户。 这将强制完全注销用户会话，然后让用户再次尝试启动应用。 如果操作失败，请联系 Azure 支持人员。
 
 ## <a name="azure-remoteapp-has-stopped-working"></a>Azure RemoteApp 已停止工作
-此错误消息表示 Azure RemoteApp 客户端遇到了问题，而且需要重新启动。 指示用户关闭：选择“**关闭程序**”，然后重新启动 Azure RemoteApp 客户端。  如果问题仍然存在，请打开 Azure 支持票证和/或发送电子邮件给我们（地址为 [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com)）。
+此错误消息表示 Azure RemoteApp 客户端遇到了问题，而且需要重新启动。 指示用户关闭：选择“**关闭程序**”，然后重新启动 Azure RemoteApp 客户端。  如果问题仍然存在，请打开 Azure 支持票证。
 
 ![Azure RemoteApp 已停止工作](./media/remoteapp-apptrouble/ra-apptrouble3.png)  
 
 ## <a name="an-error-occurred-while-remote-desktop-connection-was-accessing-this-resource-retry-the-connection-or-contact-your-system-administrator"></a>远程桌面连接访问此资源时出错。 重试连接或与系统管理员联系
-这是一般的错误消息 - 请联系 Azure 支持人员和/或发送电子邮件给我们（地址为：[remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com)），以便我们可以进行调查。 
+这是一般性错误消息 - 请联系 Azure 支持人员，以便我们进行调查。 
 
 ![一般的 Azure RemoteApp 消息](./media/remoteapp-apptrouble/ra-apptrouble4.png) 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

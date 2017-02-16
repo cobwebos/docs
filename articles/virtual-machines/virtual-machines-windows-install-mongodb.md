@@ -1,5 +1,5 @@
 ---
-title: "在 Windows VM 上安装 MongoDB | Microsoft Docs"
+title: "在 Azure 中的 Windows VM 上安装 MongoDB | Microsoft Docs"
 description: "了解如何在使用 Resource Manager 部署模型创建的、运行 Windows Server 2012 R2 的 Azure VM 上安装 MongoDB。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 12/20/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 6f171df26ba58d01b1ad81e7ff33f9ce47f34c4c
+ms.sourcegitcommit: 370bcf5189c855185f11277518e0cbd5377993ab
+ms.openlocfilehash: 0772376d2d858b32dfdd06b64d61003388268361
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: 6f171df26ba58d01b1ad81e7ff33f9ce47f34c4c
      
      ![配置 Internet Explorer 安全性设置](./media/virtual-machines-windows-install-mongodb/configure-internet-explorer-security.png)
 4. 浏览到“MongoDB - 下载”页 (http://www.mongodb.org/downloads)。[](http://www.mongodb.org/downloads)
-5. 默认情况下，应已选择“社区服务器”版本和 Windows Server 2008 R2 64 位及更高版本的最新稳定版本。 若要下载安装程序，请单击“DOWNLOAD (msi)”。
+5. 如有需要，选择“社区服务器”版本，然后选择 Windows Server 2008 R2 64 位及更高版本的最新稳定版本。 若要下载安装程序，请单击“DOWNLOAD (msi)”。
    
     ![下载 MongoDB 安装程序](./media/virtual-machines-windows-install-mongodb/download-mongodb.png)
    
@@ -167,6 +167,6 @@ New-NetFirewallRule -DisplayName "Allow MongoDB" -Direction Inbound `
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

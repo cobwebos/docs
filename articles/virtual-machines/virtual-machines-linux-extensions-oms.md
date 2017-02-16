@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/05/2016
+ms.date: 01/09/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 9f27890e52cb7a9a0d46f2bb84bfe92f7c6fff37
-ms.openlocfilehash: 9864314956d79317785c1c2a4bc87621bc6a3e2d
+ms.sourcegitcommit: 251d7b973426afb50206c428873021144b8bffdf
+ms.openlocfilehash: 2d7592680289d9f222f5e0aa36aa66d12f4fa517
 
 
 ---
@@ -26,10 +26,6 @@ ms.openlocfilehash: 9864314956d79317785c1c2a4bc87621bc6a3e2d
 ## <a name="overview"></a>概述
 
 Operations Management Suite (OMS) 提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 OMS 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 OMS 代理，并将虚拟机注册到现有的 OMS 工作区中。 本文档详细介绍适用于 Linux 的 OMS 虚拟机扩展支持的平台、配置和部署选项。
-
-有关 Azure 虚拟机扩展的常规信息，请参阅[虚拟机扩展概述](./virtual-machines-linux-extensions-features.md)。
-
-有关 Operations Management Suite 的详细信息，请参阅 [Operations Management Suite 概述](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,49 +42,13 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 | Ubuntu | 12.04 LTS、14.04 LTS、15.04 |
 | SUSE Linux Enterprise Server | 11 和 12 |
 
-### <a name="connectivity"></a>连接
+### <a name="internet-connectivity"></a>Internet 连接
 
 适用于 Linux 的 OMS 代理扩展要求目标虚拟机已连接到 Internet。 
 
-## <a name="extension-configuration"></a>扩展配置
+## <a name="extension-schema"></a>扩展架构
 
-适用于 Linux 的 OMS 代理虚拟机扩展需要目标 OMS 工作区的工作区 ID 和工作区密钥。 由于工作区密钥应视为敏感数据，因此将它存储在受保护的配置中。 Azure VM 扩展保护的配置已加密，并且只能在目标虚拟机上解密。 公共和专用配置在部署时指定，将在本文档的后续部分中详细介绍。
-
-### <a name="public-configuration"></a>公共配置
-
-公共配置的架构：
-
-- workspaceId：（必需，字符串）要将虚拟机加入到其中的 OMS 工作区的 ID。
-
-```json
-{
-  "workspaceId": "myWorkspaceId"
-}
-```
-
-### <a name="private-configuration"></a>专用配置
-
-公共配置的架构：
-
-- workspaceKey：（必需，字符串）工作区的主/辅助共享密钥。
-
-```json
-{
-  "workspaceKey": "myWorkSpaceKey"
-}
-```
-
-## <a name="template-deployment"></a>模板部署
-
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置（例如，加入到 OMS）的一个或多个虚拟机时，模板是理想选择。 包含 OMS 代理 VM 扩展的示例 Resource Manager 模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到。 
-
-可以使用此按钮从本文档部署该示例：
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-oms-extension-ubuntu-vm%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
-
-用于部署 OMS 代理 VM 扩展的 JSON 类似于以下 JSON 示例：
+以下 JSON 显示 OMS 代理扩展的架构。 此扩展需要目标 OMS 工作区的工作区 ID 和工作区密钥，可以在 OMS 门户中找到此 ID 和密钥。 由于工作区密钥应视为敏感数据，因此它应存储在受保护的设置配置。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。
 
 ```json
 {
@@ -113,12 +73,28 @@ OMS 代理扩展可以针对这些 Linux 分发运行。
 }
 ```
 
+### <a name="property-values"></a>属性值
+
+| 名称 | 值/示例 |
+| ---- | ---- |
+| apiVersion | 2015-06-15 |
+| 发布者 | Microsoft.EnterpriseCloud.Monitoring |
+| type | OmsAgentForLinux |
+| typeHandlerVersion | 1.0 |
+| workspaceId (e.g) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (e.g) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+
+
+## <a name="template-deployment"></a>模板部署
+
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置（例如，加入到 OMS）的一个或多个虚拟机时，模板是理想选择。 包含 OMS 代理 VM 扩展的示例 Resource Manager 模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到。 
+
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
 可以使用 Azure CLI 将 OMS 代理 VM 扩展部署到现有的虚拟机。 在部署 OMS 代理扩展之前，需创建 public.json 和 protected.json 文件。 在本文档的前面部分详细介绍了这些文件的架构。
 
 ```azurecli
-azure vm extension set <resource-group> <vm-name> \
+azure vm extension set myResourceGroup myVM \
   OmsAgentForLinux Microsoft.EnterpriseCloud.Monitoring 1.0 \
   --public-config-path public.json  \
   --private-config-path protected.json
@@ -146,6 +122,6 @@ azure vm extension get myResourceGroup myVM
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/15/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c357d477684444342c74e04a2c5545a76b9ee0e3
+ms.sourcegitcommit: 24143b6866c4393b18636669b5b4281a0d18c3d1
+ms.openlocfilehash: 64e8c8b284f21320601208c798d354df2496274c
 
 
 ---
@@ -226,7 +226,7 @@ Azure 数据目录的用户可使用公共 API、单击一次的注册工具或�
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>浏览器</font></td>
-      <td><font size=2>仅本机模式服务器。 不支持 SharePoint 模式。</font></td>
+      <td><font size=2>仅本机模式服务器。不支持 SharePoint 模式。</font></td>
     </tr>
 
     <tr>
@@ -419,7 +419,7 @@ Azure 数据目录的用户可使用公共 API、单击一次的注册工具或�
 ## <a name="data-source-reference-specification"></a>数据源引用规范
 > [!NOTE]
 > 以下表中的“DSL 结构”列仅列出了由 Azure 数据目录使用的“地址”属性包的连接属性（“地址”属性包可包含数据源的其他连接属性，Azure 数据目录中具有这些连接属性但不使用它们）。
-> 
+>
 > <table>
 > <tr>
 > <td><b>源类型</b></td>
@@ -1169,11 +1169,10 @@ Azure 数据目录的用户可使用公共 API、单击一次的注册工具或�
 > <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId </font>
 > </td>
 > </tr>
-> </table> 
+> </table>>
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

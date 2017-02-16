@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc4561516490b9b285220e7ae688bf97384fe6e
-ms.openlocfilehash: c900840e419c06b70e3a2f53a6aa8314145324fe
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: f7dc72299665a5324de7b9320eb9876c61ced123
 
 
 ---
@@ -55,8 +55,6 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
 然后刷新项目依赖项，以下载库。
 
-```XML
-
     <repositories>
        <repository>
           <id>central</id>
@@ -73,7 +71,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
         <version>[1.0,)</version>
       </dependency>
     </dependencies>
-```
+
 
 * *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>1.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
 * *需要更新到新 SDK？*  请刷新项目的依赖项。
@@ -83,8 +81,6 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
 然后刷新项目依赖项，以下载库。
 
-```JSON
-
     repositories {
       mavenCentral()
     }
@@ -93,7 +89,6 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
       compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '1.+'
       // or applicationinsights-core for bare API
     }
-```
 
 * *发生了生成或校验和验证错误？尝试使用特定版本，例如：* `version:'1.0.n'`。 *可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)。*
 * *更新到新 SDK*
@@ -119,8 +114,6 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 在项目中的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
 
 替换为从 Azure 门户获取的检测密钥。
-
-```XML
 
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
@@ -151,7 +144,6 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
       </TelemetryInitializers>
     </ApplicationInsights>
-```
 
 
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
@@ -168,10 +160,8 @@ Application Insights SDK 按以下顺序查找密钥：
 
 也可以 [在代码中设置方法](app-insights-api-custom-events-metrics.md#ikey)：
 
-```Java
-
     telemetryClient.InstrumentationKey = "...";
-```
+
 
 ## <a name="4-add-an-http-filter"></a>4.添加 HTTP 筛选器
 最后一个配置步骤可让 HTTP 请求组件记录每个 Web 请求。 （如果只需要单纯的 API，则不需要执行此步骤。）
@@ -179,8 +169,6 @@ Application Insights SDK 按以下顺序查找密钥：
 在项目中找到并打开 web.xml 文件，然后将以下代码合并到 Web 应用节点下，即应用程序筛选器的配置位置。
 
 为获得最准确的结果，应该在其他所有筛选器的前面映射该筛选器。
-
-```XML
 
     <filter>
       <filter-name>ApplicationInsightsWebFilter</filter-name>
@@ -192,12 +180,9 @@ Application Insights SDK 按以下顺序查找密钥：
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
-```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>如果使用 Spring Web MVC 3.1 或更高版本
 编辑 *-servlet.xml 中的以下元素以包含 Application Insights 包：
-
-```XML
 
     <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
 
@@ -207,18 +192,14 @@ Application Insights SDK 按以下顺序查找密钥：
             <bean class="com.microsoft.applicationinsights.web.spring.RequestNameHandlerInterceptorAdapter" />
         </mvc:interceptor>
     </mvc:interceptors>
-```
 
 #### <a name="if-youre-using-struts-2"></a>如果使用 Struts 2
 将此项添加到 Struts 配置文件（通常名为 struts.xml 或 struts-default.xml）：
-
-```XML
 
      <interceptors>
        <interceptor name="ApplicationInsightsRequestNameInterceptor" class="com.microsoft.applicationinsights.web.struts.RequestNameInterceptor" />
      </interceptors>
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
-```
 
 （如果默认堆栈中定义了拦截器，只需将拦截器添加到该堆栈。）
 
@@ -252,7 +233,7 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 ![](./media/app-insights-java-get-started/7-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>分析：功能强大的查询语言
-随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。  [分析](app-insights-analytics.md) 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
+随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。 [分析]() 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
 
 ![分析示例](./media/app-insights-java-get-started/025.png)
 
@@ -294,25 +275,20 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
 若要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
 
-```XML
     <PerformanceCounters>
        <UseBuiltIn>False</UseBuiltIn>
     </PerformanceCounters>
-```
 
 ### <a name="collect-additional-performance-counters"></a>收集其他性能计数器
 可以指定要收集的其他性能计数器。
 
 #### <a name="jmx-counters-exposed-by-the-java-virtual-machine"></a>JMX 计数器（由 Java 虚拟机公开）
-
-```XML
     <PerformanceCounters>
       <Jmx>
         <Add objectName="java.lang:type=ClassLoading" attribute="TotalLoadedClassCount" displayName="Loaded Class Count"/>
         <Add objectName="java.lang:type=Memory" attribute="HeapMemoryUsage.used" displayName="Heap Memory Usage-used" type="composite"/>
       </Jmx>
     </PerformanceCounters>
-```
 
 * `displayName` – Application Insights 门户中显示的名称。
 * `objectName` – JMX 对象名称。
@@ -325,14 +301,12 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 #### <a name="windows-performance-counters"></a>Windows 性能计数器
 每个 [Windows 性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) 是类别的成员（就好比字段是类的成员）。 类别可以是全局的，也可以是带编号的实例或命名实例。
 
-```XML
     <PerformanceCounters>
       <Windows>
         <Add displayName="Process User Time" categoryName="Process" counterName="%User Time" instanceName="__SELF__" />
         <Add displayName="Bytes Printed per Second" categoryName="Print Queue" counterName="Bytes Printed/sec" instanceName="Fax" />
       </Windows>
     </PerformanceCounters>
-```
 
 * displayName – Application Insights 门户中显示的名称。
 * categoryName – 与此性能计数器关联的性能计数器类别（性能对象）。
@@ -397,6 +371,6 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "管理 Microsoft Azure StorSimple 虚拟阵列的访问控制记录 | Microsoft 文档"
+title: "管理 StorSimple 虚拟阵列的访问控制记录 | Microsoft 文档"
 description: "介绍如何管理访问控制记录 (ACR)，以确定哪些主机可以连接到 StorSimple Virtual Array 上的卷。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: a0ba81faa20587d9559bf25cdc82dd6e20f42948
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 1a93ef9c3418da64302d251203fd195708437931
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-access-control-records-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列的访问控制记录
@@ -131,6 +131,6 @@ ms.openlocfilehash: a0ba81faa20587d9559bf25cdc82dd6e20f42948
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

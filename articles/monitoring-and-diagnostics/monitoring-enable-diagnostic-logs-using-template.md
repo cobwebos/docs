@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 6a98f380dd77372e0db9d5de671c58b7660826bb
-ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 00f4ddd7173affb9e557e8c993c9f7432a3152cd
 
 
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>在创建资源时使用 Resource Manager 模板自动启用诊断设置
-本文介绍如何使用 [Azure Resource Manager 模板](../resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
+本文介绍如何使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
 
 通过 Resource Manager 模板启用诊断日志时，所用方法取决于资源类型。
 
@@ -33,7 +33,7 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
 基本步骤如下所示：
 
 1. 以 JSON 文件格式创建一个模板，说明如何创建资源和启用诊断。
-2. [使用任意部署方法部署模板](../resource-group-template-deploy.md)。
+2. [使用任意部署方法部署模板](../azure-resource-manager/resource-group-template-deploy.md)。
 
 下面是一个需为非计算资源和计算资源生成的模板 JSON 文件的示例。
 
@@ -218,6 +218,6 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 

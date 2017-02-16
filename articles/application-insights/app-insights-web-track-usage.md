@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 06/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 1480c67792dc0ef6d2742b5b7f1c13e81cefbc1c
+ms.sourcegitcommit: f86986fea6fc48a4a6ed09022e8026e0645dfc56
+ms.openlocfilehash: 971558d287191c6b7b5ea9d135e6fe37c904aa76
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 1480c67792dc0ef6d2742b5b7f1c13e81cefbc1c
 Azure Application Insights 提供两个级别的使用情况跟踪：
 
 * **用户、会话和页面视图数据** - 开箱即提供。  
-* **自定义遥测** - [编写代码][api]以跟踪用户对应用的用户体验。 
+* **自定义遥测** - [编写代码][api]用于跟踪用户的应用体验。 
 
 ## <a name="setting-up"></a>设置
 在 [Azure 门户](https://portal.azure.com)中打开 Application Insights 资源，单击空的浏览器页面负载图，然后按照安装说明操作。
@@ -33,7 +33,7 @@ Azure Application Insights 提供两个级别的使用情况跟踪：
 [了解详细信息](app-insights-javascript.md) 
 
 ## <a name="how-popular-is-my-web-application"></a>我的 Web 应用程序有多热门？
-登录 [Azure 门户][门户]、浏览到应用程序资源，然后单击“使用情况”：
+登录到 [Azure 门户][portal]，浏览到你的应用程序资源，然后单击“使用情况”：
 
 ![](./media/app-insights-web-track-usage/14-usage.png)
 
@@ -60,7 +60,7 @@ Azure Application Insights 提供两个级别的使用情况跟踪：
 
 如果同时检测客户端和服务器（[ASP.NET][greenbrown] 或 [J2EE][java]），SDK 将在客户端和服务器之间传播会话 ID，以便将两端的事件关联起来。
 
-[诊断问题][诊断]时，可查找与出现问题的会话相关的所有遥测，包括所有请求以及记录的任何事件、异常或跟踪。
+[诊断问题][diagnostic]时，可查找与出现问题的会话相关的所有遥测，包括所有请求以及记录的任何事件、异常或跟踪。
 
 会话提供了上下文受欢迎程度的良好测量方式，如按设备、操作系统或位置。 例如，与计算页面视图相比，通过显示按设备分组的会话计数，可获取为应用使用该设备的频率的更准确计数。 对于任何特定于设备的问题的会审，这都将是有用的输入。
 
@@ -75,11 +75,12 @@ Azure Application Insights 提供两个级别的使用情况跟踪：
             sessionRenewalMs: 3600000,
             sessionExpirationMs: 172800000
         });
+    </script>
 
 * `sessionRenewalMs`：会话由于用户的非活动状态而过期的时间，以毫秒为单位。 默认值：30 分钟。
 * `sessionExpirationMs`：最大会话长度，以毫秒为单位。 如果用户在此时间后保持活动状态，将算作另一个会话。 默认值：24 小时。
 
-**会话持续时间**是记录会话的第一个和最后一个遥测项之间的时间范围的[指标][指标]。 （它不包括超时期限。）
+**会话持续时间**是记录会话的第一个和最后一个遥测项之间的时间范围的[指标][metrics]。 （它不包括超时期限。）
 
 采用特定间隔的**会话计数**定义为在此间隔期间具有某些活动的唯一会话数。 查看较长的时间范围（如上周的每日会话计数）时，这通常等效于会话总数。 
 
@@ -115,7 +116,7 @@ Azure Application Insights 提供两个级别的使用情况跟踪：
 
 Application Insights 致力于自动确定和分类综合流量，并对其进行相应的标记。 在大多数情况下，综合流量不会调用 JavaScript SDK，以便将此活动从用户和会话计数中排除。 
 
-但是，对于 Application Insights [Web 测试][可用性]，根据 POP 位置自动设置用户 ID，根据测试运行 ID 设置会话 ID。 在默认报表中，默认筛出综合流量，这将排除这些用户和会话。 但是，当包含综合流量时，它可能导致总体用户和会话计数小幅增加。
+但是，对于 Application Insights [Web 测试][availability]，根据 POP 位置自动设置用户 ID，根据测试运行 ID 设置会话 ID。 在默认报表中，默认筛出综合流量，这将排除这些用户和会话。 但是，当包含综合流量时，它可能导致总体用户和会话计数小幅增加。
 
 ## <a name="page-usage"></a>页面使用情况
 在页面视图中多次单击获取更加放大的版本以及最热门页面的细分：
@@ -241,7 +242,7 @@ Application Insights 致力于自动确定和分类综合流量，并对其进�
 
 ![在“搜索”字段中键入一个值](./media/app-insights-web-track-usage/12-searchEvents.png)
 
-## <a name="a-b-testing"></a>A | B 测试
+## <a name="a--b-testing"></a>A | B 测试
 如果不知道哪个功能变体将更有成效，可同时发布这两项，使不同用户都能访问它们。 评估每个项的成效，然后移至统一的版本。
 
 对于此技术，可将不同标记附加到应用的每个版本所发送的所有遥测。 为此，可以在活动的 TelemetryContext 中定义属性。 这些默认属性将添加到应用程序发送的每个遥测消息（并非仅自定义消息），不过标准遥测也是这样。 
@@ -324,19 +325,19 @@ Application Insights 致力于自动确定和分类综合流量，并对其进�
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[可用性]: app-insights-monitor-web-app-availability.md
-[客户端]: app-insights-javascript.md
-[诊断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[client]: app-insights-javascript.md
+[diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
-[指标]: app-insights-metrics-explorer.md
-[门户]: http://portal.azure.com/
+[metrics]: app-insights-metrics-explorer.md
+[portal]: http://portal.azure.com/
 [windows]: app-insights-windows-get-started.md
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

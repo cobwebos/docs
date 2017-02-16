@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/01/2016
+ms.date: 01/16/2017
 ms.author: markgal; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: f6a1346b84521806e5523e331b2aeb11648bbe6d
-ms.openlocfilehash: a7d2a73760cd015a5a67551f6f6ada8568ed75b8
+ms.sourcegitcommit: 3a560e836de9cf70bf448b30b091ad92372bce06
+ms.openlocfilehash: 909b16d2e8c72fa29f45e1bdfc778612e00ebbd8
 
 
 ---
@@ -199,6 +199,11 @@ PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
 
+> [!NOTE]
+> 如果使用 Azure Government 云，则对 Set-azurermkeyvaultaccesspolicy cmdlet 中的参数 **-ServicePrincipalName** 使用值 ff281ffe-705c-4f53-9f37-a40e6f2c68f3。
+> 
+> 
+
 对于基于 ASM 的 VM
 
 ```
@@ -230,7 +235,8 @@ WorkloadName     Operation            Status               StartTime            
 V2VM              Backup               InProgress            4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
 ```
 
-> [AZURE.NOTE]：PowerShell 中的 StartTime 和 EndTime 字段时区为 UTC。 但是，在 Azure 门户中显示时间时，该时间将会根据你的本地时区调整。
+> [!NOTE]
+> PowerShell 中 StartTime 和 EndTime 字段的时区是 UTC。 但是，在 Azure 门户中显示时间时，该时间将会根据你的本地时区调整。
 > 
 > 
 
@@ -323,8 +329,13 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
 
 还原磁盘以后，即可转到下一部分以了解如何创建 VM。
 
-### <a name="create-a-vm-from-restored-disks"></a>从还原的磁盘创建 VM
+## <a name="create-a-vm-from-restored-disks"></a>从还原的磁盘创建 VM
 还原磁盘以后，即可通过以下步骤从磁盘创建和配置虚拟机。
+
+> [!NOTE]
+> 如果要使用还原的磁盘创建加密的 VM，你的角色应可执行 **Microsoft.KeyVault/vaults/deploy/action**。 如果角色不具有此权限，可通过此操作创建自定义角色。 请参阅[Azure RBAC 中的自定义角色](../active-directory/role-based-access-control-custom-roles.md)，了解更多详细信息。
+> 
+> 
 
 1. 查询已还原磁盘属性以获取作业详细信息。
    
@@ -384,6 +395,6 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

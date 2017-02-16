@@ -1,5 +1,5 @@
 ---
-title: "调试 Visual Studio 中的应用程序 | Microsoft 文档"
+title: "调试 Visual Studio 中的应用程序 | Microsoft Docs"
 description: "通过在本地开发群集上采用 Visual Studio 进行开发和调试，来提高服务的可靠性和性能。"
 services: service-fabric
 documentationcenter: .net
@@ -12,15 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/10/2017
 ms.author: vturecek;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97bfd27368c2f317e4edadb38a0685d92ad92b9a
+ms.sourcegitcommit: 7a79b19bf51c89e19ad67421978dacccddeb5119
+ms.openlocfilehash: 95cb29e3a7fe59fb29189c7e62b5c6c8e77e6a20
 
 
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
+> [!div class="op_single_selector"]
+> * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
+> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
+>
+
+
 ## <a name="debug-a-local-service-fabric-application"></a>调试本地 Service Fabric 应用程序
 可以通过在本地计算机开发群集中部署和调试 Azure Service Fabric 应用程序来节省时间和资金。 Visual Studio 可以将应用程序部署到本地群集并自动将调试器连接到应用程序的所有实例。
 
@@ -156,6 +162,6 @@ ms.openlocfilehash: 97bfd27368c2f317e4edadb38a0685d92ad92b9a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

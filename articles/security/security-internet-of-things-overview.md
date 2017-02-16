@@ -1,6 +1,6 @@
 ---
-title: "物联网安全概述 | Microsoft Docs"
-description: " Azure 物联网 (IoT) 服务提供范围广泛的功能。 这篇文章可帮助你了解如何保护在 Azure 中的 IoT 解决方案。 "
+title: "保护 Azure 中的物联网 (IoT) | Microsoft Docs"
+description: " Azure 物联网 (IoT) 服务提供范围广泛的功能。 本文可帮助你了解如何保护 Azure 中的 IoT 解决方案. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 5778f554e83426f5fba12a25d2bbce13db4a9226
-ms.openlocfilehash: ebfeb83c2bc3b96ef2e7474d60639cfb2da0018d
+ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
+ms.openlocfilehash: 3793f5453b74b6c06d9e58b426d89099298e1288
 
 
 ---
@@ -70,6 +70,6 @@ IoT 使全球企业面临独特的安全、隐私权与合规性挑战。 不同
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

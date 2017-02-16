@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c6e67ba61732beba96831e6c3b0fd89bb8097972
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 9f664b07566fe78d93b1e35a2e0f7e5513960fad
 
 
 ---
@@ -42,20 +42,20 @@ Azure 服务终结点确定你的应用程序是在全球 Azure 平台管理、�
   7. 创建私有 Azure 平台 `preferenceset` 元素后，可以通过在“服务终结点”对话框中单击“编辑”按钮来更改分配给它的值。 还可以根据需要创建多个私有 Azure 平台 `preferenceset` 元素。
 
 ## <a name="see-also"></a>另请参阅
-[用于 Eclipse 的 Azure 工具包][用于 Eclipse 的 Azure 工具包]
+[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]
 
-[安装用于 Eclipse 的 Azure 工具包][安装用于 Eclipse 的 Azure 工具包] 
+[安装用于 Eclipse 的 Azure 工具包][Installing the Azure Toolkit for Eclipse] 
 
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序][在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+[在 Eclipse 中为 Azure 创建 Hello World 应用程序][Creating a Hello World Application for Azure in Eclipse]
 
-有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java 开发人员中心]。
+有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][Azure Java Developer Center]。
 
 <!-- URL List -->
 
-[Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
-[用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkID=699529
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
-[安装用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
@@ -65,6 +65,6 @@ Azure 服务终结点确定你的应用程序是在全球 Azure 平台管理、�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

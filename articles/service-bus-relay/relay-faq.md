@@ -1,5 +1,5 @@
 ---
-title: "中继常见问题解答 | Microsoft 文档"
+title: "Azure 中继常见问题解答 (FAQ) | Microsoft Docs"
 description: "回答了一些关于 Azure 中继的常见问题。"
 services: service-bus-relay
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: jotaub,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 849d7995e9c74bc929c4f791ae9155ca18ddb77b
-ms.openlocfilehash: 12702f585605a88ed6e753a0ff301095e8629e05
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 22781ec965decbfd33923478794a76692151c363
 
 
 ---
@@ -37,7 +37,7 @@ Azure [中继服务](relay-what-is-it.md)简化了混合应用程序，通过允
 本部分回答了一些关于中继定价结构的常见问题。 你还可以访问 [Azure Support FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)（Azure 支持常见问题）了解一般的 Microsoft Azure 定价信息。 有关中继定价的完整信息，请参阅[服务总线定价详细信息](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>如何对混合连接和 WCF 中继收费？
-有关中继定价的完整信息，请参阅[服务总线定价详细信息][定价概述]。 除标示的价格外，你还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
+有关中继定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。 除标示的价格外，你还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>使用混合连接时怎样计费？
 以下是三个示例方案：
@@ -90,14 +90,17 @@ Azure [中继服务](relay-what-is-it.md)简化了混合应用程序，通过允
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-their-suggested-actions"></a>Azure 中继 API 所生成的异常有哪些，建议采取什么操作？
-[中继异常][中继异常]一文介绍了部分异常和建议的操作。
+[中继异常][Relay exceptions]一文介绍了部分异常和建议的操作。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什么是共享访问签名？哪些语言支持生成签名？
-共享访问签名是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node、PHP、Java 和 C\# 中生成自有签名的信息，请参阅[共享访问签名][共享访问签名]一文。
+共享访问签名是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node、PHP、Java 和 C\# 中生成自有签名的信息，请参阅[共享访问签名][Shared Access Signatures]一文。
 
-[定价概述]: https://azure.microsoft.com/pricing/details/service-bus/
-[中继异常]: relay-exceptions.md
-[共享访问签名]: ../service-bus-messaging/service-bus-sas-overview.md
+[Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
+[Relay exceptions]: relay-exceptions.md
+[Shared Access Signatures]: ../service-bus-messaging/service-bus-sas-overview.md
+
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>是否可以将中继终结点加入白名单？
+是的。 中继客户端使用完全限定的域名连接到中继服务。 这使客户能够在支持 DNS 白名单的防火墙上为 `*.servicebus.windows.net` 添加一个条目。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建命名空间](relay-create-namespace-portal.md)
@@ -106,6 +109,6 @@ Azure [中继服务](relay-what-is-it.md)简化了混合应用程序，通过允
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

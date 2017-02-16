@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/14/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 4bebf59070e4047f083a5e92de1cfeb9d520e41f
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: a7febd4af48a28daace9f267c8ddd1440cbedabf
 
 
 ---
@@ -192,8 +192,8 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 #### <a name="before-you-begin"></a>开始之前
 
 * 有关配置工作站以运行 HDInsight Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
-* 有关如何创建模板的说明，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
-* 如果你以前没有对 Resource Manager 使用过 Azure PowerShell，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+* 有关如何创建模板的说明，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+* 如果你以前没有对 Resource Manager 使用过 Azure PowerShell，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)。
 
 #### <a name="create-clusters-using-script-action"></a>使用脚本操作创建群集
 
@@ -761,6 +761,6 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

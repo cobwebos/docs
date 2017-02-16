@@ -16,12 +16,12 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1ea4948b39b4d17cf3661e54415ff94519127a58
+ms.sourcegitcommit: 4f8d2956e9f0240392ba839b076d632ccc45d728
+ms.openlocfilehash: 3217399ee868707309e96234d4954548b063534a
 
 
 ---
-# <a name="configure-domain-joined-hdinsight-clusters-preview-use-azure-powershell"></a>使用 Azure PowerShell 配置已加入域的 HDInsight 群集（预览版）
+# <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>使用 Azure PowerShell 配置已加入域的 HDInsight 群集（预览版）
 了解如何使用 Azure PowerShell 通过 Azure Active Directory (Azure AD) 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 设置 Azure HDInsight 群集。 提供 Azure PowerShell 脚本以加快配置速度并降低出错可能性。 仅可在基于 Linux 的群集上配置已加入域的 HDInsight。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](hdinsight-domain-joined-introduction.md)。
 
 典型的已加入域的 HDInsight 群集配置涉及以下步骤：
@@ -39,9 +39,9 @@ ms.openlocfilehash: 1ea4948b39b4d17cf3661e54415ff94519127a58
 
 最终拓扑的示例如下所示：
 
-![已加入域的 HDInsight 拓扑](.\\media\\hdinsight-domain-joined-configure\\hdinsight-domain-joined-topology.png)
+![已加入域的 HDInsight 拓扑](./media/hdinsight-domain-joined-configure/hdinsight-domain-joined-topology.png)
 
-由于 Azure AD 当前仅支持经典虚拟网络 (Vnet)，并且基于 Linux 的 HDInsight 群集仅支持基于 Azure Resource Manager 的 Vnet，因此 HDInsight Azure AD 集成需要两个 Vnet 以及两者间的对等互连。 有关两个部署模型之间的比较信息，请参阅 [Azure Resource Manager 与经典部署：了解资源的部署模型和状态](../resource-manager-deployment-model.md)。 两个 VNet 必须与 Azure AD DS 位于同一区域。
+由于 Azure AD 当前仅支持经典虚拟网络 (Vnet)，并且基于 Linux 的 HDInsight 群集仅支持基于 Azure Resource Manager 的 Vnet，因此 HDInsight Azure AD 集成需要两个 Vnet 以及两者间的对等互连。 有关两个部署模型之间的比较信息，请参阅 [Azure Resource Manager 与经典部署：了解资源的部署模型和状态](../azure-resource-manager/resource-manager-deployment-model.md)。 两个 VNet 必须与 Azure AD DS 位于同一区域。
 
 > [!NOTE]
 > 本教程假设你没有 Azure AD。 如果已有 Azure AD，可跳过步骤 2 中的部分。
@@ -54,7 +54,7 @@ ms.openlocfilehash: 1ea4948b39b4d17cf3661e54415ff94519127a58
 * 熟悉 [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)及其[定价](https://azure.microsoft.com/pricing/details/active-directory-ds/)结构。
 * 请确保订阅已列入此公开预览的白名单。 可使用订阅 ID 向 hdipreview@microsoft.com 发送电子邮件来完成此操作。
 * SSL 证书由域的签名颁发机构进行签名。 该证书用于配置安全 LDAP。 不能使用自签名证书。
-* Azure PowerShell。  请参阅[安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* Azure PowerShell。  请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="create-an-azure-classic-vnet-for-your-azure-ad"></a>为 Azure AD 创建 Azure 经典 VNet。
 有关说明，请参阅[此处](hdinsight-domain-joined-configure.md#create-an-azure-classic-vnet)。
@@ -105,7 +105,7 @@ ms.openlocfilehash: 1ea4948b39b4d17cf3661e54415ff94519127a58
 在创建反向 DNS 区域时，脚本将提示你输入网络 ID。 此网络 ID 必须为资源管理器虚拟网络的地址前缀。 例如，如果资源管理器虚拟网络子网地址空间为 10.2.0.0/24，则在工具提示提供网络 ID 时输入 10.2.0.0/24。 
 
 ## <a name="create-hdinsight-cluster"></a>创建 HDInsight 群集
-在本部分中，将在 HDInsight 中使用 Azure 门户或 [Azure Resource Manager 模板](../resource-group-template-deploy.md)创建基于 Linux 的 Hadoop 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 若要深入了解如何在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集，请参阅[在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
+在本部分中，将在 HDInsight 中使用 Azure 门户或 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-template-deploy.md)创建基于 Linux 的 Hadoop 群集。 对于其他群集创建方法以及了解设置，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 若要深入了解如何在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集，请参阅[在 HDInsight 中使用 Resource Manager 模板创建 Hadoop 群集](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 
 **使用 Azure 门户创建已加入域的 HDInsight 群集**
 
@@ -156,7 +156,7 @@ ms.openlocfilehash: 1ea4948b39b4d17cf3661e54415ff94519127a58
 
 1. 单击以下映像可在 Azure 门户中打开 Resource Manager 模板。 Resource Manager 模板位于公共 Blob 容器中。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="./media/hdinsight-domain-joined-configure-use-powershell/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. 在“参数”边栏选项卡中，输入以下值：
    
    * **订阅**：（选择你的 Azure 订阅）。
@@ -183,12 +183,13 @@ ms.openlocfilehash: 1ea4948b39b4d17cf3661e54415ff94519127a58
 完成教程之后，你可能要删除群集。 有了 HDInsight，你就可以将数据存储在 Azure 存储空间中，因此可以在群集不用时安全地删除群集。 此外，你还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#delete-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
-* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
+* 有关使用 SSH 连接到已加入域的 HDInsight 群集，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,8 @@
 ---
-title: "运行中的 Team Data Science Process：使用 Hadoop 群集 | Microsoft Docs"
+
+
+
+title: "了解 Hadoop 群集中的数据以及如何在 Azure 机器学习中创建模型 | Microsoft 文档"
 description: "对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署使用公开可用数据集的模型。"
 services: machine-learning,hdinsight
 documentationcenter: 
@@ -12,15 +15,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/29/2017
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6eb9fd3750eaf03547f93462d97bc30d30a9a8bc
+ms.sourcegitcommit: 2b7f4b5743945738f801dc26a60d00892c33d809
+ms.openlocfilehash: 91ff5546a954b91585e5ae93f910caffe3b392e1
 
 
 ---
-# <a name="the-team-data-science-process-in-action-using-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process 的工作原理：使用 Azure HDInsight Hadoop 群集
 通过本演练，我们在使用 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)的端到端方案中借助 [Team Data Science Process (TDSP)](data-science-process-overview.md)，对公开发布的[纽约市出租车行程](http://www.andresmh.com/nyctaxitrips/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 数据模型是使用 Azure 机器学习构建的，用于处理二元分类、多类分类和回归预测任务。
 
 针对使用 HDInsight Hadoop 群集进行数据处理的类似方案，有关介绍处理其大型 (1 TB) 数据集的演练，请参阅 [Team Data Science Process - 使用 Azure HDInsight Hadoop 群集处理 1 TB 数据集](machine-learning-data-science-process-hive-criteo-walkthrough.md)。
@@ -38,7 +41,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. 'trip_fare' CSV 文件包含每个行程支付费用的详细信息，例如付款类型、费用金额、附加费和税金、小费和通行费以及支付的总金额。 下面是一些示例记录：
+2. “trip_fare”CSV 文件包含每个行程支付费用的详细信息，例如付款类型、费用金额、附加费和税金、小费和通行费以及支付的总金额。 下面是一些示例记录：
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -402,7 +405,7 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问特定时间段内，哪些出租车的行程数超过了一定量，可以确定哪些车处于“忙碌”状态。 以下示例标识前三个月内行程数超过 100 的出租车，并将查询结果保存到本地文件 C:\temp\queryoutput.tsv。
+NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问特定时间段内，哪些出租车的行程数超过了一定量，可以确定哪些车处于“忙碌”状态。 以下示例标识前三个月内行程数超过&100; 的出租车，并将查询结果保存到本地文件 C:\temp\queryoutput.tsv。
 
 以下是用于检查的 *sample\_hive\_trip\_count\_by\_medallion.hql* 文件的内容。
 
@@ -583,7 +586,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 ### <a name="down-sampling-the-data"></a>对数据进行下采样
 此过程包含两个步骤。 首先，在存在于所有记录中的三个键上将 **nyctaxidb.trip** 和 **nyctaxidb.fare** 表联接，这三个键是：“medallion”、“hack\_license”和“pickup\_datetime”。 然后，生成一个二元分类标签 **tipped** 和一个多类分类标签 **tip\_class**。
 
-为了能够直接从 Azure 机器学习中的[导入数据][import-data]模块使用已经过下采样的数据，必须将上述查询的结果存储到内部 Hive 表。 接下来，我们将创建一个内部 Hive 表，并使用已联接且已经过下采样的数据填充其内容。
+为了能够直接从 Azure 机器学习中的[导入数据][import-data]模块使用已经过下采样的数据，必须将上述查询的结果存储到内部 Hive 表中。 接下来，我们将创建一个内部 Hive 表，并使用已联接且已经过下采样的数据填充其内容。
 
 查询直接应用标准 Hive 函数，以从“pickup\_datetime”字段中生成一天的某一小时、一年的某一周和一周的某一日（1 代表星期一，7 代表星期日），以及上下车位置之间的直接距离。 用户可参阅 [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) 获取此类函数的完整列表。
 
@@ -721,7 +724,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 ### <a name="use-the-import-data-module-in-azure-machine-learning-to-access-the-down-sampled-data"></a>使用 Azure 机器学习中的“导入数据”模块访问已经过下采样的数据
 作为在 Azure 机器学习的[导入数据][import-data]模块中发出 Hive 查询的先决条件，我们需要对 Azure 机器学习工作区的访问权限和对群集凭据及其关联的存储帐户的访问权限。
 
-[导入数据][import-data]模块上的某些详细信息和要输入的参数：
+有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
 **HCatalog 服务器 URI**：如果群集名称是“abc123”，则其 URI 即为：https://abc123.azurehdinsight.net
 
@@ -748,7 +751,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 下面是 Hive 查询和[导入数据][import-data]模块的快照：
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
+![“导入数据”模块的 Hive 查询](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
 注意，由于已经过下采样的数据驻留在默认容器中，所以从 Azure 机器学习中产生的 Hive 查询非常简单，仅为“SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data”。
 
@@ -765,17 +768,17 @@ a.在“解决方案资源管理器”中，右键单击项目文件夹下的“
 
 以下快照显示预测给定行程是否支付小费的实验。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
+![实验快照](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
 
 b.保留“数据库类型”设置，即设置为“共享”。 对于此实验，我们的目标标签分布大约是 1:1。
 
 以下快照显示该二元分类问题的小费类标签的分布情况。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
+![提示类标签的分布](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
 
 最终，我们获得的 AUC 为 0.987，如下图所示。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
+![AUC 值](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
 
 **2.多类分类**：使用以前定义的类预测为行程支付的小费金额范围。
 
@@ -785,15 +788,15 @@ a.在“解决方案资源管理器”中，右键单击项目文件夹下的“
 
 以下快照显示预测小费可能归属的 bin 的实验（类 0：小费 = $0，类 1：小费 > $0 且 <= $5，类 2：小费 > $5 且 <= $10，类 3：小费 > $10 且 <= $20，类 4：小费 > $20）
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
+![实验快照](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
 
 现在，我们将展示实际测试类的分布情况。 可以看到，类 0 和类 1 的情况很普遍，而其他类的情况很少。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
+![测试类分布](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
 
 b.保留“数据库类型”设置，即设置为“共享”。 对于此实验，我们使用混淆矩阵检查来预测准确性。 如下所示。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
+![混淆矩阵](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
 
 注意，虽然此模型对于普遍类的预测准确性很高，但对于较少情况的类，其并未做好“学习”工作。
 
@@ -805,11 +808,11 @@ a.在“解决方案资源管理器”中，右键单击项目文件夹下的“
 
 以下快照显示预测支付的小费金额的实验。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
+![实验快照](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
 
-b.保留“数据库类型”设置，即设置为“共享”。 对于回归问题，我们通过查看预测中的平方误差，决定系数等，测量预测准确性。 显示如下。
+b. 对于回归问题，我们通过查看预测中的平方误差，决定系数等，测量预测准确性。 显示如下。
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
+![预测统计信息](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
 
 我们可以看到，决定系数是 0.709，这意味着我们的模型系数解释了大约 71％ 的方差。
 
@@ -823,7 +826,7 @@ b.保留“数据库类型”设置，即设置为“共享”。 对于回归�
 
 ## <a name="references"></a>参考
 •   [Andrés Monroy NYC 出租车行程下载页面](http://www.andresmh.com/nyctaxitrips/)  
-•   [FOILing NYC 的出租车行程数据（作者：Chris Whong）](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](http://chriswhong.com/open-data/foil_nyc_taxi/)   
 •   [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png
@@ -839,6 +842,6 @@ b.保留“数据库类型”设置，即设置为“共享”。 对于回归�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "将机器学习 Web 服务发布到 Azure 应用商店 | Microsoft Docs"
-description: "如何将 Azure 机器学习 Web 服务发布到 Azure 应用商店"
+title: "（已弃用）将机器学习 Web 服务发布到 Azure 应用商店 | Microsoft Docs"
+description: "（已弃用）如何将 Azure 机器学习 Web 服务发布到 Azure 应用商店"
 services: machine-learning
 documentationcenter: 
 author: BharathS
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/08/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: bharaths
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 24b131d3a9a17ce9a2daf349518873871c9d1019
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 2d62966f130f6778c9561393cc7fc338f8903f1e
 
 
 ---
-# <a name="publish-azure-machine-learning-web-service-to-the-azure-marketplace"></a>将 Azure 机器学习 Web 服务发布到 Azure 应用商店
+# <a name="deprecated-publish-azure-machine-learning-web-service-to-the-azure-marketplace"></a>（已弃用）将 Azure 机器学习 Web 服务发布到 Azure 应用商店
+
+> [!NOTE]
+> 将停用 DataMarket 和数据服务，并从 2017/3/31 起停用和取消现有订阅。 因此将弃用这篇文章。 
+> 
+> 转而，可选择将机器学习试验发布到 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/)，便于数据科学社区使用。 有关详细信息，请参阅[在 Cortana Intelligence 库中共享和发现资源](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-gallery-how-to-use-contribute-publish)。
+
 Azure 应用商店提供将 Azure 机器学习 Web 服务发布为付费或免费服务的能力，以供外部客户使用。 本文概述了该过程以及指向入门指南的链接。 使用此过程，可让 Web 服务供其他开发人员在其应用程序中使用。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -82,13 +89,13 @@ Azure 应用商店提供将 Azure 机器学习 Web 服务发布为付费或免�
 
 [image1]:./media/machine-learning-publish-web-service-to-azure-marketplace/image1.png
 [image2]:./media/machine-learning-publish-web-service-to-azure-marketplace/image2.png
-[工作区]:./media/machine-learning-publish-web-service-to-azure-marketplace/selectworkspace.png
+[workspace]:./media/machine-learning-publish-web-service-to-azure-marketplace/selectworkspace.png
 [apikey]:./media/machine-learning-publish-web-service-to-azure-marketplace/apikey.png
 [odata]:./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

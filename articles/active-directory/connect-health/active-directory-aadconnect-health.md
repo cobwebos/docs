@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
-ms.author: vakarand
+ms.date: 02/06/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: fbb95696d8b9267d59d04769d3d7f48c29a8e4dd
+ms.sourcegitcommit: c9ebe21acbe06aa25bcadb3b500c34cf89154388
+ms.openlocfilehash: 9abdfa7349bee74b89a23663969904110c730395
 
 
 ---
@@ -63,7 +63,7 @@ Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结�
 >
 
 ## <a name="azure-ad-connect-health-for-ad-ds-previewactive-directory-aadconnect-health-addsmd"></a>[用于 AD DS 的 Azure AD Connect Health（预览版）](active-directory-aadconnect-health-adds.md)
-用于 AD DS 的 Azure AD Connect Health 负责监视 Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 上已安装的域控制器。 通过安装简单、低成本的运行状况代理，可以直接从云中监视本地 AD DS 环境。 用于 AD DS 的 Azure AD Connect Health 提供以下关键功能集：
+用于 AD DS 的 Azure AD Connect Health 负责监视 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 上已安装的域控制器。 通过安装简单、低成本的运行状况代理，可以直接从云中监视本地 AD DS 环境。 用于 AD DS 的 Azure AD Connect Health 提供以下关键功能集：
 
 * 检测到域控制器不正常时的监视警报以及关键警报的电子邮件通知。
 * 域控制器仪表板，提供对域控制器运行状况和运行状态的快速视图。
@@ -121,6 +121,6 @@ Azure AD Connect Health 很容易入门。 请遵循以下步骤进行配置：
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

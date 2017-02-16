@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8cdb37fceb7b598c92b7b3cd41655c87c74e639
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: d4ba7c276b0ad8539cfbad9b9a6afe193af3a0b8
 
 
 ---
@@ -31,13 +31,13 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 > 
 
 ## <a name="prerequisites"></a>先决条件
-执行本指南中的步骤之前，API 管理服务实例必须已配置 API 和产品。 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Azure API 管理入门]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+执行本指南中的步骤之前，API 管理服务实例必须已配置 API 和产品。 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 
 ## <a name="configure-caching"> </a>为缓存配置操作
 在此步骤中，你将查看示例 Echo API 的“ **GET 资源（已缓存）** ”操作的缓存设置。
 
 > [!NOTE]
-> 每个预先配置 Echo API 的 API 管理服务实例，都可用于试验和了解 API 管理。 有关详细信息，请参阅 [Azure API 管理入门][Azure API 管理入门]。
+> 每个预先配置 Echo API 的 API 管理服务实例，都可用于试验和了解 API 管理。 有关详细信息，请参阅 [Azure API 管理入门][Get started with Azure API Management]。
 > 
 > 
 
@@ -80,20 +80,22 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 此操作的策略定义包括定义缓存配置的策略，使用上一步中“ **缓存** ”选项卡进行审核。
 
-    <policies>
-        <inbound>
-            <base />
-            <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-                <vary-by-header>Accept</vary-by-header>
-                <vary-by-header>Accept-Charset</vary-by-header>
-            </cache-lookup>
-            <rewrite-uri template="/resource" />
-        </inbound>
-        <outbound>
-            <base />
-            <cache-store caching-mode="cache-on" duration="3600" />
-        </outbound>
-    </policies>
+```xml
+<policies>
+    <inbound>
+        <base />
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+            <vary-by-header>Accept</vary-by-header>
+            <vary-by-header>Accept-Charset</vary-by-header>
+        </cache-lookup>
+        <rewrite-uri template="/resource" />
+    </inbound>
+    <outbound>
+        <base />
+        <cache-store caching-mode="cache-on" duration="3600" />
+    </outbound>
+</policies>
+```
 
 > [!NOTE]
 > 在策略编辑器中对缓存策略进行的更改将反映在操作的“ **缓存** ”选项卡中，反之亦然。
@@ -138,7 +140,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 请注意，响应中 sampleheader 的值现在是 value2。 因为操作结果都由查询字符串进行键控，所以没有返回以前缓存的响应。
 
 ## <a name="next-steps"> </a>后续步骤
-* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API 管理策略参考]中的[缓存策略][缓存策略]。
+* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
@@ -153,25 +155,25 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何添加并发布产品]: api-management-howto-add-products.md
-[监视和分析]: api-management-monitoring.md
-[向产品添加 API]: api-management-howto-add-products.md#add-apis
-[发布产品]: api-management-howto-add-products.md#publish-product
-[创建 API 管理服务实例]: api-management-get-started.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: api-management-get-started.md
 
-[API 管理策略参考]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[缓存策略]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
+[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
 
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[为缓存配置操作]: #configure-caching
-[查看缓存策略]: #caching-policies
-[调用操作和测试缓存]: #test-operation
-[后续步骤]: #next-steps
+[Configure an operation for caching]: #configure-caching
+[Review the caching policies]: #caching-policies
+[Call an operation and test the caching]: #test-operation
+[Next steps]: #next-steps
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

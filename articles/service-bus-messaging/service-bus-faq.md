@@ -1,5 +1,5 @@
 ---
-title: "服务总线常见问题解答 | Microsoft 文档"
+title: "Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs"
 description: "回答了一些关于 Azure 服务总线的常见问题。"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm;juconway
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b350bac36f1d46c97da37a2807ead8c9c732d69a
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: ef8fc057ca6b15fe25bcf549ad92ceb6cf5722e4
 
 
 ---
@@ -50,7 +50,7 @@ ms.openlocfilehash: b350bac36f1d46c97da37a2807ead8c9c732d69a
 
 ## <a name="service-bus-best-practices"></a>服务总线最佳实践
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？
-* [使用服务总线中转消息传送改进性能的最佳实践][使用服务总线中转消息传送改进性能的最佳实践] - 本文说明如何在交换中转消息时优化性能。
+* [使用服务总线中转消息传送改进性能的最佳实践][Best practices for performance improvements using Service Bus brokered messaging] — 本文说明如何在交换中转消息时优化性能。
 
 ### <a name="what-should-i-know-before-creating-messaging-entities"></a>创建消息传送实体前的须知事项有哪些？
 队列和主题的下列属性固定不变。 预配实体时请考虑到这一点，因为若要修改属性，就必须创建新的替代实体。
@@ -65,16 +65,16 @@ ms.openlocfilehash: b350bac36f1d46c97da37a2807ead8c9c732d69a
 本部分回答了一些关于服务总线定价结构的常见问题。 你还可以访问 [Azure Support FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)（Azure 支持常见问题）了解一般的 Microsoft Azure 定价信息。 有关服务总线定价的完整信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ### <a name="how-do-you-charge-for-service-bus"></a>服务总线如何收取费用？
-有关服务总线定价的完整信息，请参阅[服务总线定价][定价概述]。 除标示的价格外，你还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
+有关服务总线定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。 除标示的价格外，你还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
 
 ### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>服务总线的哪些使用情况受数据传输限制？ 哪些不受其限制？
-在给定的 Azure 区域内的任何数据传输均不收费。 区域以外的任何数据传输均受输出费用限制，北美和欧洲地区费率为每 GB 0.15 美元，亚太地区费率为每 GB 0.20 美元。 任何入站数据传输都是免费的。
+在给定的 Azure 区域内的任何数据传输均不收费。 区域以外的任何数据传输均受输出费用限制，北美和欧洲地区费率为每 GB&0;.15 美元，亚太地区费率为每 GB&0;.20 美元。 任何入站数据传输都是免费的。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服务总线是否对存储收费？
 否，服务总线不对存储收费。 但是，对于每个队列/主题的最大可保留数据量，有配额限制。 请参阅下一个常见问题。
 
 ## <a name="service-bus-quotas"></a>服务总线配额
-有关服务总线限制和配额的列表，请参阅[配额概述][配额概述]。
+有关服务总线限制和配额的列表，请参阅[配额概述][Quotas overview]。
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>服务总线是否有任何使用率配额？
 默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 由于我们清楚你可能需要这些限制之外的更多限制，因此，请随时联系客户服务，以便我们了解你的需求并相应地调整这些限制。 对于服务总线，聚合的使用率配额为如下所示：
@@ -113,10 +113,10 @@ ms.openlocfilehash: b350bac36f1d46c97da37a2807ead8c9c732d69a
 
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？
-你可以使用 PowerShell 命令（可在[此处][此处]的文章中找到）将命名空间从某个 Azure 订阅移到另一个 Azure 订阅。 若要执行此操作，命名空间必须已处于活动状态。 此外，执行这些命令的用户必须是源订阅和目标订阅的管理员。
+可使用 PowerShell 命令（可在[此处][here]的文章中找到）将命名空间从某个 Azure 订阅移到另一个 Azure 订阅。 若要执行此操作，命名空间必须已处于活动状态。 此外，执行这些命令的用户必须是源订阅和目标订阅的管理员。
 
 ## <a name="service-bus-troubleshooting"></a>服务总线故障排除
-[异常概述][异常概述]
+[异常概述][Exceptions overview]
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-messaging-apis-and-their-suggested-actions"></a>Azure 服务总线消息传送 API 所生成的异常有哪些？建议采取什么操作？
 消息传送 API 可能生成的异常分为以下类别：
@@ -126,10 +126,10 @@ ms.openlocfilehash: b350bac36f1d46c97da37a2807ead8c9c732d69a
 * 临时异常
 * 其他异常
 
-[服务总线消息传送异常][异常概述]一文介绍了部分异常和建议的操作。
+[服务总线消息传送异常][Exceptions overview]一文介绍了部分异常和建议的操作。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什么是共享访问签名？哪些语言支持生成签名？
-共享访问签名是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node、PHP、Java 和 C\# 中生成自有签名的信息，请参阅[共享访问签名][共享访问签名]一文。
+共享访问签名是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node、PHP、Java 和 C\# 中生成自有签名的信息，请参阅[共享访问签名][Shared Access Signatures]一文。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题。
@@ -140,16 +140,16 @@ ms.openlocfilehash: b350bac36f1d46c97da37a2807ead8c9c732d69a
 * [Azure 服务总线体系结构概述](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 
-[使用服务总线中转消息传送改进性能的最佳实践]: service-bus-performance-improvements.md
-[使应用程序免受服务总线中断和灾难影响的最佳实践]: service-bus-outages-disasters.md
-[定价概述]: https://azure.microsoft.com/pricing/details/service-bus/
-[配额概述]: service-bus-quotas.md
-[此处]: service-bus-powershell-how-to-provision.md#migrate-a-namespace-to-another-azure-subscription
-[异常概述]: service-bus-messaging-exceptions.md
-[共享访问签名]: service-bus-sas-overview.md
+[Best practices for performance improvements using Service Bus brokered messaging]: service-bus-performance-improvements.md
+[Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
+[Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
+[Quotas overview]: service-bus-quotas.md
+[here]: service-bus-powershell-how-to-provision.md
+[Exceptions overview]: service-bus-messaging-exceptions.md
+[Shared Access Signatures]: service-bus-sas-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

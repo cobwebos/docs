@@ -3,7 +3,7 @@ title: "使用 AzCopy 将数据复制或移动到存储 | Microsoft Docs"
 description: "使用 AzCopy 实用程序将数据移动或复制到 blob、表和文件内容或从 blob、表和文件内容移动或复制数据。 从本地文件将数据复制到 Azure 存储，或者在存储帐户中或存储帐户之间复制数据。 轻松地将数据迁移到 Azure 存储。"
 services: storage
 documentationcenter: 
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: aa155738-7c69-4a83-94f8-b97af4461274
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3db01b38213b569d657284ca1354f3ec1869c7f
+ms.sourcegitcommit: a2d0f959bfcae54367512db1f63e22c866c35671
+ms.openlocfilehash: ca26ad38722560054aef1a153b9b95296d8bb021
 
 
 ---
@@ -39,7 +39,9 @@ AzCopy 不可用于 Mac/Linux 操作系统。 但是，Azure CLI 可用作将数
 ## <a name="writing-your-first-azcopy-command"></a>编写第一条 AzCopy 命令
 AzCopy 命令的基本语法是：
 
-    AzCopy /Source:<source> /Dest:<destination> [Options]
+```azcopy
+AzCopy /Source:<source> /Dest:<destination> [Options]
+```
 
 打开一个命令窗口，然后导航到计算机上的 AzCopy 安装目录，该位置存放着可执行的 `AzCopy.exe`。 如果需要，可以将 AzCopy 安装位置添加到系统路径。 默认情况下，AzCopy 安装到 `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` 或 `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy`。
 
@@ -47,17 +49,26 @@ AzCopy 命令的基本语法是：
 
 ## <a name="blob-download"></a>Blob：下载
 ### <a name="download-single-blob"></a>下载单个 blob
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
+```
 
 请注意，如果文件夹 `C:\myfolder` 不存在，AzCopy 会创建该文件夹并将 `abc.txt ` 下载到新文件夹中。
 
 ### <a name="download-single-blob-from-secondary-region"></a>从次要区域下载单个 blob
-    AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+```
 
 请注意，必须已启用读取访问异地冗余存储。
 
 ### <a name="download-all-blobs"></a>下载所有 blob
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /S
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /S
+```
 
 假定指定的容器中存在以下 blob：  
 
@@ -78,7 +89,10 @@ AzCopy 命令的基本语法是：
 如果未指定选项 `/S`，则不会下载任何 blob。
 
 ### <a name="download-blobs-with-specified-prefix"></a>下载具有指定前缀的 blob
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:a /S
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:a /S
+```
 
 假定指定的容器中存在以下 blob。 将下载所有以前缀 `a` 开头的 blob：
 
@@ -98,29 +112,45 @@ AzCopy 命令的基本语法是：
 前缀适用于虚拟目录，后者构成了 blob 名称的第一个部分。 在上面所示的示例中，虚拟目录与指定的前缀不匹配，因此不会下载它。 此外，如果未指定选项 `\S`，则 AzCopy 将不会下载任何 blob。
 
 ### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>将已导出文件的上次修改时间设置为与源 blob 相同
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT
+```
 
 还可以根据 blob 的上次修改时间将其从下载操作中排除 例如，如果想要排除其上次修改时间与目标文件相同或晚于目标文件的 blob，则添加 `/XN` 选项：
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XN
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XN
+```
 
 或者，如果想要排除其上次修改时间与目标文件相同或早于目标文件的 blob，则添加 `/XO` 选项：
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XO
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XO
+```
 
 ## <a name="blob-upload"></a>Blob：上传
 ### <a name="upload-single-file"></a>上传单个文件
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:"abc.txt"
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:"abc.txt"
+```
 
 如果指定的目标容器不存在，AzCopy 则将创建它并将文件上传到其中。
 
 ### <a name="upload-single-file-to-virtual-directory"></a>将单个文件上传到虚拟目录
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer/vd /DestKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer/vd /DestKey:key /Pattern:abc.txt
+```
 
 如果指定的虚拟目录不存在，AzCopy 将上传文件以在其名称中包括虚拟目录（*例如*，上例中的 `vd/abc.txt`）。
 
 ### <a name="upload-all-files"></a>上传全部文件
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /S
+```
 
 指定选项 `/S` 会以递归方式将指定目录的内容上传到 Blob 存储，这意味着也会上传所有的子文件夹及其文件。 例如，假定以下文件存在于文件夹 `C:\myfolder` 中：
 
@@ -132,7 +162,7 @@ AzCopy 命令的基本语法是：
 
 在上传操作完成后，容器中将包括以下文件：
 
-      abc.txt
+    abc.txt
     abc1.txt
     abc2.txt
     subfolder\a.txt
@@ -145,7 +175,10 @@ AzCopy 命令的基本语法是：
     abc2.txt
 
 ### <a name="upload-files-matching-specified-pattern"></a>上传与指定模式相匹配的文件
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:a* /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:a* /S
+```
 
 假定以下文件存在于文件夹 `C:\myfolder` 中：
 
@@ -173,30 +206,46 @@ AzCopy 命令的基本语法是：
 ### <a name="specify-the-mime-content-type-of-a-destination-blob"></a>指定目标 blob 的 MIME 内容类型
 默认情况下，AzCopy 将目标 blob 的内容类型设置为 `application/octet-stream`。 从 3.1.0 版开始，可以通过选项 `/SetContentType:[content-type]` 显示指定内容类型。 此语法将在上传操作中设置所有 blob 的内容类型。
 
-    AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType:video/mp4
+```azcopy
+AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType:video/mp4
+```
 
 如果指定不带任何值的 `/SetContentType` ，AzCopy 将根据文件扩展名设置每个 Blob 或文件的内容类型。
 
-    AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType
+```azcopy
+AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType
+```
 
 ## <a name="blob-copy"></a>Blob：复制
 ### <a name="copy-single-blob-within-storage-account"></a>在存储帐户内复制单个 blob
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
+```
 
 在存储帐户内复制某个 blob 时，将执行[服务器端复制](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作。
 
 ### <a name="copy-single-blob-across-storage-accounts"></a>跨存储帐户复制单个 blob
-    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+```
 
 在跨存储帐户复制某个 blob 时，将执行[服务器端复制](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作。
 
 ### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>将单个 blob 从次要区域复制到主要区域
-    AzCopy /Source:https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1 /Dest:https://myaccount2.blob.core.windows.net/mynewcontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1 /Dest:https://myaccount2.blob.core.windows.net/mynewcontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+```
 
 请注意，必须已启用读取访问异地冗余存储。
 
 ### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a>跨存储帐户复制单个 blob 及其快照
+
+```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt /Snapshot
+```
 
 在复制操作完成后，目标容器中将包括 blob 及其快照。 假定上面的示例中的 blob 具有两个快照，则容器将包括以下 blob 和快照：
 
@@ -209,49 +258,77 @@ AzCopy 命令的基本语法是：
 
 `/SyncCopy` 选项确保复制操作的速度一致。 AzCopy 通过下载 blob，将 blob 从指定的源复制到本地内存，然后将上传到 Blob 存储目标，以实现同步复制。
 
-    AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
+```azcopy
+AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
+```
 
 与异步复制相比，`/SyncCopy` 可能会产生额外的对外费用，建议在与源存储帐户所在的同一区域的 Azure VM 中使用该选项，以避免对外费用。
 
 ## <a name="file-download"></a>文件：下载
 ### <a name="download-single-file"></a>下载单个文件
-    AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+```
 
 如果指定的源是 Azure 文件共享，则必须指定确切的文件名（*例如* `abc.txt`）以下载单个文件，或者指定选项 `/S` 以递归方式下载该共享中的所有文件。 尝试同时指定文件模式和选项 `/S` 将导致错误。
 
 ### <a name="download-all-files"></a>下载所有文件
-    AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myfolder /SourceKey:key /S
+
+```azcopy
+AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myfolder /SourceKey:key /S
+```
 
 请注意，不会下载任何空文件夹。
 
 ## <a name="file-upload"></a>文件：上传
 ### <a name="upload-single-file"></a>上传单个文件
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:abc.txt
+```
 
 ### <a name="upload-all-files"></a>上传全部文件
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /S
+```
 
 请注意，不会上传任何空文件夹。
 
 ### <a name="upload-files-matching-specified-pattern"></a>上传与指定模式相匹配的文件
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:ab* /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:ab* /S
+```
 
 ## <a name="file-copy"></a>文件：复制
 ### <a name="copy-across-file-shares"></a>跨文件共享复制
-    AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
+
+```azcopy
+AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
+```
 
 ### <a name="copy-from-file-share-to-blob"></a>从文件共享复制到 blob
-    AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
+
+```azcopy
+AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
+```
 
 请注意，不支持从文件存储到页 Blob 的异步复制。
 
 ### <a name="copy-from-blob-to-file-share"></a>从 blob 复制到文件共享
-    AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
+
+```azcopy
+AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
+```
 
 ### <a name="synchronously-copy-files"></a>同步复制文件
 可以指定选项 `/SyncCopy`，以从文件存储到文件存储、从文件存储到 Blob 存储以及从 Blob 存储到文件存储同步复制数据，AzCopy 通过将源数据下载到本地内存并再将其上传到目标以实现此同步操作。
 
-    AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
+```azcopy
+AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
+```
 
 当从文件存储复制到 Blob 存储时，默认的 blob 类型是块 blob，用户可以指定选项 `/BlobType:page` 以更改目标 blob 类型。
 
@@ -259,7 +336,10 @@ AzCopy 命令的基本语法是：
 
 ## <a name="table-export"></a>表：导出
 ### <a name="export-table"></a>导出表
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key
+```
 
 AzCopy 将一个清单文件写入到指定的目标文件夹。 在导入过程中使用该清单文件查找必要的数据文件并执行数据验证。 默认情况下，清单文件使用以下命名约定：
 
@@ -267,10 +347,15 @@ AzCopy 将一个清单文件写入到指定的目标文件夹。 在导入过程
 
 用户还可以指定选项 `/Manifest:<manifest file name>` 以设置清单文件名。
 
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /Manifest:abc.manifest
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /Manifest:abc.manifest
+```
 
 ### <a name="split-export-into-multiple-files"></a>将导出拆分为多个文件
-    AzCopy /Source:https://myaccount.table.core.windows.net/mytable/ /Dest:C:\myfolder /SourceKey:key /S /SplitSize:100
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/mytable/ /Dest:C:\myfolder /SourceKey:key /S /SplitSize:100
+```
 
 AzCopy 在已拆分的数据文件名称中使用*卷索引*来区分多个文件。 卷索引由两个部分组成：*分区键范围索引*和*拆分文件索引*。 两个索引都是从零开始。
 
@@ -286,19 +371,27 @@ AzCopy 在已拆分的数据文件名称中使用*卷索引*来区分多个文�
 ### <a name="export-table-to-json-or-csv-data-file-format"></a>将表导出为 JSON 或 CSV 数据文件格式
 默认情况下，AzCopy 会将表导出为 JSON 数据文件。 可以指定选项 `/PayloadFormat:JSON|CSV` 以将表导出为 JSON 或 CSV。
 
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PayloadFormat:CSV
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PayloadFormat:CSV
+```
 
 指定 CSV 负载格式时，AzCopy 还将为每个数据文件生成文件扩展名为 `.schema.csv` 的架构文件。
 
 ### <a name="export-table-entities-concurrently"></a>并发导出表实体
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PKRS:"aa#bb"
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PKRS:"aa#bb"
+```
 
 当用户指定了选项 `/PKRS` 时，AzCopy 将启动并发操作来导出实体。 每个操作导出一个分区键范围。
 
 请注意，并发操作的数量还受选项 `/NC` 的控制。 当复制表实体时，AzCopy 使用核心处理器的数量作为 `/NC` 的默认值，即使未指定 `/NC` 也是如此。 当用户指定了选项 `/PKRS` 时，AzCopy 将使用以下两个值中的较小者（分区键范围和隐式或显式指定的并发操作数量）来确定要启动的并发操作的数量。 有关详细信息，请在命令行中键入 `AzCopy /?:NC`。
 
 ### <a name="export-table-to-blob"></a>将表导出到 blob
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:https://myaccount.blob.core.windows.net/mycontainer/ /SourceKey:key1 /Destkey:key2
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:https://myaccount.blob.core.windows.net/mycontainer/ /SourceKey:key1 /Destkey:key2
+```
 
 AzCopy 将使用以下命名约定在 blob 容器中生成一个 JSON 数据文件：
 
@@ -310,7 +403,10 @@ AzCopy 将使用以下命名约定在 blob 容器中生成一个 JSON 数据文�
 
 ## <a name="table-import"></a>表：导入
 ### <a name="import-table"></a>导入表
-    AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.core.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
+
+```azcopy
+AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.core.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
+```
 
 选项 `/EntityOperation` 指示如何将实体插入到表中。 可能的值包括：
 
@@ -330,7 +426,9 @@ AzCopy 将使用以下命名约定在 blob 容器中生成一个 JSON 数据文�
 
 可以使用 blob 容器中的清单文件运行以下命令将实体导入表中：
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:https://myaccount.table.core.windows.net/mytable /SourceKey:key1 /DestKey:key2 /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:"InsertOrReplace"
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:https://myaccount.table.core.windows.net/mytable /SourceKey:key1 /DestKey:key2 /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:"InsertOrReplace"
+```
 
 ## <a name="other-azcopy-features"></a>AzCopy 的其他功能
 ### <a name="only-copy-data-that-doesnt-exist-in-the-destination"></a>仅复制目标中不存在的数据
@@ -342,10 +440,13 @@ AzCopy 将使用以下命名约定在 blob 容器中生成一个 JSON 数据文�
 
     /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:http://myaccount.blob.core.windows.net/mycontainer1 /SourceKey:<sourcekey> /DestKey:<destkey> /S /XO /XN
 
-注意：当源或目标为表时，则不支持此操作。
+注意，当源或目标为表时，则不支持此操作。
 
 ### <a name="use-a-response-file-to-specify-command-line-parameters"></a>使用响应文件指定命令行参数
-    AzCopy /@:"C:\responsefiles\copyoperation.txt"
+
+```azcopy
+AzCopy /@:"C:\responsefiles\copyoperation.txt"
+```
 
 可以在响应文件中包括任何 AzCopy 命令行参数。 AzCopy 会像处理在命令行上指定的参数一样处理该文件中的参数，使用该文件的内容执行直接替换。
 
@@ -385,18 +486,27 @@ AzCopy 将使用以下命名约定在 blob 容器中生成一个 JSON 数据文�
 
 要使用这些响应文件（都位于目录 `C:\responsefiles` 中）调用 AzCopy，请使用以下命令：
 
-    AzCopy /@:"C:\responsefiles\source.txt" /@:"C:\responsefiles\dest.txt" /SourceKey:<sourcekey> /@:"C:\responsefiles\options.txt"   
+```azcopy
+AzCopy /@:"C:\responsefiles\source.txt" /@:"C:\responsefiles\dest.txt" /SourceKey:<sourcekey> /@:"C:\responsefiles\options.txt"   
+```
 
 AzCopy 会像在命令行上包括了所有单个参数一样来处理此命令：
 
-    AzCopy /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /Y
+```azcopy
+AzCopy /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /Y
+```
 
 ### <a name="specify-a-shared-access-signature-sas"></a>指定共享访问签名 (SAS)
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceSAS:SAS1 /DestSAS:SAS2 /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceSAS:SAS1 /DestSAS:SAS2 /Pattern:abc.txt
+```
 
 此外，还可以在容器 URI 上指定一个 SAS：
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1/?SourceSASToken /Dest:C:\myfolder /S
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1/?SourceSASToken /Dest:C:\myfolder /S
+```
 
 ### <a name="journal-file-folder"></a>日志文件文件夹
 每次向 AzCopy 发出命令时，它都会检查默认文件夹中是否存在日志文件，或者通过此选项指定的文件夹中是否存在日志文件。 如果这两个位置中都不存在日志文件，AzCopy 则会将操作视为新操作并生成一个新的日志文件。
@@ -405,30 +515,41 @@ AzCopy 会像在命令行上包括了所有单个参数一样来处理此命令�
 
 如果想要为日志文件使用默认位置：
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z
+```
 
 如果省略了选项 `/Z`，或者指定了选项 `/Z` 但未指定文件夹路径（如上所示），AzCopy 则会在默认位置中创建日志文件，默认位置为 `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`。 如果日志文件已存在，AzCopy 则将继续根据日志文件恢复操作。
 
 如果想要为日志文件指定自定义位置：
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z:C:\journalfolder\
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z:C:\journalfolder\
+```
 
 如果日志文件尚不存在，此示例将创建日志文件。 如果它已存在，AzCopy 则将根据该日志文件恢复操作。
 
 如果想要恢复 AzCopy 操作：
 
-    AzCopy /Z:C:\journalfolder\
+```azcopy
+AzCopy /Z:C:\journalfolder\
+```
 
 此示例将恢复可能没有完成的上一操作。
 
 ### <a name="generate-a-log-file"></a>生成日志文件
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V
+```
 
 如果指定了选项 `/V` 但未提供详细日志的文件路径，AzCopy 则将在默认位置中创建日志文件，默认位置为 `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`。
 
 或者，可以在自定义位置中创建日志文件：
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V:C:\myfolder\azcopy1.log
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V:C:\myfolder\azcopy1.log
+```
 
 请注意，如果在选项 `/V` 后指定了相对路径，例如 `/V:test/azcopy1.log`，则会在当前工作目录中名为 `test` 的子文件夹内创建详细日志。
 
@@ -438,11 +559,15 @@ AzCopy 会像在命令行上包括了所有单个参数一样来处理此命令�
 ### <a name="run-azcopy-against-azure-storage-emulator"></a>针对 Azure 存储模拟器运行 AzCopy
 可针对 Blob 的 [Azure 存储模拟器](storage-use-emulator.md)运行 AzCopy：
 
-    AzCopy /Source:https://127.0.0.1:10000/myaccount/mycontainer/ /Dest:C:\myfolder /SourceKey:key /SourceType:Blob /S
+```azcopy
+AzCopy /Source:https://127.0.0.1:10000/myaccount/mycontainer/ /Dest:C:\myfolder /SourceKey:key /SourceType:Blob /S
+```
 
 和针对表：
 
-    AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /SourceKey:key /SourceType:Table
+```azcopy
+AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /SourceKey:key /SourceType:Table
+```
 
 ## <a name="azcopy-parameters"></a>AzCopy 参数
 以下描述了 AzCopy 的参数。 还可以从命令行键入下列命令之一以获取如何使用 AzCopy 的帮助信息：
@@ -472,7 +597,7 @@ AzCopy 会像在命令行上包括了所有单个参数一样来处理此命令�
 
 当 /Source 是 blob 容器或 blob 虚拟目录时，AzCopy 使用区分大小写匹配，而在所有其他情况下则使用不区分大小写匹配。
 
-未指定文件模式时，对于文件系统位置，请使用默认文件模式 *.*， 对于 Azure 存储位置，请使用空前缀。 不支持指定多个文件模式。
+未指定文件模式时，将使用默认文件模式。 对于 Azure 存储位置，请使用空前缀。 不支持指定多个文件模式。
 
 **适用对象：**Blob、文件
 
@@ -783,6 +908,6 @@ AzCopy 旨在最大程度上利用计算机资源来加快数据传输，如果�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a91e8b3d64ec68ae43e7237c27488e5240585a4e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
 
 
 ---
@@ -59,10 +59,10 @@ ms.openlocfilehash: a91e8b3d64ec68ae43e7237c27488e5240585a4e
 **Azure 应用商店徽标准则**
 
 * Azure 设计具有简单的调色板。 保持徽标上的主要和辅助颜色数较低。
-* Azure 门户的主题颜色为白色和黑色。 因此，应避免将这些颜色用作徽标的背景色。 使用一些颜色来使徽标在 Azure 门户中突出显示。 我们建议使用简单的主要颜色。 如果使用的是透明背景，请确保徽标/文本不为白色或黑色。
+* Azure 门户的主题颜色为白色和黑色。 因此，应避免将这些颜色用作徽标的背景色。 使用一些可使你的徽标在 Azure 门户中突出显示的颜色。 我们建议使用简单的主要颜色。 如果使用的是透明背景，请确保徽标/文本不为白色或黑色。
 * 不要在徽标上使用渐变背景。
 * 避免在徽标上放置文本，即使是公司或品牌名称也不可以。
-* 徽标的外观应平整，并且应避免渐变。
+* 徽标的外观应“平整”，并且应避免渐变。
 * 徽标应未被拉伸。
 
 **特大徽标的其他准则：**
@@ -88,6 +88,6 @@ ms.openlocfilehash: a91e8b3d64ec68ae43e7237c27488e5240585a4e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 01/11/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 61a73b69fe88263910b854ac34a8cd7aa472b0c2
-ms.openlocfilehash: f244b0c9ae81cedbad35f02043fbeedc6f964dd0
+ms.sourcegitcommit: 6d53de158a44116058ab8241d5182414f8f306fb
+ms.openlocfilehash: 243e81ecd1e1648bfd6b2ca6e6268ea1a18d2036
 
 
 ---
@@ -123,7 +123,7 @@ ms.openlocfilehash: f244b0c9ae81cedbad35f02043fbeedc6f964dd0
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用来登录 Atlassian Cloud 应用程序的 URL：`https://<company name>.predictix.com/sso/request`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用来登录 Atlassian Cloud 应用程序的 URL：`https://<instancename>.atlassian.net`
     
     b.保留“数据库类型”设置，即设置为“共享”。 在“标识符”文本框中，使用以下模式键入 URL：`https://id.atlassian.com/login`
 
@@ -136,7 +136,7 @@ ms.openlocfilehash: f244b0c9ae81cedbad35f02043fbeedc6f964dd0
 
     ![配置单一登录](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_05.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
 
     b. 单击“资源组名称” 的 Azure 数据工厂。
 
@@ -335,6 +335,6 @@ ms.openlocfilehash: f244b0c9ae81cedbad35f02043fbeedc6f964dd0
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

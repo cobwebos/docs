@@ -1,0 +1,585 @@
+---
+title: "Azure API 管理转换策略 | Microsoft 文档"
+description: "了解可在 Azure API 管理中使用的转换策略。"
+services: api-management
+documentationcenter: 
+author: miaojiang
+manager: erikre
+editor: 
+ms.assetid: 7406a8ce-5f9c-4fae-9b0f-e574befb2ee9
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/09/2017
+ms.author: apimpm
+translationtype: Human Translation
+ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
+ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
+
+---
+# <a name="api-management-transformation-policies"></a>API 管理转换策略
+本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
+  
+##  <a name="a-nametransformationpoliciesa-transformation-policies"></a><a name="TransformationPolicies"></a> 转换策略  
+  
+-   [将 JSON 转换为 XML](api-management-transformation-policies.md#ConvertJSONtoXML) - 将请求或响应正文从 JSON 转换为 XML。  
+  
+-   [将 XML 转换为 JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) - 将请求或响应正文从 XML 转换为 JSON。  
+  
+-   [查找并替换正文中的字符串](api-management-transformation-policies.md#Findandreplacestringinbody) - 查找请求或响应子字符串并将其替换为不同的子字符串。  
+  
+-   [在内容中屏蔽 URL](api-management-transformation-policies.md#MaskURLSContent) - 重写（屏蔽）响应正文中的链接，使其通过网关指向等效的链接。  
+  
+-   [设置后端服务](api-management-transformation-policies.md#SetBackendService) - 更改传入请求的后端服务。  
+  
+-   [设置正文](api-management-transformation-policies.md#SetBody) - 设置传入和传出请求的消息正文。  
+  
+-   [设置 HTTP 标头](api-management-transformation-policies.md#SetHTTPheader) - 向现有的响应和/或请求标头赋值，或者添加新的响应和/或请求标头。  
+  
+-   [设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter) - 添加、删除请求查询字符串参数或替换其值。  
+  
+-   [重写 URI](api-management-transformation-policies.md#RewriteURL) - 将请求 URL 从其公用格式转换为 Web 服务所需的格式。  
+  
+-   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。  
+  
+##  <a name="a-nameconvertjsontoxmla-convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> 将 JSON 转换为 XML  
+ `json-to-xml` 策略将请求或响应正文从 JSON 转换为 XML。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<json-to-xml apply="always | content-type-json" consider-accept-header="true | false"/>  
+```  
+  
+### <a name="example"></a>示例  
+  
+```xml  
+<policies>  
+    <inbound>  
+        <base />  
+    </inbound>  
+    <outbound>  
+        <base />  
+        <json-to-xml apply="always" consider-accept-header="false" />  
+    </outbound>  
+</policies>  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|json-to-xml|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|Name|说明|必选|默认|  
+|----------|-----------------|--------------|-------------|  
+|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不适用|  
+|consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|true|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站、错误时  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-nameconvertxmltojsona-convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> 将 XML 转换为 JSON  
+ `xml-to-json` 策略将请求或响应正文从 XML 转换为 JSON。 此策略可以用来根据仅用 XML 的后端 Web 服务来提升 API。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<xml-to-json kind="javascript-friendly | direct" apply="always | content-type-xml" consider-accept-header="true | false"/>  
+```  
+  
+### <a name="example"></a>示例  
+  
+```xml  
+<policies>  
+    <inbound>  
+        <base />  
+    </inbound>  
+    <outbound>  
+        <base />  
+        <xml-to-json kind="direct" apply="always" consider-accept-header="false" />  
+    </outbound>  
+</policies>  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|xml-to-json|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|Name|说明|必选|默认|  
+|----------|-----------------|--------------|-------------|  
+|kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不适用|  
+|apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不适用|  
+|consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 XML，则应用转换。<br />-   false - 始终应用转换。|否|true|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站、错误时  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-namefindandreplacestringinbodya-find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> 在正文中查找并替换字符串  
+ `find-and-replace` 策略查找请求或响应子字符串并将其替换为不同的子字符串。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<find-and-replace from="what to replace" to="replacement" />  
+```  
+  
+### <a name="example"></a>示例  
+  
+```xml  
+<find-and-replace from="notebook" to="laptop" />  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|find-and-replace|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|Name|说明|必选|默认|  
+|----------|-----------------|--------------|-------------|  
+|from|要搜索的字符串。|是|不适用|  
+|to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不适用|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站、后端、错误时  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-namemaskurlscontenta-mask-urls-in-content"></a><a name="MaskURLSContent"></a> 在内容中屏蔽 URL  
+ `redirect-content-urls` 策略重写（屏蔽）响应正文中的链接，使其通过网关指向等效的链接。 在出站节中用于重写响应正文链接，使之指向网关。 在入站节中使用，以便获得相反的效果。  
+  
+> [!NOTE]
+>  此策略不更改任何标头值，例如如 `Location` 标头值。 若要更改标头值，请使用 [set-header](api-management-transformation-policies.md#SetHTTPheader) 策略。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<redirect-content-urls />  
+```  
+  
+### <a name="example"></a>示例  
+  
+```xml  
+<redirect-content-urls />  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|redirect-content-urls|根元素。|是|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-namesetbackendservicea-set-backend-service"></a><a name="SetBackendService"></a> 设置后端服务  
+ 使用 `set-backend-service` 策略将传入请求重定向到一个后端，此后端不同于在 API 设置中为该操作指定的后端。 此策略将传入请求的后端服务基 URL 更改为在策略中指定的基 URL。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<set-backend-service base-url="base URL of the backend service" />  
+```  
+  
+### <a name="example"></a>示例  
+  
+```xml  
+<policies>  
+    <inbound>  
+        <choose>  
+            <when condition="@(context.Request.Url.Query.GetValueOrDefault("version") == "2013-05")">  
+                <set-backend-service base-url="http://contoso.com/api/8.2/" />  
+            </when>  
+            <when condition="@(context.Request.Url.Query.GetValueOrDefault("version") == "2014-03")">  
+                <set-backend-service base-url="http://contoso.com/api/9.1/" />  
+            </when>  
+        </choose>  
+        <base />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+```  
+  
+ 在此示例中，所设置的后端服务策略根据查询字符串中传递的版本值将请求路由到一个后端服务，该服务不同于在 API 中指定的服务。  
+  
+ 后端服务基 URL 最初派生自 API 设置。 因此，请求 URL `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` 变为 `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef`，其中 `http://contoso.com/api/10.4/` 是在 API 设置中指定的后端服务 URL。  
+  
+ 应用 [<choose\>](api-management-advanced-policies.md#choose) 策略语句时，后端服务基 URL 可能会再次更改为 `http://contoso.com/api/8.2` 或 `http://contoso.com/api/9.1`，具体取决于版本请求查询参数的值。 例如，如果值为 `"2013-15"`，最终请求 URL 将变为 `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`。  
+  
+ 如果需要进一步转换请求，可使用其他[转换策略](api-management-transformation-policies.md#TransformationPolicies)。 例如，在将请求路由到特定于版本的后端以后，若要删除版本查询参数，可以使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略删除现在的冗余版本属性。  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|set-backend-service|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|Name|说明|必选|默认|  
+|----------|-----------------|--------------|-------------|  
+|base-url|新的后端服务基 URL。|是|不适用|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、后端  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-namesetbodya-set-body"></a><a name="SetBody"></a> 设置正文  
+ 使用 `set-body` 策略设置传入和传出请求的消息正文。 可以使用 `context.Request.Body` 属性或 `context.Response.Body` 访问消息正文，具体取决于策略是在入站节中还是在出站节中。  
+  
+> [!IMPORTANT]
+>  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 若要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。  
+>   
+>  在使用 `set-body` 策略时，请注意以下事项。  
+>   
+>  -   若要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，因为你是在显式提供全新的正文内容。  
+> -   将响应的内容保留在入站管道中并不合理，因为尚无响应。  
+> -   将请求的内容保留在出站管道中并不合理，因为请求此时已发送到后端。  
+> -   如果在没有消息正文的情况下使用此策略（例如在入站 GET 中使用），则会引发异常。  
+  
+ 有关详细信息，请参阅[上下文变量](api-management-policy-expressions.md#ContextVariables)表中的 `context.Request.Body`、`context.Response.Body`、`IMessage` 部分。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<set-body>new body value as text</set-body>  
+```  
+  
+### <a name="examples"></a>示例  
+  
+#### <a name="literal-text-example"></a>文字文本示例  
+  
+```xml  
+<set-body>Hello world!</set-body>  
+```  
+  
+#### <a name="example-accessing-the-body-as-a-string"></a>示例：访问字符串形式的正文  
+  
+```xml  
+<set-body>  
+@{   
+    string inBody = context.Request.Body.As<string>(preserveContent: true);   
+    if (inBody[0] =='c') {   
+        inBody[0] = 'm';   
+    }   
+    return inBody;   
+}  
+</set-body>  
+```  
+  
+#### <a name="example-accessing-the-body-as-a-jobject"></a>示例：访问 JObject 形式的正文  
+  
+```xml  
+<set-body>   
+@{   
+    JObject inBody = context.Request.Body.As<JObject>();   
+    if (inBody.attribute == <tag>) {   
+        inBody[0] = 'm';   
+    }   
+    return inBody.ToString();   
+}   
+</set-body>  
+  
+```  
+  
+#### <a name="filter-response-based-on-product"></a>根据产品筛选响应  
+ 以下示例演示了如何进行内容筛选，方法是：在使用 `Starter` 产品时删除从后端服务接收的响应中的数据元素。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 34:30。 若要大致了解用于此演示的 [Dark Sky Forecast API](https://developer.forecast.io/)，请从 31:50 开始观看。  
+  
+```xml  
+<!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->  
+<choose>  
+  <when condition="@(context.Response.StatusCode == 200 && context.Product.Name.Equals("Starter"))">  
+    <set-body>@{  
+        var response = context.Response.Body.As<JObject>();  
+        foreach (var key in new [] {"minutely", "hourly", "daily", "flags"}) {  
+          response.Property (key).Remove ();  
+        }  
+        return response.ToString();  
+      }  
+    </set-body>  
+  </when>  
+</choose>  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站、后端  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-namesethttpheadera-set-http-header"></a><a name="SetHTTPheader"></a> 设置 HTTP 标头  
+ `set-header` 策略向现有的响应和/或请求标头赋值，或者添加新的响应和/或请求标头。  
+  
+ 在 HTTP 消息中插入 HTTP 标头列表。 将此策略放到入站管道中后，它将为传递给目标服务的请求设置 HTTP 标头。 将此策略放到出站管道中后，它将为发送到网关客户端的响应设置 HTTP 标头。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<set-header name="header name" exists-action="override | skip | append | delete">  
+    <value>value</value> <!--for multiple headers with the same name add additional value elements-->  
+</set-header>  
+```  
+  
+### <a name="examples"></a>示例  
+  
+#### <a name="example"></a>示例  
+  
+```xml  
+<set-header name="some header name" exists-action="override">  
+    <value>20</value>   
+</set-header>  
+```  
+  
+#### <a name="forward-context-information-to-the-backend-service"></a>将上下文信息转发到后端服务  
+ 此示例演示了如何在 API 级别应用策略，以便将上下文信息提供给后端服务。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 10:30。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看生效的策略。  
+  
+```xml  
+<!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->  
+<set-header name="x-request-context-data" exists-action="override">  
+  <value>@(context.User.Id)</value>  
+  <value>@(context.Deployment.Region)</value>  
+</set-header>  
+```  
+  
+ 有关详细信息，请参阅[策略表达式](api-management-policy-expressions.md)和[上下文变量](api-management-policy-expressions.md#ContextVariables)。  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|set-header|根元素。|是|  
+|value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|  
+  
+### <a name="properties"></a>属性  
+  
+|Name|说明|必选|默认|  
+|----------|-----------------|--------------|-------------|  
+|exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|  
+|name|指定要设置的标头的名称。|是|不适用|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站、后端、错误时  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-namesetquerystringparametera-set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> 设置查询字符串参数  
+ `set-query-parameter` 策略添加、删除请求查询字符串参数或替换其值。 可用于传递后端服务所需的查询参数，这些参数是可选的或者永远不能出现在请求中。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<set-query-parameter name="param name" exists-action="override | skip | append | delete">  
+    <value>value</value> <!--for multiple parameters with the same name add additional value elements-->  
+</set-query-parameter>  
+```  
+  
+### <a name="examples"></a>示例  
+  
+#### <a name="example"></a>示例  
+  
+```xml  
+  
+<set-query-parameter>  
+  <parameter name="api-key" exists-action="skip">  
+    <value>12345678901</value>  
+  </parameter>  
+  <!-- for multiple parameters with the same name add additional value elements -->  
+</set-query-parameter>  
+  
+```  
+  
+#### <a name="forward-context-information-to-the-backend-service"></a>将上下文信息转发到后端服务  
+ 此示例演示了如何在 API 级别应用策略，以便将上下文信息提供给后端服务。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 10:30。 在 12:10 处有一个演示，演示了如何在开发人员门户中调用操作，以便在其中查看生效的策略。  
+  
+```xml  
+<!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->  
+<set-query-parameter name="x-product-name" exists-action="override">  
+  <value>@(context.Product.Name)</value>  
+</set-query-parameter>  
+  
+```  
+  
+ 有关详细信息，请参阅[策略表达式](api-management-policy-expressions.md)和[上下文变量](api-management-policy-expressions.md#ContextVariables)。  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|set-query-parameter|根元素。|是|  
+|value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|  
+  
+### <a name="properties"></a>属性  
+  
+|Name|说明|必选|默认|  
+|----------|-----------------|--------------|-------------|  
+|exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|  
+|name|指定要设置的查询参数的名称。|是|不适用|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、后端  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+##  <a name="a-namerewriteurla-rewrite-url"></a><a name="RewriteURL"></a> 重写 URL  
+ `rewrite-uri` 策略将请求 URL 从其公用格式转换为 Web 服务所需的格式，如以下示例所示。  
+  
+-   公共 URL - `http://api.example.com/storenumber/ordernumber`  
+  
+-   请求 URL - `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`  
+  
+ 如果要将用户和/或浏览器友好的 URL 转换成 Web 服务所需的 URL 格式，则可使用此策略。 应用此策略的前提是公开备用的 URL 格式，例如简洁 URL、RESTful URL、用户友好的 URL 或 SEO 友好的 URL。这些 URL 是纯结构化 URL，不包含查询字符串，只包含资源的路径（在方案和颁发机构的后面）。 通常会出于美观、可用性或搜索引擎优化 (SEO) 目的使用这种 URL。  
+  
+> [!NOTE]
+>  只能使用此策略添加查询字符串参数。 不能在重写 URL 中添加额外的模板路径参数。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<rewrite-uri template="uri template" />  
+```  
+  
+### <a name="example"></a>示例  
+  
+```xml  
+<policies>  
+    <inbound>  
+        <base />  
+        <rewrite-uri template="/v2/US/hardware/{storenumber}&{ordernumber}?City=city&State=state" />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|rewrite-uri|根元素。|是|  
+  
+### <a name="attributes"></a>属性  
+  
+|属性|说明|必选|默认|  
+|---------------|-----------------|--------------|-------------|  
+|template|包含任何查询字符串参数的实际 Web 服务 URL。|是|不适用|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略段：**入站  
+  
+-   **策略范围：**产品、API、操作  
+  
+##  <a name="a-namexsltransforma-transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> 使用 XSLT 转换 XML  
+ `Transform XML using an XSLT` 策略在请求或响应正文中将 XSL 转换应用到 XML。  
+  
+### <a name="policy-statement"></a>策略语句  
+  
+```xml  
+<xsl-transform>  
+    <parameter name="User-Agent">@(context.Request.Headers.GetValueOrDefault("User-Agent","non-specified"))</parameter>  
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
+        <xsl:output method="xml" indent="yes" />  
+        <xsl:param name="User-Agent" />  
+        <xsl:template match="* | @* | node()">  
+            <xsl:copy>  
+                <xsl:if test="self::* and not(parent::*)">  
+                    <xsl:attribute name="User-Agent">  
+                        <xsl:value-of select="$User-Agent" />  
+                    </xsl:attribute>  
+                </xsl:if>  
+                <xsl:apply-templates select="* | @* | node()" />  
+            </xsl:copy>  
+        </xsl:template>  
+    </xsl:stylesheet>  
+  </xsl-transform>  
+```  
+  
+### <a name="example"></a>示例  
+  
+```xml  
+<policies>  
+  <inbound>  
+      <base />  
+  </inbound>  
+  <outbound>  
+      <base />  
+      <xsl-transform>  
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
+            <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />  
+            <!-- Copy all nodes directly-->  
+            <xsl:template match="node()| @*|*">  
+                <xsl:copy>  
+                    <xsl:apply-templates select="@* | node()|*" />  
+                </xsl:copy>  
+            </xsl:template>  
+        </xsl:stylesheet>  
+    </xsl-transform>  
+  </outbound>  
+</policies>  
+```  
+  
+### <a name="elements"></a>元素  
+  
+|Name|说明|必选|  
+|----------|-----------------|--------------|  
+|xsl-transform|根元素。|是|  
+|参数|用于定义在转换中使用的变量|否|  
+|xsl:stylesheet|根样式表元素。 在其中定义的所有元素和属性都遵循标准的 [XSLT 规范](http://www.w3.org/TR/xslt)|是|  
+  
+### <a name="usage"></a>使用情况  
+ 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+  
+-   **策略节：**入站、出站  
+  
+-   **策略范围：**全局、产品、API、操作  
+  
+## <a name="next-steps"></a>后续步骤
+有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
+
+
+<!--HONumber=Jan17_HO2-->
+
+

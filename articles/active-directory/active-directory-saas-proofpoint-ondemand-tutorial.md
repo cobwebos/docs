@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Proofpoint on Demand 集成 | Microsoft 文档"
+title: "教程：Azure Active Directory 与 Proofpoint on Demand 集成 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Proofpoint on Demand 之间配置单一登录。"
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5c6129050dacf098fa60439175b91b3a2d219182
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
 
 
 ---
@@ -80,7 +80,7 @@ ms.openlocfilehash: 5c6129050dacf098fa60439175b91b3a2d219182
 
 若要配置和测试 Proofpoint on Demand 的 Azure AD 单一登录，请完成以下过程：
 
-1. [](#configuring-azure-ad-single-sign-on)配置 Azure AD 单一登录 - 使用户能够使用此功能。
+1. [配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)，以使用户能够使用此功能。
 2. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)，目的是通过 Britta Simon 测试 Azure AD 单一登录。
 3. [创建 Proofpoint on Demand 测试用户](#creating-a-proofpoint-ondemand-test-user)，目的是在 Proofpoint on Demand 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
 4. [分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
@@ -105,14 +105,14 @@ ms.openlocfilehash: 5c6129050dacf098fa60439175b91b3a2d219182
    
     c. 在“回复 URL”框中，使用以下模式键入 URL：**https://\<hostname/>.pphosted.com:portnumber/v1/samlauth/samlconsumer**
    
-    d.单击“下一步”。 单击“资源组名称” 的 Azure 数据工厂。
+    d.单击“下一步”。 单击“下一步”。
 4. 在“配置 Proofpoint on Demand 的单一登录”页上，执行以下步骤：
    
     ![带有“下载证书”按钮的“配置 Proofpoint on Demand 的单一登录”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_05.png)
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 5. 若要为应用程序配置 SSO，请联系 Proofpoint on Demand 支持团队，向他们提供以下内容：
    
     • 下载的证书
@@ -148,7 +148,7 @@ ms.openlocfilehash: 5c6129050dacf098fa60439175b91b3a2d219182
    
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”页上，执行以下步骤：![带填充框的“用户配置文件”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)
    
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”框中，键入“Britta”。  
@@ -222,6 +222,6 @@ ms.openlocfilehash: 5c6129050dacf098fa60439175b91b3a2d219182
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

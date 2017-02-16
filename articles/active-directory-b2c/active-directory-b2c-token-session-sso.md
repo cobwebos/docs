@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 9cc0081588f54f77a69ded336d063651b12c8dd8
-ms.openlocfilehash: a185e802a2713c6b6d4101477f0fc61bca0bf29c
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: 766ba894ba2643dec06757a133f8e716aa856161
 
 
 ---
@@ -60,6 +60,11 @@ Azure AD B2C 支持 [OAuth 2.0 授权协议](active-directory-b2c-reference-prot
 * 只要用户在移动应用上持续保持活动状态，允许该用户无限期地保持登录此应用。 可以通过将登录策略中的**刷新令牌的滑动窗口生存期（天）**开关设为**无限**来实现此场景。
 * 通过设置合适的访问令牌生存期来满足行业的安全性和合规性要求。
 
+    > [!NOTE]
+    > 这些设置不适用于密码重置策略。
+    > 
+    > 
+
 ## <a name="token-compatibility-settings"></a>令牌兼容性设置
 我们对 Azure AD B2C 发出的安全令牌中的重要声明做出了格式更改。 这样做是为了改善标准协议支持以及与第三方标识库的互操作性。 但是，为了避免破坏现有应用，我们创建了以下属性，使客户能够根据需要选择格式：
 
@@ -87,6 +92,11 @@ Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-ref
 * 通过设置合适的 Web 应用会话生存期来满足行业的安全性和合规性要求。
 * 在用户与 Web 应用的安全性较高的部分进行交互时，在设定的时间段之后强制重新进行身份验证。 
 
+    > [!NOTE]
+    > 这些设置不适用于密码重置策略。
+    > 
+    > 
+
 ## <a name="single-sign-on-sso-configuration"></a>单一登录 (SSO) 配置
 如果在 B2C 租户中有多个应用和策略，可以使用**单一登录配置**属性管理它们之间的用户交互。 可以将该属性设为以下设置之一：
 
@@ -95,9 +105,14 @@ Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-ref
 * **策略**：允许为某个策略维持独占式用户会话（独立于使用它的应用程序）。 例如，如果用户已登录并完成多重身份验证 (MFA) 步骤，那么只要绑定到策略的会话未过期，他或她就可以访问多个应用程序的具有较高安全性的部分。
 * **已禁用**：强制用户在每次执行策略时都要进行完整的登录验证过程。 例如，即使单个用户在整个过程中保持已登录状态，也允许多个用户注册应用程序（在共享桌面方案中）。
 
+    > [!NOTE]
+    > 这些设置不适用于密码重置策略。
+    > 
+    > 
 
 
 
-<!--HONumber=Dec16_HO5-->
+
+<!--HONumber=Jan17_HO4-->
 
 

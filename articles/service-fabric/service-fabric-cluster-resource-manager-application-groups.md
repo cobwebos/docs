@@ -12,38 +12,40 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/19/2016
+ms.date: 01/05/2017
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 775232c406cd44fa1c7cd9094484f11ab42d3ae8
+ms.sourcegitcommit: eef9cbca0479801cbac53ae1ae5713d4dac6a4bf
+ms.openlocfilehash: 57525cd41d518b12f3f465d5dea7247659e3c8b6
 
 
 ---
 # <a name="introduction-to-application-groups"></a>应用程序组简介
-Service Fabric 的群集资源管理器通常通过将负载（通过指标表示）平均分散到整个群集来管理群集资源。 Service Fabric 还管理群集中节点的容量，以及通过容量的概念管理整个群集。 这非常适合用于许多不同类型的工作负荷，但大量使用不同 Service Fabric 应用程序实例的模式还有其他要求。 其他要求通常包括：
+Service Fabric 的群集资源管理器通常通过将负载（通过[指标](service-fabric-cluster-resource-manager-metrics.md)表示）平均分散到整个群集来管理群集资源。 Service Fabric 还管理群集中节点的容量，以及通过[容量](service-fabric-cluster-resource-manager-cluster-description.md)的概念管理整个群集。 指标和容量非常适合用于许多工作负荷，但大量使用不同 Service Fabric 应用程序实例的模式还有其他要求。 其他要求通常包括：
 
-* 能够在某个数量的节点上为应用程序实例的服务保留容量
-* 能够限制可运行应用程序中给定服务集的节点总数
+* 能够在群集中为应用程序实例的服务保留容量
+* 能够限制可运行应用程序中的服务的节点总数
 * 定义应用程序实例本身的容量，以限制其中服务的资源总消耗量
 
-为了满足这些要求，我们开发了对应用程序组的支持。
+为了满足这些要求，Service Fabric 群集资源管理器支持应用程序组。
 
 ## <a name="managing-application-capacity"></a>管理应用程序容量
-应用程序容量可用于限制应用程序跨越的节点数，以及单个节点上应用程序实例的总指标负载。 它还可用于在群集中为应用程序保留资源。
+应用程序容量可用于限制应用程序跨越的节点数。 它还能限制单个节点上应用程序实例的指标负载和总负载。 它还可用于在群集中为应用程序保留资源。
 
-可以在创建新应用程序时为应用程序设置应用程序容量；也可以针对已创建但未指定应用程序容量的现有应用程序更新容量。
+可以在创建新应用程序时为应用程序设置应用程序容量，还可以更新现有应用程序的应用程序容量。
 
 ### <a name="limiting-the-maximum-number-of-nodes"></a>限制最大节点数
-应用程序容量的最简单用例出现在需要将应用程序实例化限制为特定的最大节点数时。 如果未指定应用程序容量，Service Fabric 群集资源管理器将根据正常规则（平衡或重组）实例化副本，这通常表示其服务跨越群集中的可用节点分散，或者是否在任意但较少数目的节点上打开重组。
+应用程序容量的最简单用例出现在需要将应用程序实例化限制为特定的最大节点数时。 如果未指定应用程序容量，Service Fabric 群集资源管理器将根据正常规则（均衡或重组）创建和放置副本。
 
-下图显示了未定义最大节点数的应用程序实例的可能位置，然后显示已设置最大节点数的同一个应用程序。 请注意，不保证哪些服务的哪些副本或实例会放在一起。
+下图显示了已定义和未定义最大节点数的应用程序实例。 无法保证哪些服务的哪些副本或实例会放在一起，或者要使用哪些特定的节点。
 
+<center>
 ![定义最大节点数的应用程序实例][Image1]
+</center>
 
-在左侧的示例中，应用程序中未设置应用程序容量，并且有三个服务。 CRM 做了逻辑决策，将所有副本分散到六个可用节点以便在群集中实现最佳平衡。 在右侧的示例中，可以看到限制在三个节点上的同一个应用程序，其中 Service Fabric CRM 已在应用程序的服务副本中实现最佳平衡。
+在左侧的示例中，应用程序中未设置应用程序容量，并且有三个服务。 群集资源管理器已将所有副本分散到六个可用节点，以便在群集中实现最佳均衡。 在右侧的示例中，可以看到同一个应用程序已限制到三个节点。
 
-控制此行为的参数称为 MaximumNodes。 可以在创建应用程序期间设置此参数，或针对已在运行的应用程序实例更新此参数，对于后一种情况，Service Fabric CRM 会将应用程序的服务的副本限制为定义的最大节点数。
+控制此行为的参数称为 MaximumNodes。 可在创建应用程序期间设置此参数，或针对已在运行的应用程序实例更新此参数。
 
 Powershell
 
@@ -74,34 +76,45 @@ adUpdate.Metrics.Add(appMetric);
 ```
 
 ## <a name="application-metrics-load-and-capacity"></a>应用程序指标、负载和容量
-应用程序组还允许你定义与特定应用程序实例关联的指标，以及这些指标相关的应用程序的容量。 因此，举例来说，你可以根据需要定义任意数量的指标，只要不超过可在其中创建指标的服务数即可
+应用程序组还允许用户定义与给定应用程序实例关联的指标，以及应用程序在这些指标上拥有的容量。 因此，可以跟踪、保留和限制该应用程序实例中服务的资源消耗量。
 
-对于每个指标，可将 2 个值设置为描述该应用程序实例的容量：
+对于每个应用程序指标，可以设置两个值：
 
-* 应用程序容量总计 – 代表特定指标的应用程序容量总计。 Service Fabric CRM 尝试将此应用程序的服务的指标负载总计限制为指定值；此外，如果应用程序的服务已消耗超过此限制的负载，Service Fabric 群集资源管理器将不允许创建任何新的服务或分区，这会造成总负载超出此限制。
-* 最大节点容量 – 指定单个节点上应用程序的服务副本的最大总负载。 如果节点上的总负载超过此容量，Service Fabric CRM 会尝试将副本移到其他节点，以便遵守容量限制。
+* **应用程序容量总计** – 此设置表示应用程序在特定指标上拥有的总容量。 群集资源管理器不允许在此应用程序实例中创建会导致总负载超过此值的任何新服务。 例如，假设应用程序实例的容量为 10，现有的负载为 5。 在这种情况下，不允许创建总默认负载为 10 的服务。
+* **最大节点容量** – 此设置指定单个节点上应用程序中的服务副本的最大总负载。 如果节点上的总负载超过此容量，群集资源管理器会尝试将副本移到其他节点，以遵守容量限制。
 
 ## <a name="reserving-capacity"></a>保留容量
-应用程序组的另一个常见用途是确保针对指定的应用程序实例保留群集中的资源，即使该应用程序实例在该群集中没有服务，或者它们尚未消耗资源。 让我们看一下具体的工作原理。  
+应用程序组的另一个常见用途是确保针对给定的应用程序实例保留群集中的资源。 即使该应用程序实例在该群集中没有任何服务，或者它们尚未消耗任何资源，也会发生这种容量保留。 让我们了解具体的工作原理。
 
 ### <a name="specifying-a-minimum-number-of-nodes-and-resource-reservation"></a>指定节点和资源保留的最小数量
 为应用程序实例保留资源需要指定两个附加参数：*MinimumNodes* 和 *NodeReservationCapacity*
 
-* MinimumNodes - 就像指定应用程序内的服务可以在上面运行的目标最大节点数一样，你可以指定应用程序应该运行的最小节点数。 此设置可有效地定义资源应该保留的最小节点数，在创建应用程序实例时保证群集中的容量。
-* NodeReservationCapacity - 可针对应用程序中的每个指标定义 NodeReservationCapacity。 此参数定义针对任一节点（放置服务的任何副本或实例）上的应用程序保留的指标负载。
+* **MinimumNodes** - 我们可以指定应用程序中的服务可在其上运行的最大节点数，同样，我们也可以指定最小节点数。 此设置定义应保留资源的节点数，保证在创建应用程序实例时群集中有足够的容量。
+* **NodeReservationCapacity** - 可针对应用程序中的每个指标定义 NodeReservationCapacity。 此设置定义针对任一节点（放置服务的任何副本或实例）上的应用程序保留的指标负载。
 
-让我们看看容量保留的示例：
+下面是容量保留的一个示例：
 
+<center>
 ![定义保留容量的应用程序实例][Image2]
+</center>
 
-在左侧的示例中，应用程序中未定义任何应用程序容量。 Service Fabric 群集资源管理器将平衡应用程序的子服务副本和实例，以及来自其他服务（在应用程序外部）的副本和实例，以确保群集中的平衡。
+在左侧的示例中，应用程序中未定义任何应用程序容量。 群集资源管理器将会根据普通规则均衡所有负载。
 
-在右侧的示例中，让我们假设已创建的应用程序的 MinimumNodes 设置为 2、MaximumNodes 设置为 3，且应用程序指标定义为保留 20、最大节点容量 50 和应用程序容量总计 100，Service Fabric 将为蓝色应用程序在两个节点上保留容量，并且不允许群集中的其他副本使用该容量。 我们认为此保留应用程序容量是根据剩余群集容量消耗和计算的。
+在右侧的示例中，假设应用程序是使用以下设置创建的：
 
-当创建的应用程序具有保留容量时，群集资源管理器在群集中保留等于 MinimumNodes * NodeReservationCapacity 的容量，但是不在特定节点上保留容量，直到创建和放置应用程序的服务的副本。 这可以获得弹性，因为只有在新副本创建时针对它们选择节点。 当至少一个副本放置在该特定节点上时保留容量。
+* MinimumNodes 设置为&2;
+* MaximumNodes 设置为&3;
+* 应用程序指标定义方式：
+  * NodeReservationCapacity 为 20
+  * MaximumNodeCapacity 为 50
+  * TotalApplicationCapacity 为 100
+
+Service Fabric 将在两个节点上为蓝色应用程序保留容量，不允许群集中的其他应用程序实例消耗该容量。 我们认为这些保留的应用程序容量是根据该节点上和群集中的剩余群集容量消耗和计算的。
+
+当创建的应用程序具有保留容量时，群集资源管理器保留的容量等于 MinimumNodes * NodeReservationCapacity（针对每个指标）。 但是，仅当在特定的节点上放置了至少一个副本时，才在该节点上保留容量。 使用后面这种保留方式可以获得弹性并改善资源利用率，因为只会根据需要在节点上保留资源。
 
 ## <a name="obtaining-the-application-load-information"></a>获取应用程序负载信息
-对于具有定义的应用程序容量的每个应用程序，可以获取其服务的副本报告的聚合负载的相关信息。 Service Fabric 针对此目的提供 PowerShell 和 Managed API 查询。
+对于具有定义的应用程序容量的每个应用程序，可以获取其服务的副本报告的聚合负载的相关信息。
 
 例如，可以使用以下 PowerShell cmdlet 检索负载：
 
@@ -110,7 +123,7 @@ Get-ServiceFabricApplicationLoad –ApplicationName fabric:/MyApplication1
 
 ```
 
-此查询的输出包含已针对应用程序指定的应用程序容量的基本信息，例如最小节点数和最大节点数。 另外还提供有关应用程序当前使用的节点数的信息。 因此，将会针对每个负载指标提供以下相关信息：
+ApplicationLoad 查询返回针对应用程序指定的应用程序容量的基本信息。 这些信息包括“最小节点数”和“最大节点数”信息，以及应用程序当前占用的节点数。 此外，还包括有关每个应用程序负载指标的信息，例如：
 
 * 指标名称：指标的名称。
 * 保留容量：在群集中为此应用程序保留的群集容量。
@@ -125,56 +138,35 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 
 ```
 
-此命令从应用程序删除所有应用程序容量参数，Service Fabric 群集资源管理器开始将此应用程序视为群集中未定义这些参数的任何其他应用程序。 该命令将立即产生效果，群集资源管理器将删除此应用程序的所有应用程序容量参数；再次指定它们需要使用适当的参数调用更新应用程序 API。
+此命令从应用程序中删除所有应用程序容量参数。 该命令会立即产生效果。 此命令完成后，群集资源管理器将重新使用默认行为来管理应用程序。 可以通过 Update-ServiceFabricApplication 再次指定应用程序容量参数。
 
-## <a name="restrictions-on-application-capacity"></a>应用程序容量的限制
-必须遵守应用程序容量参数的几项限制。 发生验证错误时，创建或更新应用程序的操作将被拒绝并出错。
-所有整数参数必须为非负数。
-此外，单个参数的限制如下：
+### <a name="restrictions-on-application-capacity"></a>应用程序容量的限制
+必须遵守应用程序容量参数的几项限制。 如果发生验证错误，创建或更新应用程序的操作将被拒绝并出错，且不会发生任何更改。
 
+* 所有整数参数必须为非负数。
 * MinimumNodes 不得大于 MaximumNodes。
 * 如果已定义负载指标的容量，则这些容量必须遵守以下规则：
-  * 节点保留容量不得大于最大节点容量。 例如，尝试在每个节点上保留 3 个单位时，不能将节点上的指标“CPU”的容量限制为 2 个单位。
-  * 如果已指定 MaximumNodes，则 MaximumNodes 和最大节点容量的积不得大于应用程序容量总计。 例如，如果将负载指标“CPU”的最大节点容量设置为 8，并将最大节点数设置为 10，则此负载指标的应用程序容量总计必须大于 80。
+  * 节点保留容量不得大于最大节点容量。 例如，尝试在每个节点上保留三个单位时，不能将节点上的指标“CPU”的容量限制为两个单位。
+  * 如果已指定 MaximumNodes，则 MaximumNodes 和最大节点容量的积不得大于应用程序容量总计。 例如，如果将负载指标“CPU”的最大节点容量设置为&8;， 将最大节点数设置为&10;。 在这种情况下，此负载指标的应用程序容量总计必须大于 80。
 
-在（客户端）创建应用程序和在（服务器端）更新应用程序期间都会强制实施限制。 在创建期间，这是明显违反要求的一个例子，因为 MaximumNodes 小于 MinimumNodes，在将请求发送到 Service Fabric 群集之前，客户端中的命令就会失败：
-
-``` posh
-New-ServiceFabricApplication –Name fabric:/MyApplication1 –MinimumNodes 6 –MaximumNodes 2
-```
-
-无效更新的示例如下。 如果我们采用现有应用程序并将最大节点数更新为某个值，则会传递更新：
-
-``` posh
-Update-ServiceFabricApplication –Name fabric:/MyApplication1 6 –MaximumNodes 2
-```
-
-接下来，我们可以尝试更新最小节点数：
-
-``` posh
-Update-ServiceFabricApplication –Name fabric:/MyApplication1 6 –MinimumNodes 6
-```
-
-客户端不提供有关应用程序的足够上下文，因此允许将更新传递到 Service Fabric 群集。 但是，在群集中，Service Fabric 将验证新参数与现有参数，由于最小节点数的值大于最大节点数的值，因此更新操作将会失败。 在此情况下，应用程序容量参数将保持不变。
-
-这些限制按顺序实施，使群集资源管理器能够为应用程序的服务副本提供最佳位置。
+在（客户端）创建应用程序和在（服务器端）更新应用程序期间都会强制实施限制。
 
 ## <a name="how-not-to-use-application-capacity"></a>在哪些情况下不应使用应用程序容量
-* 不要使用应用程序容量将应用程序限制为特定的节点子集：尽管 Service Fabric 确保对于已指定应用程序容量的每个应用程序遵守最大节点数，用户无法确定它实例化所在的节点。 这可以使用服务的放置约束来实现。
-* 不要使用应用程序容量来确保相同应用程序的两个服务始终放在一起。 这可通过使用服务之间的相关性关系来实现，相关性可以限制为实际应该放在一起的服务。
+* 不要尝试使用应用程序容量功能将应用程序限制为_特定_的节点子集。 换而言之，可以指定应用程序可在最多五个节点上运行，但不应指定要在群集中具体的哪五个节点上运行。 将应用程序限制到特定的节点可以使用服务的放置约束来实现。
+* 不要尝试使用应用程序容量来确保将同一应用程序中的两个服务放到一起。 若要确保服务在同一节点上运行，可以根据具体的要求，使用相关性或放置约束。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关可用于配置服务的其他选项的详细信息，请查看[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)中提供的其他群集资源管理器配置的相关主题
 * 若要了解群集资源管理器如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 * 从头开始并[获取 Service Fabric 群集资源管理器简介](service-fabric-cluster-resource-manager-introduction.md)
 * 有关在一般情况下指标的工作原理的详细信息，请参阅 [Service Fabric 负载指标](service-fabric-cluster-resource-manager-metrics.md)
-* 群集资源管理器提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇有关[描述 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
+* 群集资源管理器提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

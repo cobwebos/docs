@@ -1,5 +1,5 @@
 ---
-title: "在 Windows VM 上安装 MongoDB | Microsoft Docs"
+title: "在 Azure 的 Windows VM 上安装 MongoDB | Microsoft Docs"
 description: "了解如何在使用经典部署模型创建的运行 Windows Server 的 Azure VM 上安装 MongoDB。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f198d295272c8c860bc455cfa300cad3ff375c5d
-ms.openlocfilehash: cb618cbc47748a002351caa3a5935c9824c2bc32
+ms.sourcegitcommit: 015b152b2e807de6ad92d141d3c8bad6bb8d8eba
+ms.openlocfilehash: e070a2eac2bb356ad8544ec107cab230f8e3637c
 
 
 ---
-# <a name="install-mongodb-on-a-windows-vm"></a>在 Windows VM 上安装 MongoDB
+# <a name="install-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 的 Windows VM 上安装 MongoDB
 > [!IMPORTANT]
 > Azure 具有用于创建和处理资源的两个不同的部署模型： [资源管理器和经典](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要使用 Resource Manager 部署模型安装和配置 MongoDB，请参阅[此文](virtual-machines-windows-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-[MongoDB][MongoDB] 是一种常用的开源、高性能 NoSQL 数据库。 本文将引导用户使用 [Azure 经典门户][AzurePortal] 创建 Windows Server 虚拟机 (VM)。 然后创建数据磁盘并将其附加到 VM，再安装和配置 MongoDB。 如果想使用 Azure 中现有的 VM，可直接跳到[安装并配置 MongoDB](#install-and-run-mongodb-on-the-virtual-machine)。
+[MongoDB][MongoDB] 是一个流行的开源、高性能 NoSQL 数据库。 本文将引导用户使用 [Azure 经典门户][AzurePortal]创建 Windows Server 虚拟机 (VM)。 然后创建数据磁盘并将其附加到 VM，再安装和配置 MongoDB。 如果想使用 Azure 中现有的 VM，可直接跳到[安装并配置 MongoDB](#install-and-run-mongodb-on-the-virtual-machine)。
 
 ## <a name="create-a-virtual-machine-running-windows-server"></a>创建运行 Windows Server 的虚拟机
 按照以下说明创建虚拟机。
@@ -48,7 +48,7 @@ ms.openlocfilehash: cb618cbc47748a002351caa3a5935c9824c2bc32
 [!INCLUDE [install-and-run-mongo-on-win2k8-vm](../../includes/install-and-run-mongo-on-win2k8-vm.md)]
 
 ## <a name="summary"></a>摘要
-在本教程中，你已了解如何创建运行 Windows Server 的虚拟机、如何远程连接到该虚拟机以及如何附加数据磁盘。  你还了解了如何在基于 Windows 的虚拟机上安装和配置 MongoDB。 现在可以访问基于 Windows 的虚拟机上的 MongoDB，按照 [MongoDB 文档][MongoDocs] 中的高级主题操作。
+在本教程中，你已了解如何创建运行 Windows Server 的虚拟机、如何远程连接到该虚拟机以及如何附加数据磁盘。  你还了解了如何在基于 Windows 的虚拟机上安装和配置 MongoDB。 现可按照 [MongoDB 文档][MongoDocs]中的高级主题操作，访问基于 Windows 的虚拟机上的 MongoDB。
 
 [MongoDocs]: http://docs.mongodb.org/manual/
 [MongoDB]: http://www.mongodb.org/
@@ -56,6 +56,6 @@ ms.openlocfilehash: cb618cbc47748a002351caa3a5935c9824c2bc32
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

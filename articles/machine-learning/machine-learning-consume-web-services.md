@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/04/2016
+ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 369b7c8775388f641727cb889b406ac60be13d16
+ms.sourcegitcommit: ecb2ab00b56476b4373fa06cb766384cb2fcd514
+ms.openlocfilehash: fceb4254461bd91fd2da8603af4fefa47def72e8
 
 
 ---
@@ -28,22 +28,17 @@ ms.openlocfilehash: 369b7c8775388f641727cb889b406ac60be13d16
 
 * 拥有网络连接
 * 具有执行 HTTPS 请求的 SSL 功能
-* 可以分析 JSON（手动分析或通过支持库分析）
+* 可以分析 JSON（直接或使用支持库）
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-可通过两种方法使用 Azure 机器学习 Web 服务：作为请求响应服务或批处理执行服务。 一旦部署实验后，即可使用 RESTFul Web 服务，每个方案中的功能均通过该服务提供。
+可通过两种方法使用 Azure 机器学习 Web 服务：作为请求响应服务或 Batch 执行服务。 一旦部署实验后，即可使用 RESTFul Web 服务，每个方案中的功能均通过该服务提供。
 
 > [!TIP]
 > 了解如何简单创建 web 应用，访问预测 Web 服务，请参阅 [Consume an Azure Machine Learning Web service with a web app template](machine-learning-consume-web-service-with-web-app-template.md)（使用 Azure 机器学习 web 服务与 web 应用模板）。
 > 
 > 
-
-<!-- When this article gets published, fix the link and uncomment
-For more information on how to manage Azure Machine Learning Web service endpoints using the REST API, see **Azure machine learning Web service endpoints**.
--->
-
-了解有关如何创建和部署 Azure 机器学习 Web 服务的信息，请参阅 [Deploy an Azure Machine Learning Web service]（部署 Azure 机器学习 Web 服务）[发布]。 了解创建和部署机器学习的步骤演练，请参阅 [Develop a predictive solution by using Azure Machine Learning]（使用 Azure 机器学习开发预测解决方案）[演练]。
+> 了解有关如何创建和部署 Azure 机器学习 Web 服务的信息，请参阅[部署 Azure 机器学习 Web 服务][publish]。 了解创建和部署机器学习的步骤演练，请参阅[使用 Azure 机器学习开发预测解决方案][walkthrough]。
 
 ## <a name="request-response-service-rrs"></a>请求响应服务 (RRS)
 请求响应服务 (RRS) 是一种低延迟、高度可缩放的 Web 服务，针对从机器学习工作室实验创建和部署的无状态模型提供接口。 使用应用程序可通过该服务收到实时响应。
@@ -72,7 +67,7 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
 ### <a name="information-location-in-the-azure-machine-learning-web-services-portal"></a>信息在 Azure 机器学习 Web 服务门户中的位置
 查找所需信息：
 
-1. 登录到 [Azure 机器学习 Web 服务] [webservicesportal]门户。
+1. 登录到 [Azure 机器学习 Web 服务][webservicesportal]门户。
 2. 单击“Web 服务”或“传统 Web 服务”。
 3. 单击正在使用的 Web 服务。 
 4. 如果正在使用传统 Web 服务，单击正在使用的终结点。
@@ -88,7 +83,7 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
 
 在机器学习工作室中查找所需信息：
 
-1. 登录到[机器学习工作室] [mlstudio]。
+1. 登录到[机器学习工作室][mlstudio]。
 2. 单击屏幕左侧的“WEB 服务”。
 3. 单击正在使用的 Web 服务。 
 
@@ -102,7 +97,7 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
 
 在 Azure 机器学习 Web 服务门户查找所需信息：
 
-1. 登录到 [Azure 机器学习 Web 服务] [webservicesportal]门户。
+1. 登录到 [Azure 机器学习 Web 服务][webservicesportal]门户。
 2. 单击“经典 Web 服务”。
 3. 单击正在使用的 Web 服务。 
 4. 单击正在使用的终结点。
@@ -729,8 +724,8 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
 
 <!-- Relative Links -->
 
-[发布]: machine-learning-publish-a-machine-learning-web-service.md
-[演练]: machine-learning-walkthrough-develop-predictive-solution.md
+[publish]: machine-learning-publish-a-machine-learning-web-service.md
+[walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- External Links -->
 [webservicesportal]: https://services.azureml.net/
@@ -738,6 +733,6 @@ RRS 的一个用处就是验证应用程序的可靠性。 在这种情况下，
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

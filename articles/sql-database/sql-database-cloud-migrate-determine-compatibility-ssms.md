@@ -1,6 +1,7 @@
 ---
-title: "在迁移到 Azure SQL 数据库之前，使用 SQL Server Management Studio 确定 SQL 数据库的兼容性 | Microsoft 文档"
-description: "Microsoft Azure SQL 数据库, 数据库迁移, SQL 数据库兼容性, 导出数据层应用程序向导"
+title: "SSMS：Azure SQL Server 数据库兼容性 | Microsoft Docs"
+description: "在本文中，你将了解如何使用 SQL Server Management Studio 中的“导出数据层应用程序”向导确定要迁移到 SQL 数据库的 SQL Server 数据库是否兼容。"
+keywords: "Microsoft Azure SQL 数据库, 数据库迁移, SQL 数据库兼容性, 导出数据层应用程序向导"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -13,11 +14,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
-ms.date: 08/29/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 15d0bf86d6094b6a8c0d6aaf1e1bb59382a81ffb
+ms.sourcegitcommit: 82b76602133fa42db14e2095f29535b6002e9b2f
+ms.openlocfilehash: efcf1179f744e1b3d1645321af62d2533677afd2
 
 
 ---
@@ -70,6 +71,6 @@ ms.openlocfilehash: 15d0bf86d6094b6a8c0d6aaf1e1bb59382a81ffb
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

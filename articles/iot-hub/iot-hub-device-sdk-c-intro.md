@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 953bc766fca590a4c1517f3671333e537407c241
+ms.sourcegitcommit: 5d7eed340d2021c58f68c69100be5a9e13655146
+ms.openlocfilehash: 02907ef15742cda456fd0c5f10b777b11aa7c35e
 
 
 ---
@@ -30,7 +30,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 本文将介绍适用于 C 语言的 Azure IoT 设备 SDK 的体系结构。我们将演示如何初始化设备库，将事件发送到 IoT 中心，以及从 IoT 中心接收消息。 本文中的信息应足以让你开始使用 SDK，但同时也提供了有关库的其他信息的链接。
 
 ## <a name="sdk-architecture"></a>SDK 体系结构
-你可以在 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub 存储库中找到**适用于 C 语言的 Azure IoT 设备 SDK**，可以在 [C API 参考](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)中查看 API 详细信息。
+可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)中查看 API 的详细信息。
 
 在此存储库的 **master** 分支中可找到最新版本的库：
 
@@ -58,15 +58,15 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 如果需要在 Azure 订阅上创建 Azure IoT 中心的实例，请按照[此处](https://github.com/Azure/azure-iot-sdks/blob/master/doc/setup_iothub.md)的说明操作。
 
-SDK 中包含的[自述文件](https://github.com/Azure/azure-iot-sdks/tree/master/c)提供了有关准备开发环境和获取设备凭据的说明。
+SDK 中包含的[自述文件](https://github.com/Azure/azure-iot-sdk-c)提供了有关准备开发环境和获取设备凭据的说明。
 以下部分包含有关这些说明的一些额外注释。
 
 ### <a name="preparing-your-development-environment"></a>准备开发环境
 为某些平台提供了程序包（例如适用于 Windows 的 NuGet 或者适用于 Debian 和 Ubuntu 的 apt_get），并且示例可使用这些程序包（如果可用），以下说明详细介绍了如何直接从代码中构建库和示例。
 
-首先，需要从 GitHub 获取 SDK 的副本，然后构建源。 请从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdks)的 **master** 分支获取源的副本。
+首先，需要从 GitHub 获取 SDK 的副本，然后构建源。 请从 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **master** 分支获取源的副本。
 
-下载源副本后，必须完成 SDK 文章 [准备开发环境](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md)中所述的步骤。
+下载源副本后，必须完成 SDK 文章 [准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中所述的步骤。
 
 以下是一些提示，可帮助你完成准备指南中所述的过程：
 
@@ -84,7 +84,7 @@ SDK 中包含的[自述文件](https://github.com/Azure/azure-iot-sdks/tree/mast
      
         ![](media/iot-hub-device-sdk-c-intro/11-GitToolsPath.PNG)
 
-当你完成 [准备开发环境](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md)页面上所述的所有步骤后，就可以编译示例应用程序。
+当你完成 [准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)页面上所述的所有步骤后，就可以编译示例应用程序。
 
 ### <a name="obtaining-device-credentials"></a>获取设备凭据
 现在你已设置好开发环境，下一步要做的就是获取一组设备凭据。  若要使设备能够访问 IoT 中心，必须先将该设备添加到 IoT 中心标识注册表。 添加设备时，你将获取一组所需的设备凭据，以便设备能够连接到 IoT 中心。 下一部分所述示例应用程序的预期凭据格式为**设备连接字符串**。
@@ -93,11 +93,11 @@ SDK 开放源代码存储库中提供了两个工具用来帮助管理 IoT 中�
 
 本文中，在 Windows 上运行示例时将使用设备资源管理器工具。 但是，如果你更喜欢 CLI 工具，也可以使用 iothub-explorer。
 
-[设备资源管理器](https://github.com/Azure/azure-iot-sdks/tree/master/tools/DeviceExplorer)工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 若使用设备资源管理器工具添加设备，会获得相应的连接字符串。 需要此连接字符串才能运行示例应用程序。
+[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 若使用设备资源管理器工具添加设备，会获得相应的连接字符串。 需要此连接字符串才能运行示例应用程序。
 
 如果不熟悉上述过程，请参阅件以下过程，了解如何使用设备资源管理器工具来添加设备和获取设备连接字符串。
 
-你可以在 [SDK 发布页面](https://github.com/Azure/azure-iot-sdks/releases)中找到设备资源管理器工具的 Windows 安装程序。 但是也可以直接从其代码运行该工具，方法是在 **Microsoft Visual Studio 2015** 中打开 **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)**，然后生成解决方案。
+你可以在 [SDK 发布页面](https://github.com/Azure/azure-iot-sdks/releases)中找到设备资源管理器工具的 Windows 安装程序。 但是也可以直接从其代码运行该工具，方法是在 **Microsoft Visual Studio 2015** 中打开 **[DeviceExplorer.sln](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer/DeviceExplorer.sln)**，然后生成解决方案。
 
 运行该程序时，你将看到此界面：
 
@@ -130,7 +130,7 @@ static const char* connectionString = "[device connection string]";
 如果要继续，请在此输入设备连接字符串，重新编译解决方案，然后即可运行示例。
 
 ## <a name="iothubclient"></a>IoTHubClient
-azure-iot-sdks 存储库的 **iothub\_client** 文件夹中有一个 **samples** 文件夹，其中包含名为 **iothub\_client\_sample\_amqp** 的应用程序。
+[azure-iot-sdk-c](https://github.com/azure/azure-iot-sdk-c) 存储库的 **iothub\_client** 文件夹中有一个 **samples** 文件夹，其中包含名为 **iothub\_client\_sample\_amqp** 的应用程序。
 
 Windows 版本的 **iothub\_client\_sample\_ampq** 应用程序包含以下 Visual Studio 解决方案：
 
@@ -151,7 +151,7 @@ Windows 版本的 **iothub\_client\_sample\_ampq** 应用程序包含以下 Visu
 
 ### <a name="initializing-the-library"></a>初始化库
 > [!NOTE]
-> 在开始使用库之前，你可能需要执行一些特定于平台的初始化。 例如，如果打算在 Linux 上使用 AMQP，则必须初始化 OpenSSL 库。 [GitHub 存储库](https://github.com/Azure/azure-iot-sdks)中的示例将在客户端启动时调用实用工具函数 **platform_init**，并在退出之前调用 **platform_deinit** 函数。 这些函数在“platform.h”标头文件中声明。 你应该在[存储库](https://github.com/Azure/azure-iot-sdks)中为目标平台检查这些函数定义，以确定是否需要在客户端中包含任何平台初始化代码。
+> 在开始使用库之前，你可能需要执行一些特定于平台的初始化。 例如，如果打算在 Linux 上使用 AMQP，则必须初始化 OpenSSL 库。 [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c)中的示例将在客户端启动时调用实用工具函数 **platform_init**，并在退出之前调用 **platform_deinit** 函数。 这些函数在“platform.h”标头文件中声明。 你应该在[存储库](https://github.com/Azure/azure-iot-sdk-c)中为目标平台检查这些函数定义，以确定是否需要在客户端中包含任何平台初始化代码。
 > 
 > 
 
@@ -245,7 +245,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 ## <a name="serializer"></a>序列化程序
 从概念上讲，**序列化程序**库位于 SDK 中的 **IoTHubClient** 库之上。 它使用 **IoTHubClient** 库来与 IoT 中心进行底层通信，但它添加了建模功能，消除了开发人员处理消息序列化的负担。 我们将通过一个示例充分演示此库的工作原理。
 
-azure-iot-sdks 存储库中的 **serializer** 文件夹中有一个 **samples** 文件夹，其中包含名为 **simplesample\_amqp** 的应用程序。 此示例的 Windows 版本包含以下 Visual Studio 解决方案：
+[azure-iot-sdk-c 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **serializer** 文件夹中有一个 **samples** 文件夹，其中包含名为 **simplesample\_amqp** 的应用程序。 此示例的 Windows 版本包含以下 Visual Studio 解决方案：
 
   ![](media/iot-hub-device-sdk-c-intro/14-simplesample_amqp.PNG)
 
@@ -446,7 +446,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 serializer_deinit();
 ```
 
-上述 3 个函数均符合以前所述的 3 个初始化函数。 调用这些 API 可确保释放以前分配的资源。
+上述&3; 个函数均符合以前所述的&3; 个初始化函数。 调用这些 API 可确保释放以前分配的资源。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了有关使用**适用于 C 语言的 Azure IoT 设备 SDK** 中的库的基本知识。其中提供了足够的信息来让你了解 SDK 中包含哪些组件及其体系结构，以及如何开始使用 Windows 示例。 下一篇文章通过讲解[有关 IoTHubClient 库的详细信息](iot-hub-device-sdk-c-iothubclient.md)来继续介绍该 SDK。
@@ -466,6 +466,6 @@ serializer_deinit();
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

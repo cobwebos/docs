@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
+ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
+ms.openlocfilehash: cb649d3f6ead507582f587d112e43a89e659c757
 
 
 ---
@@ -30,7 +30,10 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
 * 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
 
 ## <a name="overview"></a>概述
-**注意**：与水平分区不同，这些 DDL 语句并不依赖于通过弹性数据库客户端库定义包含分片映射的数据层。
+
+> [!NOTE]
+> 与水平分区不同，这些 DDL 语句并不依赖于通过弹性数据库客户端库定义包含分片映射的数据层。
+>
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
@@ -45,7 +48,9 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
     SECRET = '<password>'
     [;]
 
-**注意**请确保 <username> 中不包括任何 "@servername" 后缀。 
+> [!NOTE]
+> 确保 `<username>` 不包含任何 **"@servername"** 后缀。 
+>
 
 ## <a name="create-external-data-sources"></a>创建外部数据源
 语法：
@@ -58,7 +63,9 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
                 CREDENTIAL = <credential_name> 
                 ) [;] 
 
-**重要事项** TYPE 参数必须设置为 **RDBMS**。 
+> [!IMPORTANT]
+> TYPE 参数必须设置为 **RDBMS**。 
+>
 
 ### <a name="example"></a>示例
 以下示例说明了如何使用 CREATE 语句创建外部数据源。 
@@ -118,7 +125,7 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
 
 DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分区情况下的远程数据库）。  
 
-使用 SCHEMA_NAME 和 OBJECT_NAME 子句可分别将外部表定义映射到远程数据库上不同架构中的表，或映射到具有不同名称的表。 如果你要在远程数据库上为目录视图或 DMV 定义外部表，或者在远程表名已在本地使用的任何其他情况下，这两个子句很有用。  
+使用 SCHEMA_NAME 和 OBJECT_NAME 子句可分别将外部表定义映射到远程数据库上不同架构中的表，或映射到具有不同名称的表。 如果要在远程数据库上为目录视图或 DMV 定义外部表，或者在远程表名已在本地使用的任何其他情况下，这两个子句很有用。  
 
 以下 DDL 语句从本地目录中删除现有的外部表定义。 它不会影响远程数据库。 
 
@@ -185,6 +192,6 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

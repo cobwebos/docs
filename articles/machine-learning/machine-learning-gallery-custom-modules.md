@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 6e0efe18c1170ef3b5a9b894888e926b31432e07
 
 
 ---
@@ -34,7 +34,7 @@ Cortana Intelligence 库中提供了大量**[自定义模块](https://gallery.co
  “自定义模块”**[**
 ](https://gallery.cortanaintelligence.com/customModules)页显示最热门模块的列表。
 单击“全部查看”，查看所有自定义模块。
-在此页中，可以浏览库中的所有自定义模块，还可以通过选择页面左侧的“筛选器条件”，并在顶部输入搜索词进行搜索。
+在本页中，可以浏览库中的所有自定义模块。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 
 ### <a name="comment-and-share"></a>评论和共享
  单击任何模块，打开模块的详细信息页面，然后阅读有关模块功能和使用方法的信息。 你可以在此页进行注释、提供反馈，或通过注释部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 还可以通过电子邮件发送自定义模块链接来邀请其他用户查看页面。
@@ -88,6 +88,6 @@ Cortana Intelligence 库中提供了大量**[自定义模块](https://gallery.co
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

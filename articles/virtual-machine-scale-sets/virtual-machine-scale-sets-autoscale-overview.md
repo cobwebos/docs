@@ -3,7 +3,7 @@ title: "自动缩放和虚拟机规模集 | Microsoft Docs"
 description: "了解如何使用诊断和自动缩放资源自动缩放缩放集中的虚拟机。"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: davidmu1
+author: Thraka
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
-ms.author: davidmu
+ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: ff6a29db5450a78840f27cb69abc726a147406a1
-ms.openlocfilehash: fec4155c2c54e47f92ff93aff662b59e775a02c9
+ms.sourcegitcommit: 090374b057a62251e40ccc41f60f61e84e08a03f
+ms.openlocfilehash: ff137ead5e3490a129b36c959040d3571bff7669
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: fec4155c2c54e47f92ff93aff662b59e775a02c9
 使用 Azure Resource Manager 模板、Azure PowerShell、Azure CLI 或 Azure 门户在规模集上设置自动缩放。
 
 ## <a name="set-up-scaling-by-using-resource-manager-templates"></a>使用 Resource Manager 模板设置缩放
-可使用模板以单次协调的操作来部署所有资源，而无需单独部署和管理应用程序的每个资源。 在模板中，会定义应用程序资源，并针对不同的环境指定部署参数。 模板中包含可用于为部署构造值的 JSON 和表达式。 若要了解详细信息，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+可使用模板以单次协调的操作来部署所有资源，而无需单独部署和管理应用程序的每个资源。 在模板中，会定义应用程序资源，并针对不同的环境指定部署参数。 模板中包含可用于为部署构造值的 JSON 和表达式。 若要了解详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 在模板中，可以指定容量元素：
 
@@ -224,6 +224,6 @@ autoscaleSettings 资源使用诊断扩展中的信息，以决定是增加规�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

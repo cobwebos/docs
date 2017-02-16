@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics 中的 Syslog 消息 | Microsoft Docs"
+title: "收集和分析 OMS Log Analytics 中的 Syslog 消息 | Microsoft Docs"
 description: "Syslog 是普遍适用于 Linux 的事件日志记录协议。   本文介绍如何在 Log Analytics 中配置 Syslog 消息集合以及它们在 OMS 存储库中创建的记录的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/09/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 724567b853bec19cb41ef6a78b7d25a665830897
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: 6e92a79c0b7ea35f110c779922255d6ddc93ed7c
 
 
 ---
@@ -77,7 +77,7 @@ rsyslog 的配置文件位于 **/etc/rsyslog.d/95-omsagent.conf**。  其默认�
 
 
 #### <a name="syslog-ng"></a>syslog-ng
-rsyslog 的配置文件位于 **/etc/syslog-ng/syslog-ng.conf**。  其默认内容如下所示。  这将收集针对全部设施和所有严重级别的从本地代理发送的 syslog 消息。   
+syslog-ng 的配置文件位于 **/etc/syslog-ng/syslog-ng.conf**。  其默认内容如下所示。  这将收集针对全部设施和所有严重级别的从本地代理发送的 syslog 消息。   
 
     #
     # Warnings (except iptables) in one file:
@@ -182,6 +182,6 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

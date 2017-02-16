@@ -3,7 +3,7 @@ title: "使用用于 Visual Studio Code 的 Azure Data Lake 工具 | Microsoft D
 description: "了解如何使用用于 Visual Studio Code 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。 "
 services: data-lake-analytics
 documentationcenter: 
-author: mumian
+author: jejiang
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/22/2016
-ms.author: jgao
+ms.date: 11/30/2016
+ms.author: jejiang
 translationtype: Human Translation
-ms.sourcegitcommit: fe5ef9bba31abdf9b29ad7c817a376407309f289
-ms.openlocfilehash: 59f2e4473aac85a8476055d2d955f576c099d787
+ms.sourcegitcommit: e79513590bb37570764f398e716182a11c74612a
+ms.openlocfilehash: 59cc35bc740625ed0582c1557fac9a04bf0cb8bc
 
 ---
 
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure Data Lake 工具
 
-了解如何使用用于 Visual Studio Code (VSCode) 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。
+了解如何使用用于 Visual Studio Code (VSCode) 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。  这些信息也包含在以下视频中：
 
+<a href="https://www.youtube.com/watch?v=J_gWuyFnaGA&feature=youtu.be"><img src="./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png"></a>
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -187,7 +188,7 @@ Data Lake Analytics 服务远程执行 U-SQL 脚本编译。  发出编译命令
 2. 按 **CTRL+SHIFT+P** 打开命令面板。
 3. 输入“ADL: Generate Code Behind”。  在同一文件夹中创建了代码隐藏文件。 
 
-也可以右键单击脚本文件，然后单击“ADL: Generate Code Behind”提交 U-SQL 作业。 
+也可以右键单击脚本文件，然后单击“ADL: Generate Code Behind”以生成代码隐藏文件。 
 
 采用类似于独立 U-SQL 脚本的方式，编译和提交含隐藏代码的 U-SQL 脚本。
 
@@ -197,9 +198,11 @@ Data Lake Analytics 服务远程执行 U-SQL 脚本编译。  发出编译命令
 
 ![用于 Visual Studio Code 的 Data Lake 工具代码隐藏](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-behind-call.png) 
 
-## <a name="register-assemblies"></a>注册程序集
+## <a name="use-assemblies"></a>使用程序集
 
-使用 Data Lake 工具，可将自定义代码程序集注册到 Data Lake Analytics 元存储。
+有关开发程序集的信息，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)。
+
+使用 Data Lake 工具，可将自定义代码程序集注册到 Data Lake Analytics 目录。
 
 **注册程序集的方法**
 
@@ -209,9 +212,26 @@ Data Lake Analytics 服务远程执行 U-SQL 脚本编译。  发出编译命令
 4.  选择数据库。
 5.  指定本地程序集路径。
 
-## <a name="access-data-lake-analytics-metadata"></a>访问 Data Lake Analytics 元数据
+以下 U-SQL 代码演示如何调用程序集。 在示例中，程序集名称是 test。
 
-连接到 Azure 后，可使用以下步骤访问 U-SQL 元数据：
+    REFERENCE ASSEMBLY [test];
+    @a=EXTRACT Iid int,Starts DateTime,Region string,Query string,DwellTime int,Results string,ClickedUrls string 
+    FROM @"ruoxin/SearchLog.txt" USING Extractors.Tsv();
+    
+    @d=SELECT DISTINCT Region FROM @a;
+    
+    @d1=PROCESS @d
+        PRODUCE Region string,
+                Mkt string
+                USING new USQLApplication_codebehind.MyProcessor();
+    
+    OUTPUT @d1 TO @"ruoxin/SearchLogtest.txt" USING Outputters.Tsv();
+
+
+
+## <a name="access-data-lake-analytics-catalog"></a>访问 Data Lake Analytics 目录
+
+连接到 Azure 后，可使用以下步骤访问 U-SQL 目录：
 
 **访问 U-SQL 元数据的方法**
 
@@ -250,12 +270,13 @@ Data Lake Analytics 服务远程执行 U-SQL 脚本编译。  发出编译命令
 
 - 有关 Data Lake Analytics 的入门信息，请参阅[教程：Azure Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)。
 - 有关如何使用用于 Visual Studio 的 Data Lake 工具的信息，请参阅[教程：使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。
+- 有关开发程序集的信息，请参阅[为 Azure Data Lake Analytics 作业开发 U-SQL 程序集](data-lake-analytics-u-sql-develop-assemblies.md)。
 
 
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

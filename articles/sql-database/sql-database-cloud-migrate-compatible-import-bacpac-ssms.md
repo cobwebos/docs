@@ -1,6 +1,7 @@
 ---
-title: "将 SQL Server 数据库迁移到 Azure SQL 数据库 | Microsoft 文档"
-description: "Microsoft Azure SQL 数据库, 数据库部署, 数据库迁移, 导入数据库, 导出数据库, 迁移向导"
+title: "SSMS：从 BACPAC 文件导入到 Azure SQL 数据库 | Microsoft Docs"
+description: "本文说明如何使用 SQL Server Management Studio 中的“导出数据层应用程序”向导从 BACPAC 文件导入到 SQL 数据库。"
+keywords: "Microsoft Azure SQL 数据库, 数据库部署, 数据库迁移, 导入数据库, 导出数据库, 迁移向导"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 7e8f6ba6204d20c31d3e2878bd7519ae5f954ddf
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: b5a6d90069e87d6115a3b80711f06ccf286b3e88
 
 
 ---
@@ -73,6 +74,6 @@ ms.openlocfilehash: 7e8f6ba6204d20c31d3e2878bd7519ae5f954ddf
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

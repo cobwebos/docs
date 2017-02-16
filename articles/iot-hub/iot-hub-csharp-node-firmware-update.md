@@ -1,6 +1,6 @@
 ---
-title: "如何使用 Azure IoT 中心更新固件 | Microsoft Docs"
-description: "本教程演示如何更新固件"
+title: "通过 Azure IoT 中心进行设备固件更新 (.NET/Node) | Microsoft Docs"
+description: "如何使用 Azure IoT 中心上的设备管理进行设备固件更新。 使用适用于 Node.js 的 Azure IoT 设备 SDK 实现模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现可触发固件更新的服务应用。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 7cbb823f2d8b9a337bd987ae3fc41a85ddb6ae80
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 5b8aaa7e7b04224fd51c264822d619866e0161af
 
 
 ---
-# <a name="tutorial-how-to-do-a-firmware-update"></a>教程：如何进行固件更新
+# <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>使用设备管理启动设备固件更新 (.NET/Node)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>介绍
@@ -28,7 +28,7 @@ ms.openlocfilehash: 7cbb823f2d8b9a337bd987ae3fc41a85ddb6ae80
 
 本教程演示如何：
 
-* 创建一个控制台应用，该应用通过 IoT 中心调用模拟设备应用中的 firmwareUpdate 直接方法。
+* 创建一个 .NET 控制台应用，其通过 IoT 中心在模拟设备应用上调用 firmwareUpdate 直接方法。
 * 创建一个模拟设备应用，它实现的 firmwareUpdate 直接方法会执行等待下载固件映像、下载固件映像以及最后应用固件映像的多阶段过程。  在执行每个阶段的整个过程中，设备使用所报告属性来更新进度。
 
 本教程结束时，用户会有一个 Node.js 控制台设备应用，以及一个 .NET (C#) 控制台后端应用：
@@ -43,7 +43,7 @@ ms.openlocfilehash: 7cbb823f2d8b9a337bd987ae3fc41a85ddb6ae80
 * Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
-按照[设备管理入门](iot-hub-csharp-node-device-management-get-started.md)一文创建 IoT 中心并获取连接字符串。
+按照[设备管理入门](iot-hub-csharp-node-device-management-get-started.md)一文创建 IoT 中心，并获取 IoT 中心连接字符串。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -56,15 +56,15 @@ ms.openlocfilehash: 7cbb823f2d8b9a337bd987ae3fc41a85ddb6ae80
 
     ![新的 Visual C# Windows 经典桌面项目][img-createapp]
 
-2. 在“解决方案资源管理器”中，右键单击“TriggerFWUpdate”项目，然后单击“管理 Nuget 包”。
-3. 在“Nuget 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 此过程将下载、安装 [Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk]（Microsoft Azure IoT 服务 SDK）NuGet 包及其依赖项并添加对它的引用。
+2. 在“解决方案资源管理器”中，右键单击“TriggerFWUpdate”项目，然后单击“管理 NuGet 包”。
+3. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices**，选择“安装”以安装 **Microsoft.Azure.Devices** 包，然后接受使用条款。 该过程将下载、安装 [Azure IoT 服务 SDK][lnk-nuget-service-sdk] NuGet 包及其依赖项并添加对它的引用。
 
-    ![“Nuget 包管理器”窗口][img-servicenuget]
+    ![“NuGet 包管理器”窗口][img-servicenuget]
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
    
         using Microsoft.Azure.Devices;
         
-5. 将以下字段添加到 **Program** 类。 将多占位符值替换为在上一部分中为 IoT 中心创建的连接字符串。
+5. 将以下字段添加到 **Program** 类。 将多个占位符值替换为在上一部分为中心创建的 IoT 中心连接字符串。
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -133,7 +133,7 @@ ms.openlocfilehash: 7cbb823f2d8b9a337bd987ae3fc41a85ddb6ae80
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。  
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
@@ -346,13 +346,13 @@ ms.openlocfilehash: 7cbb823f2d8b9a337bd987ae3fc41a85ddb6ae80
 [lnk-dm-getstarted]: iot-hub-node-node-device-management-get-started.md
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[lnk-rpi-implementation]: https://github.com/Azure/azure-iot-sdks/tree/master/c/iothub_client/samples/iothub_client_sample_mqtt_dm/pi_device
+[lnk-rpi-implementation]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm/pi_device
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

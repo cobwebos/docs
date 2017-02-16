@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: ec7e5d3229d623ce08a72439317a6a515ee3e373
 
 
 ---
@@ -24,21 +24,20 @@ ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
 Hive 非常适用于在 HDInsight 中处理数据，但有时你需要一种更通用的语言。 Hive 可让你使用各种编程语言创建用户定义的功能 (UDF)。 在本文档中，你将学习如何在 Hive 中使用 Java UDF。
 
 ## <a name="requirements"></a>要求
-* Azure 订阅
+
 * HDInsight 群集（基于 Window 或 Linux）
   
-  > [!NOTE]
-  > 本文档中的大多数步骤适用于这两个群集类型；但是，用于将已编译的 UDF 上传到群集并运行的步骤特定于基于 Linux 的群集。 提供可用于基于 Windows 的群集的信息的链接。
-  > 
-  > 
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+  
+  本文档中的大多数步骤适用于这两个群集类型；但是，用于将已编译的 UDF 上传到群集并运行的步骤特定于基于 Linux 的群集。 提供可用于基于 Windows 的群集的信息的链接。
+
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 或更高版本（或类似程序，如 OpenJDK）
 * [Apache Maven](http://maven.apache.org/)
 * 文本编辑器或 Java IDE
   
   > [!IMPORTANT]
   > 如果使用基于 Linux 的 HDInsight 服务器，但是在 Windows 客户端上创建了 Python 文件，则必须使用将 LF 用作行尾的编辑器。 如果无法确定编辑器使用的是 LF 还是 CRLF，请参阅[疑难解答](#troubleshooting)部分，获取使用 HDInsight 群集上的实用程序删除 CR 字符的步骤。
-  > 
-  > 
 
 ## <a name="create-an-example-udf"></a>创建示例 UDF
 1. 从命令行中，使用以下命令创建新 Maven 项目：
@@ -216,6 +215,6 @@ Hive 非常适用于在 HDInsight 中处理数据，但有时你需要一种更�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

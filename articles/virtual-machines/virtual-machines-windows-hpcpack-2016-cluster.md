@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 11/14/2016
+ms.date: 12/15/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 7e7dc6b6d58da556dfa07d5d21b3e70483d36ef9
-ms.openlocfilehash: 688f3f0885606949a265300af215f416e8f94155
+ms.sourcegitcommit: f4c29b292ecd97b51620b5e41cbcd6a096a7768e
+ms.openlocfilehash: e96d26e458f3b8f88ba88a5839dff9c48a755ffa
 
 
 ---
@@ -36,6 +36,23 @@ Microsoft HPC Pack 2016 群集需要用于保护 HPC 节点之间通信的个人
 * 它必须具有可以进行密钥交换的私钥
 * 密钥使用包括数字签名和密钥加密
 * 增强型密钥使用包括客户端身份验证和服务器身份验证
+
+如果不具有满足这些要求的证书，可向证书颁发机构请求获取证书。 或者，也可以基于运行该命令的操作系统，使用以下命令生成自签名证书，并使用私钥导出 PFX 格式的证书。
+
+* **对于 Windows 10 或 Windows Server 2016**，运行内置的 **New-selfsignedcertificate** PowerShell cmdlet，如下所示：
+
+  ```PowerShell
+  New-SelfSignedCertificate -Subject "CN=HPC Pack 2016 Communication" -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1,1.3.6.1.5.5.7.3.2") -CertStoreLocation cert:\CurrentUser\My -KeyExportPolicy Exportable -NotAfter (Get-Date).AddYears(5)
+  ```
+* **对于早于 Windows 10 或 Windows Server 2016 的操作系统**，需要从 Microsoft 脚本中心下载[自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/)。 提取其内容并在 PowerShell 提示符处运行以下命令：
+
+    ```PowerShell 
+    Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
+  
+    New-SelfSignedCertificateEx -Subject "CN=HPC Pack 2016 Communication" -KeySpec Exchange -KeyUsage "DigitalSignature,KeyEncipherment" -EnhancedKeyUsage "Server Authentication","Client Authentication" -StoreLocation CurrentUser -Exportable -NotAfter (Get-Date).AddYears(5)
+    ```
+
+### <a name="upload-certificate-to-an-azure-key-vault"></a>将证书上传到 Azure 密钥保管库
 
 在部署 HPC 群集之前，将证书上传到 [Azure 密钥保管库](../key-vault/index.md)作为密钥，并记录部署期间使用的以下信息：“保管库名称”、“保管库资源组”、“证书 URL”和“证书指纹”。
 
@@ -122,7 +139,7 @@ $hpcSecret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Se
 
 指定你在先决条件中记录的以下参数值：“保管库名称”、“保管库资源组”、“证书 URL”和“证书指纹”。
 
-###<a name="step-3-review-legal-terms-and-create"></a>步骤 3. 查看法律条款和创建
+### <a name="step-3-review-legal-terms-and-create"></a>步骤 3. 查看法律条款和创建
 单击“查看法律条款”，查看条款。 如果同意，单击“购买”，然后单击“创建”以开始部署。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
@@ -142,6 +159,6 @@ $hpcSecret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Se
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

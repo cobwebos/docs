@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 3f8c9b22fb9a7aae97c43e39fe82a610f6b8b374
-ms.openlocfilehash: ff693920244316eec9ef25b00e6296e8e68f3d5e
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
 
 
 ---
@@ -52,11 +52,11 @@ ms.openlocfilehash: ff693920244316eec9ef25b00e6296e8e68f3d5e
 在开始阅读本教程前，你必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 * **Windows SDK**。 可从[此处](https://dev.windows.com/en-us/downloads)进行安装。 可使用它来创建安全证书。
 * **Azure Active Directory 服务主体**。 本教程中的步骤用于指导如何在 Azure AD 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 Azure AD 管理员可以跳过此先决条件，继续阅读本教程。
 
-    **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述。
+    **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述。
 
 ## <a name="create-an-azure-data-lake-store"></a>创建 Azure Data Lake Store
 按照这些步骤创建 Data Lake Store。
@@ -84,13 +84,13 @@ ms.openlocfilehash: ff693920244316eec9ef25b00e6296e8e68f3d5e
         $resourceGroupName = "<your new resource group name>"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-    ![创建 Azure 资源组](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "Create an Azure Resource Group")
+    ![创建 Azure 资源组](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateResourceGroup.png "创建 Azure 资源组")
 3. 创建 Azure Data Lake Store 帐户。 指定的帐户名称必须仅包含小写字母和数字。
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    ![创建 Azure Data Lake 帐户](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "Create an Azure Data Lake account")
+    ![创建 Azure Data Lake 帐户](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.PS.CreateADLAcc.png "创建 Azure Data Lake 帐户")
 4. 验证是否已成功创建帐户。
 
         Test-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
@@ -310,7 +310,7 @@ ms.openlocfilehash: ff693920244316eec9ef25b00e6296e8e68f3d5e
 2. 单击“浏览”，单击“HDInsight 群集”，然后单击已创建的 HDInsight 群集。
 3. 在群集边栏选项卡中，单击“远程桌面”，然后在“远程桌面”边栏选项卡中，单击“连接”。
 
-    ![远程登录到 HDI 群集](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Create an Azure Resource Group")
+    ![远程登录到 HDI 群集](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "创建 Azure 资源组")
 
     出现提示时，输入你提供给远程桌面用户的凭据。
 4. 在远程会话中，启动 Windows PowerShell，并使用 HDFS 文件系统命令列出 Azure Data Lake Store 中的文件。
@@ -333,6 +333,6 @@ ms.openlocfilehash: ff693920244316eec9ef25b00e6296e8e68f3d5e
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

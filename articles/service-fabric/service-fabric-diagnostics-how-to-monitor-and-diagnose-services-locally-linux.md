@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/14/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: af9f761179896a1acdde8e8b20476b7db33ca772
-ms.openlocfilehash: 03f1dde722025624997adb7c1258b2f24c481209
+ms.sourcegitcommit: 72fcad2957d6fc5466719c1d275ae0f86f7fa302
+ms.openlocfilehash: 1d02402f8d3d3f501a100c1618bcba595f1fedc0
 
 
 ---
@@ -58,7 +58,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ```
  
  
-此设置会导致在 `/tmp/servicefabric/logs/` 中以轮替方式收集日志。 使用 **%u** 和 **%g** 可以创建更多文件，文件名为 mysfapp0.log、mysfapp1.log，依此类推。 默认情况下，如果未显式配置处理程序，将会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
+此设置会导致在 `/tmp/servicefabric/logs/` 中以轮替方式收集日志。 使用 **%u** 和 **%g** 可以创建文件，文件名为 mysfapp0.log、mysfapp1.log，依此类推。 默认情况下，如果未显式配置处理程序，将会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
  
 有关详细信息，请参阅 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  
 
@@ -143,6 +143,6 @@ public static TextWriter Out = Console.Out;
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

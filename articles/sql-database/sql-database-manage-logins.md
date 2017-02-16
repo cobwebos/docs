@@ -18,8 +18,8 @@ ms.workload: data-management
 ms.date: 01/17/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 8ff9c07fbc6e3d2a44414b485bd0f32b68b5d494
-ms.openlocfilehash: 127303bce70801ab93992273fd8f86d6f3c41605
+ms.sourcegitcommit: 435fca81cda845200467fbc0d6ed4d41de41aaf6
+ms.openlocfilehash: 324fd91b415a4744cb472bbd8a8b795a8fbb8080
 
 
 ---
@@ -73,7 +73,7 @@ ms.openlocfilehash: 127303bce70801ab93992273fd8f86d6f3c41605
 除了上述服务器级管理角色以外，SQL 数据库还在可以添加用户帐户的 master 数据库中提供了两个受限的管理角色，这些角色可授予创建数据库或管理登录名的权限。
 
 ### <a name="database-creators"></a>数据库创建者
-其中一个管理角色是 **dbmanager** 角色。 此角色的成员可以创建新数据库。 若要使用此角色，请在 `master` 数据库中创建一个用户，然后将该用户添加到 **dbmanager** 数据库角色。 该用户可以是包含的数据库用户，也可以是 master 数据库中基于 SQL Server 登录名的用户。
+其中一个管理角色是 **dbmanager** 角色。 此角色的成员可以创建新数据库。 若要使用此角色，请在 `master` 数据库中创建一个用户，然后将该用户添加到 **dbmanager** 数据库角色。 若要创建数据库，用户必须是基于 master 数据库中的 SQL Server 登录名的用户，或者是基于 Azure Active Directory 用户的已包含数据库用户。
 
 1. 使用管理员帐户连接到 master 数据库。
 2. 可选步骤：使用 [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) 语句创建 SQL Server 身份验证登录名。 示例语句：

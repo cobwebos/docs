@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c213f8f4f8de6f16efe70ac3332ccbc8c428b85b
+ms.sourcegitcommit: f9f5fd28db7babfe400aeb55ba1df9ac5d8d535b
+ms.openlocfilehash: 7aee0f60d331f40514f41c20e09fa2c9d9a21233
 
 
 ---
@@ -38,98 +38,92 @@ Azure 移动应用的脱机数据同步功能可让最终用户在无法访问�
 1. 在 **QSTodoService.m** (Objective-C) 或 **ToDoTableViewController.swift** (Swift) 中，请注意成员 `syncTable` 的类型为 `MSSyncTable`。 脱机同步使用此同步表接口而不是 `MSTable`。 使用同步表时，所有操作将转到本地存储，只有在运行显式推送和提取操作时才与远程后端同步。
    
     若要获取对同步表的引用，请对 `MSClient` 使用 `syncTableWithName` 方法。 若要删除脱机同步功能，请改用 `tableWithName`。
+    
 2. 表操作之前，必须初始化本地存储区。 下面是相关的代码。 
    
-    **Objective-C**：
+   **Objective-C**：
+
+   在 `QSTodoService.init` 方法中：
+   ```objc
+   MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
+   self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
+   ```    
+   **Swift**：
+
+   在 `ToDoTableViewController.viewDidLoad` 方法中：
+   ```swift
+   let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
+   let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+   self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
+   client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
+   ```
+   随后将使用移动应用 SDK 中提供的接口 `MSCoreDataStore` 创建本地存储。 可以改为通过实现 `MSSyncContextDataSource` 协议提供不同的本地存储。 此外，`MSSyncContext` 的第一个参数用于指定冲突处理程序。 由于已传递 `nil`，因此将获取默认冲突处理程序，但该处理程序在发生任何冲突时会失败。
+
+3. 现在，让我们执行实际的同步操作，从远程后端获取数据。
    
-    在 `QSTodoService.init` 方法中：
+   **Objective-C**：
 
-            MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
-            self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
+   `syncData` 首先推送新更改，然后调用 `pullData` 从远程后端获取数据。 接下来，`pullData` 方法获取符合查询的新数据：
+   ```objc
+   -(void)syncData:(QSCompletionBlock)completion
+   {
+       // push all changes in the sync context, then pull new data
+       [self.client.syncContext pushWithCompletion:^(NSError *error) {
+           [self logErrorIfNotNil:error];
+           [self pullData:completion];
+       }];
+   }
 
+   -(void)pullData:(QSCompletionBlock)completion
+   {
+       MSQuery *query = [self.syncTable query];
 
-    **Swift**：
+       // Pulls data from the remote server into the local table.
+       // We're pulling all items and filtering in the view
+       // query ID is used for incremental sync
+       [self.syncTable pullWithQuery:query queryId:@"allTodoItems" completion:^(NSError *error) {
+           [self logErrorIfNotNil:error];
 
-    在 `ToDoTableViewController.viewDidLoad` 方法中：
+           // Let the caller know that we have finished
+           if (completion != nil) {
+               dispatch_async(dispatch_get_main_queue(), completion);
+           }
+       }];
+   }
+   ```
+   **Swift**：
+   ```swift
+   func onRefresh(sender: UIRefreshControl!) {
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 
+      self.table!.pullWithQuery(self.table?.query(), queryId: "AllRecords") {
+          (error) -> Void in
 
-            let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
-            let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-            self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
-            client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
+          UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 
+          if error != nil {
+              // A real application would handle various errors like network conditions,
+              // server conflicts, etc via the MSSyncContextDelegate
+              print("Error: \(error!.description)")
 
-    随后将使用移动应用 SDK 中提供的接口 `MSCoreDataStore` 创建本地存储。 可以改为通过实现 `MSSyncContextDataSource` 协议提供不同的本地存储。 
-
-    此外，`MSSyncContext` 的第一个参数用于指定冲突处理程序。 由于已传递 `nil`，因此将获取默认冲突处理程序，但该处理程序在发生任何冲突时会失败。
-
-1. 现在，让我们执行实际的同步操作，从远程后端获取数据。
-   
-    **Objective-C**：
-   
-    `syncData` 首先推送新更改，然后调用 `pullData` 从远程后端获取数据。 接下来，`pullData` 方法获取符合查询的新数据：
-
-            -(void)syncData:(QSCompletionBlock)completion
-            {
-                // push all changes in the sync context, then pull new data
-                [self.client.syncContext pushWithCompletion:^(NSError *error) {
-                    [self logErrorIfNotNil:error];
-                    [self pullData:completion];
-                }];
-            }
-
-            -(void)pullData:(QSCompletionBlock)completion
-            {
-                MSQuery *query = [self.syncTable query];
-
-                // Pulls data from the remote server into the local table.
-                // We're pulling all items and filtering in the view
-                // query ID is used for incremental sync
-                [self.syncTable pullWithQuery:query queryId:@"allTodoItems" completion:^(NSError *error) {
-                    [self logErrorIfNotNil:error];
-
-                    // Let the caller know that we have finished
-                    if (completion != nil) {
-                        dispatch_async(dispatch_get_main_queue(), completion);
-                    }
-                }];
-            }
-
-
-      **Swift**：
-
-
-        func onRefresh(sender: UIRefreshControl!) {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-
-            self.table!.pullWithQuery(self.table?.query(), queryId: "AllRecords") {
-                (error) -> Void in
-
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-
-                if error != nil {
-                    // A real application would handle various errors like network conditions,
-                    // server conflicts, etc via the MSSyncContextDelegate
-                    print("Error: \(error!.description)")
-
-                    // We will just discard our changes and keep the servers copy for simplicity
-                    if let opErrors = error!.userInfo[MSErrorPushResultKey] as? Array<MSTableOperationError> {
-                        for opError in opErrors {
-                            print("Attempted operation to item \(opError.itemId)")
-                            if (opError.operation == .Insert || opError.operation == .Delete) {
-                                print("Insert/Delete, failed discarding changes")
-                                opError.cancelOperationAndDiscardItemWithCompletion(nil)
-                            } else {
-                                print("Update failed, reverting to server's copy")
-                                opError.cancelOperationAndUpdateItem(opError.serverItem!, completion: nil)
-                            }
-                        }
-                    }
-                }
-                self.refreshControl?.endRefreshing()
-            }
-        } 
-
+              // We will just discard our changes and keep the servers copy for simplicity
+              if let opErrors = error!.userInfo[MSErrorPushResultKey] as? Array<MSTableOperationError> {
+                  for opError in opErrors {
+                      print("Attempted operation to item \(opError.itemId)")
+                      if (opError.operation == .Insert || opError.operation == .Delete) {
+                          print("Insert/Delete, failed discarding changes")
+                          opError.cancelOperationAndDiscardItemWithCompletion(nil)
+                      } else {
+                          print("Update failed, reverting to server's copy")
+                          opError.cancelOperationAndUpdateItem(opError.serverItem!, completion: nil)
+                      }
+                  }
+              }
+          }
+          self.refreshControl?.endRefreshing()
+      }
+   } 
+   ```
 
     在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 `pushWithCompletion`。 此方法是 `MSSyncContext` 的成员（而不是同步表本身），因为它会将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后调用 `pullData` 帮助器，该帮助器调用 `MSSyncTable.pullWithQuery` 检索远程数据并将其存储在本地数据库中。
 
@@ -214,43 +208,44 @@ Azure 移动应用的脱机数据同步功能可让最终用户在无法访问�
 
 1. 在 **QSTodoListViewController.m** 中更改 **viewDidLoad** 方法，删除方法末尾的 `[self refresh]` 调用。 现在，数据不会在应用启动时与服务器进行同步，而只会保留为本地储存中的内容。
 2. 在 **QSTodoService.m** 中修改 `addItem` 的定义，使其不会在插入项后同步。 删除 `self syncData` 块并将它替换为以下内容：
-   
-            if (completion != nil) {
-                dispatch_async(dispatch_get_main_queue(), completion);
-            }
-3. 如上所示修改 `completeItem` 的定义；删除 `self syncData` 的块并将它替换为以下内容：
-   
-            if (completion != nil) {
-                dispatch_async(dispatch_get_main_queue(), completion);
-            }
 
+   ```objc
+   if (completion != nil) {
+       dispatch_async(dispatch_get_main_queue(), completion);
+   }
+   ```
+3. 如上所示修改 `completeItem` 的定义；删除 `self syncData` 的块并将它替换为以下内容：
+   ```objc
+   if (completion != nil) {
+       dispatch_async(dispatch_get_main_queue(), completion);
+   }
+   ```
 **Swift**：
 
 1. 在 **ToDoTableViewController.swift** 中的 `viewDidLoad` 内，注释掉以下两行，停止在应用启动时同步。 在编写本文时，当某人添加或完成某个项时，Swift Todo 应用不会更新，只会在应用启动时才更新。
-   
-        self.refreshControl?.beginRefreshing()
-        self.onRefresh(self.refreshControl)
 
+   ```swift
+  self.refreshControl?.beginRefreshing()
+  self.onRefresh(self.refreshControl)
+```
 ## <a name="a-nametest-appatest-the-app"></a><a name="test-app"></a>测试应用程序
 在本部分，将连接到无效的 URL，以模拟脱机方案。 添加数据项时，数据项将保存在本地核心数据存储中，而不同步到移动后端。
 
 1. 将 **QSTodoService.m** 中的移动应用 URL 更改为无效 URL，然后再次运行该应用：
    
-    QSTodoService.m 中的 **Objective-C**：
-   
-            self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
-   
-    ToDoTableViewController.swift 中的 **Swift**：
-   
-        let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
+   QSTodoService.m 中的 **Objective-C**：
+   ```objc
+   self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
+   ```
+   ToDoTableViewController.swift 中的 **Swift**：
+   ```swift
+   let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
+   ```
 2. 添加一些待办事项。 退出模拟器（或强行关闭应用），然后重新启动。 验证你的更改是否已保存。
-3. 查看远程 TodoItem 表的内容：
-   
-   * 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表” > “TodoItem”，查看 `TodoItem` 表的内容。
-     
-     * 对于 .NET 后端，请使用 SQL 工具（如 SQL Server Management Studio）或 REST 客户端（如 Fiddler 或 Poistman）查看表内容。
-     
-     验证新项是否未同步到服务器：
+3. 查看远程 TodoItem 表的内容： 
+   * 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表” > “TodoItem”，查看 `TodoItem` 表的内容。  
+   * 对于 .NET 后端，请使用 SQL 工具（如 SQL Server Management Studio）或 REST 客户端（如 Fiddler 或 Poistman）查看表内容。
+验证新项是否未同步到服务器：
 4. 将 **QSTodoService.m** 中的 URL 更改回正确的 URL，然后重新运行应用。 通过下拉项列表来执行刷新手势。 将会看到进度转盘。
 5. 再次查看 TodoItem 数据。 新的和更改的 TodoItem 现在应会出现。
 
@@ -279,10 +274,10 @@ Azure 移动应用的普通 CRUD 操作执行起来就像此应用仍处于连�
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
 [云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday：Azure 移动服务中允许脱机的应用]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

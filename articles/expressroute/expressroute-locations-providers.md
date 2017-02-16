@@ -1,5 +1,5 @@
 ---
-title: "ExpressRoute 位置 | Microsoft Docs"
+title: "ExpressRoute 位置 | Microsoft 文档"
 description: "本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。"
 services: expressroute
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/12/2017
+ms.date: 01/18/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 25dbeb2c011d4f2b833140d86690d546bfb6825e
-ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
+ms.sourcegitcommit: dcee5436a7bb377f37d6db2701c2e5df2e41944f
+ms.openlocfilehash: 1b162e57ee1e7a4e953d1b7593ce45669ff3cca8
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
@@ -153,8 +153,8 @@ ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
 | **亚洲** |Avanade Inc.、OneAs1a |
 | **澳大利亚** | IT Consultancy |
 | **欧洲** |Avanade Inc.、Dotnet Solutions、MSG Services、Nelite |
-| **美国** |Avanade Inc.、Equinix Professional Services、Perficient、Project Leadership |
-
+| **北美** |Avanade Inc.、Equinix Professional Services、Perficient、Project Leadership |
+| **南美洲** |Avanade Inc. |
 ## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 * 确保符合所有先决条件。 请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)。
@@ -164,6 +164,6 @@ ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

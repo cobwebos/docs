@@ -20,7 +20,7 @@ ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
 
 
 ---
-# <a name="scheduler-concepts-terminology-entity-hierarchy"></a>计划程序的概念、术语和实体层次结构
+# <a name="scheduler-concepts-terminology--entity-hierarchy"></a>计划程序的概念、术语和实体层次结构
 ## <a name="scheduler-entity-hierarchy"></a>计划程序实体层次结构
 下表描述了计划程序 API 所公开或使用的主要资源：
 

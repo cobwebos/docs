@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/21/2016
+ms.date: 11/18/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: e42736725bb3636115a6c81aea1f929612a351fe
+ms.sourcegitcommit: f73cbfec2ce2e41589b84997891ff0b60266c9b2
+ms.openlocfilehash: 10a10e138c9c8ed8c15136bf1d6565edc57758b5
 
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms"></a>关于 H 系列和计算密集型 A 系列 VM
-本文提供有关使用较新 Azure H 系列和早期 A8、A9、A10 与 A11 大小（也称*计算密集型*实例）的背景信息及某些注意事项。 本文重点介绍如何对 Linux VM 使用这些大小。 本文同样适用于 [Windows VM](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+本文提供有关使用较新 Azure H 系列和早期 A8、A9、A10 与 A11 大小（也称*计算密集型*实例）的背景信息及某些注意事项。 本文重点介绍如何对 Linux VM 使用这些大小。 本文同样适用于 [Windows VM](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+
+有关基本规范、存储容量和磁盘详细信息，请参阅[虚拟机的大小](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
@@ -49,7 +51,7 @@ ms.openlocfilehash: e42736725bb3636115a6c81aea1f929612a351fe
   * **SLES 12 SP1 for HPC 映像** - 运行以下命令来安装分发到 VM 的 Intel MPI 包：
     
           sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-  * **SLES 12 for HPC 映像** - 必须单独注册才能下载并安装 Intel MPI。 请参阅 [Intel MPI Library installation guide](https://software.intel.com/sites/default/files/managed/7c/2c/intelmpi-2017-installguide-linux.pdf)（Intel MPI Library 安装指南）。
+  * **SLES 12 for HPC 映像** - 必须单独注册才能下载并安装 Intel MPI。 有关说明，请参阅 [Intel MPI 库文档](https://software.intel.com/en-us/intel-mpi-library/documentation)。
   * **基于 CentOS 的 HPC 映像** - 已安装 Intel MPI 5.1。  
     
     需要进行额外的系统配置才能在群集 VM 上运行 MPI 作业。 例如，在 VM 群集上，需要在计算节点之间建立信任。 有关典型设置，请参阅 [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
@@ -130,6 +132,6 @@ done
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

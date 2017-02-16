@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 12/13/2016
 ms.author: yijichen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 22a44e1c47748a54950d9ad732a04c08bbcefd87
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c8d02cdd50c7f44991aeabee1999a81ec18bf59c
 
 
 ---
@@ -88,7 +88,7 @@ ms.openlocfilehash: 22a44e1c47748a54950d9ad732a04c08bbcefd87
 > 
 > 
 
-从 Azure 机器学习中创建了新的空白实验。 示例输入数据已随预定义数据架构一起上载。 链接到数据架构的是一种[执行 R 脚本][execute-r-script]模块，该模块通过使用 R 中的“auto.arima”和“forecast”函数生成 ARIMA 预测模型。 
+从 Azure 机器学习中创建了新的空白实验。 示例输入数据已随预定义数据架构一起上载。 链接到数据架构的是一种[执行 R 脚本][execute-r-script] 模块，该模块通过使用 R 中的“auto.arima”和“forecast”函数生成 ARIMA 预测模型。 
 
 ### <a name="experiment-flow"></a>实验流：
 ![创建工作区][2]
@@ -142,6 +142,6 @@ ms.openlocfilehash: 22a44e1c47748a54950d9ad732a04c08bbcefd87
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

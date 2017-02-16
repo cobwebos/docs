@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/26/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 611099e8c28584e091f9dc6c07eebf7e397092ea
+ms.sourcegitcommit: da5ad10e01d83d714b47f8d478dc73a824797dea
+ms.openlocfilehash: 714e0dd907b1efe8d2c4d6e062a6cedd08f44c4c
 
 
 ---
@@ -51,13 +51,11 @@ Packer 和 Terraform 也支持 Azure Resource Manager，因此也可以“代码
 然后，缩放集 VM 将变成容器的稳定基础，只需偶尔进行安全和 OS 相关的更新。 如前所述，Azure 容器服务就是采用此方法并围绕它构建服务的好例子。
 
 ## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>如何跨更新域推出 OS 更新？
-假设要在更新 OS 映像的同时让 VM 缩放集持续运行。 为此，一种做法是每次更新一个 VM 的 VM 映像。 可以使用 PowerShell 或 Azure CLI 实现此目的。 有单独的命令可在单个 VM 上更新 VM 规模集模型（其配置的定义方式），以及发出“手动升级”调用。
-
-[此处](https://github.com/gbowerman/vmsstools)提供了一个示例 Python 脚本，它每次会自动更新一个更新域的 VM 规模集。 （注意：这种方法更多地充当一种概念认证，而不是可靠的、随时可用于生产的解决方案 - 可以在其中添加某些错误检查机制等等）。
+假设要在更新 OS 映像的同时让 VM 缩放集持续运行。 为此，一种做法是每次更新一个 VM 的 VM 映像。 可以使用 PowerShell 或 Azure CLI 实现此目的。 有单独的命令可在单个 VM 上更新 VM 缩放集模型（其配置的定义方式），以及发出“手动升级”调用。 [升级虚拟机规模集](./virtual-machine-scale-sets-upgrade-scale-set.md) Azure 文档还提供有关可用于跨 VM 规模集执行 OS 升级的选项的相关详细信息。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

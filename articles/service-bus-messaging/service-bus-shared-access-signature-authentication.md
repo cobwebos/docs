@@ -1,5 +1,5 @@
 ---
-title: "服务总线的共享访问签名身份验证 | Microsoft 文档"
+title: "服务总线的共享访问签名身份验证 | Microsoft Docs"
 description: "关于服务总线的 SAS 身份验证的详细信息。"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/02/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 70a4c5ee79a5c74d63d461371f70b49a23d5cf25
+ms.sourcegitcommit: 1116ae1c699f59b7f75f25bed105a53b508801b2
+ms.openlocfilehash: f3fd30791d9110ec0a72e9ec9e51b5e762020fe7
 
 
 ---
@@ -91,7 +91,7 @@ SAS 令牌中的 [KeyName](https://msdn.microsoft.com/library/azure/microsoft.se
 有关演示配置和使用 SAS 授权的服务总线应用程序的完整工作示例，请参阅 [Shared Access Signature authentication with Service Bus](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)（服务总线的共享访问签名身份验证）。 演示如何使用为保护服务总线订阅，在命名空间或主题上配置的 SAS 授权规则的相关示例位于此处：[Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）。
 
 ## <a name="access-shared-access-authorization-rules-on-a-namespace"></a>访问命名空间上的共享访问授权规则
-在服务总线命名空间根路径上的操作需要证书身份验证。 你必须上载用于 Azure 订阅的管理证书 若要上传管理证书，请在 [Azure 经典门户][Azure 经典门户]的左窗格中单击“**设置**”。 有关 Azure 管理证书的详细信息，请参阅 [Azure 证书概述](../cloud-services/cloud-services-certs-create.md#what-are-management-certificates)。
+在服务总线命名空间根路径上的操作需要证书身份验证。 你必须上载用于 Azure 订阅的管理证书 若要上传管理证书，请在 [Azure 经典门户][Azure classic portal]的左窗格中单击“设置”。 有关 Azure 管理证书的详细信息，请参阅 [Azure 证书概述](../cloud-services/cloud-services-certs-create.md#what-are-management-certificates)。
 
 访问服务总线命名空间上的共享访问授权规则的终结点如下所示：
 
@@ -208,7 +208,7 @@ sendClient.Send(helloMessage);
 | 创建队列 |管理 |任何命名空间地址 |
 | 删除队列 |管理 |任何有效队列地址 |
 | 枚举队列 |管理 |/$Resources/Queues |
-| 获取队列说明 |管理或发送 |任何有效队列地址 |
+| 获取队列说明 |管理 |任何有效队列地址 |
 | 在队列上配置授权规则 |管理 |任何有效队列地址 |
 | 发送到队列 |发送 |任何有效队列地址 |
 | 从队列接收消息 |侦听 |任何有效队列地址 |
@@ -221,14 +221,14 @@ sendClient.Send(helloMessage);
 | 创建主题 |管理 |任何命名空间地址 |
 | 删除主题 |管理 |任何有效主题地址 |
 | 枚举主题 |管理 |/$Resources/Topics |
-| 获取主题说明 |管理或发送 |任何有效主题地址 |
+| 获取主题说明 |管理 |任何有效主题地址 |
 | 在主题上配置授权规则 |管理 |任何有效主题地址 |
 | 发送到主题 |发送 |任何有效主题地址 |
 | **订阅** | | |
 | 创建订阅 |管理 |任何命名空间地址 |
 | 删除订阅 |管理 |../myTopic/Subscriptions/mySubscription |
 | 枚举订阅 |管理 |../myTopic/Subscriptions |
-| 获取订阅说明 |管理或侦听 |../myTopic/Subscriptions/mySubscription |
+| 获取订阅说明 |管理 |../myTopic/Subscriptions/mySubscription |
 | 在查看锁定模式下接收消息后放弃或完成消息 |侦听 |../myTopic/Subscriptions/mySubscription |
 | 推迟消息以供将来检索 |侦听 |../myTopic/Subscriptions/mySubscription |
 | 将消息放入死信队列 |侦听 |../myTopic/Subscriptions/mySubscription |
@@ -238,21 +238,16 @@ sendClient.Send(helloMessage);
 | 创建规则 |管理 |../myTopic/Subscriptions/mySubscription |
 | 删除规则 |管理 |../myTopic/Subscriptions/mySubscription |
 | 枚举规则 |管理或侦听 |../myTopic/Subscriptions/mySubscription/Rules |
-| **通知中心** | | |
-| 创建通知中心 |管理 |任何命名空间地址 |
-| 为活动设备创建或更新注册 |侦听或管理 |../notificationHub/tags/{tag}/registrations |
-| 更新 PNS 信息 |侦听或管理 |../notificationHub/tags/{tag}/registrations/updatepnshandle |
-| 发送到通知中心 |发送 |../notificationHub/messages |
 
 ## <a name="next-steps"></a>后续步骤
 有关服务总线中的 SAS 的高级概述，请参阅[共享访问签名](service-bus-sas-overview.md)。
 
 有关服务总线身份验证的更多背景信息，请参阅[服务总线身份验证和授权](service-bus-authentication-and-authorization.md)。
 
-[Azure 经典门户]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

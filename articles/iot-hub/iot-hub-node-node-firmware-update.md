@@ -1,6 +1,6 @@
 ---
-title: "如何更新固件 | Microsoft Docs"
-description: "本教程演示如何更新固件"
+title: "通过 Azure IoT 中心进行设备固件更新 (Node) | Microsoft Docs"
+description: "如何使用 Azure IoT 中心上的设备管理进行设备固件更新。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及触发固件更新的服务应用。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: fdc8dca46f5bd0feb8e6ce24af32327be4c8ebb6
 
 
 ---
-# <a name="tutorial-how-to-do-a-firmware-update"></a>教程：如何进行固件更新
+# <a name="use-device-management-to-initiate-a-device-firmware-update-node"></a>使用设备管理进行设备固件更新 (Node)
 ## <a name="introduction"></a>介绍
 在[设备管理入门][lnk-dm-getstarted]教程中，你已了解了如何使用[设备克隆][lnk-devtwin]和[直接方法][lnk-c2dmethod]基元来远程重新启动设备。 本教程使用相同的 IoT 中心基元，提供指南，并演示如何进行端到端模拟固件更新。  此模式在用于 Intel Edison 设备示例的固件更新实现中使用。
 
 本教程演示如何：
 
-* 创建一个控制台应用程序，以便通过 IoT 中心调用模拟设备应用中的 firmwareUpdate 直接方法。
-* 创建一个模拟设备应用，它实现的 firmwareUpdate 直接方法会执行等待下载固件映像、下载固件映像以及最后应用固件映像的多阶段过程。  在执行每个阶段的整个过程中，设备会使用所报告的属性来更新进度。
+* 创建一个 Node.js 控制台应用，该应用通过 IoT 中心在模拟设备应用上调用 firmwareUpdate 直接方法。
+* 创建一个模拟设备应用，它实现的 firmwareUpdate 直接方法会执行等待下载固件映像、下载固件映像以及最后应用固件映像的多阶段过程。  在执行每个阶段的整个过程中，设备使用所报告属性来更新进度。
 
-在本教程结束时，用户有两个 Node.js 控制台应用程序：
+在本教程结束时，将会创建两个 Node.js 控制台应用：
 
 **dmpatterns_fwupdate_service.js**，它调用模拟设备应用中的直接方法、显示响应并定期（每隔 500 毫秒）显示更新的报告属性。
 
@@ -40,7 +40,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
 * Node.js 版本 0.12.x 或更高版本， <br/>  [准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
 
-按照[设备管理入门](iot-hub-node-node-device-management-get-started.md)一文创建 IoT 中心并获取连接字符串。
+按照[设备管理入门](iot-hub-node-node-device-management-get-started.md)一文创建 IoT 中心，并获取 IoT 中心连接字符串。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -49,9 +49,9 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 在本部分中，你将
 
-* 将创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法。
-* 触发模拟的固件更新
-* 使用报告的属性使设备克隆查询能够识别设备及其上次完成固件更新的时间
+* 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
+* 触发模拟固件更新
+* 使用报告属性使设备克隆查询能够识别设备及其上次完成固件更新的时间
 
 1. 新建名为 **manageddevice** 的空文件夹。  在 **manageddevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
    
@@ -72,13 +72,13 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。  
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. 添加用来更新报告的属性的以下函数
+6. 添加用于更新报告属性的以下函数
    
     ```
     var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
@@ -94,7 +94,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       });
     };
     ```
-7. 添加用来模拟固件映像的下载和应用的以下函数。
+7. 添加用于模拟固件映像的下载和应用的以下函数。
    
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -116,7 +116,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       callback(error);
     }
     ```
-8. 添加通过报告的属性将固件更新状态更新为“正在等待下载”的以下函数。  通常，设备会收到有关可用更新的通知，并且管理员定义的策略会使设备开始下载和应用更新。  这是用于启用该策略的逻辑运行的位置。  为简单起见，我们会延迟 4 秒，然后继续下载固件映像。 
+8. 添加通过报告属性将固件更新状态更新为“正在等待下载”的以下函数。  通常，设备会收到有关可用更新的通知，并且管理员定义的策略会使设备开始下载和应用更新。  这是用于启用该策略的逻辑运行的位置。  为简单起见，我们会延迟 4 秒，然后继续下载固件映像。 
    
     ```
     var waitToDownload = function(twin, fwPackageUriVal, callback) {
@@ -131,7 +131,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       setTimeout(callback, 4000);
     };
     ```
-9. 添加通过报告的属性将固件更新状态更新为“正在下载固件映像”的以下函数。  它会追踪模拟固件下载，最后更新固件更新状态以告知下载成功或失败。
+9. 添加通过报告属性将固件更新状态更新为“正在下载固件映像”的以下函数。  它会追踪模拟固件下载，最后更新固件更新状态以告知下载成功或失败。
    
     ```
     var downloadImage = function(twin, fwPackageUriVal, callback) {
@@ -168,7 +168,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
       }, 4000);
     }
     ```
-10. 添加通过报告的属性将固件更新状态更新为“正在应用固件映像”的以下函数。  它会追踪模拟固件映像的应用，最后更新固件更新状态以告知应用成功或失败。
+10. 添加通过报告属性将固件更新状态更新为“正在应用固件映像”的以下函数。  它会追踪模拟固件映像的应用，最后更新固件更新状态以告知应用成功或失败。
     
     ```
     var applyImage = function(twin, imageData, callback) {
@@ -342,7 +342,7 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. 在 **triggerfwupdateondevice** 文件夹的命令提示符处，运行以下命令以触发远程重新启动并查询设备克隆以查找上次重新启动时间。
+2. 在 **triggerfwupdateondevice** 文件夹的命令提示符处，运行以下命令以触发远程重新启动并查询设备孪生以查找上次重新启动时间。
    
     ```
     node dmpatterns_fwupdate_service.js
@@ -350,21 +350,21 @@ ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
 3. 可在控制台查看对直接方法的设备响应。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已使用了直接方法在设备上触发远程固件更新，并定期使用报告的属性了解固件更新过程的进度。  
+在本教程中，已使用直接方法在设备上触发远程固件更新，并定期使用报告属性了解固件更新过程的进度。  
 
-若要了解如何扩展 IoT 解决方案并在多个设备上计划方法调用，请参阅[安排和广播作业][lnk-tutorial-jobs]。
+若要了解如何扩展 IoT 解决方案以及在多个设备上计划方法调用，请参阅[计划和广播作业][lnk-tutorial-jobs]教程。
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
 [lnk-dm-getstarted]: iot-hub-node-node-device-management-get-started.md
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

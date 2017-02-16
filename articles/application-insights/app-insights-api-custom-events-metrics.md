@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: 460b9e3cf2b4c7a85895c2db872344a1a5bc0ff9
+ms.sourcegitcommit: d809bf7b5e271b8850dc0f2bc6dfd72e3ef8ad0a
+ms.openlocfilehash: 4f9b328968aca2c752b624941ec341a3a936aec3
 
 
 ---
@@ -46,7 +46,7 @@ API 在所有平台中是一致的，只有一些微小的差异。
 
   * [ASP.NET 项目][greenbrown]
   * [Java 项目][java]
-  * [每个网页中的 JavaScript][客户端]   
+  * [每个网页中的 JavaScript][client]   
 * 在设备或 Web 服务器代码中包含以下内容：
 
     *C#：* `using Microsoft.ApplicationInsights;`
@@ -75,7 +75,7 @@ TelemetryClient 是线程安全的。
 建议针对每个应用模块使用 `TelemetryClient` 的实例。 例如，可以在 Web 服务中使用一个 `TelemetryClient` 报告传入的 http 请求，在中间件类中使用另一个实例报告业务逻辑事件。 可以设置诸如 `TelemetryClient.Context.User.Id` 的属性来跟踪用户和会话，或设置 `TelemetryClient.Context.Device.Id` 来标识计算机。 此信息将附加到实例发送的所有事件。
 
 ## <a name="track-event"></a>跟踪事件
-在 Application Insights 中，*自定义事件*是可以在[指标资源管理器][指标]中显示为聚合计数，以及在[诊断搜索][诊断]中显示为单个项的数据点。 （它与 MVC 或其他框架“事件”不相关。）
+在 Application Insights 中，自定义事件是可以在[指标资源管理器][metrics]中显示为聚合计数，以及在[诊断搜索][diagnostic]中显示为单个项的数据点。 （它与 MVC 或其他框架“事件”不相关。）
 
 在代码中插入 TrackEvent 调用可以统计用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误。
 
@@ -157,7 +157,6 @@ TelemetryClient 是线程安全的。
 
 ![添加新图表或选择图表，然后在“自定义”下面选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
-可以[对指标数目使用一些限制](#limits)。
 
 ## <a name="page-views"></a>页面视图
 在设备或网页应用中，加载每个屏幕或页面时默认将发送页面视图遥测数据。 但是，可以更改为在其他时间或不同时间跟踪页面视图。 例如，在显示选项卡或边栏选项卡的应用中，可以在用户每次打开新边栏选项卡时跟踪一个“页面”。
@@ -261,7 +260,7 @@ TelemetryClient 是线程安全的。
 ![相关项](./media/app-insights-api-custom-events-metrics/21.png)
 
 ## <a name="track-exception"></a>跟踪异常
-将异常发送到 Application Insights：[统计异常][指标]来指明问题的频率；[检查单个异常][诊断]。 报告包含堆栈跟踪。
+将异常发送到 Application Insights：[统计异常][metrics]来指明问题的频率；[检查单个异常][diagnostic]。 报告包含堆栈跟踪。
 
 *C#*
 
@@ -299,9 +298,9 @@ SDK 将自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
     ```
 
 ## <a name="track-trace"></a>跟踪线索
-使用此选项可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索][诊断]中检查。
+使用此选项可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索][diagnostic]中检查。
 
-[日志适配器][跟踪]使用此 API 将第三方日志发送到门户。
+[日志适配器][trace]使用此 API 将第三方日志发送到门户。
 
 *C#*
 
@@ -320,7 +319,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-这使你可以在“搜索”[][诊断]中轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
+这使你可以在[“搜索”][diagnostic]中轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
 
 ## <a name="track-dependency"></a>跟踪依赖项
 可以使用此调用于跟踪响应时间以及调用外部代码片段的成功率。 结果将显示在门户上的依赖项图表中。
@@ -396,7 +395,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 在[指标资源管理器](app-insights-metrics-explorer.md)中可以创建统计**已经过身份验证的用户**和**用户帐户**的图表。
 
-还可以[搜索][诊断]具有特定用户名和帐户的客户端数据点。
+还可以[搜索][diagnostic]具有特定用户名和帐户的客户端数据点。
 
 ## <a name="a-namepropertiesafilter-search-and-segment-your-data-with-properties"></a><a name="properties"></a>使用属性对数据进行筛选、搜索和分段
 可以将属性和度量值附加到事件（以及指标、页面视图、异常和其他遥测数据）。
@@ -493,7 +492,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 ![在“搜索”中键入搜索词](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-5.png)
 
-[详细了解搜索表达式][诊断]。
+[详细了解搜索表达式][diagnostic]。
 
 #### <a name="alternative-way-to-set-properties-and-metrics"></a>设置属性和指标的替代方法
 如果更方便的话，可以收集不同对象中的事件的参数：
@@ -598,7 +597,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config][配置] 中的相关行。 例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config][config] 中的相关行。 例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 ## <a name="a-namedebugadeveloper-mode"></a><a name="debug"></a>开发人员模式
 在调试期间，通过管道加速遥测会很有效，这样可以立即看到结果。 此外，还可以获得其他消息来帮助跟踪任何遥测问题。 在生产环境中请关闭此模式，因为它可能会拖慢应用。
@@ -621,7 +620,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 
 ## <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
-若要避免混合来自开发、测试和生产环境的遥测，可以[创建单独的 Application Insights 资源][创建]，并根据环境更改其密钥。
+若要避免混合来自开发、测试和生产环境的遥测，可以[创建单独的 Application Insights 资源][create]，并根据环境更改其密钥。
 
 无需从配置文件获取检测密钥，可以在代码中设置密钥。 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 
@@ -661,7 +660,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 
     telemetry.Context.Operation.Name = "MyOperationName";
 
-如果自行设置这些值，请考虑从 [ApplicationInsights.config][配置] 中删除相关的代码行，以便你的值与标准值不会造成混淆。
+如果自行设置这些值，请考虑从 [ApplicationInsights.config][config] 中删除相关的代码行，以便你的值与标准值不会造成混淆。
 
 * **Component** 标识应用及其版本
 * **Device** 应用运行所在的设备的相关数据（在 Web 应用中，这是发送遥测数据的服务器或客户端设备）
@@ -684,7 +683,7 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 
 *数据保留多长时间？*
 
-* 请参阅[数据保留和隐私][数据]。
+* 请参阅[数据保留和隐私][data]。
 
 ## <a name="reference-docs"></a>参考文档
 * [ASP.NET 参考](https://msdn.microsoft.com/library/dn817570.aspx)
@@ -710,28 +709,28 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
     是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[从 Analytics 导出到 Power BI](app-insights-export-power-bi.md) 和[连续导出](app-insights-export-telemetry.md)。
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
-[搜索事件和日志][诊断]
+[搜索事件和日志][diagnostic]
 
 [示例和演练](app-insights-code-samples.md)
 
-[故障排除][问题与解答]
+[故障排除][qna]
 
 <!--Link references-->
 
-[客户端]: app-insights-javascript.md
-[配置]: app-insights-configuration-with-applicationinsights-config.md
-[创建]: app-insights-create-new-resource.md
-[数据]: app-insights-data-retention-privacy.md
-[诊断]: app-insights-diagnostic-search.md
-[异常]: app-insights-asp-net-exceptions.md
+[client]: app-insights-javascript.md
+[config]: app-insights-configuration-with-applicationinsights-config.md
+[create]: app-insights-create-new-resource.md
+[data]: app-insights-data-retention-privacy.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-asp-net-exceptions.md
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
-[指标]: app-insights-metrics-explorer.md
-[问题与解答]: app-insights-troubleshoot-faq.md
-[跟踪]: app-insights-search-diagnostic-logs.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
+[trace]: app-insights-search-diagnostic-logs.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
 translationtype: Human Translation
-ms.sourcegitcommit: 460d26bad4407de32f0e805063e0699ff3a31dbd
-ms.openlocfilehash: 62a3e78c95a39aa03ea1130e10950531dc60788e
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
 
 ---
 
@@ -152,7 +152,7 @@ Microsoft Azure 提供了多种服务，以便你可以管理网络流量的分�
 
 在此方案中，负载均衡器将连接从 Web 层分发到高可用性群集中的数据库。
 
-如果高可用性数据库群集使用 SQL Server AlwaysOn，请参阅[配置一个或多个 Always On 可用性组侦听器](../virtual-machines/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)了解分步说明。
+如果高可用性数据库群集使用 SQL Server AlwaysOn，请参阅[配置一个或多个 Always On 可用性组侦听器](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)了解分步说明。
 
 有关配置内部负载均衡器的详细信息，请参阅[在 Azure 门户中创建内部负载均衡器](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)。
 
@@ -213,6 +213,6 @@ Microsoft Azure 提供了多种服务，以便你可以管理网络流量的分�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

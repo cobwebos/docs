@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2016
+ms.date: 12/06/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8ca237470eb98f712bb286110b4e300cdaf0a6c4
+ms.sourcegitcommit: 74ad61e9fea56a17d2563a0e1b2364777c44856e
+ms.openlocfilehash: 3552caf7e419459095321b3b248ba441097766f4
 
 
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure 密钥保管库服务限制
-以下是适用于 Azure 密钥保管库的服务限制。
+以下是 Azure 密钥保管库的服务限制。
 
 [!INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

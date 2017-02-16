@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL 数据库顾问"
+title: "Azure SQL 数据库的性能建议 | Microsoft Docs"
 description: "Azure SQL 数据库顾问为你的现有 SQL 数据库提供建议，这样可以提高当前的查询性能。"
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f7bffa4f13d7a4fa0ea3c120a826638ee5d6c65a
+ms.sourcegitcommit: 5df30f24a8e7370ac33c72641f05138776e24bb0
+ms.openlocfilehash: 55502f346eaf5ccf76d6f1c03487e95f0b93e3f5
 
 
 ---
@@ -79,6 +79,6 @@ Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

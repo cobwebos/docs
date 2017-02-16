@@ -1,5 +1,5 @@
 ---
-title: "用于准备数据以增强机器学习的任务 | Microsoft Docs"
+title: "清理和准备 Azure 机器学习的数据 | Microsoft 文档"
 description: "预处理和清理数据以为机器学习做准备。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0ffbee64cd43e0b5da09595638df771629daca38
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
 
 
 ---
@@ -106,6 +106,6 @@ ms.openlocfilehash: 0ffbee64cd43e0b5da09595638df771629daca38
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

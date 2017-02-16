@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "了解如何设置组织可在其中查找、了解和使用数据源的数据目录。 教程、API 参考和其他文档。"
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 7c2c989ca2119f7a2c14ca55a56a2bce69d94efa
+ms.sourcegitcommit: f41d4b06dfd385761780655971f69090050b967c
+ms.openlocfilehash: fed1fedd352b0bfab1729786eda990e78e14fbd1
 
 ---
 #<a name="data-catalog-documentation"></a>数据目录文档
 
-Azure 数据目录是完全托管的云服务，可让用户发现所需的数据源，理解他们找到的数据源，同时帮助组织从现有投资中获得更大的价值。 任何用户（从分析师到数据专家再到开发人员）都可以使用数据目录提供的功能来发现、理解和使用数据源。 数据目录包含元数据和批注的众包模型，可让所有用户运用他们的知识来构建数据社区和文化。
+了解如何使用可帮助组织与团队发现、了解和使用数据源的数据目录。 教程、REST API 参考和其他文档介绍了如何规划和设置数据存储库，数据使用者可在其中发现可用数据源，学习主题专家分享的知识。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -75,6 +76,7 @@ Azure 数据目录是完全托管的云服务，可让用户发现所需的数�
 </div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

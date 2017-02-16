@@ -13,23 +13,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
 
 
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Solr
-本主题介绍如何使用脚本操作在 Azure HDInsight 上安装 Solr。 Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。 在 HDInsight 群集上安装了 Solr 后，你还将学习如何通过使用 Solr 搜索数据。
+本主题介绍如何使用脚本操作在 Azure HDInsight 上安装 Solr。 Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。 在 HDInsight 群集上安装了 Solr 后，还将学习如何通过使用 Solr 搜索数据。
 
-> [!NOTE]
-> 本文档中的步骤要求使用基于 Linux 的 HDInsight 群集。 有关在基于 Windows 的群集中使用 Solr 的信息，请参阅[在 HDInsight Hadoop 群集 (Windows) 上安装并使用 Solr](hdinsight-hadoop-solr-install.md)
-> 
-> 
+> [!IMPORTANT]
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
-本主题中使用的示例脚本将使用特定配置创建 Solr 群集。 如果你要使用不同集合、分片、架构、副本等配置 Solr 群集，则必须相应地修改脚本和 Solr 二进制文件。
+本主题中使用的示例脚本将使用特定配置创建 Solr 群集。 如果要使用不同集合、分片、架构、副本等配置 Solr 群集，则必须相应地修改脚本和 Solr 二进制文件。
 
 ## <a name="a-namewhatisawhat-is-solr"></a><a name="whatis"></a>什么是 Solr？
 [Apache Solr](http://lucene.apache.org/solr/features.html) 是一种企业搜索平台，用于对数据实现功能强大的全文搜索。 虽然 Hadoop 可用于存储和管理大量数据，但是，Apache Solr 提供了快速检索数据的搜索功能。 本主题提供有关如何自定义 HDInsight 群集以安装 Solr 的说明。
@@ -37,7 +35,7 @@ ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
 > [!WARNING]
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 > 
-> 自定义组件（如 Solr）可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求你参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件（如 Solr）可获得合理范围的支持，以帮助进一步排查问题。 这可能导致问题解决，或要求你参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 > 
 > 
 
@@ -75,7 +73,7 @@ ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
 
 ## <a name="a-nameusesolrahow-do-i-use-solr-in-hdinsight"></a><a name="usesolr"></a>如何在 HDInsight 中使用 Solr？
 ### <a name="indexing-data"></a>为数据编制索引
-你必须从使用一些数据文件为 Solr 编制索引开始。 然后，可以使用 Solr 对索引数据运行搜索查询。 使用以下步骤将一些示例数据添加到 Solr，然后查询这些数据：
+必须从使用一些数据文件为 Solr 编制索引开始。 然后，可以使用 Solr 对索引数据运行搜索查询。 使用以下步骤将一些示例数据添加到 Solr，然后查询这些数据：
 
 1. 使用 SSH 连接到 HDInsight 群集：
    
@@ -97,7 +95,7 @@ ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
         cd /usr/hdp/current/solr/example/exampledocs
         java -jar post.jar solr.xml monitor.xml
    
-    你将会在控制台上看到以下输出：
+    控制台上会显示以下输出：
    
         POSTing file solr.xml
         POSTing file monitor.xml
@@ -106,7 +104,7 @@ ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
         Time spent: 0:00:01.624
    
     post.jar 实用程序通过以下两个示例文档为 Solr 编制索引：**solr.xml** 和 **monitor.xml**。 这些信息存储在 Solr 中的 **collection1** 内。
-3. 使用以下命令来查询 Solr 公开的 REST API：
+3. 使用以下命令查询 Solr 公开的 REST API：
    
         curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
    
@@ -165,7 +163,7 @@ ms.openlocfilehash: a14da5bb0df25a2370e2a6a29b770f8673330a3c
               }
 
 ### <a name="using-the-solr-dashboard"></a>使用 Solr 仪表板
-Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。 Solr 仪表板不会直接从 HDInsight 群集公开到 Internet，必须使用 SSH 隧道来访问它。 有关使用 SSH 隧道的详细信息，请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)
+Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。 Solr 仪表板不会直接从 HDInsight 群集公开到 Internet，必须使用 SSH 隧道访问。 有关使用 SSH 隧道的详细信息，请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
 创建 SSH 隧道后，请执行以下步骤来使用 Solr 仪表板：
 
@@ -188,13 +186,13 @@ Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。 Sol
        这是应在以下步骤中使用的主机名。
 2. 在浏览器中，连接到 **http://HOSTNAME:8983/solr/#/**，其中 **HOSTNAME** 是在前面步骤中确定的名称。 
    
-    应该通过 SSH 隧道将请求路由到 HDInsight 群集的头节点。 你应看到类似于下面的页面：
+    应该通过 SSH 隧道将请求路由到 HDInsight 群集的头节点。 应出现类似于下面的页面：
    
     ![Solr 仪表板图像](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
 3. 在左窗格中，使用“核心选择器”下拉列表选择 **collection1**。 然后，**collection1** 下面应会出现多个条目。
 4. 从 **collection1** 下面的条目中选择“查询”。 使用以下值来填充搜索页：
    
-   * 在 **q** 文本框中，输入 **\*:**\*。 此时将返回所有已在 Solr 中编制索引的文档。 如果你要在文档中搜索特定字符串，则可以在此处输入该字符串。
+   * 在 **q** 文本框中，输入 **\*:**\*。 此时将返回所有已在 Solr 中编制索引的文档。 如果要在文档中搜索特定字符串，则可以在此处输入该字符串。
    * 在 **wt** 文本框中，选择输出格式。 默认值为 **json**。
      
      最后，选择搜索页面底部的“执行查询”按钮。
@@ -305,13 +303,13 @@ Solr 仪表板是一个 Web UI，可让你通过 Web 浏览器使用 Solr。 Sol
 * [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 Hue 是一个 Web UI，可让你轻松地创建、运行和保存 Pig 与 Hive 作业，以及浏览 HDInsight 群集的默认存储。
 * [在 HDInsight 群集上安装 R][hdinsight-install-r]。 使用群集自定义在 HDInsight Hadoop 群集上安装 R。 R 是一种用于统计计算的开放源代码语言和环境。 它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。 它还提供了各种图形功能。
 * [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
-* [在 HDInsight 群集上安装 Hue](hdinsight-hadoop-hue-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Hue。 Hue 是用来与 Hadoop 群集交互的一系列 Web 应用程序。
+* [在 HDInsight 群集上安装 Hue](hdinsight-hadoop-hue-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Hue。 Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "检测, 会审, 诊断"
+title: "检测和诊断 Web 应用问题 - Azure Application Insights | Microsoft Docs"
 description: "分析崩溃，并检测和诊断应用程序中的性能问题"
 author: alancameronwills
 services: application-insights
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 9589adad2f8f227043b2c8f864a48d1c9ba43732
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: c63bad2cbf362e10b1fd901d6c22fa25524afbac
 
 
 ---
@@ -235,6 +235,6 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

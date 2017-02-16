@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 管理服务总线 | Microsoft 文档"
+title: "使用 PowerShell 管理 Azure 服务总线 | Microsoft Docs"
 description: "使用 PowerShell 脚本管理服务总线"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/12/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ea48cceb265a90138d9618b3e4ab94aef60ad2d4
+ms.sourcegitcommit: 61f31c8ad0463776937f366d145595f04cc42d2e
+ms.openlocfilehash: 24dd8757942488aa8364cc6cf968cfc17299699f
 
 
 ---
@@ -27,12 +27,12 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中�
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有以下先决条件：
 
-* Azure 订阅。 Azure 是基于订阅的平台。 有关获取订阅的详细信息，请参阅[购买选项][购买选项]、[成员优惠][成员优惠]或[免费试用][免费试用]。
-* 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
+* Azure 订阅。 Azure 是基于订阅的平台。 有关获取订阅的详细信息，请参阅[购买选项][Purchase Options]、[成员优惠][Member Offers]或[免费试用][Free Trial]。
+* 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell][Install and configure Azure PowerShell]。
 * 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 
 ## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>包含对适用于服务总线的 .NET 程序集的引用
-通过有限数量的 PowerShell cmdlet 可以管理 Service Bus。 若要预配未通过现有 cmdlet 公开的实体，可对[Service Bus NuGet package][Service Bus NuGet package]中的服务总线使用 .NET 客户端。
+通过有限数量的 PowerShell cmdlet 可以管理 Service Bus。 若要预配未通过现有 cmdlet 公开的实体，可对[服务总线 NuGet 包][Service Bus NuGet package]中的服务总线使用 .NET 客户端。
 
 首先，请确保该脚本可以找到随 NuGet 包一起安装的 **Microsoft.ServiceBus.dll** 程序集。 为了灵活起见，该脚本执行以下步骤：
 
@@ -43,17 +43,17 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中�
 
 下面说明如何在 PowerShell 脚本中实现这些步骤：
 
-```
+```powershell
 try
 {
     # WARNING: Make sure to reference the latest version of Microsoft.ServiceBus.dll
-    Write-Output "Adding the [Microsoft.ServiceBus.dll] assembly to the script..."
+    Write-Host "Adding the [Microsoft.ServiceBus.dll] assembly to the script..."
     $scriptPath = Split-Path (Get-Variable MyInvocation -Scope 0).Value.MyCommand.Path
     $packagesFolder = (Split-Path $scriptPath -Parent) + "\packages"
     $assembly = Get-ChildItem $packagesFolder -Include "Microsoft.ServiceBus.dll" -Recurse
     Add-Type -Path $assembly.FullName
 
-    Write-Output "The [Microsoft.ServiceBus.dll] assembly has been successfully added to the script."
+    Write-Host "The [Microsoft.ServiceBus.dll] assembly has been successfully added to the script."
 }
 
 catch [System.Exception]
@@ -79,7 +79,7 @@ catch [System.Exception]
 2. 如果找到该命名空间，则报告它找到的内容。
 3. 如果找不到该命名空间，则会创建该命名空间，然后检索新创建的命名空间。
    
-    ```
+    ```powershell
     $Namespace = "MyServiceBusNS"
     $Location = "West US"
    
@@ -89,12 +89,12 @@ catch [System.Exception]
     # Check if the namespace already exists or needs to be created
     if ($CurrentNamespace)
     {
-        Write-Output "The namespace [$Namespace] already exists in the [$($CurrentNamespace.Region)] region."
+        Write-Host "The namespace [$Namespace] already exists in the [$($CurrentNamespace.Region)] region."
     }
     else
     {
         Write-Host "The [$Namespace] namespace does not exist."
-        Write-Output "Creating the [$Namespace] namespace in the [$Location] region..."
+        Write-Host "Creating the [$Namespace] namespace in the [$Location] region..."
         New-AzureSBNamespace -Name $Namespace -Location $Location -CreateACSNamespace $false -NamespaceType Messaging
         $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
         Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
@@ -104,16 +104,16 @@ catch [System.Exception]
 若要预配其他服务总线实体，请从 SDK 创建 [NamespaceManager][NamespaceManager] 类的实例。
 可以使用 [Get-AzureSBAuthorizationRule][Get-AzureSBAuthorizationRule] cmdlet 来检索用于提供连接字符串的授权规则。 我们将在 `$NamespaceManager` 变量中存储对 `NamespaceManager` 实例的引用。 我们稍后将在脚本中使用 `$NamespaceManager` 来预配其他实体。
 
-``` powershell
+```powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
 # Create the NamespaceManager object to create the event hub
-Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
+Write-Host "Creating a NamespaceManager object for the [$Namespace] namespace..."
 $NamespaceManager = [Microsoft.ServiceBus.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
-Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
+Write-Host "NamespaceManager object for the [$Namespace] namespace has been successfully created."
 ```
 
 ## <a name="provisioning-other-service-bus-entities"></a>设置其他 Service Bus 实体
-若要预配其他实体（如队列、主题和事件中心），请使用[.NET API for Service Bus][.NET API for Service Bus]。 本文着重于事件中心，但对其他实体的步骤是类似的。 此外，本文末尾提到了更多详细示例（包括其他实体）。
+若要预配其他实体（如队列、主题和事件中心），请使用[适用于服务总线的 .NET API][适用于服务总线的 .NET API]。 本文着重于事件中心，但对其他实体的步骤是类似的。 此外，本文末尾提到了更多详细示例（包括其他实体）。
 
 此部分脚本将再创建四个本地变量。 这些变量用于实例化 `EventHubDescription` 对象。 此脚本执行以下任务：
 
@@ -121,7 +121,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 2. 如果不存在，将创建 `EventHubDescription` 并将其传递到 `NamespaceManager` 类的 `CreateEventHubIfNotExists` 方法。
 3. 确定事件中心可用后，请使用 `ConsumerGroupDescription` 和 `NamespaceManager` 创建使用者组。
    
-    ```
+    ```powershell
     $Path  = "MyEventHub"
     $PartitionCount = 12
     $MessageRetentionInDays = 7
@@ -131,32 +131,32 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
     # Check to see if the Event Hub already exists
     if ($NamespaceManager.EventHubExists($Path))
     {
-        Write-Output "The [$Path] event hub already exists in the [$Namespace] namespace."  
+        Write-Host "The [$Path] event hub already exists in the [$Namespace] namespace."  
     }
     else
     {
-        Write-Output "Creating the [$Path] event hub in the [$Namespace] namespace: PartitionCount=[$PartitionCount] MessageRetentionInDays=[$MessageRetentionInDays]..."
+        Write-Host "Creating the [$Path] event hub in the [$Namespace] namespace: PartitionCount=[$PartitionCount] MessageRetentionInDays=[$MessageRetentionInDays]..."
         $EventHubDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.EventHubDescription -ArgumentList $Path
         $EventHubDescription.PartitionCount = $PartitionCount
         $EventHubDescription.MessageRetentionInDays = $MessageRetentionInDays
         $EventHubDescription.UserMetadata = $UserMetadata
         $EventHubDescription.Path = $Path
-        $NamespaceManager.CreateEventHubIfNotExists($EventHubDescription);
-        Write-Output "The [$Path] event hub in the [$Namespace] namespace has been successfully created."
+        $NamespaceManager.CreateEventHubIfNotExists($EventHubDescription)
+        Write-Host "The [$Path] event hub in the [$Namespace] namespace has been successfully created."
     }
    
     # Create the consumer group if it doesn't exist
-    Write-Output "Creating the consumer group [$ConsumerGroupName] for the [$Path] event hub..."
+    Write-Host "Creating the consumer group [$ConsumerGroupName] for the [$Path] event hub..."
     $ConsumerGroupDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.ConsumerGroupDescription -ArgumentList $Path, $ConsumerGroupName
     $ConsumerGroupDescription.UserMetadata = $ConsumerGroupUserMetadata
-    $NamespaceManager.CreateConsumerGroupIfNotExists($ConsumerGroupDescription);
-    Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
+    $NamespaceManager.CreateConsumerGroupIfNotExists($ConsumerGroupDescription)
+    Write-Host "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
     ```
 
 ## <a name="migrate-a-namespace-to-another-azure-subscription"></a>将命名空间迁移到另一个 Azure 订阅中
 下面的命令序列将命名空间从一个 Azure 订阅迁移到另一个 Azure 订阅中。 若要执行此操作，该命名空间必须已经处于活动状态，并且运行 PowerShell 命令的用户必须同时是源和目标订阅上的管理员。
 
-```
+```powershell
 # Create a new resource group in target subscription
 Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
 New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
@@ -180,19 +180,18 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 * [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Link references-->
-[购买选项]: http://azure.microsoft.com/pricing/purchase-options/
-[成员优惠]: http://azure.microsoft.com/pricing/member-offers/
-[免费试用]: http://azure.microsoft.com/pricing/free-trial/
-[安装和配置 Azure PowerShell]: ../powershell-install-configure.md
-[Service Bus NuGet package]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/（服务总线 NuGet 包）
-[Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
-[New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
-[Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
-[.NET API for Service Bus]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.aspx（适用于服务总线的 .NET API）
-[NamespaceManager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
+[Purchase Options]: http://azure.microsoft.com/pricing/purchase-options/
+[Member Offers]: http://azure.microsoft.com/pricing/member-offers/
+[Free Trial]: http://azure.microsoft.com/pricing/free-trial/
+[Install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Service Bus NuGet package]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/
+[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/servicemanagement/azure.compute/v1.6.1/Get-AzureSBNamespace
+[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/servicemanagement/azure.compute/v1.6.1/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/servicemanagement/azure.compute/v1.6.1/get-azuresbauthorizationrule
+[NamespaceManager]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

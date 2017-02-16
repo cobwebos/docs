@@ -1,5 +1,5 @@
 ---
-title: "Azure AD 令牌引用 | Microsoft Docs"
+title: "了解 Azure AD 支持的不同令牌和声明类型 | Microsoft Docs"
 description: "本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明。"
 documentationcenter: na
 author: bryanla
@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 796b892d555ea114af330117365e3d0a0f622f3f
+ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
+ms.openlocfilehash: 4612c1f516dca51aea925343f79649761448c05d
 
 
 ---
@@ -304,6 +304,6 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

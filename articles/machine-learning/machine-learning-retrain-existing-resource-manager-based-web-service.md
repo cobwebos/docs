@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e7eecd1387823100af2e44f918450db3301f55fd
+ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
+ms.openlocfilehash: adf31b2e309e4ec19bb19e5683bd5298d27ad3eb
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: e7eecd1387823100af2e44f918450db3301f55fd
    6. 使用新的 Web 服务定义更新 Web 服务。
 
 ## <a name="deploy-the-training-experiment"></a>部署训练实验
-若要将训练实验部署为重新训练的 Web 服务，必须将 Web 服务输入和输出添加到模型。 将“Web 服务输出”模块连接到实验*[训练模型][train-model]*模块，使训练实验能够生成一个新的训练模型，可以在预测实验中使用它。 如果有“评估模型”模块，还可以附加 Web 服务输出，可将评估结果作为输出。
+若要将训练实验部署为重新训练的 Web 服务，必须将 Web 服务输入和输出添加到模型。 通过将“Web 服务输出”模块连接到实验的*[训练模型][train-model]*模块，训练实验能够生成一个新的训练模型，可以在预测实验中使用它。 如果有“评估模型”模块，还可以附加 Web 服务输出，可将评估结果作为输出。
 
 若要更新训练实验：
 
@@ -182,7 +182,7 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 ## <a name="update-the-web-service"></a>更新 Web 服务
 最后，使用 [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) cmdlet 更新预测实验。
 
-    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -
+    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
 [1]: ./media/machine-learning-retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png
 [4]: ./media/machine-learning-retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png
@@ -193,6 +193,6 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

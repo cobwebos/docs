@@ -1,5 +1,5 @@
 ---
-title: "管理 Application Insights 的功能和数据量 | Microsoft Docs"
+title: "管理 Application Insights 的定价和数据量 | Microsoft 文档"
 description: "在 Application Insights 中管理遥测量并监视成本。"
 services: application-insights
 documentationcenter: 
@@ -11,34 +11,83 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 01/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 3fdb050d1d6746313b2dffb089d56b71908335d2
-ms.openlocfilehash: 585e493b2642b3ba798977528f7564674a44d738
+ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
+ms.openlocfilehash: b1691d78e4914bd5cf9c75e32f36afceb997a622
 
 
 ---
-# <a name="manage-features-and-data-volume-in-application-insights"></a>在 Application Insights 中管理功能和数据量
+# <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
 
 
-[Azure Application Insights][启动] 的定价以每个应用程序的数据量为基础。 如果开发期间的应用使用率或小型应用的使用率较低，则可能不会产生费用，因为每月会提供一定的免费遥测数据。
+[Azure Application Insights][start] 的定价以每个应用程序的数据量为基础。 如果开发期间的应用使用率或小型应用的使用率较低，则可能不会产生费用，因为每月会提供 1 GB 的遥测数据限额。
 
 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的账单中产生相应费用。
 
 目前有两种定价计划。 默认的计划称为基本定价计划。 可以选择按日计费的企业计划，但会启用某些其他功能，例如[连续导出](app-insights-export-telemetry.md)。
 
-[请参阅定价计划][定价]。
+如果对 Application Insights 的定价方式存在疑问，欢迎在我们的[论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights)提出问题。 
 
-## <a name="review-pricing-plan-for-your-application-insights-resource"></a>查看 Application Insights 资源的定价计划
+## <a name="the-pricing-plans"></a>定价计划
+
+如需当前价格（你所使用的货币），请参阅 [Application Insights 定价页][pricing]。
+
+### <a name="basic-plan"></a>基本计划
+
+创建新的 Application Insights 资源时，基本计划是默认的计划，满足大多数客户的要求。
+
+* 在基本计划中，将按数据量（Application Insights 收到的遥测数据的字节数）对用户收费。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。
+* 每个应用的头 1 GB 免费，因此，如果只是进行试验或开发，可能不需付费。
+* [连续导出](app-insights-export-telemetry.md)和 [Log Analytics 连接器](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)已推出，在使用基本计划时需额外付费（按 GB），但在 2017 年 3 月初之前仍属免费。
+
+### <a name="enterprise-plan"></a>企业计划
+
+* 在企业计划中，应用可以使用 Application Insights 的所有功能。 [连续导出](app-insights-export-telemetry.md)和 [Log Analytics 连接器](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)已推出，在使用企业计划时不额外收费。
+* 将按在企业计划中为任何应用发送遥测数据的节点收费。 
+ * *节点* 是托管应用的物理/虚拟服务器计算机或平台即服务角色实例。
+ * 开发计算机、客户端浏览器和移动设备不计为节点。
+ * 如果应用有多个组件（例如 Web 服务和后端辅助角色）发送遥测数据，则会对其分开计数。
+* 在订阅中，将按节点而非应用计费。 如果有 5 个节点在为 12 个应用发送遥测数据，则按 5 个节点计费。
+* 虽然是按月计费，但对于从应用发送遥测数据的节点来说，实际上是按小时计费。 小时费率为月费/744（每月的小时数，每月按 31 天算）。
+* 每天为每个检测到的节点分配的数据量为 200 MB（时间粒度为小时）。 分配的数据如果未使用，不会从当天转到第二天。
+ * 如果选择“企业”定价选项，将根据该订阅中向 Application Insights 资源发送遥测数据的节点数为每个订阅提供每日数据限额。 因此，如果全天有 5 个节点在发送数据，则该订阅中的所有 Application Insights 资源可以共用 1 GB 的数据限额。 无所谓某些节点是否比其他节点发送更多数据，因为所有节点发送的数据都计入同一个数据限额。 如果 Application Insights 资源在特定的某一天收到的数据量超出了为该订阅分配的每日数据限额，则会对超额数据按 GB 计费。 
+ * 每日数据限额的计算方式为所有节点在一天中发送遥测数据的小时数（使用 UTC 计时方式）除以 24 再乘以 200 MB。 因此，如果有 4 个节点在一天 24 小时的 15 小时内发送遥测数据，则当天的数据限额为 ((4 x 15) / 24) x 200 MB = 500 MB。 超额数据的价格为 2.30 美元/GB，如果当天发送了 1 GB 的数据，则收费 1.15 美元。
+ * 请注意，企业计划的每日限额不能与选择了“基本”选项的应用程序共享，未使用的限额不能从当天转到第二天。 
+* 下面是一些示例，说明了如何确定不同的节点计数：
+| 方案                               | 每日节点计数总数 |
+|:---------------------------------------|:----------------:|
+| 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
+| 3 个应用程序运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，所用计划为企业计划 | 2 | 
+| 4 个应用程序的 Applications Insights 资源属于同一订阅。 每个应用程序在 16 小时的非高峰时段内运行 2 个实例，在 8 小时的高峰时段内运行 4 个实例。 | 13.33 | 
+| 云服务有 1 个辅助角色和 1 个 Web 角色，每个角色运行 2 个实例 | 4 | 
+| 5 节点型 Service Fabric 群集运行 50 个微服务，每个微服务运行 3 个实例 | 5|
+
+* 若要进行精确的节点计数，必须了解应用程序在使用哪个 Application Insights SDK。 
+  * 在 SDK 2.2 及更高版本中，Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 都会将每个应用程序主机作为节点进行报告，例如会报告物理服务器和 VM 主机的计算机名称，而在使用云服务时，则会报告实例名称。  唯一的例外是应用程序仅使用 [.NET Core](https://dotnet.github.io/) 和 Application Insights Core SDK，这种情况下，所有主机只会报告一个节点，因为主机名不可用。 
+  * 就早期版本的 SDK 来说，[Web SDK}(https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 的行为与新版 SDK 并无二致，而 [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 则只会报告一个节点，不管实际应用程序主机的数目是多少。 
+  * 请注意，如果应用程序通过 SDK 将 roleInstance 设置为自定义值，则会默认使用该值确定节点计数。 
+  * 如果对应用使用新版 SDK，而该应用在客户端计算机或移动设备中运行，则节点计数可能会返回很大的数目（在客户端计算机或移动设备数目很大的情况下）。 
+
+### <a name="multi-step-web-tests"></a>多步骤 Web 测试
+
+[多步骤 Web 测试](app-insights-monitor-web-app-availability.md#multi-step-web-tests)会额外收费。 此类测试是指执行一系列操作的 Web 测试。 
+
+单页“ping 测试”不单独计费。 进行 ping 测试和多步测试时发送的遥测数据将与应用发送的其他遥测数据一起计费。
+
+## <a name="review-pricing-plan-and-estimate-costs-for-your-application-insights-resource"></a>查看 Application Insights 资源的定价计划并进行费用估算
 在应用程序的 Application Insights 资源中打开“功能 + 定价”边栏选项卡。
 
 ![选择“定价”。](./media/app-insights-pricing/01-pricing.png)
 
-1. 查看当月数据量。 这包括接收和保留的所有数据（在通过服务器和客户端应用以及可用性测试进行[采样](app-insights-sampling.md)后）。
-2. 会单独对[多步骤 Web 测试](app-insights-monitor-web-app-availability.md#multi-step-web-tests)计费。 （这不包括简单可用性测试，它已包括在数据量费用中。）
-3. 启用企业计划提供的其他功能。 此计划中不含免费数据量。
-4. 单击数据管理选项设置每日上限或设置引入采样。
+**a.** 查看当月数据量。 这包括接收和保留的所有数据（在通过服务器和客户端应用以及可用性测试进行[采样](app-insights-sampling.md)后）。
+
+**b.** 会单独对[多步骤 Web 测试](app-insights-monitor-web-app-availability.md#multi-step-web-tests)计费。 （这不包括简单可用性测试，它已包括在数据量费用中。）
+
+**c.** 启用企业计划。
+
+**d.** 单击数据管理选项查看上月的数据量、设置每日上限或设置引入采样。
 
 Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计费”部分或在 [Azure Billing Portal](https://account.windowsazure.com/Subscriptions)（Azure 计费门户）查看 Azure 账单的详细信息。 
 
@@ -47,17 +96,12 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="data-rate"></a>数据速率
 发送数据时存在三种数量限值：
 
-* 每日上限。 默认设置为 100 GB/每日。 当应用达到上限时，我们将发送一封电子邮件，并丢弃超出的数据，直到当天结束。 可通过数据量管理边栏选项卡对其进行更改。
-* [采样](app-insights-sampling.md)。 此机制可减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。
-* “限制”会对每分钟的数据速率设限。 对于基本定价计划，限制为 5 分钟内平均 200 个数据点/秒，对于企业计划，为 1 分钟内平均 500点/秒。 
+* **每日上限。** 默认设置为 500 GB/天。 当应用达到上限时，我们将发送一封电子邮件，并丢弃超出的数据，直到当天结束。 可通过“数据量管理”边栏选项卡对其进行更改。
+* **[采样](app-insights-sampling.md)。** 此机制可减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。
+* **限制**：数据速率上限为每秒 16 k 事件，取 1 分钟的平均值。 
 
-对于限制，三个存储桶各自单独计算：
 
-* [TrackTrace 调用](app-insights-api-custom-events-metrics.md#track-trace)和[捕获日志](app-insights-asp-net-trace-logs.md)
-* [异常](app-insights-api-custom-events-metrics.md#track-exception)，限制为 50 点/秒。
-* 所有其他遥测（页面视图、会话、请求、依赖项、指标、自定义事件、web 测试结果）。
-
-*如果应用超过每秒速率，会发生什么情况？*
+*如果应用超过限制速率，会发生什么情况？*
 
 * 每分钟会评估一次应用发送的数据量。 如果超出一分钟内的平均每秒速率，服务器将拒绝某些请求。 SDK 会缓冲数据，然后尝试重新发送，导致数分钟内数据传输量激增。 如果应用连续以超出限制的速率发送数据，一些数据将被丢弃。 （ASP.NET、Java 和 JavaScript Sdk 会尝试以这种方式重新发送；其他 SDK 可能会丢弃超出限制的数据。）
 
@@ -71,7 +115,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="to-reduce-your-data-rate"></a>降低数据速率
 可通过以下操作降低数据量：
 
-* 降低每日数据量上限。 默认值为 100GB/日。
+* 降低每日数据量上限。 默认为 500 GB/天。
 * 使用[采样](app-insights-sampling.md)。 此技术可减少数据速率，同时不会影响指标的准确性，也不会中断在“搜索”中的相关项目之间导航的能力。 在服务器应用中，它会自动运行。
 * [限制可在每个页面视图中报告的 Ajax 调用数](app-insights-javascript.md#detailed-configuration)或关闭 Ajax 报告。
 * 通过[编辑 ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 关闭不需要的集合模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
@@ -108,6 +152,11 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 在每个保留的记录中，`itemCount` 指示它表示的原始记录数，其等于 1 +（即以前已放弃的记录数）。 
 
 
+## <a name="transition-from-the-old-pricing-tiers"></a>从旧的定价层转换
+
+在 2017 年 2 月以前，现有应用程序可以继续使用旧的定价层。 到那时，大多数应用程序将自动转为基本计划。 使用连续导出的应用程序或 OMS Log Analytics 的连接器将移到企业计划。
+
+
 ## <a name="limits-summary"></a>限制摘要
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
@@ -119,12 +168,12 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[启动]: app-insights-overview.md
-[定价]: http://azure.microsoft.com/pricing/details/application-insights/
+[start]: app-insights-overview.md
+[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

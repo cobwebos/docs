@@ -1,6 +1,6 @@
 ---
-title: "逻辑应用循环和范围 | Microsoft Docs"
-description: "在逻辑应用中处理循环和范围的不同方式概述"
+title: "在工作流是创建循环和范围或者解除批处理数据 - Azure 逻辑应用 | Microsoft 文档"
+description: "创建循环来迭代数据，将操作分组到范围，或者解除批处理数据，以便在 Azure 逻辑应用中启动更多工作流。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 2556e43bba8f2080e292be4c5a7f2145f5718e57
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: 63ac171494e13f4451d585c3b704727eeed94fab
 
 
 ---
@@ -159,6 +159,6 @@ SplitOn 可以在代码视图中指定，如以下示例所示。  这将接收�
 ```
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

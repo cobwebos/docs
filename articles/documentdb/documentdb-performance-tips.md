@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB 性能提示 | Microsoft Docs"
+title: "性能提示 - Azure DocumentDB NoSQL | Microsoft 文档"
 description: "了解用于提高 Azure DocumentDB 数据库性能的客户端配置选项"
 keywords: "如何提高数据库性能"
 services: documentdb
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 5b4efb2d6dedb43436745f5e8055cae44e4a58ac
+ms.sourcegitcommit: 25c48bbd0edafa4c6e4e478c471e11b6d69e00c7
+ms.openlocfilehash: e34571efac5d1a5e75d5e5d2cab75c91dbce71c8
 
 
 ---
@@ -37,6 +37,7 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
    2. 直接模式
 
       网关模式受所有 SDK 平台的支持并已配置为默认设置。  如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次读取或写入 DocumentDB 数据时，网关模式都涉及到额外的网络跃点。   因此，直接模式因为网络跃点较少，可以提供更好的性能。
+<a id="use-tcp"></a>
 2. **连接策略：使用 TCP 协议**
 
     利用直接模式时，有两个可用的协议选项：
@@ -111,7 +112,7 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
     在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 回退可确保最大程度地减少等待重试的时间。 重试策略支持包含在 DocumentDB [.NET](documentdb-sdk-dotnet.md) 和 [Java](documentdb-sdk-java.md) 1.8.0 和更高版本中，以及 [Node.js](documentdb-sdk-node.md) 和 [Python](documentdb-sdk-python.md) 1.9.0 或更高版本以及所有受支持的 [.NET Core](documentdb-sdk-dotnet-core.md) SDK 版本中。 有关详细信息，请参阅[超过保留的吞吐量限制](documentdb-request-units.md#RequestRateTooLarge)和 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)。
 7. **增大客户端工作负荷**
 
-    如果以高吞吐量级别（> 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此限制，可以将客户端应用程序扩展到多个服务器，以进一步推送 DocumentDB 帐户。
+    如果以高吞吐量级别（>&50;,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此限制，可以将客户端应用程序扩展到多个服务器，以进一步推送 DocumentDB 帐户。
 8. **缓存较低读取延迟的文档 URI**
 
     尽可能缓存文档 URI 以获得最佳读取性能。
@@ -173,6 +174,7 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
              }
 
     在此标头中返回的请求费用是预配吞吐量的一小部分（即 2000 RU/秒）。 例如，如果上述查询返回 1000 个 1KB 文档，则操作成本是 1000。 因此在一秒内，服务器在限制后续请求之前，只接受两个此类请求。 有关详细信息，请参阅[请求单位](documentdb-request-units.md)和[请求单位计算器](https://www.documentdb.com/capacityplanner)。
+<a id="429"></a>
 2. **处理速率限制/请求速率太大**
 
     当客户端尝试超过帐户保留的吞吐量时，服务器的性能不会降低，并且不使用超过保留级别的吞吐量容量。 服务器将会抢先结束 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间数量（以毫秒为单位）。
@@ -197,6 +199,6 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

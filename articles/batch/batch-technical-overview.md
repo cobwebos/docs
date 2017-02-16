@@ -12,23 +12,23 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/19/2016
+ms.date: 08/22/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 6f05aa3f06c8ec86d58cafd406c2752ddb2eecc1
-ms.openlocfilehash: f3429fff9362451e687435e0c5e779feda564e46
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 2d83a9a42a17ddade81f891fca4463099a42f5e4
 
 
 ---
 # <a name="basics-of-azure-batch"></a>Azure Batch 基础知识
-Azure 批处理是一项平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure 批处理可以计划要在托管的虚拟机集合上运行的计算密集型工作，并且可以缩放计算资源，使之符合作业的需求。
+Azure Batch 可帮助用户在云中有效运行大规模并行的高性能计算 (HPC) 应用程序。 它是一个平台服务，可以计划要在托管的虚拟机集合上运行的计算密集型工作，并且可以缩放计算资源以符合作业的需求。
 
-使用 Azure 批处理时，可以轻松定义用于大规模并行执行应用程序的 Azure 计算资源。 不需要手动创建、配置和管理 HPC 群集、各个虚拟机、虚拟网络或复杂的作业和任务计划基础结构。 Azure 批处理自动执行这些任务，或者为用户简化这些任务。
+在使用 Batch 服务时，可以定义用于大规模并行执行应用程序的 Azure 计算资源。 你可以根据需要或按计划运行作业，而不需要手动创建、配置和管理 HPC 群集、各个虚拟机、虚拟网络或复杂的作业和任务计划基础结构。
 
 ## <a name="use-cases-for-batch"></a>Batch 的用例
 批处理是一种托管的 Azure 服务，可用于实现*批处理*或*批量计算* -- 运行大量类似任务以获取所需的结果。 定期处理、转换和分析大量数据的组织最常使用批量计算。
 
-Batch 很适合处理本质并行（也称为“超简单并行”）的应用程序和工作负荷。 本质并行的工作负荷是指容易拆分成多个任务，在多台计算机上同时执行的工作负荷。
+Batch 很适合处理本质并行（也称为“超简单并行”）的应用程序和工作负荷。 本质并行的工作负荷可容易拆分成多个任务，在多台计算机上同时执行。
 
 ![并行任务][1]<br/>
 
@@ -46,12 +46,10 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 
 有关 Batch 与 Azure 中其他 HPC 解决方案选项的比较，请参阅 [Batch 和 HPC 解决方案](batch-hpc-solutions.md)。
 
-[!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
-
 ## <a name="developing-with-batch"></a>使用 Batch 进行开发
-使用 Azure 批处理处理并行工作负荷通常是使用[批处理 API](#batch-development-apis) 之一以编程方式实现的。 客户端应用程序或服务使用批处理 API 与批处理服务通信。 使用批处理 API 可以创建和管理计算节点池（不管是虚拟机还是云服务）。 然后即可计划作业和任务，使之在这些节点上运行。 
+使用 Batch 处理并行工作负荷通常是使用 [Batch API](#batch-development-apis)之一以编程方式实现的。 Batch API 可让你创建和管理计算节点（虚拟机）池，以及计划作业和任务在这些节点上运行。 编写的客户端应用程序或服务使用 Batch API 来与 Batch 服务通信。
 
-可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 还可以在 [Azure 数据工厂](../data-factory/data-factory-data-processing-using-batch.md)等工具管理的大型工作流中使用 Azure 批处理。
+可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 还可以在 [Azure 数据工厂](../data-factory/data-factory-data-processing-using-batch.md)等工具管理的大型工作流中使用 Batch。
 
 > [!TIP]
 > 若要深入了解 Batch API 所提供的功能，请参阅 [Batch feature overview for developers](batch-api-basics.md)（面向开发人员的 Batch 功能概述）。
@@ -62,36 +60,26 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 开发 Batch 解决方案时，你将在 Microsoft Azure 中使用以下帐户。
 
 * **Azure 帐户和订阅** - 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益][msdn_benefits]或注册 [Azure 免费帐户][free_account]。 创建帐户时，系统为用户创建默认订阅。
-* **批处理帐户** - Azure 批处理资源（包括池、计算节点、作业和任务）与 Azure 批处理帐户相关联。 当应用程序针对批处理服务提出请求时，会使用 Azure 批处理帐户名称、帐户的 URL 以及访问密钥对请求进行身份验证。 可以在 Azure 门户中 [创建 Batch 帐户](batch-account-create-portal.md) 。
-* **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个批处理方案都使用 Azure Blob 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 若要创建存储帐户，请参阅 [关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
+* **Batch 帐户** - 应用程序与 Batch 服务交互时，使用帐户名、帐户的 URL 和访问密钥作为凭据。 所有 Batch 资源（如池、计算节点、作业和任务）都与 Batch 帐户关联。 可以在 Azure 门户中 [创建 Batch 帐户](batch-account-create-portal.md) 。
+* **存储帐户** - 批处理提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个 Batch 方案都使用 Azure 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 若要创建存储帐户，请参阅 [关于 Azure 存储帐户](../storage/storage-create-storage-account.md)。
 
 ### <a name="batch-development-apis"></a>Batch 开发 API
-应用程序和服务可以发出直接 REST API 调用或使用一个或多个下述客户端库，以便运行和管理 Azure 批处理工作负荷。
+应用程序和服务可以发出直接的 REST API 调用，使用以下一个或多个客户端库或将其结合使用，以使用 Batch 服务管理计算资源和大规模运行并行工作负荷。
 
-| API | API 参考 | 下载 | 教程 | 代码示例 |
-| --- | --- | --- | --- | --- |
-| **批处理 REST** |[MSDN][batch_rest] |不适用 |- |- |
-| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet ][api_net_nuget] |[教程](batch-dotnet-get-started.md) |[GitHub][api_sample_net] |
-| **Batch Python** |[readthedocs.io][api_python] |[PyPI][api_python_pypi] |[教程](batch-python-tutorial.md)|[GitHub][api_sample_python] |
-| **批处理 Node.js** |[github.io][api_nodejs] |[npm][api_nodejs_npm] |- |- |
-| **批处理 Java**（预览版） |[github.io][api_java] |[Maven][api_java_jar] |- |[GitHub][api_sample_java] |
+| API | API 参考 | 下载 | 代码示例 |
+| --- | --- | --- | --- |
+| **批处理 REST** |[MSDN][batch_rest] |不适用 |[MSDN][batch_rest] |
+| **Batch .NET** |[MSDN][api_net] |[NuGet ][api_net_nuget] |[GitHub][api_sample_net] |
+| **Batch Python** |[readthedocs.io][api_python] |[PyPI][api_python_pypi] |[GitHub][api_sample_python] |
+| **批处理 Node.js** |[github.io][api_nodejs] |[npm][api_nodejs_npm] |- |
+| **批处理 Java**（预览版） |[github.io][api_java] |[Maven][api_java_jar] |[GitHub][api_sample_java] |
 
-### <a name="batch-command-line-tools"></a>批处理命令行工具
-
-通过开发 API 提供的功能也可通过命令行工具提供： 
+### <a name="batch-resource-management"></a>Batch 资源管理
+除了客户端 API 以外，还可以使用以下功能来管理 Batch 帐户中的资源。
 
 * [批处理 PowerShell cmdlet][batch_ps]：[Azure PowerShell](/powershell/azureps-cmdlets-docs) 模块中的 Azure 批处理 cmdlet 可让用户使用 PowerShell 管理批处理资源。
 * [Azure CLI](../xplat-cli-install.md)：Azure 命令行接口 (Azure CLI) 是一个跨平台工具集，提供用来与许多 Azure 服务（包括 Batch）交互的 shell 命令。
-
-### <a name="batch-resource-management"></a>Batch 资源管理
-
-适用于批处理的 Azure Resource Manager API 允许通过编程方式访问批处理帐户。 可以使用这些 API 通过编程方式管理批处理帐户、配额和应用程序包。  
-
-| API | API 参考 | 下载 | 教程 | 代码示例 |
-| --- | --- | --- | --- | --- |
-| **批处理 Resource Manager REST** |[docs.microsoft.com][api_rest_mgmt] |不适用 |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
-| **批处理 Resource Manager .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet ][api_net_mgmt_nuget] | [教程](batch-management-dotnet.md) |[GitHub][api_sample_net] |
-
+* [批处理 Management .NET](batch-management-dotnet.md) 客户端库：也可以通过 [NuGet][api_net_mgmt_nuget] 获取。用户可以使用批处理管理 .NET 客户端库以编程方式管理批处理帐户、配额和应用程序包。 [MSDN][api_net_mgmt] 上提供了管理库的参考信息。
 
 ### <a name="batch-tools"></a>Batch 工具
 以下是在生成和调试 Batch 应用程序和服务时可以使用的一些有用工具，虽然在使用 Batch 生成解决方案时并不需要这些工具。
@@ -110,13 +98,13 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 在此常见方案中，应用程序或服务执行以下步骤，在 Azure Batch 中处理计算工作负荷：
 
 1. 将**输入文件**和处理这些文件的**应用程序**上载到 Azure 存储帐户。 输入文件可以是应用程序要处理的任何数据，例如金融建模数据或要转码的视频文件。 应用程序文件可以是任何用于处理数据的应用程序，例如 3D 渲染应用程序或媒体转码器。
-2. 在 Batch 帐户中创建计算节点的 Batch **池** - 这些节点是将执行任务的虚拟机。 需要指定属性，例如[节点大小](../cloud-services/cloud-services-sizes-specs.md)、其操作系统，以及节点加入池时要安装的应用程序在 Azure 存储中的位置（在步骤 1 中上载的应用程序）。 用户还可以配置池，使之随任务生成的工作负荷[自动缩放](batch-automatic-scaling.md)。 自动缩放可动态调整池中的计算节点数。
+2. 在 Batch 帐户中创建计算节点的 Batch **池** - 这些节点是将执行任务的虚拟机。 需要指定属性，例如[节点大小](../cloud-services/cloud-services-sizes-specs.md)、其操作系统，以及节点加入池时要安装的应用程序在 Azure 存储中的位置（在步骤 1 中上载的应用程序）。 用户还可以配置池来随着任务所生成的工作负荷而 [自动缩放](batch-automatic-scaling.md)- 动态调整池中的计算节点数。
 3. 创建 Batch **作业** ，在计算节点池上运行工作负荷。 创建作业时，需要将它与 Batch 池关联。
 4. 将 **任务** 添加到作业。 当你将任务添加到作业时，Batch 服务将自动计划任务在池中的计算节点上执行。 每项任务使用上载的应用程序来处理输入文件。
    
    * 4a. 任务执行之前，它可以将它要处理的数据（输入文件）下载到它被分配到的计算节点。 如果应用程序未安装在节点上（请参阅步骤 2#），可以从此处下载。 下载完成后，任务将在它被分配到的节点上执行。
-5. 任务执行时，你可以查询 Batch 来监视作业及其任务的进度。 客户端应用程序或服务通过 HTTPS 与批处理服务通信。 由于监视的任务可能成千上万，而这些任务又运行在成千上万的计算节点上，因此请确保[高效查询批处理服务](batch-efficient-list-queries.md)。
-6. 当任务完成时，它们可以将其输出数据上载到 Azure 存储空间。 也可直接从计算节点上的文件系统检索文件。
+5. 任务执行时，你可以查询 Batch 来监视作业及其任务的进度。 客户端应用程序或服务通过 HTTPS 来与 Batch 服务通信，因为可能要监视数千个计算节点上运行的数千个任务，因此请务必 [有效地查询 Batch 服务](batch-efficient-list-queries.md)。
+6. 当任务完成时，它们可以将其输出数据上载到 Azure 存储空间。 你也可以直接从计算节点检索文件。
 7. 当监视检测到作业中的任务已完成时，客户端应用程序或服务可以下载输出数据来进一步处理或评估。
 
 请记住，这只是使用 Batch 的一种方式，此方案只描述它的几项可用功能。 例如，可以在每个计算节点上[以并行方式执行多项任务](batch-parallel-node-tasks.md)，也可以使用[作业准备和完成任务](batch-job-prep-release.md)来准备作业的节点，然后再清除。
@@ -134,7 +122,6 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 [api_java_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_nuget]: https://www.nuget.org/packages/Azure.Batch/
-[api_rest_mgmt]: https://docs.microsoft.com/en-us/rest/api/batchmanagement/
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
 [api_net_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [api_nodejs]: http://azure.github.io/azure-sdk-for-node/azure-batch/latest/
@@ -159,6 +146,6 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

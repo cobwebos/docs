@@ -4,7 +4,7 @@ description: "本文介绍将配置管理器连接到 Log Analytics 以及开始
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 240db424645778c0fcd0f8abd17411e58bd95ab9
+ms.sourcegitcommit: 820a9463c0e58054cf70324b680c5af8fdcacade
+ms.openlocfilehash: 18479c3680aa46113e59d25b6e034830f78a1859
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 240db424645778c0fcd0f8abd17411e58bd95ab9
 
 将配置管理器连接到 OMS 需要执行很多步骤，因此以下是整个过程的概要说明：
 
-1. 在 Azure 管理门户中，将配置管理器注册为 Web 应用程序和/或 Web API 应用程序，并确保你有在 Azure Active Directory 中进行注册时收到的客户端 ID 和客户端密钥。 如需了解如何完成此步骤的详细信息，请参阅[使用门户创建可访问资源的 Active Directory 应用程序和服务主体](../resource-group-create-service-principal-portal.md)。
+1. 在 Azure 管理门户中，将配置管理器注册为 Web 应用程序和/或 Web API 应用程序，并确保你有在 Azure Active Directory 中进行注册时收到的客户端 ID 和客户端密钥。 如需了解如何完成此步骤的详细信息，请参阅[使用门户创建可访问资源的 Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 2. 在 Azure 管理门户中，[为配置管理器（已注册的 Web 应用）提供访问 OMS 的权限](#provide-configuration-manager-with-permissions-to-oms)。
 3. 在配置管理器中，[使用添加 OMS 连接向导来添加连接](#add-an-oms-connection-to-configuration-manager)。
 4. 在配置管理器中，如果密码或客户端密钥曾过期或丢失，可以[更新连接属性](#update-oms-connection-properties)。
@@ -132,6 +132,6 @@ ms.openlocfilehash: 240db424645778c0fcd0f8abd17411e58bd95ab9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

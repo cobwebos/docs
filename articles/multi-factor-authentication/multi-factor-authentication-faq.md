@@ -1,5 +1,5 @@
 ---
-title: "Azure Multi-Factor Authentication 常见问题"
+title: "Azure 多重身份验证常见问题解答 | Microsoft Docs"
 description: "提供与 Azure 多重身份验证相关的常见问题与解答列表。 Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）来验证用户身份的一种方法。 它为用户登录和事务提供了额外的安全层。"
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c83a7216d9763994fd5006dd9cd40883337ba4a
+ms.sourcegitcommit: 9617cd00ed4a5f8f867542238e5008a9a17663c9
+ms.openlocfilehash: 1e01bdc099af865e01eb2784cf367e482300ade8
 
 
 ---
@@ -61,6 +61,8 @@ ms.openlocfilehash: 0c83a7216d9763994fd5006dd9cd40883337ba4a
 使用“按用户”或“按身份验证”模式时，Azure MFA 是一种基于使用量的资源。 针对组织的 Azure 订阅收取所有费用，就像虚拟机、网站等一样。
 
 使用授权模式时，需要购买 Azure 多重身份验证许可证并将其分配给用户，如同购买 Office 365 及其他订阅产品时一样。
+
+在 [Azure 多重身份验证的工作原理](multi-factor-authentication-how-it-works.md#how-to-get-azure-multi-factor-authentication)中，了解各选项的详细信息
 
 **问：是否有可供管理员使用的免费 Azure 多重身份验证版本？**
 
@@ -160,8 +162,6 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 ## <a name="next-steps"></a>后续步骤
 如果此处未解答你的问题，请在页面底部留言。 或者，通过一些其他方法获得帮助：
 
-**问：如何获得 Azure 多重身份验证方面的帮助？**
-
 * 在 [Microsoft 支持知识库](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)中搜索常见技术问题的解决方法。
 * 在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)中搜索和浏览来自社区的技术问题与解答，或者提出自己的问题。
 * 对于旧版 PhoneFactor 客户，如果有疑问或需要重置密码方面的帮助，请使用[密码重置](mailto:phonefactorsupport@microsoft.com)链接建立支持案例。
@@ -170,6 +170,6 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

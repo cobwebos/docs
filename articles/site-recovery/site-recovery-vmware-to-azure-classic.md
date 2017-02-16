@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 15654731e0658532c52e67c0119b07f7e7ecc5e2
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 70ccb773b70f1b58f039ea5f4aca488d91fa3dad
 
 
 ---
@@ -187,7 +187,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 | **先决条件** | **详细信息** |
 | --- | --- |
 | **Azure 帐户** |你将需要一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/) Site Recovery 定价。 |
-| **Azure 存储** |你将需要使用 Azure 存储帐户来存储复制的数据。 复制的数据存储在 Azure 空间，Azure VM 在发生故障转移时启动。 <br/><br/>你需要[标准异地冗余存储帐户](../storage/storage-redundancy.md#geo-redundant-storage)。 该帐户必须位于 Site Recovery 服务所在的同一区域，并与同一订阅相关联。 请注意，目前不支持复制到高级存储帐户，因此不应使用该功能。<br/><br/>我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。[阅读有关](../storage/storage-introduction.md) Azure 存储的内容。<br/><br/> |
+| **Azure 存储空间** |你将需要使用 Azure 存储帐户来存储复制的数据。 复制的数据存储在 Azure 空间，Azure VM 在发生故障转移时启动。 <br/><br/>你需要[标准异地冗余存储帐户](../storage/storage-redundancy.md#geo-redundant-storage)。 该帐户必须位于 Site Recovery 服务所在的同一区域，并与同一订阅相关联。 请注意，目前不支持复制到高级存储帐户，因此不应使用该功能。<br/><br/>我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。[阅读有关](../storage/storage-introduction.md) Azure 存储的内容。<br/><br/> |
 | **Azure 网络** |你需要一个 Azure 虚拟网络，以便发生故障转移时 Azure VM 能够连接到其中。 Azure 虚拟网络必须位于与 Site Recovery 保管库相同的区域中。<br/><br/>请注意，若要在故障转移到 Azure 后进行故障回复，需要设置从 Azure 网络到本地站点的 VPN 连接（或 Azure ExpressRoute）。 |
 
 ### <a name="on-premises-prerequisites"></a>本地先决条件
@@ -219,7 +219,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 [阅读更多](../virtual-network/virtual-networks-overview.md)有关 Azure 网络的信息。
 
 > [!NOTE]
-> 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../resource-group-move-resources.md)。
+> 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../azure-resource-manager/resource-group-move-resources.md)。
 >
 >
 
@@ -249,7 +249,8 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 >
 >
 
-[!视频 https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
+
+>[!视频 https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
 
 
 1. 在“**快速启动**”页上，将统一的安装文件下载到服务器。
@@ -442,7 +443,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
    * 以 root 身份登录。
    * 在文件 /etc/ssh/sshd_config 中，找到以 PasswordAuthentication 开头的行。
    * 取消注释该行，并将值从“**no**”更改为“**yes**”。
-   * 找到以“**Subsystem**”开头的行，并取消注释该行。
+   * 找到以 **Subsystem** 开头的行，并取消注释该行。
 
      ![Linux](./media/site-recovery-vmware-to-azure-classic/mobility2.png)
 
@@ -507,7 +508,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <Installation Di
 
 **你还可以从命令行进行安装**：
 
-1. 在管理服务器上从 C:\Program Files (x86)\InMage Systems\private\connection 复制通行短语，再在管理服务器上将其另存为“passphrase.txt”。 然后运行这些命令。 在我们的示例中，管理服务器 IP 地址为 104.40.75.37，HTTPS 端口应该为 443：
+在管理服务器上从 C:\Program Files (x86)\InMage Systems\private\connection 复制通行短语，再在管理服务器上将其另存为“passphrase.txt”。 然后运行这些命令。 在我们的示例中，管理服务器 IP 地址为 104.40.75.37，HTTPS 端口应该为 443：
 
 在生产服务器上安装：
 
@@ -544,7 +545,8 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <Installation Di
 4. 在“**指定目标资源**”中选择用于复制的存储帐户，并选择是否应将设置用于所有工作负荷。 请注意，目前不支持高级存储帐户。
 
    > [!NOTE]
-   > 1.我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。                           2.用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../resource-group-move-resources.md)。
+   > 1. 我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。                           
+   > 2. 用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../azure-resource-manager/resource-group-move-resources.md)。
    >
    >
 
@@ -720,6 +722,6 @@ The information in Section B is regarding Third Party Code components that are b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

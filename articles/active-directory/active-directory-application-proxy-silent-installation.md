@@ -15,13 +15,19 @@ ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
+ms.sourcegitcommit: 3273ec453a78c74d9e492e869eea4186a764e2f2
+ms.openlocfilehash: 30a49b2a546d766a8a826a45b7bbf27059a2cc9d
 
 
 ---
 # <a name="how-to-silently-install-the-azure-ad-application-proxy-connector"></a>如何以无提示方式安装 Azure AD 应用程序代理连接器
 你希望能够将安装脚本发送到多个 Windows 服务器或未启用用户界面的 Windows Servers。 本主题介绍如何创建使无人参与安装可以安装和注册 Azure AD 应用程序代理连接器的 Windows PowerShell 脚本。
+
+如有以下需要，可使用命令行安装连接器，而无需使用 UI： 
+* 在没有 UI 层的计算机上安装连接器，或者在无法通过 RDP 连接到计算机时安装连接器。 
+* 一次性安装并注册多个连接器。 
+* 将连接器安装与注册集成为另一个过程的一部分。 
+* 创建包含连接器代码但未注册的标准服务器映像。 
 
 ## <a name="enabling-access"></a>启用访问
 应用程序代理的工作原理是通过在网络内部安装一个名为“连接器”的精简 Windows Server 服务。 若要使应用程序代理连接器工作，必须使用全局管理员和密码将其注册到 Azure AD 目录。 通常这在弹出窗口对话框中的连接器安装期间输入。 或者，可以使用 Windows PowerShell 创建用于输入注册信息的凭据对象，或创建自己的令牌，使用它输入注册信息。
@@ -127,6 +133,6 @@ ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

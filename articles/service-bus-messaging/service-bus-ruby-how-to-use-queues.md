@@ -1,5 +1,5 @@
 ---
-title: "如何通过 Ruby 使用服务总线队列 | Microsoft 文档"
+title: "如何通过 Ruby 使用 Azure 服务总线队列 | Microsoft Docs"
 description: "了解如何在 Azure 中使用 Service Bus 队列。 用 Ruby 编写的代码示例。"
 services: service-bus-messaging
 documentationcenter: ruby
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bde6cfe0daa95fc64e18be308798263544119b9f
+ms.sourcegitcommit: 0f9f732d6998a6ee50b0aea4edfc615ac61025ce
+ms.openlocfilehash: 343dc0d39f284488f03e1d1ba3df21ae616e97d9
 
 
 ---
@@ -25,48 +25,12 @@ ms.openlocfilehash: bde6cfe0daa95fc64e18be308798263544119b9f
 
 本指南介绍如何使用服务总线队列。 相关示例通过 Ruby 编写并使用 Azure gem。 涉及的任务包括**创建队列、发送和接收消息**以及**删除队列**。 有关服务总线队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
-## <a name="what-are-service-bus-queues"></a>什么是 Service Bus 队列？
-服务总线队列支持中转消息传送通信模型。 使用队列时，分布式应用程序的组件不会直接相互通信，而是通过充当中介的队列交换消息。 消息创建方（发送方）将消息传送到队列，然后继续对其进行处理。
-消息使用方（接收方）以异步方式从队列中提取消息并处理它。 创建方不必等待使用方的答复即可继续处理并发送更多消息。 队列为一个或多个竞争使用方提供**先入先出 (FIFO)**消息传递方式。 也就是说，接收方通常会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-![QueueConcepts](./media/service-bus-ruby-how-to-use-queues/sb-queues-08.png)
-
-Service Bus 队列是一种可用于各种应用场景的通用技术：
-
-* [多层 Azure 应用程序](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)中 Web 角色和辅助角色之间的通信。
-* [混合解决方案](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)中本地应用和 Azure 托管应用之间的通信。
-* 在不同组织或组织的各部门中本地运行的分布式应用程序组件之间的通信。
-
-利用队列，您可以更好地向外扩展应用程序，并增强您的体系结构的恢复能力。
-
-## <a name="create-a-namespace"></a>创建命名空间
-若要开始在 Azure 中使用服务总线队列，必须先创建一个命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。 必须通过命令行接口创建命名空间，因为 Azure 门户不会使用 ACS 连接创建命名空间。
-
-创建命名空间：
-
-1. 打开 Azure PowerShell 控制台。
-2. 键入以下命令以创建服务总线命名空间。 提供你自己的命名空间值，并指定与应用程序相同的区域。
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
    
-    ```
-    New-AzureSBNamespace -Name 'yourexamplenamespace' -Location 'West US' -NamespaceType 'Messaging' -CreateACSNamespace $true
-   
-    ![Create Namespace](./media/service-bus-ruby-how-to-use-queues/showcmdcreate.png)
-    ```
-
-## <a name="obtain-management-credentials-for-the-namespace"></a>获取命名空间的管理凭据
-若要在新命名空间上执行管理操作（如创建队列），则必须获取该命名空间的管理凭据。
-
-你运行的用于创建 Azure 服务总线命名空间的 PowerShell cmdlet 将显示可用于管理命名空间的密钥。 复制 **DefaultKey** 值。 你将本教程稍后的代码中使用此值。
-
-![复制密钥](./media/service-bus-ruby-how-to-use-queues/defaultkey.png)
-
-> [!NOTE]
-> 登录到 [Azure 门户](https://portal.azure.com/)并导航到服务总线命名空间的连接信息后，也可以看到此密钥。
-> 
-> 
-
 ## <a name="create-a-ruby-application"></a>创建 Ruby 应用程序
-创建 Ruby 应用程序。 有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/develop/ruby/tutorials/web-app-with-linux-vm/)。
+创建 Ruby 应用程序。 有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用 Service Bus
 要使用 Azure 服务总线，你需要使用 Ruby Azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
@@ -85,7 +49,7 @@ require "azure"
 ## <a name="set-up-an-azure-service-bus-connection"></a>设置 Azure 服务总线连接
 Azure 模块将读取环境变量 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_SERVICEBUS\_ACCESS_KEY** 以获取连接到服务总线命名空间所需的信息。 如果未设置这些环境变量，则在使用 **Azure::ServiceBusService** 之前必须通过以下代码指定命名空间信息：
 
-```
+```ruby
 Azure.config.sb_namespace = "<your azure service bus namespace>"
 Azure.config.sb_access_key = "<your azure service bus access key>"
 ```
@@ -95,7 +59,7 @@ Azure.config.sb_access_key = "<your azure service bus access key>"
 ## <a name="how-to-create-a-queue"></a>如何创建队列
 可以通过 **Azure::ServiceBusService** 对象处理队列。 若要创建队列，请使用 **create_queue()** 方法。 以下示例将创建一个队列或输出任何错误。
 
-```
+```ruby
 azure_service_bus_service = Azure::ServiceBusService.new
 begin
   queue = azure_service_bus_service.create_queue("test-queue")
@@ -106,7 +70,7 @@ end
 
 还可以通过其他选项传递 **Azure::ServiceBus::Queue** 对象，这些选项可让你重写默认队列设置，如消息保存时间或最大队列大小。 以下示例演示如何将最大队列大小设置为 5GB，将生存时间设置为 1 分钟：
 
-```
+```ruby
 queue = Azure::ServiceBus::Queue.new("test-queue")
 queue.max_size_in_megabytes = 5120
 queue.default_message_time_to_live = "PT1M"
@@ -115,11 +79,11 @@ queue = azure_service_bus_service.create_queue(queue)
 ```
 
 ## <a name="how-to-send-messages-to-a-queue"></a>如何向队列发送消息
-若要向服务总线队列发送消息，你的应用程序需要对 **Azure::ServiceBusService** 对象调用 **send\_queue\_message()** 方法。 发往服务总线队列的消息以及从服务总线队列接收的消息是 **Azure::ServiceBus::BrokeredMessage** 对象，它们具有一组标准属性（如 **label** 和 **time\_to\_live**）、一个用于保存自定义应用程序特定属性的字典和一段任意应用程序数据正文。 应用程序可以通过将字符串值作为消息传送来设置消息正文，任何必需的标准属性将用默认值来填充。
+若要向服务总线队列发送消息，应用程序需要对 **Azure::ServiceBusService** 对象调用 **send\_queue\_message()** 方法。 发往服务总线队列的消息以及从服务总线队列接收的消息是 **Azure::ServiceBus::BrokeredMessage** 对象，它们具有一组标准属性（如 **label** 和 **time\_to\_live**）、一个用于保存自定义的特定于应用程序的属性的字典和一段任意应用程序数据的正文。 应用程序可以通过将字符串值作为消息传送来设置消息正文，任何必需的标准属性将用默认值来填充。
 
 下面的示例演示如何使用 **send\_queue\_message()** 向名为 "test-queue" 的队列发送一条测试消息：
 
-```
+```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
 message.correlation_id = "test-correlation-id"
 azure_service_bus_service.send_queue_message("test-queue", message)
@@ -136,7 +100,7 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 
 以下示例演示如何使用 **receive\_queue\_message()** 接收和处理消息。 该示例先通过将 **:peek\_lock** 设置为 **false** 接收并删除一条消息，然后再接收另一条消息，最后使用 **delete\_queue\_message()** 删除该消息：
 
-```
+```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
   { :peek_lock => false })
 message = azure_service_bus_service.receive_queue_message("test-queue")
@@ -161,6 +125,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

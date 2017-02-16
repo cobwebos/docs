@@ -13,45 +13,54 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/27/2016
+ms.date: 11/17/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fc7ba74717d6e6cae05c2f1f87591ae23e4db170
+ms.sourcegitcommit: 09f5ba954dd712d71f41397b2243b6d3f3f0ca42
+ms.openlocfilehash: db829fb8e93b0a395cd70bd8eb71b2090d27c4c2
 
 
 ---
 # <a name="develop-c-topologies-for-apache-storm-on-hdinsight-using-hadoop-tools-for-visual-studio"></a>使用 Hadoop Tools for Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑
+
 了解如何使用 HDInsight Tools for Visual Studio 创建 C# Storm 拓扑。 本教程逐步说明在 Visual Studio 中创建新的 Storm 项目、在本地测试该项目，然后将它部署到 Apache Storm on HDInsight 群集的过程。
 
 你还将学习如何创建使用 C# 和 Java 组件的混合拓扑。
 
 > [!IMPORTANT]
-> 虽然本文档中的步骤依赖于具有 Visual Studio 的 Windows 开发环境，但编译后的项目可以提交到基于 Linux 或基于 Windows 的 HDInsight 群集。 仅创建于 2016/10/28 之后的基于 Linux 的群集支持 SCP.NET 拓扑。
+> 虽然本文档中的步骤依赖于具有 Visual Studio 的 Windows 开发环境，但编译后的项目可以提交到基于 Linux 或基于 Windows 的 HDInsight 群集。 __仅 2016 年 10 月 28 日之后创建的基于 Linux 的群集支持 SCP.NET 拓扑__。
 > 
-> 若要将 C# 拓扑与基于 Linux 的群集结合使用，则必须将项目使用的 Microsoft.SCP.Net.SDK NuGet 包更新到版本 0.10.0.6 或更高版本。 包的版本还必须与安装在 HDInsight 上的 Storm 的主要版本相匹配。 例如，Storm on HDInsight 版本 3.3 和 3.4 使用 Storm 版本 0.10.x，而 HDInsight 3.5 使用 Storm 1.0.x。
+> 若要将 C# 拓扑与基于 Linux 的群集配合使用，则必须将项目使用的 Microsoft.SCP.Net.SDK NuGet 包更新到版本 0.10.0.6 或更高版本。 包的版本还必须与安装在 HDInsight 上的 Storm 主版本相匹配。 例如，Storm on HDInsight 版本 3.3 和 3.4 使用 Storm 版本 0.10.x，而 HDInsight 3.5 使用 Storm 1.0.x。
 > 
 > 基于 Linux 的群集上的 C# 拓扑必须使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 大多数情况下会正常工作，但还是应查看[Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档了解可能的不兼容性。
 > 
 > 
 
 ## <a name="prerequisites"></a>先决条件
-* 下列其中一个版本的 Visual Studio
+
+* 开发环境中采用 [Java](https://java.com) 1.7 或更高版本。 将拓扑提交到 HDInsight 群集时，Java 用于打包拓扑。
+
+  * **JAVA_HOME** 环境变量必须指向包含 Java 的目录。
+  * 路径中必须包含 **%JAVA_HOME%/bin** 目录
+
+* 下列其中一个版本的 Visual Studio：
   
   * Visual Studio 2012 [Update 4](http://www.microsoft.com/download/details.aspx?id=39305)
   * Visual Studio 2013 [Update 4](http://www.microsoft.com/download/details.aspx?id=44921) 或 [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * Visual Studio 2015 或 [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
+
 * Azure SDK 2.9.5 或更高版本
+
 * HDInsight Tools for Visual Studio：请参阅[开始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) 安装和配置 HDInsight Tools for Visual Studio。
   
   > [!NOTE]
   > HDInsight Tools for Visual Studio 不支持 Visual Studio Express
-  > 
-  > 
+
 * Apache Storm on HDInsight 群集：请参阅 [Apache Storm on HDInsight 入门](hdinsight-apache-storm-tutorial-get-started.md) 了解创建群集的步骤。
 
 ## <a name="templates"></a>模板
-HDInsight Tools for Visual Studio 提供以下模板：
+
+Visual Studio 的 HDInsight 工具提供以下模板：
 
 | 项目类型 | 演示 |
 | --- | --- |
@@ -66,14 +75,21 @@ HDInsight Tools for Visual Studio 提供以下模板：
 | Storm 混合示例 |如何使用 Java 组件 |
 | Storm 示例 |基本的单词计数拓扑 |
 
-> [!NOTE]
-> HBase 读取器和写入器示例使用 HBase REST API 与 HDInsight 群集上的 HBase 通信，而不是 HBase Java API。
-> 
-> 
-
 在本文档的步骤中，你将使用基本 Storm 应用程序项目类型来创建新拓扑。
 
+### <a name="hbase-templates-notes"></a>HBase 模板说明
+
+HBase 读取器和写入器模板使用 HBase REST API 与 HDInsight 群集上的 HBase 通信，而不是 HBase Java API。
+
+### <a name="eventhub-templates-notes"></a>EventHub 模板说明
+
+> [!IMPORTANT]
+> EventHub 读取器模板中包含的基于 Java 的 EventHub Spout 组件不适用于 Storm on HDInsight 3.5 版。 请改用来自 [https://000aarperiscus.blob.core.windows.net/certs/storm-eventhubs-1.0.2-jar-with-dependencies.jar](https://000aarperiscus.blob.core.windows.net/certs/storm-eventhubs-1.0.2-jar-with-dependencies.jar) 的 EventHub Spout 组件。
+
+有关可使用此组件并适用于 Storm on HDInsight 3.5 的示例拓扑，请参阅 [https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)。
+
 ## <a name="create-a-c-topology"></a>创建 C# 拓扑
+
 1. 如果你尚未安装最新版本的 HDInsight Tools for Visual Studio，请参阅[开始使用 HDInsight Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)。
 2. 打开 Visual Studio，选择“文件” > “新建”，然后选择“项目”。
 3. 在“新建项目”屏幕中，展开“已安装” > “模板”，然后选择“HDInsight”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 **WordCount** 作为应用程序名称。
@@ -382,22 +398,21 @@ HDInsight Tools for Visual Studio 还可用于创建混合拓扑，其中某些�
 
 * **Java Spout** 和 **C# Bolt**：在 **HybridTopology_javaSpout_csharpBolt** 中定义
   
-  * 事务版本在 **HybridTopologyTx_javaSpout_csharpBolt** 中定义
+    * 事务版本在 **HybridTopologyTx_javaSpout_csharpBolt** 中定义
+
 * **C# Spout** 和 **Java Bolt**：在 **HybridTopology_csharpSpout_javaBolt** 中定义
   
-  * 事务版本在 **HybridTopologyTx_csharpSpout_javaBolt** 中定义
-    
-    > [!NOTE]
-    > 此版本还演示了如何使用文本文件中的 clojure 代码作为 Java 组件。
-    > 
-    > 
+    * 事务版本在 **HybridTopologyTx_csharpSpout_javaBolt** 中定义
+  
+  > [!NOTE]
+  > 此版本还演示了如何使用文本文件中的 clojure 代码作为 Java 组件。
+
 
 若要切换在提交项目时使用的拓扑，只需将 `[Active(true)]` 语句式移到你要在提交给群集之前使用的拓扑。
 
 > [!NOTE]
 > 在 **JavaDependency** 文件夹中，所需的所有 Java 文件都会提供为此项目的一部分。
-> 
-> 
+
 
 创建和提交混合拓扑时，需注意以下事项：
 
@@ -463,7 +478,9 @@ SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 > 
 
 ## <a name="troubleshooting"></a>故障排除
+
 ### <a name="null-pointer-exceptions"></a>空指针异常
+
 在基于 Linux 的 HDInsight 集群中使用 C＃ 拓扑时，使用 ConfigurationManager 在运行时读取配置设置的 bolt 和 spout 组件可能会返回空指针异常。 这是因为加载域的配置不是来自包含项目的程序集。
 
 项目的配置作为拓扑上下文中的键/值对传递到 Storm 拓扑中，并且可以从初始化时传递给组件的字典对象中检索。
@@ -471,6 +488,7 @@ SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 以下示例演示了如何从拓扑上下文加载配置值，请参阅本文档的 [ConfigurationManager](#configurationmanager) 部分。
 
 ### <a name="systemtypeloadexception"></a>System.TypeLoadException
+
 在基于 Linux 的 HDInsight 群集中使用 C＃ 拓扑时，可能会遇到以下错误：
 
     System.TypeLoadException: Failure has occurred while loading a type.
@@ -480,6 +498,7 @@ SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 对于基于 Linux 的 HDInsight 集群，应确保项目使用的是为 .NET 4.5 编译的二进制文件。
 
 ### <a name="test-a-topology-locally"></a>在本地测试拓扑
+
 虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，你可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地执行和测试本教程中的示例拓扑。
 
 > [!WARNING]
@@ -612,6 +631,7 @@ SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 > 
 
 ### <a name="log-information"></a>记录信息
+
 你可以使用 `Context.Logger` 轻松记录拓扑组件中的信息。 例如，以下代码会创建一个信息日志条目：
 
     Context.Logger.Info("Component started");
@@ -624,12 +644,21 @@ SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 > 
 
 ### <a name="view-error-information"></a>查看错误信息
+
 若要查看运行中拓扑中所发生的错误，请使用以下步骤：
 
 1. 在“服务器资源管理器”中，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”。
 2. 对于 **Spout** 和 **Bolt**，“上一错误”列将包含有关上次发生的错误的信息。
 3. 选择发生错误的组件的“Spout ID”或“Bolt ID”。 在显示的详细信息页面上，其他错误信息将列在页面底部的“错误”部分中。
 4. 若要获取详细信息，请从页面的“执行器”部分中选择“端口”，以查看最后几分钟的 Storm 工作进程日志。
+
+### <a name="errors-submitting-topologies"></a>提交拓扑时出现错误
+
+如果将拓扑提交到 HDInsight 时遇到错误，可在 HDInsight 群集上找到处理拓扑提交的服务器端组件的日志。 若要检索这些日志，请从命令行运行以下命令：
+
+    scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
+
+将 __sshuser__ 替换为群集的 SSH 用户帐户。 将 __clustername__ 替换为 HDInsight 群集的名称。 如果使用了 SSH 帐户的密码，系统将提示输入该密码。 该命令会将文件下载到从中运行命令的目录。
 
 ## <a name="next-steps"></a>后续步骤
 在了解如何使用 HDInsight Tools for Visual Studio 开发和部署 Storm 拓扑后，请了解如何[使用 Storm on HDInsight 从 Azure 事件中心处理事件](hdinsight-storm-develop-csharp-event-hub-topology.md)。
