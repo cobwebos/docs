@@ -11,7 +11,7 @@ Azure 表存储服务可存储大量结构化数据。 该服务是一个 NoSQL 
 ## <a name="table-service-concepts"></a>表服务概念
 表服务包含以下组件：
 
-![表 1][Table1]
+![Table1][Table1]
 
 * **URL 格式：**代码使用此地址格式对帐户中的表进行寻址：   
   http://`<storage account>`.table.core.windows.net/`<table>`  
@@ -24,7 +24,7 @@ Azure 表存储服务可存储大量结构化数据。 该服务是一个 NoSQL 
 
 有关命名表和属性的详细信息，请参阅 [了解表服务数据模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。
 
-[表 1]: ./media/storage-table-concepts-include/table1.png
+[Table1]: ./media/storage-table-concepts-include/table1.png
 [OData.org]: http://www.odata.org/
 
 
