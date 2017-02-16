@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure AD 应用程序代理发布的应用程序的条件性访问"
+title: "对本地应用的条件访问 - Azure AD | Microsoft Docs"
 description: "介绍如何设置使用 Azure AD 应用程序代理发布远程访问的应用程序的条件性访问。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3b1ec45073a7d9abb7eb12c009ce60357a0d1545
+ms.sourcegitcommit: 164e3b0af47cd98f2d20fce7344230608e9fbe8c
+ms.openlocfilehash: 72b823998ebd570acc34e6a7ca034f64881db0c4
 
 
 ---
-# <a name="working-with-conditional-access"></a>使用条件性访问
+# <a name="working-with-conditional-access-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的条件访问
 你可以配置访问规则，以便授予对使用应用程序代理发布的应用程序的条件性访问权限。 这样，你便可以：
 
 * 基于应用程序要求多重身份验证
@@ -43,11 +43,11 @@ ms.openlocfilehash: 3b1ec45073a7d9abb7eb12c009ce60357a0d1545
 3. 单击“应用程序”，然后向下滚动到“访问规则”部分。 只有使用应用程序代理（该代理使用联合身份验证）发布的应用程序才会显示“访问规则”部分。
 4. 通过选择“打开”“启用访问规则”来启用规则。
 5. 指定向其应用规则的用户和组。 使用“添加组”按钮选择访问规则会应用的一个或多个组。 此对话框还可以用于删除所选组。  当选择规则应用于组时，仅会对属于指定安全组之一的用户强制执行访问规则。  
-   
+
    * 若要从规则中显式排除安全组，请选中“除外”并指定一个或多个组。 属于“例外”列表中的组成员的用户不需要执行 Multi-Factor Authentication。  
    * 如果已使用按用户的多重身份验证功能配置用户，则此设置的优先级高于应用程序的多重身份验证规则。 这意味着已配置为每个用户 Multi-Factor Authentication 的用户将需要执行 Multi-Factor Authentication，即使他们已从应用程序的 Multi-Factor Authentication 规则中免除。 了解有关[多重身份验证和每个用户设置](../multi-factor-authentication/multi-factor-authentication.md)的详细信息。
 6. 选择你想要设置的访问规则：
-   
+
    * **要求多重身份验证**：向其应用访问规则的用户要求完成多重身份验证，然后才能访问规则应用的应用程序。
    * **不工作时要求多重身份验证**：尝试从受信任的 IP 地址访问应用程序的用户不必执行多重身份验证。 可以在 Multi-Factor Authentication 设置页上配置受信任的 IP 地址范围。
    * **不工作时阻止访问**：尝试从公司网络外部访问应用程序的用户不能访问应用程序。
@@ -69,7 +69,6 @@ ms.openlocfilehash: 3b1ec45073a7d9abb7eb12c009ce60357a0d1545
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

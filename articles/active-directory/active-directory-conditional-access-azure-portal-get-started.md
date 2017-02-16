@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 12/14/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: f4f159c832865bc2ea0c24a8a072cade3bca8e33
-ms.openlocfilehash: 327238372d84efdb7f2d58867a366821534fc945
+ms.sourcegitcommit: ae60cd810b4beb26f714e2ea2566e5354c482fa8
+ms.openlocfilehash: 3022f5e27ddaf125161bbf7132b41a27024f40b6
 
 
 ---
@@ -164,6 +164,6 @@ ms.openlocfilehash: 327238372d84efdb7f2d58867a366821534fc945
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

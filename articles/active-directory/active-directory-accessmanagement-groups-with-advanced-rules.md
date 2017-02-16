@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: c404c8708ec6d33f272733e438b8c3559fa40ce9
-ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
+ms.sourcegitcommit: d83372fbce5f49d7cd038a15bd271e9d8a463b7b
+ms.openlocfilehash: f1cff67f31da87d6361603f0216a68c55686db0e
 
 
 ---
@@ -24,6 +24,15 @@ ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
 你可以在 Azure 经典门户中创建高级规则来启用 Azure Active Directory (Azure AD) 组的更复杂的基于属性的动态成员身份。  
 
 当用户的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看用户的属性更改是否会触发任何组添加或删除。 如果用户满足组中的规则，他们将作为成员添加到该组。 如果他们不再满足所属组的规则，则会从该组中删除他们的身份身份。
+
+> [!NOTE]
+> 你可以为安全组或 Office 365 组中的动态成员身份设置规则。 目前不支持使用嵌套的组成员身份来对应用程序进行基于组的分配。
+> 
+> 动态组成员身份要求将 Azure AD Premium 许可证分配到
+> 
+> * 管理组中规则的管理员
+> * 组的所有成员
+> 
 
 ## <a name="to-create-the-advanced-rule"></a>创建高级规则
 1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后打开你的组织的目录。
@@ -245,6 +254,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 
