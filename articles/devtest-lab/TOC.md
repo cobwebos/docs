@@ -22,10 +22,16 @@
 ### [创建自定义项目](devtest-lab-artifact-author.md)
 
 ## 管理 VM 基项
-### [创建自定义映像](devtest-lab-create-template.md)
+### [映像与公式的比较](devtest-lab-comparing-vm-base-image-types.md)
+### [使用 AzCopy 上载 VHD 文件](devtest-lab-upload-vhd-using-azcopy.md)
+### [使用 PowerShell 上载 VHD 文件](devtest-lab-upload-vhd-using-powershell.md)
+### [使用存储资源管理器上载 VHD 文件](devtest-lab-upload-vhd-using-storage-explorer.md)
+### [使用 Azure 门户从 VHD 创建自定义映像](devtest-lab-create-template.md)
+### [使用 PowerShell 从 VHD 创建自定义映像](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+### [从 VM 创建自定义映像](devtest-lab-create-custom-image-from-vm-using-portal.md)
 ### [配置应用商店映像](devtest-lab-configure-marketplace-images.md)
 ### [管理公式](devtest-lab-manage-formulas.md)
-### [映像与公式的比较](devtest-lab-comparing-vm-base-image-types.md)
+
 
 # 资源
 ## [服务更新](https://azure.microsoft.com/updates/?product=devtest-lab)
@@ -35,6 +41,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

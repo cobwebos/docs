@@ -99,22 +99,6 @@
 ### [注册设备](active-directory-azureadjoin-personal-device.md)
 ### [注册 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
 
-### [条件性访问](active-directory-conditional-access.md)
-#### [入门](active-directory-conditional-access-azuread-connected-apps.md)
-#### [支持的应用](active-directory-conditional-access-supported-apps.md)
-#### [注册设备](active-directory-conditional-access-device-registration-overview.md)
-#### [管理自动注册](active-directory-conditional-access-automatic-device-registration.md)
-##### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
-##### [Windows 7](active-directory-conditional-access-automatic-device-registration-windows7.md)
-##### [Windows 8.1](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
-#### [管理验证器应用](active-directory-conditional-access-azure-authenticator-app.md)
-#### [了解设备策略](active-directory-conditional-access-device-policies.md)
-#### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
-#### [本地部署](active-directory-conditional-access-on-premises-setup.md)
-#### [常见问题](active-directory-conditional-faqs.md)
-#### [故障排除](active-directory-conditional-access-device-remediation.md)
-#### [参考](active-directory-conditional-access-technical-reference.md)
-
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [规划](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [设置设备注册](active-directory-azureadjoin-setup.md)
@@ -124,10 +108,10 @@
 #### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 #### [了解 Windows 10 集成](active-directory-azureadjoin-windows10-devices-overview.md)
 #### [使用 Windows 10 设备](active-directory-azureadjoin-windows10-devices.md)
-
-### 基于证书的身份验证
-#### [Android](active-directory-certificate-based-authentication-android.md)
-#### [iOS](active-directory-certificate-based-authentication-ios.md)
+#### [常见问题](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### 故障排除
+##### [对 Windows 10 和 Windows Server 2016 进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
+##### [对 Windows 下层客户端进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
 
 ## 管理应用
 ### [概述](active-directory-enable-sso-scenario.md)
@@ -176,6 +160,7 @@
 ### [管理对应用的访问权限](active-directory-managing-access-to-apps.md)
 #### [自助服务访问权限](active-directory-self-service-application-access.md)
 #### [SSO 证书](active-directory-sso-certs.md)
+#### [租户限制](active-directory-tenant-restrictions.md)
 
 ### [使用 SCIM 预配用户](active-directory-scim-provisioning.md)
 ### [文档库](active-directory-apps-index.md)
@@ -207,14 +192,24 @@
 #### [常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
 #### [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 ### [将合作伙伴与 Azure AD B2B 集成](active-directory-b2b-what-is-azure-ad-b2b.md)
-#### [概述](active-directory-b2b-collaboration-overview.md)
-#### [工作原理](active-directory-b2b-how-it-works.md)
-#### [比较功能](active-directory-b2b-compare-external-identities.md)
-#### [演练](active-directory-b2b-detailed-walkthrough.md)
-#### [限制](active-directory-b2b-current-preview-limitations.md)
-#### [CSV 文件格式](active-directory-b2b-references-csv-file-format.md)
-#### [用户对象](active-directory-b2b-references-external-user-object-attribute-changes.md)
-#### [用户令牌](active-directory-b2b-references-external-user-token-format.md)
+#### [管理员添加 B2B 用户](active-directory-b2b-admin-add-users.md)
+#### [信息工作者添加 B2B 用户](active-directory-b2b-iw-add-users.md)
+#### [邀请电子邮件](active-directory-b2b-invitation-email.md)
+#### [邀请兑换](active-directory-b2b-redemption-experience.md)
+#### [许可](active-directory-b2b-licensing.md)
+#### [对 B2B 进行故障排除](active-directory-b2b-troubleshooting.md)
+#### [常见问题](active-directory-b2b-faq.md)
+#### [API 和自定义](active-directory-b2b-api.md)
+#### [适用于 B2B 的多重身份验证](active-directory-b2b-mfa-instructions.md)
+#### [将来宾用户添加到角色](active-directory-b2b-add-guest-to-role.md)
+#### [委托邀请](active-directory-b2b-delegate-invitations.md)
+#### [动态组和 B2B](active-directory-b2b-dynamic-groups.md)
+#### [代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
+#### [为 B2B 配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
+#### [B2B 用户令牌](active-directory-b2b-user-token.md)
+#### [B2B 用户声明映射](active-directory-b2b-claims-mapping.md)
+#### [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
+#### [当前限制](active-directory-b2b-current-limitations.md)
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
 
@@ -238,6 +233,22 @@
 ### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
 
 ## 保护标识
+### [条件性访问](active-directory-conditional-access.md)
+#### [入门](active-directory-conditional-access-azuread-connected-apps.md)
+#### [支持的应用](active-directory-conditional-access-supported-apps.md)
+#### [注册设备](active-directory-conditional-access-device-registration-overview.md)
+#### [管理自动注册](active-directory-conditional-access-automatic-device-registration.md)
+##### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
+#### [管理验证器应用](active-directory-conditional-access-azure-authenticator-app.md)
+#### [了解设备策略](active-directory-conditional-access-device-policies.md)
+#### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
+#### [本地部署](active-directory-conditional-access-on-premises-setup.md)
+#### [常见问题](active-directory-conditional-faqs.md)
+#### [故障排除](active-directory-conditional-access-device-remediation.md)
+#### [参考](active-directory-conditional-access-technical-reference.md)
+### 基于证书的身份验证
+#### [Android](active-directory-certificate-based-authentication-android.md)
+#### [iOS](active-directory-certificate-based-authentication-ios.md)
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [启用](active-directory-identityprotection-enable.md)
 #### [检测漏洞](active-directory-identityprotection-vulnerabilities.md)
@@ -301,6 +312,6 @@
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

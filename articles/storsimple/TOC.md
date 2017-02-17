@@ -26,7 +26,8 @@
 
 ## 如何
 ### [通过 Azure 门户管理](storsimple-virtual-array-manager-service-administration.md)
-#### [安装最新更新](storsimple-virtual-array-install-update.md)
+#### [安装最新更新](storsimple-virtual-array-install-update-04.md)
+##### [安装 Update 0.3](storsimple-virtual-array-install-update.md)
 #### [创建和管理备份](storsimple-virtual-array-backup.md)
 #### [从备份克隆](storsimple-virtual-array-clone.md)
 #### [故障转移和灾难恢复](storsimple-virtual-array-failover-dr.md)
@@ -56,7 +57,8 @@
 ### [通过本地 Web UI 进行配置](storsimple-ova-web-ui-admin.md)
 
 ## 发行说明
-### [Update 0.3 - 最新版](storsimple-ova-update-03-release-notes.md)
+### [Update 0.4 - 最新版](storsimple-virtual-array-update-04-release-notes.md)
+### [Update 0.3](storsimple-ova-update-03-release-notes.md)
 ### [Update 0.2 和 0.1](storsimple-ova-update-01-release-notes.md)
 
 # StorSimple 8000 系列
@@ -78,7 +80,7 @@
 #### [解压缩、安装机架，将电缆连接到 8100](storsimple-8100-hardware-installation.md)
 
 #### [解压缩、安装机架，将电缆连接到 8600](storsimple-8600-hardware-installation.md)
-#### [10-GbE 网络接口支持的硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+#### [10 GbE 网络接口支持的硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### 部署
 #### [StorSimple Manager 服务](storsimple-manage-service.md)
@@ -150,6 +152,7 @@
 ### 监视
 #### [使用服务仪表板](storsimple-service-dashboard.md)
 #### [使用设备仪表板](storsimple-device-dashboard.md)
+#### [使用监视图表](storsimple-monitor-device.md)
 #### [使用服务警报](storsimple-manage-alerts.md)
 #### [使用硬件状态](storsimple-monitor-hardware-status.md)
 #### [使用监视 LED](storsimple-monitoring-indicators.md)
@@ -220,6 +223,6 @@
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

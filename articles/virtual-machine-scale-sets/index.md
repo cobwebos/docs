@@ -13,8 +13,8 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 7b2af8e58e050100b1778d977dabe25538b84cfe
-ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
+ms.sourcegitcommit: e7922431244003dc15e1612ef98fd6a9ecf8ad1b
+ms.openlocfilehash: 994439a33146398d9e8d89ec27e0fa2bff3ba8f1
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
@@ -41,7 +41,7 @@ ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
         </a>
     </li>
        <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=virtual-machines">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -90,7 +90,22 @@ ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
                     <div class="cardText">
                         <h3>命令行</h3>
                         <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
-                        <p><a href="/azure/virtual-machines/azure-cli-arm-commands">Azure CLI</a></p>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
                     </div>
                 </div>
             </div>
@@ -102,7 +117,7 @@ ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/compute/">REST API 参考</a></p>
+                        <p><a href="/rest/api/compute">计算 REST API 参考</a></p>
                     </div>
                 </div>
             </div>
@@ -114,6 +129,6 @@ ms.openlocfilehash: 3bb6307cee24c80cbf8d621a49d2304d9b9b5c99
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -6,12 +6,6 @@
 ### [资源限制](sql-database-resource-limits.md)
 ### [功能](sql-database-features.md)
 ### [SQL 数据库常见问题](sql-database-faq.md)
-## 优点
-### [学习和应用](sql-database-learn-and-adapt.md)
-### [动态缩放](sql-database-scale-on-the-fly.md)
-### [构建多租户应用](sql-database-build-multi-tenant-apps.md)
-### [安全和保护](sql-database-helps-secures-and-protects.md)
-### [在环境中工作](sql-database-works-in-your-environment.md)
 ## 比较
 ### [SQL 数据库与 VM 上的 SQL](sql-database-paas-vs-sql-server-iaas.md)
 ### [T-SQL 的差异](sql-database-transact-sql-information.md)
@@ -19,7 +13,8 @@
 ## [SQL 数据库工具](sql-database-manage-overview.md)
 ## [SQL 数据库教程](sql-database-explore-tutorials.md)
 ## [解决方案快速入门](sql-database-solution-quick-starts.md)
-## 安全性
+## “安全”
+### [安全性概述](sql-database-security-overview.md)
 ### [Azure SQL 数据库的 Azure 安全中心](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
 ### [SQL 安全中心](https://msdn.microsoft.com/library/azure/bb510589)
 # 入门
@@ -69,12 +64,12 @@
 #### [复制 SQL 数据库](sql-database-copy.md)
 ## 防火墙规则、身份验证和授权
 ### 学习
-#### [概述](sql-database-security.md)
-#### [安全准则](sql-database-security-guidelines.md)
+#### [访问控制](sql-database-control-access.md)
 #### [防火墙](sql-database-firewall-configure.md)
 #### [管理登录名](sql-database-manage-logins.md)
 ### 操作
-#### [SQL 身份验证和授权](sql-database-get-started-security.md)
+#### [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)
+#### [Azure AD 身份验证和授权](sql-database-control-access-aad-authentication-get-started.md)
 ## 保护数据
 ### 学习
 #### 审核
@@ -105,8 +100,9 @@
 #### [滚动升级](sql-database-manage-application-rolling-upgrade.md)
 #### [执行灾难恢复演练](sql-database-disaster-recovery-drills.md)
 #### [活动异地复制概述](sql-database-geo-replication-overview.md)
-### 操作
-#### [SQL 数据库备份和还原入门](sql-database-get-started-backup-recovery.md)
+### 要
+#### [Azure 门户：备份和还原](sql-database-get-started-backup-recovery.md)
+#### [PowerShell：备份和还原](sql-database-get-started-backup-recovery-powershell.md)
 ## 应用开发
 ### 学习
 #### [数据库应用程序开发概述](sql-database-develop-overview.md)
@@ -150,7 +146,7 @@
 #### [单一数据库](sql-database-single-database-monitor.md)
 #### [SQL 数据库顾问概述](sql-database-advisor.md)
 #### [单一数据库指南](sql-database-performance-guidance.md)
-#### [在 Azure 门户中深入分析工作负荷](sql-database-performance.md)
+#### [性能见解：Azure 门户](sql-database-performance.md)
 #### [使用批处理](sql-database-use-batching-to-improve-performance.md)
 #### [扩展事件](sql-database-xevent-db-diff-from-svr.md)
 ## SQL 数据库 V11
@@ -253,15 +249,14 @@
 #### [配置长期备份保留](sql-database-configure-long-term-retention.md)
 #### [查看恢复服务保管库中的备份](sql-database-view-backups-in-vault.md)
 #### [从长期备份保留存储中还原](sql-database-restore-from-long-term-retention.md)
+#### [从长期备份保留存储中删除](sql-database-long-term-retention-delete.md)
 ### 还原已删除的数据库
 #### [使用 Azure 门户还原已删除的数据库](sql-database-restore-deleted-database-portal.md)
 #### [使用 PowerShell 还原已删除的数据库](sql-database-restore-deleted-database-powershell.md)
 ### 时间点还原
 #### [还原到某个时间点](sql-database-point-in-time-restore.md)
 #### [查看最早的还原点](sql-database-view-oldest-restore-point.md)
-### 异地还原
-#### [使用 Azure 门户进行异地还原](sql-database-geo-restore-portal.md)
-#### [使用 PowerShell 进行异地还原](sql-database-geo-restore-powershell.md)
+### [从异地冗余备份中还原](sql-database-geo-restore.md)
 ## 活动异地复制
 ### [使用 Azure 门户进行配置](sql-database-geo-replication-portal.md)
 ### [使用 PowerShell 进行配置](sql-database-geo-replication-powershell.md)
@@ -309,6 +304,6 @@
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

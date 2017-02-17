@@ -26,6 +26,7 @@
 ### [跟踪 Runbook 作业](automation-runbook-execution.md)
 ### [更改 Runbook 设置](automation-runbook-settings.md)
 ### [管理 Azure 自动化数据](automation-managing-data.md)
+### [从 Log Analytics 警报调用 Azure 自动化 Runbook](automation-invoke-runbook-from-omsla-alert.md)
 ## 部署配置管理 (DSC)
 ### [所需状态配置 (DSC)](automation-dsc-overview.md)
 ### [入门](automation-dsc-getting-started.md)
@@ -53,7 +54,9 @@
 ### [删除资源组](automation-scenario-remove-resourcegroup.md)
 ### [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
 ### [源代码管理与 GitHub Enterprise 的集成](automation-scenario-source-control-integration-with-github-ent.md)
-## [监视](automation-manage-send-joblogs-log-analytics.md)
+## 监视
+### [将 Azure 自动化作业数据转发到 Log Analytics](automation-manage-send-joblogs-log-analytics.md)
+### [从 Log Analytics 取消链接 Azure 自动化帐户](automation-unlink-from-log-analytics.md)
 ## 迁移
 ### [从 Orchestrator 迁移](automation-orchestrator-migration.md)
 ### [移动自动化帐户](automation-migrate-account-subscription.md)
@@ -78,6 +81,6 @@
 ## [自动化简介视频](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

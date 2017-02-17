@@ -1,3 +1,4 @@
+
 # 概述
 ## [什么是 DocumentDB？](documentdb-introduction.md)
 ## [核心概念](documentdb-resources.md)
@@ -29,6 +30,7 @@
 ### [分区和缩放](documentdb-partition-data.md)
 ### [一致性](documentdb-consistency-levels.md)
 ### [NoSQL 与 SQL](documentdb-nosql-vs-sql.md)
+### [以经济高效的方式读取和写入](documentdb-key-value-store-cost.md)
 
 ## 管理
 ### [导入数据](documentdb-import-data.md)
@@ -40,14 +42,13 @@
 ### [自定义索引](documentdb-indexing-policies.md)
 ### [保护对数据的访问](documentdb-secure-access-to-data.md)
 ### [备份和还原](documentdb-online-backup-and-restore.md)
-### [性能级别](documentdb-performance-levels.md)
+### [停用 S1、S2、S3](documentdb-performance-levels.md)
 ### [请求单位](documentdb-request-units.md)
 ### Azure CLI
 #### [创建帐户](documentdb-automation-resource-manager-cli.md)
 #### [添加或删除区域](documentdb-automation-region-management.md)
 ### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [防火墙支持](documentdb-firewall-support.md)
-### [提升帐户](documentdb-supercharge-your-account.md)
 
 ## 开发
 ### [SQL 查询](documentdb-sql-query.md)
@@ -71,6 +72,7 @@
 ## 使用门户
 ### [创建数据库帐户](documentdb-create-account.md)
 ### [创建集合](documentdb-create-collection.md)
+### [设置吞吐量](documentdb-set-throughput.md)
 ### [添加全局复制](documentdb-portal-global-replication.md)
 ### [添加和编辑文档](documentdb-view-json-document-explorer.md)
 ### [查询文档](documentdb-query-collections-query-explorer.md)
@@ -91,9 +93,10 @@
 ### [使用逻辑应用获取通知](documentdb-change-notification.md)
 ### [实时处理传感器数据](../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md)
 ### [使用 Power BI 直观显示数据](documentdb-powerbi-visualize.md)
+### [将 ODBC 驱动程序用于数据可视化](documentdb-nosql-odbc-driver.md)
 
 
-# 参考
+# 引用
 ## [Java](documentdb-sdk-java.md)
 ## [.NET](documentdb-sdk-dotnet.md)
 ## [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -123,6 +126,6 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,6 +12,7 @@
 ### [跨域资源共享](cdn-cors.md)
 
 ## 管理
+### [在自定义域上启用 HTTPS](cdn-custom-ssl.md)
 ### [使用 PowerShell 进行管理](cdn-manage-powershell.md)
 ### 配置生存时间
 #### [Web 应用/云服务、ASP.NET 或 IIS 内容](cdn-manage-expiration-of-cloud-service-content.md)
@@ -62,6 +63,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

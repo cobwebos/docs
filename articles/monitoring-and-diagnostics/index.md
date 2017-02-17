@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "了解如何使用监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 API 参考、最佳实践和其他资源。"
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: e59d88dbd538aad3e21a31fd721361cd9ffd4919
+ms.sourcegitcommit: 1db31bcf230b588954e9df00dd55a1b23c8d95cf
+ms.openlocfilehash: 89826ce2901b9b08ef9c9658abb8acd36e3d71fd
 
 ---
 
@@ -144,12 +144,26 @@ ms.openlocfilehash: e59d88dbd538aad3e21a31fd721361cd9ffd4919
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema">Azure 诊断架构</a></h3>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot0">Azure 诊断架构 1.0</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot2">Azure 诊断架构 1.2</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-to-1dot5">Azure 诊断架构 1.3 到 1.5</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 </ul>
 
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

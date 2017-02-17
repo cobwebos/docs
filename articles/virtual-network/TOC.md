@@ -97,9 +97,10 @@
 ##### [示例应用程序](virtual-networks-sample-app.md)
 
 ## 配置
-### 加速网络
+### 适用于 VM 的加速网络
 #### [Azure 门户](virtual-network-accelerated-networking-portal.md)
 #### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### [优化 VM 网络吞吐量](virtual-network-optimize-network-bandwidth.md)
 ### 访问控制列表
 #### [经典门户](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
@@ -147,6 +148,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

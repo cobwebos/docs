@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/11/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4d8de51377c8aad73ebf71f83b44edb094635f32
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 2fddc72747ce97e8985e9f1c84ffdce52cd05e2e
 
 
 ---
@@ -92,7 +92,7 @@ ms.openlocfilehash: 4d8de51377c8aad73ebf71f83b44edb094635f32
    
    ![](./media/storsimple-ova-deploy2-provision-hyperv/image2.png)
 4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。
-5. 在“指定名称和位置”页上，提供虚拟设备的“名称”。 单击“资源组名称” 的 Azure 数据工厂。
+5. 在“指定名称和位置”页上，提供虚拟设备的“名称”。 单击“下一步”。
    
    ![](./media/storsimple-ova-deploy2-provision-hyperv/image4.png)
 6. 在“指定代数”页上选择设备映像类型，然后单击“下一步”。 如果使用的是 Windows Server 2008 R2，则不显示此页。
@@ -129,16 +129,16 @@ ms.openlocfilehash: 4d8de51377c8aad73ebf71f83b44edb094635f32
     
     ![](./media/storsimple-ova-deploy2-provision-hyperv/image13.png)
 15. 在新建虚拟硬盘向导的“准备工作”页上，单击“下一步”。
-16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。 单击“资源组名称” 的 Azure 数据工厂。 如果运行的是 Windows Server 2012 R2 或 Windows Server 2008 R2，则不会看到此屏幕。
+16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。 单击“下一步”。 如果运行的是 Windows Server 2012 R2 或 Windows Server 2008 R2，则不会看到此屏幕。
     
     ![](./media/storsimple-ova-deploy2-provision-hyperv/image15.png)
-17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。 也可以选择“固定大小”磁盘，但可能需等待很长时间。 建议不要使用“差异”选项。 单击“资源组名称” 的 Azure 数据工厂。 请注意，“动态扩展”是 Windows Server 2012 R2 和 Windows Server 2012 中的默认值。 在 Windows Server 2008 R2 中，默认值为“固定大小”。
+17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。 也可以选择“固定大小”磁盘，但可能需等待很长时间。 建议不要使用“差异”选项。 单击“下一步”。 请注意，“动态扩展”是 Windows Server 2012 R2 和 Windows Server 2012 中的默认值。 在 Windows Server 2008 R2 中，默认值为“固定大小”。
     
     ![](./media/storsimple-ova-deploy2-provision-hyperv/image16.png)
-18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。 单击“资源组名称” 的 Azure 数据工厂。
+18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。 单击“下一步”。
     
     ![](./media/storsimple-ova-deploy2-provision-hyperv/image17.png)
-19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践](storsimple-ova-best-practices.md#configuration-best-practices)文档的“调整大小”部分。 单击“资源组名称” 的 Azure 数据工厂。
+19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或&500; GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践](storsimple-ova-best-practices.md#configuration-best-practices)文档的“调整大小”部分。 单击“下一步”。
     
     ![](./media/storsimple-ova-deploy2-provision-hyperv/image18.png)
 20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。 此时会关闭向导并向虚拟机添加虚拟硬盘。
@@ -216,7 +216,7 @@ ms.openlocfilehash: 4d8de51377c8aad73ebf71f83b44edb094635f32
 
 观看视频，了解如何在 Hyper-V 中预配 StorSimple 虚拟阵列。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Create-a-StorSimple-Virtual-Array/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Create-a-StorSimple-Virtual-Array/player]
 > 
 > 
 
@@ -227,6 +227,6 @@ ms.openlocfilehash: 4d8de51377c8aad73ebf71f83b44edb094635f32
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

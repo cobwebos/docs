@@ -12,13 +12,15 @@
 # 如何
 ## 配置高可用性
 ### [高可用性选项](virtual-machines-windows-sql-high-availability-dr.md) 
-### [配置 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-overview.md)
+### [Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-overview.md)
 #### [自动 - 使用模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [手动 - 先决条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [手动 - 教程](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 #### [负载均衡器 - 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
 #### [负载均衡器 - PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
 #### [多个区域](virtual-machines-windows-portal-sql-availability-group-dr.md)
+### 故障转移群集实例
+#### [配置](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
 ## 管理
 ### [使用 SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)
@@ -49,6 +51,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

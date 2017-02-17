@@ -155,12 +155,12 @@
 ### [资源管理器](/dotnet/api/microsoft.azure.management.storage)
 ### [数据移动](https://msdn.microsoft.com/library/azure/mt684990.aspx)
 ### [Blob、队列、表和文件](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-## [Java](/java/api/)
+## [Java](http://azure.github.io/azure-storage-java/)
 ## [Node.js](http://azure.github.io/azure-storage-node)
 ## [Ruby](http://azure.github.io/azure-storage-ruby)
 ## [Python](https://azure-storage.readthedocs.io/en/latest/index.html)
 ## [C++](http://azure.github.io/azure-storage-cpp)
-## [iOS](https://github.com/Azure/azure-storage-ios)
+## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
 ### [Blob、队列、表和文件](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
@@ -205,6 +205,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -46,7 +46,8 @@
 ### [打开端口和终结点](../virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [如何调整 Linux VM 的大小](../virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### 将 VM 部署到现有虚拟网络
-#### [Azure CLI](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 1.0](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### [Azure CLI 2.0（预览版）](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Azure 门户](../virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [查找 VM 映像](../virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [使用 cloud-init](../virtual-machines-linux-using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -92,7 +93,9 @@
 ### 映像
 #### [Azure 认可的映像](../virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [自定义映像](../virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-#### [使用 CLI 上载 VM 映像](../virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+#### 上载 VM 映像
+##### [Azure CLI 1.0](../virtual-machines-linux-upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+##### [Azure CLI 2.0（预览版）](../virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Azure Linux 代理](../virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [CentOS](../virtual-machines-linux-create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 #### [Ubuntu](../virtual-machines-linux-create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -201,6 +204,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

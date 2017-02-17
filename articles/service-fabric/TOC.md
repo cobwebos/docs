@@ -161,6 +161,7 @@
 ### [查看运行状况报告](service-fabric-view-entities-aggregated-health.md)
 
 ## 监视和诊断
+### [监视和诊断应用程序](service-fabric-diagnostics-overview.md)
 ### 在本地监视和诊断服务
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
@@ -208,6 +209,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

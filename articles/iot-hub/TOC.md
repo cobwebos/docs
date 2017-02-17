@@ -97,6 +97,28 @@
 #### [可选：更改 LED 行为](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
 ### [故障排除](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
+## Arduino (Node) 入门
+### [Arduino 开发板入门：Adafruit Feather M0 WiFi](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+### 第 1 课：配置设备
+#### [配置设备](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
+#### [获取工具 (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
+#### [获取工具 (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-ubuntu.md)
+#### [获取工具 (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-mac.md)
+#### [创建和部署闪烁的应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-deploy-blink-app.md)
+### 第 2 课：创建 IoT 中心
+#### [获取 Azure 工具 (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
+#### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
+#### [获取 Azure 工具 (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
+#### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
+### 第 3 课：发送设备到云的消息
+#### [创建 Azure Function App 和存储帐户](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
+#### [运行用于发送消息的示例应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
+#### [阅读存储中保存的消息](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
+### 第 4 课：发送云到设备的消息
+#### [运行用于接收消息的示例应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
+#### [可选：更改 LED 行为](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
+### [故障排除](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
+
 ## [网关 SDK 入门 (Linux)](iot-hub-linux-gateway-sdk-get-started.md)
 ## [网关 SDK 入门 (Windows)](iot-hub-windows-gateway-sdk-get-started.md)
 
@@ -219,9 +241,11 @@
 ## [Java（设备）](/java/api/com.microsoft.azure.iothub)
 ## [Azure IoT SDK](http://azure.github.io/azure-iot-sdks/)
 ## [网关 SDK](http://azure.github.io/azure-iot-gateway-sdk)
-## [REST（资源提供程序）](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest)
-## [REST（设备标识）](https://docs.microsoft.com/rest/api/iothub/device-identities-rest)
-## [REST（设备消息传送）REST API](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis)
+## [REST（资源提供程序）](https://docs.microsoft.com/rest/api/iothub/iothubresource)
+## [REST（设备标识）](https://docs.microsoft.com/rest/api/iothub/deviceapi)
+## [REST（设备克隆）](https://docs.microsoft.com/rest/api/iothub/devicetwinapi)
+## [REST（设备消息传送）](https://docs.microsoft.com/rest/api/iothub/httpruntime)
+## [REST（作业）](https://docs.microsoft.com/rest/api/iothub/jobapi)
 
 # 相关内容
 ## [Azure IoT 套件](https://azure.microsoft.com/documentation/suites/iot-suite/)
@@ -240,6 +264,6 @@
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 
