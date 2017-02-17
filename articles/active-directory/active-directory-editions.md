@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b241d70ab7c7e8468a3f358fef5af47a89d42e56
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 8dd4c5ab11c43ca09085004ee4dce3e616b19d8e
 
 
 ---
@@ -124,7 +124,7 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版 | 基本版 | Premium（P1 和 P2）版 | 仅限 Office 365 应用 |
 |:---:|:---:|:---:|:---:|
-| 每个用户 10 个应用 (1) |每个用户 10 个应用 (1) |无限制 (2) |每个用户 10 个应用 (1) |
+| 每个用户&10; 个应用 (1) |每个用户&10; 个应用 (1) |无限制 (2) |每个用户&10; 个应用 (1) |
 
 1. 使用 Azure AD 免费版和 Azure AD 基本版，最终用户可以通过单一登录访问多达 10 个应用程序。
 2. 使用应用程序库菜单中提供的模板，自助集成支持 SAML、SCIM 或基于窗体的身份验证的任何应用程序。 有关更多详细信息，请参阅[针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](active-directory-saas-custom-apps.md)。
@@ -377,7 +377,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 * [iOS 上基于证书的身份验证](active-directory-certificate-based-authentication-ios.md)
 * [Android 上基于证书的身份验证](active-directory-certificate-based-authentication-android.md)
 
-## <a name="whats-next"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 * [Azure Active Directory 高级版入门](active-directory-get-started-premium.md)
 * [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
 * [查看访问和使用情况报告](active-directory-view-access-usage-reports.md)
@@ -387,6 +387,6 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 1/4/2017
-ms.author: jimpark; trinadhk
+ms.date: 2/2/2017
+ms.author: markgal;jimpark;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 0eb7b5c283c95503d076da486ba08df833f1acbd
-ms.openlocfilehash: 5235a09822dc14040ca6d4353d00e938fefd0e43
+ms.sourcegitcommit: b50b62b9b9a800c4f42e763a7ff6eecd84de9e69
+ms.openlocfilehash: 084bf86a2f36d8b48344f5a42e18738c5a4ed6d9
 
 
 ---
@@ -45,7 +45,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **应用程序一致的备份** - 无论是备份文件服务器、虚拟机还是 SQL 数据库，都需要知道恢复点具有还原备份副本所需的全部数据。 Azure 备份提供了应用程序一致的备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致的数据可减少还原时间，使得可快速恢复到运行状态。
 
-**长期保留** - 可以在 Azure 中备份数据 99 年。 可使用 Azure 实现短期和长期保留，无需将备份副本从磁盘转到磁带中，再将磁带移到异地位置进行长期存储。
+**长期保留** -  可使用 Azure 实现短期和长期保留，无需将备份副本从磁盘转到磁带中，再将磁带移到异地位置进行长期存储。 Azure 不会限制备份或恢复服务保管库中数据的保留时间长度。 可以根据需要设置数据在保管库中的保留时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 请参阅本文的[备份和保留](backup-introduction-to-azure-backup.md#backup-and-retention)部分，了解此限制对用户备份需求的影响。  
 
 ## <a name="which-azure-backup-components-should-i-use"></a>应使用哪些 Azure 备份组件？
 如果不确定哪个 Azure 备份组件适合你的需求，请参阅下表了解每个组件可保护的内容。 Azure 门户提供了一个内置向导，可引导你选择要下载和部署的组件。 该向导是恢复服务保管库创建的一部分，可引导你完成相关步骤来选择备份目标和选择要保护的数据/应用程序。
@@ -175,18 +175,18 @@ IaaS VM 上的 VM 扩展会通过存储网络直接读取 Azure 存储帐户中�
 #### <a name="network-throttling"></a>网络限制
 Azure 备份代理提供网络限制功能，可用于控制数据传输期间的网络带宽使用方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，限制会很有帮助。 数据传输的限制适用于备份和还原活动。
 
-### <a name="backup-and-retention"></a>备份和保留
+## <a name="backup-and-retention"></a>备份和保留
 
 Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备份副本或快照）的限制。 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 有关详细信息，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)部分。 保存数据的备份副本时，将保护实例。 数据的备份副本是保护项。 如果源数据丢失或损坏，备份副本可还原源数据。 下表显示了每个组件的最大备份频率。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额将会耗尽。 如果每月创建一个恢复点，可以保留恢复点 833 年。 备份服务未针对恢复点实施过期时间限制。
 
 |  | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 备份频率<br/> （到备份保管库） |每天三次备份 |每天两次备份 |每天两次备份 |每天一次备份 |
-| 备份频率<br/> （到磁盘） |不适用 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔 1 小时 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔 1 小时</p> |不适用 |
+| 备份频率<br/> （到磁盘） |不适用 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔&1; 小时 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔&1; 小时</p> |不适用 |
 | 保留期选项 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |
 | 每个受保护实例的恢复点数上限 |9999|9999|9999|9999|
 | 最长数据保留期 |取决于备份频率 |取决于备份频率 |取决于备份频率 |取决于备份频率 |
-| 本地磁盘上的恢复点 |不适用 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |不适用 |
+| 本地磁盘上的恢复点 |不适用 |<li>对于文件服务器为&64;，<li>对于应用程序服务器为&448; |<li>对于文件服务器为&64;，<li>对于应用程序服务器为&448; |不适用 |
 | 磁带上的恢复点 |不适用 |不受限制 |不适用 |不适用 |
 
 ## <a name="what-is-a-protected-instance"></a>什么是受保护实例
@@ -234,6 +234,6 @@ Azure 备份保护本地和云端的数据。 Azure Site Recovery 就虚拟机�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

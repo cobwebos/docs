@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
-ms.author: sethm
+ms.date: 02/14/2017
+ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 9919cd4735f1f915ba77d41d8b9e92b3411fef3f
-ms.openlocfilehash: 38d9eca04780493d03bb5ceb79e5b59fab0a93d2
+ms.sourcegitcommit: 579942cfe0dc7d6a5e3f205308642d36bf6be880
+ms.openlocfilehash: d3a191797e75c424af07910e4a6a87e1183f6676
 
 
 ---
@@ -31,7 +31,7 @@ Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 该中
 首先一个是侦听器，指示处理传入连接的准备情况，然后在这些连接到达时进行接受。 在另一端，是一个连接客户端，连接至侦听器，希望该连接被接受以建立双向通信路径。
 “连接”、“侦听”和“接受”与将要在大多数套接字 API 上看到的术语相同。
 
-任何中继通信模型都会使其中一方生成针对服务终结点的出站连接（Azure 中继混合连接协议指南），这使得“侦听器”也被常说成“客户端”，而导致其他术语名称相同；因此，我们用于混合连接的准确术语如下所述：
+任何中继通信模型都会使其中一方生成针对服务终结点的出站连接，这使得“侦听器”也被常说成“客户端”，而导致其他术语名称相同；因此，我们用于混合连接的准确术语如下所述：
 
 连接两端上的程序称为“客户端”，因为相对于服务它们是客户端。 等待和接受连接的客户端是“侦听器”，或者称其在“侦听器角色”中。 通过服务向侦听器启动新连接的客户端称为“发送方”，或者称其在“发送方角色”中。
 
@@ -118,7 +118,7 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token
 * **connectHeaders** – 发送方向中继终结点提供的所有 HTTP 头，其中也包括 Sec-WebSocket-Protocol 和 Sec-WebSocket-Extensions 头。
 
 #### <a name="accept-message"></a>接受消息
-``` JSON
+```json
 {                                                           
     "accept" : {
         "address" : "wss://168.61.148.205:443/$hc/{path}?..."    
@@ -201,7 +201,7 @@ URL 必须原样使用，用于创建接受套接字，但是要包含以下参�
 * **token** – 命名空间或混合连接的有效 URL 编码的服务总线共享访问令牌，可授予“**侦听**”权限。
 
 #### <a name="renewtoken-message"></a>renewToken 消息
-``` JSON
+```json
 {                                                                                                                                                                        
     "renewToken" : {                                                                                                                                                      
         "token" : "SharedAccessSignature sr=http%3a%2f%2fcontoso.servicebus.windows.net%2fhyco%2f&amp;sig=XXXXXXXXXX%3d&amp;se=1471633754&amp;skn=SasKeyName"  
@@ -271,6 +271,6 @@ wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,7 +12,6 @@ GitHub 存储库中存储了 [https://docs.microsoft.com/azure](https://docs.mic
 * [存储库组织方式](#repository-organization)
 * [使用 GitHub、Git 和本存储库](#use-github-git-and-this-repository)
 * [如何使用标记来设置主题格式](#how-to-use-markdown-to-format-your-topic)
-* [反馈、意见和支持](./contributor-guide/feedback-and-comments.md)
 * [更多资源](#more-resources)
 * [所有供稿人指南文章的索引](contributor-guide/contributor-guide-index.md)（打开新页）
 
@@ -27,7 +26,7 @@ GitHub 存储库中存储了 [https://docs.microsoft.com/azure](https://docs.mic
 
 ## <a name="about-your-contributions-to-azure-content"></a>有关在 Azure 中供稿
 ### <a name="minor-corrections"></a>轻微更正
-[docs.microsoft.com 使用条款](/enterprise-mobility-security/termsofuse)涵盖你在此存储库中提交的、对文档和代码示例所做的轻微更正和澄清。
+[docs.microsoft.com 使用条款](https://docs.microsoft.com/legal/termsofuse)涵盖你在此存储库中提交的、对文档和代码示例所做的轻微更正和澄清。
 
 ### <a name="larger-submissions"></a>大型提交件
 如果你不是 Microsoft 的员工，当你提交有关新文件或对文档和代码示例进行的重大更改的提取请求时，我们会在 GitHub 中发送一条意见，要求你提交一份在线供稿许可协议 (CLA)。 在我们接受你的提取请求之前，需要你填写这份在线表单。
@@ -87,6 +86,6 @@ azure-docs 存储库中的内容遵循 https://docs.microsoft.com/azure 上的�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

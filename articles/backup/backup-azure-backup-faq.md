@@ -5,7 +5,7 @@ description: "有关备份服务、备份代理、备份和保留、恢复、安
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: jwhit
+manager: carmonm
 editor: 
 keywords: "备份和灾难恢复;备份服务"
 ms.assetid: 1011bdd6-7a64-434f-abd7-2783436668d7
@@ -14,16 +14,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
-ms.author: trinadhk; giridham; arunak; markgal; jimpark;
+ms.date: 2/1/2017
+ms.author: trinadhk;giridham;arunak;markgal;jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: 1b2eeab756309148db5890ccc0d93853f3e69372
-ms.openlocfilehash: 4b7a8a88d21b11deb377c2fef4e2d8f9fbcf9036
+ms.sourcegitcommit: b50b62b9b9a800c4f42e763a7ff6eecd84de9e69
+ms.openlocfilehash: 7033b660608897819b629d398450cd32ea7b48fa
 
 
 ---
 # <a name="azure-backup-service--faq"></a>Azure 备份服务 - 常见问题
-本文提供有关 Azure 备份服务常见问题（及相应解答）的列表。 我们的社区可在短时间内提供解答，如果某个问题被经常提出，我们会将它添加到本文中。 问题的解答通常提供参考或支持信息。 你可以在本文或相关章的 Disqus 部分中提出有关 Azure 备份的问题。 还可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
+本文提供有关 Azure 备份服务常见问题（及相应解答）的列表。 我们的社区可在短时间内提供解答，如果某个问题被经常提出，我们会将它添加到本文中。 问题的解答通常提供参考或支持信息。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 还可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 
 ## <a name="what-is-the-list-of-supported-operating-systems-from-which-i-can-back-up-to-azure-using-azure-backup-br"></a>我可以在哪些受支持的操作系统上使用 Azure 备份向 Azure 备份数据？ <br/>
 Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 SCDPM 对文件和文件夹以及受保护的工作负荷应用程序进行备份。
@@ -58,7 +58,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 是的，保管库凭据在 48 小时后过期。 如果文件过期，请登录 Azure 门户，然后从保管库下载保管库凭据文件。
 
 ## <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>在每个 Azure 订阅中可以创建的保管库数量是否有任何限制？ <br/>
-是的。 从 2016 年 9 月起，可以为每个订阅创建 25 个备份保管库。 在 Azure 备份支持的每个区域中，可以为每个订阅最多创建 25 个恢复服务保管库。 如果需要更多保管库，请创建新订阅。
+是的。 从 2016 年 9 月起，可以为每个订阅创建 25 个备份保管库。 在 Azure 备份支持的区域中，可以为每个订阅最多创建 25 个恢复服务保管库。 如果需要更多保管库，请创建新订阅。
 
 ## <a name="are-there-any-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>可针对每个保管库注册的服务器/计算机数量是否有任何限制？ <br/>
 是的，最多可为每个保管库注册 50 个计算机。 对于 Azure IaaS 虚拟机，限制为每个保管库 200 个 VM。 如果需要注册更多的计算机，请创建另一个保管库。
@@ -68,7 +68,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 
 ## <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>如果重命名了用于将数据备份到 Azure 的 Windows 服务器，会发生什么情况？<br/>
 当你重命名服务器时，所有当前配置的备份都将停止。
-将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复以前备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中“[其他服务器](backup-azure-restore-windows-server.md#recover-to-an-alternate-machine)”选项来恢复该数据。
+将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复以前备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中“[其他服务器](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)”选项来恢复该数据。
 
 ## <a name="what-types-of-drives-can-i-backup-files-and-folders-from-br"></a>可以从哪些类型的驱动器备份文件和文件夹？ <br/>
 无法备份以下驱动器/卷组：
@@ -89,7 +89,6 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 * 压缩 + 稀疏
 * 硬链接：不支持，跳过
 * 重分析点：不支持，跳过
-* 加密 + 压缩：不支持，跳过
 * 加密 + 稀疏：不支持，跳过
 * 压缩流：不支持，跳过
 * 稀疏流：不支持，跳过
@@ -277,6 +276,6 @@ Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

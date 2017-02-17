@@ -39,7 +39,11 @@
         ```
 
     应会看到一个 .cfg 文件。
-4. 打开该文件：vi *文件名*。
+4. 打开该文件：
+
+        ```bash
+        vi eth0.cfg
+        ```
 
     该文件的末尾应会显示以下命令行：
 
@@ -102,32 +106,36 @@
 
     应会看到其中一个文件是 *ifcfg-eth0*。
 
-5. 使用以下命令复制 *ifcfg-eth0* 文件并将它命名为 *ifcfg-eth0:0*：
+5. 若要添加 IP 地址，请为其创建配置文件，如下所示。 请注意，必须为每个 IP 配置创建一个文件。
 
     ```bash
-    cp ifcfg-eth0 ifcfg-eth0:0
+    touch ifcfg-eth0:0
     ```
 
-6. 使用以下命令编辑 *ifcfg-eth0:0* 文件：
+6. 使用以下命令打开 *ifcfg-eth0:0* 文件：
 
     ```bash
     vi ifcfg-eth0:0
     ```
 
-7. 使用以下命令在文件中将设备更改为适当的名称，在本例中为 *eth0:0*：
+7. 使用以下命令将内容添加到该文件（此示例中为 *eth0:0*）。 请务必更新基于 IP 地址的信息。
 
     ```bash
     DEVICE=eth0:0
+        BOOTPROTO=static
+        ONBOOT=yes
+        IPADDR=192.168.101.101
+        NETMASK=255.255.255.0
+
     ```
 
-8. 更改 *IPADDR = YourPrivateIPAddress* 行以反映 IP 地址。
-9. 使用以下命令保存该文件：
+8. 使用以下命令保存该文件：
 
     ```bash
     :wq
     ```
 
-10. 运行以下命令重新启动网络服务，确保更改成功：
+9. 运行以下命令重新启动网络服务，确保更改成功：
 
     ```bash
     /etc/init.d/network restart
@@ -137,6 +145,6 @@
     应会在返回的列表中看到添加的 IP 地址 *eth0:0*。
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

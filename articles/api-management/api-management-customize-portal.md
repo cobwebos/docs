@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
+ms.sourcegitcommit: 13431648e87d085161ad278dc991d49f7872be34
+ms.openlocfilehash: 60213f885020a5ba36d6ada0812f755e06b3c48b
 
 
 ---
@@ -43,17 +43,17 @@ ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 > 
 
 ## <a name="change-headers-styling"> </a>更改标头的样式
-由样式规则定义门户上任何页面的颜色、字体、大小、间距和其他样式相关的元素。 若要编辑样式，请单击发布者门户中“开发人员门户”菜单中的“外观”，然后单击“开始自定义”以启用样式编辑器。
+由样式规则定义门户上任何页面的颜色、字体、大小、间距和其他样式相关的元素。 在**开发人员门户**中时，若要编辑样式，请打开左侧的自定义边栏选项卡，只需移动自定义图标，然后从工具栏中选择“样式”即可。
 
-浏览器切换到包含内容示例的开发人员门户中的隐藏页面，其中显示了可在站点的任何位置使用的所有样式规则的示例。 要打开样式编辑器，请将光标移到页面最左侧部分的灰色细竖线上。 应显示编辑器工具栏。
+![自定义工具栏按钮][api-management-customization-toolbar-button]
+
+有两种主要方式来编辑样式规则 - 可以查看任意位置使用的所有样式规则的列表（这些规则是默认显示的），然后根据需要修改样式；也可以选择“选择页面上的元素”，然后单击页面任意位置即可只查看该元素的样式。 
+
+本节中我们只想更改标头的样式。 单击样式编辑器工具栏中的“选择页面上的元素”选项。 
 
 ![自定义工具栏][api-management-customization-toolbar]
 
-编辑样式规则有两种主要模式 - **编辑所有规则**显示任何位置使用的所有样式规则的列表；而**选择元素**则允许从所在的页上选择一个元素，并仅对该元素显示样式。
-
-本节中我们只想更改标头的样式。 单击样式编辑器工具栏中的“选择元素”选项，然后单击“选择要自定义的元素”。 现在将鼠标悬停在元素上方时元素将突出显示，以表示单击时可开始编辑的元素样式。 将鼠标移到标头中表示公司名称的文本（如果遵循上一节中的说明，则为“Fabrikam 开发人员门户”），然后单击它。 样式编辑器中显示一组分类并命名的样式规则。
-
-每个规则表示所选元素的样式属性。 例如，对于上面所选的标题文本，文本大小在 @font-size-h1 中，而带替代项的字体的名称在 @headings-font-family. 中
+现在将鼠标悬停在元素上方时元素将突出显示，以表示单击时可开始编辑的元素样式。 将鼠标移到标头中表示公司名称的文本（如果遵循上一节中的说明，则为“Fabrikam 开发人员门户”），然后单击它。 样式编辑器中显示一组分类并命名的样式规则。 每个规则表示所选元素的样式属性。 例如，对于上面所选的标题文本，文本大小在 @font-size-h1 中，而带替代项的字体的名称在 @headings-font-family 中。
 
 > 如果熟悉 [bootstrap][bootstrap]，这些规则实际上是开发人员门户中使用的 bootstrap 主题中的 [LESS 变量][LESS variables]。
 > 
@@ -63,7 +63,7 @@ ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 
 ![颜色选取器][api-management-customization-toolbar-color-picker]
 
-完成对所选元素的样式更改后，单击“预览更改”可在屏幕上查看结果。 这次它们只对管理员可见。 要使这些更改对每个人都可见，请单击样式编辑器中的“发布”按钮，然后确认所做的更改。
+所做更改是实时预览的，但仅对管理员可见。 要使这些更改对每个人都可见，请单击样式编辑器中的“发布”按钮，然后确认所做的更改。
 
 ![发布菜单][api-management-customization-toolbar-publish-form]
 
@@ -96,6 +96,7 @@ ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
+[api-management-customization-toolbar-button]: ./media/api-management-customize-portal/api-management-customization-toolbar-button.png
 [api-management-customization-toolbar]: ./media/api-management-customize-portal/api-management-customization-toolbar.png
 [api-management-customization-toolbar-color-picker]: ./media/api-management-customize-portal/api-management-customization-toolbar-color-picker.png
 [api-management-customization-toolbar-publish-form]: ./media/api-management-customize-portal/api-management-customization-toolbar-publish-form.png
@@ -107,6 +108,6 @@ ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

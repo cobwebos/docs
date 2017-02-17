@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2016
+ms.date: 02/01/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3f550639f0e48f34200ad480f94524df2cc0b2b6
+ms.sourcegitcommit: 352e1a51787cc369b605fb16b1dfccbb8ff7e12e
+ms.openlocfilehash: 3342516b4f2cf7342761573553901d03e66efc2a
 
 
 ---
@@ -43,6 +43,13 @@ Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其
 事实上，为 Microsoft 在线服务启用的所有用户都定义为一个或多个 Azure AD 实例中的用户帐户。 你可以为这些帐户启用免费的 Azure AD 功能，例如云应用程序访问。
 
 此外，Azure AD 付费版服务（例如 Azure AD Basic、Premium、EMS 等）可通过综合性的企业级管理和安全解决方案来弥补其他在线服务（例如 Office 365 和 Microsoft Azure）的不足。
+
+- - -
+
+- - -
+**问：是否可以通过报表来查看我的 Azure AD 用户许可证何时会过期？**
+
+**答：**否。  目前没有这样的报表。
 
 - - -
 ## <a name="getting-started-with-hybrid-azure-ad"></a>混合 Azure AD 入门
@@ -161,6 +168,6 @@ Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

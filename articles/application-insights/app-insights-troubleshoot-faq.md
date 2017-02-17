@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
-ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: e066a7fc671399ba44bec35a2ea860fccddb4cc5
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 *我在设置以下内容时遇到问题：*
 
 * [.NET 应用](app-insights-asp-net-troubleshoot-no-data.md)
-* [监视已经在运行的应用](app-insights-monitor-performance-live-website-now.md#troubleshooting)
+* [监视已经在运行的应用](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
 * [Azure 诊断](app-insights-azure-diagnostics.md)
 * [Java Web 应用](app-insights-java-troubleshoot.md)
 * [其他平台](app-insights-platforms.md)
@@ -40,7 +40,7 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 
 ## <a name="is-it-free"></a>是否免费？
 
-是的，对于实验用途。 在默认定价计划中，应用程序可以发送一些每月免费数据量。 免费的限额足以满足开发和为少量用户发布应用的需求。 可以设置上限，以防止所使用的数据量超出指定数据量。
+是的，对于实验用途。 在基本定价计划中，应用程序可以发送一些每月免费数据量。 免费的限额足以满足开发和为少量用户发布应用的需求。 可以设置上限，以防止所使用的数据量超出指定数据量。
 
 需要使用企业计划来获取某些功能，如“连续导出”。 这会产生每日的费用。
 
@@ -51,20 +51,20 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 详细信息取决于项目类型。 对于 Web 应用程序：
 
 * 将这些文件添加到项目：
-  
+
   * ApplicationInsights.config。
   * ai.js
 * 安装以下 NuGet 包：
-  
+
   * *Application Insights API* - 核心 API
   * *适用于 Web 应用程序 的 Application Insights API* - 用于从服务器发送遥测
   * *适用于 JavaScript 应用程序的 Application Insights API* - 用于从客户端发送遥测
-    
+
     这些包包括以下程序集：
   * Microsoft.ApplicationInsights
   * Microsoft.ApplicationInsights.Platform
 * 将项目插入：
-  
+
   * Web.config
   * packages.config
 * （仅限新项目 - 如果[将 Application Insights 添加到现有项目][start]，则必须手动执行此操作。）在客户端和服务器代码中插入代码片段，以使用 Application Insights 资源 ID 初始化它们。 例如，在 MVC 应用中，代码插入到主页 Views/Shared/_Layout.cshtml 中
@@ -90,7 +90,7 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 | 你应看到 | 如何获取 | 为何需要它 |
 | --- | --- | --- |
 | 可用性图表 |[Web 测试](app-insights-monitor-web-app-availability.md) |知道 Web 应用已启动 |
-| 服务器应用性能：响应时间、... |[将 Application Insights 添加到项目](app-insights-asp-net.md)或[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md)（或编写你自己的代码以[跟踪依赖项](app-insights-api-custom-events-metrics.md#track-dependency)） |检测性能问题 |
+| 服务器应用性能：响应时间、... |[将 Application Insights 添加到项目](app-insights-asp-net.md)或[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md)（或编写你自己的代码以[跟踪依赖项](app-insights-api-custom-events-metrics.md#trackdependency)） |检测性能问题 |
 | 依赖项遥测 |[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md) |诊断数据库或其他外部组件问题 |
 | 获取异常的堆栈跟踪 |[在代码中插入 TrackException 调用](app-insights-search-diagnostic-logs.md#exceptions)（但有些会自动报告） |检测和诊断异常 |
 | 搜索日志跟踪 |[添加日志记录适配器](app-insights-search-diagnostic-logs.md) |诊断异常、性能问题 |
@@ -113,6 +113,6 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

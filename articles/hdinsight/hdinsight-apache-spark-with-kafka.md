@@ -1,5 +1,5 @@
 ---
-title: "将 Apache Spark 与 Kafka on HDInsight 配合使用 | Microsoft Docs"
+title: "将 Apache Spark 与 Kafka on Azure HDInsight 配合使用 | Microsoft Docs"
 description: "了解如何使用 Spark on HDInsight 读取数据并将数据写入 Kafka on HDInsight 群集。 此示例使用 Jupyter 笔记本中的 Scala 将随机数据写入到 Kafka on HDInsight，然后使用 Spark 流式处理读取它。"
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/14/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 535e8fc7503e21eea470a1fdb0a10fbc8a18349c
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 0cb9d65e33bf6f6b67e2a74b7e4634aba3f2359b
 
 ---
 # <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>将 Apache Spark 与 Kafka on HDInsight（预览版）配合使用
@@ -83,7 +83,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 4. 最后，选中“固定到仪表板”，然后选择“购买”。 创建群集大约需要 20 分钟时间。
 
-创建资源后，将重定向到包含群集和 Web 仪表板的资源组边栏选项卡。
+创建资源后，会重定向到包含群集和 Web 仪表板的资源组边栏选项卡。
 
 ![虚拟网络和群集的“资源组”边栏选项卡](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
@@ -130,7 +130,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
         curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
 
     > [!IMPORTANT]
-    > 使用 Windows PowerShell 的此命令时，可能收到有关 shell 引用的错误。 如果出现此情况，请使用以下命令：`curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")'
+    > 使用 Windows PowerShell 的此命令时，可能收到有关 shell 引用的错误。 如果出现此情况，请使用以下命令：`curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")'`
 
 * 获取 __Zookeeper 主机__信息：
 
@@ -187,6 +187,6 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

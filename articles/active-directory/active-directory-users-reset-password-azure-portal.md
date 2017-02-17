@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 02a5487578468062e42f25053eb161a810279a47
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: 7b58db43f247182553a5766e11fa263ee93beff7
 
 
 ---
@@ -24,24 +24,24 @@ ms.openlocfilehash: 02a5487578468062e42f25053eb161a810279a47
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-users-reset-password-azure-portal.md)
 > * [Azure 经典门户](active-directory-create-users-reset-password.md)
-> 
-> 
+>
+>
 
 ## <a name="how-to-reset-the-password-for-a-user"></a>如何重置用户的密码
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
-   
+
    ![打开“用户管理”](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“用户”。
-   
+
    ![打开“用户”边栏选项卡](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
 4. 在“用户和组 - 用户”边栏选项卡中，从列表中选择一个用户。
 5. 在所选用户的边栏选项卡中，选择“概述”，然后在命令栏中选择“重置密码”。
-   
+
     ![选择“重置密码”命令](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
 6. 在“重置密码”边栏选项卡中，选择“重置密码”。
 
-## <a name="whats-next"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 * [添加用户](active-directory-users-create-azure-portal.md)
 * [在 Azure AD 中为用户分配角色](active-directory-users-assign-role-azure-portal.md)
 * [更改用户的工作信息](active-directory-users-work-info-azure-portal.md)
@@ -50,7 +50,6 @@ ms.openlocfilehash: 02a5487578468062e42f25053eb161a810279a47
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

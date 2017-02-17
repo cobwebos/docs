@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/19/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 45ecd5b16b874dcf0ddf16c58f6d9dea6f4afb00
+ms.sourcegitcommit: 67e50a09d9863fe081115c0f303ac63b2b6113f2
+ms.openlocfilehash: 32a9069f8572ca5c01af9e80dbe92e88727375aa
 
 
 ---
@@ -77,6 +77,8 @@ ms.openlocfilehash: 45ecd5b16b874dcf0ddf16c58f6d9dea6f4afb00
      ![应用代理连接器服务 - 屏幕截图](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 5. 在安装窗口中单击“完成”  。
 
+有关连接器的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)。 
+
 为了获得高可用性，应该部署至少两个连接器。 若要部署更多连接器，请重复上面的步骤 2 和 3。 每个连接器必须分开注册。
 
 如果要卸载连接器，请先卸载连接器服务和更新程序服务。 重新启动计算机以完全删除该服务。
@@ -89,6 +91,6 @@ ms.openlocfilehash: 45ecd5b16b874dcf0ddf16c58f6d9dea6f4afb00
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

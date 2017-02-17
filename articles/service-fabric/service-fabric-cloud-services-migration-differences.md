@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6765ddb2158827c516cec534dc7c1fae25ee4682
+ms.sourcegitcommit: 56220f357cbb44946d601167234636a1bce03bfa
+ms.openlocfilehash: d0488999f55b7ccc393f4852f22c6adf4a031b1f
 
 
 ---
@@ -106,6 +106,6 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
-ms.openlocfilehash: 0f0805c8363226b6fab6463c668d750e8e7c9265
+ms.sourcegitcommit: bfffb074a905184269992a19993aabc22bb1256f
+ms.openlocfilehash: b65c54819374e90a8318a3f3eecce5b71b01b17f
 
 
 ---
@@ -27,9 +27,6 @@ ms.openlocfilehash: 0f0805c8363226b6fab6463c668d750e8e7c9265
 如果在[创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)期间遇到问题，请参阅[创建 Azure AD 租户或 Azure AD B2C 租户 - 问题和解决方案](active-directory-b2c-support-create-directory.md)以获取指导。
 
 请注意，当删除现有 B2C 租户并重新创建具有相同域名的 B2C 租户时，存在已知问题。 你必须创建具有不同域名的 B2C 租户。
-
-## <a name="note-about-b2c-tenant-quotas"></a>有关 B2C 租户配额的注意事项
-默认情况下，B2C 租户中的用户数限制为 50,000 位用户。 如果需要提高你的 B2C 租户的配额，应联系“支持”。
 
 ## <a name="branding-issues-on-verification-email"></a>验证电子邮件中的品牌问题
 默认验证电子邮件包含 Microsoft 品牌。 将来我们会删除它。 现在，你可以使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)将其删除。
@@ -133,6 +130,6 @@ Azure AD B2C 租户中不支持 [Azure AD 图形 API 上的差异查询功能](h
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/09/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: bd3dfe9472e944a127230d3dc0d564d344c4fbec
-ms.openlocfilehash: 2ca5813c12e1358afaa20b4a919de4ee8a355865
+ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
+ms.openlocfilehash: acb3b4d4a14ea546e94ccc38806251460e21a6bc
 
 
 ---
@@ -171,10 +171,10 @@ ms.openlocfilehash: 2ca5813c12e1358afaa20b4a919de4ee8a355865
 #### <a name="aggregate-defaults"></a>聚合默认值
 下面是聚合窗口和间隔设置的建议值。 AggregateEmotionWindowMs 应该超过 AggregateEmotionIntervalMs。
 
-| 默认值 | 最小值 | 最大值 |
-| --- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |
-| AggregateEmotionIntervalMs |0.5 |1 |
+|| 默认值 | 最小值 | 最大值 |
+|--- | --- | --- | --- |
+| AggregateEmotionWindowMs |0.5 |2 |0.25|
+| AggregateEmotionIntervalMs |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：
@@ -525,6 +525,6 @@ ms.openlocfilehash: 2ca5813c12e1358afaa20b4a919de4ee8a355865
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

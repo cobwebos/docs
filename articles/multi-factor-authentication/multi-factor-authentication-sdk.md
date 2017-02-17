@@ -12,19 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 02/03/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
+ms.sourcegitcommit: e793478028cee273a07e3665d409a669bdadc758
+ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
 
 
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>将 Multi-Factor Authentication 构建到自定义应用程序中 (SDK)
-> [!IMPORTANT]
-> 即使拥有 Azure MFA、AAD 高级版或 EMS 许可证，若要下载 SDK，也需要创建 Azure 多重身份验证提供程序。 如果出于此目的而创建 Azure 多重身份验证提供程序且已拥有许可证，请务必使用**按启用的用户**模型创建提供程序。 然后，将该提供程序链接到包含 Azure MFA、Azure AD Premium 或 EMS 许可证的目录。 该配置将确保仅当使用 SDK 的唯一用户数大于你所拥有的许可证数时才进行计费。
-> 
-> 
 
 使用 Azure 多重身份验证软件开发工具包 (SDK)，你可将双重验证直接内置于 Azure AD 租户的应用程序登录或事务处理流程中。
 
@@ -33,6 +29,10 @@ ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
 多重身份验证 SDK 的 API 结构很简单。 你可使用多重身份验证选项参数（如验证模式）和用户数据（如要呼叫的电话号码或要验证的 PIN 号码）对 API 进行单函数调用。 API 将函数调用转换成对基于云的 Azure 多重身份验证服务的 Web 服务请求。 所有调用都必须包括对每个 SDK 中包含的私有证书的引用。
 
 由于这些 API 无法访问 Azure Active Directory 中注册的用户，你必须在文件或数据库中提供用户信息。 另外，这些 API 也未提供注册或用户管理功能，因此你需要将这些流程内置于你的应用程序中。
+
+> [!IMPORTANT]
+> 即使拥有 Azure MFA、AAD 高级版或 EMS 许可证，若要下载 SDK，也需要创建 Azure 多重身份验证提供程序。 如果出于此目的而创建 Azure 多重身份验证提供程序且已拥有许可证，请务必使用**按启用的用户**模型创建提供程序。 然后，将该提供程序链接到包含 Azure MFA、Azure AD Premium 或 EMS 许可证的目录。 该配置将确保仅当使用 SDK 的唯一用户数大于你所拥有的许可证数时才进行计费。
+
 
 ## <a name="download-the-azure-multi-factor-authentication-sdk"></a>下载 Azure 多重身份验证 SDK
 下载 Azure 多重身份验证 SDK 需要 [Azure 多重身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)。  即使拥有 Azure MFA、Azure AD Premium 或企业移动性套件许可证，这还需要一个完整的 Azure 订阅。  若要下载 SDK，请导航到多重管理门户。 可以通过直接管理多重身份验证提供程序，或单击 MFA 服务设置页上的**“转到门户”**链接，导航到多重管理门户。
@@ -72,8 +72,6 @@ ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
 
 > [!WARNING]
 > 客户端证书是专门为你生成的唯一私有证书。 请不要共享或丢失此文件。 它是确保你与 Multi-Factor Authentication 服务的通信安全性的关键所在。
-> 
-> 
 
 ## <a name="code-sample-standard-mode-phone-verification"></a>代码示例：标准模式电话验证
 此代码示例演示如何使用 Azure 多重身份验证 SDK 中的 API，为你的应用程序添加标准模式语音呼叫验证。 标准模式是用户通过按 # 键响应的电话呼叫。
@@ -82,8 +80,6 @@ ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
 
 > [!NOTE]
 > 实现多重身份验证时，将使用附加方法（电话呼叫或短信）作为第二方法或第三方法验证来补充主要身份验证方法（用户名和密码）。 这些方法不设计用作主要身份验证方法。
-> 
-> 
 
 ### <a name="code-sample-overview"></a>代码示例概述
 这段示例代码用于简单的 Web 演示应用程序，它使用以 # 键响应的电话呼叫来完成用户的身份验证。 此电话呼叫因素在 Multi-Factor Authentication 中称为标准模式。
@@ -161,7 +157,7 @@ ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
                 // Add call details from the user database.
                 PfAuthParams pfAuthParams = new PfAuthParams();
                 pfAuthParams.Username = username.Text;
-                pfAuthParams.Phone = "9134884271";
+                pfAuthParams.Phone = "5555555555";
                 pfAuthParams.Mode = pf_auth.MODE_STANDARD;
 
                 // Specify a client certificate
@@ -182,7 +178,7 @@ ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
                 else
                 {
                     lblResult.ForeColor = System.Drawing.Color.Red;
-                    lblResult.Text = " Multi-Factor Authentication failed.";
+                    lblResult.Text = "Multi-Factor Authentication failed.";
                 }
             }
 
@@ -191,6 +187,6 @@ ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

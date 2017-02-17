@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
-ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
+ms.sourcegitcommit: af6728d23ba228b436546c13529189f649416dba
+ms.openlocfilehash: cbddda10fa2b91e46a9789379fde8011be0e8381
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
 Web 测试有两种类型：
 
 * [URL ping 测试](#create)：可以在 Azure 门户中创建的简单测试。
-* [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Ultimate 或 Visual Studio Enterprise 中创建并上载到门户的测试。
+* [多步骤 Web 测试](#multi-step-web-tests)：可以在 Visual Studio Enterprise 中创建并上载到门户的测试。
 
 对于每个应用程序资源，最多可以创建 10 个 Web 测试。
 
@@ -56,7 +56,7 @@ Web 测试有两种类型：
 
     **测试超时**：减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源。
 
-    **HTTP 响应**：视为成功的返回状态代码。 代码 200 指示返回了正常网页。
+    **HTTP 响应**：视为成功的返回状态代码。 代码&200; 指示返回了正常网页。
 
     **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
 * **警报** 。 某个位置的失败很可能是网络问题，而不是站点问题。 但是，可以将阈值更改为更敏感或更不敏感，也可以更改要将电子邮件发送给哪个人。
@@ -100,7 +100,7 @@ Web 测试有两种类型：
 
 或者，可以下载结果文件，然后在 Visual Studio 中检查。
 
-*看起来正常，但却报告为失败*  检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
+*看起来正常，但却报告为失败* 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
 
 ### <a name="open-the-server-request-and-exceptions"></a>打开服务器请求和异常
 
@@ -122,7 +122,7 @@ Web 测试有两种类型：
 请注意，无法在测试中使用编码的函数：方案步骤必须作为脚本包含在 .webtest 文件中。
 
 #### <a name="1-record-a-scenario"></a>1.录制方案
-使用 Visual Studio Enterprise 或 Ultimate 录制 Web 会话。
+使用 Visual Studio Enterprise 录制 Web 会话。
 
 1. 创建 Web 性能测试项目。
 
@@ -239,7 +239,7 @@ Web 测试插件提供时间参数化方式。
 测试完成时，将显示响应时间和成功率。
 
 ## <a name="automation"></a>自动化
-* [使用 PowerShell 脚本设置 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/) 。
+* [使用 PowerShell 脚本设置 Web 测试](app-insights-powershell.md#add-an-availability-test) 。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
 ## <a name="questions-problems"></a>有疑问？ 遇到问题？
@@ -294,6 +294,6 @@ Web 测试插件提供时间参数化方式。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

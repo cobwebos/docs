@@ -15,15 +15,15 @@ ms.topic: hero-article
 /ms.date: 1/18/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: b4f13f1b5469ea3d3b2ab69e6435d3e7beb6ace8
+ms.sourcegitcommit: 6402c4cf43e087c22824555277deabc01ead2a0d
+ms.openlocfilehash: 25c6b0196de7f44fc77191dfe5a4c7c47bdd60e7
 
 
 ---
 # <a name="get-started-with-azure-file-storage-on-windows"></a>在 Windows 上开始使用 Azure 文件存储
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
+[!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
@@ -38,7 +38,7 @@ ms.openlocfilehash: b4f13f1b5469ea3d3b2ab69e6435d3e7beb6ace8
 ## <a name="video-using-azure-file-storage-with-windows"></a>视频：通过 Windows 使用 Azure 文件存储
 下面是演示如何在 Windows 上创建和使用 Azure 文件共享的视频。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Windows/player]
 > 
 > 
 
@@ -605,7 +605,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     仅通过 REST API 或客户端库支持 SAS。 通过 SMB 协议装载文件共享时，不能使用 SAS 委派对其内容的访问权限。
 2. **Azure 文件共享是在 Internet 上公开可见，还是只能通过 Azure 对其进行访问？**
    
-    只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.0 协议（*例如*，Windows 8 或 Windows Server 2012），文件共享就可通过 Internet 使用。  
+    只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.0 协议（*例如*，Windows 8 或 Windows Server 2012），文件共享就可通过 Internet 使用。 请通过本地 ISP 提供商来取消阻止端口。 在此期间，可以使用存储资源管理器或任何其他的第三方软件（例如 Cloudberry）来查看文件。
 3. **Azure 虚拟机与文件共享之间的网络流量是否算作对订阅计费的外部带宽？**
    
     如果文件共享和虚拟机位于不同的区域，则它们之间的流量将作为外部带宽收费。
@@ -646,6 +646,12 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     
     可以参考 [Azure 文件故障排除文章](storage-troubleshoot-file-connection-problems.md)了解有关端到端故障排除指南。               
 
+16. **如何针对 Azure 文件启用服务器端加密？**
+
+    [服务器端加密](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)目前提供预览版。 在预览期间，只能为新创建的 Azure Resource Manager (ARM) 存储帐户启用此功能。
+    可以使用 Azure 门户在 Azure Resource Manager 存储帐户上启用此功能。 我们计划二月底在 [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx)、[Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs) 或 [Microsoft Azure 存储资源提供程序 API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) 上启用针对文件存储的加密。 启用此功能不需额外付费。 针对 Azure 文件存储启用存储服务加密以后，系统会自动加密数据。 
+    了解有关存储服务加密的详细信息。 有关预览版的其他问题，也可发送邮件至 ssediscussions@microsoft.com。
+
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
 
@@ -657,6 +663,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
 * [如何对 Microsoft Azure 存储空间使用 AzCopy](storage-use-azcopy.md)
 * [将 Azure CLI 用于 Azure 存储空间](storage-azure-cli.md#create-and-manage-file-shares)
+* [排查 Azure 文件存储问题](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>引用
 * [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
@@ -670,6 +677,6 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bda882273b6aeddcfa9ed7ba272bc08e620b666e
+ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
+ms.openlocfilehash: 2518f368c7251d5d1b8ea0b46b99ac356fee29ab
 
 
 ---
@@ -25,24 +25,24 @@ Azure Active Directory (Azure AD) 是综合性的标识和访问管理解决方�
 
 > [!NOTE]
 > 若要使用 Azure Active Directory，你需要一个 Azure 帐户。 如果没有帐户，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
-> 
-> 
+>
+>
 
 Azure AD 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如，用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 可通过四种方式向用户分配资源访问权限：
 
 1. 直接分配
-   
+
     资源的所有者可以直接向用户分配对该资源的访问权限。
 2. 组成员身份
-   
+
     资源所有者可以向组分配资源访问权限，这会向该组的成员授予资源访问权限。 然后，组的所有者可以管理该组的成员身份。 实际上，资源所有者是将其资源的用户访问权限委派给了组的所有者。
 3. 基于规则
-   
+
     资源所有者可以使用规则来表明应向哪些用户分配资源访问权限。 规则的结果取决于规则中使用的属性，以及针对特定用户的值。通过这种方式，资源所有者实际上是根据规则中所用的属性，将其资源的管理访问权限委派给了权威来源。 资源所有者仍可管理规则本身，并确定哪些属性与值提供其资源的访问权限。
 4. 外部机构
-   
+
     对资源的访问权限派生自外部来源，例如，从权威来源（如本地目录或 WorkDay 等 SaaS 应用）同步的组。 资源所有者分配组以提供资源访问权限，外部来源管理组的成员。
-   
+
    ![访问管理示意图概览](./media/active-directory-access-management-groups/access-management-overview.png)
 
 ## <a name="watch-a-video-that-explains-access-management"></a>观看演示访问管理的视频
@@ -51,8 +51,8 @@ Azure AD 的主要功能之一是管理对资源的访问。 这些资源可以�
 **Azure AD：组的动态成员资格简介**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
-> 
-> 
+>
+>
 
 ## <a name="how-does-access-management-in-azure-active-directory-work"></a>访问管理在 Azure Active Directory 中如何工作？
 Azure AD 访问管理解决方案的核心是安全组。 使用安全组管理资源访问权限是众所周知的模式，这样就能以弹性且易于理解的方式针对目标用户组提供资源访问权限。 资源所有者（或目录管理员）可以分配组，以提供对其拥有的资源的特定访问权限。 组成员将获取访问权限，而资源所有者可将组成员列表管理权限委派给其他人，例如部门经理或支持人员管理员。
@@ -70,7 +70,7 @@ Azure AD 访问管理解决方案的核心是安全组。 使用安全组管理�
 * [使用 Azure AD Connect 将本地组同步到 Azure](active-directory-aadconnect.md)
 * [管理组的所有者](active-directory-accessmanagement-managing-group-owners.md)
 
-## <a name="next-steps-for-access-management"></a>访问管理的后续步骤
+## <a name="next-steps"></a>后续步骤
 了解访问管理的基本概念后，请继续学习 Azure Active Directory 中用于管理应用程序和资源访问权限的其他高级功能。
 
 * [使用属性创建高级规则](active-directory-accessmanagement-groups-with-advanced-rules.md)
@@ -81,7 +81,6 @@ Azure AD 访问管理解决方案的核心是安全组。 使用安全组管理�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

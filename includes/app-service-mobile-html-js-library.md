@@ -5,7 +5,7 @@
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="a-nametable-referenceawork-with-tables"></a><a name="table-reference"></a>使用表格
+## <a name="a-nametable-referenceawork-with-tables"></a><a name="table-reference"></a>使用表
 若要访问或更新数据，请创建到后端表的引用。 将 `tableName` 替换为表名称
 
 ```
@@ -107,7 +107,7 @@ function loadPage(pageNum) {
 
 然后可使用页变量和某些 UI 按钮提供页列表；使用 `loadPage()` 为每页加载新记录。  实施缓存，加快已加载的记录的访问速度。
 
-#### <a name="a-namesorting-dataahow-to-return-data-sorted"></a><a name="sorting-data"></a>如何：返回排序后的数据
+#### <a name="a-namesorting-dataahow-to-return-sorted-data"></a><a name="sorting-data"></a>如何：返回排序后的数据
 使用 `.orderBy()` 或 `.orderByDescending()` 查询方法：
 
 ```
@@ -167,6 +167,6 @@ table
 ```
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

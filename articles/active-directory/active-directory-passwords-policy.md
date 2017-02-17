@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1e3ba55fd8c63f1189e06d1aa0bbf5f334e68459
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: 5cb86ac4694d8b763fa693954a8bb1383739497c
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: 1e3ba55fd8c63f1189e06d1aa0bbf5f334e68459
 
 > [!IMPORTANT]
 > **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
-> 
-> 
+>
+>
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>适用于所有用户帐户的 UserPrincipalName 策略
 需登录到 Azure AD 身份验证系统的每个用户帐户都必须有唯一的与该帐户关联的用户主体名称 (UPN) 属性值。 下表概括了既适用于本地 Active Directory 来源的用户帐户（同步到云）也适用于仅限云的用户帐户的策略。
@@ -35,7 +35,7 @@ ms.openlocfilehash: 1e3ba55fd8c63f1189e06d1aa0bbf5f334e68459
 | --- | --- |
 | 允许的字符 |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> 。 - \_ ! \# ^ \~</li></ul> |
 | 不允许的字符 |<ul> <li>任何不分隔用户名和域的 '@' 字符。</li> <li>不能包含紧靠在 '@' 符号前面的点字符“.”</li></ul> |
-| 长度约束 |<ul> <li>总长度不能超过 113 个字符</li><li>‘@’ 符号前为 64 个字符</li><li>‘@’ 符号后为 48 个字符</li></ul> |
+| 长度约束 |<ul> <li>总长度不能超过 113 个字符</li><li>‘@’ 符号前为&64; 个字符</li><li>‘@’ 符号后为&48; 个字符</li></ul> |
 
 ## <a name="password-policies-that-apply-only-to-cloud-user-accounts"></a>仅适用于云用户帐户的密码策略
 下表描述了可用于在 Azure AD 中创建和管理的用户帐户的密码策略设置。
@@ -66,7 +66,6 @@ ms.openlocfilehash: 1e3ba55fd8c63f1189e06d1aa0bbf5f334e68459
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

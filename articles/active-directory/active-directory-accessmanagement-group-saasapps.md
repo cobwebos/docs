@@ -1,4 +1,3 @@
-
 ---
 title: "使用组来管理对 SaaS 应用程序的访问 | Microsoft 文档"
 description: "如何在 Azure Active Directory Premium 或 Basic 中使用组来分配与 Azure Active Directory 集成的 SaaS 应用程序的访问权限。"
@@ -13,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f8045c26225406420c1175df45643ba6238dd8d9
+ms.sourcegitcommit: 24a6ae1b259a1524ec3a8542dcbf55ff0450421e
+ms.openlocfilehash: 01b9108048b5d7f3aa960ec01f75a693e074beaf
 
 
 ---
@@ -37,10 +36,10 @@ ms.openlocfilehash: f8045c26225406420c1175df45643ba6238dd8d9
 
 > [!NOTE]
 > 仅当启用了 Azure AD Premium 或 Azure AD Basic 后，才会看到“用户和组”选项卡。
-> 
-> 
+>
+>
 
-## <a name="related-articles"></a>相关文章
+### <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
@@ -51,7 +50,6 @@ ms.openlocfilehash: f8045c26225406420c1175df45643ba6238dd8d9
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 
