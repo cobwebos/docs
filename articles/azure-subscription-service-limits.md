@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure 订阅和服务限制、配额以及约束"
+title: "Azure 订阅限制和配额 | Microsoft Docs"
 description: "提供常见的 Azure 订阅和服务限制、配额和约束的列表。 这包括有关如何增加限制以及最大值的信息。"
 services: 
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 02/13/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 18c8997d8ee77c9c3005aa765a64ae82dce8c70c
-ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
+ms.sourcegitcommit: bf6c6017f623766f5e7a6472feed02108b5adf5f
+ms.openlocfilehash: d770a05ee247103fe9693754d7fb7eada12ef1bc
 
 
 ---
@@ -65,6 +65,7 @@ ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
 * [事件中心](#event-hubs-limits)
 * [IoT 中心](#iot-hub-limits)
 * [密钥保管库](#key-vault-limits)
+* [Log Analytics/操作见解](#log-analytics-limits)
 * [媒体服务](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [移动服务](#mobile-services-limits)
@@ -72,7 +73,6 @@ ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
 * [多重身份验证](#multi-factor-authentication)
 * [网络](#networking-limits)
 * [通知中心服务](#notification-hub-service-limits)
-* [操作见解](#operational-insights-limits)
 * [资源组](#resource-group-limits)
 * [计划程序](#scheduler-limits)
 * [搜索](#search-limits)
@@ -134,7 +134,7 @@ ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
 #### <a name="storage-service-limits"></a>存储服务限制
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-#### <a name="virtual-machine-disk-limits"></a>虚拟机磁盘限制
+#### <a name="virtual-machine-disk-limits"></a>虚拟机磁盘限制 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
 有关其他详细信息，请参阅[虚拟机大小](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -170,7 +170,7 @@ ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="documentdb-limits"></a>DocumentDB 限制
-DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行规模调整以满足应用程序的任何需求。 如果对 DocumentDB 提供的规模有任何问题，请发送电子邮件到 askdocdb@microsoft.com。
+DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行规模调整以满足应用程序的任何需求。 如果你有任何关于 DocumentDB 提供的规模的问题，请发送电子邮件到 askdocdb@microsoft.com。
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement 限制
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
@@ -179,7 +179,7 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 定价层决定了搜索服务的容量和限制。 层包括：
 
 * 免费层为多租户服务，可与其他 Azure 订阅用户共享，仅用于评估和小型开发项目。
-* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多&3; 个副本。
 * 标准层（S1、S2、S3、S3 高密度）适用于较大型生产工作负荷。 标准层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
 
 **基于订阅的限制**
@@ -234,7 +234,7 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 ### <a name="storsimple-system-limits"></a>StorSimple 系统限制
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
-### <a name="operational-insights-limits"></a>Operational Insights 限制
+### <a name="log-analytics-limits"></a>Log Analytics 限制
 [!INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
 
 ### <a name="backup-limits"></a>备份限制
@@ -274,6 +274,6 @@ DocumentDB 是一个全规模数据库，该数据库对吞吐量和存储进行
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

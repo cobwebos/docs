@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect Health 常见问题"
+title: "Azure Active Directory Connect Health 常见问题 - Azure | Microsoft 文档"
 description: "此常见问题回答了关于 Azure AD Connect Health 的问题。 其中涵盖了服务使用方面的问题，包括计费模式、功能、限制和支持。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
-ms.author: vakarand
+ms.date: 02/06/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2f990f4c888da91422a6a6e9873307cbb483e782
-ms.openlocfilehash: b6687bc0ccde0e257338a939f39e343f75a6f5df
+ms.sourcegitcommit: 85458f4477dadb83a6a2627ef490471ca38ac634
+ms.openlocfilehash: a8ef669bdb28bfe66dacb42798a1ae65bcffdb4e
 
 
 ---
@@ -31,11 +31,11 @@ ms.openlocfilehash: b6687bc0ccde0e257338a939f39e343f75a6f5df
 ## <a name="installation-questions"></a>安装问题
 **问：在个别服务器上安装 Azure AD Connect Health 代理有何影响？**
 
-安装 Microsoft Azure AD Connect Health 代理 ADFS、Web 应用程序代理服务器、Azure AD Connect (同步)服务器、域控制器对 CPU、内存消耗、网络带宽和存储的影响很小。
+安装 Microsoft Azure AD Connect Health 代理 ADFS、Web 应用程序代理服务器、Azure AD Connect（同步）服务器、域控制器对 CPU、内存消耗、网络带宽和存储的影响很小。
 
 下面的数字为近似值。
 
-* CPU 占用率：增加约 1%
+* CPU 占用率：增加约&1;%
 * 内存消耗：最多为系统总内存的 10%
 
 > [!NOTE]
@@ -43,7 +43,7 @@ ms.openlocfilehash: b6687bc0ccde0e257338a939f39e343f75a6f5df
 > 
 > 
 
-* Azure AD Connect Health 代理的本地缓冲区存储：约 20 MB
+* Azure AD Connect Health 代理的本地缓冲区存储：约&20; MB
 * 对于 AD FS 服务器，建议预配一个 1024 MB (1 GB) 大小的磁盘空间，方便 Azure AD Connect Health 代理的 AD FS 审核通道在所有审核数据被覆盖之前将其处理掉。
 
 **问：在 Azure AD Connect Health 代理安装期间，我必须重新启动我的服务器吗？**
@@ -95,6 +95,23 @@ ms.openlocfilehash: b6687bc0ccde0e257338a939f39e343f75a6f5df
 如果重建了服务器的映像或者创建了具有相同详细信息（如计算机名称）的新服务器，但没有从 Azure AD Connect Health 门户中删除已注册服务器，而是在新服务器上安装了代理，则会看到两个服务器条目具有同一名称。  
 在这种情况下，你应手动删除属于原有服务器的条目。 此服务器的数据会过期。
 
+## <a name="migration-questions"></a>迁移问题
+
+本部分仅适用于已收到通知的客户（通知内容为客户的 Azure AD Connect Health 服务数据即将被迁移）。
+
+**问：在迁移后，是否需要重新注册代理，或重新配置通知设置？**
+
+否，作为迁移的一部分，代理注册信息和通知设置将被一同移动。 
+
+**问：迁移开始后，要多久才能在门户中看到数据？**
+
+在迁移后的一小时之内，数据将出现在门户中。 
+
+**问：现有的活动警报将如何？**
+
+在迁移后的一小时之内，任何适用的警报都将被重新激活。
+
+
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health 代理安装](active-directory-aadconnect-health-agent-install.md)
@@ -107,6 +124,6 @@ ms.openlocfilehash: b6687bc0ccde0e257338a939f39e343f75a6f5df
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,16 +12,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 01/30/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 008908824715eac788c56778309bca3b09587f78
+ms.sourcegitcommit: 9096b87dc93e261c2810a069a95d954121822cf5
+ms.openlocfilehash: 903a8b7f143ac08b69d94aa2bc442a43ca041b64
 
 
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
-了解如何在 HDInsight Linux 群集上安装 Hue ，并使用隧道将请求路由至 Hue。
+
+了解如何在 HDInsight 群集上安装 Hue ，并使用隧道将请求路由至 Hue。
+
+> [!IMPORTANT]
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="what-is-hue"></a>什么是 Hue？
 Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。 你可以使用 Hue 浏览与 Hadoop 群集关联的存储（在 HDInsight 群集的案例中为 WASB）、运行 Hive 作业和 Pig 脚本等等。HDInsight Hadoop 群集上的 Hue 安装提供以下组件。
@@ -41,6 +45,7 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。 你可以使�
 >
 
 ## <a name="install-hue-using-script-actions"></a>使用脚本操作安装 Hue
+
 以下脚本操作可用于在基于 Linux 的 HDInsight 群集上安装 Hue。
 https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 
@@ -59,7 +64,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
    >
 2. 在“可选配置”边栏选项卡上，选择“脚本操作”，并提供如下信息：
 
-    ![为 Hue 提供脚本操作参数](./media/hdinsight-hadoop-hue-linux/hue_script_action.png "Provide script action parameters for Hue")
+    ![为 Hue 提供脚本操作参数](./media/hdinsight-hadoop-hue-linux/hue_script_action.png "为 Hue 提供脚本操作参数")
 
    * **名称**：输入脚本操作的友好名称。
    * **脚本 URI**：https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
@@ -71,15 +76,22 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 4. 继续按[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中所述预配群集。
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>将 Hue 与 HDInsight 群集搭配使用
+
 运行 Hue 时，SSH 隧道是在群集上访问 Hue 的唯一方式。 通过 SSH 的隧道允许流量直接流向运行 Hue 的群集的头节点。 在完成群集预配后，通过执行以下步骤在 HDInsight Linux 群集上使用 Hue。
 
+> [!NOTE]
+> 建议使用 Firefox Web 浏览器按照下面的说明操作。
+>
+>
+
 1. 利用[使用 SSH 隧道来访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 及其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md) 中的信息，创建从客户端系统到 HDInsight 群集的 SSH 隧道，然后将 Web 浏览器配置为将 SSH 隧道用作代理。
+
 2. 在创建 SSH 隧道并将浏览器配置为通过它代理发送流量后，必须查找主头节点的主机名。 为此，可以在端口 22 上使用 SSH 连接到群集。 例如 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`，其中 **USERNAME** 是 SSH 用户名，**CLUSTERNAME** 是群集的名称。
 
     有关使用 SSH 的详细信息，请参阅以下文档：
 
-   * [从 Linux、Unix 或 Mac OS X 客户端将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [在 Windows 客户端中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+   * [在 Linux、Unix 或 Mac OS X 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+   * [在 Windows 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 3. 连接后，使用以下命令获取主头节点的完全限定域名：
 
         hostname -f
@@ -96,15 +108,15 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
    >
    >
 
-    ![登录到 Hue 门户](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Login.png "Specify credentials for Hue portal")
+    ![登录到 Hue 门户](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Login.png "为 Hue 门户指定凭据")
 
 ### <a name="run-a-hive-query"></a>运行 Hive 查询
 1. 在 Hue 门户中，单击“查询编辑器”，然后单击“Hive”打开 Hive 编辑器。
 
-    ![使用 Hive](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.png "Use Hive")
+    ![使用 Hive](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.png "使用 Hive")
 2. 在“帮助”选项卡上的“数据库”下面，应会看到 **hivesampletable**。 这是 HDInsight 上的所有 Hadoop 群集随附的示例表。 在右窗格中输入示例查询，然后在下方窗格的“结果”选项卡中查看输出，如屏幕截图所示。
 
-    ![运行 Hive 查询](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.Query.png "Run Hive query")
+    ![运行 Hive 查询](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.Query.png "运行 Hive 查询")
 
     也可以使用“图表”选项卡查看结果的视觉表示形式。
 
@@ -112,7 +124,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 1. 在 Hue 门户中，单击菜单栏右上角的“文件浏览器”。
 2. 默认情况下，文件浏览器在 **/user/myuser** 目录中打开。 单击路径中用户目录前面的正斜杠，以转到与群集关联的 Azure 存储容器的根目录。
 
-    ![使用文件浏览器](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.File.Browser.png "Use file browser")
+    ![使用文件浏览器](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.File.Browser.png "使用文件浏览器")
 3. 右键单击某个文件或文件夹，以查看可用的操作。 使用右侧的“上传”按钮，将文件上传到当前目录。 使用“新建”按钮创建新的文件或目录。
 
 > [!NOTE]
@@ -122,13 +134,15 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 
 ## <a name="important-considerations"></a>重要注意事项
 1. 用于安装 Hue 的脚本只会在群集的主头节点上安装它。
+
 2. 在安装期间，系统会重启多个 Hadoop 服务（HDFS、YARN、MR2、Oozie），以更新配置。 在脚本安装完 Hue 之后，可能需要一些时间让其他 Hadoop 服务启动。 一开始可能会影响 Hue 的性能。 等所有服务都启动之后，Hue 就可以完全正常运行。
 3. Hue 不了解 Tez 作业，这是 Hive 当前的默认值。 如果你想使用 MapReduce 作为 Hive 执行引擎，请更新脚本，以在你的脚本中使用以下命令：
 
-     set hive.execution.engine=mr;
+        set hive.execution.engine=mr;
+
 4. 使用 Linux 群集时，可能会出现这种情况：服务在主头节点上运行，而 Resource Manager 可能在辅助头节点上运行。 使用 Hue 查看群集上正在运行的作业的详细信息时，这种情况可能会导致错误（如下所示）。 不过，你可以在作业完成后查看作业详细信息。
 
-   ![Hue 门户错误](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Error.png "Hue portal error")
+   ![Hue 门户错误](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Error.png "Hue 门户错误")
 
    这是由已知问题造成的。 解决方法如下：修改 Ambari，使活动 Resource Manager 也在主头节点上运行。
 5. 当 HDInsight 群集使用 Azure 存储（使用 `wasbs://`）时，Hue 能识别 WebHDFS。 因此，搭配脚本操作使用的自定义脚本会安装 WebWasb，这是用来与 WASB 通信的 WebHDFS 兼容服务。 因此，即使 Hue 门户中显示 HDFS（例如，将鼠标移到“文件浏览器”上时），也应该将它解释为 WASB。
@@ -144,6 +158,6 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

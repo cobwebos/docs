@@ -1,5 +1,5 @@
 ---
-title: "Windows VM 大小 | Microsoft Docs"
+title: "Azure 中的 Windows VM 大小 | Microsoft Docs"
 description: "列出 Azure 中 Windows 虚拟机的不同可用大小。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/15/2016
+ms.date: 02/09/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 539e6a8835bf9f999f8855496e39e06bb58cd848
-ms.openlocfilehash: df95ff234c6922ae9b126aa7818f7bbb7a6e6df0
+ms.sourcegitcommit: 0e1cd22feed61bd41a8f002dc58e2fb0ade1e22e
+ms.openlocfilehash: 3b42be10257440abcb41178592a9d81feed69b11
 
 
 ---
-# <a name="sizes-for-virtual-machines-in-azure"></a>Azure 中虚拟机的大小
+# <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虚拟机的大小
 本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供了你在计划使用这些资源时要考虑的部署注意事项。  本文也适用于 [Linux 虚拟机](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 > [!IMPORTANT]
@@ -37,6 +37,6 @@ ms.openlocfilehash: df95ff234c6922ae9b126aa7818f7bbb7a6e6df0
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

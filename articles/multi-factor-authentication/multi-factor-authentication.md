@@ -1,5 +1,5 @@
 ---
-title: "Azure MFA 概述 | Microsoft 文档"
+title: "了解 Azure MFA 中的双重验证 | Microsoft Docs"
 description: "Azure 多重身份验证概念、使用 MFA 的原因、有关多重身份验证客户端以及其他可用方法和版本的详细信息。 "
 keywords: "MFA 简介, mfa 概述, 什么是 mfa"
 services: multi-factor-authentication
@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 15f05144ab91f7111c22a857f03892bbb0a39dff
-ms.openlocfilehash: fc6de5dd1c1510466552840535c03324b4489fc9
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: 757a26ed6c39e6eb498a4f717a2eb5da3cb5c0a6
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: fc6de5dd1c1510466552840535c03324b4489fc9
 
 Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证方法（包括电话、短信或移动应用验证）提供强大的身份验证机制。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/WA-MFA-Overview/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/WA-MFA-Overview/player]
 >
 >
 
@@ -50,7 +50,7 @@ Azure 多重身份验证是一个易于使用、可缩放且可靠的解决方�
 * **始终受保护** - Azure 多重身份验证使用最高行业标准提供强大的身份验证功能。
 * **可靠** - 我们保证 Azure 多重身份验证的可用性达到 99.9%。 当服务无法接收或处理双重验证的验证请求时，即将服务视为不可用。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Windows-Azure-Multi-Factor-Authentication/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Windows-Azure-Multi-Factor-Authentication/player]
 >
 >
 
@@ -78,7 +78,7 @@ Azure 多重身份验证有三个不同的版本。
 
 | 版本 | 说明 |
 | --- | --- |
-| 适用于 Office 365 的 Multi-Factor Authentication |此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 门户进行管理。 因此，管理员现在可以使用双重验证来帮助保护其 Office 365 资源。 此版本是 Office 365 订阅的一部分。 |
+| 适用于 Office 365 的多重身份验证 |此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 门户进行管理。 因此，管理员现在可以使用双重验证来帮助保护其 Office 365 资源。 此版本是 Office 365 订阅的一部分。 |
 | 面向 Azure 管理员的多重身份验证 |适用于 Office 365 的同样一部分双重验证功能将免费提供给所有 Azure 管理员使用。 Azure 订阅的每个管理员帐户都可以启用此功能来获得额外保护。 如果某个管理员想要访问 Azure 门户来创建 VM 或网站、管理存储，或使用任何其他 Azure 服务，可以将 MFA 添加到管理员帐户。 |
 | Azure 多重身份验证 | Azure 多重身份验证（也称为“完整” 版本）提供了最丰富的功能集。 它通过 [Azure 经典门户](https://manage.windowsazure.com)、高级报告及支持一系列本地和云应用程序来提供其他配置选项。 Azure 多重身份验证随附在 Azure Active Directory Premium 和企业移动套件中，可以在云中或本地部署。 查看以下内容，了解[获取 Azure 多重身份验证的其他方法](multi-factor-authentication.md#how-to-get-azure-multi-factor-authentication)。 |
 
@@ -127,6 +127,6 @@ Azure 多重身份验证为云和服务器提供了可选择的验证方法。 �
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

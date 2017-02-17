@@ -1,8 +1,8 @@
 ---
-title: "使用 PowerShell 为 Azure 服务创建警报 |Microsoft Docs"
-description: "使用 PowerShell 创建 Azure 警报，可在满足指定条件时触发通知或自动化。"
+title: "为 Azure 服务创建警报 - PowerShell | Microsoft 文档"
+description: "满足指定的条件时触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: db8ed8980335e2af9654bfe56b4e4c5807674040
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 0a6a6e5b76e03eba113600b5be558daa8c924f0f
 
 
 ---
-# <a name="use-powershell-to-create-alerts-for-azure-services"></a>使用 PowerShell 为 Azure 服务创建警报
+# <a name="create-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>在 Azure Monitor 中为 Azure 服务创建警报 - 跨平台 CLI 
 > [!div class="op_single_selector"]
 > * [门户](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [CLI](insights-alerts-command-line-interface.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概述
 本文演示如何使用 PowerShell 设置 Azure 警报。  
@@ -50,58 +50,58 @@ ms.openlocfilehash: db8ed8980335e2af9654bfe56b4e4c5807674040
 * [命令行接口 (CLI)](insights-alerts-command-line-interface.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-有关其他信息，始终可以键入 ```get-help``` 以及需要帮助的 PowerShell 命令。
+有关其他信息，始终可以键入 ```Get-Help``` 以及需要帮助的 PowerShell 命令。
 
 ## <a name="create-alert-rules-in-powershell"></a>在 PowerShell 中创建警报规则
 1. 登录 Azure。   
-   
+
     ```PowerShell
     Login-AzureRmAccount
-   
+
     ```
 2. 获取可用订阅的列表。 验证正在使用的正确订阅。 如果没有，则使用 `Get-AzureRmSubscription` 中的输出将其设置为正确订阅。
-   
+
     ```PowerShell
     Get-AzureRmSubscription
     Get-AzureRmContext
     Set-AzureRmContext -SubscriptionId <subscriptionid>
     ```
 3. 若要列出有关资源组的现有规则，可使用以下命令：
-   
+
    ```PowerShell
    Get-AzureRmAlertRule -ResourceGroup <myresourcegroup> -DetailedOutput
    ```
-4. 若要创建一条规则，首先需要有以下几条重要信息。 
-   
+4. 若要创建一条规则，首先需要有以下几条重要信息。
+
    * 要为其设置警报的资源的**资源 ID**
    * 资源可用的**指标定义**
-     
-     获取资源 ID 的一种方法是使用 Azure 门户。 假设已创建该资源，在门户中选中它。 然后在下一个边栏选项卡中，选择“设置”分区下的“属性”。 资源 ID 是下一个边栏选项卡中的字段。 另一种方法是使用 [Azure Resource Explorer](https://resources.azure.com/)（Azure 资源浏览器）。
-     
+
+     获取资源 ID 的一种方法是使用 Azure 门户。 假设已创建该资源，在门户中选中它。 然后在下一个边栏选项卡中，选择“设置”分区下的“属性”。 **资源 ID** 是下一个边栏选项卡中的字段。 另一种方法是使用 [Azure Resource Explorer](https://resources.azure.com/)（Azure 资源浏览器）。
+
      Web 应用的示例资源 ID 是
-     
+
      ```
      /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename
      ```
-     
+
      可以使用 `Get-AzureRmMetricDefinition` 来查看针对特定资源的所有指标定义的列表。
-     
+
      ```PowerShell
      Get-AzureRmMetricDefinition -ResourceId <resource_id>
      ```
-     
+
      以下示例会生成一张表，其中包含该指标名称和单位。
-     
+
      ```PowerShell
      Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
-     
+
      ```
      Get-AzureRmMetricDefinition 的可用选项的完整列表可通过运行 Get-MetricDefinitions 获取。
 5. 以下示例设置了一个关于网站资源的警报。 如果其持续 5 分钟收到任何流量以及 5 分钟没收到任何流量，将触发该警报。
-   
+
     ```PowerShell
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Description "alert on any website activity"
-   
+
     ```
 6. 若要在警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后立即创建后跟 -Actions 标记的规则，如下面的示例中所示。 如果已通过 PowerShell 创建规则，将无法关联 webhook 或电子邮件。
 
@@ -114,26 +114,26 @@ ms.openlocfilehash: db8ed8980335e2af9654bfe56b4e4c5807674040
 
 
 1. 若要创建在活动日志中特定条件下触发的警报，可使用以下形式的命令
-   
+
     ```PowerShell
     $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
     $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://www.contoso.com?token=mytoken
-   
+
     Add-AzureRmLogAlertRule -Name myLogAlertRule -Location "East US" -ResourceGroup myresourcegroup -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup resourcegroupbeingmonitored -Actions $actionEmail, $actionWebhook
     ```
-   
+
     -OperationName 与活动日志中事件类型相对应。 示例包括 *Microsoft.Compute/virtualMachines/delete* 和 *microsoft.insights/diagnosticSettings/write*。
-   
+
     可以使用 PowerShell 命令 [Get AzureRmProviderOperation](https://msdn.microsoft.com/library/mt603720.aspx) 来获取可能 operationNames 的列表。 或者，可以使用 Azure 门户查询活动日志以及查找要为其设置警报的特定过去操作。 在友好名称的图形日志视图中显示操作。 查看该条目的 JSON，并拉取 OperationName 值。   
 2. 验证是否已通过查看单个规则正确创建警报。
-   
+
     ```PowerShell
     Get-AzureRmAlertRule -Name myMetricRuleWithWebhookAndEmail -ResourceGroup myresourcegroup -DetailedOutput
-   
+
     Get-AzureRmAlertRule -Name myLogAlertRule -ResourceGroup myresourcegroup -DetailedOutput
     ```
 3. 删除警报。 这些命令将删除在本文前面创建的规则。
-   
+
     ```PowerShell
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myrule
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myMetricRuleWithWebhookAndEmail
@@ -149,7 +149,6 @@ ms.openlocfilehash: db8ed8980335e2af9654bfe56b4e4c5807674040
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

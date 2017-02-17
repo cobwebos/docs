@@ -1,23 +1,22 @@
 ---
 title: "Azure 政府版网络 |Microsoft Docs"
 description: "这提供了 e Government 专业连接的功能和指南比较"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
-author: ryansoc
+author: jawalte
 manager: zakramer
-editor: 
 ms.assetid: 3da70579-ecda-421a-8ebf-d52906334e9b
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 09/28/2016
-ms.author: ryansoc
+ms.date: 01/24/2017
+ms.author: jawalte
 translationtype: Human Translation
-ms.sourcegitcommit: 14aa9126d3426c560c1f9497ed0d7a92448137b4
-ms.openlocfilehash: 39e67d449c0fa37b76354dc522216f9473df7b97
+ms.sourcegitcommit: 8288ca2e85ec0cd1a1b53862b2d60fcb88e7be4b
+ms.openlocfilehash: c6b8c27299c1bfceb045ee7d82981654f3a446d8
 
 
 ---
@@ -54,12 +53,59 @@ Azure ExpressRoute 用于在 Azure Government 数据中心和你的本地基础�
 
 所有使用专用连接体系结构的客户都应验证已建立相应的实施，并为到 Azure Government 的网关网络 /Internet (GN/I) 边缘路由器分界点的客户连接进行维护。 同样，你的组织必须在 Azure Government 的本地环境和网关网络/客户 (GN/C) 边缘路由器分界点之间建立网络连接。
 
+## <a name="support-for-bgp-communities"></a>BGP 社区支持
+本部分概述如何在 AzureGov 中配合 ExpressRoute 使用 BGP 社区。 Microsoft 将播发公共和 Microsoft 对等互连路径中的路由并为路由标记适当的社区值。 下面将会介绍这种方案的理由以及有关社区值的详细信息。 但是，Microsoft 不遵循向 Microsoft 播发的路由的任何标记社区值。
+
+如果要在 AzureGov 区域内的任何一个对等互连位置通过 ExpressRoute 连接到 Microsoft，就必须能够访问该政府边界内所有区域中的所有 Microsoft 云服务。 
+
+例如，如果要通过 ExpressRoute 连接到华盛顿特区的 Microsoft， 则必须能够访问在 AzureGov 中托管的所有 Microsoft 云服务。
+
+请参阅 [ExpressRoute 公共文档](../expressroute/index.md)上的“概述”选项卡，了解有关位置和合作伙伴的详细信息，并获取针对 AzureGov 对等互连位置的 ExpressRoute 的详细列表。
+
+可以购买多个 ExpressRoute 线路。 如果拥有多个连接，则可以从异地冗余中获得明显的高可用性优势。 如果你多条 ExpressRoute 线路，将从 Microsoft 收到同一组公共对等互连和 Microsoft 对等互连路径的前缀。 这意味着你可以使用多个路径从你的网络接入 Microsoft。 这可能会导致在网络中做出欠佳的路由决策。 因此，你可能会在不同的服务上遇到欠佳的连接体验。 
+
+Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标记通过公共对等互连和 Microsoft 对等互连播发的前缀。 可以依赖社区值做出适当的路由决策，以向客户提供最佳路由。  如需其他详细信息，请参阅 [ExpressRoute 公共文档](../expressroute/index.md)上的“入门”选项卡，然后单击“优化路由”。
+
+| **国家云 Azure 区域**| **BGP 社区值** |
+| --- | --- |
+| **美国政府** |  |
+| 美国政府爱荷华州 | 12076:51109 |
+| 美国政府弗吉尼亚州 | 12076:51105 |
+
+所有 Microsoft 播发的路由都标有适当的社区值。 
+
+除了上述各项，Microsoft 还将根据其所属的服务加上标记及前缀。 这只适用于 Microsoft 对等互连。 下表提供了服务与 BGP 社区值之间的映射。
+
+| **国家云中的服务** | **BGP 社区值** |
+| --- | --- |
+| **美国政府** |  |
+| Exchange Online |12076:5110 |
+| SharePoint Online |12076:5120 |
+| Skype For Business Online |12076:5130 |
+| CRM Online |12076:5140 |
+| 其他 Office 365 Online 服务 |12076:5200 |
+
+> [!NOTE]
+> Microsoft 不遵循你在播发到 Microsoft 的路由上设置的任何 BGP 社区值。
+
+## <a name="support-for-load-balancer"></a>对负载均衡器的支持
+负载均衡器已在 Azure Government 中正式发布。 有关详细信息，请参阅[负载均衡器公共文档](../load-balancer/load-balancer-overview.md)。 
+
+## <a name="support-for-traffic-manger"></a>对流量管理器的支持
+流量管理器已在 Azure Government 中正式发布。 有关详细信息，请参阅[流量管理器公共文档](../traffic-manager/traffic-manager-overview.md)。 
+
+## <a name="support-for-vnet-peering"></a>对 VNet 对等互连的支持 
+VNet 对等互连已在 Azure 政府版中正式发布。 有关详细信息，请参阅 [VNet 对等互连公共文档](../virtual-network/virtual-network-peering-overview.md)。 
+
+## <a name="support-for-vpn-gateway"></a>对 VPN 网关的支持 
+VPN 网关已在 Azure 政府版中正式发布。 有关详细信息，请参阅 [VPN 网关公共文档](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 
+
 ## <a name="next-steps"></a>后续步骤
 有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客</a>。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

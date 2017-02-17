@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 门户中使用 Azure Site Recovery 将 VMware 虚拟机和物理服务器复制到 Azure | Microsoft 文档"
+title: "将 VMware VM 和物理服务器复制到 Azure | Microsoft 文档"
 description: "介绍如何使用 Azure 门户通过部署 Azure Site Recovery 来协调本地 VMware 虚拟机和 Windows/Linux 物理服务器到 Azure 的复制、故障转移和恢复。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
-ms.openlocfilehash: 20ffa261ef17847a665e7c83defeb19e9029fb63
+ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
+ms.openlocfilehash: 82dbfe13577d135e3e0192f3f5fca6e085c389d3
 
 
 ---
@@ -57,7 +57,7 @@ ms.openlocfilehash: 20ffa261ef17847a665e7c83defeb19e9029fb63
 ## <a name="site-recovery-in-the-azure-portal"></a>Azure 门户中的 Site Recovery
 Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md)来创建和处理资源 – Azure Resource Manager 模型和经典模型。 Azure 还提供两个门户 – Azure 经典门户和 Azure 门户。
 
-本文介绍了如何在 Azure 门户中进行部署，该门户提供新功能以及精简流畅的部署体验。 可以使用经典门户维护现有的保管库。 无法使用经典门户创建新的保管库。 
+本文介绍了如何在 Azure 门户中进行部署，该门户提供新功能以及精简流畅的部署体验。 可以使用经典门户维护现有的保管库。 无法使用经典门户创建新的保管库。
 
 
 ## <a name="site-recovery-in-your-business"></a>企业中的 Site Recovery
@@ -86,7 +86,7 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 
 ![体系结构](./media/site-recovery-vmware-to-azure/v2a-architecture-henry.png)
 
-**图 1：VMware/物理机到 Azure**
+**VMware/物理机到 Azure**
 
 ## <a name="azure-prerequisites"></a>Azure 先决条件
 以下是你在 Azure 中需要的内容。
@@ -249,7 +249,7 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 9. 在“安装位置”中，选择要安装二进制文件和存储缓存的位置。 可以选择至少有 5 GB 可用存储空间的驱动器，但我们建议选择至少有 600 GB 可用空间的缓存驱动器。
 
     ![安装位置](./media/site-recovery-vmware-to-azure/combined-wiz8.png)
-10. 在“网络选择”中，指定侦听器（网络适配器和 SSL 端口），以便配置服务器在其上发送和接收复制数据。 你可以修改默认端口 (9443)。 除了此端口，负责协调复制操作的 Web 服务器还会使用端口 443。 不应使用 443 来接收复制流量。
+10. 在“网络选择”中，指定侦听器（网络适配器和 SSL 端口），以便配置服务器在其上发送和接收复制数据。 你可以修改默认端口 (9443)。 除了此端口，负责协调复制操作的 Web 服务器还会使用端口 443。 不应使用&443; 来接收复制流量。
 
     ![网络选择](./media/site-recovery-vmware-to-azure/combined-wiz9.png)
 
@@ -453,6 +453,10 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 请确保要复制的计算机已准备好安装移动服务，然后启用复制。
 
 ### <a name="install-the-mobility-service"></a>安装移动服务
+
+  > [!TIP]
+  > Azure Site Recovery 现在支持使用 System Center Configuration Manager 等软件部署工具安装移动服务。 详细了解如何[自动化移动服务部署](site-recovery-install-mobility-service-using-sccm.md)。  
+
 为虚拟机和物理服务器启用保护时，第一步是安装移动服务。 可以通过多种方式实现此目的：
 
 * **进程服务器推送**：在计算机上启用复制时，将从进程服务器推送并安装移动服务组件。 请注意，如果计算机已在运行最新版本的组件，则不会执行推送安装。
@@ -501,7 +505,7 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 
 | 源操作系统 | 移动服务安装文件 |
 | --- | --- |
-| Windows Server（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe |
+| Windows Server（仅限&64; 位） |Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe |
 | CentOS 6.4、6.5、6.6（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_RHEL6-64_*release.tar.gz |
 | SUSE Linux Enterprise Server 11 SP3（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_SLES11-SP3-64_*release.tar.gz |
 | Oracle Enterprise Linux 6.4、6.5（仅限 64 位） |Microsoft-ASR_UA_9.*.0.0_OL6-64_*release.tar.gz |
@@ -625,10 +629,10 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 建议你验证源计算机的属性。 请记住，Azure VM 名称应符合 [Azure 虚拟机要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
 
 1. 单击“设置” > “复制的项”，然后选择计算机。 “概要”边栏选项卡显示有关计算机设置和状态的信息。
-2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
+1. 在“属性”中，可以查看 VM 的复制和故障转移信息。
 
     ![启用复制](./media/site-recovery-vmware-to-azure/test-failover2.png)
-3. 在“计算和网络” > “计算属性”中，可以指定 Azure VM 名称和目标大小。 根据需要修改名称，使其符合 Azure 要求。
+1. 在“计算和网络” > “计算属性”中，可以指定 Azure VM 名称和目标大小。 根据需要修改名称，使其符合 Azure 要求。
    你还可以查看和添加目标网络、子网的相关信息，以及要分配到 Azure VM 的 IP 地址。 注意以下事项：
 
    * 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
@@ -641,54 +645,7 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
    * 如果虚拟机有多个网络适配器，列表中显示的第一个适配器将成为 Azure 虚拟机中的*默认*网络适配器。
 
      ![启用复制](./media/site-recovery-vmware-to-azure/test-failover4.png)
-4. 在“磁盘”中，可以看到 VM 上将要复制的操作系统和数据磁盘。
-
-## <a name="step-7-test-the-deployment"></a>步骤 7：测试部署
-为了对部署进行测试，你可以针对单个虚拟机或单个恢复计划（其中包含一个或多个虚拟机）运行测试性故障转移。
-
-### <a name="prepare-for-failover"></a>准备故障转移
-* 若要运行测试故障转移，我们建议你创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（这是你在 Azure 中新建网络时的默认行为）。 [详细了解](site-recovery-failover.md#run-a-test-failover) 如何运行测试性故障转移。
-* 若要在故障转移到 Azure 时获得最佳性能，请在受保护的计算机上安装 Azure 代理。 这可以加速引导，并帮助进行故障排除。 安装 [Linux](https://github.com/Azure/WALinuxAgent) 或 [Windows](http://go.microsoft.com/fwlink/?LinkID=394789) 代理。
-* 若要全面测试部署，需要一个基础结构，使复制的计算机能够按预期工作。 如果要测试 Active Directory 和 DNS，可以通过 DNS 创建虚拟机作为域控制器，并使用 Azure Site Recovery 将此虚拟机复制到 Azure。 在 [Active Directory 测试性故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)中了解详细信息。
-* 确保配置服务器正在运行。 否则故障转移将会失败。
-* 如果已从复制中排除磁盘，则故障转移之后，可能需要在 Azure 中手动创建这些磁盘，以便应用程序可按预期运行。
-* 如果要运行非计划的故障转移而不是测试故障转移，请注意：
-
-  * 在运行非计划的故障转移之前，请尽可能关闭主计算机。 这样可确保不会同时运行源计算机和副本计算机。 如果要复制 VMware VM，可以指定要求 Site Recovery 尽量关闭源计算机。 这可能有用，也可能无用，具体取决于主站点的状态。 如果要复制物理服务器，Site Recovery 不提供此选项。
-  * 运行非计划的故障转移时，将会停止从主计算机复制数据，因此在非计划的故障转移开始以后，将不会传输任何数据增量。 此外，如果针对恢复计划运行非计划的故障转移，则即使发生错误，该计划也会一直运行到完成。
-
-## <a name="failover"></a>故障转移
-完成虚拟机的初始复制后，可以根据需要调用故障转移。 Site Recovery 支持各种类型的故障转移 - 测试故障转移、计划的故障转移和非计划的故障转移。
-[详细了解](site-recovery-failover.md)不同类型的故障转移，以及有关何时和如何执行其中每种故障转移的详细说明。
-
-> [!NOTE]
-> 如果目的是将虚拟机迁移到 Azure，我们强烈建议使用[计划的故障转移操作](site-recovery-failover.md#run-an-unplanned-failover)，将虚拟机迁移到 Azure。 使用测试故障转移在 Azure 中验证已迁移的应用程序后，请使用[完成迁移](#Complete-migration-of-your-virtual-machines-to-Azure)中所述的步骤完成虚拟机迁移。 不需要执行提交或删除。 完成迁移可以去除对虚拟机的保护，使虚拟机不再产生 Azure Site Recovery 费用。
->
->
-
-### <a name="run-an-unplanned-failover"></a>运行非计划的故障转移
-本过程描述如何对恢复计划运行非计划的故障转移。 或者，也可以在“虚拟机”选项卡上对单个虚拟机运行故障转移。 在开始之前，请确保要故障转移的所有虚拟机已完成初始复制。
-
-1. 选择“恢复计划”>“recoveryplan_name”。
-2. 在“恢复计划”边栏选项卡中，单击“计划的故障转移”。
-3. 在“非计划的故障转移”页上，选择源和目标位置。
-4. 选择“关闭虚拟机并同步最新数据”，指定 Azure Site Recovery 应尝试关闭受保护的虚拟机并同步数据，以便对最新版的数据进行故障转移。
-5. 故障转移后，虚拟机处于待提交状态。  单击“提交”提交故障转移。
-
-[了解详细信息](site-recovery-failover.md#run-an-unplanned-failover)
-
-## <a name="complete-migration-of-your-virtual-machines-to-azure"></a>完成虚拟机到 Azure 的迁移
-> [!NOTE]
-> 以下步骤仅适用于将虚拟机迁移到 Azure
->
->
-
-1. 按[此处](site-recovery-failover.md#run-an-unplanned-failover)所述执行非计划的故障转移
-2. 在“设置”>“复制的项”中，右键单击虚拟机并选择“完成迁移”
-
-    ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
-3. 单击“确定”完成迁移。 若要跟踪进度，可以单击 VM 打开其属性，或者在“设置”>“Site Recovery 作业”中使用“完成迁移”作业。
-
+1. 在“磁盘”中，可以看到 VM 上将要复制的操作系统和数据磁盘。
 
 ### <a name="prepare-to-connect-to-azure-vms-after-failover"></a>准备在故障转移后连接到 Azure VM
 如果想要在故障转移后使用 RDP 连接到 Azure VM，请确保执行以下操作：
@@ -698,7 +655,6 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 * 对通过 Internet 进行的访问启用 RDP，确保已针对“公共”添加 TCP 和 UDP 规则，并确保在“Windows 防火墙” -> “允许的应用和功能”中针对所有配置文件允许 RDP。
 * 针对通过站点到站点连接进行的访问，在计算机上启用 RDP，并确保在“Windows 防火墙” -> “允许的应用和功能”中针对“域”和“专用”网络允许 RDP。
 * 在本地计算机上安装 [Azure VM 代理](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) 。
-* 在计算机上[手动安装移动服务](#install-the-mobility-service-manually)，而不要使用进程服务器自动推送该服务。 这是因为，推送安装只会在为复制启用计算机之后才会发生。
 * 确保操作系统的 SAN 策略已设置为 OnlineAll。 [了解详细信息](https://support.microsoft.com/kb/3031135)
 * 在运行故障转移之前关闭 IPSec 服务。
 
@@ -725,30 +681,56 @@ Azure 提供了两个不同的[部署模型](../azure-resource-manager/resource-
 
 如果某个网络安全组与 VM 或 VM 子网关联，请确保该组中已创建一个允许 HTTP/HTTPS 的出站规则。 此外，请确保 VM 故障转移到的网络的 DNS 配置正确。 否则，故障转移可能会超时并出现错误 -“PreFailoverWorkflow 任务 WaitForScriptExecutionTask 超时”。 [了解详细信息](site-recovery-monitoring-and-troubleshooting.md#recovery)。
 
-## <a name="run-a-test-failover"></a>运行测试故障转移
+
+
+## <a name="step-7--run-a-test-failover"></a>步骤 7：运行测试故障转移
+为了对部署进行测试，可以针对单个虚拟机或单个恢复计划（其中包含一个或多个虚拟机）运行测试故障转移。
+
 1. 若要故障转移单个计算机，请在“设置”>“复制的项”中，单击“VM” > “+测试故障转移”图标。
 
     ![测试故障转移](./media/site-recovery-vmware-to-azure/test-failover1.png)
-2. 若要故障转移某个恢复计划，请在“设置” > “恢复计划”中，右键单击该计划 >“测试性故障转移”。 若要创建恢复计划，请[遵循这些说明](site-recovery-create-recovery-plans.md)。
-3. 在“测试故障转移”中，选择 Azure VM 在故障转移之后要连接到的 Azure 网络。
-4. 单击“确定”开始故障转移。 若要跟踪进度，可以单击 VM 以打开其属性，或者在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中选择“测试故障转移”作业。
-5. 当故障转移进入“完成测试”状态时，请执行以下操作：
+1. 若要故障转移某个恢复计划，请在“设置” > “恢复计划”中，右键单击该计划 >“测试性故障转移”。 若要创建恢复计划，请[遵循这些说明](site-recovery-create-recovery-plans.md)。
+1. 在“测试故障转移”中，选择 Azure VM 在故障转移之后要连接到的 Azure 网络。
+1. 单击“确定”开始故障转移。 若要跟踪进度，可以单击 VM 以打开其属性，或者在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中选择“测试故障转移”作业。
+1. 故障转移完成后，你还应该能够看到副本 Azure 计算机显示在 Azure 门户的“虚拟机”中。 应确保 VM 的大小适当、已连接到相应的网络，并且正在运行。
+1. 如果[已准备好故障转移后的连接](#prepare-to-connect-to-azure-vms-after-failover)，应该能够连接到 Azure VM。
+1. 完成后，在恢复计划上单击“清理测试故障转移”。 在“**说明**”中，记录并保存与测试性故障转移相关联的任何观测结果。 此时会删除在测试性故障转移期间创建的虚拟机。 
 
-   1. 在 Azure 门户中查看副本虚拟机。 验证虚拟机是否启动成功。
-   2. 如果你已设置为从本地网络访问虚拟机，则可以启动与虚拟机的远程桌面连接。
-   3. 单击“完成测试”以完成测试。
+有关更多详细信息，请参阅[测试性故障转移到 Azure](site-recovery-test-failover-to-azure.md)文档。
 
-       ![测试故障转移](./media/site-recovery-vmware-to-azure/test-failover6.png)
-   4. 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果。
-   5. 单击“测试故障转移已完成”以自动清理测试环境。 此操作完成后，测试故障转移会显示“完成”状态。
-   6. 在此阶段，将删除 Site Recovery 在测试故障转移期间自动创建的所有元素或 VM。 不会删除你为测试故障转移创建的其他任何元素。
+## <a name="failover"></a>故障转移
+完成虚拟机的初始复制后，可以根据需要调用故障转移。 Site Recovery 支持各种类型的故障转移 - 测试故障转移和非计划的故障转移。
+[详细了解](site-recovery-failover.md)不同类型的故障转移，以及有关何时和如何执行其中每种故障转移的详细说明。
 
-      > [!NOTE]
-      > 如果测试故障转移持续了两周以上，系统会强行将其结束。
-      >
-      >
-6. 故障转移完成后，你还应该能够看到副本 Azure 计算机显示在 Azure 门户的“虚拟机”中。 应确保 VM 的大小适当、已连接到相应的网络，并且正在运行。
-7. 如果[已准备好故障转移后的连接](#prepare-to-connect-to-azure-vms-after-failover)，应该能够连接到 Azure VM。
+
+> [!NOTE]
+> 如果目的是将虚拟机迁移到 Azure，我们强烈建议使用[非计划的故障转移操作](site-recovery-failover.md#run-an-unplanned-failover)，将虚拟机迁移到 Azure。 使用测试故障转移在 Azure 中验证已迁移的应用程序后，请使用[完成迁移](#Complete-migration-of-your-virtual-machines-to-Azure)中所述的步骤完成虚拟机迁移。 不需要执行提交或删除。 完成迁移可以去除对虚拟机的保护，使虚拟机不再产生 Azure Site Recovery 费用。
+
+
+### <a name="run-an-unplanned-failover"></a>运行非计划的故障转移
+本过程描述如何对恢复计划运行非计划的故障转移。 或者，也可以在“虚拟机”选项卡上对单个虚拟机运行故障转移。 在开始之前，请确保要故障转移的所有虚拟机已完成初始复制。
+
+1. 选择“恢复计划”>“recoveryplan_name”。
+2. 在“恢复计划”边栏选项卡中，单击“计划的故障转移”。
+3. 在“非计划的故障转移”页上，选择源和目标位置。
+4. 选择“关闭虚拟机并同步最新数据”，指定 Azure Site Recovery 应尝试关闭受保护的虚拟机并同步数据，以便对最新版的数据进行故障转移。
+5. 故障转移后，虚拟机处于待提交状态。  单击“提交”提交故障转移。
+
+[了解详细信息](site-recovery-failover.md#run-an-unplanned-failover)
+
+## <a name="complete-migration-of-your-virtual-machines-to-azure"></a>完成虚拟机到 Azure 的迁移
+> [!NOTE]
+> 以下步骤仅适用于将虚拟机迁移到 Azure
+>
+>
+
+1. 按[此处](site-recovery-failover.md#run-an-unplanned-failover)所述执行非计划的故障转移
+2. 在“设置”>“复制的项”中，右键单击虚拟机并选择“完成迁移”
+
+    ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
+3. 单击“确定”完成迁移。 若要跟踪进度，可以单击 VM 打开其属性，或者在“设置”>“Site Recovery 作业”中使用“完成迁移”作业。
+
+
 
 ## <a name="monitor-your-deployment"></a>监视部署
 下面是监视 Site Recovery 部署的配置设置、状态和运行状况的方式：
@@ -816,6 +798,6 @@ The information in Section B is regarding Third Party Code components that are b
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

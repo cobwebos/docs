@@ -1,5 +1,5 @@
 ---
-title: "有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨 | Microsoft Docs"
+title: "在 Azure 中 Windows VM 的部署模型之间迁移 | Microsoft 文档"
 description: "本文对平台支持的从经典部署模型到 Azure Resource Manager 的资源迁移做了深入的技术探讨"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 1/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 63d8270811797db5283870e4b4d3482271b97793
+ms.sourcegitcommit: d835d5825268a4ec0fa5b761f9b5714e3236b0ce
+ms.openlocfilehash: 2dd35a65d1b5b6db1401cdf5737b5355aa6d564b
 
 
 ---
@@ -73,6 +73,6 @@ ms.openlocfilehash: 63d8270811797db5283870e4b4d3482271b97793
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 
