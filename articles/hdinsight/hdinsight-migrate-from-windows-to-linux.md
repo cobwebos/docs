@@ -222,6 +222,6 @@ Azure 数据工厂自定义 .NET 活动目前不受基于 Linux 的 HDInsight �
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
-ms.author: giridham;jimpark;trinadhk;markgal
+ms.author: adigan;giridham;trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: 14cc190a7d1cde1181a6f26ef83095bc601f7fbb
 ms.openlocfilehash: 36c4e1865c99dd1c55be798e1d310a02f2af0864

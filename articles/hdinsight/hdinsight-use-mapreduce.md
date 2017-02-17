@@ -196,6 +196,6 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

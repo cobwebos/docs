@@ -341,6 +341,6 @@ Pacemaker 使用群集监视资源、定义主节点何时停机，并将这些�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "了解如何使用 PowerShell 部署和管理 Azure 备份"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 ms.assetid: 2e24b1d9-4375-4049-a28d-e3bc01152f32
 ms.service: backup

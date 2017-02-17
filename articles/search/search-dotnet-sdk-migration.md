@@ -486,6 +486,6 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
