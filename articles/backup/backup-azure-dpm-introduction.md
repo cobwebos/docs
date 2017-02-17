@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
-ms.author: trinadhk;giridham;jimpark;markgal;adigan
+ms.author: adigan;giridham;jimpark;markgal;trinadhk
 translationtype: Human Translation
 ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
 ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a

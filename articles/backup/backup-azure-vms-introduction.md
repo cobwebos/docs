@@ -4,7 +4,7 @@ description: "规划在 Azure 中备份虚拟机时的重要注意事项"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "备份 vm, 备份虚拟机"
 ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.author: markgal;trinadhk
 translationtype: Human Translation
 ms.sourcegitcommit: a4045fc0fc6e2c263da06ed31a590714e80fb4d4
 ms.openlocfilehash: ac13b82c885720fa6d3d127b8e8dbbace5b09ef5
@@ -95,7 +95,7 @@ Azure 备份将在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 ## <a name="total-restore-time"></a>总还原时间
 还原操作包括两个主要的子任务：将数据从保管库复制回所选的客户存储帐户和创建虚拟机。 从保管库复制回数据取决于 Azure 中内部存储备份的位置以及存储客户存储帐户的位置。 复制数据所花的时间取决于：
 * 队列等待时间 - 由于服务同时处理来自多个客户的还原，因此还原请求放入队列中。
-* 数据复制时间 - 复制数据的方法与保管库到客户存储帐户的第一次备份过程相似。 如果备份服务需要从保管库写入数据的客户存储帐户已加载，复制时间可能增加。 因此，在还原期间，请确保选择未加载其他应用程序写入和读取的存储帐户，从而优化复制时间。 
+* 数据复制时间 - 复制数据的方法与保管库到客户存储帐户的第一次备份过程相似。 如果备份服务需要从保管库写入数据的客户存储帐户已加载，复制时间可能增加。 因此，在还原期间，请确保选择未加载其他应用程序写入和读取的存储帐户，从而优化复制时间。
 
 ## <a name="best-practices"></a>最佳实践
 建议在为虚拟机配置备份时遵循以下做法：
