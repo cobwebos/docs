@@ -1,8 +1,8 @@
 ---
-title: "针对 Azure 活动日志警报配置 webhook | Microsoft Docs"
-description: "了解如何使用活动日志警报调用 webhook。 "
+title: "针对 Azure 活动日志警报调用 Webhook | Microsoft 文档"
+description: "将活动日志事件路由到其他服务用于自定义操作。 例如发送短信、记录 bug，或者通过聊天/消息传送服务通知团队。"
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/23/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 3c240e5f8eac50f4151a5a72bea690241597fc01
-ms.openlocfilehash: 0b912bc130ab5de3236a0e3f1f60087624b089a0
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 4ee65a10616fff81044c181fce8708a596e9e6de
 
 
 ---
-# <a name="configure-a-webhook-on-an-azure-activity-log-alert"></a>针对 Azure 活动日志警报配置 webhook
-通过 webhook 可以将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 webhook，以将警报路由到可以发送短信、记录 Bug、通过聊天/消息通知团队，或执行任意数量的其他操作的服务。 本文介绍如何针对 Azure 活动日志警报设置 webhook，以及 HTTP POST 对 webhook 的有效负载情况。 有关 Azure 度量值警报的设置和架构的信息，[请参阅本页](insights-webhooks-alerts.md)。 还可以将活动日志警报设置为激活时发送电子邮件。
+# <a name="call-a-webhook-on-azure-activity-log-alerts"></a>针对 Azure 活动日志警报调用 Webhook
+通过 webhook 可以将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 webhook，以将警报路由到可以发送短信、记录 Bug、通过聊天/消息通知团队，或执行任意数量的其他操作的服务。 本文介绍如何设置触发 Azure 活动日志警报时要调用的 Webhook。 此外，说明针对 Webhook 发出的 HTTP POST 的有效负载的大致形式。 有关 Azure 度量值警报的设置和架构的信息，[请参阅本页](insights-webhooks-alerts.md)。 还可以将活动日志警报设置为激活时发送电子邮件。
 
 > [!NOTE]
 > 此功能目前处于预览状态，将在以后删除。
-> 
-> 
+>
+>
 
-可使用 [Azure PowerShell Cmdlets](insights-powershell-samples.md#create-alert-rules)、[跨平台 CLI](insights-cli-samples.md#work-with-alerts) 或 [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 设置活动日志警报。
+可使用 [Azure PowerShell Cmdlets](insights-powershell-samples.md#create-alert-rules)、[跨平台 CLI](insights-cli-samples.md#work-with-alerts) 或 [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 设置活动日志警报。 目前无法使用 Azure 门户设置此类警报。
 
 ## <a name="authenticating-the-webhook"></a>对 webhook 进行身份验证
 Webhook 可以使用以下任一方法进行身份验证：
 
-1. **基于令牌的授权** - 例如，保存的 webhook URI 具有令牌 ID。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
-2. **基本授权** - 例如，保存的 webhook URI 具有用户名和密码。 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
+1. **基于令牌的授权** - 保存的 Webhook URI 包含令牌 ID，例如 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`。
+2. **基本授权** - 保存的 Webhook URI 包含用户名和密码，例如 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`。
 
 ## <a name="payload-schema"></a>负载架构
 POST 操作对于所有基于活动日志的警报包含以下 JSON 有效负载和架构。 此架构类似于基于度量值的警报使用的架构。
@@ -126,7 +126,6 @@ POST 操作对于所有基于活动日志的警报包含以下 JSON 有效负载
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

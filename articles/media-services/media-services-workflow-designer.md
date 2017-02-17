@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/15/2016
 ms.author: juliako;johndeu;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: caf697786ce2a95dd0d4168d6ffa26bf4bee525a
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: bf208f65ef5509e56373a84bb096da39d6bafc1f
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: caf697786ce2a95dd0d4168d6ffa26bf4bee525a
 * 基本工作流 —“Hello World”
 * 创建多个用于 Azure 媒体服务流式处理的输出 MP4 文件
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
 > 
 
@@ -64,7 +64,7 @@ ms.openlocfilehash: caf697786ce2a95dd0d4168d6ffa26bf4bee525a
 * 具有高级逻辑的工作流
 * 图形阶段
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
 > 
 
@@ -75,7 +75,7 @@ ms.openlocfilehash: caf697786ce2a95dd0d4168d6ffa26bf4bee525a
 * 当前编码器的限制
 * 问答
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 
 > 
 
@@ -87,7 +87,7 @@ ms.openlocfilehash: caf697786ce2a95dd0d4168d6ffa26bf4bee525a
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-如果需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。
+如果你需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。
 
 ## <a name="see-also"></a>另请参阅
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
@@ -95,6 +95,6 @@ ms.openlocfilehash: caf697786ce2a95dd0d4168d6ffa26bf4bee525a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

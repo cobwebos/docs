@@ -1,6 +1,6 @@
 ---
-title: "云服务常见问题 | Microsoft Docs"
-description: "有关云服务的常见问题。"
+title: "Azure 云服务角色常见问题 | Microsoft 文档"
+description: "有关 Azure 云服务的常见问题。 解答有关证书、Web 角色和辅助角色的一些常见问题。"
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2501b6480e81b236995c37db7171a4ed1429dcbf
-ms.openlocfilehash: f7bad9a46132dec43f73e561362c9e6441a5c1c0
+ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
+ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
 
 
 ---
@@ -71,6 +71,6 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

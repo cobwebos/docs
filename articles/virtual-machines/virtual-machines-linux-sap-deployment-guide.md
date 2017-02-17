@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 translationtype: Human Translation
-ms.sourcegitcommit: 3a5e22315e338fe089cf557688f741ee16416da2
-ms.openlocfilehash: 5214f55b8e65ec758ba93fb86d548b45a1b4f21e
+ms.sourcegitcommit: 83ab4f79031eb34e3be6bfb65c9d0ebfa00bc6db
+ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 
 
 ---
@@ -299,11 +299,11 @@ Microsoft Azure 提供了优异的平台检测，以满足所有业务关键型�
   * 支持部署 SAP 软件的 Azure 虚拟机大小的列表 
   * 按 Azure 虚拟机大小提供的重要容量信息
   * 支持的 SAP 软件以及 OS 与 DB 的组合
-  * Microsoft Azure 上用于 Windows 和 Linux 的所需 SAP 内核版本
+  * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
   
 * SAP 说明 [2015553] 列出了在将 SAP 软件部署到 Microsoft Azure 时，要受 SAP 支持而必须满足的先决条件。
 * SAP 说明 [2178632] 包含 Microsoft Azure 上针对 SAP 报告的所有监视度量值的相关详细信息。 
-* SAP 说明 [1409604] 包含 Microsoft Azure 上用于 Windows 的所需 SAP 主机代理版本。
+* SAP 说明 [1409604] 包含 Microsoft Azure 上 Windows 所需的 SAP 主机代理版本。
 * SAP 说明 [2191498] 包含 Microsoft Azure 上用于 Linux 的所需 SAP 主机代理版本。
 * SAP 说明 [2243692] 包含 Azure 上 Linux 中的 SAP 许可信息
 * SAP 说明 [1984787] 包含有关 SUSE LINUX Enterprise Server 12 的一般信息
@@ -411,7 +411,7 @@ Microsoft Azure 可让用户从 Azure 应用商店部署 VM 实例，该库提�
 1. 设置
   * **Sap 系统 Id**：SAP 系统 ID
   * **OS 类型**：要部署的操作系统，例如 Windows Server 2012 R2、SLES 12 或 RHEL 7.2
-    * 列表不包含所有受支持的操作系统，例如虽然 SAP 支持 Windows Server 2008 R2，但列表不包含它。 有关所有受支持操作系统的列表，请阅读 SAP 说明 [1928533]。
+    * 列表中不包含所有受支持的操作系统，例如虽然 SAP 支持 Windows Server 2008 R2，但列表中不包含它。 有关所有受支持操作系统的列表，请阅读 SAP 说明 [1928533]。
   * **Sap 系统大小**：SAP 系统的大小
     * 新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询你的 SAP 技术合作伙伴或系统集成商
   * **系统可用性**：（仅限三层模板）系统可用性
@@ -706,6 +706,8 @@ sudo yum install WALinuxAgent
 4. 打开“连接”选项卡，然后单击“局域网设置”
 5. 禁用“自动检测设置”
 6. 启用“为 LAN 使用代理服务器”，然后输入代理地址和端口
+7. 单击“高级”
+8. 将 IP 地址 168.63.129.16 添加到例外列表
 
 #### <a name="linux"></a>Linux
 在 Microsoft Azure 来宾代理的配置文件（位于 /etc/waagent.conf 中）中配置正确的代理。 必须设置以下参数：
@@ -959,6 +961,6 @@ Azure 上的性能度量值的收集是由一个守护程序执行的，该守�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

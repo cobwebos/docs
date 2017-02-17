@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/22/2016
+ms.date: 01/31/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 98165704fe2699f8ff8a90edb7af8ad10b4d296c
+ms.sourcegitcommit: c6c716c4dce810f190ed66d633524472ba665256
+ms.openlocfilehash: 60d74f1a8dff6441aa461cdc740b5aadc6b77be3
 
 
 ---
@@ -112,6 +112,6 @@ ms.openlocfilehash: 98165704fe2699f8ff8a90edb7af8ad10b4d296c
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

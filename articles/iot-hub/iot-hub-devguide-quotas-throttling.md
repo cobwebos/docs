@@ -1,6 +1,6 @@
 ---
-title: "开发人员指南 - 配额和限制 | Microsoft Docs"
-description: "Azure IoT 中心开发人员指南 - 适用于 IoT 中心的配额和预期的限制行为的说明"
+title: "了解 Azure IoT 中心配额和限制 | Microsoft Docs"
+description: "开发人员指南 - 介绍适用于 IoT 中心的配额和预期限制行为。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,15 +12,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: c0f8c779d7f9552dc05ac3791b74c3d57cb1fe64
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: ebfafd5ee9049b5049070ad111c95746b89e755f
 
 
 ---
-# <a name="reference---quotas-and-throttling"></a>参考 - 配额和限制
+# <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
+
 ## <a name="quotas-and-throttling"></a>配额和限制
 每个 Azure 订阅最多可以拥有 10 个 IoT 中心和 1 个免费中心。
 
@@ -42,14 +43,14 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 | 云到设备的接收 <br/> （仅当设备使用 HTTP 时）| 1000/分钟/单位 | 1000/分钟/单位| 50000/分钟/单位 |
 | 文件上载 | 100 个文件上载通知/分钟/单位 | 100 个文件上载通知/分钟/单位 | 5000 个文件上载通知/分钟/单位 |
 | 直接方法 | 10/秒/单位 | 30/秒/单位 | 1500/秒/单位 | 
-| 克隆读取 | 10/秒 | 最大值为 10/秒或 1/秒/单位 | 50/秒/单位 |
-| 克隆更新 | 10/秒 | 最大值为 10/秒或 1/秒/单位 | 50/秒/单位 |
+| 设备孪生读取 | 10/秒 | 最大值为 10/秒或 1/秒/单位 | 50/秒/单位 |
+| 设备孪生更新 | 10/秒 | 最大值为 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 作业操作 <br/> （创建、更新、列表、删除） | 100/分钟/单位 | 100/分钟/单位 | 5000/分钟/单位 |
 | 作业每设备操作吞吐量 | 10/秒 | 最大值为 10/秒或 1/秒/单位 | 50/秒/单位 |
 
 必须清楚地知道，*设备连接*限制控制可与 IoT 中心建立新设备连接的速率，而不是控制同时连接的设备数上限。 该限制取决于为 IoT 中心预配的单位数。
 
-例如，如果你购买的是单一 S1 单位，则限制为每秒 100 个连接。 这意味着，若要连接 100,000 台设备，至少需要花费 1000 秒（大约 16 分钟）。 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
+例如，如果你购买的是单一 S1 单位，则限制为每秒 100 个连接。 因此，若要连接 100,000 台设备，至少需要花费 1000 秒（大约 16 分钟）。 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
 
 有关 IoT 中心限制行为的深入讨论，请参阅博客文章 [IoT Hub throttling and you][lnk-throttle-blog]（IoT 中心限制与你息息相关）。
 
@@ -67,14 +68,16 @@ IoT 中心对其不同的功能实施其他限制。
 
 | 操作 | 限制 |
 | --------- | ----- |
-| 文件上载 URI | 存储帐户一次可传出 10000 个 SAS URI。 <br/> 一次可传出 10 个 SAS URI/设备。 |
+| 文件上载 URI | 存储帐户一次可传出&10000; 个 SAS URI。 <br/> 一次可传出&10; 个 SAS URI/设备。 |
 | 作业 | 作业历史记录最多保留 30 天 <br/> 最大并发作业数为 1（适用于免费版和 S1）、5（适用于 S2）、10（适用于 S3）。 |
+| 额外终结点 | 付费 SKU 中心可能有 10 个额外终结点。 免费 SKU 中心可能有&1; 个额外终结点。 |
+| 消息路由规则 | 付费 SKU 中心可包含 100 条路由规则。 免费 SKU 中心可包含&5; 条路由规则。 |
 
 ## <a name="next-steps"></a>后续步骤
 此 IoT 中心开发人员指南中的其他参考主题包括：
 
 * [IoT 中心终结点][lnk-devguide-endpoints]
-* [设备克隆和作业的 IoT 中心查询语言][lnk-devguide-query]
+* [设备孪生和作业的 IoT 中心查询语言][lnk-devguide-query]
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
@@ -87,6 +90,6 @@ IoT 中心对其不同的功能实施其他限制。
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO5-->
 
 

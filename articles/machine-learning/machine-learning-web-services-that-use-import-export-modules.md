@@ -1,5 +1,5 @@
 ---
-title: "部署使用数据导入和数据导出模块的 Azure 机器学习 Web 服务 | Microsoft Docs"
+title: "在 Azure 机器学习 Web 服务中使用导入/导出数据 | Microsoft 文档"
 description: "了解如何使用导入数据和导出数据模块从 Web 服务发送和接收数据。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 066ff1d2c8255c895fbfcb0ad8c0b1fef298f8c7
-ms.openlocfilehash: f122153a97c3bbdb4416b97146cf9611b850b51e
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
 
 
 ---
@@ -145,6 +145,6 @@ ms.openlocfilehash: f122153a97c3bbdb4416b97146cf9611b850b51e
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

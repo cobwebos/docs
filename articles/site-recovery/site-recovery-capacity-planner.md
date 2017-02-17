@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Site Recovery 中规划用于保护虚拟机和物理服务器的容量 | Microsoft Docs"
-description: "规划 Azure Site Recovery 的复制容量"
+title: "估算 Azure 中的复制容量 | Microsoft 文档"
+description: "参考本文估算使用 Azure Site Recovery 进行复制时可用的容量"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/15/2016
+ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 8fca992488746bc50a7342644de62b862a9aaea7
-ms.openlocfilehash: a427969378d2454246217d48bafe6f360e93df0f
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: 7ec48138cf18cf50dc34f28e177c8d774034090b
 
 
 ---
@@ -65,7 +65,7 @@ Azure Site Recovery Capacity Planner 工具可帮助用户确定通过 Azure Sit
    * **所需 blob 磁盘数**给出了将要在 Azure 存储中创建的磁盘数。
    * **所需高级存储帐户数**提供对 VM 进行保护所需的高级存储帐户的总数。 IOPS 较高（高于 20000）的源 VM 需要高级存储帐户。 高级存储帐户最高可支持 80000 IOPS。
    * **高级存储的总 IOPS** 根据高级存储帐户总数按 256K 的 IOPS 单元大小来计算。  对于快速规划器，该数字根据所有源 VM 磁盘数以及每日数据更改率来计算。 对于详细规划器，该数字根据映射到高级 Azure VM（DS 和 GS 系列）的 VM 总数以及这些 VM 的数据更改率来计算。
-   * **所需配置服务器数**显示需要多少个配置服务器才能完成该部署。 
+   * **所需配置服务器数**显示需要多少个配置服务器才能完成该部署。
    * **所需其他进程服务器数**显示除了默认在配置服务器上运行的进程服务器外，是否还需要其他进程服务器。
    * **100% 源的其他存储**显示源位置是否需要其他存储。
 
@@ -102,14 +102,14 @@ AA 到 AE 列为输出，提供的是每个 VM 的信息。
 ![工作负荷限定](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>示例
-例如，如果有 6 个 VM，其值如表中所示，该工具会计算和分配最佳 Azure VM 匹配项以及 Azure 存储需求。
+例如，如果有&6; 个 VM，其值如表中所示，该工具会计算和分配最佳 Azure VM 匹配项以及 Azure 存储需求。
 
 ![工作负荷限定](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * 在示例输出中，请注意以下问题：
 
   * 第一列是用于 VM、磁盘和改动的验证列。
-  * 5 个 VM 需要 2 个标准存储帐户和 1 个高级存储帐户。
+  * 5 个 VM 需要&2; 个标准存储帐户和&1; 个高级存储帐户。
   * VM3 不符合受保护资格，因为一个或多个磁盘大于 1 TB。
   * VM1 和 VM2 可以使用第一个标准存储帐户。
   * VM4 可以使用第二个标准存储帐户。
@@ -117,7 +117,7 @@ AA 到 AE 列为输出，提供的是每个 VM 的信息。
 
     > [!NOTE]
     > 标准存储和高级存储的 IOPS 在 VM 级别（而非磁盘级别）进行计算。 标准虚拟机最多可处理每个磁盘 500 IOPS。 如果磁盘的 IOPS 大于 500，则需要高级存储。 不过，如果某个磁盘的 IOPS 超出 500 但所有 VM 磁盘的 IOPS 仍在标准 Azure VM 的支持范围（VM 大小、磁盘数、适配器数、CPU、内存）内，则规划器会选取标准 VM 而不是 DS 或 GS 系列。 需要使用相应的 DS 或 GS 系列 VM 来手动更新“映射 Azure 大小”单元格。
-   
+
 
 1. 输入所有详细信息以后，单击“将数据提交到规划器工具”以打开“Capacity Planner”。工作负荷会突出显示，以表明其是否符合受保护资格。
 
@@ -129,6 +129,6 @@ AA 到 AE 列为输出，提供的是每个 VM 的信息。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

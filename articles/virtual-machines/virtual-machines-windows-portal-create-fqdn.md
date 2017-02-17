@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 门户中为 VM 创建 FQDN | Microsoft Docs"
+title: "在 Azure 门户中为 Windows VM 创建 FQDN | Microsoft 文档"
 description: "了解如何在 Azure 门户中为基于 Resource Manager 的虚拟机创建完全限定域名或 FQDN。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/14/2016
+ms.date: 102/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f556fd0318accc19f0fa56fa7f2a8716ee6f1c02
-ms.openlocfilehash: 72d176803151af5b3c5da50f1f2d72c0dd27f44a
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: e89e5769701f00c6f403bd54cb2b29bcce53bf15
 
 
 ---
@@ -36,6 +36,6 @@ ms.openlocfilehash: 72d176803151af5b3c5da50f1f2d72c0dd27f44a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

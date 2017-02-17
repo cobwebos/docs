@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 0062dc90d8e1a823e17183e96a91a9f224e8cf48
+ms.sourcegitcommit: 559b38da4ed787f6f7a4462f6add92384bed54f7
+ms.openlocfilehash: 0acdbefcae875c206667260b6df5dfd8882dcc42
 
 
 ---
 # <a name="azure-resiliency-technical-guidance-recovery-from-a-region-wide-service-disruption"></a>Azure 复原技术指南：在发生区域范围的服务中断后进行恢复
-Azure 在物理上和逻辑上划分为称为区域的单位。 一个区域由一个或多个邻近的数据中心组成。 在撰写本文时，Azure 在全球共有 24 个区域。
+Azure 在物理上和逻辑上划分为称为区域的单位。 一个区域由一个或多个邻近的数据中心组成。 有关最新区域列表，请参阅 [Azure 区域页](https://azure.microsoft.com/regions/)。
 
 只有在极少数情况下，才会出现整个区域的设施都无法访问的情况，例如，网络故障， 或自然灾害等原因造成的完全失去联系。 本部分说明可用于创建在各区域间分布的应用程序的 Azure 功能。 这种分布有助于最大程度地减少一个区域的故障影响到其他区域的可能性。
 
@@ -188,6 +188,6 @@ Azure 媒体服务对于编码和流有不同的恢复方法。 通常，在区�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

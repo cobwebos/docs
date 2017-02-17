@@ -1,5 +1,5 @@
 ---
-title: "下载媒体资产"
+title: "将媒体服务资产下载到计算机 - Azure | Microsoft 文档"
 description: "了解如何将资产下载到计算机。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 25b74bdcdbc5ec5a134bb2f800cd687de6ebc1e7
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 6117b066acff91f249c4aa8afc1e139ebe6054b3
 
 
 ---
@@ -88,6 +88,6 @@ ms.openlocfilehash: 25b74bdcdbc5ec5a134bb2f800cd687de6ebc1e7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

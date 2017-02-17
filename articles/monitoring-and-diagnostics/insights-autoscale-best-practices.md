@@ -1,8 +1,8 @@
 ---
-title: "Azure 监视器自动缩放的最佳做法。 | Microsoft 文档"
-description: "了解原理，有效地在 Azure 监视器中使用自动缩放。"
+title: "自动缩放最佳实践 | Microsoft 文档"
+description: "了解有效自动缩放虚拟机、虚拟机规模集和云服务的原理。"
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 01/23/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f49d9121f34cc58d1486220a93bcb102f8eba90b
+ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
+ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
 
 
 ---
-# <a name="best-practices-for-azure-monitor-autoscaling"></a>Azure 监视器自动缩放的最佳做法
-本文档中的以下部分帮助你了解有关 Azure 中的自动缩放的最佳做法。 查看此信息之后，你将能够更好地在 Azure 基础结构中有效地使用自动缩放。
+# <a name="best-practices-autoscaling-virtual"></a>虚拟机自动缩放最佳实践
+本文讲解 Azure 中自动缩放的最佳实践。 内容与虚拟机、虚拟机规模集和云服务相关。  其他 Azure 服务使用不同的缩放方法。
 
 ## <a name="autoscale-concepts"></a>自动缩放概念
 * 一个资源只能具有*一个*自动缩放设置
@@ -46,7 +46,7 @@ ms.openlocfilehash: f49d9121f34cc58d1486220a93bcb102f8eba90b
 如果只使用该组合的一部分，则自动缩放只会进行单向扩大或缩小，直到达到最大值或最小值。
 
 ### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>管理自动缩放时，请勿在 Azure 门户与 Azure 经典门户之间切换
-对于云服务和应用程序服务（Web 应用），请使用 Azure 门户 (portal.azure.com) 创建和管理自动缩放设置。 对于虚拟机缩放集，请使用 PoSH、CLI 或 REST API 创建和管理自动缩放设置。 管理自动调整规模配置时，请勿在 Azure 经典门户 (manage.windowsazure.com) 与 Azure 门户 (portal.azure.com) 之间切换。 Azure 经典门户及其基础后端具有限制。 请使用图形用户界面移动到 Azure 门户来管理自动缩放。 这些选项是使用自动缩放 PowerShell、CLI 或 REST API（通过 Azure 资源浏览器）。
+对于云服务和应用程序服务（Web 应用），请使用 Azure 门户 (portal.azure.com) 创建和管理自动缩放设置。 对于虚拟机规模集，请使用 PowerShell、CLI 或 REST API 创建和管理自动缩放设置。 管理自动调整规模配置时，请勿在 Azure 经典门户 (manage.windowsazure.com) 与 Azure 门户 (portal.azure.com) 之间切换。 Azure 经典门户及其基础后端具有限制。 请使用图形用户界面移动到 Azure 门户来管理自动缩放。 这些选项是使用自动缩放 PowerShell、CLI 或 REST API（通过 Azure 资源浏览器）。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
 对于诊断指标，可以选择“平均值”、“最小值”、“最大值”和“总计”作为用作缩放依据的指标。 最常见的统计信息是“平均值”。
@@ -67,7 +67,7 @@ ms.openlocfilehash: f49d9121f34cc58d1486220a93bcb102f8eba90b
 4. 进行减少之前，自动缩放会尝试估计缩小后的最终状态。 例如，575 x 3（当前实例计数）= 1,725/2（减少后的最终实例数）= 862.5 个线程。 这意味着如果平均线程计数保持不变，甚至是仅仅少量下降，则自动缩放必须立即再次扩大（即使在进行缩小之后）。 但是，如果它再次增加，则整个过程会重复，从而导致无限循环。
 5. 为了避免这种情况（称之为“波动”），自动缩放根本不会减少。 相反，它会跳过，并在服务作业下次执行时再次重新评估条件。 这可能会使许多人感到困惑，因为在平均线程计数是 575 时，自动缩放似乎未起作用。
 
-缩小过程中进行的估计旨在避免“波动”情况。 为扩大和缩小选择相同阈值时，应记住此行为。
+在缩减期间进行评估的目的是避免“反复”情况：缩减和扩展操作不断交替。 为扩展和缩减选择相同阈值时，请记住此行为。
 
 我们建议在扩大与缩小阈值之间选择足够的余量。 作为示例，请考虑以下更好的规则组合。
 
@@ -152,7 +152,6 @@ ms.openlocfilehash: f49d9121f34cc58d1486220a93bcb102f8eba90b
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

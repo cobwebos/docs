@@ -1,8 +1,8 @@
 ---
-title: "使用跨平台命令行接口 (CLI) 为 Azure 服务创建警报 | Microsoft Docs"
-description: "使用命令行接口创建 Azure 警报，可在满足指定条件时触发通知或自动化。"
+title: "为 Azure 服务创建警报 - 跨平台 CLI | Microsoft 文档"
+description: "满足指定的条件时触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,26 +15,26 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1bb722726fd44972887fdcff2b33a15725914d2
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 073075d4c789438cc6dd6aa14027cbe50d6efa11
 
 
 ---
-# <a name="use-the-cross-platform-command-line-interface-cli-to-create-alerts-for-azure-services"></a>使用跨平台命令行接口 (CLI) 为 Azure 服务创建警报
+# <a name="create-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>在 Azure Monitor 中为 Azure 服务创建警报 - 跨平台 CLI
 > [!div class="op_single_selector"]
 > * [门户](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [CLI](insights-alerts-command-line-interface.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概述
-本文演示如何使用命令行接口 (CLI) 设置 Azure 警报。
+本文介绍如何使用跨平台命令行接口 (CLI) 设置 Azure 警报。
 
 > [!NOTE]
 > 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及其下命令仍包含“insights”。
-> 
-> 
+>
+>
 
 可以根据监视指标或事件接收 Azure 服务的警报。
 
@@ -73,74 +73,74 @@ ms.openlocfilehash: b1bb722726fd44972887fdcff2b33a15725914d2
     ```
 
 1. 若要列出资源组的现有规则，请使用以下形式，**azure insights alerts rule list** *[options] &lt;resourceGroup&gt;*
-   
+
    ```console
    azure insights alerts rule list myresourcegroupname
-   
+
    ```
 2. 若要创建一条规则，首先需要有以下几条重要信息。
-   
+
    * 要为其设置警报的资源的**资源 ID**
    * 资源可用的**指标定义**
-     
+
      获取资源 ID 的一种方法是使用 Azure 门户。 假设已创建该资源，在门户中选中它。 然后在下一个边栏选项卡中，选择“设置”分区下的“属性”。 *资源 ID* 是下一个边栏选项卡中的字段。 另一种方法是使用 [Azure Resource Explorer](https://resources.azure.com/)（Azure 资源浏览器）。
-     
+
      Web 应用的示例资源 ID 是
-     
+
      ```console
      /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename
      ```
-     
+
      若要获取上一个资源示例的这些指标的可用指标和单位列表，请使用以下 CLI命令：  
-     
+
      ```console
      azure insights metrics list /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename PT1M
      ```
-     
+
      PT1M 是可用度量的粒度（1分钟间隔）。 使用不同的粒度可以提供不同的指标选项。
 3. 若要创建基于指标的警报规则，请使用以下形式的命令：
-   
+
     **azure insights alerts rule metric set** *[options] &lt;ruleName&gt; &lt;location&gt; &lt;resourceGroup&gt; &lt;windowSize&gt; &lt;operator&gt; &lt;threshold&gt; &lt;targetResourceId&gt; &lt;metricName&gt; &lt;timeAggregationOperator&gt;*
-   
+
     以下示例设置了一个关于网站资源的警报。 如果其持续 5 分钟收到任何流量以及 5 分钟没收到任何流量，将触发该警报。
-   
+
     ```console
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
-   
+
     ```
 4. 若要在警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后立即创建规则。 如果已使用 CLI 创建规则，将无法关联 webhook 或电子邮件。
-   
+
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com
-   
+
     azure insights alerts actions webhook create https://www.contoso.com
-   
+
     azure insights alerts rule metric set myrulewithwebhookandemail eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
     ```
 5. 若要创建在活动日志中特定条件下触发的警报，可使用以下形式：
-   
+
     **insights alerts rule log set** *[options] &lt;ruleName&gt; &lt;location&gt; &lt;resourceGroup&gt; &lt;operationName&gt;*
-   
+
     例如
-   
+
     ```console
     azure insights alerts rule log set myActivityLogRule eastus myresourceGroupName Microsoft.Storage/storageAccounts/listKeys/action
     ```
-   
+
     operationName 与活动日志中条目的事件类型相对应。 示例包括 Microsoft.Compute/virtualMachines/delete 和 microsoft.insights/diagnosticSettings/write。
-   
+
     可以使用 PowerShell 命令 [Get AzureRmProviderOperation](https://msdn.microsoft.com/library/mt603720.aspx) 来获取可能 operationNames 的列表。 或者，可以使用 Azure 门户查询活动日志以及查找要为其设置警报的特定过去操作。 在友好名称的图形日志视图中显示操作。 查看该条目的 JSON，并拉取 OperationName 值。   
 6. 可以验证是否已通过查看单个规则正确创建警报。
-   
+
     ```console
     azure insights alerts rule list myresourcegroup --ruleName myrule
     ```
 7. 若要删除规则，请使用以下格式的命令：
-   
+
     **insights alerts rule delete** [options] &lt;resourceGroup&gt; &lt;ruleName&gt;
-   
+
     这些命令将删除在本文前面创建的规则。
-   
+
     ```console
     azure insights alerts rule delete myresourcegroup myrule
     azure insights alerts rule delete myresourcegroup myrulewithwebhookandemail
@@ -156,7 +156,6 @@ ms.openlocfilehash: b1bb722726fd44972887fdcff2b33a15725914d2
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

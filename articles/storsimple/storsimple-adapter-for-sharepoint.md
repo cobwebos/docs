@@ -1,5 +1,5 @@
 ---
-title: "StorSimple Adapter for SharePoint | Microsoft 文档"
+title: "安装 StorSimple Adapter for SharePoint | Microsoft 文档"
 description: "介绍如何在 SharePoint 服务器场中安装、配置或删除 StorSimple Adapter for SharePoint。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 07/11/2016
 ms.author: v-sharos
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a108e20c36208fd211e45d180fc77a65e501b191
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 8c7bcc959c15399e8be96eb8f37634d2763a3115
 
 
 ---
@@ -31,8 +31,8 @@ StorSimple Adapter for SharePoint 充当远程 BLOB 存储 (RBS) 提供程序，
 > 
 > 
 
-* 若要下载 StorSimple Adapter for SharePoint，请在 Microsoft 下载中心转到 [StorSimple Adapter for SharePoint][1]。
-* 有关规划 RBS 和 RBS 限制的信息，请转到 [Deciding to use RBS in SharePoint 2013]（决定在 SharePoint 2013 中使用 RBS）[2] 或 [Plan for RBS (SharePoint Server 2010)]（规划 RBS (SharePoint Server 2010)）[3]。
+* 若要下载 StorSimple Adapter for SharePoint，请转到 Microsoft 下载中心中的 [StorSimple Adapter for SharePoint][1]。
+* 有关规划 RBS 和 RBS 限制的信息，请转到[决定在 SharePoint 2013 中使用 RBS][2]或[规划 RBS (SharePoint Server 2010)][3]。
 
 本概述的余下部分说明 StorSimple Adapter for SharePoint 的角色以及 SharePoint 的容量和性能限制，这些都是在安装和配置该适配器之前应该了解的。 查看这些信息后，请转到 [StorSimple Adapter for SharePoint 安装](#storsimple-adapter-for-sharepoint-installation)开始设置该适配器。
 
@@ -50,7 +50,7 @@ RBS 的 Microsoft Azure StorSimple 实现具有以下优势：
 * 可将 Kroll Ontrack PowerControls 等数据恢复软件用于 BLOB 数据的 StorSimple 快照，执行 SharePoint 内容的项级恢复。 （需单独购买此数据恢复软件。）
 * StorSimple Adapter for SharePoint 插入到 SharePoint 管理中心门户中，可让用户从一个中心位置管理整个 SharePoint 解决方案。
 
-将 BLOB 内容转移到文件系统可以进一步节省成本并提供更多益处。 例如，使用 RBS 可以减少对成本昂贵的第 1 层存储的需求，而且由于 RBS 收缩内容数据库，因而减少了 SharePoint 服务器场中需要的数据库数量。 但是，其他因素（例如数据库大小限制和非 RBS 内容数量）也会影响存储要求。 有关使用 RBS 的成本和优势的详细信息，请参阅 [Plan for RBS (SharePoint Foundation 2010)]（规划 RBS (SharePoint Foundation)）[4] 和 [Deciding to use RBS in SharePoint 2013]（决定在 SharePoint 2013 中使用 RBS）[5]。
+将 BLOB 内容转移到文件系统可以进一步节省成本并提供更多益处。 例如，使用 RBS 可以减少对成本昂贵的第 1 层存储的需求，而且由于 RBS 收缩内容数据库，因而减少了 SharePoint 服务器场中需要的数据库数量。 但是，其他因素（例如数据库大小限制和非 RBS 内容数量）也会影响存储要求。 有关使用 RBS 的成本和优势的详细信息，请参阅[规划 RBS (SharePoint Foundation 2010)][4] 和[决定在 SharePoint 2013 中使用 RBS][5]。
 
 ### <a name="capacity-and-performance-limits"></a>容量和性能限制
 考虑在 SharePoint 解决方案中使用 RBS 之前，应了解 SharePoint Server 2010 和 SharePoint Server 2013 的已测试性能和容量限制，以及这些限制与可接受性能之间存在何种关系。 有关详细信息，请参阅 [Software Boundaries and Limits for SharePoint 2013](https://technet.microsoft.com/library/cc262787.aspx)（SharePoint 2013 的软件边界和限制）。
@@ -178,7 +178,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 启用 RBS 时，此维护程序 (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) 将自动安装在所有 SharePoint WFE 服务器和应用程序服务器上。 该程序安装在以下位置：*引导盘*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\
 
-有关配置和使用此维护程序的信息，请参阅 [Maintain RBS in SharePoint Server 2013]（在 SharePoint Server 2013 中维护 RBS）[8]。
+有关配置和使用此维护程序的信息，请参阅[在 SharePoint Server 2013 中维护 RBS][8]。
 
 > [!IMPORTANT]
 > RBS 维护程序会占用大量资源。 应将它安排为仅在 SharePoint 场中的活动较少的时段内运行。
@@ -247,7 +247,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 2. 双击 StorSimple Adapter for SharePoint 安装程序。 此时将启动安装向导。
    
     ![安装向导](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. 单击“资源组名称” 的 Azure 数据工厂。 将显示以下页。
+3. 单击“下一步”。 将显示以下页。
    
     ![安装向导删除页](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. 单击“删除”开始执行删除过程。 将显示以下页。
@@ -275,6 +275,6 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

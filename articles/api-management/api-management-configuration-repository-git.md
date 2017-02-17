@@ -1,28 +1,25 @@
 ---
-title: "如何使用 Git 保存和配置 API 管理服务"
+title: "使用 Git 配置 Azure API 管理服务 | Microsoft 文档"
 description: "了解如何使用 Git 保存和配置 API 管理服务。"
 services: api-management
 documentationcenter: 
 author: steved0x
 manager: erikre
-editor: 
+editor: mattfarm
 ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 96d100d69a7f4989153b293d1fa1ab249a82c1c2
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 801fe10ad20c48fb965d3f80956d7979c9c2314e
 
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
-> [!IMPORTANT]
-> API 管理的 Git 配置当前处于预览中。 它具备完整功能，但处于预览中是因为我们正在积极寻求关于此功能的反馈。 为了响应客户反馈，我们可能进行重大更改，因此我们建议在生产环境中使用时不要依赖此功能。 如有任何反馈或疑问，请在 `apimgmt@microsoft.com` 告知我们。
 > 
 > 
 
@@ -40,7 +37,7 @@ ms.openlocfilehash: 96d100d69a7f4989153b293d1fa1ab249a82c1c2
 
 以下步骤提供了使用 Git 管理 API 管理服务实例的概述。
 
-1. 在服务中启用 Git 访问
+1. 访问服务中的 Git 配置
 2. 将服务配置数据库保存到 Git 存储库
 3. 将 Git 存储库克隆到本地计算机
 4. 将最新的存储库提取到本地计算，并将更改提交并推送回存储库
@@ -48,20 +45,14 @@ ms.openlocfilehash: 96d100d69a7f4989153b293d1fa1ab249a82c1c2
 
 本文介绍如何启用和使用 Git 管理服务配置，并提供 Git 存储库中的文件和文件夹的参考。
 
-## <a name="to-enable-git-access"></a>启用 Git 访问
-可通过查看发布者门户右上角的 Git 图标快速查看 Git 配置的状态。 在此示例中，尚未启用 Git 访问。
+## <a name="access-git-configuration-in-your-service"></a>访问服务中的 Git 配置
+可通过查看发布者门户右上角的 Git 图标快速查看 Git 配置的状态。 在此示例中，状态消息指出存储库存在未保存的更改。 这是因为 API 管理服务配置数据库尚未保存到存储库。
 
 ![Git 状态][api-management-git-icon-enable]
 
 若要查看和配置 Git 配置设置，可单击 Git 图标，或者单击“安全”菜单并导航到“配置存储库”选项卡。
 
 ![启用 Git][api-management-enable-git]
-
-若要启用 Git 访问，请选中“启用 Git 访问”复选框。
-
-片刻之后，将保存更改并显示确认消息。 请注意，Git 图标已更改为指示 Git 访问处于启用状态，并且状态消息现在指示存储库存在未保存的更改。 这是因为 API 管理服务配置数据库尚未保存到存储库。
-
-![Git 已启用][api-management-git-enabled]
 
 > [!IMPORTANT]
 > 未定义为属性的任何机密都将保存在存储库中，并将保留在其历史记录中，直到你禁用并重新启用 Git 访问。 属性提供了管理所有 API 配置和策略的常量字符串值（包括机密）的安全位置，因此无需将它们直接存储在策略声明中。 有关详细信息，请参阅[如何在 Azure API 管理策略中使用属性](api-management-howto-properties.md)。
@@ -321,6 +312,6 @@ git push
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

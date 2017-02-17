@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: b7890150da382e4ef08323654c076ff8236e3e79
+ms.sourcegitcommit: c002c4588869536810b969aed80da09e60b62525
+ms.openlocfilehash: 9b06b4a7f4b58c586b81d0ad4a40dfdc586dfe6e
 
 
 ---
@@ -268,7 +268,7 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 
 - - -
 > [!NOTE]
-> 查看实际应用中的 Web 应用。 立即[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，创建短期的入门级应用 — 无需信用卡，也无需做出任何承诺。
+> 查看实际应用中的 Web 应用。 立即[试用应用服务](https://azure.microsoft.com/try/app-service/)，创建短期的入门级应用 — 无需信用卡，也无需做出任何承诺。
 > 
 > 
 
@@ -295,6 +295,6 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

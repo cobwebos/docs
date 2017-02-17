@@ -1,5 +1,5 @@
 ---
-title: "Azure 机器学习预测中自动化数据管道的速查表 | Microsoft Docs"
+title: "Azure 机器学习自动化数据管道速查表 | Microsoft 文档"
 description: "此打印速查表演示如何将自动化数据管道设置到 Azure 机器学习 Web 服务中（无论你的数据在本地，在进行流式处理，在 Azure 中，还是在第三方云服务中）。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: mithal;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
-ms.openlocfilehash: 68a3a313831a4d424de26812a58a0f82c1ebad74
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 86f8b18e06fdc5a24797b0c90f09f0e053e4569c
 
 
 ---
@@ -46,6 +46,6 @@ ms.openlocfilehash: 68a3a313831a4d424de26812a58a0f82c1ebad74
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

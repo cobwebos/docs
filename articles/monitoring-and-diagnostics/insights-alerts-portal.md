@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 门户为 Azure 服务创建警报 |Microsoft Docs"
-description: "使用 Azure 门户创建 Azure 警报，可在满足指定条件时触发通知或自动化。"
+title: "为 Azure 服务创建警报 - Azure 门户 | Microsoft 文档"
+description: "满足指定的条件时触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。"
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8c04dd76c01cc5eaa4cbbcd82a263090894aecf
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 530cbb7b53316324f5bc5bcbe9b1b73b9f0b0f9b
 
 
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-services"></a>使用 Azure 门户为 Azure 服务创建警报
+# <a name="create-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>在 Azure Monitor 中为 Azure 服务创建警报 - Azure 门户
 > [!div class="op_single_selector"]
 > * [门户](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [CLI](insights-alerts-command-line-interface.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概述
 本文演示如何使用 Azure 门户设置 Azure 警报。   
@@ -53,10 +53,10 @@ ms.openlocfilehash: e8c04dd76c01cc5eaa4cbbcd82a263090894aecf
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 门户创建指标的警报规则
 1. 在此[门户](https://portal.azure.com/)，查找想要监视的资源并选中它。
 2. 在“监视”部分下，选择“警报”或“警报规则”。 对于不同的资源，文本和图标可能会略有不同。  
-   
+
     ![监视](./media/insights-alerts-portal/AlertRulesButton.png)
 3. 选择“添加通知”命令，并填写字段。
-   
+
     ![添加警报](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 4. **命名**警报规则，并选择也在通知电子邮件中显示的“说明”。
 5. 选择想要监视的“指标”为该指标选择一个“条件”和“阈值”。 还选择了触发警报前指标规则必须满足的时间**段**。 例如，如果使用时间段"PT5M"，且警报针对 CPU 高于 80% 的情况，则 CPU 持续高于 80% 达到 5 分钟时触发警报。 第一次触发后，CPU 5 分钟内持续低于 80% 时将再次触发警报。 每 1 分钟对 CPU 进行一次测量。   
@@ -84,7 +84,6 @@ ms.openlocfilehash: e8c04dd76c01cc5eaa4cbbcd82a263090894aecf
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

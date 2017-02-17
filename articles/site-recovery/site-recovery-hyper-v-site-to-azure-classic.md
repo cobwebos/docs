@@ -1,5 +1,5 @@
 ---
-title: "使用 Site Recovery 在本地 Hyper-V 虚拟机和 Azure 之间复制（不包含 VMM）| Microsoft 文档"
+title: "在经典门户中将 Hyper-V VM 复制到 Azure | Microsoft 文档"
 description: "本文介绍当计算机不在 VMM 云中托管时，如何使用 Azure Site Recovery 将 Hyper-V 虚拟机复制到 Azure。"
 services: site-recovery
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: ea89244efea6afa7d7b9d60f400117284fb5d1e1
-ms.openlocfilehash: 3c5e51c562d9251f2ad40eeb1939d1651c845391
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: b991b27304a4f65485b30431c5eb29461f60984d
 
 
 ---
@@ -223,12 +223,12 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
        * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
        * 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
        * 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。
-       
+
      * **Azure 网络**：指定虚拟机应故障转移到的网络。 如果虚拟机有多个网络适配器，所有适配器应连接到同一个 Azure 网络。
      * **子网**：对于虚拟机上的每个网络适配器，请在 Azure 网络中选择故障转移后计算机应连接到的子网。
      * **目标 IP 地址**：如果源虚拟机的网络适配器配置为使用静态 IP 地址，那么你可以指定目标虚拟机的 IP 地址，以确保计算机在故障转移后具有相同的 IP 地址。  如果不指定 IP 地址，将在故障转移时分配任何可用的地址。 如果指定了正在使用的地址，故障转移将会失败。
 
-     > [!NOTE] 
+     > [!NOTE]
      > 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../azure-resource-manager/resource-group-move-resources.md)。
      >
 
@@ -286,6 +286,6 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

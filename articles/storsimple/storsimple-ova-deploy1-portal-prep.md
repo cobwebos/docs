@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 05/24/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d42b76d4d03e6ac841f90e236b6ba0bfad1306f1
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 842ea26941a1141cde7db4e6ebff07d52aed9450
 
 
 ---
@@ -137,7 +137,7 @@ StorSimple Manager 服务的单个实例可以管理多个 StorSimple 1200 设�
 
 观看 StorSimple 虚拟阵列入门分步说明的视频。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Get-Started-with-the-StorSimple-Virtual-Array/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Get-Started-with-the-StorSimple-Virtual-Array/player]
 > 
 > 
 
@@ -170,6 +170,6 @@ StorSimple Manager 服务的单个实例可以管理多个 StorSimple 1200 设�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

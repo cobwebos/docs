@@ -1,5 +1,5 @@
 ---
-title: "OMS 中的网络性能监视器解决方案 | Microsoft Docs"
+title: "OMS 中的网络性能监视器解决方案 | Microsoft 文档"
 description: "网络性能监视器帮助你近乎实时地监视网络性能，以检测并找到网络性能瓶颈。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 01/31/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 820a9463c0e58054cf70324b680c5af8fdcacade
-ms.openlocfilehash: 794d9b7d5031730f9ea0f8daae251c825f7b05b0
+ms.sourcegitcommit: d1cae87bb312ef903d099b8be59ad39a5b83d468
+ms.openlocfilehash: 4b683ef50ca1046686213b55c32e07b5fb8cca68
 
 
 ---
@@ -149,6 +149,51 @@ ms.openlocfilehash: 794d9b7d5031730f9ea0f8daae251c825f7b05b0
 6. 单击“保存”以保存配置。  
    ![创建自定义监视规则](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
 
+### <a name="choose-the-right-protocol-icmp-or-tcp"></a>选择正确的协议 - ICMP 或 TCP
+
+网络性能监视器 (NPM) 使用综合事务来计算数据包丢失和链路延迟等网络性能指标。 为了更好地理解这一点，请考虑一个已连接到网络链路一端的 NPM 代理。 此 NPM 代理将探测数据包发送至已连接到网络另一端的第二个 NPM 代理。 第二个代理使用响应数据包答复。 此过程将重复多次。 通过测量答复数和接收每个答复所花费的时间，第一个 NPM 代理将评估链路延迟和数据包丢弃情况。
+
+这些数据包的格式、大小和序列由在创建监视规则时选择的协议决定。 根据数据包协议，中间网络设备（路由器、交换机等）可能以不同方式处理这些数据包。 因此，协议选择将影响结果的准确性。 此外，协议选择还决定是否在部署 NPM 解决方案后必须执行任何手动步骤。
+
+NPM 提供了 ICMP 与 TCP 协议之间的选择，以便于执行综合事务。
+如果在创建综合事务规则时选择 ICMP，NPM 代理将使用 ICMP ECHO 消息来计算与网络延迟和数据包丢失相关的数据。 ICMP ECHO 使用传统 Ping 实用程序发送的同一消息。 当使用 TCP 作为协议时，NPM 代理通过网络发送 TCP SYN 数据包。 此后，TCP 握手完成，然后将使用 RST 数据包删除连接。
+
+#### <a name="points-to-consider-before-choosing-the-protocol"></a>选择协议之前需考虑的要点
+选择要使用的协议之前，请考虑以下信息：
+
+##### <a name="discovering-multiple-network-routes"></a>发现多个网络路由
+发现多个路由时，TCP 提供更准确的结果，并且它在每个子网中需要使用的代理更少。 例如，一个或两个使用 TCP 的代理可以发现子网之间的所有冗余路径。 但是，你需要多个使用 ICMP 的代理才能达到类似结果。 使用 ICMP，如果两个子网之间有 *N* 个路由，则源或目标子网中需要 5*N* 个以上的代理。
+
+##### <a name="accuracy-of-results"></a>结果的准确性
+路由器和交换机往往将较低的优先级分配给 ICMP ECHO 数据包（与 TCP 数据包相比）。 在某些情况下，当网络设备负载很重时，TCP 获取的数据将更准确地反映应用程序遇到的丢失和延迟情况。 这是因为大部分应用程序流量都是通过 TCP 传送的。 在这种情况下，与 TCP 相比，ICMP 提供的结果准确性较低。
+
+##### <a name="firewall-configuration"></a>防火墙配置
+TCP 协议要求 TCP 数据包发送到目标端口。 NPM 代理使用的默认端口为 8084，但可以在配置代理时更改此端口。 因此，需要确保网络防火墙或 NSG 规则（在 Azure 中）允许该端口上的流量。 还需要确保安装代理的计算机上的本地防火墙已配置为允许此端口上的流量。
+
+可以使用 PowerShell 脚本配置运行 Windows 的计算机上的防火墙规则，但需要手动配置网络防火墙。
+
+相反，ICMP 不使用端口运行。 多数企业方案中都允许 ICMP 流量通过防火墙，以便于使用 Ping 实用程序等网络诊断工具。 因此，如果可以从一台计算机 Ping 另一台计算机，则可以使用 ICMP 协议而无需手动配置防火墙。
+
+> [!NOTE]
+> 如果不确定要使用哪一个协议，请选择 ICMP 以便在开始时使用它。 如果对结果不满意，在以后的任何时候都可以切换到 TCP。
+
+
+#### <a name="how-to-switch-the-protocol"></a>如何切换协议
+
+如果在部署期间选择使用 ICMP，可以随时通过编辑默认监视规则来切换到 TCP。
+
+##### <a name="to-edit-the-default-monitoring-rule"></a>编辑默认监视规则
+1.  导航到“网络性能” > “监视” > “配置” > “监视”，然后单击“默认规则” 。
+2.  滚动到“协议”部分，然后选择要使用的协议。
+3.  单击“保存”以应用设置。
+
+即使默认规则使用特定协议，也可以使用其他协议创建新规则。 甚至可以创建混合规则，其中一些规则使用 ICMP，另一些规则使用 TCP。
+
+
+
+
+
+
 ## <a name="data-collection-details"></a>数据收集详细信息
 网络性能监视器使用 TCP SYN-SYNACK-ACK 握手数据包收集丢失和延迟信息，还使用路由跟踪获取拓扑信息。
 
@@ -246,6 +291,6 @@ ms.openlocfilehash: 794d9b7d5031730f9ea0f8daae251c825f7b05b0
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

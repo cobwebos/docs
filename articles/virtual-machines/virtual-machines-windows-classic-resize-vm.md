@@ -1,5 +1,5 @@
 ---
-title: "调整经典 Windows VM 大小| Microsoft Docs"
+title: "调整经典部署模型中 Windows VM 的大小 - Azure | Microsoft 文档"
 description: "使用 Azure Powershell 调整在经典部署模型中创建的 Windows 虚拟机大小。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: abac11a9e88918db3e5f051350a668185e04a184
+ms.sourcegitcommit: 3352e5d17777a213a91911440274419f2058940b
+ms.openlocfilehash: 381cf34b9e65a46a8033880a95e94446bd01edf1
 
 
 ---
@@ -26,9 +26,8 @@ ms.openlocfilehash: abac11a9e88918db3e5f051350a668185e04a184
 
 考虑调整 VM 大小的功能时，有两个概念控制可用于调整虚拟机大小的大小范围。 第一个概念是部署 VM 的区域。 在区域中可用的 VM 大小列表在 Azure 区域网页的“服务”选项卡下。 第二个概念是当前托管 VM 的物理硬件。 托管 VM 的物理服务器一起组合在公用物理硬件群集中。 更改 VM 大小的方法因当前托管 VM 的硬件群集是否支持所需的新 VM 大小而异。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-还可以[调整在资源管理器部署模型中创建的 VM 大小](virtual-machines-windows-resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 还可以[调整在资源管理器部署模型中创建的 VM 大小](virtual-machines-windows-resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="add-your-account"></a>添加帐户
 必须配置 Azure PowerShell 才能处理经典 Azure 资源。 按照下面的步骤配置 Azure PowerShell 以管理经典资源。
@@ -73,6 +72,6 @@ ms.openlocfilehash: abac11a9e88918db3e5f051350a668185e04a184
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

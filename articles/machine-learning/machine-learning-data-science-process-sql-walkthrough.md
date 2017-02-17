@@ -1,5 +1,5 @@
 ---
-title: "团队数据科学过程实务：使用 SQL Server | Microsoft Docs"
+title: "在 Azure VM 上使用 SQL Server 构建和部署机器学习模型 | Microsoft 文档"
 description: "高级分析流程和技术实务"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 01/29/2017
 ms.author: fashah;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: 76fe2f70ca297be153d1223a219c9a2b18203a96
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: a5e0a76a29a82d5364ee1adb5c912e76064dd1f9
 
 
 ---
@@ -70,7 +70,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 1. [创建存储帐户](../storage/storage-create-storage-account.md)
 2. [创建 Azure 机器学习工作区](machine-learning-create-workspace.md)
-3. [预配数据科学虚拟机](machine-learning-data-science-setup-sql-server-virtual-machine.md)，它将作为 SQL Server 和 IPython Notebook 的服务器。
+3. [预配数据科研虚拟机](machine-learning-data-science-setup-sql-server-virtual-machine.md)，提供 SQL Server 和 IPython Notebook 服务器。
    
    > [!NOTE]
    > 在安装过程中，示例脚本和 IPython notebook 将下载到你的数据科学虚拟机。 VM 后续安装脚本完成后，这些示例将在你的虚拟机文档库中：  
@@ -656,6 +656,6 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

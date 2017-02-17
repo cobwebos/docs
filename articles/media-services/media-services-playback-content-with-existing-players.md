@@ -1,5 +1,5 @@
 ---
-title: "播放内容 | Microsoft Docs"
+title: "使用现有播放器播放内容 - Azure | Microsoft 文档"
 description: "本主题列出了你可以用来播放内容的现有播放器。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0c77ee0f612c1cbef551a129a22cf3f125e6f29d
-ms.openlocfilehash: 41049570b1858010c338c149c5d3545e58a197b2
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 18e0f8c5a8dace2af0ab8f15e678fc761a7b3a91
 
 
 ---
@@ -77,6 +77,6 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

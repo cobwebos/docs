@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 针对 StorSimple 上的文件共享自动实现灾难恢复 | Microsoft 文档"
-description: "介绍有关针对 StorSimple 存储中托管的文件共享创建灾难恢复解决方案的步骤和最佳实践。"
+title: "使用 Azure Site Recovery 实现 StorSimple 文件共享的自动灾难恢复 | Microsoft 文档"
+description: "介绍有关针对 Microsoft Azure StorSimple 存储中托管的文件共享创建灾难恢复解决方案的步骤和最佳实践。"
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 05/16/2016
 ms.author: vidarmsft
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf39b922e51dd60b5b2c51cb7030436c60232a5
-ms.openlocfilehash: d454c138b75bbf3227dd1d5f52594e3c78e15766
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: a0817ac21afb83745ec2cc213fc6029fa395d479
 
 
 ---
@@ -88,7 +88,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
       > 根据具体的版本，文件名可能有所不同。
       >
       >
-3. 单击“资源组名称” 的 Azure 数据工厂。
+3. 单击“下一步”。
 4. 接受**协议条款**，然后单击“下一步”。
 5. 单击“完成” 。
 6. 使用从 StorSimple 存储中划分出来的卷创建文件共享。 有关详细信息，请参阅 [Use the StorSimple Manager service to manage volumes](storsimple-manage-volumes.md)（使用 StorSimple Manager 服务管理卷）。
@@ -304,6 +304,6 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

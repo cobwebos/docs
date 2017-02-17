@@ -1,5 +1,5 @@
 ---
-title: "编码错误代码 |Microsoft 文档"
+title: "Azure 媒体服务编码错误代码 | Microsoft 文档"
 description: "此主题列出了在执行编码任务期间发生错误的情况下可能返回的错误代码。"
 services: media-services
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0124c884d3d805a407041e8ecbc5961209a9653d
-ms.openlocfilehash: 7c5281bd3e846a78ef7e602219df6566fb032f72
+ms.sourcegitcommit: b341416f837d03e0532b4f8c0a3f3f85641a8995
+ms.openlocfilehash: d1e6421404d9c8845eb3ccd30d84c0c8cf5930b8
 
 
 ---
 
-## <a name="encoding-error-codes"></a>编码错误代码
+# <a name="encoding-error-codes"></a>编码错误代码
 
 下表列出了在执行编码任务期间发生错误的情况下可能返回的错误代码。  若要获取 .NET 代码中的错误详细信息，请使用 [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) 类。 若要获取 REST 代码中的错误详细信息，请使用 [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API。
 
@@ -55,6 +55,6 @@ ms.openlocfilehash: 7c5281bd3e846a78ef7e602219df6566fb032f72
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

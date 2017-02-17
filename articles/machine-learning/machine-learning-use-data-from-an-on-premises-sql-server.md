@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 机器学习中使用本地 SQL Server 数据库中的数据 | Microsoft Docs"
+title: "在 Azure 机器学习中使用本地 SQL Server | Microsoft 文档"
 description: "在 Azure 机器学习中使用本地 SQL Server 数据库中的数据执行高级分析。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: garye;krishnan
 translationtype: Human Translation
-ms.sourcegitcommit: 8dd33be97459b4746c52c372412b940c19fb8f01
-ms.openlocfilehash: 267c174f04ad7b5925cf9713baf051d29695d99b
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 62917bfb2124a2b8beb57e0ee38be93e8ca1c655
 
 
 ---
@@ -151,6 +151,6 @@ ms.openlocfilehash: 267c174f04ad7b5925cf9713baf051d29695d99b
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

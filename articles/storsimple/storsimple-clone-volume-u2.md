@@ -1,5 +1,5 @@
 ---
-title: "克隆 StorSimple 卷 | Microsoft Docs"
+title: "克隆 StorSimple 8000 系列卷 | Microsoft 文档"
 description: "介绍不同的克隆类型和使用时机，以及如何使用备份集克隆单个卷。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 07/27/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 024b6bceb9eb150e60f68edf916cebacd3552af2
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 0db0af490f03525f4c23c4e9a23e62a1ef9f1c7f
 
 
 ---
@@ -115,6 +115,6 @@ StorSimple Manager 服务的“备份目录”页面显示手动或自动备份�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 和 PowerShell 复制 VMM 云中的 Hyper-V 虚拟机 | Microsoft 文档"
-description: "了解如何使用 Site Recovery 和 PowerShell 自动复制 VMM 云中的 Hyper-V 虚拟机。"
+title: "在经典门户中使用 PowerShell 将 Hyper-V VM 复制到 Azure | Microsoft 文档"
+description: "在经典门户中使用 Site Recovery 和 PowerShell 自动复制 VMM 云中的 Hyper-V 虚拟机。"
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -12,15 +12,15 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7ccf60c1f83a50b948b9855f2fedefeb75a0393b
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: d3bf50e9e686acdac33ffaf9d781f02193406298
 
 
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell---classic"></a>使用 Powershell 将 VMM 云中的 Hyper-V 虚拟机复制到 Azure - 经典
+# <a name="replicate-hyper-v-vms-to-azure-with-powershell-in-the-classic-portal"></a>在经典门户中使用 PowerShell 将 Hyper-V VM 复制到 Azure
 > [!div class="op_single_selector"]
 > * [Azure 门户](site-recovery-vmm-to-azure.md)
 > * [PowerShell - 资源管理器](site-recovery-vmm-to-azure-powershell-resource-manager.md)
@@ -408,6 +408,6 @@ marsagentinstaller.exe /q /nu
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

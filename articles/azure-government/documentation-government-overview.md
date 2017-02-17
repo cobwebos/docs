@@ -1,23 +1,22 @@
 ---
-title: "Azure 政府版文档 | Microsoft Docs"
+title: "Azure 政府版文档概述 | Microsoft 文档"
 description: "这里提供了针对 Azure Government 的应用程序开发使用到的功能和指南对比"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: 56d84e26-947e-4f3b-8e33-18247f1c7944
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 08/25/2016
+ms.date: 01/10/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 48f19f5085108b87d22951da049223ef9d4cd188
-ms.openlocfilehash: ea01213d375d93c47b9fa1e710f1e225adb85f92
+ms.sourcegitcommit: 8e5dd57f4ff55e350aebce339f9f723cc6ca917b
+ms.openlocfilehash: 2a1e9c6e001280451ae01330ee659d1e27c2d89a
 
 
 ---
@@ -99,6 +98,6 @@ Azure 通过 VLAN 隔离、ACL、负载平衡器和 IP 筛选器来实施网络�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

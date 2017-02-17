@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 translationtype: Human Translation
-ms.sourcegitcommit: 377c0d78db83a013e2063d50fcf45ba5beb2a989
-ms.openlocfilehash: 17e5621c6b7816062c2096b35a99c9e5b36b50d3
+ms.sourcegitcommit: 3b3250c17f0086ee0fd25b5c7fb8822eb52a26f8
+ms.openlocfilehash: 25865776748ae0605310eb86aefca2afebac2799
 
 
 ---
@@ -710,6 +710,8 @@ sudo yum install WALinuxAgent
 4. 打开“连接”选项卡，然后单击“局域网设置”
 5. 禁用“自动检测设置”
 6. 启用“为 LAN 使用代理服务器”，然后输入代理地址和端口
+7. 单击“高级”
+8. 将 IP 地址 168.63.129.16 添加到例外列表
 
 #### <a name="linux"></a>Linux
 在 Microsoft Azure 来宾代理的配置文件（位于 /etc/waagent.conf 中）中配置正确的代理。 必须设置以下参数：
@@ -963,6 +965,6 @@ Azure 上的性能度量值的收集是由一个守护程序执行的，该守�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 
