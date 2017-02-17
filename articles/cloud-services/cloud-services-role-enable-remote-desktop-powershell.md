@@ -12,25 +12,26 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2016
+ms.date: 11/22/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d2a3f912b9c3532c41219c68a948acea8416624a
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 04f5800cd2870067548c8cad25f10749d8459e32
 
 
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 为 Azure 云服务中的角色启用远程桌面连接
 > [!div class="op_single_selector"]
+> * [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [Azure 经典门户](cloud-services-role-enable-remote-desktop.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
-> 
-> 
+>
+>
 
 你可以通过远程桌面访问在 Azure 中运行的角色的桌面。 你可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
 
-本文介绍如何使用 PowerShell 在云服务角色上启用远程桌面。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 PowerShell 使用远程桌面扩展，使用户能够在部署应用程序之后启用远程桌面。
+本文介绍如何使用 PowerShell 在云服务角色上启用远程桌面。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 PowerShell 使用远程桌面扩展，使用户能够在部署应用程序之后启用远程桌面。
 
 ## <a name="configure-remote-desktop-from-powershell"></a>从 PowerShell 配置远程桌面
 使用 [Set-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495117.aspx) cmdlet 可以在云服务部署的指定角色或所有角色上启用远程桌面。 该 cmdlet 允许通过接受 PSCredential 对象的 *Credential* 参数为远程桌面用户指定用户名和密码。
@@ -53,8 +54,8 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 > [!IMPORTANT]
 > 设置密码时请确保满足[复杂性要求](https://technet.microsoft.com/library/cc786468.aspx)。
-> 
-> 
+>
+>
 
 若要从安全密码文件创建凭据对象，你必须读取该文件的内容并使用 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx) 将其转换回安全字符串。
 
@@ -100,17 +101,16 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 
 > [!NOTE]
 > 若要完全删除扩展配置，应结合 **UninstallConfiguration** 参数调用 *remove* cmdlet。
-> 
+>
 > **UninstallConfiguration** 参数将卸载任何已应用到服务的扩展配置。 每个扩展配置与服务配置相关联。 如果在未指定 **UninstallConfiguration** 的情况下调用 *remove* cmdlet，将取消<mark>部署</mark>与扩展配置之间的关联，因此将会实际删除扩展。 但是，扩展配置仍与服务保持关联。
-> 
-> 
+>
+>
 
 ## <a name="additional-resources"></a>其他资源
 [如何配置云服务](cloud-services-how-to-configure.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

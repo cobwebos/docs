@@ -1,5 +1,5 @@
 ---
-title: "创建 Azure IoT 中心并注册设备 | Microsoft Docs"
+title: "SensorTag 设备和 Azure IoT 网关 - 第 2 课：注册设备 | Microsoft Docs"
 description: 
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 7765f122476c51011ab12613e615e5fea0bc58f4
-ms.openlocfilehash: 4b878ebe3222c4ab1c41051c659ba8333bf94c32
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: a895f18b4cefc01f12613e701c71bd471bb369c3
 
 
 ---
@@ -108,6 +108,6 @@ az iot device create --device-id mydevice --hub-name {my hub name} --resource-gr
 [配置并运行 BLE 示例应用程序](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

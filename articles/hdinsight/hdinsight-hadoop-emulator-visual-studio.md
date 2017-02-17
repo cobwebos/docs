@@ -1,5 +1,5 @@
 ---
-title: "将用于 Visual Studio 的 Microsoft Azure Data Lake 工具与 Hortonworks 沙盒配合使用 | Microsoft Docs"
+title: "将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用 | Microsoft Docs"
 description: "了解如何将用于 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒（在本地 VM 中运行）配合使用。使用这些工具，可以在沙盒中创建和运行 Hive 与 Pig 作业，并查看作业输出和历史记录。"
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
+ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4b0572d8fb3b81fd4bd2a34794141f137b50eed0
-ms.openlocfilehash: 42f53e0c725ed7744c2e3d919c960c42e4cebc0c
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: a1e6216647b7401183ab2f47f72aaee1f80ccee0
 
 
 ---
@@ -43,6 +43,7 @@ ms.openlocfilehash: 42f53e0c725ed7744c2e3d919c960c42e4cebc0c
 ## <a name="connect-the-tools-to-the-sandbox"></a>将工具连接到沙盒
 
 1. 打开 Visual Studio，选择“视图”，然后选择“服务器资源管理器”。
+
 2. 在“服务器资源管理器”中，右键单击“HDInsight”项，然后选择“连接到 HDInsight Emulator”。
 
     ![连接到 HDInsight Emulator](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
@@ -209,6 +210,6 @@ Hive 提供类似于 SQL 的语言来处理结构化数据，而 Pig 提供的�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

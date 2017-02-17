@@ -1,5 +1,5 @@
 ---
-title: "获取工具 (Windows 7 +) | Microsoft Docs"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 1 课：获取工具 (Windows) | Microsoft Docs"
 description: "下载并安装在 Windows 7 及更高版本上适用于 Pi 的第一个示例应用程序的必需工具和软件。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 7dad64ae5044838646915a0ec933e29c90edd1b9
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d53efc7d25714427e25d4f88279f3b0d4f61c150
 
 
 ---
@@ -84,6 +84,6 @@ npm install -g device-discovery-cli gulp
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 12/05/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3a42093a67fe1ded29e97343affa5df89ea5fd1a
+ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
+ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
 
 
 ---
@@ -303,40 +303,17 @@ Datetime | String | String |  Datetime | String
 ## <a name="documentdb"></a>DocumentDB
 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 是完全托管的 NoSQL 文档数据库服务，提供针对无架构数据的查询和事务、可预测且可靠的性能，以及快速开发。
 
-下表列出了用于创建 DocumentDB 输出的属性名称和属性说明。
+以下列表详细介绍了用于创建 DocumentDB 输出的属性名称和属性。
 
-<table>
-<tbody>
-<tr>
-<td>属性名称</td>
-<td>说明</td>
-</tr>
-<tr>
-<td>帐户名</td>
-<td>DocumentDB 帐户的名称。  这也可以是该帐户的终结点。</td>
-</tr>
-<tr>
-<td>帐户密钥</td>
-<td>DocumentDB 帐户的共享访问密钥。</td>
-</tr>
-<tr>
-<td>数据库</td>
-<td>DocumentDB 数据库名称。</td>
-</tr>
-<tr>
-<td>集合名称模式</td>
-<td>要使用的集合的集合名称模式。 可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。<BR>例如 以下是有效的输入：<BR>MyCollection{partition}<BR>MyCollection<BR>请注意，集合必须在启动流分析作业之前存在并且不会自动创建。</td>
-</tr>
-<tr>
-<td>分区键</td>
-<td>输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。</td>
-</tr>
-<tr>
-<td>文档 ID</td>
-<td>输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。</td>
-</tr>
-</tbody>
-</table>
+* **输出别名** - 用于在 ASA 查询中引用此输出的别名  
+* **帐户名** - DocumentDB 帐户的名称或终结点 URI。  
+* **帐户密钥** - DocumentDB 帐户的共享访问密钥。  
+* **数据库** - DocumentDB 数据库名称。  
+* **集合名称模式** - 要使用的集合的集合名称或其模式。 可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。 以下是有效输入示例：  
+  1\) MyCollection - 必须存在一个名为“MyCollection”的集合。  
+  2\) MyCollection{partition} – 此类集合必须存在 –“MyCollection0”、“MyCollection1”、“MyCollection2”等。  
+* **分区键** - 可选。 仅当用户在集合名称模式中使用 {parition} 令牌时，才需要此项。 输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。 对于单个集合输出，可使用任何任意输出列（例如 PartitionId）。  
+* **文档 ID** - 可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。  
 
 
 ## <a name="get-help"></a>获取帮助
@@ -360,6 +337,6 @@ Datetime | String | String |  Datetime | String
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

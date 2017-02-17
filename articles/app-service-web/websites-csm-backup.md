@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ddb6007485be083c9f1028dc297cb973575003f7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1ad2911f809a17e4a6c0f2fe9087e1d9eb2da39e
 
 
 ---
@@ -256,6 +256,6 @@ Azure App Service 将尝试使用在创建备份时提供的 SAS URL 从 Azure �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

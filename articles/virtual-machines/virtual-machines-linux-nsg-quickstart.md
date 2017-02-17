@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 中打开 Linux VM 的端口和终结点 | Microsoft Docs"
+title: "使用 Azure CLI 2.0 打开 Linux VM 的端口 | Microsoft Docs"
 description: "了解如何使用 Azure Resource Manager 部署模型和 Azure CLI 2.0（预览版）为 Linux VM 打开端口/创建终结点"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: e4512dd4d818b1c7bea7e858a397728ce48a5362
-ms.openlocfilehash: 40f399c339e31d9d008230449d7f559ae01afba3
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: aae141307a0ea68f0d9e481cf22a9055216c98c0
 
 
 ---
-# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure"></a>在 Azure 中打开 Linux VM 的端口和终结点
+# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 在 Azure 中打开 Linux VM 的端口和终结点
 通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）放在网络安全组中，并附加到将接收流量的资源。 让我们在端口 80 上使用 Web 流量的常见示例。 本文说明如何使用 Azure CLI 2.0（预览版）打开 VM 的端口。
 
 
@@ -84,6 +84,6 @@ az network vnet subnet update --resource-group myResourceGroup \
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

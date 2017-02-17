@@ -1,5 +1,5 @@
 ---
-title: "持续集成和部署多容器 Docker 应用程序到 Azure 容器服务 | Microsoft Docs"
+title: "使用 Azure 容器服务和 DC/OS 的 CI/CD | Microsoft Docs"
 description: "如何完全自动构建和部署多容器 Docker 应用到运行 DC/OS 的 Azure 容器服务群集。"
 services: container-service
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 71fdc7b13fd3b42b136b4907c3d747887fde1a19
-ms.openlocfilehash: cdcb2a8493c6790a395251c4cf05f2a6c0770c8d
+ms.sourcegitcommit: 831f585a9591338c2f404f7ec031d40937731eab
+ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
 
 
 ---
@@ -47,15 +47,18 @@ ms.openlocfilehash: cdcb2a8493c6790a395251c4cf05f2a6c0770c8d
 ## <a name="create-an-azure-container-service-cluster-configured-with-dcos"></a>创建配置有 DC/OS Azure 容器服务群集
 
 >[!IMPORTANT]
-> 调用 `az acs create` 时，创建一个传送 SSH 公共密钥文件的安全群集进行传送。 可以通过 Azure CLI 2.0 生成密钥并使用 `--generate-ssh-keys` 选项同时传送密钥，或者可使用 `--ssh-key-value` 选项将路径传送至密钥（Linux 上默认的位置为 `~/.ssh/id_rsa.pub`，Windows 上为 `%HOMEPATH%\.ssh\id_rsa.pub`，但可更改位置）。 若要在 Linux 上创建 SSH 公钥和私钥文件，请参阅[在 Linux 和 Mac 上创建 SSH 密钥](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 若要在 Windows 上创建 SSH 公钥和私钥文件，请参阅[在 Windows 上创建 SSH 密钥](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 
+> 调用 `az acs create` 时，创建一个传送 SSH 公共密钥文件的安全群集进行传送。 可以通过 Azure CLI 2.0 生成密钥并使用 `--generate-ssh-keys` 选项同时传送密钥，或者可使用 `--ssh-key-value` 选项将路径传送至密钥（Linux 上默认的位置为 `~/.ssh/id_rsa.pub`，Windows 上为 `%HOMEPATH%\.ssh\id_rsa.pub`，但可更改位置）。
+<!---Loc Comment: What do you mean by "you pass your SSH public key file to pass"? Thank you.--->
+> 若要在 Linux 上创建 SSH 公钥和私钥文件，请参阅[在 Linux 和 Mac 上创建 SSH 密钥](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 
+> 若要在 Windows 上创建 SSH 公钥和私钥文件，请参阅[在 Windows 上创建 SSH 密钥](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)。 
 
 1. 首先，在终端窗口键入 [az login](/cli/azure/#login) 命令，使用 Azure CLI 登录到你的 Azure 订阅： 
 
     `az login`
 
-1. 使用 [az resource group create](/cli/azure/resource/group#create)创建放置群集的资源组：
+1. 使用 [az group create](/cli/azure/group#create) 创建放置群集的资源组：
     
-    `az resource group create --name myacs-rg --location westus`
+    `az group create --name myacs-rg --location westus`
 
     你可能想要指定最近的 [Azure 数据中心区域](https://azure.microsoft.com/regions)。 
 
@@ -325,26 +328,26 @@ az container release list --resource-name myacs --resource-group myacs-rg
 1. 查找包含 ACS 群集的资源组。
 1. 打开资源组的边栏选项卡 UI，然后单击边栏选项卡命令栏中的“删除”。
 
-删除 Azure 容器注册表：
-1. 在 Azure 门户中，搜索 Azure 容器注册表，并将其删除。 
+删除 Azure 容器注册表：在 Azure 门户中，搜索 Azure 容器注册表，并将其删除。 
 
 [Visual Studio Team Services 帐户为前五位用户提供免费的基本访问级别](https://azure.microsoft.com/en-us/pricing/details/visual-studio-team-services/)，但你可以删除生成和发布定义。
-1. 删除 VSTS 生成定义：
+
+删除 VSTS 生成定义：
         
-    * 在浏览器中打开生成定义 URL，然后单击“生成定义”链接（位于当前正在查看的生成定义名称旁）。
-    * 单击想要删除的生成定义旁的操作菜单，然后选择“删除定义”
+1. 在浏览器中打开生成定义 URL，然后单击“生成定义”链接（位于当前正在查看的生成定义名称旁）。
+2. 单击想要删除的生成定义旁的操作菜单，然后选择“删除定义”
 
-    ![删除 VSTS 生成定义](media/container-service-setup-ci-cd/vsts-delete-build-def.png) 
+`![删除 VSTS 生成定义](media/container-service-setup-ci-cd/vsts-delete-build-def.png) 
 
-1. 删除 VSTS 发布定义：
+删除 VSTS 发布定义：
 
-    * 在浏览器中打开发布定义 URL。
-    * 在左侧的生成定义列表中，单击想要删除的生成定义旁的下拉列表，然后选择“删除”。
+1. 在浏览器中打开发布定义 URL。
+2. 在左侧的生成定义列表中，单击想要删除的生成定义旁的下拉列表，然后选择“删除”。
 
-    ![删除 VSTS 发布定义](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
+`![删除 VSTS 发布定义](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

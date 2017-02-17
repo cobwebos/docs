@@ -1,5 +1,5 @@
 ---
-title: "使用 Visual Studio Team Services 设置 Service Fabric 持续集成和部署 | Microsoft 文档"
+title: "为 Azure 微服务设置持续集成 | Microsoft Docs"
 description: "大致了解如何使用 Visual Studio Team Services (VSTS) 为 Service Fabric 应用程序设置持续集成和部署。"
 services: service-fabric
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 12/06/2016
 ms.author: mthalman;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 562113254bc9344b465397b5b20b82353b54f289
-ms.openlocfilehash: 808a4964b29d61bbbc7b4c043aea20bbb1dcd0cd
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 437e343425da5c8cfe71d4ae67c423fcc2b794c2
 
 
 ---
@@ -134,6 +134,6 @@ Team Services 发布定义所描述的工作流由一系列按顺序执行的任
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 154d2cd9b7f4ea51d3fd4c1995b67a25816b28a2
-ms.openlocfilehash: 67bb54e8a573607199143621451e598bf11947fe
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: 5110a86c3cc25ada27ddba9b0caef68e4509aa73
 
 
 ---
@@ -133,7 +133,7 @@ SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储交�
 
 接收单个队列的多个消息时，也是如此。 默认情况下，SDK 每次获取包含 16 个队列消息的批，然后并行执行处理这些消息的函数。 [批大小是可配置的](#config)。 当处理的数量达到批大小的一半时，SDK 将获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是批大小的 1.5 倍。 应将此限制分别应用于各个包含 `QueueTrigger` 属性的函数。
 
-如果不希望对队列上收到的消息并行执行，可以将批处理大小设置为 1。 另请参阅 [Azure WebJobs SDK 1.1.0 RTM](/blog/azure-webjobs-sdk-1-1-0-rtm/) 中的**更好地控制队列处理**。
+如果不希望对队列上收到的消息并行执行，可以将批处理大小设置为 1。 另请参阅 [Azure WebJobs SDK 1.1.0 RTM](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/) 中的**更好地控制队列处理**。
 
 ### <a name="a-idqueuemetadataaget-queue-or-queue-message-metadata"></a><a id="queuemetadata"></a>获取队列或队列消息元数据
 可以通过将参数添加到方法签名获取以下消息属性：
@@ -581,6 +581,6 @@ public static void ErrorMonitor(
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

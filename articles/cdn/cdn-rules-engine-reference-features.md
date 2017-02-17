@@ -1,6 +1,6 @@
 ---
-title: "Azure 内容交付网络规则引擎功能 | Microsoft Docs"
-description: "本主题介绍规则引擎的匹配条件和功能"
+title: "Azure CDN 规则引擎功能 | Microsoft Docs"
+description: "Azure CDN 规则引擎匹配条件和功能的参考文档。"
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: a3d8199a9d5d067a4da1e1d40ff99bebc40a5097
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: 6703247aa8b4a6d53ff22ea2d4f22eb4a746e370
 
 
 ---
 
-# <a name="features-for-azure-content-delivery-network--cdn-rules-engine"></a>Azure 内容交付网络 (CDN) 规则引擎的功能
+# <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本主题列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
 
 规则的第三部分是功能。 功能所定义的操作类型将应用于由一组匹配条件确定的请求类型。
@@ -207,9 +207,11 @@ Enabled|导致所有请求被转到源服务器，即使此前已在边缘服务
 **默认行为：**
 
 - **HTTP Large：**禁用
+
 <!---
 - **ADN:** Enabled
 --->
+
 ###<a name="cache-control-header-treatment"></a>Cache-Control 标头处理
 **目的：**在“外部最大有效期”功能启用时，控制边缘服务器生成 Cache-Control 标头。
 
@@ -560,7 +562,7 @@ Enabled|导致边缘服务器重新获取源服务器的资产。
 
 重要信息：
 
-- 另请启用“忽略源服务器 No-Cache”功能。 如果未启用该功能，则不会缓存“非 200 正常”响应。
+- 另请启用“忽略源服务器 No-Cache”功能。 如果未启用该功能，则不会缓存“非&200; 正常”响应。
 - 此功能的有效状态代码包括：203、300、301、302、305、307、400、401、402、403、404、405、406、407、408、409、410、411、412、413、414、415、416、417、500、501、502、503、504、505。
 - 对于生成“200 正常”状态代码的响应，不能通过此功能禁用缓存。
 
@@ -966,7 +968,28 @@ Enabled|可以重定向请求。
  目标  |定义要通过其将上述请求重写的相对 URL： <br/>    1.选择用于标识源服务器的内容访问点。 <br/>    2.使用以下方式定义相对路径： <br/>        - 正则表达式模式 <br/>        - HTTP 变量 <br/> <br/> 使用 $_n_ 将源模式中捕获的值替换到目标模式中，其中 _n_ 用于按捕获顺序来标识值。 例如，$1 代表按源模式捕获的第一个值，而 $2 则代表第二个值。 
  此功能允许边缘服务器重写 URL，而不需执行传统的重定向。 这意味着，请求者会收到与请求重写 URL 相同的响应代码。
 
-**示例方案**
+**示例方案 1**
+
+在此示例中，我们将演示如何重定向可解析成以下基 CDN URL 的边缘 CNAME URL：http://marketing.azureedge.net/brochures/
+
+符合条件的请求将重定向到以下基边缘 CNAME URL：http://MyOrigin.azureedge.net/resources/
+
+该 URL 重定向可通过以下配置实现：![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+
+**示例方案 2**
+
+此示例将演示如何使用正则表达式将边缘 CNAME URL 从大写重定向为小写。
+
+该 URL 重定向可通过以下配置实现：![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+
+
+**要点：**
+
+- “URL 重写”功能定义将重写的请求 URL。 因此，不需要其他匹配条件。 虽然匹配条件被定义为“始终”，但只会重写指向“marketing”客户源服务器上“brochures”文件夹的请求。
+
+- 从请求中捕获的 URL 段通过“$1”追加到新的 URL。
+
+
 
 ###<a name="compatibility"></a>兼容性
 
@@ -998,6 +1021,6 @@ Enabled|可以重定向请求。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

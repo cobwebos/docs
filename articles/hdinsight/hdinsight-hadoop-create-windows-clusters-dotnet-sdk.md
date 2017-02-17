@@ -1,6 +1,6 @@
 ---
 title: "使用 .NET SDK 在 HDInsight 中创建基于 Windows 的 Hadoop 群集 | Microsoft Docs"
-description: "了解如何使用 .NET SDK 创建 Azure HDInsight 的 HDInsight 群集。"
+description: "了解如何使用 .NET SDK 在 HDInsight 中创建基于 Windows 的 Hadoop 群集。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21f2a14c1514c3f70787613c5f0962dc3eabd7b1
+ms.sourcegitcommit: ede2e4ec5f3414d1c8a17f4c120011eba0d9a6ca
+ms.openlocfilehash: 4f597fad719637e66d64143c302334b1c62e226e
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Windows 的 Hadoop 群集
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-了解如何使用 .NET SDK 创建 HDInsight 群集。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
+了解如何使用 .NET SDK 在 HDInsight 中创建基于 Windows 的 Hadoop 群集。 
+
+本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关创建基于 Linux 的群集的信息，请参阅[使用 .NET SDK 创建 HDInsight 中的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)。
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="prerequisites"></a>先决条件：
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -245,6 +251,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

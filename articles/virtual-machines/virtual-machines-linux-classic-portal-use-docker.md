@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51490fa46a1d9c23d73d4071fb900a97327425a8
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: a1742808be5df2a57e53bb6918f89df4953d0694
 
 
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>将 Docker VM 扩展与 Azure 经典门户结合使用
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 [Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。 可以使用由 [Azure Linux 代理]管理的 Docker VM 扩展，创建可在 Azure 上为应用程序托管任意数量容器的 Docker VM。
 
@@ -136,11 +137,11 @@ WARNING: No swap limit support
 现在，可以转到 [Docker 用户指南]，开始使用该 Docker VM。 如果想要通过命令行接口在 Azure VM 上自动创建 Docker主机，请参阅[如何从 Azure 命令行接口 (Azure CLI) 使用 Docker VM 扩展]
 
 <!--Anchors-->
-[从映像库创建新的 VM]: #createvm
-[创建 Docker 证书]: #dockercerts
-[添加 Docker VM 扩展]: #adddockerextension
-[测试 Docker 客户端和 Azure Docker 主机]: #testclientandserver
-[后续步骤]: #next-steps
+[Create a new VM from the Image Gallery]: #createvm
+[Create Docker Certificates]: #dockercerts
+[Add the Docker VM Extension]: #adddockerextension
+[Test Docker Client and Azure Docker Host]: #testclientandserver
+[Next steps]: #next-steps
 
 <!--Image references-->
 [StartingPoint]: ./media/StartingPoint.png
@@ -158,13 +159,13 @@ WARNING: No swap limit support
 <!--Link references-->
 [如何从 Azure 命令行接口 (Azure CLI) 使用 Docker VM 扩展]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
 [Azure Linux 代理]: virtual-machines-linux-agent-user-guide.md
-[链接 3 指向另一个 azure.microsoft.com 文档主题]: ../storage-whatis-account.md
+[Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
 [使用 https 运行 Docker]: http://docs.docker.com/articles/https/
 [Docker 用户指南]: https://docs.docker.com/userguide/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

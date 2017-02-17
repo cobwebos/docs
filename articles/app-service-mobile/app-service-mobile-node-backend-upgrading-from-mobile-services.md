@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3173c64af4c2b09ee825cc4fdaaa6da448be60e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 879854c4afc6fa5ac31f8e18dad0164e77f190cd
 
 
 ---
@@ -129,7 +129,7 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 版本间的其中一个主要更改是构造函数不再需要应用程序密钥。 现在只需传入移动应用的 URL。 例如，在 .NET 客户端中，`MobileServiceClient` 构造函数现在是：
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://contoso.azurewebsites.net", // URL of the Mobile App
+            "https://contoso.azurewebsites.net" // URL of the Mobile App
         );
 
 可以通过以下链接，阅读有关安装新 SDK 以及使用新结构的信息：
@@ -146,39 +146,39 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 <!-- URLs. -->
 
 [Azure 门户]: https://portal.azure.com/
-[Azure 经典门户]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [什么是移动应用？]: app-service-mobile-value-prop.md
-[我已在使用网站和移动服务 - 应用服务有何作用？]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
-[移动应用服务器 SDK]: https://www.npmjs.com/package/azure-mobile-apps
-[创建移动应用]: app-service-mobile-xamarin-ios-get-started.md
-[向移动应用添加推送通知]: app-service-mobile-xamarin-ios-get-started-push.md
-[向移动应用添加身份验证]: app-service-mobile-xamarin-ios-get-started-users.md
-[Azure 计划程序]: /en-us/documentation/services/scheduler/
-[Web 作业]: ../app-service-web/websites-webjobs-resources.md
-[如何使用 .NET 服务器 SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[从移动服务迁移到应用服务移动应用]: app-service-mobile-migrating-from-mobile-services.md
-[将现有移动服务迁移到应用服务]: app-service-mobile-migrating-from-mobile-services.md
+[I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
+[Mobile App Server SDK]: https://www.npmjs.com/package/azure-mobile-apps
+[Create a Mobile App]: app-service-mobile-xamarin-ios-get-started.md
+[Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
+[Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
+[Azure Scheduler]: /en-us/documentation/services/scheduler/
+[Web Job]: ../app-service-web/websites-webjobs-resources.md
+[How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
+[Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
-[.NET 服务器 SDK 概述]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [身份验证概念]: ../app-service/app-service-authentication-overview.md
 [身份验证快速入门]: app-service-mobile-auth.md
 
 [Azure 门户]: https://portal.azure.com/
 [OData]: http://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-[GitHub 上的 basicapp 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
-[GitHub 上的 todo 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
-[GitHub 上的示例目录]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
-[GitHub 上的 static-schema 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
+[basicapp sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
+[todo sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
+[samples directory on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
+[static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
-[用于 Visual Studio 的 Node.js 工具 1.1]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
-[mssql Node.js 包]: https://www.npmjs.com/package/mssql
+[Node.js Tools 1.1 for Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
+[mssql Node.js package]: https://www.npmjs.com/package/mssql
 [Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS 中间件]: http://expressjs.com/guide/using-middleware.html
+[ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

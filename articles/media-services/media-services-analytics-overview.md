@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: milanga;juliako;johndeu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6c014046ef725e526778f6f7415919d2d72d9bee
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fb8ec19434d4e8cc54b831bb4abf049c057da8df
 
 
 ---
@@ -128,10 +128,10 @@ Azure 媒体分析可让开发人员在一定程度上对视频快速使用可�
 
 <!-- Images -->
 
-[概述]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
+[overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

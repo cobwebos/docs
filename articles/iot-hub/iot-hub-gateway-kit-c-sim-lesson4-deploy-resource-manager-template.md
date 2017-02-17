@@ -1,6 +1,6 @@
 ---
-title: "将消息保存到 Azure 云，以及从云中读取消息 |Microsoft Docs"
-description: "将消息从 Intel NUC 保存到 IoT 中心， 将其写入到 Azure 表存储，然后从云中读取它们。"
+title: "模拟设备和 Azure IoT 网关 - 第 4 课：保存消息 | Microsoft Docs"
+description: "将消息从 Intel NUC 保存到 IoT 中心，将其写入到 Azure 表存储，然后从云中读取它们。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: ac4204d6d253e59a367f110aaa3bd28fd94792ea
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 2116e2c2ef5808145b56e63c1e2b91f20e639a3d
 
 
 ---
@@ -89,6 +89,6 @@ az group deployment create --template-file arm-template.json --parameters @arm-t
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

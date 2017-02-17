@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2016
+ms.date: 12/01/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 174546d59124296711731de6c8d8929bada56baf
-ms.openlocfilehash: dda826daa18182c1d415037faed5e832680392e1
+ms.sourcegitcommit: 2286437f4ab13384f895e906ccda48ac1b4c553d
+ms.openlocfilehash: dfc7d14b95082842ba658bd94b15c8191ee5dca3
 
 
 ---
@@ -28,7 +28,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 ## <a name="available-application-recommendations"></a>可用的应用程序建议
 | 建议 | 说明 |
 | --- | --- |
-| [添加 web 应用程序防火墙](security-center-add-web-application-firewall.md) |建议部署 web 终结点的 Web 应用程序防火墙 (WAF)。 可以通过将应用程序添加到现有的 WAF 部署来保护安全中心中的多个 Web 应用程序。 需要将 WAF 设备（使用 Resource Manager 部署模型创建）部署到单独的虚拟网络。 将 WAF 设备（使用经典部署模型创建）限制为使用网络安全组。 这种支持在将来会扩展为完全自定义的 WAF 设备（经典）部署。 |
+| [添加 web 应用程序防火墙](security-center-add-web-application-firewall.md) |建议部署 web 终结点的 Web 应用程序防火墙 (WAF)。 为任何面向公众的 IP（实例级 IP 或负载均衡 IP）显示 WAF 建议，该 IP 具有与开放入站 Web 端口 (80,443) 关联的网络安全组。</br></br>安全中心建议设置 WAF，有助于防范针对虚拟机和应用服务环境上 Web 应用程序的攻击。 应用服务环境 (ASE) 是 Azure 应用服务的[高级](https://azure.microsoft.com/pricing/details/app-service/)服务计划选项，可提供完全隔离和专用的环境，以便安全地运行 Azure 应用服务应用。 若要了解有关 ASE 的详细信息，请参阅[应用服务环境文档](../app-service/app-service-app-service-environments-readme.md)。</br></br>可以通过将应用程序添加到现有的 WAF 部署来保护安全中心中的多个 Web 应用程序。 |
 | [完成应用程序保护](security-center-add-web-application-firewall.md#finalize-application-protection) |若要完成 WAF 配置，则流量必须重新路由到 WAF 设备。 遵循此建议，完成必要的安装程序更改。 |
 
 ## <a name="see-also"></a>另请参阅
@@ -46,6 +46,6 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

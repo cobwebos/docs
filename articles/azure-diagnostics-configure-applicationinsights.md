@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/15/2015
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cad20d6dc02d7c569d593e2cf02fd4347a9008e8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fff688c7088a3c677763495b1a46ce54606d6816
 
 
 ---
@@ -109,12 +109,11 @@ Azure 诊断扩展 1.5 在公共配置中引入了 **<SinksConfig>** 元素。 �
 * 无法将 Azure 诊断扩展收集的任何 Blob 数据发送到 Application Insights。 例如，*Directories* 节点下指定的任何数据。 对于故障转储，实际故障转储仍会发送到 Blob 存储，并只会将生成了故障转储的通知发送到 Application Insights。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [PowerShell](cloud-services/cloud-services-diagnostics-powershell.md) 为应用程序启用 Azure 诊断扩展。 
+* 使用 [PowerShell](cloud-services/cloud-services-diagnostics-powershell.md) 为应用程序启用 Azure 诊断扩展。
 * 使用 [Visual Studio](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) 为应用程序启用 Azure 诊断扩展。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

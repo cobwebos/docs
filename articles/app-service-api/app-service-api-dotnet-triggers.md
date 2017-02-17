@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 08/25/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3970e39dab23f65c623e134d9e38df9831b37f8
+ms.sourcegitcommit: 015ca80c952110d3289888ed82d7a543be29950c
+ms.openlocfilehash: cf020b0f5f14d73635cf44e0157b53b35eb00d60
 
 
 ---
 # <a name="azure-app-service-api-app-triggers"></a>Azure 应用服务 API 应用触发器
 > [!NOTE]
 > 此版文章适用于 API 应用 2014-12-01-preview 架构版本。
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概述
 本文介绍如何实现 API 应用触发器，并从逻辑应用使用这些触发器。
 
-本主题中的所有代码片段复制自 [FileWatcher API 应用代码示例](http://go.microsoft.com/fwlink/?LinkId=534802)。 
+本主题中的所有代码片段复制自 [FileWatcher API 应用代码示例](http://go.microsoft.com/fwlink/?LinkId=534802)。
 
 请注意，需要下载以下 nuget 包才能生成和运行本文所述的代码：[http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/)。
 
 ## <a name="what-are-api-app-triggers"></a>什么是 API 应用触发器？
-API 应用经常需要激发事件，使 API 应用客户端采取适当的措施来响应事件。 支持此方案的基于 REST API 的机制称为 API 应用触发器。 
+API 应用经常需要激发事件，使 API 应用客户端采取适当的措施来响应事件。 支持此方案的基于 REST API 的机制称为 API 应用触发器。
 
-例如，假设客户端代码使用 [Twitter 连接器 API 应用](../app-service-logic/app-service-logic-connector-twitter.md)，并且代码需要根据包含特定文本的新推文执行操作。 在此情况下，可以设置轮询或推送触发器来方便解决此需求。
+例如，假设客户端代码使用 [Twitter 连接器 API 应用](../connectors/connectors-create-api-twitter.md)，并且代码需要根据包含特定文本的新推文执行操作。 在此情况下，可以设置轮询或推送触发器来方便解决此需求。
 
 ## <a name="poll-trigger-versus-push-trigger"></a>轮询触发器与推送触发器
 目前支持两种类型的触发器：
 
-* 轮询触发器 - 客户端在 API 应用中轮询已激发事件的通知 
-* 推送触发器 - 激发事件时，API 应用通知客户端 
+* 轮询触发器 - 客户端在 API 应用中轮询已激发事件的通知
+* 推送触发器 - 激发事件时，API 应用通知客户端
 
 ### <a name="poll-trigger"></a>轮询触发器
-轮询触发器实现为常规 REST API，预期客户端（例如逻辑应用）轮询会它来获取通知。 客户端可以保留状态，而轮询触发器本身是无状态的。 
+轮询触发器实现为常规 REST API，预期客户端（例如逻辑应用）轮询会它来获取通知。 客户端可以保留状态，而轮询触发器本身是无状态的。
 
 下面有关请求和响应数据包的信息演示了轮询触发器合约的一些重要层面：
 
@@ -302,7 +302,7 @@ API 应用经常需要激发事件，使 API 应用客户端采取适当的措�
 
 对于使用动态元数据的 API 应用，可以编辑 SwaggerConfig.cs 文件来添加操作筛选器用于添加这些扩展。
 
-    GlobalConfiguration.Configuration 
+    GlobalConfiguration.Configuration
         .EnableSwagger(c =>
             {
                 ...
@@ -343,7 +343,6 @@ API 应用经常需要激发事件，使 API 应用客户端采取适当的措�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,33 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/01/2016
+ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dcb28a67ef21728d9b21159f356ed122e0b7a1be
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: b3ff0e93ee144e98dec69c0678c3b467db1e0bc0
 
 
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>使用 HDInsight 上的 Spark 分析 Application Insights 遥测日志
+
 [Visual Studio Application Insights](../application-insights/app-insights-overview.md) 是监视 Web 应用程序的分析服务。 可将 Application Insights 生成的遥测数据导出到 Azure 存储，然后，HDInsight 将在该处分析遥测数据。
 
 本文档介绍如何使用 HDInsight 和 Apache Spark 分析 Application Insights 遥测数据。
 
 ## <a name="prerequisites"></a>先决条件
+
 * Azure 订阅。
+
 * 配置为使用 Application Insights 的应用程序。 
+
 * 熟悉基于 Linux 的 HDInsight 群集的创建过程。 如果不熟悉群集的创建，请参阅 [Create Spark on HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md)（在 HDInsight 上创建 Spark）以了解详细信息。
   
-  > [!NOTE]
-  > 本文档不会逐步讲解如何创建新群集， 但会参考其他讲述如何创建可访问遥测数据的群集的文档。
-  > 
-  > 
+  > [!IMPORTANT]
+  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * Web 浏览器。 用于通过 Jupyter Notebook 以交互方式运行分析。
 
 开发和测试本文档时使用了以下应用：
 
 * 使用[配置为使用 Application Insights 的 Node.js Web 应用](../application-insights/app-insights-nodejs.md)生成的 Application Insights 遥测数据。
+
 * HDInsight 群集上基于 Linux 的 Spark 版本 3.4，用于分析数据。
 
 ## <a name="architecture-and-planning"></a>架构与规划
@@ -47,6 +51,7 @@ ms.openlocfilehash: dcb28a67ef21728d9b21159f356ed122e0b7a1be
 ![演示数据从 Application Insights 流向 Blob 存储，然后使用 HDInsight 上的 Spark 进行处理的示意图](./media/hdinsight-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
 ### <a name="azure-storage"></a>Azure 存储空间
+
 HDInsight 群集可以直接从 Azure 存储帐户访问块 Blob，Application Insights 可配置为将遥测信息连续导出到 Azure 存储中的 Blob。 但是，必须符合某些要求：
 
 * **位置**：存储帐户应与 HDInsight 位于同一区域中。 这样可以在访问数据时减少延迟，避免在区域之间移动数据时发生出口流量费用。
@@ -56,6 +61,7 @@ HDInsight 群集可以直接从 Azure 存储帐户访问块 Blob，Application I
     与之相反，建议为 HDInsight 和 Application Insights 遥测分别使用不同的存储帐户，并[使用共享访问签名 (SAS) 来限制对 HDInsight 上数据的访问](hdinsight-storage-sharedaccesssignature-permissions.md)。 使用 SAS 可以授予对 HDInsight 遥测数据的只读访问权限。
 
 ### <a name="data-schema"></a>数据架构
+
 Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据模型](../application-insights/app-insights-export-data-model.md)信息。 本文档中的步骤使用 Spark SQL 来处理数据。 Spark SQL 可以自动生成 Application Insights 记录的 JSON 数据结构的架构，因此不需要在执行分析时手动定义架构。
 
 ## <a name="export-telemetry-data"></a>导出遥测数据
@@ -349,6 +355,6 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

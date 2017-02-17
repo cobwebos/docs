@@ -1,5 +1,5 @@
 ---
-title: "使用 Visual Studio 对 Azure App Service 中的 Web 应用进行故障排除"
+title: "使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障排除"
 description: "了解如何通过内置于 Visual Studio 2013 的远程调试、 跟踪和日志记录工具排除 Azure Web 应用的故障。"
 services: app-service
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 154d2cd9b7f4ea51d3fd4c1995b67a25816b28a2
-ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: d22c9e2026c3efc63c5a3baa7ad4505aa269e31d
 
 
 ---
-# <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure App Service 中的 Web 应用进行故障排除
+# <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障排除
 ## <a name="overview"></a>概述
 本教程介绍如何使用 Visual Studio 工具，通过远程运行[调试模式](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)或查看应用程序日志和 Web 服务器日志帮助调试[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中的 Web 应用。
 
@@ -30,7 +30,7 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 
 * Visual Studio 中提供的 Azure Web 应用管理功能。
 * 如何使用 Visual Studio 远程视图在远程 Web 应用中进行快速更改。
-* 项目在 Azure 中运行时，如何对 Web 应用和 Web 作业远程运行调试模式。
+* 项目在 Azure 中运行时，如何对 Web 应用和 WebJob 远程运行调试模式。
 * 如何创建应用程序跟踪日志并在该应用程序创建日志时对其进行查看。
 * 如何查看 Web 服务器日志，包括详细的错误消息和失败请求跟踪。
 * 如何将诊断日志发送至 Azure 存储帐户并在其中进行查看。
@@ -38,11 +38,11 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 如果有 Visual Studio Ultimate，还可以使用 [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) 进行调试。 本教程未介绍 IntelliTrace。
 
 ## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>先决条件
-本教程适用于 [Azure 和 ASP.NET 入门][GetStarted] 中设置的开发环境、Web 项目和 Azure Web 应用。 对于 Web 作业部分，需要用到 [Azure WebJobs SDK 入门][GetStartedWJ] 中创建的应用程序。
+本教程适用于在 [Azure 和 ASP.NET 入门][GetStarted]中设置的开发环境、Web 项目和 Azure Web 应用。 对于 WebJobs 部分，需要用到在 [Azure WebJobs SDK 入门][GetStartedWJ]中创建的应用程序。
 
 在本教程中所示的代码示例适用于 C# MVC Web 应用程序，但对于 Visual Basic 和 Web 窗体应用程序，故障排除过程是一样的。
 
-本教程假设使用 Visual Studio 2015 或 2013。 如果使用 Visual Studio 2013，Web 作业功能需要 [Update 4](http://go.microsoft.com/fwlink/?LinkID=510314) 或更高版本。
+本教程假设使用 Visual Studio 2015 或 2013。 如果使用 Visual Studio 2013，WebJobs 功能需要 [Update 4](http://go.microsoft.com/fwlink/?LinkID=510314) 或更高版本。
 
 流式日志功能仅适用于面向 .NET Framework 4 或更高版本的应用程序。
 
@@ -60,7 +60,7 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 
     有关从 Visual Studio 连接至 Azure 资源的详细信息，请参阅[管理帐户、订阅和管理角色](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)。
 2. 在“服务资源管理器”中，展开“Azure”，然后展开“应用服务”。
-3. 展开包含在 [Azure 和 ASP.NET 入门][GetStarted] 中创建的 Web 应用的资源组，右键单击该 Web 应用，然后单击“查看设置”。
+3. 展开包含在 [Azure 和 ASP.NET 入门][GetStarted]中创建的 Web 应用的资源组，右键单击该 Web 应用节点，然后单击“查看设置”。
 
     ![在服务器资源管理器中查看设置](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -117,9 +117,9 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 
 远程调试不适用于 Visual Studio Express 版。
 
-本部分介绍如何使用 [Azure 和 ASP.NET 入门][GetStarted] 中创建的项目进行远程调试。
+本部分演示如何使用在 [Azure 和 ASP.NET 入门][GetStarted]中创建的项目进行远程调试。
 
-1. 打开在 [Azure 和 ASP.NET 入门][GetStarted] 中创建的 Web 项目。
+1. 打开在 [Azure 和 ASP.NET 入门][GetStarted]中创建的 Web 项目。
 2. 打开 *Controllers\HomeController.cs*。
 3. 删除 `About()` 方法并在其位置插入以下代码。
 
@@ -131,7 +131,7 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
         }
 4. 在 `ViewBag.Message` 行上[设置一个断点](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)。
 5. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
-6. 在“配置文件”下拉列表中，选择与 [Azure 和 ASP.NET 入门][GetStarted] 中所用相同的配置文件。
+6. 在“配置文件”下拉列表中，选择与 [Azure 和 ASP.NET 入门][GetStarted]中所用相同的配置文件。
 7. 单击“设置”选项卡，将“配置”更改为“调试”，然后单击“发布”。
 
     ![在调试模式下发布](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
@@ -158,24 +158,24 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 
      ![显示新值的关于页面](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="a-nameremotedebugwja-remote-debugging-webjobs"></a><a name="remotedebugwj"></a> 远程调试 Web 作业
+## <a name="a-nameremotedebugwja-remote-debugging-webjobs"></a><a name="remotedebugwj"></a> 远程调试 WebJobs
 本部分说明如何使用在 [Azure WebJobs SDK 入门](websites-dotnet-webjobs-sdk.md)中创建的项目和 Web 应用进行远程调试。
 
 本部分所示的功能只能在 Visual Studio 2013 Update 4 或更高版本中使用。
 
-远程调试仅适用于连续 Web 作业。 计划的和按需 Web 作业不支持调试。
+远程调试仅适用于连续 WebJobs。 计划的和按需 WebJobs 不支持调试。
 
-1. 打开在 [Azure WebJobs SDK 入门][GetStartedWJ] 中创建的 Web 项目。
+1. 打开在 [Azure WebJobs SDK 入门][GetStartedWJ]中创建的 Web 项目。
 2. 在 ContosoAdsWebJob 项目中，打开 *Functions.cs*。
 3. 在 `GnerateThumbnail` 方法的第一个语句中[设置一个断点](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)。
 
     ![设置断点](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
-4. 在“解决方案资源管理器”中，右键单击该 Web 项目（而非 Web 作业项目），然后单击“发布”。
+4. 在“解决方案资源管理器”中，右键单击该 Web 项目（而非 WebJob 项目），然后单击“发布”。
 5. 在“配置文件”下拉列表中，选择与 [Azure WebJobs SDK 入门](websites-dotnet-webjobs-sdk.md)中所用相同的配置文件。
 6. 单击“设置”选项卡，将“配置”更改为“调试”，然后单击“发布”。
 
-    Visual Studio 将部署 Web 和 Web 作业项目，浏览器将打开 Web 应用的 Azure URL。
-7. 在“服务器资源管理器”中，展开“Azure”>“应用服务”> 你的资源组 > 你的 Web 应用 >“Web 作业”>“连续”，然后右键单击“ContosoAdsWebJob”。
+    Visual Studio 将部署 Web 和 WebJob 项目，浏览器将打开 Web 应用的 Azure URL。
+7. 在“服务器资源管理器”中，展开“Azure”>“应用服务”> 你的资源组 > 你的 Web 应用 >“WebJobs”>“连续”，然后右键单击“ContosoAdsWebJob”。
 8. 单击“附加调试器”。
 
     ![附加调试程序](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
@@ -183,7 +183,7 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
     浏览器将自动打开运行在 Azure 中的主页。 可能需要等待大约 20 秒，以便 Azure 针对调试设置服务器。 此延迟只在首次于 Web 应用上运行调试模式时出现。 接下来的 48 小时内，再次启动调试将不会出现延迟。
 9. 在打开 Contoso 广告主页的 Web 浏览器中，创建新的广告。
 
-    创建广告会导致创建队列消息，Web 作业将拾取并处理该消息。 当 WebJobs SDK 调用函数处理该队列消息时，代码将命中断点。
+    创建广告会导致创建队列消息，WebJob 将拾取并处理该消息。 当 WebJobs SDK 调用函数处理该队列消息时，代码将命中断点。
 10. 当调试器在断点处中断时，可以在程序运行云的同时，检查并更改变量值。 在下图中，调试器显示了传递给 GenerateThumbnail 方法的 blobInfo 对象的内容。
 
      ![调试器中的 blobInfo 对象](./media/web-sites-dotnet-troubleshoot-visual-studio/blobinfo.png)
@@ -193,13 +193,13 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 12. 在浏览器中刷新“索引”页，将会看到缩略图。
 13. 在 Visual Studio 中，按 SHIFT+F5 停止调试。
 14. 在“服务器资源管理器”中，右键单击 ContosoAdsWebJob 节点，然后单击“查看仪表板”。
-15. 使用 Azure 凭据登录，然后单击 Web 作业名称转到 Web 作业的页面。
+15. 使用 Azure 凭据登录，然后单击 WebJob 名称转到 WebJob 的页面。
 
      ![单击 ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
      仪表板将显示最近执行的 GenerateThumbnail 函数。
 
-     （下次单击“查看仪表板”时无需登录，浏览器会直接转到 Web 作业的页面。）
+     （下次单击“查看仪表板”时无需登录，浏览器会直接转到 WebJob 的页面。）
 16. 单击函数名称可查看有关函数执行的详细信息。
 
      ![函数详细信息](./media/web-sites-dotnet-troubleshoot-visual-studio/funcdetails.png)
@@ -209,7 +209,7 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 ## <a name="notes-about-remote-debugging"></a>有关远程调试的说明
 * 不建议在生产环境中以调试模式运行。 如果生产 Web 应用未进行扩展以容纳多个服务器实例，则调试会阻止 Web 服务器响应其他请求。 如果具有多个 Web 服务器实例，在附加至调试程序时将获得一个随机实例，而无法确保后续浏览器请求将前往该实例。 此外，调试版本一般不会部署到生产环境，针对版本生成的编译器优化可以逐行显示源代码中出现的情况。 至于如何解决生产环境中出现的问题，可利用的最佳资源是应用程序跟踪和 Web 服务器日志。
 * 远程调试时避免长时间停止在断点处。 Azure 会将停止时间超过几分钟的进程视为无反应进程而将其关闭。
-* 进行调试的时候，服务器会向 Visual Studio 发送数据，这可能会影响到带宽费用。 有关带宽费率的信息，请参阅 [Azure 定价](/pricing/calculator/)。
+* 进行调试的时候，服务器会向 Visual Studio 发送数据，这可能会影响到带宽费用。 有关带宽费率的信息，请参阅 [Azure 定价](https://azure.microsoft.com/pricing/calculator/)。
 * 请确保 *Web.config* 文件中 `compilation` 元素的 `debug` 属性设置为 true。 在发布调试版本配置时，默认设置为 true。
 
         <system.web>
@@ -239,11 +239,11 @@ ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
 ## <a name="a-nameapptracelogsacreate-and-view-application-trace-logs"></a><a name="apptracelogs"></a>创建并查看应用程序跟踪日志
 在本节中，将执行以下任务：
 
-* 将跟踪语句添加到在 [Azure 和 ASP.NET 入门][GetStarted] 中创建的 Web 项目。
+* 将跟踪语句添加到在 [Azure 和 ASP.NET 入门][GetStarted]中创建的 Web 项目。
 * 本地运行该项目时查看日志。
 * 查看由运行于 Azure 中的应用程序生成的日志。
 
-有关如何在 Web 作业中创建应用程序日志的信息，请参阅[如何使用 WebJobs SDK 处理 Azure 队列存储 - 如何写入日志](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)。 以下有关查看日志以及控制其在 Azure 中的存储方式的说明，同样适用于 Web 作业创建的应用程序日志。
+有关如何在 WebJobs 中创建应用程序日志的信息，请参阅[如何使用 WebJobs SDK 处理 Azure 队列存储 - 如何写入日志](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)。 以下有关查看日志以及控制其在 Azure 中的存储方式的说明，同样适用于 WebJobs 创建的应用程序日志。
 
 ### <a name="add-tracing-statements-to-the-application"></a>向应用程序添加跟踪语句
 1. 打开 *Controllers\HomeController.cs* 并将 `Index`、`About` 和 `Contact` 方法替换为以下代码，以便为 `System.Diagnostics` 添加 `Trace` 语句和 `using` 语句：
@@ -459,7 +459,7 @@ Web 服务器日志将记录 Web 应用上所有的 HTTP 活动。 若要在“�
 
     该名称必须唯一（其他 Azure 存储帐户不能使用该名称）。 如果输入的名称已被使用，可以进行更改。
 
-    用于访问存储帐户的 URL 为 *{名称}*.core.windows.net。
+    用于访问存储帐户的 URL 为 *{名称}*.core.chinacloudapi.cn。
 2. 将“区域或地缘组”下拉列表设置为离你最近的区域。
 
     此设置指定将托管存储帐户的 Azure 数据中心。 对于本教程，所做的选择不会带来明显的差异；但是，对于生产 Web 应用，希望 Web 服务器和存储帐户处于同一区域，以最大程度减少延迟和数据传出费用。 Web 应用（稍后创建）应在与访问 Web 应用的浏览器尽可能靠近的区域中运行，以最大程度地减少延迟。
@@ -516,7 +516,7 @@ Web 服务器日志将记录 Web 应用上所有的 HTTP 活动。 若要在“�
 ## <a name="a-namefailedrequestlogsaview-failed-request-tracing-logs"></a><a name="failedrequestlogs"></a>查看失败请求跟踪日志
 在出现诸如 URL 重写或身份验证问题之类的情况下，需要详细了解 IIS 如何处理 HTTP 请求时可求助于失败请求跟踪日志。
 
-Azure Web Apps 使用 IIS 7.0 及更高版本中提供的相同失败请求跟踪功能。 IIS 设置经过配置可记录指定错误，但无法访问该设置。 启用失败请求跟踪后，所有错误都将纳入捕获范围内。
+Azure Web 应用使用 IIS 7.0 及更高版本中提供的相同失败请求跟踪功能。 IIS 设置经过配置可记录指定错误，但无法访问该设置。 启用失败请求跟踪后，所有错误都将纳入捕获范围内。
 
 使用 Visual Studio 可启用失败请求跟踪，但却无法在 Visual Studio 中对其进行查看。 这些日志是 XML 文件。 这些流式传输日志服务只监视认为在纯文本模式下可读的文件：*.txt*、*.html* 和 *.log* 文件。
 
@@ -566,11 +566,11 @@ Azure Web Apps 使用 IIS 7.0 及更高版本中提供的相同失败请求跟�
 * 调试云服务
 
 ### <a name="azure-web-app-troubleshooting"></a>Azure Web 应用故障排除
-有关对 Azure App Service 中的 Web 应用进行故障排除的详细信息，请参阅以下资源：
+有关对 Azure 应用服务中的 Web 应用进行故障排除的详细信息，请参阅以下资源：
 
 * [如何监视 Web 应用](/manage/services/web-sites/how-to-monitor-websites/)
 * [使用 Visual Studio 2013 在 Azure Web 应用中调查内存泄漏](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 有关用于分析托管内存问题的 Visual Studio 功能的 Microsoft ALM 博客文章。
-* [应该了解的 Azure Web 应用联机工具](/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple 发表的博客文章。
+* [应该了解的 Azure Web 应用联机工具](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple 发表的博客文章。
 
 若要针对特定故障排除问题寻求帮助，可在以下论坛之一开启话题讨论：
 
@@ -582,12 +582,12 @@ Azure Web Apps 使用 IIS 7.0 及更高版本中提供的相同失败请求跟�
 有关如何在 Visual Studio 中使用调试模式，请参阅[在 Visual Studio 中进行调试](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) MSDN 主题和[使用 Visual Studio 2010 进行调试的提示](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx)。
 
 ### <a name="remote-debugging-in-azure"></a>在 Azure 中进行远程调试
-有关 Azure Web 应用和 Web 作业远程调试的详细信息，请参阅以下资源：
+有关 Azure Web 应用和 WebJobs 远程调试的详细信息，请参阅以下资源：
 
-* [远程调试 Azure 应用服务 Web 应用简介](/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
-* [Azure 应用服务 Web 应用远程调试简介第 2 部分 - 远程调试洞析](/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
-* [Azure 应用服务 Web 应用远程调试简介第 3 部分 - 多实例环境和 GIT](/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
-* [Web 作业调试（视频）](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
+* [远程调试 Azure 应用服务 Web 应用简介](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
+* [Azure 应用服务 Web 应用远程调试简介第 2 部分 - 远程调试洞析](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
+* [Azure 应用服务 Web 应用远程调试简介第 3 部分 - 多实例环境和 GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
+* [WebJobs 调试（视频）](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
 如果 Web 应用使用 Azure Web API 或移动服务后端且需要进行调试，请参阅[在 Visual Studio 中调试 .NET 后端](http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)。
 
@@ -616,7 +616,7 @@ Internet 上对于 ASP.NET 跟踪没有全面且最新的介绍。 最佳做法�
         }
 * [从 Azure 命令行流式传输诊断跟踪日志记录（加上 Glimpse！）](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   如何使用命令行实现本教程中通过 Visual Studio 完成的任务。 [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) 是一个用于调试 ASP.NET 应用程序的工具。
-* [使用 Web Apps 日志记录和诊断 - 与 David Ebbo 协作完成](/documentation/videos/azure-web-site-logging-and-diagnostics/)和[从 Azure Web Apps 流式传输日志 - 与 David Ebbo 协作完成](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+* [使用 Web 应用日志记录和诊断 - 与 David Ebbo 协作完成](/documentation/videos/azure-web-site-logging-and-diagnostics/)和[从 Azure Web 应用流式传输日志 - 与 David Ebbo 协作完成](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   由 Scott Hanselman 和 David Ebbo 提供的视频。
 
 对于错误日志记录，若不想编写自己的跟踪代码，可以使用开源日志记录框架，如 [ELMAH](http://nuget.org/packages/elmah/)。 有关详细信息，请参阅 [Scott Hanselman 有关 ELMAH 的博客文章](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)。
@@ -641,6 +641,6 @@ Microsoft TechNet 网站包含的[使用失败请求跟踪](http://www.iis.net/l
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

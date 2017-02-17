@@ -1,5 +1,5 @@
 ---
-title: "获取用于 Azure IoT 初学者工具包的工具 (Ubuntu 16.04) | Microsoft Docs"
+title: "将 Arduino 连接到 Azure IoT - 第 1 课：获取工具 (Ubuntu) | Microsoft Docs"
 description: "下载并安装在 Ubuntu 上适用于 Adafruit Feather M0 WiFi 的第一个示例应用程序的必需工具和软件。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: 6eaf3c0a0509f78276a9303102837e37b06a80e0
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d33fc9b04f69b161e92a266cd3604488e35e74af
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 6eaf3c0a0509f78276a9303102837e37b06a80e0
 > 尽管主逻辑的编程语言为 Arduino，课程中仍使用 Node.js 工具生成和部署示例应用程序。
 
 ## <a name="what-you-will-learn"></a>你要学习的知识
-本文介绍：
+在本文中，将学习以下内容：
 
 * 如何安装 Git 和 Node.js
   * [Git](https://git-scm.com) 是一个开源分布式版本控制系统。 本文的第一个示例应用程序存储在 Git 中。
@@ -91,6 +91,6 @@ sudo npm install -g gulp device-discovery-cli
 [create-and-deploy-the-blink-sample-application]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-deploy-blink-app.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

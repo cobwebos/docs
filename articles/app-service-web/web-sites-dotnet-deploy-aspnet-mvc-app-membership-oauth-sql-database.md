@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3aaddd0b8ff500e3417a0ae7dd21207be45ade64
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 11d9869e656014fe7106f9c66975792c5faa357d
 
 
 ---
@@ -41,12 +41,12 @@ ms.openlocfilehash: 3aaddd0b8ff500e3417a0ae7dd21207be45ade64
 > [!NOTE]
 > 本教程的篇幅较长。 如果要快速了解 Azure App Service 和 Visual Studio Web 项目，请参阅[在 Azure App Service 中创建 ASP.NET Web 应用](web-sites-dotnet-get-started.md)。 有关疑难解答信息，请参阅[疑难解答](#troubleshooting)部分。
 > 
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
 ## <a name="prerequisites"></a>先决条件
-若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)，或者[注册免费试用帐户](/pricing/free-trial/?WT.mc_id=A261C142F)。
+若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)，或者[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 
 要设置开发环境，则必须安装 [Visual Studio 2013 Update 5](http://go.microsoft.com/fwlink/?LinkId=390521) 或更高版本，以及最新版本的 [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409)。 本文专为 Visual Studio Update 4 和 SDK 2.8.1 编写。 相同的说明同样适用于已安装最新 [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409) 的 Visual Studio 2015，但有些屏幕看起来与插图不同。
 
@@ -104,10 +104,10 @@ ms.openlocfilehash: 3aaddd0b8ff500e3417a0ae7dd21207be45ade64
     ![解决方案资源管理器中的 _Layout.cshtml][newapp004]
 2. 将 *Layout.cshtml* 文件中的 ActionLink 替换为以下代码。
 
-    @Html.ActionLink("CM Demo", "Index", "Contacts", new { area = "" }, new { @class = "navbar-brand" })
-
-
-    确保将第三个参数从“Home”更改为“Contacts”。 上面的标记会在每个页面上创建一个“Contacts”链接，以转到 Contacts 控制器的 Index 方法。 将页眉和页脚中的应用程序名称从“My ASP.NET Application”和“Application name”更改为“Contact Manager”和“CM Demo”。 
+```
+   @Html.ActionLink("CM Demo", "Index", "Contacts", new { area = "" }, new { @class = "navbar-brand" })
+```
+   确保将第三个参数从“Home”更改为“Contacts”。 上面的标记会在每个页面上创建一个“Contacts”链接，以转到 Contacts 控制器的 Index 方法。 将页眉和页脚中的应用程序名称从“My ASP.NET Application”和“Application name”更改为“Contact Manager”和“CM Demo”。 
 
 ### <a name="run-the-application-locally"></a>在本地运行应用程序
 1. 按 Ctrl+F5 运行应用程序。
@@ -443,7 +443,7 @@ ASP.NET MVC 基架功能可以自动生成用于执行创建、读取、更新�
           }
    
     如果对 *AllowAnonymous* 执行全局搜索，你将看到它在 Account 控制器的登录和注册方法中使用。
-3. 在 *CmController.cs* 中，将 `[Authorize(Roles = "canEdit")]` 添加到 *Cm* 控制器中用于更改数据的 HttpGet 和 HttpPost 方法（Create、Edit、Delete，即除 Index 和 Details 外的每个操作方法）。 下面显示了一部分已完成代码： 
+3. 在 *ContactsController.cs* 中，将 `[Authorize(Roles = "canEdit")]` 添加到 *Cm* 控制器中用于更改数据的 HttpGet 和 HttpPost 方法（Create、Edit、Delete，即除 Index 和 Details 外的每个操作方法）。 下面显示了一部分已完成代码： 
    
         // GET: Cm/Create
         [Authorize(Roles = "canEdit")]
@@ -603,10 +603,10 @@ ASP.NET MVC 基架功能可以自动生成用于执行创建、读取、更新�
 * 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
-[添加 OAuth 提供程序]: #addOauth
-[使用成员资格 API]:#mbrDB
-[创建数据部署脚本]:#ppd
-[更新成员资格数据库]:#ppd2
+[Add an OAuth Provider]: #addOauth
+[Using the Membership API]:#mbrDB
+[Create a Data Deployment Script]:#ppd
+[Update the Membership Database]:#ppd2
 
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -655,14 +655,14 @@ ASP.NET MVC 基架功能可以自动生成用于执行创建、读取、更新�
 [addcode009]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/dntutmobile-migrations-package-manager-console.png
 
 
-[有关 Web 应用中的 ASP.NET 的重要信息]: #aspnetwindowsazureinfo
-[后续步骤]: #nextsteps
+[Important information about ASP.NET in Azure web apps]: #aspnetwindowsazureinfo
+[Next steps]: #nextsteps
 
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Resource Manager 中链接资源 | Microsoft Docs"
+title: "Azure 解决方案中与链接相关的资源 | Microsoft Docs"
 description: "在 Azure Resource Manager 的不同资源组中的相关资源之间创建链接。"
 services: azure-resource-manager
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 87d19e4680a6da6be6da55eeab80ee7739361f8c
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 2750e971ae281e498e9c505e1cd2790cefbfbc78
 
 
 ---
-# <a name="linking-resources-in-azure-resource-manager"></a>Azure 资源管理器中的链接资源
+# <a name="link-related-resources-from-different-resource-groups"></a>来自不同资源组的与链接相关的资源
 在部署期间，你可以将一个资源标记为依赖于另一个资源，但该生命周期在部署时结束。 部署后，依赖资源之间没有任何标识关系。 Resource Manager 提供了一个称为资源链接的功能来建立资源之间的永久关系。
 
 通过资源链接，可以记录跨资源组的关系。 例如，将数据库的生命周期驻留在一个资源组中，将应用程序的不同于前者的生命周期驻留在另一个资源组中是一种常见现象。 应用将连接到数据库，因此你需要在应用和数据库之间标记链接。 
@@ -76,6 +76,6 @@ Properties 元素包含第二个资源的标识符。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

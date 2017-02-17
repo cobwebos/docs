@@ -16,30 +16,30 @@ ms.topic: article
 ms.date: 02/29/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c5ce6c8024026e8fb88a2c6e8e5475c8aba7aa30
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 5ce82ddd2f58fed338bd061fa963978aa63e5fdc
 
 
 ---
 # <a name="create-a-web-app-in-azure-that-connects-to-mongodb-running-on-a-virtual-machine"></a>在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用
-使用 Git，可以将 ASP.NET 应用程序部署到 Azure App Service Web 应用。 在本教程中，将构建一个简单的前端 ASP.NET MVC 任务列表应用程序，该程序将连接至在 Azure 内的虚拟机中运行的 MongoDB 数据库。  [MongoDB][MongoDB] 是一种流行的开源、高性能 NoSQL 数据库。 在开发计算机上运行并测试 ASP.NET 应用程序后，可使用 Git 将其上传到应用服务 Web 应用。
+使用 Git，可以将 ASP.NET 应用程序部署到 Azure App Service Web 应用。 在本教程中，将构建一个简单的前端 ASP.NET MVC 任务列表应用程序，该程序将连接至在 Azure 内的虚拟机中运行的 MongoDB 数据库。  [MongoDB][MongoDB] 是一个流行的开源、高性能 NoSQL 数据库。 在开发计算机上运行并测试 ASP.NET 应用程序后，可使用 Git 将其上传到应用服务 Web 应用。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
 ## <a name="background-knowledge"></a>背景知识
 以下知识对于学习本教程有用但非必需：
 
-* MongoDB 的 C# 驱动程序。 有关针对 MongoDB 开发 C# 应用程序的详细信息，请参阅 MongoDB [CSharp 语言中心][MongoC#LangCenter]。 
-* ASP .NET Web 应用程序框架。 可通过 [ASP.net 网站][ASP.NET]进行全面了解。
-* ASP .NET MVC Web 应用程序框架。 可通过 [ASP.NET MVC 网站][MVCWebSite]进行全面了解。
-* Azure。 可从 [Azure][WindowsAzure] 开始了解。
+* MongoDB 的 C# 驱动程序。 有关针对 MongoDB 开发 C# 应用程序的更多信息，请参阅 MongoDB [CSharp 语言中心][MongoC#LangCenter]。 
+* ASP .NET Web 应用程序框架。 可在 [ASP.net 网站][ASP.NET]全面了解相关知识。
+* ASP .NET MVC Web 应用程序框架。 可在 [ASP.NET MVC 网站][MVCWebSite]上全面了解相关知识。
+* Azure。 可以先阅读 [Azure][WindowsAzure] 上的文章。
 
 ## <a name="prerequisites"></a>先决条件
 * [Visual Studio Express 2013 for Web][VSEWeb] 或 [Visual Studio 2013][VSUlt]
-* [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
+* [用于 .NET 的 Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 * 有效的 Microsoft Azure 订阅
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
@@ -49,7 +49,7 @@ ms.openlocfilehash: c5ce6c8024026e8fb88a2c6e8e5475c8aba7aa30
 ## <a name="create-a-virtual-machine-and-install-mongodb"></a>创建虚拟机并安装 MongoDB
 本教程假定已在 Azure 中创建了一个虚拟机。 创建虚拟机后，需要在该虚拟机上安装 MongoDB：
 
-* 若要创建 Windows 虚拟机并安装 MongoDB，请参阅[在 Azure 中，在运行 Windows Server 的虚拟机上安装 MongoDB][InstallMongoOnWindowsVM]。
+* 若要创建 Windows 虚拟机并安装 MongoDB，请参阅[在 Azure 中运行 Windows Server 的虚拟机上安装 MongoDB][InstallMongoOnWindowsVM]。
 
 在 Azure 中创建虚拟机并安装 MongoDB 后，请务必记住该虚拟机的 DNS 名称（例如“testlinuxvm.cloudapp.net”）以及在终结点中指定的 MongoDB 的外部端口。  本教程后面的步骤中将会用到此信息。
 
@@ -413,7 +413,7 @@ MongoDB C# 驱动程序现已安装。  对 **MongoDB.Bson**、**MongoDB.Driver*
 
     private string connectionString = "mongodb://<vm-dns-name>";
 
-将 `<vm-dns-name>` 替换为运行 MongoDB 的虚拟机（在本教程的[创建虚拟机并安装 MongoDB][创建虚拟机并安装 MongoDB] 步骤中创建的）的 DNS 名称。  若要查找虚拟机的 DNS 名称，请转到 Azure 门户，选择“虚拟机”并找到“DNS 名称”。
+将 `<vm-dns-name>` 替换为运行 MongoDB 的虚拟机（在本教程的[创建虚拟机并安装 MongoDB][Create a virtual machine and install MongoDB] 步骤中创建的）的 DNS 名称。  若要查找虚拟机的 DNS 名称，请转到 Azure 门户，选择“虚拟机”并找到“DNS 名称”。
 
 如果虚拟机的 DNS 名称是“testlinuxvm.cloudapp.net”而 MongoDB 在默认端口 27017 进行侦听，连接字符串代码行将如下所示：
 
@@ -482,13 +482,13 @@ MongoDB C# 驱动程序现已安装。  对 **MongoDB.Bson**、**MongoDB.Driver*
 [Image11]: ./media/web-sites-dotnet-store-data-mongodb-vm/GitDeploymentComplete.png
 
 <!-- TOC BOOKMARKS -->
-[创建虚拟机并安装 MongoDB]: #virtualmachine
-[在开发计算机上开发并运行 My Task List ASP.NET 应用程序]: #createapp
-[创建 Azure 网站]: #createwebsite
-[使用 Git 将 ASP.NET 应用程序部署到网站]: #deployapp
+[Create a virtual machine and install MongoDB]: #virtualmachine
+[Create and run the My Task List ASP.NET application on your development computer]: #createapp
+[Create an Azure web site]: #createwebsite
+[Deploy the ASP.NET application to the web site using Git]: #deployapp
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

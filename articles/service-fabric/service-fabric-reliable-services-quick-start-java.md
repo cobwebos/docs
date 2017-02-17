@@ -1,5 +1,5 @@
 ---
-title: "Reliable Services 入门 | Microsoft Docs"
+title: "在 Java 中创建第一个可靠 Azure 微服务 | Microsoft Docs"
 description: "介绍如何创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 4450ad62a9b05ac4c963ae3271590f9431b782ed
-ms.openlocfilehash: 2a2378dbeb5e7994039291deffd35cb04bf8057c
+ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
+ms.openlocfilehash: 5a29d6838af7f3952ad96158e5962b17c0f4cb6b
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: 2a2378dbeb5e7994039291deffd35cb04bf8057c
 > [!div class="op_single_selector"]
 > * [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
+>
+>
 
 本文介绍 Azure Service Fabric Reliable Services 的基础知识，并演示如何创建和部署以 Java 编写的简单 Reliable Service 应用程序。 此 Microsoft Virtual Academy 视频还演示了如何创建无状态可靠服务：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
@@ -39,12 +39,12 @@ ms.openlocfilehash: 2a2378dbeb5e7994039291deffd35cb04bf8057c
 若要开始使用 Reliable Services，只需了解几个基本概念：
 
 * **服务类型**：这是服务实现。 它由你编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
-* **命名服务实例**：若要运行服务，需要创建服务类型的命名实例，就像创建类类型的对象实例一样。 事实上，服务实例是编写的服务类的对象实例化。 
+* **命名服务实例**：若要运行服务，需要创建服务类型的命名实例，就像创建类类型的对象实例一样。 事实上，服务实例是编写的服务类的对象实例化。
 * **服务宿主**：创建的命名服务实例需在宿主中运行。 服务宿主是可以运行服务实例的进程。
 * **服务注册**：通过注册可将所有对象融合在一起。 只有将服务类型注册到服务宿主中的 Service Fabric 运行时后，Service Fabric 才能创建该类型的可运行实例。  
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
-首先创建新的 Service Fabric 应用程序。 适用于 Linux 的 Service Fabric SDK 包括一个 Yeoman 生成器，它为包含无状态服务的 Service Fabric 应用程序提供基架。 首先，请运行以下 Yeoman 命令：
+首先创建 Service Fabric 应用程序。 适用于 Linux 的 Service Fabric SDK 包括一个 Yeoman 生成器，它为包含无状态服务的 Service Fabric 应用程序提供基架。 首先，请运行以下 Yeoman 命令：
 
 ```bash
 $ yo azuresfjava
@@ -84,7 +84,7 @@ HelloWorldApplication/
 
 ```java
 @Override
-protected CompletableFuture<?> runAsync() {
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
     ...
 }
 ```
@@ -101,7 +101,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 在本教程中，我们将重点放在 `runAsync()` 入口点方法上。 这是你可以立即开始运行代码的位置。
 
 ### <a name="runasync"></a>RunAsync
-当服务实例已放置并且可以执行时，平台将调用此方法。 服务实例的打开-关闭循环可能会在服务的整个生存期内出现多次。 发生这种情况的原因多种多样，包括：
+当服务实例已放置并且可以执行时，平台将调用此方法。 对于无状态服务，这就意味着打开服务实例。 需要关闭服务实例时，将提供取消标记进行协调。 在 Service Fabric 中，服务实例的此打开-关闭循环可能会在服务的整个生存期内出现多次。 发生这种情况的原因多种多样，包括：
 
 * 系统可能会移动服务实例以实现资源平衡。
 * 代码中发生错误。
@@ -110,42 +110,34 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 Service Fabric 将管理此业务流程，以便保持服务的高度可用和适当均衡。
 
+`runAsync()` 不应阻止同步。 runAsync 的实现应返回一个 CompletableFuture，以允许运行时继续执行。 如果工作负荷需要实现一个应该在 CompletableFuture 内完成的、长期运行的任务。
+
 #### <a name="cancellation"></a>取消
-`runAsync()` 中的代码必须能够根据 Service Fabric 的通知停止执行。 当 Service Fabric 要求服务停止执行时，从 `runAsync()` 返回的 `CompletableFuture` 将被取消。 以下示例演示如何处理取消事件： 
+取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，然后尽快退出 `runAsync()`。 以下示例演示如何处理取消事件：
 
 ```java
     @Override
-    protected CompletableFuture<?> runAsync() {
+    protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 
-        CompletableFuture<?> completableFuture = new CompletableFuture<>();
-        ExecutorService service = Executors.newFixedThreadPool(1);
+        // TODO: Replace the following sample code with your own logic
+        // or remove this runAsync override if it's not needed in your service.
 
-        Future<?> userTask = service.submit(() -> {
-            while (!Thread.currentThread().isInterrupted()) {
-                try
-                {
-                   logger.log(Level.INFO, this.context().serviceName().toString());
-                   Thread.sleep(1000);
-                }
-                catch (InterruptedException ex)
-                {
-                    logger.log(Level.INFO, this.context().serviceName().toString() + " interrupted. Exiting");
-                    return;
-                }
+        CompletableFuture.runAsync(() -> {
+          long iterations = 0;
+          while(true)
+          {
+            cancellationToken.throwIfCancellationRequested();
+            logger.log(Level.INFO, "Working-{0}", ++iterations);
+
+            try
+            {
+              Thread.sleep(1000);
             }
-         });
-
-        completableFuture.handle((r, ex) -> {
-            if (ex instanceof CancellationException) {
-                userTask.cancel(true);
-                service.shutdown();
-            }
-            return null;
+            catch (IOException ex) {}
+          }
         });
-
-        return completableFuture;
-   }
-``` 
+    }
+```
 
 ### <a name="service-registration"></a>服务注册
 必须将服务类型注册到 Service Fabric 运行时。 服务类型在 `ServiceManifest.xml` 中以及实现 `StatelessService` 的服务类中定义。 服务注册在进程主入口点中执行。 在本示例中，进程主入口点为 `HelloWorldServiceHost.java`：
@@ -156,9 +148,9 @@ public static void main(String[] args) throws Exception {
         ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
         logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
         Thread.sleep(Long.MAX_VALUE);
-    } 
+    }
     catch (Exception ex) {
-        logger.log(Level.SEVERE, "Exception in registration: {0}", ex.toString());
+        logger.log(Level.SEVERE, "Exception in registration:", ex);
         throw ex;
     }
 }
@@ -171,14 +163,14 @@ Yeoman 基架包含一个用于构建应用程序的 gradle 脚本，以及一�
 $ gradle
 ```
 
-这会生成可以使用 Service Fabric Azure CLI 部署的 Service Fabric 应用程序包。 Install.sh 脚本包含用于部署应用程序包的 Azure CLI 命令。 只需运行 install.sh 脚本即可部署：
+这会生成可以使用 Service Fabric Azure CLI 部署的 Service Fabric 应用程序包。 Install.sh 脚本包含用于部署应用程序包的 Azure CLI 命令。 运行 install.sh 脚本进行部署：
 
-```bask
+```bash
 $ ./install.sh
 ```
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

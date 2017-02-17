@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 06/24/2015
 ms.author: hbai
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 1c45d0ad8431b5cfff7859817fe57c3168f2dc7f
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 8e69e791128710e640cba0c9edfbbadc0ea70ef5
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 1c45d0ad8431b5cfff7859817fe57c3168f2dc7f
 
 * 一个有效的 Azure 订阅。 如果没有帐户，可以在 [azure.com](https://azure.microsoft.com/) 上获取免费试用帐户。
 * 用来使用 Azure 资源组的工作或学校 ID。 如果有个人帐户并使用 Microsoft ID 登录，则需要[基于个人 ID 创建工作 ID](virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* 以下组件之一（取决于客户端操作系统）：[Azure PowerShell](../powershell-install-configure.md) 或[适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。
+* 以下组件之一（取决于客户端操作系统）：[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md)。
 * [OpenSSL](https://www.openssl.org/)。 OpenSSL 用于生成必要的证书。
 * Git 客户端，如 [Git Bash](https://git-scm.com/)。
 * 若要测试示例应用程序，你还需要一个 DNS 服务器。 可以使用任何 DNS 服务器或支持通配符 A 记录的服务。
@@ -254,6 +254,6 @@ ms.openlocfilehash: 1c45d0ad8431b5cfff7859817fe57c3168f2dc7f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

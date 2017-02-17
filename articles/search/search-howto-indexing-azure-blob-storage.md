@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/30/2016
+ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 976470e7b28a355cbfa4c5c8d380744eb1366787
-ms.openlocfilehash: f8711ba45339be7ffbeac1ab28823df43db23046
+ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
+ms.openlocfilehash: 60c8296e1287419dedf5b5f01f2ddb7ab86b5d11
 
 ---
 
@@ -62,7 +62,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 * **name** 是搜索服务中数据源的唯一名称。
 * **type** 必须是 `azureblob`。
-* **credentials** 以 `credentials.connectionString` 参数的形式提供存储帐户连接字符串。 可从 Azure 门户获取连接字符串：导航到所需的存储帐户边栏选项卡，选择“设置” > “密钥”，然后使用“主连接字符串”或“辅助连接字符串”值。
+* **credentials** 以 `credentials.connectionString` 参数的形式提供存储帐户连接字符串。 有关详细信息请参阅下方的[如何指定凭据](#Credentials)。
 * **container** 指定存储帐户中的容器。 默认情况下，容器中的所有 Blob 都可检索。 如果只想为特定虚拟目录中的 Blob 编制索引，可以使用可选的 **query** 参数指定该目录。
 
 创建数据源：
@@ -74,11 +74,25 @@ Blob 索引器可从以下文档格式提取文本：
     {
         "name" : "blob-datasource",
         "type" : "azureblob",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
 
 有关创建数据源 API 的详细信息，请参阅[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
+
+<a name="Credentials"></a>
+#### <a name="how-to-specify-credentials"></a>如何指定凭据 ####
+
+可通过以下一种方式提供 blob 容器的凭据： 
+
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure Resource Manager 存储帐户），从 Azure 门户获取连接字符串。
+- **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
+-  **容器共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`。 SAS 应具有容器的列表和读取权限。
+
+有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+
+> [!NOTE]
+> 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器将失败，出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
 索引指定文档、属性和其他构造中可以塑造搜索体验的字段。
@@ -345,6 +359,6 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

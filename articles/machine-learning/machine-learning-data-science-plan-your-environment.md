@@ -1,5 +1,5 @@
 ---
-title: "如何确定高级分析数据处理的方案和计划 | Microsoft Docs"
+title: "确认方案并计划分析过程 - Azure | Microsoft Docs"
 description: "规划高级分析时需考虑一系列关键问题。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: 600959ec221b018b92a1438df601cd789521e8f5
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: d11f023f263b0bb504e2ecb0ff69bb0cc726618b
 
 
 ---
@@ -108,6 +108,6 @@ ms.openlocfilehash: 600959ec221b018b92a1438df601cd789521e8f5
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中使用 Hadoop Sqoop | Microsoft Docs"
+title: "使用 .NET 和 Azure HDInsight 运行 Sqoop 作业 | Microsoft Docs"
 description: "学习如何使用 HDInsight .NET SDK 在 Hadoop 群集和 Azure SQL 数据库之间运行 Sqoop 导入和导出。"
 editor: cgronlun
 manager: jhubbard
@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 027ac136d4c4f242c75e8a25605ace646624d64d
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9cadb72e065f82de8e007b38e909d2bc07d18126
 
 
 ---
@@ -124,6 +124,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

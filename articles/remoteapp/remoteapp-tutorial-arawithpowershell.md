@@ -15,8 +15,8 @@ ms.workload: compute
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dcd220da143b518bf28cc1169ab68d20256c07ba
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 4f2b61e7c97beb7556bffca89c3608aaee831ddc
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: dcd220da143b518bf28cc1169ab68d20256c07ba
 
 ## <a name="configure-azure-cmdlets-to-use-your-subscription"></a>配置 Azure cmdlet 以使用你的订阅
 - - -
-请遵循[本指南](../powershell-install-configure.md)中的操作，以便可以针对你的 Azure 订阅使用这些 cmdlet。
+请遵循[本指南](/powershell/azureps-cmdlets-docs)中的操作，以便可以针对你的 Azure 订阅使用这些 cmdlet。
 
 可以使用以下步骤来快速开始︰
 
@@ -118,6 +118,6 @@ RemoteApp 模板映像 cmdlet：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "配置 Edison Azure IoT 初学者工具包 | Microsoft Docs"
+title: "将 Intel Edison (C) 连接到 Azure IoT - 第 1 课：配置设备 | Microsoft Docs"
 description: "首次配置 Intel Edison 进行使用。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/7/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: a8f9b21a02688e91fa43aaf85bafc3cd3ad2c913
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 800f1aed6d30d2bb871a6a9b55b6b95308932211
 
 
 ---
@@ -123,7 +123,7 @@ ms.openlocfilehash: a8f9b21a02688e91fa43aaf85bafc3cd3ad2c913
 4. 记下密码，稍后会用到此密码。
 
 ### <a name="connect-wi-fi"></a>连接 Wi-Fi
-1. 在`Set up options`页面上，单击`Connect Wi-Fi`。 计算机将扫描可用的 Wi-Fi 网络，此过程最长可能需要 1 分钟。
+1. 在`Set up options`页面上，单击`Connect Wi-Fi`。 计算机将扫描可用的 Wi-Fi 网络，此过程最长可能需要&1; 分钟。
 2. 从`Detected Networks`下拉列表中，选择网络。
 3. 从`Security`下拉列表中，选择网络的安全类型。
 4. 提供登录名和密码信息，然后单击`Configure Wi-Fi`。
@@ -145,6 +145,6 @@ ms.openlocfilehash: a8f9b21a02688e91fa43aaf85bafc3cd3ad2c913
 [get-the-tools]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

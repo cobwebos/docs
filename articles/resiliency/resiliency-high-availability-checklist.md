@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 295dae5bd4ec7c1e899c5debe8d072b4b05d2cdd
+ms.sourcegitcommit: f075006fd7ba3bc697e9cc4f59b5f3b7e6ddc4c6
+ms.openlocfilehash: 3a4c0dd488d23f817ef06400785c7609d0ac70e7
 
 
 ---
@@ -31,37 +31,37 @@ Azure 优势多多，可用于结合云端提升应用程序的可用性（及�
 ### <a name="are-you-using-traffic-manager-in-front-of-your-resources"></a>是否在资源前面使用流量管理器？
 使用流量管理器有助于跨 Azure 区域或者在 Azure 与本地位置之间路由 Internet 流量。 这样做有几项原因，包括延迟和可用性。 若要了解有关如何使用流量管理器来提高复原能力并将流量分散到多个区域的详细信息，请阅读[在 Azure 上的多个数据中心运行 VM 以实现高可用性](../guidance/guidance-compute-multiple-datacenters.md)。
 
-**不使用流量管理器会发生什么情况？** 如果在应用程序前面不使用流量管理器，则你只能在单个区域中访问资源。 这会限制缩放能力，远离所选区域的用户将感受到更长的延迟，而在发生区域范围的服务中断时将缺乏保护。
+**不使用流量管理器会发生什么情况？** 如果在应用程序前面不使用流量管理器，则只能在单个区域中访问资源。 这会限制缩放能力，远离所选区域的用户将感受到更长的延迟，而在发生区域范围的服务中断时将缺乏保护。
 
 ### <a name="have-you-avoided-using-a-single-virtual-machine-for-any-role"></a>你是否避免使用单个虚拟机作为任何角色？
 良好的设计会避免任何单点故障。 这在所有服务设计（本地或云）中都很重要，尤其在云中特别有用，因为可以通过横向扩展（添加虚拟机）而不是纵向扩展（使用功能更强大的虚拟机）来提高可缩放性与复原能力。 若要了解有关可缩放应用程序设计的详细信息，请参阅[构建在 Microsoft Azure 基础之上的应用程序高可用性](resiliency-high-availability-azure-applications.md)。
 
 **如果使用单个虚拟机作为角色，会发生什么情况？** 单个计算机是单点故障，不适用于 [Azure 虚拟机服务级别协议](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/)。 在最好的情况下，应用程序将正常运行，但这不是具有复原能力的设计，并且不受 Azure 虚拟机 SLA 的保障，如果发生故障，任何单点故障将增大停机的可能性。
 
-### <a name="are-you-using-a-load-balancer-in-front-of-your-applications-internet-facing-vms"></a>是否在应用程序的面向 Internet 的 VM 前面使用负载平衡器？
-负载平衡器可让你将应用程序的传入流量分散到任意数目的计算机。 你可以随时在负载平衡器中添加/删除计算机，这适用于虚拟机（以及配合虚拟机缩放集来自动缩放），让你轻松处理流量增加或 VM 故障的情况。 若要详细了解负载平衡器，请阅读 [ 概述](../load-balancer/load-balancer-overview.md)和[在 Azure 上运行多个 VM 以提高可缩放性和可用性](../guidance/guidance-compute-multi-vm.md)。
+### <a name="are-you-using-a-load-balancer-in-front-of-your-applications-internet-facing-vms"></a>是否在应用程序的面向 Internet 的 VM 前面使用负载均衡器？
+负载均衡器可让你将应用程序的传入流量分散到任意数目的计算机。 你可以随时在负载均衡器中添加/删除计算机，这适用于虚拟机（以及配合虚拟机规模集来自动缩放），让你轻松处理流量增加或 VM 故障的情况。 若要详细了解负载均衡器，请阅读 [Azure 负载均衡器概述](../load-balancer/load-balancer-overview.md)和[在 Azure 上运行多个 VM 以提高可缩放性和可用性](../guidance/guidance-compute-multi-vm.md)。
 
-**如果在面向 Internet 的 VM 前面不使用负载平衡器，会发生什么情况？** 如果没有负载平衡器，将无法横向扩展（添加更多计算机），而只能选择纵向扩展（增加面向 Web 的虚拟机的大小）。 该虚拟机也面临着单点故障。 你还需要编写 DNS 代码，以注意是否丢失面向 Internet 的计算机，并将 DNS 条目重新映射到开始接管的新计算机。
+**如果在面向 Internet 的 VM 前面不使用负载均衡器，会发生什么情况？** 如果没有负载均衡器，将无法横向扩展（添加更多虚拟机），而只能选择纵向扩展（增加面向 Web 的虚拟机的大小）。 该虚拟机也面临着单点故障。 你还需要编写 DNS 代码，以注意是否丢失面向 Internet 的计算机，并将 DNS 条目重新映射到开始接管的新计算机。
 
 ### <a name="are-you-using-availability-sets-for-your-stateless-application-and-web-servers"></a>你是否对无状态应用程序和 Web 服务器使用可用性集？
 将计算机包含在可用性集中的同一个应用程序层内可让 VM 符合 Azure VM SLA 的条件。 成为可用性集的一部分还可确保将计算机放入不同的更新域（即，在不同时间修补的不同主机）和容错域（即，共享通用电源和网络交换机的主机）。 不在可用性集中的 VM 可能位于同一主机，因此，可能潜藏着看不到的单点故障。 若要深入了解如何使用可用性集提高 VM 的可用性，请参阅[管理虚拟机的可用性](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 **如果不对无状态应用程序和 Web 服务器使用可用性集，会发生什么情况？** 不使用可用性集意味着无法利用 Azure VM SLA。 这也意味着，如果主机进行更新（托管你使用的 VM 的计算机）或发生常见的硬件故障，该应用程序层中的计算机将全部脱机。
 
-### <a name="are-you-using-virtual-machine-scale-sets-vmss-for-your-stateless-application-or-web-servers"></a>是否对无状态应用程序和 Web 服务器使用虚拟机缩放集 (VMSS)？
+### <a name="are-you-using-virtual-machine-scale-sets-vmss-for-your-stateless-application-or-web-servers"></a>是否对无状态应用程序和 Web 服务器使用虚拟机规模集 (VMSS)？
 可缩放且有复原能力的良好设计使用 VMSS，以确保可以扩展/缩减应用程序层（例如 Web 层）中的计算机数目。 VMSS 允许你定义应用程序层如何缩放（根据所选的条件来添加或删除服务器）。 若要深入了解如何使用 Azure 虚拟机规模集灵活应对流量高峰，请参阅[虚拟机规模集概述](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
-**如果不对无状态应用程序或 Web 服务器使虚拟机规模集，会发生什么情况？** 如果不使用 VMSS，则就有点难以做到无限制缩放和优化资源用法。 缺少 VMSS 的设计有其缩放上限，必须以额外的代码来处理（或手动）。 缺少 VMSS 还意味着应用程序无法轻松添加和删除计算机（无论规模如何），因而无法帮助你处理较大的流量高峰（例如在促销期间，或者站点/应用/产品变得流行时）。
+**如果不对无状态应用程序或 Web 服务器使虚拟机规模集，会发生什么情况？** 如果不使用 VMSS，则就有点难以做到无限制缩放和优化资源用法。 缺少 VMSS 的设计有其缩放上限，必须以额外的代码来处理（或手动）。 缺少 VMSS 还意味着应用程序无法轻松添加和删除计算机（无论规模如何），因而无法帮助处理较大的流量高峰（例如在促销期间，或者站点/应用/产品变得流行时）。
 
 ### <a name="are-you-using-premium-storage-and-separate-storage-accounts-for-each-of-your-virtual-machines"></a>是否对每个虚拟机使用高级存储和独立的存储帐户？
-生产虚拟机最好使用高级存储。 此外，应确保每个虚拟机使用不同的存储帐户（在小规模部署中就应如此。 对于大型部署，多个计算机可以重复使用存储帐户，但需要保持平衡，以确保更新域之间和应用程序层之间达到平衡）。 若要了解有关 Azure 存储性能和可缩放性的详细信息，请阅读 [Microsoft Azure 存储性能和可缩放性清单](../storage/storage-performance-checklist.md)。
+生产虚拟机最好使用高级存储。 此外，应确保每个虚拟机使用独立的存储帐户（在小规模部署中就应如此。 对于大型部署，多个计算机可以重复使用存储帐户，但需要保持平衡，以确保更新域之间和应用程序层之间达到平衡）。 若要了解有关 Azure 存储性能和可缩放性的详细信息，请阅读 [Microsoft Azure 存储性能和可缩放性清单](../storage/storage-performance-checklist.md)。
 
 **如果不对每个虚拟机使用独立的存储帐户，会发生什么情况？** 就像其他许多资源一样，存储帐户也是单点故障。 尽管 Azure 存储空间提供许多保护措施和复原能力，但存在单点故障绝对不是良好的设计。 例如，如果该帐户的访问权限受损、达到存储限制或达到 [IOPS 限制](../azure-subscription-service-limits.md#virtual-machine-disk-limits)，则使用该存储帐户的所有虚拟机将受到影响。 此外，如果服务中断影响到包含该特定存储帐户的存储戳记，则多个虚拟机会受到影响。
 
-### <a name="are-you-using-a-load-balancer-or-a-queue-between-each-tier-of-your-application"></a>是否在应用程序的每层之间使用负载平衡器或队列？
-在应用程序的每层之间使用负载平衡器或队列，可以轻松地单独缩放应用程序的每一层。 应该根据延迟、复杂性和分布（即，应用分发的广度）需求，在这些技术之间做出选择。 一般而言，队列的延迟和复杂性通常较高，但提供更高的复原能力，并且可让你将应用程序分发到更大的区域（例如跨区域）。 若要深入了解如何使用内部负载均衡器或队列，请阅读[内部负载均衡器概述](../load-balancer/load-balancer-internal-overview.md)和 [Azure 队列和服务总线队列 - 比较与对照](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)。
+### <a name="are-you-using-a-load-balancer-or-a-queue-between-each-tier-of-your-application"></a>是否在应用程序的每层之间使用负载均衡器或队列？
+在应用程序的每层之间使用负载均衡器或队列，可以轻松地单独缩放应用程序的每一层。 应该根据延迟、复杂性和分布（即，应用分发的广度）需求，在这些技术之间做出选择。 一般而言，队列的延迟和复杂性通常较高，但提供更高的复原能力，并且可让你将应用程序分发到更大的区域（例如跨区域）。 若要深入了解如何使用内部负载均衡器或队列，请阅读[内部负载均衡器概述](../load-balancer/load-balancer-internal-overview.md)和 [Azure 队列和服务总线队列 - 比较与对照](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)。
 
-**如果在应用程序的每层之间不使用负载均衡器或队列，会发生什么情况？** 如果应用程序的每层之间没有负载平衡器或队列，则难以扩展或缩减应用程序并将其负载分散到多个计算机。 不这样做可能会导致资源预配过度或不足，如果流量出现意外的变化或发生系统故障，还可能造成停机或用户体验不佳。
+**如果在应用程序的每层之间不使用负载均衡器或队列，会发生什么情况？** 如果应用程序的每层之间没有负载均衡器或队列，则难以扩展或缩减应用程序并将其负载分散到多个计算机。 不这样做可能会导致资源预配过度或不足，如果流量出现意外的变化或发生系统故障，还可能造成停机或用户体验不佳。
 
 ### <a name="are-your-sql-databases-using-active-geo-replication"></a>SQL 数据库是否使用活动异地复制？
 活动异地复制可让你在相同或不同区域中最多配置 4 个可读的辅助数据库。 在发生服务中断或无法连接到主数据库时，可以使用辅助数据库。 若要了解有关 SQL 数据库活动异地复制的详细信息，请参阅[概述：SQL 数据库活动异地复制](../sql-database/sql-database-geo-replication-overview.md)。
@@ -89,6 +89,6 @@ Azure 支持部门可帮助你提高服务限制以应对计划内的高流量�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

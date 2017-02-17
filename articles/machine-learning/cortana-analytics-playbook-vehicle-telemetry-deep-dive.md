@@ -1,5 +1,5 @@
 ---
-title: "车辆遥测分析解决方案操作手册：深入了解解决方案 |Microsoft Docs"
+title: "深入了解预测车辆的运行状况和行驶习惯 - Azure | Microsoft Docs"
 description: "通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 94fba9a2aeaebc460a513928ab76ee63c0da7cc8
-ms.openlocfilehash: 12f16b8cd7d7a4101d423aff737498251d8a5d26
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: 898b93ad95ab812b8b6a538048a86a8cc8951101
 
 
 ---
@@ -709,6 +709,6 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

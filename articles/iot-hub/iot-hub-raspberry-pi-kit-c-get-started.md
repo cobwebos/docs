@@ -1,5 +1,5 @@
 ---
-title: "Raspberry Pi 3 入门 | Microsoft 文档"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 入门 | Microsoft Docs"
 description: "开始使用 Raspberry Pi 3，创建 Azure IoT 中心，并将 Pi 连接到 IoT 中心。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9f7647d89a6cf3c962bd4a6986e521cade3fd838
-ms.openlocfilehash: da2f32eb91dc8a2e10a3d76741d892b3c355ea1e
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 58398a8963ca834ed04d50a4715b29cbd3200b53
 
 
 ---
@@ -129,6 +129,6 @@ ms.openlocfilehash: da2f32eb91dc8a2e10a3d76741d892b3c355ea1e
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

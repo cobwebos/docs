@@ -1,5 +1,5 @@
 ---
-title: "使用数据工厂 SDK 创建、监视和管理 Azure 数据工厂 | Microsoft Docs"
+title: "使用 Azure .NET SDK 创建数据管道 | Microsoft Docs"
 description: "了解如何使用数据工厂 SDK 以编程方式创建、监视和管理 Azure 数据工厂。"
 services: data-factory
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: d51c900f7cf69d3852a1699284a459b930eb735e
+ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
+ms.openlocfilehash: 4973a2218ec480fb239e3b32e8f34e3fb14454d0
 
 
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-data-factory-net-sdk"></a>使用数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 ## <a name="overview"></a>概述
 可使用数据工厂 .NET SDK 以编程方式创建、监视和管理 Azure 数据工厂。 可根据本文所含演练创建示例 .NET 控制台应用程序，从而创建和监视数据工厂。 有关数据工厂 .NET SDK 的详细信息，请参阅[数据工厂类库参考](https://msdn.microsoft.com/library/mt415893.aspx)。
 
@@ -481,6 +481,6 @@ Note down the **SubscriptionId** and **TenantId** values.
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

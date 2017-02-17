@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch 中的有效列表查询 | Microsoft Docs"
+title: "设计有效的列表查询 - Azure Batch | Microsoft Docs"
 description: "在请求批处理资源（例如池、作业、任务和计算节点）的相关信息时对查询进行筛选可提高性能。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/20/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 62487d3d26ba66ce2ba88ae1a71858d68e68544c
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: 4e127422e2ad4644aa028cdb987ca5bafa101868
 
 
 ---
@@ -292,6 +292,6 @@ MSDN 上的 [Azure 批处理论坛][forum]是探讨 Batch 服务以及咨询相�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

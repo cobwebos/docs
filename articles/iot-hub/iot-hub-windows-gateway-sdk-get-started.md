@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 3d9997655e19ba800bf3462d5ebd3f7c7210271f
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
 
 1. 打开 **VS2015 开发人员命令提示**命令提示符。
 2. 浏览到本地 **azure-iot-gateway-sdk** 存储库副本中的根文件夹。
-3. 运行 **tools\\build.cmd** 脚本。 此脚本创建 Visual Studio 解决方案文件，生成解决方案，并运行测试。 你可以在本地 **azure-iot-gateway-sdk** 存储库副本的 **build** 文件夹中找到 Visual Studio 解决方案。
+3. 运行 **tools\\build.cmd** 脚本。 此脚本创建 Visual Studio 解决方案文件并生成解决方案。 你可以在本地 **azure-iot-gateway-sdk** 存储库副本的 **build** 文件夹中找到 Visual Studio 解决方案。 可为脚本提供其他参数，用于生成和运行单元测试和端到端测试。 这些参数分别是 **--run-unittests** 和 **--run-e2e-tests**。 
 
 ## <a name="how-to-run-the-sample"></a>如何运行示例
 1. **build.cmd** 脚本在本地存储库副本中创建一个名为 **build** 的文件夹。 此文件夹中包含本示例中使用的两个模块。
@@ -86,6 +86,6 @@ ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

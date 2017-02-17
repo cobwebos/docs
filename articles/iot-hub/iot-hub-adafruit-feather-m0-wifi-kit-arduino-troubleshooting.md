@@ -1,5 +1,5 @@
 ---
-title: "Adafruit Feather M0 WiFi Azure IoT 初学者工具包故障排除 | Microsoft Docs"
+title: "将 Arduino (C) 连接到 Azure IoT - 故障排除 | Microsoft Docs"
 description: "Adafruit Feather M0 WiFi Arduino 的故障排除页"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: e855e43c14cac49598ff6d6bd3582efe81c50243
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 448dc0370014ad295ed820d796f7af2eb5fe698e
 
 
 ---
@@ -74,7 +74,7 @@ python -m pip install --upgrade pip
 如果已通过 `azure-cli` 成功预配 Azure IoT 中心，且需使用工具管理连接到 IoT 中心的设备，可尝试以下工具：
 
 ### <a name="device-explorer"></a>设备资源管理器
-[设备资源管理器](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md)在 Windows 本地计算机上运行并连接到 Azure 中的 IoT 中心。 它与以下 [IoT 中心终结点](iot-hub-devguide.md)进行通信：
+[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)在 Windows 本地计算机上运行并连接到 Azure 中的 IoT 中心。 它与以下 [IoT 中心终结点](iot-hub-devguide.md)进行通信：
 
 * *设备标识管理* -以便预配和管理在 IoT 中心内注册的设备。
 * *接收“设备到云”消息* - 以便可以监视从设备发送到 IoT 中心的消息。
@@ -83,7 +83,8 @@ python -m pip install --upgrade pip
 在此工具中配置 `IoT hub connection string`，以便使用其所有功能。
 
 ### <a name="iot-hub-explorer"></a>IoT 中心资源管理器
-[IoT 中心资源管理器](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md)是示例多平台 CLI 工具，可用于管理设备客户端。 可以使用此工具在标识注册表中管理工具、监视“设备到云”消息，以及发送“云到设备”命令。
+[IoT 中心资源管理器](https://github.com/Azure/iothub-explorer)是示例多平台 CLI 工具，可用于管理设备客户端。 可以使用此工具在标识注册表中管理工具、监视“设备到云”消息，以及发送“云到设备”命令。
+
 
 若要安装 iothub-explorer 工具的最新（预发行版）版本，请在命令行环境中运行以下命令：
 
@@ -108,6 +109,6 @@ iothub-explorer help
 [sample-repository]: https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

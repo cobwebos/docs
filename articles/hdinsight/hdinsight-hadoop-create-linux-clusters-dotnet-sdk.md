@@ -1,5 +1,5 @@
 ---
-title: "使用 HDInsight .NET SDK 在 Linux 上的 HDInsight 中创建 Hadoop、HBase、Storm 或 Spark 群集 | Microsoft Docs"
+title: "使用 .NET 创建 Azure HDInsight (Hadoop) | Microsoft Docs"
 description: "了解如何使用 HDInsight .NET SDK 在 Linux 上的 HDInsight 中创建 Hadoop、HBase、Storm 或 Spark 群集。"
 services: hdinsight
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 349b73e7f80c1762408ebd38d0ba27a395328ddb
-ms.openlocfilehash: 01028e0a6820ef6b78fb57ab853b78eb4ecefb7e
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: cd5ab90167501d5876381e0575042e19a23e702c
 
 
 ---
@@ -385,6 +385,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

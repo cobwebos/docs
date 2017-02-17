@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: ce2e72fe1e24968f315b5fbc303c0c4bc63a199d
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: ede78ff35ec6e7007e7a1c7b946c8e17bd425f37
 
 
 ---
@@ -30,9 +30,8 @@ ms.openlocfilehash: ce2e72fe1e24968f315b5fbc303c0c4bc63a199d
 
 <br>
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-了解如何通过**新的 Azure 门户**[使用 Resource Manager 部署模型执行这些步骤](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何通过**新的 Azure 门户**[使用 Resource Manager 部署模型执行这些步骤](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 本教程演示如何在 Azure 经典门户中创建运行 Windows 的 Azure 虚拟机 (VM)。 我们将使用 Windows Server 映像作为示例，但这只是 Azure 提供的众多映像的其中一个。 请注意，映像的选择取决于订阅。 例如，Windows 桌面映像适用于 MSDN 订户。
 
@@ -57,6 +56,6 @@ ms.openlocfilehash: ce2e72fe1e24968f315b5fbc303c0c4bc63a199d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

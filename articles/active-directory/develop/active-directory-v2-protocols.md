@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2.0 协议 | Microsoft Docs"
+title: "了解 Azure AD v2.0 支持的授权协议 | Microsoft Docs"
 description: "有关 Azure AD v2.0 终结点支持的协议的指南。"
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 05a9fbab63ae19ee48eb88951dfdc4dc9beaabbd
+ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
+ms.openlocfilehash: 02bf4191e60bfe7a49a37eed10f7571e08502150
 
 
 ---
@@ -85,6 +85,6 @@ OAuth 2.0 和 OpenID Connect 的 v2.0 实现广泛使用了持有者令牌，包
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

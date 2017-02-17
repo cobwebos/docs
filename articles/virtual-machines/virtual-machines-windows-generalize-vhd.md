@@ -1,5 +1,5 @@
 ---
-title: "通用化 Windows VHD | Microsoft Docs"
+title: "通用化 Windows VM 以便在 Azure 中使用 | Microsoft Docs"
 description: "了解如何使用 Sysprep 通用化 Windows VM，使其能够与 Resource Manager 部署模型配合使用。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 9e9d973ef36cde4f0a1ada2ba7bf7d01a8d8f687
+ms.sourcegitcommit: c70793c707252582d4ba77ac8b04c39521b245f8
+ms.openlocfilehash: a9b2cf638f52a6b7c371e443d9b5a104a57f910c
 
 
 ---
@@ -47,6 +47,6 @@ ms.openlocfilehash: 9e9d973ef36cde4f0a1ada2ba7bf7d01a8d8f687
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

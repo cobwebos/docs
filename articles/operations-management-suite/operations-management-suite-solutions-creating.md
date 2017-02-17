@@ -4,7 +4,7 @@ description: "通过提供客户可添加到其 OMS 工作区的打包管理方�
 services: operations-management-suite
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: operations-management-suite
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
-ms.openlocfilehash: ab33a7610b8e7bbf64e9f1bfde3753f95956a82f
+ms.sourcegitcommit: fc8b76bf996060e226ac3f508a1ecffca6fc3c98
+ms.openlocfilehash: caa2f96d452174ebb13c5cbf67737f20e2a2134d
 
 
 ---
@@ -261,13 +261,14 @@ OMS 中的管理解决方案包括支持特定管理方案的多个资源。  �
 在部署管理解决方案之前，建议你使用 [Test-AzureRmResourceGroupDeployment](../azure-resource-manager/resource-group-template-deploy.md#deploy) 测试它。  这将验证你的解决方案文件，并帮助你在尝试部署它之前标识任何问题。
 
 ## <a name="next-steps"></a>后续步骤
+* [已保存的搜索和警报](operations-management-suite-solutions-resources-searches-alerts.md)到管理解决方案。
+* [将视图](operations-management-suite-solutions-resources-views.md)添加到管理解决方案。
+* [将自动化 runbook 和其他资源添加](operations-management-suite-solutions-resources-automation.md)到管理解决方案。
 * 了解[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)的详细信息。
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。
-* 查看[将视图添加到管理解决方案](operations-management-suite-solutions-resources-views.md)的详细信息。
-* 查看[将自动化资源添加到管理解决方案](operations-management-suite-solutions-resources-automation.md)的详细信息。
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

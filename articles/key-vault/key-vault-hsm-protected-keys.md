@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3de8751c58870fceee2575608982a5b36eca7478
+ms.sourcegitcommit: 593fdde402845fa062dbceafa533a1efc1f7af9c
+ms.openlocfilehash: b189106be19b95366ba0e6d248c69b34b219b8a1
 
 
 ---
@@ -72,7 +72,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 * [步骤 5：将密钥传输到 Azure 密钥保管库](#step-5-transfer-your-key-to-azure-key-vault)
 
 ## <a name="step-1-prepare-your-internet-connected-workstation"></a>步骤 1：准备连接到 Internet 的工作站
-在步骤 1 中，请对连接到 Internet 的工作站执行以下过程。
+在步骤&1; 中，请对连接到 Internet 的工作站执行以下过程。
 
 ### <a name="step-11-install-azure-powershell"></a>步骤 1.1：安装 Azure PowerShell
 从通过 Internet 连接的工作站，下载并安装Azure PowerShell 模块，其包含用于管理 Azure 密钥保管库的 cmdlet。 这要求模块的最低版本为 0.8.13。
@@ -91,7 +91,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 不要关闭 Azure PowerShell 窗口。
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>步骤 1.3：下载 Azure 密钥保管库的 BYOK 工具集
-转到 Microsoft 下载中心，针对你所在的地理区域或 Azure 实例[下载 Azure 密钥保管库的 BYOK 工具集](http://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA 256 包哈希：
+转到 Microsoft 下载中心，针对你所在的地理区域或 Azure 实例[下载 Azure 密钥保管库的 BYOK 工具集](http://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA&256; 包哈希：
 
 - - -
 **美国：**
@@ -187,7 +187,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 将该软件包复制到 USB 驱动器或其他便携式存储设备。
 
 ## <a name="step-2-prepare-your-disconnected-workstation"></a>步骤 2：准备连接断开的工作站
-在步骤 2 中，请对未连接到网络（Internet 或内部网络）的工作站执行以下过程。
+在步骤&2; 中，请对未连接到网络（Internet 或内部网络）的工作站执行以下过程。
 
 ### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>步骤 2.1：准备使用 Thales HSM 的连接断开的工作站
 在 Windows 计算机上安装 nCipher (Thales) 支持软件，然后将 Thales HSM 连接到该计算机。
@@ -206,7 +206,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 3. 按照说明安装 Visual Studio 2013 的 Visual c + + 运行时组件。
 
 ## <a name="step-3-generate-your-key"></a>步骤 3：生成密钥
-在步骤 3 中，请对连接断开的工作站执行以下过程。
+在步骤&3; 中，请对连接断开的工作站执行以下过程。
 
 ### <a name="step-31-create-a-security-world"></a>步骤 3.1：创建安全体系
 启动命令提示符并运行 Thales new-world 程序。
@@ -233,7 +233,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
 验证下载的程序包：
 
-1. 根据你所在的地理区域或 Azure 实例，尝试下列其中一个区域，以运行 verifykeypackage.py 脚本：
+1. 根据你所在的地理区域或 Azure 实例，键入下列其中一个区域，以运行 verifykeypackage.py 脚本：
    
    * 北美洲：
      
@@ -300,7 +300,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 现在已准备好将密钥传输到 Azure 密钥保管库。
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>步骤 4：准备要传输的密钥
-在步骤 4 中，请对断开连接的工作站执行以下过程。
+在步骤&4; 中，请对断开连接的工作站执行以下过程。
 
 ### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>步骤 4.1：使用减少权限创建密钥的副本
 若要减少密钥的权限，请从命令提示符处运行以下命令，具体要取决于你所在的地理区域或 Azure 实例：
@@ -411,6 +411,6 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

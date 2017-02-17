@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80c7a8584dac9537ddaf1d97a561388c3c22ec1b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f6ef85e0c05911bb3ad13a8ffb029bf9fadd8bfd
 
 
 ---
@@ -88,7 +88,7 @@ Azure App Service 支持门户具有三个不同的选项卡，用于支持常�
 
 如果你想要下载数据，数据默认情况下会存储在 D:\home\data\DaaS 文件夹中。
 
-有关 Azure 应用服务支持门户的详细信息，请参阅[用于支持 Azure 网站的站点扩展的最新更新](/blog/new-updates-to-support-site-extension-for-azure-websites)。
+有关 Azure 应用服务支持门户的详细信息，请参阅[用于支持 Azure 网站的站点扩展的最新更新](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites)。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 Web Apps 随附可用于调试、浏览和上载文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为 Web 应用的 *Kudu 控制台*或 *SCM 仪表板*。
@@ -104,7 +104,7 @@ Kudu 提供的一些信息和功能包括：
 
 Kudu 的另一项有用功能是，如果应用程序引发第一次异常，你可以使用 Kudu 和 SysInternals 工具 Procdump 创建内存转储。 这些内存转储是进程的快照，通常可以帮助你排查较复杂的 Web 应用问题。
 
-有关 Kudu 提供的功能的详细信息，请参阅[应该了解的 Azure 网站联机工具](/blog/windows-azure-websites-online-tools-you-should-know-about/)。
+有关 Kudu 提供的功能的详细信息，请参阅[应该了解的 Azure 网站联机工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
 <a name="mitigate" />
 
@@ -121,7 +121,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，你
 #### <a name="use-autoheal"></a>使用 AutoHeal
 AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间），回收应用程序的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动 Web 应用，但 AutoHeal 可以自动为你执行此操作。 你只需在 Web 应用的根 web.config 中添加一些触发器即可。 请注意，即使你的应用程序并非 .Net 应用程序，这些设置的工作方式也仍然相同。
 
-有关详细信息，请参阅[自动修复 Azure 网站](/blog/auto-healing-windows-azure-web-sites/)。
+有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 
 #### <a name="restart-the-web-app"></a>重新启动 Web 应用
 这通常是在发生一次性问题后进行恢复的最简单方式。 [Azure 门户](https://portal.azure.com/)上的 Web 应用边栏选项卡中提供了用于停止或重新启动应用的选项。
@@ -133,6 +133,6 @@ AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

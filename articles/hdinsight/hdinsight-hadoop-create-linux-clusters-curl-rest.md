@@ -1,6 +1,6 @@
 ---
-title: "在 HDInsight 中使用 cURL 和 Azure REST API 创建基于 Linux 的 Hadoop、HBase 或 Storm 群集 | Microsoft Docs"
-description: "了解如何使用 cURL、Azure Resource Manager 模板和 Azure REST API 创建基于 Linux 的 HDInsight 群集。 可以指定群集类型（Hadoop、HBase 或 Storm），或使用脚本来安装自定义组件。"
+title: "使用 cURL 和 REST 创建 Azure HDInsight (Hadoop) | Microsoft Docs"
+description: "了解如何使用 cURL、Azure Resource Manager 模板和 Azure REST API 创建 HDInsight 群集。 可以指定群集类型（Hadoop、HBase 或 Storm），或使用脚本来安装自定义组件。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,22 +16,19 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8056e7ece1942c9090a7c36447a96829febaf1a4
-ms.openlocfilehash: 491f8540e8e53f366327ed80caff2e1e360132fc
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: a4dc3d4599cfe2c6dd7580c423987f6173a9c5ba
 
 
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-curl-and-the-azure-rest-api"></a>在 HDInsight 中使用 cURL 和 Azure REST API 创建基于 Linux 的群集
+# <a name="create-hdinsight-clusters-using-curl-and-the-azure-rest-api"></a>使用 cURL 和 Azure REST API 创建 HDInsight 群集
 
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Azure REST API 允许你对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如基于 Linux 的 HDInsight 群集）。 在本文档中，你将学习如何创建 Azure Resource Manager 模板来配置 HDInsight 群集和关联的存储，然后使用 cURL 将模板部署到 Azure REST API，以创建新的 HDInsight 群集。
+Azure REST API 允许你对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。 在本文档中，你将学习如何创建 Azure Resource Manager 模板来配置 HDInsight 群集和关联的存储，然后使用 cURL 将模板部署到 Azure REST API，以创建新的 HDInsight 群集。
 
 > [!IMPORTANT]
-> 本文档中的步骤对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果你计划使用 32 个以上的工作节点（在创建群集时或是在创建之后通过扩展群集进行），则必须选择至少具有 8 个核心和 14GB ram 的头节点大小。
->
-> 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
-
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -267,6 +264,11 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
 本文档中的步骤将使用此示例。 必须将文档末尾的 **Parameters** 节中的占位符 *values* 替换为要用于群集的值。
 
+> [!IMPORTANT]
+> 此模板对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果你计划使用 32 个以上的工作节点（在创建群集时或是在创建之后通过扩展群集进行），则必须选择至少具有 8 个核心和 14GB ram 的头节点大小。
+>
+> 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
+
 ## <a name="login-to-your-azure-subscription"></a>登录到你的 Azure 订阅
 
 请按照 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)中所述的步骤操作，并使用 `az login` 命令连接到你的订阅。
@@ -412,6 +414,6 @@ curl -X "GET" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

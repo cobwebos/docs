@@ -1,5 +1,5 @@
 ---
-title: "服务总线 AMQP 概述 | Microsoft 文档"
+title: "Azure 服务总线中 AMQP 1.0 的概述 | Microsoft Docs"
 description: "了解如何在 Azure 中使用高级消息队列协议 (AMQP) 1.0。"
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 61f31c8ad0463776937f366d145595f04cc42d2e
-ms.openlocfilehash: 539ff0d47279b1c551c3ff0a21dff4633a3c0ac8
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 91b138ee9590a66c63e2055eaeace82b4e719ae5
 
 
 ---
@@ -59,7 +59,7 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * 随时可找到知识渊博的工作人员
 * 风险较低且可控
 
-## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和 Service Bus
+## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和服务总线
 Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，你还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过服务总线使用 AMQP 1.0 交换消息。
@@ -104,6 +104,6 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

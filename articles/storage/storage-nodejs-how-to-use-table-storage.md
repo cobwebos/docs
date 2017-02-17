@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 4935223f572e0ed3188195c23f7e9f692fb170af
+ms.sourcegitcommit: b9041713f3d084fde77a34ef7956a2c59312245e
+ms.openlocfilehash: d9008f6232ca2442edce2a3cae88f0b3d2be2f14
 
 
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-check-out-samples-all](../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>概述
 本主题将演示如何使用 Node.js 应用程序中的 Azure 表服务执行常见方案。
@@ -195,9 +195,8 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > 1. 获取要更新的对象的 ETag。 对于任何实体相关操作，该 ETag 将在 `response` 中返回，并且可通过 `response['.metadata'].etag` 检索。
 > 2. 对某个实体执行更新操作时，请将以前检索的 ETag 信息添加到新的实体。 例如：
 >
-> `entity2['.metadata'].etag = currentEtag;`
->
-> 1. 执行更新操作。 如果实体在检索 ETag 值后已被修改，例如被应用程序的其他实例修改，则会返回一条 `error`，指出未满足请求中指定的更新条件。
+>       entity2['.metadata'].etag = currentEtag;
+> 3. 执行更新操作。 如果实体在检索 ETag 值后已被修改，例如被应用程序的其他实例修改，则会返回一条 `error`，指出未满足请求中指定的更新条件。
 >
 >
 
@@ -469,6 +468,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

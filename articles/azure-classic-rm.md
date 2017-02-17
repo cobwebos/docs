@@ -7,6 +7,7 @@ author: telmosampaio
 manager: carmonm
 editor: 
 tags: azure-resource-manager,azure-service-management
+redirect_url: ./azure-resource-manager/resource-manager-deployment-model
 ms.assetid: 18a235d8-38ac-4886-9e56-b3855c73ffff
 ms.service: virtual-network
 ms.devlang: na
@@ -16,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: telmos
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: b08630777e9cb66e3baae24ad9befc93a47e65db
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 0843651c8fcddbc171bb485ce9c96b53b170881d
 
 
 ---
@@ -54,7 +55,7 @@ Azure 有两个门户：
 某些资源和功能只可以在其中一个门户中创建和配置。 某些资源或功能还不能在任何一个门户中创建或配置，而只能通过 PowerShell 和/或 CLI 进行配置。 每种 Azure 资源的文档详述了可用于创建该资源的方法。 
 
 ## <a name="powershell"></a>PowerShell
-通过 [PowerShell](powershell-install-configure.md)，可以使用命令行或编写脚本，从 Windows 计算机创建和配置 Azure 资源。  每个 Azure 资源都有相应的[资源管理器 cmdlet](https://msdn.microsoft.com/library/azure/mt125356.aspx) 和/或[服务管理 cmdlet](https://msdn.microsoft.com/library/azure/dn708504.aspx)。  某些资源和功能只能使用 PowerShell 或 CLI 来创建和配置。 根据具体的资源，使用资源管理器 PowerShell cmdlet 时，你可以使用两个选项创建和配置 Azure 资源：
+通过 [PowerShell](/powershell/azureps-cmdlets-docs)，可以使用命令行或编写脚本，从 Windows 计算机创建和配置 Azure 资源。  每个 Azure 资源都有相应的[资源管理器 cmdlet](https://msdn.microsoft.com/library/azure/mt125356.aspx) 和/或[服务管理 cmdlet](https://msdn.microsoft.com/library/azure/dn708504.aspx)。  某些资源和功能只能使用 PowerShell 或 CLI 来创建和配置。 根据具体的资源，使用资源管理器 PowerShell cmdlet 时，你可以使用两个选项创建和配置 Azure 资源：
 
 * **仅限 PowerShell cmdlet：**可以使用每个资源的 cmdlet 单独创建和配置每个 Azure 资源。 你可以从命令行执行此操作，或者在 PowerShell 脚本中包含可存储和设置版本的多个命令。
 * **将 PowerShell cmdlet 与 Azure 资源管理器模板配合使用：**可以将 PowerShell 与 Azure Resource Manager 模板配合使用来创建 Azure 资源。 可以保存模板并设置其版本。 有关详细信息，请阅读[使用 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)一文。 还可以下载和修改常见解决方案的多个 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)。
@@ -69,6 +70,6 @@ Azure 有两个门户：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

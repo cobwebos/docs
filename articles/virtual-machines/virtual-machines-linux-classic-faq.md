@@ -1,6 +1,6 @@
 ---
-title: "经典 VM 常见问题解答 | Microsoft Docs"
-description: "解答有关使用经典部署模型创建的 Azure Linux 虚拟机的一些常见问题。"
+title: "经典 Linux VM 的常见问题解答 | Microsoft Docs"
+description: "使用经典部署模型创建的 Azure Linux 虚拟机的一些常见问题的解答。"
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 1941fae336bac00edec9cd43d3a40167dfc6834d
+ms.sourcegitcommit: 872965ae70a0f0938f190a99832104cdfed25ef9
+ms.openlocfilehash: 6b6ec0198bbe4d60c833c35b100fbf92b39df80a
 
 
 ---
@@ -30,6 +30,6 @@ ms.openlocfilehash: 1941fae336bac00edec9cd43d3a40167dfc6834d
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

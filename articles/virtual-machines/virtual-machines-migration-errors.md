@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 345db9b2e45937ea45329acf780601e4e0fbd504
+ms.sourcegitcommit: daa311fcfd1ef06cf36e9443150fc967f0f39708
+ms.openlocfilehash: 052505260c0998c8528146c4985400126d094f0d
 
 
 ---
@@ -38,6 +38,129 @@ ms.openlocfilehash: 345db9b2e45937ea45329acf780601e4e0fbd504
 | 托管服务 {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它的 VM 不属于可用性集，即使托管服务包含一个可用性集。 |这种情况的解决方法是将所有虚拟机都移到单个可用性集中，或者从托管服务的可用性集中删除所有虚拟机。 |
 | 存储帐户/托管服务/虚拟网络 {virtual-network-name} 正处于迁移过程中，因此不能更改 |对资源的“准备”迁移操作已完成并触发了对资源的更改操作时，会发生此错误。 由于在“准备”操作完成后锁定了管理平面，因此将阻止对资源的任何更改。 若要解锁管理平面，可以运行“提交”迁移操作以完成迁移，或者“中止”迁移操作以回退“准备”操作。 |
 | 托管服务 {hosted-service-name} 不允许迁移，因为它的 VM {vm-name} 处于状态: RoleStateUnknown。 仅当 VM 处于以下状态之一时允许迁移 -“正在运行”、“已停止”、“已停止解除分配”。 |该 VM 可能正在进行状态转换，这通常在对托管服务进行更新操作（例如，重新启动、安装扩展等）期间发生。建议等到对托管服务的更新操作完成后，再尝试迁移。 |
+| HostedService {hosted-service-name} 中的部署 {deployment-name} 包含具有数据磁盘 {data-disk-name} 的 VM {vm-name}，该数据磁盘的物理 Blob 大小 {size-of-the-vhd-blob-backing-the-data-disk} 字节数不匹配 VM 数据磁盘逻辑大小 {size-of-the-data-disk-specified-in-the-vm-api} 字节数。 迁移将继续，而无需指定 Azure Resource Manager VM 的数据磁盘的大小。 如果你想要在继续迁移之前更正数据磁盘大小，请访问 https://aka.ms/vmdiskresize。 | 如果已调整 VHD Blob 的大小，而没有更新 VM API 模型中的大小，将发生此错误。 详细的缓解措施步骤如[下](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes)所述。|
+
+## <a name="detailed-mitigations"></a>详细的缓解措施
+
+### <a name="vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes"></a>其数据磁盘的物理 Blob 大小字节数不匹配 VM 数据磁盘逻辑大小字节数的 VM。
+
+当数据磁盘的逻辑大小可以与实际的 VHD Blob 大小不同步时，将发生这种情况。 可以使用以下命令轻松地验证是否出现这种情况：
+
+#### <a name="verifying-the-issue"></a>验证问题
+
+```PowerShell
+# Store the VM details in the VM object
+$vm = Get-AzureVM -ServiceName $servicename -Name $vmname
+
+# Display the data disk properties
+# NOTE the data disk LogicalDiskSizeInGB below which is 11GB. Also note the MediaLink Uri of the VHD blob as we'll use this in the next step
+$vm.VM.DataVirtualHardDisks
+
+
+HostCaching         : None
+DiskLabel           : 
+DiskName            : coreosvm-coreosvm-0-201611230636240687
+Lun                 : 0
+LogicalDiskSizeInGB : 11
+MediaLink           : https://contosostorage.blob.core.windows.net/vhds/coreosvm-dd1.vhd
+SourceMediaLink     : 
+IOType              : Standard
+ExtensionData       : 
+
+# Now get the properties of the blob backing the data disk above
+# NOTE the size of the blob is about 15 GB which is different from LogicalDiskSizeInGB above
+$blob = Get-AzureStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
+
+$blob
+
+ICloudBlob        : Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
+BlobType          : PageBlob
+Length            : 16106127872
+ContentType       : application/octet-stream
+LastModified      : 11/23/2016 7:16:22 AM +00:00
+SnapshotTime      : 
+ContinuationToken : 
+Context           : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
+Name              : coreosvm-dd1.vhd
+```
+
+#### <a name="mitigating-the-issue"></a>缓解问题
+
+```PowerShell
+# Convert the blob size in bytes to GB into a variable which we'll use later
+$newSize = [int]($blob.Length / 1GB)
+
+# See the calculated size in GB
+$newSize
+
+15
+
+# Store the disk name of the data disk as we'll use this to identify the disk to be updated
+$diskName = $vm.VM.DataVirtualHardDisks[0].DiskName
+
+# Identify the LUN of the data disk to remove
+$lunToRemove = $vm.VM.DataVirtualHardDisks[0].Lun
+
+# Now remove the data disk from the VM so that the disk isn't leased by the VM and it's size can be updated
+Remove-AzureDataDisk -LUN $lunToRemove -VM $vm | Update-AzureVm -Name $vmname -ServiceName $servicename
+
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Update-AzureVM       213xx1-b44b-1v6n-23gg-591f2a13cd16   Succeeded  
+
+# Verify we have the right disk that's going to be updated
+Get-AzureDisk -DiskName $diskName
+
+AffinityGroup        : 
+AttachedTo           : 
+IsCorrupted          : False
+Label                : 
+Location             : East US
+DiskSizeInGB         : 11
+MediaLink            : https://contosostorage.blob.core.windows.net/vhds/coreosvm-dd1.vhd
+DiskName             : coreosvm-coreosvm-0-201611230636240687
+SourceImageName      : 
+OS                   : 
+IOType               : Standard
+OperationDescription : Get-AzureDisk
+OperationId          : 0c56a2b7-a325-123b-7043-74c27d5a61fd
+OperationStatus      : Succeeded
+
+# Now update the disk to the new size
+Update-AzureDisk -DiskName $diskName -ResizedSizeInGB $newSize -Label $diskName
+
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Update-AzureDisk     cv134b65-1b6n-8908-abuo-ce9e395ac3e7 Succeeded 
+
+# Now verify that the "DiskSizeInGB" property of the disk matches the size of the blob 
+Get-AzureDisk -DiskName $diskName
+
+
+AffinityGroup        : 
+AttachedTo           : 
+IsCorrupted          : False
+Label                : coreosvm-coreosvm-0-201611230636240687
+Location             : East US
+DiskSizeInGB         : 15
+MediaLink            : https://contosostorage.blob.core.windows.net/vhds/coreosvm-dd1.vhd
+DiskName             : coreosvm-coreosvm-0-201611230636240687
+SourceImageName      : 
+OS                   : 
+IOType               : Standard
+OperationDescription : Get-AzureDisk
+OperationId          : 1v53bde5-cv56-5621-9078-16b9c8a0bad2
+OperationStatus      : Succeeded
+
+# Now we'll add the disk back to the VM as a data disk. First we need to get an updated VM object
+$vm = Get-AzureVM -ServiceName $servicename -Name $vmname
+
+Add-AzureDataDisk -Import -DiskName $diskName -LUN 0 -VM $vm -HostCaching ReadWrite | Update-AzureVm -Name $vmname -ServiceName $servicename
+
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Update-AzureVM       b0ad3d4c-4v68-45vb-xxc1-134fd010d0f8 Succeeded      
+```
 
 ## <a name="next-steps"></a>后续步骤
 下面是介绍该过程的迁移文章列表。
@@ -49,6 +172,6 @@ ms.openlocfilehash: 345db9b2e45937ea45329acf780601e4e0fbd504
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

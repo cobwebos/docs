@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
-ms.openlocfilehash: df2b27fd7016294f14d2ad87325a2acf24c15d85
+ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
+ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
 
 
 ---
@@ -83,7 +83,7 @@ Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 
 
 若要处理服务到服务方案但不使用应用服务身份验证，请使用客户端证书或基本身份验证。 有关 Azure 中客户端证书的信息，请参阅[如何为 Web 应用配置 TLS 相互身份验证](../app-service-web/app-service-web-configure-tls-mutual-auth.md)。 有关 ASP.NET 中基本身份验证的信息，请参阅 [ASP.NET Web API 2 中的身份验证筛选器](http://www.asp.net/web-api/overview/security/authentication-filters)。
 
-从应用服务逻辑应用到 API 应用的服务帐户身份验证是一个特殊情况，该情况在[在逻辑应用中使用在应用服务中托管的自定义 API](../app-service-logic/app-service-logic-custom-hosted-api.md) 中进行了介绍。
+从应用服务逻辑应用到 API 应用的服务帐户身份验证是一个特殊情况，该情况在[在逻辑应用中使用在应用服务中托管的自定义 API](../logic-apps/logic-apps-custom-hosted-api.md) 中进行了介绍。
 
 ## <a name="mobile-client-authentication"></a>移动客户端身份验证
 有关如何处理移动客户端的身份验证的信息，请参阅[有关移动应用的身份验证的文档](../app-service-mobile/app-service-mobile-ios-get-started-users.md)。 移动应用和 API 应用的应用服务身份验证运用相同的工作原理。
@@ -112,6 +112,6 @@ Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

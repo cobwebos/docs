@@ -16,13 +16,14 @@ ms.topic: article
 ms.date: 02/01/2016
 ms.author: mingzhan
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 98b2f3d9108c3f7a4179f5756d56fce9c5acd915
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 5acf43ac97fca98bc6d06a174b5fcc66f06a03b2
 
 
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>使用远程桌面连接到 Microsoft Azure Linux VM
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 ## <a name="overview"></a>概述
 RDP（远程桌面协议）是用于 Windows 的专用协议。 我们如何使用 RDP 远程连接至 Linux VM（虚拟机）？
@@ -115,6 +116,6 @@ Xrdp 是一个开源 RDP 服务器，支持你从 Windows 计算机通过远程�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

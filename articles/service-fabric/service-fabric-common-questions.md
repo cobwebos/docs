@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2016
+ms.date: 01/19/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: da356a95fc372c140e089a943e5fcb680f0c9fd7
-ms.openlocfilehash: 009fde75bff1b7746ad0ae247a3b895366f54b84
+ms.sourcegitcommit: 102be620e8812cc551aebafe7c8df4e4eac0ae90
+ms.openlocfilehash: 2ad3bd7b846693c637fd843383802651a619b128
 
 ---
 
@@ -39,15 +39,15 @@ ms.openlocfilehash: 009fde75bff1b7746ad0ae247a3b895366f54b84
 
 OS 更新的难题在于，它们通常需要重新启动计算机，而这会导致暂时失去可用性。 实现该请求本身不存在问题，因为 Service Fabric 会自动将这些服务的流量重定向到其他节点。 但是，如果不在群集之间协调 OS 更新，多个节点有可能会同时关闭。 这种同时重新启动可能会导致某个服务完全失去可用性，至少特定的分区会失去可用性（对于有状态服务）。
 
-将来，我们将会支持在更新域之间经过协调的 OS 更新策略，确保即使重新启动或发生其他意外故障，也仍能保持可用性。
+将来，我们将会支持在更新域之间完全自动化的、经过协调的 OS 更新策略，确保即使重新启动或发生其他意外故障，也仍能保持可用性。
 
-在此之前，唯一安全的做法是手动执行 OS 更新，每次更新一个节点。
+在此期间，我们[提供脚本](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/)，群集管理器可使用该脚本，以安全的方式手动启动每个节点的修补程序。
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric 群集的最小大小是多少？ 为何不能更小一点？
 
 运行生产工作负荷的 Service Fabric 群集支持的最小大小为五个节点。 对于开发/测试方案，我们支持三节点群集。
 
-之所以规定这些最小大小，是因为 Service Fabric 群集要运行一组有状态系统服务，包括命名服务和故障转移管理器。 这些服务跟踪哪些服务已部署到群集及其当前的托管位置，取决于非常一致性。 而这种非常一致性又取决于能否获取*仲裁*来更新这些服务的状态，其中，仲裁表示给定服务在严格意义上的大多数副本 (N/2 + 1)。
+之所以规定这些最小大小，是因为 Service Fabric 群集要运行一组有状态系统服务，包括命名服务和故障转移管理器。 这些服务跟踪哪些服务已部署到群集及其当前的托管位置，取决于非常一致性。 而这种非常一致性又取决于能否获取*仲裁*来更新这些服务的状态，其中，仲裁表示给定服务在严格意义上的大多数副本 (N/2 +&1;)。
 
 在了解这种背景的前提下，让我们探讨一些可能的群集配置：
 
@@ -103,9 +103,17 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 与 Reliable Services 一样，在执行组件服务中可以存储的数据量仅受群集中节点上的总磁盘空间和可用内存量的限制。 但是，如果使用单个执行组件来封装少量的状态和关联的业务逻辑，则它们可以发挥最大的效率。 一般规则是，单个执行组件中应该包含以 KB 计量的状态数据。
 
+## <a name="other-questions"></a>其他问题
+
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric 与容器之间存在怎样的关系？
 
 使用容器可以方便地打包服务及其依赖项，以便这些服务在所有环境中以一致的方式运行，在单台计算机上以隔离的方式工作。 使用 Service Fabric 可以部署和管理服务，包括[在容器中打包的服务](service-fabric-containers-overview.md)。
+
+### <a name="are-you-planning-to-open-source-service-fabric"></a>是否想要开放 Service Fabric 源代码？
+
+我们想要在 GitHub 上开放 Reliable Services 和 Reliable Actors 框架的源代码并接受社区对这些项目的投稿。 有关已发布的更多详细信息，请参阅 [Service Fabric 博客](https://blogs.msdn.microsoft.com/azureservicefabric/)。
+
+当前不打算开放 Service Fabric 运行时的源代码。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -113,6 +121,6 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Linux 代理用户指南 | Microsoft Docs"
+title: "Azure Linux VM 代理概述 | Microsoft Docs"
 description: "了解如何安装和配置 Linux 代理 (waagent) 以管理您的虚拟机与 Azure 结构控制器的交互。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 43d3ad9e2b50a84cb9fd70582eb03b9d7d45d788
+ms.sourcegitcommit: 02579f138f957e5d245290e2cb8fc448120a4701
+ms.openlocfilehash: e77fee96710e99dab664f61d4c64aea0b12944ad
 
 
 ---
@@ -49,7 +49,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
   * 确保网络接口名称的稳定性
 * **内核**
   
-  * 配置虚拟 NUMA（版本低于 2.6.37 的内核已禁用）
+  * 配置虚拟 NUMA（版本低于&2;.6.37 的内核已禁用）
   * 将 Hyper-V 熵用于 /dev/random
   * 为根设备配置 SCSI 超时（可能通过远程方式）
 * **诊断**
@@ -309,6 +309,6 @@ Linux 代理的正常运行依赖一些系统程序包：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

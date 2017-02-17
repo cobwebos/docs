@@ -1,5 +1,5 @@
 ---
-title: "车辆遥测分析解决方案操作手册 | Microsoft Docs"
+title: "预测车辆的运行状况和行驶习惯 - Azure | Microsoft Docs"
 description: "通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 307ed83dc1f47bb86af4a476acbb51876012ff25
-ms.openlocfilehash: e4311a740ccb4cac2c1d6e7e1197a736d3a4a777
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: 3467c5549381f1354987fead424646afe847739c
 
 
 ---
@@ -61,6 +61,6 @@ Microsoft 的 Cortana Intelligence 是一个完全托管的大数据和高级分
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

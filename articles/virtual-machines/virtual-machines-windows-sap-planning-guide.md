@@ -1,5 +1,5 @@
 ---
-title: "Azure 虚拟机 (VM) 上的 SAP NetWeaver - 规划和实施指南 | Microsoft Docs"
+title: "Azure VM 上的 SAP NetWeaver - 规划和实施 | Microsoft Docs"
 description: "Azure 虚拟机 (VM) 上的 SAP NetWeaver - 规划和实施指南"
 services: virtual-machines-windows
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 translationtype: Human Translation
-ms.sourcegitcommit: 08f82498d46b2e67d55ad7dfb05efdb266e7fc61
-ms.openlocfilehash: 56da763a21da7c55aa0cd295a04fa22b2815d2ac
+ms.sourcegitcommit: 06b8f8cc99809338fcf512fb8e4bbf72721cb243
+ms.openlocfilehash: 433b2bc5d602c1117c2ef2e16399eb6d29b425d7
 
 
 ---
@@ -503,11 +503,11 @@ Microsoft Azure 虚拟机使用不同的存储类型。 在 Azure 虚拟机服�
 实际的驱动器是易失性的，因为它存储在主机服务器自身中。 如果将 VM 迁入重新部署的服务中（例如，由于在主机上执行维护，或者关闭再重新启动主机），驱动器的内容将会丢失。 因此，建议不要将任何重要数据存储在此驱动器中。 此存储类型使用的媒体类型因不同的 VM 系列而异，并且有相当不同的性能特征，截至 2015 年 6 月的类型如下所示：
 
 * A5-A7：非常有限的性能。 不建议用于页面文件以外的目的
-* A8-A11：性能特征极佳，高达数万的 IOPS 和 1GB/秒以上的吞吐量。
-* D 系列：性能特征极佳，高达数万的 IOPS 和 1GB/秒以上的吞吐量。
-* DS 系列：性能特征极佳，高达数万的 IOPS 和 1GB/秒以上的吞吐量。
-* G 系列：性能特征极佳，高达数万的 IOPS 和 1GB/秒以上的吞吐量。
-* GS 系列：性能特征极佳，高达数万的 IOPS 和 1GB/秒以上的吞吐量。
+* A8-A11：性能特征极佳，高达数万的 IOPS 和&1;GB/秒以上的吞吐量。
+* D 系列：性能特征极佳，高达数万的 IOPS 和&1;GB/秒以上的吞吐量。
+* DS 系列：性能特征极佳，高达数万的 IOPS 和&1;GB/秒以上的吞吐量。
+* G 系列：性能特征极佳，高达数万的 IOPS 和&1;GB/秒以上的吞吐量。
+* GS 系列：性能特征极佳，高达数万的 IOPS 和&1;GB/秒以上的吞吐量。
 
 以上表述适用于已通过 SAP 认证的 VM 类型。 具有优异 IOPS 和吞吐量的 VM 系列可供某些 DBMS 功能使用。 有关详细信息，请参阅 [DBMS 部署指南][dbms-guide]。
 
@@ -1874,6 +1874,6 @@ Azure 中 SAP 系统的高可用性要点如下：
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 虚拟机安全概述 | Microsoft Docs"
-description: " Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。  本文概述了能够与 Azure 虚拟机配合使用的核心 Azure 安全功能。 "
+title: "与 Azure 虚拟机配合使用的 Azure 安全功能 | Microsoft Docs"
+description: " 能够与 Azure 虚拟机配合使用的 Azure 核心安全功能概述。 通过 Azure VM 可灵活进行虚拟化，无需购买和维护运行 VM 的物理硬件. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 3f504db7d67fdf196fbdaaaba2e09d989449b101
-ms.openlocfilehash: 0be0500296ad9bed302f65da9ef8de63e0ed08f6
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 5e9dcd9913cf301e7c5a50eb9e55fb0b3dc303e5
 
 
 ---
@@ -154,6 +154,6 @@ Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

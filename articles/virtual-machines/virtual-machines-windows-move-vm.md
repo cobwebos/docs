@@ -1,5 +1,5 @@
 ---
-title: "移动 Windows VM | Microsoft Docs"
+title: "在 Azure 中移动 Windows VM 资源 | Microsoft Docs"
 description: "在 Resource Manager 部署模型中将 Windows VM 移到其他 Azure 订阅或资源组。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
-ms.openlocfilehash: 2464b54f70dc38b79a883b08664f4f165ec4c2d3
+ms.sourcegitcommit: 6b80fa78fea505cd22bae2925ce1affbc1e48ab9
+ms.openlocfilehash: cccbddd6993e3011e3e76bc84ffc212f3f8b1d55
 
 
 ---
@@ -66,6 +66,6 @@ ms.openlocfilehash: 2464b54f70dc38b79a883b08664f4f165ec4c2d3
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

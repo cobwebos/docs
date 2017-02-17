@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b113eb43148f9085c6e36787cb344050a438f351
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 931954e312b02c7a71acc7a3268b5ee3c0a11708
 
 
 ---
@@ -110,16 +110,19 @@ ms.openlocfilehash: b113eb43148f9085c6e36787cb344050a438f351
 
 对注册表的写访问被阻止，包括对任何按用户注册表项的访问。 从应用角度来说，对注册表的写访问永远不应依赖于 Azure 环境，因为应用可以（并且也是这样做的）跨不同虚拟机进行迁移。 应用可依赖的唯一持久可写入存储是在应用服务 UNC 共享上存储的按应用内容目录结构。 
 
+## <a name="more-information"></a>详细信息
+
+[Azure Web App sandbox](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)（Azure Web 应用沙盒）- 有关应用服务的执行环境的最新信息。 此页由应用服务开发团队直接维护。
+
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
-[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

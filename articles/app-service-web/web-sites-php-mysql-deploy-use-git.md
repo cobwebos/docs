@@ -13,16 +13,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1b1da346a253443c0b5eaf6f8a9a5a399923e760
 
 
 ---
 # <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-git"></a>使用 Git 在 Azure App Service 中创建和部署 PHP-MySQL Web 应用
-本教程演示如何创建 PHP-MySQL Web 应用以及如何使用 Git 将该应用部署到[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)。 将使用计算机上已安装的 [PHP][install-php]、MySQL 命令行工具（[MySQL][install-mysql] 的一部分）和 [Git][install-git]。 本教程中的说明适用于任何操作系统，包括 Windows、Mac 和 Linux。 完成本指南之后，将获得一个在 Azure 中运行的 PHP/MySQL Web 应用。
+本教程演示如何创建 PHP-MySQL Web 应用以及如何使用 Git 将该应用部署到[应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)。 需要使用计算机上已安装的 [PHP][install-php]、MySQL 命令行工具（[MySQL][install-mysql] 的一部分）和 [Git][install-git]。 本教程中的说明适用于任何操作系统，包括 Windows、Mac 和 Linux。 完成本指南之后，将获得一个在 Azure 中运行的 PHP/MySQL Web 应用。
 
 你将学习以下内容：
 
@@ -35,7 +35,7 @@ ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
 ![Azure PHP 网站][running-app]
 
 ## <a name="set-up-the-development-environment"></a>设置开发环境
-本教程假定你的计算机上已经安装了 [PHP][install-php]、MySQL 命令行工具（[MySQL][install-mysql] 的一部分）和 [Git][install-git]。
+本教程假定计算机上已安装 [PHP][install-php]、MySQL 命令行工具（[MySQL][install-mysql] 的一部分）和 [Git][install-git]。
 
 <a id="create-web-site-and-set-up-git"></a>
 
@@ -234,7 +234,7 @@ ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
     ![Azure PHP 网站][running-app]
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -243,7 +243,7 @@ ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
 ## <a name="enable-composer-automation-with-the-composer-extension"></a>使用编辑器扩展启用编辑器自动化
 默认情况下，如果 PHP 项目中有 composer.json，则应用服务中的 git 部署过程与其不相关。 `git push` 期间可以通过启用编辑器扩展启用 composer.json 处理。
 
-1. 在 [Azure 门户][management-portal]的 PHP Web 应用的边栏选项卡中，依次单击“工具” > “扩展”。
+1. 在 [Azure 门户][management-portal]中的 PHP Web 应用的边栏选项卡中，单击“工具” > “扩展”。
    
     ![设置编辑器扩展插件][composer-extension-settings]
 2. 单击“添加”，然后单击“编辑器”。
@@ -279,7 +279,7 @@ ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
 [new-mysql-db]: ./media/web-sites-php-mysql-deploy-use-git/create_db.png
 [go-to-webapp]: ./media/web-sites-php-mysql-deploy-use-git/select_webapp.png
 [setup-git-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_git_publishing.png
-[凭据]: ./media/web-sites-php-mysql-deploy-use-git/save_credentials.png
+[credentials]: ./media/web-sites-php-mysql-deploy-use-git/save_credentials.png
 [resource-group]: ./media/web-sites-php-mysql-deploy-use-git/set_group.png
 [new-web-app]: ./media/web-sites-php-mysql-deploy-use-git/create_wa.png
 [setup-publishing]: ./media/web-sites-php-mysql-deploy-use-git/setup_deploy.png
@@ -299,6 +299,6 @@ ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

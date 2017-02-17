@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2016
+ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: f6ce639dd0ee8386d3bd9ff48f5a05cb392d7979
-ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
+ms.sourcegitcommit: ef9c1d5511889cf78421d24f9c5902bf188890c7
+ms.openlocfilehash: 35db86988cf3d62401d6caecc7214411ddc2c498
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 在 Azure 媒体服务 (AMS) 中，**频道**表示用于处理实时传送视频流内容的管道。 **频道**通过以下两种方式之一接收实时输入流：
 
 * 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理 （分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
-* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到无法通过 AMS 进行实时编码的频道。 引入流将通过**频道**，而不会进行任何进一步处理。 这种方法称为**直通**。 可以使用以下输出多比特率平滑流的实时编码器：Elemental、Envivio、Cisco。  以下实时编码器输出 RTMP：Adobe Flash Live、Telestream Wirecast 和 Tricaster 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到无法通过 AMS 进行实时编码的频道。 引入流将通过**频道**，而不会进行任何进一步处理。 这种方法称为**直通**。 可以使用以下输出多比特率平滑流式处理的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
   
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
@@ -80,11 +80,6 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 
 ![实时工作流][live-overview]
 
-## <a name="in-this-topic"></a>本主题内容
-* [常见的实时传送视频流方案](media-services-manage-live-encoder-enabled-channels.md#scenario)概述
-* [频道及其相关组件的说明](media-services-manage-live-encoder-enabled-channels.md#channel)
-* [注意事项](media-services-manage-live-encoder-enabled-channels.md#Considerations)
-
 ## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>常见的实时流方案
 以下是在创建常见的实时流应用程序时涉及的常规步骤。
 
@@ -110,7 +105,9 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
     使用 .NET SDK 或 REST 时，你需要创建一个资源并指定在创建节目时要使用该资源。 
 6. 发布与节目关联的资源。   
    
-    确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
+    >[!NOTE]
+    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+    
 7. 在准备好开始流式传输和存档时，启动节目。
 8. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
 9. 在要停止对事件进行流式传输和存档时，停止节目。
@@ -217,7 +214,7 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 
 创建频道后，你可以获得引入 URL。 若要获取这些 URL，频道不一定要处于“正在运行”状态。 准备好开始将数据推送到频道时，频道必须处于“正在运行”状态。 在频道开始引入数据后，你可以通过预览 URL 来预览流。
 
-可以选择通过 SSL 连接引入分片 MP4（平滑流）实时流。 若要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。
+可以选择通过 SSL 连接引入分片 MP4（平滑流）实时流。 若要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 请注意，目前 AMS 对自定义域不支持 SSL。  
 
 ### <a name="allowed-ip-addresses"></a>允许的 IP 地址
 你可以定义允许向此频道发布视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”），或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。
@@ -262,7 +259,7 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 #### <a name="index"></a>索引
 一个从零开始的索引，它指定哪个输入视频流应由频道内的实时编码器处理。 仅当引入流协议是 RTP (MPEG-TS) 时，此设置才适用。
 
-默认值为 0。 建议在单节目传输流 (SPTS) 中发送。 如果输入流包含多个节目，实时编码器将分析输入中的节目映射表 (PMT)，标识流类型名称为 MPEG-2 Video 或 H.264 的输入并以 PMT 中指定的顺序安排这些输入。 然后，将使用从零开始的索引选取该安排中的第 n 个条目。
+默认值为&0;。 建议在单节目传输流 (SPTS) 中发送。 如果输入流包含多个节目，实时编码器将分析输入中的节目映射表 (PMT)，标识流类型名称为 MPEG-2 Video 或 H.264 的输入并以 PMT 中指定的顺序安排这些输入。 然后，将使用从零开始的索引选取该安排中的第 n 个条目。
 
 ### <a name="audio-stream"></a>音频流
 可选。 描述输入音频流。 如果未指定此字段，则将应用指定的默认值。 仅当输入流协议设为 RTP (MPEG-TS) 时，才允许使用此设置。
@@ -307,7 +304,7 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 以下是指示广告时可以设置的属性。 
 
 ### <a name="duration"></a>持续时间
-商业广告的持续时间（以秒为单位）。 这必须是非零正值，才能启动商业广告。 当商业广告正在播放时，将持续时间设为 0，并且 CueId 与正在播放的商业广告匹配，则广告将被取消。
+商业广告的持续时间（以秒为单位）。 这必须是非零正值，才能启动商业广告。 当商业广告正在播放时，将持续时间设为&0;，并且 CueId 与正在播放的商业广告匹配，则广告将被取消。
 
 ### <a name="cueid"></a>CueId
 商业广告的唯一 ID，下游应用程序将使用它来执行相应操作。 必须是一个正整数。 可以将此值设为任意随机正整数，或使用上游系统跟踪提示 ID。 在通过 API 提交之前，请确保将任何 ID 规范化为正整数。
@@ -332,9 +329,10 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 
 可选。 指定媒体服务资源（包含清单图像）的资源 ID。 默认值为 null。 
 
->
+
 >[!NOTE] 
->在创建频道之前，具有以下约束的盖板图像应当作为专用资产上传（该资产中不应有其他文件）。 
+>在创建频道之前，具有以下约束的盖板图像应当作为专用资产上传（该资产中不应有其他文件）。 只有在广告时间，或已明确收到信号要求插入盖板时，实时编码器才会插入盖板，此时才会使用此图像。 实时编码器在某些错误条件下也会转到盖板模式 - 例如输入信号丢失时。 实时编码器进入这种“输入信号丢失”状态时，目前无法使用自定义图像。 可在[此处](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel)建议提供此功能。
+
 
 * 分辨率最大为 1920x1080。
 * 大小最大为 3 MB。
@@ -348,7 +346,7 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 
 可以通过设置 **存档窗口** 长度，指定你希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
 
-每个节目都与存储流式处理内容的资源相关联。 资产将映射到 Azure Storage 帐户中的 BLOB 容器，资产中的文件则作为该容器中的 BLOB 存储。 若要发布节目，以便客户可以查看该流，必须为关联的资源创建按需定位符。 创建此定位符后，你可以生成提供给客户端的流 URL。
+每个节目都与存储流式处理内容的资源相关联。 资产映射到 Azure 存储帐户中的 blob 容器，资产中的文件作为 blob 存储在该容器中。 若要发布节目，以便客户可以查看该流，必须为关联的资源创建按需定位符。 创建此定位符后，你可以生成提供给客户端的流 URL。
 
 一个频道最多支持三个同时运行的节目，因此你可以为同一传入流创建多个存档。 这样，你便可以根据需要发布和存档事件的不同部分。 例如，你的业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，你需要创建两个同时运行的节目。 一个节目设置为存档 6 小时的事件但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
@@ -397,7 +395,7 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 * 当频道或其关联的节目正在运行时，无法更改输入协议。 如果你需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 仅当频道处于“正在运行”状态时才会向你收费。 有关详细信息，请参阅[此](media-services-manage-live-encoder-enabled-channels.md#states)部分。
 * 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请通过 Microsoft.com 联系 amslived。
-* 确保你要从中以流形式传输内容的流式传输终结点上至少有一个流式传输保留单元。
+* 确保使要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 * 在 Azure 中输入多个语言轨迹和执行实时编码时，多语言输入仅支持 RTP。 使用 MPEG-2 TS over RTP 最多可以定义 8 个音频流。 当前不支持使用 RTMP 或平滑流引入多个音频轨迹。 使用[本地实时编码](media-services-live-streaming-with-onprem-encoders.md)执行实时编码时，不存在这种限制，因为发送到 AMS 的任何数据都会通过频道，而不做进一步的处理。
 * 编码预设使用“最大帧速率”30 fps 的思路。 因此，如果输入为 60fps/59.97i，则输入帧将修剪/反交错为 30/29.97 fps。 因此，如果输入为 50fps/50i，则输入帧将修剪/反交错为 25 fps。 如果输入为 25 fps，则输出将保持为 25 fps。
 * 完成后请不要忘记关闭你的通道。 否则会继续计费。
@@ -407,16 +405,6 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 * RTP 支持迎合专业的广播装置。 请查看[此](https://azure.microsoft.com/blog/2015/04/13/an-introduction-to-live-encoding-with-azure-media-services/)博客中有关 RTP 的说明。
 * 盖板图像应符合[此处](media-services-manage-live-encoder-enabled-channels.md#default_slate)所述的限制。 如果你想要尝试创建默认静态图像大于 1920x1080 的频道，最终请求将会出错。
 * 再次强调，完成流式处理后请不要忘记关闭你的通道。 否则会继续计费。
-
-### <a name="how-to-create-channels-that-perform-live-encoding-from-a-singe-bitrate-to-adaptive-bitrate-stream"></a>如何创建频道以执行从单比特率到自适应比特率流的实时编码
-选择“门户”、“.NET”、“REST API”，了解如何创建和管理频道和节目。
-
-> [!div class="op_single_selector"]
-> * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
-> * [.NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
-> 
-> 
 
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。
@@ -429,6 +417,12 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 ## <a name="related-topics"></a>相关主题
 [使用 Azure 媒体服务传送实时传送视频流事件](media-services-overview.md)
 
+[创建通道，通过门户执行从单比特率到自适应比特率流的实时编码](media-services-portal-creating-live-encoder-enabled-channel.md)
+
+[创建通道，通过 NET SDK 执行从单比特率到自适应比特率流的实时编码](media-services-dotnet-creating-live-encoder-enabled-channel.md)
+
+[通过 REST API 管理通道](https://docs.microsoft.com/rest/api/media/operations/channel)
+ 
 [媒体服务概念](media-services-concepts.md)
 
 [Azure 媒体服务零碎的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
@@ -438,6 +432,6 @@ ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

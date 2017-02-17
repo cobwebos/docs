@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 12/13/2016
-ms.author: b-hoedid
+ms.date: 01/25/2017
+ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: b22e75264345bc9d155bd1abc1fdb6e978dfad04
-ms.openlocfilehash: bafc50750381616ecf30c4e41090f342d82007f9
+ms.sourcegitcommit: f2586eae5ef0437b7665f9e229b0cc2749bff659
+ms.openlocfilehash: 894856c6386b26610ca5078238a88adcdd2d9a03
 
 
 ---
@@ -47,7 +47,7 @@ DocumentDB 中发生的更改可以保存、以异步方式进行处理，以及
 
 ![基于 Azure DocumentDB 的 lambda 引入和查询管道](./media/documentdb-change-feed/lambda.png)
 
-可以使用 DocumentDB 接收和存储设备、传感器、基础架构和应用程序发出的事件数据，然后使用 [Azure 流分析](documentdb-search-indexer.md)、[Apache Storm](../hdinsight/hdinsight-storm-overview.md) 或 [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) 实时处理这些事件。 
+可以使用 DocumentDB 接收和存储设备、传感器、基础架构和应用程序发出的事件数据，然后使用 [Azure 流分析](../stream-analytics/stream-analytics-documentdb-output.md)、[Apache Storm](../hdinsight/hdinsight-storm-overview.md) 或 [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) 实时处理这些事件。 
 
 在 Web 应用和移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或位置的更改），以触发特定的操作，例如，使用 [Azure Functions](../azure-functions/functions-bindings-documentdb.md) 或[应用服务](https://azure.microsoft.com/services/app-service/)向客户的设备发送推送通知。 例如，若要使用 DocumentDB 来构建游戏，可以使用更改源，根据已完成的游戏的分数实时更新排行榜。
 
@@ -74,7 +74,7 @@ DocumentDB 提供名为**集合**的弹性存储和吞吐量容器。 集合中�
 ### <a name="readdocumentfeed-api"></a>ReadDocumentFeed API
 让我们简单了解一下 ReadDocumentFeed 的工作原理。 DocumentDB 支持通过 `ReadDocumentFeed` API 读取集合中文档的源。 例如，以下请求返回 `serverlogs` 集合中的文档页面。 
 
-    GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/smallcoll HTTP/1.1
+    GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/serverlogs HTTP/1.1
     x-ms-date: Tue, 22 Nov 2016 17:05:14 GMT
     authorization: type%3dmaster%26ver%3d1.0%26sig%3dgo7JEogZDn6ritWhwc5hX%2fNTV4wwM1u9V2Is1H4%2bDRg%3d
     Cache-Control: no-cache
@@ -172,20 +172,24 @@ DocumentDB 提供名为**集合**的弹性存储和吞吐量容器。 集合中�
     <tr>
         <td>minInclusive</td>
         <td>分区键范围的最小分区键哈希值。 供内部使用。</td>
-    </tr>       
+    </tr>        
 </table>
 
 可以使用一个支持的 [DocumentDB SDK](documentdb-sdk-dotnet.md) 完成此操作。 例如，以下代码片段演示如何在 .NET 中检索分区键范围。
 
+    string pkRangesResponseContinuation = null;
     List<PartitionKeyRange> partitionKeyRanges = new List<PartitionKeyRange>();
-    FeedResponse<PartitionKeyRange> response;
 
     do
     {
-        response = await client.ReadPartitionKeyRangeFeedAsync(collection);
-        partitionKeyRanges.AddRange(response);
+        FeedResponse<PartitionKeyRange> pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
+            collectionUri, 
+            new FeedOptions { RequestContinuation = pkRangesResponseContinuation });
+
+        partitionKeyRanges.AddRange(pkRangesResponse);
+        pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     }
-    while (response.ResponseContinuation != null);
+    while (pkRangesResponseContinuation != null);
 
 DocumentDB 支持通过设置可选的 `x-ms-documentdb-partitionkeyrangeid` 标头按分区键范围检索文档。 
 
@@ -254,24 +258,31 @@ ReadDocumentFeed 支持使用以下方案/任务对 DocumentDB 集合中的更�
     Accept: application/json
     Host: mydocumentdb.documents.azure.com
 
-更改已按分区键范围内每个分区键值中的时间排序。 无法保证各分区键值中的顺序一致。 如果结果太多，无法在一个页面中显示，可以使用 `If-None-Match` 标头（其值等于前一响应中的 `etag`）重新提交请求来阅读下一页结果。 如果在存储过程或触发器中以事务方式更新了多个文档，这些文档都会在同一个响应页面中返回。
+更改已按分区键范围内每个分区键值中的时间排序。 无法保证各分区键值中的顺序一致。 如果结果太多，无法在一个页面中显示，可以使用 `If-None-Match` 标头（其值等于前一响应中的 `etag`）重新提交请求来阅读下一页结果。 如果在存储过程或触发器中以事务方式插入或更新了多个文档，这些文档都会在同一个响应页面中返回。
 
-.NET SDK 提供 `CreateDocumentChangeFeedQuery` 和 `ChangeFeedOptions` 帮助器类来访问对集合所做的更改。 以下代码片段演示如何在单个客户端中使用.NET SDK 检索从一开始所做的全部更改。
+> [!NOTE]
+> 通过更改源，在存储过程或触发器中插入或更新了多个文档的情况下，页面中可能会返回比 `x-ms-max-item-count` 中指定的数目更多的项。 
+
+.NET SDK 提供 [CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) 和 [ChangeFeedOptions](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.changefeedoptions.aspx)帮助器类，以访问对集合进行的更改。 以下代码片段演示如何在单个客户端中使用.NET SDK 检索从一开始所做的全部更改。
 
     private async Task<Dictionary<string, string>> GetChanges(
         DocumentClient client,
         string collection,
         Dictionary<string, string> checkpoints)
     {
+        string pkRangesResponseContinuation = null;
         List<PartitionKeyRange> partitionKeyRanges = new List<PartitionKeyRange>();
-        FeedResponse<PartitionKeyRange> pkRangesResponse;
 
         do
         {
-            pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(collection);
+            FeedResponse<PartitionKeyRange> pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
+                collectionUri, 
+                new FeedOptions { RequestContinuation = pkRangesResponseContinuation });
+
             partitionKeyRanges.AddRange(pkRangesResponse);
+            pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
         }
-        while (pkRangesResponse.ResponseContinuation != null);
+        while (pkRangesResponseContinuation != null);
 
         foreach (PartitionKeyRange pkRange in partitionKeyRanges)
         {
@@ -334,6 +345,7 @@ ReadDocumentFeed 支持使用以下方案/任务对 DocumentDB 集合中的更�
 * 使用 [DocumentDB SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 开始编写代码
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

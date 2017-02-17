@@ -1,5 +1,5 @@
 ---
-title: "跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业 | Microsoft Docs"
+title: "调试 Azure HDInsight 中 Apache Spark 群集上运行的作业 | Microsoft Docs"
 description: "使用 YARN UI、Spark UI 和 Spark History Server 来跟踪和调试 Azure HDInsight 中的 Spark 群集上运行的作业"
 services: hdinsight
 documentationcenter: 
@@ -13,22 +13,23 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 849e883a707cd84564a5cfae76f31494057ab181
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: d6d7c0d112778172633fa068a119ba075c0fd900
 
 
 ---
-# <a name="track-and-debug-jobs-running-on-apache-spark-cluster-in-hdinsight-linux"></a>跟踪和调试 HDInsight Linux 中的 Apache Spark 群集上运行的作业
+# <a name="track-and-debug-jobs-running-on-apache-spark-cluster-in-hdinsight"></a>跟踪和调试 HDInsight 中 Apache Spark 群集上运行的作业
+
 在本文中，你将了解如何使用 YARN UI、Spark UI 和 Spark History Server 来跟踪和调试 Spark 作业。 在本文中，将使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅 **Machine learning: Predictive analysis on food inspection data using MLLib**（机器学习：使用 MLLib 对食物检测数据进行预测分析）。 也可以执行以下步骤来跟踪使用任何其他方法（例如 **spark-submit**）提交的应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 必须满足以下条件：
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 * 你应该已开始运行笔记本，相关信息请参阅 **[Machine learning: Predictive analysis on food inspection data using MLLib](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**（机器学习：使用 MLLib 对食品检测数据进行预测分析）。 有关如何运行此笔记本的说明，请单击以下链接。  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>在 YARN UI 中跟踪应用程序
@@ -132,6 +133,6 @@ ms.openlocfilehash: 849e883a707cd84564a5cfae76f31494057ab181
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

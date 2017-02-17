@@ -1,5 +1,5 @@
 ---
-title: "使用跨平台 Azure CLI 在 HDInsight 中的 Linux 上创建 Hadoop、HBase 或 Storm 群集 | Microsoft Docs"
+title: "使用命令行创建 Azure HDInsight (Hadoop) | Microsoft Docs"
 description: "了解如何使用跨平台 Azure CLI、Azure Resource Manager 模板和 Azure REST API 创建 HDInsight 群集。 可以指定群集类型（Hadoop、HBase 或 Storm），或使用脚本来安装自定义组件。"
 services: hdinsight
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: c9a5091973395dd888939432292fbd06dcbf0680
-ms.openlocfilehash: 8beb6f5bc48d41df65287e665496dc899fb70457
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 777168c5d48cc589c54a12265bd54e87c4b64274
 
 
 ---
@@ -136,6 +136,6 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

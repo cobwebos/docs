@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中将 Azure 事件中心与 Apache Spark 配合使用以处理流数据 | Microsoft Docs"
+title: "借助 Azure HDInsight 中的 Apache Spark 流式处理来自事件中心的数据 | Microsoft Docs"
 description: "逐步说明如何向 Azure 事件中心发送数据流，然后使用 scala 应用程序在 Spark 接收这些事件"
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 264f299f5b9dc71070b0cf497f2044081456a1cc
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: ef0757914828128ed4edf569aeb3716300b17dee
 
 
 ---
-# <a name="spark-streaming-process-events-from-azure-event-hubs-with-apache-spark-cluster-on-hdinsight-linux"></a>Spark Streaming：在 HDInsight Linux 上使用 Apache Spark 群集处理来自 Azure 事件中心的事件
+# <a name="spark-streaming-process-events-from-azure-event-hubs-with-apache-spark-cluster-on-hdinsight"></a>Spark Streaming：在 HDInsight 上使用 Apache Spark 群集处理来自 Azure 事件中心的事件
 Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量、容错的流处理应用程序。 可以从许多来源引入数据。 在本文中，我们将使用 Azure 事件中心来引入数据。 事件中心是高度可缩放的引入系统，每秒可以引入数以百万计的事件。 
 
 在本教程中，你将学习如何创建 Azure 事件中心，使用以 Java 编写的控制台应用程序将消息引入事件中心，以及使用以 Scala 编写的 Spark 应用程序同时检索这些消息。 此应用程序使用通过事件中心流式处理的数据，并将其路由到不同的输出（Azure 存储 Blob、Hive 表和 SQL 表）。
@@ -36,7 +36,7 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
 必须满足以下条件：
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 * Oracle Java 开发工具包。 可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装。
 * Java IDE。 本文使用 IntelliJ IDEA 15.0.1。 可以从[此处](https://www.jetbrains.com/idea/download/)安装。
 * 适用于 SQL Server v4.1 或更高版本的 Microsoft JDBC 驱动程序。 必须需要此插件将事件数据写入 SQL Server 数据库。 可以从[此处](https://msdn.microsoft.com/sqlserver/aa937724.aspx)安装。
@@ -53,7 +53,7 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
 1. 在 [Azure 门户](https://manage.windowsazure.com)中，选择“新建” > “服务总线” > “事件中心” > “自定义创建”。
 2. 在“添加新事件中心”屏幕中，输入“事件中心名称”，选择“区域”以在其中创建中心，然后创建新的命名空间或选择现有命名空间。 单击“箭头”继续。
    
-    ![向导页 1](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.create.event.hub.png "Create an Azure Event Hub")
+    ![向导页 1](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.create.event.hub.png "创建 Azure 事件中心")
    
    > [!NOTE]
    > 应选择与 HDInsight 中 Apache Spark 群集相同的“位置”，以降低延迟和成本。
@@ -61,7 +61,7 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
    > 
 3. 在“配置事件中心”屏幕中，输入“分区计数”和“消息保留期”值，然后单击复选标记。 对于本示例，请使用分区计数 10，消息保留期 1。 记下分区计数，因为稍后需要用到。
    
-    ![向导页 2](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.create.event.hub2.png "Specify partition size and retention days for Event Hub")
+    ![向导页 2](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.create.event.hub2.png "为事件中心指定分区大小和保留天数")
 4. 单击创建的事件中心，单击“配置”，然后为事件中心创建两个访问策略。
    
     <table>
@@ -72,13 +72,13 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
    
     创建权限后，在页面底部选择“保存”图标。 这将创建共享访问策略，用于对此事件中心进行发送 (**mysendpolicy**) 和侦听 (**myreceivepolicy**)。
    
-    ![策略](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policies.png "Create Event Hub policies")
+    ![策略](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policies.png "创建事件中心策略")
 5. 在同一页上，记下针对这两个策略生成的策略密钥。 请保存这些密钥，因为稍后将要用到。
    
-    ![策略密钥](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policy.keys.png "Save policy keys")
+    ![策略密钥](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policy.keys.png "保存策略密钥")
 6. 在“仪表板”页上，单击底部的“连接信息”以使用两个策略来检索和保存事件中心的连接字符串。
    
-    ![策略密钥](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policy.connection.strings.png "Save policy connection strings")
+    ![策略密钥](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policy.connection.strings.png "保存策略连接字符串")
 
 ## <a name="use-a-scala-application-to-send-messages-to-event-hub"></a>使用 Scala 应用程序将消息发送到事件中心
 在本部分中，你将使用独立的本地 Scala 应用程序将事件流发送到在前一步骤中创建的 Azure 事件中心。 可从 GitHub 获取此应用程序，网址为：[https://github.com/hdinsight/eventhubs-sample-event-producer](https://github.com/hdinsight/eventhubs-sample-event-producer)。 以下步骤假设你已复制此 GitHub 存储库。
@@ -129,7 +129,7 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
      1. 在已打开应用程序的 IntelliJ IDEA 窗口中，依次单击“文件”、“项目结构”和“库”。 
      2. 单击添加图标（![添加图标](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)），单击“Java”，然后导航到 JDBC 驱动程序 jar 所下载到的位置。 按照提示将 jar 文件添加到项目库。
         
-         ![添加缺少的依赖项](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "Add missing dependency jars")
+         ![添加缺少的依赖项](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "添加缺少的依赖项 jar")
      3. 单击“应用” 。
 7. 创建输出 jar 文件。 执行以下步骤。
    
@@ -343,6 +343,6 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

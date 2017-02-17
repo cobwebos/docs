@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics 视图设计器 | Microsoft Docs"
-description: "Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义视图，以包含 OMS 存储库中数据的多种可视化效果。 本文包含了视图设计器以及创建和编辑自定义视图的过程概述。"
+title: "创建视图来分析 OMS Log Analytics 中的数据 | Microsoft Docs"
+description: "通过 Log Analytics 中的视图设计器可创建自定义视图，其可在 OMS 和 Azure 门户中显示，且包含 OMS 存储库中数据的多种可视化效果。 本文包含了视图设计器以及创建和编辑自定义视图的过程概述。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: efe0eeb6c9389545f51f22bbf0a2d6389939c375
+ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
+ms.openlocfilehash: e101972777e45bcf3b49b113c6fd92d220ad43fc
 
 
 ---
-# <a name="log-analytics-view-designer"></a>Log Analytics 视图设计器
-Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义视图，以包含 OMS 存储库中不同数据的可视化效果。 本文包含了视图设计器以及创建和编辑自定义视图的过程概述。
+# <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>使用视图设计器在 Log Analytics 中创建自定义视图
+通过 [Log Analytics]() 中的视图设计器可在 OMS 控制台中创建自定义视图，其包含 OMS 存储库中不同数据的可视化效果。 本文包含了视图设计器以及创建和编辑自定义视图的过程概述。
 
 可用于视图设计器的其他文章有：
 
@@ -99,6 +99,6 @@ Log Analytics 中的视图设计器允许你在 OMS 控制台中创建自定义�
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

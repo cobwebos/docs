@@ -16,13 +16,18 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: c0fcfc1087e8635f6ec2a0cdc246f1155c90ea53
+ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
+ms.openlocfilehash: 010a8a377150292fcb533a1af99adcc7c782bceb
 
 
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Solr
-了解如何使用 Solr 通过脚本操作来自定义基于 Windows 的 HDInsight 群集，以及如何使用 Solr 来搜索数据。 有关在基于 Linux 的群集中使用 Solr 的信息，请参阅[在 HDinsight Hadoop 群集 (Linux) 上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md)。
+# <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Solr
+
+了解如何使用 Solr 通过脚本操作来自定义基于 Windows 的 HDInsight 群集，以及如何使用 Solr 来搜索数据。 
+
+> [!IMPORTANT]
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关在基于 Linux 的群集中使用 Solr 的信息，请参阅[在 HDinsight Hadoop 群集 (Linux) 上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md)。
+
 
 可以使用脚本操作，在 Azure HDInsight 的任何一种群集（Hadoop、Storm、HBase、Spark）上安装 Solr。 用于在 HDInsight 群集上安装 Solr 的示例脚本可通过 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) 上的只读 Azure 存储 Blob 获得。
 
@@ -54,7 +59,7 @@ ms.openlocfilehash: c0fcfc1087e8635f6ec2a0cdc246f1155c90ea53
             <td>指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如 <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
         <tr><td>节点类型</td>
             <td>指定在其上运行自定义脚本的节点。 可以选择“所有节点”<b></b>、“仅限头节点”<b></b>或“仅限辅助角色节点”<b></b>。
-        <tr><td>参数</td>
+        <tr><td>parameters</td>
             <td>根据脚本的需要，指定参数。 用于安装 Solr 的脚本不需要任何参数，因此，你可以将此项保留为空。</td></tr>
     </table>
 
@@ -183,6 +188,6 @@ ms.openlocfilehash: c0fcfc1087e8635f6ec2a0cdc246f1155c90ea53
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

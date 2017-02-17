@@ -15,8 +15,8 @@ ms.workload: tbd
 ms.date: 10/24/2016
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 38529bf9869b38c5c932cdac56aafe0bd9045fae
+ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
+ms.openlocfilehash: 578059c397319147c8716e2152901dfdc15a28cd
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 38529bf9869b38c5c932cdac56aafe0bd9045fae
 2. 你未在云服务的 ServiceConfiguration.cscfg 文件中显式指定 osFamily 的值。 当前，系统对此情况使用默认值“1”。
 3. Azure 经典门户将你的来宾操作系统系列值列为“Windows Server 2008”。
 
-若要了解你的哪个云服务在运行哪个 OS 系列，你可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](../powershell-install-configure.md)。 有关该脚本的其他详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。 
+若要了解你的哪个云服务在运行哪个 OS 系列，你可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 有关该脚本的其他详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。 
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -77,6 +77,6 @@ foreach($subscription in Get-AzureSubscription) {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

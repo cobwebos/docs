@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ea90d0179ef64ed2de56ff4933fe4d23a928b606
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e9465afb560a73d74f853c19094b3ee75b8c470c
 
 
 ---
@@ -68,6 +68,6 @@ ms.openlocfilehash: ea90d0179ef64ed2de56ff4933fe4d23a928b606
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

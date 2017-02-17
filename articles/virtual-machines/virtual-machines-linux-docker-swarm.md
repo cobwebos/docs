@@ -16,15 +16,14 @@ ms.workload: infrastructure
 ms.date: 01/04/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 5cf20d5cccba235984b74a780ba63b0b69f7a20a
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 834bb8a60c3dcb2d0b50809ffb0e4780579b2cda
 
 
 ---
 # <a name="how-to-use-docker-with-swarm"></a>如何将 docker 与 swarm 一起使用
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-有关用于部署 Docker Swarm 的 Resource Manager 模板，请参阅[此处](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关用于部署 Docker Swarm 的 Resource Manager 模板，请参阅[此处](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
 
 本主题介绍非常简单的方法，以将 [docker](https://www.docker.com/) 与 [swarm](https://github.com/docker/swarm) 一起使用在 Azure 上创建 swarm 托管群集。 它在 Azure 中创建四个虚拟机，其中一个虚拟机充当 swarm 管理器，而另外三个虚拟机则为 docker 主机群集的一部分。 完成时，可以使用 swarm 查看群集，然后开始在其上使用 docker。 此外，本主题中的 Azure CLI 调用使用服务管理 (asm) 模式。 
 
@@ -146,6 +145,6 @@ ms.openlocfilehash: 5cf20d5cccba235984b74a780ba63b0b69f7a20a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

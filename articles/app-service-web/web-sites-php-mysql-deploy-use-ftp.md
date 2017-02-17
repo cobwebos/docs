@@ -12,16 +12,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 134239990df959fe2657340eca4f2a8bf646a7b0
 
 
 ---
 # <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-ftp"></a>使用 FTP 在 Azure App Service 中创建和部署 PHP-MySQL Web 应用
-本教程演示如何创建 PHP-MySQL Web 应用以及如何使用 FTP 部署该应用。 本教程假定已在计算机上安装了 [PHP][install-php]、[MySQL][install-mysql]、Web 服务器和 FTP 客户端。 本教程中的说明适用于任何操作系统，包括 Windows、Mac 和 Linux。 完成本指南之后，将获得一个在 Azure 中运行的 PHP/MySQL Web 应用。
+本教程演示如何创建 PHP-MySQL Web 应用以及如何使用 FTP 部署该应用。 本教程假定你已在计算机上安装 [PHP][install-php]、[MySQL][install-mysql]、Web 服务器和 FTP 客户端。 本教程中的说明适用于任何操作系统，包括 Windows、Mac 和 Linux。 完成本指南之后，将获得一个在 Azure 中运行的 PHP/MySQL Web 应用。
 
 将学习以下内容：
 
@@ -33,7 +33,7 @@ ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
 ![Azure PHP 网站][running-app]
 
 > [!NOTE]
-> 如果想要在注册帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。 
+> 如果想要在注册帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。 
 > 
 > 
 
@@ -67,7 +67,7 @@ ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
 * **index.php**：显示一个用于注册的表单和一个包含注册者信息的表。
 * **createtable.php**：创建用于应用程序的 MySQL 表。 此文件只使用一次。
 
-若要本地构建和运行应用，请执行下列步骤。 请注意，这些步骤假定已在本地计算机上设置了 PHP、MySQL 和 Web 服务器，并且已启用 [MySQL 的 PDO 扩展][pdo-mysql]。
+若要本地构建和运行应用，请执行下列步骤。 请注意，这些步骤假定你已在本地计算机上设置 PHP、MySQL 和 Web 服务器，并且已启用 [MySQL 的 PDO 扩展][pdo-mysql]。
 
 1. 创建名为 `registration` 的 MySQL 数据库。 可以在 MySQL 命令提示符中使用此命令执行此操作：
    
@@ -197,7 +197,7 @@ ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
             echo "<h3>No one is currently registered.</h3>";
         }
 
-现在可以浏览到 [http://localhost/registration/index.php][localhost-index] 来测试应用。
+你现在可以浏览到 [http://localhost/registration/index.php][localhost-index] 来测试应用。
 
 ## <a name="get-mysql-and-ftp-connection-information"></a>获取 MySQL 和 FTP 连接信息
 若要连接到正在 Web Apps 中运行的 MySQL 数据库，你将需要连接信息。 若要获取 MySQL 连接信息，请按照以下步骤操作：
@@ -276,6 +276,6 @@ ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

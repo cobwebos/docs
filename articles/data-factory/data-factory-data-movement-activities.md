@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: ef5c1f296a0a4ee6476db663e85c49c351f826b9
-ms.openlocfilehash: 53a2012a1d928c961cbfbdcea485ae18d776360f
+ms.sourcegitcommit: da98bc3e4dda1a05cba38701c0042f1c023c419a
+ms.openlocfilehash: 40b172356b3171557d6309a6bb2984fba34f485d
 
 
 ---
@@ -66,11 +66,12 @@ ms.openlocfilehash: 53a2012a1d928c961cbfbdcea485ae18d776360f
 ### <a name="supported-file-formats"></a>支持的文件格式
 可使用复制活动在两个基于文件的数据存储（例如 Azure Blob、Azure Data Lake Store、Amazon S3、FTP、文件系统和 HDFS）之间**按原样复制文件**。 为此，可在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
 
-复制活动还可读取和写入特定格式的文件：**文本、Avro、ORC、Parquet 和 JSON**。 可执行以下复制活动，例如：
+复制活动还以特定格式从文件中读取并写入到文件：**text、Avro、ORC、Parquet 和 JSON**，并且压缩编解码器**GZip、Deflate、BZip2 和 ZipDeflate** 也受支持。 可执行以下复制活动，例如：
 
-* 从 Azure Blob 复制文本 (CSV) 格式数据，并将其写入 Azure SQL 数据库。
-* 从本地复制文件系统中的文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
-* 复制 Azure SQL 数据库中的数据并将其以 ORC 格式本地写入 HDFS。
+* 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
+* 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
+* 从本地 SQL Server 中复制数据，并将其以 ORC 格式写入 Azure Data Lake Store。
+* 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
 
 ## <a name="a-nameglobalaglobally-available-data-movement"></a><a name="global"></a>全局可用的数据移动
 Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 但是，为复制活动提供支持的服务在以下区域和地域内全局可用。 全局可用拓扑可确保高效的数据移动，此类移动通常避免跨区域跃点。 有关某区域内数据工厂和数据移动的可用性，请参阅[服务（按区域）](https://azure.microsoft.com/regions/#services)。
@@ -103,10 +104,10 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | 。 | 印度西部 | 印度中部 |
 | 。 | 印度南部 | 印度中部 |
 
+或者可以通过指定复制活动 `typeProperties` 下的 `executionLocation` 属性，明确指示要用于执行复制的数据工厂服务的区域。 上述**用于数据移动的区域**列中列举了此属性支持的值。 请注意复制过程中数据将通过网络经过该区域。 例如，在英国的 Azure 存储间进行复制时，可以将 `executionLocation` 指定为“欧洲北部”，以便经过欧洲北部。
 
 > [!NOTE]
-> 如果目标数据存储的区域不在上方列表中，复制活动将失败，而不会通过其他区域完成。
->
+> 如果目标数据存储的区域不在上方列表中或未找到该区域，默认情况下，复制活动将失败，而不会通过其他区域完成，除非指定了 `executionLocation`。 以后支持的区域列表还将扩大。
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>在本地数据存储和云数据存储之间复制数据
@@ -180,7 +181,7 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 若要详细了解如何在数据工厂中计划和执行活动，请参阅[计划和执行](data-factory-scheduling-and-execution.md)。 可以按顺序或以有序的方式依次运行多个复制操作。 请参阅[按顺序复制](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)部分。
 
 ## <a name="type-conversions"></a>类型转换
-不同数据存储具有不同本机类型系统。 复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：
+不同数据存储具有不同本机类型系统。 复制活动使用以下&2; 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型。
 2. 从 .NET 类型转换为本机接收器类型。
@@ -193,6 +194,6 @@ JSON 属性（例如名称、说明、输入和输出表，以及策略）可用
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

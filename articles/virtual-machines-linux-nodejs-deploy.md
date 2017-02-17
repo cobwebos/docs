@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 02/02/2016
 ms.author: stephpr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 044007fc099007ea64d958fb6c15a6ed29eccdcc
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 0de0314902805a2bdb37ce3c6f79ec221f3aed31
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 044007fc099007ea64d958fb6c15a6ed29eccdcc
 > 
 > 如果没有 GitHub 帐户，可以在[此处](https://github.com/join)注册。
 > 
-> 如果没有 [Microsoft Azure](https://azure.microsoft.com/) 帐户，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)注册免费试用版。 如果还没有 Microsoft 帐户，这也将引导用户完成 [Microsoft 帐户](http://account.microsoft.com)的注册过程。 或者，如果是 Visual Studio 订户，则可以[激活 MSDN 权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
+> 如果没有 [Microsoft Azure](https://azure.microsoft.com/) 帐户，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)注册免费试用版。 如果还没有 Microsoft 帐户，这也将引导用户完成 [Microsoft 帐户](http://account.microsoft.com)的注册过程。 或者，如果是 Visual Studio 订户，则可以[激活 MSDN 权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 > 
 > 如果开发计算机上没有 Git，并且使用的是 Macintosh 或 Windows 计算机，请从[此处](http://www.git-scm.com)安装 Git。 如果你使用的是 Linux，请使用最适合你的机制安装 Git，如 `sudo apt-get install git`。
 > 
@@ -261,6 +261,6 @@ Git 公开了大量挂钩，这些挂钩在特定时间的调用以响应对存�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

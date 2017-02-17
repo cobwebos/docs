@@ -1,5 +1,5 @@
 ---
-title: "将策略应用到 Azure Resource Manager 虚拟机 | Microsoft Docs"
+title: "通过 Azure 中 Windows VM 上的策略强制执行安全性 | Microsoft Docs"
 description: "如何将策略应用到 Azure Resource Manager Windows 虚拟机"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 6f2e187a4767ac75350a629ace6e15e3ba3eee33
-ms.openlocfilehash: ca4f7c854008131d56747e316a1a0a7d5f8aac61
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 83470aaf607a666a63bae5b9897d0b273e327377
 
 
 ---
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>将策略应用到 Azure Resource Manager 虚拟机
+# <a name="apply-security-and-policies-to-windows-vms-with-azure-resource-manager"></a>通过 Azure Resource Manager 将安全性和策略应用至 Windows VM
 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 在本文中，我们将介绍如何使用 Azure Resource Manager 策略来为组织中的虚拟机定义所需行为。
 
 下面概述了实现此目的的步骤
@@ -34,7 +34,7 @@ ms.openlocfilehash: ca4f7c854008131d56747e316a1a0a7d5f8aac61
 ## <a name="azure-resource-manager-policy-101"></a>Azure Resource Manager 策略 101
 若要开始使用 Azure Resource Manager 策略，我们建议你先阅读以下文章，然后继续执行本文中的步骤。 以下文章介绍了策略的基本定义和结构以及如何评估策略，并提供了策略定义的各种示例。
 
-* [使用策略来管理资源和控制访问](../resource-manager-policy.md)
+* [使用策略来管理资源和控制访问](../azure-resource-manager/resource-manager-policy.md)
 
 ## <a name="define-a-policy-for-your-virtual-machine"></a>为虚拟机定义策略
 企业中常用的一种方案可能是，只允许其用户在经测试可与 LOB 应用程序兼容的特定操作系统中创建虚拟机。 使用 Azure Resource Manager 策略可以通过几个步骤完成此任务。
@@ -84,7 +84,7 @@ ms.openlocfilehash: ca4f7c854008131d56747e316a1a0a7d5f8aac61
 #### <a name="virtual-machine-property-fields"></a>虚拟机属性字段
 下表描述了可在策略定义中用作字段的虚拟机属性。 有关策略字段的详细信息，请参阅以下文章：
 
-* [字段和源](../resource-manager-policy.md#conditions)
+* [字段和源](../azure-resource-manager/resource-manager-policy.md#conditions)
 
 | 字段名称 | 说明 |
 | --- | --- |
@@ -96,15 +96,15 @@ ms.openlocfilehash: ca4f7c854008131d56747e316a1a0a7d5f8aac61
 ## <a name="create-the-policy"></a>创建策略
 可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。 有关创建策略的信息，请参阅以下文章：
 
-* [创建策略](../resource-manager-policy.md#create-and-assign-a-policy)
+* [创建策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
 
 ## <a name="apply-the-policy"></a>应用策略
 创建策略后，需要根据定义的范围来应用它。 范围可以是订阅、资源组甚至资源。 有关应用策略的信息，请参阅以下文章：
 
-* [创建策略](../resource-manager-policy.md#create-and-assign-a-policy)
+* [创建策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

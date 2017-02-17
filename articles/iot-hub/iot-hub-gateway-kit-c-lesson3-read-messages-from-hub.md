@@ -1,6 +1,6 @@
 ---
-title: "从 Azure IoT 中心读取消息 |Microsoft Docs"
-description: "在主机上运行示例代码，以便从 IoT 中心读取消息。"
+title: "SensorTag 设备和 Azure IoT 网关 - 第 3 课：读取消息 | Microsoft Docs"
+description: "在主计算机上运行示例代码，从 IoT 中心读取消息。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: 09b0e0321b08a11622633e727cf8be54c1707436
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 0a5dd7e010ba46b724bb6a2526dc2a2730acc10f
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 09b0e0321b08a11622633e727cf8be54c1707436
 
 ## <a name="what-you-will-do"></a>执行的操作
 
-- 在主机计算机上运行示例代码，以便从 IoT 中心读取消息。
+- 在主计算机上运行示例代码，从 IoT 中心读取消息。
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-troubleshooting.md)上查找解决方案。
 
@@ -101,6 +101,6 @@ gulp run --iot-hub
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

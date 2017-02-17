@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2016
+ms.date: 01/19/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2def733a07d3e8132f998c29538df1c7cbacfee4
+ms.sourcegitcommit: 8b88db5bb2c8153953109fcd0511c22042bcf931
+ms.openlocfilehash: bef30df14f6d00c4a7f5f5b3d59ec85b2e4fbe10
 
 
 ---
@@ -34,10 +34,14 @@ ms.openlocfilehash: 2def733a07d3e8132f998c29538df1c7cbacfee4
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **一个 Azure HDInsight 群集**
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * **配备 Azure PowerShell 的工作站**。
-  
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ## <a name="a-idpowershellarun-pig-jobs-using-powershell"></a><a id="powershell"></a>使用 PowerShell 运行 Pig 作业
 Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业。 从内部来讲，这是通过使用 REST 调用 HDInsight 群集上运行的 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)（以前称为 Templeton）实现的。
@@ -52,27 +56,22 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
 以下步骤演示了如何使用这些 Cmdlet 在 HDInsight 群集上运行作业。
 
-1. 使用编辑器将以下代码保存为 **pigjob.ps1**。 必须将 **CLUSTERNAME** 替换为 HDInsight 群集的名称。
+1. 使用编辑器将以下代码保存为 **pigjob.ps1**。
    
-        #Login to your Azure subscription
-        Login-AzureRmAccount
-        #Get credentials for the admin/HTTPs account
-        $creds = Get-Credential
-   
-        #Specify the cluster name
-        $clusterName = "CLUSTERNAME"
-   
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName = $clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container = $clusterInfo.DefaultStorageContainer
-        $storageAccountKey = (Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-        -ResourceGroupName $resourceGroup)[0].Value
-   
+        # Login to your Azure subscription
+        # Is there an active Azure subscription?
+        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+        if(-not($sub))
+        {
+            Add-AzureRmAccount
+        }
+
+        # Get cluster info
+        $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+        $creds=Get-Credential -Message "Enter the login for the cluster"
+
         #Store the Pig Latin into $QueryString
-        $QueryString =  "LOGS = LOAD 'wasbs:///example/data/sample.log';" +
+        $QueryString =  "LOGS = LOAD 'wasb:///example/data/sample.log';" +
         "LEVELS = foreach LOGS generate REGEX_EXTRACT(`$0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
         "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
         "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
@@ -104,16 +103,15 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
         Get-AzureRmHDInsightJobOutput `
             -ClusterName $clusterName `
             -JobId $pigJob.JobId `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
             -HttpCredential $creds
+
 
 1. 打开新的 Windows PowerShell 命令提示符。 将目录更改为 **pigjob.ps1** 文件的所在位置，然后使用以下命令来运行脚本：
    
         .\pigjob.ps1
    
     系统将提示你首先登录到 Azure 订阅。 然后，将要求你输入 HDInsight 群集的 HTTPs/Admin 帐户名称和密码。
+
 2. 在作业完成时，它应返回如下信息：
    
         Start the Pig job ...
@@ -127,6 +125,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
         (FATAL,2)
 
 ## <a name="a-idtroubleshootingatroubleshooting"></a><a id="troubleshooting"></a>故障排除
+
 如果在作业完成时未返回任何信息，则可能表示处理期间发生错误。 若要查看此作业的错误信息，请将以下命令添加到 **pigjob.ps1** 文件的末尾，保存，然后重新运行该文件。
 
     # Print the output of the Pig job.
@@ -134,9 +133,6 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
     Get-AzureRmHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
@@ -158,6 +154,6 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

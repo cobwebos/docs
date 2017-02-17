@@ -3,7 +3,7 @@ title: "基于 Azure VM 创建 Azure RemoteApp 映像 | Microsoft Docs"
 description: "了解如何从 Azure 虚拟机开始创建 Azure RemoteApp 的映像。"
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: mbaldwin
 ms.assetid: d41583ef-6cd8-4115-8dcb-b2cd5b3d301a
 ms.service: remoteapp
@@ -11,11 +11,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 8b02336b05b78d7787caabd59347814af4337ec3
+ms.sourcegitcommit: 310cb63756806c8fab208c47bce6c7292ea5e5d7
+ms.openlocfilehash: 61e8a49475129486505111bd595f98af955ed809
 
 
 ---
@@ -62,6 +62,6 @@ ms.openlocfilehash: 8b02336b05b78d7787caabd59347814af4337ec3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

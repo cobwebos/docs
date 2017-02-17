@@ -1,5 +1,5 @@
 ---
-title: "保存 Azure Batch 中的作业和任务输出 | Microsoft Docs"
+title: "保留作业和任务的输出内容 - Azure Batch | Microsoft Docs"
 description: "了解如何使用 Azure 存储作为 Batch 任务和作业输出的持久性存储，在 Azure 门户中查看这些保存的输出。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/05/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 1ae4ee2e8728ac8bcbc1dc528eb76d11a2f3d8a3
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: e5231970b772f7cc043441954ebab6cb1bb6ed8b
 
 
 ---
@@ -172,7 +172,7 @@ using (ITrackedSaveOperation stdout =
 > 
 
 ## <a name="retrieve-output"></a>检索输出
-使用 Azure Batch 文件约定库检索保存的输出时，将以任务和作业为中心的方式执行此操作。 你可以请求给定任务或作业的输出，而无需知道输出在 Blob 存储中的路径，甚至不需要知道其文件名。 只需提出，“给我返回任务 109 的输出文件。”
+使用 Azure Batch 文件约定库检索保存的输出时，将以任务和作业为中心的方式执行此操作。 你可以请求给定任务或作业的输出，而无需知道输出在 Blob 存储中的路径，甚至不需要知道其文件名。 只需提出，“给我返回任务&109; 的输出文件。”
 
 以下代码片段将循环访问某个作业的所有任务，列显有关该任务的输出文件的一些信息，然后从存储空间下载该任务的文件。
 
@@ -251,6 +251,6 @@ Azure 门户将显示使用 [Azure Batch 文件约定自述文件][github_file_c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

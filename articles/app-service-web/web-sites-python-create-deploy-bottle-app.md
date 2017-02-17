@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/19/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2be2e66c035ec90991f71c6632e7bcf056003a08
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: f7b54a1a6266d6728ac81e0b709febb1d6f00f9f
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 2be2e66c035ec90991f71c6632e7bcf056003a08
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -83,7 +83,7 @@ ms.openlocfilehash: 2be2e66c035ec90991f71c6632e7bcf056003a08
     \BottleWebProject.pyproj
     \BottleWebProject.sln
 
-用于 [Python Tools for Visual Studio]的项目文件。
+[用于 Visual Studio 的 Python 工具]的项目文件。
 
     \ptvs_virtualenv_proxy.py
 
@@ -351,7 +351,7 @@ Visual Studio 不会显示部署的进度。 如果您想要查看输出，请�
 [python.org]: http://www.python.org/
 [Git for Windows]: http://msysgit.github.io/
 [GitHub for Windows]: https://windows.github.com/
-[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[用于 Visual Studio 的 Python 工具]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
 [Python Tools for Visual Studio 文档]: http://aka.ms/ptvsdocs 
@@ -360,6 +360,6 @@ Visual Studio 不会显示部署的进度。 如果您想要查看输出，请�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

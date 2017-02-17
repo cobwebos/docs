@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fb8a8563d41827ce22604e2fb485c84a1441efa2
-ms.openlocfilehash: 2aea15d4560d225bed18438b93d88bb8f64b71b9
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 8b74f2e4169ac97e09da12d5ed85e0e24b50e150
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 2aea15d4560d225bed18438b93d88bb8f64b71b9
 
 * [在 HDInsight Hadoop 群集 (Linux) 上安装并使用 R](hdinsight-hadoop-r-scripts-linux.md)
 * [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息
-* [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关如何使用脚本操作自定义 HDInsight 群集的一般信息
+* [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)
 
 ## <a name="what-is-r"></a>什么是 R？
@@ -101,19 +101,19 @@ R 与 Azure Blob 存储 (WASB) 兼容，这样，存储在此的数据可以在 
 ## <a name="see-also"></a>另请参阅
 * [在 HDInsight Hadoop 群集 (Linux) 上安装并使用 R](hdinsight-hadoop-r-scripts-linux.md)
 * [在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息
-* [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关如何使用脚本操作自定义 HDInsight 群集的一般信息
+* [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)
-* [在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]：有关如何安装 Spark 的脚本操作示例
+* [在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]：有关安装 Spark 的脚本操作示例
 * [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install.md)：有关如何安装 Giraph 的脚本操作示例
 * [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install-linux.md)：有关如何安装 Solr 的脚本操作示例。
 
-[powershell-install-configure]: powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

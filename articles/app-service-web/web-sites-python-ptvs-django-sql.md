@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/07/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 154d2cd9b7f4ea51d3fd4c1995b67a25816b28a2
-ms.openlocfilehash: 9abb70b1e0442071325fdc93a503478ba8d10b0f
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c5e01ef322f72eb5a704fd2273194315bf1a9f6f
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: 9abb70b1e0442071325fdc93a503478ba8d10b0f
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 >
 >
 
@@ -179,6 +179,6 @@ ms.openlocfilehash: 9abb70b1e0442071325fdc93a503478ba8d10b0f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

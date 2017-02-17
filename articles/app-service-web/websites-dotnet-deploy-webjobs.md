@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 04/27/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 606762146d159ecf5d2d94d5d51ddb319c06c8f4
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: 9f792f6ea082461f3304516fc9b4c3273e2f50b8
 
 
 ---
@@ -120,7 +120,7 @@ ms.openlocfilehash: 606762146d159ecf5d2d94d5d51ddb319c06c8f4
 * 计划程序作业命名为 *{webappname}-{webjobname}*。 例如：MyWebApp-MyWebJob。 
 
 > [!NOTE]
-> * 有关命令行部署的信息，请参阅[启用 Azure Web 作业的命令行或连续传送](/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)。
+> * 有关命令行部署的信息，请参阅[启用 Azure Web 作业的命令行或连续传送](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)。
 > * 如果已配置“定期作业”，并将周期频率设置为分钟数，则无法免费使用 Azure 计划程序。 其他频率（小时数、天数等）是免费的。
 > * 如果你部署了某个 Web 作业，但后来想要更改该 Web 作业的类型并重新部署，那么，你需要删除 webjobs-publish-settings.json 文件。 这样，Visual Studio 就会再次显示发布选项，使你可以更改 Web 作业的类型。
 > * 如果你部署了某个 Web 作业，并随后将运行模式从连续更改为非连续（或相反），则在你重新部署时，Visual Studio 将在 Azure 中创建新的 Web 作业。 如果更改了其他计划设置但保持运行模式不变，或在计划模式与按需模式之间切换，则 Visual Studio 会更新现有的作业，而不是创建新的作业。
@@ -179,6 +179,6 @@ ms.openlocfilehash: 606762146d159ecf5d2d94d5d51ddb319c06c8f4
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

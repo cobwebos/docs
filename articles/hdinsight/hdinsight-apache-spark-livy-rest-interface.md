@@ -1,5 +1,5 @@
 ---
-title: "使用 Livy 远程提交 Spark 作业 | Microsoft Docs"
+title: "使用 Livy 向 Azure HDInsight 上的 Spark 远程提交作业 | Microsoft Docs"
 description: "了解如何在 HDInsight 中使用 Livy 来远程提交 Spark 作业。"
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0866581d6feebc71ed82aa48f6e41a58068af900
-ms.openlocfilehash: 0b8c9f9395f034355c8f10574e750fcf40e870de
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 3c349aecc87e28275045828a84e0ea3f89400b9e
 
 
 ---
-# <a name="submit-spark-jobs-remotely-to-an-apache-spark-cluster-on-hdinsight-linux-using-livy"></a>使用 Livy 向 HDInsight Linux 上的 Apache Spark 群集远程提交作业
+# <a name="submit-spark-jobs-remotely-to-an-apache-spark-cluster-on-hdinsight-using-livy"></a>使用 Livy 向 HDInsight 上的 Apache Spark 群集远程提交作业
+
 Azure HDInsight 上的 Apache Spark 群集包含 Livy，这是一个 REST 接口，用于向 Spark 群集远程提交作业。 有关详细文档，请参阅 [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)。
 
 你可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。 本文介绍如何使用 Livy 提交批处理作业。 以下语法使用 Curl 向 Livy 终结点发出 REST 调用。
@@ -31,7 +32,7 @@ Azure HDInsight 上的 Apache Spark 群集包含 Livy，这是一个 REST 接口
 必须满足以下条件：
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="submit-a-batch-job"></a>提交批处理作业
 在提交批处理作业之前，必须将应用程序 jar 上载到与群集关联的群集存储。 可以使用命令行实用工具 [**AzCopy**](../storage/storage-use-azcopy.md) 来执行此操作。 可以使用其他许多客户端来上载数据。 有关详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](hdinsight-upload-data.md)。
@@ -193,6 +194,6 @@ HDInsight 3.5 群集默认情况下禁止使用本地文件路径访问示例数
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

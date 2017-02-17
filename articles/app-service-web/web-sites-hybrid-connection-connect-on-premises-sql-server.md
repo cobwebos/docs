@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/09/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7e3c1440cc2b669c574c2c0160a0d282b5f27bca
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c940f490908a3b934c108b214b5ef2af44698059
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 7e3c1440cc2b669c574c2c0160a0d282b5f27bca
 在本教程中，你将了解如何在 [Azure 管理门户](http://go.microsoft.com/fwlink/?LinkId=529715)中创建应用服务 Web 应用、如何使用新的混合连接功能将 Web 应用连接至本地 SQL Server 数据库，以及如何创建将使用混合连接的简单 ASP.NET 应用程序并将该应用程序部署到应用服务 Web 应用。 在 Azure 上完成的 Web 应用将用户凭据存储在本地成员资格数据库中。 本教程假定读者之前未使用过 Azure 或 ASP.NET。
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 混合连接功能的 Web 应用部分仅在 [Azure 门户](https://portal.azure.com)中提供。 若要在 BizTalk 服务中创建连接，请参阅[混合连接](http://go.microsoft.com/fwlink/p/?LinkID=397274)。  
 > 
@@ -195,7 +195,7 @@ ms.openlocfilehash: 7e3c1440cc2b669c574c2c0160a0d282b5f27bca
     撰写连接字符串时，请记住：
    
    * 如果连接至命名实例而不是默认实例（例如 YourServer\SQLEXPRESS），必须对 SQL Server 进行配置以使用静态端口。 有关配置静态端口的信息，请参阅[如何配置 SQL Server 以在特定端口上进行侦听](http://support.microsoft.com/kb/823938)。 默认情况下，命名实例使用 UDP 和动态端口，而混合连接对此不支持。
-   * 建议指定端口（默认为 1433，如示例中所示）和连接字符串，以便可确保本地 SQL Server 启用了 TCP 并使用的是正确的端口。
+   * 建议指定端口（默认为&1433;，如示例中所示）和连接字符串，以便可确保本地 SQL Server 启用了 TCP 并使用的是正确的端口。
    * 请记住使用 SQL Server 身份验证进行连接，以在连接字符串中指定用户 ID 和密码。
 3. 在 Visual Studio 中单击“保存”保存 Web.config 文件。
 
@@ -335,6 +335,6 @@ ms.openlocfilehash: 7e3c1440cc2b669c574c2c0160a0d282b5f27bca
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

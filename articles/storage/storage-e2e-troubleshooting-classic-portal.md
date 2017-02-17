@@ -1,21 +1,21 @@
 ---
-title: "使用 Azure 存储度量值和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除 | Microsoft Docs"
-description: "本教程演示如何使用 Azure 存储分析、AzCopy 和 Microsoft Message Analyzer 进行端到端故障排除"
+title: "使用诊断和消息分析器对 Azure 存储进行故障排除 | Microsoft Docs"
+description: "本教程演示如何使用 Azure 存储分析、AzCopy 和 Microsoft Message Analyzer 进行点对点故障排除"
 services: storage
 documentationcenter: dotnet
 author: robinsh
-manager: carmonm
+manager: timlt
 ms.assetid: 6b23cba5-0d53-439e-870b-de8e406107d8
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 01/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: f2032f3a4fa559b9772ee63d39d66408b3f92175
-ms.openlocfilehash: 5a07c355259c61cfde9f2c1e5f056a0b7f794861
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: c6e2c3415e6853b4df11f28a6dd59e7561a8e0cc
 
 
 ---
@@ -83,7 +83,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 ## <a name="generate-log-files-for-analysis"></a>生成日志文件用于分析
 在本教程中，我们将使用 Message Analyzer 来处理三种不同类型的日志文件，不过，你可以选择要处理的类型之一：
 
-* **服务器日志**，该日志是在启用 Azure 存储日志记录时创建的。 服务器日志中的数据针对的是就某个 Azure 存储服务（Blob、队列、表和文件）调用的各项操作。 服务器日志将指示调用的操作、返回的状态代码，以及有关请求和响应的其他详细信息。
+* **服务器日志**，该日志是在启用 Azure 存储日志记录时创建的。 服务器日志包含有关针对 Azure 存储服务（Blob、队列、表和文件）之一调用的每个操作的数据。 服务器日志将指示调用的操作、返回的状态代码，以及有关请求和响应的其他详细信息。
 * **.NET 客户端日志**，这是在从 .NET 应用程序内部启用客户端日志记录时创建的。 客户端日志包括有关客户端准备请求以及接收和处理响应的详细信息。 
 * **HTTP 网络跟踪日志**，它收集有关 HTTP/HTTPS 请求的数据和响应数据，包括针对 Azure 存储的操作的数据。 在本教程中，我们将通过 Message Analyzer 生成网络跟踪。
 
@@ -103,7 +103,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 **通过 PowerShell**
 
-若要开始使用 Azure 适用的 PowerShell，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+若要开始使用 Azure 适用的 PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 1. 通过 [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) cmdlet，将 Azure 用户帐户添加到 PowerShell 窗口中：
    
@@ -180,7 +180,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 ![选择度量值](./media/storage-e2e-troubleshooting-classic-portal/choose-metrics-portal-1.png)
 
-在 Azure 经典门户中，现可在监视图中看到“成功百分比”，并查看任何其他已添加的度量值（图表中一次最多显示 6 个）。 在下图中可以看到，成功率百分比略低于 100%，这是接下来我们要在 Message Analyzer 中通过分析日志调查的情况：
+在 Azure 经典门户中，现可在监视图中看到“成功百分比”，并查看任何其他已添加的度量值（图表中一次最多显示&6; 个）。 在下图中可以看到，成功率百分比略低于 100%，这是接下来我们要在 Message Analyzer 中通过分析日志调查的情况：
 
 ![门户中的度量值图表](./media/storage-e2e-troubleshooting-classic-portal/portal-metrics-chart-1.png)
 
@@ -200,7 +200,7 @@ Azure 存储空间将服务器日志数据写入 Blob，将度量值写入表。
 AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 ```
 
-可从“Azure 下载”[](https://azure.microsoft.com/downloads/)页下载 AzCopy。 若要深入了解如何使用 AzCopy，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
+可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页下载 AzCopy。 若要深入了解如何使用 AzCopy，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
 若要深入了解如何下载服务器端日志，请参阅 [Downloading Storage Logging log data](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)（下载存储日志记录日志数据）。 
 
@@ -257,11 +257,11 @@ Azure 存储客户端库会自动为每个请求生成唯一的客户端请求 I
 ### <a name="select-a-view-layout-to-display-in-the-analysis-grid"></a>选择要在分析网格中显示的视图布局
 Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是一些预配置的视图，可用于显示不同情况下的数据，以及有用的分组和列。 你还可以创建自定义视图布局，并保存它们以供重复使用。 
 
-下图显示了“视图布局”菜单，可在工具栏功能区选择“视图布局”访问进行访问。 Azure 存储的视图布局位于菜单中的“Azure 存储”节点下。 可在搜索框中搜索 `Azure Storage`，仅筛选 Azure 存储空间视图布局。 还可以选择某个视图布局旁边的星形，使之成为收藏的布局并显示在菜单顶部。
+下图显示了“视图布局”菜单，可在工具栏功能区选择“视图布局”访问进行访问。 Azure 存储的视图布局位于菜单中的“Azure 存储”节点下。 可以在搜索框中搜索 `Azure Storage`，以仅筛选 Azure 存储空间视图布局。 还可以选择某个视图布局旁边的星形，使之成为收藏的布局并显示在菜单顶部。
 
 ![“视图布局”菜单](./media/storage-e2e-troubleshooting-classic-portal/view-layout-menu.png)
 
-若要开始，请选择“按客户端请求 ID 和模块分组”。 此视图布局按以下顺序对所有 3 个日志中的日志数据进行分组：先按客户端请求 ID，再按源日志文件（Message Analyzer 中则为**模块**）。 使用此视图可以深入到特定的客户端请求 ID，并查看该客户端请求 ID 的所有三个日志文件中的数据。
+若要开始，请选择“按客户端请求 ID 和模块分组”。 此视图布局按以下顺序对所有&3; 个日志中的日志数据进行分组：先按客户端请求 ID，再按源日志文件（Message Analyzer 中则为**模块**）。 使用此视图可以深入到特定的客户端请求 ID，并查看该客户端请求 ID 的所有三个日志文件中的数据。
 
 下图显示了已应用到示例日志数据的此布局视图，并显示了一部分列。 可以看到，对于特定的客户端请求 ID，分析网格显示了客户端日志、服务器日志和网络跟踪中的数据。
 
@@ -302,7 +302,7 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 应用此筛选器后，可看到已从客户端日志中排除的行，因为客户端日志不包含 **StatusCode** 列。 首先，我们将检查服务器和网络跟踪日志，以找到 404 错误，然后我们会返回到客户端日志以检查导致它们的客户端操作。
 
 > [!NOTE]
-> 可根据 **StatusCode** 列进行筛选；如果将表达式添加到包含状态代码为 null 的日志条目的筛选器，则仍可显示所有 3 个日志（包括客户端日志）中的数据。 若要构造此筛选器表达式，请使用：
+> 可根据 **StatusCode** 列进行筛选；如果将表达式添加到包含状态代码为 null 的日志条目的筛选器，则仍可显示所有&3; 个日志（包括客户端日志）中的数据。 若要构造此筛选器表达式，请使用：
 > 
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code> 
 > 
@@ -314,7 +314,7 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 存储空间资产包括可用于缩小日志数据，以找出错误或你正在寻找的趋势的预定义筛选器。 接下来，我们将要应用两个预定义的筛选器：一个用于筛选服务器和网络跟踪日志中的 404 错误，另一个用于筛选指定时间范围内的数据。
 
 1. 显示“视图筛选器”工具窗口（如果尚未显示）。 在工具栏功能区中，选择“工具窗口”，然后选择“视图筛选器”。
-2. 在“视图筛选器”窗口中，选择“库”，然后搜索 `Azure Storage` 以查找 Azure 存储筛选器。 选择用于筛选“所有日志中的 404 (找不到)消息”的筛选器。
+2. 在“视图筛选器”窗口中，选择“库”，然后搜索 `Azure Storage` 以查找 Azure 存储筛选器。 选择用于筛选**所有日志中的&404;（找不到）消息**的筛选器。
 3. 再次显示“库”菜单，找到并选择“全局时间筛选器”。
 4. 将筛选器中显示的时间戳编辑为你想要查看的范围。 这有助于缩小分析数据的范围。
 5. 你的筛选器应类似于以下示例。 单击“应用”将筛选器应用到分析网格。
@@ -383,6 +383,6 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 * [Microsoft Message Analyzer Operating Guide](http://technet.microsoft.com/library/jj649776.aspx)（Microsoft Message Analyzer 操作指南）
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

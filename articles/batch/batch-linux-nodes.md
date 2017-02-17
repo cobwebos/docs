@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch 池中的 Linux 节点 | Microsoft Docs"
+title: "在池中预配 Linux 计算节点 - Azure Batch | Microsoft Docs"
 description: "了解如何处理 Azure Batch 中 Linux 虚拟机池上的并行计算工作负荷。"
 services: batch
 documentationcenter: python
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: eb041d3ee7e097a05bcaeb57f170e26652fa5551
-ms.openlocfilehash: 251c454b0502746817ad5c97f1b3367eba98ac92
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 85aa18c7eab56c390dc9a9f7865a3468a43739f2
 
 
 ---
@@ -351,6 +351,6 @@ MSDN 上的 [Azure 批处理论坛][forum]是探讨 Batch 服务以及咨询相�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

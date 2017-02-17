@@ -1,5 +1,5 @@
 ---
-title: "部署多个资源实例 | Microsoft Docs"
+title: "部署 Azure 资源的多个实例 | Microsoft Docs"
 description: "在部署资源时使用 Azure 资源管理器模板中的复制操作和数组执行多次迭代。"
 services: azure-resource-manager
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/02/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 28bda592a685de4b2b938da21c3f3aa0a60e632d
-ms.openlocfilehash: 241a22429e8e0fbd2625292890baf4b2c3d77d81
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: b3972f3d407b3ba9529b36005c0856796c272095
 
 
 ---
-# <a name="create-multiple-instances-of-resources-in-azure-resource-manager"></a>在 Azure Resource Manager 中创建多个资源实例
+# <a name="deploy-multiple-instances-of-resources-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中部署资源的多个实例
 本主题演示如何在您的 Azure 资源管理器模板中进行迭代操作，以创建多个资源实例。
 
 ## <a name="copy-copyindex-and-length"></a>copy、copyIndex 和 length
@@ -148,7 +148,7 @@ ms.openlocfilehash: 241a22429e8e0fbd2625292890baf4b2c3d77d81
 当然，可以将 copy 计数设置为除数组长度以外的值。 例如，你可能要创建一个包含多个值的数组，然后传入一个参数值用于指定要部署多少个数组元素。 在这种情况下，请按第一个示例中所示设置复制计数。 
 
 ## <a name="depend-on-resources-in-a-loop"></a>依赖于循环中的资源
-可以使用 **dependsOn** 元素来指定部署一个资源后再部署另一个资源。 若要部署的资源依赖于循环中的资源集合，请在 **dependsOn** 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署 3 个存储帐户。 此处并未显示完整的虚拟机定义。 请注意，copy 元素的 **name** 设置为 **storagecopy**，而虚拟机的 **dependsOn** 元素也设置为 **storagecopy**。
+可以使用 **dependsOn** 元素来指定部署一个资源后再部署另一个资源。 若要部署的资源依赖于循环中的资源集合，请在 **dependsOn** 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署&3; 个存储帐户。 此处并未显示完整的虚拟机定义。 请注意，copy 元素的 **name** 设置为 **storagecopy**，而虚拟机的 **dependsOn** 元素也设置为 **storagecopy**。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -556,6 +556,6 @@ ms.openlocfilehash: 241a22429e8e0fbd2625292890baf4b2c3d77d81
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

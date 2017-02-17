@@ -16,15 +16,16 @@ ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 54db3b7cfa5197a738aacde87ee8ef4908fee880
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: e206d161665e46a7c1c4a111a3642ece844b7b64
 
 
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>在 Azure 中将按需“突发”节点添加到 HPC Pack 群集
 如果在 Azure 中设置了 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，则可能希望有一种方法能够快速增加/减少群集容量，而无需维护一组预配置的计算节点 VM。 本文介绍了如何按需将“突发”节点（云服务中运行的辅助角色实例）作为计算资源添加到 Azure 中的头节点。 
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 ![突发节点][burst]
 
@@ -79,10 +80,10 @@ ms.openlocfilehash: 54db3b7cfa5197a738aacde87ee8ef4908fee880
 * 如果想根据群集工作负荷自动扩展或收缩 Azure 计算资源，请参阅 [Automatically grow and shrink Azure compute resources in an HPC Pack cluster](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（自动扩展和收缩 HPC Pack 群集中的 Azure 计算资源）。
 
 <!--Image references-->
-[迸发]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
+[burst]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2016
+ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 47254ada98dffe96414d640d4661934ef5a6c554
-ms.openlocfilehash: a7dcd6f95290408e87ef0eb31d8f989de27a309e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f779106e8ca79260c8abba070586e3f03ffa61e9
 
 
 ---
@@ -238,6 +238,6 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

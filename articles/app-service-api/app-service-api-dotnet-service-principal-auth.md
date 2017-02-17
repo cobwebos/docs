@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/30/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 234ab46713657c7400148210c6029c63afd35e96
+ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
+ms.openlocfilehash: 232446806309148f7958609608d4afc28ffea98d
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 234ab46713657c7400148210c6029c63afd35e96
 本文内容：
 
 * 如何使用 Azure Active Directory (Azure AD) 防止未经身份验证访问 API 应用。
-* 如何使用 Azure AD 服务主体（应用标识）凭据从 API 应用、Web 应用或移动应用使用受保护的 API 应用。 有关如何从逻辑应用使用的信息，请参阅 [Using your custom API hosted on App Service with Logic apps](../app-service-logic/app-service-logic-custom-hosted-api.md)（通过逻辑应用使用应用服务上托管的自定义 API）。
+* 如何使用 Azure AD 服务主体（应用标识）凭据从 API 应用、Web 应用或移动应用使用受保护的 API 应用。 有关如何从逻辑应用使用的信息，请参阅 [Using your custom API hosted on App Service with Logic apps](../logic-apps/logic-apps-custom-hosted-api.md)（通过逻辑应用使用应用服务上托管的自定义 API）。
 * 如何确保登录的用户无法从浏览器调用受保护的 API 应用。
 * 如何确保只能由特定 Azure AD 服务主体调用受保护的 API 应用。
 
@@ -352,6 +352,6 @@ ms.openlocfilehash: 234ab46713657c7400148210c6029c63afd35e96
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

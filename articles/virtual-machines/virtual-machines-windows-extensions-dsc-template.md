@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 3f14531dfaac9cbe03d99fc45c98060d92232c5f
+ms.sourcegitcommit: 119a6c3e5a5764beb7445774a04621f49573a23a
+ms.openlocfilehash: e9baa32f6ae21b2446447ab9a6d9dcba1168905d
 
 
 ---
@@ -169,8 +169,8 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 ```
 
 ## <a name="example"></a>示例
-以下示例摘自 [DSC Extension Handler Overview](virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（DSC 扩展处理程序概述）网页中的“Getting Started”（入门）部分。
-此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。 保存“IisInstall.ps1”配置，将它放在 .ZIP 文件中，然后将该文件上载到可访问的 URL 中。 此示例使用 Azure Blob 存储，但可以从任意位置下载 .ZIP 文件。
+以下示例摘自 [DSC 扩展处理程序概述](virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)网页中的“入门”部分。
+此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。 保存“IisInstall.ps1”配置，将它放在 .ZIP 文件中，然后将该文件上传到可访问的 URL 中。 此示例使用 Azure Blob 存储，但可以从任意位置下载 .ZIP 文件。
 
 在 Azure Resource Manager 模板中，以下代码指示 VM 下载正确的文件并运行适当的 PowerShell 函数：
 
@@ -243,7 +243,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 下面是可能会遇到的一些错误及其解决方法。
 
 ### <a name="invalid-values"></a>无效值
-“Privacy.dataCollection 为‘{0}’。 可能的值只有 ''、'Enable' 和 'Disable'”。“WmfVersion 为‘{0}’。 唯一的可能值包括： 和 'latest'"
+“Privacy.dataCollection 为‘{0}’。 可能的值只有 ''、'Enable' 和 'Disable'”。“WmfVersion 为‘{0}’。 唯一的可能值为 ... 和 'latest'”
 
 问题：不允许使用提供的值。
 
@@ -291,17 +291,17 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 * 删除需要缺失属性的属性。
 
 ## <a name="next-steps"></a>后续步骤
-在[将虚拟机规模集与 Azure DSC 扩展配合使用](../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)中了解 DSC 和虚拟机规模集。
+在[将虚拟机规模集与 Azure DSC 扩展配合使用](../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)中了解 DSC 和虚拟机规模集
 
 在 [DSC 的安全凭据管理](virtual-machines-windows-extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中了解更多详细信息。 
 
-有关 Azure DSC 扩展处理程序的详细信息，请参阅 [Introduction to the Azure Desired State Configuration extension handler](virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（Azure Desired State Configuration 扩展处理程序简介）。 
+有关 Azure DSC 扩展处理程序的详细信息，请参阅 [Azure Desired State Configuration 扩展处理程序简介](virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 有关 PowerShell DSC 的详细信息，请[访问 PowerShell 文档中心](https://msdn.microsoft.com/powershell/dsc/overview)。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

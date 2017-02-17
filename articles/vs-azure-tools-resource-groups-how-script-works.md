@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 07/26/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 078c0116eb1b70dd8d15c49343dce91fbdd96944
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a0695e51b595874ce3d4ccd2dca863e883e2840b
 
 
 ---
@@ -252,6 +252,6 @@ $(Build.StagingDirectory)/AzureResourceGroup1/Scripts/Deploy-AzureResourceGroup.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

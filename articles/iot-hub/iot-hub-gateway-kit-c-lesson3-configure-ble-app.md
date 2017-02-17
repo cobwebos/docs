@@ -1,5 +1,5 @@
 ---
-title: "运行示例应用以接收 SensorTag 数据并将其发送到 Azure IoT 中心 | Microsoft 文档"
+title: "SensorTag 设备和 Azure IoT 网关 - 第 3 课：运行示例应用 | Microsoft Docs"
 description: "运行 BLE 示例应用程序，从 BLE SensorTag 和 IoT 中心接收数据。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: fab1eb0dc765ced95e3bec7c12c7dfa0ca91bb19
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: a9f689c0b231af3cdf9257e2179bf86ff7bc9a31
 
 
 ---
@@ -153,14 +153,14 @@ az iot device show-connection-string --hub-name {IoT hub name} --device-id mydev
 
 该示例应用程序将不断收集温度数据，并将其发送到 IoT 中心。 发送 40 秒后，该示例应用程序将自动终止。
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>摘要
 
 现已成功设置 SensorTag 与 Intel NUC 之间的连接，以及运行从 SensorTag 收集数据并将数据发送到 IoT 中心的 BLE 示例应用程序。 接下来，可以继续学习如何确认 IoT 中心已收到数据。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 [从 IoT 中心读取消息](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

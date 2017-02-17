@@ -1,5 +1,5 @@
 ---
-title: "Azure 虚拟机 DotNet 核心教程 1 | Microsoft Docs"
+title: "Azure Windows 虚拟机 DotNet 核心教程 1 | Microsoft Docs"
 description: "Azure 虚拟机 DotNet 核心教程"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: cc534bbf4eb282fe3b675f1783e05e2d3357405e
+ms.sourcegitcommit: 64ad540536dcf3f4d4a73f49d99fb6142b33ea9c
+ms.openlocfilehash: 31fd217e46bbc79bac9e09045677edbc12bcf6c2
 
 
 ---
@@ -72,6 +72,6 @@ Azure Resource Manager 模板需要以下参数值。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

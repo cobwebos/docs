@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure CLI 创建服务主体 | Microsoft Docs"
+title: "通过 Azure CLI 为 Azure 应用创建标识 | Microsoft Docs"
 description: "描述如何使用 Azure CLI 创建 Active Directory 应用程序和服务主体，并通过基于角色的访问控制授予其对资源的访问权限。 它演示如何使用密码或证书对应用程序进行身份验证。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/14/2016
+ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5181bfc1c68bc2b3fd203b21172ef1e792368070
-ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 76c5bdeb2a27b733d8566c7a19f9457feebdc273
 
 
 ---
@@ -28,9 +28,15 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
 > 
 > 
 
-如果应用程序或脚本需要访问资源，用户在多数情况下不想要使用自己的凭据来运行此过程。 用户可能有几种不同的权限可用于应用程序，如果用户职责改变，则不想要应用程序继续使用此凭据。 与上述方法不同，也可以为应用程序创建一个标识，其中包括身份验证凭据和角色分配情况。 每次应用运行时，将使用这些凭据对其自身进行身份验证。 本主题介绍如何通过[适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md) 为应用程序进行设置，使之能够使用自己的凭据和标识运行。
+当应用或脚本需访问资源时，可以为应用设置一个标识，然后使用其自己的凭据进行身份验证。 与使用用户自己的凭据运行应用相比，此方法更优，原因在于：
 
-使用 Azure CLI 时，可以通过 2 个选项进行 AD 应用程序身份验证：
+* 可以将权限分配给应用标识，这些权限不同于你自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。
+* 你的职责变化时，无需更改应用的凭据。 
+* 执行无人参与的脚本时，可使用证书自动进行身份验证。
+
+本主题介绍如何通过[适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md) 为应用程序进行设置，使之能够使用自己的凭据和标识运行。
+
+使用 Azure CLI 时，可以通过&2; 个选项进行 AD 应用程序身份验证：
 
 * password
 * 证书
@@ -45,7 +51,7 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
 ## <a name="required-permissions"></a>所需的权限
 若要完成本主题，必须在 Azure Active Directory 和 Azure 订阅中均具有足够的权限。 具体而言，必须能够在 Active Directory 中创建应用并向角色分配服务主体。 
 
-检查帐户是否有足够权限的最简方法是使用门户。 请参阅[检查所需的权限](resource-group-create-service-principal-portal.md#required-permissions)。
+检查帐户是否有足够权限的最简方法是使用门户。 请参阅[在门户中检查所需的权限](resource-group-create-service-principal-portal.md#required-permissions)。
 
 现在转到[密码](#create-service-principal-with-password)或[证书](#create-service-principal-with-certificate)身份验证部分。
 
@@ -56,33 +62,40 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
 
 1. 登录到你的帐户。
    
-   ```
+   ```azurecli
    azure login
    ```
 2. 可以使用两个选项来创建 AD 应用程序。 可以通过一个步骤创建 AD 应用程序和服务主体，也可以分开创建。 如果不需要指定应用的主页和标识符 URI，请通过一个步骤创建应用程序和服务主体。 如果需要为 Web 应用设置这些值，请分开创建应用程序和服务主体。 此步骤说明了这两个选项。
    
-   * 若要通过一个步骤创建 AD 应用程序和服务主体，请提供应用的名称和密码，如以下命令中所示：
+   * 若要一步创建 AD 应用程序和服务主体，请提供应用名称和密码，如以下命令中所示：
      
-     ```
+     ```azurecli
      azure ad sp create -n exampleapp -p {your-password}
      ```
-   * 若要单独创建 AD 应用程序，请提供应用的名称、主页 URI、标识符 URI 和密码，如以下命令中所示：
+   * 若要单独创建 AD 应用程序，请提供：
+
+      * 应用的名称
+      * 应用主页的 URL
+      * 用于标识应用的 URI 的逗号分隔列表
+      * password
+
+      如以下命令所示：
      
-     ```
+     ```azurecli
      azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example -p {Your_Password}
      ```
 
-       上述命令返回一个 AppId 值。 若要创建服务主体，请在以下命令中以参数形式提供该值：
+       上述命令会返回 AppId 值。 若要创建服务主体，请在以下命令中以参数形式提供该值：
      
-     ```
+     ```azurecli
      azure ad sp create -a {AppId}
      ```
      
      如果帐户在 Active Directory 上不具有[所需的权限](#required-permissions)，将看到指示“Authentication_Unauthorized”或“上下文中找不到订阅”的错误消息。
      
-     使用这两个选项时，都会返回新的服务主体。 授权时需要使用**对象 ID**。 登录时需要使用随**服务主体名称**一起列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为**客户端 ID**。 
+     使用这两个选项时，都会返回新的服务主体。 授权时需要使用 `Object Id`。 登录时需要提供随 `Service Principal Names` 列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为 `Client ID`。 
      
-     ```
+     ```azurecli
      info:    Executing command ad sp create
      
      Creating application exampleapp
@@ -95,13 +108,13 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
        info:    ad sp create command OK
       ```
 
-3. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 **ServicePrincipalName** 参数，请提供创建应用程序时使用的 **ObjectId**。 运行此命令之前，必须留出一些时间将新的服务主体传遍 Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
+3. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 `objectid` 参数，请提供创建应用程序时使用的 `Object Id`。 运行此命令之前，必须留出一些时间将新的服务主体传遍 Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
    
-   ```
+   ```azurecli
    azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
    ```
    
-     如果帐户没有足够权限来分配角色，将看到一条错误消息。 该消息指出帐户**无权执行操作 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/{guid}'**。 
+     如果帐户没有足够权限来分配角色，将看到一条错误消息。 该消息声明用户的帐户“无权在作用域 '/subscriptions/{guid}' 执行操作 'Microsoft.Authorization/roleAssignments/write'”。
 
 就这么简单！ AD 应用程序和服务主体设置完毕。 下一部分演示如何通过 Azure CLI 使用凭据进行登录。 如果想在代码应用程序中使用凭据，则不需要继续了解本主题。 可以跳到[示例应用程序](#sample-applications)，获取使用应用程序 ID 和密码登录的示例。 
 
@@ -110,13 +123,13 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
 
 1. 以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Active Directory 的实例。 若要检索当前已经过身份验证的订阅的租户 ID，请使用：
    
-   ```
+   ```azurecli
    azure account show
    ```
    
      将返回：
    
-   ```
+   ```azurecli
    info:    Executing command account show
    data:    Name                        : Windows Azure MSDN - Visual Studio Ultimate
    data:    ID                          : {guid}
@@ -128,18 +141,18 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
    
      如果需要获取另一个订阅的租户 ID，请使用以下命令：
    
-   ```
+   ```azurecli
    azure account show -s {subscription-id}
    ```
 2. 如果需要检索用于登录的客户端 ID，请使用：
    
-   ```
+   ```azurecli
    azure ad sp show -c exampleapp --json
    ```
    
      用于登录的值是服务主体名称中列出的 GUID。
    
-   ```
+   ```azurecli
    [
      {
        "objectId": "ff863613-e5e2-4a6b-af07-fff6f2de3f4e",
@@ -155,18 +168,20 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
    ```
 3. 以服务主体身份登录。
    
-   ```
+   ```azurecli
    azure login -u 7132aca4-1bdb-4238-ad81-996ff91d8db4 --service-principal --tenant {tenant-id}
    ```
    
     系统将提示输入密码。 提供在创建 AD 应用程序时指定的密码。
    
-   ```
+   ```azurecli
    info:    Executing command login
    Password: ********
    ```
 
 现在，用户已作为所创建服务主体的服务主体进行身份验证。
+
+也可从要登录的命令行调用 REST 操作。 可以从身份验证响应中检索访问令牌，将其用于其他操作。 若要通过示例来了解如何通过调用 REST 操作来检索访问令牌，请参阅[生成访问令牌](resource-manager-rest-api.md#generating-an-access-token)。
 
 ## <a name="create-service-principal-with-certificate"></a>使用证书创建服务主体
 执行本部分中的步骤，以便：
@@ -190,33 +205,40 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
 3. 打开 **examplecert.pem** 文件并找到 **-----BEGIN CERTIFICATE-----** 与 **-----END CERTIFICATE-----** 之间的长字符序列。 复制证书数据。 创建服务主体时将此数据作为参数传递。
 4. 登录到你的帐户。
    
-   ```
+   ```azurecli
    azure login
    ```
 5. 可以使用两个选项来创建 AD 应用程序。 可以通过一个步骤创建 AD 应用程序和服务主体，也可以分开创建。 如果不需要指定应用的主页和标识符 URI，请通过一个步骤创建应用程序和服务主体。 如果需要为 Web 应用设置这些值，请分开创建应用程序和服务主体。 此步骤说明了这两个选项。
    
-   * 若要通过一个步骤创建 AD 应用程序和服务主体，请提供应用的名称和证书数据，如以下命令中所示：
+   * 若要一步创建 AD 应用程序和服务主体，请提供应用名称和证书数据，如以下命令中所示：
      
-     ```
+     ```azurecli
      azure ad sp create -n exampleapp --cert-value {certificate data}
      ```
-   * 若要单独创建 AD 应用程序，请提供应用的名称、主页 URI、标识符 URI 和证书数据，如以下命令中所示：
-     
-     ```
+   * 若要单独创建 AD 应用程序，请提供：
+      
+      * 应用的名称
+      * 应用主页的 URL
+      * 用于标识应用的 URI 的逗号分隔列表
+      * 证书数据
+
+      如以下命令所示：
+
+     ```azurecli
      azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example --cert-value {certificate data}
      ```
      
-       上述命令返回一个 AppId 值。 若要创建服务主体，请在以下命令中以参数形式提供该值：
+       上述命令会返回 AppId 值。 若要创建服务主体，请在以下命令中以参数形式提供该值：
      
-     ```
+     ```azurecli
      azure ad sp create -a {AppId}
      ```
      
      如果帐户在 Active Directory 上不具有[所需的权限](#required-permissions)，将看到指示“Authentication_Unauthorized”或“上下文中找不到订阅”的错误消息。
      
-     使用这两个选项时，都会返回新的服务主体。 授权时需要使用对象 ID。 登录时需要使用随**服务主体名称**一起列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为**客户端 ID**。 
+     使用这两个选项时，都会返回新的服务主体。 授权时需要使用对象 ID。 登录时需要提供随 `Service Principal Names` 列出的 GUID。 此 GUID 的值与应用 ID 相同。 在示例应用程序中，此值称为 `Client ID`。 
      
-     ```
+     ```azurecli
      info:    Executing command ad sp create
      
      Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
@@ -227,26 +249,26 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
        data:                      https://www.contoso.org/example
        info:    ad sp create command OK
      ```
-6. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 **ServicePrincipalName** 参数，请提供创建应用程序时使用的 **ObjectId**。 运行此命令之前，必须留出一些时间将新的服务主体传遍 Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
+6. 向服务主体授予对订阅的权限。 在此示例中，向“读取者”角色（授予读取订阅中所有资源的权限）添加服务主体。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 对于 `objectid` 参数，请提供创建应用程序时使用的 `Object Id`。 运行此命令之前，必须留出一些时间将新的服务主体传遍 Active Directory。 手动运行这些命令时，任务之间通常已经过足够的时间。 在脚本中，应在命令间添加休眠步骤（如 `sleep 15`）。 如果看到错误称主体不存在于目录中，请重新运行该命令。
    
-   ```
+   ```azurecli
    azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Reader -c /subscriptions/{subscriptionId}/
    ```
    
-     如果帐户没有足够权限来分配角色，将看到一条错误消息。 该消息指出帐户**无权执行操作 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/{guid}'**。 
+     如果帐户没有足够权限来分配角色，将看到一条错误消息。 该消息声明用户的帐户“无权在作用域 '/subscriptions/{guid}' 执行操作 'Microsoft.Authorization/roleAssignments/write'”。
 
 ### <a name="provide-certificate-through-automated-azure-cli-script"></a>通过自动执行的 Azure CLI 脚本提供证书
 现在，需要以应用程序方式登录以执行相应操作。
 
 1. 以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Active Directory 的实例。 若要检索当前已经过身份验证的订阅的租户 ID，请使用：
    
-   ```
+   ```azurecli
    azure account show
    ```
    
      将返回：
    
-   ```
+   ```azurecli
    info:    Executing command account show
    data:    Name                        : Windows Azure MSDN - Visual Studio Ultimate
    data:    ID                          : {guid}
@@ -258,7 +280,7 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
    
      如果需要获取另一个订阅的租户 ID，请使用以下命令：
    
-   ```
+   ```azurecli
    azure account show -s {subscription-id}
    ```
 2. 若要检索证书指纹并删除不需要的字符，请使用：
@@ -274,13 +296,13 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
    ```
 3. 如果需要检索用于登录的客户端 ID，请使用：
    
-   ```
+   ```azurecli
    azure ad sp show -c exampleapp
    ```
    
      用于登录的值是服务主体名称中列出的 GUID。
      
-   ```
+   ```azurecli
    [
      {
        "objectId": "7dbc8265-51ed-4038-8e13-31948c7f4ce7",
@@ -296,7 +318,7 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
    ```
 4. 以服务主体身份登录。
    
-   ```
+   ```azurecli
    azure login --service-principal --tenant {tenant-id} -u 4fd39843-c338-417d-b549-a545f584a745 --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
    ```
 
@@ -308,13 +330,13 @@ ms.openlocfilehash: 13600cccca19e45aa3b74d7199d403051a204113
 
 若要更改密码，请使用：
 
-```
+```azurecli
 azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --password p@ssword
 ```
 
 若要更改证书值，请使用：
 
-```
+```azurecli
 azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-value {certificate data}
 ```
 
@@ -354,6 +376,6 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

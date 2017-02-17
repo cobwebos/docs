@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 0ab1dcc8ccc621f5dabfffffb17fd1822f78eb1c
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: b7ef8386e974486c2d327d0b042eeabdb9701b7e
 
 
 ---
@@ -89,7 +89,7 @@ ms.openlocfilehash: 0ab1dcc8ccc621f5dabfffffb17fd1822f78eb1c
 * 有关应用服务计划中的所有其余功能的详细信息，包括定价和所有用户（包括开发人员）感兴趣的功能，请参阅[应用服务定价详细信息](https://azure.microsoft.com/pricing/details/web-sites/)。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用任何信用卡，也无需做出任何承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用任何信用卡，也无需做出任何承诺。
 > 
 > 
 
@@ -143,6 +143,6 @@ ms.openlocfilehash: 0ab1dcc8ccc621f5dabfffffb17fd1822f78eb1c
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

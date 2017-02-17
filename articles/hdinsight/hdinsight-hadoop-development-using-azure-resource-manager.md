@@ -1,5 +1,5 @@
 ---
-title: "迁移到适用于 HDInsight 群集的 Azure Resource Manager 开发工具 | Microsoft Docs"
+title: "迁移到适用于 HDInsight 的 Azure Resource Manager 工具 | Microsoft Docs"
 description: "如何迁移到适用于 HDInsight 群集的 Azure Resource Manager 开发工具"
 services: hdinsight
 editor: cgronlun
@@ -12,15 +12,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
-ms.openlocfilehash: 660ea89373fe77dac9b77e529adf37025a0a80cc
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 3606df64b619b62f8b9e5aec2abc4efc994c37e3
 
 
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具
+
 HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果你一直在使用 Azure PowerShell、Azure CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议你跟随潮流，使用基于 Azure Resource Manager (ARM) 的 PowerShell、CLI 和.NET SDK 版本。 本文章提供有关如何迁移到基于 ARM 的新方法的指导。 本文还将指出适用于 HDInsight 的 ASM 与 ARM 方法之间的差异（如果适用）。
 
 > [!IMPORTANT]
@@ -48,8 +49,6 @@ Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基
 * `azure hdinsight cluster resize` - 动态更改群集中的辅助角色节点数目
 * `azure hdinsight cluster enable-http-access` - 启用对群集的 HTTPs 访问（默认为打开）
 * `azure hdinsight cluster disable-http-access` - 禁用对群集的 HTTPs 访问
-* `azure hdinsight-enable-rdp-access` - 在基于 Windows 的 HDInsight 群集上启用远程桌面协议
-* `azure hdinsight-disable-rdp-access` - 在基于 Windows 的 HDInsight 群集上禁用远程桌面协议
 * `azure hdinsight script-action` - 在群集上提供用于创建/管理脚本操作的命令
 * `azure hdinsight config` - 提供用于创建配置文件的命令，该配置文件可与 `hdinsight cluster create` 命令一起使用以提供配置信息。
 
@@ -324,7 +323,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
                 Location = "West US",
                 ClusterType = "Hadoop",
                 Version = "3.1",
-                OSType = OSType.Windows,
+                OSType = OSType.Linux,
                 DefaultStorageAccountName = "mystorage.blob.core.windows.net",
                 DefaultStorageAccountKey =
                     "O9EQvp3A3AjXq/W27rst1GQfLllhp0gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==",
@@ -366,6 +365,6 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

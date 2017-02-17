@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/18/2016
+ms.date: 01/19/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d83a1f9755d22512834d23b8fd12f740c4198a85
+ms.sourcegitcommit: f3be777497d842f019c1904ec1990bd1f1213ba2
+ms.openlocfilehash: 166ff7f3586932494984e87fc0df7d3d3d914c82
 
 
 ---
@@ -28,16 +28,24 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
 
 ## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+
 * **HDInsight 群集上基于 Windows 或 Linux 的 Hadoop**。 请参阅[在 HDInsight 上预配基于 Linux 的 Hadoop](hdinsight-hadoop-provision-linux-clusters.md) 或[在 HDInsight 上预配基于 Windows 的 Hadoop](hdinsight-provision-clusters.md)。
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * **[Maven](http://maven.apache.org/)**
+
 * **[Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 或更高版本**
 
 ## <a name="create-and-build-the-project"></a>创建和生成项目
+
 1. 输入以下命令来创建新的 Maven 项目：
    
         mvn archetype:generate -DgroupId=com.microsoft.example -DartifactId=scaldingwordcount -DarchetypeGroupId=org.scala-tools.archetypes -DarchetypeArtifactId=scala-archetype-simple -DinteractiveMode=false
    
     此命令将创建一个名为 **scaldingwordcount** 的新目录，并创建 Scala 应用程序的基架。
+
 2. 在 **scaldingwordcount** 目录中，打开 **pom.xml** 文件并将其内容替换为以下内容：
    
         <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -134,15 +142,22 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
    
     此文件描述了项目、依赖关系和插件。 以下是重要条目：
    
-   * **maven.compiler.source** 和 **maven.compiler.target**：设置此项目的 Java 版本
-   * **repositories**：包含此项目使用的依赖文件的存储库
-   * **scalding-core_2.11** 和 **hadoop-core**：此项目依赖于 Scalding 和 Hadoop 核心程序包
-   * **maven-scala-plugin**：用于编译 scala 应用程序的插件
+   * **maven.compiler.source** 和 **maven.compiler.target**：设置此项目的 Java 版本。
+
+   * **repositories**：包含此项目使用的依赖文件的存储库。
+
+   * **scalding-core_2.11** 和 **hadoop-core**：此项目依赖于 Scalding 和 Hadoop 核心程序包。
+
+   * **maven-scala-plugin**：用于编译 scala 应用程序的插件。
+
    * **maven-shade-plugin**：用于创建阴影 (fat) jar 的插件。 此插件将应用筛选器和转换，具体包括：
      
      * **筛选器**：应用的筛选器将修改 jar 文件中包含的元信息。 为了防止运行时发生签名异常，它会排除依赖项中可能包含的各种签名文件。
+
      * **执行**：程序包阶段执行配置将 **com.twitter.scalding.Tool** 类指定为程序包的主类。 如果没有此项配置，则你在使用 hadoop 命令运行作业时，需要指定 com.twitter.scalding.Tool 以及包含应用程序逻辑的类。
+    
 3. 删除 **src/test**目录，因为你不需要使用此示例创建测试。
+
 4. 打开 **src/main/scala/com/microsoft/example/App.scala** 文件，并将其内容替换为以下内容：
    
         package com.microsoft.example
@@ -166,7 +181,9 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
         }
    
     这将会实现基本的单词计数作业。
+
 5. 保存并关闭文件。
+
 6. 使用以下命令从 **scaldingwordcount** 目录生成并打包应用程序：
    
         mvn package
@@ -174,10 +191,10 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
     完成此作业后，可以在 **target/scaldingwordcount-1.0-SNAPSHOT.jar** 中找到包含 WordCount 应用程序的程序包。
 
 ## <a name="run-the-job-on-a-linux-based-cluster"></a>在基于 Linux 的群集上运行作业
+
 > [!NOTE]
 > 以下步骤使用 SSH 和 Hadoop 命令。 有关运行 MapReduce 作业的其他方法，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
-> 
-> 
+
 
 1. 使用以下命令将该程序包上载到你的 HDInsight 群集：
    
@@ -195,8 +212,7 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
    
    > [!NOTE]
    > 如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果你使用了 SSH 密钥，你可能必须使用 `-i` 参数和私钥的路径。 例如 `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`
-   > 
-   > 
+
 3. 连接到头节点后，使用以下命令运行该字数统计作业
    
         yarn jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasbs:///example/data/gutenberg/davinci.txt --output wasbs:///example/wordcountout
@@ -223,6 +239,7 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
         wrought 7
 
 ## <a name="run-the-job-on-a-windows-based-cluster"></a>在基于 Windows 的群集上运行作业
+
 以下步骤使用 Windows PowerShell。 有关运行 MapReduce 作业的其他方法，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
@@ -234,81 +251,86 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
         Id                             Type       ...
         --                             ----
         someone@example.com            User       ...
+
 2. 如果你有多个订阅，请提供要用于部署的订阅 ID。
    
         Select-AzureRMSubscription -SubscriptionID <YourSubscriptionId>
    
    > [!NOTE]
    > 可以使用 `Get-AzureRMSubscription` 来获取与你帐户关联的所有订阅的列表，包括每个订阅的订阅 ID。
-   > 
-   > 
+
 3. 使用以下脚本上载和运行 WordCount 作业。 将 `CLUSTERNAME` 替换为 HDInsight 群集的名称，并确保 `$fileToUpload` 是 **scaldingwordcount-1.0-SNAPSHOT.jar** 文件的正确路径。
    
-        #Cluster name, file to be uploaded, and where to upload it
-        $clustername = Read-Host -Prompt "Enter the HDInsight cluster name"
-        $fileToUpload = Read-Host -Prompt "Enter the path to the scaldingwordcount-1.0-SNAPSHOT.jar file"
-        $blobPath = "example/jars/scaldingwordcount-1.0-SNAPSHOT.jar"
-   
-        #Login to your Azure subscription
-        Login-AzureRmAccount
-        #Get HTTPS/Admin credentials for submitting the job later
-        $creds = Get-Credential -Message "Enter the login credentials for the cluster"
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-            -ResourceGroupName $resourceGroup)[0].Value
-   
-        #Create a storage content and upload the file
-        $context = New-AzureStorageContext `
-            -StorageAccountName $storageAccountName `
-            -StorageAccountKey $storageAccountKey
-   
-        Set-AzureStorageBlobContent `
-            -File $fileToUpload `
-            -Blob $blobPath `
-            -Container $container `
-            -Context $context
-   
-        #Create a job definition and start the job
-        $jobDef=New-AzureRmHDInsightMapReduceJobDefinition `
-            -JobName ScaldingWordCount `
-            -JarFile wasbs:///example/jars/scaldingwordcount-1.0-SNAPSHOT.jar `
-            -ClassName com.microsoft.example.WordCount `
-            -arguments "--hdfs", `
-                        "--input", `
-                        "wasbs:///example/data/gutenberg/davinci.txt", `
-                        "--output", `
-                        "wasbs:///example/wordcountout"
-        $job = Start-AzureRmHDInsightJob `
-            -clustername $clusterName `
-            -jobdefinition $jobDef `
-            -HttpCredential $creds
-        Write-Output "Job ID is: $job.JobId"
-        Wait-AzureRmHDInsightJob `
-            -ClusterName $clusterName `
-            -JobId $job.JobId `
-            -HttpCredential $creds
-        #Download the output of the job
-        Get-AzureStorageBlobContent `
-            -Blob example/wordcountout/part-00000 `
-            -Container $container `
-            -Destination output.txt `
-            -Context $context
-        #Log any errors that occured
-        Get-AzureRmHDInsightJobOutput `
-            -Clustername $clusterName `
-            -JobId $job.JobId `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -HttpCredential $creds `
-            -DisplayOutputType StandardError
+   ```powershell
+    # Login to your Azure subscription
+    # Is there an active Azure subscription?
+    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Add-AzureRmAccount
+    }
+
+    # Get cluster info
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    $creds=Get-Credential -Message "Enter the login for the cluster"
+    $fileToUpload = Read-Host -Prompt "Enter the path to the scaldingwordcount-1.0-SNAPSHOT.jar file"
+    $blobPath = "example/jars/scaldingwordcount-1.0-SNAPSHOT.jar"
+
+    #Get the cluster info so we can get the resource group, storage, etc.
+    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $resourceGroup = $clusterInfo.ResourceGroup
+    $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+    $container=$clusterInfo.DefaultStorageContainer
+    $storageAccountKey=(Get-AzureRmStorageAccountKey `
+        -Name $storageAccountName `
+        -ResourceGroupName $resourceGroup)[0].Value
+
+    #Create a storage content and upload the file
+    $context = New-AzureStorageContext `
+        -StorageAccountName $storageAccountName `
+        -StorageAccountKey $storageAccountKey
+
+    Set-AzureStorageBlobContent `
+        -File $fileToUpload `
+        -Blob $blobPath `
+        -Container $container `
+        -Context $context
+
+    #Create a job definition and start the job
+    $jobDef=New-AzureRmHDInsightMapReduceJobDefinition `
+        -JobName ScaldingWordCount `
+        -JarFile wasbs:///example/jars/scaldingwordcount-1.0-SNAPSHOT.jar `
+        -ClassName com.microsoft.example.WordCount `
+        -arguments "--hdfs", `
+                    "--input", `
+                    "wasbs:///example/data/gutenberg/davinci.txt", `
+                    "--output", `
+                    "wasbs:///example/wordcountout"
+    $job = Start-AzureRmHDInsightJob `
+        -clustername $clusterName `
+        -jobdefinition $jobDef `
+        -HttpCredential $creds
+    Write-Output "Job ID is: $job.JobId"
+    Wait-AzureRmHDInsightJob `
+        -ClusterName $clusterName `
+        -JobId $job.JobId `
+        -HttpCredential $creds
+    #Download the output of the job
+    Get-AzureStorageBlobContent `
+        -Blob example/wordcountout/part-00000 `
+        -Container $container `
+        -Destination output.txt `
+        -Context $context
+    #Log any errors that occured
+    Get-AzureRmHDInsightJobOutput `
+        -Clustername $clusterName `
+        -JobId $job.JobId `
+        -HttpCredential $creds `
+        -DisplayOutputType StandardError
+   ```
    
      运行该脚本时，系统将提示你输入 HDInsight 群集的管理员用户名和密码。 运行作业时发生的任何错误将记录到控制台。
+
 4. 完成作业后，输出将下载到当前目录中的 **output.txt** 文件。 使用以下命令可以显示结果。
    
         cat output.txt
@@ -339,6 +361,6 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

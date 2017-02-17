@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 8c13f9289a5873dbc3cffe4c8fb6a32d30fc2312
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 743dde7e55ac81ba4f44724f0705f4056fa69427
 
 
 ---
@@ -26,9 +26,8 @@ ms.openlocfilehash: 8c13f9289a5873dbc3cffe4c8fb6a32d30fc2312
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-有关本文的 Resource Manager 版本，请参阅[此处](virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关本文中的 Resource Manager 版本，请参阅[此处](virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -95,6 +94,6 @@ ms.openlocfilehash: 8c13f9289a5873dbc3cffe4c8fb6a32d30fc2312
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

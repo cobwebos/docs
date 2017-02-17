@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7f3cb7823eb7969faf76ca196a2ae95b214723f2
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 52e4ba9f1f623312780a9072719866932b1af502
 
 
 ---
@@ -131,7 +131,7 @@ ms.openlocfilehash: 7f3cb7823eb7969faf76ca196a2ae95b214723f2
     ![](./media/web-sites-migration-from-iis-server/TimeTrackerMigrated.png)
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -141,6 +141,6 @@ ms.openlocfilehash: 7f3cb7823eb7969faf76ca196a2ae95b214723f2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

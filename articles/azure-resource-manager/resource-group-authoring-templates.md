@@ -1,6 +1,6 @@
 ---
-title: "创作 Azure Resource Manager 模板 | Microsoft Docs"
-description: "使用声明性 JSON 语法创建 Azure 资源管理器模板，以将应用程序部署到 Azure。"
+title: "为 Azure 部署创建模板 | Microsoft Docs"
+description: "使用声明性 JSON 语法描述 Azure Resource Manager 模板的结构和属性。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 01/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: a3a1fc856dc4fb39e3d3b765e943662799c75398
-ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
 
 
 ---
@@ -55,7 +55,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 本主题稍后将更详细地介绍模板的各个节。
 
 ## <a name="expressions-and-functions"></a>表达式和函数
-模板的基本语法为 JSON。 但是，表达式和函数将扩展模板中可用的 JSON。 借助表达式，可以创建不是严格文本值的值。 表达式括在方括号（[ 和 ]）中，并在部署模板时进行求值。 表达式可以出现在 JSON 字符串值中的任何位置，并始终返回另一个 JSON 值。 如果需要使用以方括号 [ 开头的文本字符串，则必须使用两个方括号 [[。
+模板的基本语法为 JSON。 但是，表达式和函数将扩展模板中可用的 JSON。 使用表达式，可以创建不是严格文本值的值。 表达式括在方括号（`[` 和 `]`）中，并在部署模板时求值。 表达式可以出现在 JSON 字符串值中的任何位置，并始终返回另一个 JSON 值。 如果需要使用以方括号 `[` 开头的文本字符串，则必须使用两个方括号 (`[[`)。
 
 通常，你会将表达式与函数一起使用，以执行用于配置部署的操作。 如同在 JavaScript 中一样，函数调用的格式为 **functionName(arg1,arg2,arg3)**。 使用点和 [index] 运算符引用属性。
 
@@ -64,7 +64,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 ```json
 "variables": {
    "location": "[resourceGroup().location]",
-   "usernameAndPassword": "[concat('parameters('username'), ':', parameters('password'))]",
+   "usernameAndPassword": "[concat(parameters('username'), ':', parameters('password'))]",
    "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
 }
 ```
@@ -98,7 +98,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 | 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | parameterName |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
-| type |是 |参数值的类型。 请参阅以下允许类型的列表。 |
+| type |是 |参数值的类型。 请参阅允许类型的列表（此表后面）。 |
 | defaultValue |否 |参数的默认值，如果没有为参数提供任何值。 |
 | allowedValues |否 |用来确保提供正确值的参数的允许值数组。 |
 | minValue |否 |int 类型参数的最小值，此值是包容性的。 |
@@ -119,7 +119,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 
 若要将某个参数指定为可选，请提供 defaultValue（可以为空字符串）。 
 
-如果指定与命令中的一个参数匹配的参数名称来部署模板，则会提示提供后缀为 **FromTemplate** 的参数值。 例如，如果在模板中提供的名为 **ResourceGroupName** 的参数与 [New-AzureRmResourceGroupDeployment][deployment2cmdlet] cmdlet 中的 **ResourceGroupName** 参数相同，系统会提示用户提供 **ResourceGroupNameFromTemplate** 的值。 通常，为避免此类混乱，不应按部署操作所用的参数名称命令参数。
+如果在模板中指定的参数名称与部署模板时所用命令中的参数匹配，则可能会对提供的值造成混淆。 Resource Manager 解决此混淆问题的方式是将后缀 **FromTemplate** 添加到模板参数。 例如，如果在模板中包括名为 **ResourceGroupName** 的参数，则该参数会与 [New-AzureRmResourceGroupDeployment][deployment2cmdlet] cmdlet 中的 **ResourceGroupName** 参数冲突。 在部署期间，系统会提示用户提供 **ResourceGroupNameFromTemplate** 的值。 通常，为避免此类混乱，不应按部署操作所用的参数名称命令参数。
 
 > [!NOTE]
 > 所有密码、密钥和其他机密信息应使用 **secureString** 类型。 若要将敏感数据传入 JSON 对象，请使用 **secureObject** 类型。 部署资源后，无法读取 secureString 或 secureObject 类型的模板参数。 
@@ -241,7 +241,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
      "copy": {
        "name": "<name-of-copy-loop>",
        "count": "<number-of-iterations>"
-     }
+     },
      "resources": [
        "<array-of-child-resources>"
      ]
@@ -257,10 +257,10 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 | location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型 （如角色分配）不需要位置。 |
 | 标记 |否 |与资源关联的标记。 |
 | 注释 |否 |用于描述模板中资源的注释 |
-| dependsOn |否 |必须在部署此资源前部署的资源。 Resource Manager 评估资源之间的依赖关系，并根据正确顺序进行部署。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 仅列出在此模板中部署的资源。 此模板中未定义的资源必须已经存在。 有关详细信息，请参阅[在 Azure Resource Manager 模板中定义依赖关系](resource-group-define-dependencies.md)。 |
-| 属性 |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 有关资源架构文档或 REST API 的链接，请参阅 [Resource Manager providers, regions, API versions and schemas](resource-manager-supported-services.md)（Resource Manager 提供程序、区域、API 版本和架构）。 |
+| dependsOn |否 |必须在部署此资源前部署的资源。 Resource Manager 评估资源之间的依赖关系，并根据正确顺序进行部署。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 仅列出在此模板中部署的资源。 此模板中未定义的资源必须已存在。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅[在 Azure Resource Manager 模板中定义依赖项](resource-group-define-dependencies.md)。 |
+| properties |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 有关资源架构文档或 REST API 的链接，请参阅 [Resource Manager 提供程序、区域、API 版本和架构](resource-manager-supported-services.md)。 |
 | 复制 |否 |需要多个实例时应创建的资源数。 有关详细信息，请参阅[在 Azure Resource Manager 中创建多个资源实例](resource-group-create-multiple.md)。 |
-| 资源 |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 子资源类型的完全限定名称包含父资源类型，例如 **Microsoft.Web/sites/extensions**。 对父资源的依赖性不是隐式的；你必须显式定义该依赖性。 |
+| 资源 |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 子资源的完全限定类型包含父资源类型，例如 **Microsoft.Web/sites/extensions**。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 |
 
 了解要为 **apiVersion**、**type** 和 **location** 指定哪些值并不是显而易见的。 所幸，可以通过 Azure PowerShell 或 Azure CLI 确定这些值。
 
@@ -290,15 +290,21 @@ Get-AzureRmResourceProvider -ListAvailable
 
 若要使用 **Azure CLI** 获取所有资源提供程序，请使用：
 
-    azure provider list
+```azurecli
+azure provider list
+```
 
 从返回列表中，找到感兴趣的资源提供程序。 若要获取某一资源提供程序（如存储器）的资源类型，请使用：
 
-    azure provider show Microsoft.Storage
+```azurecli
+azure provider show Microsoft.Storage
+```
 
 若要获取支持的位置和 API 版本，请使用：
 
-    azure provider show Microsoft.Storage --details --json
+```azurecli
+azure provider show Microsoft.Storage --details --json
+```
 
 若要详细了解资源提供程序，请参阅 [Resource Manager 提供程序、区域、API 版本和架构](resource-manager-supported-services.md)。
 
@@ -428,6 +434,6 @@ resources 节包含要部署的资源数组。 在每个资源内，还可以定
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

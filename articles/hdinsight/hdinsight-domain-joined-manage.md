@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 78382cf83ed5e94507854d41293a95fd529964c1
 
 
 ---
@@ -34,14 +34,14 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 
 * **Ranger 管理员**：此帐户是本地的 Apache Ranger 管理员帐户。 它不是 Active Directory 域用户。 此帐户可用于设置策略和让其他用户成为管理员或委托管理员（这些用户则可管理策略）。 默认情况下，用户名为 admin，密码与 Ambari 管理员密码相同。 可从 Ranger 中的“设置”页更新密码。
 * **群集管理员域用户**：此帐户是指定为 Hadoop 群集管理员的 Active Directory 域用户（包括 Ambari 和 Ranger）。 群集创建过程中必须提供用户的凭据。 此用户具有以下权限：
-  
+
   * 将计算机加入到域，并将其放在在群集创建期间指定的 OU 中。
-  * 在群集创建期间指定的 OU 内创建服务主体。 
+  * 在群集创建期间指定的 OU 内创建服务主体。
   * 创建反向 DNS 条目。
-    
-    请注意其他 AD 用户也具有这些权限。 
-    
-    群集内有一些终结点不受 Ranger 管理（如 Templeton），因此不安全。 这些终结点已对所有用户锁定（群集管理员域用户除外）。 
+
+    请注意其他 AD 用户也具有这些权限。
+
+    群集内有一些终结点不受 Ranger 管理（如 Templeton），因此不安全。 这些终结点已对所有用户锁定（群集管理员域用户除外）。
 * **常规**：群集创建期间，可提供多个 Active Directory 组。 这些组中的用户将同步到 Ranger 和 Ambari。 这些用户为域用户，仅对由 Ranger 管理的终结点具有访问权限（例如，Hiveserver2）。 所有 RBAC 策略和审核都适用于这些用户。
 
 ## <a name="roles-of-domain-joined-hdinsight-clusters"></a>已加入域的 HDInsight 群集的角色
@@ -58,7 +58,7 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 1. 打开 Ambari 管理 UI。  请参阅[打开 Ambari 管理 UI](#open-the-ambari-management-ui)。
 2. 在左侧菜单中，单击“角色”。
 3. 单击蓝色问号查看权限：
-   
+
     ![已加入域的 HDInsight 角色权限](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>打开 Ambari 管理 UI
@@ -67,36 +67,36 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 3. 在顶部菜单中单击“仪表板”以打开 Ambari。
 4. 使用群集管理员域用户名和密码登录到 Ambari。
 5. 在右上角单击“管理员”下拉菜单，然后单击“管理 Ambari”。
-   
+
     ![加入域的 HDInsight 管理 Ambari](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
-   
+
     UI 如下所示：
-   
+
     ![加入域的 HDInsight Ambari 管理 UI](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>列出从 Active Directory 同步的域用户
 1. 打开 Ambari 管理 UI。  请参阅[打开 Ambari 管理 UI](#open-the-ambari-management-ui)。
 2. 在左侧菜单中，单击“用户”。 可看到从 Active Directory 同步到 HDInsight 群集的所有用户。
-   
+
     ![加入域的 HDInsight Ambari 管理 UI 列表用户](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>列出从 Active Directory 同步的域组
 1. 打开 Ambari 管理 UI。  请参阅[打开 Ambari 管理 UI](#open-the-ambari-management-ui)。
 2. 在左侧菜单中，单击“组”。 可看到从 Active Directory 同步到 HDInsight 群集的所有组。
-   
+
     ![加入域的 HDInsight Ambari 管理 UI 列表组](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>配置 Hive 视图权限
 1. 打开 Ambari 管理 UI。  请参阅[打开 Ambari 管理 UI](#open-the-ambari-management-ui)。
 2. 在左侧菜单中，单击“视图”。
 3. 单击“HIVE” 以显示详细信息。
-   
+
     ![加入域的 HDInsight Ambari 管理 UI Hive 视图](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
 4. 单击“Hive 视图”链接以配置 Hive 视图。
 5. 向下滚动到“权限”部分。
-   
+
     ![加入域的 HDInsight Ambari 管理 UI Hive 视图配置权限](./media/hdinsight-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
-6. 单击“添加用户”或“添加组”，然后指定可以使用 Hive 视图的用户或组。 
+6. 单击“添加用户”或“添加组”，然后指定可以使用 Hive 视图的用户或组。
 
 ## <a name="configure-users-for-the-roles"></a>为角色配置用户
  若要查看角色及其权限的列表，请参阅[已加入域的 HDInsight 群集的角色](#roles-of-domain---joined-hdinsight-clusters)。
@@ -108,11 +108,10 @@ ms.openlocfilehash: f9ecc2f7a67a2cee6f02c0010a2b54404cbb6f82
 ## <a name="next-steps"></a>后续步骤
 * 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](hdinsight-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
 * 若要配置 Hive 策略和运行 Hive 查询，请参阅 [Configure Hive policies for Domain-joined HDInsight clusters](hdinsight-domain-joined-run-hive.md)（为已加入域的 HDInsight 群集配置 Hive 策略）。
-* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
+* 若要在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)（在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

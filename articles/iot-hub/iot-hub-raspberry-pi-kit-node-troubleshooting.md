@@ -1,5 +1,5 @@
 ---
-title: "故障排除 | Microsoft 文档"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 故障排除 | Microsoft Docs"
 description: "Raspberry Pi Node.js 体验的故障排除页面"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: cd29c24c7c1a1bf3bc03543ffd7f0e9e33537edf
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 2c5e2955584b165ca0ca95ce424a2050fb3f6ccd
 
 
 ---
@@ -123,6 +123,7 @@ Azure 命令行界面 (Azure CLI) 是一个预览版本。 若要查找解决方
 ### <a name="device-explorer"></a>设备资源管理器
 [设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)工具在 Windows 本地计算机上运行，并连接到 Azure 的 IoT 中心。 它与以下 [IoT 中心终结点](iot-hub-devguide.md)进行通信：
 
+
 * *设备标识管理* -以便预配和管理在 IoT 中心内注册的设备。
 * *接收“设备到云”消息* - 以便可以监视从设备发送到 IoT 中心的消息。
 * *发送“云到设备”消息* - 以便可以将消息从 IoT 中心发送到设备。
@@ -153,6 +154,6 @@ iothub-explorer help
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

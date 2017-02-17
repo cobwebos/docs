@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9b0df6e95e465efce467b8bcc60063f0b1ead946
+ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
+ms.openlocfilehash: 202134cd03bf776c1d646ae24c09a79e14fdc5d3
 
 
 ---
@@ -29,8 +29,8 @@ Visual Studio Tools for Docker 提供了一致的方法在本地 Linux Docker �
 
 > [!NOTE]
 > Windows 容器支持会在将来的版本中推出
-> 
-> 
+>
+>
 
 ## <a name="prerequisites"></a>先决条件
 需要安装以下工具。
@@ -54,18 +54,18 @@ Visual Studio Tools for Docker 提供了一致的方法在本地 Linux Docker �
 若要快速重复更改，可以在容器中启动应用程序，并继续进行更改，然后就像使用 IIS Express 一样查看这些更改。
 
 1. 将解决方案配置设置为 `Debug`，并按 **&lt;CTRL + F5>** 以生成 docker 映像并在本地运行它。
-   
+
     容器映像已生成并在 Docker 容器中运行后，Visual Studio 将在默认浏览器中启动 Web 应用。
     如果使用的是 Microsoft Edge 浏览器或以其他方式出现错误，请参阅[故障排除](vs-azure-tools-docker-troubleshooting-docker-errors.md)部分。
 2. 请转到“关于”页，将在此页中进行更改。
 3. 返回到 Visual Studio 并打开 `Views\Home\About.cshtml`。
 4. 将以下 HTML 内容添加到文件末尾，并保存更改。
-   
+
     ```
     <h1>Hello from a Docker Container!</h1>
     ```
 5. 查看输出窗口，当 .NET 生成完成并且你看到这些行时，切换回浏览器并刷新“关于”页。
-   
+
    ```
    Now listening on: http://*:80
    Application started. Press Ctrl+C to shut down
@@ -77,16 +77,16 @@ Visual Studio Tools for Docker 提供了一致的方法在本地 Linux Docker �
 
 1. 返回到 Visual Studio 并打开 `Controllers\HomeController.cs`
 2. 将 About() 方法的内容替换为以下代码：
-   
+
    ```
-   string message = "Your application description page from wthin a Container";
+   string message = "Your application description page from within a Container";
    ViewData["Message"] = message;
    ````
 3. 在 `string message`.行的左侧设置一个断点。
 4. 按 **&lt;F5>** 开始调试。
 5. 导航到“关于”页以命中断点。
 6. 切换到 Visual Studio 以查看断点，并检查消息的值。
-   
+
    ![][2]
 
 ## <a name="summary"></a>摘要
@@ -118,6 +118,6 @@ Visual Studio Tools for Docker 提供了一致的方法在本地 Linux Docker �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

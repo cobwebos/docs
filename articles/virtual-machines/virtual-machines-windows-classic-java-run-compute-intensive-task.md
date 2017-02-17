@@ -13,16 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4ce631d80b84661a61f0aaeb9d29de0b4420ecaf
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: c3f5fd335da2d1ed4e3c68223c3195d4a81c1a5c
 
 
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>如何在虚拟机上通过 Java 运行计算密集型任务
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 借助 Azure，可以使用虚拟机来处理计算密集型任务。 例如，虚拟机可以处理任务并将结果传送给客户端计算机或移动应用程序。 阅读完本文后，将了解如何创建运行可由其他 Java 应用程序监视的、计算密集型 Java 应用程序的虚拟机。
 
@@ -53,20 +54,20 @@ ms.openlocfilehash: 4ce631d80b84661a61f0aaeb9d29de0b4420ecaf
 2. 依次单击“新建”、“计算”、“虚拟机”和“从库中”。
 3. 在“虚拟机映像选择”对话框中，选择“JDK 7 Windows Server 2012”。
    请注意，万一安装的是尚不能在 JDK 7 中运行的旧版应用程序，则可选择“JDK 6 Windows Server 2012”。
-4. 单击“资源组名称” 的 Azure 数据工厂。
+4. 单击“下一步”。
 5. 在“虚拟机配置”对话框中：
    1. 指定虚拟机的名称。
    2. 指定要用于虚拟机的大小。
    3. 在“用户名”字段中输入管理员的名称。 请记住接下来要输的名称和密码，此名称和密码将用于远程登录虚拟机。
-   4. 在“新密码”字段中输入密码，然后在“确认”字段中再次输入密码。 这是 Administrator 帐户密码。
-   5. 单击“资源组名称” 的 Azure 数据工厂。
+   4. 在“新密码”字段中输入密码，然后在“确认”字段中再次输入密码。 这是“管理员”帐户密码。
+   5. 单击“下一步”。
 6. 在下一个“虚拟机配置”对话框中：
    1. 对于“云服务”，使用默认的“创建新的云服务”。
    2. “云服务 DNS 名称”的值在 cloudapp.net 中必须唯一。 如有必要，请修改此值，使 Azure 能够将其指示为唯一值。
    3. 指定区域、地缘组或虚拟网络。 在本教程中，请指定区域，如“美国西部”。
    4. 对于“存储帐户”框，请选择“使用自动生成的存储帐户”。
    5. 对于“可用性集”，请选择“(无)”。
-   6. 单击“资源组名称” 的 Azure 数据工厂。
+   6. 单击“下一步”。
 7. 在最后一个“虚拟机配置”对话框中：
    1. 接受默认的终结点项。
    2. 单击“完成”。
@@ -420,7 +421,7 @@ ms.openlocfilehash: 4ce631d80b84661a61f0aaeb9d29de0b4420ecaf
 ### <a name="to-run-the-compute-intensive-application"></a>运行计算密集型应用程序
 1. 登录虚拟机。
 2. 创建一个要在其中运行应用程序的文件夹。 例如，**c:\TSP**。
-3. 将 **TSPSolver.jar** 复制到 **c:\TSP**。
+3. 将 **TSPSolver.jar** 复制到 **c:\TSP**，
 4. 创建一个具有以下内容的名为 **c:\TSP\cities.txt** 的文件。
    
         City_1, 1002.81, -1841.35
@@ -492,7 +493,7 @@ ms.openlocfilehash: 4ce631d80b84661a61f0aaeb9d29de0b4420ecaf
 ### <a name="how-to-run-the-monitoring-client-application"></a>如何运行监视客户端应用程序
 1. 登录到要在其中运行客户端应用程序的计算机。 虽然这不需要是运行 **TSPSolver** 应用程序的同一计算机，但也可以是同一计算机。
 2. 创建一个要在其中运行应用程序的文件夹。 例如，**c:\TSP**。
-3. 将 **TSPClient.jar** 复制到 **c:\TSP**。
+3. 将 **TSPClient.jar** 复制到 **c:\TSP**，
 4. 确保 JRE 的 bin 文件夹位于 PATH 环境变量中。
 5. 在命令提示符中，将目录更改为 c:\TSP。
 6. 运行以下命令。
@@ -524,6 +525,6 @@ ms.openlocfilehash: 4ce631d80b84661a61f0aaeb9d29de0b4420ecaf
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

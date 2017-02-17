@@ -12,11 +12,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4753f54d319475e8d1a87e5497ab9e03765f8546
-ms.openlocfilehash: b0e28cdc4ac8abd8dae7d9c08731664a03a44b2e
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 6eb692f7c3374f9073944b8c4c0f34af2ed35b3c
 
 
 ---
@@ -24,10 +24,8 @@ ms.openlocfilehash: b0e28cdc4ac8abd8dae7d9c08731664a03a44b2e
 
 使用脚本操作可以通过指定群集配置设置，或者在群集上安装额外的服务、工具或其他软件，来自定义 Azure HDInsight 群集。 你可以在创建群集期间或者在运行中的群集上使用脚本操作。
 
-> [!NOTE]
-> 本文档中的信息针对基于 Linux 的 HDInsight 群集。 有关在基于 Windows 的群集上使用脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发 (Windows)](hdinsight-hadoop-script-actions.md)。
-> 
-> 
+> [!IMPORTANT]
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="what-are-script-actions"></a>什么是脚本操作？
 
@@ -75,32 +73,34 @@ HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Ja
 
 可以通过使用 `lsb_release` 来检查 OS 版本。 Upstart 安装脚本中的以下代码片段将演示如何确定脚本是否在 Ubuntu 14 或 16 上运行：
 
-    OS_VERSION=$(lsb_release -sr)
-    if [[ $OS_VERSION == 14* ]]; then
-        echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
-        HUE_TARFILE=hue-binaries-14-04.tgz
-    elif [[ $OS_VERSION == 16* ]]; then
-        echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
-        HUE_TARFILE=hue-binaries-16-04.tgz
-    fi
-    ...
-    if [[ $OS_VERSION == 16* ]]; then
-        echo "Using systemd configuration"
-        systemctl daemon-reload
-        systemctl stop webwasb.service    
-        systemctl start webwasb.service
-    else
-        echo "Using upstart configuration"
-        initctl reload-configuration
-        stop webwasb
-        start webwasb
-    fi
-    ...
-    if [[ $OS_VERSION == 14* ]]; then
-        export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-    elif [[ $OS_VERSION == 16* ]]; then
-        export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-    fi
+```bash
+OS_VERSION=$(lsb_release -sr)
+if [[ $OS_VERSION == 14* ]]; then
+    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    HUE_TARFILE=hue-binaries-14-04.tgz
+elif [[ $OS_VERSION == 16* ]]; then
+    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    HUE_TARFILE=hue-binaries-16-04.tgz
+fi
+...
+if [[ $OS_VERSION == 16* ]]; then
+    echo "Using systemd configuration"
+    systemctl daemon-reload
+    systemctl stop webwasb.service    
+    systemctl start webwasb.service
+else
+    echo "Using upstart configuration"
+    initctl reload-configuration
+    stop webwasb
+    start webwasb
+fi
+...
+if [[ $OS_VERSION == 14* ]]; then
+    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+elif [[ $OS_VERSION == 16* ]]; then
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+fi
+```
 
 可以在 https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh 中找到包含这些代码片段的完整脚本。
 
@@ -142,7 +142,9 @@ HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Ja
 
 例如，以下脚本将 giraph-examples.jar 文件从本地文件系统复制到 WASB：
 
-    hadoop fs -copyFromLocal /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
+```bash
+hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
+```
 
 ### <a name="a-namebps7awrite-information-to-stdout-and-stderr"></a><a name="bPS7"></a>将信息写入 STDOUT 和 STDERR
 
@@ -153,11 +155,15 @@ HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Ja
 
 大多数实用工具和安装包会将信息写入 STDOUT 和 STDERR，不过你可能想要添加更多日志记录。 若要将文本发送到 STDOUT，可使用 `echo`。 例如：
 
-    echo "Getting ready to install Foo"
+```bash
+echo "Getting ready to install Foo"
+```
 
 默认情况下，`echo` 会将字符串发送到 STDOUT。 若要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
 
-    >&2 echo "An error occurred installing Foo"
+```bash
+>&2 echo "An error occurred installing Foo"
+```
 
 这会将发送到 STDOUT（1，这是默认设置，因此未在此处列出）的信息重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
@@ -167,8 +173,10 @@ HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Ja
 
 应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 如果将文件存储为 UTF-8，文件开头可能包含字节顺序标记，或者以 CRLF 作为行尾，这对于 Windows 编辑器很常见，在这种情况下，脚本将会失败并返回如下所示的错误：
 
-    $'\r': command not found
-    line 1: #!/usr/bin/env: No such file or directory
+```
+$'\r': command not found
+line 1: #!/usr/bin/env: No such file or directory
+```
 
 ### <a name="a-namebps9a-use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>使用重试逻辑从暂时性错误中恢复
 
@@ -176,40 +184,46 @@ HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Ja
 
 若要使脚本能够从暂时性错误中恢复，可以实现重试逻辑。 下面是一个示例函数，它将运行任何传入的命令，并且在命令失败时最多重试三次。 每两次重试的间隔时间为两秒。
 
-    #retry
-    MAXATTEMPTS=3
+```bash
+#retry
+MAXATTEMPTS=3
 
-    retry() {
-        local -r CMD="$@"
-        local -i ATTMEPTNUM=1
-        local -i RETRYINTERVAL=2
+retry() {
+    local -r CMD="$@"
+    local -i ATTMEPTNUM=1
+    local -i RETRYINTERVAL=2
 
-        until $CMD
-        do
-            if (( ATTMEPTNUM == MAXATTEMPTS ))
-            then
-                    echo "Attempt $ATTMEPTNUM failed. no more attempts left."
-                    return 1
-            else
-                    echo "Attempt $ATTMEPTNUM failed! Retrying in $RETRYINTERVAL seconds..."
-                    sleep $(( RETRYINTERVAL ))
-                    ATTMEPTNUM=$ATTMEPTNUM+1
-            fi
-        done
-    }
+    until $CMD
+    do
+        if (( ATTMEPTNUM == MAXATTEMPTS ))
+        then
+                echo "Attempt $ATTMEPTNUM failed. no more attempts left."
+                return 1
+        else
+                echo "Attempt $ATTMEPTNUM failed! Retrying in $RETRYINTERVAL seconds..."
+                sleep $(( RETRYINTERVAL ))
+                ATTMEPTNUM=$ATTMEPTNUM+1
+        fi
+    done
+}
+```
 
 下面是使用此函数的示例。
 
-    retry ls -ltr foo
+```bash
+retry ls -ltr foo
 
-    retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+```
 
 ## <a name="a-namehelpermethodsahelper-methods-for-custom-scripts"></a><a name="helpermethods"></a>自定义脚本的帮助器方法
 
 脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 中定义，可以使用以下语法将其包括在你的脚本中：
 
-    # Import the helper method module.
-    wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
+```bash
+# Import the helper method module.
+wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
+```
 
 这样，便可以在你的脚本中使用以下帮助器：
 
@@ -252,7 +266,9 @@ HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Ja
 
 在脚本中设置的环境变量只在脚本范围内存在。 在某些情况下，可能需要添加整个系统的环境变量，这些变量在脚本完成之后仍会保存。 通常，这就是为何通过 SSH 连接到群集的用户可以使用脚本所安装的组件的原因。 可以通过将环境变量添加 `/etc/environment` 来实现此目的。 例如，以下语句添加了 **HADOOP\_CONF\_DIR**：
 
-    echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
+```bash
+echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
+```
 
 ### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>访问存储自定义脚本的位置
 
@@ -282,14 +298,16 @@ HDInsight 的不同版本取决于 Ubuntu 的特定版本。 不同 OS 版本之
 
 若要查看 OS 版本，请使用 `lsb_release`。 例如，以下内容演示如何根据 OS 版本引用不同的 tar 文件：
 
-    OS_VERSION=$(lsb_release -sr)
-    if [[ $OS_VERSION == 14* ]]; then
-        echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
-        HUE_TARFILE=hue-binaries-14-04.tgz
-    elif [[ $OS_VERSION == 16* ]]; then
-        echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
-        HUE_TARFILE=hue-binaries-16-04.tgz
-    fi
+```bash
+OS_VERSION=$(lsb_release -sr)
+if [[ $OS_VERSION == 14* ]]; then
+    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    HUE_TARFILE=hue-binaries-14-04.tgz
+elif [[ $OS_VERSION == 16* ]]; then
+    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    HUE_TARFILE=hue-binaries-16-04.tgz
+fi
+```
 
 ## <a name="a-namedeployscriptachecklist-for-deploying-a-script-action"></a><a name="deployScript"></a>有关部署脚本操作的清单
 
@@ -357,6 +375,6 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 示例�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

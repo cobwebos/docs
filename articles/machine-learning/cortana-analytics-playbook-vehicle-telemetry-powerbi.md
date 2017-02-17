@@ -1,5 +1,5 @@
 ---
-title: "车辆遥测分析解决方案模板 Power BI 仪表板设置说明 | Microsoft Docs"
+title: "用于了解车辆运行状况和行驶习惯的 Power BI 仪表板 - Azure | Microsoft Docs"
 description: "通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 66a2375d7560b41f0fddef3c8c32e41917eb1649
-ms.openlocfilehash: 925222e5e11c96b1b8f851dbc3679d0f6b25b99c
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: 24d440049b5e889c6d4417cc16787edd42bc5848
 
 
 ---
@@ -372,7 +372,7 @@ ms.openlocfilehash: 925222e5e11c96b1b8f851dbc3679d0f6b25b99c
 
 ![Vehicle Telemetry Power BI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png) 
 
-**请注意报表共有 6 页**  
+**请注意报表共有&6; 页**  
 第 1 页：车辆密度  
 第 2 页：实时车辆运行状况  
 第 3 页：过激驾驶的车辆   
@@ -423,6 +423,6 @@ ms.openlocfilehash: 925222e5e11c96b1b8f851dbc3679d0f6b25b99c
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

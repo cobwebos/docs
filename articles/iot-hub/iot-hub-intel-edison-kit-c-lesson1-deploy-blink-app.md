@@ -1,5 +1,5 @@
 ---
-title: "将闪烁应用程序部署到 Azure IoT 初学者工具包中 | Microsoft Docs"
+title: "将 Intel Edison (C) 连接到 Azure IoT - 第 1 课：部署应用程序| Microsoft Docs"
 description: "克隆 GitHub 提供的示例 C 应用程序，并使用 gulp 工具将此应用程序部署到 Intel Edison 开发板。 此示例应用程序每隔两秒让连接到板的 LED 闪烁一次。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 604ab48856f3fbc09ca6b566ef3f7e1d18e912c6
-ms.openlocfilehash: 6c911297be4fa2c7ce6bd817233e8a8012634f42
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: c0589d488be5ec62686551b97d8949e5fed2f0a3
 
 
 ---
@@ -127,6 +127,6 @@ LED 闪烁 20 次后，示例应用程序会自动终止。 如果未看到 LED 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

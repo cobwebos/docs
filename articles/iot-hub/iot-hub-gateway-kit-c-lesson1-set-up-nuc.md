@@ -1,5 +1,5 @@
 ---
-title: "将 Intel NUC 设置为 Azure IoT 网关 | Microsoft 文档"
+title: "SensorTag 设备和 Azure IoT 网关 - 第 1 课：设置 NUC | Microsoft Docs"
 description: "将 Intel NUC 设置为传感器和 Azure IoT 中心之间的 IoT 网关，用于收集传感器信息并将其发送到 IoT 中心。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: ef479f503ac4e911f3a9d311d0f436d95396eedd
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 53e709c5134eec29d71be1d75353d606aa651273
 
 
 ---
@@ -138,6 +138,6 @@ cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

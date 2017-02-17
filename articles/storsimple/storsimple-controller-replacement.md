@@ -1,5 +1,5 @@
 ---
-title: "更换 StorSimple 设备控制器 | Microsoft 文档"
+title: "更换 StorSimple 设备控制器 | Microsoft Docs"
 description: "说明如何拆卸和更换 StorSimple 设备上的一个或两个控制器模块。"
 services: storsimple
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2689c8db4beb07d42da836795f9d85b53ed8f076
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dcf0ff5c4d6ebb7d0aea0b9518cbbe66c9f0a649
 
 
 ---
@@ -250,6 +250,6 @@ ms.openlocfilehash: 2689c8db4beb07d42da836795f9d85b53ed8f076
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

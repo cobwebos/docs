@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 11/18/2016
 ms.author: alkohli@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: d07d1c838d99d0de0c5b62aaf42330b447df102c
-ms.openlocfilehash: 2000ee9d88dc0f2f0f9046b1ef6b3d2a104e7d6b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 562e20d274079d221360d45302ff288190c1cd6e
 
 
 ---
@@ -34,7 +34,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 > [!NOTE]
 > * 使用 Windows PowerShell for StorSimple cmdlet，你可以从某个串行控制台或通过 Windows PowerShell 远程处理以远程方式管理 StorSimple 设备。 有关可以在此命令行接口中使用的各个 cmdlet 的详细信息，请参阅 [Windows PowerShell for StorSimple 的 cmdlet 参考](https://technet.microsoft.com/library/dn688168.aspx)。
-> * Azure PowerShell StorSimple cmdlet 不同于使你能够自动从命令行执行 StorSimple 服务级别和迁移任务的 cmdlet 集合。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](https://msdn.microsoft.com/library/azure/dn920427.aspx)。
+> * Azure PowerShell StorSimple cmdlet 不同于使你能够自动从命令行执行 StorSimple 服务级别和迁移任务的 cmdlet 集合。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)。
 > 
 > 
 
@@ -144,7 +144,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 | 安装维护模式更新和修补程序 |[更新设备](storsimple-update-device.md) |
 | 进入维护模式 </br>退出维护模式 |[StorSimple 设备模式](storsimple-device-modes.md) |
 | 创建支持包</br>解密和编辑支持包 |[创建和管理支持包](storsimple-create-manage-support-package.md) |
-| 启动支持会话</br> |[在 Windows PowerShell for StorSimple 中启动支持会话](/storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
+| 启动支持会话</br> |[在 Windows PowerShell for StorSimple 中启动支持会话](storsimple-create-manage-support-package.md#manually-create-a-support-package) |
 
 ## <a name="get-help-in-windows-powershell-for-storsimple"></a>获取关于 Windows PowerShell for StorSimple 的帮助信息
 在 Windows PowerShell for StorSimple 中，有关于 cmdlet 的帮助信息。 此帮助的在线最新版本也可用，可以用它来更新你的系统上的帮助信息。
@@ -178,6 +178,6 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

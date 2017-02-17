@@ -3,7 +3,7 @@ title: "如何监视云服务 | Microsoft Docs"
 description: "了解如何使用 Azure 经典门户监视云服务。"
 services: cloud-services
 documentationcenter: 
-author: rboucher
+author: thraka
 manager: timlt
 editor: 
 ms.assetid: 5c48d2fb-b8ea-420f-80df-7aebe2b66b1b
@@ -12,12 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2015
-ms.author: robb
+ms.date: 12/07/2015
+ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a8d581d678d35045d7d27df55ee1e629f259f30c
-
+ms.sourcegitcommit: ab97962175f4498200db428736a1cbd124fac285
+ms.openlocfilehash: aab8f3233191c9b3f839e3358902f72499d93ee5
 
 ---
 # <a name="how-to-monitor-cloud-services"></a>如何监视云服务
@@ -34,19 +33,19 @@ Azure 经典门户中的监视显示信息是高度可配置的。 可在“监�
 
 在启用详细监视后，汇总后的监视数据存储在你的存储帐户中的相应表中。 若要为某个角色启用详细监视，必须配置链接到该存储帐户的诊断连接字符串。 可对不同的角色使用不同的存储帐户。
 
-请注意，启用详细监视将增加与数据存储、数据传输和存储事务相关的存储成本。 最低监视不需要存储帐户。 即使你将监视级别设置为“详细监视”，在最低监视级别公开的度量值数据也不会存储在你的存储帐户中。
+启用详细监视将增加与数据存储、数据传输和存储事务相关的存储成本。 最低监视不需要存储帐户。 即使你将监视级别设置为“详细监视”，在最低监视级别公开的度量值数据也不会存储在你的存储帐户中。
 
 ## <a name="how-to-configure-monitoring-for-cloud-services"></a>如何：为云服务配置监视
 可使用下列步骤在 Azure 经典门户中配置详细监视或最低监视。 
 
 ### <a name="before-you-begin"></a>开始之前
-* 创建用于存储监视数据的存储帐户。 可对不同的角色使用不同的存储帐户。 有关详细信息，请参阅**存储帐户**帮助，或者参阅[如何创建存储帐户](/manage/services/storage/how-to-create-a-storage-account/)。
-* 为云服务角色启用 Azure 诊断。 请参阅[配置云服务诊断](https://msdn.microsoft.com/library/azure/dn186185.aspx#BK_EnableBefore)。
+* 创建用于存储监视数据的经典存储帐户。 可对不同的角色使用不同的存储帐户。 有关详细信息，请参阅[如何创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
+* 为云服务角色启用 Azure 诊断。 请参阅[配置云服务诊断](cloud-services-dotnet-diagnostics.md)。
 
 确保“角色”配置中存在诊断连接字符串。 只有先启用 Azure Diagnostics 并在“角色”配置中包含了诊断连接字符串，才能启用详细监视。   
 
 > [!NOTE]
-> 面向 Azure SDK 2.5 的项目不会将诊断连接字符串自动加入项目模板。 对于这些项目，需要手动将诊断连接字符串添加到“角色”配置。
+> 面向 Azure SDK 2.5 的项目不会将诊断连接字符串自动加入项目模板。 对于这些项目，需要将诊断连接字符串手动添加到“角色”配置。
 > 
 > 
 
@@ -149,6 +148,7 @@ Azure 经典门户中的监视显示信息是高度可配置的。 可在“监�
    
    * 若要显示新的度量值，请在图表标题中选择该度量值对应的复选框。 在收缩视图中，单击“n 个度量值”旁的向下箭头将显示图表标题区域无法显示的度量值。
    * 要删除显示在图表上的某个度量值，请清除其标题旁的复选框。
+   
 3. 在“相对”和“绝对”视图之间切换。
 4. 选择要显示 1 小时、24 小时还是 7 天的数据。
 
@@ -178,6 +178,6 @@ WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role ins
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

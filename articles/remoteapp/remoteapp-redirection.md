@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 392f15955362607187abf402dee076e328c11bd3
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5a5ad526513c7adf9b8274acec7d89fe375f43fc
 
 
 ---
@@ -48,7 +48,7 @@ RemoteApp 利用远程桌面协议 (RDP) 和 RemoteFX 来提供重定向。
 * USB 重定向︰你可以在远程会话中使用连接到本地计算机的 USB 设备。
 
 ## <a name="change-your-redirection-settings-in-remoteapp"></a>在 RemoteApp 中更改重定向设置
-通过一起使用 Microsoft Azure PowerShell 与 SDK，你可以更改某个集合的设备重定向设置。 在安装了新的 PowerShell 和 SDK 之后，首先将其配置为管理你的订阅，如[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 中所述。
+通过一起使用 Microsoft Azure PowerShell 与 SDK，你可以更改某个集合的设备重定向设置。 在安装了新的 PowerShell 和 SDK 之后，首先将其配置为管理你的订阅，如[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中所述。
 
 然后使用类似下面的命令来设置自定义 RDP 属性︰
 
@@ -119,6 +119,6 @@ RemoteApp 利用远程桌面协议 (RDP) 和 RemoteFX 来提供重定向。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

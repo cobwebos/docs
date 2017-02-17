@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dadae052868fcb0952b4480525efc0267a4a8e22
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 50630084a3df9bc1fed27efb41bc557d0e03916f
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: dadae052868fcb0952b4480525efc0267a4a8e22
 
 ## <a name="before-you-deploy-your-web-app-to-production"></a>将 Web 应用部署到生产之前
 ### <a name="choose-a-tier"></a>选择层
-Azure 应用服务在五个层中提供：免费、共享、基本、标准和高级。 有关各层的功能与定价的信息，请参阅[定价详细信息](/pricing/details/app-service/)。 
+Azure 应用服务在五个层中提供：免费、共享、基本、标准和高级。 有关各层的功能与定价的信息，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/app-service/)。 
 
 * [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)支持将多个 Web 应用分组到同一层中。
 * 在创建 Web 应用后可以随时[切换层](web-sites-scale.md)。
@@ -83,14 +83,14 @@ Azure 应用服务在五个层中提供：免费、共享、基本、标准和�
 
 <!-- Anchors. -->
 
-[将站点部署到生产环境之前]: #before-you-deploy-your-site-to-production
-[网站运行期间]: #while-your-website-is-running
-[更新网站时]: #when-you-update-your-website
+[Before you deploy your site to production]: #before-you-deploy-your-site-to-production
+[While your website is running]: #while-your-website-is-running
+[When you update your website]: #when-you-update-your-website
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

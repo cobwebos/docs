@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Resource Manager 中为虚拟机设置密钥保管库 | Microsoft Docs"
+title: "在 Azure Resource Manager 中为 Linux VM 设置 Key Vault | Microsoft Docs"
 description: "如何设置与 Azure Resource Manager 虚拟机搭配使用的密钥保管库。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2016
+ms.date: 01/24/2017
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: bc60d5659c80ad1245d7a34b4cd81c0ae73a5ba9
+ms.sourcegitcommit: 7ccb810fa3178528eb6f41ac7eae842d017d8bbc
+ms.openlocfilehash: 0f24791cf6fc8668b83cfc2eb479f5f13362e217
 
 
 ---
@@ -56,6 +56,6 @@ ms.openlocfilehash: bc60d5659c80ad1245d7a34b4cd81c0ae73a5ba9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

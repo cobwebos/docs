@@ -1,5 +1,5 @@
 ---
-title: "获取用于 Azure IoT 初学者工具包的 Azure 工具 (Ubuntu 16.04) | Microsoft 文档"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 2 课：Azure 工具 (Ubuntu) | Microsoft Docs"
 description: "在 Ubuntu 上安装 Python 和 Azure 命令行接口 (Azure CLI)。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: 1ad2afc531bfa4ce4afe599d30f9f9a699339976
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: e29f43af1ab46ad9f80137924632b6a975375c1a
 
 
 ---
@@ -81,6 +81,6 @@ Azure CLI 针对 Azure 提供了多平台命令行体验，使得你可以直接
 [create-your-iot-hub-and-register-your-arduino-board]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

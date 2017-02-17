@@ -1,5 +1,5 @@
 ---
-title: "准备好主计算机和 Azure IoT 中心 | Microsoft Docs"
+title: "模拟设备和 Azure IoT 网关 - 第 2 课：获取工具 (Windows) | Microsoft Docs"
 description: "在运行 Windows 的主计算机上安装工具和软件，创建 IoT 中心并在此 IoT 中心注册设备。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: fd00d36e55109dfa4c6ddfab7d92872854696ba0
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: b07c6c383f31f77a78628593a60b7b76a49bca4f
 
 
 ---
@@ -127,6 +127,6 @@ npm install -g gulp
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

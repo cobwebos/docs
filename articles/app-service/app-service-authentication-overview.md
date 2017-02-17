@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
+ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
+ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 
 
 ---
@@ -24,13 +24,13 @@ ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
 ## <a name="what-is-app-service-authentication--authorization"></a>什么是应用服务身份验证/授权？
 应用服务身份验证/授权是一项功能，方便应用程序登录用户，避免在应用后端更改代码。 该功能可以方便地保护应用程序和处理每个用户的数据。
 
-应用服务使用联合标识，即通过第三方标识提供者来存储帐户并进行用户身份验证。 应用程序依赖于提供者的标识信息，因此不需自行存储该信息。 应用服务支持现有的五个标识提供者：Azure Active Directory、Facebook、Google、Microsoft 帐户和 Twitter。 应用可以使用任意数目的此类标识提供者，为用户提供登录方式选项。 若要扩大内置支持，可以集成其他标识提供者或[自己的自定义标识解决方案] [custom-auth]。
+应用服务使用联合标识，即通过第三方标识提供者来存储帐户并进行用户身份验证。 应用程序依赖于提供者的标识信息，因此不需自行存储该信息。 应用服务支持现有的五个标识提供者：Azure Active Directory、Facebook、Google、Microsoft 帐户和 Twitter。 应用可以使用任意数目的此类标识提供者，为用户提供登录方式选项。 可以通过集成其他标识提供者或[自己的自定义标识解决方案][custom-auth]，扩大内置支持。
 
 参阅以下教程之一即可立即入门：
 
-* [向 iOS 应用添加身份验证] [iOS]（或者其他针对 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova] 应用的教程）
-* [Azure App Service 中 API 应用的用户身份验证] [apia-user]
-* [Azure App Service 入门 - 第 2 部分] [web-getstarted]
+* [将身份验证添加到 iOS 应用][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova] 应用）
+* [Azure App Service 中 API 应用的用户身份验证][apia-user]
+* [Azure App Service 入门 - 第 2 部分][web-getstarted]
 
 ## <a name="how-authentication-works-in-app-service"></a>应用服务中的身份验证机制
 若要使用其中某个标识提供者进行身份验证，首先需对标识提供者进行配置，使之了解应用程序。 然后，标识提供者会提供 ID 和机密，再由用户将其提供给应用服务。 这样即可确立信任关系，使应用服务能够验证标识提供者提供的用户声明，例如身份验证令牌。
@@ -69,11 +69,11 @@ ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
 > 
 > 
 
-对于服务到服务方案，应用服务可通过 Azure Active Directory 保护应用程序。 调用应用程序只需提供 Azure Active Directory 服务主体授权令牌即可，而该令牌可通过在 Azure Active Directory 中提供客户端 ID 和客户端机密来获取。 [API 应用的服务主体身份验证] [apia-service] 教程介绍了使用 ASP.NET API 应用的此类方案的示例。
+对于服务到服务方案，应用服务可通过 Azure Active Directory 保护应用程序。 调用应用程序只需提供 Azure Active Directory 服务主体授权令牌即可，而该令牌可通过在 Azure Active Directory 中提供客户端 ID 和客户端机密来获取。 [API 应用的服务主体身份验证][apia-service]教程介绍了使用 ASP.NET API 应用的此类方案的示例。
 
 若要通过应用服务身份验证处理服务到服务方案，可使用客户端证书或基本身份验证。 有关 Azure 中客户端证书的信息，请参阅[如何为 Web 应用配置 TLS 相互身份验证](../app-service-web/app-service-web-configure-tls-mutual-auth.md)。 有关 ASP.NET 中基本身份验证的信息，请参阅 [ASP.NET Web API 2 中的身份验证筛选器](http://www.asp.net/web-api/overview/security/authentication-filters)。
 
-从应用服务逻辑应用到 API 应用的服务帐户身份验证是一个特殊情况，该情况在[在逻辑应用中使用在应用服务中托管的自定义 API](../app-service-logic/app-service-logic-custom-hosted-api.md) 中进行了详细介绍。
+从应用服务逻辑应用到 API 应用的服务帐户身份验证是一个特殊情况，该情况在[在逻辑应用中使用在应用服务中托管的自定义 API](../logic-apps/logic-apps-custom-hosted-api.md) 中进行了详细介绍。
 
 ## <a name="a-nameauthorizationahow-authorization-works-in-app-service"></a><a name="authorization"></a>应用服务中的授权机制
 用户可以全权控制访问应用程序的请求。 可以为应用服务身份验证/授权配置以下任意行为：
@@ -108,23 +108,23 @@ ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
 ### <a name="identity-providers"></a>标识提供者
 以下教程说明了如何将应用服务配置为使用不同的身份验证提供者：
 
-* [如何将应用配置为使用 Azure Active Directory 登录] [AAD]
-* [如何将应用配置为使用 Facebook 登录] [Facebook]
-* [如何将应用配置为使用 Google 登录] [Google]
-* [如何将应用配置为使用 Microsoft 帐户登录] [MSA]
-* [如何将应用配置为使用 Twitter 登录] [Twitter]
+* [如何将应用配置为使用 Azure Active Directory 登录][AAD]
+* [如何将应用配置为使用 Facebook 登录][Facebook]
+* [如何将应用配置为使用 Google 登录][Google]
+* [如何将应用配置为使用 Microsoft 帐户登录][MSA]
+* [如何将应用配置为使用 Twitter 登录][Twitter]
 
-若要使用此处未提供的其他标识系统，也可使用[移动应用 .NET 服务器 SDK 中的预览版自定义身份验证支持] [custom-auth]，该身份验证可用于 Web 应用、移动应用或 API 应用。
+若要使用此处未提供的其他标识系统，也可使用[移动应用 .NET 服务器 SDK 中的预览版自定义身份验证支持][custom-auth]，后者适用于 Web 应用、移动应用或 API 应用。
 
 ### <a name="web-applications"></a>Web 应用程序
 以下教程介绍如何向 Web 应用程序添加身份验证：
 
-* [Azure App Service 入门 - 第 2 部分] [web-getstarted]
+* [Azure App Service 入门 - 第 2 部分][web-getstarted]
 
 ### <a name="mobile-applications"></a>移动应用程序
 以下教程介绍如何通过服务器定向流向移动客户端添加身份验证：
 
-* [将身份验证添加到 iOS 应用] [iOS]
+* [将身份验证添加到 iOS 应用][iOS]
 * [将身份验证添加到 Android 应用] [Android]
 * [将身份验证添加到 Windows 应用] [Windows]
 * [将身份验证添加到 Xamarin.iOS 应用] [Xamarin.iOS]
@@ -134,9 +134,9 @@ ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
 
 若要使用 Azure Active Directory 的客户端定向流，请参阅以下资源：
 
-* [使用适用于 iOS 的 Active Directory 身份验证库] [ADAL-iOS]
-* [使用适用于 Android 的 Active Directory 身份验证库] [ADAL-Android]
-* [使用适用于 Windows 和 Xamarin 的 Active Directory 身份验证库] [ADAL-dotnet]
+* [使用适用于 iOS 的 Active Directory 身份验证库][ADAL-iOS]
+* [使用适用于 Android 的 Active Directory 身份验证库][ADAL-Android]
+* [使用适用于 Windows 和 Xamarin 的 Active Directory 身份验证库][ADAL-dotnet]
 
 若要使用 Facebook 的客户端定向流，请参阅以下资源：
 
@@ -153,8 +153,8 @@ ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
 ### <a name="api-applications"></a>API 应用程序
 以下教程介绍了如何保护 API 应用：
 
-* [Azure App Service 中 API 应用的用户身份验证] [apia-user]
-* [Azure App Service 中 API 应用的服务主体身份验证] [apia-service]
+* [Azure App Service 中 API 应用的用户身份验证][apia-user]
+* [Azure App Service 中 API 应用的服务主体身份验证][apia-service]
 
 [apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
 [apia-service]: ../app-service-api/app-service-api-dotnet-service-principal-auth.md
@@ -183,6 +183,6 @@ ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

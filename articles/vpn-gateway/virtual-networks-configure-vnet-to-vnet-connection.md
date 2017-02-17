@@ -1,10 +1,10 @@
 ---
-title: "为经典部署模型配置 VNet 到 VNet 连接 | Microsoft 文档"
+title: "将 Azure 虚拟网络连接到另一 VNet：经典 | Microsoft Docs"
 description: "如何使用 PowerShell 和 Azure 经典门户将 Azure 虚拟网络连接到一起。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 7413827f-233d-4c7c-a133-9c99cf031833
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: fb25351de7f4b64ab36d5a1f2629677f0acece47
-ms.openlocfilehash: 3d1d6ea9ea933c5aaf27b58b9f49a5b845f610ce
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: 863b308125a7a9ae2b9d9104d150bd2474c064b3
 
 
 ---
@@ -60,7 +60,7 @@ ms.openlocfilehash: 3d1d6ea9ea933c5aaf27b58b9f49a5b845f610ce
   * 如果你有多个 Azure 订阅，可以在虚拟网络之间安全地将不同订阅中的工作负荷连接起来。
   * 对于企业或服务提供商而言，可以在 Azure 中使用安全 VPN 技术启用跨组织通信。
 
-### <a name="vnet-to-vnet-faq-for-classic-vnets"></a>针对经典 VNet 的 VNet 到 VNet 通信常见问题
+### <a name="vnet-to-vnet-considerations-for-classic-vnets"></a>经典 VNet 的 VNet 到 VNet 注意事项
 * 虚拟网络可以在相同或不同的订阅中。
 * 虚拟网络可以在相同或不同的 Azure 区域（位置）中。
 * 云服务或负载平衡终结点不能跨虚拟网络，即使它们连接在一起，也是如此。
@@ -169,7 +169,7 @@ ms.openlocfilehash: 3d1d6ea9ea933c5aaf27b58b9f49a5b845f610ce
 2. 在“指定地址空间”页上，单击右下角的复选标记，但不要进行任何更改。
 
 ## <a name="step-7---create-the-vpn-connection"></a>步骤 7 - 创建 VPN 连接
-完成前面的所有步骤后，请设置 IPsec/IKE 预共享密钥并创建连接。 这一组步骤使用 PowerShell，不能在门户中配置。 有关安装 Azure PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。 请确保下载最新版本的服务管理 (SM) cmdlet。 
+完成前面的所有步骤后，请设置 IPsec/IKE 预共享密钥并创建连接。 这一组步骤使用 PowerShell，不能在门户中配置。 有关安装 Azure PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 请确保下载最新版本的服务管理 (SM) cmdlet。 
 
 1. 打开 Windows PowerShell，然后登录。
    
@@ -200,6 +200,6 @@ ms.openlocfilehash: 3d1d6ea9ea933c5aaf27b58b9f49a5b845f610ce
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "创建 Azure IoT 中心并注册 Intel Edison | Microsoft Docs"
+title: "将 Intel Edison（节点）连接到 Azure IoT - 第 2 课：注册设备 | Microsoft Docs"
 description: "使用 Azure CLI 创建资源组、创建 Azure IoT 中心，以及在 Azure IoT 中心注册 Edison。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: cc3b0295e73b3cf85eb8c5468d56f175a873bddc
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: 384724ccf78dc08b215ef602ff4366dd54801ab5
 
 
 ---
@@ -105,6 +105,6 @@ az iot device create --device-id myinteledison --hub-name {my hub name}
 [process-and-store-iot-hub-messages]: iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 
