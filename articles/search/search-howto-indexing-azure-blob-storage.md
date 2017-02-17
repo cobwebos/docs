@@ -12,16 +12,16 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/24/2016
+ms.date: 11/30/2016
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 2b62ddb83b35194b9fcd23c60773085a9551b172
-ms.openlocfilehash: 041b47ed2aba11d45ed6ae02dadb73916046dd78
+ms.sourcegitcommit: 976470e7b28a355cbfa4c5c8d380744eb1366787
+ms.openlocfilehash: f8711ba45339be7ffbeac1ab28823df43db23046
 
 ---
 
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
-本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 使用全新的 Azure 搜索服务 Blob 索引器可以快速顺利地完成此过程。
+本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和方案。 
 
 ## <a name="supported-document-formats"></a>支持的文档格式
 Blob 索引器可从以下文档格式提取文本：
@@ -45,17 +45,15 @@ Blob 索引器可从以下文档格式提取文本：
 可以使用以下方式设置 Azure Blob 存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
-* Azure 搜索 [REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
-* Azure 搜索 .NET SDK [版本 2.0-preview](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)
+* Azure 搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure 搜索 [.NET SDK](https://aka.ms/search-sdk)
 
 > [!NOTE]
 > 某些功能（例如字段映射）在门户中尚不可用，必须以编程方式使用。
 >
 >
 
-本文将使用 REST API 设置一个索引器。 首先，我们将创建数据源，然后创建索引，最后配置索引器。
-
-之后，将详细介绍 Blob 索引器如何分析 Blob，如何选择要编制索引的 Blob，如何处理不受支持内容类型的 Blob，以及可用的配置设置。 
+在这里，我们使用 REST API 演示流。 
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 数据源指定要编制索引的数据、访问数据所需的凭据和有效标识数据更改（新行、修改的行或删除的行）的策略。 一个数据源可供同一搜索服务中的多个索引器使用。
@@ -67,7 +65,7 @@ Blob 索引器可从以下文档格式提取文本：
 * **credentials** 以 `credentials.connectionString` 参数的形式提供存储帐户连接字符串。 可从 Azure 门户获取连接字符串：导航到所需的存储帐户边栏选项卡，选择“设置” > “密钥”，然后使用“主连接字符串”或“辅助连接字符串”值。
 * **container** 指定存储帐户中的容器。 默认情况下，容器中的所有 Blob 都可检索。 如果只想为特定虚拟目录中的 Blob 编制索引，可以使用可选的 **query** 参数指定该目录。
 
-以下示例演示了一个数据源定义：
+创建数据源：
 
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -80,12 +78,12 @@ Blob 索引器可从以下文档格式提取文本：
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
 
-有关创建数据源 API 的详细信息，请参阅[创建数据源](https://msdn.microsoft.com/library/azure/dn946876.aspx)。
+有关创建数据源 API 的详细信息，请参阅[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
-索引指定文档、属性和其他构造中可以塑造搜索体验的字段。  
+索引指定文档、属性和其他构造中可以塑造搜索体验的字段。
 
-若要为 Blob 编制索引，请确保索引包含用于存储 Blob 的可搜索 `content` 字段。
+下面介绍了如何使用可搜索 `content` 字段创建索引，以存储从 Blob 中提取的文本：   
 
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
@@ -99,10 +97,12 @@ Blob 索引器可从以下文档格式提取文本：
           ]
     }
 
-有关创建索引 API，请参阅[创建索引](https://msdn.microsoft.com/library/dn798941.aspx)
+有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
 ### <a name="step-3-create-an-indexer"></a>步骤 3：创建索引器
-索引器可以连接数据源与目标搜索索引，并提供计划信息，以便你可以自动刷新数据。 创建索引和数据源后，创建引用数据源和目标索引的索引器的过程相对就很简单。 例如：
+索引器将数据源与目标搜索索引关联，并提供自动执行数据刷新的计划。 
+
+创建索引和数据源后，就可以准备创建索引器了：
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -115,9 +115,9 @@ Blob 索引器可从以下文档格式提取文本：
       "schedule" : { "interval" : "PT2H" }
     }
 
-此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行索引器一次，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，索引器只在创建后运行一次。 但是，可以随时根据需要运行索引器。   
+此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行索引器一次，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
-有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://msdn.microsoft.com/library/azure/dn946899.aspx)。
+有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
 ## <a name="how-azure-search-indexes-blobs"></a>Azure 搜索如何为 Blob 编制索引
 
@@ -147,13 +147,14 @@ Blob 索引器可从以下文档格式提取文本：
 >
 >
 
-### <a name="picking-the-document-key-field-and-dealing-with-different-field-names"></a>选择文档键字段，然后处理不同的字段名称
+<a name="DocumentKeys"></a>
+### <a name="defining-document-keys-and-field-mappings"></a>定义文档键和字段映射
 在 Azure 搜索中，文档键唯一标识某个文档。 每个搜索索引只能有一个类型为 Edm.String 的键字段。 键字段对于要添加到索引的每个文档必不可少（事实上它是唯一的必填字段）。  
 
 应该仔细考虑要将提取的哪个字段映射到索引的键字段。 候选字段包括：
 
 * **metadata\_storage\_name** - 这可能是一个便利的候选项，但是请注意，1) 名称可能不唯一，因为不同的文件夹中可能有同名的 Blob；2) 名称中包含的字符可能在文档键中无效，例如短划线。 可以使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效的字符 - 如果这样做，请记得在将这些字符传入 Lookup 等 API 调用时为文档键编码。 （例如，在 .NET 中，可以使用 [UrlTokenEncode 方法](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)实现此目的）。
-* **metadata\_storage\_path** - 使用完整路径可确保唯一性，但是路径必定会包含 `/` 字符，而该字符[在文档键中无效](https://msdn.microsoft.com/library/azure/dn857353.aspx)。  如上所述，可以选择使用 `base64Encode` [函数](search-indexer-field-mappings.md#base64EncodeFunction)为键编码。
+* **metadata\_storage\_path** - 使用完整路径可确保唯一性，但是路径必定会包含 `/` 字符，而该字符[在文档键中无效](https://docs.microsoft.com/rest/api/searchservice/naming-rules)。  如上所述，可以选择使用 `base64Encode` [函数](search-indexer-field-mappings.md#base64EncodeFunction)为键编码。
 * 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上载过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
 
 > [!IMPORTANT]
@@ -344,6 +345,6 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

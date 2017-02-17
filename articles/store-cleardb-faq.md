@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 159525b843fba8b8d86f7e938e3200e2472a5cf4
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 44bb69c53eb5fea6d3e27f17eb6c690df7684bda
 
 
 ---
@@ -39,8 +39,8 @@ ClearDB 是一种 MySQL 托管服务，可为你管理 MySQL 基础结构。 在
 
 * [即用即付](/offers/ms-azr-0003p/)：需要信用卡，购买付费的 MySQL 数据库时会向信用卡收费。
 * [免费试用版](https://azure.microsoft.com/pricing/free-trial/)：包括可用于 Microsoft Azure 服务的信用额度，但不允许购买第三方资源。 若要购买第三方服务或付费的 MySQL 数据库，需使用支持信用卡的订阅。 对于 Web 应用，可以创建免费的 ClearDB MySQL 数据库。
-* [MSDN 订阅](/pricing/member-offers/msdn-benefits/)和 **MSDN 即用即付开发/测试**：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
-* [企业协议 (EA)](/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 应用商店（第三方）购买的所有商品收费。 针对任何应用商店购买，将以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
+* [MSDN 订阅](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)和 **MSDN 即用即付开发/测试**：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
+* [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 应用商店（第三方）购买的所有商品收费。 针对任何应用商店购买，将以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
 * [DreamSpark](https://www.dreamspark.com/Product/Product.aspx?productid=99)：只能为 Web 应用创建免费的 ClearDB 数据库。 可以创建的免费 ClearDB MySQL 数据库数目没有任何限制。 请注意，免费数据库不适用于生产 Web Apps，因为此服务仅供试用。
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>为什么我要为 Azure 应用商店中的 Web 应用和 MySQL 付 3.50 美元的费用？
@@ -62,7 +62,7 @@ ClearDB 是一种 MySQL 托管服务，可为你管理 MySQL 基础结构。 在
 Azure 应用商店无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注册的客户使用。 这些区域不提供 ClearDB。
 
 ## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>针对生产 Web 应用和数据库，应该选择哪个定价层？
-对 Web Apps 使用“基本”或更高的定价层。 对于 ClearDB，建议使用 Saturn 或 Jupiter 计划。 请查看 [Web 应用](/pricing/details/app-service/)和 [ClearDB MySQL 数据库](/marketplace/partners/cleardb/databases/)每个定价层的功能和限制，以选择符合需要的定价层。
+对 Web Apps 使用“基本”或更高的定价层。 对于 ClearDB，建议使用 Saturn 或 Jupiter 计划。 请查看 [Web 应用](https://azure.microsoft.com/pricing/details/app-service/)和 [ClearDB MySQL 数据库](/marketplace/partners/cleardb/databases/)每个定价层的功能和限制，以选择符合需要的定价层。
 
 ## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>如何将 ClearDB 数据库从一个计划升级到另一个计划？
 在 [Azure 门户](https://portal.azure.com)中，可以扩大 ClearDB 共享的托管数据库。 请阅读本篇[文章](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)，了解详细信息。 当前不支持在 Azure 门户中升级 ClearDB 高级群集。
@@ -108,6 +108,6 @@ EA Azure 注册管理员可以管理 Azure 应用商店第三方服务的访问�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -13,18 +13,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ba93904f61f2472851e7cc170c77ab6b58101463
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: e6749bdf73acc9c05e71c85410bb3d95c57a0a9f
 
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>在 HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-了解如何定义工作流，以及如何在 HDInsight 上运行工作流。 若要了解 Oozie 协调器的相关信息，请参阅[将基于时间的 Hadoop Oozie 协调器与 HDInsight 配合使用][hdinsight-oozie-coordinator-time]。 若要了解 Azure 数据工厂的相关信息，请参阅[将 Pig 和 Hive 与数据工厂结合使用][azure-data-factory-pig-hive]。
+了解如何定义工作流，以及如何在 HDInsight 上运行工作流。 若要了解 Oozie 协调器，请参阅[将基于时间的 Hadoop Oozie 协调器与 HDInsight 配合使用][hdinsight-oozie-coordinator-time]。 若要了解 Azure 数据工厂，请参阅[将 Pig 和 Hive 用于数据工厂][azure-data-factory-pig-hive]。
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Hadoop 堆栈集成，支持 Apache MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 它也能用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
@@ -52,7 +52,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Ha
 2. Sqoop 操作将 HiveQL 输出结果导出到 Azure SQL 数据库中的表。 有关 Sqoop 的详细信息，请参阅[将 Hadoop Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]。
 
 > [!NOTE]
-> 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的Hadoop 群集版本有哪些新功能？][hdinsight-versions]。
+> 有关在 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的 Hadoop 群集版本有哪些新增功能？][hdinsight-versions]。
 > 
 > 
 
@@ -61,9 +61,9 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Ha
 
 * **配备 Azure PowerShell 的工作站**。 
   
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
   
-    若要执行 Windows PowerShell 脚本，必须以管理员身份运行并将执行策略设为 *RemoteSigned*。 有关详细信息，请参阅[运行 Windows PowerShell 脚本][powershell-script]。
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>定义 Oozie 工作流及相关 HiveQL 脚本
 Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 默认的工作流文件名为 *workflow.xml*。 以下是你要在本教程中使用的工作流文件。
@@ -148,7 +148,7 @@ RunHiveScript 有几个变量。 在从工作站使用 Azure PowerShell 提交 O
 <tr><td>${hiveOutputFolder}</td><td>指定 Hive INSERT OVERWRITE 语句的输出文件夹。 这是用于 Sqoop 导出 (export-dir) 的同一个文件夹。</td></tr>
 </table>
 
-有关 Oozie 工作流以及使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（用于 HDInsight 版本 3.0）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（用于 HDInsight 版本 2.1）。
+有关 Oozie 工作流和使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（适用于 HDInsight 3.0 版）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（适用于 HDInsight 2.1 版）。
 
 该工作流中的 Hive 操作调用 HiveQL 脚本文件。 此脚本文件包含三个 HiveQL 语句：
 
@@ -623,9 +623,9 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 * [将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]
 * [使用 PowerShell 管理 HDInsight][hdinsight-admin-powershell]
 * [在 HDInsight 中上传 Hadoop 作业的数据][hdinsight-upload-data]
-* [将 Sqoop 与 HDinsight 中的 Hadoop 配合使用][hdinsight-use-sqoop]
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用][hdinsight-use-hive]
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用][hdinsight-use-pig]
+* [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用][hdinsight-use-sqoop]
+* [将 Hive 与 Hadoop on HDInsight 配合使用][hdinsight-use-hive]
+* [将 Pig 与 Hadoop on HDInsight 配合使用][hdinsight-use-pig]
 * [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
@@ -663,7 +663,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 
 [powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
-[powershell-install-configure]: ../powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-script]: https://technet.microsoft.com/en-us/library/ee176961.aspx
 
@@ -677,6 +677,6 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "媒体服务 REST API 概述 | Microsoft Docs"
+title: "媒体服务操作 REST API 概述 | Microsoft Docs"
 description: "媒体服务 REST API 概述"
 services: media-services
 documentationcenter: 
@@ -12,20 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 11/29/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 900c8fe2710d02d117c1b8155623ed911796203b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8b6e19e3c495eec4e16187524df0b13e4ffce9de
 
 
 ---
-# <a name="media-services-rest-api-overview"></a>媒体服务 REST API 概述
+# <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
+
+**媒体服务操作 REST** API 用于在媒体服务帐户中创建作业、资产、访问策略和其他对象操作。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
 
 Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。 由于媒体服务遵循 Azure 设计准则，因此在连接到媒体服务时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。 以下部分介绍你在创建请求和接收来自媒体服务的响应时可以使用的标头和 HTTP 谓词。
 
+
 ## <a name="considerations"></a>注意事项
+
 使用 REST 时需考虑下列事项：
 
 * 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
@@ -114,6 +118,6 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

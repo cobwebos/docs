@@ -4,7 +4,7 @@ description: "详细介绍保护 Azure 存储空间的多种方法，包括但�
 services: storage
 documentationcenter: .net
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 6f931d94-ef5a-44c6-b1d9-8a3c9c327fb2
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f674c34cfbfd5c107258d7acd33583947cd61d6
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: c5e6c3a63a7dbe0a598136a32990f65f7ee077d9
 
 
 ---
@@ -55,7 +55,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 本指南着重于 Resource Manager 模型，即创建存储帐户的建议方法。 使用 Resource Manager 存储帐户而不是提供整个订阅的访问权限，可以使用基于角色的访问控制 (RBAC) 以更高的限制级别来控制对管理平面的访问。
 
 ### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>如何使用基于角色的访问控制 (RBAC) 来保护存储帐户
-让我们讨论 RBAC 是什么及其用法。 每个 Azure 订阅都有一个 Azure Active Directory。 可以为来自该目录的用户、组和应用程序授予访问权限，以便在使用 Resource Manager 部署模型的 Azure 订阅中管理资源。 这称为基于角色的访问控制 (RBAC)。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../xplat-cli-install.md)、[PowerShell](../powershell-install-configure.md) 或 [Azure 存储资源提供程序 REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx)。
+让我们讨论 RBAC 是什么及其用法。 每个 Azure 订阅都有一个 Azure Active Directory。 可以为来自该目录的用户、组和应用程序授予访问权限，以便在使用 Resource Manager 部署模型的 Azure 订阅中管理资源。 这称为基于角色的访问控制 (RBAC)。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../xplat-cli-install.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 存储资源提供程序 REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx)。
 
 通过 Resource Manager 模型，可将存储帐户置于资源组中，并使用 Azure Active Directory 控制对该特定存储帐户的管理平面的访问。 例如，可授权特定用户访问存储帐户密钥，而其他用户可查看存储帐户相关信息却无法访问存储帐户密钥。
 
@@ -89,7 +89,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 * [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)
   
   此文详细说明了 RBAC 中所有可用的内置角色。
-* [了解 Resource Manager 部署和经典部署](../resource-manager-deployment-model.md)
+* [了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)
   
   此文介绍了 Resource Manager 部署和经典部署模型，并阐释了使用 Resource Manager 和资源组的优点。 本文介绍了 Azure 计算、网络和存储提供程序在 Resource Manager 模式下的工作方式。
 * [使用 REST API 管理基于角色的访问控制](../active-directory/role-based-access-control-manage-access-rest.md)
@@ -527,6 +527,6 @@ Azure 存储空间允许你启用 CORS – 跨域资源共享。 对于每个存
   此文介绍如何在较旧版 Windows 计算机中使用 FIPS 模式。
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

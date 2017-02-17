@@ -16,15 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 205812cdd4aa7cd5858075c642188a37de456ba7
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 0daa75e1d4fccf7d7c7785422a9607787e55ca8b
 
 
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>从 Azure 命令行界面 (Azure CLI) 使用 Docker VM 扩展
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-有关将 Docker VM 扩展与 Resource Manager 模型配合使用的信息，请参阅[此处](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关将 Docker VM 扩展与 Resource Manager 模型配合使用的信息，请参阅[此处](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 本主题说明如何通过 Azure CLI 中的服务管理 (asm) 模式，在任何平台上创建包含 Docker VM 扩展的 VM。 [Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。 可以在 [Azure Linux 代理](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中使用 Docker VM 扩展，创建可在 Azure 上为应用程序托管任意数量的容器的 Docker VM。 若要查看容器及其优点的综合讨论，请参阅 [Docker 高级白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 
@@ -162,21 +161,21 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 * Azure Docker VM 扩展还支持 Docker 撰写，它使用声明性 YAML 文件在任何环境中获取由开发人员建模的应用程序，并生成一致的部署。 请参阅[开始使用 Docker 和 Compose，在 Azure 虚拟机上定义和运行多容器应用程序]。  
 
 <!--Anchors-->
-[副标题 1]: #subheading-1
-[副标题 2]: #subheading-2
-[副标题 3]: #subheading-3
-[后续步骤]: #next-steps
+[Subheading 1]: #subheading-1
+[Subheading 2]: #subheading-2
+[Subheading 3]: #subheading-3
+[Next steps]: #next-steps
 
-[如何对 Azure 使用 Docker VM 扩展]: #How-to-use-the-Docker-VM-Extension-with-Azure
-[适用于 Linux 和 Windows 的虚拟机扩展]: #Virtual-Machine-Extensions-For-Linux-and-Windows
-[Azure 的容器和容器管理资源]: #Container-and-Container-Management-Resources-for-Azure
+[How to use the Docker VM Extension with Azure]: #How-to-use-the-Docker-VM-Extension-with-Azure
+[Virtual Machine Extensions for Linux and Windows]: #Virtual-Machine-Extensions-For-Linux-and-Windows
+[Container and Container Management Resources for Azure]: #Container-and-Container-Management-Resources-for-Azure
 
 
 
 <!--Link references-->
-[链接 1 指向另一个 azure.microsoft.com 文档主题]: virtual-machines-windows-hero-tutorial.md
-[链接 2 指向另一个 azure.microsoft.com 文档主题]: ../web-sites-custom-domain-name.md
-[链接 3 指向另一个 azure.microsoft.com 文档主题]: ../storage-whatis-account.md
+[Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-hero-tutorial.md
+[Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
+[Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 [如何在门户中使用 Docker VM 扩展]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 
 [Docker 用户指南]: https://docs.docker.com/userguide/
@@ -185,6 +184,6 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

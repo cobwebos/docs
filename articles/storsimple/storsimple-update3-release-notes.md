@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/14/2016
+ms.date: 11/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3a2795fd08b838edcf255e518f705683cc2df15e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4d3609ae1ea5fba89a9c0222586f578fdaeea757
 
 
 ---
@@ -39,7 +39,7 @@ Update 3 中以下重大改进和 Bug 修复。
 
 * **自动化空间回收更改** — 从 Update 3 开始，空间回收算法是在系统的备用控制器上运行，使得执行速度更快。 有关执行空间回收所需的端口的详细信息，请参阅 [StorSimple 网络要求](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)。
 * **性能增强** — Update 3 已提高对云的读写性能。
-* **与迁移相关的改进** — 在此版本中，对从 5000/7000 系列设备到 8000 系列设备的迁移功能，进行了多个 Bug 修复和改进。 有关如何使用迁移功能的详细信息，请转到[从 5000/7000 系列设备到 8000 系列设备的迁移](https://www.microsoft.com/en-us/download/details.aspx?id=47322)。 
+* **与迁移相关的改进** — 在此版本中，对从 5000/7000 系列设备到 8000 系列设备的迁移功能，进行了多个 Bug 修复和改进。 有关如何使用迁移功能的详细信息，请转到[从 5000/7000 系列设备到 8000 系列设备的迁移](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)。 
 * **与监视相关的修复** — 在此版本中，与监视图表、服务仪表板和设备仪表板相关的 Bug 均已修复。
 
 ## <a name="issues-fixed-in-update-3"></a>在 Update 3 中修复的问题
@@ -94,6 +94,6 @@ Update 3 中以下重大改进和 Bug 修复。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

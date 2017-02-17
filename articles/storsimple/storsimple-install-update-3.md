@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/05/2016
+ms.date: 12/05/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ddefdc95e8fb6e5f3743df9f4436e45cfef49b65
+ms.sourcegitcommit: f1e67f591ea32cab814257658d023395f1350773
+ms.openlocfilehash: 28f26edc36f0850ba21db3ba501793780e61612c
 
 
 ---
 # <a name="install-update-3-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 3
+
 ## <a name="overview"></a>概述
+
 本教程介绍如何通过 Azure 经典门户使用修补程序方法在运行早期软件版本的 StorSimple 设备上安装 Update 3。 如果是在 StorSimple 设备的非 DATA 0 网络接口上配置网关，且用户正在尝试从 pre-Update 1 软件版本进行更新，则可使用修补程序方法。
 
 Update 3 包含设备软件、LSI 驱动程序和固件、Storport 和 Spaceport 的更新。 如果从 Update 2 或更早版本进行更新，则还需应用 iSCSI 更新、WMI 更新以及在某些情况下应用磁盘固件更新。 设备软件、WMI、iSCSI、LSI 驱动程序、Spaceport 和 Storport 修补程序为非中断性更新，可以通过 Azure 经典门户应用。 磁盘固件更新为中断性更新，只能通过设备的 Windows PowerShell 接口应用。 
@@ -45,15 +47,12 @@ Update 3 包含设备软件、LSI 驱动程序和固件、Storport 和 Spaceport
 
 [!INCLUDE [storsimple-install-update2-via-portal](../../includes/storsimple-install-update2-via-portal.md)]
 
-1. 确保设备运行的是 **StorSimple 8000 系列 Update 3 (6.3.9600.17759)**。 还应修改“上次更新日期”。 
-   
-   如果用户是从 Update 2 之前的版本进行更新，则还会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。
-   
-   维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。 在某些情况下，如果运行的是 Update 1.2，则磁盘固件可能已更新，因此不需安装任何维护模式更新。
-   
-   如果是从 Update 2 或更高版本更新，则设备现在应已更新。 可以跳过其余步骤。
-2. 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB3121899，以便安装磁盘固件更新（其他更新此时应已安装）。
-3. 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。 
+确保设备运行的是 **StorSimple 8000 系列 Update 3 (6.3.9600.17759)**。 还应修改“上次更新日期”。 
+   - 如果用户是从 Update 2 之前的版本进行更新，则还会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。
+     维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。 在某些情况下，如果运行的是 Update 1.2，则磁盘固件可能已更新，因此不需安装任何维护模式更新。
+   - 如果是从 Update 2 或更高版本更新，则设备现在应已更新。 可以跳过下一步。
+
+下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB3121899，以便安装磁盘固件更新（其他更新此时应已安装）。 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。 
 
 ## <a name="install-update-3-as-a-hotfix"></a>将 Update 3 作为修补程序安装
 如果用户在尝试通过 Azure 经典门户安装更新时进行网关检查失败，可使用此过程。 检查失败的原因是为非 DATA 0 网络接口分配了网关，且设备运行的是 Update 1 之前的软件版本。
@@ -122,6 +121,6 @@ Update 3 包含设备软件、LSI 驱动程序和固件、Storport 和 Spaceport
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

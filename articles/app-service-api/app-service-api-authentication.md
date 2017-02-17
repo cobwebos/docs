@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c644f67c985ef1de13286bc1ef8c2bb84a2939e3
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: df2b27fd7016294f14d2ad87325a2acf24c15d85
 
 
 ---
@@ -91,7 +91,7 @@ Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 
 ## <a name="more-information"></a>详细信息
 有关 Azure 应用服务中的身份验证和授权的详细信息，请参阅以下资源：
 
-* [扩展应用服务身份验证/授权](/blog/announcing-app-service-authentication-authorization/)
+* [扩展应用服务身份验证/授权](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/)
 * [如何配置应用服务应用程序以使用 Azure Active Directory 登录](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)（页面顶部提供了其他身份验证提供程序的链接） 
 
 有关 OAuth 2.0、OpenID Connect 和 JSON Web 令牌 (JWT) 的详细信息，请参阅以下资源。
@@ -112,6 +112,6 @@ Azure App Service 提供内置的身份验证与授权服务，可实现 [OAuth 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

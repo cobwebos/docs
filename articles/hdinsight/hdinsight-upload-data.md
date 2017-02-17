@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 28cc7f8ac707068b5517f7dfe45687fff5a0eed3
+ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
+ms.openlocfilehash: 6e6f7793e03930cc002183172ccfbed6305378bd
 
 
 ---
@@ -28,7 +28,7 @@ Azure HDInsight 在 Azure Blob 存储之上提供了一个功能完备的 Hadoop
 
 在开始下一步之前，请注意以下要求：
 
-* 一个 Azure HDInsight 群集。 有关说明，请参阅[Azure HDInsight 入门][hdinsight-get-started]或设置 HDInsight 群集[][hdinsight-provision]。
+* 一个 Azure HDInsight 群集。 有关说明，请参阅 [Azure HDInsight 入门][hdinsight-get-started]或[预配 HDInsight 群集][hdinsight-provision]。
 
 ## <a name="why-blob-storage"></a>什么是 Blob 存储？
 通常，为了执行 MapReduce 作业，会部署 Azure HDInsight 群集，一旦这些作业完成，就删除这些群集。 在完成计算后将数据保存在 HDFS 群集中是一种成本很高的数据存储方法。 对于将使用 HDInsight 处理的数据而言，Azure Blob 存储是一个高度可用的、可高度缩放的、大容量、低成本且可共享的存储选项。 在 Blob 中存储数据，可以安全地释放用于计算的 HDInsight 群集而不丢失数据。
@@ -98,13 +98,13 @@ Azure CLI 是一个跨平台工具，可用于管理 Azure 服务。 使用以�
 >
 
 ### <a name="a-idpowershellaazure-powershell"></a><a id="powershell"></a>Azure PowerShell
-Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 有关配置工作站以运行 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 有关配置工作站以运行 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 **将本地文件上传到 Azure Blob 存储**
 
-1. 根据[安装和配置 Azure PowerShell](../powershell-install-configure.md) 中的说明打开 Azure PowerShell 控制台。
+1. 根据[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明打开 Azure PowerShell 控制台。
 2. 设置以下脚本中前五个变量的值：
 
         $resourceGroupName = "<AzureResourceGroupName>"
@@ -140,7 +140,7 @@ AzCopy 语法为：
 若要使用 Hadoop 命令，必须先使用以下方法之一连接到头节点：
 
 * **基于 Windows 的 HDInsight**：[使用远程桌面连接](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **基于 Linux 的 HDInsight**：使用 SSH（[SSH 命令](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster) 或 [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)）连接
+* **基于 Linux 的 HDInsight**：使用 SSH（[SSH 命令](hdinsight-hadoop-linux-use-ssh-unix.md) 或 [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md)）连接
 
 连接之后，可以使用以下语法将文件上载到存储。
 
@@ -181,7 +181,7 @@ AzCopy 语法为：
 ### <a name="a-idstorageexploreraazure-storage-explorer"></a><a id="storageexplorer"></a>Azure 存储空间资源管理器
 *Azure 存储资源管理器*是用于在 Blob 中检查和更改数据的工具。 它是免费的开源工具，可从 [http://storageexplorer.com/](http://storageexplorer.com/) 下载。 也可以从此链接获取源代码。
 
-使用该工具之前，你必须知道你的 Azure 存储帐户名和帐户密钥。 有关如何获取此信息的说明，请参阅[创建、管理或删除存储帐户][azure-create-storage-account]中的“如何：查看、复制和重新生成存储访问密钥”部分。  
+使用该工具之前，你必须知道你的 Azure 存储帐户名和帐户密钥。 有关如何获取此信息的说明，请参阅[创建、管理或删除存储帐户][azure-create-storage-account]中的“如何：查看、复制和重新生成存储访问密钥”部分。
 
 1. 运行 Azure 存储空间资源管理器。 如果是第一次运行存储资源管理器，系统将提示输入“存储帐户名”和“存储帐户密钥”。 如果以前运行过存储资源管理器，请使用“添加”按钮添加一个新的存储帐户名和密钥。
 
@@ -299,7 +299,7 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 
 [apache-sqoop-guide]: http://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-[Powershell-install-configure]: ../powershell-install-configure.md
+[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [azurecli]: ../xplat-cli-install.md
 
@@ -310,6 +310,6 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

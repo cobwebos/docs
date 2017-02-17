@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: b2a66b134d42e0b2d965c1f3ae83f93bed9cdfba
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: f8fb116f14f771947f321f59d9880df4cdfe6859
 
 
 ---
@@ -28,9 +28,8 @@ ms.openlocfilehash: b2a66b134d42e0b2d965c1f3ae83f93bed9cdfba
 
 了解如何[使用新版 Azure 门户执行这些步骤](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-有关如何使用 Resource Manager 模型登录到 VM 的信息，请参阅[此处](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关如何使用 Resource Manager 模型登录到 VM 的信息，请参阅[此处](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="video-walkthrough"></a>视频演练
 下面是本教程中的步骤的视频演练。 它还介绍了用于连接到 Azure 中的 Windows VM 的终结点和公用/专用端口。
@@ -63,6 +62,6 @@ ms.openlocfilehash: b2a66b134d42e0b2d965c1f3ae83f93bed9cdfba
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
