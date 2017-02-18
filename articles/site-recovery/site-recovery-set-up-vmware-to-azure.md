@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 74d1eee9ea0f1e74e7193ecba22f6d1c28cf831d
-ms.openlocfilehash: d4587f93fb791c7fbb7575f3be1451172ee7865e
+ms.sourcegitcommit: eccc927550aef4c9cd71ffad64d2eddedb74326e
+ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
 
 ---
 
@@ -36,7 +36,7 @@ ms.openlocfilehash: d4587f93fb791c7fbb7575f3be1451172ee7865e
 
 ### <a name="configuration-server-minimum-requirements"></a>配置服务器的最低要求
 应将配置服务器软件部署到高度可用的 VMware 虚拟机。 下表列出了配置服务器的最低硬件、软件和网络要求。
-[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-server-requirements.md)]
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
 > 配置服务器不支持基于 HTTPS 的代理服务器。
@@ -96,7 +96,7 @@ ms.openlocfilehash: d4587f93fb791c7fbb7575f3be1451172ee7865e
 
 
 ## <a name="next-steps"></a>后续步骤
-在 Azure 中[设置目标环境](./site-recovery-vmware-to-azure.md#step-3-set-up-the-target-environment)。
+在 Azure 中[设置目标环境](./site-recovery-prepare-target-vmware-to-azure.md)。
 
 
 
