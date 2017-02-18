@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型 | Microsoft Docs"
+title: "使用 Azure CLI 将 VM 迁移到 Resource Manager | Microsoft 文档"
 description: "本文逐步讲解如何使用 Azure CLI 对资源进行平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3fa3dacd0b5e2ad97cd751395d58ef3afe92aee3
+ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
+ms.openlocfilehash: 92211cc98b6d8394ff04bc7c2fe33f7bd710713b
 
 
 ---
@@ -163,6 +163,6 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

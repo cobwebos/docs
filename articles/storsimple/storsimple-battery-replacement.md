@@ -1,5 +1,5 @@
 ---
-title: "更换 StorSimple 设备上的电池 | Microsoft Docs"
+title: "更换 Microsoft Azure StorSimple 设备上的电池 | Microsoft 文档"
 description: "介绍如何移除、替换和维护 StorSimple 设备上的备用电池模块。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 59af78e188441979d9d5a177a1f7b31b8080a0b5
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
 
 
 ---
@@ -114,6 +114,6 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

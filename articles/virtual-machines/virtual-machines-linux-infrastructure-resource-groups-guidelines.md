@@ -1,5 +1,5 @@
 ---
-title: "Azure 资源组准则 | Microsoft Docs"
+title: "Azure 中 Linux VM 的资源组 | Microsoft 文档"
 description: "了解用于在 Azure 基础结构服务中部署资源组的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 70e52cefccee4b963e512724b96525bcbacf330c
-ms.openlocfilehash: 092c07fb22dcc09e1ff21258fde5d0149ade1ef3
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: adf382fef7a83d31f35321187c7c5d20c48db6ef
 
 
 ---
@@ -57,6 +57,6 @@ ms.openlocfilehash: 092c07fb22dcc09e1ff21258fde5d0149ade1ef3
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

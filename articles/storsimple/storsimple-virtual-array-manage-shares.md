@@ -1,5 +1,5 @@
 ---
-title: "StorSimple Device Manager - 在 Microsoft Azure StorSimple 虚拟阵列上管理共享 | Microsoft 文档"
+title: "管理 StorSimple 虚拟阵列共享 | Microsoft 文档"
 description: "介绍 StorSimple Device Manager 并说明如何使用它在 StorSimple 虚拟阵列上管理共享。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: 90b932453c83d15e7e33eb0653f0f7ceaf7eeff4
+ms.sourcegitcommit: 19177fe13db2aefcef7fcf37ea8fef2fa99c728f
+ms.openlocfilehash: e5c62689de36baa175001f5f4f70d87568876ef0
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理共享
@@ -74,9 +74,9 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
 
 1. 在“StorSimple 服务摘要”边栏选项卡上，单击命令栏中的“+ 添加共享”。 此时将打开“添加共享”边栏选项卡。
 
-![添加共享](./media/storsimple-virtual-array-manage-shares/add-share.png)
+    ![添加共享](./media/storsimple-virtual-array-manage-shares/add-share.png)
 
-1. 在“添加共享”边栏选项卡中，执行以下操作：
+2. 在“添加共享”边栏选项卡中，执行以下操作：
    
     1. 在“共享名称”字段中，输入共享的唯一名称。 该名称必须是包含 3 到 127 个字符的字符串。
 
@@ -87,8 +87,8 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
     4. 在“容量”字段中，指定共享的大小。 分层共享的大小必须介于 500 GB 到 20 TB 之间，本地固定共享的大小必须介于 50 GB 到 2 TB 之间。
 
     5. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。 以 _john@contoso.com_ 格式指定用户或用户组的名称。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
-2. 完成配置共享后，单击“创建”。 此时将使用指定的设置创建共享，你将看到一条通知。。 默认情况下，将为共享启用备份功能。
-3. 若要确认已成功创建共享，请转到“共享”边栏选项卡。 应看到列出该共享。
+3. 完成配置共享后，单击“创建”。 此时将使用指定的设置创建共享，你将看到一条通知。。 默认情况下，将为共享启用备份功能。
+4. 若要确认已成功创建共享，请转到“共享”边栏选项卡。 应看到列出该共享。
    
     ![共享创建成功](./media/storsimple-virtual-array-manage-shares/share-success.png)
 
@@ -146,6 +146,6 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

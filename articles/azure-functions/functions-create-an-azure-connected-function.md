@@ -1,6 +1,6 @@
 ---
-title: "创建与 Azure 服务绑定的 Azure Function | Microsoft Docs"
-description: "生成 Azure Function，即与其他 Azure 服务交互的无服务应用程序。"
+title: "创建一个连接到 Azure 服务的函数 | Microsoft 文档"
+description: "使用 Azure Functions 可以创建与其他 Azure 服务相连接的无服务器应用程序。"
 services: functions
 documentationcenter: dev-center-name
 author: yochay
@@ -14,24 +14,21 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/06/2016
+ms.date: 01/23/2017
 ms.author: rachelap@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: f46a67f2591ef98eeda03f5c3bc556d5b8bcc096
-ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
+ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
+ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 
 
 ---
-# <a name="create-an-azure-function-connected-to-an-azure-service"></a>创建与 Azure 服务连接的 Azure Function
+# <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>使用 Azure Functions 可以创建与其他 Azure 服务相连接的函数。
 
-本主题说明如何创建一个 Azure 函数，用于侦听 Azure 队列中的消息，并将这些消息复制到 Azure 存储表中的行。 一个计时器触发的函数用于将消息载入队列。 另一个函数从队列中读取消息，并将消息写入表中。 该队列和表是 Azure Functions 根据绑定定义创建的。 
+本主题说明如何在 Azure Functions 中创建一个函数，用于侦听 Azure 队列中的消息，并将这些消息复制到 Azure 存储表中的行。 一个计时器触发的函数用于将消息载入队列。 另一个函数从队列中读取消息，并将消息写入表中。 该队列和表是 Azure Functions 根据绑定定义创建的。 
 
-为了使讲解内容丰富有趣，本主题中的一个函数是用 JavaScript 编写的，另一个函数则是用 C# 脚本编写的， 目的是演示 Function App 如何支持以不同语言编写的函数。
+为了使讲解内容丰富有趣，本主题中的一个函数是用 JavaScript 编写的，另一个函数则是用 C# 脚本编写的， 目的是演示 Function App 如何支持以不同语言编写的函数。 
 
-## <a name="watch-the-video"></a>观看视频
->[!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player]
->
->
+可以在[第 9 频道视频](https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player)上观看此方案的演示。
 
 ## <a name="create-a-function-that-writes-to-the-queue"></a>创建一个向队列写入数据的函数
 
@@ -188,7 +185,7 @@ ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
 * [Azure Functions 开发人员参考](functions-reference.md)  
   ，用于编码函数和定义触发器及绑定的程序员参考。
 * [测试 Azure Functions](functions-test-a-function.md)  
-   介绍可用于测试函数的各种工具和技巧。
+  介绍可用于测试函数的各种工具和技巧。
 * [如何缩放 Azure Functions](functions-scale.md)  
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
 
@@ -197,6 +194,6 @@ ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

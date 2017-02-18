@@ -1,5 +1,5 @@
 ---
-title: "更换 StorSimple 设备上的底盘 | Microsoft Docs"
+title: "更换 StorSimple 8000 系列设备的机箱 | Microsoft 文档"
 description: "介绍如何移除和更换 StorSimple 主机箱或 EBOD 机箱的底盘。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f2568dac43a0fa870c7b3db7bde3458e7cfafd8
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 5295c5dd039b1d4746ebaaf90372932e4c3e7c26
 
 
 ---
@@ -63,6 +63,6 @@ ms.openlocfilehash: 0f2568dac43a0fa870c7b3db7bde3458e7cfafd8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

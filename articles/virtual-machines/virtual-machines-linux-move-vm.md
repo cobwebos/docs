@@ -1,5 +1,5 @@
 ---
-title: "移动 Linux VM | Microsoft Docs"
+title: "移动 Azure 中的 Linux VM | Microsoft 文档"
 description: "在 Resource Manager 部署模型中将 Linux VM 移到其他 Azure 订阅或资源组。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 0dee2c3b92adc4098a51014dd7379aa3d53c1627
-ms.openlocfilehash: 2978fee770b70378dfbffcbd97e57a6b82d2e2fa
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 0a4ac164a3896d47613e4491a5e4c81c1b660dea
 
 
 ---
@@ -60,6 +60,6 @@ ms.openlocfilehash: 2978fee770b70378dfbffcbd97e57a6b82d2e2fa
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

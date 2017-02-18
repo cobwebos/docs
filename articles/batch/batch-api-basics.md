@@ -1,5 +1,5 @@
 ---
-title: "面向开发人员的 Azure 批处理功能概述 | Microsoft 文档"
+title: "面向开发人员的 Azure 批处理概述 | Microsoft 文档"
 description: "从开发的角度了解 Batch 服务的功能及其 API。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 4bd60ab3b1be1fa590b20fbe292da69f6a2dac8e
-ms.openlocfilehash: 0b63ea1e6308732f6993357466d7e372ec53a78f
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: 984d1afe93b19ebea7add524091ed64aa276da0c
 
 
 ---
@@ -111,7 +111,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
     池中所有节点的大小相同。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。
 * **节点目标数目**
 
-    这是你要在池中部署的计算节点数目。 之所以称为 *目标* ，是因为在某些情况下，池可能无法达到所需的节点数目。 如果池已达到 Batch 帐户的 [核心配额](batch-quota-limit.md#batch-account-quotas) ，或应用到池的自动缩放公式限制了最大节点数（请参阅下面的“缩放策略”部分），则池无法达到所需节点数目。
+    这是你要在池中部署的计算节点数目。 之所以称为 *目标* ，是因为在某些情况下，池可能无法达到所需的节点数目。 如果池已达到 Batch 帐户的 [核心配额](batch-quota-limit.md) ，或应用到池的自动缩放公式限制了最大节点数（请参阅下面的“缩放策略”部分），则池无法达到所需节点数目。
 * **缩放策略**
 
     对于动态工作负荷，可编写[自动缩放公式](#scaling-compute-resources)并将其应用到池中。 Batch 服务将定期计算该公式，并根据可以指定的各个池、作业、和任务参数，调整池中的节点数目。
@@ -489,6 +489,6 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: de9b8b35e12af63ef6c29c87d28beaea81be1e69
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: c81c2f86802c1b1d672105962c196b36fbb2c081
 
 
 ---
@@ -93,7 +93,7 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
    ![成功捕获映像](./media/virtual-machines-linux-classic-capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>后续步骤
-该映像已就绪，可用于创建 VM。 可以使用 Azure CLI 命令 `azure vm create` 并提供所创建的映像名称。 有关详细信息，请参阅[将 Azure CLI 与经典部署模型配合使用](../virtual-machines-command-line-tools.md)。 
+该映像已就绪，可用于创建 VM。 可以使用 Azure CLI 命令 `azure vm create` 并提供所创建的映像名称。 有关详细信息，请参阅[将 Azure CLI 与经典部署模型配合使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。 
 
 此外，也可以使用 [Azure 经典门户][Azure classic portal]创建自定义 VM，方法是使用**从库中**方法并选择所创建的映像。 有关详细信息，请参阅[如何创建自定义 VM][How to Create a Custom Virtual Machine]。
 
@@ -107,6 +107,6 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

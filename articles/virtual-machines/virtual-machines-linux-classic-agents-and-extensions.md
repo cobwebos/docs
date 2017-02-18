@@ -1,5 +1,5 @@
 ---
-title: "Azure VM 代理和扩展 | Microsoft Docs"
+title: "Azure 中的 Linux VM 代理和扩展 | Microsoft 文档"
 description: "提供了代理和扩展的概述以及如何使用经典部署模型安装代理。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 0a03dbdc8858e2fd3e8b9bad468e66bc250229a6
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: 383e32eca05888c8bf08f80a413c0b64a9b4fb46
 
 
 ---
@@ -30,6 +30,6 @@ ms.openlocfilehash: 0a03dbdc8858e2fd3e8b9bad468e66bc250229a6
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

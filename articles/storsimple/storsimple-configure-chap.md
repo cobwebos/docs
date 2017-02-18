@@ -1,5 +1,5 @@
 ---
-title: "为 StorSimple 设备配置 CHAP | Microsoft Docs"
+title: "为 StorSimple 8000 系列设备配置 CHAP | Microsoft 文档"
 description: "介绍如何在 StorSimple 设备上配置质询握手身份验证协议 (CHAP)。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: d07d1c838d99d0de0c5b62aaf42330b447df102c
-ms.openlocfilehash: 918ca3b726cf194071d39ab92890293a08fcbc52
+ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
+ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
 
 
 ---
@@ -164,6 +164,6 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

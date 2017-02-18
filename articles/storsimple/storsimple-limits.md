@@ -1,10 +1,10 @@
 ---
-title: "StorSimple 系统限制 | Microsoft Docs"
+title: "StorSimple 8000 系列系统限制 | Microsoft 文档"
 description: "介绍 StorSimple 8000 系列组件和连接的系统限制与建议大小。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/06/2016
+ms.date: 01/30/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 884f9ad8cf3c0862fa0f235ee19efd0dbdadbab6
+ms.sourcegitcommit: d81b20ca17ddf723dcc11148f7b44e763dde100b
+ms.openlocfilehash: 1af0f36ce1161b35a2f75d74774ed145c8bc9328
 
 
 ---
@@ -37,7 +37,7 @@ StorSimple 为数据中心提供可伸缩且灵活的存储。 但用户在规�
 | iSCSI 连接的最大数目 |512 | |
 | 来自发起程序的 iSCSI 连接的最大数目 |512 | |
 | 每个设备的访问控制记录的最大数目 |64 | |
-| 每个备份策略的卷的最大数目 |24 | |
+| 每个备份策略的卷的最大数目 |20 | |
 | 按计划保留的最大备份数（使用备份策略） |64 | |
 | 每个备份策略的最大计划数 |10 | |
 | 每个卷可保留的任何类型快照的最大数目 |256 |该数字包括本地快照数和云快照数。 |
@@ -60,6 +60,6 @@ StorSimple 为数据中心提供可伸缩且灵活的存储。 但用户在规�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

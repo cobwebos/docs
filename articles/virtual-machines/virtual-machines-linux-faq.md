@@ -1,5 +1,5 @@
 ---
-title: "Linux VM 的常见问题解答 | Microsoft Docs"
+title: "有关 Azure 中 Linux VM 的常见问题 | Microsoft 文档"
 description: "回答了通过 Resource Manager 模型创建的 Linux 虚拟机的一些常见问题。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/16/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 84b100bef1ee9661a38c05056ffafdb1d6640986
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 78b476b31f030fba4034dc1f499b020d244e8288
 
 
 ---
@@ -114,6 +114,6 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "部署 StorSimple 虚拟阵列 3 - 将虚拟设备设置为文件服务器"
+title: "将 Azure StorSimple 虚拟阵列设置为文件服务器 | Microsoft 文档"
 description: "此教程为 StorSimple 虚拟阵列部署的第三个教程，介绍如何将虚拟设备设置为文件服务器。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 05/26/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f99e3dc59c0637053cad6c2b3b6baedac803f42
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: e1863b43706ffc200bb94c4a26ae75080a6dd857
 
 
 ---
@@ -177,7 +177,7 @@ ms.openlocfilehash: 8f99e3dc59c0637053cad6c2b3b6baedac803f42
 
 观看视频，了解如何将 StorSimple 虚拟阵列配置并注册为文件服务器。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Configure-a-StorSimple-Virtual-Array/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Configure-a-StorSimple-Virtual-Array/player]
 > 
 > 
 
@@ -187,6 +187,6 @@ ms.openlocfilehash: 8f99e3dc59c0637053cad6c2b3b6baedac803f42
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

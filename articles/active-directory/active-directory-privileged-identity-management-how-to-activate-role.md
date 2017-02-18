@@ -3,7 +3,7 @@ title: "如何激活或停用角色 | Microsoft 文档"
 description: "了解如何使用 Azure Privileged Identity Management 应用程序激活特权标识的角色。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 1ce9e2e7-452b-4f66-9588-0d9cd2539e45
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 67695e5715e83e2214b27a2abd76a3f68fb4a75a
+ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
+ms.openlocfilehash: f70fec829b273de97fc49e61ba42d511b6b141b3
 
 
 ---
@@ -53,7 +53,6 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 
 如果提前完成了任务，也可以在 Azure AD Privileged Identity Management 应用程序中手动停用角色。  选择“激活我的角色”、选择用完的角色，然后选择“停用”。  
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 如果有兴趣进一步了解 Azure AD Privileged Identity Management，以下链接提供了详细信息。
 
@@ -66,6 +65,6 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

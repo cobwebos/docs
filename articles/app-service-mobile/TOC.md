@@ -206,12 +206,16 @@
 ### [流式传输日志和控制台](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [使用 Visual Studio 进行排除故障](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# 参考
-## [.NET](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+# 引用
+## [.NET 后端 SDK](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## [Node.js 后端 SDK](https://azure.github.io/azure-mobile-apps-node/)
+## [Android 客户端 SDK](https://azure.github.io/azure-mobile-apps-android-client/)
+## [iOS 客户端 SDK](https://azure.github.io/azure-mobile-apps-ios-client/)
+## [JavaScript/Cordova 客户端 SDK](https://azure.github.io/azure-mobile-apps-js-client/)
+## [Windows/Xamarin 客户端 SDK](https://msdn.microsoft.com/library/azure/mt419521.aspx)
 
 # 相关内容
-## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [应用服务引用](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [GitHub 存储库](https://github.com/Azure/azure-mobile-apps)
 ## [Azure 门户](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # 资源
@@ -219,6 +223,14 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## 示例
+### [现场工程师](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
+### [结构化数据同步](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
+### 快速入门已完成
+#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
+#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
+#### [.NET 后端](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/)
+#### [Node.js 后端](https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [应用服务最佳实践](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [WebJob 资源列表](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -227,6 +239,6 @@
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "在 Linux 上使用 Java 创建你的第一个 Service Fabric 应用程序 | Microsoft Docs"
+title: "在 Linux 上使用 Java 创建第一个 Azure 微服务应用 | Microsoft 文档"
 description: "使用 Java 创建和部署 Service Fabric 应用程序"
 services: service-fabric
 documentationcenter: java
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 381d372b549fa0ed0900d97c03b9584b21624b25
-ms.openlocfilehash: 4a8fb3499ec55e451b54a05d5642bdf9a924294f
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: dc9234760b0dfb5d109fc86ac47a89c8fcf7d991
 
 
 ---
@@ -147,6 +147,6 @@ Service Fabric 模板包括一组用于生成和部署应用程序的 Gradle 任
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "在 5 分钟内将第一个 Web 应用部署到 Azure（CLI 2.0 预览版）| Microsoft 文档"
+title: "在 5 分钟内将第一个 HTML Web 应用部署到 Azure（CLI 2.0 预览版）| Microsoft 文档"
 description: "了解如何通过部署一个示例应用，轻松地在应用服务中运行 Web 应用。 快速开始进行实际开发并立即查看结果。"
 services: app-service\web
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
-ms.openlocfilehash: 42f3f17366a37e10d746fe177a93a2432dbdcca2
+ms.sourcegitcommit: fccbab2baafed3b0347f2c35b7926200ec69a450
+ms.openlocfilehash: 640f04ca9a8351543d44899946464ed7cd4db437
 
 
 ---
-# <a name="deploy-your-first-web-app-to-azure-in-five-minutes-cli-20-preview"></a>在 5 分钟内将第一个 Web 应用部署到 Azure（CLI 2.0 预览版）
+# <a name="deploy-your-first-html-web-app-to-azure-in-five-minutes-cli-20-preview"></a>在 5 分钟内将第一个 HTML Web 应用部署到 Azure（CLI 2.0 预览版）
 
 > [!div class="op_single_selector"]
 > * [第一个 HTML 站点](app-service-web-get-started-html.md)
@@ -57,7 +57,7 @@ ms.openlocfilehash: 42f3f17366a37e10d746fe177a93a2432dbdcca2
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 无需 Azure 帐户即可 [试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -154,6 +154,6 @@ ms.openlocfilehash: 42f3f17366a37e10d746fe177a93a2432dbdcca2
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

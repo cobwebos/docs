@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
+ms.sourcegitcommit: 84d42efc54f7dcbde8330360941969a5b0884a1a
+ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
 
 
 ---
@@ -46,7 +46,6 @@ ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
 
 请注意以下事项：
 
-* 当前版本的媒体服务 SDK 不支持使用指定的定位器 ID 创建定位器。 若要完成此任务，我们将使用媒体服务 REST API。
 * 当前版本的媒体服务 SDK 不支持以编程方式生成会将资产与资产文件关联的 IAssetFile 信息。 若要完成此任务，我们将使用 CreateFileInfos 媒体服务 REST API。 
 * 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥将会有所不同）。 
 * 若要使用动态打包，请确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
@@ -950,6 +949,6 @@ ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

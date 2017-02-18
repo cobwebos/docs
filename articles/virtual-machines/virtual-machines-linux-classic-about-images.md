@@ -1,5 +1,5 @@
 ---
-title: "关于 VM 的 Linux 映像 | Microsoft Docs"
+title: "关于 Azure 中的 Linux VM 映像 | Microsoft 文档"
 description: "了解如何对 Azure 中的虚拟机使用 Linux 映像。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: a6c0a7cc820ed286b100708eae27f6a8ca678d75
+ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
+ms.openlocfilehash: 480211dd13ddc6af348f4179a3c36fd62d7374fc
 
 
 ---
@@ -38,6 +38,6 @@ ms.openlocfilehash: a6c0a7cc820ed286b100708eae27f6a8ca678d75
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

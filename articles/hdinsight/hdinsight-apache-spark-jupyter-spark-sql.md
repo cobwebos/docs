@@ -1,5 +1,5 @@
 ---
-title: "在 Azure HDInsight 中创建 Spark 群集并通过 Jupyter 使用 Spark SQL 执行交互式分析 | Microsoft 文档"
+title: "Azure HDInsight 中的 Apache Spark 群集入门 | Microsoft 文档"
 description: "逐步说明如何在 HDInsight 群集中快速创建 Apache Spark 群集，然后从 Jupyter 笔记本使用 Spark SQL 来运行交互式查询。"
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 02/01/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 791b6a5a07bb87302cb382290a355c9a14c63ff0
-ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
+ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
+ms.openlocfilehash: d8d9c5111a19bb165c25d2796d6b6e933d75042a
 
 
 ---
 # <a name="get-started-create-apache-spark-cluster-in-azure-hdinsight-and-run-interactive-queries-using-spark-sql"></a>入门：在 Azure HDInsight 中创建 Apache Spark 群集并使用 Spark SQL 运行交互式查询
+
 了解如何在 HDInsight 中创建 [Apache Spark](hdinsight-apache-spark-overview.md) 群集，然后使用 [Jupyter](https://jupyter.org) 笔记本在 Spark 群集上运行 Spark SQL 交互式查询。
 
    ![HDInsight 中的 Apache Spark 入门](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight 中的 Apache Spark 入门教程。演示的步骤：创建存储帐户；创建群集；运行 Spark SQL 语句")
@@ -30,7 +31,8 @@ ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
 
 ## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 在开始学习本教程之前，你必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
-* **安全外壳 (SSH) 客户端**：Linux、Unix 和 OS X 系统可通过 `ssh` 命令提供 SSH 客户端。 对于 Windows 系统，请参阅[在装有 PuTTY 的 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)；对于 Linux、Unix 或 OS X，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+
+* **安全外壳 (SSH) 客户端**：Linux、Unix 和 OS X 系统可通过 `ssh` 命令提供 SSH 客户端。 对于 Windows 客户端，请参阅[在装有 PuTTY 的 Windows 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)；对于 Linux、Unix 或 OS X，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 > [!NOTE]
 > 本文通过 Azure Resource Manager 模板创建使用 [Azure 存储 Blob 作为群集存储](hdinsight-hadoop-use-blob-storage.md)的 Spark 群集。 除了使用 Azure 存储 Blob 作为默认存储外，还可以创建使用 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 作为附加存储的 Spark 群集。 有关说明，请参阅 [Create an HDInsight cluster with Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)（创建包含 Data Lake Store 的 HDInsight 群集）。
@@ -68,9 +70,9 @@ ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
 * **PySpark** （适用于以 Python 编写的应用程序）
 * **Spark** （适用于以 Scala 编写的应用程序）
 
-本文将使用 PySpark 内核。 在 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels) （包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）一文中，可以详细了解使用 PySpark 内核带来的好处。 但是，使用 PySpark 内核的主要好处包括：
+本文使用 PySpark 内核。 有关两个内核的详细信息，请参阅[将 Jupyter Ntebook 内核与 HDInsight 中的 Apache Spark 群集配合使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)。 使用 PySpark 内核的部分主要好处包括：
 
-* 不需要设置 Spark 和 Hive 的上下文。 系统会自动为你设置。
+* 自动设置 Spark 和 Hive 的上下文。
 * 可以使用 cell magic（例如 `%%sql`）直接运行 SQL 或 Hive 查询，而不需要任何前置的代码片段。
 * SQL 或 Hive 查询的输出将自动可视化。
 
@@ -80,7 +82,7 @@ ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
 2. 在左侧菜单中，单击“资源组”。
 3. 单击在上一部分中创建的资源组。 如果有太多的资源组，可以使用搜索功能。 在组中可以看到两个资源：HDInsight 群集和默认的存储帐户。
 4. 单击群集将其打开。
- 
+
 2. 在“快速链接”中，单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
    ![HDInsight 群集仪表板](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-azure-portal-cluster-dashboards.png "HDInsight 群集仪表板")
@@ -95,7 +97,7 @@ ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
 
    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
 
-   新笔记本随即已创建，并以 Untitled(Untitled.pynb) 名称打开。 
+   新笔记本随即已创建，并以 Untitled(Untitled.pynb) 名称打开。
 
 4. 在顶部单击笔记本名称，然后根据需要输入友好名称。
 
@@ -128,13 +130,13 @@ ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
         hvacdf.registerTempTable("hvac")
 
     HDInsight 中的 Spark 群集在 **\HdiSamples\HdiSamples\SensorSampleData\hvac** 下面随附了一个示例数据文件 **hvac.csv**。
-    
+
 7. 运行以下代码来查询数据：
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
-   由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
+   由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
 
    默认会显示以下表格输出。
 
@@ -188,6 +190,6 @@ ms.openlocfilehash: cc1d484d40dce0b1c64f2e8cdebb9377a38705cb
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

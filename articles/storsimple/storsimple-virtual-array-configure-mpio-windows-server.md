@@ -1,5 +1,5 @@
 ---
-title: "在 Microsoft Azure StorSimple 虚拟阵列主机上配置 MPIO | Microsoft 文档"
+title: "在连接到 StorSimple 虚拟阵列的主机上配置 MPIO | Microsoft 文档"
 description: "介绍了如何为连接到运行 Windows Server 2012 R2 的主机的 StorSimple 虚拟阵列配置多路径 I/O (MPIO)。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: ae076d52b532f5181868b2ab24ee8f2ffa887af7
-ms.openlocfilehash: 53308da656f46a43332a204d9d49e972d8c1799c
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 24c2670394c2873b333f41c081a8134710d16d54
 
 ---
 # <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>在 Windows Server 主机上为 StorSimple Virtual Array 配置多路径 I/O
@@ -160,6 +160,6 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

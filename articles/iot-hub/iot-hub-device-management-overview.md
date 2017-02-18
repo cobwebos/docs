@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/03/2016
 ms.author: briz
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: 91dcace2d74d44a5d2ab3b9a1352b2fa052ddc44
+ms.sourcegitcommit: 55d3f08de7f8c7ba68faba1945e8fd960e888853
+ms.openlocfilehash: 5e1b1333212af0b9042e7ed3793c08e305085519
 
 
 ---
@@ -112,6 +112,6 @@ IoT 中心启用以下设备管理模式集。  [设备管理教程][lnk-get-sta
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

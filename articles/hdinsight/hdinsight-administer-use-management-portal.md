@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 门户管理 HDInsight 中的 Hadoop 群集 | Microsoft Docs"
+title: "使用 Azure 门户管理 HDInsight 中基于 Windows 的 Hadoop 群集 | Microsoft Docs"
 description: "了解如何管理 HDInsight 服务。 创建 HDInsight 群集，打开交互式 JavaScript 控制台，然后打开 Hadoop 命令控制台。"
 services: hdinsight
 documentationcenter: 
@@ -13,24 +13,25 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 59288709e706ba7f0162f5f857019ce2972e2743
-ms.openlocfilehash: 55193e8570f480b9c6b2ef9a0785ddb538749cb5
+ms.sourcegitcommit: 58011fe25a96edfe2744990180b2f2866537bd37
+ms.openlocfilehash: ec35e177d1bb94671b1703020c9aa863a3805af1
 
 
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中基于 Windows 的 Hadoop 群集
 
-使用 [Azure 门户][azure-portal]，可以创建 Azure HDInsight 中的 Hadoop 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
+使用 [Azure 门户][azure-portal]，可在 Azure HDInsight 中创建基于 Windows 的 Hadoop 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
 
-本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关如何管理基于 Linux 的群集的信息，请单击上面的选项卡选择器。
+本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关管理基于 Linux 的群集的信息，请参阅[使用 Azure 门户管理 HDInsight 中的 Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
 
-单击选项卡选择器还可以了解如何使用其他工具在 HDInsight 中创建 Hadoop 群集。
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
-**先决条件**
+
+## <a name="prerequisites"></a>先决条件
 
 在开始阅读本文前，你必须具有：
 
@@ -92,7 +93,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
      > 这只会影响在 Azure 门户中对此群集的访问和权限，对于连接到 HDInsight 群集或将作业提交到其上的用户并没有影响。
      >
      >
-   * **标记（![标记图标](./media/hdinsight-administer-use-portal-linux/tags.png)）**：通过标记可设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，然后对与特定项目关联的所有服务使用一个公用值。
+   * **标记（![标记图标](./media/hdinsight-administer-use-portal-linux/tags.png)）**：通过标记可设置键/值对，定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，然后对与特定项目关联的所有服务使用一个公用值。
    * **Ambari 视图**：Ambari Web 的链接。
 
      > [!IMPORTANT]
@@ -122,7 +123,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
      >
 6. 单击“属性”：
 
-    属性会列出如下内容：
+    属性部分会列出如下内容：
 
    * **主机名**：群集名称。
    * **群集 URL**。
@@ -269,7 +270,6 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 ## <a name="open-hdinsight-query-console"></a>打开 HDInsight 查询控制台
 HDInsight 查询控制台包括下列功能：
 
-* **入门库**：若要使用此库，请参阅[使用 Azure HDInsight 入门库了解 Hadoop](hdinsight-learn-hadoop-use-sample-gallery.md)。
 * **Hive 编辑器**：用于提交 Hive 作业的 GUI Web 界面。  请参阅[使用查询控制台运行 Hive 查询](hdinsight-hadoop-use-hive-query-console.md)。
 
     ![HDInsight 门户 hive 编辑器](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
@@ -379,6 +379,6 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "教程 - Azure 批处理 .NET 库入门 | Microsoft 文档"
+title: "教程 - 使用适用于 .NET 的 Azure 批处理客户端库 | Microsoft 文档"
 description: "了解 Azure Batch 的基本概念，以及如何使用示例方案针对 Batch 服务进行开发。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 01/13/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 75fecce3e8b755d250e7d01170368c63d74fd56a
-ms.openlocfilehash: c752187cb5cd83d06d93d51987d2d869c4567cd6
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 5af894b60180d32593ed19c13aecf2732645120a
 
 
 ---
@@ -461,7 +461,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(
 在上述代码片段中的 `foreach` 循环内，可以看到已构造任务的命令行，因此有三个命令行参数已传递到 *TaskApplication.exe*：
 
 1. **第一个参数** 是要处理的文件的路径。 这是节点上现有文件的本地路径。 首次创建上面 `UploadFileToContainerAsync` 中的 ResourceFile 对象时，会将文件名用于此属性（作为 ResourceFile 构造函数的参数）。 这意味着可以在 *TaskApplication.exe*所在的目录中找到此文件。
-2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前 3 个单词写入输出文件。
+2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前&3; 个单词写入输出文件。
 3. **第三个参数**是共享访问签名 (SAS)，提供对 Azure 存储中**输出**容器的写访问。 *TaskApplication.exe* 使用此共享访问签名 URL。 你可以在 TaskApplication 项目的 `Program.cs` 文件的 `UploadFileToContainer` 方法中找到此方面的代码：
 
 ```csharp
@@ -805,6 +805,6 @@ Sample complete, hit ENTER to exit...
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "虚拟机和容器 | Microsoft Docs"
+title: "Linux Azure 虚拟机上的容器 | Microsoft 文档"
 description: "介绍虚拟机、Docker 和 Linux 容器及其在 Azure 中各自组的使用情况，包括各自的好处以及每种方法的适用情况。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a523da03305224aedb9ae558846719c3a37b0b5b
+ms.sourcegitcommit: 518777dd312fc0e219dd05e44e26e2822bd9d2cf
+ms.openlocfilehash: 15eab47f914682f82d2d402b7f565adb051fd736
 
 
 ---
-# <a name="virtual-machines-and-containers-in-azure"></a>Azure 中的虚拟机和容器
+# <a name="virtual-machines-vs-containers-in-azure"></a>Azure 中的虚拟机与容器
 [!INCLUDE [virtual-machines-common-and-containers](../../includes/virtual-machines-common-containers.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

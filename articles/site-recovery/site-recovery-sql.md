@@ -1,5 +1,5 @@
 ---
-title: "使用 SQL Server 灾难恢复和 Azure Site Recovery 保护 SQL Server | Microsoft 文档"
+title: "使用 SQL Server 和 Azure Site Recovery 复制应用 | Microsoft 文档"
 description: "本文介绍如何使用 Azure Site Recovery 的 SQL Server 灾难功能来复制 SQL Server。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: ea2078722beb7c76c59f1f6cfe3bf82aac5e4a77
-ms.openlocfilehash: 20e64a0f9319596167c1f8d1a0b22c0fa8c514c7
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: 2d55db297bcef2c5789cb33a8791cf2c787a0789
 
 
 ---
@@ -93,7 +93,7 @@ Site Recovery 可与下表中汇总的本机 SQL Server BCDR 技术集成，以�
 Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组并且 Azure 虚拟机设置为“辅助”，则可以使用 Site Recovery 来管理可用性组的故障转移。
 
 > [!NOTE]
-> 此功能目前处于预览阶段。当主数据中心的 Hyper-V 主机服务器由 VMM 云管理，且 VMware 设置由[配置服务器](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)管理时，可以使用此功能。 此功能目前尚无法在新的 Azure 门户中使用。 如果使用新 Azure 门户，请按照[本部分](site-recovery-sql.md#protect-machines-in-new-azure-portal-or-without-a-vmm-server-or-a-configuration-server-in-classic-azure-portal)中的步骤操作。 
+> 此功能目前处于预览阶段。当主数据中心的 Hyper-V 主机服务器由 VMM 云管理，且 VMware 设置由[配置服务器](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)管理时，可以使用此功能。 此功能目前尚无法在新的 Azure 门户中使用。 如果使用新 Azure 门户，请按照[本部分](site-recovery-sql.md#protect-machines-in-new-azure-portal-or-without-a-vmm-server-or-a-configuration-server-in-classic-azure-portal)中的步骤操作。
 >
 >
 
@@ -205,15 +205,15 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 
 1. **测试性故障转移**：SQL AlwaysOn 原本不支持测试性故障转移。 因此，建议按如下方式操作：
-    1. 在虚拟机上设置 [Azure 备份](../backup/backup-azure-vms.md)，该虚拟机在 Azure 中托管可用性组副本。 
+    1. 在虚拟机上设置 [Azure 备份](../backup/backup-azure-vms.md)，该虚拟机在 Azure 中托管可用性组副本。
     1. 触发对恢复计划进行测试性故障转移之前，请从步骤&1; 中进行的备份恢复虚拟机
     1. 对恢复计划进行测试性故障转移
 
 
 > [!NOTE]
 > 以下脚本假定 SQL 可用性组托管在经典 Azure 虚拟机中，在步骤&2; 中还原的虚拟机的名称为 SQLAzureVM-Test。 根据已恢复虚拟机的所用名称修改脚本。
-> 
-> 
+>
+>
 
 
      workflow SQLAvailabilityGroupFailover
@@ -241,7 +241,7 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
           if ($Using:RecoveryPlanContext.FailoverType -eq "Test")
                 {
                     Write-output "tfo"
-                    
+
                     Write-Output "Creating ILB"
                     Add-AzureInternalLoadBalancer -InternalLoadBalancerName SQLAGILB -SubnetName Subnet-1 -ServiceName SQLAzureVM-Test -StaticVNetIPAddress #IP
                     Write-Output "ILB Created"
@@ -251,14 +251,14 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
                     Get-AzureVM -ServiceName "SQLAzureVM-Test" -Name "SQLAzureVM-Test"| Add-AzureEndpoint -Name sqlag -LBSetName sqlagset -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName SQLAGILB | Update-AzureVM
 
                     Write-Output "Added Endpoint"
-        
-                    $VM = Get-AzureVM -Name "SQLAzureVM-Test" -ServiceName "SQLAzureVM-Test" 
-                       
+
+                    $VM = Get-AzureVM -Name "SQLAzureVM-Test" -ServiceName "SQLAzureVM-Test"
+
                     Write-Output "UnInstalling custom script extension"
-                    Set-AzureVMCustomScriptExtension -Uninstall -ReferenceName CustomScriptExtension -VM $VM |Update-AzureVM 
+                    Set-AzureVMCustomScriptExtension -Uninstall -ReferenceName CustomScriptExtension -VM $VM |Update-AzureVM
                     Write-Output "Installing custom script extension"
                     Set-AzureVMExtension -ExtensionName CustomScriptExtension -VM $vm -Publisher Microsoft.Compute -Version 1.*| Update-AzureVM   
-                    
+
                     Write-output "Starting AG Failover"
                     Set-AzureVMCustomScriptExtension -VM $VM -FileUri $sasuri -Run "AGFailover.ps1" -Argument "-Path sqlserver:\sql\sqlazureVM\default\availabilitygroups\testag"  | Update-AzureVM
                     Write-output "Completed AG Failover"
@@ -342,6 +342,6 @@ Site Recovery 本身支持 SQL AlwaysOn。 如果你已创建 SQL 可用性组�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

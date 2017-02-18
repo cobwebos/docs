@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure 文档 | Microsoft 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: 87041c127fb3381480b162c3a3648bfd46dbaaf7
-ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
+ms.sourcegitcommit: 39bebdc52aea8f4ee154c8369c1c564ffe8be95d
+ms.openlocfilehash: 108064e5da31f99d683714417aea3129f2b0f669
 
 ---
 <div id="main" class="v2">
@@ -99,8 +99,8 @@ ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
                                         </li>
                                         <li>
                                             <a href="/azure/app-service/">
-                                                <img src="media/index/AppService.svg" alt="" />
-                                                <p>应用服务</p>
+                                                <img src="media/index/app-service-web.svg" alt="" />
+                                                <p>Web 应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -714,18 +714,18 @@ ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/app-service/">
+                                <a href="/azure/app-service-web">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/AppService.svg" alt="" />
+                                                        <img src="media/index/app-service-web.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>应用服务</h3>
-                                                    <p>为任何平台和任何设备创建 Web 应用与移动应用</p>
+                                                    <h3>Web 应用</h3>
+                                                    <p>快速创建并部署可缩放的关键任务 Web 应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1585,7 +1585,7 @@ ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>PowerBI Embedded</h3>
+                                                    <h3>Power BI Embedded</h3>
                                                     <p>在应用程序中嵌入完整交互式的、令人惊叹的数据可视化</p>
                                                 </div>
                                             </div>
@@ -2909,6 +2909,6 @@ ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure 存储解决方案准则 | Microsoft Docs"
+title: "Azure 中 Windows VM 的存储解决方案 | Microsoft 文档"
 description: "了解用于在 Azure 基础结构服务中部署存储解决方案的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-windows
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 310dc34634f7104ddfc7dfab13f09ab945b53cf4
-ms.openlocfilehash: 38f17470f7d4067ba5a9d3d974cfa5dd051320a5
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: e4c1dd67dce33c2cb30f6fd3e7163c68c7084e67
 
 
 ---
@@ -88,6 +88,6 @@ Azure 将对可用的数据磁盘数和带宽加以限制，具体取决于 VM �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

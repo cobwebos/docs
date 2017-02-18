@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: d175d3d4d7d7a58f071dab0f32e3fdd3cb3146ce
-ms.openlocfilehash: 8c26d8ef39827cff87b7fc7f17fab78c627a5035
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
 
 
 ---
@@ -37,6 +37,9 @@ ms.openlocfilehash: 8c26d8ef39827cff87b7fc7f17fab78c627a5035
 
 > [!NOTE]
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET SDK 的详细信息，请参阅 [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) （数据工厂 .NET API 参考）。
+> 
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+
 
 ## <a name="prerequisites"></a>先决条件
 * 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
@@ -503,12 +506,18 @@ ms.openlocfilehash: 8c26d8ef39827cff87b7fc7f17fab78c627a5035
 20. 验证是否在指定的 Azure SQL 数据库中的“emp”表内创建了两条员工记录。
 
 ## <a name="next-steps"></a>后续步骤
-* 阅读 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）一文，其中提供了本教程中使用的复制活动的详细信息。
-* 有关数据工厂 .NET SDK 的详细信息，请参阅 [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) （数据工厂 .NET API 参考）。 本文不会介绍所有数据工厂 .NET API。
+| 主题 | 说明 |
+|:--- |:--- |
+| [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
+| [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
+| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
+[数据工厂 .NET API 参考](/dotnet/api/) | 详细介绍了数据工厂 .NET SDK（查找树视图中的 Microsoft.Azure.Management.DataFactories.Models）。 
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+
+<!--HONumber=Feb17_HO1-->
 
 

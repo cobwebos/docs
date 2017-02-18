@@ -1,5 +1,5 @@
 ---
-title: "Apache Storm 教程：HDInsight 上基于 Linux 的 Storm 入门 | Microsoft Docs"
+title: "Apache Storm on Azure HDInsight 入门 | Microsoft 文档"
 description: "开始在基于 Linux 的 HDInsight 上使用 Apache Storm 和 Storm 初学者示例进行大数据分析。 了解如何使用 Storm 实时处理数据。"
 keywords: "apache storm,apache storm 教程,大数据分析,storm 初学者"
 services: hdinsight
@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7ade85d98c41bddddb61fe75d212b351ff62eef0
-ms.openlocfilehash: 1e24cebace0e6b7de7ae318f06d6430b3caa342a
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9b38cd0aa542c0fd73b73edefce230e5a463e608
 
 
 ---
@@ -216,6 +216,6 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

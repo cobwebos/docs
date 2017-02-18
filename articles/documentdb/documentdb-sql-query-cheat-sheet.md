@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bf63bc0fed285feef8fa0af5796d2b70d86ed098
+ms.sourcegitcommit: 82ac3feb64c688a372d2b6d41a259d7126df44c1
+ms.openlocfilehash: 68968f3300ff783a526469274d07ba524b7d3569
 
 
 ---
@@ -33,7 +33,7 @@ DocumentDB 支持使用 [SQL](documentdb-sql-query.md) 的 JSON 文档的相关�
 
 ![DocumentDB SQL 查询备忘单：DocumentDB 支持的 SQL 语法的快速参考 PDF - SQL 备忘单、SQL 备忘单 PDF、SQL 快速参考][cheat-sheet]
 
-[备忘单]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
+[cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
 
 
 ## <a name="more-help-with-writing-sql-queries"></a>编写 SQL 查询的更多帮助
@@ -46,6 +46,6 @@ DocumentDB 支持使用 [SQL](documentdb-sql-query.md) 的 JSON 文档的相关�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

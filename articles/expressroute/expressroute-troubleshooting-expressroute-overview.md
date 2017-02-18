@@ -1,6 +1,6 @@
 ---
-title: "Azure ExpressRoute 故障排除指南 - 验证连接 | Microsoft 文档"
-description: "本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证"
+title: "验证连接：Azure ExpressRoute 故障排除指南 | Microsoft 文档"
+description: "本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。"
 documentationcenter: na
 services: expressroute
 author: rambk
@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 1/5/2017
 ms.author: rambala
 translationtype: Human Translation
-ms.sourcegitcommit: 3c25cd8dae3a1c830cefbced5d2cd9ec04f4dda8
-ms.openlocfilehash: 9d97dcc9b59a40a714b8f1d71137baf51136d134
+ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
+ms.openlocfilehash: 49ed6dd2184e69487cedae81a89665f5ccc3843d
 
 
 ---
@@ -417,6 +417,6 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

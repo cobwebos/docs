@@ -1,5 +1,5 @@
 ---
-title: "Azure MFA 云与服务器 | Microsoft Docs"
+title: "在 Azure MFA 云和服务器之间选择 | Microsoft 文档"
 description: "通过询问自己想要保护什么以及用户的位置，选择适合你的多重身份验证安全解决方案。  然后选择云、MFA 服务器或 AD FS。"
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 07e2a62ee63a8f9ef3d660fff8c6269654e2b448
-ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
+ms.sourcegitcommit: 92c552f42f2645281f5039242825cfdaf6b683c9
+ms.openlocfilehash: 1a42c137204c2d2f6fff9a005b2b0e885c2002b2
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
 | --- |:---:|:---:|
 | 第一方 Microsoft 应用 |● |● |
 | 应用库中的 SaaS 应用 |● |● |
-| 通过 Azure AD 应用代理发布的 IIS 应用程序 |● |● |
+| 通过 Azure AD 应用代理发布的 Web 应用程序 |● |● |
 | 不是通过 Azure AD 应用代理发布的 IIS 应用程序 | |● |
 | VPN、RDG 等远程访问系统 | |● |
 
@@ -62,8 +62,8 @@ ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
 | 将单向短信用作第二个因素 | ● | ● |
 | 将双向短信用作第二个因素 | | ● |
 | 将硬件令牌用作第二个因素 | | ● |
-| 不支持 MFA 的客户端的应用密码 | ● | |
-| 管理员控制身份验证方法 | | ● |
+| 不支持 MFA 的 Office 365 客户端的应用密码 | ● | |
+| 管理员控制身份验证方法 | ● | ● |
 | PIN 模式 | | ● |
 | 欺诈警报 |● | ● |
 | MFA 报告 |● | ● |
@@ -73,7 +73,7 @@ ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
 | 受信任的 IP | ● | ● |
 | 记住受信任的设备的 MFA | ● | |
 | 条件性访问 | ● | ● |
-| 缓存 | ● | ● |
+| 缓存 |  | ● |
 
 在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。 **选择代表你的方案的图标！**
 
@@ -87,6 +87,6 @@ ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

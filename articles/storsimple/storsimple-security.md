@@ -1,5 +1,5 @@
 ---
-title: "StorSimple 安全性 | Microsoft Docs"
+title: "StorSimple 8000 系列安全性 | Microsoft 文档"
 description: "介绍保护 StorSimple 服务、设备以及本地数据和云中数据的安全和隐私功能。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 05/03/2016
 ms.author: v-sharos
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: efdb69c03845ba321d7e0b1270268c4fb92fa1ef
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 7e526816f1a564ab80113c30d5c9671cb2b7e104
 
 
 ---
@@ -261,6 +261,6 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

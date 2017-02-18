@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2016
+ms.date: 02/02/2017
 ms.author: clemensv;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: d9386e08adc4646c7bfcf8bfcb4407ddb5681334
+ms.sourcegitcommit: c39abad6c5e2a9e2ae7add9ecda48783f61bc736
+ms.openlocfilehash: 8d0f3818831a22550fb0eea9bcbc1f62b133003a
 
 
 ---
@@ -33,10 +33,10 @@ ms.openlocfilehash: d9386e08adc4646c7bfcf8bfcb4407ddb5681334
 ## <a name="operations-within-a-transaction-scope"></a>事务作用域内的操作
 可以在事务作用域内执行的操作如下所示：
 
-* **[QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx), [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx), [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx)**：Send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)**：Complete, CompleteAsync, Abandon, AbandonAsync, Deadletter, DeadletterAsync, Defer, DeferAsync, RenewLock, RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), [MessageSender](/dotnet/api/microsoft.servicebus.messaging.messagesender), [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)**：Send, SendAsync, SendBatch, SendBatchAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**：Complete, CompleteAsync, Abandon, AbandonAsync, Deadletter, DeadletterAsync, Defer, DeferAsync, RenewLock, RenewLockAsync 
 
-不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式或通过 [OnMessage](https://msdn.microsoft.com/library/azure/dn369601.aspx) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
+不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式或通过 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
 
 然后，消息的处置（完成、放弃、死信、延迟）将在事务作用域内进行，并依赖于在事务处理的整体结果。
 
@@ -48,14 +48,14 @@ ms.openlocfilehash: d9386e08adc4646c7bfcf8bfcb4407ddb5681334
 ### <a name="see-it-in-code"></a>在代码中查看它
 若要设置此类传输，需创建通过传输队列以目标队列为目标的消息发送方。 你还将设置接收方，以便从该同一队列提取消息。 例如：
 
-```
+```csharp
 var sender = this.messagingFactory.CreateMessageSender(destinationQueue, myQueueName);
 var receiver = this.messagingFactory.CreateMessageReceiver(myQueueName);
 ```
 
 简单事务处理随后使用这些元素，如以下示例所示：
 
-```
+```csharp
 var msg = receiver.Receive();
 
 using (scope = new TransactionScope())
@@ -72,6 +72,7 @@ using (scope = new TransactionScope())
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 有关服务总线队列的详细信息，请参阅以下文章：
 
 * [使用自动转发链接服务总线实体](service-bus-auto-forwarding.md)
@@ -83,6 +84,6 @@ using (scope = new TransactionScope())
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

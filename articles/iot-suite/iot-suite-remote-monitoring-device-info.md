@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2016
+ms.date: 12/15/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 9138fc1da6c45e2aa874e3e26c4a65ceb248d8f1
-ms.openlocfilehash: 325e25412e80d005a87b49e6971703cd74551c5e
+ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
+ms.openlocfilehash: 8aac22bed0b16c97faabf1e15c9fc9f40c34ca67
 
 
 ---
@@ -35,7 +35,7 @@ Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据�
 > 
 > 
 
-[IoT 中心的设备管理][lnk-dm-preview]向 IoT 中心添加了类似于本文所述的设备信息管理功能的功能。 目前，远程监视解决方案仅使用 IoT 中心内的正式版 (GA) 功能。
+[IoT 中心设备管理][lnk-dm-preview]向 IoT 中心添加了一些功能，这些功能类似于本文介绍的设备信息管理功能。 目前，远程监视解决方案仅使用 IoT 中心内的正式版 (GA) 功能。
 
 ## <a name="device-information-metadata"></a>设备信息元数据
 存储在设备注册表 DocumentDB 数据库中的设备信息元数据 JSON 文档具有以下结构：
@@ -248,7 +248,7 @@ Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据�
 }
 ```
 
-下图显示了设备为了更新设备信息元数据而发送的 JSON **DeviceInfo** 消息：
+以下示例显示设备为了更新设备信息元数据而发送的 JSON **DeviceInfo** 消息：
 
 ```
 { "ObjectType":"DeviceInfo",
@@ -265,9 +265,9 @@ Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据�
 ## <a name="next-steps"></a>后续步骤
 现在你已学习如何自定义预配置解决方案，接下来你可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
-* [预防性维护预配置解决方案概述][lnk-predictive-overview]
+* [预见性维护预配置解决方案概述][lnk-predictive-overview]
 * [有关 IoT 套件的常见问题][lnk-faq]
-* [从头开始建立 IoT 安全][lnk-security-groundup]
+* [从源头保障 IoT 的安全][lnk-security-groundup]
 
 <!-- Images and links -->
 [img-device-list]: media/iot-suite-remote-monitoring-device-info/image1.png
@@ -288,6 +288,6 @@ Azure IoT 套件远程监视预配置解决方案演示了管理设备元数据�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

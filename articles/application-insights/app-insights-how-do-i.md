@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e4576409641db73ad8920a1eec2eea1e3580109f
-ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
 
 
 ---
-# <a name="how-do-i-in-application-insights"></a>如何在 Application Insights 中执行...？
+# <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
 ### <a name="email-if-my-site-goes-down"></a>站点关闭时发送电子邮件
 设置[可用性 Web 测试](app-insights-monitor-web-app-availability.md)。
@@ -40,7 +40,7 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 ### <a name="email-on-an-event-in-my-app"></a>应用中发生某个事件时发送电子邮件
 假设你希望在发生特定的事件时收到电子邮件。 Application Insights 不直接提供此功能，但可以[在指标超过某个阈值时发送警报](app-insights-alerts.md)。
 
-可以针对[自定义指标](app-insights-api-custom-events-metrics.md#track-metric)设置警报，但不能针对自定义事件设置警报。 编写一些代码，以便在发生事件时增大指标：
+可以针对[自定义指标](app-insights-api-custom-events-metrics.md#trackmetric)设置警报，但不能针对自定义事件设置警报。 编写一些代码，以便在发生事件时增大指标：
 
     telemetry.TrackMetric("Alarm", 10);
 
@@ -174,7 +174,7 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 * 在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中，禁用所有不需要用到的模块，例如性能计数器收集器。
 * 使用 SDK 中的[采样和筛选](app-insights-api-filtering-sampling.md)功能。
 * 在网页中，限制针对每个页面视图报告的 Ajax 调用次数。 在 `instrumentationKey:...` 后面的脚本片段中插入：`,maxAjaxCallsPerView:3`（或适当的数字）。
-* 如果使用的是 [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric)，请在发送结果之前，先计算指标值批次的聚合。 TrackMetric() 的一个重载可实现此目的。
+* 如果使用的是 [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric)，请在发送结果之前，先计算指标值批次的聚合。 TrackMetric() 的一个重载可实现此目的。
 
 详细了解[定价和配额](app-insights-pricing.md)。
 
@@ -208,6 +208,6 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

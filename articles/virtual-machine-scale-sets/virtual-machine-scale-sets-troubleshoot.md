@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 7d122d04dfd9cb1f565e86b60f2180f9534588c9
+ms.sourcegitcommit: 4818c0c036c7e462af5b8d99f1085f8d9025156c
+ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
 
 
 ---
@@ -51,7 +51,7 @@ ms.openlocfilehash: 7d122d04dfd9cb1f565e86b60f2180f9534588c9
     这是一个不可或缺的疑难解答工具，它显示 Azure Resource Manager 资源的状态。 单击您的订阅并查看您要对其进行故障排除的资源组。 在计算资源提供程序下查看您创建的 VM 规模集并检查实例视图，它显示部署的状态。 此外还应检查 VM 规模集中 VM 的实例视图。 然后，转到 Microsoft.Insights 资源提供程序并检查自动缩放规则是否一切正常。
 * 诊断扩展运行正常且可发出性能数据吗？
   
-    **更新：**已增强 Azure 自动缩放，以使用基于主机的指标管道，这不再需要安装诊断扩展。 这意味着如果你使用新管道创建自动缩放应用程序，则后续几个段落将不再适用。 已转换为使用主机管道的 Azure 模板的示例包括：https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale。 
+    **更新：**已增强 Azure 自动缩放，以使用基于主机的指标管道，这不再需要安装诊断扩展。 这意味着如果你使用新管道创建自动缩放应用程序，则后续几个段落将不再适用。 改为使用主机管道的 Azure 模板示例：https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale。 
   
     使用基于主机的指标进行自动缩放更好的原因如下：
   
@@ -79,12 +79,12 @@ ms.openlocfilehash: 7d122d04dfd9cb1f565e86b60f2180f9534588c9
     
     完成这些步骤后，如果仍然存在自动缩放问题，可以尝试访问 [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp) 上的论坛或 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure)，或者电话联系支持人员。 准备共享模板和性能数据的视图。
 
-[审核]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
-[资源管理器]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
-[表]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
+[audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
+[explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
+[tables]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

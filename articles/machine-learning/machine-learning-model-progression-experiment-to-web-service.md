@@ -1,5 +1,5 @@
 ---
-title: "机器学习模型如何从实验逐步进展为运营 Web 服务 | Microsoft Docs"
+title: "如何将 Azure 机器学习模型变为 Web 服务 | Microsoft 文档"
 description: "Azure 机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: b47aa6730aff534b796cfc5427e613defdf69926
-ms.openlocfilehash: 0f0b2a10ae0f16411d9043351064eafe3a26c5aa
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 8c5a3ca30ae0539cded6cf9cd93ba1a42e19ba58
 
 
 ---
@@ -122,6 +122,6 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

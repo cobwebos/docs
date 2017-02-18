@@ -1,5 +1,5 @@
 ---
-title: "Azure 资源组准则 | Microsoft Docs"
+title: "Azure 中 Windows VM 的资源组 | Microsoft 文档"
 description: "了解用于在 Azure 基础结构服务中部署资源组的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-windows
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 1e52ae69951b6b1feee6207033a85a583d13bcc2
-ms.openlocfilehash: 0d7c84d811b37a16e018f0915d3a0fde5183653f
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: ec2392cb926df7c375c1c7c58766ef3b6ca2ff2d
 
 
 ---
@@ -57,6 +57,6 @@ ms.openlocfilehash: 0d7c84d811b37a16e018f0915d3a0fde5183653f
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

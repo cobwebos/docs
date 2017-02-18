@@ -15,8 +15,8 @@ ms.workload: azure-government
 ms.date: 12/22/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a7e53dcdbf3cecd8a00ad3424ffa0d62cc8fde43
-ms.openlocfilehash: 73d34bc7f34b9b9730e826e17537f82d0f689c03
+ms.sourcegitcommit: 831334f2b835d00aa3fd22292764b69e85d735a6
+ms.openlocfilehash: a6b61df5884031eb5b53f983b834357bd23a622e
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 73d34bc7f34b9b9730e826e17537f82d0f689c03
 | [热/冷 Blob 存储] (../storage/storage-blob-storage-tiers.md) |不可用 |不可用 |
 | [存储服务加密] (../storage/storage-service-encryption.md) |GA |GA |
 | [高级存储] (../storage/storage-premium-storage.md) |GA |不可用 | 包括 DS 系列虚拟机。 |
-| [Blob 导入/导出] (../storage/storage-import-export-service.md) |GA |GA | 当前仅支持经典存储帐户。 |
+| [Blob 导入/导出] (../storage/storage-import-export-service.md) |GA |GA |
 | [StorSimple] (../storsimple/storsimple-ova-overview.md) |GA |GA |
 
 ### <a name="variations"></a>变体
@@ -85,6 +85,6 @@ Azure Government 中的存储帐户 URL 不相同：
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

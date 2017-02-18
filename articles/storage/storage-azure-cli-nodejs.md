@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: f9969f9805e6476ef83108687a12a69ffaaed1a1
-ms.openlocfilehash: ae7ff68eb39366a5d9abe2c863c16998eb151c71
+ms.sourcegitcommit: 84d52dccef4e2d9a1ae253831b5d8f86b6fb50a6
+ms.openlocfilehash: bc90832422a8643afda292d6897a275280cfe690
 
 
 ---
@@ -238,7 +238,7 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 你可以在此处查找使用存储资源的 Azure CLI 1.0 命令参考：
 
 * [Resource Manager 模式下的 Azure CLI 命令](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Azure 服务管理模式下的 Azure CLI 命令](../virtual-machines-command-line-tools.md#commands-to-manage-your-storage-objects)
+* [Azure 服务管理模式下的 Azure CLI 命令](../xplat-cli-install.md)
 
 你可能还想尝试 [Azure CLI 2.0（预览版）](storage-azure-cli.md)（使用 Python 编写的下一代 CLI），用于资源管理部署模型。
 
@@ -246,6 +246,6 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

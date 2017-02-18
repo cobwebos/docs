@@ -1,5 +1,5 @@
 ---
-title: "将自定义数据注入到虚拟机中 | Microsoft Docs"
+title: "将数据注入 Azure 上的 Linux VM | Microsoft 文档"
 description: "本主题介绍如何在创建实例时将自定义数据注入到 Azure 虚拟机中，以及如何在 Windows 或 Linux 上找到自定义数据。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 7bc87fdfb0d47de223b6c1b389e1ba11df0cddfa
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: c342381d3d1052592c1b771cced104778fe7c84c
 
 
 ---
@@ -30,6 +30,6 @@ ms.openlocfilehash: 7bc87fdfb0d47de223b6c1b389e1ba11df0cddfa
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

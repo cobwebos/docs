@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: eba5adfcbba4800632e197d3f25760a857137a88
+ms.sourcegitcommit: 7814e02df5c6aa0ea9c38e3a048dd52e39436c3c
+ms.openlocfilehash: 349a7d82a96868f65598597c1db192484da9b34d
 
 
 ---
-# <a name="what-is-microsoft-azure-diagnostics"></a>什么是 Microsoft Azure 诊断
+# <a name="what-is-azure-diagnostics"></a>什么是 Azure 诊断
 Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用于自许多不同源的诊断扩展。 目前支持的有 Azure 云服务 Web 和辅助角色、运行 Microsoft Windows 的 Azure 虚拟机，以及 Service Fabric。 其他 Azure 服务都有自身不同的诊断扩展。
 
 ## <a name="data-you-can-collect"></a>可以收集的数据
@@ -82,6 +82,6 @@ Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

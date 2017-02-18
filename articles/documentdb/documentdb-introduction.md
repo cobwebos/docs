@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 7f5e33b7f80e3c1e1e3e66b3cab879a5bc30e823
-ms.openlocfilehash: 18f2c1876fab914073c8aea67f67724f281a65aa
+ms.sourcegitcommit: 988c887d2d26ab3ab5b287f803c7d598bd6620e3
+ms.openlocfilehash: 23b1780df8ec01c0692e3afd408ea44fc9773b28
 
 
 ---
@@ -41,7 +41,7 @@ Azure DocumentDB 具有以下主要功能和优势：
 * **多区域复制：** DocumentDB 以透明方式将数据复制到与你的 DocumentDB 帐户关联的所有区域，使你可以开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 DocumentDB 提供了具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储空间。 有关详细信息，请参阅 [使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)。
 * **使用熟悉的 SQL 语法进行即席查询：** 在 DocumentDB 中存储异类 JSON 文档，并通过熟悉的 SQL 语法查询这些文档。 DocumentDB 使用高并发、无锁、日志结构化索引技术为所有文档内容自动创建索引。 这样可以实现各种实时查询，而无需指定架构提示、二级索引或视图。 有关详细信息，请参阅 [DocumentDB 查询](documentdb-sql-query.md)。 
 * **在数据库中执行 JavaScript：** 使用标准 JavaScript 将应用程序逻辑表示为存储过程、触发器和用户定义函数 (UDF)。 这样，你的应用程序逻辑可基于数据进行运作，而无需担心应用程序和数据库架构之间的不匹配。 DocumentDB 支持在数据库引擎内部直接进行 JavaScript 应用程序逻辑的完全事务执行。 对 JavaScript 的深度集成支持在一个 JavaScript 程序中将 INSERT、REPLACE、DELETE 和 SELECT 操作作为独立的事务来执行。 有关详细信息，请参阅 [DocumentDB 服务器端编程](documentdb-programming.md)。
-* **可调优的一致性级别：** 从 4 个定义好的一致性级别中选择，以实现一致性和性能之间的最佳平衡。 对于查询和读取操作，DocumentDB 提供了四种不同的一致性级别：强、有限过时、会话和最终。 通过这些细化的定义完好的一致性级别，你可以在一致性、可用性和延迟之间实现合理的平衡。 有关详细信息，请参阅 [使用一致性级别最大化 DocumentDB 中的可用性和性能](documentdb-consistency-levels.md)。
+* **可调优的一致性级别：** 从&4; 个定义好的一致性级别中选择，以实现一致性和性能之间的最佳平衡。 对于查询和读取操作，DocumentDB 提供了四种不同的一致性级别：强、有限过时、会话和最终。 通过这些细化的定义完好的一致性级别，你可以在一致性、可用性和延迟之间实现合理的平衡。 有关详细信息，请参阅 [使用一致性级别最大化 DocumentDB 中的可用性和性能](documentdb-consistency-levels.md)。
 * **完全托管：** 无需管理数据库和计算机资源。 作为一种完全托管的 Microsoft Azure 服务，你无需管理虚拟机、部署并配置软件、管理数据库和资源的增减，或处理复杂的数据层升级。 每个数据库都将自动备份，以防受到区域故障的影响。 你可以轻松添加 DocumentDB 帐户并按照你的需求设置容量，从而使你专注于你的应用程序而不是操作和管理你的数据库。 
 * **源于设计的开放性：** 通过使用现有的技能和工具快速入门。 针对 DocumentDB 的编程非常简单易学，你无需使用新的工具或遵循 JSON 或 JavaScript 的自定义扩展。 你可以通过简单的 RESTful HTTP 接口访问所有数据库功能，包括 CRUD、查询和 JavaScript 处理。 DocumentDB 包含现有格式、语言和标准，并同时基于这些内容提供高价值的数据库功能。
 * **自动索引：**默认情况下，DocumentDB 将自动为数据库中的所有文档编制，无需任何架构或创建二级索引。 不想索引所有内容？ 别担心，还可以 [退出 JSON 文件中的路径](documentdb-indexing-policies.md) 。
@@ -87,13 +87,21 @@ DocumentDB 允许将应用程序逻辑编写为完全使用 JavaScript 编写的
 
 DocumentDB 中的 JavaScript 执行是在关系型数据库系统所支持的概念的基础之上建立的，只是现代性的将 Transact-SQL 换成了 JavaScript。 所有 JavaScript 逻辑都在使用快照隔离的环境 ACID 事务内执行。 在其执行过程中，如果 JavaScript 引发异常，则整个事务将被中止。
 
+## <a name="are-there-any-online-courses-on-documentdb"></a>是否有 DocumentDB 方面的在线课程？
+
+有。有一个 [Microsoft 虚拟大学](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847)课程，是关于 Azure DocumentDB 的。 
+
+>[!VIDEO https://mva.microsoft.com/en-US/training-courses-embed/azure-documentdb-planetscale-nosql-16847]
+>
+>
+
 ## <a name="next-steps"></a>后续步骤
 已有 Azure 帐户？ 那么可以在 [Azure 门户](https://portal.azure.com/#gallery/Microsoft.DocumentDB)中通过[创建 DocumentDB 数据库帐户](documentdb-create-account.md)开始使用 DocumentDB。
 
 还没有 Azure 帐户？ 你可以：
 
 * 注册 [Azure 免费试用版](https://azure.microsoft.com/free/)，以获取 30 天试用期和 200 美元信用额度，可试用所有 Azure 服务。 
-* 如果有 MSDN 订阅，则有资格参加 [每月 150 美元的免费 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ，用于任何 Azure 服务。 
+* 如果有 MSDN 订阅，则有资格参加 [每月&150; 美元的免费 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) ，用于任何 Azure 服务。 
 * 下载 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md)，以便在本地开发应用程序。
 
 当你准备好帐户可了解更多信息之后，即可访问我们的 [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/) 浏览所有可供你使用的学习资源。 
@@ -103,6 +111,6 @@ DocumentDB 中的 JavaScript 执行是在关系型数据库系统所支持的概
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

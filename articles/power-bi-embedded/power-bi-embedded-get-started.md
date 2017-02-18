@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 02/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
+ms.sourcegitcommit: fd0ddf8275ab58eb3c411123b776654fb46cae5d
+ms.openlocfilehash: 5770bbfcf700b1cefea6d22e0d5f025c1660e744
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
    
    ![](media/power-bi-embedded-get-started/create-workspace-1.png)
 3. 在“数据 + 分析”下单击“Power BI Embedded”。
-4. 在“ **创建**”边栏选项卡上输入所需的信息。 有关 **定价**信息，请参阅 [Power BI Embedded 定价](http://go.microsoft.com/fwlink/?LinkID=760527)。
+4. 在“工作区集合”边栏选项卡上输入所需的信息。 有关 **定价**信息，请参阅 [Power BI Embedded 定价](http://go.microsoft.com/fwlink/?LinkID=760527)。
    
    ![](media/power-bi-embedded-get-started/create-workspace-2.png)
 5. 单击“创建” 。
@@ -68,6 +68,10 @@ ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
 虽然列出了两个密钥，但是在特定时间只需要一个密钥。 提供第二个密钥以便定期重新生成密钥，且无需中断对服务的访问。
 
 现在你的应用程序具有一个 Power BI 实例和两个 **访问密钥**，可以将报表导入自己的应用程序中。 在了解如何导入报表之前，下一节介绍了如何创建要嵌入到应用程序中的 Power BI 数据集和报表。
+
+## <a name="working-with-workspaces"></a>使用工作区
+
+创建工作区集合后，需要创建一个工作区来容纳报表和数据集。 若要创建工作区，需使用 [Post Worksapce REST API](https://msdn.microsoft.com/library/azure/mt711503.aspx)。
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app"></a>创建要嵌入到应用程序中的 Power BI 数据集和报表
 至此，你已创建应用程序的 Power BI 实例，并具有了 **访问密钥**，接下来你需要创建要嵌入的 Power BI 数据集和报表。 可以使用 **Power BI Desktop** 创建数据集和报表。 你可以免费下载 [Power BI Desktop](https://go.microsoft.com/fwlink/?LinkId=521662)。 或者，若要快速开始使用，可以下载 [零售分析示例 PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)。
@@ -109,6 +113,6 @@ ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

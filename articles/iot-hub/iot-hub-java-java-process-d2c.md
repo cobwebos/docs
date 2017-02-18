@@ -1,6 +1,6 @@
 ---
 title: "处理 IoT 中心设备到云的消息 (Java) | Microsoft Docs"
-description: "如何通过通过 IoT 中心从与事件中心兼容的终结点进行读取，处理 IoT 中心设备到云的消息。 创建使用 EventProcessorHost 实例的 Java 服务应用。"
+description: "如何使用路由规则和自定义终结点将消息发送到其他后端服务，从而处理 IoT 中心的设备到云消息。"
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: 5ede1fdd040b2f59383dda27d6fb26b87c2d7f02
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 616bca96eaff12fa1929605f3480098bd8b867c2
 
 
 ---
@@ -95,7 +95,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
     }
     ```
    
-    这会将 `"level": "critical"` 属性随机添加到模拟设备发送的消息，该设备可模拟需要解决方案后端立即执行操作的消息。 应用程序将在消息属性中传递此信息（而非在消息正文中），因此 IoT 中心可将消息路由到适当的消息目标。
+    此方法会将 `"level": "critical"` 属性随机添加到模拟设备发送的消息，该设备可模拟需要应用程序后端立即执行操作的消息。 应用程序将在消息属性中传递此信息（而非在消息正文中），因此 IoT 中心可将消息路由到适当的消息目标。
    
    > [!NOTE]
    > 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。
@@ -128,11 +128,11 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
     
     ![添加终结点][31]
     
-4. 现在单击 IoT 中心的“路由”。 单击边栏选项卡顶部的“添加”，创建将消息路由到刚添加的队列的规则。 选择“DeviceTelemetry”作为数据源。 输入 `level="critical"` 作为条件，然后选择刚添加为终结点的队列作为路由终结点。 完成后，单击底部的“**保存**”。
+4. 现在单击 IoT 中心的“路由”。 单击边栏选项卡顶部的“添加”，创建将消息路由到刚添加的队列的路由规则。 选择“DeviceTelemetry”作为数据源。 输入 `level="critical"` 作为条件，然后选择刚添加为自定义终结点的队列作为路由规则终结点。 完成后，单击底部的“**保存**”。
     
     ![添加路由][32]
     
-    请确保回退路由设为“开”。 这是 IoT 中心的默认配置。
+    请确保回退路由设为“开”。 此设置是 IoT 中心的默认配置。
     
     ![回退路由][33]
 
@@ -230,6 +230,6 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

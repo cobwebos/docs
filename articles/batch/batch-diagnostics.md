@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch 诊断日志记录 | Microsoft 文档"
+title: "为 Batch 事件启用诊断日志记录 - Azure | Microsoft Docs"
 description: "记录并分析 Azure Batch 帐户资源（诸如池和任务）的诊断日志事件。"
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 01/20/2017
+ms.date: 02/01/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: f1aa23d2865ec8401a59b2370c8157d2458c60f7
+ms.sourcegitcommit: 4b8343ac07aa7b2c0771a723306cf1f875cb6147
+ms.openlocfilehash: aeba32d62458f948c7aa99294c90519979924d57
 
 
 ---
@@ -93,7 +93,7 @@ Batch 服务当前会生成以下服务日志事件。 此列表可能不完整�
 * [将 Azure 诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
   
   将 Batch 诊断事件流式传输到“事件中心”，这是一项可高度缩放的数据入口服务。 数据中心每秒可以接受数百万事件，然后你可以使用任何实时分析提供程序转换并存储这些事件。
-* [使用 Log Analytics 分析 Azure 诊断日志](../log-analytics/log-analytics-azure-storage-json.md)
+* [使用 Log Analytics 分析 Azure 诊断日志](../log-analytics/log-analytics-azure-storage.md)
   
   将诊断日志发送到 Log Analytics，可以使用该工具在 Operations Management Suite (OMS) 门户中分析这些日志，或者导出诊断日志以在 Power BI 或 Excel 中进行分析。
 
@@ -108,6 +108,6 @@ Batch 服务当前会生成以下服务日志事件。 此列表可能不完整�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据库身份验证和授权 | Microsoft 文档"
+title: "Azure SQL 登录名和用户 | Microsoft 文档"
 description: "了解 SQL 数据库安全管理，特别是如何通过服务器级的主体帐户管理数据库的访问和登录安全。"
 keywords: "sql 数据库安全,数据库安全管理,登录安全,数据库安全,数据库访问权限"
 services: sql-database
@@ -12,14 +12,14 @@ ms.assetid: 0a65a93f-d5dc-424b-a774-7ed62d996f8c
 ms.service: sql-database
 ms.custom: authentication and authorization
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/17/2017
+ms.date: 01/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 435fca81cda845200467fbc0d6ed4d41de41aaf6
-ms.openlocfilehash: 324fd91b415a4744cb472bbd8a8b795a8fbb8080
+ms.sourcegitcommit: 5eccb4705cd6c8f6170a48f3b3591518688651f1
+ms.openlocfilehash: c3a45973a04d5082bee777a98f8204ceedc888a5
 
 
 ---
@@ -29,6 +29,12 @@ ms.openlocfilehash: 324fd91b415a4744cb472bbd8a8b795a8fbb8080
 
 >  [!NOTE]  
 >  本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 
+>
+
+> [!TIP]
+> 有关使用 SQL Server 身份验证的教程，请参阅[教程：SQL Server 身份验证](sql-database-control-access-sql-authentication-get-started.md)。 有关使用 Azure Active Directory 身份验证的教程，请参阅[教程：AAD 身份验证](sql-database-control-access-aad-authentication-get-started.md)。
+>
+
 
 ## <a name="unrestricted-administrative-accounts"></a>非受限管理帐户
 有两个充当管理员的管理帐户（**服务器管理员**和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到 SQL 服务器的属性。
@@ -188,11 +194,11 @@ GRANT ALTER ANY USER TO Mary;
 - 有关教程，请参阅 [SQL 安全入门](sql-database-control-access-sql-authentication-get-started.md)
 - 有关视图和存储过程的信息，请参阅[创建视图和存储过程](https://msdn.microsoft.com/library/ms365311.aspx)
 - 有关授予数据库对象访问权限的信息，请参阅[授予数据库对象访问权限](https://msdn.microsoft.com/library/ms365327.aspx)
-- 有关使用 SQL Server 身份验证的教程，请参阅 [SQL 数据库教程：SQL Server 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md)。
-- 有关使用 Azure Active Directory 身份验证的教程，请参阅 [SQL 数据库教程：AAD 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-aad-authentication-get-started.md)。
+- 有关使用 SQL Server 身份验证的教程，请参阅[教程：SQL Server 身份验证](sql-database-control-access-sql-authentication-get-started.md)。
+- 有关使用 Azure Active Directory 身份验证的教程，请参阅[教程：AAD 身份验证](sql-database-control-access-aad-authentication-get-started.md)。
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

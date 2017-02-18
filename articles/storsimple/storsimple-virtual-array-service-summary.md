@@ -1,5 +1,5 @@
 ---
-title: "StorSimple Device Manager 的“服务摘要”边栏选项卡 - Microsoft Azure StorSimple 虚拟阵列 | Microsoft Docs"
+title: "StorSimple 虚拟阵列服务摘要边栏选项卡 | Microsoft 文档"
 description: "介绍 StorSimple Device Manager 的“服务摘要”边栏选项卡并说明如何使用它来监视 StorSimple 虚拟阵列的运行状况。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 813b4d430665e8df6f664c9c6a8db370f6ad7ac9
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 284e404c44505a98d9e0ed5abe87cd945415af56
 
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>使用已连接到 StorSimple 虚拟阵列的 StorSimple Device Manager 的“服务摘要”边栏选项卡
@@ -49,6 +49,6 @@ StorSimple Device Manager 的“服务摘要”边栏选项卡提供连接到用
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

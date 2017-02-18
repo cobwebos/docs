@@ -1,6 +1,6 @@
 ---
-title: "如何在 Azure 门户中创建、管理或删除存储帐户 | Microsoft Docs"
-description: "创建新的存储帐户、管理帐户访问密钥，或删除 Azure 门户中的存储帐户。 了解标准和高级存储帐户。"
+title: "如何在 Azure 门户中创建、管理或删除存储帐户 | Microsoft 文档"
+description: "在 Azure 门户中创建新的存储帐户、管理帐户访问密钥或删除存储帐户。 了解标准和高级存储帐户。"
 services: storage
 documentationcenter: 
 author: robinsh
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2016
+ms.date: 01/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: a762a0e4753b73b11b2c903fa97c67176199b8d9
-ms.openlocfilehash: 5a1845ac32d2e7454a94d6678521b5e74561933a
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: eb9e9ca5082559ee0e30ea67bf53229d38f81589
 
 
 ---
@@ -126,7 +126,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 下面是轮换存储访问密钥的过程：
 
 1. 更新应用程序代码中的连接字符串以引用存储帐户的辅助访问密钥。
-2. 为你的存储帐户重新生成主访问密钥。 在“访问密钥”边栏选项卡上，单击“重新生成密钥 1”，然后单击“是”以确认要生成新密钥。
+2. 为你的存储帐户重新生成主访问密钥。 在“访问密钥”边栏选项卡上，单击“重新生成密钥&1;”，然后单击“是”以确认要生成新密钥。
 3. 更新代码中的连接字符串以引用新的主访问密钥。
 4. 以相同方式重新生成辅助访问密钥。
 
@@ -162,6 +162,6 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

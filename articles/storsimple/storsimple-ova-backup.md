@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 06/07/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 61bc9e86cde18bf00291fa36c7ea12ca263db82f
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 9db591677fb529a72029114db8ad8a8b5d8ab260
 
 
 ---
@@ -86,7 +86,7 @@ StorSimple 虚拟设备具有一个默认备份策略，该策略在每天的指
 
 观看此视频以了解如何在 StorSimple Virtual Array 上创建共享、备份共享和还原数据。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Use-the-StorSimple-Virtual-Array/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Use-the-StorSimple-Virtual-Array/player]
 > 
 > 
 
@@ -96,6 +96,6 @@ StorSimple 虚拟设备具有一个默认备份策略，该策略在每天的指
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,23 +1,22 @@
 ---
 title: "Azure 政府版服务 | Microsoft Docs"
 description: "提供有关 Azure 政府版中可用服务的概述"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: zakramer
 manager: liki
-editor: 
 ms.assetid: a453a23c-bc0f-4203-9075-0f579dea7e23
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/14/2016
+ms.date: 01/29/2017
 ms.author: zakramer
 translationtype: Human Translation
-ms.sourcegitcommit: 083ffff3a99c82a518bcc370e6d40c7500ba6907
-ms.openlocfilehash: f48fd6856346e1fd0be12fec2391d0c16287f106
+ms.sourcegitcommit: 157e1d2b39e3990daa8001279b0dcc5bd14f0de8
+ms.openlocfilehash: eac5f44f3e6f0953bff57e362d327b738e6b50f9
 
 
 ---
@@ -37,12 +36,13 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 * 云服务
 
 ## <a name="networkingdocumentation-government-networkingmd"></a>[网络](documentation-government-networking.md)
-* 虚拟网络
-* 负载均衡器
-* 应用程序网关
-* VPN 网关
-* 流量管理器
 * [ExpressRoute](documentation-government-networking.md#expressroute-private-connectivity)
+* [BGP 社区支持](documentation-government-networking.md#support-for-bgp-communities)
+* 虚拟网络
+* [负载均衡器](documentation-government-networking.md#support-for-load-balancer)
+* 应用程序网关
+* [流量管理器](documentation-government-networking.md#support-for-traffic-manger)
+* [VPN 网关](documentation-government-networking.md#support-for-vpn-gateway)
 
 ## <a name="storagedocumentation-government-services-storagemd"></a>[存储](documentation-government-services-storage.md)
 * [Azure 存储](documentation-government-services-storage.md#azure-storage)
@@ -88,7 +88,7 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 * [Log Analytics](documentation-government-services-monitoringandmanagement.md#log-analytics)
 * [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * 计划程序
-* 流量管理器
+* [流量管理器](documentation-government-networking.md#support-for-traffic-manger)
 * 监视和诊断
 
 ## <a name="next-steps"></a>后续步骤
@@ -97,6 +97,6 @@ Azure 政府版正在不断扩展可用的服务。  这些服务使用 Azure �
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

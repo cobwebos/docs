@@ -1,5 +1,5 @@
 ---
-title: "使用 Redgate 的 Data Platform Studio 将数据载入 SQL 数据仓库 | Microsoft Docs"
+title: "使用 Redgate 将数据加载到 Azure 数据仓库 | Microsoft 文档"
 description: "了解如何将 Redgate 的 Data Platform Studio 用于数据仓库方案。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dd77457bfa7ebfc701750e090778f2976d82b141
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
 
 
 ---
@@ -154,6 +154,6 @@ DPS 会以可视化方式显示从本地 SQL Server 提取和上载数据的进�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

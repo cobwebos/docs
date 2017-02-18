@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 02/02/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 3205077236dd44253b3fa36d6eace36fb307871e
-ms.openlocfilehash: 11754bbe534638d8321f509d7d82e025c667176c
+ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
+ms.openlocfilehash: 5a50f583831b398ae22416e7ade23c33846de55c
 
 
 ---
@@ -33,12 +33,11 @@ ms.openlocfilehash: 11754bbe534638d8321f509d7d82e025c667176c
 > 
 > 
 
-使用 Azure数据工厂的**复制向导**可以快速轻松地创建管道用于实现数据引入/移动方案。 因此，建议首先使用向导为数据移动方案创建一个示例管道。 本教程说明如何创建 Azure 数据工厂、启动复制向导，以及执行一系列步骤来提供有关数据引入/移动方案的详细信息。 完成向导中的步骤后，向导会自动创建包含复制活动的管道，将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 有关复制活动的详细信息，请参阅 [数据移动活动](data-factory-data-movement-activities.md) 。 
+使用 Azure数据工厂的**复制向导**可以快速轻松地创建管道用于实现数据引入/移动方案。 因此，建议首先使用向导为数据移动方案创建一个示例管道。 本教程说明如何创建 Azure 数据工厂、启动复制向导，以及执行一系列步骤来提供有关数据引入/移动方案的详细信息。 完成向导中的步骤后，向导会自动创建包含复制活动的管道，将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。 
 
-> [!IMPORTANT]
-> 执行本教程之前，请通读 [Tutorial overview and prerequisites](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程概述和先决条件）一文了解教程的概述，并完成**先决条件**步骤。
-> 
-> 
+## <a name="prerequisites"></a>先决条件
+- 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
+
 
 ## <a name="create-data-factory"></a>创建数据工厂
 本步中，使用 Azure 门户创建名为 **ADFTutorialDataFactory**的 Azure 数据工厂。
@@ -146,23 +145,24 @@ ms.openlocfilehash: 11754bbe534638d8321f509d7d82e025c667176c
    
    ![监视应用](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png) 
    
-   > [!NOTE]
-   > 单击“活动时段”列表底部的“刷新”按钮可查看最新状态。 状态不会自动刷新。 
-   > 
-   > 
+   
+   单击“活动时段”列表底部的“刷新”按钮可查看最新状态。 状态不会自动刷新。 
+
+> [!NOTE]
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成第一个使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+> 
+> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。
 
 ## <a name="see-also"></a>另请参阅
 | 主题 | 说明 |
 |:--- |:--- |
-| [数据移动活动](data-factory-data-movement-activities.md) |本文提供有关教程中所用复制活动的详细信息。 |
-| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
-| [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
+| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

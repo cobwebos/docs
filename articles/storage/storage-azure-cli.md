@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 1e2569a6db330c908fe4087c1bc5a475d3e8a575
-ms.openlocfilehash: 0e1f7719c993dda419e3ebae7d50b91bd5effbc2
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 9a9ae2758aba17f35b7262560f8d980404ecd394
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 0e1f7719c993dda419e3ebae7d50b91bd5effbc2
 
 开源且跨平台的 Azure CLI 2.0（预览版）提供了一组用于使用 Azure 平台的命令。 它提供 [Azure 门户](https://portal.azure.com)所提供的很多相同功能，包括各种数据访问功能。
 
-在本指南中，我们展示了如何使用 [Azure CLI 2.0（预览版）](/cli/azure/get-started-with-az-cli2)执行多个使用 Azure 存储帐户中的资源的任务。 我们建议在使用本指南之前下载并安装或者升级到 CLI 2.0 的最新版。
+在本指南中，我们展示了如何使用 [Azure CLI 2.0（预览版）](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)执行多个使用 Azure 存储帐户中的资源的任务。 我们建议在使用本指南之前下载并安装或者升级到 CLI 2.0 的最新版。
 
 指南中的示例假定在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。 
 
@@ -364,12 +364,12 @@ az storage file copy start \
 ## <a name="next-steps"></a>后续步骤
 以下是一些用于详细了解如何使用 Azure CLI 2.0（预览版）的其他资源。
 
-* [Azure CLI 2.0（预览版）入门](/cli/azure/get-started-with-az-cli2)
+* [Azure CLI 2.0（预览版）入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI 2.0（预览版）命令参考](/cli/azure)
 * [GitHub 上的 Azure CLI 2.0（预览版）](https://github.com/Azure/azure-cli)
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

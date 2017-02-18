@@ -1,5 +1,5 @@
 ---
-title: "使用媒体服务 REST API 配置内容密钥授权策略 | Microsoft Docs"
+title: "使用 REST 配置内容密钥授权策略 - Azure | Microsoft 文档"
 description: "了解如何使用媒体服务 REST API 配置内容密钥的授权策略。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: e00c18be79eb5f7ee4d1dcb8f5e9a5b084afe60f
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: e00c18be79eb5f7ee4d1dcb8f5e9a5b084afe60f
 [使用 Azure ACS 颁发令牌](http://mingfeiy.com/acs-with-key-services)。
 
 ### <a name="some-considerations-apply"></a>请注意以下事项：
-* 为了能够使用动态打包和动态加密，必须确保至少有一个串流保留单位。 有关详细信息，请参阅 [如何缩放媒体服务](media-services-portal-manage-streaming-endpoints.md)。
+* 若要使用动态打包和动态加密，需确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 * 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 使用 **AssetCreationOptions.StorageEncrypted** 选项上传资产并对其进行编码。
 * 如果你打算创建需要相同策略配置的多个内容密钥，我们强烈建议你创建单个授权策略，并将其重复用于多个内容密钥。
@@ -285,7 +285,7 @@ ms.openlocfilehash: e00c18be79eb5f7ee4d1dcb8f5e9a5b084afe60f
 ## <a name="playready-dynamic-encryption"></a>PlayReady 动态加密
 媒体服务允许你配置相应的权限和限制，以便在用户尝试播放受保护的内容时，PlayReady DRM 运行时会强制实施这些权限和限制。 
 
-使用 PlayReady 保护内容时，需要在授权策略中指定的项目之一是用于定义 [PlayReady 许可证模板](https://msdn.microsoft.com/library/azure/dn783459.aspx)的 XML 字符串。 
+使用 PlayReady 保护内容时，需要在授权策略中指定的项目之一是用于定义 [PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 
 
 ### <a name="open-restriction"></a>开放限制
 开放限制意味着系统会将密钥传送到发出密钥请求的任何用户。 此限制可能适用于测试用途。
@@ -450,6 +450,6 @@ ms.openlocfilehash: e00c18be79eb5f7ee4d1dcb8f5e9a5b084afe60f
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

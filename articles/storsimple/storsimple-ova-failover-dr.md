@@ -1,5 +1,5 @@
 ---
-title: "StorSimple Virtual Array 的灾难恢复和设备故障转移"
+title: "StorSimple 虚拟阵列的灾难恢复和设备故障转移 | Microsoft 文档"
 description: "了解有关如何对 StorSimple Virtual Array 进行故障转移的详细信息。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 06/07/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 67cdf4e3d8e81d2ea419603918a3204dc6860ae7
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: 2017fcdc7a5c36c7c00d8bcef5be973ed60e3f82
 
 
 ---
@@ -125,7 +125,7 @@ ms.openlocfilehash: 67cdf4e3d8e81d2ea419603918a3204dc6860ae7
 
 此视频演示了如何将 StorSimple 本地虚拟设备故障转移到另一台虚拟设备。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/StorSimple-Virtual-Array-Disaster-Recovery/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Virtual-Array-Disaster-Recovery/player]
 > 
 > 
 
@@ -153,6 +153,6 @@ ms.openlocfilehash: 67cdf4e3d8e81d2ea419603918a3204dc6860ae7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

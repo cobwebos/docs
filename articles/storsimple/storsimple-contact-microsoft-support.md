@@ -1,5 +1,5 @@
 ---
-title: "联系 Microsoft 支持部门 | Microsoft Docs"
+title: "记录 StorSimple 8000 系列的支持票证 | Microsoft 文档"
 description: "了解如何创建支持请求，以及如何在 StorSimple 设备上启动支持会话。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/21/2016
 ms.author: alkohli;anbacker
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 01eafb492c5af9ce9d21418b838556c8c05095b1
+ms.sourcegitcommit: ce19be3454c08bbc041b5f6929c4ad56ffe9b7ea
+ms.openlocfilehash: 5f8124371391f7e2e59bbea474bef1da77686e0c
 
 
 ---
@@ -60,7 +60,7 @@ ms.openlocfilehash: 01eafb492c5af9ce9d21418b838556c8c05095b1
    5. 在“时间范围”框中，指示与问题的最新匹配项对应的日期、时间和时区。
    6. 在“文件上载”下单击文件夹图标，浏览到支持包。
    7. 选择“共享诊断信息”复选框。
-6. 单击“资源组名称” 的 Azure 数据工厂。 此时会出现“联系信息”对话框。
+6. 单击“下一步”。 此时会出现“联系信息”对话框。
    
     ![“新建支持请求”窗格](./media/storsimple-contact-microsoft-support/Ibiza6a.png) 
 7. 输入联系人信息并选择联系方式（电话或电子邮件）。 
@@ -95,6 +95,6 @@ ms.openlocfilehash: 01eafb492c5af9ce9d21418b838556c8c05095b1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a7d0b98e1c582230c756d1c893d9cc549a5a2893
-ms.openlocfilehash: ec38012c15d1970a56881fa64d8655b09487eae5
+ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
+ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
 
 
 ---
@@ -50,7 +50,7 @@ ms.openlocfilehash: ec38012c15d1970a56881fa64d8655b09487eae5
 
 * [Azure 流分析](../stream-analytics/stream-analytics-data-lake-output.md) - 可使用 Azure Data Lake Store 输出将引入事件中心的事件写入到 Azure Data Lake。
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) - 可直接将数据从 Storm 群集写入到 Data Lake Store。
-* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost) – 可接收事件中心内的事件，然后使用 [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) 将其写入到 Data Lake Store。
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – 可接收事件中心内的事件，然后使用 [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) 将其写入到 Data Lake Store。
 
 ### <a name="relational-data"></a>关系数据
 也可从关系数据库中获得数据。 在一个时间段期间，关系数据库会收集大量数据，这些数据如果通过大数据管道处理，可提供重要见解。 可使用以下工具将这类数据移动到 Data Lake Store。
@@ -135,6 +135,6 @@ ms.openlocfilehash: ec38012c15d1970a56881fa64d8655b09487eae5
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

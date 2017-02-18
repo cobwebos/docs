@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 03/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 1a22ff8eff2a9b0f09b6209160ad5e44ff32358c
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: a43eca9878881731f54dc1ec3bc8a9cd15bf2c5e
 
 
 ---
@@ -37,7 +37,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 ### <a name="dependency-tracking"></a>依赖项跟踪
 [依赖项跟踪](app-insights-asp-net-dependencies.md)收集有关应用对数据库以及外部服务和数据库的调用的遥测数据。 若要允许在 IIS 服务器中使用此模块，需要[安装状态监视器][redfield]。 若要在 Azure Web 应用或 VM 中使用此模块，请[选择 Application Insights 扩展](app-insights-azure-web-apps.md)。
 
-还可以使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) 编写自己的依赖项跟踪代码。
+还可以使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) 编写自己的依赖项跟踪代码。
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet 包。
@@ -264,6 +264,6 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

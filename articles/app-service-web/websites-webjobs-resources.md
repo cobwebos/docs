@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 64e2ed7a625aec59f68411d93a5942a546919abb
+ms.sourcegitcommit: 80627139ee253bb6a01241e460781519dac69e71
+ms.openlocfilehash: a8541d5bd5e5becb25e8460b6ca774ec6637563a
 
 
 ---
@@ -42,7 +42,6 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 * [如何通过 WebJobs SDK 使用 Azure Blob 存储](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 * [如何通过 WebJobs SDK 使用 Azure 表存储](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
 * [如何通过 WebJobs SDK 使用 Azure 服务总线](websites-dotnet-webjobs-sdk-service-bus.md)
-* [如何将 WebHooks 与 WebJobs SDK 配合使用，并提供 GitHub、IFTTT 和 HTTP 的示例](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/WebHooks-Walkthrough)
 * [Azure WebJobs SDK 快速参考（PDF 下载）](http://go.microsoft.com/fwlink/?LinkID=524028&clcid=0x409)
 * [GitHub 中的 WebJobs 设置文档](https://github.com/projectkudu/kudu/wiki/Web-jobs)。
 * 视频
@@ -137,6 +136,6 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/03/2017
+ms.date: 01/31/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 87755571f560f0b41baabac0dc2c437b2738e75f
-ms.openlocfilehash: e5f0bdeaf1c29e9f8fc844d4c3d85b1f2595d03b
+ms.sourcegitcommit: 8d370f98a4ef2501afc692af8a19a0625f54b678
+ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
 
 
 ---
@@ -115,10 +115,10 @@ ms.openlocfilehash: e5f0bdeaf1c29e9f8fc844d4c3d85b1f2595d03b
 
 ## <a name="view-and-analyze-logs"></a>查看和分析日志
 
-若要了解如何查看活动日志数据，请阅读 [Azure 活动日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 若要了解如何查看诊断日志数据，请阅读 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 如果将诊断数据发送到 Log Analytics，可以使用 [Azure 网络分析](../log-analytics/log-analytics-azure-networking-analytics.md#use-azure-networking-analytics)（预览版）解决方案获得增强的见解。 
+若要了解如何查看活动日志数据，请阅读 [Azure 活动日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 若要了解如何查看诊断日志数据，请阅读 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 如果将诊断数据发送到 Log Analytics，可以使用 [Azure 网络安全组分析](../log-analytics/log-analytics-azure-networking-analytics.md)（预览版）管理解决方案获得增强的见解。 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

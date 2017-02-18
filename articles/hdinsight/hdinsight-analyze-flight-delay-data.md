@@ -12,21 +12,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fc79b8017f2184091f2473a0ff9cdfbd0a4cbdf8
-ms.openlocfilehash: 8b5a608775582753b0bcc2fe0117edf51a37c238
+ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
+ms.openlocfilehash: d8ea4fb54db5c114aa886a6267b18eba6563d231
 
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
 Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
 
-> [!NOTE]
-> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
+> [!IMPORTANT]
+> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
 
-Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsight 将 Azure Blob 存储用于数据存储。 典型的作业包含 3 部分：
+Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsight 将 Azure Blob 存储用于数据存储。 典型的作业包含&3; 部分：
 
 1. **将数据存储在 Azure Blob 存储中。**  例如，将天气数据、传感器数据、Web 日志以及此示例中的航班延误数据保存到 Azure Blob 存储中。
 2. **运行作业。** 该处理数据时，你可以运行 Windows PowerShell 脚本（或客户端应用程序）以创建 HDInsight 群集、运行作业，然后删除该群集。 作业将输出数据保存到 Azure Blob 存储。 甚至在删除该群集后，输出数据也会保留。 这样，你仅为已使用的内容付费。
@@ -262,7 +262,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
     </table>
 3. 单击“下载”。
 4. 将文件解压缩到 **C:\Tutorials\FlightDelay\2013Data** 文件夹。 每个文件均为 CSV 文件且大小约为 60GB。
-5. 将文件重命名为其包含的数据所对应的月份的名称。 例如，将包含 1 月份数据的文件命名为 *January.csv*。
+5. 将文件重命名为其包含的数据所对应的月份的名称。 例如，将包含&1; 月份数据的文件命名为 *January.csv*。
 6. 重复步骤 2 和步骤 5 为 2013 年中的 12 个月分别下载一个对应的文件。 完成本教程到少要有一个文件。
 
 **将航班延迟数据上传到 Azure Blob 存储**
@@ -747,6 +747,6 @@ HiveQL 脚本将执行以下操作：
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

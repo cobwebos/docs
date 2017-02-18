@@ -1,5 +1,5 @@
 ---
-title: "开始使用 Azure 流分析处理来自 IoT 设备的数据 | Microsoft Docs"
+title: "IoT 实时数据流和 Azure 流分析 | Microsoft 文档"
 description: "带流分析和实时数据处理的 IoT 传感器标记和数据流"
 keywords: "iot 解决方案, iot 入门"
 services: stream-analytics
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/19/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b4a725d55594885a5d9d4a62b4bf5fe6fd402849
+ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
+ms.openlocfilehash: 9624405d8bc454e886e8011c1cb4920fdf7e0640
 
 
 ---
@@ -122,6 +122,6 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

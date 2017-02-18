@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 710663e122bdebff575c762a501a0d261056e1bc
+ms.sourcegitcommit: 80e2ac4235492d727e2034f37f9a85eb2873625c
+ms.openlocfilehash: f479ae38e446c3404592901c416990ab6e39126b
 
 
 ---
@@ -81,7 +81,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>示例 2
-我在应用程序中使用 [TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) 报告名为“salesPerHour”的指标。 如果“salesPerHour”低于 100（平均值超出 24 小时），会向我的同事发送电子邮件。
+我在应用程序中使用 [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) 报告名为“salesPerHour”的指标。 如果“salesPerHour”低于 100（平均值超出 24 小时），会向我的同事发送电子邮件。
 
     Add-AlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -108,19 +108,19 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 | `clientPerformance.total.value` |浏览器页面加载时间 |从用户请求一直到 DOM、样式表、脚本和映像加载完之间的时间。 |
 | `performanceCounter.available_bytes.value` |可用内存 |可立即供进程或系统使用的物理内存。 |
 | `performanceCounter.io_data_bytes_per_sec.value` |进程 IO 率 |每秒读取和写入文件、网络和设备的总字节数。 |
-| `performanceCounter.number_of_exceps_thrown_per_sec` |异常率 |每秒引发的异常。 |
+| `performanceCounter.number_of_exceps_thrown_per_sec.value` |异常率 |每秒引发的异常。 |
 | `performanceCounter.percentage_processor_time.value` |进程 CPU |由处理器使用所有进程线程针对应用程序进程执行指令所花费的时间百分比。 |
 | `performanceCounter.percentage_processor_total.value` |处理器时间 |处理器在非空闲线程上所花费的时间百分比。 |
 | `performanceCounter.process_private_bytes.value` |进程专用字节 |以独占方式分配给受监视应用程序进程的内存。 |
 | `performanceCounter.request_execution_time.value` |ASP.NET 请求执行时间 |最近的请求执行时间。 |
 | `performanceCounter.requests_in_application_queue.value` |执行队列中的 ASP.NET 请求 |应用程序请求队列的长度。 |
-| `performanceCounter.requests_per_sec` |ASP.NET 请求速率 |每秒从 ASP.NET 发出的应用程序所有请求的速率。 |
+| `performanceCounter.requests_per_sec.value` |ASP.NET 请求速率 |每秒从 ASP.NET 发出的应用程序所有请求的速率。 |
 | `remoteDependencyFailed.durationMetric.count` |依赖项失败次数 |服务器应用程序对外部资源所进行的失效调用的计数。 |
 | `request.duration` |服务器响应时间 |从接收 HTTP 请求到完成响应发送之间的时间。 |
 | `request.rate` |请求速率 |每秒应用程序所有请求的速率。 |
 | `requestFailed.count` |失败的请求 |响应代码中生成的 HTTP 请求计数 >= 400 |
 | `view.count` |页面视图 |网页的客户端用户请求的计数。 综合流量已筛选掉。 |
-| {你的自定义指标名称} |{你的指标名称} |由 [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) 报告或者[跟踪调用的测量参数](app-insights-api-custom-events-metrics.md#properties)中的指标值。 |
+| {你的自定义指标名称} |{你的指标名称} |由 [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) 报告或者[跟踪调用的测量参数](app-insights-api-custom-events-metrics.md#properties)中的指标值。 |
 
 指标由不同的遥测模块发送：
 
@@ -142,6 +142,6 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

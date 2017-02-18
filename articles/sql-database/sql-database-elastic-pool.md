@@ -4,26 +4,26 @@ description: "可通过使用池管理成百上千个数据库 可通过池分�
 keywords: "弹性池,sql 数据库"
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: ddove
 manager: jhubbard
 editor: 
 ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 01/11/2017
-ms.author: CarlRabeler
+ms.date: 02/01/2017
+ms.author: ddove
 ms.workload: data-management
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2681dd3792a351fecc0c72eb7fe546113a451d24
-ms.openlocfilehash: 412c3f9c34e399ecdffd939b5b72e687a847b8e1
+ms.sourcegitcommit: 65b7e72d2cf0afd57aebd2e5938b540b2a2b4f20
+ms.openlocfilehash: a38e1bf40bde45d0122e07b50c748d57757635a5
 
 
 ---
-# <a name="what-is-an-azure-elastic-pool"></a>What is an Azure elastic pool?（什么是 Azure 弹性池？）
-SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。
+# <a name="what-is-an-azure-sql-elastic-pool"></a>什么是 Azure SQL 弹性池？
+SQL 弹性池是一组数目固定的 eDTU，价格固定，位于 Azure 逻辑服务器上，在该服务器上的数据库池中共享。 SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。
 
 > [!NOTE]
 > 弹性池在所有 Azure 区域中均已正式发布 (GA)，但印度西部除外，这些区域当前仅发布了预览版。  将尽快在此区域中正式发布弹性池。
@@ -106,6 +106,6 @@ SQL DB 弹性池是一种简单的低成本高效益的解决方案，用于管�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

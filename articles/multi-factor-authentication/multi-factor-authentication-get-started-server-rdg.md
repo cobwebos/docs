@@ -1,22 +1,22 @@
 ---
-title: "使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器"
+title: "RDG 和 Azure MFA 服务器（使用 RADIUS）| Microsoft 文档"
 description: "本 Azure Multi-Factor Authentication 页面将会帮助你部署使用 RADIUS 的远程桌面 (RD) 网关和 Azure Multi-Factor Authentication 服务器。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtand
+editor: yossib
 ms.assetid: f2354ac4-a3a7-48e5-a86d-84a9e5682b42
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3b14925f41138904aa10a172f83dffa3c6662700
+ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
+ms.openlocfilehash: 4b117f03a8f769cbd2ecf1fca2653e8c343b6aa0
 
 
 ---
@@ -37,7 +37,7 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication
 4. 复制此策略以创建一个新策略。 在新策略中添加一个条件，使客户端友好名称与上面的步骤 2 中为 Azure Multi-Factor Authentication 服务器 RADIUS 客户端设置的友好名称匹配。 将“身份验证提供程序”更改为“本地计算机”。 此策略可确保从 Azure Multi-Factor Authentication 服务器接收 RADIUS 请求时，身份验证在本地进行，而不是将 RADIUS 请求发送回 Azure Multi-Factor Authentication 服务器，后者会导致循环情况。 为了防止循环情况，必须将此新策略的顺序排列在转发到 Multi-Factor Authentication 服务器的原始策略之前。
 
 ## <a name="configure-azure-multi-factor-authentication"></a>配置 Azure Multi-Factor Authentication
-- - -
+
 将 Azure Multi-Factor Authentication 服务器配置为 RD 网关与 NPS 之间的 RADIUS 代理。  应将 Azure Multi-Factor Authentication 服务器安装在不同于 RD 网关服务器的已加入域的服务器上。 使用以下过程可配置 Azure Multi-Factor Authentication 服务器。
 
 1. 打开 Azure Multi-Factor Authentication 服务器，并单击“RADIUS 身份验证”图标。 选中“启用 RADIUS 身份验证”复选框。
@@ -47,9 +47,14 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication
 
 ![Radius 身份验证](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
+## <a name="next-steps"></a>后续步骤
+
+- 集成 Azure MFA 和 [IIS Web 应用](multi-factor-authentication-get-started-server-iis.md)
+
+- 在 [Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)中获取答案
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

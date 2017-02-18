@@ -1,6 +1,6 @@
 ---
 title: "使用路由处理 Azure IoT 中心设备到云消息 (.Net) | Microsoft Docs"
-description: "如何使用路由将消息发送到其他后端服务，从而处理 IoT 中心设备到云消息。"
+description: "如何使用路由规则和自定义终结点将消息发送到其他后端服务，从而处理 IoT 中心的设备到云消息。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: d2da282a849496772fe57b9429fe2a180f37328d
-ms.openlocfilehash: 1ca480c4be2cca2c2558b13d2c3a5e5dea8b561e
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 88b75c2b222ee153c935898dbece0c366c7f198d
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 1ca480c4be2cca2c2558b13d2c3a5e5dea8b561e
 ## <a name="introduction"></a>介绍
 Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一个解决方案后端之间实现安全可靠的双向通信。 其他教程（[IoT 中心入门]和[使用 IoT 中心发送“云到设备”消息][lnk-c2d]）介绍了如何使用 IoT 中心的“设备到云”和“云到设备”的基本消息传递功能。
 
-本教程以 [IoT 中心入门]教程中所示的代码为基础，说明如何以基于配置的轻松方式，使用消息路由发送设备到云消息。 本教程介绍如何隔离需要解决方案后端立即执行操作以进行进一步处理的消息。 例如，设备可能将发送一条警报消息，触发在 CRM 系统中插入票证。 与此相反，数据点消息仅送入分析引擎。 例如，设备中存储便于日后分析的温度遥测是数据点消息。
+本教程以 [IoT 中心入门]教程为基础，说明如何以基于配置的轻松方式，使用路由规则发送设备到云消息。 本教程介绍如何隔离需要解决方案后端立即执行操作以进行进一步处理的消息。 例如，设备可能将发送一条警报消息，触发在 CRM 系统中插入票证。 与此相反，数据点消息仅送入分析引擎。 例如，设备中存储便于日后分析的温度遥测是数据点消息。
 
 在本教程结束时，会运行三个 .NET 控制台应用：
 
@@ -50,61 +50,63 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 ## <a name="send-interactive-messages-from-a-simulated-device-app"></a>从模拟设备应用发送交互式消息
 在本部分中，会修改 [IoT 中心入门]教程中创建的模拟设备应用，不定期发送需要立即处理的消息。
 
-- 在 Visual Studio 的 **SimulatedDevice** 项目中，将 `SendDeviceToCloudMessagesAsync` 方法替换为以下代码。
-   
-    ```
-    private static async void SendDeviceToCloudMessagesAsync()
+在 Visual Studio 的 **SimulatedDevice** 项目中，将 `SendDeviceToCloudMessagesAsync` 方法替换为以下代码：
+
+```
+private static async void SendDeviceToCloudMessagesAsync()
+    {
+        double avgWindSpeed = 10; // m/s
+        Random rand = new Random();
+
+        while (true)
         {
-            double avgWindSpeed = 10; // m/s
-            Random rand = new Random();
+            double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
 
-            while (true)
+            var telemetryDataPoint = new
             {
-                double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
+                deviceId = "myFirstDevice",
+                windSpeed = currentWindSpeed
+            };
+            var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+            string levelValue;
 
-                var telemetryDataPoint = new
-                {
-                    deviceId = "myFirstDevice",
-                    windSpeed = currentWindSpeed
-                };
-                var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
-                string levelValue;
-
-                if (rand.NextDouble() > 0.7)
-                {
-                    messageString = "This is a critical message";
-                    levelValue = "critical";
-                }
-                else
-                {
-                    levelValue = "normal";
-                }
-                
-                var message = new Message(Encoding.ASCII.GetBytes(messageString));
-                message.Properties.Add("level", levelValue);
-                
-                await deviceClient.SendEventAsync(message);
-                Console.WriteLine("{0} > Sent message: {1}", DateTime.Now, messageString);
-
-                await Task.Delay(1000);
+            if (rand.NextDouble() > 0.7)
+            {
+                messageString = "This is a critical message";
+                levelValue = "critical";
             }
-        }
-    ```
-   
-     这会将 `"level": "critical"` 属性随机添加到设备发送的消息，该设备可模拟需要解决方案后端立即执行操作的消息。 设备应用会在消息属性中（而非在消息正文中）传递此信息，以便 IoT 中心能够将消息路由到适当的消息目标。
+            else
+            {
+                levelValue = "normal";
+            }
+            
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+            message.Properties.Add("level", levelValue);
+            
+            await deviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sent message: {1}", DateTime.Now, messageString);
 
-   > [!NOTE]
-   > 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。
-   > 
-   > 
-   
-   > [!NOTE]
-   > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按 MSDN 文章 [Transient Fault Handling]（暂时性故障处理）中建议来实施重试策略（如指数退让）。
-   > 
-   > 
+            await Task.Delay(1000);
+        }
+    }
+```
+
+此方法会将 `"level": "critical"` 属性随机添加到设备发送的消息，可模拟需要解决方案后端立即执行操作的消息。 设备应用会在消息属性中（而非在消息正文中）传递此信息，以便 IoT 中心能够将消息路由到适当的消息目标。
+
+> [!NOTE]
+> 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。
+
+> [!NOTE]
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按 MSDN 文章 [Transient Fault Handling]（暂时性故障处理）中建议来实施重试策略（如指数退让）。
 
 ## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>向 IoT 中心添加一个队列并向其路由消息
-在本部分中，将创建一个服务总线队列并将其连接到 IoT 中心，还会配置 IoT 中心，根据消息上的现有属性发送消息到队列。 若要深入了解如何处理来自服务总线队列的消息，请参阅[队列入门][Service Bus queue]教程。
+本部分的操作：
+
+* 创建服务总线队列。
+* 将其连接到 IoT 中心。
+* 配置 IoT 中心，根据所存在的消息属性将消息发送到队列。
+
+若要深入了解如何处理来自服务总线队列的消息，请参阅[队列入门][Service Bus queue]教程。
 
 1. 按[队列入门][Service Bus queue]中所述，创建服务总线队列。 队列必须与 IoT 中心位于同一订阅和区域中。 记下命名空间和队列名称。
 
@@ -116,11 +118,11 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
     
     ![添加终结点][31]
     
-4. 现在单击 IoT 中心的“路由”。 单击边栏选项卡顶部的“添加”，创建将消息路由到刚添加的队列的规则。 选择“DeviceTelemetry”作为数据源。 输入 `level="critical"` 作为条件，然后选择刚添加为终结点的队列作为路由终结点。 完成后，单击底部的“**保存**”。
+4. 现在单击 IoT 中心的“路由”。 单击边栏选项卡顶部的“添加”，创建将消息路由到刚添加的队列的路由规则。 选择“DeviceTelemetry”作为数据源。 输入 `level="critical"` 作为条件，然后选择刚添加为自定义终结点的队列作为路由规则终结点。 完成后，单击底部的“**保存**”。
     
     ![添加路由][32]
     
-    请确保回退路由设为“开”。 这是 IoT 中心的默认配置。
+    请确保回退路由设为“开”。 此值是 IoT 中心的默认配置。
     
     ![回退路由][33]
 
@@ -226,6 +228,6 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个设备和一�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

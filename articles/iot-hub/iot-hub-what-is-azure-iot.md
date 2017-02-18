@@ -1,5 +1,5 @@
 ---
-title: "面向物联网的 Azure 解决方案 | Microsoft Docs"
+title: "面向物联网的 Azure 解决方案（IoT 套件）| Microsoft 文档"
 description: "示例 IoT 解决方案体系结构的概述，以及它如何与设备、Azure IoT 中心服务、Azure IoT 设备 SDK、Azure IoT 服务 SDK 和其他 Azure 服务相关。"
 services: iot-hub
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 36e4afb54485c12b39349124e241a2d74617702c
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: e95d02e706b87eaa355951a34bbaa3abf2ac2370
 
 
 ---
@@ -49,6 +49,6 @@ Azure IoT 中心是一项 Azure 服务，可在一个解决方案后端和数百
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

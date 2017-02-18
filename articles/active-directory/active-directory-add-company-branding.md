@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
 
 
 ---
@@ -31,8 +31,8 @@ ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 > [!NOTE]
 > * 只有在升级到 Azure Active Directory 高级或基本版（或者成为 Office 365 用户）后，才可以使用公司品牌这一功能。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 > * 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。 由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。 有关详细信息，请在 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
-> 
-> 
+>
+>
 
 ## <a name="customizing-the-sign-in-page"></a>自定义登录页
 通常，如果你需要通过浏览器访问组织订阅的云应用和服务，可以使用登录页。
@@ -46,8 +46,8 @@ ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 > [!NOTE]
 > * 在已配置品牌的 Azure 经典门户的“Active Directory” > “目录” > “域”部分中，你的域名必须显示为“活动”。
 > * 登录页品牌不会带到 Microsoft 的使用者登录页。 如果你使用个人 Microsoft 帐户登录，则可以看到 Azure AD 呈现的经过品牌打造的用户磁贴列表，但你组织的品牌将不会应用于 Microsoft 帐户登录页。
-> 
-> 
+>
+>
 
 如果你要在此页上显示你公司的品牌、颜色和其他可自定义元素，请参阅下图以了解两种体验之间的差异。
 
@@ -91,8 +91,8 @@ ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 
 > [!NOTE]
 > 所有元素都是可选的。 例如，如果你指定了横幅徽标，但没有指定大图，则登录页将显示你的徽标和目标站点的插图（即 Office 365 加利福尼亚州高速公路图像）。
-> 
-> 
+>
+>
 
 在登录页中，“使我保持登录状态”复选框允许用户在关闭和重新打开浏览器时保持登录状态。 它不会影响会话生存期。 可以隐藏 Azure Active Directory 登录页上的此复选框。
 
@@ -100,12 +100,12 @@ ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 
 ![][9]
 
-若要隐藏复选框，可将此设置配置为“隐藏”。 
+若要隐藏复选框，可将此设置配置为“隐藏”。
 
 > [!NOTE]
 > SharePoint Online 和 Office 2010 的某些功能取决于用户能否勾选此框。 如果将此设置配置为“隐藏”，用户可能会在登录时看到其他意外的提示。
-> 
-> 
+>
+>
 
 你还可以本地化此页上的所有元素。 在配置“默认”的一组自定义元素后，便可以针对不同的区域设置配置其他版本。 你还可以混搭各种元素。 例如，你可以：
 
@@ -163,15 +163,15 @@ ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 4. 单击“自定义品牌”。
 5. 在“自定义品牌”页上，选择“编辑现有品牌设置”，然后转到下一页。
 6. 根据要删除哪些元素，执行以下一项或多项操作：
-   
+
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“横幅徽标”下，选择“删除上载的徽标”。
-   
+
     b.保留“数据库类型”设置，即设置为“共享”。 在“磁贴徽标”下，选择“删除上载的徽标”。
-   
+
     c. 删除所有文本框中的文本。
-   
+
     d.单击“下一步”。 单击“下一步”。
-   
+
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 删除所有文本框中的文本。
 7. 单击“保存”按钮以删除这些元素。
 8. 如有必要，请再次单击“自定义品牌”，然后对需要删除的所有特定于语言的品牌重复这些步骤。
@@ -224,6 +224,6 @@ Azure AD 中的某些可自定义的元素具有多个用例。 只需为每个�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

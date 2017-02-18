@@ -1,6 +1,6 @@
 ---
-title: "在 HDInsight 上使用 Apache Spark 生成机器学习应用程序 | Microsoft Docs"
-description: "逐步说明如何使用 Apache Spark 随附的笔记本生成计算机学习应用程序"
+title: "使用 Spark 中的 MLlib 库在 Azure HDInsight 上生成机器学习应用程序 | Microsoft Docs"
+description: "分步说明如何使用 Apache Spark 中的 MLlib 库生成机器学习应用程序"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/07/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 4c07f5857a2dff149faaa0086eb8c54ee291d7bc
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: d39f9b4f55f93745afea48a4b581d76e57a824c3
 
 
 ---
-# <a name="machine-learning-predictive-analysis-on-food-inspection-data-using-mllib-with-apache-spark-cluster-on-hdinsight-linux"></a>机器学习：在 HDInsight Linux 上配合使用 MLlib 和 Apache Spark 群集对食品检测数据进行预测分析
+# <a name="machine-learning-predictive-analysis-on-food-inspection-data-using-mllib-with-apache-spark-cluster-on-hdinsight"></a>机器学习：在 HDInsight 上配合使用 MLlib 和 Apache Spark 群集对食品检测数据进行预测分析
+
 > [!TIP]
 > 本教程也适用于在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你笔记本本身运行 Python 代码段。 若要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，然后运行 **Python** 文件夹中的笔记本“机器学习：使用 MLLib.ipynb 对食品检测数据进行预测分析”。
 >
@@ -62,10 +63,10 @@ ms.openlocfilehash: 4c07f5857a2dff149faaa0086eb8c54ee291d7bc
    >
 1. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
 
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
 1. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
 
-    ![提供笔记本的名称](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
+    ![提供笔记本的名称](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
 1. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 可以通过导入此方案需要的类型来创建机器学习应用程序。 为此，请将光标放在单元格中，然后按“SHIFT+ENTER”。
 
         from pyspark.ml import Pipeline
@@ -176,11 +177,11 @@ ms.openlocfilehash: 4c07f5857a2dff149faaa0086eb8c54ee291d7bc
 
     后接 `-o countResultsdf` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](http://pandas.pydata.org/) 数据帧进行保存，指定名称为 **countResultsdf**。
 
-    你应该看到如下输出：
+    应该会显示如下输出：
 
-    ![SQL 查询输出](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/query.output.png "SQL query output")
+    ![SQL 查询输出](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/query.output.png "SQL 查询输出")
 
-    有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
+    有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
 1. 也可以使用 Matplotlib（用于构造数据可视化的库）创建绘图。 因为必须从本地保存的 **countResultsdf** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
 
         %%local
@@ -361,6 +362,6 @@ MLLib 提供了一种简单方法来执行此操作。 首先，“标记”每�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

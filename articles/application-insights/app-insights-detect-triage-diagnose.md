@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: c63bad2cbf362e10b1fd901d6c22fa25524afbac
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: 1af63c31a8cb7995f64813c12d32b283745c04ed
 
 
 ---
@@ -69,7 +69,7 @@ Marcela Markova 是 OBS 团队的高级开发人员，负责监视联机性能�
 
 浏览器页面加载时间派生自直接从网页发送的遥测。 服务器响应时间、服务器请求计数和失败的请求计数均在 Web 服务器中测量，并从该处发送到 Application Insights。
 
-Marcela 有点担心服务器响应图，该图显示服务器从用户浏览器接收 HTTP 请求到它返回响应的平均时间。 在此图表中可经常看到变体，因为系统负载各不相同。 但在这种情况下，请求计数小幅提升和响应时间大幅提升之间看起来有关联。 这可能指示系统运行已达上限。 
+Marcela 有点担心服务器响应图，该图显示服务器从用户浏览器接收 HTTP 请求到它返回响应的平均时间。 在此图表中可经常看到变体，因为系统负载各不相同。 但在这种情况下，请求计数小幅提升和响应时间大幅提升之间看起来有关联。 这可能指示系统运行已达上限。
 
 她打开“服务器”表格：
 
@@ -91,7 +91,7 @@ Marcela 有点担心服务器响应图，该图显示服务器从用户浏览器
 
 失败的请求是指用户看到了错误，通常是在代码引发异常后出现。 他们可能会在屏幕上看到一条消息，显示“抱歉，我们目前无法更新详细信息”，或者在绝对尴尬也最糟糕的情况下会看到堆栈转储，这还是 Web 服务器出于好意才这样做。
 
-这条警报令她大为惊讶 ，因为上一次看到时，失败的请求计数还比较低，让人不用担心。 忙碌的服务器是会有少数失败。 
+这条警报令她大为惊讶 ，因为上一次看到时，失败的请求计数还比较低，让人不用担心。 忙碌的服务器是会有少数失败。
 
 这对她而言也是一点惊喜，因为她不用配置此警报。 事实上，Application Insights 原本已经随附了智能检测。 它自动适应应用的常见失败模式，并“习惯”特定页面上、高负载情况下或与其他指标有关的失败。 它仅在计数超出预期时引发警报。
 
@@ -101,16 +101,16 @@ Marcela 有点担心服务器响应图，该图显示服务器从用户浏览器
 
 它显示受影响的客户数以及相应网页和操作。 Marcela 可以决定是否要让整个团队处理这项事务，以作为一次演练，或者是否在下周前都可以忽略它。
 
-该电子邮件还显示发生了特殊异常，并且更有趣的是，该失败与调用特定数据库失败有关。 这解释了突然显示错误的原因，即使 Marcela 的团队最近没有部署任何更新。 
+该电子邮件还显示发生了特殊异常，并且更有趣的是，该失败与调用特定数据库失败有关。 这解释了突然显示错误的原因，即使 Marcela 的团队最近没有部署任何更新。
 
 她选择了数据库团队的领导。 没错，他们在半小时前发布了修补程序，嗯，可能更改了一点架构....
 
-于是，问题即将解决，这甚至赶在调查日志之前，并且在引发后 15 分钟内解决。 但 Marcela 单击链接，打开了 Application Insights。 它直接打开到失败的请求，她可以在依赖项调用的关联列表中看到失败的数据库调用。 
+于是，问题即将解决，这甚至赶在调查日志之前，并且在引发后 15 分钟内解决。 但 Marcela 单击链接，打开了 Application Insights。 它直接打开到失败的请求，她可以在依赖项调用的关联列表中看到失败的数据库调用。
 
 ![失败的请求](./media/app-insights-detect-triage-diagnose/23.png)
 
 ## <a name="detecting-exceptions"></a>检测异常
-稍作设置，[异常](app-insights-asp-net-exceptions.md)将自动报告到 Application Insights。 通过将 [TrackException()](app-insights-api-custom-events-metrics.md#track-exception) 调用插入以下代码，还可以显式捕获它们：  
+稍作设置，[异常](app-insights-asp-net-exceptions.md)将自动报告到 Application Insights。 通过将 [TrackException()](app-insights-api-custom-events-metrics.md#trackexception) 调用插入以下代码，还可以显式捕获它们：  
 
     var telemetry = new TelemetryClient();
     ...
@@ -231,10 +231,6 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

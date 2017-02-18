@@ -1,5 +1,5 @@
 ---
-title: "加密 Linux VM 中的磁盘 | Microsoft Docs"
+title: "加密 Azure 中 Linux VM 上的磁盘 | Microsoft 文档"
 description: "如何使用 Azure CLI 和 Resource Manager 部署模型加密 Linux VM 中的磁盘"
 services: virtual-machines-linux
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/11/2016
+ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5dd20630580f09049c88ffd9107f7fa8e8e43816
-ms.openlocfilehash: 15b3c7c910f5f55da31a8a7113b4d66714f1c908
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 97dd91986751031daef24fc806adc7021b2f94fc
 
 
 ---
@@ -91,7 +91,7 @@ azure keyvault key show myKeyVault myKey
 按如下所示加密磁盘，在整个过程中请输入自己的参数名称：
 
 ```azurecli
-azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM \
+azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --aad-client-id myApplicationID --aad-client-secret myApplicationPassword \
   --disk-encryption-key-vault-url myKeyVaultVaultURI \
   --disk-encryption-key-vault-id myKeyVaultID \
@@ -103,7 +103,7 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM 
 在加密过程中，Azure CLI 不提供详细错误。 有关其他故障排除信息，请查看 `/var/log/azure/Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux/0.x.x.x/extension.log`。 由于上述命令包含许多变量，读者可能不太明白为何进程会失败，为此，我们提供了如下所示的完整命令示例：
 
 ```azurecli
-azure vm enable-disk-encryption -g myResourceGroup -n MyVM \
+azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --aad-client-id 147bc426-595d-4bad-b267-58a7cbd8e0b6 \
   --aad-client-secret P@ssw0rd! \
   --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \ 
@@ -250,7 +250,7 @@ azure keyvault key show myKeyVault myKey
 按如下所示，使用 `azure keyvault show` 和 `azure keyvault key show` 命令的输出加密虚拟磁盘：
 
 ```azurecli
-azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM \
+azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --aad-client-id myApplicationID --aad-client-secret myApplicationPassword \
   --disk-encryption-key-vault-url myKeyVaultVaultURI \
   --disk-encryption-key-vault-id myKeyVaultID \
@@ -262,7 +262,7 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM 
 由于上述命令包含许多变量，下面提供了一个完整的命令示例供参考：
 
 ```azurecli
-azure vm enable-disk-encryption -g myResourceGroup -n MyVM \
+azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --aad-client-id 147bc426-595d-4bad-b267-58a7cbd8e0b6 \
   --aad-client-secret P@ssw0rd! \
   --disk-encryption-key-vault-url https://myKeyVault.vault.azure.net/ \ 
@@ -294,7 +294,7 @@ azure vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
 重新运行上述命令来加密虚拟磁盘，不过这次请添加 `--sequence-version` 参数，以便递增第一次运行中使用的值，如下所示：
 
 ```azurecli
-azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM \
+azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --aad-client-id myApplicationID --aad-client-secret myApplicationPassword \
   --disk-encryption-key-vault-url myKeyVaultVaultURI \
   --disk-encryption-key-vault-id myKeyVaultID \
@@ -312,6 +312,6 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --vm-name myVM 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

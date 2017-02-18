@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 02/03/2017
 ms.author: meetb
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 162c89b07a0bc690600f0cc59e3f4c70e02eac91
+ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
+ms.openlocfilehash: e1c3e7e0f6ca097e3ee41995defe5c1df666d39e
 
 
 ---
@@ -26,8 +26,8 @@ ms.openlocfilehash: 162c89b07a0bc690600f0cc59e3f4c70e02eac91
 
 本主题演示了如何从 Windows 运行的、以 PHP 编写的客户端应用程序连接到 Azure SQL 数据库。
 
-## <a name="step-1-configure-development-environment"></a>步骤 1：配置开发环境
-[配置用于 PHP 开发的开发环境](https://msdn.microsoft.com/library/mt720663.aspx)
+## <a name="step-1--configure-development-environment"></a>步骤 1：配置开发环境
+[配置用于 PHP 开发的开发环境](https://docs.microsoft.com/sql/connect/php/step-1-configure-development-environment-for-php-development/)
 
 ## <a name="step-2-create-a-sql-database"></a>步骤 2：创建 SQL 数据库
 请参阅[入门页](sql-database-get-started.md)，以了解如何创建示例数据库。  必须根据指南创建 **AdventureWorks** 数据库模板。 下面所示的示例只适用于 **AdventureWorks 架构**。
@@ -36,12 +36,12 @@ ms.openlocfilehash: 162c89b07a0bc690600f0cc59e3f4c70e02eac91
 [!INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 ## <a name="step-4-run-sample-code"></a>步骤 4：运行示例代码
-* [使用 PHP 连接到 SQL 以进行概念认证](https://msdn.microsoft.com/library/mt720665.aspx)
-* [使用 PHP 弹性连接到 SQL](https://msdn.microsoft.com/library/mt720667.aspx)
+* [使用 PHP 连接到 SQL 以进行概念认证](https://docs.microsoft.com/sql/connect/php/step-3-proof-of-concept-connecting-to-sql-using-php/)
+* [使用 PHP 弹性连接到 SQL](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php/)
 
 ## <a name="next-steps"></a>后续步骤
 * 参阅 [SQL 数据库开发概述](sql-database-develop-overview.md)
-* 有关 [Microsoft PHP Driver for SQL Server](https://msdn.microsoft.com/library/dn865013.aspx) 的详细信息
+* 有关 [Microsoft PHP Driver for SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server/) 的详细信息
 * 有关 PHP 安装和用法的详细信息，请参阅使用 [PHP 访问 SQL Server 数据库](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx)。
 
 ## <a name="additional-resources"></a>其他资源
@@ -51,6 +51,6 @@ ms.openlocfilehash: 162c89b07a0bc690600f0cc59e3f4c70e02eac91
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

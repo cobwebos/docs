@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
+ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
+ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 2. 选择“Active Directory” ，然后选择组织目录的名称。
 3. 选择“用户”选项卡，然后在命令栏中选择“添加用户”。
 4. 在“告诉我们有关此用户的信息”页上的“用户类型”下，选择下列其中一项：
-   
+
    * **组织中的新用户** — 在目录中添加新的用户帐户。
    * **具有现有 Microsoft 帐户的用户** — 将现有 Microsoft 使用者帐户添加到你的目录（例如 Outlook 帐户）
 5. 根据“用户类型”输入用户名（适用于新用户）或电子邮件地址（适用于具有 Microsoft 帐户的用户）。
@@ -37,11 +37,11 @@ ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 
 > [!IMPORTANT]
 > 如果你所在的组织使用多个域，在添加用户帐户时你应知道以下问题：
-> 
-> * 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，**先**添加 geoffgrisso@contoso.onmicrosoft.com,，**再**添加 geoffgrisso@contoso.com.
-> * **不要**在添加 geoffgrisso@contoso.onmicrosoft.com. 之前添加 geoffgrisso@contoso.com。此顺序非常重要，事后想要撤消操作将很麻烦。
-> 
-> 
+>
+> * 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，**先**添加 geoffgrisso@contoso.onmicrosoft.com,，**再**添加 geoffgrisso@contoso.com。
+> * **不要**在添加 geoffgrisso@contoso.onmicrosoft.com 之前添加 geoffgrisso@contoso.com。 此顺序非常重要，事后想要撤消操作将很麻烦。
+>
+>
 
 ## <a name="change-user-information"></a>更改用户信息
 可以更改任何用户属性，但对象 ID 除外。
@@ -87,6 +87,6 @@ ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

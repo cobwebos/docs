@@ -1,5 +1,5 @@
 ---
-title: "Azure 容器服务简介 | Microsoft Docs"
+title: "Azure 云中的 Docker 容器群集 | Microsoft 文档"
 description: "Azure 容器服务提供了一种简化创建、配置和管理预配置来运行容器化应用程序的虚拟机群集的方法。"
 services: container-service
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 01/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: f8a2b63c381ceafb23b31697916796066ea549f9
-ms.openlocfilehash: d5652134cc2c660395cfb83a1a2727acf306f5e9
+ms.sourcegitcommit: cc3cc2dce324942f184b6a520dc4db28518a3091
+ms.openlocfilehash: 0521fbd689233c0f2359a10006e24c75c8997732
 
 
 ---
@@ -39,7 +39,7 @@ Azure 容器服务利用 Docker 容器格式，确保应用程序容器完全可
 Azure 容器服务旨在通过使用当今客户中热门的开源工具和技术提供容器托管环境。 为此，我们为用户所选的业务流程（DC/OS、Docker Swarm 或 Kubernetes）公开了标准 API 终结点。 通过使用这些终结点，可利用能够与这些终结点通信的任何软件。 例如，对于 Docker Swarm 终结点，可选择使用Docker 命令行接口 (CLI)。 对于 DC/OS，可以选择使用 DCOS CLI。 对于 Kubernetes，可以选择使用 kubectl。
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>通过 Azure 容器服务创建 Docker 群集
-若要开始使用 Azure 容器服务，可通过门户（搜索“Azure 容器服务”），使用 Azure Resource Manager 模板（[Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)、[DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) 或 [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)）或使用 [CLI](/documentation/articles/xplat-cli-install/) 部署 Azure 容器服务群集。 可修改提供的快速入门模板，包含其他或高级 Azure 配置。 有关部署 Azure 容器服务群集的详细信息，请参阅[部署 Azure 容器服务群集](container-service-deployment.md)。
+若要开始使用 Azure 容器服务，可通过门户（搜索“Azure 容器服务”），使用 Azure Resource Manager 模板（[Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)、[DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) 或 [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)）或使用 [CLI](/articles/xplat-cli-install.md) 部署 Azure 容器服务群集。 可修改提供的快速入门模板，包含其他或高级 Azure 配置。 有关部署 Azure 容器服务群集的详细信息，请参阅[部署 Azure 容器服务群集](container-service-deployment.md)。
 
 ## <a name="deploying-an-application"></a>部署应用程序
 Azure 容器服务针对业务流程提供了 Docker Swarm、DC/OS 或 Kubernetes 选项。 部署应用程序的方式取决于所选的业务流程。
@@ -92,7 +92,7 @@ Kubernetes 是一种常用的开源生产级容器业务流程工具，用于自
 * 服务发现和负载均衡
 * 机密和配置管理
 * 基于 API 的自动推出和回滚
-* 自我修复 
+* 自我修复
 * 及更多。
 
 
@@ -101,18 +101,17 @@ Kubernetes 是一种常用的开源生产级容器业务流程工具，用于自
 Azure 容器服务入门 (101)：  
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Container-Service-101/player]
-> 
-> 
+>
+>
 
 使用 Azure 容器服务生成应用程序 (Build 2016)
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2016/B822/player]
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

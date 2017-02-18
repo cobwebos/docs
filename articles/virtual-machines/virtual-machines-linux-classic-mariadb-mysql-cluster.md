@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
 translationtype: Human Translation
-ms.sourcegitcommit: 91090ad383d6a03e6d978376d8dd45dc05eac7e8
-ms.openlocfilehash: 504e810146d6787eac9be661a93c7a0ec2ff183f
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 72aed50d3dd86c5875d3b741a6fff16cb8f17a2d
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: 504e810146d6787eac9be661a93c7a0ec2ff183f
 ![系统体系结构](media/virtual-machines-linux-classic-mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> 本主题使用 [Azure CLI](../xplat-cli-install.md) 工具，因此请务必根据说明下载这些工具并其连接到 Azure 订阅。 如果需要有关 Azure CLI 中可用命令的参考，请参阅 [Azure CLI 命令参考](../virtual-machines-command-line-tools.md)。 还需要[创建用于身份验证的 SSH 密钥]，并记下 .pem 文件的位置。
+> 本主题使用 [Azure CLI](../xplat-cli-install.md) 工具，因此请务必根据说明下载这些工具并其连接到 Azure 订阅。 如果需要有关 Azure CLI 中可用命令的参考，请参阅 [Azure CLI 命令参考](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。 还需要[创建用于身份验证的 SSH 密钥]，并记下 .pem 文件的位置。
 >
 >
 
@@ -367,6 +367,6 @@ CLI 将负载均衡器探测间隔设置为 15 秒，这可能有点太长。 �
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

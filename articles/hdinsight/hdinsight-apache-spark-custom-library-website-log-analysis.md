@@ -1,5 +1,5 @@
 ---
-title: "将自定义库与 HDInsight Spark 群集配合使用以分析网站日志 | Microsoft Docs"
+title: "使用 Python 库分析 Azure Spark 群集中的网站日志 | Microsoft Docs"
 description: "将自定义库与 HDInsight Spark 群集配合使用以分析网站日志"
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: cb8b1aa0c7da7b7cacbbe89c0098e5f3d831b1c5
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: 382b4929f0587906bd7256380cae4eb641f108bb
 
 
 ---
-# <a name="analyze-website-logs-using-a-custom-library-with-apache-spark-cluster-on-hdinsight-linux"></a>将自定义库与 HDInsight Linux 上的 Apache Spark 群集配合使用来分析网站日志
+# <a name="analyze-website-logs-using-a-custom-library-with-apache-spark-cluster-on-hdinsight"></a>将自定义库与 HDInsight 上的 Apache Spark 群集配合使用来分析网站日志
+
 此笔记本演示如何将自定义库与 HDInsight 上的 Spark 配合使用来分析网站日志数据。 我们使用的自定义库是一个名为 **iislogparser.py** 的 Python 库。
 
 > [!TIP]
@@ -33,8 +34,9 @@ ms.openlocfilehash: cb8b1aa0c7da7b7cacbbe89c0098e5f3d831b1c5
 
 必须满足以下条件：
 
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="save-raw-data-as-an-rdd"></a>将原始数据另存为 RDD
 在本部分中，将使用与 HDInsight 中的 Apache Spark 群集关联的 [Jupyter](https://jupyter.org) 笔记本来运行用于处理原始示例数据并将其保存为 Hive 表的作业。 示例数据是所有群集在默认情况下均会提供的 .csv 文件 (hvac.csv)。
@@ -52,10 +54,10 @@ ms.openlocfilehash: cb8b1aa0c7da7b7cacbbe89c0098e5f3d831b1c5
    >
 3. 创建新的笔记本。 单击“新建”，然后单击“PySpark”。
 
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.createnotebook.png "创建新的 Jupyter 笔记本")
 4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
 
-    ![提供笔记本的名称](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
+    ![提供笔记本的名称](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
 5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 当你运行第一个代码单元格时，系统将自动为你创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
 
         from pyspark.sql import Row
@@ -181,11 +183,11 @@ ms.openlocfilehash: cb8b1aa0c7da7b7cacbbe89c0098e5f3d831b1c5
 
    后接 `-o averagetime` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](http://pandas.pydata.org/) 数据帧进行保存，指定名称为“averagetime”。
 
-   你应该看到如下输出：
+   应该会显示如下输出：
 
-   ![SQL 查询输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL query output")
+   ![SQL 查询输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL 查询输出")
 
-   有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-pyspark-or-spark-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
+   有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
 7. 现在可以使用 Matplotlib（用于构造数据可视化的库）来创建绘图。 因为必须从本地保存的 **averagetime** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
 
        %%local
@@ -196,9 +198,9 @@ ms.openlocfilehash: cb8b1aa0c7da7b7cacbbe89c0098e5f3d831b1c5
        plt.xlabel('Time (min)')
        plt.ylabel('Average time taken for request (ms)')
 
-   你应该看到如下输出：
+   应该会显示如下输出：
 
-   ![Matplotlib 输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdi-apache-spark-web-log-analysis-plot.png "Matplotlib output")
+   ![Matplotlib 输出](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdi-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这将会关闭笔记本。
 
 ## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>另请参阅
@@ -228,6 +230,6 @@ ms.openlocfilehash: cb8b1aa0c7da7b7cacbbe89c0098e5f3d831b1c5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

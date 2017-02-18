@@ -12,12 +12,12 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: iaas-sql-server
-ms.date: 09/21/2016
+ms.workload: infrastructure-services
+ms.date: 02/02/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 171566e8b1eccfafc78bd8b422189c977421592d
+ms.sourcegitcommit: 55a4b22c3bb097c688446a5ec22f60baecf44ffe
+ms.openlocfilehash: 0dea81ef42d9225ee3780ffd2ad67a37c8a4a2ed
 
 
 ---
@@ -46,14 +46,13 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
    > 如果你没有 Azure 帐户，请访问 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
    > 
    > 
-2. 在 Azure 门户中，单击“新建”。 该门户将打开“新建”边栏选项卡。 SQL Server VM 资源位于应用商店的“虚拟机”组中。
-3. 在“新建”边栏选项卡中，单击“虚拟机”。
-4. 若要查看所有可用的映像，请单击“虚拟机”边栏选项卡中的“查看全部”。
-   
-    ![Azure 虚拟机边栏选项卡](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade.png)
-5. 在“数据库服务器”下，单击“数据库服务器”。 可能需要向下滚动才能找到“数据库服务器”。 查看可用的 SQL Server 模板。
-   
-    ![虚拟机库 SQL 映像](./media/virtual-machines-windows-portal-sql-server-provision/virtual-machine-gallery-sql-server.png)
+2. 在 Azure 门户中，单击“新建”。 该门户将打开“新建”边栏选项卡。 SQL Server VM 资源位于应用商店的“计算”组中。
+3. 在“新建”边栏选项卡中，单击“计算”，然后单击“全部查看”。
+4. 在“筛选器”文本框中，键入 SQL Server，然后按 ENTER 键。
+
+   ![Azure 虚拟机边栏选项卡](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
+
+5. 查看可用的 SQL Server 模板。
 6. 每个模板均可标识 SQL Server 版本和操作系统。 从列表中选择这些映像之一。 然后查看详细信息边栏选项卡，了解虚拟机映像的说明。
    
    > [!NOTE]
@@ -82,7 +81,7 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 * 指定 VM 上本地管理员帐户的 **用户名** 。 此帐户还将被添加到 SQL Server **sysadmin** 固定服务器角色。
 * 提供一个强 **密码**。
 * 如果你有多个订阅，请验证订阅是否适合新的虚拟机。
-* 在“资源组”框中，键入新资源组的名称。 此外，若要使用现有的资源组，请单击“选择现有项”。 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。
+* 在“资源组”框中，键入新资源组的名称。 此外，若要使用现有的资源组，请单击“使用现有项”。 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。
   
   > [!NOTE]
   > 如果你只是测试或了解 Azure 中的 SQL Server 部署，使用新的资源组很有帮助。 测试完成后，删除资源组会自动删除 VM 和与该资源组相关联的所有资源。 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../../azure-resource-manager/resource-group-overview.md)。
@@ -216,10 +215,12 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 * 备份保留期（天）
 * 用于备份的存储帐户
 * 备份的加密选项和密码
+* 备份系统数据库
+* 配置备份计划
 
 若要加密备份，请单击“ **启用**”。 然后指定 **密码**。 Azure 创建一个证书来加密备份，并使用指定的密码来保护该证书。
 
-![SQL 自动备份](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
+![SQL 自动备份](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup2.png)
 
  有关详细信息，请参阅 [针对 Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)。
 
@@ -302,6 +303,6 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 
