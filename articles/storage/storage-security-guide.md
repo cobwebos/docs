@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: c5e6c3a63a7dbe0a598136a32990f65f7ee077d9
+ms.sourcegitcommit: 9e75c5af6cb6d2f2a25f18269ec6822aa86459fc
+ms.openlocfilehash: 95ea1a9bc8fe80c39ca9f0683855cc3a4e7a77c4
 
 
 ---
@@ -325,36 +325,44 @@ SSE 可让你请求存储服务在将数据写入 Azure 存储空间时自动加
   此文说明如何配合 Azure 密钥保管库使用客户端加密，包括如何使用 PowerShell 来创建 KEK 并将它存储在保管库中。
 * [Microsoft Azure 存储的客户端加密和 Azure 密钥保管库](storage-client-side-encryption.md)
   
-  本文介绍了客户端加密，并通过示例解释了如何使用存储客户端库加密和解密 4 个存储服务中的资源。 此外介绍了 Azure 密钥保管库。
+  本文介绍了客户端加密，并通过示例解释了如何使用存储客户端库加密和解密&4; 个存储服务中的资源。 此外介绍了 Azure 密钥保管库。
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>使用 Azure 磁盘加密来加密虚拟机所用的磁盘
-Azure 磁盘加密是一项新功能，目前以预览版提供。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这将与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
+Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这将与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
 
-Azure 磁盘加密解决方案支持以下三种客户加密方案：
-
-* 在通过客户加密的 VHD 文件和客户提供的加密密钥（存储在 Azure 密钥保管库中）创建的新 IaaS VM 上启用加密。
-* 在通过 Azure 应用商店创建的新 IaaS VM 上启用加密。
-* 在 Azure 中已运行的现有 IaaS VM 上启用加密。
-
-> [!NOTE]
-> 对已在 Azure 中运行的 Linux VM，或从 Azure 应用商店中的映像新建的 Linux VM，当前不支持 OS 磁盘的加密。 仅本地加密并上传到 Azure 的 VM 支持对 Linux VM 的 OS 卷加密。 此限制仅适用于 OS 磁盘；支持对 Linux VM 的数据卷加密。
-> 
-> 
-
-在 Microsoft Azure 中启用时，该解决方案支持以下适用于公共预览版的 IaaS VM：
+在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 
 * 与 Azure 密钥保管库集成
-* 标准 [A、D 和 G 系列 IaaS VM](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* 在使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 模型创建的 IaaS VM 上启用加密
-* 所有 Azure 公共[区域](https://azure.microsoft.com/regions/)
+* 标准层 VM：[A、D、DS、G 和 GS 等系列 IaaS VM](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* 在 Windows 和 Linux IaaS VM 上启用加密
+* 在 Windows IaaS VM 的 OS 和数据驱动器上禁用加密
+* 在 Linux IaaS VM 的数据驱动器上禁用加密
+* 在运行 Windows 客户端 OS 的 IaaS VM 上启用加密
+* 在包含装入路径的卷上启用加密
+* 在使用 mdadm 配置了磁盘条带化 (RAID) 的 Linux VM 上启用加密
+* 使用 LVM 对 Linux VM 上的数据磁盘启用加密
+* 在使用存储空间配置的 Windows VM 上启用加密
+* 支持所有 Azure 公共区域
+
+该解决方案不支持版本中的以下方案、功能和技术：
+
+* 基本层 IaaS VM
+* 在 Linux IaaS VM 的 OS 驱动器上禁用加密
+* 使用经典 VM 创建方法创建的 IaaS VM
+* 与本地密钥管理服务集成
+* Azure 文件（文件共享系统）、网络文件系统 (NFS)、动态卷，以及配置了基于软件的 RAID 系统的 Windows VM
+
+
+> [!NOTE]
+> 以下 Linux 分发（RHEL 7.2、CentOS 7.2n 和 Ubuntu 16.04）当前支持 Linux OS 磁盘加密。
+> 
+> 
 
 此功能可确保虚拟机磁盘上的所有数据在 Azure 存储空间中静态加密。
 
 #### <a name="resources"></a>资源
-* [适用于 Windows 和 Linux IaaS 虚拟机的 Azure 磁盘加密](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Azure Disk Encryption for Windows and Linux IaaS VMs](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)（适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密）
   
-  此文介绍 Azure 磁盘加密预览版，并提供下载白皮书的链接。
-
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure 磁盘加密、SSE 和客户端加密的比较
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VM 及其 VHD 文件
 对于 IaaS VM 使用的磁盘，建议使用 Azure 磁盘加密。 你可以启用 SSE 来加密在 Azure 存储空间中用于备份这些磁盘的 VHD 文件，但它只将加密新写入的数据。 这意味着，如果创建 VM，然后对保存 VHD 文件的存储帐户启用 SSE，则只将加密更改，而不会加密原始 VHD 文件。
@@ -413,7 +421,7 @@ SSE 由 Azure 存储管理。 使用 SSE 不是针对传输中数据安全性提
 
 ![日志文件中字段的快照](./media/storage-security-guide/image3.png)
 
-我们对于 GetBlob 的条目及其身份验证方法感兴趣，因此需要查找操作类型“Get-Blob”的条目，并检查请求状态（第 4 列）和授权类型（第 8 列）。<sup></sup><sup></sup>
+我们对于 GetBlob 的条目及其身份验证方法感兴趣，因此需要查找操作类型“Get-Blob”的条目，并检查请求状态（第&4; 列）和授权类型（第&8; 列）。<sup></sup><sup></sup>
 
 例如，在上述列表的前几列中，请求状态为“Success”且授权类型为“authenticated”。 这意味着已使用存储帐户密钥验证请求。
 
@@ -527,6 +535,6 @@ Azure 存储空间允许你启用 CORS – 跨域资源共享。 对于每个存
   此文介绍如何在较旧版 Windows 计算机中使用 FIPS 模式。
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

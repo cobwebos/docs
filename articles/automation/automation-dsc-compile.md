@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 自动化 DSC 中编译配置 | Microsoft Docs"
-description: "概述编译所需状态配置 (DSC) 的两种方法：使用 Azure 门户，或者使用 Windows PowerShell。 "
+description: "本文介绍如何编译 Azure 自动化的 Desired State Configuration (DSC) 配置。"
 services: automation
 documentationcenter: na
 author: eslesar
@@ -11,18 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
-ms.date: 12/13/2016
-ms.author: eslesar
+ms.date: 02/07/2017
+ms.author: magoedte; eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 18c6a55f2975305203bf20a040ac29bc9527a124
-ms.openlocfilehash: 30c93d801c68e24b45f5fbc119724e0a18076a13
+ms.sourcegitcommit: 032747ffb7a603c54e8913c0d82edbc8e11b73c3
+ms.openlocfilehash: 0b808dd6bcf0a0d1f8e459927a4010dc1887ca60
 
 ---
+
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
-使用 Azure 自动化时可通过两种方法编译所需状态配置 (DSC)：使用 Azure 门户，或者使用 Windows PowerShell。 下表将帮助你根据每种方法的特征确定何时应使用哪种方法：
+使用 Azure 自动化时可通过两种方法编译 Desired State Configuration (DSC) ：使用 Azure 门户，或者使用 Windows PowerShell。 下表将帮助你根据每种方法的特征确定何时应使用哪种方法：
 
-### <a name="azure-preview-portal"></a>Azure 预览门户
+### <a name="azure-portal"></a>Azure 门户
 
 * 使用交互式用户界面的最简单方法
 * 用于提供简单参数值的窗体
@@ -204,7 +205,7 @@ Azure 自动化 DSC 配置和 Runbook 中的资产引用是相同的。 有关�
 ```powershell
 Configuration CredentialSample
 {
-    $Cred = Get-AzureRmAutomationCredential -Name "SomeCredentialAsset"
+    $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAcct" -Name "SomeCredentialAsset"
 
     Node $AllNodes.NodeName
     {
@@ -241,6 +242,6 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

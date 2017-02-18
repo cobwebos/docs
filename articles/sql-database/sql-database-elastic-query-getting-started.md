@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e39f2bb273bee9719f8f87cd27a1e1c92b6c4b53
+ms.sourcegitcommit: bee6dbf8910534b07a77e7fd7dd84edf07cf3dd5
+ms.openlocfilehash: bc475cd1abfa4d9ff6c8afe9647b353054dc201b
 
 
 ---
@@ -51,7 +51,9 @@ ms.openlocfilehash: e39f2bb273bee9719f8f87cd27a1e1c92b6c4b53
 
     ![Azure 门户和定价层][3]
 
-    注意：你可以使用现有的数据库。 如果这样做，该数据库不能是你想要对其运行查询的某一个分片。 此数据库将用于为弹性数据库查询创建元数据对象。
+    > [!NOTE]
+    > 可以使用现有的数据库。 如果这样做，该数据库不能是你想要对其运行查询的某一个分片。 此数据库将用于为弹性数据库查询创建元数据对象。
+    >
 
 ## <a name="create-database-objects"></a>创建数据库对象
 ### <a name="database-scoped-master-key-and-credentials"></a>数据库范围的主密钥和凭据
@@ -139,6 +141,6 @@ ms.openlocfilehash: e39f2bb273bee9719f8f87cd27a1e1c92b6c4b53
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

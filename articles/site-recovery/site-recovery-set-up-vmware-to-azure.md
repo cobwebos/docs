@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 9dfcdeb4dc3e84089eb8031272b870f87d90b689
-ms.openlocfilehash: 2256ba395e8d5f7a1ce7d4d78168a9cc51d4f074
+ms.sourcegitcommit: 74d1eee9ea0f1e74e7193ecba22f6d1c28cf831d
+ms.openlocfilehash: d4587f93fb791c7fbb7575f3be1451172ee7865e
 
 ---
 
@@ -29,13 +29,13 @@ ms.openlocfilehash: 2256ba395e8d5f7a1ce7d4d78168a9cc51d4f074
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你已创建
-1. 恢复服务保管库 [Azure 门户](http://portal.azure.com "Azure 门户")。
-2. VMware vCenter 中可用于[自动发现](./site-recovery-vmware-to-azure.md#vmware-account-permissions)的专用帐户
-3. 用于安装配置服务器的虚拟机。
+本文假设你已创建：
+- [Azure 门户](http://portal.azure.com "Azure 门户")中的恢复服务保管库。
+- VMware vCenter 中可用于[自动发现](./site-recovery-vmware-to-azure.md#vmware-account-permissions)的专用帐户。
+- 用于安装配置服务器的虚拟机。
 
 ### <a name="configuration-server-minimum-requirements"></a>配置服务器的最低要求
-应将配置服务器软件部署到**高度可用**的 VMware 虚拟机。 下表列出了配置服务器的最低硬件、软件和网络要求。
+应将配置服务器软件部署到高度可用的 VMware 虚拟机。 下表列出了配置服务器的最低硬件、软件和网络要求。
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-server-requirements.md)]
 
 > [!NOTE]
@@ -43,8 +43,8 @@ ms.openlocfilehash: 2256ba395e8d5f7a1ce7d4d78168a9cc51d4f074
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
 
-1. 在 Azure 门户中浏览到“恢复服务保管库”边栏选项卡，然后选择保管库。
-2. 在保管库的资源菜单中，单击“开始使用” > “Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
+1. 在 Azure 门户中，浏览到“恢复服务保管库”边栏选项卡，然后选择保管库。
+2. 在保管库的资源菜单中，转到“开始使用” > “Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
 
     ![选择目标](./media/site-recovery-set-up-vmware-to-azure/choose-goals.png)
 3. 在“保护目标”中选择“到 Azure”，然后选择“是，使用 VMware vSphere 虚拟机监控程序”。 。
@@ -52,41 +52,41 @@ ms.openlocfilehash: 2256ba395e8d5f7a1ce7d4d78168a9cc51d4f074
     ![选择目标](./media/site-recovery-set-up-vmware-to-azure/choose-goals2.png)
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
-设置源环境涉及两个主要活动
+设置源环境涉及两个主要活动：
 
-1. 使用 Site Recovery 服务安装和注册配置服务器。
-2. 通过将 Azure Site Recovery 连接到本地 VMware vCenter 或 vSphere EXSi 主机来发现本地虚拟机
+- 使用 Site Recovery 安装和注册配置服务器。
+- 通过将 Site Recovery 连接到本地 VMware vCenter 或 vSphere EXSi 主机来发现本地虚拟机。
 
-### <a name="step-1-install--register-a-configuration-server"></a>步骤 1：安装和注册配置服务器
+### <a name="step-1-install-and-register-a-configuration-server"></a>步骤 1：安装和注册配置服务器
 
 1. 单击“步骤 1: 准备基础结构” > “源”。 如果没有配置服务器，请在“准备源”中单击“+配置服务器”添加一个。
 
     ![设置源](./media/site-recovery-set-up-vmware-to-azure/set-source1.png)
 2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。
 4. 下载站点恢复统一安装程序安装文件。
-5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 **5** 天。
+5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为&5; 天。
 
     ![设置源](./media/site-recovery-set-up-vmware-to-azure/set-source2.png)
 6. 在用作配置服务器的计算机上，运行 **Azure Site Recovery 统一安装程序**以安装配置服务器、进程服务器和主目标服务器。
 
-#### <a name="running-the-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
+#### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
 
 > [!TIP]
-> 如果计算机上的系统时钟时间提前或落后本地时间超过五分钟，则配置服务器注册将失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
+> 如果计算机上的系统时钟时间与本地时间相差五分钟以上，则配置服务器注册将失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 可以通过命令行安装配置服务器。 阅读有关[使用命令行工具安装配置服务器](http://aka.ms/installconfigsrv)的详细信息。
+> 可以通过命令行安装配置服务器。 有关详细信息，请参阅[使用命令行工具安装配置服务器](http://aka.ms/installconfigsrv)。
 
 #### <a name="add-the-vmware-account-for-automatic-discovery"></a>添加用于自动发现的 VMware 帐户
 
 [!INCLUDE [site-recovery-add-vcenter-account](../../includes/site-recovery-add-vcenter-account.md)]
 
 ### <a name="step-2-add-a-vcenter"></a>步骤 2：添加 vCenter
-若要允许 Azure Site Recovery 发现本地环境中运行的虚拟机，需要将 VMware vCenter 服务器或 vSphere ESXi 主机与 Site Recovery 连接
+若要允许 Azure Site Recovery 发现本地环境中运行的虚拟机，需要将 VMware vCenter 服务器或 vSphere ESXi 主机与 Site Recovery 连接。
 
-单击 +vCenter 按钮开始连接 VMware vCenter 服务器或 VMware vSphere ESXi 主机。
+选择“+vCenter”开始连接 VMware vCenter 服务器或 VMware vSphere ESXi 主机。
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 
@@ -96,10 +96,10 @@ ms.openlocfilehash: 2256ba395e8d5f7a1ce7d4d78168a9cc51d4f074
 
 
 ## <a name="next-steps"></a>后续步骤
-下一步涉及在 Azure 中[设置目标环境](./site-recovery-vmware-to-azure.md#step-3-set-up-the-target-environment)。
+在 Azure 中[设置目标环境](./site-recovery-vmware-to-azure.md#step-3-set-up-the-target-environment)。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 
