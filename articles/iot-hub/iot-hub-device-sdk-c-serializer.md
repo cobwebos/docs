@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: 5d7eed340d2021c58f68c69100be5a9e13655146
-ms.openlocfilehash: 7d4b322cd6528fa4798362d2ee620dae4291b956
+ms.sourcegitcommit: 9acbddcf1f15b9dcf61c3f9fe2ea3ff42bc19e7d
+ms.openlocfilehash: 75dcd784ee5cd3599f0bfc37b490c597524068f9
 
 
 ---
@@ -526,6 +526,13 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 操作名称必须完全与模型中定义的操作匹配。 参数名称也必须匹配。 另请注意大小写。 **Name** 和 **Parameters** 始终大写。 请务必与模型中操作名称和参数的大小写匹配。 在本示例中，操作名称是“SetAirResistance”，而不是“setairresistance”。
 
+将这些消息发送到设备可以调用其他两个操作 **TurnFanOn** 和 **TurnFanOff**：
+
+```
+{"Name" : "TurnFanOn", "Parameters" : {}}
+{"Name" : "TurnFanOff", "Parameters" : {}}
+```
+
 本部分说明了使用**序列化程序**库发送事件和接收消息时的所有要点。 在继续讨论之前，让我们先介绍一些可以配置以控制模型大小的参数。
 
 ## <a name="macro-configuration"></a>宏配置
@@ -672,6 +679,6 @@ serializer_deinit();
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

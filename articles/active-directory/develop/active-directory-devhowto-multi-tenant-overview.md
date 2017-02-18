@@ -1,5 +1,5 @@
 ---
-title: "如何构建可使任何 Azure Active Directory 用户登录的应用程序 | Microsoft Docs"
+title: "如何构建可让任何 Azure AD 用户登录的应用 | Microsoft 文档"
 description: "有关如何构建一个可使用户从任何 Azure Active Directory 租户登录的应用程序（也称为多租户应用程序）的分步说明。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
+ms.date: 01/23/2017
 ms.author: skwan;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 0e4eb184e353700f945f0da93aeca2187d710415
-ms.openlocfilehash: cc4893c004939f071287fea068dd754da6561224
+ms.sourcegitcommit: c0c94960cc0a6a00f1db19867e622cda7f66a07b
+ms.openlocfilehash: 80f7470bcaad07ff2e355a7b95155a329827e8e0
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: cc4893c004939f071287fea068dd754da6561224
 ## <a name="update-registration-to-be-multi-tenant"></a>将注册更新为多租户
 Azure AD 中的 Web 应用/API 注册默认为单租户。  可以将注册转换为多租户，方法是在 [Azure 经典门户][AZURE-classic-portal]中的应用程序注册配置页上，找出“应用程序是多租户的”参数并将其设置为“是”。
 
-注意：在将某个应用程序转换为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。  就单租户应用而言，应用 ID URI 在该租户中保持唯一便已足够。  就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。  系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。  例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。  如果租户具有已验证的域 `contoso.com`，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。  如果应用 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
+另请注意，在将某个应用程序设为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。  就单租户应用而言，应用 ID URI 在该租户中保持唯一便已足够。  就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。  系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。  例如，如果租户的名称为 contoso.onmicrosoft.com，则有效的应用 ID URI 为 `https://contoso.onmicrosoft.com/myapp`。  如果租户具有已验证的域 `contoso.com`，则有效的应用 ID URI 也是 `https://contoso.com/myapp`。  如果应用 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
 
 默认情况下，本机客户端注册是多租户的。  你不需要采取任何措施将本机客户端应用程序注册转换为多租户。
 
@@ -239,6 +239,6 @@ Web 应用程序和 Web API 接收并验证来自 Azure AD 的令牌。
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

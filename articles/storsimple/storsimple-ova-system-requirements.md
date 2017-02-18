@@ -4,7 +4,7 @@ description: "了解有关 StorSimple Virtual Array 的软件和网络要求的�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 6a01ed44d08c06e35c66a842a27b46775ec97a3a
-ms.openlocfilehash: ae27c2a514bdaad731b73e6c9790b9ced2c35102
+ms.sourcegitcommit: e5f9952d136a2a7914100d8a7f5ffa5ba05a9d75
+ms.openlocfilehash: 9eb839834ed4ee2291eb311f64a8dfa7f07a1ac3
 
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
@@ -46,7 +46,7 @@ ms.openlocfilehash: ae27c2a514bdaad731b73e6c9790b9ced2c35102
 | **组件** | **要求** |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
-| 最小内存 (RAM) |8 GB |
+| 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
 | 磁盘空间<sup>1</sup> |OS 磁盘 - 80 GB <br></br>数据磁盘 - 500 GB 到 8 TB |
 | 网络接口的最小数目 |1 |
 | 最小 Internet 带宽<sup>2</sup> |5 Mbps |
@@ -131,6 +131,6 @@ ms.openlocfilehash: ae27c2a514bdaad731b73e6c9790b9ced2c35102
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

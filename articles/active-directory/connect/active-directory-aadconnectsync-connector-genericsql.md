@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c4eef02a10cbb646e3d96ed444a0b3d957e0361d
-ms.openlocfilehash: 8a6c84ba559545cd1b786fc42cbbb7b190585e66
+ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
+ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
 
 
 ---
@@ -113,7 +113,7 @@ ms.openlocfilehash: 8a6c84ba559545cd1b786fc42cbbb7b190585e66
 * **SQL 查询**：使用此选项可以提供 SQL 查询，返回包含属性名称的单个列，例如 `SELECT [Column Name] FROM TABLENAME`。 返回的列必须是字符串类型 (varchar)。
 
 ### <a name="schema-3-define-anchor-and-dn"></a>架构 3（定义定位点和 DN）
-此页面可让你为每个检测到的对象类型配置定位点和 DN 属性。 你可以选择多个属性，让定位点变成唯一。
+此页面可让你为每个检测到的对象类型配置定位点和 DN 属性。 可以选择多个属性，让定位点变成唯一。
 
 ![schema3a](./media/active-directory-aadconnectsync-connector-genericsql/schema3a.png)
 
@@ -287,7 +287,6 @@ ms.openlocfilehash: 8a6c84ba559545cd1b786fc42cbbb7b190585e66
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

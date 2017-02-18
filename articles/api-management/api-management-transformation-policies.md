@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
+ms.sourcegitcommit: dc6d0a2d48895da12a95e3f482ad8588b98db4ec
+ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
 
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
@@ -28,7 +28,7 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
   
 -   [将 XML 转换为 JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) - 将请求或响应正文从 XML 转换为 JSON。  
   
--   [查找并替换正文中的字符串](api-management-transformation-policies.md#Findandreplacestringinbody) - 查找请求或响应子字符串并将其替换为不同的子字符串。  
+-   [查找并替换正文中的字符串](api-management-transformation-policies.md#Findandreplacestringinbody) - 查找请求或响应子字符串，并将其替换为不同的子字符串。  
   
 -   [在内容中屏蔽 URL](api-management-transformation-policies.md#MaskURLSContent) - 重写（屏蔽）响应正文中的链接，使其通过网关指向等效的链接。  
   
@@ -472,11 +472,11 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
   
 > [!NOTE]
 >  只能使用此策略添加查询字符串参数。 不能在重写 URL 中添加额外的模板路径参数。  
-  
+
 ### <a name="policy-statement"></a>策略语句  
   
 ```xml  
-<rewrite-uri template="uri template" />  
+<rewrite-uri template="uri template" copy-unmatched-params="true | false" />  
 ```  
   
 ### <a name="example"></a>示例  
@@ -492,7 +492,33 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
     </outbound>  
 </policies>  
 ```  
-  
+```xml
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<policies>  
+    <inbound>  
+        <base />  
+        <rewrite-uri template="/put" />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+<!-- Resulting URL will be /put?c=d -->
+```  
+```xml
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<policies>  
+    <inbound>  
+        <base />  
+        <rewrite-uri template="/put" copy-unmatched-params="false" />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+<!-- Resulting URL will be /put -->
+```
+
 ### <a name="elements"></a>元素  
   
 |Name|说明|必选|  
@@ -503,10 +529,11 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
   
 |属性|说明|必选|默认|  
 |---------------|-----------------|--------------|-------------|  
-|template|包含任何查询字符串参数的实际 Web 服务 URL。|是|不适用|  
+|template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|不适用|  
+|copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|true|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：**入站  
   
@@ -547,7 +574,7 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
   <outbound>  
       <base />  
       <xsl-transform>  
-        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
+          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
             <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />  
             <!-- Copy all nodes directly-->  
             <xsl:template match="node()| @*|*">  
@@ -555,7 +582,7 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
                     <xsl:apply-templates select="@* | node()|*" />  
                 </xsl:copy>  
             </xsl:template>  
-        </xsl:stylesheet>  
+          </xsl:stylesheet>  
     </xsl-transform>  
   </outbound>  
 </policies>  
@@ -580,6 +607,7 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
 有关如何使用策略的详细信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

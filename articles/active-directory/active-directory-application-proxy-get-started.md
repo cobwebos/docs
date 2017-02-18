@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/25/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c0f17c4ff79bab7f5b13f42cd31e170780fc0c2
+ms.sourcegitcommit: 9ee3ba5a5dee206c2358a76aaea680b998e994f8
+ms.openlocfilehash: 732f9b135732c33364cab7200d43893d4cdda5f9
 
 
 ---
@@ -53,8 +53,10 @@ Azure AD 应用程序代理：
 * 想要公开给不同设备上丰富应用程序的 Web API  
 * 托管在远程桌面网关之后的应用程序  
 
-## <a name="how-does-it-work"></a>工作原理
+## <a name="how-does-the-service-work-with-connectors"></a>服务如何使用连接器？
 应用程序代理的工作原理如下：在网络内部安装一个名为连接器的精简 Windows Server 服务。 通过此连接器，你就不需要开放任何入站端口，或在 DMZ 中放置任何对象。 如果应用有大量流量，可添加更多连接器，由服务负责负载平衡。 连接器是无状态的，并且会根据需要从云中拉取所有内容。
+
+有关连接器的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md)。 
 
 当用户远程访问应用程序时，他们会连接到已发布的终结点。 用户在 Azure AD 中进行身份验证，然后通过连接器路由到本地应用程序。
 
@@ -76,13 +78,14 @@ Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应�
 
 设置应用程序代理由两个步骤组成：
 
-1. [启用应用程序代理并配置连接器](active-directory-application-proxy-enable.md)    
+1. [启用应用程序代理并配置连接器](active-directory-application-proxy-enable.md)。    
 2. [发布应用程序](active-directory-application-proxy-publish.md) - 使用快速方便的向导发布本地应用，然后即可远程访问。
 
 ## <a name="whats-next"></a>后续步骤
 应用程序代理还有其他用途：
 
 * [使用你自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
+* [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md) 
 * [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
 * [使用声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)
 * [启用条件性访问](active-directory-application-proxy-conditional-access.md)
@@ -92,6 +95,6 @@ Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

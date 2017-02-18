@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2016
+ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: b808a791abc843a93d772b1eeafc9f6280196185
+ms.sourcegitcommit: 7e77858b36d07049333422d4454c29a9e1acb748
+ms.openlocfilehash: bdec7eb0b32cd8853dc01791466abf48c61a5fe8
 
 
 ---
@@ -44,27 +44,37 @@ Ubuntu 现已发布正式 Azure VHD，可从 [http://cloud-images.ubuntu.com/](h
 
 ## <a name="manual-steps"></a>手动步骤
 > [!NOTE]
-> 为 Azure 创建自己的自定义 Ubuntu 映像之前，请考虑改用 [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) 中的映像。
+> 尝试为 Azure 创建自己的自定义 Ubuntu 映像之前，请考虑改用 [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) 中的预建且经过测试的映像。
 > 
 > 
 
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
+
 2. 单击“连接”打开虚拟机窗口。
+
 3. 替换映像中的当前存储库，以使用 Ubuntu 的 Azure 存储库。 这些步骤可能会由于 Ubuntu 版本的不同而稍有差异。
    
-   编辑 /etc/apt/sources.list 之前，建议进行备份：
+    编辑 `/etc/apt/sources.list` 之前，建议进行备份：
    
-   # <a name="sudo-cp-etcaptsourceslist-etcaptsourceslistbak"></a>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-   Ubuntu 12.04：
+        # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+
+    Ubuntu 12.04：
    
-   # <a name="sudo-sed--i-sa-za-zarchiveubuntucomazurearchiveubuntucomg-etcaptsourceslist"></a>sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
-   # <a name="sudo-apt-get-update"></a>sudo apt-get update
-   Ubuntu 14.04：
+        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
+        # sudo apt-get update
+
+    Ubuntu 14.04：
    
-   # <a name="sudo-sed--i-sa-za-zarchiveubuntucomazurearchiveubuntucomg-etcaptsourceslist"></a>sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
-   # <a name="sudo-apt-get-update"></a>sudo apt-get update
+        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
+        # sudo apt-get update
+
+    Ubuntu 16.04：
+   
+        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
+        # sudo apt-get update
+
 4. Ubuntu Azure 映像现在遵循*硬件支持* (HWE) 内核要求。 通过运行以下命令将操作系统更新为最新内核：
-   
+
     Ubuntu 12.04：
    
         # sudo apt-get update
@@ -82,22 +92,42 @@ Ubuntu 现已发布正式 Azure VHD，可从 [http://cloud-images.ubuntu.com/](h
         (recommended) sudo apt-get dist-upgrade
    
         # sudo reboot
-5. 修改 Grub 的内核引导行以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开“/etc/default/grub”、找到名为“`GRUB_CMDLINE_LINUX_DEFAULT`”的变量（或根据需要添加它）并对它进行编辑以使其包含以下参数：
+
+    Ubuntu 16.04：
+   
+        # sudo apt-get update
+        # sudo apt-get install linux-generic-hwe-16.04 linux-cloud-tools-generic-hwe-16.04
+        (recommended) sudo apt-get dist-upgrade
+
+        # sudo reboot
+
+    **另请参阅：**
+    - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
+    - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
+
+
+5. 修改 Grub 的内核引导行以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/etc/default/grub`，找到名为 `GRUB_CMDLINE_LINUX_DEFAULT` 的变量（或根据需要添加它）并对它进行编辑使其包含以下参数：
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
-   
-    保存并关闭此文件，然后再运行“`sudo update-grub`”。 这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 技术支持人员调试问题。
+
+    保存并关闭此文件，然后运行 `sudo update-grub`。 这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 技术支持人员调试问题。
+
 6. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。  这通常是默认设置。
+
 7. 安装 Azure Linux 代理：
    
-   # <a name="sudo-apt-get-update"></a>sudo apt-get update
-   # <a name="sudo-apt-get-install-walinuxagent"></a>sudo apt-get install walinuxagent
-   请注意，安装 `walinuxagent` 包时将删除 `NetworkManager` 和 `NetworkManager-gnome` 包（如果已安装它们）。
+        # sudo apt-get update
+        # sudo apt-get install walinuxagent
+
+    >[!Note]
+    安装 `walinuxagent` 包时将删除 `NetworkManager` 和 `NetworkManager-gnome` 包（如果已安装它们）。
+
 8. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
    
-   # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
-   # <a name="export-histsize0"></a>export HISTSIZE=0
-   # <a name="logout"></a>logout
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
+
 9. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上载到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
@@ -112,6 +142,6 @@ Ubuntu 硬件支持 (HWE) 内核：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

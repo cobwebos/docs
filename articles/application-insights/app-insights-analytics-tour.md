@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2284b12c87eee6a453844e54cdcb2add5874218b
-ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
+ms.sourcegitcommit: ab9006b915b3455b6e63857514e98ed89ad78c7c
+ms.openlocfilehash: 9914f1dc96672020a4d7e7a1976d20e5abf7028b
 
 
 ---
@@ -91,7 +91,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 ```AIQL
 
     requests
-    | where resultCode  == "404" 
+    | where resultCode  == "404"
     | take 10
 ```
 
@@ -128,26 +128,26 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
     // What were the slowest requests over the past 3 days?
     requests
-    | where timestamp > ago(3d)  // Override the time range 
+    | where timestamp > ago(3d)  // Override the time range
     | top 5 by duration
 ```
 
-时间范围功能相当于在每提及一个源表后插入的“where”子句。 
+时间范围功能相当于在每提及一个源表后插入的“where”子句。
 
-`ago(3d)` 表示“三天前”。 其他时间单位包括小时（`2h`、`2.5h`）、分钟 (`25m`) 和秒 (`10s`)。 
+`ago(3d)` 表示“三天前”。 其他时间单位包括小时（`2h`、`2.5h`）、分钟 (`25m`) 和秒 (`10s`)。
 
 其他示例：
 
 ```AIQL
 
     // Last calendar week:
-    requests 
-    | where timestamp > startofweek(now()-7d) 
-        and timestamp < startofweek(now()) 
+    requests
+    | where timestamp > startofweek(now()-7d)
+        and timestamp < startofweek(now())
     | top 5 by duration
 
     // First hour of every day in past seven days:
-    requests 
+    requests
     | where timestamp > ago(7d) and timestamp % 1d < 1h
     | top 5 by duration
 
@@ -212,7 +212,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 ```AIQL
 
-    requests 
+    requests
     | top 10 by timestamp desc
     | extend localTime = timestamp - 8h
 ```
@@ -244,7 +244,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 请注意，可在聚合表达式或 by 子句中使用 `name=` 设置结果列的名称。
 
 ## <a name="counting-sampled-data"></a>采样数据计数
-建议使用 `sum(itemCount)` 聚合来对事件计数。 许多情况下，itemCount = = 1，此函数只计算组中的行数。 但运算中采用[采样](app-insights-sampling.md)时，Application Insights 中只会将部分原始事件保留为数据点，因此每个可见的数据点有 `itemCount` 个事件。
+建议使用 `sum(itemCount)` 聚合来对事件计数。 许多情况下，itemCount = =&1;，此函数只计算组中的行数。 但运算中采用[采样](app-insights-sampling.md)时，Application Insights 中只会将部分原始事件保留为数据点，因此每个可见的数据点有 `itemCount` 个事件。
 
 例如，如果采样放弃了 75% 的原始事件，则在保留的记录中 itemCount==4，即每个保留的记录有 4 个原始记录。
 
@@ -318,14 +318,14 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 ```AIQL
 
     // Bounce rate: sessions with only one page view
-    requests 
-    | where notempty(session_Id) 
+    requests
+    | where notempty(session_Id)
     | where tostring(operation_SyntheticSource) == "" // real users
-    | summarize pagesInSession=sum(itemCount), sessionEnd=max(timestamp) 
-               by session_Id 
-    | extend isbounce= pagesInSession == 1 
-    | summarize count() 
-               by tostring(isbounce), bin (sessionEnd, 1h) 
+    | summarize pagesInSession=sum(itemCount), sessionEnd=max(timestamp)
+               by session_Id
+    | extend isbounce= pagesInSession == 1
+    | summarize count()
+               by tostring(isbounce), bin (sessionEnd, 1h)
     | render timechart
 ```
 
@@ -343,7 +343,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 ```AIQL
 
-    requests 
+    requests
     | where timestamp > ago(30d)  // Override "Last 24h"
     | where tostring(operation_SyntheticSource) == "" // real users
     | extend hour = bin(timestamp % 1d , 1h)
@@ -393,7 +393,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 需将最后一行转换为日期时间。 目前只有表的 x 轴为日期时间时，才显示为标量。
 
-`where` 子句排除单次会话 (sessionDuration = = 0)，并设置 x 轴的长度。
+`where` 子句排除单次会话 (sessionDuration = =&0;)，并设置 x 轴的长度。
 
 ![](./media/app-insights-analytics-tour/290.png)
 
@@ -459,6 +459,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 在同一子句中，重命名时间戳列。
 
 ## <a name="letapp-insights-analytics-referencemdlet-clause-assign-a-result-to-a-variable"></a>[Let](app-insights-analytics-reference.md#let-clause)：将结果分配给变量
+
 使用 `let` 分离出上一个表达式的各部分。 结果不变：
 
 ```AIQL
@@ -471,23 +472,37 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
     | take 30
 ```
 
-> 提示：在 Analytics 客户端中，请勿在此查询的各部分间放入空白行。 请务必执行所有运算。
->
+> [!Tip] 
+> 在 Analytics 客户端中，请勿在此查询的各部分间放入空白行。 请务必执行所有运算。
 >
 
-### <a name="functions"></a>函数 
+使用 `toscalar` 将单个表单元格转换为一个值：
+
+```AIQL
+let topCities =  toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City));
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+
+
+### <a name="functions"></a>函数
 
 使用 *Let* 定义函数：
 
 ```AIQL
 
-    let usdate = (t:datetime) 
+    let usdate = (t:datetime)
     {
-      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ", 
+      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
       bin((t-1h)%12h+1h,1s), iff(t%24h<12h, "AM", "PM"))
     };
     requests  
-    | extend PST = usdate(timestamp-8h) 
+    | extend PST = usdate(timestamp-8h)
 ```
 
 ## <a name="accessing-nested-objects"></a>访问嵌套对象
@@ -547,24 +562,24 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 ## <a name="combine-with-imported-data"></a>结合导入的数据
 
-Analytics 报表在仪表板上看起来不错，但有时需要将数据转换为更易理解的形式。 例如，假设遥测通过别名识别出了已经过验证的用户。 此时希望在结果中显示其实际名称。 为此，需要一个从别名映射到实际名称的 CSV 文件。 
+Analytics 报表在仪表板上看起来不错，但有时需要将数据转换为更易理解的形式。 例如，假设遥测通过别名识别出了已经过验证的用户。 此时希望在结果中显示其实际名称。 为此，需要一个从别名映射到实际名称的 CSV 文件。
 
 可导入数据文件，其使用方式与标准表（请求、例外等）相同。 可对其进行查询或将其与其他表联接。 例如，如果有一个名为“用户映射”的表，且它具有 `realName` 和 `userId` 列，则可将其用于在请求遥测中转换 `user_AuthenticatedId` 字段：
 
 ```AIQL
 
     requests
-    | where notempty(user_AuthenticatedId) 
+    | where notempty(user_AuthenticatedId)
     | project userId = user_AuthenticatedId
       // get the realName field from the usermap table:
-    | join kind=leftouter ( usermap ) on userId 
+    | join kind=leftouter ( usermap ) on userId
       // count transactions by name:
     | summarize count() by realName
 ```
 
-若要导入表，请在“架构”边栏选项卡的“其他数据源”下，遵循说明，通过上传数据示例，添加新数据源。 然后使用此定义上传表。 
+若要导入表，请在“架构”边栏选项卡的“其他数据源”下，遵循说明，通过上传数据示例，添加新数据源。 然后使用此定义上传表。
 
-导入功能当前处于预览状态，因此一开始将在“其他数据源”下看到“联系我们”的链接。 使用此链接登录预览计划，然后该链接将替换为“添加新数据源”按钮。 
+导入功能当前处于预览状态，因此一开始将在“其他数据源”下看到“联系我们”的链接。 使用此链接登录预览计划，然后该链接将替换为“添加新数据源”按钮。
 
 
 ## <a name="tables"></a>表
@@ -580,7 +595,7 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 ![对按名称划分的请求计数](./media/app-insights-analytics-tour/analytics-failed-requests.png)
 
 ### <a name="custom-events-table"></a>自定义事件表
-如果使用 [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) 发送自己的事件，可从此表中读取这些事件。
+如果使用 [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) 发送自己的事件，可从此表中读取这些事件。
 
 来看一个示例，其中应用代码包含以下行：
 
@@ -602,7 +617,7 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 ![显示自定义事件的频率](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>自定义指标表
-若要使用 [TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) 发送自己的度量值，可在 **customMetrics** 流中找到其结果。 例如：  
+若要使用 [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) 发送自己的度量值，可在 **customMetrics** 流中找到其结果。 例如：  
 
 ![Application Insights Analytics 中的自定义指标](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
@@ -655,16 +670,16 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 来自浏览器的 AJAX 调用：
 
 ```AIQL
-    
-    dependencies | where client_Type == "Browser" 
+
+    dependencies | where client_Type == "Browser"
     | take 10
 ```
 
 来自服务器的依赖项调用：
 
 ```AIQL
-    
-    dependencies | where client_Type == "PC" 
+
+    dependencies | where client_Type == "PC"
     | take 10
 ```
 
@@ -683,6 +698,6 @@ Analytics 报表在仪表板上看起来不错，但有时需要将数据转换�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

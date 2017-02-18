@@ -12,11 +12,11 @@ ms.devlang: R
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/09/2017
+ms.date: 02/02/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 888a818bc0ea1804366dcb3932ac0e3f7b5802c6
-ms.openlocfilehash: 51341d933525ef77d1f9ab604b212854b447ebc5
+ms.sourcegitcommit: 8c0b167423fd18e069ea5112ac39b18d3ca71805
+ms.openlocfilehash: 63197d66ec7f6e68e7be9ed44694cddec15aaa11
 
 
 ---
@@ -57,7 +57,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 这将允
 
    * **群集类型**：R Server
    * **版本**：选择要在群集上安装的 R Server 版本。 选择最新版本以获取最新功能。 考虑到兼容性也提供了其他版本。 可在[此处](https://msdn.microsoft.com/en-us/microsoft-r/notes/r-server-notes)获取每个可用版本的发行说明。
-   * **R Server 的 R Studio 社区版**：此基于浏览器的 IDE 默认安装在边缘节点上。  如果不想安装它，请取消勾选复选框。 如果选择安装它，则在创建后，可在群集的门户应用程序边栏选项卡上找到用于访问 RStudio Server 登录的 URL。
+   * **R Server 的 R Studio 社区版**：此基于浏览器的 IDE 默认安装在边缘节点上。  如果不想安装它，请取消勾选复选框。 如果选择安装它，则在创建群集后，可在群集的门户应用程序边栏选项卡上找到用于访问 RStudio Server 登录界面的 URL。
      将其他选项保留为默认值，然后使用“选择”按钮保存群集类型。
 
      ![群集类型边栏选项卡截图](./media/hdinsight-getting-started-with-r/clustertypeconfig.png)
@@ -94,23 +94,24 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 这将允
 
 6. 选择“数据源”，以便选择要作为群集所用的 HDFS 文件系统的主位置的数据源。 选择新的或现有的 Azure 存储帐户或者现有的 Data Lake Storage 帐户。
 
-   1. 如果选择 Azure 存储帐户，则可以选择现有的存储帐户，方法是选择“选择存储帐户”，然后选择帐户；也可以使用“选择存储帐户”部分中的“新建”链接创建新帐户。
+   1. 如果选择 Azure 存储帐户，可以通过选择“选择存储帐户”，然后选择帐户来选择现有存储帐户。 或者使用“选择存储帐户”部分中的“新建”链接创建新帐户。
 
       > [!NOTE]
       > 如果选择“新建”，则必须输入新存储帐户的名称。 如果该名称可接受，将出现绿色复选标记。
 
       “默认容器”默认为群集的名称。 请不要更改此值。
 
-      如果选择了一个新的存储帐户选项，则可以选择“位置”以选择要在其中创建存储帐户的区域。
-
+      如果选择了“新建存储帐户”选项，系统将提示选择“位置”以选择要在其中创建存储帐户的区域。  
+   
+         ![数据源边栏选项卡](./media/hdinsight-getting-started-with-r/datastore.png)  
+   
       > [!IMPORTANT]
       > 选择默认数据源位置的同时会设置 HDInsight 群集位置。 群集和默认数据源必须位于同一区域。
 
-   2. 如果选择使用现有 Data Lake Store，则选择要使用的 ADLS 存储帐户，并将群集 ADD 标识添加到群集以允许访问存储。  有关此过程的详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)。
+   2. 如果选择使用现有 Data Lake Store，则选择要使用的 ADLS 存储帐户，并将群集 ADD 标识添加到群集以允许访问存储。 有关此过程的详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)。
 
       使用“选择”按钮保存数据源配置。
 
-       ![数据源边栏选项卡](./media/hdinsight-getting-started-with-r/datastore.png)
 
 7. 选择“节点定价层”显示针对此群集创建的节点的相关信息。 除非确定需要更大的群集，否则请保留辅助角色节点数目的默认值 `4`。 该群集的预估成本将显示在边栏选项卡内。
 
@@ -138,7 +139,7 @@ HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 这将允
 
    
 
-9. 查看你的选择后，现在可以创建群集了。 为此，请选择“固定到启动板”，然后选择“创建”。 这将会创建群集，并将该群集的磁贴添加到 Azure 门户的启动板。
+9. 查看你的选择后，现在可以创建群集了。 为此，请选择“固定到启动板”，然后选择“创建”。 这会创建群集，并将该群集的磁贴添加到 Azure 门户的启动板。
 
    你会注意到，还有一个“自动化选项”的链接。 单击此链接将显示可用于自动创建具有所选配置的群集的脚本。 创建群集后，这些脚本还可从群集的 Azure 门户条目获得。
 
@@ -485,6 +486,118 @@ rxSparkDisconnect(myHadoopCluster)
      
 4. 选择“创建”运行脚本。 脚本完成后，可在所有辅助角色节点上使用 R 包。
 
+## <a name="using-microsoft-r-server-operationalization"></a>使用 Microsoft R Server 操作化
+完成数据建模后，可以操作模型以进行预测。 若要配置 Microsoft R Server 操作化，请执行以下步骤。
+
+首先，通过 ssh 登录到边缘节点。 例如，```ssh -L USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net```。
+
+使用 ssh 之后，将目录更改到以下目录并使用 sudo 运行 dotnet dll，如下所示。
+
+```
+    cd /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil
+    sudo dotnet Microsoft.DeployR.Utils.AdminUtil.dll
+```
+
+若要使用单机配置配置 Microsoft R Server 操作化，请执行以下操作：
+
+* 选择“1. 配置 R Server 的操作化”
+* 选择“A. 单机（Web + 计算节点）”
+* 输入 **admin** 用户的密码
+
+![单机操作](./media/hdinsight-hadoop-r-server-get-started/admin-util-one-box-.png)
+
+可选步骤是，可以通过运行诊断测试来执行诊断检查，如下所示。
+
+* 选择“6. 运行诊断测试”
+* 选择“A. 测试配置”
+* 输入 Username = “admin” 和上面配置步骤中输入的密码
+* 确认总体运行状况 = 通过
+* 退出管理实用工具
+* 退出 SSH
+
+![操作诊断](./media/hdinsight-hadoop-r-server-get-started/admin-util-diagnostics.png)
+
+在此阶段，操作化的配置已完成。 现在，可以使用 RClient 上的“mrsdeploy”包连接到边缘节点上的操作化，并开始使用其功能（如 [远程执行](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution)和 [Web 服务](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette)）。 根据你的群集是否设置在虚拟网络上，可能需要通过 SSH 登录设置端口转发隧道，如下所述：
+
+### <a name="rserver-cluster-on-virtual-network"></a>虚拟网络上的 RServer 群集
+
+请确保允许流量通过端口 12800 到达边缘节点。 这样，便可以使用边缘节点连接到操作化功能。
+
+```
+library(mrsdeploy)
+
+remoteLogin(
+    deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
+
+如果 remoteLogin() 无法连接到边缘节点，但你可以使用 SSH 连接到边缘节点，则需要验证是否已正确设置允许端口 12800 上的流量的规则。 如果继续遇到此问题，则可以使用通过 SSH 设置端口转发隧道的解决方法。
+
+### <a name="rserver-cluster-not-set-up-on-virtual-network"></a>RServer 群集未设置在虚拟网络上
+
+如果你的群集未设置在 vnet 上，或者如果你通过 vnet 连接时遇到问题，可以使用 SSH 端口转发隧道，如下所示：
+
+```
+ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```
+
+在 Putty 上，也可以设置它。
+
+![putty ssh 连接](./media/hdinsight-hadoop-r-server-get-started/putty.png)
+
+SSH 会话处于活动状态后，来自计算机的端口 12800 的流量将通过 SSH 会话转发到边缘节点的端口 12800。 请确保在 remoteLogin() 方法中使用 `127.0.0.1:12800`。 这样将通过端口转发登录到边缘节点的操作化。
+
+```
+library(mrsdeploy)
+
+remoteLogin(
+    deployr_endpoint = "http://127.0.0.1:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
+
+## <a name="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes"></a>如何在 HDInsight 辅助节点上缩放 Microsoft R Server 操作化计算节点？
+ 
+ 
+### <a name="decommission-the-worker-nodes"></a>解除辅助节点的授权
+Microsoft R Server 当前未通过 Yarn 管理。 如果辅助节点未解除授权，Yarn 资源管理器将无法正常工作，因为它将不会知道服务器所占用的资源。 为了避免这种情况，建议解除要将计算节点缩放到的辅助节点的授权。
+ 
+解除辅助节点授权的步骤：
+ 
+* 登录到 HDI 群集的 Ambari 控制台，单击“主机”选项卡
+* 选择（要解除授权的）辅助节点，单击“操作”>“选择主机”>“主机”> 单击“打开维护模式”。 例如，在以下屏幕截图中，我们选择了对 wn3 和 wn4 解除授权。  
+   
+   ![解除辅助节点的授权](./media/hdinsight-hadoop-r-server-get-started/get-started-operationalization.png)  
+
+* 选择“操作”>“所选主机”>“DataNodes”> 单击“解除授权”
+* 选择“操作”>“所选主机”>“NodeManagers”> 单击“解除授权”
+* 选择“操作”>“所选主机”>“DataNodes”> 单击“停止”
+* 选择“操作”>“所选主机”>“NodeManagers”> 单击“停止”
+* 选择“操作”>“所选主机”>“主机”> 单击“停止所有组件”
+* 取消选择辅助节点并选择头节点
+* 选择“操作”>“所选主机”>“主机”>“重新启动所有组件”
+ 
+ 
+### <a name="configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>在每个已解除授权的辅助节点上配置计算节点
+ 
+* 通过 SSH 登录到每个已解除授权的辅助节点
+* 使用 `dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll` 运行管理实用工具
+* 输入“1”以选择选项“1. 配置 R Server 的操作化”
+* 输入“c”以选择选项“C. 计算节点”。 这将在辅助节点上配置计算节点。
+* 退出管理实用工具
+ 
+### <a name="add-compute-nodes-details-on-web-node"></a>在 Web 节点上添加计算节点详细信息
+将所有已解除授权的辅助节点配置为运行计算节点后，回到边缘节点，在 Microsoft R Server Web 节点的配置中添加已解除授权的辅助节点的 IP 地址：
+ 
+* 通过 SSH 登录到边缘节点
+* 运行 `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`
+* 查看“URI”部分，并添加辅助节点的 IP 和端口详细信息。
+
+![通过命令行解除辅助节点的授权](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
+
 ## <a name="next-steps"></a>后续步骤
 现在，你已了解如何创建包括 R Server 的新 HDInsight 群集，以及从 SSH 会话使用 R 控制台的基础知识，请使用以下资源发现使用 HDInsight 上的 R Server 的其他方法。
 
@@ -495,6 +608,6 @@ rxSparkDisconnect(myHadoopCluster)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

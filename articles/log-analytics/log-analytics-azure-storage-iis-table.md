@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/01/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 950b6de5b579cac1a2b10db299e6f7bcfd8c7b04
+ms.sourcegitcommit: 79f5bad314b230df27c73fb7e60e173778c96865
+ms.openlocfilehash: da31e1ceebfecf766828fa761b01f4e346cd13aa
 
 
 ---
@@ -69,8 +69,6 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
    4. 将“状态”设置为“开”。
    5. 选择想要收集的每个诊断日志。
    6. 单击 **“确定”**。
-
-使用 Azure PowerShell 可以更精确地指定要写入 Azure 存储的事件。 请参阅[使用写入到表存储的 Azure 诊断或写入到 blob 的 IIS 日志收集数据](log-analytics-azure-storage-json.md)。
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>在 Web 角色中为 IIS 日志和事件收集启用 Azure 诊断
 有关启用 Azure 诊断的常规步骤，请参阅[如何在云服务中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)。 下面的说明使用此信息并进行自定义以用于 Log Analytics。
@@ -192,12 +190,12 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Blob 存储中的 JSON 文件](log-analytics-azure-storage-json.md)，以读取将诊断以 JSON 格式写入 Blob 存储的 Azure 服务中的日志。
+* 针对支持的 Azure 服务[收集 Azure 服务的日志和指标](log-analytics-azure-storage.md)。
 * [启用解决方案](log-analytics-add-solutions.md)深入分析数据。
 * [使用搜索查询](log-analytics-log-searches.md)分析数据。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

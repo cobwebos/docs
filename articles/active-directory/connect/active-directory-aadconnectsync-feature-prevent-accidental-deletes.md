@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/01/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 449cfa39e17a3b753cf3e267aed2d6a439fc5f36
+ms.sourcegitcommit: 2048c2786cbe7e237f7a72f5a73a4b135ed60088
+ms.openlocfilehash: cf4ee6d18d5ab3b0f53ec5e8ab80d6e91864a103
 
 
 ---
@@ -25,6 +25,7 @@ ms.openlocfilehash: 449cfa39e17a3b753cf3e267aed2d6a439fc5f36
 
 安装 Azure AD Connect 时，将默认启用防止意外删除功能，并将其配置为不允许超过 500 个删除项目的导出。 此功能旨在防止发生意外的配置更改，以及防止发生影响许多用户和其他对象的本地目录更改。
 
+## <a name="what-is-prevent-accidental-deletes"></a>什么是防止意外删除？
 经常出现删除操作的情景包括：
 
 * 在取消选择整个 [OU](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) 或[域](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)的情况下更改[筛选](active-directory-aadconnectsync-configure-filtering.md)设置。
@@ -38,7 +39,7 @@ ms.openlocfilehash: 449cfa39e17a3b753cf3e267aed2d6a439fc5f36
 ![有关防止意外删除的电子邮件](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
 > *你好（技术联系人）。标识同步服务在（时间）检测到删除数目超过了为（组织名称）配置的删除阈值。在此次标识同步运行期间，总共已发送（数目）个对象进行删除。这达到或超过了配置的删除阈值，即（数目）个对象。在继续之前，我们需要你确认应该处理这些删除。有关此电子邮件中所列错误的详细信息，请参阅“防止意外删除”。*
-> 
+>
 > 
 
 在 **Synchronization Service Manager** UI 中查看导出配置文件时，还可以看到状态 `stopped-deletion-threshold-exceeded`。
@@ -69,7 +70,6 @@ ms.openlocfilehash: 449cfa39e17a3b753cf3e267aed2d6a439fc5f36
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

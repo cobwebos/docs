@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/07/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c844eeb0e01422dac468484a8458f243a2afb87d
+ms.sourcegitcommit: 304323601a7fb2c9b46cf0e1eea9429cf099a111
+ms.openlocfilehash: 853f3c9b2a4781b683b03b5c7ec93f0197c78cdc
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: c844eeb0e01422dac468484a8458f243a2afb87d
 
 建模步骤还包含显示如何训练、评估和保存每个模型类型的代码。 此主题涵盖某些与[使用 Spark 进行数据探索和建模](machine-learning-data-science-spark-data-exploration-modeling.md)主题相同的基础。 但是它更“高级”，因为它还将交叉验证与超参数扫描结合使用以训练最准确的分类和回归模型。 
 
-**交叉验证 (CV)** 是评估在已知数据集上训练的模型对预测未经训练的数据集特征的一般化程度的技术。 此技术背后的一般理念是模型在已知数据的数据集上训练，然后参照独立数据集测试其预测的准确性。 此处使用的常见实现是将数据集划分为 K 折，然后以轮询机制方式在除一折以外的所有折上训练模型。 
+**交叉验证 (CV)** 是评估在已知数据集上训练的模型对预测未经训练的数据集特征的一般化程度的技术。  此处使用的常见实现是将数据集划分为 K 折，然后以轮询机制方式在除一折以外的所有折上训练模型。 模型的准确预测能力在针对此不用来训练模型的折叠中的独立数据集进行测试时受到评估。
 
 **超参数优化**是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 **超参数**是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
 
@@ -51,14 +51,14 @@ ms.openlocfilehash: c844eeb0e01422dac468484a8458f243a2afb87d
 > 
 
 ## <a name="prerequisites"></a>先决条件
-需要 Azure 帐户和 HDInsight Spark。需要 HDInsight 3.4 Spark 1.6 群集才能完成此演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 中提供包含本主题中的代码示例的 **pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb** 笔记本。
+你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 中提供包含本主题中的代码示例的 **pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb** 笔记本。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>设置：存储位置、库和预设 Spark 上下文
 Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，存储在该处的任何现有数据都可以使用 Spark 处理，并将结果再次存储在 WASB 中。
 
-若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用以以下内容开头的路径引用附加到 Spark 群集的默认容器：“wasb:///”。 其他位置通过“wasb://”引用。
+若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用开头为以下内容的路径，引用附加到 Spark 群集的默认容器：“wasb:///”。 其他位置通过“wasb://”引用。
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>在 WASB 中为存储位置设置目录路径
 以下代码示例指定要读取的数据位置，以及用于保存模型输出的模型存储目录的路径：
@@ -184,16 +184,14 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 执行以上单元格所花的时间：276.62 秒
 
-## <a name="data-exploration-visualization"></a>数据探索和可视化
+## <a name="data-exploration--visualization"></a>数据探索和可视化
 将数据引入到 Spark 中后，数据科学过程的下一步是通过探索和可视化更深入地了解数据。 在本部分中，我们使用 SQL 查询检查出租车数据，并绘制目标变量和预期特征以供视觉检查。 具体而言，我们绘制出租车行程中乘客数的频率、小费金额的频率以及小费如何随支付金额和类型而变化。
 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>绘制出租车小费样本中乘客数频率的直方图
 此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
 * **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
-* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 -o 参数结合使用。 -o 参数将本地保留 SQL 查询的输出，然后 %%local magic 将触发下一组代码片段，以针对本地保留的 SQL 查询输出本地运行
-
-该输出在运行代码后自动可视化。
+* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%sql -o` magic 用于运行查询后，使用 `%%local` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
 
 此查询通过乘客数检索行程。 
 
@@ -238,7 +236,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按乘客数的行程频率](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
 使用 SQL 查询为数据采样。
@@ -296,17 +294,17 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ![按车费金额的小费金额](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
 ## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>用于建模的特征工程、转换和数据准备
-本部分介绍并提供用于使数据准备好在 ML 建模中使用的过程的代码。 它介绍如何执行以下任务：
+本部分介绍并提供使数据准备好在 ML 建模中使用的过程的代码。 它介绍如何执行以下任务：
 
-* 通过将小时装入交通时间存储桶来创建新特征
+* 通过将小时划分到交通时间箱来创建新特征
 * 为分类特征编制索引并进行独热编码
 * 创建标签点对象用于输入到 ML 函数中
 * 创建数据的随机子采样，并将其拆分为训练集和测试集
 * 特征缩放
 * 在内存中缓存对象
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>通过将小时装入交通时间存储桶来创建新特征
-此代码显示如何通过将小时装入交通时间存储桶创建新特征，然后显示如何在内存中缓存生成的数据。 当重复使用弹性分布式数据集 (RDD) 和数据帧时，缓存导致执行时间改善。 相应地，我们在演练中的多个节点缓存 RDD 和数据帧。
+### <a name="create-a-new-feature-by-partitioning-traffic-times-into-bins"></a>通过将交通时间划分到箱来创建新特征
+此代码显示如何通过将交通时间划分到箱来创建新特征，以及如何在内存中缓存生成的数据帧。 当重复使用弹性分布式数据集 (RDD) 和数据帧时，缓存导致执行时间改善。 因此，我们在本演练中的多个阶段缓存 RDD 和数据帧。
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -332,7 +330,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 126050
 
 ### <a name="index-and-one-hot-encode-categorical-features"></a>为分类特征编制索引并进行独热编码
-本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 
+本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要在使用前，对带有分类输入数据的特征进行索引或编码。 
 
 根据模型，需要以不同方式为它们编制索引或进行独热编码。 例如，逻辑和线性回归模型需要独热编码，举例来说，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
@@ -383,7 +381,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：3.14 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>创建标签点对象用于输入到 ML 函数中
-本部分包含的代码显示如何将分类文本数据编制索引为标签点数据类型，并对其编码，以便它可用于训练和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，格式为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
+本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 这将准备将其用于训练和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
 
 下面是用于针对二元分类为文本特征编制索引和编码的代码。
 
@@ -432,7 +430,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 
 ### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样，并将其拆分为训练集和测试集
-此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们演示了如何在此处采样，以便你知道如何在需要时针对自己的问题使用它。 当样本很大时，这可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
+此代码创建数据的随机采样（此处使用&25;%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，你就会知道如何在需要时针对自己的问题使用它。 当样本很大时，这可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为&75;%）和测试部分（此处为&25;%），用于分类和回归建模。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -476,7 +474,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：0.31 秒
 
 ### <a name="feature-scaling"></a>特征缩放
-特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 用于特征缩放的代码使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 将特征缩放到单位方差。 它由 MLlib 提供，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的其他机器学习模型（如正则化回归或支持向量机 (SVM)）的流行算法。   
+特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 用于特征缩放的代码使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 将特征缩放为单位方差。 它由 MLlib 提供，用于使用随机梯度下降 (SGD) 的线性回归。 SGD 是一种用于训练范围广泛的其他机器学习模型（如正则化回归或支持向量机 (SVM)）的流行算法。   
 
 > [!TIP]
 > 我们发现，LinearRegressionWithSGD 算法对特征缩放很敏感。   
@@ -548,7 +546,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：0.13 秒
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>通过二元分类模型预测是否支付小费
-本部分介绍如何针对预测某个出租车行程是否支付小费的分类任务使用三个模型。 显示的模型包括：
+本部分介绍如何将二元分类任务的三个模型用于预测是否为某个出租车行程支付小费。 显示的模型包括：
 
 * 逻辑回归 
 * 随机林
@@ -563,7 +561,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 我们介绍如何通过两种方法使用参数扫描进行交叉验证 (CV)：
 
 1. 使用**泛型**自定义代码，此代码可应用到 MLlib 中的任何算法以及算法中的任何参数集。 
-2. 使用 **pySpark CrossValidator 管道函数**。 请注意，根据我们的经验，尽管便利，但 CrossValidator 对 Spark 1.5.0 有一些限制： 
+2. 使用 **pySpark CrossValidator 管道函数**。 请注意，CrossValidator 对于 Spark 1.5.0 有几个限制： 
    
    * 无法保存/保留管道模型以供将来使用。
    * 无法用于模型中的每个参数。
@@ -939,7 +937,7 @@ ROC = 0.985336538462 下的面积
 执行以上单元格所花的时间：26.72 秒
 
 ### <a name="gradient-boosting-trees-classification"></a>梯度提升树分类
-本部分中的代码显示如何训练、评估和保存梯度提升树模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。
+本部分中的代码显示如何训练、评估和保存渐变提升树模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -983,7 +981,7 @@ ROC = 0.985336538462 下的面积
 执行以上单元格所花的时间：28.13 秒
 
 ## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>通过回归模型预测小费金额（不使用 CV）
-本部分介绍如何针对基于其他小费特征预测某个出租车行程支付的小费金额的回归任务使用三个模型。 显示的模型包括：
+本部分介绍如何针对以下回归任务使用三个模型：基于其他小费特征预测为某个出租车行程支付的小费金额。 显示的模型包括：
 
 * 正则化线性回归
 * 随机林
@@ -1005,7 +1003,7 @@ ROC = 0.985336538462 下的面积
 本部分中的代码显示如何使用缩放特征训练使用随机梯度下降线性回归 (SGD) 进行优化的线性回归，以及如何在 Azure Blob 存储 (WASB) 中评分、评估和保存模型。
 
 > [!TIP]
-> 在我们的经验中，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。
+> 根据我们的经验，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。
 > 
 > 
 
@@ -1440,6 +1438,6 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

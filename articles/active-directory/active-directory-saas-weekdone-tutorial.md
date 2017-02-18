@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
+ms.sourcegitcommit: e1c9957f64e9a0a17823a881b060543a9346f457
+ms.openlocfilehash: 8e69d4efe14e29d9f009a4b65416207bb39faa8b
 
 
 ---
@@ -26,8 +26,8 @@ ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
 将 Weekdone 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Weekdone
-* 可使用户通过其 Azure AD 帐户自动登录 Weekdone（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以让用户使用其 Azure AD 帐户自动登录到 Weekdone（单一登录）
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,10 +35,10 @@ ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
 若要配置 Azure AD 与 Weekdone 的集成，需要以下项目：
 
 * Azure AD 订阅
-* 已启用 Weekdone 单一登录的订阅
+* 已启用 Weekdone 单一登录 (SSO) 的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 测试本教程中的步骤时，建议不要使用生产环境。
 > 
 > 
 
@@ -110,29 +110,29 @@ ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
    
     ![配置单一登录](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“回复 URL”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure”**。
+   1. 在“回复 URL”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure”**。
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure/metadata”**。
+   2. 在“标识符”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure/metadata”**。
 
-    c. 单击“下一步”。
+   3. 单击“资源组名称” 的 Azure 数据工厂。
 
 1. 如果要在“配置应用设置”对话框页上以“SP 发起的模式”配置应用程序，则选择“显示高级设置(可选)”，然后输入“登录 URL”和“标识符”，并单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_06.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Weekdone 应用程序的 URL：**“https://weekdone.com/a/azure”**。
+   1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Weekdone 应用程序的 URL：**“https://weekdone.com/a/azure”**。
    
-    b. 在“标识符”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure/metadata”**。
+   2. 在“标识符”文本框中，使用以下模式键入 URL：**“https://weekdone.com/a/azure/metadata”**。
    
-    c. 单击“下一步”。
+   3. 单击“下一步”。
 2. 在“在 Weekdone 处配置单一登录”页上，执行以下步骤并单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将证书文件保存在计算机上。
-   
-    b. 单击“下一步”。
-3. 若要为应用程序配置 SSO，请通过 hello@weekdone.com. 联系 Weekdone 支持团队。将下载的证书文件附加到邮件中，与 Weekdone 团队共享元数据 URL（颁发者 URL、SAML SSO URL 和单一注销服务 URL），以便在他们那边设置 SSO。
+   1. 单击“下载证书”，然后将证书文件保存在计算机上。
+   2. 单击“资源组名称” 的 Azure 数据工厂。
+    
+3. 若要为应用程序配置 SSO，请通过 hello@weekdone.com 联系 Weekdone 支持团队。 将下载的证书文件附加到邮件中，与 Weekdone 团队共享元数据 URL（颁发者 URL、SAML SSO URL 和单一注销服务 URL），以便在他们那边设置 SSO。
 4. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
@@ -149,39 +149,45 @@ ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
 
 1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_09.png) 
+   ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_09.png) 
+    
 2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
-   
+4.    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_03.png) 
+    
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_04.png) 
-5. 在“告诉我们有关此用户的信息”对话框页中，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_05.png) 
+    
+5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    1. 在“用户类型”中，选择“你的组织中的新用户”。
+    2. 在“用户名”文本框中，键入“BrittaSimon”。
+    3. 单击“资源组名称” 的 Azure 数据工厂。
+    
+6. 在“用户配置文件”对话框页上，执行以下步骤：
+
+   ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_06.png) 
    
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
-6. 在“用户配置文件”对话框页面上，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_06.png) 
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“下一步”。
+  
 7. 在“获取临时密码”对话框页上，单击“创建”。
+
     ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_07.png) 
-8. 在“获取临时密码”对话框页面上，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_08.png) 
+    
+8. 在“获取临时密码”对话框页上，执行以下步骤：
+
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-weekdone-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+   1. 写下“新密码”的值。 
+   2. 单击“完成”。   
 
 ### <a name="creating-a-weekdone-test-user"></a>创建 Weekdone 测试用户
 本部分的目的是在 Weekdone 中创建名为“Britta Simon”的用户。 Weekdone 支持在默认情况下启用的实时预配。
@@ -243,6 +249,6 @@ ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 11/17/2016
+ms.date: 02/06/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
-ms.openlocfilehash: ca27dadb7b6e18dd5d81e89564059928ffe7dac6
+ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
+ms.openlocfilehash: 5124f9253950b032fa39c805cb355cc8bfb718c5
 
 
 ---
@@ -36,8 +36,12 @@ ms.openlocfilehash: ca27dadb7b6e18dd5d81e89564059928ffe7dac6
 * （快速入门）[使用自定义计算节点映像创建 HPC 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-custom-image)
 
 ### <a name="azure-vm-images"></a>Azure VM 映像
-* [Windows Server 2012 R2 上的 HPC Pack](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)
-* [Windows Server 2012 R2 上的 HPC Pack 计算节点](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodeonwindowsserver2012r2/)
+* [Windows Server 2016 上的 HPC Pack 2016 头节点](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.HPCPack2016HeadNodeonWindowsServer2016?tab=Overview)
+* [Windows Server 2016 上的 HPC Pack 2016 计算节点](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.HPCPack2016ComputeNodeonWindowsServer2016?tab=Overview)
+* [Windows Server 2012 R2 上的 HPC Pack 2016 头节点](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.HPCPack2016HeadNodeonWindowsServer2012R2?tab=Overview)
+* [Windows Server 2012 R2 上的 HPC Pack 2016 计算节点](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.HPCPack2016ComputeNodeonWindowsServer2012R2?tab=Overview)
+* [Windows Server 2012 R2 上的 HPC Pack 2012 R2 头节点](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)
+* [Windows Server 2012 R2 上的 HPC Pack 2012 R2 计算节点](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodeonwindowsserver2012r2/)
 * [Windows Server 2012 R2 上包含 Excel 的 HPC Pack 计算节点](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodewithexcelonwindowsserver2012r2/)
 
 ### <a name="powershell-deployment-script"></a>PowerShell 部署脚本
@@ -71,6 +75,6 @@ ms.openlocfilehash: ca27dadb7b6e18dd5d81e89564059928ffe7dac6
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: e6d559a78fbd73be1dd5e745496515ce71404cad
-ms.openlocfilehash: ea7000d3e56c5132dba3f144c7bad671d0e3054a
+ms.sourcegitcommit: 64f44c176633db4179f954d2f70cdf26d08b60b4
+ms.openlocfilehash: 28ea238484d86b044899aa9f95861bbdbbf3a06c
 
 
 ---
@@ -246,15 +246,31 @@ IoT 中心允许使用任意条件检索设备孪生筛选结果。 例如，
 在克隆和作业查询中，路由[条件][lnk-query-expressions]使用相同的 IoT 中心查询语言作为条件。 假设以下 JSON 表示形式，根据消息属性评估路由条件：
 
         {
+            "$messageId": "",
+            "$enqueuedTime": "",
+            "$to": "",
+            "$expiryTimeUtc": "",
+            "$correlationId": "",
+            "$userId": "",
+            "$ack": "",
+            "$connectionDeviceId": "",
+            "$connectionDeviceGenerationId": "",
+            "$connectionAuthMethod": "",
+            "$content-type": "",
+            "$content-encoding": ""
+
             "userProperty1": "",
             "userProperty2": ""
         }
+
+消息系统属性以 `'$'` 符号为前缀。
+用户属性始终使用其名称进行访问。 如果用户属性名恰好与系统属性（例如 `$to`）完全一致，则将使用 `$to` 表达式检索用户属性。
+始终可以使用括号 `{}` 访问系统属性：例如，可以使用表达式 `{$to}` 访问系统属性 `to`。 将属性名称括在括号中始终可检索相应的系统属性。
 
 请记住，属性名称不区分大小写。
 
 > [!NOTE]
 > 消息属性均为字符串。 如[开发人员指南][lnk-devguide-messaging-format]所述，目前不能在查询中使用系统属性。
->
 >
 
 例如，如果使用 `messageType` 属性，可能需要将所有遥测和所有警报路由到两个不同的终结点。 可编写以下表达式进行遥测路由：
@@ -458,6 +474,6 @@ GROUP BY 的正式语法为：
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

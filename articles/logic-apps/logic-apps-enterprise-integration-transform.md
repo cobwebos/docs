@@ -1,6 +1,6 @@
 ---
-title: "Enterprise Integration Pack 概述 | Microsoft Docs"
-description: "使用 Enterprise Integration Pack 的功能可实现使用 Microsoft Azure App service 的业务流程和集成方案"
+title: "使用转换转换 XML 数据 - Azure 逻辑应用 | Microsoft 文档"
+description: "使用 Enterprise Integration SDK 创建转换或映射将 XML 数据在逻辑应用的格式之间转换"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: deonhe
+ms.author: estfan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: cca850073040cde0fb6f035f041419ac777bb0a2
+ms.sourcegitcommit: 9369b90471ee775664b942b21ceb450b8852eafd
+ms.openlocfilehash: a8684769e73dd3f7a76cba9c78046abceb842918
 
 
 ---
@@ -75,6 +75,6 @@ ms.openlocfilehash: cca850073040cde0fb6f035f041419ac777bb0a2
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

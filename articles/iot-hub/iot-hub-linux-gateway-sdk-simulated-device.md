@@ -12,11 +12,11 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2016
+ms.date: 02/08/2017
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
-ms.openlocfilehash: ce70835a4f8f39d320b1effdb0dee11abd22cd81
+ms.sourcegitcommit: 5edf2f4c7d9d2e8e8ceb2e8de9ae7cef4c9fd02e
+ms.openlocfilehash: f6e3d0bfd45cb5cd133d77bcb23113c3f419450c
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: ce70835a4f8f39d320b1effdb0dee11abd22cd81
 
 * [设置开发环境][lnk-setupdevbox]，以便在 Linux 上使用 SDK。
 * 若要在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，需要使用中心的名称来完成本演练。 如果你没有帐户，只需几分钟就能创建一个[免费帐户][lnk-free-trial]。
-* 将两个设备添加到 IoT 中心，并记下其 ID 和设备密钥。 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具来将设备添加到在上一步中创建的 IoT 中心，并检索其密钥。
+* 将两个设备添加到 IoT 中心，并记下其 ID 和设备密钥。 可使用[设备资源管理器][lnk-device-explorer]或 [iothub-explorer][lnk-iothub-explorer] 工具将设备添加到在上一步中创建的 IoT 中心，并检索其密钥。
 
 生成示例：
 
@@ -158,7 +158,7 @@ ms.openlocfilehash: ce70835a4f8f39d320b1effdb0dee11abd22cd81
     ```
     ./samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./../samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
     ```
-3. 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具来监视 IoT 中心从网关接收的消息。
+3. 可使用[设备资源管理器][lnk-device-explorer]或 [iothub-explorer][lnk-iothub-explorer] 工具监视 IoT 中心从网关接收的消息。
 
 ## <a name="next-steps"></a>后续步骤
 如果想要深入了解 IoT 网关 SDK 并尝试一些代码示例，请访问以下开发人员教程和资源：
@@ -174,7 +174,8 @@ ms.openlocfilehash: ce70835a4f8f39d320b1effdb0dee11abd22cd81
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-explorer-tools]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md
+[lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
+[lnk-iothub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 
 [lnk-physical-device]: iot-hub-gateway-sdk-physical-device.md
@@ -185,6 +186,6 @@ ms.openlocfilehash: ce70835a4f8f39d320b1effdb0dee11abd22cd81
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

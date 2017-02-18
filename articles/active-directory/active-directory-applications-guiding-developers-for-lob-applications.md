@@ -1,5 +1,5 @@
 ---
-title: "Azure AD 和应用程序：开发人员指导 | Microsoft 文档"
+title: "开发适用于 Azure AD 的 LOB 应用 | Microsoft 文档"
 description: "本文专门为 IT 专业人员编写，提供有关将 Azure 应用程序与 Active Directory 集成的指导。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: fe295cb9b79593f7fd4635d142ec86d1c6897192
+ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
+ms.openlocfilehash: cd1c8d74afa51815b3f6c093e6a9054b97359843
 
 
 ---
@@ -36,18 +36,18 @@ ms.openlocfilehash: fe295cb9b79593f7fd4635d142ec86d1c6897192
 * 获取应用程序可用于向 AD 验证其身份的一个或多个机密/密钥
 * 在 Azure 门户中使用自定义名称、徽标等指定应用程序的品牌。
 * 对应用应用 Azure AD 授权功能，包括：
-  
+
   * 基于角色的访问控制 (RBAC)
   * 使用 Azure Active Directory 作为 oAuth 授权服务器（保护应用程序公开的 API）
 * 声明让应用程序按预期运行所需的权限，包括：
-  
+
       - 应用权限（仅限全局管理员）。 例如：另一个 Azure AD 应用程序中的角色成员身份，或相对于 Azure 资源、资源组或订阅的角色成员身份
       - 委派的权限（任何用户）。 例如：Azure AD、登录和读取配置文件
 
 > [!NOTE]
 > 默认情况下，任何成员都可以注册应用程序。 若要了解如何限定只有特定成员拥有注册应用程序的权限，请参阅 [How applications are added to Azure AD](develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)（如何将应用程序添加到 Azure AD）。
-> 
-> 
+>
+>
 
 下面是全局管理员需要执行哪些操作，才能帮助开发人员将其应用程序投放到生产环境：
 
@@ -83,7 +83,6 @@ ms.openlocfilehash: fe295cb9b79593f7fd4635d142ec86d1c6897192
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

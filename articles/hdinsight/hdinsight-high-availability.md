@@ -13,17 +13,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 1f40d6119d5fefc48c1e12d510423f996239fe14
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: dd28e295df7acead773f9076d790e0e96b66adb9
 
 
 ---
 # <a name="availability-and-reliability-of-windows-based-hadoop-clusters-in-hdinsight"></a>HDInsight 中基于 Windows 的 Hadoop 群集的可用性和可靠性
-> [!NOTE]
-> 本文档中使用的步骤特定于基于 Windows 的 HDInsight 群集。 如果使用基于 Linux 的群集，请参阅 [HDInsight 中基于 Linux 的 Hadoop 群集的可用性和可靠性](hdinsight-high-availability-linux.md)，以了解有关特定于 Linux 的信息。
+> [!IMPORTANT]
+> 本文档中使用的步骤特定于基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 如果使用基于 Linux 的群集，请参阅 [HDInsight 中基于 Linux 的 Hadoop 群集的可用性和可靠性](hdinsight-high-availability-linux.md)，以了解有关特定于 Linux 的信息。
 >
 >
 
@@ -58,7 +58,7 @@ Hadoop 群集的标准实现通常具有单个头节点。 HDInsight 通过添�
 在屏幕截图中，活动头节点是 *headnode0*。
 
 ## <a name="access-log-files-on-the-secondary-head-node"></a>访问辅助头节点上的日志文件
-当辅助头节点变为活动头节点时，可以通过浏览 JobTracker UI 来访问辅助头节点上的作业日志，就像是在主活动节点上操作一样。 若要访问 JobTracker，你必须通过使用 RDP 连接到 Hadoop 群集，如以上部分中所述。 在远程连接到该群集后，双击位于桌面上的“Hadoop 名称节点状态”图标，然后单击“NameNode 日志”，即可转到辅助头节点上的日志目录。
+当辅助头节点变为活动头节点时，可以通过浏览 JobTracker UI 来访问辅助头节点上的作业日志，就像是在主活动节点上操作一样。 若要访问 JobTracker，你必须通过使用 RDP 连接到 Hadoop 群集，如以上部分中所述。 通过 RDP 连接到该群集后，双击位于桌面上的“Hadoop 名称节点状态”图标，然后单击“NameNode 日志”，即可转到辅助头节点上的日志目录。
 
 ![](./media/hdinsight-high-availability/Hadoop.Head.Node.Log.Files.png)
 
@@ -106,6 +106,6 @@ Hadoop 群集的标准实现通常具有单个头节点。 HDInsight 通过添�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

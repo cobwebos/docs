@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: 24e675ebd63554be0bbc51e1013c4ade94b56abe
+ms.sourcegitcommit: 55ee9f685427168c02865d204fda34066c6779c5
+ms.openlocfilehash: a8533926bbb26770d8e665436e38172aeffbb035
 
 
 ---
@@ -56,8 +56,8 @@ Azure Active Directory 架构不允许两个或更多个对象的以下属性使
 > [!NOTE]
 > [Azure AD 属性的重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)功能同时将作为 Azure Active Directory 的默认行为推出。  该功能可使 Azure AD 更灵活地处理本地 AD 环境中的重复 ProxyAddresses 和 UserPrincipalName 属性，减少 Azure AD Connect（以及其他同步客户端）遇到的同步错误。 此功能无法解决重复错误。 因此，仍然需要修复数据。 但是，使用此功能可以预配新对象，否则，会由于 Azure AD 中存在重复值而无法预配。 此外，这还减少了返回到同步客户端的同步错误。
 > 如果为租户启用此功能，则预配新对象期间不会出现 InvalidSoftMatch 同步错误。
-> 
-> 
+>
+>
 
 #### <a name="example-scenarios-for-invalidsoftmatch"></a>发生 InvalidSoftMatch 的示例情景
 1. 本地 Active Directory 中有两个或更多个对象的 ProxyAddresses 属性值相同。 在 Azure AD 中只会预配其中一个对象。
@@ -100,8 +100,8 @@ Azure Active Directory 架构不允许两个或更多个对象的以下属性使
 
 > [!NOTE]
 > 根据定义，ImmutableId 在对象的生存期内不应更改。 如果在配置 Azure AD Connect 时未考虑到上述列表中的某些情景，Azure AD Connect 为代表相同实体（同一个用户/组/联系人等）的、存在你想要继续使用的 Azure AD 对象的 AD 对象计算的 SourceAnchor 值不同。
-> 
-> 
+>
+>
 
 #### <a name="related-articles"></a>相关文章
 * [Duplicate or invalid attributes prevent directory synchronization in Office 365](https://support.microsoft.com/en-us/kb/2647098)（Office 365 中的重复或无效属性导致无法进行目录同步）
@@ -181,7 +181,7 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 
 ### <a name="datavalidationfailed"></a>DataValidationFailed
 #### <a name="description"></a>说明
-这是导致**“DataValidationFailed”**同步错误的一个非常具体的案例：用户的 UserPrincipalName 后缀已从一个联合域更改为另一个联合域。
+这是导致“DataValidationFailed”同步错误的一个具体的案例：用户的 UserPrincipalName 后缀已从一个联合域更改为另一个联合域。
 
 #### <a name="scenarios"></a>方案
 某个已同步用户的 UserPrincipalName 后缀已从一个联合域更改为本地的另一个联合域。 例如，*UserPrincipalName = bob@contoso.com* 已更改为 *UserPrincipalName = bob@fabrikam.com*。
@@ -193,10 +193,13 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 4. Bob 的 userPrincipalName 不会更新，并且会导致“DataValidationFailed”同步错误。
 
 #### <a name="how-to-fix"></a>如何解决
-如果用户的 UserPrincipalName 后缀已从 bob@**contoso.com** 更新为 bob@**fabrikam.com**，并且 **contoso.com** 和 **fabrikam.com** 都是**联合域**，则遵循以下步骤可以解决同步错误
+如果用户的 UserPrincipalName 后缀已从 bob@**contoso.com** 更新为 bob@**fabrikam.com**，其中 **contoso.com** 和 **fabrikam.com** 都是**联合域**，则执行以下步骤可以解决同步错误
 
 1. 在 Azure AD 中将用户的 UserPrincipalName 从 bob@contoso.com 更新为 bob@contoso.onmicrosoft.com。 可以在 Azure AD PowerShell 模块中使用以下 PowerShell 命令：`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. 允许下一个同步周期尝试同步。 这一次，同步将会成功，并且会按预期将 Bob 的 UserPrincipalName 更新为 bob@fabrikam.com。
+
+#### <a name="related-articles"></a>相关文章
+* [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>说明
@@ -207,8 +210,8 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>可能的方案
-1. Bob 的 userCertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。
-2. 在 Active Directory 中为 Bob 设置的 thmubnailPhoto 过大，无法在 Azure AD 中同步。
+1. Bob 的 userCertificate 属性存储了过多的分配给 Bob 的证书。 其中可能包括旧的或过期的证书。 硬限制为 50 个证书，但建议具有少于 25 个证书。
+2. 在 Active Directory 中为 Bob 设置的 thumbnailPhoto 过大，无法在 Azure AD 中同步。
 3. 在 Active Directory 中自动填充 ProxyAddresses 属性期间，为某个对象分配了&500; 个以上的 ProxyAddresses。
 
 ### <a name="how-to-fix"></a>如何解决
@@ -220,7 +223,6 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 783952ef1a19d18c3dd5d25c9ccf25cf3b29af45
+ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
+ms.openlocfilehash: 5eacb832ba2a20eae35c58704296c9d03e94ef0e
 
 
 ---
@@ -114,7 +114,7 @@ LDAP 服务器必须提供以下 LDAP 控件/功能，连接器才能正常运�
 
 True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出现在“找不到强制功能”之下的“全局页面”上。 它用于在 LDAP 查询中创建 **OR** 筛选器，例如，当导入多个对象类型时。 如果可以导入一种对象类型，则 LDAP 服务器支持此功能。
 
-如果使用的目录中有唯一标识符是定位点，则也必须提供以下项目（有关详细信息，请参阅本文后面的[配置定位点](#configure-anchors)部分）：  
+如果使用的目录中有唯一标识符是定位点，则也必须提供以下项目（有关详细信息，请参阅[配置定位点](#configure-anchors)部分）：  
 `1.3.6.1.4.1.4203.1.5.1` 所有操作属性
 
 如果目录中的对象数目超过在一次调用目录时可容纳的数目，则建议使用分页。 要正常分页，需要使用以下选项之一：
@@ -162,7 +162,7 @@ True/False 筛选器通常不被报告为受 LDAP 目录支持，并且可能出
 * 对于其他绑定，请在用户名/密码中输入信息或选择证书。
 * 如果使用 Kerberos 进行身份验证，则还要提供用户的领域/域。
 
-“属性别名”文本框用于以 RFC4522 语法在架构中定义的属性。 在架构检测期间无法检测这些属性，连接器需要帮助识别这些属性。 例如，需要在“属性别名”框中输入以下项目，才能正确地将 userCertificate 属性识别为二进制属性：
+“属性别名”文本框用于以 RFC4522 语法在架构中定义的属性。 在架构检测期间无法检测这些属性，连接器需要帮助识别这些属性。 例如，必须在“属性别名”框中输入以下项目，才能正确地将 userCertificate 属性识别为二进制属性：
 
 `userCertificate;binary`
 
@@ -264,7 +264,6 @@ Open LDAP 中的增量水印是 UTC 日期/时间。 出于此原因，FIM 同�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

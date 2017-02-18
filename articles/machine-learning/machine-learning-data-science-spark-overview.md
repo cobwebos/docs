@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/07/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 091a753c8a183975c7aa340fa2f089adf4fe5574
+ms.sourcegitcommit: 304323601a7fb2c9b46cf0e1eea9429cf099a111
+ms.openlocfilehash: da0f910e75fc74821bb08b2fd5b06ed08c386646
 
 
 
@@ -30,12 +30,12 @@ ms.openlocfilehash: 091a753c8a183975c7aa340fa2f089adf4fe5574
 
 [HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 **Jupyter PySpark 笔记本**的支持，这些笔记本可以运行 Spark SQL 交互式查询，用于对存储在 Azure Blob (WASB) 中的数据进行转换、筛选和可视化。 PySpark 是用于 Spark 的 Python API。 提供解决方案并显示相关图表以可视化此处的数据的代码片段在 Spark 群集上安装的 Jupyter 笔记本中运行。 这些主题中的建模步骤包含代码，显示每种类型模型的训练、评估、保存和使用方式。 
 
-本演练中提供的设置步骤和代码适用于 HDInsight 3.4 Spark 1.6。 但是，此处位于笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。
+本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但为 HDInsight Spark 1.6 和 Spark 2.0 群集提供了 Jupyter 笔记本。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。
 
 ## <a name="prerequisites"></a>先决条件
 1. 必须具有 Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-2. 需要使用 HDInsight 3.4 Spark 1.6 群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”菜单中指定群集类型和版本。 
+2. 需要使用 Spark 1.6 或 Spark 2.0 群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”菜单中指定群集类型和版本。 
 
 ![配置群集](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
@@ -115,11 +115,15 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 选择 PySpark 查看包含几个使用 PySpark API 的预打包笔记本示例的目录。包含这一系列 Spark 主题的代码示例的笔记本可在 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上获取
 
-可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”按钮。 它将打开文件资源管理器。 你可以在此处粘贴笔记本的 Github（原始内容）URL，然后单击“打开”。 PySpark 笔记本可在以下 URL 中获取：
+可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”按钮。 它将打开文件资源管理器。 你可以在此处粘贴笔记本的 Github（原始内容）URL，然后单击“打开”。 PySpark 笔记本可在以下 URL 中获取。 对于 pySpark2-Spark1.6 HDInsight 群集：
 
 1. [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)
 2. [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)
 3. [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)
+
+对于 pySpark3-Spark2.0 HDInsight 群集：
+
+[pySpark3-Spark2.0-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark3-Spark2.0-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)
 
 你将再次看到文件名显示在 Jupyter 文件列表上，并带有“上传”按钮。 单击此“上传”按钮。 现在你已导入笔记本。 重复上述步骤，上传本演练中的其他笔记本。
 
@@ -154,6 +158,6 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

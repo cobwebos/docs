@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: bb140097831453d46f6bfef1c9fbe569eefb3020
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
 
 * 可在 Azure AD 中控制谁有权访问 Tangoe Command Premium Mobile
 * 可以让用户使用其 Azure AD 帐户自动登录到 Tangoe Command Premium Mobile（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可使用 Azure 经典门户在一个中心位置管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,10 +35,10 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
 若要配置 Azure AD 与 Tangoe Command Premium Mobile 的集成，需要以下项：
 
 * Azure 订阅
-* 已启用 Tangoe Command Premium Mobile 单一登录的订阅
+* 已启用 Tangoe Command Premium Mobile 单一登录 (SSO) 的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 测试本教程中的步骤时，建议不要使用生产环境。
 > 
 > 
 
@@ -89,7 +89,7 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
 
 若要配置和测试 Tangoe Command Premium Mobile 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 Tangoe Command Premium Mobile 测试用户](#creating-an-tangoe-test-user)** - 在 Tangoe Command Premium Mobile 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
@@ -110,40 +110,39 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
    
     ![配置单一登录](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Tangoe Command Premium Mobile 应用程序的 URL：**“https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=\<租户颁发者\>&Target=\<目标页 URL\>”**。
+   1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Tangoe Command Premium Mobile 应用程序的 URL：**“https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=\<租户颁发者\>&Target=\<目标页 URL\>”**。
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：**“https://sso.tangoe.com/sp/ACS.saml2”**
+   2. 在“回复 URL”文本框中，使用以下模式键入 URL：**“https://sso.tangoe.com/sp/ACS.saml2”**
 
-    > [AZURE.NOTE]  如果不知道正确的 URL 值，则可以使用上面的值作为占位符向 Tangoe 客户支持人员请求正确的值。
+    > [!NOTE]  
+    > 如果不知道正确的 URL 值，则可以使用上面的值作为占位符向 Tangoe 客户支持人员请求正确的值。
+    >
 
-
-1. 在“配置 Tangoe Command Premium Mobile 的单一登录”页上，执行以下步骤：
+4. 在“配置 Tangoe Command Premium Mobile 的单一登录”页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
-   
-    b. 单击“下一步”。
-2. 若要为应用程序配置 SSO，请联系 Tangoe 客户支持人员，并向他们提供以下内容：
+   1. 单击“下载元数据”，然后在计算机上保存该文件。
+   2. 单击“资源组名称” 的 Azure 数据工厂。
 
-    - 下载的元数据文件
-    - **颁发者 URL**
-    - **SAML SSO URL**
-    - **单一注销服务 URL**
+5. 若要为应用程序配置 SSO，请联系 Tangoe 客户支持人员，并向他们提供以下内容：
 
+   - 下载的元数据文件
+   - **颁发者 URL**
+   - **SAML SSO URL**
+   - **单一注销服务 URL**
 
-
-1. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+6. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
-2. 在“单一登录确认”页上，单击“完成”。  
+7. 在“单一登录确认”页上，单击“完成”。  
    
     ![Azure AD 单一登录][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 在本部分中，将在经典门户中创建一个名为 Britta Simon 的测试用户。
 
-在“用户”列表中，选择“Britta Simon”。
+* 在“用户”列表中，选择“Britta Simon”。
 
 ![创建 Azure AD 用户][20]
 
@@ -172,15 +171,11 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-tangoe-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+  1. 在“名字”文本框中，键入“Britta”。  
+  2. 在“姓氏”文本框中，键入“Simon”。
+  3. 在“显示名称”文本框中，键入“Britta Simon”。
+  4. 在“角色”列表中，选择“用户”。
+  5. 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tangoe-tutorial/create_aaduser_07.png) 
@@ -188,16 +183,14 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-tangoe-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+  1. 写下“新密码”的值。
+  2. 单击“完成”。   
 
 ### <a name="creating-an-tangoe-command-premium-mobile-test-user"></a>创建 Tangoe Command Premium Mobile 测试用户
 在本部分中，将在 Tangoe Command Premium Mobile 中创建一个名为“Britta Simon”的用户。 在执行单一登录前，Tangoe Command Premium Mobile 应用程序需要在应用程序中预配所有用户。 因此，请协助 Tangoe 客户支持人员将所有这些用户预配到应用程序中。 
 
 > [!NOTE]
 > 如果需要手动创建一个用户或一批用户，需要联系 Tangoe Command Premium Mobile 支持团队。
-> 
 > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -209,18 +202,18 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
 
 1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
 
-![分配用户][201] 
+ ![分配用户][201] 
 
-1. 在应用程序列表中，选择“Tangoe Command Premium Mobile”。
+2. 在应用程序列表中，选择“Tangoe Command Premium Mobile”。
 
-![配置单一登录](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_50.png) 
+ ![配置单一登录](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_50.png) 
+ 
+3. 在顶部菜单中，单击“用户”。
 
-1. 在顶部菜单中，单击“用户”。
+ ![分配用户][203] 
 
-![分配用户][203] 
-
-1. 在“用户”列表中，选择“Britta Simon”。
-2. 在底部工具栏中，单击“分配”。
+4. 在“用户”列表中，选择“Britta Simon”。
+5. 在底部工具栏中，单击“分配”。
 
 ![分配用户][205]
 
@@ -253,6 +246,6 @@ ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

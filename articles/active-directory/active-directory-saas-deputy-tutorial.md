@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: c853d61257493d73cd0f8a51a15f0389e1e83cf4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 
 * 可以在 Azure AD 中控制谁有权访问 Deputy
 * 可以让用户使用其 Azure AD 帐户自动登录到 Deputy（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,10 +35,10 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 若要配置 Azure AD 与 Deputy 的集成，需要具有以下项：
 
 * Azure AD 订阅
-* 启用了 Deputy 单一登录的订阅
+* 已启用 Deputy 单一登录 (SSO) 的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 测试本教程中的步骤时，建议不要使用生产环境。
 > 
 > 
 
@@ -109,19 +109,14 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 3. 在“配置应用设置”对话框页上，如果要在“IDP 发起的模式”下配置应用程序，请执行以下步骤，然后单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_04.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com/exec/devapp/samlacs`。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+  1. 在“标识符”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
+  2. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com/exec/devapp/samlacs`。
+  3. 单击“资源组名称” 的 Azure 数据工厂。
 4. 如果要在“配置应用设置”对话框页上以“SP 发起的模式”配置应用程序，则单击“显示高级设置(可选)”，然后输入“登录 URL”，并单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_05.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
+   1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<your-subdomain>.<region>.deputy.com`。
+   2. 单击“下一步”。
    
    > [!NOTE]
    > Deputy 区域后缀是可选的，或者应当使用下列项之一：au | na | eu |as |la |af |an |ent-au |ent-na |ent-eu |ent-as | ent-la | ent-af | ent-an
@@ -130,27 +125,21 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 5. 在“在 Deputy 处配置单一登录”页上，执行以下步骤并单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_06.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+   1. 单击“下载证书”，然后将文件保存在计算机上。
 6. 导航到以下 URL：https://(your-subdomain).deputy.com/exec/config/system_config。 转到“安全设置”并单击“编辑”。
    
     ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_004.png)
 7. 在 Azure 经典门户中，在“在 Deputy 处配置单一登录”页上，复制 SAML SSO URL。 
 8. 在此“安全设置”页上，执行以下步骤。
    
-    ![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_005.png)
-   
-    a. 启用**社交登录**。
-   
-    b. 在记事本中打开 Base64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“OpenSSL 证书”文本框中。
-   
-    c. 在“SAM SSO URL”文本框中，键入 `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
-   
-    d. 在“SAM SSO URL”文本框中，将 `<your subdomain>` 替换为你的子域。
-   
-    e. 在“SAM SSO URL”文本框中，将 `<saml sso url>` 替换为你从 Azure 经典门户中复制的 SAML SSO URL。
-   
-    f. 单击“保存设置”。
+![配置单一登录](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_005.png)
+
+   1. 启用**社交登录**。
+   2. 在记事本中打开 Base64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“OpenSSL 证书”文本框中。
+   3. 在“SAM SSO URL”文本框中，键入 `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
+   4. 在“SAM SSO URL”文本框中，将 `<your subdomain>` 替换为你的子域。
+   5. 在“SAM SSO URL”文本框中，将 `<saml sso url>` 替换为你从 Azure 经典门户中复制的 SAML SSO URL。
+   6. 单击“保存设置”。
 9. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
@@ -178,25 +167,20 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_05.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
+
+   1. 在“用户类型”中，选择“你的组织中的新用户”。
+   2. 在“用户名”文本框中，键入“BrittaSimon”。
+   3. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_06.png)
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
    
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_07.png)
@@ -204,9 +188,8 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-deputy-tutorial/create_aaduser_08.png)
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+   1. 写下“新密码”的值。
+   2. 单击“完成”。   
 
 ### <a name="creating-a-deputy-test-user"></a>创建 Deputy 测试用户
 为了使 Azure AD 用户能够登录到 Deputy，必须将其预配到 Deputy 中。 对于 Deputy，需要手动执行预配。
@@ -215,21 +198,18 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 1. 以管理员身份登录到你的 Deputy 公司站点。
 2. 在顶部的导航窗格中，单击“人员”。
    
-   ![人员](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_001.png "People")
+   ![人员](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_001.png "人员")
 3. 单击“添加人员”按钮，然后单击“添加单个人员”。
    
-   ![添加人员](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_002.png "Add People")
+   ![添加人员](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_002.png "添加人员")
 4. 执行以下步骤并单击“保存并邀请”。
    
    ![新建用户](./media/active-directory-saas-deputy-tutorial/tutorial_deputy_003.png "New User")
    
-   a. 在“姓名”文本框中，键入 **Britta** 和 **Simon**。  
-   
-   b. 在“电子邮件”文本框中，键入要预配的 Azure AD 帐户的电子邮件地址。
-   
-   c. 在“工作单位”文本框中，键入公司名称。
-   
-   d. 单击“保存并邀请”按钮。
+  1. 在“姓名”文本框中，键入 **Britta** 和 **Simon**。  
+  2. 在“电子邮件”文本框中，键入要预配的 Azure AD 帐户的电子邮件地址。
+  3. 在“工作单位”文本框中，键入公司名称。
+  4. 单击“保存并邀请”按钮。
    
    > [!NOTE]
    > AAD 帐户持有者将收到一封电子邮件，并打开用于在激活帐户前确认其帐户的链接。 可以使用 Deputy 提供的任何其他 Deputy 用户帐户创建工具或 API 来预配 AAD 用户帐户。
@@ -286,6 +266,6 @@ ms.openlocfilehash: 33508e0b5a74cb37201ee926e297897ac0a73fcf
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 
