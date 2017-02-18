@@ -11,7 +11,7 @@
 
 # 入门
 ## [先决条件](active-directory-aadconnect-prerequisites.md)
-## [安装 Azure AD Connect](active-directory-aadconnect-accounts-permissions.md)
+## [安装 Azure AD Connect](active-directory-aadconnect-select-installation.md)
 ### [快速设置](active-directory-aadconnect-get-started-express.md)
 ### [自定义设置](active-directory-aadconnect-get-started-custom.md)
 ### [从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md)
@@ -28,12 +28,11 @@
 ### [续订 O365 和 Azure AD 的证书](active-directory-aadconnect-o365-certs.md)
 ### [启用设备写回](active-directory-aadconnect-feature-device-writeback.md)
 ### [用户登录选项](active-directory-aadconnect-user-signin.md)
-### [联合的多域支持](active-directory-aadconnect-multiple-domains.md)
+### [对联合的多域支持](active-directory-aadconnect-multiple-domains.md)
 ### [自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)
 
 
 ## 管理 Azure AD Connect Sync
-### [通用 SQL 连接器分步说明](active-directory-aadconnectsync-connector-genericsql-step-by-step.md)
 ### [防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD 服务帐户](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -58,14 +57,11 @@
 
 
 # 引用
-## [Windows PowerShell 连接器](active-directory-aadconnectsync-connector-powershell.md)
-## [泛型 SQL 连接器](active-directory-aadconnectsync-connector-genericsql.md)
-## [泛型 LDAP 连接器](active-directory-aadconnectsync-connector-genericldap.md)
-## [Lotus Domino 连接器](active-directory-aadconnectsync-connector-domino.md)
 ## [标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [混合标识所需的端口和协议](active-directory-aadconnect-ports.md)
 ## [预览版功能](active-directory-aadconnect-feature-preview.md)
 ## [版本历史记录](active-directory-aadconnect-version-history.md)
+## [帐户和权限](active-directory-aadconnect-accounts-permissions.md)
 
 ## Azure AD Connect Sync
 ### [与 Azure Active Directory 同步的属性](active-directory-aadconnectsync-attributes-synchronized.md)
@@ -89,6 +85,6 @@
 ##[DirSync 弃用](active-directory-aadconnect-dirsync-deprecated.md)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 
