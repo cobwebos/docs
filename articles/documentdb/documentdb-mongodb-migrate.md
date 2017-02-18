@@ -1,7 +1,7 @@
 ---
-title: "将数据迁移到具有 MongoDB 协议支持的 Azure DocumentDB 帐户 | Microsoft Docs"
+title: "将 mongoimport 和 mongorestore 与 Azure DocumentDB 配合使用 | Microsoft Docs"
 description: "了解如何使用 mongoimport 和 mongorestore 将数据导入到具有 MongoDB 协议支持的 DocumentDB 帐户（目前以预览版提供）。"
-keywords: "迁移"
+keywords: "mongoimport，mongorestore"
 services: documentdb
 author: AndrewHoh
 manager: jhubbard
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2dc98400ed4eaa2263d73f0718f5eaee260d48f5
-ms.openlocfilehash: 80665bc84948696b05b04536a066ebebb5a81e89
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
 
 
 ---
-# <a name="migrate-data-to-documentdb-with-protocol-support-for-mongodb"></a>将数据迁移到具有 MongoDB 协议支持的 DocumentDB
+# <a name="migrate-data-to-documentdb-by-using-mongoimport-and-mongorestore"></a>使用 mongoimport 和 mongorestore 将数据迁移到 DocumentDB
 若要将数据迁移到具有 MongoDB 协议支持的 Azure DocumentDB 帐户，必须：
 
 * 从 [MongoDB 下载中心](https://www.mongodb.com/download-center)下载 *mongoimport.exe* 或 *mongorestore.exe*。
@@ -71,6 +71,6 @@ ms.openlocfilehash: 80665bc84948696b05b04536a066ebebb5a81e89
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

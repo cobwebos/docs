@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具创建 Spark Scala 应用程序 | Microsoft Docs"
+title: "使用适用于 IntelliJ 的 Azure 工具包为 Spark 创建 Scala 应用程序 | Microsoft Docs"
 description: "了解如何创建要在 HDInsight Spark 群集中运行的独立 Spark 应用程序。"
 services: hdinsight
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53346b6f9e7b5a172ecc343883f55409d5ca8057
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 6c513def2abc8c99b84b2eb48848de76e12e69c7
 
 
 ---
@@ -67,15 +67,17 @@ ms.openlocfilehash: 53346b6f9e7b5a172ecc343883f55409d5ca8057
    
    * 在左窗格中，选择“HDInsight”。
    * 在右窗格中，选择“Spark on HDInsight (Scala)”。
-   * 单击“资源组名称” 的 Azure 数据工厂。
+   * 单击“下一步”。
 2. 在下一窗口中，提供项目详细信息。
    
    * 提供项目名称和项目位置。
-   * 对于“项目 SDK”，请确保提供的 Java 版本大于 7。
-   * 对于“Scala SDK”，请依次单击“创建”、“下载”，然后选择要使用的 Scala 版本。 **确保未使用版本 2.11.x**。 本示例使用版本 **2.10.6**。
-     
-       ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
-   * 对于“Spark SDK”，请从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用该 SDK。 也可以忽略过此字段并改用 [Spark Maven 存储库](http://mvnrepository.com/search?q=spark)，不过请确保已安装正确的 Maven 存储库，以便能够开发 Spark 应用程序。 （例如，如果你使用 Spark Streaming，则需要确保已安装 Spark Streaming 部件；另请确保使用标记为 Scala 2.10 的存储库 - 不要使用标记为 Scala 2.11 的存储库。）
+   * 对于“项目 SDK”，Java 1.7 或更高版本用于 Spark 1.6 群集，Java 1.8 用于 Spark 2.0 群集。
+   * 对于“Scala SDK”，请依次单击“创建”、“下载”，然后选择要使用的 Scala 版本。
+   * * 如果要将作业提交到 Spark 2.0 群集，请选择“JDK 1.8 和 Scala 2.11.x”。
+   * * 如果要将作业提交到 Spark 1.6 群集，请选择“JDK 1.7 或更高版本和 Scala 2.10.x”。
+
+        ![](./media/hdinsight-apache-spark-intellij-tool-plugin/show-scala2.11.x-select.png)
+   * 对于“Spark SDK”，可从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用 SDK（spark-assembly-2.0.0-hadoop2.7.0-SNAPSHOT.jar 用于 Spark 2.0 群集，spark-assembly-x.jar 用于 Spark 1.6 群集）。 也可以忽略过此字段并改用 [Spark Maven 存储库](http://mvnrepository.com/search?q=spark)，不过请确保已安装正确的 Maven 存储库，以便能够开发 Spark 应用程序。 （例如，如果使用 Spark Streaming，则需要确保已安装 Spark Streaming 部件；另请确保对 Spark 1.6 群集使用标记为 Scala 2.10 的存储库，对 Spark 2.0 群集使用标记为 Scala 2.11 的存储库。）
      
        ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-project-details.png)
    * 单击“完成” 。
@@ -87,7 +89,7 @@ ms.openlocfilehash: 53346b6f9e7b5a172ecc343883f55409d5ca8057
        ![创建 JAR](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
       
       也可以通过单击上图中突出显示的“+”图标创建自己的项目。
-4. 在“项目结构”对话框中，单击“项目”。 如果“项目 SDK”设置为 1.8，请确保“项目语言级别”设置为“7 - Diamonds、ARM、Multi-Catch 等”。
+4. 在“项目结构”对话框中，单击“项目”。 如果“项目 SDK”设置为 1.8，请确保“项目语言级别”设置为“7 - Diamonds、ARM、Multi-Catch 等”（对于 Spark 2.0 群集，此项为可选项）。
    
     ![设置项目语言级别](./media/hdinsight-apache-spark-intellij-tool-plugin/set-project-language-level.png)
 5. 添加应用程序源代码。
@@ -175,15 +177,15 @@ ms.openlocfilehash: 53346b6f9e7b5a172ecc343883f55409d5ca8057
    
    * 在左窗格中，选择“HDInsight”。
    * 在右窗格中，选择“Spark on HDInsight 本地运行示例(Scala)”。
-   * 单击“资源组名称” 的 Azure 数据工厂。
+   * 单击“下一步”。
 2. 在下一窗口中，提供项目详细信息。
    
    * 提供项目名称和项目位置。
    * 对于“项目 SDK”，请确保提供的 Java 版本大于 7。
-   * 对于“Scala SDK”，请依次单击“创建”、“下载”，然后选择要使用的 Scala 版本。 **确保未使用版本 2.11.x**。 本示例使用版本 **2.10.6**。
+   * 对于“Scala SDK”，请依次单击“创建”、“下载”，然后选择要使用的 Scala 版本。“Scala 2.11.x 用于 Spark 2.0，Scala 2.10.x 用于 Spark 1.6”。
      
        ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
-   * 对于“Spark SDK”，请从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用该 SDK。 也可以忽略过此字段并改用 [Spark Maven 存储库](http://mvnrepository.com/search?q=spark)，不过请确保已安装正确的 Maven 存储库，以便能够开发 Spark 应用程序。 （例如，如果你使用 Spark Streaming，则需要确保已安装 Spark Streaming 部件；另请确保使用标记为 Scala 2.10 的存储库 - 不要使用标记为 Scala 2.11 的存储库。）
+   * 对于“Spark SDK”，请从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用该 SDK。 也可以忽略过此字段并改用 [Spark Maven 存储库](http://mvnrepository.com/search?q=spark)，不过请确保已安装正确的 Maven 存储库，以便能够开发 Spark 应用程序。 （例如，如果使用 Spark Streaming，则需要确保已安装 Spark Streaming 部件；另请确保对 Spark 1.6 群集使用标记为 Scala 2.10 的存储库，对 Spark 2.0 群集使用标记为 Scala 2.11 的存储库。）
      
        ![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-create-project.png)
    * 单击“完成” 。
@@ -265,6 +267,6 @@ ms.openlocfilehash: 53346b6f9e7b5a172ecc343883f55409d5ca8057
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

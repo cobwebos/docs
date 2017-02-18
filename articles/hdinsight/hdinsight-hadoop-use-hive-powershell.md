@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/07/2016
+ms.date: 01/19/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: bb5fee05bb14276ab0a9e2309f8a20cb3684df57
+ms.sourcegitcommit: f3be777497d842f019c1904ec1990bd1f1213ba2
+ms.openlocfilehash: daa914f14a2bd6eb830728f2519eb9749d483c9f
 
 
 ---
@@ -28,19 +28,22 @@ ms.openlocfilehash: bb5fee05bb14276ab0a9e2309f8a20cb3684df57
 
 > [!NOTE]
 > 本文档未详细描述示例中使用的 HiveQL 语句的作用。 有关此示例中使用的 HiveQL 的信息，请参阅[将 Hive 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-hive.md)。
-> 
-> 
 
 **先决条件**
 
 若要完成本文中的步骤，你将需要：
 
-* **Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Windows 或 Linux）**
+* **Azure HDInsight 群集**：无论该群集是基于 Windows 还是基于 Linux 都行。
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * **配备 Azure PowerShell 的工作站**。
   
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ## <a name="run-hive-queries-using-azure-powershell"></a>使用 Azure PowerShell 运行 Hive 查询
+
 Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询。 从内部来讲，这是通过使用 REST 调用 HDInsight 群集上运行的 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)（以前称为 Templeton）实现的。
 
 在远程 HDInsight 群集上运行 Hive 查询时，将使用以下 Cmdlet：
@@ -55,89 +58,88 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
 以下步骤演示了如何使用这些 Cmdlet 在 HDInsight 群集上运行作业：
 
-1. 使用编辑器将以下代码保存为 **hivejob.ps1**。 必须将 **CLUSTERNAME** 替换为 HDInsight 群集的名称。
+1. 使用编辑器将以下代码保存为 **hivejob.ps1**。
    
-        #Specify the values
-        $clusterName = "CLUSTERNAME"
-        $creds=Get-Credential
-   
-        # Login to your Azure subscription
-        # Is there an active Azure subscription?
-        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-        if(-not($sub))
-        {
-            Add-AzureRmAccount
-        }
-   
-        #HiveQL
-        #Note: set hive.execution.engine=tez; is not required for
-        #      Linux-based HDInsight
-        $queryString = "set hive.execution.engine=tez;" +
-                    "DROP TABLE log4jLogs;" +
-                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
-                    "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
-   
-        #Create an HDInsight Hive job definition
-        $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString 
-   
-        #Submit the job to the cluster
-        Write-Host "Start the Hive job..." -ForegroundColor Green
-   
-        $hiveJob = Start-AzureRmHDInsightJob -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $creds
-   
-        #Wait for the Hive job to complete
-        Write-Host "Wait for the job to complete..." -ForegroundColor Green
-        Wait-AzureRmHDInsightJob -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $creds
-   
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-        -ResourceGroupName $resourceGroup)[0].Value
-        # Print the output
-        Write-Host "Display the standard output..." -ForegroundColor Green
-        Get-AzureRmHDInsightJobOutput `
-            -Clustername $clusterName `
-            -JobId $hiveJob.JobId `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -HttpCredential $creds
+   ```powershell
+    # Login to your Azure subscription
+    # Is there an active Azure subscription?
+    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Add-AzureRmAccount
+    }
+    
+    #Get cluster info
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    $creds=Get-Credential -Message "Enter the login for the cluster"
+
+    #HiveQL
+    #Note: set hive.execution.engine=tez; is not required for
+    #      Linux-based HDInsight
+    $queryString = "set hive.execution.engine=tez;" +
+                "DROP TABLE log4jLogs;" +
+                "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
+                "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
+
+    #Create an HDInsight Hive job definition
+    $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString 
+
+    #Submit the job to the cluster
+    Write-Host "Start the Hive job..." -ForegroundColor Green
+
+    $hiveJob = Start-AzureRmHDInsightJob -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $creds
+
+    #Wait for the Hive job to complete
+    Write-Host "Wait for the job to complete..." -ForegroundColor Green
+    Wait-AzureRmHDInsightJob -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $creds
+
+    # Print the output
+    Write-Host "Display the standard output..." -ForegroundColor Green
+    Get-AzureRmHDInsightJobOutput `
+        -Clustername $clusterName `
+        -JobId $hiveJob.JobId `
+        -HttpCredential $creds
+   ```
+
 2. 打开一个新的 **Azure PowerShell** 命令提示符。 将目录更改为 **hivejob.ps1** 文件的所在位置，然后使用以下命令来运行脚本：
    
         .\hivejob.ps1
    
-    脚本运行时，系统将提示你输入你的群集的 HTTPS/Admin 帐户凭据。 可能需要登录到你的 Azure 订阅。
+    脚本运行时，系统将提示输入群集名称和该群集的 HTTPS/管理员帐户凭据。 可能需要登录到你的 Azure 订阅。
+
 3. 在作业完成时，它应返回如下信息：
    
         Display the standard output...
         2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
         2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
         2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
-4. 如前所述，**Invoke-Hive** 可以用来运行查询，并等待响应。 使用以下命令，并将 **CLUSTERNAME** 替换为群集的名称：
+
+4. 如前所述，**Invoke-Hive** 可以用来运行查询，并等待响应。 使用以下脚本查看 Invoke-Hive 的工作原理：
    
-        Use-AzureRmHDInsightCluster -ClusterName $clusterName -HttpCredential $creds
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-        -ResourceGroupName $resourceGroup)[0].Value
-        $queryString = "set hive.execution.engine=tez;" +
-                    "DROP TABLE log4jLogs;" +
-                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
-                    "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
-        Invoke-AzureRmHDInsightHiveJob `
-            -StatusFolder "statusout" `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -Query $queryString
+   ```powershell
+    # Login to your Azure subscription
+    # Is there an active Azure subscription?
+    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Add-AzureRmAccount
+    }
+
+    #Get cluster info
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    $creds=Get-Credential -Message "Enter the login for the cluster"
+
+    # Set the cluster to use
+    Use-AzureRmHDInsightCluster -ClusterName $clusterName -HttpCredential $creds
+    
+    $queryString = "set hive.execution.engine=tez;" +
+                "DROP TABLE log4jLogs;" +
+                "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
+                "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
+    Invoke-AzureRmHDInsightHiveJob `
+        -StatusFolder "statusout" `
+        -Query $queryString
+   ```
    
     输出将如下所示：
    
@@ -151,28 +153,28 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
    > `Invoke-AzureRmHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    > 
    > 有关 **Here-Strings** 的详细信息，请参阅<a href="http://technet.microsoft.com/library/ee692792.aspx" target="_blank">使用 Windows PowerShell Here-Strings</a>。
-   > 
-   > 
 
 ## <a name="troubleshooting"></a>故障排除
+
 如果在作业完成时未返回任何信息，则可能表示处理期间发生错误。 若要查看此作业的错误信息，请将以下内容添加到 **hivejob.ps1** 文件的末尾，保存，然后重新运行该文件。
 
-    # Print the output of the Hive job.
-    Get-AzureRmHDInsightJobOutput `
-            -Clustername $clusterName `
-            -JobId $job.JobId `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -HttpCredential $creds `
-            -DisplayOutputType StandardError
+```powershell
+# Print the output of the Hive job.
+Get-AzureRmHDInsightJobOutput `
+        -Clustername $clusterName `
+        -JobId $job.JobId `
+        -HttpCredential $creds `
+        -DisplayOutputType StandardError
+```
 
 在运行作业时，这将返回写入到服务器上的 STDERR 中的信息，该信息可帮助确定该作业失败的原因。
 
 ## <a name="summary"></a>摘要
+
 如你所见，Azure PowerShell 提供了简单的方法让你在 HDInsight 群集上运行 Hive 查询，监视作业状态，以及检索输出。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关 HDInsight 中的 Hive 的一般信息：
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
@@ -185,6 +187,6 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

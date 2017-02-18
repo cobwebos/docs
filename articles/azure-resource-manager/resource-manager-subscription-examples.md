@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: adae9827bbdb5f72b9e0fb4a1792fe54b9324706
-ms.openlocfilehash: 95dae0597cf9fc812bb04f070de2175a1ff4f45d
+ms.sourcegitcommit: c75d95ed554a78a02e5469915c21491e65edd8c2
+ms.openlocfilehash: 14ec59087b0aede76a18034f5aa93cb6ecd67a7e
 
 
 ---
@@ -121,7 +121,7 @@ Contoso IT 服务管理部门需要快速识别和处理威胁。 他们还希�
 供应链业务单位的业务领导发现，他们可以借助多种机会，使用会员卡来提高 Contoso 客户的参与度。 Alice 的团队必须创建此应用程序，他们认定，Azure 能够帮助实现该业务需求。 Alice 与来自 ETS 的 Dave 合作，配置了两个订阅用于开发和运行此应用程序。
 
 ### <a name="azure-subscriptions"></a>Azure 订阅
-Dave 登录到 Azure 企业门户，发现供应链部门已经存在。  不过，由于此项目是供应链团队在 Azure 中的第一个开发项目，Dave 认识到 Alice 的开发团队需要一个新帐户。  他为她的团队创建了“R&D”帐户，并向 Alice 分配了访问权限。 Alice 通过帐户门户登录并创建了两个订阅：一个用于托管开发服务器，另一个用于托管生产服务器。  创建以下订阅时，她遵循了以前建立的命名标准：
+Dave 登录到 Azure 企业门户，发现供应链部门已经存在。  不过，由于此项目是供应链团队在 Azure 中的第一个开发项目，Dave 认识到 Alice 的开发团队需要一个新帐户。  他为她的团队创建了“R&D”帐户，并向 Alice 分配了访问权限。 Alice 通过 Azure 门户登录并创建了两个订阅：分别用于托管开发服务器和托管生产服务器。  创建以下订阅时，她遵循了以前建立的命名标准：
 
 | 订阅用途 | Name |
 | --- | --- |
@@ -200,6 +200,6 @@ Contoso IT 服务管理部门需要快速识别和处理威胁。 他们还希�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

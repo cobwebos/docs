@@ -1,6 +1,6 @@
 ---
-title: "将启动节点 API 和停止节点 API 替换为 Azure Service Fabric 节点转换 API | Microsoft 文档"
-description: "将启动节点 API 和停止节点 API 替换为 Azure Service Fabric 节点转换 API"
+title: "启动和停止群集节点以测试 Azure 微服务 |Microsoft Docs"
+description: "通过启动和停止集群节点，了解如何使用错误注入来测试 Service Fabric 应用程序。"
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/19/2016
 ms.author: lemai
 translationtype: Human Translation
-ms.sourcegitcommit: 4ca07de3604c3f543354d97db100b1f578cb0a5a
-ms.openlocfilehash: 5096ad4bdb75766850e557ed09f39b15c95126da
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 5f76100007466f2baf4e067de963486f47fbf857
 
 
 ---
@@ -291,6 +291,6 @@ ms.openlocfilehash: 5096ad4bdb75766850e557ed09f39b15c95126da
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

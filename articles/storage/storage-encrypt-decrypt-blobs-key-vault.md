@@ -1,6 +1,6 @@
 ---
-title: "教程：在 Microsoft Azure 存储中使用 Azure 密钥保管库加密和解密 blob | Microsoft Docs"
-description: "本教程将指导你如何将 Microsoft Azure 存储空间的客户端加密与 Azure 密钥保管库配合使用来加密和解密 blob。"
+title: "教程：在 Azure 存储中使用 Azure Key Vault 加密和解密 blob | Microsoft Docs"
+description: "如何将 Microsoft Azure 存储的客户端加密与 Azure Key Vault 配合使用来加密和解密 blob。"
 services: storage
 documentationcenter: 
 author: adhurwit
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 2d6ebe1a0afb09f0d05e720a0e7afcf135011de7
-ms.openlocfilehash: 401f4a5c8f397b056f814aefe4212e487dfee412
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: 0c33742a0212e670072a947a2d2ab8304c77b973
 
 
 ---
@@ -240,6 +240,6 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

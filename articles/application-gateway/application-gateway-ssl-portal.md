@@ -1,5 +1,5 @@
 ---
-title: "使用门户配置可以进行 SSL 卸载的应用程序网关 | Microsoft Docs"
+title: "配置 SSL 卸载 - Azure 应用程序网关 - Azure 门户 | Microsoft Docs"
 description: "本页说明了如何使用门户创建支持 SSL 卸载的应用程序网关"
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1506729fb346a8a67930a5a2cd4c15f375c52e3f
-ms.openlocfilehash: d5c3d2ef6fe8fe22552fe1b23f3a4690b166be8b
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: b1852b82875c63fa0e252c14b69b281bd501095f
 
 
 ---
@@ -96,6 +96,6 @@ HTTPS 侦听器根据配置来查找流量，并可将流量路由到后端池�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

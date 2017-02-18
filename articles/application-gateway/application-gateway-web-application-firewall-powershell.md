@@ -1,5 +1,5 @@
 ---
-title: "在新的或现有的应用程序网关上配置 Web 应用程序防火墙 | Microsoft Docs"
+title: "配置 Web 应用程序防火墙 - Azure 应用程序网关 | Microsoft Docs"
 description: "本文提供有关如何在现有的或新的应用程序网关上开始使用 Web 应用程序防火墙的指南。"
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
-ms.openlocfilehash: bdfb45de4ca7f4005314115d9cd260029779b3b0
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: bcff92a362c7f8ad1c69b93af07d77e0d03b6a92
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: bdfb45de4ca7f4005314115d9cd260029779b3b0
 
 Azure 应用程序网关中的 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序，使其免受常见 Web 攻击的威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持的功能的完整列表，请参阅“应用程序网关概述”
+Azure 应用程序网关是第&7; 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载平衡、基于 cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找支持的功能的完整列表，请参阅“应用程序网关概述”
 
 以下文章说明如何[将 Web 应用程序防火墙添加到现有的应用程序网关](#add-web-application-firewall-to-an-existing-application-gateway)以及如何[创建使用 Web 应用程序防火墙的应用程序网关](#create-an-application-gateway-with-web-application-firewall)。
 
@@ -336,6 +336,6 @@ DnsSettings              : {
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

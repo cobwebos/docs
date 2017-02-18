@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Spark Scala 应用程序 | Microsoft Docs"
+title: "使用适用于 Eclipse 的 Azure 工具包为 Spark 创建 Scala 应用程序 | Microsoft Docs"
 description: "了解如何创建要在 HDInsight Spark 群集中运行的独立 Spark 应用程序。"
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b502313e1dd42c23dbabd506aabf4be1626a31c9
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: b304f66f71142606391ecbb3f29b917c32ba876a
 
 
 ---
-# <a name="use-hdinsight-tools-in-azure-toolkit-for-eclipse-to-create-spark-applications-for-hdinsight-spark-linux-cluster"></a>使用 Azure Toolkit for Eclipse 中的 HDInsight 工具为 HDInsight Spark Linux 群集创建 Spark 应用程序
+# <a name="use-hdinsight-tools-in-azure-toolkit-for-eclipse-to-create-spark-applications-for-hdinsight-spark-cluster"></a>使用适用于 Eclipse 的 Azure 工具包中的 HDInsight 工具为 HDInsight Spark 群集创建 Spark 应用程序
 本文提供有关使用 Azure Toolkit for Eclipse 中的 HDInsight 工具开发用 Scala 编写的 Spark 应用程序并将其提交到 HDInsight Spark 群集的分步指导。 可以按照多种不同的方式使用这些工具：
 
 * 在 HDInsight Spark 群集中开发和提交 Scala Spark 应用程序
@@ -35,7 +35,7 @@ ms.openlocfilehash: b502313e1dd42c23dbabd506aabf4be1626a31c9
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 * Oracle Java 开发工具包第 7 版和第 8 版。 
   
   * 由于 HDInsight 群集支持 Java 第 7 版，因此使用 **Java SDK 7** 来编译 Spark 项目。 可从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)下载 Java SDK 7。
@@ -191,7 +191,7 @@ ms.openlocfilehash: b502313e1dd42c23dbabd506aabf4be1626a31c9
    
    * 在左窗格中，选择“HDInsight”。
    * 在右窗格中，选择“Spark on HDInsight 本地运行示例(Scala)”。
-   * 单击“资源组名称” 的 Azure 数据工厂。
+   * 单机“下一步”
 2. 若要提供项目详细信息，请执行前面部分[为 HDInsight Spark 群集设置 Spark Scala 应用程序项目](#set-up-a-spark-scala-application-project-for-an-hdinsight-spark cluster)中所述的步骤 3 到 6。
 3. 模板将在 **src** 文件夹下面添加可在计算机上本地运行的示例代码 (**LogQuery**)。
    
@@ -234,6 +234,6 @@ ms.openlocfilehash: b502313e1dd42c23dbabd506aabf4be1626a31c9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

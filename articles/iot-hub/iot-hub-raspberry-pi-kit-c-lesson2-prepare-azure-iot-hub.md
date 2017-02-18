@@ -1,5 +1,5 @@
 ---
-title: "创建 IoT 中心并注册 Raspberry Pi 3 | Microsoft Docs"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 2 课：注册设备 | Microsoft Docs"
 description: "使用 Azure CLI 创建资源组、创建 Azure IoT 中心，以及在 Azure IoT 中心注册 Pi。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 4fb7280cbf9221d1fe8b9fae24356e367969d32a
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d7bc143b509e84d50f3ce0164d31ae51a26f75d4
 
 
 ---
@@ -99,6 +99,6 @@ az iot device create --device-id myraspberrypi --hub {my hub name} --resource-gr
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "运行示例应用程序以将设备到云消息发送到 Azure IoT 中心 | Microsoft Docs"
+title: "将 Intel Edison（节点）连接到 Azure IoT - 第 3 课：发送消息 | Microsoft Docs"
 description: "在 Intel Edison 上部署并运行示例应用程序，将消息发送到 IoT 中心并使 LED 闪烁。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: cb18052f74528e245264bb2f400b625fe550ed85
-ms.openlocfilehash: b158dc91186496d9b8ebd0d4ce0478c7ae45935a
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: ddc40f2e3467cb406a7336924f9577d52061c42e
 
 
 ---
@@ -111,6 +111,6 @@ gulp deploy && gulp run
 [read-messages-persisted-in-azure-storage]: iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

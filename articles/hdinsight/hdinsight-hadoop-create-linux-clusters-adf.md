@@ -1,6 +1,6 @@
 ---
-title: "在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Hadoop 群集 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂创建按需 HDInsight 群集。"
+title: "使用数据工厂创建 Azure HDInsight (Hadoop) | Microsoft Docs"
+description: "了解如何在 HDInsight 中使用 Azure 数据工厂创建按需 Hadoop 群集。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
-ms.openlocfilehash: 0a70398010bb06590e981430edabffa889c213ae
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: ce32b22d60f89c82f0c416e736f41e3767bd8fc5
 
 
 ---
-# <a name="create-on-demand-linux-based-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Hadoop 群集
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>在 HDInsight 中使用 Azure 数据工厂创建按需 Hadoop 群集
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 [Azure 数据工厂](../data-factory/data-factory-introduction.md)是一项基于云的数据集成服务，可对数据的转移进行调整并自动实现数据的转换过程。 本文介绍了如何使用 Azure 数据工厂创建 [Azure HDInsight 按需链接服务](../data-factory/data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)，以及如何使用群集运行 Hive 作业。 下面是概要流程：
 
@@ -444,6 +444,6 @@ ms.openlocfilehash: 0a70398010bb06590e981430edabffa889c213ae
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

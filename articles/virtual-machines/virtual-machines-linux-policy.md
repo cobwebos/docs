@@ -1,5 +1,5 @@
 ---
-title: "将策略应用到 Azure Resource Manager 虚拟机 | Microsoft Docs"
+title: "在 Azure 中采用 Linux VM 上的策略强制执行安全措施 | Microsoft Docs"
 description: "如何将策略应用到 Azure Resource Manager Linux 虚拟机"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: f06747c35f12802f54b44774dff7f92280ba0dc9
-ms.openlocfilehash: b1c66c14fbf5b0361831bb987df3dc01131abc88
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
 
 
 ---
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>将策略应用到 Azure Resource Manager 虚拟机
+# <a name="apply-security-and-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 将安全措施和策略应用至 Linux VM
 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 在本文中，我们将介绍如何使用 Azure Resource Manager 策略来为组织中的虚拟机定义所需行为。
 
 下面概述了实现此目的的步骤
@@ -82,7 +82,7 @@ ms.openlocfilehash: b1c66c14fbf5b0361831bb987df3dc01131abc88
 ```
 
 #### <a name="virtual-machine-property-fields"></a>虚拟机属性字段
-下表描述了可在策略定义中用作字段的虚拟机属性。 有关策略字段的详细信息，请参阅[使用策略来管理资源和控制访问](../resource-manager-policy.md#fields)。
+下表描述了可在策略定义中用作字段的虚拟机属性。 有关策略字段的详细信息，请参阅[使用策略来管理资源和控制访问](../azure-resource-manager/resource-manager-policy.md#conditions)。
 
 | 字段名称 | 说明 |
 | --- | --- |
@@ -92,13 +92,13 @@ ms.openlocfilehash: b1c66c14fbf5b0361831bb987df3dc01131abc88
 | imageVersion |指定所选 SKU 的映像版本 |
 
 ## <a name="create-the-policy"></a>创建策略
-可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。 可以详细了解如何[创建和分配策略](../resource-manager-policy.md#create-and-assign-a-policy)。
+可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。 可以详细了解如何[创建和分配策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)。
 
 ## <a name="apply-the-policy"></a>应用策略
-创建策略后，需要根据定义的范围来应用它。 范围可以是订阅、资源组甚至资源。 可以详细了解如何[创建和分配策略](../resource-manager-policy.md#create-and-assign-a-policy)。
+创建策略后，需要根据定义的范围来应用它。 范围可以是订阅、资源组甚至资源。 可以详细了解如何[创建和分配策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

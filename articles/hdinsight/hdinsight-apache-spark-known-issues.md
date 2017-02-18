@@ -1,6 +1,6 @@
 ---
-title: "HDInsight 中 Apache Spark 的已知问题 | Microsoft Docs"
-description: "HDInsight 中 Apache Spark 的已知问题。"
+title: "Azure HDInsight 中 Apache Spark 群集的已知问题 | Microsoft Docs"
+description: "Azure HDInsight 中 Apache Spark 群集的已知问题。"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2017
+ms.date: 01/18/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f36307d77bce1f0d6805a225477a61b95865545f
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
 
 
 ---
-# <a name="known-issues-for-apache-spark-cluster-on-hdinsight-linux"></a>HDInsight Linux 上的 Apache Spark 群集的已知问题
+# <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
+
 本文档记述了 HDInsight Spark 公共预览版的所有已知问题。  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy 泄漏交互式会话
@@ -31,7 +32,7 @@ ms.openlocfilehash: f36307d77bce1f0d6805a225477a61b95865545f
 
 使用以下过程解决该问题：
 
-1. 通过 SSH 连接到头节点。 
+1. 通过 SSH 连接到头节点。 对于 Windows 客户端，请参阅[在装有 PuTTY 的 Windows 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)；对于 Linux、Unix 或 OS X，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md) 
 2. 运行以下命令，以查找通过 Livy 启动的交互式作业的应用程序 ID。 
    
         yarn application –list
@@ -71,7 +72,9 @@ ms.openlocfilehash: f36307d77bce1f0d6805a225477a61b95865545f
 
 **缓解：**
 
-收到此错误并不表示数据已损坏或丢失。  笔记本仍在磁盘上的 `/var/lib/jupyter` 中，可以通过 SSH 连接到群集来访问它。 你可以将笔记本从群集复制到本地计算机（使用 SCP 或 WinSCP）作为备份，以免丢失笔记本中的重要数据。 然后，可以使用端口 8001 通过 SSH 隧道（不通过网关）连接到头节点来访问 Jupyter。  可以从该处清除笔记本的输出，并将其重新保存，以在最大程度上缩小笔记本的大小。
+收到此错误并不表示数据已损坏或丢失。  笔记本仍在磁盘上的 `/var/lib/jupyter` 中，可以通过 SSH 连接到群集来访问它。 对于 Windows 客户端，请参阅[在装有 PuTTY 的 Windows 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)；对于 Linux、Unix 或 OS X，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+
+一旦使用 SSH 连接到群集后，即可将笔记本从群集复制到本地计算机（使用 SCP 或 WinSCP）作为备份，以免丢失笔记本中的重要数据。 然后，可以使用端口 8001 通过 SSH 隧道（不通过网关）连接到头节点来访问 Jupyter。  可以从该处清除笔记本的输出，并将其重新保存，以在最大程度上缩小笔记本的大小。
 
 若要防止今后发生此错误，必须遵循一些最佳实践：
 
@@ -125,6 +128,6 @@ ms.openlocfilehash: f36307d77bce1f0d6805a225477a61b95865545f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

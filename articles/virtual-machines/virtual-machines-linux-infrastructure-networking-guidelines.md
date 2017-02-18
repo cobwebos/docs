@@ -1,5 +1,5 @@
 ---
-title: "Azure 网络基础结构准则 | Microsoft Docs"
+title: "Azure 网络基础结构准则 - Linux | Microsoft Docs"
 description: "了解用于在 Azure 基础结构服务中部署虚拟网络的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/24/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 70e52cefccee4b963e512724b96525bcbacf330c
-ms.openlocfilehash: 906ea9308ffee9dc719e1f17171deaba394a26d6
+ms.sourcegitcommit: 84b64fd79da641987d5346d90bb77bde154b58c4
+ms.openlocfilehash: a519c101e24a340078adcfde3e5733db71630aea
 
 
 ---
@@ -106,6 +106,6 @@ ms.openlocfilehash: 906ea9308ffee9dc719e1f17171deaba394a26d6
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

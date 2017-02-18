@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric 术语概述 | Microsoft 文档"
+title: "了解 Azure Service Fabric 术语 | Microsoft Docs"
 description: "Service Fabric 的术语概述。 讨论本文档其余部分所用的重要术语概念和术语。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/01/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: e0efcabbb876e77e5b23537ce023c30f9fd153cd
-ms.openlocfilehash: 884e43e36517c0c894b72ab6f4e8f6aadb1d9bcf
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 94d085ac026a309a457891944931901e9dc2564f
 
 
 ---
@@ -98,6 +98,6 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

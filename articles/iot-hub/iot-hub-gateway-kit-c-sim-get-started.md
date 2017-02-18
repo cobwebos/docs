@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT 网关初学者工具包入门 | Microsoft 文档"
+title: "模拟设备和 Azure IoT 网关 - 入门 | Microsoft Docs"
 description: "开始使用 IoT 网关初学者工具包，创建 Azure IoT 中心，并将网关连接到 IoT 中心"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 06161c2950fbe99d2e4f9c1b416695a5f9f18ca4
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>第 1 课：配置 NUC
-![第 1 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
+![第&1; 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
 
 本课介绍如何将工具包中的 Intel NUC（下一代计算单元，Next Unit of Computing）设置为 Azure IoT 网关、在 NUC 上安装 Azure IoT 网关 SDK 包，以及运行示例应用验证网关功能。
 
@@ -44,7 +44,7 @@ ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
 转到[将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
 
 ## <a name="lesson-2-create-your-iot-hub"></a>第 2 课：创建 IoT 中心
-![第 2 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
+![第&2; 课端到端示意图](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
 
 本课介绍如何在主计算机上安装工具和软件。 然后，创建免费的 Azure 帐户，预配 Azure IoT 中心，并在 IoT 中心创建第一个设备。
 
@@ -91,7 +91,7 @@ ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
 ### <a name="create-an-azure-function-app-and-azure-storage-account"></a>创建 Azure Function App 和 Azure 存储帐户
 使用 Azure Resource Manager 模板创建一个 Azure Function App 和一个 Azure 存储帐户。
 
-*Estimated time to complete: 10 minutes*
+*估计完成时间：10 分钟*
 
 转到[创建 Azure Function App 和 Azure 存储帐户](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
 
@@ -109,6 +109,6 @@ ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
 请访问 [Intel IoT 网关工具包开发人员区域](https://software.intel.com/en-us/iot/hardware/gateways/dev-kit)了解详细信息。
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

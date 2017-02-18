@@ -1,5 +1,5 @@
 ---
-title: "使用用于 C++ 的 Microsoft Azure 存储客户端库列出 Azure 存储资源 | Microsoft Docs"
+title: "使用用于 C++ 的存储客户端库列出 Azure 存储资源 | Microsoft Docs"
 description: "了解如何在用于 C++ 的 Microsoft Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。"
 documentationcenter: .net
 services: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 01/23/2017
 ms.author: dineshm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 085796493df86a2e86a88266d9b3aacf12cb6541
+ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
+ms.openlocfilehash: f14ed08473ba9c424acf39d3fe98d4a11adf9948
 
 
 ---
@@ -101,7 +101,7 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
 
 如果未指定 *max_results* 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
 
-另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于所指定的 *max_results* 参数的值，即使继续标记不为空。 可能的一个原因是，查询可能无法在 5 秒钟内完成。 只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
+另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于所指定的 *max_results* 参数的值，即使继续标记不为空。 可能的一个原因是，查询可能无法在&5; 秒钟内完成。 只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
 
 大多数情况下，建议采用分段列表编码模式，因为这样可以明确地了解列表或查询的进度，以及服务对每个请求是如何响应的。 具体说来，对于 C++ 应用程序或服务来说，对列表进程进行低级别的控制可以更好地控制内存和性能。
 
@@ -206,6 +206,6 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

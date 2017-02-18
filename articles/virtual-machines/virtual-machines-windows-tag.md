@@ -1,5 +1,5 @@
 ---
-title: "如何标记 VM | Microsoft Docs"
+title: "如何在 Azure 中标记 Windows VM 资源 | Microsoft Docs"
 description: "了解如何标记使用 Resource Manager 部署模型在 Azure 中创建的 Windows 虚拟机。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 97efb86f31f75d2214e4169d88b792ab189354ed
+ms.sourcegitcommit: 6b80fa78fea505cd22bae2925ce1affbc1e48ab9
+ms.openlocfilehash: 57b88baeeb5c27cfdf142c77aef37b66bb6640d6
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 97efb86f31f75d2214e4169d88b792ab189354ed
 [!INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-powershell"></a>使用 PowerShell 进行标记
-若要通过 PowerShell 创建、添加和删除标记，首先需要[将 PowerShell 环境与 Azure Resource Manager 配合使用][将 PowerShell 环境与 Azure Resource Manager 配合使用]。 一旦完成安装后，可以在创建时或创建资源之后通过 PowerShell 将标记放置在计算、网络和存储资源中。 本文章将重点说明查看/编辑虚拟机上放置的标记。
+若要通过 PowerShell 创建、添加和删除标记，首先需要[使用 Azure Resource Manager 设置 PowerShell 环境][PowerShell environment with Azure Resource Manager]。 一旦完成安装后，可以在创建时或创建资源之后通过 PowerShell 将标记放置在计算、网络和存储资源中。 本文章将重点说明查看/编辑虚拟机上放置的标记。
 
 首先，通过 `Get-AzureRmVM`cmdlet 导航到虚拟机。
 
@@ -88,23 +88,23 @@ ms.openlocfilehash: 97efb86f31f75d2214e4169d88b792ab189354ed
         Value        MyLocation
         Name        Location
 
-若要了解有关通过 PowerShell 标记的详细信息，请查看[Azure 资源 Cmdlets][Azure 资源 Cmdlets]。
+若要了解有关通过 PowerShell 标记的详细信息，请查看 [Azure 资源 Cmdlet][Azure Resource Cmdlets]。
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解如何标记 Azure 资源，请参阅 [Azure Resource Manager 概述][Azure Resource Manager 概述]和[使用标记来组织 Azure 资源][使用标记来组织 Azure 资源]。
-* 若要了解标记如何帮助管理 Azure 资源的使用，请参阅[了解 Azure 帐单][了解 Azure 帐单]和[深入了解 Microsoft Azure 资源消耗][深入了解 Microsoft Azure 资源消耗]。
+* 若要详细了解如何标记 Azure 资源，请参阅 [Azure Resource Manager 概述][Azure Resource Manager Overview]和[使用标记来组织 Azure 资源][Using Tags to organize your Azure Resources]。
+* 若要了解标记如何帮助你管理 Azure 资源的使用，请参阅[了解 Azure 帐单][Understanding your Azure Bill]和[深入了解 Microsoft Azure 资源消耗][Gain insights into your Microsoft Azure resource consumption]。
 
-[将 PowerShell 环境与 Azure Resource Manager 配合使用]: ../powershell-azure-resource-manager.md
-[Azure 资源 Cmdlets]: https://msdn.microsoft.com/library/azure/dn757692.aspx
-[Azure Resource Manager 概述]: ../azure-resource-manager/resource-group-overview.md
-[使用标记来组织 Azure 资源]: ../resource-group-using-tags.md
-[了解 Azure 帐单]: ../billing/billing-understand-your-bill.md
-[深入了解 Microsoft Azure 资源消耗]: ../billing-usage-rate-card-overview.md
+[PowerShell environment with Azure Resource Manager]: ../powershell-azure-resource-manager.md
+[Azure Resource Cmdlets]: https://msdn.microsoft.com/library/azure/dn757692.aspx
+[Azure Resource Manager Overview]: ../azure-resource-manager/resource-group-overview.md
+[Using Tags to organize your Azure Resources]: ../azure-resource-manager/resource-group-using-tags.md
+[Understanding your Azure Bill]: ../billing/billing-understand-your-bill.md
+[Gain insights into your Microsoft Azure resource consumption]: ../billing/billing-usage-rate-card-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

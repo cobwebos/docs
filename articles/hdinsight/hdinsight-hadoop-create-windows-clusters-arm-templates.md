@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Windows 的 Hadoop 群集 | Microsoft Docs"
-description: "了解如何使用 Azure Resource Manager 模板创建 Azure HDInsight 的群集。"
+title: "使用模板创建基于 Windows 的 Azure HDInsight (Hadoop) | Microsoft Docs"
+description: "了解如何使用 Azure Resource Manager 模板在 Azure HDInsight 中创建基于 Windows 的 群集。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/19/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 756369d219c34e5530edc91de0dc74cbf88c02c5
-ms.openlocfilehash: 9fb4862f3ba38058bd07d5a2e0bebcf78477e2d1
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: ad511174f8df2fca752447ed942880d02c141308
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Windows 的 Hadoop 群集
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-了解如何使用 Azure Resource Manager 模板创建 HDInsight 群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
+了解如何使用 Azure Resource Manager 模板创建基于 Windows 的 HDInsight 群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)。 
+
+本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关创建基于 Linux 的群集的信息，请参阅[使用 Azure Resource Manager 模板创建 HDInsight 中的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 
 ## <a name="prerequisites"></a>先决条件：
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -290,6 +297,6 @@ ms.openlocfilehash: 9fb4862f3ba38058bd07d5a2e0bebcf78477e2d1
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

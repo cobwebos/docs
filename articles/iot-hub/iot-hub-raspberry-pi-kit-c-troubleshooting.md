@@ -1,5 +1,5 @@
 ---
-title: "故障排除 | Microsoft 文档"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 故障排除 | Microsoft Docs"
 description: "Raspberry Pi Node.js 体验的故障排除页"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: 755961b8a0b141a716530f75e21b65c00fa8d2d8
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 52d76bb967471ae49b55b0fcb930c223984b39e3
 
 
 ---
@@ -123,6 +123,6 @@ iothub-explorer help
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

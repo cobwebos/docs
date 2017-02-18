@@ -1,9 +1,9 @@
 ---
-title: "管理 Azure CDN 中 Azure 存储 blob 内容的过期问题 | Microsoft Docs"
+title: "管理 Azure CDN 中 Azure 存储 Blob 的过期问题 | Microsoft Docs"
 description: "了解用于控制 Azure CDN 缓存中 blob 生存时间的选项。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: ad4801e9-d09a-49bf-b35c-efdc4e6034e8
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/15/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 751db56ee29ebc635d4d2a27dd18f99f7efb5a34
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 26085360a1f2a2ffda3789c654bc7212f2e652f3
 
 
 ---
-# <a name="manage-expiration-of-azure-storage-blob-content-in-azure-cdn"></a>管理 Azure CDN 中 Azure 存储 blob 内容的过期问题
+# <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>管理 Azure CDN 中 Azure 存储 Blob 的过期问题
 > [!div class="op_single_selector"]
 > * [Azure Web 应用/云服务、ASP.NET 或 IIS](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure 存储 blob 服务](cdn-manage-expiration-of-blob-content.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 751db56ee29ebc635d4d2a27dd18f99f7efb5a34
 在多个与 Azure CDN 集成的基于 Azure 的源中，[Azure 存储](../storage/storage-introduction.md)中的 [Blob 服务](../storage/storage-introduction.md#blob-storage)是其中一个。  任何可公开访问的 blob 内容均可在 Azure CDN 中进行缓存，直到其生存时间 (TTL) 结束。  TTL 由来自 Azure 存储的 HTTP 响应中的 [*Cache-Control* 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)决定。
 
 > [!TIP]
-> 你可以选择不对 blob 设置 TTL。  在这种情况下，Azure CDN 将自动应用默认为 7 天的 TTL。
+> 你可以选择不对 blob 设置 TTL。  在这种情况下，Azure CDN 将自动应用默认为&7; 天的 TTL。
 > 
 > 有关 Azure CDN 如何加速访问 blob 和其他文件的详细信息，请参阅 [Azure CDN 概述](cdn-overview.md)。
 > 
@@ -100,7 +100,7 @@ class Program
 ## <a name="other-methods"></a>其他方法
 * [Azure 命令行接口](../xplat-cli-install.md)
   
-    上载 blob 时，使用 `-p` 开关来设置 *cacheControl* 属性。  此示例将 TTL 设置为 1 小时（3600 秒）。
+    上载 blob 时，使用 `-p` 开关来设置 *cacheControl* 属性。  此示例将 TTL 设置为&1; 小时（3600 秒）。
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
@@ -122,6 +122,6 @@ class Program
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

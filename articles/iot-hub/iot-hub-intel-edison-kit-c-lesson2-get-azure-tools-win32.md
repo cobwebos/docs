@@ -1,5 +1,5 @@
 ---
-title: "获取用于 Azure IoT 初学者工具包（Windows 7 和更高版本）的 Azure 工具 | Microsoft Docs"
+title: "将 Intel Edison (C) 连接到 Azure IoT - 第 2 课：Azure 工具 (Windows) | Microsoft Docs"
 description: "在 Windows 7 及更高版本上安装 Python 和 Azure 命令行界面 (Azure CLI)"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: dbb40d01aaaa94b3b579543449563dfe23390383
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: c31847b0a4b630f999f64c139f6b9b44623d847e
 
 
 ---
@@ -81,6 +81,6 @@ Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

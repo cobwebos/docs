@@ -1,5 +1,5 @@
 ---
-title: "Azure 虚拟机 (VM) 上的 SAP NetWeaver - DBMS 部署指南 | Microsoft Docs"
+title: "Azure VM 上的 SAP NetWeaver - DBMS 部署指南 | Microsoft Docs"
 description: "Azure 虚拟机 (VM) 上的 SAP NetWeaver - DBMS 部署指南"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 translationtype: Human Translation
-ms.sourcegitcommit: 7cbb85e3f6705770a3eab7cc5a0da5070f2a170e
-ms.openlocfilehash: 52506430dcaccca1a29878470abb86585593b5a7
+ms.sourcegitcommit: 73d08acd6cd57a9430826413d71a8c53b9646dd5
+ms.openlocfilehash: 61a1181ee06c989b4837442800110aee0c5f1abf
 
 
 ---
@@ -350,11 +350,11 @@ Azure 将针对每个 VHD 驱动器强制执行 IOPS 配额。 对于 Azure 标�
 视 Azure VM 系列而定，计算节点上的本地磁盘会表现出不同的性能，具体可按以下方式分类：
 
 * A0-A7：非常有限的性能。 不能用于 Windows 页面文件以外的项目
-* A8-A11：性能特征极佳，具有高达数万的 IOPS 和 1 GB/秒以上的吞吐量
-* D 系列：性能特征极佳，具有高达数万的 IOPS 和 1 GB/秒以上的吞吐量
-* DS 系列：性能特征极佳，具有高达数万的 IOPS 和 1 GB/秒以上的吞吐量
-* G 系列：性能特征极佳，具有高达数万的 IOPS 和 1 GB/秒以上的吞吐量
-* GS 系列：性能特征极佳，具有高达数万的 IOPS 和 1 GB/秒以上的吞吐量
+* A8-A11：性能特征极佳，具有高达数万的 IOPS 和&1; GB/秒以上的吞吐量
+* D 系列：性能特征极佳，具有高达数万的 IOPS 和&1; GB/秒以上的吞吐量
+* DS 系列：性能特征极佳，具有高达数万的 IOPS 和&1; GB/秒以上的吞吐量
+* G 系列：性能特征极佳，具有高达数万的 IOPS 和&1; GB/秒以上的吞吐量
+* GS 系列：性能特征极佳，具有高达数万的 IOPS 和&1; GB/秒以上的吞吐量
 
 以上表述适用于已通过 SAP 认证的 VM 类型。 具有绝佳 IOPS 和吞吐量的 VM 系列可供某些 DBMS 功能使用，例如，tempdb 或临时表空间。
 
@@ -431,7 +431,7 @@ Azure 存储空间本地复制（本地冗余）可提供多层保护，避免�
 > 
 > 下面将以一个示例系统最简单地说明此问题。 假设将 SAP 系统上载到 Azure，Azure 中有 8 个包含 DBMS 数据文件的 VHD，以及 1 个包含事务日志文件的 VHD。 无论是要将数据写入数据文件还是事务日志文件，这 9 个 VHD 中的每一个都会根据 DBMS，以一致的方式将数据写入其中。
 > 
-> 为了对数据进行正确的异地复制并维护一致的数据库映像，这 9 个 VHD 的内容必须完全根据对这 9 个不同 VHD 执行 I/O 操作的顺序进行异地复制。 但是，Azure 存储空间异地复制不允许声明 VHD 之间的依赖关系。 这意味着，Microsoft Azure 存储异地复制不知道这 9 个不同 VHD 中的内容是彼此相关的，而且只有以这 9 个 VHD 上发生 I/O 操作的顺序进行复制时，数据更改才会一致。
+> 为了对数据进行正确的异地复制并维护一致的数据库映像，这&9; 个 VHD 的内容必须完全根据对这&9; 个不同 VHD 执行 I/O 操作的顺序进行异地复制。 但是，Azure 存储空间异地复制不允许声明 VHD 之间的依赖关系。 这意味着，Microsoft Azure 存储异地复制不知道这 9 个不同 VHD 中的内容是彼此相关的，而且只有以这 9 个 VHD 上发生 I/O 操作的顺序进行复制时，数据更改才会一致。
 > 
 > 该方案中的异地复制映像很有可能提供不一致的数据库映像，除此之外，异地冗余存储还会严重地影响性能。 总之，请勿对 DBMS 类型的工作负荷使用这种类型的存储冗余。
 > 
@@ -603,7 +603,7 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 
 此方案的优点是无需耗用 VHD 来存储 SQL Server 备份。 因此，所分配的 VHD 较少，而且可以将 VHD IOPS 的全部带宽都用于数据和日志文件。 请注意，备份的大小上限是 1 TB，如以下文章的“Limitations”（限制）部分中所述：<https://msdn.microsoft.com/library/dn435916.aspx#limitations>。 在备份大小方面，尽管使用 SQL Server 备份压缩的大小会超过 1 TB，但仍需使用本文档 [SQL Server 2012 SP1 CU3 和更低版本][dbms-guide-5.5.2] 一章中所述的功能。
 
-描述根据 Azure Blob 存储从备份还原数据库的[相关文档](https://msdn.microsoft.com/library/dn449492.aspx)建议：如果备份超过 25GB，就不要直接从 Azure BLOB 存储还原。 本文中的建议只以性能注意事项为依据，并未考虑功能限制。 因此，随着方案的不同，可能会发生不同的状况。
+描述根据 Azure Blob 存储从备份还原数据库的[相关文档](https://msdn.microsoft.com/library/dn449492.aspx)建议：如果备份超过&25;GB，就不要直接从 Azure BLOB 存储还原。 本文中的建议只以性能注意事项为依据，并未考虑功能限制。 因此，随着方案的不同，可能会发生不同的状况。
 
 可以在[此教程](https://msdn.microsoft.com/library/dn466438.aspx)中找到有关如何设置和使用此类备份的文档
 
@@ -665,7 +665,7 @@ SQL Server 2014 引入了一项称为缓冲池扩展的新功能。 此功能使
 [comment]: <> (ARM 尚不支持)
 [comment]: <> (#### Azure VM 备份)
 [comment]: <> (可以使用 Azure 虚拟机备份功能来备份 SAP 系统内的其他 VM。Azure 虚拟机备份已在 2015 年初引入，这也是目前在 Azure 中备份完整 VM 的标准方法。Azure 备份将备份存储在 Azure 中，并允许再次还原 VM。) 
-[comment]: <> (如果 DBMS 系统支持 Windows VSS (卷影复制服务 1)，则与 SQL Server 一样，将以一致的方式备份运行数据库的 VM，将以一致的方式备份运行数据库的 VM - <https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx>)。 因此，可以使用 Azure VM 备份对 SAP 数据库进行可还原的备份。 不过请注意，无法根据 Azure VM 备份时间点来还原数据库。 因此，建议使用 DBMS 功能执行数据库备份，而不要依赖于 Azure VM 备份。）[comment]: <> (若要熟悉 Azure 虚拟机备份，请从此处着手：<https://azure.microsoft.com/documentation/services/backup/>)
+[comment]: <> (如果 DBMS 系统支持 Windows VSS (卷影复制服务&1;)，则与 SQL Server 一样，将以一致的方式备份运行数据库的 VM，将以一致的方式备份运行数据库的 VM - <https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx>)。 因此，可以使用 Azure VM 备份对 SAP 数据库进行可还原的备份。 不过请注意，无法根据 Azure VM 备份时间点来还原数据库。 因此，建议使用 DBMS 功能执行数据库备份，而不要依赖于 Azure VM 备份。）[comment]: <> (若要熟悉 Azure 虚拟机备份，请从此处着手：<https://azure.microsoft.com/documentation/services/backup/>)
 
 ### <a name="a-name1b353e38-21b3-4310-aeb6-a77e7c8e81c8ausing-a-sql-server-images-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>使用来自 Microsoft Azure 应用商店的 SQL Server 映像
 Microsoft 在 Azure 应用商店中提供已经包含 SQL Server 版本的 VM。 对于需要 SQL Server 和 Windows 许可证的 SAP 客户，可以通过运行已安装 SQL Server 的 VM，基本满足对许可证的需求。 若要针对 SAP 使用此类映像，必须注意以下事项：
@@ -1340,6 +1340,6 @@ Azure 可用性集或 SAP 监视等所有其他常规主题也适用于使用 IB
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 11/01/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: d8818035349c8e78c1f2bb39a05e1afb2c854cc9
+ms.sourcegitcommit: 1f7ec5d53512dcfbff17269802c8889eae0ad744
+ms.openlocfilehash: 5dd69a0b9357a601070765817a814dae3e7e5c05
 
 
 ---
@@ -34,6 +34,11 @@ ms.openlocfilehash: d8818035349c8e78c1f2bb39a05e1afb2c854cc9
 | [交叉迁移](#swing-migration) |如果有两台服务器，可将其中一台升级到最新版本或配置，然后在准备就绪时更改活动服务器。 |
 
 有关所需的权限，请参阅[升级所需的权限](active-directory-aadconnect-accounts-permissions.md#upgrade)。
+
+> [!NOTE]
+> 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。 不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。 
+> 
+> 
 
 ## <a name="in-place-upgrade"></a>就地升级
 就地升级适用于从 Azure AD Sync 或 Azure AD Connect 迁移。 它不适用于 DirSync 或使用 FIM + Azure AD 连接器的解决方案。
@@ -91,6 +96,6 @@ ms.openlocfilehash: d8818035349c8e78c1f2bb39a05e1afb2c854cc9
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

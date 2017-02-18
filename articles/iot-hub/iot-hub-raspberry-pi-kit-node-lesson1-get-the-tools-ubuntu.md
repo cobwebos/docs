@@ -1,5 +1,5 @@
 ---
-title: "获取工具 (Ubuntu 16.04) | Microsoft 文档"
+title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 1 课：获取工具 (Ubuntu) | Microsoft Docs"
 description: "下载并安装在 Ubuntu 上适用于 Pi 的第一个示例应用程序的必需工具和软件。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: 31b5ac4e60eaafcc134ee702a4d47c4ea735df39
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: a43690c4fd35a701472b9a1c747e969d1d3a2ea4
 
 
 ---
@@ -81,6 +81,6 @@ sudo npm install -g device-discovery-cli gulp
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

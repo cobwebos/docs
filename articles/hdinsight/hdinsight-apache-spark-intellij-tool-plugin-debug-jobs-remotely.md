@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具远程调试 HDInsight Spark 群集上运行的应用程序 | Microsoft Docs"
+title: "使用适用于 IntelliJ 的 Azure 工具包远程调试 Spark 群集上的应用程序 | Microsoft Docs"
 description: "了解如何使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具远程调试 HDInsight Spark 群集上运行的应用程序。"
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
 
 
 ---
-# <a name="use-hdinsight-tools-in-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-on-hdinsight-spark-linux-cluster"></a>使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具在 HDInsight Spark Linux 群集上远程调试 Spark 应用程序
+# <a name="use-hdinsight-tools-in-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-on-hdinsight-spark-cluster"></a>使用适用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具在 HDInsight Spark 群集上远程调试 Spark 应用程序
 本文提供有关如何在 HDInsight Spark 群集上使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具插件提交 Spark 作业，然后从台式机远程调试该作业的逐步指导。 为此，必须执行以下概要步骤：
 
 1. 创建站点到站点或点到站点 Azure 虚拟网络。 本文档中的步骤假设你使用站点到站点网络。
@@ -32,7 +32,7 @@ ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 * Oracle Java 开发工具包。 可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装。
 * IntelliJ IDEA。 本文使用版本 15.0.1。 可以从[此处](https://www.jetbrains.com/idea/download/)安装。
 * Azure Toolkit for IntelliJ 中的 HDInsight 工具。 Azure Toolkit for IntelliJ 随附了用于 IntelliJ 的 HDInsight 工具。 有关 Azure Toolkit 安装方式的说明，请参阅[安装 Azure Toolkit for IntelliJ](../azure-toolkit-for-intellij-installation.md)。
@@ -85,7 +85,7 @@ ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
    
    * 在左窗格中，选择“HDInsight”。
    * 在右窗格中，选择“Spark on HDInsight (Scala)”。
-   * 单击“资源组名称” 的 Azure 数据工厂。
+   * 单击“下一步”。
 2. 在下一窗口中，提供项目详细信息。
    
    * 提供项目名称和项目位置。
@@ -283,6 +283,6 @@ ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

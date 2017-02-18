@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Resource Manager 中为虚拟机设置密钥保管库 | Microsoft Docs"
+title: "在 Azure Resource Manager 中为 Windows VM 设置密钥保管库 | Microsoft Docs"
 description: "如何设置与 Azure Resource Manager 虚拟机搭配使用的密钥保管库。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2016
+ms.date: 01/24/2017
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: cf928d43851e7b3d38742387bce136de5f547fa6
+ms.sourcegitcommit: bcb347e8a2ebef14100e990ef71eac5362de5a48
+ms.openlocfilehash: 74124056ea77dc1007fb87853ceb10622c9ceaea
 
 
 ---
@@ -71,6 +71,6 @@ ms.openlocfilehash: cf928d43851e7b3d38742387bce136de5f547fa6
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

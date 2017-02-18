@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 6700ea97bea02d68329b923f8715d84e5df1de33
+ms.sourcegitcommit: 8062106872bd50cd265fc4e64bc6f4c0fb2dbb1d
+ms.openlocfilehash: b7458e13174dc03f2c4cab707c033d96a80628e6
 
 
 ---
@@ -44,7 +44,11 @@ ms.openlocfilehash: 6700ea97bea02d68329b923f8715d84e5df1de33
 - [使用 Azure PowerShell 进行重置](#vmaccess-extension-and-powershell---classic)
 
 ## <a name="azure-portal---resource-manager"></a>Azure 门户 - Resource Manager
-通过单击“浏览” > “虚拟机” >  用户的 Windows 虚拟机  > “所有设置” > “重置密码”选择 VM。 此时会显示密码重置边栏选项卡：
+若要展开门户菜单，请单击左上角的三栏，然后单击“虚拟机”：
+
+![浏览 Azure VM](./media/virtual-machines-windows-reset-rdp/Portal-Select-VM.png)
+
+选择 Windows 虚拟机，然后单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡：
 
 ![密码重置页](./media/virtual-machines-windows-reset-rdp/Portal-RM-PW-Reset-Windows.png)
 
@@ -100,11 +104,15 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" 
 
 
 ## <a name="azure-portal---classic"></a>Azure 门户 - 经典
-对于使用经典部署模型创建的虚拟机，可以使用 [Azure 门户](https://portal.azure.com)来重置远程桌面服务。 单击“浏览” > “虚拟机(经典)” >  用户的 Windows 虚拟机  > “重置远程...”。 将显示以下页。
+对于使用经典部署模型创建的虚拟机，可以使用 [Azure 门户](https://portal.azure.com)来重置远程桌面服务。 若要展开门户菜单，请单击左上角的三栏，然后单击“虚拟机(经典)”：
+
+![浏览 Azure VM](./media/virtual-machines-windows-reset-rdp/Portal-Select-Classic-VM.png)
+
+选择 Windows 虚拟机，然后单击“重置远程...”。 重置远程桌面配置时将显示以下对话：
 
 ![重置 RDP 配置页](./media/virtual-machines-windows-reset-rdp/Portal-RDP-Reset-Windows.png)
 
-还可以尝试重置本地管理员帐户的名称和密码。 单击“浏览” > “虚拟机(经典)” >  用户的 Windows 虚拟机  > “所有设置” > “重置密码”。 将显示以下页。
+还可以重置本地管理员帐户的用户名和密码。 从 VM 中单击“支持 + 故障排除” > “重置密码”。 此时会显示密码重置边栏选项卡：
 
 ![密码重置页](./media/virtual-machines-windows-reset-rdp/Portal-PW-Reset-Windows.png)
 
@@ -174,6 +182,6 @@ Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

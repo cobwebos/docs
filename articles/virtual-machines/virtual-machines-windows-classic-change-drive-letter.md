@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 002e7fe3a0573898fff2552264a318d528eec25c
+ms.sourcegitcommit: 808343035c2554a3cd01cf3fe0ef6ebba2c54e23
+ms.openlocfilehash: 5b4443a8746bc8c88e2c5b58068c200aafc4beea
 
 
 ---
@@ -52,20 +52,9 @@ ms.openlocfilehash: 002e7fe3a0573898fff2552264a318d528eec25c
 1. VM 重新启动后，重新登录到 VM。
 2. 单击“开始”菜单，键入 **diskmgmt.msc**，然后按 Enter。 此时将启动“磁盘管理”。
 3. 右键单击 **D**（临时存储驱动器），然后选择“更改驱动器号和路径”。
-4. 在“驱动器号”下，选择驱动器 **G**，然后单击“确定”。 
+4. 在“驱动器号”下，选择一个新驱动器，如 **T**，然后单击“确定”。 
 5. 右键单击数据磁盘，并选择“更改驱动器号和路径”。
 6. 在“驱动器号”下，选择驱动器 **D**，然后单击“确定”。 
-7. 右键单击 **G**（临时存储驱动器），然后选择“更改驱动器号和路径”。
-8. 在“驱动器号”下，选择驱动器 **E**，然后单击“确定”。 
-
-> [!NOTE]
-> 如果你的 VM 有其他磁盘或驱动器，可使用相同的方法来重新分配其他磁盘和驱动器的驱动器号。 你希望磁盘配置为：  
-> 
-> * C：OS 磁盘  
-> * D：数据磁盘  
-> * E：临时磁盘
-> 
-> 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>将 pagefile.sys 移回临时存储驱动器
 1. 右键单击“开始”菜单，然后选择“系统”。
@@ -74,7 +63,7 @@ ms.openlocfilehash: 002e7fe3a0573898fff2552264a318d528eec25c
 4. 选择“高级”选项卡。
 5. 在“虚拟内存”部分中，选择“更改”。
 6. 选择 OS 驱动器 **C**，然后依次单击“无分页文件”、“设置”。
-7. 选择临时存储驱动器 **E**，然后依次单击“系统管理的大小”、“设置”。
+7. 选择临时存储驱动器 **T**，然后依次单击“系统管理的大小”、“设置”。
 8. 单击“应用” 。 你将收到警告，指出计算机需要重新启动才能使更改生效。
 9. 重启虚拟机。
 
@@ -84,6 +73,6 @@ ms.openlocfilehash: 002e7fe3a0573898fff2552264a318d528eec25c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

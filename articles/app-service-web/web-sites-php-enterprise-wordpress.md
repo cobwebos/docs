@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service 上的企业级 WordPress | Microsoft Docs"
+title: "Azure 上的企业级 WordPress | Microsoft Docs"
 description: "了解如何在 Azure App Service 上托管企业级 WordPress 网站"
 services: app-service\web
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f37777eb42051921087c90a57138cb4085dd7cd
-ms.openlocfilehash: 032d5cbc19113d966b20cec1ef332eb6fdca5708
+ms.sourcegitcommit: 541dd7bed5a4a9e306642b2c36dd7c9d45aec690
+ms.openlocfilehash: fcaff51b2897b1b0bce8b1c503adfd9425c9fbb4
 
 
 ---
-# <a name="enterprise-class-wordpress-on-azure-app-service"></a>Azure App Service 上的企业级 WordPress
+# <a name="enterprise-class-wordpress-on-azure"></a>Azure 上的企业级 WordPress
 Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提供了一个可缩放、安全且易用的环境。 Microsoft 自身在运营 [Office][officeblog] 和[必应][bingblog]博客等企业级站点。 本文说明如何使用 Microsoft Azure App Service 的 Web 应用功能，建立和维护一个可处理大量访客、基于云的企业级 WordPress 站点。
 
 ## <a name="architecture-and-planning"></a>架构与规划
@@ -83,7 +83,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 #### <a name="performance"></a>性能
 云中的性能主要通过缓存和横向扩展实现。 但是，还应考虑托管 Web 应用的内存、带宽和其他属性。
 
-| 为此，请执行以下操作... | 请使用以下方法... |
+| 要执行以下操作... | 请使用以下方法... |
 | --- | --- |
 | **了解应用服务实例功能** |[定价详细信息，其中包括应用服务层的功能][websitepricing] |
 | **缓存资源** |[Redis 缓存][rediscache]、[Memcache Cloud](/gallery/store/garantiadata/memcached/)、[MemCachier](/gallery/store/memcachier/memcachier/) 或 [Azure 应用商店](/gallery/store/)中的一款其他缓存产品 |
@@ -180,7 +180,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 * [在 WordPress 中启用美观的固定链接](http://www.iis.net/learn/extensions/url-rewrite-module/enabling-pretty-permalinks-in-wordpress)
 * [如何在 Azure 应用服务上迁移和运行 WordPress 博客](http://www.kefalidis.me/2012/06/how-to-migrate-and-run-your-wordpress-blog-on-windows-azure-websites/)
 * [如何在 Azure 应用服务上免费运行 WordPress](http://architects.dzone.com/articles/how-run-wordpress-azure)
-* [在 2 分钟或更短时间内在 Azure 上运行 WordPress](http://www.sitepoint.com/wordpress-windows-azure-2-minutes-less/)
+* [在&2; 分钟或更短时间内在 Azure 上运行 WordPress](http://www.sitepoint.com/wordpress-windows-azure-2-minutes-less/)
 * [将 WordPress 博客移至 Azure - 第 1 部分：在 Azure 上创建 WordPress 博客](http://www.davebost.com/2013/07/10/moving-a-wordpress-blog-to-windows-azure-part-1)
 * [将 WordPress 博客移至 Azure - 第 2 部分：传输内容](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-transferring-your-content)
 * [将 WordPress 博客移至 Azure-第 3 部分：设置自定义域](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-part-3-setting-up-your-custom-domain)
@@ -191,7 +191,7 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 * [在 Azure 上支持 WordPress 的技巧](http://www.johnpapa.net/azurecleardbmysql/)
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用任何信用卡，也无需做出任何承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用任何信用卡，也无需做出任何承诺。
 >
 >
 
@@ -246,6 +246,6 @@ Azure App Service 为大规模任务关键型 [WordPress][wordpress] 站点提�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "获取用于 Azure IoT 初学者工具包的 Azure 工具 (macOS 10.10) | Microsoft Docs"
+title: "将 Intel Edison (C) 连接到 Azure IoT - 第 2 课：Azure 工具 (macOS) | Microsoft Docs"
 description: "在 macOS 上安装 Python 和 Azure 命令行接口 (Azure CLI)。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 74aaf17819eea7fbda04f91a02ef77823342bc8b
-ms.openlocfilehash: d4be409e8718cd8cb5c867ee41ba8041490d9d0b
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: c79f1595c0e1359044c8c3ec3b6e8bc87f4aa4fa
 
 
 ---
@@ -84,6 +84,6 @@ Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

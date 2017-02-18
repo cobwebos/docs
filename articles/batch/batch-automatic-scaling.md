@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: multiple
-ms.date: 10/14/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 75cb029e61006636de91e945404e38fd6d955697
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: 89ff5d5deeda72361cb619516681aca386c5a422
 
 
 ---
@@ -607,7 +607,7 @@ $NodeDeallocationOption = taskcompletion;
 
 以下代码片段中的公式：
 
-* 将初始池大小设置为 4 个节点。
+* 将初始池大小设置为&4; 个节点。
 * 在池生命周期的最初 10 分钟内不调整池大小。
 * 10 分钟后，获取过去 60 分钟内正在运行和处于活动状态的任务数目的最大值。
   * 如果这两个值均为 0（表示过去 60 分钟没有正在运行或处于活动状态的任务），则池大小将设置为 0。
@@ -646,6 +646,6 @@ string formula = string.Format(@"
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

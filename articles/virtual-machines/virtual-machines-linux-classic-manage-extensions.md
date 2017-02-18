@@ -1,5 +1,5 @@
 ---
-title: "管理虚拟机扩展 | Microsoft Docs"
+title: "管理基于 Linux 的虚拟机扩展 | Microsoft Docs"
 description: "介绍如何在经典部署模型中添加、查找、更新和删除 Azure 虚拟机的扩展。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 4cef8ac3cf2dd7ecbb7a520daa42799bdcb9eb80
+ms.sourcegitcommit: 7ee387dde3f910fac2fe9195681c8fb8a0443d41
+ms.openlocfilehash: 9f491566fafd431e363873653240b0d5e727d91d
 
 
 ---
@@ -32,6 +32,6 @@ ms.openlocfilehash: 4cef8ac3cf2dd7ecbb7a520daa42799bdcb9eb80
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "准备好主机和 Azure IoT 中心 | Microsoft Docs"
+title: "模拟设备和 Azure IoT 网关 - 第 2 课：获取工具 (Ubuntu) | Microsoft Docs"
 description: "在运行 Ubuntu 的主机上安装工具和软件，创建 IoT 中心并在此 IoT 中心注册设备。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 6feb4f6fa72aeb3d43211ad8c3973ad2b96671ec
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: f09ad1624f8a7ce4e1b13217d085cfc172d870ca
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 6feb4f6fa72aeb3d43211ad8c3973ad2b96671ec
 
 ## <a name="what-you-will-do"></a>执行的操作
 
-- 安装 Git、Node.js、Gulp 和 Python。
+- 安装 Git、Node.js、Gulp、Python。
 - 安装 Azure 命令行界面 (Azure CLI)。 
 
 如果有任何问题，请在[故障排除页面](iot-hub-gateway-kit-c-sim-troubleshooting.md)上查找解决方案。
@@ -38,7 +38,7 @@ ms.openlocfilehash: 6feb4f6fa72aeb3d43211ad8c3973ad2b96671ec
 在本课程中将学习：
 
 - 如何安装 Git 和 Node.js。
-  - Git 是一个开源分布式版本控制系统。 本课程的示例应用程序存储在 Git 中。
+  - Git 是一个开源分布式版本控制系统。 本课程的示例应用程序存储在 Git 上。
   - Node.js 是一个具有丰富的程序包生态系统的 JavaScript 运行时。
 - 如何使用 NPM 安装 Node.js 开发工具。
   - 需要的最低 Node.js 版本为 4.5 LTS。
@@ -46,7 +46,7 @@ ms.openlocfilehash: 6feb4f6fa72aeb3d43211ad8c3973ad2b96671ec
 - 如何安装 Visual Studio Code。
   - Visual Studio Code 是一个跨平台的轻型但功能强大的源代码编辑器，适用于 Windows、Linux 和 macOS。 它对于调试、内嵌的 Git 控制、语法突出显示、智能代码完成、代码段和代码重构提供了极佳支持。
 - 如何安装 Azure CLI
-  - Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令行执行操作来预配和管理资源。
+  - Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令行执行操作以预配和管理资源。
 - 如何使用 Azure CLI 创建 IoT 中心。
 
 ## <a name="what-you-need"></a>所需条件
@@ -111,19 +111,19 @@ sudo npm install -g gulp
 
 ### <a name="install-visual-studio-code"></a>安装 Visual Studio Code
 
-在本教程后面使用 Visual Studio Code 编辑配置文件。
+使用本教程后面的 Visual Studio Code 编辑配置文件。
 
 [下载](https://code.visualstudio.com/docs/setup/linux)并安装 Visual Studio Code。
 
 ## <a name="summary"></a>摘要
 
-已在主机上安装所有所需的工具和软件。 下一个任务是使用 Azure CLI 创建 IoT 中心并在此 IoT 中心注册设备。
+已在主计算机上安装所有所需的工具和软件。 下一个任务是使用 Azure CLI 创建 IoT 中心并在此 IoT 中心注册设备。
 
 ## <a name="next-steps"></a>后续步骤
 [创建 IoT 中心并注册设备](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

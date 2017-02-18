@@ -1,5 +1,5 @@
 ---
-title: "使用 Resource Manager 锁定资源 | Microsoft Docs"
+title: "防止关键 Azure 资源中的更改 | Microsoft Docs"
 description: "通过对所有用户和角色应用限制，来防止用户更新或删除特定的资源。"
 services: azure-resource-manager
 documentationcenter: 
@@ -12,28 +12,30 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 12/14/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: fd22c8e0a02a3d0b1286d51d6506a82de2296574
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: de8137a69ccc2028a7dcbff491573f36640bdc50
 
 
 ---
-# <a name="lock-resources-with-azure-resource-manager"></a>使用 Azure 资源管理器锁定资源
+# <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改 
 管理员可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 
 
-* **CanNotDelete** 表示经过授权的用户仍可以读取和修改资源，但不能删除资源。 
-* **ReadOnly** 表示经过授权的用户可以读取资源，但不能删除资源，也不能对资源执行任何操作。 对资源的权限限制为**读取者**角色。 
+* **CanNotDelete** 表示经授权的用户仍可读取和修改资源，但不能删除资源。 
+* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”角色授予的权限。 
+
+Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁将阻止删除或修改该数据库，但不会阻止创建、更新或删除该数据库中的数据。 允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
 应用 **ReadOnly** 可能会导致意外结果，因为看起来好像读取操作的某些操作实际上需要其他操作。 例如，在存储帐户上放置 **ReadOnly** 锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。 另举一例，在应用服务资源上放置 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
 
 与基于角色的访问控制不同，你可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
 
-在父作用域应用锁时，所有子资源将继承同一个锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
+在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
 ## <a name="who-can-create-or-delete-locks-in-your-organization"></a>谁可以在组织中创建或删除锁
-若要创建或删除管理锁，必须有权访问 **Microsoft.Authorization/\*** 或 **Microsoft.Authorization/locks/\*** 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
+若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
 
 ## <a name="creating-a-lock-through-the-portal"></a>通过门户创建锁
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
@@ -99,6 +101,6 @@ Azure PowerShell 提供了其他用于使用锁的命令，例如，**Set-AzureR
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

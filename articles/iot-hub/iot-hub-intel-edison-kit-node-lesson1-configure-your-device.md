@@ -1,5 +1,5 @@
 ---
-title: "创建闪烁应用程序并将其部署到 Azure IoT 初学者工具包中 | Microsoft Docs"
+title: "将 Intel Edison（节点）连接到 Azure IoT - 第 1 课：配置设备 | Microsoft Docs"
 description: "首次配置 Intel Edison 进行使用。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/7/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: 4511f88bc6a3e71fe3ea9375711dade15fd4ef70
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: 203d3976b9ba0960f5a3dbff4e2b1fcdf4c0dc33
 
 
 ---
@@ -123,7 +123,7 @@ ms.openlocfilehash: 4511f88bc6a3e71fe3ea9375711dade15fd4ef70
 4. 记下密码，稍后会用到此密码。
 
 ### <a name="connect-wi-fi"></a>连接 Wi-Fi
-1. 在`Set up options`页面上，单击`Connect Wi-Fi`。 计算机将扫描可用的 Wi-Fi 网络，此过程最长可能需要 1 分钟。
+1. 在`Set up options`页面上，单击`Connect Wi-Fi`。 计算机将扫描可用的 Wi-Fi 网络，此过程最长可能需要&1; 分钟。
 2. 从`Detected Networks`下拉列表中，选择网络。
 3. 从`Security`下拉列表中，选择网络的安全类型。
 4. 提供登录名和密码信息，然后单击`Configure Wi-Fi`。
@@ -145,6 +145,6 @@ ms.openlocfilehash: 4511f88bc6a3e71fe3ea9375711dade15fd4ef70
 [get-the-tools]: iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

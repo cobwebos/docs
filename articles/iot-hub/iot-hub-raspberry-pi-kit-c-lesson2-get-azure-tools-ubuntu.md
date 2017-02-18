@@ -1,5 +1,5 @@
 ---
-title: "获取 Azure 工具 (Ubuntu 16.04) | Microsoft 文档"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 2 课：Azure 工具 (Ubuntu) | Microsoft Docs"
 description: "在 Ubuntu 上安装 Python 和 Azure 命令行接口 (Azure CLI)。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 5ae42a718a67d52364dd4b083f65a45a668e643d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 4c31bb14f2b32d71f14a89576922b9701b226e66
 
 
 ---
@@ -74,6 +74,6 @@ Azure CLI 针对 Azure 提供了多平台命令行体验，使得你可以直接
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

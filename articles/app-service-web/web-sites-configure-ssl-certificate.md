@@ -1,6 +1,6 @@
 ---
 title: "使用 HTTPS 保护应用的自定义域 | Microsoft Docs"
-description: "了解如何配置 SSL 证书绑定以在 Azure App Service 中保护应用的自定义域名。 还将学习如何从多个工具处获取 SSL 证书。"
+description: "了解如何配置 SSL 证书绑定以在 Azure 应用服务中保护应用的自定义域名。 还将学习如何从多个工具处获取 SSL 证书。"
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 46ffa25ff6f90c898b958ee6c5b2c47219c468ab
 
 
 ---
@@ -91,7 +91,7 @@ ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
         KeyLength = 2048              ; Required minimum is 2048
         KeySpec = 1
         KeyUsage = 0xA0
-        MachineKeySet = True
+        MachineKeySet = FALSE
         ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
         ProviderType = 12
         HashAlgorithm = SHA256
@@ -107,7 +107,7 @@ ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
     现已在当前工作目录中创建了 **myrequest.csr**。
 3. 向 CA 提交 **myrequest.csr** 以获取 SSL 证书。 上传文件，或将其内容从文本编辑器复制到 Web 窗体。
    
-    有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft Trusted Root Certificate Program: Participants][cas]（Microsoft 信任的根证书程序：参与者）。
+    有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft 信任的根证书程序：参与者][cas]。
 4. CA 返回证书 ( CER) 文件后，即将其保存到工作目录中。 然后，运行以下命令以完成挂起的 CSR。
    
         certreq -accept -user <certificate-name>.cer
@@ -138,8 +138,8 @@ ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
 <a name="bkmk_iismgr"></a>
 
 ### <a name="get-a-certificate-using-the-iis-manager"></a>使用 IIS 管理器获取证书
-1. 使用 IIS 管理器生成要发送给 CA 的 CSR。 有关生成 CSR 的详细信息，请参阅[请求 Internet 服务器证书 (IIS 7)][iiscsr]。
-2. 向 CA 提交 CSR 以获取 SSL 证书。 有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft Trusted Root Certificate Program: Participants][cas]（Microsoft 信任的根证书程序：参与者）。
+1. 使用 IIS 管理器生成要发送给 CA 的 CSR。 有关生成 CSR 的详细信息，请参阅[申请 Internet 服务器证书 (IIS 7)][iiscsr]。
+2. 向 CA 提交 CSR 以获取 SSL 证书。 有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft 信任的根证书程序：参与者][cas]。
 3. 使用 CA 发回的证书完成 CSR。 有关完成 CSR 的详细信息，请参阅[安装 Internet 服务器证书 (IIS 7)][installcertiis]。
 4. 如果 CA 使用中间证书，请先安装再继续操作。 这些证书通常从 CA 单独下载，会针对不同的 Web 服务器类型提供多种格式。 为 Microsoft IIS 选择版本。
    
@@ -182,7 +182,7 @@ ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
    
     完成后，工作目录中应有两个文件：**myserver.key** 和 **server.csr**。 
     **server.csr** 包含 CSR，稍后会需要 **myserver.key**。
-3. 向 CA 提交 CSR 以获取 SSL 证书。 有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft Trusted Root Certificate Program: Participants][cas]（Microsoft 信任的根证书程序：参与者）。
+3. 向 CA 提交 CSR 以获取 SSL 证书。 有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft 信任的根证书程序：参与者][cas]。
 4. CA 发回请求证书后，将其保存到工作目录中名为 **myserver.crt** 的文件下。 如果 CA 提供的是文本格式，只需在文本编辑器中将内容复制到 **myserver.crt**，然后进行保存。 该文件应如下所示：
    
         -----BEGIN CERTIFICATE-----
@@ -270,7 +270,7 @@ ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
    
     完成后，工作目录中应有两个文件：**myserver.key** 和 **server.csr**。 
     **server.csr** 包含 CSR，稍后会需要 **myserver.key**。
-4. 向 CA 提交 CSR 以获取 SSL 证书。 有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft Trusted Root Certificate Program: Participants][cas]（Microsoft 信任的根证书程序：参与者）。
+4. 向 CA 提交 CSR 以获取 SSL 证书。 有关 Microsoft 信任的 CA 列表，请参阅 [Microsoft 信任的根证书程序：参与者][cas]。
 5. CA 发回请求证书后，将其保存到名为 **myserver.crt** 的文件下。 如果 CA 提供的是文本格式，只需在文本编辑器中将内容复制到 **myserver.crt**，然后进行保存。 该文件应如下所示：
    
         -----BEGIN CERTIFICATE-----
@@ -519,13 +519,13 @@ ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
 
 ## <a name="more-resources"></a>更多资源
 * [Microsoft Azure 信任中心](/support/trust-center/security/)
-* [Azure 网站中解锁的配置选项](/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
+* [Azure 网站中解锁的配置选项](https://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
 * [启用诊断日志记录](web-sites-enable-diagnostic-log.md)
 * [在 Azure 应用服务中配置 Web 应用](web-sites-configure.md)
 * [Azure 管理门户](https://manage.windowsazure.com)
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -557,6 +557,6 @@ ms.openlocfilehash: 48696644e3a6c5fc2d84538c9c247d080cd7c6f4
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

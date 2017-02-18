@@ -1,5 +1,5 @@
 ---
-title: "在 Azure App Service 中使用 ASP.NET Web API 和 SQL 数据库创建 REST 服务"
+title: "使用 ASP.NET 和 SQL DB 在 Azure 中创建 REST API | Microsoft Docs"
 description: "本教程将介绍如何通过使用 Visual Studio 将使用 ASP.NET Web API 的应用部署到 Azure Web 应用。"
 services: app-service\web
 documentationcenter: .net
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2188a56fee942cd58b20b92fb77891708ab62d24
+ms.sourcegitcommit: 3f6bb2604d6f20e299ae5583a0ad215f02b9b803
+ms.openlocfilehash: 016d44cb57d5ad76dc0b115be6fbac6835d84396
 
 
 ---
@@ -663,7 +663,7 @@ XSRF 攻击不同于网络钓鱼攻击。 网络钓鱼攻击需要与受害者�
 该应用程序现在是运行在云中，使用 SQL 数据库存储其数据。 在 Azure 中测试应用程序完成后，将其删除。 该应用程序是公开的并且没有限制访问的机制。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -685,10 +685,10 @@ XSRF 攻击不同于网络钓鱼攻击。 网络钓鱼攻击需要与受害者�
 * 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
-[添加 OAuth 提供程序]: #addOauth
-[向成员资格数据库中添加角色]:#mbrDB
-[创建数据部署脚本]:#ppd
-[更新成员资格数据库]:#ppd2
+[Add an OAuth Provider]: #addOauth
+[Add Roles to the Membership Database]:#mbrDB
+[Create a Data Deployment Script]:#ppd
+[Update the Membership Database]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -742,9 +742,9 @@ XSRF 攻击不同于网络钓鱼攻击。 网络钓鱼攻击需要与受害者�
 [addwebapi004]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-added-contact.png
 [addwebapi006]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-save-returned-contacts.png
 [addwebapi007]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-contacts-in-notepad.png
-[添加 XSRF 保护]: #xsrf
+[Add XSRF Protection]: #xsrf
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
-[添加 XSRF 保护]: #xsrf
+[Add XSRF Protection]: #xsrf
 [ImportPublishSettings]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishSettings.png
 [ImportPublishProfile]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishProfile.png
 [PublishVSSolution]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/PublishVSSolution.png
@@ -755,6 +755,6 @@ XSRF 攻击不同于网络钓鱼攻击。 网络钓鱼攻击需要与受害者�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

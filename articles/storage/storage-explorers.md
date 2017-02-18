@@ -1,9 +1,9 @@
 ---
-title: "Azure 存储客户端工具 | Microsoft Docs"
+title: "适用于 Azure 存储的工具 | Microsoft Docs"
 description: "可用于查看 Azure 存储空间数据或与之交互的工具列表。"
 services: storage
 documentationcenter: 
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: e4748642-98c4-437e-b0ed-4f9641c2e894
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6d2c365a271428a55e484939a2cce5ce5f7348d8
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: eb7e798120ea9075dba92da76826ff621882c32a
 
 
 ---
@@ -60,7 +60,7 @@ Azure 存储空间用户经常要使用 Azure 存储客户端工具来查看其�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://storageexplorer.com/">Microsoft Azure 存储空间资源管理器</a></td>
+    <td><a href="http://storageexplorer.com/">Microsoft Azure 存储资源管理器</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -154,7 +154,7 @@ Azure 存储空间用户经常要使用 Azure 存储客户端工具来查看其�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://azurestorageexplorer.codeplex.com/">Azure 存储资源管理器</a></td>
+    <td><a href="http://azurestorageexplorer.codeplex.com/">Azure 存储空间资源管理器</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -255,6 +255,6 @@ Azure 存储空间用户经常要使用 Azure 存储客户端工具来查看其�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

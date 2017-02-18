@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 容器服务中使用 Kubernetes Web 用户 UI | Microsoft Docs"
+title: "使用 Web UI 管理 Azure Kubernetes 群集 | Microsoft Docs"
 description: "在 Azure 容器服务中使用 Kubernetes Web 用户 UI"
 services: container-service
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
-ms.openlocfilehash: 9ae6e606bf215d9f53f725899b8ac7c466b781f1
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 4192369f2e7758200131aa85c60d07436f7cbbdc
 
 
 ---
 
-# <a name="microsoft-azure-container-service-engine---using-the-kubernetes-web-ui"></a>Microsoft Azure 容器服务引擎 - 使用 Kubernetes Web UI
+# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>通过 Azure 容器服务使用 Kubernetes Web UI
 
 ## <a name="prerequisites"></a>先决条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
@@ -136,6 +136,6 @@ $ az acs kubernetes browse
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

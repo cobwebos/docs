@@ -12,14 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 1/19/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 14997080496adfd363fee249c858ed9a0b553066
+ms.sourcegitcommit: 64650bf7baf46b0f5473deb1a9b4ec329979d153
+ms.openlocfilehash: 0fc78521abb0fce2a38b14d1411dad42b3580df2
 
 
 ---
+
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>在 Azure 存储空间中断时该怎么办
 Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各种不可控因素会导致一个或多个区域出现计划外服务中断，对我们造成影响。 为了帮助你应对这些偶发事件，我们提供了下述针对 Azure 存储服务的概述性指导。
 
@@ -54,7 +55,9 @@ Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各
 * 只能通过 Azure 存储团队触发存储空间异地故障转移 – 不需客户操作。
 * 针对 Blob、表、队列和文件的现有存储服务终结点在故障转移后保持不变；需要更新 DNS 条目才能从主要区域切换到次要区域。
 * 在异地故障转移之前和过程中，由于灾难的影响，你将无法对存储帐户进行写入访问，但如果你的存储帐户已配置为 RA-GRS，你仍然可以从次要区域进行读取。
-* 完成异地故障转移且传播 DNS 更改以后，将恢复你对存储帐户的读取和写入访问权限。 若要了解更多详细信息，可查阅[存储帐户的“上次异地故障转移时间”](https://msdn.microsoft.com/library/azure/ee460802.aspx)。
+* 完成异地故障转移且传播 DNS 更改后，将恢复对存储帐户的读取和写入访问权限；这会指向之前的辅助终结点。 
+* 请注意，如果存储帐户配置了 GRS 或 RA-GRS，则将具有写入访问权限。 
+* 若要了解更多详细信息，可查阅[存储帐户的“上次异地故障转移时间”](https://msdn.microsoft.com/library/azure/ee460802.aspx)。
 * 在故障转移之后，你的存储帐户完全可以正常使用，但处于“已降级”状态，因为实际上它是托管在独立区域中，不可能进行异地复制。 为了缓解此风险，我们需要还原原始的主要区域，然后通过异地故障回复还原原始状态。 如果原始的主要区域不可恢复，我们会分配其他次要区域。
   若要更详细地了解 Azure 存储异地复制的基础结构，请参阅存储团队博客中有关[冗余选项和 RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) 的文章。
 
@@ -66,9 +69,11 @@ Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各
 * 表 – 使用 [AzCopy](storage-use-azcopy.md) 将表数据导出到其他区域的其他存储帐户中。
 * 文件 – 使用 [AzCopy](storage-use-azcopy.md) 或 [Azure PowerShell](storage-powershell-guide-full.md) 将文件复制到其他区域的其他存储帐户。
 
+若要深入了解如何创建充分利用 RA-GRS 功能的应用程序，请参阅[使用 RA-GRS 存储设计高可用性应用程序](storage-designing-ha-apps-with-ragrs.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO3-->
 
 

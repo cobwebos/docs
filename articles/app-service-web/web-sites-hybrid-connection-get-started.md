@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/03/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a27a8eed4ed5814cec3880567f506d0854ddbd62
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: cb656dd952e76ee29e102fff531d34a45e4630e4
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: a27a8eed4ed5814cec3880567f506d0854ddbd62
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 若要获取免费订阅，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
   
-    如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+    如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 * 若要通过混合连接使用本地 SQL Server 或 SQL Server Express 数据库，需要在静态端口上启用 TCP/IP。 建议使用 SQL Server 的默认实例，因为它使用静态端口 1433。 有关安装和配置与混合连接同时使用的 SQL Server Express 的信息，请参阅[使用混合连接从 Azure 网站连接到本地 SQL Server](http://go.microsoft.com/fwlink/?LinkID=397979)。
 * 其上安装本地混合连接管理器代理的计算机将在本教程稍后部分介绍。
   
@@ -86,7 +86,7 @@ ms.openlocfilehash: a27a8eed4ed5814cec3880567f506d0854ddbd62
    
    * 对于“名称”，为连接提供一个名称。
    * 对于“主机名”，输入托管你的资源的本地计算机名称。
-   * 对于“端口”，输入本地资源使用的端口号（SQL Server 默认实例使用 1433）。
+   * 对于“端口”，输入本地资源使用的端口号（SQL Server 默认实例使用&1433;）。
    * 单击“Biz Talk 服务”
 4. “创建 BizTalk 服务”边栏选项卡打开。 为 BizTalk 服务输入名称，然后单击“确定”。
    
@@ -250,6 +250,6 @@ ms.openlocfilehash: a27a8eed4ed5814cec3880567f506d0854ddbd62
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -2,7 +2,7 @@
 title: "针对 Azure 度量值警报配置 webhook | Microsoft Docs"
 description: "将 Azure 警报重新路由到其他非 Azure 系统。"
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 01/07/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 62d6c15b9c360c74dc5d9436833bb4666048e523
+ms.sourcegitcommit: c0d101266fecf04a84b5717c1b81cefed90cab40
+ms.openlocfilehash: 440bd939f0c7d235d7be210c7fee9f2bc122718c
 
 
 ---
@@ -36,7 +36,7 @@ Azure 警报会将警报内容以 JSON 格式（架构定义如下）HTTP POST �
 Webhook 可以使用以下任一方法进行身份验证：
 
 1. **基于令牌的授权** - 例如，保存的 webhook URI 具有令牌 ID。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
-2. **基本授权** - 例如，保存的 webhook URI 具有用户名和密码。 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
+2. **基于密码的授权** - 例如，保存的 webhook URI 具有用户名和密码，例如 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
 
 ## <a name="payload-schema"></a>负载架构
 POST 操作对于所有基于度量值的警报包含以下 JSON 有效负载和架构。
@@ -103,8 +103,8 @@ POST 操作对于所有基于度量值的警报包含以下 JSON 有效负载和
 
 > [!NOTE]
 > 仅可以使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 设置属性字段。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 * 请在[将 Azure 警报与 PagerDuty](http://go.microsoft.com/fwlink/?LinkId=627080) 集成视频中了解有关 Azure 警报和 webhook 的详细信息
@@ -115,7 +115,6 @@ POST 操作对于所有基于度量值的警报包含以下 JSON 有效负载和
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

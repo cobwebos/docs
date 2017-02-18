@@ -1,6 +1,6 @@
 ---
-title: "在 PowerShell 中创建 Azure Application Insights 资源、警报和可用性测试 | Microsoft Docs"
-description: "使用 Azure Resource Manager 模板自动执行 Application Insights 资源管理。"
+title: "使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs"
+description: "使用 Azure Resource Manager 模板在 PowerShell 中自动创建资源、警报和可用性测试。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 86118ebfcb0c7c55ff414d381645025f41c74eb7
-ms.openlocfilehash: ba52b3dc55d80cc5944f16c238a2ea0d66c94990
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
 
 
 ---
@@ -111,7 +111,7 @@ ms.openlocfilehash: ba52b3dc55d80cc5944f16c238a2ea0d66c94990
                 "ApplicationId": "[parameters('appName')]",
                 "Name": "[parameters('appName')]",
                 "Flow_Type": "Redfield",
-                "Request_Source": "IbizaAIExtension"
+                "Request_Source": "ARMAIExtension"
               }
             },
             {
@@ -438,6 +438,6 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

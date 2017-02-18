@@ -1,28 +1,33 @@
 ---
-title: "机器学习应用：异常情况检测服务 | Microsoft Docs"
-description: "异常情况检测 API 是一个示例，它使用 Microsoft Azure 机器学习，检测时序数据和均匀分布在时间中的数值的异常情况。"
+title: "（已弃用）Azure 机器学习异常情况检测服务 | Microsoft Docs"
+description: "（已弃用）异常情况检测服务是一个示例，它使用 Microsoft Azure 机器学习，检测时序数据和均匀分布在时间中的数值的异常情况。"
 services: machine-learning
 documentationcenter: 
 author: alokkirpal
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
 ms.devlang: na
-ms.topic: article
+ms.topic: deprecated
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/11/2016
+ms.date: 01/18/2017
 ms.author: alok
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cbcd469f39b42d741d73f9d96daf17d011b7ebc7
+ms.sourcegitcommit: eff129aceac18342a79f06376023301afc676763
+ms.openlocfilehash: 847c24f8baf5f5db93474b469eb402d3ab7d4880
 
 
 ---
-# <a name="machine-learning-anomaly-detection-service"></a>机器学习异常情况检测服务
+# <a name="machine-learning-anomaly-detection-service-deprecated"></a>机器学习异常情况检测服务（已弃用）
+> [!NOTE]
+> 现在，可以使用 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)中的新“注册”选项将此 API 部署到 Azure 订阅。 有关详细信息，请参阅[机器学习异常情况检测 API](machine-learning-apps-anomaly-detection-api.md)。
+> 
+> 本文所描述的通过 Azure Datamarket 访问 API 的方法已被弃用。
+
 ## <a name="overview"></a>概述
-[异常情况检测 API](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) 是一个示例，使用 Azure 机器学习构建，检测时序数据和均匀分布在时间中的数字值的异常情况。 
+[异常情况检测 API（已弃用）](https://datamarket.azure.com/dataset/aml_labs/anomalydetection)是一个示例，使用 Azure 机器学习构建，检测时序数据和均匀分布在时间中的数字值的异常情况。 
 
 此 API 可以检测时序数据中以下类型的异常模式：
 
@@ -173,8 +178,8 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 | upleveldetector.sensitivity |向上级别更改检测程序的敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
 | bileveldetector.sensitivity |双向级别更改检测程序的敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
 | 趋势检测程序敏感度 |正面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
-| tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |integer |1-10 |3 5（值越小，敏感度越高） |
-| zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |integer |1-10 |3 5（值越小，敏感度越高） |
+| tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |integer |1-10 |3&5;（值越小，敏感度越高） |
+| zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |integer |1-10 |3&5;（值越小，敏感度越高） |
 | seasonality.enable |是否要执行季节性分析 |是 |布尔值 |true、false |时间序列依赖项 |
 | seasonality.numSeasonality |检测到的定期周期的最大数量 |1 |integer |1, 2 |1-2 |
 | seasonality.transform |是否应在应用异常检测前删除季节性（和）趋势组件 |deseason |枚举 |none, deseason, deseasontrend |不适用 |
@@ -193,7 +198,7 @@ API 在时间系列数据上运行所有检测程序，并及时返回异常的�
 | Pscore |浮动数字表示向上级别更改上的异常分数 |
 | Palert |1/0 值指示基于输入敏感度的、上升级别的更改异常 |
 | RPScore |浮动数字表示双向级别更改上的异常分数 |
-| RPAlert |基于输入敏感度，指示存在双向级别更改异常的 1/0 值 |
+| RPAlert |基于输入敏感度，指示存在双向级别更改异常的&1;/0 值 |
 | TScore |浮动数字表示正面趋势的更改异常 |
 | TAlert |1/0 值指示存在基于输入敏感度的、正面趋势异常 |
 
@@ -208,6 +213,6 @@ API 在时间系列数据上运行所有检测程序，并及时返回异常的�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

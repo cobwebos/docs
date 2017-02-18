@@ -1,5 +1,5 @@
 ---
-title: "在 Resource Manager 中使用 Azure CLI 创建应用程序网关 | Microsoft 文档"
+title: "创建 Azure 应用程序网关 - Azure CLI | Microsoft Docs"
 description: "了解如何在 Resource Manager 中使用 Azure CLI 创建应用程序网关"
 services: application-gateway
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: e20f7349f30c309059c2867d7473fa6fdefa9b61
-ms.openlocfilehash: 165289acd1d2a5bc098e9a83f43613d16a023045
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: d376cd1f62f99d3f611d0d5ccc613c4b649e5c3c
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 165289acd1d2a5bc098e9a83f43613d16a023045
 > 
 > 
 
-Azure 应用程序网关是第 7 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
+Azure 应用程序网关是第&7; 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>先决条件：安装 Azure CLI
 
@@ -140,6 +140,6 @@ azure network application-gateway create -n AdatumAppGateway -l eastus -g Adatum
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

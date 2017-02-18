@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中使用 Hadoop Sqoop | Microsoft Docs"
+title: "通过 Azure HDInsight (Hadoop) 运行 Apache Sqoop 作业 | Microsoft Docs"
 description: "学习如何从工作站使用 Azure PowerShell 在 Hadoop 群集和 Azure SQL 数据库之间运行 Sqoop 导入和导出。"
 editor: cgronlun
 manager: jhubbard
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 8056e7ece1942c9090a7c36447a96829febaf1a4
-ms.openlocfilehash: a45e069f18a07bca314210f074455fda68e552c4
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 3f053d4c94d48630252f7c80fa8077c8ae5feb2d
 
 
 ---
@@ -634,6 +634,6 @@ PowerShell 示例将执行以下步骤：
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

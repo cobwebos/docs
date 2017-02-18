@@ -1,5 +1,5 @@
 ---
-title: "Reliable Actors 生命周期 | Microsoft 文档"
+title: "基于角色的 Azure 微服务生命周期概述 | Microsoft Docs"
 description: "介绍 Service Fabric Reliable Actor 生命周期、垃圾回收和如何手动删除执行组件及其状态"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/30/2016
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: e39c130b1abb0b2c31511abdd51f02446d3898f6
-ms.openlocfilehash: 681c9aa628ea9364f73e6a41f0f71139d3b983d7
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 22f906de37ad7ae2a48acf26be26f2af1e3bde7a
 
 
 ---
@@ -93,9 +93,9 @@ public class Program
 
 * ScanInterval 和 IdleTimeout 分别设置为 5 和 10。 （此处的单位无关紧要，因为我们的目的只是为了说明这一概念。）
 * 按照扫描间隔时间为 5 的定义，对要执行垃圾回收的执行组件进行的扫描发生在 T = 0、5、10、15、20、25。
-* T = 4、8、12、16、20、24 时启动定期计时器，并执行其回调。 它不会影响执行组件的空闲时间。
+* T =&4;、8、12、16、20、24 时启动定期计时器，并执行其回调。 它不会影响执行组件的空闲时间。
 * 在 T = 7 时调用的执行组件方法将空闲时间重置为 0，并延迟此执行组件的垃圾回收。
-* 执行组件提醒回调在 T = 14 时执行，并进一步延迟执行组件的垃圾回收。
+* 执行组件提醒回调在 T =&14; 时执行，并进一步延迟执行组件的垃圾回收。
 * 在 T = 25 时的垃圾回收扫描期间，执行组件的空闲时间最终超过空闲超时时间 10，将对此执行组件进行垃圾回收。
 
 当执行组件正在执行它的一个方法时，无论执行该方法用了多少时间，始终不会对此执行组件进行垃圾回收。 前面曾提到，执行执行组件接口方法和提醒回调可以防止通过将执行组件的空闲时间重置为 0 进行垃圾回收。 执行计时器回调不会将空闲时间重置为 0。 但是，执行组件的垃圾回收会推迟到计时器回调执行完毕。
@@ -137,6 +137,6 @@ await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "运行模拟设备示例应用以将数据发送到 Azure IoT 中心 | Microsoft Docs"
+title: "模拟设备和 Azure IoT 网关 - 第 3 课：运行示例应用 | Microsoft Docs"
 description: "运行模拟设备示例应用，将温度数据发送到 IoT 中心"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 94bffa363f7979b7dc37363328a358f0b139307d
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 873f3cef8cb1d115f77f0d3fa2c4b50391f66d91
 
 
 ---
@@ -109,7 +109,7 @@ az iot device show-connection-string --hub-name {IoT hub name} --device-id mydev
    code ~/.iot-hub-getting-started/config-sensortag.json
    ```
 
-   ![配置 sensortag 的屏幕截图](media/iot-hub-gateway-kit-lessons/lesson3/config_simulated_device.png)
+   ![配置 SensorTag 的屏幕截图](media/iot-hub-gateway-kit-lessons/lesson3/config_simulated_device.png)
 
 2. 在代码中进行以下替换：
    - 将 `[IoT hub name]` 替换为 IoT 中心名称。
@@ -139,6 +139,6 @@ az iot device show-connection-string --hub-name {IoT hub name} --device-id mydev
 [从 IoT 中心读取消息](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

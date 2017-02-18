@@ -1,5 +1,5 @@
 ---
-title: "通过 Dynatrace 监视 Azure 容器服务 DC/OS 群集 | Microsoft Docs"
+title: "监视 Azure DC/OS 群集 - Dynatrace | Microsoft Docs"
 description: "通过 Dynatrace 监视 Azure 容器服务 DC/OS 群集。 使用 DC/OS 仪表板部署 Dynatrace OneAgent。"
 services: container-service
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 12/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 96d35fbc4a8dfb620a2cfe67df449134d2f1e542
-ms.openlocfilehash: 48bb16972f2e846997e081e702ffbce57736c484
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 8878baa230bc8e91f814fd97fdc852c76b17e823
 
 
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-dynatrace-saasmanaged"></a>通过 Dynatrace SaaS/托管监视 Azure 容器服务群集
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>通过 Dynatrace SaaS/托管监视 Azure 容器服务 DC/OS 群集
 在本文中，我们将介绍如何部署 [Dynatrace](https://www.dynatrace.com/) OneAgent 以监视 Azure 容器服务群集中的所有代理节点。 此配置需要 Dynatrace SaaS/托管帐户。 
 
 ## <a name="dynatrace-saasmanaged"></a>Dynatrace SaaS/托管
@@ -63,6 +63,6 @@ Dynatrace 是用于高动态容器和群集环境的云-本机监视解决方案
 安装程序包后，请导航回 Dynatrace 仪表板。 可浏览群集中容器的不同使用情况度量。 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

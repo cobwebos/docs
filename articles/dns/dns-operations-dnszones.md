@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 管理 DNS 区域 | Microsoft Docs"
-description: "可以使用 Azure PowerShell 管理 DNS 区域。 如何在 Azure DNS 上创建、更新和删除 DNS 区域"
+title: "在 Azure DNS 中管理 DNS 区域 - PowerShell | Microsoft Docs"
+description: "可以使用 Azure PowerShell 管理 DNS 区域。 本文介绍如何在 Azure DNS 上更新、删除和创建 DNS 区域"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ae43e0464364adef455d7c7fcdebb5c5c461bb4c
-ms.openlocfilehash: 1c760d2700106943a5234f37c44f3fd97cccb5c1
+ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
+ms.openlocfilehash: c86004a14983e9eea543fbd3aa09f2a447414291
 
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
@@ -171,6 +171,6 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

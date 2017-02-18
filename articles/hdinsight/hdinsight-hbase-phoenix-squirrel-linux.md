@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中使用 Apache Phoenix 和 SQuirreL | Microsoft Docs"
+title: "将 Apache Phoenix 和 SQuirreL 用于 Azure HDInsight (HBase) | Microsoft Docs"
 description: "了解如何在 HDInsight 中使用 Apache Phoenix，以及如何在工作站上安装和配置 SQuirreL 以连接到 HDInsight 中的 HBase 群集。"
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 58212ae80ef2b930661e739aeb4779c6f9bd1bec
-ms.openlocfilehash: ceb33327ec2ced7c1ffad89696e64538c7fd4a5d
+ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
+ms.openlocfilehash: 42d64d58fab19fc564fbcbf19f464bce8cf46eb7
 
 
 ---
@@ -94,6 +94,6 @@ ms.openlocfilehash: ceb33327ec2ced7c1ffad89696e64538c7fd4a5d
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

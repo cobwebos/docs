@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Resource Manager 模板部署计算资源 | Microsoft Docs"
+title: "使用 Azure Resource Manager 模板部署 Linux 计算资源 | Microsoft Docs"
 description: "Azure 虚拟机 DotNet 核心教程"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 17aa03a3fef2bf3b4d933e7653656d58994321e7
+ms.sourcegitcommit: bd214be3aec3fbfa70fe579447f1e00f17a354c7
+ms.openlocfilehash: e3840e6f688d586650d877a854ee81035ce39b48
 
 
 ---
@@ -225,7 +225,7 @@ ms.openlocfilehash: 17aa03a3fef2bf3b4d933e7653656d58994321e7
 
 可以通过使用 Visual Studio 中的“添加新资源”向导或者在模板中插入有效的 JSON 来添加 Azure SQL 数据库。 SQL Server 资源包括对 SQL 实例拥有管理权限的用户名和密码。 此外，还要添加一个 SQL 防火墙资源。 默认情况下，托管在 Azure 中的应用程序能够与 SQL 实例连接。 若要允许外部应用程序（例如 SQL Server Management Studio）连接到 SQL 实例，需要配置防火墙。 对于音乐应用商店演示而言，无需更改默认配置。 
 
-单击以下链接可查看 Resource Manager 模板中的 JSON 示例 - [Azure SQL 数据库](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L401)。
+通过以下链接查看 Resource Manager 模板中的 JSON 示例 - [Azure SQL 数据库](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L401)。
 
 ```json
 {
@@ -274,6 +274,6 @@ Azure 门户中显示的 SQL Server 和 MusicStore 数据库视图。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

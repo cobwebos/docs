@@ -1,5 +1,5 @@
 ---
-title: "创建运行 MySQL 的 VM | Microsoft Docs"
+title: "创建运行 MySQL 的经典 Azure VM | Microsoft Docs"
 description: "使用经典部署模型创建运行 Windows Server 2012 R2 和 MySQL 数据库的 Azure 虚拟机。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,18 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 01/23/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: ca3993ef2cead2c38c09e2a7bceacadc7007834e
+ms.sourcegitcommit: 0937d80011d0ae7015c08d99b06934fda85930b0
+ms.openlocfilehash: d17c92bd239360e0bfddd61a57a9f481f64ff05d
 
 
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2012-r2"></a>在使用经典部署模型创建的运行 Windows Server 2012 R2 的虚拟机上安装 MySQL
 [MySQL](http://www.mysql.com) 是一种常用的开源 SQL 数据库。 本教程说明如何安装并运行 MySQL 5.6.23 社区版作为运行 Windows Server 2012 R2 的虚拟机上的 MySQL 服务器。 有关如何在 Linux 上安装 MySQL 的说明，请参阅：[如何在 Azure 上安装 MySQL](virtual-machines-linux-mysql-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 ## <a name="create-a-virtual-machine-running-windows-server-2012-r2"></a>创建运行 Windows Server 2012 R2 的虚拟机
 如果还没有运行 Windows Server 2012 R2 的 VM，则可以使用此[教程](virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)创建虚拟机。 
@@ -119,6 +120,6 @@ ms.openlocfilehash: ca3993ef2cead2c38c09e2a7bceacadc7007834e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc3ee1f4d3205b40397d5f82959a78316def5f45
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: fe8b4b097f7ff157d624c09b8dbf26f94401395c
 
 
 ---
@@ -81,7 +81,7 @@ ms.openlocfilehash: dc3ee1f4d3205b40397d5f82959a78316def5f45
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -91,6 +91,6 @@ ms.openlocfilehash: dc3ee1f4d3205b40397d5f82959a78316def5f45
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

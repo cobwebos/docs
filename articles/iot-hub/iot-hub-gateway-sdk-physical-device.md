@@ -1,6 +1,6 @@
 ---
-title: "将物理设备与 IoT 网关 SDK 配合使用 | Microsoft 文档"
-description: "Azure IoT 网关 SDK 演练使用 Texas Instruments SensorTag 设备通过 Raspberry Pi 3 上运行的网关将数据发送到 IoT 中心"
+title: "将物理设备与 Azure IoT 网关 SDK 配合使用 | Microsoft Docs"
+description: "如何使用 Texas Instruments SensorTag 设备通过 Raspberry Pi 3 设备上运行的网关将数据发送到 IoT 中心。 该网关使用 Azure IoT 网关 SDK 生成。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 9c8ab5b54644c3fa7999e7250825fba5d8532082
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 199f07ce705036c3d8f9d56115b5df9c8c52dc45
 
 
 ---
-# <a name="azure-iot-gateway-sdk--send-device-to-cloud-messages-with-a-physical-device-using-linux"></a>Azure IoT 网关 SDK - 使用 Linux 通过物理设备发送“设备到云”消息
+# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-physical-device-linux"></a>使用 Azure IoT 网关 SDK，通过物理设备发送设备到云的消息 (Linux)
 本演练的[蓝牙低功耗示例][lnk-ble-samplecode]演示了如何使用 [Azure IoT 网关 SDK][lnk-sdk] 从物理设备将“设备到云”遥测转发到 IoT 中心以及如何从 IoT 中心将命令路由到物理设备。
 
 本文介绍的内容包括：
@@ -236,10 +236,10 @@ cd azure-iot-gateway-sdk
 git submodule update --init --recursive
 ```
 
-Raspberry Pi 3 上有 IoT 网关 SDK 存储库的完整副本时，可以从包含该 SDK 的文件夹使用以下命令生成它：
+Raspberry Pi 3 上有 IoT 网关 SDK 存储库的完整副本时，可以从包含该 SDK 的文件夹使用以下命令生成它
 
 ```
-./tools/build.sh --skip-unittests --skip-e2e-tests
+./tools/build.sh
 ```
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>在 Raspberry Pi 3 上配置并运行 BLE 示例
@@ -429,11 +429,11 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。 任�
 运行示例时，可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具来监视网关从 SensorTag 设备转发的消息。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
-BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用 [Azure IoT 中心设备资源管理器](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md)或 [IoT 中心资源管理器](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer)将传递 BLE 网关模块的 JSON 消息发送到 BLE 设备。
+BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)或 [iothub-explorer](https://github.com/Azure/iothub-explorer) 工具将传递 BLE 网关模块的 JSON 消息发送到 BLE 设备。
 如果使用的是 Texas Instruments SensorTag 设备，则可以从 IoT 中心发送命令，打开红色 LED、绿色 LED 或蜂鸣器。 为此，请首先按顺序发送以下两条 JSON 消息。 然后，可以发送任何命令，打开指示灯或蜂鸣器。
 
-1 重置所有 LED 和蜂鸣器（将它们关闭）
-  
+1. 重置所有 LED 和蜂鸣器（将它们关闭）：
+
     ```json
     {
       "type": "write_once",
@@ -441,7 +441,8 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用 [Az
       "data": "AA=="
     }
     ```
-2 将 I/O 配置为“远程”
+    
+2. 将 I/O 配置为“远程”：
   
     ```json
     {
@@ -450,7 +451,10 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用 [Az
       "data": "AQ=="
     }
     ```
-* 打开红色 LED
+    
+然后，可以发送以下任何命令，打开指示灯或蜂鸣器。
+
+* 打开红色 LED：
   
     ```json
     {
@@ -459,7 +463,8 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用 [Az
       "data": "AQ=="
     }
     ```
-* 打开绿色 LED
+
+* 打开绿色 LED：
   
     ```json
     {
@@ -468,7 +473,8 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用 [Az
       "data": "Ag=="
     }
     ```
-* 打开蜂鸣器
+
+* 打开蜂鸣器：
   
     ```json
     {
@@ -485,7 +491,7 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用 [Az
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 
 <!-- Links -->
 [lnk-ble-samplecode]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/ble_gateway
@@ -501,6 +507,6 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。 可使用 [Az
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

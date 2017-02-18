@@ -1,5 +1,5 @@
 ---
-title: "在 Eclipse 中创建 Azure 的 Hello World Web 应用 | Microsoft Docs"
+title: "使用 Eclipse 创建基本的 Azure Web 应用 | Microsoft Docs"
 description: "本教程说明如何使用 Azure Toolkit for Eclipse 创建适用于 Azure 的 Hello World Web 应用。"
 services: app-service\web
 documentationcenter: java
@@ -12,16 +12,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
-ms.author: robmcm
+ms.date: 12/22/2016
+ms.author: robmcm;asirveda
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
+ms.sourcegitcommit: 9bb0b5fa32cd6dabd6c41106db38a587b0a55eed
+ms.openlocfilehash: 18299966173f030f615049eaf11a55a1f71305a0
 
 
 ---
-# <a name="create-a-hello-world-web-app-for-azure-in-eclipse"></a>在 Eclipse 中创建 Azure 的 Hello World Web 应用
-本教程说明如何使用[用于 Eclipse 的 Azure 工具]创建一个基本的 Hello World 应用程序，并将其部署到 Azure 作为 Web 应用。 所述的基本 JSP 示例是一个简化的示例，但就 Azure 部署而言，非常相似的步骤也适用于 Java servlet。
+# <a name="create-a-basic-azure-web-app-using-eclipse"></a>使用 Eclipse 创建基本的 Azure Web 应用
+本教程说明如何使用[用于 Eclipse 的 Azure 工具包]创建一个基本的 Hello World 应用程序，并将其部署到 Azure 作为 Web 应用。 为简单起见显示了一个基本 JSP 示例，但就 Azure 部署而言，相似的步骤也适用于 Java servlet。
 
 完成本教程后，你的应用程序将在 Web 浏览器中如下图所示：
 
@@ -30,9 +30,9 @@ ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
 ## <a name="prerequisites"></a>先决条件
 * Java 开发人员工具包 (JDK) 1.8 或更高版本。
 * Eclipse IDE for Java EE Developers，Luna 或更高版本。 可从 <http://www.eclipse.org/downloads/> 下载。
-* 分发基于 Java 的 Web 服务器或应用程序服务器，例如 Apache Tomcat 或 Jetty。
+* 分发基于 Java 的 Web 服务器或应用程序服务器，例如 [Apache Tomcat] 或 [Jetty]。
 * Azure 订阅，可从 <https://azure.microsoft.com/free/> 或 <http://azure.microsoft.com/pricing/purchase-options/> 获取。
-* Azure Toolkit for Eclipse。 有关详细信息，请参阅[安装用于 Eclipse 的 Azure 工具包]。
+* [用于 Eclipse 的 Azure 工具包]。 有关安装 Azure 工具包的详细信息，请参阅[安装用于 Eclipse 的 Azure 工具包]。
 
 ## <a name="to-create-a-hello-world-application"></a>创建 Hello World 应用程序
 首先，我们将从创建 Java 项目开始。
@@ -148,24 +148,24 @@ ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
 
 几秒钟后，“Azure 活动日志”视图会将已更新的部署显示为“已发布”，可以在 Web 浏览器中验证已更新的应用程序。
 
-## <a name="stopping-an-existing-web-app"></a>停止现有的 Web 应用
-若要停止现有的 Azure Web 应用容器（包括其中所有已部署的 Java 应用程序），可以使用“Azure 资源管理器”视图。
+## <a name="starting-stopping-or-restarting-an-existing-web-app"></a>启动、停止或重启现有的 Web 应用
+若要启动或停止现有的 Azure Web 应用容器（包括其中所有已部署的 Java 应用程序），可以使用“Azure 资源管理器”视图。
 
 如果“Azure 资源管理器”视图尚未打开，可以依次单击 Eclipse 中的“窗口”菜单、“显示视图”、“其他...”、“Azure”和“Azure 资源管理器”将它打开。 如果你事先未尚未登录，系统将提示你登录。
 
-显示“Azure 资源管理器”视图后，使用以下步骤来停止 Web 应用： 
+显示“Azure 资源管理器”视图后，使用以下步骤来启动或停止 Web 应用： 
 
 1. 展开“Azure”节点。
 2. 展开“Web 应用”节点。 
 3. 右键单击所需的 Web 应用。
-4. 出现上下文菜单时，单击“停止”。
+4. 出现上下文菜单时，单击“启动”、“停止”或“重启”。 请注意，菜单选项可识别上下文，因此，你只能停止正在运行的 Web 应用，或启动当前未运行的 Web 应用。
    
     ![停止现有的 Web 应用][13]
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
-* [用于 Eclipse 的 Azure 工具]
+* [用于 Eclipse 的 Azure 工具包]
   * [安装用于 Eclipse 的 Azure 工具包]
   * *在 Eclipse 中创建 Azure 的 Hello World Web 应用（本文）*
   * [用于 Eclipse 的 Azure 工具包的新增功能]
@@ -182,9 +182,9 @@ ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
 
 <!-- URL List -->
 
-[用于 Eclipse 的 Azure 工具]: ../azure-toolkit-for-eclipse.md
+[用于 Eclipse 的 Azure 工具包]: ../azure-toolkit-for-eclipse.md
 [用于 IntelliJ 的 Azure 工具包]: ../azure-toolkit-for-intellij.md
-[在 Eclipse 中创建 Azure 的 Hello World Web 应用]: ./app-service-web-eclipse-create-hello-world-web-app.md
+[Create a Hello World Web App for Azure in Eclipse]: ./app-service-web-eclipse-create-hello-world-web-app.md
 [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: ./app-service-web-intellij-create-hello-world-web-app.md
 [安装用于 Eclipse 的 Azure 工具包]: ../azure-toolkit-for-eclipse-installation.md
 [安装用于 IntelliJ 的 Azure 工具包]: ../azure-toolkit-for-intellij-installation.md
@@ -193,6 +193,8 @@ ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
 
 [Azure Java 开发人员中心]: https://azure.microsoft.com/develop/java/
 [Web 应用概述]: ./app-service-web-overview.md
+[Apache Tomcat]: http://tomcat.apache.org/
+[Jetty]: http://www.eclipse.org/jetty/
 
 <!-- IMG List -->
 
@@ -215,6 +217,6 @@ ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

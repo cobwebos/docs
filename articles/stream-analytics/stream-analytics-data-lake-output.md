@@ -1,6 +1,6 @@
 ---
 title: "流分析 Data Lake Store 输出 | Microsoft Docs"
-description: "在流分析作业中配置 Azure 数据湖存储的身份验证和授权"
+description: "在流分析作业中配置 Azure Data Lake Store 的身份验证和授权"
 keywords: 
 services: stream-analytics
 documentationcenter: 
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/29/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 9c800007ccac453744937807f54aa003732aa6a9
-ms.openlocfilehash: 68b52e1e5b5b65a4690eedacd62806f4ee15d6df
+ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
+ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
 
 
 ---
-# <a name="stream-analytics-data-lake-store-output"></a>流分析数据湖存储输出
-流分析作业支持几种输出方法，其中一种方法为 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 Azure 数据湖存储是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 数据湖存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。
+# <a name="stream-analytics-data-lake-store-output"></a>流分析 Data Lake Store 输出
+流分析作业支持几种输出方法，其中一种方法为 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 Data Lake Store 可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。
 
-## <a name="authorize-a-data-lake-store-account"></a>授权数据湖存储帐户
+## <a name="authorize-a-data-lake-store-account"></a>授权 Data Lake Store 帐户
 1. 在 Azure 管理门户中选择 Data Lake Store 作为输出时，将会提示用户通过 Azure 经典门户对现有 Data Lake Store 的使用进行授权或请求对 Data Lake Store 的访问权限。
    
    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)  
    
-2. 如果已有权访问数据湖存储，请单击“立即授权”，在很短的时间内将会弹出一个页面，指示“正在重定向到授权...”。 该页会自动关闭，并将向你显示一个页面，可在其中配置数据湖存储输出。
+2. 如果已有权访问 Data Lake Store，请单击“立即授权”，在很短的时间内将会弹出一个页面，指示“正在重定向到授权...”。 该页会自动关闭，并将向你显示一个页面，可在其中配置 Data Lake Store 输出。
 
 如果尚未注册 Data Lake Store，则可以打开“立即注册”链接发起该请求，或者按照[入门说明](../data-lake-store/data-lake-store-get-started-portal.md)操作。
 
-## <a name="configure-the-data-lake-store-output-properties"></a>配置数据湖存储输出属性
-数据湖存储帐户身份验证完成后，你可以为自己的数据湖存储输出配置属性。 下表列出了用于配置数据湖存储输出的属性名称及其说明。
+## <a name="configure-the-data-lake-store-output-properties"></a>配置 Data Lake Store 输出属性
+Data Lake Store 帐户身份验证完成后，你可以为自己的 Data Lake Store 输出配置属性。 下表列出了用于配置 Data Lake Store 输出的属性名称及其说明。
 
 <table>
 <tbody>
@@ -44,15 +44,15 @@ ms.openlocfilehash: 68b52e1e5b5b65a4690eedacd62806f4ee15d6df
 </tr>
 <tr>
 <td>输出别名</td>
-<td>该名称是在查询中使用的友好名称，用于将查询输出定向到此数据湖存储。</td>
+<td>该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Store。</td>
 </tr>
 <tr>
-<td>数据湖存储帐户</td>
-<td>存储帐户的名称（你正在向该存储帐户发送输出）。 你将看到数据湖存储帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
+<td>Data Lake Store 帐户</td>
+<td>存储帐户的名称（你正在向该存储帐户发送输出）。 你将看到 Data Lake Store 帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
 </tr>
 <tr>
 <td>路径前缀模式 [<I>可选</I>]</td>
-<td>用于对指定数据湖存储帐户中的文件进行编写的文件路径。 <BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
+<td>用于对指定 Data Lake Store 帐户中的文件进行编写的文件路径。 <BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
 </tr>
 <tr>
 <td>日期格式 [<I>可选</I>]</td>
@@ -81,16 +81,16 @@ ms.openlocfilehash: 68b52e1e5b5b65a4690eedacd62806f4ee15d6df
 </tbody>
 </table>
 
-## <a name="renew-data-lake-store-authorization"></a>续订数据湖存储授权
-目前，有一个限制：即需要每隔 90 天对身份验证令牌进行手动刷新，适用于使用数据湖存储输出的所有作业。 如果作业创建后或上次身份验证后更改了密码，你还需要重新对你的数据湖存储帐户进行身份验证。 此问题的症状是没有作业输出，并且操作日志中的错误指示需要重新进行身份验证。
+## <a name="renew-data-lake-store-authorization"></a>续订 Data Lake Store 授权
+目前，有一个限制：即需要每隔 90 天对身份验证令牌进行手动刷新，适用于使用 Data Lake Store 输出的所有作业。 如果作业创建后或上次身份验证后更改了密码，你还需要重新对你的 Data Lake Store 帐户进行身份验证。 此问题的症状是没有作业输出，并且操作日志中的错误指示需要重新进行身份验证。
 
-要解决此问题，请停止正在运行的作业并转到数据湖存储输出。 单击“续订授权”链接，在很短的时间内将会弹出一个页面，指示“正在重定向到授权...”。 该页会自动关闭，如果成功，将指示“授权已成功续订”。 然后需要单击该页底部的“保存”，并通过从上次停止的时间重新启动作业来继续，以避免数据丢失。
+要解决此问题，请停止正在运行的作业并转到 Data Lake Store 输出。 单击“续订授权”链接，在很短的时间内将会弹出一个页面，指示“正在重定向到授权...”。 该页会自动关闭，如果成功，将指示“授权已成功续订”。 然后需要单击该页底部的“保存”，并通过从上次停止的时间重新启动作业来继续，以避免数据丢失。
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

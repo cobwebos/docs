@@ -1,5 +1,5 @@
 ---
-title: "读取 Azure 存储中保存的消息 |Microsoft 文档"
+title: "将 Intel Edison (C) 连接到 Azure IoT - 第 3 课：监视消息 | Microsoft Docs"
 description: "在“设备到云”消息写入到 Azure 表存储时对这些消息进行监视。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: fc9090bd9d2dd621767c23f3cfb76dcc88b66a71
-ms.openlocfilehash: c798669a111417cd4cf719a59a15221e734c7ff3
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 1be4de1fef11da43c2940fdd890027d0e9728515
 
 
 ---
@@ -78,6 +78,6 @@ ms.openlocfilehash: c798669a111417cd4cf719a59a15221e734c7ff3
 [receive-cloud-to-device-messages]: iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

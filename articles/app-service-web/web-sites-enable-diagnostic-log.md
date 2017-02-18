@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 154d2cd9b7f4ea51d3fd4c1995b67a25816b28a2
-ms.openlocfilehash: a85c27895d293205b3c3f93a729aa3f550c5bcb6
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 27bf5b15ebeed13733df2ddd9dbda5d5cfe4e49d
 
 
 ---
@@ -279,7 +279,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 * [在 HDInsight 中分析 Web 应用日志](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 >
 >
 
@@ -289,6 +289,6 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

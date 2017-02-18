@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2016
+ms.date: 01/17/2017
 ms.author: toddabel
 translationtype: Human Translation
-ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
-ms.openlocfilehash: bc8eaf68b89bdefe203fc7ceea7b5241ac3e9dfa
+ms.sourcegitcommit: 1b4599848f44a7200f13bd6ddf4e82e96a75e069
+ms.openlocfilehash: 41343990d3379aabd129af437ff2edbbd2134dcc
 
 
 ---
@@ -29,10 +29,10 @@ ms.openlocfilehash: bc8eaf68b89bdefe203fc7ceea7b5241ac3e9dfa
 
 当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 将日志放在中心位置可帮助分析和排查群集中的问题，或该群集中运行的应用程序与服务的问题。
 
-上载和收集日志的方式之一是使用可将日志上载到 Azure 存储的 Azure 诊断扩展。 无法直接在存储中使用日志。 但是，可以使用外部进程读取存储中的事件，并将它们放在 [Log Analytics](../log-analytics/log-analytics-service-fabric.md)、[弹性搜索](service-fabric-diagnostic-how-to-use-elasticsearch.md)等产品或其他日志分析解决方案中。
+上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、Azure Application Insights 或 Azure 事件中心的 Azure 诊断扩展。 无法直接在存储或事件中心中使用日志。 但是，可以使用外部进程读取存储中的事件，并将它们放在 [Log Analytics](../log-analytics/log-analytics-service-fabric.md) 等产品或其他日志分析解决方案中。 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 附带内置的全面日志搜索和分析服务。
 
 ## <a name="prerequisites"></a>先决条件
-将使用以下工具执行本文档中的某些操作：
+以下工具可用于执行本文档中的某些操作：
 
 * [Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)（与 Azure 云服务相关，但包含有用的信息和示例）
 * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
@@ -57,9 +57,9 @@ ms.openlocfilehash: bc8eaf68b89bdefe203fc7ceea7b5241ac3e9dfa
 
 Azure 支持团队*需要*借助日志解决你创建的任何支持请求。 这些日志是实时收集的，存储在创建于资源组中的某个存储帐户内。 诊断设置将配置应用程序级事件。 这些事件包括 [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) 事件、[Reliable Services](service-fabric-reliable-services-diagnostics.md) 事件，以及要存储在 Azure 存储中的某些系统级 Service Fabric 事件。
 
-[弹性搜索](service-fabric-diagnostic-how-to-use-elasticsearch.md)等产品或你自己的进程可以从存储帐户中获取事件。 目前没有任何方法可以筛选或清理已发送到表的事件。 如果未实施某个过程从表中删除事件，该表会不断增大。
+[Elasticsearch](https://www.elastic.co/guide/index.html) 等产品或你自己的进程可以从存储帐户中获取事件。 目前没有任何方法可以筛选或清理已发送到表的事件。 如果未实施某个过程从表中删除事件，该表会不断增大。
 
-使用门户创建群集时，我们强烈建议先下载模板，*然后单击*“*确定*”创建群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板设置 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。 以后，需要通过模板进行更改，因为无法使用门户进行某些更改。
+使用门户创建群集时，强烈建议先下载模板，**然后再单击“确定”**创建群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板设置 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)。 以后，需要通过模板进行更改，因为无法使用门户进行某些更改。
 
 可以使用以下步骤从门户导出模板。 但是，这些模板可能难以使用，因为它们可能包含 null 值，缺少必需的信息。
 
@@ -84,7 +84,7 @@ Azure 支持团队*需要*借助日志解决你创建的任何支持请求。 �
 
 若要查看 Resource Manager 模板中的诊断设置，请打开 azuredeploy.json 文件并搜索 **IaaSDiagnostics**。 若要使用此模板创建群集，请在上面的链接中选择“**部署到 Azure**”按钮。
 
-或者，也可以下载 Resource Manager 示例，进行更改，然后在 Azure PowerShell 窗口中输入 `New-AzureRmResourceGroupDeployment` 命令，使用修改后的模板创建群集。 有关要在命令中传入哪些参数，请参阅以下代码。 有关如何使用 PowerShell 部署资源组的详细信息，请参阅[使用 Azure Resource Manager 模板部署资源组](../resource-group-template-deploy.md)一文。
+或者，也可以下载 Resource Manager 示例，进行更改，然后在 Azure PowerShell 窗口中输入 `New-AzureRmResourceGroupDeployment` 命令，使用修改后的模板创建群集。 有关要在命令中传入哪些参数，请参阅以下代码。 有关如何使用 PowerShell 部署资源组的详细信息，请参阅[使用 Azure Resource Manager 模板部署资源组](../azure-resource-manager/resource-group-template-deploy.md)一文。
 
 ```powershell
 
@@ -193,6 +193,25 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
 
 如上所述修改 template.json 文件后，请重新发布 Resource Manager 模板。 如果已导出模板，则运行 deploy.ps1 文件会重新发布模板。 部署后，请确保 **ProvisioningState** 为 **Succeeded**。
 
+## <a name="update-diagnostics-to-collection-health-and-load-events"></a>更新诊断以收集运行状况和加载事件
+
+从 5.4 版本的 Service Fabric 开始，可收集运行状况和加载指标事件。 这些事件反映了由系统或你的代码使用 [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) 或 [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) 等运行状况或加载报告 API 生成的事件。 这允许随时间聚合和查看系统运行状况，以及基于运行状况或加载事件进行警报。 若要查看 Visual Studio 的诊断事件查看器中的这些事件，请将“Microsoft-ServiceFabric:4:0x4000000000000008”添加到 ETW 提供程序列表中。
+
+若要收集这些事件，请修改 Resource Manager 模板，以包含
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387912",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+
 ## <a name="update-diagnostics-to-collect-and-upload-logs-from-new-eventsource-channels"></a>更新诊断以从新的 EventSource 通道收集并上载日志
 若要将诊断更新为从新的 EventSource 通道（表示要部署的新应用程序）收集日志，请执行[前一部分](#deploywadarm)中相同的步骤，其中描述了现有群集的诊断设置。
 
@@ -222,6 +241,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

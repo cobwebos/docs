@@ -1,5 +1,5 @@
 ---
-title: "虚拟机上的 Tomcat | Microsoft Docs"
+title: "在经典 Azure VM 上运行 Java 应用程序服务器 | Microsoft Docs"
 description: "本教程利用使用经典部署模型创建的资源，显示如何创建 Windows 虚拟机并将其配置为运行 Apache Tomcat 应用程序服务器。"
 services: virtual-machines-windows
 documentationcenter: java
@@ -13,18 +13,17 @@ ms.workload: web
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6fd09bb3a750d8d537abb12a386f46be0c60794
+ms.sourcegitcommit: 7b621733e09a1ba4e21152d7670a8936e3944521
+ms.openlocfilehash: 4503610eb8ef2e690e028667ebbf64e865af7134
 
 
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>如何在使用经典部署模型创建的虚拟机上运行 Java 应用程序服务器
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-有关使用 Java 8 和 Tomcat 部署 webapp 的 Resource Manager 模板，请参阅[此处](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)。
+> [!IMPORTANT] 
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Java 8 和 Tomcat 部署 webapp 的 Resource Manager 模板，请参阅[此处](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)。
 
 通过 Azure，可使用虚拟机提供服务器功能。 例如，在 Azure 上运行的虚拟机可配置为托管 Java 应用程序服务器，如 Apache Tomcat。 完成本指南之后，将了解如何创建在 Azure 上运行的虚拟机并将其配置为运行 Java 应用程序服务器。
 
@@ -47,20 +46,20 @@ ms.openlocfilehash: e6fd09bb3a750d8d537abb12a386f46be0c60794
 2. 依次单击“新建”、“计算”、“虚拟机”和“从库中”。
 3. 在“虚拟机映像选择”对话框中，选择“JDK 7 Windows Server 2012”。
    请注意，万一安装的是尚不能在 JDK 7 中运行的旧版应用程序，可选择“JDK 6 Windows Server 2012”。
-4. 单击“资源组名称” 的 Azure 数据工厂。
+4. 单击“下一步”。
 5. 在“虚拟机配置”对话框中：
    1. 指定虚拟机的名称。
    2. 指定要用于虚拟机的大小。
    3. 在“用户名”字段中输入管理员的名称。 请记住接下来要输入的名称和密码，因为此名称和密码将用于远程登录虚拟机。
-   4. 在“新密码”字段中输入密码，然后在“确认”字段中再次输入密码。 这是 Administrator 帐户密码。
-   5. 单击“资源组名称” 的 Azure 数据工厂。
+   4. 在“新密码”字段中输入密码，然后在“确认”字段中再次输入密码。 这是“管理员”帐户密码。
+   5. 单击“下一步”。
 6. 在下一个“虚拟机配置”对话框中：
    1. 对于“云服务”，使用默认的“创建新的云服务”。
    2. “云服务 DNS 名称”的值在 cloudapp.net 中必须唯一。 如有必要，请修改此值，使 Azure 能够将其指示为唯一值。
    3. 指定区域、地缘组或虚拟网络。 在本教程中，请指定区域，如“美国西部”。
    4. 对于“存储帐户”框，请选择“使用自动生成的存储帐户”。
    5. 对于“可用性集”，请选择“(无)”。
-   6. 单击“资源组名称” 的 Azure 数据工厂。
+   6. 单击“下一步”。
 7. 在最后一个“虚拟机配置”对话框中：
    1. 接受默认的终结点项。
    2. 单击“完成”。
@@ -156,6 +155,6 @@ ms.openlocfilehash: e6fd09bb3a750d8d537abb12a386f46be0c60794
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

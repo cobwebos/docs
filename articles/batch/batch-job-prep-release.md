@@ -1,5 +1,5 @@
 ---
-title: "Batch 中的作业准备和清理 | Microsoft Docs"
+title: "使用作业准备和释放任务 - Azure Batch | Microsoft Docs"
 description: "使用作业级准备任务最大程度地减少 Azure Batch 计算节点的数据传输，在完成作业时执行释放任务来清理节点。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/04/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 9b71f09611832c2a8133cc21347d612d495b70aa
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 3b34a9665bfab85abbd633d01139ba2da2249bbf
 
 
 ---
@@ -225,6 +225,6 @@ Sample complete, hit ENTER to exit...
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

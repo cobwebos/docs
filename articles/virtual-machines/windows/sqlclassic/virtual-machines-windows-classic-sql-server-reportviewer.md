@@ -8,16 +8,16 @@ manager: erikre
 editor: monicar
 tags: azure-service-management
 ms.assetid: 78b76318-d9bf-48ef-9d9e-d1b7d8cf3042
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/04/2016
+ms.workload: iaas-sql-server
+ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: c1df69b37b85544f00fc6ed68827f4817d766443
+ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
+ms.openlocfilehash: 084200ba25f0eb213100c638d164441c2618efe0
 
 
 ---
@@ -29,8 +29,6 @@ ms.openlocfilehash: c1df69b37b85544f00fc6ed68827f4817d766443
 
 > [!IMPORTANT]
 > ASP.NET MVC Web 应用程序模板不支持 ReportViewer 控件。
-> 
-> 
 
 若要将 ReportViewer 整合到你的 Microsoft Azure 网站，需要完成以下任务。
 
@@ -45,10 +43,6 @@ ms.openlocfilehash: c1df69b37b85544f00fc6ed68827f4817d766443
 > ReportViewer 控件随 Visual Studio Standard Edition 或更高版本提供。 如果你使用的是 Web Developer Express Edition，则必须安装 [MICROSOFT REPORT VIEWER 2012 RUNTIME](https://www.microsoft.com/download/details.aspx?id=35747) 才能使用 ReportViewer 运行时功能。
 > 
 > 在 Microsoft Azure 中不支持在本地处理模式下配置的 ReportViewer。
-> 
-> 
-
-查看白皮书 [Reporting Services 报表查看器控件和基于 Microsoft Azure 虚拟机的报表服务器](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)。
 
 ## <a name="adding-assemblies-to-the-deployment-package"></a>将程序集添加到部署包
 当在本地托管 ASP.NET 应用程序时，在 Visual Studio 安装过程中 ReportViewer 程序集通常直接安装在 IIS 服务器的全局程序集缓存 (GAC) 中，可以由应用程序直接访问。 但是，当在云中托管 ASP.NET 应用程序时，Microsoft Azure 不允许将任何内容安装到 GAC 中，因此你必须确保 ReportViewer 程序集在本地可供你的应用程序使用。 你可以通过在你的项目中添加它们的引用并将它们配置为以本地方式复制来实现此操作。
@@ -99,11 +93,9 @@ ReportViewer 需要使用正确的凭据向报表服务器进行身份验证，�
 
 [使用 PowerShell 创建运行本机模式报表服务器的 Azure VM](virtual-machines-windows-classic-ps-sql-report.md)
 
-[Reporting Services 报表查看器控件和基于 Microsoft Azure 虚拟机的报表服务器](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

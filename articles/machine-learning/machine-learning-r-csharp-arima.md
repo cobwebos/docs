@@ -1,6 +1,6 @@
 ---
-title: "预测：自动回归集成移动平均 (ARIMA) | Microsoft Docs"
-description: "预测 - 自动回归集成移动平均 (ARIMA)"
+title: "（已弃用）预测 - 自动回归集成移动平均 (ARIMA) - Azure | Microsoft Docs"
+description: "（已弃用）预测 - 自动回归集成移动平均 (ARIMA)"
 services: machine-learning
 documentationcenter: 
 author: yijichen
@@ -11,16 +11,24 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/13/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: yijichen
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c8d02cdd50c7f44991aeabee1999a81ec18bf59c
+ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
+ms.openlocfilehash: 169331fc08c8d378fbb0c9869e69a9eb132224ba
 
 
 ---
-# <a name="forecasting---autoregressive-integrated-moving-average-arima"></a>预测 - 自动回归集成移动平均 (ARIMA)
+# <a name="deprecated-forecasting---autoregressive-integrated-moving-average-arima"></a>（已弃用）预测 - 自动回归集成移动平均 (ARIMA)
+
+> [!NOTE]
+> 即将停用 Microsoft DataMarket，此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
+
 该[服务](https://datamarket.azure.com/dataset/aml_labs/arima)实施自动回归集成移动平均 (ARIMA)，以基于用户提供的历史数据生成预测。 今年对特定产品的需求会增加吗？ 我能预测圣诞季的产品销售额以便我可以有效地规划我的库存吗？ 预测模型倾向于解决此类问题。 基于过去的数据，这些模型可找到隐藏的趋势和季节性，以预测未来趋势。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -142,6 +150,6 @@ ms.openlocfilehash: c8d02cdd50c7f44991aeabee1999a81ec18bf59c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

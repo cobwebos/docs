@@ -1,5 +1,5 @@
 ---
-title: "获取用于 Azure IoT 初学者工具包的工具（Windows 7 或更高版本）| Microsoft Docs"
+title: "将 Intel Edison (C) 连接到 Azure IoT - 第 1 课：获取工具 (Windows) | Microsoft Docs"
 description: "下载并安装用于 Windows 7 及更高版本上的 Edison 的第一个示例应用程序的必需工具和软件。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: 111018da51823f928e7f2b815db8621ecda65025
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 79dcbe8cbefe4f607991359fbfc6948b5e90ace9
 
 
 ---
@@ -91,6 +91,6 @@ npm install -g gulp
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

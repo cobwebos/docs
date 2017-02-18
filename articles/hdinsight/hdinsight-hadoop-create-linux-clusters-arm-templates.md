@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集 | Microsoft Docs"
+title: "使用模板创建 Azure HDInsight (Hadoop) | Microsoft Docs"
 description: "了解如何使用 Azure Resource Manager 模板创建 Azure HDInsight 的群集。"
 services: hdinsight
 documentationcenter: 
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 756369d219c34e5530edc91de0dc74cbf88c02c5
-ms.openlocfilehash: 78276ecfbeb339721c76af40428a452681c3407d
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 1816b7f5bb95669197891315ca57f93fd779c5c3
 
 
 ---
-# <a name="create-linux-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板在 HDInsight 中创建 Hadoop 群集
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-了解如何使用 Azure Resource Manager (ARM) 模板创建 HDInsight 群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
+了解如何使用 Azure Resource Manager 模板创建 HDInsight 群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
 
 ## <a name="prerequisites"></a>先决条件：
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -59,9 +59,9 @@ ms.openlocfilehash: 78276ecfbeb339721c76af40428a452681c3407d
 
     门户将根据配置创建 Resource Manager 模板。
 
-   ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
+## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 
-以下过程创建基于 Linux 的 HDInsight 群集。
+以下过程在 HDInsight 中创建 Hadoop 群集：
 
 **使用 Resource Manager 模板部署群集**
 
@@ -359,6 +359,6 @@ ms.openlocfilehash: 78276ecfbeb339721c76af40428a452681c3407d
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

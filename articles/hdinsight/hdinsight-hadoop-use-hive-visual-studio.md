@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 86a0f6f2bc27f1411652b273325e73144582eee0
-ms.openlocfilehash: ec71a4674e9281927cd20897476e0180256936da
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 067725ee5f303fc21baa3204509e8facd6f216fc
 
 
 ---
@@ -34,7 +34,11 @@ ms.openlocfilehash: ec71a4674e9281927cd20897476e0180256936da
 
 若要完成本文中的步骤，你将需要：
 
-* Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Linux 或 Windows）
+* Azure HDInsight（HDInsight 上的 Hadoop）群集
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * Visual Studio（以下版本之一）：
   
     包含 [Update 4](https://www.microsoft.com/download/details.aspx?id=44921)
@@ -155,6 +159,6 @@ ms.openlocfilehash: ec71a4674e9281927cd20897476e0180256936da
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

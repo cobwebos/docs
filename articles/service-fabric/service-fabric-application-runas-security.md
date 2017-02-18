@@ -1,5 +1,5 @@
 ---
-title: "了解 Service Fabric 应用程序和服务安全性策略 | Microsoft 文档"
+title: "了解 Azure 微服务安全策略 | Microsoft Docs"
 description: "有关如何使用系统帐户和本地安全帐户运行 Service Fabric 应用程序概述，包括应用程序在启动之前，需要在其中执行某些特权操作的 SetupEntry 点"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 6e9409c6ac20b95bdcd4e0cb05d939bfbf9e9f30
-ms.openlocfilehash: 5ba3506a3ec271499e2d079a34faca2ba8f9a918
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 469f37362fa0ebe39367a66df8a27e71e762a9d5
 
 
 ---
@@ -382,6 +382,6 @@ Echo "Test console redirection which writes to the application log folder on the
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "开始使用 Intel Edison Azure IoT 初学者工具包 | Microsoft Docs"
+title: "将 Intel Edison（节点）连接到 Azure IoT - 入门 | Microsoft Docs"
 description: "开始使用 Intel Edison，创建 Azure IoT 中心，并将 Edison 连接到 IoT 中心"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/7/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: cb18052f74528e245264bb2f400b625fe550ed85
-ms.openlocfilehash: 61f14728d5b985815b64b2c13c7f0df42e4de485
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: 66748b2d59396689a5a20ac77f6d0cc5ad7b0b03
 
 
 ---
@@ -142,6 +142,6 @@ ms.openlocfilehash: 61f14728d5b985815b64b2c13c7f0df42e4de485
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

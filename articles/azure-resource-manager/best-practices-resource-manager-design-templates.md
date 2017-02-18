@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager 模板的模式 | Microsoft Docs"
-description: "演示 Azure 资源管理器模板的设计模式"
+title: "设计针对复杂解决方案的 Azure 模板 | Microsoft Docs"
+description: "演示针对复杂解决方案设计 Azure Resource Manager 模板的最佳实践"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: c38d7120de7d31f1079dd84bcc073eb2f9618775
-ms.openlocfilehash: c66032ef65a523528e2610f7a2e13595a47d9587
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 2bd8f7ac127cd34b2d5129ecb49c56e2adf257b8
 
 
 ---
-# <a name="patterns-for-designing-azure-resource-manager-templates"></a>用于设计 Azure Resource Manager 模板的模式
+# <a name="design-patterns-for-azure-resource-manager-templates-when-deploying-complex-solutions"></a>配置复杂解决方案时设计 Azure Resource Manager 模板的模式
 使用基于 Azure Resource Manager 模板的灵活方法，可以快速、一致地部署复杂的拓扑。 随着核心产品的发展，用户可以轻松地调整这些部署或适应外来方案或客户的变化。
 
 本主题是包含更多内容的白皮书的一部分。 若要阅读完整的白皮书，请下载 [World Class Azure Resource Manager Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf)（一流的 Azure Resource Manager 模板注意事项和成熟的做法）。
@@ -351,6 +351,6 @@ Redis 只使用单节点类型，因此需创建名为 node-resources.json 的�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

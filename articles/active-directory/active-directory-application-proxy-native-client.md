@@ -1,5 +1,5 @@
 ---
-title: "如何支持使用代理应用程序发布本机客户端应用 | Microsoft Docs"
+title: "发布本机客户端应用 - Azure AD | Microsoft Docs"
 description: "介绍如何使本机客户端应用与 Azure AD 应用程序代理连接器通信，以提供本地应用的安全远程访问权限。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: 34cacff4e8b13fa9d91387ca8762439908ed01fd
+ms.sourcegitcommit: 164e3b0af47cd98f2d20fce7344230608e9fbe8c
+ms.openlocfilehash: 6762a5c88b7a3bbc0424729865ae312d74f9059f
 
 
 ---
@@ -86,7 +86,6 @@ Azure Active Directory 应用程序代理广泛用于发布浏览器应用程序
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

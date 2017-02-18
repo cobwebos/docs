@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/16/2016
+ms.date: 01/22/2017
 ms.author: tvoellm
 translationtype: Human Translation
-ms.sourcegitcommit: 638c6c5ac9ffac7e726d86a979e2c5dc7fab41f4
-ms.openlocfilehash: 32bebcbd724d577f78672cb623748fcf77cee20a
+ms.sourcegitcommit: 224897c09073fe36c7d4f9f8c965212c25297271
+ms.openlocfilehash: 3f89e192052bb633190610a4dffbefb930dbc01c
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 32bebcbd724d577f78672cb623748fcf77cee20a
 
 [**下载模拟器**](https://aka.ms/documentdb-emulator)
 
-为进行开发，Azure DocumentDB 模拟器提供了一个模拟 Azure DocumentDB 服务的本地环境（包括使用 SSL 连接）。 本文演介绍了如何导出 SSL 证书以用于不与 Windows 证书存储集成的语言和运行时，例如使用自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)的 Java 和使用[套接字包装](https://docs.python.org/2/library/ssl.html)的 Python。 可以在[使用 Azure DocumentDB 模拟器进行开发和测试](./documentdb-nosql-local-emulator.md)中了解有关模拟器的更多信息。
+为进行开发，Azure DocumentDB 模拟器提供了一个模拟 Azure DocumentDB 服务的本地环境（包括使用 SSL 连接）。 本文演介绍了如何导出 SSL 证书以用于不与 Windows 证书存储集成的语言和运行时，例如使用自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)的 Java、使用[套接字包装](https://docs.python.org/2/library/ssl.html)的 Python 和使用 [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) 的 Node.js。 可以在[使用 Azure DocumentDB 模拟器进行开发和测试](./documentdb-nosql-local-emulator.md)中了解有关模拟器的更多信息。
 
 ## <a name="certification-rotation"></a>证书旋转
 
@@ -80,7 +80,11 @@ DocumentDB 本地模拟器中的证书在首次运行模拟器时生成。 证�
 
 ## <a name="how-to-use-the-certificate-in-python"></a>如何在 Python 中使用证书
 
-默认情况下，用于 DocumentDB 的 Python SDK 在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Python 套接字包装器](https://docs.python.org/2/library/ssl.html)一文中的示例操作。
+默认情况下，用于 DocumentDB 的 [Python SDK（版本 2.0.0 或更高版本）](https://docs.microsoft.com/en-us/azure/documentdb/documentdb-sdk-python)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Python 套接字包装器](https://docs.python.org/2/library/ssl.html)一文中的示例操作。
+
+## <a name="how-to-use-the-certificate-in-nodejs"></a>如何在 Node.js 中使用证书
+
+默认情况下，用于 DocumentDB 的 [Node.js SDK（版本 1.10.1 或更高版本）](https://docs.microsoft.com/en-us/azure/documentdb/documentdb-sdk-node)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Node.js 文档](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的示例操作。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关 DocumentDB 的详细信息，请参阅 [Azure DocumentDB 简介](documentdb-introduction.md)
@@ -88,6 +92,6 @@ DocumentDB 本地模拟器中的证书在首次运行模拟器时生成。 证�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

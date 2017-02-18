@@ -1,6 +1,6 @@
 ---
-title: "在 Azure VM 中自动配置 Always On 可用性组 - Resource Manager"
-description: "在 Azure Resource Manager 模式下使用 Azure 虚拟机创建 Always On 可用性组。 本教程主要使用用户界面来自动创建整个解决方案。"
+title: "为 Azure Resource Manager VM 设置高可用性 | Microsoft Docs"
+description: "本教程介绍在 Azure Resource Manager 模式下，如何使用 Azure 虚拟机创建 AlwaysOn 可用性组。"
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/20/2016
-ms.author: MikeRayMSFT
+ms.workload: iaas-sql-server
+ms.date: 1/23/2017
+ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 27967ee372c379de08ae0c4740638cbeaabc4e55
+ms.sourcegitcommit: d0910bd4e0bf50591ac83991eb2eb679bdc3cadf
+ms.openlocfilehash: 4cbe4f189f5d562edbe5d5cbb524581aa4cb66f2
 
 
 ---
@@ -231,6 +231,6 @@ SQL Server 的新实例将在未连接到 Internet 的虚拟机上运行。 但�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

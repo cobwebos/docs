@@ -1,5 +1,5 @@
 ---
-title: "在 Azure HDInsight 上的 Apache Spark 群集中将外部 python 包与 Jupyter 笔记本配合使用 | Microsoft Docs"
+title: "脚本操作：在 Azure HDInsight 上安装附有 Jupyter 笔记本的 Python 包 | Microsoft Docs"
 description: "逐步说明如何配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。"
 services: hdinsight
 documentationcenter: 
@@ -16,14 +16,24 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f782920ca8aeafa745e6588a71a3428a01676db3
-ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
+ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
+ms.openlocfilehash: b0d6e509c5bacd828e9a9938edb860bbf0c0a8f3
 
 
 ---
-# <a name="use-external-python-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight-linux"></a>在 HDInsight Linux 上的 Apache Spark 群集中将外部 python 包与 Jupyter 笔记本配合使用
+# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>使用脚本操作在 HDInsight 上的 Apache Spark 群集中安装 Jupyter 笔记本的外部 Python 包
+> [!div class="op_single_selector"]
+> * [使用单元格 magic](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+> * [使用脚本操作](hdinsight-apache-spark-python-package-installation.md)
+>
+>
 
 了解如何使用脚本操作在 HDInsight (Linux) 上配置 Apache Spark 群集，以使用未现成包含在群集中的、由社区贡献的 **python** 外部包。
+
+> [!NOTE]
+> 还可使用 `%%configure` magic 配置 Jupyter 笔记本以便使用外部包。 有关说明，请参阅[在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter 笔记本配合使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)。
+> 
+> 
 
 可以在[包索引](https://pypi.python.org/pypi)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，可以安装通过 [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) 或 [conda-forge](https://conda-forge.github.io/feedstocks.html) 提供的包。
 
@@ -33,7 +43,7 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 必须满足以下条件：
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
    > [!NOTE]
    > 如果 HDInsight Linux 上还没有 Spark 群集，则可以在群集创建过程中运行脚本操作。 访问有关[如何使用自定义脚本操作](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的文档。
@@ -53,11 +63,11 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 
 3. 打开 PySpark Jupyter 笔记本
 
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-python-package-installation/hdispark.note.jupyter.createpysparknotebook.png "Create a new Jupyter notebook")
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-python-package-installation/hdispark.note.jupyter.createpysparknotebook.png "创建新的 Jupyter 笔记本")
 
 4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，然后输入一个友好名称。
 
-    ![提供笔记本的名称](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
+    ![提供笔记本的名称](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "提供笔记本的名称")
 
 5. 现在将`import tensorflow` 并运行 hello world 示例。 
 
@@ -70,7 +80,7 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 
     结果将如下所示：
     
-    ![TensorFlow 代码执行](./media/hdinsight-apache-spark-python-package-installation/execution.png "Execute TensorFlow code")
+    ![执行 TensorFlow 代码](./media/hdinsight-apache-spark-python-package-installation/execution.png "执行 TensorFlow 代码")
 
 
 
@@ -102,6 +112,6 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "运行示例应用程序以接收来自 Azure IoT 中心的云到设备消息 | Microsoft Docs"
+title: "将 Intel Edison (C) 连接到 Azure IoT - 第 4 课：接收消息 | Microsoft Docs"
 description: "示例应用程序在 Edison 上运行，监视来自 IoT 中心的传入消息。 新的 gulp 任务会将消息从 IoT 中心发送到 Edison，使 LED 闪烁。"
 services: iot-hub
 documentationcenter: 
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: d492fa295237f6ff333aefb2181975e8af948723
-ms.openlocfilehash: 48e5c46d53ce412384e8667904e84b9ebd454cff
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: b4d76eeb1bc0b406800c89c4952900350d8eafa8
 
 
 ---
 # <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>运行示例应用程序，接收云到设备消息
-在本文中，你将在 Intel Edison 上部署示例应用程序。 示例应用程序监视来自 IoT 中心的传入消息。 还会在计算机上运行 gulp 任务，将消息从 IoT 中心发送到 Edison。 示例应用程序在收到这些消息后，就会让 LED 闪烁。 如果有任何问题，请在[故障排除页面][troubleshooting]上查找解决方案。
+在本文中，你将在 Intel Edison 上部署示例应用程序。 示例应用程序监视来自 IoT 中心的传入消息。 还会在计算机上运行 gulp 任务，将消息从 IoT 中心发送到 Edison。 示例应用程序在收到这些消息后，就会让 LED 闪烁。 如果遇到任何问题，请在[故障排除页][troubleshooting]上查找解决方法。
 
 ## <a name="what-you-will-do"></a>执行的操作
 * 将示例应用程序连接到 IoT 中心。
@@ -56,7 +56,7 @@ ms.openlocfilehash: 48e5c46d53ce412384e8667904e84b9ebd454cff
    gulp init
    ```
 
-   如果已在此计算机上完成[创建 Azure Function App 和存储帐户][create-an-azure-function-app-and-storage-account]中的步骤，并继承了所有配置，则可跳过该步骤，转到部署并运行示例应用程序的任务。 如果在另一计算机上完成了[创建 Azure Function App 和存储帐户][create-an-azure-function-app-and-storage-account]中的步骤，则需替换 `config-edison.json` 文件中的占位符。 `config-edison.json` 文件位于主文件夹的子文件夹中。
+   如果已在此计算机上完成[创建 Azure Function App 和存储帐户][create-an-azure-function-app-and-storage-account]中的步骤，并继承了所有配置，则可跳过该步骤，转到部署并运行示例应用程序的任务。 如果在另一计算机上完成了[创建 Azure Function App 和存储帐户][create-an-azure-function-app-and-storage-account]中的步骤，需替换 `config-edison.json` 文件中的占位符。 `config-edison.json` 文件位于主文件夹的子文件夹中。
 
    ![config-edison.json 文件的内容](media/iot-hub-intel-edison-lessons/lesson4/config-edison.png)
 
@@ -99,6 +99,6 @@ gulp 任务将 20 条消息从 IoT 中心发送到 Edison 时，应看到 LED �
 [change-the-on-and-off-behavior-of-the-led]: iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

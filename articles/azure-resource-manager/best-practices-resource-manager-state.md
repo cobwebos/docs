@@ -1,6 +1,6 @@
 ---
-title: "在 Resource Manager 模板中处理状态 | Microsoft Docs"
-description: "显示了如何通过建议的方法来使用复杂对象，以便与 Azure 资源管理器模板和已链接模板共享状态数据"
+title: "在 Azure 模板之间传递复杂值 | Microsoft Docs"
+description: "演示如何通过建议的方法来使用复杂对象，以便与 Azure Resource Manager 模板和已链接模板共享状态数据。"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cf2f6a82df28047ba7b50dc2cfd6fc2f0dfad794
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 
 ---
-# <a name="sharing-state-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中共享状态
+# <a name="share-state-to-and-from-azure-resource-manager-templates"></a>将状态共享到 Azure Resource Manager 模板或从 Azure 资源管理器模板共享状态
 本主题介绍在模板中管理和共享状态的最佳做法。 本主题中显示的参数和变量是用户可以定义的对象类型的示例，可以用于方便地组织部署要求。 通过这些示例，你可以使用适合环境的属性值实现自己的对象。
 
 本主题是包含更多内容的白皮书的一部分。 若要阅读完整的白皮书，请下载[一流的 Resource Manager 模板注意事项和成熟的做法](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf)。
@@ -415,6 +415,6 @@ ms.openlocfilehash: cf2f6a82df28047ba7b50dc2cfd6fc2f0dfad794
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

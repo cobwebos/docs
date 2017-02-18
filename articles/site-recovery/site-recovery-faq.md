@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/13/2016
+ms.date: 12/28/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1832e584c599384948e7174b377552703ce8bbcd
-ms.openlocfilehash: 11a03d932fc70164640c30acb9808c08e3354de8
+ms.sourcegitcommit: 4ad6d1003b3acd48a1f129eb84f9bbed53075d37
+ms.openlocfilehash: 3c2705a7608c3af9085b51fdbc7191030d3fc9fe
 
 
 ---
@@ -72,6 +72,20 @@ ms.openlocfilehash: 11a03d932fc70164640c30acb9808c08e3354de8
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>我可以使用站点恢复来管理分支机构的灾难恢复吗？
 是的。 当你使用站点恢复来协调分支机构的复制与故障转移时，可以在一个中心位置获得所有分支机构工作负载的统一视图。 不需要前往分支机构，就可以从总部轻松对所有分支机构运行故障转移和管理灾难恢复。
 
+## <a name="pricing"></a>定价
+
+### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>使用 Azure Site Recovery 时，会产生哪些费用？
+使用 Azure Site Recovery 时，会产生 Azure Site Recovery 许可证、Azure 存储、存储事务和出站数据传输费用。 [了解详细信息](https://azure.microsoft.com/pricing/details/site-recovery)。
+
+Site Recovery 许可证费用根据受保护的实例收取，实例可以是 VM 或物理服务器。
+
+- 如果将 VM 磁盘复制到标准存储帐户，Azure 存储费用根据存储消耗量收取。 例如，如果源磁盘大小为 1 TB，已用 400 GB，Site Recovery 将在 Azure 中创建 1 TB 的 VHD，但收费的存储为 400 GB（加上用于复制日志的存储空间量）。
+- 如果将 VM 磁盘复制到高级存储帐户，Azure 存储费用将按照预配的存储大小（已根据最接近的高级存储磁盘选项舍入）收取。 例如，如果源磁盘大小为 50 GB，则 Site Recovery 会在 Azure 中创建 50 GB 磁盘，Azure 会将此大小对应为最接近的高级存储磁盘 (P10)。  费用将按照 P10 计算，而不是按照 50 GB 磁盘大小计算。  [了解详细信息](https://aka.ms/premium-storage-pricing)。  如果使用高级存储，则还需要为复制日志记录使用一个标准存储帐户，用于这些日志的标准存储空间量也会计费。
+
+测试故障转移期间也会产生 VM、存储、传出流量和存储事务方面的费用。
+
+
+
 ## <a name="security"></a>“安全”
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 不会。站点恢复不拦截复制的数据，也不拥有虚拟机或物理服务器上运行哪些项目的任何相关信息。
@@ -88,10 +102,10 @@ ms.openlocfilehash: 11a03d932fc70164640c30acb9808c08e3354de8
 ## <a name="replication"></a>复制
 
 ### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>能否通过站点到站点 VPN 复制到 Azure？
-Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 因此，不能通过站点到站点 VPN 进行复制。 可以通过 Azure 虚拟网络创建站点到站点 VPN，且不会干扰 ASR 复制。 
+Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 因此，不能通过站点到站点 VPN 进行复制。 可以通过 Azure 虚拟网络创建站点到站点 VPN，且不会干扰 ASR 复制。
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>能否使用 ExpressRoute 将虚拟机复制到 Azure？
-能，可以使用 ExpressRoute 将虚拟机复制到 Azure。 Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#public-peering)才能将 ExpressRoute 用于 ASR 复制。 将虚拟机故障转移到 Azure 虚拟网络以后，即可使用通过 Azure 虚拟网络设置的[专用对等互连](../expressroute/expressroute-circuit-peerings.md#private-peering)对其进行访问。 
+能，可以使用 ExpressRoute 将虚拟机复制到 Azure。 Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#public-peering)将 ExpressRoute 用于 Site Recovery 复制。 将虚拟机故障转移到 Azure 虚拟网络以后，即可使用通过 Azure 虚拟网络设置的[专用对等互连](../expressroute/expressroute-circuit-peerings.md#private-peering)对其进行访问。
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>将虚拟机复制到 Azure 需要满足任何先决条件吗？
 要复制到 Azure 的虚拟机应符合 [Azure 要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
@@ -146,9 +160,9 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-virtual-machines-after-failover"></a>在故障转移到 Azure 之后，如何访问 Azure 虚拟机？
 可以通过安全的 Internet 连接或者站点到站点 VPN 或 Azure ExpressRoute 访问 Azure VM。 在连接之前你需要做许多准备。 请从以下文章中阅读更多信息：
 
-* [故障转移 VMware VM 或物理服务器后连接到 Azure VM](site-recovery-vmware-to-azure.md#step-7-test-the-deployment)
+* [故障转移 VMware VM 或物理服务器后连接到 Azure VM](site-recovery-vmware-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 * [故障转移 VMM 云中的 Hyper-V VM 后连接到 Azure VM](site-recovery-vmm-to-azure.md#step-7-test-your-deployment)
-* [故障转移无 VMM 的 Hyper-V VM 后连接到 Azure VM](site-recovery-hyper-v-site-to-azure.md#step-7-test-the-deployment)
+* [故障转移无 VMM 的 Hyper-V VM 后连接到 Azure VM](site-recovery-hyper-v-site-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>如果我故障转移到 Azure，Azure 如何确保我的数据可恢复？
 Azure 具有复原能力。 站点恢复已经能够根据需要故障转移到符合 Azure SLA 的辅助 Azure 数据中心。 发生此情况时，我们确保你的元数据和保管库都保留在你为保管库选择的相同地理区域。  
@@ -198,6 +212,6 @@ Azure 具有复原能力。 站点恢复已经能够根据需要故障转移到�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

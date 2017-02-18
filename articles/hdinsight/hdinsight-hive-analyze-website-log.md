@@ -16,13 +16,16 @@ ms.topic: article
 ms.date: 05/17/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7038ba5e4229f65125efffb1d403364fc36a3783
+ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
+ms.openlocfilehash: 503c8a98ea5437d24ff69f3b8f44c4bfb13e391e
 
 
 ---
-# <a name="use-hive-with-hdinsight-to-analyze-logs-from-websites"></a>将 Hive 与 HDInsight 配合使用来分析来自网站的日志
+# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>将 Hive 与基于 Windows 的 HDInsight 配合使用以分析来自网站的日志
 了解如何通过将 HiveQL 与 HDInsight 配合使用来分析来自网站的日志。 网站日志分析可用于根据类似活动分类受众，按人口统计分类站点访问者，以及了解他们查看的内容和这些内容来自的网站等。
+
+> [!IMPORTANT]
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 在此示例中，你将使用 HDInsight 群集来分析网站日志文件，以深入了解每天从外部网站访问网站的频率。 你还将生成用户遇到的网站错误的摘要。 你将了解如何执行以下操作：
 
@@ -34,7 +37,7 @@ ms.openlocfilehash: 7038ba5e4229f65125efffb1d403364fc36a3783
 ![HDI.Samples.Website.Log.Analysis][img-hdi-weblogs-sample]
 
 ## <a name="prerequisites"></a>先决条件
-* 必须已在 Azure HDInsight 上预配了一个 Hadoop 群集。 有关说明，请参阅[配置 HDInsight 群集] [hdinsight-provision]。 
+* 必须已在 Azure HDInsight 上预配了一个 Hadoop 群集。 有关说明，请参阅[预配 HDInsight 群集][hdinsight-provision]。 
 * 你必须已安装 Microsoft Excel 2013 或 Excel 2010。
 * 必须拥有 [Microsoft Hive ODBC 驱动程序](http://www.microsoft.com/download/details.aspx?id=40886)，才能将数据从 Hive 导入 Excel。
 
@@ -59,6 +62,6 @@ ms.openlocfilehash: 7038ba5e4229f65125efffb1d403364fc36a3783
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

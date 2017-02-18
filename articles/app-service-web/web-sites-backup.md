@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5675c2e0c44356002595620df9b06c38a771af56
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: b00c320eeb1e8b30a0fad9634844ceeca60d1c29
 
 
 ---
@@ -169,7 +169,7 @@ ms.openlocfilehash: 5675c2e0c44356002595620df9b06c38a771af56
 有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。 还可使用 REST API 备份和还原应用服务应用（请参阅[使用 REST 备份和还原应用服务应用](websites-csm-backup.md)）。
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -191,6 +191,6 @@ ms.openlocfilehash: 5675c2e0c44356002595620df9b06c38a771af56
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

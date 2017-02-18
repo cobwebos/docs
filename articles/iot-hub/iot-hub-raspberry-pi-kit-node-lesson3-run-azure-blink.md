@@ -1,5 +1,5 @@
 ---
-title: "将设备到云的消息发送到 Azure IoT 中心 | Microsoft Docs"
+title: "将 Raspberry Pi (节点) 连接到 Azure IoT - 第 3 课：运行示例 |Microsoft Docs"
 description: "在 Raspberry Pi 3 上部署并运行一个示例应用程序，用以向 IoT 中心发送消息并使 LED 闪烁。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: c0ddd7e68accf28ee65ba70ea992acd413da6f5b
-ms.openlocfilehash: ac844b94151c4f9f5105ece63075529779f0efb6
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d33229fea3ed8af636f744992cb8ed321418da85
 
 
 ---
@@ -105,6 +105,6 @@ gulp deploy && gulp run
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 
