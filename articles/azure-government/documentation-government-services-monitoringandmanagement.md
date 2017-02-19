@@ -1,23 +1,22 @@
 ---
 title: "Azure 政府版监视 + 管理 | Microsoft Docs"
 description: "这里提供了针对 Azure Government 的应用程序开发使用到的功能和指南对比。"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: 4b7720c1-699e-432b-9246-6e49fb77f497
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/31/2016
+ms.date: 1/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 3e460dd2aaf51ef2ba9840513d236ce313320c80
-ms.openlocfilehash: 39a87bdbef7c532f9e50f1e71e9c12797bc9a33c
+ms.sourcegitcommit: ec62cc79aeffa21e5d9d772dcd2da6f973c18d81
+ms.openlocfilehash: 3d9f2308d20e723da324be7e3aec3106ff5ff846
 
 
 ---
@@ -30,7 +29,7 @@ ms.openlocfilehash: 39a87bdbef7c532f9e50f1e71e9c12797bc9a33c
 ### <a name="variations"></a>变体
 当前，以下自动化功能在 Azure 政府版中尚不可用。
 
-* 创建服务主体凭据，用于进行身份验证
+* 创建用于身份验证的服务主体凭据
 
 有关详细信息，请参阅[自动化公共文档](../automation/automation-intro.md)。
 
@@ -38,14 +37,6 @@ ms.openlocfilehash: 39a87bdbef7c532f9e50f1e71e9c12797bc9a33c
 备份在 Azure 政府版中已正式发布。
 
 有关详细信息，请参阅 [Azure 政府版备份](documentation-government-services-backup.md)。
-
-### <a name="variations"></a>变体
-当前，以下备份功能在 Azure 政府版中尚不可用：
-
-* Azure Resource Manager 保管库
-* 使用 Azure 门户（支持 Azure 经典门户）进行管理
-
-备份的 URL 在 Azure 政府版中是不同的：
 
 ## <a name="site-recovery"></a>Site Recovery
 Site Recovery (ASR) 已在 Azure 政府版中正式发布。
@@ -56,14 +47,16 @@ Site Recovery (ASR) 已在 Azure 政府版中正式发布。
 当前，以下站点恢复功能在 Azure 政府版中尚不可用：
 
 * Azure Resource Manager 站点恢复保管库
+* 电子邮件通知
 
-| Site Recovery | 经典 | 资源管理器 | 
+| Site Recovery | 经典 | 资源管理器 |
 | --- | --- | --- |
-| VMWare/物理  | GA | 已计划 |
-| Hyper-V | GA | 已计划 |
-| 站点到站点 | GA | 已计划 |
+| VMWare/物理  | GA | GA |
+| Hyper-V | GA | GA |
+| 站点到站点 | GA | GA |
 
-注意：表适用于 VA 和 Iowa。 
+>[!NOTE]
+>适用于美国弗吉尼亚州政府和美国爱荷华州政府的表格
 
 ASR 的以下 URL 在 Azure 政府版中是不同的：
 
@@ -74,8 +67,6 @@ ASR 的以下 URL 在 Azure 政府版中是不同的：
 | *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | 用于存储 VM 快照 |
 | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | 下载 MySQL |
 
-
-
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics 已在 Azure Government 中正式发布。
 
@@ -84,7 +75,7 @@ Log Analytics 已在 Azure Government 中正式发布。
 
 * Microsoft Azure 中预览的解决方案包括：
   * 网络监视解决方案
-  * 应用程序依赖关系监视解决方案
+  * 服务映射
   * Office 365 解决方案
   * Windows 10 升级分析解决方案
   * Application Insights 解决方案
@@ -127,21 +118,11 @@ Log Analytics 的 URL 在 Azure 政府版中是不同的：
 
 有关详细信息，请参阅 [Log Analytics 公共文档](../log-analytics/log-analytics-overview.md)。
 
-## <a name="site-recovery"></a>站点恢复
-站点恢复在 Azure 政府版中已正式发布。
-
-有关详细信息，请参阅[站点恢复公共文档](../site-recovery/site-recovery-overview.md)。
-
-### <a name="variations"></a>变体
-当前，以下站点恢复功能在 Azure 政府版中尚不可用：
-
-* Azure Resource Manager 站点恢复保管库
-
 ## <a name="next-steps"></a>后续步骤
 有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客</a>。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

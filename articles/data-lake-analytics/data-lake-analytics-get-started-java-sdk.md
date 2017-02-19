@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: bbfe4dc74b9743b89ea6a7a99f5fa17672f3c706
-ms.openlocfilehash: 94db8988acacd93518e96a81e177882852379fb0
+ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
+ms.openlocfilehash: 99e1c8956968264fbea696b85ac084281d75f02a
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 94db8988acacd93518e96a81e177882852379fb0
 * IntelliJ 或其他合适的 Java 开发环境。 此步骤是可选的，但建议执行。 以下说明使用 IntelliJ。
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **启用 Azure 订阅** 进行 Data Lake Analytics 公共预览。 请参阅[说明](data-lake-analytics-get-started-portal.md)。
-* 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../resource-group-create-service-principal-portal.md)。 创建应用程序并生成密钥后，也可以从门户中获取回复 URI 和密钥。
+* 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。 创建应用程序并生成密钥后，也可以从门户中获取回复 URI 和密钥。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>如何使用 Azure Active Directory 进行身份验证？
 以下代码片段提供了 **非交互式** 身份验证的代码，在这种验证方式中，应用程序提供自己的凭据。
@@ -353,6 +353,6 @@ ms.openlocfilehash: 94db8988acacd93518e96a81e177882852379fb0
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 10/27/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: d06a5c281b9390ae7d7f3a9ef18b27b62355a33f
+ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
+ms.openlocfilehash: 46156a3331585b47761432c13462dffeb0b7eeb5
 
 
 ---
@@ -142,7 +142,7 @@ Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可�
 }
 ```
 
-阅读有关[使用 *copy* 创建多个实例](../resource-group-create-multiple.md)的详细信息。 
+阅读有关[使用 *copy* 创建多个实例](../azure-resource-manager/resource-group-create-multiple.md)的详细信息。 
 
 也可以使用 `copyIndex()` 并在资源名称中追加一个数字，来创建 `myNic1`、`MyNic2`，等等。下面显示了追加索引值的示例：
 
@@ -160,6 +160,6 @@ Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

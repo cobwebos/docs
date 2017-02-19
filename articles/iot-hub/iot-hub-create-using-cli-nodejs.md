@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 01/04/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: 39c8c4944ef19379dc04e04a717ab60d305593c4
-ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: 44291ed86775312a894f6acf92260cde76982f27
 
 
 ---
@@ -31,10 +31,10 @@ ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
 * Azure CLI (azure.js) – 如本文所述，用于经典部署模型和资源管理部署模型的 CLI。
 * [Azure CLI 2.0（预览版）(az.py)](iot-hub-create-using-cli.md) - 适用于资源管理部署模型的下一代 CLI。
 
-若要完成本教程，需要满足以下条件：
+若要完成本教程，您需要以下各项：
 
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
-* [Azure CLI 0.10.4][lnk-CLI-install] 或更高版本。 如果已经有了 Azure CLI，则可在命令提示符处使用以下命令验证当前版本：
+* [Azure CLI 0.10.4][lnk-CLI-install] 或更高版本。 如果已经安装 Azure CLI，则可在命令提示符处使用以下命令验证当前版本：
   ```
     azure --version
   ```
@@ -49,13 +49,13 @@ ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
 > 
 
 ## <a name="set-your-azure-account-and-subscription"></a>设置 Azure 帐户和订阅
-1. 在命令提示符处键入以下命令登录
+1. 在命令提示符处键入以下命令进行登录：
    
    ```
     azure login
    ```
    使用建议的 Web 浏览器和代码进行身份验证。
-2. 如果你有多个 Azure 订阅，则连接到 Azure 即有权访问与凭据关联的所有 Azure 订阅。 可查看这些订阅以及哪个订阅是默认订阅，只需使用以下命令
+2. 如果你有多个 Azure 订阅，则连接到 Azure 即有权访问与你的凭据关联的所有 Azure 订阅。 可以使用以下命令查看 Azure 订阅以及确定哪个订阅是默认订阅：
    
    ```
     azure account list 
@@ -67,7 +67,7 @@ ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
     azure account set <subscription name>
    ```
 
-3. 如果没有资源组，则可创建一个，将其命名为 **exampleResourceGroup** 
+3. 如果没有资源组，则可创建一个，将其命名为 **exampleResourceGroup**：
    ```
     azure group create -n exampleResourceGroup -l westus
    ```
@@ -88,21 +88,21 @@ ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
     - <sku-name> (The name of the sku, one of: [F1, S1, S2, S3] etc. For the latest full list refer to the pricing page for IoT Hub.
     - <units> (The number of provisioned units. Range : F1 [1-1] : S1, S2 [1-200] : S3 [1-10]. IoT Hub units are based on your total message count and the number of devices you want to connect.)
 ```
-若要查看所有可以创建的参数，可以在命令提示符处使用帮助命令
+若要查看所有可以创建的参数，可以在命令提示符处使用帮助命令：
 
 ```
     azure iothub create -h 
 ```
 简单示例：
 
- 若要在资源组 **exampleResourceGroup** 中创建名为 **exampleIoTHubName** 的 IoT 中心，请直接运行以下命令
+ 运行以下命令，在资源组 **exampleResourceGroup** 中创建名为**exampleIoTHubName** 的 IoT 中心：
 
 ```
     azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1 -u 1
 ```
 
 > [!NOTE]
-> 此 Azure CLI 命令为用户创建付费的 S1 标准 IoT 中心。 可以使用以下命令删除 IoT 中心 **exampleIoTHubName** 
+> 此 Azure CLI 命令为用户创建付费的 S1 标准 IoT 中心。 可以使用以下命令删除 IoT 中心 **exampleIoTHubName**：
 > 
 > ```
 > azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
@@ -133,6 +133,6 @@ ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

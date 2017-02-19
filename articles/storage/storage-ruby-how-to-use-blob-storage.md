@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: cc42e6629c256d1fe6e5b082c88ebb2497484318
+ms.sourcegitcommit: c63758346ebd8fa3d4c43e59c84bc2a6935e4bf7
+ms.openlocfilehash: 7f7d0c52b2b50a360711477e8e0eafc07ddcf374
 
 
 ---
@@ -102,8 +102,8 @@ container = azure_blob_service.create_container("test-container",
 
 **:public\_access\_level** 选项的有效值为：
 
-* **blob：**指定对容器和 blob 数据的完整公共读取权限。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
-* **容器：**指定对 blob 的公共读取权限。 可以通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob。
+* **blob：**指定对 Blob 的公共读取权限。 可以通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob。
+* **容器：**指定对容器和 blob 数据的完整公共读取权限。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
 
 另外，还可以通过使用 **set\_container\_acl()** 方法指定公共访问级别来修改容器的公共访问级别。
 
@@ -168,6 +168,6 @@ azure_blob_service.delete_blob(container.name, "image-blob")
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

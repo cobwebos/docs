@@ -1,6 +1,6 @@
 ---
-title: "Data Lake Store 性能优化指南 | Microsoft 文档"
-description: "Data Lake Store 性能优化指南"
+title: "Azure Data Lake Store 性能优化指南 | Microsoft Docs"
+description: "Azure Data Lake Store 性能优化指南"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 30e6dd65fa2643fdf7ec65601d6391891d48566c
-ms.openlocfilehash: 1238f834edc9452a6a9791d9f3db8d8d50a975a7
+ms.sourcegitcommit: af11866fc812cd8a375557b7bf9df5cdc9bba610
+ms.openlocfilehash: f0d0c05c08ce198e2702c76ad35b348107c664c7
 
 
 ---
@@ -86,10 +86,10 @@ ms.openlocfilehash: 1238f834edc9452a6a9791d9f3db8d8d50a975a7
 
     | 工作负载               | 用于设置任务数的参数                                                         |
     |--------------------|------------------------------------------------------------------------------------|
-    | Spark on HDInisight       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
-    | Hive on HDInsight    | hive.tez.container.size         |
-    | MapReduce on HDInsight            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
-    | Storm on HDInsight| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
+    | [Spark on HDInisight](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+    | [Hive on HDInsight](data-lake-store-performance-tuning-hive.md)    | hive.tez.container.size         |
+    | [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
+    | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
 
 ## <a name="see-also"></a>另请参阅
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
@@ -97,6 +97,6 @@ ms.openlocfilehash: 1238f834edc9452a6a9791d9f3db8d8d50a975a7
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -3,7 +3,7 @@ title: "Azure SQL 数据库基准检验概述"
 description: "本主题介绍在 Azure SQL 数据库的性能测量中使用的 Azure SQL 数据库基准检验。"
 services: sql-database
 documentationcenter: na
-author: CarlRabeler
+author: jan-eng
 manager: jhubbard
 editor: monicar
 ms.assetid: e26f8a66-2c12-49d7-8297-45b4d48a5c01
@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/21/2016
-ms.author: carlrab
+ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: cbe53ce7f259432085a828ef8c1fe3ae2da42074
+ms.sourcegitcommit: 2681dd3792a351fecc0c72eb7fe546113a451d24
+ms.openlocfilehash: 7b9b222be1a131d2a80d37404cbdd309b61785f3
 
 
 ---
@@ -109,7 +109,7 @@ ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数�
 | 高级 (P6/P3) |800 |114 GB |
 
 ## <a name="measurement-duration"></a>度量持续时间
-有效地运行基准检验需要稳定状态度量持续时间至少为 1 小时。
+有效地运行基准检验需要稳定状态度量持续时间至少为&1; 小时。
 
 ## <a name="metrics"></a>度量值
 基准检验中的关键指标是吞吐量和响应时间。
@@ -131,10 +131,10 @@ Azure SQL 数据库基准检验可以度量在所有可用的服务层和性能�
 
 [服务层和性能级别](sql-database-service-tiers.md)
 
-[独立数据库的性能指南](sql-database-performance-guidance.md)
+[单一数据库的性能指南](sql-database-performance-guidance.md)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

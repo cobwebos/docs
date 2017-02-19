@@ -1,5 +1,5 @@
 ---
-title: "弹性数据库作业入门"
+title: "弹性数据库作业入门 | Microsoft Docs"
 description: "如何使用弹性数据库作业"
 services: sql-database
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 273b02072a10ca45717b9bb20f89de278bb2b456
+ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
+ms.openlocfilehash: 1765e009438684373c89dc8364efd20dd1b7c84b
 
 
 ---
@@ -33,17 +33,19 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
 
 1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，你将看到以下命令提示符：
 
-    ![命令提示符][1]
+   ![命令提示符](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
+
 2. 在命令窗口中键入“1”，然后按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入“3”并按“Enter”；重复该操作四次。 这会在你的分片中插入示例数据行。
 3. [Azure 门户](https://portal.azure.com)应会在 v12 服务器中显示三个新的数据库：
 
-   ![Visual Studio 确认][2]
+   ![Visual Studio 确认](./media/sql-database-elastic-query-getting-started/portal.png)
 
    现在，我们将创建一个自定义数据库集合，用于反映分片映射中的所有数据库。 这样，我们便可以创建和执行用于跨分片添加新表的作业。
 
 我们通常会使用 **New-AzureSqlJobTarget** cmdlet 来创建分片映射目标。 必须将分片映射管理器数据库设置为数据库目标，然后将特定分片映射指定为目标。 而我们的做法是枚举服务器中的所有数据库，并将这些数据库添加到 master 数据库除外的其他新自定义集合。
 
-## <a name="creates-a-custom-collection-and-adds-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>创建自定义集合并将服务器中的所有数据库添加到 master 除外的自定义集合目标。
+## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>创建自定义集合，并将服务器中的所有数据库添加到 master 以外的自定义集合目标。
+   ```
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -105,9 +107,10 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
         }
     }
     $ErrorActionPreference = "Continue"
-}
-
+   }
+   ```
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>创建 T-SQL 脚本用于跨数据库执行
+   ```
     $scriptName = "NewTable"
     $scriptCommandText = "
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'Test')
@@ -123,8 +126,11 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
 
     $script = New-AzureSqlJobContent -ContentName $scriptName -CommandText $scriptCommandText
     Write-Output $script
+   ```
 
 ## <a name="create-the-job-to-execute-a-script-across-the-custom-group-of-databases"></a>创建作业以跨自定义数据库组执行脚本
+
+   ```
     $jobName = "create on server dbs"
     $scriptName = "NewTable"
     $customCollectionName = "dbs_in_server"
@@ -132,77 +138,97 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $credentialName -ContentName $scriptName -TargetId $target.TargetId
     Write-Output $job
-
+   ```
 
 ## <a name="execute-the-job"></a>执行作业
 以下 PowerShell 脚本可以用于执行现有的作业：
 
 更新以下变量以反映要执行的所需作业名称：
 
+   ```
     $jobName = "create on server dbs"
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
+   ```
 
 ## <a name="retrieve-the-state-of-a-single-job-execution"></a>检索单个作业执行的状态
 使用相同 **Get-AzureSqlJobExecution** cmdlet 搭配 **IncludeChildren** 参数，以查看子作业执行的状态，还就是针对作为作业目标的每个数据库的每个作业执行的特定状态。
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     $jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
     Write-Output $jobExecutions
+   ```
 
 ## <a name="view-the-state-across-multiple-job-executions"></a>查看多个作业执行的状态
 **Get-AzureSqlJobExecution** cmdlet 具有多个可选参数，用于显示多个作业执行（已通过提供的参数进行筛选）。 下面演示了 Get-AzureSqlJobExecution 的一些可能的用法：
 
 检索所有处于活动状态的顶级作业执行：
 
+   ```
     Get-AzureSqlJobExecution
+   ```
 
 检索所有顶级作业执行，包括非活动的作业执行：
 
+   ```
     Get-AzureSqlJobExecution -IncludeInactive
+   ```
 
 检索已提供作业执行 ID 的所有子作业执行，包括非活动的作业执行：
 
+   ```
     $parentJobExecutionId = "{Job Execution Id}"
-    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId –IncludeInactive -IncludeChildren
+    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
+   ```
 
 检索使用计划/作业组合创建的所有作业执行，包括非活动的作业：
 
+   ```
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Get-AzureSqlJobExecution -JobName $jobName -ScheduleName $scheduleName -IncludeInactive
+   ```
 
 检索以指定的分片映射为目标的所有作业，包括非活动的作业：
 
+   ```
     $shardMapServerName = "{Shard Map Server Name}"
     $shardMapDatabaseName = "{Shard Map Database Name}"
     $shardMapName = "{Shard Map Name}"
     $target = Get-AzureSqlJobTarget -ShardMapManagerDatabaseName $shardMapDatabaseName -ShardMapManagerServerName $shardMapServerName -ShardMapName $shardMapName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
+   ```
 
 检索以指定的自定义集合为目标的所有作业，包括非活动的作业：
 
+   ```
     $customCollectionName = "{Custom Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
+   ```
 
 检索特定作业执行内的作业任务执行的列表：
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Write-Output $jobTaskExecutions
+   ```
 
 检索作业任务执行详细信息：
 
 以下 PowerShell 脚本可用于查看作业任务执行的详细信息，在调试执行失败时特别有用。
-
+   ```
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
+   ```
 
 ## <a name="retrieve-failures-within-job-task-executions"></a>检索作业任务执行内的失败
 JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。 如果作业任务执行失败，生命周期属性将设为 Failed，且消息属性将设为生成的异常消息及其堆栈。 如果作业不成功，必须查看给定操作不成功的作业任务的详细信息。
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Foreach($jobTaskExecution in $jobTaskExecutions)
@@ -212,12 +238,15 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
             Write-Output $jobTaskExecution
             }
         }
+   ```
 
 ## <a name="waiting-for-a-job-execution-to-complete"></a>等待作业执行完成
 以下 PowerShell 脚本可用于等待作业任务完成：
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId
+   ```
 
 ## <a name="create-a-custom-execution-policy"></a>创建自定义执行策略
 弹性数据库作业支持创建可在启动作业时应用的自定义执行策略。
@@ -242,6 +271,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 创建所需的执行策略：
 
+   ```
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 10
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -250,10 +280,12 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
     $retryIntervalBackoffCoefficient = 1.5
     $executionPolicy = New-AzureSqlJobExecutionPolicy -ExecutionPolicyName $executionPolicyName -InitialRetryInterval $initialRetryInterval -JobTimeout $jobTimeout -MaximumAttempts $maximumAttempts -MaximumRetryInterval $maximumRetryInterval -RetryIntervalBackoffCoefficient $retryIntervalBackoffCoefficient
     Write-Output $executionPolicy
+   ```
 
 ### <a name="update-a-custom-execution-policy"></a>更新自定义执行策略
 更新要更新的所需执行策略：
 
+   ```
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 15
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -262,6 +294,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
     $retryIntervalBackoffCoefficient = 1.5
     $updatedExecutionPolicy = Set-AzureSqlJobExecutionPolicy -ExecutionPolicyName $executionPolicyName -InitialRetryInterval $initialRetryInterval -JobTimeout $jobTimeout -MaximumAttempts $maximumAttempts -MaximumRetryInterval $maximumRetryInterval -RetryIntervalBackoffCoefficient $retryIntervalBackoffCoefficient
     Write-Output $updatedExecutionPolicy
+   ```
 
 ## <a name="cancel-a-job"></a>取消作业
 弹性数据库作业支持作业取消请求。  如果弹性数据库作业检测到当前正在执行作业的取消请求，它将尝试停止作业。
@@ -275,8 +308,10 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 若要提交取消请求，请使用 **Stop-AzureSqlJobExecution** cmdlet 并设置 **JobExecutionId** 参数。
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
+   ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>根据名称和作业的历史记录删除作业
 弹性数据库作业支持异步删除作业。 可将某个作业标记为待删除，系统将在作业的作业执行都已完成后，删除该作业及其所有作业历史记录。 系统不会自动取消处于活动状态的作业执行。  
@@ -285,47 +320,58 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 若要触发作业删除，请使用 **Remove-AzureSqlJob** cmdlet 并设置 **JobName** 参数。
 
+   ```
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
+   ```
 
 ## <a name="create-a-custom-database-target"></a>创建自定义数据库目标
 自定义数据库目标可以在弹性数据库作业中定义，可用于直接执行或包含在自定义数据库组内。 由于尚不能通过 PowerShell API 直接支持**弹性池**，只需创建自定义数据库目标和自定义数据库集合目标，其中包含池中的所有数据库。
 
 设置以下变量以反映所需的数据库信息：
 
+   ```
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName
+   ```
 
 ## <a name="create-a-custom-database-collection-target"></a>创建自定义数据库集合目标
 可以自定义数据库集合目标，以跨多个已定义数据库目标执行。 创建数据库组之后，数据库可与自定义集合目标相关联。
 
 设置以下变量以反映所需的自定义集合目标配置：
 
+   ```
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
+   ```
 
 ### <a name="add-databases-to-a-custom-database-collection-target"></a>将数据库添加到自定义数据库集合目标
 数据库目标可以与自定义数据库集合目标相关联，以创建数据库组。 每当创建以自定义数据库集合目标为目标的作业时，都会在执行时扩展为以关联到该组的数据库为目标。
 
 将所需的数据库添加到特定的自定义集合：
 
+   ```
     $serverName = "{Database Server Name}"
     $databaseName = "{Database Name}"
     $customCollectionName = "{Custom Database Collection Name}"
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName
+   ```
 
 #### <a name="review-the-databases-within-a-custom-database-collection-target"></a>查看自定义数据库集合目标内的数据库
 使用 **Get-AzureSqlJobTarget** cmdlet 检索自定义数据库集合目标内的子数据库。
 
+   ```
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $childTargets = Get-AzureSqlJobTarget -ParentTargetId $target.TargetId
     Write-Output $childTargets
+   ```
 
 ### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>创建作业以跨自定义数据库集合目标执行脚本
 使用 **New-AzureSqlJob** cmdlet 可以针对自定义数据库集合目标定义的数据库组创建作业。 弹性数据库作业将作业扩展为多个子作业（每个子作业映射到与自定义数据库集合目标关联的数据库），并确保脚本针对每个数据库执行。 同样，重要的是脚本具有幂等处理重试的弹性。
 
+   ```
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $customCollectionName = "{Custom Collection Name}"
@@ -333,6 +379,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $credentialName -ContentName $scriptName -TargetId $target.TargetId
     Write-Output $job
+   ```
 
 ## <a name="data-collection-across-databases"></a>跨数据库收集数据
 **弹性数据库作业**支持跨数据库组执行查询，并将结果发送到指定的数据库表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步机制。 例如其中一个数据库暂时不可用的失败案例是通过重试自动处理。
@@ -343,6 +390,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 设置以下项以反映所需的脚本、凭据和执行目标：
 
+   ```
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $executionCredentialName = "{Execution Credential Name}"
@@ -353,45 +401,49 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
     $destinationSchemaName = "{Destination Schema Name}"
     $destinationTableName = "{Destination Table Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
+   ```
 
 ### <a name="create-and-start-a-job-for-data-collection-scenarios"></a>创建和启动用于数据库收集方案的作业
+   ```
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $executionCredentialName -ContentName $scriptName -ResultSetDestinationServerName $destinationServerName -ResultSetDestinationDatabaseName $destinationDatabaseName -ResultSetDestinationSchemaName $destinationSchemaName -ResultSetDestinationTableName $destinationTableName -ResultSetDestinationCredentialName $destinationCredentialName -TargetId $target.TargetId
     Write-Output $job
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
+   ```
 
 ## <a name="create-a-schedule-for-job-execution-using-a-job-trigger"></a>使用作业触发器创建作业执行计划
 以下 PowerShell 脚本可用于创建重复计划。 此脚本使用一分钟间隔，但是 New-AzureSqlJobSchedule 也支持 -DayInterval、-HourInterval、-MonthInterval 和 -WeekInterval 参数。 可以通过传递 -OneTime 来创建仅执行一次的计划。
 
 创建新计划：
-
+   ```
     $scheduleName = "Every one minute"
     $minuteInterval = 1
     $startTime = (Get-Date).ToUniversalTime()
     $schedule = New-AzureSqlJobSchedule -MinuteInterval $minuteInterval -ScheduleName $scheduleName -StartTime $startTime
     Write-Output $schedule
+   ```
 
 ### <a name="create-a-job-trigger-to-have-a-job-executed-on-a-time-schedule"></a>创建作业触发器，使作业按时间计划执行
 可以定义作业触发器，使作业根据时间计划执行。 以下 PowerShell 脚本可用于创建作业触发器。
 
 设置以下变量以对应于所需的作业和计划：
 
+   ```
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
-    $jobTrigger = New-AzureSqlJobTrigger -ScheduleName $scheduleName –JobName $jobName
+    $jobTrigger = New-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
     Write-Output $jobTrigger
+   ```
 
 ### <a name="remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>删除计划的关联，以停止按计划执行作业
 若要通过作业触发器中断作业重复执行，可以删除作业触发器。
 使用 **Remove-AzureSqlJobTrigger** cmdlet 删除作业触发器，以停止作业根据计划执行。
 
+   ```
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Remove-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
-
-
-
-
+   ```
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>将弹性数据库查询结果导入 Excel
  你可以将查询结果导入到 Excel 文件。
@@ -400,7 +452,8 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 2. 导航到**数据功**能区。
 3. 单击“从其他源”，然后单击“从 SQL Server”。
 
-   ![从其他源导入 Excel][5]
+   ![从其他源导入 Excel](./media/sql-database-elastic-query-getting-started/exel-sources.png)
+
 4. 在**数据连接向导**中，键入服务器名称和登录凭据。 。
 5. 在对话框**选择包含所需数据的数据库**中，选择 **ElasticDBQuery** 数据库。
 6. 在列表视图中选择“客户”表并单击“下一步”。 然后单击“完成”。
@@ -428,6 +481,6 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

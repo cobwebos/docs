@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 249b87ecc9e43fa26a74e27f91f807d60b275eeb
 
 
 ---
@@ -28,6 +28,9 @@ ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
 * 将流编码为多比特率（自适应比特率）视频流。 此操作可负责处理质量和网络条件问题。
 * 使用 Microsoft Azure 媒体服务[动态打包](media-services-dynamic-packaging-overview.md)功能将流动态地重新打包为不同的协议。 此操作可负责处理不同设备上的流式处理问题。 媒体服务支持传送以下自适应比特率流式处理技术：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG-DASH。
 
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+
 本文概述重要的内容传送概念。
 
 若要查看已知问题，请参阅[已知问题](media-services-deliver-content-overview.md#known-issues)。
@@ -35,14 +38,11 @@ ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
 ## <a name="dynamic-packaging"></a>动态打包
 借助媒体服务提供的动态打包功能，可采用媒体服务支持的流式传输格式（MPEG-DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流式传输格式。 我们建议使用动态打包功能传送内容。
 
-若要使用动态打包，必须执行下列操作：
-
-* 将夹层（源）文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流式处理文件。
-* 针对计划要从其中传送内容的流式处理终结点，获取至少一个按需流式处理单位。 有关详细信息，请参阅[如何缩放按需流式处理保留单位](media-services-portal-manage-streaming-endpoints.md)。
+若要利用动态打包，需将夹层（源）文件编码为一组自适应比特率 MP4 文件或自适应比特率平滑流式处理文件。
 
 借助动态打包功能，可存储和播放使用单一存储格式的文件。 媒体服务会根据请求生成并提供适当的响应。
 
-除了提供动态打包功能访问权限外，按需流式处理保留单位还提供可按照 200 Mbps 的增量购买的专用出口容量。 默认情况下，按需流式处理在共享实例模型中配置，该模型的服务器资源（例如，计算或出口容量）与所有其他用户共享。 可通过购买按需流式处理保留单位，提高按需流式处理吞吐量。
+动态打包可用于标准和高级流式处理终结点。 
 
 有关详细信息，请参阅[动态打包](media-services-dynamic-packaging-overview.md)。
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
 > 
 > 
 
-若要更新定位符的过期日期，请使用 [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。 请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
+若要更新定位符的过期日期，请使用 [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。 请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
 
 定位符不用于管理按用户的访问控制。 通过数字版权管理 (DRM) 解决方案，可以为不同的用户提供不同的访问权限。 有关详细信息，请参阅[保护媒体](http://msdn.microsoft.com/library/azure/dn282272.aspx)。
 
@@ -78,9 +78,9 @@ ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
 若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，可获得包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输此内容，需要进一步修改此路径。 若要构造流式处理清单文件的完整 URL，必须将定位符的 path 值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加 **/Manifest** 和相应的格式（如果需要）。
 
 > [!NOTE]
-> 你也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。
+> 你也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，目前 AMS 对自定义域不支持 SSL。  
 > 
-> 
+
 
 仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可以通过 SSL 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含“origin.mediaservices.windows.net”（旧格式）的流 URL 不支持 SSL。 如果你的 URL 采用旧格式，并且你希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 SSL 流式传输内容。
 
@@ -143,7 +143,11 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 * 未在 12 小时内完成的下载会失败。
 
 ## <a name="streaming-endpoints"></a>流式处理终结点
-流式处理终结点表示一个流服务，该服务可以直接将内容传送给客户端播放器应用程序，也可以直接将内容传送给内容交付网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 还可以通过调整流式处理保留单位来控制流式处理终结点服务处理不断增长的带宽需求的能力。 你至少应该为生产环境中的应用程序分配一个保留单元。 有关详细信息，请参阅 [如何缩放媒体服务](media-services-portal-manage-streaming-endpoints.md)。
+
+流式处理终结点表示一个流服务，该服务可以直接将内容传送给客户端播放器应用程序，也可以直接将内容传送给内容交付网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 有两种类型的流式处理终结点，**标准**和**高级**。 有关详细信息，请参阅[流式处理终结点概述](media-services-streaming-endpoints-overview.md)。
+
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 ## <a name="known-issues"></a>已知问题
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>更改为平滑流式处理清单版本
@@ -184,6 +188,6 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

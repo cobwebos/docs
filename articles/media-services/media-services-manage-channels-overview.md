@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: b9a4a790cab7b5600bf4942ac81367192a008447
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: e4bb75b0a45dd922479cbd40ad94190c30b4333f
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: b9a4a790cab7b5600bf4942ac81367192a008447
 
 **频道** 表示用于处理实时流内容的管道。 频道可以通过以下方式接收实时输入流：
 
-* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到经配置可以进行**直通**传送的频道。 **直通**传送是指引入的流将会直接通过**频道**，而不会经过任何进一步的处理。 可以使用以下输出多比特率平滑流的实时编码器：Elemental、Envivio、Cisco。  以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast 和 Tricaster 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到经配置可以进行**直通**传送的频道。 **直通**传送是指引入的流将会直接通过**频道**，而不会经过任何进一步的处理。 可以使用以下输出多比特率平滑流式处理的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
 
   > [!NOTE]
   > 当你需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，则可使用直通这种最经济的方法来实时传送视频流。 请参阅 [定价](https://azure.microsoft.com/pricing/details/media-services/) 详细信息。
@@ -91,14 +91,14 @@ ms.openlocfilehash: b9a4a790cab7b5600bf4942ac81367192a008447
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>频道及其相关组件的说明
 ### <a name="channel"></a>通道
-在媒体服务中，[频道](https://msdn.microsoft.com/library/azure/dn783458.aspx)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），然后你将该终结点提供给实时转码器。 通道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 通道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
+在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），然后你将该终结点提供给实时转码器。 通道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 通道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
 
 可以在创建通道时获取引入 URL 和预览 URL。 若要获取这些 URL，通道不一定要处于已启动状态。 当你准备好开始将数据从实时转码器推送到通道时，通道必须已启动。 实时转码器开始引入数据后，你可以预览流。
 
 每个媒体服务帐户均可包含多个通道、多个节目以及多个 StreamingEndpoint。 根据带宽和安全性需求，StreamingEndpoint 服务可专用于一个或多个通道。 任何 StreamingEndpoint 都可以从任何通道拉取。
 
 ### <a name="program"></a>节目
-[节目](https://msdn.microsoft.com/library/azure/dn783463.aspx)用于控制实时流中片段的发布和存储。 通道管理节目。 频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
+[节目](https://docs.microsoft.com/rest/api/media/operations/program)用于控制实时流中片段的发布和存储。 通道管理节目。 频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
 可以通过设置 **ArchiveWindowLength** 属性，指定希望保留多少小时的节目录制内容。 此值的设置范围是最短 5 分钟，最长 25 小时。
 
 ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
@@ -157,6 +157,6 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

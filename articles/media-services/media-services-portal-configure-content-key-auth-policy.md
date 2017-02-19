@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 445074060f1cae200405b17d04be41075f7306d7
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 096d67dc4880f4c0a50e3981485dbe2d8f4c22a7
 
 
 ---
@@ -39,7 +39,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 [使用媒体服务 REST API 配置内容密钥授权策略](media-services-rest-configure-content-key-auth-policy.md)
 
 ### <a name="some-considerations-apply"></a>请注意以下事项：
-* 为了能够使用动态打包和动态加密，必须确保至少有一个流式处理保留单位。 有关详细信息，请参阅 [如何缩放媒体服务](media-services-portal-manage-streaming-endpoints.md)。
+* 创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
 * 你的资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。  如果你创建 ContentKeyAuthorizationPolicy 并指定使用“令牌”限制，然后对其进行测试，再将策略更新为“开放”限制，则现有策略切换到“开放”版本的策略需要大约 15 分钟。
 
@@ -77,7 +77,7 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-可以单击“导入策略 xml”按钮，然后提供符合[此处](https://msdn.microsoft.com/library/azure/dn783459.aspx)定义的 XML 架构的另一个 XML。
+可以单击“导入策略 xml”按钮，然后提供符合[此处](media-services-playready-license-template-overview.md)定义的 XML 架构的另一个 XML。
 
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。
@@ -93,6 +93,6 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

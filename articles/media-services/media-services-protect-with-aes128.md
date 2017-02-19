@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
-ms.openlocfilehash: fb244491ec243399393320d0dbefb078273448d9
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 5b81c3cdabe7b02a2049d7d1a5e227f5886bdbad
 
 
 ---
@@ -42,10 +42,6 @@ ms.openlocfilehash: fb244491ec243399393320d0dbefb078273448d9
 
 本主题适合开发受保护媒体传送应用程序的开发人员。 本主题介绍如何使用授权策略来配置密钥传送服务，确保只有经过授权的客户端才能接收加密密钥。 此外还将介绍如何使用动态加密。
 
-> [!NOTE]
-> 若要开始使用动态加密，你必须首先获取至少一个缩放单位（也称为流式处理单位）。 有关详细信息，请参阅 [如何缩放媒体服务](media-services-portal-manage-streaming-endpoints.md)。
-> 
-> 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128 动态加密和密钥传送服务工作流
 
@@ -81,6 +77,11 @@ ms.openlocfilehash: fb244491ec243399393320d0dbefb078273448d9
 
 ## <a name="a-idencodeassetaencode-the-asset-containing-the-file-to-the-adaptive-bitrate-mp4-set"></a><a id="encode_asset"></a>将包含文件的资产编码为自适应比特率 MP4 集
 使用动态加密时，你只需创建包含一组多码率 MP4 文件或多码率平滑流源文件的资产。 然后，点播流服务器会确保你以选定的协议按清单或分段请求中的指定格式接收流。 因此，你只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。 有关详细信息，请参阅 [动态打包概述](media-services-dynamic-packaging-overview.md) 主题。
+
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+>
+>此外，若要使用动态打包和动态加密，你的资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
 有关如何编码的说明，请参阅 [如何使用媒体编码器标准版对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
@@ -631,6 +632,6 @@ ms.openlocfilehash: fb244491ec243399393320d0dbefb078273448d9
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

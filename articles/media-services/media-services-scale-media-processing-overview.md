@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 01/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 852d8ee2686e5653f9fe8bb5ec41b22cb1b19048
-ms.openlocfilehash: a9cf9a7e91c21d675f7ae22072fd10794a1295e7
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 1cde923ad0aef1ce1c91d1240f7b3e3d3c26e105
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: a9cf9a7e91c21d675f7ae22072fd10794a1295e7
 ## <a name="overview"></a>概述
 媒体服务帐户与保留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下保留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 保留单位类型相比，使用 **S2** 保留单位类型时，同一编码作业运行速度更快。 有关详细信息，请参阅[保留单位类型](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/)。
 
-除了指定保留单位类型，你还可以指定通过保留单位来设置帐户。 设置的保留单位数决定了给定帐户中可并发处理的媒体任务数。 例如，如果帐户具有 5 个保留单元，则只要有任务要处理，就可以同时运行 5 个媒体任务。 其余任务将排队等待，运行的任务完成后才选择它们以按顺序进行处理。 如果帐户未设置任何保留单元，则按顺序选择任务进行处理。 在这种情况下，完成一个任务和开始下一个任务之间的等待时间将取决于系统中资源的可用性。
+除了指定保留单位类型，你还可以指定通过保留单位来设置帐户。 设置的保留单位数决定了给定帐户中可并发处理的媒体任务数。 例如，如果帐户具有&5; 个保留单元，则只要有任务要处理，就可以同时运行&5; 个媒体任务。 其余任务将排队等待，运行的任务完成后才选择它们以按顺序进行处理。 如果帐户未设置任何保留单元，则按顺序选择任务进行处理。 在这种情况下，完成一个任务和开始下一个任务之间的等待时间将取决于系统中资源的可用性。
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>在不同的保留单位类型之间进行选择
 下表可帮助你在不同的编码速度之间进行选择时做出决定。 它还提供了几个基准案例，并提供可用于下载视频的 SAS URL，你可以对该视频执行自己的测试：
@@ -44,8 +44,8 @@ ms.openlocfilehash: a9cf9a7e91c21d675f7ae22072fd10794a1295e7
 
 * 保留单位可用于并行化所有媒体处理，其中使用 Azure Media Indexer 为作业编制索引。  但是，与编码不同，索引作业使用更快的保留单位并不能更快地完成处理。
 * 如果使用共享的池（即没有任何保留单位），则编码任务将具有与 S1 RU 相同的性能。 但是，任务在排队状态下花费的时间可能没有上限，并且在任何给定的时间内，最多只会运行一项任务。
-* 下面的数据中心不提供 **S2** 保留单位类型：巴西南部、印度西部、印度中部和印度南部。
-* 下面的数据中心不提供 **S3** 保留单位类型：巴西南部、印度西部、印度中部。
+* 下面的数据中心不提供 **S2** 保留单位类型：巴西南部和印度西部。
+* 下面的数据中心不提供 **S3** 保留单位类型：印度西部。
 * 为 24 小时期间指定的最大单位数将用于计算成本。
 
 ## <a name="quotas-and-limitations"></a>配额和限制
@@ -57,7 +57,7 @@ ms.openlocfilehash: a9cf9a7e91c21d675f7ae22072fd10794a1295e7
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [门户](media-services-portal-scale-media-processing.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -72,6 +72,6 @@ ms.openlocfilehash: a9cf9a7e91c21d675f7ae22072fd10794a1295e7
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 
