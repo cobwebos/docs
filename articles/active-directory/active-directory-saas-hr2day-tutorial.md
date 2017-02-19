@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ca1b2a7435d4ae72cab85c5f0aea5466a95f2bba
+ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
+ms.openlocfilehash: fe040c6d799c8b1a19d8329b6e4aebefcbae6190
 
 
 ---
@@ -150,15 +150,15 @@ HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 HR2day by Merces 应用程序的 URL：**“https://\<tenant name\>.force.com/\<instance name\>”**。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 1. 在“配置 HR2day by Merces 的单一登录”页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2day_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 2. 若要为应用程序配置 SSO，请通过 [servicedesk@merces.nl](emailTo:servicedesk@merces.nl) 联系 HR2day by Merces 支持团队，并将下载的证书文件附加到电子邮件。 此外，请提供 SAML SSO URL、注销 URL 以及颁发者 URL，以便可以针对 SSO 集成配置它们。
 
@@ -203,7 +203,7 @@ HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
@@ -217,7 +217,7 @@ HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -292,6 +292,6 @@ HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

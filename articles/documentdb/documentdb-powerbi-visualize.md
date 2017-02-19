@@ -3,7 +3,7 @@ title: "DocumentDB 连接器的 Power BI 教程 | Microsoft Docs"
 description: "使用此 Power BI 教程来导入 JSON、创建见解深入的报表以及使用 DocumentDB 和 Power BI 连接器可视化数据。"
 keywords: "Power BI 教程, 可视化数据, Power BI 连接器"
 services: documentdb
-author: h0n
+author: mimig1
 manager: jhubbard
 editor: mimig
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
-ms.author: hawong
+ms.date: 02/14/2016
+ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35c469ce0cfb99dc6a26fbcc0734938ad6b66fd7
+ms.sourcegitcommit: 089b250e36eb3e091ad63d716acaf6259a958898
+ms.openlocfilehash: 3f2103a1d3838b73f10d567721693a9b813d0edb
 
 
 ---
@@ -88,7 +88,7 @@ ms.openlocfilehash: 35c469ce0cfb99dc6a26fbcc0734938ad6b66fd7
     将数据库名称、集合名称和 SQL 声明留空，因为这些字段为可选。  相反，我们将使用导航器来选择数据库和集合以指定数据来源。
    
     ![DocumentDB Power BI 连接器的 Power BI 教程 - 桌面连接窗口](./media/documentdb-powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-7. 如果你是首次连接到此终结点，则将提示你输入帐户密钥。  可以在 Azure 门户的[“只读密钥”](documentdb-manage-account.md#keys)边栏选项卡中的“主密钥”框检索密钥，或者可以使用演示帐户信息，其中密钥为 `RcEBrRI2xVnlWheejXncHId6QRcKdCGQSW6uSUEgroYBWVnujW3YWvgiG2ePZ0P0TppsrMgscoxsO7cf6mOpcA==`。 输入帐户密钥并单击“连接”。
+7. 如果你是首次连接到此终结点，则将提示你输入帐户密钥。  可以在 Azure 门户的[“只读密钥”](documentdb-manage-account.md#keys)边栏选项卡中的“主密钥”框检索密钥，或者可以使用演示帐户信息，其中密钥为 `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`。 输入帐户密钥并单击“连接”。
    
     我们建议你在生成报表时使用只读密钥。  这将防止主密钥不必要地暴露于潜在的安全风险中。 只读密钥从 Azure 门户的“密钥”[](documentdb-manage-account.md#keys)边栏选项卡中可用，或者你可以使用上文提供的演示帐户信息。
    
@@ -216,6 +216,6 @@ ms.openlocfilehash: 35c469ce0cfb99dc6a26fbcc0734938ad6b66fd7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

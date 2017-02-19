@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: bcf4b4162940071c78fdae05b4b38105474c2a7a
-ms.openlocfilehash: 1121ee9817e7c4a85baf6a284f61ff0169372542
+ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
+ms.openlocfilehash: 825fd464d9d5eb0e482598227222f5680a0b4b38
 
 
 ---
@@ -117,7 +117,7 @@ ms.openlocfilehash: 1121ee9817e7c4a85baf6a284f61ff0169372542
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后将其保存在计算机上。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
 5. 若要为应用程序配置 SSO，请通过 [360online@software-innovation.com](mailto:360online@software-innovation.com) 联系 360 Online 支持团队，并将下载的元数据文件附加到邮件中。
 6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
@@ -151,7 +151,7 @@ ms.openlocfilehash: 1121ee9817e7c4a85baf6a284f61ff0169372542
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-360online-tutorial/create_aaduser_06.png) 
@@ -164,7 +164,7 @@ ms.openlocfilehash: 1121ee9817e7c4a85baf6a284f61ff0169372542
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -232,6 +232,6 @@ ms.openlocfilehash: 1121ee9817e7c4a85baf6a284f61ff0169372542
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

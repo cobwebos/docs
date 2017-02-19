@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2016
+ms.date: 01/11/2017
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 76aa5a1d8023b108b4d7bee1dcf1386e14809df9
+ms.sourcegitcommit: e86e4dcc39f9d34dc04afbdccb017d89969f548f
+ms.openlocfilehash: fade348a599c41a7f099e7bbd8b45a3b4ccbf910
 
 
 ---
@@ -39,10 +39,10 @@ ms.openlocfilehash: 76aa5a1d8023b108b4d7bee1dcf1386e14809df9
 ### <a name="access-payout-reports-in-dev-center"></a>访问开发人员中心的付款报表
 1. 导航到 https://dev.windows.com/zh-cn 处的开发人员中心。
 2. 单击“仪表板”。
-   
+
     ![LandingPageDashboardHighlight][1]
 3. 单击“付款摘要”。
-   
+
     ![DashboardPayoutSummary][2]
 
 ## <a name="view-your-payout-reports-in-dev-center"></a>查看开发人员中心的付款报表
@@ -52,10 +52,10 @@ ms.openlocfilehash: 76aa5a1d8023b108b4d7bee1dcf1386e14809df9
 * 单击即将到来的付款或最近付款“查看详细信息”链接，以查看关于这些付款的注意事项。
 * 单击“付款声明”，按应用/产品查看收益下的详细信息。
 * 单击“查看”链接以查看单个声明。
-  
+
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
 * 使用单个声明底部的“收益明细”，以查看多个应用/产品（如果它们存在）。
-  
+
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
 ## <a name="view-your-payout-reports-in-publishing-portal"></a>查看发布门户中的付款报表
@@ -64,7 +64,7 @@ ms.openlocfilehash: 76aa5a1d8023b108b4d7bee1dcf1386e14809df9
 1. 导航到 https://publish.windowsazure.com 处的发布门户。
 2. 从“发布者”部分中单击“付款报表”。
 3. 单击下拉列表，以显示所有可用的每季度付款报表。
-   
+
     ![accessingpayoutreport][5]
 
 ### <a name="read-your-payout-reports"></a>阅读付款报表
@@ -110,6 +110,6 @@ ms.openlocfilehash: 76aa5a1d8023b108b4d7bee1dcf1386e14809df9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

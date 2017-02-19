@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 2/13/2017
 ms.author: tedway
 translationtype: Human Translation
-ms.sourcegitcommit: 2725357b2effe7c75d7a9e1462568706497757df
-ms.openlocfilehash: b1bc047d5361a4e2c6e9c946f470037fa3c45b3c
+ms.sourcegitcommit: 156e2f01e6a010ddab06dbb8e4746dceb54a413a
+ms.openlocfilehash: 9f1aac04d54221888ee9374317be339400dcf085
 
 
 ---
@@ -76,6 +76,6 @@ ms.openlocfilehash: b1bc047d5361a4e2c6e9c946f470037fa3c45b3c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

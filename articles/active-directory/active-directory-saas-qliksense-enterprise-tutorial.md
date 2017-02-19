@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 91f8a95bdab98f079b748b5391e9b611378c6e79
-ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: 00dcedb09ea63b4337b2b730746fb2f5a1f27e64
 
 
 ---
@@ -132,7 +132,7 @@ ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。  上传到 Qlik Sense 服务器之前，准备编辑此元数据文件。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
 
 5. 准备联合元数据 XML 文件，以便将其上传到 Qlik Sense 服务器。
    
@@ -189,7 +189,7 @@ ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
     
     g. 输入“用户目录”的值，当用户通过 Azure AD 对 Qlik Sense 服务器进行身份验证时，该值将附加到用户。  硬编码值必须用**方括号 []**包围。  若要使用 Azure AD SAML 断言中发送的属性，请在此文本框中输入属性名称，**不带**方括号。
     
-    h. **SAML 签名算法**设置服务提供者（此案例中为 Qlik Sense 服务器）证书签名，以实现虚拟代理配置。  如果 Qlik Sense 服务器使用通过 Microsoft 增强 RSA 和 AES 加密提供程序生成的受信任证书，则将 SAML 签名算法更改为 **SHA 256**。
+    h. **SAML 签名算法**设置服务提供者（此案例中为 Qlik Sense 服务器）证书签名，以实现虚拟代理配置。  如果 Qlik Sense 服务器使用通过 Microsoft 增强 RSA 和 AES 加密提供程序生成的受信任证书，则将 SAML 签名算法更改为 **SHA&256;**。
     
     i. SAML 属性映射部分允许将其他属性（例如，组）发送到 Qlik Sense，以在安全规则中使用。
 12. 单击负载平衡菜单选项，使其可见。  出现负载平衡屏幕。
@@ -265,7 +265,7 @@ ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
 6. 在“用户配置文件”对话框页上，执行以下步骤：
 
@@ -279,7 +279,7 @@ ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -375,6 +375,6 @@ ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

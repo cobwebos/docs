@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: a17069b9992e36b36bad71941b0f8062d7594e95
-ms.openlocfilehash: 74959c5694ebb2a6d83b76b76f69d2fd0bb1d885
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: 7ae75446c9d19ce15a82caa9604658a528ab9941
 
 
 ---
@@ -129,7 +129,7 @@ ms.openlocfilehash: 74959c5694ebb2a6d83b76b76f69d2fd0bb1d885
    
     c. 在 **Questetra BPM Suite** 公司站点上的“SP 信息”部分，复制“ACS URL”，然后将其粘贴到“回复 URL”文本框中。
    
-    d.单击“下一步”。 单击“资源组名称” 的 Azure 数据工厂。
+    d.单击“下一步”。 单击“下一步”。
 
 7. 在“配置 Questetra BPM Suite 的单一登录”页上，单击“下载证书”，然后将证书文件保存在本地计算机上。
    
@@ -208,7 +208,7 @@ ms.openlocfilehash: 74959c5694ebb2a6d83b76b76f69d2fd0bb1d885
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -313,6 +313,6 @@ ms.openlocfilehash: 74959c5694ebb2a6d83b76b76f69d2fd0bb1d885
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

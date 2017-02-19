@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: dd398e258cd1634e187a5c258158d5bc01e5a943
+ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
+ms.openlocfilehash: 669ef16c4fe2edd4525db6f693c424f3027793f3
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: dd398e258cd1634e187a5c258158d5bc01e5a943
 
 我们将使用 **IoTHubClient** SDK 示例来阐释这些主题。 如果想要继续，请参阅适用于 C 的 Azure IoT 设备 SDK 中随附的 **iothub\_client\_sample\_http** and **iothub\_client\_sample\_amqp** 应用程序。以下部分所述的所有内容都将通过这些示例来演示。
 
-可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)中查看 API 的详细信息。
+可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](https://azure.github.io/azure-iot-sdk-c/index.html)中查看 API 的详细信息。
 
 ## <a name="the-lower-level-apis"></a>较低级别 API
 前一篇文章介绍了 **IotHubClient** 应用程序上下文中 **iothub\_client\_sample\_amqp** 的基本操作。 例如，该文章说明了如何使用此代码来初始化库。
@@ -279,6 +279,6 @@ batching 选项非常重要。 默认情况下，库将逐个引入事件（单�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

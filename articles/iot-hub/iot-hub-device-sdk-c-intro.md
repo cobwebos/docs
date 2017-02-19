@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: 5d7eed340d2021c58f68c69100be5a9e13655146
-ms.openlocfilehash: 02907ef15742cda456fd0c5f10b777b11aa7c35e
+ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
+ms.openlocfilehash: 0033f1cc036e1eef63f0728be8d5d73c8dbbccf6
 
 
 ---
@@ -30,7 +30,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 本文将介绍适用于 C 语言的 Azure IoT 设备 SDK 的体系结构。我们将演示如何初始化设备库，将事件发送到 IoT 中心，以及从 IoT 中心接收消息。 本文中的信息应足以让你开始使用 SDK，但同时也提供了有关库的其他信息的链接。
 
 ## <a name="sdk-architecture"></a>SDK 体系结构
-可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)中查看 API 的详细信息。
+可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](https://azure.github.io/azure-iot-sdk-c/index.html)中查看 API 的详细信息。
 
 在此存储库的 **master** 分支中可找到最新版本的库：
 
@@ -466,6 +466,6 @@ serializer_deinit();
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

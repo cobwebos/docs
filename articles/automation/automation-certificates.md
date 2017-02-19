@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: ad4878dd2684c44f8458a9eb8288730e8fd45308
-ms.openlocfilehash: dbb39aad69f63765bf7f72129dbdcde36ed40ec7
+ms.sourcegitcommit: 89e5486f3302098f3a1d49e4390ec5b21617d778
+ms.openlocfilehash: fd1737a420c132dace9307436bfea98a9bde94a0
 
 ---
 
@@ -34,7 +34,7 @@ ms.openlocfilehash: dbb39aad69f63765bf7f72129dbdcde36ed40ec7
 
 |Cmdlet|说明|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AzureRmAutomationCertificate 活动中检索证书本身。|
+|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AutomationCertificate 活动中检索证书本身。|
 |[New-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603604.aspx)|将新证书创建到 Azure 自动化中。|
 [Remove-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603529.aspx)|从 Azure自动化中删除证书。|将新证书创建到 Azure 自动化中。
 |[Set-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603760.aspx)|设置现有证书的属性，包括上载证书文件和设置 .pfx 的密码。|
@@ -98,6 +98,6 @@ ms.openlocfilehash: dbb39aad69f63765bf7f72129dbdcde36ed40ec7
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 
