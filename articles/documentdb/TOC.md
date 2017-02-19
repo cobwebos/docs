@@ -90,7 +90,7 @@
 ### [与 Azure 搜索集成](../search/search-howto-index-documentdb.md)
 ### [使用 Azure 数据工厂移动数据](../data-factory/data-factory-azure-documentdb-connector.md)
 ### [使用 Azure 流分析分析实时数据](../stream-analytics/stream-analytics-define-outputs.md#documentdb)
-### [使用逻辑应用获取通知](documentdb-change-notification.md)
+### [使用逻辑应用获取更改的 HL7 FHIR 记录](documentdb-change-feed-hl7-fhir-logic-apps.md)
 ### [实时处理传感器数据](../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md)
 ### [使用 Power BI 直观显示数据](documentdb-powerbi-visualize.md)
 ### [将 ODBC 驱动程序用于数据可视化](documentdb-nosql-odbc-driver.md)

@@ -1,13 +1,25 @@
 ---
+title: "Azure CDN 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用内容交付网络 (CDN) 将全球数据中心的内容传送到任何设备。 教程、API 参考和其他文档。"
+services: cdn
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cdn
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: 79a8dc0dc2e81d0b159b07bbb496f04e06e5d28a
+ms.sourcegitcommit: 642f9469722dfe701db8e353f4aa2b17edc00081
+ms.openlocfilehash: 67fdc8b9b4db5d311a8247995d7f8f626b90e5c5
 
 ---
 # <a name="cdn-documentation"></a>CDN 文档
 
-Azure 内容交付网络 (CDN) 为开发人员提供一个全局解决方案用于传送 Azure 或其他任何位置中托管的高带宽内容。  使用 CDN，可以缓存从 Azure Blob 存储、Web 应用程序、虚拟机、应用程序文件夹或其他 HTTP/HTTPS 位置加载的公开对象。  CDN 通常用于传送静态内容，例如图像、样式表、文档、文件、客户端脚本和 HTML 页面。
+了解如何使用内容交付网络 (CDN) 传送 Azure 中或其他位置托管的高带宽内容。 教程、API 参考和其他文档介绍了如何使用 CDN 将全球数据中心的内容传送到任何设备。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -109,16 +121,10 @@ Azure 内容交付网络 (CDN) 为开发人员提供一个全局解决方案用�
 </ul>
 
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cdn.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure CDN 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

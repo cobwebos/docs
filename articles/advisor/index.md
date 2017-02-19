@@ -1,8 +1,20 @@
 ---
+title: "Azure 顾问文档 - 教程 | Microsoft 文档"
+description: 
+services: advisor
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: advisor
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 9a08595547f3128c5da067f8efa085a61d195ec0
-ms.openlocfilehash: b8fdb3046a6914baa98676135119fd8d638e8dba
+ms.sourcegitcommit: 5ce8f9d30ef45c2afcae315e977cc508e6bc4e8c
+ms.openlocfilehash: 790a19516b9494b39d61b7a5fd841e9632666123
 
 ---
 # <a name="azure-advisor-documentation"></a>Azure 顾问文档
@@ -50,6 +62,6 @@ Azure 顾问是一种个性化的云顾问，可帮助遵循最佳做法来优�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

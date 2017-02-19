@@ -1,5 +1,5 @@
 ---
-title: "VPN 网关文档 - 教程和 API 参考 | Microsoft 文档"
+title: "Azure VPN 网关文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何配置虚拟专用网络 (VPN) 网关，用于管理云虚拟网络与本地之间或者云 VNet 之间的流量。"
 services: vpn-gateway
 author: carolz
@@ -13,9 +13,8 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 2e7486833ae23cdfed037aa1afb930997586a158
-ms.openlocfilehash: e3179c060380c07dde9058597b0d77861d14d848
-
+ms.sourcegitcommit: b481f480d44696476497e0eaeeee7150ed8d365b
+ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
 
 ---
 # <a name="vpn-gateway-documentation"></a>VPN 网关文档
@@ -169,6 +168,6 @@ ms.openlocfilehash: e3179c060380c07dde9058597b0d77861d14d848
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,10 +1,23 @@
 ---
+title: "Azure IoT 套件文档 - 教程和 API 参考 | Microsoft 文档"
+description: 
+services: iot-suite
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: iot-suite
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: ceade1ccba2d1328faf548f43f51b4fa3a5343b0
+ms.sourcegitcommit: 29fb247771d662d3abcbf35e95ff0f7a8cf95af1
+ms.openlocfilehash: 461542095d9ef357460e93d65bb9f4dd8fe17c86
 
 ---
+
 # <a name="iot-suite-documentation"></a>IoT 套件文档
 
 Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快物联网 (IoT) 解决方案的开发。 使用适用于多个平台（包括 Linux、Windows 和实时操作系统）的设备 SDK 添加新设备并连接现有设备。 无论项目大小如何，均可从少数几个传感器轻松扩展至数百万台同步连接的设备，还可依赖 Azure 的全球可用性。
@@ -91,6 +104,6 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

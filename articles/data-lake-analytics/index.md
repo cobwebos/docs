@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Data Lake Analytics 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Data Lake Analytics 执行大数据分析。 教程介绍了如何运行实时交互式批处理分析，以及如何编写 U-SQL 查询。"
+services: data-lake-analytics
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: data-lake-analytics
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 003cc86e182c55621db9e41fa35d871f37245a91
-ms.openlocfilehash: dcf7aea439c02e2bdb1563c6573376a3f87765d1
+ms.sourcegitcommit: b6b6a217f6fa54928b2c05cf44c5b0b74aaf8ce6
+ms.openlocfilehash: 21b56baf3e17b7955e6baf4b996b02d67fe50b81
 
 ---
 # <a name="data-lake-analytics-documentation"></a>Data Lake Analytics 文档
@@ -238,18 +249,10 @@ ms.openlocfilehash: dcf7aea439c02e2bdb1563c6573376a3f87765d1
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-lake-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Data Lake Analytics 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure DNS 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Azure 域名系统管理 DNS 记录。 文档介绍了如何设置及管理域名的 DNS 区域和记录。"
+services: dns
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: dns
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1e30c21b967e9862ae24907ac5db56a341c11cf5
-ms.openlocfilehash: a0110b01879360e4558dffed6343da1ef72cfe86
+ms.sourcegitcommit: f415cc458e91085ce315ef7ee5755b96bbcfa170
+ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
 
 ---
 # <a name="dns-documentation"></a>DNS 文档
@@ -132,16 +143,10 @@ ms.openlocfilehash: a0110b01879360e4558dffed6343da1ef72cfe86
 </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/dns.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 DNS 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

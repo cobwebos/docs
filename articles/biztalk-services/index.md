@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure BizTalk 服务文档 - 教程 | Microsoft 文档"
 description: "了解如何使用 BizTalk 服务为 SAP、Oracle EBS、SQL Server 和 PeopleSoft 提供云到本地和业务线应用程序的集成。"
+services: biztalk-services
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: biztalk-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 74eb1a0a0f532ffe23fdfac0d8b25ee9434175a1
-ms.openlocfilehash: 754a932b8d98bbae8f7e24daab073cbec1d4d16e
+ms.sourcegitcommit: 8c09bee7be24d8ba18fa67f3aef1c951dfde1434
+ms.openlocfilehash: 80b381d59e95297cf8d7616e6a2eb3186ab26a05
 
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk 服务文档
@@ -67,18 +78,10 @@ ms.openlocfilehash: 754a932b8d98bbae8f7e24daab073cbec1d4d16e
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/biztalk-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 BizTalk 服务文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

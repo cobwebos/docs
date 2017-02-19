@@ -1,5 +1,6 @@
 # 概述
 ## [什么是 Azure 容器服务？](container-service-intro.md)
+## [常见问题](container-service-faq.md)
 # 入门
 ## [部署 ACS 群集](container-service-deployment.md)
 ## [使用 Azure CLI 2.0（预览版）部署到 ACS](container-service-create-acs-cluster-cli.md)
@@ -43,6 +44,6 @@
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

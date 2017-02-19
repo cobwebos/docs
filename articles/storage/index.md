@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure 存储文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用云中的 Azure 存储 - Blob、表、队列、文件和虚拟机磁盘存储。 教程、API 参考和其他文档。"
+services: storage
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 1e9cc940d681893abbc351ef440c90f579e6c40a
+ms.sourcegitcommit: f7bd1007aeff86faf7a1d744602e5184f0ce1d6f
+ms.openlocfilehash: cdb001f960ea5d505bc757195abf14b505f77103
 
 ---
 
@@ -133,6 +144,7 @@ ms.openlocfilehash: 1e9cc940d681893abbc351ef440c90f579e6c40a
                         <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blob、队列、表和文件</a></p>
                         <p><a href="/rest/api/storagerp">资源提供程序</a></p>
                         <p><a href="/rest/api/storageimportexport">导入/导出</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">存储数据 REST API</a></p>
                    </div>
                 </div>
             </div>
@@ -144,6 +156,6 @@ ms.openlocfilehash: 1e9cc940d681893abbc351ef440c90f579e6c40a
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

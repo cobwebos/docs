@@ -1,21 +1,20 @@
 ---
-layout: LandingPage
-toc_rel: breadcrumb.json
+title: "Azure 虚拟机文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何创建、部署和管理 Windows 或 Linux 虚拟机。 教程、API 参考和其他文档。"
-title: "Azure 虚拟机文档 | Microsoft 文档"
 services: virtual-machines
 author: carolz
 manager: carolz
+layout: LandingPage
 ms.assetid: 
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 0b803da9d1cfefababd18b48fd39efc9895331bf
-ms.openlocfilehash: 2cbeaebcd79944511bbd2532b533acf1b98bef06
+ms.sourcegitcommit: ff1cc256ff9ba84504a9df16c33888a920f62cd6
+ms.openlocfilehash: da4f6ab3c7f0c4f96440b3008e6ac62d94ea2406
 
 ---
 # <a name="virtual-machines-documentation"></a>虚拟机文档
@@ -65,6 +64,6 @@ ms.openlocfilehash: 2cbeaebcd79944511bbd2532b533acf1b98bef06
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

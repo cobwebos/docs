@@ -21,11 +21,14 @@
 ## 构建应用程序
 ### [模式和方案](service-fabric-patterns-and-scenarios.md)
 ### 基础知识
-#### [编程模型](service-fabric-choose-framework.md)
 #### [应用程序模型](service-fabric-application-model.md)
+#### [支持的编程模型](service-fabric-choose-framework.md)
+#### [服务状态](service-fabric-concepts-state.md)
 #### [服务通信](service-fabric-connect-and-communicate-with-services.md)
+#### [添加 Web 前端](service-fabric-add-a-web-frontend.md)
 #### [服务清单资源](service-fabric-service-manifest-resources.md)
-#### [工具](service-fabric-manage-application-in-visual-studio.md)
+#### [在 Visual Studio 中管理应用](service-fabric-manage-application-in-visual-studio.md)
+#### [在 Visual Studio 中配置安全连接](service-fabric-visualstudio-configure-secure-connections.md)
 #### 调试
 ##### [在 VS 中调试 C# 服务](service-fabric-debugging-your-application.md)
 ##### [在 Eclipse 中调试 Java 服务](service-fabric-debugging-your-application-java.md)
@@ -36,6 +39,15 @@
 #### [配置应用程序的安全策略](service-fabric-application-runas-security.md)  
 #### [为多个环境配置应用程序](service-fabric-manage-multiple-environment-app-configuration.md)  
 #### [常见错误和异常](service-fabric-errors-and-exceptions.md) 
+
+### 来宾可执行应用程序
+#### [部署来宾可执行文件](service-fabric-deploy-existing-app.md)
+#### [部署多个来宾可执行文件](service-fabric-deploy-multiple-apps.md)
+
+### 容器应用程序
+#### [概述](service-fabric-containers-overview.md)
+#### [部署 Windows 容器](service-fabric-deploy-container.md)
+#### [部署 Docker 容器](service-fabric-deploy-container-linux.md)
 
 ### Reliable Services 应用程序
 #### [概述](service-fabric-reliable-services-introduction.md)
@@ -73,15 +85,6 @@
 #### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 #### [配置通信设置](service-fabric-reliable-actors-fabrictransportsettings.md) 
 
-### 来宾可执行应用程序
-#### [部署来宾可执行文件](service-fabric-deploy-existing-app.md)
-#### [部署多个来宾可执行文件](service-fabric-deploy-multiple-apps.md)
-
-### 容器应用程序
-#### [概述](service-fabric-containers-overview.md)
-#### [部署 Windows 容器](service-fabric-deploy-container.md)
-#### [部署 Docker 容器](service-fabric-deploy-container-linux.md)
-
 ## 从云服务迁移
 ### [比较云服务和 Service Fabric](service-fabric-cloud-services-migration-differences.md)
 ### [迁移到 Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -95,7 +98,7 @@
 #### [可视化群集](service-fabric-visualizing-your-cluster.md)
 #### [连接到安全群集](service-fabric-connect-to-secure-cluster.md)
 #### [使用 Azure CLI 管理群集](service-fabric-azure-cli.md) 
-#### [安全性](service-fabric-cluster-security.md)
+#### [保护群集](service-fabric-cluster-security.md)
 #### [灾难恢复](service-fabric-disaster-recovery.md)
 
 ### Azure 上的群集
@@ -108,6 +111,7 @@
 #### [删除群集](service-fabric-cluster-delete.md)
 #### [访问控制](service-fabric-cluster-security-roles.md)
 #### [配置群集](service-fabric-cluster-fabric-settings.md)
+#### [使用证书保护群集](service-fabric-windows-cluster-x509-security.md)
 #### [添加或滚动更新群集证书](service-fabric-cluster-security-update-certs-azure.md) 
 #### [免费试用 Party 群集](http://aka.ms/tryservicefabric)
 
@@ -116,30 +120,15 @@
 #### [在 Azure 虚拟机上创建独立群集](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [缩放群集](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [升级群集](service-fabric-cluster-upgrade-windows-server.md)
-#### [保护群集](service-fabric-windows-cluster-x509-security.md)
 #### [访问控制](service-fabric-cluster-security-roles.md)
 #### [配置群集](service-fabric-cluster-manifest.md)
 #### [使用证书保护群集](service-fabric-windows-cluster-x509-security.md)  
 #### [使用 Windows 安全性保护群集](service-fabric-windows-cluster-windows-security.md) 
 
-## 管理和协调群集资源
-### [群集资源管理器概述](service-fabric-cluster-resource-manager-introduction.md)
-### [群集资源管理器体系结构](service-fabric-cluster-resource-manager-architecture.md)
-### [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)
-### [应用程序组概述](service-fabric-cluster-resource-manager-application-groups.md)
-### [配置群集资源管理器设置](service-fabric-cluster-resource-manager-configure-services.md)
-### [资源消耗度量值](service-fabric-cluster-resource-manager-metrics.md)
-### [使用服务相关性](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-### [服务放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-### [管理群集](service-fabric-cluster-resource-manager-management-integration.md)
-### [群集碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-### [均衡群集](service-fabric-cluster-resource-manager-balancing.md)
-### [限制](service-fabric-cluster-resource-manager-advanced-throttling.md)
-### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
-
 ## 管理应用程序生命周期
 ### [概述](service-fabric-application-lifecycle.md)
 ### [设置持续集成](service-fabric-set-up-continuous-integration.md)
+### [了解 ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)
 ### 部署或删除应用程序
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -169,8 +158,8 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [从服务进程收集日志](service-fabric-diagnostic-collect-logs-without-an-agent.md)
-### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
 ### [有状态的 Reliable Services 中的诊断](service-fabric-reliable-services-diagnostics.md)
+### [Reliable Actors 中的诊断](service-fabric-reliable-actors-diagnostics.md)
 ### [排查本地群集的故障](service-fabric-troubleshoot-local-cluster-setup.md)
 ### [排查常见问题](service-fabric-diagnostics-troubleshoot-common-scenarios.md)
 
@@ -192,7 +181,22 @@
 #### [使用节点转换 API](service-fabric-node-transition-apis.md)
 ### [对应用程序进行负载测试](service-fabric-vso-load-test.md)
 
-# 参考
+## 管理和协调群集资源
+### [群集资源管理器概述](service-fabric-cluster-resource-manager-introduction.md)
+### [群集资源管理器体系结构](service-fabric-cluster-resource-manager-architecture.md)
+### [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)
+### [应用程序组概述](service-fabric-cluster-resource-manager-application-groups.md)
+### [配置群集资源管理器设置](service-fabric-cluster-resource-manager-configure-services.md)
+### [资源消耗度量值](service-fabric-cluster-resource-manager-metrics.md)
+### [使用服务相关性](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+### [服务放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
+### [管理群集](service-fabric-cluster-resource-manager-management-integration.md)
+### [群集碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+### [均衡群集](service-fabric-cluster-resource-manager-balancing.md)
+### [限制](service-fabric-cluster-resource-manager-advanced-throttling.md)
+### [服务移动](service-fabric-cluster-resource-manager-movement-cost.md)
+
+# 引用
 ## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
 ## [Java API](/java/api/microsoft.servicefabric.services)
 ## [.NET](/dotnet/api/microsoft.servicefabric.services)
@@ -209,6 +213,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

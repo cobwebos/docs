@@ -1,10 +1,10 @@
 ---
-layout: LandingPage
+title: "Azure 虚拟机规模集文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用虚拟机规模集为大型计算、大数据和容器化解决方案创建自动缩放的 Windows 或 Linux VM。"
-title: "Azure 虚拟机规模集文档、教程和 API 参考 | Microsoft 文档"
 services: virtual-machine-scale-sets
 author: carolz
 manager: carolz
+layout: LandingPage
 ms.assetid: 
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
@@ -13,8 +13,8 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: e7922431244003dc15e1612ef98fd6a9ecf8ad1b
-ms.openlocfilehash: 994439a33146398d9e8d89ec27e0fa2bff3ba8f1
+ms.sourcegitcommit: c9a4b71fc888f5b2b9a32af80d1d4947ff731157
+ms.openlocfilehash: 091259841325103ce6733796f1cfe9109e39877b
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
@@ -129,6 +129,6 @@ ms.openlocfilehash: 994439a33146398d9e8d89ec27e0fa2bff3ba8f1
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

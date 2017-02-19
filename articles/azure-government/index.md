@@ -1,8 +1,20 @@
 ---
+title: "Azure 政府版文档 - 教程和 API 参考 | Microsoft 文档"
+description: 
+services: Azure-government
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: Azure-government
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
-ms.openlocfilehash: 93a2c8da64000d03538f73befc167368915c3dbb
+ms.sourcegitcommit: 651e65243a8f5d170b61352e0ab1d57d1a25ad1b
+ms.openlocfilehash: 1dc06fadc9c6b49ff314d5eab53ef1b0b1e91eda
 
 ---
 #<a name="azure-government-documentation"></a>Azure Government 文档
@@ -62,9 +74,9 @@ Microsoft Azure 政府版提供构建在安全性、隐私性与控制性、合�
                         <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-compute">计算</a></p>
                         <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-services-storage">存储</a></p>
                         <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-services-database">数据库</a></p>
-                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-networking">联网</a></p>
-                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity">安全性和标识</a></p>
-                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement">监视和管理</a></p>
+                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-networking">网络</a></p>
+                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity">安全性 + 标识</a></p>
+                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement">监视 + 管理</a></p>
                     </div>
                 </div>
             </div>
@@ -73,16 +85,10 @@ Microsoft Azure 政府版提供构建在安全性、隐私性与控制性、合�
 </ul>
     
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-government.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Government 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

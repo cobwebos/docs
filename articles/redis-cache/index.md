@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Redis 缓存文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Azure Redis 缓存 - 一个安全的数据缓存和消息传送中转站，可让应用程序快速访问数据。 教程、API 参考和其他资源。"
+services: redis-cache
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: redis-cache
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 328084918199e162ad0cfa9ac67737a66fa4d021
+ms.sourcegitcommit: ba5cba11b7b5ba142094e9d2c0b027386266e83a
+ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
 
 ---
 #<a name="redis-cache-documentation"></a>Redis 缓存文档
@@ -188,6 +199,6 @@ ms.openlocfilehash: 328084918199e162ad0cfa9ac67737a66fa4d021
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

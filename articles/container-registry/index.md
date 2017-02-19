@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure 容器注册表文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用托管的 Docker 注册表服务创建和维护容器注册表来存储部署映像。 教程、API 参考和其他资源。"
+services: container-registry
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: container-registry
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: ab80e1ef9771caa4369863c0aff1cee2c3055830
-ms.openlocfilehash: c42d5fe49d099fed7b5df9901c313832d966e340
+ms.sourcegitcommit: 97a09226c0f784c4834e96e47ac9052844ff7a36
+ms.openlocfilehash: 3962f34170cf3a19fe51b2f90b49fa21e01fc6cc
 
 ---
 
@@ -100,6 +111,6 @@ ms.openlocfilehash: c42d5fe49d099fed7b5df9901c313832d966e340
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Site Recovery 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何通过部署和管理复制，为物理服务器和虚拟机设置云灾难恢复和业务连续性。"
+services: site-recovery
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: site-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: b8fe2704e7c68c1fe815d204d424f28fcbdfe75c
+ms.sourcegitcommit: 9816de3f1925e79fdd2814f5a65f80d0fe912137
+ms.openlocfilehash: d9bc1b35580377b8b5edd73c4b8797d9da30cf11
 
 ---
 # <a name="site-recovery-documentation"></a>Site Recovery 文档
@@ -84,6 +95,6 @@ ms.openlocfilehash: b8fe2704e7c68c1fe815d204d424f28fcbdfe75c
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

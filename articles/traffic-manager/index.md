@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure 流量管理器文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何管理传入的流量以实现最佳应用程序性能。 文档介绍了如何将流量分配到 Azure 或外部服务终结点。"
+services: traffic-manager
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: traffic-manager
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: a915eb8aca8a547036a13f3cc2128d205e83fdf2
+ms.sourcegitcommit: c2835e48c1995264af6614fe74fe1594bae86245
+ms.openlocfilehash: 1dab11c9d6874bba16cc047cfc8b03c82e236a35
 
 ---
 #<a name="traffic-manager-documentation"></a>流量管理器文档
@@ -124,6 +135,6 @@ ms.openlocfilehash: a915eb8aca8a547036a13f3cc2128d205e83fdf2
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

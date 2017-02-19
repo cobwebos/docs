@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Azure HDInsight 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解 HDInsight 上的 Hadoop。 文档介绍了如何使用 Hadoop、Spark、HBase、R-Server 和其他技术来处理、分析大数据以及从中获得见解。"
+services: hdinsight
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: hdinsight
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: d78d12c6844e88da8b5d8b7cd99a38d6f4d36774
+ms.sourcegitcommit: 2d07e801ea3375e06c9f66db49219b6c79f97e61
+ms.openlocfilehash: bf303554aa47116cdfce074d87235901b5390769
 
 ---
+
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight 文档
 
 了解如何在 HDInsight 上使用云中的 Hadoop 来分析流数据或历史数据。 教程和其他文档介绍了如何使用 Hadoop 生态系统中的 Hadoop、Spark、HBase、R-Server、Storm 和其他技术来创建群集、处理与分析大数据，以及开发解决方案。
@@ -171,6 +183,6 @@ ms.openlocfilehash: d78d12c6844e88da8b5d8b7cd99a38d6f4d36774
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

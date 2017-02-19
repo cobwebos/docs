@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Azure 逻辑应用文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何开发逻辑应用，用于自动化及简化跨本地和云的业务工作流。 教程、模板和 API 参考。"
+services: logic-apps
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: logic-apps
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: abebff15a5385bfc3ef046923927bb74a6ee6ace
-ms.openlocfilehash: c19b7e4ecfa67f54f34fac11dc6d23a843e27232
+ms.sourcegitcommit: 2c45896d603913d21bebb5f5a157bb60ad9e73ac
+ms.openlocfilehash: f85fbd5c9cce81c5934abce25ccd343810bcc4dd
 
 ---
+
 # <a name="logic-apps-documentation"></a>逻辑应用文档
 
 了解如何开发逻辑应用，用于简化和集成云中的可缩放工作流。 教程、模板和 API 参考可帮助你设计及部署跨本地和云的自动化业务工作流。
@@ -150,6 +162,6 @@ ms.openlocfilehash: c19b7e4ecfa67f54f34fac11dc6d23a843e27232
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

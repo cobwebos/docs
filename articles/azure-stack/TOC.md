@@ -69,15 +69,18 @@
 ## [部署 Linux 虚拟机](azure-stack-linux.md)
 ## [管理更新](azure-stack-updates.md)
 ## [Azure Stack 开发](azure-stack-developer.md)
-## 部署 SQL 或 MySQL 资源提供程序
-### [将 MySQL 数据库用作 Azure Stack 上的 PaaS](azure-stack-mysql-resource-provider-deploy.md)
-### [在 Azure Stack 上部署 SQL Server 资源提供程序适配器](azure-stack-sql-resource-provider-deploy.md)
+## 提供 SQL 或 MySQL 作为 PaaS
+### [部署 MySQL 资源提供程序](azure-stack-mysql-resource-provider-deploy.md)
+### [部署 SQL 资源提供程序](azure-stack-sql-resource-provider-deploy.md)
 
-## 规划和部署应用服务
+## 提供应用服务作为 PaaS
 ### [Azure Stack 中的应用服务概述](azure-stack-app-service-overview.md)
 ### [准备工作](azure-stack-app-service-before-you-get-started.md)
+### [部署应用服务资源提供程序](azure-stack-app-service-deploy.md)
 ### [添加更多 Web 辅助角色](azure-stack-app-service-add-worker-roles.md)
-### [将应用服务资源提供程序添加到 Azure Stack](azure-stack-app-service-deploy.md)
+### [启用 FTP 发布](azure-stack-app-service-enable-ftp.md)
+### [配置部署源](azure-stack-app-service-configure-deployment-sources.md)
+
 
 # 故障排除
 ## [排查 Azure Stack 问题](azure-stack-troubleshooting.md)
@@ -88,6 +91,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

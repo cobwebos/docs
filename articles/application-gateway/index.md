@@ -1,13 +1,25 @@
 ---
+title: "Azure 应用程序网关文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何部署云应用程序传送控制器。 文档介绍了如何为 Web 前端设置应用程序级别的路由和负载均衡。"
+services: application-gateway
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: application-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: e81571dc2d0d52f8b04c7ff99a76d92c784c259e
+ms.sourcegitcommit: 50b30a64fab9a7c996040c5a0380975b11b5966f
+ms.openlocfilehash: 9d62ea6d75b48bbc84194635da792764871617e7
 
 ---
 #<a name="application-gateway-documentation"></a>应用程序网关文档
 
-Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)。  它使客户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关上来优化 Web 场生产率。  它是应用程序专用的虚拟设备，具有可伸缩性和高可用性，提供丰富的诊断和日志记录功能来提高可管理性。
+了解如何部署应用程序网关 - 服务形式的应用程序传送控制器 (ADC)。 教程、API 参考和其他文档介绍了如何设置应用程序级别的路由和负载均衡服务，以便构建高度可用的可缩放 Web 前端。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,18 +160,12 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
             </div>
         </div>
     </li>
-</ul>   
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载应用程序网关文档 </div>
-    </a>
-</div>
+</ul>    
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

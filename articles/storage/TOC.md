@@ -43,6 +43,14 @@
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
 ### [Python](storage-python-how-to-use-file-storage.md)
 
+## 磁盘存储 
+### [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
+### [使用 Azure CLI 2.0（预览版）创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+### [使用 PowerShell 将托管磁盘附加到 Windows VM](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
+### [将托管磁盘添加到 Linux VM](../virtual-machines/virtual-machines-linux-add-disk.md)
+### [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
+### [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+
 # 如何
 ## [创建存储帐户](storage-create-storage-account.md)
 ## 使用 Blob
@@ -62,13 +70,21 @@
 ### [概述](/rest/api/storageservices/fileservices/File-Service-Concepts)
 ### [对 Azure 文件进行故障排除](storage-troubleshoot-file-connection-problems.md)
 ### [示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
-## 使用虚拟机磁盘
+## 使用磁盘
+### [Windows VM 的磁盘和 VHD](storage-about-disks-and-vhds-windows.md)
+### [Linux VM 的磁盘和 VHD](storage-about-disks-and-vhds-linux.md)
+### [Azure 托管磁盘概述](storage-managed-disks-overview.md)
+### [将 Azure VM 迁移到 Azure 托管磁盘](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
+### [从 AWS 和其他平台迁移到托管磁盘](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+### [有关 Azure IaaS VM 磁盘的常见问题](storage-faq-for-disks.md)
 ### 高级存储
-#### [用于 VM 工作负荷的高性能存储](storage-premium-storage.md)
-#### [迁移到高级存储](storage-migration-to-premium-storage.md)
+#### [用于 VM 磁盘的高性能高级存储](storage-premium-storage.md)
 #### [高性能设计](storage-premium-storage-performance.md)
 ### 标准存储
-#### [通过递增快照备份 VM 磁盘](storage-incremental-snapshots.md)
+#### [高性价比标准存储以及非托管和托管 VM 磁盘](storage-standard-storage.md)
+### 使用非托管磁盘
+#### [迁移到高级存储](storage-migration-to-premium-storage.md)
+#### [使用递增快照备份非托管 VM 磁盘](storage-incremental-snapshots.md)
 ## 规划和设计
 ### [复制](storage-redundancy.md)
 ### [可伸缩性和性能目标](storage-scalability-targets.md)
@@ -205,6 +221,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

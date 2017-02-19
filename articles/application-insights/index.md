@@ -1,13 +1,25 @@
 ---
+title: "Azure Application Insights 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Application Insights（可扩展的应用程序性能管理服务）来检测、会诊和诊断 Web 应用和服务中的问题。"
+services: application-insights
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: application-insights
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 7f01669fe78aebfb17ebc6a33ae29d098b62868a
-ms.openlocfilehash: 8100f42cc97155431e4d3ba47f7946b546296700
+ms.sourcegitcommit: d22dec77ea0fde59a86799cf5f2d13c2c4d6dacd
+ms.openlocfilehash: 1f3fc2431bacd6852c6babc7ebbb07c6a3b74145
 
 ---
 # <a name="application-insights-documentation"></a>Application Insights 文档
 
-Application Insights 是面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它还可以与 devOps 流程集成，与其他各种工具建立连接。
+了解如何使用面向 Web 开发人员的可扩展应用程序性能管理服务 - Application Insights。 教程、API 参考和其他文档介绍了如何检测、会诊和诊断 Web 应用与服务中的问题。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -151,16 +163,10 @@ Application Insights 是面向 Web 开发人员的可扩展应用程序性能管
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-insights.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Application Insights 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

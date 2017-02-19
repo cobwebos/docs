@@ -1,20 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Linux 虚拟机文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用所选的 Linux 分发版创建虚拟机。 文档介绍了创建 VM 模板的不同方式。"
-title: "适用于 Linux 的 Azure 虚拟机文档、教程和 API 参考 | Microsoft 文档"
-services: virtual-machines-linux
+services: virtual-machines\linux
 author: carolz
 manager: carolz
+layout: LandingPage
 ms.assetid: 
-ms.service: virtual-machines-linux
+ms.service: virtual-machines\linux
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 9bb4fb611c4f936317460040c4fbeff1a01f2c5c
-ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
+ms.sourcegitcommit: 4736be260d3fa0ed7ec402959fd53604f55aceca
+ms.openlocfilehash: 8f0236c8ed237c473ee900feb68a3f86a6165106
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Linux 虚拟机文档
@@ -146,6 +146,6 @@ ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

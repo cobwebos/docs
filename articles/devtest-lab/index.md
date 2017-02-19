@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure 开发测试实验室文档 - 教程 | Microsoft 文档"
 description: "了解如何使用可重用项目快速创建应用程序测试环境。 教程、视频和其他资源演示了如何创建、管理和保护实验室。"
+services: devtest-lab
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: devtest-lab
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 6ac97ee4e1c20bcca92d2c4b2d4865e286a12ed3
-ms.openlocfilehash: 079976fbc7e482944916364507aeaacb27acbdcb
+ms.sourcegitcommit: 78ae030b07f8f96ab3e4e0cb506fa8495d16543c
+ms.openlocfilehash: 19536533ad795ceab7e6223a36575a774d0cfc27
 
 ---
 #<a name="devtest-labs-documentation"></a>开发测试实验室文档
@@ -103,18 +114,10 @@ ms.openlocfilehash: 079976fbc7e482944916364507aeaacb27acbdcb
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/devtest-lab.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载开发测试实验室文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

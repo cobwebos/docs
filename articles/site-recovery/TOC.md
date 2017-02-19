@@ -7,25 +7,28 @@
 ## [观看简介](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
 # 入门
-## [准备部署](site-recovery-best-practices.md)
+## [将 VMWare VM 复制到 Azure](site-recovery-vmware-to-azure.md)
+## [在多租户部署中将 VMware VM 复制到 Azure (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
+## [将 Hyper-V VM 复制到 Azure（包含 VMM）](site-recovery-vmm-to-azure.md)
+## [将 Hyper-V VM 复制到 Azure](site-recovery-hyper-v-site-to-azure.md)
+## [将 VMware VM 和物理服务器复制到辅助站点](site-recovery-vmware-to-vmware.md)
+## [将 Hyper-V VM 复制到辅助站点（包含 VMM）](site-recovery-vmm-to-vmm.md)
 
 # 如何
 ## 计划
-### [容量规划](site-recovery-capacity-planner.md)
-### [性能和规模测试结果](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md)
+### [部署先决条件](site-recovery-prereq.md)
 ### [网络基础结构注意事项](site-recovery-network-design.md)
-### [网络映射 (VMM)](site-recovery-network-mapping.md)
-### [本地站点之间的存储映射](site-recovery-storage-mapping.md)
-## 复制
-### [将 VMware VM 和物理服务器复制到 Azure](site-recovery-vmware-to-azure.md)
-### [将 VMware VM 和物理服务器复制到辅助站点](site-recovery-vmware-to-vmware.md)
-### [使用 CSP 程序将支持多租户的 VMware VM 复制到 Azure](site-recovery-multi-tenant-support-vmware-using-csp.md)
-### [Hyper-V VM 到 Azure（包含 VMM）](site-recovery-vmm-to-azure.md)
-### [Hyper-V VM 到 Azure（不包含 VMM）](site-recovery-hyper-v-site-to-azure.md)
-### [Hyper-V VM 到辅助站点](site-recovery-vmm-to-vmm.md)
-### [Hyper-V VM 到辅助站点（包含 SAN）](site-recovery-vmm-san.md)
-### [Hyper-V VM（包含单个 VMM 服务器）](site-recovery-single-vmm.md)
+### [使用 Site Recovery Capacity Planner](site-recovery-capacity-planner.md)
+### [规划容量以及缩放 VMware 在 Azure 中的复制](site-recovery-plan-capacity-vmware.md)
+## 配置
+### [设置源复制环境](site-recovery-set-up-vmware-to-azure.md)
+### [配置复制设置](site-recovery-setup-replication-settings-vmware.md)
+### [部署移动服务用于 VMware 复制](site-recovery-vmware-to-azure-install-mob-svc.md)
+#### [使用 System Center Configuration Manager 部署移动服务](site-recovery-install-mobility-service-using-sccm.md)
+#### [使用 Azure Automation DSC 部署移动服务](site-recovery-automate-mobility-service-install.md)
+### [删除服务器并禁用保护](site-recovery-manage-registration-and-protection.md)
 ## 迁移
+### [迁移到 Azure](site-recovery-migrate-to-azure.md)
 ### [在 Azure 区域之间进行迁移](site-recovery-migrate-azure-to-azure.md)
 ### [将 AWS Windows 实例迁移到 Azure](site-recovery-migrate-aws-to-azure.md)
 ## 工作负荷
@@ -38,14 +41,15 @@
 ### [SAP](site-recovery-workload.md#protect-sap)
 ### [其他工作负荷](site-recovery-workload.md#workload-summary)
 ## 自动复制
-### [Hyper-V VM（包含 VMM）](site-recovery-deploy-with-powershell.md)
-### [Hyper-V VM（不包含 VMM）](site-recovery-deploy-with-powershell-resource-manager.md)
-### [将自动化添加到恢复计划](site-recovery-runbook-automation.md)
-### [自动化移动服务部署](site-recovery-automate-mobility-service-install.md)
-## 管理
-### [删除服务器并禁用保护](site-recovery-manage-registration-and-protection.md)
-### [设置恢复计划](site-recovery-create-recovery-plans.md)
+### [将 Hyper-V 自动复制到 Azure（不包含 VMM）](site-recovery-deploy-with-powershell-resource-manager.md)
+### [将 Hyper-V 自动复制到 Azure（包含 VMM）](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+### [将 Hyper-V 自动复制到辅助站点（包含 VMM）](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
+## 故障转移和故障回复
 ### [Site Recovery 中的故障转移](site-recovery-failover.md)
+### [设置恢复计划](site-recovery-create-recovery-plans.md)
+#### [将 Azure Runbook 添加到恢复计划](site-recovery-runbook-automation.md)
+### [运行从 VMware 到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)
+### [在两个 VMM 站点之间运行测试故障转移](site-recovery-test-failover-vmm-to-vmm.md)
 ### [对 VMware VM 和物理服务器进行故障回复](site-recovery-failback-azure-to-vmware.md)
 ## [监视和故障排除](site-recovery-monitoring-and-troubleshooting.md)
 
@@ -65,6 +69,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

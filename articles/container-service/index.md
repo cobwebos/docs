@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure 容器服务文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用容器服务通过 DC/OS、Docker Swarm 或 Kubernetes 来部署和管理应用程序容器。 教程、API 参考和其他资源。"
+services: container-service
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: container-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 2cad92fb6f250b4c28a85bee55c3694966082f44
-ms.openlocfilehash: 134b8d76e92fdb40cb8c4bf39dd2922d47e2bbe9
+ms.sourcegitcommit: 8dd0b2fe35c7f6280e6c1032d788955c891668d2
+ms.openlocfilehash: b5e7c83af078678454e6fc036bff657de402cf73
 
 ---
 
@@ -83,6 +94,6 @@ ms.openlocfilehash: 134b8d76e92fdb40cb8c4bf39dd2922d47e2bbe9
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

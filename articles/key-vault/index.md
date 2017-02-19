@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Azure Key Vault 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用密钥保管库来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。"
+services: key-vault
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: key-vault
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 0c53b569e45569fd7a7c56142d66fbab8d8b0a05
+ms.sourcegitcommit: ea6717f8c5e04883d2feb83537c1c1f96bec2287
+ms.openlocfilehash: 70a89aad208ae71d5c0aab462b6078dafa8efcfc
 
 ---
+
 # <a name="key-vault-documentation"></a>密钥保管库文档
 
 了解如何使用 Azure 密钥保管库来保护及管理云应用程序与服务使用的加密密钥和机密。 教程、API 参考和其他文档介绍了如何创建及维护用于访问和加密资源与解决方案的密钥。
@@ -154,6 +166,6 @@ ms.openlocfilehash: 0c53b569e45569fd7a7c56142d66fbab8d8b0a05
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Data Lake Store 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何设置、管理和访问具有超高可伸缩性、与 Hadoop 兼容的 Data Lake 存储库，用于对任何大小、类型和引入速度的数据执行分析。"
+services: data-lake-store
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: data-lake-store
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: a33b0509d1280a33a1e5134217b56071256fec24
-ms.openlocfilehash: d5ff73f8c9303bff281b2a2bbf314c76072f7569
+ms.sourcegitcommit: dcc8f86fe5871d307bf304252e80e64a0084ef49
+ms.openlocfilehash: d7f56dd2658de2cc270f569b871ebf28ad610fd7
 
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store 文档
@@ -203,15 +214,9 @@ ms.openlocfilehash: d5ff73f8c9303bff281b2a2bbf314c76072f7569
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-lake-store.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Data Lake Store 文档 </div>
-    </a>
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

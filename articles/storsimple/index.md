@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure StorSimple 文档 - 教程 | Microsoft 文档"
 description: "了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。"
+services: storsimple
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: storsimple
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: c3523cfef54f6084326b913d548449f4a9b646a9
+ms.sourcegitcommit: 8236c1e4167e3b66edb1b410deb450d01c34d9f2
+ms.openlocfilehash: 9c083c08f73c5e2c8ed873f612c8695a9687a5a6
 
 ---
 #<a name="storsimple-documentation"></a>StorSimple 文档
@@ -142,6 +153,6 @@ ms.openlocfilehash: c3523cfef54f6084326b913d548449f4a9b646a9
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

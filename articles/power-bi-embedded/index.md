@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Power BI Embedded 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何在应用中嵌入 Power BI 数据可视化和交互式报表。 教程、API 参考和其他文档。"
+services: power-bi-embedded
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: power-bi-embedded
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: c18bbb0b1e40d03be35c7d6375bb7520f0e0d4e4
+ms.sourcegitcommit: 48f9fe41b94016e54a2ec622df9684b7dcd4dfed
+ms.openlocfilehash: c1e12dc71ce823425971beeb9db1cc5abd2aa12b
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded 文档
@@ -132,6 +143,6 @@ ms.openlocfilehash: c18bbb0b1e40d03be35c7d6375bb7520f0e0d4e4
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

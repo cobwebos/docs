@@ -1,24 +1,20 @@
 ---
-title: "缓存指南 | Microsoft 文档"
+title: "Azure 指南文档 - 教程 | Microsoft 文档"
 description: "Azure 最佳实践和指南"
-services: 
-documentationcenter: na
-author: bennage
-manager: marksou
-editor: 
-tags: 
-ms.assetid: de94c74a-fea7-4815-8484-553e421a7490
+services: guidance
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
 ms.service: guidance
-ms.devlang: na
-ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/17/2016
-ms.author: christb
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 5f3ced657cf3d6587a63789b3dd3ca41cd2856f0
-ms.openlocfilehash: 0061e1ff2ae2d6b8ed7b7c3bb60405e76d4cc91b
-
+ms.sourcegitcommit: f5ced8f436f4d1426e4d2b307fcfb6b644e94aaf
+ms.openlocfilehash: c05d311633b9c9aa5490e55baafe83376d0c8fbc
 
 ---
 # <a name="azure-guidance"></a>Azure 指南
@@ -157,6 +153,6 @@ Microsoft 模式和实践团队是 Azure 客户顾问团队的一部分。 我�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

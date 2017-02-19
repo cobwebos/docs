@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure 服务总线文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何设置消息传送，用于连接跨本地和云环境的应用程序与服务。  教程、视频、API 参考和其他资源。"
+services: service-bus
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: fe4c303bb0e944e5abb26f8baa394d0df71240a5
+ms.sourcegitcommit: 3e94e98bde67db2e136420ada2a7c625ad5a0307
+ms.openlocfilehash: ac803aaa0cf4cbf69fdca9764923eaaf2d29efc0
 
 ---
 #<a name="service-bus-documentation"></a>服务总线文档
@@ -239,6 +250,6 @@ ms.openlocfilehash: fe4c303bb0e944e5abb26f8baa394d0df71240a5
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

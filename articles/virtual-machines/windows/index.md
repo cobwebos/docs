@@ -1,21 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Windows 虚拟机文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何创建 Windows 虚拟机。 文档可帮助你在云中规划、部署和管理虚拟机计算环境。"
-title: "适用于 Windows 的 Azure 虚拟机文档、教程和 API 参考 | Microsoft 文档"
-services: virtual-machines
+services: virtual-machines\windows
 author: carolz
 manager: carolz
+layout: LandingPage
 ms.assetid: 
-ms.service: virtual-machines
+ms.service: virtual-machines\windows
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: c3b5f79fe9ee312b5f45eff460b43224b9c254fe
-ms.openlocfilehash: 927fb368a7d0e0c7c996a591dfe8536ea3509164
-
+ms.sourcegitcommit: 90d760207ee6b6e0d8c15ff597bf53512f071ef0
+ms.openlocfilehash: ace8475bd9a75eb92a3b5c084ee27b9813f13bfb
 
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 虚拟机文档
@@ -165,6 +164,6 @@ ms.openlocfilehash: 927fb368a7d0e0c7c996a591dfe8536ea3509164
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

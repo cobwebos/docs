@@ -1,12 +1,22 @@
 ---
-layout: LandingPage
+title: "Azure 监视和诊断文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 API 参考、最佳实践和其他资源。"
+services: monitoring-and-diagnostics
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: monitoring-and-diagnostics
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1db31bcf230b588954e9df00dd55a1b23c8d95cf
-ms.openlocfilehash: 89826ce2901b9b08ef9c9658abb8acd36e3d71fd
+ms.sourcegitcommit: 88bfad219ee0564552ee80da5dc944b7e53320db
+ms.openlocfilehash: aa0837d82f5e938440096cd6d12d80bc42a07528
 
 ---
-
 # <a name="monitoring-and-diagnostics-documentation"></a>监视和诊断文档
 
 了解如何使用 Azure 监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 教程、API 参考、最佳实践和其他文档可帮助你了解如何使用监视和诊断，以及如何规划和部署可缩放的可靠解决方案。
@@ -164,6 +174,6 @@ ms.openlocfilehash: 89826ce2901b9b08ef9c9658abb8acd36e3d71fd
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
