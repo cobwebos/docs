@@ -1,5 +1,5 @@
 ---
-title: "在 Log Analytics 中配置代理和防火墙设置 | Microsoft Docs"
+title: "在 Azure Log Analytics 中配置代理和防火墙设置 | Microsoft 文档"
 description: "当代理或 OMS 服务需要使用特定端口时，配置代理和防火墙设置。"
 services: log-analytics
 documentationcenter: 
@@ -12,18 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 02/10/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: d5d86a0f7177b9a1e96e50a3e3e7d1f5800974bf
-ms.openlocfilehash: 427d5d7ed43f19611e99705dab33a0c80a8bf9f9
+ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
+ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
 
 
 ---
 # <a name="configure-proxy-and-firewall-settings-in-log-analytics"></a>在 Log Analytics 中配置代理和防火墙设置
-使用 Operations Manager 及其代理时和使用直接连接到服务器的 Microsoft Monitoring Agent 时，在 OMS 中为 Log Analytics 配置代理和防火墙设置需采取不同操作。 查看以下各节，了解所用代理类型。
+为 Log Analytics 配置代理和防火墙设置所需的操作因用户所使用的代理类型的不同而不同。 查看以下各节，了解所用代理类型。
 
-## <a name="configure-proxy-and-firewall-settings-with-the-microsoft-monitoring-agent"></a>使用 Microsoft Monitoring Agent 配置代理和防火墙设置
+## <a name="settings-for-the-oms-gateway"></a>OMS 网关的设置
+
+如果代理无法访问 Internet，它们会改用你自己的网络资源将数据发送到 OMS 网关。 网关可以收集数据，然后代表这些设备将数据发送到 OMS 服务。
+
+使用完全限定域名和自定义端口号配置与 OMS 网关通信的代理。
+
+OMS 网关需要 Internet 访问权限。 将代理服务器或防火墙设置用于 OMS 网关，这些相同的设置你也会用于自己拥有的那类代理。 有关 OMS 网关的详细信息，请参阅[使用 OMS 网关将计算机和设备连接到 OMS](log-analytics-oms-gateway.md)。
+
+## <a name="configure-settings-with-the-microsoft-monitoring-agent"></a>使用 Microsoft Monitoring Agent 配置设置
 要使 Microsoft Monitoring Agent 连接到 OMS 服务并向其注册，它必须能够访问你的域和 URL 的端口号。 如果使用代理服务器在代理与 OMS 服务之间通信，则需要确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问 OMS。 下列各表列出了 OMS 需要的端口。
 
 | **代理资源** | **端口** | **绕过 HTTPS 检查** |
@@ -71,7 +79,7 @@ ms.openlocfilehash: 427d5d7ed43f19611e99705dab33a0c80a8bf9f9
     $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetNetworkCredential().password)
 
 
-## <a name="configure-proxy-and-firewall-settings-with-operations-manager"></a>使用 Operations Manager 配置代理和防火墙设置
+## <a name="configure-settings-with-operations-manager"></a>使用 Operations Manager 配置设置
 要使 Operations Manager 管理组连接到 OMS 服务并向其注册，它必须能够访问你的域和 URL 的端口号。 如果使用代理服务器在 Operations Manager 管理服务器与 OMS 服务之间通信，则需要确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则需要将防火墙配置为允许访问 OMS。 代理服务器后即使没有 Operations Manager 管理服务器，也可能有其代理。 在这种情况下，应以与代理相同的方式配置代理服务器，以启用和允许将安全和日志管理解决方案数据发送到 OMS Web 服务。
 
 为了使 Operations Manager 代理能与 OMS 服务进行通信，Operations Manager 基础结构（包括代理）应具有正确的代理设置和版本。 在 Operations Manager 控制台中指定代理的代理设置。 应为以下版本之一：
@@ -180,6 +188,6 @@ ms.openlocfilehash: 427d5d7ed43f19611e99705dab33a0c80a8bf9f9
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

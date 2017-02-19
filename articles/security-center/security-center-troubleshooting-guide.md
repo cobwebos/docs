@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2016
+ms.date: 02/14/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9ed6eebd8a0c11158f9812edfc15b29a70ccc905
+ms.sourcegitcommit: d8956072460ba8629bb852e7b5d3e5155c3711e3
+ms.openlocfilehash: fe2d32e3c20c3e91954a6d00294ec018e8da0f2b
 
 
 ---
@@ -51,8 +51,16 @@ Azure 安全监视扩展将扫描各种安全相关的配置，并从虚拟机�
 
 > [!NOTE]
 > 如果 Azure 安全中心代理产生错误行为，将需要重新启动目标 VM，因为没有命令来停止和启动代理。
-> 
-> 
+
+
+如果仍有数据收集方面的问题，可按以下步骤卸载代理：
+
+1. 在 **Azure 门户**中选择存在数据收集问题的虚拟机，然后单击“扩展”。
+2. 右键单击“Microsoft.Azure.Security.Monitoring”，然后选择单击“卸载”。
+
+![删除代理](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig4.png)
+
+Azure 安全监视扩展应该会在数分钟内自行重新安装。
 
 ## <a name="troubleshooting-monitoring-agent-installation-in-linux"></a>Linux 中的监视代理安装故障排除
 在 Linux 系统中进行 VM 代理安装故障排除时，应确保该扩展已下载到 /var/lib/waagent/。 可以运行以下命令验证其是否已安装：
@@ -68,8 +76,12 @@ Azure 安全监视扩展将扫描各种安全相关的配置，并从虚拟机�
 
 `netstat -plantu | grep 29130`
 
+## <a name="troubleshooting-problems-loading-the-dashboard"></a>排查加载仪表板的问题
+
+如果在加载“安全中心”仪表板时遇到问题，请确保将订阅注册到安全中心的用户（即第一个通过订阅打开安全中心的用户）以及需要启用数据收集功能的用户为订阅的*所有者* 或*参与者*。 从该时刻开始，在订阅上为*读者* 的 also user 即可查看 dashboard/alerts/recommendation/policy。
+
 ## <a name="contacting-microsoft-support"></a>请联系 Microsoft 支持人员
-可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)中查找记录的其他问题。 但是，如果需要进一步进行故障排除，可以使用 Azure 门户打开新的支持请求，如下所示： 
+可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)中查找记录的其他问题。 但是，如果需要进一步进行故障排除，可以使用 **Azure 门户**打开新的支持请求，如下所示： 
 
 ![Microsoft 支持部门](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -86,6 +98,6 @@ Azure 安全监视扩展将扫描各种安全相关的配置，并从虚拟机�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

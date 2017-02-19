@@ -1,10 +1,10 @@
 ---
-title: "ExpressRoute 位置 | Microsoft Docs"
-description: "本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。"
+title: "连接服务提供商及其位置：Azure ExpressRoute | Microsoft 文档"
+description: "本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。 按连接服务提供商排序。"
 services: expressroute
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: c878513a-d594-42ad-8b0e-403efd0c4b25
 ms.service: expressroute
@@ -12,15 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/18/2017
+ms.date: 02/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: dcee5436a7bb377f37d6db2701c2e5df2e41944f
-ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
+ms.sourcegitcommit: 0afada6b5ade6c1f246b99e924a972cd7d34fdfa
+ms.openlocfilehash: b17defc732be9f1fbdb816727d5602eb037b7e06
 
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
+
+> [!div class="op_single_selector"]
+> * [按提供商列出的位置](expressroute-locations.md)
+> * [按位置列出的提供商](expressroute-locations-providers.md)
+
+
 本文中的表格提供有关 ExpressRoute 连接提供商、ExpressRoute 地理覆盖范围、通过 ExpressRoute 支持的 Microsoft 云服务以及 ExpressRoute 系统集成商 (SI) 的信息。
 
 ## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 连接服务提供商
@@ -35,32 +41,30 @@ ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
-| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、拉斯维加斯、洛杉矶、纽约、西雅图、硅谷、华盛顿特区、蒙特利尔+、魁北克市+、多伦多 |
+| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、拉斯维加斯、洛杉矶、纽约、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
 | **南美洲** |巴西南部 |圣保罗 |
 | **欧洲** |北欧、西欧、英国西部、英国南部 |阿姆斯特丹、都柏林、伦敦、纽波特（威尔士）、巴黎 |
 | **亚洲** |东亚、东南亚 |中国香港特别行政区、新加坡 |
 | **日本** |日本西部、日本东部 |大坂、东京 |
 | **澳大利亚** |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 |
 | **印度** |印度西部、印度中部、印度南部 |金奈、孟买 |
-| **韩国** | 韩国中部、韩国南部 | 釜山、首尔 |
+| **韩国** |韩国中部、韩国南部 |釜山、首尔 |
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的区域和地缘政治边界
 下表提供了国家/地区云的区域和地缘政治边界的信息。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- | --- |
-| **美国政府云** |美国爱荷华州政府、美国弗吉尼亚州政府、美国 DoD 中部+、美国 DoD 东部+  |芝加哥、达拉斯、纽约、硅谷+、华盛顿特区 |
+| **美国政府云** |美国爱荷华州政府、美国弗吉尼亚州政府、美国 DoD 中部、美国 DoD 东部  |芝加哥、达拉斯、纽约、硅谷、华盛顿特区 |
 | **中国** |中国北部、中国东部 |北京、上海 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 
 标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 你需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
 
 ## <a name="a-namelocationsaconnectivity-provider-locations"></a><a name="locations"></a>连接服务提供商位置
-> [!div class="op_single_selector"]
-> * [按提供商列出的位置](expressroute-locations.md#locations)
-> * [按位置列出的提供商](expressroute-locations-providers.md#locations)
->
->
+
+下表显示按服务提供商列出的位置。 若要按位置查看可用的提供商，请参阅[按位置列出的服务提供商](expressroute-locations-providers.md#locations)。
+
 
 ### <a name="production-azure"></a>生产 Azure
 | **服务提供商** | **Microsoft Azure** | **Office 365 和 CRM Online** | **位置** |
@@ -79,21 +83,25 @@ ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支持 |支持 |洛杉矶、纽约 |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、中国香港特别行政区、伦敦、洛杉矶、墨尔本、纽约、大阪、巴黎+、圣保罗、西雅图、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
 | **euNetworks** |支持 |支持 |阿姆斯特丹 |
+| **Global Cloud Exchange (GCX)** | 即将支持 | 即将支持 | 金奈 |
 | **GÉANT** |支持 |支持 |阿姆斯特丹 |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |支持 |支持 |大坂、东京 |
 | **[InterCloud](https://www.intercloud.com/)** |支持 |支持 |阿姆斯特丹、伦敦、新加坡、华盛顿特区 |
 | **Internet 解决方案 - 云连接** |支持 |支持 |阿姆斯特丹、伦敦 |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、伦敦、巴黎 |
 | **Jisc** |支持 |支持 |伦敦 |
+| **KINX** |支持 |支持 |首尔 |
 | **[KPN](http://www.kpn.com/cloudconnect)** | 支持 | 支持 | 阿姆斯特丹 | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、拉斯维加斯+、伦敦、西雅图、硅谷、新加坡、华盛顿特区 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |达拉斯、中国香港特别行政区、拉斯维加斯、洛杉矶、墨尔本、纽约、西雅图、新加坡、悉尼、多伦多、华盛顿特区 |
+| **LG CNS** |即将支持 |即将支持 |釜山+ |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |达拉斯、中国香港特别行政区、拉斯维加斯、洛杉矶、墨尔本、纽约、魁北克市、西雅图、新加坡、悉尼、多伦多、华盛顿特区 |
 | **MTN** |支持 |支持 |伦敦 |
 | **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
 | **NEXTDC** |支持 |支持 |墨尔本、悉尼 |
-| **NTT Communications** |支持 |支持 |伦敦、洛杉矶、大阪、新加坡、东京、华盛顿特区 |
+| **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |伦敦、洛杉矶、大阪、新加坡、东京、华盛顿特区 |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |支持 |支持 |阿姆斯特丹、中国香港特别行政区、伦敦、硅谷、新加坡、悉尼、华盛顿特区 |
 | **PCCW Global Limited** |支持 |支持 |香港 |
+| **Sejong Telecom** |支持 |支持 |釜山、首尔 |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |支持 |支持 |金奈 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |支持 |支持 |新加坡 |
 | **Softbank** |支持 |支持 |大坂、东京 |
@@ -114,7 +122,7 @@ ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
 | **服务提供商** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |芝加哥、华盛顿特区 |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |芝加哥、达拉斯、纽约、硅谷+、华盛顿特区 |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |芝加哥、达拉斯、纽约、硅谷、华盛顿特区 |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |芝加哥、纽约+、华盛顿特区 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 | 支持 | 达拉斯 |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |支持 |支持 |芝加哥、达拉斯、纽约、华盛顿特区 |
@@ -133,7 +141,7 @@ ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |不支持 |法兰克福 |
 | **e-shelter** |支持 |不支持 |柏林 |
 | **Interxion** |支持 |不支持 |法兰克福 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持  | 不支持 | 柏林+ |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持  | 不支持 | 柏林 |
 
 ## <a name="a-namenonpartnersaconnectivity-through-service-providers-not-listed"></a><a name="nonpartners"></a>通过未列出的服务提供商建立连接
 如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
@@ -156,6 +164,8 @@ ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
 | **[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |新加坡 |
 | **[Arteria Networks Corporation](https://arteria-net.com/business/service/cloud_access/sca/)** |Equinix |东京 |
 | **[Alaska Communications](http://www.alaskacommunications.com/For-Your-Business/Direct-Cloud-Service)** |Equinix |西雅图 |
+| **[Cogeco Peer 1](https://www.cogecopeer1.com/en/)**| Equinix | 蒙特利尔、多伦多 |
+| **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | 达拉斯
 | **[Eurofiber](https://eurofiber.nl/microsoft-azure/)** | Equinix | 阿姆斯特丹 |
 | **[Exponential E](http://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | 伦敦 |
 | **[HSO](http://www.hso.co.uk/products/cloud-direct)** |Equinix | 伦敦、斯劳 |
@@ -178,7 +188,7 @@ ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
 | **[Avanade Inc.](http://www.avanade.com/)** | 亚洲、欧洲、北美、南美 |
 | **[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)** | 欧洲 |
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | 北美 |
-| **[IT Consultancy](http://itconsult.com.au/microsoft-expressroute)** | 澳大利亚 |
+| **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | 澳大利亚 |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | 欧洲（德国） |
 | **[Nelite](http://nelite.com/)** | 欧洲 |
 | **[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | 亚洲 |
@@ -195,6 +205,6 @@ ms.openlocfilehash: e7a511efdf89d299ba309b9a812092411a55c08d
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

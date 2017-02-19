@@ -40,6 +40,6 @@ sql-database-service-tiers.md
 
 \* 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

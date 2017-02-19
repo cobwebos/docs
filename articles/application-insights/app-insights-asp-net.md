@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dc95c922b71d18cf791ea98f4ab1a02d2bac2c3b
-ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
+ms.sourcegitcommit: 919f67a422faad2ba4c19e1f11f8e873098e8bd1
+ms.openlocfilehash: 9c27cfb674a7743c7cfe47b35b263da48c9c564e
 
 
 ---
@@ -55,7 +55,7 @@ ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
 
 ## <a name="3-see-your-telemetry"></a>3.查看遥测...
 ### <a name="-in-visual-studio"></a>...在 Visual Studio 中
-在 Visual Studio 中打开“Application Insights”窗口：单击“Application Insights”按钮，或在解决方案资源管理器中右键单击项目：
+在 Visual Studio 中打开“Application Insights”窗口：单击“Application Insights”按钮，或在解决方案资源管理器中右键单击项目，选择 `Application Insights`，然后单击 `Search Live Telemetry`：
 
 ![在 Visual Studio 中，调试期间会显示“Application Insights”按钮。](./media/app-insights-asp-net/55.png)
 
@@ -84,7 +84,7 @@ ms.openlocfilehash: 5103c28047e6d5e7be5f4f3b7933196de7045eeb
 
 ### <a name="more-detail-in-the-portal"></a>门户中的更多详细信息
 
-* [**实时指标流**](app-insights-metrics-explorer.md#live-metrics-stream)近实时显示遥测。
+* [**实时指标流**](app-insights-live-stream.md)近实时显示遥测。
 
     ![在“概览”边栏选项卡中单击“实时流”](./media/app-insights-asp-net/livestream.png)
 
@@ -134,17 +134,25 @@ Application Insights 从应用将遥测发送到 Application Insights 门户（�
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本，并在升级后将更改合并到新版本中。
 
 ## <a name="add-more-telemetry"></a>添加更多遥测
-### <a name="web-pages-and-single-page-apps"></a>网页和单页应用
-1. [将 JavaScript 代码片段添加到网页](app-insights-javascript.md)可用以下相关数据点亮浏览器和使用情况边栏选项卡：页面视图、加载时间、浏览器异常、AJAX 调用性能、用户和会话计数。
-2. [为自定义事件编写代码](app-insights-api-custom-events-metrics.md)可对用户操作进行计数、计时或度量。
-
 ### <a name="dependencies-exceptions-and-performance-counters"></a>依赖项、异常和性能计数器
-在每个服务器计算机上[安装状态监视器](app-insights-monitor-performance-live-website-now.md)，可获取有关应用的其他遥测数据。 以下是你获得的内容：
+
+在每个服务器计算机上[安装状态监视器](http://go.microsoft.com/fwlink/?LinkId=506648)，可获取有关 Web 应用的其他遥测数据。
+
+如果已安装，无需重新执行任何其他操作。 
+
+用户可能已使用状态监视器开始在运行时监视应用。 
+
+在生成时 SDK 的基础上使用状态监视器，可以获得更完整的遥测数据集，其中包括：
 
 * [性能计数器](app-insights-performance-counters.md) - 
   CPU、内存、磁盘及其他与应用相关的性能计数器。 
 * [异常](app-insights-asp-net-exceptions.md) - 有关一些异常的更详细遥测数据。
-* [依赖项](app-insights-asp-net-dependencies.md) - 调用 REST API 或 SQL 服务。 了解外部组件的响应速度慢是否会导致应用出现性能问题。 （如果应用在 .NET 4.6 上运行，则不需要状态监视器，即可获取这些遥测数据。）
+* [依赖项](app-insights-asp-net-dependencies.md) - 包括返回值。
+
+### <a name="web-pages-and-single-page-apps"></a>网页和单页应用
+1. [将 JavaScript 代码片段添加到网页](app-insights-javascript.md)可用以下相关数据点亮浏览器和使用情况边栏选项卡：页面视图、加载时间、浏览器异常、AJAX 调用性能、用户和会话计数。
+2. [为自定义事件编写代码](app-insights-api-custom-events-metrics.md)可对用户操作进行计数、计时或度量。
+
 
 ### <a name="diagnostic-code"></a>诊断代码
 遇到了问题？ 如果要在应用中插入代码以帮助诊断，可以使用几个选项：
@@ -191,11 +199,10 @@ Application Insights 从应用将遥测发送到 Application Insights 门户（�
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](app-insights-visual-studio.md)**<br/>使用遥测调试、诊断搜索、钻取代码。 |
 | **[使用 Application Insights 门户](app-insights-dashboards.md)**<br/>仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测导出。 |
-| **[添加更多数据](app-insights-asp-net-more.md)**<br/>监视使用情况、可用性、依赖项、异常。 集成来自记录框架的跟踪。 编写自定义遥测。 |
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

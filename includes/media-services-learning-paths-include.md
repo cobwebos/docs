@@ -1,10 +1,9 @@
-你可以在此处查看 AMS 学习路径：
+可以在此处查看 Azure 媒体服务学习路径：
 
-* [AMS 实时流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [AMS 按需流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+* [媒体服务实时流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+* [媒体服务按需流式处理工作流](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

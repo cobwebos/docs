@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics 入门 | Microsoft Docs"
-description: "可在几分钟内启动并运行 Log Analytics。"
+title: "Azure Log Analytics 工作区入门 | Microsoft 文档"
+description: "几分钟即可在 Log Analytics 中启动并运行工作区。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,140 +12,147 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 49e624dd9bfc534fdbae25fd0c8646be36851635
-ms.openlocfilehash: 4ab71b6ee09883abd4d095f2b1788cf69d44a219
+ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
+ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
 
 
 ---
-# <a name="get-started-with-log-analytics"></a>Log Analytics 入门
-几分钟内即可在 Microsoft Operations Management Suite (OMS) 中启动并运行 Log Analytics。 可通过两种方法创建 OMS 工作区（与帐户类似）：
+# <a name="get-started-with-a-log-analytics-workspace"></a>Log Analytics 工作区入门
+用户可以快速启动并运行 Azure Log Analytics，以便评估从 IT 基础结构中收集的操作智能。 阅读本文以后，即可轻松浏览、分析和操作*免费* 收集的数据。
 
-* Microsoft Operations Management Suite 网站
-* Microsoft Azure 订阅
+本文为 Log Analytics 简介，以简易教程的方式指导用户在开始使用服务之前完成 Azure 中的最小型部署。 用于存储 Azure 中的管理数据的逻辑容器称为工作区。 用户在查看此信息并完成自己的评估以后，可以删除评估工作区。 本文为教程，因此不讨论业务需求、规划或体系结构指南方面的问题。
 
-可以通过 OMS 网站创建免费 OMS 工作区。 还可使用 Microsoft Azure 订阅创建免费 Log Analytics 工作区。 这两种创建工作区的方式是等效的。 免费工作区每天只能向 OMS 服务发送 500 MB 数据。 所有工作区都需要 Azure 订阅，因此还可使用订阅来访问其他 Azure 服务。 无论使用哪种方法创建工作区，都通过 Microsoft 帐户或组织帐户创建工作区。
+>[!NOTE]
+>如果你使用 Microsoft Azure 政府版云，可改用 [Azure 政府版监视 + 管理文档](https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)。
 
-有关过程概述如下：
+下面快速介绍入门过程：
 
-![载入关系图](./media/log-analytics-get-started/oms-onboard-diagram.png)
+![过程示意图](./media/log-analytics-get-started/onboard-oms.png)
 
-## <a name="log-analytics-prerequisites-and-deployment-considerations"></a>Log Analytics先决条件和部署注意事项
-* 需要付费的 Microsoft Azure 订阅才能使用完整的 Log Analytics。 如果不具有 Azure 订阅，可以先创建一个[免费帐户](https://azure.microsoft.com/free/)，这样就可以访问任何 Azure 服务（期限为 30 天）。 也可在 [Operations Management Suite](http://microsoft.com/oms) 网站创建免费 OMS 帐户。
-* 需要创建工作区
-* 要从中收集数据的每台 Windows 计算机都必须运行 Windows Server 2008 SP1 或更高版本
-* [防火墙](log-analytics-proxy-firewall.md)可访问 OMS Web 服务的地址
-* 确定计算机可直接访问 Internet。 如果不能，则需通过网关服务器访问 OMS Web 服务站点。 所有访问都通过 HTTPS 进行。 计算机无法访问 Internet 时，可设置[OMS 网关](log-analytics-oms-gateway.md)服务器将流量从服务器转发到 OMS。
-* 如果使用 Operations Manager，则 Log Analytics 支持 Operations Manager 2012 SP1 UR6 和更高版本，以及 Operations Manager 2012 R2 UR2 和更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。 确定如何与 OMS 集成。
-* 确定用于将数据发送到 OMS 的技术和服务器。 例如域控制器、SQL Server 等。
-* 向 OMS 和 Azure 中的用户授予权限。
-* 如果担心数据使用，请单独部署每个解决方案，并在添加其他解决方案前测试性能影响。
-* 将解决方案和功能添加到 Log Analytics 后，查看数据使用情况和性能。 包括事件收集、日志收集、性能数据收集等。最好从最小收集开始，直到识别到数据使用或性能影响。
-* 验证未同时通过 Operations Manager 管理 Windows 代理（否则将导致数据重复）。 这同样适用于已启用 Azure 诊断的基于 Azure 的代理。
-* 安装代理后，验证代理正常工作。 如果不正常，请检查以确保未使用组策略禁用加密 API：下一代 (CNG) 密钥隔离。
-* 某些 Log Analytics 解决方案还有其他要求
+## <a name="1-create-an-azure-account-and-sign-in"></a>1 创建 Azure 帐户并登录
 
-## <a name="sign-up-in-3-steps-using-oms"></a>使用 OMS 3 步完成注册
-1. 转到 [Operations Management Suite](http://microsoft.com/oms) 网站。 使用 Microsoft 帐户（如 Outlook.com）或公司或教育机构提供的组织帐户登录，以使用 Office 365 或其他 Microsoft 服务。
-2. 提供唯一工作区名称。 工作区是存储管理数据的逻辑容器。 可使用工作区对组织中不同团队的数据进行划分，因为数据专用于其工作区。 指定要用于存储数据的电子邮件地址和区域。  
-    ![创建工作区并链接订阅](./media/log-analytics-get-started/oms-onboard-create-workspace-link01.png)
-3. 接下来，创建新的免费 Azure 订阅，或链接到现有 Azure 订阅。  
-   ![创建工作区并链接订阅](./media/log-analytics-get-started/oms-onboard-create-workspace-link02.png)
+如果还没有 Azure 帐户，需先创建一个，然后才能使用 Log Analytics。 可以先创建一个[免费帐户](https://azure.microsoft.com/free/)，这样就可以访问任何 Azure 服务（期限为 30 天）。
 
-现在即可开始使用 Operations Management Suite 门户。
+### <a name="to-create-a-free-account-and-sign-in"></a>创建免费帐户并登录
+1. 按[创建免费 Azure 帐户](https://azure.microsoft.com/free/)中的指示操作。
+2. 转到 [Azure 门户](https://portal.azure.com)并登录。
 
-有关通过 Operations Management Suite 设置工作区并将现有 Azure 帐户链接到所创建的工作区的详细信息，请参阅[管理工作区](log-analytics-manage-access.md)。
+## <a name="2-create-a-workspace"></a>2 创建工作区
 
-## <a name="sign-up-quickly-using-microsoft-azure"></a>使用 Microsoft Azure 快速注册
-1. 转到 [Azure 门户](https://portal.azure.com)并登录，浏览服务列表，然后选择“Log Analytics”。  
-    ![Azure 门户](./media/log-analytics-get-started/oms-onboard-azure-portal.png)
-2. 单击“添加”，然后为以下各项选择选项：
-   * **OMS 工作区**名称
+下一步是创建工作区。
+
+1. 在 Azure 门户的应用商店的服务列表中，搜索“Log Analytics”，然后选择“Log Analytics”。  
+    ![Azure 门户](./media/log-analytics-get-started/log-analytics-portal.png)
+2. 单击“创建”，然后为以下各项选择选项：
+   * **OMS 工作区** - 键入工作区的名称。
    * **订阅** -若有多个订阅，请选择要与新工作区相关联的订阅。
    * **资源组**
    * **位置**
    * **定价层**  
        ![快速创建](./media/log-analytics-get-started/oms-onboard-quick-create.png)
-3. 单击“确定”，将看到工作区列表。
-4. 选择工作区以在 Azure 门户中查看其详细信息。       
+3. 单击“确定”查看工作区列表。
+4. 选择工作区，在 Azure 门户中查看其详细信息。       
     ![工作区详细信息](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
-5. 单击“OMS 门户”链接，打开包含新工作区的 Operations Management Suite 网站。
 
-现在即可开始使用 Operations Management Suite 门户。
+## <a name="3-add-solutions-and-solution-offerings"></a>3 添加解决方案和解决方案产品/服务
 
-有关通过 Azure 订阅的 Operations Management Suite 设置工作区并链接所创建的现有工作区的详细信息，请参阅[管理对 Log Analytics 的访问](log-analytics-manage-access.md)。
+接下来，添加管理解决方案和解决方案产品/服务。 管理解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。 一种解决方案产品/服务是管理解决方案捆绑包。
 
-## <a name="get-started-with-the-operations-management-suite-portal"></a>开始使用 Operations Management Suite 门户
-若要选择解决方案并连接要管理的服务器，请单击“设置”磁贴，然后按照本节中的步骤进行操作。  
+向工作区添加解决方案以后，Log Analytics 就可以从使用代理连接到工作区的计算机收集各种数据。 我们稍后介绍载入代理。
 
-![开始使用](./media/log-analytics-get-started/oms-onboard-get-started.png)  
+### <a name="to-add-solutions-and-solution-offerings"></a>添加解决方案和解决方案产品/服务
 
-1. **添加解决方案** -查看已安装的解决方案。  
-    ![解决方案](./media/log-analytics-get-started/oms-onboard-solutions.png)  
-    单击“访问库”添加更多解决方案。  
-    ![解决方案](./media/log-analytics-get-started/oms-onboard-solutions02.png)  
-    选择解决方案，然后单击“添加”。
-2. **连接源** - 选择要如何连接服务器环境以收集数据：
+1. 在 Azure 门户中单击“新建”，在“搜索应用商店”框中键入“活动 Log Analytics”，然后按 Enter。
+2. 在“全部”边栏选项卡中，选择“活动 Log Analytics”，然后单击“创建”。  
+    ![活动 Log Analytics](./media/log-analytics-get-started/activity-log-analytics.png)  
+3. 在*管理解决方案名称*边栏选项卡中，选择要与该管理解决方案相关联的工作区。
+4. 单击“创建” 。  
+    ![解决方案工作区](./media/log-analytics-get-started/solution-workspace.png)  
+5. 重复步骤 1 - 4，以便添加：
+    - **安全性与符合性**服务产品，包含反恶意软件评估以及安全和审核解决方案。
+    - **自动化与控制**服务产品，包含自动化混合辅助角色、更改跟踪以及系统更新评估（也称“更新管理”）解决方案。 添加解决方案产品/服务时，必须创建自动化帐户。  
+        ![自动化帐户](./media/log-analytics-get-started/automation-account.png)  
+6. 可以查看已添加到工作区的管理解决方案，只需导航到“Log Analytics” > “订阅” > ***工作区名称*** > “概览”即可。 将会显示已添加管理解决方案的磁贴。  
+    >[!NOTE]
+    >我们还没有将任何代理连接到工作区，因此用户看不到所添加解决方案的任何数据。  
 
-   * 通过安装代理，直接连接任意 Windows Server 或客户端。
-   * 通过适用于 Linux 的 OMS 代理连接 Linux 服务器。
-   * 使用配置了 Windows 或 Linux Azure 诊断 VM 扩展的 Azure 存储帐户。
-   * 使用 System Center Operations Manager 附加管理组或整个 Operations Manager 部署。
-   * 允许 Windows 遥测使用升级分析。
-       ![连接的源](./media/log-analytics-get-started/oms-onboard-data-sources.png)    
-3. **收集数据** 配置至少一个数据源，以将数据填充到工作区。 完成后，单击“保存”。    
+    ![不包含数据的解决方案磁贴](./media/log-analytics-get-started/solutions-no-data.png)
 
-    ![收集数据](./media/log-analytics-get-started/oms-onboard-logs.png)    
+## <a name="4-create-a-vm-and-onboard-an-agent"></a>4 创建 VM 并载入代理
 
-## <a name="optionally-connect-windows-computers-by-installing-an-agent"></a>或者通过安装代理连接 Windows 计算机
-下面的示例演示如何安装 Windows 代理。
+接下来，在 Azure 中创建简单的虚拟机。 创建 VM 后，载入 OMS 代理将其启用。 启用代理之后，即可从 VM 开始收集数据并将数据发送到 Log Analytics。
 
-1. 依次单击“设置”磁贴和“连接的源”选项卡，再单击要添加的源类型的选项卡，然后下载代理或了解如何启用代理。 例如，单击“下载 Windows 代理(64 位)”。 对于 Windows 代理，只能在 Windows Server 2008 SP 1 或更高版本，或者 Windows 7 SP1 或更高版本上安装代理。
-2. 在一个或多个服务器上安装代理。 可以逐个安装代理，或使用自动化程度较高的[自定义脚本](log-analytics-windows-agents.md)方法，还可使用现有的软件分发解决方案。
-3. 同意许可协议并选择安装文件夹后，选择“将代理连接到 Azure Log Analytics (OMS)”。   
-    ![代理安装](./media/log-analytics-get-started/oms-onboard-agent.png)
-4. 在下一页上，将提示你提供工作区 ID 和工作区密钥。 工作区 ID 和密钥显示在下载代理文件的屏幕上。  
-    ![代理密钥](./media/log-analytics-get-started/oms-onboard-mma-keys.png)  
+### <a name="to-create-a-virtual-machine"></a>创建虚拟机
 
-    ![附加服务器](./media/log-analytics-get-started/oms-onboard-key.png)
-5. 安装期间，可单击“高级”以根据需要设置代理服务器和提供身份验证信息。 单击“下一步”按钮，返回到“工作区信息”屏幕。
-6. 单击“下一步”验证工作区 ID 和密钥。 如果发现错误，可以单击“返回”进行更正。 验证工作区 ID 和密钥后，单击“安装”即完成代理安装。
-7. 在控制面板中，单击“Microsoft Monitoring Agent”>“Azure Log Analytics (OMS)”选项卡。 代理与 Operations Management Suite 服务通信时，将显示绿色勾号。 最初，这需要大约 5-10 分钟。
+- 按照[在 Azure 门户中创建首台 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)中的指示进行操作，启动新的虚拟机。
 
-> [!NOTE]
-> 直接连接到 Operations Management Suite 的服务器当前不支持容量管理和配置评估解决方案。
+### <a name="connect-the-virtual-machine-to-log-analytics"></a>将虚拟机连接到 Log Analytics
 
+- 按照[将 Azure 虚拟机连接到 Log Analytics](log-analytics-azure-vm-extension.md) 中的指示进行操作，使用 Azure 门户将 VM 连接到 Log Analytics。
 
-也可将代理连接到 System Center Operations Manager 2012 SP1 和更高版本。 要进行此操作，请选择“将代理连接到 System Center Operations Manager”。 选择该选项时即将数据发送到服务，无需为管理组增加额外的硬件或负载。
+## <a name="5-view-and-act-on-data"></a>5 查看和处理数据
 
-有关将代理连接到 Operations Management Suite 的详细信息，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)。
+用户此前已启用活动 Log Analytics 解决方案、安全性与符合性服务产品，以及自动化与控制服务产品。 接下来，我们开始查看通过解决方案收集的数据以及日志搜索中的结果。
 
-## <a name="optionally-connect-servers-using-system-center-operations-manager"></a>使用 System Center Operations Manager 连接服务器（可选）
-1. 在 Operations Manager 控制台中，选择“管理”。
-2. 展开“Operational Insights”节点，然后选择“Operational Insights 连接”。
+开始时，请先查看解决方案中显示的数据， 然后查看一些可以通过日志搜索访问的日志搜索结果。 日志搜索允许你将环境内来自多个源的任意计算机数据进行组合和关联。 有关详细信息，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)。 最后，处理我们使用 OMS 门户（位于 Azure 门户外面）找到的数据。
 
-   > [!NOTE]
-   > 答：根据所用 SCOM 更新汇总，可能显示*System Center Advisor*、*Operational Insights*或 *Operations Management Suite* 节点。
-   >
-   >
-3. 单击右上方的“注册 Operational Insights”链接，然后按照说明进行操作。
-4. 完成注册向导后，单击“添加计算机/组”链接。
-5. 在“**计算机搜索**”对话框中可以搜索 Operations Manager 监视的计算机或组。 选择要载入到 Log Analytics 的计算机或组，单击“添加”，然后单击“确定”。 可在 Operations Management Suite 门户中转到“使用情况”磁贴，以验证 OMS 服务是否接收数据。 应在 5-10 分钟内显示数据。
+### <a name="to-view-antimalware-data"></a>查看反恶意软件数据
 
-有关将 Operations Manager 连接到 Operations Management Suite 的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
+1. 在 Azure 门户中，导航到 **Log Analytics** > ***你的工作区***。
+2. 在工作区的边栏选项卡的“常规”下单击“概览”。  
+    ![概述](./media/log-analytics-get-started/overview.png)
+3. 单击“反恶意软件评估”磁贴。 在此示例中，可以看到 Windows Defender 已安装在一台计算机上，但其签名已过期。  
+    ![反恶意软件](./media/log-analytics-get-started/solution-antimalware.png)
+4. 就此示例来说，请在“保护状态”下单击“签名过期”，以便打开日志搜索并查看其签名已过期的计算机的详细信息。 在此示例中，请注意计算机的名称为 *getstarted*。 如果多台计算机签名过期，这些计算机都会显示在日志搜索结果中。  
+    ![反恶意软件已过期](./media/log-analytics-get-started/antimalware-search.png)
 
-## <a name="optionally-analyze-data-from-cloud-services-in-microsoft-azure"></a>在 Microsoft Azure 中分析来自云服务的数据（可选）
-利用 Operations Management Suite，可通过为 Azure 云服务启用诊断，快速搜索云服务和虚拟机的事件和 IIS 日志。 还可通过安装 Microsoft Monitoring Agent，接收有关 Azure 虚拟机的其他见解。 有关如何将 Azure 环境配置为使用 Operations Management Suite 详细信息，请参阅[将 Azure 存储连接到 Log Analytics](log-analytics-azure-storage.md)。
+### <a name="to-view-security-and-audit-data"></a>查看安全和审核数据
+
+1. 在工作区的边栏选项卡的“常规”下单击“概览”。  
+2. 单击“安全和审核”磁贴。 在此示例中，可以看到两个值得注意的问题：一台计算机缺少关键更新，一台计算机保护不够。  
+    ![安全和审核](./media/log-analytics-get-started/security-audit.png)
+3. 就此示例来说，请在“值得注意的问题”下单击“缺少关键更新的计算机”，以便打开日志搜索并查看缺少关键更新的计算机的详细信息。 在此示例中，缺少一项关键更新，缺少 63 项其他更新。  
+    ![安全和审核日志搜索](./media/log-analytics-get-started/security-audit-log-search.png)
+
+### <a name="to-view-and-act-on-system-update-data"></a>查看和处理系统更新数据
+
+1. 在工作区的边栏选项卡的“常规”下单击“概览”。  
+2. 单击“系统更新评估”磁贴。 在此示例中，可以看到一台名为 *getstarted* 的 Windows 计算机需要关键更新，一台需要定义更新。  
+    ![系统更新](./media/log-analytics-get-started/system-updates.png)
+3. 就此示例来说，请在“缺少更新”下单击“关键更新”，以便打开日志搜索并查看缺少关键更新的计算机的详细信息。 在此示例中，有一个缺失的更新，有一个必需的更新。  
+    ![系统更新日志搜索](./media/log-analytics-get-started/system-updates-log-search.png)
+4. 转到 [Operations Management Suite](http://microsoft.com/oms) 网站，使用 Azure 帐户登录。 登录以后，请注意，解决方案信息类似于在 Azure 门户中看到的信息。  
+    ![OMS 门户](./media/log-analytics-get-started/oms-portal.png)
+5. 单击“更新管理”磁贴。
+6. 在“更新管理”仪表板中，请注意，系统更新信息类似于在 Azure 门户中看到的系统更新信息。 但是，“管理更新部署”磁贴是新的。 单击“管理更新部署”磁贴。  
+    ![“更新管理”磁贴](./media/log-analytics-get-started/update-management.png)
+7. 在“更新部署”页中，单击“添加”创建*更新运行*。  
+    ![更新部署](./media/log-analytics-get-started/update-management-update-deployments.png)
+8.  在“新建更新部署”页中，键入更新部署的名称，选择要更新的计算机（此示例中为 *getstarted*），选择一个计划，然后单击“保存”。  
+    ![新部署](./media/log-analytics-get-started/new-deployment.png)  
+    保存更新部署以后，可以看到计划的更新。  
+    ![计划的更新](./media/log-analytics-get-started/scheduled-update.png)  
+    完成更新运行以后，状态显示“已完成”。
+    ![完成的更新](./media/log-analytics-get-started/completed-update.png)
+9. 完成更新运行以后，即可查看运行是否成功，以及所应用的具体更新的详细信息。
+
+## <a name="after-evaluation"></a>评估之后
+
+在本教程中，用户在虚拟机上安装了一个代理并快速开始操作。 所执行的步骤既快速又简单。 但是，大多数大型组织和企业的本地 IT 基础结构很复杂。 因此，从这些复杂的环境收集数据需要进行比本教程所述更多的规划，付出更多的精力。 请查看下面的“后续步骤”部分中的信息，获取有用文章的链接。
+
+可以选择删除在本教程中创建的工作区。
 
 ## <a name="next-steps"></a>后续步骤
+* 了解如何将 [Windows 代理](log-analytics-windows-agents.md)连接到 Log Analytics。
+* 了解如何将 [Operations Manager 代理](log-analytics-om-agents.md)连接到 Log Analytics。
 * [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
 * 熟悉[日志搜索](log-analytics-log-searches.md)以查看解决方案收集的详细信息。
-* 使用[仪表板](log-analytics-dashboards.md)保存并显示你自己的自定义搜索。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

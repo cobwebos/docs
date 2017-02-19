@@ -1,12 +1,12 @@
-1. 转到 [Azure 门户][Azure 门户]。
+1. 登录到 [Azure 门户][Azure portal]。
 2. 在门户的左侧导航窗格中，依次单击“新建”、“企业集成”和“中继”。
 3. 在“创建命名空间”  对话框中，输入命名空间名称。 系统会立即检查该名称是否可用。
 4. 在“订阅”  字段中，选择要创建命名空间的 Azure 订阅。
-5. 在“[资源组](../articles/azure-portal/resource-group-portal.md)”字段中，选择将保留命名空间的现有资源组，或者创建一个新资源组。      
+5. 在“[资源组](../articles/azure-resource-manager/resource-group-portal.md)”字段中，选择将保留命名空间的现有资源组，或者创建一个新资源组。      
 6. 在“位置” 中，选择应托管命名空间的国家或地区。
    
     ![创建命名空间][create-namespace]
-7. 单击“创建” 。 系统现已创建命名空间并已将其启用。 您可能需要等待几分钟，因为系统将为您的帐户配置资源。
+7. 单击“创建” 。 系统现已创建命名空间并已将其启用。 几分钟后，系统将为用户的帐户预配资源。
 
 ### <a name="obtain-the-management-credentials"></a>获取管理凭据
 1. 在命名空间列表中，单击新创建的命名空间名称。
@@ -18,16 +18,16 @@
    
     ![connection-string][connection-string]
 
+5. 重复上述步骤，将**主键**的值复制和粘贴到临时位置，以供将来使用。  
+
 <!--Image references-->
 
 [create-namespace]: ./media/relay-create-namespace-portal/create-namespace.png
 [connection-info]: ./media/relay-create-namespace-portal/connection-info.png
 [connection-string]: ./media/relay-create-namespace-portal/connection-string.png
-
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-[Azure 门户]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 02/04/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 535b16490bb601070c7d2a7135f3d69aa898be1f
-ms.openlocfilehash: 10a128ea56ea014cf72036f71ec97202691bec94
+ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
+ms.openlocfilehash: b838974de06ecbc751254064e2310df51c450086
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: 10a128ea56ea014cf72036f71ec97202691bec94
 * [删除数据库](sql-database-get-started.md#delete-a-single-database) 
 
 
-完成本快速入门教程后，用户会有一个示例数据库，以及一个在 Azure 资源组中运行并已附加到逻辑服务器的空数据库。 此外，还会将两个服务器级防火墙规则配置为启用服务器级主体，用于从两个指定的 IP 地址登录到服务器。 
+在本快速入门教程中，用户会创建一个示例数据库，以及一个在 Azure 资源组中运行并附加到逻辑服务器的空数据库。 此外还会创建两个服务器级防火墙规则并将其配置为启用服务器级主体，用于从两个指定的 IP 地址登录到服务器。 最后，用户学习如何在 Azure 门户中查询数据库，以及如何使用 SQL Server Management Studio 进行连接和查询。 
 
 **用时估计**：完成本教程大约需要 30 分钟（假设满足先决条件）。
 
@@ -88,7 +88,7 @@ ms.openlocfilehash: 10a128ea56ea014cf72036f71ec97202691bec94
     ![新服务器名称](./media/sql-database-get-started/new-server-name.png)
 
     > [!IMPORTANT]
-    > 新服务器的完全限定名称为 <服务器名称>.database.windows.net。
+    > 新服务器的完全限定名称的格式为：<服务器名称>.database.windows.net。
     >
     
 4. 在“服务器管理员登录名”文本框中，提供此服务器的 SQL 身份验证登录名的用户名。 此登录名称为服务器主体登录名。 绿色的对勾表示已提供有效名称。
@@ -275,7 +275,8 @@ ms.openlocfilehash: 10a128ea56ea014cf72036f71ec97202691bec94
 
    ```select * from sys.objects```
 
-    ![查询编辑器查询](./media/sql-database-get-started/query-editor-query.png) 10  单击“运行”。
+    ![查询编辑器查询](./media/sql-database-get-started/query-editor-query.png)
+10.  单击“**运行**”。
 11. 查看“结果”窗格中的查询结果。
 
     ![查询编辑器结果](./media/sql-database-get-started/query-editor-results.png)
@@ -366,12 +367,12 @@ ms.openlocfilehash: 10a128ea56ea014cf72036f71ec97202691bec94
 
 ## <a name="additional-resources"></a>其他资源
 
-- 有关技术概述，请参阅[什么是 SQL 数据库？](sql-database-technical-overview.md)。
+- 有关技术概述，请参阅[什么是 SQL 数据库？](sql-database-technical-overview.md)
 - 有关定价信息，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

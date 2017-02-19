@@ -1,6 +1,6 @@
 ---
-title: "创建适用于 Linux VM 的 SSH 公钥和私钥对 | Microsoft Docs"
-description: "创建适用于 Linux VM 的 SSH 公钥和私钥对。"
+title: "创建适用于 Azure 上的 Linux VM 的 SSH 密钥对 | Microsoft 文档"
+description: "安全地创建适用于 Linux VM 的 SSH 公钥和私钥对。"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/12/2016
-ms.author: v-livech
+ms.date: 2/6/2016
+ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 330637f5b69ad95aef149d9fbde16f2151cde837
-ms.openlocfilehash: 5c515dbe8e3030abf079e5ff47884fb04b9048ba
+ms.sourcegitcommit: e5f93bab46620e06e56950ba7b3686b15f789a9d
+ms.openlocfilehash: 1ee0368b75e4ef2fc759251db32c5aed5c1a168d
 
 
 ---
@@ -30,105 +30,81 @@ ms.openlocfilehash: 5c515dbe8e3030abf079e5ff47884fb04b9048ba
 
 从 Bash shell 运行以下命令，将示例替换为自己选择的内容。
 
-SSH 密钥默认保留在 `.ssh` 目录中。  
+SSH 密钥默认保留在 `~/.ssh` 目录中。  如果你没有 `~/.ssh` 目录，`ssh-keygen` 命令会使用正确的权限为你创建一个。  `-N` 参数指定用于加密 SSH 私钥的密码，*不是* 用户密码。
 
 ```bash
-cd ~/.ssh/
-```
-
-如果你没有 `~/.ssh` 目录，`ssh-keygen` 命令会使用正确的权限为你创建一个。
-
-```bash
-ssh-keygen -t rsa -b 2048 -C "ahmet@myserver"
-```
-
-输入已在 `~/.ssh/` 目录中保存的私钥文件的名称：
-
-```bash
-~/.ssh/id_rsa
-```
-
-为 id_rsa 输入通行短语：
-
-```bash
-correct horse battery staple
-```
-
-此时在 `~/.ssh` 目录中有了 `id_rsa` 和 `id_rsa.pub` SSH 密钥对。
-
-```bash
-ls -al ~/.ssh
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N mypassword
 ```
 
 将新创建的密钥添加到 `ssh-agent`：
 
 ```bash
-eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
-
-将 SSH 公钥复制到你的 Linux VM：
-
-```bash
-ssh-copy-id -i ~/.ssh/id_rsa.pub ahmet@myserver
-```
-
-使用密钥而不是密码测试登录：
-
-```bash
-ssh -o PreferredAuthentications=publickey -o PubkeyAuthentication=yes -i ~/.ssh/id_rsa ahmet@myserver
-Last login: Tue April 12 07:07:09 2016 from 66.215.22.201
-$
-```
-
-如果系统未提示你提供 SSH 私钥密码或 VM 的登录密码，则 SSH 配置成功。
 
 ## <a name="detailed-walkthrough"></a>详细演练
 
 使用 SSH 公钥和私钥是登录到 Linux 服务器的最简单方法。 [公钥加密技术](https://en.wikipedia.org/wiki/Public-key_cryptography) 提供了一种比密码更为安全的登录到 Azure 中的 Linux 或 BSD VM 的方法，密码会更容易受到暴力攻击得多。
 
-公钥可与任何人共享；但只有你（或本地安全基础结构）才拥有你的私钥。  SSH 私钥应使用[非常安全的密码](https://www.xkcd.com/936/)（源：[xkcd.com](https://xkcd.com)）来保护它。  此密码只用于访问 SSH 私钥， **不是** 用户帐户密码。  向 SSH 密钥添加密码时，它会加密私钥，因此在没有密码解锁的情况下，私钥是无效的。  如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。  如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
+公钥可与任何人共享；但只有你（或本地安全基础结构）才拥有你的私钥。  SSH 私钥应使用[非常安全的密码](https://www.xkcd.com/936/)（源：[xkcd.com](https://xkcd.com)）来保护它。  此密码只用于访问 SSH 私钥， **不是** 用户帐户密码。  向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。  如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。  如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
 
 本文创建的 *ssh-rsa* 格式密钥文件适用于在 Resource Manager 上进行部署的情况。  不管是经典部署，还是 Resource Manager 部署，都需要在[门户](https://portal.azure.com)中使用 *ssh-rsa* 密钥。
 
 ## <a name="disable-ssh-passwords-by-using-ssh-keys"></a>通过使用 SSH 密钥禁用 SSH 密码
 
-Azure 需要至少 2048 位采用 ssh-rsa 格式的公钥和私钥。 为了创建密钥，将使用 `ssh-keygen`（会询问一系列问题），然后编写私钥和匹配的公钥。 创建 Azure VM 时，会将公钥复制到 `~/.ssh/authorized_keys`。  `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 登录连接时质询客户端以匹配相应的私钥。  使用 SSH 密钥创建 Azure Linux VM 进行身份验证时，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。  因此，使用 SSH 密钥创建 Azure Linux VM 时，默认情况下会安全部署 VM，并将禁用密码中的常规发布部署配置步骤保存在 `sshd_config` 配置文件中。
+Azure 需要至少 2048 位采用 ssh-rsa 格式的公钥和私钥。 为了创建密钥，将使用 `ssh-keygen`（会询问一系列问题），然后编写私钥和匹配的公钥。 创建 Azure VM 时，会将公钥复制到 `~/.ssh/authorized_keys`。  `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 登录连接时质询客户端以匹配相应的私钥。  使用 SSH 密钥创建 Azure Linux VM 进行身份验证时，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。  因此，使用 SSH 密钥创建 Azure Linux VM 可确保 VM 部署的安全，不必进行通常在部署完后需要进行的配置步骤（即在 sshd_config 配置文件中禁用密码）。
 
 ## <a name="using-ssh-keygen"></a>使用 ssh-keygen
 
 此命令使用 2048 位 RSA 创建密码保护的（加密）SSH 密钥对，并为其加上注释以方便识别。  
 
-请首先更改目录，以便在该目录中创建所有 ssh 密钥。
+SSH 密钥默认保留在 `~/.ssh` 目录中。  如果你没有 `~/.ssh` 目录，`ssh-keygen` 命令会使用正确的权限为你创建一个。
 
 ```bash
-cd ~/.ssh
-```
-
-如果你没有 `~/.ssh` 目录，`ssh-keygen` 命令会使用正确的权限为你创建一个。
-
-```bash
-ssh-keygen -t rsa -b 2048 -C "myusername@myserver"
+ssh-keygen \
+-t rsa \
+-b 2048 \
+-C "ahmet@myserver" \
+-f ~/.ssh/id_rsa \
+-N mypassword
 ```
 
 *命令解释*
 
 `ssh-keygen` = 用于创建密钥的程序
 
-`-t rsa` = 要创建的密钥的类型，采用 [RSA 格式](https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+`-t rsa` = 要创建的密钥的类型，采用 RSA 格式 [wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem)
 
 `-b 2048` = 密钥的位数
 
 `-C "myusername@myserver"` = 追加到公钥文件末尾以便于识别的注释。  通常以电子邮件作为注释，但也可以使用任何最适合基础结构的事物。
 
-### <a name="using-pem-keys"></a>使用 PEM 密钥
+## <a name="classic-portal-and-x509-certs"></a>经典门户和 X.509 证书
 
-如果使用的是经典部署模型（Azure 经典门户或 Azure 服务管理 CLI `asm`），可能需要使用 PEM 格式的 SSH 密钥来访问 Linux VM。  下面介绍如何基于现有的 SSH 公钥和现有的 x509 证书创建 PEM 密钥。
+如果使用的是 Azure [经典门户](https://manage.windowsazure.com/)，则需适用于 SSH 密钥的 X.509 证书。  不允许其他类型的 SSH 公钥，*必须*是 X.509 证书。
 
-若要基于现有的 SSH 公钥创建 PEM 格式的密钥，请执行以下操作：
+若要从现有的 SSH-RSA 私钥创建 X.509 证书，请执行以下操作：
 
 ```bash
-ssh-keygen -f ~/.ssh/id_rsa.pub -e > ~/.ssh/id_ssh2.pem
+openssl req -x509 \
+-key ~/.ssh/id_rsa \
+-nodes \
+-days 365 \
+-newkey rsa:2048 \
+-out ~/.ssh/id_rsa.pem
+```
+
+## <a name="classic-deploy-using-asm"></a>使用 `asm` 进行的经典部署
+
+如果使用的是经典部署模型（Azure 服务管理 CLI `asm`），则可在 pem 容器中使用 SSH-RSA 公钥或 RFC4716 格式的密钥。  SSH-RSA 公钥是此前在本文中使用 `ssh-keygen` 创建的。
+
+若要基于现有的 SSH 公钥创建 RFC4716 格式的密钥，请执行以下操作：
+
+```bash
+ssh-keygen \
+-f ~/.ssh/id_rsa.pub \
+-e \
+-m RFC4716 > ~/.ssh/id_ssh2.pem
 ```
 
 ## <a name="example-of-ssh-keygen"></a>ssh-keygen 示例
@@ -143,7 +119,7 @@ Your identification has been saved in id_rsa.
 Your public key has been saved in id_rsa.pub.
 The key fingerprint is:
 14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 ahmet@myserver
-The key's randomart image is:
+The keys randomart image is:
 +--[ RSA 2048]----+
 |        o o. .   |
 |      E. = .o    |
@@ -159,16 +135,17 @@ The key's randomart image is:
 
 保存的密钥文件：
 
-`Enter file in which to save the key (/home/ahmet/.ssh/id_rsa): id_rsa`
+`Enter file in which to save the key (/home/ahmet/.ssh/id_rsa): ~/.ssh/id_rsa`
 
-本文中的密钥对名称。  系统默认提供名为 **id_rsa** 的密钥对，有些工具可能要求私钥文件名为 **id_rsa**，因此最好使用此密钥对。 目录 `~/.ssh/` 是 SSH 密钥对和 SSH 配置文件的默认位置。
+本文中的密钥对名称。  系统默认提供名为 **id_rsa** 的密钥对，有些工具可能要求私钥文件名为 **id_rsa**，因此最好使用此密钥对。 目录 `~/.ssh/` 是 SSH 密钥对和 SSH 配置文件的默认位置。  如果未使用完全路径指定，则 `ssh-keygen` 会在当前的工作目录（而非默认的 `~/.ssh`）中创建密钥。
+
+`~/.ssh` 目录的列表。
 
 ```bash
 ls -al ~/.ssh
 -rw------- 1 ahmet staff  1675 Aug 25 18:04 id_rsa
 -rw-r--r-- 1 ahmet staff   410 Aug 25 18:04 rsa.pub
 ```
-`~/.ssh` 目录的列表。 `ssh-keygen` 创建 `~/.ssh` 目录（如果不存在），并设置相应的所有权和文件模式。
 
 密钥密码：
 
@@ -180,7 +157,7 @@ ls -al ~/.ssh
 
 为了避免在每次 SSH 登录时键入私钥文件密码，可以使用 `ssh-agent` 来缓存私钥文件密码。 如果使用 Mac，OSX Keychain 在用户调用 `ssh-agent`时会安全存储私钥密码。
 
-首先请验证 `ssh-agent` 是否正在运行
+验证并使用 ssh-agent 和 ssh-add 将密钥文件的情况通知给 SSH 系统，使密码不需以交互方式使用。
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -193,6 +170,13 @@ ssh-add ~/.ssh/id_rsa
 ```
 
 私钥密码现在存储在 `ssh-agent` 中。
+
+## <a name="using-ssh-copy-id-to-install-the-new-key"></a>使用 `ssh-copy-id` 安装新密钥
+如果已创建 VM，则可使用以下命令将新的 SSH 公钥安装到 Linux VM：
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa.pub ahmet@myserver
+```
 
 ## <a name="create-and-configure-an-ssh-config-file"></a>创建并配置 SSH 配置文件
 
@@ -268,6 +252,6 @@ ssh fedora22
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

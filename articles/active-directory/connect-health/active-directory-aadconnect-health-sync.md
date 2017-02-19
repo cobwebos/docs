@@ -1,4 +1,3 @@
-
 ---
 title: "使用 Azure AD Connect Health 进行同步 | Microsoft 文档"
 description: "本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。"
@@ -13,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
-ms.author: billmath
+ms.date: 02/10/2017
+ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 2daa6c07191da7bd732cadf62b414f8027682071
-ms.openlocfilehash: 6546725b887dd9980913a651219dd2a2c4b8a783
+ms.sourcegitcommit: 21e599fc2adf3d7dce84cc1c4130504b71928db7
+ms.openlocfilehash: 7a2f53de0067879a811c9954199026ecfe3ec906
 
 
 ---
@@ -106,7 +105,7 @@ ms.openlocfilehash: 6546725b887dd9980913a651219dd2a2c4b8a783
 ![同步错误报告详细信息](./media/active-directory-aadconnect-health-sync/errorreport04.png)
 
 ### <a name="download-the-error-report-as-csv"></a>以 CSV 格式下载错误报告
-此功能即将推出。 请持续关注最新信息。
+选择“导出”按钮即可下载一个 CSV 文件，其中包含所有错误的所有详细信息。
 
 ## <a name="related-links"></a>相关链接
 * [排查同步期间的错误](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)
@@ -120,7 +119,6 @@ ms.openlocfilehash: 6546725b887dd9980913a651219dd2a2c4b8a783
 * [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
 
 
-
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

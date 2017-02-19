@@ -14,11 +14,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/1/2017
-ms.author: trinadhk;giridham;arunak;markgal;jimpark;
+ms.date: 2/8/2017
+ms.author: markgal;giridham;arunak;markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: b50b62b9b9a800c4f42e763a7ff6eecd84de9e69
-ms.openlocfilehash: 7033b660608897819b629d398450cd32ea7b48fa
+ms.sourcegitcommit: d842d0a7e6a99a0a0a67b7cf6c695aba16f83d8f
+ms.openlocfilehash: 72cd97798df4e63da1e3d1dc167714f6033d2c86
 
 
 ---
@@ -58,7 +58,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 是的，保管库凭据在 48 小时后过期。 如果文件过期，请登录 Azure 门户，然后从保管库下载保管库凭据文件。
 
 ## <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>在每个 Azure 订阅中可以创建的保管库数量是否有任何限制？ <br/>
-是的。 从 2016 年 9 月起，可以为每个订阅创建 25 个备份保管库。 在 Azure 备份支持的区域中，可以为每个订阅最多创建 25 个恢复服务保管库。 如果需要更多保管库，请创建新订阅。
+是的。 从 2016 年 9 月起，可以为每个订阅创建 25 个备份保管库。 在 Azure 备份支持的区域中，可以为每个订阅最多创建 25 个恢复服务保管库。 如果需要更多保管库，请创建另一订阅。
 
 ## <a name="are-there-any-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>可针对每个保管库注册的服务器/计算机数量是否有任何限制？ <br/>
 是的，最多可为每个保管库注册 50 个计算机。 对于 Azure IaaS 虚拟机，限制为每个保管库 200 个 VM。 如果需要注册更多的计算机，请创建另一个保管库。
@@ -68,17 +68,17 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 
 ## <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>如果重命名了用于将数据备份到 Azure 的 Windows 服务器，会发生什么情况？<br/>
 当你重命名服务器时，所有当前配置的备份都将停止。
-将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复以前备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中“[其他服务器](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)”选项来恢复该数据。
+将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的“其他服务器”选项[](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
-## <a name="what-types-of-drives-can-i-backup-files-and-folders-from-br"></a>可以从哪些类型的驱动器备份文件和文件夹？ <br/>
-无法备份以下驱动器/卷组：
+## <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>可以从哪些类型的驱动器备份文件和文件夹？ <br/>
+无法备份以下驱动器/卷：
 
-* 可移动介质：驱动器必须报告为固定的，以便用作备份项的源。
+* 可移动介质：所有备份项源必须报告为“固定”。
 * 只读卷：为使卷影复制服务 (VSS) 起作用，卷必须是可写的。
 * 脱机卷：为使 VSS 起作用，卷必须是联机的。
 * 网络共享：若要使用联机备份进行备份，卷对于服务器而言必须是本地的。
 * Bitlocker 保护的卷：必须先解锁卷，然后才能备份。
-* 文件系统标识：此版本的联机备份服务仅支持 NTFS 文件系统。
+* 文件系统标识：NTFS 是受支持的唯一文件系统。
 
 ## <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>可以从我的服务器备份哪些文件和文件夹类型？<br/>
 支持以下类型：
@@ -106,7 +106,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 是的。 代理服务在准备备份操作时将消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，然后将已加密的数据发送到联机备份服务。
 
 ## <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？ <br/>
-不会。 在取消之前，所有数据已传输到保管库，将保留在保管库中。 Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
+否。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。 Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
 
 如果取消了 Azure VM 的备份作业，则已传输的数据将被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
 
@@ -123,16 +123,16 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 * \*.windows.net
 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>可以在已由 Azure 备份服务备份的 Azure VM 上使用 VM 扩展来安装 Azure 备份代理吗？ <br/>
-绝对是。 Azure 备份使用 VM 扩展为 Azure VM 提供 VM 级别备份。 可以在来宾 Windows OS 上安装 Azure 备份代理，以保护该来宾 OS 上的文件和文件夹。
+绝对是。 Azure 备份使用 VM 扩展为 Azure VM 提供 VM 级别备份。 若要保护来宾 OS 上的文件和文件夹，请在来宾 Windows OS 上安装 Azure 备份代理。
 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>可以在 Azure VM 上安装 Azure 备份代理来备份 Azure VM 提供的临时存储中存在的文件和文件夹吗？ <br/>
-是的。 可以在来宾 Windows OS 上安装 Azure 备份代理，并将文件和文件夹备份到临时存储。 但请注意，擦除临时存储数据后，备份将会失败。 此外，如果临时存储数据已被删除，则你只能还原到非易失性存储。
+是的。 可以在来宾 Windows OS 上安装 Azure 备份代理，并将文件和文件夹备份到临时存储。 请注意，擦除临时存储数据后，备份将会失败。 此外，如果临时存储数据已被删除，则你只能还原到非易失性存储。
 
 ## <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-scdpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>我已安装 Azure 备份代理来保护我的文件和文件夹。 现在可以安装 SCDPM 来与 Azure 备份代理配合使用，以便在 Azure 中保护本地应用程序/VM 工作负荷吗？ <br/>
 若要将 Azure 备份与 System Center Data Protection Manager (DPM) 一起使用，请先安装 DPM，然后再安装 Azure 备份代理。 按此顺序安装 Azure 备份组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装 Azure 备份代理。
 
 ## <a name="what-is-the-length-of-file-path-that-can-be-specified-as-part-of-azure-backup-policy-using-azure-backup-agent-br"></a>可以使用 Azure 备份代理指定为 Azure 备份策略的一部分的文件路径的长度是多少？ <br/>
-Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限于 Windows API](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 在备份文件路径长度大于 Windows API 所允许长度的文件时，你可以选择对备份文件的父文件夹或磁盘驱动器进行备份。  
+Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限于 Windows API](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 如果要保护的文件的文件路径超过 Windows API 允许的长度，可以备份父文件夹或磁盘驱动器。  
 
 ## <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>使用 Azure 备份代理的 Azure 备份策略的文件路径中允许哪些字符？ <br>
  Azure 备份代理依赖于 NTFS。 允许使用 [NTFS 支持的字符](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) 作为文件规范的一部分。  
@@ -144,7 +144,7 @@ Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限�
 是，备份服务有多个可与 PowerShell 脚本配合使用的基于事件的警报。 有关完整说明，请参阅[配置通知](backup-azure-monitor-vms.md#configure-notifications)
 
 ## <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>要备份的每个数据源的大小是否有限制？ <br/>
-对可以备份到保管库的数据量没有限制。 Azure 备份限制数据源的最大大小，不过，这些限制极大。 截至 2015 年 8 月，受支持操作系统的数据源的最大大小为：
+对可以备份到保管库的数据量没有限制。 Azure 备份限制数据源的最大大小，不过，这些限制较大。 截至 2015 年 8 月，受支持操作系统的数据源的最大大小为：
 
 | S.No | 操作系统 | 数据源的最大大小 |
 |:---:|:--- |:--- |
@@ -192,7 +192,7 @@ Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限�
 典型的长期保留点产品将备份数据存储为完整的点。 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。 增量复制是 *高效* 存储，但要求还原数据链，这会影响恢复时间。 Azure 备份存储体系结构为你提供这两个领域的最佳产品，它以最佳方式将用于快速恢复的数据存储中，产生较低的存储成本。 这种数据存储方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关 [增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/) 保存有何效用的详细信息。
 
 ## <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-createdbr"></a>可创建的恢复点数量是否有限制？<br/>
-否。 我们已经去除了对恢复点的限制。 你可以根据需要创建任意数量的恢复点。
+最多可为单个受保护实例创建 9999 个恢复点。 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 每个备份保管库的受保护实例数量没有限制。 有关详细信息，请参阅[备份和保留](./backup-introduction-to-azure-backup.md#backup-and-retention)和[什么是受保护实例？](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)的说明
 
 ## <a name="why-is-the-amount-of-data-transferred-in-backup-not-equal-to-the-amount-of-data-i-backed-upbr"></a>为什么在备份中传输的数据量与我备份的数据量不相等？<br/>
  从 Azure 备份代理、SCDPM 或 Azure 备份服务器备份的所有数据都会在传输之前进行压缩和加密。 应用压缩和加密后，备份保管库中的数据将减少 30-40%。
@@ -201,7 +201,7 @@ Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限�
  是的，可以使用备份代理中的“更改属性”  选项来调整带宽。 可以调整带宽以及使用该带宽的时间。 有关分步说明，请参阅文章 [通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure] 中的**[启用网络限制](backup-configure-vault.md#enable-network-throttling)**。
 
 ## <a name="my-internet-bandwidth-is-limited-for-the-amount-of-data-i-need-to-back-up-is-there-a-way-i-can-move-data-to-a-certain-location-with-a-large-network-pipe-and-push-that-data-into-azure-br"></a>我的 Internet 带宽有限，不适用于我需要备份的数据量。 是否有办法可将数据移到网络带宽较大的特定位置，然后将数据推送到 Azure？ <br/>
-可以通过标准的联机备份过程将数据备份到 Azure，或者使用 Azure 导入/导出服务将数据传输到 Azure 中的 Blob 存储。 无法通过其他方法将数据备份到 Azure 存储空间。 有关如何将 Azure 导入/导出服务与 Azure 备份配合使用的信息，请参阅 [脱机备份工作流](backup-azure-backup-import-export.md) 一文。
+可以通过标准的联机备份过程将数据备份到 Azure，或者使用 Azure 导入/导出服务将数据传输到 Azure 中的 Blob 存储。 无法通过其他方法将数据备份到 Azure 存储空间。 有关如何将 Azure 导入/导出服务与 Azure 备份配合使用的信息，请参阅[脱机备份工作流](backup-azure-backup-import-export.md)一文。
 
 ## <a name="how-many-recoveries-can-i-perform-on-the-data-that-is-backed-up-to-azurebr"></a>对于已备份到 Azure 的数据，可以执行多少次恢复？<br/>
 从 Azure 备份执行恢复的次数没有限制。
@@ -259,10 +259,10 @@ Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限�
 缓存文件夹和元数据 VHD 都没有 Azure 备份代理所需的属性。
 
 ## <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>恢复服务保管库基于 Resource Manager。 是否仍支持备份保管库（经典模式）？ <br/>
-是，仍然支持备份保管库。 可在[经典门户](https://manage.windowsazure.com)中创建备份保管库。 在 [Azure 门户](https://portal.azure.com)中创建恢复服务保管库。 但是我们强烈建议用户创建恢复服务保管库，因为所有未来的增强功能将仅在恢复服务保管库中可用。
+是，仍然支持备份保管库。 可在[经典门户](https://manage.windowsazure.com)中创建备份保管库。 在 [Azure 门户](https://portal.azure.com)中创建恢复服务保管库。 我们强烈建议用户创建恢复服务保管库，因为未来的增强功能将仅适用于恢复服务保管库。
 
 ## <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>是否可以将备份保管库迁移到恢复服务保管库？ <br/>
-很遗憾不可以，目前无法将备份保管库的内容迁移到恢复服务保管库。 我们正在着手添加此功能，但当前未提供。
+很遗憾不可以，无法将备份保管库的内容迁移到恢复服务保管库。 我们正在着手添加此功能，但当前未提供。
 
 ## <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>恢复服务保管库是支持基于经典 VM 还是支持基于资源管理器的 VM？ <br/>
 恢复服务保管库同时支持这两种模式。  可以将经典 VM（在经典门户中创建的）或 Resource Manager VM（在 Azure 门户中创建的）备份到恢复服务保管库。
@@ -276,6 +276,6 @@ Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

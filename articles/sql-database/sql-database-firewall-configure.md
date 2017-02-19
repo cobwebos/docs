@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 11/23/2016
+ms.date: 02/09/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
-ms.openlocfilehash: a0c4cfb127934f86a7ce272c1aec2fd01331e17c
+ms.sourcegitcommit: 5b94c884c585824ab580f307f3a04e27c8536947
+ms.openlocfilehash: 05c6580bd0cd7af55325361e85cce9654e0169d6
 
 
 ---
@@ -60,11 +60,12 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
    ![描述防火墙配置的示意图。][1]
 
 ## <a name="connecting-from-the-internet"></a>从 Internet 连接
-当计算机尝试从 Internet 连接到数据库服务器时，防火墙首先根据整个防火墙规则集检查该请求的发起 IP 地址：
 
-* 如果该请求的 IP 地址位于服务器级防火墙规则中指定的某个范围内，则将连接权限授予 Azure SQL 数据库服务器。
-* 如果该请求的 IP 地址不位于服务器级防火墙规则中指定的某个范围内，则检查数据库级防火墙规则。 如果该请求的 IP 地址位于数据库级防火墙规则中指定的某个范围内，则仅将连接权限授予匹配数据库级规则的数据库。
-* 如果该请求的 IP 地址不位于任何服务器级或数据库级防火墙规则中指定的范围内，则连接请求失败。
+在计算机尝试从 Internet 连接到数据库服务器时，防火墙首先根据数据库级防火墙规则（针对该连接所请求的数据库）检查该请求的发起 IP 地址：
+
+* 如果该请求的 IP 地址位于数据库级防火墙规则中指定的某个范围内，则将连接权限授予包含该规则的 SQL 数据库。
+* 如果该请求的 IP 地址不位于数据库级防火墙规则中指定的某个范围内，则检查服务器级防火墙规则。 如果该请求的 IP 地址位于服务器级防火墙规则中指定的某个范围内，则授予连接权限。 服务器级防火墙规则适用于 Azure SQL Server 上的所有 SQL 数据库。  
+* 如果该请求的 IP 地址不位于任何数据库级或服务器级防火墙规则中指定的范围内，则连接请求失败。
 
 > [!NOTE]
 > 若要从你的本地计算机访问 Azure SQL 数据库，请确保你的网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。
@@ -126,7 +127,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 
 * **本地防火墙配置**：在你的计算机可以访问 Azure SQL 数据库之前，可能需要在你的计算机上创建针对 TCP 端口 1433 的防火墙例外。 如果要在 Azure 云边界内部建立连接，可能需要打开其他端口。 有关详细信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)中的 **SQL 数据库 V12：内部与外部**部分。
 * **网络地址转换 (NAT)：**由于 NAT 的原因，计算机用来连接到 Azure SQL 数据库的 IP 地址可能不同于计算机 IP 配置设置中显示的 IP 地址。 若要查看计算机用于连接到 Azure 的 IP 地址，请登录门户并导航到托管数据库的服务器上的“**配置**”选项卡。 在“**允许的 IP 地址**”部分下，显示了“**当前客户端 IP 地址**”。 单击“**添加**”即可添加到“**允许的 IP 地址**”，以允许此计算机访问服务器。
-* **对允许列表的更改尚未生效：**对 Azure SQL 数据库防火墙配置所做的更改可能最多需要 5 分钟的延迟才可生效。
+* **对允许列表的更改尚未生效：**对 Azure SQL 数据库防火墙配置所做的更改可能最多需要&5; 分钟的延迟才可生效。
 * **登录名未授权或使用了错误的密码：**如果某个登录名对 Azure SQL 数据库服务器没有权限或者使用的密码不正确，则与 Azure SQL 数据库服务器的连接将被拒绝。 创建防火墙设置仅向客户端提供尝试连接到你的服务器的机会；每个客户端必须提供必需的安全凭据。 有关准备登录名的详细信息，请参阅在 Azure SQL 数据库中管理数据库、登录名和用户。
 * **动态 IP 地址：**如果你的 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
   
@@ -154,6 +155,6 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 
