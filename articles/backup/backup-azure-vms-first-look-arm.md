@@ -1,6 +1,6 @@
 ---
 title: "初步了解：使用恢复服务保管库保护 Azure VM | Microsoft Docs"
-description: "使用恢复服务保管库保护 Azure VM。 使用 Resource Manager 部署型 VM、经典部署型 VM 和高级存储 VM 的备份来保护数据。 创建并注册恢复服务保管库。 在 Azure 中注册 VM、创建策略和保护 VM。"
+description: "使用恢复服务保管库保护 Azure VM。 使用 Resource Manager 部署型 VM、经典部署型 VM、高级存储 VM、加密 VM 和基于托管磁盘的 VM 的备份来保护数据。 创建并注册恢复服务保管库。 在 Azure 中注册 VM、创建策略和保护 VM。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/10/2016
+ms.date: 02/06/2017
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: d18cd2c117ced64e407e87bcc96da38b0351a341
-ms.openlocfilehash: 0b3409074e0b4929fdf1f5a6b915e3814facedf6
+ms.sourcegitcommit: b73d5bb1f4f9e7adc65bf38a3c98db846a341cb3
+ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
 
 
 ---
@@ -33,10 +33,11 @@ ms.openlocfilehash: 0b3409074e0b4929fdf1f5a6b915e3814facedf6
 * Azure Resource Manager 部署型 VM
 * 经典 VM
 * 标准存储 VM
-* 高级存储 VM
+* 高级存储 VM 
+* 在托管磁盘上运行的 VM
 * 使用 Azure 磁盘加密进行加密的 VM，以及 BEK 和 KEK
 
-有关保护高级存储 VM 的详细信息，请参阅[备份和还原高级存储 VM](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)
+有关保护高级存储 VM 的详细信息，请参阅[备份和还原高级存储 VM](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)。 有关托管磁盘 VM 支持的详细信息，请参阅[备份和还原托管磁盘上的 VM](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)
 
 > [!NOTE]
 > 本教程假设 Azure 订阅中已有 VM，且已采取措施允许备份服务访问 VM。
@@ -59,7 +60,7 @@ ms.openlocfilehash: 0b3409074e0b4929fdf1f5a6b915e3814facedf6
 
   ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-5. 对于恢复服务保管库，可以选择现有的保管库或创建新保管库。 如果创建新保管库，将在与虚拟机相同的资源组中创建该保管库，其位置也与虚拟机相同。 如果想要使用不同的值创建恢复服务保管库，请先[创建恢复服务保管库](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)，然后在步骤 3 中单击“备份”选项，并在此边栏选项卡中选择该保管库。
+5. 对于恢复服务保管库，可以选择现有的保管库或创建新保管库。 如果创建新保管库，将在与虚拟机相同的资源组中创建该保管库，其位置也与虚拟机相同。 如果想要使用不同的值创建恢复服务保管库，请先[创建恢复服务保管库](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)，然后在步骤&3; 中单击“备份”选项，并在此边栏选项卡中选择该保管库。
 
 6. 在“备份策略”边栏选项卡中选择要应用到保管库的备份策略，然后单击“确定”。
     ![选择备份策略](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
@@ -246,6 +247,6 @@ ms.openlocfilehash: 0b3409074e0b4929fdf1f5a6b915e3814facedf6
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 
