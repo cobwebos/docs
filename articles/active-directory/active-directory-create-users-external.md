@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 92b951ca273534a48648df5d8a7967d9b321c26f
+ms.sourcegitcommit: 7b506668b3025774edec25b6a37b83a47d702cb0
+ms.openlocfilehash: b2eaddc631087d8b7b94e40f508bdd5da5229736
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: 92b951ca273534a48648df5d8a7967d9b321c26f
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-users-create-external-azure-portal.md)
 > * [Azure 经典门户](active-directory-create-users-external.md)
-> 
-> 
+>
+>
 
 本文介绍了如何从 Azure Active Directory 中的其他目录添加用户或添加合作伙伴公司中的用户。 有关添加你组织中的新用户和添加具有 Microsoft 帐户的用户的信息，请参阅 [将新用户添加到 Azure Active Directory](active-directory-create-users.md)。 默认情况下，添加的用户没有管理员权限，但你随时可以向他们分配角色。
 
@@ -34,7 +34,7 @@ ms.openlocfilehash: 92b951ca273534a48648df5d8a7967d9b321c26f
 2. 选择 **Active Directory**，然后打开你的目录。
 3. 选择“用户”选项卡，然后在命令栏中选择“添加用户”。
 4. 在“告诉我们有关此用户的信息”页上的“用户类型”下，选择下列其中一项：
-   
+
    * **另一个 Azure AD 目录中的用户** - 将源自另一个 Azure AD 目录的用户帐户添加到你的目录。 仅当你也是另一目录的成员时，才可以选择该目录中的用户。
    * **合作伙伴公司的用户** - 邀请并授权合作伙伴公司用户使用目录（请参阅 [Azure Active Directory B2B 协作](active-directory-b2b-what-is-azure-ad-b2b.md)）。 你需要 [上传指定电子邮件地址的 CSV 文件](active-directory-b2b-references-csv-file-format.md)。
 5. 在用户的“配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户角色。 有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)。 指定是否要为用户**启用多重身份验证**。
@@ -42,11 +42,11 @@ ms.openlocfilehash: 92b951ca273534a48648df5d8a7967d9b321c26f
 
 > [!IMPORTANT]
 > 如果你所在的组织使用多个域，在添加用户帐户时你应知道以下问题：
-> 
-> * 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，**先**添加 geoffgrisso@contoso.onmicrosoft.com,，**再**添加 geoffgrisso@contoso.com.
-> * **不要**在添加 geoffgrisso@contoso.onmicrosoft.com. 之前添加 geoffgrisso@contoso.com。此顺序非常重要，事后想要撤消操作将很麻烦。
-> 
-> 
+>
+> * 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，**先**添加 geoffgrisso@contoso.onmicrosoft.com,，**再**添加 geoffgrisso@contoso.com。
+> * **不要**在添加 geoffgrisso@contoso.onmicrosoft.com 之前添加 geoffgrisso@contoso.com。 此顺序非常重要，事后想要撤消操作将很麻烦。
+>
+>
 
 如果你更改身份与本地 Active Directory 服务同步的用户的信息，则无法更改 Azure 经典门户中的用户信息。 若要更改该用户信息，请使用本地 Active Directory 管理工具。
 
@@ -62,8 +62,8 @@ ms.openlocfilehash: 92b951ca273534a48648df5d8a7967d9b321c26f
 
 > [!NOTE]
 > 你仍然可以禁用目录中的外部用户，这将阻止其对目录访问。
-> 
-> 
+>
+>
 
 如果在用户的主目录中删除了用户或取消 Microsoft 帐户，外部用户仍然存在于你的目录中。 但是，目录中的用户无法访问资源，因为他们无法使用主目录或 Microsoft 帐户进行身份验证。
 
@@ -79,6 +79,7 @@ ms.openlocfilehash: 92b951ca273534a48648df5d8a7967d9b321c26f
 * PowerBI 目前不支持外部用户访问
 * Office 门户不支持向外部用户提供许可
 * 对于 Azure AD PowerShell，外部用户会登录其主目录，无法管理他们在其中是外部用户的目录
+* 配置 Dynamics CRM Outlook 插件时，外部用户可能需要手动输入 Dynamics CRM Online 租户的 URL，而不是选择“CRM Online”
 
 ## <a name="whats-next"></a>后续步骤
 * [向 Azure Active Directory 添加新用户](active-directory-create-users.md)
@@ -88,7 +89,6 @@ ms.openlocfilehash: 92b951ca273534a48648df5d8a7967d9b321c26f
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 安全中心进行安全运行状况监视 | Microsoft Docs"
+title: "在 Azure 安全中心进行安全监视 | Microsoft 文档"
 description: "本文介绍如何开始使用 Azure 安全中心的监视功能。"
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: b0694222548e39718f6626c1b1666584445f8398
-ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 
 ---
@@ -60,8 +60,8 @@ ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 
 > [!NOTE]
 > “网络拓扑”列表的“网络运行状况”边栏选项卡中仅显示至少具有一个公共终结点的虚拟机。
-> 
-> 
+>
+>
 
 每个建议都有一组操作，单击即可执行。 例如，如果单击“缺少的系统更新”，则“缺少的系统更新”边栏选项卡随即打开。 其中会列出缺少修补程序的虚拟机，以及所缺少更新的严重级别，如以下屏幕截图所示。
 
@@ -87,8 +87,8 @@ ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 
 > [!NOTE]
 > 此处提供的安全建议与“建议”边栏选项卡中的相同。 请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)，详细了解如何应用建议。 这不仅适用于虚拟机，还适用于“资源运行状况”磁贴中提供的所有资源。
-> 
-> 
+>
+>
 
 #### <a name="virtual-machines-section"></a>虚拟机部分
 通过虚拟机部分可概览所有虚拟机和建议。 每一列代表一组建议，如以下屏幕截图所示：
@@ -217,7 +217,6 @@ ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

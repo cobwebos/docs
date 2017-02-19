@@ -1,5 +1,5 @@
 ---
-title: "Azure 安全中心威胁智能报告 | Microsoft Docs"
+title: "Azure 安全中心威胁智能报告 | Microsoft 文档"
 description: "本文档可帮助你在调查过程中使用 Azure 安全中心威胁智能报告来查找有关安全警报的详细信息。"
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d59a749a19bc5b3a57cc7e62c056d454c51c4204
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: 99c5ea06a0970c360eb711a8b10894d416146693
 
 
 ---
@@ -24,9 +24,9 @@ ms.openlocfilehash: d59a749a19bc5b3a57cc7e62c056d454c51c4204
 本文档介绍 Azure 安全中心威胁智能报告如何能够帮助了解有关生成了安全警报的威胁的详细信息。
 
 ## <a name="what-is-a-threat-intelligence-report"></a>什么是威胁智能报告？
-安全中心可以监视 Azure 资源、网络以及连接的合作伙伴解决方案中的安全信息，从而对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 此过程是安全中心[检测功能](security-center-detection-capabilities.md)的一部分。 
+安全中心可以监视 Azure 资源、网络以及连接的合作伙伴解决方案中的安全信息，从而对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 此过程是安全中心[检测功能](security-center-detection-capabilities.md)的一部分。
 
-当安全中心识别到威胁时，它将触发[安全警报](security-center-managing-and-responding-alerts.md)，其中包含有关特定事件的详细信息，包括修复建议。 为帮助事件响应团队调查和修复威胁，安全中心包括了威胁智能报告，其中包含有关已检测到的威胁的信息，包括如下信息： 
+当安全中心识别到威胁时，它将触发[安全警报](security-center-managing-and-responding-alerts.md)，其中包含有关特定事件的详细信息，包括修复建议。 为帮助事件响应团队调查和修复威胁，安全中心包括了威胁智能报告，其中包含有关已检测到的威胁的信息，包括如下信息：
 
 * 攻击者的身份或关联项（如果此信息可用）
 * 攻击者的目标
@@ -38,29 +38,29 @@ ms.openlocfilehash: d59a749a19bc5b3a57cc7e62c056d454c51c4204
 
 > [!NOTE]
 > 任何特定报表中的信息量都将有所不同；详细信息的级别基于恶意软件的活动和普遍性。
-> 
-> 
+>
+>
 
 安全中心有三种类型的威胁报告，可因攻击而异。 可用报告有：
 
 * **活动组报告**：深入分析攻击者、其目标和策略。
-* **活动报告**：重点提供特定攻击活动的详细信息。 
+* **活动报告**：重点提供特定攻击活动的详细信息。
 * **威胁摘要报告**：包含前两个报告中的所有项目。
 
-在[事件响应](security-center-incident-response.md)过程中，进行调查以了解攻击来源、攻击者的动机以及将来可缓解此问题的的操作时，这种类型的信息非常有用。 
+在[事件响应](security-center-incident-response.md)过程中，进行调查以了解攻击来源、攻击者的动机以及将来可缓解此问题的的操作时，这种类型的信息非常有用。
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>如何访问威胁智能报告？
 可以通过查看“安全警报”  磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：
 
 1. 在安全中心仪表板中，可以看到“安全警报”  磁贴。
 2. 单击磁贴打开包含有关警报的更多详细信息的“安全警报”边栏选项卡，并单击要获取更多相关详细信息的安全警报。
-   
+
     ![安全警报](./media/security-center-threat-report/security-center-threat-report-fig1.png)
 3. 在本例中，“已执行的可疑进程”边栏选项卡显示了有关警报的详细信息，如下图所示：
-   
+
     ![安全警报详细信息](./media/security-center-threat-report/security-center-threat-report-fig2.png)
 4. 每个安全警报的可用信息量因警报类型而异。 “报表”字段包含威胁智能报告的链接。 单击它，另一个浏览器窗口将显示 PDF 文件。
-   
+
    ![存储选择](./media/security-center-threat-report/security-center-threat-report-fig3.png)
 
 可从此处下载此报表的 PDF，阅读检测到的安全问题的详细信息，并根据提供的信息采取措施。
@@ -78,7 +78,6 @@ ms.openlocfilehash: d59a749a19bc5b3a57cc7e62c056d454c51c4204
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

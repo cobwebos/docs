@@ -1,4 +1,4 @@
-在 Azure 门户中，可通过导航到该连接来查看经典 VNet 网关的连接状态。 有多种方法可执行此操作。 以下步骤演示导航到连接并进行验证的一种方法。
+在 Azure 门户中，可通过导航到连接来查看经典 VNet VPN 网关的连接状态。 以下步骤演示导航到连接并进行验证的一种方法。
 
 1. 在 [Azure 门户](http://portal.azure.com)中单击“所有资源”，然后导航到经典虚拟网络。
 2. 在虚拟网络边栏选项卡中，单击“概述”访问该边栏选项卡的“VPN 连接”部分。
@@ -12,6 +12,6 @@
 
     ![连接状态详细信息](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "连接状态详细信息")
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

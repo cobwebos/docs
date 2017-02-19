@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 8790bacecac0fa824189b5c212c2d803092ff4ed
 
 
 ---
@@ -32,14 +32,14 @@ ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
 
 本教程说明如何使用 Power BI 连接到 SQL 数据仓库，并创建一些基本的视觉效果。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>先决条件
 若要逐步完成本教程，你需要：
 
-* 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。 若要完成此预配，请参阅[创建 SQL 数据仓库][Create a SQL Data Warehouse]，并选择加载示例数据。 如果已有数据仓库但没有示例数据，则可以[手动加载示例数据][load sample data manually]。
+* 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。 若要完成此预配，请参阅[创建 SQL 数据仓库][Create a SQL Data Warehouse]，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[手动加载示例数据][load sample data manually]。
 
 ## <a name="1-connect-to-your-database"></a>1.连接到您的数据库
 若要打开 Power BI 并连接到 AdventureWorksDW 数据库，请执行以下操作：
@@ -89,7 +89,7 @@ ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
 随时可以通过单击“文件”，并选择“保存”来保存进度。
 
 ## <a name="next-steps"></a>后续步骤
-使用示例数据进行练习后，接下来了解如何[开发][develop]、[加载][load]或[迁移][migrate]数据。 或查看 [Power BI 网站][Power BI website]。
+花费一些时间使用示例数据进行练习后，接下来请了解如何[开发][develop]、[加载][load]或[迁移][migrate]数据。 或浏览 [Power BI 网站][Power BI website]。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -106,19 +106,19 @@ ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
 [12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[迁移
-[开发]: sql-data-warehouse-overview-develop.md
-[加载]: sql-data-warehouse-overview-load.md
-[手动加载示例数据]: sql-data-warehouse-load-sample-databases.md
-[连接到 SQL 数据仓库]: sql-data-warehouse-integrate-power-bi.md
-[创建 SQL 数据仓库]: sql-data-warehouse-get-started-provision.md
+[migrate]: sql-data-warehouse-overview-migrate.md
+[develop]: sql-data-warehouse-overview-develop.md
+[load]: sql-data-warehouse-overview-load.md
+[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
-[Azure 门户]: https://portal.azure.com/
-[Power BI 网站]: http://www.powerbi.com/
+[Azure portal]: https://portal.azure.com/
+[Power BI website]: http://www.powerbi.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

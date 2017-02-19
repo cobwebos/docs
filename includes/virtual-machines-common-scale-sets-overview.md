@@ -16,7 +16,7 @@
 
 在这些模板的详细页中包含一个按钮，使用该按钮可链接到门户部署功能。 若要部署 VM 缩放集，请单击该按钮，然后填写门户中所需的任何参数。 如果你不确定某个资源是否支持大写或大小写混合，则更为安全的做法是始终使用小写参数值。 此外，此处还对 VM 缩放集模板进行了方便的视频解剖：
 
-[VM 规模集模板详细分析](https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player)
+[VM 规模集模板详细分析](https://channel9.msdn.com/Blogs/Azure/VM-Scale-Set-Template-Dissection/player)
 
 ## <a name="scaling-a-vm-scale-set-out-and-in"></a>扩大和缩小 VM 缩放集
 若要增加或减少 VM 规模集中的虚拟机数目，只需更改 *capacity* 属性并重新部署模板。 这种简单性可让你在想要定义 Azure 自动缩放不支持的自定义缩放事件时轻松编写自己的自定义缩放层。
@@ -64,7 +64,7 @@
 ## <a name="vm-scale-set-frequently-asked-questions"></a>VM 缩放集常见问题
 **问：** VM 缩放集中可以有多少个 VM？
 
-**答：** 如果使用可分布在多个存储帐户中的平台映像，则可以有 100 台。 如果使用自定义映像，则最多可以有 40 台，因为在预览期间，自定义映像限于单个存储帐户。
+**答：** 如果使用可分布在多个存储帐户中的平台映像，则可以有&100; 台。 如果使用自定义映像，则最多可以有 40 台，因为在预览期间，自定义映像限于单个存储帐户。
 
 **问：**VM 规模集还存在哪些其他资源限制？
 
@@ -118,6 +118,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

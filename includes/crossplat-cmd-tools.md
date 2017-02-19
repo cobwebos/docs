@@ -41,7 +41,7 @@
 
 若要使用适用于 Mac 和 Linux 的 Azure 命令行工具，你需要一个 Azure 帐户。
 
-打开 Web 浏览器，浏览到 [http://www.windowsazure.com][windowsazuredotcom] 并单击右上角的“免费试用”。
+打开 Web 浏览器，浏览到 [http://www.windowsazure.com][windowsazuredotcom] 并单击右上角的“免费帐户”。
 
 ![Azure 网站][Azure Web Site]
 
@@ -214,6 +214,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 
