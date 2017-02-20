@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 02/09/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 142aa206431d05505c7990c5e5b07b3766fb0a37
-ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
+ms.sourcegitcommit: fbc96a248de20b67a72e6a0150fe4b9b754ec4fe
+ms.openlocfilehash: d61ec29026ae5bbbdf33d7810e2e35c4d6bee1e7
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 * 将诊断日志保存到[**存储帐户**](monitoring-archive-diagnostic-logs.md)进行审核或手动检查。 可以使用“诊断设置”指定保留时间（天）。
 * [将诊断日志流式传输到**事件中心**](monitoring-stream-diagnostic-logs-to-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-* 使用 [OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md) 对诊断日志进行分析
+* 使用 [OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md) 对诊断日志进行分析
 
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户或事件中心命名空间就不必与资源发出日志位于同一订阅中。
 
@@ -39,22 +39,22 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 * 将诊断日志发送到何处：存储帐户、事件中心和/或 OMS Log Analytics。
 * 发送哪些日志类别。
-* 应该将每个日志类别保留在存储帐户中多长时间 – 保留期为 0 天表示永久保留日志。 如果不需永久保留，可将此值的范围设置为 1 到 2147483647。 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
+* 应该将每个日志类别保留在存储帐户中多长时间 – 保留期为&0; 天表示永久保留日志。 如果不需永久保留，可将此值的范围设置为 1 到 2147483647。 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
 
 这些设置可以通过“诊断”边栏选项卡（适用于 Azure 门户中的资源）、Azure PowerShell 和 CLI 命令或 [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) 轻松进行配置。
 
 > [!WARNING]
 > 计算资源（例如，VM 或 Service Fabric）的诊断日志和指标使用[单独的输出配置和选择机制](../azure-diagnostics.md)。
-> 
-> 
+>
+>
 
 ## <a name="how-to-enable-collection-of-diagnostic-logs"></a>如何启用诊断日志集合
 可以在门户中通过资源的边栏选项卡在创建资源的过程中或在创建资源以后启用诊断日志集合。 也可使用 Azure PowerShell 或 CLI 命令（或者使用 Azure 监视器 REST API）在任何时间点启用诊断日志。
 
 > [!TIP]
 > 这些说明可能不能直接应用到每个资源。 请参阅此页底部的架构链接，了解适用于特定资源类型的特殊步骤。
-> 
-> 
+>
+>
 
 [此文介绍如何使用资源模板在创建资源时启用诊断设置](monitoring-enable-diagnostic-logs-using-template.md)
 
@@ -63,7 +63,7 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 1. 转到“新建”并选择感兴趣的资源。
 2. 在配置基本设置并选择大小以后，即可在“设置”边栏选项卡的“监视”下选择“启用”，然后选择一个存储帐户，在其中存储诊断日志。 当用户向存储帐户发送诊断时，系统会针对存储和事务收取正常数据费率。
-   
+
    ![在资源创建过程中启用诊断日志](./media/monitoring-overview-of-diagnostic-logs/enable-portal-new.png)
 3. 单击“确定”并创建资源。
 
@@ -71,7 +71,7 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 1. 转到资源的边栏选项卡，打开“诊断”边栏选项卡。
 2. 单击“启用”，然后选取存储帐户和/或事件中心。
-   
+
    ![在创建资源以后启用诊断日志](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
 3. 在“日志”下，选择要进行收集或流式传输操作的“日志类别”。
 4. 单击“保存” 。
@@ -81,19 +81,25 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 若要允许在存储帐户中存储诊断日志，请使用以下命令：
 
+```powershell
     Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+```
 
 存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
 
 若要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
+```powershell
     Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+```
 
 服务总线规则 ID 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。
 
 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 
+```powershell
     Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+```
 
 你可以使用以下命令获取 Log Analytics 工作区的资源 ID：
 
@@ -108,19 +114,25 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 若要允许在存储帐户中存储诊断日志，请使用以下命令：
 
+```azurecli
     azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
+```
 
 存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
 
 若要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
+```azurecli
     azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+```
 
 服务总线规则 ID 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。
 
 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 
+```azurecli
     azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+```
 
 你可以组合这些参数以启用多个输出选项。
 
@@ -144,8 +156,8 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 > [!NOTE]
 > 如果已将诊断设置配置为将其保存到存储帐户，则诊断日志将仅显示在此视图中并且可供下载。
-> 
-> 
+>
+>
 
 单击“诊断设置”链接将弹出“诊断设置”边栏选项卡，可以在其中启用、禁用或修改所选资源的诊断设置。
 
@@ -161,12 +173,13 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 | Azure 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
 | 数据湖存储 |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Logic Apps |没有可用架构。 |
+| Logic Apps |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Azure 批处理 |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
-| 事件中心 |没有可用架构。 |
+| 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
+| 流分析 |[作业诊断日志](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | 服务总线 |没有可用架构。 |
-| 流分析 |没有可用架构。 |
+
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 |资源类型|类别|类别显示名称|
@@ -185,7 +198,6 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|集成帐户跟踪事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|网络安全组事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|网络安全组规则计数器|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|网络安全组规则流事件|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|负载均衡器警报事件|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
@@ -204,7 +216,6 @@ ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 
