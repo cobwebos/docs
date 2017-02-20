@@ -1,10 +1,10 @@
 ---
-title: "ExpressRoute 线路和路由域 | Microsoft Docs"
+title: "Azure ExpressRoute 线路和路由域 | Microsoft 文档"
 description: "本页提供 ExpressRoute 线路和路由域的概述。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bd3b8761c0390d9b1f55423ec3fde0301cf8a20b
+ms.sourcegitcommit: 729c89e26e0c2da3ec88b554645091997dea4552
+ms.openlocfilehash: 1f0406b131957500c303172409cafa6be8fb3228
 
 
 ---
@@ -52,7 +52,7 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 
 始终会从 WAN 发起到 Microsoft Azure 服务的连接。 Microsoft Azure 服务无法通过此路由域发起到你网络的连接。 启用公共对等互连后，你将能够连接到所有 Azure 服务。 我们不允许选择要将路由播发到的服务。 可以在 [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/download/details.aspx?id=41653)页上查看我们通过此对等互连播发给用户的前缀列表。 该页每周更新。
 
-你可以在网络中定义自定义路由筛选器，以只使用所需的路由。 有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。 你可以在网络中定义自定义路由筛选器，以只使用所需的路由。 
+你可以在网络中定义自定义路由筛选器，以只使用所需的路由。 有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。 
 
 有关通过公共对等路由域支持的服务的详细信息，请参阅[常见问题解答页](expressroute-faqs.md)。 
 
@@ -89,6 +89,6 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

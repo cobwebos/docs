@@ -1,10 +1,10 @@
 ---
-title: "使用经典部署模型和 PowerShell 创建和修改 ExpressRoute 线路 | Microsoft Docs"
+title: "创建和修改 ExpressRoute 线路：PowerShell：Azure 经典 | Microsoft 文档"
 description: "本文将指导你完成创建和预配 ExpressRoute 线路的步骤。 本文还介绍了如何检查状态，以及如何更新、删除和预配线路。"
 documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 0134d242-6459-4dec-a2f1-4657c3bc8b23
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 5c6ee9ef23e8594391a4fce313f945b31e6870a7
-ms.openlocfilehash: ec5f37c7b24c36b20ecd36148c1dd12185bcecb4
+ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
+ms.openlocfilehash: 47be5ec3cf74bc10b0dab289650e29dae8cf0c03
 
 
 ---
@@ -333,6 +333,6 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

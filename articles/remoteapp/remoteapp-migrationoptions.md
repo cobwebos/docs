@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: d12ccdc13d6964a6de8068a63f945c7eac40b682
+ms.sourcegitcommit: 7c75fd870efb93bcf6c69ccf8a8ea9b56288c749
+ms.openlocfilehash: 0744b317f595786b91afce3c9e9d59f64ceef25d
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: d12ccdc13d6964a6de8068a63f945c7eac40b682
 
 自助服务 IaaS 是一种由自己管理、操作和所有的自助式部署，直接部署在虚拟机 (VM) 或物理系统上。 而另一方面，完全托管式 PaaS/SaaS 产品/服务更像 Azure RemoteApp，即合作伙伴在远端解决方案之上提供一个服务层，处理操作并提供服务，而作为客户的你只做一些映像和应用管理的事情。
 
-继续阅读以了解更多信息，包括不同托管选项的示例。    
+[查看有关迁移选项的 Azure RemoteApp 网络研讨会](https://social.msdn.microsoft.com/Forums/azure/40557aaa-3e9f-403c-b221-ad3eac10dc56/migration-option-webinar-recordings?forum=AzureRemoteApp)，或者继续阅读以获取详细信息（包括不同托管选项的示例）。
 
 ## <a name="self-managed-iaas-solutions"></a>自托管 (IaaS) 解决方案
 ### <a name="rds-on-iaas"></a>**RDS on IaaS**
@@ -212,6 +212,6 @@ Microsoft 云服务提供商：是
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

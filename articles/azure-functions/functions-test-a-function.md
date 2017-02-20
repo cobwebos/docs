@@ -14,103 +14,86 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/10/2016
+ms.date: 02/02/2017
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7e9534afa8ecd224b4e3c1df2f4465b70d961d2c
-ms.openlocfilehash: b3b0251436497cfdfb36369a05e01519c631e351
+ms.sourcegitcommit: 3603f58a9df1f0222a75b863ad2c1ab1b6e13fb2
+ms.openlocfilehash: c6868566e513c5cd2c76be3305ca6c9035d58acd
 
 
 ---
 # <a name="testing-azure-functions"></a>测试 Azure Functions
 ## <a name="overview"></a>概述
-本教程将介绍测试函数的不同方法。 会定义一个 http 触发器函数，函数可通过查询字符串参数或请求正文接受输入。 默认 **HttpTrigger Node.js 函数**模板代码支持 `name` 查询字符串参数。 我们还将在请求正文中添加代码，支持含有用户 `address` 信息的参数。
+本主题演示各种测试函数的方法，其中包括以下常规方法：
+
++ 基于 HTTP 的工具，如 cURL、Postman，甚至用作基于 Web 的触发器的 Web 浏览器。 
++ 用于测试基于 Azure 存储的触发器的存储资源管理器。
++ Functions 门户中的“测试”选项卡。
++ 计时器触发的函数。
++ 测试应用程序或框架。  
+
+上述所有测试方法均使用一个 HTTP 触发器函数，该函数可通过查询字符串参数或请求正文接受输入。 你将在第一部分中创建此函数。
 
 ## <a name="create-a-function-for-testing"></a>创建测试函数
-此教程中大多使用经过轻微修改的**HttpTrigger Nodejs 函数**模型版本，新建函数时可使用该模型版本。  新建函数时需要帮助，可查看[创建你的第一个 Azure 函数](functions-create-first-azure-function.md)。  在 [Azure 门户]创建测试函数时只需选择 **HttpTrigger Nodejs 函数**模型。
+此教程中大多使用经过略微修改的 HttpTrigger JavaScript 函数模板版本，新建函数时可使用该模板版本。  新建函数时需要帮助，可查看[创建你的第一个 Azure 函数](functions-create-first-azure-function.md)。  在 [Azure 门户]中创建测试函数时只需选择 **HttpTrigger- JavaScript** 模板。
 
 默认函数模型基本为 hello world 函数，可从请求正文或查询字符串 `name=<your name>` 回显名称。  我们将更新代码，让你也能提供名称和代码作为请求正文中的 JSON 内容。 然后该函数会在可能的时候将这些回显到客户端。   
 
 使用下方代码更新函数，测试将会用到这些代码：
 
 ```javascript
-module.exports = function(context, req) {
-    context.log("Node.js HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
-    context.log("Request Headers = " + JSON.stringify(req.headers));    
+module.exports = function (context, req) {
+    context.log("HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
+    context.log("Request Headers = " + JSON.stringify(req.headers));
+    var res;
 
     if (req.query.name || (req.body && req.body.name)) {
         if (typeof req.query.name != "undefined") {
             context.log("Name was provided as a query string param...");
-            ProcessNewUserInformation(context, req.query.name);
+            res = ProcessNewUserInformation(context, req.query.name);
         }
         else {
             context.log("Processing user info from request body...");
-            ProcessNewUserInformation(context, req.body.name, req.body.address);
+            res = ProcessNewUserInformation(context, req.body.name, req.body.address);
         }
     }
     else {
-        context.res = {
+        res = {
             status: 400,
             body: "Please pass a name on the query string or in the request body"
         };
     }
-    context.done();
+    context.done(null, res);
 };
+function ProcessNewUserInformation(context, name, address) {
+    context.log("Processing user information...");
+    context.log("name = " + name);
+    var echoString = "Hello " + name;
+    var res;
 
-function ProcessNewUserInformation(context, name, address)
-{    
-    context.log("Processing User Information...");            
-    context.log("name = " + name);            
-    echoString = "Hello " + name;
-
-    if (typeof address != "undefined")
-    {
+    if (typeof address != "undefined") {
         echoString += "\n" + "The address you provided is " + address;
-        context.log("address = " + address);            
+        context.log("address = " + address);
     }
-
-    context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: echoString
-        };
+    res = {
+        // status: 200, /* Defaults to 200 */
+        body: echoString
+    };
+    return res;
 }
 ```
 
 ## <a name="test-a-function-with-tools"></a>使用工具测试函数
-### <a name="test-with-curl"></a>使用 cURL 测试
-测试软件时往往只需查看命令行来帮助你调试应用程序，这与函数相同。
-
-若要测试上述函数，请从门户复制**函数 URL**。 格式应如下：
-
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
-
-此 URL 用于触发函数，可在命令行上使用 cURL 命令对其进行测试，发出针对函数的 Get（`-G` 或 `--get`）请求：
-
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
-
-上方的特定示例需要查询字符串参数，可在 cURL 命令行中将参数作为数据 (`-d`) 传送：
-
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
-
-按 Enter，命令行上会出现函数输出。
-
-![](./media/functions-test-a-function/curl-test.png)
-
-在门户的“日志”窗口中，执行函数时会记录与下方类似的输出：
-
-    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
-    2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
-    2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
-    2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+除了 Azure 门户之外，还有各种可用于触发函数进行测试的工具。 其中包括 HTTP 测试工具（基于 UI 的工具和命令行）、Azure 存储访问工具，甚至简单的 Web 浏览器。
 
 ### <a name="test-with-a-browser"></a>使用浏览器测试
-可以使用浏览器测试不需要参数，或只需要查询字符串参数的函数。
+Web 浏览器是通过 HTTP 触发器函数的简单方法。 可以对不需要正文负载而仅使用查询字符串参数的 GET 请求使用浏览器。
 
 若要测试上方定义的函数，请从门户复制**函数 URL**。 格式应如下：
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-附加如下 `name` 查询字符串参数，为 `<Enter a name here>` 占位符使用实际名称。
+使用 `<Enter a name here>` 占位符的实际名称将 `name` 参数追加到查询字符串。 
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
@@ -118,21 +101,23 @@ function ProcessNewUserInformation(context, name, address)
 
 ![](./media/functions-test-a-function/browser-test.png)
 
+此示例是 Chrome 浏览器，它以 XML 格式包装返回的字符串。 其他浏览器只显示字符串值。
+
 在门户的“日志”窗口中，执行函数时会记录与下方类似的输出：
 
     2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
     2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
-    2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Wes from a browser
+    2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Glenn from a browser
     2016-03-23T07:35:10.338 Request Headers = {"cache-control":"max-age=0","connection":"Keep-Alive","accept":"text/html","accept-encoding":"gzip","accept-language":"en-US"}
     2016-03-23T07:35:10.338 Name was provided as a query string param.
     2016-03-23T07:35:10.338 Processing User Information...
     2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
 
 ### <a name="test-with-postman"></a>使用 Postman 测试
-推荐使用 Postman 来测试多数函数。 若要安装 Postman，请参阅[获取 Postman](https://www.getpostman.com/)。 Postman 可控制更多 HTTP 请求的属性。
+推荐使用与 Chrome 浏览器集成的 Postman 来测试大多数函数。 若要安装 Postman，请参阅[获取 Postman](https://www.getpostman.com/)。 Postman 可控制更多 HTTP 请求的属性。
 
 > [!TIP]
-> 使用你喜欢的 REST 客户端。 下面是集中替代 Postman 的方案：  
+> 使用你最熟悉的 HTTP 测试工具。 下面是集中替代 Postman 的方案：  
 >
 > * [Fiddler](http://www.telerik.com/fiddler)  
 > * [Paw](https://luckymarmot.com/paw)  
@@ -162,7 +147,7 @@ function ProcessNewUserInformation(context, name, address)
 
     2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
-    2016-03-23T08:04:57.763 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
+    2016-03-23T08:04:57.763 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
     2016-03-23T08:04:57.763 Request Headers = {"cache-control":"no-cache","connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
     2016-03-23T08:04:57.763 Processing user info from request body...
     2016-03-23T08:04:57.763 Processing User Information...
@@ -170,10 +155,36 @@ function ProcessNewUserInformation(context, name, address)
     2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
+### <a name="test-with-curl-from-the-command-line"></a>从命令行使用 cURL 测试 
+测试软件时往往只需查看命令行来帮助你调试应用程序，这与函数相同。 请注意，默认情况下，cURL 在基于 Linux 的系统上可用。 在 Windows 上，必须先下载并安装 [cURL 工具](https://curl.haxx.se/)。 
+
+若要测试上述函数，请从门户复制**函数 URL**。 格式应如下：
+
+    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+
+此 URL 用于触发函数，可在命令行上使用 cURL 命令对其进行测试，发出针对函数的 GET（`-G` 或 `--get`）请求：
+
+    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+
+上方的特定示例需要查询字符串参数，可在 cURL 命令行中将参数作为数据 (`-d`) 传送：
+
+    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
+
+运行命令并在命令行上查看该函数的以下输出：
+
+![](./media/functions-test-a-function/curl-test.png)
+
+在门户的“日志”窗口中，执行函数时会记录与下方类似的输出：
+
+    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
+    2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+    2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
+    2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+
 ### <a name="test-a-blob-trigger-using-storage-explorer"></a>使用存储浏览器测试 blob 触发器
 可使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)测试 blob 触发器函数。
 
-1. 在 Function App 的 [Azure 门户]中，新建一个 C#、F# 或 Node blob 触发器函数。 将要监视路径设为 blob 容器名。 例如：
+1. 在 Function App 的 [Azure 门户]中，新建一个 C#、F# 或 JavaScript blob 触发器函数。 将要监视路径设为 blob 容器名。 例如：
 
         files
 2. 单击 **+** 按钮选择或创建需要使用的存储帐户。 然后单击“创建” 。
@@ -193,6 +204,8 @@ function ProcessNewUserInformation(context, name, address)
         2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
 ## <a name="test-a-function-within-functions"></a>在函数内部测试函数
+Azure Functions 门户旨在让你测试 HTTP 和计时器触发的函数。 还可以创建函数以触发其他要测试的函数。
+
 ### <a name="test-with-the-functions-portal-run-button"></a>使用 Functions 门户运行按钮进行测试
 通过门户提供的“运行”按钮可完成一些有限的测试。 可使用“运行”按钮提供请求正文，但无法提供查询字符串参数或更新请求标题。
 
@@ -209,7 +222,7 @@ function ProcessNewUserInformation(context, name, address)
 
     2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
-    2016-03-23T08:03:18.697 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
+    2016-03-23T08:03:18.697 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
     2016-03-23T08:03:18.697 Request Headers = {"connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
     2016-03-23T08:03:18.697 Processing user info from request body...
     2016-03-23T08:03:18.697 Processing User Information...
@@ -288,9 +301,10 @@ function ProcessNewUserInformation(context, name, address)
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
 ## <a name="test-a-function-with-code"></a>使用代码测试函数
-### <a name="test-a-http-trigger-function-with-code-nodejs"></a>使用代码测试 HTTP 触发器函数：Node.js
-可使用 Node.js 代码执行 http 请求，测试 Azure 函数。
+在某些情况下，你将需要创建外部应用程序或框架以测试函数。
 
+### <a name="test-a-http-trigger-function-with-code-nodejs"></a>使用代码测试 HTTP 触发器函数：Node.js
+可使用 Node.js 应用执行 HTTP 请求以测试函数。
 请确保设置以下内容：
 
 * 将要求选中的 `host` 设置为 Function App 主机
@@ -352,7 +366,7 @@ req.end(bodyString);
 
     2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-    2016-03-23T08:09:01.153 Node.js HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
+    2016-03-23T08:09:01.153 HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
     2016-03-23T08:09:01.153 Request Headers = {"connection":"Keep-Alive","host":"functionsExample.azurewebsites.net"}
     2016-03-23T08:09:01.153 Name not provided as query string param. Checking body...
     2016-03-23T08:09:01.153 Request Body Type = object
@@ -431,6 +445,6 @@ static void Main(string[] args)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

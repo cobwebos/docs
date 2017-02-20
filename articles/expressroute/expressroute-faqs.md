@@ -1,10 +1,10 @@
 ---
-title: "ExpressRoute 常见问题"
+title: "Azure ExpressRoute 常见问题解答 | Microsoft 文档"
 description: "ExpressRoute 常见问题包含有关支持的 Azure 服务、费用、数据和连接、SLA、提供程序和位置、带宽的信息和其他技术详细信息。"
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2016
+ms.date: 02/01/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 9f26fd3796a45d6a4a782f80632e09a6390f1dbe
-ms.openlocfilehash: ae2dbb8524acba44f83397b7340ca98433b34de6
+ms.sourcegitcommit: 899fbfb63633286a1065546b1f262cbc1d7d39c4
+ms.openlocfilehash: d11d57a352138e43f7a7e9d2ec91663361be6f95
 
 
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 ## <a name="what-is-expressroute"></a>什么是 ExpressRoute？
-ExpressRoute 是一项 Azure 服务，允许你在 Microsoft 数据中心与你的本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过公共 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。
+ExpressRoute 是一项 Azure 服务，允许你在 Microsoft 数据中心与你的本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>使用 ExpressRoute 和专用网络连接的好处是什么？
-ExpressRoute 连接不通过公共 Internet，与通过公共 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和一贯较低的延迟。 在某些情况下，使用 ExpressRoute 连接在本地设备和 Azure 之间传输数据可以产生显著的成本效益。
+ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和较低的一致延迟。 在某些情况下，使用 ExpressRoute 连接在本地设备和 Azure 之间传输数据可以产生显著的成本效益。
 
 ### <a name="what-microsoft-cloud-services-are-supported-over-expressroute"></a>可通过 ExpressRoute 支持哪些 Microsoft 云服务？
 ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。  在正式版发布后，请查看最新信息。
@@ -83,7 +83,7 @@ ExpressRoute 不支持以下 Azure 服务
 ### <a name="what-connection-speeds-are-supported-by-expressroute"></a>ExpressRoute 支持的连接速度是多少？
 支持带宽提供：
 
-|50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1Gbps, 2 Gbps,  5 Gbps, 10Gbps|
+|50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps|
 
 ### <a name="which-service-providers-are-available"></a>可以选择哪些服务提供商？
 有关服务提供商和位置的列表，请参阅 [ExpressRoute 合作伙伴和位置](expressroute-locations.md)。
@@ -201,7 +201,7 @@ ExpressRoute 高级版包括下面列出的功能集合。
 在启用相应的功能后，将启用 ExpressRoute 高级功能；可以通过更新线路状态关闭高级功能。 可以在创建线路时启用 ExpressRoute 高级版，或者通过调用“更新专用线路 API”/PowerShell cmdlet 来启用 ExpressRoute 高级版。
 
 ### <a name="how-do-i-disable-expressroute-premium"></a>如何禁用 ExpressRoute 高级版？
-你可以通过调用“更新专用线路 API”/PowerShell cmdlet 来禁用 ExpressRoute 高级版。在禁用 ExpressRoute 高级版之前，必须确保调整连接需求以满足默认限制。 如果你的利用率级别超出了默认限制，我们将拒绝 ExpressRoute 禁用请求。
+可以通过调用更新专用线路 API/PowerShell cmdlet 来禁用 ExpressRoute 高级版。 必须确保已调整连接需求以满足默认限制，然后再禁用 ExpressRoute 高级版。 如果你的利用率级别超出了默认限制，我们将拒绝 ExpressRoute 禁用请求。
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>我是否可以从高级功能集选择所需的功能？
 不会。 无法选择所需的功能。 如果你启用 ExpressRoute 高级版，我们会启用所有功能。
@@ -250,6 +250,6 @@ Office 365 服务和 CRM Online 要求启用高级版外接程序。 [定价详�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

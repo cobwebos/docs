@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 79f6398b861597e3303231bc17f69be1bde947ae
-ms.openlocfilehash: ef052d074b593e4bbecfdbfb3af76d1ba1249e33
+ms.sourcegitcommit: 114ed651f914060818f10efac849e7f85a3da981
+ms.openlocfilehash: f41396e4aa0c7b6cc2f1768e0c2ba3b95ee31cd3
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: ef052d074b593e4bbecfdbfb3af76d1ba1249e33
 * https://www.remoteapp.windowsazure.com 
 * https://*remoteapp.windowsazure.com  
 * https://*.core.windows.net  
-* Outbound: TCP: 443, TCP: 10101-10175 
+* 出站：TCP: TCP: 443、9351、9352、10101-10175 
 * Optional – UDP: 10201-10275  
 
 ## <a name="azure-remoteapp-clients-need-access-to-these-endpoints-and-urls"></a>Azure RemoteApp 客户端需要访问以下终结点和 URL：
@@ -52,6 +52,6 @@ ms.openlocfilehash: ef052d074b593e4bbecfdbfb3af76d1ba1249e33
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

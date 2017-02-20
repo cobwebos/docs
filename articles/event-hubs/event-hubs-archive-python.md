@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 01/12/2017
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 0dc22f03c114508190a8da7ae4ca385c39690d2c
-ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
+ms.sourcegitcommit: 25dd25d8f8f0388ed7ef11bb26344ad7199fde2e
+ms.openlocfilehash: 3f0487fba592426c835d81a46a752697ecf34d8b
 
 
 ---
 # <a name="event-hubs-archive-walkthrough-python"></a>事件中心存档演练：Python
 事件中心存档是事件中心的一项新功能，用户 可借助此自动将事件中心中的流数据传送到所选的 Azure Blob 存储帐户。 这样易于对实时流数据执行批处理操作。 本文介绍如何通过 Python 使用事件中心存档功能。 有关事件中心存档的详细信息，请参阅[概述文章](event-hubs-archive-overview.md)。
 
-此示例使用 Azure Python SDK 来演示存档功能。 Sender.py 程序以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心已配置为使用存档功能将此数据成批地写入到 blob 存储。 然后 archivereader.py 应用读取这些 blob，为每个设备创建一个附加文件，然后将数据写入到 .csv 文件中。
+此示例使用 [Azure Python SDK](https://azure.microsoft.com/develop/python/) 来演示存档功能。 Sender.py 程序以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心已配置为使用存档功能将此数据成批地写入到 blob 存储。 然后 archivereader.py 应用读取这些 blob，为每个设备创建一个附加文件，然后将数据写入到 .csv 文件中。
 
 将要完成的任务
 
@@ -37,19 +37,18 @@ ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
 
 - Python 2.7.x
 - Azure 订阅
+- 活动的[事件中心命名空间和事件中心](event-hubs-create.md)。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在门户的左侧导航窗格中，依次单击“新建”、“数据 + 存储”和“存储帐户”。
+2. 在门户的左侧导航窗格中，依次单击“新建”、“存储”和“存储帐户”。
 3. 完成“存储帐户”边栏选项卡中的字段，然后单击“创建”。
    
    ![][1]
 4. 看到“部署成功”消息后，单击新存储帐户名，然后在“概要”边栏选项卡中单击“Blob”。 “Blob 服务”边栏选项卡打开时，单击顶部的“+ 容器”。 将容器命名为“archive”，然后关闭“Blob 服务”边栏选项卡。
 5. 单击左侧边栏选项卡中的“访问密钥”，复制存储帐户名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。
-
-[!INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>创建用于将事件发送到事件中心的 Python 脚本
 1. 打开常用的 Python 编辑器，如 [Visual Studio Code][Visual Studio Code]。
@@ -72,10 +71,10 @@ ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
        for dev in devices:
            reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
            s = json.dumps(reading)
-           sbs.send\_event('myhub', s)
+           sbs.send_event('INSERT YOUR EVENT HUB NAME', s)
        print y
    ```
-4. 更新前面的代码，以使用在创建事件中心命名空间时获得的命名空间名称和密钥值。
+4. 更新前面的代码，以使用在创建事件中心命名空间时获得的命名空间名称、密钥值和事件中心名称。
 
 ## <a name="create-a-python-script-to-read-your-archive-files"></a>创建用于读取存档文件的 Python 脚本
 1. 填写边栏选项卡，然后单击“创建”。
@@ -95,33 +94,33 @@ ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
        reader = DataFileReader(open(filename, 'rb'), DatumReader())
        dict = {}
        for reading in reader:
-           parsed\_json = json.loads(reading["Body"])
-           if not 'id' in parsed\_json:
+           parsed_json = json.loads(reading["Body"])
+           if not 'id' in parsed_json:
                return
-           if not dict.has\_key(parsed\_json['id']):
+           if not dict.has_key(parsed_json['id']):
            list = []
-           dict[parsed\_json['id']] = list
+           dict[parsed_json['id']] = list
        else:
-           list = dict[parsed\_json['id']]
-           list.append(parsed\_json)
+           list = dict[parsed_json['id']]
+           list.append(parsed_json)
        reader.close()
        for device in dict.keys():
            deviceFile = open(device + '.csv', "a")
            for r in dict[device]:
-               deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\\n')
+               deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\n')
    
    def startProcessing(accountName, key, container):
        print 'Processor started using path: ' + os.getcwd()
-       block\_blob\_service = BlockBlobService(account\_name=accountName, account\_key=key)
-       generator = block\_blob\_service.list\_blobs(container)
+       block_blob_service = BlockBlobService(account_name=accountName, account_key=key)
+       generator = block_blob_service.list_blobs(container)
        for blob in generator:
-           if blob.properties.content\_length != 0:
+           if blob.properties.content_length != 0:
                print('Downloaded a non empty blob: ' + blob.name)
-               cleanName = string.replace(blob.name, '/', '\_')
-               block\_blob\_service.get\_blob\_to\_path(container, blob.name, cleanName)
+               cleanName = string.replace(blob.name, '/', '_')
+               block_blob_service.get_blob_to_path(container, blob.name, cleanName)
                processBlob(cleanName)
                os.remove(cleanName)
-           block\_blob\_service.delete\_blob(container, blob.name)
+           block_blob_service.delete_blob(container, blob.name)
    startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'archive')
    ```
 4. 请务必在调用 `startProcessing` 时粘贴存储帐户名称和密钥的相应值。
@@ -168,7 +167,7 @@ ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
 [Azure portal]: https://portal.azure.com/
 [Overview of Event Hubs Archive]: event-hubs-archive-overview.md
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
-[About Azure storage accounts]: https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
+[About Azure storage accounts]: ../storage/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
@@ -176,6 +175,6 @@ ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

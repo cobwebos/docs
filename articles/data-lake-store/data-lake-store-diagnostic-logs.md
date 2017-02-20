@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 276033907d454a54b2d9d5354f8e1dc48a7b01d4
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: f139674f96793b8486c541c9e3f1ead751b97232
 
 
 ---
@@ -31,17 +31,26 @@ ms.openlocfilehash: 276033907d454a54b2d9d5354f8e1dc48a7b01d4
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>对 Data Lake Store 帐户启用诊断日志记录
 1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 打开 Data Lake Store 帐户，在 Data Lake Store 帐户边栏选项卡单击“设置”，然后单击“诊断设置”。
-3. 在“诊断”边栏选项卡中，作出以下更改来配置诊断日志记录。
+2. 打开 Data Lake Store 帐户，在 Data Lake Store 帐户边栏选项卡上单击“设置”，然后单击“诊断日志”。
+3. 在“诊断日志”边栏选项卡中，单击“启用诊断”。
+
+    ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "启用诊断日志")
+
+3. 在“诊断”边栏选项卡上，作出以下更改来配置诊断日志记录。
    
-    ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Enable diagnostic logs")
+    ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "启用诊断日志")
    
    * 将“状态”设置为“开启”，启用诊断日志记录。
-   * 可选择以两种不同的方式存储/处理数据。
-     * 选择选项“导出到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，则必须提供要使用的 Azure 事件中心的详细信息。
-     * 选择选项“导出到存储帐户”将日志存储到 Azure 存储帐户。 要存档以后会进行批处理的数据时使用此选项。 如果选择此选项，必须提供一个要将日志保存到的 Azure 存储帐户。
-   * 指定是要获取审核日志还是请求日志，或者两者。
-   * 指定数据必须保留的天数。
+   * 可选择以不同的方式存储/处理数据。
+     
+        * 选择选项“存档到存储帐户”将日志存储到 Azure 存储帐户。 要存档以后会进行批处理的数据时使用此选项。 如果选择此选项，必须提供一个要将日志保存到的 Azure 存储帐户。
+        
+        * 选择选项“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
+
+        * 选择选项“发送到 Log Analytics”，以使用 Azure Log Analytics 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Operations Management Suite 工作区的详细信息。
+     
+   * 指定是要获取审核日志还是请求日志，或者两者都获取。
+   * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
    * 单击“保存” 。
 
 启用诊断设置后，可在“诊断日志”选项卡中查看日志。
@@ -55,23 +64,23 @@ ms.openlocfilehash: 276033907d454a54b2d9d5354f8e1dc48a7b01d4
 ### <a name="using-the-data-lake-store-settings-view"></a>使用 Data Lake Store 设置查看
 1. 从 Data Lake Store 帐户“设置”边栏选项卡，单击“诊断日志”。
    
-    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "View diagnostic logs") 
-2. 在“诊断日志”边栏选项卡，可看到按“审核日志”和“请求日志”分类的日志。
+    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "查看诊断日志") 
+2. 在“诊断日志”边栏选项卡上，可看到按“审核日志”和“请求日志”分类的日志。
    
    * 请求日志捕获 Data Lake Store 帐户上作出的每个 API 请求。
    * 审核日志类似于请求日志，但提供 Data Lake Store 帐户上正在执行的操作的更详细的分解结构。 例如，一个单一上传 API 调用请求日志可能导致审核日志中有多个“附加”操作。
 3. 单击每个日志条目的“下载”链接下载日志。
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>从包含日志数据的 Azure 存储帐户
-1. 打开与日志记录的 Data Lake Store 关联的 Azure 存储帐户边栏选项卡，然后单击 Blob。 “Blob 服务”边栏选项卡会列出两个容器。
+1. 打开与日志记录的 Data Lake Store 关联的 Azure 存储帐户边栏选项卡，然后单击 Blob。 “Blob 服务”边栏选项卡上会列出两个容器。
    
-    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "View diagnostic logs")
+    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志")
    
    * 容器 **insights-logs-audit** 包含审核日志。
    * 容器 **insights-logs-requests** 包含请求日志。
 2. 在这些容器中，日志存储在以下结构下。
    
-    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "View diagnostic logs")
+    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "查看诊断日志")
    
     例如，审核日志的完整路径可能是 `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
@@ -177,6 +186,6 @@ Azure Data Lake Store 提供如何处理和分析日志数据的示例。 可在
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

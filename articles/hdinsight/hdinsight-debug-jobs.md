@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bc5c3eb66f1f87dec9b0236be85a4fc96c598db3
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: bcf2791f0e1788d7d18a4efc123066aaf633d549
 
 
 ---
@@ -36,7 +36,7 @@ Azure HDInsight 中的每个 Hadoop 群集都有一个用作默认文件系统�
 * ambariserverlog
 * ambariagentlog
 
-为基于 Windows 的群集创建 3 个表：
+为基于 Windows 的群集创建&3; 个表：
 
 * setuplog：记录在预配/设置 HDInsight 群集的过程中遇到的事件/异常。
 * hadoopinstalllog：记录在群集中安装 Hadoop 时遇到的事件/异常。 可以使用此表来调试使用自定义参数创建的群集的相关问题。
@@ -331,6 +331,6 @@ Power Query 可以从 [www.microsoft.com/en-us/download/details.aspx?id=39379](h
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

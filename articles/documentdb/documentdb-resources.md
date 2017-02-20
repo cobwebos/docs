@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 01/28/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 51c5694379d3f35ed2595f0cafeb00c6cc527854
-ms.openlocfilehash: 94549905816707fa3dcce3c3e443122162a2c4e8
+ms.sourcegitcommit: a42e04b6a8b09078986ba0d12c6d07305e8068c6
+ms.openlocfilehash: 15d1a9d819fdf9565e85ccea39a922c608aba917
 
 
 ---
@@ -43,7 +43,7 @@ DocumentDB 管理的数据库实体被称为**资源**。 每个资源都通过�
 ![DocumentDB 分层资源模型][1]  
 **分层资源模型**   
 
-若要开始使用资源，必须使用 Azure 订阅[创建 DocumentDB 数据库帐户](documentdb-create-account.md)。 数据库帐户可以包含的一组**数据库**、每个数据库都包含多个**集合**，每个集合又包含**存储过程、触发器、UDF、文档**及相关**附件**。 数据库也有关联的**用户**，每个用户都有一组**权限**，用于访问集合、存储过程、触发器、UDF、文档或附件。 而数据库、用户、权限和集合就是系统定义的资源，其中已知的架构、文档和附件包含用户定义的任意 JSON 内容。  
+若要开始使用资源，必须使用 Azure 订阅[创建数据库帐户](documentdb-create-account.md)。 数据库帐户可以包含的一组**数据库**、每个数据库都包含多个**集合**，每个集合又包含**存储过程、触发器、UDF、文档**及相关**附件**。 数据库也有关联的**用户**，每个用户都有一组**权限**，用于访问集合、存储过程、触发器、UDF、文档或附件。 而数据库、用户、权限和集合就是系统定义的资源，其中已知的架构、文档和附件包含用户定义的任意 JSON 内容。  
 
 | 资源 | 说明 |
 | --- | --- |
@@ -70,8 +70,8 @@ DocumentDB 管理的数据库实体被称为**资源**。 每个资源都通过�
     <tbody>
         <tr>
             <td valign="top"><p><strong>属性</strong></p></td>
-            <td valign="top"><p><strong>是用户设置的还是系统生成的？</strong></p></td>
-            <td valign="top"><p><strong>目的</strong></p></td>
+            <td valign="top"><p><strong>是用户可设置的还是系统生成的？</strong></p></td>
+            <td valign="top"><p><strong>用途</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>_rid</p></td>
@@ -464,6 +464,6 @@ DocumentDB 用户是指对权限进行分组的逻辑命名空间。 DocumentDB 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

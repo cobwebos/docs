@@ -1,5 +1,5 @@
 ---
-title: "使用经典部署模型和 PowerShell 将虚拟网络链接到 ExpressRoute 线路| Microsoft Docs"
+title: "将虚拟网络链接到 ExpressRoute 线路：PowerShell：经典：Azure | Microsoft 文档"
 description: "本文档概述如何使用经典部署模型和 PowerShell 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。"
 services: expressroute
 documentationcenter: na
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: b3a8cdab9e609994b1c4c4d50e9571718e8091de
-ms.openlocfilehash: 2d6af667dcca78e3bfbc108e9c38a99d7a79cd24
+ms.sourcegitcommit: 1276a64d375ff452f3d29a8f7910475256499ac8
+ms.openlocfilehash: 0c16907f306228c4361e55d21dcb0c834ce7de25
 
 
 ---
@@ -163,6 +163,6 @@ ms.openlocfilehash: 2d6af667dcca78e3bfbc108e9c38a99d7a79cd24
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

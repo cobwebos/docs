@@ -1,5 +1,5 @@
 ---
-title: "Managing Role-Based Access Control with the REST API（使用 REST API 管理基于角色的访问控制）"
+title: "使用 REST 进行基于角色的访问控制 - Azure AD | Microsoft 文档"
 description: "使用 REST API 管理基于角色的访问控制"
 services: active-directory
 documentationcenter: na
@@ -12,21 +12,19 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d50031941be34d1e543d901747018ba0635be4d8
+ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
+ms.openlocfilehash: f63381e3349063ba9dd4ceb67d644c1d71d73369
 
 
 ---
-# <a name="managing-role-based-access-control-with-the-rest-api"></a>Managing Role-Based Access Control with the REST API（使用 REST API 管理基于角色的访问控制）
+# <a name="manage-role-based-access-control-with-the-rest-api"></a>使用 REST API 管理基于角色的访问控制
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
-> 
-> 
 
 Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API 有助于精细管理对订阅和资源的访问。 使用此功能，可以通过在特定范围内为 Active Directory 用户、组或服务主体分配某些角色来向其授予访问权限。
 
@@ -43,13 +41,13 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用要列出角色分配的范围替换 *{scope}*。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. 使用 2015-07-01 替换 *{api-version}*。
 3. 使用筛选角色分配列表时要适用的条件替换 *{filter}*：
-   
+
    * 只列出指定范围内的角色分配，而不包括子范围内的角色分配：`atScope()`    
    * 列出特定用户、组或应用程序的角色分配：`principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * 列出特定用户（包括继承自组的用户）的角色分配 | `assignedTo('{objectId of user}')`
@@ -93,7 +91,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用要列出角色分配的范围替换 *{scope}*。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -134,7 +132,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用要创建角色分配的范围替换 *{scope}*。 如果在父范围上创建角色分配，所有子范围将继承相同的角色分配。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1   
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -192,7 +190,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用要创建角色分配的范围替换 *{scope}*。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -233,13 +231,13 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用要列出角色的范围替换 *{scope}*。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. 使用 2015-07-01 替换 *{api-version}*。
 3. 使用要用于筛选角色列表的条件替换 *{filter}*：
-   
+
    * 列出在指定范围及其任何子范围内可用于分配的角色：`atScopeAndBelow()`
    * 使用准确的显示名称搜索角色：`roleName%20eq%20'{role-display-name}'`。 使用角色的准确显示名称的 URL 编码形式。 例如，`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
@@ -316,7 +314,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用要列出角色分配的范围替换 *{scope}*。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -396,7 +394,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用自定义角色的第一个 *AssignableScope* 替换 *{scope}*。 下面的示例演示如何指定不同级别的范围。
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -499,7 +497,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用自定义角色的第一个 *AssignableScope* 替换 *{scope}*。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -602,7 +600,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 在 URI 中，进行以下替代来自定义请求：
 
 1. 使用要删除角色定义的范围替换 *{scope}*。 下面的示例演示如何指定不同级别的范围：
-   
+
    * 资源：/subscriptions/{subscription-id}  
    * 资源组：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * 资源：/subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -649,12 +647,12 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure Resource Manager API
 
 ```
 
+## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

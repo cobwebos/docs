@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2a15377af6f6dee3b9d2b9043f9803923ab3f29b
+ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
+ms.openlocfilehash: 7aab37882e3f831627281bcd197fb6098dc50cc6
 
 
 ---
@@ -29,15 +29,18 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡中，选择“对 SQL 服务器启用审核”。  这将打开“对 SQL 服务器启用审核”边栏选项卡。
+
    ![对 SQL 服务器启用审核][1]
 2. 选择要在其上启用审核的 SQL 服务器。 这将打开“审核设置”边栏选项卡。
+
    ![审核设置][2]
 3. 在“审核设置”边栏选项卡上，选择“审核”下方的“开启”。
+
    ![打开审核设置][3]
 4. 请按照 [SQL 数据库审核入门](../sql-database/sql-database-auditing-get-started.md)中的步骤配置要存储审核日志的存储。 数据收集的订阅存储帐户是默认的存储帐户。
 5. 请按照 [SQL 数据库威胁检测入门](../sql-database/sql-database-threat-detection-get-started.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。
@@ -64,6 +67,6 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

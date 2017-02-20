@@ -1,22 +1,9 @@
 ---
-title: "迁移 DocumentDB S1 帐户 | Microsoft 文档"
-description: "通过在 Azure 门户中进行一些简单的更改，利用 DocumentDB S1 帐户中增加的吞吐量。"
-services: documentdb
-author: mimig1
-manager: jhubbard
-editor: monicar
-documentationcenter: 
-ms.assetid: 6f373fb6-b0d9-4745-b17c-88e8bc5f906a
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/04/2017
-ms.author: mimig
+redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-performance-levels
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: f8190faec63c51fd3e6c69c16e2e1041ac67304e
-ms.openlocfilehash: 36c13458d17651b911ea60d6460e4342f40e87a1
+ms.sourcegitcommit: 94ae24e605f99e23766702a3954db567bb64bb51
+ms.openlocfilehash: 1c055187405b9c858676b2b80e4bc5c4157ef580
 
 
 ---
@@ -51,6 +38,6 @@ ms.openlocfilehash: 36c13458d17651b911ea60d6460e4342f40e87a1
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8fc8917555028d3045166e462362d502e677e4a0
+ms.sourcegitcommit: 53f4898f31ef19a39e1448235ed14c8fc7df7b3b
+ms.openlocfilehash: 50cdea437db5387813c6a3905d14b6904d2aba34
 
 
 ---
@@ -25,23 +25,30 @@ Azure 安全中心每天对 Windows 和 Linux 虚拟机 (VM) 进行监控以找�
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡中，选择“应用系统更新”。
+
    ![应用系统更新][1]
 2. “应用系统更新”边栏选项卡将打开，显示缺少系统更新的 VM 列表。 选择 VM。
+
    ![选择 VM][2]
 3. 边栏选项卡将打开，显示该 VM 缺少的更新的列表。 选择系统更新。 在此示例中，选择 KB3156016。
+
    ![缺少的安全更新][3]
+
 4. 按照“安全更新”边栏选项卡中的步骤来应用缺少的更新。
+
    ![安全更新][4]
 
 ## <a name="reboot-after-system-updates"></a>在系统更新后重启
 1. 返回到“建议”边栏选项卡。 应用系统更新后，将生成名为**在系统更新后重启**的新项。 此项提醒你需要重启 VM 才能完成应用系统更新的过程。
+
    ![在系统更新后重启][5]
 2. 选择“在系统更新后重启”。 这将打开“重启处于挂起状态，以完成系统更新”边栏选项卡，显示需要重新启动以完成应用系统更新过程的 VM 列表。
+
    ![重新启动挂起][6]
 
 从 Azure 重新启动 VM 以完成此过程。
@@ -67,6 +74,6 @@ Azure 安全中心每天对 Windows 和 Linux 虚拟机 (VM) 进行监控以找�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

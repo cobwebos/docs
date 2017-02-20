@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bf45651360a9fe9b5023d46000aadc054ce0ef37
+ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
+ms.openlocfilehash: 26383db7a3fe6736fb739121dd545518784c098a
 
 
 ---
@@ -32,14 +32,14 @@ Microsoft 大数据解决方案的一个关键功能是，将 Microsoft 商业�
 ### <a name="prerequisites"></a>先决条件
 在开始阅读本文前，你必须具有：
 
-* **一个 HDInsight 群集**。 若要配置一个 HDInsight 群集，请参阅 [Azure HDInsight 入门][hdinsight-get-started]。
+* **一个 HDInsight 群集**。 若要配置 HDInsight 群集，请参阅 [Azure HDInsight 入门][hdinsight-get-started]。
 * 运行 Windows 7、Windows Server 2008 R2 或更高版本操作系统的**一个工作站**。
 * **Office 2013 Professional Plus、Office 365 ProPlus、Excel 2013 Standalone 或 Office 2010 Professional Plus**.
 
 ## <a name="install-power-query"></a>安装 Power Query
 可以使用 Power Query 将来自多种数据源的数据导入到 Microsoft Excel 中，在 Excel 中，它可以增强 PowerPivot 和 Power View 之类的 BI 工具。 具体来说，Power Query 可以导入已输出的数据，或者导入由在 HDInsight 群集上运行的 Hadoop 作业生成的数据。
 
-从 [Microsoft 下载中心][powerquery-download] 下载 Microsoft Power Query for Excel 并安装。
+从 [Microsoft 下载中心][powerquery-download]下载 Microsoft Power Query for Excel 并安装它。
 
 ## <a name="import-hdinsight-data-into-excel"></a>将 HDInsight 数据导入 Excel
 使用用于 Excel 的 Power Query 外接程序，可以轻松地将 HDInsight 群集中的数据导入到 Excel 中，然后可以在 Excel 中使用 PowerPivot 和 Power Map 之类的 BI 工具对数据进行检查、分析和显示。
@@ -68,8 +68,8 @@ Microsoft 大数据解决方案的一个关键功能是，将 Microsoft 商业�
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解如何使用 Power Query 将数据从 HDInsight 检索到 Excel 中。 同样地，你也可以将来自 HDInsight 的数据检索到 Azure SQL 数据库中。 也可以将数据上载到 HDInsight 中。 若要了解更多信息，请参阅下列文章：
 
-* [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight[hdinsight-ODBC]]
-* [将数据上传到 HDInsight][hdinsight-upload-data]
+* [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][hdinsight-ODBC]
+* [将数据上载到 HDInsight][hdinsight-upload-data]
 
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-odbc-driver.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
@@ -83,6 +83,6 @@ Microsoft 大数据解决方案的一个关键功能是，将 Microsoft 商业�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

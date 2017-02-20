@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/07/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: a584086e459c5446a814bbca3e50ac343fa9201e
-ms.openlocfilehash: f7b3974bf789df8c87254cc4186d8c7c85282aaa
+ms.sourcegitcommit: fceb8f6c8f28e84eb8926586257cf39dc0cd14d4
+ms.openlocfilehash: 4977daeecd9e206906c2e0b3b95b63d4d55cb859
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: f7b3974bf789df8c87254cc4186d8c7c85282aaa
 默认配额为每个命名空间 20 个吞吐量单元。 你可以通过填写支持票证来要求更大的吞吐量单元配额。 超出 20 个吞吐量单元这一限制时，捆绑包将以 20 个和 100 个吞吐量单元的形式提供。 请注意，使用 20 个以上的吞吐量单元会失去在不填写支持票证的情况下更改吞吐量单元数的能力。
 
 ## <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>保留事件中心事件超过 24 小时的话，要收取费用吗？
-事件中心标准允许消息保留期长于 24 小时，最长以 30 天为限。 如果所存储事件总量的大小超过所选吞吐量单位数量的存储限制（每个吞吐量单位 84 GB），超出限制的部分会按公布的 Azure Blob 存储区费率收费。 每个吞吐量单元的存储限制包括 24 小时（默认值）的保留期期间的所有存储成本，即使吞吐量单元已经用到了最大入口限制。
+事件中心标准允许消息保留期长于 24 小时，最长以 30 天为限。 如果所存储事件总量的大小超过所选吞吐量单位数量的存储限制（每个吞吐量单位&84; GB），超出限制的部分会按公布的 Azure Blob 存储区费率收费。 每个吞吐量单元的存储限制包括 24 小时（默认值）的保留期期间的所有存储成本，即使吞吐量单元已经用到了最大入口限制。
 
 ## <a name="what-is-the-maximum-retention-period"></a>保留期最长可以有多久？
 事件中心标准目前支持的最长保留期为 7 天。 请注意，事件中心并不是永久性的数据存储区。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新计算机学习模型。
@@ -79,11 +79,15 @@ ms.openlocfilehash: f7b3974bf789df8c87254cc4186d8c7c85282aaa
 
 若要详细了解我们的 SLA，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)页面。
 
-## <a name="next-steps"></a>后续步骤
-若要了解有关事件中心的详细信息，请参阅以下文章：
+## <a name="diagnostic-logs"></a>诊断日志
 
-* [事件中心概述][Event Hubs overview]。
-* [使用事件中心的完整示例应用程序][sample application that uses Event Hubs]。
+事件中心支持两种类型的[诊断日志](event-hubs-diagnostic-logs.md) - 存档错误日志和操作日志 - 这两种日志都用 json 表示并可以通过 Azure 门户启用。
+
+## <a name="next-steps"></a>后续步骤
+访问以下链接可以了解有关事件中心的详细信息：
+
+* [事件中心概述](event-hubs-what-is-event-hubs.md)
+* [创建事件中心](event-hubs-create.md)
 
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
@@ -91,6 +95,6 @@ ms.openlocfilehash: f7b3974bf789df8c87254cc4186d8c7c85282aaa
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

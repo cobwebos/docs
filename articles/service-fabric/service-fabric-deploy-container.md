@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/4/2017
+ms.date: 2/6/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: d7aa8568dd6fdd806d8ad70e408f108c722ec1ce
-ms.openlocfilehash: c444ed85e2108a1b54d468f410c446aa6032e2a2
+ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
+ms.openlocfilehash: a29dd68c5daeaa290b351e6e04417f604bc30ddb
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: c444ed85e2108a1b54d468f410c446aa6032e2a2
 本文将指导完成在 Windows 容器中构建容器化服务的过程。
 
 > [!NOTE]
-> 此功能在 Linux 和 Windows Server 2016 上以预览版提供。
+> 此功能在 Windows Server 2016 中以预览版提供。
 >  
 
 Service Fabric 提供多种容器功能，可帮助你构建由容器化的微服务组成的应用程序。 
@@ -57,18 +57,32 @@ Visual Studio 提供 Service Fabric 服务模板，可帮助用户将容器部�
 
 1. 依次选择“**文件**” > “**新建项目**”，然后创建一个 Service Fabric 应用程序。
 2. 选择“来宾容器”作为服务模板。
-3. 选择“映像名称”，并提供指向容器存储库中映像的路径，例如在 https://hub.docker.com/ 上， myrepo/myimage:v1 
+3. 选择“映像名称”，并提供映像在容器存储库（例如在 https://hub.docker.com/ 上）中的路径，例如 myrepo/myimage:v1 
 4. 为服务命名，然后单击“**确定**”。
 5. 如果容器化服务需要通信终结点，你现在可以在 ServiceManifest.xml 文件中添加协议、端口和类型。 例如： 
      
     `<Endpoint Name="MyContainerServiceEndpoint" Protocol="http" Port="80" UriScheme="http" PathSuffix="myapp/" Type="Input" />`
     
-    通过提供 `UriScheme`，向 Service Fabric 命名服务自动注册容器终结点，以实现可发现性。 与任何服务一样，此端口可以固定（如上面的示例所示），也可以动态分配（保留为空，从指定的应用程序端口范围分配一个端口）。
+    通过提供 `UriScheme`，向 Service Fabric 命名服务自动注册容器终结点，以实现可发现性。 与任何服务一样，此端口可以固定（如前面的示例所示），也可以动态分配（保留为空，从指定的应用程序端口范围分配一个端口）。
     还需要在应用程序清单中指定一个 `PortBinding` 策略，以配置容器端口到主机端口映射，如下所述。
-6. 如果容器需要资源调控，则添加 `ResourceGovernancePolicy`。 请参阅下面的示例。
-8. 如果容器需要通过专用存储库进行身份验证，则添加 `RepositoryCredentials`。 请参阅下面的示例。
+6. 如果容器需要资源调控，则添加 `ResourceGovernancePolicy`。
+8. 如果容器需要通过专用存储库进行身份验证，则添加 `RepositoryCredentials`。
 7. 对于已激活容器支持的 Windows Server 2016，现在可以使用包并发布针对本地群集的操作。 
 8. 完成后，可以将应用程序发布到远程群集，也可以将解决方案签入源控件。 
+
+有关示例应用程序，请[查看 GitHub 上的 Service Fabric 容器代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+
+## <a name="creating-a-windows-server-2016-cluster"></a>创建 Windows Server 2016 群集
+若要部署容器化应用程序，需要创建运行 Windows Server 2016 且启用了容器支持的群集。 这可以是在本地开发计算机上，也可以在 Azure 中通过 Azure Resource Manager (ARM) 部署。 
+
+若要使用 ARM 部署群集，请在 Azure 中选择“Windows Server 2016 with Containers”映像选项。 请参阅[使用 Azure Resource Manager 创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)一文。 确保使用以下 ARM 设置：
+
+```xml
+"vmImageOffer": { "type": "string","defaultValue": "WindowsServer"     },
+"vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
+"vmImageVersion": { "defaultValue": "latest","type": "string"     },  
+```
+还可以使用[此处的&5; 节点 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)创建群集。 此外，请阅读[此处的 Leok 博客文章](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html)，了解如何使用 Service Fabric 和 Windows 容器。
 
 <a id="manually"></a>
 
@@ -286,9 +300,11 @@ Visual Studio 提供 Service Fabric 服务模板，可帮助用户将容器部�
 ## <a name="next-steps"></a>后续步骤
 现在已部署了容器化服务，请通过阅读 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)了解如何管理其生命周期。
 
+* [Service Fabric 和容器概述](service-fabric-containers-overview.md)
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 
