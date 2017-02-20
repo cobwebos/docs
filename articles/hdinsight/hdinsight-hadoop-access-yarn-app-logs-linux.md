@@ -13,28 +13,26 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f03c595977f098f19d396cc460c73e27163f070c
+ms.sourcegitcommit: dd5471da4d1e69b51d355784dfa2551bc61e9ad9
+ms.openlocfilehash: 508ea94278dc2410e5b9ea1ba760a8a923f12bbd
 
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 YARN 应用程序日志
 本文档说明如何访问 Azure HDInsight 中的 Hadoop 群集上已完成的 YARN (Yet Another Resource Negotiator) 应用程序的日志。
 
-> [!NOTE]
-> 本文档中的信息针对基于 Linux 的 HDInsight 群集。 有关基于 Windows 的群集的信息 ，请参阅[在基于 Windows 的 HDInsight 上访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs.md)
-> 
-> 
+> [!IMPORTANT]
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="prerequisites"></a>先决条件
 * 基于 Linux 的 HDInsight 群集。
 * 必须首先[创建 SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)，才能访问 ResourceManager 日志 Web UI。
 
 ## <a name="a-nameyarntimelineserverayarn-timeline-server"></a><a name="YARNTimelineServer"></a>YARN Timeline Server
-[YARN Timeline Server](http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) 通过两个不同的接口提供已完成之应用程序的相关泛型信息，以及架构特定应用程序信息。 具体而言：
+[YARN Timeline Server](http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) 通过两个不同的接口提供已完成应用程序的相关泛型信息，以及架构特定应用程序信息。 具体而言：
 
 * 存储及检索 HDInsight 群集上泛型应用程序信息的功能已在版本 3.1.1.374 或更新版本上启用。
 * Timeline Server 的架构特定应用程序信息组件当前在 HDInsight 群集上并未提供。
@@ -47,19 +45,21 @@ ms.openlocfilehash: f03c595977f098f19d396cc460c73e27163f070c
 * 任何给定应用程序尝试所用的容器
 
 ## <a name="a-nameyarnappsandlogsayarn-applications-and-logs"></a><a name="YARNAppsAndLogs"></a>YARN 应用程序和日志
+
 YARN 通过将资源管理与应用程序计划/监视相分离，来支持多种编程模型（MapReduce 就是其中之一）。 这是通过全局 *ResourceManager* (RM)、按辅助角色节点 *NodeManagers* (NM) 和按应用程序 *ApplicationMasters* (AM) 来实现的。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器的形式授予）。 AM 负责跟踪 RM 分配给它的容器的进度。 根据应用程序的性质，一个应用程序可能需要多个容器。
 
-此外，每个应用程序可能包含多个应用程序尝试，为了在应用程序崩溃时，或因 AM 与 RM 之间通信中断时，完成应用程序。 因此，容器是授予应用程序的特定尝试。 在某种意义上，容器提供 YARN 应用程序所运行的基本工作单位的内容，而在容器的上下文中完成的所有工作都在分配给该容器的单个辅助节点上运行。 请参阅 [YARN 的概念][YARN-concepts]，以获取更多参考信息。
+每个应用程序可能包含多个应用程序尝试。 这允许应用程序在发生崩溃或 AM 与 RM 之间通信丢失时重试操作。 在容器中运行每次尝试。 在某种意义上，容器提供了由 YARN 应用程序执行的基本工作单位的上下文。 在分配了容器的单个辅助角色节点上执行容器上下文中完成的所有工作。 请参阅 [YARN 的概念][YARN-concepts]，以获取更多参考信息。
 
-应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 以[日志聚合][log-aggregation] 功能提供一个良好的框架，以收集、聚合及存储应用程序日志。 日志聚合功能让访问应用程序日志更具确定性，因为它会聚合辅助节点上所有容器的日志，并在应用程序完成之后，将它们按每个辅助节点一个聚合日志的方式存储在默认文件系统上。 应用程序可能使用数百或数千个容器，但在单个辅助节点上运行的所有容器的日志将一律聚合成单个文件，也就是为应用程序所用的每个辅助节点生成一个日志。 默认情况下，日志聚合已在 HDInsight 群集（3.0 和更高版本）上启用，在群集的默认容器中，可以找到聚合的日志，位置如下：
+应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，通过使用[日志聚合][log-aggregation]功能收集、聚合和储应用程序日志。 日志聚合功能使访问应用程序日志更具确定性。 它聚合辅助角色节点上所有容器的日志，并将其存储为一个聚合日志文件（每个辅助角色节点）。 应用程序完成后，日志存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个辅助节点上运行的所有容器的日志将一律聚合成一个文件。 这会为应用程序所用的每个辅助节点生成一个日志文件。 默认情况下，日志聚合已在 HDInsight 群集（3.0 和更高版本）上启用，在群集的默认容器中，可以找到聚合的日志，位置如下：
 
     wasbs:///app-logs/<user>/logs/<applicationId>
 
 在该位置中，*user* 是启动应用程序的用户名，*applicationId* 是 YARN RM 分配的应用程序唯一标识符。
 
-无法直接阅读聚合的日志，因为它们是以 [TFile][T-file]（由容器编制索引的[二进制格式][binary-format]）编写的。 必须使用 YARN ResourceManager 日志或 CLI 工具才能以纯文本的形式查看感兴趣的应用程序或容器的日志。 
+无法直接阅读聚合日志，因为它们是以 [TFile][T-file]（由容器编制索引的[二进制格式][binary-format]）编写。 必须使用 YARN ResourceManager 日志或 CLI 工具才能以纯文本的形式查看感兴趣的应用程序或容器的日志。 
 
 ## <a name="yarn-cli-tools"></a>YARN CLI 工具
+
 若要使用 YARN CLI 工具，则必须首先使用 SSH 连接到 HDInsight 群集。 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档之一：
 
 * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
@@ -95,6 +95,6 @@ YARN ResourceManager UI 在群集头节点上运行，并可通过 Ambari Web UI
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

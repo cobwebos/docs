@@ -1,5 +1,5 @@
 ---
-title: "有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 | Microsoft Docs"
+title: "有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 - Azure | Microsoft Docs"
 description: "获取有关在 Azure 云中运行的你所熟悉的 Linux 环境中使用基于 Linux 的 HDInsight (Hadoop) 群集的实施提示。"
 services: hdinsight
 documentationcenter: 
@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 02/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 854df55045d4d9a062ade3905b9be1daad0a7d8c
-ms.openlocfilehash: 3ce0444427ba10e7247aec500017ea4bae3af161
+ms.sourcegitcommit: 1d2d3d9d6c8dee02f2eb96ba20894e1d52541102
+ms.openlocfilehash: 584af73f3f2d428f7551de0b12b498b1a118e5dc
 
 
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
-基于 Linux 的 Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运行的 Hadoop。 在大多数情况下，它的工作方式应该与其他任何 Hadoop-on-Linux 安装完全相同。 本文档指出了你应该注意的具体差异。
+Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运行的 Hadoop。 在大多数情况下，它的工作方式应该与其他任何 Hadoop-on-Linux 安装完全相同。 本文档指出了你应该注意的具体差异。
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,13 +40,13 @@ ms.openlocfilehash: 3ce0444427ba10e7247aec500017ea4bae3af161
 
 除非[加入域](hdinsight-domain-joined-introduction.md)，HDInsight 应被视为**单用户**系统。 单一 SSH 用户帐户是使用具有管理员级别权限的群集创建的。 可创建其他 SSH 帐户，但它们也具有对群集的管理员权限。
 
-加入域的 HDInsight 为多个用户、更具体的权限以及角色设置提供支持。 有关详细信息，请参阅[管理已加入域的 HDInsight 群集](hdinsight-domain-joined-manage.md)。
+加入域的 HDInsight 支持多个用户、更具体的权限以及角色设置。 有关详细信息，请参阅[管理已加入域的 HDInsight 群集](hdinsight-domain-joined-manage.md)。
 
 ## <a name="domain-names"></a>域名
 
 从 Internet 连接到群集时要使用的完全限定域名 (FQDN) 是**&lt;clustername>.azurehdinsight.net** 或（仅限 SSH）**&lt;clustername-ssh>.azurehdinsight.net**。
 
-在内部，群集中每个节点都具有一个名称，该名称在群集配置期间分配。 若要查找群集名称，可以访问 Ambari Web UI 上的“主机”页，或者使用以下步骤从 Ambari REST API 返回主机列表：
+在内部，群集中每个节点都具有一个名称，该名称在群集配置期间分配。 若要查找群集名称，请参阅 Ambari Web UI 上的“主机”页面。 还可以使用以下方法从 Ambari REST API 返回主机列表：
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
@@ -53,18 +56,18 @@ ms.openlocfilehash: 3ce0444427ba10e7247aec500017ea4bae3af161
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-这将返回一个描述该服务的 JSON 文档，然后 jq 将只拉取主机的 `host_name` 值。
+该请求将返回一个描述该服务的 JSON 文档，然后 jq 将只拉取主机的 `host_name` 值。
 
 ## <a name="remote-access-to-services"></a>对服务的远程访问
 
 * **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
 
-    使用群集管理员用户和密码进行身份验证，然后登录到 Ambari。 这也使用群集管理员用户和密码。
+    使用群集管理员用户和密码进行身份验证，然后登录到 Ambari。 必须使用群集管理员用户和密码进行身份验证。
 
     身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
 
     > [!IMPORTANT]
-    > 虽然可以直接通过 Internet 访问群集的 Ambari，但若要使用某些功能，则需要根据访问群集所用的内部域名的节点来达到目的。 由于这是内部域名且未公开，因此，在尝试通过 Internet 访问某些功能时，你将会收到“找不到服务器”的错误。
+    > 虽然可以直接通过 Internet 访问群集的 Ambari，但若要使用某些功能，则需要根据访问群集所用的内部域名的节点来达到目的。 由于这是内部域名且未公开，因此，在尝试通过 Internet 访问某些功能时，你可能会收到“找不到服务器”的错误。
     >
     > 若要使用 Ambari web UI 的全部功能，请使用 SSH 隧道通过代理将 Web 流量传送到群集头节点。 请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
@@ -94,63 +97,87 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp` 中找到。 此目录包
 * **2.2.4.9-1**：此目录是根据 HDInsight 使用的 Hortonworks 数据平台版本命名的，因此群集上的编号可能不同于此处列出的编号。
 * **current**：此目录包含 **2.2.4.9-1** 目录下的目录的链接，有了此目录，每次访问某个文件时，便不需要键入版本号（可能会变化）。
 
-示例数据和 JAR 文件可以在 Hadoop 分布式文件系统 (HDFS) 或 Azure Blob 存储上的“/example”或“wasbs:///example”处找到。
+示例数据和 JAR 文件可以在 Hadoop 分布式文件系统 (HDFS) 或 Azure Blob 存储上的 `/example` 和 `/HdiSamples` 处找到
 
-## <a name="hdfs-azure-blob-storage-and-storage-best-practices"></a>HDFS、Azure Blob 存储和存储最佳做法
+## <a name="hdfs-blob-storage-and-data-lake-store"></a>HDFS、Blob 存储和 Data Lake Store
 
 在大部分的 Hadoop 分发中，HDFS 受群集中计算机上的本地存储的支持。 尽管这种方式很有效率，但用于基于云的解决方案时可能费用高昂，因为计算资源以小时或分钟为单位来计费。
 
-HDInsight 使用 Azure Blob 存储作为默认存储，以提供以下优势：
+HDInsight 使用 Azure Blob 存储或 Azure Data Lake Store 作为默认存储。 这可以提供以下优点：
 
 * 成本低廉的长期存储
 * 可从外部服务访问，例如网站、文件上载/下载实用程序、各种语言 SDK 和 Web 浏览器
 
-由于它是 HDInsight 的默认存储，因此你通常不需要进行任何设置就能使用。 例如，以下命令将列出 **/example/data** 文件夹中的文件，该文件夹存储在 Azure Blob 存储上：
+> [!IMPORTANT]
+> Blob 存储最多可容纳 4.75 TB，但单个 blob（或 HDInsight 透视图中的文件）容量最多仅可达 195 GB。 Azure Data Lake Store 可以动态增长以保存数万亿个文件，并且单个文件大于&1; PB。
+>
+> 有关详细信息，请参阅[了解 blob](https://docs.microsoft.com/rest/api/storageservices/fileservices/understanding-block-blobs--append-blobs--and-page-blobs) 和 [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。
+
+使用 Azure 存储或 Data Lake Store 时，通常不需要从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，无论它是存储在 Azure Blob 存储还是 Data Lake Store 上：
 
     hdfs dfs -ls /example/data
 
-一些命令可能会要求你指定使用的是 Blob 存储。 对于这些命令，可以在它的前面加上前缀 **wasb://** 或 **wasbs://**。
+### <a name="uri-and-scheme"></a>URI 和方案
 
-HDInsight 还允许你将多个 Blob 存储帐户与群集相关联。 若要访问非默认 Blob 存储帐户上的数据，可以使用以下格式：**wasbs://&lt;container-name>@&lt;account-name>.blob.core.windows.net/**。 例如，以下命令会列出指定容器和 Blob 存储帐户的 **/example/data** 目录的内容：
+某些命令可能需要你在访问文件时将方案指定为 URI 的一部分。 例如，Storm-HDFS 组件就需要指定方案。 使用非默认存储（作为“附加”存储添加到群集的存储）时，必须始终将方案作为 URI 的一部分来使用。
 
-    hdfs dfs -ls wasbs://mycontainer@mystorage.blob.core.windows.net/example/data
+使用 __Blob 存储__时，方案可以是以下之一：
 
-### <a name="what-blob-storage-is-the-cluster-using"></a>群集要使用哪种 Blob 存储？
+* `wasb:///`：使用未加密通信访问默认存储。
 
-在群集创建期间，你选择了使用现有的 Azure 存储帐户和容器，或创建新的存储帐户和容器。 事后，你可能会忘记了该存储帐户和容器。 你可以使用 Ambari REST API 查找默认的存储帐户和容器。
+* `wasbs:///`：使用加密通信访问默认存储。
 
-1. 使用以下命令可使用 curl 检索 HDFS 配置信息，然后使用 [jq](https://stedolan.github.io/jq/) 进行筛选：
+* `wasbs://<container-name>@<account-name>.blob.core.windows.net/`：与非默认存储帐户通信时使用。 例如，有额外的存储帐户时，或访问存储在可公开访问的存储帐户中的数据时。
 
-        curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+使用 __Data Lake Store__ 时，方案可以是以下之一：
 
-    > [!NOTE]
-    > 这将返回应用到服务器的第一个配置 (`service_config_version=1`)，其中包含此信息。 如果要检索创建群集后修改的值，可能需要列出配置版本并检索最新版本。
+* `adl:///`：访问群集的默认 Data Lake Store。
 
-    这将返回值类似于下面的值，其中，“CONTAINER”是默认容器，“ACCOUNTNAME”是 Azure 存储帐户名：
+* `adl://<storage-name>.azuredatalakestore.net/`：与非默认 Data Lake Store 进行通信或访问 HDInsight 群集根目录以外的数据时使用。
 
-        wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net
+> [!IMPORTANT]
+> 使用 Data Lake Store 作为 HDInsight 的默认存储时，必须在存储中指定一个用作 HDInsight 存储根目录的路径。 默认路径为 `/clusters/<cluster-name>/`。
+>
+> 使用 `/` 或 `adl:///` 访问数据时，只能访问存储在群集根目录（例如 `/clusters/<cluster-name>/`）中的数据。 若要在商店中的任意位置访问数据，请使用 `adl://<storage-name>.azuredatalakestore.net/` 格式。
 
-2. 使用以下命令获取存储帐户的唯一 ID。 在以下命令中，将 **ACCOUNTNAME** 替换为从 Ambari 检索的存储帐户名：
+### <a name="what-storage-is-the-cluster-using"></a>群集正在使用哪种存储
 
-        az storage account list --query "[?name=='ACCOUNTNAME'].id --out list
+可使用 Ambari 检索群集的默认存储配置。 使用以下命令可使用 curl 检索 HDFS 配置信息，然后使用 [jq](https://stedolan.github.io/jq/) 进行筛选：
 
-3. 使用以下命令获取存储帐户的密钥。 将 **STORAGEID** 替换为存储帐户 ID：
+```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
 
-        az storage account keys list --ids STORAGEID --out list
+> [!NOTE]
+> 这将返回应用到服务器的第一个配置 (`service_config_version=1`)，其中包含此信息。 如果要检索创建群集后修改的值，可能需要列出配置版本并检索最新版本。
 
-    这将返回帐户的主密钥。
+这会返回类似于以下形式的值：
 
-还可以使用 Azure 门户查找存储信息：
+* `wasbs://<container-name>@<account-name>.blob.core.windows.net`（如果使用 Azure 存储帐户）。
+
+    帐户名称是 Azure 存储帐户的名称，而容器名称是作为群集存储器根目录的 blob 容器。
+
+* `adl://home`（如果使用 Azure Data Lake Store）。 要获取 Data Lake Store 名称，请使用以下 REST 调用：
+
+    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
+
+    这将返回以下主机名：`<data-lake-store-account-name>.azuredatalakestore.net`。
+
+    要获取作为 HDInsight 根目录的存储中的目录，请使用以下 REST 调用：
+
+    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
+
+    这会返回类似于以下内容的路径：`/clusters/<hdinsight-cluster-name>/`。
+
+也可通过 Azure 门户按以下步骤查找存储信息：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 HDInsight 群集。
-2. 从“基本功能”部分中选择“所有设置”。
-3. 从“设置”中，选择“Azure 存储密钥”。
-4. 从“Azure 存储密钥”中，选择一个列出的存储帐户。 这将显示有关存储帐户的信息。
-5. 选择密钥图标。 这将显示此存储帐户的密钥。
 
-### <a name="how-do-i-access-blob-storage"></a>如何访问 Blob 存储？
+2. 在“属性”部分中，选择“存储帐户”。 将显示群集的存储信息。
 
-除了通过群集的 Hadoop 命令，还有各种不同方式可用来访问 Blob：
+### <a name="how-do-i-access-files-from-outside-hdinsight"></a>如何从外部 HDInsight 访问文件
+
+从 HDInsight 群集外部访问数据有多种方法。 以下是可用于处理数据的实用程序和 SDK 的几个链接：
+
+如果使用 __Azure 存储__，请参阅以下链接，了解访问数据的方法：
 
 * [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)：适用于 Azure 的命令行接口命令。 在安装后，使用 `az storage` 命令获取有关使用存储的帮助，或者使用 `az storage blob` 获取特定于 Blob 的命令。
 * [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage)：用于 Azure 存储中的 blob 的 python 脚本。
@@ -164,16 +191,25 @@ HDInsight 还允许你将多个 Blob 存储帐户与群集相关联。 若要访
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [存储 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
+如果使用 __Azure Data Lake Store__，请参阅以下链接，了解访问数据的方法：
+
+* [Web 浏览器](../data-lake-store/data-lake-store-get-started-portal.md)
+* [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
+* [Azure CLI](../data-lake-store/data-lake-store-get-started-cli.md)
+* [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
+* [针对 Visual Studio 的 Azure Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)
+* [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
+* [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
+* [Python](../data-lake-store/data-lake-store-get-started-python.md)
+
 ## <a name="a-namescalingascaling-your-cluster"></a><a name="scaling"></a>缩放你的群集
 
-群集缩放功能可让你更改 Azure HDInsight 中运行的群集使用的数据节点数，而无需删除然后再重新创建群集。
-
-你可以在其他作业或进程正在群集上运行时执行缩放操作。
+使用群集缩放功能可更改群集使用的数据节点数，而无需删除然后再重新创建群集。 你可以在其他作业或进程正在群集上运行时执行缩放操作。
 
 不同的群集类型会受缩放操作影响，如下所示：
 
 * **Hadoop**：减少群集中的节点数时，群集中的某些服务将重新启动。 这会导致正在运行或挂起的作业在缩放操作完成时失败。 你可以在操作完成后重新提交这些作业。
-* **HBase**：在完成缩放操作后的几分钟内，区域服务器会自动进行平衡。 若要手动平衡区域服务器，请使用以下步骤：
+* **HBase**：在完成缩放操作后的几分钟内，区域服务器会自动进行平衡。 若要手动均衡区域服务器，请使用以下步骤：
 
     1. 使用 SSH 连接到 HDInsight 群集。 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档之一：
 
@@ -194,7 +230,7 @@ HDInsight 还允许你将多个 Blob 存储帐户与群集相关联。 若要访
 
             storm rebalance TOPOLOGYNAME
 
-        你还可以指定参数来替代拓扑原来提供的并行度提示。 例如，`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` 会将拓扑重新配置为 5 个工作进程，蓝色的 BlueSpout 组件有 3 个 executor，黄色 YellowBolt 组件有 10 个 executor。
+        你还可以指定参数来替代拓扑原来提供的并行度提示。 例如，`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` 会将拓扑重新配置为 5 个工作进程，3 个用于 BlueSpout 组件的执行程序和 10 个用于 YellowBolt 组件的执行程序。
 
     * **Storm UI**：使用以下步骤来重新平衡使用 Storm UI 的拓扑。
 
@@ -223,7 +259,7 @@ HDInsight 是一项托管服务，这意味着如果检测到问题，Azure 可�
 
 ### <a name="jar-files"></a>jar 文件
 
-一些 Hadoop 技术以自包含 jar 文件形式提供，这些文件是用作 MapReduce 作业的部分或来自 Pig 或 Hive 的包含函数。 虽然可以使用脚本操作对其进行安装，但它们通常不需要任何设置，预配后即可上传到群集，并直接使用。 如果要确保组件存在群集的重置映像，可以将 jar 文件存储在 WASB 中。
+某些 Hadoop 技术以自包含 jar 文件形式提供，这些文件是包含函数，用作 MapReduce 作业的一部分，或在 Pig 或 Hive 内部使用。 虽然可以使用脚本操作安装这些技术，但通常不需要任何设置，预配后即可上传到群集，并直接使用。 如需确保组件在群集重置映像后仍存在，可将 jar 文件存储在群集的默认存储（WASB 或 ADL）中。
 
 例如，如果要使用 [DataFu](http://datafu.incubator.apache.org/) 的最新版本，可以下载包含项目的 jar，并将其上传到 HDInsight 群集。 然后按照关于如何从 Pig 或 Hive 中使用它的 DataFu 文档进行操作。
 
@@ -237,7 +273,7 @@ HDInsight 是一项托管服务，这意味着如果检测到问题，Azure 可�
 如果群集已提供作为独立 jar 文件的组件的版本，但是你希望使用不同的版本，则可以将新版本组件上传到群集，然后尝试在你的作业中使用它。
 
 > [!WARNING]
-> 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
+> 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。
 >
 > 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求你参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/)。
 
@@ -250,6 +286,6 @@ HDInsight 是一项托管服务，这意味着如果检测到问题，Azure 可�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,10 +1,10 @@
 
 ---
 title: "将证书用于 Enterprise Integration Pack | Microsoft Docs"
-description: "了解如何将证书用于 Enterprise Integration Pack 和逻辑应用"
+description: "了解如何将证书用于 Enterprise Integration Pack | Azure 逻辑应用"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: msftman
+author: padmavc
 manager: anneta
 editor: cgronlun
 ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
@@ -13,11 +13,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
-ms.author: deonhe
+ms.date: 02/03/2016
+ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: a1baafa9a2b4552ad711615e5e0abb0180a0d562
-ms.openlocfilehash: e6c8ed2fe6ff574fb40991d7060865ea08887df9
+ms.sourcegitcommit: c8cfe5fb933cf9056b971d3e524f3c9ebc910215
+ms.openlocfilehash: b494d5abfdd4045776b408cbb8ec99ee3905cf72
 
 
 ---
@@ -37,9 +37,9 @@ B2B 通信有时必须保持机密。 企业集成通过两种方式使用证书
 * 加密消息的内容
 * 对消息进行数字签名  
 
-## <a name="how-do-you-upload-certificates"></a>如何上传证书？
-### <a name="public-certificates"></a>公用证书
-若要在具有 B2B 功能的逻辑应用中使用公用证书，需要首先将证书上传到集成帐户中。 另一方面，若要使用自签名证书，必须首先将它上传到 [Azure 密钥保管库](../key-vault/key-vault-get-started.md "了解密钥保管库")。
+## <a name="upload-a-public-certificate"></a>上传公用证书
+
+若要在具有 B2B 功能的逻辑应用中使用公用证书，需要首先将证书上传到集成帐户中。  
 
 上传证书之后，当你在创建的[协议](logic-apps-enterprise-integration-agreements.md)中定义 B2B 消息属性时，证书可以用于帮助保护消息。  
 
@@ -61,8 +61,9 @@ B2B 通信有时必须保持机密。 企业集成通过两种方式使用证书
 9. 选择“证书”磁贴。 你应看到新添加的证书。  
 ![查看新证书](media/logic-apps-enterprise-integration-certificates/certificate-4.png)  
 
-### <a name="private-certificates"></a>私有证书
-通过执行以下步骤，可以将私有证书上传到集成帐户中：  
+## <a name="upload-a-private-certificate"></a>上传私有证书
+
+若要在具有 B2B 功能的逻辑应用中使用私有证书，可通过执行以下步骤将私有证书上传到集成帐户
 
 1. [将私钥上传到 Key Vault](../key-vault/key-vault-get-started.md "了解 Key Vault") 并提供**密钥名称** 
    
@@ -100,6 +101,6 @@ B2B 通信有时必须保持机密。 企业集成通过两种方式使用证书
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 12/20/2016
 ms.author: ankshah; kraman
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: f96c0b7b7edcd19a041c803e268a2dc4bf25b137
+ms.sourcegitcommit: 08cac64a6b08266f78bca03f1139a13e9686ebc3
+ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988
 
 
 ---
@@ -31,14 +31,14 @@ ms.openlocfilehash: f96c0b7b7edcd19a041c803e268a2dc4bf25b137
 ![该图显示基于 IP 的访问控制的连接过程](./media/documentdb-firewall-support/documentdb-firewall-support-flow.png)
 
 ## <a name="connections-from-cloud-services"></a>云服务中的连接
-在 Azure 中，云服务是一种使用 DocumentDB 承载中间层服务逻辑的常用方法。 若要从云服务启用对 DocumentDB 数据库帐户的访问，必须通过[联系 Azure 支持部门](#configure-ip-policy)，将云服务的公共 IP 地址添加到与 DocumentDB 数据库帐户关联的 IP 地址的允许列表中。  这可确保云服务的所有角色实例都有权访问 DocumentDB 数据库帐户。 如以下屏幕截图所示，可以在 Azure 门户中检索云服务的 IP 地址。 
+在 Azure 中，云服务是一种使用 DocumentDB 承载中间层服务逻辑的常用方法。 若要从云服务启用对 DocumentDB 数据库帐户的访问，必须通过[配置 IP 访问控制策略](#configure-ip-policy)，将云服务的公共 IP 地址添加到与 DocumentDB 数据库帐户关联的 IP 地址的允许列表中。  这可确保云服务的所有角色实例都有权访问 DocumentDB 数据库帐户。 如以下屏幕截图所示，可以在 Azure 门户中检索云服务的 IP 地址。
 
 ![该屏幕截图显示在 Azure 门户中显示的云服务的公共 IP 地址](./media/documentdb-firewall-support/documentdb-public-ip-addresses.png)
 
 通过添加其他角色实例扩大云服务时，这些新的实例将自动具有 DocumentDB 数据库帐户的访问权限，因为它们属于同一云服务。
 
 ## <a name="connections-from-virtual-machines"></a>从虚拟机连接
-[虚拟机](https://azure.microsoft.com/services/virtual-machines/)或[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)还可以用于托管使用 DocumentDB 的中间层服务。  若要将 DocumentDB 数据库帐户配置为允许从虚拟机访问，必须通过[联系 Azure 支持部门](#configure-ip-policy)，将虚拟机和/或虚拟机规模集的公共 IP 地址配置为 DocumentDB 数据库帐户允许的 IP 地址之一。 如以下屏幕截图所示，可以在 Azure 门户中检索虚拟机的 IP 地址。
+[虚拟机](https://azure.microsoft.com/services/virtual-machines/)或[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)还可以用于托管使用 DocumentDB 的中间层服务。  若要将 DocumentDB 数据库帐户配置为允许从虚拟机访问，必须通过[配置 IP 访问控制策略](#configure-ip-policy)，将虚拟机和/或虚拟机规模集的公共 IP 地址配置为 DocumentDB 数据库帐户允许的 IP 地址之一。 如以下屏幕截图所示，可以在 Azure 门户中检索虚拟机的 IP 地址。
 
 ![该屏幕截图显示在 Azure 门户中显示的虚拟机的公共 IP 地址](./media/documentdb-firewall-support/documentdb-public-ip-addresses-dns.png)
 
@@ -66,6 +66,6 @@ ms.openlocfilehash: f96c0b7b7edcd19a041c803e268a2dc4bf25b137
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure CLI 在 HDInsight 中创建基于 Windows 的 Hadoop 群集"
-description: "了解如何使用 Azure CLI 创建 Azure HDInsight 的群集。"
+description: "了解如何使用 Azure CLI 创建适用于 Azure HDInsight 的基于 Windows 的 Hadoop 群集。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 984ebf0e93b8c36d1f09876d59feb7f74053622e
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: 393b7e44b21fe510e07b4048ddd3bdbcc31d90a9
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-cli"></a>使用 Azure CLI 在 HDInsight 中创建基于 Windows 的 Hadoop 群集
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-了解如何使用 Azure CLI 创建 HDInsight 群集。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
+了解如何使用 Azure CLI 在 HDInsight 中创建基于 Windows 的 Hadoop 群集。 
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关创建基于 Linux 的群集的信息，请参阅[使用 Azure CLI 创建 HDInsight 中的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-azure-cli.md)。
 
 ## <a name="prerequisites"></a>先决条件：
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -34,7 +38,7 @@ ms.openlocfilehash: 984ebf0e93b8c36d1f09876d59feb7f74053622e
 * **Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **Azure CLI**。
   
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
 
 ### <a name="access-control-requirements"></a>访问控制要求
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -46,7 +50,7 @@ ms.openlocfilehash: 984ebf0e93b8c36d1f09876d59feb7f74053622e
 
 有关使用公司或学校帐户进行身份验证的详细信息，请参阅 [从 Azure CLI 连接到 Azure 订阅](../xplat-cli-connect.md)。
 
-使用以下命令切换到 ARM 模式：
+使用以下命令切换到 Azure Resource Manager 模式：
 
     azure config mode arm
 
@@ -55,9 +59,9 @@ ms.openlocfilehash: 984ebf0e93b8c36d1f09876d59feb7f74053622e
     azure hdinsight cluster create -h
 
 ## <a name="create-clusters"></a>创建群集
-在创建 HDInsight 群集之前，必须拥有 Azure 资源管理 (ARM) 和 Azure Blob 存储帐户。 若要创建 HDInsight 群集，必须指定以下信息：
+在创建 HDInsight 群集之前，必须拥有资源管理组和 Azure Blob 存储帐户。 若要创建 HDInsight 群集，必须指定以下信息：
 
-* **Azure 资源组**：必须在 Azure 资源组中创建一个 Data Lake 分析帐户。 那么，你可以使用 Azure 资源管理器以组的方式处理应用程序中的资源。 你可以通过一个协调的操作为应用程序部署、更新或删除所有资源。
+* **Azure 资源组**：必须在 Azure 资源组中创建一个 Data Lake Analytics 帐户。 那么，你可以使用 Azure 资源管理器以组的方式处理应用程序中的资源。 你可以通过一个协调的操作为应用程序部署、更新或删除所有资源。
   
     列出订阅中的资源组：
   
@@ -127,18 +131,18 @@ ms.openlocfilehash: 984ebf0e93b8c36d1f09876d59feb7f74053622e
 
 有关脚本操作的常规信息，请参阅[使用脚本操作自定义 HDInsight 群集 (Linux)](hdinsight-hadoop-customize-cluster.md)。
 
-## <a name="create-clusters-using-arm-templates"></a>使用 ARM 模板创建群集
-可以通过调用 ARM 模板使用 CLI 创建群集。 请参阅[使用 Azure CLI 进行部署](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-azure-cli)。
+## <a name="create-clusters-using-resource-manager-templates"></a>使用 Resource Manager 模板创建群集
+可以通过调用 Azure Resource Manager 模板使用 CLI 创建群集。 请参阅[使用 Azure CLI 进行部署](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-azure-cli)。
 
 ## <a name="see-also"></a>另请参阅
 * [Azure HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md) - 了解如何开始使用 HDInsight 群集
 * [以编程方式提交 Hadoop 作业](hdinsight-submit-hadoop-jobs-programmatically.md) - 了解如何以编程方式将作业提交到 HDInsight
 * [使用 Azure CLI 管理 HDInsight 中的 Hadoop 群集](hdinsight-administer-use-command-line.md)
-* [将用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 服务管理配合使用](../virtual-machines-command-line-tools.md)
+* [将用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 服务管理配合使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

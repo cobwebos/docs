@@ -1,5 +1,5 @@
 ---
-title: "在 HDInsight 中使用 Apache Phoenix 和 SQuirreL | Microsoft Docs"
+title: "将 Apache Phoenix 和 SQuirreL 与基于 Windows 的 Azure HDInsight 结合使用 | Microsoft Docs"
 description: "了解如何在 HDInsight 中使用 Apache Phoenix，以及如何在工作站上安装和配置 SQuirreL 以连接到 HDInsight 中的 HBase 群集。"
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 58212ae80ef2b930661e739aeb4779c6f9bd1bec
-ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
+ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
+ms.openlocfilehash: bcefe7e0b0f1836dc77709329a07dd8d009abbb2
 
 
 ---
@@ -26,9 +26,12 @@ ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
 > [!NOTE]
 > 有关 HDInsight 中的 Phoenix 版本信息，请参阅 [HDInsight 提供的 Hadoop 群集版本有有何变化？](hdinsight-component-versioning.md)。
 >
-> 此文档中的信息特定于基于 Windows 的 HDInsight 群集。 有关如何在基于 Linux 的 HDInsight 上使用 Phoenix 的信息，请参阅[将 Apache Phoenix 与 HDinsight 中基于 Linux 的 HBase 群集配合使用](hdinsight-hbase-phoenix-squirrel-linux.md)。
+
+> [!IMPORTANT]
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关如何在基于 Linux 的 HDInsight 上使用 Phoenix 的信息，请参阅[将 Apache Phoenix 与 HDinsight 中基于 Linux 的 HBase 群集配合使用](hdinsight-hbase-phoenix-squirrel-linux.md)。
 >
->
+
+
 
 ## <a name="use-sqlline"></a>使用 SQLLine
 [SQLLine](http://sqlline.sourceforge.net/) 是用于执行 SQL 的命令行实用工具。
@@ -56,7 +59,7 @@ ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
         cd %phoenix_home%\bin
         sqlline.py [The FQDN of one of the Zookeepers]
 
-    ![hdinsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
+    ![HDInsight HBase Phoenix SQLline][hdinsight-hbase-phoenix-sqlline]
 
     示例中使用的命令：
 
@@ -123,7 +126,7 @@ ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
 
     ![Azure 虚拟网络点到站点虚拟图][img-vnet-diagram]
 
-    该图显示了 0 个客户端连接。 在与虚拟网络建立连接后，数字将更新为 1。
+    该图显示了 0 个客户端连接。 在与虚拟网络建立连接后，数字将更新为&1;。
 
 #### <a name="create-your-certificates"></a>创建证书
 创建 X.509 证书的方法之一是使用 [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) 随附的证书创建工具 (makecert.exe)。
@@ -203,7 +206,7 @@ ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
   > [!NOTE]
   > 默认的安装文件夹为 C:\Program Files\squirrel-sql-3.6 文件夹。  若要写入此路径，必须为安装程序授予管理员权限。 你可以管理员身份打开命令提示符，导航到 Java 的 bin 文件夹，然后运行：
   >
-  >     java.exe -jar [the path of the SQuirreL jar file]
+  >     java.exe -jar [SQuirreL jar 文件的路径]
 5. 单击“确定”确认创建目标目录。
 6. 默认设置是安装基本和标准程序包。  单击“资源组名称” 的 Azure 数据工厂。
 7. 单击“下一步”两次，然后单击“完成”。
@@ -292,6 +295,6 @@ Phoenix 驱动程序 jar 文件位于 HBase 群集上。 根据具体的版本�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

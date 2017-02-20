@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL 数据库常见问题"
+title: "Azure SQL 数据库常见问题解答 | Microsoft Docs"
 description: "客户就云数据库、Azure SQL 数据库、Microsoft 的关系数据库管理系统 (RDBMS) 和云中“数据库即服务”经常提出的问题的解答。"
 services: sql-database
 documentationcenter: 
@@ -13,15 +13,31 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 12/19/2016
+ms.date: 02/06/2017
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ad6fb631f05b1e88e8cbaaca83f9863cfb643269
-ms.openlocfilehash: aba60bf5108a4e5ad95e3c634b9fcbca7393c700
+ms.sourcegitcommit: ff3ea3564d3cde5369f87d5f5102176229686acb
+ms.openlocfilehash: 6b828f7256c27aab567428706cd38c38b2f896eb
 
 
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
+
+## <a name="what-is-the-current-version-of-sql-database"></a>SQL 数据库的当前版本是多少？
+SQL 数据库的当前版本是 V12。 V11 版本已停用。
+
+## <a name="what-is-the-sla-for-sql-database"></a>什么是 SQL 数据库的 SLA？
+我们保证至少在 99.99% 的时间内客户将能够在其单一或弹性“基本”、“标准”或“高级”版 Microsoft Azure SQL 数据库与我们的 Internet 网关之间保持连接。 有关详细信息，请参阅 [SLA](http://azure.microsoft.com/support/legal/sla/)。
+
+## <a name="how-do-i-reset-the-password-for-the-server-admin"></a>如何重置服务器管理员的密码？
+在 [Azure 门户](https://portal.azure.com)中，单击“SQL Server”，从列表中选择服务器，然后单击“重置密码”。
+
+## <a name="how-do-i-manage-databases-and-logins"></a>如何管理数据库和登录名？
+请参阅[管理数据库和登录名](sql-database-manage-logins.md)。
+
+## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>如何确保只允许经过授权的 IP 地址访问服务器？
+请参阅[如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)。
+
 ## <a name="how-does-the-usage-of-sql-database-show-up-on-my-bill"></a>SQL 数据库的使用情况如何体现在我的帐单上？
 SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单一数据库的性能级别或每一弹性池的 eDTU。 实际使用量是每小时按比例计算的，因此你的帐单可能会显示一小时的分数。 例如，如果某个数据库在一个月内存在了 12 小时，则帐单将显示 0.5 天的使用量。 服务层 + 性能级别和每一池 eDTU 在帐单中划分，让你方便看到在单个月份中使用的数据库天数。
 
@@ -55,6 +71,7 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 弹性池的 eDTU 单价高于同一服务层中单一数据库的 DTU 单价。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
 
 若要了解 eDTU 和服务层，请参阅 [SQL 数据库选项和性能](sql-database-service-tiers.md)。
+
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>如何在我的帐单上体现弹性池中活动异地复制的使用？
 与单一数据库不同的是，对弹性数据库使用[活动异地复制](sql-database-geo-replication-overview.md)对计费没有直接的影响。  你只需支付对每个池（主池和辅助池）预配的 eDTU 费用
 
@@ -89,7 +106,7 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 Azure SQL Web 和企业数据库现已停用。 基本、标准、高级和弹性层将取代即将停用的 Web 和企业数据库。 我们制作了额外的常见问题解答，以帮助你完成此过渡期。 [Web 和 Business Edition 停用常见问题](sql-database-web-business-sunset-faq.md)
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>在相同的 Azure 地理位置内的两个区域之间进行异地复制数据库时，哪些是预期的复制延迟？
-目前支持 5 秒的 RPO，并且只要地域辅助数据库承载于 Azure 建议的配对区域并且属于相同的服务层，则复制延迟就会少于该时间。
+目前支持&5; 秒的 RPO，并且只要地域辅助数据库承载于 Azure 建议的配对区域并且属于相同的服务层，则复制延迟就会少于该时间。
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-secondary-is-created-in-the-same-region-as-the-primary-database"></a>在主数据库所在的同一区域中创建地域辅助数据库时，哪些是预期的复制滞后？
 根据经验数据，在使用 Azure 建议的配对区域时，内部区域和区域之间的复制延迟没有太多差别。 
@@ -106,6 +123,6 @@ Azure SQL Web 和企业数据库现已停用。 基本、标准、高级和弹�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

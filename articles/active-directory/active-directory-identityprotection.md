@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/18/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 7bedcd3d61fd4aa9d34ac5de4fbec0e39e3c0011
-ms.openlocfilehash: 4476e3d3e8fe18cadefc6a49a4b896f1106433e2
+ms.sourcegitcommit: 4232c27926c2d48adb91eedd15884e44cc004ac2
+ms.openlocfilehash: 2fad0a4e7c4ac282802c2bc0dd10c7d86b651e08
 
 
 ---
@@ -264,7 +264,7 @@ Azure Active Directory 针对用户检测到的所有[风险事件](active-direc
 
 相关对话框中提供了重置密码的两种不同方法：
 
-**重置密码** - 如果用户已注册多重身份验证，则选择“要求用户重置密码”即可让用户自行解决问题。 用户在下次登录时，必须成功解决多重身份验证质询，然后必须更改密码。 如果用户帐户尚未注册多重身份验证，则无法使用此选项。
+**重置密码** - 如果用户已注册多重身份验证，则选择“要求用户重置其密码”即可让用户自行解决问题。 用户在下次登录时，必须成功解决多重身份验证质询，然后必须更改密码。 如果用户帐户尚未注册多重身份验证，则无法使用此选项。
 
 **临时密码** - 选择“生成临时密码”可立即使现有密码失效，为用户创建新的临时密码。 将新的临时密码发送到用户的备用电子邮件地址或用户的经理。 由于该密码是暂时性的，因此系统会提示用户在登录时更改密码。
 
@@ -398,6 +398,6 @@ Azure AD Identity Protection 可以通过配置一个策略来帮助管理首次
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

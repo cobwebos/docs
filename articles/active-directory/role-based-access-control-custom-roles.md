@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2017
+ms.date: 01/31/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d00ba4e6d1abd62e5a0d5a9d5bb229d3fa64b473
-ms.openlocfilehash: 2ac01c010979fca0bb3df5d003dd639cd7819651
+ms.sourcegitcommit: a474aa115425293660ba59ed1c6f7fd2ba4db5ce
+ms.openlocfilehash: 277c97289ba6dd66028394000d17deed80ba6cc6
 
 
 ---
@@ -54,9 +54,10 @@ ms.openlocfilehash: 2ac01c010979fca0bb3df5d003dd639cd7819651
 }
 ```
 ## <a name="actions"></a>操作
-自定义角色的 **Actions** 属性指定该角色向其授予访问权限的 Azure 操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 包含通配符 (\*) 的操作字符串可以授权访问与该操作字符串相匹配的所有操作。 例如：
+自定义角色的 **Actions** 属性指定该角色向其授予访问权限的 Azure 操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 操作字符串遵循格式 `Microsoft.<ProviderName>/<ChildResourceType>/<action>`。 包含通配符 (\*) 的操作字符串可以授权访问与该操作字符串相匹配的所有操作。 例如：
 
 * `*/read` 向所有 Azure 资源提供程序的所有资源类型的读取操作授予访问权限。
+* `Microsoft.Compute/*` 向 Microsoft.Compute 资源提供程序中的所有资源类型的所有操作授予访问权限。
 * `Microsoft.Network/*/read` 向 Azure 的 Microsoft.Network 资源提供程序中的所有资源类型的读取操作授予访问权限。
 * `Microsoft.Compute/virtualMachines/*` 向虚拟机及其子资源类型的所有操作授予访问权限。
 * `Microsoft.Web/sites/restart/Action` 授予重新启动网站的访问权限。
@@ -69,7 +70,7 @@ Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Ope
 Get-AzureRMProviderOperation Microsoft.Network/*
 ```
 
-![PowerShell 屏幕截图 - Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName](./media/role-based-access-control-configure/1-get-azurermprovideroperation-1.png)
+![PowerShell 屏幕截图 - Get-AzureRMProviderOperation](./media/role-based-access-control-configure/1-get-azurermprovideroperation-1.png)
 
 ```
 azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js on | jq '.[] | .operation'
@@ -122,6 +123,6 @@ azure provider operations show "Microsoft.Network/*"
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

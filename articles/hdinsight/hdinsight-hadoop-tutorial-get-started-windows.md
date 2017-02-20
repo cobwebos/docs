@@ -17,24 +17,25 @@ ms.workload: big-data
 ms.date: 03/07/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 176c06bd1d8117fda70001762f86f1a98829f78b
+ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
+ms.openlocfilehash: 0b12dcfbf69c0f66df7587f6a755f74089090960
 
 
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight-on-windows"></a>Hadoop 教程：在 Windows 上开始使用 HDInsight 中的 Hadoop
+
 > [!div class="op_single_selector"]
 > * [基于 Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
 > * [基于 Windows](hdinsight-hadoop-tutorial-get-started-windows.md)
 > 
 > 
 
+
+
 为了帮助你了解并开始使用 Hadoop on Windows，本教程说明了如何对 Hadoop 群集中的非结构化数据运行 Hive 查询，然后在 Microsoft Excel 中分析结果。
 
-> [!NOTE]
-> 此文档中的信息特定于基于 Windows 的 HDInsight 群集。 有关基于 Linux 的群集的信息，请参阅 [Hadoop 教程：在 HDInsight 中使用基于 Linux 的 Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)。
-> 
-> 
+> [!IMPORTANT]
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关创建基于 Linux 的群集的信息，请参阅 [Hadoop 教程：在 HDInsight 中使用基于 Linux 的 Hadoop 入门](hdinsight-hadoop-linux-tutorial-get-started.md)。
 
 假设你具有一个大型非结构化数据集，想要对其运行 Hive 查询以提取一些有意义的信息。 这正是你在本教程中要实现的目标。 下面说明了如何实现此目标：
 
@@ -81,10 +82,10 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
    | 订阅 |选择将用于此群集的 Azure 订阅。 |
    | 资源组 |选择现有 Azure 资源组或创建新的资源组。 基本 HDInsight 群集包含群集及其默认存储帐户。  为便于管理，可以将这两者分组到一个资源组。 |
    | 凭据 |输入群集登录用户名和密码。 基于 Windows 的群集可以有 2 个用户帐户。  群集用户（或 HTTP 用户）用于管理群集和提交作业。  可以选择创建远程桌面 (RDP) 用户帐户，用于远程连接到群集。 如果选择启用远程桌面，将创建 RDP 用户帐户。 |
-   | 数据源 |单击“新建”以创建新的默认 Azure 存储帐户。 使用群集名称作为默认容器名称。 每个 HDInsight 群集都在 Azure 存储帐户中有一个默认 Blob 容器。  默认 Azure 存储帐户的位置确定 HDInsight 群集的位置。 |
+   | 数据源 |单击“新建”以创建新的默认 Azure 存储帐户。 使用群集名称作为默认容器名称。 每个 HDInsight 群集在 Azure 存储帐户中都有一个默认 Blob 容器。  默认 Azure 存储帐户的位置确定 HDInsight 群集的位置。 |
    | 节点定价层 |对于本教程，将 1 个或 2 个工作节点用于默认工作节点和头节点定价层。 |
    | 可选配置 |跳过此部分。 |
-4. 在“新建 HDInsight 群集”边栏选项卡上，确保选中“固定到启动板”，然后单击“创建”。 这将会创建群集，并将该群集的磁贴添加到 Azure 门户的启动板。 该图标指示正在创建群集，完成创建后，将改为显示 HDInsight 图标。
+4. 在“新建 HDInsight 群集”边栏选项卡上，确保选中“固定到启动板”，然后单击“创建”。 这会创建群集，并将该群集的磁贴添加到 Azure 门户的启动板。 该图标指示正在创建群集，完成创建后，将改为显示 HDInsight 图标。
    
    | 在创建过程中 | 创建完成 |
    | --- | --- |
@@ -165,7 +166,7 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 7. 单击左上角的“关闭并加载”以将 Hive 作业输出导入到 Excel 中。
 
 ## <a name="run-samples"></a>运行示例
-HDInsight 群集提供包括入门库的查询控制台以直接从门户运行示例。 通过浏览一些基本方案，你可以使用示例了解如何使用 HDInsight。 这些示例提供所有必要组件，比如要分析的数据和要对数据运行的查询。 若要了解有关入门库中的示例的详细信息，请参阅[使用 HDInsight 入门库了解 HDInsight 中的 Hadoop](hdinsight-learn-hadoop-use-sample-gallery.md)。
+HDInsight 群集提供包括入门库的查询控制台以直接从门户运行示例。 通过浏览一些基本方案，你可以使用示例了解如何使用 HDInsight。 这些示例提供所有必要组件，比如要分析的数据和要对数据运行的查询。
 
 **运行示例**
 
@@ -255,6 +256,6 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

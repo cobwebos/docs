@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure AD v2.0 确保 .NET MVC Web 应用调用 Web API | Microsoft Docs"
+title: "Azure AD v2.0 .NET Web 应用调用 API 入门 | Microsoft Docs"
 description: "如何构建一个 .NET MVC Web 应用，以通过用于登录的 Microsoft 个人帐户和工作或学校帐户调用 Web 服务。"
 services: active-directory
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
-ms.openlocfilehash: 8c35bfbc75f99fc8558f83667b12a6df1cd3eefd
+ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
+ms.openlocfilehash: c6cca8fda4ba6a26d5ee74b43e0bae37639865c5
 
 
 ---
@@ -202,6 +202,6 @@ catch (MsalException ee)
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

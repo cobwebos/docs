@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions 的自动化资源部署 | Microsoft Docs"
-description: "了解如何生成将 Functions App 部署到 Microsoft Azure 的 Azure Resource Manager 模板。"
+title: "自动化 Azure Functions 应用的资源部署 | Microsoft Docs"
+description: "了解如何生成部署 Azure Functions 应用的 Azure Resource Manager 模板。"
 services: Functions
 documtationcenter: na
 author: mattchenderson
@@ -17,41 +17,41 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: cfowler;glenga
 translationtype: Human Translation
-ms.sourcegitcommit: d11ef8865d21dfe4e56bcb6fa08ce58c53f3d309
-ms.openlocfilehash: 7c55a1d34df71c2c958f42f43810fbce7bd74e5d
+ms.sourcegitcommit: 360abaa575e473e18e55d0784730f4bd5635f3eb
+ms.openlocfilehash: 979537bfe6b0e14a9208871fc9862661d2fb2e6c
 
 
 ---
 
-# <a name="automate-the-deployment-of-resources-for-your-azure-functions-app"></a>自动部署 Azure Functions App 的资源
+# <a name="automate-resource-deployment-for-your-azure-functions-app"></a>Azure Functions 应用的自动化资源部署
 
-在本主题中，你将学习如何生成用于部署 Function App 的 Azure Resource Manager 模板。 以及学习如何定义 Azure Function 所需的资源基线和在执行部署时指定的参数。 根据函数中使用的[触发器和绑定](functions-triggers-bindings.md)，可能需要部署额外的资源以包含整个应用程序作为基础结构即代码。
+可以使用 Azure Resource Manager 模板来部署 Azure Functions 应用。 了解如何定义 Azure Functions 应用所需的基线资源和部署时指定的参数。 要成功完成应用程序的“基础结构即代码”配置，可能需要部署其他资源，具体取决于 Function 应用中的[触发器和绑定](functions-triggers-bindings.md)。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
+有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
-有关完整模板的示例，请参阅[创建基于消耗的 Azure Function](https://github.com/Azure/azure-quickstart-templates/blob/052db5feeba11f85d57f170d8202123511f72044/101-function-app-create-dynamic/azuredeploy.json)和/或[创建基于应用服务计划的 Azure Function](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json)
+有关完整模板的示例，请参阅[创建基于消耗计划的 Azure Functions 应用](https://github.com/Azure/azure-quickstart-templates/blob/052db5feeba11f85d57f170d8202123511f72044/101-function-app-create-dynamic/azuredeploy.json)和[创建基于应用服务计划的 Azure Functions 应用](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json)。
 
-## <a name="what-is-deployed"></a>部署的内容
+## <a name="required-resources"></a>所需资源
 
-使用下面的示例，创建基线 Azure Function App。 Function App 所需资源如下：
+可以使用本文中的示例创建基线 Azure Functions 应用。 应用需要以下资源：
 
 * [Azure 存储](../storage/index.md)帐户
-* 宿主计划（消耗计划或应用服务计划）
-* Function App（**functionapp** 类 Microsoft.Web/站点）
+* 托管计划（消耗计划或 Azure 应用服务计划）
+* Function 应用（`type`：**Microsoft.Web/站点**，`kind`：**functionapp**）
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。 你应为随着要部署的项目或要部署到的环境而变化的值定义参数。
+可以使用 Azure Resource Manager 定义部署模板后想要指定的值的参数。 模板的“参数”部分包含所有参数值。 为随着要部署的项目或要部署到的环境而变化的值定义参数。
 
-[变量](../azure-resource-manager/resource-group-authoring-templates.md#variables)可用于不根据单个部署而改变的值，或在模板中使用前需要转换的参数（例如，通过验证规则）。
+[变量](../azure-resource-manager/resource-group-authoring-templates.md#variables)可用于不根据单个部署而改变的值，以及在模板中使用前需要转换的参数（例如，通过验证规则）。
 
-在定义参数时，请使用 **allowedValues** 字段来指定用户在部署过程中可以提供哪些值。 如果在部署过程中未提供任何值，请使用 **defaultValue** 字段为该参数赋值。
+定义参数时，请使用 **allowedValues** 字段指定用户在部署过程中可以提供哪些值。 如果在部署过程中未提供任何值，请使用 **defaultValue** 字段为该参数赋值。
 
-描述一下模板的参数。
+Azure Resource Manager 模板使用以下参数。
 
 ### <a name="appname"></a>appName
 
-要创建的函数的名称。
+想要创建的 Azure Functions 应用的名称。
 
 ```json
 "appName": {
@@ -61,13 +61,13 @@ ms.openlocfilehash: 7c55a1d34df71c2c958f42f43810fbce7bd74e5d
 
 ### <a name="location"></a>location
 
-要部署 Function App 的位置。
+要将 Function 应用部署到的位置。
 
 > [!NOTE]
-> **defaultValue** 参数用于继承资源组的位置，或者如果在 Powershell 或 CLI 部署期间未指定参数值。 如果从门户部署，则会提供一个下拉框，从 **allowedValues** 中选择。
+> 若要继承资源组的位置，或者如果在 PowerShell 或 Azure CLI 部署过程中未指定参数值，请使用 **defaultValue** 参数。 如果从 Azure 门户部署应用，请在 **allowedValues** 参数下拉列表框中选择一个值。
 
 > [!TIP]
-> 有关 Azure Functions 可用区域的最新列表，请访问[可用产品(按区域)](https://azure.microsoft.com/regions/services/)页面。
+> 有关可使用 Azure Functions 的区域的最新列表，请访问[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
 ```json
 "location": {
@@ -104,7 +104,7 @@ ms.openlocfilehash: 7c55a1d34df71c2c958f42f43810fbce7bd74e5d
       "type": "string",
       "defaultValue": "master",
       "metadata": {
-        "description": "Sourcecode Repo branch"
+        "description": "Source code repository branch"
       }
     }
 ```
@@ -116,16 +116,16 @@ ms.openlocfilehash: 7c55a1d34df71c2c958f42f43810fbce7bd74e5d
     "type": "bool",
     "defaultValue": false,
     "metadata": {
-        "description": "Use 'true' if you are deploying from the base repo, 'false' if you are deploying from your own fork. If you're using 'false', make sure you have admin permissions to the repo. If you get an error, you should add GitHub integration to another web app manually, so that you get a GitHub access token associated with your Azure Subscription."
+        "description": "Use 'true' if you are deploying from the base repo. Use 'false' if you are deploying from your own fork. If you use 'false', make sure that you have Administrator rights in the repo. If you get an error, manually add GitHub integration to another web app, to associate a GitHub access token with your Azure subscription."
     }
 }
 ```
 
 ## <a name="variables"></a>变量
 
-除了参数之外，Azure Resource Manager 模板还有关于变量的概念，它可以合并参数以生成模板要使用的更具体的设置。
+Azure Resource Manager 模板使用变量来引入参数，因此可以在模板中使用更具体的设置。
 
-在下面的示例中，可以看到我们利用变量应用 [Azure Resource Manager 模板函数](../azure-resource-manager/resource-group-template-functions.md)来接受提供的 appName 并将其转换为小写，确保满足 Azure 存储帐户的[命名要求](../storage/storage-create-storage-account.md#create-a-storage-account)。
+在下一个示例中，为满足 Azure 存储帐户[命名要求](../storage/storage-create-storage-account.md#create-a-storage-account)，我们使用变量来应用 [Azure Resource Manager 模板函数](../azure-resource-manager/resource-group-template-functions.md)，从而将输入的 **appName** 值转换为小写形式。
 
 ```json
 "variables": {
@@ -138,7 +138,7 @@ ms.openlocfilehash: 7c55a1d34df71c2c958f42f43810fbce7bd74e5d
 
 ### <a name="storage-account"></a>存储帐户
 
-Azure 存储帐户是 Azure Functions 中必需的资源。
+Azure Functions 应用需要 Azure 存储帐户。
 
 ```json
 {
@@ -152,9 +152,9 @@ Azure 存储帐户是 Azure Functions 中必需的资源。
 }
 ```
 
-### <a name="hosting-plan-consumption-vs-app-service-plan"></a>宿主计划：消耗计划与应用服务计划
+### <a name="hosting-plan-consumption-vs-app-service"></a>托管计划：消耗计划与App Service
 
-生成函数时，你可能希望函数是完全托管缩放的，即由平台按需缩放（消耗）。 或者，可以选择用户管理的缩放，其中 Functions 会在专用硬件（应用服务计划）上全天候运行，在该硬件中可手动或自动配置实例数。 选用哪种计划可取决于计划的可用功能，或取决于由按成本的构建驱动的决策。 若要了解有关不同宿主计划的详细信息，请参阅[缩放 Azure Functions](functions-scale.md) 一文。
+在某些情况下，可能希望函数根据平台按需缩放，这也称为完全托管缩放（通过使用消耗托管计划）。 或者，可以为函数选择用户管理的缩放。 在用户管理的缩放情况下，函数在专用硬件上全天候运行（通过使用应用服务托管计划）。 可手动或自动设置实例数。 可根据计划中的可用功能或构建成本选择托管计划。 若要了解有关托管计划的详细信息，请参阅[缩放 Azure Functions](functions-scale.md)。
 
 #### <a name="consumption-plan"></a>消耗量计划
 
@@ -172,7 +172,7 @@ Azure 存储帐户是 Azure Functions 中必需的资源。
 }
 ```
 
-#### <a name="app-service-plan"></a>应用服务计划
+#### <a name="app-service-plan"></a>App Service 计划
 
 ```json
 {
@@ -190,14 +190,14 @@ Azure 存储帐户是 Azure Functions 中必需的资源。
 }
 ```
 
-### <a name="function-app-site"></a>Function app（站点）
+### <a name="functions-app-a-site"></a>Function 应用（站点）
 
-选择缩放选项后，即可创建用于保存所有函数的容器，它又称为 Function App。
+选择缩放选项后，创建 Function 应用。 该应用是一个包含所有函数的容器。
 
-Function App 有许多子资源，你可在其中使用包含“应用设置”和“源代码管理选项”。 可选择删除 **sourcecontrols** 子资源，使用其他[部署选项](functions-continuous-deployment.md)。
+Function 应用有许多可用于部署的子资源，包括应用设置和源代码管理选项。 还可以选择删除 **sourcecontrols** 子资源，改用另一个[部署选项](functions-continuous-deployment.md)。
 
 > [!IMPORTANT]
-> 请务必了解如何在 Azure 中部署资源，以确保使用 Azure Resource Manager 时为应用程序成功创建基础结构即代码配置。 在此示例中，请注意使用 **siteConfig** 应用了顶级配置，在顶级设置这些配置非常重要，因为它们会在应用子资源 **sourcecontrols/web** 之前将意义传达给所需的 Azure Functions 运行时和部署引擎。 虽然可以在子级资源 **config/appSettings** 中配置这些设置，但在某些情况下，需要在应用 **config/appsettings** 之前部署 Function App 和 Functions，因为 Functions 是其他资源（例如[逻辑应用](../logic-apps/index.md)）的依赖项。
+> 若要使用 Azure Resource Manager 为应用程序成功创建“基础结构即代码”配置，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Azure Functions 运行时并部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 **config/appSettings** 之前部署 Function 应用和函数。 在某些情况下，比如在[逻辑应用](../logic-apps/index.md)中，函数是另一资源的依赖项。
 
 ```json
 {
@@ -252,13 +252,13 @@ Function App 有许多子资源，你可在其中使用包含“应用设置”�
 }
 ```
 > [!TIP]
-> 在此模板中使用 [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) 应用设置，这是在设置函数部署引擎 (Kudu) 要查找可部署代码的基本目录。 在此示例中，我们将此值设置为 `src`，因为这里的 GitHub 存储库包含一个 `src` 文件夹，其中的函数是其子代。 如果一个存储库中的函数直接位于存储库的根目录中，或者未从源代码管理进行部署，则可以删除此应用设置。
+> 此模板使用 [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) 应用设置值，这将设置基本目录，函数部署引擎 (Kudu) 在此目录中查找可部署代码。 在存储库内，函数位于 **src** 文件夹的子文件夹中。 因此，在前一个示例中，将应用设置值设置为 `src`。 如果函数位于存储库的根目录中，或者不从源代码管理进行部署，则可删除此应用设置值。
 
-## <a name="deploying-your-template"></a>部署模板
+## <a name="deploy-your-template"></a>部署模板
 
-* [Powershell](../azure-resource-manager/resource-group-template-deploy.md)
-* [CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [门户](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
@@ -279,13 +279,14 @@ Function App 有许多子资源，你可在其中使用包含“应用设置”�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已经能够通过代码部署 Function App，请借此机会了解有关如何开发和配置 Azure Functions 的详细信息：
+深入了解如何开发和配置 Azure Functions。
 
 * [Azure Functions 开发人员参考](functions-reference.md)
 * [如何配置 Azure Functions 应用设置](functions-how-to-use-azure-function-app-settings.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)
 
 
-<!--HONumber=Jan17_HO4-->
+
+<!--HONumber=Feb17_HO1-->
 
 
