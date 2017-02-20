@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB .NET API 和 SDK | Microsoft Docs"
+title: ".NET API 和 SDK 资源 - Azure DocumentDB | Microsoft Docs"
 description: "了解有关 .NET API 和 SDK 的全部信息，包括发布日期、停用日期和 DocumentDB.NET SDK 各版本之间的更改。"
 services: documentdb
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 02/06/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: efd154811ebbcf2170ffb001344a954be72b1d92
-ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
+ms.sourcegitcommit: 44bc06506707e09ea2bbcbb18198bc1a10467d53
+ms.openlocfilehash: 26567a3e935ad9162c366ee053ff846d2edadc38
 
 
 ---
@@ -50,6 +50,20 @@ ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name11141114httpswwwnugetorgpackagesmicrosoftazuredocumentdb1114"></a><a name="1.11.4"/>[1.11.4](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.4)
+* 针对 32 位主机进程中某些分区查询的失败问题进行了修复。
+* 针对网关模式中使用令牌更新会话容器的请求失败问题进行了修复。
+* 针对某些情况下投影中调用 UDF 的查询失败问题进行了修复。
+
+### <a name="a-name11131113httpswwwnugetorgpackagesmicrosoftazuredocumentdb1113"></a><a name="1.11.3"/>[1.11.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.3)
+* 针对使用令牌更新会话容器的请求失败问题进行了修复。
+* 添加了对 SDK 在 32 位主机进程中工作的支持。 请注意，如果使用跨分区查询，建议使用 64 位主机进程以提高性能。
+* 针对在 IN 表达式中使用大量分区键值调用查询的方案改进了性能。
+
+### <a name="a-name11111111httpswwwnugetorgpackagesmicrosoftazuredocumentdb1111"></a><a name="1.11.1"/>[1.11.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.1)
+* 对 1.11.0 版本中引入的 CreateDocumentCollectionIfNotExistsAsync API 的轻微性能修复。
+* 针对 SDK 中涉及高度并发请求的方案的性能修复。
 
 ### <a name="a-name11101110httpswwwnugetorgpackagesmicrosoftazuredocumentdb1110"></a><a name="1.11.0"/>[1.11.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.0)
 * 支持新类和方法，可处理集合内的文档[更改源](documentdb-change-feed.md)。
@@ -161,9 +175,9 @@ ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
   * LINQ 提供程序支持 OrderBy() 或 OrderByDescending() 
   * 支持 Order By 的 IndexingPolicy 
     
-        **NB: Possible breaking change** 
+    **注意：重大更改** 
     
-        If you have existing code that provisions collections with a custom indexing policy, then your existing code will need to be updated to support the new IndexingPolicy class. If you have no custom indexing policy, then this change does not affect you.
+    如果你的现有代码使用自定义索引策略预配集合，那么你的现有代码将需要更新为支持新的 IndexingPolicy 类。 如果你没有任何自定义索引策略，此更改不会影响你。
 
 ### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdb110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 * 通过使用新的 HashPartitionResolver 和 RangePartitionResolver 类以及 IPartitionResolver 支持对数据进行分区
@@ -174,15 +188,6 @@ ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
 ### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdb100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.0.0)
 * GA SDK
 
-> [!NOTE]
-> 预览版和 GA 版之间的 NuGet 程序包名称有所更改。 从 **Microsoft.Azure.Documents.Client** 移到了** Microsoft.Azure.DocumentDB**
-> <br/>
-> 
-> 
-
-### <a name="a-name09x-preview09x-previewhttpswwwnugetorgpackagesmicrosoftazuredocumentsclient"></a><a name="0.9.x-preview"/>[0.9.x-preview](https://www.nuget.org/packages/Microsoft.Azure.Documents.Client)
-* 预览版 SDK[已过时]
-
 ## <a name="release--retirement-dates"></a>发布和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
 
@@ -190,23 +195,19 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 使用已停用的 SDK 对 DocumentDB 发出的任何请求都将被服务拒绝。
 
-> [!WARNING]
-> **1.0.0** 版之前的所有 Azure DocumentDB SDK for .NET 版本都将在 **2016 年 2 月 29 日**停用。 
-> 
-> 
-
 <br/>
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.11.4](#1.11.4) |2017 年 2 月 6 日 |--- |
+| [1.11.3](#1.11.3) |2017 年 1 月 26 日 |--- |
+| [1.11.1](#1.11.1) |2016 年 12 月 21 日 |--- |
 | [1.11.0](#1.11.0) |2016 年 12 月 08 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 9 月 27 日 |--- |
 | [1.9.5](#1.9.5) |2016 年 9 月 1 日 |--- |
 | [1.9.4](#1.9.4) |2016 年 8 月 24 日 |--- |
 | [1.9.3](#1.9.3) |2016 年 8 月 15 日 |--- |
 | [1.9.2](#1.9.2) |2016 年 7 月 23 日 |--- |
-| 1.9.1 |已放弃 |--- |
-| 1.9.0 |已放弃 |--- |
 | [1.8.0](#1.8.0) |2016 年 6 月 14 日 |--- |
 | [1.7.1](#1.7.1) |2016 年 5 月 6 日 |--- |
 | [1.7.0](#1.7.0) |2016 年 4 月 26 日 |--- |
@@ -222,10 +223,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.2.0](#1.2.0) |2015 年 7 月 6 日 |--- |
 | [1.1.0](#1.1.0) |2015 年 4 月 30 日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
-| [0.9.3-prelease](#0.9.x-preview) |2015 年 3 月 12 日 |2016 年 2 月 29 日 |
-| [0.9.2-prelease](#0.9.x-preview) |2015 年 1 月 |2016 年 2 月 29 日 |
-| [.9.1-prelease](#0.9.x-preview) |2014 年 10 月 13 日 |2016 年 2 月 29 日 |
-| [0.9.0-prelease](#0.9.x-preview) |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
+
 
 ## <a name="faq"></a>常见问题
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -236,6 +234,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 
