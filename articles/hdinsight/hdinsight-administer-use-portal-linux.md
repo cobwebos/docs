@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 门户管理 HDInsight 中基于 Linux 的 Hadoop 群集 | Microsoft Docs"
-description: "了解如何使用 Azure 门户创建和管理基于 Linux 的 HDInsight 群集。"
+title: "使用 Azure 门户管理 HDInsight 中的 Hadoop 群集 | Microsoft Docs"
+description: "了解如何使用 Azure 门户创建和管理 HDInsight 群集。"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -13,18 +13,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 7bfa0d73f870202e4caeb893830952ca39a35c26
-ms.openlocfilehash: 27ee26b38b9881ed7f0cd7b0253be123af27955f
+ms.sourcegitcommit: 8c439591dae0bd561ba4f079aba9f2073d1e954b
+ms.openlocfilehash: dc94c3f428200f107f7e953a57cf4e0e83bc7de1
 
 
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中基于 Linux 的群集。 使用选项卡选择器还可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。 
+使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 Hadoop 群集。 使用选项卡选择器还可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。 
 
 **先决条件**
 
@@ -43,6 +43,8 @@ ms.openlocfilehash: 27ee26b38b9881ed7f0cd7b0253be123af27955f
      
        ![Azure 门户中的 HDInsight 群集按钮](./media/hdinsight-administer-use-portal-linux/azure-portal-hdinsight-button.png)
 
+       如果没有看到 HDInsight 群集，请单击列表底部的“更多服务”，然后单击“智能 + 分析”部分下的“HDInsight 群集”。
+
 ## <a name="create-clusters"></a>创建群集
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -56,14 +58,14 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    
     ![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)
    
-    **概述菜单**：
+    **概述菜单：**
 
-   * **仪表板**、**群集仪表板**和 **URL：这些是访问群集仪表板（即可用于基于 Linux 群集的 Ambari Web）的所有途径。
+   * **仪表板**：打开群集仪表板，即可用于基于 Linux 群集的 Ambari Web。
    * **安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
    * **缩放群集**：可更改此群集的辅助角色节点数。
    * **删除**：删除群集。
 
-    **左侧菜单**
+    **左侧菜单：**
    
    * **活动日志**：显示和查询活动日志。
    * **访问控制 (IAM)**：使用角色分配。  请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)。
@@ -315,6 +317,6 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

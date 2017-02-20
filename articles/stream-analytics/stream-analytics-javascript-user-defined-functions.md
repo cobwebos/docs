@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 02/01/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 822f0870396e1fa5fe2dfee3bae410aad3da1122
-ms.openlocfilehash: 959fd48cb7d7f21385f6eea21f79ad26e8164bc0
+ms.sourcegitcommit: 83b267a610a1d910fab09f8e42f079d269e3f0bb
+ms.openlocfilehash: e11e6070002275544fa5a82923cdcad4412e40b7
 
 ---
 
@@ -28,7 +28,7 @@ JavaScript UDF 支持仅用于计算的且不需要外部连接的无状态标�
 
 下面是 JavaScript UDF 可派上用场的一些示例情景：
 * 使用 Regexp_Replace() 和 Regexp_Extract() 等正则表达式函数分析和操作字符串
-* 解码某个编码数据，例如，二进制到十六进制的转换
+* 解码和编码数据，例如，二进制到十六进制的转换
 * 使用 JavaScript Math 函数进行数学计算
 * 排序、联接、查找和填充等数组操作
 
@@ -79,7 +79,7 @@ JavaScript UDF 支持仅用于计算的且不需要外部连接的无状态标�
         InputStream
     ```
 
-3.  右键单击作业输入，上载示例数据文件 
+3.  右键单击作业输入，上传示例数据文件。
  
 4.  单击“测试”测试查询。
 
@@ -156,6 +156,7 @@ FROM
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+
 
 
 <!--HONumber=Feb17_HO1-->

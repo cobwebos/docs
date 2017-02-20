@@ -16,43 +16,39 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 918e331e135003870cf22080609cb276ef3f72af
-ms.openlocfilehash: 91928c9d859ceb69e6242e6563be2db8d3da104e
+ms.sourcegitcommit: 637171b775d01e16cec1a7e9ef6fad73875eac69
+ms.openlocfilehash: 4f6c3713c6ca579d6ec24e8f208299f9984e0d00
 
 
 ---
 # <a name="monitor-and-manage-an-elastic-pool-with-transact-sql"></a>使用 Transact-SQL 监视和管理弹性池
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-elastic-pool-manage-portal.md)
-> * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
-> * [C#](sql-database-elastic-pool-manage-csharp.md)
-> * [T-SQL](sql-database-elastic-pool-manage-tsql.md)
->  
+本主题介绍了如何使用 Transact-SQL 管理可缩放的[弹性池](sql-database-elastic-pool.md)。  也可以使用 [Azure 门户](https://portal.azure.com/)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API 或 [C#] [使用 C# 创建和管理弹性池](sql-database-elastic-pool-manage-csharp.md)创建和管理 Azure 弹性池。 此外还可以使用 [Transact-SQL](sql-database-elastic-pool-manage-tsql.md) 创建弹性池和将数据库移入和移出弹性池。
+
 
 使用 [Create Database（Azure SQL 数据库）](https://msdn.microsoft.com/library/dn268335.aspx)和 [Alter Database（Azure SQL 数据库）](https://msdn.microsoft.com/library/mt574871.aspx)命令可以创建数据库并将它们移入和移出弹性池。 必须先有弹性池才可以使用这些命令。 这些命令只影响数据库。 无法使用 T-SQL 命令更改新池的创建和池属性（例如最小和最大 eDTU）的设置。
 
-## <a name="create-a-new-database-in-an-elastic-pool"></a>在弹性池中创建新数据库
+## <a name="create-a-pooled-database-in-an-elastic-pool"></a>在弹性池中创建共用数据库
 结合 SERVICE_OBJECTIVE 选项使用 CREATE DATABASE 命令。   
 
     CREATE DATABASE db1 ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3M100] ));
-    -- Create a database named db1 in a pool named S3M100.
+    -- Create a database named db1 in an elastic named S3M100.
 
 弹性池中的所有数据库都都继承弹性池的服务层（基本、标准、高级）。 
 
 ## <a name="move-a-database-between-elastic-pools"></a>在弹性池之间移动数据库
-结合 MODIFY 使用 ALTER DATABASE 命令，并将 SERVICE\_OBJECTIVE 选项设置为 ELASTIC\_POOL；将名称设置为目标池的名称。
+结合 MODIFY 使用 ALTER DATABASE 命令，并将 SERVICE\_OBJECTIVE 选项设置为 ELASTIC\_POOL。 将名称设置为目标池的名称。
 
     ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [PM125] ));
-    -- Move the database named db1 to a pool named P1M125  
+    -- Move the database named db1 to an elastic named P1M125  
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>将数据库移入弹性池
-结合 MODIFY 使用 ALTER DATABASE 命令，并将 SERVICE\_OBJECTIVE 选项设置为 ELASTIC_POOL；将名称设置为目标池的名称。
+结合 MODIFY 使用 ALTER DATABASE 命令，并将 SERVICE\_OBJECTIVE 选项设置为 ELASTIC_POOL。 将名称设置为目标池的名称。
 
     ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
-    -- Move the database named db1 to a pool named S3100.
+    -- Move the database named db1 to an elastic named S3100.
 
 ## <a name="move-a-database-out-of-an-elastic-pool"></a>将数据库移出弹性池
-使用 ALTER DATABASE 命令并将 SERVICE_OBJECTIVE 设置为某个性能级别（S0、S1 等）。
+使用 ALTER DATABASE 命令并将 SERVICE_OBJECTIVE 设置为某个性能级别（例如 S0 或 S1）。
 
     ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
     -- Changes the database into a stand-alone database with the service objective S1.
@@ -66,7 +62,7 @@ ms.openlocfilehash: 91928c9d859ceb69e6242e6563be2db8d3da104e
     ON d.database_id = slo.database_id
     WHERE elastic_pool_name = 'MyElasticPool'; 
 
-## <a name="get-resource-usage-data-for-a-pool"></a>获取池的资源使用情况数据
+## <a name="get-resource-usage-data-for-an-elastic"></a>获取弹性池的资源使用情况数据
 使用 [sys.elastic\_pool\_resource\_stats 视图](https://msdn.microsoft.com/library/mt280062.aspx)来检查逻辑服务器上弹性池的资源使用情况统计信息。 登录到 master 数据库可查询该视图。
 
     SELECT * FROM sys.elastic_pool_resource_stats 
@@ -84,6 +80,6 @@ ms.openlocfilehash: 91928c9d859ceb69e6242e6563be2db8d3da104e
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

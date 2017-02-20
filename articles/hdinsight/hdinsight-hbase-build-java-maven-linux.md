@@ -1,5 +1,5 @@
 ---
-title: "使用 Maven 和 Java 构建 HBase 应用程序并将其部署到基于 Linux 的 HDInsight | Microsoft Docs"
+title: "构建用于 Azure HDInsight 的 Java HBase 应用程序 | Microsoft Docs"
 description: "了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure 云中基于 Linux 的 HDInsight。"
 services: hdinsight
 documentationcenter: 
@@ -12,51 +12,60 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 02/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
+ms.sourcegitcommit: dd5471da4d1e69b51d355784dfa2551bc61e9ad9
+ms.openlocfilehash: 35a396f002600b8f5fee5958e2ad31c0cb7f627b
 
 
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-linux-based-hdinsight-hadoop"></a>借助 Maven 构建可将 HBase 与基于 Linux 的 HDInsight (Hadoop) 配合使用的 Java 应用程序
 了解如何通过使用 Apache Maven 在 Java 中创建和构建 [Apache HBase](http://hbase.apache.org/) 应用程序。 然后，在基于 Linux 的 HDInsight 群集上使用该应用程序。
 
-[Maven](http://maven.apache.org/) 是一种软件项目管理和综合工具，可用于为 Java 项目构建软件、文档和报告。 在本文中，你将要了解如何使用 Maven 创建一个基本的 Java 应用程序，该应用程序可在基于 Linux 的 HDInsight 群集上创建、查询和删除 HBase 表。
+[Maven](http://maven.apache.org/) 是一种软件项目管理和综合工具，可用于为 Java 项目构建软件、文档和报告。 在本文中，你会了解如何使用 Maven 创建一个基本的 Java 应用程序，该应用程序可在基于 Linux 的 HDInsight 群集上创建、查询和删除 HBase 表。
 
-> [!NOTE]
-> 本文档中的步骤假设使用基于 Linux 的 HDInsight 群集。 有关使用基于 Windows 的 HDInsight 群集的信息，请参阅[借助 Maven 构建可将 HBase 与基于 Windows 的 HDInsight 配合使用的 Java 应用程序](hdinsight-hbase-build-java-maven.md)
-> 
-> 
+> [!IMPORTANT]
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="requirements"></a>要求
+
 * [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 或更高版本
+
 * [Maven](http://maven.apache.org/)
+
 * [装有 HBase 的基于 Linux 的 Azure HDInsight 群集](hdinsight-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
   
   > [!NOTE]
-  > 本文档中的步骤已在 HDInsight 群集版本 3.2、3.3 和 3.4 中测试。 示例中提供的默认值适用于 HDInsight 3.4 群集。
-  > 
-  > 
-* **熟悉 SSH 和 SCP**。 有关如何在 HDInsight 中使用 SSH 和 SCP 的详细信息，请参阅以下文档：
+  > 本文档中的步骤已在 HDInsight 群集版本 3.2、3.3、3.4 和 3.5 中测试。 示例中提供的默认值适用于 HDInsight 3.4 群集。
+
+* **熟悉 SSH 和 SCP** 或 **Azure PowerShell**。 本文档提供有关运行此示例时使用 SSH/SCP 和 Azure PowerShell 的步骤。
+
+    有关安装 Azure PowerShell 的信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)。
+
+    有关如何在 HDInsight 中使用 SSH 和 SCP 的详细信息，请参阅以下文档：
   
-  * **Linux、Unix 或 OS X 客户端**：请参阅 [在 Linux、OS X 或 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * **Windows 客户端**：请参阅 [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * **Linux、Unix 或 OS X 客户端**：请参阅[在 Linux、OS X 或 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+
+    * **Windows 客户端**：请参阅 [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ## <a name="create-the-project"></a>创建项目
+
 1. 在开发环境中，通过命令行将目录更改为要创建项目的位置，例如 `cd code/hdinsight`。
+
 2. 使用随同 Maven 一起安装的 **mvn** 命令，为项目生成基架。
    
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    
-    此时，将使用 **artifactID** 参数（本示例中的 **hbaseapp**）指定的名称在当前目录中创建新目录。此目录将包含以下项：
+    此时，将使用 **artifactID** 参数（本示例中的 **hbaseapp**）指定的名称在当前目录中创建新目录。此目录包含以下项：
    
    * **pom.xml**：项目对象模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html))，其中包含用于生成项目的信息和配置详细信息。
-   * **src**：包含 **main\java\com\microsoft\examples** 目录的目录，将在其中创作应用程序。
-3. 删除 **src\test\java\com\microsoft\examples\apptest.java** 文件，因为本示例中不使用该文件。
+   * **src**：包含 **main/java/com/microsoft/examples** 目录的目录，用户将在其中创作应用程序。
+
+3. 删除 **src/test/java/com/microsoft/examples/apptest.java** 文件，因为本示例中不使用该文件。
 
 ## <a name="update-the-project-object-model"></a>更新项目对象模型
+
 1. 编辑 **pom.xml** 文件，并将以下代码添加到 `<dependencies>` 部分：
    
         <dependency>
@@ -65,7 +74,7 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
           <version>1.1.2</version>
         </dependency>
    
-    这将会告知 Maven，项目需要 **hbase-client** 版本 **1.1.2**。 在编译时，将从默认的 Maven 存储库下载该版本。 可以使用 [Maven 中央存储库](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)搜索来了解有关此依赖项的详细信息。
+    本部分会告知 Maven，项目需要 **hbase-client** 版本 **1.1.2**。 在编译时，将从默认的 Maven 存储库下载该依赖项。 可以使用 [Maven 中央存储库](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)搜索来了解有关此依赖项的详细信息。
    
    > [!IMPORTANT]
    > 版本号必须与 HDInsight 群集随附的 HBase 版本匹配。 可以使用下表来查找正确的版本号。
@@ -75,10 +84,11 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
    | HDInsight 群集版本 | 要使用的 HBase 版本 |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
-   | 3.3 和 3.4 |1.1.2 |
+   | 3.3、3.4 和 3.5 |1.1.2 |
    
     有关 HDInsight 版本和组件的详细信息，请参阅 [HDInsight 提供哪些不同的 Hadoop 组件](hdinsight-component-versioning.md)。
-2. 如果使用 HDInsight 3.3 或 3.4 群集，则还必须将以下代码添加到 `<dependencies>` 部分：
+
+2. 如果使用 HDInsight 3.3、3.4 或 3.5 群集，则还必须将以下代码添加到 `<dependencies>` 部分：
    
         <dependency>
             <groupId>org.apache.phoenix</groupId>
@@ -86,8 +96,8 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
             <version>4.4.0-HBase-1.1</version>
         </dependency>
    
-    此代码将会加载需要在 Hbase 版本 1.1.x 中使用的 phoenix-core 组件。
-3. 将以下代码添加到 **pom.xml** 文件。 它必须位于文件中的 `<project>...</project>` 标记内，例如 `</dependencies>` 和 `</project>` 之间。
+    此部分将会加载需要在 Hbase 版本 1.1.x 中使用的 phoenix-core 组件。
+3. 将以下代码添加到 **pom.xml** 文件。 此文本必须位于文件中的 `<project>...</project>` 标记内，例如 `</dependencies>` 和 `</project>` 之间。
    
         <build>
           <sourceDirectory>src</sourceDirectory>
@@ -132,31 +142,33 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
           </plugins>
         </build>
    
-    这将配置包含与 HBase 有关的配置信息的资源 (**conf/hbase-site.xml**)。
+    此部分将配置包含与 HBase 有关的配置信息的资源 (**conf/hbase-site.xml**)。
    
    > [!NOTE]
    > 你也可以通过代码设置配置值。 有关如何完成此操作的说明，请参阅所采用的 **CreateTable** 示例中的注释。
-   > 
-   > 
    
-    此外，这还将配置 [Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/)（Maven 编译器插件）和 [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/)（Maven 阴影插件）。 该编译器插件用于编译拓扑。 该阴影插件用于防止在由 Maven 构建的 JAR 程序包中复制许可证。 使用此插件的原因在于，重复的许可证文件会导致 HDInsight 群集在运行时出错。 将 maven-shade-plugin 用于 `ApacheLicenseResourceTransformer` 实现可防止发生此错误。
+    此部分还将配置 [Maven 编译器插件](http://maven.apache.org/plugins/maven-compiler-plugin/)和 [Maven 阴影插件](http://maven.apache.org/plugins/maven-shade-plugin/)。 该编译器插件用于编译拓扑。 该阴影插件用于防止在由 Maven 构建的 JAR 程序包中复制许可证。 此插件用于防止 HDInsight 群集在运行时出现“重复的许可证文件”错误。 将 maven-shade-plugin 用于 `ApacheLicenseResourceTransformer` 实现可防止发生此错误。
    
     maven-shade-plugin 还会生成 uber jar（或 fat jar），其中包含应用程序所需的所有依赖项。
+
 4. 保存 **pom.xml** 文件。
+
 5. 在 **hbaseapp**录中创建名为 conf 的新目录。 此目录用于保存连接到 HBase 所需的配置信息。
+
 6. 使用以下命令将 HBase 配置从 HDInsight 服务器复制到 **conf** 目录。 将 **USERNAME** 替换为 SSH 登录名。 将 **CLUSTERNAME** 替换为 HDInsight 群集名：
    
         scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
    
    > [!NOTE]
-   > 如果你使用了 SSH 帐户的密码，则系统将提示你输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例将从 `~/.ssh/id_rsa`加载私钥：
+   > 如果使用了 SSH 帐户的密码，则系统将提示输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例从 `~/.ssh/id_rsa` 加载私钥：
    > 
    > `scp -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml`
-   > 
-   > 
+
 
 ## <a name="create-the-application"></a>创建应用程序
+
 1. 转到 **hbaseapp/src/main/java/com/microsoft/examples** 目录，然后将 app.java 文件重命名为 **CreateTable.java**。
+
 2. 打开 **CreateTable.java** 文件，并将现有内容替换为以下内容：
    
         package com.microsoft.examples;
@@ -227,8 +239,10 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
           }
         }
    
-    这是 **CreateTable** 类，该类将创建名为 **people** 的表，并使用一些预定义的用户填充它。
+    此代码是 **CreateTable** 类，该类会创建名为 **people** 的表，并使用一些预定义的用户填充它。
+
 3. 保存 **CreateTable.java** 文件。
+
 4. 在 **hbaseapp/src/main/java/com/microsoft/examples** 目录中，创建名为 **SearchByEmail.java** 的新文件。 使用以下项作为此文件的内容：
    
         package com.microsoft.examples;
@@ -303,7 +317,9 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
         }
    
     **SearchByEmail** 类可用于按电子邮件地址查询行。 由于它使用正则表达式筛选器，因此，你可以在使用类时提供字符串或正则表达式。
+
 5. 保存 **SearchByEmail.java** 文件。
+
 6. 在 **hbaseapp/src/main/hava/com/microsoft/examples** 目录中，创建名为 **DeleteTable.java** 的新文件。 使用以下项作为此文件的内容：
    
         package com.microsoft.examples;
@@ -327,49 +343,53 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
         }
    
     此类用于清除本示例，方法是禁用并删除由 **CreateTable** 类创建的表。
+
 7. 保存 **DeleteTable.java** 文件。
 
 ## <a name="build-and-package-the-application"></a>生成并打包应用程序
+
 1. 在 **hbaseapp** 目录中，使用以下命令来构建包含应用程序的 JAR 文件：
    
         mvn clean package
    
-    这将清除任何以前构建的项目，下载任何尚未安装的依赖项，然后构建和打包应用程序。
+    该指令会清除任何以前构建的项目，下载任何尚未安装的依赖项，然后构建和打包应用程序。
+
 2. 完成该命令后，**hbaseapp/target** 目录将包含名为 **hbaseapp-1.0-SNAPSHOT.jar** 的文件。
    
    > [!NOTE]
    > **hbaseapp-1.0-SNAPSHOT.jar** 文件是 uber jar（有时称为 fat jar），其中包含运行应用程序所需的所有依赖项。
-   > 
-   > 
 
-## <a name="upload-the-jar-file-and-run-jobs"></a>上载 JAR 文件并运行作业
+
+## <a name="upload-the-jar-and-run-jobs-ssh"></a>上传 JAR 并运行作业 (SSH)
+
+以下步骤使用 `scp` 将 JAR 复制到 HDInsight 群集的主要头节点。 然后使用 `ssh` 命令连接到群集，并直接在头节点上运行示例。
+
 1. 使用以下命令将该 jar 文件上载到 HDInsight 群集。 将 **USERNAME** 替换为 SSH 登录名。 将 **CLUSTERNAME** 替换为 HDInsight 群集名：
    
-        scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
+        scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
    
-    这会将文件上载到 SSH 用户帐户的主目录。
+    此命令会将文件上传到 SSH 用户帐户的主目录。
    
    > [!NOTE]
-   > 如果你使用了 SSH 帐户的密码，则系统将提示你输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例将从 `~/.ssh/id_rsa`加载私钥：
+   > 如果使用了 SSH 帐户的密码，则系统将提示输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例从 `~/.ssh/id_rsa` 加载私钥：
    > 
-   > `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
-   > 
-   > 
+   > `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar`
+
 2. 使用 SSH 连接到 HDInsight 群集。 将 **USERNAME** 替换为 SSH 登录名。 将 **CLUSTERNAME** 替换为 HDInsight 群集名：
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
    > [!NOTE]
-   > 如果你使用了 SSH 帐户的密码，则系统将提示你输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例将从 `~/.ssh/id_rsa`加载私钥：
+   > 如果使用了 SSH 帐户的密码，则系统将提示输入该密码。 如果将 SSH 密钥与帐户配合使用，则可能需要使用 `-i` 参数来指定密钥文件的路径。 以下示例从 `~/.ssh/id_rsa` 加载私钥：
    > 
    > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
-   > 
-   > 
+
 3. 连接后，使用以下命令在 Java 应用程序中创建新的 HBase 表：
    
         hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
    
-    这将创建名为 **people** 的新 HBase 表，并在其中填充数据。
+    此命令会创建名为 **people** 的新 HBase 表，并在其中填充数据。
+
 4. 接下来，使用以下命令搜索存储在表中的电子邮件地址：
    
         hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.SearchByEmail contoso.com
@@ -383,14 +403,273 @@ ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
 
+## <a name="upload-the-jar-and-run-jobs-powershell"></a>上传 JAR 并运行作业 (PowerShell)
+
+以下步骤使用 Azure PowerShell 将 JAR 上传到 HDInsight 群集的默认存储。 然后使用 HDInsight cmdlet 远程运行示例。
+
+1. 安装并配置 Azure PowerShell 后，请创建名为 **hbase-runner.psm1** 的新文件。 使用以下项作为此文件的内容：
+   
+   ```powershell
+    <#
+    .SYNOPSIS
+    Copies a file to the primary storage of an HDInsight cluster.
+    .DESCRIPTION
+    Copies a file from a local directory to the blob container for
+    the HDInsight cluster.
+    .EXAMPLE
+    Start-HBaseExample -className "com.microsoft.examples.CreateTable"
+    -clusterName "MyHDInsightCluster"
+
+    .EXAMPLE
+    Start-HBaseExample -className "com.microsoft.examples.SearchByEmail"
+    -clusterName "MyHDInsightCluster"
+    -emailRegex "contoso.com"
+
+    .EXAMPLE
+    Start-HBaseExample -className "com.microsoft.examples.SearchByEmail"
+    -clusterName "MyHDInsightCluster"
+    -emailRegex "^r" -showErr
+    #>
+
+    function Start-HBaseExample {
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    param(
+    #The class to run
+    [Parameter(Mandatory = $true)]
+    [String]$className,
+
+    #The name of the HDInsight cluster
+    [Parameter(Mandatory = $true)]
+    [String]$clusterName,
+
+    #Only used when using SearchByEmail
+    [Parameter(Mandatory = $false)]
+    [String]$emailRegex,
+
+    #Use if you want to see stderr output
+    [Parameter(Mandatory = $false)]
+    [Switch]$showErr
+    )
+
+    Set-StrictMode -Version 3
+
+    # Is the Azure module installed?
+    FindAzure
+
+    # Get the login for the HDInsight cluster
+    $creds=Get-Credential -Message "Enter the login for the cluster" -UserName "admin"
+
+    # The JAR
+    $jarFile = "wasbs:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
+
+    # The job definition
+    $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
+        -JarFile $jarFile `
+        -ClassName $className `
+        -Arguments $emailRegex
+
+    # Get the job output
+    $job = Start-AzureRmHDInsightJob `
+        -ClusterName $clusterName `
+        -JobDefinition $jobDefinition `
+        -HttpCredential $creds
+    Write-Host "Wait for the job to complete ..." -ForegroundColor Green
+    Wait-AzureRmHDInsightJob `
+        -ClusterName $clusterName `
+        -JobId $job.JobId `
+        -HttpCredential $creds
+    if($showErr)
+    {
+    Write-Host "STDERR"
+    Get-AzureRmHDInsightJobOutput `
+                -Clustername $clusterName `
+                -JobId $job.JobId `
+                -HttpCredential $creds `
+                -DisplayOutputType StandardError
+    }
+    Write-Host "Display the standard output ..." -ForegroundColor Green
+    Get-AzureRmHDInsightJobOutput `
+                -Clustername $clusterName `
+                -JobId $job.JobId `
+                -HttpCredential $creds
+    }
+
+    <#
+    .SYNOPSIS
+    Copies a file to the primary storage of an HDInsight cluster.
+    .DESCRIPTION
+    Copies a file from a local directory to the blob container for
+    the HDInsight cluster.
+    .EXAMPLE
+    Add-HDInsightFile -localPath "C:\temp\data.txt"
+    -destinationPath "example/data/data.txt"
+    -ClusterName "MyHDInsightCluster"
+    .EXAMPLE
+    Add-HDInsightFile -localPath "C:\temp\data.txt"
+    -destinationPath "example/data/data.txt"
+    -ClusterName "MyHDInsightCluster"
+    -Container "MyContainer"
+    #>
+
+    function Add-HDInsightFile {
+        [CmdletBinding(SupportsShouldProcess = $true)]
+        param(
+            #The path to the local file.
+            [Parameter(Mandatory = $true)]
+            [String]$localPath,
+
+            #The destination path and file name, relative to the root of the container.
+            [Parameter(Mandatory = $true)]
+            [String]$destinationPath,
+
+            #The name of the HDInsight cluster
+            [Parameter(Mandatory = $true)]
+            [String]$clusterName,
+
+            #If specified, overwrites existing files without prompting
+            [Parameter(Mandatory = $false)]
+            [Switch]$force
+        )
+
+        Set-StrictMode -Version 3
+
+        # Is the Azure module installed?
+        FindAzure
+
+        # Get authentication for the cluster
+        $creds=Get-Credential
+
+        # Does the local path exist?
+        if (-not (Test-Path $localPath))
+        {
+            throw "Source path '$localPath' does not exist."
+        }
+
+        # Get the primary storage container
+        $storage = GetStorage -clusterName $clusterName
+
+        # Upload file to storage, overwriting existing files if -force was used.
+        Set-AzureStorageBlobContent -File $localPath `
+            -Blob $destinationPath `
+            -force:$force `
+            -Container $storage.container `
+            -Context $storage.context
+    }
+
+    function FindAzure {
+        # Is there an active Azure subscription?
+        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+        if(-not($sub))
+        {
+            throw "No active Azure subscription found! If you have a subscription, use the Login-AzureRmAccount cmdlet to login to your subscription."
+        }
+    }
+
+    function GetStorage {
+        param(
+            [Parameter(Mandatory = $true)]
+            [String]$clusterName
+        )
+        $hdi = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+        # Does the cluster exist?
+        if (!$hdi)
+        {
+            throw "HDInsight cluster '$clusterName' does not exist."
+        }
+        # Create a return object for context & container
+        $return = @{}
+        $storageAccounts = @{}
+
+        # Get storage information
+        $resourceGroup = $hdi.ResourceGroup
+        $storageAccountName=$hdi.DefaultStorageAccount.split('.')[0]
+        $container=$hdi.DefaultStorageContainer
+        $storageAccountKey=(Get-AzureRmStorageAccountKey `
+            -Name $storageAccountName `
+        -ResourceGroupName $resourceGroup)[0].Value
+        # Get the resource group, in case we need that
+        $return.resourceGroup = $resourceGroup
+        # Get the storage context, as we can't depend
+        # on using the default storage context
+        $return.context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+        # Get the container, so we know where to
+        # find/store blobs
+        $return.container = $container
+        # Return storage accounts to support finding all accounts for
+        # a cluster
+        $return.storageAccount = $storageAccountName
+        $return.storageAccountKey = $storageAccountKey
+
+        return $return
+    }
+    # Only export the verb-phrase things
+    export-modulemember *-*
+   ```
+
+    此文件包含两个模块：
+   
+   * **Add-HDInsightFile** - 用于将文件上传到 HDInsight
+   * **Start-HBaseExample** - 用于运行以前创建的类
+
+2. 保存 **hbase-runner.psm1** 文件。
+
+3. 打开新的 Azure PowerShell 窗口，将目录切换到 **hbaseapp** 目录，然后运行以下命令。
+   
+        PS C:\ Import-Module c:\path\to\hbase-runner.psm1
+   
+    将路径切换到前面创建的 **hbase-runner.psm1** 文件所在的位置。 此命令使用 Azure PowerShell 来注册模块。
+
+4. 使用以下命令将 **hbaseapp-1.0-SNAPSHOT.jar** 上传到你的 HDInsight 群集。
+   
+        Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
+   
+    将 **hdinsightclustername** 替换为 HDInsight 群集的名称。 该命令将 **hbaseapp-1.0-SNAPSHOT.jar** 上传到 HDInsight 群集的主存储中的 **example/jars** 位置。
+
+5. 上传这些文件后，使用以下代码通过 **hbaseapp** 创建表：
+   
+        Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
+   
+    将 **hdinsightclustername** 替换为 HDInsight 群集的名称。
+   
+    此命令将在 HDInsight 群集中创建名为 **people** 的新表。 此命令在控制台窗口中不显示任何输出。
+
+6. 若要在表中搜索条目，请使用以下命令：
+   
+        Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
+   
+    将 **hdinsightclustername** 替换为 HDInsight 群集的名称。
+   
+    此命令使用 **SearchByEmail** 类搜索任何 **contactinformation** 列系列和 **email** 列包含字符串 **contoso.com** 的行。 你应该会收到以下结果：
+   
+          Franklin Holtz - ID: 2
+          Franklin Holtz - franklin@contoso.com - ID: 2
+          Rae Schroeder - ID: 4
+          Rae Schroeder - rae@contoso.com - ID: 4
+          Gabriela Ingram - ID: 6
+          Gabriela Ingram - gabriela@contoso.com - ID: 6
+   
+    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 由于此搜索是使用基于正则表达式的筛选器执行的，因此也可输入正则表达式，例如 **^r**，这样就会返回电子邮件以字母“r”开头的条目。
+
+### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>使用 Start-HBaseExample 时无结果或意外结果
+
+使用 `-showErr` 参数可查看运行作业时生成的标准错误 (STDERR)。
+
 ## <a name="delete-the-table"></a>删除表
-在完成该示例后，请在 Azure PowerShell 会话中使用以下命令，以删除本示例中使用的 **people** 表：
 
-    hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
+在完成该示例后，使用以下命令删除本示例中使用的 **people** 表：
+
+__从 `ssh` 会话__：
+
+`hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable`
+
+__从 Azure PowerShell__：
+
+`Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName hdinsightclustername`
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Feb17_HO1-->
 
 

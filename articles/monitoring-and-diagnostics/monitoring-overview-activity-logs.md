@@ -12,22 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 2/2/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: b9c2308a85fb9a65e6e18b8c3b4373876c8d1f25
+ms.sourcegitcommit: 97edd5eaa3cfa4a122556583dff28c4a9b6f5adc
+ms.openlocfilehash: 18035fe2a30707f701098cef4b1391b1d5ab2012
 
 
 ---
 # <a name="overview-of-the-azure-activity-log"></a>Azure 活动日志概述
-**Azure 活动日志**是一种日志，方便用户了解对订阅中的资源执行的操作。 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的控制平面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作。
+**Azure 活动日志**是一种日志，方便用户了解对订阅中的资源执行的操作。 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的控制平面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作，或者针对使用经典/RDFE 模型的资源执行的操作。
 
 活动日志不同于[诊断日志](monitoring-overview-of-diagnostic-logs.md)，后者全都是资源发出的日志。 这些日志记录对该资源执行的操作，而不是在该资源上执行的操作。
 
 可以通过 Azure 门户、CLI、PowerShell cmdlet 和 Azure 监视器 REST API 从活动日志检索事件。
 
 查看此[介绍活动日志的视频](https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz)。  
+
+> [!WARNING]
+> Azure 活动日志主要针对 Azure Resource Manager 中发生的活动，而不是使用经典/RDFE 模型执行的活动。 请注意，某些经典资源类型在 Azure Resource Manager 中具有代理资源提供程序（例如 Microsoft.ClassicCompute）。 如果用户使用这些代理资源提供程序通过 Azure Resource Manager 来与经典资源类型交互，操作将显示在活动日志中。 如果用户在经典门户或者在 Azure Resource Manager 代理外部与经典资源类型交互，用户操作只会记录到操作日志中，该日志只能在经典门户中访问。
+>
+>
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>可以对活动日志执行的操作
 可以对活动日志执行的部分操作如下：
@@ -45,9 +50,9 @@ ms.openlocfilehash: b9c2308a85fb9a65e6e18b8c3b4373876c8d1f25
 **日志配置文件**控制如何导出活动日志。 可以使用日志配置文件配置：
 
 * 应将活动日志发送到何处：存储帐户或事件中心
-* 应该发送哪些事件类别（写入、删除、操作）
+* 应发送哪些事件类别（写入、删除、操作）。 *请注意，日志配置文件上下文中“类别”的含义不同于活动日志事件中“类别”属性的含义。日志配置文件中的“类别”表示操作类型（写入、删除、操作），而活动日志事件中的“类别”属性则表示事件的源或类型（管理、ServiceHealth 和警报等）。*
 * 应该导出哪些区域（位置）
-* 应该将活动日志保留在存储帐户中多长时间 – 保留期为 0 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
+* 应该将活动日志保留在存储帐户中多长时间 – 保留期为&0; 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，将会删除前天的日志。
 
 这些设置可以通过门户中活动日志边栏选项卡上的“导出”选项进行配置。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。 一个订阅只能有一个日志配置文件。
 
@@ -239,6 +244,6 @@ azure insights logprofile delete --name my_log_profile
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

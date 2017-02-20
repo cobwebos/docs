@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect 同步：如何更改默认配置 | Microsoft Docs"
+title: "Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改 | Microsoft 文档"
 description: "介绍如何对 Azure AD Connect 同步中的配置进行更改。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 1e5356dca98e8da035c1ffb1eca16e8b16dbfe77
+ms.sourcegitcommit: 7c237bfb42fdd2ffdfface1a12ab21c51d2504bb
+ms.openlocfilehash: b327671b12bf6e2ce040ef6e6b0a58a0fead22b4
 
 
 ---
@@ -54,7 +54,7 @@ ms.openlocfilehash: 1e5356dca98e8da035c1ffb1eca16e8b16dbfe77
    ![入站规则筛选](./media/active-directory-aadconnectsync-change-the-configuration/description2.png)  
    * 名称：为规则提供说明性名称。
    * 说明：提供一些说明以便他人可以理解规则的用途。
-   * 连接的系统：可从中找到对象的系统。 这种情况下，选择 Active Directory 连接器。
+   * 连接的系统：可从中找到对象的系统。 这种情况下，请选择 Active Directory 连接器。
    * 连接的系统/Metaverse 对象类型：分别选择“用户”和“人员”。
    * 链接类型：将该值更改为“联接”。
    * 优先级：提供系统中唯一的值。 较低的数值表示较高的优先级。
@@ -83,7 +83,7 @@ ms.openlocfilehash: 1e5356dca98e8da035c1ffb1eca16e8b16dbfe77
    ![完全同步](./media/active-directory-aadconnectsync-change-the-configuration/fullsync.png)  
    现已更新了 metaverse 中的对象。 用户想要查看 metaverse 中的对象。
 2. **在单个对象上的预览和完全同步**  
-   选择顶部的“连接器”。 标识在前面部分中进行过更改的连接器（在本例中为 Active Directory 域服务），然后选中它。 选择“搜索连接器空间”。 使用作用域来查找想要用于测试更改的对象。 选择该对象，然后单击“预览”。 在新的屏幕中，选择“提交预览”。
+   选择顶部的“连接器”。 标识在前面部分中进行过更改的连接器（在本例中为 Active Directory 域服务），然后选中它。 选择“搜索连接器空间”。 使用作用域来查找想要用于测试更改的对象。 选择该对象，然后单击“预览”。 在新的屏幕中，选择“提交预览”。  
    ![提交预览](./media/active-directory-aadconnectsync-change-the-configuration/commitpreview.png)  
    现已将更改提交到 metaverse。
 
@@ -107,7 +107,7 @@ Fabrikam 中有对名字、姓氏和显示名称使用本地字母的林。 以�
 
 * 从开始菜单启动“同步规则编辑器”。
 * 在左侧依然选定了“入站”的情况下，单击“添加新规则”按钮。
-* 为规则指定名称和说明。 选择本地 Active Directory 和相关的对象类型。  在“链接类型”中选择“联接”。 为优先级选择一个未被其他规则使用的数字。 现成的规则从 100 开始，因此该示例可以使用值 50。
+* 为规则指定名称和说明。 选择本地 Active Directory 和相关的对象类型。 在“链接类型”中选择“联接”。 为优先级选择一个未被其他规则使用的数字。 现成的规则从 100 开始，因此该示例可以使用值 50。
   ![属性流 2](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp2.png)
 * 将范围留空（即应该应用到林中的所有用户对象）。
 * 将联接规则留空（即让现成的规则处理所有联接）。
@@ -133,7 +133,7 @@ Active Directory 中的 userPrincipalName 属性并非始终被用户知晓，�
 Active Directory 中的某些属性在架构中是多值，不过它们在 Active Directory 用户和计算机中看上去是单值。 一个示例就是说明属性。  
 `description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`
 
-在此表达式中，如果属性具有值，我们会使用属性中的第一项 (Item)，删除前导空格和尾随空格 (Trim)，然后保留字符串中的前 448 个字符（左）。
+在此表达式中，如果属性具有值，请使用属性中的第一项 (Item)，删除前导空格和尾随空格 (Trim)，然后保留字符串中的前 448 个字符（左）。
 
 ### <a name="do-not-flow-an-attribute"></a>不要流送属性
 有关本部分方案的背景信息，请参阅[控制属性流过程](active-directory-aadconnectsync-understanding-declarative-provisioning.md#control-the-attribute-flow-process)。
@@ -152,6 +152,25 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 * 通过搜索连接器空间来验证是否即将导出所需的更改。
   ![分阶段删除](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
 
+## <a name="create-rules-with-powershell"></a>使用 PowerShell 创建规则
+如只需进行少量更改，使用同步规则编辑器即可达到目的。 如需进行大量更改，最好选择 PowerShell。 某些高级功能只有 PowerShell 中才会提供。
+
+### <a name="get-the-powershell-script-for-an-out-of-box-rule"></a>获取现成规则的 PowerShell 脚本
+若要查看创建现成规则的 PowerShell 脚本，在同步规则编辑器中选择此规则，然后单击“导出”。 此操作会提供创建该规则的 PowerShell 脚本。
+
+### <a name="advanced-precedence"></a>高级优先级
+以 100 优先级值开头的现成同步规则。 如果有多个林，并且需要进行大量自定义更改，那么 99 个同步规则可能不够。
+
+可以指示同步引擎需要在现成规则前插入其他规则。 若要获取此行为，请执行以下步骤：
+
+1. 在同步规则编辑器中标记第一个现成同步规则（此规则为 **In from AD-User Join**），并选择“导出”。 复制 SR 标识符值。  
+![更改前的 PowerShell](./media/active-directory-aadconnectsync-change-the-configuration/powershell1.png)  
+2. 创建新的同步规则。 可使用同步规则编辑器创建它。 将规则导出到 PowerShell 脚本。
+3. 在 **PrecedenceBefore** 属性中，从现成规则插入标识符值。 将“优先级”设置为“0”。 请确保标识符属性唯一，且不会从另一规则中重复使用某个 GUID。 此外，请确保未设置 **ImmutableTag** 属性，仅为现成规则设置该属性。 保存 PowerShell 脚本并运行它。 这样就会为自定义规则分配优先级值 100，且所有其他现成规则优先级值随之递增。  
+![更改后的 PowerShell](./media/active-directory-aadconnectsync-change-the-configuration/powershell2.png)  
+
+必要时，可让多个自定义同步规则使用相同的 **PrecedenceBefore** 值。
+
 ## <a name="next-steps"></a>后续步骤
 * 在 [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
 * 在 [Understanding Declarative Provisioning Expressions](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)（了解声明性预配表达式）中了解有关表达式语言的详细信息。
@@ -163,7 +182,6 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

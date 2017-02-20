@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: mrys
 translationtype: Human Translation
-ms.sourcegitcommit: 6d05de6ac944b69402583e939d6b498515945461
-ms.openlocfilehash: f8b13b2b39cf0c860ad59f43eb341c5924804dd9
+ms.sourcegitcommit: 847081123123c849033c9de2b3c4359042d41359
+ms.openlocfilehash: da29f6015502e4ce5a63ca1c47106dc346026803
 
 
 ---
@@ -289,7 +289,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ### <a name="using-code-behind"></a>使用代码隐藏
 为使用 U-SQL 程序的代码隐藏中的相同功能，需将 C# 函数定义为日期/时间。
 
-以下是上述基本 U-SQL 脚本中需要更改的部分：
+以下是基本 U-SQL 脚本部分，其中进行了必要的更改：
 
 ```sql
      @rs1 =
@@ -391,8 +391,9 @@ U-SQL 扩展性模型很大程度取决于用户添加自定义代码的能力�
 
 打开脚本时可看到生成的序言和结语：
 
-![generated-prologue](./media/data-lake-analytics-u-sql-programmability-guide/generated-prologue.png)
-**图 2**：代码隐藏的自动生成的序言和结语
+![生成的序言](./media/data-lake-analytics-u-sql-programmability-guide/generated-prologue.png)
+
+**图 2**：代码隐藏的序言和结语，属于自动生成的内容
 <br />
 
 代码隐藏的缺点包括
@@ -422,7 +423,7 @@ U-SQL 扩展性模型很大程度取决于用户添加自定义代码的能力�
 
 下面的示例中同时使用了这两个选项。 [关于图像处理的最新博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/18/introducing-image-processing-in-u-sql/)是另一示例，展示可使用这些注册选项的预定义程序集的使用。
 
-现可从任何对已注册的程序集的数据库具有权限的 U-SQL 脚本引用已注册的程序集（请参见图 4 U-SQL 脚本中的代码）。 必须为每个单独注册的程序集添加引用。 将自动部署其他资源文件。 该脚本不应再具有所引用程序集中代码的代码隐藏文件，但仍可以提供其他代码。
+现可从任何对已注册的程序集的数据库具有权限的 U-SQL 脚本引用已注册的程序集（请参见图 4 U-SQL 脚本中的代码）。 必须为每个单独注册的程序集添加引用。 将自动部署其他资源文件。 该脚本不应再具有所引用程序集中代码的代码隐藏文件，但代码隐藏文件仍可以提供其他代码。
 
 ### <a name="registering-assemblies-via-adl-tools-in-visual-studio-and-in-u-sql-scripts"></a>通过 Visual Studio 和 U-SQL 脚本中的 ADL 工具注册程序集
 虽然使用 Visual Studio 中的 ADL 工具可轻松注册程序集，但如果要在不同平台上进行开发，且已具有要上传和注册的编译程序集，则还可以使用脚本注册程序集（与使用工具注册的方法相同）。 基本按照以下步骤操作：
@@ -438,7 +439,8 @@ U-SQL 扩展性模型很大程度取决于用户添加自定义代码的能力�
 
 首先，将 [Visual Studio 项目](https://github.com/Azure/usql/tree/master/Examples/DataFormats)下载到本地开发环境（例如，通过使用适用于 Windows 的 GitHub 工具制作本地副本）。 然后在 Visual Studio 中打开解决方案，按上述右键单击该项目以注册程序集。 尽管此程序集具有两个依赖项，但只需包含 Newtonsoft 依赖项即可，因为 System.Xml 已在 Azure Data Lake 中可用（但必须显式引用）。 图 6 显示如何命名程序集（注意，也可选择不带点的其他名称）以及如何添加 Newtonsoft dll。 两个程序集现分别在指定的数据库（如 JSONBlog）中进行注册。
 
-![register-assembly](./media/data-lake-analytics-u-sql-programmability-guide/register-assembly.png)
+![注册程序集](./media/data-lake-analytics-u-sql-programmability-guide/register-assembly.png)
+
 **图 6**：如何从 Visual Studio 中注册 Microsoft.Analytics.Samples.Formats 程序集
 <br />
 

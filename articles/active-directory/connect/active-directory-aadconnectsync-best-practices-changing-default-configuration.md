@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: markvi;andkjell
+ms.date: 02/08/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: 14b6b817c071ba833d2f49ca289151520e1e32f0
+ms.sourcegitcommit: 08ec09275bbcaffaf25cf45a0f2f466fdeb60dc5
+ms.openlocfilehash: 954923e699ef2160b0a16cb369f8a86b3beacd39
 
 
 ---
@@ -44,8 +44,6 @@ Azure AD Connect 同步在安装向导创建的服务帐户下运行。 此服�
 
 > [!WARNING]
 > 现成的同步规则具有指纹。 如果更改这些规则，指纹将不再匹配。 今后尝试应用 Azure AD Connect 的新版本时可能会遇到问题。 只能根据本文所述的方式进行更改。
-> 
-> 
 
 ### <a name="disable-an-unwanted-sync-rule"></a>禁用不需要的同步规则
 不要删除现成的同步规则。 下一次升级期间会重新创建该规则。
@@ -57,6 +55,8 @@ Azure AD Connect 同步在安装向导创建的服务帐户下运行。 此服�
 在上图中，安装向导已在帐户林中找到旧的 Exchange 2003 架构。 此架构扩展是在 Fabrikam 环境中引入资源林之前添加的。 若要确保不同步任何来自旧 Exchange 实现的属性，应该按所述方式禁用同步规则。
 
 ### <a name="change-an-out-of-box-rule"></a>更改现成的规则
+仅当需要更改联接规则时，才需更改现成规则。 如果需要更改属性流，则应创建具有比现成规则优先级更高的同步规则。 实际上，只有 **In from AD - User Join** 这一条规则需要克隆。 可使用优先级更高的规则替代所有其他规则。
+
 如果需要对现成的规则进行更改，应该复制该现成的规则，然后禁用原始规则。 然后对克隆的规则进行更改。 同步规则编辑器会帮助完成这些步骤。 打开现成的规则时，将显示此对话框：  
 ![对现成规则的警告](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
@@ -73,7 +73,6 @@ Azure AD Connect 同步在安装向导创建的服务帐户下运行。 此服�
 
 
 
-
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

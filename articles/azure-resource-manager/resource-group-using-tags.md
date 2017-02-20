@@ -1,6 +1,6 @@
 ---
-title: "使用标记来组织 Azure 资源 | Microsoft Docs"
-description: "演示如何应用标记来组织资源进行计费和管理。"
+title: "标记 Azure 资源实现逻辑布局 | Microsoft Docs"
+description: "演示如何应用标记来整理 Azure 资源以便进行计费和管理。"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -12,22 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2017
+ms.date: 02/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 87973df7bb1b81c2d1cbdeb31e2fabb584f7e625
-ms.openlocfilehash: 61e47f479b7cb05e1aca06e12ff5997769b2097d
+ms.sourcegitcommit: ec80273fd388a435bc0aee9cb2dd49df12535923
+ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
 
 
 ---
-# <a name="using-tags-to-organize-your-azure-resources"></a>使用标记来组织 Azure 资源
-资源管理器使您可以通过应用标记来按照逻辑组织资源。 标记由通过您所定义的属性标识资源的键值对组成。 若要将资源标记为属于同一类别，请将相同的标记应用到这些资源。
-
-查看具有特定标记的资源时，会看到所有资源组中的资源。 不仅可以组织同一资源组中的资源，还能够以独立于部署关系的方式组织资源。 需要为计费或管理目的组织资源时，标记可能十分有用。
-
-添加到资源或资源组的每个标记都会自动添加到订阅范围的分类。 您也可以将标记名称预先填入订阅的分类，而且您想要作为资源使用的值会在未来加以标记。
-
-每个资源或资源组最多可以有 15 个标记。 标记名称不能超过 512 个字符，标记值不能超过 256 个字符。
+# <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
+[!INCLUDE [resource-manager-tag-introduction](../../includes/resource-manager-tag-introduction.md)]
 
 > [!NOTE]
 > 您只能将标记应用到支持资源管理器操作的资源。 如果通过经典部署模型（如通过经典门户）创建虚拟机、虚拟网络或存储，则无法向该资源应用标记。 若要支持标记，需通过 Resource Manager 重新部署这些资源。 所有其他资源均支持标记。
@@ -35,77 +29,76 @@ ms.openlocfilehash: 61e47f479b7cb05e1aca06e12ff5997769b2097d
 > 
 
 ## <a name="templates"></a>模板
-若要在部署过程中标记资源，可将 **tags** 元素添加到正在部署的资源，然后提供标记名称和值。 订阅中不需要预先存在标记名称和值。 最多可为每个资源提供 15 个标记。
 
-以下示例显示了一个包含标记的存储帐户。
-
-```json
-"resources": [
-    {
-        "type": "Microsoft.Storage/storageAccounts",
-        "apiVersion": "2015-06-15",
-        "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "dept": "Finance"
-        },
-        "properties": 
-        {
-            "accountType": "Standard_LRS"
-        }
-    }
-]
-```
-
-Resource Manager 当前不支持处理标记名称和值对象。 可以传递标记值对象，但仍需指定标记名称，如以下示例所示：
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "tagvalues": {
-      "type": "object",
-      "defaultValue": {
-        "dept": "Finance",
-        "project": "Test"
-      }
-    }
-  },
-  "resources": [
-  {
-    "apiVersion": "2015-06-15",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "examplestorage",
-    "tags": {
-      "dept": "[parameters('tagvalues').dept]",
-      "project": "[parameters('tagvalues').project]"
-    },
-    "location": "[resourceGroup().location]",
-    "properties": {
-      "accountType": "Standard_LRS"
-    }
-  }]
-}
-```
+[!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
 
 ## <a name="portal"></a>门户
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="powershell"></a>PowerShell
-[!INCLUDE [resource-manager-tag-resources](../../includes/resource-manager-tag-resources-powershell.md)]
+[!INCLUDE [resource-manager-tag-resources-powershell](../../includes/resource-manager-tag-resources-powershell.md)]
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli-20-preview"></a>Azure CLI 2.0（预览版）
+
+使用 Azure CLI 2.0（预览版），可向资源和资源组添加标记，并通过标记值查询资源。
+
+每次将标记应用到某个资源或资源组时，都会覆盖该资源或资源组中的现有标记。 因此，必须根据该资源或资源组是否包含想要保留的现有标记来使用不同的方法。 若将标记添加到：
+
+* 不包含现有标记的资源组。
+
+  ```azurecli
+  az group update -n TagTestGroup --set tags.Environment=Test tags.Dept=IT
+  ```
+
+* 不包含现有标记的资源。
+
+  ```azurecli
+  az resource tag --tags Dept=IT Environment=Test -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
+  ``` 
+
+若要向已包含标记的资源添加标记，请首先检索现有标记： 
+
+```azurecli
+az resource show --query tags --output list -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
+```
+
+将返回以下格式：
+
+```
+Dept        : Finance
+Environment : Test
+```
+
+将现有标记重新应用到资源，并添加新标记。
+
+```azurecli
+az resource tag --tags Dept=Finance Environment=Test CostCenter=IT -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
+``` 
+
+若要获取具有特定标记的资源组，请使用 `az group list`。
+
+```azurecli
+az group list --tag Dept=IT
+```
+
+若要获取具有特定标记和值的所有资源，请使用 `az resource list`。
+
+```azurecli
+az resource list --tag Dept=Finance
+```
+
+## <a name="azure-cli-10"></a>Azure CLI 1.0
 [!INCLUDE [resource-manager-tag-resources-cli](../../includes/resource-manager-tag-resources-cli.md)]
 
 ## <a name="rest-api"></a>REST API
 门户和 PowerShell 在幕后都使用 [Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/)。 如果需要将标记集成到另一个环境中，可以对资源 ID 使用 GET 以获取标记，并使用 PATCH 调用更新标记集。
 
 ## <a name="tags-and-billing"></a>标记和计费
-对于受支持的服务，您可以使用标记对计费数据进行分组。 例如，使用 Azure Resource Manager 部署的虚拟机可以定义和应用标签来组织虚拟机的计费使用情况。 如果您针对不同组织运行多个虚拟机，可以使用标记根据成本中心对使用情况进行分组。  
-您还可以使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
+使用标记可对计费数据进行分组。 例如，如果针对不同组织运行多个虚拟机，可以使用标记根据成本中心对使用情况进行分组。 您还可以使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
 
-可以通过 [Azure 资源使用情况与费率卡 API](../billing-usage-rate-card-overview.md) 或者使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可以从 [Azure 帐户门户](https://account.windowsazure.com/)或 [EA 门户](https://ea.azure.com)下载使用情况文件。 有关以编程方式访问计费信息的详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../billing-usage-rate-card-overview.md)。 有关 REST API 操作，请参阅 [Azure 计费 REST API 参考](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)。
+
+可以通过 [Azure 资源使用情况与费率卡 API](../billing/billing-usage-rate-card-overview.md) 或者使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可以从 [Azure 帐户门户](https://account.windowsazure.com/)或 [EA 门户](https://ea.azure.com)下载使用情况文件。 有关以编程方式访问计费信息的详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../billing/billing-usage-rate-card-overview.md)。 有关 REST API 操作，请参阅 [Azure 计费 REST API 参考](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)。
+
 
 在为支持标记和计费的服务下载使用情况 CSV 时，标记将显示在“标记”列中。 有关详细信息，请参阅[了解你的 Microsoft Azure 帐单](../billing/billing-understand-your-bill.md)。
 
@@ -121,6 +114,6 @@ Resource Manager 当前不支持处理标记名称和值对象。 可以传递�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

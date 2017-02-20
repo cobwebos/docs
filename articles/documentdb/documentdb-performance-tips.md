@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 01/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 25c48bbd0edafa4c6e4e478c471e11b6d69e00c7
-ms.openlocfilehash: e34571efac5d1a5e75d5e5d2cab75c91dbce71c8
+ms.sourcegitcommit: 532cfeb5115feb7558018af73968576dac17ff88
+ms.openlocfilehash: 28ca2d86f5008ee26376d76f3411cac05ffdfde4
 
 
 ---
@@ -129,6 +129,18 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 10. **增加线程/任务数目**
 
     请参阅“网络”部分中的[增加线程/任务数目](#increase-threads)。
+    
+11. **使用 64 位主机处理**
+
+    DocumentDB SDK 可在 32 位主机进程中运行；但是，如果使用跨分区查询，建议使用 64 位主机处理以提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
+    
+    - 对于可执行应用程序，在“生成”选项卡的“项目属性”窗口中，通过取消“首选 32 位”选项可实现以上目的。 
+    
+    - 对于基于 VSTest 的测试项目，可通过从“Visual Studio 测试”菜单选项中选择“测试”->“测试设置”->“默认处理器体系结构为 X64”来完成。
+    
+    - 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具”->“选项”->“项目和解决方案”->“Web 项目”下勾选“对网站和项目使用 IIS Express 的 64 位版”来完成。
+    
+    - 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位平台”来完成。
 
 ## <a name="indexing-policy"></a>索引策略
 1. **使用延迟索引加快高峰时的引入速率**
@@ -199,6 +211,6 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

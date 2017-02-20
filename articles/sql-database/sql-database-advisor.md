@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL 数据库的性能建议 | Microsoft Docs"
+title: "查询性能调整建议 - Azure SQL 数据库 | Microsoft Docs"
 description: "Azure SQL 数据库顾问为你的现有 SQL 数据库提供建议，这样可以提高当前的查询性能。"
 services: sql-database
 documentationcenter: 
@@ -16,21 +16,16 @@ ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 5df30f24a8e7370ac33c72641f05138776e24bb0
-ms.openlocfilehash: 55502f346eaf5ccf76d6f1c03487e95f0b93e3f5
+ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
+ms.openlocfilehash: a8d0b08abc7e3c688f9ab79499b3459b33f06848
 
 
 ---
 # <a name="sql-database-advisor"></a>SQL 数据库顾问
-> [!div class="op_single_selector"]
-> * [SQL 数据库顾问概述](sql-database-advisor.md)
-> * [门户](sql-database-advisor-portal.md)
-> 
-> 
 
 Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的建议，使你能够将 SQL 数据库的性能最大化。 Azure SQL 数据库顾问提供有关创建和删除索引、参数化查询，以及解决架构问题的建议。 该顾问通过分析 SQL 数据库的使用历史记录来评估性能。 提供的建议最适合运行数据库的典型工作负荷。 
 
-以下建议适用于 V12 服务器（建议不适用于 V11 服务器）。 现在你可以将创建和删除索引建议设置为自动应用，请参阅[自动索引管理](sql-database-advisor-portal.md#enable-automatic-index-management)以获取详细信息。
+以下建议适用于 Azure SQL 数据库服务器。 现在你可以将创建和删除索引建议设置为自动应用，请参阅[自动索引管理](sql-database-advisor-portal.md#enable-automatic-index-management)以获取详细信息。
 
 ## <a name="create-index-recommendations"></a>创建索引建议
 当 SQL 数据库服务检测到丢失的索引（若已创建）有益于你的数据库工作负荷时，就会出现**创建索引**建议（仅限非群集索引）。
@@ -79,6 +74,6 @@ Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

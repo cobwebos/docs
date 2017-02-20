@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2016
+ms.date: 02/07/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 71da2f8aaa994c8cfc48f968a5275f7f79604251
+ms.sourcegitcommit: 09f0aa4ea770d23d1b581c54b636c10e59ce1d3c
+ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 
 
 ---
@@ -44,6 +44,10 @@ ms.openlocfilehash: 71da2f8aaa994c8cfc48f968a5275f7f79604251
 * [在装载点上执行列表命令时，现有的文件共享上出现错误“主机已关闭”或外壳挂起](#errorhold)
 * [尝试在 Linux VM 上装载 Azure 文件时，出现装载错误 115](#error15)
 * [Linux VM 在类似 "ls" 的命令中出现随机延迟](#delayproblem)
+* [错误 112 - 超时错误](#error112)
+
+**从其他应用程序访问**
+* [可以通过 Web 作业为应用程序引用 Azure 文件共享吗？](#webjobs)
 
 <a id="quotaerror"></a>
 
@@ -75,7 +79,9 @@ ms.openlocfilehash: 71da2f8aaa994c8cfc48f968a5275f7f79604251
 ## <a name="slow-performance-when-accessing-file-storage-from-windows-or-linux"></a>从 Windows 或 Linux 访问文件存储时性能不佳
 * 如果没有特定的最低 I/O 大小要求，建议 I/O 大小为 1 MB 以实现最佳性能。
 * 如果知道通过写入扩展的最终文件大小，并且文件上尚未写入的结尾包含零时软件不存在兼容性问题，请提前设置文件大小，而不是使每次写入都成为扩展写入。
-
+* 使用正确的复制方法：
+      * 使用 AZCopy 在两个文件共享之间进行任何传输活动。 有关详细信息，请参阅[使用 AzCopy 命令行实用工具传输数据](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy#file-copy)。
+      * 在文件共享与本地计算机之间使用 Robocopy。 有关详细信息，请参阅 [Multi-threaded robocopy for faster copies](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/)（多线程 Robocopy 加快复制速度）。
 <a id="windowsslow"></a>
 
 ## <a name="slow-performance-when-accessing-the-file-storage-from-windows-81-or-windows-server-2012-r2"></a>从 Windows 8.1 或 Windows Server 2012 R2 访问文件存储时性能不佳
@@ -107,7 +113,7 @@ ms.openlocfilehash: 71da2f8aaa994c8cfc48f968a5275f7f79604251
 以下情况可能引起此问题：
 
 ### <a name="cause-1"></a>原因 1
-“发生系统错误 53。 访问被拒绝。” 出于安全原因，如果通信通道未加密，并且连接尝试并非来自 Azure 文件共享驻留的同一数据中心，则将阻止连接到 Azure 文件共享。 如果用户的客户端 OS 不支持 SMB 加密，则不提供通信通道加密。 如果用户尝试从本地或不同的数据中心装载文件共享， 这将表示为“发生系统错误 53。访问被拒绝”错误消息。 Windows 8、Windows Server 2012 及更高版本的每个协商请求包括支持加密的 SMB 3.0。
+“发生系统错误 53。 访问被拒绝。” 出于安全原因，如果通信通道未加密，并且连接尝试并非来自 Azure 文件共享驻留的同一数据中心，则将阻止连接到 Azure 文件共享。 如果用户的客户端 OS 不支持 SMB 加密，则不提供通信通道加密。 如果用户尝试从本地或不同的数据中心装载文件共享， 这将表示为“发生系统错误&53;。访问被拒绝”错误消息。 Windows 8、Windows Server 2012 及更高版本的每个协商请求包括支持加密的 SMB 3.0。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 使用符合 Windows 8、Windows Server 2012 或更高版本要求的客户端进行连接，或者连接使用的虚拟机要位于 Azure 文件共享时所用的 Azure 存储帐户所在的同一数据中心。
@@ -181,7 +187,7 @@ Azure 文件仅支持 NTLMv2 身份验证。 请确保客户端应用了组策�
 
 或者，可创建与网络服务或系统帐户特权相同的新用户，然后在该帐户下运行 **cmdkey** 和 **net use**。 用户名应为存储帐户名，密码应为存储帐户密钥。 **net use** 还可用于传递 **net use** 命令的用户名和密码参数中的存储帐户名和密钥。
 
-按照这些说明操作后， 如果为系统/网络服务帐户运行 **net use**可能会收到以下错误消息：“发生系统错误 1312。指定的登录会话不存在。可能已终止。” 若发生此情况，请确保传递到 **net use** 的用户名包括域信息，例如“[storage account name].file.core.windows.net”。
+按照这些说明操作后， 如果为系统/网络服务帐户运行 **net use**可能会收到以下错误消息：“发生系统错误&1312;。指定的登录会话不存在。可能已终止。” 若发生此情况，请确保传递到 **net use** 的用户名包括域信息，例如“[storage account name].file.core.windows.net”。
 
 <a id="encryption"></a>
 
@@ -236,12 +242,30 @@ Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如�
 
 如果“serverino”选项不存在，可通过选中“serverino”选项卸载并再次装载 Azure 文件。
 
+<a id="error112"></a>
+## <a name="error-112---timeout-error"></a>错误 112 - 超时错误
+
+此错误指示出现通信故障，导致使用“soft”装载选项（默认设置）时阻止 TCP 与服务器重新建立连接。
+
+### <a name="cause"></a>原因
+
+此错误可由 Linux 重新连接问题或阻止重新连接的其他问题（如网络错误）引发。 指定硬装载会强制客户端等待，直到建立连接或显式中断为止，可用于避免由于网络超时而引起的错误。 但用户应注意，这可能会导致无限期等待，应在必要时停止连接。
+
+### <a name="workaround"></a>解决方法
+
+Linux 问题已修复，但尚未移植到 Linux 分发版。 如果此问题由 Linux 中的重新连接问题引起，可通过避免进入空闲状态解决此问题。 若要实现此目的，请在 Azure 文件共享中保留一个文件，并每隔 30 秒在该文件上执行写入操作。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，结果可能会延迟，操作可能不会触发连接。
+
+<a id="webjobs"></a>
+
+## <a name="accessing-from-other-applications"></a>从其他应用程序访问
+### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>可以通过 Web 作业为应用程序引用 Azure 文件共享吗？
+无法在 AppService 沙盒中装载 SMB 共享。 可以将 Azure 文件共享作为映射驱动器映射，并允许应用程序作为驱动器号访问它来解决此问题。
 ## <a name="learn-more"></a>了解详细信息
 * [在 Windows 上开始使用 Azure 文件存储](storage-dotnet-how-to-use-files.md)
 * [在 Linux 上实现 Azure 文件存储入门](storage-how-to-use-files-linux.md)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

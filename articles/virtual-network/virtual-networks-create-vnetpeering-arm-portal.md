@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 门户创建 VNet 对等互连 | Microsoft Docs"
-description: "了解如何在 Resource Manager 中使用 Azure 门户创建虚拟网络。"
+title: "Azure 虚拟网络对等互连 - 门户 | Microsoft Docs"
+description: "了解如何使用 Azure 门户创建虚拟网络对等互连。"
 services: virtual-network
 documentationcenter: 
 author: NarayanAnnamalai
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: ed7c37ee5482b3ec91489b7aba9b5a9d5df5c97e
-ms.openlocfilehash: 06130f18bad86dbbe009548ac95ac0e6c4953db2
+ms.sourcegitcommit: c19ad7c0c466d178e97e83bb2d46b9905130d00e
+ms.openlocfilehash: a97aff9cb7071edc0b7fd1046bdd10d440d75eab
 
 
 ---
@@ -28,38 +28,38 @@ ms.openlocfilehash: 06130f18bad86dbbe009548ac95ac0e6c4953db2
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-basic-include](../../includes/virtual-networks-create-vnetpeering-scenario-basic-include.md)]
 
-若要通过 Azure 门户基于上述方案创建 VNet 对等互连，请执行下面的步骤。
+若要通过 Azure 门户基于方案创建 VNet 对等互连，请完成以下步骤：
 
 1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
-2. 若要建立 VNET 对等互连，需要在两个 VNet 之间创建两个链接，每个方向各一个。 可先创建 VNET1 到 VNET2 的 VNET 对等互连链接。 在门户中，单击“浏览” > ，然后选择“虚拟网络”
-   
+2. 若要建立 VNet 对等互连，需要在两个 VNet 之间创建两个链接，每个方向各一个。 可先创建 VNet1 到 VNet2 的 VNet 对等互连链接。 在 Azure 门户中，单击“浏览” >  选择“虚拟网络”
+
     ![在 Azure 门户中创建 VNet 对等互连](./media/virtual-networks-create-vnetpeering-arm-portal/figure01.png)
-3. 在“虚拟网络”边栏选项卡中，选择“VNET1”，再依次单击“对等互连”和“添加”
-   
+3. 在“虚拟网络”边栏选项卡中，选择“VNET1”，再依次单击“对等互连”和“添加”，如下图所示：
+
     ![选择对等互连](./media/virtual-networks-create-vnetpeering-arm-portal/figure02.png)
-4. 在“添加对等互连”边栏选项卡中，将对等互连链接命名为 LinkToVnet2，选择订阅和对等虚拟网络 VNET2，然后单击“确定”。
-   
+4. 在“添加对等互连”边栏选项卡中，在“名称”中输入 *LinkToVnet2*，选择订阅和对等**虚拟网络** *VNET2*，然后单击“确定”。
+
     ![链接到 VNet](./media/virtual-networks-create-vnetpeering-arm-portal/figure03.png)
-5. 该 VNET 对等互连链接创建完成后。 就可以看到链接状态如下所示：
-   
+5. 创建 VNet 对等互连链接后，将看到链接状态，如下图中所示：
+
     ![链接状态](./media/virtual-networks-create-vnetpeering-arm-portal/figure04.png)
-6. 接下来创建 VNET2 到 VNET1 的 VNET 对等互连链接。 在“虚拟网络”边栏选项卡中，选择“VNET2”，再依次单击“对等互连”和“添加”
-   
+6. 创建 VNET2 到 VNET1 的 VNet 对等互连链接。 在“虚拟网络”边栏选项卡中，选择“VNET2”，再依次单击“对等互连”和“添加”，如下图所示：
+
     ![从其他 VNet 对等](./media/virtual-networks-create-vnetpeering-arm-portal/figure05.png)
-7. 在“添加对等互连”边栏选项卡中，将对等互连链接命名为 LinkToVnet1，选择订阅和对等虚拟网络，然后单击“确定”。
-   
+7. 在“添加对等互连”边栏选项卡中，在“名称”中输入 *LinkToVnet1*，选择订阅，为“虚拟网络”选择 *VNET1*，然后单击“确定”。
+
     ![创建虚拟网络磁贴](./media/virtual-networks-create-vnetpeering-arm-portal/figure06.png)
-8. 该 VNET 对等互连链接创建完成后。 就可以看到链接状态如下所示：
-   
+8. 创建 VNet 对等互连链接后，将看到链接状态，如下图中所示：
+
     ![最终链接状态](./media/virtual-networks-create-vnetpeering-arm-portal/figure07.png)
-9. 检查 LinkToVnet2 的状态，该状态现也变为“已连接”。  
-   
+9. 检查 **LinkToVnet2** 的状态，该状态现也变为“已连接”。  
+    
     ![最终链接状态 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure08.png)
-   
-   > [!NOTE]
-   > 仅在两个链接均连接的情况下建立 VNET 对等互连。
-   > 
-   > 
+
+    > [!NOTE]
+    > 仅在两个链接均连接的情况下建立 VNET 对等互连。
+    > 
+    > 
 
 每个链接有几个可配置属性：
 
@@ -68,38 +68,43 @@ ms.openlocfilehash: 06130f18bad86dbbe009548ac95ac0e6c4953db2
 | 允许虚拟网络访问 |是否将对等 VNet 的地址空间包括为 Virtual_network 标记的一部分 |是 |
 | 允许转发的流量 |是否接受或丢弃不是源自对等 VNet 的流量 |否 |
 | 允许网关传输 |允许对等 VNet 使用你的 VNet 网关 |否 |
-| 使用远程网关 |使用对等方的 VNet 网关。 对等 VNet 必须已配置网关并且已选中“允许网关传输”。 如果你已配置了网关，则无法使用此选项 |否 |
+| 使用远程网关 |使用对等方的 VNet 网关。 对等 VNet 必须已配置网关并且已选中“允许网关传输”。 如果你已配置了网关，则无法使用此选项。 |否 |
 
-VNet 对等互连中的每个链接都具有上述这组属性。 从门户中，可以单击 VNet 对等互连链接并更改任何可用的选项，单击“保存”以使更改生效。
+VNet 对等互连中的每个链接都有上述属性集。 从门户中，可以单击“VNet 对等互连”链接并更改任何可用的选项，单击“保存”以应用更改。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
 1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
-2. 在此示例中，我们将使用两个订阅 - 订阅 A 和订阅 B，以及各自的特权用户 - 用户 A 和用户 B
-3. 在门户中，单击“浏览”，然后选择“虚拟网络” 单击 VNET，并单击“添加”。
-   
+2. 在此示例中，用户 A 具有订阅 A 的管理权限，用户 B 具有订阅 B 的管理权限。
+3. 在门户中，单击“浏览”，然后选择“虚拟网络”。 单击要设置对等互连的 VNet。
+4. 在所选 VNet 的边栏选项卡中，依次单击“访问控制”、“添加”，如下图所示：
+
     ![方案 2 浏览](./media/virtual-networks-create-vnetpeering-arm-portal/figure09.png)
-4. 在“添加访问权限”边栏选项卡上，单击以选择角色，并选择“网络参与者”，单击“添加用户”，键入用户 B 的登录名称，然后单击“确定”。
-   
+4. 在“添加访问权限”边栏选项卡上，单击一个角色并选择“网络参与者”，单击“添加用户”，键入用户 B 的登录名，然后单击“确定”。
+
     ![RBAC](./media/virtual-networks-create-vnetpeering-arm-portal/figure10.png)
 
-5. 然后通过订阅 B 的特权用户 B 登录到 Azure 门户。 按照以上步骤将用户 A 添加为网络参与者。
-   
+5. 以用户 B 身份登录到 Azure 门户，该用户是订阅 B 的特权用户。 按照上述步骤将用户 A 添加到“网络参与者”角色，如下图所示：
+
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
+
+    > [!NOTE]
+    > 可以在浏览器中同时注销和登录两个用户会话，以确保成功启用授权。
+    >
+    >
+
+    > [!IMPORTANT]
+    > 如果要在通过 Azure Resource Manager 部署模型创建的两个 VNet 之间创建对等互连，请继续执行本部分中的剩余步骤。 如果两个 VNet 是通过不同部署模型创建的，请跳过本部分的剩余步骤并完成本文的[将通过不同部署模型创建的虚拟网络对等互连](#x-model)部分中所述的步骤。
+
+6. 以用户 A 身份登录到门户、导航到 VNET3 边栏选项卡、单击“对等互连”、选中“我知道我的资源 ID”复选框，然后采用下例中的格式键入 VNET5 的资源 ID：
    
-   > [!NOTE]
-   > 可以在浏览器中同时注销和登录两个用户会话，以确保成功启用授权。
-   > 
-   > 
-6. 以用户 A 身份登录到门户、导航到 VNET3 边栏选项卡、单击“对等互连”、选中“我知道我的资源 ID”复选框，然后采用以下格式键入 VNET5 的资源 ID。
-   
-    /subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Network/VirtualNetwork/{VNETname}
+    /subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Network/virtualNetworks/{VNETname}
    
     ![资源 ID](./media/virtual-networks-create-vnetpeering-arm-portal/figure12.png)
-7. 作为用户 B 登录到门户，并按照上述步骤创建从 VNET5 到 VNet3 的对等互连链接。
+7. 作为用户 B 登录到门户，并按照之前的步骤创建从 VNET5 到 VNet3 的对等互连链接。
    
     ![资源 ID 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure13.png)
-8. 将建立对等互连，VNet3 中的任意虚拟机应该能够与 VNet5 中的任意虚拟机进行通信
+8. 将建立对等互连。 连接到 VNet3 的任意 VM 都应能与连接到 VNet5 的任意 VM 进行通信。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
 
@@ -114,29 +119,32 @@ VNet 对等互连中的每个链接都具有上述这组属性。 从门户中�
 [!INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
 
 1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
-2. 若要在此情况下建立 VNET 对等互连，只需要在 Azure Resource Manager 中的虚拟网络与经典中的虚拟网络之间创建一个链接。 即，从 **VNET1** 到 **VNET2**。 在门户中，单击“浏览”>，然后选择“虚拟网络”
-3. 在“虚拟网络”边栏选项卡中，选择“VNET1” 。 单击“对等互连”，然后单击“添加”。
-4. 在“添加对等互连”边栏选项卡中，为链接命名。 这里将它命名为 **LinkToVNet2**。 在“对等详细信息”下，选择“经典” 。
-5. 然后选择订阅和对等虚拟网络 **VNET2**。 然后，单击“确定”。
-   
+2. 如果要在同一订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，请跳到步骤 3。 在**预览**版中，能够在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连。 预览版功能不具有与正式版功能相同级别的可靠性和服务级别协议。 如果要在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，必须先完成以下任务：
+    - 通过从 PowerShell 输入以下命令在 Azure 订阅中注册预览版功能：`Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`此步骤无法在门户中完成。
+    - 完成本文的[跨订阅对等互连](#x-sub)部分中的步骤 1-6。
+3. 若要在此情况下建立 VNET 对等互连，只需要在 Azure Resource Manager 中的虚拟网络与经典中的虚拟网络之间创建一个链接。 即，从 **VNET1** 到 **VNET2**。 在门户中，单击“浏览”>，然后选择“虚拟网络”
+4. 在“虚拟网络”边栏选项卡中，选择“VNET1” 。 单击“对等互连”，然后单击“添加”。
+5. 在“添加对等互连”边栏选项卡中，为链接命名。 这里将它命名为 **LinkToVNet2**。 在“对等详细信息”下，选择“经典” 。
+6. 选择订阅和对等虚拟网络 **VNET2**。 然后，单击“确定”。
+
     ![使 VNet1 与 VNet2 链接起来](./media/virtual-networks-create-vnetpeering-arm-portal/figure18.png)
-6. 创建此 VNet 对等互连链接后，两个虚拟网络将对等互连，并且你将看到以下内容：
-   
+7. 创建此 VNet 对等互连链接后，两个虚拟网络将对等互连，并且你将看到以下内容：
+
     ![检查对等互连连接](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
 
 ## <a name="remove-vnet-peering"></a>删除 VNet 对等互连
 1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
-2. 转到“虚拟网络”边栏选项卡，单击“对等互连”，单击要删除的链接，单击“删除”按钮。
-   
-   ![删除1](./media/virtual-networks-create-vnetpeering-arm-portal/figure15.png)
+2. 转到“虚拟网络”边栏选项卡，依次单击“对等互连”、要删除的链接、“删除”。
+
+    ![删除1](./media/virtual-networks-create-vnetpeering-arm-portal/figure15.png)
 3. 删除 VNET 对等互连中的一个链接后，该对等链接状态将为“断开”。
-   
+
     ![删除2](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
 4. 在此状态下，在对等链接状态更改为已启动之前无法重新创建链接。 建议先删除这两个链接，然后再重新创建 VNet 对等互连。
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

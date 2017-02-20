@@ -1,10 +1,10 @@
 ---
-title: "部署 Microsoft Azure StorSimple 虚拟阵列 1 - 门户准备| Microsoft Docs"
+title: "StorSimple 虚拟阵列的门户准备工作 | Microsoft 文档"
 description: "此为部署 StorSimple 虚拟阵列的第一个教程，介绍如何准备 Azure 门户"
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 97e29de986ab43ee51a311dee8d2cbf66f7408e4
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: 8539540f96d1a6fbb34736eebb0a5897b4754c9f
 
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-portal"></a>部署 StorSimple 虚拟阵列 - 准备门户
@@ -72,7 +72,7 @@ ms.openlocfilehash: 97e29de986ab43ee51a311dee8d2cbf66f7408e4
 * 主机系统能够将以下资源专用于预配虚拟阵列：
   
   * 至少 4 个核心。
-  * 至少 8 GB 的 RAM。
+  * 至少 8 GB 的 RAM。 如果打算将虚拟阵列配置为文件服务器，8 GB 支持 200 万个文件。 需要 16 GB 的 RAM 才能支持 200-400 万个计划文件。
   * 一个网络接口。
   * 一个 500 GB 的用于系统数据的虚拟磁盘。
 
@@ -172,6 +172,6 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

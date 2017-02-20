@@ -11,11 +11,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 02/04/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 918c2b096b9b6d935c8d5bc2588a978cdf8878cf
-ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
+ms.sourcegitcommit: 3e87a3b4086d3a2b0dec5ec7d954864922f51279
+ms.openlocfilehash: c262134df624b548b99c22bd749bb56fcda6fb1b
 
 
 ---
@@ -53,21 +53,21 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 **问：在 Azure 门户中或使用 Windows PowerShell 删除的设备为何仍列为已注册？**
 
-**答：**这是设计使然。 该设备无权访问云中的资源。 如果想要重新注册设备，需要在设备上执行一个手动操作。 
+**答：**这是设计使然。 该设备无权访问云中的资源。 如果想要删除设备并重新注册，必须在设备上执行一个手动操作。 
 
 对于已加入本地 AD 域的 Windows 10 和 Windows Server 2016 设备：
 
-1.  以管理员身份打开命令提示符。
+1.    以管理员身份打开命令提示符。
 
-2.  键入 **dsregcmd.exe /leave**。
+2.    键入 **dsregcmd.exe /debug /leave**
 
-3.  键入 **dsregcmd.exe**。
+3.    **注销并再次登录，以触发注册设备的计划任务。** 
 
 对于已加入本地 AD 域的其他 Windows 平台：
 
-1.  以管理员身份打开命令提示符。
-2.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
-3.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
+1.    以管理员身份打开命令提示符。
+2.    键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
+3.    键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
 
 ---
 
@@ -75,13 +75,13 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 **答：**
 
--   对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
+-    对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
 
--   如果你使用了“添加工作或学校帐户”，则使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
+-    如果你使用了“添加工作或学校帐户”，则使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
 
--   使用自动注册加入本地 AD 域的其他 Windows 平台将为登录设备的每个域用户创建具有相同设备名称的新设备记录。 
+-    使用自动注册加入本地 AD 域的其他 Windows 平台将为登录设备的每个域用户创建具有相同设备名称的新设备记录。 
 
--   已擦除、重新安装并使用相同名称重新加入域的 AADJ 计算机将显示为具有相同设备名称的另一条记录。
+-    已擦除、重新安装并使用相同名称重新加入域的 AADJ 计算机将显示为具有相同设备名称的另一条记录。
 
 ---
 
@@ -112,13 +112,13 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 **答：**出现这种情况的常见原因包括：
 
-1.  你的用户凭据不再有效。
+1.    你的用户凭据不再有效。
 
-2.  你的计算机无法与 Azure Active Directory 通信。 请检查是否存在任何网络连接问题。
+2.    你的计算机无法与 Azure Active Directory 通信。 请检查是否存在任何网络连接问题。
 
-3.  不满足 Azure AD Join 的先决条件。 请确保遵循[通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-overview.md)中的步骤。  
+3.    不满足 Azure AD Join 的先决条件。 请确保遵循[通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-overview.md)中的步骤。  
 
-4.  联合登录要求联合服务器支持 WS-Trust 活动终结点。 
+4.    联合登录要求联合服务器支持 WS-Trust 活动终结点。 
 
 ---
 
@@ -131,6 +131,12 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 **问：我没有收到任何错误信息，但尝试加入电脑为何失败？**
 
 **答：**一个可能的原因是用户使用内置管理员帐户登录到设备。 请在使用 Azure Active Directory Join 之前创建一个不同的本地帐户以完成设置。 
+
+---
+
+**问：在哪里可以找到自动注册设备的安装说明？**
+
+**答：**有关详细说明，请参阅[如何配置已加入域的 Windows 设备的 Azure Active Directory 自动注册](active-directory-conditional-access-automatic-device-registration-setup.md)
 
 ---
 
@@ -147,6 +153,6 @@ ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

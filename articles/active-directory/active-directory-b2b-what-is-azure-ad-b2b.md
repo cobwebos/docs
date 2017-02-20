@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/01/2017
+ms.date: 02/02/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 8fdd2993e6b3f0345948f35753ebb7a20ed174e3
-ms.openlocfilehash: d5764ee2a8447de70798c24a3152a854327ae89d
+ms.sourcegitcommit: 1c1da3c7b1d5e096e03ac3814275f29afeffcaeb
+ms.openlocfilehash: ad03b71052be46bdb64432b007aa471d120db0fa
 
 
 ---
@@ -30,7 +30,7 @@ Azure AD B2B 协作功能可让各种规模、各个行业的组织轻松安全�
 
 ## <a name="how-does-it-work"></a>工作原理
 
-在当前版本中（在 [Azure 经典门户](https://manage.windowsazure.com)中），若要与某家组织建立关系，IT 专业人员和信息工作者可以通过门户或邀请管理器 API，一次添加另一家组织中的一个或多个用户。 现在，管理员可以使用 Azure 中的新门户体验 (https://portal.azure.com) 和 PowerShell 实现此目的。 信息工作者可以使用 http://myapps.microsoft.com 中的访问面板体验。 开发人员可以使用 Azure AD B2B 邀请管理器 API 创建应用程序，添加 B2B 协作用户以及自定义邀请和登记工作流。
+在当前预览版本中，若要与某家组织建立关系，IT 专业人员和信息工作者可以通过门户或邀请管理器 API，一次添加另一家组织中的一个或多个用户。 管理员可以使用 Azure 门户中的新门户体验 (https://portal.azure.com) 和 PowerShell 实现此目的。 信息工作者可以使用 http://myapps.microsoft.com 中的访问面板体验。 开发人员可以使用 Azure AD B2B 邀请管理器 API 创建应用程序，添加 B2B 协作用户以及自定义邀请和登记工作流。
 
 B2B 协作用户通常是通过邀请与兑换过程登记的。 工作原理如下。
 
@@ -83,8 +83,16 @@ B2B 协作用户通常是通过邀请与兑换过程登记的。 工作原理如
 
 在 Azure AD B2B 协作网站上浏览我们的其他文章：
 
+* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
+* [Azure Active Directory 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
+* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-how-it-works.md)
 * [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)
+* [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)
+* [Azure Active Directory B2B 协作疑难解答](active-directory-b2b-troubleshooting.md)
+* [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
+* [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
+* [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
 

@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本 | Microsoft Docs"
+title: "使用 Azure 媒体分析 OCR 将文本数字化 | Microsoft 文档"
 description: "Azure 媒体分析 OCR（光学字符识别）可让你将视频文件中的文本内容转换成可编辑、可搜索的数字文本。  这可让你从媒体的视频信号中自动提取有意义的元数据。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/01/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 39fc755a632ae8e06109a3ea996521310424ba82
+ms.sourcegitcommit: 5b5095610085019ad3fee7f4394f0c87f3740bed
+ms.openlocfilehash: 8d78a0f93a1e65eda7bfefbf910b56e0218a42c5
 
 
 ---
@@ -35,6 +35,10 @@ ms.openlocfilehash: 39fc755a632ae8e06109a3ea996521310424ba82
 
 ## <a name="task-configuration"></a>任务配置
 任务配置（预设） 在使用 **Azure 媒体 OCR** 创建任务时，必须使用 JSON 或 XML 指定配置预设。 
+
+>[!NOTE]
+>在高度/宽度上，OCR 引擎仅将最小 40 像素到最大 32000 像素的图像区域视为有效输入。
+>
 
 ### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 说明 |
@@ -342,6 +346,6 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

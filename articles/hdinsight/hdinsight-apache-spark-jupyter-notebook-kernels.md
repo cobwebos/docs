@@ -1,6 +1,6 @@
 ---
-title: "Linux 上的 HDInsight Spark 群集所包含的 Jupyter 笔记本可用的内核 | Microsoft Docs"
-description: "了解 HDInsight Linux 上的 Spark 群集可用的其他 Jupyter 笔记本内核。"
+title: "将不同的内核用于 Azure Spark 群集上的 Jupyter 笔记本 | Microsoft Docs"
+description: "了解 HDInsight Linux 上的 Spark 群集所包含的 Jupyter 笔记本使用的 PySpark 和 Spark 内核。"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -13,65 +13,66 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b322e44f53567e2618df086500ca42e81e4e233e
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: fc39933ac8d9f3c46023a5852df036b87e559647
 
 
 ---
-# <a name="kernels-available-for-jupyter-notebooks-with-apache-spark-clusters-on-hdinsight-linux"></a>HDInsight Linux 上的 Apache Spark 群集所包含的 Jupyter 笔记本可用的内核
-在 HDInsight (Linux) 上的 Apache Spark 群集包含可用于测试应用程序的 Jupyter 笔记本。 内核是可以运行和解释代码的程序。 HDInsight Spark 群集提供了可在 Jupyter 笔记本中使用的两个内核。 它们是：
+# <a name="jupyter-notebooks-kernels-with-apache-spark-clusters-in-hdinsight"></a>HDInsight 中 Apache Spark 群集所包含的 Jupyter 笔记本内核 
 
-1. **PySpark** （适用于以 Python 编写的应用程序）
-2. **Spark** （适用于以 Scala 编写的应用程序）
+HDInsight Spark 群集提供了两个可在 Jupyter 笔记本中用于测试 Spark 应用程序的内核。 内核是可以运行和解释代码的程序。 这两个内核是：
 
-本文介绍使用这些内核的方法与好处。
+- **PySpark** （适用于以 Python 编写的应用程序）
+- **Spark** （适用于以 Scala 编写的应用程序）
+
+在本文中，你将学习如何使用这些内核以及使用它们的优势。
 
 **先决条件：**
 
 必须满足以下条件：
 
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
-## <a name="how-do-i-use-the-kernels"></a>如何使用内核？
-1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。   
-2. 在 Spark 群集边栏选项卡中单击“群集仪表板”，然后单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
+1. 从 [Azure 门户网站](https://portal.azure.com/)打开群集。  有关说明，请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。 将在新的门户边栏选项卡中打开群集。
+2. 在“快速链接”部分中，单击“群集仪表板”打开“群集仪表板”边栏选项卡。  如果没有看到“快速链接”，请从边栏选项卡上的左侧菜单中单击“概述”。
+
+    ![群集仪表板](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-azure-portal-cluster-dashboards.png "群集仪表板") 
+3. 单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
    
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
-   > 
+   >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
    > 
-3. 创建具有新内核的新笔记本。 单击“新建”，然后单击“Pyspark”或“Spark”。 Spark 内核适用于 Scala 应用程序，PySpark 内核适用于 Python 应用程序。
+3. 单击“新建”，然后单击“Pyspark”或“Spark”创建新的笔记本。 Spark 内核适用于 Scala 应用程序，PySpark 内核适用于 Python 应用程序。
    
-    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "Create a new Jupyter notebook") 
+    ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "创建新的 Jupyter 笔记本") 
+
 4. 此时将打开具有所选内核的新笔记本。
 
-## <a name="why-should-i-use-the-pyspark-or-spark-kernels"></a>为何应使用 PySpark 或 Spark 内核？
+## <a name="choose-between-the-kernels"></a>在内核之间选择
 下面是使用新内核的几项好处。
 
-1. **预设上下文**。 使用 Jupyter 笔记本随附的 **PySpark** 或 **Spark** 内核时，不需要先显式设置 Spark 或 Hive 上下文，即可开始使用开发的应用程序；这些上下文默认可供使用。 这些上下文包括：
+- **预设上下文**。 使用 **PySpark** 或 **Spark** 内核时，不需要先显式设置 Spark 或 Hive 上下文，即可开始使用应用程序；这些上下文默认可供使用。 这些上下文包括：
    
    * **sc** - 表示 Spark 上下文
    * **sqlContext** - 表示 Hive 上下文
 
     因此，不需要运行如下语句来设置上下文：
 
-        ###################################################
-        # <a name="you-do-not-need-to-run-this-with-the-new-kernels"></a>无需使用新内核运行它
-        ###################################################
-        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
+      sc = SparkContext('yarn-client')  sqlContext = HiveContext(sc)
 
     可以直接在应用程序中使用预设上下文。
 
-1. **单元 magic**。 PySpark 内核提供一些预定义的“magic”，这是可以结合 `%%` 调用的特殊命令（例如 `%%MAGIC` <args>）。 magic 命令必须是代码单元中的第一个字，并且允许多行内容。 magic 一字应该是单元中的第一个字。 在 magic 前面添加任何内容（即使是注释）都会导致错误。     有关 magic 的详细信息，请参阅[此处](http://ipython.readthedocs.org/en/stable/interactive/magics.html)。
+- **单元 magic**。 PySpark 内核提供一些预定义的“magic”，这是可以结合 `%%` 调用的特殊命令（例如 `%%MAGIC` <args>）。 magic 命令必须是代码单元中的第一个字，并且允许多行内容。 magic 一字应该是单元中的第一个字。 在 magic 前面添加任何内容（即使是注释）都会导致错误。     有关 magic 的详细信息，请参阅[此处](http://ipython.readthedocs.org/en/stable/interactive/magics.html)。
    
     下表列出可通过内核提供的不同 magic。
-   
+
    | Magic | 示例 | 说明 |
    | --- | --- | --- |
    | help |`%%help` |生成所有可用 magic 的表，其中包含示例和说明 |
@@ -82,11 +83,11 @@ ms.openlocfilehash: b322e44f53567e2618df086500ca42e81e4e233e
    | 日志 |`%%logs` |输出当前 Livy 会话的日志。 |
    | 删除 |`%%delete -f -s <session number>` |删除当前 Livy 终结点的特定会话。 请注意，无法删除针对内核本身启动的会话。 |
    | cleanup |`%%cleanup -f` |删除当前 Livy 终结点的所有会话，包括此笔记本的会话。 force 标志 -f 是必需的。 |
-   
+
    > [!NOTE]
-   > 除了 PySpark 内核添加的 magic 以外，还可以使用[内置的 IPython magic](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)（包括 `%%sh`）。 可以使用 `%%sh` magic 在群集头节点上运行脚本和代码块。 
-   > 
-   > 
+   > 除了 PySpark 内核添加的 magic 以外，还可以使用[内置的 IPython magic](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)（包括 `%%sh`）。 可以使用 `%%sh` magic 在群集头节点上运行脚本和代码块。
+   >
+   >
 2. **自动可视化**。 **Pyspark** 内核自动将 Hive 和 SQL 查询的输出可视化。 可以选择多种不同类型的视觉效果，包括表、饼图、折线图、分区图和条形图。
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql magic 支持的参数
@@ -102,7 +103,7 @@ ms.openlocfilehash: b322e44f53567e2618df086500ca42e81e4e233e
 
 **示例：**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2 
+    %%sql -q -m sample -r 0.1 -n 500 -o query2
     SELECT * FROM hivesampletable
 
 上述语句执行以下操作：
@@ -113,7 +114,7 @@ ms.openlocfilehash: b322e44f53567e2618df086500ca42e81e4e233e
 * 最后，由于使用了 `-o query2`，因此也会将输出保存到名为 **query2** 的数据帧中。
 
 ## <a name="considerations-while-using-the-new-kernels"></a>使用新内核时的注意事项
-无论使用哪种内核（PySpark 或 Spark），使笔记本一直保持运行都会消耗群集资源。  使用这些内核时，由于上下文是预设的，单单退出笔记本并不会终止上下文，因此会继续占用群集资源。 使用 PySpark 和 Spark 内核时，合理的做法是使用笔记本“文件”菜单中的“关闭并停止”选项。 这样就会终止上下文，然后退出笔记本。     
+无论使用哪种内核（PySpark 或 Spark），使笔记本一直保持运行都会消耗群集资源。  使用这些内核时，由于上下文是预设的，仅退出笔记本并不会终止上下文，因此会继续占用群集资源。 使用 PySpark 和 Spark 内核时，合理的做法是使用笔记本“文件”菜单中的“关闭并停止”选项。 这样就会终止上下文，然后退出笔记本。     
 
 ## <a name="show-me-some-examples"></a>举例说明
 打开 Jupyter 笔记本时，可以在根级别看到两个文件夹。
@@ -168,7 +169,6 @@ Google Chrome 仅支持针对 HDInsight Spark 群集运行的 Jupyter 笔记本�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

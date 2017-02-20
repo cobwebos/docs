@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
-ms.openlocfilehash: b1691d78e4914bd5cf9c75e32f36afceb997a622
+ms.sourcegitcommit: 9b26cfed4102bc09512f5ef1270aa0275a7f8f69
+ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
 
 
 ---
@@ -40,7 +40,7 @@ ms.openlocfilehash: b1691d78e4914bd5cf9c75e32f36afceb997a622
 
 * 在基本计划中，将按数据量（Application Insights 收到的遥测数据的字节数）对用户收费。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。
 * 每个应用的头 1 GB 免费，因此，如果只是进行试验或开发，可能不需付费。
-* [连续导出](app-insights-export-telemetry.md)和 [Log Analytics 连接器](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)已推出，在使用基本计划时需额外付费（按 GB），但在 2017 年 3 月初之前仍属免费。
+* 已推出[连续导出](app-insights-export-telemetry.md)，在使用基本计划时需额外付费（按 GB），但在 2017 年 3 月初之前仍属免费。
 
 ### <a name="enterprise-plan"></a>企业计划
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: b1691d78e4914bd5cf9c75e32f36afceb997a622
 
 * 若要进行精确的节点计数，必须了解应用程序在使用哪个 Application Insights SDK。 
   * 在 SDK 2.2 及更高版本中，Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 都会将每个应用程序主机作为节点进行报告，例如会报告物理服务器和 VM 主机的计算机名称，而在使用云服务时，则会报告实例名称。  唯一的例外是应用程序仅使用 [.NET Core](https://dotnet.github.io/) 和 Application Insights Core SDK，这种情况下，所有主机只会报告一个节点，因为主机名不可用。 
-  * 就早期版本的 SDK 来说，[Web SDK}(https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 的行为与新版 SDK 并无二致，而 [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 则只会报告一个节点，不管实际应用程序主机的数目是多少。 
+  * 就早期版本的 SDK 来说，[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 的行为与新版 SDK 并无二致，而 [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 则只会报告一个节点，不管实际应用程序主机的数目是多少。 
   * 请注意，如果应用程序通过 SDK 将 roleInstance 设置为自定义值，则会默认使用该值确定节点计数。 
   * 如果对应用使用新版 SDK，而该应用在客户端计算机或移动设备中运行，则节点计数可能会返回很大的数目（在客户端计算机或移动设备数目很大的情况下）。 
 
@@ -174,6 +174,6 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

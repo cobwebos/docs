@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 45b44b7b5cb4fd299fcc9c4f704a602048dd15c5
-ms.openlocfilehash: e875aab41e09066df2facd3669eec09eea621fd2
+ms.sourcegitcommit: a4b067e732bccb01faa96f23dbfd2ed65b7711a0
+ms.openlocfilehash: 62326da2e801a7c6e01d29e2298bd3552f331647
 
 
 ---
@@ -32,10 +32,10 @@ ms.openlocfilehash: e875aab41e09066df2facd3669eec09eea621fd2
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
 Oracle 连接器支持两个版本的驱动程序：
 
-- **适用于 Oracle 的 Microsoft 驱动程序**与数据管理网关（2.7 版及更高版本）绑定。 绑定后，除要连接到 Oracle 的网关外无需安装任何程序。 支持 Oracle 数据库版本 10g 发布 2 或更高版本。 **建议**使用此驱动程序来简化环境设置。
+- **适用于 Oracle 的 Microsoft 驱动程序**与数据管理网关（2.7 版及更高版本）绑定。 **建议**使用此驱动程序。 使用它，除要连接到 Oracle 的网关外无需安装任何程序，还可以体验更好的复制性能。 支持 Oracle 数据库版本 10g 发布 2 或更高版本。
 
     > [!NOTE]
-    > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据，不支持将数据写入 Oracle。
+    > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据，不支持将数据写入 Oracle。 请注意，数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序。 或者，可以使用复制向导验证连接。
     >
 
 - **用于 .NET 的 Oracle 数据提供程序：**还可以选择使用 Oracle 数据提供程序在 Oracle 中复制/粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](http://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在安装有网关的计算机上安装合适的版本（32/64 位）。 [Oracle 数据提供程序 .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle 数据库 10g 版本 2 或更高版本。
@@ -569,6 +569,6 @@ User Id=<username>;Password=<password>;",
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

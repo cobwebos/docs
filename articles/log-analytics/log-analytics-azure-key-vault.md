@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: a631b409fed14bcfce39ca4180b00a0d23d5caf2
-ms.openlocfilehash: 52cd04e34f17884a39979279798debbe8f018aa2
+ms.sourcegitcommit: b781d7b8cbf3f6b9a0a92f4368491404ee033f91
+ms.openlocfilehash: a6612d59d9504b1befd691f3b784ac9378c2b414
 
 
 ---
@@ -150,12 +150,15 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 
 在发生此项更改之前收集的数据不会显示在新解决方案中。 可以继续使用旧类型和字段名称查询此数据。
 
+## <a name="troubleshooting"></a>故障排除
+[!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
+
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看 Azure 密钥保管库的详细数据。
 
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

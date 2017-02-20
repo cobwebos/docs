@@ -4,7 +4,7 @@ description: "此教程为 StorSimple 虚拟阵列部署的第二个教程，介
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 4354963c-e09d-41ac-9c8b-f21abeae9913
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/12/2017
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: d623c4172a654b90d68c6e6e488a2c791abe8647
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配虚拟阵列
@@ -48,7 +48,7 @@ ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
 * 主机系统能够将以下资源专用于预配虚拟阵列：
 
   * 至少 4 个核心。
-  * 至少 8 GB 的 RAM。
+  * 至少 8 GB 的 RAM。 如果打算将虚拟阵列配置为文件服务器，8 GB 最多支持 200 万个文件。 需要 16 GB 的 RAM 才能支持 200-400 万个文件。
   * 一个网络接口。
   * 一个 500 GB 的用于数据的虚拟磁盘。
 
@@ -73,7 +73,7 @@ ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
 确保要在其上创建虚拟阵列的基础硬件（主机系统）能够将以下资源专用于虚拟阵列：
 
 * 至少 4 个核心。
-* 至少 8 GB 的 RAM。
+* 至少 8 GB 的 RAM。 如果打算将虚拟阵列配置为文件服务器，8 GB 最多支持 200 万个文件。 需要 16 GB 的 RAM 才能支持 200-400 万个文件。
 * 一个网络接口。
 * 一个 500 GB 的用于系统数据的虚拟磁盘。
 
@@ -217,6 +217,6 @@ ms.openlocfilehash: eaeb7bf48239fea0c86d8234fe25e3f23cf76653
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 
