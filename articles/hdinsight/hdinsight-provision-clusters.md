@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
@@ -22,8 +22,6 @@ ms.openlocfilehash: f014b92516879a0255dda3736bf5af6142555d92
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中创建基于 Windows 的 Hadoop 群集
-
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
 Hadoop 群集由用于对群集中的任务进行分布式处理的多个虚拟机（节点）组成。 Azure 已将各个节点的安装和配置的实现细节精简化，因此只需提供常规配置信息。 在本文中，你会了解这些配置设置。
 

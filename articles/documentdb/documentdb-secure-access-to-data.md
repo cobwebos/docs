@@ -2,7 +2,7 @@
 title: "了解如何保护对 DocumentDB 中数据的访问 |Microsoft Docs"
 description: "了解有关 DocumentDB 中的访问控制概念，包括主密钥、只读密钥、用户和权限。"
 services: documentdb
-author: kiratp
+author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
@@ -12,8 +12,8 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2016
-ms.author: kipandya
+ms.date: 02/21/2017
+ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: 9f4105d1ab366994add0f75d634917ab9a063733
 ms.openlocfilehash: 4d84c11a4b91727f60c4c266a23cc5f3946898f5
