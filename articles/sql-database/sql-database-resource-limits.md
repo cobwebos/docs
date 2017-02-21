@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/11/2017
+ms.date: 02/09/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 5dfb2b4fbe4dbd74575b418257843bc2097b966b
-ms.openlocfilehash: 5ca2da0caff29244f43c162e3cd98d335fd23f23
+ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6
+ms.openlocfilehash: 15fd64f21eb20ae412f4d0cf1930e99e2e9fc62b
 
 
 ---
@@ -65,7 +65,7 @@ CPU、内存、日志 I/O 和数据 I/O 以外的资源在达到限制时，将�
 | 每个服务器的 DTU |45000 |V12 服务器上每个服务器有&45000; 个 DTU 可用于预配数据库、弹性池和数据仓库。 |
 
 > [!IMPORTANT]
-> Azure SQL 数据库自动导出现在处于预览状态且将于 2017 年 3 月 1 日停用。 从 2016 年 12 月 1 日起，你将不再能够在任何 SQL 数据库上配置自动导出。 所有现有自动导出作业将继续正常运行，直到 2017 年 3 月 1 日。 2016 年 12 月 1 日之后，你可以使用[长期备份保留](sql-database-long-term-retention.md)或 [Azure 自动化](../automation/automation-intro.md)，以根据所选计划定期使用 PowerShell 存档 SQL 数据库。 对于示例脚本，可以从 [Github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) 下载示例脚本。 
+> Azure SQL 数据库自动导出现在处于预览状态且将于 2017 年 3 月 1 日停用。 从 2016 年 12 月 1 日起，你将不再能够在任何 SQL 数据库上配置自动导出。 所有现有自动导出作业将继续正常运行，直到 2017 年 3 月 1 日。 2016 年 12 月 1 日之后，可以使用[长期备份保留](sql-database-long-term-retention.md)或 [Azure 自动化](../automation/automation-intro.md)，根据所选计划定期使用 PowerShell 存档 SQL 数据库。 对于示例脚本，可以从 [Github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) 下载示例脚本。 
 >
 
 

@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 637171b775d01e16cec1a7e9ef6fad73875eac69
-ms.openlocfilehash: 4f6c3713c6ca579d6ec24e8f208299f9984e0d00
+ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
+ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
 
 
 ---
@@ -62,14 +62,14 @@ ms.openlocfilehash: 4f6c3713c6ca579d6ec24e8f208299f9984e0d00
     ON d.database_id = slo.database_id
     WHERE elastic_pool_name = 'MyElasticPool'; 
 
-## <a name="get-resource-usage-data-for-an-elastic"></a>获取弹性池的资源使用情况数据
+## <a name="get-resource-usage-data-for-an-elastic-pool"></a>获取弹性池的资源使用情况数据
 使用 [sys.elastic\_pool\_resource\_stats 视图](https://msdn.microsoft.com/library/mt280062.aspx)来检查逻辑服务器上弹性池的资源使用情况统计信息。 登录到 master 数据库可查询该视图。
 
     SELECT * FROM sys.elastic_pool_resource_stats 
     WHERE elastic_pool_name = 'MyElasticPool'
     ORDER BY end_time DESC;
 
-## <a name="get-resource-usage-for-an-elastic-database"></a>获取弹性数据库的资源使用情况
+## <a name="get-resource-usage-for-a-pooled-database"></a>获取入池数据库的资源使用情况
 使用 [sys.dm\_ db\_ resource\_stats 视图](https://msdn.microsoft.com/library/dn800981.aspx)或 [sys.resource \_stats 视图](https://msdn.microsoft.com/library/dn269979.aspx)来检查弹性池中数据库的资源使用情况统计信息。 此过程类似于查询单一数据库的资源使用情况。
 
 ## <a name="next-steps"></a>后续步骤

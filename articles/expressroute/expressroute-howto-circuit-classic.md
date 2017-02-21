@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 02/08/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
-ms.openlocfilehash: 47be5ec3cf74bc10b0dab289650e29dae8cf0c03
+ms.sourcegitcommit: fe0bff84a5316628d9e465da0d4e62162f1ea4f2
+ms.openlocfilehash: cb67631dbbfb53a0de9b07bc3918bd70751ec41b
 
 
 ---
@@ -32,18 +32,21 @@ ms.openlocfilehash: 47be5ec3cf74bc10b0dab289650e29dae8cf0c03
 
 本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和经典部署模型创建 Azure ExpressRoute 线路。 本文还将向你显示如何查看状态，以及如何更新、删除和预配 ExpressRoute 线路。
 
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
+
+
 **关于 Azure 部署模型**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>开始之前
-### <a name="1-review-the-prerequisites-and-workflow-articles"></a>1.查看先决条件和工作流文章
+### <a name="step-1-review-the-prerequisites-and-workflow-articles"></a>步骤 1。 查看先决条件和工作流文章
 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。  
 
-### <a name="2-install-the-latest-versions-of-the-azure-powershell-modules"></a>2.安装最新版本的 Azure PowerShell 模块
+### <a name="step-2-install-the-latest-versions-of-the-azure-powershell-modules"></a>步骤 2. 安装最新版本的 Azure PowerShell 模块
 有关如何配置计算机以使用 Azure PowerShell 模块的分步指导，请遵循[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的说明。
 
-### <a name="3-log-in-to-your-azure-account-and-select-a-subscription"></a>3.登录到 Azure 帐户并选择订阅
+### <a name="step-3-log-in-to-your-azure-account-and-select-a-subscription"></a>步骤 3. 登录到 Azure 帐户并选择订阅
 1. 使用权限提升的 Windows PowerShell 提示符运行以下 cmdlet：
    
         Add-AzureAccount
@@ -56,13 +59,13 @@ ms.openlocfilehash: 47be5ec3cf74bc10b0dab289650e29dae8cf0c03
         Select-AzureSubscription -SubscriptionName "mysubscriptionname"
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>创建和预配 ExpressRoute 线路
-### <a name="1-import-the-powershell-modules-for-expressroute"></a>1.为 ExpressRoute 导入 PowerShell 模块
+### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>步骤 1。 为 ExpressRoute 导入 PowerShell 模块
  在开始使用 ExpressRoute cmdlet 之前，必须将 Azure 和 ExpressRoute 模块导入 PowerShell 会话（如果尚未这样做）。 将模块从其安装位置导入本地计算机。 根据模块的安装方法，该位置可能与下例中所示不同。 请根据需要修改示例。  
 
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.获取支持的提供商、位置和带宽的列表
+### <a name="step-2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>步骤 2. 获取支持的提供商、位置和带宽的列表
 在创建 ExpressRoute 线路之前，你需要支持的连接服务提供商、位置和带宽选项的列表。
 
 PowerShell cmdlet `Get-AzureDedicatedCircuitServiceProvider` 将返回此信息，你将在后面的步骤中使用该信息：
@@ -77,7 +80,7 @@ PowerShell cmdlet `Get-AzureDedicatedCircuitServiceProvider` 将返回此信息�
 
 现在，你已准备好创建 ExpressRoute 线路。         
 
-### <a name="3-create-an-expressroute-circuit"></a>3.创建 ExpressRoute 线路
+### <a name="step-3-create-an-expressroute-circuit"></a>步骤 3. 创建 ExpressRoute 线路
 以下示例演示如何通过硅谷中的 Equinix 创建 200-Mbps 的 ExpressRoute 线路。 如果你使用的是其他提供商和其他设置，请在发出请求时替换该信息。
 
 > [!IMPORTANT]
@@ -103,7 +106,7 @@ PowerShell cmdlet `Get-AzureDedicatedCircuitServiceProvider` 将返回此信息�
 
     get-help new-azurededicatedcircuit -detailed
 
-### <a name="4-list-all-the-expressroute-circuits"></a>4.列出所有 ExpressRoute 线路
+### <a name="step-4-list-all-the-expressroute-circuits"></a>步骤 4。 列出所有 ExpressRoute 线路
 可以运行 `Get-AzureDedicatedCircuit` 命令，获取创建的所有 ExpressRoute 线路的列表：
 
     Get-AzureDedicatedCircuit
@@ -136,7 +139,7 @@ PowerShell cmdlet `Get-AzureDedicatedCircuitServiceProvider` 将返回此信息�
 
     get-help get-azurededicatedcircuit -detailed
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5.将服务密钥发送给连接服务提供商进行预配
+### <a name="step-5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>步骤 5。 将服务密钥发送给连接服务提供商进行预配
 ServiceProviderProvisioningState 提供有关服务提供商端当前预配状态的信息。 状态提供 Microsoft 端的状态。 有关线路预配状态的详细信息，请参阅[工作流](expressroute-workflows.md#expressroute-circuit-provisioning-states)一文。
 
 当你创建新的 ExpressRoute 线路时，线路将是以下状态：
@@ -156,7 +159,7 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
     Status                           : Enabled
 
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6.定期检查线路密钥的状态
+### <a name="step-6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>步骤 6. 定期检查线路密钥的状态
 这样，你就知道提供商何时启用了你的线路。 配置线路后，ServiceProviderProvisioningState 将显示为 Provisioned，如以下示例所示：
 
     Get-AzureDedicatedCircuit
@@ -170,7 +173,7 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
     Sku                              : Standard
     Status                           : Enabled
 
-### <a name="7-create-your-routing-configuration"></a>7.创建路由配置
+### <a name="step-7-create-your-routing-configuration"></a>步骤 7. 创建路由配置
 有关分步说明，请参阅 [ExpressRoute 线路路由配置（创建和修改线路对等互连）](expressroute-howto-routing-classic.md)一文。
 
 > [!IMPORTANT]
@@ -178,7 +181,7 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 > 
 > 
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.将虚拟网络链接到 ExpressRoute 线路
+### <a name="step-8-link-a-virtual-network-to-an-expressroute-circuit"></a>步骤 8。 将虚拟网络链接到 ExpressRoute 线路
 接下来，将虚拟网络链接到 ExpressRoute 线路。 有关分步说明，请参阅[将 ExpressRoute 线路链接到虚拟网络](expressroute-howto-linkvnet-classic.md)。 如需使用经典部署模型为 ExpressRoute 创建虚拟网络，请参阅 [为 ExpressRoute 创建虚拟网络](expressroute-howto-vnet-portal-classic.md)中的说明。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>获取 ExpressRoute 线路的状态
@@ -204,7 +207,7 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
     Sku                              : Standard
     Status                           : Enabled
 
-你可以将服务密钥作为参数传递给调用，从而获取特定 ExpressRoute 线路的相关信息：
+你可以将服务密钥作为参数传递给调用，从而获取特定 ExpressRoute 线路的相关信息。
 
     Get-AzureDedicatedCircuit -ServiceKey "*********************************"
 
@@ -218,7 +221,7 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
     Status                           : Enabled
 
 
-你可以通过运行以下命令获取所有这些参数的详细说明。
+可以运行以下示例获取所有这些参数的详细说明：
 
     get-help get-azurededicatedcircuit -detailed
 
@@ -256,12 +259,13 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 > 
 > 
 
-注意以下事项：
+#### <a name="considerations"></a>注意事项
 
 * 从高级版降级到标准版之前，你必须确保链接到线路的虚拟机的数目少于 10。 否则，你的更新请求会失败，将按高级版费率向你收费。
 * 你必须取消其他地理政治区域的所有虚拟网络的链接。 否则，你的更新请求会失败，将按高级版费率向你收费。
 * 路由表中专用对等互连的路由必须少于 4,000。 如果你的路由表大小超出 4,000 个路由，则会删除 BGP 会话且不会重新启用它，除非已播发前缀的数目低于 4,000。
 
+#### <a name="disable-the-premium-add-on"></a>禁用高级外接程序
 可以使用以下 PowerShell cmdlet 为现有线路禁用 ExpressRoute 高级版外接程序：
 
     Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Standard
@@ -284,6 +288,8 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 > 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
 > 
 > 
+
+#### <a name="resize-a-circuit"></a>调整线路大小
 
 确定所需的大小后，即可使用以下命令调整线路的大小：
 
@@ -312,11 +318,14 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>取消预配和删除 ExpressRoute 线路
-注意以下事项：
+
+### <a name="considerations"></a>注意事项
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接，此操作才能成功。 如果此操作失败，请查看你是否有虚拟网络链接到了此线路。
 * 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商取消对线路的预配并通知我们之前，我们会继续保留资源并向你收费。
 * 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”），则可以删除线路。 这样就会停止线路计费。
+
+#### <a name="delete-a-circuit"></a>删除线路
 
 可以通过运行以下命令来删除 ExpressRoute 线路：
 
@@ -333,6 +342,6 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,22 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: b781d7b8cbf3f6b9a0a92f4368491404ee033f91
-ms.openlocfilehash: a6612d59d9504b1befd691f3b784ac9378c2b414
+ms.sourcegitcommit: abea89ceab4c606a574ad739e9feca5b5dafacf0
+ms.openlocfilehash: bc87bafd1ce6926d787915fae2f72727940bb90e
 
 
 ---
-# <a name="azure-key-vault-analytics-preview-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析（预览版）解决方案
+# <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
 
 你可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。
-
-> [!NOTE]
-> Azure Key Vault 分析是[预览版解决方案](log-analytics-add-solutions.md#preview-management-solutions-and-features)。
-> 
-> 
 
 若要使用该解决方案，需要启用 Azure Key Vault 诊断的日志记录，并将诊断引导到 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
 

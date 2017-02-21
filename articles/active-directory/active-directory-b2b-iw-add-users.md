@@ -14,11 +14,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/02/2017
+ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: d9ffd4176e87b6b5ada882ff09f507665bda7b1d
-ms.openlocfilehash: 7bad8269c3756979fe48d130a0cdfb02ceafad86
+ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
+ms.openlocfilehash: 5622ab215fd7fea4c24ad00ea7132d12ecabbcd5
 
 
 ---
@@ -40,15 +40,10 @@ ms.openlocfilehash: 7bad8269c3756979fe48d130a0cdfb02ceafad86
 > [!NOTE]
 不能将 B2B 协作用户添加到动态组或已与本地 Active Directory 同步的组。
 
-## <a name="add-without-invitation"></a>在未邀请的情况下添加
 
-如果邀请者所属的角色在要从中添加用户的合作伙伴组织的目录中具有枚举权限，则受邀请的用户将添加到邀请方组织而无需邀请。
+## <a name="next-steps"></a>后续步骤
 
-以下是此功能最有用的方案：
-1. 主办单位（例如，WoodGrove）中的用户邀请合作伙伴组织中的一个用户（例如，Sam@litware.com)）作为来宾。
-2. 主办单位的管理员设置的策略允许 Sam 标识并添加合作伙伴组织 (Litware) 中的其他用户。
-4. 现在，Sam 可以将 Litware 中的其他用户添加到 WoodGrove 目录、组或应用程序而无需兑换邀请。 如果 Sam 在 Litware 中具有相应的枚举权限，这种操作将自动进行。
-
+在 Azure AD B2B 协作网站上浏览我们的其他文章：
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Azure Active Directory 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
@@ -59,10 +54,11 @@ ms.openlocfilehash: 7bad8269c3756979fe48d130a0cdfb02ceafad86
 * [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
+* [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 8301a36327fb2605eaded8f41e27e830c85e823b
-ms.openlocfilehash: d8b73128a22c4c9efb9fcd50464ef370cd1a499c
+ms.sourcegitcommit: a268907eea2862ae2d054f30accfd4d771a7d880
+ms.openlocfilehash: 0dbacc24af62f8173e4b1b30990d89f02a9d48bb
 
 ---
 
@@ -73,12 +73,12 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 完成所有筛选更改之后，别忘了返回以重新**启用**任务。
 
 ## <a name="filtering-options"></a>筛选选项
-可将以下筛选配置类型应用到 Azure AD Connect 同步：
+可将以下筛选配置类型应用到目录同步工具：
 
+* [**基于组**](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)：初始安装时只能使用安装向导配置基于单个组的筛选。 本主题不进一步讨论此类型。
 * [**基于域**](#domain-based-filtering)：使用此选项可以选择要将哪些域同步到 Azure AD。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，此选项还可让你在同步引擎配置中添加和删除域。
 * [**基于组织单位**](#organizational-unitbased-filtering)：使用此筛选选项可以选择要将哪些组织单位同步到 Azure AD。 将对所选 OU 中的所有对象类型应用此选项。
 * [**基于属性**](#attribute-based-filtering)：使用此选项即可根据对象属性值筛选对象。 你也可以对不同的对象类型使用不同的筛选器。
-* [**基于组**](#group-based-filtering)：初始安装时只能使用安装向导配置基于单个组的筛选。 它用于小型试验部署。
 
 可以同时使用多个筛选选项。 例如，可以使用基于组织单位的筛选以便只包含某个 OU 中的对象，同时使用基于属性的筛选进一步筛选这些对象。 使用多个筛选方法时，筛选器之间使用逻辑 AND。
 
@@ -296,7 +296,7 @@ Azure AD Connect 安装向导将始终创建此配置。
 2. 在“任务计划程序库”正下方找到名为“Azure AD 同步计划程序”的任务，单击右键，然后选择“启用”。
 
 ## <a name="group-based-filtering"></a>基于组的筛选
-基于组的筛选可以在首次使用[自定义安装](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)安装 Azure AD Connect 时配置。 它专用于只应同步一小组对象的试验部署。 禁用基于组的筛选后，将无法重新启用它。 **不支持**在包含自定义同步规则的自定义配置中使用基于组的筛选。 仅支持使用安装向导配置此功能。 完成试验后，则应使用本主题中的其他某个筛选选项。
+基于组的筛选可以在首次使用自定义安装安装 Azure AD Connect 时配置。 它专用于只应同步一小组对象的试验部署。 禁用基于组的筛选后，将无法重新启用它。 **不支持**在自定义配置中使用基于组的筛选。 仅支持使用安装向导配置此功能。 完成试验后，则应使用本主题中的其他某个筛选选项。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。

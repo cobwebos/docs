@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 85fd7b0e867ebe5fff937ff9fc83b688649fcfba
-ms.openlocfilehash: 70feb409d05b26a4d874bad2d1984fda5db32216
+ms.sourcegitcommit: e331e7aab69890637a74382938e22cca56c4d39a
+ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
 
 
 ---
@@ -131,7 +131,7 @@ ms.openlocfilehash: 70feb409d05b26a4d874bad2d1984fda5db32216
 ## <a name="device-twin-queries"></a>设备克隆查询
 [设备克隆查询](iot-hub-devguide-query-language.md)使用类似于 SQL 的 IoT 中心查询语言从设备克隆中检索信息。 可以使用相同的 IoT 中心查询语言检索在 IoT 中心运行的[作业](#job)的信息。
 
-## <a name="device-twins-rest-api"></a>设备孪生 REST API
+## <a name="device-twin-rest-api"></a>设备孪生 REST API
 可从解决方案后端使用[设备孪生 REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) 来管理设备孪生。 API 可用于检索和更新[设备孪生](#device-twin)属性并调用[直接方法](#direct-method)。 通常，应使用 IoT 中心教程中演示的一种较高级别的[服务 SDK](#azure-iot-service-sdks)。
 
 ## <a name="device-twin-synchronization"></a>设备克隆同步
@@ -185,8 +185,8 @@ Azure IoT 套件将多个 Azure 服务与预配置解决方案打包在一起。
 ## <a name="job"></a>作业
 解决方案后端可以使用[作业](iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备克隆[所需的属性](#desired-properties)、更新设备克隆[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还使用作业在[标识注册表](#identity-registry)中[导入和导出](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
 
-## <a name="job-api"></a>作业 API
-[作业 API](https://docs.microsoft.com/rest/api/iothub/jobapi) 是一个 REST API，允许管理在 IoT 中心中运行的[作业](#job)。
+## <a name="jobs-rest-api"></a>作业 REST API
+使用[作业 REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) 可以管理 IoT 中心内运行的[作业](#job)。
 
 ## <a name="module"></a>模块
 在 [Azure IoT 网关 SDK](iot-hub-linux-gateway-sdk-get-started.md) 中，[模块](iot-hub-linux-gateway-sdk-get-started.md#azure-iot-gateway-sdk-concepts)是执行特定任务的组件。 任务可能包括从设备引入消息、转换消息，或者将消息发送到 IoT 中心。 中转站负责在模块之间转发消息。 Azure IoT 网关 SDK 包括一组示例模块。 用户还可以创建自己的自定义模块。

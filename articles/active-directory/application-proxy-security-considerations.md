@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: b01d0ddef2271c440cbff1684c85d23dcda9a1de
-ms.openlocfilehash: 75d657412a61de38ab53708a8108d40309de742d
+ms.sourcegitcommit: 67650676117fef834ea819da2fc45ca66ed15493
+ms.openlocfilehash: 1b713e015f48b044c6c9d8ff6a0d8669d4532a9f
 
 
 ---
@@ -54,7 +54,7 @@ Azure AD 应用程序代理提供以下安全优势：
 * Azure AD Identity Protection 包含机器学习驱动的智能，其数据源来自我们的反数字犯罪部门和 Microsoft 安全响应中心。 此外，我们会主动识别遭到入侵的帐户并提供实时保护，防范高风险的登录。 我们会考虑诸多因素，例如，通过受感染的设备和匿名网络的访问，以及通过异常位置和不太可能的位置的访问。
 * 其中的许多报告与事件已通过某个 API 提供，便于与 SIEM 系统集成。
 * 可以阅读 [Azure Active Directory Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection)，了解有关 Azure AD Identity Protection 的详细信息。
-
+!
 **以服务的形式进行远程访问：**无需担心要维护和修补本地服务器
 
 * Azure AD 应用代理是 Microsoft 拥有的一个 Internet 级服务，保证为用户提供最新的安全修补程序和升级。 因此，我们会处理好用户的网络安全。
@@ -65,6 +65,12 @@ Azure AD 随附的远程访问服务 [Azure 信任中心](https://azure.microsof
 下图显示了 Azure AD 如何实现对本地应用程序的安全远程访问。
 
  ![AzureAD 应用程序代理连接器](./media/application-proxy-security-considerations/secure-remote-access.png)
+
+>[!NOTE] 
+>为了提高 Azure AD 应用代理发布的应用程序的安全性，我们会阻止 Web 爬网程序机器人存档你的应用程序或编制其索引。 每当 Web 爬网程序机器人尝试检索已发布的应用的机器人设置时，应用代理会回复一个 robots.txt 文件，其中包含以下内容： <br>
+>   _User-agent: *_<br>
+>   _Disallow: /_
+>
 
 ## <a name="components-of-the-azure-ad-app-proxy-solution"></a>Azure AD 应用代理解决方案的组件
 
@@ -141,6 +147,6 @@ Azure AD 应用程序代理由两个部分组成：
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

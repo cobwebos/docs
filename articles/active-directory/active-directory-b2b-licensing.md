@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/02/2017
+ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 887505f7b7309a3925505484c167448b9d4868e6
-ms.openlocfilehash: 144e196492bc4bdfbbdda34ca88531295cc8716a
+ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
+ms.openlocfilehash: 59a7fe2d1eea948f1452f21d2185e6bdf93dc41f
 
 
 ---
@@ -51,17 +51,18 @@ Azure Active Directory (Azure AD) B2B 协作将一组选定的现有 Azure AD �
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Azure Active Directory 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
-* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-how-it-works.md)
+* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-iw-add-users.md)
 * [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)
 * [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
 * [Azure Active Directory B2B 协作疑难解答](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
+* [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
-ms.openlocfilehash: bcefe7e0b0f1836dc77709329a07dd8d009abbb2
+ms.sourcegitcommit: cd7e8564d24e45bad291c3632021f96fb1584b6f
+ms.openlocfilehash: 730cf9be80be5c5381148f138c3a437beb95c340
 
 
 ---
-# <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>将 Apache Phoenix 和 SQuirreL 与 HDinsight 中基于 Windows 的 HBase 配合使用
+# <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>将 Apache Phoenix 和 SQuirreL 与 HDInsight 中基于 Windows 的 HBase 配合使用
 了解如何在 HDInsight 中使用 [Apache Phoenix](http://phoenix.apache.org/)，以及如何在工作站上安装和配置 SQuirreL 以连接到 HDInsight 中的 HBase 群集。 有关 Phoenix 的详细信息，请参阅[在 15 分钟或更短时间内了解 Phoenix](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)。 有关 Phoenix 语法，请参阅 [Phoenix 语法](http://phoenix.apache.org/language/index.html)。
 
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.openlocfilehash: bcefe7e0b0f1836dc77709329a07dd8d009abbb2
 >
 
 > [!IMPORTANT]
-> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关如何在基于 Linux 的 HDInsight 上使用 Phoenix 的信息，请参阅[将 Apache Phoenix 与 HDinsight 中基于 Linux 的 HBase 群集配合使用](hdinsight-hbase-phoenix-squirrel-linux.md)。
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关如何在基于 Linux 的 HDInsight 上使用 Phoenix 的信息，请参阅[将 Apache Phoenix 与 HDInsight 中基于 Linux 的 HBase 群集配合使用](hdinsight-hbase-phoenix-squirrel-linux.md)。
 >
 
 
@@ -83,10 +83,6 @@ ms.openlocfilehash: bcefe7e0b0f1836dc77709329a07dd8d009abbb2
 
 * 已将一个 HBase 群集部署到包含 DNS 虚拟机的 Azure 虚拟网络。  有关说明，请参阅[在 Azure 虚拟网络上创建 HBase 群集][hdinsight-hbase-provision-vnet]。
 
-  > [!IMPORTANT]
-  > 必须在虚拟网络中安装一个 DNS 服务器。 有关说明，请参阅[在两个 Azure 虚拟网络之间配置 DNS](hdinsight-hbase-geo-replication-configure-dns.md)
-  >
-  >
 * 获取 HBase 群集的特定于连接的 DNS 后缀。 若要获取该后缀，请与群集建立连接桌面连接 (RDP)，然后运行 IPConfig。  DNS 后缀类似于：
 
         myhbase.b7.internal.cloudapp.net
@@ -295,6 +291,6 @@ Phoenix 驱动程序 jar 文件位于 HBase 群集上。 根据具体的版本�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

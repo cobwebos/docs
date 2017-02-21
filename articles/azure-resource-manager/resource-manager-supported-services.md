@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/27/2016
 ms.author: magoedte;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 7fa1be008b5be0c912af14674ffb38d99dcf6bcc
-ms.openlocfilehash: 4042810a5ccfffba74ae9cffd82f194e8058ad83
+ms.sourcegitcommit: 53e57807e97671bd279c03ada4c147fc1e7f1e45
+ms.openlocfilehash: c7bfc5584c11a7e69aedeb93f143a78d97c9369a
 
 
 ---
@@ -33,7 +33,8 @@ Azure 资源管理器为你提供了一种新的方式来部署和管理构成�
 | 服务 | 已启用资源管理器 | REST API | 架构 | 快速入门模板 |
 | --- | --- | --- | --- | --- |
 | 批处理 |是 |[批处理 REST](/rest/api/batchservice) |[批处理架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-12-01/Microsoft.Batch.json) | |
-| 容器 |是 |[容器服务 REST](/rest/api/containerregistry) |[容器架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-03-30/Microsoft.ContainerService.json) |[Microsoft.ContainerService](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerService%22&type=Code) |
+| 容器注册表 |是 |[容器注册表 REST](/rest/api/containerregistry) |[容器注册表架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-06-27-preview/Microsoft.ContainerRegistry.json) |[Microsoft.ContainerRegistry](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerRegistry%22&type=Code) |
+| 容器服务 |是 |[容器服务 REST](/rest/api/compute/containerservices) |[容器架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-03-30/Microsoft.ContainerService.json) |[Microsoft.ContainerService](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerService%22&type=Code) |
 | 动态生命周期服务 |是 | | | |
 | 缩放集 |是 |[规模集 REST](/rest/api/compute/virtualmachinescalesets) |[规模集架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) |[virtualMachineScaleSets](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=virtualMachineScaleSets&type=Code) |
 | Service Fabric |是 |[Service Fabric Rest](/rest/api/servicefabric) | [Service Fabric 架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-09-01/Microsoft.ServiceFabric.json) |[Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |

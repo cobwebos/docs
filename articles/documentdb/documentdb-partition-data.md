@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2017
+ms.date: 02/09/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: ec72d5df2fc220638773286e76c25b4b013cce63
-ms.openlocfilehash: 4f96f7392442c31888b79d0284b6d2d58d292e86
+ms.sourcegitcommit: 876e0fd12d045bba85d1e30d4abfcb8ce421213a
+ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
 
 
 ---
@@ -134,7 +134,7 @@ DocumentDB 支持创建单个分区和已分区的集合。
         <tr>
             <td valign="top"><p>最小吞吐量</p></td>
             <td valign="top"><p>400 个请求单位/秒</p></td>
-            <td valign="top"><p>10,000 个请求单位/秒</p></td>
+            <td valign="top"><p>2,500 个请求单位/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>最大吞吐量</p></td>
@@ -174,11 +174,11 @@ Azure DocumentDB 增加了对 [REST API 版本 2015-12-16](https://msdn.microsof
 
 
 > [!NOTE]
-> 为了创建已分区集合，必须指定 > 10,000 个请求单位/秒的吞吐量值。 由于吞吐量是 100 的倍数，因此必须是 10,100 或更多。
+> 若要使用 SDK 创建简单的分区集合，必须指定大于或等于 10,100 RU/秒的吞吐量值。 若要为分区集合设置介于 2,500 和 10,000 之间的吞吐量值，必须暂时使用 Azure 门户，因为 SDK 目前不支持这些新的较小值。
 > 
 > 
 
-此方法可对 DocumentDB 调用 REST API，且该服务将基于所请求的吞吐量设置分区数。 根据你的性能需求的发展，可以更改集合的吞吐量。 有关更多详细信息，请参阅[性能级别](documentdb-performance-levels.md)。
+此方法可对 DocumentDB 调用 REST API，且该服务将基于所请求的吞吐量设置分区数。 根据你的性能需求的发展，可以更改集合的吞吐量。 
 
 ### <a name="reading-and-writing-documents"></a>读取和写入文档
 现在，让我们将数据插入 DocumentDB。 以下的示例类包含设备读取和对 CreateDocumentAsync 的调用，将新设备读数插入到集合。
@@ -294,7 +294,7 @@ DocumentDB SDK 1.9.0 及更高版本支持并行查询执行选项，这些选�
 从单个分区集合迁移到已分区集合
 
 1. 将单个分区集合中的数据导出到 JSON。 有关其他详细信息，请参阅[导出到 JSON 文件](documentdb-import-data.md#export-to-json-file)。
-2. 将数据导入到使用分区键定义创建的、吞吐量超过 10,000 个请求单位/秒的已分区集合，如下例所示。 有关其他详细信息，请参阅[导入到 DocumentDB](documentdb-import-data.md#DocumentDBSeqTarget)。
+2. 将数据导入到使用分区键定义创建的、吞吐量超过 2,500 个请求单位/秒的分区集合，如下例所示。 有关其他详细信息，请参阅[导入到 DocumentDB](documentdb-import-data.md#DocumentDBSeqTarget)。
 
 ![将数据迁移到 DocumentDB 中的已分区集合][3]  
 
@@ -329,7 +329,7 @@ DocumentDB 最常见的使用案例之一是记录和遥测。 选取适当的�
 
 * 如果你的用例涉及很长时间积累的小速率写入，并且需要按时间戳范围和其他筛选器进行查询，则使用时间戳（例如数据）汇总作为分区键是个好方法。 这使你能够查询某日单个分区中的所有数据。 
 * 如果你的工作负荷是更常见的写入密集型，应使用不基于时间戳的分区键，以使 DocumentDB 可以跨多个分区均匀地分布写入。 此处，主机名、进程 ID、活动 ID 或其他具有较大基数的属性是不错的选择。 
-* 第三种方法是混合型分区键，其中你有多个集合，一个用于每日/月，且分区键是类似主机名的粒度属性。 这样做的好处是可以基于时间窗口设置不同性能级别，例如，当月的集合设置为更高的吞吐量，因为它维护读取和写入操作，而之前的月份吞吐量设置为较低，因为它们只维护读取。
+* 第三种方法是混合型分区键，其中你有多个集合，一个用于每日/月，且分区键是类似主机名的粒度属性。 这样做的好处是可以基于时间窗口设置不同的吞吐量，例如，当月的集合设置为更高的吞吐量，因为它维护读取和写入操作，而之前的月份吞吐量设置为较低，因为它们只维护读取。
 
 ### <a name="partitioning-and-multi-tenancy"></a>分区和多租户
 如果你要使用 DocumentDB 实现多租户应用程序，有两种模式来使用 DocumentDB 实现租户，一种是一个租户一个分区键，另一种是一个租户一个集合。 下面是每种模式的优缺点：
@@ -354,6 +354,6 @@ DocumentDB 最常见的使用案例之一是记录和遥测。 选取适当的�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 8102c014dae3f2e87b1e6642278feefe0962cdc1
-ms.openlocfilehash: 261986d0f0c442398781be211ea2c4211916a2fe
+ms.sourcegitcommit: e1b909f419c8c04a9332a29669148321ab3dbd2d
+ms.openlocfilehash: 2afd8e04ac325f1c9f2dee8aed867b0d0a6b558d
 
 
 ---
-# <a name="change-signature-hash-algorithm-for-office-365-replying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
+# <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述
 Active Directory 联合身份验证服务 (AD FS) 将在 Microsoft Azure Active Directory 中签名其令牌，确保这些令牌不会遭到篡改。 这种签名可以基于 SHA1 或 SHA256。 Azure Active Directory 现在支持使用 SHA256 算法签名的令牌，我们建议将令牌签名算法设置为 SHA256 以获得最高安全级别。 本指南介绍将令牌签名算法设置为更安全的 SHA256 级别所要执行的步骤。
 

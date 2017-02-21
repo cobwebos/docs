@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 01/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 532cfeb5115feb7558018af73968576dac17ff88
-ms.openlocfilehash: 28ca2d86f5008ee26376d76f3411cac05ffdfde4
+ms.sourcegitcommit: abf65ccbf8806d6581135f41224ef46840715f85
+ms.openlocfilehash: 51e7188530574703a178c5927092d9bc9d15a45f
 
 
 ---
 # <a name="performance-tips-for-documentdb"></a>DocumentDB 性能提示
-Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 使用 DocumentDB 时，无需对体系结构进行重大更改或编写复杂的代码就能缩放数据库。 扩展和缩减操作就像执行单个 API 调用或 [SDK 方法调用](documentdb-performance-levels.md#changing-performance-levels-using-the-net-sdk)一样简单。 但是，由于 DocumentDB 是通过网络调用访问的，因此你可以通过客户端优化来获得最高性能。
+Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 使用 DocumentDB 时，无需对体系结构进行重大更改或编写复杂的代码就能缩放数据库。 扩展和缩减操作就像执行单个 API 调用或 [SDK 方法调用](documentdb-set-throughput.md#set-throughput-sdk)一样简单。 但是，由于 DocumentDB 是通过网络调用访问的，因此你可以通过客户端优化来获得最高性能。
 
 如果有“如何改善数据库性能？”的疑问， 请考虑以下选项：
 
@@ -36,11 +36,11 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
    1. 网关模式（默认）
    2. 直接模式
 
-      网关模式受所有 SDK 平台的支持并已配置为默认设置。  如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次读取或写入 DocumentDB 数据时，网关模式都涉及到额外的网络跃点。   因此，直接模式因为网络跃点较少，可以提供更好的性能。
+      网关模式受所有 SDK 平台的支持并已配置为默认设置。  如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次读取或写入 DocumentDB 数据时，网关模式都涉及到额外的网络跃点。 因此，直接模式因为网络跃点较少，可以提供更好的性能。
 <a id="use-tcp"></a>
 2. **连接策略：使用 TCP 协议**
 
-    利用直接模式时，有两个可用的协议选项：
+    使用直接模式时，有两个可用的协议选项：
 
    * TCP
    * HTTPS
@@ -51,19 +51,21 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 
      连接模式是在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置的。 如果使用直接模式，则也可以在 ConnectionPolicy 参数中设置协议。
 
-         var serviceEndpoint = new Uri("https://contoso.documents.net");
-         var authKey = new "your authKey from Azure Mngt Portal";
-         DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-         new ConnectionPolicy
-         {
+    ```C#
+    var serviceEndpoint = new Uri("https://contoso.documents.net");
+    var authKey = new "your authKey from the Azure portal";
+    DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+    new ConnectionPolicy
+    {
+        ConnectionMode = ConnectionMode.Direct,
+        ConnectionProtocol = Protocol.Tcp
+    });
+    ```
 
-             ConnectionMode = ConnectionMode.Direct,
-             ConnectionProtocol = Protocol.Tcp
-         });
+    由于只有直接模式支持 TCP，因此如果使用网关模式，HTTPS 协议始终用来与网关通信，并忽略 ConnectionPolicy 中的 Protocol 值。
 
-     由于只有直接模式支持 TCP，因此如果使用网关模式，HTTPS 协议始终用来与网关通信，并忽略 ConnectionPolicy 中的 Protocol 值。
+    ![DocumentDB 连接策略演示](./media/documentdb-performance-tips/azure-documentdb-connection-policy.png)
 
-     ![DocumentDB 连接策略演示](./media/documentdb-performance-tips/azure-documentdb-connection-policy.png)
 3. **调用 OpenAsync，以避免首次请求的启动延迟**
 
     默认情况下，第一个请求因为必须提取地址路由表而有较高的延迟。 若要避免首次请求的启动延迟，则应调用 OpenAsync() 一次在初始化期间，如下所示。
@@ -87,21 +89,22 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 2. **在应用程序生存期内使用单一实例 DocumentDB 客户端**
 
     请注意，每个 DocumentClient 实例都是线程安全的，在直接模式下运行时可执行高效的连接管理和地址缓存。 若要通过 DocumentClient 获得高效的连接管理和更好的性能，建议在应用程序生存期内对每个 AppDomain 使用单个 DocumentClient 实例。
+
    <a id="max-connection"></a>
 3. **增加每台主机的 System.Net MaxConnections**
 
     默认情况下，DocumentDB 请求是通过 HTTPS/REST 发出的，并受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxConnections 设置为较大的值 (100-1000)，以便客户端库能够同时利用多个连接来访问 DocumentDB。 在 .NET SDK 1.8.0 和更高版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的默认值为 50，若要更改此值，可将 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 设置为更大的值。  
 4. **优化分区集合的并行查询。**
 
-     DocumentDB.NET SDK 版本 1.9.0 和更高版本支持并行查询，可查询并行分区集（请参阅[使用 Sdk](documentdb-partition-data.md#working-with-the-sdks) 以及相关[的代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)以获取详细信息）。 并行查询旨改善查询延迟和串行配对物上的吞吐量。 并行查询提供两个参数，用户可以调整来适应自身的需求（a）MaxDegreeOfParallelism：控制并行中运行的最大分区数 （b）MaxBufferedItemCount：控制预提取结果的数量。
+     DocumentDB.NET SDK 版本 1.9.0 和更高版本支持并行查询，可查询并行分区集（请参阅[使用 Sdk](documentdb-partition-data.md#working-with-the-sdks) 以及相关[的代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)以获取详细信息）。 并行查询旨改善查询延迟和串行配对物上的吞吐量。 并行查询提供两个参数，用户可以调整来适应自身的需求 (a) MaxDegreeOfParallelism：控制并行中运行的最大分区数 (b) MaxBufferedItemCount：控制预提取结果的数量。
 
     （a）***优化 MaxDegreeOfParallelism\:***
-    并行查询通过查询并行中的多个分区来运行。 但对于查询，按顺序提取单独分区集合的数据。 因此，若要将 MaxDegreeOfParallelism 设置为分区数，必须实现大多数性能查询的最大机会，假设所有其他系统前提条件保持不变。 如果不知道分区数，可以将 MaxDegreeOfParallelism 设置为较高的数值，系统会选择最小值（分区的数量，用户输入）作为 MaxDegreeOfParallelism。
+    并行查询通过查询并行中的多个分区来运行。 但对于查询，按顺序提取单独分区集合的数据。 因此，若要将 MaxDegreeOfParallelism 设置为分区数，必须实现大多数性能查询的最大机会，假设所有其他系统前提条件保持不变。 如果不知道分区数，可将 MaxDegreeOfParallelism 设置为较高的数值，系统会选择最小值（分区的数量，用户输入）作为 MaxDegreeOfParallelism。
 
     请务必注意：如果数据能均匀地分散在与查询相关的所有分区上，并行查询就能带来最大的好处。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区将遇到查询的性能瓶颈。
 
     （b）***优化 MaxBufferedItemCount\:***
-   由客户端处理结果的当前批处理时，并行查询旨在预提取结果。 预提取帮助改进查询中的的总体延迟。 MaxBufferedItemCount 是限制预提取结果数量的参数。 将 MaxBufferedItemCount 设置为预期返回的结果数（或较大的数字）使查询从预提取获得最大的好处。
+   由客户端处理结果的当前批处理时，并行查询旨在预提取结果。 预提取帮助改进查询中的的总体延迟。 MaxBufferedItemCount 是限制预提取结果数目的参数。 将 MaxBufferedItemCount 设置为预期返回的结果数（或较大的数字）使查询从预提取获得最大的好处。
 
     请注意，预提取的工作方式相同，而不考虑 MaxDegreeOfParallelism，还有来自所有分区的数据的单独缓冲区。  
 5. **打开服务器端 GC**
@@ -109,7 +112,7 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
     在某些情况下，降低垃圾收集的频率可能会有帮助。 在 .NET 中，应将 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 设置为 true。
 6. **按 RetryAfter 间隔实现退让**
 
-    在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 回退可确保最大程度地减少等待重试的时间。 重试策略支持包含在 DocumentDB [.NET](documentdb-sdk-dotnet.md) 和 [Java](documentdb-sdk-java.md) 1.8.0 和更高版本中，以及 [Node.js](documentdb-sdk-node.md) 和 [Python](documentdb-sdk-python.md) 1.9.0 或更高版本以及所有受支持的 [.NET Core](documentdb-sdk-dotnet-core.md) SDK 版本中。 有关详细信息，请参阅[超过保留的吞吐量限制](documentdb-request-units.md#RequestRateTooLarge)和 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)。
+    在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 遵循退让可确保最大程度地减少等待重试的时间。 重试策略支持包含在 DocumentDB [.NET](documentdb-sdk-dotnet.md) 和 [Java](documentdb-sdk-java.md) 1.8.0 和更高版本中，以及 [Node.js](documentdb-sdk-node.md) 和 [Python](documentdb-sdk-python.md) 1.9.0 或更高版本以及所有受支持的 [.NET Core](documentdb-sdk-dotnet-core.md) SDK 版本中。 有关详细信息，请参阅[超过保留的吞吐量限制](documentdb-request-units.md#RequestRateTooLarge)和 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)。
 7. **增大客户端工作负荷**
 
     如果以高吞吐量级别（>&50;,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此限制，可以将客户端应用程序扩展到多个服务器，以进一步推送 DocumentDB 帐户。
@@ -130,9 +133,9 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 
     请参阅“网络”部分中的[增加线程/任务数目](#increase-threads)。
     
-11. **使用 64 位主机处理**
+11. **使用 64 位主机进程**
 
-    DocumentDB SDK 可在 32 位主机进程中运行；但是，如果使用跨分区查询，建议使用 64 位主机处理以提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
+    DocumentDB SDK 在 32 位主机进程中工作。 但是，如果使用跨分区查询，建议使用 64 位主机进程来提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
     
     - 对于可执行应用程序，在“生成”选项卡的“项目属性”窗口中，通过取消“首选 32 位”选项可实现以上目的。 
     
@@ -154,10 +157,12 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 
     DocumentDB 的索引策略还可让你使用索引路径（IndexingPolicy.IncludedPaths 和 IndexingPolicy.ExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示了如何使用“*”通配符 从索引中排除文档的整个部分（也称为子树）。
 
-        var collection = new DocumentCollection { Id = "excludedPathCollection" };
-        collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-        collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
-        collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+    ```C#
+    var collection = new DocumentCollection { Id = "excludedPathCollection" };
+    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
+    collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+    ```
 
     有关详细信息，请参阅 [DocumentDB 索引策略](documentdb-indexing-policies.md)。
 
@@ -174,18 +179,20 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 
     若要测量任何操作（创建、更新或删除）的开销，请检查 x-ms-request-charge header 标头（或同等的 .NET SDK 中 ResourceResponse<T> 或 FeedResponse<T> 中的 RequestCharge 属性）来测量这些操作占用的请求单位数。
 
-        // Measure the performance (request units) of writes
-        ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
-        Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
-        // Measure the performance (request units) of queries
-        IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
-        while (queryable.HasMoreResults)
-             {
-                  FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
-                  Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
-             }
+    ```C#
+    // Measure the performance (request units) of writes
+    ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
+    Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
+    // Measure the performance (request units) of queries
+    IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
+    while (queryable.HasMoreResults)
+         {
+              FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
+              Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
+         }
+    ```             
 
-    在此标头中返回的请求费用是预配吞吐量的一小部分（即 2000 RU/秒）。 例如，如果上述查询返回 1000 个 1KB 文档，则操作成本是 1000。 因此在一秒内，服务器在限制后续请求之前，只接受两个此类请求。 有关详细信息，请参阅[请求单位](documentdb-request-units.md)和[请求单位计算器](https://www.documentdb.com/capacityplanner)。
+    在此标头中返回的请求费用是预配吞吐量的一小部分（即 2000 RU/秒）。 例如，如果上述查询返回 1000 个 1KB 文档，则操作开销为 1000。 因此在一秒内，服务器在限制后续请求之前，只接受两个此类请求。 有关详细信息，请参阅[请求单位](documentdb-request-units.md)和[请求单位计算器](https://www.documentdb.com/capacityplanner)。
 <a id="429"></a>
 2. **处理速率限制/请求速率太大**
 
@@ -211,6 +218,6 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

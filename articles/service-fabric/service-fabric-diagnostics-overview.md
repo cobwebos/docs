@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/3/2017
+ms.date: 02/9/2017
 ms.author: toddabel
 translationtype: Human Translation
-ms.sourcegitcommit: fdb15c3af4980e284e1a9effe434b1cab959d24c
-ms.openlocfilehash: 826ae11e4826b37379caa53d85d8ec834a5ed0fb
+ms.sourcegitcommit: 1683b52d4e5e6370a737038128f48b8ea8263038
+ms.openlocfilehash: 27df2afd97107dd13a7aa2dd79343ec9425c0aed
 
 
 ---
@@ -37,13 +37,13 @@ ms.openlocfilehash: 826ae11e4826b37379caa53d85d8ec834a5ed0fb
 
 ### <a name="azure-monitoring"></a>Azure 监视
 
-对于 Azure 部署的群集，可以使用 [Azure 监视](../monitoring-and-diagnostics/toc.md)来监视构建 Service Fabric 群集时所在的许多 Azure 资源。 对于[虚拟机规模集 (VMSS)](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)和每个 [VM](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)，将会自动收集一组指标并将其显示在 Azure 门户中。 可在 Azure 门户中查看这些信息：选择 Service Fabric 群集所在的资源组，然后选择要查看的 VMSS 即可。 在“监视”导航部分中选择“指标”可查看值的图表
+对于 Azure 部署的群集，可以使用 [Azure 监视](../monitoring-and-diagnostics/monitoring-overview.md)来监视构建 Service Fabric 群集时所在的许多 Azure 资源。 对于[虚拟机规模集 (VMSS)](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)和每个 [VM](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)，将会自动收集一组指标并将其显示在 Azure 门户中。 可在 Azure 门户中查看这些信息：选择 Service Fabric 群集所在的资源组，然后选择要查看的 VMSS 即可。 在“监视”导航部分中选择“指标”可查看值的图表
 
 ![Azure 门户视图：收集的指标信息](./media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
 
-可根据 [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)一文中的说明自定义图表。 还可以根据[使用 Azure 门户为 Azure 服务创建警报](../monitoring-and-diagnostics/insights-alerts-portal.md)一文中所述，基于这些指标创建警报。 可以根据 [针对 Azure 指标警报配置 Webhook](.../monitoring-and-diagnostics/insights-webhooks-alerts.md) 一文中所述，使用 Webhook 将警报发送到通知服务。 Azure 监视支持单个订阅。 如果需要支持多个订阅或者需要其他功能，[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 组件为本地基础结构和基于云的基础结构提供了全方位的 IT 管理解决方案。 可将来自 Azure 监视的数据直接路由到 Log Analytics，以便在一个位置查看整个环境的指标和日志。
+可根据 [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)一文中的说明自定义图表。 还可以根据[使用 Azure 门户为 Azure 服务创建警报](../monitoring-and-diagnostics/insights-alerts-portal.md)一文中所述，基于这些指标创建警报。 可以根据 [针对 Azure 指标警报配置 Webhook](.../monitoring-and-diagnostics/insights-webhooks-alerts.md) 一文中所述，使用 Webhook 将警报发送到通知服务。 Azure 监视支持单个订阅。 如果需要支持多个订阅或者需要其他功能，Operations Management Suite 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 组件为本地基础结构和基于云的基础结构提供了全方位的 IT 管理解决方案。 可将来自 Azure 监视的数据直接路由到 Log Analytics，以便在一个位置查看整个环境的指标和日志。
 
-建议使用 [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) 来监视本地基础结构，但是，也可以使用贵公司用来监视基础结构的任何现有解决方案。
+建议使用 Operations Management Suite 来监视本地基础结构，但是，也可以使用贵公司用来监视基础结构的任何现有解决方案。
 
 ### <a name="service-fabric-support-logs"></a>Service Fabric 支持日志
 
@@ -63,7 +63,7 @@ ms.openlocfilehash: 826ae11e4826b37379caa53d85d8ec834a5ed0fb
 
 #### <a name="using-structured-eventsource-events"></a>使用结构化 EventSource 事件
 
-我们针对特定的用例定义了以下每个事件，例如，注册了某个服务类型。 以这种方式定义消息可以连同错误文本一起打包数据。 这样，就可以根据指定属性的名称或值更方便地执行搜索和筛选。 将检测输出结构化可使其变得更易于使用，但需要花费更多的精力和时间来为每种用例定义新的事件。 某些事件定义可在整个应用程序中共享，例如，可在应用程序中的多个服务之间重复使用方法启动或停止事件。 特定于域的服务（例如订单系统）可以包含 CreateOrder 事件，该事件包含自身的唯一事件。 通常，这种方法会生成大量的事件，可能需要在项目团队之间协调标识符。 有关 Service Fabric 中 EventSources 结构的完整示例，请参阅“合作群集”示例中的 PartyCluster.ApplicationDeployService。
+我们针对特定的用例定义了以下每个事件，例如，注册了某个服务类型。 以这种方式定义消息可以连同错误文本一起打包数据。 这样，就可以根据指定属性的名称或值更方便地执行搜索和筛选。 将检测输出结构化可使其变得更易于使用，但需要花费更多的精力和时间来为每种用例定义新的事件。 某些事件定义可在整个应用程序中共享，例如，可在应用程序中的多个服务之间重复使用方法启动或停止事件。 特定于域的服务（例如订单系统）可以包含 CreateOrder 事件，该事件包含自身的唯一事件。 通常，这种方法会生成大量的事件，可能需要在项目团队之间协调标识符。 有关 Service Fabric 中结构化 EventSources 的完整示例，请参阅“合作群集”示例中的 [PartyCluster.ApplicationDeployService.ServiceEventSource](https://github.com/Azure-Samples/service-fabric-dotnet-management-party-cluster/blob/master/src/PartyCluster.ApplicationDeployService/ServiceEventSource.cs)。
 
 ```csharp
     [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -124,29 +124,38 @@ ms.openlocfilehash: 826ae11e4826b37379caa53d85d8ec834a5ed0fb
 
 ### <a name="aspnet-core-logging"></a>ASP.NET Core 日志记录
 
-有时很难选择要如何检测代码。如果选择不当，然后必须重新检测，则需要重新访问代码基，从而可能使其变得不稳定。 为了降低风险，开发人员可以选择一个检测库，例如，ASP.NET Core 提供的 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)。 此库提供一个 [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) 接口来允许使用所选的提供程序，同时尽量减轻对现有代码的影响。 这种做法的另一个优势是，代码不仅可以在 Windows 和 Linux 上的 .NET Core 中使用，而且可以在整个框架中使用，因此可跨 .NET 和 .NET Core 标准化检测代码。
+有时很难选择要如何检测代码。如果选择不当，然后必须重新检测，则需要重新访问代码基，从而可能使其变得不稳定。 为了降低风险，开发人员可以选择一个检测库，例如，ASP.NET Core 提供的 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)。 此库提供一个 [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) 接口来允许使用所选的提供程序，同时尽量减轻对现有代码的影响。 这种做法的另一个优势是，代码不仅可以在 Windows 和 Linux 上的 .NET Core 中使用，而且可以在整个 NET Framework 中使用，因此可跨 .NET 和 .NET Core 标准化检测代码。
 
 #### <a name="how-to-use-microsoftextensionslogging-within-service-fabric"></a>如何在 Service Fabric 中使用 Microsoft.Extensions.Logging
 
 1. 将 **Microsoft.Extensions.Logging** NuGet 包添加到要检测的项目。 此外，还需要添加所有提供程序包。下面，我们将针对某个第三方包执行此操作。 有关详细信息，请参阅 [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)（ASP.NET Core 中的日志记录）
-2. 在服务文件中添加一条针对“Microsoft.Extensions.Logging”的 using 指令
+
+2. 在服务文件中添加一条针对“Microsoft.Extensions.Logging”的 **using** 指令
+
 3. 在服务类中定义一个专用变量
-```csharp
+
+    ```csharp
         private ILogger _logger = null;
-```
+    ```
+
 4. 在服务类的构造函数中，添加
-```csharp
+    
+    ```csharp
         _logger = new LoggerFactory().CreateLogger<Stateless>();
-```
+    ```
+
 5. 开始检测方法中的代码。 下面提供了几个示例
-```csharp
+    
+    ```csharp
+
         _logger.LogDebug("Debug level event from Microsoft.Logging");
         _logger.LogInformation("Informational level event from Microsoft.Logging");
 
         // In this variant, we're adding structured properties RequestName and Duration that has values MyRequest and the duration of the request.
         // More on why you'll want to do this later.
         _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
-```
+
+    ```
 
 #### <a name="using-other-logging-providers"></a>使用其他日志记录提供程序
 
@@ -154,15 +163,24 @@ ms.openlocfilehash: 826ae11e4826b37379caa53d85d8ec834a5ed0fb
 
 1. 将 **Serilog**、**Serilog.Extensions.Logging** 和 **Serilog.Sinks.Observable** NuGet 包添加到项目。 另外，请为本示例添加 **SeriLog.Sinks.Literate**。本文稍后将介绍一种更好的方法
 2. 在 SeriLog 中创建 LoggerConfiguration 和记录器实例
-```csharp
-    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
-```
+
+    ```csharp
+
+        Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
+
+    ```
+
 3. 将 SeriLog.ILogger 参数添加到服务构造函数并传递新建的记录器
-```csharp
-    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
-```
+    
+    ```csharp
+
+        ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
+
+    ```
+
 4. 在服务构造函数中添加以下内容，为服务的 ServiceTypeName、ServiceName、PartitionId 和 InstanceId 属性创建属性扩充器。 此功能还会将该属性添加到 ASP.NET Core 日志记录工厂，以便能够在代码中使用 Microsoft.Extensions.Logging.ILogger。
-```csharp
+    
+    ```csharp
         public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
             : base(context)
         {
@@ -178,7 +196,8 @@ ms.openlocfilehash: 826ae11e4826b37379caa53d85d8ec834a5ed0fb
 
             _logger = new LoggerFactory().AddSerilog(serilog.ForContext(properties)).CreateLogger<Stateless>();
         }
-```
+    ```
+
 5. 就像在不使用 SeriLog 的情况下运行 ASP.NET Core 一样检测代码。
 
 > [!NOTE] 
@@ -209,7 +228,7 @@ Azure 诊断仅适用于部署到 Azure 的 Service Fabric 群集，但适用于
 
 ### <a name="eventflow"></a>EventFlow
 
-[EventFlow 由 Visual Studio 团队发布](service-fabric-diagnostic-collect-logs-without-an-agent.md)，它提供一种机制用于将事件从某个节点路由到一个或多个监视目标。 由于它以 NuGet 包的形式包含在服务项目中，EventFlow 的代码和配置可以连同服务一起传播，消除了上面所述的需要在 Azure 诊断中为每个节点完成配置的问题。 EventFlow 在服务进程中运行，直接连接到配置的输出。 由于这种直接连接，EventFlow 适用于 Azure、容器或本地服务部署。 在容器等高密度方案中运行时必须保持谨慎，由于每个 EventFlow 管道会建立外部连接，如果要托管大量进程，最终会建立大量的出站连接！ 这对于 Service Fabric 应用程序而言并不是一个大问题，因为 ServiceType 的所有副本在同一个进程中运行，限制了出站连接数。 EventFlow 还提供事件筛选，以便只发送与指定的筛选器匹配的事件。 有关在 Service Fabric 中使用 EventFlow 的详细信息，请参阅[直接从 Azure Service Fabric 服务进程收集日志](service-fabric-diagnostic-collect-logs-without-an-agent.md)
+[EventFlow 由 Visual Studio 团队发布](https://github.com/Azure/diagnostics-eventflows)，它提供一种机制用于将事件从某个节点路由到一个或多个监视目标。 由于它以 NuGet 包的形式包含在服务项目中，EventFlow 的代码和配置可以连同服务一起传播，消除了上面所述的需要在 Azure 诊断中为每个节点完成配置的问题。 EventFlow 在服务进程中运行，直接连接到配置的输出。 由于这种直接连接，EventFlow 适用于 Azure、容器或本地服务部署。 在同一个节点上运行许多副本时必须小心，因为每个 EventFlow 管道会建立外部连接。 如果托管大量的进程，最终会建立大量的出站连接！ 这对于 Service Fabric 应用程序而言并不是一个大问题，因为 ServiceType 的所有副本在同一个进程中运行，限制了出站连接数。 EventFlow 还提供事件筛选，以便只发送与指定的筛选器匹配的事件。 有关在 Service Fabric 中使用 EventFlow 的详细信息，请参阅[直接从 Azure Service Fabric 服务进程收集日志](service-fabric-diagnostic-collect-logs-without-an-agent.md)
 
 > [!NOTE]
 > 在将来的 Service Fabric 版本中，将提供一个 EventSource 主机应用程序，用于根据输入、节点级指标集合和滚动更新日志文件支持侦听 ETW。
@@ -217,9 +236,8 @@ Azure 诊断仅适用于部署到 Azure 的 Service Fabric 群集，但适用于
 EventFlow 的用法相当简单
 1. 将 NuGet 包添加到服务项目
 2. 在服务的 **Main** 函数中创建 EventFlow 管道并配置输出。 本例说明如何将 SeriLog 用作输出
-```csharp
-    internal static class Program
-    {
+    ```csharp
+
         /// <summary>
         /// This is the entry point of the service host process.
         /// </summary>
@@ -229,8 +247,7 @@ EventFlow 的用法相当简单
             {
                 using (var pipeline = ServiceFabricDiagnosticPipelineFactory.CreatePipeline("MonitoringE2E-Stateless-Pipeline"))
                 {
-                    IObserver<LogEvent> serilogInput = pipeline.Inputs.OfType<SerilogInput>().First();
-                    Log.Logger = new LoggerConfiguration().WriteTo.Observers(events => events.Subscribe(serilogInput)).CreateLogger();
+                    Log.Logger = new LoggerConfiguration().WriteTo.EventFlow(pipeline).CreateLogger();
 
                     // The ServiceManifest.XML file defines one or more service type names.
                     // Registering a service maps a service type name to a .NET type.
@@ -250,73 +267,73 @@ EventFlow 的用法相当简单
                 throw;
             }
         }
-    }
-```
+
+    ```
 3. 在服务的 PackageRoot | Config 文件夹中创建名为 *eventFlowConfig.json* 的文件。 该文件中的配置如下所示
-```json
-    {
-    "inputs": [
+    ```json
         {
-        "type": "EventSource",
-        "sources": [
-            { "providerName": "Microsoft-ServiceFabric-Services" },
-            { "providerName": "Microsoft-ServiceFabric-Actors" },
-            { "providerName": "MyCompany-MonitoringE2E-Stateless" }
-        ]
-        },
-        {
-        "type": "Serilog"
+        "inputs": [
+            {
+            "type": "EventSource",
+            "sources": [
+                { "providerName": "Microsoft-ServiceFabric-Services" },
+                { "providerName": "Microsoft-ServiceFabric-Actors" },
+                { "providerName": "MyCompany-MonitoringE2E-Stateless" }
+            ]
+            },
+            {
+            "type": "Serilog"
+            }
+        ],
+        "filters": [
+            {
+            "type": "drop",
+            "include": "Level == Verbose"
+            },
+            {
+            "type": "metadata",
+            "metadata": "request",
+            "requestNameProperty": "RequestName",
+            "include":  "RequestName==MyRequest",
+            "durationProperty": "Duration",
+            "durationUnit": "milliseconds"
+            }
+        ],
+        "outputs": [
+            {
+            "type": "StdOutput"
+            },
+            {
+            "type": "ApplicationInsights",
+            "instrumentationKey": "== instrumentation key here =="
+            }
+        ],
+        "schemaVersion": "2016-08-11",
+        "extensions": []
         }
-    ],
-    "filters": [
-        {
-        "type": "drop",
-        "include": "Level == Verbose"
-        },
-        {
-        "type": "metadata",
-        "metadata": "request",
-        "requestNameProperty": "RequestName",
-        "include":  "RequestName==MyRequest",
-        "durationProperty": "Duration",
-        "durationUnit": "milliseconds"
-        }
-    ],
-    "outputs": [
-        {
-        "type": "StdOutput"
-        },
-        {
-        "type": "ApplicationInsights",
-        "instrumentationKey": "== instrumentation key here =="
-        }
-    ],
-    "schemaVersion": "2016-08-11",
-    "extensions": []
-    }
-```
+    ```
 配置中定义了两个输入：Service Fabric 创建的两个基于 EventSource 的源，以及服务的 EventSource。 请注意，使用 ETW 的系统级别和运行状况事件不可用于 EventFlow。 这是因为，需要使用高级特权来侦听 ETW 源，并且永远不应使用任何高特权运行服务。 另一个输入为 SeriLog，该项配置出现在 **Main** 方法中。  此外应用了一些筛选器，第一个筛选器告知 EventFlow 要删除属于详细事件级别的所有事件。 稍后我们再讲述另一个筛选器定义。 另外，还配置了两个输出：标准输出，将数据写入 Visual Studio 中的输出窗口。 另一个输出是 ApplicationInsights，请务必添加你的检测密钥。
 
 4. 最后一步是检测代码。 在本示例中，我们将以几种不同的方式检测 RunAsync。 以下代码仍使用 SeriLog，使用的某些语法特定于 SeriLog。 请注意所选日志记录解决方案的具体功能。 生成了三个事件：一个调试级事件和两个信息性事件，后者跟踪请求持续时间。 如果使用上述 EventFlow 配置，调试级事件不应流向输出。
 
-```csharp
-    Stopwatch sw = Stopwatch.StartNew();
+    ```csharp
+        Stopwatch sw = Stopwatch.StartNew();
 
-    while (true)
-    {
-        cancellationToken.ThrowIfCancellationRequested();
+        while (true)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
 
-        sw.Restart();
+            sw.Restart();
 
-        // Delay a random interval to provide a more interesting request duration.
-        await Task.Delay(TimeSpan.FromMilliseconds(DateTime.Now.Millisecond), cancellationToken);
+            // Delay a random interval to provide a more interesting request duration.
+            await Task.Delay(TimeSpan.FromMilliseconds(DateTime.Now.Millisecond), cancellationToken);
 
-        ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
-        _logger.LogDebug("Debug level event from Microsoft.Logging");
-        _logger.LogInformation("Informational level event from Microsoft.Logging");
-        _logger.LogInformation("{RequestName} {Duration}", "MyRequest", sw.ElapsedMilliseconds);
-    }
-```
+            ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
+            _logger.LogDebug("Debug level event from Microsoft.Logging");
+            _logger.LogInformation("Informational level event from Microsoft.Logging");
+            _logger.LogInformation("{RequestName} {Duration}", "MyRequest", sw.ElapsedMilliseconds);
+        }
+    ```
 
 若要在 Application Insights 中查看事件，请打开 Azure 门户并导航到你的 ApplicationInsights 资源。 在左上角单击“搜索”，随后应显示所有事件。
 
@@ -346,19 +363,17 @@ Service Fabric 具有自身的运行状况模型，有多篇文章对此做了�
 指标和运行状况报告的候选项就是可以指明应用程序的运行状况和性能的任何对象。 CPU 性能计数器可以告知节点的利用情况，但不会真正指明特定的服务是否正常，因为单个节点上可能运行了多个服务。 另一方面，RPS、已处理的项数或请求延迟等指标都可以指明特定服务的运行状况。
 
 若要报告运行状况，请添加如下所示的代码
-
 ```csharp
- if (!result.HasValue)
- {
-     HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
-     this.Partition.ReportInstanceHealth(healthInformation);
- }
+        if (!result.HasValue)
+        {
+            HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
+            this.Partition.ReportInstanceHealth(healthInformation);
+        }
 ```
 
 若要报告指标，请将类似于下面的代码添加到服务
-
 ```csharp
-this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
+        this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
 ```
 
 ## <a name="watchdogs"></a>监视器
@@ -378,6 +393,6 @@ this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryIn
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

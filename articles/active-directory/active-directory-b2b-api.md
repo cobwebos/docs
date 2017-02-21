@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/02/2017
+ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: be67973db6b757722f575f5aad41405ab70eda2c
-ms.openlocfilehash: ca376de3d0c5237b0b87f09f0915a8785ceea6fd
+ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
+ms.openlocfilehash: 235b551a716b68c40cc4fe346cc5903d47e6ea74
 
 
 ---
@@ -31,32 +31,44 @@ ms.openlocfilehash: ca376de3d0c5237b0b87f09f0915a8785ceea6fd
 
 1. 使用*任何*电子邮件地址邀请外部用户。
 
-    ```"invitedUserDisplayName": "Sam"
-    "invitedUserEmailAddress": "gsamoogle@gmail.com"```
+    ```
+    "invitedUserDisplayName": "Sam"
+    "invitedUserEmailAddress": "gsamoogle@gmail.com"
+    ```
 
 2. 自定义你希望用户在接受其邀请后登陆的位置。
 
-    ```"inviteRedirectUrl": "https://myapps.microsoft.com/"```
+    ```
+    "inviteRedirectUrl": "https://myapps.microsoft.com/"
+    ```
 
 3. 选择通过我们将包含可自定义消息的标准邀请邮件
 
-    ```"sendInvitationMessage": true```
+    ```
+    "sendInvitationMessage": true
+    ```
 
   发送给收件人
 
-    ```"customizedMessageBody": "Hello Sam, let's collaborate!"```
+    ```
+    "customizedMessageBody": "Hello Sam, let's collaborate!"
+    ```
 
 4. 并选择你想要让其了解你邀请了此协作者的抄送人员。
 
 5. 或者完全自定义邀请，并通过选择不通过 Azure AD 发送通知加入工作流。
 
-    ```"sendInvitationMessage": false```
+    ```
+    "sendInvitationMessage": false
+    ```
 
   在这种情况下，你将通过嵌入电子邮件模板的 API、即时消息或所选择的其他分发方法收到兑换 URL。
 
 6. 最后，如果你是管理员，可以选择以成员身份邀请用户。
 
-    ```"invitedUserType": "Member"```
+    ```
+    "invitedUserType": "Member"
+    ```
 
 
 ## <a name="authorization-model"></a>授权模型
@@ -73,7 +85,9 @@ ms.openlocfilehash: ca376de3d0c5237b0b87f09f0915a8785ceea6fd
 ## <a name="powershell"></a>PowerShell
 现在可以使用 PowerShell 轻松地将外部用户添加并邀请到组织。 只需使用 cmdlet 创建一个新邀请
 
-```New-AzureADMSInvitation```
+```
+New-AzureADMSInvitation
+```
 
 cmdlet 可以包含以下选项
 
@@ -90,17 +104,18 @@ cmdlet 可以包含以下选项
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Azure Active Directory 管理员如何添加 B2B 协作用户？](active-directory-b2b-admin-add-users.md)
-* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-how-it-works.md)
+* [信息工作者如何添加 B2B 协作用户？](active-directory-b2b-iw-add-users.md)
 * [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)
 * [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)
 * [Azure Active Directory B2B 协作故障排除](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
 * [适用于 B2B 协作用户的多重身份验证](active-directory-b2b-mfa-instructions.md)
+* [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

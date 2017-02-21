@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9b26cfed4102bc09512f5ef1270aa0275a7f8f69
-ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
+ms.sourcegitcommit: df0ab8e6828033b783449e9478a5884355a7f1fe
+ms.openlocfilehash: 453aa0e98e639872184b697ad8ed91d9545e152f
 
 
 ---
@@ -40,6 +40,7 @@ ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
 
 * 在基本计划中，将按数据量（Application Insights 收到的遥测数据的字节数）对用户收费。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。
 * 每个应用的头 1 GB 免费，因此，如果只是进行试验或开发，可能不需付费。
+* 定价未考虑[实时指标流](app-insights-live-stream.md)数据。
 * 已推出[连续导出](app-insights-export-telemetry.md)，在使用基本计划时需额外付费（按 GB），但在 2017 年 3 月初之前仍属免费。
 
 ### <a name="enterprise-plan"></a>企业计划
@@ -49,6 +50,7 @@ ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
  * *节点* 是托管应用的物理/虚拟服务器计算机或平台即服务角色实例。
  * 开发计算机、客户端浏览器和移动设备不计为节点。
  * 如果应用有多个组件（例如 Web 服务和后端辅助角色）发送遥测数据，则会对其分开计数。
+ * 定价未考虑[实时指标流](app-insights-live-stream.md)数据。
 * 在订阅中，将按节点而非应用计费。 如果有 5 个节点在为 12 个应用发送遥测数据，则按 5 个节点计费。
 * 虽然是按月计费，但对于从应用发送遥测数据的节点来说，实际上是按小时计费。 小时费率为月费/744（每月的小时数，每月按 31 天算）。
 * 每天为每个检测到的节点分配的数据量为 200 MB（时间粒度为小时）。 分配的数据如果未使用，不会从当天转到第二天。
@@ -98,7 +100,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 * **每日上限。** 默认设置为 500 GB/天。 当应用达到上限时，我们将发送一封电子邮件，并丢弃超出的数据，直到当天结束。 可通过“数据量管理”边栏选项卡对其进行更改。
 * **[采样](app-insights-sampling.md)。** 此机制可减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。
-* **限制**：数据速率上限为每秒 16 k 事件，取 1 分钟的平均值。 
+* **限制**：数据速率上限为每秒 32000 个事件，取 1 分钟的平均值。 
 
 
 *如果应用超过限制速率，会发生什么情况？*
@@ -174,6 +176,6 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

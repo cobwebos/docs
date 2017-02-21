@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 2/06/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 96c9425d8f58d3b617330615573a479429f12b11
-ms.openlocfilehash: e84b21deca96c131d1de61cd6a160a8121c19c68
+ms.sourcegitcommit: cedc7d3c16dd8acac2700f461305d28a8ba6c802
+ms.openlocfilehash: 5ab121e536479ef5584b222456e127d5bb12e24d
 
 
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Azure Active Directory B2C：在使用者注册期间禁用电子邮件验证
 启用后，Azure Active Directory (Azure AD) B2C 让使用者能够通过提供电子邮件地址和创建本地帐户来注册应用程序。 Azure AD B2C 通过要求使用者在注册过程中验证电子邮件地址来确保电子邮件地址有效。 它还阻止恶意的自动化过程生成应用程序的假帐户。
 
-某些应用程序开发人员愿意在注册过程中跳过电子邮件验证，而让使用者在以后验证电子邮件地址。 若要支持此功能，可以将 Azure AD B2C 配置为禁用电子邮件验证并给予注册过程的控制权。 这样做可创建更流畅的注册过程，并使开发人员可以灵活地将已验证电子邮件地址的使用者与尚未验证电子邮件地址的使用者区分开来。
+某些应用程序开发人员愿意在注册过程中跳过电子邮件验证，而让使用者在以后验证电子邮件地址。 若要支持此功能，可将 Azure AD B2C 配置为禁用电子邮件验证。 这样做可创建更流畅的注册过程，并使开发人员可以灵活地将已验证电子邮件地址的使用者与尚未验证电子邮件地址的使用者区分开来。
 
 默认情况下，注册策略已打开电子邮件验证。 使用以下步骤可将其关闭：
 
@@ -42,9 +42,9 @@ ms.openlocfilehash: e84b21deca96c131d1de61cd6a160a8121c19c68
 > 
 > 
 
-我们始终乐于接受反馈和建议！ 如果你在完成本主题的过程中遇到任何难题，或者在改进此内容方面有任何建议，请在页面底部提供反馈，我们将不胜感激。 对于功能请求，请将其添加到 [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)。
+我们始终乐于接受反馈和建议！ 如果在完成本主题的过程中遇到任何难题，或者在改进此内容方面有任何建议，请在页面底部提供反馈，我们将不胜感激。 对于功能请求，请将其添加到 [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)。
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
-ms.openlocfilehash: 67657ac7135f55cc4560a53c5ce76d7a62426928
+ms.sourcegitcommit: 9c4c872d03a3927d02d17de6cc2aae6e684f1fad
+ms.openlocfilehash: b6a1e6175833ea0cdc785b18c88b43e06a7ad57c
 
 
 ---
 # <a name="switch-your-azure-subscription-to-another-offer"></a>将 Azure 订阅切换到其他产品/服务
-作为[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)客户，用户可以在[帐户中心](https://account.windowsazure.com/Subscriptions)将 Azure 订阅转换为其他产品/服务。 例如，可以通过此功能充分利用 [Visual Studio 订户的每月信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 如果使用的是[免费试用版](https://azure.microsoft.com/free/)，请了解如何[升级到即用即付](billing-upgrade-azure-subscription.md)。
+[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)客户可以在[帐户中心](https://account.windowsazure.com/Subscriptions)将 Azure 订阅转换为其他产品/服务。 例如，可以通过此功能充分利用 [Visual Studio 订户的每月信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 如果使用的是[免费试用版](https://azure.microsoft.com/free/)，请了解如何[升级到即用即付](billing-upgrade-azure-subscription.md)。
 
 #### <a name="whats-supported"></a>支持的操作：
 | 从 | 如果 |
@@ -60,8 +60,13 @@ ms.openlocfilehash: 67657ac7135f55cc4560a53c5ce76d7a62426928
    ![单击绿色按钮](./media/billing-how-to-switch-azure-offer/confirmpage.png)
 7. 成功！ 订阅现在已经切换到新的产品/服务。
 
+## <a name="what-is-an-azure-offer"></a>什么是 Azure 产品/服务？
+Azure 产品/服务是用户拥有的 Azure 订阅*类型*。 例如，[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure 开放许可](https://azure.microsoft.com/offers/ms-azr-0111p/)和 [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) 都是 Azure 产品/服务。 每个产品/服务附带不同的[条款](https://azure.microsoft.com/support/legal/offer-details/)，有些还附带特殊的权益。 可在帐户中心的订阅页中找到订阅的产品/服务。 单击产品/服务名称可获取更多详细信息。
+
+   ![在帐户中心单击“产品/服务”链接可获取更多详细信息](./media/billing-how-to-switch-azure-offer/offerlink.png)
+
 ## <a name="why-cant-i-switch-offers"></a>为何不能转换产品/服务？
-如果出现以下情况，则可能看不到“转换为其他产品/服务”：
+如果出现以下情况，你可能看不到“切换到其他产品/服务”按钮：
 
 * 没有使用[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)。 当前只能将即用即付订阅转换为其他产品/服务。
   
@@ -88,10 +93,16 @@ ms.openlocfilehash: 67657ac7135f55cc4560a53c5ce76d7a62426928
 > 
 
 ## <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>能否从即用即付转为[云解决方案提供商](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) 或[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)？
-目前不支持在帐户中心将产品/服务转换为 CSP 或 EA。 若要将现有订阅移至 EA，请让注册管理员将帐户添加到 EA。 接着，用户会收到一封邀请电子邮件。 在按照说明接受邀请后，订阅会自动移到企业协议下。 若要迁移到 CSP，请参阅 [Azure Subscription Migration to CSP](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/)（Azure 订阅迁移到 CSP）。
 
-## <a name="can-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription"></a>能否将 Azure 订阅的数据和服务迁移到新的订阅？
-是的。 有关详细信息，请参阅[将资源移到新资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+- 若要迁移到 CSP，请参阅 [Azure Subscription Migration to CSP](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/)（Azure 订阅迁移到 CSP）。
+
+- 若要迁移到 EA，请让注册管理员将你的帐户加入 EA。 遵照邀请电子邮件中的说明，根据 EA 注册过程来移动订阅。 若要了解详细信息，请参阅 [Associate an Existing Account in the EA portal](https://ea.azure.com/helpdocs/associateExistingAccount)（在 EA 门户中关联现有帐户）。
+
+## <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>是否可将数据和服务迁移到新订阅？
+
+- 可以迁移直接将资源迁移到新订阅，具体请参阅[将资源移到新资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。
+
+- 若要将 Azure 订阅的所有权及其包含的所有内容转让给其他某人，请参阅[转让 Azure 订阅的所有权](billing-subscription-transfer.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

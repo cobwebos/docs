@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/25/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee3ba5a5dee206c2358a76aaea680b998e994f8
-ms.openlocfilehash: 732f9b135732c33364cab7200d43893d4cdda5f9
+ms.sourcegitcommit: 2e7815702f2d2f4ce935826c4769838727a83696
+ms.openlocfilehash: 7d1be1dea6ed4ecda196743f592456a5b977e9b0
 
 
 ---
@@ -73,6 +73,8 @@ Azure AD 应用程序代理：
 ### <a name="single-sign-on"></a>单一登录
 Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应用程序或声明感知应用程序提供单一登录 (SSO)。 如果你的应用程序使用 IWA，则应用程序代理将模拟使用 Kerberos 约束委派的用户来提供 SSO。 如果你有信任 Azure Active Directory 的声明感知应用程序，则可以实现 SSO，因为用户已经由 Azure AD 进行身份验证。
 
+有关 Kerberos 的详细信息，请参阅[全面了解 Kerberos 约束委派 (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)。
+
 ## <a name="how-to-get-started"></a>如何入门
 确保拥有 Azure AD 基本或高级版订阅以及你本人担任全局管理员的 Azure AD 目录。 你还需要拥有 Azure AD 基本或高级版的许可证才能让目录管理员和用户访问应用。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 
@@ -95,6 +97,6 @@ Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

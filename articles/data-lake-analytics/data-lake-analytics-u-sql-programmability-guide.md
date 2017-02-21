@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: mrys
 translationtype: Human Translation
-ms.sourcegitcommit: 847081123123c849033c9de2b3c4359042d41359
-ms.openlocfilehash: da29f6015502e4ce5a63ca1c47106dc346026803
+ms.sourcegitcommit: cd2aafd80db337cadaa2217a6638d93186975b68
+ms.openlocfilehash: 563a6821b4a3736ef1233aa67d86b9ba06565788
 
 
 ---
@@ -768,9 +768,9 @@ LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC) AS 
            string.IsNullOrEmpty(LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)) AS Flag,           
            USQLApplication21.UserSession.StampUserSession
            (
-            EventDateTime,
-            LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
-            LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
+               EventDateTime,
+               LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
+               LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
            )
            AS UserSessionTimestamp
     FROM @records;
@@ -824,7 +824,10 @@ USING Outputters.Csv();
 ## <a name="using-user-defined-types---udt"></a>使用用户定义的类型 - UDT
 用户定义的类型或称 UDT 是 U-SQL 的另一个可编程性功能。 U-SQL UDT 的作用类似常规 C# 用户定义的类型。 C# 是一种强类型语言，允许使用内置的和自定义的用户定义的类型。
 
-U-SQL 目前不能将 UDT 数据隐式序列化到外部文件或从外部文件进行隐式反序列化。 因此，必须使用序列化/反序列化方法将 IFormatter 接口定义为 UDT 定义的一部分。 ADLA V1 中仅支持中间序列化。 也就是说，尽管 IFormatter 对于内部 UDT 处理很重要，但它不能用于 EXTRACTOR 或 OUTPUTTER 中的持久序列化。 使用 OUTPUTTER 将数据写入文件或使用 EXTRACTOR 进行读取时，必须使用 UDT 实现的 ToString() 方法将 UDT 序列化为字符串。 或者，处理 UDT 时可使用自定义 EXTRACTOR/OUTPUTTER。  
+在行集中的顶点之间传递 UDT 时，U-SQL 无法隐式序列化/反序列化任意 UDT。 因此，用户必须使用 IFormatter 接口提供显式格式化程序。 这样，就为 U-SQL 提供了针对 UDT 的序列化和反序列化方法。 
+
+> [!NOTE]
+> 即使设置了 IFormatter，U-SQL 的内置提取器和输出器目前也无法与文件来回序列化/反序列化 UDT 数据。  因此，在使用 OUTPUT 语句将 UDT 数据写入文件或者使用提取器读取 UDT 数据时，用户必须以字符串或字节数组的形式传递数据，然后显式调用序列化和反序列化代码（例如，UDT 的 ToString() 方法）。 另一方面，用户定义的提取器和输出器可以读取和写入 UDT。
 
 如果尝试在 EXTRACTOR 或 OUTPUTTER（在之前的 SELECT 以外）中使用 UDT
 
@@ -839,7 +842,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 将收到以下错误
 
 ```
-    Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
+    Error    1    E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
     MyNameSpace.Myfunction_Returning_UDT.
 
     Description:
@@ -849,8 +852,8 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
     Resolution:
 
     Implement a custom outputter that knows how to serialize this type or call a serialization method on the type in
-    the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
-    USQL-Programmability\Types.usql 52  1   USQL-Programmability
+    the preceding SELECT.    C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
+    USQL-Programmability\Types.usql    52    1    USQL-Programmability
 ```
 
 若要在输出器中处理 UDT，则必须使用 ToString() 方法将其序列化，或创建一个自定义输出器。
@@ -858,7 +861,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 目前不能在 GROUP BY 中使用 UDT。 如果在 GROUP BY 中使用 UDT，将引发以下错误：
 
 ```
-    Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
+    Error    1    E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
     for column myfield
 
     Description:
@@ -869,7 +872,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
     Add a SELECT statement where you can project a scalar column that you want to use with GROUP BY.
     C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQL-Programmability\Types.usql
-    62  5   USQL-Programmability
+    62    5    USQL-Programmability
 ```
 
 若要定义 UDT，则必须：
@@ -898,7 +901,7 @@ SqlUserDefinedType 是 UDT 定义必需的特性。
 ```c#
     [SqlUserDefinedType(typeof(MyTypeFormatter))]
       public class MyType
-           {
+              {
              …
            }
 ```
@@ -1118,6 +1121,8 @@ DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.
            fiscalquarter,
            fiscalmonth,
            USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).ToString() AS fiscalperiod,
+       
+       // This user-defined type was created in the prior SELECT.  Passing the UDT to this subsequent SELECT would have failed if the UDT was not annotated with an IFormatter.
            fiscalperiod_adjusted.ToString() AS fiscalperiod_adjusted,
            user,
            des
@@ -1286,9 +1291,6 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
     }
 }
 ```
-
-### <a name="udts-from-built-in-types"></a>内置类型中的 UDT
-即将支持
 
 ## <a name="user-defined-aggregates--udagg"></a>用户定义的聚合 - UDAGG
 用户定义的聚合是非随时随附于 U-SQL 的任何与聚合相关的函数。 示例包括：用于执行自定义数学计算、执行字符串串联或字符串操作的聚合等。
@@ -1525,7 +1527,7 @@ SqlUserDefinedExtractor 是 UDE 定义的可选特性。 用于定义 UDE 对象
     {
     …
         string[] parts = line.Split(my_column_delimiter);
-            foreach (string part in parts)
+               foreach (string part in parts)
         {
         …
         }
@@ -2176,9 +2178,9 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 在此用例场景中，用户定义的应用器充当车队属性的逗号分隔值分析器。 输入文件行如下所示：
 
 ```
-103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
-210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
+103    Z1AB2CD123XY45889    Ford,Explorer,2005,SUV,152345
+303    Y0AB2CD34XY458890    Shevrolet,Cruise,2010,4Dr,32455
+210    X5AB2CD45XY458893    Nissan,Altima,2011,4Dr,74000
 ```
 
 它是典型的制表符分隔 TSV 文件，具有包含“制造”、“型号”等汽车属性的属性列。这些属性需解析为表中的列。 提供的应用器还允许基于传递的参数在结果行集中生成动态数量的属性 - 所有属性或仅特定的属性集。
@@ -2610,6 +2612,6 @@ OUTPUT @rs2 TO @output_file USING Outputters.Text();
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

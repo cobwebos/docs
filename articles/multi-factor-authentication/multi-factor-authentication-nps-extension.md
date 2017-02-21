@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: c9cf1540c0f8d16b0a5cdbedc78ac58cd5686107
-ms.openlocfilehash: 51ebadc241892ebc6fb26b29955e3030ae1bdcb3
+ms.sourcegitcommit: 68f1088a7303b5eddecc9ff99f7330c0462baafc
+ms.openlocfilehash: 9fb517a08fb56a1adb9e23f820aa2e4aa20eacf6
 
 
 ---
@@ -49,10 +49,8 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="libraries"></a>库
 
-NPS 扩展需要两个库。 在安装过程中，将安装这两个库：
-
--   Microsoft Visual Studio 2013 C++ Redistributable (X64)
--   用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166
+-    [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+-    [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -64,19 +62,22 @@ NPS 扩展需要两个库。 在安装过程中，将安装这两个库：
 
 ## <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
+> [!IMPORTANT]
+> 在不同于 VPN 接入点的服务器上安装 NPS 扩展。 
+
 若要安装适用于 Azure MFA 的 NPS 扩展，请执行以下操作：
 
-1.  从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)
-2.  将二进制文件复制到想要配置的网络策略服务器
-3.  运行 *setup.exe* 并遵照安装说明操作
+1.    从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)
+2.    将二进制文件复制到想要配置的网络策略服务器
+3.    运行 *setup.exe* 并遵照安装说明操作
 
 完成安装后，安装程序将在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本执行以下操作：
 
--   创建自签名证书。
--   将证书的公钥关联到 Azure AD 上的服务主体。
--   将证书存储在本地计算机证书存储中。
--   向网络用户授予对证书私钥的访问权限。
--   重新启动 NPS。
+-    创建自签名证书。
+-    将证书的公钥关联到 Azure AD 上的服务主体。
+-    将证书存储在本地计算机证书存储中。
+-    向网络用户授予对证书私钥的访问权限。
+-    重新启动 NPS。
 
 除非你想要使用自己的证书（而不是 PowerShell 脚本生成的自签名证书），否则请运行该 PowerShell 脚本来完成安装。
 
@@ -137,7 +138,7 @@ NPS 扩展需要两个库。 在安装过程中，将安装这两个库：
 1. 重新启动 NPS 服务器。
 2. 验证是否已按预期安装了该客户端证书。
 3. 验证该证书是否与 Azure AD 上的租户关联。
-4. 验证是否可以从运行该扩展的服务器访问 https://login.windows.new/。
+4. 验证是否可以从运行该扩展的服务器访问 https://login.windows.net/。
 
 -------------------------------------------------------------
 
@@ -157,6 +158,6 @@ NPS 扩展需要两个库。 在安装过程中，将安装这两个库：
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

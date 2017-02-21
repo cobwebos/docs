@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63485f0c9e151db22f23d291e2a4425dd01fb7ee
-ms.openlocfilehash: b22ac95ee11fe059d36a9416434a14814da1ee7d
+ms.sourcegitcommit: 34e9b401444aeec233d846a6b52f4a452c54cdaf
+ms.openlocfilehash: 106571bf36454ab20e75cb4ee42b2aca787a9d5a
 
 
 ---
@@ -53,12 +53,9 @@ az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image Debian \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup
+    --nics myNic
 ```
 
 ## <a name="detailed-walkthrough"></a>详细演练
@@ -154,17 +151,23 @@ az network nic create \
 
 使用 [az vm create](/cli/azure/vm#create) 创建 VM。 若要详细了解与 Azure CLI 2.0（预览版）结合使用以部署完整的 VM 的标志，请参阅[使用 Azure CLI 创建完整的 Linux 环境](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
+以下示例使用 Azure 托管磁盘创建 VM。 这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 如果想要使用非托管磁盘，请参阅下面的附加说明。
+
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image Debian \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup
+    --nics myNic
+```
+
+如果使用托管磁盘，请跳过此步骤。 如果想要使用非托管磁盘，需将以下附加参数添加到上述命令，在名为 `mystorageaccount` 的存储帐户中创建非托管磁盘： 
+
+```azurecli
+    --use-unmanaged-disk \
+    --storage-account mystorageaccount
 ```
 
 使用 CLI 标志调用现有资源是为了指示 Azure 将 VM 部署到现有网络中。 重述一遍，部署虚拟网络和子网以后，即可将其作为静态资源或永久资源留在 Azure 区域。 在此示例中，我们并未为 VNic 创建并分配公共 IP 地址，因此，无法通过 Internet 公开访问该 VM。 有关详细信息，请参阅[使用 Azure CLI 创建具有静态公共 IP 的 VM](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -178,6 +181,6 @@ az vm create \
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

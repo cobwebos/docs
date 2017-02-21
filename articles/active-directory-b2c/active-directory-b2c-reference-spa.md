@@ -15,12 +15,17 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 96c9425d8f58d3b617330615573a479429f12b11
-ms.openlocfilehash: 44a7cf18afdf6a523c5f7fb03ee49f72cdd22564
+ms.sourcegitcommit: f2eb1f67c5687ac9bd8b94f6480617e6dc87ac9f
+ms.openlocfilehash: ace35adc1cd2745ea11cb60429a1e7892d1f66d3
 
 
 ---
-# <a name="azure-active-directory-b2c-sign-in-for-single-page-apps-using-auth-20-implicit-flow"></a>Azure Active Directory B2C：使用身份验证 2.0 隐式流登录单页应用
+# <a name="azure-active-directory-b2c-sign-in-for-single-page-apps-using-oauth-20-implicit-flow"></a>Azure Active Directory B2C：使用 OAuth 2.0 隐式流登录单页应用
+
+> [!NOTE]
+> 该功能仍以预览版提供。
+> 
+
 许多新式应用都有一个单页应用前端（主要以 JavaScript 编写）。 通常，这通过 AngularJS、Ember.js 或 Durandal.js 等框架编写。 主要在浏览器上运行的单一页面和其他 JavaScript 应用程序在身份验证时面临一些有趣的挑战：
 
 * 这些应用的安全特征与传统的基于服务器的 Web 应用程序大不相同。
@@ -285,6 +290,6 @@ p=b2c_1_sign_in
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
