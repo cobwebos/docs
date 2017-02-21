@@ -215,7 +215,7 @@ Azure 虚拟机库包括多个内含 Microsoft SQL Server 的映像。 选择适
 （这是 Internet 用于识别虚拟机的名称）。 可以使用 IP 地址，但 IP 地址在 Azure 为冗余或维护而移动资源时可能会变更。 DNS 名称将保持不变，因为可将该名称重定向到新的 IP 地址。）
 
 1. 在 Azure 经典门户中（或在完成上一步后），选择“虚拟机”。
-2. 在“虚拟机实例”页上的“DNS 名称”列中，找到并复制带有前缀“http://”的虚拟机 DNS 名称。 （在用户界面上可能显示不出整个名称，不过没关系，你可以右键单击它，并选择“复制”。）
+2. 在“虚拟机实例”页上的“DNS 名称”列中，找到并复制带有前缀 **http://** 的虚拟机 DNS 名称。 （在用户界面上可能显示不出整个名称，不过没关系，你可以右键单击它，并选择“复制”。）
 
 ## <a name="a-namecdeaconnect-to-the-database-engine-from-another-computer"></a><a name="cde"></a>从其他计算机连接到数据库引擎
 1. 在连接到 Internet 的计算机上，打开 SQL Server Management Studio。
