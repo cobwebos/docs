@@ -8,6 +8,7 @@
 ### [.NET](search-create-index-dotnet.md)
 ### [REST](search-create-index-rest-api.md)
 ## [添加数据](search-what-is-data-import.md)
+### [Azure 门户](search-import-data-portal.md)
 ### [.NET](search-import-data-dotnet.md)
 ### [REST](search-import-data-rest-api.md)
 ## [搜索索引](search-query-overview.md)
@@ -25,7 +26,6 @@
 ### [服务限制](search-limits-quotas-capacity.md)
 ### [服务可伸缩性](search-capacity-planning.md)
 ### [多租户的设计模式](search-modeling-multitenant-saas-applications.md)
-
 
 ## 开发
 ### [升级 SDK](search-dotnet-sdk-migration.md)
@@ -49,17 +49,18 @@
 ### [为 JSON Blob 创建索引](search-howto-index-json-blobs.md)
 ### [配置与 Azure VM 上 SQL Server 的索引器连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [索引器中的字段映射](search-indexer-field-mappings.md)
-##  设计搜索体验
+##  搜索体验
+### [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+### [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 ### [Lucene 语法查询示例](search-query-lucene-examples.md)
-### [为配置文件评分](search-get-started-scoring-profiles.md)
-### [建议器](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)
-### [标记提升](https://azure.microsoft.com/blog/2015/02/05/personalizing-search-results-announcing-tag-boosting-in-azure-search/)
+### [筛选器表达式语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### [评分](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+### [建议](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [多面导航](search-faceted-navigation.md)
-### [语言分析器](https://msdn.microsoft.com/library/azure/dn879793)
-### [自定义分析器](https://msdn.microsoft.com/library/azure/mt605304)
-### [多语言搜索](search-language-support.md)
+### [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
+### [自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
-# 参考
+# 引用
 ## [.NET](/dotnet/api/microsoft.azure.search)
 ## [.NET（管理）](/dotnet/api/microsoft.azure.management.search)
 ## [Python（管理）](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
@@ -86,6 +87,6 @@
 ### [Azure 搜索 Github](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

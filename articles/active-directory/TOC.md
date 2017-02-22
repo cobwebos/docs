@@ -2,7 +2,7 @@
 ## [什么是 Azure Active Directory？](active-directory-whatis.md)
 ## [选择版本](active-directory-editions.md)
 ## [关于 Azure 标识管理](fundamentals-identity.md)
-## [预览 Azure 门户体验](active-directory-preview-explainer.md)
+## [预览 Azure AD 门户体验](active-directory-preview-explainer.md)
 
 
 # 入门
@@ -34,7 +34,7 @@
 ### 管理组
 #### [Azure 门户](active-directory-groups-create-azure-portal.md)
 #### [经典门户](active-directory-accessmanagement-manage-groups.md)
-#### [Powershell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [管理组成员](active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
 ### [管理组成员身份](active-directory-groups-membership-azure-portal.md)
@@ -50,8 +50,11 @@
 ### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
 ### [故障排除](active-directory-accessmanagement-troubleshooting.md)
 
-## [查看访问和使用情况报告](active-directory-view-access-usage-reports.md)
+## [查看活动和安全报告](active-directory-view-access-usage-reports.md)
 ### [Azure AD 报告](active-directory-reporting-getting-started.md)
+### [常见问题](active-directory-reporting-faq.md)
+### [报告迁移](active-directory-reporting-migration.md)
+
 ### [已知网络](active-directory-known-networks.md)
 
 ### [报告指南](active-directory-reporting-guide.md)
@@ -106,6 +109,7 @@
 #### [部署](active-directory-azureadjoin-devices-group-policy.md)
 #### [无密码身份验证](active-directory-azureadjoin-passport.md)
 #### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
+
 #### [了解 Windows 10 集成](active-directory-azureadjoin-windows10-devices-overview.md)
 #### [使用 Windows 10 设备](active-directory-azureadjoin-windows10-devices.md)
 #### [常见问题](active-directory-conditional-access-automatic-device-registration-faq.md)
@@ -123,25 +127,31 @@
 
 ### [授予对应用的远程访问权限](active-directory-application-proxy-get-started.md)
 #### [启用应用代理](active-directory-application-proxy-enable.md)
+#### [了解连接器](application-proxy-understand-connectors.md)
+
 #### 发布应用
 ##### [Azure 门户](application-proxy-publish-azure-portal.md)
 ##### [经典门户](active-directory-application-proxy-publish.md)
+#### [安全性](application-proxy-security-considerations.md)
+#### [网络](application-proxy-network-topology-considerations.md)
+#### [远程桌面](application-proxy-publish-remote-desktop.md)
+#### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+
 #### 在单独的网络上发布
 ##### [Azure 门户](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [经典门户](active-directory-application-proxy-connectors.md)
+#### [代理服务器](application-proxy-working-with-proxy-servers.md)
 #### [自定义域](active-directory-application-proxy-custom-domains.md)
-#### [单一登录](active-directory-application-proxy-sso-using-kcd.md)
+#### [访问应用](active-directory-appssoaccess-whatis.md)
 ##### [Azure 门户](application-proxy-sso-azure-portal.md)
+#### [单一登录](active-directory-application-proxy-sso-using-kcd.md)
 #### [声明感知应用](active-directory-application-proxy-claims-aware-apps.md)
 #### [本机客户端应用](active-directory-application-proxy-native-client.md)
+#### [自定义主页](application-proxy-office365-app-launcher.md)
 #### [条件性访问](active-directory-application-proxy-conditional-access.md)
 #### [无提示安装](active-directory-application-proxy-silent-installation.md)
+#### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
-### [了解应用的 SSO](active-directory-appssoaccess-whatis.md)
-
-### 集成 SaaS 应用
-#### [Azure 门户](active-directory-enterprise-apps-manage-sso.md)
-#### [经典门户](active-directory-sso-integrate-saas-apps.md)
 
 ### 管理企业应用
 #### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)
@@ -164,7 +174,6 @@
 
 ### [使用 SCIM 预配用户](active-directory-scim-provisioning.md)
 ### [文档库](active-directory-apps-index.md)
-
 
 ## 管理目录
 ### 自定义域名
@@ -191,25 +200,29 @@
 #### [Windows 10 设置](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 #### [常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
 #### [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
+
 ### [将合作伙伴与 Azure AD B2B 集成](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [管理员添加 B2B 用户](active-directory-b2b-admin-add-users.md)
 #### [信息工作者添加 B2B 用户](active-directory-b2b-iw-add-users.md)
 #### [邀请电子邮件](active-directory-b2b-invitation-email.md)
 #### [邀请兑换](active-directory-b2b-redemption-experience.md)
-#### [许可](active-directory-b2b-licensing.md)
-#### [对 B2B 进行故障排除](active-directory-b2b-troubleshooting.md)
-#### [常见问题](active-directory-b2b-faq.md)
-#### [API 和自定义](active-directory-b2b-api.md)
-#### [适用于 B2B 的多重身份验证](active-directory-b2b-mfa-instructions.md)
+#### [B2B 用户属性](active-directory-b2b-user-properties.md)
 #### [将来宾用户添加到角色](active-directory-b2b-add-guest-to-role.md)
+#### [API 和自定义](active-directory-b2b-api.md)
 #### [委托邀请](active-directory-b2b-delegate-invitations.md)
 #### [动态组和 B2B](active-directory-b2b-dynamic-groups.md)
-#### [代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
-#### [为 B2B 配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
+#### [适用于 B2B 的多重身份验证](active-directory-b2b-mfa-instructions.md)
 #### [B2B 用户令牌](active-directory-b2b-user-token.md)
 #### [B2B 用户声明映射](active-directory-b2b-claims-mapping.md)
 #### [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
+#### [为 B2B 配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
+#### [代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
 #### [当前限制](active-directory-b2b-current-limitations.md)
+#### [许可](active-directory-b2b-licensing.md)
+#### [对 B2B 进行故障排除](active-directory-b2b-troubleshooting.md)
+#### [B2B 协作与 B2C 的比较](active-directory-b2b-compare-b2c.md)
+#### [获取 B2B 支持](active-directory-b2b-support.md)
+#### [常见问题](active-directory-b2b-faq.md)
 ### [使用 Azure AD Connect 集成本地标识](./connect/active-directory-aadconnect.md)
 
 
@@ -219,9 +232,9 @@
 ### [管理单元](active-directory-administrative-units-management.md)
 ### [Azure 中的资源访问权限](active-directory-understanding-resource-access.md)
 ### [基于角色的访问控制](role-based-access-control-what-is.md)
-#### 管理访问权限
-##### [Azure 门户](role-based-access-control-manage-assignments.md)
-##### [经典门户](role-based-access-control-configure.md)
+#### 管理访问权限分配
+##### [按用户](role-based-access-control-manage-assignments.md)
+##### [按资源](role-based-access-control-configure.md)
 #### [内置角色](role-based-access-built-in-roles.md)
 #### [自定义角色](role-based-access-control-custom-roles.md)
 #### [报告](role-based-access-control-access-change-history-report.md)
@@ -312,6 +325,6 @@
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

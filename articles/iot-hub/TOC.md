@@ -7,11 +7,10 @@
 ## 使用模拟设备
 ### [.NET](iot-hub-csharp-csharp-getstarted.md)
 ### [Java](iot-hub-java-java-getstarted.md)
-### [Node](iot-hub-node-node-getstarted.md)
+### [Node.js](iot-hub-node-node-getstarted.md)
 
 ## 使用 Raspberry Pi
-### Node.js
-#### [启动](iot-hub-raspberry-pi-kit-node-get-started.md)
+### [Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### 第 1 课：配置设备
 ##### [配置设备](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
 ##### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
@@ -32,8 +31,7 @@
 ##### [可选：更改 LED 行为](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
 #### [故障排除](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 
-### C
-#### [启动](iot-hub-raspberry-pi-kit-c-get-started.md)
+### [C](iot-hub-raspberry-pi-kit-c-get-started.md)
 #### 第 1 课：配置设备
 ##### [配置设备](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
 ##### [获取工具 (Windows 7+)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
@@ -55,8 +53,7 @@
 #### [故障排除](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
 
 ## 使用 Intel Edison
-### Node.js
-#### [启动](iot-hub-intel-edison-kit-node-get-started.md)
+### [Node.js](iot-hub-intel-edison-kit-node-get-started.md)
 #### 第 1 课：配置设备
 ##### [配置设备](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
 ##### [获取工具 (Windows 7+)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
@@ -77,8 +74,7 @@
 ##### [可选：更改 LED 行为](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
 #### [故障排除](iot-hub-intel-edison-kit-node-troubleshooting.md)
 
-### C
-#### [启动](iot-hub-intel-edison-kit-c-get-started.md)
+### [C](iot-hub-intel-edison-kit-c-get-started.md)
 #### 第 1 课：配置设备
 ##### [配置设备](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
 ##### [获取工具 (Windows 7+)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
@@ -100,8 +96,7 @@
 #### [故障排除](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
 ## 使用 Arduino
-### Node.js
-#### [启动](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+### [Node.js](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### 第 1 课：配置设备
 ##### [配置设备](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
 ##### [获取工具 (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
@@ -127,9 +122,7 @@
 ### [Windows 上的模拟](iot-hub-windows-gateway-sdk-get-started.md)
 
 ## 使用 IoT 网关初学者工具包
-### 模拟设备
-
-#### [启动](iot-hub-gateway-kit-c-sim-get-started.md)
+### [模拟设备](iot-hub-gateway-kit-c-sim-get-started.md)
 #### 第 1 课：配置 NUC
 ##### [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
 
@@ -149,8 +142,7 @@
 
 #### [故障排除](iot-hub-gateway-kit-c-sim-troubleshooting.md)
 
-### SensorTag 设备
-#### [启动](iot-hub-gateway-kit-c-get-started.md)
+### [SensorTag 设备](iot-hub-gateway-kit-c-get-started.md)
 #### 第 1 课：配置 NUC
 ##### [将 Intel NUC 设置为 IoT 网关](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 
@@ -170,8 +162,7 @@
 
 ##### [故障排除](iot-hub-gateway-kit-c-troubleshooting.md)
 
-## 使用适用于 C 的 IoT 设备 SDK
-### [介绍](iot-hub-device-sdk-c-intro.md)
+## [使用适用于 C 的 IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)
 ### [使用 IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 ### [使用序列化程序](iot-hub-device-sdk-c-serializer.md)
 
@@ -280,6 +271,6 @@
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

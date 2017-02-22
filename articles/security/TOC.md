@@ -52,8 +52,19 @@
 ## [网络安全咨询](azure-security-cyber-services.md)
 ## [Virtual Academy 中的安全课程](security-microsoft-virtual-academy.md)
 ## [第 9 频道上的安全视频](security-channel-nine.md)
+## [威胁建模工具](azure-security-threat-modeling-tool.md)
+###[审核和日志记录](azure-security-threat-modeling-tool-auditing-and-logging.md)
+###[身份验证](azure-security-threat-modeling-tool-authentication.md)
+###[授权](azure-security-threat-modeling-tool-authorization.md)
+###[通信安全性](azure-security-threat-modeling-tool-communication-security.md)
+###[配置管理](azure-security-threat-modeling-tool-configuration-management.md)
+###[加密](azure-security-threat-modeling-tool-cryptography.md)
+###[异常管理](azure-security-threat-modeling-tool-exception-management.md)
+###[输入验证](azure-security-threat-modeling-tool-input-validation.md)
+###[敏感数据](azure-security-threat-modeling-tool-sensitive-data.md)
+###[会话管理](azure-security-threat-modeling-tool-session-management.md)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

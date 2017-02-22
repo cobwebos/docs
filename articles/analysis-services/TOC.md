@@ -16,7 +16,8 @@
 
 # 资源
 ##[数据源连接](analysis-services-datasource.md)
-##[数据提供程序](analysis-services-data-providers.md) 
+##[数据提供程序](analysis-services-data-providers.md)
+##[创建 .odc 文件](analysis-services-odc.md)
 
 
 <!--HONumber=Feb17_HO3-->

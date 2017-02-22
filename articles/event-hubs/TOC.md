@@ -20,6 +20,7 @@
 ## 规划和设计
 ### [专用事件中心](event-hubs-dedicated-overview.md)
 ### [身份验证和安全模型概述](event-hubs-authentication-and-security-model-overview.md)
+### [可用性和一致性](event-hubs-availability-and-consistency.md)
 ## 开发
 ### [可用 API](event-hubs-api-overview.md)
 #### [.NET 标准](event-hubs-dotnet-standard-api-overview.md)
@@ -59,6 +60,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

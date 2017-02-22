@@ -27,7 +27,6 @@
 ### [Azure CLI](resource-group-template-deploy-cli.md)
 ### [门户](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [开发和测试环境](solution-dev-test-environments.md)
 ### [与 Visual Studio Team Services 的持续集成](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## 管理
 ### [PowerShell](powershell-azure-resource-manager.md)
@@ -43,20 +42,23 @@
 ### [使用 Azure CLI 创建服务主体](resource-group-authenticate-service-principal-cli.md)
 ### [使用门户创建服务主体](resource-group-create-service-principal-portal.md)
 ### [用于访问订阅的身份验证 API](resource-manager-api-authentication.md)
-### [设置管理策略](resource-manager-policy.md)
 ### [锁定资源](resource-group-lock-resources.md)
 ### [安全注意事项](best-practices-resource-manager-security.md)
+## 设置资源策略
+### [什么是资源策略？](resource-manager-policy.md)
+### [分配和管理策略](resource-manager-policy-create-assign.md)
+### [资源标记策略](resource-manager-policy-tags.md)
+### [存储策略](resource-manager-policy-storage.md)
+### [Linux VM 策略](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Windows VM 策略](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## 审核和故障排除
 ### [排查常见部署错误](resource-manager-common-deployment-errors.md)
 ### [查看活动日志](resource-group-audit.md)
-### [使用门户查看部署操作](resource-manager-troubleshoot-deployments-portal.md)
-### [使用 PowerShell 查看部署操作](resource-manager-troubleshoot-deployments-powershell.md)
-### [使用 Azure CLI 查看部署操作](resource-manager-troubleshoot-deployments-cli.md)
-### [使用 REST API 查看部署操作](resource-manager-troubleshoot-deployments-rest.md)
+### [查看部署操作](resource-manager-deployment-operations.md)
 
-# 参考
-## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [Azure 2.0 CLI（预览版）](/cli/azure/resource)
+# 引用
+## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
+## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
@@ -65,11 +67,12 @@
 
 # 资源
 ## [限制请求](resource-manager-request-limits.md)
+## [跟踪异步操作](resource-manager-async-operations.md)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

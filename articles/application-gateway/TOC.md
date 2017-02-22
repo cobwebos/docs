@@ -1,5 +1,6 @@
 # 概述
 ## [什么是应用程序网关？](application-gateway-introduction.md)
+## [应用程序网关常见问题](application-gateway-faq.md)
 ## [Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)
 ## [运行状况监视](application-gateway-probe-overview.md)
 ## [URL 路由](application-gateway-url-route-overview.md)
@@ -38,11 +39,10 @@
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell（经典）](application-gateway-create-probe-classic-ps.md)
 ## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
-## 管理
-### [诊断](application-gateway-diagnostics.md)
-### [故障排除](application-gateway-troubleshooting-502.md)
-
-# 参考
+## 故障排除
+### [排查应用程序网关中的错误](application-gateway-troubleshooting-502.md)
+### [诊断日志记录和指标](application-gateway-diagnostics.md)
+# 引用
 ## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
 ## [Azure CLI 2.0 预览版](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
@@ -50,7 +50,7 @@
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
-## [REST](https://msdn.microsoft.com/library/mt684941)
+## [REST](https://docs.microsoft.com/rest/api/applicationgateway)
 ## [REST（经典）](https://msdn.microsoft.com/library/azure/mt299393)
 # 相关内容
 ## [ExpressRoute](/azure/expressroute/)
@@ -67,6 +67,6 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

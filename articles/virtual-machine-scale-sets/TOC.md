@@ -3,6 +3,7 @@
 
 # 入门
 ## [在门户中创建规模集](virtual-machine-scale-sets-portal-create.md)
+## [使用 Azure CLI 创建规模集](virtual-machine-scale-sets-linux-create-cli.md)
 
 # 如何
 ## 规划和设计
@@ -10,12 +11,18 @@
 
 ## 部署
 ### [使用门户部署规模集](virtual-machine-scale-sets-portal-create.md)
+### [带有托管磁盘的规模集](virtual-machine-scale-sets-managed-disks.md)
 ### [使用 Visual Studio 部署规模集](virtual-machine-scale-sets-vs-create.md)
 ### [使用 PowerShell 部署规模集](virtual-machine-scale-sets-windows-create.md)
 ### [使用 Azure CLI 部署规模集](virtual-machine-scale-sets-linux-create-cli.md)
 ### [具有自动缩放功能的 Linux 规模集](virtual-machine-scale-sets-linux-autoscale.md)
 ### [具有自动缩放功能的 Windows 规模集](virtual-machine-scale-sets-windows-autoscale.md)
 ### [规模集中的应用程序](virtual-machine-scale-sets-deploy-app.md)
+### [将数据磁盘与规模集配合使用](virtual-machine-scale-sets-attached-disks.md)
+### [使用大型规模集](virtual-machine-scale-sets-placement-groups.md)
+### [将规模集模板转换为使用托管磁盘](virtual-machine-scale-sets-convert-template-to-md.md)
+
+
 
 ## 管理
 ### [使用 PowerShell 管理 Windows 规模集](virtual-machine-scale-sets-windows-manage.md)
@@ -24,6 +31,7 @@
 ### [规模集升级](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [高级自动缩放](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [使用 DSC 和规模集](virtual-machine-scale-sets-dsc.md)
+### [将模板转换为托管磁盘](virtual-machine-scale-sets-convert-template-to-md.md)
 
 ## 故障排除
 ### [自动缩放](virtual-machine-scale-sets-troubleshoot.md)
@@ -31,7 +39,7 @@
 # 参考
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
-## [REST](/rest/api/compute/)
+## [REST](/rest/api/virtualmachinescalesets/)
 
 # 资源
 ## 定价 
@@ -40,6 +48,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

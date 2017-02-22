@@ -39,9 +39,10 @@
 ## 与 Azure 服务集成
 ### [从 Azure VNET 中的 VM 访问](data-lake-store-connectivity-from-vnets.md)
 ### [与 Data Lake Analytics 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [使用门户创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [使用 PowerShell 创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [使用 Resource Manager 模板创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [将 HDInsight 与 Data Lake Store 配合使用 - 门户](data-lake-store-hdinsight-hadoop-use-portal.md)
+### [将 HDInsight 与作为默认存储的 Data Lake Store 配合使用 - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+### [将 HDInsight 与作为附加存储的 Data Lake Store 配合使用 - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+### [将 HDInsight 与 Data Lake Store 配合使用 - Azure 模板](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [与数据工厂配合使用](../data-factory/data-factory-azure-datalake-connector.md)
 ### [与流分析配合使用](data-lake-store-stream-analytics.md)
 ### [与 Power BI 配合使用](data-lake-store-power-bi.md)
@@ -71,6 +72,6 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -41,6 +41,8 @@
 #### [管理作业](storsimple-virtual-array-manage-jobs.md)
 #### [更改设备密码](storsimple-virtual-array-change-device-admin-password.md)
 #### [在 Windows Server 主机上配置 MPIO](storsimple-virtual-array-configure-mpio-windows-server.md)
+#### [诊断和故障排除](storsimple-virtual-array-diagnose-problems.md)
+#### [记录支持请求](storsimple-virtual-array-log-support-ticket.md)
 
 ### [通过 Azure 经典门户进行管理](storsimple-ova-manager-service-administration.md)
 #### [安装最新更新](storsimple-ova-install-update-01.md)
@@ -175,6 +177,7 @@
 #### [从其他存储设备](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
+#### [安装 Update 4](storsimple-install-update-4.md)
 #### [安装 Update 3](storsimple-install-update-3.md)
 #### [安装 Update 2.2](storsimple-install-update-21.md)
 #### [安装 Update 2](storsimple-install-update-2.md)
@@ -182,7 +185,8 @@
 #### [更新设备](storsimple-update-device.md)
 
 ## 发行说明
-### [Update 3 - 最新版](storsimple-update3-release-notes.md)
+### [Update 4 - 最新版](storsimple-update4-release-notes.md)
+### [Update 3](storsimple-update3-release-notes.md)
 ### [Update 2.2](storsimple-update21-release-notes.md)
 ### [Update 2 ](storsimple-update2-release-notes.md)
 ### [Update 1 ](storsimple-update1-release-notes.md)
@@ -206,6 +210,18 @@
 ## 如何
 ### [使用 .NET 转换数据](storsimple-data-manager-dotnet-jobs.md)
 
+# StorSimple 合作伙伴版
+## 概述
+### [什么是解决方案？](storsimple-partner-csp-overview.md)
+
+## 入门
+### [为 CSP 部署虚拟阵列](storsimple-partner-csp-deploy.md)
+
+## 发行说明
+### [StorSimple 发行说明](https://aka.ms/storsimple-virtual-array-latest-relnote)
+### [CSP 发行说明](https://partner.microsoft.com/Support/whats-new)
+### [StorSimple for CSP：常见问题](storsimple-partner-csp-faq.md)
+
 # 相关内容
 ## [StorSimple 5000-7000 系列](http://onlinehelp.storsimple.com)
 
@@ -223,6 +239,6 @@
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

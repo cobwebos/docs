@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Azure IoT 中心文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档。"
+services: iot-hub
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: iot-hub
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: da0387255c538afd5490f313c10509a1b40e6dd9
+ms.sourcegitcommit: eb364084e5f5155399c8a052b036ec0316616366
+ms.openlocfilehash: 36b9070260b334f1713cf575eb94007ce1b556f5
 
 ---
+
 #<a name="iot-hub-documentation"></a>IoT 中心文档
 
 了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档可帮助你在 IoT 设备与解决方案后端之间部署可靠的双向通信。 
@@ -127,8 +139,10 @@ ms.openlocfilehash: da0387255c538afd5490f313c10509a1b40e6dd9
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p>
                         <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.iot.service.auth">Java（服务）</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.iothub">Java（设备）</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.service.auth">Java（服务）</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.17/index.html">Node（服务）</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iot-device/1.0.15/index.html">Node（设备）</a></p>
                         <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDK</a></p>
                         <p><a href="http://azure.github.io/azure-iot-gateway-sdk">网关 SDK</a></p>
                     </div>
@@ -157,6 +171,6 @@ ms.openlocfilehash: da0387255c538afd5490f313c10509a1b40e6dd9
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

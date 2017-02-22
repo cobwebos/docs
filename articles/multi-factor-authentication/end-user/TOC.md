@@ -10,10 +10,12 @@
 ## [故障排除](multi-factor-authentication-end-user-troubleshoot.md)
 ## [设置应用密码](multi-factor-authentication-end-user-app-passwords.md)
 ## 使用 Microsoft Authenticator 应用
-### [入门](microsoft-authenticator-app-how-to.md)
+### [应用入门](microsoft-authenticator-app-how-to.md)
+### [使用手机登录](microsoft-authenticator-app-phone-signin-faq.md)
 ### [常见问题](microsoft-authenticator-app-faq.md)
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO3-->
 
 

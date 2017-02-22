@@ -45,7 +45,7 @@
 ## [Azure 诊断架构](../monitoring-and-diagnostics/azure-diagnostics-schema.md)
 ### [诊断架构 1.0](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md)
 ### [诊断架构 1.2](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md)
-### [诊断架构 1.3 到 1.5](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-to-1dot5.md)
+### [诊断架构 1.3 到 1.7](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
 
 
 # 资源
@@ -54,6 +54,6 @@
 ## [支持的指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 
