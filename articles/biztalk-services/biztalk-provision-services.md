@@ -15,13 +15,12 @@ ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: a2e289de2719be64a9468cb9b24ff4101b2e93db
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
 
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>使用 Azure 门户创建 BizTalk 服务
-在 Azure 门户中创建 BizTalk 服务。
 
 > [!TIP]
 > 若要登录 Azure 门户，需要使用 Azure 帐户和 Azure 订阅。 如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 请参阅 [Azure 免费试用](http://go.microsoft.com/fwlink/p/?LinkID=239738)。
@@ -116,7 +115,7 @@ ms.openlocfilehash: a2e289de2719be64a9468cb9b24ff4101b2e93db
 
 根据 BizTalk 服务的状态，某些操作可能无法完成。 有关这些操作的列表，请转到 [BizTalk 服务状态图表](biztalk-service-state-chart.md)。
 
-## <a name="postprovisioning-steps"></a>预配后的步骤
+## <a name="post-provisioning-steps"></a>预配后的步骤
 * [在本地计算机上安装证书](#InstallCert)
 * [添加生产就绪证书](#AddCert)
 * [获取 Access Control 命名空间](#ACS)
@@ -131,7 +130,7 @@ ms.openlocfilehash: a2e289de2719be64a9468cb9b24ff4101b2e93db
    ![修改 SSL 证书][QuickGlance]
 5. 双击该证书，然后运行向导以安装证书。 确保在“受信任的根证书颁发机构”  存储下安装该证书。
 
-#### <a name="a-nameaddcertaadd-a-productionready-certificate"></a><a name="AddCert"></a>添加生产就绪证书
+#### <a name="a-nameaddcertaadd-a-production-ready-certificate"></a><a name="AddCert"></a>添加生产就绪证书
 在创建 BizTalk 服务时自动创建的自签名证书仅限在开发环境中使用。 对于生产方案，使用生产就绪证书替换它。
 
 1. 在“仪表板”选项卡上，选择“更新 SSL 证书”。
@@ -275,6 +274,6 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

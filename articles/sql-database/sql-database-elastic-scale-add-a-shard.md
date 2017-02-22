@@ -27,7 +27,7 @@ ms.openlocfilehash: 540ef8379145b764d0926649095db57fddb27329
 
 如果新的键值范围还不是现有映射的组成部分，则添加新分片以及将新的键或范围关联到该分片非常简单。 
 
-### <a name="example-adding-a-shard-and-its-range-to-an-existing-shard-map"></a>示例：将分片及其范围添加到现有的分片映射
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>示例：将分片及其范围添加到现有的分片映射
 本示例使用 [TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx)、[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)、[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\)) 方法，并创建 [ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.) 类的实例。 在以下示例中，创建了一个名为 **sample_shard_2** 的数据库以及其中所有必要的架构对象，用于保存范围 [300, 400)。  
 
     // sm is a RangeShardMap object.

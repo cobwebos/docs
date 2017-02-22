@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fb80168b38be88ab18952569e6b6f9bcb53d473a
+ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
+ms.openlocfilehash: fd089f0cc5c23dcddb392df55c65907519f59248
 
 
 ---
 # <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>添加 Application Insights SDK 以监视 Node.js 应用
-*Application Insights 目前提供预览版。*
 
-[Visual Studio Application Insights](app-insights-overview.md) 监视实时应用程序，帮助[检测和诊断性能问题及异常](app-insights-detect-triage-diagnose.md)，同时[了解应用的使用情况](app-insights-overview-usage.md)。 它适用于在自有本地 IIS 服务器或 Azure VM 上托管的应用，以及 Azure Web 应用。
+
+[Azure Application Insights](app-insights-overview.md) 监视实时应用程序，帮助[检测和诊断性能问题及异常](app-insights-detect-triage-diagnose.md)，同时[了解应用的使用情况](app-insights-overview-usage.md)。 它适用于在自有本地 IIS 服务器或 Azure VM 上托管的应用，以及 Azure Web 应用。
 
 该 SDK 可以自动收集传入 HTTP 请求速率和响应、性能计数器（CPU、内存、RPS）和未经处理的异常。 此外，还可以添加自定义的调用，以跟踪依赖关系、指标或其他事件。
 
@@ -95,7 +95,7 @@ appInsights.setup("<instrumentation_key>").start();
 请参阅 [此疑难解答项](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)。
 
 ## <a name="customized-usage"></a>定制的使用情况
-### <a name="disabling-autocollection"></a>禁用自动收集
+### <a name="disabling-auto-collection"></a>禁用自动收集
 ```javascript
 import appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>")
@@ -193,13 +193,13 @@ server.on("listening", () => {
 
 [了解用户]: app-insights-overview-usage.md
 [指标]: app-insights-metrics-explorer.md
-[性能]: app-insights-web-monitor-performance.md
+[perf]: app-insights-web-monitor-performance.md
 [门户]: http://portal.azure.com/
-[问题与解答]: app-insights-troubleshoot-faq.md
+[qna]: app-insights-troubleshoot-faq.md
 [角色]: app-insights-resources-roles-access-control.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2016
+ms.date: 11/11/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: eee65672b3a9615afe2850b0cbc6daa275fc04ec
+ms.sourcegitcommit: 843f0862f9e4d8dc1d40e110710e48ad66716168
+ms.openlocfilehash: fe590e7fc551c175d2f41f5b98e1558a756df806
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: eee65672b3a9615afe2850b0cbc6daa275fc04ec
 ## <a name="configure-automation-account"></a>配置自动化帐户
 若要让 Azure 自动化与 AWS 交流，首先需要检索 AWS 凭据并在 Azure 自动化中将其存储为资产。  执行 AWS 文档 [Managing Access Keys for your AWS Account](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)（管理 AWS 帐户的访问密钥）中所述的以下步骤来创建访问密钥，并复制**访问密钥 ID** 和**密码访问密钥**（选择性地下载密钥文件以将其保存到某个安全位置）。
 
-创建并复制 AWS 安全密钥后，需要使用 Azure 自动化帐户创建一个凭据资产，以安全将其保存并使用你的 Runbook 对其进行引用。  按照[Azure 自动化中的凭据资产](automation-credentials.md#creating-a-new-credential-asset)一文的**创建新的凭据资产**部分中的步骤进行操作，并输入以下信息：
+创建并复制 AWS 安全密钥后，需要使用 Azure 自动化帐户创建一个凭据资产，以安全将其保存并使用你的 Runbook 对其进行引用。  按照[Azure 自动化中的凭据资产](automation-credentials.md)一文的**创建新的凭据资产**部分中的步骤进行操作，并输入以下信息：
 
 1. 在“名称”框中，输入“AWScred”或符合命名标准的适当值。  
 2. 在“用户名”框中，键入**访问 ID**，并在“密码”和“确认密码”框中键入**密码访问密钥**。   
@@ -42,6 +42,7 @@ ms.openlocfilehash: eee65672b3a9615afe2850b0cbc6daa275fc04ec
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -40,7 +40,7 @@ ms.openlocfilehash: 2420d31c73fcb43e680edf2a95995e4ed4969236
 #### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>我在使用弹性数据库工具方面存在疑问，如何才能获得解答？
 请在 [Azure SQL 数据库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)上联系我们。
 
-#### <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard-is-this-by-design"></a>当我使用分片键建立数据库连接时，我仍可以对同一分片上的其他分片键查询数据。  这是设计使然吗？
+#### <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>当我使用分片键建立数据库连接时，我仍可以对同一分片上的其他分片键查询数据。  这是设计使然吗？
 弹性缩放 API 可让你连接到分片键的正确数据库，但不提供分片键筛选。  如果需要，请在查询中添加 **WHERE** 子句，以将范围限制到提供的分片键。
 
 #### <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>我是否可为分片集中的每个分片使用不同的 Azure 数据库版本？

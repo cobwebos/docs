@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/29/2016
+ms.date: 11/11/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5cd87c888a5e3407da2bad1bc3f2ef10aa75312b
+ms.sourcegitcommit: dd6b2fa2a1ca003578eaee82ef42741b9b1bf2a4
+ms.openlocfilehash: 432321c66fc991136b0b473abd0880876c31887e
 
 
 ---
@@ -28,7 +28,7 @@ Azure 自动化让你可以通过其他云提供程序（如 Amazon Web Services
 ## <a name="automation-account-overview"></a>自动化帐户概述
 首次启动 Azure 自动化时，你必须创建至少一个自动化帐户。 使用自动化帐户，可以将你的自动化资源（Runbook、资产、配置）与其他自动化帐户中包含的资源相隔离。 可以使用自动化帐户将资源隔离到独立的逻辑环境中。 例如，你可以在开发环境中使用一个帐户，在生产环境中使用另一个帐户，并在本地环境中使用另一个账户。  Azure 自动化帐户不同于 Microsoft 帐户或在你的 Azure 订阅中创建的帐户。
 
-每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理任何区域中的资源。 在不同区域中创建自动化帐户的主要原因是，你的策略要求数据和资源隔离到特定的区域。
+每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理订阅中的所有资源。 在不同区域中创建自动化帐户的主要原因是，你的策略要求数据和资源隔离到特定的区域。
 
 > [!NOTE]
 > 无法在 Azure 经典门户中访问使用在 Azure 门户创建的自动化帐户及其包含的资源。 如果你想要使用 Windows PowerShell 来管理这些帐户或其资源，必须使用 Azure 资源管理器模块。
@@ -60,6 +60,6 @@ Azure 自动化让你可以通过其他云提供程序（如 Amazon Web Services
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

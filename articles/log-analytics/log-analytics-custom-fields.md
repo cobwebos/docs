@@ -44,7 +44,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 > 
 > 
 
-### <a name="step-1-identify-records-that-will-have-the-custom-field"></a>步骤 1 – 确定将具有自定义字段的记录
+### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>步骤 1 – 确定将具有自定义字段的记录
 第一步是确定将获得自定义字段的记录。  首先执行[标准日志搜索](log-analytics-log-searches.md)，然后选择要充当模型的记录，Log Analytics 将通过该模型进行学习。  当指定要将数据提取到自定义字段中时，“字段提取向导”会打开，可以在其中验证和优化条件。
 
 1. 转到“日志搜索”，然后使用“检索记录的查询”[](log-analytics-log-searches.md)（这些记录将具有自定义字段）。
@@ -60,7 +60,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 2. 单击“提取”以执行已收集记录的分析。  
 3. “摘要”和“搜索结果”部分会显示提取的结果，使你可以检查提取的准确性。  “摘要”显示用于确定记录的条件以及已确定的每个数据值的计数。  “搜索结果”提供匹配条件的记录的详细列表。
 
-### <a name="step-3-verify-accuracy-of-the-extract-and-create-custom-field"></a>步骤 3 - 验证提取的准确性并创建自定义字段
+### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>步骤 3 - 验证提取的准确性并创建自定义字段
 完成执行初始提取后，Log Analytics 将基于已收集的数据显示提取结果。  如果觉得结果准确，可以创建自定义字段（无需进行更多工作）。  如果结果不准确，可以优化结果，以便 Log Analytics 可以改善其逻辑。
 
 1. 如果初始提取中的任何值都不正确，可以单击不准确记录旁边的“编辑”图标，然后选择“修改此突出显示”修改所选项。

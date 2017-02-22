@@ -101,7 +101,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 > 
 
 ## <a name="basic-reporting"></a>基本报告
-### <a name="recommended-method-overload-your-phoneapplicationpage-classes"></a>推荐的方法：重载 `PhoneApplicationPage` 类
+### <a name="recommended-method--overload-your-phoneapplicationpage-classes"></a>推荐的方法：重载 `PhoneApplicationPage` 类
 若要激活 Engagement 计算用户、会话、活动、崩溃和技术统计数据所需的所有日志报告，只需从 `EngagementPage` 类继承所有 `PhoneApplicationPage` 子类。
 
 下面举例说明了如何为应用程序的一个页面执行此操作。 可以为应用程序的所有页面执行相同的操作。
