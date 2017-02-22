@@ -23,7 +23,7 @@ ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
 # <a name="create-a-java-web-app-in-azure-app-service"></a>在 Azure App Service 中创建 Java Web 应用
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-本教程演示如何通过使用 [Azure 门户] [在 Azure App Service 中创建 Java Web 应用]。 Azure 门户是可用于管理 Azure 资源的 Web 界面。
+本教程演示如何通过使用 [Azure 门户]，[在 Azure  App Service 中创建 Java Web 应用]。 Azure 门户是可用于管理 Azure 资源的 Web 界面。
 
 > [!NOTE]
 > 若要完成本教程，您需要一个 Microsoft Azure 帐户。 如果没有帐户，可以[激活 Visual Studio 订户权益]，或者[注册免费试用帐户]。
@@ -148,7 +148,7 @@ ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
 [激活 Visual Studio 订户权益]: http://go.microsoft.com/fwlink/?LinkId=623901
 [注册免费试用帐户]: http://go.microsoft.com/fwlink/?LinkId=623901
 [试用应用服务]: https://azure.microsoft.com/try/app-service/
-[在 Azure App Service 中创建 Java Web 应用]: http://go.microsoft.com/fwlink/?LinkId=529714
+[在 Azure  App Service 中创建 Java Web 应用]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Java 开发中心]: /develop/java/
 [Resource Manager 概述]: ../azure-resource-manager/resource-group-overview.md
 [将自定义 Java Web 应用上载到 Azure]: ./web-sites-java-custom-upload.md
