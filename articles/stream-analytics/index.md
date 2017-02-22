@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure 流分析文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。"
+services: stream-analytics
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: stream-analytics
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
+ms.sourcegitcommit: 4835208ce6dcff978cb7b4d722763f705dc6dd33
+ms.openlocfilehash: 8cfa25410edc7c54e9139a596ab39d8d580f44a5
 
 ---
 
@@ -124,13 +135,14 @@ ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
 
 ---
 
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="Command-Line</h3>
+                    <div class="cardText">
+                        <h3>命令行</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics">PowerShell</a></p>
                     </div>
                 </div>
@@ -141,7 +153,8 @@ ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="Languages</h3>
+                    <div class="cardText">
+                        <h3>语言</h3>
                         <p><a href="/dotnet/api/streamanalytics.tests.operationtests">.NET</a></p>
                         <p><a href="https://msdn.microsoft.com/library/azure/dn834998">查询语言</a></p>
                     </div>
@@ -153,7 +166,8 @@ ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="REST</h3>
+                    <div class="cardText">
+                        <h3>REST</h3>
                         <p><a href="/rest/api/streamanalytics">REST API 参考</a></p>
                     </div>
                 </div>
@@ -166,6 +180,6 @@ ms.openlocfilehash: 7095a55d9ea79bfd11b429d4fa53e04c482fbbea
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 
