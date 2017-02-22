@@ -16,18 +16,12 @@ ms.workload: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b5a3f40ff8811c08d130c2a3e0a7d61aed9457d1
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 9ea5287884cd7f1eb7314002b3ae98c9259686c3
 
 
 ---
 # <a name="restore-a-deleted-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户还原已删除的 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [概述](sql-database-recovery-using-backups.md)
-> * [**还原已删除的数据库：门户**](sql-database-restore-deleted-database-portal.md)
-> * [还原已删除的数据库：PowerShell](sql-database-restore-deleted-database-powershell.md)
-> 
-> 
 
 ## <a name="select-the-database-to-restore"></a>选择要还原的数据库
 在 Azure 门户中还原已删除的数据库：
@@ -50,6 +44,6 @@ ms.openlocfilehash: b5a3f40ff8811c08d130c2a3e0a7d61aed9457d1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

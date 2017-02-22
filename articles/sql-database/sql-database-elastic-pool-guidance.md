@@ -3,7 +3,7 @@ title: "何时应使用弹性库池？"
 description: "弹性池是由一组弹性数据库共享的可用资源的集合。 本文提供相关指导来帮助用户评估是否适合对一组数据库使用弹性池。"
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: ddove
 manager: jhubbard
 editor: 
 ms.assetid: 3d3941d5-276c-4fd2-9cc1-9fe8b1e4c96c
@@ -11,13 +11,13 @@ ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
 ms.date: 12/19/2016
-ms.author: sstein;carlrab
+ms.author: ddove
 ms.workload: data-management
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 6c8420a154d998aa95c0220049ee54b3039a872b
-ms.openlocfilehash: a79b78a4e8e683afe5b41a41911e7d5f020eff88
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 9fa8c7d06675c3a7481e64c8f5390f1b5470a280
 
 
 ---
@@ -54,9 +54,9 @@ Azure SQL 数据库中的弹性池可使 SaaS 开发人员将一组数据库的�
 
 以上一个示例为基础，假设有其他数据库具有与 DB1 类似的使用模式。 在接下来的两个图形中，4 个数据库和 20 个数据库的使用量分层放在相同的图形，以说明随时间推移，它们的使用率非重叠的性质：
 
-   ![使用模式适用于池的 4 个数据库](./media/sql-database-elastic-pool-guidance/four-databases.png)
+   ![使用模式适用于池的&4; 个数据库](./media/sql-database-elastic-pool-guidance/four-databases.png)
 
-  ![使用模式适用于池的 20 个数据库](./media/sql-database-elastic-pool-guidance/twenty-databases.png)
+  ![使用模式适用于池的&20; 个数据库](./media/sql-database-elastic-pool-guidance/twenty-databases.png)
 
 在上图中，黑线表示跨所有 20 个数据库的聚合 DTU 使用量。 其中表明聚合 DTU 使用量永远不会超过 100 个 DTU，并指出 20 个数据库可以在这段期间共享 100 个 eDTU。 相比于将每个数据库放在单一数据库的 S3 性能级别，这会导致 DTU 减少 20 倍和价格降低 13 倍。
 
@@ -100,17 +100,6 @@ Azure SQL 数据库中的弹性池可使 SaaS 开发人员将一组数据库的�
 
 SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 除推荐外，内置体验还估算服务器上自定义组数据库的 eDTU 使用率。 这使你可以执行“假设”分析，其方法为：通过交互方式将数据库添加到池并删除它们以在提交所做的更改之前获取资源使用率分析和调整建议。 相关操作方式，请参阅[监视、管理弹性池并调整其大小](sql-database-elastic-pool-manage-portal.md)。
 
-若要获得更灵活的资源使用率评估，以便估算 V12 之前版本的服务器的临时大小调整，并估算其他服务器中数据库的大小调整，请参阅[可标识适用于弹性池的数据库的 Powershell 脚本](sql-database-elastic-pool-database-assessment-powershell.md)。
-
-| 功能 | 门户体验 | PowerShell 脚本 |
-|:--- |:--- |:--- |
-| 粒度 |15 秒 |15 秒 |
-| 考虑池与单一数据库性能级别之间的定价差异 |是 |否 |
-| 允许自定义已分析的数据库列表 |是 |是 |
-| 允许自定义分析中使用的时间段 |否 |是 |
-| 允许自定义跨不同服务器的已分析数据库列表 |否 |是 |
-| 允许自定义 v11 服务器上的已分析数据库列表 |否 |是 |
-
 在无法使用工具的情况下，以下分步步骤可以帮助你评估池是否比单一数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU：
@@ -126,13 +115,12 @@ SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源
 并非所有单一数据库都是池的最佳候选项。 使用模式表现为低平均使用率和相对不出现频繁使用高峰的数据库，是池的绝佳候选项。 应用程序使用模式是动态的，因此，请使用本文中所述的信息和工具进行初始评估，确定池是否是部分或所有数据库的良好选择。 本文仅帮助用户确定弹性池是否适用。 请记住，应持续监视历史资源使用量，并不断地重新评估所有数据库的性能级别。 要知道，用户可以轻松地将数据库移入和移出弹性池，如果有很多的数据库，可以创建大小不一的池，以将数据库划分到其中。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建弹性池](sql-database-elastic-pool-create-portal.md)
+* [创建弹性池](sql-database-elastic-pool-manage-portal.md)
 * [监视、管理弹性池并调整其大小](sql-database-elastic-pool-manage-portal.md)
 * [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md)
-* [用于识别适用于弹性池的数据库的 PowerShell 脚本](sql-database-elastic-pool-database-assessment-powershell.md)
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -11,19 +11,19 @@ ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
 ms.custom: overview
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 02/09/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 8ed4b3b30df6756c4e99e77476bc4c3a21bba90e
-ms.openlocfilehash: e93d54910d8ed64879e66542c4c795101bc19a41
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL 数据库选项和性能：了解每个服务层提供的功能
-[Azure SQL 数据库](sql-database-technical-overview.md)提供了&3; 个具有多个性能级别的服务层（**基本**、**标准**和**高级**），用于处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在递增式提供更高的吞吐量。 可在不停机的情况下动态更改[服务层和性能级别](sql-database-scale-up.md)。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 
+[Azure SQL 数据库](sql-database-technical-overview.md)提供了&3; 个具有多个性能级别的服务层（**基本**、**标准**和**高级**），用于处理不同的工作负荷。 更高的性能级别提供更多的资源，旨在递增式提供更高的吞吐量。 可在不停机的情况下动态更改[服务层和性能级别](sql-database-service-tiers.md)。 基本、标准和高级服务层都提供 99.99% 的运行时间 SLA、灵活的业务连续性选项、安全功能和按小时计费功能。 
 
 可以使用选定[性能级别](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)上的专用资源创建单一数据库。 还可在[弹性池](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)中管理多个数据库，弹性池中的资源在整个数据库中共享。 可用于单一数据库的资源以数据库事务单位 (DTU) 表示，弹性池以弹性 DTU (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU？](sql-database-what-is-a-dtu.md) 
 
@@ -48,7 +48,7 @@ ms.openlocfilehash: e93d54910d8ed64879e66542c4c795101bc19a41
 确定了最低服务层后，就可以确定数据库的性能级别（DTU 数）。 通常情况下，可以先使用标准 S2 和 S3 性能级别。 对于具有高 CPU 或 IO 要求的数据库，开始适合使用高级性能级别。 高级版提供更多的 CPU，并且一开始就提供比最高标准性能水平高出 10 倍的 IO。
 
 ## <a name="single-database-service-tiers-and-performance-levels"></a>单一数据库服务层和性能级别
-对于单一数据库，每个服务层内都有多个性能级别。 你可以灵活选择最能满足你的工作负荷需求的级别。 如果你需要增加或减少工作负荷，可以轻松更改数据库层。 有关详细信息，请参阅 [更改数据库服务层和性能级别](sql-database-scale-up.md) 。
+对于单一数据库，每个服务层内都有多个性能级别。 你可以灵活选择最能满足你的工作负荷需求的级别。 如果你需要增加或减少工作负荷，可以轻松更改数据库层。 有关详细信息，请参阅 [更改数据库服务层和性能级别](sql-database-service-tiers.md) 。
 
 尽管有多个托管的数据库，你的数据库仍可确保获得一组资源，并且数据库的预期性能特征不受影响。
 
@@ -110,6 +110,6 @@ ms.openlocfilehash: e93d54910d8ed64879e66542c4c795101bc19a41
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

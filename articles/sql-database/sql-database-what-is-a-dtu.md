@@ -11,14 +11,14 @@ ms.assetid: 89e3e9ce-2eeb-4949-b40f-6fc3bf520538
 ms.service: sql-database
 ms.custom: overview
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 3d619f5d6959594ee9b139d611d7e45390a40c55
-ms.openlocfilehash: d9b0eaa48d71f3ecf0a23f3bddb3c777c98afea7
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 8b22b5ac29e855f3074cab01042057f214e9e9b7
 
 
 ---
@@ -30,7 +30,7 @@ DTU 是一个资源度量单位，表示保证可用于[单一数据库服务层
 
 ![SQL 数据库简介：按层和级别统计的单一数据库 DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
-可以随时 [更改服务层](sql-database-scale-up.md) ，将应用程序故障时间降至最低（通常在平均 4 秒以下）。 许多业务和应用只要能够创建数据库并按需调高或调低性能即可，尤其是当使用模式相对容易预测时。 但如果有无法预测的使用模式，则管理成本和业务模式就会变得相当困难。 在这种情况下，可以使用具有一定数量 eDTU 的弹性池。
+可以随时 [更改服务层](sql-database-service-tiers.md) ，将应用程序故障时间降至最低（通常在平均&4; 秒以下）。 许多业务和应用只要能够创建数据库并按需调高或调低性能即可，尤其是当使用模式相对容易预测时。 但如果有无法预测的使用模式，则管理成本和业务模式就会变得相当困难。 在这种情况下，可以使用具有一定数量 eDTU 的弹性池。
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>弹性数据库事务单位 (eDTU) 的定义
 eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组数据库之间共享的资源集，称为 [弹性池](sql-database-elastic-pool.md)。 弹性池是一种简单的低成本高效益的解决方案，用于管理使用模式变化很大且不可预测的多个数据库的性能目标。 有关详细信息，请参阅 [弹性池和服务层](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) 。
@@ -58,6 +58,6 @@ eDTU 是一个资源集度量单位，表示可在 Azure SQL Server 中的一组
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 38d70ed302eeab912ce4fe33272f85e96f1b1eda
-ms.openlocfilehash: 8ac76a3b15303bb3e3d36a1a9b878ec0fe25d4d4
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 8ac76a3b15303bb3e3d36a1a9b878ec0fe25d4d4
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 以下步骤将引导你使用 AzCopy 命令行实用工具将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章，说明如何基于已上传的 VHD 文件创建自定义映像。 若要深入了解 Azure 中的磁盘和 VHD，请参阅[关于虚拟机的磁盘和 VHD](../virtual-machines/virtual-machines-linux-about-disks-vhds.md)
+在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 以下步骤将引导你使用 AzCopy 命令行实用工具将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章，说明如何基于已上传的 VHD 文件创建自定义映像。 若要深入了解 Azure 中的磁盘和 VHD，请参阅[关于虚拟机的磁盘和 VHD](../storage/storage-about-disks-and-vhds-linux.md)
 
 > [!NOTE] 
 >  
@@ -85,6 +85,6 @@ ms.openlocfilehash: 8ac76a3b15303bb3e3d36a1a9b878ec0fe25d4d4
 - [通过 PowerShell，在 Azure 开发测试实验室中基于 VHD 文件创建自定义映像](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/20/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60458091f8c60eb1d726508724fc96eb0145e3bc
+ms.sourcegitcommit: d1d05b46591fe4b72c92c59d357681c8e1cdb336
+ms.openlocfilehash: c208660fc1439ca831ada6c9bb348dbc3eadc18c
 
 
 ---
@@ -38,10 +38,10 @@ ms.openlocfilehash: 60458091f8c60eb1d726508724fc96eb0145e3bc
 | 媒体编码器高级工作流 |允许你使用媒体编码器高级工作流运行编码任务。 |[简要介绍并比较 Azure 按需媒体编码器](media-services-encode-asset.md) |
 | Azure Media Indexer |使媒体文件和内容可搜索，以及生成隐藏字幕跟踪和关键字。 |[Azure Media Indexer](media-services-index-content.md) |
 | Azure Media Hyperlapse（预览） |使你能够通过视频防抖动功能消除视频中的“晃动”。 也可使将内容制作为可用剪辑的速度加快。 |[Azure Media Hyperlapse](media-services-hyperlapse-content.md) |
-| Azure Media Encoder |已过时 | |
-| 存储解密 |已过时 | |
-| Azure 媒体包装器 |已过时 | |
-| Azure 媒体加密器 |已过时 | |
+| Azure Media Encoder |已放弃 | |
+| 存储解密 |已放弃 | |
+| Azure 媒体包装器 |已放弃 | |
+| Azure 媒体加密器 |已放弃 | |
 
 ## <a name="get-mediaprocessor"></a>获取 MediaProcessor
 > [!NOTE]
@@ -98,6 +98,6 @@ ms.openlocfilehash: 60458091f8c60eb1d726508724fc96eb0145e3bc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

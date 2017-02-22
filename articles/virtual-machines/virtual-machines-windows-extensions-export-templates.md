@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
-ms.openlocfilehash: 73eec3322f8ee027c68ede89501b8b9fb00961a6
+ms.sourcegitcommit: f24227a33b2106955dc44defe8feb5a7d4dc655e
+ms.openlocfilehash: 6f6338d8c0e941b7fee4fb8c04315b26919716a3
 
 ---
 
@@ -148,18 +148,18 @@ Azure Resource Manager 自动化脚本生成一个 Resource Manager 模板、一
 }
 ```
 
-如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureObject` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 以 `IaasDiagnostic` 扩展为例，将在 Resource Manager 模板的参数部分创建以下参数。
 
 ```json
 "storageAccountName": {
     "defaultValue": null,
-    "type": "SecureObject"
+    "type": "SecureString"
 },
 "storageAccountKey": {
     "defaultValue": null,
-    "type": "SecureObject"
+    "type": "SecureString"
 }
 ```
 
@@ -167,6 +167,6 @@ Azure Resource Manager 自动化脚本生成一个 Resource Manager 模板、一
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

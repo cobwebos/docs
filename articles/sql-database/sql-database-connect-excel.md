@@ -17,18 +17,12 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: jhubbard
 translationtype: Human Translation
-ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
-ms.openlocfilehash: 69e1f52e108293a48a3fbdee8973601423b9117c
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: d70c0350809325234db366acc676e381ff042c13
 
 
 ---
-# <a name="sql-database-tutorial-connect-excel-to-an-azure-sql-database-and-create-a-report"></a>SQL 数据库教程：将 Excel 连接到 Azure SQL 数据库并创建报表
-> [!div class="op_single_selector"]
-> * [Visual Studio](sql-database-connect-query.md)
-> * [SSMS](sql-database-connect-query-ssms.md)
-> * [Excel](sql-database-connect-excel.md)
-> 
-> 
+# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库并创建报表
 
 了解如何将 Excel 连接到云中的 SQL 数据库，以便导入数据并根据数据库中的值来创建表和图表。 在本教程中，你将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
 
@@ -89,6 +83,6 @@ ms.openlocfilehash: 69e1f52e108293a48a3fbdee8973601423b9117c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

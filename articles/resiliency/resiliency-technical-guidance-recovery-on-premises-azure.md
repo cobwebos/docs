@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: c3a6df9f91af5227526e06fe7e9ebb3006bd6948
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: 9af589d4a899702c7c2dd2e2bcf13d783d715380
 
 
 ---
@@ -32,7 +32,7 @@ Azure 提供一整套服务，可让你将本地数据中心扩展到 Azure，�
 可以使用 Azure 虚拟网络在 Azure 中创建一个逻辑上独立的部分，并可使用 IPsec 连接将其连接到本地数据中心或单个客户端计算机。 通过虚拟网络，可轻松地利用 Azure 中按需可缩放的基础架构，同时可连接到本地数据和应用程序，包括 Windows Server、大型机和 UNIX 上运行的系统。 有关详细信息，请参阅 [Azure 网络文档](../virtual-network/virtual-networks-overview.md)。
 
 ## <a name="compute"></a>计算
-使用本地 Hyper-V 的客户可以将现有的虚拟机“提起并移动”到 Azure 和运行 Windows Server 2012（或更高版本）的服务提供程序，而不需要对 VM 进行更改或转换 VM 格式。 有关详细信息，请参阅[关于 Azure 虚拟机的磁盘和 VHD](../virtual-machines/virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+使用本地 Hyper-V 的客户可以将现有的虚拟机“提起并移动”到 Azure 和运行 Windows Server 2012（或更高版本）的服务提供程序，而不需要对 VM 进行更改或转换 VM 格式。 有关详细信息，请参阅[关于 Azure 虚拟机的磁盘和 VHD](../storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 如果你希望灾难恢复作为一项服务 (DRaaS)，Azure 提供了 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)。 Azure Site Recovery 为 VMware、Hyper-V 和物理服务器提供全面的保护。 借助 Azure Site Recovery，可以使用另一台本地服务器或 Azure 作为恢复站点。 有关 Azure Site Recovery 的详细信息，请参阅 [Azure Site Recovery 文档](https://azure.microsoft.com/documentation/services/site-recovery/)。
@@ -99,6 +99,6 @@ AlwaysOn 可用性组可在本地和云中都有数据库副本的混合 IT 环�
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

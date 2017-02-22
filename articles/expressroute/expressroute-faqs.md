@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 899fbfb63633286a1065546b1f262cbc1d7d39c4
-ms.openlocfilehash: d11d57a352138e43f7a7e9d2ec91663361be6f95
+ms.sourcegitcommit: 239702c8b099dd422e6b67a267b1185a27a21807
+ms.openlocfilehash: 52d9194920019291696d5ace3ac24751fde674ab
 
 
 ---
@@ -245,11 +245,11 @@ Office 365 服务和 CRM Online 要求启用高级版外接程序。 [定价详�
 是的。 即使为你的网络配置了 ExpressRoute，也可以通过 Internet 访问 Office 365 服务终结点。 如果你所在的位置已配置为通过 ExpressRoute 连接到 Office 365 服务，则你将通过 ExpressRoute 进行连接。
 
 ### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>是否可以通过 ExpressRoute 连接访问 Dynamics 365 for Operations（以前称为 Dynamics AX Online）？
-是的。 [Dynamics 365 for Operations](https://www.microsoft.com/en-us/dynamics365/operations) 托管在 Azure 上。 可以启用 ExpressRoute 线路上的 Azure 公共对等互连来连接到它。 
+是的。 [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) 托管在 Azure 上。 可以启用 ExpressRoute 线路上的 Azure 公共对等互连来连接到它。 
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

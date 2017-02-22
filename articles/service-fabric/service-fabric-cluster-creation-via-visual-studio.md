@@ -3,7 +3,7 @@ title: "使用 Visual Studio 设置 Service Fabric 群集 | Microsoft 文档"
 description: "描述如何使用 Visual Studio 中 Azure 资源组项目创建的 Azure Resource Manager 模板来设置 Service Fabric 群集"
 services: service-fabric
 documentationcenter: .net
-author: karolz-ms
+author: mikkelhegn
 manager: adegeo
 editor: 
 ms.assetid: bd2c0511-36c9-4828-8dc3-69e4b6a70567
@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/06/2016
-ms.author: karolz@microsoft.com
+ms.date: 02/21/2017
+ms.author: mikhegn@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 01498faf6d150cb0a96af150d6c9ce1ed62c26dd
+ms.sourcegitcommit: 0eefa64d6292dec14842c031ebad80fa9094436d
+ms.openlocfilehash: 535e33eec22ed1c488cace9442328084b416b7a8
 
 
 ---
@@ -146,6 +146,6 @@ Visual Studio Service Fabric Resource Manager 模板将创建一个受证书保�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 8de57909d4abf753a58e389f401018601c3eef24
+ms.sourcegitcommit: 70b0aef629ceb0fe0021f633183d2a6f09145d85
+ms.openlocfilehash: b164865aaef16799ccdec24d163d4723acb88530
 
 
 ---
@@ -91,7 +91,7 @@ ms.openlocfilehash: 8de57909d4abf753a58e389f401018601c3eef24
 ## <a name="next-steps"></a>后续步骤
 了解如何指定应用程序使用的 Node.js 版本后，请了解[如何使用模块]、[构建并部署 Node.js 网站](app-service-web/web-sites-nodejs-develop-deploy-mac.md)以及[如何使用针对 Mac 和 Linux 的 Azure 命令行工具]。
 
-有关详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
+有关详细信息，请参阅 [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)。
 
 [如何使用针对 Mac 和 Linux 的 Azure 命令行工具]: xplat-cli-install.md
 [Azure 命令行工具]: xplat-cli-install.md
@@ -100,6 +100,6 @@ ms.openlocfilehash: 8de57909d4abf753a58e389f401018601c3eef24
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

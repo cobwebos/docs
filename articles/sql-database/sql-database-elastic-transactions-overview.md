@@ -16,8 +16,8 @@ ms.workload: sql-database
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3b251edc753575f2235b9741a7c1eb5d1cf2f821
+ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
+ms.openlocfilehash: f9c53a981376cf534c50d80ae2f60fc01f193e4d
 
 
 ---
@@ -145,7 +145,7 @@ SQL DB 中的弹性数据库事务当前存在以下限制：
 * 仅支持 Azure SQL DB V12 上的数据库。
 * 不支持跨 WCF 服务的事务。 例如，你有一个执行事务的 WCF 服务方法。 事务范围内的调用将失败，并显示异常 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)。
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 你的 Azure 应用程序尚未使用弹性数据库功能吗？ 请访问我们的[文档结构图](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)。 如有问题，请在 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)上联系我们；对于功能请求，请将其添加到 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)。
 
 <!--Image references-->
@@ -156,6 +156,6 @@ SQL DB 中的弹性数据库事务当前存在以下限制：
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

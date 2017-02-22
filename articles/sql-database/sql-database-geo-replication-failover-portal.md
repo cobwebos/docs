@@ -16,18 +16,12 @@ ms.workload: data-management
 ms.date: 11/22/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 0fb694bc48ace3ebae03c3dcf972ee594fbf96a4
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: b0180a9f32e1176667fe8e33a4151b2b70956adc
 
 
 ---
 # <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-geo-replication-failover-portal.md)
-> * [PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 本文介绍了如何使用 [Azure 门户](http://portal.azure.com)为辅助 SQL 数据库启动故障转移。 若要配置异地复制，请参阅[为 Azure SQL 数据库配置异地复制](sql-database-geo-replication-portal.md)。
 
@@ -64,6 +58,6 @@ ms.openlocfilehash: 0fb694bc48ace3ebae03c3dcf972ee594fbf96a4
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

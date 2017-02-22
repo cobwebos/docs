@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/6/2017
+ms.date: 2/17/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
-ms.openlocfilehash: a29dd68c5daeaa290b351e6e04417f604bc30ddb
+ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
+ms.openlocfilehash: 97b0cb7a5f04f2c5c547cb4b70d87273aa8f2383
 
 
 ---
@@ -301,10 +301,10 @@ Visual Studio 提供 Service Fabric 服务模板，可帮助用户将容器部�
 现在已部署了容器化服务，请通过阅读 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)了解如何管理其生命周期。
 
 * [Service Fabric 和容器概述](service-fabric-containers-overview.md)
+* 有关示例应用程序，请[查看 GitHub 上的 Service Fabric 容器代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 
 
-
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

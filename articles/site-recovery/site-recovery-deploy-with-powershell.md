@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: d3bf50e9e686acdac33ffaf9d781f02193406298
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: d5fed9feb2292002a06c426cdd9e4e18f67bd3ec
 
 
 ---
@@ -49,7 +49,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 ### <a name="azure-prerequisites"></a>Azure 先决条件
 * 你将需要一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
 * 你将需要使用 Azure 存储帐户来存储复制的数据。 需要为帐户启用地域复制。 该帐户应位于 Azure Site Recovery 保管库所在的同一区域，并与同一订阅相关联。 [了解有关 Azure 存储的详细信息](../storage/storage-introduction.md)。
-* 需确保要保护的虚拟机符合 [Azure 虚拟机先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+* 需确保要保护的虚拟机符合 [Azure 虚拟机先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 ### <a name="vmm-prerequisites"></a>VMM 先决条件
 * 需要一台运行 System Center 2012 R2 的 VMM 服务器。
@@ -73,8 +73,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 如果希望部署网络映射，需要满足下列条件：
 
 * 源 VMM 服务器上你要保护的虚拟机应当连接到某个 VM 网络。 该网络应当该链接到与该云相关联的逻辑网络。
-* 具有在故障转移后复制的虚拟机可以连接到的 Azure 网络。 你将在故障转移时选择此网络。 此网络应当与你的 Azure Site Recovery 订阅位于同一区域中。
-* [详细了解](site-recovery-network-mapping.md)网络映射：
+* 具有在故障转移后复制的虚拟机可以连接到的 Azure 网络。 你将在故障转移时选择此网络。 此网络应与 Azure Site Recovery 订阅位于同一区域中。
 
 ### <a name="powershell-prerequisites"></a>PowerShell 必决条件
 确保已将 Azure PowerShell 准备就绪。 如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。 如需设置 PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 安装并配置 PowerShell 后，可在[此处](https://msdn.microsoft.com/library/dn850420.aspx)查看该服务的所有可用 cmdlet。
@@ -302,7 +301,7 @@ marsagentinstaller.exe /q /nu
 ## <a name="step-9-enable-protection-for-virtual-machines"></a>步骤 9：为虚拟机启用保护
 在正确配置服务器、云和网络后，可以在云中为虚拟机启用保护。 注意以下事项：
 
-虚拟机必须符合 [Azure 虚拟机先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+虚拟机必须符合 [Azure 虚拟机先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 若要启用保护，必须为虚拟机设置操作系统和操作系统磁盘属性。 当你使用虚拟机模板在 VMM 中创建虚拟机时，可以设置属性。 也可以在虚拟机属性的“常规”和“硬件配置”选项卡中为现有虚拟机设置这些属性。 如果未在 VMM 中设置这些属性，可以在 Azure Site Recovery 门户中配置它们。
 
@@ -408,6 +407,6 @@ marsagentinstaller.exe /q /nu
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO4-->
 
 

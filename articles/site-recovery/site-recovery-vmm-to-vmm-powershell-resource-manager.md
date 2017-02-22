@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: sutalasi
 translationtype: Human Translation
-ms.sourcegitcommit: f6ab5e3807684abb64a18e0a4bfc732afa091143
-ms.openlocfilehash: e8c155a42b33aafeca0c641bc4f6162f3278a89f
+ms.sourcegitcommit: 0400369eb7ae3a2ebd506605b50afe08fe563d22
+ms.openlocfilehash: 33b3e7322afafd623a10661e33abe7b959eeb512
 
 
 ---
@@ -54,7 +54,7 @@ ms.openlocfilehash: e8c155a42b33aafeca0c641bc4f6162f3278a89f
 
 | **先决条件** | **详细信息** |
 | --- | --- |
-| **VMM** |建议在主站点和辅助站点中各部署一个 VMM 服务器。<br/><br/> 也可以[在单个 VMM 服务器上的云之间复制](site-recovery-single-vmm.md)。 为此，至少需要在 VMM 服务器上配置两个云。<br/><br/> VMM 服务器应当至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每个 VMM 服务器上必须配置了一个或多个云，所有云中必须设置了 Hyper-V 容量配置文件。 <br/><br/>云必须包含一个或多个 VMM 主机组。<br/><br/>若要详细了解如何设置 VMM 云，请参阅[配置 VMM 云结构](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)。<br/><br/> VMM 服务器应具有 Internet 访问权限。 |
+| **VMM** |建议在主站点和辅助站点中各部署一个 VMM 服务器。<br/><br/> 也可以[在单个 VMM 服务器上的云之间复制](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)。 为此，至少需要在 VMM 服务器上配置两个云。<br/><br/> VMM 服务器应当至少运行具有最新更新的 System Center 2012 SP1。<br/><br/> 每个 VMM 服务器上必须配置了一个或多个云，所有云中必须设置了 Hyper-V 容量配置文件。 <br/><br/>云必须包含一个或多个 VMM 主机组。<br/><br/>若要详细了解如何设置 VMM 云，请参阅[配置 VMM 云结构](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)。<br/><br/> VMM 服务器应具有 Internet 访问权限。 |
 | **Hyper-V** |Hyper-V 服务器必须至少运行具有 Hyper-V 角色且安装了最新更新的 Windows Server 2012。<br/><br/> Hyper-V 服务器应包含一个或多个 VM。<br/><br/>  Hyper-V 主机服务器应位于主要和辅助 VMM 云中的主机组内。<br/><br/> 如果在 Windows Server 2012 R2 上的群集中运行 Hyper-V，应安装[更新 2961977](https://support.microsoft.com/kb/2961977)<br/><br/> 如果在 Windows Server 2012 上的群集中运行 Hyper-V，请注意，如果使用基于静态 IP 地址的群集，将不会自动创建群集代理。 你需要手动配置群集代理。 [了解详细信息](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)。 |
 | **提供程序** |在站点恢复部署期间，需要在 VMM 服务器上安装 Azure Site Recovery 提供程序。 提供程序通过 HTTPS 443 与站点恢复通信，以协调复制。 数据复制是通过 LAN 或 VPN 连接在主要和辅助 Hyper-V 服务器之间发生的。<br/><br/> 在 VMM 服务器上运行的提供程序需有权访问以下 URL：*.hypervrecoverymanager.windowsazure.com；*.accesscontrol.windows.net；*.backup.windowsazure.com；*.blob.core.windows.net；*.store.core.windows.net。<br/><br/> 此外，还要允许从 VMM 服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)的防火墙通信，并允许 HTTPS (443) 协议。 |
 
@@ -74,7 +74,7 @@ ms.openlocfilehash: e8c155a42b33aafeca0c641bc4f6162f3278a89f
 * [如何在 VMM 中配置逻辑网络](http://go.microsoft.com/fwlink/p/?LinkId=386307)
 * [如何在 VMM 中配置 VM 网络和网关](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[详细了解](site-recovery-network-mapping.md) 网络映射的工作原理。
+[详细了解](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) 网络映射的工作原理。
 
 ### <a name="powershell-prerequisites"></a>PowerShell 必决条件
 确保已将 Azure PowerShell 准备就绪。 如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。 有关设置 PowerShell 的信息，请参阅 [Guide to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（Azure PowerShell 安装和配置指南）。 安装并配置 PowerShell 后，可在[此处](https://msdn.microsoft.com/library/dn850420.aspx)查看该服务的所有可用 cmdlet。
@@ -322,6 +322,6 @@ ms.openlocfilehash: e8c155a42b33aafeca0c641bc4f6162f3278a89f
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

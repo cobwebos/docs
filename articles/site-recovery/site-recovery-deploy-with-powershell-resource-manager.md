@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: ec08ab30003994f3e60c3f37d39bb5b4ef498173
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 3df4aaa018d31e9ee9526679ac1febbe5b75bb7e
 
 
 ---
@@ -62,7 +62,7 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 * 需要一台运行 Windows Server 2012 R2 或 Microsoft Hyper-V Server 2012 R2 的 Hyper-V 主机，其中包含一个或多个虚拟机。
 * Hyper-V 服务器应直接或通过代理连接到 Internet。
-* 要保护的虚拟机应符合[虚拟机先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+* 要保护的虚拟机应符合[虚拟机先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到你的 Azure 帐户
 1. 打开 PowerShell 控制台，然后运行以下命令以登录到 Azure 帐户。 该 cmdlet 会打开一个网页，提示你输入帐户凭据。
@@ -247,6 +247,6 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO4-->
 
 

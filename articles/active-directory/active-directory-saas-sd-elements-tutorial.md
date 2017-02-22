@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53aa0a84a7f22c8cda5144eb6e1b82f38b72acb8
+ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
+ms.openlocfilehash: 7166f4d3046f573d2f60d747edf2eefbbd0439c2
 
 
 ---
@@ -133,7 +133,7 @@ SD Elements 应用程序需要特定格式的 SAML 断言，这要求向 **SAML 
    
     ![配置单一登录](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
     b. 单击“资源组名称” 的 Azure 数据工厂。
 2. 若要启用单一登录，请联系 [SD Elements 支持团队](mailto:support@sdelements.com)并向其提供下载的证书文件。
@@ -210,7 +210,7 @@ SD Elements 应用程序需要特定格式的 SAML 断言，这要求向 **SAML 
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-sd-elements-tutorial/create_aaduser_06.png) 
@@ -223,7 +223,7 @@ SD Elements 应用程序需要特定格式的 SAML 断言，这要求向 **SAML 
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-sd-elements-tutorial/create_aaduser_07.png) 
@@ -316,6 +316,6 @@ SD Elements 应用程序需要特定格式的 SAML 断言，这要求向 **SAML 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

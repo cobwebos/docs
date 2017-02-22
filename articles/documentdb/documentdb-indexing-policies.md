@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 12/22/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 7f5e33b7f80e3c1e1e3e66b3cab879a5bc30e823
-ms.openlocfilehash: 6941a0a5e108617ebb16354edc9917392b7cb786
+ms.sourcegitcommit: bd77eaab1dbad95a70b6d08947f11d95220b8947
+ms.openlocfilehash: 818337dfb36ee4c84fa2543f7c54558287ead0e1
 
 
 ---
@@ -119,7 +119,7 @@ DocumentDB 将 JSON 文档和索引建立为树形，从而可以针对树中的
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /                   | 集合的默认路径。 递归并应用于整个文档树。                                                                                                                                                                                                                                   |
 | /prop/?             | 执行查询所需的索引路径（分别为哈希或范围类型）︰<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                       |
-| /prop/              | 指定标签下所有路径的索引路径。 使用以下查询<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
+| /prop/*             | 指定标签下所有路径的索引路径。 使用以下查询<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
 | /props/[]/?         | 对标量数组（如 ["a"、"b"、"c"]）进行迭代和 JOIN 查询所需的索引路径︰<br><br>SELECT tag FROM tag IN collection.props WHERE tag = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5                                                                         |
 | /props/[]/subprop/? | 针对诸如 [{subprop:"a"}, {subprop:"b"}] 的对象数组进行迭代和 JOIN 查询所需的索引路径：<br><br>SELECT tag FROM tag IN collection.props WHERE tag.subprop = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag.subprop = "value"                                  |
 | /prop/subprop/?     | 进行查询所需的索引路径 （分别为哈希或范围类型）︰<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5                                                                                                                    |
@@ -413,6 +413,6 @@ JSON 规范中实现了以下更改︰
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

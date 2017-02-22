@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: 2d1ff28d5c7d989d4c81758bd191e8d1e8100b2e
+ms.sourcegitcommit: f772060243ce6d741d26113710be32cb76135479
+ms.openlocfilehash: 41a28f43942d4e6bf395b7fd024bd22b96420d55
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 2d1ff28d5c7d989d4c81758bd191e8d1e8100b2e
 ## <a name="general"></a>常规
 * [如果未在此处找到相关问题怎么办？](#what-if-my-question-isnt-answered-here)
 * [为什么要使用 Azure 开发测试实验室？](#why-should-i-use-azure-devtest-labs) 
-* [“无忧的自助服务”是什么意思？](#what-does-quotworry-free-self-servicequot-mean)
+* [“无忧的自助服务”是什么意思？](#what-does-worry-free-self-service-mean)
 * [如何使用 Azure 开发测试实验室？](#how-can-i-use-azure-devtest-labs) 
 * [Azure 开发测试实验室将如何计费？](#how-am-i-billed-for-azure-devtest-labs) 
 
@@ -246,6 +246,6 @@ Microsoft 帐户会用于 Microsoft 设备和服务中几乎所有的操作。 �
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

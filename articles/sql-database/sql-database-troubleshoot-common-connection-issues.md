@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: c033c1b32ad7b69565f870636110d317d01266df
-ms.openlocfilehash: 28489985797a638c04e1fabba30f42dac56d4d9c
+ms.sourcegitcommit: 676cecdd886cfb557e7859e1e9583f0a0f9f749c
+ms.openlocfilehash: 222b9fe98592e0c78ec3d7c5ae4804bf75dd0d1e
 
 
 ---
@@ -82,7 +82,6 @@ ms.openlocfilehash: 28489985797a638c04e1fabba30f42dac56d4d9c
 
 ## <a name="next-steps"></a>后续步骤
 * [排查 Azure SQL 数据库性能问题](sql-database-troubleshoot-performance.md)
-* [排查 Azure SQL 数据库权限问题](sql-database-troubleshoot-permissions.md)
 * [在 Microsoft Azure 上搜索文档](http://azure.microsoft.com/search/documentation/)
 * [查看 Azure SQL 数据库服务的最新更新](http://azure.microsoft.com/updates/?service=sql-database)
 
@@ -90,12 +89,10 @@ ms.openlocfilehash: 28489985797a638c04e1fabba30f42dac56d4d9c
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [暂时性错误处理的一般指南](../best-practices-retry-general.md)
 * [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
-* [使用 Azure SQL 数据库的学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
-* [使用弹性数据库功能和工具的学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

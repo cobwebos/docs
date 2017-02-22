@@ -12,22 +12,16 @@ ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 11/15/2016
+ms.topic: article
+ms.date: 02/09/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: adad6b8e27e0996559d5e6dacb8dd60fbf52a631
-ms.openlocfilehash: 0c1ce1c29e447d9db4ef0df7873ef89cb835abee
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 32d8c5f13d95c3de8b06782f4f6541866389be5b
 
 
 ---
 # <a name="managing-azure-sql-database-using-powershell"></a>使用 PowerShell 管理 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-manage-portal.md)
-> * [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-manage-powershell.md)
-> 
-> 
 
 本主题介绍用于执行许多 Azure SQL 数据库任务的 PowerShell cmdlet。 如需完整列表，请参阅 [Azure SQL 数据库 Cmdlet](https://msdn.microsoft.com/library/mt574084\(v=azure.300\).aspx)。
 
@@ -48,7 +42,7 @@ New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocati
 如需完整教程，请参阅[通过 Azure PowerShell 实现 Azure SQL 数据库服务器、数据库和防火墙规则入门](sql-database-get-started-powershell.md)。
 
 ## <a name="how-do-i-create-a-sql-database-server"></a>如何创建 SQL 数据库服务器？
-若要创建 SQL 数据库服务器，请使用 [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715\(v=azure.300\).aspx) cmdlet。 将 *server1* 替换为服务器的名称。 服务器名称必须在所有 Azure SQL 数据库服务器中都是唯一的。 如果服务器名称已使用，将出现错误。 此命令可能需要几分钟才能完成。 资源组必须已存在于订阅中。
+若要创建 SQL 数据库服务器，请使用 [New-AzureRmSqlServer](/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqlserver) cmdlet。 将 *server1* 替换为服务器的名称。 服务器名称必须在所有 Azure SQL 数据库服务器中都是唯一的。 如果服务器名称已使用，将出现错误。 此命令可能需要几分钟才能完成。 资源组必须已存在于订阅中。
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -123,7 +117,7 @@ Set-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName `
  -Edition $databaseEdition -RequestedServiceObjectiveName $databaseServiceLevel
 ```
 
-有关详细信息，请参阅 [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md)。 如需脚本示例，请参阅[用于更改 SQL 数据库的服务层和性能级别的示例 PowerShell 脚本](sql-database-scale-up-powershell.md#sample-powershell-script-to-change-the-service-tier-and-performance-level-of-your-sql-database)。
+有关详细信息，请参阅 [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md)。 如需脚本示例，请参阅[用于更改 SQL 数据库的服务层和性能级别的示例 PowerShell 脚本](sql-database-manage-single-databases-powershell.md#change-the-service-tier-and-performance-level-of-a-single-database)。
 
 ## <a name="how-do-i-copy-a-sql-database-to-the-same-server"></a>如何将 SQL 数据库复制到同一服务器？
 若要将 SQL 数据库复制到同一服务器，请使用 [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/azure/mt603644\(v=azure.300\).aspx) cmdlet。 将 `-CopyServerName` 和 `-CopyResourceGroupName` 设置为与源数据库服务器和资源组相同的值。
@@ -168,7 +162,7 @@ Remove-AzureRmSqlServer -ServerName $sqlServerName -ResourceGroupName $resourceG
 ```
 
 ## <a name="how-do-i-create-and-manage-elastic-pools-using-powershell"></a>如何使用 PowerShell 创建和管理弹性池？
-如需详细了解如何使用 PowerShell 创建弹性池，请参阅[使用 PowerShell 创建新的弹性池](sql-database-elastic-pool-create-powershell.md)。
+如需详细了解如何使用 PowerShell 创建弹性池，请参阅[使用 PowerShell 创建新的弹性池](sql-database-elastic-pool-manage-powershell.md)。
 
 如需详细了解如何使用 PowerShell 管理弹性池，请参阅[使用 PowerShell 监视和管理弹性池](sql-database-elastic-pool-manage-powershell.md)。
 
@@ -179,6 +173,6 @@ Remove-AzureRmSqlServer -ServerName $sqlServerName -ResourceGroupName $resourceG
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

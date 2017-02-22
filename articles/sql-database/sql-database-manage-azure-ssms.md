@@ -12,22 +12,16 @@ ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: d9ff74a49742fa77f5989b8b05e0567e3ca81dc5
-ms.openlocfilehash: 89cb8827745b31b3a77b64d5cafd586957d60d30
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: c5f1ab504bcb639260b2500d462a56ea30cab9aa
 
 
 ---
 # <a name="managing-azure-sql-database-using-sql-server-management-studio"></a>使用 SQL Server Management Studio 管理 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-manage-portal.md)
-> * [SSMS](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-manage-powershell.md)
-> 
-> 
 
 你可以使用 SQL Server Management Studio (SSMS) 来管理 Azure SQL 数据库服务器与数据库。 本主题逐步讲解如何使用 SSMS 完成常见任务。 在开始之前，应事先在 Azure SQL 数据库中创建服务器和数据库。 有关详细信息，请参阅[创建第一个 Azure SQL 数据库](sql-database-get-started.md)及[使用 SSMS 进行连接和查询](sql-database-connect-query-ssms.md)。
 
@@ -146,6 +140,6 @@ SQL 数据库支持多个您可用于监视单个数据库的动态管理视图�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -16,18 +16,12 @@ ms.workload: data-management
 ms.date: 08/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: ac575284544819c6bed7ef84669b2793085a3dc6
 
 
 ---
 # <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-powershell"></a>使用 PowerShell 为 Azure SQL 数据库启动计划内或计划外故障转移
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-geo-replication-failover-portal.md)
-> * [PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 本文介绍了如何使用 PowerShell 为 SQL 数据库启动计划内或计划外故障转移。 若要配置异地复制，请参阅[为 Azure SQL 数据库配置异地复制](sql-database-geo-replication-powershell.md)。
 
@@ -45,7 +39,7 @@ ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 以下命令将资源组“rg2”下服务器“srv2”上名为“mydb”的数据库角色切换为主数据库。 "db2”所连接的原始主数据库在两个数据库完全同步之后切换为辅助数据库。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg2” -ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary -Failover
 
 
@@ -70,8 +64,8 @@ ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 以下命令在主数据库无法使用时将名为“mydb”的数据库角色切换为主数据库。 “mydb”连接的原始主数据库将在重新联机后切换为辅助数据库。 在该时间点，同步可能导致数据丢失。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
-    $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg2” -ServerName "srv2”
+    $database | Set-AzureRmSqlDatabaseSecondary -Failover -AllowDataLoss
 
 
 
@@ -87,6 +81,6 @@ ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

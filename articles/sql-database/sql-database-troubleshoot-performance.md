@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: v-shysun
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 298c5289a9e58127de208c26fd8bbbbdfd715024
+ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
+ms.openlocfilehash: 3bfcaf4ae29d23754a19a61f2775d1b12e3e69ba
 
 
 ---
@@ -37,12 +37,12 @@ ms.openlocfilehash: 298c5289a9e58127de208c26fd8bbbbdfd715024
 >
 
 ## <a name="steps-to-improve-database-performance-with-more-resources"></a>使用更多资源提高数据库性能的步骤
-1. 对于独立数据库，可以根据需要[更改服务层](sql-database-scale-up.md)以提高数据库性能。
+1. 对于独立数据库，可以根据需要[更改服务层](sql-database-service-tiers.md)以提高数据库性能。
 2. 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool-guidance.md)自动缩放资源。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

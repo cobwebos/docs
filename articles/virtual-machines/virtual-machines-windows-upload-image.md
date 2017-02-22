@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 5aa6b2149170ef04af0ebde957feda5630c5d5eb
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: a2df2169acda706a0fc3e1b7daf743ce29e5f030
 
 
 ---
 # <a name="upload-a-windows-vhd-from-an-on-premises-vm-to-azure"></a>将 Windows VHD 从本地 VM 上载到 Azure
 本文说明如何创建和上载 Windows 虚拟硬盘 (VHD)，以便在创建 Azure VM 时使用。 可以从通用 VM 或专用 VM 上载 VHD。 
 
-有关 Azure 中的磁盘和 VHD 的更多详细信息，请参阅 [About disks and VHDs for virtual machines](virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（关于虚拟机的磁盘和 VHD）。
+有关 Azure 中的磁盘和 VHD 的更多详细信息，请参阅 [About disks and VHDs for virtual machines](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（关于虚拟机的磁盘和 VHD）。
 
 ## <a name="prepare-the-vm"></a>准备 VM
 可将通用和专用 VHD 上载到 Azure。 每种类型都需要事先准备 VM。
@@ -132,6 +132,6 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

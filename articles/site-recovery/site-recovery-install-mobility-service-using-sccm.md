@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: da682645640d74485a1caaff82fd0483a0e3f149
-ms.openlocfilehash: 6f10ea05edd3cb5b472b1102946b8da2dd1862d2
+ms.sourcegitcommit: 93ac6629df82b1a5b8d14a1ad289e1e462b49b17
+ms.openlocfilehash: 8883b2d15592ea5e0c286bd6e6fc7c38134326a7
 
 ---
 # <a name="automate-mobility-service-installation-using-software-deployment-tools"></a>使用软件部署工具自动执行移动服务安装
@@ -83,8 +83,10 @@ ms.openlocfilehash: 6f10ea05edd3cb5b472b1102946b8da2dd1862d2
 | 命令行 | install.bat |
 | 程序可以运行 | 用户是否已登录 |
 9. 在下一页中，选择目标操作系统。 移动服务只能安装在 Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 上。
+
   ![sccm-package-properties-page2](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2.png)   
 10. 单击“下一步”两次以完成向导。
+
 > [!NOTE]
 > 此脚本支持全新安装移动服务代理和升级/更新已安装的代理。
 
@@ -202,6 +204,6 @@ ms.openlocfilehash: 6f10ea05edd3cb5b472b1102946b8da2dd1862d2
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

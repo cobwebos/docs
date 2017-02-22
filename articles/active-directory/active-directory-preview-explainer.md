@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 664abe5887b3d96eb48e3b47df9a32648ee623dd
+ms.sourcegitcommit: 3b31bd036d9c3ff8036b314b93cbddd94874ff63
+ms.openlocfilehash: 8f7a679dc5b5726107503a9f7363ab162b1770d0
 
 
 ---
@@ -30,16 +30,15 @@ Azure 门户中的 Azure Active Directory (Azure AD) 管理体验目前处于预
 预览版体验与经典门户和 Office 365 管理中心读取和写入到相同的 Azure Active Directory 租户。 在这些门户中的任一门户所做的更改都将反映到所有其他门户。
 
 ## <a name="use-the-same-authorization-logic"></a>使用相同的授权逻辑
-预览版体验与现有的 Active Directory 客户端使用相同的授权逻辑。 用户根据其目录角色（例如，全局管理员、用户管理员、密码管理员）有权对目录资源进行更改。 只是在 Azure 资源或 Azure 订阅中充当某个角色无法授权用户管理目录资源。 有关 Azure AD 管理角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)。 
+预览版体验与现有的 Active Directory 客户端使用相同的授权逻辑。 用户根据其目录角色（例如，全局管理员、用户管理员、密码管理员）有权对目录资源进行更改。 只是在 Azure 资源或 Azure 订阅中充当某个角色无法授权用户管理目录资源。 有关 Azure AD 管理角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)。
 
 预览版体验已针对全局管理员进行了优化。 如果使用预览版时未以全局管理员用户身份登录，体验到的功能可能有所不足。 例如，可能能够在目录中选择用于开始某个任务的按钮，但却无法完成该任务。 我们不久将改进此体验。
 
-## <a name="tell-us-what-you-think"></a>请将想法告诉我们
+## <a name="next-steps"></a>后续步骤
 可以在 [Azure AD 反馈论坛](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&filter=alltypes&sort=lastpostdesc)的管理门户部分提供有关预览版体验的反馈。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

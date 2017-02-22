@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: c94d114c50d44a3ca2933ec3464e7a2396867d60
-ms.openlocfilehash: eb94a0e383be4a2c125b9f5a2e7c1e49beacd4df
+ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
+ms.openlocfilehash: 5c43e6c646928ef17e1bf2e5b9bce90f9038d5d0
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: eb94a0e383be4a2c125b9f5a2e7c1e49beacd4df
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop", 
+      "name": "virtualMachineLoop",    
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -230,7 +230,7 @@ ms.openlocfilehash: eb94a0e383be4a2c125b9f5a2e7c1e49beacd4df
 
 ```
 "copy": {
-  "name": "virtualMachineLoop", 
+  "name": "virtualMachineLoop",    
   "count": "[parameters('numberOfInstances')]"
 },
 ```
@@ -307,7 +307,7 @@ Resource Manager 将同时部署所有不依赖于其他所要部署的资源的
 
 ## <a name="disks-and-images"></a>磁盘和映像
    
-在 Azure 中，vhd 文件可以表示[磁盘或映像](virtual-machines-windows-about-disks-vhds.md)。 如果 vhd 文件中的操作系统专用于特定的 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建许多 VM，则该文件称为映像。   
+在 Azure 中，vhd 文件可以表示[磁盘或映像](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果 vhd 文件中的操作系统专用于特定的 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建许多 VM，则该文件称为映像。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>从平台映像创建新虚拟机和新磁盘
 
@@ -500,6 +500,6 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 - 查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](virtual-machines-windows-ps-manage.md)，了解如何管理创建的 VM。
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

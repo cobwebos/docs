@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 33f4c13930017bdcbaf899b16d32ba84bdfbf9ee
-ms.openlocfilehash: e531ece88b85b9e91810909f088c1c08fa92415e
+ms.sourcegitcommit: 1b5527090a41c274b590ed9d1ac7b561b6f4ed14
+ms.openlocfilehash: 464ae3be0f937cefc7d1c9f437de21f1fe5a32af
 
 
 ---
@@ -115,7 +115,7 @@ ms.openlocfilehash: e531ece88b85b9e91810909f088c1c08fa92415e
    
     ![配置单一登录](./media/active-directory-saas-ultipro-tutorial/tutorial_ultipro_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
     b. 单击“下一步”。
 2. 若要为应用程序配置 SSO，请联系 UltiPro 帐户管理员，并向他们提供以下内容：
@@ -239,6 +239,6 @@ ms.openlocfilehash: e531ece88b85b9e91810909f088c1c08fa92415e
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 325ef2cd13a090ad0ee0c09cc16c81d80672a70b
-ms.openlocfilehash: a170cca6b92e8278afe41f8876b9954df1e314e4
+ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
+ms.openlocfilehash: 74f94ad347b31e8c7848e1fd72692732431338b2
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: a170cca6b92e8278afe41f8876b9954df1e314e4
 > 有关使用 Azure 门户创建服务器的入门教程，请参阅[创建数据库 - Azure 门户](sql-database-get-started.md)。
 >
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 * 有关管理工具的概述，请参阅[管理工具概述](sql-database-manage-overview.md)
 * 若要了解如何使用 Azure 门户执行管理任务，请参阅[使用 Azure 门户管理 Azure SQL 数据库](sql-database-manage-portal.md)。
 * 若要了解如何使用 PowerShell 执行管理任务，请参阅[使用 PowerShell 管理 Azure SQL 数据库](sql-database-manage-powershell.md)。
@@ -63,6 +63,6 @@ ms.openlocfilehash: a170cca6b92e8278afe41f8876b9954df1e314e4
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

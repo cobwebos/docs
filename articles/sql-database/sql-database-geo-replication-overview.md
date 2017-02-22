@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: e580886bae72aee3bb3569299a831529ef18821c
+ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
+ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
 
 
 ---
@@ -26,28 +26,13 @@ ms.openlocfilehash: e580886bae72aee3bb3569299a831529ef18821c
 
 > [!NOTE]
 > 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。 2017 年 4 月将停用非可读辅助类型数据库，现有的非可读数据库将自动升级到可读辅助数据库。
-> 
-> 
+>  
 
  可以使用 [Azure 门户](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、[Transact-SQL](sql-database-geo-replication-transact-sql.md) 或 [REST API - 创建或更新数据库](https://msdn.microsoft.com/library/azure/mt163685.aspx)配置活动异地复制。
-
-> [!div class="op_single_selector"]
-> * [配置：Azure 门户](sql-database-geo-replication-portal.md)
-> * [配置：PowerShell](sql-database-geo-replication-powershell.md)
-> * [配置：T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
 
 如果主数据库因某种原因而出现故障，或者只是需要脱机，则可以*故障转移*到任何辅助数据库。 当将故障转移激活到辅助数据库之一时，所有其他辅助数据库会自动链接到新的主数据库。
 
 可以使用 [Azure 门户](sql-database-geo-replication-failover-portal.md)、[PowerShell](sql-database-geo-replication-failover-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 计划的故障转移](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)或 [REST API - 未计划的故障转移](https://msdn.microsoft.com/library/azure/mt582027.aspx)故障转移到辅助数据库。
-
-> [!div class="op_single_selector"]
-> * [故障转移：Azure 门户](sql-database-geo-replication-failover-portal.md)
-> * [故障转移：PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [故障转移：T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
@@ -149,6 +134,6 @@ ms.openlocfilehash: e580886bae72aee3bb3569299a831529ef18821c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

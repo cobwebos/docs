@@ -1,5 +1,5 @@
 ---
-title: "将磁盘附加到 VM | Microsoft Docs"
+title: "将磁盘附加到经典 Azure VM | Microsoft Docs"
 description: "将数据磁盘附加到使用经典部署模型创建的 Windows 虚拟机并进行初始化。"
 services: virtual-machines-windows, storage
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2016
+ms.date: 01/23/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 6e2b33492344acedf1c79d4f67a6d69ad163c14c
+ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
+ms.openlocfilehash: 8393b8ce2b373e8ff33454a61c944a5f8f7a8168
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 6e2b33492344acedf1c79d4f67a6d69ad163c14c
 
 如果需要其他数据磁盘，可将空磁盘或现有的数据磁盘附加到 VM。 在这两种情况下，磁盘是驻留在 Azure 存储帐户中的 .vhd 文件。 如果是新磁盘，在附加磁盘之后，也需要将它初始化，使其可供 Windows VM 使用。
 
-有关磁盘的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](virtual-machines-windows-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+有关磁盘的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 [!INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
@@ -57,6 +57,6 @@ ms.openlocfilehash: 6e2b33492344acedf1c79d4f67a6d69ad163c14c
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

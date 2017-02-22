@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/26/2016
+ms.date: 02/17/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 2927b9de6a70668ffeac2005842214ad2406ddae
+ms.sourcegitcommit: 6a5724d4291a0b1878d528a59f693c046ba960f9
+ms.openlocfilehash: d7133180f4fc9263894c522fcaacaeea4a985847
 
 
 ---
@@ -71,7 +71,9 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
         $serviceName = "mycloudservicename"
 2. 然后使用以下脚本来配置和启用 AKV 集成。
    
-     $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force   $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv   Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
+        $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
+        $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
+        Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
 
 SQL IaaS 代理扩展将使用此新配置来更新 SQL VM。
 
@@ -80,6 +82,6 @@ SQL IaaS 代理扩展将使用此新配置来更新 SQL VM。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

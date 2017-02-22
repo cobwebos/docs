@@ -16,18 +16,12 @@ ms.workload: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
-ms.openlocfilehash: 1ee79438f40336c3632accc0e3c228d8f2851afd
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 19a83f8206f589d1fb2bf76c5ad0cca04f281c3f
 
 
 ---
 # <a name="restore-a-deleted-azure-sql-database-by-using-powershell"></a>使用 PowerShell 还原已删除的 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [概述](sql-database-recovery-using-backups.md)
-> * [还原已删除的数据库：门户](sql-database-restore-deleted-database-portal.md)
-> * [**还原已删除的数据库：PowerShell**](sql-database-restore-deleted-database-powershell.md)
-> 
-> 
 
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
@@ -77,6 +71,6 @@ Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -DeletionDate $DeletedData
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

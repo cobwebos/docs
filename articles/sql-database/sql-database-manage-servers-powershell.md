@@ -16,8 +16,8 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 835702c8381fcd184b056c76054514348c675bbf
-ms.openlocfilehash: 9f1905f7e5aad0e43d81f7095089b9f3492a82ea
+ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
+ms.openlocfilehash: c22243db06c783bc4f5b311aa4d49ce12032ab02
 
 
 ---
@@ -51,7 +51,7 @@ $sqlServer = New-AzureRmSqlServer -ServerName $sqlServerName `
 > 有关示例脚本，请参阅[使用 PowerShell 脚本创建 SQL 数据库](sql-database-get-started-powershell.md)。
 >
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 * 有关管理工具的概述，请参阅[管理工具概述](sql-database-manage-overview.md)
 * 若要了解如何使用 Azure 门户执行管理任务，请参阅[使用 Azure 门户管理 Azure SQL 数据库](sql-database-manage-portal.md)。
 * 若要了解如何使用 PowerShell 执行管理任务，请参阅[使用 PowerShell 管理 Azure SQL 数据库](sql-database-manage-powershell.md)。
@@ -61,6 +61,6 @@ $sqlServer = New-AzureRmSqlServer -ServerName $sqlServerName `
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

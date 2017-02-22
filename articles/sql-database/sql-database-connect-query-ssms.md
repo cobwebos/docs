@@ -18,17 +18,12 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 54d3dc952e992acdd7c3edab0db736463dcc1e13
-ms.openlocfilehash: 41070533930780cd2c659b21fe03006c5d6c2c74
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: a5eaf43aa01e5d30171ea038db7ba985c9684fb7
 
 
 ---
 # <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-t-sql-query"></a>使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询
-> [!div class="op_single_selector"]
-> * [Visual Studio](sql-database-connect-query.md)
-> * [SSMS](sql-database-connect-query-ssms.md)
-> * [Excel](sql-database-connect-excel.md)
-> 
 
 本文将介绍如何使用 SQL Server Management Studio (SSMS) 连接到 Azure SQL 数据库。 成功连接后，我们将运行一个简单的 Transact-SQL (T-SQL) 查询，验证与数据库的通信。
 
@@ -74,6 +69,6 @@ ms.openlocfilehash: 41070533930780cd2c659b21fe03006c5d6c2c74
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 
