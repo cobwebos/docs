@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: abnarain
 translationtype: Human Translation
-ms.sourcegitcommit: 355de60c6a06f4694b8bce4a6ff3b6c2f65b2233
-ms.openlocfilehash: f4ec798bcd1da7f2067929382c37915022fc1eed
+ms.sourcegitcommit: 3d66640481d8e1f96d3061077f0c97da5fa6bf4e
+ms.openlocfilehash: a0ccdffa5347c4f3cda16ec75b75da3eb3199539
 
 
 ---
@@ -164,8 +164,8 @@ ms.openlocfilehash: f4ec798bcd1da7f2067929382c37915022fc1eed
 有三个配置选项：
 
 * **不使用代理**：网关不显式使用任何代理来连接云服务。
-* **使用系统代理**：网关使用在 diahost.exe.config 中配置的代理设置。  如果 diahost.exe.config 中没有配置代理，则网关无需通过代理，直接连接到云服务。
-* **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不使用 diahost.exe.config 中的配置。  需要地址和端口。  用户名和密码可选，具体取决于代理的身份验证设置。  使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
+* **使用系统代理**：网关使用在 diahost.exe.config 和 diawp.exe.config 中配置的代理设置。  如果 diahost.exe.config 和 diawp.exe.config 中未配置代理，则网关无需通过代理，直接连接到云服务。
+* **使用自定义代理**：配置用于网关的 HTTP 代理设置，而不使用 diahost.exe.config 和 diawp.exe.config 中的配置。  需要地址和端口。  用户名和密码可选，具体取决于代理的身份验证设置。  使用网关凭据证书对所有设置进行加密，并存储在网关主机计算机本地。
 
 保存更新的代理设置之后，数据管理网关主机服务将自动重启。
 
@@ -185,8 +185,8 @@ ms.openlocfilehash: f4ec798bcd1da7f2067929382c37915022fc1eed
 >
 >
 
-### <a name="configure-proxy-server-settings-in-diahostexeconfig"></a>在 diahost.exe.config 中配置代理服务器设置
-如果为 HTTP 代理服务器选择“使用系统代理”设置，则网关使用 diahost.exe.config 中的代理设置。  如果 diahost.exe.config 中没有指定的代理，则网关直接连接到云服务，无需通过代理。 以下过程说明如何更新配置文件。
+### <a name="configure-proxy-server-settings"></a>配置代理服务器设置 
+如果为 HTTP 代理服务器选择“使用系统代理”设置，则网关使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。  如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关无需通过代理，直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件。  
 
 1. 在文件资源管理器中，生成 C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config 的安全副本，以备份原始文件。
 2. 启动作为管理员运行的 Notepad.exe，并打开文本文件“C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config”。 找到 system.net 的默认标记，如以下代码中所示：
@@ -206,7 +206,11 @@ ms.openlocfilehash: f4ec798bcd1da7f2067929382c37915022fc1eed
    允许在代理标记中使用其他属性，以指定所需设置（如 scriptLocation）。 关于语法，请参阅[代理元素（网络设置）](https://msdn.microsoft.com/library/sa91de1e.aspx)。
 
          <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
-3. 将配置文件保存到原始位置，然后重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器” > 依次单击“停止服务”按钮和“启动服务”使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。     
+3. 将配置文件保存到原始位置，然后重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器” > 依次单击“停止服务”按钮和“启动服务”使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
+
+> [!IMPORTANT]
+> 不要忘记**同时**更新 diahost.exe.config 和 diawp.exe.config。  
+     
 
 除了这几点，还需要确保 Microsoft Azure 列于公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
 
@@ -447,6 +451,6 @@ Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName A
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

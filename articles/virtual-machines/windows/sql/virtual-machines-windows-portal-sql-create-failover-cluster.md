@@ -17,8 +17,8 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 5c5c6aa4b6408da7b0c1511ac5fa79af5076f979
-ms.openlocfilehash: 268e5eabe88c46b2fab51debb25179a8a65be469
+ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
+ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
 
 
 ---
@@ -163,7 +163,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。 
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。  
 
-1. 将存储添加到虚拟机。 有关详细信息，请参阅[添加存储](../../../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)。
+1. 将存储添加到虚拟机。 有关详细信息，请参阅[添加存储](../../../storage/storage-premium-storage.md)。
 
    这两个虚拟机至少需要两个数据磁盘。
 
