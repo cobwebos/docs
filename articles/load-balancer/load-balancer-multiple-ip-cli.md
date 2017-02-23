@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 5c4e6fd9b560d3005294a02a5ec52c140690c819
-ms.openlocfilehash: 79bb6d74c4eba99386b44e8464214d84abf882c6
+ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
+ms.openlocfilehash: f52a86b01e45a32315b017c2605f7caebb68b006
 
 
 ---
@@ -38,8 +38,27 @@ ms.openlocfilehash: 79bb6d74c4eba99386b44e8464214d84abf882c6
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
-若要注册预览版，请向[多个 IP](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) 发送一封电子邮件，其中包含你的订阅 ID 和目标用途。
+登录并选择相应订阅后，请通过在 PowerShell 中运行以下命令注册预览版：
 
+```
+Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
+
+运行 ```Get-AzureRmProviderFeature``` 命令时，请在看到以下输出后再继续完成剩余的步骤：
+        
+```powershell
+FeatureName                            ProviderName      RegistrationState
+-----------                            ------------      -----------------      
+AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+```
+        
+>[!NOTE] 
+>这可能需要几分钟的时间。
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>在多个 IP 配置上进行负载平衡的步骤
 
@@ -47,7 +66,7 @@ ms.openlocfilehash: 79bb6d74c4eba99386b44e8464214d84abf882c6
 
 1. 按照所链接的文章中的步骤[安装和配置 Azure CLI](../xplat-cli-install.md)，然后登录到你的 Azure 帐户。
 2. 如下所述[创建一个资源组](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-groups-and-choose-deployment-locations)并将其命名为 *contosofabrikam*。
- 
+
     ```azurecli
     azure group create contosofabrikam westcentralus
     ```
@@ -58,7 +77,7 @@ ms.openlocfilehash: 79bb6d74c4eba99386b44e8464214d84abf882c6
     azure availset create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
     ```
 
-4. [创建一个虚拟网络](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet)并将其命名为 *myVNet*，并创建一个名为 *mySubnet* 的子网： 
+4. [创建一个虚拟网络](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet)并将其命名为 *myVNet*，并创建一个名为 *mySubnet* 的子网：
 
     ```azurecli
     azure network vnet create --resource-group contosofabrikam --name myVnet --address-prefixes 10.0.0.0/16  --location westcentralus
@@ -105,7 +124,7 @@ ms.openlocfilehash: 79bb6d74c4eba99386b44e8464214d84abf882c6
     azure network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. 为第一个虚拟机 VM1 [创建公共 IP](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address-pip) *myPublicIp* 和[存储帐户](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-storage-account) *mystorageaccont1*，如下所示：
+10. 为第一个虚拟机 VM1 [创建公共 IP](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address) *myPublicIp* 和[存储帐户](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-storage-account) *mystorageaccont1*，如下所示：
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -134,6 +153,7 @@ ms.openlocfilehash: 79bb6d74c4eba99386b44e8464214d84abf882c6
 13. 最后，必须将 DNS 资源记录配置为指向各自的负载平衡器的前端 IP 地址。 可以在 Azure DNS 中托管域。 有关将 Azure DNS 与负载平衡器配合使用的详细信息，请参阅[将 Azure DNS 与其他 Azure 服务配合使用](../dns/dns-for-azure-services.md)。
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Feb17_HO2-->
 
 

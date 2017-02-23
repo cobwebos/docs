@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 94e09583ef8070a7e98fd2b30648996648ce3c41
-ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 6c9e70c3de404a3a5af343570203d6724342e062
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
 
 通过使用 Apache Storm 的持久数据存储，你可以将不同时间到达的数据条目关联起来。 例如，将用户会话的登录事件和注销事件关联起来即可计算该会话的持续时间。
 
-在本文档中，你将学习如何创建基本的 C# Storm 拓扑来跟踪用户会话的登录事件和注销事件，从而计算出会话的持续时间。 拓扑使用 HBase 作为永久性数据存储。 HBase 还可用于对历史数据执行批查询，以便获得额外的信息，例如在特定的时段有多少用户会话启动或结束。
+本文档介绍如何创建基本的 C# Storm 拓扑，该拓扑用于跟踪用户会话的登录事件和注销事件并计算会话的持续时间。 拓扑使用 HBase 作为永久性数据存储。 HBase 还可用于对历史数据执行批查询，以便获得额外的信息，例如在特定的时段有多少用户会话启动或结束。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,6 +37,9 @@ ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
   > 尽管在 2016/10/28 之后创建的基于 Linux 的 Storm 群集支持 SCP.NET 拓扑，但是在 2016/10/28 之后可用的 HBase SDK for .NET 包在 Linux 上无法正常工作。
 
 * HDInsight 群集上的 Apache HBase（基于 Linux 或 Windows）。 这是本示例的数据存储。
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 * 开发环境中采用 [Java](https://java.com) 1.7 或更高版本。 将拓扑提交到 HDInsight 群集时，Java 用于打包拓扑。
 
@@ -75,7 +78,7 @@ ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
 
 示例拓扑由以下组件组成：
 
-* Session.cs：通过创建随机会话 ID、开始时间以及会话持续时间来模拟用户会话。
+* Session.cs：通过创建随机会话 ID、开始时间和会话持续时间来模拟用户会话。
 
 * Spout.cs: 创建 100 个会话，发出一个开始事件，等待每个会话随机超时，然后发出一个结束事件。 然后回收结束的会话，以便生成新的会话。
 
@@ -165,16 +168,16 @@ ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
    
    ![提交到 storm 菜单项的图像](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
-6. 在“提交拓扑”对话框中，选择将运行此拓扑的 Storm 群集。
+6. 在“提交拓扑”对话框中，选择要将此拓扑部署到的 Storm 群集。
    
    > [!NOTE]
    > 第一次提交拓扑时，可能需要几秒钟来检索 HDInsight 群集名称。
 
-7. 在将拓扑上传并提交到该群集后，“Storm 拓扑视图”将打开并显示正在运行的拓扑。 选择“CorrelationTopology”，然后使用页面右上角的刷新按钮刷新拓扑信息。
+7. 将拓扑上传并提交到该群集后，“Storm 拓扑视图”将打开并显示正在运行的拓扑。 选择“CorrelationTopology”，然后使用页面右上角的刷新按钮刷新拓扑信息。
    
    ![拓扑视图的图像](./media/hdinsight-storm-correlation-topology/topologyview.png)
    
-   拓扑开始生成数据时，“已发出”列中的值将递增。
+   拓扑开始生成数据时，“已发出”列的值将递增。
    
    > [!NOTE]
    > 如果“Storm 拓扑视图”不会自动打开，可使用以下步骤将其打开：
@@ -188,7 +191,7 @@ ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
 
 1. 返回到 **SessionInfo** 项目。 如果该项目未运行，可启动一个新实例。
 
-2. 出现提示时，选择 **s** 即可搜索开始事件。 系统会提示你输入开始时间和结束时间，以便定义一个时间范围 - 将只返回这两个时间之间的事件。
+2. 出现提示时，选择 **s** 即可搜索开始事件。 系统会提示输入开始时间和结束时间，以便定义一个时间范围 - 将只返回这两个时间之间的事件。
    
     输入开始和结束时间时使用以下格式：HH:MM 以及“am”或“pm”。 例如，11:20pm。
    
@@ -201,7 +204,7 @@ ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
     Session fc9fa8e6-6892-4073-93b3-a587040d892e lasted 2 minutes, and ended at 6/5/2015 6:12:15 PM
 
 > [!NOTE]
-> 虽然你输入的时间值为本地时间，但从查询返回的时间将是 UTC。
+> 虽然输入的时间值为本地时间，但从查询返回的时间采用 UTC 格式。
 
 ## <a name="stop-the-topology"></a>停止拓扑
 
@@ -218,6 +221,6 @@ ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1fcec43ad50b9c78443ada116b9ca444605c4730
-ms.openlocfilehash: dc30e18b92e492137e016e7a7372bfdf3285e5fe
+ms.sourcegitcommit: 5acfbfbe7327fc28fa909e6ef7e0f9b6ce8b0e54
+ms.openlocfilehash: e0be8f4617c2fdbe1cb6fe2f904bf9ea7056c55e
 
 ---
 
@@ -45,17 +45,13 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
   ![添加企业应用程序](./media/application-proxy-publish-azure-portal/add-app.png)
 
-3. 在“类别”页中，选择“或者添加你自己的类别”。  
+3. 在“类别”页中，选择“本地应用程序”。  
 
   ![添加自己的应用程序](./media/application-proxy-publish-azure-portal/add-your-own.png)
 
-4. 从下拉菜单中选择“部署现有应用程序”。
-5. 为应用提供一个名称，然后选择“添加”。 此时会弹出一个加载窗口，在添加应用后，“快速启动”边栏选项卡会打开。
-6. 在“快速启动”边栏选项卡上，选择“为你的本地应用程序启用远程访问”。
+4. 提供有关应用程序的以下信息：
 
-  ![为本地应用程序启用远程访问](./media/application-proxy-publish-azure-portal/enable-remote-access.png)
-
-7. 提供有关应用程序的以下信息：
+   - **名称**：要显示在访问面板上的应用程序名称。 
 
    - **内部 URL**：这是应用程序代理连接器用于从专用网络内部访问应用程序的地址。 你可以提供后端服务器上要发布的特定路径，而服务器的其余部分则不发布。 通过这种方式，可以在同一服务器上将不同站点发布为不同应用，并为每个站点提供其自己的名称和访问规则。
 
@@ -72,9 +68,8 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
    ![配置你的应用程序](./media/application-proxy-publish-azure-portal/configure-app.png)
 
-8. 选择“保存”。
+8. 选择“添加”。
 
-   ![保存应用程序代理设置](./media/application-proxy-publish-azure-portal/save-app-proxy.png)
 
 ## <a name="add-a-test-user"></a>添加测试用户 
 
@@ -105,6 +100,6 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

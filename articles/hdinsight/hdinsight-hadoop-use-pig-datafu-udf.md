@@ -12,22 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2016
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 1589b1150df47aa5e436aa5d538b6a98706f97ae
-ms.openlocfilehash: 42ef05571b77267dd2ba2522acf9bc21619f26e3
+ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
+ms.openlocfilehash: 9071f344946999d49aee2e6bc420d35edfca96cd
 
 
 ---
 # <a name="use-datafu-with-pig-on-hdinsight"></a>在 HDInsight 上通过 pig 使用 DataFu
 
-DataFu 是适用于 Hadoop 的开放源代码库的集合。 在本文档中，你将学习如何在 HDInsight 群集上使用 DataFu 以及如何通过 Pig 使用 DataFu 用户定义函数 (UDF)。
+DataFu 是适用于 Hadoop 的开放源代码库的集合。 本文档介绍如何在 HDInsight 群集上使用 DataFu 以及如何通过 Pig 使用 DataFu 用户定义函数 (UDF)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。
+
 * Azure HDInsight 群集（基于 Linux 或 Windows）
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+
 * 基本熟悉[在 HDInsight 上使用 Pig](hdinsight-use-pig.md)
 
 ## <a name="install-datafu-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上安装 DataFu
@@ -41,32 +46,38 @@ DataFu 是适用于 Hadoop 的开放源代码库的集合。 在本文档中，�
 
 1. 使用 SSH 连接到基于 Linux 的 HDInsight 群集。 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档之一：
    
-    * [在 Linux、OS X 和 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-    * [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Linux、OS X、Unix 和 Windows 10 上的 Bash 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 2. 使用以下命令通过 wget 实用程序下载 DataFu jar 文件，或将链接复制并粘贴到浏览器以开始下载。
    
-        wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
+    ```
+    wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
+    ```
 
-3. 然后，将文件上传到 HDInsight 群集的默认存储。 这使文件对群集中的所有节点可用，即使你删除并重新创建群集，该文件也会保留在存储中。
+3. 然后，将文件上传到 HDInsight 群集的默认存储。 这使文件对群集中的所有节点可用，即使删除并重新创建群集，该文件也会保留在存储中。
    
-        hdfs dfs -put datafu-1.2.0.jar /example/jars
+    ```
+    hdfs dfs -put datafu-1.2.0.jar /example/jars
+    ```
    
     > [!NOTE]
-    > 以上示例将 jar 存储在 `wasbs:///example/jars` 中，因为此目录已存在于群集存储上。 可使用 HDInsight 群集存储上的任意位置。
+    > 以上示例将 jar 存储在 `/example/jars` 中，因为此目录已存在于群集存储上。 可使用 HDInsight 群集存储上的任意位置。
 
 ## <a name="use-datafu-with-pig"></a>通过 Pig 使用 DataFu
 
 本部分中的步骤假定你熟悉在 HDInsight 上使用 Pig，并仅向提供 Pig Latin 语句，而不是如何在群集上使用它们的步骤。 有关将 Pig 与 HDInsight 配合使用的详细信息，请参阅[将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)。
 
 > [!IMPORTANT]
-> 在基于 Linux 的 HDInsight 群集上使用 Pig 中的 DataFu 时，必须首先使用以下 Pig Latin 语句注册 jar 文件：
+> 在基于 Linux 的 HDInsight 群集上通过 Pig 使用 DataFu 时，必须先注册 jar 文件。
 > 
-> ```register wasbs:///example/jars/datafu-1.2.0.jar```
+> 如果群集使用 Azure 存储，则必须使用 `wasb://` 路径。 例如，`register wasb:///example/jars/datafu-1.2.0.jar`。
+>
+> 如果群集使用 Azure Data Lake Store，则必须使用 `adl://` 路径。 例如，`register adl://home/example/jars/datafu-1.2.0.jar`。
 > 
 > DataFu 默认情况下已在基于 Windows 的 HDInsight 群集上注册。
 
-通常，你将为 DataFu 函数定义别名。 例如：
+通常要为 DataFu 函数定义别名。 例如：
 
     DEFINE SHA datafu.pig.hash.SHA();
 
@@ -93,7 +104,7 @@ DataFu 是适用于 Hadoop 的开放源代码库的集合。 在本文档中，�
     Shi Liao,4,6,0
     Tjasa Zemljaric,0,2,5
 
-它会生成以下输出：
+这会生成以下输出：
 
     (c1a743b0f34d349cfc2ce00ef98369bdc3dba1565fec92b4159a9cd5de186347,5,9,1)
     (713d030d621ab69aa3737c8ea37a2c7c724a01cd0657a370e103d8cdecac6f99,9,3,6)
@@ -116,6 +127,6 @@ DataFu 是适用于 Hadoop 的开放源代码库的集合。 在本文档中，�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

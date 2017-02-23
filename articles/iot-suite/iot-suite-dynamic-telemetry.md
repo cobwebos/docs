@@ -1,6 +1,6 @@
 ---
 title: "使用动态遥测 | Microsoft Docs"
-description: "遵循本教程来了解如何配合使用动态遥测和远程监视预配置解决方案。"
+description: "遵循本教程来了解如何配合使用 Azure IoT 套件动态遥测和远程监视预配置解决方案。"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 3d24c0c29da8c97e5fcff524dc88746982fda77c
-ms.openlocfilehash: fce4c4050edd67d961bd07fe4052ad065d393581
+ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
+ms.openlocfilehash: 7fe03bcb918997971208554d030264d67bedb1ff
 
 
 ---
@@ -205,6 +205,6 @@ ms.openlocfilehash: fce4c4050edd67d961bd07fe4052ad065d393581
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

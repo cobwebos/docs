@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 中的 Linux VM 上使用 Docker Compose | Microsoft Docs"
-description: "如何在 Azure 中的 Linux 虚拟机上使用 Docker 和 Compose"
+description: "如何通过 Azure CLI 在 Linux 虚拟机上使用 Docker 和 Compose"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 02/13/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 3295120664e409440641818b13dd1abab6f2f72f
-ms.openlocfilehash: 06ad7f9267f24ee1f2fe417ad4aa0bf1096832d6
+ms.sourcegitcommit: 9fc3f1fbe9ab03257d613e31f5890a63d1aeba1f
+ms.openlocfilehash: 70796d5dc7c1a47d65d51d4873705606ef32c869
 
 
 ---
@@ -27,9 +27,16 @@ ms.openlocfilehash: 06ad7f9267f24ee1f2fe417ad4aa0bf1096832d6
 ## <a name="step-1-set-up-a-linux-vm-as-a-docker-host"></a>步骤 1：将 Linux VM 设置为 Docker 主机
 可以使用各种 Azure 过程和 Azure 应用商店中提供的映像或 Resource Manager 模板创建 Linux VM，并将其设置为 Docker 主机。 例如，请参阅[使用 Docker VM 扩展部署环境](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，了解使用[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)通过 Azure Docker VM 扩展快速创建 Ubuntu VM。 
 
-使用 Docker VM 扩展时，VM 将自动设置为 Docker 主机，并且已安装 Compose。 该文章中的示例演示如何在资源管理器模式下使用 [Azure CLI 1.0](../xplat-cli-install.md) 创建 VM。
+使用 Docker VM 扩展时，VM 将自动设置为 Docker 主机，并且已安装 Compose。 可以使用以下 CLI 版本之一创建 VM 和使用 Docker VM 扩展：
 
-前面文档中的基本命令在 `West US` 位置创建一个名为 `myResourceGroup` 的资源组，并使用安装的 Azure Docker VM 扩展部署 VM：
+- [Azure CLI 1.0](#azure-cli-10) - 适用于经典部署模型和资源管理部署模型的 CLI
+- [Azure CLI 2.0（预览版）](#azure-cli-20-preview)- 适用于资源管理部署模型的下一代 CLI
+
+
+### <a name="azure-cli-10"></a>Azure CLI 1.0
+安装最新的 [Azure CLI 1.0](../xplat-cli-install.md) 并登录到 Azure 帐户。 确保处于 Resource Manager 模式以创建 VM (`azure config mode arm`)。
+
+以下示例在 `West US` 位置中创建名为 `myResourceGroup` 的资源组，并使用 Azure Docker VM 扩展部署 VM。 [Github 中的 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)用于部署环境：
 
 ```azurecli
 azure group create --name myResourceGroup --location "West US" \
@@ -42,10 +49,39 @@ azure group create --name myResourceGroup --location "West US" \
 azure vm show --resource-group myResourceGroup --name myDockerVM
 ```
 
-在输出的顶部附近，可看到 VM 的 `ProvisioningState`。 当此项显示 `Succeeded` 时，部署已完成，可以通过 SSH 连接到 VM 了。
+### <a name="azure-cli-20-preview"></a>Azure CLI 2.0（预览版）
+安装最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+
+首先，使用 [az group create](/cli/azure/group#create) 为 Docker 环境创建资源组。 以下示例在 `West US` 位置创建名为 `myResourceGroup` 的资源组：
+
+```azurecli
+az group create --name myResourceGroup --location westus
+```
+
+然后，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 VM，其包括 [Github 中此 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 为 `newStorageAccountName`、`adminUsername`、`adminPassword` 和 `dnsNameForPublicIP` 提供你自己的值：
+
+```azurecli
+az group deployment create --resource-group myResourceGroup \
+  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
+    "adminUsername": {"value": "azureuser"},
+    "adminPassword": {"value": "P@ssw0rd!"},
+    "dnsNameForPublicIP": {"value": "mypublicdns"}}' \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+```
+
+需要几分钟才能完成部署。 部署完成后，[移到下一步](#step-2-verify-that-compose-is-installed)，将 SSH 移到 VM。 
+
+（可选）若要改为将控制返回提示符，并允许部署在后台继续运行，请将 `--no-wait` 标志添加到前一个命令。 此过程允许在 CLI 中执行其他工作，同时部署将持续几分钟。 可以使用 [az vm show](/cli/azure/vm#show) 查看有关 Docker 主机状态的详细信息。 以下示例在名为 `myResourceGroup` 的资源组中检查名为 `myDockerVM`（模板中的默认名称 - 请不要更改该名称）的 VM 的状态：
+
+```azurecli
+az vm show --resource-group myResourceGroup --name myDockerVM \
+  --query [provisioningState] --output tsv
+```
+
+当此命令返回 `Succeeded` 时，表示部署已完成，可以使用以下步骤将 SSH 移到 VM。
 
 ## <a name="step-2-verify-that-compose-is-installed"></a>步骤 2：确认已安装 Compose
-部署完成之后，使用在部署期间提供的 DNS 名称通过 SSH 连接到新 Docker 主机。 可以使用 `azure vm show -g myDockerResourceGroup -n myDockerVM` 查看 VM 的详细信息，包括 DNS 名称。
+部署完成之后，使用在部署期间提供的 DNS 名称通过 SSH 连接到新 Docker 主机。 可以使用 `azure vm show -g myResourceGroup -n myDockerVM` (Azure CLI 1.0) 或`az vm show -g myResourceGroup -n myDockerVM -d --query [fqdns] -o tsv`（Azure CLI 2.0（预览版））查看 VM 的详细信息，包括 DNS 名称。
 
 若要检查 VM 上是否安装了 Compose，请运行以下命令：
 

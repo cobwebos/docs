@@ -12,15 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 02/10/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 45358e89561ef2265ca5d8ae522b823c4629b3fc
-ms.openlocfilehash: f869e456ef40d04f7dd085d4ce7c3d654cdf2091
+ms.sourcegitcommit: 28846f2effd26c5b7ca7a79fba52d8ba1cb4ea91
+ms.openlocfilehash: 9abf35aebceb4a109becba6e97e0a506fc4375d7
 
 
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
+
+本文回答我们收到的有关 Microsoft Authenticator 应用的常见问题。 如果没有看到所提问题的答案，请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。 我们还提供了另一个有关应用上一个特定功能的常见问题解答，即[使用手机登录常见问题解答](microsoft-authenticator-app-phone-signin-faq.md)。
+
 Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure Multi-Factor Authentication 时使用该应用。 此应用可用于 Windows Phone、Android 和 iOS。
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -40,7 +43,7 @@ Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/
 不适用，推送通知只适用于 Microsoft 帐户和 Azure Active Directory 帐户。 如果您的工作单位或学校使用的是 Azure AD 帐户，则可能会禁用此功能。  
 
 ### <a name="i-restored-my-device-from-a-backup-and-my-account-codes-are-missing-or-not-working-what-happened"></a>我从备份还原设备后，帐户代码丢失或无效。 发生了什么情况？
-出于安全考虑，我们不会从应用备份还原帐户。 如果从备份还原 iOS 应用，帐户仍然显示，但无法接收登录验证或生成安全代码。 还原应用后，请删除帐户，然后重新添加。
+出于安全考虑，我们不会从应用备份还原帐户。  还原应用后，请删除帐户，然后重新添加。
 
 ### <a name="i-got-a-new-device-how-do-i-remove-the-microsoft-authenticator-app-from-my-old-device-and-move-to-the-new-one"></a>我将使用新设备。 如何从旧设备删除 Microsoft Authenticator 应用并将其迁移到新设备？
 将 Microsoft Authenticator 应用添加到新设备不会自动将其从任何其他设备删除。 若要管理为帐户配置的设备，请访问用于管理双重验证的同一网站，然后选择删除旧应用。
@@ -52,10 +55,10 @@ Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/
 * Windows Phone：在主屏幕中，依次选择菜单按钮、“**编辑帐户**”。 点击帐户名称旁边的 **X**。
 * Android：在主屏幕中，依次选择菜单按钮、“**编辑帐户**”。 点击帐户名称旁边的 **X**。
 
-如果你具有向组织注册的 Android 设备，可能需要完成额外的步骤来删除你的帐户。 在这些设备上，Microsoft Authenticator 应用自动注册为设备管理员。 如果你要完全卸载该应用，首先需要在应用设置中取消注册它。
+如果拥有已注册到组织的设备，可能需要完成一个额外步骤才能删除帐户。 在这些设备上，Microsoft Authenticator 应用自动注册为设备管理员。 如果你要完全卸载该应用，首先需要在应用设置中取消注册它。
 
 ### <a name="why-does-the-app-request-so-many-permissions"></a>应用为什么请求这么多的权限？
-下面是我们请求的权限完整列表及它们在应用中的用法：
+下面是可能需要的权限的完整列表及它们在应用中的用法。 所见到的特定权限取决于所持有的电话类型。
 
 * **照相机**：当你添加工作、学校或非 Microsoft 帐户时，我们使用照相机来扫描 QR 代码。
 * **联系人和电话**：当你使用个人 Microsoft 帐户登录时，我们会尝试通过查找你在手机中使用的现有帐户简化该过程。
@@ -77,16 +80,17 @@ Microsoft Authenticator 应用可用于 [Windows Phone](http://go.microsoft.com/
 ## <a name="next-steps"></a>后续步骤
 
 ### <a name="contact-us"></a>联系我们
-如果此文档没有回答你的问题，请告知我们。 请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)发布问题，从社区获取帮助、在此页面留下评论，或[联系支持人员](https://support.microsoft.com/contactus)，我们将尽快回复你的问题。
+如果此文档没有回答你的问题，请告知我们。 请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)发布问题，并从社区获取帮助，或在此页面留下评论。
 
 
 ### <a name="related-topics"></a>相关主题
 * 关于 Microsoft 帐户的[双重验证](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)
 * 为工作或学校帐户[进行设置双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)？
+* [使用 Microsoft Authenticator 通过手机登录](microsoft-authenticator-app-phone-signin-faq.md)
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

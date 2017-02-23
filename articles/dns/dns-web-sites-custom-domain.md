@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: ebff4403b81930d533c1dcbaf2b8857207eda4b6
+ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
+ms.openlocfilehash: a2a429873c30f526a0de05d4018f53f3a83bbe28
 
 ---
 
@@ -58,7 +58,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 若要查找 Web 应用的 IP 地址，请按照[在 Azure App Service 中配置自定义域名](../app-service-web/web-sites-custom-domain-name.md#vip)中的步骤执行操作。
 
 ```powershell
-Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address <your web app IP address>
+Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
 ```
 
 ### <a name="step-3"></a>步骤 3
@@ -77,17 +77,22 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 打开 PowerShell，新建 CNAME 记录集，然后将其分配给变量 $rs。 本示例会将在名为“contoso.com”的 DNS 区域中创建“生存时间”为 600 秒的记录集类型 CNAME。
 
-    $rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
+```powershell
+$rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
+```
 
-    Name              : www
-    ZoneName          : contoso.com
-    ResourceGroupName : myresourcegroup
-    Ttl               : 600
-    Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
-    RecordType        : CNAME
-    Records           : {}
-    Tags              : {}
+以下示例是响应。
 
+```
+Name              : www
+ZoneName          : contoso.com
+ResourceGroupName : myresourcegroup
+Ttl               : 600
+Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
+RecordType        : CNAME
+Records           : {}
+Tags              : {}
+```
 
 ### <a name="step-2"></a>步骤 2
 
@@ -95,8 +100,13 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 使用以前分配的变量 "$rs"，你可以使用下面的 PowerShell 命令来创建 Web 应用 contoso.azurewebsites.net 的别名。
 
-    Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
+```powershell
+Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
+```
 
+以下示例是响应。
+
+```
     Name              : www
     ZoneName          : contoso.com
     ResourceGroupName : myresourcegroup
@@ -105,6 +115,7 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
     RecordType        : CNAME
     Records           : {contoso.azurewebsites.net}
     Tags              : {}
+```
 
 ### <a name="step-3"></a>步骤 3
 
@@ -116,20 +127,22 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 可以通过使用 nslookup 验证由查询“www.contoso.com”正确创建的记录，如下所示：
 
-    PS C:\> nslookup
-    Default Server:  Default
-    Address:  192.168.0.1
+```
+PS C:\> nslookup
+Default Server:  Default
+Address:  192.168.0.1
 
-    > www.contoso.com
-    Server:  default server
-    Address:  192.168.0.1
+> www.contoso.com
+Server:  default server
+Address:  192.168.0.1
 
-    Non-authoritative answer:
-    Name:    <instance of web app service>.cloudapp.net
-    Address:  <ip of web app service>
-    Aliases:  www.contoso.com
-    contoso.azurewebsites.net
-    <instance of web app service>.vip.azurewebsites.windows.net
+Non-authoritative answer:
+Name:    <instance of web app service>.cloudapp.net
+Address:  <ip of web app service>
+Aliases:  www.contoso.com
+contoso.azurewebsites.net
+<instance of web app service>.vip.azurewebsites.windows.net
+```
 
 ## <a name="create-an-awverify-record-for-web-apps"></a>创建 Web 应用的 "awverify" 记录
 
@@ -139,24 +152,34 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 创建 "awverify" 记录。 在下面的示例中，我们将为 contoso.com 创建 "awverify" 记录，以验证自定义域的所有权。
 
-    $rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "awverify" -RecordType "CNAME" -Ttl 600
+```powershell
+$rs = New-AzureRMDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "myresourcegroup" -Name "awverify" -RecordType "CNAME" -Ttl 600
+```
 
-    Name              : awverify
-    ZoneName          : contoso.com
-    ResourceGroupName : myresourcegroup
-    Ttl               : 600
-    Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
-    RecordType        : CNAME
-    Records           : {}
-    Tags              : {}
+以下示例是响应。
 
+```
+Name              : awverify
+ZoneName          : contoso.com
+ResourceGroupName : myresourcegroup
+Ttl               : 600
+Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
+RecordType        : CNAME
+Records           : {}
+Tags              : {}
+```
 
 ### <a name="step-2"></a>步骤 2
 
 创建 "awverify" 记录集后，分配 CNAME 记录集别名。 在下面的示例中，我们会将 CNAME 记录集别名分配给 awverify.contoso.azurewebsites.net。
 
-    Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
+```powershell
+Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
+```
 
+以下示例是响应。
+
+```
     Name              : awverify
     ZoneName          : contoso.com
     ResourceGroupName : myresourcegroup
@@ -165,6 +188,7 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
     RecordType        : CNAME
     Records           : {awverify.contoso.azurewebsites.net}
     Tags              : {}
+```
 
 ### <a name="step-3"></a>步骤 3
 
@@ -180,6 +204,6 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

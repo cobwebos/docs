@@ -10,11 +10,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/09/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
-ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
+ms.sourcegitcommit: 938f325e2cd4dfc1a192256e033aabfc39b85dac
+ms.openlocfilehash: 6bb1f31407f9af67e699bd110ee528dddee1a70f
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
 
 可以使用自己的架构将数据导入到 Analytics 中。 它不一定使用标准 Application Insights 架构（如请求或跟踪）。
 
-目前，可以导入 CSV（逗号分隔值）文件或采用了 Tab 或分号分隔符的类似格式的文件。
+可以导入 JSON 或 DSV（分隔符分隔的值 - 逗号、分号或制表符）文件。
 
 在三种情况下，导入到 Analytics 非常有用：
 
@@ -72,12 +72,15 @@ ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
 
     ![添加新数据源](./media/app-insights-analytics-import/add-new-data-source.png)
 
-2. 按照说明来上载示例数据文件。
+2. 上传示例数据文件。 （如果上传架构定义，则为可选。）
 
- * 此示例的第一行可以是列标题。 （可以在下一步中更改字段名称。）
- * 该示例应至少包含 10 行的数据。
+    此示例的第一行可以是列标题。 （可以在下一步中更改字段名称。）
 
-3. 查看向导已从示例推断出来的架构。 如有必要，可以调整已推断出来的列类型。
+    该示例应至少包含 10 行的数据。
+
+3. 查看向导所获取的架构。 如果它从样本中推断出类型，则很可能需要调整推断的列类型。
+
+   （可选。）上传架构定义。 请参阅下面的格式。
 
 4. 选择时间戳。 Analytics 中的所有数据都必须有时间戳字段。 它必须具有类型 `datetime`，但它无需命名为“timestamp”。 如果数据的一列包含 ISO 格式的日期和时间，请选择此列作为时间戳列。 否则，请选择“按到达的数据”，然后导入进程将添加时间戳字段。
 
@@ -85,6 +88,37 @@ ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
 
 5. 创建数据源。
 
+### <a name="schema-definition-file-format"></a>架构定义文件格式
+
+可以从文件加载架构定义，而不是在 UI 中编辑架构。 架构定义格式如下： 
+
+带分隔符的格式 
+```
+[ 
+    {"location": "0", "name": "RequestName", "type": "string"}, 
+    {"location": "1", "name": "timestamp", "type": "datetime"}, 
+    {"location": "2", "name": "IPAddress", "type": "string"} 
+] 
+```
+
+JSON 格式 
+```
+[ 
+    {"location": "$.name", "name": "name", "type": "string"}, 
+    {"location": "$.alias", "name": "alias", "type": "string"}, 
+    {"location": "$.room", "name": "room", "type": "long"} 
+]
+```
+ 
+每个列按位置、名称和类型进行标识。 
+
+* 位置 - 对于带分隔符的文件格式，它是映射的值的位置。 对于 JSON 格式，它是映射的键的 jpath。
+* 名称 - 列的显示名称。
+* 类型 - 列的数据类型。
+ 
+如果使用示例数据，且文件为带分隔符的格式，则架构定义必须映射所有列，并在末尾添加新列。 
+
+JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射在示例数据中找到的每个键。 它还可以映射不属于示例数据一部分的列。 
 
 ## <a name="import-data"></a>导入数据
 
@@ -271,7 +305,6 @@ namespace IngestionClient
             requestStream.Write(notificationBytes, 0, notificationBytes.Length); 
             requestStream.Close(); 
 
-            HttpWebResponse response; 
             try 
             { 
                 using (var response = (HttpWebResponse)await request.GetResponseAsync())
@@ -334,6 +367,6 @@ namespace IngestionClient
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 4d436776069bd950dd9ab240aeefd986822ee869
+ms.sourcegitcommit: 7e53a249e6a7ea87d7d5855d041db97b5df7053c
+ms.openlocfilehash: 1276506d77695f284c49d0e2f7d57a9162b38bd6
 
 
 ---
@@ -229,7 +229,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 例如：*msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-需要使用 [Azure 经典门户](https://manage.windowsazure.com/)在应用注册中指定此重定向 URI。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](active-directory-how-to-integrate.md)。
+需要使用 [Azure 门户](https://portal.azure.com/)在应用注册中指定此重定向 URI。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](active-directory-how-to-integrate.md)。
 
 #### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>步骤 3：在应用程序中设置正确的权限
 Android 中的中转站应用程序使用 Android OS 的帐户管理器功能来管理跨应用程序的凭据。 若要在 Android 中使用该中转站应用程序清单中必须有权使用 AccountManager 帐户。 [Google 帐户管理器文档](http://developer.android.com/reference/android/accounts/AccountManager.html)中对此进行了详细介绍
@@ -248,6 +248,6 @@ MANAGE_ACCOUNTS
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

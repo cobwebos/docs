@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 02/08/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: cbc91181f2531ea5e60bb426d6b8b42e2c7684d3
-ms.openlocfilehash: 0bb6db67df25fb3c3484c819398890efef343943
+ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
+ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
 
 
 ---
@@ -61,7 +61,7 @@ ms.openlocfilehash: 0bb6db67df25fb3c3484c819398890efef343943
    ![安全策略][3]
 2. 在“安全策略-定义每个订阅或资源组的策略”边栏选项卡上，选择一个订阅。
 3. 在“安全策略”边栏选项卡上，启用“数据收集”以自动收集日志。 对订阅中所有当前的 VM 和新的 VM 都预配了监视扩展。 （可将“数据收集”设置为“关”来选择退出数据收集，但这会阻止安全中心提供安全警报和建议。）
-4. 在“安全策略”边栏选项卡上，选择“选择每个区域的存储帐户”。 对于运行 VM 的每个区域，选择相应的存储帐户来存储从这些 VM 收集的数据。 如果不为每个区域选择一个存储帐户，则会创建一个帐户。 出于安全性考虑，收集的数据在逻辑上独立于其他客户的数据。
+4. 在“安全策略”边栏选项卡上，选择“选择每个区域的存储帐户”。 对于运行 VM 的每个区域，选择相应的存储帐户来存储从这些 VM 收集的数据。 如果未对每个区域选择一个存储帐户，则系统将为你创建存储帐户并将其置于 securitydata 资源组中。 出于安全性考虑，收集的数据在逻辑上独立于其他客户的数据。
 
    > [!NOTE]
    > 建议启用数据收集，并首先选择订阅级别的存储帐户。 虽然可在 Azure 订阅级别和资源组级别上设置安全策略，但只能在订阅级别上配置数据收集和存储帐户。
@@ -126,6 +126,6 @@ ms.openlocfilehash: 0bb6db67df25fb3c3484c819398890efef343943
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/15/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: ab167a74ddab1e38369ce9fa466022365ca08bee
+ms.sourcegitcommit: b4637922e7b280b0e9954c9e51788202e784b4f9
+ms.openlocfilehash: 743223f78f279fedf33f73ff52b56f4a7358cd51
 
 
 ---
@@ -44,6 +44,18 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 
 不受监视的手动模式在每次对更新域升级之后都需要人工干预，以开始进行下一个更新域的升级。 系统不会执行任何 Service Fabric 运行状况检查。 管理员开始在下一个更新域中升级之前，需执行状况或状态检查。
 
+## <a name="upgrade-default-services"></a>升级默认服务
+可在应用程序升级过程中升级 Service Fabric 应用程序中的默认服务。 在[应用程序清单](service-fabric-application-model.md#describe-an-application)中定义默认服务。 升级默认服务的标准规则包括：
+
+1. 创建该群集中不存在的新[应用程序清单](service-fabric-application-model.md#describe-an-application)中的默认服务。
+> [!TIP]
+> 需将 [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md#fabric-settings-that-you-can-customize) 设置为 true，以便启用以下规则。 从 v5.5 支持此功能。
+
+2. 更新默认服务，这些服务同时存在于以前的[应用程序清单](service-fabric-application-model.md#describe-an-application)及新版清单中。 新版中的服务说明会覆盖群集已有的说明。 默认服务更新失败时将自动回滚应用程序升级。
+3. 删除以前的[应用程序清单](service-fabric-application-model.md#describe-an-application)中有的但新版本中没有的默认服务。 **请注意，删除的默认服务不能还原。**
+
+如果发生应用程序升级回滚，默认服务将还原至升级开始前的状态。 但是，永远无法创建已删除的服务。
+
 ## <a name="application-upgrade-flowchart"></a>应用程序升级流程图
 本段落后面的流程图可帮助理解 Service Fabric 应用程序的升级过程。 具体而言，该流程描述当一个更新域的升级被认为成功或失败时，超时（包括 *HealthCheckStableDuration*、*HealthCheckRetryTimeout* 和 *UpgradeHealthCheckInterval*）如何为控制提供帮助。
 
@@ -66,6 +78,6 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

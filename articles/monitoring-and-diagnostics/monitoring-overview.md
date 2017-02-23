@@ -1,6 +1,6 @@
 ---
-title: "Azure 监视概述 | Microsoft Docs"
-description: "Microsoft Azure 中 Azure Monitor 功能的顶级概述，包括警报、webhook、自动缩放等。"
+title: "Azure Monitor 概述 | Microsoft Docs"
+description: "Azure Monitor 可收集用于警报、webhook、自动缩放以及自动化的统计信息。 本文还列出其他 Microsoft 监视选项。"
 author: rboucher
 manager: carmonm
 editor: 
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 02/01/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: c0d101266fecf04a84b5717c1b81cefed90cab40
-ms.openlocfilehash: 2d16a04bb261552dc9eb86bde301d4285dbf4434
+ms.sourcegitcommit: 09b2847586eec50d8512ec5eabdc05a11d8b238a
+ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
 
 
 ---
 
-# <a name="overview-of-monitoring-in-microsoft-azure"></a>Microsoft Azure 中的监视概述
+# <a name="overview-of-azure-monitor"></a>Azure Monitor 概述
 本文对监视 Azure 资源进行概念性概述， 并提供有关特定类型资源的信息的导航。  如需要了解从非 Azure 角度监视应用程序的信息，请参阅[监视和诊断指南](../best-practices-monitoring.md)。
 
 Azure Monitor 的视频演练位于  
@@ -148,6 +148,6 @@ Azure 的产品/服务可用于监视从裸机基础结构到应用程序遥测�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

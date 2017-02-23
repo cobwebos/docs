@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 02/14/2017
 ms.author: hermannd
 translationtype: Human Translation
-ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
-ms.openlocfilehash: fe07622d3a3e60c6d3520b6983195b410c3edc6a
+ms.sourcegitcommit: 046f58eba906980f23ce1177794b28930e3314a1
+ms.openlocfilehash: e7255c4123849f8f3fb29767308b433b5c0e511b
 
 
 ---
@@ -33,6 +33,9 @@ ms.openlocfilehash: fe07622d3a3e60c6d3520b6983195b410c3edc6a
 
 应使用 Azure Resource Manager 完成 Azure 上的所有新测试和安装。 若要通过 Azure PowerShell 或 Azure 命令行界面 (CLI) 查找 SUSE SLES 映像和版本，请使用以下命令。 然后可以使用输出，例如，在 JSON 模板中定义 OS 映像以部署新的 SUSE Linux VM。
 这些 PowerShell 命令适用于 Azure PowerShell 1.0.1 和更高版本。
+
+尽管仍可使用标准 SLES 映像进行 SAP 安装，但建议使用新的 SLES for SAP 映像（Azure 映像库现已提供）。 有关这些映像的详细信息，可参阅相应的 [Azure 应用商店页面]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES-SAP )或[关于 SLES for SAP 的 SUSE FAQ 网页]( https://www.suse.com/products/sles-for-sap/frequently-asked-questions/ )。
+
 
 * 查找现有发布服务器（包括 SUSE）：
   
@@ -50,13 +53,17 @@ ms.openlocfilehash: fe07622d3a3e60c6d3520b6983195b410c3edc6a
   
    ```
    PS  : Get-AzureRmVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES"
+   PS  : Get-AzureRmVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES-SAP"
    CLI : azure vm image list-skus westeurope SUSE SLES
+   CLI : azure vm image list-skus westeurope SUSE SLES-SAP
    ```
 * 查找特定版本的 SLES SKU：
   
    ```
-   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12"
-   CLI : azure vm image list westeurope SUSE SLES 12
+   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12-SP2"
+   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES-SAP" -skus "12-SP2"
+   CLI : azure vm image list westeurope SUSE SLES 12-SP2
+   CLI : azure vm image list westeurope SUSE SLES-SAP 12-SP2
    ```
 
 ## <a name="installing-walinuxagent-in-a-suse-vm"></a>在 SUSE VM 中安装 WALinuxAgent
@@ -159,6 +166,6 @@ SUSE 提供了一个名为“sapconf”的包，该包可管理一组特定于 S
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1eada96773b1d9c6adb9326c9100da7cde8abf77
-ms.openlocfilehash: 8df936a03868412adf34672108f40829c41f33ab
+ms.sourcegitcommit: c308524e41047220fbad026edb6a87f196d89580
+ms.openlocfilehash: 3f293996d2565c495f707f99a0bb75bb7c24054e
 
 ---
 
 # <a name="single-sign-on-with-application-proxy"></a>使用应用程序代理进行单一登录
 单一登录是 Azure AD 应用程序代理的一个关键要素。 它通过以下步骤提供最佳用户体验：
 
-1. 用户登录到云  
-2. 所有安全验证都在云中完成（预身份验证）  
+1. 用户登录到云。  
+2. 所有安全验证都在云中完成（预身份验证）。  
 3. 将请求发送到本地应用程序后，应用程序代理连接器将模拟用户。 后端应用程序将此用户视为已加入域的设备中的普通用户。
 
 ![最终用户通过应用程序代理访问企业网络的示意图](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_diagram.png)
@@ -62,7 +62,7 @@ ms.openlocfilehash: 8df936a03868412adf34672108f40829c41f33ab
 #### <a name="connector-and-published-server-in-the-same-domain"></a>连接器和已发布的服务器位于同一域
 1. 在 Active Directory 中，转到“工具” > “用户和计算机”。
 2. 选择运行连接器的服务器。
-3. 单击右键，然后选择“属性” > “委托”。
+.3. 单击右键，然后选择“属性” > “委托”。
 4. 选择“仅信任此计算机来委派指定的服务”。 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。
 5. 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
 
@@ -105,6 +105,8 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 
 ![非 Windows SSO 示意图](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_nonwindows_diagram.png)
 
+有关 Kerberos 的详细信息，请参阅[全面了解 Kerberos 约束委派 (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)。
+
 ### <a name="delegated-login-identity"></a>委托的登录标识
 委托的登录标识可帮助处理两种不同的登录方案：
 
@@ -130,7 +132,7 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 它还有助于不接受电子邮件地址形式的应用程序，这种情况对于非 Windows 后端服务器很常见。
 
 ### <a name="setting-sso-for-different-cloud-and-on-prem-identities"></a>为不同的云标识和本地标识设置 SSO
-1. 配置 Azure AD Connect 设置，使主标识采用电子邮件地址（邮件）。 可以在自定义过程中通过更改同步设置中的“用户主体名称”字段来实现此目的。 这些设置同时确定了用户如何登录到 Office 365、Windows 10 设备以及其他使用 Azure AD 作为标识存储的应用程序。  
+1. 配置 Azure AD Connect 设置，使主标识采用电子邮件地址（邮件）。 可以在自定义过程中通过更改同步设置中的“用户主体名称”字段来实现此目的。 这些设置同时确定了用户如何登录到 Office&365;、Windows&10; 设备以及其他使用 Azure AD 作为标识存储的应用程序。  
    ![识别用户屏幕截图 -“用户主体名称”下拉列表](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. 在要修改的应用程序的“应用程序配置”设置中，选择要使用的**委托的登录识别**：
 
@@ -160,6 +162,6 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 01/17/2017
+ms.date: 02/08/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: efa4a720a306aaedcd2d5857d30d34394a76f5f6
-ms.openlocfilehash: b2f8537aa58e6dc78051752a13f555331042972a
+ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
+ms.openlocfilehash: ca09ac90dfcf125291bc0b312b16e28160a18527
 
 
 ---
@@ -26,7 +26,10 @@ ms.openlocfilehash: b2f8537aa58e6dc78051752a13f555331042972a
 
 若要进行此设置，必须有 [Azure 搜索服务](search-create-service-portal.md)，另外还必须有索引、索引器以及数据源。 可以通过以下方法之一创建这些对象：[门户](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search) 或适用于所有非. NET 语言的 [REST API](/rest/api/searchservice/)。 
 
-如果选择使用门户，[导入数据向导](search-import-data-portal.md)将引导你完成创建所有这些对象。 通常情况下，可以为你生成一个默认索引。
+如果选择使用门户，[导入数据向导](search-import-data-portal.md)将引导完成所有这些对象的创建操作。 通常情况下，可以为你生成一个默认索引。
+
+> [!NOTE]
+> 可从 DocumentDB 仪表板启动**导入数据**向导，进而简化该数据源的索引。 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
 
 ## <a name="a-idconceptsaazure-search-indexer-concepts"></a><a id="Concepts"></a>Azure 搜索索引器概念
 Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这些数据源操作的索引器。
@@ -291,6 +294,6 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 * 若要了解有关 Azure 搜索的详细信息，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: d76491683d08bf9afd505eebfdede5812e87f458
+ms.sourcegitcommit: a63996ad3661b43bea83870c1fa88fa6d64c6c6a
+ms.openlocfilehash: bc2bb9916baa08b14dc5cfeb0e6d712b1c0522ef
 
 
 ---
@@ -277,10 +277,10 @@ Microsoft 标识平台使用 URL 来调用中转站，然后将控制权返回�
 
 例如：*x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-需要使用 [Azure 经典门户](https://manage.windowsazure.com/)在应用注册中指定此重定向 URI。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](active-directory-how-to-integrate.md)。
+需要使用 [Azure 门户](https://portal.azure.com/)在应用注册中指定此重定向 URI。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](active-directory-how-to-integrate.md)。
 
 ##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>步骤 3a：在应用和开发人员门户添加重定向 URI，以支持基于证书的身份验证
-若要支持基于证书的身份验证，需要在应用程序和 [Azure 经典门户](https://manage.windowsazure.com/)中注册第二个“msauth”，以处理证书身份验证（如果想要在应用程序中添加该支持）。
+若要支持基于证书的身份验证，需要在应用程序和 [Azure 门户](https://portal.azure.com/)中注册第二个“msauth”，以处理证书身份验证（如果想要在应用程序中添加该支持）。
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
@@ -301,6 +301,6 @@ ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。 在 iO
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

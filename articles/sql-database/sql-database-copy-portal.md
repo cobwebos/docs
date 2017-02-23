@@ -3,34 +3,31 @@ title: "使用 Azure 门户复制 Azure SQL 数据库 | Microsoft 文档"
 description: "创建 Azure SQL 数据库的副本"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: daa6f079-13ed-462f-b346-e201aa61681b
 ms.service: sql-database
 ms.custom: migrate and move
 ms.devlang: NA
-ms.date: 09/19/2016
-ms.author: sstein
+ms.date: 02/07/2017
+ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 8e96b9f053cf1cfab39cc41911e7e1548d752730
+ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
+ms.openlocfilehash: 5da07683a4ca9fe1751debc163a0a5a595b6f82b
 
 
 ---
 # <a name="copy-an-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户复制 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [概述](sql-database-copy.md)
-> * [Azure 门户](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
-以下步骤说明如何使用 [Azure 门户](https://portal.azure.com)将 SQL 数据库复制到同一服务器或其他服务器。
+以下步骤说明如何使用 [Azure 门户](https://portal.azure.com)将 SQL 数据库复制到同一服务器或其他服务器。 
+
+> [!NOTE]
+> 还可使用 [PowerShell](sql-database-copy-powershell.md) 或 [Transact-SQL](sql-database-copy-transact-sql.md) 复制 SQL 数据库。
+>
 
 若要复制 SQL 数据库，需要做好以下项：
 
@@ -66,15 +63,8 @@ ms.openlocfilehash: 8e96b9f053cf1cfab39cc41911e7e1548d752730
 若要在复制操作完成后解析登录名，请参阅[解析登录名](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)
 
 ## <a name="next-steps"></a>后续步骤
-* 有关复制 Azure SQL 数据库的概述，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
-* 若要使用 PowerShell 复制数据库，请参阅[使用 PowerShell 复制 Azure SQL 数据库](sql-database-copy-powershell.md)。
-* 若要使用 Transact-SQL 复制数据库，请参阅[使用 Transact-SQL 复制 Azure SQL 数据库](sql-database-copy-transact-sql.md)。
-* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
-
-## <a name="additional-resources"></a>其他资源
-* [管理登录名](sql-database-manage-logins.md)
-* [使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询](sql-database-connect-query-ssms.md)
-* [将数据库导出到 BACPAC](sql-database-export.md)
+* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
+* 若要使用 Azure 门户将数据库导出到 BACPAC 文件，请参阅[使用 Azure 门户将数据库导出到 BACPAC](sql-database-export-portal.md)。
 * [业务连续性概述](sql-database-business-continuity.md)
 * [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
 
@@ -87,6 +77,6 @@ ms.openlocfilehash: 8e96b9f053cf1cfab39cc41911e7e1548d752730
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

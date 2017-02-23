@@ -1,5 +1,5 @@
 ---
-title: "使用 Docker Machine 在 Azure 中创建 Docker 主机 | Microsoft Docs"
+title: "使用 Docker Machine 在 Azure 中创建 Linux 主机 | Microsoft Docs"
 description: "介绍如何使用 Docker Machine 在 Azure 中创建 Docker 主机。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 8fe34e543d8860d80016d35d27159298c17e486e
+ms.sourcegitcommit: b64bafe1a8572369aa7a7e6f0d8b924fc182cd53
+ms.openlocfilehash: 9440474db7eb7e3ae082505f8c95cbcf8c285cdf
 
 
 ---
 # <a name="use-docker-machine-with-the-azure-driver"></a>通过 Azure 驱动程序使用 Docker 计算机
-[Docker](https://www.docker.com/) 是最常用的虚拟化方法之一，它使用 Linux 容器而不是虚拟机作为在共享资源上隔离应用程序数据和执行计算的方法。 本主题介绍何时及如何使用 [Docker Machine](https://docs.docker.com/machine/)（`docker-machine` 命令）在 Azure 中创建新的 Linux VM，并将其启用为 Linux 容器的 Docker 主机。
+[Docker](https://www.docker.com/) 提供使用 Linux 容器（而非 VM）实现的虚拟化，从而隔离共享资源上的应用程序数据和计算。 本主题介绍如何以及何时使用 [Docker 计算机](https://docs.docker.com/machine/)。 `docker-machine` 命令在 Azure 中创建一个新的 Linux VM 作为 Linux 容器的 docker 主机。
 
 ## <a name="create-vms-with-docker-machine"></a>使用 Docker Machine 创建 VM
 使用驱动程序选项 (`-d`) 的 `azure` 驱动程序参数和任何其他参数，以 `docker-machine create` 命令在 Azure 中创建 Docker 主机 VM。 
@@ -132,6 +132,6 @@ d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago  
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

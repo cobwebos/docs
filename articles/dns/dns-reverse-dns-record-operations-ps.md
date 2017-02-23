@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2016
 ms.author: smalone
 translationtype: Human Translation
-ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
-ms.openlocfilehash: 730321ccacb211ec82e69f8ebc69ee84cbf46a01
+ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
+ms.openlocfilehash: 78de3b8dd2d8bd0992bfbacb1079825dca486442
 
 
 ---
@@ -34,6 +34,7 @@ ms.openlocfilehash: 730321ccacb211ec82e69f8ebc69ee84cbf46a01
 有关经典部署模型的详细信息，请参阅[如何使用 Azure PowerShell 管理 Azure 服务（经典）的反向 DNS 记录](dns-reverse-dns-record-operations-classic-ps.md)。
 
 ## <a name="validation-of-reverse-dns-records"></a>反向 DNS 记录的验证
+
 为了确保第三方不能创建映射到你的 DNS 域的反向 DNS 记录，Azure 只允许创建符合以下条件之一的反向 DNS 记录：
 
 * “ReverseFqdn”等同于指定它的目标公共 IP 地址资源的“Fqdn”，或等同于同一订阅中的任何公共 IP 地址的“Fqdn”，例如，“ReverseFqdn”是“contosoapp1.northus.cloudapp.azure.com”。
@@ -42,37 +43,50 @@ ms.openlocfilehash: 730321ccacb211ec82e69f8ebc69ee84cbf46a01
 只有当设置或修改公共 IP 地址的反向 DNS 属性时，才会执行验证检查。 不执行定期重新验证。
 
 ## <a name="add-reverse-dns-to-existing-public-ip-addresses"></a>将反向 DNS 添加到现有公共 IP 地址
-可以使用“Set-AzureRmPublicIpAddress”cmdlet 将反向 DNS 添加到现有公共 IP 地址：
 
-    PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
-    PS C:\> $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-    PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+可以使用 `Set-AzureRmPublicIpAddress` cmdlet 将反向 DNS 添加到现有公共 IP 地址：
+
+```powershell
+$pip = Get-AzureRmPublicIpAddress -Name "PublicIP" -ResourceGroupName "NRP-DemoRG-PS"
+$pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
+Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+```
 
 如果想要将反向 DNS 添加到尚不具有 DNS 名称的现有公共 IP 地址，则还必须指定 DNS 名称。 使用“Set-AzureRmPublicIpAddress”cmdlet 实现此操作：
 
-    PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
-    PS C:\> $pip.DnsSettings = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings
-    PS C:\> $pip.DnsSettings.DomainNameLabel = "contosoapp1"
-    PS C:\> $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-    PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+```powershell
+$pip = Get-AzureRmPublicIpAddress -Name "PublicIP" -ResourceGroupName "NRP-DemoRG-PS"
+$pip.DnsSettings = New-Object -TypeName "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings"
+$pip.DnsSettings.DomainNameLabel = "contosoapp1"
+$pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
+Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+```
 
 ## <a name="create-a-public-ip-address-with-reverse-dns"></a>创建具有反向 DNS 的公共 IP 地址
-可以添加具有使用“New-AzureRmPublicIpAddress”cmdlet 指定的反向 DNS 属性的新公共 IP 地址：
 
-    PS C:\> New-AzureRmPublicIpAddress -Name PublicIP2 -ResourceGroupName NRP-DemoRG-PS -Location WestUS -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
+可以添加具有使用 `New-AzureRmPublicIpAddress` cmdlet 指定的反向 DNS 属性的新公共 IP 地址：
+
+```powershell
+New-AzureRmPublicIpAddress -Name "PublicIP2" -ResourceGroupName "NRP-DemoRG-PS" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
+```
 
 ## <a name="view-reverse-dns-for-existing-public-ip-addresses"></a>查看现有公共 IP 地址的反向 DNS
-可以使用“Get-AzureRmPublicIpAddress”cmdlet 查看现有公共 IP 地址的已配置值：
 
-    PS C:\> Get-AzureRmPublicIpAddress -Name PublicIP2 -ResourceGroupName NRP-DemoRG-PS
+可以使用 `Get-AzureRmPublicIpAddress` cmdlet 查看现有公共 IP 地址的已配置值：
+
+```powershell
+Get-AzureRmPublicIpAddress -Name "PublicIP2" -ResourceGroupName "NRP-DemoRG-PS"
+```
 
 ## <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>从现有公共 IP 地址中删除反向 DNS
-可以使用“Set-AzureRmPublicIpAddress”cmdlet 从现有公共 IP 地址中删除反向 DNS 属性。 这是通过将 ReverseFqdn 属性值设置为空白完成的：
 
-    PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
-    PS C:\> $pip.DnsSettings.ReverseFqdn = ""
-    PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+可以使用 `Set-AzureRmPublicIpAddress` cmdlet 从现有公共 IP 地址中删除反向 DNS 属性。 这是通过将 ReverseFqdn 属性值设置为空白完成的：
 
+```powershell
+$pip = Get-AzureRmPublicIpAddress -Name "PublicIP" -ResourceGroupName "NRP-DemoRG-PS"
+$pip.DnsSettings.ReverseFqdn = ""
+Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+```
 
 [!INCLUDE [FAQ1](../../includes/dns-reverse-dns-record-operations-faq-host-own-arpa-zone-include.md)]
 
@@ -81,6 +95,6 @@ ms.openlocfilehash: 730321ccacb211ec82e69f8ebc69ee84cbf46a01
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

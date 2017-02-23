@@ -1,5 +1,5 @@
 ---
-title: "如何使用 Linux 应用服务创建 Web 应用 | Microsoft Docs"
+title: "创建在 Linux 上运行的 Azure Web 应用 | Microsoft Docs"
 description: "Linux 应用服务的 Web 应用创建工作流。"
 keywords: "azure 应用服务, web 应用, linux, oss"
 services: app-service
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d87315ec97631c7ad3f0163aeaa0abde11b7416
+ms.sourcegitcommit: 2956b15e6284b529ccf4ca40c0c97b857eabcdbb
+ms.openlocfilehash: 50d90bfa5e6fb4462bd7d4719e5505d8ad144855
 
 
 ---
-# <a name="create-a-web-app-with-app-service-on-linux"></a>使用 Linux 应用服务创建 Web 应用
+# <a name="create-an-azure-web-app-running-on-linux"></a>创建在 Linux 上运行的 Azure Web 应用
 ## <a name="use-the-azure-portal-to-create-your-web-app"></a>使用 Azure 门户创建 Web 应用
 可以开始通过 [Azure 门户](https://portal.azure.com)创建 Linux Web 应用，如下图所示：
 
@@ -34,7 +34,7 @@ ms.openlocfilehash: 8d87315ec97631c7ad3f0163aeaa0abde11b7416
 1. 为 Web 应用提供一个名称。
 2. 选择现有资源组，或创建一个新的资源组。 （请在[限制部分](app-service-linux-intro.md)中查看可用区域。）
 3. 选择现有的 Azure App Service 计划或创建新的计划。 （请在[限制部分](app-service-linux-intro.md)中查看应用服务计划说明。）
-4. 选择要使用的应用程序堆栈。 可在几个版本的 Node.js 和 PHP 之间进行选择。
+4. 选择要使用的应用程序堆栈。 可在几个版本的 Node.js、PHP、.Net Core 和 Ruby 之间进行选择。
 
 创建应用后，可以从应用程序设置中更改应用程序堆栈，如下图所示：
 
@@ -59,6 +59,6 @@ ms.openlocfilehash: 8d87315ec97631c7ad3f0163aeaa0abde11b7416
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 02/03/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: 249d08341311e48a93db8031439f0bc35162f823
-ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
+ms.sourcegitcommit: 1b738d952685fe71e5a1eecd809afae1c9904267
+ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 
 ---
@@ -41,13 +41,13 @@ ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
 
 ### <a name="check-your-subscription-and-access"></a>查看订阅和访问权限
 
-查看成本需要[订阅级别访问权限](../active-directory/role-based-access-control-configure.md)，但只有帐户管理员可以访问[帐户中心](https://account.windowsazure.com/Home/Index)、更改计费信息和管理订阅。 帐户管理员是完成注册过程的人员。 有关详细信息，请参阅[如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)。
+查看成本需要[订阅级别访问权限](../active-directory/role-based-access-control-configure.md)，但只有帐户管理员可以访问[帐户中心](https://account.windowsazure.com/Home/Index)、更改计费信息和管理订阅。 帐户管理员是完成注册过程的人员。 有关详细信息，请参阅[如何添加或更改 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
 
 若要查看你是否是帐户管理员，请转到 [Azure 门户中的订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，并查看你有权访问的订阅列表。 在**我的角色**下进行查看。 如果显示*帐户管理员*，则可以进行操作。 如果显示*所有者*等其他信息，则你不具有完全权限。
 
 ![Azure 门户中订阅视图中的角色的屏幕截图](./media/billing-getting-started/sub-blade-view.PNG)
 
-如果不是帐户管理员，则其他人可以通过 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md) (RBAC) 授予部分访问权限。 若要管理订阅和更改计费信息，请[查找帐户管理员](../billing-subscription-transfer.md#whoisaa)，请其执行该任务或请其[将订阅转交给你](../billing-subscription-transfer.md)。
+如果不是帐户管理员，则其他人可以通过 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md) (RBAC) 授予部分访问权限。 若要管理订阅和更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)，请其执行该任务或请其[将订阅转交给你](billing-subscription-transfer.md)。
 
 当帐户管理员不再属于组织，并且需要管理帐单时，请[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
@@ -65,7 +65,7 @@ ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
 
 ### <a name="set-up-billing-alerts"></a>设置计费警报
 
-设置计费警报，以便在使用费用超过指定金额时收到电子邮件。 如果有每月信用额度，设置在达到指定金额时发出警报。 有关详细信息，请参阅[为 Microsoft Azure 订阅设置计费警报](../billing-set-up-alerts.md)。
+设置计费警报，以便在使用费用超过指定金额时收到电子邮件。 如果有每月信用额度，设置在达到指定金额时发出警报。 有关详细信息，请参阅[为 Microsoft Azure 订阅设置计费警报](billing-set-up-alerts.md)。
 
 ![计费警报电子邮件的屏幕截图](./media/billing-getting-started/billing-alert.png)
 
@@ -154,9 +154,9 @@ ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
 
 有关详细信息，请参阅[顾问成本建议](../advisor/advisor-cost-recommendations.md)。
 
-### <a name="a-nameinvoice-and-usagea-download-invoice-and-detail-usage-after-your-first-billing-period"></a><a name="invoice-and-usage"></a>第一个计费期之后下载发票和详细使用情况
+### <a name="a-nameinvoice-and-usagea-get-your-invoice-and-detail-usage-after-your-first-billing-period"></a><a name="invoice-and-usage"></a>第一个计费期之后获取发票和详细使用情况
 
-第一个计费期之后，可下载可移植文档格式 (.pdf) 的发票和逗号分隔值 (.csv) 的使用情况详细信息。 这些文件有助于了解纳税、折扣和信用额度后最终向你收费的项目。 如果订阅未附有付款方式，则可能无法使用这些文件。 有关详细信息，请参阅[如何下载 Azure 帐单发票和每日使用数据](../billing-download-azure-invoice-daily-usage-date.md)和[了解你的 Microsoft Azure 帐单](/billing-understand-your-bill.md)。
+第一个计费期之后，可下载可移植文档格式 (.pdf) 的发票和逗号分隔值 (.csv) 的使用情况详细信息。 也可以选择使用电子邮件发送发票。 这些文件有助于了解纳税、折扣和信用额度后最终向你收费的项目。 如果订阅未附有付款方式，则可能无法使用这些文件。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)和[了解你的 Microsoft Azure 帐单](billing-understand-your-bill.md)。
 
 ![.pdf 发票的屏幕截图](./media/billing-getting-started/invoice.png)
 
@@ -166,7 +166,7 @@ ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
 
 ### <a name="billing-api"></a>计费 API
 
-使用计费 API 以编程方式获取使用情况数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](../billing-usage-rate-card-overview.md)。
+使用计费 API 以编程方式获取使用情况数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](billing-usage-rate-card-overview.md)。
 
 ## <a name="a-nameother-offersa-additional-resources-for-ea-csp-and-sponsorship"></a><a name="other-offers"></a>EA、CSP 和赞助的其他资源
 
@@ -174,7 +174,7 @@ ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
 
 | 产品 | 资源 |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| 企业协议 (EA) | [EA 门户](https://ea.azure.com/)和[帮助文档](https://ea.azure.com/helpdocs) |
+| 企业协议 (EA) | [EA 门户](https://ea.azure.com/)、[帮助文档](https://ea.azure.com/helpdocs)和[ Power BI 报表](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | 云解决方案提供商 (CSP) | 咨询提供商 |
 | Azure 赞助 | [赞助门户](https://www.microsoftazuresponsorships.com/) |
 
@@ -182,6 +182,6 @@ ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

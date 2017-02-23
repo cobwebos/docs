@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/13/2017
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7f63344455fafafc3a966c45742ba52d23177fa5
-ms.openlocfilehash: 8c25c33535ce942ac63b9a259aa9e61765129d0a
+ms.sourcegitcommit: 45de2422e79215ecfbacf5bd15712eb780c49016
+ms.openlocfilehash: c0a99dadc1d588942ade14267bd45eff09080315
 
 
 ---
@@ -77,7 +77,7 @@ Azure HDInsight 仅支持基于位置的虚拟网络，目前无法处理基于�
 
 ### <a name="classic-or-v2-virtual-network"></a>经典或 V2 虚拟网络
 
-基于 Windows 的群集需要经典虚拟网络，而基于 Linux 的群集需要 Azure Resource Manager 虚拟网络。 如果没有正确的网络类型，创建群集时它将不能使用。
+基于 Linux 的群集需要 Azure Resource Manager 虚拟网络（基于 Windows 的群集需要经典虚拟网络）。 如果没有正确的网络类型，创建群集时它将不能使用。
 
 如果具有计划创建的群集不可用的虚拟网络上的资源，可以新建一个该群集可用的虚拟网络，并将其连接到不兼容的虚拟网络。 然后可以在其要求的网络版本中创建群集，由于两者已联接，该群集将能够访问另一个网络中的资源。 若要深入了解如何连接经典虚拟网络和新虚拟网络，请参阅[将经典 VNet 连接到新的 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
 
@@ -95,6 +95,11 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 
 > [!IMPORTANT]
 > 应允许的 IP 地址专门用于 HDInsight 群集和虚拟网络所在的区域。 使用以下列表查找你所在区域的 IP 地址。
+
+__巴西南部__区域：
+
+* 191.235.84.104
+* 191.235.87.113
 
 __加拿大东部__区域：
 
@@ -130,7 +135,7 @@ __所有其他区域__:
 
 下例演示如何新建允许所需地址的网络安全组，并将该安全组应用到虚拟网络中的子网。 此示例中使用的地址来自上面的__所有其他区域__列表。 如果你在上面明确列出的其中一个区域，如__美国中西部__，请修改脚本以使用你所在区域的 IP 地址。
 
-这些步骤假定你已创建想要将 HDInsight 安装到其中的虚拟网络和子网。
+这些步骤假定你已创建想要将 HDInsight 安装到其中的虚拟网络和子网。 请参阅[使用 Azure 门户创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
 
 > [!IMPORTANT]
 > 请注意这些示例中使用的 `priority` 值；根据优先级顺序针对网络流量对规则进行测试。 当某个规则符合测试条件并应用后，就不会再测试其他的规则。
@@ -221,10 +226,10 @@ __所有其他区域__:
 
 2. 使用以下命令将规则添加新的网络安全组，这些规则允许从 Azure HDInsight 运行状况和管理服务通过端口 443 发起的入站通信。 将 **RESOURCEGROUPNAME** 替换为包含 Azure 虚拟网络的资源组的名称。
     
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
 
 3. 创建规则后，使用以下命令检索此网络安全组的唯一标识符：
 
@@ -232,7 +237,9 @@ __所有其他区域__:
 
     这会返回类似于以下文本的值：
 
-        "/subscriptions/55b1016c-0f27-43d2-b908-b8c373d6d52e/resourceGroups/mygroup/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+
+    如果没有获得预期结果，请在命令中的 ID 两侧使用双引号。
 
 4. 使用以下命令将网络安全组应用于子网。 将 __GUID__ 和 __RESOURCEGROUPNAME__ 值替换为从上一步骤中返回的值。 将 __VNETNAME__ 和 __SUBNETNAME__ 替换为在创建 HDInsight 群集时要使用的虚拟网络名称和子网名称。
    
@@ -246,7 +253,7 @@ __所有其他区域__:
 > 例如，若要允许来自 Internet 的 SSH 访问，需要添加类似于下面的规则： 
 > 
 > * Azure PowerShell - ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
-> * Azure CLI - ```az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"```
+> * Azure CLI - ```az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"```
 
 有关网络安全组的详细信息，请参阅[网络安全组概述](../virtual-network/virtual-networks-nsg.md)。 有关在 Azure 虚拟网络中控制路由的详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。
 
@@ -360,6 +367,6 @@ __所有其他区域__:
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e1c99bbe9d6317d83cc5e71ca4f79d862223aa0a
-ms.openlocfilehash: 6110432cba7703b95342c9e8bf3b71cb0a377ad0
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 1527896e4f512cdfa6a4e925bbdca88a1e6a8fe7
 
 ---
 # <a name="use-mirrormaker-to-create-a-replica-of-a-kafka-on-hdinsight-cluster-preview"></a>使用 MirrorMaker 创建 Kafka on HDInsight 群集的副本（预览）
@@ -119,26 +119,32 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
    
     有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
    
-    * [在 Linux、Mac OS 或 Unix 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Linux、Mac OS、Unix 客户端或 Windows 10 上的 Bash 中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
    
-    * [在 Windows 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * [在 Windows 客户端中将 SSH (PuTTY) 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)。
 
 2. 使用以下命令查找 Zookeeper 主机，设置 `SOURCE_ZKHOSTS` 变量，然后创建数个名为 `testtopic` 的新主题：
    
-        # Get a list of zookeeper hosts for the source cluster
-        SOURCE_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
-        # Create a topic on the source cluster
-        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
+    ```bash
+    # Get a list of zookeeper hosts for the source cluster
+    SOURCE_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
+    # Create a topic on the source cluster
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
+    ```
 
 3. 使用以下命令验证是否已创建该主题：
    
-        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $SOURCE_ZKHOSTS
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $SOURCE_ZKHOSTS
+    ```
    
     响应包含 `testtopic`。
 
 4. 使用以下命令查看此（**源**）群集的 Zookeeper 主机信息：
    
-        echo $SOURCE_ZKHOSTS
+    ```bash
+    echo $SOURCE_ZKHOSTS
+    ```
    
     这会返回类似于以下文本的信息：
    
@@ -148,7 +154,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 ## <a name="configure-mirroring"></a>配置镜像
 
-1. 使用 SSH 连接到**目标**群集：
+1. 使用另一个 SSH 会话连接到**目标**群集：
    
         ssh sshuser@dest-BASENAME-ssh.azurehdinsight.net
    
@@ -156,15 +162,17 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
    
     有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
    
-    * [在 Linux、Mac OS 或 Unix 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Linux、Mac OS、Unix 客户端或 Windows 10 上的 Bash 中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
     
-    * [在 Windows 客户端中将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * [在 Windows 客户端中将 SSH (PuTTY) 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-2. 使用以下命令创建介绍如何与**源**群集通信的 `consumer.config` 文件：
+2. 使用以下命令创建介绍如何与**源**群集通信的 `consumer.properties` 文件：
    
-        nano consumer.config
+    ```bash
+    nano consumer.properties
+    ```
    
-    将以下文本用作 `consumer.config` 文件的内容：
+    将以下文本用作 `consumer.properties` 文件的内容：
    
         zookeeper.connect=SOURCE_ZKHOSTS
         group.id=mirrorgroup
@@ -177,18 +185,26 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 3. 配置与目标群集通信的创建器之前，必须找到**目标**群集的中转站主机。 使用以下命令检索此信息：
    
-        # Install JQ for parsing JSON documents
-        sudo apt -y install jq
-        # Get the broker information for the destination cluster
-        DEST_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
-        # Display the information
-        echo $DEST_BROKERHOSTS
+    ```bash
+    # Install JQ for parsing JSON documents
+    sudo apt -y install jq
+    # Get the broker information for the destination cluster
+    DEST_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
+    # Display the information
+    echo $DEST_BROKERHOSTS
+    ```
    
     这些命令返回类似于以下的信息：
    
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
-4. 使用以下命令创建描述如何与**目标**群集通信的 `producer.config` 文件：
+4. 使用以下命令创建描述如何与**目标**群集通信的 `producer.properties` 文件：
+
+    ```bash
+    nano producer.properties
+    ```
+
+    将以下文本用作 `producer.properties` 文件的内容：
    
         bootstrap.servers=DEST_BROKERS
         compression.type=none
@@ -201,7 +217,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 1. 从**目标**群集的 SSH 连接开始，使用以下命令启动 MirrorMaker 过程：
    
-        /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
+    ```
    
     此示例中使用的参数有：
    
@@ -219,45 +237,49 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     ```
 
 2. From the SSH connection to the **source** cluster, use the following command to start a producer and send messages to the topic:
-   
-        # Install JQ for working with JSON
-        sudo apt -y install jq
-        # Retrieve the Kafka brokers
-        SOURCE_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
-        # Start a producer
-        /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
-   
-    When you arrive at a blank line with a cursor, type in a few text messages. These are sent to the topic on the **source** cluster. When done, use **Ctrl + C** to end the producer process.
+    
+    ```bash
+    # Install JQ for working with JSON
+    sudo apt -y install jq
+    # Retrieve the Kafka brokers
+    SOURCE_BROKERHOSTS=`sudo bash -c 'ls /var/lib/ambari-agent/data/command-[0-9]*.json' | tail -n 1 | xargs sudo cat | jq -r '["\(.clusterHostInfo.kafka_broker_hosts[]):9092"] | join(",")'`
+    # Start a producer
+    /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $SOURCE_BROKERHOSTS --topic testtopic
+    ```
 
-3. From the SSH connection to the **destination** cluster, use **Ctrl + C** to end the MirrorMaker process. Then use the following commands to verify that the `testtopic` topic was created, and that data in the topic was replicated to this mirror:
-   
-        # Get a list of zookeeper hosts for the destination cluster
-        DEST_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
-        # List topics on destination
-        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
-        # Retrieve messages from the `testtopic`
-        /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
-   
-    The list of topics will now include `testtopic`, which is created when MirrorMaster mirrors the topic from the source cluster to the destination. The messages retrieved from the topic are the same as entered on the source cluster.
+    出现带有光标的空行时，请键入几条文本消息。 这些消息将发送到**源**群集上的主题。 完成后，使用 **Ctrl + C** 结束生成者进程。
 
-## Delete the cluster
+3. 从**目标**群集的 SSH 连接开始，使用 **Ctrl + C** 结束 MirrorMaker 进程。 然后使用以下命令验证是否已创建 `testtopic` 主题，以及该主题中的数据是否已复制到此镜像：
+    
+    ```bash
+    # Get a list of zookeeper hosts for the destination cluster
+    DEST_ZKHOSTS=`grep -R zk /etc/hadoop/conf/yarn-site.xml | grep 2181 | grep -oPm1 "(?<=<value>)[^<]+"`
+    # List topics on destination
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
+    # Retrieve messages from the `testtopic`
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
+    ```
+    
+    主题列表现包含 `testtopic`，该条目创建于 MirrorMaster 将主题从源群集镜像到目标时。 从主题检索到的消息与在源群集上输入的消息相同。
+
+## <a name="delete-the-cluster"></a>删除群集
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Since the steps in this document create both clusters in the same Azure resource group, you can delete the resource group in the Azure portal. Deleting the resource group removes all resources created by following this document, the Azure Virtual Network, and storage account used by the clusters.
+由于本文档中的步骤在相同的 Azure 资源组中创建两个群集，因此可在 Azure 门户中删除资源组。 删除资源组会删除按照本文档创建的所有资源（Azure 虚拟网络和群集使用的存储帐户）。
 
-## Next Steps
+## <a name="next-steps"></a>后续步骤
 
-In this document, you learned how to use MirrorMaker to create a replica of a Kafka cluster. Use the following links to discover other ways to work with Kafka:
+本文档已介绍如何使用 MirrorMaker 创建 Kafka 群集的副本。 使用以下链接来发现与 Kafka 配合使用的其他方式：
 
-* [Apache Kafka MirrorMaker documentation](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) at cwiki.apache.org.
-* [Get started with Apache Kafka on HDInsight](hdinsight-apache-kafka-get-started.md)
-* [Use Apache Spark with Kafka on HDInsight](hdinsight-apache-spark-with-kafka.md)
-* [Use Apache Storm with Kafka on HDInsight](hdinsight-apache-storm-with-kafka.md)
-
-
+* cwiki.apache.org 上的 [Apache Kafka MirrorMaker 文档](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)。
+* [Apache Kafka on HDInsight 入门](hdinsight-apache-kafka-get-started.md)
+* [将 Apache Spark 与 Kafka on HDInsight 结合使用](hdinsight-apache-spark-with-kafka.md)
+* [将 Apache Storm 与 Kafka on HDInsight 结合使用](hdinsight-apache-storm-with-kafka.md)
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

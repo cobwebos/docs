@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/24/2016
 ms.author: kdotchko
 translationtype: Human Translation
-ms.sourcegitcommit: 0fc92fd63118dd1b3c9bad5cf7d5d8397bc3a0b6
-ms.openlocfilehash: 2f952b85a99300d0a52a59f639675d6f02fafe08
+ms.sourcegitcommit: 47e1d5172dabac18c1b355d8514ae492cd973d32
+ms.openlocfilehash: 5c362af149afd4a204c2705ae3d7f67361d8d528
 
 
 ---
@@ -87,8 +87,9 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 设备应用还可使用 `devices/{device_id}/messages/events/{property_bag}` 作为 **Will 主题名称**，用于定义要作为遥测消息转发的 Will 消息。
 
-IoT 中心不支持 QoS 2 消息。 如果设备应用使用 **QoS 2** 发布消息，IoT 中心将断开网络连接。
-IoT 中心不会保存 Retain 消息。 如果设备在 **RETAIN** 标志设置为 1 的情况下发送消息，则 IoT 中心会在消息中添加 **x-opt-retain** 应用程序属性。 在此情况下，IoT 中心不会存储保留消息，而将其传递到后端应用。
+- IoT 中心不支持 QoS 2 消息。 如果设备应用使用 **QoS 2** 发布消息，IoT 中心将断开网络连接。
+- IoT 中心不会保存 Retain 消息。 如果设备在 **RETAIN** 标志设置为 1 的情况下发送消息，则 IoT 中心会在消息中添加 **x-opt-retain** 应用程序属性。 在此情况下，IoT 中心不会存储保留消息，而将其传递到后端应用。
+- IoT 中心仅支持每个设备一个活动 MQTT 连接。 代表相同设备 ID 的任何新 MQTT 连接都会导致 IoT 中心删除现有连接。
 
 有关详细信息，请参阅[消息传送开发人员指南][lnk-messaging]。
 
@@ -136,10 +137,16 @@ request id 可以是消息属性值的任何有效值（如 [IoT 中心消息传
 
 ### <a name="update-device-twins-reported-properties"></a>更新设备孪生的报告属性
 
-首先，设备需要订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它会发送一条消息，其中包含 `$iothub/twin/PATCH/properties/reported/?$rid={request id}` 的设备克隆更新，并提供 **request id** 的填充值。 服务随后会发送一条响应消息，其中包含关于主题 `$iothub/twin/res/{status}/?$rid={request id}` 的设备克隆数据，并且使用与请求相同的 **request id**。
+以下序列描述了设备如何在 IoT 中心中更新设备孪生中报告的属性：
+
+1. 设备必须首先订阅 `$iothub/twin/res/#` 主题才能从 IoT 中心接收操作的响应。
+
+1. 设备将包含设备孪生更新的消息发送到 `$iothub/twin/PATCH/properties/reported/?$rid={request id}` 主题。 此消息包含**请求 ID** 值。
+
+1. 然后，服务发送响应消息，其中包含 `$iothub/twin/res/{status}/?$rid={request id}` 主题上报告的属性集合的新 ETag 值。 此响应消息使用与请求相同的**请求 ID**。
 
 请求消息正文包含一个 JSON 文档，该文档提供报告属性的新值（不可修改任何其他属性或元数据）。
-JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应成员。 如果某个成员设置为 `null`，则会从包含方对象中删除该成员。 例如
+JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应成员。 如果某个成员设置为 `null`，则会从包含方对象中删除该成员。 例如：
 
         {
             "telemetrySendFrequency": "35m",
@@ -159,7 +166,7 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 
 ### <a name="receiving-desired-properties-update-notifications"></a>接收所需属性更新通知
 
-设备连接时，IoT 中心会向主题 `$iothub/twin/PATCH/properties/desired/?$version={new version}` 发送通知，内附解决方案后端执行的更新内容。 例如，
+设备连接时，IoT 中心会向主题 `$iothub/twin/PATCH/properties/desired/?$version={new version}` 发送通知，内附解决方案后端执行的更新内容。 例如：
 
         {
             "telemetrySendFrequency": "5m",
@@ -231,6 +238,6 @@ JSON 文档中的每个成员都会在设备克隆文档中更新或添加相应
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

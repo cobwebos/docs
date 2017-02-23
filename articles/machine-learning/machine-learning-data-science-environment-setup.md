@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 中设置数据科学环境 | Microsoft Docs"
-description: "设置在团队数据科学过程中使用的数据科学环境"
+description: "在 Azure 中设置在团队数据科学过程中使用的数据科学环境。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/08/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
-ms.openlocfilehash: f5f54741615eedfe7909ed02d2a37dc4dd40526e
+ms.sourcegitcommit: 1796f7a7cd174d7ed6582878d72c59995aac41cb
+ms.openlocfilehash: 4f2f66288428aa0aa41abb40ce0e43c4848543ff
 
 
 ---
@@ -35,6 +35,6 @@ ms.openlocfilehash: f5f54741615eedfe7909ed02d2a37dc4dd40526e
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

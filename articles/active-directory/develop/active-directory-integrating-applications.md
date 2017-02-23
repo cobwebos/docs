@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/29/2016
+ms.date: 02/08/2017
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
+ms.sourcegitcommit: b5dbb8c28bd6b2bdbb53939314348104bbbe4f34
+ms.openlocfilehash: f6ec7634a1d21c7205ac8ae7377a312ed386ee61
 
 
 ---
@@ -34,14 +34,15 @@ ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
 
 如果正在构建的 Web 应用程序只要求支持用户在 Azure AD 中登录，则只需按照以下说明操作。 如果应用程序需要使用凭据或权限访问 Web API，或者需要允许其他 Azure AD 租户中的用户访问该应用程序，请参阅[更新应用程序](#updating-an-application)部分继续配置应用程序。
 
-### <a name="to-register-a-new-application-in-the-azure-classic-portal"></a>在 Azure 经典门户注册新应用程序
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
-3. 在顶部菜单中单击“应用程序”。 如果尚未将任何应用添加到你的目录，则此页只会显示“添加应用”链接。 单击该链接，或者单击命令栏上的“添加”按钮。
-4. 在“要执行什么操作”页上，单击“添加我的组织正在开发的应用程序”链接。
-5. 在“向我们说明你的应用程序”页上，必须指定应用程序的名称并指明你要注册到 Azure AD 的应用程序类型。  可以从 [Web 应用程序/客户端](active-directory-dev-glossary.md#client-application) / 和/或 [Web 资源/API](active-directory-dev-glossary.md#resource-server) 应用程序或[本机客户端](active-directory-dev-glossary.md#native-client)应用程序中选择。 完成后，单击页面右下角的箭头图标。
-6. 在“应用属性”页上，提供“登录 URL”和“应用 ID URI”（如果正在注册 Web 应用程序）或者只提供“重定向 URI”（针对本机客户端应用程序），然后单击页面右下角的复选框。
-7. 现已添加你的应用程序，此时你将转到应用程序的“快速启动”页。 根据你的应用程序是 Web 应用程序还是本机应用程序，你将看到有关如何向应用程序添加更多功能的不同选项。 添加应用程序后，你可以开始更新应用程序，使用户能够登录、访问其他应用程序中的 Web API，或者配置多租户应用程序（允许其他组织访问你的应用程序）。
+### <a name="to-register-a-new-application-in-the-azure-portal"></a>在 Azure 门户中注册新应用程序
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
+3. 在左侧导航窗格中，选择“更多服务”，单击“应用注册”，然后单击“添加”。
+4. 根据提示创建新的应用程序。 如需 Web 应用程序或本机应用程序的特定示例，请查看[快速入门](active-directory-developers-guide.md)。
+  * 对于 Web 应用程序，请在用户登录页面（如 `http://localhost:12345`）提供“登录 URL”，即应用的基 URL。
+<!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
+  * 对于本机应用程序，请提供“重定向 URI”，Azure AD 将用其返回令牌响应。 输入特定于应用程序的值，例如 `http://MyFirstAADApp`
+5. 完成注册后，Azure AD 会为应用程序分配唯一客户端标识符，即应用程序 ID。 现已添加你的应用程序，此时你将转到应用程序的“快速启动”页。 根据你的应用程序是 Web 应用程序还是本机应用程序，你将看到有关如何向应用程序添加更多功能的不同选项。 添加应用程序后，你可以开始更新应用程序，使用户能够登录、访问其他应用程序中的 Web API，或者配置多租户应用程序（允许其他组织访问你的应用程序）。
 
 > [!NOTE]
 > 默认情况下，新建的应用程序注册已配置为允许你的目录中的用户登录到你的应用程序。
@@ -65,17 +66,24 @@ ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
 #### <a name="example-of-the-consent-experience"></a>同意体验示例
 以下步骤将说明同意体验对应用程序开发人员和用户的工作方式。
 
-1. 在 Azure 经典门户中 Web 客户端应用程序的配置页上，使用“对其他应用程序的权限”控件中的下拉菜单设置应用程序所需的权限。
+1. 在 Azure 门户中 Web 客户端应用程序的配置页上，使用“所需权限”部分中的菜单设置应用程序所需的权限。
    
-    ![针对其他应用程序的权限](./media/active-directory-integrating-applications/permissions.png)
+    ![针对其他应用程序的权限](./media/active-directory-integrating-applications/requiredpermissions.png)
 2. 考虑已更新应用程序的权限，该应用程序正在运行，并且某个用户即将首次使用该应用程序。 如果应用程序尚未获取访问令牌或刷新令牌，则该应用程序需要转到 Azure AD 的授权终结点，以获取可用于取得新访问令牌和刷新令牌的授权代码。
 3. 如果用户尚未经过身份验证，系统将要求他们登录到 Azure AD。
    
-    ![用户或管理员登录到 Azure AD](./media/active-directory-integrating-applications/useradminsignin.png)
-4. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 将提示用户授予许可，并显示运行该应用程序所需的权限。 同意对话框中显示的权限集与在 Azure 经典门户中的“对其他应用程序的权限”控件中选择的权限集相同。
+    ![用户或管理员登录到 Azure AD](./media/active-directory-integrating-applications/usersignin.png)
+4. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 将提示用户授予许可，并显示运行该应用程序所需的权限。 同意对话框中显示的权限集与在 Azure 门户中的“委派权限”中选择的权限集相同。
    
-    ![用户同意体验](./media/active-directory-integrating-applications/userconsent.png)
+    ![用户同意体验](./media/active-directory-integrating-applications/consent.png)
 5. 用户授予许可后，授权代码将返回到你的应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流程的详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)主题中的[从 Web 应用程序到 Web API](active-directory-authentication-scenarios.md#web-application-to-web-api) 部分。
+
+6. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 这将防止对租户中的每个用户显示同意对话框。 可从 [Azure 门户](https://portal.azure.com)的你的应用程序页面进行此操作。 从应用程序的“设置”边栏选项卡，单击“所需权限”，然后单击“授予权限”按钮。 
+
+    ![授予显式管理许可权限](./media/active-directory-integrating-applications/grantpermissions.png)
+    
+> [!NOTE]
+> 使用 ADAL.js 的单页面应用程序 (SPA) 当前需要使用“授予权限”按钮授予显式许可，因为请求访问令牌没有许可提示（如果尚未授予许可，将失败）。   
 
 ### <a name="configuring-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
 为使 Web/机密客户端应用程序能够参与要求身份验证的授权流程（以及获取访问令牌），必须建立安全凭据。 Azure 门户支持的默认身份验证方法是客户端 ID + 对称密钥。 本部分介绍需要执行哪些配置步骤来提供客户端凭据的机密密钥。
@@ -83,28 +91,30 @@ ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
 在此，在客户端访问资源应用程序公开的 Web API（例如 Azure AD 图形 API）之前，同意框架将确保客户端根据请求的权限获取所需的授权。 默认情况下，所有应用程序可以从 Azure Active Directory（图形 API）和 Azure 服务管理 API 中选择权限。默认情况下已选择 Azure AD 的“启用登录并读取用户的配置文件”权限。 如果客户端应用程序已在 Office 365 Azure AD 租户中注册，则也可以选择 SharePoint 与 Exchange Online 的 Web API 和权限。 可以从所需 Web API 旁边的下拉菜单中的[两种类型的权限](active-directory-dev-glossary.md#permissions)中进行选择：
 
 * 应用程序权限：客户端应用程序需要亲自直接访问 Web API（无用户上下文）。 此类型的权限需要管理员同意，并且不可用于本机客户端应用程序。
-* 委托的权限：客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限已配置为需要管理员同意，否则用户可以授予此类型的权限。
-
-#### <a name="to-add-credentials-or-permissions-to-access-web-apis"></a>添加用于访问 Web API 的凭据或权限
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
-3. 在顶部菜单中，单击“应用程序”，然后单击要配置的应用程序。 “快速启动”页将显示单一登录信息和其他配置信息。 单击页面顶部的“配置”链接。随后将转到应用程序的配置页。
-4. 若要添加 Web 应用程序凭据的机密密钥，请向下滚动到“密钥”部分。  
-   
-   * 首先单击“选择持续时间”下拉列表，然后选择 1 年或 2 年的持续时间。 
-   * 随后将显示一个新行，其中填充了“生效时间”和“过期时间”日期。
-   * 保存配置更改（如下所示）后，最右边的列将包含密钥值。 点击保存后请务必返回到此部分并复制该值，因为在运行时进行身份验证的过程中，需要在客户端应用程序中用到该值。
-5. 若要添加用于从客户端访问资源的 API 的权限，请向下滚动到“针对其他应用程序的权限”部分。 
-   
-   * 首先单击“添加应用程序”按钮。
-   * 使用“显示”下拉列表选择所需的资源类型。
-   * 在第一列中，可以从目录中提供的、公开 Web API 的资源应用程序中进行选择。 单击所需的资源，然后单击右下角的勾选标记。
-   * 选择后，将会看到该资源已添加到“针对其他应用程序的权限”列表中。
-   * 使用“应用程序权限”和“委托的权限”下拉列表选择客户端应用程序的所需权限。
-6. 完成后，单击命令栏上的“保存”按钮。 如果为应用程序指定了密钥，则单击“保存”还会生成该密钥。
+* 委托的权限：客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限已配置为需要管理员同意，否则用户可以授予此类型的权限。 
 
 > [!NOTE]
-> 单击“保存”按钮还会基于你配置的“对其他应用程序的权限”自动设置对你目录中的应用程序的权限。  可以在应用程序的“属性”选项卡中查看这些应用程序权限。
+> 将委托权限添加到应用程序不会自动向租户中的用户授予许可，这与在 Azure 经典门户中的情况相同。 用户仍必须手动许可在运行时添加委派权限，除非管理员从 Azure 门户中应用程序页面的“所需权限”部分，单击“授予权限”按钮。 
+
+#### <a name="to-add-credentials-or-permissions-to-access-web-apis"></a>添加用于访问 Web API 的凭据或权限
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
+3. 在顶部菜单中，选择“Azure Active Directory”，单击“应用注册”，然后单击要配置的应用程序。 这将转到应用程序的快速启动页面，并打开应用程序的“设置”边栏选项卡。
+4. 若要添加 Web 应用程序凭据的机密密钥，请从“设置”边栏选项卡单击“密钥”部分。  
+   
+   * 为密钥添加说明，并选择 1 或 2 年持续时间。 
+   * 保存配置更改后，最右边的列将包含密钥值。 点击保存后请务必返回到此部分并复制该值，因为在运行时进行身份验证的过程中，需要在客户端应用程序中用到该值。
+5. 若要添加用于从客户端访问资源 API 的权限，请从“设置”边栏选项卡单击“所需权限”部分。 
+   
+   * 首先，单击“添加”按钮。
+   * 单击“选择 API”，选择所需的资源类型。
+   * 浏览可用 API 列表，或使用搜索框从公开 Web API 的目录中的可用资源应用程序中进行选择。 单击感兴趣的资源，然后单击“选择”。
+   * 选择后，可移动到“选择权限”菜单，在其中为应用程序选择“应用程序权限”和“委派权限”。
+   
+6. 完成后，单击“完成”按钮。
+
+> [!NOTE]
+> 单击“完成”按钮还会基于配置的“对其他应用程序的权限”自动为目录中的应用程序设置权限。  可以在应用程序“设置”边栏选项卡中查看这些应用程序权限。
 > 
 > 
 
@@ -114,11 +124,11 @@ ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
 以下部分说明如何通过修改资源应用程序的清单公开访问范围。
 
 #### <a name="adding-access-scopes-to-your-resource-application"></a>将访问权限范围添加到资源应用程序
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
-3. 在顶部菜单中，单击“应用程序”，然后单击要配置的资源应用程序。 “快速启动”页将显示单一登录信息和其他配置信息。
-4. 在命令栏中单击“管理清单”按钮，然后选择“下载清单”。
-5. 打开 JSON 应用程序清单文件，并将 “oauth2Permissions” 节点替换为以下 JSON 代码段。 此示例代码片段演示如何公开称为“用户模拟”的范围，它允许资源所有者为客户端应用程序分配某种类型的、对资源的委托访问权限。 请确保根据自己的应用程序更改文本和值：
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
+3. 在顶部菜单中，选择“Azure Active Directory”，单击“应用注册”，然后单击要配置的应用程序。 这将转到应用程序的快速启动页面，并打开应用程序的“设置”边栏选项卡。
+4. 在应用程序页面中，单击“清单”打开内联清单编辑器。 
+5. 使用以下 JSON 代码片段替换“oauth2Permissions”节点。 此示例代码片段演示如何公开称为“用户模拟”的范围，它允许资源所有者为客户端应用程序分配某种类型的、对资源的委托访问权限。 请确保根据自己的应用程序更改文本和值：
    
         "oauth2Permissions": [
         {
@@ -139,13 +149,13 @@ ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
    > 以后你可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 现在，你可以通过使用所收到的 OAuth 2.0 JWT 令牌中的作用域 (scp) 声明来控制到 Web API 的访问。
    > 
    > 
-6. 保存更新的 JSON 文件，然后将其上载，方法是单击命令栏中的“管理清单”按钮，选择“上载清单”，浏览到更新的清单文件，然后将其选中。 上载后，你的 Web API 便已配置为可供目录中的其他应用程序使用。
+6. 单击“保存”以保存清单。 此时，Web API 已配置为可供目录中的其他应用程序使用。
 
 #### <a name="to-verify-the-web-api-is-exposed-to-other-applications-in-your-directory"></a>验证 Web API 是否已公开给目录中的其他应用程序
-1. 在顶部菜单中，单击“应用程序”，选择要为其配置 Web API 访问权限的所需客户端应用程序，然后单击“配置”。
-2. 向下滚动到“对其他应用程序的权限”部分。 单击“选择应用程序”下拉菜单，然后便可以选择你刚刚为其公开了权限的 Web API。 从“委托的权限”下拉菜单中选择新的权限。
+1. 在顶部菜单中，单击“应用注册”，选择要为其配置 Web API 访问权限的所需客户端应用程序，然后导航到“设置”边栏选项卡。
+2. 从“所需权限”部分，选择刚为其公开权限的 Web API。 从“委托的权限”下拉菜单中选择新的权限。
 
-![显示“待办事项”权限](./media/active-directory-integrating-applications/listpermissions.png)
+![显示“待办事项”权限](./media/active-directory-integrating-applications/todolistpermissions.png)
 
 #### <a name="more-on-the-application-manifest"></a>有关应用程序清单的更多信息
 应用程序清单实际上充当了用于更新应用程序实体的机制，它定义了 Azure AD 应用程序的标识配置的所有属性，包括本文所述的 API 访问权限范围。 有关应用程序实体的详细信息，请参阅 [Graph API Application entity documentation](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)（图形 API 应用程序实体文档）。 在该文档中，可以找到用于指定 API 权限的应用程序实体成员的完整参考信息：  
@@ -177,7 +187,7 @@ ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
 * 多租户应用程序预定在多家组织中使用。 它们通常是独立软件供应商 (ISV) 编写的软件即服务 (SaaS) Web 应用程序。 多租户应用程序需要设置在将使用它们的每个目录中，需要经过用户或管理员许可才能注册它们，并通过 Azure AD 同意框架获得支持。 请注意，默认情况下，所有本机客户端应用程序都是多租户的，因为它们安装在资源所有者的设备上。 有关同意框架的更多详细信息，请参阅上面的“同意框架概述”部分。
 
 #### <a name="enabling-external-users-to-grant-your-application-access-to-their-resources"></a>使外部用户能够向你的应用程序授予对其资源的访问权限
-如果你正在编写一个要供组织外部的客户或合作伙伴使用的应用程序，则需要在 Azure 经典门户中更新应用程序定义。
+如果正在编写一个要供组织外部的客户或合作伙伴使用的应用程序，则需要在 Azure 门户中更新应用程序定义。
 
 > [!NOTE]
 > 在启用多租户时，必须确保应用程序的应用 ID URI 属于已验证的域。 此外，返回 URL 必须以 https:// 开头。 有关详细信息，请参阅[应用程序对象和服务主体对象](active-directory-application-objects.md)。
@@ -186,11 +196,10 @@ ms.openlocfilehash: 46629edd59fa51e127fe4a4b61ff7de753dd7e68
 
 若要使外部用户能够向你的应用授予访问权限，请执行以下操作： 
 
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
-3. 在顶部菜单中，单击“应用程序”，然后单击要配置的应用程序。 “快速启动”页将显示配置选项。
-4. 展开“快速启动”的“配置多租户应用程序”部分，然后单击“启用访问权限”部分中的“立即配置它”链接。 此时将显示应用程序属性页。
-5. 单击“应用程序是多租户的”旁边的“是”按钮，然后单击命令栏上的“保存”按钮。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
+3. 在顶部菜单中，选择“Azure Active Directory”，单击“应用注册”，然后单击要配置的应用程序。 这将转到应用程序的快速启动页面，并打开应用程序的“设置”边栏选项卡。
+4. 从“设置”边栏选项卡，单击“属性”，将“多租户”开关切换为“是”。
 
 完成上述更改后，其他组织中的用户和管理员可以向你的应用程序授予对其目录和其他数据的访问权限。
 
@@ -207,85 +216,15 @@ Web 应用程序也可为用户提供注册体验。 如果你确实提供注册
 默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。 也可通过在[应用程序清单](active-directory-application-manifest.md)（表示应用程序标识配置的 JSON 文件）中设置 `oauth2AllowImplicitFlow` 值，为应用程序启用 OAuth 2.0 隐式授权。
 
 #### <a name="to-enable-oauth-20-implicit-grant"></a>启用 OAuth 2.0 隐式授权
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
-3. 在顶部菜单中，单击“应用程序”，然后单击要配置的应用程序。 “快速启动”页将显示单一登录信息和其他配置信息。
-4. 在命令栏中单击“管理清单”按钮，然后选择“下载清单”。
-   打开 JSON 应用程序清单文件并将 "oauth2AllowImplicitFlow" 值设为“true”。 默认情况下，它是“false”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
+3. 在顶部菜单中，选择“Azure Active Directory”，单击“应用注册”，然后单击要配置的应用程序。 这将转到应用程序的快速启动页面，并打开应用程序的“设置”边栏选项卡。
+4. 在应用程序页面中，单击“清单”打开内联清单编辑器。
+   找到“oauth2AllowImplicitFlow”值并将其设置为“true”。 默认情况下，它是“false”。
    
     `"oauth2AllowImplicitFlow": true,`
-5. 保存更新的 JSON 文件，然后将其上载，方法是单击命令栏中的“管理清单”按钮，选择“上载清单”，浏览到更新的清单文件，然后将其选中。 上载后，你的 Web API 即已配置为使用 OAuth 2.0 隐式授权来对用户进行身份验证。
+5. 保存更新的清单。 保存后，Web API 即已配置为使用 OAuth 2.0 隐式授权来对用户进行身份验证。
 
-### <a name="legacy-experiences-for-granting-access"></a>授予访问权限的旧体验
-本部分介绍 2014 年 3 月 12 日以前的旧同意体验。 这种体验仍受支持，如下所述。 在新功能推出之前，你只能授予以下权限：
-
-* 让用户从其组织登录
-* 让用户登录，并读取其组织的目录数据（仅限应用程序）
-* 让用户登录，并读取和写入其组织的目录数据（仅限应用程序）
-
-可以遵循[利用 Azure AD 开发多租户 Web 应用程序](https://msdn.microsoft.com/library/azure/dn151789.aspx)中的步骤，授予对 Azure AD 中注册的新应用程序的访问权限。 必须知道，新同意框架允许的强大应用程序要多得多，并且还允许用户同意这些应用程序，而不仅限于管理员。
-
-#### <a name="building-the-link-that-grants-access-for-external-users-legacy"></a>生成为外部用户授予访问权限的链接（旧版）
-为了让外部用户使用其组织帐户注册你的应用程序，你需要更新你的应用程序，以显示一个可以链接到 Azure AD 上的页面的按钮，使他们能够授予访问权限。 [适用于集成应用程序的品牌准则](active-directory-branding-guidelines.md)主题中介绍了有关此注册按钮的品牌指导。 在用户授予或拒绝访问权限后，Azure AD 访问授权页会将浏览器重定向回你的应用程序并返回响应。 有关应用程序属性的详细信息，请参阅[应用程序对象和服务主体](active-directory-application-objects.md)。
-
-访问授权页由 Azure AD 创建，你可以在 Azure 经典门户中应用的“配置”页上找到访问授权页的链接。 若要转到“配置”页，请单击 Azure AD 租户顶部菜单中的“应用程序”链接，单击要配置的应用，然后在“快速启动”页的顶部菜单中单击“配置”。
-
-应用程序的链接如下所示：`http://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=058eb9b2-4f49-4850-9b78-469e3176e247&RequestedPermissions=DirectoryReaders&ConsentReturnURL=https%3A%2F%2Fadatum.com%2FExpenseReport.aspx%3FContextId%3D123456`。 下表描述了该链接的组成部分：
-
-| 参数 | 说明 |
-| --- | --- |
-| ClientId |必需。 在添加应用程序的过程中获取的客户端 ID。 |
-| RequestedPermissions |可选。 应用程序正在请求的访问级别，此值将向授予应用程序访问权限的用户显示。 如果未指定，则请求的访问级别将默认为仅限单一登录。 其他选项为 DirectoryReaders 和 DirectoryWriters。 有关这些访问级别的详细信息，请参阅“应用程序访问级别”。 |
-| ConsentReturnUrl |可选。 要将访问授权响应返回到的 URL。 此值必须采用 URL 编码，并且必须与应用程序定义中配置的回复 URL 位于同一个域中。 如果未提供此值，则会将访问授权响应重定向到你配置的回复 URL。 |
-
-指定独立于回复 URL 的 ConsentReturnUrl 可让应用实施独立的逻辑，该逻辑可从回复 URL 处理不同 URL 上的响应（通常会处理用于登录的 SAML 令牌）。 你还可以在 ConsentReturnURL 编码的 URL 中指定其他参数；在重定向时，会将这些参数作为查询字符串参数传回给你的应用程序。  使用此机制可以维护更多信息，或者将应用程序发出的访问授权请求绑定到来自 Azure AD 的响应。
-
-#### <a name="grant-access-user-experience-and-response-legacy"></a>授予访问权限用户体验和响应（旧版）
-以下示意图显示了当应用程序重定向到访问授权链接时的用户体验。
-
-如果用户尚未登录，系统会提示他们执行以下操作：
-
-![登录到 AAD](./media/active-directory-integrating-applications/signintoaad.png)
-
-用户进行身份验证后，Azure AD 会将用户重定向到访问授权页：
-
-![授予访问权限](./media/active-directory-integrating-applications/grantaccess.png)
-
-> [!NOTE]
-> 只有外部组织的公司管理员才能授予对你应用程序的访问权限。 如果用户不是公司管理员，系统会向他们提供相应的选项，用于向其公司管理员发送邮件以请求授予对此应用程序的访问权限。
-> 
-> 
-
-客户通过单击“授予访问权限”授予对你应用程序的访问权限或者通过单击“取消”拒绝访问后，Azure AD 将向 ConsentReturnUrl 或你配置的回复 URL 发送响应。 此响应包含以下参数：
-
-| 参数 | 说明 |
-| --- | --- |
-| TenantId |Azure AD 中已授予对你应用的访问权限的组织的唯一 ID。 仅当客户授予了访问权限时，才要指定此参数。 |
-| 同意 |如果已授予对应用程序的访问权限，则该值将设置为 Granted；如果请求被拒绝，则设置为 Denied。 |
-
-如果指定了其他参数作为 ConsentReturnUrl 编码 URL 的一部分，则会将这些参数返回到应用。 下面显示了对某个访问授权请求返回的示例响应，该响应指明应用程序已被授权，并包含访问授权请求中提供的 ContextID：`https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Granted&TenantId=f03dcba3-d693-47ad-9983-011650e64134`。
-
-> [!NOTE]
-> 访问授权响应不包含用户的安全令牌；应用必须单独将用户登录。
-> 
-> 
-
-下面显示了对某个已被拒绝的访问授权请求返回的示例响应：`https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Denied`
-
-#### <a name="rolling-app-keys-for-uninterrupted-access-to-the-graph-api-legacy"></a>滚动更新应用程序密钥以实现对图形 API 的无中断访问（旧版）
-在应用的整个生存期内，你可能需要更改在调用 Azure AD 以获取用于调用图形 API 的访问令牌时使用的密钥。  通常，密钥更改操作划分为两种类别：密钥已泄漏时进行的紧急滚动更新，以及当前密钥即将过期时进行的滚动更新。 在刷新密钥时，应遵循以下过程来为应用提供无中断访问（主要适用于第二种情况）。
-
-1. 在 Azure 经典门户中，单击目录租户，从顶部菜单中单击“应用程序”，然后单击要配置的应用。 “快速启动”页将显示单一登录信息和其他配置信息。
-2. 在顶部菜单中单击“配置”可查看应用的属性列表，并会同时看到密钥列表。
-3. 在“密钥”下，单击显示“选择持续时间”的下拉列表并选择 1 年或 2 年，然后单击命令栏中的“保存”。 这将生成应用的新密码密钥。 复制此新密码密钥。 此时，你的应用可以同时使用现有密钥和新密钥从 Azure AD 中获取访问令牌。
-4. 返回到你的应用并更新配置，以开始使用新的密码密钥。 有关要在何处执行此项更新的示例，请参阅[使用图形 API 查询 Azure AD](https://msdn.microsoft.com/library/azure/dn151791.aspx)。
-5. 现在，你应该在整个生产环境中应用此更改 – 首先在一个节点上验证更改，然后将它应用到环境中的其他节点。
-6. 在整个生产部署中完成更新后，随时可以返回到 Azure 经典门户并删除旧密钥。
-
-#### <a name="changing-app-properties-after-enabling-access-legacy"></a>启用访问权限后更改应用属性（旧版）
-为外部用户启用对你的应用的访问权限后，仍可以继续在 Azure 经典门户中对应用的属性进行更改。 但是，在你进行应用更改之前便已授予对你应用的访问权限的客户在 Azure 经典门户中查看有关该应用的详细信息时，将看不到这些更改。 将应用提供给客户使用后，在进行某些更改时，你必须保持谨慎。 例如，如果你更新了 App ID URI，则在进行此项更改之前授予了访问权限的现有客户将无法使用其公司帐户或学校帐户登录你的应用。
-
-如果更改 RequestedPermissions 以请求更高的访问级别，并且现有客户使用的应用功能现在通过这个更高的访问级别利用新的 API 调用，那么，这些客户可能会收到图形 API 发来的访问被拒绝响应。  你的应用应该处理这种情况，并要求客户使用更高访问级别请求授予对应用的访问权限。
 
 ## <a name="removing-an-application"></a>删除应用程序
 本部分说明如何从 Azure AD 租户中删除应用程序。
@@ -294,24 +233,24 @@ Web 应用程序也可为用户提供注册体验。 如果你确实提供注册
 这些应用程序是 Azure AD 租户的“应用程序”主页面上“我的公司拥有的应用程序”筛选器下显示的应用程序。 从技术层面讲，这些是通过 Azure 经典门户以手动方式注册的应用程序，或者通过 PowerShell 或图形 API 以编程方式注册的应用程序。 更具体地说，它们由租户中的应用程序与服务主体对象表示。 有关详细信息，请参阅[应用程序对象和服务主体对象](active-directory-application-objects.md)。
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>从目录中删除单租户应用程序
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
-3. 在顶部菜单中，单击“应用程序”，然后单击要配置的应用程序。 “快速启动”页将显示单一登录信息和其他配置信息。
-4. 单击命令栏中的“删除”按钮。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
+3. 在顶部菜单中，选择“Azure Active Directory”，单击“应用注册”，然后单击要配置的应用程序。 这将转到应用程序的快速启动页面，并打开应用程序的“设置”边栏选项卡。
+4. 从应用程序页面，单击“删除”。
 5. 在确认消息中单击“是”。
 
 #### <a name="to-remove-a-multi-tenant-application-from-your-directory"></a>从目录中删除多租户应用程序
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。
-2. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
-3. 在顶部菜单中，单击“应用程序”，然后单击要配置的应用程序。 “快速启动”页将显示单一登录信息和其他配置信息。
-4. 在“应用程序是多租户的”部分中，单击“否”。 这会将应用程序转换为单租户应用程序，但该应用程序仍保留在已同意它的组织中。
-5. 单击命令栏中的“删除”按钮。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在页面右上角选择帐户，选择你的 Azure AD 租户。
+3. 在顶部菜单中，选择“Azure Active Directory”，单击“应用注册”，然后单击要配置的应用程序。 这将转到应用程序的快速启动页面，并打开应用程序的“设置”边栏选项卡。
+4. 从“设置”边栏选项卡，选择“属性”，将“多租户”开关切换为“否”。 这会将应用程序转换为单租户应用程序，但该应用程序仍保留在已同意它的组织中。
+5. 从应用程序页面，单击“删除”按钮。
 6. 在确认消息中单击“是”。
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>删除其他组织授权的多租户应用程序
 这些应用程序是 Azure AD 租户的“应用程序”主页面上“我的公司使用的应用程序”筛选器下显示的一部分应用程序，特别是未列在“我的公司拥有的应用程序”列表下的应用程序。 在技术层面讲，它们是在同意处理期间注册的多租户应用程序。 更具体地说，它们仅由租户中的服务主体对象表示。 有关详细信息，请参阅[应用程序对象和服务主体对象](active-directory-application-objects.md)。
 
-公司管理员若要删除多租户应用程序对你目录的访问权限（在授予许可后），必须使用一个 Azure 订阅来通过 Azure 经典门户删除访问权限。 只需导航到应用程序的配置页，然后单击底部的“管理访问权限”按钮。 公司管理员也可以使用 [Azure AD PowerShell Cmdlet](http://go.microsoft.com/fwlink/?LinkId=294151) 删除访问权限。
+公司管理员若要删除多租户应用程序对你目录的访问权限（在授予许可后），必须使用 Azure 订阅通过 Azure 门户删除访问权限。 公司管理员也可以使用 [Azure AD PowerShell Cmdlet](http://go.microsoft.com/fwlink/?LinkId=294151) 删除访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关应用的视觉指南的提示，请参阅[集成应用的品牌准则](active-directory-branding-guidelines.md)。
@@ -323,6 +262,6 @@ Web 应用程序也可为用户提供注册体验。 如果你确实提供注册
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/09/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 8e7c14d9eeeab43d596eec99cb380f06cf9c39b3
+ms.sourcegitcommit: 6c2464b2f4d16f70c2841faf18e2246c8125b60f
+ms.openlocfilehash: 9421b8545715def823a4bdafd27c261e159fbbab
 
 
 ---
@@ -74,7 +74,7 @@ Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务�
 [创建第一个应用 (Java)](service-fabric-create-your-first-linux-application-with-java.md)
 
 ## <a name="core-concepts"></a>核心概念
-[Service Fabric 术语](service-fabric-technical-overview.md)、[应用程序模型](service-fabric-application-model.md)和[支持的编程模型](service-fabric-choose-framework.md)提供了详细概念和介绍，但此处是基础知识。
+此处介绍基础知识，有关详细概念和介绍，可参阅 [Service Fabric 术语](service-fabric-technical-overview.md)、[应用程序模型](service-fabric-application-model.md)和[支持的编程模型](service-fabric-choose-framework.md)。
 
 <table><tr><th>核心概念</th><th>设计时</th><th>运行时</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
@@ -140,6 +140,7 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以选�
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
 
 
-<!--HONumber=Jan17_HO4-->
+
+<!--HONumber=Feb17_HO3-->
 
 

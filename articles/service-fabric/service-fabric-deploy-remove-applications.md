@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/16/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 81873b7da2ace896241734d4194e39dc703cd0da
-ms.openlocfilehash: f5fe5751380bd743536d9b23a0f226051a1c5d2f
+ms.sourcegitcommit: 6626747c501b01aa5e53657309ec79c75213483c
+ms.openlocfilehash: 2e96e978c56ef2b9c901c952a6e96055a6ab91cf
 
 
 ---
@@ -97,6 +97,8 @@ Copy application package succeeded
 
 PS D:\temp>
 ```
+
+请参阅[了解映像存储连接字符串](service-fabric-image-store-connection-string.md)，获取有关映像存储和 ImageStoreConnectionString 的补充信息。
 
 ## <a name="register-the-application-package"></a>注册应用程序包
 应用程序清单中声明的应用程序类型和版本会在注册应用包时可供使用。 系统将读取上一步中上传的程序包，验证此包，处理包的内容，并将已处理的包复制到内部系统位置。  如果要在本地验证应用包，请使用 [Test-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) cmdlet。
@@ -242,6 +244,6 @@ ImageStoreConnectionString 可在群集清单中找到：
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

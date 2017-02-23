@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 530530952a4f69ae0a78e02cc1c079532f0c5b0f
+ms.sourcegitcommit: 1c002b796ed926fb8b0c6cedf3e361816e50b803
+ms.openlocfilehash: d51eeebba7ce2a1ca1005954feb0471f6ad7e05b
 
 
 ---
@@ -31,9 +31,11 @@ ms.openlocfilehash: 530530952a4f69ae0a78e02cc1c079532f0c5b0f
 ## <a name="configure-redis-cache-settings"></a>配置 Redis 缓存设置
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Redis 缓存在“资源菜单”中提供以下设置。
+使用“资源菜单”在“Redis 缓存”边栏选项卡上查看和配置 Azure Redis 缓存设置。
 
 ![Redis 缓存设置](./media/cache-configure/redis-cache-settings.png)
+
+可使用“资源菜单”查看和配置以下设置。
 
 * [概述](#overview)
 * [活动日志](#activity-log)
@@ -476,6 +478,6 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

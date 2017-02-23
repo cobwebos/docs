@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/09/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: b5a43db0e35037f8f554beaae0ba7ac06c4ef97e
-ms.openlocfilehash: b4ad58d7575199432e1b49ae1cc07f59fb83fed1
+ms.sourcegitcommit: fcb2c38b18e40d3ca4406810e523ae339d612bcf
+ms.openlocfilehash: b2049e2b3673ddc0455fc07c298f1054c8c8e78e
 
 
 ---
@@ -32,29 +32,28 @@ ms.openlocfilehash: b4ad58d7575199432e1b49ae1cc07f59fb83fed1
 
 | 服务                 | 资源类型                           | 日志        | 度量值     | 解决方案 |
 | --- | --- | --- | --- | --- |
-| 应用程序网关数    | Microsoft.Network/applicationGateways   | 诊断 | 诊断 | Azure 网络分析（预览版） |
-| API 管理          | Microsoft.ApiManagement/service         |             | 诊断 | |
-| Application insights    |                                         | 连接器   | 连接器   | Application Insights Connector（预览版） |
-| 自动化帐户     | Microsoft.Automation/AutomationAccounts | 诊断 |             | |
+| 应用程序网关数    | Microsoft.Network/applicationGateways   | 诊断 | 诊断 | [Azure 应用程序网关分析](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
+| Application insights    |                                         | 连接器   | 连接器   | [Application Insights Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)（预览版） |
+| 自动化帐户     | Microsoft.Automation/AutomationAccounts | 诊断 |             | [详细信息](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | 批处理帐户          | Microsoft.Batch/batchAccounts           | 诊断 | 诊断 | |
-| 经典云服务  |                                         | 存储     |             | |
+| 经典云服务  |                                         | 存储     |             | [详细信息](log-analytics-azure-storage-iis-table.md) |
 | 认知服务      | Microsoft.CognitiveServices/accounts    |             | 诊断 | |
 | Data Lake Analytics     | Microsoft.DataLakeAnalytics/accounts    | 诊断 |             | |
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | 诊断 |             | |
 | 事件中心命名空间     | Microsoft.EventHub/namespaces           | 诊断 | 诊断 | |
 | IoT 中心                | Microsoft.Devices/IotHubs               |             | 诊断 | |
-| 密钥保管库               | Microsoft.KeyVault/vaults               | 诊断 |             | 密钥保管库分析（预览版） |
+| 密钥保管库               | Microsoft.KeyVault/vaults               | 诊断 |             | [密钥保管库分析](log-analytics-azure-key-vault.md) |
 | 负载均衡器          | Microsoft.Network/loadBalancers         | 诊断 |             |  |
 | 逻辑应用              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 诊断 | 诊断 | |
-| 网络安全组 | Microsoft.Network/networksecuritygroups | 诊断 |             | Azure 网络分析（预览版） |
+| 网络安全组 | Microsoft.Network/networksecuritygroups | 诊断 |             | [Azure 网络安全组分析](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | 搜索服务         | Microsoft.Search/searchServices         | 诊断 | 诊断 | |
 | 服务总线命名空间   | Microsoft.ServiceBus/namespaces         | 诊断 | 诊断 | |
-| Service Fabric          |                                         | 存储     |             | ServiceFabric 分析（预览版） |
+| Service Fabric          |                                         | 存储     |             | [Service Fabric 分析（预览版）](log-analytics-service-fabric.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 诊断 | |
 | 虚拟机        | Microsoft.Compute/virtualMachines       | 分机   | 分机 <br> 诊断  | |
 | 虚拟机规模集 | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 诊断 | |
 | Web 服务器场        | Microsoft.Web/serverfarms               |             | 诊断 | |
-| 网站               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 诊断 | |
+| 网站               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 诊断 | [详细信息](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring) |
 
 
 > [!NOTE]
@@ -71,10 +70,11 @@ ms.openlocfilehash: b4ad58d7575199432e1b49ae1cc07f59fb83fed1
 * 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs)。
 
 ### <a name="enable-diagnostics-with-powershell"></a>使用 PowerShell 启用诊断
+需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) 的 2016 年 11 月版 (v2.3.0) 或更高版本。
 
-下面的 PowerShell 示例演示如何使用 [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/resourcemanager/azurerm.insights/v2.3.0/set-azurermdiagnosticsetting) 对网络安全组启用诊断。 同一方法适用于所有受支持的资源 - 只需将 `$resourceId` 设置为要为其启用诊断的资源的资源 ID。
+下面的 PowerShell 示例演示如何使用 [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/resourcemanager/azurerm.insights/v2.3.0/set-azurermdiagnosticsetting) 对网络安全组启用诊断。 同一方法适用于所有受支持的资源 - 将 `$resourceId` 设置为要为其启用诊断的资源的资源 ID。
 
-```
+```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
@@ -86,7 +86,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 
 若要在资源创建时为其启用诊断，并将诊断发送到 Log Analytics 工作区，可以使用如下模板。 此示例适用于自动化帐户，但适用于所有受支持的资源类型。
 
-```
+```json
         {
             "type": "Microsoft.Automation/automationAccounts/providers/diagnosticSettings",
             "name": "[concat(parameters('omsAutomationAccountName'), '/', 'Microsoft.Insights/service')]",
@@ -111,6 +111,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
         }
 ```
 
+[!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>将 Azure 诊断定向到存储，然后再定向到 Log Analytics
 
@@ -151,6 +152,6 @@ Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

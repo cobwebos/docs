@@ -1,5 +1,5 @@
 ---
-title: "用于存储的 Azure Resource Manager 策略 | Microsoft Docs"
+title: "适用于存储帐户的 Azure 资源策略 | Microsoft Docs"
 description: "介绍用于管理存储帐户的部署的 Azure Resource Manager 策略。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2017
+ms.date: 02/09/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: ce31bbcb96a6afe19cf6c25dd9a68d6c2d4d080c
-ms.openlocfilehash: f2141304f6db6d137065e06558e10c721b11f892
+ms.sourcegitcommit: 5ea75843bf671ad4d879c01cdd20d5bbc5e889c2
+ms.openlocfilehash: 08c991e9f217c49828889d0b806888e193b245a8
 
 
 ---
-# <a name="apply-azure-resource-policies-to-storage-accounts"></a>将 Azure 资源策略应用于存储帐户
-通过 Azure Resource Manager 策略，可以针对资源在组织中的部署方式定义统一的规则。 创建自定义策略确保组织中的用户不会违反管理组织资源所需的惯例。 本主题演示定义 Azure 存储帐户规则的多个策略。 有关策略的详细信息，请参阅[使用资源策略管理资源](resource-manager-policy.md)。
-
-本主题中的示例演示策略规则中出现的硬编码值。 但是，可以使用参数来传入分配策略时使用的值。 有关详细信息，请参阅[策略参数](resource-manager-policy.md#parameters)。
+# <a name="apply-resource-policies-to-storage-accounts"></a>将资源策略应用于存储帐户
+本主题介绍多个可以应用于 Azure 存储帐户的[资源策略](resource-manager-policy.md)。 这些策略可确保组织中部署的存储帐户的一致性。 
 
 ## <a name="define-permitted-storage-account-types"></a>定义允许的存储帐户类型
 
@@ -53,6 +51,8 @@ ms.openlocfilehash: f2141304f6db6d137065e06558e10c721b11f892
   }
 }
 ```
+
+提供了一个类似的策略规则，作为内置策略定义，其中具有用于接受允许的 SKU 的参数。 该内置策略具有 `/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1` 的资源 ID。 
 
 ## <a name="define-permitted-access-tier"></a>定义允许的访问层
 
@@ -110,16 +110,15 @@ ms.openlocfilehash: f2141304f6db6d137065e06558e10c721b11f892
 }
 ```
 
-## <a name="create-and-assign-policies"></a>创建和分配策略
-
-定义策略规则后（如前面的示例所示），需要创建策略并将其分配给作用域。 作用域可以是订阅、资源组或资源。 有关创建和分配策略的示例，请参阅[创建和分配策略](resource-manager-policy.md#create-and-assign-a-policy)。 
+此策略规则也可用作具有 `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f` 资源 ID 的内置策略定义。
 
 ## <a name="next-steps"></a>后续步骤
+* 定义策略规则后（如上述示例所示），需要创建策略定义并将其分配给作用域。 作用域可以是订阅、资源组或资源。 有关创建和分配策略的示例，请参阅[分配和管理策略](resource-manager-policy-create-assign.md)。 
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/29/2016
 ms.author: bryanla;mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: 6d2b0d0c28963693f8fa5607200e73572ea748a0
+ms.sourcegitcommit: 8f70d9aeb0a407cdb76a5ce25eb620be58bb2659
+ms.openlocfilehash: f453dcafe629c871dc29742208e4864454f4c57e
 
 
 ---
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) 中的术语“应用程序”有时很容易�
 Azure AD 应用程序远远不只是一套软件。 它是一个概念性的术语，指的不只是应用程序软件，还包括它在 Azure AD 上的注册（也称为标识配置），这可以让它在运行时参与身份验证和授权“对话”。 根据定义，应用程序能够以[客户端](active-directory-dev-glossary.md#client-application)角色（使用资源）和/或[资源服务器](active-directory-dev-glossary.md#resource-server)角色（向客户端公开 API）运行。 对话协议由 [OAuth 2.0 授权流](active-directory-dev-glossary.md#authorization-grant)定义，目标是要让客户端/资源能够各自访问/保护资源的数据。 现在让我们再深入一点，看看 Azure AD 应用程序模型在内部如何代表应用程序。 
 
 ## <a name="application-registration"></a>应用程序注册
-在 [Azure 经典门户][AZURE-Classic-Portal]中注册应用程序时，将在 Azure AD 租户中创建两个对象：应用程序对象和服务主体对象。
+在 [Azure 门户][AZURE-Portal]中注册应用程序时，将在 Azure AD 租户中创建两个对象：应用程序对象和服务主体对象。
 
 #### <a name="application-object"></a>应用程序对象
 Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象位于应用程序注册到的 Azure AD 租户（称为应用程序的“宿主”租户）中。 应用程序对象为应用程序提供标识相关信息，并且是*派生*其对应服务主体对象（在运行时使用）的模板。 
@@ -69,10 +69,10 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 <!--Reference style links -->
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AZURE-Classic-Portal]: https://manage.windowsazure.com
+[AZURE-Classic-Portal]: https://portal.azure.com
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

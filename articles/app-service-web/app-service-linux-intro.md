@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: a3df293a056f4b06281bf8b80717529286d528b8
-ms.openlocfilehash: 48f26113d129ebfa613f1b8f2a372d0e7286aea1
+ms.sourcegitcommit: 6eb4390f8290d3036bf76a592c40253432170883
+ms.openlocfilehash: 0e5c56e62965f2cc9df0b439595223300377d084
 
 
 ---
@@ -33,6 +33,7 @@ Linux 应用服务目前支持以下应用程序堆栈：
 * Node.js
 * PHP
 * .NET Core
+* Ruby
 
 客户可通过以下几种方式部署其应用程序：
 
@@ -66,6 +67,8 @@ Linux Web 应用只能在专用应用服务计划中使用，没有免费层或�
 
 在资源组中创建 Linux Web 应用时，该资源组不得在同一区域包含非 Linux Web 应用。
 
+Linux 上的 Web 应用尚不支持从未编译的源部署 . NET Core 应用。 需要先在本地发布/编译 .NET Core 应用，然后将发布的站点位推送到应用。
+
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，开始使用 Linux 应用服务。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
@@ -73,9 +76,9 @@ Linux Web 应用只能在专用应用服务计划中使用，没有免费层或�
 * [如何在 Linux 上使用应用服务自定义 Docker 映像](app-service-linux-using-custom-docker-image.md)
 * [在 Linux Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
 * [在 Linux 上的 Azure 应用服务 Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
+* [Linux 上的 Azure 应用服务 Web 应用常见问题](app-service-linux-faq.md)
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

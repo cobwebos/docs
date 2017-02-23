@@ -4,7 +4,7 @@ description: "VM 管理解决方案可按计划启动和停止 Azure Resource Ma
 services: automation
 documentationCenter: 
 authors: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 02/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: adb787b4ff1b4164bcf7ac08e7b6a227acfce423
-ms.openlocfilehash: 1f29554cce2ba5fe7b02c546c705cce3d9e13019
+ms.sourcegitcommit: 5ae60cb8ba3d391d3babd1ab575b4f32e139a185
+ms.openlocfilehash: f2c9a5ef2a8f517b9b2072be57f4d8c51b7694c6
 
 ---
 
 # <a name="startstop-vms-during-off-hours-preview-solution-in-automation"></a>自动化中的非工作时间启动/停止 VM [预览版] 解决方案
 
-在非工作时间启动/停止 VM [预览版] 解决方案根据用户定义的计划启动和停止 Azure Resource Manager 和经典虚拟机，通过 OMS Log Analytics 提供成功启动和停止虚拟机的自动化见解。  
+在非工作时间启动/停止 VM [预览版] 解决方案根据用户定义的计划启动和停止 Azure Resource Manager 虚拟机，通过 OMS Log Analytics 提供成功启动和停止虚拟机的自动化见解。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -79,8 +79,8 @@ StopByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | 指定包含此解决方�
 
 计划 | 说明|
 ---------|------------|
-StartByResourceGroup-Schedule-MS-Mgmt | StartByResourceGroup Runbook 的计划，执行此解决方案管理的 VM 启动操作。|
-StopByResourceGroup-Schedule-MS-Mgmt | StopByResourceGroup Runbook 的计划，执行此解决方案管理的 VM 关闭操作。|
+StartByResourceGroup-Schedule-MS-Mgmt | StartByResourceGroup Runbook 的计划，执行此解决方案管理的 VM 启动操作。 创建时，默认为 UTC 时区。|
+StopByResourceGroup-Schedule-MS-Mgmt | StopByResourceGroup Runbook 的计划，执行此解决方案管理的 VM 关闭操作。 创建时，默认为 UTC 时区。|
 
 ### <a name="credentials"></a>凭据
 
@@ -116,7 +116,7 @@ O365Credential | 指定用于发送电子邮件的有效 Office 365 用户帐户
 
 8. 最后，在“添加解决方案”边栏选项卡中选择“配置”，此时将显示“参数”边栏选项卡。  在“参数”边栏选项卡中，系统会提示：  
    - 指定“目标资源组名称”，此资源组名称包含此解决方案要管理的 VM。  可以输入多个名称，使用分号分隔即可（这些值区分大小写）。  如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。
-   - 选择“计划”，这是启动和停止目标资源组中 VM 的周期性日期和时间。  
+   - 选择“计划”，这是启动和停止目标资源组中 VM 的周期性日期和时间。  默认情况下，该计划配置为 UTC 时区，并且无法选择其他区域。  如果需要在配置解决方案后将计划配置为特定时区，请参阅下面的[修改启动和关闭计划](#modifying-the-startup-and-shutdown-schedule)。    
 
 10. 完成配置解决方案所需的初始设置后，选择“创建”。  系统将验证所有设置，然后尝试在订阅中部署该解决方案。  此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。 
 
@@ -159,7 +159,7 @@ O365Credential | 指定用于发送电子邮件的有效 Office 365 用户帐户
 
 ### <a name="modifying-the-startup-and-shutdown-schedule"></a>修改启动和关闭计划
 
-按照[在 Azure 自动化中计划 Runbook](automation-scheduling-a-runbook.md) 中所述的相同步骤管理此解决方案中的启动和关闭计划。  请记住，计划配置无法修改。  需要禁用现有计划并新建一个，然后将新计划链接到计划要应用到的 **StartByResourceGroup-MS-Mgmt-VM** 或 **StopByResourceGroup-MS-Mgmt-VM** Runbook。   
+按照[在 Azure 自动化中计划 Runbook](automation-schedules.md) 中所述的相同步骤管理此解决方案中的启动和关闭计划。  请记住，计划配置无法修改。  需要禁用现有计划并新建一个，然后将新计划链接到计划要应用到的 **StartByResourceGroup-MS-Mgmt-VM** 或 **StopByResourceGroup-MS-Mgmt-VM** Runbook。   
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 
@@ -247,6 +247,6 @@ StreamType | 作业流的类型。 可能的值包括：<br>- Progress（进度�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

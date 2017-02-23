@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 01/03/2016
+ms.date: 02/03/2017
 ms.author: meetb
 translationtype: Human Translation
-ms.sourcegitcommit: 631baac839f4045c4b0fcf23810d9459c45a4998
-ms.openlocfilehash: 558d6660235a76bc7f5d23e7b28025496c2d8271
+ms.sourcegitcommit: 2793ddb1c903f6732a193276a2d804192b7ab53b
+ms.openlocfilehash: 86524dd1a73df3b60245cb664c0e17a63df00763
 
 
 ---
@@ -31,100 +31,103 @@ ms.openlocfilehash: 558d6660235a76bc7f5d23e7b28025496c2d8271
 
 ## <a name="step-2-configure-development-environment"></a>步骤 2：配置开发环境
 ### <a name="mac-os"></a>**Mac OS**
-打开终端并导航到你要在其中创建 python 脚本的目录。 输入以下命令以安装 **brew**、**FreeTDS** 和 **pyodbc**。 pyodbc 使用 MacOS 上的 FreeTDS 连接到 SQL 数据库。
+打开终端并导航到你要在其中创建 python 脚本的目录。 输入以下命令，安装 **brew**、**Microsoft ODBC Driver for Mac**和 **pyodbc**。 pyodbc 使用 Linux 上的 Microsoft ODBC 驱动程序连接到 SQL 数据库。
 
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew uninstall FreeTDS #if you have an existing installed FreeTDS
-    brew update
-    brew doctor
-    brew install freetds --with-unixodbc
-    sudo pip install pyodbc==3.1.1
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap microsoft/msodbcsql https://github.com/Microsoft/homebrew-msodbcsql
+brew update
+brew install msodbcsql 
+#for silent install ACCEPT_EULA=y brew install msodbcsql
+sudo pip install pyodbc==3.1.1
+```
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 打开终端并导航到你要在其中创建 python 脚本的目录。 输入以下命令以安装**适用于 Linux 的 Microsoft ODBC 驱动程序**和 **pyodbc**。 pyodbc 使用 Linux 上的 Microsoft ODBC 驱动程序连接到 SQL 数据库。
 
-    sudo su
-    curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql.list
-    exit
-    sudo apt-get update
-    sudo apt-get install msodbcsql mssql-tools unixodbc-dev-utf16
-    sudo pip install pyodbc==3.1.1
+```
+sudo su
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql.list
+exit
+sudo apt-get update
+sudo apt-get install msodbcsql mssql-tools unixodbc-dev-utf16
+sudo pip install pyodbc==3.1.1
+```
 
 ### <a name="windows"></a>**Windows**
 安装 [Microsoft ODBC 驱动程序 13.1](https://www.microsoft.com/en-us/download/details.aspx?id=53339)。 pyodbc 使用 Linux 上的 Microsoft ODBC 驱动程序连接到 SQL 数据库。 
 
 然后使用 pip 安装 pyodbc
 
-    pip install pyodbc==3.1.1
+```
+pip install pyodbc==3.1.1
+```
 
 可在[此处](http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows)找到有关使用 pip 的说明
 
 ## <a name="step-3-run-sample-code"></a>步骤 3：运行示例代码
 创建名为 **sql_sample.py** 的文件并在其中粘贴以下代码。 可以通过命令行使用以下命令运行此操作：
 
-    python sql_sample.py
+```
+python sql_sample.py
+```
 
 ### <a name="connect-to-your-sql-database"></a>连接到 SQL 数据库
 [pyodbc.connect](https://mkleehammer.github.io/pyodbc/api-connection.html) 函数用于连接到 SQL 数据库。
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    #driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux of windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("select @@VERSION")
-    row = cursor.fetchone()
-    if row:
-        print row
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("select @@VERSION")
+row = cursor.fetchone()
+if row:
+    print row
+```
 
 ### <a name="execute-an-sql-select-statement"></a>执行 SQL SELECT 语句
 [Cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) 函数可用于针对 SQL 数据库从查询中检索结果集。 此函数实际上可接受任何查询，并返回可使用 [cursor.fetchone()](https://mkleehammer.github.io/pyodbc/api-cursor.html) 循环访问的结果集。
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux or windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("select @@VERSION")
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("select @@VERSION")
+row = cursor.fetchone()
+while row:
+    print str(row[0]) + " " + str(row[1]) + " " + str(row[2])
     row = cursor.fetchone()
-    while row:
-        print str(row[0]) + " " + str(row[1]) + " " + str(row[2])     
-        row = cursor.fetchone()
-
+```
 
 ### <a name="insert-a-row-pass-parameters-and-retrieve-the-generated-primary-key"></a>插入一行，传递参数，然后检索生成的主键
 在 SQL 数据库中，可以使用 [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) 属性和 [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx) 对象自动生成[主键值](https://msdn.microsoft.com/library/ms179610.aspx)。 
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    #driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux or windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("select @@VERSION")
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("select @@VERSION")
+row = cursor.fetchone()
+while row:
+    print "Inserted Product ID : " +str(row[0])
     row = cursor.fetchone()
-    while row:
-        print "Inserted Product ID : " +str(row[0])
-        row = cursor.fetchone()
-
+```
 
 ### <a name="transactions"></a>事务
 此代码示例演示了你可以在其中执行以下操作的事务的用法：
@@ -135,24 +138,23 @@ ms.openlocfilehash: 558d6660235a76bc7f5d23e7b28025496c2d8271
 
 在 sql_sample.py 中粘贴以下代码。
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    #driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux or windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("BEGIN TRANSACTION")
-    cursor.execute("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express New', 'SQLEXPRESS New', 0, 0, CURRENT_TIMESTAMP)")
-    cnxn.rollback()
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("BEGIN TRANSACTION")
+cursor.execute("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express New', 'SQLEXPRESS New', 0, 0, CURRENT_TIMESTAMP)")
+cnxn.rollback()
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 参阅 [SQL 数据库开发概述](sql-database-develop-overview.md)
-* 有关 [Microsoft Python Driver for SQL Server](https://msdn.microsoft.com/library/mt652092.aspx) 的详细信息
+* 有关 [Microsoft Python Driver for SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/) 的详细信息
 * 访问 [Python 开发人员中心](/develop/python/)。
 
 ## <a name="additional-resources"></a>其他资源
@@ -161,6 +163,6 @@ ms.openlocfilehash: 558d6660235a76bc7f5d23e7b28025496c2d8271
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

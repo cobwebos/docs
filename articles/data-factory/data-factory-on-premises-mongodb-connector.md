@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 2a590795178d819d9df1b010dc68809492d6bdbc
+ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
+ms.openlocfilehash: 2de70faa090fb3da25fec8f8946e52fcae2677d3
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: 2a590795178d819d9df1b010dc68809492d6bdbc
 数据工厂当前仅支持将数据从 MongoDB 移至其他数据存储，但不支持将数据从其他数据存储移至 MongoDB。
 
 ## <a name="supported-versions"></a>支持的版本
-此 MongoDB 连接器支持 MongoDB 2.4 及更高版本。
+此 MongoDB 连接器支持 MongoDB 2.4、2.6、3.0 及 3.2 版本。
 
 ## <a name="prerequisites"></a>先决条件
 若要使 Azure 数据工厂服务能够连接到本地 MongoDB 数据库，必须安装以下组件：
@@ -121,7 +121,7 @@ ms.openlocfilehash: 2a590795178d819d9df1b010dc68809492d6bdbc
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -257,7 +257,7 @@ ms.openlocfilehash: 2a590795178d819d9df1b010dc68809492d6bdbc
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
 ## <a name="copy-activity-type-properties"></a>复制活动类型属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 另一方面，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
@@ -358,6 +358,6 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

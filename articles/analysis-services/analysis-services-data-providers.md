@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 01/20/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 4dbd2c87d648f6923772b070fdfe7379de22e6c5
-ms.openlocfilehash: e1adeaca702de3bad1c2e572f89ade9eba753173
+ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
+ms.openlocfilehash: d70b9f2c2a0cb1abe11dcfee9acb51dcb5552a60
 
 
 ---
@@ -40,10 +40,10 @@ Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装�
 [ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)</br>
 
 ## <a name="next-steps"></a>后续步骤
-安装最新的数据提供程序以后，即可通过客户端应用程序连接到服务器。 若要详细了解如何进行连接，请参阅[从 Azure Analysis Services 获取数据](analysis-services-connect.md)。
+安装最新的数据提供程序以后，即可通过客户端应用程序连接到服务器。 若要详细了解如何从客户端连接，请参阅[从 Azure Analysis Services 获取数据](analysis-services-connect.md)。
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

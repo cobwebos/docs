@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
 translationtype: Human Translation
-ms.sourcegitcommit: 11aa3f74d112244cd96278c2b2e3d701e031aee8
-ms.openlocfilehash: 55756029ebba3f3467828db5567a6616f7eeba2b
+ms.sourcegitcommit: 17b33d3296ffbc65a22bf9a5077282fffdb7b3de
+ms.openlocfilehash: 4a0af9f3f9fab9ff459450eb8658273d4a1bc5dc
 
 ---
 # <a name="logic-apps-pricing-model"></a>逻辑应用定价模型
@@ -30,15 +30,17 @@ Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面
 * **轮询触发器** – 此触发器持续轮询终结点，直到收到满足创建逻辑应用实例的条件的消息。  可以在逻辑应用设计器中，在触发器中配置轮询间隔。  每个轮询请求（即使不会创建逻辑应用的实例）都会计为一个操作执行。
 * **Webhook 触发器** – 此触发器等待客户端在特定终结点上向它发送请求。  发送到 webhook 终结点的每个请求都会计为操作执行。 请求和 HTTP Webhook 触发器都是 webhook 触发器。
 * **重复触发器** – 此触发器会基于在触发器中配置的重复间隔创建逻辑应用的实例。  例如，重复触发器可以配置为每三天甚至是每分钟运行一次。
+
 可以在逻辑应用资源边栏选项卡的“触发器历史记录”部分中查看触发器执行。
+
 执行的所有操作（无论是成功还是失败）都会作为操作执行按流量计费。  由于未满足条件而跳过的操作或由于逻辑应用在完成之前终止而未执行的操作不会计为操作执行。
 
 在循环中执行的操作会按循环的每个迭代进行计数。  例如，循环访问包含 10 个项的列表的 for each 循环中的单个操作会按照列表中的项数 (10) 乘以循环中的操作数 (1) 再加一（用于表示循环的启动）来计数，在此示例中是 (10 * 1) + 1 = 11 个操作执行。
-处于禁用状态的逻辑应用不能实例化新实例，因此在禁用期间不会收费。  请注意，禁用逻辑应用之后，在完全禁用之前可能需要一点时间使实例停止。
+已禁用的逻辑应用不能实例化新实例，因此在禁用期间不会收费。  请注意，禁用逻辑应用之后，在完全禁用之前可能需要一点时间使实例停止。
 ### <a name="integration-account-usage"></a>集成帐户使用情况
-基于消耗量的使用情况中包含一个用于浏览、开发和测试用途的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)，允许你使用逻辑应用的 [B2B/EDI](logic-apps-enterprise-integration-b2b.md) 和 [XML 处理](logic-apps-enterprise-integration-xml.md)功能且不需要另外付费。 在每个区域最多可以创建一个帐户并且可以存储最多 10 个协议和 25 个地图。 架构、证书和合作伙伴没有限制，你可以根据需要任意上载。
+基于消耗量的使用情况中包含一个用于浏览、开发和测试用途的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)，允许使用逻辑应用的 [B2B/EDI](logic-apps-enterprise-integration-b2b.md) 和 [XML 处理](logic-apps-enterprise-integration-xml.md)功能且不需要另外付费。 在每个区域最多可以创建一个帐户并且可以存储最多 10 个协议和 25 个地图。 架构、证书和合作伙伴没有限制，可以根据需要任意上传。
 
-除了包括带有消耗量的集成帐户之外，还可以创建没有这些限制且采用我们的标准逻辑应用 SLA 的标准集成帐户。 请参阅 [Azure 定价](https://azure.microsoft.com/pricing/details/logic-apps)，了解详细信息。
+除了包括带有消耗量的集成帐户之外，还可以创建没有这些限制且采用我们的标准逻辑应用 SLA 的标准集成帐户。 有关详细信息，请参阅 [Azure 定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 ## <a name="app-service-plans"></a>应用服务计划
 以前创建的引用了某个应用服务计划的逻辑应用将继续像以前一样运行。 根据所选择的计划，在规定的每日执行后被限制，但是将使用操作执行计量表进行开单。
@@ -60,6 +62,6 @@ Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

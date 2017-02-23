@@ -12,32 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
+ms.sourcegitcommit: 8929a1697bf88da82fc027520d0126eaef872840
+ms.openlocfilehash: 488212ad1b43d5e35bf46a334bc7ac8e1acabebc
 
 
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>如何管理 Azure Redis 缓存
-本主题介绍如何执行管理任务，如重新启动 Azure Redis 缓存实例和为 Azure Redis 缓存实例计划更新。
+本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
 
 > [!IMPORTANT]
 > 本文中所述的设置和功能仅适用于高级层缓存。
 > 
 > 
 
-## <a name="administration-settings"></a>管理设置
-用户可通过 Azure Redis 缓存“管理”设置对高级缓存执行以下管理任务。 若要访问“管理”设置，请单击“Redis 缓存”边栏选项卡中的“设置”或“所有设置”，然后滚动到“设置”边栏选项卡中的“管理”部分。
-
-![管理](./media/cache-administration/redis-cache-administration.png)
-
-* [重新启动](#reboot)
-* [计划更新](#schedule-updates)
-
 ## <a name="reboot"></a>重新启动
 可通过“重新启动”边栏选项卡重新启动缓存的一个或多个节点。 这可以测试应用程序在故障时的还原能力。
+
+![重新启动](./media/cache-administration/redis-cache-administration-reboot.png)
+
+选择要重启的节点，然后单击“重启”。
 
 ![重新启动](./media/cache-administration/redis-cache-reboot.png)
 
@@ -52,7 +48,7 @@ ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
 * **主** - 重新启动主节点时，Azure Redis 缓存将故障转移到副本节点，并将其提升为主节点。 在此故障转移期间，可能会有一个较短的时间间隔无法连接到缓存。
 * **从属** - 重新启动从属节点时，通常不会影响缓存客户端。
 * **主和从属** - 同时重新启动这两个缓存节点时，缓存中的所有数据将丢失，并且无法连接到缓存，直到主节点重新联机。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时，将还原最新备份。 请注意，在最新备份后进行的所有缓存写入将丢失。
-* **已启用群集的高级缓存的节点** - 重新启动已启用群集的高级缓存的节点时，其行为与重新启动非群集缓存节点时相同。
+* **已启用群集的高级缓存的节点** - 重启已启用群集的高级缓存的节点时，所选节点的行为与重启非群集缓存节点时相同。
 
 > [!IMPORTANT]
 > 重新启动仅适用于高级层缓存。
@@ -80,7 +76,7 @@ ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>如果我执行重新启动，是否会丢失缓存中的数据？
 如果同时重新启动**主**节点和**从属**节点，则缓存中或该分片中（如果用户使用的是已启用群集的高级缓存）的所有数据都会丢失。 如果已配置[数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时，将还原最新备份。 请注意，在进行该备份后进行的所有缓存写入将丢失。
 
-如果只重新启动其中一个节点，数据通常不会丢失，但仍可能会丢失。 例如，如果重新启动主节点时正在进行缓存写入，则缓存写入的数据将丢失。 发生数据丢失的另一种情况是，当你重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)（Redis 中的数据发生了什么情况？）。
+如果只重新启动其中一个节点，数据通常不会丢失，但仍可能会丢失。 例如，如果重新启动主节点时正在进行缓存写入，则缓存写入的数据将丢失。 发生数据丢失的另一种情况是，当你重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)（Redis 中的数据发生了什么情况？）
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>能否使用 PowerShell、CLI 或其他管理工具重新启动缓存？
 能，有关 PowerShell 说明，请参阅[重新启动 Redis 缓存](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache)。
@@ -96,7 +92,7 @@ ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
 若要指定维护时段，请勾选合适的日期，然后指定每天的维护时段开始时间，最后再单击“确定”。 请注意，维护时段使用 UTC 时间。 
 
 > [!NOTE]
-> 更新的默认维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅 [能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
+> 更新的默认维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzureRmRedisCacheScheduleEntry](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/new-azurermrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅[能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
 > 
 > 
 
@@ -115,10 +111,10 @@ ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
 ### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>有关详细信息，请参阅能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？
 可以使用以下 PowerShell cmdlet 管理计划的更新。
 
-* [Get-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763835.aspx)
-* [New-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763834.aspx)
-* [New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx)
-* [Remove-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763837.aspx)
+* [Get-AzureRmRedisCachePatchSchedule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/get-azurermrediscachepatchschedule)
+* [New-AzureRmRedisCachePatchSchedule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/new-azurermrediscachepatchschedule)
+* [New-AzureRmRedisCacheScheduleEntry](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/new-azurermrediscachescheduleentry)
+* [Remove-AzureRmRedisCachePatchSchedule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/remove-azurermrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>哪些定价层可以使用计划更新功能？
 计划更新仅在高级定价层中可用。
@@ -129,6 +125,6 @@ ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

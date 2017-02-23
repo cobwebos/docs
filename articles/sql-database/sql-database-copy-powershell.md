@@ -16,21 +16,18 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 099b130f276845cb308cd83393358d21c989267b
+ms.sourcegitcommit: edfbc0d94d9d5b33a25788772a98173187e394b8
+ms.openlocfilehash: 031a17d179cee8d6cceb9ed3aefd993add1958b8
 
 
 ---
 # <a name="copy-an-azure-sql-database-using-powershell"></a>使用 PowerShell 复制 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [概述](sql-database-copy.md)
-> * [Azure 门户](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
 本文介绍如何使用 PowerShell 将 SQL 数据库复制到同一服务器或不同服务器，或者将数据库复制到[弹性池](sql-database-elastic-pool.md)。 数据库复制操作使用 [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx) cmdlet。 
+
+> [!NOTE]
+> 还可使用 [Azure 门户](sql-database-copy-portal.md)或 [Transact-SQL](sql-database-copy-transact-sql.md) 复制 SQL 数据库。
+>
 
 若要完成本文，需要以下各项：
 
@@ -105,10 +102,10 @@ SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关复制 Azure SQL 数据库的概述，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
-* 若要使用 Azure 门户复制数据库，请参阅[使用 Azure 门户复制 Azure SQL 数据库](sql-database-copy-portal.md)。
-* 若要使用 Transact-SQL 复制数据库，请参阅[使用 Transact-SQL 复制 Azure SQL 数据库](sql-database-copy-transact-sql.md)。
-* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
+* 若要使用 PowerShell 将数据库导出到 BACPAC 文件，请参阅[使用 PowerShell 将数据库导出到 BACPAC](sql-database-export-powershell.md)。
+* [业务连续性概述](sql-database-business-continuity.md)
+* [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
 
 ## <a name="additional-resources"></a>其他资源
 * [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx)
@@ -123,6 +120,6 @@ SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

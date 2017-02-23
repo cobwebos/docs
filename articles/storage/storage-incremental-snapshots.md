@@ -1,5 +1,5 @@
 ---
-title: "使用增量快照备份和恢复 Azure 虚拟机 | Microsoft Docs"
+title: "使用增量快照备份和恢复非托管的 Azure VM 磁盘 | Microsoft Docs"
 description: "创建自定义解决方案，以使用增量快照来备份和恢复 Azure 虚拟机磁盘。"
 services: storage
 documentationcenter: na
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 01/23/2017
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9ade78c954ca6443354b198c7141b6fb5c88afdb
+ms.sourcegitcommit: bfb29928783283336b6116f198d70b0b7117750d
+ms.openlocfilehash: 880b1c2ca069e3e4a5ce9cb2af881b95e84687f4
 
 
 ---
-# <a name="back-up-azure-virtual-machine-disks-with-incremental-snapshots"></a>使用增量快照备份 Azure 虚拟机磁盘
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>使用递增快照备份 Azure 非托管 VM 磁盘
 ## <a name="overview"></a>概述
 Azure 存储空间提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果你选择不使用 Azure 的备份和恢复服务，但想要为虚拟机磁盘创建自定义的备份策略，则可以使用此方法。
 
@@ -60,7 +60,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 
 必须符合以下先决条件：
 
-* Blob 是在 2016 年 1 月 1 日或之后创建。
+* Blob 是在&2016; 年&1; 月&1; 日或之后创建。
 * 未在两个快照之间使用 [PutPage](https://msdn.microsoft.com/library/azure/ee691975.aspx) 或[复制 Blob](https://msdn.microsoft.com/library/azure/dd894037.aspx) 覆盖 Blob。
 
 **注意**：此功能适用于高级和标准 Azure 页 Blob。
@@ -123,6 +123,6 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

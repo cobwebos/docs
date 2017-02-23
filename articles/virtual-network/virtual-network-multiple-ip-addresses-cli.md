@@ -1,5 +1,5 @@
 ---
-title: "虚拟机的多个 IP 地址 - Azure CLI | Microsoft Docs"
+title: "Azure 虚拟机的多个 IP 地址 - Azure CLI | Microsoft Docs"
 description: "了解如何使用 Azure CLI | Resource Manager 为虚拟机分配多个 IP 地址。"
 services: virtual-network
 documentationcenter: na
@@ -16,40 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 482e0d8084d84f9a3170180c2e5414ca77364da8
-ms.openlocfilehash: 6fb458d47173b4922f085e8b1e6339cabefc7da6
+ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
+ms.openlocfilehash: 8c2441211f08e8bb22153ff16cbd98c85cb9cf3d
 
 
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-azure-cli"></a>使用 Azure CLI 将多个 IP 地址分配到虚拟机
 
-> [!div class="op_single_selector"]
-> * [门户](virtual-network-multiple-ip-addresses-portal.md)
-> * [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-> * [CLI](virtual-network-multiple-ip-addresses-cli.md)
+[!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-在一个 Azure 虚拟机 (VM) 上可以附加一个或多个网络接口 (NIC)。 可为任何 NIC 分配一个或多个静态或动态的公共与专用 IP 地址。 为 VM 分配多个 IP 地址可实现以下功能：
-
-* 在单个服务器上使用不同的 IP 地址和 SSL 证书托管多个网站或服务。
-* 用作网络虚拟设备，例如防火墙或负载均衡器。
-* 可将任何 NIC 的任何专用 IP 地址添加到 Azure Load Balancer 后端池。 以往，只能将主要 NIC 的主要 IP 地址添加到后端池。 若要详细了解如何对多个 IP 配置进行负载均衡，请阅读[对多个 IP 配置进行负载均衡](../load-balancer/load-balancer-multiple-ip.md)一文。
-
-附加到 VM 的每个 NIC 都具有一个或多个关联的 IP 配置。 每个配置分配有一个静态或动态专用 IP 地址。 每个配置还可以有一个关联的公共 IP 地址资源。 公共 IP 地址资源分配有动态或者静态 IP 地址。 如果你不熟悉 Azure 中的 IP 地址，请参阅 [Azure 中的 IP 地址](virtual-network-ip-addresses-overview-arm.md)一文了解详细信息。
-
-本文说明如何使用 PowerShell 将多个 IP 地址分配到通过 Azure Resource Manager 部署模型创建的 VM。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
+本文介绍如何使用 Azure CLI 通过 Azure Resource Manager 部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
-## <a name="scenario"></a>方案
-创建具有单个 NIC 的 VM 并将其连接到虚拟网络。 VM 需要三个不同的专用 IP 地址和两个公共 IP 地址。 IP 地址将分配到以下 IP 配置：
-
-* **IPConfig-1：**分配一个动态专用 IP 地址（默认）和一个静态公共 IP 地址。
-* **IPConfig-2：**分配一个静态专用 IP 地址和一个静态公共 IP 地址。
-* **IPConfig-3：**分配一个动态专用 IP 地址，但不分配公共 IP 地址。
-  
-    ![多个 IP 地址](./media/virtual-network-multiple-ip-addresses-powershell/OneNIC-3IP.png)
-
-创建 NIC 时，IP 配置将关联到 NIC；创建 VM 时，NIC 将附加到 VM。 本方案使用的 IP 地址类型用于演示。 可以根据需要分配任何 IP 地址和指定分配类型。
+[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="a-name--createacreate-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>创建具有多个 IP 地址的 VM
 
@@ -57,9 +37,26 @@ ms.openlocfilehash: 6fb458d47173b4922f085e8b1e6339cabefc7da6
 
 1. 遵循[安装和配置 Azure CLI](../xplat-cli-install.md) 一文中的步骤安装并配置 Azure CLI，然后登录到你的 Azure 帐户。
 
-2. 若要注册预览版，请向[多个 IP](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) 发送一封电子邮件，其中包含你的订阅 ID 和目标用途。 请不要尝试完成剩余的步骤：
-    - 只有在收到一封告知允许你使用预览版的电子邮件之后，才这样做。
-    - 如果不遵循所收到的电子邮件中的说明
+2. 登录并选择相应订阅后，请通过在 PowerShell 中运行以下命令注册预览版：
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+    
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+    ```
+    运行 ```Get-AzureRmProviderFeature``` 命令时，请在看到以下输出后再继续完成剩余的步骤：
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >这可能需要几分钟的时间。
+
 3. 请先[创建资源组](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-groups-and-choose-deployment-locations)，然后创建[虚拟网络和子网](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet)。 将 ``` --address-prefixes ``` 和 ```--address-prefix``` 字段更改为以下值可以遵循本文中所述的确切方案：
 
     ```azurecli
@@ -159,10 +156,10 @@ ms.openlocfilehash: 6fb458d47173b4922f085e8b1e6339cabefc7da6
     每当在新 IP 配置中添加公共 IP 地址时，还必须添加一个专用 IP 地址，因为所有 IP 配置都必须有专用 IP 地址。 可以添加现有的公共 IP 地址资源，或新建一个。 若要新建此类资源，请输入以下命令：
     
     ```azurecli
-    azure network public-ip create --resource-group myResourceGroup --location westcentralus --name myPublicIP3 --domain-name-label mypublicdns3
+      azure network public-ip create --resource-group myResourceGroup --location westcentralus --name myPublicIP3 --domain-name-label mypublicdns3
     ```
 
-    若要新建具有动态专用 IP 地址和关联的 *myPublicIP3* 公共 IP 地址资源的 IP 配置，请输入以下命令：
+     若要新建具有动态专用 IP 地址和关联的 *myPublicIP3* 公共 IP 地址资源的 IP 配置，请输入以下命令：
 
     ```azurecli
     azure network nic ip-config create --resource-group myResourceGroup --nic-name myNic --name IPConfig-4 --public-ip-name myPublicIP3
@@ -213,6 +210,7 @@ ms.openlocfilehash: 6fb458d47173b4922f085e8b1e6339cabefc7da6
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
 
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

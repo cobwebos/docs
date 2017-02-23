@@ -16,8 +16,8 @@ ms.workload: iaas-sql-server
 ms.date: 02/07/2017
 ms.author: v-shysun
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: a7d1878931ccf45e8e3192d5d03a4292c5291366
+ms.sourcegitcommit: 42b3e222f24e9b5c1bb26f7e1e36b1e11c2f48b8
+ms.openlocfilehash: 7a8d1451fc1b5ace2996faec22090b1f872bf547
 
 
 ---
@@ -49,6 +49,10 @@ ms.openlocfilehash: a7d1878931ccf45e8e3192d5d03a4292c5291366
 
     否。 无法将按分钟付费许可切换为使用自己的许可证。 请使用 [BYOL 映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一创建新的 Azure 虚拟机，然后使用标准[数据迁移技术](virtual-machines-windows-migrate-sql.md)将数据库迁移到新的服务器。
 
+7. **Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？**
+
+   是的。 可在 [Windows Server 2016 上创建 Windows Server 故障转移群集 \(WSFC\)](virtual-machines-windows-portal-sql-create-failover-cluster.md)，并将存储空间直通 (S2D) 用于群集存储。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
+
 7. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
    
     如果有软件保证并且使用许可证移动性，则无需付费即可为在 HA 部署中作为被动次要副本参与的 SQL Server 授予许可，如[虚拟机许可常见问题解答](http://azure.microsoft.com/pricing/licensing-faq/)中所述。
@@ -77,6 +81,6 @@ ms.openlocfilehash: a7d1878931ccf45e8e3192d5d03a4292c5291366
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/14/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: da120b0ea1bfa7a0afcb6eed864c4eadbd2bbec0
+ms.sourcegitcommit: e5103ccd0cc9ac46a29d98c613b58eead01f5e31
+ms.openlocfilehash: 6c7adb5d20c70c52400f1b003d4a81fdbf62b405
 
 
 ---
@@ -119,6 +119,7 @@ ms.openlocfilehash: da120b0ea1bfa7a0afcb6eed864c4eadbd2bbec0
 | --- | --- | --- |
 | city |任意字符串值或 $null |(user.city -eq "value") |
 | country |任意字符串值或 $null |(user.country -eq "value") |
+| CompanyName | 任意字符串值或 $null | (user.CompanyName-eq"value") |
 | department |任意字符串值或 $null |(user.department -eq "value") |
 | displayName |任意字符串值 |(user.displayName -eq "value") |
 | facsimileTelephoneNumber |任意字符串值或 $null |(user.facsimileTelephoneNumber -eq "value") |
@@ -194,7 +195,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 | isManaged |true false null |(device.isManaged -eq "false") |
 | isCompliant |true false null |(device.isCompliant -eq "true") |
 
-## <a name="additional-information"></a>其他信息
+## <a name="next-steps"></a>后续步骤
 以下文章提供了有关 Azure Active Directory 中的组的更多信息。
 
 * [查看现有组](active-directory-groups-view-azure-portal.md)
@@ -205,6 +206,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

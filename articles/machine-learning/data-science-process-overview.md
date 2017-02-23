@@ -1,6 +1,6 @@
 ---
 title: "Team Data Science Process 生命周期 | Microsoft Docs"
-description: "Team Data Science Team 生命周期的关键组件概述。"
+description: "使用生命周期步骤和组件构建数据科学项目。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/08/2017
 ms.author: bradsev;hangzh;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 725f6d4a209ada154eb9aa90a8226dcaa0859990
+ms.sourcegitcommit: 1796f7a7cd174d7ed6582878d72c59995aac41cb
+ms.openlocfilehash: 995ba0dc3ffd2bc78625db7d1176ca0d5e1611a0
 
 
 ---
@@ -29,7 +29,7 @@ Team Data Science Process (TDSP) 提供构建数据科学项目开发建议使�
 
 ![TDSP-生命周期](./media/data-science-process-overview/tdsp-lifecycle.png) 
 
-TDSP 生命周期由 5 个以迭代方式执行的主要阶段组成。 其中包括：
+TDSP 生命周期由&5; 个以迭代方式执行的主要阶段组成。 其中包括：
 
 * **了解业务**
 * **数据采集和理解**
@@ -200,6 +200,6 @@ TDSP 提供名为 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/mas
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

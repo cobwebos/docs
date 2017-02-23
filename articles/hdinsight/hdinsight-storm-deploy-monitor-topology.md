@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 94e09583ef8070a7e98fd2b30648996648ce3c41
-ms.openlocfilehash: 1389d9e3ff9adde814782ed5ac9a2145ee8bc010
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 8da7631d2dfc51e21269d05ace737760e3be61b8
 
 
 ---
@@ -28,7 +28,9 @@ Storm 仪表板可让你使用 Web 浏览器轻松在 HDInsight 群集中部署�
 HDInsight Tools 中的 Storm 仪表板和 Storm 功能依赖于 Storm REST API，此 API 可用于创建你自己的监视和管理解决方案。
 
 > [!IMPORTANT]
-> 本文档中的步骤要求使用基于 Windows 的 Storm on HDInsight 群集。 有关使用基于 Linux 的群集的信息，请参阅[在基于 Linux 的 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)
+> 本文档中的步骤需要使用以 Windows 作为操作系统的 Storm on HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
+>
+> 有关通过使用 Linux 的 HDInsight 群集部署和管理 Storm 拓扑的信息，请参阅[在基于 Linux 的 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -144,7 +146,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
    > [!NOTE]
    > 也可以通过依次展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
 
-    选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 将会针对每个选择的项打开一个新窗口。
+    选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 每选择一项都会打开一个新窗口。
 
    > [!NOTE]
    > 拓扑的名称是拓扑的类名（在此示例中为 `HelloWord`）并追加了时间戳。
@@ -174,7 +176,7 @@ HDInsight 群集上的 REST API 的基本 URI 是 **https://&lt;clustername>.azu
 
 ### <a name="return-values"></a>返回值
 
-从 REST API 返回的信息只能从群集或与群集相同的 Azure 虚拟网络上的虚拟机中使用。 例如，无法从 Internet 访问针对 Zookeeper 服务器返回的完全限定域名 (FQDN)。
+从 REST API 返回的信息只能从群集或与群集相同的 Azure 虚拟网络上的虚拟机中使用。 例如，无法从 Internet 访问针对 Zookeeper 服务器返回的完全限定的域名 (FQDN)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -192,6 +194,6 @@ HDInsight 群集上的 REST API 的基本 URI 是 **https://&lt;clustername>.azu
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

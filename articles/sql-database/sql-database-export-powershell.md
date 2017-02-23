@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 将 Azure SQL 数据库存档到 BACPAC 文件"
-description: "使用 PowerShell 将 Azure SQL 数据库存档到 BACPAC 文件"
+title: "PowerShell：将 Azure SQL 数据库导出到 BACPAC 文件 | Microsoft Docs"
+description: "使用 PowerShell 将 Azure SQL 数据库导出到 BACPAC 文件"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -10,43 +10,26 @@ ms.assetid: 9439dd83-812f-4688-97ea-2a89a864d1f3
 ms.service: sql-database
 ms.custom: migrate and move
 ms.devlang: NA
-ms.date: 08/15/2016
+ms.date: 02/07/2017
 ms.author: sstein
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: ebbb31eb9387d68afab7559a3827682ed2551d5a
-ms.openlocfilehash: de0b000b56ea90caeb1e2aa9a0b8c87e25c7c237
+ms.sourcegitcommit: 3d04be3d2427bc59d24bfaad227730991b61265b
+ms.openlocfilehash: 162147607baa36de0487cebc06e7ada20f3dd0c0
 
 
 ---
-# <a name="archive-an-azure-sql-database-to-a-bacpac-file-by-using-powershell"></a>使用 PowerShell 将 Azure SQL 数据库存档到 BACPAC 文件
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-export.md)
-> * [SSMS](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-> * [SqlPackage](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md)
-> * [PowerShell](sql-database-export-powershell.md)
-> 
+# <a name="export-an-azure-sql-database-or-a-sql-server-to-a-bacpac-file-by-using-powershell"></a>使用 PowerShell 将 Azure SQL 数据库或 SQL Server 导出到 BACPAC 文件
 
-本文说明了如何使用 PowerShell 将 Azure SQL 数据库存档到 [BACPAC 文件](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)（存储在 Azure Blob 存储中）。
-
-需要创建 Azure SQL 数据库的存档时，可以将数据库架构和数据导出到 BACPAC 文件。 BACPAC 文件只是一个扩展名为 .bacpac 的 ZIP 文件。 BACPAC 文件稍后可存储在 Azure Blob 存储中或本地位置的本地存储中。 它还可重新导入到 Azure SQL 数据库或 SQL Server 本地安装中。
-
-## <a name="considerations"></a>注意事项
-
-* 为保证存档的事务处理一致，必须确保导出期间无写入活动，或者将从 Azure SQL 数据库的[事务处理一致性副本](sql-database-copy.md)中导出。
-* 存档到 Azure Blob 存储的 BACPAC 文件的大小上限为 200 GB。 可使用 [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) 命令提示实用工具将更大的 BACPAC 文件存到本地存储。 此实用程序随 Visual Studio 和 SQL Server 一起提供。 你还可以[下载](https://msdn.microsoft.com/library/mt204009.aspx)最新版本的 SQL Server Data Tools 以获取此实用程序。
-* 不支持使用 BACPAC 文件存档到 Azure 高级存储。
-* 如果导出操作超过 20 个小时，可能会取消操作。 为提高导出过程中的性能，你可以进行如下操作：
-  * 暂时提高服务级别。
-  * 在导出期间终止所有读取和写入活动。
-  * 对所有大型表格上的非 null 值使用[聚集索引](https://msdn.microsoft.com/library/ms190457.aspx)。 如果不使用聚集索引，当时间超过 6-12 个小时时，导出可能会失败。 这是因为导出服务需要完成表格扫描，才能尝试导出整个表格。 确认表格是否针对导出进行优化的一个好方法是，运行 **DBCC SHOW_STATISTICS** 并确保 *RANGE_HI_KEY* 不是 null 并且值分布良好。 相关详细信息，请参阅 [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)。
+本文说明了如何使用 PowerShell 将 Azure SQL 数据库或 SQL Server 数据库导出到 BACPAC 文件（位于 Azure Blob 存储）。 有关导出到 BACPAC 文件的概述，请参阅[导出到 BACPAC](sql-database-export.md)。
 
 > [!NOTE]
-> BACPAC 不能用于备份和还原操作。 Azure SQL 数据库会自动为每个用户数据库创建备份。 有关详细信息，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
-> 
-> 
+> 还可使用 [Azure 门户](sql-database-export-portal.md)、[SQL Server Management Studio](sql-database-export-ssms.md) 或 [SQLPackage](sql-database-export-sqlpackage.md) 将 Azure SQL 数据库文件导出到 BACPAC 文件。
+>
+
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要以下各项：
 
@@ -121,6 +104,13 @@ Azure SQL 数据库自动导出现在处于预览状态，将在 2017 年 3 月 
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何使用 Powershell 导入 Azure SQL 数据库，请参阅[使用 PowerShell 导入 BACPAC](sql-database-import-powershell.md)。
+* 若要了解如何使用 SQLPackage 导入 BACPAC，请参阅[使用 SqlPackage 将 BACPCAC 导入到 Azure SQL 数据库](sql-database-import-sqlpackage.md)
+* 若要了解如何使用 Azure 门户导入 BACPAC，请参阅[使用 Azure 门户将 BACPCAC 导入到 Azure SQL 数据库](sql-database-import-portal.md)
+* 有关对于整个 SQL Server 数据库迁移进程（包括性能建议）的讨论，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
+* 若要了解 Azure SQL 数据库备份的长期备份保留 - 作为导出数据库进行存档的替代方法，请参阅[长期备份保留](sql-database-long-term-retention.md)
+* 若要了解如何将 BACPAC 导入到 SQL 数据库，请参阅[将 BACPCAC 导入 SQL 数据库](https://msdn.microsoft.com/library/hh710052.aspx)
+
+
 
 ## <a name="additional-resources"></a>其他资源
 * [New-AzureRmSqlDatabaseExport](https://msdn.microsoft.com/library/azure/mt707796\(v=azure.300\).aspx)
@@ -129,6 +119,6 @@ Azure SQL 数据库自动导出现在处于预览状态，将在 2017 年 3 月 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

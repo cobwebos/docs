@@ -1,9 +1,9 @@
 ---
-title: "Azure Resource Manager 策略 | Microsoft Docs"
-description: "介绍如何使用 Azure 资源管理器策略来防止订阅、资源组或单个资源等不同的范围发生冲突。"
+title: "Azure 资源策略 | Microsoft Docs"
+description: "介绍如何使用 Azure Resource Manager 策略，以确保部署期间资源属性设置的一致性。 可在订阅或资源组中应用策略。"
 services: azure-resource-manager
 documentationcenter: na
-author: ravbhatnagar
+author: tfitzmac
 manager: timlt
 editor: tysonn
 ms.assetid: abde0f73-c0fe-4e6d-a1ee-32a6fce52a2d
@@ -12,504 +12,326 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2016
-ms.author: gauravbh;tomfitz
+ms.date: 02/10/2017
+ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: bdc759341e1f9707ddf688512249c3297d85c29b
+ms.sourcegitcommit: 6d459e37b8b39f5d76c4ec86ebb7351c783b81fb
+ms.openlocfilehash: 64cb4be184e02519a6c496f8639035201ebb60f8
 
 
 ---
-# <a name="use-policy-to-manage-resources-and-control-access"></a>使用策略来管理资源和控制访问
-Azure 资源管理器现在可让你通过自定义策略来控制访问。 使用策略可以防止组织中的用户违反管理组织资源所需的惯例。 
+# <a name="resource-policy-overview"></a>资源策略概述
+通过资源策略，可在组织中建立资源约定。 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可以指定仅允许某些类型的虚拟机，或者可以要求所有资源都有特定标记。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
 
-你可以创建策略定义来描述会明确遭到拒绝的操作或资源。 可以在所需范围（例如订阅、资源组或是单个资源）分配这些策略定义。 策略由所有子资源继承。 因此，如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
+了解策略的两个概念：
 
-本文介绍可用于创建策略的策略定义语言的基本结构。 还将介绍如何在不同范围内应用这些策略。
+* 策略定义 - 描述何时强制执行策略，以及要采取的操作
+* 策略分配 - 应用策略定义的范围（订阅或资源组）
 
-## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
-策略与基于角色的访问控制之间有几个重要的差别，但首先你必须了解策略是和 RBAC 一起工作的。 若要使用策略，必须通过 RBAC 完成身份验证。 不同于 RBAC，策略是默认的允许和明确拒绝系统。 
+本主题重点介绍策略定义。 有关策略分配的信息，请参阅[分配和管理策略](resource-manager-policy-create-assign.md)。
 
-RBAC 着重于**用户**在不同的范围可执行的操作。 例如，将特定用户添加到所需范围的资源组的参与者角色后，该用户便可对该资源组做出更改。 
+Azure 提供了一些可降低必须要定义的策略数目的内置策略定义。 如果内置策略定义适用于你的方案，则请在分配范围时使用该定义。
 
-策略着重于各种范围的**资源**操作。 例如，通过策略，你可以控制可预配的资源类型，或限制可以预配资源的位置。
-
-## <a name="common-scenarios"></a>常见方案
-一个常见方案是为了费用分摊而要求提供部门标记。 组织可能仅在关联恰当的成本中心时允许操作，否则会拒绝请求。 本策略有助于组织向恰当的成本中心收取所执行操作的费用。
-
-另一个常见方案是组织可能想要控制创建资源的位置。 或者它们可能想要通过仅允许预配特定类型的资源，来控制对资源的访问。
-
-同样地，组织可以控制服务类别或为资源强制运行所需的命名约定。
-
-使用策略可轻松实现这些方案。
-
-## <a name="policy-definition-structure"></a>策略定义结构
-策略定义是使用 JSON 创建的。 它包含定义操作的一个或多个条件/逻辑运算符，以及告知满足条件时发生的情况的效果。 该架构在 [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) 中发布。 
-
-基本上，策略包含以下元素：
-
-**条件/逻辑运算符：**可通过一组逻辑运算符操作的条件集。
-
-**效果：**满足条件时所发生的情况 - 拒绝或审核。 审核效果会发出警告事件服务日志。 例如，管理员可以创建策略，如果有人创建大型 VM，则此策略会引发审核事件。 管理员可以随后审查日志。
-
-    {
-      "if" : {
-          <condition> | <logical operator>
-      },
-      "then" : {
-          "effect" : "deny | audit | append"
-      }
-    }
-
-## <a name="policy-evaluation"></a>策略评估
-创建资源时对策略进行评估。 对于模板部署，在模板中创建每个资源时会评估策略。 
+在创建和更新资源（PUT 和 PATCH 操作）时评估策略。
 
 > [!NOTE]
-> 当前，策略不对不支持标记、种类和位置的资源类型进行评估，例如 Microsoft.Resources/deployments 资源类型。 将来会添加此支持。 若要避免向后兼容问题，创作策略时应显式指定类型。 例如，未指定类型的标记策略会应用于所有类型。 在此情况下，如果有嵌套资源不支持标记，并且部署资源类型已添加到策略评估中，则模板部署可能失败。 
+> 当前，策略不对不支持标记、种类和位置的资源类型进行评估，例如 Microsoft.Resources/deployments 资源类型。 将来会添加此支持。 若要避免向后兼容问题，创作策略时应显式指定类型。 例如，未指定类型的标记策略会应用于所有类型。 在此情况下，如果有嵌套资源不支持标记，并且部署资源类型已添加到策略评估中，则模板部署可能会失败。 
 > 
 > 
 
-## <a name="logical-operators"></a>逻辑运算符
-支持的逻辑运算符和语法是：
+## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
+策略和基于角色的访问控制 (RBAC) 之间存在一些主要区别。 RBAC 关注不同范围内的**用户**操作。 例如，将你添加到所需范围的资源组的参与者角色后，你可对该资源组做出更改。 策略关注部署期间的“资源”属性。 例如，通过策略，你可以控制可预配的资源类型，或限制可以预配资源的位置。 不同于 RBAC，策略是默认的允许和明确拒绝系统。 
 
-| 运算符名称 | 语法 |
-|:--- |:--- |
-| Not |"not" : {&lt;condition  or operator &gt;} |
-| And |"allOf" : [ {&lt;condition  or operator &gt;},{&lt;condition  or operator &gt;}] |
-| 或 |"anyOf" : [ {&lt;condition  or operator &gt;},{&lt;condition  or operator &gt;}] |
+若要使用策略，必须通过 RBAC 完成身份验证。 具体而言，你的帐户需要：
 
-资源管理器可让你通过嵌套的运算符在策略中指定复杂逻辑。 例如，你可以拒绝在指定资源类型的特定位置创建资源。 本主题提供了嵌套运算符的示例。
+* `Microsoft.Authorization/policydefinitions/write` 定义策略的权限
+* `Microsoft.Authorization/policyassignments/write` 分配策略的权限 
 
-## <a name="conditions"></a>条件
-条件评估**字段**或**源**是否符合特定的准则。 支持的条件名称和语法是：
+**参与者**角色中未包括这些权限。
 
-| 条件名称 | 语法 |
-|:--- |:--- |
-| 等于 |"equals" : "&lt;value&gt;" |
-| Like |"like" : "&lt;value&gt;" |
-| Contains |"contains" : "&lt;value&gt;" |
-| In |"in" : [ "&lt;value1&gt;","&lt;value2&gt;" ] |
-| ContainsKey |"containsKey" : "&lt;keyName&gt;" |
-| Exists |"exists" : "&lt;bool&gt;" |
+## <a name="policy-definition-structure"></a>策略定义结构
+使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
-### <a name="fields"></a>字段
-条件是使用字段和源构成的。 字段显示用于描述资源状态的资源请求负载属性。 源表示请求本身的特征。 
+* parameters
+* 显示名称
+* description
+* 策略规则
+  * 逻辑评估
+  * 效果
 
-支持以下字段和源：
+以下示例说明限制资源部署位置的策略：
 
-字段：**name**、**kind**、**type**、**location**、**tags**、**tags*** 和 **property alias**。 
-
-### <a name="property-aliases"></a>属性别名
-属性别名可在策略定义中用于访问特定于资源类型的属性，例如设置和 SKU。 它适用于所有具有属性的 API 版本。 可以通过 REST API（未来将添加 Powershell 支持）检索别名：
-
-    GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
-
-以下示例介绍了别名的定义： 如你所见，别名在不同的 API 版本中定义路径，无论属性名称是否更改。 
-
-    "aliases": [
-        {
-          "name": "Microsoft.Storage/storageAccounts/sku.name",
-          "paths": [
-            {
-              "path": "properties.accountType",
-              "apiVersions": [
-                "2015-06-15",
-                "2015-05-01-preview"
-              ]
-            },
-            {
-              "path": "sku.name",
-              "apiVersions": [
-                "2016-01-01"
-              ]
-            }
-          ]
+```json
+{
+  "properties": {
+    "parameters": {
+      "allowedLocations": {
+        "type": "array",
+        "metadata": {
+          "description": "The list of locations that can be specified when deploying resources",
+          "strongType": "location",
+          "displayName": "Allowed locations"
         }
-    ]
-
-目前，支持的别名为：
-
-| 别名名称 | 说明 |
-| --- | --- |
-| {resourceType}/sku.name |支持的资源类型：Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Web/serverFarms、<br /> Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft.CDN/profiles |
-| {resourceType}/sku.family |支持的资源类型为 Microsoft.Cache/Redis |
-| {resourceType}/sku.capacity |支持的资源类型为 Microsoft.Cache/Redis |
-| Microsoft.Compute/virtualMachines/imagePublisher | |
-| Microsoft.Compute/virtualMachines/imageOffer | |
-| Microsoft.Compute/virtualMachines/imageSku | |
-| Microsoft.Compute/virtualMachines/imageVersion | |
-| Microsoft.Cache/Redis/enableNonSslPort | |
-| Microsoft.Cache/Redis/shardCount | |
-| Microsoft.SQL/servers/version | |
-| Microsoft.SQL/servers/databases/requestedServiceObjectiveId | |
-| Microsoft.SQL/servers/databases/requestedServiceObjectiveName | |
-| Microsoft.SQL/servers/databases/edition | |
-| Microsoft.SQL/servers/databases/elasticPoolName | |
-| Microsoft.SQL/servers/elasticPools/dtu | |
-| Microsoft.SQL/servers/elasticPools/edition | |
-
-目前，策略仅适用于 PUT 请求。 
-
-## <a name="effect"></a>效果
-策略支持三种类型的效果 - **deny**、**audit** 和 **append**。 
-
-* Deny 将在审核日志中生成一个事件，并使请求失败
-* Audit 将在审核日志中生成一个事件，但不会使请求失败
-* Append 会将定义的字段集添加到请求 
-
-对于 **append**，必须提供以下详细信息：
-
-    ....
-    "effect": "append",
-    "details": [
-      {
-        "field": "field name",
-        "value": "value of the field"
       }
-    ]
-
-值可以是字符串或 JSON 格式对象。 
-
-## <a name="policy-definition-examples"></a>策略定义示例
-现在来看看如何定义策略以实现前述方案。
-
-### <a name="chargeback-require-departmental-tags"></a>退款：要求提供部门标记
-以下策略拒绝没有含有“costCenter”键的标记的请求。
-
-    {
+    },
+    "displayName": "Allowed locations",
+    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+    "policyRule": {
       "if": {
-        "not" : {
-          "field" : "tags",
-          "containsKey" : "costCenter"
+        "not": {
+          "field": "location",
+          "in": "[parameters('allowedLocations')]"
         }
-      },
-      "then" : {
-        "effect" : "deny"
-      }
-    }
-
-如果不存在任何标记，以下策略将附加具有预定义值的 costCenter 标记。 
-
-    {
-      "if": {
-        "field": "tags",
-        "exists": "false"
-      },
-      "then": {
-        "effect": "append",
-        "details": [
-          {
-            "field": "tags",
-            "value": {"costCenter":"myDepartment" }
-          }
-        ]
-      }
-    }
-
-如果存在除 costCenter 标记以外的其他标记，以下策略将附加具有预定义值的 costCenter 标记。 
-
-    {
-      "if": {
-        "allOf": [
-          {
-            "field": "tags",
-            "exists": "true"
-          },
-          {
-            "field": "tags.costCenter",
-            "exists": "false"
-          }
-        ]
-
-      },
-      "then": {
-        "effect": "append",
-        "details": [
-          {
-            "field": "tags.costCenter",
-            "value": "myDepartment"
-          }
-        ]
-      }
-    }
-
-
-### <a name="geo-compliance-ensure-resource-locations"></a>地区合规性：确保资源位置
-以下示例显示的策略将拒绝位置不是北欧或西欧的请求。
-
-    {
-      "if" : {
-        "not" : {
-          "field" : "location",
-          "in" : ["northeurope" , "westeurope"]
-        }
-      },
-      "then" : {
-        "effect" : "deny"
-      }
-    }
-
-### <a name="service-curation-select-the-service-catalog"></a>服务策展：选择服务目录
-以下示例显示只允许对 Microsoft.Resources/\*、Microsoft.Compute/\*、Microsoft.Storage/\*、Microsoft.Network/\* 类型的服务执行操作的策略。 拒绝任何其他操作。
-
-    {
-      "if" : {
-        "not" : {
-          "anyOf" : [
-            {
-              "field" : "type",
-              "like" : "Microsoft.Resources/*"
-            },
-            {
-              "field" : "type",
-              "like" : "Microsoft.Compute/*"
-            },
-            {
-              "field" : "type",
-              "like" : "Microsoft.Storage/*"
-            },
-            {
-              "field" : "type",
-              "like" : "Microsoft.Network/*"
-            }
-          ]
-        }
-      },
-      "then" : {
-        "effect" : "deny"
-      }
-    }
-
-### <a name="use-approved-skus"></a>使用批准的 SKU
-以下示例演示如何使用属性别名来限制 SKU。 在此示例中，只有 Standard_LRS 和 Standard_GRS 已被批准用于存储帐户。
-
-    {
-      "if": {
-        "allOf": [
-          {
-            "field": "type",
-            "equals": "Microsoft.Storage/storageAccounts"
-          },
-          {
-            "not": {
-              "allof": [
-                {
-                  "field": "Microsoft.Storage/storageAccounts/sku.name",
-                  "in": ["Standard_LRS", "Standard_GRS"]
-                }
-              ]
-            }
-          }
-        ]
       },
       "then": {
         "effect": "deny"
       }
     }
+  }
+}
+```
 
+## <a name="parameters"></a>parameters
+使用参数可减少策略定义的数量，有助于简化策略管理。 为资源属性定义策略（如限制资源部署的位置），并在定义中包含参数。 然后，通过在分配策略时传递不同的值（例如为订阅指定一组位置），针对不同的方案重复使用该策略定义。
 
-### <a name="naming-convention"></a>命名约定
-以下示例演示如何使用“like”条件支持的通配符。 该条件指明，如果名称符合所述模式 (namePrefix\*nameSuffix)，则拒绝请求。
+在创建策略定义时声明参数。
 
+```json
+"parameters": {
+  "allowedLocations": {
+    "type": "array",
+    "metadata": {
+      "description": "The list of allowed locations for resources.",
+      "displayName": "Allowed locations"
+    }
+  }
+}
+```
+
+参数类型可以是字符串，也可以是数组。 Azure 门户等工具使用元数据属性显示用户友好信息。 
+
+在策略规则中，使用下列语法引用参数： 
+
+```json
+{ 
+    "field": "location",
+    "in": "[parameters('allowedLocations')]"
+}
+```
+
+## <a name="display-name-and-description"></a>显示名称和说明
+
+使用**显示名称**和**说明**来标识策略定义，并提供其使用情景。
+
+## <a name="policy-rule"></a>策略规则
+
+策略规则包括 **If** 和 **Then** 块。 在 **If** 块中，定义强制执行策略时指定的一个或多个条件。 可以对这些条件应用逻辑运算符，以精确定义策略的方案。 在 **Then** 块中，定义满足 **If** 条件时产生的效果。
+
+```json
+{
+  "if": {
+    <condition> | <logical operator>
+  },
+  "then": {
+    "effect": "deny | audit | append"
+  }
+}
+```
+
+### <a name="logical-operators"></a>逻辑运算符
+支持的逻辑运算符为：
+
+* `"not": {condition  or operator}`
+* `"allOf": [{condition or operator},{condition or operator}]`
+* `"anyOf": [{condition or operator},{condition or operator}]`
+
+**not** 语法反转条件的结果。 **allOf** 语法（与逻辑 **And** 操作相似）要求所有条件为 true。 **anyOf** 语法（与逻辑 **Or** 操作相似）要求一个或多个条件为 true。
+
+可以嵌套逻辑运算符。 以下示例显示了嵌套在 **And** 操作中的 **Not** 操作。 
+
+```json
+"if": {
+  "allOf": [
     {
-      "if" : {
-        "not" : {
-          "field" : "name",
-          "like" : "namePrefix*nameSuffix"
+      "not": {
+        "field": "tags",
+        "containsKey": "application"
+      }
+    },
+    {
+      "field": "type",
+      "equals": "Microsoft.Storage/storageAccounts"
+    }
+  ]
+},
+```
+
+### <a name="conditions"></a>条件
+条件评估**字段**是否符合特定的准则。 支持的条件有：
+
+* `"equals": "value"`
+* `"like": "value"`
+* `"contains": "value"`
+* `"in": ["value1","value2"]`
+* `"containsKey": "keyName"`
+* `"exists": "bool"`
+
+在使用 **like** 条件时，可以在值中提供通配符 (*)。
+
+### <a name="fields"></a>字段
+使用字段构成条件。 字段显示用于描述资源状态的资源请求负载属性。  
+
+支持以下字段：
+
+* `name`
+* `kind`
+* `type`
+* `location`
+* `tags`
+* `tags.*` 
+* 属性别名
+
+可以使用属性别名来访问资源类型的特定属性。 支持的别名为：
+
+* Microsoft.CDN/profiles/sku.name
+* Microsoft.Compute/virtualMachines/imageOffer
+* Microsoft.Compute/virtualMachines/imagePublisher
+* Microsoft.Compute/virtualMachines/sku.name
+* Microsoft.Compute/virtualMachines/imageSku 
+* Microsoft.Compute/virtualMachines/imageVersion
+* Microsoft.SQL/servers/databases/edition
+* Microsoft.SQL/servers/databases/elasticPoolName
+* Microsoft.SQL/servers/databases/requestedServiceObjectiveId
+* Microsoft.SQL/servers/databases/requestedServiceObjectiveName
+* Microsoft.SQL/servers/elasticPools/dtu
+* Microsoft.SQL/servers/elasticPools/edition
+* Microsoft.SQL/servers/version
+* Microsoft.Storage/storageAccounts/accessTier
+* Microsoft.Storage/storageAccounts/enableBlobEncryption
+* Microsoft.Storage/storageAccounts/sku.name
+* Microsoft.Web/serverFarms/sku.name
+
+### <a name="effect"></a>效果
+策略支持三种类型的效果 - `deny`、`audit` 和 `append`。 
+
+* **Deny** 将在审核日志中生成一个事件，并使请求失败
+* **Audit** 将在审核日志中生成一个警告事件，但不会使请求失败
+* **Append** 会将定义的字段集添加到请求 
+
+对于 **append**，必须提供以下详细信息：
+
+```json
+"effect": "append",
+"details": [
+  {
+    "field": "field name",
+    "value": "value of the field"
+  }
+]
+```
+
+值可以是字符串或 JSON 格式对象。 
+
+## <a name="policy-examples"></a>策略示例
+
+以下主题包含策略示例：
+
+* 有关标记策略的示例，请参阅[将资源策略应用于标记](resource-manager-policy-tags.md)。
+* 有关存储策略的示例，请参阅[将资源策略应用于存储帐户](resource-manager-policy-storage.md)。
+* 有关虚拟机策略的示例，请参阅[将资源策略应用于 Linux VM](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json) 和[将资源策略应用于 Windows WM](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+
+### <a name="allowed-resource-locations"></a>允许的资源位置
+要指定允许的位置，请参阅[策略定义结构](#policy-definition-structure)中的示例。 要分配此策略定义，请使用带有资源 ID `/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c` 的内置策略。
+
+### <a name="not-allowed-resource-locations"></a>不允许的资源位置
+要指定不允许的位置，请使用下列策略定义：
+
+```json
+{
+  "properties": {
+    "parameters": {
+      "notAllowedLocations": {
+        "type": "array",
+        "metadata": {
+          "description": "The list of locations that are not allowed when deploying resources",
+          "strongType": "location",
+          "displayName": "Not allowed locations"
         }
+      }
+    },
+    "displayName": "Not allowed locations",
+    "description": "This policy enables you to block locations that your organization can specify when deploying resources.",
+    "policyRule": {
+      "if": {
+        "field": "location",
+        "in": "[parameters('notAllowedLocations')]"
       },
-      "then" : {
-        "effect" : "deny"
+      "then": {
+        "effect": "deny"
       }
     }
+  }
+}
+```
 
-### <a name="tag-requirement-just-for-storage-resources"></a>仅针对存储资源的标记要求
-以下示例演示如何嵌套逻辑运算符，以要求仅对存储资源使用应用程序标记。
+### <a name="allowed-resource-types"></a>允许的资源类型
+以下示例显示只允许对 Microsoft.Resources、Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 资源类型进行部署的策略。 其余皆拒绝：
 
-    {
-        "if": {
-            "allOf": [
-              {
-                "not": {
-                  "field": "tags",
-                  "containsKey": "application"
-                }
-              },
-              {
-                "field": "type",
-                "equals": "Microsoft.Storage/storageAccounts"
-              }
-            ]
+```json
+{
+  "if": {
+    "not": {
+      "anyOf": [
+        {
+          "field": "type",
+          "like": "Microsoft.Resources/*"
         },
-        "then": {
-            "effect": "audit"
+        {
+          "field": "type",
+          "like": "Microsoft.Compute/*"
+        },
+        {
+          "field": "type",
+          "like": "Microsoft.Storage/*"
+        },
+        {
+          "field": "type",
+          "like": "Microsoft.Network/*"
         }
+      ]
     }
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
 
-## <a name="create-and-assign-a-policy"></a>创建和分配策略
-若要应用策略，需要创建策略定义，然后在某范围内应用该策略。 
+### <a name="set-naming-convention"></a>设置命名约定
+以下示例演示如何使用 **like** 条件支持的通配符。 该条件指明，如果名称符合所述模式 (namePrefix\*nameSuffix)，则拒绝请求：
 
-### <a name="rest-api"></a>REST API
-可以使用[用于策略定义的 REST API](https://docs.microsoft.com/rest/api/resources/policydefinitions) 来创建策略。 REST API 可让你创建和删除策略定义，以及获取现有定义的信息。
-
-若要创建策略，请运行：
-
-    PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
-
-对于 api-version，请使用 *2016-04-01*。 包括类似于下方示例的请求正文：
-
-    {
-      "properties":{
-        "policyType":"Custom",
-        "description":"Test Policy",
-        "policyRule":{
-          "if" : {
-            "not" : {
-              "field" : "tags",
-              "containsKey" : "costCenter"
-            }
-          },
-          "then" : {
-            "effect" : "deny"
-          }
-        }
-      },
-      "name":"testdefinition"
+```json
+{
+  "if": {
+    "not": {
+      "field": "name",
+      "like": "namePrefix*nameSuffix"
     }
-
-可以通过[用于策略分配的 REST API](https://docs.microsoft.com/rest/api/resources/policyassignments)，在所需范围内应用策略定义。 REST API 可让你创建和删除策略分配，以及获取现有分配的信息。
-
-若要创建策略分配，请运行：
-
-    PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
-
-{policy-assignment} 是策略分配的名称。 对于 api-version，请使用 *2016-04-01*。 
-
-使用类似于下方示例的请求正文：
-
-    {
-      "properties":{
-        "displayName":"VM_Policy_Assignment",
-        "policyDefinitionId":"/subscriptions/########/providers/Microsoft.Authorization/policyDefinitions/testdefinition",
-        "scope":"/subscriptions/########-####-####-####-############"
-      },
-      "name":"VMPolicyAssignment"
-    }
-
-### <a name="powershell"></a>PowerShell
-可以使用 New-AzureRmPolicyDefinition cmdlet 创建策略定义。 以下示例将创建仅允许北欧和西欧资源的策略。
-
-    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{    
-      "if" : {
-        "not" : {
-          "field" : "location",
-          "in" : ["northeurope" , "westeurope"]
-        }
-      },
-      "then" : {
-        "effect" : "deny"
-      }
-    }'            
-
-执行输出存储在 $policy 对象中，稍后可在分配策略期间使用。 对于策略参数，也可以提供包含策略的 .json 文件路径，而不是指定内联策略。
-
-    New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain     regions" -Policy "path-to-policy-json-on-disk"
-
-可以使用 New-AzureRmPolicyAssignment cmdlet 将策略应用到所需范围：
-
-    New-AzureRmPolicyAssignment -Name regionPolicyAssignment -PolicyDefinition $policy -Scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
-
-此处的 $policy 是执行 New-AzureRmPolicyDefinition cmdlet 后返回的策略对象。 此处的范围是指定的资源组的名称。
-
-若要删除策略分配，请使用：
-
-    Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
-
-可以分别通过 Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition 和 Remove-AzureRmPolicyDefinition cmdlet 来获取、更改或删除策略定义。
-
-同样，可以分别通过 Get-AzureRmPolicyAssignment、Set-AzureRmPolicyAssignment 和 Remove-AzureRmPolicyAssignment 来获取、更改或删除策略分配。
-
-### <a name="azure-cli"></a>Azure CLI
-可以结合策略定义命令使用 Azure CLI 来创建策略定义。 以下示例将创建仅允许北欧和西欧资源的策略。
-
-    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{    
-      "if" : {
-        "not" : {
-          "field" : "location",
-          "in" : ["northeurope" , "westeurope"]
-        }
-      },
-      "then" : {
-        "effect" : "deny"
-      }
-    }'    
-
-
-可以指定包含策略的 .json 文件路径，而无需指定内联策略。
-
-    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy "path-to-policy-json-on-disk"
-
-可以使用策略分配命令将策略应用到所需范围：
-
-    azure policy assignment create --name regionPolicyAssignment --policy-definition-id /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/<policy-name> --scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
-
-此处的范围是指定的资源组的名称。 如果 policy-definition-id 参数的值未知，可以通过 Azure CLI 获取该值。 
-
-    azure policy definition show <policy-name>
-
-若要删除策略分配，请使用：
-
-    azure policy assignment delete --name regionPolicyAssignment --scope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
-
-可以分别通过策略定义 show、set 和 delete 命令获取、更改或删除策略定义。
-
-同样，可以分别通过策略定义 show 和 delete 命令获取、更改或删除策略分配。
-
-## <a name="policy-audit-events"></a>策略审核事件
-在应用策略之后，即可看到与策略相关的事件。 可以转到门户、使用 PowerShell 或 Azure CLI 获取此数据。 
-
-### <a name="powershell"></a>PowerShell
-若要查看拒绝效果相关的所有事件，可以使用以下 PowerShell 命令：
-
-    Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/deny/action"} 
-
-若要查看审核效果相关的所有事件，可以使用以下命令：
-
-    Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
-
-### <a name="azure-cli"></a>Azure CLI
-若要查看资源组中与拒绝效果相关的所有事件，可以使用以下 CLI 命令：
-
-    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == \"Microsoft.Authorization/policies/deny/action\")"
-
-若要查看审核效果相关的所有事件，可以使用以下 CLI 命令：
-
-    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == \"Microsoft.Authorization/policies/audit/action\")"
-
-## <a name="view-a-policy"></a>查看策略
-使用 PowerShell、Azure CLI 或 REST API 查看策略。 部署失败后，可能需要查看策略并查看拒绝该部署的规则。 错误消息包括策略定义的 ID。
-
-### <a name="powershell"></a>PowerShell
-若要获取策略，请使用以下 cmdlet：
-
-    (Get-AzureRmPolicyAssignment -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/{definition-name}").Properties.policyRule | ConvertTo-Json
-
-这将返回策略定义的 JSON。
-
-### <a name="azure-cli"></a>Azure CLI
-若要获取策略，请使用以下命令：
-
-    azure policy definition show {definition-name} --json
-
-### <a name="rest-api"></a>REST API
-若要获取策略，请使用[获取策略定义](https://docs.microsoft.com/rest/api/resources/policydefinitions#PolicyDefinitions_Get)操作。
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
+* 定义策略规则之后，将其分配到某一范围。 有关策略分配的信息，请参阅[分配和管理策略](resource-manager-policy-create-assign.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
+* 该策略架构在 [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) 中发布。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

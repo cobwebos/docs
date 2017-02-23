@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: b7c13d4b4e205fda1e5ba44fbf5eb50a96601d2e
-ms.openlocfilehash: 113dd20f1a5ac42eb7155d693f66053adea57078
+ms.sourcegitcommit: 81fd8dfa480fc6365b6373a4eefef1149248d800
+ms.openlocfilehash: 5e4fba6ff82cbe8af0116e35d71c8f9f04474f0f
 
 
 ---
@@ -298,7 +298,7 @@ Type:Alert AND NOT(Severity:1 OR ObjectId:"8066bbc0-9ec8-ca83-1edc-6f30d4779bcb8
 | system "Windows Server" OR Severity:1 |system AND ("Windows Server" OR Severity:1) |
 
 ### <a name="wildcarding"></a>通配符
-查询语言支持使用 (*\*) 字符来表示查询中某个值的一个或多个字符。
+查询语言支持使用 (\*) 字符来表示查询中某个值的一个或多个字符。
 
 示例:
 
@@ -813,6 +813,6 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

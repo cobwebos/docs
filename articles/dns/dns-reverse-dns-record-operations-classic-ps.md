@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 管理 Azure（经典）服务的反向 DNS 记录 | Microsoft Docs"
-description: "如何在经典部署模型中使用 PowerShell 管理 Azure 服务的反向 DNS 记录或 PTR 记录。 "
+title: "使用 PowerShell 管理经典 Azure 服务的反向 DNS 记录 | Microsoft Docs"
+description: "Azure DNS 使用户能够在经典部署模型中使用 PowerShell 管理 Azure 服务的反向 DNS 记录或 PTR 记录。"
 services: DNS
 documentationcenter: na
 author: s-malone
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2016
 ms.author: smalone
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fe5c9cfe0edd769635301fdcb40fc1f71d430165
+ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
+ms.openlocfilehash: 399cfcad5c17cdb12a4063e11e1ff353e88e56a7
 
 
 ---
@@ -43,22 +43,30 @@ ms.openlocfilehash: fe5c9cfe0edd769635301fdcb40fc1f71d430165
 ## <a name="add-reverse-dns-to-existing-cloud-services"></a>将反向 DNS 添加到现有云服务
 可以使用“Set-AzureService”cmdlet 将反向 DNS 记录添加到现有云服务：
 
-    PS C:\> Set-AzureService –ServiceName “contosoapp1” –Description “App1 with Reverse DNS” –ReverseDnsFqdn “contosoapp1.cloudapp.net.”
+```powershell
+Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
+```
 
 ## <a name="create-a-cloud-service-with-reverse-dns"></a>使用反向 DNS 创建云服务
 可以添加一个包含使用“Set-AzureService”cmdlet 指定的反向 DNS 属性的新云服务：
 
-    PS C:\> New-AzureService –ServiceName “contosoapp1” –Location “West US” –Description “App1 with Reverse DNS” –ReverseDnsFqdn “contosoapp1.cloudapp.net.”
+```powershell
+New-AzureService –ServiceName "contosoapp1" –Location "West US" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
+```
 
 ## <a name="view-reverse-dns-for-existing-cloud-services"></a>查看现有云服务的反向 DNS
 可以使用“Get-AzureService”cmdlet 查看现有云服务的配置值：
 
-    PS C:\> Get-AzureService "contosoapp1"
+```powershell
+Get-AzureService "contosoapp1"
+```
 
 ## <a name="remove-reverse-dns-from-existing-cloud-services"></a>从现有云服务中删除反向 DNS
-可以使用“Set-AzureService”cmdlet 从现有云服务中删除反向 DNS 属性： 这是通过将反向 DNS 属性值设置为空白完成的：
+可以使用“Set-AzureService”cmdlet 从现有云服务中删除反向 DNS 属性。 这是通过将反向 DNS 属性值设置为空白完成的：
 
-    PS C:\> Set-AzureService –ServiceName “contosoapp1” –Description “App1 with Reverse DNS” –ReverseDnsFqdn “”
+```powershell
+Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
+```
 
 [!INCLUDE [FAQ1](../../includes/dns-reverse-dns-record-operations-faq-host-own-arpa-zone-include.md)]
 
@@ -67,6 +75,6 @@ ms.openlocfilehash: fe5c9cfe0edd769635301fdcb40fc1f71d430165
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

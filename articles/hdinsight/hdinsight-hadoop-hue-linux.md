@@ -12,11 +12,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 02/09/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9096b87dc93e261c2810a069a95d954121822cf5
-ms.openlocfilehash: 903a8b7f143ac08b69d94aa2bc442a43ca041b64
+ms.sourcegitcommit: 7af856e32064f16e7cb1083432d4d5715cef6e3a
+ms.openlocfilehash: dbffb88020cf53eb59b98eb80e12a47bc17c5708
 
 
 ---
@@ -46,8 +46,7 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。 你可以使�
 
 ## <a name="install-hue-using-script-actions"></a>使用脚本操作安装 Hue
 
-以下脚本操作可用于在基于 Linux 的 HDInsight 群集上安装 Hue。
-https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+有关用于在基于 Linux 的 HDInsight 群集上安装 Hue 的脚本，可访问 https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh。 使用此脚本，可在 Azure 存储 Blob (WASB) 或 Azure Data Lake Store 作为默认存储的群集上安装 Hue。
 
 本部分说明如何在使用 Azure 门户预配群集时使用脚本。
 
@@ -138,7 +137,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 2. 在安装期间，系统会重启多个 Hadoop 服务（HDFS、YARN、MR2、Oozie），以更新配置。 在脚本安装完 Hue 之后，可能需要一些时间让其他 Hadoop 服务启动。 一开始可能会影响 Hue 的性能。 等所有服务都启动之后，Hue 就可以完全正常运行。
 3. Hue 不了解 Tez 作业，这是 Hive 当前的默认值。 如果你想使用 MapReduce 作为 Hive 执行引擎，请更新脚本，以在你的脚本中使用以下命令：
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 4. 使用 Linux 群集时，可能会出现这种情况：服务在主头节点上运行，而 Resource Manager 可能在辅助头节点上运行。 使用 Hue 查看群集上正在运行的作业的详细信息时，这种情况可能会导致错误（如下所示）。 不过，你可以在作业完成后查看作业详细信息。
 
@@ -158,6 +157,6 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

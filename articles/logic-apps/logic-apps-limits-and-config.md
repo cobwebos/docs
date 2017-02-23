@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: b2845e1835c5571909a911b1eb0bfd61ac00da86
+ms.sourcegitcommit: fa27b0399d98f13ee3c4f4059067fb78e087befd
+ms.openlocfilehash: 933e14358875b384a254ab3c1d0bdb453a0fa8ae
 
 
 ---
@@ -81,7 +81,7 @@ ms.openlocfilehash: b2845e1835c5571909a911b1eb0bfd61ac00da86
 
 |Name|限制|说明|
 |----|----|----|
-|每秒触发数|100|可以根据需要在多个应用之间分配工作流|
+|每秒执行的动作数|100|可以根据需要在多个应用之间分配工作流|
 
 ### <a name="definition-limits"></a>定义限制
 
@@ -182,6 +182,7 @@ ms.openlocfilehash: b2845e1835c5571909a911b1eb0bfd61ac00da86
 - [了解如何将系统与逻辑应用集成](http://channel9.msdn.com/Events/Build/2016/P462)
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

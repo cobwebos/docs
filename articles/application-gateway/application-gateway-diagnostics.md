@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
 translationtype: Human Translation
-ms.sourcegitcommit: ca5291e00fcf4fbd9927fe3cadad01f62b235d10
-ms.openlocfilehash: c6829c94bb8e5de3bec155bf326ac61c300477cb
+ms.sourcegitcommit: d65b354bc972c8268f1b4f072843b5bf4977a7c4
+ms.openlocfilehash: 2b37bf92ce8945996eb64477c28bea845b7df516
 
 
 ---
@@ -210,6 +210,9 @@ Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGr
 }
 ```
 
+> [!NOTE]
+> 延迟时间的计算是从接收到 HTTP 请求的第一个字节开始，到发出 HTTP 响应的最后一个字节为止。 它是应用程序网关处理时间加上后端的网络成本，再加上后端处理请求所花费的时间之和。
+
 ### <a name="firewall-log"></a>防火墙日志
 
 只有按照上述步骤基于每个应用程序网关启用了此日志，才会生成此日志。 此日志还需要在应用程序网关上配置 Web 应用程序防火墙。 数据存储在你启用日志记录时指定的存储帐户中。 将记录以下数据：
@@ -314,6 +317,6 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 [10]: ./media/application-gateway-diagnostics/figure10.png
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

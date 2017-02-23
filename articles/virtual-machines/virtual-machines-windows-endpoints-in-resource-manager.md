@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager 中的经典终结点 | Microsoft Docs"
+title: "了解 Azure 中的 Windows VM 的终结点 | Microsoft Docs"
 description: "了解现在如何在 Resource Manager 中使用网络安全组和 ACL 规则实施经典部署模型中的终结点"
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 1b6342ef22a00a4d760d8b13d1a2945ab3754463
+ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
+ms.openlocfilehash: 21df6d8ff572295e27c9aaed83c3af189c700aee
 
 
 ---
-# <a name="classic-endpoints-in-resource-manager"></a>Resource Manager 中的经典终结点
+# <a name="classic-endpoints-for-windows-vms-with-azure-resource-manager"></a>Windows VM 的经典终结点与 Azure Resource Manager
 [!INCLUDE [virtual-machines-common-endpoints-in-resource-manager](../../includes/virtual-machines-common-endpoints-in-resource-manager.md)]
 
 ## <a name="next-steps"></a>后续步骤
@@ -35,6 +35,6 @@ ms.openlocfilehash: 1b6342ef22a00a4d760d8b13d1a2945ab3754463
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 搜索中为多语言文档创建索引 | Microsoft Docs"
-description: " Azure 搜索支持 56 种语言，通过 Microsoft 中的 Lucene 和自然语言处理技术利用语言分析器。"
+title: "Azure 搜索多语言 | Microsoft Docs"
+description: "Azure 搜索支持 56 种语言，通过 Microsoft 中的 Lucene 和自然语言处理技术利用语言分析器。"
 services: search
 documentationcenter: 
 author: yahnoosh
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: jlembicz
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
+ms.sourcegitcommit: 6feadcc02aa0047dc2028d016687d3ad2859eb44
+ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
 
 ---
 
@@ -39,10 +39,10 @@ ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
 >
 
 ## <a name="define-a-new-field-definition"></a>定义新的字段定义
-1. 登录到 [Azure 门户](https://portal.azure.com)，并打开搜索服务的服务边栏选项卡。
+1. 登录 [Azure 门户](https://portal.azure.com)，并打开搜索服务的服务边栏选项卡。
 2. 在服务仪表板顶部的命令栏中单击“添加索引”即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
 3. “字段”边栏选项卡随即出现，显示可供定义索引架构的选项，包括用于选择语言分析器的“分析器”选项卡。
-4. 在“字段”中，通过提供名称、选择数据类型并设置属性来开始字段定义，进而将字段标记为可全文搜索、可在搜索结果中检索、可用于 Facet 导航结构以及可排序等。
+4. 在“字段”中，通过提供名称、选择数据类型并设置属性进行字段定义，进而将字段标记为可全文搜索、可在搜索结果中检索、可用于分面导航结构以及可排序等。
 5. 在移动到下一个字段前，打开“分析器”选项卡。
 
 ![][1]
@@ -94,6 +94,6 @@ ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

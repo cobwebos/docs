@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 07/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d6dbbee1f977245cc16710ace3b25d6e167cbc7e
-ms.openlocfilehash: cdd7aab27943df568abfda27265ed970e6dd789c
+ms.sourcegitcommit: 45f1716d7520981845fbfb96cfaf24cde9dd5c5d
+ms.openlocfilehash: 8b906c402dde8d2bbaa2354a370a775058c146a7
 
 
 ---
@@ -127,7 +127,14 @@ Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com -ExpandPrincipalGroups
 ![RBAC PowerShell - Remove-AzureRmRoleAssignment - 屏幕截图](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
 
 ## <a name="create-a-custom-role"></a>创建自定义角色
-若要创建自定义角色，请使用 `New-AzureRmRoleDefinition` 命令。 构造角色有两种方法：使用 PSRoleDefinitionObject 或 JSON 模板。 
+若要创建自定义角色，请使用 ```New-AzureRmRoleDefinition``` 命令。 构造角色有两种方法：使用 PSRoleDefinitionObject 或 JSON 模板。 
+
+## <a name="get-actions-from-particular-resource-provider"></a>从特定资源提供程序获取操作
+从头开始创建自定义角色时，请务必了解资源提供程序的所有可能操作。
+使用 ```Get-AzureRMProviderOperation``` 命令可实现此目的。 例如，如果想要查看用于虚拟机的所有可用操作，则使用下列命令：
+
+```Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize```
+
 
 ### <a name="create-role-with-psroledefinitionobject"></a>使用 PSRoleDefinitionObject 创建角色
 使用 PowerShell 创建自定义角色时，可以从头开始或使用某个[内置角色](role-based-access-built-in-roles.md)作为起点，在此示例中使用了后者。 编辑属性以添加所需的 *Actions*、*notActions* 或 *scopes*，然后将所做的更改保存为新角色。
@@ -276,6 +283,6 @@ Get-AzureRmRoleDefinition | FT Name, IsCustom
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

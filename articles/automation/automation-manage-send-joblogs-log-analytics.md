@@ -1,5 +1,5 @@
 ---
-title: "将作业状态和作业流从自动化转发到 Log Analytics (OMS) | Microsoft Docs"
+title: "将 Azure 自动化作业数据转发到 OMS Log Analytics | Microsoft Docs"
 description: "本文演示如何将作业状态和 Runbook 作业流发送到 Microsoft Operations Management Suite Log Analytics，以提供附加见解和管理信息。"
 services: automation
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 22a8a7541da572445ab0d6a822b56bd9a03339b7
+ms.sourcegitcommit: d7cba9126c11418f8ccafb1ace0816a9a9cc3b6d
+ms.openlocfilehash: babfda8735699b9f9991bffd22a8d2d9847ae759
 
 
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>将作业状态和作业流从自动化转发到 Log Analytics (OMS)
-自动化可以将 Runbook 作业状态和作业流发送到 Microsoft Operations Management Suite (OMS) Log Analytics 工作区。  尽管你可以在 Azure 门户或 PowerShell 中根据特定自动化帐户的单个作业状态或所有作业查看此信息，但在满足操作要求之前所要做好的一切准备工作都需要你创建自定义 PowerShell 脚本。  使用 Log Anaytics 可以：
+自动化可以将 Runbook 作业状态和作业流发送到 Microsoft Operations Management Suite (OMS) Log Analytics 工作区。  可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，使用 Log Analytics，可以：
 
 * 获取有关自动化作业的见解
 * 基于 Runbook 作业状态（例如失败或暂停）触发电子邮件或警报
@@ -30,123 +30,173 @@ ms.openlocfilehash: 22a8a7541da572445ab0d6a822b56bd9a03339b7
 * 可视化不同时间段的作业历史记录     
 
 ## <a name="prerequisites-and-deployment-considerations"></a>先决条件和部署注意事项
-若要开始将自动化日志发送到 Log Analytics，必须做好以下准备：
+要开始将自动化日志发送到 Log Analytics，需要准备：
 
-1. 一个 OMS 订阅。 有关更多信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。  
+1. 2016 年 11 月或之后发布的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0) 版本。
+2. Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)。 
+3. Azure 自动化帐户的 ResourceId
 
-   > [!NOTE]
-   > 要使这种配置正常工作，OMS 工作区和自动化帐户需要在相同的 Azure 订阅中。
-   >
-   >
-2. [Azure 存储帐户](../storage/storage-create-storage-account.md)。  
+要查找 Azure 自动化帐户和 Log Analytics 工作区的 ResourceId，请运行以下 PowerShell：
 
-   > [!NOTE]
-   > 该存储帐户*必须*位于自动化帐户所在的同一个区域中。
-   >
-   >
-3. 装有 Operational Insights cmdlet 1.0.8 或更高版本的 Azure PowerShell。 有关此版本及其安装方法的信息，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
-4. Azure Diagnostic and Log Analytics PowerShell。  有关此版本及其安装方法的更多信息，请参阅 [Azure Diagnostic and Log Analytics](https://www.powershellgallery.com/packages/AzureDiagnosticsAndLogAnalytics/0.1)。  
-5. 从 [PowerShell 库](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/1.0/DisplayScript)下载 PowerShell 脚本 **Enable-AzureDiagnostics.ps1**。 此脚本将配置以下各项：
-   * 一个存储帐户，用于保存你指定的自动化帐户的 Runbook 作业状态和流数据。
-   * 启用从自动化帐户收集此数据能够以 JSON 格式将其存储在 Azure Blob 存储帐户中。
-   * 配置将 Blob 存储帐户中的数据收集到 OMS Log Analytics 的过程。
-   * 为 OMS 工作区启用自动化 Log Analytics 解决方案。   
+```powershell
+# Find the ResourceId for the Automation Account
+Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
 
-在执行期间，**Enable-AzureDiagnostics.ps1** 脚本需要以下参数：
+# Find the ResourceId for the Log Analytics workspace
+Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+```
 
-* AutomationAccountName - 自动化帐户的名称
-* LogAnalyticsWorkspaceName - OMS 工作区的名称
+如果有多个自动化帐户或工作区，请在上述命令的输出中找到需要配置的名称，并复制 ResourceId 的值。
 
-若要查找 *AutomationAccountName* 的值，请在 Azure 门户中，从“自动化帐户”边栏选项卡选择你的自动化帐户，然后选择“所有设置”。  在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。  在“属性”边栏选项卡中，可以记下这些值。<br> ![自动化帐户属性](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
+若要查找自动化帐户的名称，请在 Azure 门户中，从“自动化帐户”边栏选项卡选择自动化帐户，然后选择“所有设置”。  在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。  在“属性”边栏选项卡中，可以记下这些值。<br> ![自动化帐户属性](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)。
 
-## <a name="setup-integration-with-log-analytics"></a>设置与 Log Analytics 的集成
+## <a name="set-up-integration-with-log-analytics"></a>设置与 Log Analytics 的集成
 1. 在计算机上，从“开始”屏幕启动 **Windows PowerShell**。  
-2. 从 PowerShell 命令行 shell 中，导航到下载的脚本所在的文件夹并执行该脚本，请记得更改 *-AutomationAccountName* 和 *-LogAnalyticsWorkspaceName* 参数的值。
+2. 复制和粘贴以下 PowerShell，并编辑 `$workspaceId` 和 `$automationAccountId` 的值。  如果使用的是 Azure 政府云，则需要在执行时将 `$GovCloud` 的布尔值设置为 *$True* 或 *1*。     
 
-   > [!NOTE]
-   > 执行脚本后，系统将提示你在 Azure 上进行身份验证。  **必须**以订阅管理员角色成员和订阅共同管理员的帐户登录。   
-   >
-   >
+```powershell
+[cmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true)]
+        [bool]$GovCloud = $False
+    )
 
-        .\Enable-AzureDiagnostics -AutomationAccountName <NameofAutomationAccount> `
-        -LogAnalyticsWorkspaceName <NameofOMSWorkspace> `
-3. 运行此脚本并将新的诊断数据写入存储大约 30 分钟后，你应会在 Log Analytics 中看到记录。  如果经过这段时间后未看到记录，请参阅 [Blob 存储中的 JSON 文件](../log-analytics/log-analytics-azure-storage-json.md#troubleshooting-configuration-for-azure-diagnostic-logs)中的故障排除部分。
+#Check to see if we need to log into Commercial or Government cloud.
+If ($GovCloud -eq $False) {
+    Login-AzureRmAccount
+}Else{
+    Login-AzureRmAccount -EnvironmentName AzureUSGovernment 
+}
+# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
+$workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+
+Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
+
+```
+
+运行此脚本后，将在写入新 JobLogs 或 JobStreams 的 10 分钟内在 Log Analytics 中看到记录。
+
+若要查看日志，请运行以下查询：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>验证配置
-若要确认脚本是否成功配置了你的自动化帐户和 OMS 工作区，可以在 PowerShell 中执行以下步骤。  在此之前，为了查找 OMS 工作区名称和资源组名称的值，请从 Azure 门户导航到“Log Analytics (OMS)”，然后在“Log Analytics (OMS)”边栏选项卡中，记下“名称”和“资源组”的值。<br> ![OMS Log Analytics 工作区列表](media/automation-manage-send-joblogs-log-analytics/oms-la-workspaces-list-blade.png) - 当我们使用 PowerShell cmdlet [Get-AzureRmOperationalInsightsStorageInsight](https://msdn.microsoft.com/library/mt603567.aspx) 验证 OMS 工作区中的配置时，将会用到这两个值。
+若要确认自动化帐户是否会将日志发送到 Log Analytics 工作空间，请使用以下 PowerShell 检查自动化帐户上的诊断是否设置正确：
 
-1. 从 Azure 门户导航到“存储帐户”，并搜索以下使用命名约定的存储帐户 - *AutomationAccountNameomsstorage*。  Runbook 作业完成不久之后，你应会看到已创建两个 Blob 容器 - **insights-logs-joblogs** 和 **insights-logs-jobstreams**。  
-2. 从 PowerShell 运行以下 PowerShell 代码，请记得更改前面复制或记下的 **ResourceGroupName** 和 **WorkspaceName** 参数的值。  
+```powershell
+[cmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true)]
+        [bool]$GovCloud = $False
+    )
 
-   Login-AzureRmAccount Get-AzureRmSubscription -SubscriptionName 'SubscriptionName' | Set-AzureRmContext Get-AzureRmOperationalInsightsStorageInsight -ResourceGroupName "OMSResourceGroupName" ` -Workspace "OMSWorkspaceName"
+#Check to see if we need to log into Commercial or Government cloud.
+If ($GovCloud -eq $False) {
+    Login-AzureRmAccount
+}Else{
+    Login-AzureRmAccount -EnvironmentName AzureUSGovernment 
+}
+# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
+$workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-   随后将返回指定的 OMS 工作区的存储见解。  我们想要确认前面指定的自动化帐户是否存在存储见解，以及 **State** 对象是否显示 **OK** 值。<br> ![Get-AzureRmOperationalInsightsStorageInsights cmdlet 的结果](media/automation-manage-send-joblogs-log-analytics/automation-posh-getstorageinsights-results.png)。
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+
+Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+```
+
+在输出中确保：
++ Logs 下的 Enabled 的值为 True
++ WorkspaceId  的值设置为 Log Analytics 工作区的资源 ResourceId
+
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
-自动化在 OMS 存储库中创建两种类型的记录。
+来自 Azure 自动化的诊断将在 Log Analytics 中创建两种类型的记录。 
 
 ### <a name="job-logs"></a>作业日志
 | 属性 | 说明 |
 | --- | --- |
-| 时间 |执行 Runbook 作业的日期和时间。 |
-| resourceId |指定 Azure 中的资源类型。  对于自动化，该值是与 Runbook 关联的自动化帐户。 |
-| operationName |指定在 Azure 中执行的操作类型。  对于自动化，该值为 Job。 |
-| resultType |Runbook 作业的状态。  可能的值包括：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Succeeded（成功） |
-| resultDescription |描述 Runbook 作业结果状态。  可能的值包括：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成 |
+| TimeGenerated |执行 Runbook 作业的日期和时间。 |
+| RunbookName_s |Runbook 的名称。 |
+| Caller_s |谁启动了该操作。  可能的值为电子邮件地址或计划作业的系统。 |
+| Tenant_g | GUID，用于为 Caller 标识租户。 |
+| JobId_g |用作 Runbook 作业 ID 的 GUID。 |
+| ResultType |Runbook 作业的状态。  可能的值包括：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Succeeded（成功） |
+| 类别 | 数据类型的分类。  对于自动化，该值为 JobLogs。 |
+| OperationName | 指定在 Azure 中执行的操作类型。  对于自动化，该值为 Job。 |
+| 资源 | 自动化帐户的名称 |
+| SourceSystem | Log Analytics 收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
+| ResultDescription |描述 Runbook 作业结果状态。  可能的值包括：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
-| 类别 |数据类型的分类。  对于自动化，该值为 JobLogs。 |
-| RunbookName |Runbook 的名称。 |
-| JobId |用作 Runbook 作业 ID 的 GUID。 |
-| 调用方 |谁启动了该操作。  可能的值为电子邮件地址或计划作业的系统。 |
+| ResourceId |指定 Runbook 的 Azure 自动化帐户资源 ID。 |
+| SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
+| ResourceProvider | MICROSOFT.AUTOMATION |
+| ResourceType | AUTOMATIONACCOUNTS |
+
 
 ### <a name="job-streams"></a>作业流
 | 属性 | 说明 |
 | --- | --- |
-| 时间 |执行 Runbook 作业的日期和时间。 |
-| resourceId |指定 Azure 中的资源类型。  对于自动化，该值是与 Runbook 关联的自动化帐户。 |
-| operationName |指定在 Azure 中执行的操作类型。  对于自动化，该值为 Job。 |
-| resultType |Runbook 作业的状态。  可能的值包括：<br>- InProgress |
-| resultDescription |包括来自 Runbook 的输出流。 |
+| TimeGenerated |执行 Runbook 作业的日期和时间。 |
+| RunbookName_s |Runbook 的名称。 |
+| Caller_s |谁启动了该操作。  可能的值为电子邮件地址或计划作业的系统。 |
+| StreamType_s |作业流的类型。 可能的值包括：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细） |
+| Tenant_g | GUID，用于为 Caller 标识租户。 |
+| JobId_g |用作 Runbook 作业 ID 的 GUID。 |
+| ResultType |Runbook 作业的状态。  可能的值包括：<br>- In Progress |
+| 类别 | 数据类型的分类。  对于自动化，该值为 JobStreams。 |
+| OperationName | 指定在 Azure 中执行的操作类型。  对于自动化，该值为 Job。 |
+| 资源 | 自动化帐户的名称 |
+| SourceSystem | Log Analytics 收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
+| ResultDescription |包括来自 Runbook 的输出流。 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
-| 类别 |数据类型的分类。  对于自动化，该值为 JobStreams。 |
-| RunbookName |Runbook 的名称。 |
-| JobId |用作 Runbook 作业 ID 的 GUID。 |
-| 调用方 |谁启动了该操作。  可能的值为电子邮件地址或计划作业的系统。 |
-| StreamType |作业流的类型。 可能的值包括：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细） |
+| ResourceId |指定 Runbook 的 Azure 自动化帐户资源 ID。 |
+| SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
+| ResourceProvider | MICROSOFT.AUTOMATION |
+| ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>在 Log Analytics 中查看自动化日志
-既然你已开始将自动化作业日志发送到 Log Analytics，让我们看看你可以在 OMS 中对这些日志执行哪些操作。   
+既然已开始将自动化作业日志发送到 Log Analytics，来看看可以在 Log Analytics 中对这些日志执行哪些操作。
+
+若要查看日志，请运行以下查询：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Runbook 作业失败或暂停时发送电子邮件
 我们的一家重要客户提出的要求是，当 Runbook 作业出现问题时能够发送电子邮件或短信。   
 
-若要创建警报规则，首先请针对应该调用警报的 Runbook 作业记录创建日志搜索。  然后，就可以使用“**警报**”按钮以创建和配置警报规则。
+若要创建警报规则，首先请针对应该调用警报的 Runbook 作业记录创建日志搜索。  单击“警报”按钮以创建和配置警报的规则。
 
-1. 从 OMS“概述”页中，单击“**日志搜索**”。
-2. 在查询字段中键入以下内容，针对警报创建日志搜索查询：`Category=JobLogs (ResultType=Failed || ResultType=Suspended)`。  你也可以使用以下命令按 RunbookName 分组：`Category=JobLogs (ResultType=Failed || ResultType=Suspended) | measure Count() by RunbookName_s`。   
+1. 在 Log Analytics“概述”页面中，单击“日志搜索”。
+2. 通过在查询字段中键入以下搜索，为警报创建日志搜索查询：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)`  还可以使用以下命令按 RunbookName 分组：`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
 
-   如果你已设置在工作区中收集来自多个自动化帐户或订阅的日志，则还可能想要按照订阅或自动化帐户来为警报分组。  自动化帐户名称可能派生自 JobLogs 搜索中的 Resource 字段。  
-3. 单击页面顶部的“**警报**”，以打开“**添加警报规则**”屏幕。  有关用于配置警报的选项的详细信息，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule)。
+   如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。  自动化帐户名称可能派生自 JobLogs 搜索中的 Resource 字段。  
+3. 若要打开“添加警报规则”屏幕，请单击页面顶部的“警报”。 若要详细了解用于配置警报的选项，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule)。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>查找已完成但出错的所有作业
-除了在失败时收到警报以外，你还可能想要知道 Runbook 作业何时出现了非终止错误（PowerShell 生成错误流，但非终止错误不会导致作业暂停或失败）。    
+除了在失败时发出警报外，还可以发现 Runbook 作业何时发生非终止错误。 在这些情况下，PowerShell 会生成错误流，但非终止错误不会导致作业暂停或失败。    
 
-1. 在 OMS 门户中，单击“**日志搜索**”。
-2. 在“查询”字段中键入 `Category=JobStreams StreamType_s=Error | measure count() by JobId_g`，然后单击“**搜索**”。
+1. 在 Log Analytics 工作区中，单击“日志搜索”。
+2. 在“查询”字段中键入 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams StreamType_s=Error | measure count() by JobId_g`，然后单击“**搜索**”。
 
 ### <a name="view-job-streams-for-a-job"></a>查看作业的作业流
 当你调试作业时，可能想要深入查看作业流。  以下查询将显示 GUID 为 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0 的单个作业的所有流：   
 
-`Category=JobStreams JobId_g="2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort TimeGenerated | select ResultDescription`
+`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams JobId_g="2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort TimeGenerated | select ResultDescription`
 
 ### <a name="view-historical-job-status"></a>查看历史作业状态
 最后，你可能想要可视化不同时间段的作业历史记录。  你可以使用此查询来搜索作业在不同时间段的状态。
 
-`Category=JobLogs NOT(ResultType="started") | measure Count() by ResultType interval 1day`  
+`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs NOT(ResultType="started") | measure Count() by ResultType interval 1hour`  
 <br> ![OMS 历史作业状态图表](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="summary"></a>摘要
-通过将自动化作业状态和流数据发送到 Log Analytics，你可以设置警报来接收有关出现问题的通知，并在自定义仪表板中使用高级查询可视化 Runbook 结果、Runbook 作业状态和其他相关的重要指标或度量值，从而更好地洞察自动化作业的状态。  这有助于提高操作可见性并更快地解决事件。  
+将自动化作业状态和流数据发送到 Log Analytics 后，可以通过以下操作更好地了解自动化作业的状态：
++ 设置警报，以便在出现问题时获得通知
++ 使用自定义视图和搜索查询直观地显示 Runbook 结果、Runbook 作业状态，以及其他相关的关键指标。  
+
+Log Analytics 可以更直观地显示自动化作业的运行情况，并且可以帮助更快地解决事件。  
 
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解如何使用 Log Analytics 构造不同的搜索查询和查看自动化作业日志，请参阅 [Log searches in Log Analytics](../log-analytics/log-analytics-log-searches.md)（Log Analytics 中的日志搜索）
@@ -156,6 +206,6 @@ ms.openlocfilehash: 22a8a7541da572445ab0d6a822b56bd9a03339b7
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

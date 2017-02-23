@@ -1,5 +1,5 @@
 ---
-title: "从 Linux VM 分离磁盘 | Microsoft Docs"
+title: "从 Azure 的 Linux VM 中分离磁盘 | Microsoft Docs"
 description: "了解如何从使用经典部署模型创建的 Azure 虚拟机分离数据磁盘。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 127df4a8f4c4031d40b8136b35237f48bfb527d3
+ms.sourcegitcommit: 9bb7878836c0444d3ccc058fd89b8bbd9f6e255a
+ms.openlocfilehash: 3ba234eca45e643a235abf120efc6d8f82af461f
 
 
 ---
@@ -31,11 +31,11 @@ ms.openlocfilehash: 127df4a8f4c4031d40b8136b35237f48bfb527d3
 你可以阅读下列文章，进一步了解如何使用 Linux VM：
 
 * [如何将数据磁盘附加到 Linux 虚拟机](virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [将 Azuer CLI 与经典部署模型搭配使用](../virtual-machines-command-line-tools.md)
+* [将 Azuer CLI 与经典部署模型搭配使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

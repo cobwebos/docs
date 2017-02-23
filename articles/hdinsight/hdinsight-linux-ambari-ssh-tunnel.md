@@ -1,5 +1,5 @@
 ---
-title: "使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI"
+title: "使用 SSH 隧道访问 Azure HDInsight 服务 | Microsoft Docs"
 description: "了解如何使用 SSH 隧道来安全浏览基于 Linux 的 HDInsight 节点上托管的 Web 资源。"
 services: hdinsight
 documentationcenter: 
@@ -12,48 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 446212192829cc55fefe4b1a1954e64e123c2c44
+ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
+ms.openlocfilehash: 8045f9d927e9c877573085eb43eaadcd60f96a67
 
 
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>使用 SSH 隧道访问 Ambari Web UI、JobHistory、NameNode、Oozie 和其他 Web UI
+
 使用基于 Linux 的 HDInsight 群集可以通过 Internet 访问 Ambari Web UI，但无法访问 UI 的某些功能。 例如，无法访问通过 Ambari 呈现的其他服务的 Web UI。 若要获得 Ambari Web UI 的完整功能，必须与群集头建立 SSH 隧道。
 
-## <a name="what-requires-an-ssh-tunnel"></a>哪些功能需要 SSH 隧道？
-Ambari 中的多个菜单在没有 SSH 隧道的情况下无法完全填充，因为这些菜单依赖于群集上运行的其他 Hadoop 服务所公开的网站和服务。 通常，这些网站未受保护，因此直接在 Internet 上公开并不安全。 有时，服务在另一个群集节点（例如 Zookeeper 节点）上运行网站。
+## <a name="why-use-an-ssh-tunnel"></a>为何使用 SSH 隧道
+
+若没有 SSH 隧道，Ambari 中的多个菜单无法完全填充，因为这些菜单依赖于群集上运行的其他 Hadoop 服务所公开的网站和服务。 通常，这些网站未受保护，因此直接在 Internet 上公开并不安全。 有时，服务在另一个群集节点（例如 Zookeeper 节点）上运行网站。
 
 在未建立 SSH 隧道的情况下，无法访问 Ambari Web UI 使用的以下服务：
 
-* JobHistory；
-* NameNode；
-* 线程堆栈；
+* JobHistory
+* NameNode
+* 线程堆栈
 * Oozie Web UI
 * HBase Master 和日志 UI
 
-如果使用脚本操作来自定义群集，则安装的任何服务或实用工具都需要 SSH 隧道才能公开 Web UI。 例如，如果使用脚本操作安装 Hue，则必须使用 SSH 隧道来访问 Hue Web UI。
+如果通过脚本操作自定义群集，则安装的所有服务或实用工具都需要 SSH 隧道才能公开 Web UI。 例如，如果使用脚本操作安装 Hue，则必须使用 SSH 隧道来访问 Hue Web UI。
 
-## <a name="what-is-an-ssh-tunnel"></a>什么是 SSH 隧道？
+## <a name="what-is-an-ssh-tunnel"></a>什么是 SSH 隧道
+
 [Secure Shell (SSH) tunneling](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling)（安全外壳 (SSH) 隧道）通过与 HDInsight 群集头节点建立的 SSH 连接将已发送的流量路由到本地工作站的端口，在头节点中，请求将得到解析，就如同它是在头节点上生成的一样。 然后，通过与工作站建立的隧道将响应路由回去。
 
 ## <a name="prerequisites"></a>先决条件
+
 为 Web 流量使用 SSH 隧道时，必须满足以下条件：
 
-* SSH 客户端。 对于 Linux 和 Unix 分发版或 Macintosh OS X，操作系统已随附 `ssh` 命令。 对于 Windows，我们建议使用 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+* SSH 客户端。 对于 Linux 和 Unix 分发版、Macintosh OS X 和 Bash on Windows 10，操作系统已随附 `ssh` 命令。 对于不包括 `ssh` 命令的 Windows 版本，建议使用 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
   
   > [!NOTE]
   > 如果想要使用 `ssh` 或 PuTTY 以外的 SSH 客户端，请参阅客户端的文档，以了解如何建立 SSH 隧道。
-  > 
-  > 
+
 * 可配置为使用 SOCKS 代理的 Web 浏览器
 
 ## <a name="a-nameusesshacreate-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>使用 SSH 命令创建隧道
+
 使用以下 `ssh` 命令创建 SSH 隧道。 将 **USERNAME** 替换为 HDInsight 群集的 SSH 用户，并将 **CLUSTERNAME** 替换为 HDInsight 群集的名称
 
-    ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+```
+ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+```
 
 这会创建一个通过 SSH 将流量路由到群集本地端口 9876 的连接。 选项包括：
 
@@ -68,52 +74,57 @@ Ambari 中的多个菜单在没有 SSH 隧道的情况下无法完全填充，�
 
 如果使用 SSH 密钥配置了群集，则可能需要使用 `-i` 参数，并指定 SSH 私钥的路径。
 
-在命令完成后，发送到本地计算机上的端口 9876 的流量将通过安全套接字层 (SSL) 路由到群集头节点，并显示为源于此处。
+命令完成后，发送到本地计算机上端口 9876 的流量将通过安全套接字层 (SSL) 路由到群集头节点，且看上去源于该节点。
 
 ## <a name="a-nameuseputtyacreate-a-tunnel-using-putty"></a><a name="useputty"></a>使用 PuTTY 创建隧道
+
 执行以下步骤使用 PuTTY 创建 SSH 隧道。
 
 1. 打开 PuTTY 并输入你的连接信息。 如果不熟悉 PuTTY，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)，了解如何配合 HDInsight 使用 PuTTY。
+
 2. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，然后选择“隧道”。
+
 3. 提供以下有关“用于控制 SSH 端口转发的选项”窗体的信息：
    
    * **源端口** - 客户端上要转发的端口。 例如，**9876**。
+
    * **目标** - 基于 Linux 的 HDInsight 群集的 SSH 地址。 例如， **mycluster-ssh.azurehdinsight.net**。
+
    * **动态** - 启用动态 SOCKS 代理路由。
      
      ![隧道选项图像](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
+
 4. 单击“添加”以添加设置，然后单击“打开”以打开 SSH 连接。
+
 5. 出现提示时，登录到服务器。 这将会建立 SSH 会话并启用隧道。
 
 ## <a name="use-the-tunnel-from-your-browser"></a>从浏览器使用隧道
+
 > [!NOTE]
 > 本部分中的步骤使用 FireFox 浏览器，因为它在 Linux、Unix、Macintosh OS X 和 Windows 系统上均可任意使用。 其他支持使用 SOCKS 代理的新式浏览器同样可正常运行。
-> 
-> 
 
-1. 将浏览器配置为使用 **localhost:9876** 作为 **SOCKS v5** 代理。 Firefox 中的设置如下所示。 如果使用的端口不是 9876，请将端口更改为所用的端口：
+1. 将浏览器配置为使用 **localhost**，并将创建隧道时使用的端口配置为 **SOCKS v5** 代理。 Firefox 中的设置如下所示。 如果使用的端口不是 9876，请将端口更改为所用的端口：
    
-    ![Firefox 设置图像](./media/hdinsight-linux-ambari-ssh-tunnel/socks.png)
+    ![Firefox 设置图像](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
    
    > [!NOTE]
-   > 选择“远程 DNS”将通过使用 HDInsight 群集解析域名系统 (DNS) 请求。 如果未将其选中，则将在本地解析 DNS。
-   > 
-   > 
-2. 在 Firefox 中启用和禁用代理设置的情况下访问某个站点（例如 [http://www.whatismyip.com/](http://www.whatismyip.com/)），以验证是否能够通过隧道路由流量。 启用这些设置时，IP 地址将是 Microsoft Azure 数据中心内某台计算机的地址。
+   > 通过选择“远程 DNS”，可使用 HDInsight 群集解析域名系统 (DNS) 请求。 如果未将其选中，则将在本地解析 DNS。
+
+2. 在 Firefox 中启用和禁用代理设置的情况下访问某个站点（例如 [http://www.whatismyip.com/](http://www.whatismyip.com/)），以验证是否能够通过隧道路由流量。 启用这些设置时，将从 Microsoft Azure 数据中心内的某台计算机返回 IP 地址。
 
 ## <a name="verify-with-ambari-web-ui"></a>Ambari Web UI 访问验证
+
 建立群集后，请通过以下步骤验证是否可以从 Ambari Web 访问服务 Web UI：
 
-1. 在浏览器中，转到 http://headnodehost:8080。 `headnodehost` 地址将通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
+1. 在浏览器中，转到 http://headnodehost:8080。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
    
    > [!NOTE]
    > 使用 http://headnodehost:8080 地址连接到群集时，将使用 HTTP 通过隧道直接连接到运行 Ambari 的头节点，并使用 SSH 隧道来保护通信安全。 如果在不使用隧道的情况下通过 Internet 进行连接，则使用 HTTPS 来保护通信安全。 若要使用 HTTPS 通过 Internet 进行连接，请使用 https://CLUSTERNAME.azurehdinsight.net，其中 **CLUSTERNAME** 是群集的名称。
-   > 
-   > 
+
 2. 在 Ambari Web UI 中，请选择页面左侧列表中的“HDFS”。
    
     ![已选择“HDFS”的截图](./media/hdinsight-linux-ambari-ssh-tunnel/hdfsservice.png)
-3. 显示 HDFS 服务信息时，请选择“快速链接”。 此时将显示群集头节点列表。 选择其中一个头节点，然后选择“NameNode UI”。
+3. 显示 HDFS 服务信息时，请选择“快速链接”。 将显示群集头节点列表。 选择其中一个头节点，然后选择“NameNode UI”。
    
     ![已展开“快速链接”菜单的截图](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
    
@@ -145,6 +156,6 @@ Ambari 中的多个菜单在没有 SSH 隧道的情况下无法完全填充，�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

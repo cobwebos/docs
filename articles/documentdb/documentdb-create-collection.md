@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ab863266e1462f970b7906f68be2bcf5edb0dfc3
-ms.openlocfilehash: ac64bb0de03053702a4663c9356b3f9ce332c7de
+ms.sourcegitcommit: a87b2811175193377142e391597011f48f169f11
+ms.openlocfilehash: 4c16c843ba43a9e38d73fc1fd44d06f6f72de60c
 
 
 ---
@@ -40,7 +40,7 @@ ms.openlocfilehash: ac64bb0de03053702a4663c9356b3f9ce332c7de
 
     如果需要[单分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)，且吞吐量级别为 400-10,000 请求单位/秒（RU/秒），则将存储容量设置为“10 GB”。 一个 RU 相当于读取 1KB 文档的吞吐量。 有关请求单位的详细信息，请参阅[请求单位](documentdb-request-units.md)。
 
-    如果需要可缩放的[已分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)以处理多个分区不限容量的存储，且吞吐量级别最低可为 10,100 RU/秒，则将存储容量设置为“250 GB”。
+    如果需要可缩放的[已分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)以处理多个分区不限容量的存储，且吞吐量级别最低可为 2,500 RU/秒，则将存储容量设置为“250 GB”。
 
     如需设置除 10 GB 或 250 GB 以外的容量，则将存储容量设置为“自定义”。 DocumentDB 规模几近无限，因此请在支持请求中包含请求的存储大小和吞吐量值。
 
@@ -83,6 +83,6 @@ DocumentDB 自动将集合分区到一个或多个物理服务器。 创建集�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,7 +1,7 @@
 ---
 
-title: "将 Linux 故障排除 VM 与 CLI 配合使用 | Microsoft Docs"
-description: "了解如何通过使用 Azure CLI 将 OS 磁盘连接到恢复 VM 来排查 Linux VM 问题"
+title: "将 Linux 故障排除 VM 与 Azure CLI 1.0 配合使用 | Microsoft Docs"
+description: "了解如何通过使用 Azure CLI 1.0 将 OS 磁盘连接到恢复 VM 来排查 Linux VM 问题"
 services: virtual-machines-linux
 documentationCenter: 
 authors: iainfoulds
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
-ms.openlocfilehash: 89094f69fab8b30a16fcc5bc1bcd628ed52da757
+ms.sourcegitcommit: cb876ea4281fefa334e0aaf4ed66d87fa5653099
+ms.openlocfilehash: 2d0eedd3dfd2b9c754b450228fa65d06fe0514f5
 
 
 ---
 
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli"></a>通过使用 Azure CLI 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli-10"></a>通过使用 Azure CLI 1.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
 如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure CLI 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。
 
 
@@ -34,11 +34,12 @@ ms.openlocfilehash: 89094f69fab8b30a16fcc5bc1bcd628ed52da757
 4. 从故障排除 VM 卸载并分离虚拟硬盘。
 5. 使用原始虚拟硬盘创建 VM。
 
-确保已登录 [Azure CLI](../xplat-cli-install.md) 并使用 Resource Manager 模式：
+确保已安装并登录[最新版 Azure CLI 1.0](../xplat-cli-install.md) 并使用 Resource Manager 模式：
 
 ```azurecli
 azure config mode arm
 ```
+
 在以下示例中，请将参数名称替换为你自己的值。 示例参数名称包括 `myResourceGroup`、`mystorageaccount` 和 `myVM`。
 
 
@@ -235,6 +236,6 @@ azure vm enable-diag --resource-group myResourceGroup --name myDeployedVM
 如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅[排查 Linux VM 上的应用程序连接问题](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

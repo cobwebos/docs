@@ -3,7 +3,7 @@ title: "Azure Functions 通知中心绑定 | Microsoft Docs"
 description: "了解如何在 Azure Functions 中使用 Azure 通知中心绑定。"
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: ggailey777
 manager: erikre
 editor: 
 tags: 
@@ -15,10 +15,10 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: wesmc
+ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 7e9534afa8ecd224b4e3c1df2f4465b70d961d2c
-ms.openlocfilehash: 1e03a54956a9fd035cf40aa953a2c368d91b766b
+ms.sourcegitcommit: a64af1a9f969c5ce5a7e2f18ca23451ac96f1a13
+ms.openlocfilehash: 7abd7b0921c029ff159935d89905d3c502aba643
 
 
 ---
@@ -76,8 +76,8 @@ function.json 文件提供以下属性：
 
 1. 在 Azure 门户的“Function App”边栏选项卡中，单击“Function App 设置”，转到“应用服务设置”。
 2. 在“设置”边栏选项卡中，单击“应用程序设置”。
-3. 向下滚动到“连接字符串”部分，为通知中心添加已命名的 DefaultFullSharedAccessSignature 值项。 将类型更改为“自定义”。
-4. 引用输出绑定中连接字符串的名称。 类似于上面示例中使用的 MyHubConnectionString。
+3. 向下滚动到“应用设置”部分，为通知中心添加已命名的 *DefaultFullSharedAccessSignature* 值项。
+4. 引用输出绑定中应用设置字符串的名称。 类似于上面示例中使用的 MyHubConnectionString。
 
 ## <a name="apns-native-notifications-with-c-queue-triggers"></a>包含 C# 队列触发器的 APNS 本机通知
 此示例演示如何使用 [Microsoft Azure 通知中心库](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)中定义的类型发送本机 APNS 通知。 
@@ -298,6 +298,6 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

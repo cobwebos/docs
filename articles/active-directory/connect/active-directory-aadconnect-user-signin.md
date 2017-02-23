@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bddd581b5164b03ccba75370cd89a7831101cf37
-ms.openlocfilehash: 5b77d16c4a373936dfa5fbba35bc3dc4c9a37e78
+ms.sourcegitcommit: 4fbe7bd802e9cc32d43f019980650c4723b75d5f
+ms.openlocfilehash: 7e821117e62eda286cefb59a5ded85b2f99f3ef7
 
 
 ---
@@ -97,7 +97,7 @@ Azure AD Connect 可让用户使用同一组密码登录云和本地资源。 �
 ### <a name="understanding-user-principal-name"></a>了解用户主体名
 在 Active Directory 中，默认的 UPN 后缀是在其中创建用户帐户的域的 DNS 名称。 在大多数情况下，这是在 Internet 上注册为企业域的域名。 但是，你可以使用 Active Directory 域和信任来添加其他 UPN 后缀。
 
-用户的 UPN 采用 username@domain. 格式。例如，如果 Active Directory 域名为 contoso.com，则用户 John 的 UPN 可能为 'john@contoso.com'.。用户的 UPN 基于 RFC 822。 尽管 UPN 和电子邮件具有相同的格式，但用户的 UPN 值不一定等于用户的电子邮件地址。
+用户的 UPN 格式为 username@domain。 例如，对于名为‘contoso.com’的 Active Directory 域，名为 John 的用户的 UPN 可能是 'john@contoso.com'。 用户的 UPN 基于 RFC 822。 尽管 UPN 和电子邮件具有相同的格式，但用户的 UPN 值不一定等同于用户的电子邮件地址。
 
 ### <a name="user-principal-name-in-azure-ad"></a>Azure AD 中的用户主体名
 Azure AD Connect 向导将使用 userPrincipalName 属性，或让你指定要从本地用作 Azure AD 中的用户主体名的属性（在自定义安装中）。 这是要用于登录 Azure AD 的值。 如果用户主体名属性的值不对应于 Azure AD 中已验证的域，则 Azure AD 会将该值替换为默认的 .onmicrosoft.com 值。
@@ -148,7 +148,7 @@ UserPrincipalName - 属性 userPrincipalName 是用户登录 Azure AD 和 Office
 
 | 状态 | 对 Azure 用户登录体验的影响 |
 |:---:|:--- |
-| 未添加 |在这种情况下，Azure AD Connect 无法在 Azure AD 目录中找到 UPN 后缀 contoso.com 的匹配自定义域。 如果需要让用户在 AD FS 中使用其本地 UPN（例如 user@contoso.com）登录，则需要添加自定义域 contoso.com。 |
+| 未添加 |在这种情况下，Azure AD Connect 无法在 Azure AD 目录中找到 UPN 后缀 contoso.com 的匹配自定义域。 如果需要让用户在 AD FS 中使用其本地 UPN（例如 user@contoso.com）登录，则需要添加自定义域 contoso.com |
 | 未验证 |在这种情况下，Azure AD Connect 将发出提示，并提供有关如何在后面的阶段验证域的相应详细信息 |
 | 已验证 |在这种情况下，你可以继续进行配置，而不需要采取任何进一步的操作 |
 
@@ -178,6 +178,6 @@ UserPrincipalName - 属性 userPrincipalName 是用户登录 Azure AD 和 Office
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

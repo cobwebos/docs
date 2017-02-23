@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure CLI 2.0 预览版创建完整的 Linux 环境 | Microsoft 文档"
+title: "使用 Azure CLI 2.0 创建 Linux 环境 | Microsoft 文档"
 description: "使用 Azure CLI 2.0（预览版）从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 95b924257c64a115728c66956d5ea38eb8764a35
-ms.openlocfilehash: b02be35b0a3e97dbab32467eb8f654ea9609e7aa
+ms.sourcegitcommit: 39ce158ae52b978b74161cdadb4b886a7ddbf87a
+ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: b02be35b0a3e97dbab32467eb8f654ea9609e7aa
 az group create --name myResourceGroup --location westeurope
 ```
 
-使用 [az storage account create](/cli/azure/storage/account#create) 创建存储帐户。 以下示例创建一个名为 `mystorageaccount` 的存储帐户。 （存储帐户名称必须唯一，因此，请提供自己的唯一名称。）
+此后续步骤是可选的。 使用 Azure CLI 2.0（预览版）创建 VM 时的默认操作是使用 Azure 托管磁盘。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 如果要改为使用非托管磁盘，需要使用 [az storage account create](/cli/azure/storage/account#create) 创建存储帐户。 以下示例创建一个名为 `mystorageaccount` 的存储帐户。 （存储帐户名称必须唯一，因此，请提供自己的唯一名称。）
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -164,10 +164,11 @@ az network nic create --resource-group myResourceGroup --location westeurope --n
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
-使用 [az vm create](/cli/azure/vm#create) 创建第一个 Linux VM。 以下示例创建一个名为 `myVM1` 的 VM：
+使用 [az vm create](/cli/azure/vm#create) 创建第一个 Linux VM。 以下示例使用 Azure 托管磁盘创建一个名为 `myVM1` 的 VM。 如果想要使用非托管磁盘，请参阅下面的附加说明。
 
 ```azurecli
 az vm create \
@@ -176,13 +177,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+如果使用 Azure 托管磁盘，请跳过此步骤。 如果想要使用非托管磁盘，并且已在前面的步骤中创建了存储帐户，则需要将一些其他参数添加到继续执行的命令中。 将以下其他参数添加到继续执行的命令，从而在名为 `mystorageaccount` 的存储帐户中创建非托管磁盘： 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 同样使用 **az vm create** 创建第二个 Linux VM。 以下示例创建一个名为 `myVM2` 的 VM：
@@ -194,14 +198,17 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+同样，如果不使用默认 Azure 托管磁盘，则将以下其他参数添加到继续执行的命令，从而在名为 `mystorageaccount` 的存储帐户中创建非托管磁盘：
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 使用 [az vm show](/cli/azure/vm#show) 验证是否已正确构建了所有项：
 
@@ -245,7 +252,9 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
-需要对 VM 磁盘和任何想要添加的额外数据磁盘使用存储帐户。 应该在创建资源组之后马上创建存储帐户。
+此后续步骤是可选的。 使用 Azure CLI 2.0（预览版）创建 VM 时的默认操作是使用 Azure 托管磁盘。 这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 如果想要使用 Azure 托管磁盘，请跳到[创建虚拟网络和子网](#create-a-virtual-network-and-subnet)。 
+
+如果想要使用非托管磁盘，需要为 VM 磁盘和想要添加的任何其他数据磁盘创建存储帐户。
 
 此处，我们使用 [az storage account create](/cli/azure/storage/account#create)，并传递帐户的位置、控制该帐户的资源组，以及所需的存储支持类型。 以下示例创建名为 `mystorageaccount` 的存储帐户：
 
@@ -983,7 +992,8 @@ az network nic create --resource-group myResourceGroup --location westeurope --n
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
 容错域定义一组共用一个通用电源和网络交换机的虚拟机。 默认情况下，在可用性集中配置的虚拟机隔离在最多三个容错域中。 思路是其中一个容错域中的硬件问题不会影响运行应用的每个 VM。 将多个 VM 放入一个可用性集时，Azure 会自动将它们分散到容错域。
@@ -994,11 +1004,11 @@ az vm availability-set create --resource-group myResourceGroup --location westeu
 
 
 ## <a name="create-the-linux-vms"></a>创建 Linux VM
-已创建存储和网络资源以支持可访问 Internet 的 VM。 现在，让我们创建 VM，并使用不带密码的 SSH 密钥来保护其安全。 在此情况下，我们需要基于最新的 LTS 创建 Ubuntu VM。 我们将根据 [finding Azure VM images](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（查找 Azure VM 映像）中所述，使用 [az vm image list](/cli/azure/vm/image#list) 来查找该映像信息。
+已创建用于支持可访问 Internet 的 VM 的网络资源。 现在，让我们创建 VM，并使用不带密码的 SSH 密钥来保护其安全。 在此情况下，我们需要基于最新的 LTS 创建 Ubuntu VM。 我们将根据 [finding Azure VM images](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（查找 Azure VM 映像）中所述，使用 [az vm image list](/cli/azure/vm/image#list) 来查找该映像信息。
 
 我们还将指定要用于身份验证的 SSH 密钥。 如果你没有任何 SSH 密钥，可以根据[这些说明](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)创建它们。 或者，可以在创建 VM 之后，使用 `--admin-password` 方法对 SSH 连接进行身份验证。 此方法通常不太安全。
 
-我们使用 [az vm create](/cli/azure/vm#create) 命令并结合所有资源和信息来创建 VM：
+我们使用 [az vm create](/cli/azure/vm#create) 命令并结合所有资源和信息来创建 VM。 以下示例使用 Azure 托管磁盘创建一个名为 `myVM1` 的 VM。 如果想要使用非托管磁盘，请参阅下面的附加说明。
 
 ```azurecli
 az vm create \
@@ -1007,13 +1017,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+如果使用 Azure 托管磁盘，请跳过此步骤。 如果想要使用非托管磁盘，并且已在前面的步骤中创建了存储帐户，则需要将一些其他参数添加到继续执行的命令中。 将以下其他参数添加到继续执行的命令，从而在名为 `mystorageaccount` 的存储帐户中创建非托管磁盘： 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 输出：
@@ -1066,14 +1079,17 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+同样，如果不使用默认 Azure 托管磁盘，则将以下其他参数添加到继续执行的命令，从而在名为 `mystorageaccount` 的存储帐户中创建非托管磁盘：
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 此时，已在 Azure 中运行了一个位于负载平衡器后面的 Ubuntu VM，只能使用 SSH 密钥对登录到该 VM（因为密码已禁用）。 可以安装 nginx 或 httpd、部署 Web 应用，以及查看流量是否通过负载平衡器流向两个 VM。
 
@@ -1101,6 +1117,6 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

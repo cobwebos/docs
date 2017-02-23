@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1a2ea0753d12915075c055f9983773618bf6777d
-ms.openlocfilehash: 85c6a2296a4487ae549321d3ff07129bcbab5adf
+ms.sourcegitcommit: 1e88eba53b8ec3388ede1ae69cb290423919fda6
+ms.openlocfilehash: d683e25ef96bbd87a6d5b5ea143754b8f67f288e
 
 
 ---
@@ -241,7 +241,7 @@ HUB | 是 | 是 | 是
 **来宾操作系统体系结构** | 64 位 | 如果不支持，先决条件检查将会失败
 **操作系统磁盘大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
 **操作系统磁盘计数** | 1 | 如果不支持，先决条件检查将会失败。
-**数据磁盘计数** | 16 或更少（最大值取决于所创建的虚拟机大小。 16 = XL） | 如果不支持，先决条件检查将会失败
+**数据磁盘计数** | 如果将 **VMware VM 复制到 Azure**，则为 64 个或更少；如果将 **Hyper-V VM 复制到 Azure**，则为 16 个或更少 | 如果不支持，先决条件检查将会失败
 **数据磁盘 VHD 大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
 **网络适配器** | 支持多个适配器 |
 **静态 IP 地址** | 支持 | 如果主虚拟机使用的是静态 IP 地址，则你可为要在 Azure 中创建的虚拟机指定静态 IP 地址。<br/><br/> **在 Hyper-v 上运行的 Linux VM** 不支持静态 IP 地址。
@@ -265,6 +265,6 @@ HUB | 是 | 是 | 是
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

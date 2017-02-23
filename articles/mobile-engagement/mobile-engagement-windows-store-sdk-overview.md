@@ -1,10 +1,10 @@
 ---
-title: "Windows Universal SDK 集成"
+title: "Azure Mobile Engagement Windows Universal SDK 集成 | Microsoft Docs"
 description: "适用于 Azure Mobile Engagement 的 Windows Universal SDK 集成"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9ded187d-5c07-4377-a41c-ce205dd38b50
 ms.service: mobile-engagement
@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/12/2016
-ms.author: piyushjo;ricksal
+ms.date: 11/03/2016
+ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: acf599588de4dac04d51a66348ea9336fe6ce2f7
+ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
+ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
 
 
 ---
@@ -40,10 +40,9 @@ ms.openlocfilehash: acf599588de4dac04d51a66348ea9336fe6ce2f7
 [如何在 Windows Universal 应用中使用高级的 Mobile Engagement 标记 API](mobile-engagement-windows-store-use-engagement-api.md)
 
 ## <a name="release-notes"></a>发行说明
-### <a name="340-04192016"></a>3.4.0 (04/19/2016)
-* 市场宣传覆盖改进。
-* 添加了“TestLogLevel”API，以启用/禁用/筛选由 SDK 发出的控制台日志。
-* 修复了定位到在应用启动时未显示的第一个活动的活动通知。
+### <a name="341-11032016"></a>3.4.1 (11/03/2016)
+
+* 稳定性改进。
 
 对于较早版本，请参阅[完整的发行说明](mobile-engagement-windows-store-release-notes.md)
 
@@ -78,6 +77,6 @@ ms.openlocfilehash: acf599588de4dac04d51a66348ea9336fe6ce2f7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

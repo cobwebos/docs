@@ -1,6 +1,6 @@
 ---
-title: "创建 VM 可用性集 | Microsoft Docs"
-description: "了解如何通过 Azure 门户或 PowerShell，使用 Resource Manager 部署模型为虚拟机创建可用性集。"
+title: "在 Azure 中创建 VM 可用性集 | Microsoft Docs"
+description: "了解如何在 Resource Manager 部署模型中使用 Azure PowerShell 或门户为虚拟机创建托管（或非托管）的可用性集。"
 keywords: "可用性集"
 services: virtual-machines-windows
 documentationcenter: 
@@ -14,16 +14,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 19f22b9e38e472b56fc9abecc6c14b63b521a58b
+ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
+ms.openlocfilehash: f7562c2bb6ad354ece3aa3c51fdaabad8e878fa9
 
 
 ---
 # <a name="create-an-availability-set"></a>创建可用性集
-使用门户时，如果希望 VM 属于某个可用性集，则需要先创建该可用性集。
+可用性集为应用程序提供冗余。 建议将两个或更多虚拟机组合到一个可用性集中。 这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 有关详细信息，请参阅[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。
+
+> [!IMPORTANT]
+> 必须在可用性集所在的同一资源组中创建 VM。
+> 
+
+如果希望 VM 属于某个可用性集，需要先创建该可用性集或在该集中创建第一个 VM。 如果 VM 将使用托管磁盘，则必须将可用性集创建为托管的可用性集。
 
 有关创建和使用可用性集的详细信息，请参阅[管理虚拟机的可用性](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
@@ -42,24 +48,46 @@ ms.openlocfilehash: 19f22b9e38e472b56fc9abecc6c14b63b521a58b
    * **订阅** - 如果有多个订阅，请选择要使用的订阅。
    * **资源组** - 通过以下方法选择现有资源组：单击箭头，然后从下拉列表中选择资源组。 也可以通过键入名称来创建新的资源组。 名称可以包含以下任意字符：字母、数字、句点、短划线、下划线和左右括号。 名称不能以句点结尾。 需要在与可用性集相同的资源组中创建可用性组中的所有 VM。
    * **位置** - 从下拉列表中选择一个位置。
-4. 完成信息输入后，单击“创建”。 一旦创建了可用性组，就可以通过刷新门户在列表中看到它。
+   * **托管** - 选择“是”创建托管的可用性集，以便与使用托管磁盘进行存储的 VM 搭配使用。 如果将属于可用性集的 VM 使用存储帐户中的非托管磁盘，则选择“否”。
+   
+4. 完成信息输入后，单击“创建”。 
 
 ## <a name="use-the-portal-to-create-a-virtual-machine-and-an-availability-set-at-the-same-time"></a>使用门户同时创建虚拟机和可用性集
-如果要使用门户创建新 VM，还可以在为该 VM 创建新可用性集的同时，创建该集中的第一个 VM。
+如果要使用门户创建新 VM，还可以在为该 VM 创建新可用性集的同时，创建该集中的第一个 VM。 如果选择为 VM 使用托管磁盘，则将创建托管的可用性集。
 
 ![显示创建 VM 时创建新可用性集的过程的屏幕截图。](./media/virtual-machines-windows-create-availability-set/new-vm-avail-set.png)
 
-## <a name="add-a-new-vm-to-an-existing-availability-set"></a>将新 VM 添加到现有可用性集
+## <a name="add-a-new-vm-to-an-existing-availability-set-in-the-portal"></a>将新 VM 添加到门户中的现有可用性集
 对于所创建的应属于该集的每个附加 VM，请确保在同一个**资源组**中创建该 VM，然后在步骤 3 中选择现有可用性集。 
 
 ![显示如何选择要用于 VM 的现有可用性集的屏幕截图。](./media/virtual-machines-windows-create-availability-set/add-vm-to-set.png)
 
 ## <a name="use-powershell-to-create-an-availability-set"></a>使用 PowerShell 创建可用性集
-此示例在位于**美国西部**的 **RMResGroup** 资源组中创建一个可用性集。 此操作需在创建属于该集的第一个 VM 之前完成。
+此示例在位于**美国西部**的 **myResourceGroup** 资源组中创建一个名为 **myAvailabilitySet** 的可用性集。 此操作需在创建属于该集的第一个 VM 之前完成。
 
-    New-AzureRmAvailabilitySet -ResourceGroupName "RMResGroup" -Name "AvailabilitySet03" -Location "West US"
+开始前，请确保具有最新版本的 AzureRM.Compute PowerShell 模块。 运行以下命令进行安装。
 
-有关详细信息，请参阅 [New-AzureRmAvailabilitySet](https://msdn.microsoft.com/library/mt619453.aspx)。
+```powershell
+Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+```
+有关详细信息，请参阅 [Azure PowerShell 版本控制](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)。
+
+
+如果为 VM 使用托管磁盘，请键入：
+
+```powershell
+    New-AzureRmAvailabilitySet -ResourceGroupName "myResourceGroup" '
+    -Name "myAvailabilitySet" -Location "West US" -managed
+```
+
+如果为 VM 使用自己的存储帐户，请键入：
+
+```powershell
+    New-AzureRmAvailabilitySet -ResourceGroupName "myResourceGroup" '
+    -Name "myAvailabilitySet" -Location "West US" 
+```
+
+有关详细信息，请参阅 [New-AzureRmAvailabilitySet](/powershell/new-azurermavailabilityset)。
 
 ## <a name="troubleshooting"></a>故障排除
 * 创建 VM 时，如果所需的可用性集不在门户的下拉列表中，则表示可能已在不同的资源组中创建该可用性集。 如果不知道可用性集所属的资源组，请转到中心菜单并单击“浏览”>“可用性集”，以查看可用性集及其所属资源组的列表。
@@ -70,6 +98,6 @@ ms.openlocfilehash: 19f22b9e38e472b56fc9abecc6c14b63b521a58b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

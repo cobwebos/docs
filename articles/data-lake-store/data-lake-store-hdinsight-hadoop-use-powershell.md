@@ -1,5 +1,5 @@
 ---
-title: "通过 PowerShell 创建具有 Azure Data Lake Store 的 HDInsight 群集 | Microsoft Docs"
+title: "使用 PowerShell 来创建 Azure HDInsight 和 Data Lake Store | Microsoft Docs"
 description: "使用 Azure PowerShell 创建和使用包含 Azure Data Lake 的 HDInsight 群集"
 services: data-lake-store,hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/09/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
+ms.sourcegitcommit: 0fed9cff7a357c596d7e178ec756be449cd1dff0
+ms.openlocfilehash: aada6f72a3b20233fdeeb7adabf6545ce831d563
 
 
 ---
@@ -117,10 +117,8 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
-        $startDate = (Get-Date).ToString('MM/dd/yyyy')
-        $endDate = (Get-Date).AddDays(365).ToString('MM/dd/yyyy')
-
-        makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -b $startDate -e $endDate -r -len 2048
+        
+        makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
     系统会提示输入私钥密码。 此命令成功执行后，指定的证书目录中应会出现 **CertFile.cer** 和 **mykey.pvk**。
 2. 使用 [Pvk2Pfx][pvk2pfx] 实用工具将 MakeCert 创建的.pvk 和.cer 文件转换为.pfx 文件。 运行以下命令。
@@ -145,14 +143,12 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
         $application = New-AzureRmADApplication `
-                    -DisplayName "HDIADL" `
-                    -HomePage "https://contoso.com" `
-                    -IdentifierUris "https://mycontoso.com" `
-                    -KeyValue $credential  `
-                    -KeyType "AsymmetricX509Cert"  `
-                    -KeyUsage "Verify"  `
-                    -StartDate $startDate  `
-                    -EndDate $endDate
+            -DisplayName "HDIADL" `
+            -HomePage "https://contoso.com" `
+            -IdentifierUris "https://mycontoso.com" `
+            -CertValue $credential  `
+            -StartDate $certificatePFX.NotBefore  `
+            -EndDate $certificatePFX.NotAfter
 
         $applicationId = $application.ApplicationId
 2. 使用应用程序 ID 创建服务主体。
@@ -160,14 +156,13 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
-3. 向将从 HDInsight 群集访问的 Data Lake Store 文件/文件夹授予服务主体访问权限。 下面的代码段提供 Data Lake Store 帐户的根的访问权限。
+3. 向将从 HDInsight 群集访问的 Data Lake Store 文件夹和文件授予服务主体访问权限。 下面的代码段提供对 Data Lake Store 帐户（复制示例数据文件的位置）的根和文件自身的访问权限。
 
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
-    在提示处，输入 **Y** 进行确认。
-
-## <a name="create-an-hdinsight-cluster-with-authentication-to-data-lake-store"></a>创建具有 Data Lake Store 身份验证的 HDInsight 群集
-本部分中创建 HDInsight Hadoop 群集。 对于此版本，HDInsight 群集和 Data Lake Store 必须位于同一位置（美国东部 2）。
+## <a name="create-an-hdinsight-linux-cluster-with-authentication-to-data-lake-store"></a>创建具有 Data Lake Store 身份验证的 HDInsight Linux 群集
+本部分中创建 HDInsight Hadoop Linux 群集。 对于此版本，HDInsight 群集和 Data Lake Store 必须位于同一位置。
 
 1. 首先检索订阅租户 ID。 之后需要此 ID。
 
@@ -182,7 +177,7 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
 
         # Create an Azure Blob Storage container
         $containerName = "<ContainerName>"              # Provide a container name
-        $storageAccountKey = Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName | %{ $_.Key1 }
+        $storageAccountKey = (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
         $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
         New-AzureStorageContainer -Name $containerName -Context $destContext
 3. 创建 HDInsight 群集。 使用以下 cmdlet。
@@ -191,35 +186,20 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
         $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
         $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
         $httpCredentials = Get-Credential
-        $rdpCredentials = Get-Credential
+        $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.2" -RdpCredential $rdpCredentials -RdpAccessExpiry (Get-Date).AddDays(14) -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
-    此 cmdlet 成功完成后，应出现如下的输出：
+    此 cmdlet 成功完成后，应出现列出群集详细信息的输出。
 
-        Name                      : hdiadlcluster
-        Id                        : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/hdiadlgroup/providers/Mi
-                                    crosoft.HDInsight/clusters/hdiadlcluster
-        Location                  : East US 2
-        ClusterVersion            : 3.2.7.707
-        OperatingSystemType       : Windows
-        ClusterState              : Running
-        ClusterType               : Hadoop
-        CoresUsed                 : 16
-        HttpEndpoint              : hdiadlcluster.azurehdinsight.net
-        Error                     :
-        DefaultStorageAccount     :
-        DefaultStorageContainer   :
-        ResourceGroup             : hdiadlgroup
-        AdditionalStorageAccounts :
-
+        
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Store
 配置 HDInsight 群集后，可在该群集上运行测试作业来测试该 HDInsight 群集是否可访问 Data Lake Store。 为此，我们会运行示例 Hive 作业，该作业会使用先前已上传至 Data Lake Store 的示例数据创建一个表。
 
-### <a name="for-a-linux-cluster"></a>对于 Linux 群集
-本节中，将连接 SSH 到群集中，然后运行示例 Hive 查询。 Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载的 **PuTTY**。
+本节中，将以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行示例 Hive 查询。
 
-有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+* 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+* 如果使用 Linux 客户端以 SSH 方式连接到群集中，请参阅[在 Linux 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
 1. 连接后，请使用以下命令启动 Hive 命令行界面 (CLI)。
 
@@ -243,55 +223,13 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
         1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
         1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
 
-### <a name="for-a-windows-cluster"></a>对于 Windows 群集
-使用以下 cmdlet 运行 Hive 查询。 在此查询中，以 Data Lake Store 中的数据创建一个表，然后在创建的表上运行选择查询。
-
-    $queryString = "DROP TABLE vehicles;" + "CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://$dataLakeStoreName.azuredatalakestore.net:443/';" + "SELECT * FROM vehicles LIMIT 10;"
-
-    $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString
-
-    $hiveJob = Start-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $httpCredentials
-
-    Wait-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $httpCredentials
-
-应会显示以下输出。 输出中的 **ExitValue** 0 表明此作业已成功完成。
-
-    Cluster         : hdiadlcluster.
-    HttpEndpoint    : hdiadlcluster.azurehdinsight.net
-    State           : SUCCEEDED
-    JobId           : job_1445386885331_0012
-    ParentId        :
-    PercentComplete :
-    ExitValue       : 0
-    User            : admin
-    Callback        :
-    Completed       : done
-
-使用下面的 cmdlet 从作业检索输出：
-
-    Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $hiveJob.JobId -DefaultContainer $containerName -DefaultStorageAccountName $storageAccountName -DefaultStorageAccountKey $storageAccountKey -ClusterCredential $httpCredentials
-
-该作业输出如下：
-
-    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
-    1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
-    1,3,2014-09-14 00:00:09,46.81006,-92.08174,48,NE,1
-    1,4,2014-09-14 00:00:12,46.81006,-92.08174,30,W,1
-    1,5,2014-09-14 00:00:15,46.81006,-92.08174,47,S,1
-    1,6,2014-09-14 00:00:18,46.81006,-92.08174,9,S,1
-    1,7,2014-09-14 00:00:21,46.81006,-92.08174,53,N,1
-    1,8,2014-09-14 00:00:24,46.81006,-92.08174,63,SW,1
-    1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
-    1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
-
-
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>使用 HDFS 命令访问 Data Lake Store
 配置 HDInsight 群集使用 Data Lake Store 后，可使用 HDFS shell 命令访问此存储。
 
-### <a name="for-a-linux-cluster"></a>对于 Linux 群集
-本节中，将连接 SSH 到群集中，然后运行 HDFS 命令。 Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载的 **PuTTY**。
+本节中，将以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行 HDFS 命令。 
 
-有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+* 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+* 如果使用 Linux 客户端以 SSH 方式连接到群集中，请参阅[在 Linux 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
 连接后，使用以下 HDFS 文件系统命令列出 Data Lake Store 中的文件。
 
@@ -305,26 +243,6 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
 
 可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
 
-### <a name="for-a-windows-cluster"></a>对于 Windows 群集
-1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 单击“浏览”，单击“HDInsight 群集”，然后单击已创建的 HDInsight 群集。
-3. 在群集边栏选项卡中，单击“远程桌面”，然后在“远程桌面”边栏选项卡中，单击“连接”。
-
-    ![远程登录到 HDI 群集](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "创建 Azure 资源组")
-
-    出现提示时，输入你提供给远程桌面用户的凭据。
-4. 在远程会话中，启动 Windows PowerShell，并使用 HDFS 文件系统命令列出 Azure Data Lake Store 中的文件。
-
-         hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
-
-    这会列出先前上传到 Data Lake Store 中的文件。
-
-        15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
-        Found 1 items
-        -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/vehicle1_09142014.csv
-
-    可使用 `hdfs dfs -put` 命令上传部分文件到 Data Lake Store 中，然后使用 `hdfs dfs -ls` 验证是否已成功上传这些文件。
-
 ## <a name="see-also"></a>另请参阅
 * [门户：创建 HDInsight 群集以使用 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
@@ -333,6 +251,6 @@ ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

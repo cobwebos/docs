@@ -1,22 +1,22 @@
 ---
-title: "Windows Phone Silverlight SDK 概述"
+title: "Azure Mobile Engagement Windows Phone Silverlight SDK 概述 | Microsoft Docs"
 description: "Azure Mobile Engagement 的 Windows Phone Silverlight SDK 概述"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 0e3d2420-0509-4952-8891-392e3dad9aaf
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
-ms.devlang: na
+ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 11/03/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 105335b3c4c6e805f9398fbc002d5c4051acd147
+ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
+ms.openlocfilehash: c4e8ceee4104c3d3a6c3e6b79322ba1cf8463b22
 
 
 ---
@@ -31,10 +31,10 @@ ms.openlocfilehash: 105335b3c4c6e805f9398fbc002d5c4051acd147
 3. 标记计划实施：[如何在 Windows Phone Silverlight 应用中使用高级 Mobile Engagement 标记 API](mobile-engagement-windows-phone-use-engagement-api.md)
 
 ## <a name="release-notes"></a>发行说明
-### <a name="330-04192016"></a>3.3.0 (04/19/2016)
-*MicrosoftAzure.MobileEngagement* NuGet 程序包 **v3.4.0** 的一部分
+###<a name="331-11032016"></a>3.3.1 (11/03/2016)
+*MicrosoftAzure.MobileEngagement* Nuget 包 **v3.4.1** 的一部分
 
-* 添加了“TestLogLevel”API，以启用/禁用/筛选由 SDK 发出的控制台日志。
+* 稳定性改进。
 
 对于较早版本，请参阅[完整的发行说明](mobile-engagement-windows-phone-release-notes.md)
 
@@ -56,6 +56,6 @@ ms.openlocfilehash: 105335b3c4c6e805f9398fbc002d5c4051acd147
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

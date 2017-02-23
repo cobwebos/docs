@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 02/13/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6e89921509bb273d6d97f829d4867eded20c82bc
+ms.sourcegitcommit: 3868d36948342739eb78b013bb4b466df4381b4f
+ms.openlocfilehash: 7c1ca950c3ab1b8ffb754a74597d45b82777838c
 
 
 ---
@@ -32,6 +32,7 @@ Azure 存储中的对象支持系统属性和用户定义的元数据，除了�
 > [!IMPORTANT]
 > 不会填充存储资源的属性和元数据值，除非调用 **FetchAttributes** 方法之一。
 >
+> 如果任何名称/值对包含非 ASCII 字符，将收到 `400 Bad Request`。 元数据名称/值对是有效的 HTTP 标头，因此必须遵循控制 HTTP 标头的所有限制。 因此，对于包含非 ASCII 字符的名称和值，建议使用 URL 编码或 Base64 编码。
 >
 
 ## <a name="setting-and-retrieving-properties"></a>设置和检索属性
@@ -110,6 +111,6 @@ public static void ListContainerMetadata(CloudBlobContainer container)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

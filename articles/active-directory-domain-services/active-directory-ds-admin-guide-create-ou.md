@@ -12,16 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 02/07/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0707a8efd91d646bf7c417f881ccb9ebb6f2a470
+ms.sourcegitcommit: 6e0da01df8ac5fd3cdb6b4e42dfbc08fab7d9615
+ms.openlocfilehash: 5931d532a0790f1570d1d99687611231aafc7596
 
 
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域中创建组织单位 (OU)
 Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计算机”和“AADDC 用户”。 “AADDC 计算机”容器包含已加入托管域的所有计算机的计算机对象。 “AADDC 用户”容器包含 Azure AD 租户中的用户和组。 有时，可能需要在托管域上创建服务帐户才能部署工作负荷。 为此，可以在托管域上创建自定义的组织单位 (OU)，并在此 OU 中创建服务帐户。 本文说明如何在托管域中创建 OU。
+
+## <a name="before-you-begin"></a>开始之前
+若要执行本文中所列的任务，需要：
+
+1. 一个有效的 **Azure 订阅**。
+2. 一个 **Azure AD 目录** - 已与本地目录或仅限云的目录同步。
+3. 必须为 Azure AD 目录启用 **Azure AD 域服务**。 如果未启用，请遵循[入门指南](active-directory-ds-getting-started.md)中所述的所有任务。
+4. 一台已加入域的虚拟机，通过此虚拟机管理 Azure AD 域服务托管域。 如果没有此类虚拟机，请遵循[将 Windows 虚拟机加入托管域](active-directory-ds-admin-guide-join-windows-vm.md)一文中所述的所有任务。
+5. 需要目录中**属于“AAD DC 管理员”组的用户帐户**的凭据来在托管域上创建自定义 OU。
 
 ## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>在已加入域的虚拟机上安装 AD 管理工具进行远程管理
 可以使用熟悉的 Active Directory 管理工具（例如 Active Directory 管理中心 (ADAC) 或 AD PowerShell）对 Azure AD 域服务托管域进行远程管理。 租户管理员无权通过远程桌面连接到托管域上的域控制器。 若要管理托管域，请在加入托管域的虚拟机上安装 AD 管理工具功能。 有关说明，请参阅[管理 Azure AD 域服务托管域](active-directory-ds-admin-guide-administer-domain.md)一文。
@@ -60,7 +69,7 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
  ![ADAC - 新 OU 的安全性](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
 
 ## <a name="notes-on-administering-custom-ous"></a>有关管理自定义 OU 的说明
-创建自定义 OU 后，可以继续在此 OU 中创建用户、组、计算机和服务帐户。 无法将用户或组从“AAD DC 用户”OU 移到自定义 OU。
+创建自定义 OU 后，可以继续在此 OU 中创建用户、组、计算机和服务帐户。 无法将用户或组从“AADDC 用户”OU 移到自定义 OU。
 
 > [!WARNING]
 > 在自定义 OU 下创建的用户帐户、组、服务帐户和计算机对象无法在 Azure AD 租户中使用。 换而言之，使用 Azure AD 图形 API 或 Azure AD UI 无法显示这些对象。 这些对象仅在 Azure AD 域服务托管域中可用。
@@ -69,12 +78,13 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
 
 ## <a name="related-content"></a>相关内容
 * [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
+* [在托管域上配置组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory 管理中心：入门](https://technet.microsoft.com/library/dd560651.aspx)
 * [服务帐户分步指南](https://technet.microsoft.com/library/dd548356.aspx)
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

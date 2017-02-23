@@ -3,7 +3,7 @@ title: "在 DocumentDB 中使用多个区域进行开发 | Microsoft Docs"
 description: "了解如何从 Azure DocumentDB（完全托管的 NoSQL 数据库服务）访问多个区域中的数据。"
 services: documentdb
 documentationcenter: 
-author: kiratp
+author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: d4579378-0b3a-44a5-9f5b-630f1fa4c66d
@@ -12,19 +12,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
-ms.author: kipandya
+ms.date: 02/09/2016
+ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: d7ed490157eff98e31c824daf1f9af98ae1afeaa
+ms.sourcegitcommit: 240f45383639f1eb8a4a9b7c4e4489591be23dba
+ms.openlocfilehash: aac8c26cd9af94659abc80b2ae260dc380cf38c9
 
 
 ---
 # <a name="developing-with-multi-region-documentdb-accounts"></a>使用多区域 DocumentDB 帐户进行开发
-> [!NOTE]
-> DocumentDB 数据库全局分发功能已正式推出，所有新建的 DocumentDB 帐户将自动启用该功能。 我们正在努力为所有现有帐户启用全局分发，但在此之前，如果要为帐户启用全局分发，请[与支持部门联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，我们将会帮助你启用。
->
->
+
+通过 Azure Friday 视频，与 Scott Hanselman 和工程（主管）经理 Karthik Raman 一起，了解多区域 DocumentDB 帐户的详细信息。
+
+>[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+
+## <a name="introduction"></a>介绍
 
 为了利用[全局分发](documentdb-distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 可通过设置连接策略来实现此目的。 SDK 将会根据 DocumentDB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
 
@@ -158,6 +160,6 @@ SDK 会自动将所有写入请求发送到当前写入区域。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

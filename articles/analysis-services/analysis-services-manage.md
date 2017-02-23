@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 17df0dfc32078fc08d2e744d4e83f1a1d77a9da1
-ms.openlocfilehash: d6fbb7febc05548e1e89e12394bbb7064e5da1c9
+ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
+ms.openlocfilehash: a5db6cccf6c3dc55ee2cda59cb9e2ecd2292fcb5
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: d6fbb7febc05548e1e89e12394bbb7064e5da1c9
 ![在 Azure 中获取服务器名称](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。
+就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。 [下载并安装最新版本的 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
@@ -49,7 +49,7 @@ ms.openlocfilehash: d6fbb7febc05548e1e89e12394bbb7064e5da1c9
    
     **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
    
-    注意：如果没有看到 Active Directory 身份验证，则可能需要在 SSMS 中[启用 Azure Active Directory 身份验证](#enable-azure-active-directory-authentication)。
+    注意：如果没有看到 Active Directory 身份验证，则可能需要更新到[最新版本的 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
    
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
@@ -58,16 +58,6 @@ ms.openlocfilehash: d6fbb7febc05548e1e89e12394bbb7064e5da1c9
 ## <a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
 Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 这不同于通过 Windows 域用户名支持服务器管理员和数据库用户的本地表格模型数据库。 有关详细信息，请参阅[管理 Azure Analysis Services 中的用户](analysis-services-manage-users.md)。
 
-## <a name="enable-azure-active-directory-authentication"></a>启用 Azure Active Directory 身份验证
-若要在注册表中启用 SSMS 的 Azure Active Directory 身份验证功能，请创建一个名为 EnableAAD.reg 的文本文件，然后复制粘贴以下内容：
-
-```
-Windows Registry Editor Version 5.00
-[HKEY_CURRENT_USER\Software\Microsoft\Microsoft SQL Server\Microsoft Analysis Services\Settings]
-"AS AAD Enabled"="True"
-```
-
-保存然后运行该文件。
 
 ## <a name="troubleshooting-connection-problems"></a>连接问题疑难解答
 使用 SSMS 连接到服务器时，如果（在步骤 3 中）尝试使用非联合帐户或非 Azure Active Directory 中的帐户登录，并且无法连接，则可能需要清除登录缓存。 请先关闭 SSMS，再执行下列步骤。
@@ -85,6 +75,6 @@ Windows Registry Editor Version 5.00
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

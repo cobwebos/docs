@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/10/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: a3d79c2df96c21d1af77c8ea1f53a2cc4e28343e
-ms.openlocfilehash: 30b1a9144e06db92ba12030dfe37a83e79d62857
+ms.sourcegitcommit: 6f9974c109905f432705b85dcc8fc4d3549f16e9
+ms.openlocfilehash: 445bc1259cb3fa6f02fa1cadec11b1ac4b186e78
 
 
 ---
@@ -72,9 +72,9 @@ OMS 网关提供了以下语言：
 
 ### <a name="oms-portal"></a>OMS 门户
 
-1.  登录 OMS 工作区。
-2.  选择“设置” > “连接的源” > “Windows 服务器”。
-3.  单击“下载 OMS 网关”。
+1.    登录 OMS 工作区。
+2.    选择“设置” > “连接的源” > “Windows 服务器”。
+3.    单击“下载 OMS 网关”。
 
 
 ### <a name="azure-portal"></a>Azure 门户
@@ -100,11 +100,11 @@ OMS 网关提供了以下语言：
 4. 在端口和代理地址页上执行以下操作：
    1. 键入网关使用的 TCP 端口号。 安装程序将在 Windows 防火墙中打开此端口号。 默认值为 8080。
       端口号的有效范围为 1 - 65535。 如果输入的端口号不在此范围内，会出现一条错误消息。
-   2. （可选）如果安装网关的服务器需要使用代理，请键入网关需要连接到的代理地址， 例如 `http://myorgname.corp.contoso.com:80`。如果将此地址留空，网关将尝试直接连接到 Internet。 否则，网关将连接到代理。 如果代理服务器要求身份验证，请键入你的用户名和密码。
+   2. （可选）如果安装网关的服务器需要使用代理，请键入网关需要连接到的代理地址， 例如 `http://myorgname.corp.contoso.com:80`。如果将此地址留空，网关将尝试直接连接到 Internet。 否则，网关将连接到代理。 如果代理服务器要求身份验证，请键入你的用户名和密码。  
        ![网关向导代理配置](./media/log-analytics-oms-gateway/gateway-wizard02.png)  
    3. 单击“下一步”
 5. 如果尚未启用 Microsoft 更新，将会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，然后单击“下一步”。 否则，继续执行下一步。
-6. 在“目标文件夹”页上，保留默认文件夹 **%ProgramFiles%\OMS Gateway** 或键入网关的安装位置，然后单击“下一步”。
+6. 在“目标文件夹”页上，保留默认文件夹 c:\ProgramFiles\OMS Gateway 或键入网关的安装位置，然后单击“下一步”。
 7. 在“准备安装”页上，单击“安装”。 此时可能会显示“用户帐户控制”，请求提供安装权限。 在此情况下，请单击“是”。
 8. 安装完成后，单击“完成”。 可以验证该服务是否正在运行，方法是打开 services.msc 管理单元，然后检查服务列表中是否出现“OMS 网关”。  
     ![服务 - OMS 网关](./media/log-analytics-oms-gateway/gateway-service.png)
@@ -214,7 +214,7 @@ Operations Manager 代理通过管理服务器发送某些数据，例如 Operat
 4. 如果上一步骤未发生错误，则表示该模块已成功导入，可以使用 cmdlet。 键入 `Get-Module OMSGateway`
 5. 使用 cmdlet 做出更改后，请务必重新启动网关服务。
 
-如果步骤 3 出错，则表示该模块未导入。 出错的原因可能是 PowerShell 找不到模块。 可以在网关的安装路径中找到该模块：C:\Program File\Microsoft OMS Gateway\PowerShell。
+如果步骤 3 出错，则表示该模块未导入。 出错的原因可能是 PowerShell 找不到模块。 可以在网关的安装路径中找到该模块：C:\Program Files\Microsoft OMS Gateway\PowerShell。
 
 | **Cmdlet** | **参数** | **说明** | **示例** |
 | --- | --- | --- | --- |
@@ -280,6 +280,6 @@ Operations Manager 代理通过管理服务器发送某些数据，例如 Operat
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

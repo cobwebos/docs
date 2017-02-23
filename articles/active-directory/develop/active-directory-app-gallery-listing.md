@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0e4eb184e353700f945f0da93aeca2187d710415
-ms.openlocfilehash: 01133742302c366e283b6fac8b1e9436fc98901f
+ms.sourcegitcommit: 28712a9898bf2449de53d21fd87f1ce53da71ff8
+ms.openlocfilehash: df60c4737954e79ff860601412dffa58d4dbb471
 
 
 ---
@@ -42,13 +42,13 @@ ms.openlocfilehash: 01133742302c366e283b6fac8b1e9436fc98901f
 > 
 > 应用程序名称：
 > 
-> 应用程序说明（限制为 256 个字符）：
+> 应用程序说明（限制为&256; 个字符）：
 > 
 > 应用程序网站（参考性）：
 > 
 > 应用程序技术支持网站或联系信息：
 > 
-> 应用程序的客户端 ID，在 https://manage.windowsazure.com 上的应用程序详细信息中显示：
+> 应用程序的应用程序 ID，如 https://portal.azure.com 上的应用程序详细信息中所示：
 > 
 > 客户注册和/或购买应用程序时所用的应用程序注册 URL：
 > 
@@ -76,7 +76,7 @@ ms.openlocfilehash: 01133742302c366e283b6fac8b1e9436fc98901f
 > 
 > 应用程序名称：
 > 
-> 应用程序说明（限制为 256 个字符）：
+> 应用程序说明（限制为&256; 个字符）：
 > 
 > 应用程序网站（参考性）：
 > 
@@ -97,6 +97,6 @@ ms.openlocfilehash: 01133742302c366e283b6fac8b1e9436fc98901f
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

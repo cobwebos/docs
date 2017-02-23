@@ -1,5 +1,5 @@
 ---
-title: "Windows VM 的常见问题解答 | Microsoft Docs"
+title: "有关 Azure 中 Windows VM 的常见问题 | Microsoft Docs"
 description: "回答了通过 Resource Manager 模型创建的 Windows 虚拟机的一些常见问题。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2016
+ms.date: 01/17/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: f78c66904a3e07ffde5908167f27882e51e781e7
+ms.sourcegitcommit: cfc58b84ccd671b3a34a399bad11d15c9bc3b713
+ms.openlocfilehash: f338a124537090894773bb6fce1052fc7f590a33
 
 
 ---
@@ -46,12 +46,12 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 
 如果有应用程序需要使用 D: 驱动器号，可以重新分配驱动器号以便临时磁盘使用除 D: 以外的位置。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
+
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>如何更改临时磁盘的驱动器号？
 可以通过移动页面文件和重新分配驱动器号来更改驱动器号，但需确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>我是否可以将现有 VM 添加到可用性集？
 否。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
-
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>我是否可以将虚拟机上传到 Azure？
 是的。 有关说明，请参阅 [Upload a Windows VM image to Azure](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（将 Windows VM 映像上载到 Azure）
 
@@ -62,11 +62,11 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 是的。 有关说明，请参阅 [How to create a copy of a Windows virtual machine in the Resource Manager deployment model](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何在 Resource Manager 部署模型中创建 Windows 虚拟机的副本）。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure Resource Manager 中看不到加拿大中部和加拿大东部区域？
+
 针对现有 Azure 订阅创建的虚拟机不会自动注册到加拿大中部和加拿大东部这两个新区域。 通过 Azure 门户使用 Azure Resource Manager 将虚拟机部署到其他任何区域时，将自动完成注册。 将虚拟机部署到其他任何 Azure 区域后，新区域可供后续虚拟机使用。
 
 ## <a name="does-azure-support-linux-vms"></a>Azure 是否支持 Linux VM？
 是的。 若要快速创建 Linux VM 进行试用，请参阅[使用门户在 Azure 上创建 Linux VM](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
 ## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>创建 VM 后能否向 VM 添加 NIC？
 否。 添加 NIC 只能在创建时进行。
 
@@ -74,18 +74,18 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 是的。 计算机名称的最大长度为 15 个字符。 有关命名资源的详细信息，请参阅 [Infrastructure naming guidelines](virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（基础结构命名准则）。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>创建 VM 时，用户名有什么要求？
+
 用户名最长为 20 个字符，不能以句点（“.”）结尾。 
 
-不允许使用以下用户名：
 
+不允许使用以下用户名：
 <table>
     <tr>
         <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
     </tr>
     <tr>
         <td style="text-align:center">测试 </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
-    </tr>
-    <tr>
+    </tr>    <tr>
         <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
@@ -106,7 +106,7 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 </table>
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>创建 VM 时，密码有什么要求？
-密码的长度必须为 8 到 123 个字符，并满足以下 4 个复杂性要求中的 3 个要求：
+密码的长度必须为 12 到 123 个字符，并满足以下 4 个复杂性要求中的 3 个要求：
 
 * 具有小写字符
 * 具有大写字符
@@ -117,15 +117,23 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
 
 <table>
     <tr>
-        <td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+        <td>abc@123 </td>
+        <td>P@$$w0rd </td>
+        <td>P@ssw0rd </td>
+        <td>P@ssword123 </td>
+        <td>Pa$$word </td>
     </tr>
     <tr>
-        <td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+        <td>pass@word1 </td>
+        <td>Password! </td>
+        <td>Password1 </td>
+        <td>Password22 </td>
+        <td>iloveyou! </td>
     </tr>
 </table>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

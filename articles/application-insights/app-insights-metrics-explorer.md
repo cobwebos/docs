@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/03/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 6c644b124ad8c994170152006ff61c11e363e7ab
-ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
+ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
+ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
 
 ![在 Azure 门户中打开应用程序的概览边栏选项卡](./media/app-insights-metrics-explorer/03-range.png)
 
-如果某些数据未按预期出现，请单击“刷新”。 图表将定期自动刷新，但时间范围越大，刷新间隔时间越长。 在发布模式下，数据通过分析管道显示在图表上可能需要一些时间。
+如果某些数据未按预期出现，请单击“刷新”。 图表将定期自动刷新，但时间范围越大，刷新间隔时间越长。 数据通过分析管道显示在图表上可能需要一些时间。
 
 若要放大图表的某个部分，请在该部分上拖动鼠标：
 
@@ -115,6 +115,11 @@ ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
 
 ![取消选择所有指标可查看默认值](./media/app-insights-metrics-explorer/06-total.png)
 
+## <a name="pin-y-axis"></a>固定 Y 轴 
+默认情况下，图表显示的 Y 轴值从零开始一直到数据范围中的最大值，通过可视化方式表现值的份额。 但在某些情况下，除了份额外，通过可视化方式检查值的细微变化可能也很有趣。 为了达到此类自定义效果，请使用 Y 轴范围编辑功能将 Y 轴的最小值或最大值固定在所需位置。
+单击“高级设置”复选框，显示 Y 轴范围设置
+
+![单击“高级设置”，选择“自定义范围”，然后指定最值](./media/app-insights-metrics-explorer/y-axis-range.png)
 
 ## <a name="filter-your-data"></a>筛选数据
 若只要查看选定的一组属性值的指标：
@@ -158,23 +163,9 @@ ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
 
 ![在指标资源管理器顶部的按钮中](./media/app-insights-metrics-explorer/17-reset.png)
 
-<a name="live-metrics-stream"></a>
+## <a name="live-metrics-stream"></a>实时指标流
 
-## <a name="live-metrics-stream-instant-metrics-for-close-monitoring"></a>实时指标流：适用于关闭监视的实时指标
-实时指标流说明应用程序指标正处于此非常时刻，接近实时的延迟为 1 秒。 发布新版本并想要确保一切按预期运行，或者要实时调查某个事件时，这非常有用。
-
-![在“概览”边栏选项卡中单击“实时流”](./media/app-insights-metrics-explorer/live-stream.png)
-
-不同于指标资源管理器，实时指标流显示一组固定指标。 数据只会在图表上显示时才会得到保留，不显示时将被丢弃。
-
-### <a name="live-failures"></a>实时失败
-
-如果记录了任何失败或异常，实时流将选出这些信息的一个样本。 单击“暂停”可以暂停特定的样本，选择一个事件可显示其详细信息。
-
-![采样的实时失败](./media/app-insights-metrics-explorer/live-stream-failures.png)
-
-
-实时指标流适用于最新版本的 [Application Insights SDK for Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)。
+若要更直观的观察遥测，请打开[实时流](app-insights-live-stream.md)。 由于聚合过程，大多数指标需要几分钟才会显示。 相比之下，实时指标为实现低延迟进行了优化。 
 
 ## <a name="set-alerts"></a>设置警报
 若要收到任意指标异常值的电子邮件通知，请添加警报。 可选择将电子邮件发送给帐户管理员或特定电子邮件地址。
@@ -201,7 +192,7 @@ ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
 如果想要获得数据的更丰富视图，可以[导出到 Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)。
 
 ## <a name="analytics"></a>分析
-[Analytics](app-insights-analytics.md) 是使用强大查询语言来分析遥测数据的更灵活方式。 如果想要合并或计算指标的结果或执行应用程序近期性能的深入分析，可以使用它。 另一方面，如果想要自动刷新仪表板上的图表和警报，可以使用指标资源管理器。
+[Analytics](app-insights-analytics.md) 是使用强大查询语言来分析遥测数据的更灵活方式。 如果想要合并或计算指标的结果或执行应用程序近期性能的深入分析，可以使用该功能。 另一方面，如果想要自动刷新仪表板上的图表和警报，可以使用指标资源管理器。
 
 ## <a name="troubleshooting"></a>故障排除
 *图表中未显示任何数据。*
@@ -224,6 +215,6 @@ ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

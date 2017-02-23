@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
+ms.sourcegitcommit: 080ac72246e62948c3defe329028f27751e8c78d
+ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
@@ -350,7 +350,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 |电子邮件|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |FirstName|字符串|名字。 不得为空。 最大长度为 100 个字符。|  
 |LastName|字符串|姓氏。 不得为空。 最大长度为 100 个字符。|  
-|UserData|字符串|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
+|UserData|字符串|[注册](api-management-page-controls.md#sign-up)控件使用的值。|  
 |NameIdentifier|字符串|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |ProviderName|字符串|身份验证提供程序名称。|
 
@@ -358,6 +358,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

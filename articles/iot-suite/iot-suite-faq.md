@@ -4,7 +4,7 @@ description: "有关 IoT 套件的常见问题"
 services: 
 suite: iot-suite
 documentationcenter: 
-author: aguilaaj
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
-ms.author: araguila
+ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 69d4439a20fec8caaabdb43444cabd81f7d1b7c8
-ms.openlocfilehash: 6245c2a0f73ff63e3bfb5fe16112f89ed0efdf30
+ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
+ms.openlocfilehash: ff2e371f0c75dca36cceda36f477e30588dea8e4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 6245c2a0f73ff63e3bfb5fe16112f89ed0efdf30
 * 如果删除 [Azure 门户][lnk-azure-portal]中的资源组，则只会删除该资源组中的资源。 此外还需在 [Azure 经典门户][lnk-classic-portal]中删除与预配置的解决方案关联的 Azure Active Directory 应用程序。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
-10 个。 可以创建 [Azure 支持票证][link-azuresupportticket]以提高此限制，但默认情况下，如 [Azure 订阅限制][link-azuresublimits]中所述，对每个订阅只能预配 10 个 IoT 中心。 由于每个预配置的解决方案将预配一个新的 IoT 中心，因此，在给定的订阅中，最多只能预配 10 个预配置的解决方案。 
+可以为每个订阅部署 10 个 IoT 中心。 可以创建 [Azure 支持票证][link-azuresupportticket]以提高此限制，但默认情况下，如 [Azure 订阅限制][link-azuresublimits]中所述，对每个订阅只能预配 10 个 IoT 中心。 由于每个预配置的解决方案将预配一个新的 IoT 中心，因此，在给定的订阅中，最多只能预配 10 个预配置的解决方案。 
 
 ### <a name="how-many-documentdb-instances-can-i-provision-in-a-subscription"></a>在订阅中可以设置多少个 DocumentDB 实例？
 50 个。 可以创建 [Azure 支持票证][link-azuresupportticket]以提高此限制，但在默认情况下，对每个订阅只能预配 50 个 DocumentDB 实例。 
@@ -80,6 +80,6 @@ ms.openlocfilehash: 6245c2a0f73ff63e3bfb5fe16112f89ed0efdf30
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e14e2227d95b396d7d281edfd367f0a24ac54f7a
+ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
+ms.openlocfilehash: 53e9fd58e72d83db32fa1fab937b4618cd4cd159
 
 
 ---
@@ -25,9 +25,7 @@ Azure Active Directory (Azure AD) 使用 SAML 2.0 协议，使应用程序能够
 
 SAML 协议要求标识提供者 (Azure AD) 与服务提供者（应用程序）交换有关自身的信息。
 
-将应用程序注册到 Azure AD 时，应用开发人员需将联合身份验证相关的信息注册到 Azure AD。 这包括应用程序的**重定向 URI** 和**元数据 URI**。
-
-Azure AD 使用云服务的**元数据 URI** 来检索云服务的签名密钥和注销 URI。 如果应用程序不支持元数据 URI，开发人员必须联系 Microsoft 支持人员，让其提供注销 URI 和签名密钥。
+将应用程序注册到 Azure AD 时，应用开发人员需将联合身份验证相关的信息注册到 Azure AD。 这包括应用程序的**重定向 URI**。
 
 Azure Active Directory 公开特定于租户的和公用的（独立于租户的）单一登录和单一注销终结点。 这些 URL 表示可寻址位置（不只是标识符），方便你转到终结点读取元数据。
 
@@ -39,7 +37,6 @@ Azure Active Directory 公开特定于租户的和公用的（独立于租户的
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

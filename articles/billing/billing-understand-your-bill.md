@@ -1,10 +1,10 @@
 ---
-title: "了解帐单 | Microsoft 文档"
+title: "了解 Azure 帐单 | Microsoft Docs"
 description: "了解如何阅读并理解 Azure 订阅的使用情况和计费"
 services: 
 documentationcenter: 
 author: genlin
-manager: stevenpo
+manager: ruchic
 editor: 
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
@@ -13,79 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 02/03/2017
 ms.author: erihur;genli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8768ccd5a1d04566c5f2e1f26ab328cea570cc61
+ms.sourcegitcommit: 29a6290a19186d5bc8a07d87617b47d21529d6b7
+ms.openlocfilehash: 2e99332e2a2b023c00669b3ad5ea07f0c791a805
 
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
-> [!NOTE]
-> 对于本文中的任何部分，如需更多帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-> 
-> 
+若要了解 Azure 帐单，请查看包含费用摘要的发票和单独的每日详细使用情况文件。 本文对发票和每日使用情况文件中显示的大部分条款进行说明。 若要获取这些文件，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。 如果使用的是免费试用订阅，则可以获得每日使用情况信息，但没有发票。
 
-Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（例如 Visual Studio Enterprise (MPN) 订户）包含你可以根据需要用于 Azure 服务的每月信用额度。
+Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如 Visual Studio Enterprise (MPN) 订户）包含你可以根据需要用于 Azure 服务的每月信用额度。
 
-请注意，可在当前计费周期报告上一个计费周期中的最多 24 小时的延迟使用情况。
+在上一计费周期结束时，最多 24 小时的使用情况可能显示在当前帐单中。 另外，对于国际客户，帐单上列出的费用仅用于估算目的。 不同的银行根据不同的兑换率计算费用。
 
-有关耗用量和资费套餐的详细信息，请参阅[“Microsoft Azure 购买选项”页](https://azure.microsoft.com/pricing/purchase-options/)。
+## <a name="a-namepdfa-understand-your-invoice-pdf"></a><a name="pdf"></a>了解发票 (.pdf)
+发票提供费用的摘要。 可以从 [Azure 门户](https://portal.azure.com)下载可移植文档格式 (.pdf) 的发票。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。 
 
-<!-- The below links cover a complete list of all Microsoft Azure services.
+下列部分列出了可在发票上看到的大多数条款以及每个条款的说明。
 
-<!-- - [Service Details list (csv1)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
-<!-- - [Service Details list (csv2)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
-
-<!-- *NOTE: The **csv1** link refers to the column header names for csv version 1 and **csv2** link refers to the new column header names for csv version 2.  These files are updated monthly.*-->
-
-### <a name="view-or-download-a-bill-for-microsoft-azure"></a>查看或下载 Microsoft Azure 帐单：
-1. 使用 Microsoft 帐户或者组织帐户 ID 登录到[帐户中心](https://account.windowsazure.com/subscriptions)。
-2. 单击要查看其详细信息和使用量的订阅。
-3. 单击“帐单历史记录”
-   
-    ![摘要 - 帐单 1](./media/billing-understand-your-bill/ContentViewaBillforMA1.png)
-4. “帐单历史记录”部分列出了以前的计费周期以及当前未开票期间的对帐单。 当前期间的对帐单是生成估算值时的估计费用。 此信息每天只会更新一次，而且可能不包含截到本日为止的所有使用量。 你的每月帐单可能与这项估计有所不同。  
-   
-    ![摘要 - 帐单 2](./media/billing-understand-your-bill/ContentViewaBillforMA2.png)
-5. 单击“查看当前对帐单”，查看截至估算生成时的估计费用。 此信息每天只会更新一次，而且可能不包含截到本日为止的所有使用量。 你的每月帐单可能与这项估计有所不同。
-   
-    ![摘要 - 帐单 3](./media/billing-understand-your-bill/ContentViewaBillforMA3.png)
-   
-    ![摘要 - 帐单 4](./media/billing-understand-your-bill/ContentViewaBillforMA4.png)
-6. 单击“下载发票”，查看先前帐单的副本。
-   
-    ![摘要 - 帐单 5](./media/billing-understand-your-bill/ContentViewaBillforMA5.png)
-
-> [!NOTE]
-> 对于国际客户，对帐单上列出的费用仅用于估算目的，因为不同的银行根据不同的兑换率计算费用。
-> 
-> 
-
-以下是 Microsoft Azure 上提供的两种不同产品/服务的一些示例对帐单。
-
-| 产品/服务类型 | 说明 | 下载 |
-|:--- |:--- |:--- |
-| 即用即付 |每月应付欠款 |[示例文件](https://azurepricing.blob.core.windows.net/sampleinvoices/Microsoft_Azure_ccinvoice_Sample.pdf) |
-| 承诺产品/服务 |从预付承诺扣减的费用 |[示例文件](https://azurepricing.blob.core.windows.net/sampleinvoices/Microsoft_Azure_invoice_Sample.pdf) |
-
-## <a name="account-information"></a>帐户信息
-帐户信息部分中指明了与使用量和配置文件相关的信息。
+### <a name="account-information"></a>帐户信息
+帐户信息部分显示有关使用情况和个人资料的信息。
 
 ![标头的值开始缓存响应](./media/billing-understand-your-bill/Header.png)
 
 | 术语 | 说明 |
 | --- | --- |
 | 发票号 |用于跟踪的唯一发票标识符 |
-| 计费周期 |产生使用量的时间范围 |
+| 计费周期 |此发票涵盖的日期范围 |
 | 发票日期 |生成发票的日期 |
-| 付款方式 |在帐户中使用的付款类型（“发票”或“信用卡”） |
-| 帐单邮寄地址 |Microsoft Azure 付款地址 |
-| 订阅产品/服务 |购买的订阅产品/服务的类型（即用即付、BizSpark Plus、Azure Pass 等） |
-| 帐户所有者电子邮件地址 |注册 Microsoft Azure 帐户时使用的帐户电子邮件地址 |
+| 付款方式 |在帐户中使用的付款类型（“发票”或“信用卡”）。 如果需要更新信用卡，请参阅[如何更改用于支付 Azure 订阅的信用卡](billing-how-to-change-credit-card.md)。 如果用户代表企业，则可以使用转账支付方式支付 Azure 订阅，如支票、隔夜支票或汇款。 请参阅 [Azure 账单 - 如何开具发票](https://azure.microsoft.com/pricing/invoicing/)。 |
+| 帐单邮寄地址 |Microsoft Azure 付款地址。 若要了解如何更新账单信息，请查看[更改用于支付 Azure 订阅的信用卡](billing-how-to-change-credit-card.md)。 |
+| 订阅产品/服务 |购买的订阅产品/服务的类型（即用即付、BizSpark Plus、Azure Pass 等）。 如果要将即用即付更改为其他订阅产品/服务，请参阅[将 Azure 订阅切换到其他产品/服务](billing-how-to-switch-azure-offer.md)。 |
+| 帐户所有者电子邮件地址 |注册 Microsoft Azure 帐户时使用的帐户电子邮件地址。 如何更改电子邮件地址，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。 |
 
-## <a name="understand-the-invoice-summary"></a>了解发票汇总
+### <a name="understand-the-invoice-summary"></a>了解发票汇总
 帐单的“发票汇总”部分汇总了上次帐单之后的交易以及当前的使用费。
 
 ![发票汇总](./media/billing-understand-your-bill/InvoiceSummary.png)
@@ -98,140 +61,103 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（例
 | 付款 |应用到上次帐单的总付款金额 |
 | 未付余额（从上一计费周期） |上次帐单之后应用到你帐户的任何帐单调整（信用额度或结余） |
 
-## <a name="understand-the-current-charges"></a>了解当前费用
-帐单的“当前费用”部分包含有关每月费用的详细信息。 链接已组织成以下小节。
+### <a name="understand-the-current-charges"></a>了解当前费用
+帐单的“当前费用”部分显示有关每月费用的详细信息。 
 
 | 术语 | 说明 |
 | --- | --- |
-| 使用费 |使用费是订阅的总月度费用。 我们会根据你过去一个月的使用量事后向你收取费用。 |
-| 折扣 |应用到当前帐单的服务折扣会反映在这个行项目中。 |
-| 调整 |杂项调整是应用到当前帐单的其他信用额度或未付费用。 例如，如果你享有 Visual Studio Enterprise with MSDN 优惠，你会在这个行项目中看到每月信用额度。 如果取消订阅，将从你的当前计费周期开始到订阅取消日期为止，对超出产品/服务中包含的每月信用额度的每月使用量进行收费。 |
+| 使用费 |使用费是订阅的总月度费用。 我们会根据你过去一个月的使用量向你收取费用。 |
+| 折扣 |应用到当前帐单的服务折扣。 |
+| 调整 |应用于当前帐单的其他信用额度或未清费用。 例如，如果你享有 Visual Studio Enterprise with MSDN 优惠，你会看到每月信用额度。 如果取消订阅，你会看到超出通过订阅产品/服务获得的每月信用额度的所有每月使用费用。 费用从当前计费周期的开始计算，直到订阅取消日期。 |
 
-## <a name="footer-information"></a>页脚信息
-![页脚](./media/billing-understand-your-bill/footerinformation.png)
 
-## <a name="understand-the-additional-information"></a>了解其他信息
-“其他信息”页提供让你了解发票的其他资源参考、用于查看使用量的链接，以及帐单的其他相关信息。
-
-![其他信息](./media/billing-understand-your-bill/AdditionalInformation.png)
-
-### <a name="detailed-usage"></a>详细使用情况
-“详细使用情况”下面的描述中提供了一个链接，单击该链接可定向到帐户中心，可以在其中查看此订阅的详细使用情况。  现在有两个版本可供下载：**.csv 版本 1** 包含旧的命名约定和使用量字段，**.csv 版本 2** 包含每个类别的客户易记名称，以及其他有助于了解在 Microsoft Azure 上使用的服务的字段。 请注意，.csv 版本 1 中没有 Azure Resource Manager 的详细信息。 在 .csv 版本 2 中可以找到 Azure Resource Manager 信息。
-
-### <a name="additional-information-and-useful-resources"></a>其他信息和有用资源
-此部分包含有关计算实例大小、SQL DB 费用等简单问题的链接，以及可帮助你进一步回答问题的有用链接。
+### <a name="sold-to-and-payment-instructions"></a>买方和付款说明
+下表介绍发票中显示的买方和付款说明。
 
 | 术语 | 说明 |
 | --- | --- |
-| 买方 |已预先填充了帐户的配置文件地址 |
-| 付款说明 |此部分是付款方式为发票时寄送支票、电汇或隔天送达支票的付款说明 |
+| 买方 |已预先填充了帐户的配置文件地址。 如果需要更改此项，请参阅[如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息](billing-how-to-change-azure-account-profile.md)。 |
+| 付款说明 |如果付款方式为发票，将在此处寄送支票、电汇或隔天送达支票。 有关详细信息，请参阅 [Azure 账单 - 如何开具发票](https://azure.microsoft.com/pricing/invoicing/) |
 
-## <a name="understand-detailed-usage-charges"></a>了解详细的使用费
-我们一直在不断努力，以帮助客户轻松管理 Azure 使用量。我们已对报告 Azure 服务使用量和费用的下载使用量文件进行了改进。  下载链接包含两个版本的使用文件：
+## <a name="a-namecsva-understand-detailed-usage-charges-csv"></a><a name="csv"></a>了解详细的使用费 (.csv)
+使用情况文件显示在当前计费周期内每个资源使用了多少。 它以逗号分隔值 (.csv) 文件格式提供，你可以在电子表格应用程序中打开它。 如果看到两个版本可用，请下载版本 2。 这是最新的文件格式。 有关详细信息，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
 
-* **版本 1** 使用预先存在的格式
-* **版本 2** 包括其他信息和“每日使用情况”部分中的已更新列名称。  
+使用费是订阅的**每月**总费用减去任何信用额度或折扣。 我们会根据你过去一个月的使用量向你收取费用。  
 
-使用费是订阅的**每月**总费用减去任何信用额度或折扣。 我们会根据你过去一个月的使用量事后向你收取费用。  文件的顶部显示在上月的计费周期内要支付费用的服务的详细信息。  上表列出了每个.csv 版本文件的列名称。
+以下部分介绍版本 2 的详细使用情况文件中显示的大部分条款。
 
-| 版本 1 | 版本 2 | 说明 |
-|:--- |:--- | --- |
-| 计费周期 |计费周期 |使用资源时的计费周期。 |
-| 名称 |测定仪类别 |列出该次使用所属的最上层服务。 |
-| 类型 |测定仪子类别 |Azure 服务可能会在此列中按类型进一步定义，这可能会影响费率。 |
-| 资源 |测定仪名称 |列出耗用资源的度量单位。 |
-| 区域 |测定仪区域 |指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 |
-| SKU |SKU |指明每个 Azure 资源的唯一系统标识符。 |
-| 计价单位 |计价单位 |指明服务的计价单位。 例如，GB、小时、10,000 秒。 |
-| 已耗用 |已耗用数量 |包含计费期间所耗用的资源量。 |
-| 附送 |附送数量 |包含当前计费周期免费提供的资源量。 |
-| 可计费 |超额数量 |如果已耗用数量超过所提供的数量，则此数据行会显示差异。 我们会针对此数量向你收费。 对于不附送任何数量的即用即付产品/服务，此总数与已耗用数量相同。 |
-| 在承诺额范围内 |在承诺额范围内 |包含从您的 6 或 12 个月产品/服务相关承诺用量中缩减的资源费用。 资源费用依时间先后顺序从承诺用量中进行递减。 |
-| 货币 |货币 |指明当前计费周期反映的货币。 |
-| 超额 |超额 |包含超过您的 6 或 12 个月产品/服务相关承诺用量的资源费用。 |
-| 承诺费率 |承诺费率 |包含基于您的 6 或 12 个月产品/服务相关总承诺用量的承诺费率。 |
-| 费率 |费率 |费率会显示根据每个可计费单位向你收费的费率。 |
-| 值 |值 |显示可计费列乘以费率列的结果。 如果已耗用数量未超过所提供的数量，则此数据行中将不会有任何费用。 |
+### <a name="statement"></a>语句 
+文件的顶部显示了你在上个月的计费周期期间使用的服务。 下表列出了此部份中显示的条款和说明。
 
-## <a name="analyze-daily-usage-data"></a>分析每日使用数据
-可能会有数千行的日常使用数据，具体取决于你的使用情况。 如果想要分析此数据，请单击“下载使用量”，然后选择逗号分隔变量文件 (.csv) 版本，查看相应计费周期内的每日使用量数据。  您可以下载每个版本的示例 .csv 文件，以供您参考。
+| 术语 | 说明 |
+| --- | --- |
+|计费周期 |使用资源或服务时的计费周期。 |
+|测定仪类别 |列出该次使用所属的最上层服务。 |
+|测定仪子类别 |定义 Azure 服务的类型，该类型可能会影响费率。 |
+|测定仪名称 |列出耗用资源的度量单位。 |
+|测定仪区域 |指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 |
+|SKU |指明每个 Azure 资源的唯一系统标识符。 |
+|计价单位 |指明服务的计价单位。 例如，GB、小时、10,000 秒。 |
+|已耗用数量 |计费周期期间使用的资源量。 |
+|附送数量 |当前计费周期免费提供的资源量。 |
+|超额数量 |显示已耗用数量和已包含数量之间的差异。 将根据此数量对你计费。 对于不附送任何数量的即用即付产品/服务，此总数与已耗用数量相同。 |
+|在承诺额范围内 |显示从与你的 6 或 12 个月产品/服务关联的承诺金额中减去的资源费用。 按时间顺序减去资源费用。 |
+|货币 |当前计费期间内使用的货币。 |
+|超额 |显示超过与你的 6 或 12 个月产品/服务关联的承诺金额的资源费用。 |
+|承诺费率 |显示基于与你的 6 或 12 个月产品/服务关联的总承诺金额的承诺费率。 |
+|费率 |为每个可付费单位支付的费率。 |
+|值 |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
 
-| 名称 | 下载 |
-|:---:|:---:|
-|   详细的使用量 .csv 版本 1 |[示例文件](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx) |
-|   详细的使用量 .csv 版本 2 |[示例文件](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx) |
+### <a name="daily-usage"></a>每日使用情况 
 
-![csv2 快照](./media/billing-understand-your-bill/csv2screenshot.png)
+该文件的“每日使用情况”部分显示影响计费费率的使用详细信息。 下表列出了此部份中显示的条款和说明。 
 
-在 .csv 文件中，项目会进行细分，以显示当前计费周期内每个资源的耗用量清单。
+| 术语| 说明 |
+| --- | --- |
+|使用日期 |使用资源时的日期。 |
+|测定仪类别 |列出该次使用所属的最上层服务。 |
+|测定仪 ID |计费测定仪标识符。 此标识符用于为计费使用定价。 |
+|测定仪子类别 |定义 Azure 服务类型，该类型可能会影响费率。 |
+|测定仪名称 |列出耗用资源的度量单位。 |
+|测定仪区域|指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 |
+|计价单位 |指明服务的计价单位。 例如，GB、小时、10,000 秒。 |
+|已耗用数量 |当日已耗用的资源量。 |
+|资源位置 |指明资源正在其中运行的数据中心。 |
+|已耗用的服务 |你使用的 Azure 平台服务。 |
+|资源组 |部署的资源正在其中运行的资源组。 有关详细信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。 |
+|实例 ID |资源的标识符。 此标识符包含您在资源创建时为其指定的名称。 它是资源的名称或完全限定的资源 ID。 有关详细信息，请参阅 [Azure Resource Manager API](/rest/api/resources/resources)。 |
+|标记 |分配给资源的标记。 使用标记对计费记录进行分组。 例如，可以使用标记按使用资源的部门分配费用。 支持发出标记的服务包括虚拟机、存储和使用 [Azure Resource Manager API](/rest/api/resources/resources) 预配的网络服务。 有关详细信息，请参阅[使用标记来组织 Azure 资源](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。 |
+|其他信息 |服务特定的元数据。 例如，虚拟机的映像类型。 |
+|服务信息 1 |订阅上服务所属的项目名称。 |
+|服务信息 2 |这是一个旧字段，用于捕获可选的服务特定元数据。 |
 
-![csv 快照](./media/billing-understand-your-bill/csvsnapshotportal.png)
+## <a name="tips-for-cost-management"></a>成本管理建议
+最好主动控制成本：
 
-以下列显示了在开始计费期间时影响费率的详细信息：
+- 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)、[总体拥有成本计算器](https://aka.ms/azure-tco-calculator)和添加服务时估计成本
+- [设置计费警报](billing-set-up-alerts.md)
+- [在 Azure 门户中定期查看使用情况和成本](billing-getting-started.md#costs)
 
-| 版本 1 | 版本 2 | 说明 |
-|:--- |:--- | --- |
-| 使用日期 |使用日期 |资源的发出日期。 |
-| 名称 |测定仪类别 |列出该次使用所属的最上层服务。 |
-| 资源 GUID |测定仪 ID |计费测定仪标识符。  此标识符用于进行计费使用定价。 |
-| 类型 |测定仪子类别 |Azure 服务可能会在此列中按类型进一步定义，这可能会影响费率。 |
-| 资源 |测定仪名称 |列出耗用资源的度量单位。 |
-| 区域 |测定仪区域 |指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 |
-| 计价单位 |计价单位 |指明服务的计价单位。 例如，GB、小时、10,000 秒。 |
-| 已耗用 |已耗用数量 |包含当日已耗用的资源量。 |
-| 子区域 |资源位置 |指明资源正在其中运行的数据中心。 |
-| 服务 |已耗用的服务 |你可以利用这个列来跟踪可能无法在名称列中特别列出的单个 Azure 平台服务。 此服务列将指出与使用量相关的特定服务。 |
-| 不适用 |资源组 |***添加新列。*** 部署的资源正在其中运行的资源组。 请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md) |
-| 组件 |实例 ID |正在运行的资源的标识符。 此标识符包含您在资源创建时为其指定的名称。 |
-| 不适用 |标记 |***添加新列。*** Azure 中的新资源类型，允许您标记资源。 请参阅[使用标记组织 Azure 资源](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) |
-| 其他信息 |其他信息 |与服务相关的其他元数据。 |
-| 服务信息 1 |服务信息 1 |此列包含订阅上服务所属的项目名称。 |
-| 服务信息 2 |服务信息 2 |这是一个旧字段，用于捕获可选的服务特定元数据。 |
+若要了解详细信息，请参阅 [Azure 计费和成本管理入门](billing-getting-started.md)。
 
-除了一些新字段和对 csv 版本 2 的名称更改之外，将对以下字段中的数据进行标准格式化：
+## <a name="how-do-i-make-a-payment"></a>如何付款？
+如果已将信用卡或借记卡设置为付款方式，则将自动进行付款。 如果要使用[发票付款方式](https://azure.microsoft.com/pricing/invoicing/)，应将付款寄送到发票底部列出的地点。 有关更多帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-* **实例 ID**：“实例 ID”字段表示用户为已预配的服务指定的标识符。 目前，有两种格式的实例 ID：资源名称或完全限定的资源 ID。 Microsoft Azure 服务正在转换为对实例 ID 使用标准化的完全限定的资源 ID 格式 ***(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)***。 在服务转换为采用新格式时，您会看到“实例 ID”数据字段从仅包含资源名称更改为包含资源 ID。 资源 ID 是 [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/dn790567.aspx) 用来标识订阅中资源的格式。
+## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>如何查看通过信用卡付款时的付款状态？
+[创建支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以询问付款状态。 
 
-![实例 ID](./media/billing-understand-your-bill/instanceid.png)
+## <a name="what-about-marketplace-orders-or-external-service-charges"></a>应用商店订单或外部服务收取多少费用？
+外部服务过去称为应用商店订单。 外部服务由独立服务供应商提供，但已集成到 Azure 生态系统中。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
 
-* **其他信息**：使用量 .csv 中的“其他信息”列指定了服务特定元数据。 例如，VM 的图像类型。 目前，服务会发出以下多个列中的服务特定元数据：“其他信息”、“服务信息 1”和“服务信息 2”字段。 Microsoft Azure 服务仅对“其他信息”列中的发出服务特定元数据进行标准化。  请参阅以下标准化格式快照：
-
-![additionalinfo_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
-
-* **标记**：此列包含用户指定的资源标记。 标记可用于对计费记录进行分组。 例如，您可以使用标记按使用服务的部门分配费用。 详细了解如何[使用标记来组织 Azure 资源](../resource-group-using-tags.md)。 支持发出标记的服务包括：  
-  
-  * 虚拟机
-  * 存储空间；以及
-  * 使用 [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/dn790567.aspx) 预配的网络服务
-
-![标记](./media/billing-understand-your-bill/tags.png)
-
-## <a name="next-steps"></a>后续步骤
-* [设置计费警报](../billing-set-up-alerts.md)
-* [管理付款方式](../billing-how-to-change-credit-card.md)
-* [了解 Azure 应用商店收费](../billing-understand-your-azure-marketplace-charges.md)
-* [Azure 计费和订阅常见问题](../billing-subscription-faq.md)
-
-> [!NOTE]
-> 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-> 
-> 
-
-<!--
-OLD MSDN Articles
-- [What do I do if my Azure subscription become disabled?](https://msdn.microsoft.com/library/azure/dn736049.aspx)
-- [Edit payment information for an existing credit card](https://msdn.microsoft.com/library/azure/dn736053.aspx)
-- [Add a new credit card to use as a payment method](https://msdn.microsoft.com/library/azure/dn736057.aspx)
-- [Change the credit card on your Microsoft Azure account](https://msdn.microsoft.com/library/azure/dn736050.aspx)
-- [Manage your payment method](https://msdn.microsoft.com/library/azure/dn736054.aspx)
--->
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。 
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+ 
 
 
 
-<!--Image references-->
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

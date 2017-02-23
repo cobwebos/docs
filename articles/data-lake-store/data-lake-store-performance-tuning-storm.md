@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
 translationtype: Human Translation
-ms.sourcegitcommit: ebf876f946eceddce9c8c990d8b28fcb969bec23
-ms.openlocfilehash: 112226028c053cc91f9fb2bc0e5978f7cb2343ed
+ms.sourcegitcommit: 518d586a921926874cd959587ad2730ad346df71
+ms.openlocfilehash: cae3f0192d6b0e6204ede4c1855b731a2ffa4ae1
 
 
 ---
@@ -144,6 +144,6 @@ ADLS 限制：如果达到 ADLS 所提供的带宽限制，将开始出现任务
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

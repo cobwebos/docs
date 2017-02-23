@@ -15,8 +15,8 @@ ms.date: 01/17/2017
 ms.author: spelluru
 published: true
 translationtype: Human Translation
-ms.sourcegitcommit: 65c036240618f3e426707d57eeb6b194410a9084
-ms.openlocfilehash: 0110a2d21e7e83d2a185962eb120c560cc0ac0b6
+ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
+ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
@@ -27,15 +27,36 @@ ms.openlocfilehash: 0110a2d21e7e83d2a185962eb120c560cc0ac0b6
 *  [数据管理网关](data-factory-data-management-gateway.md)
 *  [使用 Azure 数据工厂在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md) 
 
-## <a name="current-version-2561641"></a>当前版本 (2.5.6164.1)
+
+## <a name="current-version-2762192"></a>当前版本 (2.7.6219.2)
+
+### <a name="whats-new"></a>新增功能
+- 现在可以使用服务主体向 Azure Data Lake Store 进行身份验证。 以前仅支持 OAuth。
+- 我们已经打包了新的驱动程序，用于从网关中本地数据存储上的 Oracle 读取数据。
+
+### <a name="enhancements-"></a>增强功能
+- 提高了从 Oracle 数据源读取数据的性能。
+- 已修复：OData 源 OAuth 令牌过期问题。
+- 已修复：Oracle 十进制超过 28 位时无法读取的问题。
+
+
+## <a name="earlier-versions"></a>早期版本
+
+## <a name="2661922"></a>2.6.6192.2
+### <a name="whats-new"></a>新增功能
+- 客户可以提供有关网关注册体验的反馈。
+- 支持新的压缩格式：ZIP (Deflate)
+
+### <a name="enhancements-"></a>增强功能
+- 改进了 Oracle 接收器和 HDFS 源的性能。
+- 修复了网关自动更新、网关并行处理能力方面的 Bug。
+
+
+## <a name="2561641"></a>2.5.6164.1
 ### <a name="enhancements"></a>增强功能
 - 进行了改进且更稳健的网关注册体验 - 现在可以在网关注册过程中跟踪进度状态，这使注册体验的响应速度更快。
 - 网关还原过程中的改进 - 即使你没有具有此更新的网关备份文件，也仍可以恢复网关。 这需要你在门户中重置“链接的服务”凭据。
 - Bug 修复。
-
-
-
-## <a name="earlier-versions"></a>早期版本
 
 ## <a name="2461511"></a>2.4.6151.1
 
@@ -75,7 +96,7 @@ ms.openlocfilehash: 0110a2d21e7e83d2a185962eb120c560cc0ac0b6
 
 *  手动安装期间可选择用于网关的语言/区域性。
 
-*  网关未按预期工作时，可选择向 Microsoft 发送最近 7 天的网关日志，帮助解决此问题。 如果网关未连接到云服务，可选择保存和存档网关日志。  
+*  网关未按预期工作时，可选择向 Microsoft 发送最近&7; 天的网关日志，帮助解决此问题。 如果网关未连接到云服务，可选择保存和存档网关日志。  
 
 *  网关配置管理器的用户界面改进：
 
@@ -185,7 +206,7 @@ ms.openlocfilehash: 0110a2d21e7e83d2a185962eb120c560cc0ac0b6
 
 ### <a name="1556121"></a>1.5.5612.1
 
-*  支持用于 Azure 数据工厂的 5 个关系数据库（MySQL、PostgreSQL、DB2、Teradata 和 Sybase）
+*  支持用于 Azure 数据工厂的&5; 个关系数据库（MySQL、PostgreSQL、DB2、Teradata 和 Sybase）
 *  压缩支持（Gzip 和 Deflate）
 *  性能提升
 *  Bug 修复
@@ -216,6 +237,6 @@ ms.openlocfilehash: 0110a2d21e7e83d2a185962eb120c560cc0ac0b6
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

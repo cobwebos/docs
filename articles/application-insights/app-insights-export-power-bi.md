@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: dba7f1ac2257246f14acf79de6e9fc714689b276
+ms.sourcegitcommit: 24ccafb4df95e0010416485199e19f81e1ae31aa
+ms.openlocfilehash: 11017c7c0a761569892aebcd085d5d3fb2d67a69
 
 
 ---
@@ -92,6 +92,6 @@ ms.openlocfilehash: dba7f1ac2257246f14acf79de6e9fc714689b276
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

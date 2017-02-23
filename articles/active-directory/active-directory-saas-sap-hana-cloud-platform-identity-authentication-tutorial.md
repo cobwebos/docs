@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 18fa3fd2fc9bb68b9e68c0c5ac5663a8a8348fd7
-ms.openlocfilehash: e02cb1916c65d137dc06b1ce6a9dd9621a31b56c
+ms.sourcegitcommit: 16ec322d0c921f97819375cfe52d2c3f02a2c53b
+ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
 
 
 ---
@@ -135,7 +135,7 @@ SAP HANA Cloud Platform Identity Authentication 应用程序要求 SAML 断言�
  
     ![配置单一登录][5]
 
-3. 在“单一登录”对话框的“用户属性”部分，如果 SAP 应用程序需要一个属性（例如“firstName”）， 则可在 SAML 令牌属性对话框中，添加“firstName”属性。
+3. 在“单一登录”对话框的“用户属性”部分，如果 SAP 应用程序需要一个属性（例如“firstName”），则在 SAML 令牌属性对话框上，添加“firstName”属性。
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
@@ -178,11 +178,11 @@ SAP HANA Cloud Platform Identity Authentication 应用程序要求 SAML 断言�
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 Azure 管理门户的左侧导航窗格中，单击“Azure Active Directory”图标。
+1. 在 **Azure 管理门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”显示用户列表。
+2. 转到“用户和组”，单击“所有用户”，显示用户列表。
     
     ![创建 Azure AD 测试用户](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_02.png) 
 
@@ -196,7 +196,7 @@ SAP HANA Cloud Platform Identity Authentication 应用程序要求 SAML 断言�
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
@@ -276,6 +276,7 @@ SAP HANA Cloud Platform Identity Authentication 支持“联合身份验证”�
 [203]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_203.png
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 
