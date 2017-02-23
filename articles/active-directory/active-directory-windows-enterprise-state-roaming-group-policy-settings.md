@@ -5,8 +5,8 @@ description: "提供有关在公司自有设备上使用的组策略和移动设
 services: active-directory
 keywords: "企业状态漫游的组策略和 MDM 设置, 企业状态漫游, Windows 云"
 documentationcenter: 
-author: femila
-manager: swadhwa
+author: markvi
+manager: femila
 editor: curtand
 ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
 ms.service: active-directory
@@ -14,8 +14,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 6bdec7bf35bb4a233200def36c0e697baaf15fec
 ms.openlocfilehash: 5ca48cf3cc4b2f4d86463e36c73de47e386cff25

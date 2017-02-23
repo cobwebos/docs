@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 37dc0772ccf74b19656b60f11e66e065815dc2a6
@@ -124,7 +124,7 @@ ms.openlocfilehash: 655d2ea7193551caa4b32efcf75a1dbf204f4954
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Halosys 应用程序的 URL：`https://<company-name>.Halosys.com/client-api/api`。
 
-    b.在“标识符 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.Halosys.com`。   
+    b.在“标识符 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.Halosys.com`。    
          
 4. 在“配置 Halosys 的单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上：
 
