@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric 支持选项 | Microsoft Docs"
+title: "了解 Azure Service Fabric 支持选项 | Microsoft Docs"
 description: "支持的 Azure Service Fabric 群集版本，以及文件支持票证的链接。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2016
+ms.date: 02/10/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: d848bebea962e8ba883266188cd0bafe991dd804
-ms.openlocfilehash: 5d27e6622faeee7cf9f4cdb2911171ef29d94b5c
+ms.sourcegitcommit: 05e433b028762016759637b2afa8c741b04f31ff
+ms.openlocfilehash: a31a297f909ffb1c6da748623b0050415c43486b
 
 
 ---
@@ -79,11 +79,9 @@ ms.openlocfilehash: 5d27e6622faeee7cf9f4cdb2911171ef29d94b5c
 | **Service Fabric 运行时群集** | **支持结束日期** |
 | --- | --- |
 | 5.3.121 之前的所有群集版本 |2017 年 1 月 20 日 |
-| 5.3.121.* |2017 年 2 月 24 日 |
-| 5.3.204.* |2017 年 2 月 24 日 |
-| 5.3.301.* |2017 年 2 月 24 日 |
-| 5.3.311.* |2017 年 2 月 24 日 |
-| 5.4. *. * |最新版本，因此尚无结束日期 |
+| 5.3.* |2017 年 2 月 24 日 |
+| 5.4.* |2017 年 4 月 17 日     |
+| 5.5.* |最新版本，因此尚无结束日期
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -100,6 +98,6 @@ ms.openlocfilehash: 5d27e6622faeee7cf9f4cdb2911171ef29d94b5c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
