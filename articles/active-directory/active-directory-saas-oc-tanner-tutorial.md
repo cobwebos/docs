@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: a2129813f7214b2b32b2d7d6c9d666e96b60a926
-ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
+ms.sourcegitcommit: 1b5527090a41c274b590ed9d1ac7b561b6f4ed14
+ms.openlocfilehash: 10faa27e0c82e59c35e00258a2d90bea977dc28f
 
 
 ---
@@ -71,10 +71,10 @@ ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
     ![应用程序][4] 
-6. 在搜索框中，键入“O.C.Tanner - AppreciateHub”。
+6. 在搜索框中，键入“O.C. **Tanner - AppreciateHub”。**
    
     ![应用程序][5] 
-7. 在结果窗格中，选择“O.C.Tanner - AppreciateHub”，然后单击“完成”添加该应用程序。
+7. 在结果窗格中，选择“O.C.**Tanner - AppreciateHub”，然后单击“完成”添加该应用程序。**
    
     ![应用程序][25] 
 
@@ -97,10 +97,10 @@ ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
 
 **若要通过 O.C.Tanner - AppreciateHub 配置 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 经典门户的“O.C.Tanner - AppreciateHub”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
+1. 在 Azure 经典门户的“O.C. **Tanner - AppreciateHub”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。**
    
     ![配置单一登录][6]
-2. 在“你希望用户如何登录 O.C.Tanner - AppreciateHub”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+2. 在“你希望用户如何登录 O.C. **Tanner - AppreciateHub”页上，选择“Azure AD 单一登录”，然后单击“下一步”。**
    
     ![Azure AD 单一登录][7]
 3. 在“配置应用设置”对话框页上，执行以下步骤：
@@ -122,9 +122,9 @@ ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
     > 
     > 
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
-4. 在“在 O.C.Tanner - AppreciateHub 上配置单一登录”页上，单击“下载元数据”，然后将元数据文件保存在计算机本地。
+4. 在“在 O.C.Tanner - AppreciateHub 上配置单一登录”页上，单击“下载元数据”，然后将元数据文件保存在计算机本地。**
    
     ![什么是 Azure AD Connect][9]
 5. 通过 xyz 联系 O.C. Tanner - AppreciateHub 支持团队，为其提供元数据文件，让他们知道应该为你启用 SSO。
@@ -160,7 +160,7 @@ ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_06.png)
@@ -172,7 +172,7 @@ ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
     c. 在“显示名称”文本框中，键入“Britta Simon”。
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -202,7 +202,7 @@ ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
 1. 在 Azure 经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
     ![分配用户][201]
-2. 在应用程序列表中，选择“O.C.Tanner - AppreciateHub”。
+2. 在应用程序列表中，选择“O.C. **Tanner - AppreciateHub”。**
    
     ![分配用户][202]
 3. 在顶部菜单中，单击“用户”。
@@ -254,6 +254,6 @@ ms.openlocfilehash: 10cf00155767b0cc8a318993e3ce95e55079312f
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 
