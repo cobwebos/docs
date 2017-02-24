@@ -16,8 +16,8 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 239d009a1fc7273a50d335a0d55d61f414d99b11
-ms.openlocfilehash: dac4a96f9b62f390aeb84fe237788350c70ea5cd
+ms.sourcegitcommit: dd09cf5f9ad4bc82d9685b656eb40d31ac13fbd2
+ms.openlocfilehash: a0f5ef966bf4de86d337a561a4b9e2ded8b55488
 
 
 ---
@@ -42,7 +42,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-数据库标志 **is_temporal_history_retention_enabled** 默认设置为 ON，但用户可以使用 ALTER DATABASE 语句更改此值。 在执行[时间点还原](sql-database-point-in-time-restore.md)操作后，它会自动设置为 OFF。 若要为数据库启用临时历史记录保留策略清理，请执行以下语句：
+数据库标志 **is_temporal_history_retention_enabled** 默认设置为 ON，但用户可以使用 ALTER DATABASE 语句更改此值。 在执行[时间点还原](sql-database-recovery-using-backups.md)操作后，它会自动设置为 OFF。 若要为数据库启用临时历史记录保留策略清理，请执行以下语句：
 
 ````
 ALTER DATABASE <myDB>
@@ -169,7 +169,7 @@ SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 不要依赖于业务逻辑来读取超过保留期的历史记录表，否则可能会收到不一致或意外的结果。 建议配合 FOR SYSTEM_TIME 子句使用临时查询来分析临时表中的数据。
 
 ## <a name="point-in-time-restore-considerations"></a>时间点还原注意事项
-通过[将现有数据库还原到特定时间点](sql-database-point-in-time-restore.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
+通过[将现有数据库还原到特定时间点](sql-database-point-in-time-restore-portal.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
 
 假设为某个临时表指定了一个月的保留期。 如果数据库是在高级服务层中创建的，则你可以使用保持过去最多 35 天前状态的数据库创建数据库副本。 这样，便可以通过直接查询历史记录表，有效分析保留时间最长为 65 天前的历史行。
 
@@ -190,6 +190,6 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

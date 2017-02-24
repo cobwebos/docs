@@ -74,7 +74,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 2. 确保 VM 已解除分配。
 
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -VMName $vmName -Force
+    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. 将虚拟机的状态设置为“通用化”。 
@@ -119,7 +119,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 2. 停止\解除分配 VM。
 
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -VMName $vmName -Force
+    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. 将 VM 标记为通用化。

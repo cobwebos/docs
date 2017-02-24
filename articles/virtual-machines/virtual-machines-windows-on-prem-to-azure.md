@@ -104,6 +104,6 @@ Azure 托管磁盘无需管理存储帐户，从而简化 VM 管理。 可用性
 
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

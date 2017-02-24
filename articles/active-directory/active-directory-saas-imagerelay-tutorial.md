@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 4f7a99e82c73d446c928a821f80fc640a1994d67
-ms.openlocfilehash: cfcb97cbf5b1d2beff5c868ce8371918dbba4e3e
+ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
+ms.openlocfilehash: 94fdae2992e69f4330d325968a9e66b3f6f38ce0
 
 
 ---
@@ -109,14 +109,14 @@ ms.openlocfilehash: cfcb97cbf5b1d2beff5c868ce8371918dbba4e3e
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，键入用户用于登录 ImageRelay 应用程序的 URL（例如：*https://fabrikam.ImageRelay.com/*）。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 4. 在“配置 Image Relay 的单一登录”页，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-imagerelay-tutorial/tutorial_imagerelay_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 5. 在另一个浏览器窗口中，以管理员身份登录到 Image Relay 公司站点。
 6. 在顶部工具栏中，单击“用户和权限”工作负荷。
    
@@ -195,7 +195,7 @@ ms.openlocfilehash: cfcb97cbf5b1d2beff5c868ce8371918dbba4e3e
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-imagerelay-tutorial/create_aaduser_06.png) 
@@ -208,7 +208,7 @@ ms.openlocfilehash: cfcb97cbf5b1d2beff5c868ce8371918dbba4e3e
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -284,6 +284,6 @@ ms.openlocfilehash: cfcb97cbf5b1d2beff5c868ce8371918dbba4e3e
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 
