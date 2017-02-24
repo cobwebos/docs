@@ -69,7 +69,7 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 <!--Reference style links -->
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AZURE-Classic-Portal]: https://portal.azure.com
+[AZURE-Portal]: https://portal.azure.com
 
 
 
