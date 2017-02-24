@@ -3,7 +3,7 @@ title: "了解 Azure 中的资源访问权限 | Microsoft Docs"
 description: "本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。"
 services: active-directory
 documentationcenter: 
-author: MarkusVi
+author: curtand
 manager: femila
 ms.assetid: 174f1706-b959-4230-9a75-bf651227ebf6
 ms.service: active-directory
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: markvi
+ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
 ms.openlocfilehash: 9906aa7ac4296089fd2e41897323e757b181a022

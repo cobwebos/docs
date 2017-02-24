@@ -2,7 +2,7 @@
 title: "教程：为入站同步配置 Workday | Microsoft Docs"
 description: "了解如何将 Workday 用作 Azure Active Directory 的标识数据源。"
 services: active-directory
-author: MarkusVi
+author: jeevansd
 documentationcenter: na
 manager: femila
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2017
-ms.author: markvi
+ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
 ms.openlocfilehash: a0d86046b471dec473fd707eedae061f9d1b9902
