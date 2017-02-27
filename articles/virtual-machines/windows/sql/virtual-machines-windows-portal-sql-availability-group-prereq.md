@@ -14,7 +14,7 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2016
+ms.date: 01/10/2017
 ms.author: mikeray
 translationtype: Human Translation
 ms.sourcegitcommit: 4326cc342088ff16a72b8c460245bda1f2cd17c9
@@ -506,6 +506,7 @@ Azure 将创建虚拟机。
 ## <a name="next-steps"></a>后续步骤
 
 * [在 Azure 虚拟机上创建 SQL Server Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+
 
 
 <!--HONumber=Jan17_HO2-->

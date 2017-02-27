@@ -33,6 +33,7 @@ ms.openlocfilehash: b3fc845812e8a4a2729f026baa82b58319d5c5f3
 ## <a name="videos"></a>视频
 此视频介绍如何创建你自己的密钥保管库以及如何使用从“Hello Key Vault”示例应用程序使用它。
 
+
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player]
 
 
