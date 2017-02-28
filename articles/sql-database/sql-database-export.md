@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 3f0af43c103e34535fd114e33c40da010ea69d69
-ms.openlocfilehash: b8a2a33909f77dd1bbe0a7b454e15df7432164a8
+ms.sourcegitcommit: 2461f706f8fc1150e69312098640c0676206a531
+ms.openlocfilehash: 4edd728fe4798450106a4991b353b9dac9de0d88
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -60,9 +61,4 @@ ms.openlocfilehash: b8a2a33909f77dd1bbe0a7b454e15df7432164a8
 * 有关对于整个 SQL Server 数据库迁移进程的讨论，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
 * 有关在 Azure 内部复制数据库的概述，还可参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
 * 可以使用 [Azure 门户](sql-database-copy-portal.md)、[PowerShell](sql-database-copy-powershell.md) 或 [Transact-SQL](sql-database-copy-transact-sql.md) 在 Azure 内部复制 Azure SQL 数据库。 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

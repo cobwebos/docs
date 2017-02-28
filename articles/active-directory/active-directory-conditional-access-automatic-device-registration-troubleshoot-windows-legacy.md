@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 1b12d8ef3bbbfd2688f7bbd47968332e83a35252
-ms.openlocfilehash: 6cb5aee751e89ad1e825fae4fdfd460f1bfd8b6c
+ms.sourcegitcommit: d0d213e2cc52f43c11efd49c51270aa42f8fad36
+ms.openlocfilehash: 6c373adaee553e9eca94a978afc62d453f7db0f8
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="troubleshooting-the-auto-registration-of-azure-ad-domain-joined-computers-for-windows-down-level-clients"></a>排查已加入 Azure AD 域的 Windows 下层客户端计算机的自动注册问题 
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad-for-windows-down-level-clients"></a>排查已加入 Azure AD 域的 Windows 下层客户端计算机的自动注册问题 
 
 本主题仅适用于以下客户端： 
 
@@ -98,9 +99,4 @@ ms.openlocfilehash: 6cb5aee751e89ad1e825fae4fdfd460f1bfd8b6c
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅[自动设备注册常见问题](active-directory-conditional-access-automatic-device-registration-faq.md) 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

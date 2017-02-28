@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
-ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
+ms.sourcegitcommit: c1e28c5ad7fd3236899ac0ffe9f3d43241061897
+ms.openlocfilehash: 5f253c3a10e5bfdfa9fe36912b5ebcbc9abae3eb
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -201,10 +202,10 @@ ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
 
-    b. 在“用户字段”文本框中，键入“电子邮件”或“user_id”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。 
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户字段”文本框中，键入“电子邮件”或“user_name”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。 
 
     > [!NOTE] 
-    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_id）
+    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_name）
 
     c. 在 Azure AD 经典门户中，复制“标识提供者 ID”值，然后将其粘贴到“标识提供者 URL”文本框中。
 
@@ -359,10 +360,10 @@ ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
    
     d. 在“时钟偏差”文本框中，键入“60”。
    
-    e. 在“用户字段”文本框中，键入“电子邮件”或“user_id”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“用户字段”文本框中，键入“电子邮件”或“user_name”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。
    
     > [!NOTE]
-    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_id）
+    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_name）
     > 
     > 
    
@@ -516,9 +517,4 @@ ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

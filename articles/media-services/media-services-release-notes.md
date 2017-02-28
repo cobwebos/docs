@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ccf8374064b6fd5f8d78a082543977072bfb30ee
-ms.openlocfilehash: 3c529328002ad96fb48a9ce96b3918493f88b41f
+ms.sourcegitcommit: 83881cda043fc9f1ef48281e8160a882c1f9bced
+ms.openlocfilehash: 5aa7353e681a16d2032fecaf8a2de50e241ac4ad
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -103,6 +104,12 @@ Azure 媒体服务引入了视频智能很强大的 Azure 媒体分析。 有关
 基本、标准和高级编码保留单位已分别重命名为 S1、S2 和 S3 保留单位。  目前使用基本编码保留单位的客户在 Azure 门户（和帐单中）将看到 S1 的标签，标准和高级客户将分别看到 S2 和 S3 的标签。 
 
 ## <a name="a-iddecchanges15adecember-2015-release"></a><a id="dec_changes_15"></a>2015 年 12 月版本
+
+### <a name="azure-media-encoder-deprecation-announcement"></a>Azure 媒体编码器弃用公告
+
+Azure 媒体编码器将于 12 个月内弃用。 请开始使用[媒体编码器标准版](media-services-media-encoder-standard-formats.md)编码器。
+
+### <a name="azure-sdk-for-php"></a>内置 Web 服务器
 Azure SDK 团队已发布新版 [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) 包，其中包含 Microsoft Azure 媒体服务的更新与新功能。 具体而言，适用于 PHP 的 Azure 媒体服务 SDK 现在支持最新的[内容保护](media-services-content-protection-overview.md)功能：有无令牌限制均可使用 AES 与 DRM（PlayReady 和 Widevine）动态加密。 还支持缩放[编码单位](media-services-dotnet-encoding-units.md)。
 
 有关详细信息，请参阅：
@@ -535,10 +542,5 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [跨多个存储帐户管理媒体服务资产]: http://msdn.microsoft.com/library/azure/dn271889.aspx
 [处理媒体服务作业通知]: http://msdn.microsoft.com/library/azure/dn261241.aspx
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: d4a5260dde1994bbf4ef4467eddd2fb80a2199b0
-ms.openlocfilehash: 22c6c22ba3123555d279fac087a6be2f99bde8d7
+ms.sourcegitcommit: 831ef097027721146531e8d699fe3f67417a57ea
+ms.openlocfilehash: b88aa3d0ae89aec81c2b9144fb5de3210a0b8d1e
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -43,19 +44,25 @@ ms.openlocfilehash: 22c6c22ba3123555d279fac087a6be2f99bde8d7
 
 **问：**是否可以通过 SSH 连接到 VM？
 
-**答：**不能，我们将在近期提供通过 SSH 连接到应用容器的方法。
+**答：**不能，我们将在以后的版本中提供通过 SSH 连接到应用容器的方法。
 
-## <a name="continous-integration--deployment"></a>持续集成/部署 ##
+## <a name="continuous-integration--deployment"></a>持续集成/部署 ##
 
 **问：**更新 DockerHub 上的映像后，我的 Web 应用是否仍使用旧的 Docker 容器映像？ 是否支持自定义容器的持续集成/部署？
 
-**答：**可以通过停止然后启动 Web 应用或更改/添加虚拟应用程序设置来强制刷新容器，我们将在近期为自定义容器提供 CI/CD 功能。
+**答：**可以通过停止然后启动 Web 应用或更改/添加虚拟应用程序设置来强制刷新容器，我们将在以后的版本中为自定义容器提供 CI/CD 功能。
 
 ## <a name="language-support"></a>语言支持 ##
 
 **问：**是否支持未编译的 .NET Core 应用？
 
-**答：**不支持，需要使用所有依赖项部署已编译的 .NET Core 应用，我们将在近期提供完整的部署和生成体验。
+**答：**不支持，需要使用所有依赖项部署已编译的 .NET Core 应用，我们将在以后的版本中提供完整的部署和生成体验。
+
+## <a name="built-in-images"></a>内置映像 ##
+
+**问：**配置运行时堆栈时，“启动文件”部分的所需值是什么？
+
+**答：**对于 Node.Js，可以指定 PM2 配置文件或脚本文件。 对于 .Net Core，应指定已编译的 dll 名称。 对于 Ruby，可以指定要用于初始化应用的 Ruby 脚本。
 
 ## <a name="custom-containers"></a>自定义容器 ##
 
@@ -69,11 +76,15 @@ ms.openlocfilehash: 22c6c22ba3123555d279fac087a6be2f99bde8d7
 
 **问：**我可以自带存储吗？
 
-**答：**目前不支持，但计划在近期提供此支持。
+**答：**目前不支持此功能。
 
 **问：**我无法从 SCM 站点浏览自定义容器的文件系统或正在运行的进程。 为什么会这样？
 
 **答：**SCM 站点在单独的容器中运行，你无法查看应用容器的文件系统或正在运行的进程。
+
+**问：**我的自定义容器侦听端口 80 以外的端口。 如何配置我的应用将请求路由到该端口？
+
+**答：**可以指定名为 **PORT** 的应用程序设置，并为其提供所需的端口号值。
 
 ## <a name="pricing-and-sla"></a>定价和 SLA ##
 
@@ -92,12 +103,6 @@ ms.openlocfilehash: 22c6c22ba3123555d279fac087a6be2f99bde8d7
 **答：**可在此处提交你的建议：https://aka.ms/webapps-uservoice。 请将 [Linux] 添加到建议的标题中。
 
 ## <a name="next-steps"></a>后续步骤
-* [Linux 应用服务简介](./app-service-linux-intro.md) 
-* [什么是 Linux 应用服务？](app-service-linux-intro.md)
-* [在 Linux 应用服务中创建 Web 应用](./app-service-linux-how-to-create-a-web-app.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+* [什么是 Linux 的应用服务？](app-service-linux-intro.md)
+* [在 Linux 应用服务中创建 Web 应用](app-service-linux-how-to-create-a-web-app.md)
 

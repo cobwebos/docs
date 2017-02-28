@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/10/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 138197bab775ec854f2761a64c52a9a9c8baca60
-ms.openlocfilehash: dec7ebd834514a10d02d739264b03b01a65a4375
+ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
+ms.openlocfilehash: 944eafeb67df4baefa99172c1082259a95e84afe
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -192,11 +193,11 @@ New-AzureRmPolicyAssignment -Name regionPolicyAssignment -PolicyDefinition $poli
 Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 ```
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0（预览版）
+## <a name="azure-cli-20"></a>Azure CLI 2.0
 
 ### <a name="create-policy-definition"></a>创建策略定义
 
-可结合策略定义命令使用 Azure CLI 2.0（预览版）来创建策略定义。 以下示例将创建仅允许北欧和西欧资源的策略。
+可结合策略定义命令使用 Azure CLI 2.0 来创建策略定义。 以下示例将创建仅允许北欧和西欧资源的策略。
 
 ```azurecli
 az policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --rules '{    
@@ -292,10 +293,5 @@ azure policy assignment delete --name regionPolicyAssignment --scope /subscripti
 
 ## <a name="next-steps"></a>后续步骤
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

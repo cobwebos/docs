@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/10/2017
+ms.date: 02/16/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 1d9b020c6175ba8f47cde5cba0f69a1c8c228479
-ms.openlocfilehash: 48d2274fff2fb1300406f48c8d3e772aefa9933f
+ms.sourcegitcommit: a87a4a8b290318bb9fdd1ae0b5fdce00085f59df
+ms.openlocfilehash: 3fe19196ce6af2aeb52bf941ced1892a9a172d87
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,7 +32,7 @@ Update 4 可应用于任何运行 Release (GA)、Update 0.1 到 Update 3.1 的 S
 在 StorSimple 解决方案中部署更新之前，请查看发行说明中所包含的信息。
 
 > [!IMPORTANT]
-> * Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、磁盘固件、Storport 和 Spaceport、安全更新以及其他 OS 更新。 安装此更新大约需要 1.5-2 小时。 我们建议你应用此更新，以使设备保持最新状态。 
+> * Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、磁盘固件、Storport 和 Spaceport、安全更新以及其他 OS 更新。 安装此更新大约需要 4 小时。 我们建议你应用此更新，以使设备保持最新状态。 
 > * 对于新版本，由于我们分阶段推出更新，你可能不能立即看到更新。 我们会尽快提供更新，请耐心等待几日，然后再次检查更新。
 
 ## <a name="whats-new-in-update-4"></a>Update 4 中的新增功能
@@ -91,10 +92,5 @@ Update 4 中没有任何新的已知问题。 有关从之前版本遗留至 Upd
 ## <a name="next-step"></a>后续步骤
 
 了解如何在 StorSimple 设备上[安装 Update 4](storsimple-install-update-4.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
-ms.openlocfilehash: 8c2441211f08e8bb22153ff16cbd98c85cb9cf3d
+ms.sourcegitcommit: 7e99731f6826e563109da734a80fcccfff85676a
+ms.openlocfilehash: 3deb0e1668aae15a7d9abe00791f4524ed49d77b
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -128,9 +129,7 @@ ms.openlocfilehash: 8c2441211f08e8bb22153ff16cbd98c85cb9cf3d
 
 1. 打开 Azure CLI，然后在单个 CLI 会话中完成本部分的剩余步骤。 如果尚未安装并配置 Azure CLI，请完成[安装和配置 Azure CLI](../xplat-cli-install.md) 一文中的步骤，然后登录到你的 Azure 帐户。
 
-2. 若要注册预览版，请向[多个 IP](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) 发送一封电子邮件，其中包含你的订阅 ID 和目标用途。 请不要尝试完成剩余的步骤：
-    - 只有在收到一封告知允许你使用预览版的电子邮件之后，才这样做。
-    - 如果不遵循所收到的电子邮件中的说明
+2. 按照**创建具有多个 IP 地址的 VM** 部分中的步骤 2 注册公开预览版。
 
 3. 根据要求完成以下部分之一中的步骤：
 
@@ -208,9 +207,4 @@ ms.openlocfilehash: 8c2441211f08e8bb22153ff16cbd98c85cb9cf3d
 9. 根据本文[将 IP 地址添加到 VM 操作系统](#os-config)部分中的说明，将添加到 NIC 的专用 IP 地址添加到 VM 操作系统。 请勿向操作系统添加公共 IP 地址。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

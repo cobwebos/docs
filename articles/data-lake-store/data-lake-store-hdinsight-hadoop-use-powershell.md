@@ -1,6 +1,5 @@
 ---
-title: "使用 PowerShell 来创建 Azure HDInsight 和 Data Lake Store | Microsoft Docs"
-description: "使用 Azure PowerShell 创建和使用包含 Azure Data Lake 的 HDInsight 群集"
+title: "PowerShell：将 Data Lake Store 作为附加存储的 Azure HDInsight 群集 | Microsoft 文档"
 services: data-lake-store,hdinsight
 documentationcenter: 
 author: nitinme
@@ -12,34 +11,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/09/2017
+ms.date: 02/14/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0fed9cff7a357c596d7e178ec756be449cd1dff0
-ms.openlocfilehash: aada6f72a3b20233fdeeb7adabf6545ce831d563
+ms.sourcegitcommit: d8100903d78a9ca8d88d2649ad5245ce3f456518
+ms.openlocfilehash: c21f244408ed6f6ca3168ee193bcba4d3b26cd40
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-powershell"></a>使用 Azure PowerShell 创建包含 Data Lake Store的 HDInsight 群集
+# <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>使用 Azure PowerShell 创建具有 Data Lake Store 的 HDInsight 群集（作为其他存储）
 > [!div class="op_single_selector"]
 > * [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [使用 PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [使用 PowerShell（对于其他存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [使用资源管理器](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
-了解如何通过 Azure PowerShell 配置具有 Azure Data Lake Store 访问权限的 HDInsight 群集。 对于支持的群集类型，Data Lake Store 用作默认存储或其他存储帐户。 在 Data Lake Store 用作其他存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Store 帐户中。 使用 Data Lake Store 作为其他存储帐户不会影响读/写到此群集的存储的性能或能力。
+了解如何使用 Azure PowerShell 配置具有 Azure Data Lake Store 的 HDInsight 群集**作为其他存储**。 有关如何使用 Azure Data Lake Store 作为默认存储创建 HDInsight 群集的说明，请参阅[使用 Data Lake Store 作为默认存储创建 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
 
-一些重要注意事项：
+对于支持的群集类型，Data Lake Store 可用作默认存储或其他存储帐户。 在 Data Lake Store 用作其他存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Store 帐户中。 使用 Data Lake Store 作为其他存储帐户不会影响读/写到此群集的存储的性能或能力。
 
-* HDInsight 版本 3.5 提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项。
+## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>将 Data Lake Store 用于 HDInsight 群集存储
+
+下面是结合使用 HDInsight 和 Data Lake Store 的一些重要注意事项：
 
 * HDInsight 版本 3.2、3.4 和 3.5 提供创建 HDInsight 群集（可访问作为其他存储的 Data Lake Store）的选项。
 
 * 对于 HBase 群集（Windows 和 Linux），Data Lake Store **不支持**用作存储选项（包括默认存储和其他存储）。
 
-
-本文中将设置 Hadoop 群集，其中 Data Lake Store 作为其他存储。 有关如何将 Data Lake Store 用作默认存储来创建 Hadoop 群集的说明，请参阅[使用 Azure 门户创建具有 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 使用 PowerShell 配置 HDInsight 来与 Data Lake Store 一起使用涉及以下步骤：
 
@@ -161,8 +162,9 @@ ms.openlocfilehash: aada6f72a3b20233fdeeb7adabf6545ce831d563
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
-## <a name="create-an-hdinsight-linux-cluster-with-authentication-to-data-lake-store"></a>创建具有 Data Lake Store 身份验证的 HDInsight Linux 群集
-本部分中创建 HDInsight Hadoop Linux 群集。 对于此版本，HDInsight 群集和 Data Lake Store 必须位于同一位置。
+## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-additional-storage"></a>使用 Data Lake Store 作为附加存储创建 HDInsight Linux 群集
+
+在本部分中，将使用 Data Lake Store 作为附加存储创建 HDInsight Hadoop Linux 群集。 对于此版本，HDInsight 群集和 Data Lake Store 必须位于同一位置。
 
 1. 首先检索订阅租户 ID。 之后需要此 ID。
 
@@ -248,9 +250,4 @@ ms.openlocfilehash: aada6f72a3b20233fdeeb7adabf6545ce831d563
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

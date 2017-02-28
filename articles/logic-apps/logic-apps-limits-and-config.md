@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: fa27b0399d98f13ee3c4f4059067fb78e087befd
-ms.openlocfilehash: 933e14358875b384a254ab3c1d0bdb453a0fa8ae
+ms.sourcegitcommit: 084919e9dbe3647c45cf67e6836a8c9de6a5cd70
+ms.openlocfilehash: 307a70b5efb22642e54212d8d3517bf5d9070505
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -81,7 +82,8 @@ ms.openlocfilehash: 933e14358875b384a254ab3c1d0bdb453a0fa8ae
 
 |Name|限制|说明|
 |----|----|----|
-|每秒执行的动作数|100|可以根据需要在多个应用之间分配工作流|
+|每秒执行的操作数（突发）|1,000|可以根据需要在多个应用之间分配工作负荷|
+|每小时执行的操作数（持续）|1,000,000|可以根据需要在多个应用之间分配工作负荷|
 
 ### <a name="definition-limits"></a>定义限制
 
@@ -180,9 +182,4 @@ ms.openlocfilehash: 933e14358875b384a254ab3c1d0bdb453a0fa8ae
 - [查看常见示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
 - [使用逻辑应用可以自动执行业务流程](http://channel9.msdn.com/Events/Build/2016/T694) 
 - [了解如何将系统与逻辑应用集成](http://channel9.msdn.com/Events/Build/2016/P462)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

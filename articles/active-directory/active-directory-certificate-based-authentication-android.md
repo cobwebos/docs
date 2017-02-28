@@ -14,8 +14,9 @@ ms.workload: identity
 ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c8c6c105c2142dac1b3df6c26838ba8626161092
-ms.openlocfilehash: c22eb13206e629399c20b02fcaeb422d20ac0b21
+ms.sourcegitcommit: c4d95068b5e6472dbb809e675a47cb9eada7ca66
+ms.openlocfilehash: 112f28517196b3b656611a03ed12a40f2e049174
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -31,8 +32,7 @@ ms.openlocfilehash: c22eb13206e629399c20b02fcaeb422d20ac0b21
 
 本主题面向 Office 365 企业版、商业版、教育版和 US Government 版计划中的租户用户，提供在 Android 设备上配置 CBA 时的要求和受支持方案。 
 
-可在 Office 365 China、Office 365 US Government Defense 和 Office 365 US Government Federal 计划中使用此功能。 
-
+此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 
 
 ## <a name="office-mobile-applications-support"></a>Office 移动应用程序支持
@@ -79,9 +79,4 @@ ms.openlocfilehash: c22eb13206e629399c20b02fcaeb422d20ac0b21
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

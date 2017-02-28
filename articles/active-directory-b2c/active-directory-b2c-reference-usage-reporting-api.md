@@ -13,8 +13,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: joroja
 translationtype: Human Translation
-ms.sourcegitcommit: 4b2cbf5f62ee63bada42b2a06506b793d4349fdb
-ms.openlocfilehash: 7db9a45a4c80ea8d01937837dfa7a15c171fb66b
+ms.sourcegitcommit: 274ed196cc7159e77f6de4d84328c3607b155ee9
+ms.openlocfilehash: 9bb528aa0172fb7179b5498be89aee9a92b788f8
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -102,8 +103,7 @@ if ($oauth.access_token -ne $null) {
  * TotalUserCount = 所有用户对象的计数
  * OtherUserCount = AAD 目录用户（非 B2C 用户）的计数
  * LocalUserCount = 使用 B2C 租户的本地凭据创建的 B2C 用户帐户计数
-
-**AlternateIdUserCount** = 向外部标识提供程序（例如，facebook、Microsoft 帐户、其他 AAD 租户 - 又称 OrgId）注册的 B2C 用户计数
+ * AlternateIdUserCount** = 向外部标识提供程序（例如，facebook、Microsoft 帐户、其他 AAD 租户 - 又称 OrgId）注册的 B2C 用户数
 
 **b2cAuthenticationCountSummary** - 过去 30 天内，可计费身份验证的日计数总和（按天和身份验证流的类型）
 
@@ -140,9 +140,4 @@ $myReport.Content | Out-File -FilePath b2cUserJourneySummaryEvents.json -Force
 [gog]: http://google.com/        
 [yah]: http://search.yahoo.com/  
 [msn]: http://search.msn.com/    
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

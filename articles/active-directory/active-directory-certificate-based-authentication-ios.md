@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c8c6c105c2142dac1b3df6c26838ba8626161092
-ms.openlocfilehash: 16a2a67840e7ee85f7a605e8f114293305f84b50
+ms.sourcegitcommit: c4d95068b5e6472dbb809e675a47cb9eada7ca66
+ms.openlocfilehash: f643deb0b76c598df9bd983474b4bd2bcba129e7
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -28,8 +29,9 @@ ms.openlocfilehash: 16a2a67840e7ee85f7a605e8f114293305f84b50
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。 
 
-本主题面向 Office 365 企业版、商业版、教育版和 US Government Federal 版计划中的租户用户，提供在 iOS 设备上配置 CBA 时的要求和受支持方案。 不包括 Office 365 Defense。 
+本主题面向 Office 365 企业版、商业版、教育版和 US Government 版计划中的租户用户，提供在 Android 设备上配置 CBA 时的要求和受支持方案。 
 
+此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 
 
 
@@ -85,9 +87,4 @@ iOS 9 或更高版本支持本机 iOS 邮件客户端。 若要确定其他所�
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

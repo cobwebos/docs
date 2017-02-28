@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/09/2017
+ms.date: 02/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6c2464b2f4d16f70c2841faf18e2246c8125b60f
-ms.openlocfilehash: 9421b8545715def823a4bdafd27c261e159fbbab
+ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
+ms.openlocfilehash: 9742523c0a1743ff5982e746aa3c99aed8934499
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -42,7 +43,7 @@ Service Fabric 提供了一个可靠而灵活的平台，使你能够编写和�
 </a></center>
 
 ## <a name="get-started-and-create-your-first-app"></a>开始使用并创建第一个应用 
-使用 Service Fabric SDK 和工具，可在 Windows、Linux 或 MacOS 环境中开发应用，并将这些应用部署到在 Windows 或 Linux 上运行的群集。  以下指南指导如何在几分钟内部署应用。  运行第一个应用程序后，下载并运行[示例应用](http://aka.ms/servicefabricsamples)。
+使用 Service Fabric SDK 和工具，可在 Windows、Linux 或 MacOS 环境中开发应用，并将这些应用部署到在 Windows 或 Linux 上运行的群集。  以下指南指导如何在几分钟内部署应用。  运行第一个应用程序后，下载并运行[示例应用](http://aka.ms/servicefabricsamples)。 具体而言，从[入门示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)开始
 
 ### <a name="on-windows"></a>在 Windows 上
 Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提供用于创建、部署和调试 Service Fabric 应用程序的模板和工具。 这些主题会指导你完成在 Visual Studio 中创建你的第一个应用程序，并在开发计算机上运行该程序的过程。
@@ -50,7 +51,9 @@ Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提�
 [设置开发环境](service-fabric-get-started.md)
 [创建第一个应用 (C#)](service-fabric-create-your-first-application-in-visual-studio.md)
 
-请尝试此全面的[动手实验](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx)，熟悉 Service Fabric 的端到端开发流程。  了解如何创建一个无状态服务、配置监视和运行状况报告并执行应用程序升级。 
+#### <a name="practical-hands-on-labs"></a>实际动手实验
+请尝试此全面的[动手实验第 1 部分](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx)，熟悉 Service Fabric 的端到端开发流程。  了解如何创建一个无状态服务、配置监视和运行状况报告并执行应用程序升级。 此后，请执行[动手实验第 2 部分](http://aka.ms/sflab2)，引导你创建有状态服务。
+
 
 下面的 Channel9 视频会指导你完成在 Visual Studio 中创建 C# 应用的过程：  
 <center><a target="_blank" href="https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio">  
@@ -138,9 +141,4 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以选�
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

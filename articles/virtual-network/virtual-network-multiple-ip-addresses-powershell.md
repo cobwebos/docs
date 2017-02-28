@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: jdial;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
-ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
+ms.sourcegitcommit: f179a19dd3a126d23c33520a428a8c3a644f4171
+ms.openlocfilehash: 08a1399e702dbf9222b8412950ee62509b53ef76
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -132,9 +133,7 @@ ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
 完成以下步骤即可将专用和公共 IP 地址添加到 NIC。 以下部分中的示例假定用户的 VM 已完成本文[方案](#Scenario)中描述的三项 IP 配置，但这不是必需的。
 
 1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 一文中所述的步骤。
-2. 若要注册预览版，请向[多个 IP](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) 发送一封电子邮件，其中包含你的订阅 ID 和目标用途。 请不要尝试完成剩余的步骤：
-    - 只有在收到一封告知允许你使用预览版的电子邮件之后，才这样做。
-    - 如果不遵循所收到的电子邮件中的说明
+2. 按照**创建具有多个 IP 地址的 VM** 部分中的步骤 2 注册公开预览版。
 3. 将以下 $Variable 的“值”分别更改为要向其添加 IP 地址的 NIC 名称，以及 NIC 所在的资源组和位置：
 
     ```powershell
@@ -252,8 +251,4 @@ ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
 9. 将专用 IP 地址添加到 VM 操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分针对操作系统的步骤即可。 请勿向操作系统添加公共 IP 地址。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-<!--HONumber=Feb17_HO2-->
-
 

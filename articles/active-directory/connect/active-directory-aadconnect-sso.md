@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/15/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: a268907eea2862ae2d054f30accfd4d771a7d880
-ms.openlocfilehash: ae97e66b8fb0992550c5a4f1f8418c5cb7e496b5
+ms.sourcegitcommit: e208b2bf861d698901b287458a3969e833540e44
+ms.openlocfilehash: f8f67af3cb6adb333924714bd758609b950845af
+ms.lasthandoff: 02/17/2017
 
 ---
 
@@ -68,6 +69,17 @@ SSO 是通过 Azure AD Connect 启用的一项功能，该功能用于密码同�
 5.    Azure AD 使用以前共享的密钥解密 Kerberos 票证， 然后向用户返回令牌或要求用户提供其他证明，例如资源所需的多重身份验证。
 
 单一登录是机会性功能，这表示如果因为某些原因无法使用该功能，用户只需和平常一样在登录页输入密码即可。
+
+## <a name="single-sign-on-sso-prerequisites"></a>单一登录 (SSO) 先决条件
+如果要通过直通身份验证启用单一登录，除了直通身份验证所需项以外，不需要任何其他先决条件。
+
+如果要通过密码同步启用单一登录，并且如果 Azure AD Connect 和 Azure AD 之间有防火墙，请确保：
+- Azure AD Connect 服务器可以与 *.msappproxy.net 通信
+- Azure AD Connect 可在以下端口上向 Azure AD 发出 HTTPS 请求：
+
+|协议|端口号|说明
+| --- | --- | ---
+|HTTPS|9090|    启用 SSO 注册（只有 SSO 注册过程才需要）。
 
 ## <a name="enabling-sso-with-pass-through-authentication-or-password-sync"></a>为直通身份验证或密码同步启用 SSO
 Azure AD Connect 提供了简单的过程来为直通身份验证或密码同步启用单一登录。 请确保具有同步的每个林中一个域的域管理员权限，以便为计算机帐户配置 Kerberos 服务主体名称 (SPN)。 用户名和密码未存储在 Azure AD Connect 或 Azure AD 中，并且仅用于此操作。
@@ -132,9 +144,4 @@ Azure AD Connect 提供了简单的过程来为直通身份验证或密码同步
       </Query>
     </QueryList>
 ```
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

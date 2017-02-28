@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
-ms.openlocfilehash: a5db6cccf6c3dc55ee2cda59cb9e2ecd2292fcb5
+ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
+ms.openlocfilehash: fdc4e495fb3fb99022b0f7c487001b2fba42cccc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -30,8 +31,8 @@ ms.openlocfilehash: a5db6cccf6c3dc55ee2cda59cb9e2ecd2292fcb5
 ![在 Azure 中获取服务器名称](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。 [下载并安装最新版本的 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
-
+就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。 [下载并安装 SSMS](#download-and-install-ssms)。
+  
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
  最大的区别之一在于用于连接到服务器的身份验证。 若要连接到 Azure Analysis Services 服务器，需要选择“Active Directory 密码身份验证”。
@@ -49,7 +50,7 @@ ms.openlocfilehash: a5db6cccf6c3dc55ee2cda59cb9e2ecd2292fcb5
    
     **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
    
-    注意：如果没有看到 Active Directory 身份验证，则可能需要更新到[最新版本的 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+    注意：如果没有看到 Active Directory 身份验证，则可能需要更新到[最新版本的 SSMS](#download-and-install-ssms)。
    
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
@@ -58,6 +59,25 @@ ms.openlocfilehash: a5db6cccf6c3dc55ee2cda59cb9e2ecd2292fcb5
 ## <a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
 Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 这不同于通过 Windows 域用户名支持服务器管理员和数据库用户的本地表格模型数据库。 有关详细信息，请参阅[管理 Azure Analysis Services 中的用户](analysis-services-manage-users.md)。
 
+## <a name="download-and-install-ssms"></a>下载并安装 SSMS
+[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+
+在下载页上，你有两个选项：
+ 
+* 候选发布 - 仅在连接到 Azure Analysis Services 预览版时建议使用。 此发行版可获取最新更新，并最适用于 Azure Analysis Services 预览版。
+* 当前生产版本 - 建议在连接到生产服务器以及 Azure Analysis Services 预览版使用。 使用此版本时，可能需要编辑注册表才能启用 Azure Active Directory 身份验证。
+
+## <a name="enable-azure-active-directory-authentication"></a>启用 Azure Active Directory 身份验证
+
+若要在注册表中启用 SSMS 的 Azure Active Directory 身份验证功能，请创建一个名为 EnableAAD.reg 的文本文件，然后复制粘贴以下内容：
+
+```
+Windows Registry Editor Version 5.00
+[HKEY_CURRENT_USER\Software\Microsoft\Microsoft SQL Server\Microsoft Analysis Services\Settings]
+"AS AAD Enabled"="True"
+```
+
+保存然后运行该文件。
 
 ## <a name="troubleshooting-connection-problems"></a>连接问题疑难解答
 使用 SSMS 连接到服务器时，如果（在步骤 3 中）尝试使用非联合帐户或非 Azure Active Directory 中的帐户登录，并且无法连接，则可能需要清除登录缓存。 请先关闭 SSMS，再执行下列步骤。
@@ -71,10 +91,5 @@ Azure Analysis Services 中存在两种类型的用户，即服务器管理员�
 如果尚未将表格模型部署到新服务器，现在正是一个好时机。 有关详细信息，请参阅[部署到 Azure Analysis Services](analysis-services-deploy.md)。
 
 如果已将模型部署到服务器，可使用客户端或浏览器连接到该模型。 有关详细信息，请参阅[从 Azure Analysis Services 获取数据](analysis-services-connect.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
 translationtype: Human Translation
-ms.sourcegitcommit: 17b33d3296ffbc65a22bf9a5077282fffdb7b3de
-ms.openlocfilehash: 4a0af9f3f9fab9ff459450eb8658273d4a1bc5dc
+ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
+ms.openlocfilehash: e14d55ad96187dc8ec6e6aac04463b58280783aa
+ms.lasthandoff: 02/15/2017
 
 ---
 # <a name="logic-apps-pricing-model"></a>逻辑应用定价模型
@@ -27,7 +28,7 @@ Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面
 ### <a name="what-are-action-executions"></a>什么是操作执行？
 逻辑应用定义中的每个步骤都是一个操作，这包括触发器、控制流步骤（例如条件、作用域、for each 循环、do until 循环）、对连接器的调用以及对本地操作的调用。
 触发器是特殊操作，为在特定事件发生时实例化逻辑应用的新实例而设计。  对于触发器有一些不同的行为，它们可能会影响逻辑应用按流量计费的方式。
-* **轮询触发器** – 此触发器持续轮询终结点，直到收到满足创建逻辑应用实例的条件的消息。  可以在逻辑应用设计器中，在触发器中配置轮询间隔。  每个轮询请求（即使不会创建逻辑应用的实例）都会计为一个操作执行。
+* **轮询触发器** – 此触发器持续轮询终结点，直到收到满足创建逻辑应用实例的条件的消息。  可以在逻辑应用设计器中的触发器中配置轮询间隔。  每个轮询请求（即使不会创建逻辑应用的实例）都会计为一个操作执行。
 * **Webhook 触发器** – 此触发器等待客户端在特定终结点上向它发送请求。  发送到 webhook 终结点的每个请求都会计为操作执行。 请求和 HTTP Webhook 触发器都是 webhook 触发器。
 * **重复触发器** – 此触发器会基于在触发器中配置的重复间隔创建逻辑应用的实例。  例如，重复触发器可以配置为每三天甚至是每分钟运行一次。
 
@@ -58,10 +59,5 @@ Azure 逻辑应用使你可以在云中扩展和执行集成工作流。  下面
 ## <a name="next-steps"></a>后续步骤
 * [逻辑应用概述][定义]
 * [创建你的第一个逻辑应用][创建] [定价]：https://azure.microsoft.com/pricing/details/logic-apps/ [whatis]：logic-apps-what-are-logic-apps.md [创建]：logic-apps-create-a-logic-app.md
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

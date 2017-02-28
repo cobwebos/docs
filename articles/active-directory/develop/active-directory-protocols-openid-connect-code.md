@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
-ms.openlocfilehash: bd195ee282b6813034ac25e607f64a88cbdedf37
+ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
+ms.openlocfilehash: 2000e2005533d4e4d4c7bba9d5168c395af1499f
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -25,12 +26,37 @@ ms.openlocfilehash: bd195ee282b6813034ac25e607f64a88cbdedf37
 
 如果要构建的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。
 
-[!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
+
+[!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
 ## <a name="authentication-flow-using-openid-connect"></a>使用 OpenID Connect 的身份验证流
 最基本的登录流包含以下步骤 - 下面详细描述了每个步骤。
 
 ![OpenID Connect 身份验证流](media/active-directory-protocols-openid-connect-code/active-directory-oauth-code-flow-web-app.png)
+
+## <a name="openid-connect-metadata-document"></a>OpenID Connect 元数据文档
+
+OpenID Connect 描述了元数据文档，该文档包含了应用执行登录所需的大部分信息。 这包括要使用的 URL 和服务的公共签名密钥的位置等信息。 OpenID Connect 元数据文档可以在以下位置找到：
+
+```
+https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
+```
+元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅下面的代码段。 [OpenID Connect 规范](https://openid.net)对该代码段的内容进行了完整描述。
+
+```
+{
+    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "token_endpoint_auth_methods_supported":
+    [
+        "client_secret_post",
+        "private_key_jwt"
+    ],
+    "jwks_uri": "https://login.microsoftonline.com/common/discovery/keys"
+    
+    ...
+}
+```
 
 ## <a name="send-the-sign-in-request"></a>发送登录请求
 当 Web 应用程序需要对用户进行身份验证时，必须将用户定向到 `/authorize` 终结点。 此请求类似于 [OAuth 2.0 授权代码流](active-directory-protocols-oauth-code.md)的第一个阶段，不过有几个重要的区别：
@@ -57,7 +83,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 参数 |  | 说明 |
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。  独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
-| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 经典门户中找到此信息。 单击“Active Directory”，选择目录，选择应用程序，然后单击“配置” |
+| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击“Azure Active Directory”，单击“应用注册”，选择应用程序并在应用程序页上找到应用程序 ID。 |
 | response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。  还可以包含其他 response_type，例如 `code`。 |
 | 作用域 |必填 |范围的空格分隔列表。  针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“将你登录”权限。  也可以在此请求中包含其他范围，以请求同意。 |
 | nonce |必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。  此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
@@ -142,6 +168,16 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | --- | --- | --- |
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。  如果未包含此参数，系统会向用户显示一条常规消息。 |
 
+## <a name="single-sign-out"></a>单一登录
+Azure AD 使用 Cookie 标识用户会话。 Web 应用程序也可能会设置 Cookie 以管理应用程序中的会话。 用户首次登录到应用程序时，Azure AD 在用户的浏览器中设置了 Cookie。 当用户以后登录到其他应用程序时，Azure AD 将首先检查 Cookie 以确定用户是否具有 Azure AD 终结点的有效登录会话，而不是重新对用户进行身份验证。
+
+同样，当用户首次注销应用程序时，Azure AD 将从浏览器中清除 Cookie。 但是，用户可能仍登录到其他使用 Azure AD 进行身份验证的应用程序。 若要确保从所有应用程序中注销该用户，Azure AD 会将 HTTP GET 请求发送到用户当前已登录的所有应用程序的 `LogoutUrl`。 应用程序必须通过清除任何标识用户会话的 Cookie 来响应此请求。 可以从 Azure 门户设置 `LogoutUrl`。
+
+1. 导航到 [Azure 门户](https://portal.azure.com)。
+2. 通过单击页面右上角的帐户选择你的 Active Directory。
+3. 从左侧导航面板中，选择“Azure Active Directory”，然后选择“应用注册”，并选择应用程序。
+4. 单击“属性”并查找“注销 URL”文本框。 
+
 ## <a name="token-acquisition"></a>令牌获取
 许多 Web 应用不仅需要将用户登录，而且还要代表该用户使用 OAuth 来访问 Web 服务。 此方案合并了用于对用户进行身份验证的 OpenID Connect，同时将获取 `authorization_code`，用于通过 OAuth 授权代码流来获取 `access_tokens`。
 
@@ -200,8 +236,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 有关可能的错误代码的描述及其建议的客户端操作，请参阅[授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
 
 获取授权 `code` 和 `id_token` 之后，可以将用户登录，并代表他们获取访问令牌。  若要将用户登录，必须确切地按上面所述验证 `id_token`。 若要获取访问令牌，可以遵循 [OAuth 协议文档](active-directory-protocols-oauth-code.md)的“使用授权代码请求访问令牌”部分中所述的步骤。
-
-
-<!--HONumber=Feb17_HO2-->
-
 

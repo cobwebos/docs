@@ -15,8 +15,9 @@ ms.workload: backup-recovery
 ms.date: 02/12/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 5031f64ffcd34b6287a3ecd87dd027c2bc7c716f
-ms.openlocfilehash: 9d0d0ba4ca5966b39ce62ea8296d48e5930c9782
+ms.sourcegitcommit: 3396818cd177330b7123f3a346b1591a4bcb1e4e
+ms.openlocfilehash: 14cc104bb755a0893c00963636e210b656b270b5
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 9d0d0ba4ca5966b39ce62ea8296d48e5930c9782
 
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 AWS Windows 实例迁移到 Azure 虚拟机。
 
-迁移实际上是 AWS 到 Azure 的故障转移。 无法故障回复计算机，且没有任何正在进行的复制。 本文以[将物理计算机复制到 Azure](site-recovery-vmware-to-azure.md) 的说明为基础，介绍了在 Azure 门户进行迁移的步骤。
+迁移实际上是 AWS 到 Azure 的故障转移。 无法将计算机故障回复到 AWS，且没有任何正在进行的复制。 本文以[将物理计算机复制到 Azure](site-recovery-vmware-to-azure.md) 的说明为基础，介绍了在 Azure 门户进行迁移的步骤。
 
 请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
@@ -41,25 +42,32 @@ Site Recovery 可用于迁移运行以下任意操作系统的 EC2 实例：
 
 以下是执行此部署所需的组件
 
-* **配置服务器**：运行 Windows Server 2012 R2 的本地 VM 将部署为配置服务器。 默认情况下，部署配置服务器时将再安装一个 Site Recovery 组件（进程服务器和主目标服务器）。 [了解详细信息](site-recovery-components.md#replicate-vmware-vmsphysical-servers-to-azure)
-* **EC2 实例**：要迁移的 EC2 虚拟机实例。
+* **配置服务器**：运行 Windows Server 2012 R2 的 Amazon EC2 VM 将部署为配置服务器。 默认情况下，部署配置服务器时将安装其他 Azure Site Recovery 组件（进程服务器和主目标服务器）。 本文以[了解更多](site-recovery-components.md#replicate-vmware-vmsphysical-servers-to-azure)的说明为基础，介绍在 Azure 门户中进行迁移的步骤
+
+* **EC2 实例**：要迁移的 Amazon EC2 虚拟机实例。
 
 ## <a name="deployment-steps"></a>部署步骤
 
-1. 创建保管库
-2. 部署配置服务器
-3. 部署配置服务器之后，验证其是否能与要迁移的 VM 通信。
-4. 设置复制设置。
-5. 安装移动服务。 你要保护的每个虚拟机需要安装移动服务。 此服务将数据发送到进程服务器。 可以手动安装移动服务，也可以在启用了虚拟机保护后由进程服务器自动推送并安装。 要迁移的 EC2 实例上的防火墙规则应配置为允许此服务的推送安装。 EC2 实例的安全组应具有以下规则：
+1. 创建恢复服务保管库
 
-    ![防火墙规则](./media/site-recovery-migrate-aws-to-azure/migrate-firewall.png)
-6. 启用复制。 为需要迁移的虚拟机启用复制。 可以使用专用 IP 地址发现 EC2 实例，该地址可以在 EC2 控制台中获取。
-7. 运行非计划的故障转移）。 初始复制完成后，可以为每个 VM 运行一个从 AWS 到 Azure 的非计划故障转移。 （可选）你可以创建一个恢复计划并运行非计划的故障转移，从 AWS 向 Azure 迁移多个虚拟机。 [详细了解](site-recovery-create-recovery-plans.md)恢复计划。
+2. EC2 实例的安全组应已配置以下规则：![规则](./media/site-recovery-migrate-aws-to-azure/migration_pic1.png)
 
-获取有关[部署步骤](site-recovery-vmware-to-azure.md)和运行[非计划的故障转移](site-recovery-failover.md#run-an-unplanned-failover)的详细说明。
+3. 在 EC2 实例所在的 Amazon 虚拟私有云上，部署 ASR 配置服务器。 请参阅将 VMware 虚拟机/物理计算机迁移到 Azure 的先决条件，了解配置服务器部署要求 ![DeployCS](./media/site-recovery-migrate-aws-to-azure/migration_pic2.png)
 
+4.    配置服务器部署到 AWS 中并向恢复服务保管库注册后，你应在在 Site Recovery 基础结构下看到配置服务器和进程服务器，如下所示：![CSinVault](./media/site-recovery-migrate-aws-to-azure/migration_pic3.png)
+  >[!NOTE]
+  >可能最多需要 15 分钟才会显示配置服务器和进程服务器
+  >
 
+5. 部署配置服务器之后，验证其是否能与要迁移的 VM 通信。
 
-<!--HONumber=Feb17_HO2-->
+6. [设置复制设置](site-recovery-setup-replication-settings-vmware.md)
 
+7. 启用复制：为要迁移的 VM 启用复制。 可以使用专用 IP 地址发现 EC2 实例，该地址可以在 EC2 控制台中获取。
+![SelectVM](./media/site-recovery-migrate-aws-to-azure/migration_pic4.png)
+8. EC2 实例受到保护且复制到 Azure 已完成后，请[运行测试故障转移](site-recovery-test-failover-to-azure.md)以在 Azure 中验证应用程序的性能 ![TFI](./media/site-recovery-migrate-aws-to-azure/migration_pic5.png)
+
+9. 针对每个 VM 运行从 AWS 到 Azure 的故障转移。 （可选）可以创建一个恢复计划并运行故障转移，从 AWS 向 Azure 迁移多个虚拟机。 [详细了解](site-recovery-create-recovery-plans.md)恢复计划。
+
+10. 迁移时，不需要提交故障转移。 而是，对于要迁移的每台计算机，选择“完成迁移”选项。 “完成迁移”操作会完成迁移过程，删除计算机复制设置，使计算机不再产生 Site Recovery 费用。![迁移](./media/site-recovery-migrate-aws-to-azure/migration_pic6.png)
 

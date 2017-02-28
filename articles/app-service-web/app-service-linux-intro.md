@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6eb4390f8290d3036bf76a592c40253432170883
-ms.openlocfilehash: 0e5c56e62965f2cc9df0b439595223300377d084
+ms.sourcegitcommit: 78fbef5aa26c52f5dd264581fd1525ada763d4c6
+ms.openlocfilehash: fa5d210c5e73074803d5cfb874ad7891563aefd0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -39,12 +40,12 @@ Linux 应用服务目前支持以下应用程序堆栈：
 
 * FTP
 * 本地 Git
-* GitHub 或 Bitbucket
+* GitHub
 
 针对应用程序规模进行调整：
 
-* 客户可以通过更改应用服务计划中的层，扩大或缩小 Web 应用。
-* 客户可以向外缩放其应用程序，在其 SKU 范围内跨多个实例运行其应用。
+* 客户可以通过更改应用服务计划中的层，增加或减少 Web 应用。
+* 客户可以扩大应用程序，在其 SKU 范围内运行多个应用实例。
 
 就 Kudu 来说，某些基本功能可用于以下几种情况：
 
@@ -53,9 +54,9 @@ Linux 应用服务目前支持以下应用程序堆栈：
 * 基本控制台
 
 ## <a name="limitations"></a>限制
-Azure 门户仅显示当前可用于 Linux 的应用服务的功能，隐藏其他功能。 启用更多功能时，这些功能会出现在门户上。
+Azure 门户仅显示当前可用于 Linux 的应用服务的功能，隐藏其他功能。 当我们启用更多功能时，将会在门户中看到这些功能。
 
-目前尚未启用某些功能，例如虚拟网络集成、Azure Active Directory/第三方身份验证或 Kudu 站点扩展。 不过，只要启用了这些功能，我们就会更新文档和博客，反映所做更改。
+某些功能（例如虚拟网络集成、Azure Active Directory/第三方身份验证或 Kudu 站点扩展）不完整。 完成这些功能后，我们将更新文档和博客，以反映所做更改。
 
 此公共预览版目前仅在以下区域提供：
 
@@ -76,9 +77,5 @@ Linux 上的 Web 应用尚不支持从未编译的源部署 . NET Core 应用。
 * [如何在 Linux 上使用应用服务自定义 Docker 映像](app-service-linux-using-custom-docker-image.md)
 * [在 Linux Web 应用中使用针对 Node.js 的 PM2 配置](app-service-linux-using-nodejs-pm2.md)
 * [在 Linux 上的 Azure 应用服务 Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
+* [在 Linux Azure 应用服务 Web 应用中使用 Ruby](app-service-linux-using-ruby.md)
 * [Linux 上的 Azure 应用服务 Web 应用常见问题](app-service-linux-faq.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-
