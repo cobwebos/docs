@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2017
+ms.date: 02/10/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: a7b05db6af721a62b7cbb795c329b383bd391e0a
-ms.openlocfilehash: fbb3933ef2dff882467fb2db34f9aa14dec13b1f
+ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
+ms.openlocfilehash: 875b344d6ed1f467c8d7a51f46e1c39ec42cfacd
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -41,15 +42,20 @@ ms.openlocfilehash: fbb3933ef2dff882467fb2db34f9aa14dec13b1f
 * 由于无法预见未来，因此，请利用所知道的事实，确定应用程序一开始需要的节点类型数目。 以后，随时可以添加或删除节点类型。 Service Fabric 群集必须至少有一个节点类型。
 
 ## <a name="the-properties-of-each-node-type"></a>每个节点类型的属性
-**节点类型**相当于云服务中的角色。 节点类型定义 VM 大小、VM 数目及其属性。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 VM 缩放集是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 如果定义为不同的 VM 缩放集，则每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。
+**节点类型**相当于云服务中的角色。 节点类型定义 VM 大小、VM 数目及其属性。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集 (VMSS)。 VM 缩放集是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 如果定义为不同的 VM 缩放集，则每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。
 
-群集可以有多个节点类型，但主节点类型（在门户定义的第一个节点类型）必须至少有 5 个 VM 供群集用于生产工作负荷（或至少有 3 个 VM 用于测试群集）。 如果要使用 Resource Manager 模板创建群集，可以在节点类型定义下找到 **is Primary** 属性。 主节点类型是 Service Fabric 系统服务所在的节点类型。  
+有关节点类型与 VMSS 之间的关系、如何 RDP 到某个实例、打开新端口等方面的更多详细信息，请阅读[此文档](service-fabric-cluster-nodetypes.md)。
+
+群集可以有多个节点类型，但主节点类型（在门户定义的第一个节点类型）必须至少有&5; 个 VM 供群集用于生产工作负荷（或至少有&3; 个 VM 用于测试群集）。 如果要使用 Resource Manager 模板创建群集，可以在节点类型定义下找到 **is Primary** 属性。 主节点类型是 Service Fabric 系统服务所在的节点类型。  
 
 ### <a name="primary-node-type"></a>主节点类型
 对于包含多个节点类型的群集，必须选择其中一个作为主节点类型。 下面是主节点类型的特征：
 
-* 主节点类型的 VM 大小下限取决于选择的持久性层。 持久性层的默认值为 Bronze。 有关持久性层的定义以及可采用的值的详细信息，请向下滚动。  
-* 主节点类型的 VM 数目下限取决于选择的可靠性层。 可靠性层的默认值为 Silver。 有关可靠性层的定义以及可采用的值的详细信息，请向下滚动。
+* 主节点类型的 **VM 大小下限**取决于你选择的**持久性层**。 持久性层的默认值为 Bronze。 有关持久性层的定义以及可采用的值的详细信息，请向下滚动。  
+* 主节点类型的 **VM 数目下限**取决于你选择的**可靠性层**。 可靠性层的默认值为 Silver。 有关可靠性层的定义以及可采用的值的详细信息，请向下滚动。 
+
+ 
+
 * Service Fabric 系统服务（例如，群集管理器服务或映像存储服务）放在主节点类型上，因此，群集的可靠性和持久性取决于你为主节点类型选择的可靠性层值与持久性层值。
 
 ![显示具有两个节点类型的群集的屏幕截图 ][SystemServices]
@@ -58,7 +64,7 @@ ms.openlocfilehash: fbb3933ef2dff882467fb2db34f9aa14dec13b1f
 包含多个节点类型的群集有一个主节点类型，剩余的是非主节点类型。 下面是非主节点类型的特征：
 
 * 此节点类型的 VM 大小下限取决于选择的持久性层。 持久性层的默认值为 Bronze。 有关持久性层的定义以及可采用的值的详细信息，请向下滚动。  
-* 此节点类型的 VM 数目下限可以是 1。 但是，你应该根据想要在此节点类型中运行的应用程序/服务的副本数目选择此数目。 部署群集之后，节点类型中的 VM 数目可能会增加。
+* 此节点类型的 VM 数目下限可以是&1;。 但是，你应该根据想要在此节点类型中运行的应用程序/服务的副本数目选择此数目。 部署群集之后，节点类型中的 VM 数目可能会增加。
 
 ## <a name="the-durability-characteristics-of-the-cluster"></a>群集的持久性特征
 持久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重新启动、VM 重置映像或 VM 迁移）。 在非主节点类型中，此权限可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。
@@ -86,18 +92,73 @@ ms.openlocfilehash: fbb3933ef2dff882467fb2db34f9aa14dec13b1f
 
  随时可以选择将群集的可靠性从一个层更新为另一个层。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，然后对群集做出其他任何更改，如添加节点，等等。可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt126012.aspx) 来监视升级进度
 
+
+## <a name="primary-node-type---capacity-guidance"></a>主节点类型 - 容量指导
+
+下面是用于规划主节点类型容量的指导
+
+1. **VM 实例数：**若要在 Azure 中运行任何生产工作负荷，必须指定“白银”或更高级别的可靠性层，然后该可靠性层将转换为最小主节点类型大小 5。
+2. **VM SKU：**主节点类型是运行系统服务的位置，因此，你为其选择的 VM SKU 必须将你计划在群集中放置的总体峰值负荷考虑在内。 下面这个类比用来说明此处我要表达的意思 - 将主节点类型想象成你的“肺”，它向你的大脑提供氧气，如果大脑不能获得足够的氧气，你的身体将会痛苦。 
+
+群集的容量需求是绝对由你计划在群集中运行的工作负荷决定的，因此，我们无法针对你的具体工作负荷为你提供定性指导，但是下面的宽泛指导可帮助你入门。
+
+对于生产工作负荷 
+
+
+- 建议使用的 VM SKU 是标准 D3 或标准 D3_V2 或者最少具有 14 GB 本地 SSD 的等效项。
+- 支持使用的最小 VM SKU 是标准 D1 或标准 D1_V2 或者最少具有 14 GB 本地 SSD 的等效项。 
+- 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
+- 标准 A1 SKU 由于性能原因尤其不支持用于生产工作负荷。
+
+
+## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>非主节点类型 - 针对有状态工作负荷的容量指导
+
+对于使用 Service Fabric 可靠集合或 Reliable Actors 的工作负荷，请阅读以下内容。 阅读有关[编程模型](service-fabric-choose-framework.md)的更多内容。
+
+1. **VM 实例数：**对于有状态生产工作负荷，建议使用最小值和目标副本计数 5 运行它们。 这意味着，在稳定的状态下，最终在每个容错域和升级域中都将具有一个副本（来自副本集）。 系统服务的整体可靠性层概念实际上只是一种为系统服务指定此设置的方法。
+
+因此，对于生产工作负荷，如果在节点中运行有状态工作负荷，建议使用的最小非主节点类型大小为 5。
+
+2. **VM SKU：**这是运行你的应用程序服务的节点类型，因此，你为其选择的 VM SKU 必须将你计划在每个节点中放置的峰值负荷考虑在内。 群集类型的容量需求是绝对由你计划在群集中运行的工作负荷决定的，因此，我们无法针对你的具体工作负荷为你提供定性指导，但是下面的宽泛指导可帮助你入门。
+
+对于生产工作负荷 
+
+- 建议使用的 VM SKU 是标准 D3 或标准 D3_V2 或者最少具有 14 GB 本地 SSD 的等效项。
+- 支持使用的最小 VM SKU 是标准 D1 或标准 D1_V2 或者最少具有 14 GB 本地 SSD 的等效项。 
+- 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
+- 标准 A1 SKU 由于性能原因尤其不支持用于生产工作负荷。
+
+
+## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>非主节点类型 - 针对无状态工作负荷的容量指导
+
+对于无状态工作负荷，请阅读以下内容。
+
+**VM 实例数：**对于无状态生产工作负荷，支持的最小非主节点类型大小为 2。 这允许你运行应用程序的两个无状态实例，并允许你的服务在某个 VM 实例丢失的情况下继续运行。 
+
+> [!NOTE]
+> 当你的群集在低于 5.6 的 Service Fabric 版本上运行时，由于运行时中的一个缺陷（计划在 5.6 中修复），如果将非主节点类型缩减为小于 5，则会导致群集运行状况变为不正常，直到你使用相应的节点名称调用 [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/servicefabric/vlatest/Remove-ServiceFabricNodeState)。 有关更多详细信息，请阅读[执行 Service Fabric 群集缩放](service-fabric-cluster-scale-up-down.md)。
+> 
+>
+
+**VM SKU：**这是运行你的应用程序服务的节点类型，因此，你为其选择的 VM SKU 必须将你计划在每个节点中放置的峰值负荷考虑在内。 群集类型的容量需求是绝对由你计划在群集中运行的工作负荷决定的，因此，我们无法针对你的具体工作负荷为你提供定性指导，但是下面的宽泛指导可帮助你入门。
+
+对于生产工作负荷 
+
+
+- 建议使用的 VM SKU 是标准 D3 或标准 D3_V2 或等效项。 
+- 建议使用的 VM SKU 是标准 D1 或标准 D1_V2 或等效项。 
+- 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
+- 标准 A1 SKU 由于性能原因尤其不支持用于生产工作负荷。
+
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+
 ## <a name="next-steps"></a>后续步骤
 完成容量规划并设置群集后，请阅读以下文章：
 
 * [Service Fabric 群集安全性](service-fabric-cluster-security.md)
 * [Service Fabric 运行状况模型简介](service-fabric-health-introduction.md)
+* [节点类型与 VMSS 之间的关系](service-fabric-cluster-nodetypes.md)
 
 <!--Image references-->
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

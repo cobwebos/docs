@@ -1,5 +1,5 @@
 ---
-title: "Azure 监视器指标 - 每种资源类型支持的指标 | Microsoft Docs"
+title: "Azure 监视器指标 - 每种资源类型支持的指标 | Microsoft 文档"
 description: "可在 Azure 监视器中为每种资源类型使用的指标的列表。"
 author: johnkemnetz
 manager: rboucher
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 2/17/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 5aa823259a86d361d13af9f6c2df062362c7e47b
-ms.openlocfilehash: 2faa881f146cc1b0a8c0523f2fb0f20b0136441e
+ms.sourcegitcommit: 354bf45625c209c22118804d3835ca71e3128580
+ms.openlocfilehash: deda64fb779e176bb00c3256fa3028e7e3567eb4
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -30,18 +31,27 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-|度量值|指标显示名称|计价单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |qpu_metric|QPU|计数|平均值|QPU。 S1 范围为 0-100，S2 范围为 0-200，S4 范围为 0-400|
 |memory_metric|内存|字节|平均值|内存。 S1 范围为 0-25 GB，S2 范围为 0-50 GB，S4 范围为 0-100 GB|
+|TotalConnectionRequests|连接请求总数|计数|平均值|连接请求总数。 这些请求是到达的请求。|
+|SuccessfullConnectionsPerSec|每秒成功连接数|每秒计数|平均值|连接成功完成速率。|
+|TotalConnectionFailures|连接失败总数|计数|平均值|失败的连接尝试总数。|
+|CurrentUserSessions|当前用户会话数|计数|平均值|当前已建立的用户会话数。|
+|QueryPoolBusyThreads|查询池忙线程数|计数|平均值|查询线程池中的忙线程数。|
+|CommandPoolJobQueueLength|命令池作业队列长度|计数|平均值|命令线程池队列中的作业数。|
+|ProcessingPoolJobQueueLength|处理池作业队列长度|计数|平均值|处理线程池的队列中的非 I/O 作业数。|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|TotalRequests|网关请求总数|计数|总和|网关请求数|
-|TotalSuccessfulRequests|成功的网关请求数|计数|总和|已处理的网关请求数|
-|TotalFailedRequests|失败的网关请求数|计数|总和|失败的网关请求数|
+|TotalRequests|网关请求总数|计数|总计|网关请求数|
+|SuccessfulRequests|成功的网关请求数|计数|总计|成功的网关请求数|
+|UnauthorizedRequests|未经授权的网关请求数|计数|总计|未经授权的网关请求数|
+|FailedRequests|失败的网关请求数|计数|总计|失败的网关请求数|
+|OtherRequests|其他网关请求数|计数|总计|其他网关请求数|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
@@ -290,29 +300,66 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
-| 度量值 | 指标显示名称 | 计价单位 | 聚合类型 | 说明 |
-| --- | --- | --- | --- | --- |
-| d2c.telemetry.ingress.allProtocol |遥测消息发送尝试次数 |计数 |总计 |尝试发送到 IoT 中心的、设备到云的遥测消息数 |
-| d2c.telemetry.ingress.success |发送的遥测消息数 |计数 |总计 |成功发送到 IoT 中心的、设备到云的遥测消息数 |
-| d2c.telemetry.egress.success | 发送的遥测消息数 | 计数 | 总计 | 所有成功写入终结点的遥测消息数 |
-| d2c.telemetry.egress.invalid | 无效的遥测消息传递尝试次数 | 计数 | 总计 | 由于与终结点不兼容而未传递的消息计数 |
-| d2c.telemetry.egress.dropped | 删除的遥测消息数 | 计数 | 总计 | 由于终结点不正常而删除的消息数 |
-| d2c.telemetry.egress.fallback | 符合回退条件的遥测消息数 | 计数 | 总计 | 符合回退路由的消息计数 |
-| d2c.telemetry.egress.orphaned | 孤立的遥测消息数 | 计数 | 总计 | 不匹配任何路由（包括回退路由）的消息计数 |
-| d2c.endpoints.latency.eventHubs | 事件中心终结点的消息延迟 | 毫秒 | 平均值 | 消息进入 IoT 中心与消息进入事件中心终结点之间的平均延迟、最小延迟和最大延迟（毫秒） |
-| d2c.endpoints.latency.serviceBusQueues | 服务总线队列终结点的消息延迟 | 毫秒 | 平均值 | 消息进入 IoT 中心与消息进入服务总线队列终结点之间的平均延迟、最小延迟和最大延迟（毫秒） |
-| d2c.endpoints.latency.serviceBusTopics | 服务总线主题终结点的消息延迟 | 毫秒 | 平均值 | 消息进入 IoT 中心与消息进入服务总线主题终结点之间的平均延迟、最小延迟和最大延迟（毫秒） |
-| c2d.commands.egress.complete.success |完成的命令数 |计数 |总计 |设备已成功完成的云到设备命令数目 |
-| c2d.commands.egress.abandon.success |放弃的命令数 |计数 |总计 |设备放弃的云到设备命令数目 |
-| c2d.commands.egress.reject.success |拒绝的命令数 |计数 |总计 |设备拒绝的云到设备命令数目 |
-| devices.totalDevices |设备总数 |计数 |总计 |已注册到 IoT 中心的设备数目 |
-| devices.connectedDevices.allProtocol |连接的设备数 |计数 |总计 |已连接到 IoT 中心的设备数目 |
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|d2c.telemetry.ingress.allProtocol|遥测消息发送尝试次数|计数|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|
+|d2c.telemetry.ingress.success|已发送的遥测消息数|计数|总计|成功发送到 IoT 中心的、设备到云的遥测消息数|
+|c2d.commands.egress.complete.success|完成的命令数|计数|总计|设备已成功完成的云到设备命令的数目|
+|c2d.commands.egress.abandon.success|放弃的命令数|计数|总计|设备放弃的云到设备命令的数目|
+|c2d.commands.egress.reject.success|拒绝的命令数|计数|总计|设备拒绝的云到设备命令的数目|
+|devices.totalDevices|设备总数|计数|总计|已注册到 IoT 中心的设备数目|
+|devices.connectedDevices.allProtocol|已连接的设备|计数|总计|已连接到 IoT 中心的设备数目|
+|d2c.telemetry.egress.success|发送的遥测消息数|计数|总计|已成功将消息写入到终结点的次数（总数）|
+|d2c.telemetry.egress.dropped|丢弃的消息数|计数|总计|因为与任何路由都不匹配并且回退路由被禁用而被丢弃的消息的数目|
+|d2c.telemetry.egress.orphaned|孤立的消息数|计数|总计|不匹配任何路由（包括回退路由）的消息计数|
+|d2c.telemetry.egress.invalid|无效的消息数|计数|总计|由于与终结点不兼容而未传递的消息计数|
+|d2c.telemetry.egress.fallback|符合回退条件的消息数|计数|总计|已写入到回退终结点的消息数|
+|d2c.endpoints.egress.eventHubs|已传递到事件中心终结点的消息数|计数|总计|已成功将消息写入到事件中心终结点的次数|
+|d2c.endpoints.latency.eventHubs|事件中心终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入事件中心终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.serviceBusQueues|已传递到服务总线队列终结点的消息数|计数|总计|已成功将消息写入到服务总线队列终结点的次数|
+|d2c.endpoints.latency.serviceBusQueues|服务总线队列终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入服务总线队列终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.serviceBusTopics|已传递到服务总线主题终结点的消息数|计数|总计|已成功将消息写入到服务总线主题终结点的次数|
+|d2c.endpoints.latency.serviceBusTopics|服务总线主题终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入服务总线主题终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.builtIn.events|已传递到内置终结点的消息数（消息/事件）|计数|总计|已成功将消息写入到内置终结点的次数（消息/事件）|
+|d2c.endpoints.latency.builtIn.events|内置终结点的消息延迟（消息/事件）|毫秒|平均值|消息进入 IoT 中心与进入内置终结点（消息/事件）之间的平均延迟（毫秒） |
+|d2c.twin.read.success|设备的成功克隆读取数|计数|总计|由设备发起的所有成功的克隆读取的计数。|
+|d2c.twin.read.failure|设备的失败克隆读取数|计数|总计|由设备发起的所有失败的克隆读取的计数。|
+|d2c.twin.read.size|设备的克隆读取的响应大小|字节|平均值|由设备发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|
+|d2c.twin.update.success|设备的成功克隆更新数|计数|总计|由设备发起的所有成功的克隆更新的计数。|
+|d2c.twin.update.failure|设备的失败克隆更新数|计数|总计|由设备发起的所有失败的克隆更新的计数。|
+|d2c.twin.update.size|设备的克隆更新的大小|字节|平均值|由设备发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|
+|c2d.methods.success|成功的直接方法调用数|计数|总计|所有成功的直接方法调用的计数。|
+|c2d.methods.failure|失败的直接方法调用数|计数|总计|所有失败的直接方法调用的计数。|
+|c2d.methods.requestSize|直接方法调用的请求大小|字节|平均值|所有成功的直接方法请求的平均大小、最小大小和最大大小。|
+|c2d.methods.responseSize|直接方法调用的响应大小|字节|平均值|所有成功的直接方法响应的平均大小、最小大小和最大大小。|
+|c2d.twin.read.success|后端的成功克隆读取数|计数|总计|由后端发起的所有成功的克隆读取的计数。|
+|c2d.twin.read.failure|后端的失败克隆读取数|计数|总计|由后端发起的所有失败的克隆读取的计数。|
+|c2d.twin.read.size|后端的克隆读取的响应大小|字节|平均值|由后端发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|
+|c2d.twin.update.success|后端的成功克隆更新数|计数|总计|由后端发起的所有成功的克隆更新的计数。|
+|c2d.twin.update.failure|后端的失败克隆更新数|计数|总计|由后端发起的所有失败的克隆更新的计数。|
+|c2d.twin.update.size|后端的克隆更新的大小|字节|平均值|由后端发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|
+|twinQueries.success|成功的克隆查询|计数|总计|所有成功的克隆查询的计数。|
+|twinQueries.failure|失败的克隆查询|计数|总计|所有失败的克隆查询的计数。|
+|twinQueries.resultSize|克隆查询结果大小|字节|平均值|所有成功的克隆查询的结果大小的平均值、最小值和最大值。|
+|jobs.createTwinUpdateJob.success|克隆更新作业创建成功数|计数|总计|克隆更新作业创建成功的所有次数。|
+|jobs.createTwinUpdateJob.failure|克隆更新作业创建失败数|计数|总计|克隆更新作业创建失败的所有次数。|
+|jobs.createDirectMethodJob.success|方法调用作业的创建成功数|计数|总计|直接方法调用作业创建成功的所有次数。|
+|jobs.createDirectMethodJob.failure|方法调用作业的创建失败数|计数|总计|直接方法调用作业创建失败的所有次数。|
+|jobs.listJobs.success|对列出作业的成功调用数|计数|总计|对列出作业的所有成功调用的计数。|
+|jobs.listJobs.failure|对列出作业的失败调用数|计数|总计|对列出作业的所有失败调用的计数。|
+|jobs.cancelJob.success|成功的作业取消数|计数|总计|用来取消作业的调用成功的次数。|
+|jobs.cancelJob.failure|失败的作业取消数|计数|总计|用来取消作业的调用失败的次数。|
+|jobs.queryJobs.success|成功的作业查询数|计数|总计|对查询作业的所有成功调用的计数。|
+|jobs.queryJobs.failure|失败的作业查询数|计数|总计|对查询作业的所有失败调用的计数。|
+|jobs.completed|已完成的作业|计数|总计|所有已完成的作业的计数。|
+|jobs.failed|失败的作业数|计数|总计|所有失败的作业的计数。|
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
-|INREQS|传入请求数|计数|总计|命名空间的事件中心传入消息吞吐量|
+|INREQS|传入请求数|计数|总计|命名空间的传入请求总数。|
 |SUCCREQ|成功的请求数|计数|总计|命名空间的成功请求总数|
 |FAILREQ|失败的请求数|计数|总计|命名空间的失败请求总数|
 |SVRBSY|服务器繁忙错误数|计数|总计|命名空间的服务器繁忙错误总数|
@@ -320,8 +367,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |MISCERR|其他错误数|计数|总计|命名空间的失败请求总数|
 |INMSGS|传入消息数|计数|总计|命名空间的传入消息总数|
 |OUTMSGS|传出消息数|计数|总计|命名空间的传出消息总数|
-|EHINMBS|每秒传入字节数|每秒字节数|总计|命名空间的事件中心传入消息吞吐量|
-|EHOUTMBS|每秒传出字节数|每秒字节数|总计|命名空间的传出消息总数|
+|EHINMBS|传入字节数|每秒字节数|总计|命名空间的事件中心传入消息吞吐量|
+|EHOUTMBS|传出字节数|每秒字节数|总计|命名空间的传出消息总数|
 |EHABL|存档积压工作消息数|计数|总计|命名空间积压工作中的事件中心存档消息数|
 |EHAMSGS|存档消息数|计数|总计|命名空间中的事件中心存档消息数|
 |EHAMBS|存档消息吞吐量|每秒字节数|总计|命名空间中的事件中心存档消息吞吐量|
@@ -367,6 +414,70 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |---|---|---|---|---|
 |吞吐量|吞吐量|每秒字节数|平均值||
 
+## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
+
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|registration.all|注册操作|计数|总计|所有成功的注册操作（创建、更新、查询和删除）的计数。 |
+|registration.create|注册创建操作数|计数|总计|所有成功的注册创建操作的计数。|
+|registration.update|注册更新操作数|计数|总计|所有成功的注册更新操作的计数。|
+|registration.get|注册读取操作数|计数|总计|所有成功的注册查询操作的计数。|
+|registration.delete|注册删除操作数|计数|总计|所有成功的注册删除操作的计数。|
+|incoming|传入消息数|计数|总计|所有成功的发送 API 调用的计数。 |
+|incoming.scheduled|已发送的已安排推送通知数|计数|总计|已取消的已安排推送通知数|
+|incoming.scheduled.cancel|已取消的已安排推送通知数|计数|总计|已取消的已安排推送通知数|
+|scheduled.pending|挂起的已安排通知数|计数|总计|挂起的已安排通知数|
+|installation.all|安装管理操作数|计数|总计|安装管理操作数|
+|installation.get|获取安装操作数|计数|总计|获取安装操作数|
+|installation.upsert|创建或更新安装操作数|计数|总计|创建或更新安装操作数|
+|installation.patch|修补安装操作数|计数|总计|修补安装操作数|
+|installation.delete|删除安装操作数|计数|总计|删除安装操作数|
+|outgoing.allpns.success|成功的通知数|计数|总计|所有成功的通知的计数。|
+|outgoing.allpns.invalidpayload|有效负载错误数|计数|总计|因为 PNS 返回了“有效负载不正确”错误而失败的推送的计数。|
+|outgoing.allpns.pnserror|外部通知系统错误数|计数|总计|因为与 PNS 通信时遇到问题（不包括身份验证问题）而失败的推送的计数。|
+|outgoing.allpns.channelerror|通道错误数|计数|总计|因为通道无效、没有与正确的应用相关联、受限制或已过期而失败的推送的计数。|
+|outgoing.allpns.badorexpiredchannel|坏通道或已过期通道错误数|计数|总计|因为注册中的通道/令牌/registrationId 已过期或无效而失败的推送的计数。|
+|outgoing.wns.success|WNS 成功的通知数|计数|总计|所有成功的通知的计数。|
+|outgoing.wns.invalidcredentials|WNS 授权错误数（凭据无效）|计数|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。 （Windows Live 不能识别凭据）。|
+|outgoing.wns.badchannel|WNS 坏通道错误|计数|总计|因为注册中的 ChannelURI 不可识别（WNS 状态：404 找不到）而失败的推送的计数。|
+|outgoing.wns.expiredchannel|WNS 已过期通道错误|计数|总计|因为 ChannelURI 已过期（WNS 状态：410 不存在）而失败的推送的计数。|
+|outgoing.wns.throttled|WNS 受限的通知数|计数|总计|因为 WNS 限制了此应用（WNS 状态：406 不可接受）而失败的推送的计数。|
+|outgoing.wns.tokenproviderunreachable|WNS 授权错误数（无法访问）|计数|总计|无法访问 Windows Live。|
+|outgoing.wns.invalidtoken|WNS 授权错误数（令牌无效）|计数|总计|提供给 WNS 的令牌无效（WNS 状态：401 未经授权）。|
+|outgoing.wns.wrongtoken|WNS 授权错误数（令牌错误）|计数|总计|提供给 WNS 的令牌有效，但它是用于另一应用程序的（WNS 状态：403 禁止访问）。 如果注册中的 ChannelURI 与另一应用相关联，则可能会发生此情况。 请检查客户端应用是否与其凭据位于通知中心内的同一应用相关联。|
+|outgoing.wns.invalidnotificationformat|WNS 无效的通知格式|计数|总计|通知格式无效（WNS 状态：400）。 请注意，WNS 并不会拒绝所有无效的有效负载。|
+|outgoing.wns.invalidnotificationsize|WNS 无效通知大小错误|计数|总计|通知有效负载太大（WNS 状态：413）。|
+|outgoing.wns.channelthrottled|WNS 通道受限|计数|总计|通知因为注册中的 ChannelURI 受限而被丢弃（WNS 响应标头：X-WNS-NotificationStatus:channelThrottled）。|
+|outgoing.wns.channeldisconnected|WNS 通道断开连接|计数|总计|通知因为注册中的 ChannelURI 受限而被丢弃（WNS 响应标头：X-WNS-DeviceConnectionStatus: disconnected）。|
+|outgoing.wns.dropped|WNS 丢弃的通知数|计数|总计|通知因为注册中的 ChannelURI 受限而被丢弃（X-WNS-NotificationStatus 为 dropped，但 X-WNS-DeviceConnectionStatus 不是 disconnected）。|
+|outgoing.wns.pnserror|WNS 错误数|计数|总计|与 WNS 通信时发生错误，因而未传递通知。|
+|outgoing.wns.authenticationerror|WNS 身份验证错误数|计数|总计|与 Windows Live 通信时因凭据无效或令牌错误而发生错误，因为未传递通知。|
+|outgoing.apns.success|APNS 成功的通知数|计数|总计|所有成功的通知的计数。|
+|outgoing.apns.invalidcredentials|APNS 授权错误数|计数|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|
+|outgoing.apns.badchannel|APNS 坏通道错误|计数|总计|因令牌无效而失败的推送的计数（APNS 状态代码：8）。|
+|outgoing.apns.expiredchannel|APNS 已过期通道错误|计数|总计|由 APNS 反馈通道致其无效的令牌的计数。|
+|outgoing.apns.invalidnotificationsize|APNS 无效通知大小错误|计数|总计|因有效负载太大而失败的推送的计数（APNS 状态代码：7）。|
+|outgoing.apns.pnserror|APNS 错误数|计数|总计|因为与 APNS 通信时发生错误而失败的推送的计数。|
+|outgoing.gcm.success|GCM 成功的通知数|计数|总计|所有成功的通知的计数。|
+|outgoing.gcm.invalidcredentials|GCM 授权错误数（凭据无效）|计数|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|
+|outgoing.gcm.badchannel|GCM 坏通道错误|计数|总计|因为注册中的 registrationId 不可识别而失败的推送的计数（GCM 结果：无效的注册）。|
+|outgoing.gcm.expiredchannel|GCM 已过期通道错误|计数|总计|因为注册中的 registrationId 已过期而失败的推送的计数（GCM 结果：NotRegistered）。|
+|outgoing.gcm.throttled|GCM 受限的通知数|计数|总计|因为 GCM 限制了此应用而失败的推送的计数（GCM 状态代码：501-599 或结果：不可用）。|
+|outgoing.gcm.invalidnotificationformat|GCM 无效的通知格式|计数|总计|因为有效负载的格式不正确而失败的推送的计数（GCM 结果：InvalidDataKey 或 InvalidTtl）。|
+|outgoing.gcm.invalidnotificationsize|GCM 无效通知大小错误|计数|总计|因有效负载太大而失败的推送的计数（GCM 结果：MessageTooBig）。|
+|outgoing.gcm.wrongchannel|GCM 通道不正确错误|计数|总计|因为注册中的 registrationId 没有关联到当前应用而失败的推送的计数（GCM 结果：InvalidPackageName）。|
+|outgoing.gcm.pnserror|GCM 错误数|计数|总计|因为与 GCM 通信时发生错误而失败的推送的计数。|
+|outgoing.gcm.authenticationerror|GCM 身份验证错误数|计数|总计|因为 PNS 未接受所提供的凭据、凭据被阻止或者未在应用中正确配置 SenderId 而失败的推送的计数（GCM 结果：MismatchedSenderId）。|
+|outgoing.mpns.success|MPNS 成功的通知数|计数|总计|所有成功的通知的计数。|
+|outgoing.mpns.invalidcredentials|MPNS 无效的凭据|计数|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|
+|outgoing.mpns.badchannel|MPNS 坏通道错误|计数|总计|因为注册中的 ChannelURI 不可识别（MPNS 状态：404 找不到）而失败的推送的计数。|
+|outgoing.mpns.throttled|MPNS 受限的通知数|计数|总计|因为 MPNS 限制了此应用（MPNS 状态：406 不可接受）而失败的推送的计数。|
+|outgoing.mpns.invalidnotificationformat|MPNS 无效的通知格式|计数|总计|因通知的有效负载太大而失败的推送的计数。|
+|outgoing.mpns.channeldisconnected|MPNS 通道断开连接|计数|总计|因为注册中的 ChannelURI 断开连接（MPNS 状态：412 找不到）而失败的推送的计数。|
+|outgoing.mpns.dropped|MPNS 丢弃的通知数|计数|总计|被 MPNS 丢弃的推送的计数（MPNS 响应标头：X-NotificationStatus：QueueFull 或 Suppressed）。|
+|outgoing.mpns.pnserror|MPNS 错误数|计数|总计|因为与 MPNS 通信时发生错误而失败的推送的计数。|
+|outgoing.mpns.authenticationerror|MPNS 身份验证错误数|计数|总计|因为 PNS 未接受所提供的凭据或者凭据被阻止而失败的推送的计数。|
+
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
@@ -396,13 +507,13 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |blocked_by_firewall|被防火墙阻止|计数|总计|被防火墙阻止|
 |deadlock|死锁数|计数|总计|死锁数|
 |storage_percent|数据库大小百分比|百分比|最大值|数据库大小百分比|
-|xtp_storage_percent|In-Memory OLTP 存储百分比（预览）|百分比|平均值|In-Memory OLTP 存储百分比（预览）|
+|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比|
 |workers_percent|辅助角色百分比|百分比|平均值|辅助角色百分比|
 |sessions_percent|会话百分比|百分比|平均值|会话百分比|
 |dtu_limit|DTU 限制|计数|平均值|DTU 限制|
 |dtu_used|已用的 DTU|计数|平均值|已用的 DTU|
 |service_level_objective|数据库的服务级别目标|计数|总计|数据库的服务级别目标|
-|dwu_limit|dwu 限制|计数|最大值|dwu 限制|
+|dwu_limit|DWU 限制|计数|最大值|DWU 限制|
 |dwu_consumption_percent|DWU 百分比|百分比|平均值|DWU 百分比|
 |dwu_used|已用的 DWU|计数|平均值|已用的 DWU|
 
@@ -421,6 +532,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |storage_limit|存储限制|字节|平均值|存储限制|
 |eDTU_used|已用的 eDTU|计数|平均值|已用的 eDTU|
 |storage_used|已用的存储量|字节|平均值|已用的存储量|
+|xtp_storage_percent|内存中 OLTP 存储百分比|百分比|平均值|内存中 OLTP 存储百分比|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
@@ -449,7 +561,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |BytesReceived|数据输入|字节|总计|数据输入|
 |BytesSent|数据输出|字节|总计|数据输出|
 
-## <a name="microsoftwebsites-including-azure-functions"></a>Microsoft.Web/sites（包括 Azure Functions）
+## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites（包括 Functions）
 
 |度量值|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
@@ -466,8 +578,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |Http406|Http 406|计数|总计|Http 406|
 |Http4xx|Http 4xx|计数|总计|Http 4xx|
 |Http5xx|Http 服务器错误|计数|总计|Http 服务器错误|
-|MemoryWorkingSet|内存工作集|字节|总计|内存工作集|
-|AverageMemoryWorkingSet|平均内存工作集|字节|总计|平均内存工作集|
+|MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|
+|AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|
 |AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|
 |FunctionExecutionUnits|函数执行单位数|计数|平均值|函数执行单位数|
 |FunctionExecutionCount|函数执行计数|计数|平均值|函数执行计数|
@@ -489,8 +601,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |Http406|Http 406|计数|总计|Http 406|
 |Http4xx|Http 4xx|计数|总计|Http 4xx|
 |Http5xx|Http 服务器错误|计数|总计|Http 服务器错误|
-|MemoryWorkingSet|内存工作集|字节|总计|内存工作集|
-|AverageMemoryWorkingSet|平均内存工作集|字节|总计|平均内存工作集|
+|MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|
+|AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|
 |AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|
 |FunctionExecutionUnits|函数执行单位数|计数|平均值|函数执行单位数|
 |FunctionExecutionCount|函数执行计数|计数|平均值|函数执行计数|
@@ -499,10 +611,5 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 * [了解 Azure 监视器中的指标](monitoring-overview.md#monitoring-sources)
 * [针对指标创建警报](insights-receive-alert-notifications.md)
 * [将指标导出到存储、事件中心或 Log Analytics](monitoring-overview-of-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
