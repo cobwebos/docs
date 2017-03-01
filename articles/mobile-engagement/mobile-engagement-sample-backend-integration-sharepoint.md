@@ -4,7 +4,7 @@ description: "连接 Azure Mobile Engagement 与 SharePoint 后端，以从 Shar
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 06297b43-579f-46e6-8a58-961a68f9aa09
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4774f33c821410fb8fbed8d64b94fede36cb0a90
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -202,10 +203,5 @@ ms.openlocfilehash: 4774f33c821410fb8fbed8d64b94fede36cb0a90
 [5]: ./media/mobile-engagement-sample-backend-integration-sharepoint/diagram.png
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
