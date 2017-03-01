@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
 ms.sourcegitcommit: 653c9a04016c0157b2107710e170ba63b3a499f7
 ms.openlocfilehash: 38f68d6df19d24492a234933e10d5d5cf34d1b23
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -119,10 +120,5 @@ Azure Analysis Services 中的数据模型可能需要不同的数据提供程�
 
 ## <a name="next-steps"></a>后续步骤
 现在已详细了解了 Azure Analysis Services，可以开始使用了。 了解如何在 Azure 中[创建服务器](analysis-services-create-server.md)并对其[部署表格模型](analysis-services-deploy.md)。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

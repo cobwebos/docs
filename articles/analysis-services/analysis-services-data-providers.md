@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2016
+ms.date: 02/27/2016
 ms.author: owend
 translationtype: Human Translation
 ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
 ms.openlocfilehash: d70b9f2c2a0cb1abe11dcfee9acb51dcb5552a60
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -41,9 +42,4 @@ Microsoft 客户端应用程序（例如 Power BI Desktop 和 Excel）会安装�
 
 ## <a name="next-steps"></a>后续步骤
 安装最新的数据提供程序以后，即可通过客户端应用程序连接到服务器。 若要详细了解如何从客户端连接，请参阅[从 Azure Analysis Services 获取数据](analysis-services-connect.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

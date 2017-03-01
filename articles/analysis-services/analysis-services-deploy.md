@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
 ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
 ms.openlocfilehash: 18d64f1ad4ef0dd41ae9302d08e02e94d1c608f5
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -66,10 +67,5 @@ ms.openlocfilehash: 18d64f1ad4ef0dd41ae9302d08e02e94d1c608f5
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已将表格模型部署到服务器，可以与其进行连接了。 可以[使用 SSMS 连接到它](analysis-services-manage.md)以对其进行管理。 并且，可以[使用客户端工具连接到它](analysis-services-connect.md)，如 Power BI、Power BI Desktop 或 Excel，然后开始创建报表。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

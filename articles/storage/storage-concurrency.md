@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/28/2017
 ms.author: jahogg
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 7519ff07efd5bb450362fca8d54e4d9e3be8f0df
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -289,10 +290,5 @@ customer.ETag = "*";
 * [Azure 存储简介](storage-introduction.md)
 * [Blob](storage-dotnet-how-to-use-blobs.md)、[表](storage-dotnet-how-to-use-tables.md)、[队列](storage-dotnet-how-to-use-queues.md)和[文件](storage-dotnet-how-to-use-files.md)的存储使用入门
 * 存储体系结构 - [Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
