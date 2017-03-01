@@ -12,11 +12,12 @@ ms.devlang: R
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/09/2017
+ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 2df17cddf629cb72b7fa4d590dfaa69311c96aa4
 ms.openlocfilehash: 3e47a7e0382009a07b885a28c6e8d90f9bff9cfb
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -190,10 +191,5 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 * [Hadoop 上的 R Server 入门](hdinsight-hadoop-r-server-get-started.md)
 * [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中添加）](hdinsight-hadoop-r-server-install-r-studio.md)
 * [适用于 HDInsight 上的 R Server 的计算上下文选项](hdinsight-hadoop-r-server-compute-contexts.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

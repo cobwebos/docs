@@ -2,7 +2,7 @@
 title: "在 Azure App Service 上进行高密度托管 | Microsoft Docs"
 description: "在 Azure App Service 上进行高密度托管"
 author: btardif
-manager: wpickett
+manager: erikre
 editor: 
 services: app-service\web
 documentationcenter: 
@@ -17,6 +17,7 @@ ms.author: byvinyal
 translationtype: Human Translation
 ms.sourcegitcommit: 0c2677b388f7a88ff88715a05212633565393cc2
 ms.openlocfilehash: 2d5d1d5123ca718b2e7dcdf426b77f91969dc9dc
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -152,10 +153,5 @@ New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePla
 3. 在应用服务计划中将 PerSiteScaling 标志设置为 true。
 4. 将 **numberOfWorkers** 属性设置为 **1**，创建新应用并将其分配给该应用服务计划。 使用此配置，让该辅助池中产生可能的最高密度。
 5. 可按应用独立配置辅助角色数，根据需要授予其他资源。 例如，使用率高的应用可通过将 **numberOfWorkers** 设置为 **3** 来提高应用的处理能力，使用率低的应用则可将 **numberOfWorkers** 设置为 **1**。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

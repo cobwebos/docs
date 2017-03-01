@@ -4,7 +4,7 @@ description: "了解如何从备份还原应用。"
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 71d07e64480d4b4eaff7fdef53c8f5ff7a97a944
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -100,9 +101,4 @@ ms.openlocfilehash: 71d07e64480d4b4eaff7fdef53c8f5ff7a97a944
 [ManagementServicesOperationLogsList]: ./media/web-sites-restore/11ManagementServicesOperationLogsList.png
 [DetailsButton]: ./media/web-sites-restore/12DetailsButton.png
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

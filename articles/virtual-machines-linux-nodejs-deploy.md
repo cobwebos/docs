@@ -7,6 +7,7 @@ author: stepro
 manager: dmitryr
 editor: 
 ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: /azure
 ms.assetid: 857a812d-c73e-4af7-a985-2d0baf8b6f71
 ms.service: multiple
 ms.devlang: nodejs
@@ -18,6 +19,7 @@ ms.author: stephpr
 translationtype: Human Translation
 ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
 ms.openlocfilehash: 0de0314902805a2bdb37ce3c6f79ec221f3aed31
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -258,10 +260,5 @@ Git 公开了大量挂钩，这些挂钩在特定时间的调用以响应对存�
 本文演示如何获取 Node.js 应用程序并将其部署到在 Azure 中运行的 Linux 虚拟机。 若要了解有关 Azure 中的 Linux 虚拟机的详细信息，请参阅 [Azure 上的 Linux 简介](/documentation/articles/virtual-machines-linux-introduction/)。
 
 有关如何在 Azure 上开发 Node.js 应用程序的详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

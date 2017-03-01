@@ -4,7 +4,7 @@ description: "了解 Azure 应用服务 Web 应用的生产中测试 (TiP) 功�
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 4623468d-886e-4203-8012-8f86deb2790b
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: f9d423e87938e55daeb07268b11c930fb62755b6
 ms.openlocfilehash: 8fa7ca18fd2ea3a3f672854a0b2e0397cfdbb2bc
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -84,10 +85,5 @@ ms.openlocfilehash: 8fa7ca18fd2ea3a3f672854a0b2e0397cfdbb2bc
 * [通过可预测的方式在 Azure 中部署复杂应用程序](app-service-deploy-complex-application-predictably.md)
 * [使用 Azure 应用服务进行敏捷软件开发](app-service-agile-software-development.md)
 * [对 Web 应用有效使用 DevOps 环境](app-service-web-staged-publishing-realworld-scenarios.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

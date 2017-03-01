@@ -5,7 +5,7 @@ keywords: "azure 应用服务, linux, oss"
 services: app-service
 documentationcenter: 
 author: naziml
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
@@ -79,3 +79,5 @@ Linux 上的 Web 应用尚不支持从未编译的源部署 . NET Core 应用。
 * [在 Linux 上的 Azure 应用服务 Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
 * [在 Linux Azure 应用服务 Web 应用中使用 Ruby](app-service-linux-using-ruby.md)
 * [Linux 上的 Azure 应用服务 Web 应用常见问题](app-service-linux-faq.md)
+
+

@@ -4,7 +4,7 @@ description: "了解如何配置网络安全规则，以控制发往应用服务
 services: app-service
 documentationcenter: 
 author: ccompy
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: stefsch
 translationtype: Human Translation
 ms.sourcegitcommit: e7a9192a44b590335e479df143c13709c4dfa016
 ms.openlocfilehash: d3acf5352302528cdf3502e166337cbe808e71c8
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -138,10 +139,5 @@ ms.openlocfilehash: d3acf5352302528cdf3502e166337cbe808e71c8
 [NewPortal]:  https://portal.azure.com  
 
 <!-- IMAGES -->
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

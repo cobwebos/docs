@@ -4,7 +4,7 @@ description: "了解如何构建 WebJobs，以便运行后台测试、与存储�
 services: app-service
 documentationcenter: 
 author: christopheranderson
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: 85975432-04c9-4b83-b937-b30c082d52a1
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: chrande
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 45016e09e981bab6e4413048838c66f1108dc663
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -30,10 +31,5 @@ ms.openlocfilehash: 45016e09e981bab6e4413048838c66f1108dc663
 Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你全面控制 Web 作业的执行，包括调用 Web 作业中的各个函数。 该仪表板还会显示函数运行时和日志记录输出。
 
 [!INCLUDE [app-service-blueprint-webjobs](../../includes/app-service-blueprint-webjobs.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

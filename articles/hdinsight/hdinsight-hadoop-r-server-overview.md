@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2017
+ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: cd57f3a43142b3af3546eafd9749123fadd333c2
 ms.openlocfilehash: 2f5cf1155f116b22fa28cf86bb8c87667df981b7
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -104,9 +105,4 @@ HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。  �
 * [将 RStudio Server 添加到 HDInsight（如果未在群集创建过程中安装）](hdinsight-hadoop-r-server-install-r-studio.md)
 * [适用于 HDInsight 上的 R Server 的计算上下文选项](hdinsight-hadoop-r-server-compute-contexts.md)
 * [适用于 R Server on HDInsight 的 Azure 存储选项](hdinsight-hadoop-r-server-storage.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -4,7 +4,7 @@ description: "了解如何在 Azure Web Apps 中使用 GoDaddy 提供的域名"
 services: app-service
 documentationcenter: 
 author: erikre
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 33233e30-5846-488f-83f3-b32e5c114564
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: fe8b4b097f7ff157d624c09b8dbf26f94401395c
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -87,10 +88,5 @@ ms.openlocfilehash: fe8b4b097f7ff157d624c09b8dbf26f94401395c
 
 ## <a name="whats-changed"></a>发生的更改
 * 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

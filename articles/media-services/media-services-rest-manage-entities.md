@@ -2,7 +2,7 @@
 title: "使用 REST 管理媒体服务实体 | Microsoft Docs"
 description: "了解如何使用 REST API 管理媒体服务实体。"
 author: juliako
-manager: dwrede
+manager: erikre
 editor: 
 services: media-services
 documentationcenter: 
@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 946ec4d9c2638cf65f725341dfad1d08751473c6
 ms.openlocfilehash: 534c6e42ace9f42b25fe287de14b02732ed496a4
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -179,10 +180,5 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

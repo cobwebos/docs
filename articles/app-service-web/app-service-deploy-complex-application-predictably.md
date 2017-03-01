@@ -4,7 +4,7 @@ description: "了解如何使用 JSON 资源组模板和 PowerShell 脚本以一
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
 ms.openlocfilehash: 37a10d284afa6b9ee2aa65e7ec015c3c364f551d
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -271,10 +272,5 @@ Web 应用取决于两个不同的资源。 这意味着只有在创建 App Serv
 * [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
 * [将 Azure PowerShell 与 Azure Resource Manager 结合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 * [Azure 中的资源组部署故障排除](../azure-resource-manager/resource-manager-common-deployment-errors.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

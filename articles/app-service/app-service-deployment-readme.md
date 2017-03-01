@@ -5,7 +5,7 @@ keywords: "应用服务, azure 应用服务, 正在部署, 部署"
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: de12cd6e-e124-4e48-90bc-c3a3801305da
 ms.service: app-service
@@ -18,6 +18,7 @@ ms.author: dariagrigoriu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2778057e772fcba7e6021ac11ec5bdcf3720a703
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -25,10 +26,5 @@ ms.openlocfilehash: 2778057e772fcba7e6021ac11ec5bdcf3720a703
 Azure 应用服务提供了一组丰富的集成功能，支持创建功能强大且灵活的部署工作流。 应用部署可以利用的选项包括持续集成或本地源代码管理发布、WebDeploy 和 FTP。 进行生产应用部署时，建议使用部署槽交换方法。 部署槽代表与生产应用关联的过渡和集成环境。 可以对部署槽进行配置，将 Web 流量定向到其中进行验证，并可根据需要来交换流量，在不停机和自动预热的情况下部署到生产环境。 可以通过发布管理产品（例如 Visual Studio Release Management）轻松实现部署工作流步骤的自动化。 这适用于与其他解决方案资源（例如数据存储）的协调操作、循环以及跨多个部署单元的复制。 
 
 [!INCLUDE [app-service-blueprint-deployment](../../includes/app-service-blueprint-deployment.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

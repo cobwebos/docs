@@ -5,7 +5,7 @@ keywords: "应用服务, azure 应用服务, 缩放, 可缩放, 应用服务计�
 services: app-service
 documentationcenter: 
 author: btardif
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
@@ -18,6 +18,7 @@ ms.author: byvinyal
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: ceaf35eed16fda272e4b3c501e3e9ab570855101
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -131,9 +132,4 @@ ms.openlocfilehash: ceaf35eed16fda272e4b3c501e3e9ab570855101
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 [appclone]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/app-clone.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

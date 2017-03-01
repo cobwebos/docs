@@ -4,7 +4,7 @@ description: "了解 Azure Mobile Engagement 的 Windows Phone Silverlight SDK �
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 4820d010-2bdd-4b17-88b0-9583bf0b95fb
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ff04a56d377725d344cf75c7b84af1cb211d4723
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -32,10 +33,5 @@ ms.openlocfilehash: ff04a56d377725d344cf75c7b84af1cb211d4723
 * `EngagementIconCloseLight.png`：适用于 Windows Phone 浅色主题的 Mobile Engagement 市场宣传通知的“关闭”图标。
 * `EngagementIconCloseDark.png`：适用于 Windows Phone 深色主题的 Mobile Engagement 市场宣传通知的“关闭”图标。
 * `EngagementConfiguration.xml`：Mobile Engagement 的配置文件，可在此处自定义 Engagement 设置（Engagement 连接字符串、报告崩溃等）。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

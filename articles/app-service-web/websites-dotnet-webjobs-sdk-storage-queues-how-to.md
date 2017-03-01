@@ -4,7 +4,7 @@ description: "了解如何通过 WebJobs SDK 使用 Azure 队列存储。 创建
 services: app-service\web, storage
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: dbfac5d9-f4a0-4e3e-9ecc-af3d7bf80463
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
 ms.openlocfilehash: 5110a86c3cc25ada27ddba9b0caef68e4509aa73
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -578,9 +579,4 @@ public static void ErrorMonitor(
 
 ## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a>后续步骤
 本指南提供的代码示例演示了如何处理使用 Azure 队列的常见方案。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](http://go.microsoft.com/fwlink/?linkid=390226)。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

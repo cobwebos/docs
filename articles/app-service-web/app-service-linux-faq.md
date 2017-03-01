@@ -5,7 +5,7 @@ keywords: "Azure 应用服务, Web 应用, 常见问题解答, Linux, oss"
 services: app-service
 documentationCenter: 
 authors: aelnably
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 
 ms.service: app-service

@@ -4,7 +4,7 @@ description: "了解 Azure 应用服务中的 API 应用如何使用 Swagger 元
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c7f8e33a-61cc-486f-89df-4a97dc3c71d4
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
 ms.openlocfilehash: 3b41340f30239dc0102808b5e492ee7300dcd12b
+ms.lasthandoff: 12/21/2016
 
 
 ---
@@ -56,10 +57,5 @@ ms.openlocfilehash: 3b41340f30239dc0102808b5e492ee7300dcd12b
 有关指导如何创建、部署和使用 API 应用的分步教程，请参阅 [Get started with API Apps in Azure App Service](app-service-api-dotnet-get-started.md)（Azure App Service 中的 API 应用入门）。
 
 如果将 Azure API 管理与 API 应用配合使用，可以利用 Swagger 元数据将 API 导入 API 管理。 有关详细信息，请参阅[如何通过 Azure API 管理中的操作导入 API 的定义](../api-management/api-management-howto-import-api.md)。 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

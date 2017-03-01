@@ -4,7 +4,7 @@ description: "了解 Azure Mobile Engagement 的 Windows Universal 应用 SDK �
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 8fa1b701-1c2b-4aec-940c-06c974ef5405
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ea47cba55c9689e23eb3592ae2559649d3377055
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -40,10 +41,5 @@ ms.openlocfilehash: ea47cba55c9689e23eb3592ae2559649d3377055
 
 ### <a name="overlay-folder"></a>/overlay 文件夹
 * `EngagementPageOverlay.cs`：负责将 Engagement 市场宣传应用内 UI 添加到其子级的覆盖页。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

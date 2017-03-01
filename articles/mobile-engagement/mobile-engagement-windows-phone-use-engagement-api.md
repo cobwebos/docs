@@ -4,7 +4,7 @@ description: "如何在 Windows Phone Silverlight 上使用 Engagement API"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: ae2ba2e8-f75b-4dee-a164-a7dd65d35a23
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f8ed91048ecfb1e7d19bb000216618b4e0c4b381
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -336,9 +337,4 @@ Engagement 还提供了一种发送未经处理的异常的方法。 在 silverl
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

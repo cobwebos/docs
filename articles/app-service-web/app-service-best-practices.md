@@ -4,7 +4,7 @@ description: "了解有关 Azure App Service 的最佳实践和故障排除步�
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: dariagrigoriu
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1068ac3c3ffd832df5e61bc24887780ced6444d0
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -49,10 +50,5 @@ ms.openlocfilehash: 1068ac3c3ffd832df5e61bc24887780ced6444d0
 
 ## <a name="a-namenodejsawhen-new-nodejs-apps-are-deployed-to-azure-app-service"></a><a name="nodejs"></a>当新的 Node.js 应用部署到 Azure App Service 时
 适用于 Node.js 应用的 Azure App Service 默认配置旨在符合最常见应用的需求。 如果 Node.js 应用的配置可从个性化调整中受益，使性能提升或 CPU/内存/网络资源的资源使用情况得到优化，用户可以查看我们的最佳实践和故障排除步骤。 这篇文章介绍了可能需要为 Node.js 应用配置的 iisnode 设置、应用可能面临的各种案例或问题，并说明了如何解决这些问题：[Best practices and troubleshooting guide for Node applications on Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)（有关 Azure 应用服务上 Node 应用程序的最佳实践和故障排除指南）。   
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

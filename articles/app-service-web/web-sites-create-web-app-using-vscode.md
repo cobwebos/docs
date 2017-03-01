@@ -4,7 +4,7 @@ description: "本教程演示了如何使用 Visual Studio Code 创建 ASP.NET 5
 services: app-service\web
 documentationcenter: .net
 author: erikre
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 877bff08-9ef7-405a-a1ca-1194f33c55f2
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 4f1bf0f15a373dfe60d923f017a96784424d6563
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -240,10 +241,5 @@ Git 是分布式版本控制系统，可用于部署 Azure App Service Web 应�
 
 ## <a name="summary"></a>摘要
 在本教程中，你已学习如何在 VS Code 创建 Web 应用并将其部署到 Azure。 有关 VS Code 的详细信息，请参阅[为何使用 Visual Studio Code？](https://code.visualstudio.com/Docs/)一文 若要了解应用服务 Web 应用，请参阅 [Web 应用概述](app-service-web-overview.md)。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "如何将 Azure Mobile Engagement 与 Windows 通用应用集成"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 71236b68-5ebd-44aa-8c82-c7ca8098ea05
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: bbd6ddeeeff949afe0cb66adc37982c036fc5c46
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -278,10 +279,5 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 
 [here]:http://www.nuget.org/packages/Capptain.WindowsCS
 [NuGet website]:http://docs.nuget.org/docs/start-here/overview
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

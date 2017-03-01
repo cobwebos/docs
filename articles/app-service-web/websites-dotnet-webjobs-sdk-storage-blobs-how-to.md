@@ -4,7 +4,7 @@ description: "如何通过 WebJobs SDK 使用 Azure Blob 存储 在新 Blob 出�
 services: app-service\web, storage
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: bf32f919-f7bc-4aaa-916e-461c02f2e26c
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 968df0fde8b042cdea369e566ecdb62937a3b8ee
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -244,10 +245,5 @@ Blob 回执存储在 AzureWebJobsStorage 连接字符串指定的 Azure 存储�
 
 ## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a>后续步骤
 本指南提供的代码示例演示了如何处理常见方案以操作 Azure Blob。 若要详细了解如何使用 Azure WebJobs 和 WebJobs SDK，请参阅[有关 Azure WebJobs 的推荐资源](http://go.microsoft.com/fwlink/?linkid=390226)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

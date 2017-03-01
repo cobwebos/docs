@@ -4,7 +4,7 @@ description: "本教程演示如何将 Web 应用部署到 Azure App Service，�
 services: app-service\web,cdn
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: b81ee930-dd6d-4b65-971f-c4cb7902168c
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 0b1f13f816c7836557cd6f646f2d9b38f7bc5b14
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -544,10 +545,5 @@ ms.openlocfilehash: 0b1f13f816c7836557cd6f646f2d9b38f7bc5b14
 * [使用 Azure CDN](../cdn/cdn-create-new-endpoint.md)
 * [将云服务与 Azure CDN 集成](../cdn/cdn-cloud-service-with-cdn.md)
 * [ASP.NET 绑定和缩减](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

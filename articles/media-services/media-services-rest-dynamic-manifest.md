@@ -4,7 +4,7 @@ description: "本主题介绍如何创建筛选器，以便客户端能够使用
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: f7d23daf-7cd2-49c7-a195-ab902912ab3c
 ms.service: media-services
@@ -17,6 +17,7 @@ ms.author: juliako;cenkdin
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: e10c7b29469f9756803aaba64596bf86830893fa
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -337,10 +338,5 @@ ms.openlocfilehash: e10c7b29469f9756803aaba64596bf86830893fa
 
 ## <a name="see-also"></a>另请参阅
 [动态清单概述](media-services-dynamic-manifest-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

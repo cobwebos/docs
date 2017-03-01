@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement Android SDK 的最新更新和过程"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 11618586-c709-49ca-bcd8-745323ff1af6
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 97ce7f4d682ec12470db4248d046a8367840f0bd
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -413,10 +414,5 @@ ProGuard 配置可能会受到品牌重塑的影响，规则目前看起来如�
             -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
               <methods>;
             }
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

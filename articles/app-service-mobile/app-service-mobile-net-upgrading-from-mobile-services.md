@@ -4,7 +4,7 @@ description: "了解如何轻松将移动服务应用程序升级到应用服务
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 596bcd2f38a39cc1404d422214ab49ae79df744c
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -272,9 +273,4 @@ ms.openlocfilehash: 596bcd2f38a39cc1404d422214ab49ae79df744c
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [应用服务定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [.NET 服务器 SDK 概述]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

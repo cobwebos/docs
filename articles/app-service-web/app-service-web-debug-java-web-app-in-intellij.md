@@ -4,7 +4,7 @@ description: "本教程演示如何使用 Azure Toolkit for IntelliJ 调试在 A
 services: app-service\web
 documentationcenter: java
 author: selvasingh
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 78148648-5a89-4b7d-98f1-9cf8f38dfe8d
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: asirveda;robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 50db8f7d1d514d076af453a34ca3a147e357e905
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -94,9 +95,4 @@ ms.openlocfilehash: 50db8f7d1d514d076af453a34ca3a147e357e905
 [04]: ./media/app-service-web-debug-java-web-app-in-intellij/04-select-debug.png
 [05]: ./media/app-service-web-debug-java-web-app-in-intellij/05-ready-for-remote-debugging.png
 [06]: ./media/app-service-web-debug-java-web-app-in-intellij/06-windows-command-prompt-connection-successful-to-remote.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

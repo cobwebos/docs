@@ -4,7 +4,7 @@ description: "了解如何通过内容同步，将应用从云文件夹部署到
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: dariagrigoriu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ddda0e60dc9d5414142791175b77a5a65e3f40e3
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -47,10 +48,5 @@ ms.openlocfilehash: ddda0e60dc9d5414142791175b77a5a65e3f40e3
     ![部署历史记录](./media/app-service-deploy-content-sync/onedrive_sync.png)
 
 [从 Dropbox 部署](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)中提供了有关 Dropbox 部署的详细信息。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

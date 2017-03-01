@@ -4,7 +4,7 @@ description: "了解如何在 Azure 应用服务中创建使用本地 STS 进行
 services: app-service\web
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 0fa9f7a1-37bd-4d11-845f-aeff6fc9e4ca
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 29b7146837f8a88baebd67fc448954f01388d67b
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -338,10 +339,5 @@ Azure App Service Web 应用支持通过以下这两种方法访问本地数据�
 * [将 VS2013 Web 项目从 WIF 迁移到 Katana](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)
 * [Active Directory 联合身份验证服务概述](http://technet.microsoft.com/library/hh831502.aspx)
 * [WS-Federation 1.1 规范](http://download.boulder.ibm.com/ibmdl/pub/software/dw/specs/ws-fed/WS-Federation-V1-1B.pdf?S_TACT=105AGX04&S_CMP=LP)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

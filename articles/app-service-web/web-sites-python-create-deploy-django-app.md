@@ -5,7 +5,7 @@ services: app-service\web
 documentationcenter: python
 tags: python
 author: huguesv
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 9be1a05a-9460-49ae-94fb-9798f82c11cf
 ms.service: app-service-web
@@ -18,6 +18,7 @@ ms.author: huvalo
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c6679cf7a6b059ee7c28e1754c54afa6414d633a
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -464,9 +465,4 @@ Azure 提供可以从 Django 应用程序方便地使用的数据库服务。 �
 [Visual Studio]: http://www.visualstudio.com/
 [Python Tools for Visual Studio 文档]: http://aka.ms/ptvsdocs
 [Django 文档]: https://www.djangoproject.com/
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

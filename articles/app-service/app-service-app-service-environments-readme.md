@@ -5,7 +5,7 @@ keywords: "azure 应用服务环境, 虚拟网络, 安全网络"
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 1db5c057-3c56-4537-b580-cdd21fe3f3a7
 ms.service: app-service
@@ -18,6 +18,7 @@ ms.author: stefsch
 translationtype: Human Translation
 ms.sourcegitcommit: df2fa1d0790f8942a0350f9734232cc4b25cadc1
 ms.openlocfilehash: a54f559801e1a4f4b752bc2268ea8d6cb20b1267
+ms.lasthandoff: 12/01/2016
 
 
 ---
@@ -63,9 +64,4 @@ ms.openlocfilehash: a54f559801e1a4f4b752bc2268ea8d6cb20b1267
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

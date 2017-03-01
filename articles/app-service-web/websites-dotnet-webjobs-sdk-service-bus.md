@@ -4,7 +4,7 @@ description: "了解如何通过 WebJobs SDK 使用 Azure 服务总线队列和�
 services: app-service\web, service-bus
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 2114a934-135b-42b8-871c-6cc040214e76
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 4d5205b1c693b8c1f199235784263f3f7b6189ff
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -172,10 +173,5 @@ SDK 会自动反序列化包含 POCO[（普通旧 CLR 对象](http://en.wikipedi
 
 ## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a>后续步骤
 本指南中包含的代码示例展示了如何处理常见方案来结合使用 Azure 服务总线。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](http://go.microsoft.com/fwlink/?linkid=390226)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

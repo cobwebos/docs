@@ -4,7 +4,7 @@ description: "如何将 Azure Mobile Engagement 与 Windows Phone Silverlight �
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 447fea8d-f4e3-4ad4-8ec0-8e3cf1ad3ab0
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 67f69a5a92c922bc7357c1e4bcc88f55e16d1255
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -246,10 +247,5 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
 > 不能将突发阈值配置为小于一秒。 如果尝试这样做，SDK 将显示错误跟踪，并将阈值自动重置为默认值（即零秒）。 这将触发 SDK 实时报告日志。
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

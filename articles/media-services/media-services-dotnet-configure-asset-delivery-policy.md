@@ -4,7 +4,7 @@ description: "本主题说明如何通过 Azure 媒体服务 .NET SDK 配置不�
 services: media-services
 documentationcenter: 
 author: Mingfeiy
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
 ms.service: media-services
@@ -17,6 +17,7 @@ ms.author: juliako;mingfeiy
 translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 0649f36f55696d2c9a9d31a9f87bc3b34373f273
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -343,10 +344,5 @@ Azure 媒体服务还允许你添加 Widevine 加密。 以下示例演示将 Pl
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

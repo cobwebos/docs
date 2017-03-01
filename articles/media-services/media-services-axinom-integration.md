@@ -4,7 +4,7 @@ description: "本文介绍如何使用 Azure 媒体服务(AMS) 传送 AMS 使用
 services: media-services
 documentationcenter: 
 author: willzhan
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9c93fa4e-b4da-4774-ab6d-8b12b371631d
 ms.service: media-services
@@ -17,6 +17,7 @@ ms.author: willzhan;Mingfeiy;rajputam;Juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c02b75dc2c783b96dc9e1256051b8c6df290d425
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -200,10 +201,5 @@ Axinom Widevine 许可证服务器
 
 ### <a name="acknowledgments"></a>致谢
 我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的创作工作：Kristjan Jõgi of Axinom、Mingfei Yan 和 Amit Rajput。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "在 Microsoft Azure 上创建一个 Web 应用并将其连接到�
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: 2b4e0539-1a0b-4aa1-8a69-b4b053c3b2e5
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c940f490908a3b934c108b214b5ef2af44698059
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -332,9 +333,4 @@ ms.openlocfilehash: c940f490908a3b934c108b214b5ef2af44698059
 [HCTestRegisterRelecloud]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F09HCTestRegisterRelecloud.png
 [HCTestSSMSTree]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F10HCTestSSMSTree.png
 [HCTestShowMemberDb]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

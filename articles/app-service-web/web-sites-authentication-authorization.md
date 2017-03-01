@@ -4,7 +4,7 @@ description: "了解 Azure App Service 中的业务线应用在本地 Active Dir
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: dde6b7e6-bf6a-4fa5-8390-3a18155d21bd
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f989ea86c76706af9413b2bb945956b1c6432e1d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -41,10 +42,5 @@ Azure Active Directory 租户的目录可与本地 AD 同步。 此方法可让 
 * 需要提供单独的解决方案通过公司防火墙访问本地 AD 数据。
 
 若要了解如何编写使用本地 STS 进行身份验证的业务线 Azure 应用，请参阅[使用 AD FS 身份验证创建业务线 Azure 应用](web-sites-dotnet-lob-application-adfs.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -3,7 +3,7 @@ title: "适用于 Windows Server 的 Azure 混合使用权益 | Microsoft Docs"
 description: "了解如何充分利用 Windows Server 软件保障权益，以将本地许可证带入 Azure"
 services: virtual-machines-windows
 documentationcenter: 
-author: iainfoulds
+author: george-moore
 manager: timlt
 editor: 
 ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
@@ -17,6 +17,7 @@ ms.author: georgem
 translationtype: Human Translation
 ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
 ms.openlocfilehash: df86e73814ceb0c5137c654bce84c8d42ae41820
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -187,9 +188,4 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 阅读有关 [Azure 混合使用权益许可](https://azure.microsoft.com/pricing/hybrid-use-benefit/)的详细信息。
 
 了解有关[使用 Resource Manager模板](../azure-resource-manager/resource-group-overview.md)的详细信息。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

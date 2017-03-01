@@ -4,7 +4,7 @@ description: "了解如何启用诊断日志记录并将检测添加到应用程
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 27bf5b15ebeed13733df2ddd9dbda5d5cfe4e49d
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -286,9 +287,4 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 ## <a name="whats-changed"></a>发生的更改
 * 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 * 有关从旧门户更改为新门户的指南，请参阅：[有关在 Azure 门户中导航的参考](http://go.microsoft.com/fwlink/?LinkId=529715)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

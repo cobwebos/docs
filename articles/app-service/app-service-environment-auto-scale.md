@@ -4,7 +4,7 @@ description: "自动缩放和应用服务环境"
 services: app-service
 documentationcenter: 
 author: btardif
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: byvinyal
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 41ad9eb4d248b1f3e6c888c3037b121511799193
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -234,9 +235,4 @@ Frank 了解到，前端 CPU 使用率达到 80% 并且自动缩放规则设置�
 [ASP-Total-Inflation]: ./media/app-service-environment-auto-scale/asp-total-inflation-rate.png
 [Worker-Pool-Scale]: ./media/app-service-environment-auto-scale/wp-scale.png
 [Front-End-Scale]: ./media/app-service-environment-auto-scale/fe-scale.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

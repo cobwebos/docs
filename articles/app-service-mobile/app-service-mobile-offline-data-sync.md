@@ -3,7 +3,7 @@ title: "Azure 移动应用中的脱机数据同步 | Microsoft Docs"
 description: "Azure 移动应用脱机数据同步功能的概念参考和概述"
 documentationcenter: windows
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: 15a3f9f40bdb84b939b30e33e5f2033411adc3cc
 ms.openlocfilehash: dc179f6186d501bc7c8e4ca72b2bf23e89a9443e
+ms.lasthandoff: 12/01/2016
 
 
 ---
@@ -102,9 +103,4 @@ ms.openlocfilehash: dc179f6186d501bc7c8e4ca72b2bf23e89a9443e
 [Xamarin iOS：启用脱机同步]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android：启用脱机同步]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [通用 Windows 平台：启用脱机同步]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

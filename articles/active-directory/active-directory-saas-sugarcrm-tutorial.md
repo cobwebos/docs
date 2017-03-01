@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
 ms.openlocfilehash: f0e857dfa915d98beeeb06b224fbe761943dfbce
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -181,10 +182,5 @@ ms.openlocfilehash: f0e857dfa915d98beeeb06b224fbe761943dfbce
     ![是](./media/active-directory-saas-sugarcrm-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

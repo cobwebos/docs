@@ -4,7 +4,7 @@ description: "了解如何使用 PowerShell 在 Azure 应用服务中备份和�
 services: app-service
 documentationcenter: 
 author: NKing92
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 7ea8661e-aefb-4823-9626-6bff980cdebf
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: nicking
 translationtype: Human Translation
 ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
 ms.openlocfilehash: 172b55a68662dd98c4af946d51f3ece51f7835e1
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -151,9 +152,4 @@ Get-AzureRmWebAppBackupList cmdlet 返回一个数组，其中包括 Web 应用�
 
         $backup = Get-AzureRmWebAppBackup -Name $appName -ResourceGroupName $resourceGroupName -BackupId 10102
         $backup | Remove-AzureRmWebAppBackup -Overwrite
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

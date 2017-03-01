@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.date: 02/02/2017
 ms.author: rasquill
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
 ms.sourcegitcommit: f520ed9cc1a3a7063d5b3ddacf7f0c8174e75a36
 ms.openlocfilehash: 77cbdaaea0eec5265ef005f66dd5efdd8e237022
 ms.lasthandoff: 02/21/2017
-
 
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM

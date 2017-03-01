@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement 故障排除指南"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 31134a29-a513-4e5e-b626-f6cf6fe04769
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1947600f6167dff6ec4fa104b0f98200bcf2a2e1
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -114,10 +115,5 @@ ms.openlocfilehash: 1947600f6167dff6ec4fa104b0f98200bcf2a2e1
    * 设备 ID
    * Mobile Engagement SDK 版本（例如 Android SDK v2.1.0）
    * 包含具体错误消息和方案的错误详细信息
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

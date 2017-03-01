@@ -4,7 +4,7 @@ description: "学习如何使用 Azure Web 作业和 Azure WebJobs SDK 时可以
 services: app-service
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: ed005e56-4334-4641-a5e5-15435c2be36b
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: 80627139ee253bb6a01241e460781519dac69e71
 ms.openlocfilehash: a8541d5bd5e5becb25e8460b6ca774ec6637563a
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -132,10 +133,5 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 * [Azure Web 应用用户之声站点](https://feedback.azure.com/forums/169385-websites/)
 * [Twitter](http://twitter.com/)。 使用井号标签 #AzureWebJobs。
 * [报告 Web 作业错误或问题](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -4,7 +4,7 @@ description: "本文将帮助你排查 Azure App Service 中 Web 应用性能缓
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 tags: top-support-issue
 keywords: "Web 应用性能，缓慢应用，应用缓慢"
@@ -19,6 +19,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
 ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
+ms.lasthandoff: 12/22/2016
 
 
 ---
@@ -171,9 +172,4 @@ AutoHeal 会根据你选择的设置（例如配置更改、请求、基于内�
  ![重新启动 Web 应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 你还可以使用 Azure Powershell 管理 Web 应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 
