@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
 ms.openlocfilehash: b22c7904be77ba06764f0922c77ba5f7c7b3fe4d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -333,12 +334,12 @@ ToDoItemAdapter 构造函数的第二个参数是对布局的引用。 我们现
 **orderBy** 方法的第一个参数是与要排序的字段名称相同的字符串。 第二个参数使用 **QueryOrder** 枚举来指定是按升序还是按降序排序。  如果使用 ***where*** 方法筛选，则必须在调用 ***orderBy*** 方法之前调用 ***where*** 方法。
 
 ### <a name="a-namepagingahow-to-return-data-in-pages"></a><a name="paging"></a>如何在页中返回数据
-第一个示例演示了如何选择表中的前 5 项。 此查询返回 **ToDoItems** 表中的项。 **mToDoTable** 是对前面创建的后端表的引用：
+第一个示例演示了如何选择表中的前&5; 项。 此查询返回 **ToDoItems** 表中的项。 **mToDoTable** 是对前面创建的后端表的引用：
 
     List<ToDoItem> result = mToDoTable.top(5).execute().get();
 
 
-以下查询跳过前 5 项，返回后 5 项：
+以下查询跳过前&5; 项，返回后&5; 项：
 
     mToDoTable.skip(5).top(5).execute().get();
 
@@ -778,7 +779,7 @@ dependencies {
 
 <!-- URLs. -->
 [Azure 移动应用入门]: app-service-mobile-android-get-started.md
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set（ASCII 控制代码 C0 和 C1）
+[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set\（ASCII 控制代码 C0 和 C1）
 [Android 的移动服务 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure 门户]: https://portal.azure.com
 [身份验证入门]: app-service-mobile-android-get-started-users.md
@@ -800,9 +801,4 @@ dependencies {
 [16]: app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations
 [Future]: http://developer.android.com/reference/java/util/concurrent/Future.html
 [AsyncTask]: http://developer.android.com/reference/android/os/AsyncTask.html
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
