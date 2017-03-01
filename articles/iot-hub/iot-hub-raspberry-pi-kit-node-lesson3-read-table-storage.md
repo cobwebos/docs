@@ -1,5 +1,7 @@
 ---
-title: "读取 Azure 存储中保存的消息 |Microsoft 文档"
+featureFlags:
+- usabilla
+title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 3 课：表存储 | Microsoft Docs"
 description: "在“设备到云”消息写入到 Azure 表存储时对这些消息进行监视。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +18,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: d741d9be27c17171a9161b7e0ea335a9f5fbafc0
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 0e35ffda2d5f6698c4e9d96f1991998b36a7f230
 
 
 ---
@@ -74,6 +76,6 @@ ms.openlocfilehash: d741d9be27c17171a9161b7e0ea335a9f5fbafc0
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

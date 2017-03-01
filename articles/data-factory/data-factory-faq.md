@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 7ae3af29a21611a4c6e7c8630d8fcea4f2baaf0b
+ms.sourcegitcommit: 02d810db5433370802b866424c24464d64171ef0
+ms.openlocfilehash: 6921965c3286209e024ba59637da0c485b4a0c71
 
 
 ---
@@ -72,7 +72,7 @@ ms.openlocfilehash: 7ae3af29a21611a4c6e7c8630d8fcea4f2baaf0b
 
 | 计算环境 | 活动 |
 | --- | --- |
-| [按需 HDInsight 群集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
+| [按需 HDInsight 群集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure 机器学习](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[机器学习活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
@@ -114,20 +114,21 @@ ms.openlocfilehash: 7ae3af29a21611a4c6e7c8630d8fcea4f2baaf0b
 
 如果你使用的是由数据工厂服务创建的按需群集，请为 HDInsight 链接服务指定其他存储帐户，以便数据工厂服务可以代表你注册它们。 在按需链接服务的 JSON 定义中，请使用 **additionalLinkedServiceNames** 属性指定备用存储帐户，如以下 JSON 代码段所示：
 
+```JSON
+{
+    "name": "MyHDInsightOnDemandLinkedService",
+    "properties":
     {
-        "name": "MyHDInsightOnDemandLinkedService",
-        "properties":
-        {
-            "type": "HDInsightOnDemandLinkedService",
-            "typeProperties": {
-                "clusterSize": 1,
-                "timeToLive": "00:01:00",
-                "linkedServiceName": "LinkedService-SampleData",
-                "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ]
-            }
+        "type": "HDInsightOnDemandLinkedService",
+        "typeProperties": {
+            "clusterSize": 1,
+            "timeToLive": "00:01:00",
+            "linkedServiceName": "LinkedService-SampleData",
+            "additionalLinkedServiceNames": [ "otherLinkedServiceName1", "otherLinkedServiceName2" ]
         }
     }
-
+}
+```
 在上面的示例中，otherLinkedServiceName1 和 otherLinkedServiceName2 表示链接服务，其定义包含 HDInsight 群集访问备用存储帐户所需的凭据。
 
 ## <a name="slices---faq"></a>切片 - 常见问题解答
@@ -148,24 +149,26 @@ Pipeline 1: dataset4->activity4->dataset5
 ### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>当每天生成切片时，如何在午夜以外的其他时间运行切片？
 请使用“offset”属性来指定要生成切片的时间。 如需此属性的详细信息，请参阅[数据集可用性](data-factory-create-datasets.md#Availability)部分。 下面是一个简短的示例：
 
-    "availability":
-    {
-        "frequency": "Day",
-        "interval": 1,
-        "offset": "06:00:00"
-    }
-
-每日切片在**上午 6 点**而不是默认的午夜开始。     
+```json
+"availability":
+{
+    "frequency": "Day",
+    "interval": 1,
+    "offset": "06:00:00"
+}
+```
+每日切片在**上午&6; 点**而不是默认的午夜开始。     
 
 ### <a name="how-can-i-rerun-a-slice"></a>如何重新运行切片？
 可通过以下方式之一重新运行切片：
 
-* 使用“监视和管理应用”重新运行活动窗口或切片。 有关说明，请参阅[重新运行所选活动窗口](data-factory-monitor-manage-app.md#performing-batch-actions)。   
+* 使用“监视和管理应用”重新运行活动窗口或切片。 有关说明，请参阅[重新运行所选活动窗口](data-factory-monitor-manage-app.md#perform-batch-actions)。   
 * 在 Azure 门户中，在切片的“数据切片”边栏选项卡上，单击命令栏中的“运行”。
 * 对切片运行 **Set-AzureRmDataFactorySliceStatus** cmdlet，同时将状态设置为“等待”。   
 
-        Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
-
+    ```PowerShell
+    Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
+    ```
 有关该 cmdlet 的详细信息，请参阅 [Set-AzureRmDataFactorySliceStatus][set-azure-datafactory-slice-status]。
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>处理一个切片需要多长时间？
@@ -186,12 +189,12 @@ Pipeline 1: dataset4->activity4->dataset5
 如果确实想要立即停止所有执行，唯一的方法就是删除管道，然后再重新创建。 如果选择删除管道，“不”需要删除该管道所使用的表和链接服务。
 
 [create-factory-using-dotnet-sdk]: data-factory-create-data-factories-programmatically.md
-[msdn-class-library-reference]: https://msdn.microsoft.com/library/dn883654.aspx
-[msdn-rest-api-reference]: https://msdn.microsoft.com/library/dn906738.aspx
+[msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
+[msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: https://msdn.microsoft.com/library/dn820234.aspx
+[adf-powershell-reference]: /powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories
 [azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: https://msdn.microsoft.com/library/mt603522.aspx
+[set-azure-datafactory-slice-status]: /powershell/resourcemanager/azurerm.datafactories/v2.3.0/set-azurermdatafactoryslicestatus
 
 [adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
@@ -200,6 +203,6 @@ Pipeline 1: dataset4->activity4->dataset5
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

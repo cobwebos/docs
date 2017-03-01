@@ -1,6 +1,6 @@
 ---
 title: "使用 Spark 进行数据探索和建模 | Microsoft Docs"
-description: "展示 Spark MLlib 工具包的数据浏览和建模功能。"
+description: "展示 Azure 上的 Spark MLlib 工具包的数据浏览和建模功能。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3d594fe60204c3e6e595d0f20a47510b1785847
+ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
+ms.openlocfilehash: 76fb321dbe909730f72eba71042264caba407aed
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: b3d594fe60204c3e6e595d0f20a47510b1785847
 
 我们使用的模型包括逻辑和线性回归、随机林和梯度提升树：
 
-* [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法并用于优化和特征缩放的线性回归模型，用于预测支付的小费金额。 
+* [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法进行优化和特征缩放的线性回归模型，以预测支付的小费金额。 
 * [使用 LBFGS 的逻辑回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS)或“logit”回归，是可在因变量分类时用于执行数据分类的回归模型。 LBFGS 是拟牛顿优化算法，近似于使用有限计算机内存量的 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 算法，在机器学习中广泛使用。
 * [随机林](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
 * [梯度提升树](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
@@ -43,7 +44,33 @@ ms.openlocfilehash: b3d594fe60204c3e6e595d0f20a47510b1785847
 > 
 
 ## <a name="prerequisites"></a>先决条件
-需要 Azure 帐户和 HDInsight Spark。需要 HDInsight 3.4 Spark 1.6 群集才能完成此演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 中提供包含本主题中的代码示例的 **pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb** 笔记本。 
+你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
+
+## <a name="spark-clusters-and-notebooks"></a>Spark 群集和笔记本
+本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但是，Jupyter 笔记本是针对 HDInsight Spark 1.6 和 Spark 2.0 群集提供的。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 为方便起见，下面提供了在 Jupyter 笔记本服务器的 pyspark 内核中运行的、适用于 Spark 1.6 和 2.0 的 Jupyter 笔记本的链接：
+
+### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
+
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何执行数据探索、建模和评分与多种不同算法的信息。
+
+### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
+使用 Spark 2.0 群集实现的回归和分类任务使用不同数据集，并处于单独的笔记本中：
+
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb)：此文件说明如何使用[此处](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview)所述的纽约市出租车里程与收费数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：此文件说明如何使用 2011 到 2012 年的已知航班准时出发数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。 我们已在建模之前将航班数据集与机场天气数据（例如风速、温度、海拔等）相集成，因此可在模型中包含这些天气特征。
+
+<!-- -->
+
+> [!NOTE]
+> 航班数据集已添加到 Spark 2.0 笔记本，以方便演示分类算法的用法。 有关航班准时出发数据集和天气数据集的信息，请参阅以下链接：
+
+>- 航班准时出发数据：[http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
+
+>- 机场天气数据：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+> 
+> 
+
+<!-- -->
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -170,13 +197,13 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 执行以上单元格所花的时间：51.72 秒
 
-## <a name="data-exploration-visualization"></a>数据探索和可视化
+## <a name="data-exploration--visualization"></a>数据探索和可视化
 将数据引入到 Spark 中后，数据科学过程的下一步是通过探索和可视化更深入地了解数据。 在本部分中，我们使用 SQL 查询检查出租车数据，并绘制目标变量和预期特征以供视觉检查。 具体而言，我们绘制出租车行程中乘客数的频率、小费金额的频率以及小费如何随支付金额和类型而变化。
 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>绘制出租车小费样本中乘客数频率的直方图
-此代码和后续片段使用 SQL magic 查询样本，而使用本地 lmagic 绘制数据。
+此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
-* **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContextkernel 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
+* **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
 * **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 -o 参数结合使用。 -o 参数将本地保留 SQL 查询的输出，然后 %%local magic 将触发下一组代码片段，以针对本地保留的 SQL 查询输出本地运行
 
 该输出在运行代码后自动可视化。
@@ -195,7 +222,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 此代码从查询输出创建本地数据帧，并绘制数据。 `%%local` magic 创建本地数据帧 `sqlResults`，可用于使用 matplotlib 进行绘制。 
 
 > [!NOTE]
-> 此 PySpark magic 在本演练中多次使用。 如果数据量很大，应采样以创建本地内容可容纳的数据帧。
+> 此 PySpark magic 在本演练中多次使用。 如果数据量很大，应采样以创建本地内存可容纳的数据帧。
 > 
 > 
 
@@ -429,7 +456,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 
 ### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样，并将其拆分为训练集和测试集
-此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们演示了如何在此处采样，以便你知道如何在需要时针对自己的问题使用它。 当样本很大时，这可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
+此代码创建数据的随机采样（此处使用&25;%）。 尽管由于数据集的大小，本示例不需要此操作，但我们演示了如何在此处采样，以便你知道如何在需要时针对自己的问题使用它。 当样本很大时，这可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为&75;%）和测试部分（此处为&25;%），用于分类和回归建模。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -1064,10 +1091,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 **模型使用：**若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](machine-learning-data-science-spark-model-consumption.md)。
 
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

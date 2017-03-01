@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/26/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f01cd8d3a68776dd12d2930def1641411e6a4994
-ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 34b166d63e539883a110dc96f7333a2379bc4963
 
 
 ---
@@ -24,10 +24,26 @@ ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-> [!NOTE]
-> 若要完成本教程，你需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
->
->
+本教程介绍了在 Azure 媒体服务 .NET SDK 中使用 Azure 媒体服务 (AMS) 应用程序实施基本的视频点播 (VoD) 内容传送服务的步骤。
+
+## <a name="prerequisites"></a>先决条件
+
+以下是完成本教程所需具备的条件：
+
+* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* .NET Framework 4.0 或更高版本
+* Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
+
+本教程包括以下任务：
+
+1. 启动流式处理终结点（使用 Azure 门户）
+2. 创建和配置 Visual Studio 项目。
+3. 连接到媒体服务帐户。
+2. 上载视频文件。
+3. 将源文件编码为一组自适应比特率 MP4 文件。
+4. 发布资产并获取流式处理和渐进式下载 URL。  
+5. 播放内容。
 
 ## <a name="overview"></a>概述
 本教程将引导你完成使用用于 .NET 的 Azure 媒体服务 (AMS) SDK 实施视频点播 (VoD) 内容传送应用程序的步骤。
@@ -40,87 +56,27 @@ ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 
 单击图像可查看其完整大小。  
 
-<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
-可以在[此处](https://media.windows.net/API/$metadata?api-version=2.14)查看整个模型。  
+可以在[此处](https://media.windows.net/API/$metadata?api-version=2.15)查看整个模型。  
 
-## <a name="what-youll-learn"></a>学习内容
+## <a name="start-streaming-endpoints-using-the-azure-portal"></a>使用 Azure 门户启动流式处理终结点
 
-本教程说明如何完成以下任务：
+使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理传送视频。 媒体服务提供动态打包，可按媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）及时传送自适应比特率 MP4 编码内容，而无需存储上述各种流格式的预打包版本。
 
-1. 创建媒体服务帐户（使用 Azure 门户）。
-2. 配置流式处理终结点（使用 Azure 门户）。
-3. 创建和配置 Visual Studio 项目。
-4. 连接到媒体服务帐户。
-5. 创建新资产并上载视频文件。
-6. 将源文件编码为一组自适应比特率 MP4 文件。
-7. 发布资产并获取用于流式处理和渐进式下载的 URL。
-8. 通过播放内容进行测试。
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
-## <a name="prerequisites"></a>先决条件
-以下是完成本教程所需具备的条件。
-
-* 若要完成本教程，你需要一个 Azure 帐户。
-
-    如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费的 Azure 服务和功能，例如 Azure App Service 中的 Web 应用功能。
-* 操作系统：Windows 8 或更高版本、Windows 2008 R2、Windows 7。
-* .NET Framework 4.0 或更高版本
-* Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
-
-## <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>利用 Azure 门户创建 Azure 媒体服务帐户
-本部分中的步骤将介绍如何创建 AMS 帐户。
+若要启动流式处理终结点，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com/)登录。
-2. 单击“+新建” > “媒体 + CDN” > “媒体服务”。
+2. 在“设置”窗口中，单击“流式处理终结点”。
+3. 单击默认的流式处理终结点。
 
-    ![媒体服务创建](./media/media-services-portal-vod-get-started/media-services-new1.png)
-3. 在“创建媒体服务帐户”中输入所需的值。
+    此时将显示“默认流式处理终结点详细信息”窗口。
 
-    ![媒体服务创建](./media/media-services-portal-vod-get-started/media-services-new3.png)
-
-   1. 在“帐户名”中，输入新的 AMS 帐户的名称。 媒体服务帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。
-   2. 在“订阅”中，在你有权访问的不同 Azure 订阅中进行选择。
-   3. 在“资源组”中，选择新的或现有的资源。  资源组是共享生命周期、权限和策略的资源的集合。 在[此处](../azure-resource-manager/resource-group-overview.md#resource-groups)了解更多信息。
-   4. 在“位置”中，选择用于存储媒体服务帐户的媒体和元数据记录的地理区域。 此区域用于处理和流式传输媒体。 下拉列表中仅显示可用的媒体服务区域。
-   5. 在“存储帐户”中，选择一个存储帐户以便提供媒体服务帐户中媒体内容的 Blob 存储。 可选择媒体服务帐户所在的地理区域内的现有存储帐户，也可创建存储帐户。 将在同一区域内创建一个新的存储帐户。 适用于存储帐户名的规则对媒体服务帐户同样适用。
-
-       单击[此处](../storage/storage-introduction.md)了解有关存储的详细信息。
-   6. 选择“固定到仪表板”以查看帐户部署进度。
-4. 单击窗体底部的“创建”。
-
-    成功创建帐户后，状态将更改为“正在运行”。
-
-    ![媒体服务设置](./media/media-services-portal-vod-get-started/media-services-settings.png)
-
-    若要管理 AMS 帐户（例如，上载视频、对资产进行编码、监视作业进度），请使用“设置”窗口。
-
-## <a name="configure-streaming-endpoints-using-the-azure-portal"></a>使用 Azure 门户配置流式处理终结点
-使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理将视频传送至你的客户端。 媒体服务支持以下自适应比特率流式处理技术：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。
-
-媒体服务所提供的动态打包可让用户以媒体服务支持的流式处理格式（MPEG DASH、HLS、平滑流式处理）及时传送自适应比特率 MP4 编码内容，无需按这些流式处理格式逐个存储预先打包的版本。
-
-若要使用动态打包，必须执行下列操作：
-
-* 将夹层（源）文件编码成一组自适应比特率 MP4 文件（本教程稍后将演示编码步骤）。  
-* 针对你要从其传送内容的“流式处理终结点”，创建至少一个流式处理单元。 以下步骤显示如何更改流式处理单元数。
-
-通过动态打包，只需要存储及支付一种存储格式的文件，媒体服务就会根据客户端的要求创建并提供适当的响应。
-
-若要创建和更改流式处理保留单元数，请执行以下操作：
-
-1. 在“设置”窗口中，单击“流式处理终结点”。
-2. 单击默认的流式处理终结点。
-
-    此时会显示“默认流式处理终结点详细信息”窗口。
-3. 若要指定流式处理单元数，请滑动“流式处理单元”滑块。
-
-    ![流式处理单位](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
-4. 单击“保存”按钮保存更改。
-
-   > [!NOTE]
-   > 分配新的单元最多需要 20 分钟即可完成。
-   >
-   >
+4. 单击“启动”图标。
+5. 单击“保存”按钮保存更改。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -160,7 +116,7 @@ ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 
 使用采用 .NET 的媒体服务时，你必须将 **CloudMediaContext** 类用于大多数媒体服务编程任务：连接到媒体服务帐户；创建、更新、访问和删除以下对象：资产、资产文件、作业、访问策略、定位符等等。
 
-使用以下代码覆盖默认程序类。 该代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。 有关连接到媒体服务的详细信息，请参阅 [使用适用于 .NET 的媒体服务 SDK 连接到媒体服务](http://msdn.microsoft.com/library/azure/jj129571.aspx)。
+使用以下代码覆盖默认程序类。 该代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。 有关连接到媒体服务的详细信息，请参阅 [使用适用于 .NET 的媒体服务 SDK 连接到媒体服务](media-services-dotnet-connect-programmatically.md)。
 
 确保更新保存媒体文件所需的文件名和路径。
 
@@ -258,14 +214,11 @@ ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
 
 如前所述，使用 Azure 媒体服务时最常见的方案之一是将自适应比特率流传送至你的客户端。 媒体服务可以将一组自适应比特率 MP4 文件动态打包为以下其中一种格式：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。
 
-若要使用动态打包，必须执行下列操作：
-
-* 将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流文件，  
-* 针对你要传送内容的“流式处理终结点”，获取至少一个流式处理单位。
+若要利用动态打包，需将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流文件。  
 
 以下代码演示如何提交编码作业。 该作业所包含的一项任务会指定要使用 **媒体编码器标准**将夹层文件转码成一组自适应比特率 MP4。 代码会提交作业，并等待作业完成。
 
-编码作业完成后，即可发布资产，然后流式处理或渐进式下载 MP4 文件。
+作业完成后，你即可流式处理资产，或渐进式下载转码后所创建的 MP4 文件。
 
 将以下方法添加到 Program 类。
 
@@ -436,7 +389,7 @@ MPEG DASH
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
 
-若要流式处理视频，请将 URL 粘贴在 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)的 URL 文本框中。
+若要流式传输视频，请将 URL 粘贴到 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)的 URL 文本框中。
 
 若要测试渐进式下载，请将 URL 粘贴到浏览器（例如 Internet Explorer、Chrome 或 Safari）中。
 
@@ -449,7 +402,7 @@ MPEG DASH
 ## <a name="download-sample"></a>下载示例
 下面的代码示例包含本教程中创建的代码：[示例](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)。
 
-## <a name="next-steps"></a>后续步骤 
+## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -467,6 +420,6 @@ MPEG DASH
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,14 +1,15 @@
 # 概述
 ## [什么是 ExpressRoute？](expressroute-introduction.md)
 ## [ExpressRoute 常见问题](expressroute-faqs.md)
+## [连接模型](expressroute-connectivity-models.md)
 ## [位置与合作伙伴](expressroute-locations.md)
 ### [按位置列出的提供商](expressroute-locations-providers.md)
 ### [按提供商列出的位置](expressroute-locations.md)
 
 # 入门
-## [线路和路由域](expressroute-circuit-peerings.md)
 ## [工作流](expressroute-workflows.md)
 ## [先决条件](expressroute-prerequisites.md)
+## [线路和路由域](expressroute-circuit-peerings.md)
 ## [路由要求](expressroute-routing.md)
 ## [优化路由](expressroute-optimize-routing.md)
 ## [NAT 要求](expressroute-nat.md)
@@ -45,12 +46,12 @@
 ### [非对称路由](expressroute-asymmetric-routing.md)
 
 ## 故障排除
+### [验证 ExpressRoute 连接](expressroute-troubleshooting-expressroute-overview.md)
 ### [获取 ARP 表](expressroute-troubleshooting-arp-resource-manager.md)
 ### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
 
-
 # 参考
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
+## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST（经典）](https://msdn.microsoft.com/library/azure/dn606310)
 
@@ -78,8 +79,3 @@
 ### [提升网络基础结构的连接能力](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [混合合作关系：启用本地方案](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 ## [服务更新](https://azure.microsoft.com/updates/?product=expressroute)
-
-
-<!--HONumber=Dec16_HO1-->
-
-

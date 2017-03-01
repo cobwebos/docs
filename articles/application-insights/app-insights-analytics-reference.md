@@ -11,25 +11,30 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
+ms.sourcegitcommit: 802086b95b949cf4aa14af044f69e500b31def44
+ms.openlocfilehash: 5241a36fbc7008baad5369452d3332d84335a661
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="reference-for-analytics"></a>分析参考
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Analytics 查询语言。
 
+其他信息源：
+
+* 键入时，Analytics 会提供很多参考资料。 只要开始输入查询，系统就会提示可能的完整形式。
+* [此教程页面](app-insights-analytics-tour.md)提供语言功能的分步介绍。
 * [SQL 用户的备忘单](https://aka.ms/sql-analytics)转换最常见的惯用语言。
-* [针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)（如果应用尚未将数据发送到 Application Insights）。
+* [针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)（如果你自己的应用尚未将数据发送到 Application Insights）。
  
 
 ## <a name="index"></a>索引
 **Let** [let](#let-clause)
 
-**查询和运算符** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**查询和运算符** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **聚合** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -39,9 +44,9 @@ ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
 
 **日期和时间** [Date and time expressions](#date-and-time-expressions) | [Date and time literals](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-**字符串** [GUIDs](#guids) | [Obfuscated String Literals](#obfuscated-string-literals) | [String Literals](#string-literals) | [String comparisons](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+**字符串** [GUIDs](#guids) | [Obfuscated String Literals](#obfuscated-string-literals) | [String Literals](#string-literals) | [String comparisons](#string-comparisons) | [countof](#countof) | [extract](#extract) | [in, !in](#in) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
 
-**数组、对象和动态** [Array and object literals](#array-and-object-literals) | [Dynamic object functions](#dynamic-object-functions) | [Dynamic objects in let clauses](#dynamic-objects-in-let-clauses) | [JSON Path expressions](#json-path-expressions) | [Names](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
+**数组、对象和动态** [Array and object literals](#array-and-object-literals) | [Dynamic object functions](#dynamic-object-functions) | [Dynamic objects in let clauses](#dynamic-objects-in-let-clauses) | [JSON Path expressions](#json-path-expressions) | [Names](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [in, !in](#in) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
 
 ## <a name="let"></a>Let
 ### <a name="let-clause"></a>let 子句
@@ -90,6 +95,18 @@ Let 子句将 [name](#names) 绑定到表格结果、标量值或函数。 子�
     let rows = (n:long) { range steps from 1 to n step 1 };
     rows(10) | ...
 
+将表结果转换为标量并用于查询：
+
+```
+let topCities =  toscalar ( // convert single column to value
+   requests
+   | summarize count() by client_City 
+   | top 4 by count_ 
+   | summarize makeset(client_City)) ;
+requests
+| where client_City in (topCities) 
+| summarize count() by client_City;
+```
 
 自联接：
 
@@ -153,6 +170,63 @@ requests // The request table starts this pipeline.
 ```AIQL
 requests | count
 ```
+
+### <a name="datatable-operator"></a>datatable 运算符
+
+指定表内联。 在查询本身中定义架构和值。
+
+请注意，此运算符没有管道输入。
+
+**语法**
+
+    datatable ( ColumnName1 : ColumnType1 , ...) [ScalarValue1, ...]
+
+* *ColumnName* 列的名称。
+* *ColumnType* 一个[数据类型](#scalars)。 
+* *ScalarValue* 相应类型的值。 值计数必须是列数的倍数。 
+
+**返回**
+
+包含指定值的表。
+
+**示例**
+
+```AIQL
+datatable (Date:datetime, Event:string)
+    [datetime(1910-06-11), "Born",
+     datetime(1930-01-01), "Enters Ecole Navale",
+     datetime(1953-01-01), "Published first book",
+     datetime(1997-06-25), "Died"]
+| where strlen(Event) > 4
+```
+
+### <a name="distinct-operator"></a>distinct 运算符
+
+返回包含具有不同值组合的行集的表。 在选择在执行运算前投射到列子集。
+
+**语法**
+
+    T | distinct *              // All columns
+    T | distinct Column1, ...   // Columns to project
+
+**示例**
+
+```AIQL
+datatable (Supplier: string, Fruit: string, Price:int) 
+["Contoso", "Grapes", 22,
+"Fabrikam", "Apples", 14,
+"Contoso", "Apples", 15,
+"Fabrikam", "Grapes", 22]
+| distinct Fruit, Price 
+```
+
+
+|水果|价格|
+|---|---|
+|葡萄|22|
+|苹果|14|
+|苹果|15|
+
 
 ### <a name="evaluate-operator"></a>evaluate 运算符
 `evaluate` 是一种扩展机制，支持追加到查询的专用算法。
@@ -364,6 +438,74 @@ traces
     Age = now() - timestamp
 ```
 
+### <a name="find-operator"></a>find 运算符
+
+    find in (Table1, Table2, Table3) where id=="a string"
+    find in (Table1, Table2, Table3) where id=="a string" project column1, column2
+    find in (Table1, Table2, Table3) where * has "a string"
+    find in (Table1, Table2, Table3) where appName in ("string 1", "string 2", "string 3")
+
+在一组表中查找与谓词相匹配的行。
+
+**语法**
+
+    find in (Table1, ...) 
+    where Predicate 
+    [project Column1, ...]
+
+**参数**
+
+* Table1 表名称或查询。 它可以是 let 定义的表，但不能是函数。 使用表名的效果优于使用查询。
+* 谓词 计算指定表中每一行的布尔表达式。
+ * 可以使用“*”代替字符串比较中的列名称
+* Column1`project` 选项可指定哪些列必须始终出现在输出中。 
+
+**结果**
+
+默认情况下，输出表包含：
+
+* `source_` - 每行的源表标记。
+* 谓词中显式提及的列
+* 所有输入表共有的非空列。
+* `pack_` - 包含其他列中的数据的属性包。
+
+请注意，此格式可能随输入数据或谓词的更改而更改。 若要指定一组固定的列，请使用 `project`。
+
+**示例**
+
+获取所有请求和异常，来自可用性测试和机器人的请求和异常除外：
+
+```AIQL
+
+    find in (requests, exceptions) where isempty(operation_SyntheticSource)
+```
+
+查找来自 UK 的所有请求和异常，来自可用性测试和机器人的请求和异常除外：
+
+```AIQL
+
+    let requk = requests
+    | where client_CountryOrRegion == "United Kingdom";
+    let exuk = exceptions
+    | where client_CountryOrRegion == "United Kingdom";
+    find in (requk, exuk) where isempty(operation_SyntheticSource)
+```
+
+查找其字段包含术语“test”的最近遥测：
+
+```AIQL
+
+    find in (traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions) 
+    where * has 'test' 
+    | top 100 by timestamp desc
+```
+
+**性能提示**
+
+* 向 `where` 谓词添加基于时间的术语。
+* 使用 `let` 子句，而不是编写内联查询。
+
+
 
 ### <a name="join-operator"></a>join 运算符
     Table1 | join (Table2) on CommonColumn
@@ -387,10 +529,10 @@ traces
 
 * 一列，用于每个表中的每一列，包括匹配键。 如果存在名称冲突，将自动重命名右侧列。
 * 一行，用于输入表之间的所有匹配项。 匹配项是从表中选出的一行，该表中的所有 `on` 字段值与其他表中的值相同。 
-* `Kind` 未指定
+* 未指定 `Kind` 或 `= innerunique`
   
     左侧中仅有一行与 `on` 键的每个值匹配。 输出包含一行，用于此行与右侧行的每一个匹配项。
-* `Kind=inner`
+* `kind=inner`
   
      输出中存在一行，用于左侧和右侧匹配行的每个组合。
 * `kind=leftouter`（或 `kind=rightouter` 或 `kind=fullouter`）
@@ -399,8 +541,10 @@ traces
 * `kind=leftanti`
   
      返回左侧中与右侧不具有匹配项的所有记录。 结果表中只有左侧的列。 
+* `kind=leftsemi`（或 `leftantisemi`）
 
-如果这些字段有多个行具有相同的值，则将获得所有合并的行。
+    无论右表中是否存在匹配，左表中返回一行。 结果不包括右侧的数据。
+
 
 **提示**
 
@@ -501,32 +645,32 @@ traces
 支持两种模式的属性包扩展：
 
 * `bagexpansion=bag`：将属性包扩展为单个条目属性包。 这是默认扩展。
-* `bagexpansion=array`：将属性包扩展为双元素 `[`*key*`,`*value*`]` 数组结构，可允许统一访问键和值（以及对属性名称运行不同的计数聚合）。 
+* `bagexpansion=array`：将属性包扩展为双元素 `[`*key*`,`*value*`]` 数组结构，可允许统一访问键和值（以及对属性名称运行不同的计数聚合）。
 
 **示例**
 
-    exceptions | take 1 
+    exceptions | take 1
     | mvexpand details[0]
 
 针对详细信息字段中的每一项将异常记录拆分成多行。
 
 ### <a name="parse-operator"></a>parse 运算符
-    T | parse "I got 2 socks for my birthday when I was 63 years old" 
+    T | parse "I got 2 socks for my birthday when I was 63 years old"
     with * "got" counter:long " " present "for" * "was" year:long *
 
 
     T | parse kind=relaxed
-          "I got no socks for my birthday when I was 63 years old" 
-    with * "got" counter:long " " present "for" * "was" year:long * 
+          "I got no socks for my birthday when I was 63 years old"
+    with * "got" counter:long " " present "for" * "was" year:long *
 
-    T |  parse kind=regex "I got socks for my 63rd birthday" 
-    with "(I|She) got " present " for .*?" year:long * 
+    T |  parse kind=regex "I got socks for my 63rd birthday"
+    with "(I|She) got " present " for .*?" year:long *
 
 从字符串中提取值。 可以使用简单或正则表达式匹配。
 
 **语法**
 
-    T | parse [kind=regex|relaxed] SourceText 
+    T | parse [kind=regex|relaxed] SourceText
         with [Match | Column [: Type [*]] ]  ...
 
 **参数**
@@ -713,7 +857,7 @@ range Steps from 1 to 8 step 3
 
     range LastWeek from bin(ago(7d),1d) to now() step 1d
 
-过去 7 天午夜时分的表。 bin (floor) 函数将每次时间缩减到当天的开始。
+过去&7; 天午夜时分的表。 bin (floor) 函数将每次时间缩减到当天的开始。
 
 **示例**  
 
@@ -774,6 +918,50 @@ render 指示表示层如何显示表。 它应是管道的最后一个元素。
     restrict access to (e1, e2);
     union * |  take 10 
 
+### <a name="sample-operator"></a>sample 运算符
+
+从输入表返回均匀分布的随机行。
+
+
+**语法**
+
+    T | sample NumerOfRows
+
+* *NumberOfRows*：示例中待返回的行数。
+
+**提示**
+
+若不需要均匀分布的示例，请使用 `Take`。
+
+
+### <a name="sample-distinct-operator"></a>sample-distinct 运算符
+
+返回单个列，该列包含所请求列的非重复值，且数目不超过指定数目。 当前不返回均匀分布的示例。
+
+**语法**
+
+    T | sample-distinct NumberOfValues of ColumnName
+
+* *NumberOfValues* 所需的表的长度。
+* *ColumnName* 所需的列。
+
+**提示**
+
+通过在 let 语句中使用 sample-distinct，之后使用 in 运算符进行筛选，可轻松实现总体抽样（参见示例）。
+ 
+如果要获得最靠前的值，而非仅仅一个示例，可以使用 top-hitters 运算符。
+
+如果要对数据行（而不是特定列的值）进行抽样，请参阅 [sample 运算符](#sample-operator)。
+
+**示例**
+
+进行总体抽样，并执行进一步的计算，了解汇总不会超过查询限制。
+
+```AIQL
+let sampleops = toscalar(requests | sample-distinct 10 of OperationName);
+requests | where OperationName in (sampleops) | summarize total=count() by OperationName
+```
+
 ### <a name="sort-operator"></a>sort 运算符
     T | sort by country asc, price desc
 
@@ -783,7 +971,7 @@ render 指示表示层如何显示表。 它应是管道的最后一个元素。
 
 **语法**
 
-    T  | sort by Column [ asc | desc ] [ `,` ... ]
+    T  | sort by Column [ asc | desc ] [ , ... ]
 
 **参数**
 
@@ -816,9 +1004,9 @@ Traces
 **语法**
 
     T | summarize
-         [  [ Column = ] Aggregation [ `,` ... ] ]
+         [  [ Column = ] Aggregation [ , ... ] ]
          [ by
-            [ Column = ] GroupExpression [ `,` ... ] ]
+            [ Column = ] GroupExpression [ , ... ] ]
 
 **参数**
 
@@ -836,9 +1024,8 @@ Traces
 
 结果具有多个行，因为 `by` 值存在不同组合。 如果希望汇总数值的范围，请使用 `bin()` 将范围减少为离散值。
 
-**注意**
-
-尽管可为聚合和分组表达式提供任意表达式，但使用简单列名称或将 `bin()` 应用于数值列会更加高效。
+> [!NOTE]
+> 尽管可为聚合和分组表达式提供任意表达式，但使用简单列名称或将 `bin()` 应用于数值列会更加高效。
 
 ### <a name="take-operator"></a>take 运算符
 [limit](#limit-operator) 的别名
@@ -850,7 +1037,7 @@ Traces
 
 **语法**
 
-    T | top NumberOfRows by Sort_expression [ `asc` | `desc` ] [`nulls first`|`nulls last`] [, ... ]
+    T | top NumberOfRows by Sort_expression [ asc | desc ] [nulls first|nulls last] [, ... ]
 
 **参数**
 
@@ -864,11 +1051,11 @@ Traces
 `top 5 by name` 表面上等效于 `sort by name | take 5`。 但前者运行速度更快，并且始终返回已排序的结果，而 `take` 则不能保证。
 
 ### <a name="top-nested-operator"></a>top-nested 运算符
-    requests 
-    | top-nested 5 of name by count()  
-    , top-nested 3 of performanceBucket by count() 
+    requests
+    | top-nested 5 of name by count()
+    , top-nested 3 of performanceBucket by count()
     , top-nested 3 of client_CountryOrRegion by count()
-    | render barchart 
+    | render barchart
 
 产生分层结果，其中每个级别都是对上一级别的深化。 它可用于回答此类问题：“排行前 5 的请求是什么，以及对于每个请求，排行前 3 的性能存储桶是哪些，那么对于每个性能存储桶，发出这些请求的前 3 个国家/地区有哪些？”
 
@@ -937,13 +1124,13 @@ Traces
 ```AIQL
 
     exceptions
-    | where Timestamp > ago(1d)
+    | where Timestamp > ago(12h)
     | union withsource=SourceTable kind=outer 
-       (Command | where Timestamp > ago(1d))
+       (Command | where Timestamp > ago(12h))
     | summarize dcount(UserId)
 ```
 
-### <a name="forcing-an-order-of-results"></a>强制形成结果顺序
+#### <a name="forcing-an-order-of-results"></a>强制形成结果顺序
 
 联合无法保证结果行中存在特定排序。
 若要在每次运行查询后获取相同顺序，需将标记列附加到每个输入表：
@@ -953,9 +1140,12 @@ Traces
     let r3 = (pageViews | count | extend tag = 'r3');
     r1 | union r2,r3 | sort by tag
 
+#### <a name="see-also"></a>另请参阅
+
+请考虑将 [join 运算符](#join-operator)作为替代。
 
 ### <a name="where-operator"></a>where 运算符
-     requests | where resultCode==200
+     requests | where resultCode=="200"
 
 筛选表，获取满足谓词的行子集。
 
@@ -964,11 +1154,13 @@ Traces
 **语法**
 
     T | where Predicate
+    T | where * has Term
 
 **参数**
 
 * *T*：待筛选行的表格输入。
 * *Predicate*：针对 *T* 的列的 `boolean` [表达式](#boolean)。对 *T* 中的每一行执行此计算。
+* 术语 - 必须完全匹配列中的单词的字符串。
 
 **返回**
 
@@ -996,24 +1188,7 @@ traces
 
 请注意，将两个列之间的比较放在最后，因为它不能利用索引和强制执行扫描。
 
-### <a name="where-in-operator"></a>where-in 运算符
-    requests | where resultCode !in (200, 201)
 
-    requests | where resultCode in (403, 404)
-
-**语法**
-
-    T | where col in (expr1, expr2, ...)
-    T | where col !in (expr1, expr2, ...)
-
-**参数**
-
-* `col`：表中的列。
-* `expr1`：标量表达式列表。
-
-使用 `in`，用于仅包括此类行：其中的 `col` 等同于表达式 `expr1...` 中的一个表达式。
-
-使用 `!in`，用于仅包括此类行：其中的 `col` 不等于任何表达式 `expr1...`。  
 
 ## <a name="aggregations"></a>Aggregations
 Aggregations 是用于合并在[汇总操作](#summarize-operator)中所创建组的值的函数。 例如，在此查询中，dcount() 是一个聚合函数：
@@ -1086,10 +1261,10 @@ traces
 
 结果：
 
-    { "`indexer`":
+    { "indexer":
      {"id":"string",
        "parsedStack":
-       { "`indexer`": 
+       { "indexer": 
          {  "level":"int",
             "assembly":"string",
             "fileName":"string",
@@ -1121,11 +1296,11 @@ traces
 
 生成的架构可能为：
 
-    { 
-      "x":["int", "string"], 
-      "y":["double", {"w": "string"}], 
-      "z":{"`indexer`": ["int", "string"]}, 
-      "t":{"`indexer`": "string"} 
+    {
+      "x":["int", "string"],
+      "y":["double", {"w": "string"}],
+      "z":{"indexer": ["int", "string"]},
+      "t":{"indexer": "string"}
     }
 
 此架构表示：
@@ -1142,19 +1317,19 @@ traces
 返回架构的语法是：
 
     Container ::= '{' Named-type* '}';
-    Named-type ::= (name | '"`indexer`"') ':' Type;
+    Named-type ::= (name | '"indexer"') ':' Type;
     Type ::= Primitive-type | Union-type | Container;
     Union-type ::= '[' Type* ']';
     Primitive-type ::= "int" | "string" | ...;
 
 它们等效于 TypeScript 类型批注的子集，作为动态值编码。 在 Typescript 中，示例架构应为：
 
-    var someobject: 
-    { 
-      x?: (number | string), 
-      y?: (number | { w?: string}), 
+    var someobject:
+    {
+      x?: (number | string),
+      y?: (number | { w?: string}),
       z?: { [n:number] : (int | string)},
-      t?: { [n:number]: string } 
+      t?: { [n:number]: string }
     }
 
 
@@ -1560,6 +1735,12 @@ true 或 false 具体取决于值是否为 null。
     and 
     or 
 
+### <a name="convert-to-boolean"></a>转换为布尔值
+
+如果具有的字符串 `aStringBoolean` 包含“true”或“false”值，则可将其转换为布尔值，如下所示：
+
+    booleanResult = aStringBoolean =~ "true"
+
 
 
 ## <a name="numbers"></a>数字
@@ -1621,7 +1802,7 @@ true 或 false 具体取决于值是否为 null。
 
 最接近以下 *value* 的 *roundTo* 倍数。  
 
-    (toint((value/roundTo)-0.5)) * roundTo
+    (toint(value/roundTo)) * roundTo
 
 **示例**
 
@@ -1705,18 +1886,11 @@ true 或 false 具体取决于值是否为 null。
 
 ### <a name="toint"></a>toint
     toint(100)        // cast from long
-    toint(20.7) == 21 // nearest int from double
-    toint(20.4) == 20 // nearest int from double
+    toint(20.7) == 20 // nearest int below double
+    toint(20.4) == 20 // nearest int below double
     toint("  123  ")  // parse string
     toint(a[0])       // cast from dynamic
     toint(b.c)        // cast from dynamic
-
-### <a name="tolong"></a>tolong
-    tolong(20.7) == 21 // conversion from double
-    tolong(20.4) == 20 // conversion from double
-    tolong("  123  ")  // parse string
-    tolong(a[0])       // cast from dynamic
-    tolong(b.c)        // cast from dynamic
 
 
 ### <a name="todouble"></a>todouble
@@ -1725,6 +1899,13 @@ true 或 false 具体取决于值是否为 null。
     todouble(a[0])       // cast from dynamic
     todouble(b.c)        // cast from dynamic
 
+
+### <a name="tolong"></a>tolong
+    tolong(20.7) == 20 // conversion from double
+    tolong(20.4) == 20 // conversion from double
+    tolong("  123  ")  // parse string
+    tolong(a[0])       // cast from dynamic
+    tolong(b.c)        // cast from dynamic
 
 
 ## <a name="date-and-time"></a>日期和时间
@@ -1992,7 +2173,7 @@ h"hello"
 | --- | --- | --- | --- |
 | `==` |等于 |是 |`"aBc" == "aBc"` |
 | `<>` `!=` |不等于 |是 |`"abc" <> "ABC"` |
-| `=~` |等于 |否 |`"abc" =~ "ABC"` |
+| `=~` |等于 |否 |`"abc" =~ "ABC"` <br/>`boolAsString =~ "true"` |
 | `!~` |不等于 |否 |`"aBc" !~ "xyz"` |
 | `has` |右侧 (RHS) 是左侧 (LHS) 的整体 |否 |`"North America" has "america"` |
 | `!has` |RHS 不是 LHS 的完整用语 |否 |`"North America" !has "amer"` |
@@ -2009,8 +2190,8 @@ h"hello"
 | `endswith` |RHS 是 LHS 终端子字符串。 |否 |`"Fabrikam" endswith "kam"` |
 | `!endswith` |RHS 不是 LHS 终端子字符串。 |否 |`"Fabrikam" !endswith "ka"` |
 | `matches regex` |LHS 包含 RHS 的匹配项 |是 |`"Fabrikam" matches regex "b.*k"` |
-| `in` |等于任一元素 |是 |`"abc" in ("123", "345", "abc")` |
-| `!in` |不等于任何元素 |是 |`"bc" !in ("123", "345", "abc")` |
+| [`in`](#in) |等于任一元素 |是 |`"abc" in ("123", "345", "abc")` |
+| [`!in`](#in) |不等于任何元素 |是 |`"bc" !in ("123", "345", "abc")` |
 
 如果正在测试是否存在整体用语，即符号或字母数字式字词（受非字母数字字符或开始或结束字段限制），则使用 `has` 或 `in`。 `has` 执行速度比 `contains`、`startswith` 或 `endswith` 更快。 这些查询的第一个查询运行速度更快：
 
@@ -2093,6 +2274,8 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 <a name="notempty"></a>
 <a name="isnotempty"></a>
 <a name="isempty"></a>
+
+
 
 ### <a name="isempty-isnotempty-notempty"></a>isempty, isnotempty, notempty
     isempty("") == true
@@ -2301,8 +2484,8 @@ substring("ABCD", 0, 2)       // AB
     | summarize count() 
       by toint(details[0].parsedStack[0].line)
 
-    exceptions 
-    | summarize count() 
+    exceptions
+    | summarize count()
       by tostring(details[0].parsedStack[0].assembly)
 
 **文本** 若要创建显式数组或属性包对象，需将其编写为 JSON 字符串并转换：
@@ -2312,7 +2495,7 @@ substring("ABCD", 0, 2)       // AB
 
 **mvexpand：**若要将对象的属性分成单独行，需使用 mvexpand：
 
-    exceptions | take 1 
+    exceptions | take 1
     | mvexpand details[0].parsedStack[0]
 
 
@@ -2320,8 +2503,8 @@ substring("ABCD", 0, 2)       // AB
 
 **treepath：**查找复杂对象中的所有路径：
 
-    exceptions | take 1 | project timestamp, details 
-    | extend path = treepath(details) 
+    exceptions | take 1 | project timestamp, details
+    | extend path = treepath(details)
     | mvexpand path
 
 
@@ -2333,10 +2516,10 @@ substring("ABCD", 0, 2)       // AB
 
 结果：
 
-    { "`indexer`":
+    { "indexer":
      {"id":"string",
        "parsedStack":
-       { "`indexer`": 
+       { "indexer":
          {  "level":"int",
             "assembly":"string",
             "fileName":"string",
@@ -2362,7 +2545,7 @@ substring("ABCD", 0, 2)       // AB
 若要创建动态文本，请结合使用 `parsejson`（别名 `todynamic`）和 JSON 字符串参数：
 
 * `parsejson('[43, 21, 65]')` - 数字数组
-* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
+* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`
 * `parsejson('21')` - 包含数字的动态类型的单个值
 * `parsejson('"21"')` - 包含字符串的动态类型的单个值
 
@@ -2381,8 +2564,8 @@ T
 ### <a name="dynamic-object-functions"></a>动态对象函数
 |  |  |
 | --- | --- |
-| *value* `in` *array* |如果有 = = *value* 的 *array* 元素，则为 true<br/>`where City in ('London', 'Paris', 'Rome')` |
-| *value* `!in` *array* |如果没有 == *value* 的 *array* 元素，则为 true |
+| [*value* `in` *array*](#in) |*array* 包含 *value* |
+| [*value* `!in` *array*](#in) |*array* 不包含 *value* |
 | [`arraylength(`array`)`](#arraylength) |如果不是数组，则为 null |
 | [`extractjson(`path,object`)`](#extractjson) |使用路径导航到对象。 |
 | [`parsejson(`source`)`](#parsejson) |将 JSON 字符串转换为动态对象。 |
@@ -2401,7 +2584,57 @@ T
     T | project parsejson(list1).a, parsejson(list2).a
 
 
+### <a name="in"></a>位于
+    value in (listExpression)
+    value !in (listExpression)
 
+确定列表中是否存在等于该值的项。 区分大小写，其中值为字符串。
+
+**参数**
+
+* `value`：标量表达式。
+* `listExpression`：标量表达式列表，或计算结果为列表的表达式。 
+
+例如，将嵌套数组平展为单个列表（例如 `where x in (dynamic([1,[2,3]]))` 变为 `where x in (1,2,3)`）。  
+
+**示例**
+
+```AIQL
+    requests | where client_City in ("London", "Paris", "Rome")
+```
+
+```AIQL
+let cities = dynamic(['Dublin','Redmond','Amsterdam']);
+requests | where client_City in (cities) 
+|  summarize count() by client_City
+```
+
+计算列表：
+
+```AIQL
+let topCities =  toscalar ( // convert single column to value
+   requests
+   | summarize count() by client_City 
+   | top 4 by count_ 
+   | summarize makeset(client_City)) ;
+requests
+| where client_City in (topCities) 
+| summarize count() by client_City;
+```
+
+将函数调用用作列表表达式：
+
+```AIQL
+let topCities =  (n:int) {toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City)) };
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+ 
 
 ### <a name="arraylength"></a>arraylength
 动态数组中的元素数。
@@ -2603,10 +2836,5 @@ range(1, 8, 3)
 | [where] |使用语言关键字作为名称 |
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

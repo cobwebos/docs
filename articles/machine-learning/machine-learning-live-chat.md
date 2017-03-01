@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 12/19/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1ad39ddd622573b4842e1e231b0b00685cff83e4
+ms.sourcegitcommit: 0a711ee4118973b21d47f1c3e63301f0dfac879d
+ms.openlocfilehash: b746462e382cb5c065417940a80b00c31f440e9b
 
 
 ---
 # <a name="get-help-from-machine-learning-live-chat-support"></a>获得机器学习实时聊天支持人员的帮助
-[Azure 机器学习工作室](machine-learning-what-is-ml-studio.md)为构建机器学习模型提供了直观的界面。 将通过[库](machine-learning-gallery-how-to-use-contribute-publish.md)和[论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)来指导你完成此目标。 
+[Azure 机器学习工作室](machine-learning-what-is-ml-studio.md)为构建机器学习模型提供了直观的界面。 有一个[库](machine-learning-gallery-how-to-use-contribute-publish.md)，其中包含社区提供的示例以帮助你入门。 并且有一个[论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)，可以在其中提出问题以帮助你继续前进。 
 
-但有时你只需进行一次快速提问来解答你的疑惑。 在[工作室](machine-learning-what-is-ml-studio.md)中寻找顶部导航栏上的聊天图标。  如果你看到此图标，则表示产品团队成员为你提供实时在线帮助。
+但有时你只需进行一次快速提问来解答你的疑惑。 在[机器学习工作室](http://studio.azureml.net/Home)中寻找顶部导航栏上的聊天图标。  如果你看到此图标，则表示产品团队成员为你提供实时在线帮助。
 
 ![Azure ML 聊天](./media/machine-learning-live-chat/AzureMLChatNavBar.png)
 
@@ -32,13 +32,13 @@ ms.openlocfilehash: 1ad39ddd622573b4842e1e231b0b00685cff83e4
 ![Azure ML 对话](./media/machine-learning-live-chat/AzureMLChat.png)
 
 ## <a name="dont-see-the-live-chat-icon"></a>看不到实时聊天图标？
-团队成员实际上正在回答你的问题。 如果没有看到实时聊天图标，是因为该图标在工作时间以外时不显示。 
+实时聊天由机器学习团队的成员提供服务。 如果看不到实时聊天图标，这是因为团队当前不可用。 例如，可能是在正常工作时间之外。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "如何使用 Azure API 管理中的服务备份和还原实现灾难恢复 | Microsoft Docs"
+title: "使用 Azure API 管理中的备份和还原实现灾难恢复 | Microsoft 文档"
 description: "了解如何在 Azure API 管理中使用备份和还原执行灾难恢复。"
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: a7ff82a47b4e972db96929acb47fcce760b244b3
-ms.openlocfilehash: 73bb12643a5c94e364ac4040f6e1678cb1495fb2
-
+ms.sourcegitcommit: 1c812fc31011b57f2cdb357574877d6b7125280f
+ms.openlocfilehash: c5ae5049588d5bc7628442942e71f182a425fead
 
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
@@ -30,7 +29,7 @@ ms.openlocfilehash: 73bb12643a5c94e364ac4040f6e1678cb1495fb2
 > [!NOTE]
 > 为灾难恢复备份和还原 API 管理服务实例的过程还可用于为暂存之类的方案复制 API 管理服务实例。
 >
-> 请注意，每个备份都在 7 天后过期。 如果尝试在 7 天有效期到期后还原备份，还原将失败并显示 `Cannot restore: backup expired` 消息。
+> 请注意，每个备份都将在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原将失败并显示 `Cannot restore: backup expired` 消息。
 >
 >
 
@@ -149,7 +148,7 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 
 * 请求正文中指定的**容器****必须存在**。
 * 当备份正在进行时，**不应尝试任何服务管理操作**，如 SKU 升级或降级、域名更改等。
-* 从创建时开始，**备份还原仅保证 7 天**。
+* 从创建时开始，**备份还原仅保证 30 天**。
 * 用于创建分析报表的**用法数据****不包括**在备份中。 使用 [Azure API 管理 REST API][Azure API Management REST API] 定期检索分析报表以保证安全。
 * 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实现定期备份，以及在对 API 管理服务进行重大更改后执行按需备份。
 * 备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所作的**更改****可能不包含在备份中，因此将丢失**。
@@ -214,6 +213,6 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2e7d60b453fec2ce4c78179419362eee30ab7cb2
-ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 080404a7b4fde0e2fd8b8be407090190d07c6f2a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
 |资源|名称|说明|
 |---|---|---|
 |网络接口|*myNic1*|在本文的方案部分描述的三个 IP 配置在创建后会分配给此 NIC。|
-|公共 IP 地址资源|创建 2 项资源：*myPublicIP* 和 *myPublicIP2*|已向这些资源分配静态公共 IP 地址，并且将其分配到方案中描述的 *IPConfig-1* 和 *IPConfig-2* IP 配置。|
+|公共 IP 地址资源|创建&2; 项资源：*myPublicIP* 和 *myPublicIP2*|已向这些资源分配静态公共 IP 地址，并且将其分配到方案中描述的 *IPConfig-1* 和 *IPConfig-2* IP 配置。|
 |VM|*myVM1*|标准 DS3 VM。|
 |虚拟网络|*myVNet1*|虚拟网络，有一个名为 *mySubnet* 的子网。|
 |存储帐户|特定于部署|存储帐户。|
@@ -48,7 +49,7 @@ ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
 
 |名称|说明|
 |---|---|
-|adminUsername|管理员用户名。 该用户名必须符合 [Azure 用户名要求](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)。|
+|adminUsername|管理员用户名。 该用户名必须符合 [Azure 用户名要求](../virtual-machines/virtual-machines-windows-faq.md)。|
 |adminPassword|管理员密码 该密码必须符合 [Azure 密码要求](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
 |dnsLabelPrefix|PublicIPAddressName1 的 DNS 名称。 DNS 名称将解析为分配给 VM 的公共 IP 地址之一。 在创建 VM 时所在的 Azure 区域（位置）内，名称必须是唯一的。|
 |dnsLabelPrefix1|PublicIPAddressName2 的 DNS 名称。 DNS 名称将解析为分配给 VM 的公共 IP 地址之一。 在创建 VM 时所在的 Azure 区域（位置）内，名称必须是唯一的。|
@@ -67,9 +68,26 @@ ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
 
 若要使用 Azure 门户部署模板，请完成以下步骤：
 
-1. 若要注册预览版，请向[多个 IP](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) 发送一封电子邮件，其中包含你的订阅 ID 和目标用途。 请不要尝试完成剩余的步骤：
-    - 只有在收到一封告知允许你使用预览版的电子邮件之后，才这样做。
-    - 遵守收到的电子邮件中的说明 
+1. 登录并选择相应订阅后，请通过在 PowerShell 中运行以下命令注册预览版：
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network    
+    ```
+    运行 ```Get-AzureRmProviderFeature``` 命令时，请在看到以下输出后再继续完成剩余的步骤：
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >这可能需要几分钟的时间。
+
 2. 根据需要修改模板。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)一文。
 3. 使用以下方法之一部署模板：
     - **在门户中选择模板：**完成[从自定义模板部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)一文中的步骤。 选择名为 *101-vm-multiple-ipconfig* 的预先存在的模板。
@@ -81,14 +99,31 @@ ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
 
 若要使用 PowerShell 部署模板，请完成以下步骤：
 
-1. 若要注册预览版，请向[多个 IP](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) 发送一封电子邮件，其中包含你的订阅 ID 和目标用途。 请不要尝试完成剩余的步骤：
-    - 只有在收到一封告知允许你使用预览版的电子邮件之后，才这样做。
-    - 如果不遵循所收到的电子邮件中的说明
+1. 登录并选择相应订阅后，请通过在 PowerShell 中运行以下命令注册预览版：
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network    
+    ```
+    运行 ```Get-AzureRmProviderFeature``` 命令时，请在看到以下输出后再继续完成剩余的步骤：
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >这可能需要几分钟的时间。
+
 2. 通过完成[使用 PowerShell 部署模板](../azure-resource-manager/resource-group-template-deploy-cli.md#deploy)一文中的步骤来部署模板。 本文介绍多个用于部署模板的选项。 如果选择使用 `-TemplateUri parameter` 部署，则此模板的 URI 为 *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*。 如果选择通过 `-TemplateFile` 参数进行部署，可将[模板文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)的内容从 GitHub 复制到计算机的新文件中。 根据需要修改模板内容。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)一文。
 
     不管选择哪个选项来部署模板，都必须为本文[参数](#parameters)部分列出的参数提供值。 如果选择使用参数文件提供参数，请将[参数文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)的内容从 GitHub 复制到计算机上的新文件中。 修改文件中的值。 使用所创建的文件作为 `-TemplateParameterFile` 参数的值。
     
-    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#powershell)一文中的步骤。
+    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)一文中的步骤。
 
     >[!TIP]
     >如果不确定 dnslabelprefix 是否可用，请输入 `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` 命令进行查找。 如果可用，该命令会返回 `True`。
@@ -99,21 +134,33 @@ ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
 
 若要使用 Azure CLI 1.0 部署模板，请完成以下步骤：
 
-1. 若要注册预览版，请向[多个 IP](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) 发送一封电子邮件，其中包含你的订阅 ID 和目标用途。 请不要尝试完成剩余的步骤：
-    - 只有在收到一封告知允许你使用预览版的电子邮件之后，才这样做。
-    - 如果不遵循所收到的电子邮件中的说明
+1. 登录并选择相应订阅后，请通过在 PowerShell 中运行以下命令注册预览版：
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network    
+    ```
+    运行 ```Get-AzureRmProviderFeature``` 命令时，请在看到以下输出后再继续完成剩余的步骤：
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >这可能需要几分钟的时间。
+
 2. 通过完成[使用 Azure CLI 部署模板](../azure-resource-manager/resource-group-template-deploy-cli.md#deploy)一文中的步骤来部署模板。 本文介绍多个用于部署模板的选项。 如果选择使用 `--template-uri` (-f) 部署，则此模板的 URI 为 *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*。 如果选择通过 `--template-file` (-f) 参数进行部署，则可将[模板文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json)的内容从 GitHub 复制到计算机的新文件中。 根据需要修改模板内容。 模板部署本文的[资源](#resources)部分列出的资源和设置。 若要详细了解模板及其创作方法，请阅读[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)一文。
 
     不管选择哪个选项来部署模板，都必须为本文[参数](#parameters)部分列出的参数提供值。 如果选择使用参数文件提供参数，请将[参数文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)的内容从 GitHub 复制到计算机上的新文件中。 修改文件中的值。 使用所创建的文件作为 `--parameters-file` (-e) 参数的值。
     
-    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#azure-cli)一文中的步骤。
+    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)一文中的步骤。
 
 3. 部署 VM 后，连接到 VM 并将专用 IP 地址添加到部署的操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分的步骤即可。 请勿向操作系统添加公共 IP 地址。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

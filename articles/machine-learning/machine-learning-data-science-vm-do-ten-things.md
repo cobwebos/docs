@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 12/09/2016
 ms.author: gokuma;weig;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 211012d7c1a4ec3ad8f281bc758d2f91f452dc67
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1072ab3d7c8cc472258925baaa2ef82cdfb17eed
 
 
 ---
@@ -90,7 +90,7 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
 当在 Azure 机器学习中操作模型时，会公开 Web 服务，允许客户端在输入参数中传递 REST 调用，以及以输出形式接收模型中的预测。   
 
 > [!NOTE]
-> 如果尚未注册 AzureML，通过访问 [AzureML Studio](https://studio.azureml.net/) 主页并单击“开始使用”，即可获取免费工作区或标准工作区。   
+> 如果尚未注册 Azure 机器学习，通过访问 [Azure 机器学习工作室](https://studio.azureml.net/)主页并单击“开始使用”，即可获取免费工作区或标准工作区。   
 > 
 > 
 
@@ -143,9 +143,9 @@ Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供
 以下是可用于在 Azure 机器学习中设置、生成、发布和使用模型为 Web 服务的过程和代码片段。
 
 #### <a name="setup"></a>设置
-1. 通过在 Revolution R Enterprise 8.0 IDE 或 R IDE 中键入 ```install.packages("AzureML")```，即可安装 AzureML R 程序包。
-2. 从[此处](https://cran.r-project.org/bin/windows/Rtools/)下载 RTools。 若要使你的 R 程序包可以在 AzureML 中运行，路径中需要 zip 实用程序（命名为 zip.exe）。
-3. 在主目录下名为 ```.azureml``` 的目录下创建 settings.json 文件，然后输入你的 Azure ML 工作区的参数：
+1. 通过在 Revolution R Enterprise 8.0 IDE 或 R IDE 中键入 ```install.packages("AzureML")```，即可安装机器学习 R 程序包。
+2. 从[此处](https://cran.r-project.org/bin/windows/Rtools/)下载 RTools。 若要使 R 程序包在机器学习中运行，路径中需要 zip 实用程序（命名为 zip.exe）。
+3. 在主目录下名为 ```.azureml``` 的目录下创建 settings.json 文件，然后输入 Azure 机器学习工作区的参数：
 
 settings.json 文件结构：
 
@@ -155,7 +155,7 @@ settings.json 文件结构：
     }}
 
 
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-ml"></a>使用 R 生成模型，并在 Azure ML 中发布它
+#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>使用 R 生成模型，并在 Azure 机器学习中发布它
     library(AzureML)
     ws <- workspace(config="~/.azureml/settings.json")
 
@@ -172,7 +172,7 @@ settings.json 文件结构：
 
     ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
 
-#### <a name="consume-the-model-deployed-in-azure-ml"></a>使用部署在 Azure ML 中的模型
+#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>使用部署在 Azure 机器学习中的模型
 若要从客户端应用程序使用模型，需要使用 Azure 机器学习库按使用 `services` API 调用的名称查找已发布的 Web 服务，确定终结点。 然后只需调用 `consume` 函数，并传入要预测的数据帧。
 以下代码用于使用已发布为 Azure 机器学习 Web 服务的模型。
 
@@ -295,10 +295,10 @@ Azure Blob 是适合大小数据的经济可靠云存储。 了解如何移动�
 
 还可以在 VM 中使用 Azure 存储资源管理器上传本地文件中的数据：
 
-* 若要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
-* 单击“文件”框右侧的“...”，从文件系统中选择要上传的一个或多个文件，然后单击“上载”开始上传文件。![](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
+* 若要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![在存储资源管理器中上传](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
+* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，然后单击“上传”开始上传文件。![将文件上传到 Blob](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
 
-**读取 Azure Blob 中的数据：AML 阅读器模块**
+**从 Azure Blob 读取数据：机器学习读取器模块**
 
 在 Azure 机器学习工作室中，可以使用**导入数据模块**读取 Blob 中的数据。
 
@@ -377,11 +377,11 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure 存储 Blob 中的数据。 编写 U-SQL 查询之前，确保你的 Blob 存储帐户已链接到 Azure Data Lake。 转到 **Azure 门户**、找到 Azure Data Lake Analytics 仪表板、单击“添加数据源”、选择 **Azure 存储**的存储类型，然后插入你的 Azure 存储帐户名称和密钥。 然后，将可以引用存储帐户中存储的数据。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![输入存储帐户和密钥](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 在 Visual Studio 中，可以读取 Blob 存储中的数据、执行一些数据操作、特征工程，以及将生成的数据输出到 Azure Data Lake 或 Azure Blob 存储。 在引用 Blob 存储中的数据时，请使用 **wasb://**；在引用 Azure Data Lake 中的数据时，请使用 **swbhdfs://**
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![数据帧](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 在 Visual Studio 中，可以使用以下 U-SQL 查询：
 
@@ -427,7 +427,7 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 在将查询提交到服务器后，将显示表明作业状态的图表。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
+![作业状态关系图](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
 
 **查询 Data Lake 中的数据：U-SQL**
 
@@ -435,11 +435,11 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 在将查询提交到服务器后，可以很快在 **Azure Data Lake 资源管理器**中找到 tripdata_summary.CSV，可以通过右键单击该文件来预览数据。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_create_summary.png)
+![Azure Data Lake 资源管理器中的文件](./media/machine-learning-data-science-vm-do-ten-things/USQL_create_summary.png)
 
 若要查看文件信息，请执行以下步骤：
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_tripdata_summary.png)
+![文件摘要](./media/machine-learning-data-science-vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 群集
 Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服务。 可以轻松使用数据科研虚拟机中的 Azure HDInsight 群集。
@@ -448,25 +448,25 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 * 从 [Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。 此存储帐户用于存储 HDInsight 群集的数据。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
+![创建 Azure Blob 存储帐户](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * 从 [Azure 门户](machine-learning-data-science-customize-hadoop-cluster.md)自定义 Azure HDInsight Hadoop 群集
   
   * 必须在创建 HDInsight 群集时将其与已创建的存储帐户相链接。 此存储帐户用于访问可在群集中处理的数据。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
+![指向使用 HDInsight 群集创建的存储帐户的链接](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
 
 * 在创建群集后，必须启用对其头节点的**远程访问**。 记住在此处指定的远程访问凭据（与创建时为群集指定的远程访问凭据不同）：稍后你将需要它们。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![启用远程访问](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* 创建 Azure ML 工作区。 机器学习实验将存储在此 ML 工作区中。 选择门户中突出显示的选项，如以下屏幕截图中所示。
+* 创建 Azure 机器学习工作区。 机器学习实验将存储在此机器学习工作区中。 选择门户中突出显示的选项，如以下屏幕截图中所示。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
+![创建 Azure 机器学习工作区](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
 
-* 然后输入你的 Azure ML 工作区的参数
+* 然后输入工作区的参数
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
+![输入机器学习工作区参数](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
 * 使用 IPython Notebook 上传数据 首先导入所需程序包、插入凭据、在你的存储帐户中创建数据库，然后将数据上传到 HDI 群集。
 
@@ -577,7 +577,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     pd.read_sql(queryString,connection)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
+![查看现有表](./media/machine-learning-data-science-vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
 请查看每月的记录数以及行程表中已付小费或未付小费的频率：
 
@@ -594,7 +594,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     df['trip_count'].plot(kind='bar')
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
+![每个月的记录数的走势图](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
 
     queryString = """
         SELECT tipped, COUNT(*) AS tip_freq
@@ -613,7 +613,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     df['trip_count'].plot(kind='bar')
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
+![行程频率图](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
 我们还可以计算上车位置和下车位置之间的距离，然后将该距离与行程距离比较。
 
@@ -636,7 +636,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     results.head(5)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![上车和下车表](./media/machine-learning-data-science-vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -645,9 +645,9 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     plt.scatter(df['direct_distance'], df['trip_distance'])
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
+![上车/下车距离与行程距离的对比图](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
 
-现在，请准备一组低采样 (1%) 的数据用于建模。 我们可以在 AML 阅读器模块中使用此数据。
+现在，请准备一组低采样 (1%) 的数据用于建模。 我们可以在机器学习读取器模块中使用此数据。
 
         queryString = """
         create  table if not exists nyctaxi_downsampled_dataset_testNEW (
@@ -780,19 +780,19 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     pd.read_sql(queryString,connection)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![数据表](./media/machine-learning-data-science-vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-**使用 AML 读取 HDI 中的数据：读取器模块**
+**使用机器学习从 HDI 读取数据：读取器模块**
 
-还可以在 AML Studio 中使用**读取器**模块访问 Hadoop 群集中的数据库。 插入你的 HDI 群集和 Azure 存储帐户的凭据，将能够使用 HDI 群集中的数据库生成机器学习模型。
+还可以在机器学习工作室中使用**读取器**模块访问 Hadoop 群集中的数据库。 插入你的 HDI 群集和 Azure 存储帐户的凭据，将能够使用 HDI 群集中的数据库生成机器学习模型。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
+![读取器模块属性](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
 
 然后，可以查看已评分的数据集：
 
-![](./media/machine-learning-data-science-vm-do-ten-things/AML_Model_Results.PNG)
+![查看已评分数据集](./media/machine-learning-data-science-vm-do-ten-things/AML_Model_Results.PNG)
 
-### <a name="azure-sql-data-warehouse-databases"></a>Azure SQL 数据仓库和数据库
+### <a name="azure-sql-data-warehouse--databases"></a>Azure SQL 数据仓库和数据库
 Azure SQL 数据仓库是一项弹性数据仓库即服务，具有企业级 SQL Server 体验。
 
 可以按照本[文章](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中提供的说明设置 Azure SQL 数据仓库。 完成设置 Azure SQL 数据仓库后，即可使用此[演练](machine-learning-data-science-process-sqldw-walkthrough.md)，来使用 SQL 数据仓库中的数据执行数据上传、探索和建模。
@@ -816,13 +816,13 @@ Azure DocumentDB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 
 1. 打开 Power BI Desktop 并执行“获取数据”。 指定如下 URL：https://cahandson.blob.core.windows.net/samples/volcano.json
 2. 应该将导入的 JSON 记录看作列表
-3. 将列表转换为表，以便 PowerBI 可以处理该表
+3. 将列表转换为表，以便 Power BI 可以处理该表
 4. 通过单击展开图标（在列右侧有“左箭头和右箭头”图标的展开图标）展开列
 5. 请注意，位置是一个“记录”字段。 展开记录并仅选择坐标。 坐标是一个列表列
 6. 添加新的列，以使用公式 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 将列表坐标列转换为逗号分隔的经纬度列（连接坐标列表字段中的两个元素）。
 7. 最后，将 ```Elevation``` 列转换为小数，然后选择“关闭”和“应用”。
 
-不执行上述步骤，而是将上述步骤脚本化的以下代码粘贴到 PowerBI 中的高级编辑器（允许你使用查询语言编写数据转换）。
+不执行上述步骤，而是将上述步骤脚本化的以下代码粘贴到 Power BI 中的高级编辑器（允许使用查询语言编写数据转换）。
 
     let
         Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
@@ -838,7 +838,7 @@ Azure DocumentDB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 
 现在，Power BI 数据模型中有数据。 Power BI Desktop 的外观应如下所示。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
+![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
 可以使用数据模型开始生成报表和可视化效果。 可以遵循此 [Power BI 文章](../documentdb/documentdb-powerbi-visualize.md#build-the-reports)中的步骤生成报表。 最终结果将是如下所示的报表。
 
@@ -856,7 +856,7 @@ Azure DocumentDB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 
 同样地，如果你对 VM 处理能力的需求减少（例如：已将主要工作负荷移动到 Hadoop 或 Spark 群集），可以通过在 [Azure 门户](https://portal.azure.com)中转到 VM 实例设置，来减少群集。 屏幕截图如下所示。
 
-![](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
+![VM 实例设置](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
 
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.在虚拟机上安装其他工具
 我们打包了多个工具，我们认为这些工具将能够解决许多常规数据分析需求，并且应该能节省你的时间（避免不得不依次安装并配置环境）以及费用（只支付所用资源的费用）。
@@ -869,6 +869,6 @@ Azure DocumentDB 是云中的 NoSQL 数据库。 它允许你使用 JSON 等文�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

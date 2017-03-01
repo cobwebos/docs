@@ -1,5 +1,5 @@
 ---
-title: "使用 Application Insights 诊断 ASP.NET 应用中的故障和异常 | Microsoft 文档"
+title: "使用 Azure Application Insights 诊断 Web 应用中的故障和异常 | Microsoft Docs | Microsoft Docs"
 description: "从 ASP.NET 应用中捕获异常以及请求遥测。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
 
 ## <a name="set-up-exception-reporting"></a>设置异常报告
 * 若要报告服务器应用中的异常，请执行以下操作：
-  * 在应用代码中安装 [Application Insights SDK](app-insights-asp-net.md)，或者 
+  * 在应用代码中安装 [Application Insights SDK](app-insights-asp-net.md)，或者
   * 在 IIS Web 服务器上运行 [Application Insights 代理](app-insights-monitor-performance-live-website-now.md)，或者
   * 在 Azure Web 应用中添加 [Application Insights 扩展](app-insights-azure-web-apps.md)
 * 在网页中安装 [JavaScript 代码片段](app-insights-javascript.md)可以捕获浏览器异常。
@@ -44,7 +44,7 @@ ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
 
 ![右键单击项目，然后依次选择“Application Insights”、“打开”。](./media/app-insights-asp-net-exceptions/34.png)
 
-请注意，你可以筛选报告，以便仅显示异常。 
+请注意，你可以筛选报告，以便仅显示异常。
 
 *没有显示异常？请参阅[捕获异常](#exceptions)。*
 
@@ -76,12 +76,12 @@ ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
 [详细了解诊断搜索](app-insights-diagnostic-search.md)。
 
 ## <a name="custom-tracing-and-log-data"></a>自定义跟踪和日志数据
-若要获取特定于你的应用的诊断数据，可在插入代码后发送你自己的遥测数据。 该数据与请求、页面视图和其他自动收集的数据一起显示在诊断搜索中。 
+若要获取特定于你的应用的诊断数据，可在插入代码后发送你自己的遥测数据。 该数据与请求、页面视图和其他自动收集的数据一起显示在诊断搜索中。
 
 你有几种选项：
 
-* [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](app-insights-diagnostic-search.md)所依据的字符串属性和数值指标。
-* [TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) 允许你发送较长的数据，例如 POST 信息。
+* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](app-insights-diagnostic-search.md)所依据的字符串属性和数值指标。
+* [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) 允许你发送较长的数据，例如 POST 信息。
 * [TrackException()](#exceptions) 可发送堆栈跟踪。 [有关异常的详细信息](#exceptions)。
 * 如果已使用 Log4Net 或 NLog 等记录框架，可以[捕获这些日志](app-insights-asp-net-trace-logs.md)并在诊断搜索中查看它们以及请求和异常数据。
 
@@ -91,14 +91,14 @@ ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
 
 > [!NOTE]
 > 如果应用生成大量遥测，自适应采样模块将通过仅发送具有代表性的事件部分自动减少发送到门户的量。 将以组为单位选择或取消选择属于同一操作的事件，以便可以在相关事件之间浏览。 [了解采样](app-insights-sampling.md)。
-> 
-> 
+>
+>
 
 ### <a name="how-to-see-request-post-data"></a>如何查看请求 POST 数据
 请求详细信息不包含在 POST 调用中发送到你的应用的数据。 若要报告此数据：
 
 * 在应用程序中[安装 SDK](app-insights-asp-net.md)。
-* 在应用程序中插入代码以调用 [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace)。 在消息参数中发送 POST 数据。 允许的大小有限制，因此你应该尝试仅发送必要数据。
+* 在应用程序中插入代码以调用 [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace)。 在消息参数中发送 POST 数据。 允许的大小有限制，因此你应该尝试仅发送必要数据。
 * 调查失败的请求时，查找关联的跟踪。  
 
 ![深入了解](./media/app-insights-asp-net-exceptions/060-req-related.png)
@@ -116,13 +116,13 @@ ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
 
 JavaScript
 
-    try 
+    try
     { ...
     }
     catch (ex)
     {
       appInsights.trackException(ex, "handler loc",
-        {Game: currentGame.Name, 
+        {Game: currentGame.Name,
          State: currentGame.State.ToString()});
     }
 
@@ -130,13 +130,13 @@ C#
 
     var telemetry = new TelemetryClient();
     ...
-    try 
+    try
     { ...
     }
     catch (Exception ex)
     {
        // Set up some properties:
-       var properties = new Dictionary <string, string> 
+       var properties = new Dictionary <string, string>
          {{"Game", currentGame.Name}};
 
        var measurements = new Dictionary <string, double>
@@ -198,7 +198,7 @@ VB
 
     namespace MVC2App.Controllers
     {
-      [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)] 
+      [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
       public class AiHandleErrorAttribute : HandleErrorAttribute
       {
         public override void OnException(ExceptionContext filterContext)
@@ -210,7 +210,7 @@ VB
                 {   //or reuse instance (recommended!). see note above  
                     var ai = new TelemetryClient();
                     ai.TrackException(filterContext.Exception);
-                } 
+                }
             }
             base.OnException(filterContext);
         }
@@ -269,7 +269,7 @@ VB
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
             if (actionExecutedContext != null && actionExecutedContext.Exception != null)
-            {  //or reuse instance (recommended!). see note above 
+            {  //or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
                 ai.TrackException(actionExecutedContext.Exception);    
             }
@@ -278,7 +278,7 @@ VB
       }
     }
 
-可将此替换属性添加到特定控制器，或者将其添加到 WebApiConfig 类中的全局筛选器配置： 
+可将此替换属性添加到特定控制器，或者将其添加到 WebApiConfig 类中的全局筛选器配置：
 
     using System.Web.Http;
     using WebApi1.x.App_Start;
@@ -304,10 +304,10 @@ VB
 
 存在大量无法处理异常筛选器的情况。 例如：
 
-* 从控制器构造函数引发的异常。 
-* 从消息处理程序引发的异常。 
-* 在路由过程中引发的异常。 
-* 在响应内容序列化期间引发的异常。 
+* 从控制器构造函数引发的异常。
+* 从消息处理程序引发的异常。
+* 在路由过程中引发的异常。
+* 在响应内容序列化期间引发的异常。
 
 ## <a name="web-api-2x"></a>Web API 2.x
 添加 IExceptionLogger 的实现：
@@ -322,7 +322,7 @@ VB
         public override void Log(ExceptionLoggerContext context)
         {
             if (context !=null && context.Exception != null)
-            {//or reuse instance (recommended!). see note above 
+            {//or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
                 ai.TrackException(context.Exception);
             }
@@ -353,7 +353,7 @@ VB
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger()); 
+            config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
         }
       }
   }
@@ -362,7 +362,7 @@ VB
 
 作为替代项，你可以：
 
-1. 仅将 ExceptionHandler 替换为 IExceptionHandler 的自定义实现。 这仅在框架仍能够选择要发送哪个响应消息时调用（不会在终止实例连接时调用） 
+1. 仅将 ExceptionHandler 替换为 IExceptionHandler 的自定义实现。 这仅在框架仍能够选择要发送哪个响应消息时调用（不会在终止实例连接时调用）
 2. 异常筛选器（如上述 Web API 1.x 控制器上的部分中所述），并非在所有情况下都调用。
 
 ## <a name="wcf"></a>WCF
@@ -387,7 +387,7 @@ VB
         {
         }
 
-        public void ApplyDispatchBehavior(ServiceDescription serviceDescription, 
+        public void ApplyDispatchBehavior(ServiceDescription serviceDescription,
             System.ServiceModel.ServiceHostBase serviceHostBase)
         {
             foreach (ChannelDispatcher disp in serviceHostBase.ChannelDispatchers)
@@ -396,21 +396,21 @@ VB
             }
         }
 
-        public void Validate(ServiceDescription serviceDescription, 
+        public void Validate(ServiceDescription serviceDescription,
             System.ServiceModel.ServiceHostBase serviceHostBase)
         {
         }
 
         bool IErrorHandler.HandleError(Exception error)
-        {//or reuse instance (recommended!). see note above 
+        {//or reuse instance (recommended!). see note above
             var ai = new TelemetryClient();
 
             ai.TrackException(error);
             return false;
         }
 
-        void IErrorHandler.ProvideFault(Exception error, 
-            System.ServiceModel.Channels.MessageVersion version, 
+        void IErrorHandler.ProvideFault(Exception error,
+            System.ServiceModel.Channels.MessageVersion version,
             ref System.ServiceModel.Channels.Message fault)
         {
         }
@@ -422,8 +422,8 @@ VB
     namespace WcfService4
     {
         [AiLogException]
-        public class Service1 : IService1 
-        { 
+        public class Service1 : IService1
+        {
          ...
 
 [示例](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
@@ -431,9 +431,9 @@ VB
 ## <a name="exception-performance-counters"></a>异常性能计数器
 如果在服务器上[安装了 Application Insights 代理](app-insights-monitor-performance-live-website-now.md)，可以获取 .NET 测量的异常率图表。 这包括经处理和未经处理的 .NET 异常。
 
-打开“指标资源管理器”边栏选项卡、添加新图表，然后选择在“性能计数器”下列出的“异常率”。 
+打开“指标资源管理器”边栏选项卡、添加新图表，然后选择在“性能计数器”下列出的“异常率”。
 
-.NET Framework 通过对间隔中的异常数进行计数并除以间隔长度计算异常率。 
+.NET Framework 通过对间隔中的异常数进行计数并除以间隔长度计算异常率。
 
 请注意，它与 Application Insights 通过计数 TrackException 报告计算得出的“异常”计数不同。 采样间隔不同，SDK 不会为所有经处理和未经处理的异常发送 TrackException 报告。
 
@@ -444,7 +444,6 @@ VB
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

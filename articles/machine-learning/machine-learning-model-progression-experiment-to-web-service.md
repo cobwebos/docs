@@ -1,5 +1,5 @@
 ---
-title: "机器学习模型如何从实验逐步进展为运营 Web 服务 | Microsoft Docs"
+title: "如何将 Azure 机器学习模型变为 Web 服务 | Microsoft 文档"
 description: "Azure 机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 452cfc0f35810ffa6bdd8c36f8f5e0cf0814e563
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 8c5a3ca30ae0539cded6cf9cd93ba1a42e19ba58
 
 
 ---
@@ -35,7 +35,7 @@ Azure 机器学习工作室提供交互式画布，允许你开发、运行、�
 在本文中，我们提供了有关机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 
 > [!NOTE]
-> 还有其他方法可用于开发和部署机器学习模型，但本文的重点是如何使用机器学习工作室。 有关如何使用 R 创建经典的预测 Web 服务的讨论，请参阅博客文章 [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)（使用 RStudio 和 Azure ML 生成和部署预测 Web 应用程序）。
+> 还有其他方法可用于开发和部署机器学习模型，但本文的重点是如何使用机器学习工作室。 例如，若要阅读如何使用 R 创建经典预测 Web 服务的说明，请参阅博客文章 [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)（使用 RStudio 和 Azure ML 生成和部署预测 Web 应用）。
 > 
 > 
 
@@ -122,6 +122,6 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

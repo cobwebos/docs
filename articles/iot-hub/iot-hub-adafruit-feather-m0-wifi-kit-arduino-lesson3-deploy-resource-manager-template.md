@@ -1,5 +1,5 @@
 ---
-title: "创建 Azure Function App 和存储帐户 | Microsoft 文档"
+title: "将 Arduino (C) 连接到 Azure IoT - 第 3 课：模板部署 | Microsoft Docs"
 description: "Azure Function App 侦听 Azure IoT 中心事件，处理传入的消息并将其写入到 Azure 表存储中。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 946d66cc7ed1173e7b2b92dae90a1ce69ba3c165
-ms.openlocfilehash: 18806dc515a9a8951134d580a2c0664ff503e17c
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: cf666d17406a49036082a6a4dd15bad89c04aa8f
 
 
 ---
@@ -88,6 +88,6 @@ az group deployment create --template-file arm-template.json --parameters @arm-t
 [send-device-to-cloud-messages]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

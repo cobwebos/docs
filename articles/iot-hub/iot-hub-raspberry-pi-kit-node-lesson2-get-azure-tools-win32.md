@@ -1,5 +1,5 @@
 ---
-title: "获取 Azure 工具（Windows 7 及更高版本）| Microsoft 文档"
+title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 1 课：获取工具 (Windows) | Microsoft Docs"
 description: "在 Windows 7 及更高版本上安装 Python 和 Azure 命令行界面 (Azure CLI)"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 7fbf21434952ece22468df6873e10e6f3eae1724
-ms.openlocfilehash: 9fe70cbb905ff45498294abcb2893ffadc70b480
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 822ec5c36203a6de5efb25249c2c4a93794b759d
 
 
 ---
@@ -75,6 +75,6 @@ Azure CLI 为 Azure 提供了多平台命令行体验。 可直接通过命令�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 02/01/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 822e25ab6cd94f312429260778ef13d53bbc0b5f
-ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
+ms.sourcegitcommit: 83334b1b02df214e51c86a862636c9392cd19474
+ms.openlocfilehash: ba418a641b339a0d94a3c7b2596d37fbd88a30c5
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 
 - 可在 Azure AD 中控制谁有权访问 PlanMyLeave
 - 可以让用户使用其 Azure AD 帐户自动登录到 PlanMyLeave（单一登录）
-- 可在一个中心位置（即 Azure 经典门户）管理帐户
+- 可在一个中心位置（即 Azure 管理门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 - 启用了 PlanMyLeave 单一登录的订阅
 
 
-> [!NOTE] 
+> [!NOTE]
 > 不建议使用生产环境测试本教程中的步骤。
 
 
@@ -50,9 +51,7 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。
-
-本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 PlanMyLeave
 2. 配置和测试 Azure AD 单一登录
@@ -63,30 +62,26 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 
 **若要从库中添加 PlanMyLeave，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**的左侧导航窗格上，单击“Active Directory”。
+1. 在 **[Azure 管理门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
 
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![应用程序][2]
-
-4. 在页面底部单击“添加”。
+    
+3. 单击对话框顶部的“添加”按钮。
 
     ![应用程序][3]
 
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
+4. 在搜索框中，键入“PlanMyLeave”。
 
-    ![应用程序][4]
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_001.png)
 
-6. 在搜索框中，键入“PlanMyLeave”。
+5. 在结果窗格中，选择“PlanMyLeave”，然后单击“添加”按钮添加该应用程序。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_01.png)
-    
-7. 在结果窗格中，选择“PlanMyLeave”，然后单击“完成”以添加该应用程序。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_0001.png)
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_011.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 PlanMyLeave 的 Azure AD 单一登录。
@@ -99,112 +94,127 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 PlanMyLeave 测试用户](#creating-a-PlanMyLeave-test-user)** - 在 PlanMyLeave 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
+3. **[创建 PlanMyLeave 测试用户](#creating-a-planmyleave-test-user)** - 在 PlanMyLeave 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在经典门户中启用 Azure AD 单一登录并在 PlanMyLeave 应用程序中配置单一登录。
-
+在本部分中，将在 Azure 管理门户中启用 Azure AD 单一登录并在 PlanMyLeave 应用程序中配置单一登录。
 
 **若要配置 PlanMyLeave 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在经典门户中，在 **PlanMyLeave** 应用程序集成页上，单击“配置单一登录”，以打开“配置单一登录”对话框。
-     
-    ![配置单一登录][6] 
+1. 在 Azure 管理门户的“PlanMyLeave”应用程序集成页上，单击“单一登录”。
 
-2. 在“你希望用户如何登录到 PlanMyLeave”页上，选择“Azure AD 单一登录”，然后单击“下一步”。
+    ![配置单一登录][4]
 
-    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_03.png) 
-
-3. 在“配置应用设置”对话框页上，执行以下步骤：
-
-    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_04.png) 
-
-    - 在“登录 URL”文本框中，使用以下模式键入用户用来登录 PlanMyLeave 应用程序的 URL：`https://<company-name>.planmyleave.com/Login.aspx`。
-    
-    > [!NOTE]
-    > 请注意，必须使用实际的“登录 URL”更新这些值。 若要获取这些值，请联系 [PlanMyLeave 支持团队](emaiLto:support@planmyleave.com)。
-         
-4. 在“在 PlanMyLeave 处配置单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上：
-
-    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_05.png)
-   
-5. 若要为应用程序配置 SSO，请在<a href=“mailto:support@planmyleave.com”>此处</a>联系 PlanMyLeave 支持团队，并向他们提供以下内容：
-
-    • 下载的**元数据文件**
-    
-    • **SAML SSO URL**
-    
-6. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
-    
-    ![Azure AD 单一登录][10]
-
-7. 在“单一登录确认”页上，单击“完成”。  
+2. 在“单一登录”对话框页中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
  
-    ![Azure AD 单一登录][11]
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_01.png)
+
+3. 在“PlanMyLeave 域和 URL”部分中，执行以下步骤：
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_02.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.planmyleave.com/Login.aspx`
+    
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-name>.planmyleave.com`
+
+    > [!NOTE] 
+    > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [PlanMyLeave 支持团队](mailto:support@planmyleave.com)以获取这些值。
+
+4. 在“SAML 签名证书”部分中，单击“创建新证书”。
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_03.png)     
+
+5. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_general_300.png)
+
+6. 在“SAML 签名证书”部分中，选择“激活新证书”，然后单击“保存”按钮。
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_04.png)
+
+7. 在弹出的“滚动更新证书”窗口中，单击“确定”。
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_general_400.png)
+
+8. 在“SAML 签名证书”部分中，单击“证书(base64)”，然后在计算机上保存证书文件。
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_05.png) 
+
+9. 在“PlanMyLeave 配置”部分，单击“配置 PlanMyLeave”打开“配置登录”窗口。
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_06.png) 
+
+    ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_07.png)
+
+10. 在另一 Web 浏览器窗口中，以管理员身份登录到 PlanMyLeave 租户。
+
+11. 转到“系统设置”。 然后在“安全管理”部分，单击“公司 SAML 设置”。
+
+    ![在应用端配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_002.png) 
+
+12. 在“SAML 设置”部分，单击编辑器图标。
+
+    ![在应用端配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_003.png)
+
+13. 在“更新 SAML 设置”部分中执行以下步骤：
+
+    ![在应用端配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_004.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  在“登录 URL”文本框中，放置 Azure AD 应用程序配置窗口中“SAML 单一登录服务 URL”的值。
+
+    b.保留“数据库类型”设置，即设置为“共享”。  在记事本中打开下载的证书，仅将 ---证书开头--- 和 ---证书末尾----之间的内容复制到剪贴板，然后将其粘贴到“证书”文本框中。
+
+    c. 将“是否启用”设置为“是”。
+
+    d.单击“下一步”。 单击“保存” 。
+
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-在本部分中，在经典门户中创建名为“Britta Simon”的测试用户。
+本部分的目的是在 Azure 管理门户中创建名为 Britta Simon 的测试用户。
 
-
-![创建 Azure AD 用户][20]
+![创建 Azure AD 用户][100]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 经典门户**中，在左侧导航窗格上，单击“Active Directory”。
+1. 在 Azure 管理门户的左侧导航窗格中，单击“Azure Active Directory”图标。
 
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_09.png) 
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_01.png) 
 
-2. 在“目录”列表中，选择要启用目录集成的目录。
+2. 转到“用户和组”，单击“所有用户”显示用户列表。
+    
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_02.png) 
 
-3. 若要显示用户列表，请在顶部菜单中，单击“用户”。
-
+3. 在对话框顶部单击“添加”，打开“用户”对话框。
+ 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_03.png) 
 
-4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
-
+4. 在“用户”对话框页上，执行以下步骤：
+ 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_04.png) 
 
-5. 在“告诉我们有关此用户的信息”对话框页中，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_05.png) 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
-    a. 对于“用户类型”，选择“组织中的新用户”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
+    c. 选择“显示密码”并记下“密码”的值。
 
-    c. 单击“资源组名称” 的 Azure 数据工厂。
-
-6.  在“用户配置文件”对话框页面上，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_06.png) 
-
-    a. 在“名字”文本框中，键入“Britta”。  
-
-    b. 在“姓氏”文本框中，键入“Simon”。
-
-    c. 在“显示名称”文本框中，键入“Britta Simon”。
-
-    d. 在“角色”列表中，选择“用户”。
-
-    e. 单击“下一步”。
-
-7. 在“获取临时密码”对话框页上，单击“创建”。
-
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_07.png) 
-
-8. 在“获取临时密码”对话框页上，执行以下步骤：
-
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-planmyleave-tutorial/create_aaduser_08.png) 
-
-    a. 写下“新密码”的值。
-
-    b. 单击“完成”。   
+    d.单击“下一步”。 单击“创建” 。 
 
 
 
 ### <a name="creating-a-planmyleave-test-user"></a>创建 PlanMyLeave 测试用户
 
-在本部分中，将在 PlanMyLeave 中创建一个名为 Britta Simon 的用户。 请在<a href=“mailto:support@planmyleave.com”>此处</a>与 PlanMyLeave 支持团队协作，将用户添加到 PlanMyLeave 平台中。
+本部分的目的是在 PlanMyLeave 中创建名为“Britta Simon”的用户。 PlanMyLeave 支持在默认情况下启用的实时预配。
+
+本部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 PlanMyLeave 期间会创建一个新用户。
+
+> [!NOTE]
+> 如果需要手动创建用户，则需联系 [ 支持团队](mailto:support@planmyleave.com)。
+
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -215,7 +225,7 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 
 **若要将 Britta Simon 分配到 PlanMyLeave，请执行以下步骤：**
 
-1. 在经典门户中，若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
+1. 在 Azure 管理门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，然后单击“所有应用程序”。
 
     ![分配用户][201] 
 
@@ -223,15 +233,20 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 
     ![配置单一登录](./media/active-directory-saas-planmyleave-tutorial/tutorial_planmyleave_50.png) 
 
-3. 在顶部菜单中，单击“用户”。
+3. 在左侧菜单中，单击“用户和组”。
+
+    ![分配用户][202] 
+
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![分配用户][203]
 
-4. 在“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
 
-5. 在底部工具栏中，单击“分配”。
+6. 在“用户和组”对话框中单击“选择”按钮。
 
-    ![分配用户][205]
+7. 在“添加分配”对话框中单击“分配”按钮。
+    
 
 
 ### <a name="testing-single-sign-on"></a>测试单一登录
@@ -247,6 +262,7 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
 
 
+
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_01.png
@@ -254,19 +270,9 @@ ms.openlocfilehash: e2d1071f08700d54616cd6b10cadbf7359aa479b
 [3]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-planmyleave-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

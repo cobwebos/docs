@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 3b7550b10339762882403a42f114d1b18da9e1ab
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: ac2730935d206ddf9079395384d46a43fdd740cb
 
 
 ---
@@ -79,6 +79,9 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>我可以使用 Azure AD Connect 将存储在本地 Active Directory 中的使用者标识迁移到 Azure AD B2C 吗？
 不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 我们将在未来提供各种现成的迁移选项和工具。
 
+### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的应用是否可在 iFrame 中打开 Azure AD B2C 页？
+不可以，出于安全的考虑，在 `login.microsftonline.com` 域下提供的 Azure AD B2C 页无法在 iFrame 中打开。 始终必须重定向到 Azure AD B2C 才能使用所有客户体验。
+
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C 是否可以与 Microsoft Dynamics 之类的 CRM 系统一起使用？
 目前不可以。 集成这些系统在我们的计划之中。
 
@@ -124,6 +127,6 @@ Azure AD B2C 不能与 Microsoft Office 365 一起使用。 一般来说，它�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

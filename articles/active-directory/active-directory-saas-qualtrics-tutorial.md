@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2016
+ms.date: 01/18/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3fb6227aaa50816d49372e9b43fdf5faadf1bded
+ms.sourcegitcommit: 8e209d70a0bdcac4d3d1f7fefe265bf4824520e3
+ms.openlocfilehash: 20c198577349a2173d5b7bafd1b84fd4c24fa711
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 3fb6227aaa50816d49372e9b43fdf5faadf1bded
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-qualtrics-tutorial/IC789542.png "Scenario")
+![方案](./media/active-directory-saas-qualtrics-tutorial/IC789542.png "方案")
 
 ## <a name="enabling-the-application-integration-for-qualtrics"></a>为 Qualtrics 启用应用程序集成
 本部分的目的是概述如何为 Qualtrics 启用应用程序集成。
@@ -44,40 +44,40 @@ ms.openlocfilehash: 3fb6227aaa50816d49372e9b43fdf5faadf1bded
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-qualtrics-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-qualtrics-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-qualtrics-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-qualtrics-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-qualtrics-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加应用程序](./media/active-directory-saas-qualtrics-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-qualtrics-tutorial/IC749322.png "从库添加应用程序")
 6. 在搜索框中，键入“Qualtrics”。
    
-   ![应用程序库](./media/active-directory-saas-qualtrics-tutorial/IC789543.png "Application Gallery")
+   ![应用程序库](./media/active-directory-saas-qualtrics-tutorial/IC789543.png "应用程序库")
 7. 在结果窗格中，选择“Qualtrics”，然后单击“完成”以添加该应用程序。
    
    ![Qualtrics](./media/active-directory-saas-qualtrics-tutorial/IC789544.png "Qualtrics")
    
-   ## <a name="configuring-single-sign-on"></a>配置单一登录
+## <a name="configuring-single-sign-on"></a>配置单一登录
 
 本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Qualtrics 进行身份验证。
 
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户的“Qualtrics”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "配置单一登录")
 2. 在“你希望用户如何登录 Qualtrics”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789546.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789546.png "配置单一登录")
 3. 在“配置应用 URL”页上的“Qualtrics 登录 URL”文本框中，键入 URL（例如：“*https://ssotest2ut1.qualtrics.com*”），然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "Configure App URL")
+   ![配置应用 URL](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "配置应用 URL")
 4. 在“配置 Qualtrics 的单一登录”页上，单击“下载元数据”，然后将元数据文件保存在计算机上。
    
-   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789548.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789548.png "配置单一登录")
 5. 将元数据文件发送给 Qualtrics 支持团队。
    
    > [!NOTE]
@@ -86,12 +86,13 @@ ms.openlocfilehash: 3fb6227aaa50816d49372e9b43fdf5faadf1bded
    > 
 6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "Configure Single Sign-On")
+   ![配置单一登录](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "配置单一登录")
    
-   ## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configuring-user-provisioning"></a>配置用户设置
 
 没有操作项可用于配置预配到 Qualtrics 的用户。  
 当分配的用户尝试使用访问面板登录到 Qualtrics 时，Qualtrics 会检查该用户是否存在。  
+
 如果尚无用户帐户可用，Qualtrics 将自动创建该帐户。
 
 ## <a name="assigning-users"></a>分配用户
@@ -101,16 +102,16 @@ ms.openlocfilehash: 3fb6227aaa50816d49372e9b43fdf5faadf1bded
 1. 在 Azure 经典门户中，创建一个测试帐户。
 2. 在“Qualtrics”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-qualtrics-tutorial/IC789550.png "Assign Users")
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+   ![分配用户](./media/active-directory-saas-qualtrics-tutorial/IC789550.png "分配用户")
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-   ![是](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

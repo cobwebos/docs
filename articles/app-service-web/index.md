@@ -1,13 +1,25 @@
 ---
+title: "Azure Web 应用文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用应用服务 Web 应用来构建和托管网站和 Web 应用程序。 教程、视频、API 参考和其他资源。"
+services: app-service
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: app-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
+ms.sourcegitcommit: dc240443ab6163eb296eaa4d93a17bbe1723ba2c
+ms.openlocfilehash: 7123c27b8e21e7db77245a5119b20840214d9ac2
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web 应用文档
 
-应用服务 Web 应用是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 使用 Microsoft Azure 提供的这个平台即服务 (PaaS) 产品，可以在 Azure 维护用于运行和扩展应用的基础结构时重点关注业务逻辑。
+了解如何使用应用服务 Web 应用来构建和托管网站和 Web 应用程序。 教程、视频、API 参考和其他文档演示了如何针对这个完全托管的计算平台进行开发。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -65,7 +77,7 @@ ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/web-sites-dotnet-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -83,7 +95,7 @@ ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
         </a>
     </li> 
      <li>
-        <a href="/azure/app-service-web/web-sites-java-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-java">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -101,7 +113,7 @@ ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/app-service-web-nodejs-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-nodejs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -119,7 +131,7 @@ ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-web/web-sites-python-ptvs-django-mysql">
+        <a href="/azure/app-service-web/app-service-web-get-started-python">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -138,7 +150,7 @@ ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
     </li>
    
      <li>
-        <a href="/azure/app-service-web/app-service-web-php-get-started">
+        <a href="/azure/app-service-web/app-service-web-get-started-php">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -219,16 +231,10 @@ ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-web.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Web 应用文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

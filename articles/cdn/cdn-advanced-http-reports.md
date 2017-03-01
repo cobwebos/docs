@@ -1,9 +1,9 @@
 ---
-title: "Azure CDN 高级 HTTP 报告 | Microsoft Docs"
-description: "Microsoft Azure CDN 中的高级 HTTP 报告。 这些报告提供有关 CDN 活动的详细信息。"
+title: "使用 Azure CDN 高级 HTTP 报告分析使用情况统计信息 | Microsoft Docs"
+description: "了解如何在 Microsoft Azure CDN 中创建高级 HTTP 报告。 这些报告提供有关 CDN 活动的详细信息。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: ef90adc1-580e-4955-8ff1-bde3f3cafc5d
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91cafe744e07416426da6ca5a5785a21e7874f6d
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 2dfbc046674b2da692f30c945aee3ea25ae524eb
 
 
 ---
-# <a name="advanced-http-reports-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的高级 HTTP 报告
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>使用 Azure CDN 高级 HTTP 报告分析使用情况统计信息
 ## <a name="overview"></a>概述
 本文档介绍 Microsoft Azure CDN 中的高级 HTTP 报告。 这些报告提供有关 CDN 活动的详细信息。
 
@@ -174,7 +174,7 @@ ms.openlocfilehash: 91cafe744e07416426da6ca5a5785a21e7874f6d
 在条形图的正下方，将列出前 250 个最常请求的资产的以下信息：相对路径（包括文件名）、下载到完成的次数、请求的次数，以及导致完整下载的请求的百分比。
 
 > [!TIP]
-> 当资产已完全下载时，HTTP 客户端（即浏览器）不会通知我们的 CDN。 因此，我们必须根据状态代码和字节范围请求来计算资产是否已完全下载。 在进行此计算时，我们要查找的第一件事是请求是否导致 200 OK 状态代码。 如果会导致 200 OK 状态代码，那么我们查看字节范围请求，以确保它们覆盖整个资产。 最后，我们将传输的数据量与已请求资产的大小进行比较。 如果传输的数据等于或大于文件大小，并且字节范围请求适合该资产，则将该命中视为完全下载。
+> 当资产已完全下载时，HTTP 客户端（即浏览器）不会通知我们的 CDN。 因此，我们必须根据状态代码和字节范围请求来计算资产是否已完全下载。 在进行此计算时，我们要查找的第一件事是请求是否导致 200 OK 状态代码。 如果会导致&200; OK 状态代码，那么我们查看字节范围请求，以确保它们覆盖整个资产。 最后，我们将传输的数据量与已请求资产的大小进行比较。 如果传输的数据等于或大于文件大小，并且字节范围请求适合该资产，则将该命中视为完全下载。
 > 
 > 由于本报告的解释性质，你应该记住以下几点，它们可能会改变本报告的一致性和准确性。
 > 
@@ -207,6 +207,6 @@ ms.openlocfilehash: 91cafe744e07416426da6ca5a5785a21e7874f6d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

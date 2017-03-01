@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: ac1c60e04b42e2804ef17ba35368dd28c1d748a4
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: c5049cbe98dbb04deae4a2b9dc098938aa65495a
 
 
 ---
@@ -36,9 +36,9 @@ ms.openlocfilehash: ac1c60e04b42e2804ef17ba35368dd28c1d748a4
 本教程演示如何使用 REST API 创建和监视 Azure 数据工厂。 数据工厂中的管道使用复制活动将数据从 Azure Blob 存储复制到 SQL 数据库。
 
 > [!NOTE]
-> 本文不会介绍所有数据工厂 REST API。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory REST API Reference](https://msdn.microsoft.com/library/azure/dn906738.aspx) （数据工厂 REST API 参考）。
+> 本文不会介绍所有数据工厂 REST API。 有关数据工厂 cmdlet 的综合文档，请参阅 [Data Factory REST API Reference](/rest/api/datafactory/) （数据工厂 REST API 参考）。
 > 
-> 
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * 通读 [教程概述](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) ，完成 **先决条件** 步骤。
@@ -512,7 +512,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     Write-Host $results
     ```
 
-**祝贺你！**  现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
+**祝贺你！** 现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
 
 ## <a name="monitor-pipeline"></a>监视管道
 本步骤使用数据工厂 REST API 来监视管道生成的切片。
@@ -564,8 +564,6 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 [troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 
-[cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234.aspx
-[old-cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [azure-portal]: http://portal.azure.com
@@ -578,6 +576,6 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

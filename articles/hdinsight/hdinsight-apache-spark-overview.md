@@ -1,5 +1,5 @@
 ---
-title: "HDInsight 中的 Apache Spark 概述 | Microsoft Docs"
+title: "Azure HDInsight 上的 Apache Spark 概述 | Microsoft 文档"
 description: "介绍 HDInsight 中的 Apache Spark，以及在哪些情况下，可在应用程序中使用 HDInsight 上的 Spark。"
 services: hdinsight
 documentationcenter: 
@@ -16,22 +16,23 @@ ms.topic: get-started-article
 ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
-ms.openlocfilehash: fe40bc372a63735b0130bcbb115c312fa2e45fa6
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 2cb69f253e1a6d01b412775bbfc37de3423bde0b
 
 
 ---
-# <a name="overview-apache-spark-on-hdinsight-linux"></a>概述：HDInsight Linux 上的 Apache Spark
+# <a name="overview-apache-spark-on-hdinsight"></a>概述：HDInsight 上的 Apache Spark
+
 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中计算功能使其成为机器学习和图形计算中的迭代算法的最佳选择。 Spark 也能与 Azure Blob 存储 (WASB) 兼容，因此你可以轻松地通过 Spark 处理存储在 Azure 中的现有数据。
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集只需要约十分钟。 系统将要处理的数据存储在 Azure Blob 存储中。 请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
 ![Azure HDInsight 上的 Apache Spark](./media/hdinsight-apache-spark-overview/hdispark.architecture.png "Azure HDInsight 上的 Apache Spark")
 
-**想要开始在 Azure HDInsight 上使用 Apache Spark 吗？** 请参阅 [快速入门：使用 Jupyter 在 HDInsight Linux 上创建 Spark 群集并运行示例应用程序](hdinsight-apache-spark-jupyter-spark-sql.md)。
+**想要开始在 Azure HDInsight 上使用 Apache Spark 吗？** 请参阅[快速入门：使用 Jupyter 在 HDInsight 上创建 Spark 群集并运行示例应用程序](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
 > [!NOTE]
-> 有关当前版本的已知问题和限制列表，请参阅 [Azure HDInsight (Linux) 中 Apache Spark 的已知问题](hdinsight-apache-spark-jupyter-spark-sql.md)。
+> 有关当前版本的已知问题和限制列表，请参阅 [Azure HDInsight 中 Apache Spark 的已知问题](hdinsight-apache-spark-jupyter-spark-sql.md)。
 > 
 > 
 
@@ -115,6 +116,6 @@ HDInsight 中的 Spark 还提供 [ODBC 驱动程序](http://go.microsoft.com/fwl
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

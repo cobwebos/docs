@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a3d7254fded543fa12b6e82cd50ece8260858955
+ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
+ms.openlocfilehash: 2d7ab8fbed1d4edb60416c7c6b7ae08ddbdec91a
 
 
 ---
@@ -25,11 +25,12 @@ ms.openlocfilehash: a3d7254fded543fa12b6e82cd50ece8260858955
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。 这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="monitoring-partner-solutions"></a>监视合作伙伴解决方案
 可通过“安全中心”边栏选项卡的“合作伙伴解决方案”磁贴轻松监视与 Azure 订阅集成的合作伙伴解决方案的运行状态。
+
 ![“合作伙伴解决方案”磁贴][1]
 
 “合作伙伴解决方案”磁贴显示合作伙伴解决方案的数量和这些解决方案的状态摘要。
@@ -43,15 +44,19 @@ ms.openlocfilehash: a3d7254fded543fa12b6e82cd50ece8260858955
 * 未报告（灰色）- 解决方案尚未报告任何内容，但如果它已连接且仍在部署，则可能不会报告解决方案的状态。
 
 如果没有与订阅集成的解决方案，磁贴将表明没有任何解决方案。 可以通过选择“合作伙伴解决方案”磁贴打开“建议”边栏选项卡来部署合作伙伴安全解决方案。
+
 ![没有合作伙伴解决方案][2]
 
 查看合作伙伴解决方案的运行状况：
 
 1. 选择“合作伙伴解决方案”磁贴。 会打开一个边栏选项卡，其中显示连接到安全中心的合作伙伴解决方案的列表。
+
    ![合作伙伴解决方案][3]
 2. 选择一个合作伙伴解决方案。 此示例中选择的是 **F5-WAF2** 解决方案。  会打开一个边栏选项卡，其中显示合作伙伴解决方案和与该解决方案相关联的资源的状态。 选择“解决方案控制台”以打开此解决方案的合作伙伴管理体验。
+
    ![合作伙伴解决方案详细信息][4]
 3. 返回到“F5-WAF2”边栏选项卡，然后选择“链接应用”。 “链接应用程序”边栏选项卡随即打开。 此处，可将资源连接到合作伙伴解决方案。
+
    ![将资源链接到合作伙伴解决方案][5]
 
 ## <a name="see-also"></a>另请参阅
@@ -73,6 +78,6 @@ ms.openlocfilehash: a3d7254fded543fa12b6e82cd50ece8260858955
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

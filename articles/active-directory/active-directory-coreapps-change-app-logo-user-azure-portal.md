@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -27,15 +27,15 @@ ms.openlocfilehash: 541efc3bdc192d21fd75aa4de9d902adb70b6407
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入 **Azure Active Directory**，然后选择“Enter”。
 3. 在“Azure Active Directory** - 目录名**”**边栏选项卡（即，正在管理的目录的 Azure AD 边栏选项卡）中，选择“企业应用程序”****。
-   
+
     ![打开企业应用](./media/active-directory-coreapps-change-app-logo-azure-portal/open-enterprise-apps.png)
 4. 在“企业应用程序”边栏选项卡中，选择“所有应用程序”。 此时会显示可管理应用的列表。
 5. 在在“企业应用程序 - 所有应用程序”边栏选项卡中，选择一个应用。
 6. 在“appname”边栏选项卡（即标题中包含所选应用名称的边栏选项卡）中，选择“属性”。
-   
+
     ![选择属性命令](./media/active-directory-coreapps-change-app-logo-azure-portal/select-app.png)
 7. 在“***appname*** - 属性”边栏选项卡中，浏览到可用作新徽标的文件，并/或编辑应用名称。
-   
+
     ![更改应用徽标或 nameproperties 命令](./media/active-directory-coreapps-change-app-logo-azure-portal/change-logo.png)
 8. 选择“保存”命令。
 
@@ -44,7 +44,6 @@ ms.openlocfilehash: 541efc3bdc192d21fd75aa4de9d902adb70b6407
 * [向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md)
 * [删除企业应用的用户或组分配](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [禁用企业应用的用户登录](active-directory-coreapps-disable-app-azure-portal.md)
-
 
 
 

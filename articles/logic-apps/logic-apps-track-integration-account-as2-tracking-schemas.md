@@ -1,6 +1,6 @@
 ---
-title: "AS2 跟踪架构 |Microsoft Docs"
-description: "了解有关 AS2 跟踪架构的详细信息"
+title: "用于 B2B 监视的 AS2 跟踪架构 - Azure 逻辑应用 | Microsoft 文档"
+description: "使用 AS2 跟踪架构通过 Azure 集成帐户中的事务监视 B2B 消息。"
 author: padmavc
 manager: anneta
 editor: 
@@ -12,11 +12,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 5c9fdb5e913199b9a52a8839cbe9a1da7d1acc84
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: b78c42b14005b9bcedbc29216541495fd19c64a5
 
 
 ---
@@ -139,6 +139,6 @@ ms.openlocfilehash: 5c9fdb5e913199b9a52a8839cbe9a1da7d1acc84
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

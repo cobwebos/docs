@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9316339551fdc6b8b266886b120fea5d7c1ef28f
+ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
+ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
 
 
 ---
@@ -27,23 +27,28 @@ ms.openlocfilehash: 9316339551fdc6b8b266886b120fea5d7c1ef28f
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。 这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡，选择“通过面向 Internet 的终结点限制访问”。
+
    ![通过面向 Internet 的终结点限制访问][1]
 2. 这将打开“通过面向 Internet 的终结点限制访问”边栏选项卡。 此边栏选项卡列出了具有潜在安全问题的入站规则的虚拟机 (VM)。 选择 VM。
+
    ![选择 VM][2]
 3. “NSG”边栏选项卡显示网络安全组信息、相关入站规则，以及相关联的 VM。 选择“编辑入站规则”以继续进行编辑入站规则。
+
    ![“网络安全组”边栏选项卡][3]
 4. 在“入站安全规则”边栏选项卡中，选择要编辑的入站规则。 在此示例中，选择“AllowWeb”。
+
    ![入站安全规则][4]
-   
+
    请注意，还可以选择“默认规则”以查看所有 NSG 都包含的默认规则集。 默认规则无法删除，但由于给它们分配的优先级较低，可以用创建的规则来重写它们。 详细了解[默认规则](../virtual-network/virtual-networks-nsg.md#default-rules)。
+
    ![默认规则][5]
 5. 在“AllowWeb”边栏选项卡中，编辑入站规则的属性，以便**源**是 IP 地址或 IP 地址块。 若要了解有关的入站规则的属性的详细信息，请参阅 [NSG 规则](../virtual-network/virtual-networks-nsg.md#nsg-rules)。
-   
+
    ![编辑入站规则][6]
 
 ## <a name="see-also"></a>另请参阅
@@ -72,6 +77,6 @@ ms.openlocfilehash: 9316339551fdc6b8b266886b120fea5d7c1ef28f
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

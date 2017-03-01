@@ -97,9 +97,10 @@
 ##### [示例应用程序](virtual-networks-sample-app.md)
 
 ## 配置
-### 加速网络
+### 适用于 VM 的加速网络
 #### [Azure 门户](virtual-network-accelerated-networking-portal.md)
 #### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### [优化 VM 网络吞吐量](virtual-network-optimize-network-bandwidth.md)
 ### 访问控制列表
 #### [经典门户](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
@@ -110,17 +111,19 @@
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [日志](virtual-network-nsg-manage-log.md)
-#### 故障排除
-##### [门户](virtual-network-nsg-troubleshoot-portal.md)
-##### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
-### 路由故障排除
-#### [门户](virtual-network-routes-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### 虚拟机
 #### [查看和修改主机名](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [将 VM 移到其他子网](virtual-networks-move-vm-role-to-subnet.md)
 
-# 参考
+## 故障排除
+### 网络安全组
+#### [门户](virtual-network-nsg-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
+### 路由
+#### [门户](virtual-network-routes-troubleshoot-portal.md)
+#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
+
+# 引用
 ## [PowerShell (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
 ## [PowerShell（经典）](https://msdn.microsoft.com/library/mt270335(v=azure.300))
 ## [Azure CLI](/cli/azure/)
@@ -145,6 +148,6 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

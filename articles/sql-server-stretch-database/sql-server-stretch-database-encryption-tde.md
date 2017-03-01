@@ -1,5 +1,5 @@
 ---
-title: "为 Azure 上的 SQL Server Stretch Database 启用透明数据加密 (TDE) | Microsoft 文档"
+title: "为 Stretch Database 启用透明数据加密 - Azure | Microsoft Docs"
 description: "为 Azure 上的 SQL Server Stretch Database 启用透明数据加密 (TDE)"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
-ms.author: douglaslMS
+ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 12b91dddb976a65a642fddc3610f1551e330154f
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: 12b91dddb976a65a642fddc3610f1551e330154f
 > [!div class="op_single_selector"]
 > * [Azure 门户](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
-> 
-> 
+>
+>
 
 透明数据加密 (TDE) 无需更改应用程序，即可对静止的数据库、关联的备份和事务日志执行实时加密和解密，帮助防止恶意活动的威胁。
 
@@ -61,6 +61,6 @@ TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

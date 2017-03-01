@@ -47,7 +47,7 @@ ms.openlocfilehash: 6e5ccae8837491e042b85ba4b7d42227e194cb94
 2. 单击“Runbook”  磁贴打开 Runbook 的列表。<br> ![Runbook 控制](media/automation-first-runbook-graphical/runbooks-control.png)
 3. 通过单击“添加 Runbook”按钮，然后单击“创建新 Runbook”，创建一个新 Runbook。
 4. 将该 Runbook 命名为 *MyFirstRunbook-Graphical*。
-5. 在本示例中，我们要创建“图形 Runbook”，因此应选择“图形”作为“Runbook 类型”[](automation-graphical-authoring-intro.md)。<br> ![新建 Runbook](media/automation-first-runbook-graphical/create-new-runbook.png)<br>
+5. 在本示例中，我们要创建“图形 Runbook”，因此应选择“图形”作为 [“Runbook 类型”](automation-graphical-authoring-intro.md) 。<br> ![新建 Runbook](media/automation-first-runbook-graphical/create-new-runbook.png)<br>
 6. 单击“创建”以创建 Runbook 并打开图形编辑器  。
 
 ## <a name="step-2---add-activities-to-the-runbook"></a>步骤 2 - 向 Runbook 添加活动
@@ -110,7 +110,7 @@ ms.openlocfilehash: 6e5ccae8837491e042b85ba4b7d42227e194cb94
 4. 在画布上选择“AzureRunAsConnection”，然后在“配置控件”窗格的“标签”文本框中键入“获取运行方式连接”。  这是该连接
 5. 在“库”控件的搜索文本框中，键入“Add-AzureRmAccount”。
 6. 将 **将-AzureRmAccount** 添加到画布。<br> ![Add-AzureRMAccount](media/automation-first-runbook-graphical/search-powershell-cmdlet-addazurermaccount.png)
-7. 将鼠标悬停在“获取运行方式连接”上方，直到在该形状的底部显示一个圆圈。  Add-AzureRmAccount。  刚创建的箭头是*链接*。  该 Runbook 一开始会运行“获取运行方式连接”，然后运行 **Add-AzureRmAccount**。<br> ![创建活动之间的链接](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
+7. 将鼠标悬停在“获取运行方式连接”上方，直到在该形状的底部显示一个圆圈。 **Add-AzureRmAccount**。  刚创建的箭头是*链接*。  该 Runbook 一开始会运行“获取运行方式连接”，然后运行 **Add-AzureRmAccount**。<br> ![创建活动之间的链接](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
 8. 在画布上选择“Add-AzureRmAccount”，然后在“配置控件”窗格的“标签”文本框中键入“登录到 Azure”。
 9. 单击“参数”，然后就会显示“活动参数配置”边栏选项卡。
 10. **Add-AzureRmAccount** 有多个参数集，因此需要选择其中一个，然后才能提供参数值。  单击“参数集”，然后选择“ServicePrincipalCertificate”参数集。
@@ -136,8 +136,8 @@ ms.openlocfilehash: 6e5ccae8837491e042b85ba4b7d42227e194cb94
 1. 在“库”控件的搜索文本框中，键入“Start-AzureRm”。
 2. 将 **Start-AzureRmVM** 添加到画布，然后单击并将其拖放到“指定订阅 ID”下面。
 3. 将鼠标悬停在 **Specify Subscription Id** 上方，直到在该形状的底部显示一个圆圈。  单击该圆圈并将箭头拖至 **Start-AzureRmVM**。
-4.  Start-AzureRmVM。  单击“参数”，然后单击“参数集”查看 **Start-AzureRmVM** 的参数集。  **ResourceGroupNameParameterSetName** 参数集。 请注意，**ResourceGroupName** 和“名称”旁边有感叹号。  这表示它们是必需的参数。  另请注意，两者都需要字符串值。
-5.  ResourceGroupName。  选择“PowerShell 表达式”作为“数据源”，然后键入带双引号的虚拟机名称（一开始将用于此 Runbook）。  单击“确定”。<br>![Start-AzureRmVM 名称参数值](media/automation-first-runbook-graphical/runbook-startvm-nameparameter.png)
+4. **Start-AzureRmVM**。  单击“参数”，然后单击“参数集”查看 **Start-AzureRmVM** 的参数集。  **ResourceGroupNameParameterSetName** 参数集。 请注意，**ResourceGroupName** 和“名称”旁边有感叹号。  这表示它们是必需的参数。  另请注意，两者都需要字符串值。
+5. 选择“名称”。  选择“PowerShell 表达式”作为“数据源”，然后键入带双引号的虚拟机名称（一开始将用于此 Runbook）。  单击“确定”。<br>![Start-AzureRmVM 名称参数值](media/automation-first-runbook-graphical/runbook-startvm-nameparameter.png)
 6. 选择“ResourceGroupName”。 使用“PowerShell 表达式”作为“数据源”，然后键入带双引号的资源组名称。  单击“确定”。<br> ![Start-AzureRmVM 参数](media/automation-first-runbook-graphical/startazurermvm-params.png)
 7. 单击“测试”窗格，以便我们可以测试 Runbook。
 8. 单击“启动”以启动测试  。  一旦测试完成后，检查已启动的虚拟机。

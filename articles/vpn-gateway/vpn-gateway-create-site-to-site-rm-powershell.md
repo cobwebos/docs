@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure Resource Manager 和 PowerShell 创建具有站点到站点 VPN 连接的虚拟网络 | Microsoft Docs"
-description: "本文将指导你完成使用资源管理器部署模型创建 VNet 并使用 S2S VPN 网关连接将其连接到你的本地网络。"
+title: "将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：PowerShell | Microsoft 文档"
+description: "通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤将帮助你使用 PowerShell 创建跨界站点到站点 VPN 网关连接。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: fcc2fda5-4493-4c15-9436-84d35adbda8e
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/14/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: e2c1a99a23f8d2d8ceb1fd8a9fe3c0e86abc0b02
+ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
+ms.openlocfilehash: dad78df8d841dd1d5e014a902fa541044743f7e4
 
 
 ---
-# <a name="create-a-vnet-with-a-site-to-site-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点连接的 VNet
+# <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 > [!div class="op_single_selector"]
-> * [资源管理器 - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Resource Manager - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [经典 - 经典门户](vpn-gateway-site-to-site-create.md)
 >
@@ -31,7 +31,7 @@ ms.openlocfilehash: e2c1a99a23f8d2d8ceb1fd8a9fe3c0e86abc0b02
 
 本文逐步讲解如何使用 Azure Resource Manager 部署模型创建一个虚拟网络和一个连接到本地网络的站点到站点 VPN 网关连接。 站点到站点连接可以用于跨界和混合配置。
 
-![站点到站点示意图](./media/vpn-gateway-create-site-to-site-rm-powershell/s2srmps.png "site-to-site")
+![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-connection-diagram.png)
 
 ### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>用于站点到站点连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -205,6 +205,6 @@ VPN 连接有几种不同的验证方式。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

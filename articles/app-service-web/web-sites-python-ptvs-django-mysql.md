@@ -4,7 +4,7 @@ description: "了解如何使用 Python Tools for Visual Studio 来创建在 MyS
 services: app-service\web
 documentationcenter: python
 author: huguesv
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c60a50b5-8b5e-4818-a442-16362273dabb
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 07/07/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 759441c5d64ee59f13d50eb415fbaa884dd4821a
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1c29cfc0a5b6361a7f526c37d5421ee4be3fe2c1
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 759441c5d64ee59f13d50eb415fbaa884dd4821a
 > [!NOTE]
 > 本教程中所包含的信息在下面的视频中也有提供：
 > 
-> [PTVS 2.1：具有 MySQL][video] 的 Django 应用
+> [PTVS 2.1：具有 MySQL 的 Django 应用][video]
 > 
 > 
 
@@ -47,7 +48,7 @@ ms.openlocfilehash: 759441c5d64ee59f13d50eb415fbaa884dd4821a
 <!-- This note should not render as part of the the previous include. -->
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要信用卡，也无需做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要信用卡，也无需做出承诺。
 > 
 > 
 
@@ -55,7 +56,7 @@ ms.openlocfilehash: 759441c5d64ee59f13d50eb415fbaa884dd4821a
 在此部分中，你将使用样本模板创建 Visual Studio 项目。 你将创建虚拟环境并安装所需软件包。 你将创建一个使用 sqlite 的本地数据库。 然后你将在本地运行应用程序。
 
 1. 在 Visual Studio 中，选择“文件”“新建项目”。
-2. 可以从“Python”“示例”下面获取“Python Tools 2.2 for Visual Studio 示例 VSIX”[]中的项目模板。  ，然后单击“确定”创建项目。
+2. 可以从“Python”“示例”下面获取[Python Tools 2.2 for Visual Studio 示例 VSIX]中的项目模板。  ，然后单击“确定”创建项目。
    
     ![新建项目对话框](./media/web-sites-python-ptvs-django-mysql/PollsDjangoNewProject.png)
 3. 系统将提示您安装外部软件包。 选择 **安装到虚拟环境**。
@@ -175,10 +176,5 @@ ms.openlocfilehash: 759441c5d64ee59f13d50eb415fbaa884dd4821a
 [云服务项目]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Django 文档]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
-[视频]: http://youtu.be/oKCApIrS0Lo
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[video]: http://youtu.be/oKCApIrS0Lo
 

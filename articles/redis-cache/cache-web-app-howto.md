@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/19/2016
+ms.date: 01/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 5385e8a33466020dd89eaa843ece0ca8d1f31936
-ms.openlocfilehash: c6166484fb132395e7c06d695a6a03a7a628b56a
+ms.sourcegitcommit: 8d1b9293a0b3958d0f478b6a0b6816b8d534883d
+ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
 
 
 ---
@@ -65,7 +65,7 @@ ms.openlocfilehash: c6166484fb132395e7c06d695a6a03a7a628b56a
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 1. 打开 Visual Studio，然后依次单击“文件”、“新建”、“项目”。
-2. 展开“模板”列表中的“Visual C#”节点，选择“云”，然后单击“ASP.NET Web 应用程序”。 确保选中“.NET Framework 4.5.2”  。  在“名称”框中键入“ContosoTeamStats”，然后单击“确定”。
+2. 展开“模板”列表中的“Visual C#”节点，选择“云”，然后单击“ASP.NET Web 应用程序”。 确保选中“.NET Framework 4.5.2”或更高版本。  在“名称”框中键入“ContosoTeamStats”，然后单击“确定”。
    
     ![创建项目][cache-create-project]
 3. 选择“MVC”作为项目类型。 清除“在云中托管”复选框。 本教程的后续步骤介绍了[预配 Azure 资源](#provision-the-azure-resources)以及[将应用程序发布到 Azure](#publish-the-application-to-azure)。 勾选“在云中托管”，即可通过 Visual Studio 预配应用服务 Web 应用，如需此方面的示例，请参阅[配合 ASP.NET 和 Visual Studio 使用 Azure 应用服务中的 Web 应用入门](../app-service-web/web-sites-dotnet-get-started.md)。
@@ -852,6 +852,6 @@ ms.openlocfilehash: c6166484fb132395e7c06d695a6a03a7a628b56a
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -3,30 +3,25 @@ title: "使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故
 description: "使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: a9d184a4-09e0-4f41-b364-40425f68f430
 ms.service: sql-database
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 11/22/2016
-ms.author: sashan;carlrab
+ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bba23c13ec710e23f4d40be5ac33af919afe432c
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: b0180a9f32e1176667fe8e33a4151b2b70956adc
 
 
 ---
 # <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-geo-replication-failover-portal.md)
-> * [PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 本文介绍了如何使用 [Azure 门户](http://portal.azure.com)为辅助 SQL 数据库启动故障转移。 若要配置异地复制，请参阅[为 Azure SQL 数据库配置异地复制](sql-database-geo-replication-portal.md)。
 
@@ -54,7 +49,7 @@ ms.openlocfilehash: bba23c13ec710e23f4d40be5ac33af919afe432c
 * 若要了解如何使用活动异地复制进行灾难恢复，包括恢复前后步骤和执行灾难恢复演练，请参阅[灾难恢复演练](sql-database-disaster-recovery.md)
 * 有关活动异地复制的 Sasha Nosov 博客文章，请参阅[聚焦异地复制新功能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 * 若要了解如何设计云应用程序以使用活动异地复制，请参阅[设计云应用程序以使用异地复制实现业务连续性](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* 若要了解如何通过弹性数据库池使用活动异地复制，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+* 有关将活动异地复制与弹性池配合使用的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 * 有关业务连续性概述，请参阅[业务连续性概述](sql-database-business-continuity.md)
 
 <!--Image references-->
@@ -63,6 +58,6 @@ ms.openlocfilehash: bba23c13ec710e23f4d40be5ac33af919afe432c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

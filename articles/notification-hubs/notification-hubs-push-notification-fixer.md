@@ -4,7 +4,7 @@ description: "有关如何在 Azure 通知中心诊断常见问题的指南。"
 services: notification-hubs
 documentationcenter: Mobile
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 844c86a762d861f87422740c1d4d6d4f342ee728
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b0b067f02f02f722534238891f7412153635df80
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -230,7 +231,7 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 [模板指南]: https://msdn.microsoft.com/library/dn530748.aspx 
 [APNS 指南]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW4
 [GCM 指南]: http://developer.android.com/google/gcm/adv.html
-[导出/导入注册]: http://msdn.microsoft.com/library/dn790624.aspx
+[Export/Import Registrations]: http://msdn.microsoft.com/library/dn790624.aspx
 [服务总线资源管理器]: http://msdn.microsoft.com/library/dn530751.aspx
 [服务总线资源管理器代码]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
 [VS 服务器资源管理器概述]: http://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx 
@@ -239,10 +240,5 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 [EnableTestSend 功能]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx
 [以编程方式遥测访问]: http://msdn.microsoft.com/library/azure/dn458823.aspx
 [通过 API 示例遥测访问]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

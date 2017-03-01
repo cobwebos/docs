@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 97834f5d3b9bf466f867d5cc7bcaa825983b252f
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: 4c22b52d1c86fefbccd452967c6250fdecaac6dd
 
 
 ---
@@ -164,7 +164,7 @@ ms.openlocfilehash: 97834f5d3b9bf466f867d5cc7bcaa825983b252f
 
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 
 1. 在“获取临时密码”对话框页上，单击“创建”。
@@ -238,6 +238,6 @@ ms.openlocfilehash: 97834f5d3b9bf466f867d5cc7bcaa825983b252f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

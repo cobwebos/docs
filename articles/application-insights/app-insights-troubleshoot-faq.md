@@ -1,5 +1,5 @@
 ---
-title: "有关 Application Insights 的疑难解答和问题"
+title: "有关 Azure Application Insights 的疑难解答和问题 | Microsoft Docs"
 description: "Azure Application Insights 中有些内容不明白或不正常工作？ 试试这里。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: e066a7fc671399ba44bec35a2ea860fccddb4cc5
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
 *我在设置以下内容时遇到问题：*
 
 * [.NET 应用](app-insights-asp-net-troubleshoot-no-data.md)
-* [监视已经在运行的应用](app-insights-monitor-performance-live-website-now.md#troubleshooting)
+* [监视已经在运行的应用](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
 * [Azure 诊断](app-insights-azure-diagnostics.md)
 * [Java Web 应用](app-insights-java-troubleshoot.md)
 * [其他平台](app-insights-platforms.md)
@@ -36,42 +36,38 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
 * [设置 Java 服务器](app-insights-java-agent.md)
 
 ## <a name="can-i-use-application-insights-with-"></a>是否可以将 Application Insights 用于...？
-[请参阅平台][平台]
+[更多平台][platforms]
 
 ## <a name="is-it-free"></a>是否免费？
-* 是，前提是选择免费[定价层](app-insights-pricing.md)。 你得到大部分功能和优厚的数据配额。
-* 必须提供信用卡数据才能注册 Microsoft Azure，但不会收取任何费用，除非使用其他付费 Azure 服务或明确升级到付费层。
-* 如果应用发送的数据超出免费层的每月配额，它将停止记录。 如果发生此情况，可选择开始付费，或等待配额在月末重置。
-* 基本使用情况和会话数据不受配额限制。
-* 还有 30 天的免费试用，在此期间免费获取付费功能。
-* 每个应用程序资源都有单独的配额，并且其定价层的设置独立于任何其他资源。
 
-#### <a name="what-do-i-get-if-i-pay"></a>如果付费，能得到什么？
-* 更大的[每月数据配额](https://azure.microsoft.com/pricing/details/application-insights/)。
-* 为“超额”付费的选项，用于继续收集超出每月配额的数据。 如果数据超出配额，将按每 Mb 收费。
-* [连续导出](app-insights-export-telemetry.md)。
+是的，对于实验用途。 在基本定价计划中，应用程序可以发送一些每月免费数据量。 免费的限额足以满足开发和为少量用户发布应用的需求。 可以设置上限，以防止所使用的数据量超出指定数据量。
+
+需要使用企业计划来获取某些功能，如“连续导出”。 这会产生每日的费用。
+
+[阅读定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
+
 
 ## <a name="a-nameq14awhat-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Application Insights 在我的项目中修改哪些内容？
 详细信息取决于项目类型。 对于 Web 应用程序：
 
 * 将这些文件添加到项目：
-  
+
   * ApplicationInsights.config。
   * ai.js
 * 安装以下 NuGet 包：
-  
+
   * *Application Insights API* - 核心 API
   * *适用于 Web 应用程序 的 Application Insights API* - 用于从服务器发送遥测
   * *适用于 JavaScript 应用程序的 Application Insights API* - 用于从客户端发送遥测
-    
+
     这些包包括以下程序集：
   * Microsoft.ApplicationInsights
   * Microsoft.ApplicationInsights.Platform
 * 将项目插入：
-  
+
   * Web.config
   * packages.config
-* （仅限新项目 - 如果将 [Application Insights 添加到现有项目][启动]，则必须手动执行此操作。）在客户端和服务器代码中插入代码片段，以使用 Application Insights 资源 ID 初始化它们。 例如，在 MVC 应用中，代码插入到主页 Views/Shared/_Layout.cshtml 中
+* （仅限新项目 - 如果[将 Application Insights 添加到现有项目][start]，则必须手动执行此操作。）在客户端和服务器代码中插入代码片段，以使用 Application Insights 资源 ID 初始化它们。 例如，在 MVC 应用中，代码插入到主页 Views/Shared/_Layout.cshtml 中
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>如何从较早的 SDK 版本升级？
 请参阅[发行说明](app-insights-release-notes.md)了解对应于应用程序类型的 SDK。
@@ -80,7 +76,7 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
 在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
 
 #### <a name="a-namedataahow-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>数据在门户中保留多长时间？ 是否安全？
-看一下[数据保留和隐私][数据]。
+请参阅[数据保留和隐私][data]。
 
 ## <a name="logging"></a>日志记录
 #### <a name="a-namepostahow-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>如何在诊断搜索中查看 POST 数据？
@@ -88,13 +84,13 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
 
 ## <a name="security"></a>“安全”
 #### <a name="is-my-data-secure-in-the-portal-how-long-is-it-retained"></a>我的数据在门户中是否安全？ 保留多长时间？
-请参阅[数据保留和隐私][数据]。
+请参阅[数据保留和隐私][data]。
 
 ## <a name="a-nameq17a-have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> 我是否已在 Application Insights 中启用所有内容？
 | 你应看到 | 如何获取 | 为何需要它 |
 | --- | --- | --- |
 | 可用性图表 |[Web 测试](app-insights-monitor-web-app-availability.md) |知道 Web 应用已启动 |
-| 服务器应用性能：响应时间、... |[将 Application Insights 添加到项目](app-insights-asp-net.md)或[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md)（或编写你自己的代码以[跟踪依赖项](app-insights-api-custom-events-metrics.md#track-dependency)） |检测性能问题 |
+| 服务器应用性能：响应时间、... |[将 Application Insights 添加到项目](app-insights-asp-net.md)或[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md)（或编写你自己的代码以[跟踪依赖项](app-insights-api-custom-events-metrics.md#trackdependency)） |检测性能问题 |
 | 依赖项遥测 |[在服务器上安装 AI 状态监视器](app-insights-monitor-performance-live-website-now.md) |诊断数据库或其他外部组件问题 |
 | 获取异常的堆栈跟踪 |[在代码中插入 TrackException 调用](app-insights-search-diagnostic-logs.md#exceptions)（但有些会自动报告） |检测和诊断异常 |
 | 搜索日志跟踪 |[添加日志记录适配器](app-insights-search-diagnostic-logs.md) |诊断异常、性能问题 |
@@ -110,13 +106,13 @@ ms.openlocfilehash: 0d860856b4c871c2c8e3622597ba3753bf62cf4f
 
 <!--Link references-->
 
-[数据]: app-insights-data-retention-privacy.md
-[平台]: app-insights-platforms.md
-[启动]: app-insights-overview.md
+[data]: app-insights-data-retention-privacy.md
+[platforms]: app-insights-platforms.md
+[start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

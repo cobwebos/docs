@@ -3,7 +3,7 @@ title: "管理 Azure Active Directory 中的自定义域名 | Microsoft Docs"
 description: "用于管理 Azure Active Directory 中的自定义域的管理概念和操作指南"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: cf3523bd-9ee0-439e-963d-ccea038867b9

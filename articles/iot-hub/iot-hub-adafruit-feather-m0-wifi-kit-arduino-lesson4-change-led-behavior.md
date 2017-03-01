@@ -1,5 +1,5 @@
 ---
-title: "通过 Azure IoT 中心的消息更改 LED 闪烁行为 | Microsoft Docs"
+title: "将 Arduino (C) 连接到 Azure IoT - 第 4 课：修改应用 |Microsoft Docs"
 description: "对消息进行自定义以更改 LED 的亮起和熄灭行为。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: fa69c49028c20ce657d3f0050c98ebaae7a56051
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 3585dfbac8816140c0a62931920aff1a6bf7d540
 
 
 ---
@@ -118,6 +118,6 @@ gulp run --listen
 [on-and-off]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson4/gulp_on_and_off_arduino.png
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure Resource Manager 和 Azure 门户创建具有站点到站点 VPN 连接的虚拟网络 | Microsoft Docs"
-description: "如何使用 Resource Manager 部署模型创建 VNet 并使用 S2S VPN 网关连接将其连接到你的本地网络。"
+title: "将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：门户 | Microsoft 文档"
+description: "通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤将帮助你使用门户创建跨界站点到站点 VPN 网关连接。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 827a4db7-7fa5-4eaf-b7e1-e1518c51c815
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/14/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
-ms.openlocfilehash: f0491df77418c4d7c79beff87302b64ddc3fa9be
+ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
+ms.openlocfilehash: c99788aded849933289555dd133b8146d6b2bdf2
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: f0491df77418c4d7c79beff87302b64ddc3fa9be
 
 本文逐步讲解如何使用 Azure Resource Manager 部署模型和 Azure 门户创建一个虚拟网络和一个连接到本地网络的站点到站点 VPN 网关连接。 站点到站点连接可以用于跨界和混合配置。
 
-![图表](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/s2srmportal.png)
+![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
 ### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>用于站点到站点连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -130,6 +130,6 @@ ms.openlocfilehash: f0491df77418c4d7c79beff87302b64ddc3fa9be
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

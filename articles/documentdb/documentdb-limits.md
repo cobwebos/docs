@@ -13,6 +13,6 @@ DocumentDB 是全局缩放数据库，可对吞吐量和存储进行缩放，以
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

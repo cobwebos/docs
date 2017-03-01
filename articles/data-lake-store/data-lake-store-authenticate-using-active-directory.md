@@ -1,6 +1,6 @@
 ---
-title: "使用 Active Directory 进行 Data Lake Store 身份验证 | Microsoft Docs"
-description: "了解如何使用 Active Directory 进行 Data Lake Store 身份验证"
+title: "使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证 | Microsoft Docs"
+description: "了解如何使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 01/10/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 35cde786bbc091c58f4dcb341cd47ce4c4f4b46c
-ms.openlocfilehash: 02e52c3aba82ab8e3a8b1dc921731c29e505e23e
+ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
+ms.openlocfilehash: dac6c9f3be7b4535f8cb30a9ec0c1e398ca5ff28
 
 
 ---
-# <a name="service-to-serivce-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证
+# <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证
 > [!div class="op_single_selector"]
 > * [服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)
 > * [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
@@ -29,49 +29,20 @@ ms.openlocfilehash: 02e52c3aba82ab8e3a8b1dc921731c29e505e23e
 
 Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写用于 Azure Data Lake Store 或 Azure Data Lake Analytics 的应用程序之前，必须首先决定使用 Azure Active Directory (Azure AD) 对应用程序进行身份验证的方式。 可用的两个主要选项是：
 
-* 最终用户身份验证，以及 
-* 服务到服务身份验证。 
+* 最终用户身份验证 
+* 服务到服务身份验证（本文所述） 
 
 这两个选项都会将 OAuth 2.0 令牌提供给应用程序，此令牌会附加到对 Azure Data Lake Store 或 Azure Data Lake Analytics 作出的每个请求。
 
 本文讨论如何为服务到服务身份验证创建 Azure AD Web 应用程序。 有关最终用户身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
 ## <a name="prerequisites"></a>先决条件
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 订阅 ID。 可从 Azure 门户进行检索。 例如，Data Lake Store 帐户边栏选项卡中提供有此 ID。
-  
-    ![获取订阅 ID](./media/data-lake-store-authenticate-using-active-directory/get-subscription-id.png)
-* Azure AD 域名。 可将鼠标悬停在 Azure 门户右上角进行检索。 在屏幕截图下方，域名为 **contoso.microsoft.com**，括号中的 GUID 是租户 ID。 
-  
-    ![获取 AAD 域](./media/data-lake-store-authenticate-using-active-directory/get-aad-domain.png)
-
-## <a name="service-to-service-authentication"></a>服务到服务身份验证
-如要应用程序自动进行 Azure AD 身份验证而无需最终用户提供凭据，则推荐使用此方式。 只要在凭据有效期（可按年数进行自定义）内，应用程序可对自己进行身份验证。
-
-### <a name="what-do-i-need-to-use-this-approach"></a>使用此方式需要什么？
-* Azure AD 域名。 已在本文的先决条件中列出。
-* Azure AD **web 应用程序**。
-* Azure AD web 应用程序的客户端 ID。
-* Azure AD Web 应用程序的客户端密码。
-* Azure AD Web 应用程序的令牌终结点。
-* 在要使用的 Data Lake Store 文件/文件夹或 Data Lake Analytics 帐户上启用 Azure AD web 应用程序的访问权限。
-
-有关如何创建 Azure AD Web 应用程序、如何按上述要求对其进行配置的说明，请参阅下方的[创建 Active Directory 应用程序](#create-an-active-directory-application)部分。
-
-> [!NOTE]
-> 默认情况下，Azure AD 应用程序配置为使用可从 Azure AD 应用程序中检索的客户端密码。 但是，如果要 Azure AD 应用程序改用证书，必须如[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述，使用 Azure PowerShell 创建 Azure AD Web 应用程序。
-> 
-> 
+* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-an-active-directory-application"></a>创建 Active Directory 应用程序
-本部分介绍如何使用 Azure Active Directory，针对通过 Azure Data Lake Store 进行服务到服务身份验证，创建和配置 Azure AD Web 应用程序。 
+本部分介绍如何使用 Azure Active Directory，针对通过 Azure Data Lake Store 进行服务到服务身份验证，创建和配置 Azure AD Web 应用程序。 请注意，创建“Active Directory 应用程序”是创建服务主体，而不是创建应用或任何代码。
 
 ### <a name="step-1-create-an-azure-active-directory-application"></a>步骤 1：创建 Azure Active Directory 应用程序
-> [!NOTE]
-> 以下步骤使用 Azure 门户。 还可使用 [Azure PowerShell](../resource-group-authenticate-service-principal.md) 或 [Azure CLI](../resource-group-authenticate-service-principal-cli.md).来创建 Azure AD 应用程序。
-> 
-> 
-
 1. 通过[经典门户](https://manage.windowsazure.com/)登录到 Azure 帐户。
 2. 在左侧窗格中选择“**Active Directory**”。
    
@@ -82,7 +53,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 4. 若要查看目录中的应用程序，请单击“**应用程序”**。
    
      ![查看应用程序](./media/data-lake-store-authenticate-using-active-directory/view-applications.png)
-5. 如果你之前尚未在该目录中创建应用程序，则应该会看到与下面类似的图像。 单击“添加应用程序”
+5. 如果之前尚未在该目录中创建应用程序，则应该会看到与下图类似的情形。 单击“添加应用程序”
    
      ![添加应用程序](./media/data-lake-store-authenticate-using-active-directory/create-application.png)
    
@@ -128,28 +99,34 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
    
     ![租户 ID](./media/data-lake-store-authenticate-using-active-directory/save-tenant.png)
 
+#### <a name="note-down-the-following-properties-that-you-will-need-for-the-next-steps"></a>记下执行后续步骤需要用到的以下属性：
+1. 上述步骤 1.6 中创建的 Web 应用程序 ID 的名称
+2. 上述步骤 2.2 中检索的客户端 ID
+3. 上述步骤 2.4 中创建的密钥
+4. 上述步骤 2.5 中检索的租户 ID
+
 ### <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder-only-for-service-to-service-authentication"></a>步骤 3：将 Azure AD 应用程序分配给 Azure Data Lake Store 帐户文件或文件夹（仅适用于服务到服务身份验证）
 1. 登录新的 [Azure 门户](https://portal.azure.com)，打开要与之前创建的 Azure Active Directory 应用程序相关联的 Azure Data Lake Store 帐户。
 2. 在 Data Lake Store 帐户边栏选项卡中，单击“数据资源管理器” 。
    
-    ![在 Azure Data Lake Store 帐户中创建目录](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "Create directories in Data Lake account")
+    ![在 Data Lake Store 帐户中创建目录](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "在 Data Lake 帐户中创建目")
 3. 在“数据资源管理器”边栏选项卡中，单击要为其提供 Azure AD 应用程序访问权限的文件或文件夹，然后单击“访问”。 若要配置对文件的访问，必须在“文件预览”边栏选项卡中单击“访问”。
    
-    ![对 Data Lake 文件系统设置 ACL](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "Set ACLs on Data Lake file system")
+    ![对 Data Lake 文件系统设置 ACL](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "对 Data Lake 文件系统设置 ACL")
 4. “访问”边栏选项卡会列出已分配给根的标准访问和自定义访问。 单击“添加”图标添加自定义级别的 ACL。
    
-    ![列出标准及自定义访问权限](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "List standard and custom access")
+    ![列出标准及自定义访问权限](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "列出标准及自定义访问权限")
 5. 单击“添加”图标打开“添加自定义访问”边栏选项卡。 在此边栏选项卡中，单击“选择用户或组”，然后在“选择用户或组”边栏选项卡中，查找之前创建的 Azure Active Directory 应用程序。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击要添加的组，然后单击“选择”。
    
-    ![添加组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Add a group")
+    ![添加组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "添加组")
 6. 单击“选择权限”，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击 **“确定”**。
    
-    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Assign permissions to group")
+    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "分配权限给组")
    
     有关 Data Lake Store 中的权限和默认/访问 ACL 的详细信息，请参阅 [Data Lake Store 中的访问控制](data-lake-store-access-control.md)。
 7. 在“添加自定义访问”边栏选项卡中，单击“确定”。 “访问”边栏选项卡中会列出新添加的组以及相关的权限。
    
-    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Assign permissions to group")    
+    ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")    
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java SDK 等在创作的客户端应用程序中收集了所需的信息。现在可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。
@@ -157,9 +134,15 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 * [Get started with Azure Data Lake Store using .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [通过 Java SDK 实现 Azure Data Lake Store 入门](data-lake-store-get-started-java-sdk.md)
 
+本文介绍了让应用程序的用户主体开始正常运行所需的基本步骤。 可查看以下文章获取更多的信息：
+* [使用 PowerShell 创建服务主体](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [使用证书身份验证进行服务主体身份验证](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal#create-service-principal-with-certificate)
+* [Azure AD 身份验证的其他方法](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-authentication-scenarios)
 
 
 
-<!--HONumber=Nov16_HO5-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,13 +15,13 @@ ms.workload: tbd
 ms.date: 11/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1022f5a2bbb9b61ce7d941de9e2a5582db22b91b
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 925411deed422af00b10ff6787606f5039a5fb23
 
 
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
-[Application Insights][启动] 可以监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和用法。 通过收到的有关应用在现实中的性能和有效性的反馈，你可以针对每个开发生命周期确定合理的设计方向。
+[Application Insights][start] 可以监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，你可以针对每个开发生命周期确定合理的设计方向。
 
 ![示例](./media/app-insights-cloudservices/sample.png)
 
@@ -56,7 +56,7 @@ ms.openlocfilehash: 1022f5a2bbb9b61ce7d941de9e2a5582db22b91b
 ## <a name="plan-resources-and-resource-groups"></a>规划资源和资源组
 应用中的遥测数据将在 Application Insights 类型的 Azure 资源中存储、分析和显示。 
 
-每个资源属于一个资源组。 资源组用于管理成本、向团队成员授予访问权限，以及在单个协调式事务中部署更新。 例如，可以[编写一个脚本](../resource-group-template-deploy.md)，通过一个操作部署 Azure 云服务及其 Application Insights 监视资源。
+每个资源属于一个资源组。 资源组用于管理成本、向团队成员授予访问权限，以及在单个协调式事务中部署更新。 例如，可以[编写一个脚本](../azure-resource-manager/resource-group-template-deploy.md)，通过一个操作部署 Azure 云服务及其 Application Insights 监视资源。
 
 ### <a name="resources-for-components"></a>组件的资源
 建议的方案是为应用程序的每个组件（即，每个 Web 角色和辅助角色）单独创建一个资源。 可以单独分析每个组件，但也可以创建[仪表板](app-insights-dashboards.md)，将所有组件中的关键图表汇总到一起，以便可以统一比较和监视资源。 
@@ -77,7 +77,7 @@ ms.openlocfilehash: 1022f5a2bbb9b61ce7d941de9e2a5582db22b91b
 ## <a name="create-an-application-insights-resource-for-each-role"></a>为每个角色创建 Application Insights 资源
 如果决定单独为每个角色创建资源 - 也许是为每个生成配置单独创建资源集 - 最简单的方法是在 Application Insights 门户中创建这些资源。 （如果要创建大量的资源，可以[将创建过程自动化](app-insights-powershell.md)。
 
-1. 在 [Azure 门户][门户]中创建新的 Application Insights 资源。 对于应用程序类型，选择 ASP.NET 应用。 
+1. 在 [Azure 门户][portal]中，创建新的 Application Insights 资源。 对于应用程序类型，选择 ASP.NET 应用。 
    
    ![依次单击“新建”、“Application Insights”](./media/app-insights-cloudservices/01-new.png)
 2. 请注意，每个资源都由检测密钥标识。 以后若要手动配置或验证 SDK 的配置，可能需要使用该检测密钥。
@@ -135,10 +135,10 @@ ms.openlocfilehash: 1022f5a2bbb9b61ce7d941de9e2a5582db22b91b
 添加更多遥测数据 - 请参阅以下部分 - 然后发布应用以获取实时诊断和用法反馈。 
 
 #### <a name="no-data"></a>没有数据？
-* 打开“搜索”[diagnostic]磁贴，查看每个事件。[]
+* 打开[“搜索”][diagnostic]磁贴，查看各个事件。
 * 使用应用程序打开不同的页面，以生成一些遥测。
 * 请等待几秒钟，然后单击“刷新”。
-* 请参阅[故障排除][问题与解答]。
+* 请参阅[故障排除][qna]。
 
 ## <a name="view-azure-diagnostic-events"></a>查看 Azure 诊断事件
 在何处可以找到诊断信息：
@@ -212,10 +212,10 @@ Application Insights 提供丰富的诊断体验，可让用户查明请求失�
 ![关联的遥测数据](./media/app-insights-cloudservices/bHxuUhd.png)
 
 ## <a name="client-telemetry"></a>客户端遥测数据
-[将 JavaScript SDK 添加到网页][客户端]，以获取基于浏览器的遥测数据（例如页面视图计数、页面加载时间、脚本异常），并在页面脚本中编写自定义遥测。
+[将 JavaScript SDK 添加到网页][client]，以获取基于浏览器的遥测数据（例如页面视图计数、页面加载时间、脚本异常），并允许你在页面脚本中编写自定义遥测。
 
 ## <a name="availability-tests"></a>可用性测试
-[设置 Web 测试][可用性]，确保应用程序处于活动状态且能够做出响应。
+[设置 Web 测试][availability]，确保应用程序处于活动状态且能够做出响应。
 
 ## <a name="display-everything-together"></a>统一显示所有信息
 若要获取系统的整体视图，可以将关键监视图表统合到一个[仪表板](app-insights-dashboards.md)中。 例如，可以固定每个角色的请求和失败次数。 
@@ -228,7 +228,7 @@ Application Insights 提供丰富的诊断体验，可让用户查明请求失�
 [该示例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)监视包含一个 Web 角色和两个辅助角色的服务。
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>在 Azure 云服务中运行时发生“找不到方法”异常
-生成的项目是否面向 .NET 4.6？ Azure 云服务角色不能现成地支持 4.6。 请先[在每个角色上安装 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md)，再运行应用。
+生成的项目是否面向 .NET 4.6？ Azure 云服务角色不能现成地支持&4;.6。 请先[在每个角色上安装 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md)，再运行应用。
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Azure 诊断配置为向 Application Insights 发送数据](app-insights-azure-diagnostics.md)
@@ -236,18 +236,18 @@ Application Insights 提供丰富的诊断体验，可让用户查明请求失�
 * [自动化 Azure 诊断](app-insights-powershell-azure-diagnostics.md)
 
 [api]: app-insights-api-custom-events-metrics.md
-[可用性]: app-insights-monitor-web-app-availability.md
-[Azure]: app-insights-azure.md
-[客户端]: app-insights-javascript.md
-[诊断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[azure]: app-insights-azure.md
+[client]: app-insights-javascript.md
+[diagnostic]: app-insights-diagnostic-search.md
 [netlogs]: app-insights-asp-net-trace-logs.md
-[门户]: http://portal.azure.com/
-[问题与解答]: app-insights-troubleshoot-faq.md
+[portal]: http://portal.azure.com/
+[qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[启动]: app-insights-overview.md 
+[start]: app-insights-overview.md 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

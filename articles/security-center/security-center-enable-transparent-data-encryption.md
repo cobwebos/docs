@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6944454190d2744cd7cd9a25d9876c5c7427b5f8
+ms.sourcegitcommit: f532f1aea9b8c4be6707862be4001099aa3c1d32
+ms.openlocfilehash: 2a2963affdbff3710ad08f86c6ed4e6304335559
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: 6944454190d2744cd7cd9a25d9876c5c7427b5f8
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡中，选择“启用透明数据加密”。
@@ -37,9 +37,9 @@ ms.openlocfilehash: 6944454190d2744cd7cd9a25d9876c5c7427b5f8
    ![选择要启用 TDE 的 SQL DB][2]
 3. 在“透明数据加密”边栏选项卡上，在数据加密下选择“开启”，然后边栏选项卡顶部功能区中选择“保存”。
    ![打开 TDE][3]
-   
+
    在所选 SQL 数据库上启用 TDE 后，“加密状态”将更改为“已加密”。    
-   
+
    ![加密状态][4]
 
 ## <a name="see-also"></a>另请参阅
@@ -66,6 +66,6 @@ ms.openlocfilehash: 6944454190d2744cd7cd9a25d9876c5c7427b5f8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

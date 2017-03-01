@@ -13,31 +13,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3d9cceb28de1cfd43a2d2de79de3a59517908ec9
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: a35bc89044ebe8ea8e4a0e4a883c30fb8e8d879a
 
 
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习工作室
 若要在机器学习工作室中，使用自己的数据来开发和训练预测分析，可执行以下操作： 
 
-* 事先从硬盘上某**本地文件**上传数据，以便在工作区中创建数据集模块。  
-* 使用[导入数据][import-data]模块运行试验时，从多个**联机数据源**之一访问数据。 
-* 使用保存为**数据集**的另一个 Azure 机器学习试验中的数据。 
+* 在从硬盘上传数据之前，先从**本地文件**上传数据，以便在你的工作区中创建数据集模块
+* 使用[导入数据][import-data]模块运行试验时，从多个**联机数据源**之一访问数据 
+* 使用保存为数据集的另一个 Azure 机器学习**试验**中的数据
+* 使用本地 **SQL Server 数据库**中的数据
+
+每个选项都在下面菜单中的某一个主题进行了描述。 这些主题介绍了如何从各种数据源导入数据，以便在机器学习工作室中使用。 
 
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
-每个选项都在上面菜单中的某一个主题进行了描述。 这些主题介绍了如何从各种数据源导入数据，以便在机器学习工作室中使用。 
-
 > [!NOTE]
-> 机器学习工作室中提供有许多可用于此目的的示例数据集。 若要了解这些示例数据集，请参阅[在 Azure 机器学习工作室中使用示例数据集](machine-learning-use-sample-datasets.md)。
+> 机器学习工作室中提供有许多可用于训练数据的示例数据集。 若要了解这些示例数据集，请参阅[在 Azure 机器学习工作室中使用示例数据集](machine-learning-use-sample-datasets.md)。
 > 
 > 
 
-此介绍性主题还说明了如何准备数据以在机器学习工作室中使用，并描述了受支持的数据格式和数据类型。 
+此介绍性主题还讨论了如何准备数据以在机器学习工作室中使用，并描述了受支持的数据格式和数据类型。 
 
 > [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 > 
@@ -50,7 +51,7 @@ ms.openlocfilehash: 3d9cceb28de1cfd43a2d2de79de3a59517908ec9
 
 但是，机器学习工作室中有些模块可在你的试验内启用某些数据操作。 根据要使用的机器学习算法，可能需要确定处理数据结构问题（如缺失值和稀疏数据）的方法，并且提供有模块帮助处理这些问题。 请查看模块控制板的“数据转换”部分，了解执行这些函数的模块。
 
-通过右键单击输出端口，任何时候都可在试验中查看或下载模块生成的数据。 因模块不同，可能有不同的下载选项可用，或能够在机器学习工作室的 Web 浏览器中查看数据。
+通过单击输出端口，任何时候都可在试验中查看或下载模块生成的数据。 因模块不同，可能有不同的下载选项可用，或能够在机器学习工作室的 Web 浏览器中显示数据。
 
 ## <a name="data-formats-and-data-types-supported"></a>受支持的数据格式和数据类型
 可将大量数据类型导入试验，具体取决于用于导入数据的机制以及数据的来源：
@@ -97,6 +98,6 @@ ms.openlocfilehash: 3d9cceb28de1cfd43a2d2de79de3a59517908ec9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

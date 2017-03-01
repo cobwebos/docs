@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
+ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
+ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
 ## <a name="ingest-data-into-data-lake-store"></a>引入数据到 Data Lake Store
 本部分重点介绍不同的数据源和引入数据到 Data Lake Store 帐户的不同方式。
 
-![引入数据到 Data Lake Store](./media/data-lake-store-data-scenarios/ingest-data.png "Ingest data into Data Lake Store")
+![将数据引入 Data Lake Store](./media/data-lake-store-data-scenarios/ingest-data.png "将数据引入 Data Lake Store")
 
 ### <a name="ad-hoc-data"></a>临时数据
 这表示可用于形成大数据应用程序原型的较小数据集。 存在数种不同的引入临时数据的方式，具体取决于数据源。
@@ -50,7 +50,7 @@ ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
 
 * [Azure 流分析](../stream-analytics/stream-analytics-data-lake-output.md) - 可使用 Azure Data Lake Store 输出将引入事件中心的事件写入到 Azure Data Lake。
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) - 可直接将数据从 Storm 群集写入到 Data Lake Store。
-* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost) – 可接收事件中心内的事件，然后使用 [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) 将其写入到 Data Lake Store。
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – 可接收事件中心内的事件，然后使用 [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) 将其写入到 Data Lake Store。
 
 ### <a name="relational-data"></a>关系数据
 也可从关系数据库中获得数据。 在一个时间段期间，关系数据库会收集大量数据，这些数据如果通过大数据管道处理，可提供重要见解。 可使用以下工具将这类数据移动到 Data Lake Store。
@@ -91,14 +91,14 @@ ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
 * **数据“离线上传”**。 如果由于任何原因而导致使用 Azure ExpressRoute 不可行，可使用 [Azure 导入/导出服务](../storage/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)或 [AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)从 Azure 存储 Blob 复制数据到 Data Lake Store。
 
   > [!NOTE]
-  > 使用此导入/导出服务时，发送到 Azure 数据中心的磁盘上的文件大小不可大于 200 GB。
+  > 使用此导入/导出服务时，发送到 Azure 数据中心的磁盘上的文件大小不可大于 195 GB。
   >
   >
 
 ## <a name="process-data-stored-in-data-lake-store"></a>处理存储在 Data Lake Store 中的数据
 数据在 Data Lake Store 中可用后，可使用支持的大数据应用程序在此数据上运行分析。 目前，可使用 Azure HDInsight 和 Azure Data Lake Analytics 在存储在 Data Lake Store 中的数据上运行数据分析。
 
-![分析 Data Lake Store 中的数据](./media/data-lake-store-data-scenarios/analyze-data.png "Analyze data in Data Lake Store")
+![分析 Data Lake Store 中的数据](./media/data-lake-store-data-scenarios/analyze-data.png "分析 Data Lake Store 中的数据")
 
 可查看以下示例。
 
@@ -111,7 +111,7 @@ ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
 * 将数据移动到其他存储库以便连接现有数据处理管道。 例如，用户可能希望从 Data Lake Store 将数据移动到 SQL 数据库 或本地 SQL 服务器。
 * 构建应用程序原型时，下载数据到本地计算机以在 IDE 中进行处理。
 
-![从 Data Lake Store 传出数据](./media/data-lake-store-data-scenarios/egress-data.png "Egress data from Data Lake Store")
+![从 Data Lake Store 传出数据](./media/data-lake-store-data-scenarios/egress-data.png "从 Data Lake Store 传出数据")
 
 这种情况下，可使用以下任何选项：
 
@@ -128,13 +128,13 @@ ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
 ## <a name="visualize-data-in-data-lake-store"></a>可视化 Data Lake Store 中的数据
 可使用混合服务创建 Data Lake Store 中存储的数据的可视化表示形式。
 
-![可视化 Data Lake Store 中的数据](./media/data-lake-store-data-scenarios/visualize-data.png "Visualize data in Data Lake Store")
+![可视化 Data Lake Store 中的数据](./media/data-lake-store-data-scenarios/visualize-data.png "可视化 Data Lake Store 中的数据")
 
 * 首先通过使用 [Azure 数据工厂从 Data Lake Store 将数据移动到 Azure SQL 数据仓库](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)
 * 之后，可[集成 Power BI 和 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md)来创建数据的可视化表示形式。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

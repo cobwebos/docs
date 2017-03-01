@@ -4,7 +4,7 @@ description: "如何在 Windows Universal 上使用 Engagement API"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: bb501fca-9cfe-4495-81df-b5efd6e0137b
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8a643b01057386722aa73df6fa3937c923c378ef
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -320,10 +321,5 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

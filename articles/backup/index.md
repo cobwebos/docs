@@ -1,13 +1,25 @@
 ---
+title: "Azure 备份文档 - 教程和 API 参考 | Microsoft 文档"
+description: "使用备份文档了解如何备份到云。 查看有关应用程序、Windows 服务器和 Azure 虚拟机备份的教程和视频。"
+services: backup
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: backup
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 4c3a00fe82ec903bcd756e8cd2ef940fc10e8af2
+ms.sourcegitcommit: 4d159b2cec70d9491a562f460629d8efa511d695
+ms.openlocfilehash: 29466a465865dc17350eb4aa70a86f9c973b693a
 
 ---
 #<a name="backup-documentation"></a>备份文档
 
-Azure 备份是一个云服务，可用于在 Microsoft 云中备份（或保护）和还原数据。  Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。  
+了解如何使用云中的 Azure 备份来保护数据，实现长期保留和恢复。 教程、视频和其他文档演示了如何备份数据、应用程序、Windows 服务器和 Azure 虚拟机。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -132,16 +144,10 @@ Azure 备份是一个云服务，可用于在 Microsoft 云中备份（或保护
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/backup.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure 备份文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

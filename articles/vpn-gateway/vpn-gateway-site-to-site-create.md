@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure 经典门户创建具有站点到站点 VPN 网关连接的虚拟网络 | Microsoft Docs"
-description: "创建使用 S2S VPN 网关连接的 VNet，以便通过经典部署模型进行跨界配置和混合配置。"
+title: "将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：经典门户 | Microsoft 文档"
+description: "通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤将帮助你使用经典门户和经典部署模型创建跨界站点到站点 VPN 网关连接。"
 services: vpn-gateway
 documentationcenter: 
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 024ecb29-64de-4ff1-84f1-1a45a8595f0b
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/14/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
-ms.openlocfilehash: b45801d4e6deb25ca8c6af5c3b46de741d4993e0
+ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
+ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
 
 
 ---
-# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-azure-classic-portal"></a>使用 Azure 经典门户创建具有站点到站点连接的 VNet
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal"></a>使用经典门户创建具有站点到站点连接的 VNet
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -31,7 +31,7 @@ ms.openlocfilehash: b45801d4e6deb25ca8c6af5c3b46de741d4993e0
 
 本文介绍了如何使用经典部署模型和经典门户创建虚拟网络和到本地网络的站点到站点 VPN 网关连接。 站点到站点连接可以用于跨界和混合配置。
 
-![站点到站点示意图](./media/vpn-gateway-site-to-site-create/site2site.png "site-to-site")
+![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
 
 ### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>用于站点到站点连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -102,6 +102,6 @@ ms.openlocfilehash: b45801d4e6deb25ca8c6af5c3b46de741d4993e0
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/19/2016
+ms.date: 12/28/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3710f5966889b805b3ea8d2a3fe33fa9ab86c2ec
-ms.openlocfilehash: 5dff369ca32f9f4487684b27c57d2722ab9ad954
+ms.sourcegitcommit: f57c88cbace41af233f542880c6199b3e278700e
+ms.openlocfilehash: c8d893dbac1a4f6cb3f05f857e186bca155e5865
 
 
 ---
@@ -29,22 +29,32 @@ Azure Site Recovery 服务有助于实现业务连续性和灾难恢复 (BCDR) �
 
 请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
-## <a name="unregister-a-configuration-server"></a>取消注册配置服务器
+## <a name="unregister-a-connected-configuration-server"></a>注销已连接的配置服务器
 
-如果将 VMware VM 或 Windows/Linux 物理服务器复制到 Azure，则可将配置服务器从保管库取消注册，如下所示：
+如果将 VMware VM 或 Windows/Linux 物理服务器复制到 Azure，则可从保管库中注销已连接的配置服务器，如下所示：
 
 1. 禁用计算机保护。 在“受保护的项” > “复制的项”中，右键单击计算机 > “删除”。
 2. 取消任何策略的关联。 在“Site Recovery 基础结构” > “对于 VMWare 和物理机” > “复制策略”中，右键单击关联的策略。 右键单击配置服务器 > “取消关联”。
 3. 删除任何其他本地进程或主目标服务器。 在“Site Recovery 基础结构” > “对于 VMWare 和物理机” > “配置服务器”中，右键单击服务器 > “删除”。
 4. 删除配置服务器。
 5. 手动卸载在主目标服务器（单独的服务器或在配置服务器上运行的服务器）上运行的移动服务。
-6. 卸载配置服务器。
-7. 卸载任何其他的进程服务器。
+6. 卸载任何其他的进程服务器。
+7. 卸载配置服务器。
 8. 在配置服务器上，卸载由 Site Recovery 安装的 MySQL 实例。
 9. 在配置服务器的注册表中删除项 ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``。
 
-不管配置服务器是否连接到 Azure，说明都是相同的。
+## <a name="unregister-a-unconnected-configuration-server"></a>注销未连接的配置服务器
 
+如果将 VMware VM 或 Windows/Linux 物理服务器复制到 Azure，则可从保管库中注销未连接的配置服务器，如下所示：
+
+1. 禁用计算机保护。 在“受保护的项” > “复制的项”中，右键单击计算机 > “删除”。 选择“停止管理计算机”。
+2. 删除任何其他本地进程或主目标服务器。 在“Site Recovery 基础结构” > “对于 VMWare 和物理机” > “配置服务器”中，右键单击服务器 > “删除”。
+3. 删除配置服务器。
+4. 手动卸载在主目标服务器（单独的服务器或在配置服务器上运行的服务器）上运行的移动服务。
+5. 卸载任何其他的进程服务器。
+6. 卸载配置服务器。
+7. 在配置服务器上，卸载由 Site Recovery 安装的 MySQL 实例。
+8. 在配置服务器的注册表中删除项 ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``。
 
 ## <a name="unregister-a-connected-vmm-server"></a>取消注册连接的 VMM 服务器
 
@@ -229,6 +239,6 @@ Azure Site Recovery 服务有助于实现业务连续性和灾难恢复 (BCDR) �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

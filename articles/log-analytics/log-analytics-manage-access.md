@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 02/03/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
+ms.sourcegitcommit: 96a971c31f9088b3aa409a85f0679fd3bd5945d1
+ms.openlocfilehash: 4dc1bfa1e385e945c47bbfc5faa776e577ee84b2
 
 
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
-若要管理对 Log Analytics 的访问，需要对工作区执行各种管理任务。 本文提供在使用各种帐户类型管理工作区时可以遵循的最佳实践建议和过程。 工作区实际上是包含帐户信息和帐户简单配置信息的容器。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
+若要管理对 Log Analytics 的访问，需要对工作区执行各种管理任务。 本文提供管理工作区的最佳实践建议和过程。 工作区实际上是包含帐户信息和帐户简单配置信息的容器。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
 
 若要创建工作区，需要：
 
@@ -41,8 +41,9 @@ ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
 * 数据存储的地理位置
 * 计费粒度
 * 数据隔离
+* 配置的作用域
 
-基于上述特征，在以下情况下可能会想要创建多个工作区：
+基于上述特征，在以下情况下可能需要创建多个工作区：
 
 * 贵公司是全球性公司，因数据所有权和合规性需要将数据存储于特定区域。
 * 你正在使用 Azure，并希望通过让工作区与它所管理的 Azure 资源位于同一区域，避免产生出站数据传输费用。
@@ -60,7 +61,7 @@ ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
 
 #### <a name="view-workspace-information-the-azure-portal"></a>在 Azure 门户中查看工作区信息
 
-1. 如果你尚未登录 [Azure 门户](https://portal.azure.com) ，请使用你的 Azure 订阅登录。
+1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
 2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“Log Analytics”。 当你开始键入时，会根据你的输入筛选该列表。 单击“Log Analytics”。  
     ![Azure 中心](./media/log-analytics-manage-access/hub.png)  
 3. 在 Log Analytics 订阅边栏选项卡中选择一个工作区。
@@ -78,15 +79,14 @@ ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
 * 在 Azure 中，可以使用基于角色的访问控制提供对 Azure 订阅和关联 Azure 资源的访问权限。 这些权限也可用于访问 PowerShell 和 REST API。
 * 在 OMS 门户中，仅可访问 OMS 门户，不能访问关联的 Azure 订阅。
 
-如果仅授予用户访问 OMS 门户的权限，但不授予访问门户所链接的 Azure 订阅的权限，则用户无法查看“备份”和 Site Recovery 解决方案磁贴中的数据。
-若要允许所有用户查看这些解决方案中的数据，确保它们至少具备对备份保管库和链接到工作区的 Site Recovery 保管库的**读取者**访问权限。   
+若要查看“备份和站点恢复解决方案”磁贴中的数据，必须拥有对 Azure 订阅（与工作区关联）的管理员或协同管理员权限。   
 
 ### <a name="managing-access-to-log-analytics-using-the-azure-portal"></a>使用 Azure 门户管理对 Log Analytics 的访问
 例如，如果授予用户在 Azure 门户中使用 Azure 权限访问 Log Analytics 工作区的权限，则该用户也可以访问 Log Analytics 门户。 在 Azure 门户中，用户可以在查看 Log Analytics 工作区资源时，通过单击“OMS 门户”任务导航到 OMS 门户。
 
 有关 Azure 门户需记住的一些要点：
 
-* 这不是基于角色的访问控制。 在 Azure 门户中，如果拥有对 Log Analytics 工作区的读者访问权限，则可以使用 OMS 门户更改工作区。 OMS 门户提供管理员、参与者和只读用户的概念。 如果登录所用帐户位于链接到工作区的 Azure Active Directory，则你为 OMS 门户的管理员，否则为参与者。
+* 这不是基于角色的访问控制。 在 Azure 门户中，如果拥有对 Log Analytics 工作区的读者访问权限，则可以使用 OMS 门户更改工作区。 OMS 门户提供管理员、参与者和只读用户的概念。 如果登录时所用帐户位于与工作区关联的 Azure Active Directory，则你为 OMS 门户的管理员，否则为参与者。
 * 通过 http://mms.microsoft.com 登录 OMS 门户时，则默认可看到“选择工作区”列表。 其中仅包含已通过 OMS 门户添加的工作区。 若要查看使用 Azure 订阅可以访问的工作区，需要指定租户作为 URL 的一部分。 例如：
 
   `mms.microsoft.com/?tenant=contoso.com` 租户标识符通常是用于登录的电子邮件地址的最后一部分。
@@ -199,7 +199,7 @@ ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
 8. 单击“确定”。 工作区现已链接到 Azure 帐户。
 
 > [!NOTE]
-> 如果找不到要链接的工作区，则 Azure 订阅无法访问使用 OMS 网站创建的工作区。  需要从 OMS 门户对此帐户授予访问权限。 为此，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
+> 如果找不到要链接的工作区，则 Azure 订阅无法访问使用 OMS 网站创建的工作区。  若要通过 OMS 门户授予此帐户的访问权限，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
 >
 >
 
@@ -232,15 +232,38 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 
 如果需要更改工作区链接到的 Azure 订阅，可以使用 Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) cmdlet。  
 
-### <a name="change-a-workspace-to-a-paid-data-plan"></a>将工作区更改为付费数据计划
+### <a name="change-a-workspace-to-a-paid-pricing-tier"></a>将工作区更改为付费定价层
 1. 登录到 [Azure 门户](http://portal.azure.com)。
 2. 浏览到 **Log Analytics**，然后选择它。
 3. 随即会看到现有工作区列表。 选择工作区。  
 4. 在工作区边栏选项卡中“常规”下面，单击“定价层”。  
-5. 在“定价层”下面单击一个数据计划，然后单击“选择”。  
+5. 在“定价层”下面单击选择一个定价层，然后单击“选择”。  
     ![选择计划](./media/log-analytics-manage-access/manage-access-change-plan03.png)
-6. 刷新 Azure 门户中的视图后，可看到所选计划的已更新**定价层**。  
+6. 刷新 Azure 门户中的视图后，可看到所选层的已更新**定价层**。  
     ![更新的计划](./media/log-analytics-manage-access/manage-access-change-plan04.png)
+
+> [!NOTE]
+> 如果工作区关联到自动化帐户，则在选择“单独(按 GB)”定价层之前，必须删除任何“自动化和控制”解决方案，并取消自动化帐户的关联。 在工作区边栏选项卡的“常规”下，单击“解决方案”查看和删除解决方案。 若要取消自动化帐户的关联，请在“定价层”边栏选项卡上单击自动化帐户的名称。
+>
+>
+
+## <a name="change-how-long-log-analytics-stores-data"></a>更改 Log Analytics 的数据存储期限
+
+在免费定价层中，Log Analytics 会提供过去&7; 天的数据。
+在标准定价层中，Log Analytics 会提供过去 30 天的数据。
+在高级定价层中，Log Analytics 会提供过去 365 天的数据。
+在独立和 OMS 定价层中，Log Analytics 默认会提供过去 31 天的数据。
+
+使用独立和 OMS 定价层时，可将数据保留长达 2 年（730 天）之久。 如果数据的存储超过默认的 31 天，将产生数据保留费。 有关价格详细信息，请参阅[超额费用](https://azure.microsoft.com/pricing/details/log-analytics/)。
+
+若要更改数据保留期，请执行以下操作：
+
+1. 登录到 [Azure 门户](http://portal.azure.com)。
+2. 浏览到 **Log Analytics**，然后选择它。
+3. 随即会看到现有工作区列表。 选择工作区。  
+4. 在工作区边栏选项卡中“常规”下面，单击“保留期”。  
+5. 使用滑块增加或减少保留天数，然后单击“保存”
+“更改保留期”****![](./media/log-analytics-manage-access/manage-access-change-retention01.png)
 
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>更改工作区的 Azure Active Directory 组织
 
@@ -275,6 +298,6 @@ OMS 订阅权利在 Azure 或 OMS 门户中不可见。 可在企业门户中看
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

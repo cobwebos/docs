@@ -4,7 +4,7 @@ description: "了解如何实现连续部署到 Azure App Service。"
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.service: app-service
@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 033fd0cb3512a22bb05488fe83aa2ffa9d81def3
+ms.sourcegitcommit: 071e8056382128f7c5070b46591b2a66ba5b7e41
+ms.openlocfilehash: 57c38c3d19810fd8c2789a27983c521517f2303b
+ms.lasthandoff: 01/27/2017
 
 
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>连续部署到 Azure App Service
 本教程说明如何为 [Azure 应用服务]应用配置连续部署工作流。 将应用服务与 BitBucket、GitHub 和 Visual Studio Team Services (VSTS) 集成可以实现一种连续部署工作流，在其中，Azure 可以从发布到其中一种服务的项目中拉取最近的更新。 连续部署选项非常适合用于频繁集成多个分发内容的项目。
+
+若要了解如何通过 Azure 门户中未列出的云存储库（如 [GitLab](https://gitlab.com/)）手动配置连续部署，请参阅[使用手动步骤设置连续部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
 
 ## <a name="a-nameoverviewaenable-continuous-deployment"></a><a name="overview"></a>启用连续部署
 若要启用连续部署，请执行以下操作：
@@ -78,7 +81,7 @@ ms.openlocfilehash: 033fd0cb3512a22bb05488fe83aa2ffa9d81def3
 * [项目 Kudu](https://github.com/projectkudu/kudu/wiki)
 
 > [!NOTE]
-> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
+> 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到 [试用 App Service](https://azure.microsoft.com/try/app-service/)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -92,11 +95,6 @@ ms.openlocfilehash: 033fd0cb3512a22bb05488fe83aa2ffa9d81def3
 
 [创建存储库 (GitHub)]: https://help.github.com/articles/create-a-repo
 [创建存储库 (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
-[VSTS 入门]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
+[VSTS 入门]: https://www.visualstudio.com/docs/vsts-tfs-overview
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

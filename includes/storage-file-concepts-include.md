@@ -15,7 +15,7 @@
 ## <a name="file-storage-concepts"></a>文件存储概念
 文件存储包含以下组件：
 
-![files-concepts][files-concepts]
+![files-concepts](./media/storage-file-concepts-include/files-concepts.png)
 
 * **存储帐户：** 对 Azure 存储服务的所有访问都要通过存储帐户来完成。 有关存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](../articles/storage/storage-scalability-targets.md) 。
 * **共享：** 文件存储共享是 Azure 中的 SMB 文件共享。 
@@ -31,8 +31,7 @@
 
 有关如何命名共享、目录和文件的详细信息，请参阅 [命名和引用共享、目录、文件和元数据](http://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
-[files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

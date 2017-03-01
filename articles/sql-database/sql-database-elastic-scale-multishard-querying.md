@@ -1,5 +1,5 @@
 ---
-title: "多分片查询 | Microsoft 文档"
+title: "查询分片的 Azure SQL 数据库 | Microsoft Docs"
 description: "使用弹性数据库客户端库运行跨分片查询。"
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 04/12/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d616160e8547e256da7f445e79f0949496ca943f
+ms.sourcegitcommit: 873df52da976597ddfaa8f777b90382bfa7723fc
+ms.openlocfilehash: aa54ec3d982ea4422422bd4e520d2211aad57159
 
 
 ---
@@ -25,7 +25,6 @@ ms.openlocfilehash: d616160e8547e256da7f445e79f0949496ca943f
 ## <a name="overview"></a>概述
 你可以使用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建分片数据库解决方案。 **多分片查询**用于诸如数据收集/报告等需要跨多个分片运行查询的任务。 （相比之下，[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)会在单个分片上执行所有操作。） 
 
-## <a name="overview"></a>概述
 1. 使用 [**TryGetRangeShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)、[**TryGetListShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx) 或者 [**GetShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) 方法获取 [**RangeShardMap**](https://msdn.microsoft.com/library/azure/dn807318.aspx) 或 [**ListShardMap**](https://msdn.microsoft.com/library/azure/dn807370.aspx)。 请参阅[**构造 ShardMapManager**](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) 和[**获取 RangeShardMap 或 ListShardMap**](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)。
 2. 创建 **[MultiShardConnection](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection.aspx)** 对象。
 3. 创建 **[MultiShardCommand](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.aspx)**。 
@@ -80,6 +79,6 @@ ms.openlocfilehash: d616160e8547e256da7f445e79f0949496ca943f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

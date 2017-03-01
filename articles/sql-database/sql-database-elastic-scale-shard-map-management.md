@@ -1,5 +1,5 @@
 ---
-title: "分片映射管理 | Microsoft 文档"
+title: "扩大 Azure SQL 数据库 | Microsoft Docs"
 description: "如何使用弹性数据库客户端库 ShardMapManager"
 services: sql-database
 documentationcenter: 
@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: 0e9d647a-9ba9-4875-aa22-662d01283439
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 82f3d43eb116262c74b6c192fa71139d018e9132
+ms.sourcegitcommit: eb5483e497ef1c1a239f207a034eb8c67f485a39
+ms.openlocfilehash: c7a46ebf0df6db92d2e66c7523e00c0a574ebf56
 
 
 ---
@@ -324,6 +325,6 @@ ms.openlocfilehash: 82f3d43eb116262c74b6c192fa71139d018e9132
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

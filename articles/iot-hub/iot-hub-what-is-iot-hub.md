@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: f01a5e7ec081b1c989fc8784c845d6e639b1d73b
-ms.openlocfilehash: 92c5e8c50b281fe1dc7e296dcdf8a6822b187ce3
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 249f2dcd852c771d0c48aa223a4596992e5ce3d7
 
 
 ---
@@ -59,7 +59,7 @@ IoT 中心和设备库可帮助你应对挑战，即如何以可靠且安全的�
 
 * **设备克隆**。 可以使用[设备克隆][lnk-twins]存储、同步和查询设备元数据和状态信息。 设备克隆是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到 IoT 中心的每台设备保留一个设备克隆。 
 * **每个设备的身份验证和安全连接性**。 可以为每台设备预配独有的[安全密钥][lnk-devguide-security]，让它连接到 IoT 中心。 [IoT 中心标识注册表][lnk-devguide-identityregistry]会在解决方案中存储设备标识和密钥。 解决方案后端可添加单独的设备，允许或拒绝列表完全控制设备访问权限。
-* **基于声明性规则将设备到云的消息路由到 Azure 服务**。 IoT 中心根据消息规则定义消息路由，以控制中心发送设备到云消息的位置。 消息规则不要求用户编写任何代码，并且可以代替自定义的引入后消息调度程序。
+* **基于声明性规则将设备到云的消息路由到 Azure 服务**。 IoT 中心根据路由规则定义消息路由，用于控制中心发送设备到云消息的位置。 路由规则不要求用户编写任何代码，并且可以代替自定义的引入后消息调度程序。
 * **设备连接操作监视**。 你可以收到有关设备标识管理操作与设备连接事件的详细操作日志。 这种监视功能使 IoT 解决方案能够标识连接问题，例如，尝试使用错误凭据进行连接的设备、消息发送太频繁，或拒绝所有云到设备的消息。
 * **一组丰富的设备库**。 [Azure IoT 设备 SDK][lnk-device-sdks] 适用于各种语言和平台 - C 面向很多 Linux 分发版、Windows 和实时操作系统。 Azure IoT 设备 SDK 也支持 C#、Java 和 JavaScript 等托管语言。
 * **IoT 协议和可扩展性**。 如果解决方案无法使用设备库，则 IoT 中心会公开一个公共协议，它使设备可以通过本机方式使用 MQTT v3.1.1、HTTP 1.1 或 AMQP 1.0 协议。 还可以通过以下方式扩展 IoT 中心，以便为自定义协议提供支持：
@@ -91,7 +91,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 支持通过 ExpressRoute 的公共对等互连路径访问 IoT 中心。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何从设备发送消息并从 IoT 中心接收消息以及如何为 IoT 中心配置消息路由，请参阅[使用 IoT 中心发送和接收消息][lnk-send-messages]。
+若要了解如何从设备发送消息并从 IoT 中心接收消息以及如何配置消息路由，请参阅[使用 IoT 中心发送和接收消息][lnk-send-messages]。
 
 若要了解 IoT 中心如何实现标准的设备管理，以便远程管理、配置和更新设备，请参阅 [IoT 中心设备管理概述][lnk-device-management]。
 
@@ -127,6 +127,6 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

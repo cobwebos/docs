@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 安全中心中添加下一代防火墙 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议**添加下一代防火墙** 和**仅通过 NGFW 路由流量**。"
+description: "本文档演示如何实现 Azure 安全中心建议**添加下一代防火墙**和**仅通过 NGFW 路由流量**。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4cc9541251157a3c8c632a01fafb52ea87ba58dd
+ms.sourcegitcommit: 0046a088f908a8cfdcab2cf6baad62524def6468
+ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
 
 
 ---
@@ -25,25 +25,25 @@ Azure 安全中心可能会建议从 Microsoft 合作伙伴添加下一代防火
 
 > [!NOTE]
 > 本文档通过使用示例部署介绍此服务。  这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡，选择“添加下一代防火墙”。
    ![添加下一代防火墙][1]
 2. 在“添加下一代防火墙”边栏选项卡，选择一个终结点。
    ![选择终结点][2]
-3. 另一个“添加下一代防火墙”边栏选项卡将打开。 你可以选择使用现有解决方案（如果可用），或者可以创建一个新的解决方案。 在此示例中，没有任何可用的现有解决方案，因此我们将创建一个新的 NGFW。
-   ![创建新的下一代防火墙][3]
-4. 若要创建新的 NGFW，请从集成的合作伙伴的列表中选择一种解决方案。 在此示例中，我们将选择“检查点”。
+3. 另一个“添加下一代防火墙”边栏选项卡将打开。 你可以选择使用现有解决方案（如果可用），或者可以创建一个新的解决方案。 在此示例中，没有任何可用的现有解决方案，因此我们将创建一个 NGFW。
+   ![创建下一代防火墙][3]
+4. 若要创建 NGFW，请从集成合作伙伴列表中选择一个解决方案。 在此示例中，我们选择“检查点”。
    ![选择下一代防火墙解决方案][4]
 5. “检查点”边栏选项卡将打开，并提供有关该合作伙伴解决方案的信息。 在信息边栏选项卡选择“创建”。
    ![防火墙信息边栏选项卡][5]
-6. 将打开“创建虚拟机”边栏选项卡。 在此可以输入旋转加速将运行 NGFW 的虚拟机 (VM) 所需的信息。 按照这些步骤并提供所需的 NGFW 信息。 选择“确定”以应用。
+6. 将打开“创建虚拟机”边栏选项卡。 可在此处输入启动运行 NGFW 的虚拟机 (VM) 所需的信息。 按照这些步骤并提供所需的 NGFW 信息。 选择“确定”以应用。
    ![创建要运行 NGFW 的虚拟机][6]
 
 ## <a name="route-traffic-through-ngfw-only"></a>仅通过 NGFW 路由流量
-返回到“建议”边栏选项卡。 通过安全中心添加 NGFW 后生成新的项，调用**仅通过 NGFW 路由流量**。 只有在通过安全中心安装了 NGFW 时创建此建议。 如果有面向 Internet 的终结点，安全中心将建议配置强制入站流量通过 NGFW 到 VM 的网络安全组规则。
+返回到“建议”边栏选项卡。 通过安全中心添加 NGFW 后生成新的项，称为**仅通过 NGFW 路由流量**。 只有在通过安全中心安装了 NGFW 时创建此建议。 如果有面向 Internet 的终结点，安全中心将建议配置通过 NGFW 强制将流量入站到 VM 的网络安全组规则。
 
 1. 在“建议”边栏选项卡，选择“仅通过 NGFW 路由流量”。
    ![仅通过 NGFW 路由流量][7]
@@ -61,8 +61,8 @@ Azure 安全中心可能会建议从 Microsoft 合作伙伴添加下一代防火
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心设置安全策略](security-center-policies.md) - 了解如何配置安全策略。
-* [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
+* [Setting security policies in Azure Security Center](security-center-policies.md)（在 Azure 安全中心设置安全策略）- 了解如何配置安全策略。
+* [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) - 了解建议如何帮助你保护 Azure 资源。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状态。
@@ -83,6 +83,6 @@ Azure 安全中心可能会建议从 Microsoft 合作伙伴添加下一代防火
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

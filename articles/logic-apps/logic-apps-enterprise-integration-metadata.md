@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/21/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: ba109fdc2a97e99f6216aa038261e6ccc5e356d9
-ms.openlocfilehash: 68a1b8515bbcebbe7ce4d4224a4015f18af5040b
+ms.sourcegitcommit: e5d567800d00b41ec0782216b442f437a2500928
+ms.openlocfilehash: 41edd713d85790793341e100f77300f999ac8c73
 
 
 ---
-# <a name="azure-logic-apps-integration-account-metadata"></a>Azure 逻辑应用集成帐户元数据 
+# <a name="azure-logic-apps-integration-account-metadata"></a>Azure 逻辑应用集成帐户元数据
 
 ## <a name="overview"></a>概述
 
 添加到集成帐户的合作伙伴、协议、架构、映射使用键值对存储元数据。 你可定义在运行时可以检索的自定义元数据。  目前该项目不能在 UI 中创建元数据；可使用 REST API 创建。  合作伙伴、协议和构架可以**编辑为 JSON** 并允许键入元数据信息。  在逻辑应用中，**集成帐户项目查找**有助于检索元数据信息。
 
-## <a name="how-to-store-metadata"></a>如何存储元数据 
+## <a name="how-to-store-metadata"></a>如何存储元数据
 
 1. 创建[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)   
 
@@ -39,17 +39,17 @@ ms.openlocfilehash: 68a1b8515bbcebbe7ce4d4224a4015f18af5040b
 
 1. 创建[逻辑应用](logic-apps-create-a-logic-app.md)
 
-2. 通过集成帐户[链接](logic-apps-enterprise-integration-create-integration-account.md#how-to-link-an-integration-account-to-a-logic-app)逻辑应用    
+2. 通过集成帐户[链接](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app)逻辑应用    
 
-3. 创建触发器，例如搜索**集成帐户项目查找**前使用*请求*或 *HTTP*。  搜索**集成**以查找**集成帐户项目查找** 
-![搜索查找](media/logic-apps-enterprise-integration-metadata/image2.png) 
+3. 创建触发器，例如搜索**集成帐户项目查找**前使用*请求*或 *HTTP*。  搜索“集成”，查找“集成帐户项目查找”  
+![搜索查找](media/logic-apps-enterprise-integration-metadata/image2.png)
 
 3. 选择“集成帐户项目查找”  
 
 4. 选择“项目类型”并提供**项目名称**  
 ![搜索查找](media/logic-apps-enterprise-integration-metadata/image3.png)
 
-## <a name="an-example-to-retrieve-partner-metadata"></a>检索合作伙伴元数据的示例 
+## <a name="an-example-to-retrieve-partner-metadata"></a>检索合作伙伴元数据的示例
 
 1. 合作伙伴元数据具有路由 URL 详细信息    
 ![搜索查找](media/logic-apps-enterprise-integration-metadata/image6.png)
@@ -65,6 +65,7 @@ ms.openlocfilehash: 68a1b8515bbcebbe7ce4d4224a4015f18af5040b
 * [了解有关协议的详细信息](logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO1-->
 
 

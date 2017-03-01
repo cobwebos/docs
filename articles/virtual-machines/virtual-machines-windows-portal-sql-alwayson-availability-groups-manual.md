@@ -1,8 +1,8 @@
 ---
 redirect_url: /azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview
 translationtype: Human Translation
-ms.sourcegitcommit: d883d17bf548f48f38002e2edbf0209cca0cc3de
-ms.openlocfilehash: d81b577fc3fadeeceff22d0453daf9b5a5e0a860
+ms.sourcegitcommit: 0e3948b2907ab178d39c898610106df33b4533aa
+ms.openlocfilehash: a175a9b5073c6e752e0033912240c315bc2de279
 
 ---
 

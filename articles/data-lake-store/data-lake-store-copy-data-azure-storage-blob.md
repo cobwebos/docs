@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/05/2016
+ms.date: 12/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8bb80209ac225e60f43c406052035c6fbbc545c2
+ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
+ms.openlocfilehash: 9f8635cd028d7d0d6a69faf6c2dc1de05dc5bb36
 
 
 ---
@@ -42,6 +42,7 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 包含一些数据的 **Azure 存储 Blob** 容器。
+* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 * **Azure Data Lake Analytics 帐户（可选）** - 有关如何创建 Data Lake Store 帐户的说明，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 * **AdlCopy 工具**。 从 [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy) 安装 AdlCopy 工具。
 
@@ -89,6 +90,10 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
    
         AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
+### <a name="performance-considerations"></a>性能注意事项
+
+如果要从 Azure Blob 存储帐户复制，可能会在 Blob 存储端进行复制的过程中受到限制。 这将降低复制作业的性能。 若要了解有关 Azure Blob 存储限制的详细信息，请在 [Azure 订阅和服务限制](../azure-subscription-service-limits.md)中查看 Azure 存储限制。
+
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-store-account"></a>使用 AdlCopy（以独立模式）从另一 Data Lake Store 帐户复制数据
 也可使用 AdlCopy 在两个 Data Lake Store 帐户之间复制数据。
 
@@ -117,6 +122,10 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
    
         AdlCopy /Source adl://mydatastore.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestore.azuredatalakestore.net/mynewfolder/
 
+### <a name="performance-considerations"></a>性能注意事项
+
+将 AdlCopy 作为独立工具使用时，副本在共享的 Azure 托管资源上运行。 在此环境中得到的性能取决于系统负载和可用资源。 此模式最好用于临时的小传输。 将 AdlCopy 作为独立工具使用时，不需要调整任何参数。
+
 ## <a name="use-adlcopy-with-data-lake-analytics-account-to-copy-data"></a>使用 AdlCopy（通过 Data Lake Analytics 帐户）复制数据
 也可使用 Data Lake Analytics 帐户运行 AdlCopy 作业，从 Azure 存储 blob 复制数据到 Data Lake Analytics。 要移动的数据大小在千兆字节和兆兆字节范围，且希望更佳和可预测性能吞吐量时，通常会使用此选项。
 
@@ -135,10 +144,13 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 
     AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
 
-
 运行以下命令使用 Data Lake Analytics 帐户从 Azure 存储 blob 复制到 Data Lake Store 帐户：
 
     AdlCopy /Source adl://mysourcedatalakestore.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastore.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
+
+### <a name="performance-considerations"></a>性能注意事项
+
+在 TB 范围内复制数据时，将 AdlCopy 与自己的 Azure Data Lake Analytics 帐户一起使用可提供更好且更容易预测的性能。 应调整的参数是用于复制作业的 Azure Data Lake Analytics 单元的数量。 增加单元的数量将提高复制作业的性能。 每个要复制的文件最多可以使用一个单元。 指定比要复制的文件数更多的单元不会提高性能。
 
 ## <a name="use-adlcopy-to-copy-data-using-pattern-matching"></a>使用 AdlCopy 以模式匹配复制数据
 此部分介绍如何使用 AdlCopy 以模式匹配从源（下面的示例使用的是 Azure 存储 Blob）将数据复制到目标 Data Lake Store 帐户。 例如，可使用以下步骤从源 blob 中将所有具有 .csv 扩展名的文件复制到目标。
@@ -159,6 +171,10 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 ## <a name="considerations-for-using-adlcopy"></a>AdlCopy 使用注意事项
 * AdlCopy（版本 1.0.5）支持从具有总计数千的文件和文件夹的源中复制数据。 但是，如果复制较大数据集时遇到问题，可将文件/文件夹分发为不同的子文件夹，并改用子文件夹的路径作为源。
 
+## <a name="performance-considerations-for-using-adlcopy"></a>使用 AdlCopy 的性能注意事项
+
+AdlCopy 支持复制包含上千个文件和文件夹的数据。 但是，如果在复制大型数据集时遇到问题，可将文件/文件夹分配到较小的子文件夹中。 AdlCopy 专用于临时副本。 如果要尝试定期复制数据，应考虑使用 [Azure 数据工厂](../data-factory/data-factory-azure-datalake-connector.md)，此工具提供与复制操作有关的完整管理功能。
+
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -167,6 +183,6 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

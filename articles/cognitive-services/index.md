@@ -1,13 +1,25 @@
 ---
+title: "Azure 认知服务文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何向应用程序添加影像、语音和语言分析等智能功能。 获取快速入门指南和 API 参考。"
+services: cognitive-services
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cognitive-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: e4e35a7c13db98770295cbaa19cf33b18c1fb5e7
+ms.sourcegitcommit: 0c5f1ba593952cb6dc6a8200a5666ecb7a32fce7
+ms.openlocfilehash: 3895b02f25b0e27b46a5e5493fe2b7f8f83201c1
 
 ---
 #<a name="cognitive-services-documentation"></a>认知服务文档
 
-认知服务（预览版）是可以在应用程序中实现区分上下文的自然交互的一系列 API。  认知服务提供语言、语音、视觉、搜索和知识 API。
+了解如何使用认知服务在应用程序中启用自然交互和上下文交互。 快速入门教程和 API 参考可帮助你在文本、语音、视觉和搜索应用中整合人工智能功能。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -96,16 +108,10 @@ ms.openlocfilehash: e4e35a7c13db98770295cbaa19cf33b18c1fb5e7
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cognitive-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载认知服务文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

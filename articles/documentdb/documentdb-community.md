@@ -1,10 +1,10 @@
 ---
-title: "DocumentDB 社区和新闻 | Microsoft Docs"
+title: "Azure DocumentDB 社区、新闻和事件 | Microsoft Docs"
 description: "加入 Azure DocumentDB 社区，在这里建立关系网，展示你的工作，磨练你的技能。"
 services: documentdb
 documentationcenter: 
 author: aliuy
-manager: johnmac
+manager: jhubbard
 editor: mimig
 ms.assetid: cfdf15da-3ddc-43a1-af64-789eea5f6ddd
 ms.service: documentdb
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/30/2016
+ms.date: 02/16/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: bbf3b7b1d7e28bfd6bf0d6ca506963eff755e7a2
-ms.openlocfilehash: 615324a8ae0cd50e68286b467dfefce91628fb35
+ms.sourcegitcommit: cf163b2809f50daf0273398d6fec50dfc6fd69a2
+ms.openlocfilehash: 96dbc1f5a84f52ab39a3515511c7851bba5fa9a9
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -96,15 +97,20 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 ### <a name="recent-and-upcoming-events"></a>最新和近期活动
 | 事件名称 | 主讲人 | 位置 | 日期 | 井号标签 |
 | --- | --- | --- | --- | --- |
-| [Wintellect webinar: An Introduction to Azure DocumentDB](http://www.wintellect.com/software-development-training/register/webinar/30)（Wintellect 网络研讨会：Azure DocumentDB 简介）| [Josh Lane](https://twitter.com/jplane)|联机|美国东部时间 2016 年 12 月 15日下午 1 点|不适用|
+|[南佛罗里达编解码器：NoSQL for .NET 开发人员使用 Azure DocumentDB 在 10 分钟内完成](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|佛罗里达州戴维|2017 年 3 月 11 日|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
+|[奥兰多编解码器：NoSQL for .NET 开发人员使用 Azure DocumentDB 在 10 分钟内完成](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|佛罗里达州桑福德|2017 年 4 月 8 日|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
+|[Global Azure Bootcamp：使用 Azure Functions 和 DocumentDB 在 Azure 中进行的无服务器计算](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh Lane](https://twitter.com/jplane)|亚特兰大|2017 年 4 月 22 日|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
 
 *要演讲或举办活动吗？[让我们知道](mailto:askdocdb@microsoft.com)我们能为你做些什么！*
 
 ### <a name="previous-events-and-recordings"></a>先前的活动和录像
 | 事件名称 | 主讲人 | 位置 | 日期 | 记录 |
 | --- | --- | --- | --- | --- |
-| [Connect(); // 2016](https://connectevent.microsoft.com/) |Kirill Gavrylyuk |纽约州纽约市 |2016 年 11 月 16 日至 18 日 |[第 9 频道 Connect(); 视频](https://channel9.msdn.com/Events/Connect) |
-| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/)（首都 .NET 用户组） |Santosh Hari |佛罗里达州塔拉哈西 |2016 年 11 月 3 日 |不适用 |
+|[澳大利亚 Ignite 大会：你好 DocumentDB：Azure 的速度超快、全球规模的 NoSQL 数据库](https://msftignite.com.au/sessions/session-details/2115/hello-documentdb-azures-blazing-fast-planetscale-nosql-database-da224) | [Andrew Liu](https://twitter.com/aliuy8)|澳大利亚昆士兰|2017 年 2 月 15 日星期三|即将到来|
+|[澳大利亚 Ignite 大会：Azure DocumentDB 深入介绍：分区、数据建模和异地复制](https://msftignite.com.au/sessions/session-details/2116/a-deepdive-with-azure-documentdb-partitioning-data-modelling-and-geo-replication-da335b) | [Andrew Liu](https://twitter.com/aliuy8)|澳大利亚昆士兰|2017 年 2 月 16 日|即将到来|
+| Wintellect 网络研讨会：Azure DocumentDB 简介| [Josh Lane](https://twitter.com/jplane)|联机|美国东部标准时间 2017 年 1 月 12 日下午 1 点|[Azure DocumentDB：由云提供支持的、异地规模的 NoSQL 超级工具...在众目睽睽下隐藏](https://www.youtube.com/watch?v=uVcWgIYtBoc)|
+| [Connect(); // 2016](https://connectevent.microsoft.com/) |[Kirill Gavrylyuk](https://twitter.com/kirillg_msft) |纽约州纽约市 |2016 年 11 月 16 日至 18 日 |[第 9 频道 Connect(); 视频](https://channel9.msdn.com/Events/Connect) |
+| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/)（首都 .NET 用户组） |[Santosh Hari](https://twitter.com/_s_hari)|佛罗里达州塔拉哈西 |2016 年 11 月 3 日 |不适用 |
 | [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) |DocumentDB 团队 |亚特兰大 |2016 年 9 月 26 日至 9 月 30 日 |[Slidedeck](http://www.slideshare.net/aliuy/pass-summit-2016-azure-documentdb-a-deep-dive-into-advanced-features) |
 | [DevTeach](http://devteach.com/) |Ken Cenerelli |加拿大，蒙特利尔 |2016 年 7 月 4 日至 7 月 8 日 |[NoSQL, No Problem, Using Azure DocumentDB](http://www.slideshare.net/KenCenerelli)（NoSQL：使用 Azure DocumentDB 没问题） |
 | [Integration and IoT ](http://www.btug.be/events)（集成和 IoT） |Eldert Grootenboer |Kontich，比利时 |2016 年 6 月 30 日 |不适用 |
@@ -131,7 +137,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 | [SQL Saturday #444 - Kansas City 2015](http://www.sqlsaturday.com/444/Sessions/Details.aspx?sid=38576) |Jeff Renz |密苏里州堪萨斯城 |2015 年 10 月 3 日 |不适用 |
 | [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/Sessions/Details.aspx?sid=36089) |Leonard Lobel |葡萄牙波尔图 |2015 年 10 月 3 日 |不适用 |
 | [AzureCon](https://azure.microsoft.com/azurecon/) |David Makogon、Ryan Crawcour、John Macintyre |虚拟活动 |2015 年 9 月 29 日 |[Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)（Azure 数据和分析平台）[Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338)（在 DocumentDB 中使用 NoSQL 数据） |
-| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) |Leonard Lobel |荷兰乌得勒支 |2015 年 9 月 26 日 |[Introduction to Azure DocumentDB](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB)（Azure DocumentDB 简介） |
+| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) |Leonard Lobel |荷兰乌得勒支 |2015 年 9 月 26 日 |[Introduction to Azure DocumentDB](https://channel9.msdn.com/Blogs/Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB)（Azure DocumentDB 简介） |
 | [SQL Saturday #441 - Denver 2015](http://www.sqlsaturday.com/441/Sessions/Details.aspx?sid=39191) |Jeff Renz |科罗拉多州丹佛 |2015 年 9 月 19 日 |不适用 |
 | [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) |Andrew Liu |加州旧金山 |2015 年 9 月 15 日 |不适用 |
 | [Belarus Azure User Group Meet-Up](https://www.facebook.com/events/786540124800276/) |Alex Zyl |白俄罗斯明斯克 |2015 年 9 月 9 日 |[Introduction to DocumentDB concept overview, consistency levels, sharding strategies](https://www.youtube.com/watch?v=Uc_qwWzJKH8)（DocumentDB 概念概述、一致性级别、分片策略简介） |
@@ -184,7 +190,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 ### <a name="online-classes"></a>在线课程
 | 学习合作伙伴 | 说明 |
 | --- | --- |
-| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://mva.microsoft.com/en-US/training-courses/deploying-web-apps-to-azure-app-service-16629)（Microsoft 虚拟大学） |[**Microsoft Virtual Academy**](https://mva.microsoft.com/en-US/training-courses/deploying-web-apps-to-azure-app-service-16629)（Microsoft 虚拟大学）向你提供培训，这些培训来自那些帮助构建 Azure DocumentDB 的人士。 |
+| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847)（Microsoft 虚拟大学） |[**Microsoft Virtual Academy**](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847)（Microsoft 虚拟大学）向你提供培训，这些培训来自那些帮助构建 Azure DocumentDB 的人士。 |
 | [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) |[**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) 是提供 Azure 培训的重要 Microsoft 合作伙伴。 如果你是一名 MSDN 订户，请使用你访问 Microsoft Azure 培训的权益。 |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) |[**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) 提供有关 Microsoft Azure 的深层次技术培训。 在现场或通过远程教室获得由业内认可的培训师指导的培训。 |
 
@@ -196,7 +202,6 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 | 论坛提供者 | 说明 |
 | --- | --- |
 | [![堆栈溢出](./media/documentdb-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-documentdb) |面向程序员的共同编辑问题和答案网站（与语言无关）。 请访问我们的标记：[azure-documentdb](http://stackoverflow.com/questions/tagged/azure-documentdb) |
-| [![MSDN](./media/documentdb-community/msdn.png)](http://go.microsoft.com/fwlink/?LinkId=631655) |提供 Microsoft Azure 功能和服务（例如网站、DocumentDB 等等）支持与反馈的好地方。 |
 
 ## <a name="contact-the-team"></a>与团队联系
 ![团队](./media/documentdb-community/documentdb-team.png)
@@ -235,10 +240,5 @@ DocumentDB 奇才是社区领导者，他们是帮助其他人充分利用他们
 | [Matías Quaranta](https://twitter.com/ealsur) |[![Matías Quaranta](./media/documentdb-community/wizard-matias-quaranta.jpg)](https://twitter.com/ealsur) |
 
 想要成为 DocumentDB 奇才？ 由于是否能成为 DocumentDB 奇才并没有任何评判基准，因此我们会针对部分条件来评估，包括被提名人对在线论坛（例如 StackOverflow 和 MSDN；Wiki 和在线内容；会议和用户组；播客；网站；博客和社交媒体；以及文章与书籍）的贡献所产生的影响。 如果想提名自己或其他人，[请向我们发送电子邮件](mailto:askdocdb@microsoft.com)。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

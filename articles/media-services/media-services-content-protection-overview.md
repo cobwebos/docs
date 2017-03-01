@@ -1,5 +1,5 @@
 ---
-title: "保护内容概述 | Microsoft Docs"
+title: "使用 Azure 媒体服务来保护内容 | Microsoft 文档"
 description: "本文概述了如何使用媒体服务来保护内容。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
+ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
+ms.openlocfilehash: bf2bd9bca8817f64790ac62d2981a51aa36566a3
 
 
 ---
@@ -27,10 +27,8 @@ ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
 
 ![使用 PlayReady 进行保护](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-> [!NOTE]
-> 若要使用动态加密，首先必须获取你想要从中流式传输加密内容的流式处理终结点的至少一个流式处理保留单元。
-> 
-> 
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 本主题介绍与了解使用 AMS 进行内容保护相关的[概念和术语](media-services-content-protection-overview.md)。 本主题还包括演示如何实现内容保护任务的主题[链接](media-services-content-protection-overview.md#common-scenarios)。 
 
@@ -45,10 +43,6 @@ ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
 
 播放器请求流时，媒体服务将使用指定的密钥通过 AES 明文密钥或 DRM 加密来动态加密你的内容。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-> [!NOTE]
-> 若要利用动态加密，首先必须获取你计划从中传送内容的流式处理终结点的至少一个点播流单元。 有关详细信息，请参阅[如何缩放媒体服务](media-services-portal-manage-streaming-endpoints.md)。
-> 
-> 
 
 ## <a name="storage-encryption"></a>存储加密
 使用存储加密通过 AES 256 位加密在本地加密明文内容，然后将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
@@ -96,6 +90,10 @@ ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
 * [如何将 Azure PlayReady 许可证服务与你自己的加密程序/流式处理服务器集成](http://mingfeiy.com/integrate-azure-playready-license-service-encryptorstreaming-server)。
 * [使用 castLabs 将 DRM 许可证传送到 Azure 媒体服务](media-services-castlabs-integration.md)
 
+>[!NOTE]
+>当前不支持使用外部 DRM 服务器（技术）和从 AMS 进行流式传输的方案。
+
+
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -119,6 +117,6 @@ ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

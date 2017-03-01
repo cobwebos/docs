@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/16/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 0703fa4f4d3eb9f23aa9b3c0b90267fac9557f13
-ms.openlocfilehash: 876fff6a63ccf1a3c10a6852927c60b454436954
+ms.sourcegitcommit: 2de367287a4bee05694070dbeeb4d4a458d47f11
+ms.openlocfilehash: 38d811a7a08a6f8a6dd07a29e9a49bb34810ee91
 
 
 ---
@@ -33,6 +33,12 @@ ms.openlocfilehash: 876fff6a63ccf1a3c10a6852927c60b454436954
 **企业级** - DocumentDB 支持多个本地副本，在面对本地和区域故障时提供 99.99％ 的可用性和数据保护。 DocumentDB 具有企业级[合规性认证](https://www.microsoft.com/trustcenter)和安全功能。 
 
 **MongoDB 兼容性** - DocumentDB 的 MongoDB 协议支持旨在提供与 MongoDB 的兼容性。 可以将现有代码、应用程序、驱动程序和工具用于 DocumentDB。 
+
+与 Scott Hanselman 和 DocumentDB 的主要工程经理 Kirill Gavrylyuk 一起，通过 Azure Friday 视频了解更多信息。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/DocumentDB-Database-as-a-Service-for-MongoDB-Developers/player]
+> 
+
 
 ## <a name="how-to-get-started"></a>如何入门？
 在 [Azure 门户](https://portal.azure.com)中创建具有 MongoDB 协议支持的 DocumentDB 帐户，并将连接交换到新帐户。 
@@ -50,6 +56,6 @@ ms.openlocfilehash: 876fff6a63ccf1a3c10a6852927c60b454436954
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

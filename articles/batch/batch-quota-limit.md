@@ -1,9 +1,9 @@
 ---
-title: "Batch 服务配额和限制 | Microsoft Docs"
+title: "Azure Batch 服务配额和限制 | Microsoft Docs"
 description: "了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,15 +12,18 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2016
-ms.author: marsma
+ms.date: 02/27/2017
+ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: a0f47a19f7ef1832e64e9a0bdc4bda3434f77aa2
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="quotas-and-limits-for-the-azure-batch-service"></a>Azure Batch 服务的配额和限制
+# <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
+
 与其他 Azure 服务一样，与 Batch 服务关联的某些资源存在限制。 其中的许多限制是 Azure 在订阅或帐户级别应用的默认配额。 本文将描述这些默认值，以及如何请求提高配额。
 
 如果你打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线[客户支持请求](#increase-a-quota)。
@@ -30,12 +33,7 @@ ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
 > 
 > 
 
-## <a name="subscription-quotas"></a>订阅配额
-| **资源** | **默认限制** | **最大限制** |
-| --- | --- | --- |
-| 每个区域每个订阅的 Batch 帐户数 |1 |50 |
-
-## <a name="batch-account-quotas"></a>Batch 帐户配额
+## <a name="resource-quotas"></a>资源配额
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ## <a name="other-limits"></a>其他限制
@@ -49,7 +47,7 @@ ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
 <sup>1</sup> 最大的块 Blob 大小的 Azure 存储空间限制
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
-可在 [Azure 门户][portal]中查看 Batch 帐户配额。
+可在 [Azure 门户][portal]中查看批处理帐户配额。
 
 1. 在门户中选择“Batch 帐户”，然后选择所需的 Batch 帐户。
 2. 在 Batch 帐户的菜单边栏选项卡中选择“属性”
@@ -77,7 +75,7 @@ ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 根据[业务影响情况][support_sev]选择“严重性”。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
+    b. 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
    
     单击“下一步”。
 5. 在“联系信息”边栏选项卡上：
@@ -100,9 +98,4 @@ ms.openlocfilehash: 3433ce8b664fb02c5c267ea4b21e678fdc1accfe
 [support_sev]: http://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

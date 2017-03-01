@@ -1,5 +1,5 @@
 ---
-title: "Azure 存储解决方案准则 | Microsoft Docs"
+title: "Azure 中 Linux VM 的存储解决方案 | Microsoft 文档"
 description: "了解用于在 Azure 基础结构服务中部署存储解决方案的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
-ms.openlocfilehash: 8b4ee1634981a449d9968f9156df10a9d40baae9
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 61bd36ff8b3bff0acb262f6d181ffe69e6b92d27
 
 
 ---
@@ -88,6 +88,6 @@ Azure 将对可用的数据磁盘数和带宽加以限制，具体取决于 VM �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

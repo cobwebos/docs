@@ -1,5 +1,5 @@
 ---
-title: "PHP Web 角色和辅助角色 | Microsoft Docs"
+title: "为 PHP 创建 Azure Web 角色和辅助角色 | Microsoft 文档"
 description: "有关如何在 Azure 云服务中创建 PHP Web 和辅助角色以及配置 PHP 运行时的指南。"
 services: 
 documentationcenter: php
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: d3fc1370751065eb954abe249017ef204038bd07
+ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
+ms.openlocfilehash: b6b802092165926cdfeab67849df26167ad96ebf
 
 
 ---
@@ -216,6 +216,6 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement 故障排除指南"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 8b4275da-c0b4-4690-824a-48e9d7a1fc6e
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 01862d158f4771989ae6eb3b20fe8e080123a231
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -88,10 +89,5 @@ ms.openlocfilehash: 01862d158f4771989ae6eb3b20fe8e080123a231
   * 使用逗号“,”作为分隔符（你可以打开服务请求，请求将 .csv 分隔符从逗号“,”更改为另一个字符，例如分号“;”）。
   * 布尔值“true”和“false”都使用小写。
   * 使用的文件小于最大文件大小 (35MB)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

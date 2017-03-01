@@ -1,5 +1,5 @@
 ---
-title: "Azure 自动化故障排除 | Microsoft Docs"
+title: "Azure 自动化常见问题解答 | Microsoft Docs"
 description: "本文介绍如何排查并解决常见的 Azure 自动化错误。"
 services: automation
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 01/24/2017
 ms.author: sngun; v-reagie
 translationtype: Human Translation
-ms.sourcegitcommit: 15a8ff89ae7a7d335c9d8584aaef0b21f092566f
-ms.openlocfilehash: f86942e399385efbb8c9cb6f250a8668fe260602
+ms.sourcegitcommit: a8ecffbc5f9c7e2408708d59459a0d39e59d6e1e
+ms.openlocfilehash: 3e4a4b431e26e58a0af1eee182fded51b6618fac
 
 
 ---
-# <a name="troubleshoot-azure-automation"></a>Azure 自动化故障排除 
+# <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure 自动化中的常见问题解答 
 本文介绍如何排除会在 Azure 自动化中遇到的常见错误，并提供可能的解决方案建议。
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>使用 Azure 自动化 Runbook 时遇到的身份验证错误
@@ -61,7 +61,7 @@ ms.openlocfilehash: f86942e399385efbb8c9cb6f250a8668fe260602
 
 **错误原因：**如果你对 Azure 帐户设置了多重身份验证，则不能使用 Azure Active Directory 用户向 Azure 进行身份验证。  而只能使用证书或服务主体向 Azure 进行身份验证。
 
-**疑难解答提示：**若要将证书用于 Azure 服务管理 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure Resource Manager cmdlet，请参阅[使用 Azure 门户创建服务主体](../resource-group-create-service-principal-portal.md)和[通过 Azure Resource Manager 对服务主体进行身份验证](../resource-group-authenticate-service-principal.md)。
+**疑难解答提示：**若要将证书用于 Azure 服务管理 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure Resource Manager cmdlet，请参阅[使用 Azure 门户创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)和[通过 Azure Resource Manager 对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>使用 Runbook 时的常见错误
 ### <a name="scenario-runbook-fails-because-of-deserialized-object"></a>场景：Runbook 因反序列化的对象而失败
@@ -175,6 +175,6 @@ ms.openlocfilehash: f86942e399385efbb8c9cb6f250a8668fe260602
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

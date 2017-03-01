@@ -15,15 +15,15 @@ ms.topic: hero-article
 /ms.date: 1/18/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: b4f13f1b5469ea3d3b2ab69e6435d3e7beb6ace8
+ms.sourcegitcommit: 6c93e5363767cb6860d4a365eba178dd940bd41d
+ms.openlocfilehash: e0800b7c7aba64fa7429fc3ced8c194cd9fbf0d1
 
 
 ---
 # <a name="get-started-with-azure-file-storage-on-windows"></a>在 Windows 上开始使用 Azure 文件存储
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
+[!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
@@ -38,7 +38,7 @@ ms.openlocfilehash: b4f13f1b5469ea3d3b2ab69e6435d3e7beb6ace8
 ## <a name="video-using-azure-file-storage-with-windows"></a>视频：通过 Windows 使用 Azure 文件存储
 下面是演示如何在 Windows 上创建和使用 Azure 文件共享的视频。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Windows/player]
 > 
 > 
 
@@ -602,49 +602,61 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
    
     我们目前不支持基于 AD 的身份验证或 ACL，但会将其列入我们的功能请求列表中。 目前，Azure 存储帐户密钥用于为文件共享提供身份验证。 我们确实提供通过 REST API 或客户端库使用共享访问签名 (SAS) 的解决方法。 使用 SAS，可以生成具有在指定的时间间隔内有效的特定权限的令牌。 例如，你可以生成对给定文件具有只读访问权限的令牌。 在此令牌的有效期内拥有此令牌的任何人对该文件具有只读访问权限。
    
-    仅通过 REST API 或客户端库支持 SAS。 通过 SMB 协议装载文件共享时，不能使用 SAS 委派对其内容的访问权限。
-2. **Azure 文件共享是在 Internet 上公开可见，还是只能通过 Azure 对其进行访问？**
-   
-    只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.0 协议（*例如*，Windows 8 或 Windows Server 2012），文件共享就可通过 Internet 使用。  
-3. **Azure 虚拟机与文件共享之间的网络流量是否算作对订阅计费的外部带宽？**
+    仅通过 REST API 或客户端库支持 SAS。 通过 SMB 协议装载文件共享时，不能使用 SAS 委派对其内容的访问权限。 
+
+2. **如何通过 Web 浏览器提供对特定文件的访问权限？**
+   使用 SAS，可以生成具有在指定的时间间隔内有效的特定权限的令牌。 例如，可以生成一个令牌，该令牌只能在特定时段内以只读方式访问特定文件。 任何人均可使用该 URL 直接从任何 Web 浏览器下载，只要该 URL 有效。 SAS 密钥可以轻松地从 UI（例如存储资源管理器）生成。
+
+3.   **访问 Azure 文件存储中的文件有哪些不同方式？**
+    可以使用 SMB 3.0 协议将文件共享装载在本地计算机上，也可以使用[存储资源管理器](http://storageexplorer.com/)或 Cloudberry 之类的工具访问文件共享中的文件。 在应用程序中，可以使用客户端库、REST API 或 Powershell 访问 Azure 文件共享中的文件。
+    
+4.   **如何在本地计算机上装载 Azure 文件共享？** 可以通过 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.0 协议（*例如*，Windows 8 或 Windows Server 2012）。 请通过本地 ISP 提供商来取消阻止端口。 在此期间，可以使用存储资源管理器或任何其他的第三方软件（例如 Cloudberry）来查看文件。
+
+5. **Azure 虚拟机与文件共享之间的网络流量是否算作对订阅计费的外部带宽？**
    
     如果文件共享和虚拟机位于不同的区域，则它们之间的流量将作为外部带宽收费。
-4. **如果是虚拟机和同一区域中的文件共享之间的网络流量，是免费吗？**
+6. **如果是虚拟机和同一区域中的文件共享之间的网络流量，是免费吗？**
    
     是的。 如果流量在同一区域，是免费的。
-5. **从本地虚拟机连接到 Azure 文件存储是否依赖于 Azure ExpressRoute？**
+7. **从本地虚拟机连接到 Azure 文件存储是否依赖于 Azure ExpressRoute？**
    
     否。 如果你没有 ExpressRoute，你仍可以从本地访问文件共享，只要你将端口 445（TCP 出站）打开供 Internet 访问。 但是，如果你愿意，你可以将 ExpressRoute 用于文件存储。
-6. **故障转移群集的“文件共享见证”是 Azure 文件存储的使用案例之一吗？**
+8. **故障转移群集的“文件共享见证”是 Azure 文件存储的使用案例之一吗？**
    
     目前，不支持此功能。
-7. **当前仅通过 LRS 或 GRS 复制文件存储，对吗？**  
+9. **当前仅通过 LRS 或 GRS 复制文件存储，对吗？**  
    
     我们计划支持 RA-GRS，但尚没有共享时间表。
-8. **何时能够将现有存储帐户用于 Azure 文件存储？**
+10. **何时能够将现有存储帐户用于 Azure 文件存储？**
    
     现已为所有存储帐户启用 Azure 文件存储。
-9. **是否会将重命名操作也添加到 REST API？**
+11. **是否会将重命名操作也添加到 REST API？**
    
     在我们的 REST API 中尚不支持重命名。
-10. **能否使用嵌套共享，换而言之就是共享下的共享？**
+12. **能否使用嵌套共享，换而言之就是共享下的共享？**
     
     否。 文件共享是你可以装载的虚拟驱动程序，因此不支持嵌套共享。
-11. **是否可以对共享中的文件夹指定只读或只写权限？**
+13. **是否可以对共享中的文件夹指定只读或只写权限？**
     
     如果通过 SMB 装载文件共享，你不具有此级别的权限控制。 但是，你可以通过 REST API 或客户端库创建共享访问签名 (SAS) 来实现此控制。  
-12. **尝试将文件解压缩到文件存储中时我的性能速度太慢。我该怎样做？**
+14. **尝试将文件解压缩到文件存储中时我的性能速度太慢。我该怎样做？**
     
     若要将大量文件传输到文件存储，建议使用 AzCopy、Azure Powershell (Windows) 或 Azure CLI (Linux/Unix)，因为这些工具已针对网络传输进行优化。
-13. **发布了修复 Azure 文件慢速性能问题的修补程序**
+15. **发布了修复 Azure 文件慢速性能问题的修补程序**
     
     Windows 团队最近发布了一个修补程序，旨在修复客户从 Windows 8.1 计算机或 Windows Server 2012 R2 服务器访问 Azure 文件存储时遇到的慢速性能问题。 有关详细信息，请查看相关的知识库文章： [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/en-us/kb/3114025)（从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件存储时性能降低）。
-14. **通过 IBM MQ 使用 Azure 文件存储**
+16. **通过 IBM MQ 使用 Azure 文件存储**
     
     IBM 已发布相关文档来指导 IBM MQ 客户通过其服务配置 Azure 文件存储。 有关详细信息，请查阅 [如何通过 Microsoft Azure 文件服务设置 IBM MQ 多实例队列管理器](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)。
-15. **如何解决 Azure 文件存储错误的问题？**
+17. **如何解决 Azure 文件存储错误的问题？**
     
     可以参考 [Azure 文件故障排除文章](storage-troubleshoot-file-connection-problems.md)了解有关端到端故障排除指南。               
+
+18. **如何针对 Azure 文件启用服务器端加密？**
+
+    [服务器端加密](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)目前提供预览版。 在预览期间，只能为新创建的 Azure Resource Manager (ARM) 存储帐户启用此功能。
+    可以使用 Azure 门户在 Azure Resource Manager 存储帐户上启用此功能。 我们计划二月底在 [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx)、[Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs) 或 [Microsoft Azure 存储资源提供程序 API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) 上启用针对文件存储的加密。 启用此功能不需额外付费。 针对 Azure 文件存储启用存储服务加密以后，系统会自动加密数据。 
+    了解有关存储服务加密的详细信息。 有关预览版的其他问题，也可发送邮件至 ssediscussions@microsoft.com。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
@@ -657,6 +669,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
 * [如何对 Microsoft Azure 存储空间使用 AzCopy](storage-use-azcopy.md)
 * [将 Azure CLI 用于 Azure 存储空间](storage-azure-cli.md#create-and-manage-file-shares)
+* [排查 Azure 文件存储问题](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>引用
 * [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
@@ -670,6 +683,6 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

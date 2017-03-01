@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB 中的请求单位 | Microsoft Docs"
+title: "请求单位和估计吞吐量 - Azure DocumentDB | Microsoft Docs"
 description: "了解如何理解、指定和估计 DocumentDB 中的请求单元需求。"
 services: documentdb
 author: syamkmsft
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: 8b2d13dd16f629fbb2108856cd1e1b2954ece8bf
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: bf58d333e81fb76ffc3cca8a8e1ccb3f71ac72c9
 
 
 ---
@@ -205,7 +205,7 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 | 读取文档 |100 |100 |
 | 按制造商选择食物 |25 |175 |
 | 按食品组进行选择 |10 |700 |
-| 选择前 10 个 |15 |总计 150 |
+| 选择前 10 个 |15 |总计&150; |
 
 在此示例中，我们认为平均吞吐量需求为 1,275 RU/s。  舍入到最接近的百位数，我们会将此应用程序的集合设置为 1,300 RU/s。
 
@@ -239,6 +239,6 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

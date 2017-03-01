@@ -4,8 +4,8 @@ description: "将在 Windows 10 中漫游或备份的所有设置的完整列表
 services: active-directory
 keywords: "企业状态漫游, Windows 云"
 documentationcenter: 
-author: femila
-manager: swadhwa
+author: markvi
+manager: femila
 editor: curtand
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e38fd24edb0cb6cee0552a3cbdb282aae870d737
+ms.sourcegitcommit: 9b88b18e32e6a5ef6c0a0195e649fe2862583a0b
+ms.openlocfilehash: c2c50ff6e92cf42a7d309afafb01210c4edabbe0
 
 
 ---
@@ -67,13 +67,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **应用数据**：单个应用可同步数据 |同步备份 |同步备份 |内部 |
 | **应用列表**：已安装应用的列表 |X |backup |其他 |
 | **蓝牙**：所有蓝牙设置 |X |X | |
-| **命令提示符**：所有命令提示符设置 |sync |X | |
-| **Cortana**：打开或关闭 |X |X | |
-| **Cortana**：在锁定屏幕上启用 Cortana |X |X | |
-| **Cortana**：用户名 |sync |sync |内部 |
-| **Cortana**：大声朗读 SMS |X |sync |内部 |
-| **Cortana**：安全搜索 |X |sync |内部 |
-| **Cortana**：查找航班等详细信息 |X |sync |内部 |
+| **命令提示符**：命令提示符“Defaults”设置 |sync |X | |
 | **凭据**：凭据保险箱 |sync |sync |password |
 | **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |语言 |
 | **日期、时间和区域**：24 小时制 |sync |X |语言 |
@@ -95,8 +89,8 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **Microsoft Edge 浏览器**：读取列表 |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：收藏夹 |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：所有其他 Edge 设置 |X |X | |
-| **高对比度**：打开或关闭 |sync |sync |轻松访问 |
-| **高对比度**：主题设置 |sync |X | |
+| **高对比度**：打开或关闭 |sync |X |轻松访问 |
+| **高对比度**：主题设置 |sync |X |轻松访问 |
 | **Internet Explorer**：打开选项卡（URL 和标题） |sync |sync |Internet Explorer |
 | **Internet Explorer**：读取列表 |sync |sync |Internet Explorer |
 | **Internet Explorer**：键入的 URL |sync |sync |Internet Explorer |
@@ -113,8 +107,8 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **语言**：CHS 标准键盘 - 启用动态候选项排名 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 字符集简体中文 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 字符集繁体中文 |sync |X |语言 |
-| **语言**：CHS 标准键盘 - 模糊拼音 |sync |sync |语言 |
-| **语言**：CHS 标准键盘 - 模糊配对 |sync |sync |语言 |
+| **语言**：CHS 标准键盘 - 模糊拼音 |sync |backup |语言 |
+| **语言**：CHS 标准键盘 - 模糊配对 |sync |backup |语言 |
 | **语言**：CHS 标准键盘 - 完整拼音 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 双拼音 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 读取自动更正 |sync |X |语言 |
@@ -123,7 +117,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **语言**：CHS 五笔 - 单字符输入模式 |sync |X |语言 |
 | **语言**：CHS 五笔 - 显示候选项的剩余编码 |sync |X |语言 |
 | **语言**：CHS 五笔 - 误码时发出警报音 |sync |X |语言 |
-| **语言**：CHS 注音符号 - 包含 CJK Ext-A |sync |X |语言 |
+| **语言**：CHT 注音符号 - 包含 CJK Ext-A |sync |X |语言 |
 | **语言**：日语输入法 - 预测键入和自定义词语 |sync |sync |语言 |
 | **语言**：韩文 (KOR) 输入法 |X |X |语言 |
 | **语言**：手写识别 |X |X |语言 |
@@ -147,11 +141,11 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **讲述人**：“讲述人”后跟插入光标（默认为开启） |sync |X |轻松访问 |
 | **讲述人**：启用“讲述人”光标视觉突出显示（默认为开启） |sync |X |轻松访问 |
 | **讲述人**：播放音频提示（默认为开启） |sync |X |轻松访问 |
-| **讲述人**：举起手指时激活触控键盘上的键（默认为关闭） |sync |sync |轻松访问 |
+| **讲述人**：举起手指时激活触控键盘上的键（默认为关闭） |sync |X |轻松访问 |
 | **轻松访问**：设置闪烁光标的粗细 |sync |X |轻松访问 |
 | **轻松访问**：删除背景图像（默认为关闭） |sync |X |轻松访问 |
 | **电源和睡眠**：所有设置 |X |X | |
-| **启动屏幕个性化**：系统颜色 |sync |sync |主题 |
+| **启动屏幕个性化**：主题色（仅限电话） |X |sync |主题 |
 | **键入**：拼写字典 |sync |backup |语言 |
 | **键入**：自动更正拼写错误的单词 |sync |backup |语言 |
 | **键入**：突出显示拼写错误的单词 |sync |backup |语言 |
@@ -169,10 +163,10 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 * [在 Azure Active Directory 中启用企业状态漫游](active-directory-windows-enterprise-state-roaming-enable.md)
 * [设置和数据漫游的常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
+* [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

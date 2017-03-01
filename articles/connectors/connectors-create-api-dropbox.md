@@ -24,7 +24,7 @@ ms.openlocfilehash: a8ecad3552f35c02c07fe33aa8531fb462b27002
 # <a name="get-started-with-the-dropbox-connector"></a>Dropbox 连接器入门
 连接到 Dropbox 管理你的文件。 你可以在 Dropbox 中执行各种操作，例如上传、更新、获取和删除文件。
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
+若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。
 
 ## <a name="connect-to-dropbox"></a>连接到 Dropbox
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 Dropbox，首先需要 Dropbox *连接*。 若要创建连接，需要提供通常用于访问要连接到的服务的凭据。 因此，在 Dropbox 示例中，需要 Dropbox 帐户的凭据，才能创建到 Dropbox 的连接。 [了解有关连接的详细信息]()

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2017
+ms.date: 02/03/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 3c97604b17636f011ddb2acda40fbc77afeab590
-ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
-
+ms.sourcegitcommit: 110bf7df8753ec83a5a8b4219891700b462d4eb1
+ms.openlocfilehash: 339301772b1ee3bf22e543d4d4183adda5b54c2e
 
 ---
+
 # <a name="social-media-analysis-real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>社交媒体分析：在 Azure 流分析中进行实时 Twitter 观点分析
 了解如何通过将实时 Twitter 事件引入 Azure 事件中心，生成用于社交媒体分析的情绪分析解决方案。 将编写一个 Azure 流分析查询以分析数据。 将存储以后审阅的结果或使用仪表板和 [Power BI](https://powerbi.com/) 来提供实时见解。
 
@@ -45,6 +45,7 @@ ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
 4. 在“共享访问策略”下，使用“管理”权限创建一个新策略。
 
    ![共享访问策略：你可以在其中使用管理权限创建策略。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-ananlytics-shared-access-policies.png)
+
 5. 单击页面底部的“保存”。
 6. 转到“仪表板”，单击页面底部的“连接信息”，然后复制并保存该连接信息。 （使用显示在搜索图标下的复制图标。）
 
@@ -65,18 +66,23 @@ ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
    [生成 OAuth 访问令牌的步骤](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)  
 
    请注意，你需要使用空的应用程序来生成令牌。  
-3. 将 TwitterClient.exe.config 中 EventHubConnectionString 和 EventHubName 的值替换为事件中心的连接字符串和名称。 之前复制的连接字符串将为你提供事件中心的连接字符串和名称，因此请确保将它们分隔开来，并将其放在正确的字段中。 例如，考虑以下连接字符串：
 
-     Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey;EntityPath=yourhub
-
+3. 将 TwitterClient.exe.config 中 EventHubConnectionString 和 EventHubName 的值替换为事件中心的连接字符串和名称。 之前复制的连接字符串将为你提供事件中心的连接字符串和名称，因此请确保将它们分隔开来，并将其放在正确的字段中。 例如，考虑以下连接字符串：  
+   
+   `Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey;EntityPath=yourhub`
+   
    TwitterClient.exe.config 文件应该包含你的设置，如下面的示例所示：
-
-     add key="EventHubConnectionString" value="Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey"   add key="EventHubName" value="yourhub"
-
+   
+   ```
+     add key="EventHubConnectionString" value="Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey"
+     add key="EventHubName" value="yourhub"
+   ```
+   
    需要注意的一点是，文本“EntityPath=”**未**在 EventHubName 值中出现。
+   
 4. *可选：*调整要搜索的关键字。  目前情况下，此应用程序会搜索“Azure,Skype,XBox,Microsoft,Seattle”。  你可以根据需要调整 TwitterClient.exe.config 中 **twitter_keywords** 的值。
 5. 运行 TwitterClient.exe 以启动应用程序。 你将看到具有 **CreatedAt**、**Topic** 和 **SentimentScore** 值的推文事件，其中这些值已发送至事件中心。
-
+   
    ![观点分析：发送到事件中心的 SentimentScore 值。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-sentiment-output-to-event-hub.png)
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
@@ -88,30 +94,35 @@ ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
 
    * **作业名称**：输入作业名称。
    * **区域**：选择要运行作业的区域。 考虑将作业和事件中心放在同一区域，以确保获得更好的性能，并确保在不同区域之间传输数据时不需付费。
-   * **存储帐户**：选择要使用的 Azure 存储帐户，以便为所有在此区域运行的流分析作业存储监视数据。 你可以选择现有存储帐户，也可以创建新的存储帐户。
-3. 单击左窗格中的“流分析”，列出流分析作业。  
-   ![流分析服务图标](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
+   * **存储帐户**：选择要使用的 Azure 存储帐户，以便为所有在此区域运行的流分析作业存储监视数据。 你可以选择现有存储帐户，也可以创建新的存储帐户。   
 
+3. 单击左窗格中的“流分析”，列出流分析作业。  
+   
+   ![流分析服务图标](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
+   
    新作业显示的状态为“已创建”。 请注意，页面底部的“启动”按钮已禁用。 你必须先配置作业输入、输出和查询，然后才能启动作业。
 
+
 ### <a name="specify-job-input"></a>指定作业输入
+
 1. 在流分析作业中，单击页面顶部的“输入”，然后单击“添加输入”。 此时会打开一个对话框，引导你完成设置输入所需的一系列步骤。
 2. 单击“数据流”，然后单击右侧按钮。
 3. 选择“事件中心”，然后单击右侧按钮。
-4. 在第三页中键入或选择以下值：
-
+4. 在第三页中键入或选择以下值：  
+   
    * **输入别名**：输入此作业输入的友好名称，例如 *TwitterStream*。 请注意，将在后面的查询中使用此名称。
-     **事件中心**：如果创建的事件中心与流分析作业属于同一订阅，请选择事件中心所在的命名空间。
-
-     如果事件中心属于其他订阅，请单击“使用其他订阅的事件中心”，然后手动输入以下项目的相关信息：**服务总线命名空间**、**事件中心名称**、**事件中心策略名称**、**事件中心策略密钥**以及**事件中心分区计数**。
+   * **事件中心**：如果创建的事件中心与流分析作业属于同一订阅，请选择事件中心所在的命名空间。
+      * 如果事件中心属于其他订阅，请单击“使用其他订阅的事件中心”，然后手动输入以下项目的相关信息：**服务总线命名空间**、**事件中心名称**、**事件中心策略名称**、**事件中心策略密钥**以及**事件中心分区计数**。
    * **事件中心名称**：选择事件中心名称。
    * **事件中心策略名称**：选择此前在本教程中创建的事件中心策略。
    * **事件中心使用者组**：键入此前在本教程中创建的使用者组。
+   
 5. 单击右侧按钮。
-6. 指定以下值：
-
+6. 指定以下值：  
+   
    * **事件序列化程序格式**：JSON
    * **编码**：UTF8
+  
 7. 单击相应“勾选”按钮以添加此源，并验证流分析是否可以成功连接到事件中心。
 
 ### <a name="specify-job-query"></a>指定作业查询
@@ -128,43 +139,63 @@ ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
 开始时，我们将进行简单的传递查询来投射事件中的所有字段。
 
 1. 单击流分析作业页顶部的“查询”。
-2. 在代码编辑器中，用以下内容替换初始查询模板：
-
-     SELECT * FROM TwitterStream
-
+2. 在代码编辑器中，用以下内容替换初始查询模板：  
+   
+   `SELECT * FROM TwitterStream`
+   
    请确保输入源的名称与此前指定的输入的名称相匹配。
+   
 3. 单击查询编辑器下的“测试”。
 4. 转到示例 .json 文件。
 5. 单击**复选**按钮，将在查询定义下方看到结果。
-
+   
    ![显示在查询定义下方的结果](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sentiment-by-topic.png)
-
+   
 #### <a name="count-of-tweets-by-topic-tumbling-window-with-aggregation"></a>按主题的推文计数：带聚合功能的翻转窗口
 为了比较主题的提及次数，我们将使用 [TumblingWindow](https://msdn.microsoft.com/library/azure/dn835055.aspx) 每五秒按主题获取提及次数。
 
-1. 在代码编辑器中将查询更改为：
-
-     SELECT System.Timestamp as Time, Topic, COUNT(*)   FROM TwitterStream TIMESTAMP BY CreatedAt   GROUP BY TUMBLINGWINDOW(s, 5), Topic
-
+1. 在代码编辑器中将查询更改为：  
+   
+   ```
+     SELECT System.Timestamp as Time, Topic, COUNT(*)
+     FROM TwitterStream TIMESTAMP BY CreatedAt
+     GROUP BY TUMBLINGWINDOW(s, 5), Topic
+   ```
+   
    此查询使用 **TIMESTAMP BY** 关键字指定在临时计算中使用的有效负载的时间戳字段。 如果未指定此字段，将根据每个事件到达事件中心的时间执行窗口化操作。  通过[流分析查询参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)的“到达时间与应用程序时间”部分了解详细信息。
-
+   
    此查询还可以通过使用 **System.Timestamp** 属性访问每个窗口结束时的时间戳。
+   
 2. 单击查询编辑器下的“重新运行”，查看查询结果。
 
 #### <a name="identify-trending-topics-sliding-window"></a>标识热门话题：滑动窗口
 为了标识热门话题，我们将查找给定时间内超出某一提及次数阈值的主题。 为实现本教程的目的，我们将使用 [SlidingWindow](https://msdn.microsoft.com/library/azure/dn835051.aspx) 查看过去五秒内提及次数超过 20 次的主题。
 
-1. 将代码编辑器中的查询更改为以下内容：   SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions   FROM TwitterStream TIMESTAMP BY CreatedAt   GROUP BY SLIDINGWINDOW(s, 5), topic   HAVING COUNT(*) > 20
-2. 单击查询编辑器下的“重新运行”，查看查询结果。
-
+1. 在代码编辑器中将查询更改为：  
+   
+   ```
+     SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions
+     FROM TwitterStream TIMESTAMP BY CreatedAt
+     GROUP BY SLIDINGWINDOW(s, 5), topic
+     HAVING COUNT(*) > 20
+   ```
+   
+2. 单击查询编辑器下的“重新运行”，查看查询结果。  
+   
    ![滑动窗口查询输出](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-query-output.png)
-
+   
 #### <a name="count-of-mentions-and-sentiment-tumbling-window-with-aggregation"></a>提及次数和观点：带聚合的翻转窗口
 测试的最后一个查询会使用 **TumblingWindow** 获取每五秒钟每个主题的提及次数、情绪分数的最小、最大和标准偏差。
 
-1. 在代码编辑器中将查询更改为：
+1. 在代码编辑器中将查询更改为：  
+   
+   ```
+     SELECT System.Timestamp as Time, Topic, COUNT(*), AVG(SentimentScore), MIN(SentimentScore),
+     Max(SentimentScore), STDEV(SentimentScore)
+     FROM TwitterStream TIMESTAMP BY CreatedAt
+     GROUP BY TUMBLINGWINDOW(s, 5), Topic
+   ```     
 
-     SELECT System.Timestamp as Time, Topic, COUNT(*), AVG(SentimentScore), MIN(SentimentScore),   Max(SentimentScore), STDEV(SentimentScore)   FROM TwitterStream TIMESTAMP BY CreatedAt   GROUP BY TUMBLINGWINDOW(s, 5), Topic
 2. 单击查询编辑器下的“重新运行”，查看查询结果。
 3. 这是将要用于仪表板的查询。  单击页面底部的“保存”。
 
@@ -180,15 +211,16 @@ ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
 ## <a name="specify-job-output"></a>指定作业输出
 1. 在流分析作业中，单击页面顶部的“输出”，然后单击“添加输出”。 此时会打开一个对话框，引导你完成设置输出的若干步骤。
 2. 单击“Blob 存储”，然后单击右侧按钮。
-3. 在第三页中键入或选择以下值：
-
+3. 在第三页中键入或选择以下值：   
+   
    * **输出别名**：输入此作业输出的友好名称。
    * **订阅**：如果创建的 Blob 存储与流分析作业属于同一订阅，请单击“使用当前订阅中的存储帐户”。 如果存储属于其他订阅，请单击“使用其他订阅中的存储帐户”，然后针对“存储帐户”、“存储帐户密钥”和“容器”手动输入相关信息。
    * **存储帐户**：选择存储帐户的名称。
    * **容器**：选择容器名称。
    * **文件名前缀**：键入写入 blob 输出时要使用的文件前缀。
+  
 4. 单击右侧按钮。
-5. 指定以下值：
+5. 指定以下值：  
    * **事件序列化程序格式**：JSON
    * **编码**：UTF8
 6. 单击相应“勾选”按钮以添加此源，并验证流分析是否可以成功连接到存储帐户。
@@ -217,6 +249,6 @@ ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

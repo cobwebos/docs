@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2016
+ms.date: 01/25/2017
 ms.author: DavidBosland
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80b6c1a1b5f5ae3f66ee2f39daf5b65ebc63fbed
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 97cd45563dbd2341620658e05dbbd9ff0519b1aa
 
 
 ---
@@ -26,19 +26,19 @@ ms.openlocfilehash: 80b6c1a1b5f5ae3f66ee2f39daf5b65ebc63fbed
 若要查看或更改“经销商激励”状态，请执行以下步骤：
 
 1. 登录到 [Microsoft Azure 发布帐户](https://publish.windowsazure.com/workspace)
-   
+
    ![个人资料登陆屏幕][1]
 2. 单击“发布者”
-   
+
    ![个人资料登陆屏幕 - 发布者链接][2]
 3. 请注意个人资料中有关云解决方案提供商的信息。  有一个对应“经销商激励”的**“是”或“否”的开关** - 默认状态为“是”。
-   
+
    ![个人资料 - 发布者][3]
 4. 若要更改“经销商激励”状态，请访问“发布者个人资料”，然后进行选择并保存你的选择：
-   
+
    * 选择“是”向转售应用程序和服务（你在 Azure 应用商店中所列出）的云解决方案提供商提供 20% 折扣。  或者选择“否”选择退出此激励计划。  在任一情况下，发布者都将收到相同付款。
    * 做出选择后，请确保单击右上角的“保存”。
-   
+
    ![个人资料 - 发布者 - 更改框][4]
 
 [1]: ./media/marketplace-publishing-csp-incentive/profile-stock.png
@@ -48,6 +48,6 @@ ms.openlocfilehash: 80b6c1a1b5f5ae3f66ee2f39daf5b65ebc63fbed
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

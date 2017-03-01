@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2016
+ms.date: 12/14/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 09c1df79e9a4af666cdd46da115b9af78dd27d72
+ms.sourcegitcommit: e6033f089152c27713f98f12634c53012f5ff070
+ms.openlocfilehash: 04cfafc9e7a037d915f63723fd0b67a07954460b
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 09c1df79e9a4af666cdd46da115b9af78dd27d72
 可以从 [Runbook 库](#runbooks-in-runbook-gallery)获取 Runbook，并从[PowerShell 库](#modules-in-powerShell-gallery)获取模块。  你还可以通过共享开发的方案来为社区做出贡献。
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbook 库中的 Runbook
-[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。 可以从 [TechNet 脚本中心](http://gallery.technet.microsoft.com/)托管的库下载 Runbook，或者在 Azure 经典门户或 Azure 门户中直接从该库导入 Runbook。
+[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。 可以从 [TechNet 脚本中心](https://gallery.technet.microsoft.com/scriptcenter/site/upload)托管的库下载 Runbook，或者在 Azure 经典门户或 Azure 门户中直接从该库导入 Runbook。
 
 直接从 Runbook 库导入只能使用 Azure 经典门户或 Azure 门户来完成。 而不能使用 Windows PowerShell 执行此功能。
 
@@ -125,6 +125,6 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "使用直接方法 | Microsoft Docs"
-description: "本教程介绍如何使用直接方法"
+title: "Azure IoT 中心直接方法 (Node) | Microsoft Docs"
+description: "如何使用 Azure IoT 中心直接方法。 使用 Azure IoT SDK for Node.js 实现包含直接方法的模拟设备应用和调用直接方法的服务应用。"
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/11/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 52eb502054120af4c03c649dee810366f99d326b
 
 
 ---
-# <a name="tutorial-use-direct-methods"></a>教程：使用直接方法
+# <a name="use-direct-methods-node"></a>使用直接方法 (Node)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-在本教程结束时，用户有两个 Node.js 控制台应用程序：
+在本教程结束时，将会创建两个 Node.js 控制台应用：
 
 * **CallMethodOnDevice.js**，用于调用模拟设备应用中的方法并显示响应。
 * **SimulatedDevice.js**，可使用前面创建的设备标识连接到 IoT 中心，并响应通过云调用的方法。
@@ -45,7 +45,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 在本部分，用户需创建一个 Node.js 控制台应用，用于响应通过云调用的方法。
 
-1. 新建名为 **simulateddevice**的空文件夹。 在命令提示符下的 **simulateddevice** 文件夹中，使用以下命令创建 package.json 文件。 接受所有默认值：
+1. 新建名为 **simulateddevice**的空文件夹。 在命令提示符下使用以下命令，在 **simulateddevice** 文件夹中创建一个 package.json 文件。 接受所有默认值：
    
     ```
     npm init
@@ -64,7 +64,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
     var Mqtt = require('azure-iot-device-mqtt').Mqtt;
     var DeviceClient = require('azure-iot-device').Client;
     ```
-5. 添加 **connectionString** 变量，并使用它创建一个设备客户端。 将 **{device connection string}** 替换为在*创建设备标识*部分创建的连接字符串：
+5. 添加 **connectionString** 变量，并使用它创建 **DeviceClient** 实例。 将 **{device connection string}** 替换为在“创建设备标识”部分生成的设备连接字符串：
    
     ```
     var connectionString = '{device connection string}';
@@ -125,7 +125,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
    
     var Client = require('azure-iothub').Client;
     ```
-5. 添加以下变量声明，并将占位符值替换为你的 IoT 中心的连接字符串：
+5. 添加以下变量声明，并将占位符值替换为中心的 IoT 中心连接字符串：
    
     ```
     var connectionString = '{iothub connection string}';
@@ -184,9 +184,9 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
 * [IoT 中心入门]
-* [在多个设备上安排作业][lnk-devguide-jobs]
+* [在多台设备上安排作业][lnk-devguide-jobs]
 
-若要了解如何扩展 IoT 解决方案并在多个设备上计划方法调用，请参阅[安排和广播作业][lnk-tutorial-jobs]。
+若要了解如何扩展 IoT 解决方案以及在多个设备上计划方法调用，请参阅[计划和广播作业][lnk-tutorial-jobs]教程。
 
 <!-- Images. -->
 [7]: ./media/iot-hub-node-node-direct-methods/run-simulated-device.png
@@ -196,7 +196,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
 <!-- Links -->
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -213,6 +213,6 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

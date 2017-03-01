@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2016
+ms.date: 1/11/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 480dc512e93f8ae64a73067aaee95190f525e780
-ms.openlocfilehash: dc8e5a6990004716699420f1c9ab2a418dd6c54e
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 686b26f082951a71ad21f653c8086061afa56b59
 
 
 ---
@@ -133,7 +133,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 
 可以利用 Azure Resource Manager 模板将这些不同的资源声明为一个逻辑部署单元，然后进行部署和管理。 请不要以命令方式告知 Azure 逐一部署命令，而应该在 JSON 文件中描述整个部署 - 所有资源及关联的设置以及部署参数 - 然后告诉 Azure 将这些资源视为一个组进行部署。
 
-可在 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)中了解有关 Azure 资源组及其功能的详细信息。 若要了解如何创作模板，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+可在 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)中了解有关 Azure 资源组及其功能的详细信息。 若要了解如何创作模板，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ## <a name="a-idquick-create-documentdb-accountatask-create-a-single-region-documentdb-account"></a><a id="quick-create-documentdb-account"></a>任务：创建单区域 DocumentDB 帐户
 使用本部分中的说明创建单区域 DocumentDB 帐户。 可以在 Azure CLI 中使用或不使用 Resource Manager 模板完成此任务。
@@ -146,16 +146,17 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
 >
 >
 
-    azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l <resourcegrouplocation> -p "{\"databaseAccountOfferType\":\"Standard\",\"locations\":["{\"locationName\":\"<databaseaccountlocation>\",\"failoverPriority\":\"<failoverPriority>\"}"]}"
+    azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l <resourcegrouplocation> -p "{\"databaseAccountOfferType\":\"Standard\",\"ipRangeFilter\":\"<ip-range-filter>\",\"locations\":["{\"locationName\":\"<databaseaccountlocation>\",\"failoverPriority\":\"<failoverPriority>\"}"]}"
 
 * `<resourcegroupname>` 只能使用字母数字字符、句点、下划线、“-”字符和括号，且不能以句点结尾。
 * `<resourcegrouplocation>` 是当前资源组的区域。
+* `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [DocumentDB 防火墙支持](documentdb-firewall-support.md)
 * `<databaseaccountname>` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。
 * `<databaseaccountlocation>` 必须是已正式推出 DocumentDB 的区域之一。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
 
 输入示例：
 
-    azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l westus -p "{\"databaseAccountOfferType\":\"Standard\",\"locations\":["{\"locationName\":\"westus\",\"failoverPriority\":\"0\"}"]}"
+    azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l westus -p "{\"databaseAccountOfferType\":\"Standard\",\"ipRangeFilter\":\"\",\"locations\":["{\"locationName\":\"westus\",\"failoverPriority\":\"0\"}"]}"
 
 若已预配新的帐户，这将生成以下输出：
 
@@ -202,6 +203,7 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
                 "location": "[resourceGroup().location]",
                 "properties": {
                     "databaseAccountOfferType": "Standard",
+                    "ipRangeFilter": "",
                     "locations": [
                         {
                             "failoverPriority": 0,
@@ -212,6 +214,124 @@ DocumentDB 数据库帐户是目前唯一可以使用 Resource Manager 模板和
             }
         ]
     }
+
+由于这是单区域帐户，failoverPriority 必须设置为 0。 failoverPriority 为 0 表示此区域将保留为 [DocumentDB 帐户的写入区域][scaling-globally]。
+可以在命令行中输入值，也可以创建参数文件来指定值。
+
+若要创建参数文件，请将下列内容复制到新文件中，然后将文件命名为 azuredeploy.parameters.json。 如果计划在命令提示符处指定数据库帐户名称，就可以继续操作而不需创建此文件。
+
+    {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "databaseAccountName": {
+                "value": "samplearmacct"
+            },
+            "locationName1": {
+                "value": "westus"
+            }
+        }
+    }
+
+在 azuredeploy.parameters.json 文件中，将 `"samplearmacct"` 的值字段更新为要使用的数据库名称，然后保存该文件。 `"databaseAccountName"` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。 将 `"locationName1"` 的值字段更新为要在其中创建 DocumentDB 帐户的区域。
+
+若要在资源组中创建 DocumentDB 帐户，请运行下列命令，并提供模板文件的路径、参数文件的路径或参数值、要部署于其中的资源组名称，以及部署名称（-n 可选）。
+
+使用参数文件：
+
+    azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g <resourcegroupname> -n <deploymentname>
+
+* `<PathToTemplate>` 是步骤 1 中创建的 azuredeploy.json 文件的路径。 如果路径名称含有空格，请使用双引号括住此参数。
+* `<PathToParameterFile>` 是步骤 1 中创建的 azuredeploy.parameters.json 文件的路径。 如果路径名称含有空格，请使用双引号括住此参数。
+* `<resourcegroupname>` 是要在其中添加 DocumentDB 数据库帐户的现有资源组的名称。
+* `<deploymentname>` 是部署的可选名称。
+
+输入示例：
+
+    azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json -g new_res_group -n azuredeploy
+
+或者，若要指定数据库帐户名称参数而不使用参数文件，并且改为让系统提示输入值，请运行下列命令：
+
+    azure group deployment create -f <PathToTemplate> -g <resourcegroupname> -n <deploymentname>
+
+示例输入，其中显示提示以及名为 samplearmacct 的数据库帐户条目：
+
+    azure group deployment create -f azuredeploy.json -g new_res_group -n azuredeploy
+    info:    Executing command group deployment create
+    info:    Supply values for the following parameters
+    databaseAccountName: samplearmacct
+
+预配帐户时，将收到以下信息：
+
+    info:    Executing command group deployment create
+    + Initializing template configurations and parameters
+    + Creating a deployment
+    info:    Created template deployment "azuredeploy"
+    + Waiting for deployment to complete
+    +
+    +
+    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Running
+    +
+    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Succeeded
+    data:    DeploymentName     : azuredeploy
+    data:    ResourceGroupName  : new_res_group
+    data:    ProvisioningState  : Succeeded
+    data:    Timestamp          : 2015-11-30T18:50:23.6300288Z
+    data:    Mode               : Incremental
+    data:    CorrelationId      : 4a5d4049-c494-4053-bad4-cc804d454700
+    data:    DeploymentParameters :
+    data:    Name                 Type    Value
+    data:    -------------------  ------  ------------------
+    data:    databaseAccountName  String  samplearmacct
+    data:    locationName1        String  westus
+    info:    group deployment create command OK
+
+如果遇到错误，请参阅[故障排除](#troubleshooting)。  
+
+在此命令返回之后，在帐户更改为“联机”状态以准备好可供使用之前，该帐户将会进入“正在创建”状态数分钟的时间。 可以在 [Azure 门户](https://portal.azure.com)中的“DocumentDB 帐户”边栏选项卡上检查帐户的状态。
+
+## <a name="a-idquick-create-documentdb-with-mongodb-api-accountatask-create-a-single-region-documentdb-with-support-for-mongodb-account"></a><a id="quick-create-documentdb-with-mongodb-api-account"></a>任务：创建支持 MongoDB 的单区域 DocumentDB 帐户
+使用本部分中的说明创建支持 MongoDB 的单区域 DocumentDB 帐户。 可使用 Azure CLI，通过 Resource Manager 模板完成此任务。
+
+### <a name="a-idcreate-single-documentdb-with-mongodb-api-account-cli-arma-create-a-single-region-documentdb-with-support-for-mongodb-account-using-azure-cli-with-resource-manager-templates"></a><a id="create-single-documentdb-with-mongodb-api-account-cli-arm"></a>使用 Azure CLI，通过 Resource Manager 模板创建支持 MongoDB 的单区域 DocumentDB 帐户
+本部分中的说明介绍如何使用 Azure Resource Manager 模板和可选参数文件（这两者都是 JSON 文件）创建支持 MongoDB 的 DocumentDB 帐户。 使用模板可以准确描述所需的信息，并可重复使用而不会出现任何错误。
+
+创建含有下列内容的本地模板文件。 将文件命名为 azuredeploy.json。
+
+    {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "databaseAccountName": {
+                "type": "string"
+            },
+            "locationName1": {
+                "type": "string"
+            }
+        },
+        "variables": {},
+        "resources": [
+            {
+                "apiVersion": "2015-04-08",
+                "type": "Microsoft.DocumentDb/databaseAccounts",
+                "name": "[parameters('databaseAccountName')]",
+                "location": "[resourceGroup().location]",
+                "kind": "MongoDB",
+                "properties": {
+                    "databaseAccountOfferType": "Standard",
+                    "ipRangeFilter": "",
+                    "locations": [
+                        {
+                            "failoverPriority": 0,
+                            "locationName": "[parameters('locationName1')]"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+
+必须将类型设置为 MongoDB，指定此帐户将支持 MongoDB API。 如果未指定任何类型属性，默认值为本机 DocumentDB 帐户。
 
 由于这是单区域帐户，failoverPriority 必须设置为 0。 failoverPriority 为 0 表示此区域将保留为 [DocumentDB 帐户的写入区域][scaling-globally]。
 可以在命令行中输入值，也可以创建参数文件来指定值。
@@ -299,16 +419,17 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 >
 >
 
-    azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l <resourcegrouplocation> -p "{\"databaseAccountOfferType\":\"Standard\",\"locations\":["{\"locationName\":\"<databaseaccountlocation1>\",\"failoverPriority\":\"<failoverPriority1>\"},{\"locationName\":\"<databaseaccountlocation2>\",\"failoverPriority\":\"<failoverPriority2>\"}"]}"
+    azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l <resourcegrouplocation> -p "{\"databaseAccountOfferType\":\"Standard\",\"ipRangeFilter\":\"<ip-range-filter>\",\"locations\":["{\"locationName\":\"<databaseaccountlocation1>\",\"failoverPriority\":\"<failoverPriority1>\"},{\"locationName\":\"<databaseaccountlocation2>\",\"failoverPriority\":\"<failoverPriority2>\"}"]}"
 
 * `<resourcegroupname>` 只能使用字母数字字符、句点、下划线、“-”字符和括号，且不能以句点结尾。
 * `<resourcegrouplocation>` 是当前资源组的区域。
+* `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [DocumentDB 防火墙支持](documentdb-firewall-support.md)
 * `<databaseaccountname>` 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。
 * `<databaseaccountlocation1>` 和 `<databaseaccountlocation2>` 必须是已正式推出 DocumentDB 的区域。 [Azure 区域页面](https://azure.microsoft.com/regions/#services)提供当前的区域列表。
 
 输入示例：
 
-    azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l westus -p "{\"databaseAccountOfferType\":\"Standard\",\"locations\":["{\"locationName\":\"westus\",\"failoverPriority\":\"0\"},{\"locationName\":\"eastus\",\"failoverPriority\":\"1\"}"]}"
+    azure resource create -g new_res_group -n samplecliacct -r "Microsoft.DocumentDB/databaseAccounts" -o 2015-04-08 -l westus -p "{\"databaseAccountOfferType\":\"Standard\",\"ipRangeFilter\":\"\",\"locations\":["{\"locationName\":\"westus\",\"failoverPriority\":\"0\"},{\"locationName\":\"eastus\",\"failoverPriority\":\"1\"}"]}"
 
 若已预配新的帐户，这将生成以下输出：
 
@@ -358,6 +479,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
                 "location": "[resourceGroup().location]",
                 "properties": {
                     "databaseAccountOfferType": "Standard",
+                    "ipRangeFilter": "",
                     "locations": [
                         {
                             "failoverPriority": 0,
@@ -470,7 +592,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
         azure group log show new_res_group --last-deployment
 
-    有关其他信息，则请参阅 [Azure 中的资源组部署故障排除](../resource-manager-troubleshoot-deployments-cli.md)。
+    有关其他信息，则请参阅 [Azure 中的资源组部署故障排除](../azure-resource-manager/resource-manager-common-deployment-errors.md)。
 * Azure 门户中也会提供错误信息，如以下屏幕截图所示。 导航到错误信息的步骤：单击跳转栏中的“资源组”，选择发生错误的资源组，接着在“资源组”边栏选项卡的“概要”区域中单击“上次部署”的日期，然后在“部署历史记录”边栏选项卡中选择失败的部署，之后在“部署”边栏选项卡中单击带有红色感叹号的“操作详细信息”。 失败部署的状态消息显示在“操作详细信息”边栏选项卡中。
 
     ![Azure 门户屏幕截图：显示如何导航到部署错误消息](media/documentdb-automation-resource-manager-cli/portal-troubleshooting-deploy.png)
@@ -478,7 +600,7 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 ## <a name="next-steps"></a>后续步骤
 现在你已经有了 DocumentDB 帐户，下一步是创建 DocumentDB 数据库。 你可以使用下面其中一项来创建数据库：
 
-* Azure 门户，如 [使用 Azure 门户创建 DocumentDB 数据库](documentdb-create-database.md)中所述。
+* Azure 门户，如[使用 Azure 门户创建 DocumentDB 集合和数据库](documentdb-create-collection.md)中所述。
 * C# .NET 示例，位于 GitHub 上 [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) 存储库的 [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) 项目中。
 * [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 DocumentDB 有 .NET、Java、Python、Node.js 和 JavaScript API SDK。
 
@@ -499,6 +621,6 @@ DocumentDB 能够跨不同的 [Azure 区域](https://azure.microsoft.com/regions
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

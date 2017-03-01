@@ -1,17 +1,30 @@
 ---
+title: "Azure 逻辑应用文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何开发逻辑应用，用于自动化及简化跨本地和云的业务工作流。 教程、模板和 API 参考。"
+services: logic-apps
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: logic-apps
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 87c52e5ee76ed7848061315de8c8ba8a36b0d349
+ms.sourcegitcommit: 2c45896d603913d21bebb5f5a157bb60ad9e73ac
+ms.openlocfilehash: f85fbd5c9cce81c5934abce25ccd343810bcc4dd
 
 ---
+
 # <a name="logic-apps-documentation"></a>逻辑应用文档
 
-逻辑应用是用于建模以及自动化工作流中的过程的设计工具。 它在云中和本地提供多个连接器，可跨服务和协议快速集成。 逻辑应用以触发器开头（例如，“当将帐户添加到 Dynamics CRM 时”），在触发之后许多组合操作、转换和条件逻辑才能开始。
+了解如何开发逻辑应用，用于简化和集成云中的可缩放工作流。 教程、模板和 API 参考可帮助你设计及部署跨本地和云的自动化业务工作流。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-what-are-logic-apps">
+        <a href="/azure/logic-apps/logic-apps-what-are-logic-apps">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,7 +60,7 @@ ms.openlocfilehash: 87c52e5ee76ed7848061315de8c8ba8a36b0d349
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-create-a-logic-app">
+        <a href="/azure/logic-apps/logic-apps-create-a-logic-app">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -65,7 +78,7 @@ ms.openlocfilehash: 87c52e5ee76ed7848061315de8c8ba8a36b0d349
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-arm-provision">
+        <a href="/azure/logic-apps/logic-apps-arm-provision">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -83,7 +96,7 @@ ms.openlocfilehash: 87c52e5ee76ed7848061315de8c8ba8a36b0d349
         </a>
     </li>
     <li>
-        <a href="/azure/app-service-logic/app-service-logic-create-api-app">
+        <a href="/azure/logic-apps/logic-apps-create-api-app">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -124,8 +137,8 @@ ms.openlocfilehash: 87c52e5ee76ed7848061315de8c8ba8a36b0d349
                 <div class="card">
                     <div class="cardText">
                         <h3>架构历史记录</h3>
-                        <p><a href="/azure/app-service-logic/app-service-logic-schema-2016-04-01?toc=%2fazure%2flogic-apps%2ftoc.json">GA</a></p>
-                        <p><a href="/azure/app-service-logic/app-service-logic-schema-2015-08-01?toc=%2fazure%2flogic-apps%2ftoc.json">预览</a></p>
+                        <p><a href="/azure/logic-apps/logic-apps-schema-2016-04-01">GA</a></p>
+                        <p><a href="/azure/logic-apps/logic-apps-schema-2015-08-01">预览</a></p>
                    </div>
                 </div>
             </div>
@@ -145,15 +158,10 @@ ms.openlocfilehash: 87c52e5ee76ed7848061315de8c8ba8a36b0d349
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/logic-apps.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载逻辑应用文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

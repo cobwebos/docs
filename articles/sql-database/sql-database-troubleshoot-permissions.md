@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: v-shysun
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1a175572bf541f0be3936ad8934f52ea6b90dfa1
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 5b717afe388d9ad6d4d37fa07d351e55ac8dbbb8
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 1a175572bf541f0be3936ad8934f52ea6b90dfa1
 使用本主题了解授予和删除对 Azure SQL 数据库的访问权限的快速步骤。 如需更完整的信息，请参阅：
 
 * [在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)
-* [保护 SQL 数据库](sql-database-security.md)
+* [保护 SQL 数据库](sql-database-security-overview.md)
 * [SQL Server 数据库引擎和 Azure SQL 数据库安全中心](https://msdn.microsoft.com/library/bb510589)
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -49,6 +49,6 @@ ms.openlocfilehash: 1a175572bf541f0be3936ad8934f52ea6b90dfa1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 39ccb6e9b810d1c02a96b25946893ddd3e316463
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 7fcf16ac835089a1c4127fd34264f2cf7cb098ac
 
 
 ---
@@ -148,13 +148,13 @@ Azure 命令行接口 (Azure CLI) 是可以配合 Resource Manager 部署和管�
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要获取部署操作的详细信息并使用 Azure CLI 排查部署错误，请参阅[使用 Azure CLI 查看部署操作](resource-manager-troubleshoot-deployments-cli.md)。
+* 若要获取部署操作的详细信息并使用 Azure CLI 排查部署错误，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
 * 若要使用 CLI 设置一个应用程序或脚本来访问资源，请参阅[使用 Azure CLI 创建服务主体来访问资源](resource-group-authenticate-service-principal-cli.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "群集模型 | Microsoft Docs"
-description: "群集模型"
+title: "（已弃用）群集模型 - Azure | Microsoft Docs"
+description: "（已弃用）群集模型"
 services: machine-learning
 documentationcenter: 
 author: FrancescaLazzeri
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: lazzeri
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8206107550173959021ea69ac533aa046f7e12e3
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 84c94b83878f851c2ac281fe33afe53e02f8456c
 
 
 ---
-# <a name="cluster-model"></a>群集模型
+# <a name="deprecated-cluster-model"></a>（已弃用）群集模型
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 我们如何预测信用卡持有人的行为组，以降低信用卡发卡机构的坏帐风险？ 我们如何定义员工的人格特征组，以提高其工作效率？ 医生如何根据患者的疾病特征将患者分组？ 原则上，所有这些问题都可以通过群集分析得到解答。   
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -80,7 +87,7 @@ ms.openlocfilehash: 8206107550173959021ea69ac533aa046f7e12e3
 > 
 > 
 
-在 Azure 机器学习内，创建了新的空白实验，提取了两个[执行 R 脚本][execute-r-script] 模块到工作区。 数据架构使用简单的[执行 R 脚本][execute-r-script]进行创建。 然后，数据架构链接到群集模型选择，再次使用[执行 R 脚本][execute-r-script]进行创建。 在用于群集模型的[执行 R 脚本][execute-r-script]中，Web 服务会利用“k-means”函数，该函数已预生成到 Azure 机器学习的[执行 R 脚本][execute-r-script]。    
+在 Azure 机器学习中，已创建新的空白实验，并将两个[执行 R 脚本][execute-r-script]模块提取到工作区。 已使用简单的[执行 R 脚本][execute-r-script]创建数据架构。 然后，将数据架构链接到群集模型部分，再次使用[执行 R 脚本][execute-r-script]创建此数据架构。 在用于群集模型的[执行 R 脚本][execute-r-script]中，Web 服务利用“k-means”函数，该函数已预生成到 Azure 机器学习的[执行 R 脚本][execute-r-script]。    
 
 ![实验流][3]
 
@@ -134,6 +141,6 @@ ms.openlocfilehash: 8206107550173959021ea69ac533aa046f7e12e3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

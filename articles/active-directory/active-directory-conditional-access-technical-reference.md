@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
+ms.sourcegitcommit: 00124aa9d0729880bf2314f5c35c1797b7a6827f
+ms.openlocfilehash: 79d844f8fa3d3d0898b642f561df34588e044f9a
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -53,8 +54,8 @@ ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
 用于指定“工作”网络的选项
 
 1. 在[多重身份验证配置页](../multi-factor-authentication/multi-factor-authentication-whats-next.md)上配置受信任的 IP 地址范围。 条件性访问策略在每个身份验证请求和令牌颁发中使用此配置的范围来计算规则。 
-2. 配置内部公司网络声明的使用，此选项可以通过 AD FS 用于联合目录。 [了解有关内部公司网络声明的更多信息](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。
-3. 配置公共 IP 地址范围。 在“配置”选项卡上针对你的目录可以设置公共 IP 地址。 条件性访问将这些地址用作“工作”IP 地址，这样可以配置其他地址范围，超出了 MFA 设置页所实施的 50 个 IP 地址的限制。
+2. 配置内部公司网络声明的使用，此选项可以通过 AD FS 用于联合目录。 若要了解有关内部公司网络声明的详细信息，请参阅[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。
+
 
 ## <a name="rules-based-on-application-sensitivity"></a>基于应用程序敏感性的规则
 对每个应用程序配置规则，可以保护高价值的服务且不会影响访问其他服务。 可以在应用程序的“配置”选项卡上配置条件性访问规则。 
@@ -74,10 +75,5 @@ ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
 ## <a name="related-topics"></a>相关主题
 * [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

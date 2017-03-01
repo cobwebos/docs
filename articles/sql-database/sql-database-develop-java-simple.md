@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 02/03/2017
 ms.author: lbosq
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
+ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
+ms.openlocfilehash: aafc89ca958e4bdc2ba52bf1a7d379e3a4cddf1c
 
 
 ---
@@ -26,8 +26,8 @@ ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
 
 本主题演示了一个可以用来连接到 Azure SQL 数据库的 Java 代码示例。 该 Java 示例依赖于 Java 开发工具包 (JDK) 版本 1.8。 该示例将使用 JDBC 驱动程序连接到 Azure SQL 数据库。
 
-## <a name="step-1-configure-development-environment"></a>步骤 1：配置开发环境
-[Configure development environment for Java development](https://msdn.microsoft.com/library/mt720658.aspx)（配置用于 Java 开发的开发环境）
+## <a name="step-1--configure-development-environment"></a>步骤 1：配置开发环境
+[Configure development environment for Java development](https://docs.microsoft.com/sql/connect/jdbc/step-1-configure-development-environment-for-java-development/)（配置用于 Java 开发的开发环境）
 
 ## <a name="step-2-create-a-sql-database"></a>步骤 2：创建 SQL 数据库
 请参阅[入门页](sql-database-get-started.md)，以了解如何创建数据库。  
@@ -41,12 +41,12 @@ ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
 > 
 
 ## <a name="step-4-run-sample-code"></a>步骤 4：运行示例代码
-* [Proof of concept connecting to SQL using Java](https://msdn.microsoft.com/library/mt720656.aspx)（使用 Java 连接到 SQL 以进行概念认证）
+* [Proof of concept connecting to SQL using Java](https://docs.microsoft.com/sql/connect/jdbc/step-3-proof-of-concept-connecting-to-sql-using-java/)（使用 Java 连接到 SQL 以进行概念认证）
 
 ## <a name="next-steps"></a>后续步骤
 * 访问 [Java 开发人员中心](/develop/java/)。
 * 参阅 [SQL 数据库开发概述](sql-database-develop-overview.md)
-* 有关 [Microsoft JDBC Driver for SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) 的详细信息
+* 有关 [Microsoft JDBC Driver for SQL Server](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) 的详细信息
 
 ## <a name="additional-resources"></a>其他资源
 * [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)
@@ -55,6 +55,6 @@ ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

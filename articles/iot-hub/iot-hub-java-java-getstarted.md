@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
+ms.sourcegitcommit: d4eb942db51af9c8136e9e0f5f8683cc15679d08
+ms.openlocfilehash: 5bfbe4cfac202592ddd745c5f959cb791fe17ba8
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
 
 * **create-device-identity**，用于创建设备标识和关联的安全密钥以连接模拟设备应用。
 * **read-d2c-messages**，显示模拟设备应用发送的遥测数据。
-* **simulated-device**，它使用前面创建的设备标识连接到 IoT 中心，并使用 AMQP 协议每秒发送遥测消息一次。
+* **simulated-device**，它使用前面创建的设备标识连接到 IoT 中心，并使用 MQTT 协议每秒发送遥测消息一次。
 
 > [!NOTE]
 > [Azure IoT SDK][lnk-hub-sdks] 一文提供了各种 Azure IoT SDK 的相关信息，用户可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用。
@@ -42,11 +42,11 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-最后，请记下“主密钥”值，然后单击“消息传送”。 在“消息传送”边栏选项卡上，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”。 创建 **read-d2c-messages** 应用时，将要用到这三个值。
+最后，请记下“主密钥”值。 然后单击“终结点”和“事件”内置终结点。 在“属性”边栏选项卡中，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”的地址。 创建 **read-d2c-messages** 应用时，将要用到这三个值。
 
 ![Azure 门户 IoT 中心消息传递边栏选项卡][6]
 
-现在，已创建 IoT 中心并有了 IoT 中心主机名、IoT 中心连接字符串、IoT 中心主密钥、与事件中心兼容的名称及与事件中心兼容的终结点，接下来需要完成本教程。
+现在已创建 IoT 中心。 获取 IoT 中心主机名、IoT 中心连接字符串、IoT 中心主密钥、与事件中心兼容的名称以及与事件中心兼容的终结点后，接下来需要完成本教程。
 
 ## <a name="create-a-device-identity"></a>创建设备标识
 本部分将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的**标识注册表**部分。 当你运行此控制台应用时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
@@ -63,7 +63,7 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.10</version>
+      <version>1.0.11</version>
     </dependency>
     ```
 4. 保存并关闭 pom.xml 文件。
@@ -146,7 +146,7 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
     <dependency> 
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-eventhubs</artifactId> 
-        <version>0.7.8</version> 
+        <version>0.10.0</version> 
     </dependency>
     ```
 4. 保存并关闭 pom.xml 文件。
@@ -205,7 +205,7 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
                       receivedEvent.getSystemProperties().getOffset(), 
                       receivedEvent.getSystemProperties().getSequenceNumber(), 
                       receivedEvent.getSystemProperties().getEnqueuedTime()));
-                    System.out.println(String.format("| Device ID: %s", receivedEvent.getProperties().get("iothub-connection-device-id")));
+                    System.out.println(String.format("| Device ID: %s", receivedEvent.getSystemProperties().get("iothub-connection-device-id")));
                     System.out.println(String.format("| Message Payload: %s", new String(receivedEvent.getBody(),
                       Charset.defaultCharset())));
                     batchSize++;
@@ -283,7 +283,7 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-device-client</artifactId>
-      <version>1.0.15</version>
+      <version>1.0.16</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -313,12 +313,12 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
    
     ```
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
-    private static IotHubClientProtocol protocol = IotHubClientProtocol.AMQPS;
+    private static IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
     private static String deviceId = "myFirstJavaDevice";
     private static DeviceClient client;
     ```
    
-    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 可以使用 HTTP 或 AMQP 协议来与 IoT 中心通信。
+    本示例应用在实例化 **DeviceClient** 对象时使用 **protocol** 变量。 可以使用 MQTT、AMQP 或 HTTP 协议与 IoT 中心通信。
 8. 在 **App** 类中添加以下嵌套的 **TelemetryDataPoint** 类，以指定设备要发送到 IoT 中心的遥测数据：
    
     ```
@@ -461,7 +461,7 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
 [lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
@@ -474,6 +474,6 @@ ms.openlocfilehash: 4054831b19b91145788a0d1b4dbb09d4795df459
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

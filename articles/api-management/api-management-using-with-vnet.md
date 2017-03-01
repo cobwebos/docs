@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
-ms.author: antonba
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: d2c9961e67fd1380ba734b6fa6f5fa859144e8ae
-ms.openlocfilehash: 1e814f0db36c9cad1b4f4f062b1e235994054621
+ms.sourcegitcommit: a74872f308624028016ffb30ead3c056b1fa69ce
+ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 
-可将 Azure API 管理连接到虚拟网络 (VNET)，以便可以访问网络中的后端服务，并从网络内部访问开发人员门户和 API 网关。
+可以将 Azure API 管理部署到虚拟网络 (VNET) 内部，以便它可以访问该网络中的后端服务。 可以将开发人员门户和 API 网关配置为可以从 Internet 访问或只能在虚拟网络内访问。
 
 > [!NOTE]
 > Azure API 管理同时支持经典 VNet 和 Azure Resource Manager VNet。
@@ -51,6 +51,11 @@ ms.openlocfilehash: 1e814f0db36c9cad1b4f4f062b1e235994054621
 
 此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了在你配置的区域中设置的 Azure 订阅中可用的经典和 Resource Manager 虚拟网络。
 
+> [!NOTE]
+> 上图中的**服务终结点**包括网关/代理、发布者门户、开发人员门户、GIT 和直接管理终结点。
+> 上图中的**管理终结点**是托管在服务上用于通过 Azure 门户和 Powershell 管理配置的终结点。
+> 另请注意：即使图示中显示了各个终结点的 IP 地址，但 API 管理服务**仅**对其配置的主机名作出响应。
+
 > [!IMPORTANT]
 > 将 Azure API 管理实例部署到 Resource Manager VNET 时，该服务必须位于除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的 Resource Manager VNET 子网，则部署将失败。
 > 
@@ -64,6 +69,10 @@ ms.openlocfilehash: 1e814f0db36c9cad1b4f4f062b1e235994054621
 > 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。  
 > 当 API 管理从**外部**移动到**内部**时或者反向移动时，VIP 地址也会更改。
 > 
+
+
+> [!IMPORTANT] 
+> 如果从 VNET 中删除 API 管理或更改在其中部署的 API 管理，则之前使用的 VNET 可最多 4 小时保持锁定状态。 在此期间，无法删除该 VNET 或向其部署新资源。
 
 ## <a name="enable-vnet-powershell"> </a>使用 PowerShell cmdlet 启用 VNET 连接
 还可以使用 PowerShell cmdlet 启用 VNET 连接
@@ -82,22 +91,27 @@ ms.openlocfilehash: 1e814f0db36c9cad1b4f4f062b1e235994054621
 
 * **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
 
+> [!IMPORTANT]
+> 如果对 VNET 使用自定义 DNS 服务器，建议在向其部署 API 管理服务**之前**完成该设置。 否则需要重启托管该服务的 CloudService，供其选取新的 DNS 服务器设置。
+> 
+
 * **API 管理所需的端口**：可以使用[网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
 在 VNET 中托管 API 管理服务实例时，将使用下表中的端口。
 
 | 源 / 目标端口 | 方向 | 传输协议 | 目的 | 源/目标 | 访问类型 |
 | --- | --- | --- | --- | --- | --- |
-| 80、443 / 80、443 |入站 |TCP |客户端与 API 管理的通信 |INTERNET/VIRTUAL_NETWORK |外部 |
-| * / 3443 |入站 |TCP |管理终结点 |INTERNET/VIRTUAL_NETWORK |外部和内部 |
-| 80、443 / 80、443 |出站 |TCP |与 Azure 存储和 Azure 服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| 1433 / 1433 |出站 |TCP |与 Azure SQL 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| 9350 - 9354 / 9350 - 9354 |出站 |TCP |与服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
-| 5671 / 5671 |出站 |AMQP |与事件中心策略日志记录的依赖项关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / 80, 443 |入站 |TCP |客户端与 API 管理的通信 |INTERNET/VIRTUAL_NETWORK |外部 |
+| * / 3443 |入站 |TCP |Azure 门户和 Powershell 的管理终结点 |INTERNET / VIRTUAL_NETWORK |外部和内部 |
+| * / 80, 443 |出站 |TCP |与 Azure 存储和 Azure 服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / 1433 |出站 |TCP |与 Azure SQL 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / 11000 - 11999 |出站 |TCP |与 Azure SQL V12 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / 14000 - 14999 |出站 |TCP |与 Azure SQL V12 的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / 9350 - 9354 |出站 |TCP |与服务总线的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
+| * / 5671 |出站 |AMQP |与事件中心策略日志记录的依赖项关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
 | 6381 - 6383 / 6381 - 6383 |入站和出站 |UDP |与 Redis 缓存的依赖关系 |VIRTUAL_NETWORK/VIRTUAL_NETWORK |外部和内部 |-
 | * / 445 |出站 |TCP |与适用于 GIT 的 Azure 文件共享的依赖关系 |VIRTUAL_NETWORK/INTERNET |外部和内部 |
 | * / * | 入站 |TCP |Azure 基础结构负载均衡器 | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部和内部 |
-| * / * | 出站 |TCP |Azure 基础结构负载均衡器 | VIRTUAL_NETWORK / AZURE_LOAD_BALANCER |外部和内部 |
 
 * **SSL 功能**：若要启用 SSL 证书链构建和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。
 
@@ -134,12 +148,12 @@ ms.openlocfilehash: 1e814f0db36c9cad1b4f4f062b1e235994054621
 [Connect to a web service behind VPN]: #connect-vpn
 [Related content]: #related-content
 
-[Different topologies to connect to Vpn Gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site
+[Different topologies to connect to Vpn Gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
 [Network Security Group]: ../virtual-network/virtual-networks-nsg.md
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

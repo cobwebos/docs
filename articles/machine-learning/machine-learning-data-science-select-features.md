@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: zhangya;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: a30620c8a6ec52fd9b3268c4c83f89181cf6d9f5
 
 
 ---
@@ -25,9 +25,7 @@ ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-本主题介绍特征工程的目的，并提供其在机器学习数据增强过程中作用的相关示例。 这些示例来自 Azure 机器学习工作室。 
-
-特征的工程和选择是[团队数据科学过程是什么？](data-science-process-overview.md)中描述的 TDSP 的一部分。 特征工程和选择是 TDSP 的**开发特征**步骤的一部分。
+特征的工程设计和选择是 [Team Data Science Process (TDSP) 是什么？](data-science-process-overview.md)中描述的 Team Data Science Process (TDSP) 的一部分。 特征工程和选择是 TDSP 的**开发特征**步骤的一部分。
 
 * **特征工程**：该过程尝试从数据中的现有原始特征创建其他相关特征，并提高学习算法的预测能力。
 * **特征选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
@@ -48,7 +46,7 @@ ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
 
 ![特征选择示例](./media/machine-learning-data-science-select-features/feature-Selection.png)
 
-例如，考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为了方便起见，我们继续使用上述文本挖掘示例。 假设在通过[特征哈希][特征哈希]创建了一组 256 个特征后想要生成回归模型，并且响应变量为“Col1”，表示范围为 1 到 5 的书籍审核评分。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 [基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征以及目标属性为“Col1”的数据集。 下图显示了此实验的流程以及我们刚描述的输入参数。
+例如，考虑使用[基于筛选器的特征选择][filter-based-feature-selection]模块。 为了方便起见，我们继续使用上述文本挖掘示例。 假设在通过[特征哈希][feature-hashing]创建了一组 256 个特征后想要生成回归模型，并且响应变量为“Col1”，表示范围为 1 到 5 的书籍审核评分。 通过将“特征评分方法”设为“皮尔逊相关”，“目标列”将设为“Col1”，而“所需特征数”将设为 50。 [基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征以及目标属性为“Col1”的数据集。 下图显示了此实验的流程以及我们刚描述的输入参数。
 
 ![特征选择示例](./media/machine-learning-data-science-select-features/feature-Selection1.png)
 
@@ -68,13 +66,13 @@ ms.openlocfilehash: 6ec9a07a26f6c0cd100d963063304d96b75d71dd
 注意，并不总是必须执行特征工程或特征选择。 根据拥有的或收集的数据、选择的算法以及实验的目的决定是否需要。
 
 <!-- Module References -->
-[特征哈希]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
+[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

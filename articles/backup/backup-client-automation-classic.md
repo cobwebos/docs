@@ -1,6 +1,7 @@
 ---
-title: "使用 PowerShell 部署和管理 Windows Server/客户端的备份 | Microsoft Docs"
-description: "了解如何使用 PowerShell 部署和管理 Azure 备份"
+
+title: "在 Azure 中使用 PowerShell 管理 Windows Server 备份 | Microsoft 文档"
+description: "使用 PowerShell 部署和管理 Windows Server 备份。"
 services: backup
 documentationcenter: 
 author: saurabhsensharma
@@ -13,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
-ms.author: saurse;markgal;jimpark;nkolli;trinadhk
+ms.author: saurse;markgal;nkolli;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c21c1687221a9e5c218d03ead969f7c52b7fa2ac
+ms.sourcegitcommit: d8289128414bc67a7c064c827a9bec047f6f22bc
+ms.openlocfilehash: 096c119ad116b87b3e27b71ab9a286d2961cf7df
 
 
 ---
@@ -24,8 +25,8 @@ ms.openlocfilehash: c21c1687221a9e5c218d03ead969f7c52b7fa2ac
 > [!div class="op_single_selector"]
 > * [ARM](backup-client-automation.md)
 > * [经典](backup-client-automation-classic.md)
-> 
-> 
+>
+>
 
 本文说明如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 
@@ -43,8 +44,8 @@ Azure PowerShell 1.0 已在 2015 年 10 月发布。 此版本在 0.9.8 版本�
 ## <a name="create-a-backup-vault"></a>创建备份保管库
 > [!WARNING]
 > 对于第一次使用 Azure 备份的客户，你需要注册用于订阅的 Azure 备份提供程序。 可通过运行以下命令来执行此操作：Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
-> 
-> 
+>
+>
 
 可以使用 **New-AzureRMBackupVault** cmdlet 创建新的备份保管库。 备份保管库是一种 ARM 资源，因此需要将它放置在资源组中。 在权限提升的 Azure PowerShell 控制台中运行以下命令：
 
@@ -123,8 +124,8 @@ Machine registration succeeded.
 
 > [!IMPORTANT]
 > 请勿使用相对路径来指定保管库凭据文件。 必须提供绝对路径作为 cmdlet 的输入。
-> 
-> 
+>
+>
 
 ## <a name="networking-settings"></a>网络设置
 如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 此示例未使用代理服务器，因此我们要显式清除任何代理相关的信息。
@@ -151,8 +152,8 @@ Server properties updated successfully
 
 > [!IMPORTANT]
 > 请妥善保管设置好的通行短语，并保证其安全。 如果没有此通行短语，你将无法从 Azure 还原数据。
-> 
-> 
+>
+>
 
 ## <a name="back-up-files-and-folders"></a>备份文件和文件夹
 从 Windows Server 和客户端到 Azure 备份的所有备份由策略控制。原则包含三个部分： 策略由三个部分组成：
@@ -607,7 +608,6 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: b0046511f1a56cd72423bbbcfb5bf1e17e60ce5b
-ms.openlocfilehash: 15147a201fa053e72a840294ade4ccb6197c78ac
+ms.sourcegitcommit: b0bbde6828ed556eef8063a56a35b325fee1865c
+ms.openlocfilehash: d06c924f384a2684b5a91c202039c581796c1091
 
 ---
 
@@ -42,7 +42,7 @@ Azure Resource Manager 可让你使用声明性模板预配应用程序。 在�
 
 模板可包含以下项的定义：虚拟机、虚拟网络、可用性集、网络接口 (NIC)、存储帐户、负载均衡器、网络安全组和公开 IP。 模板可用于创建复杂应用程序所需的一切内容。 模板文件可签入到内容管理系统进行版本控制和协作。
 
-[了解有关模板的详细信息](../resource-manager-template-walkthrough.md)
+[了解有关模板的详细信息](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
 [了解有关网络资源的详细信息](../virtual-network/resource-groups-networking.md)
 
@@ -71,6 +71,6 @@ Azure Resource Manager cmdlet、命令行工具和 REST API 入门
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

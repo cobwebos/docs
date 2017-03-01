@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: a28aace9269bafe9158cccf9bea2dc26f77cf937
-ms.openlocfilehash: 54a763530961073655257251f0381b0b379ae73c
+ms.sourcegitcommit: 7f5e33b7f80e3c1e1e3e66b3cab879a5bc30e823
+ms.openlocfilehash: f4f04a05c1d522f43668e31db15092476b4ef6df
 
 
 ---
@@ -566,7 +566,7 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 �
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### <a name="ternary-and-coalesce-operators"></a>三元 (?) 和联合 (??) 运算符
+### <a name="ternary--and-coalesce--operators"></a>三元 (?) 和联合 (??) 运算符
 三元和联合运算符可以用于生成条件表达式，类似于常用的编程语言（如 C# 和 JavaScript）。 
 
 当动态构建新的 JSON 属性时，使用三元 (?) 运算符会非常方便。 例如，现在你可以写入查询以将类级别（初学者/中级/高级）分类到用户可读的表单中，如下面所示。
@@ -882,7 +882,7 @@ TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER 
 可将 TOP 与常量值（如以上所示）或使用参数化查询的变量值配合使用。 有关更多详细信息，请参阅下面的参数化查询。
 
 ## <a name="order-by-clause"></a>ORDER BY 子句
-如同在 ANSI-SQL 中一样，在查询时可以包含可选的 Order By 子句。 该子句可以包括可选的 ASC/DESC 参数以指定检索结果必须遵守的顺序。 有关 Order By 的详细信息，请参阅 [DocumentDB Order By 演练](documentdb-orderby.md)。
+如同在 ANSI-SQL 中一样，在查询时可以包含可选的 Order By 子句。 该子句可以包括可选的 ASC/DESC 参数以指定检索结果必须遵守的顺序。
 
 例如，下面是按居住城市的名称检索家庭的查询。
 
@@ -1334,7 +1334,7 @@ DocumentDB 还支持使用许多内置函数进行常见操作，这些函数可
 | [FLOOR (num_expr)](#bk_floor) | 返回小于或等于指定数值表达式的最大整数。 |
 | [EXP (num_expr)](#bk_exp) | 返回指定数值表达式的指数。 |
 | [LOG (num_expr [,base])](#bk_log) | 返回指定数值表达式的自然对数，或使用指定底数的对数 |
-| [LOG10 (num_expr)](#bk_log10) | 返回指定数值表达式以 10 为底的对数值。 |
+| [LOG10 (num_expr)](#bk_log10) | 返回指定数值表达式以&10; 为底的对数值。 |
 | [ROUND (num_expr)](#bk_round) | 返回一个数值，四舍五入到最接近的整数值。 |
 | [TRUNC (num_expr)](#bk_trunc) | 返回一个数值，截断到最接近的整数值。 |
 | [SQRT (num_expr)](#bk_sqrt) | 返回指定数值表达式的平方根。 |
@@ -2190,6 +2190,6 @@ DocumentDB 使用存储过程和触发器，为对集合直接执行基于 JavaS
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

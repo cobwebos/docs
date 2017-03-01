@@ -12,24 +12,17 @@ ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.topic: article
+ms.date: 02/07/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
-ms.openlocfilehash: ef51f63984d342422ee5f2a93acfee6357df57ca
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 84efba61fbb0248edef3036de702e3a1aa8ae903
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="configure-azure-sql-database-server-level-and-database-level-firewall-rules-using-t-sql"></a>使用 T-SQL 配置 Azure SQL 数据库服务器级和数据库级防火墙规则
-> [!div class="op_single_selector"]
-> * [概述](sql-database-firewall-configure.md)
-> * [Azure 门户](sql-database-configure-firewall-settings.md)
-> * [TSQL](sql-database-configure-firewall-settings-tsql.md)
-> * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
-> * [REST API](sql-database-configure-firewall-settings-rest.md)
-> 
-> 
 
 Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务器和数据库。 可在 Azure SQL 数据库服务器中为 master 数据库或用户数据库定义服务器级别和数据库级别防火墙设置，从而有选择地允许对数据库的访问。
 
@@ -39,7 +32,7 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 > 
 
 ## <a name="server-level-firewall-rules"></a>服务器级别防火墙规则
-只有服务器级别主体登录名或 Azure Active Directory 管理员才能使用 Transact-SQL 创建服务器级别防火墙规则。
+只有 Azure SQL Server 管理员登录名或 Azure Active Directory 管理员才能使用 Transact-SQL 创建服务器级防火墙规则。
 
 1. 启动查询窗口，并使用 SQL Server Management Studio 连接到虚拟 master 数据库。
 2. 可以从查询窗口选择、创建、更新或删除服务器级别防火墙规则。
@@ -61,7 +54,7 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 ## <a name="database-level-firewall-rules"></a>数据库级别防火墙规则
 只有对数据库具备**控制**权限的数据库用户（例如数据库所有者）才能创建数据库级别防火墙规则。
 
-1. 为 IP 地址创建服务器级别防火墙后，通过经典门户或 SQL Server Management Studio 启动一个查询窗口。
+1. 为 IP 地址创建服务器级防火墙后，通过 Azure 门户或 SQL Server Management Studio 启动一个查询窗口。
 2. 连接到你要为其创建数据库级别防火墙规则的数据库。
    
     若要创建新的或更新现有的数据库级别防火墙规则，请执行 `sp_set_database_firewall_rule` 存储过程。 以下示例创建名为 ContosoFirewallRule 的新防火墙规则。
@@ -77,28 +70,23 @@ Microsoft Azure SQL 数据库使用防火墙规则，以便允许连接到服务
 有关这些存储过程的详细信息，请参阅 [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) 和 [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx)。
 
 > [!NOTE]
-> 有关演示数据库级防火墙用法的教程，请参阅 [SQL 数据库教程：SQL Server 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md)。
+> 有关演示如何使用数据库级防火墙的教程，请参阅 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)。
 >
 
 
 ## <a name="next-steps"></a>后续步骤
-有关如何使用其他方式创建服务器级防火墙规则的指导文章，请参阅： 
+有关使用其他方式创建服务器级防火墙规则的文章，请参阅： 
 
 * [使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)
 * [使用 PowerShell 配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings-powershell.md)
 * [使用 REST API 配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings-rest.md)
 
-有关创建数据库的教程，请参阅[使用 Azure 门户在几分钟内创建一个 SQL 数据库](sql-database-get-started.md)。
+有关创建数据库的教程，请参阅[你的第一个 Azure SQL 数据库](sql-database-get-started.md)。
 有关从开放源或第三方应用程序连接到 Azure SQL 数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 若要了解如何导航到数据库，请参阅[管理数据库的访问和登录安全](https://msdn.microsoft.com/library/azure/ee336235.aspx)。
 
 ## <a name="additional-resources"></a>其他资源
 * [保护你的数据库](sql-database-security-overview.md)
 * [SQL Server 数据库引擎和 Azure SQL 数据库安全中心](https://msdn.microsoft.com/library/bb510589)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

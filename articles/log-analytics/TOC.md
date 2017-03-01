@@ -8,14 +8,15 @@
 ## [代理和防火墙](log-analytics-proxy-firewall.md)
 ## [使用情况数据](log-analytics-usage.md)
 ## [Log Analytics 常见问题解答](log-analytics-faq.md)
+## [服务提供商](log-analytics-service-providers.md)
 
 # 如何
-## 集成
+## 收集数据
 ### 连接的源
 #### [Windows 代理](log-analytics-windows-agents.md)
 #### [Linux 代理](log-analytics-linux-agents.md)
 #### [Azure 虚拟机](log-analytics-azure-vm-extension.md)
-#### [Azure 存储](log-analytics-azure-storage.md)
+#### [Azure 资源](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [配置管理器](log-analytics-sccm.md)
 #### [OMS 网关](log-analytics-oms-gateway.md)
@@ -27,11 +28,15 @@
 #### [IIS 日志](log-analytics-data-sources-iis-logs.md)
 #### [自定义日志](log-analytics-data-sources-custom-logs.md)
 #### [自定义字段](log-analytics-custom-fields.md)
-## 开发
+## 查询数据
 ### [日志搜索概述](log-analytics-log-searches.md)
 ### [搜索参考](log-analytics-search-reference.md)
 ### [计算机组](log-analytics-computer-groups.md)
 ### [警报](log-analytics-alerts.md)
+## 分析数据
+### [仪表板](log-analytics-dashboards.md)
+### [视图设计器](log-analytics-view-designer.md)
+### [Power BI](log-analytics-powerbi.md)
 ### 解决方案
 #### [解决方案概述](log-analytics-add-solutions.md)
 #### [AD 评估](log-analytics-ad-assessment.md)
@@ -41,6 +46,9 @@
 #### [更改跟踪](log-analytics-change-tracking.md)
 #### [容器](log-analytics-containers.md)
 #### [密钥保管库](log-analytics-azure-key-vault.md)
+#### 逻辑应用 B2B 消息
+##### [逻辑应用 B2B 消息解决方案](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
+##### [逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 #### [恶意软件评估](log-analytics-malware.md)
 #### [网络分析](log-analytics-azure-networking-analytics.md)
 #### [网络性能监视器](log-analytics-network-performance-monitor.md)
@@ -52,18 +60,16 @@
 #### [VMware](log-analytics-vmware.md)
 #### [传输数据](log-analytics-wire-data.md)
 #### [SCOM 评估](log-analytics-scom-assessment.md)
-## 分析
-### [仪表板](log-analytics-dashboards.md)
-### [视图设计器](log-analytics-view-designer.md)
-### [Power BI](log-analytics-powerbi.md)
-## 自动化
+## 开发
 ### [数据收集器 API](log-analytics-data-collector-api.md)
 ### [PowerShell cmdlets](log-analytics-powershell-workspace-configuration.md)
+### [Resource Manager 模板](log-analytics-template-workspace-configuration.md)
 ### [日志搜索 API](log-analytics-log-search-api.md)
 ### [警报 API](log-analytics-api-alerts.md)
 
 # 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+## [REST](/rest/api/loganalytics)
 
 # 资源
 ## [升级分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
@@ -71,6 +77,6 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

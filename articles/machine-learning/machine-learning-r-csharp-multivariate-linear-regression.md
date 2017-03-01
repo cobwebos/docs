@@ -1,6 +1,6 @@
 ---
-title: "多变量线性回归 | Microsoft Docs"
-description: "多变量线性回归"
+title: "（已弃用）多变量线性回归 - Azure | Microsoft Docs"
+description: "（已弃用）多变量线性回归"
 services: machine-learning
 documentationcenter: 
 author: jaymathe
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 01d90591f61920769dbdca360f69156281145517
+ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
+ms.openlocfilehash: 96780fccdf887548b0f6e525736f1d507cf30486
 
 
 ---
-# <a name="multivariate-linear-regression"></a>多变量线性回归
+# <a name="deprecated-multivariate-linear-regression"></a>（已弃用）多变量线性回归
+
+> [!NOTE]
+> 即将停用 Microsoft DataMarket，此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 假设拥有一个数据集，并希望根据独立变量快速预测每个个体 (i) 的相关变量 (y)。 线性回归是一种常用的统计方法，用于此类预测。 此处因变量 y 假定为连续值。  
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -79,7 +86,7 @@ ms.openlocfilehash: 01d90591f61920769dbdca360f69156281145517
 > 
 > 
 
-在 Azure 机器学习内，创建了新的空白实验，并将两个[执行 R 脚本][execute-r-script] 模块提取到工作区。 此 Web 服务使用基础 R 脚本运行 Azure 机器学习实验。 此实验有 2 个部分：架构定义和训练模型 + 评分。 第一个模块定义输入数据集的预期结构，其中第一个变量为相关变量，其他变量为独立变量。 第二个模块适用于输入数据的泛型线性回归模型。  
+在 Azure 机器学习内，创建了新的空白实验，并将两个[执行 R 脚本][execute-r-script]模块提取到工作区。 此 Web 服务使用基础 R 脚本运行 Azure 机器学习实验。 此实验有 2 个部分：架构定义和训练模型 + 评分。 第一个模块定义输入数据集的预期结构，其中第一个变量为相关变量，其他变量为独立变量。 第二个模块适用于输入数据的泛型线性回归模型。  
 
 ![实验流][3]
 
@@ -121,6 +128,6 @@ ms.openlocfilehash: 01d90591f61920769dbdca360f69156281145517
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

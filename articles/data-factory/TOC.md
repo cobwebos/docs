@@ -25,7 +25,7 @@
 
 # 如何
 ## 移动数据
-### [数据工厂复制向导](data-factory-copy-wizard.md)
+### [数据工厂复制向导](data-factory-azure-copy-wizard.md)
 #### [在 15 分钟内加载 1 TB 数据](data-factory-load-sql-data-warehouse.md)
 ### [复制活动](data-factory-data-movement-activities.md)
 #### [性能和优化指南](data-factory-copy-activity-performance.md)
@@ -84,7 +84,6 @@
 # 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
-## [Azure 数据工厂开发人员参考](data-factory-sdks.md)
 ## [REST](/rest/api/datafactory/)
 
 # 资源
@@ -102,6 +101,6 @@
 ## [请求功能](https://feedback.azure.com/forums/270578-azure-data-factory)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

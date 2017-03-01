@@ -1,10 +1,10 @@
 ---
-title: "部署 Microsoft Azure StorSimple 虚拟阵列（在 Hyper-V 中预配）| Microsoft 文档"
+title: "在 Hyper-V 中预配 StorSimple 虚拟阵列 | Microsoft 文档"
 description: "此教程为 StorSimple 虚拟阵列部署的第二个教程，介绍如何在 Hyper-V 中预配虚拟阵列。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 4354963c-e09d-41ac-9c8b-f21abeae9913
 ms.service: storsimple
@@ -12,14 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/12/2017
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
+ms.sourcegitcommit: 8209eb8df45d8c7c42e303ab3377dbde3255154a
+ms.openlocfilehash: 924b3621e03b678e158cd1240864a903db6c8510
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配虚拟阵列
+# <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
 ## <a name="overview"></a>概述
@@ -48,7 +50,7 @@ ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
 * 主机系统能够将以下资源专用于预配虚拟阵列：
 
   * 至少 4 个核心。
-  * 至少 8 GB 的 RAM。
+  * 至少 8 GB 的 RAM。 如果打算将虚拟阵列配置为文件服务器，8 GB 最多支持 200 万个文件。 需要 16 GB 的 RAM 才能支持 200-400 万个文件。
   * 一个网络接口。
   * 一个 500 GB 的用于数据的虚拟磁盘。
 
@@ -73,7 +75,7 @@ ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
 确保要在其上创建虚拟阵列的基础硬件（主机系统）能够将以下资源专用于虚拟阵列：
 
 * 至少 4 个核心。
-* 至少 8 GB 的 RAM。
+* 至少 8 GB 的 RAM。 如果打算将虚拟阵列配置为文件服务器，8 GB 最多支持 200 万个文件。 需要 16 GB 的 RAM 才能支持 200-400 万个文件。
 * 一个网络接口。
 * 一个 500 GB 的用于系统数据的虚拟磁盘。
 
@@ -91,7 +93,7 @@ ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。
-5. 在“指定名称和位置”页上，提供虚拟阵列的“名称”。 单击“资源组名称” 的 Azure 数据工厂。
+5. 在“指定名称和位置”页上，提供虚拟阵列的“名称”。 单击“下一步”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
 6. 在“指定代数”页上选择设备映像类型，然后单击“下一步”。 如果使用的是 Windows Server 2008 R2，则不显示此页。
@@ -128,16 +130,16 @@ ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. 在新建虚拟硬盘向导的“准备工作”页上，单击“下一步”。
-16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。 单击“资源组名称” 的 Azure 数据工厂。 如果运行的是 Windows Server 2008 R2，则不会显示此屏幕。
+16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。 单击“下一步”。 如果运行的是 Windows Server 2008 R2，则不会显示此屏幕。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。 也可以选择“固定大小”磁盘，但可能需等待很长时间。 建议不要使用“差异”选项。 单击“资源组名称” 的 Azure 数据工厂。 在 Windows Server 2012 R2 和 Windows Server 2012 中，“动态扩展”是默认选项，而在 Windows Server 2008 R2 中，默认值是“固定大小”。
+17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。 也可以选择“固定大小”磁盘，但可能需等待很长时间。 建议不要使用“差异”选项。 单击“下一步”。 在 Windows Server 2012 R2 和 Windows Server 2012 中，“动态扩展”是默认选项，而在 Windows Server 2008 R2 中，默认值是“固定大小”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。 单击“资源组名称” 的 Azure 数据工厂。
+18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。 单击“资源组名称” 的 Azure 数据工厂。
+19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或&500; GB 以上）。 单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。 此时会关闭向导并向虚拟机添加虚拟硬盘。
@@ -214,9 +216,4 @@ ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
 ## <a name="next-steps"></a>后续步骤
 * [将 StorSimple 虚拟阵列设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)
 * [将 StorSimple 虚拟阵列设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md)
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

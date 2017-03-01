@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2615e5c063a54b8cebc208c155f99460fcfa7e05
+ms.sourcegitcommit: 51901a28878f25292ba3d09848bc45a04f867345
+ms.openlocfilehash: 75fb695ea2ce9d859119445ae42eb170a9493876
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -75,7 +76,7 @@ ms.openlocfilehash: 2615e5c063a54b8cebc208c155f99460fcfa7e05
 | 元素名称 | 必需？ | 说明 |
 | --- | --- | --- |
 | type |是 |参数值的类型。 请参阅以下允许类型的列表： |
-| displayName    是 |在实验室中显示给用户的参数的名称。 | |
+| displayName |是 |在实验室中显示给用户的参数的名称。 | |
 | description |是 |实验室中显示的参数的说明。 |
 
 允许的类型是：
@@ -129,10 +130,5 @@ ms.openlocfilehash: 2615e5c063a54b8cebc208c155f99460fcfa7e05
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [将 Git 项目存储库添加到实验室](devtest-lab-add-artifact-repo.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

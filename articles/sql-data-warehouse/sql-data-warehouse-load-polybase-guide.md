@@ -15,15 +15,15 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 472f86ecd821dfad74c25fe7cd36d07114489a71
+ms.sourcegitcommit: 1a82f9f1de27c9197bf61d63dd27c5191fec1544
+ms.openlocfilehash: 3e1bf2372762de474310c78d512a6a073c7a01b6
 
 
 ---
 # <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用 PolyBase 的指南
 本指南提供有关在 SQL 数据仓库中使用 PolyBase 的实用信息。
 
-若要开始操作，请参阅[使用 PolyBase 加载数据][使用 PolyBase 加载数据]教程。
+若要开始，请参阅[使用 PolyBase 加载数据][Load data with PolyBase]教程。
 
 ## <a name="rotating-storage-keys"></a>轮换存储密钥
 有时出于安全考虑，想要更改 Blob 存储的访问密钥。
@@ -83,7 +83,7 @@ FROM   [ext].[CarSensor_Data]
 请参阅 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)]。
 
 ## <a name="create-statistics-on-newly-loaded-data"></a>基于新加载的数据创建统计信息
-Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。  为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。  有关统计信息的详细说明，请参阅开发组主题中的[统计信息][统计信息]主题。  以下快速示例说明如何基于此示例中加载的表创建统计信息。
+Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。  为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。  有关统计信息的详细说明，请参阅开发主题组中的[统计信息][Statistics]主题。  以下快速示例说明如何基于此示例中加载的表创建统计信息。
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -172,24 +172,25 @@ $write.Dispose()
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解如何将数据移到 SQL 数据仓库中，请参阅[数据迁移概述][数据迁移概述]。
+若要详细了解如何将数据转移到 SQL 数据仓库，请参阅[数据迁移概述][data migration overview]。
 
 <!--Image references-->
 
 <!--Article references-->
-[使用 bcp 加载数据]: ./sql-data-warehouse-load-with-bcp.md
-[使用 PolyBase 加载数据]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
-[数据迁移概述]: ./sql-data-warehouse-overview-migrate.md
+[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[Load data with PolyBase]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[data migration overview]: ./sql-data-warehouse-overview-migrate.md
 
 <!--MSDN references-->
-[受支持的源/接收器]: https://msdn.microsoft.com/library/dn894007.aspx
-[复制活动]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server 目标适配器]: https://msdn.microsoft.com/library/ms141095.aspx
+[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
+[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
+[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141095.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 [CREATE EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026).aspx [CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspxx
+[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026.aspx
+[CREATE EXTERNAL TABLE (Transact-SQL)]: https://msdn.microsoft.com/library/dn935021.aspx
 
 [DROP EXTERNAL DATA SOURCE (Transact-SQL)]: https://msdn.microsoft.com/library/mt146367.aspx
 [DROP EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/mt146379.aspx
@@ -206,6 +207,6 @@ $write.Dispose()
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: da1841d4ff9e5b4b53f5d766065acc1024d1eb3a
+ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
+ms.openlocfilehash: 7d2cc99925e01f8135f04f5863f798e13d7413e3
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: da1841d4ff9e5b4b53f5d766065acc1024d1eb3a
 > * [Azure 门户](active-directory-groups-create-azure-portal.md)
 > * [Azure 经典门户](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-> 
-> 
+>
+>
 
 Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创建用户组。 你可以使用组来执行管理任务，例如一次向多个用户分配许可证或权限。 也可以使用组将访问权限分配给
 
@@ -73,13 +73,13 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 
 > [!NOTE]
 > 你可以为安全组或 Office 365 组中的动态成员身份设置规则。 目前不支持使用嵌套的组成员身份来对应用程序进行基于组的分配。
-> 
+>
 > 动态组成员身份要求将 Azure AD Premium 许可证分配到
-> 
+>
 > * 管理组中规则的管理员
 > * 组的所有成员
-> 
-> 
+>
+>
 
 **启用组的动态成员身份**
 
@@ -103,7 +103,6 @@ Azure Active Directory (Azure AD) 用户管理的其中一项功能是能够创�
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

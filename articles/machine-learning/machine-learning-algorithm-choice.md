@@ -3,7 +3,7 @@ title: "如何选择机器学习算法 | Microsoft Docs"
 description: "如何在聚类、分类或回归试验中选择监督式和非监督式学习的 Azure 机器学习算法。"
 services: machine-learning
 documentationcenter: 
-author: brohrer
+author: garyericson
 manager: jhubbard
 editor: cgronlun
 tags: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/09/2016
-ms.author: brohrer;garye
+ms.date: 12/12/2016
+ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 216152123e4a5c17ec93775adff9fd4c1eb18654
+ms.sourcegitcommit: 265bb284d23e42c16c84a718c402b1bc6f6a30f9
+ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
 
 
 ---
@@ -175,7 +175,7 @@ ms.openlocfilehash: 216152123e4a5c17ec93775adff9fd4c1eb18654
 但是，此高性并非免费提供。 神经网络定型可能耗时很长，特别是对于具有大量特征的大型数据集。 它们还具有比大多数算法更多的参数，这意味着参数扫描在很大程度上加长了定型时间。
 对于那些希望[指定自己的网络结构](http://go.microsoft.com/fwlink/?LinkId=402867)的成就突出者来说，一切皆有可能。
 
-## <a name="boundaries-learned-by-neural-networks6"></a>![神经网络学习的边界][6]
+![神经网络学习的边界][6]
 ***神经网络学习的边界可能是复杂而又不规则的***
 
 [双类平均感知器](https://msdn.microsoft.com/library/azure/dn906036.aspx)是神经网络对直线上升的定型时间的回答。 它使用提供线性类边界的网络结构。 按照现在的标准，它几乎是原始的，但它已健康的工作了很长时间，并且很小，能够快速学习。
@@ -219,6 +219,13 @@ Azure 机器学习还包括对一个强大的机器学习框架的访问，其�
 VW 在这里分类，因为可以学习分类和回归问题，甚至可以从部分未标记的数据学习。 可以将其配置为使用多种学习算法、损失函数和优化算法中的任何一种。 它的设计从根本上是高效、并行的，且速度非常快。 其可轻松的处理超级大型的特征集。
 VW 由 Microsoft Research 的 John Langford 发起并领导，是改装车算法领域的一级方程式赛车。 不是每个问题都适用于 VW，但如果问题适合，则可能值得继续深入学习。 它也有多种语言的[独立开放源代码](https://github.com/JohnLangford/vowpal_wabbit)。
 
+## <a name="more-help-with-algorithms"></a>有关算法的跟多帮助
+* 有关说明算法并提供示例的可下载信息图，请参阅[可下载的信息图：具有算法示例的机器学习基础知识](machine-learning-basics-infographic-with-algorithm-examples.md)。
+* 有关 Azure 机器学习工作室中所有可用的机器学习算法的种类列表，请参阅“机器学习工作室算法和模块帮助”中的[初始化模型][initialize-model]。
+* 有关 Azure 机器学习工作室中算法和模块的完整列表（按字母顺序排列），请参阅“机器学习工作室算法和模块帮助”中的[机器学习工作室模块 A-Z 列表][a-z-list]。
+* 若要下载和打印 Azure 机器学习工作室功能概述示意图，请参阅 [Azure 机器学习工作室功能的概要示意图](machine-learning-studio-overview-diagram.md)。
+
+
 <!-- Media -->
 
 [1]: ./media/machine-learning-algorithm-choice/image1.png
@@ -234,6 +241,6 @@ VW 由 Microsoft Research 的 John Langford 发起并领导，是改装车算法
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "保护 Service Fabric 群集 | Microsoft 文档"
+title: "保护 Service Fabric 群集 | Microsoft Docs"
 description: "介绍 Service Fabric 群集的安全方案，以及用于实现这些方案的各项技术。"
 services: service-fabric
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2016
+ms.date: 12/06/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21f7735767b6655046b354d2a782b2730f117976
+ms.sourcegitcommit: 628df1df8f5de99a5c18d0df5b7ee41e2fb747df
+ms.openlocfilehash: c3ff370b105a1f9bdacd1bdb4b32d6209e150be2
 
 
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
-Service Fabric 群集是你拥有的资源。 始终都应该保护群集，防止未经授权的用户连接到群集，特别是群集上正在运行生产工作负荷时。 尽管可以创建不安全的群集，但是，当这种群集公共 Internet 上公共管理终结点时，任何匿名用户都可与它建立连接。 
+Service Fabric 群集是你拥有的资源。 必须保护群集以防止未经授权的用户连接到群集，特别是群集上正在运行生产工作负荷时。 尽管可以创建不安全的群集，但是，当这种群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 
 
 本文概述 Azure 或单机上运行的群集的安全方案，以及用于实现这些方案的各种技术。 群集安全方案包括：
 
@@ -109,14 +109,18 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 
 
 ## <a name="next-steps"></a>后续步骤
-本文提供有关群集安全性的概念信息。 接下来，[使用 Resource Manager 模板](service-fabric-cluster-creation-via-arm.md)或 [Azure 门户](service-fabric-cluster-creation-via-portal.md)在 Azure 中创建群集。
+本文提供有关群集安全性的概念信息。 下一步，
+
+
+1.  [使用 Resource Manager 模板在 Azure 中创建群集](service-fabric-cluster-creation-via-arm.md) 
+2.  [Azure 门户](service-fabric-cluster-creation-via-portal.md)。
 
 <!--Image references-->
-[节点到节点]: ./media/service-fabric-cluster-security/node-to-node.png
-[客户端到节点]: ./media/service-fabric-cluster-security/client-to-node.png
+[Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
+[Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

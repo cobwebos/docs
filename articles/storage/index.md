@@ -1,14 +1,26 @@
 ---
+title: "Azure 存储文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用云中的 Azure 存储 - Blob、表、队列、文件和虚拟机磁盘存储。 教程、API 参考和其他文档。"
+services: storage
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: a6c333ae45868d5c29ce2f2587f1417fa9fafc0b
-ms.openlocfilehash: 27fd664b69ca4467daa2b0abc6e53c9cece221ae
+ms.sourcegitcommit: f7bd1007aeff86faf7a1d744602e5184f0ce1d6f
+ms.openlocfilehash: cdb001f960ea5d505bc757195abf14b505f77103
 
 ---
 
 # <a name="storage-documentation"></a>存储文档
 
-Azure 存储是依赖于持续性、可用性和可伸缩性来满足客户需求的现代应用程序的云存储解决方案。  它具有高度可伸缩、弹性和全球可访问性，可以自动根据流量对数据进行负载均衡。  Azure 存储提供以下四项服务来满足应用程序的需求：Blob 存储、表存储、队列存储、磁盘存储和文件存储。
+了解如何使用 Azure 存储 - 一种持久、高度可用、可缩放的云存储服务。 教程、API 参考和其他文档介绍了如何设置及管理 Blob、表、队列、文件和虚拟机磁盘存储。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -129,8 +141,10 @@ Azure 存储是依赖于持续性、可用性和可伸缩性来满足客户需�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/storageservices/importexport/storage-import-export-service-rest-api-reference">REST：导入/导出</a></p>
-                        <p><a href="/rest/api/storagerp">REST：资源提供程序</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blob、队列、表和文件</a></p>
+                        <p><a href="/rest/api/storagerp">资源提供程序</a></p>
+                        <p><a href="/rest/api/storageimportexport">导入/导出</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">存储数据 REST API</a></p>
                    </div>
                 </div>
             </div>
@@ -138,16 +152,10 @@ Azure 存储是依赖于持续性、可用性和可伸缩性来满足客户需�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载存储文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

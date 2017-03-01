@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/05/2016
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: 6c290b3925b2e3a6fdc7fbc639d0db3017233328
+ms.sourcegitcommit: 7fc30c4283a96f3202e7010828e178895d3613b6
+ms.openlocfilehash: 08245a850e3c78ce893ef18030ee09e701241d1b
 
 
 ---
@@ -46,63 +46,61 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 3. 为 **jarFilePath** 属性指定 JAR 文件的路径（包含文件名）。
 4. 为 **jarLinkedService** 属性指定指向 Azure Blob 存储（包含 JAR 文件）的链接服务。   
 5. 在**参数**部分为 MapReduce 程序指定任意参数。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 若要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后紧跟有相应的值）。
-   
-        {
-            "name": "MahoutMapReduceSamplePipeline",
-            "properties": {
-                "description": "Sample Pipeline to Run a Mahout Custom Map Reduce Jar. This job calcuates an Item Similarity Matrix to determine the similarity between 2 items",
-                "activities": [
-                    {
-                        "type": "HDInsightMapReduce",
-                        "typeProperties": {
-                            "className": "org.apache.mahout.cf.taste.hadoop.similarity.item.ItemSimilarityJob",
-                            "jarFilePath": "adfsamples/Mahout/jars/mahout-examples-0.9.0.2.2.7.1-34.jar",
-                            "jarLinkedService": "StorageLinkedService",
-                            "arguments": [
-                                "-s",
-                                "SIMILARITY_LOGLIKELIHOOD",
-                                "--input",
-                                "wasb://adfsamples@spestore.blob.core.windows.net/Mahout/input",
-                                "--output",
-                                "wasb://adfsamples@spestore.blob.core.windows.net/Mahout/output/",
-                                "--maxSimilaritiesPerItem",
-                                "500",
-                                "--tempDir",
-                                "wasb://adfsamples@spestore.blob.core.windows.net/Mahout/temp/mahout"
-                            ]
-                        },
-                        "inputs": [
-                            {
-                                "name": "MahoutInput"
-                            }
-                        ],
-                        "outputs": [
-                            {
-                                "name": "MahoutOutput"
-                            }
-                        ],
-                        "policy": {
-                            "timeout": "01:00:00",
-                            "concurrency": 1,
-                            "retry": 3
-                        },
-                        "scheduler": {
-                            "frequency": "Hour",
-                            "interval": 1
-                        },
-                        "name": "MahoutActivity",
-                        "description": "Custom Map Reduce to generate Mahout result",
-                        "linkedServiceName": "HDInsightLinkedService"
-                    }
-                ],
-                "start": "2014-01-03T00:00:00Z",
-                "end": "2014-01-04T00:00:00Z",
-                "isPaused": false,
-                "hubName": "mrfactory_hub",
-                "pipelineMode": "Scheduled"
-            }
-        }
 
+    ```JSON   
+    {
+        "name": "MahoutMapReduceSamplePipeline",
+        "properties": {
+            "description": "Sample Pipeline to Run a Mahout Custom Map Reduce Jar. This job calcuates an Item Similarity Matrix to determine the similarity between 2 items",
+            "activities": [
+                {
+                    "type": "HDInsightMapReduce",
+                    "typeProperties": {
+                        "className": "org.apache.mahout.cf.taste.hadoop.similarity.item.ItemSimilarityJob",
+                        "jarFilePath": "adfsamples/Mahout/jars/mahout-examples-0.9.0.2.2.7.1-34.jar",
+                        "jarLinkedService": "StorageLinkedService",
+                        "arguments": [
+                            "-s",
+                            "SIMILARITY_LOGLIKELIHOOD",
+                            "--input",
+                            "wasb://adfsamples@spestore.blob.core.windows.net/Mahout/input",
+                            "--output",
+                            "wasb://adfsamples@spestore.blob.core.windows.net/Mahout/output/",
+                            "--maxSimilaritiesPerItem",
+                            "500",
+                            "--tempDir",
+                            "wasb://adfsamples@spestore.blob.core.windows.net/Mahout/temp/mahout"
+                        ]
+                    },
+                    "inputs": [
+                        {
+                            "name": "MahoutInput"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "name": "MahoutOutput"
+                        }
+                    ],
+                    "policy": {
+                        "timeout": "01:00:00",
+                        "concurrency": 1,
+                        "retry": 3
+                    },
+                    "scheduler": {
+                        "frequency": "Hour",
+                        "interval": 1
+                    },
+                    "name": "MahoutActivity",
+                    "description": "Custom Map Reduce to generate Mahout result",
+                    "linkedServiceName": "HDInsightLinkedService"
+                }
+            ],
+            "start": "2017-01-03T00:00:00Z",
+            "end": "2017-01-04T00:00:00Z"
+        }
+    }
+    ```
 可使用 HDInsight MapReduce 活动在 HDInsight 群集中运行任何 MapReduce jar 文件。 在管道的以下示例 JSON 定义中，配置了HDInsight 活动，以便运行 Mahout JAR 文件。
 
 ## <a name="sample-on-github"></a>GitHub 上的示例
@@ -115,55 +113,62 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”和“帐户密钥”替换为自己的 Azure 存储的名称和密钥。 
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
-    {
-        "name": "StorageLinkedService",
-        "properties": {
-            "type": "AzureStorage",
-            "typeProperties": {
-                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
-            }
+
+```JSON
+{
+    "name": "StorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
         }
     }
+}
+```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
 接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请将 **HDInsight 群集名称**替换为自己的 HDInsight 群集的名称，并更改用户名和密码值。   
 
-    {
-        "name": "HDInsightLinkedService",
-        "properties": {
-            "type": "HDInsight",
-            "typeProperties": {
-                "clusterUri": "https://<HDInsight cluster name>.azurehdinsight.net",
-                "userName": "admin",
-                "password": "**********",
-                "linkedServiceName": "StorageLinkedService"
-            }
+```JSON
+{
+    "name": "HDInsightLinkedService",
+    "properties": {
+        "type": "HDInsight",
+        "typeProperties": {
+            "clusterUri": "https://<HDInsight cluster name>.azurehdinsight.net",
+            "userName": "admin",
+            "password": "**********",
+            "linkedServiceName": "StorageLinkedService"
         }
     }
+}
+```
 
 ### <a name="datasets"></a>数据集
 #### <a name="output-dataset"></a>输出数据集
 此示例中的管道不采用任何输入。 为 HDInsight MapReduce 活动指定一个输出数据集。 该数据集仅是推动管道计划所需的一个虚拟数据集。  
 
-    {
-        "name": "MROutput",
-        "properties": {
-            "type": "AzureBlob",
-            "linkedServiceName": "StorageLinkedService",
-            "typeProperties": {
-                "fileName": "WordCountOutput1.txt",
-                "folderPath": "example/data/",
-                "format": {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-                }
-            },
-            "availability": {
-                "frequency": "Day",
-                "interval": 1
+```JSON
+{
+    "name": "MROutput",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "StorageLinkedService",
+        "typeProperties": {
+            "fileName": "WordCountOutput1.txt",
+            "folderPath": "example/data/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
             }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
         }
     }
+}
+```
 
 ### <a name="pipeline"></a>管道
 此示例中的管道仅具有一个 HDInsightMapReduce 类型的活动。 JSON 中的一些重要属性有： 
@@ -178,44 +183,46 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 | frequency/interval |这些属性的值与输出数据集匹配。 |
 | linkedServiceName |指先前创建的 HDInsight 链接服务。 |
 
-    {
-        "name": "MRSamplePipeline",
-        "properties": {
-            "description": "Sample Pipeline to Run the Word Count Program",
-            "activities": [
-                {
-                    "type": "HDInsightMapReduce",
-                    "typeProperties": {
-                        "className": "wordcount",
-                        "jarFilePath": "<HDInsight cluster name>/example/jars/hadoop-examples.jar",
-                        "jarLinkedService": "StorageLinkedService",
-                        "arguments": [
-                            "/example/data/gutenberg/davinci.txt",
-                            "/example/data/WordCountOutput1"
-                        ]
-                    },
-                    "outputs": [
-                        {
-                            "name": "MROutput"
-                        }
-                    ],
-                    "policy": {
-                        "timeout": "01:00:00",
-                        "concurrency": 1,
-                        "retry": 3
-                    },
-                    "scheduler": {
-                        "frequency": "Day",
-                        "interval": 1
-                    },
-                    "name": "MRActivity",
-                    "linkedServiceName": "HDInsightLinkedService"
-                }
-            ],
-            "start": "2014-01-03T00:00:00Z",
-            "end": "2014-01-04T00:00:00Z"
-        }
+```JSON
+{
+    "name": "MRSamplePipeline",
+    "properties": {
+        "description": "Sample Pipeline to Run the Word Count Program",
+        "activities": [
+            {
+                "type": "HDInsightMapReduce",
+                "typeProperties": {
+                    "className": "wordcount",
+                    "jarFilePath": "<HDInsight cluster name>/example/jars/hadoop-examples.jar",
+                    "jarLinkedService": "StorageLinkedService",
+                    "arguments": [
+                        "/example/data/gutenberg/davinci.txt",
+                        "/example/data/WordCountOutput1"
+                    ]
+                },
+                "outputs": [
+                    {
+                        "name": "MROutput"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "MRActivity",
+                "linkedServiceName": "HDInsightLinkedService"
+            }
+        ],
+        "start": "2014-01-03T00:00:00Z",
+        "end": "2014-01-04T00:00:00Z"
     }
+}
+```
 
 ## <a name="run-spark-programs"></a>运行 Spark 程序
 可以通过 MapReduce 活动在 HDInsight Spark 群集上运行 Spark 程序。 有关详细信息，请参阅[从 Azure 数据工厂调用 Spark 程序](data-factory-spark.md)。  
@@ -227,8 +234,8 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[开发人员参考]: http://go.microsoft.com/fwlink/?LinkId=516908
-[Azure 门户]: http://portal.azure.com
+[Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
+[Azure Portal]: http://portal.azure.com
 
 ## <a name="see-also"></a>另请参阅
 * [Hive 活动](data-factory-hive-activity.md)
@@ -240,6 +247,6 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

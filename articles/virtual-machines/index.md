@@ -1,14 +1,25 @@
 ---
+title: "Azure 虚拟机文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何创建、部署和管理 Windows 或 Linux 虚拟机。 教程、API 参考和其他文档。"
+services: virtual-machines
+author: carolz
+manager: carolz
 layout: LandingPage
-toc_rel: breadcrumb.json
+ms.assetid: 
+ms.service: virtual-machines
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: c086dc37b8665017de0dbbad9c7ac82931932a72
-ms.openlocfilehash: 57994a1476186696b81b05e0ce7ae645337d35b2
+ms.sourcegitcommit: ff1cc256ff9ba84504a9df16c33888a920f62cd6
+ms.openlocfilehash: da4f6ab3c7f0c4f96440b3008e6ac62d94ea2406
 
 ---
-#<a name="virtual-machines-documentation"></a>虚拟机文档
+# <a name="virtual-machines-documentation"></a>虚拟机文档
 
-Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。 但仍需维护虚拟机 &mdash; 配置、修补和维护虚拟机上运行的软件。
+了解如何创建 Azure 虚拟机。 教程、API 参考和其他文档介绍了如何创建及部署 Windows 与 Linux 虚拟机以及复杂的 VM 模板。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -49,16 +60,10 @@ Azure 虚拟机让你能够灵活地进行虚拟化，而无需购买和维护�
     </li>    
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载虚拟机文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

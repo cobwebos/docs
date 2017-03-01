@@ -1,5 +1,5 @@
 ---
-title: "使用门户创建应用程序网关的自定义探测 | Microsoft 文档"
+title: "创建自定义探测 - Azure 应用程序网关 - Azure 门户 | Microsoft Docs"
 description: "了解如何使用门户创建应用程序网关的自定义探测"
 services: application-gateway
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: aaf13418331f29287399621cb911e4b9f5b33dc0
-ms.openlocfilehash: 0fafaff220dfb5d224bc5b57b630f8b2912155f7
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
 
 
 ---
@@ -97,6 +97,6 @@ ms.openlocfilehash: 0fafaff220dfb5d224bc5b57b630f8b2912155f7
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -3,7 +3,7 @@ title: "了解 Azure 中的资源访问权限 | Microsoft Docs"
 description: "本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。"
 services: active-directory
 documentationcenter: 
-author: MarkusVi
+author: curtand
 manager: femila
 ms.assetid: 174f1706-b959-4230-9a75-bf651227ebf6
 ms.service: active-directory
@@ -12,10 +12,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: markvi
+ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 92bf959c7d0e60aecc3cf559eeec02413dcc0619
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: 9906aa7ac4296089fd2e41897323e757b181a022
 
 
 ---
@@ -56,7 +56,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 由于这种单一的订阅目录视图所导致的结果，诸如在订阅之间移动资源的操作可能会更难以实现。 若要执行资源传输，务必首先使用“设置”中“订阅”页上的“编辑目录”命令将订阅与相同目录关联。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
+* 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)
 * 有关 Azure Active Directory 如何与 Azure 订阅相关联的详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）
 * 有关如何在 Azure AD 中分配角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)
 
@@ -68,6 +68,6 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

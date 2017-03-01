@@ -9,19 +9,21 @@ editor:
 tags: 
 ms.assetid: bbb10ecc-739f-4159-b844-12b4be161231
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 02/06/2017
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1569bdf8ad8a073808b83b08fa3fdae8f843805f
+ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
+ms.openlocfilehash: 3bb6cc477b413a8636433038429e4defec1d2676
 
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
+
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 你需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
@@ -37,6 +39,7 @@ ms.openlocfilehash: 1569bdf8ad8a073808b83b08fa3fdae8f843805f
   * 创建和启动事件会话，等等。
 
 ## <a name="prerequisites"></a>先决条件
+
 * Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
   
@@ -51,6 +54,7 @@ ms.openlocfilehash: 1569bdf8ad8a073808b83b08fa3fdae8f843805f
   * 这些模块提供 **New-AzureStorageAccount** 等命令。
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储空间容器的 PowerShell 代码
+
 此 PowerShell 是两阶段代码示例的第 1 阶段。
 
 脚本开头的命令将清除以前可能运行后的结果，并且可重复运行。
@@ -65,9 +69,10 @@ ms.openlocfilehash: 1569bdf8ad8a073808b83b08fa3fdae8f843805f
 
 ![在准备运行脚本之前，必须准备好已装有 Azure 模块的 PowerShell ISE。][30_powershell_ise]
 
-&nbsp;
 
-```
+### <a name="powershell-code"></a>PowerShell 代码
+
+```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
 
 #--------------- 1 -----------------------
@@ -238,11 +243,10 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 ```
 
 
-&nbsp;
-
 记下 PowerShell 脚本结束时输出的几个命名值。 必须将这些值编辑成阶段 2 中使用的 Transact-SQL 脚本。
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>阶段 2：使用 Azure 存储空间容器的 Transact-SQL 代码
+
 * 在此代码示例的第 1 阶段，已运行 PowerShell 脚本来创建 Azure 存储容器。
 * 接下来在第 2 阶段，以下 Transact-SQL 脚本必须使用该容器。
 
@@ -257,16 +261,14 @@ PowerShell 脚本在结束时输出了几个命名值。 你必须编辑 Transac
 5. 在脚本中查找每个 **TODO** 并进行适当的编辑。
 6. 保存然后运行该脚本。
 
-&nbsp;
 
 > [!WARNING]
 > 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”*。 否则，安全性可能会阻止你的操作。
-> 
-> 
 
-&nbsp;
 
-```
+### <a name="transact-sql-code"></a>Transact-SQL 代码
+
+```tsql
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
@@ -460,11 +462,9 @@ GO
 ```
 
 
-&nbsp;
-
 如果当你运行脚本时无法附加目标，则你必须停止再重新启动事件会话：
 
-```
+```tsql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;
@@ -472,16 +472,14 @@ GO
 ```
 
 
-&nbsp;
-
 ## <a name="output"></a>输出
+
 完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时将显示一个 **<event>** 元素，其中显示了一个 UPDATE 语句。
 
 下面是测试期间生成的一个 **<event>** 元素：
 
-&nbsp;
 
-```
+```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
   <data name="state">
     <value>0</value>
@@ -520,7 +518,6 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 </event>
 ```
 
-&nbsp;
 
 前面的 Transact-SQL 脚本使用以下系统函数来读取 event_file：
 
@@ -530,9 +527,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 * [扩展事件的目标数据的高级视图](http://msdn.microsoft.com/library/mt752502.aspx)
 
-&nbsp;
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>转换代码示例以在 SQL Server 上运行
+
 假设你要在 Microsoft SQL Server 上运行上述 Transact-SQL 示例。
 
 * 为了方便，想要将 Azure 存储容器完全替换为一个简单文件（例如 **C:\myeventdata.xel**）。 该文件将写入托管 SQL Server 的计算机的本地硬盘驱动器上。
@@ -542,6 +539,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
   * 此操作不涉及任何 Azure 存储帐户。
 
 ## <a name="more-information"></a>详细信息
+
 有关 Azure 存储空间服务中帐户和容器的详细信息，请参阅：
 
 * [如何通过 .NET 使用 Blob 存储](../storage/storage-dotnet-how-to-use-blobs.md)
@@ -559,6 +557,6 @@ Image references.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

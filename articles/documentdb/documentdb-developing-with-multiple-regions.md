@@ -3,7 +3,7 @@ title: "在 DocumentDB 中使用多个区域进行开发 | Microsoft Docs"
 description: "了解如何从 Azure DocumentDB（完全托管的 NoSQL 数据库服务）访问多个区域中的数据。"
 services: documentdb
 documentationcenter: 
-author: kiratp
+author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: d4579378-0b3a-44a5-9f5b-630f1fa4c66d
@@ -12,19 +12,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2016
-ms.author: kipandya
+ms.date: 02/09/2017
+ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: f480b8155c7bee797f1fed0f80200eec500e95a2
-ms.openlocfilehash: b188c8d8d66f0af1afa6f357f4d67db7b778ec86
+ms.sourcegitcommit: 240f45383639f1eb8a4a9b7c4e4489591be23dba
+ms.openlocfilehash: aac8c26cd9af94659abc80b2ae260dc380cf38c9
 
 
 ---
 # <a name="developing-with-multi-region-documentdb-accounts"></a>使用多区域 DocumentDB 帐户进行开发
-> [!NOTE]
-> DocumentDB 数据库全局分发功能已正式推出，所有新建的 DocumentDB 帐户将自动启用该功能。 我们正在努力为所有现有帐户启用全局分发，但在此之前，如果要为帐户启用全局分发，请[与支持部门联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，我们将会帮助你启用。
->
->
+
+通过 Azure Friday 视频，与 Scott Hanselman 和工程（主管）经理 Karthik Raman 一起，了解多区域 DocumentDB 帐户的详细信息。
+
+>[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+
+## <a name="introduction"></a>介绍
 
 为了利用[全局分发](documentdb-distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 可通过设置连接策略来实现此目的。 SDK 将会根据 DocumentDB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
 
@@ -43,7 +45,7 @@ SDK 会自动将所有写入请求发送到当前写入区域。
 ## <a name="net-sdk"></a>.NET SDK
 无需进行任何代码更改即可使用该 SDK。 在此情况下，SDK 会自动将读取和写入请求定向到当前写入区域。
 
-在 .NET SDK 1.8 和更高版本中，DocumentClient 构造函数的 ConnectionPolicy 参数有一个名为 Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations 的属性。 此属性的类型为 Collection `<string>`，应包含区域名称的列表。 字符串值已根据 [Azure 区域][区域]页上的“区域名称”列设置格式，其第一个字符的前面和最后一个字符的后面均没有空格。
+在 .NET SDK 1.8 和更高版本中，DocumentClient 构造函数的 ConnectionPolicy 参数有一个名为 Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations 的属性。 此属性的类型为 Collection `<string>`，应包含区域名称的列表。 字符串值已根据 [Azure 区域][regions]页上的“区域名称”列设置格式，其第一个字符的前面和最后一个字符的后面均没有空格。
 
 当前写入终结点和读取终结点分别在 DocumentClient.WriteEndpoint 和 DocumentClient.ReadEndpoint 中提供。
 
@@ -55,6 +57,8 @@ SDK 会自动将所有写入请求发送到当前写入区域。
     // Getting endpoints from application settings or other configuration location
     Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
     string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+    
+    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 
     //Setting read region selection preference
     connectionPolicy.PreferredLocations.Add(LocationNames.WestUS); // first preference
@@ -74,7 +78,7 @@ SDK 会自动将所有写入请求发送到当前写入区域。
 ## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS、JavaScript 和 Python SDK
 无需进行任何代码更改即可使用该 SDK。 在此情况下，SDK 会自动将读取和写入请求定向到当前写入区域。
 
-在每个 SDK 的 1.8 和更高版本中，DocumentClient 构造函数的 ConnectionPolicy 参数有一个名为 DocumentClient.ConnectionPolicy.PreferredLocations 的新属性。 此参数是采用区域名称列表的字符串数组。 名称已根据 [Azure 区域][区域]页中的“区域名称”列设置格式。 你也可以在便捷对象 AzureDocuments.Regions 中使用预定义的常量
+在每个 SDK 的 1.8 和更高版本中，DocumentClient 构造函数的 ConnectionPolicy 参数有一个名为 DocumentClient.ConnectionPolicy.PreferredLocations 的新属性。 此参数是采用区域名称列表的字符串数组。 名称已根据 [Azure 区域][regions]页中的“区域名称”列设置格式。 你也可以在便捷对象 AzureDocuments.Regions 中使用预定义的常量
 
 当前写入终结点和读取终结点分别在 DocumentClient.getWriteEndpoint 和 DocumentClient.getReadEndpoint 中提供。
 
@@ -150,13 +154,12 @@ SDK 会自动将所有写入请求发送到当前写入区域。
 
 * [使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)
 * [一致性级别](documentdb-consistency-levels.md)
-* [多个区域中的吞吐量工作原理](documentdb-manage.md)
 * [使用 Azure 门户添加区域](documentdb-portal-global-replication.md)
 
-[区域]: https://azure.microsoft.com/regions/
+[regions]: https://azure.microsoft.com/regions/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

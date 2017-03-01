@@ -1,5 +1,5 @@
 ---
-title: "网络资源提供程序概述 | Microsoft 文档"
+title: "网络资源提供程序概述 | Microsoft Docs"
 description: "了解 Azure Resource Manager 中的新网络资源提供程序"
 services: virtual-network
 documentationcenter: na
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 18234ad720d4e85b50d1871dacf243c65f45be33
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 2428c707ddeed281fddd1e57bc5574603f0b9b1c
 
 
 ---
 # <a name="network-resource-provider"></a>网络资源提供程序
-在当今社会要想获得业务成功，需要满足的一个基本需求就是，能够以灵活、弹性、安全且可重复的方式构建和管理可识别大型网络的应用程序。 使用 Azure Resource Manager (ARM) 可以在资源组中部署单个资源集合，从而可以创建此类应用程序。 此类资源将通过 ARM 下的各种资源提供程序进行管理。
+在当今社会要想获得业务成功，需要满足的一个基本需求就是，能够以灵活、弹性、安全且可重复的方式构建和管理可识别大型网络的应用程序。 使用 Azure Resource Manager 可以创建此类应用程序，作为资源组中的单个资源集合。 通过 Resource Manager 下的各种资源提供程序管理此类资源。
 
 Azure Resource Manager 依靠不同的资源提供程序提供对你的资源的访问。 主要有三个资源提供程序：网络、存储和计算。 本文档讨论网络资源提供程序的特点和优点，包括：
 
@@ -40,7 +40,7 @@ Azure Resource Manager 依靠不同的资源提供程序提供对你的资源的
   * Java SDK
   * Azure CLI
   * 预览门户
-  * ARM 模板语言
+  * Resource Manager 模板语言
 
 ## <a name="network-resources"></a>网络资源
 现在，你可以单独管理网络资源，而不用通过单个计算资源（虚拟机）对其进行统一管理。 这可确保在资源组中编写复杂的大规模基础结构时获得更高的弹性和灵活性。
@@ -103,8 +103,8 @@ Rest API 符合 HTTP 1.1 协议规范。 下面显示了该 API 的常规 URI �
 
 请求和响应都符合 JSON 负载格式。 有关详细信息，请参阅 [Azure 资源管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)。
 
-### <a name="arm-template-language"></a>ARM 模板语言
-除了强制性管理资源（通过 API 或 SDK）以外，还可以使用 ARM 模板语言以声明性编程方式构建和管理网络资源。
+### <a name="resource-manager-template-language"></a>Resource Manager 模板语言
+除了强制性管理资源（通过 API 或 SDK）以外，还可以使用 Resource Manager 模板语言以声明性编程方式构建和管理网络资源。
 
 下面提供了模板的示例表示形式 -
 
@@ -234,13 +234,13 @@ Rest API 符合 HTTP 1.1 协议规范。 下面显示了该 API 的常规 URI �
 
 使用模板的主要优势在于：
 
-* 可以声明性方式在资源组中构建复杂的基础结构。 创建资源的协调（包括依赖关系管理）由 ARM 处理。
+* 可以声明性方式在资源组中构建复杂的基础结构。 创建资源的协调（包括依赖关系管理）由 Resource Manager 处理。
 * 可以在多个不同区域和一个区域中重复创建基础结构，只需更改参数即可。
 * 声明性方式可以缩短构建模板和推出基础结构的周期时间。
 
 有关示例模板，请参阅 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)。
 
-有关 ARM 模板语言的详细信息，请参阅 [Azure Resource Manager 模板语言](../resource-group-authoring-templates.md)。
+有关 Resource Manager 模板语言的详细信息，请参阅 [Azure Resource Manager 模板语言](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 上面的示例模板使用虚拟网络和子网资源。 下面列出了可以使用的其他一些网络资源：
 
@@ -258,17 +258,17 @@ Rest API 符合 HTTP 1.1 协议规范。 下面显示了该 API 的常规 URI �
 ![示例模板部署](./media/resource-groups-networking/Figure6.png)
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Resource Manager 模板语言](../resource-group-authoring-templates.md)
+[Azure Resource Manager 模板语言](../azure-resource-manager/resource-group-authoring-templates.md)
 
 [Azure 网络 – 常用的模板](https://github.com/Azure/azure-quickstart-templates)
 
-[Azure Resource Manager 和经典部署](../resource-manager-deployment-model.md)
+[Azure Resource Manager 和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)
 
 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

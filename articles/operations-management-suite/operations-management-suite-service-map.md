@@ -12,25 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
+ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cbed591d15daf8060f13d0e9b009d65c85d256aa
-ms.openlocfilehash: c5cd77dc53c36c4ad6c41eb876e24b4077d2007c
+ms.sourcegitcommit: 638410921c6dad72e1bbe0c035243cea70a3deb1
+ms.openlocfilehash: 4bab1ba9c30cee50baeddc06931a3997aac0f33f
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
 # <a name="using-service-map-solution-in-operations-management-suite-oms"></a>使用 Operations Management Suite (OMS) 中的服务映射解决方案
-![警报管理图标](media/oms-service-map/icon.png) 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许你如所想一般作为提供重要服务的互连系统查看服务器。  服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许你如所想一般作为提供重要服务的互连系统查看服务器。  服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
 
 本指南介绍使用服务映射的详细信息。  有关配置服务映射和载入代理的信息，请参阅[配置 Operations Management Suite (OMS) 中的服务映射解决方案](operations-management-suite-service-map-configure.md)
 
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使你的 IT 进程依赖关系具有感知
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程感知依赖关系
 
 ### <a name="discovery"></a>发现
-服务映射自动在服务器、进程和第三方服务上生成依赖关系的常见引用映射。  它可发现并映射所有 TCP 依赖关系，从而将意外连接、所依赖的远程第三方系统和依赖关系标识到网络的传统深色区域（如 DNS 和 AD）。  服务映射可发现托管系统尝试进行的失败网络连接，帮助标识潜在服务器配置错误、服务中断和网络问题。
+服务映射自动在服务器、进程和第三方服务上生成依赖关系的常见引用映射。  它可发现并映射所有 TCP 依赖关系，从而将意外连接、依赖的远程第三方系统和依赖关系标识到网络的传统深色区域（如 Active Directory）。  服务映射可发现托管系统尝试进行的失败网络连接，帮助标识潜在服务器配置错误、服务中断和网络问题。
 
 ### <a name="incident-management"></a>事件管理
 服务映射可显示系统的连接方式以及相互的影响，无需再猜测问题隔离。  除了失败的连接，已连接客户端的相关信息还可帮助标识配置错误的负载均衡器、关键服务上的意外或多余负载以及与生产系统通信的开发人员计算机等恶意客户端。  将工作流与 OMS 更改跟踪集成后，还可以查看后端计算机或服务上的更改事件是否能解释事件的根本原因。
@@ -50,18 +51,51 @@ ms.openlocfilehash: c5cd77dc53c36c4ad6c41eb876e24b4077d2007c
 
 ![服务映射概述](media/oms-service-map/service-map-overview.png)
 
-可在映射中扩展计算机，以在选定时间范围内显示具有有效网络连接的运行中的进程。  扩展具有服务映射代理的远程计算机以显示进程详细信息时，仅显示与焦点计算机通信的进程。  连接到焦点计算机的无代理前端计算机计数指示在它们所连接到的进程左侧。  如果焦点计算机无需代理即可连接到后端计算机，该后端将使用映射中的一个节点表示，可扩展该节点以显示焦点计算机要通信的单独端口和服务。
+可在映射中扩展计算机，以在选定时间范围内显示具有有效网络连接的运行中的进程。  扩展具有服务映射代理的远程计算机以显示进程详细信息时，仅显示与焦点计算机通信的进程。  连接到焦点计算机的无代理前端计算机计数指示在它们所连接到的进程左侧。  如果焦点计算机连接到无代理后端计算机，则服务器端口组中包含该后端服务器以及与同一端口号相连的其他连接。
 
 默认情况下，“服务映射”映射显示过去 10 分钟的依赖关系信息。  使用左上角的时间控件，可以在映射中查询历史时间范围（最多一小时），显示依赖关系在过去（例如发生事件期间或发生更改之前）的出现形式。    服务映射数据在付费工作区中存储 30 天，在免费工作区中存储 7 天。
 
-![具有选定计算机属性的计算机映射](media/oms-service-map/machine-map.png)
+## <a name="status-badges"></a>状态徽章
+映射中每个服务器的底部可以是状态徽章的列表，用于表示有关服务器的状态信息。  徽章指示其中一个 OMS 解决方案集成中有服务器的一些相关信息。  单击徽章将直接在右侧面板中转到状态的详细信息。  当前可用性状态徽章包括警报、更改、安全性和更新。
 
-## <a name="failed-connections"></a>失败的连接数
+![失败的连接](media/oms-service-map/status-badges.png)
+
+## <a name="failed-connections"></a>失败的连接
 对于进程和计算机，失败的连接显示在“服务映射”映射中，如果客户端系统无法访问进程或端口，会显示一条红色虚线。  如果已部署服务映射代理的任何系统正尝试失败的连接，将从该系统报告失败的连接。  服务映射通过观察无法建立连接的 TCP 套接字测量失败的连接。  这可能是因为防火墙、客户端或服务器中的配置错误或远程服务不可用。
 
 ![失败的连接](media/oms-service-map/failed-connections.png)
 
 了解失败的连接可帮助进行疑难解答、迁移验证、安全分析和了解总体体系结构。  有时失败的连接无害，但它们通常直接指向问题，例如故障转移环境突然无法访问或两个应用程序层在进行云迁移后无法通信。
+
+## <a name="client-groups"></a>客户端组
+客户端组是映射上的各个框，表示不具备依赖关系代理的客户端计算机。  单个客户端组表示单个进程的客户端。
+
+![客户端组](media/oms-service-map/client-groups.png)
+
+若要查看客户端组中的服务器 IP 地址，请选择该组。  “属性”面板中将列出该组的内容。
+
+![客户端组属性](media/oms-service-map/client-group-properties.png)
+
+## <a name="server-port-groups"></a>服务器端口组
+服务器端口组是表示服务器（不具备依赖关系代理）上的服务器端口的各个框。  框中将列出服务器端口，以及连接到该端口的服务器计数。  展开此框可查看各个服务器和连接。  如果框中仅有一个服务器，则会列出服务器名称或 IP 地址。
+
+![服务器端口组](media/oms-service-map/server-port-groups.png)
+
+## <a name="context-menu"></a>上下文菜单
+单击任何服务器右上部的三个点将显示该服务器的上下文菜单。
+
+![失败的连接](media/oms-service-map/context-menu.png)
+
+### <a name="load-server-map"></a>加载服务器映射
+加载服务器映射将导航到新映射，其中所选服务器作为新的焦点计算机。
+
+### <a name="showhide-self-links"></a>显示/隐藏自链接
+显示自链接将重绘包含任何自链接的服务器节点，这些自链接是表示服务器中的进程的开始和结束的 TCP 连接。  如果显示了自链接，则该菜单将更改为“隐藏自链接”，允许用户切换自链接的绘制。
+
+## <a name="computer-summary"></a>计算机摘要
+“计算机摘要”面板包括服务器的操作系统、依赖关系计数以及其他 OMS 解决方案（包括性能指标、更改跟踪、安全、更新等）的各种数据的概述。
+
+![计算机摘要](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>计算机和进程属性
 导航“服务映射”映射时，可选择计算机和进程获取有关其属性的其他上下文。  计算机提供有关 DNS 名称、IPv4 地址、CPU 和内存容量、VM 类型、操作系统版本、上次重启时间及其 OMS 和服务映射代理的 ID 的信息。
@@ -76,10 +110,22 @@ ms.openlocfilehash: c5cd77dc53c36c4ad6c41eb876e24b4077d2007c
 
 ![进程摘要](media/oms-service-map/process-summary.png)
 
-## <a name="computer-summary"></a>计算机摘要
-“计算机摘要”面板包括服务器的操作系统、依赖关系计数以及其他 OMS 解决方案（包括性能指标、更改跟踪、安全、更新等）的各种数据的概述。
+## <a name="oms-alerts-integration"></a>OMS 警报集成
+服务映射与 OMS 警报集成，可显示所选时间范围内所选服务器触发的警报。  如果当前有警报，服务器将显示一个图标，且计算机警报面板将列出警报
 
-![计算机摘要](media/oms-service-map/machine-summary.png)
+![计算机警报面板](media/oms-service-map/machine-alerts.png)
+
+请注意，若要使服务映射能够显示相关警报，必须创建警报规则，以便对特定计算机触发。  创建相应的警报：
+- 包含以下子句，以按计算机进行分组：“by Computer interval 1minute”
+- 根据公制度量值选择警报
+
+![警报配置](media/oms-service-map/alert-configuration.png)
+
+
+## <a name="oms-log-events-integration"></a>OMS 日志事件集成
+服务映射与日志搜索集成，可显示所选时间范围内所选服务器的所有可用的日志事件。  你可以单击事件计数列表中的任意行，跳转到日志搜索并查看单独的日志事件。
+
+![日志事件](media/oms-service-map/log-events.png)
 
 ## <a name="oms-change-tracking-integration"></a>OMS 更改跟踪集成
 服务映射将与更改跟踪自动集成，前提是这两个解决方案已启用并在 OMS 工作区中配置。
@@ -109,30 +155,18 @@ ms.openlocfilehash: c5cd77dc53c36c4ad6c41eb876e24b4077d2007c
 计算机更新面板显示所选服务器的 OMS 更新管理解决方案的数据。  面板将列出在所选时间范围内服务器的任何缺少更新的摘要。
 ![“计算机更改跟踪”面板](media/oms-service-map/machine-updates.png)
 
-
-## <a name="oms-alert-integration"></a>OMS 警报集成
-服务映射与 OMS 警报集成，可显示所选时间范围内所选服务器触发的警报。  如果当前有警报，服务器将显示一个图标，且计算机警报面板将列出警报
-
-![计算机警报面板](media/oms-service-map/machine-alerts.png)
-
-请注意，若要使服务映射能够显示相关警报，必须创建警报规则，以便对特定计算机触发。  创建相应的警报：
-- 包含以下子句，以按计算机进行分组：“by Computer interval 1minute”
-- 根据公制度量值选择警报
-
-![警报配置](media/oms-service-map/alert-configuration.png)
-
-
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-analytics/log-analytics-log-searches.md)。  这可应用于包括迁移计划、容量分析、发现和临时性能疑难解答在内的方案。
 
-除了在唯一进程或计算机启动或载入服务映射时生成的记录外，还针对每个计算机和进程每小时生成一个记录。  这些记录的属性在下表中列出。
+除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一个记录。  这些记录的属性在下表中列出。  ServiceMapComputer_CL 事件中的字段和值将映射到 ServiceMap ARM API 中计算机资源的字段。  ServiceMapProcess_CL 事件中的字段和值将映射到 ServiceMap ARM API 中进程资源的字段。  ResourceName_s 字段与相应的 ARM 资源中的名称字段匹配。 请注意：随着服务映射功能增加，这些字段可能会更改。
+
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- PersistentKey_s 由进程配置唯一定义，例如命令行和用户 ID。  它特定于给定计算机，但可以在计算机之间重复。
-- ProcessId_s 和 ComputerId_s 在服务映射模型中全局唯一。
+- 计算机 - 使用 ResourceId 或 ResourceName_s 唯一标识 OMS 工作区中的计算机。
+- 进程 - 使用 ResourceId 唯一标识 OMS 工作区中的进程。 ResourceName_s 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
-
+由于在给定的时间范围内给定的进程和计算机可能存在多个记录，因此针对同一个计算机或进程的查询可能返回多个记录。 若要仅包括最新记录，请将“|dedup ResourceId”添加到查询。
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL 记录
 类型为 **ServiceMapComputer_CL** 的记录包含具有服务映射代理的服务器的清单数据。  这些记录的属性在下表中列出：
@@ -141,22 +175,24 @@ ms.openlocfilehash: c5cd77dc53c36c4ad6c41eb876e24b4077d2007c
 |:--|:--|
 | 类型 | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
-| ComputerName_s | Windows 或 Linux 计算机名称 |
-| CPUSpeed_d | CPU 速度（以 MHz 为单位） |
-| DnsNames_s | 此计算机的所有 DNS 名称的列表 |
-| IPv4s_s | 此计算机使用的所有 IPv4 地址的列表 |
-| IPv6s_s | 此计算机使用的所有 IPv6 地址的列表。  （服务映射标识 IPv6 地址，但不会发现 IPv6 依赖关系。） |
-| Is64Bit_b | true 或 false，取决于操作系统类型 |
-| MachineId_s | OMS 工作区上唯一的内部 GUID  |
-| OperatingSystemFamily_s | Windows 或 Linux |
-| OperatingSystemVersion_s | 操作系统版本的长字符串 |
-| TimeGenerated | 创建记录的日期和时间。 |
-| TotalCPUs_d | CPU 内核数 |
-| TotalPhysicalMemory_d | 内存容量（以 MB 为单位） |
-| VirtualMachine_b | true 或 false，取决于操作系统是否为 VM 来宾 |
-| VirtualMachineID_g | Hyper-V VM ID |
-| VirtualMachineName_g | Hyper-V VM 名称 |
-| VirtualMachineType_s | Hyperv、Vmware、Xen、Kvm、Ldom、Lpar、Virtualpc |
+| ResourceId | 工作区中的计算机的唯一标识符 |
+| ResourceName_s | 工作区中的计算机的唯一标识符 |
+| ComputerName_s | 计算机 FQDN |
+| Ipv4Addresses_s | 服务器的 IPv4 地址列表 |
+| Ipv6Addresses_s | 服务器的 IPv6 地址列表 |
+| DnsNames_s | DNS 名称的数组 |
+| OperatingSystemFamily_s | windows 或 linux |
+| OperatingSystemFullName_s | 操作系统全名  |
+| Bitness_s | 计算机（32 位）或（64 位）的位数 |
+| PhysicalMemory_d | 物理内存（以 MB 为单位） |
+| Cpus_d | cpu 数 |
+| CpuSpeed_d | cpu 速度（以 MHz 为单位）|
+| VirtualizationState_s | “未知”、“物理”、“虚拟”、“虚拟机监控程序” |
+| VirtualMachineType_s | “hyperv”、“vmware”，等等。 |
+| VirtualMachineNativeMachineId_g | 由虚拟机监控程序分配的 VM ID |
+| VirtualMachineName_s | VM 名称 |
+| BootTime_t | 启动时间 |
+
 
 
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 类型记录
@@ -166,64 +202,72 @@ ms.openlocfilehash: c5cd77dc53c36c4ad6c41eb876e24b4077d2007c
 |:--|:--|
 | 类型 | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
-| CommandLine_s | 进程的完整命令行 |
-| CompanyName_s | 公司名称（来自 Windows PE 或 Linux RPM） |
-| Description_s | 进程长说明（来自 Windows PE 或 Linux RPM） |
-| FileVersion_s | 可执行文件版本（来自 Windows PE，仅限 Windows） |
-| FirstPid_d | 操作系统进程 ID |
-| InternalName_s | 可执行文件的内部名称（来自 Windows PE，仅限 Windows） |
-| MachineId_s | OMS 工作区上唯一的内部 GUID  |
-| Name_s | 进程可执行文件名称 |
-| Path_s | 进程可执行文件的文件系统路径 |
-| PersistentKey_s | 此计算机内唯一的内部 GUID |
-| PoolId_d | 用于根据相似命令行聚合进程的内部 ID。 |
-| ProcessId_s | OMS 工作区上唯一的内部 GUID  |
-| ProductName_s | 产品名称字符串（来自 Windows PE 或 Linux RPM） |
-| ProductVersion_s | 产品版本字符串（来自 Windows PE 或 Linux RPM） |
-| StartTime_t | 本地计算机时钟上的进程启动时间 |
-| TimeGenerated | 创建记录的日期和时间。 |
-| UserDomain_s | 进程所有者的域（仅限 Windows） |
-| UserName_s | 进程所有者的名称（仅限 Windows） |
-| WorkingDirectory_s | 进程工作目录 |
+| ResourceId | 工作区中的进程的唯一标识符 |
+| ResourceName_s | 进程在运行它的计算机中的唯一标识符|
+| MachineResourceName_s | 计算机资源名称 |
+| ExecutableName_s | 进程可执行文件名称 |
+| StartTime_t | 进程池启动时间 |
+| FirstPid_d | 进程池中的第一个 pid |
+| Description_s | 进程说明 |
+| CompanyName_s | 公司名称 |
+| InternalName_s | 内部名称 |
+| ProductName_s | 产品名称 |
+| ProductVersion_s | 产品版本 |
+| FileVersion_s | 文件版本 |
+| CommandLine_s | 命令行 |
+| ExecutablePath_s | 可执行文件的路径 |
+| WorkingDirectory_s | 工作目录 |
+| UserName | 执行进程所用的帐户 |
+| UserDomain | 在其下执行进程的域 |
 
 
 ## <a name="sample-log-searches"></a>示例日志搜索
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量。
-Type=ServiceMapComputer_CL | select TotalPhysicalMemory_d, ComputerName_s | Dedup ComputerName_s
+### <a name="list-all-known-machines"></a>列出所有已知计算机
+Type=ServiceMapComputer_CL | dedup ResourceId
 
-### <a name="list-computer-name-dns-ip-and-os-version"></a>列出计算机名称、DNS、IP 和操作系统版本。
-Type=ServiceMapComputer_CL | select ComputerName_s, OperatingSystemVersion_s, DnsNames_s, IPv4s_s  | dedup ComputerName_s
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量。
+Type=ServiceMapComputer_CL | select PhysicalMemory_d, ComputerName_s | Dedup ResourceId
+
+### <a name="list-computer-name-dns-ip-and-os"></a>列出计算机名称、DNS、IP 和 OS。
+Type=ServiceMapComputer_CL | select ComputerName_s, OperatingSystemFullName_s, DnsNames_s, IPv4Addresses_s  | dedup ResourceId
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>在命令行中查找带有“sql”的所有进程
-Type=ServiceMapProcess_CL CommandLine_s = \*sql\* | dedup ProcessId_s
+Type=ServiceMapProcess_CL CommandLine_s = \*sql\* | dedup ResourceId
 
-### <a name="after-viewing-event-data-for-given-process-use-its-machine-id-to-retrieve-the-computers-name"></a>查看给定进程的事件数据之后，使用其计算机 ID 检索计算机名称
-Type=ServiceMapComputer_CL "m!m-9bb187fa-e522-5f73-66d2-211164dc4e2b" | Distinct ComputerName_s
+### <a name="find-a-machine-most-recent-record-by-resource-name"></a>按资源名称查找计算机（最新记录）
+Type=ServiceMapComputer_CL "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
+
+### <a name="find-a-machine-most-recent-record-by-ip-address"></a>按 ip 地址查找计算机（最新记录）
+Type=ServiceMapComputer_CL "10.229.243.232" | dedup ResourceId
+
+### <a name="list-all-known-processes-on-a-given-machine"></a>列出给定计算机上的所有已知进程
+Type=ServiceMapProcess_CL MachineResourceName_s="m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
 
 ### <a name="list-all-computers-running-sql"></a>列出所有运行 SQL 的计算机
-Type=ServiceMapComputer_CL MachineId_s IN {Type=ServiceMapProcess_CL \*sql\* | Distinct MachineId_s} | Distinct ComputerName_s
+Type=ServiceMapComputer_CL ResourceName_s IN {Type=ServiceMapProcess_CL \*sql\* | Distinct MachineResourceName_s} | dedup ResourceId | Distinct ComputerName_s
 
 ### <a name="list-of-all-unique-product-versions-of-curl-in-my-datacenter"></a>在我的数据中心中列出 curl 的所有唯一产品版本
-Type=ServiceMapProcess_CL Name_s=curl | Distinct ProductVersion_s
+Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>创建运行 CentOS 的所有计算机的计算机组
-Type=ServiceMapComputer_CL OperatingSystemVersion_s = "CentOS" | Distinct ComputerName_s
+Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
 
+
+## <a name="rest-api"></a>REST API
+服务映射中所有服务器、进程和依赖项数据可通过[服务映射 REST API](https://docs.microsoft.com/en-us/rest/api/servicemap/) 获取。
 
 
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 Microsoft 通过使用服务映射服务，自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务映射服务的质量、安全性和完整性。 数据包括有关你的软件配置的信息（如操作系统和版本），还包括 IP 地址、DNS 名称和工作站名称，以便提供准确高效的疑难解答功能。 我们不收集姓名、地址或其他联系信息。
 
-有关数据收集和使用的详细信息，请参阅 [Microsoft Online Services 隐私声明](hhttps://go.microsoft.com/fwlink/?LinkId=512132)。
-
+有关数据收集和使用的详细信息，请参阅 [Microsoft Online Services 隐私声明](https://go.microsoft.com/fwlink/?LinkId=512132)。
 
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关 Log Analytics 中的[日志搜索](../log-analytics/log-analytics-log-searches.md)的详细信息，以检索服务映射收集的数据。
 
 
-
-<!--HONumber=Nov16_HO4-->
-
+## <a name="feedback"></a>反馈
+是否有任何关于服务映射或本文档的反馈？  请访问 [User Voice 页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
 

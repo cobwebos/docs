@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: f5b9a4d83e21dfefc12ea2931702a9dce3f03016
-ms.openlocfilehash: bd4352cd6f8a909d518b0c5527d6c0e63e4bad51
+ms.sourcegitcommit: 7d472733e80ae03294ba1ac9e97d1afd3aa0fa91
+ms.openlocfilehash: c7d8eefe560a361690cc4daf6550b2a8c894f318
 
 
 ---
@@ -120,23 +120,17 @@ Windows 10 客户端 SKU 支持企业状态漫游，但服务器 SKU 不支持�
 如果组织已在 Windows 10 中使用漫游（通过 Azure RMS 使用受限的免费订阅），购买付费 Azure RMS 订阅不会对漫游功能产生任何影响，且无需 IT 管理员对配置进行任何更改。
 
 ## <a name="known-issues"></a>已知问题
-* 如果尝试使用智能卡或虚拟智能卡登录到 Windows 设备，设置同步会停止工作。 Windows 10 的未来更新可能会解决此问题。
-* 需要 Windows 10（内部版本 10586.494 或更高版本）的 7 月累积更新，以使 Internet Explorer 收藏夹同步进行工作。
-* 使用 Windows 信息保护进行保护的数据不会通过企业状态漫游进行同步。 此外，启用 Windows 信息保护的计算机不会发生主题同步。
-* 在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。
-
-  * 如果在 Azure Active Directory 门户中将设备配置为需要[多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)，则在使用密码登录到 Windows 10 设备时可能无法对设置进行同步。 这种多重身份验证配置旨在保护 Azure 管理员帐户。 通过 [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) PIN 或通过访问其他 Azure 服务（如 Office 365）时完成多重身份验证，管理员用户仍能登录到 Windows 10 设备，从而进行同步。
-  * 如果管理员配置 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，那么同步可能会失败。  确保使用 [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
-* 如果计算机已加入域且自动向 Azure Active Directory 设备注册，则当计算机长时间处于场外时，同步可能会失败，且无法完成域身份验证。 若要解决此问题，将计算机连接到企业网络上，以便恢复同步。
+请参阅[疑难解答](active-directory-windows-enterprise-state-roaming-troubleshooting.md)一节中的文档，查看已知问题列表。 
 
 ## <a name="related-topics"></a>相关主题
 * [企业状态漫游概述](active-directory-windows-enterprise-state-roaming-overview.md)
 * [在 Azure Active Directory 中启用企业状态漫游](active-directory-windows-enterprise-state-roaming-enable.md)
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
+* [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

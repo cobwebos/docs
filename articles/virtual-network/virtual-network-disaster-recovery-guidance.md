@@ -20,7 +20,7 @@ ms.openlocfilehash: dbb749b056c36f16e921933fb8345211e3eaa697
 
 
 ---
-# <a name="virtual-network-business-continuity"></a>虚拟网络 - 业务连续性
+# <a name="virtual-network--business-continuity"></a>虚拟网络 - 业务连续性
 ## <a name="overview"></a>概述
 虚拟网络 (VNet) 是网络在云中的逻辑表示形式。 这样一来，你可以定义自己的专用 IP 地址空间，并将网络划分为子网。 VNet 用作托管计算资源（如 Azure 虚拟机和云服务（Web/辅助角色））的信任边界。 VNet 允许在其中托管的资源之间建立直接的专用 IP 通信。 还可以通过一个混合选项（如 VPN 网关或 ExpressRoute），将虚拟网络链接到本地网络。
 

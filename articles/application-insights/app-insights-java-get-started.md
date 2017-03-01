@@ -38,10 +38,10 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.获取 Application Insights 检测密钥
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
 2. 创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
-   
+
     ![填写名称，选择 Java Web 应用，然后单击“创建”](./media/app-insights-java-get-started/02-create.png)
 3. 查找新资源的检测密钥。 稍后需要将此密钥粘贴到代码项目中。
-   
+
     ![在新资源概述中，单击“属性”，然后复制检测密钥](./media/app-insights-java-get-started/03-key.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.将用于 Java 的 Application Insights SDK 添加到项目
@@ -107,11 +107,11 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
 ### <a name="questions"></a>问题...
 * *zip 中的 `-core` 与 `-web` 组件之间有怎样的关系？*
-  
+
   * `applicationinsights-core` 提供单纯的 API。 始终需要此组件。
   * `applicationinsights-web` 提供用于跟踪 HTTP 请求计数和响应时间的指标。 如果不想要自动收集此遥测数据，可以忽略此组件。 例如，如果想要编写自己的组件。
 * *在发布更改时更新 SDK*
-  
+
   * 下载最新的 [用于 Java 的 Application Insights SDK](https://aka.ms/qqkaq6) 并替换旧版本。
   * [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
 
@@ -239,11 +239,11 @@ Application Insights SDK 按以下顺序查找密钥：
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
 > Application Insights 假设 MVC 应用程序的 HTTP 请求的格式为： `VERB controller/action`。 例如，将 `GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5` 和 `GET Home/Product/sdf96vws` 分组到 `GET Home/Product` 中。 这种分组可提供有意义的请求聚合，例如请求数量和请求的平均执行时间。
-> 
-> 
+>
+>
 
 ### <a name="instance-data"></a>实例数据
-单击特定的请求类型可查看各个实例。 
+单击特定的请求类型可查看各个实例。
 
 Application Insights 中显示两种类型的数据：聚合数据（存储并显示为平均值、计数和总和）；以及实例数据（HTTP 请求、异常、页面视图或自定义事件的不同报告）。
 
@@ -260,16 +260,16 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 现在，将应用程序发布到服务器供用户使用，然后查看门户上显示的遥测数据。
 
 * 请确保防火墙允许应用程序将遥测数据发送到以下端口：
-  
+
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
 
-* 如果必须通过防火墙路由传出流量，需定义系统属性 `http.proxyHost` 和 `http.proxyPort`。 
+* 如果必须通过防火墙路由传出流量，需定义系统属性 `http.proxyHost` 和 `http.proxyPort`。
 
 * 在 Windows 服务器上，安装：
-  
+
   * [Microsoft Visual C++ Redistributable](http://www.microsoft.com/download/details.aspx?id=40784)
-    
+
     （此组件启用性能计数器。）
 
 
@@ -280,7 +280,7 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 
 若要收集其他异常数据，可使用两个选项：
 
-* [在代码中插入 trackException() 调用][apiexceptions]。 
+* [在代码中插入 trackException() 调用][apiexceptions]。
 * [在服务器上安装 Java 代理](app-insights-java-agent.md)。 指定要监视的方法。
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>监视方法调用和外部依赖项
@@ -370,7 +370,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 
 ![Web 测试示例](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
-[详细了解可用性 Web 测试。][availability] 
+[详细了解可用性 Web 测试。][availability]
 
 ## <a name="questions-problems"></a>有疑问？ 遇到问题？
 [Java 故障排除](app-insights-java-troubleshoot.md)
@@ -387,7 +387,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
+[apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md

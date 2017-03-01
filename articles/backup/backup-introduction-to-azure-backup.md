@@ -1,10 +1,10 @@
 ---
 title: "什么是 Azure 备份？ | Microsoft 文档"
-description: "使用 Azure 备份和恢复服务，可以从 Windows 服务器、Windows 客户端计算机、System Center DPM 服务器和 Azure 虚拟机备份和还原数据与应用程序。"
+description: "使用 Azure 备份和恢复服务，可以从 Windows 服务器、Windows 计算机、System Center DPM 服务器和 Azure 虚拟机备份和还原数据与应用程序。"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "备份和还原;恢复服务;备份解决方案"
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/7/2016
-ms.author: jimpark; trinadhk
+ms.date: 2/6/2017
+ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 9de8032bc69b054d5d13857159ff994f505497a6
-ms.openlocfilehash: 08e7d4402ad52835d193b2083e3c9b2776e0332e
+ms.sourcegitcommit: bda71281617fa37f7f2a08e238c706dd2a4f5576
+ms.openlocfilehash: 99246e97f096b872e225e8818def059bdc2211c6
 
 
 ---
@@ -45,7 +45,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **应用程序一致的备份** - 无论是备份文件服务器、虚拟机还是 SQL 数据库，都需要知道恢复点具有还原备份副本所需的全部数据。 Azure 备份提供了应用程序一致的备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致的数据可减少还原时间，使得可快速恢复到运行状态。
 
-**长期保留** - 可以在 Azure 中备份数据 99 年。 可使用 Azure 实现短期和长期保留，无需将备份副本从磁盘转到磁带中，再将磁带移到异地位置进行长期存储。
+**长期保留** -  可使用 Azure 实现短期和长期保留，无需将备份副本从磁盘转到磁带中，再将磁带移到异地位置进行长期存储。 Azure 不会限制备份或恢复服务保管库中数据的保留时间长度。 可以根据需要设置数据在保管库中的保留时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 请参阅本文的[备份和保留](backup-introduction-to-azure-backup.md#backup-and-retention)部分，了解此限制对用户备份需求的影响。  
 
 ## <a name="which-azure-backup-components-should-i-use"></a>应使用哪些 Azure 备份组件？
 如果不确定哪个 Azure 备份组件适合你的需求，请参阅下表了解每个组件可保护的内容。 Azure 门户提供了一个内置向导，可引导你选择要下载和部署的组件。 该向导是恢复服务保管库创建的一部分，可引导你完成相关步骤来选择备份目标和选择要保护的数据/应用程序。
@@ -53,8 +53,8 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | 组件 | 优点 | 限制 | 保护哪些内容？ | 备份存储在何处？ |
 | --- | --- | --- | --- | --- |
 | Azure 备份 (MARS) 代理 |<li>将文本和文件夹备份到物理或虚拟 Windows OS（VM 可以在本地或在 Azure 中）<li>无需单独的备份服务器。 |<li>每天备份三次 <li>不感知应用程序；仅支持文件、文件夹和卷级别的还原， <li>  不支持 Linux。 |<li>文件、 <li>文件夹 |Azure 备份保管库 |
-| System Center DPM |<li>应用感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持 <li>使用 DPM 2012 R2 保护 VMware VM |无法备份 Oracle 工作负荷。|<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘、<li>  磁带（仅限本地） |
-| Azure 备份服务器 |<li>应用感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Linux 支持（如果托管在 Hyper-V 上）<li>使用 DPM 2012 R2 保护 VMware VM<li>不需要 System Center 许可证 |<li>无法备份 Oracle 工作负荷。<li>始终需要实时 Azure 订阅<li>不支持磁带备份 |<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘 |
+| System Center DPM |<li>应用程序感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持 <li>使用 DPM 2012 R2 备份和还原 VMware VM |无法备份 Oracle 工作负荷。|<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘、<li>  磁带（仅限本地） |
+| Azure 备份服务器 |<li>应用感知快照 (VSS)<li>在备份时间上完全灵活<li>恢复粒度（全部）<li>可使用 Azure 备份保管库<li>Hyper-V 和 VMware VM 对 Linux 的支持<li>备份和还原 VMware VM <li>不需要 System Center 许可证 |<li>无法备份 Oracle 工作负荷。<li>始终需要实时 Azure 订阅<li>不支持磁带备份 |<li>文件、 <li>文件夹、<li> 卷、 <li>VM、<li> 应用程序、<li> 工作负荷 |<li>Azure 备份保管库、<li> 本地附加磁盘 |
 | Azure IaaS VM 备份 |<li>针对 Windows/Linux 的本地备份<li>无需安装特定代理<li>无需使用备份基础结构进行结构级备份 |<li>每天备份 VM 一次 <li>仅在磁盘级还原 VM<li>无法本地备份 |<li>VM、 <li>所有磁盘（使用 PowerShell） |<p>Azure 备份保管库</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>每个组件适用哪些部署方案？
@@ -107,6 +107,15 @@ Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 
 
 ### <a name="restore-premium-storage-vms"></a>还原高级存储 VM
 可将高级存储 VM 还原到高级存储或常规存储中。 将高级存储 VM 的恢复点还原到高级存储是典型的还原过程。 但是，将高级存储 VM 的恢复点还原到标准存储更符合成本效益。 如果需要 VM 中的一部分文件，可以使用这种还原类型。
+
+## <a name="using-managed-disk-vms-with-azure-backup"></a>将托管磁盘 VM 与 Azure 备份结合使用
+Azure 备份保护托管磁盘 VM。 使用托管磁盘，用户就不需要管理虚拟机的存储帐户，大大简化 VM 预配。
+
+### <a name="back-up-managed-disk-vms"></a>备份托管磁盘 VM
+在托管磁盘上备份 VM 与备份 Resource Manager VM 并无不同。 可以直接从 VM 视图或恢复服务保管库视图备份。 使用基于托管磁盘的 RestorePoint 收集即可在托管磁盘上备份 VM。 Azure 备份目前不支持对使用 Azure 磁盘加密 (ADE) 加密的托管磁盘 VM 进行备份。
+
+### <a name="restore-managed-disk-vms"></a>还原托管磁盘 VM
+Azure 备份允许用户还原使用托管磁盘的完整 VM，或者将托管磁盘还原到 Resource Manager 存储帐户。 虽然在还原过程中创建的磁盘由 Azure 管理，但在还原过程中创建的存储帐户与任何其他 Resource Manager 存储帐户一样，应该由客户管理。
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>每个备份组件有哪些功能？
 以下各节提供了相关表格，总结了每个 Azure 备份组件中各种功能是否可用或受支持。 请参阅各表格后的额外支持信息或详细信息。
@@ -175,18 +184,18 @@ IaaS VM 上的 VM 扩展会通过存储网络直接读取 Azure 存储帐户中�
 #### <a name="network-throttling"></a>网络限制
 Azure 备份代理提供网络限制功能，可用于控制数据传输期间的网络带宽使用方式。 如果需要在上班时间内备份数据，但不希望备份程序干扰其他 Internet 流量，限制会很有帮助。 数据传输的限制适用于备份和还原活动。
 
-### <a name="backup-and-retention"></a>备份和保留
+## <a name="backup-and-retention"></a>备份和保留
 
 Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备份副本或快照）的限制。 受保护的实例是计算机、服务器（物理或虚拟）或配置为向 Azure 备份数据的工作负荷。 有关详细信息，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)部分。 保存数据的备份副本时，将保护实例。 数据的备份副本是保护项。 如果源数据丢失或损坏，备份副本可还原源数据。 下表显示了每个组件的最大备份频率。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额将会耗尽。 如果每月创建一个恢复点，可以保留恢复点 833 年。 备份服务未针对恢复点实施过期时间限制。
 
 |  | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 备份频率<br/> （到备份保管库） |每天三次备份 |每天两次备份 |每天两次备份 |每天一次备份 |
-| 备份频率<br/> （到磁盘） |不适用 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔 1 小时 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔 1 小时</p> |不适用 |
+| 备份频率<br/> （到磁盘） |不适用 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔&1; 小时 |<li>SQL Server 每隔 15 分钟 <li>其他工作负荷每隔&1; 小时</p> |不适用 |
 | 保留期选项 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |每日、每周、每月、每年 |
 | 每个受保护实例的恢复点数上限 |9999|9999|9999|9999|
 | 最长数据保留期 |取决于备份频率 |取决于备份频率 |取决于备份频率 |取决于备份频率 |
-| 本地磁盘上的恢复点 |不适用 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |<li>对于文件服务器为 64，<li>对于应用程序服务器为 448 |不适用 |
+| 本地磁盘上的恢复点 |不适用 |<li>对于文件服务器为&64;，<li>对于应用程序服务器为&448; |<li>对于文件服务器为&64;，<li>对于应用程序服务器为&448; |不适用 |
 | 磁带上的恢复点 |不适用 |不受限制 |不适用 |不适用 |
 
 ## <a name="what-is-a-protected-instance"></a>什么是受保护实例
@@ -234,6 +243,6 @@ Azure 备份保护本地和云端的数据。 Azure Site Recovery 就虚拟机�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

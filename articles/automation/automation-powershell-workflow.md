@@ -1,6 +1,6 @@
 ---
-title: "了解 PowerShell 工作流"
-description: "本文旨在作为熟悉 PowerShell 创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流之间的具体差异。"
+title: "了解 Azure 自动化的 PowerShell 工作流 | Microsoft Docs"
+description: "本文旨在作为熟悉 PowerShell 创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流之间的具体差异，并介绍适用于自动化 runbook 的概念。"
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -12,27 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
-ms.author: bwren
+ms.date: 01/23/2017
+ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 0ab72bd4ad531d1162726c6f5548fa253a4f5265
-ms.openlocfilehash: 3893d8508535ee605c3555d2ddf40d6f286d85fa
+ms.sourcegitcommit: 480a40bd5ecd58f11b10c27e7e0d2828bcae1f17
+ms.openlocfilehash: 50966ed518b79f2033680790432e29b0c9e7b289
 
 
 ---
-# <a name="learning-windows-powershell-workflow"></a>学习 Windows PowerShell 工作流
-Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Windows PowerShell 工作流类似于 Windows PowerShell 脚本，但包括一些可能会让新用户产生混淆的重大差异。  本文适用于已经熟悉 PowerShell 的用户并简要介绍了如果要将 PowerShell 脚本转换为在 runbook 中使用的 PowerShell 工作流所需要了解的概念。  
+# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解自动化 runbook 的关键 PowerShell 工作流概念 
+Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Windows PowerShell 工作流类似于 Windows PowerShell 脚本，但包括一些可能会让新用户产生混淆的重大差异。  本文旨在提供有关使用 PowerShell 工作流编写 runbook 的帮助，但我们建议使用 PowerShell 编写 runbook，除非是需要检查点的情况。  编写 PowerShell 工作流 runbook 时存在一些语法差异，这些差异会增加编写有效工作流时所需的工作量。  
 
 工作流是一系列编程的连接步骤，用于执行长时间运行的任务，或者要求跨多个设备或托管节点协调多个步骤。 与标准脚本相比，工作流的好处包括能够同时执行针对多台设备的操作以及自动从故障中恢复的能力。 Windows PowerShell 工作流是利用 Windows Workflow Foundation 的 Windows PowerShell 脚本。 尽管工作流是使用 Windows PowerShell 语法编写的并通过 Windows PowerShell 启动，但它将由 Windows Workflow Foundation 进行处理。
 
 有关本文中主题的完整详细信息，请参阅 [Windows PowerShell 工作流简介](http://technet.microsoft.com/library/jj134242.aspx)。
-
-## <a name="types-of-runbook"></a>Runbook 类型
-Azure 自动化中有三种类型的 Runbook：PowerShell 工作流 Runbook、PowerShell Runbook 和图形 Runbook。  您在创建 Runbook 时定义其类型，并且一旦创建之后，不能将 Runbook 转换为另一种类型。
-
-PowerShell 工作流 Runbook 和 PowerShell Runbook 适用于愿意使用 Azure 自动化中的文本编辑器或脱机编辑器（如 PowerShell ISE）直接处理 PowerShell 代码的用户。 如果你要创建 PowerShell 工作流 Runbook，则应了解本文中的信息。
-
-图形 Runbook 允许您图形界面创建使用相同活动和 cmdlet 的 Runbook，图形界面隐藏了底层 PowerShell 工作流的复杂性。  本文中的一些概念（如检查点和并行执行）仍适用于图形 Runbook，但您无需关心详细的语法。
 
 ## <a name="basic-structure-of-a-workflow"></a>工作流的基本结构
 将 PowerShell 脚本转换为 PowerShell 工作流的第一步是使用 **Workflow** 关键字将其括起来。  工作流以 **Workflow** 关键字开头，后接括在大括号中的脚本正文。 工作流名称跟在 **Workflow** 关键字之后，如以下语法中所示。
@@ -204,7 +197,6 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 > [!NOTE]
 > 我们不建议并行运行子 Runbook，这是由于这已被证实将导致不可靠的结果。  来自子 Runbook 的输出有时将不会显示，一个子 Runbook 中的设置可能会影响其他并行子 Runbook
 >
->
 
 ## <a name="checkpoints"></a>检查点
 “检查点”是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时将从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。
@@ -271,6 +263,6 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -4,7 +4,7 @@ description: "在 Windows Server 2012 R2 中使用 Active Directory 联合身份
 services: active-directory
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: 
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 02d8de2e37af9ccbf79bb77180b0eda0d187eb5c
+ms.sourcegitcommit: f42e31c99bf43e8f034c8d6f4f98d777661c3d81
+ms.openlocfilehash: 204ec83dc1000bb1e10df6fecc303b6ac7795739
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -176,9 +177,6 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 ### <a name="join-a-windows-7-device-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册加入 Windows 7 设备
 若要注册加入域的 Windows 7 设备，需要部署设备注册软件包。 此软件包称为 Workplace Join for Windows 7，可以从 [Microsoft Connect 网站](https://connect.microsoft.com/site1164)下载。 [为加入 Windows 7 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md)中提供了有关如何使用此包的说明。
 
-### <a name="join-an-android-device-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册加入 Android 设备
-[适用于 Android 主题的 Azure Authenticator](active-directory-conditional-access-azure-authenticator-app.md) 包含有关如何在 Android 设备上安装 Azure Authenticator 应用并添加工作帐户的说明。 当在 Android 设备上成功创建工作帐户后，该设备将加入到组织的工作区。
-
 ## <a name="verify-registered-devices-are-written-back-to-active-directory"></a>验证注册的设备是否已写回到 Active Directory
 你可以使用 LDP.exe 和 ADSI 编辑器来查看并验证已写回到 Active Directory 的设备对象。 Active Directory 管理员工具中提供了这两个程序。
 
@@ -234,10 +232,5 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

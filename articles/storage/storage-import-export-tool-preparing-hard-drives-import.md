@@ -1,8 +1,8 @@
 ---
 title: "为 Azure 导入/导出的导入作业准备硬盘驱动器 | Microsoft 文档"
 description: "了解如何使用 WAImportExport 工具准备硬盘驱动器，以便为 Azure 导入/导出服务创建导入作业。"
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
-ms.author: renash
+ms.date: 01/15/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 005e0ab8ec8dce52d9fc13d018f985cb0d6033a7
-ms.openlocfilehash: 80e7af5c874dca9390a2588664334b61dc57701a
+ms.sourcegitcommit: 48ee2a2bd2ecd2f487748588ef2ad3138dd9983b
+ms.openlocfilehash: a113120381c4e83bd64a41fd30beb138cb1dd5fa
 
 
 ---
@@ -89,7 +89,7 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | /BlobType | **[可选]** block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件将以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 将以页 Blob 的形式导入。块 Blob 和页 Blob 的允许大小有限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)（存储可伸缩性目标）。  |
 | Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （也就是将数据从磁盘上载到存储帐户时）的复制行为。可用选项为：rename&#124;overwite&#124;no-overwrite。如果未指定任何值，则默认为“rename”。 <br/><br/>**Rename**：如果存在同名的对象，则在目标中创建一个副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/>**No-overwrite**：如果文件已存在，则跳过写入该文件。|
 | MetadataFile | **[可选]** <br/>此字段的值是用户需要保留对象的元数据或者提供自定义元数据时可提供的元数据文件。 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)。 |
-| PropertiesFile | **[可选]** <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](/rest/api/storageservices/importexport/import-export-service-metadata-and-properties-file-format)。 |
+| PropertiesFile | **[可选]** <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)。 |
 
 ## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>准备 InitialDriveSet 或 AdditionalDriveSet CSV 文件
 
@@ -409,6 +409,7 @@ WAImportExport 工具逐批读取和写入文件，每个批最多包含 100000 
 **.jrn** - 带 .jrn 后缀的日志文件包含硬盘驱动器的所有复制会话的状态。 它还包含创建导入作业所需的信息。 运行 WAImportExport 工具时，始终必须指定一个日志文件，以及一个复制会话 ID。
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Jan17_HO3-->
 
 

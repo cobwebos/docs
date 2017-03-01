@@ -149,6 +149,6 @@ Azure RemoteApp 会保存各个会话之间的 Outlook 状态（邮箱、PST）�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

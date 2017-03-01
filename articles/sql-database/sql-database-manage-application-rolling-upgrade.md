@@ -1,5 +1,5 @@
 ---
-title: "云灾难恢复解决方案 - SQL 数据库活动异地复制 | Microsoft 文档"
+title: "滚动应用程序升级 - Azure SQL 数据库 | Microsoft Docs"
 description: "了解如何使用 Azure SQL 数据库的异地复制来支持云应用程序的在线升级。"
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: d7f3d972755ec326c28fcdb95fd0600dd8ca1a91
+ms.sourcegitcommit: 66c37501b053cd9a8b4487c34e8914b75f3058ee
+ms.openlocfilehash: a99d3f9b8df5cfff98e76fe3931304221b2ca6f4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: d7f3d972755ec326c28fcdb95fd0600dd8ca1a91
 > 
 > 
 
-了解如何使用 SQL 数据库中的[异地复制](sql-database-geo-replication-overview.md)来启用云应用程序的滚动升级。 由于升级是中断性操作，所以它应成为业务连续性规划和设计的一部分。 本文我们介绍了编排升级过程的两种不同方法，并讨论了每种方法的优点和缺点。 针对本文的目的，我们将使用一个简单的应用程序，该应用程序包含一个连接到作为其数据层的独立数据库的网站。 我们的目标是在不对最终用户体验产生任何显著影响的情况下将版本 1 的应用程序升级到版本 2。 
+了解如何使用 SQL 数据库中的[异地复制](sql-database-geo-replication-overview.md)来启用云应用程序的滚动升级。 由于升级是中断性操作，所以它应成为业务连续性规划和设计的一部分。 本文我们介绍了编排升级过程的两种不同方法，并讨论了每种方法的优点和缺点。 针对本文的目的，我们将使用一个简单的应用程序，该应用程序包含一个连接到作为其数据层的单一数据库的网站。 我们的目标是在不对最终用户体验产生任何显著影响的情况下将版本 1 的应用程序升级到版本 2。 
 
 在评估升级选项时应考虑以下因素：
 
@@ -155,6 +155,6 @@ ms.openlocfilehash: d7f3d972755ec326c28fcdb95fd0600dd8ca1a91
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

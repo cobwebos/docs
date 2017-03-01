@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9c710e6f959afd8a4f4b965931ed4868d94c6d25
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
 
 
 ---
@@ -39,37 +39,37 @@ ms.openlocfilehash: 9c710e6f959afd8a4f4b965931ed4868d94c6d25
 若要浏览所有试验︰
 
 1. 请单击页面顶部的“ **浏览全部** ”。
-2. 在**优化依据**下，选择**试验**以查看库中的所有试验。
+2. 在“类别”部分的“优化依据”下，选择“试验”以查看库中的所有试验。
 3. 你可以通过多种方式找到满足要求的试验︰
    * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验，可选择“类别”下的“试验”，以及“使用的算法”下的“基于 PCA 的异常情况检测”。 （如果看不到该算法，请单击列表底部的“全部显示”。）<br></br>
      ![选择筛选器](./media/machine-learning-sample-experiments/refine-the-view.png)
-   * **使用搜索框。**  例如，若要查找由 Microsoft 提供且与使用双类支持向量机算法的数字识别相关的试验，请在搜索框中输入“数字识别”。 然后，选择筛选器“试验”、“仅限 Microsoft 内容”和“双类支持向量机”：“使用搜索框”![](./media/machine-learning-sample-experiments/search-for-experiments.png)
+   * **使用搜索框。** 例如，若要查找由 Microsoft 提供且与使用双类支持向量机算法的数字识别相关的试验，请在搜索框中输入“数字识别”。 然后，选择筛选器“试验”、“仅限 Microsoft 内容”和“双类支持向量机”：<br></br>
+     ![使用搜索框](./media/machine-learning-sample-experiments/search-for-experiments.png)
 4. 单击一个试验以了解其更多相关信息。
-5. 若要运行和/或修改试验，请在试验的页面上单击“ **在工作室中打开** ”。
-
-   > [!NOTE]
-   > 若要在机器学习工作室中打开一个实验，你需要使用你的 Microsoft 帐户凭据登录。 如果你还没有机器学习工作区，可以创建一个免费试用工作区。 [了解机器学习免费试用版中包括哪些内容](https://azure.microsoft.com/pricing/details/machine-learning/)
-   >
-   >
+5. 若要运行和/或修改试验，请在试验的页面上单击“ **在工作室中打开** ”。 <br></br>
 
     ![示例试验](./media/machine-learning-sample-experiments/example-experiment.png)
+
+    > [!NOTE]
+    > 首次在机器学习工作室中打开一个试验时，可以免费尝试，也可以购买 Azure 订阅。 [了解机器学习工作室免费试用版和付费服务版](https://azure.microsoft.com/pricing/details/machine-learning/)
+    >
+    >
 
 ## <a name="use-a-template-in-machine-learning-studio"></a>在机器学习工作室中使用模板
 你还可以使用库中的示例作为模板在机器学习工作室中创建新试验。
 
-1. 使用 Microsoft 帐户凭据登录到“ [工作室](https://studio.azureml.net)”，然后单击“ **新建** ”以创建新试验。
+1. 使用 Microsoft 帐户凭据登录到“工作室”，然后单击“新建”以创建新试验。[](https://studio.azureml.net)
 2. 浏览示例内容并单击其中一个。
 
 使用该示例试验作为模板，在工作区中创建一个新试验。
 
 ## <a name="next-steps"></a>后续步骤
-* [准备数据](machine-learning-data-science-import-data.md)
-* [尝试在试验中使用 R](machine-learning-r-quickstart.md)
-* [查看示例 R 实验](machine-learning-r-csharp-web-service-examples.md)
-* [创建 Web 服务 API](machine-learning-publish-a-machine-learning-web-service.md)
+* [从各种源导入数据](machine-learning-data-science-import-data.md)
+* [适用于机器学习的 R 语言快速入门教程](machine-learning-r-quickstart.md)
+* [部署机器学习 Web 服务](machine-learning-publish-a-machine-learning-web-service.md)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

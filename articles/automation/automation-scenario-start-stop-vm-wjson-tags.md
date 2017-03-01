@@ -1,5 +1,5 @@
 ---
-title: "使用 JSON 格式的标记创建 Azure VM 启动和关闭计划 | Microsoft Docs"
+title: "使用 JSON 格式的标记来安排 Azure VM 状态 | Microsoft Docs"
 description: "本文演示如何在标记上使用 JSON 字符串来自动计划 VM 启动和关闭。"
 services: automation
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/18/2016
+ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0d4098199cec948541eddba8fa88242606e2ec5c
+ms.sourcegitcommit: 00d348306f76194bb44e5252be5c956a48192768
+ms.openlocfilehash: 69f05a8c0fc88201fc365546870585de5a419f1d
 
 
 ---
@@ -103,7 +103,7 @@ Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么
 
    ![PowerShell 中的 GetSystemTimeZones](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
 
-   * 星期几使用数字值 0 到 6 表示。 0 值等于星期日。
+   * 星期几使用数字值&0; 到&6; 表示。 0 值等于星期日。
    * 开始时间使用 **S** 属性来表示，它的值采用 24 小时格式。
    * 结束或关闭时间使用 **E** 属性来表示，它的值采用 24 小时格式。
 
@@ -244,6 +244,6 @@ Runbook 将使用附加的计划循环访问虚拟机，并检查应执行什么
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

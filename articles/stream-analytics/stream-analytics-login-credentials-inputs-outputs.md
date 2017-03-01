@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/11/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 0b82ffed4b09dcde3f04282d3d0ce368eb2d614f
-ms.openlocfilehash: 45156a48c24192bdfe76585891b7fbd0176efc8b
+ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
+ms.openlocfilehash: 8963764915bf918fd701e067832c88ea1a84b8d7
 
 
 ---
@@ -249,6 +249,6 @@ Azure 流分析目前不允许在作业运行时替换输入/输出上的凭据�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

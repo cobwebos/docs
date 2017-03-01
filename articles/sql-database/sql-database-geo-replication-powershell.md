@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 为 Azure SQL 数据库配置活动异地复制 | Microsoft 文档"
+title: "使用 PowerShell 为 Azure SQL 数据库配置活动异地复制 | Microsoft Docs"
 description: "使用 PowerShell 为 Azure SQL 数据库配置活动异地复制"
 services: sql-database
 documentationcenter: 
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: bc5e50e4-bbb2-4ce1-9ee5-9a632de6fa06
 ms.service: sql-database
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -15,26 +16,19 @@ ms.workload: NA
 ms.date: 07/14/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 293dc178b955f8b3a24c2dde7d97fe44cb1fe91f
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 85efdb2a5b9571d76338aeb0871b729693b63dcb
 
 
 ---
-# <a name="configure-geo-replication-for-azure-sql-database-with-powershell"></a>使用 PowerShell 为 Azure SQL 数据库配置异地复制
-> [!div class="op_single_selector"]
-> * [概述](sql-database-geo-replication-overview.md)
-> * [Azure 门户](sql-database-geo-replication-portal.md)
-> * [PowerShell](sql-database-geo-replication-powershell.md)
-> * [T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
+# <a name="configure-active-geo-replication-for-azure-sql-database-with-powershell"></a>使用 PowerShell 为 Azure SQL 数据库配置活动异地复制
 
 本文说明如何使用 PowerShell 为 SQL 数据库配置活动异地复制。
 
 若要使用 PowerShell 启动故障转移，请参阅[使用 PowerShell 为 Azure SQL 数据库启动计划内或计划外故障转移](sql-database-geo-replication-failover-powershell.md)。
 
 > [!NOTE]
-> 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。 非可读辅助类型将在 2017 年 4 月停用，现有的非可读数据库将自动升级到可读辅助数据库。
+> 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。 2017 年 4 月将停用非可读辅助类型数据库，现有的非可读数据库将自动升级到可读辅助数据库。
 > 
 > 
 
@@ -42,7 +36,7 @@ ms.openlocfilehash: 293dc178b955f8b3a24c2dde7d97fe44cb1fe91f
 
 * Azure 订阅。 
 * Azure SQL 数据库 - 要复制的主数据库。
-* Azure PowerShell 1.0 或更高版本。 根据遵循[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 来下载并安装 Azure PowerShell 模块。
+* Azure PowerShell 1.0 或更高版本。 根据遵循[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 来下载并安装 Azure PowerShell 模块。
 
 ## <a name="configure-your-credentials-and-select-your-subscription"></a>配置你的凭据，然后选择你的订阅
 首先必须与 Azure 帐户建立访问连接，因此请启动 PowerShell，然后运行以下 cmdlet。 在登录屏幕中，输入登录 Azure 门户时所用的相同电子邮件和密码。
@@ -67,40 +61,40 @@ ms.openlocfilehash: 293dc178b955f8b3a24c2dde7d97fe44cb1fe91f
 
 此 cmdlet 将 **Start-AzureSqlDatabaseCopy** 替换为 **-IsContinuous** 参数。  它将输出可供其他 cmdlet 用于明确识别特定复制链接的 **AzureRmSqlDatabaseSecondary** 对象。 创建辅助数据库并完全设定种子后，此 cmdlet 将返回。 根据数据库的大小，这可能需要花费数分钟到数小时的时间。
 
-辅助服务器上的复制数据库具备与主要服务器上的数据库相同的名称，并且默认具有相同的服务级别。 辅助数据库可以是可读或不可读，并且可以是单一数据库或弹性数据库。 有关详细信息，请参阅 [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689\(v=azure.300\).aspx) 和[服务层](sql-database-service-tiers.md)。
-创建辅助数据库并设定种子之后，开始将数据从主数据库复制到新的辅助数据库。 以下步骤说明如何使用 PowerShell 完成这项任务，以使用单一数据库或弹性数据库来创建不可读和可读的辅助数据库。
+辅助服务器上的复制数据库具备与主要服务器上的数据库相同的名称，并且默认具有相同的服务级别。 辅助数据库可以是可读或不可读，并且可以是独立数据库或处于弹性池中。 有关详细信息，请参阅 [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689\(v=azure.300\).aspx) 和[服务层](sql-database-service-tiers.md)。
+创建辅助数据库并设定种子之后，开始将数据从主数据库复制到新的辅助数据库。 以下步骤说明如何使用 PowerShell 完成这项任务，以采用独立数据库形式或是在弹性池中创建不可读和可读的辅助数据库。
 
 如果伙伴数据库已存在（例如，在终止旧的异地复制关系的情况下），命令将会失败。
 
-### <a name="add-a-non-readable-secondary-single-database"></a>添加不可读的辅助数据库（单一数据库）
+### <a name="add-a-non-readable-secondary-standalone-database"></a>添加不可读的辅助数据库（独立数据库）
 以下命令在资源组“rg2”中的服务器“srv2”上创建数据库“mydb”的不可读辅助数据库：
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "No"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -AllowConnections "No"
 
 
 
-### <a name="add-readable-secondary-single-database"></a>添加可读的辅助数据库（单一数据库）
+### <a name="add-readable-secondary-standalone-database"></a>添加可读的辅助数据库（独立数据库）
 以下命令在资源组“rg2”中的服务器“srv2”上创建数据库“mydb”的可读辅助数据库：
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "All"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -AllowConnections "All"
 
 
 
 
-### <a name="add-a-non-readable-secondary-elastic-database"></a>添加不可读的辅助数据库（弹性数据库）
-以下命令在资源组“rg2”服务器“srv2”中名为“ElasticPool1”的弹性数据库池内创建数据库“mydb”的不可读辅助数据库：
+### <a name="add-a-non-readable-secondary-elastic-pool"></a>添加不可读的辅助数据库（弹性池）
+以下命令在资源组“rg2”服务器“srv2”中名为“ElasticPool1”的弹性池内创建数据库“mydb”的不可读辅助数据库：
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" –SecondaryElasticPoolName "ElasticPool1" -AllowConnections "No"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -SecondaryElasticPoolName "ElasticPool1" -AllowConnections "No"
 
 
-### <a name="add-a-readable-secondary-elastic-database"></a>添加可读的辅助数据库（弹性数据库）
-以下命令在资源组“rg2”服务器“srv2”中名为“ElasticPool1”的弹性数据库池内创建数据库“mydb”的可读辅助数据库：
+### <a name="add-a-readable-secondary-elastic-pool"></a>添加可读的辅助数据库（弹性池）
+以下命令在资源组“rg2”服务器“srv2”中名为“ElasticPool1”的弹性池内创建数据库“mydb”的可读辅助数据库：
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" –SecondaryElasticPoolName "ElasticPool1" -AllowConnections "All"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -SecondaryElasticPoolName "ElasticPool1" -AllowConnections "All"
 
 
 
@@ -117,8 +111,8 @@ ms.openlocfilehash: 293dc178b955f8b3a24c2dde7d97fe44cb1fe91f
 
 以下代码将删除资源组“rg2”的服务器“srv2”名为“mydb”的数据库复制链接。 
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –SecondaryResourceGroup "rg2" –PartnerServerName "srv2"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink -SecondaryResourceGroup "rg2" -PartnerServerName "srv2"
     $secondaryLink | Remove-AzureRmSqlDatabaseSecondary 
 
 
@@ -129,17 +123,17 @@ ms.openlocfilehash: 293dc178b955f8b3a24c2dde7d97fe44cb1fe91f
 
 以下命令将检索主数据库“mydb”与资源组“rg2”中服务器“srv2”上的辅助数据库之间的复制链接状态。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –PartnerResourceGroup "rg2” –PartnerServerName "srv2”
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink -PartnerResourceGroup "rg2” -PartnerServerName "srv2”
 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要深入了解活动异地复制，请参阅 - [活动异地复制](sql-database-geo-replication-overview.md)
+* 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-geo-replication-overview.md)
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

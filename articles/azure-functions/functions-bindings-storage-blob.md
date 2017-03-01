@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
+ms.date: 01/11/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 593f97bf0fc855e2d122e093961013f923e2e053
-ms.openlocfilehash: b3d9dcceb8e0a3a7c31e4a0a8cf1eb9dd82bf6c8
+ms.sourcegitcommit: 7b691e92cfcc8c6c62f854b3f1b6cf13d317df7b
+ms.openlocfilehash: 961aa46e3f3654c250aa10e61149fac2fc251935
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: b3d9dcceb8e0a3a7c31e4a0a8cf1eb9dd82bf6c8
 <a name="trigger"></a>
 
 ## <a name="storage-blob-trigger"></a>存储 blob 触发器
-Azure 存储 blob 触发器可用于监视新的和更新的 blob 的存储容器，并对其做出响应。 
+使用 Azure 存储 blob 触发器可以监视新的和已更新的 blob 的存储容器，并在检测到更改时运行函数代码。 
 
 函数的存储 blob 触发器在 function.json 的 `bindings` 数组中使用以下 JSON 对象：
 
@@ -328,9 +328,9 @@ module.exports = function(context) {
 {
   "name": "<Name of output parameter in function signature>",
   "type": "blob",
-  "direction": "out"
+  "direction": "out",
   "path": "<Path of input blob - see below>",
-  "connection":"<Name of app setting - see below>"
+  "connection": "<Name of app setting - see below>"
 }
 ```
 
@@ -372,6 +372,6 @@ module.exports = function(context) {
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

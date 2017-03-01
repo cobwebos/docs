@@ -1,6 +1,6 @@
 ---
-title: "DocumentDB 脚本资源管理器（JavaScript 编辑器）| Microsoft Docs"
-description: "DocumentDB 脚本资源管理器是一种 Azure 门户工具，用于管理 DocumentDB 服务器端编程项目，包括存储过程、触发器和用户定义的函数。"
+title: "Azure DocumentDB 门户工具：脚本资源管理器 | Microsoft Docs"
+description: "DocumentDB 脚本资源管理器是一种 Azure 门户工具，用于管理 DocumentDB 服务器端编程项目，包括 JavaScript 存储过程、触发器和用户定义的函数。"
 keywords: "javascript 编辑器"
 services: documentdb
 author: kirillg
@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/14/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
+ms.sourcegitcommit: 429687c6e5a196a3b489dc4dd79ae886b7ad9c38
+ms.openlocfilehash: ccff673996d53d2b3b2c177bfb6fff01613b7097
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -25,7 +26,9 @@ ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
 本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 脚本资源管理器，它是 Azure 门户中的 JavaScript 编辑器，用于查看和执行 DocumentDB 服务器端的编程项目，包括存储过程、触发器和用户定义的函数。 阅读[存储过程、数据库触发器和 UDF](documentdb-programming.md) 一文中有关 DocumentDB 服务器端编程的详细信息。
 
 ## <a name="launch-script-explorer"></a>启动脚本资源管理器
-1. 在 Azure 门户的跳转栏中，单击“DocumentDB (NoSQL)”。 如果“DocumentDB 帐户”不可见，则单击“更多服务”，再单击“DocumentDB (NoSQL)”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。 
+
+    如果“NoSQL (DocumentDB)”不可见，请单击底部的“更多服务”，然后单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。
 2. 在资源菜单中，单击“脚本资源管理器”。
    
     ![脚本资源管理器命令的屏幕截图](./media/documentdb-view-scripts/scriptexplorercommand.png)
@@ -36,7 +39,8 @@ ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
    
     ![脚本资源管理器的屏幕截图，其中包含了筛选结果](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
 
-    > [AZURE.IMPORTANT] 脚本资源管理器的筛选器功能仅从***当前***加载的脚本集中进行筛选，而不会自动刷新当前所选集合。
+    > [!IMPORTANT] 
+    > 脚本资源管理器的筛选器功能仅从***当前***加载的脚本集中进行筛选，而不会自动刷新当前所选集合。
 
 1. 若要刷新由脚本资源管理器加载的脚本列表，只需单击边栏选项卡顶部的“刷新”命令即可。
    
@@ -106,10 +110,5 @@ Azure 门户中的脚本资源管理器只是在 DocumentDB 中使用存储过�
 在[存储过程、数据库触发器和 UDF](documentdb-programming.md) 一文中了解有关 DocumentDB 服务器端编程的详细信息。
 
 [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)也是一项有用的资源，它可以指导你了解关于 DocumentDB 的更多信息。  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

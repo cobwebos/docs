@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: b625bd693de1a8e24a0236403c69e500db1aec2d
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: b625bd693de1a8e24a0236403c69e500db1aec2d
 
 *我已在 Web 服务器上[安装状态监视器](app-insights-monitor-performance-live-website-now.md)来监视现有应用，但未看到任何结果。*
 
-* 请参阅[排查状态监视器问题](app-insights-monitor-performance-live-website-now.md#troubleshooting)。 
+* 请参阅[排查状态监视器问题](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)。 
 
 ## <a name="a-nameq01ano-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
 *在 Visual Studio 中创建新项目，或者在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
@@ -179,7 +179,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 城市、区域和国家/地区维度派生自 IP 地址，因此不一定始终都是准确的。
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>在 Azure 云服务中运行时发生“找不到方法”异常
-生成的项目是否面向 .NET 4.6？ Azure 云服务角色不能现成地支持 4.6。 请先[在每个角色上安装 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md)，再运行应用。
+生成的项目是否面向 .NET 4.6？ Azure 云服务角色不能现成地支持&4;.6。 请先[在每个角色上安装 4.6](../cloud-services/cloud-services-dotnet-install-dotnet.md)，再运行应用。
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
@@ -187,6 +187,6 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

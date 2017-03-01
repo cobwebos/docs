@@ -1,5 +1,5 @@
 ---
-title: "从 MySQL 移动数据 | Microsoft 文档"
+title: "使用 Azure 数据工厂从 MySQL 移动数据 | Microsoft Docs"
 description: "了解如何使用 Azure 数据工厂从 MySQL 数据库移动数据。"
 services: data-factory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 76b7469260a88d67c8a14e4286b62d0019f99f18
+ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
+ms.openlocfilehash: e44228a28a248f64da55590f8d3c0f292a9a0291
 
 
 ---
@@ -127,7 +127,7 @@ ms.openlocfilehash: 76b7469260a88d67c8a14e4286b62d0019f99f18
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
     {
         "name": "AzureBlobMySqlDataSet",
@@ -185,7 +185,7 @@ ms.openlocfilehash: 76b7469260a88d67c8a14e4286b62d0019f99f18
 
 
 
-**具有复制活动的管道**
+**包含复制活动的管道**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
@@ -274,7 +274,7 @@ ms.openlocfilehash: 76b7469260a88d67c8a14e4286b62d0019f99f18
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-mysql"></a>MySQL 的类型映射
-如[数据移动活动](data-factory-data-movement-activities.md)一文所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：
+如[数据移动活动](data-factory-data-movement-activities.md)一文所述，复制活动使用以下&2; 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
@@ -328,10 +328,10 @@ ms.openlocfilehash: 76b7469260a88d67c8a14e4286b62d0019f99f18
 [!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,9 +1,9 @@
 ---
-title: "控制含查询字符串的 Azure CDN 请求的缓存行为 | Microsoft Docs"
+title: "使用查询字符串控制 Azure CDN 缓存行为 | Microsoft Docs"
 description: "Azure CDN 的查询字符串缓存可以控制在文件包含查询字符串时被缓存的方式。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 664c734e17e87ce2e088055759345ebd9b325f11
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 8d79626fa8516f226a82d3dac693c2033904c91d
 
 
 ---
-# <a name="controlling-caching-behavior-of-cdn-requests-with-query-strings"></a>控制含查询字符串的 CDN 请求的缓存行为
+# <a name="control-azure-cdn-caching-behavior-with-query-strings"></a>使用查询字符串控制 Azure CDN 缓存行为
 > [!div class="op_single_selector"]
 > * [标准](cdn-query-string.md)
 > * [来自 Verizon 的高级 Azure CDN](cdn-query-string-premium.md)
@@ -65,6 +65,6 @@ ms.openlocfilehash: 664c734e17e87ce2e088055759345ebd9b325f11
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

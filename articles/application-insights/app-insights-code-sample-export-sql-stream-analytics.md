@@ -1,5 +1,5 @@
 ---
-title: "演练：将遥测数据从 Application Insights 导出到 SQL 数据库"
+title: "从 Azure Application Insights 导出到 SQL | Microsoft Docs"
 description: "使用流分析将 Application Insights 数据连续导出到 SQL。"
 services: application-insights
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 03/06/2015
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: abaeb614e304c4ae78e6a1d43d19c99698e50494
+ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
+ms.openlocfilehash: fa9b09833f61e372738ff74022ac9fd6a288847f
 
 
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
-本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][启动] 移入 Azure SQL 数据库。 
+本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
 
 连续导出以 JSON 格式将遥测数据移入 Azure 存储。 我们将使用 Azure 流分析来分析 JSON 对象，并在数据库表中创建行。
 
@@ -41,7 +41,7 @@ ms.openlocfilehash: abaeb614e304c4ae78e6a1d43d19c99698e50494
 ## <a name="create-storage-in-azure"></a>在 Azure 中创建存储
 连续导出始终将数据输出到 Azure 存储帐户，因此首先需要创建存储。
 
-1. 在 [Azure 门户][门户]上的订阅中创建存储帐户。
+1. 在 [Azure 门户][portal]上的订阅中创建存储帐户。
    
     ![在 Azure 门户中，依次选择“添加”、“数据”、“存储”。 选择“经典”，然后选择“创建”。 为存储提供一个名称。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 2. 创建容器
@@ -82,7 +82,7 @@ ms.openlocfilehash: abaeb614e304c4ae78e6a1d43d19c99698e50494
 事件将以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析将数据移到 SQL 数据库。 这样做可以轻松运行许多微妙的查询。
 
 ## <a name="create-an-azure-sql-database"></a>创建 Azure SQL 数据库
-再次在 [Azure 门户][门户]中打开订阅，创建要在其中写入数据的数据库（除非已有新服务器，否则还要创建新服务器）。
+再次在 [Azure 门户][portal]中打开订阅，创建要在其中写入数据的数据库（除非已有新服务器，否则还要创建新服务器）。
 
 ![依次选择“新建”、“数据”、“SQL”](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
 
@@ -269,15 +269,15 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 <!--Link references-->
 
-[诊断]: app-insights-diagnostic-search.md
+[diagnostic]: app-insights-diagnostic-search.md
 [export]: app-insights-export-telemetry.md
-[指标]: app-insights-metrics-explorer.md
-[门户]: http://portal.azure.com/
-[启动]: app-insights-overview.md
+[metrics]: app-insights-metrics-explorer.md
+[portal]: http://portal.azure.com/
+[start]: app-insights-overview.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

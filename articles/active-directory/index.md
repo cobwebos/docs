@@ -1,14 +1,26 @@
 ---
 layout: LandingPage
+description: Learn how to synchronize directories and enable single sign-on. Documentation shows you how to integrate a full suite of identity management capabilities.
+title: "Azure Active Directory 文档 - 教程和 API 参考 | Microsoft 文档"
+services: active-directory
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: active-directory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 72d219c4150ddbfd59231f9131bf3502897f0ab4
+ms.sourcegitcommit: 2dc340dcb864325554700f58057d157dd46f7f7a
+ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
 
 ---
 
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory 文档
 
-Azure Active Directory Premium 是一款标识和访问管理云解决方案，向数千个云 (SaaS) 应用提供单一登录，并提供对本地运行的 Web 应用的访问。 Azure Active Directory 可实现企业移动化和协作，并通过多重身份验证 (MFA)、安全报告、审计、警报和自适应条件访问策略（基于设备运行状况、用户位置和风险级别）提供高级标识保护。
+了解如何使用 Azure Active Directory (Azure AD) 同步目录和启用单一登录。 教程、API 参考和其他文档介绍了如何集成标识管理功能，包括多重身份验证、设备注册、基于角色的访问控制以及安全监视和警报。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -128,16 +140,8 @@ Azure Active Directory Premium 是一款标识和访问管理云解决方案，�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Active Directory 文档 </div>
-    </a>
-</div>
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

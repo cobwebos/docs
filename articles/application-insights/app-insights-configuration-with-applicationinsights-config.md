@@ -1,6 +1,6 @@
 ---
-title: "使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK | Microsoft 文档"
-description: "启用或禁用数据收集模块，以及添加性能计数器和其他参数"
+title: "ApplicationInsights.config 参考 - Azure | Microsoft Docs"
+description: "启用或禁用数据收集模块，并添加性能计数器和其他参数。"
 services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
-ms.openlocfilehash: 24b8ede9268fb4d821913cfab313c3c7050d8ddb
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: a43eca9878881731f54dc1ec3bc8a9cd15bf2c5e
 
 
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
 
-配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][启动] 时，系统会自动将配置文件添加项目。 使用 [IIS 服务器上的状态监视器][redfield]或者选择[适用于 Azure 网站或 VM](app-insights-azure-web-apps.md) 的 Application Insights 扩展时，也会将配置文件添加到 Web 应用。
+配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start] 时，系统会自动将配置文件添加到项目。 使用 [IIS 服务器上的状态监视器][redfield]或者选择[适用于 Azure 网站或 VM](app-insights-azure-web-apps.md) 的 Application Insights 扩展时，也会将配置文件添加到 Web 应用。
 
-没有同等的文件可以控制[网页中的 SDK][客户端]。
+没有同等的文件可以控制[网页中的 SDK][client]。
 
 本文档说明配置文件中显示的节、控制 SDK 组件的方式，以及哪些 NuGet 包会加载这些组件。
 
@@ -35,9 +35,9 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 在配置文件中，每个模块都有一个对应的节点。 若要禁用某个模块，请删除该节点或将其注释掉。
 
 ### <a name="dependency-tracking"></a>依赖项跟踪
-[依赖项跟踪](app-insights-asp-net-dependencies.md)收集有关应用对数据库以及外部服务和数据库的调用的遥测数据。 若要允许在 IIS 服务器中使用此模块，需要安装[状态监视器][redfield]。 若要在 Azure Web 应用或 VM 中使用此模块，请[选择 Application Insights 扩展](app-insights-azure-web-apps.md)。
+[依赖项跟踪](app-insights-asp-net-dependencies.md)收集有关应用对数据库以及外部服务和数据库的调用的遥测数据。 若要允许在 IIS 服务器中使用此模块，需要[安装状态监视器][redfield]。 若要在 Azure Web 应用或 VM 中使用此模块，请[选择 Application Insights 扩展](app-insights-azure-web-apps.md)。
 
-还可以使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) 编写自己的依赖项跟踪代码。
+还可以使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) 编写自己的依赖项跟踪代码。
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet 包。
@@ -49,7 +49,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 * [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet 包。
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Application Insights 诊断遥测
-`DiagnosticsTelemetryModule` 报告 Application Insights 检测代码本身中的错误。 例如，代码无法访问性能计数器，或 `ITelemetryInitializer` 引发异常。 此模块跟踪的跟踪遥测数据显示在[诊断搜索][诊断]中。 将诊断数据发送到 dc.services.vsallin.net。
+`DiagnosticsTelemetryModule` 报告 Application Insights 检测代码本身中的错误。 例如，代码无法访问性能计数器，或 `ITelemetryInitializer` 引发异常。 此模块跟踪的跟踪遥测数据显示在[诊断搜索][diagnostic]中。 将诊断数据发送到 dc.services.vsallin.net。
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet 包。 如果只安装此包，则不会自动创建 ApplicationInsights.config 文件。
@@ -67,7 +67,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 * [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet 包
 
 ### <a name="exception-tracking"></a>异常跟踪
-`ExceptionTrackingTelemetryModule` 跟踪 Web 应用中未经处理的异常。 请参阅[故障和异常][异常]。
+`ExceptionTrackingTelemetryModule` 跟踪 Web 应用中未经处理的异常。 请参阅[故障和异常][exceptions]。
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet 包
@@ -246,24 +246,24 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 
 ```
 
-若要获取新密钥，请[在 Application Insights 门户中创建新资源][新]。
+若要获取新密钥，请[在 Application Insights 门户中创建新资源][new]。
 
 ## <a name="next-steps"></a>后续步骤
-[了解有关 API 的详细信息][api]。
+[详细了解 API][api]。
 
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[客户端]: app-insights-javascript.md
-[诊断]: app-insights-diagnostic-search.md
-[异常]: app-insights-asp-net-exceptions.md
+[client]: app-insights-javascript.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-asp-net-exceptions.md
 [netlogs]: app-insights-asp-net-trace-logs.md
-[新]: app-insights-create-new-resource.md
+[new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[启动]: app-insights-overview.md
+[start]: app-insights-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

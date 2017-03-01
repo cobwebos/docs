@@ -1,6 +1,6 @@
 ---
-title: "关于 Azure 虚拟网络的站点到站点 VPN 网关连接的 VPN 设备 | Microsoft Docs"
-description: "本文介绍用于 S2S VPN 网关连接的 VPN 设备和 IPsec 参数，并提供配置说明和示例的链接。"
+title: "关于进行跨界 Azure 连接的 VPN 设备 | Microsoft 文档"
+description: "本文介绍用于 S2S VPN 网关跨界连接的 VPN 设备和 IPsec 参数。 提供了指向配置说明和示例的链接。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: bbaf89bca07fd2d4c4a12403d2daa8323f4d7be5
-ms.openlocfilehash: 12e7768665b8d360fe7241c9879bd1f7bfc63664
+ms.sourcegitcommit: bf262073b46daa8b7dcf50fabf5f455d7d5850e7
+ms.openlocfilehash: b8e65f6c314457b76bd062ea09bda53099fb79d9
 
 
 ---
 # <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>关于站点到站点 VPN 网关连接的 VPN 设备
-配置站点到站点 (S2S) VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每当你想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文介绍兼容的 VPN 设备和配置参数。
+通过 VPN 网关配置站点到站点 (S2S) 跨界 VPN 连接需要用到 VPN 设备。 在创建混合解决方案时，或者每当你想要在本地网络与虚拟网络之间建立安全连接时，可以使用站点到站点连接。 本文介绍兼容的 VPN 设备和配置参数。
 
 > [!NOTE]
 > 配置站点到站点连接时，需要为你的 VPN 设备提供面向公众的 IPv4 IP 地址。                                                                                                                                                                               
@@ -115,7 +115,7 @@ ms.openlocfilehash: 12e7768665b8d360fe7241c9879bd1f7bfc63664
 | **属性** | **PolicyBased** | **RouteBased 和标准或高性能 VPN 网关** |
 | --- | --- | --- |
 | SDK 版本 |IKEv1 |IKEv2 |
-| 哈希算法 |SHA1(SHA128) |SHA1(SHA128) |
+| 哈希算法 |SHA1(SHA128)、SHA2(SHA256) |SHA1(SHA128)、SHA2(SHA256) |
 | 阶段 2 安全关联 (SA) 生命周期（时间） |3,600 秒 |3,600 秒 |
 | 阶段 2 安全关联 (SA) 生命周期（吞吐量） |102,400,000 KB |- |
 | IPsec SA 加密和身份验证产品（按偏好顺序列出） |1.ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. 不适用 |请参阅 *RouteBased 网关 IPsec 安全关联 (SA) 产品*（下文） |
@@ -153,6 +153,6 @@ ms.openlocfilehash: 12e7768665b8d360fe7241c9879bd1f7bfc63664
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

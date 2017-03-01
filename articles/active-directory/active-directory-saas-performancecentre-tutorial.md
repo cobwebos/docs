@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/20/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: 801c0f7085034cc3a3ed74722a11204f6421c27d
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>教程：Azure Active Directory 与 PerformanceCentre 的集成
 本教程的目的是介绍如何将 PerformanceCentre 与 Azure Active Directory (Azure AD) 集成。  
+
 将 PerformanceCentre 与 Azure AD 集成具有以下优势： 
 
 * 可在 Azure AD 中控制谁有权访问 PerformanceCentre 
@@ -48,10 +49,11 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
 
 ## <a name="scenario-description"></a>方案描述
 本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。  
-在本教程中概述的方案包括三个主要构建基块：
 
-1. 从库中添加 PerformanceCentre 
-2. 配置和测试 Azure AD 单一登录
+本教程中概述的方案包括以下主要构建基块：
+
+*  从库中添加 PerformanceCentre 
+*  配置和测试 Azure AD 单一登录
 
 ## <a name="adding-performancecentre-from-the-gallery"></a>从库中添加 PerformanceCentre
 若要通过配置将 PerformanceCentre 集成到 Azure AD 中，需从库将 PerformanceCentre 添加到托管式 SaaS 应用的列表中。
@@ -82,9 +84,10 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
 本部分的目的是介绍如何根据名为“Britta Simon”的测试用户的情况，配置和测试 PerformanceCentre 的 Azure AD 单一登录。
 
 若要使用单一登录，Azure AD 需要了解与 Azure AD 中的用户相对应的 PerformanceCentre 中的用户是谁。 换句话说，需要建立 Azure AD 用户与 PerformanceCentre 中相关用户之间的关联关系。  
+
 将 Azure AD 中“用户名”的值指定为 PerformanceCentre 中“用户名”的值，即可建立此关联关系。
 
-若要使用 PerformanceCentre 配置和测试 Azure AD 单一登录，需完成以下构建基块：
+**若要配置和测试 PerformanceCentre 的 Azure AD 单一登录，需要完成以下构建基块：**
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
@@ -107,14 +110,13 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
    
     ![Azure AD 单一登录][8] 
    
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 PerformanceCentre 站点的 URL（例如：*http://companyname.performancecentre.com/saml/SSO*）。
-   
-     b. 单击“资源组名称” 的 Azure 数据工厂。
+   1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 PerformanceCentre 站点的 URL（例如：*http://companyname.performancecentre.com/saml/SSO*）。
+   2. 单击“下一步”。
 4. 在“在 PerformanceCentre 中配置单一登录”页中，执行以下步骤：
    
     ![Azure AD 单一登录][9] 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
+  * 单击“下载元数据”，然后在计算机上保存该文件。
 5. 以管理员身份登录 **PerformanceCentre** 公司站点。
 6. 在左侧选项卡中，单击“配置”。
    
@@ -159,23 +161,20 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_05.png)  
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+   1. 在“用户类型”中，选择“你的组织中的新用户”。
+   2. 在“用户名”文本框中，键入“BrittaSimon”。
+   3. 单击“资源组名称” 的 Azure 数据工厂。
    
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
    
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_07.png) 
@@ -183,9 +182,8 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    1. 写下“新密码”的值。
+    2. 单击“完成”。   
 
 ### <a name="creating-a-performancecentre-test-user"></a>创建 PerformanceCentre 测试用户
 本部分的目的是在 PerformanceCentre 中创建名为“Britta Simon”的用户。
@@ -200,16 +198,14 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
    
     ![创建用户][401]
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在相关文本框中键入 Britta Simon 的所需属性。
-   
+   1. 在相关文本框中键入 Britta Simon 的所需属性。
    > [!IMPORTANT]
    > Britta 在 PerformanceCentre 中的“用户名”属性必须与 Azure AD 中的“用户名”相同。
    > 
    > 
-
-    b. 对于“选择角色”选项，请选择“客户端管理员”。 
-
-    c. 单击“保存” 。   
+ 
+   2. 对于“选择角色”选项，请选择“客户端管理员”。
+   3. 单击“保存” 。   
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -235,6 +231,7 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
 
 ### <a name="testing-single-sign-on"></a>测试单一登录
 本部分的目的是使用访问面板测试 Azure AD 单一登录配置。  
+
 单击访问面板中的“PerformanceCentre”磁贴时，用户就会自动登录到 PerformanceCentre 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
@@ -282,6 +279,6 @@ ms.openlocfilehash: 9b8c63d512f49a9b1478642f9f6733c849e3f48d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,10 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
+ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
+ms.openlocfilehash: 078784bcdf7a3a6d4423389d2f5ca4ffdb67c89f
+ms.lasthandoff: 02/22/2017
+
 
 
 ---
@@ -30,7 +32,10 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
 * 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
 
 ## <a name="overview"></a>概述
-**注意**：与水平分区不同，这些 DDL 语句并不依赖于通过弹性数据库客户端库定义包含分片映射的数据层。
+
+> [!NOTE]
+> 与水平分区不同，这些 DDL 语句并不依赖于通过弹性数据库客户端库定义包含分片映射的数据层。
+>
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
@@ -45,7 +50,9 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
     SECRET = '<password>'
     [;]
 
-**注意**请确保 <username> 中不包括任何 "@servername" 后缀。 
+> [!NOTE]
+> 确保 `<username>` 不包含任何“@servername”后缀。 
+>
 
 ## <a name="create-external-data-sources"></a>创建外部数据源
 语法：
@@ -58,7 +65,9 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
                 CREDENTIAL = <credential_name> 
                 ) [;] 
 
-**重要事项** TYPE 参数必须设置为 **RDBMS**。 
+> [!IMPORTANT]
+> TYPE 参数必须设置为 **RDBMS**。 
+>
 
 ### <a name="example"></a>示例
 以下示例说明了如何使用 CREATE 语句创建外部数据源。 
@@ -118,7 +127,7 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
 
 DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分区情况下的远程数据库）。  
 
-使用 SCHEMA_NAME 和 OBJECT_NAME 子句可分别将外部表定义映射到远程数据库上不同架构中的表，或映射到具有不同名称的表。 如果你要在远程数据库上为目录视图或 DMV 定义外部表，或者在远程表名已在本地使用的任何其他情况下，这两个子句很有用。  
+使用 SCHEMA_NAME 和 OBJECT_NAME 子句可分别将外部表定义映射到远程数据库上不同架构中的表，或映射到具有不同名称的表。 如果要在远程数据库上为目录视图或 DMV 定义外部表，或者在远程表名已在本地使用的任何其他情况下，这两个子句很有用。  
 
 以下 DDL 语句从本地目录中删除现有的外部表定义。 它不会影响远程数据库。 
 
@@ -173,18 +182,17 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 * 弹性查询最适合大部分计算可以在远程数据库上完成的查询。 使用可以在远程数据库或联接上求值的选择性筛选器谓词（可以完全在远程数据库上执行），通常可以获得最佳查询性能。 其他查询模式可能需要从远程数据库加载大量数据并且可能会执行效果不佳。 
 
 ## <a name="next-steps"></a>后续步骤
-若要查询水平分区的数据库（也称为分片数据库），请参阅[跨分片云数据库（水平分区）的查询](sql-database-elastic-query-horizontal-partitioning.md)。
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+* 有关弹性查询的概述，请参阅[弹性查询概述](sql-database-elastic-query-overview.md)。
+* 有关垂直分区的教程，请参阅[跨数据库查询（垂直分区）入门](sql-database-elastic-query-getting-started-vertical.md)。
+* 有关水平分区（分片）的教程，请参阅[弹性查询入门 - 水平分区（分片）](sql-database-elastic-query-getting-started.md)。
+* 有关水平分区数据的语法和示例查询，请参阅[查询水平分区数据](sql-database-elastic-query-horizontal-partitioning.md)
+* 请参阅 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，了解在单个远程 Azure SQL 数据库或在水平分区方案中用作分片的一组数据库中执行 Transact-SQL 语句的存储过程。
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-vertical-partitioning/verticalpartitioning.png
 
 
 <!--anchors-->
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

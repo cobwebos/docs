@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/27/2016
+ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: d2d3f414d0e9fcc392d21327ef630f96c832c99c
-ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
 
 
 ---
@@ -37,6 +37,9 @@ ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
 
 > [!NOTE]
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET SDK 的详细信息，请参阅 [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) （数据工厂 .NET API 参考）。
+> 
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+
 
 ## <a name="prerequisites"></a>先决条件
 * 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
@@ -50,41 +53,58 @@ ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
 1. 启动 **PowerShell**。
 2. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
 
-        Login-AzureRmAccount
+    ```PowerShell
+    Login-AzureRmAccount
+    ```
 3. 运行以下命令查看此帐户的所有订阅。
 
-        Get-AzureRmSubscription
+    ```PowerShell
+    Get-AzureRmSubscription
+    ```
 4. 运行以下命令选择要使用的订阅。 将 **&lt;NameOfAzureSubscription**&gt; 替换为 Azure 订阅的名称。
 
-        Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```PowerShell
+    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```
 
    > [!IMPORTANT]
    > 记下此命令的输出中的 **SubscriptionId** 和 **TenantId**。
 
 5. 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组。
 
-        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```PowerShell
+    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```
 
     如果资源组已存在，请指定是要更新它 (Y) 还是保留原样 (N)。
 
     如果使用不同的资源组，需使用该资源组的名称取代本教程中的 ADFTutorialResourceGroup。
 6. 创建 Azure Active Directory 应用程序。
 
-        $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
+    ```PowerShell
+    $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
+    ```
 
     如果看到以下错误，请指定不同的 URL，然后再次运行该命令。
-
-        Another object with the same value for property identifierUris already exists.
+    
+    ```PowerShell
+    Another object with the same value for property identifierUris already exists.
+    ```
 7. 创建 AD 服务主体。
 
-        New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    ```PowerShell
+    New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    ```
 8. 将服务主体添加到 **数据工厂参与者** 角色。
 
-        New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    ```PowerShell
+    New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    ```
 9. 获取应用程序 ID。
 
-        $azureAdApplication
-
+    ```PowerShell
+    $azureAdApplication 
+    ```
     记下应用程序 ID（输出中的**applicationID** ）。
 
 应该通过相应的步骤获取以下四个值：
@@ -474,7 +494,10 @@ ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
 16. 生成控制台应用程序。 在菜单中单击“生成”，然后单击“生成解决方案”。
 17. 确认 Azure Blob 存储中的 **adftutorial** 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 **Emp.txt** 文件，然后将它上载到 adftutorial 容器。
 
-       John, Doe    Jane, Doe
+    ```
+    John, Doe
+    Jane, Doe
+    ```
 18. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，然后按 **ENTER**。
 19. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
    * 链接服务：**LinkedService_AzureStorage**
@@ -483,12 +506,18 @@ ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
 20. 验证是否在指定的 Azure SQL 数据库中的“emp”表内创建了两条员工记录。
 
 ## <a name="next-steps"></a>后续步骤
-* 阅读 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）一文，其中提供了本教程中使用的复制活动的详细信息。
-* 有关数据工厂 .NET SDK 的详细信息，请参阅 [Data Factory .NET API Reference](https://msdn.microsoft.com/library/mt415893.aspx) （数据工厂 .NET API 参考）。 本文不会介绍所有数据工厂 .NET API。
+| 主题 | 说明 |
+|:--- |:--- |
+| [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
+| [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
+| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
+[数据工厂 .NET API 参考](/dotnet/api/) | 详细介绍了数据工厂 .NET SDK（查找树视图中的 Microsoft.Azure.Management.DataFactories.Models）。 
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO1-->
 
 

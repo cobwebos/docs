@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: e516d3cea9a53dec209a51fc8729f2cca934d3cd
+ms.sourcegitcommit: e5bacb7ce32845b97e06cb0d35cc62935a3c86f6
+ms.openlocfilehash: 79b597fb1d76ec0dd7bdfca701a16f885d245b94
 
 
 ---
@@ -93,7 +93,7 @@ Elapsed time:            00.00:13:07
 ```
 
 ## <a name="troubleshooting"></a>故障排除
-* 使用 AZCopy 时，如果看到错误“服务器无法对请求进行身份验证。 请确保授权标头的值构成正确，且包括签名。” 并且使用了密钥 2 或辅助存储密钥，请尝试使用主密钥或第一个存储密钥。
+* 使用 AZCopy 时，如果看到错误服务器无法对请求进行身份验证，请确保授权标头的值构成正确，且包括签名，并且使用了密钥 2 或辅助存储密钥，同时尝试使用主密钥或第一个存储密钥。
 
 ## <a name="next-steps"></a>后续步骤
 * 可通过[将 VHD 的副本作为 OS 磁盘附加到 VM](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 创建新 VM。
@@ -101,6 +101,6 @@ Elapsed time:            00.00:13:07
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

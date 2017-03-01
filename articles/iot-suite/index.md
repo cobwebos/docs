@@ -1,10 +1,23 @@
 ---
+title: "Azure IoT 套件文档 - 教程和 API 参考 | Microsoft 文档"
+description: 
+services: iot-suite
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: iot-suite
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: f59615ce37aa83a99a058775d4e1705e016baf07
+ms.sourcegitcommit: 29fb247771d662d3abcbf35e95ff0f7a8cf95af1
+ms.openlocfilehash: 461542095d9ef357460e93d65bb9f4dd8fe17c86
 
 ---
+
 # <a name="iot-suite-documentation"></a>IoT 套件文档
 
 Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快物联网 (IoT) 解决方案的开发。 使用适用于多个平台（包括 Linux、Windows 和实时操作系统）的设备 SDK 添加新设备并连接现有设备。 无论项目大小如何，均可从少数几个传感器轻松扩展至数百万台同步连接的设备，还可依赖 Azure 的全球可用性。
@@ -78,7 +91,7 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
                         <h3>资源</h3>
                         <p><a href="/azure/iot-suite/iot-security-architecture">安全体系结构</a></p>
                         <p><a href="/azure/iot-suite/iot-security-best-practices">安全最佳实践</a></p>
-                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">保护你的 IoT 部署</a></p>
+                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">保护 IoT 部署</a></p>
                         <p><a href="/azure/iot-suite/securing-iot-ground-up">安全基础知识</a></p>
                    </div>
                 </div>
@@ -87,18 +100,10 @@ Microsoft Azure IoT 套件快速入门。 使用预配置解决方案，加快�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-suite.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 IoT 套件文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

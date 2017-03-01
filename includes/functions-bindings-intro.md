@@ -1,0 +1,11 @@
+此参考信息面向 Azure Functions 开发人员。 Azure Functions 的新手请从以下资源入手：
+
+* [创建第一个 Azure 函数](../articles/azure-functions/functions-create-first-azure-function.md)
+* [Azure Functions 开发人员参考](../articles/azure-functions/functions-reference.md)
+* [C#](../articles/azure-functions/functions-reference-csharp.md)、[F#](../articles/azure-functions/functions-reference-fsharp.md) 或 [Node](../articles/azure-functions/functions-reference-node.md) 开发人员参考
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

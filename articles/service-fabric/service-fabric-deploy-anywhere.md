@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 12/06/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3885733b67933f331f65760474649fba18adce12
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 140bee520dd8de0d9303a7d80e10cae407c8b10d
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 3885733b67933f331f65760474649fba18adce12
 可以在运行以下操作系统的 VM 上创建群集：
 
 * Windows Server 2012 R2
-* Windows Server 2016（在发布正式版之后）
+* Windows Server 2016 
 * Linux Ubuntu 16.04（公共预览版） 
 
 ## <a name="create-service-fabric-standalone-clusters-on-premise-or-with-any-cloud-provider"></a>在本地或者与任何云提供商合作创建 Service Fabric 独立群集
@@ -53,7 +53,7 @@ Service Fabric 提供一个安装包，用于在本地或者与任何云提供�
 可以在运行以下操作系统的 VM 或计算机上创建群集：
 
 * Windows Server 2012 R2
-* Windows Server 2016（在发布正式版之后）
+* Windows Server 2016 
 * Linux（即将支持）
 
 ## <a name="advantages-of-service-fabric-clusters-on-azure-over-standalone-service-fabric-clusters-created-on-premises"></a>与在本地创建的独立 Service Fabric 群集相比 Azure 上的 Service Fabric 群集的优势
@@ -67,13 +67,14 @@ Service Fabric 提供一个安装包，用于在本地或者与任何云提供�
 * **自动缩放：**对于 Azure 上的群集，我们借助虚拟机缩放集提供内置自动缩放功能。 在本地和其他云环境中，必须构建自己的自动调整规模功能或使用 Service Fabric 为调整群集规模而公开的 API 来手动调整规模。
 
 ## <a name="next-steps"></a>后续步骤
-在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 
-在运行 Linux 的 VM 或计算机上创建群集：[Linux 上的 Service Fabric](service-fabric-linux-overview.md)
+* 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
+* 在运行 Linux 的 VM 或计算机上创建群集：[Linux 上的 Service Fabric](service-fabric-linux-overview.md)
+* 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

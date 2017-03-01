@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement 的 Windows Universal 应用 SDK 升级过
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 4c898175-2cd6-43db-b350-bb408332f24d
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c7b3441892484cf54e2055e9153858171d738e85
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -276,7 +277,7 @@ SDK 使用术语 `Engagement`。 需要更新项目以匹配此更改。
 * 从 capptain\_reach\_content 更新到 engagement\_reach\_content
 * 从 capptain\_log\_file 更新到 engagement\_log\_file
 
-### <a name="application-id-sdk-key"></a>应用程序 ID / SDK 密钥
+### <a name="application-id--sdk-key"></a>应用程序 ID / SDK 密钥
 Engagement 使用连接字符串。 无需使用 Mobile Engagement 指定应用程序 ID 和 SDK 密钥，只需指定连接字符串。 可在 EngagementConfiguration 文件中对其设置。
 
 可在项目的 `Resources\EngagementConfiguration.xml` 文件中设置 Engagement 配置。
@@ -308,10 +309,5 @@ Engagement 使用连接字符串。 无需使用 Mobile Engagement 指定应用�
 * GetCapptainPageName 现在名为 GetEngagementPageName
 
 请注意，重命名也会影响重写方法。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

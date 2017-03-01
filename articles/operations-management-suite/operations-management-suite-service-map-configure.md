@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 6cc30ace0b57555ea2b5815906d3e6a4f79d8fce
-ms.openlocfilehash: 94bf7729ceb55eaed5efc0290c1a34227888211f
+ms.sourcegitcommit: 1ce47043f85e30f616c8b22e1107b192d4962d8a
+ms.openlocfilehash: 73c35da427f1e2080ab6fdd086d3168dad495415
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -27,18 +28,18 @@ ms.openlocfilehash: 94bf7729ceb55eaed5efc0290c1a34227888211f
 
 
 ## <a name="connected-sources"></a>连接的源
-下表介绍了服务映射解决方案支持的连接的源。
+服务映射从 Microsoft 依赖关系代理获取其数据。  依赖关系代理依赖 OMS 代理连接到 OMS。  这意味着服务器必须首先安装和配置 OMS 代理，然后才能安装依赖关系代理。  下表介绍了服务映射解决方案支持的连接的源。
 
 | 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
-| [Windows 代理](../log-analytics/log-analytics-windows-agents.md) | 是 | 服务映射从 Windows 代理计算机分析和收集数据。  <br><br>除了 OMS 代理，Windows 代理还需要 Microsoft 依赖关系代理。  有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
-| [Linux 代理](../log-analytics/log-analytics-linux-agents.md) | 是 | 服务映射从 Linux 代理计算机分析和收集数据。  <br><br>除了 OMS 代理，Linux 代理还需要 Microsoft 依赖关系代理。  有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
-| [SCOM 管理组](../log-analytics/log-analytics-om-agents.md) | 是 | 服务映射在连接的 System Center Operations Manager (SCOM) 管理组中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 SCOM 代理计算机直接连接到 OMS。 数据直接从管理组转发到 OMS 存储库。|
-| [Azure 存储帐户](../log-analytics/log-analytics-azure-storage.md) | 否 | 服务映射从代理计算机收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
+| Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。  <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agents.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。  有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
+| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。  <br><br>除 [OMS 代理](../log-analytics/log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。  有关操作系统版本的完整列表，请参阅[受支持的操作系统](#supported-operating-systems)。 |
+| SCOM 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager (SCOM) 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 SCOM 代理计算机直接连接到 OMS。 数据直接从管理组转发到 OMS 存储库。|
+| Azure 存储帐户 | 否 | 服务映射从代理计算机收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
 
 服务映射仅支持 64 位平台。
 
-在 Windows 上，SCOM 和 OMS 使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。  （此代理称为 SCOM 代理、OMS 代理、MMA 或直接代理，具体取决于上下文。）SCOM 和 OMS 提供不同的全新 MMA 版本，但这些版本可分别报告给 SCOM、OMS，或同时报告给这两者。  在 Linux 上，适用于 Linux 的 OMS 代理收集监视数据并将其发送到 OMS。  可在具有 OMS 直接代理的服务器或已通过 SCOM 管理组连接到 OMS 的服务器上使用服务映射。  在本文档中，我们引用所有代理作为“OMS 代理”（不管是使用 Linux 还是 Windows，也不管是连接到 SCOM MG 还是直接连接到 OMS），除非上下文需要代理的特定部署名称。
+在 Windows 上，SCOM 和 OMS 使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。  （此代理称为 SCOM 代理、OMS 代理、MMA 或直接代理，具体取决于上下文。）SCOM 和 OMS 提供全新的不同 MMA 版本，但这些版本分别向 SCOM 和 OMS 报告，或同时向两者报告。  在 Linux 上，适用于 Linux 的 OMS 代理收集监视数据并将其发送到 OMS。  可在具有 OMS 直接代理的服务器或已通过 SCOM 管理组连接到 OMS 的服务器上使用服务映射。  在本文档中，我们引用所有代理作为“OMS 代理”（不管是使用 Linux 还是 Windows，也不管是连接到 SCOM MG 还是直接连接到 OMS），除非上下文需要代理的特定部署名称。
 
 服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。  服务映射数据始终由 OMS 代理直接或通过 OMS 网关传输到 OMS。
 
@@ -75,7 +76,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 
 
 ## <a name="configuration"></a>配置
-除了 Windows 和 Linux 计算机已安装代理并连接到 OMS 之外，还必须从服务映射解决方案下载依赖关系代理安装程序，然后将其作为根或管理安装在每个托管服务器上。  在向 OMS 报告的服务器上安装了服务映射代理后，服务映射依赖关系映射将在 10 分钟内显示。  如果有任何问题，请向 [oms-adm-support@microsoft.com](mailto:oms-adm-support@microsoft.com) 发送电子邮件。
+除了 Windows 和 Linux 计算机已安装代理并连接到 OMS 之外，还必须从服务映射解决方案下载依赖关系代理安装程序，然后将其作为根或管理安装在每个托管服务器上。  在向 OMS 报告的服务器上安装了服务映射代理后，服务映射依赖关系映射将在 10 分钟内显示。
 
 
 ### <a name="migrating-from-bluestripe-factfinder"></a>从 BlueStripe FactFinder 迁移
@@ -97,10 +98,10 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 
 使用以下步骤在每台 Windows 计算机上安装依赖关系代理：
 
-1.  确保按照“将计算机直接连接到 OMS”中的说明安装 OMS 代理。
-2.  下载 Windows 代理，并使用以下命令运行它： <br>*InstallDependencyAgent-Windows.exe*
-3.  按照向导安装代理。
-4.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 *C:\Program Files\Microsoft Dependency Agent\logs*。 
+1.    确保按照“将计算机直接连接到 OMS”中的说明安装 OMS 代理。
+2.    下载 Windows 代理，并使用以下命令运行它： <br>*InstallDependencyAgent-Windows.exe*
+3.    按照向导安装代理。
+4.    如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 *C:\Program Files\Microsoft Dependency Agent\logs*。 
 
 管理员可通过“控制面板”卸载适用于 Windows 的依赖关系代理。
 
@@ -112,12 +113,12 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
  
 使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
 
-1.  确保按照[从 Linux 计算机收集和管理数据。OMS 代理需要在 Linux 依赖关系代理之前安装](https://technet.microsoft.com/library/mt622052.aspx)中的说明安装 OMS 代理。
-2.  使用以下命令将 Linux 依赖关系代理安装为根：<br>*sh InstallDependencyAgent-Linux64.bin*。
-3.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。
+1.    确保按照[从 Linux 计算机收集和管理数据。OMS 代理需要在 Linux 依赖关系代理之前安装](https://technet.microsoft.com/library/mt622052.aspx)中的说明安装 OMS 代理。
+2.    使用以下命令将 Linux 依赖关系代理安装为根：<br>*sh InstallDependencyAgent-Linux64.bin*。
+3.    如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>卸载 Linux 上的依赖关系代理
-若要完全从 Linux 中卸载依赖关系代理，必须删除代理本身以及使用该代理自动安装的代理。  可使用以下单个命令同时卸载这两项：
+若要从 Linux 中彻底卸载依赖关系代理，必须删除代理本身以及随该代理自动安装的连接器。  可使用以下单个命令同时卸载这两项：
 
     rpm -e dependency-agent dependency-agent-connector
 
@@ -126,7 +127,7 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 上一部分提供了有关使用默认选项安装依赖关系监视器代理的指南。  以下部分提供了有关使用自定义选项从命令行安装代理的指南。
 
 #### <a name="windows"></a>Windows
-使用下表中的选项从命令行进行安装。 若要查看安装标志列表，请运行带有 /? 标志的安装程序，如下所示。
+使用下表中的选项从命令行进行安装。 若要查看安装标志列表，请运行带有 /? 标志，如下所示。
 
     InstallDependencyAgent-Windows.exe /?
 
@@ -170,15 +171,15 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
     cd C:\Program Files\Microsoft Dependency Agent\scripts
     cscript CollectDependencyData.vbs
 
-支持数据包保存在 %USERPROFILE% 目录中，可供当前用户使用。  你可以使用 --file <filename> 选项将它保存到其他位置。
+支持数据包保存在当前用户的 %USERPROFILE% 目录中。  你可以使用 --file <filename> 选项将它保存到其他位置。
 
 #### <a name="microsoft-dependency-agent-management-pack-for-mma"></a>适用于 MMA 的 Microsoft 依赖关系代理管理包
 依赖关系代理管理包在 Microsoft 管理代理中运行。  它从依赖关系代理接收数据，并将其转发到服务映射云服务。
   
 请验证是否通过执行以下步骤下载管理包：
 
-1.  在 C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs 中查找名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor.mp 的文件。  
-2.  如果该文件不存在并且代理已连接到 SCOM 管理组，则验证是否已通过在操作控制台的管理工作区中检查管理包将其导入到 SCOM。
+1.    在 C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs 中查找名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor.mp 的文件。  
+2.    如果该文件不存在并且代理已连接到 SCOM 管理组，则验证是否已通过在操作控制台的管理工作区中检查管理包将其导入到 SCOM。
 
 服务映射 MP 将事件写入 Operations Manager Windows 事件日志。  该日志可通过系统日志解决方案[在 OMS 中搜索](../log-analytics/log-analytics-log-searches.md)，你可以在其中配置要上传的日志文件。  如果启用了调试事件，它们将写入应用程序事件日志，事件源为 *ADMConnector*。
 
@@ -198,9 +199,9 @@ MP 名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor*。它将写�
 #### <a name="microsoft-dependency-agent"></a>Microsoft 依赖关系代理
 若要从依赖关系代理生成疑难解答数据，请使用具有 sudo 或 root 权限的帐户登录并运行以下命令。  可添加 --help 标志，显示其他选项。
 
-    /opt/microsoft/dependency-agent/scripts/collect-dependency-agent-data.sh
+    /opt/microsoft/dependency-agent/lib/scripts/collect-dependency-agent-data.sh
 
-支持数据包将保存到代理的安装目录下的 /var/opt/microsoft/dependency-agent/log（如果是根目录），或运行脚本的用户的主目录（如果是非根目录）。  你可以使用 --file <filename> 选项将它保存到其他位置。
+支持数据包将保存到代理安装目录下的 /var/opt/microsoft/dependency-agent/log 中（如果以 root 权限安装），或运行脚本的用户的主目录（如果以非 root 权限安装）。  你可以使用 --file <filename> 选项将它保存到其他位置。
 
 #### <a name="microsoft-dependency-agent-fluentd-plug-in-for-linux"></a>适用于 Linux 的 Microsoft 依赖关系代理 Fluentd 插件
 依赖关系代理 Fluentd 插件在 OMS Linux 代理中运行。  它从依赖关系代理接收数据，并将其转发到服务映射云服务。  
@@ -227,7 +228,7 @@ omsconfig（代理配置）的日志位于 */var/opt/microsoft/omsconfig/log/*�
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-以下部分列出了依赖关系代理支持的操作系统。   任何操作系统都不支持 32 位体系结构。
+以下部分列出了依赖关系代理支持的操作系统。   任何操作系统都不支持&32; 位体系结构。
 
 ### <a name="windows-server"></a>Windows Server
 - Windows Server 2016
@@ -322,9 +323,4 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="next-steps"></a>后续步骤
 - 部署和配置服务映射后，了解如何[使用服务映射](operations-management-suite-service-map.md)。
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

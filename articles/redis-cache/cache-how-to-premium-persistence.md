@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 628dfc48c00e61fe5c4883f6237a44e0f1309f0e
+ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
+ms.openlocfilehash: bc8c54b51f9eee653fbe84351081dcef562e62d4
 
 
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置数据暂留
-Azure Redis 缓存具有不同的缓存产品（包括新推出的高级层），使缓存大小和功能的选择更加灵活。
-
-Azure Redis 缓存高级层包括群集、持久性和虚拟网络支持等功能。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留。
+Azure Redis 缓存具有不同的缓存产品（包括高级层功能，如群集、暂留和虚拟网络支持），使缓存大小和功能的选择更加灵活。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留。
 
 有关其他高级缓存功能的信息，请参阅 [Azure Redis 缓存高级层简介](cache-premium-tier-intro.md)。
 
@@ -32,16 +30,9 @@ Redis 暂留可让你保留存储在 Redis 中的数据。 还可以获取快照
 
 Azure Redis 缓存使用 [RDB 模型](http://redis.io/topics/persistence)提供 Redis 暂留功能，允许将数据存储在 Azure 存储帐户中。 配置暂留以后，Azure Redis 缓存会按照可配置的备份频率，将 Redis 缓存的快照以 Redis 二进制格式暂留在磁盘上。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用最新快照重新构造缓存。
 
-可在缓存创建过程中通过“新建 Redis 缓存”边栏选项卡或者在现有高级缓存的“设置”边栏选项卡上配置暂留。
+可在缓存创建过程中通过“新建 Redis 缓存”边栏选项卡或者在现有高级缓存的“资源菜单”上配置暂留。
 
-## <a name="create-a-premium-cache"></a>创建高级缓存
-若要创建缓存并配置暂留，请登录到 [Azure 门户](https://portal.azure.com)，然后单击“新建”->“数据 + 存储”>“Redis 缓存”。
-
-![创建 Redis 缓存][redis-cache-new-cache-menu]
-
-若要配置暂留，请首先在“选择定价层”边栏选项卡中选择一个“高级”缓存。
-
-![选择你的定价层][redis-cache-premium-pricing-tier]
+[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 选中某个高级定价层后，请单击“Redis 暂留”。
 
@@ -50,7 +41,7 @@ Azure Redis 缓存使用 [RDB 模型](http://redis.io/topics/persistence)提供 
 以下部分中的步骤说明如何在新的高级缓存上配置 Redis 持久性。 配置 Redis 暂留后，单击“创建”以创建具有 Redis 暂留的新高级版缓存。
 
 ## <a name="configure-redis-persistence"></a>配置 Redis 持久性
-在“Redis 数据暂留”边栏选项卡上配置 Redis 暂留。 对于新缓存，可以按前一部分中所述，在创建缓存过程中访问此边栏选项卡。 对于现有缓存，可从缓存的“设置”边栏选项卡访问“Redis 数据暂留”边栏选项卡。
+在“Redis 数据暂留”边栏选项卡上配置 Redis 暂留。 对于新缓存，可以按前一部分中所述，在创建缓存过程中访问此边栏选项卡。 对于现有缓存，可从缓存的“资源菜单”访问“Redis 数据暂留”边栏选项卡。
 
 ![Redis 设置][redis-cache-settings]
 
@@ -61,7 +52,7 @@ Azure Redis 缓存使用 [RDB 模型](http://redis.io/topics/persistence)提供 
 单击“存储帐户”以选择要使用的存储帐户，然后从“存储密钥”下拉列表中选择要使用的“主密钥”或“辅助密钥”。 必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”帐户，因为高级存储的吞吐量较高。 
 
 > [!IMPORTANT]
-> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”下拉列表中重新选择所需密钥。
+> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”下拉列表中重新配置所需密钥。
 > 
 > 
 
@@ -116,6 +107,6 @@ Azure Redis 缓存使用 [RDB 模型](http://redis.io/topics/persistence)提供 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

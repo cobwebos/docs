@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
+ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
+ms.openlocfilehash: aa4c6400bcd16c90654c40e14b7a8ed239a4d8aa
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 
 ![查看遥测数据的主要途径](./media/app-insights-dashboards/010-oview.png)
 
-可以自定义其他任何图表，并将其固定到仪表板。 这样，便可以将不同应用的关键图表整合到一起。
+可以自定义任何图表和网格，并将其固定到仪表板。 这样即可将不同应用的关键遥测数据汇集到一个中央仪表板上。
 
 ## <a name="dashboards"></a>仪表板
 登录到 [Microsoft Azure 门户](https://portal.azure.com)后，最先看到的是仪表板。 可以将所有最重要的 Azure 资源的图表整合到此处，包括来自 [Azure Application Insights](app-insights-overview.md) 的遥测数据。
@@ -114,13 +114,13 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 * **概述** - 返回到应用概述边栏选项卡。
 * **活动日志** - 警报和 Azure 管理事件。
 * [**访问控制**](app-insights-resources-roles-access-control.md) - 向团队成员和其他人提供访问权限。
-* [**标记**](../resource-group-using-tags.md) - 使用标记将你的应用与其他应用分组。
+* [**标记**](../azure-resource-manager/resource-group-using-tags.md) - 使用标记将你的应用与其他应用分组。
 
 调查
 
 * [**应用程序地图**](app-insights-app-map.md) - 显示应用程序组件的活动地图，其内容派生自依赖关系信息。
-* [**主动诊断**](app-insights-proactive-diagnostics.md) - 查看最近的性能警报。
-* [**实时流**](app-insights-metrics-explorer.md#live-metrics-stream) - 一组固定的近乎实时的指标，在部署新版本或调试时非常有用。
+* [**智能检测**](app-insights-proactive-diagnostics.md) - 查看最近的性能警报。
+* [**实时流**](app-insights-live-stream.md) - 一组固定的近乎实时的指标，在部署新版本或调试时非常有用。
 * [**可用性/Web 测试**](app-insights-monitor-web-app-availability.md) - 从世界各地将常规请求发送到 Web 应用。*
 * [**故障、性能**](app-insights-web-monitor-performance.md) - 发往应用的请求以及从应用发往[依赖项](app-insights-asp-net-dependencies.md)的请求的异常、故障率和响应时间。
 * [**性能**](app-insights-web-monitor-performance.md) - 响应时间和依赖项响应时间。
@@ -141,7 +141,7 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 
 设置
 
-* [**锁定**](../resource-group-lock-resources.md) - 锁定 Azure 资源
+* [**锁定**](../azure-resource-manager/resource-group-lock-resources.md) - 锁定 Azure 资源
 * [**自动化脚本**](app-insights-powershell.md) - 导出 Azure 资源的定义，以便可以将它用作模板来创建新资源。
 
 支持
@@ -157,6 +157,6 @@ ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

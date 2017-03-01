@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 412640c0c53ca85dbdc234783ba94afaa807a22a
-ms.openlocfilehash: f1e4ecfd91e161f71115bed31cd41684ed514b5a
+ms.sourcegitcommit: 29df0e2198be05a64b6a90f1adf30a0c3b218d93
+ms.openlocfilehash: b40fa2d511910668438ba33291d16202dec8c8a8
 
 
 ---
@@ -211,10 +211,10 @@ HttpTrigger 可以利用密钥提高安全性。 标准 HttpTrigger 可以将这
 密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，导航到门户内的其中一个函数并选择“管理”。 
 
 有两种类型的密钥：
-- **管理密钥**：由 Function App 中的所有函数共享这些密钥。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。
+- **主机密钥**：由 Function App 中的所有函数共享这些密钥。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。
 - **函数密钥**：这些密钥仅适用于在其下定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
 
-命名每个密钥方便引用，并且在函数和管理级别存在名为“default”的默认密钥。 **主密钥**是为每个 Function App 定义的默认管理密钥，名为“_master”，且无法撤消。 它提供对运行时 API 的管理访问权限。 在绑定 JSON 中使用 `"authLevel": "admin"` 需要在请求中提供此密钥；任何其他密钥将导致授权失败。
+命名每个密钥方便引用，并且在函数和主机级别存在名为“default”的默认密钥。 **主密钥**是为每个 Function App 定义的默认主机密钥，名为“_master”，且无法撤消。 它提供对运行时 API 的管理访问权限。 在绑定 JSON 中使用 `"authLevel": "admin"` 需要在请求中提供此密钥；任何其他密钥将导致授权失败。
 
 > [!NOTE]
 > 由于提升的权限由主密钥所授予，因此不应与第三方共享此密钥或在本机客户端应用程序中分发此密钥。 选择管理员授权级别时，请务必小心。
@@ -226,7 +226,7 @@ HttpTrigger 可以利用密钥提高安全性。 标准 HttpTrigger 可以将这
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-该密钥可以包含在名为 `code` 的查询字符串变量中（如上所示），也可以包含在 `x-functions-key` HTTP头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意管理密钥。
+该密钥可以包含在名为 `code` 的查询字符串变量中（如上所示），也可以包含在 `x-functions-key` HTTP头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
 
 可以选择允许无密钥请求，或指定必须通过更改绑定 JSON 中的 `authLevel` 属性（参见 [HTTP 触发器](#httptrigger)）来使用主密钥。
 
@@ -237,7 +237,7 @@ Webhook 授权由属于 HttpTrigger 的 webhook 接收器组件处理，其机�
 - **请求头**：提供程序通过 `x-functions-clientid` 头传递密钥名称。
 
 > [!NOTE]
-> 函数密钥优先于管理密钥。 如果为两个密钥定义的名称相同，则使用函数密钥。
+> 函数密钥优先于主机密钥。 如果为两个密钥定义的名称相同，则使用函数密钥。
 > 
 > 
 
@@ -439,6 +439,6 @@ module.exports = function (context, data) {
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

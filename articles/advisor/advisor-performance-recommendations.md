@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: a560aa9cc6c70fd3827f649627466c9071b8ab8b
-ms.openlocfilehash: c350134e8cea5771900e2e88b02b572c20e9d5bd
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: d04c209894ab8ee35b92381f9679f68addd64f00
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -58,7 +59,7 @@ Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现�
 3. 在顾问仪表板上，单击“性能”选项卡，然后选择要接收建议的订阅。
 
 > [!NOTE]
-> 如果订阅中已为用户分配了**所有者、参与者或读者**角色，则顾问会为其生成建议。
+> 若要访问顾问建议，必须先向顾问**注册**订阅。 **订阅所有者**启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是**一次性操作**。 注册订阅后，**所有者**、**参与者**或**读者**可以访问有关订阅、资源组或特定资源的顾问建议。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -69,9 +70,4 @@ Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现�
 -  [顾问高可用性建议](advisor-high-availability-recommendations.md)
 -  [顾问安全性建议](advisor-security-recommendations.md)
 -  [顾问成本建议](advisor-performance-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

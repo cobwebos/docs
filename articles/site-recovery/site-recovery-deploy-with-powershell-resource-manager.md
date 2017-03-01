@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure PowerShell 和 Azure Resource Manager 通过 Azure 来保护服务器 | Microsoft 文档"
-description: "通过使用 PowerShell 和 Azure Resource Manager，通过 Azure Site Recovery 将服务器自动保护到 Azure。"
+title: "使用 PowerShell 和 Azure Resource Manager 复制 Hyper-V VM | Microsoft 文档"
+description: "在 PowerShell 和 Azure Resource Manager 中使用 Azure Site Recovery 将 Hyper-V VM 自动复制到 Azure。"
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 555f61f76a8d6f1564e7ca736bcdd0dec7d594df
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 3df4aaa018d31e9ee9526679ac1febbe5b75bb7e
 
 
 ---
@@ -62,7 +62,7 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 * 需要一台运行 Windows Server 2012 R2 或 Microsoft Hyper-V Server 2012 R2 的 Hyper-V 主机，其中包含一个或多个虚拟机。
 * Hyper-V 服务器应直接或通过代理连接到 Internet。
-* 要保护的虚拟机应符合[虚拟机先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+* 要保护的虚拟机应符合[虚拟机先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到你的 Azure 帐户
 1. 打开 PowerShell 控制台，然后运行以下命令以登录到 Azure 帐户。 该 cmdlet 会打开一个网页，提示你输入帐户凭据。
@@ -247,6 +247,6 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

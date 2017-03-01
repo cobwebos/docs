@@ -1,5 +1,5 @@
 ---
-title: "在导入过程中设置属性和元数据 | Microsoft Docs"
+title: "使用 Azure 导入/导出设置属性和元数据 | Microsoft Docs | Microsoft Docs"
 description: "了解如何在运行导入/导出工具准备驱动器时，指定要对目标 Blob 设置的属性和元数据。"
 author: muralikk
 manager: syadav
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 5d75bdb5ff39934e02d9af721b51e0aca24026bb
-ms.openlocfilehash: f49604cf6738da3576ed2a65ca96d083d5e8219b
+ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
+ms.openlocfilehash: 8e1152a03eee01244dd469586848c396a7f689cc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -70,9 +71,4 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
   
 ## <a name="see-also"></a>另请参阅  
 [导入/导出服务元数据和属性文件格式](storage-import-export-file-format-metadata-and-properties.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

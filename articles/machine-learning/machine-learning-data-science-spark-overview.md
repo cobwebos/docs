@@ -1,5 +1,5 @@
 ---
-title: "有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述 | Microsoft Docs"
+title: "有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述 | Microsoft Docs"
 description: "Spark MLlib 工具包向分布式 HDInsight 环境引入了大量机器学习建模功能。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/14/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: ca799d03076175d6a7193c0e58b349a6cb61693b
-ms.openlocfilehash: 35f07fba1421af1db9c8b6190737c3c220a911e1
+ms.sourcegitcommit: d1b5f52bb57f6d963db4bdb6249c3b9a3fd118cd
+ms.openlocfilehash: 4abcbfc8e1abfa1278307d97e366e0d0ae846d05
 
 
 
@@ -24,25 +24,55 @@ ms.openlocfilehash: 35f07fba1421af1db9c8b6190737c3c220a911e1
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-这一系列主题显示了如何使用 HDInsight Spark 完成常见的数据科学任务，例如数据引入、特征工程、建模和模型评估。 所使用的数据是 2013 年 NYC 出租车行程和费用数据集样本。 生成的模型包括逻辑和线性回归、随机林和梯度提升树。 本主题还介绍了如何在 Azure Blob 存储 (WASB) 中存储这些模型，以及如何对其预测性能进行评分和评估。 更高级的主题介绍了如何使用交叉验证和超参数扫描训练模型。 本概述主题还介绍了如何设置 Spark 群集，需要完成所提供的三个演练中的步骤。 
+这一系列主题显示了如何使用 HDInsight Spark 完成常见的数据科研任务，例如数据引入、特征工程、建模和模型评估。 所使用的数据是 2013 年 NYC 出租车行程和费用数据集样本。 生成的模型包括逻辑和线性回归、随机林和梯度提升树。 本主题还介绍了如何在 Azure Blob 存储 (WASB) 中存储这些模型，以及如何对其预测性能进行评分和评估。 更高级的主题介绍了如何使用交叉验证和超参数扫描训练模型。 本概述主题参与了有关如何设置 Spark 群集的主题，读者需要完成所提供的三个演练中的步骤。 
 
-[Spark](http://spark.apache.org/) 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中的迭代算法的最佳选择。 [MLlib](http://spark.apache.org/mllib/) 是 Spark 的可缩放机器学习库，向此分布式环境引入建模功能。 
+## <a name="spark-and-mllib"></a>Spark 和 MLlib
+[Spark](http://spark.apache.org/) 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 [MLlib](http://spark.apache.org/mllib/) 是 Spark 的可缩放机器学习库，向此分布式环境引入算法建模功能。 
 
+## <a name="hdinsight-spark"></a>HDInsight Spark
 [HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 **Jupyter PySpark 笔记本**的支持，这些笔记本可以运行 Spark SQL 交互式查询，用于对存储在 Azure Blob (WASB) 中的数据进行转换、筛选和可视化。 PySpark 是用于 Spark 的 Python API。 提供解决方案并显示相关图表以可视化此处的数据的代码片段在 Spark 群集上安装的 Jupyter 笔记本中运行。 这些主题中的建模步骤包含代码，显示每种类型模型的训练、评估、保存和使用方式。 
 
-本演练中提供的设置步骤和代码适用于 HDInsight 3.4 Spark 1.6。 但是，此处位于笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。
+## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>设置：Spark 群集和 Jupyter 笔记本
+本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但是，Jupyter 笔记本是针对 HDInsight Spark 1.6 和 Spark 2.0 群集提供的。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 为方便起见，下面提供了在 Jupyter 笔记本服务器的 pyspark 内核中运行的、适用于 Spark 1.6 和 2.0 的 Jupyter 笔记本的链接：
 
-## <a name="prerequisites"></a>先决条件
-1. 必须具有 Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
 
-2. 需要使用 HDInsight 3.4 Spark 1.6 群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”菜单中指定群集类型和版本。 
+- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何执行数据探索、建模和评分与多种不同算法的信息。
+- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含笔记本 #1 中的主题，以及使用超参数优化和交叉验证进行模型开发的说明。
+- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：说明如何使用 HDInsight 群集上的 Python 实施已保存的模型。
 
-![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
+### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
+
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中执行数据探索、建模和评分的信息。
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb)：此文件说明如何使用[此处](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview)所述的纽约市出租车里程与收费数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：此文件说明如何使用 2011 到 2012 年的已知航班准时出发数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。 我们已在建模之前将航班数据集与机场天气数据（例如风速、温度、海拔等）相集成，因此可在模型中包含这些天气特征。
 
 <!-- -->
 
 > [!NOTE]
-> 有关演示如何使用 Scala 而非 Python 完成端到端数据科学过程任务的主题，请参阅[在 Azure 上使用 Scala 与 Spark 开展数据科学](machine-learning-data-science-process-scala-walkthrough.md)。
+> 航班数据集已添加到 Spark 2.0 笔记本，以方便演示分类算法的用法。 有关航班准时出发数据集和天气数据集的信息，请参阅以下链接：
+
+>- 航班准时出发数据：[http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
+
+>- 机场天气数据：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+> 
+> 
+
+<!-- -->
+
+有关 Spark 2.0 模型的实施以及使用模型进行评分的指南，请参阅 [Spark 1.6 document on consumption](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)（有关使用 Spark 1.6 的文档）中的示例，其中概述了所要执行的步骤。 若要在 Spark 2.0 中使用此功能，将请 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。
+
+### <a name="prerequisites"></a>先决条件
+1. 必须具有 Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+
+2. 需要使用 Spark 1.6（或 Spark 2.0）群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”菜单中指定群集类型和版本。 
+
+![配置群集](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
+
+<!-- -->
+
+> [!NOTE]
+> 有关演示如何使用 Scala 而非 Python 完成端到端数据科研过程任务的主题，请参阅[在 Azure 上使用 Scala 与 Spark 开展数据科研](machine-learning-data-science-process-scala-walkthrough.md)。
 > 
 > 
 
@@ -107,19 +137,15 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter 笔记本执行代码
 可以从 Azure 门户启动 Jupyter 笔记本。 在仪表板上找到 Spark 群集，然后单击进入群集管理页面。 若要打开与 Spark 群集相关联的笔记本，请依次单击“群集仪表板” -> “Jupyter 笔记本”。
 
-![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
+![群集仪表板](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
 还可以浏览到 ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** 访问 Jupyter 笔记本。 将此 URL 的 CLUSTERNAME 部分替换为你自己的群集名称。 需要使用管理员帐户密码才能访问笔记本。
 
-![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
+![浏览 Jupyter 笔记本](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
 选择 PySpark 查看包含几个使用 PySpark API 的预打包笔记本示例的目录。包含这一系列 Spark 主题的代码示例的笔记本可在 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上获取
 
-可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”按钮。 它将打开文件资源管理器。 你可以在此处粘贴笔记本的 Github（原始内容）URL，然后单击“打开”。 PySpark 笔记本可在以下 URL 中获取：
-
-1. [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)
-2. [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)
-3. [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)
+可将笔记本直接从 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上载到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”按钮。 它将打开文件资源管理器。 你可以在此处粘贴笔记本的 Github（原始内容）URL，然后单击“打开”。 
 
 你将再次看到文件名显示在 Jupyter 文件列表上，并带有“上传”按钮。 单击此“上传”按钮。 现在你已导入笔记本。 重复上述步骤，上传本演练中的其他笔记本。
 
@@ -154,6 +180,6 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

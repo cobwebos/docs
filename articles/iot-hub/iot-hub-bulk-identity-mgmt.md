@@ -1,6 +1,6 @@
 ---
-title: "导入和导出 IoT 中心设备标识 | Microsoft Docs"
-description: "有关批量管理 IoT 中心设备标识的概念和 .NET 代码段"
+title: "导入和导出 Azure IoT 中心设备标识 | Microsoft Docs"
+description: "如何使用 Azure IoT 服务 SDK 针对标识注册表执行批量操作，以导入和导出设备标识。 借助导入操作，可批量创建、更新和删除设备标识。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 7c50b4bd32d32ec33f35c2484a3c86e944830725
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: 668f6ab0d5c09d53edd85b568cc8c9941b2f9135
 
 
 ---
-# <a name="bulk-management-of-iot-hub-device-identities"></a>批量管理 IoT 中心的设备标识
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>批量管理 IoT 中心设备标识
 每个 IoT 中心都有标识注册表，可用于在服务中创建每个设备资源，如包含未送达的云到设备消息的队列。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何在标识注册表中批量导入和导出设备标识。
 
 *作业*的上下文中发生导入和导出操作，可允许你对 IoT 中心执行批量服务操作。
@@ -30,7 +30,7 @@ ms.openlocfilehash: 7c50b4bd32d32ec33f35c2484a3c86e944830725
 ## <a name="what-are-jobs"></a>什么是作业？
 当操作出现以下情况时，标识注册表操作使用“作业”系统：
 
-* 相比于标准运行时操作，其运行时间可能很长，或者，
+* 相较标准运行时操作，其执行时间可能很长，或
 * 向用户返回大量数据。
 
 针对这些情况（而不是针对在操作结果处等待或阻塞的单个 API 调用），操作将以异步方式创建该 IoT 中心的**作业**。 然后，操作立即返回 **JobProperties** 对象。
@@ -75,7 +75,7 @@ while(true)
    ```
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
-* 一个*布尔值*，该值指示你是否想要从导出数据中排除身份验证密钥。 如果为 **false**，则身份验证密钥包含在导出输出中；否则密钥导出为 **null**。
+* 一个*布尔值*，该值指示你是否想要从导出数据中排除身份验证密钥。 如果为 **false**，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null**。
 
 下面的 C# 代码段演示了如何启动在导出数据中包含设备身份验证密钥的导出作业，然后对完成情况进行轮询：
 
@@ -342,12 +342,12 @@ static string GetContainerSasUri(CloudBlobContainer container)
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已学习如何针对 IoT 中心内的标识注册表执行批量操作。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
-* [使用指标][lnk-metrics]
-* [操作监控][lnk-monitor]
+* [IoT 中心度量值][lnk-metrics]
+* [操作监视][lnk-monitor]
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [开发人员指南][lnk-devguide]
+* [IoT 中心开发人员指南][lnk-devguide]
 * [使用 IoT 网关 SDK 模拟设备][lnk-gateway]
 
 [lnk-metrics]: iot-hub-metrics.md
@@ -358,6 +358,6 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

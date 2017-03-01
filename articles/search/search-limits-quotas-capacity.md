@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/15/2016
+ms.date: 02/08/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: ffdd03fb1e9718b0f72f5a13bb80de4a4bfe2709
-ms.openlocfilehash: ed21cb2c0f1fce23ed00a50ad181edaacae95ce6
+ms.sourcegitcommit: 99c7ca60b472d2481d9ebb1ec4be3d2eee088c26
+ms.openlocfilehash: e1b76cb4c6393d7c5783f55bf9a0f141786a9602
 
 
 ---
@@ -67,7 +67,7 @@ ms.openlocfilehash: ed21cb2c0f1fce23ed00a50ad181edaacae95ce6
 ## <a name="workload-limits-queries-per-second"></a>工作负荷限制（每秒查询次数）
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| QPS |不适用 |每个副本大约 3 个 |每个副本大约 15 个 |每个副本大约 60 个 |每个副本大于 60 个 |每个副本大于 60 个 |
+| QPS |不适用 |每个副本大约&3; 个 |每个副本大约&15; 个 |每个副本大约&60; 个 |每个副本大于&60; 个 |每个副本大于&60; 个 |
 
 每秒查询次数 (QPS) 是基于启发所得的近似值，它使用模拟及实际的客户工作负荷获得估计值。 精确的 QPS 吞吐量因数据和查询性质而异。
 
@@ -96,6 +96,6 @@ API 密钥用于服务身份验证。 有两种类型。 管理密钥在请求�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

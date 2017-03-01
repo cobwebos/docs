@@ -1,6 +1,6 @@
 ---
 title: "Log Analytics 常见问题解答 | Microsoft Docs"
-description: "有关 Log Analytics 服务的常见问题解答。"
+description: "有关 Azure Log Analytics 服务的常见问题解答。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e24e6f9cc383be77dc631a0dd67db099906dccc0
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: 4695669dc20b4b4b90ccdaf4db06df2cfcba2167
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -90,6 +91,13 @@ A. `Move-AzureRmResource` Cmdlet 允许你移动 Log Analytics 工作区，也�
 答：在 SCOM 中，从 OMS 托管列表中删除该计算机。 这将停止通过 SCOM 为该代理执行的所有通信。 对于直接连接到 OMS 的代理，可以通过以下路径停止其与 OMS 进行通信：控制面板、安全性和设置、**Microsoft 监视代理**。
 在“**Azure Log Analytics (OMS)**”选项卡下，删除列出的所有工作区。
 
+**问：为什么我在在尝试将工作区从一个 Azure 订阅移动到另一个订阅时收到错误？**
+
+答：添加解决方案时，Azure 会在工作区所处的 Azure 订阅中创建资源。
+
+通常，添加订阅的人员是 Azure 订阅的管理员或参与者。 如果用户在 Azure 门户中不拥有用于 Azure 订阅的相同权限，则 OMS 门户中的管理员或参与者是不够的。
+
+
 ## <a name="agent-data"></a>代理数据
 **问：可以通过代理向 Log Analytics 发送多少数据？每个客户的数据量是否有最大限制？**  
 A. 免费套餐设置的上限是每个工作区每天 500 MB。 标准和高级套餐对上载的数据量没有限制。 作为云服务，OMS 中的 Log Analytics 设计为自动向上扩展以处理来自客户的数据 – 即使每天数据量达到数万亿字节 (TB)。
@@ -121,9 +129,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 
 ## <a name="next-steps"></a>后续步骤
 * [开始使用 Log Analytics](log-analytics-get-started.md)，以快速了解有关 Log Analytics 的更多信息并使 Log Analytics 开始运行。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

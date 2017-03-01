@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e2e81139152549eaa40d788c80cfdd2388b2d55d
-ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 * 网页
   * AJAX 调用
 
-你还可以编写自己的 SDK 调用，以便使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) 监视客户端和服务器代码中的其他依赖项。
+你还可以编写自己的 SDK 调用，以便使用 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) 监视客户端和服务器代码中的其他依赖项。
 
 ## <a name="set-up-dependency-monitoring"></a>设置依赖项监视
 [Application Insights SDK](app-insights-asp-net.md) 会自动收集部分依赖项信息。 若要获取完整数据，请为主机服务器安装相应的代理。
@@ -172,7 +172,7 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 ## <a name="custom-dependency-tracking"></a>自定义依赖项跟踪
 标准依赖项跟踪模块自动发现内部依赖项，例如数据库和 REST API。 但你可能希望使用相同方式处理其他某些组件。
 
-可以通过标准模块所使用的同一 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency)，编写可发送依赖项信息的代码。
+可以通过标准模块所使用的同一 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency)，编写可发送依赖项信息的代码。
 
 例如，如果你使用未自行编写的程序集生成代码，可以对其所有调用进行计时，以了解它对你的响应时间所做的贡献。 若要使此数据显示在 Application Insights 中的依赖项图表中，请使用 `TrackDependency` 发送它。
 
@@ -209,6 +209,6 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

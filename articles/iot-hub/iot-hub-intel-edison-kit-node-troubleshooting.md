@@ -1,5 +1,5 @@
 ---
-title: "Intel Edison Azure IoT 初学者工具包故障排除 | Microsoft Docs"
+title: "将 Intel Edison（节点）连接到 Azure IoT - 第 4 课：疑难解答 | Microsoft Docs"
 description: "Intel Edison Node.js 体验的故障排除页"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: e37d21e22b63c552e3de99c08862f3acaabd3598
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: d77ee0be35a3f4b38c50cf9322124e4dfbba6ddc
 
 
 ---
@@ -155,6 +155,6 @@ iothub-explorer help
 [sample-repository]: https://github.com/Azure-Samples/iot-hub-node-edison-getting-started
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

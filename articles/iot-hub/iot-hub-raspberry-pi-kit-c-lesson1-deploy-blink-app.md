@@ -1,5 +1,5 @@
 ---
-title: "创建并部署 blink 应用程序 | Microsoft 文档"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 1 课：部署应用 |Microsoft Docs"
 description: "克隆 GitHub 提供的示例 C 应用程序，并使用 gulp 将此应用程序部署到 Raspberry Pi 3 开发板。 此示例应用程序每隔两秒让连接到板的 LED 闪烁一次。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 61a0ef0a262d4a81fd6c1012fcc2c96569a9dda4
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 5b16230178fa82c7f227e3e3f8742fa16b00c719
 
 
 ---
@@ -153,6 +153,6 @@ LED 闪烁 20 次后，示例应用程序会自动终止。 如果未看到 LED 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

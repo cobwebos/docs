@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions 触发器和绑定 | Microsoft Docs"
-description: "了解如何在 Azure Functions 中使用触发器和绑定。"
+title: "使用 Azure Functions 中的触发器和绑定 | Microsoft 文档"
+description: "了解如何使用 Azure Functions 中的触发器和绑定将代码执行连接到联机事件和基于云的服务。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -14,17 +14,17 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: ee24bcff625c5ea28dbf3cbc5332078721544ddc
-ms.openlocfilehash: ef6f3de0da6e051826bcb9bf4a6ebaa78fbaac7c
+ms.sourcegitcommit: b7ea1e3a72a9dc6f4f9ca9d2d9d6f8c9b1564972
+ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
 
 
 ---
 
-# <a name="azure-functions-triggers-and-bindings-developer-reference"></a>Azure Functions 触发器和绑定开发人员参考
-本主题提供有关触发器和绑定的常规参考。 其中包含一些受所有绑定类型支持的高级绑定功能和语法。  
+# <a name="learn-how-to-work-with-triggers-and-bindings-in-azure-functions"></a>了解如何使用 Azure Functions 中的触发器和绑定 
+本主题介绍如何使用 Azure Functions 中的触发器和绑定将代码连接到各种触发器和 Azure 服务以及其他基于云的服务。 其中专门介绍了一些受所有绑定类型支持的高级绑定功能和语法。  
 
 有关使用特定类型的触发器或绑定的详细信息，请参阅以下参考主题之一：
 
@@ -389,6 +389,6 @@ public static async Task Run(string input, Binder binder)
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

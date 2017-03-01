@@ -12,21 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 01/20/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57851e6dc52e331eefde0a940987d2a68f98f0bf
+ms.sourcegitcommit: ec9e12667bc82043fbdc0b3f113533cf518f39be
+ms.openlocfilehash: 9593f49d98794e72728e0683e34a407e39144a5d
 
 
 ---
 # <a name="how-to-use-in-role-cache-for-azure-cache"></a>如何使用适用于 Azure Cache 的角色中缓存
-本指南说明如何开始使用**适用于 Azure Cache 的角色中缓存**。 相关示例用 C\# 代码编写且使用 .NET API。 涉及的应用场景包括**配置缓存群集**、**配置缓存客户端**、**在缓存中添加和删除对象、在缓存中存储 ASP.NET 会话状态**以及**使用缓存启用 ASP.NET 页面输出缓存**。 有关使用角色中缓存的详细信息，请参阅[后续步骤][后续步骤]部分。
-
 > [!IMPORTANT]
-> 按照去年的 [公告](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)，将于 2016 年 11 月 30 日停用 Azure 托管缓存服务和 Azure 角色中缓存服务。 我们建议使用 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)。 有关迁移的信息，请参阅 [从托管缓存服务迁移到 Azure Redis 缓存](../redis-cache/cache-migrate-to-redis.md)。
+> 按照去年的[公告](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)，自 2016 年 11 月 30 日起**已停用** Azure 托管缓存服务和 Azure 角色中缓存服务。 我们建议使用 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)。 有关迁移的信息，请参阅 [从托管缓存服务迁移到 Azure Redis 缓存](../redis-cache/cache-migrate-to-redis.md)。
 > 
 > 
+
+本指南说明如何开始使用**适用于 Azure Cache 的角色中缓存**。 相关示例用 C\# 代码编写且使用 .NET API。 涉及的应用场景包括**配置缓存群集**、**配置缓存客户端**、**在缓存中添加和删除对象、在缓存中存储 ASP.NET 会话状态**以及**使用缓存启用 ASP.NET 页面输出缓存**。 有关使用角色中缓存的详细信息，请参阅[延伸阅读][Next Steps]部分。
+
+
 
 <a name="what-is"></a>
 
@@ -62,7 +64,7 @@ ms.openlocfilehash: 57851e6dc52e331eefde0a940987d2a68f98f0bf
 * 可以选择在单个缓存上配置高可用性。
 * 使用扩展的缓存功能，例如区域、标记和通知。
 
-本指南提供了角色中缓存的入门概述。 有关超出本入门指南范围的那些功能的更多详细信息，请参阅[角色中缓存概述][角色中缓存概述]。
+本指南提供了角色中缓存的入门概述。 若要详细了解未包括在本入门指南中的其他功能，请参阅[角色中缓存概述][Overview of In-Role Cache]。
 
 <a name="getting-started-cache-role-instance"></a>
 
@@ -74,8 +76,8 @@ ms.openlocfilehash: 57851e6dc52e331eefde0a940987d2a68f98f0bf
 
 若要在角色实例中使用缓存，你需要配置缓存群集，然后配置缓存客户端以便它们可以访问缓存群集。
 
-* [配置缓存群集配置缓存群集][配置缓存群集]
-* [配置缓存客户端][配置缓存客户端]
+* [配置缓存群集][Configure the cache cluster]
+* [配置缓存客户端][Configure the cache clients]
 
 <a name="enable-caching"></a>
 
@@ -106,7 +108,7 @@ ms.openlocfilehash: 57851e6dc52e331eefde0a940987d2a68f98f0bf
 
 缓存的大小由角色的 VM 大小、角色的实例计数以及缓存群集是配置为专用角色还是并置角色缓存群集共同决定。
 
-> 本部分提供了有关配置缓存大小的简单概述。 有关缓存大小及其他容量规划注意事项的详细信息，请参阅[角色中缓存容量规划注意事项][角色中缓存容量规划注意事项]。
+> 本部分提供了有关配置缓存大小的简单概述。 若要详细了解缓存大小及其他容量规划注意事项，请参阅[角色中缓存容量规划注意事项][In-Role Cache Capacity Planning Considerations]。
 > 
 > 
 
@@ -125,11 +127,11 @@ VM 大小的总内存如下：
 * **大型**：7 GB
 * **超大型**：14 GB
 
-> 这些内存大小表示可用于跨 OS、缓存进程、缓存数据和应用程序共享的 VM 的内存总量。 有关配置虚拟机大小的详细信息，请参阅[如何配置虚拟机大小][如何配置虚拟机大小]。 请注意，**特小型** VM 大小不支持缓存。
+> 这些内存大小表示可用于跨 OS、缓存进程、缓存数据和应用程序共享的 VM 的内存总量。 有关配置虚拟机大小的详细信息，请参阅[如何配置虚拟机大小][How to Configure Virtual Machine Sizes]。 请注意，**特小型** VM 大小不支持缓存。
 > 
 > 
 
-在指定**并置角色**缓存后，通过获取指定百分比的虚拟机内存可确定缓存大小。 在指定**专用角色**缓存后，虚拟机的所有可用内存均用于缓存。 如果配置了两个角色实例，将使用虚拟机的组合内存。 这构成了缓存群集，其中的可用缓存内存分布在多个角色实例上，但对缓存的客户端显示为单个资源。 配置其他角色实例会以相同方式增加缓存大小。 若要确定设置所需大小的缓存所需的设置，可以使用[角色中缓存容量规划注意事项][角色中缓存容量规划注意事项]中的容量规划电子表格。
+在指定**并置角色**缓存后，通过获取指定百分比的虚拟机内存可确定缓存大小。 在指定**专用角色**缓存后，虚拟机的所有可用内存均用于缓存。 如果配置了两个角色实例，将使用虚拟机的组合内存。 这构成了缓存群集，其中的可用缓存内存分布在多个角色实例上，但对缓存的客户端显示为单个资源。 配置其他角色实例会以相同方式增加缓存大小。 若要确定预配所需大小的缓存所需的设置，可以使用[角色中缓存容量规划注意事项][In-Role Cache Capacity Planning Considerations]中的容量规划电子表格。
 
 在配置缓存群集后，可以配置缓存客户端以允许访问缓存。
 
@@ -150,7 +152,7 @@ VM 大小的总内存如下：
 
 NuGet 包可执行多项操作：将所需配置添加到角色的配置文件中，将缓存客户端诊断级别设置添加到 Azure 应用程序的 ServiceConfiguration.cscfg 文件中，并添加所需的程序集引用。
 
-> 对于 ASP.NET Web 角色，缓存 NuGet 包还将两个注释掉的节添加到 web.config 中。 第一个节允许会话状态存储在缓存中，第二个节启用 ASP.NET 页面输出缓存。 有关详细信息，请参阅[如何在缓存中存储 ASP.NET 会话状态]和[如何在缓存中存储 ASP.NET 页面输出缓存][如何在缓存中存储 ASP.NET 页面输出缓存]。
+> 对于 ASP.NET Web 角色，缓存 NuGet 包还将两个注释掉的节添加到 web.config 中。 第一个节允许会话状态存储在缓存中，第二个节启用 ASP.NET 页面输出缓存。 有关详细信息，请参阅[如何在缓存中存储 ASP.NET 会话状态]和[如何在缓存中存储 ASP.NET 页面输出缓存][How To: Store ASP.NET Page Output Caching in the Cache]。
 > 
 > 
 
@@ -199,7 +201,7 @@ NuGet 包还将 **ClientDiagnosticLevel** 设置添加到 ServiceConfiguration.c
       </ConfigurationSettings>
     </Role>
 
-> 角色中缓存同时提供了缓存服务器和缓存客户端诊断级别。 诊断级别是配置为缓存收集的诊断信息级别的单个设置。 有关详细信息，请参阅[角色中缓存疑难解答和诊断][角色中缓存故障排除和诊断]
+> 角色中缓存同时提供了缓存服务器和缓存客户端诊断级别。 诊断级别是配置为缓存收集的诊断信息级别的单个设置。 有关详细信息，请参阅[角色中缓存疑难解答和诊断][Troubleshooting and Diagnostics for In-Role Cache]
 > 
 > 
 
@@ -223,11 +225,11 @@ NuGet 包还添加对以下程序集的引用：
 ## <a name="working-with-caches"></a>使用缓存
 本节中的步骤介绍如何使用缓存执行常见任务。
 
-* [如何创建 DataCache 对象][如何创建 DataCache 对象]
-* [如何从缓存添加和检索对象][如何在缓存中添加和检索对象]
-* [如何在缓存中指定对象的有效期][如何在缓存中指定对象的有效期]
+* [如何创建 DataCache 对象][How To: Create a DataCache Object]
+* [如何在缓存中添加和检索对象][How To: Add and Retrieve an Object from the Cache]
+* [如何在缓存中指定对象的有效期][How To: Specify the Expiration of an Object in the Cache]
 * [如何在缓存中存储 ASP.NET 会话状态][如何在缓存中存储 ASP.NET 会话状态]
-* [如何在缓存中存储 ASP.NET 页面输出缓存][如何在缓存中存储 ASP.NET 页面输出缓存]
+* [如何在缓存中存储 ASP.NET 页面输出缓存][How To: Store ASP.NET Page Output Caching in the Cache]
 
 <a name="create-cache-object"></a>
 
@@ -236,7 +238,7 @@ NuGet 包还添加对以下程序集的引用：
 
     using Microsoft.ApplicationServer.Caching;
 
-> 如果在安装了添加必要引用的 Caching NuGet 包后，Visual Studio 仍不能识别 using 语句中的类型，请确保项目的目标配置文件是 .NET Framework 4.0 或更高版本，并确保选择没有指定**客户端配置文件**的配置文件之一。 有关配置缓存客户端的说明，请参阅[配置缓存客户端][配置缓存客户端]。
+> 如果在安装了添加必要引用的 Caching NuGet 包后，Visual Studio 仍不能识别 using 语句中的类型，请确保项目的目标配置文件是 .NET Framework 4.0 或更高版本，并确保选择没有指定**客户端配置文件**的配置文件之一。 有关配置缓存客户端的说明，请参阅[配置缓存客户端][Configure the cache clients]。
 > 
 > 
 
@@ -315,7 +317,7 @@ NuGet 包还添加对以下程序集的引用：
 <a name="store-session"></a>
 
 ## <a name="how-to-store-aspnet-session-state-in-the-cache"></a>如何在缓存中存储 ASP.NET 会话状态
-用于角色中缓存的会话状态提供程序是用于 ASP.NET 应用程序的进程外存储机制。 此提供程序允许你将会话状态存储在 Azure 缓存中而非内存或 SQL Server 数据库中。 若要使用缓存会话状态提供程序，请首先配置缓存群集，然后使用 Caching NuGet 包配置用于缓存的 ASP.NET 应用程序，如[角色中缓存入门][角色中缓存入门]中所述。 在安装 Caching NuGet 包时，它会在 web.config 中添加一个包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于角色中缓存的会话状态提供程序。
+用于角色中缓存的会话状态提供程序是用于 ASP.NET 应用程序的进程外存储机制。 此提供程序允许你将会话状态存储在 Azure 缓存中而非内存或 SQL Server 数据库中。 若要使用 Caching 会话状态提供程序，请首先配置缓存群集，然后使用 Caching NuGet 包配置用于 Caching 的 ASP.NET 应用程序，如[角色中缓存入门][Getting Started with In-Role Cache]中所述。 在安装 Caching NuGet 包时，它会在 web.config 中添加一个包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于角色中缓存的会话状态提供程序。
 
     <!--Uncomment this section to use In-Role Cache for session state caching
     <system.web>
@@ -330,18 +332,18 @@ NuGet 包还添加对以下程序集的引用：
       </sessionState>
     </system.web>-->
 
-> 如果安装 Caching NuGet 包后，web.config 没有包含此注释掉的节，请确保从[安装 NuGet 包管理器][安装 NuGet 包管理器]安装了最新的 NuGet 包管理器，然后卸载并重新安装该包。
+> 如果在安装 Caching NuGet 包后，web.config 没有包含此注释掉的部分，请确保从[安装 NuGet 包管理器][NuGet Package Manager Installation]安装了最新的 NuGet 包管理器，然后卸载并重新安装该包。
 > 
 > 
 
 若要启用用于角色中缓存的会话状态提供程序，请取消注释指定的节。 在提供的代码段中指定了默认缓存。 若要使用不同的缓存，请在 **cacheName** 属性中指定所需缓存。
 
-有关使用 Caching 服务会话状态提供程序的详细信息，请参阅[用于角色中缓存的会话状态提供程序][用于角色中缓存的会话状态提供程序]。
+有关使用 Caching 服务会话状态提供程序的详细信息，请参阅[用于角色中缓存的会话状态提供程序][Session State Provider for In-Role Cache]。
 
 <a name="store-page"></a>
 
 ## <a name="how-to-store-aspnet-page-output-caching-in-the-cache"></a>如何在缓存中存储 ASP.NET 页面输出缓存
-用于角色中缓存的输出缓存提供程序是适用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 若要使用输出缓存提供程序，请首先配置缓存群集，然后使用 Caching NuGet 包配置用于缓存的 ASP.NET 应用程序，如[角色中缓存入门][角色中缓存入门]中所述。 在安装 Caching NuGet 包时，它会在 web.config 中添加以下包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于角色中缓存的输出缓存提供程序。
+用于角色中缓存的输出缓存提供程序是适用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 若要使用输出缓存提供程序，请首先配置缓存群集，然后使用 Caching NuGet 包配置用于 Caching 的 ASP.NET 应用程序，如[角色中缓存入门][Getting Started with In-Role Cache]中所述。 在安装 Caching NuGet 包时，它会在 web.config 中添加以下包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于角色中缓存的输出缓存提供程序。
 
     <!--Uncomment this section to use In-Role Cache for output caching
     <caching>
@@ -356,7 +358,7 @@ NuGet 包还添加对以下程序集的引用：
       </outputCache>
     </caching>-->
 
-> 如果安装 Caching NuGet 包后，web.config 没有包含此注释掉的节，请确保从[安装 NuGet 包管理器][安装 NuGet 包管理器]安装了最新的 NuGet 包管理器，然后卸载并重新安装该包。
+> 如果在安装 Caching NuGet 包后，web.config 没有包含此注释掉的部分，请确保从[安装 NuGet 包管理器][NuGet Package Manager Installation]安装了最新的 NuGet 包管理器，然后卸载并重新安装该包。
 > 
 > 
 
@@ -366,39 +368,39 @@ NuGet 包还添加对以下程序集的引用：
 
     <%@ OutputCache Duration="60" VaryByParam="*" %>
 
-在此示例中，缓存的页面数据将保留在缓存中 60 秒，并且将为每个参数组合缓存不同版本的页面。 有关可用选项的详细信息，请参阅 [OutputCache 指令][OutputCache 指令]。
+在此示例中，缓存的页面数据将保留在缓存中 60 秒，并且将为每个参数组合缓存不同版本的页面。 有关可用选项的详细信息，请参阅 [OutputCache 指令][OutputCache Directive]。
 
-有关使用用于角色中缓存的输出缓存提供程序的详细信息，请参阅[用于角色中缓存的输出缓存提供程序][用于角色中缓存的输出缓存提供程序]。
+若要详细了解如何使用用于角色中缓存的输出缓存提供程序，请参阅[用于角色中缓存的输出缓存提供程序][Output Cache Provider for In-Role Cache]。
 
 <a name="next-steps"></a>
 
 ## <a name="next-steps"></a>后续步骤
 现在，您已了解角色中缓存的基础知识，单击下面的链接可了解如何执行更复杂的缓存任务。
 
-* 参阅 MSDN 参考：[角色中缓存][角色中缓存]
-* 了解如何迁移到角色中缓存：[迁移到角色中缓存][迁移到角色中缓存]
-* 查看示例：[角色中缓存示例][角色中缓存示例]
-* 观看 TechEd 2013 上针对角色中缓存的[最高性能：使用 Azure 缓存加速云服务应用程序][最高性能：使用 Azure Caching 让你的云服务应用程序提速]会话
+* 参阅 MSDN 参考：[角色中缓存][In-Role Cache]
+* 了解如何迁移到角色中缓存：[迁移到角色中缓存][Migrate to In-Role Cache]
+* 查看示例：[角色中缓存示例][In-Role Cache Samples]
+* 观看 TechEd 2013 上针对角色中缓存的[最高性能：使用 Azure Caching 让你的云服务应用程序提速][Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching]会话
 
 <!-- INTRA-TOPIC LINKS -->
-[后续步骤]: #next-steps
-[什么是角色中缓存？]: #what-is
-[创建 Azure 缓存]: #create-cache
-[哪种类型的缓存适合我？]: #choosing-cache
-[角色中缓存服务入门]: #getting-started-cache-service
-[准备 Visual Studio 项目以使用角色中缓存]: #prepare-vs
-[将应用程序配置为使用缓存]: #configure-app
-[角色中缓存入门]: #getting-started-cache-role-instance
-[配置缓存群集]: #enable-caching
-[配置所需的缓存大小]: #cache-size
-[配置缓存客户端]: #NuGet
-[使用缓存]: #working-with-caches
-[如何创建 DataCache 对象]: #create-cache-object
-[如何在缓存中添加和检索对象]: #add-object
-[如何在缓存中指定对象的有效期]: #specify-expiration
+[Next Steps]: #next-steps
+[What is In-Role Cache?]: #what-is
+[Create an Azure Cache]: #create-cache
+[Which type of caching is right for me?]: #choosing-cache
+[Getting Started with the In-Role Cache Service]: #getting-started-cache-service
+[Prepare Your Visual Studio Project to Use In-Role Cache]: #prepare-vs
+[Configure Your Application to Use Caching]: #configure-app
+[Getting Started with In-Role Cache]: #getting-started-cache-role-instance
+[Configure the cache cluster]: #enable-caching
+[Configure the desired cache size]: #cache-size
+[Configure the cache clients]: #NuGet
+[Working with Caches]: #working-with-caches
+[How To: Create a DataCache Object]: #create-cache-object
+[How To: Add and Retrieve an Object from the Cache]: #add-object
+[How To: Specify the Expiration of an Object in the Cache]: #specify-expiration
 [如何在缓存中存储 ASP.NET 会话状态]: #store-session
-[如何在缓存中存储 ASP.NET 页面输出缓存]: #store-page
-[定位支持的.NET Framework 配置文件]: #prepare-vs-target-net
+[How To: Store ASP.NET Page Output Caching in the Cache]: #store-page
+[Target a Supported .NET Framework Profile]: #prepare-vs-target-net
 
 <!-- IMAGES --> 
 [RoleCache1]: ./media/cache-dotnet-how-to-use-in-role/cache8.png
@@ -412,31 +414,31 @@ NuGet 包还添加对以下程序集的引用：
 [RoleCache10]: ./media/cache-dotnet-how-to-use-in-role/cache17.png
 
 <!-- LINKS -->
-[如何配置虚拟机大小]: http://go.microsoft.com/fwlink/?LinkId=164387
-[如何以编程方式配置缓存客户端]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
-[如何以编程方式设置页面的可缓存性]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[如何以声明方式设置 ASP.NET 页面可缓存性]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
-[角色中缓存容量规划注意事项]: http://go.microsoft.com/fwlink/?LinkId=252651
-[角色中缓存示例]: http://msdn.microsoft.com/library/jj189876.aspx
-[角色中缓存]: http://go.microsoft.com/fwlink/?LinkId=252658
-[角色中缓存]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
-[最高性能：使用 Azure Caching 让你的云服务应用程序提速]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
-[迁移到角色中缓存]: http://msdn.microsoft.com/library/hh914163.aspx
-[安装 NuGet 包管理器]: http://go.microsoft.com/fwlink/?LinkId=240311
-[用于角色中缓存的输出缓存提供程序]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
-[OutputCache 指令]: http://go.microsoft.com/fwlink/?LinkId=251979
-[角色中缓存概述]: http://go.microsoft.com/fwlink/?LinkId=254172
-[用于角色中缓存的会话状态提供程序]: http://msdn.microsoft.com/library/windowsazure/gg185668.aspx
-[团队博客]: http://blogs.msdn.com/b/windowsazure/
-[角色中缓存故障排除和诊断]: http://msdn.microsoft.com/library/windowsazure/hh914135.aspx
-[Azure AppFabric 缓存：缓存会话状态]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
-[Azure 共享缓存]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
+[How to Configure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
+[How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
+[How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
+[How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[In-Role Cache Capacity Planning Considerations]: http://go.microsoft.com/fwlink/?LinkId=252651
+[In-Role Cache Samples]: http://msdn.microsoft.com/library/jj189876.aspx
+[In-Role Cache]: http://go.microsoft.com/fwlink/?LinkId=252658
+[In-Role Cache]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
+[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
+[Migrate to In-Role Cache]: http://msdn.microsoft.com/library/hh914163.aspx
+[NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
+[Output Cache Provider for In-Role Cache]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
+[OutputCache Directive]: http://go.microsoft.com/fwlink/?LinkId=251979
+[Overview of In-Role Cache]: http://go.microsoft.com/fwlink/?LinkId=254172
+[Session State Provider for In-Role Cache]: http://msdn.microsoft.com/library/windowsazure/gg185668.aspx
+[Team Blog]: http://blogs.msdn.com/b/windowsazure/
+[Troubleshooting and Diagnostics for In-Role Cache]: http://msdn.microsoft.com/library/windowsazure/hh914135.aspx
+[Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
+[Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
-[哪种 Azure 缓存产品适合我？]: cache-faq.md#which-azure-cache-offering-is-right-for-me
-
-
+[Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
 
 

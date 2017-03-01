@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a95b496d16459e415e4ece50b230615bd1bd2169
+ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
+ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
 
 
 ---
@@ -46,7 +46,7 @@ ms.openlocfilehash: a95b496d16459e415e4ece50b230615bd1bd2169
 如图表上方所述，图表中出现的成本是使用*即用即付*优惠率的评估[](https://azure.microsoft.com/offers/ms-azr-0003p/)成本。
 此外，以下未计入成本计算：
 
-* 当前 不支持 CSP 和 Dreamspark 订阅，因为 Azure 开发测试实验室使用不支持 CSP 和 Dreamspark 订阅的 [Azure 计费 API](../billing-usage-rate-card-overview.md)。
+* 当前 不支持 CSP 和 Dreamspark 订阅，因为 Azure 开发测试实验室使用不支持 CSP 和 Dreamspark 订阅的 [Azure 计费 API](../billing/billing-usage-rate-card-overview.md)。
 * 优惠费率。 目前，我们无法使用你与 Microsoft 或 Microsoft 合作伙伴协商的优惠费率（显示于订阅下方）。 我们会使用即付即用费率。
 * 税额
 * 折扣
@@ -69,6 +69,6 @@ ms.openlocfilehash: a95b496d16459e415e4ece50b230615bd1bd2169
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

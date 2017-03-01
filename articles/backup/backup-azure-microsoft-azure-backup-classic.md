@@ -1,5 +1,5 @@
 ---
-title: "准备环境以使用 Azure 备份服务器来备份工作负荷 | Microsoft Docs"
+title: "使用 Azure 备份服务器将工作负荷备份到 Azure 经典门户 | Microsoft 文档"
 description: "确保正确准备好你的环境，以使用 Azure 备份服务器来备份工作负荷"
 services: backup
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
-ms.author: jimpark;trinadhk;pullabhk; markgal
+ms.date: 01/23/2017
+ms.author: masaran;trinadhk;pullabhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff232c2f5424d1a65c11b3c58d23e2776d619ad1
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: 2d32e8bb650d682684be0e093a9f5dfd9d536a8f
 
 
 ---
@@ -27,18 +27,18 @@ ms.openlocfilehash: ff232c2f5424d1a65c11b3c58d23e2776d619ad1
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
-> 
-> 
+>
+>
 
 本文介绍如何准备环境，以使用 Azure 备份服务器来备份工作负荷。 使用 Azure 备份服务器，可以从单个控制台保护应用程序工作负荷，例如 Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange 和 Windows 客户端。
 
 > [!WARNING]
 > Azure 备份服务器继承了 Data Protection Manager (DPM) 的工作负荷备份功能。 本文提供了其中一些功能的 DPM 文档链接。 不过，Azure 备份服务器不能在磁带上提供保护，也没有与 System Center 集成。
-> 
-> 
+>
+>
 
 ## <a name="1-windows-server-machine"></a>1.Windows Server 计算机
-![步骤 1](./media/backup-azure-microsoft-azure-backup/step1.png)
+![步骤&1;](./media/backup-azure-microsoft-azure-backup/step1.png)
 
 若要启动并运行 Azure 备份服务器，第一个步骤是部署一台 Windows Server 计算机。
 
@@ -49,13 +49,13 @@ ms.openlocfilehash: ff232c2f5424d1a65c11b3c58d23e2776d619ad1
 
 > [!NOTE]
 > 建议在包含 Windows Server 2012 R2 Datacenter 的计算机上安装 Azure 备份服务器。 最新版本的 Windows 操作系统会自动安装许多必备组件。
-> 
-> 
+>
+>
 
 如果你打算在将来某个时间将此服务器加入域中，建议在安装 Azure 备份服务器之前完成域加入活动。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
 
 ## <a name="2-backup-vault"></a>2.备份保管库
-![步骤 2](./media/backup-azure-microsoft-azure-backup/step2.png)
+![步骤&2;](./media/backup-azure-microsoft-azure-backup/step2.png)
 
 无论是要将备份数据发送到 Azure，还是将其保存在本地，软件都需要连接到 Azure。 具体而言，需要将 Azure 备份服务器计算机注册到备份保管库。
 
@@ -65,34 +65,34 @@ ms.openlocfilehash: ff232c2f5424d1a65c11b3c58d23e2776d619ad1
 2. 单击“**新建**”“ > **数据服务** > ”“**恢复服务**”“ > **备份保管库** > ”“**快速创建**”。 如果有多个订阅与组织帐户相关联，请选择要与备份保管库关联的正确订阅。
 3. 在“名称”中，输入一个友好名称以标识此保管库。 这必须是每个订阅的唯一名称。
 4. 在“区域” 中，为保管库选择地理区域。 通常，保管库的区域是数据数据所有权或网络延迟约束选择的。
-   
+
     ![创建备份保管库](./media/backup-azure-microsoft-azure-backup/backup_vaultcreate.png)
 5. 单击“**创建保管库**”。 创建备份保管库可能需要一段时间。 可以在门户底部监视状态通知。
-   
+
     ![创建保管库 toast 通知](./media/backup-azure-microsoft-azure-backup/creating-vault.png)
 6. 将出现一条消息来确认保管库已成功创建，并且将在“恢复服务”页上将保管库列出为“活动”保管库。
     ![备份保管库列表](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
-   
+
    > [!IMPORTANT]
    > 确保在创建保管库后立即选择适当的存储冗余选项。 请在此[概述](../storage/storage-redundancy.md)中深入了解 [异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)选项。
-   > 
-   > 
+   >
+   >
 
 ## <a name="3-software-package"></a>3.软件包
-![步骤 3](./media/backup-azure-microsoft-azure-backup/step3.png)
+![步骤&3;](./media/backup-azure-microsoft-azure-backup/step3.png)
 
 ### <a name="downloading-the-software-package"></a>下载软件包
 类似于保管库凭据，你可以从备份保管库的“**快速启动页面**”下载适用于应用程序工作负荷的 Microsoft Azure 备份。
 
 1. 单击“**用于应用程序工作负荷（磁盘到磁盘再到云）**”。 随后你将转到“下载中心”页，可以从中下载软件包。
-   
+
     ![Microsoft Azure 备份欢迎屏幕](./media/backup-azure-microsoft-azure-backup/dpm-venus1.png)
 2. 单击“**下载**”。
-   
+
     ![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter1.png)
 3. 选择所有文件，然后单击“**下一步**”。 下载 Microsoft Azure 备份下载页中的所有文件，并将所有文件放在同一个文件夹中。
    ![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
-   
+
     由于所有文件的下载大小合计超过了 3G，在 10Mbps 下载链路上可能需要 60 分钟才能完成下载。
 
 ### <a name="extracting-the-software-package"></a>解压缩软件包
@@ -100,8 +100,8 @@ ms.openlocfilehash: ff232c2f5424d1a65c11b3c58d23e2776d619ad1
 
 > [!WARNING]
 > 至少需要有 4GB 的可用空间才能解压缩安装程序文件。
-> 
-> 
+>
+>
 
 ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
@@ -109,47 +109,47 @@ ms.openlocfilehash: ff232c2f5424d1a65c11b3c58d23e2776d619ad1
 
 ### <a name="installing-the-software-package"></a>安装软件包
 1. 单击“**Microsoft Azure 备份**”以启动安装向导。
-   
+
     ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 2. 在“欢迎”屏幕上单击“**下一步**”按钮。 随后你将转到“*先决条件检查*”部分。 在此屏幕上单击“**检查**”按钮，以确定是否符合 Azure 备份服务器的硬件和软件先决条件。 如果完全符合所有先决条件，将有一条消息指出计算机符合要求。 单击“**下一步**”按钮。
-   
+
     ![Azure 备份服务器 - 欢迎页和先决条件检查](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 3. Microsoft Azure 备份服务器需要 SQL Server Standard，而 Azure 备份服务器安装包会根据需要随附相应的 SQL Server 二进制文件。 在开始全新安装 Azure 备份服务器时，应该选择“**在此安装程序中安装新的 SQL Server 实例**”，然后单击“**检查并安装**”按钮。 成功安装必备组件后，单击“**下一步**”。
-   
+
     ![Azure 备份服务器 - SQL 检查](./media/backup-azure-microsoft-azure-backup/sql/01.png)
-   
+
     如果发生故障并且系统建议重新启动计算机，请按说明操作，然后单击“**再次检查**”。
-   
+
    > [!NOTE]
    > Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例需在本地。
-   > 
-   > 
+   >
+   >
 4. 提供 Microsoft Azure 备份服务器文件的安装位置，然后单击“**下一步**”。
-   
-    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
-   
+
+    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+
     备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
 5. 为受限的本地用户帐户提供强密码，然后单击“**下一步**”。
-   
-    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+
+    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/security-screen.png)
 6. 选择是否要使用 *Microsoft 更新*来检查更新，然后单击“**下一步**”。
-   
+
    > [!NOTE]
    > 我们建议让 Windows 更新重定向到 Microsoft 更新，此网站为 Windows 和 Microsoft Azure 备份服务器等其他产品提供了安全更新与重要更新。
-   > 
-   > 
-   
-    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+   >
+   >
+
+    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. 复查“*设置摘要*”，然后单击“**安装**”。
-   
-    ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+
+    ![Microsoft Azure 备份先决条件&2;](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. 安装将会分阶段进行。 第一个阶段，将在服务器上安装 Microsoft Azure 恢复服务代理。 向导还会检查 Internet 连接。 如果可以连接到 Internet，则你可以继续安装，否则需要提供代理详细信息以连接到 Internet。
-   
+
     下一个步骤是配置 Microsoft Azure 恢复服务代理。 在配置过程中，必须提供保管库凭据，以向备份保管库注册计算机。 还需要提供通行短语来加密/解密 Azure 与本地之间发送的数据。 你可以自动生成通行短语，或提供自己的通行短语（最少包含 16 个字符）。 请继续运行向导，直到代理已完成配置。
-   
-    ![Azure 备份服务器先决条件 2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
+
+    ![Azure 备份服务器先决条件&2;](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Microsoft Azure 备份服务器注册成功完成后，整个安装向导将继续安装和配置 SQL Server 及 Azure 备份服务器的组件。 SQL Server 组件安装完成后，将安装 Azure 备份服务器组件。
-   
+
     ![Azure 备份服务器](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 安装步骤完成后，会一同创建产品的桌面图标。 双击该图标即可启动该产品。
@@ -159,11 +159,11 @@ ms.openlocfilehash: ff232c2f5424d1a65c11b3c58d23e2776d619ad1
 
 > [!NOTE]
 > 即使你打算将数据发送到 Azure，也需要添加备份存储。 在当前的 Azure 备份服务器体系结构中，Azure 备份保管库将保存数据的*第二个*副本，而本地存储将保存第一个（必需的）备份副本。  
-> 
-> 
+>
+>
 
 ## <a name="4-network-connectivity"></a>4.网络连接
-![步骤 4](./media/backup-azure-microsoft-azure-backup/step4.png)
+![步骤&4;](./media/backup-azure-microsoft-azure-backup/step4.png)
 
 Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若要验证计算机是否已连接到 Azure，请在Azure 备份服务器 PowerShell 控制台中使用 ```Get-DPMCloudConnection``` cmdlet。 如果该 cmdlet 的输出为 TRUE，则表示已建立连接，否则表示未建立连接。
 
@@ -212,7 +212,6 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 5849b600-89cb-4995-ae9f-0188a17b4e1b
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -16,18 +16,12 @@ ms.workload: data-management
 ms.date: 08/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: ac575284544819c6bed7ef84669b2793085a3dc6
 
 
 ---
 # <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-powershell"></a>使用 PowerShell 为 Azure SQL 数据库启动计划内或计划外故障转移
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-geo-replication-failover-portal.md)
-> * [PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 本文介绍了如何使用 PowerShell 为 SQL 数据库启动计划内或计划外故障转移。 若要配置异地复制，请参阅[为 Azure SQL 数据库配置异地复制](sql-database-geo-replication-powershell.md)。
 
@@ -45,7 +39,7 @@ ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
 
 以下命令将资源组“rg2”下服务器“srv2”上名为“mydb”的数据库角色切换为主数据库。 "db2”所连接的原始主数据库在两个数据库完全同步之后切换为辅助数据库。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg2” -ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary -Failover
 
 
@@ -70,8 +64,8 @@ ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
 
 以下命令在主数据库无法使用时将名为“mydb”的数据库角色切换为主数据库。 “mydb”连接的原始主数据库将在重新联机后切换为辅助数据库。 在该时间点，同步可能导致数据丢失。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
-    $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg2” -ServerName "srv2”
+    $database | Set-AzureRmSqlDatabaseSecondary -Failover -AllowDataLoss
 
 
 
@@ -81,12 +75,12 @@ ms.openlocfilehash: a16d278262f6fb645163f8d94139c86019df0cde
 * 若要了解如何使用活动异地复制进行灾难恢复，包括恢复前后步骤和执行灾难恢复演练，请参阅[灾难恢复演练](sql-database-disaster-recovery.md)
 * 有关活动异地复制的 Sasha Nosov 博客文章，请参阅[聚焦异地复制新功能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 * 若要了解如何设计云应用程序以使用活动异地复制，请参阅[设计云应用程序以使用异地复制实现业务连续性](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* 若要了解如何通过弹性数据库池使用活动异地复制，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+* 有关将活动异地复制与弹性池配合使用的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 * 有关业务连续性概述，请参阅[业务连续性概述](sql-database-business-continuity.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

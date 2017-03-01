@@ -1,13 +1,25 @@
 ---
+title: "Azure 云服务文档 - 教程和 API 参考 | Microsoft 文档"
+description: "教程、API 参考和其他文档介绍了如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。"
+services: cloud-services
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cloud-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
+ms.sourcegitcommit: c8e0cec964b7c72e45564ff776c55be1b06bfbc1
+ms.openlocfilehash: 16bbb9953db91bfe031e5e87e14aac84d32799b3
 
 ---
 # <a name="cloud-services-documentation"></a>云服务文档
 
-云服务是平台即服务 (PaaS) 实现的一个例子。 这种技术旨在支持运行可缩放、可靠且经济高效的应用程序。 使用云服务可以享受虚拟化的好处，同时还能操控虚拟机来配置、修补和安装软件。  
+了解如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。  教程、API 参考和其他文档介绍了如何管理虚拟机主机以及配置、修补和安装软件。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -115,16 +127,10 @@ ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cloud-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载云服务文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

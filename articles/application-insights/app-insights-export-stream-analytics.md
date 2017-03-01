@@ -1,5 +1,5 @@
 ---
-title: "使用流分析处理从 Application Insights 导出的数据 | Microsoft 文档"
+title: "使用流分析从 Azure Application Insights 进行导出 | Microsoft Docs"
 description: "流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6fb4cdbbe8c334245517f2df0292ca172af5c7b
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: be47e9de14700b66a3f1c59554762303987f67be
 
 
 ---
@@ -230,7 +230,7 @@ ms.openlocfilehash: e6fb4cdbbe8c334245517f2df0292ca172af5c7b
 ## <a name="video"></a>视频
 Noam Ben Zeev 演示如何使用流分析处理导出的数据。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Export-to-Power-BI-from-Application-Insights/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
 > 
 > 
 
@@ -243,6 +243,6 @@ Noam Ben Zeev 演示如何使用流分析处理导出的数据。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

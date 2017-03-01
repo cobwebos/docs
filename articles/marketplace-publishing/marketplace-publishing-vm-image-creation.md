@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 440ca979dd8ae99e004ab856dc49c5e363bb734b
+ms.sourcegitcommit: 27f49a7c0c2736423d73930a1865f7b542f54da4
+ms.openlocfilehash: 63c1591db91a2ffeaced8ac775525291f0fd033f
 
 
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店创建虚拟机映像指南
-本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure 应用商店。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation]并行执行。
+本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，然后将其部署到 Azure 应用商店。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
 
 ## <a name="1-define-offers-and-skus"></a>1.定义产品/服务和 SKU
 在本部分中，你将了解如何定义产品/服务及其关联的 SKU。
@@ -37,8 +37,8 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
 > [!IMPORTANT]
 > **请勿在新映像版本中更改磁盘计数。** 如果必须在映像中重新配置数据磁盘，请定义新 SKU。 发布不同磁盘计数的新映像版本可能会在通过 ARM 模板和其他方案自动扩展和部署时，中断基于新映像版本的新部署。
-> 
-> 
+>
+>
 
 ### <a name="11-add-an-offer"></a>1.1 添加产品/服务
 1. 使用卖方帐户登录[发布门户][link-pubportal]。
@@ -49,11 +49,11 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 添加了产品/服务后，需要定义并标识 SKU。 客户可拥有多个产品/服务，并且每个产品/服务下面均可有多个 SKU。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。
 
 1. **添加 SKU。** SKU 需要在 URL 中使用的标识符。 该标识符在发布配置文件中必须独一无二，不过不会有标识符与其他发布者发生冲突的风险。
-   
+
    > [!NOTE]
    > 产品/服务和 SKU 标识符显示在应用商店的产品/服务 URL 中。
-   > 
-   > 
+   >
+   >
 2. **为 SKU 添加摘要说明。** 摘要说明对客户可见，因此要使它们便于阅读。 在“推送到过渡环境”阶段之前，无需锁定此信息。 到时候可随意编辑。
 3. 如果使用基于 Windows 的 SKU，请遵循建议链接来获取已批准的 Windows Server 版本。
 
@@ -66,51 +66,51 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 ### <a name="31-ensure-that-you-are-using-the-correct-base-vhds"></a>3.1 请确保使用正确的基本 VHD
 用于 VM 映像的操作系统 VHD 必须基于 Azure 批准的基本映像（包含 Windows Server 或 SQL Server）。
 
-开始时，请从位于 [Microsoft Azure 门户][link-azure-portal]的以下映像中创建 VM：
+开始时，请从位于 [Microsoft Azure 门户][link-azure-portal] 的以下映像中创建 VM：
 
 * Windows Server（[2012 R2 Datacenter][link-datactr-2012-r2]、[2012 Datacenter][link-datactr-2012]、[2008 R2 SP1][link-datactr-2008-r2]）
-* SQL Server 2014（[企业版][link-sql-2014-ent]、[标准版][link-sql-2014-std]、[Web 版][link-sql-2014-web]）
-* SQL Server 2012 SP2（[企业版][link-sql-2012-ent]、[标准版][link-sql-2012-std]、[Web 版][link-sql-2012-web]）
+* SQL Server 2014（[Enterprise][link-sql-2014-ent]、[Standard][link-sql-2014-std]、[Web][link-sql-2014-web]）
+* SQL Server 2012 SP2（[Enterprise][link-sql-2012-ent]、[Standard][link-sql-2012-std]、[Web][link-sql-2012-web]）
 
 这些链接也可以在发布门户中 SKU 页面下找到。
 
 > [!TIP]
 > 如果使用最新 Azure 门户或 PowerShell，则在 2014 年 9 月 8 日及以后发布的 Windows Server 映像已得到批准。
-> 
-> 
+>
+>
 
 ### <a name="32-create-your-windows-based-vm"></a>3.2 创建基于 Windows 的 VM
 在 Microsoft Azure 门户中，只需几个简单步骤便可以基于批准的基本映像创建 VM。 下面是过程概述：
 
 1. 在基本映像页面中，选择“创建虚拟机”可定向到新的 [Microsoft Azure 门户][link-azure-portal]。
-   
+
     ![绘制][img-acom-1]
 2. 通过要使用的 Azure 订阅的 Microsoft 帐户和密码登录该门户。
 3. 按照提示使用选择的基本映像创建 VM。 需要为 VM 提供主机名（计算机名称）、用户名（以管理员身份注册的用户）和密码。
-   
+
     ![绘制][img-portal-vm-create]
 4. 选择要部署的 VM 大小：
-   
+
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
-   
+
     b.保留“数据库类型”设置，即设置为“共享”。    如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
-   
+
     c.    有关定价信息，请参阅门户上显示的“建议定价层”选择器。 它将提供由发布者提供的三个建议大小。 （在此例中，发布者是 Microsoft。）
-   
+
     ![绘制][img-portal-vm-size]
 5. 设置属性：
-   
+
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    为进行快速部署，可以为“可选配置”和“资源组”下的属性保留默认值。
-   
+
     b.保留“数据库类型”设置，即设置为“共享”。    在“存储帐户”下，可以选择存储操作系统 VHD 的存储帐户。
-   
+
     c.    在“资源组”下，可以选择放置 VM 的逻辑组。
 6. 选择部署的“位置”：
-   
+
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    如果计划在本地开发 VHD，位置则无关紧要，因为映像将稍后上传到 Azure。
-   
+
     b.保留“数据库类型”设置，即设置为“共享”。    如果计划在 Azure 中开发映像，请考虑从开始便使用一个位于美国的 Microsoft Azure 区域。 这将加快 VHD 复制过程，Microsoft 会在你提交映像进行认证时代表你执行该过程。
-   
+
     ![绘制][img-portal-vm-location]
 7. 单击“创建” 。 开始部署 VM。 在几分钟内便会部署成功，可以开始为 SKU 创建映像。
 
@@ -119,10 +119,10 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
 > [!IMPORTANT]
 > 如果本地开始 VHD（不推荐），请参阅[本地创建虚拟机映像](marketplace-publishing-vm-image-creation-on-premise.md)。 如果在云中开发，则无需下载 VHD。
-> 
-> 
+>
+>
 
-**使用 [Microsoft Azure 门户][link-azure-portal]**通过 RDP 连接
+“使用 [Microsoft Azure 门户][link-azure-portal]通过 RDP 进行连接”
 
 1. 选择“浏览 VM” > 。
 2. 虚拟机边栏选项卡将打开。 请确保要连接的 VM 正在运行，然后从部署的 VM 列表中选择它。
@@ -131,17 +131,17 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
 **使用 PowerShell 通过 RDP 进行连接**
 
-若要将远程桌面文件下载到本地计算机，请使用 [Get-AzureRemoteDesktopFile cmdlet][link-technet-2]。 为了使用此 cmdlet，需要知道服务名称和 VM 名称。 如果已从 [Microsoft Azure 门户][link-azure-portal]创建 VM，则可在 VM 属性下找到此信息：
+要将远程桌面文件下载到本地计算机，请使用 [Get-AzureRemoteDesktopFile cmdlet][link-technet-2]。 为了使用此 cmdlet，需要知道服务名称和 VM 名称。 如果从 [Microsoft Azure 门户][link-azure-portal]创建了 VM，则可以在“VM 属性”下找到此信息：
 
 1. 在 Microsoft Azure 门户中，选择“浏览 VM” > 。
 2. 虚拟机边栏选项卡将打开。 选择部署的 VM。
 3. 一个介绍所选 VM 的边栏选项卡将打开。
 4. 单击“属性”。
 5. 域名的第一个部分是服务名。 主机名是 VM 名。
-   
+
     ![绘制][img-portal-vm-rdp]
 6. 用于将创建的 VM 的 RDP 文件下载到管理员本地桌面的 cmdlet 如下所示。
-   
+
         Get‐AzureRemoteDesktopFile ‐ServiceName “baseimagevm‐6820cq00” ‐Name “BaseImageVM” –LocalPath “C:\Users\Administrator\Desktop\BaseImageVM.rdp”
 
 有关 RDP 的详细信息，可在 MSDN 的[通过 RDP 或 SSH 连接 Azure VM](http://msdn.microsoft.com/library/azure/dn535788.aspx) 一文中找到。
@@ -171,9 +171,9 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
 * 对于 Windows，映像应“执行 sysprep 操作”，不应进行任何不支持 **sysprep** 命令的配置。
 * 可从 %windir%\System32\Sysprep 目录中运行以下命令。
-  
+
         sysprep.exe /generalize /oobe /shutdown
-  
+
   以下 MSDN 文章的步骤提供了有关如何对操作系统执行 sysprep 操作的指南：[创建 Windows Server VHD 并上传到 Azure](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4.从 VHD 部署 VM
@@ -186,7 +186,7 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 * [关于 Azure 中的 VM 映像](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>设置所需工具、PowerShell 和 Azure CLI
-* [如何设置 PowerShell](../powershell-install-configure.md)
+* [如何设置 PowerShell](/powershell/azureps-cmdlets-docs)
 * [如何设置 Azure CLI](../xplat-cli-install.md)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 创建用户 VM 映像
@@ -210,13 +210,13 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 **从最新 Azure 门户部署 VM**
 
 1. 依次转到“新建” > “计算” > “虚拟机” > “从库”。
-   
+
     ![绘制][img-manage-vm-new]
 2. 转到“我的映像”，然后选择要用于部署 VM 的 VM 映像：
-   
+
    1. 请密切注意选择的映像，因为“我的映像”视图会同时列出操作系统映像和 VM 映像。
    2. 查看磁盘数可以帮助确定所部署的映像类型，因为大多数 VM 映像都具有多个磁盘。 但是，仍可能有 VM 映像仅包含单个操作系统磁盘，从而会将“磁盘数”设置为 1。
-      
+
       ![绘制][img-manage-vm-select]
 3. 按照 VM 创建向导操作，指定 VM 名、VM 大小、位置、用户名和密码。
 
@@ -224,16 +224,16 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
 要从刚创建的一般化 VM 映像部署大型 VM，可以使用以下 cmdlet。
 
-    $img = Get‐AzureVMImage ‐ImageName "myVMImage"
+    $img = Get-AzureVMImage -ImageName "myVMImage"
     $user = "user123"
     $pass = "adminPassword123"
-    $myVM = New‐AzureVMConfig ‐Name "VMImageVM" ‐InstanceSize "Large" ‐ImageName $img.ImageName | Add‐AzureProvisioningConfig ‐Windows ‐AdminUsername $user ‐Password $pass
-    New‐AzureVM ‐ServiceName "VMImageCloudService" ‐VMs $myVM ‐Location "West US" ‐WaitForBoot
+    $myVM = New-AzureVMConfig -Name "VMImageVM" -InstanceSize "Large" -ImageName $img.ImageName | Add-AzureProvisioningConfig -Windows -AdminUsername $user -Password $pass
+    New-AzureVM -ServiceName "VMImageCloudService" -VMs $myVM -Location "West US" -WaitForBoot
 
 > [!IMPORTANT]
 > 有关其他帮助，请参考 [创建 VHD 时遇到的常见问题疑难解答]。
-> 
-> 
+>
+>
 
 ## <a name="5-obtain-certification-for-your-vm-image"></a>5.获取 VM 映像的认证
 为 Azure 应用商店准备 VM 映像的下一步是进行认证。
@@ -254,15 +254,15 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 1. 选择 SSH 身份验证模式：密码或密钥文件。
 2. 如果使用基于密码的身份验证，请输入域名系统 (DNS) 名称、用户名和密码。
 3. 如果使用密钥文件身份验证，请输入 DNS 名称、用户名和私钥位置。
-   
+
    ![Linux VM 映像的密码身份验证][img-cert-vm-pswd-lnx]
-   
+
    ![Linux VM 映像的密钥文件身份验证][img-cert-vm-key-lnx]
 
 ### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**将认证工具连接到基于 Windows 的 VM 映像**
 1. 输入完全限定的VM DNS 名称（例如 MyVMName.Cloudapp.net）。
 2. 输入用户名和密码。
-   
+
    ![Windows VM 映像的密码身份验证][img-cert-vm-pswd-win]
 
 为基于 Linux 或 Windows 的 VM 映像选择了正确的选项之后，选择“测试连接”以确保 SSH.Net 或 PowerShell 具有可用于测试的有效连接。 建立连接之后，按“下一步”以启动测试。
@@ -291,58 +291,199 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 创建的共享访问签名 URI 应符合以下要求：
 
 * 为 VHD 生成共享访问签名 URI 时，“列出”和“读取”权限已足够使用。 请不要提供“写入”或“删除”访问权限。
-* 访问的持续时间应至少是从创建共享访问签名 URI 时开始的七个工作日。
-* 要避免由于时钟偏差而导致的直接错误，请指定早于当前时间 15 分钟的时间。
+* 访问的持续时间应至少是三 (3) 周，从创建共享访问签名 URI 时算起。
+* 为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
-要创建共享访问签名 URI，可以遵循[共享访问签名，第 1 部分：了解 SAS 模型或共享访问签名][link-azure-1]和[共享访问签名，第 2 部分：创建 SAS 并将它与 Blob 服务一起使用][link-azure-2]中提供的说明。
+可以通过多种方式生成 SAS URL，以便向 Azure 应用商店共享你的 VHD。
+以下是 3 个建议的工具：
 
-如果不使用代码生成共享访问密钥，可使用存储工具，例如 [Azure 存储资源管理器][link-azure-codeplex]。
+1.  Azure 存储资源管理器
+2.  Microsoft 存储资源管理器
+3.  Azure CLI
 
-**使用 Azure 存储资源管理器生成共享访问密钥**
+**Azure 存储资源管理器（向 Windows 用户推荐）**
 
-1. 从 CodePlex 下载 [Azure 存储资源管理器][link-azure-codeplex] 6 和更高版本。
-2. 安装之后，打开该应用程序。
-3. 单击“添加帐户”。
-   
-    ![绘制][img-azstg-add]
-4. 指定存储帐户名称、存储帐户密钥和存储终结点域。 请勿选择“使用 HTTPS”。
-   
-    ![绘制][img-azstg-setup-1]
-5. 此时 Azure 存储资源管理器已连接特定存储帐户。 它将开始显示存储帐户中的所有容器。 选择已复制操作系统磁盘 VHD 文件的容器（在数据磁盘适用于方案时，该磁盘也将复制）。
-   
-    ![绘制][img-azstg-setup-2]
-6. 选择 blob 容器后，Azure 存储资源管理器开始显示容器中的文件。 选择需要提交的映像文件 (.vhd)。
-   
-    ![绘制][img-azstg-setup-3]
-7. 选择容器中的 .vhd 文件后，请单击“安全”选项卡。
-   
-    ![绘制][img-azstg-setup-4]
-8. 在“Blob 容器安全”对话框中，保留“访问级别”选项卡上的默认值，然后单击“共享访问签名”选项卡。
-   
-    ![绘制][img-azstg-setup-5]
-9. 请遵循以下步骤，为 .vhd 映像生成共享访问签名 URI：
-   
-    ![绘制][img-azstg-setup-6]
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。    **允许访问开始日期**：为了保护 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。    **允许访问结束日期**：选择“允许访问开始日期”后至少 7 至 8 天的日期。
-   
-    c.    **允许的操作**：选择“列出”和“读取”权限。
-   
-    d.单击“下一步”。    如果已正确选择 .vhd 文件，则文件显示在“要访问的 Blob 名称”中，并带有扩展名 .vhd。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。    单击“生成签名”。
-   
-    f.    在“此容器中生成的共享访问签名 URI”中，查看以下在上文中亮显的内容：
-   
-   * 请确保 URL 不以“https”开头。
-   * 请确保映像文件名称和“.vhd”均在 URI 中。
-   * 在签名末尾，确保显示“=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-     
-     g.    若要确保生成的共享访问签名 URI 可运行，请单击“在浏览器中测试”。 这应开始下载过程。
+下面是使用 Azure 存储资源管理器生成 SAS URL 的步骤
+
+1. 从 CodePlex 下载 [Azure 存储资源管理器 6 预览版 3](https://azurestorageexplorer.codeplex.com/)。 转到 [Azure 存储资源管理器 6 预览版](https://azurestorageexplorer.codeplex.com/)，单击“下载”。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_01.png)
+
+2. 下载 [AzureStorageExplorer6Preview3.zip](https://azurestorageexplorer.codeplex.com/downloads/get/891668) 并在解压缩后安装。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_02.png)
+
+3. 安装之后，打开该应用程序。
+4. 单击“添加帐户”。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_03.png)
+
+5. 指定存储帐户名称、存储帐户密钥和存储终结点域。 这是 Azure 订阅中的存储帐户，你通过其将 VHD 保存在 Azure 门户中。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_04.png)
+
+6. Azure 存储资源管理器连接到特定存储帐户后，它将开始显示该存储帐户中的所有容器。 选择已复制操作系统磁盘 VHD 文件的容器以及数据磁盘（如果这些磁盘适用于方案）。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_05.png)
+
+7. 选择 blob 容器后，Azure 存储资源管理器开始显示容器中的文件。 选择需要提交的映像文件 (.vhd)。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_06.png)
+
+8.  选择容器中的 .vhd 文件后，请单击“安全”选项卡。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_07.png)
+
+9.  在“Blob 容器安全”对话框中，保留“访问级别”选项卡上的默认值，然后单击“共享访问签名”选项卡。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_08.png)
+
+10. 请遵循以下步骤，为 .vhd 映像生成共享访问签名 URI：
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **允许访问开始日期**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+
+    b. **允许访问结束日期**：选择“允许访问开始日期”后至少 3 周的日期。
+
+    c. **允许的操作**：选择“列出”和“读取”权限。
+
+    d.单击“下一步”。 如果已正确选择 .vhd 文件，则文件显示在“要访问的 Blob 名称”中，并带有扩展名 .vhd。
+
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“生成签名”。
+
+    f. 在“此容器中生成的共享访问签名 URI”中，查看以下在上文中亮显的内容：
+
+        - 请确保映像文件名称和“.vhd”均在 URI 中。
+        - 在签名末尾，确保显示“=rl”。 这显示“读取”和“列出”访问权限已成功提供。
+        - 在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
+
+11. 若要确保生成的共享访问签名 URI 可运行，请单击“在浏览器中测试”。 这应开始下载过程。
+
+12. 复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+
+13. 对 SKU 中的每个 VHD 重复步骤 6-10。
+
+**Microsoft Azure 存储资源管理器 (Windows/MAC/Linux)**
+
+下面是使用 Microsoft Azure 存储资源管理器生成 SAS URL 的步骤
+
+1.  从 [http://storageexplorer.com/](http://storageexplorer.com/) 网站下载 Microsoft Azure 存储资源管理器。 转到 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/releasenotes.html)，单击“下载 Windows 版”。
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
+
+2.  安装之后，打开该应用程序。
+
+3.  单击“添加帐户”。
+
+4.  登录到你的帐户，在订阅中配置 Microsoft Azure 存储资源管理器
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
+
+5.  转到存储帐户并选择“容器”
+
+6.  选择“获取共享访问签名...” （通过右键单击“容器”）
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
+
+7.  按照以下所示更新“开始时间”、“到期时间”和“权限”
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+
+    b.保留“数据库类型”设置，即设置为“共享”。  **到期时间**：选择至少为“开始时间”后 3 周的日期。
+
+    c.  **权限**：选择“列出”和“读取”权限
+
+8.  复制容器共享访问签名 URI
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_14.png)
+
+    生成的 SAS URL 用于容器级别，现在我们需要在其中添加 VHD 名称。
+
+    容器级别 SAS URL 的格式：`https://testrg009.blob.core.windows.net/vhds?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+
+    在 SAS URL 中的容器名称后插入 VHD 名称，如下所示：`https://testrg009.blob.core.windows.net/vhds/<VHD NAME>?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+
+    示例：
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_15.png)
+
+    TestRGVM201631920152.vhd 为 VHD 名称，则 VHD SAS URL 将为 `https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+
+    - 请确保映像文件名称和“.vhd”均在 URI 中。
+    - 在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
+    - 在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
+
+9.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
+
 10. 复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+
 11. 对 SKU 中的每个 VHD 重复这些步骤。
+
+**Azure CLI（推荐用于非 Windows 和持续集成）**
+
+下面是使用 Azure CLI 生成 SAS URL 的步骤
+
+1.  从[此处](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)下载 Microsoft Azure CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
+
+2.  下载后，请安装
+
+3.  使用以下代码创建一个 PowerShell 文件并将它保存在本地
+
+          $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
+          azure storage container list vhds -c $conn
+          azure storage container sas create vhds rl <Permission End Date> -c $conn --start <Permission Start Date>  
+
+    更新上述代码中的以下参数
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **`<StorageAccountName>`**：指定存储帐户名称
+
+    b.保留“数据库类型”设置，即设置为“共享”。 **`<Storage Account Key>`**：指定存储帐户密钥
+
+    c. **`<Permission Start Date>`**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016
+
+    d.单击“下一步”。 **`<Permission End Date>`**：选择至少为“开始日期”后 3 周的日期。 则值应为“11/02/2016”。
+
+    以下是更新适当参数后的代码示例
+
+          $conn="DefaultEndpointsProtocol=https;AccountName=st20151;AccountKey=TIQE5QWMKHpT5q2VnF1bb+NUV7NVMY2xmzVx1rdgIVsw7h0pcI5nMM6+DVFO65i4bQevx21dmrflA91r0Vh2Yw=="
+          azure storage container list vhds -c $conn
+          azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
+
+4.  在“以管理员身份运行”模式下打开 Powershell 编辑器并打开步骤 #3 中的文件。
+
+5.  运行脚本，脚本将为你提供容器级别访问权限所对应的 SAS URL
+
+    以下是 SAS 签名的输出，请将突出显示部分复制到记事本中
+
+    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
+
+6.  现在，你将获得容器级别 SAS URL，并需要在其中添加 VHD 名称。
+
+    容器级别 SAS URL #
+
+    `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+
+7.  在 SAS URL 中的容器名称后插入 VHD 名称，如下所示：`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+
+    示例：
+
+    TestRGVM201631920152.vhd 为 VHD 名称，则 VHD SAS URL 将为
+
+    `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+
+    - 请确保映像文件名称和“.vhd”均在 URI 中。
+    -   在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
+    -   在签名中间，确保显示“sr=c”。 这表示你具有容器级访问权限
+
+8.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
+
+9.  复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+
+10. 对 SKU 中的每个 VHD 重复这些步骤。
+
 
 ### <a name="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 在发布门户中提供有关 VM 映像的信息并请求认证
 创建了产品/服务和 SKU 之后，应输入与该 SKU 关联的映像详细信息：
@@ -361,11 +502,23 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 9. 在“OS VHD URL”框中，输入为操作系统 VHD 创建的共享访问签名 URI。
 10. 如果存在与此 SKU 关联的数据磁盘，请选择要在部署时用于装载此数据磁盘的逻辑单元号 (LUN)。
 11. 在“LUN X VHD URL”框中，输入为第一个数据 VHD 创建的共享访问签名 URI。
-    
+
     ![绘制](media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-3.png)
 
+
+## <a name="common-sas-url-issues--fixes"></a>常见的 SAS URL 问题和修补程序
+
+|问题|失败消息|解决方法|文档链接|
+|---|---|---|---|
+|复制映像时失败 - 在 SAS url 中找不到 "?"|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用建议的工具更新 SAS Url|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 -“st”和“se”参数不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|使用其开始和结束日期更新 SAS Url|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - "sp = rl" 不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob|使用设置为“读取”和“列出”的权限更新 SAS Url|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - SAS url 的 vhd 名称中包含空格|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|将 SAS Url 更新为不包含空格|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像时失败 - SAS Url 授权错误|失败：复制映像。 由于授权错误，无法下载 blob|重新生成 SAS Url|[https://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+
+
 ## <a name="next-step"></a>后续步骤
-填写 SKU 详细信息后，可前进到 [Azure 应用商店市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，然后执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure 应用商店，使公众都可以看到和购买。  
+填写完 SKU 详细信息后，可前进到 [Azure 应用商店市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，然后执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure 应用商店，使公众都可以看到和购买。  
 
 ## <a name="see-also"></a>另请参阅
 * [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
@@ -376,12 +529,6 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 [img-portal-vm-location]:media/marketplace-publishing-vm-image-creation/vm-image-portal-location.png
 [img-portal-vm-rdp]:media/marketplace-publishing-vm-image-creation/vm-image-portal-rdp.png
 [img-azstg-add]:media/marketplace-publishing-vm-image-creation/vm-image-storage-add.png
-[img-azstg-setup-1]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup.png
-[img-azstg-setup-2]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-2.png
-[img-azstg-setup-3]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-3.png
-[img-azstg-setup-4]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-4.png
-[img-azstg-setup-5]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-5.png
-[img-azstg-setup-6]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-6.png
 [img-manage-vm-new]:media/marketplace-publishing-vm-image-creation/vm-image-manage-new.png
 [img-manage-vm-select]:media/marketplace-publishing-vm-image-creation/vm-image-manage-select.png
 [img-cert-vm-key-lnx]:media/marketplace-publishing-vm-image-creation/vm-image-certification-keyfile-linux.png
@@ -423,6 +570,6 @@ Azure 应用商店中的所有映像必须可采用一般形式重复使用。 �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

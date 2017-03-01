@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Lake 中可扩展的数据科学：端到端演练 | Microsoft Docs"
+title: "Azure Data Lake 中可缩放的数据科研：端到端演练 | Microsoft 文档"
 description: "如何使用 Azure Data Lake 对数据集进行数据浏览和二进制分类任务。"
 services: machine-learning
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 01/30/2017
 ms.author: bradsev;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8c625752b40cffd0e7f791bd3a360f4bfb4622e7
+ms.sourcegitcommit: 34441f27e842214d009d64fbc658ff5b7c05df5d
+ms.openlocfilehash: e2aab1363c6a2ffef529f0708cb3bec9c095cf59
 
 
 ---
-# <a name="scalable-data-science-in-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
+# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它将以端到端的方式指导用户完成从数据采集到模型定型，再到部署发布模型的 Web 服务的 [Team Data Science Process](http://aka.ms/datascienceprocess)。
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
@@ -53,14 +53,6 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 > 
 > 
 
-* 注册 Azure Data Lake 预览版
-
-> [!NOTE]
-> 你需要先获得批准才能使用 Azure Data Lake Store (ADLS) 和 Azure Data Lake Analytics (ADLA)，因为这些服务还处于预览版阶段。 创建第一个 ADLS 或 ADLA 时，系统会提示你进行注册。 若要注册，请单击“注册以使用预览版”，并阅读协议，然后单击“确定”。 例如，此处是 ADLS 注册页面：
-> 
-> 
-
- ![2](./media/machine-learning-data-science-process-data-lake-walkthrough/2-ADLA-preview-signup.PNG)
 
 ## <a name="prepare-data-science-environment-for-azure-data-lake"></a>为 Azure Data Lake 准备数据科学环境
 若要为此演练准备数据科学环境，请创建以下资源：
@@ -72,13 +64,15 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 * 用于 Visual Studio 的 Azure Data Lake 工具（推荐）
 
 本部分说明了每种资源的创建方法。 如果选择将 Azure 机器学习与 Hive 表配合使用以构建模型，而不使用 Python，那么还需预配 HDInsight (Hadoop) 群集。 在以下相应部分中会对此备选过程进行描述。
-<br/>
 
-> AZURE.NOTE **Azure Data Lake Store** 可创建为默认存储，它可单独创建，也可在创建 **Azure Data Lake Analytics** 时创建。 单独创建每种资源的方法将在下面进行说明，但是不需要单独创建 Data Lake 存储帐户。
-> <br/>
+
+> [!NOTE]
+> **Azure Data Lake Store** 可创建为默认存储，它可单独创建，也可在创建 **Azure Data Lake Analytics** 时创建。 单独创建每种资源的方法将在下面进行说明，但是不需要单独创建 Data Lake 存储帐户。
+>
 > 
-> ### <a name="create-an-azure-data-lake-store"></a>创建 Azure Data Lake Store
-> 
+
+### <a name="create-an-azure-data-lake-store"></a>创建 Azure Data Lake Store
+
 
 从 [Azure 门户](http://portal.azure.com)创建 ADLS。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。 请务必在此处所述的“可选配置”边栏选项卡的“DataSource”边栏选项卡中设置群集 AAD 标识。 
 
@@ -695,6 +689,6 @@ Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

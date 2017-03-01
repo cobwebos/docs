@@ -48,7 +48,7 @@ Azure 仅支持固定的 VHD 格式虚拟硬盘。 若要在 Azure 中使用 VHD
 
 创建虚拟机时，需要指定虚拟机所属的网络。 不能将现有虚拟机加入虚拟网络。 不过，将虚拟硬盘 (VHD) 与现有虚拟机分离即可解决此问题，然后可以用于创建具有所需网络配置的新虚拟机。
 
-## <a name="how-can-i-access-my-virtual-machine"></a>如何访问虚拟机？
+## <a name="how-can-i-access--my-virtual-machine"></a>如何访问虚拟机？
 你需要通过适用于 Windows VM 的远程桌面连接或适用于 Linux VM 的安全外壳 (SSH) 建立登录虚拟机所需的远程连接。 有关说明，请参阅：
 
 * [如何登录到运行 Windows Server 的虚拟机](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 除非将服务器配置为远程桌面服务会话主机，否则最多支持 2 个并发连接。  

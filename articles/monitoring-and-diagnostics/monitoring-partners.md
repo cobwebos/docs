@@ -12,21 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 2/10/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ebbd4166bc3f76c91823ee17b8b9c460feb9e194
+ms.sourcegitcommit: 7a3b8c4d373a97db1a1fae4af6d6ee4d8c35d4c4
+ms.openlocfilehash: ae3d9963045749f5487b4baac77e5eacc16ac9fc
 
 
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
 | --- | --- | --- |
-| [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] |[![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] |[![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |[![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |[![Partner Logo][datadog-logo]<br/>**DataDog**][datadog-anchor] |
-| [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |[![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |[![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] |
-| [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |[![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] |[![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] |
+| [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
+| [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |
+| [![Partner Logo][datadog-logo]<br/>**DataDog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |
+| [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] | [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] |
+| [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 Alert Logic Log Manager 收集 VM、应用程序和 Azure 平台日志进行安全分析和数据保留。 这包括通过 Azure 监视器 API 收集的 Azure 审核日志。  使用这些信息可以检测不法行为，确保满足合规性要求。
@@ -42,6 +43,11 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 可以在 Azure 监视器警报上创建 JIRA 票证。
 
 [查看相关文档。][atlassian-doc]
+
+## <a name="cloudhealth"></a>CloudHealth
+借助专为显著省时省钱而构建的平台整合云并实现云的自动化。 凭借无与伦比的可视性、直观的优化和可靠的管理实践，CloudHealth 将重新定义云管理。 通过 Cloudhealth 平台，企业和 MSP 能够最大限度地提高云投资的回报率，并在成本、使用率、性能和安全性方面制定可靠的决策。
+
+[了解详细信息。][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 CloudMonix 为 Microsoft Azure Platform 提供监视、自动化和自我修复服务。
@@ -75,9 +81,14 @@ OpsGenie 充当 Azure 所生成的警报的发送器。 OpsGenie 根据值勤计
 [查看相关文档。][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提供一流的支持。 如今，除了 Azure 服务的平台级指标通知以外，PagerDuty 还支持 Azure 应用程序的 Azure 监视器警报通知、自动缩放通知和审核日志事件通知。 这些增强功能使用户能够进一步洞察核心 Azure 平台，充分使用 PagerDuty 的实时响应事件管理功能。 通过 Webhook 可以实现扩展的 Azure 集成，以便快速轻松地完成设置和自定义。
+PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提供一流的支持。 如今，除了 Azure 服务的平台级指标通知以外，PagerDuty 还支持  Azure Monitor 警报通知、自动缩放通知和审核日志事件通知。 这些增强功能使用户能够进一步洞察核心 Azure 平台，充分使用 PagerDuty 的实时响应事件管理功能。 通过 Webhook 可以实现扩展的 Azure 集成，以便快速轻松地完成设置和自定义。
 
 [查看相关文档。][pagerduty-doc]
+
+## <a name="sciencelogic"></a>ScienceLogic
+ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任何技术。  ScienceLogic 在一个平台中提供必要的规模、安全性、自动化和复原性，简化不断扩展的管理任务（管理持续运行的 IT 资源、服务和应用程序）。  ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。  ScienceLogic 提供 Azure 服务和资源的实时可见性，让你了解某些内容出现故障并能更快解决。 还可将 Azure 与其他云、数据中心系统以及服务一起管理。
+
+[了解详细信息。][sciencelogic-doc]
 
 ## <a name="splunk-add-on-for-microsoft-cloud-services"></a>用于 Microsoft 云服务的 Splunk 附加设备
 用于 Microsoft 云服务的 Splunk 附加设备在此处的 [Splunkbase](https://splunkbase.splunk.com/app/3110/) 中可用。
@@ -90,13 +101,16 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [了解详细信息。][sumologic-doc]
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解活动日志（以前称为审核日志）](../resource-group-audit.md)
-* [将 Azure 活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
+* [了解有关 Azure Monitor 的详细信息](monitoring-overview.md)
+* [使用 REST API 访问指标](monitoring-rest-api-walkthrough.md)
+* [将活动日志流式传输给第三方服务](monitoring-stream-activity-logs-event-hubs.md)
+* [将诊断日志流式传输给第三方服务](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
-<!--Connectors Documentation-->
+<!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
 [appdynamics-anchor]: #appdynamics "AppDynamics"
 [atlassian-anchor]: #atlassian-jira "Atlassian"
+[cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
 [cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "DataDog"
@@ -104,6 +118,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [newrelic-anchor]: #newrelic "NewRelic"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
+[sciencelogic-anchor]: #sciencelogic "ScienceLogic"
 [splunk-anchor]: #splunk-add-on-for-microsoft-cloud-services "Splunk"
 [sumologic-anchor]: #sumo-logic "Sumo Logic"
 
@@ -111,6 +126,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [alertlogic-logo]: ./media/partner-logos/alertlogic.png
 [appdynamics-logo]: ./media/partner-logos/appdynamics.png
 [atlassian-logo]: ./media/partner-logos/atlassian.png
+[cloudhealth-logo]: ./media/partner-logos/cloudhealth.png
 [cloudmonix-logo]: ./media/partner-logos/cloudmonix.png
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
@@ -118,6 +134,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [newrelic-logo]: ./media/partner-logos/newrelic.png
 [opsgenie-logo]: ./media/partner-logos/opsgenie.png
 [pagerduty-logo]: ./media/partner-logos/pagerduty.png
+[sciencelogic-logo]: ./media/partner-logos/sciencelogic.png
 [splunk-logo]: ./media/partner-logos/splunk.png
 [sumologic-logo]: ./media/partner-logos/sumologic.png
 
@@ -125,18 +142,20 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic 文档。"
 [appdynamics-doc]: https://docs.appdynamics.com/display/PRO42/Register+for+AppDynamics+for+Windows+Azure "AppDynamics 文档。"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
+[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix 简介。"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Cloudyn 简介。"
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "DataDog 文档。"
 [dynatrace-doc]: https://blog.ruxit.com/ruxit-monitoring-azure-web-apps/ "Dynatrace 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie 文档。"
-[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty 文档"
+[pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty 文档。"
+[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic 文档。"
 [splunk-doc]: http://docs.splunk.com/Documentation/AddOns/released/MSCloudServices/About "Splunk 文档。"
-[sumologic-doc]: https://www.sumologic.com/azure "SumoLogic 文档"
+[sumologic-doc]: https://www.sumologic.com/azure "SumoLogic 文档。"
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

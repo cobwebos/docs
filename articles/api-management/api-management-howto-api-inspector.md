@@ -1,5 +1,5 @@
 ---
-title: "如何使用 API 检查器跟踪 Azure API 管理中的调用"
+title: "使用 API 检查器跟踪调用 - Azure API 管理 | Microsoft 文档"
 description: "了解如何使用 API 检查器跟踪 Azure API 管理中的调用。"
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: sdanie
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 36231c3d2c19e129b301b76dfbbc8417b055fbae
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
 
 ---
 # <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>如何使用 API 检查器跟踪 Azure API 管理中的调用
@@ -69,7 +68,7 @@ API 管理提供了一个 API 检查器工具，帮助进行调试和故障诊�
 ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 ```
 
-可以从指定的位置下载和查看跟踪，如下一步中所示。
+可以从指定的位置下载和查看跟踪，如下一步中所示。 请注意：仅存储最近 100 个日志条目，并会在循环中重用日志位置。 因此，如果启用跟踪进行 100 个以上的调用，最终将就地开始覆盖最初的跟踪。
 
 ## <a name="inspect-trace"> </a>检查跟踪
 若要查看在跟踪中的值，请从 **ocp-apim-trace-location** URL 下载跟踪文件。 它是采用 JSON 格式的文本文件，并包含类似下面示例的条目。
@@ -269,6 +268,6 @@ ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

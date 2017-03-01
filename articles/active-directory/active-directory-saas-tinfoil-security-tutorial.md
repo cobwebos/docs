@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2016
+ms.date: 12/05/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 383ecb6978fc975bbee51474c467737720ff927e
+ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
+ms.openlocfilehash: 11b14aee1ef28cd29976b138919ccea8b4763016
 
 
 ---
@@ -43,23 +43,29 @@ ms.openlocfilehash: 383ecb6978fc975bbee51474c467737720ff927e
 ### <a name="to-enable-the-application-integration-for-tinfoil-security-perform-the-following-steps"></a>若要为 Tinfoil Security 启用应用程序集成，请执行以下步骤：
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
-   ![Active Directory](./media/active-directory-saas-tinfoil-security-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-tinfoil-security-tutorial/IC700993.png "Active Directory")
+
 2. 从“目录”列表中，选择要为其启用目录集成的目录。
+
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-tinfoil-security-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-tinfoil-security-tutorial/IC700994.png "Applications")
+
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-tinfoil-security-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-tinfoil-security-tutorial/IC749321.png "Add application")
+
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加应用程序](./media/active-directory-saas-tinfoil-security-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库中添加应用程序](./media/active-directory-saas-tinfoil-security-tutorial/IC749322.png "Add an application from gallerry")
+
 6. 在搜索框中，键入“Tinfoil Security”。
    
-   ![应用程序库](./media/active-directory-saas-tinfoil-security-tutorial/IC798966.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-tinfoil-security-tutorial/IC798966.png "Application Gallery")
+
 7. 在结果窗格中，选择“Tinfoil Security”，然后单击“完成”以添加该应用程序。
    
-   ![Tinfoil Security](./media/active-directory-saas-tinfoil-security-tutorial/IC802771.png "Tinfoil Security")
+    ![Tinfoil Security](./media/active-directory-saas-tinfoil-security-tutorial/IC802771.png "Tinfoil Security")
 
 ## <a name="configuring-single-sign-on"></a>配置单一登录
 本部分的目的是概述如何让用户使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Tinfoil Security 进行身份验证。  
@@ -69,57 +75,76 @@ ms.openlocfilehash: 383ecb6978fc975bbee51474c467737720ff927e
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“Tinfoil Security”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798967.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798967.png "Configure Single Sign-On")
+
 2. 在“你希望用户如何登录 Tinfoil Security”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798968.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798968.png "Configure Single Sign-On")
+
 3. 在“配置应用 URL”页上的“Tinfoil Security 回复 URL”文本框中，键入 Tinfoil Security 断言使用者服务 (ACS) URL（例如：“*https://www.tinfoilsecurity.com/saml/consume*”，然后单击“下一步”。
    
-   > [!NOTE]
-   > 应能够从 Tinfoil Security 元数据 (https://www.tinfoilsecurity.com/saml/metadata) 中获取 ACS URL。
-   > 
-   > 
+    > [!NOTE]
+    > 应能够从 Tinfoil Security 元数据 (https://www.tinfoilsecurity.com/saml/metadata) 中获取 ACS URL。
+    > 
+    > 
    
-   ![配置应用 URL](./media/active-directory-saas-tinfoil-security-tutorial/IC798969.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-tinfoil-security-tutorial/IC798969.png "Configure App URL")
+
 4. 在“配置 Tinfoil Security 的单一登录”页上，若要下载证书，请单击“下载证书”，然后在本地将证书文件保存为 **c:\\Tinfoil Security.cer**。
    
-   ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798970.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798970.png "Configure Single Sign-On")
+
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录 Tinfoil Security 公司站点。
+
 6. 在顶部菜单栏中，单击“我的帐户”。
    
-   ![仪表板](./media/active-directory-saas-tinfoil-security-tutorial/IC798971.png "Dashboard")
+    ![仪表板](./media/active-directory-saas-tinfoil-security-tutorial/IC798971.png "Dashboard")
+
 7. 单击“安全”。
    
-   ![“安全”](./media/active-directory-saas-tinfoil-security-tutorial/IC798972.png "Security")
+    ![“安全”](./media/active-directory-saas-tinfoil-security-tutorial/IC798972.png "Security")
+
 8. 在“单一登录”配置页上，执行以下步骤：
    
-   ![单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798973.png "Single Sign-On")
+    ![单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798973.png "Single Sign-On")
    
-   1. 选择“启用 SAML”。
-   2. 单击“手动配置”。
-   3. 在 Azure 经典门户的“配置 Tinfoil Security 的单一登录”对话框页上，复制“SAML SSO URL”值，然后将其粘贴到“SAML Post URL”文本框中。
-   4. 从导出的证书中复制“指纹”值，然后将其粘贴到“SAML 证书指纹”文本框中。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“启用 SAML”。
+   
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“手动配置”。
+   
+    c. 在 Azure 经典门户的“配置 Tinfoil Security 的单一登录”对话框页上，复制“SAML SSO URL”值，然后将其粘贴到“SAML Post URL”文本框中。
+   
+    d.单击“下一步”。 从导出的证书中复制“指纹”值，然后将其粘贴到“SAML 证书指纹”文本框中。  
       
-      > [!TIP]
-      > 有关详细信息，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)
-      > 
-      > 
-   5. 复制**帐户 ID**。
-   6. 单击“保存” 。
+    > [!TIP]
+    > 有关详细信息，请参阅[如何检索证书的指纹值](http://youtu.be/YKQF266SAxI)
+    > 
+    > 
+   
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 复制**帐户 ID**。
+   
+    f. 单击“保存” 。
+
 9. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798974.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-tinfoil-security-tutorial/IC798974.png "Configure Single Sign-On")
+
 10. 在顶部菜单中单击“属性”，打开“SAML 令牌属性”对话框。
     
     ![属性](./media/active-directory-saas-tinfoil-security-tutorial/IC795920.png "Attributes")
+
 11. 若要添加所需的属性映射，请执行以下步骤：
     
     ![属性](./media/active-directory-saas-tinfoil-security-tutorial/IC798975.png "Attributes")
     
-    1. 单击“添加用户属性”。
-    2. 在“属性名称”文本框中，键入“accountid”。
-    3. 在“属性值”文本框中，粘贴在前一部分中复制的帐户 ID 值。
-    4. 单击“完成”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加用户属性”。
+
+    b.保留“数据库类型”设置，即设置为“共享”。 在“属性名称”文本框中，键入“accountid”。
+
+    c. 在“属性值”文本框中，粘贴在前一部分中复制的帐户 ID 值。
+
+    d.单击“下一步”。 单击“完成”。
+
 12. 单击“应用更改”。
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
@@ -142,16 +167,17 @@ ms.openlocfilehash: 383ecb6978fc975bbee51474c467737720ff927e
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“Tinfoil Security”应用程序集成页上，单击“分配用户”。
    
-   ![分配用户](./media/active-directory-saas-tinfoil-security-tutorial/IC798976.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-tinfoil-security-tutorial/IC798976.png "Assign Users")
+
 3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
    
-   ![是](./media/active-directory-saas-tinfoil-security-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-tinfoil-security-tutorial/IC767830.png "Yes")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

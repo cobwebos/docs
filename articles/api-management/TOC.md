@@ -14,6 +14,7 @@
 ## 保护后端
 ### [使用 AAD 保护 Web API 后端](api-management-howto-protect-backend-with-aad.md)
 ### [连接到虚拟网络](api-management-using-with-vnet.md)
+### [连接到内部虚拟网络](api-management-using-with-internal-vnet.md)
 ### [使用证书进行相互身份验证](api-management-howto-mutual-certificates.md)
 ## 配置策略
 ### [自定义缓存](api-management-sample-cache-by-key.md)
@@ -39,16 +40,32 @@
 ### [管理用户帐户](api-management-howto-create-or-invite-developers.md)
 ### [使用自动化进行管理](automation-manage-api-management.md)
 ### [使用 Git 进行配置](api-management-configuration-repository-git.md)
-
 # 参考
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST](/rest/api/apimanagement/)
-## [REST（原始）](/rest/api/apimanagement/ApiManagementREST/API-Management-REST)
-
-
+## [REST（原始）](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
+## [策略](api-management-policies.md)
+### 策略参考
+#### [访问限制策略](api-management-access-restriction-policies.md)
+#### [高级策略](api-management-advanced-policies.md)
+#### [身份验证策略](api-management-authentication-policies.md)
+#### [缓存策略](api-management-caching-policies.md)
+#### [跨域策略](api-management-cross-domain-policies.md)
+#### [转换策略](api-management-transformation-policies.md)
+### [错误处理](api-management-error-handling-policies.md)
+### [Policy expressions](api-management-policy-expressions.md)（策略表达式）
+## [模板](api-management-developer-portal-templates-reference.md)
+### 模板参考
+#### [API](api-management-api-templates.md)
+#### [产品](api-management-product-templates.md)
+#### [应用程序](api-management-application-templates.md)
+#### [问题](api-management-issue-templates.md)
+#### [用户配置文件](api-management-user-profile-templates.md)
+#### [页](api-management-page-templates.md)
+### [数据模型参考](api-management-template-data-model-reference.md)
+### [页面控件](api-management-page-controls.md)
+### [模板资源](api-management-template-resources.md)
 # 资源
-## [策略](https://msdn.microsoft.com/library/azure/dn894081)
-## [模板](https://msdn.microsoft.com/library/azure/mt697540)
 ## [定价](https://azure.microsoft.com/pricing/details/api-management/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-api-management)
@@ -66,6 +83,6 @@
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

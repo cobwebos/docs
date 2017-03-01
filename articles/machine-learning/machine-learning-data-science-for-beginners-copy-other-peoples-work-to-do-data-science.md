@@ -1,6 +1,6 @@
 ---
-title: "复制其他的数据科学工作 - 机器学习示例 | Microsoft Docs"
-description: "数据科学的商业机密：让他人为你完成工作。 请参阅 Cortana Analytics 库中的示例，如聚类分析算法示例。"
+title: "复制他人的数据科学示例 - 机器学习 - Azure | Microsoft Docs"
+description: "数据科学的商业机密：让他人为你完成工作。 从 Cortana Analytics 库获取机器学习示例。"
 keywords: "数据科学示例, 机器学习示例, 聚类分析算法, 聚类分析算法示例"
 services: machine-learning
 documentationcenter: na
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d97427b0f20d15a48ebcef47cbf4e4d100c983c3
+ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
+ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
 
 
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
-数据科学的商业机密之一是让其他人为你完成工作。 查找适合用于自己的机器学习试验的聚类分析算法示例。
+数据科学的商业机密之一是让其他人为你完成工作。 在 Cortana Analytics 库中查找适合用于自己的机器学习试验的聚类分析算法示例。
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
@@ -96,7 +96,6 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习](https://a
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

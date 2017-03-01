@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6d2ab680afdd60732b8cf0a39a31ad6f35a70d09
+ms.sourcegitcommit: ac53d0a2c1c0a257e86fe74e10c8781aa6305975
+ms.openlocfilehash: 662e853ca31d426a71121d22733256556ca56fc6
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -159,7 +160,7 @@ ms.openlocfilehash: 6d2ab680afdd60732b8cf0a39a31ad6f35a70d09
 本部分的目的是概述如何对 DocuSign 启用 Active Directory 用户帐户的用户预配。
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户预配，请执行以下步骤：
-1. 在 **Azure 经典门户**中，在 **DocuSign** 应用程序集成页上，单击“配置帐户预配”，以打开“配置用户预配”对话框。
+1. 在 **Azure 经典门户**中，在 **DocuSign** 应用程序集成页上，单击“配置帐户设置”，以打开“配置用户设置”对话框。
    
     ![配置帐户预配][30]
 2. 在“设置和管理员凭据”页上，若要启用自动用户预配，请提供具有足够权限的 DocuSign 帐户的凭据，然后单击“下一步”。 
@@ -242,9 +243,4 @@ ms.openlocfilehash: 6d2ab680afdd60732b8cf0a39a31ad6f35a70d09
 [59]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_27.png
 [60]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_28.png
 [61]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_29.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

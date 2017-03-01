@@ -1,5 +1,5 @@
 ---
-title: "修复导入作业 | Microsoft Docs"
+title: "修复 Azure 导入作业 | Microsoft Docs"
 description: "了解如何使用导入/导出服务修复已创建和运行的导入作业。"
 author: muralikk
 manager: syadav
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 5d75bdb5ff39934e02d9af721b51e0aca24026bb
-ms.openlocfilehash: 9278256edd5c117de9b0e6b5b12f0ca37c612661
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: a47b0da43a84bb77fb8de16c37811a4b87fe3fbf
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -107,9 +108,4 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
 [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)   
 [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

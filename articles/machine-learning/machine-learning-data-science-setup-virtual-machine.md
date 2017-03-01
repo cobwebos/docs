@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: a12d11ba5dfdb312fcfa57f665aa5fc0f471b3dd
+ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
+ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: a12d11ba5dfdb312fcfa57f665aa5fc0f471b3dd
 3. 输入要创建的虚拟机名称，基于虚拟机将要处理的数据大小和希望虚拟机有多强大（内存大小和计算内核数目）选择虚拟机大小（默认值：A3），输入虚拟机的用户名和密码。 然后，单击向右箭头转到下一个配置页。
    
     ![创建工作区][26]
-4. 选择“区域/地缘组/虚拟网络”，其中包含计划用于此虚拟机的“存储帐户”，然后选择该存储帐户。 通过输入终结点名称（此处为“IPython”），在“终结点”字段的底部添加终结点。 可以选择任何字符串作为终结点的“名称”，并选择任何介于 0 和 65536 之间的**可用**整数作为“公用端口”。 “专用端口”必须是 **9999**。 用户应**避免**使用已分配给 Internet 服务的公用端口。 <a href="http://www.chebucto.ns.ca/~rakerman/port-table.html" target="_blank">用于 Internet 服务的端口</a>提供已分配且应避免的端口列表。
+4. 选择“区域/地缘组/虚拟网络”，其中包含计划用于此虚拟机的“存储帐户”，然后选择该存储帐户。 通过输入终结点名称（此处为“IPython”），在“终结点”字段的底部添加终结点。 可以选择任何字符串作为终结点的“名称”，并选择任何介于 0 和 65536 之间的**可用**整数作为“公用端口”。 “专用端口”必须是 **9999**。 应**避免**使用已分配给 Internet 服务的公用端口。 <a href="http://www.chebucto.ns.ca/~rakerman/port-table.html" target="_blank">用于 Internet 服务的端口</a>提供已分配且应避免的端口列表。
    
     ![创建工作区][27]
 5. 单击复选标记以启动虚拟机预配过程。
@@ -90,13 +90,13 @@ ms.openlocfilehash: a12d11ba5dfdb312fcfa57f665aa5fc0f471b3dd
 ![创建工作区][18]
 
 ## <a name="a-nameuploadastep-5-upload-an-existing-ipython-notebook-from-a-local-machine-to-the-ipython-notebook-server"></a><a name="upload"></a>步骤 5：将现有 IPython Notebook 从本地计算机上载到 IPython Notebook 服务器
-IPython Notebook 提供一种简单的方式，让用户可以将其本地计算机上的现有 IPython Notebook 上载到虚拟机上的 IPython Notebook 服务器。 在用户通过 Web 浏览器登录到 IPython Notebook 后，单击 IPython Notebook 将上载到的**目录**。 然后，在“文件资源管理器”中选择要从本地计算机上载的 IPython Notebook .ipynb 文件，并将其拖放到 Web 浏览器上的 IPython Notebook 目录。 单击“上载”按钮，将 .ipynb 文件上载到 IPython Notebook 服务器。 其他用户就可以从其 Web 浏览器开始使用它。
+IPython Notebook 提供一种简单的方式，让用户可以将其本地计算机上的现有 IPython Notebook 上载到虚拟机上的 IPython Notebook 服务器。 在通过 Web 浏览器登录到 IPython Notebook 后，单击 IPython Notebook 将上传到的**目录**。 然后，在“文件资源管理器”中选择要从本地计算机上载的 IPython Notebook .ipynb 文件，并将其拖放到 Web 浏览器上的 IPython Notebook 目录。 单击“上载”按钮，将 .ipynb 文件上载到 IPython Notebook 服务器。 其他用户就可以从其 Web 浏览器开始使用它。
 
 ![创建工作区][22]
 
 ![创建工作区][23]
 
-## <a name="a-nameshutdownashutdown-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>关闭并解除分配未使用的虚拟机
+## <a name="a-nameshutdownashut-down-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>关闭并解除分配未使用的虚拟机
 Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未使用虚拟机时不会计费，当虚拟机未使用时，其必须处于“已停止(已解除分配)”状态。
 
 > [!NOTE]
@@ -137,6 +137,6 @@ Azure 虚拟机定价为**只为自己使用的东西付费**。 若要确保未
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

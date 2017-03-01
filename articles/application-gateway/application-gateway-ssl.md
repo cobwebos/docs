@@ -1,5 +1,5 @@
 ---
-title: "使用经典部署配置应用程序网关以进行 SSL 卸载 | Microsoft Docs"
+title: "配置 SSL 卸载 - Azure 应用程序网关 - PowerShell 经典 | Microsoft Docs"
 description: "本文提供有关使用 Azure 经典部署模型创建支持 SSL 卸载的应用程序网关的说明。"
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1506729fb346a8a67930a5a2cd4c15f375c52e3f
-ms.openlocfilehash: 0f565431f03527c4fac463f93c5664504a90662f
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
 
 
 ---
@@ -214,6 +214,6 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

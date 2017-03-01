@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 1/10/2017
-ms.author: markgal; jimpark
+ms.author: markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
 ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3

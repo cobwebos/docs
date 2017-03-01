@@ -1,5 +1,5 @@
 ---
-title: "开始使用 PowerShell 在经典模式下创建面向 Internet 的负载均衡器 | Microsoft Docs"
+title: "创建面向 Internet 的负载均衡器 - Azure PowerShell（经典）| Microsoft 文档"
 description: "了解如何使用 PowerShell 在经典模式下创建面向 Internet 的负载平衡器"
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: 3855b32c8ff13f73cf91ea8973ed40a34a062224
+ms.sourcegitcommit: 4c29a3d17161a38f9aee9337e27feb36306cf329
+ms.openlocfilehash: b889208da300f301ee5c418bfa461a21cd8c07ee
 
 ---
 
@@ -76,6 +76,6 @@ Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name htt
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

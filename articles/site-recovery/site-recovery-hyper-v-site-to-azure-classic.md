@@ -1,6 +1,6 @@
 ---
-title: "使用 Site Recovery 在本地 Hyper-V 虚拟机和 Azure 之间复制（不包含 VMM）| Microsoft 文档"
-description: "本文介绍当计算机不在 VMM 云中托管时，如何使用 Azure Site Recovery 将 Hyper-V 虚拟机复制到 Azure。"
+title: "在经典门户中将 Hyper-V VM 复制到 Azure | Microsoft 文档"
+description: "本文介绍当 Hyper-V 虚拟机不在 VMM 云中托管时，如何将 Hyper-V 虚拟机复制到 Azure。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2016
+ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 8ff2423f5b546864757a75cd7af1e6c76f047b19
-ms.openlocfilehash: 221027027e57413b6244c97e3e5c57d6423d94ea
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 2bd4b44bea641bcfcb576f0ba5d53564277dfe34
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -28,16 +29,9 @@ ms.openlocfilehash: 221027027e57413b6244c97e3e5c57d6423d94ea
 >
 >
 
-欢迎使用 Azure Site Recovery 服务！
-
-站点恢复就是能够帮助实现业务连续性和灾难恢复 (BCDR) 策略的一个 Azure 服务。 站点恢复可安排从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的复制。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 在 [什么是 Azure Site Recovery？](site-recovery-overview.md)
-
-本文介绍如何在 Azure 门户中使用 Azure Site Recovery 将本地 Hyper-V 虚拟机复制到 Azure。 在本方案中，Hyper-V 服务器不在 VMM 云中管理。
+本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 服务，将本地 Hyper-V 虚拟机复制到 Azure。 在本方案中，Hyper-V 服务器不在 VMM 云中管理。
 
 阅读本文后，欢迎在页面底部发表任何看法，或者在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上咨询技术问题。
-
-
-
 
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Azure 门户中的 Site Recovery
@@ -67,7 +61,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 * 正在运行知识库文章 [2961977](https://support.microsoft.com/en-us/kb/2961977 "KB2961977") 中所述的修复程序。
 
 ## <a name="virtual-machine-prerequisites"></a>虚拟机先决条件
-要保护的虚拟机应符合 [Azure 虚拟机要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+要保护的虚拟机应符合 [Azure 虚拟机要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 ## <a name="provider-and-agent-prerequisites"></a>提供程序和代理先决条件
 在部署 Azure Site Recovery 的过程中，你将在每个 Hyper-V 服务器上安装 Azure Site Recovery 提供程序和 Azure 恢复服务代理。 请注意：
@@ -95,7 +89,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 2. 展开“**数据服务**” > “**恢复服务**”，并单击“**Site Recovery 保管库**”。
 3. 单击“**新建**” > “**快速创建**”。
 4. 在“名称”中，输入一个友好名称以标识此保管库。
-5. 在“区域” 中，为保管库选择地理区域。 若要查看受支持的区域，请参阅 Azure Site Recovery 价格详细信息中的“地域可用性” [](https://azure.microsoft.com/pricing/details/site-recovery/)。
+5. 在“区域” 中，为保管库选择地理区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息中的](https://azure.microsoft.com/pricing/details/site-recovery/) “地域可用性”。
 6. 单击“创建保管库” 。
 
     ![新保管库](./media/site-recovery-hyper-v-site-to-azure-classic/vault.png)
@@ -168,13 +162,13 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 * **/proxyAddress**；**/proxyport**；**/proxyUsername**；**/proxyPassword**：可选。 如果想要使用自定义代理，或现有的代理需要身份验证，请指定代理参数。
 
 ## <a name="step-4-create-an-azure-storage-account"></a>步骤 4：创建 Azure 存储帐户
-1. 在“**准备资源**”中，选择“**创建存储帐户**”以创建一个 Azure 存储帐户（如果你没有的话）。 该帐户应已启用地域复制。 该帐户应位于 Azure Site Recovery 保管库所在的同一区域，并与同一订阅相关联。
+* 在“**准备资源**”中，选择“**创建存储帐户**”以创建一个 Azure 存储帐户（如果你没有的话）。 该帐户应已启用地域复制。 该帐户应位于 Azure Site Recovery 保管库所在的同一区域，并与同一订阅相关联。
 
     ![创建存储帐户](./media/site-recovery-hyper-v-site-to-azure-classic/create-resources.png)
 
 > [!NOTE]
-> 1. 我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。                               2. 用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../resource-group-move-resources.md)。
->
+> 1. 我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。
+> 2. 用于部署 Site Recovery 的存储帐户不支持跨同一订阅中的资源组或跨订阅[迁移存储帐户](../azure-resource-manager/resource-group-move-resources.md)。
 >
 
 ## <a name="step-5-create-and-configure-protection-groups"></a>步骤 5：创建并配置保护组
@@ -218,19 +212,21 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
      * **网络适配器**：网络适配器数目根据你为目标虚拟机指定的大小来确定。 查看[虚拟机大小规格](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)，了解虚拟机大小所支持的 NIC 数目。
 
-            When you modify the size for a virtual machine and save the settings, the number of network adapter will change when you open **Configure** page the next time. The number of network adapters of target virtual machines is minimum of the number of network adapters on source virtual machine and maximum number of network adapters supported by the size of the virtual machine chosen. It is explained below:
+       修改虚拟机的大小并保存设置后，下一次打开“ **配置** ”页时，网络适配器的数量将会改变。 目标虚拟机的网络适配器数目是源虚拟机上网络适配器的最小数目和所选虚拟机大小支持的网络适配器的最大数目。 解释如下：
 
+       * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
+       * 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
+       * 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。
 
-            - If the number of network adapters on the source machine is less than or equal to the number of adapters allowed for the target machine size, then the target will have the same number of adapters as the source.
-            - If the number of adapters for the source virtual machine exceeds the number allowed for the target size then the target size maximum will be used.
-            - For example if a source machine has two network adapters and the target machine size supports four, the target machine will have two adapters. If the source machine has two adapters but the supported target size only supports one then the target machine will have only one adapter.     
-        - **Azure 网络**：指定虚拟机应故障转移到的网络。 如果虚拟机有多个网络适配器，所有适配器应连接到同一个 Azure 网络。
-        - **子网**：对于虚拟机上的每个网络适配器，请在 Azure 网络中选择故障转移后计算机应连接到的子网。
-        - **目标 IP 地址**：如果源虚拟机的网络适配器配置为使用静态 IP 地址，那么你可以指定目标虚拟机的 IP 地址，以确保计算机在故障转移后具有相同的 IP 地址。  如果不指定 IP 地址，将在故障转移时分配任何可用的地址。 如果指定了正在使用的地址，故障转移将会失败。
+     * **Azure 网络**：指定虚拟机应故障转移到的网络。 如果虚拟机有多个网络适配器，所有适配器应连接到同一个 Azure 网络。
+     * **子网**：对于虚拟机上的每个网络适配器，请在 Azure 网络中选择故障转移后计算机应连接到的子网。
+     * **目标 IP 地址**：如果源虚拟机的网络适配器配置为使用静态 IP 地址，那么你可以指定目标虚拟机的 IP 地址，以确保计算机在故障转移后具有相同的 IP 地址。  如果不指定 IP 地址，将在故障转移时分配任何可用的地址。 如果指定了正在使用的地址，故障转移将会失败。
 
-        > [AZURE.NOTE] 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../resource-group-move-resources.md)。
+     > [!NOTE]
+     > 用于部署 Site Recovery 的网络不支持跨同一订阅中的资源组或跨订阅[迁移网络](../azure-resource-manager/resource-group-move-resources.md)。
+     >
 
-        ![配置虚拟机属性](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
+     ![配置虚拟机属性](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
 
 
 
@@ -246,7 +242,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 如果你想要运行测试故障转移而未指定 Azure 网络，则不需要做任何准备。
 
-若要运行具有目标 Azure 网络的测试性故障转移，你将需要创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（你在 Azure 中新建网络时的默认行为）。 阅读[运行测试故障转移](site-recovery-failover.md#run-a-test-failover)以获取更多详细信息。
+若要运行具有目标 Azure 网络的测试性故障转移，你将需要创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（你在 Azure 中新建网络时的默认行为）。 阅读[运行测试故障转移](site-recovery-failover.md)以获取更多详细信息。
 
 若要完全测试复制和网络部署，你需要设置基础结构，以便复制的虚拟机按预期工作。 一种做法是将虚拟机设置为使用 DNS 的域控制器，并使用站点恢复将其复制到 Azure，以通过运行测试故障转移在测试网络中创建该域控制器。  [阅读](site-recovery-active-directory.md#test-failover-considerations)有关 Active Directory 测试故障转移注意事项的详细信息。
 
@@ -281,9 +277,4 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 ## <a name="next-steps"></a>后续步骤
 设置并运行部署以后，请[详细了解](site-recovery-failover.md)故障转移。
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

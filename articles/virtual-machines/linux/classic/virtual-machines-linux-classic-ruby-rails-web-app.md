@@ -13,11 +13,11 @@ ms.workload: web
 ms.tgt_pltfrm: vm-linux
 ms.devlang: ruby
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 7b3c6da0e158c2824a5feb084a13eafe265762ce
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
 本教程使用 Ubuntu Server 14.04 LTS 进行了验证。 如果你使用不同 Linux 分发，则可能需要修改安装 Rails 的步骤。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../../../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 > 
 > 
 
@@ -44,7 +44,7 @@ ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
 预配 VM 后，单击 VM 名称，然后单击“仪表板”。 找到“SSH 详细信息”下列出的 SSH 终结点。
 
 ### <a name="azure-cli"></a>Azure CLI
-执行[创建运行 Linux 的虚拟机][vm-instructions]中所述的步骤。
+执行[创建运行 Linux 的虚拟机][vm-instructions]中的步骤。
 
 预配 VM 后，可以通过运行以下命令来获取 SSH 终结点：
 
@@ -90,7 +90,7 @@ ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>添加终结点
-1. 转到 [Azure 经典门户][management-portal]并选择自己的 VM。
+1. 转到 [Azure 经典门户][management-portal]并选择 VM。
    
     ![虚拟机列表][vmlist]
 2. 选择页面顶部的“终结点”，然后单击页面底部的“+添加终结点”。
@@ -117,7 +117,7 @@ ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你手动执行大多数步骤。 在生产环境中，会在开发计算机上编写应用，然后将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/。
 
-若要详细了解 Ruby on Rails，请访问 [Ruby on Rails 指南][rails-guides]。
+若要详细了解 Ruby on Rails，请参阅 [Ruby on Rails 指南][rails-guides]。
 
 若要从 Ruby 应用程序使用 Azure 服务，请参阅：
 
@@ -146,6 +146,6 @@ ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

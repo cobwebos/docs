@@ -1,5 +1,5 @@
 ---
-title: "使用 Marathon UI 管理 Azure 容器服务群集 | Microsoft 文档"
+title: "使用 Marathon UI 管理 Azure DC/OS 群集 | Microsoft Docs"
 description: "使用 Marathon Web UI 将容器部署到 Azure 容器服务群集服务。"
 services: container-service
 documentationcenter: 
@@ -11,14 +11,14 @@ keywords: "Docker, 容器, 微服务, Mesos, Azure"
 ms.assetid: d148ed1e-b582-4d51-944f-1ac7ae3c4fd6
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: c472963048e842e795e17df39567a8380d8543a9
-ms.openlocfilehash: b076fabd964cfb583bb4049d1373268d0d2762fb
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: de250fbc3982cdc493f74976914290d8ac89bb08
 
 
 ---
@@ -113,6 +113,6 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

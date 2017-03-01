@@ -1,6 +1,6 @@
 ---
-title: "Azure 标识管理安全概述 | Microsoft Docs"
-description: " Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 "
+title: "帮助进行标识管理的 Azure 安全功能 | Microsoft Docs"
+description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 5778f554e83426f5fba12a25d2bbce13db4a9226
-ms.openlocfilehash: b73fb97a1f3879ae8f232d666e366b058f3253d1
+ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
+ms.openlocfilehash: 9c5af888ec0130ec8506602ab805221f0a83ea47
 
 
 ---
@@ -156,6 +156,6 @@ Microsoft 的标识方法跨越本地和云，创建单一用户标识对所有�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

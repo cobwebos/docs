@@ -1,13 +1,25 @@
 ---
+title: "Azure Active Directory 域服务文档 - 教程 | Microsoft 文档"
+description: "了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器并使用组策略来管理这些虚拟机。"
+services: active-directory-ds
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: active-directory-ds
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 55dedcab5b8e62b3666cffcfc7d9a0a31c624784
-ms.openlocfilehash: d3a6b967921edad13479c615ebec8edc9e568458
+ms.sourcegitcommit: ca9fd58260f97836c08e71a50d8411d1862fd650
+ms.openlocfilehash: 9654ec8791de56c33e4973e8ba20ef6e52780955
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory 域服务文档
 
-Azure AD 域服务 (DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。  用户可借助此服务灵活部署各种计算解决方案。
+了解如何使用 Active Directory 域服务将 Azure 虚拟机加入域，而无需使用域控制器。 教程和其他文档介绍了如何使用组策略管理虚拟机。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -156,18 +168,9 @@ Azure AD 域服务 (DS) 提供与 Windows Server Active Directory 完全兼容�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory-domain-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Active Directory 域服务文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

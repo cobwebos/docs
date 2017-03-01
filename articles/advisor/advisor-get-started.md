@@ -3,7 +3,7 @@ title: "Azure 顾问入门 | Microsoft Docs"
 description: "Azure 顾问入门。"
 services: advisor
 documentationcenter: NA
-author: kumudd
+author: manbeenkohli
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
-ms.author: kumud
+ms.date: 02/10/2017
+ms.author: makohli
 translationtype: Human Translation
-ms.sourcegitcommit: 14e9e494d6e824964b9164ff36d9938341e244be
-ms.openlocfilehash: 7adaa1a457e19c66bdc31a01f4e04b7911e58062
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: 8ed18f6f62b6d2895e2470df1c3bdd448ea98210
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -35,7 +36,7 @@ ms.openlocfilehash: 7adaa1a457e19c66bdc31a01f4e04b7911e58062
 4. 若要获取特定类别的建议，请单击其中一个选项卡 -“高可用性”、“安全”、“性能”或“成本”。
  
 > [!NOTE]
-> 如果订阅中已为用户分配了**所有者**、**参与者**或**读者**角色，则 Azure 顾问会为其生成建议。
+> 若要访问顾问建议，必须先向顾问**注册**订阅。 **订阅所有者**启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是**一次性操作**。 注册订阅后，**所有者**、**参与者**或**读者**可以访问有关订阅、资源组或特定资源的顾问建议。
 
   ![Azure 顾问仪表板](./media/advisor-overview/advisor-all-tab.png)
 
@@ -78,9 +79,4 @@ ms.openlocfilehash: 7adaa1a457e19c66bdc31a01f4e04b7911e58062
 -  [顾问安全性建议](advisor-security-recommendations.md)
 -  [顾问性能建议](advisor-performance-recommendations.md)
 -  [顾问成本建议](advisor-performance-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

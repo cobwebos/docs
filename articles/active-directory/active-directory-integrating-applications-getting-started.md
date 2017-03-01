@@ -1,5 +1,5 @@
 ---
-title: "将 Azure Active Directory 与应用程序集成入门指南 | Microsoft Docs"
+title: "将 Azure AD 与应用集成入门 | Microsoft 文档"
 description: "本文是一篇入门指南，介绍如何将 Azure Active Directory (AD) 与本地应用程序和云应用程序集成。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2016
+ms.date: 01/23/2017
 ms.author: inhenk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e35ac9ae791f7fa917cccbba5d06319f28b7033c
+ms.sourcegitcommit: 54e6bf0953135855d4dda2bc83c8dc06212c6eb5
+ms.openlocfilehash: 6b3f6889c747e72ee1c592b1b0dfb1d03d700ad3
 
 
 ---
@@ -95,6 +95,6 @@ ms.openlocfilehash: e35ac9ae791f7fa917cccbba5d06319f28b7033c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

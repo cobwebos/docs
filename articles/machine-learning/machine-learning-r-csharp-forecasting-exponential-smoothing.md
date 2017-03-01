@@ -1,6 +1,6 @@
 ---
-title: "预测指数平滑 | Microsoft Docs"
-description: "Web 服务：预测指数平滑"
+title: "（已弃用）预测 - 指数平滑 - Azure | Microsoft Docs"
+description: "（已弃用）Web 服务：预测 - 指数平滑"
 services: machine-learning
 documentationcenter: 
 author: yijichen
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/13/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: yijichen
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 47ef9bce59b62bbd5b2c630ee101a655814d96d2
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: c3fc7b8d7ba9faf79d80b55514ef09570e0d1655
 
 
 ---
-# <a name="forecasting---exponential-smoothing"></a>预测指数平滑
+# <a name="deprecated-forecasting---exponential-smoothing"></a>（已弃用）预测 - 指数平滑
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 该 [Web 服务](https://datamarket.azure.com/dataset/aml_labs/ets)实施指数平滑模型 (ETS) 来基于用户提供的历史数据生成预测。 今年对特定产品的需求会增加吗？ 我能预测圣诞季的产品销售额以便我可以有效地规划我的库存吗？ 预测模型倾向于解决此类问题。 基于过去的数据，这些模型可找到隐藏的趋势和季节性，以预测未来趋势。  
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -143,6 +150,6 @@ ms.openlocfilehash: 47ef9bce59b62bbd5b2c630ee101a655814d96d2
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

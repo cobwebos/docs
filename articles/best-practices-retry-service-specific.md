@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d408b5affc166ae4fae6b94ab3e069b51ecfdd3c
+ms.sourcegitcommit: e7f09966e2b15735081cf2ac4d244a7ae8b92df8
+ms.openlocfilehash: 397bbc7d556338ff347d59d000fe7442acda560a
 
 
 ---
@@ -1084,7 +1084,7 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 
 | **策略** | **设置** | **默认值** | **含义** |
 | --- | --- | --- | --- |
-| **指数** |retryCount<br />minBackoff<br /><br />maxBackoff<br /><br />deltaBackoff<br /><br />fastFirstRetry |10<br />1 秒<br /><br />30 秒<br /><br />10 秒<br /><br />是 |重试的次数。<br />最短回退时间。 此值与计算的回退中的较高者将用作重试延迟。<br />最短回退时间。 此值与计算的回退中的较低者将用作重试延迟。<br />用于计算重试之间指数延迟的随机增量的值。<br />首次重试是否立即进行。 |
+| **指数** |retryCount<br />minBackoff<br /><br />maxBackoff<br /><br />deltaBackoff<br /><br />fastFirstRetry |10<br />1 秒<br /><br />30 秒<br /><br />10 秒<br /><br />是 |重试的次数。<br />最长回退时间。 此值与计算的回退中的较高者将用作重试延迟。<br />最短回退时间。 此值与计算的回退中的较低者将用作重试延迟。<br />用于计算重试之间指数延迟的随机增量的值。<br />首次重试是否立即进行。 |
 | **增量** |retryCount<br />initialInterval<br />增量<br /><br />fastFirstRetry<br /> |10<br />1 秒<br />1 秒<br /><br />是 |重试的次数。<br />将应用于首次尝试的初始间隔。<br />用于计算重试之间的渐进式延迟的增量时间值。<br />首次重试是否立即进行。 |
 | **线性（固定间隔）** |retryCount<br />retryInterval<br />fastFirstRetry<br /> |10<br />1 秒<br />是 |重试的次数。<br />重试之间的延迟。<br />首次重试是否立即进行。 |
 
@@ -1101,6 +1101,6 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

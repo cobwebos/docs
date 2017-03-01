@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
-ms.author: chrande
+ms.date: 01/18/2017
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 36cf563a8318acb9371c48ba7d29e24694446e45
+ms.sourcegitcommit: 770cac8809ab9f3d6261140333ec789ee1390daf
+ms.openlocfilehash: bf9bd2a1b5acdf5a4a4f862bef693f8c60c63a33
 
 
 ---
@@ -46,14 +46,14 @@ ms.openlocfilehash: 36cf563a8318acb9371c48ba7d29e24694446e45
 }
 ```
 
-`connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。
+`connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中创建存储帐户或选择现有存储帐户时，可在“集成”选项卡中配置此应用设置。 若要手动创建此应用设置，请参阅[管理应用服务设置](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)。
 
 可在 host.json 文件中包含[其他设置](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)以进一步微调存储队列触发器。  
 
 ### <a name="handling-poison-queue-messages"></a>处理有害队列消息
-队列触发函数失败时，Azure Functions 对于给定队列消息默认重试该函数最多 5 次（包括第一次尝试）。 如果 5 次尝试全部失败，函数会将消息添加到名为 *&lt;originalqueuename>-poison* 的存储队列。 你可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。 
+队列触发函数失败时，Azure Functions 对于给定队列消息重试该函数最多&5; 次（包括第一次尝试）。 如果&5; 次尝试全部失败，函数会将消息添加到名为 &lt;originalqueuename>-poison 的存储队列。 你可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。 
 
-如果想要手动处理有害消息，可以通过检查 `dequeueCount` 获取信息被处理的次数（请参阅[队列触发器元数据](#meta)）。
+若要手动处理有害消息，可以通过检查 `dequeueCount` 获取信息被处理的次数（请参阅[队列触发器元数据](#meta)）。
 
 <a name="triggerusage"></a>
 
@@ -63,11 +63,10 @@ ms.openlocfilehash: 36cf563a8318acb9371c48ba7d29e24694446e45
 
 队列消息可以反序列化为以下任何类型：
 
-* 任何 [Object](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的消息。
-  如果声明自定义输入类型（如 `FooType`），Azure Functions 会尝试将 JSON 数据反序列化为指定类型。
+* [Object](https://msdn.microsoft.com/library/system.object.aspx) - 适用于 JSON 序列化的消息。 在声明自定义输入类型时，运行时会尝试反序列化 JSON 对象。 
 * String
-* Byte Array 
-* `CloudQueueMessage` (C#) 
+* Byte Array
+* [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx)（仅限 C#）
 
 <a name="meta"></a>
 
@@ -148,7 +147,7 @@ public static void Run(string myQueueItem,
 
 ```javascript
 module.exports = function (context) {
-    context.log('Node.js queue trigger function processed work item' context.bindings.myQueueItem);
+    context.log('Node.js queue trigger function processed work item', context.bindings.myQueueItem);
     context.log('queueTrigger =', context.bindingData.queueTrigger);
     context.log('expirationTime =', context.bindingData.expirationTime);
     context.log('insertionTime =', context.bindingData.insertionTime);
@@ -177,45 +176,46 @@ module.exports = function (context) {
 }
 ```
 
-`connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。
+`connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[管理应用服务设置](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)。
 
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>输出使用情况
-在 C# 函数中，通过在函数签名中使用名为 `out` 的参数（如 `out <T> <name>`）编写队列消息，其中 `T` 是要将数据序列化的消息类型，`paramName` 是在[输出绑定](#output)中指定的名称。 在 Node.js 函数中，使用 `context.bindings.<name>` 访问输出。
+在 C# 函数中，通过在函数签名中使用命名 `out` 参数写入队列消息，如 `out <T> <name>`。 在本例中，`T` 是消息要进行序列化的目标数据类型，`paramName` 是在[输出绑定](#output)中指定的名称。 在 Node.js 函数中，使用 `context.bindings.<name>` 访问输出。
 
 可以使用代码中的任何数据类型输出队列消息：
 
-* 任何[对象](https://msdn.microsoft.com/library/system.object.aspx) - 有助于 JSON 序列化。
-  如果声明自定义输出类型（例如 `out FooType paramName`），Azure Functions 将尝试将对象序列化为 JSON。 函数退出时，如果输出参数为 null，则 Functions 运行时将创建队列消息作为 null 对象。
-* 字符串 - (`out string paramName`) 适用于测试消息。 只有当函数退出时字符串参数为非 null，Functions 运行时才创建消息。
-* 字节数组 - (`out byte[]`) 
-* `out CloudQueueMessage` - 仅限 C# 
+* 任何 [Object](https://msdn.microsoft.com/library/system.object.aspx)：`out MyCustomType paramName`  
+用于 JSON 序列化。  在声明自定义输出类型时，运行时会尝试将对象序列化至 JSON。 函数退出时，如果输出参数为 null，则运行时将创建队列消息作为 null 对象。
+* String：`out string paramName`  
+用于测试消息。 只有当函数退出时字符串参数为非 null，运行时才创建消息。
+* Byte array：`out byte[]` 
 
-在 C# 中还可以绑定到 `ICollector<T>` 或 `IAsyncCollector<T>`，其中 `T` 是受支持的类型之一。
+这些附加输出类型支持 C# 函数：
+
+* [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx)：`out CloudQueueMessage` 
+* `ICollector<T>` 或 `IAsyncCollector<T>`，其中 `T` 是所支持的类型之一。
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>输出示例
 假设有以下定义[存储队列触发器](functions-bindings-storage-queue.md)、存储 blob 输入和存储 blob 输出的 function.json：
 
-使用队列触发器并写入队列消息的存储队列输出绑定的示例 function.json：
+使用手动触发器，并将输入写入队列消息的存储队列输出绑定的示例 function.json：
 
 ```json
 {
   "bindings": [
     {
-      "name": "myQueueItem",
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnection",
-      "type": "queueTrigger",
-      "direction": "in"
+      "type": "manualTrigger",
+      "direction": "in",
+      "name": "input"
     },
     {
-      "name": "myQueue",
-      "queueName": "samples-workitems-out",
-      "connection": "MyStorageConnection",
       "type": "queue",
+      "name": "myQueueItem",
+      "queueName": "myqueue",
+      "connection": "my_storage_connection",
       "direction": "out"
     }
   ],
@@ -233,19 +233,19 @@ module.exports = function (context) {
 ### <a name="output-sample-in-c"></a>C 中的输出示例# #
 
 ```cs
-public static void Run(string myQueueItem, out string myQueue, TraceWriter log)
+public static void Run(string input, out string myQueueItem, TraceWriter log)
 {
-    myQueue = myQueueItem + "(next step)";
+    myQueueItem = "New message: " + input;
 }
 ```
 
 或者，发送多条消息，
 
 ```cs
-public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWriter log)
+public static void Run(string input, ICollector<string> myQueueItem, TraceWriter log)
 {
-    myQueue.Add(myQueueItem + "(step 1)");
-    myQueue.Add(myQueueItem + "(step 2)");
+    myQueueItem.Add("Message 1: " + input);
+    myQueueItem.Add("Message 2: " + "Some other message.");
 }
 ```
 
@@ -263,7 +263,8 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 
 ```javascript
 module.exports = function(context) {
-    context.bindings.myQueue = context.bindings.myQueueItem + "(next step)";
+    // Define a new message for the myQueueItem output binding.
+    context.bindings.myQueueItem = "new message";
     context.done();
 };
 ```
@@ -272,20 +273,21 @@ module.exports = function(context) {
 
 ```javascript
 module.exports = function(context) {
-    context.bindings.myQueue = [];
-
-    context.bindings.myQueueItem.push("(step 1)");
-    context.bindings.myQueueItem.push("(step 2)");
+    // Define a message array for the myQueueItem output binding. 
+    context.bindings.myQueueItem = ["message 1","message 2"];
     context.done();
 };
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
+有关使用存储队列触发器和绑定的函数示例，请参阅[创建与 Azure 服务连接的 Azure Function](functions-create-an-azure-connected-function.md)。
+
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

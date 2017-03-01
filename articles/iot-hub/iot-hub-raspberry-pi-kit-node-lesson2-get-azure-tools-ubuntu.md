@@ -1,5 +1,5 @@
 ---
-title: "获取 Azure 工具 (Ubuntu 16.04) | Microsoft 文档"
+title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 1 课：获取工具 (Ubuntu) | Microsoft Docs"
 description: "在 Ubuntu 上安装 Python 和 Azure 命令行界面 (Azure CLI)。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: d93b7b67ee0727f45c3f4b93459b013b16805bf6
-ms.openlocfilehash: 15abce4dfd2af3146dedc1c63d8cdd37fadcc57b
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 9cdf4331b136abc7804460fd99a4defcbbc94e7b
 
 
 ---
@@ -40,7 +40,7 @@ ms.openlocfilehash: 15abce4dfd2af3146dedc1c63d8cdd37fadcc57b
 * 一个有效的 Azure 订阅。 如果没有帐户，只需几分钟时间就能创建一个[免费的试用帐户](http://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
-Azure CLI 针对 Azure 提供了多平台命令行体验，使得你可以直接从命令行工作来预配和管理资源。
+Azure CLI 提供适用于 Azure 的多平台命令行体验，让用户能够直接通过命令行预配和管理资源。
 
 若要安装最新的 Azure CLI，请执行以下步骤：
 
@@ -74,6 +74,6 @@ Azure CLI 针对 Azure 提供了多平台命令行体验，使得你可以直接
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

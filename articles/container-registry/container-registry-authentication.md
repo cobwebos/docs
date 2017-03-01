@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: 1a5af0b498cfdf1946f5c405d9557b0c2d2c8e63
-ms.openlocfilehash: 1e9e54ee935b4c27eb93f72eb99c3ce52cc6c7e2
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 848a4011fd180721cf269390b8dd7426b2287dd2
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="authenticate-with-a-container-registry"></a>使用容器注册表进行身份验证
@@ -59,7 +60,7 @@ docker login myregistry-contoso.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
 
 
 ## <a name="admin-account"></a>管理员帐户
-每创建一个注册表，将自动创建一个管理员帐户。 默认情况下，帐户已禁用，但可通过[门户](container-registry-get-started-portal.md#manage-registry-settings)或使用 [Azure CLI 2.0 预览版命令](container-registry-get-started-azure-cli.md#manage-admin-credentials)等启用它并管理凭据。 如果已启用帐户，则可将用户名和密码传递到 `docker login` 命令，对注册表进行基本身份验证。 例如：
+每创建一个注册表，将自动创建一个管理员帐户。 默认情况下，帐户已禁用，但可通过[门户](container-registry-get-started-portal.md#manage-registry-settings)或使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md#manage-admin-credentials)等启用它并管理凭据。 如果已启用帐户，则可将用户名和密码传递到 `docker login` 命令，对注册表进行基本身份验证。 例如：
 
 ```
 docker login myregistry-contoso.azurecr.io -u myAdminName -p myPassword
@@ -74,10 +75,5 @@ docker login myregistry-contoso.azurecr.io -u myAdminName -p myPassword
 * [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)。
 * 有关容器注册表预览版中身份验证的详细信息，请参阅[博客文章](https://blogs.msdn.microsoft.com/stevelasker/2016/11/17/azure-container-registry-user-accounts/)。 
 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

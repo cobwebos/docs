@@ -1,14 +1,27 @@
 ---
+title: "Azure 容器服务文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用容器服务通过 DC/OS、Docker Swarm 或 Kubernetes 来部署和管理应用程序容器。 教程、API 参考和其他资源。"
+services: container-service
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: container-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 445c13f0ff0106aa1d919be81ca373377464b32a
-ms.openlocfilehash: 5e027ac1a0a9ec4d11c76bbce1e0c944742ffaf9
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 9cf690482bfdfc8448542171066f2d9ab3ec3569
+ms.lasthandoff: 02/27/2017
 
 ---
 
 # <a name="azure-container-service-documentation"></a>Azure 容器服务文档
 
-Azure 容器服务让创建、配置和管理预配置来运行容器化应用程序的虚拟机群集变得更简单。 容器服务使用热门开源计划和业务流程工具的优化配置。 通过此服务，可以使用现有技能或利用不断增加的大量社区专业知识，在 Microsoft Azure 上部署和管理基于容器的应用程序。
+了解如何使用容器服务来部署和管理完全可移植的应用程序容器。 教程、API 参考和其他文档介绍了如何使用 DC/OS、Docker Swarm 或 Kubernetes 来缩放与协调容器。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -59,20 +72,8 @@ Azure 容器服务让创建、配置和管理预配置来运行容器化应用�
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute">PowerShell</a></p>
+                        <p><a href="/cli/azure/acs">Azure CLI 2.0</a></p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>语言</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.compute.models">.NET</a></p>
-                   </div>
                 </div>
             </div>
         </div>
@@ -90,16 +91,5 @@ Azure 容器服务让创建、配置和管理预配置来运行容器化应用�
         </div>
     </li>
 </ul>
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/container-service.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure 容器服务文档 </div>
-    </a>
-</div>
-
-
-<!--HONumber=Dec16_HO2-->
 
 

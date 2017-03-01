@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Service Fabric 报告和检查运行状况 | Microsoft 文档"
+title: "使用 Azure Service Fabric 报告和检查运行状况 | Microsoft Docs"
 description: "了解如何通过服务代码发送运行状况报告，并使用 Azure Service Fabric 提供的运行状况监视工具来检查服务的运行状况。"
 services: service-fabric
 documentationcenter: .net
@@ -15,20 +15,21 @@ ms.workload: NA
 ms.date: 01/04/2017
 ms.author: toddabel
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e3c63c8f92c860ed28bfc4dac395c1d5abf131ae
+ms.sourcegitcommit: bb93d4dac1853a317bbd6ac70946753f35be264e
+ms.openlocfilehash: bc1dd1d2c378e628094fe717d9c89298aca1f7b4
 
 
 ---
 # <a name="report-and-check-service-health"></a>报告和检查服务运行状况
 当服务发生问题时，你必须能够快速检测问题，才能响应并修复所有事件和中断。 如果从服务代码向 Azure Service Fabric 运行状况管理器报告问题和失败，你可以使用 Service Fabric 提供的标准运行状况监视工具来检查运行状况。
 
-有两种方式可让你报告服务的运行状况：
+有三种方式可让你报告服务的运行状况：
 
 * 使用 [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx) 或 [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx) 对象。  
   你可以使用 `Partition` 和 `CodePackageActivationContext` 对象在属于当前上下文一部分的项目中报告运行状况。 例如，作为副本一部分运行的代码只能报告该副本、其所属的分区，以及其所属应用程序的运行状况。
 * 使用 `FabricClient`。   
   如果群集不[安全](service-fabric-cluster-security.md)或者使用管理员权限运行服务，则可以使用 `FabricClient` 从服务代码中报告运行状况。 在大部分的真实方案中都不会发生此情况。 你可以使用 `FabricClient` 报告任何属于群集一部分的实体的运行状况。 但是，在理想情况下，服务代码应该只发送与其本身运行状况相关的报告。
+* 在群集、应用程序、部署的应用程序、服务、服务包、分区、副本或节点级别上使用 REST API。 这可以用于从容器中报告运行状况。
 
 本文将引导你完成从服务代码报告运行状况的示例。 本示例还演示如何使用 Service Fabric 提供的工具检查运行状况。 本文旨在快速介绍 Service Fabric 中的运行状况监视功能。 有关更多详细信息，可以从本文末尾的链接开始，阅读一系列有关运行状况的深入文章。
 
@@ -106,8 +107,8 @@ Visual Studio 中的 Service Fabric 项目模板包含相同的代码。 以下�
     if (!result.HasValue)
     {
        var replicaHealthReport = new StatefulServiceReplicaHealthReport(
-            this.ServiceInitializationParameters.PartitionId,
-            this.ServiceInitializationParameters.ReplicaId,
+            this.Context.PartitionId,
+            this.Context.ReplicaId,
             new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error));
         fabricClient.HealthManager.ReportHealth(replicaHealthReport);
     }
@@ -147,11 +148,13 @@ activationContext.ReportApplicationHealth(healthInformation);
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[深入了解 Service Fabric 运行状况](service-fabric-health-introduction.md)
+* [深入了解 Service Fabric 运行状况](service-fabric-health-introduction.md)
+* [用于报告服务运行状况的 REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
+* [用于报告应用程序运行状况的 REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

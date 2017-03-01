@@ -1,5 +1,5 @@
 ---
-title: "服务总线中继示例概述 | Microsoft 文档"
+title: "Azure 服务总线中继示例概述 | Microsoft Docs"
 description: "分类并介绍相互链接的服务总线中继示例。"
 services: service-bus-relay
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2016
+ms.date: 02/13/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0b2206fae964c55e961505b9d0e2ad71fd0b2102
+ms.sourcegitcommit: 6027c973f0104fff9705a70f7812f62562165c1e
+ms.openlocfilehash: d830770c49caeacf762382ce1c6113d9196a5994
 
 
 ---
@@ -24,23 +24,23 @@ ms.openlocfilehash: 0b2206fae964c55e961505b9d0e2ad71fd0b2102
 服务总线中继示例演示[服务总线中继](https://azure.microsoft.com/services/service-bus/)中的关键功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
 
 > [!NOTE]
-> 服务总线示例未安装 SDK。 若要获取这些示例，请访问 [Azure SDK 示例页](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)。
+> 服务总线示例未随 Azure SDK 安装。 若要获取这些示例，请访问 [Azure SDK 示例页](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)。
 > 
-> 另外，[此处](https://github.com/Azure-Samples/azure-servicebus-relay-samples)提供一组已更新的服务总线中继示例（撰写本文时未介绍这些示例）。  
+> 此外，[此处](https://github.com/Azure-Samples/azure-servicebus-relay-samples)还有一组更新的服务总线中继示例。  
 > 
 > 
 
-有关消息的示例，请参阅[服务总线消息传递示例](../service-bus-messaging/service-bus-samples.md)。
+有关服务总线消息传送的示例，请参阅[服务总线消息传送示例](../service-bus-messaging/service-bus-samples.md)。
 
-## <a name="service-bus-relay"></a>服务总线中继
-下面的示例说明了如何编写使用服务总线中继服务的应用程序。
+## <a name="azure-service-bus-relay"></a>Azure 服务总线中继
+下面的示例说明了如何编写使用 Azure 中继服务的应用程序。
 
-请注意，中继示例需要一个连接字符串以访问服务总线命名空间。
+请注意，中继示例需要连接字符串才能访问中继命名空间。
 
-### <a name="to-obtain-a-connection-string-for-azure-service-bus"></a>获取 Azure 服务总线的连接字符串
+### <a name="to-obtain-a-connection-string-for-azure-relay"></a>获取 Azure 中继的连接字符串
 1. 登录到 [Azure 门户](http://portal.azure.com)。
-2. 在左侧列中，单击“服务总线”。
-3. 在列表中，单击命名空间的名称。
+2. 在“所有资源”窗格中单击展开命名空间列表。
+3. 在列表中，单击中继命名空间的名称。
 4. 在命名空间边栏选项卡中，单击“共享访问策略”。
 5. 在“共享访问策略”边栏选项卡中，单击“RootManageSharedAccessKey”。
 6. 将连接字符串复制到剪贴板。
@@ -48,13 +48,13 @@ ms.openlocfilehash: 0b2206fae964c55e961505b9d0e2ad71fd0b2102
 ### <a name="to-obtain-a-connection-string-for-service-bus-for-windows-server"></a>获取 Windows Server 服务总线的连接字符串
 1. 运行以下 Azure Powershell cmdlet：
    
-    ```
+    ```powershell
     get-sbClientConfiguration
     ```
 2. 将连接字符串粘贴到示例的 App.config 文件中。
 
-## <a name="service-bus-relay"></a>服务总线中继
-演示服务总线中继的示例。
+## <a name="azure-relay"></a>Azure 中继
+演示 Azure 中继的示例。
 
 ### <a name="getting-started"></a>入门
 | 示例名称 | 说明 | 最低 SDK 版本 | 可用性 |
@@ -84,13 +84,13 @@ ms.openlocfilehash: 0b2206fae964c55e961505b9d0e2ad71fd0b2102
 ## <a name="next-steps"></a>后续步骤
 请参阅以下主题了解服务总线的概念性概述。
 
-* [服务总线中继概述](service-bus-relay-overview.md)
+* [Azure 中继概述](relay-what-is-it.md)
 * [服务总线体系结构](../service-bus-messaging/service-bus-architecture.md)
 * [服务总线基础知识](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

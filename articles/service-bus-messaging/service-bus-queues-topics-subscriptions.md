@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/14/2016
+ms.date: 12/20/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: edee84938bddf28ac4dbf4152ccf9d7ab6afe6c3
+ms.sourcegitcommit: 60a914e4706414891863c5d1d07846898936815b
+ms.openlocfilehash: cd3b8b73db87a6b15b5a408609417ff2d2ca0a86
 
 
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
-Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久的发布/订阅消息。 这些中转消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送结构的发布-订阅、临时分离和负载平衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
+Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久的发布/订阅消息。 这些“中转”消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送结构的发布-订阅、临时分离和负载平衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
 
-服务总线中构成中转消息传送功能的核心的消息传送实体是队列、主题/订阅和规则/操作。
+服务总线中构成消息传送功能的核心的消息传送实体是队列、主题和订阅，以及规则/操作。
 
 ## <a name="queues"></a>队列
-队列为一个或多个竞争使用方提供“先入先出 (FIFO)”消息传递方式。 也就是说，接收方预计会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。 使用队列的主要优点是，实现应用程序组件的“临时分离”。 换而言之，由于消息持久存储在队列中，因此创建方（发送方）和使用方（接收方）不必同时发送和接收消息。 此外，创建方不必等待使用方的答复即可继续处理并发送更多消息。
+队列为一个或多个竞争使用方提供*先入先出* (FIFO) 消息传递方式。 也就是说，接收方预计会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。 使用队列的主要优点是，实现应用程序组件的“临时分离”。 换而言之，由于消息持久存储在队列中，因此创建方（发送方）和使用方（接收方）不必同时发送和接收消息。 此外，创建方不必等待使用方的答复即可继续处理并发送更多消息。
 
 相关的优点是“负载分级”，它允许创建方和使用方以不同速率发送和接收消息。 在许多应用程序中，系统负载随时间而变化，而每个工作单元所需的处理时间通常为常量。 使用队列在消息创建者与使用者之间中继意味着，只需将使用方应用程序预配为适应平均负载而非最大负载。 队列深度将随传入负载的变化而加大和减小。 这将直接根据为应用程序加载提供服务所需的基础结构的数目来节省成本。 随着负载增加，可添加更多的工作进程以从队列中读取。 每条消息仅由一个辅助进程处理。 另外，可通过此基于拉取的负载平衡来以最合理的方式使用辅助计算机，即使这些辅助计算机具有不同的处理能力（因为它们将以其最大速率拉取消息）也是如此。 此模式通常称为“使用者竞争”模式。
 
@@ -34,16 +34,16 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 创建队列是一个多步骤过程。 可通过 [Microsoft.ServiceBus.NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类执行服务总线消息传送实例（队列和主题）的管理操作，该类可通过提供服务总线命名空间的基址和用户凭据进行构建。 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 提供了创建、枚举和删除消息传送实体的方法。 在使用 SAS 名称和密钥创建 [Microsoft.ServiceBus.TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 对象以及一个服务命名空间管理对象之后，可使用 [Microsoft.ServiceBus.NamespaceManager.CreateQueue](https://msdn.microsoft.com/library/azure/hh293157.aspx) 方法来创建队列。 例如：
 
-```
+```csharp
 // Create management credentials
-TokenProvider credentials = TokenProvider. CreateSharedAccessSignatureTokenProvider(sasKeyName,sasKeyValue);
+TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(sasKeyName,sasKeyValue);
 // Create namespace client
 NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials);
 ```
 
 你可以随后创建一个队列对象和消息工厂，将服务总线 URI 用作参数。 例如：
 
-```
+```csharp
 QueueDescription myQueue;
 myQueue = namespaceClient.CreateQueue("TestQueue");
 MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", ServiceNamespace, string.Empty), credentials); 
@@ -52,7 +52,7 @@ QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
 
 你可以随后向队列发送消息。 例如，如果具有名为 `MessageList` 的中转消息列表，将出现此代码，类似如下形式：
 
-```
+```csharp
 for (int count = 0; count < 6; count++)
 {
     var issue = MessageList[count];
@@ -63,7 +63,7 @@ for (int count = 0; count < 6; count++)
 
 你可以随后接收来自队列的消息，如下所示：
 
-```
+```csharp
 while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, seconds: 5))) != null)
     {
         Console.WriteLine(string.Format("Message received: {0}, {1}, {2}", message.SequenceNumber, message.Label, message.MessageId));
@@ -74,13 +74,13 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
     }
 ```
 
-使用 [ReceiveAndDelete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式时，接收操作是一个单一快照。即，当服务总线收到请求时，会将该消息标记为“已使用”并将其返回给应用程序。 [ReceiveAndDelete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式是最简单的模式，最适合应用程序允许出现故障时不处理消息的方案。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+使用 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式时，接收操作是一个单一快照。即，当服务总线收到请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许出现故障时不处理消息的方案。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
-使用 [PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 模式时，接收操作分成了两步，从而有可能支持无法容忍遗漏消息的应用程序。 当服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，然后将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 完成接收过程的第二个阶段。 服务总线发现 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 调用时会将消息标记为“正在使用”。
+使用 [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式时，接收操作分成了两步，从而有可能支持无法容忍遗漏消息的应用程序。 当服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，然后将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 完成接收过程的第二个阶段。 服务总线发现 **Complete** 调用时会将消息标记为“正在使用”。
 
-如果应用程序出于某种原因无法处理消息，则其可对收到的消息调用 [Abandon](https://msdn.microsoft.com/library/azure/hh181837.aspx) 方法（而不是 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 方法）。 这可使服务总线解锁消息并使其能够重新被同一个使用方或其他竞争使用方接收。 此外，还存在与锁定关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线将解锁该消息并使其可再次被接收（实质上是默认执行一个 [Abandon](https://msdn.microsoft.com/library/azure/hh181837.aspx) 操作）。
+如果应用程序出于某种原因无法处理消息，则其可对收到的消息调用 [Abandon](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) 方法（而不是 [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 方法）。 这可使服务总线解锁消息并使其能够重新被同一个使用方或其他竞争使用方接收。 此外，还存在与锁定关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线将解锁该消息并使其可再次被接收（实质上是默认执行一个 [Abandon](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) 操作）。
 
-请注意，如果应用程序在处理消息之后，但在发出 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作“至少处理一次”，即每条消息将至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑，此重复可基于消息的 **MessageId** 属性实现，无论传送次数多少，均保持不变。 这称为“仅一次”处理。
+请注意，如果应用程序在处理消息之后，但在发出 **Complete** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此情况通常称作“至少处理一次”，即每条消息至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑，此重复可基于消息的 **MessageId** 属性实现，无论传送次数多少，均保持不变。 这称为“仅一次”处理。
 
 有关如何创建和将消息发送至队列以及从队列发送消息的详细信息和操作示例说明，请参阅[服务总线中转消息传送 .NET 教程](service-bus-brokered-tutorial-dotnet.md)。
 
@@ -89,29 +89,29 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
 
 通过比较，队列的消息发送功能直接映射到主题，其消息接收功能会映射到订阅。 这意味着订阅支持先前有关队列的描述中的模式：竞争使用者、临时分离、负荷量和负载平衡。
 
-创建主题与创建队列类似，如之前部分中的示例所示。 创建服务 URI，然后使用 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) 类来创建命名空间客户端。 然后，可使用 [CreateTopic](https://msdn.microsoft.com/library/azure/hh293080.aspx) 方法创建主题。 例如：
+创建主题与创建队列类似，如之前部分中的示例所示。 创建服务 URI，然后使用 [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager) 类来创建命名空间客户端。 然后，可使用 [CreateTopic](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateTopic_System_String_) 方法创建主题。 例如：
 
-```
+```csharp
 TopicDescription dataCollectionTopic = namespaceClient.CreateTopic("DataCollectionTopic");
 ```
 
 接下来，根据需要添加订阅：
 
-```
+```csharp
 SubscriptionDescription myAgentSubscription = namespaceClient.CreateSubscription(myTopic.Path, "Inventory");
 SubscriptionDescription myAuditSubscription = namespaceClient.CreateSubscription(myTopic.Path, "Dashboard");
 ```
 
 然后，可创建主题客户端。 例如：
 
-```
+```csharp
 MessagingFactory factory = MessagingFactory.Create(serviceUri, tokenProvider);
 TopicClient myTopicClient = factory.CreateTopicClient(myTopic.Path)
 ```
 
 使用消息发送器，可向主题发送消息和从主题接收消息，如先前部分所示。 例如：
 
-```
+```csharp
 foreach (BrokeredMessage message in messageList)
 {
     myTopicClient.Send(message);
@@ -120,9 +120,9 @@ foreach (BrokeredMessage message in messageList)
 }
 ```
 
-与队列类似，通过 [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 对象而不是 [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) 对象从订阅接收消息。 创建订阅客户端，将主题名称、订阅名称和接收模式（可选）作为参数传递。 例如，对于**清单**订阅：
+与队列类似，通过 [SubscriptionClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) 对象而不是 [QueueClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queueclient) 对象从订阅接收消息。 创建订阅客户端，将主题名称、订阅名称和接收模式（可选）作为参数传递。 例如，对于**清单**订阅：
 
-```
+```csharp
 // Create the subscription client
 MessagingFactory factory = MessagingFactory.Create(serviceUri, tokenProvider); 
 
@@ -149,16 +149,16 @@ while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != n
 
 要使用先前的示例仅筛选来自 **Store1** 的消息，请创建仪表板订阅，如下所示：
 
-```
+```csharp
 namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFilter("StoreName = 'Store1'"));
 ```
 
 使用此订阅筛选器，仅 `StoreName` 属性设置为 `Store1` 的消息将被复制到 `Dashboard` 订阅的虚拟队列。
 
-有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) 和 [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx) 类。 另请参阅[中转消息传送：高级筛选器](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)和[主题筛选器](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)示例。
+有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 和 [SqlRuleAction](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类。 另请参阅[中转消息传送：高级筛选器](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)和[主题筛选器](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)示例。
 
 ## <a name="next-steps"></a>后续步骤
-有关使用服务总线中转消息传送实体的详细信息和示例，请参阅以下高级主题。
+有关使用服务总线消息传送的详细信息和示例，请参阅以下高级主题。
 
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线中转消息传送 .NET 教程](service-bus-brokered-tutorial-dotnet.md)
@@ -169,6 +169,6 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

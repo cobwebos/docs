@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0bcb8473b2f7fb381ba9f12fb8458e14b4d82c58
+ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
+ms.openlocfilehash: afecb15f36525c53a66f30047dffe8a3e8f36107
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: 0bcb8473b2f7fb381ba9f12fb8458e14b4d82c58
 
 若要创建记录器，请使用以下 URL 模板发出 HTTP PUT 请求。
 
-    https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2014-02-14-preview
+`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2014-02-14-preview`
 
 * 将 `{your service}` 替换为 API 管理服务实例的名称。
 * 将 `{new logger name}` 替换为新记录器的所需名称。 配置 [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) 策略时，将引用此名称
@@ -66,25 +66,27 @@ ms.openlocfilehash: 0bcb8473b2f7fb381ba9f12fb8458e14b4d82c58
 
 使用以下模板指定请求正文。
 
-    {
-      "type" : "AzureEventHub",
-      "description" : "Sample logger description",
-      "credentials" : {
-        "name" : "Name of the Event Hub from the Azure Classic Portal",
-        "connectionString" : "Endpoint=Event Hub Sender connection string"
-        }
+```json
+{
+  "type" : "AzureEventHub",
+  "description" : "Sample logger description",
+  "credentials" : {
+    "name" : "Name of the Event Hub from the Azure Classic Portal",
+    "connectionString" : "Endpoint=Event Hub Sender connection string"
     }
+}
+```
 
 * `type` 必须设置为 `AzureEventHub`。
 * `description` 提供记录器的可选说明，并且可在需要时为零长度。
 * `credentials` 包含 Azure 事件中心的 `name` 和 `connectionString`。
 
-发出请求时，如果创建记录器，则返回 `201 Created` 的状态代码。 
+发出请求时，如果创建记录器，则返回 `201 Created` 的状态代码。
 
 > [!NOTE]
 > 有关其他可能的返回代码及其原因，请参阅[创建记录器](https://msdn.microsoft.com/library/azure/mt592020.aspx#PUT)。 若要查看如何执行其他操作，如列表、更新和删除，请参阅[记录器](https://msdn.microsoft.com/library/azure/mt592020.aspx)实体文档。
-> 
-> 
+>
+>
 
 ## <a name="configure-log-to-eventhubs-policies"></a>配置 log-to-eventhubs 策略
 在 API 管理中配置记录器后，可配置 log-to-eventhubs 策略以记录所需事件。 log-to-eventhubs 策略可在入站策略部分或出站策略部分中使用。
@@ -101,9 +103,11 @@ ms.openlocfilehash: 0bcb8473b2f7fb381ba9f12fb8458e14b4d82c58
 
 ![策略编辑器][event-hub-policy]
 
-    <log-to-eventhub logger-id ='logger-id'>
-      @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
-    </log-to-eventhub>
+```xml
+<log-to-eventhub logger-id ='logger-id'>
+  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+</log-to-eventhub>
+```
 
 将 `logger-id` 替换为在上一步中配置的 API 管理记录器的名称。
 
@@ -113,8 +117,8 @@ ms.openlocfilehash: 0bcb8473b2f7fb381ba9f12fb8458e14b4d82c58
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关 Azure 事件中心的详细信息
-  * [Azure 事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-  * [使用 EventProcessorHost 接收消息](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)
+  * [Azure 事件中心入门](../event-hubs/event-hubs-c-getstarted-send.md)
+  * [使用 EventProcessorHost 接收消息](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)
 * 了解有关 API 管理和事件中心集成的详细信息
   * [记录器实体引用](https://msdn.microsoft.com/library/azure/mt592020.aspx)
@@ -123,8 +127,8 @@ ms.openlocfilehash: 0bcb8473b2f7fb381ba9f12fb8458e14b4d82c58
 
 ## <a name="watch-a-video-walkthrough"></a>观看视频演练
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Integrate-Azure-API-Management-with-Event-Hubs/player]
-> 
-> 
+>
+>
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png
 [create-event-hub]: ./media/api-management-howto-log-event-hubs/create-event-hub.png
@@ -137,12 +141,6 @@ ms.openlocfilehash: 0bcb8473b2f7fb381ba9f12fb8458e14b4d82c58
 
 
 
-
-
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

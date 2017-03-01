@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
+ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
+ms.openlocfilehash: f58c0967890ee99c574957f0cdfe1bb412f7f9e8
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,8 +27,8 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
 将 Keylight 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Keylight
-* 可以让用户使用其 Azure AD 帐户自动登录到 Keylight（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以让用户使用其 Azure AD 帐户自动登录到 Keylight 单一登录 (SSO)
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -37,9 +38,8 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
 * Azure 订阅
 * 已启用 Keylight 单一登录的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。 
 > 
 
 测试本教程中的步骤应遵循以下建议：
@@ -55,7 +55,7 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
 1. 从库中添加 Keylight
 2. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-keylight-from-the-gallery"></a>从库中添加 Keylight
+## <a name="add-keylight-from-the-gallery"></a>从库中添加 Keylight
 若要配置 Keylight 与 Azure AD 的集成，需要从库中将 Keylight 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Keylight，请执行以下步骤：**
@@ -80,18 +80,18 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，基于一个名为“Britta Simon”的测试用户使用 Keylight 配置和测试 Azure AD 单一登录。
 
 若要使用 Keylight 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Keylight 测试用户](#creating-a-keylight-test-user)** - 在 Keylight 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+3. **[创建 Keylight 测试用户](#creating-a-keylight-test-user)** - 在 Keylight 中创建对应的 Britta Simon 用户，该用户链接到她的 Azure AD 用户。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 在本部分中，在 Azure 经典门户中启用 Azure AD 单一登录，并在 Keylight 应用程序中配置单一登录。
 
 **若要使用 Keylight 配置 Azure AD 单一登录，请执行以下步骤：**
@@ -106,78 +106,58 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
    
     ![配置单一登录](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Keylight 应用程序的 URL：**“https://\<公司名称\>.keylightgrc.com/Login.aspx?saml=1”**。
+    * 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Keylight 应用程序的 URL：**“https://\<公司名称\>.keylightgrc.com/Login.aspx?saml=1”**。
 
-
-1. 在“配置 Keylight 的单一登录”页上，执行以下步骤：
+4. 在“配置 Keylight 的单一登录”页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    1. 单击“下载证书”，然后将文件保存在计算机上。
+    2. 单击“资源组名称” 的 Azure 数据工厂。
+5. 若要在 Keylight 中启用 SSO，请执行以下步骤：
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-2. 若要在 Keylight 中启用 SSO，请执行以下步骤：
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 以管理员身份登录到 Keylight 帐户。
-   
-    b. 在顶部菜单中，单击“人员”，然后选择“Keylight 设置”。
+    1. 以管理员身份登录到 Keylight 帐户。
+    2. 在顶部菜单中，单击“人员”，然后选择“Keylight 设置”。
    
     ![配置单一登录](./media/active-directory-saas-keylight-tutorial/401.png) 
-   
-    c. 在左侧树视图中，单击“SAML”。
+    3. 在左侧树视图中，单击“SAML”。
    
     ![配置单一登录](./media/active-directory-saas-keylight-tutorial/402.png) 
-   
-    d.单击“下一步”。 在“SAML 设置”对话框中，单击“编辑”。
+    4. 在“SAML 设置”对话框中，单击“编辑”。
    
     ![配置单一登录](./media/active-directory-saas-keylight-tutorial/404.png) 
-3. 在“编辑 SAML 设置”对话框页上，执行以下步骤：
+6. 在“编辑 SAML 设置”对话框页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-keylight-tutorial/405.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将“SAML 身份验证”设置为“活动”。
+    1. 将“SAML 身份验证”设置为“活动”。
+    2. 在 Azure AD 经典门户中，复制“SAML SSO URL”值，然后将其粘贴到“标识提供者登录 URL”文本框中。
+    3. 在 Azure AD 经典门户中，复制“单一注销服务 URL”值，然后将其粘贴到“标识提供者注销 URL”文本框中。
+    4. 单击“选择文件”，选择已下载的 Keylight 证书，然后单击“打开”上载证书。
+    5. 将“SAML 用户 ID 位置”设置为 subject 语句的 NameIdentifier 元素。
+    6. 使用以下模式提供 **Keylight 服务提供商：**https://&lt;公司名称&gt;.keylightgrc.com**。
+    7. 指定以下设置：
+     * 将“自动预配用户”设置为“活动”。
+     * 将“自动预配帐户类型”设置为“超级用户”。
+     * 对于“自动预配安全角色”，选择“使用 SAML 的标准用户”。
+     * 对于“自动预配安全配置”，选择“标准用户配置”。
+    8. 输入以下内容：    
+     * 在“电子邮件属性”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress”。
+     * 在“名字属性”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”。
+     * 在“姓氏属性”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”。
+    9. 单击“保存” 。
 
-    b. 在 Azure AD 经典门户中，复制“SAML SSO URL”值，然后将其粘贴到“标识提供者登录 URL”文本框中。
-
-    c. 在 Azure AD 经典门户中，复制“单一注销服务 URL”值，然后将其粘贴到“标识提供者注销 URL”文本框中。
-
-    d.单击“下一步”。 单击“选择文件”，选择已下载的 Keylight 证书，然后单击“打开”上载证书。
-
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将“SAML 用户 ID 位置”设置为 subject 语句的 NameIdentifier 元素。
-
-    f. 使用以下模式提供 **Keylight 服务提供商：**https://&lt;公司名称&gt;.keylightgrc.com**。
-
-    g. 将“自动预配用户”设置为“活动”。
-
-    h. 将“自动预配帐户类型”设置为“全部用户”。
-
-    i. 对于“自动预配安全角色”，选择“使用 SAML 的标准用户”。
-
-    j. 对于“自动预配安全配置”，选择“标准用户配置”。
-
-    k. 在“电子邮件属性”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress”。
-
-    l. 在“名字属性”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”。
-
-    m. 在“姓氏属性”文本框中，键入“http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”。
-
-    n. 单击“保存” 。
-
-
-
-
-1. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+7. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
-2. 在“单一登录确认”页上，单击“完成”。  
+8. 在“单一登录确认”页上，单击“完成”。  
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 在本部分中，将在 Azure 经典门户中创建一个名为 Britta Simon 的测试用户。
 
-在“用户列表”中，选择“Britta Simon”。
+* 在“用户列表”中，选择“Britta Simon”。
 
 ![创建 Azure AD 用户][20]
 
@@ -197,24 +177,18 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-keylight-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
+   1. 在“用户类型”中，选择“你的组织中的新用户”。
+   2. 在“用户名”文本框中，键入“BrittaSimon”。
+   3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-keylight-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+   1. 在“名字”文本框中，键入“Britta”。    
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-keylight-tutorial/create_aaduser_07.png) 
@@ -222,21 +196,19 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-keylight-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    1. 写下“新密码”的值。
+    2. 单击“完成”。   
 
-### <a name="creating-a-keylight-test-user"></a>创建 Keylight 测试用户
+### <a name="create-a-keylight-test-user"></a>创建 Keylight 测试用户
 在本部分中，将在 Keylight 中创建一个名为“Britta Simon”的用户。 Keylight 支持在默认情况下启用的实时预配。
 
 本部分不存在任何操作项。 访问 Keylight 时，如果该用户尚不存在，则将创建新用户。 
 
-> [!NOTE]
-> 如果需要手动创建用户，则需要联系 Keylight 支持团队。
-> 
+>[!NOTE]
+>如果需要手动创建用户，则需要联系 Keylight 支持团队。 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 在本部分中，通过授予 Britta Simon 访问 Keylight 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户][200] 
@@ -257,7 +229,7 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
+### <a name="test-single-sign-on"></a>测试单一登录
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Keylight 磁贴时，你应自动登录到 Keylight 应用程序。
@@ -283,9 +255,4 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
 [203]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

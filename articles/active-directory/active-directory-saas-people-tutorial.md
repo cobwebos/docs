@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
 
 * 可在 Azure AD 中控制谁有权访问 People
 * 可以让用户通过其 Azure AD 帐户自动登录到 People（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可使用 Azure 经典门户在一个中心位置管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,10 +35,10 @@ ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
 若要配置 Azure AD 与 People 的集成，需备齐以下项目：
 
 * Azure 订阅
-* 启用了 People 单一登录的订阅
+* 已启用 People 单一登录 (SSO) 的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 测试本教程中的步骤时，建议不要使用生产环境。
 > 
 > 
 
@@ -104,33 +104,24 @@ ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
    
     ![配置单一登录](./media/active-directory-saas-people-tutorial/tutorial_people_04.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 People 应用程序的 URL：**“https://\<公司名称\>.peoplehr.com/”**。 
-   
-    b. 如果不知道租户 URL，通过 [customerservices@peoplehr.com](mailto:customerservices@peoplehr.com) 联系 People 支持团队即可获取。  
-   
-    c. 在“标识符”文本框中，键入租户 URL。 
-   
-    d.单击“下一步”。 在“答复 URL”文本框中，按以下模式键入 URL：“**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**”。
-   
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”
+   1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 People 应用程序的 URL：**“https://\<公司名称\>.peoplehr.com/”**。 
+   2. 如果不知道租户 URL，通过 [customerservices@peoplehr.com](mailto:customerservices@peoplehr.com) 联系 People 支持团队即可获取。    3. 在“标识符”文本框中，键入租户 URL。 
+   4. 在“答复 URL”文本框中，按以下模式键入 URL：“**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**”。
+   5. 单击“下一步”。
 4. 在“在 People 中配置单一登录”页中，执行以下步骤，然后单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-people-tutorial/tutorial_people_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
-   
-    b. 单击“下一步”。
+   1. 单击“下载元数据”，然后在计算机上保存该文件。
+   2. 单击“下一步”。
 5. 若要为应用程序配置 SSO，需要以管理员身份登录到 People 租户。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在左侧菜单中，单击“设置”。
-   
-    ![配置单一登录](./media/active-directory-saas-people-tutorial/tutorial_people_001.png) 
-   
-    b. 单击“公司”。 
+   1. 在左侧菜单中，单击“设置”。
+    ![配置单一登录](./media/active-directory-saas-people-tutorial/tutorial_people_001.png)    
+   2. 单击“公司”。 
    
     ![配置单一登录](./media/active-directory-saas-people-tutorial/tutorial_people_002.png) 
-   
-    c. 在“上载‘单一登录’SAML 元数据文件”中，单击“浏览”以上载已下载的元数据文件。
+    3. 在“上载‘单一登录’SAML 元数据文件”中，单击“浏览”以上载已下载的元数据文件。
    
     ![配置单一登录](./media/active-directory-saas-people-tutorial/tutorial_people_003.png)
 6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
@@ -162,24 +153,18 @@ ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
+    1. 在“用户类型”中，选择“你的组织中的新用户”。
+    2. 在“用户名”文本框中，键入“BrittaSimon”。
+    3. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/create_aaduser_07.png) 
@@ -187,9 +172,8 @@ ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-people-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+   1. 写下“新密码”的值。
+   2. 单击“完成”。   
 
 ### <a name="creating-a-people-test-user"></a>创建 People 测试用户
 本部分的目的是在 People 中创建名为“Britta Simon”的用户。 People 不支持实时预配，因此若要手动创建用户，需联系 People 支持团队。
@@ -243,6 +227,6 @@ ms.openlocfilehash: c8ca9d1ac59b0470a87e22731494adbc359b3420
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

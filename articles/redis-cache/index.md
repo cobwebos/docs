@@ -1,13 +1,25 @@
 ---
+title: "Azure Redis 缓存文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Azure Redis 缓存 - 一个安全的数据缓存和消息传送中转站，可让应用程序快速访问数据。 教程、API 参考和其他资源。"
+services: redis-cache
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: redis-cache
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4cd50960b30990f3220788e6613a2815d8e28612
-ms.openlocfilehash: 026c452cd784da14a901cab8e5aecaafda448418
+ms.sourcegitcommit: ba5cba11b7b5ba142094e9d2c0b027386266e83a
+ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
 
 ---
 #<a name="redis-cache-documentation"></a>Redis 缓存文档
 
-Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓存可以访问 Microsoft 管理的、可从 Azure 中的任何应用程序访问的安全专用 Redis 缓存。 Azure Redis 缓存提供高吞吐量、一贯的低延迟数据访问速度，为可缩放的快速 Azure 应用程序提供支持。
+了解如何使用 Azure Redis 缓存 - 一个安全的数据缓存和消息传送中转站，可让应用程序以较高的吞吐量、较低的延迟访问数据。 教程、API 参考和其他文档介绍了如何从 Azure 上的任何应用程序使用 Redis 缓存。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -183,16 +195,10 @@ Azure Redis 缓存基于流行的开源 Redis 缓存。 使用 Azure Redis 缓�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Redis 缓存文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

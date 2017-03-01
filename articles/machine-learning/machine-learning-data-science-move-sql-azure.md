@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 61176151652f9c9d79ebe07d2a4aedf8702e2d16
-ms.openlocfilehash: bf3d2db76bd1f39a3db9123ae7350fb57af4fc80
+ms.sourcegitcommit: 76acf42e80de445ff897ca59e34a35e8057ec843
+ms.openlocfilehash: 0535676070fdc83c115c63ec69f09a31fa712740
 
 
 ---
@@ -42,9 +42,9 @@ ms.openlocfilehash: bf3d2db76bd1f39a3db9123ae7350fb57af4fc80
 * **Azure 订阅帐户**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)。
 * 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，可在 [Microsoft Azure SQL 数据库入门](../sql-database/sql-database-get-started.md)中找到相关信息，了解如何设置 Azure SQL 数据库的新实例。
-* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
-**数据**：使用 [NYC 出租车数据集](http://chriswhong.com/open-data/foil_nyc_taxi/)演示迁移过程。 NYC 出租车数据集包含行程数据和费用的相关信息，且如文章所述，可用于 Azure Blob 存储：[NYC 出租车数据](http://www.andresmh.com/nyctaxitrips/)。 [NYC 出租车行程数据集说明](machine-learning-data-science-process-sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
+**数据**：使用 [NYC 出租车数据集](http://chriswhong.com/open-data/foil_nyc_taxi/)演示迁移过程。 NYC 出租车数据集包含行程数据和费用的相关信息，且可用于 Azure Blob 存储：[NYC 出租车数据](http://www.andresmh.com/nyctaxitrips/)。 [NYC 出租车行程数据集说明](machine-learning-data-science-process-sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
 
 可将此处描述的流程调整为一组自己的数据，或者通过使用 NYC 出租车数据集来按照所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库中，请按照[将数据批量导入 SQL Server 数据库](machine-learning-data-science-process-sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
 
@@ -80,6 +80,6 @@ ms.openlocfilehash: bf3d2db76bd1f39a3db9123ae7350fb57af4fc80
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

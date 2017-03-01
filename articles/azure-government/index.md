@@ -1,8 +1,20 @@
 ---
+title: "Azure 政府版文档 - 教程和 API 参考 | Microsoft 文档"
+description: 
+services: Azure-government
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: Azure-government
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
-ms.openlocfilehash: 93a2c8da64000d03538f73befc167368915c3dbb
+ms.sourcegitcommit: a715413312c7d8bd3dcfb9b252f3dae8d95fafd7
+ms.openlocfilehash: 7c4a0c1167837a876164d93d93e6dd6cd8f62ee6
 
 ---
 #<a name="azure-government-documentation"></a>Azure Government 文档
@@ -58,13 +70,27 @@ Microsoft Azure 政府版提供构建在安全性、隐私性与控制性、合�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
+                        <p><a href="/azure/azure-government/documentation-government-image-gallery">映像</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-manage-marketplace">应用商店</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-manage-marketplace-partners">合作伙伴的应用商店</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
                         <h3>服务</h3>
-                        <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-compute">计算</a></p>
-                        <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-services-storage">存储</a></p>
-                        <p><a href="https://docs.microsoft.com/azure/azure-government/documentation-government-services-database">数据库</a></p>
-                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-networking">联网</a></p>
-                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity">安全性和标识</a></p>
-                        <p><a href="https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement">监视和管理</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-compute">计算</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-services-storage">存储</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-services-database">数据库</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-networking">网络</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-services-securityandidentity">安全性 + 标识</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-services-monitoringandmanagement">监视 + 管理</a></p>
+                        <p><a href="/azure/azure-government/documentation-government-services-monitoringandmanagement">Web 与移动</a></p>
                     </div>
                 </div>
             </div>
@@ -73,16 +99,10 @@ Microsoft Azure 政府版提供构建在安全性、隐私性与控制性、合�
 </ul>
     
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-government.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Government 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO3-->
 
 

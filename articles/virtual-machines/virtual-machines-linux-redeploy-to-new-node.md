@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 3295120664e409440641818b13dd1abab6f2f72f
-ms.openlocfilehash: 3864148ecd09b5bc4199185bc0e5a781703f3fdb
+ms.sourcegitcommit: 13ae22245d105b32b9fc50d7dbc8a6d50ad4560a
+ms.openlocfilehash: 85fcc919b97d4cc06f89fc1ea5dc701ff61c2b27
 
 
 ---
@@ -26,14 +26,29 @@ ms.openlocfilehash: 3864148ecd09b5bc4199185bc0e5a781703f3fdb
 > [!NOTE]
 > 重新部署 VM 后，临时磁盘将丢失，并将更新与虚拟网络接口关联的动态 IP 地址。 
 
+可使用以下选项之一重新部署 VM。 只需选择一个选项来重新部署 VM：
 
-## <a name="using-azure-cli"></a>使用 Azure CLI
-请确保在计算机上[已安装最新的 Azure CLI](../xplat-cli-install.md)，并且你处于 Resource Manager 模式 (`azure config mode arm`)。
+- [Azure CLI 1.0](#azure-cli-10)
+- [Azure CLI 2.0（预览版）](#azure-cli-20-preview)
+- [Azure 门户](#using-azure-portal)
+
+
+## <a name="azure-cli-10"></a>Azure CLI 1.0
+安装[最新的 Azure CLI 1.0](../xplat-cli-install.md)，登录到 Azure 帐户，并确保处于 Resource Manager 模式 (`azure config mode arm`)。
 
 以下示例重新部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
+```
+
+## <a name="azure-cli-20-preview"></a>Azure CLI 2.0（预览版）
+安装最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+
+使用 [az vm redeploy](/cli/azure/vm#redeploy) 重新部署 VM。 以下示例重新部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
+
+```azurecli
+az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../includes/virtual-machines-common-redeploy-to-new-node.md)]
@@ -44,6 +59,6 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

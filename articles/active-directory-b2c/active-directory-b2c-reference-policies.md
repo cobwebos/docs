@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 55ed7d44006f18fa3573a5bef5e8f24107ca20fa
+ms.sourcegitcommit: 33521eca953c0e14a7fdaa99edef2997397286eb
+ms.openlocfilehash: cd79a485feddc68924f9b7f5e7d8d614b4e28d28
 
 
 ---
@@ -162,12 +162,16 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
     > 
     > 
 
+## <a name="how-to-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>如何将注册或登录策略链接到密码重置策略？
+当你创建注册或登录策略时（使用本地帐户），使用者将看到“忘记了密码”？ 体验的第一页中的链接。 单击此链接不会自动触发密码重置策略， 而是向应用返回特定的错误代码 `AADB2C90118`。 应用需要处理此错误并调用特定的密码重置策略。 [此处](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)提供了演示这种策略链接方法的示例。
+
 ## <a name="additional-resources"></a>其他资源
 * [令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。
+* [在使用者注册期间禁用电子邮件验证](active-directory-b2c-reference-disable-ev.md)
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

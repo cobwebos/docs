@@ -1,5 +1,5 @@
 ---
-title: "创建 Azure Function App 和存储帐户 | Microsoft Docs"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 3 课：模板部署 |Microsoft Docs"
 description: "Azure Function App 侦听 Azure IoT 中心事件，处理传入的消息并将其写入到 Azure 表存储中。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: cd3ad8ed3134bfc8023155f08704b634f1f3a93c
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 402a5dac4e77f64576acb968b67df92167f54f27
 
 
 ---
@@ -77,6 +77,6 @@ az group deployment create --template-file arm-template.json --parameters @arm-t
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

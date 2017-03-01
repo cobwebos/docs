@@ -1,5 +1,5 @@
 ---
-title: "Azure 存储复制 | Microsoft Docs"
+title: "Azure 存储中的数据复制 | Microsoft Docs"
 description: "复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。"
 services: storage
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8253e4c58cf9f1900a6e76885af3abac32c78cb0
+ms.sourcegitcommit: 349be81b5d1d5ccc1510360974b4e3b10471cf7f
+ms.openlocfilehash: 13cd31bdce89ae898a6e22a1d27b5aed819ccc0a
 
 
 ---
@@ -77,13 +77,13 @@ LRS 是成本最低的选项，与其他选项相比，提供最小的持久性�
 
 对于启用了 GRS 的存储帐户，更新将首先提交到主要区域，并在其中复制三次。 然后，更新将异步复制到次要区域（也是在其中复制三次）。
 
-使用 GRS，主要区域和次要区域管理如 LRS 所述的存储缩放单位内的跨单独的容错域和升级域的副本。
+使用 GRS 时，如 LRS 所述，主要和次要区域在一个存储缩放单位内管理跨单独容错域和升级域的副本。
 
 注意事项：
 
 * 由于异步复制涉及延迟，因此在遇到区域性灾难时，如果无法将数据从主要区域中恢复，则尚未复制到次要区域的更改将会丢失。
-* 在 Microsoft 启动故障转移到次要区域之前，该副本不可用。
-* 如果应用程序想要从次要区域中读取，用户应启用 RA-GRS。
+* 在 Microsoft 启动故障转移到次要区域之前，该副本不可用。 如果 Microsoft 启动了故障转移到次要区域，那么在故障转移完成后，就可以读取和编写该数据的访问。 有关详细信息，请参阅[灾难恢复指南](storage-disaster-recovery-guidance.md)。 
+* 如果应用程序想要从次要区域中进行读取，用户应启用 RA-GRS。
 
 创建存储帐户时，可以为帐户选择主要区域。 次要区域是根据主要区域确定的且无法更改。 下表显示了配对的主要区域和次要区域。
 
@@ -129,9 +129,12 @@ LRS 是成本最低的选项，与其他选项相比，提供最小的持久性�
 注意事项：
 
 * 应用程序必须管理在使用 RA-GRS 时与之交互的终结点。
+* 由于异步复制涉及延迟，因此在遇到区域性灾难时，如果无法将数据从主要区域中恢复，则尚未复制到次要区域的更改将会丢失。
+* 如果 Microsoft 启动了故障转移到次要区域，那么在故障转移完成后，你就可以读取和编写该数据。 有关详细信息，请参阅[灾难恢复指南](storage-disaster-recovery-guidance.md)。 
 * RA-GRS 的用途是实现高可用性。 有关可伸缩性的指南，请查看[性能清单](storage-performance-checklist.md)。
 
 ## <a name="next-steps"></a>后续步骤
+* [使用 RA-GRS 存储设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)
 * [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)
 * [有关 Azure 存储帐户](storage-create-storage-account.md)
 * [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
@@ -141,6 +144,6 @@ LRS 是成本最低的选项，与其他选项相比，提供最小的持久性�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement 中的分析、监视、分段和仪表板
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 04a7020a-ad74-4491-be69-0bd574890029
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c407e8f0beb110844ba2ae4ca1a065a122d0fdbd
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -59,10 +60,5 @@ ms.openlocfilehash: c407e8f0beb110844ba2ae4ca1a065a122d0fdbd
 ### <a name="causes"></a>原因
 * 要解决在分析、监视或仪表板中看到的应用程序崩溃问题，请务必查看先前版本的 SDK 的已知问题发行说明。
 * 为了进一步解决应用程序崩溃问题，请从安装了应用程序的测试设备执行一个事件，并在 Azure Mobile Engagement UI 的“监视 – 事件”部分中查找你的设备 ID。 然后，执行导致应用程序崩溃的事件，并在 Azure Mobile Engagement UI 的“监视 – 崩溃”部分中查找其他信息。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

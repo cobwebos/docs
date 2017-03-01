@@ -12,27 +12,36 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 12/15/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1a7f34989dce97f32bfbbbede9acd96a1dd58e14
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: aabca8fd228b1fc7c60d295a9502dece29db1b68
 
 
 ---
 # <a name="monitor-documentdb-requests-usage-and-storage"></a>监视 DocumentDB 请求、使用情况和存储
 可以在 [Azure 门户](https://portal.azure.com/)中监视 Azure DocumentDB 帐户。 对于每个 DocumentDB 帐户，性能指标（如请求和服务器错误）和使用情况指标（如存储消耗）都可用。
 
-可以在“帐户”边栏选项卡或新的“指标”边栏选项卡上查看指标。
+可在“帐户”边栏选项卡、新的“指标”边栏选项卡或 Azure Monitor.查看指标。
 
 ## <a name="view-performance-metrics-on-the-metrics-blade"></a>在“指标”边栏选项卡上查看性能指标
-1. 在新窗口中打开 [Azure 门户](https://portal.azure.com/)，依次单击“更多服务”、“DocumentDB (NoSQL)”，然后单击要查看其性能指标的 DocumentDB 帐户的名称。
-2. 在资源菜单中，单击“指标”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“NoSQL (DocumentDB)”，然后单击要查看其性能指标的 DocumentDB 帐户的名称。
+2. 在资源菜单的“监视”下，单击“指标”。
 
 此时将打开“指标”边栏选项卡，可以选择要查看的集合。 可以查看“可用性”、“请求”、“吞吐量”和“存储”指标，并将其与 DocumentDB SLA 进行比较。
 
+## <a name="view-performance-metrics-by-using-azure-monitoring"></a>使用 Azure Monitor 查看性能指标
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击跳转栏上的“监视器”。
+2. 在资源菜单中，单击“指标”。
+3. 在“监视器 - 指标”窗口的“资源组”下拉菜单中，选择与想要监视的 DocumentDB 帐户关联的资源组。 
+4. 在“资源”下拉菜单中，选择要监视的数据库帐户。
+5. 在“可用指标”列表中，选择要显示的指标。 使用 Ctrl 按钮进行多选。 
+
+    指标在“绘图”窗口中显示。 
+
 ## <a name="view-performance-metrics-on-the-account-blade"></a>在帐户边栏选项卡上查看性能指标
-1. 在新窗口中打开 [Azure 门户](https://portal.azure.com/)，依次单击“更多服务”、“DocumentDB (NoSQL)”，然后单击要查看其性能指标的 DocumentDB 帐户的名称。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“NoSQL (DocumentDB)”，然后单击要查看其性能指标的 DocumentDB 帐户的名称。
 2. 默认情况下，“监视”可重用功能区显示以下磁贴：
    
    * 当天的请求总数。
@@ -41,7 +50,7 @@ ms.openlocfilehash: 1a7f34989dce97f32bfbbbede9acd96a1dd58e14
    如果表显示“无可用数据”而你认为数据库中有数据，请参阅[故障排除](#troubleshooting)部分。
    
    ![“监视”可重用功能区的屏幕截图，它显示请求数和存储使用情况](./media/documentdb-monitor-accounts/documentdb-total-requests-and-usage.png)
-3. 单击“请求”或“存储”磁贴将打开一个详细的“指标”边栏选项卡。
+3. 单击“请求”或“使用配额”磁贴可打开详细的“指标”边栏选项卡。
 4. “指标”边栏选项卡显示有关所选指标的详细信息。  边栏选项卡顶部显示了按小时绘制的请求图表，其下的表格中显示了限制请求数和请求总数的聚合值。  指标边栏选项卡还显示警报列表，这些警报已经定义，且根据当前指标边栏选项卡上显示的指标进行了筛选（如此，如果你的警报数量较多，将只能在此处看到相关的警报）。   
    
    ![包括限制请求数的“指标”边栏选项卡屏幕截图](./media/documentdb-monitor-accounts/documentdb-metric-blade.png)
@@ -113,11 +122,11 @@ Azure 门户使你能够创建并排的指标图表。
    ![更新后的过去一小时请求总数磁贴的屏幕截图](./media/documentdb-monitor-accounts/documentdb-no-available-data-fixed.png)
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 DocumentDB 容量的详细信息，请参阅[管理 DocumentDB 容量](documentdb-manage.md)。
+若要深入了解 DocumentDB 容量规划，请参阅 [DocumentDB Capacity Planner 计算器](https://www.documentdb.com/capacityplanner)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

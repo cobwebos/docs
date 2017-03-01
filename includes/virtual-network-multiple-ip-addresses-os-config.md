@@ -6,7 +6,7 @@
 
 1. 在命令提示符下，键入 *ipconfig /all*。  只能看到*主要*专用 IP 地址（通过 DHCP）。
 2. 在命令提示符下键入 *ncpa.cpl*，打开“网络连接”窗口。
-3. 打开“连接连接”的属性。
+3. 打开相应适配器的属性：**本地区域连接**。
 4. 双击“Internet 协议版本 4 (IPv4)”。
 5. 单击“使用下面的 IP 地址”并输入以下值：
 
@@ -16,9 +16,24 @@
     * 单击“使用下面的 DNS 服务器地址”并输入以下值：
         * **首选 DNS 服务器**：如果不使用自己的 DNS 服务器，请输入 168.63.129.16。  如果使用自己的 DNS 服务器，请输入服务器的 IP 地址。
     * 单击“高级”按钮，然后添加其他 IP 地址。 使用为主 IP 地址指定的相同子网，为 NIC 添加步骤 8 中列出的每个辅助专用 IP 地址。
+        >[!WARNING] 
+        >如果不正确执行上述步骤，可能会失去到 VM 的连接。 在继续之前，请确保针对第 5 步输入的信息是准确的。
+
     * 单击“确定”关闭“TCP/IP 设置”，然后再次单击“确定”关闭适配器设置。 将重新建立 RDP 连接。
+
 6. 在命令提示符下，键入 *ipconfig /all*。 此时将显示添加的所有 IP 地址，DHCP 已关闭。
-    
+
+
+### <a name="validation-windows"></a>验证 (Windows)
+
+若要确保你能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请在通过上述步骤将其正确添加以后，使用以下命令：
+
+```bash
+ping -S 10.0.0.5 hotmail.com
+```
+>[!NOTE]
+>如果在上面使用的专用 IP 地址有一个与之关联的公共 IP，则只能 ping 到 Internet。
+
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. 打开终端窗口。
@@ -39,9 +54,7 @@
         ```
 
     应会看到一个 .cfg 文件。
-4. 打开该文件：vi *文件名*。
-
-    该文件的末尾应会显示以下命令行：
+4. 打开 文件。 该文件的末尾应会显示以下命令行：
 
     ```bash
     auto eth0
@@ -53,6 +66,7 @@
     ```bash
     iface eth0 inet static
     address <your private IP address here>
+    netmask <your subnet mask>
     ```
 
 6. 使用以下命令保存该文件：
@@ -74,11 +88,11 @@
 8. 使用以下命令验证 IP 地址是否已添加到网络接口：
 
     ```bash
-    Ip addr list eth0
+    ip addr list eth0
     ```
 
     应会在列表中看到添加的 IP 地址。
-    
+
 ### <a name="linux-redhat-centos-and-others"></a>Linux（Redhat、CentOS 和其他操作系统）
 
 1. 打开终端窗口。
@@ -102,32 +116,35 @@
 
     应会看到其中一个文件是 *ifcfg-eth0*。
 
-5. 使用以下命令复制 *ifcfg-eth0* 文件并将它命名为 *ifcfg-eth0:0*：
+5. 若要添加 IP 地址，请为其创建配置文件，如下所示。 请注意，必须为每个 IP 配置创建一个文件。
 
     ```bash
-    cp ifcfg-eth0 ifcfg-eth0:0
+    touch ifcfg-eth0:0
     ```
 
-6. 使用以下命令编辑 *ifcfg-eth0:0* 文件：
+6. 使用以下命令打开 *ifcfg-eth0:0* 文件：
 
     ```bash
     vi ifcfg-eth0:0
     ```
 
-7. 使用以下命令在文件中将设备更改为适当的名称，在本例中为 *eth0:0*：
+7. 使用以下命令将内容添加到该文件（此示例中为 *eth0:0*）。 请务必更新基于 IP 地址的信息。
 
     ```bash
     DEVICE=eth0:0
+    BOOTPROTO=static
+    ONBOOT=yes
+    IPADDR=192.168.101.101
+    NETMASK=255.255.255.0
     ```
 
-8. 更改 *IPADDR = YourPrivateIPAddress* 行以反映 IP 地址。
-9. 使用以下命令保存该文件：
+8. 使用以下命令保存该文件：
 
     ```bash
     :wq
     ```
 
-10. 运行以下命令重新启动网络服务，确保更改成功：
+9. 运行以下命令重新启动网络服务，确保更改成功：
 
     ```bash
     /etc/init.d/network restart
@@ -136,7 +153,31 @@
 
     应会在返回的列表中看到添加的 IP 地址 *eth0:0*。
 
+### <a name="validation-linux"></a>验证 (Linux)
 
-<!--HONumber=Dec16_HO1-->
+若要确保你能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请使用以下命令：
+
+```bash
+ping -I 10.0.0.5 hotmail.com
+```
+>[!NOTE]
+>如果在上面使用的专用 IP 地址有一个与之关联的公共 IP，则只能 ping 到 Internet。
+
+对于 Linux VM，在尝试验证来自辅助 NIC 的出站连接时，可能需要添加适当的路由。 可通过多种方式来执行此操作。 请参阅针对 Linux 分发的相应文档。 下面是实现此目的的一种方法：
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- 确保将
+    - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
+    - **10.0.0.1** 替换为默认网关
+    - **eth2** 替换为辅助 NIC 的名称
+
+
+<!--HONumber=Feb17_HO2-->
 
 

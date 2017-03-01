@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff7ea65c329a37acf8b2febb52fd140954d81e97
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: ea1274dd53a93f00fa251ed03684b17b58b009c2
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: ff7ea65c329a37acf8b2febb52fd140954d81e97
 * 已使用 `azure login` 登录 [Azure CLI](../xplat-cli-install.md)。
 * Azure CLI *必须处于 *Azure Resource Manager 模式`azure config mode arm`。
 
-也可以使用 [Azure 门户](virtual-machines-linux-quick-create-portal.md)快速部署 Linux VM 模板。
+也可以使用 [Azure 门户](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速部署 Linux VM 模板。
 
 ## <a name="quick-command-summary"></a>快速命令摘要
 ```azurecli

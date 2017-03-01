@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2016
-ms.author: asmalser-msft
+ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 789ec6f0a230f49ecd935bc85ea4ad984e936da9
-ms.openlocfilehash: 74642e0e8e0420bb1226c53713ccf50e0a46b776
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 74ef08108a5ff27a50f928781f906b6d769f1085
 
 
 ---
@@ -220,6 +220,6 @@ ms.openlocfilehash: 74642e0e8e0420bb1226c53713ccf50e0a46b776
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

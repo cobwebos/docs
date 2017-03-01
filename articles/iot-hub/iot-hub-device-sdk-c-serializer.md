@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2e38c7dba04c1402a227fe0a65d637667fd73aa2
+ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
+ms.openlocfilehash: 587412f02c6bb6bd2c5b1896a890607fa1c058f8
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 2e38c7dba04c1402a227fe0a65d637667fd73aa2
 
 此文章中所述的所有内容都基于**序列化程序** SDK 示例。 如果想要继续，请参阅适用于 C 语言的 Azure IoT 设备 SDK 中包含的 **simplesample\_amqp** 和 **simplesample\_http** 应用程序。
 
-你可以在 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub 存储库中找到**适用于 C 语言的 Azure IoT 设备 SDK**，可以在 [C API 参考](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)中查看 API 详细信息。
+可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](https://azure.github.io/azure-iot-sdk-c/index.html)中查看 API 的详细信息。
 
 ## <a name="the-modeling-language"></a>建模语言
 此系列中的[介绍性文章](iot-hub-device-sdk-c-intro.md)通过 **simplesample\_amqp** 应用程序中提供的示例，介绍了**适用于 C 语言的 Azure IoT 设备 SDK** 建模语言：
@@ -526,14 +526,21 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 操作名称必须完全与模型中定义的操作匹配。 参数名称也必须匹配。 另请注意大小写。 **Name** 和 **Parameters** 始终大写。 请务必与模型中操作名称和参数的大小写匹配。 在本示例中，操作名称是“SetAirResistance”，而不是“setairresistance”。
 
+将这些消息发送到设备可以调用其他两个操作 **TurnFanOn** 和 **TurnFanOff**：
+
+```
+{"Name" : "TurnFanOn", "Parameters" : {}}
+{"Name" : "TurnFanOff", "Parameters" : {}}
+```
+
 本部分说明了使用**序列化程序**库发送事件和接收消息时的所有要点。 在继续讨论之前，让我们先介绍一些可以配置以控制模型大小的参数。
 
 ## <a name="macro-configuration"></a>宏配置
 如果使用的是**序列化程序**库，那么可在 azure-c-shared-utility 库中找到要注意的 SDK 的重要组成部分。
-如果使用 --recursive 选项从 GitHub 中克隆了 Azure-iot-sdks 存储库，那么可在此处找到此共享的实用程序库：
+如果使用 --recursive 选项从 GitHub 中克隆了 Azure-iot-sdk-c 存储库，则可在此处找到此共享的实用工具库：
 
 ```
-.\\c\\azure-c-shared-utility
+.\\c-utility
 ```
 
 如果没有克隆此库，则可以在[此处](https://github.com/Azure/azure-c-shared-utility)找到它。
@@ -658,7 +665,7 @@ serializer_deinit();
 ## <a name="next-steps"></a>后续步骤
 本文详细介绍了**适用于 C 语言的 Azure IoT 设备 SDK** 中包含的**序列化程序**库的独特方面。通过文中提供的信息，你应该能充分了解如何使用模型来发送事件和接收来自 IoT 中心的消息。
 
-本文也是通过**适用于 C 语言的 Azure IoT 设备 SDK** 开发应用程序这一系列教程（由三部分组成）的最后一部分。这些信息应该不仅足以让你入门，还能让你彻底了解 API 的工作原理。 请了解其他信息，因为还有一些 SDK 中的示例未涵盖在本文中。 除此之外，[SDK 文档](https://github.com/Azure/azure-iot-sdks)也是获取其他信息的绝佳资源。
+本文也是通过**适用于 C 语言的 Azure IoT 设备 SDK** 开发应用程序这一系列教程（由三部分组成）的最后一部分。这些信息应该不仅足以让你入门，还能让你彻底了解 API 的工作原理。 请了解其他信息，因为还有一些 SDK 中的示例未涵盖在本文中。 除此之外，[SDK 文档](https://github.com/Azure/azure-iot-sdk-c)也是获取其他信息的绝佳资源。
 
 若要详细了解如何针对 IoT 中心进行开发，请参阅 [Azure IoT SDK][lnk-sdks]。
 
@@ -672,6 +679,6 @@ serializer_deinit();
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

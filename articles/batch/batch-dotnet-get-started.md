@@ -1,5 +1,5 @@
 ---
-title: "教程 - Azure 批处理 .NET 库入门 | Microsoft 文档"
+title: "教程 - 使用适用于 .NET 的 Azure 批处理客户端库 | Microsoft 文档"
 description: "了解 Azure Batch 的基本概念，以及如何使用示例方案针对 Batch 服务进行开发。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 11/22/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 8243e2304d846e02ecf0114b79be73c0016941df
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 5af894b60180d32593ed19c13aecf2732645120a
 
 
 ---
@@ -305,46 +305,56 @@ using (BatchClient batchClient = BatchClient.Open(cred))
     ...
 ```
 
-然后，调用 `CreatePoolAsync`以在 Batch 帐户中创建计算节点池。 `CreatePoolAsync` 使用 [BatchClient.PoolOperations.CreatePool][net_pool_create] 方法在批处理服务中实际创建该池。
+然后，调用 `CreatePoolIfNotExistsAsync`以在 Batch 帐户中创建计算节点池。 `CreatePoolIfNotExistsAsync` 使用 [BatchClient.PoolOperations.CreatePool][net_pool_create] 方法在批处理服务中创建池。
 
 ```csharp
-private static async Task CreatePoolAsync(
-    BatchClient batchClient,
-    string poolId,
-    IList<ResourceFile> resourceFiles)
+private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, string poolId, IList<ResourceFile> resourceFiles)
 {
-    Console.WriteLine("Creating pool [{0}]...", poolId);
-
-    // Create the unbound pool. Until we call CloudPool.Commit() or CommitAsync(),
-    // no pool is actually created in the Batch service. This CloudPool instance is
-    // therefore considered "unbound," and we can modify its properties.
-    CloudPool pool = batchClient.PoolOperations.CreatePool(
-            poolId: poolId,
-            targetDedicated: 3,           // 3 compute nodes
-            virtualMachineSize: "small",  // single-core, 1.75 GB memory, 224 GB disk
-            cloudServiceConfiguration:
-                new CloudServiceConfiguration(osFamily: "4")); // Win Server 2012 R2
-
-    // Create and assign the StartTask that will be executed when compute nodes join
-    // the pool. In this case, we copy the StartTask's resource files (that will be
-    // automatically downloaded to the node by the StartTask) into the shared
-    // directory that all tasks will have access to.
-    pool.StartTask = new StartTask
+    CloudPool pool = null;
+    try
     {
-        // Specify a command line for the StartTask that copies the task application
-        // files to the node's shared directory. Every compute node in a Batch pool
-        // is configured with several pre-defined environment variables that you can
-        // reference by using commands or applications run by tasks.
+        Console.WriteLine("Creating pool [{0}]...", poolId);
 
-        // Since a successful execution of robocopy can return a non-zero exit code
-        // (e.g. 1 when one or more files were successfully copied) we need to
-        // manually exit with a 0 for Batch to recognize StartTask execution success.
-        CommandLine = "cmd /c (robocopy %AZ_BATCH_TASK_WORKING_DIR% %AZ_BATCH_NODE_SHARED_DIR%) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
-        ResourceFiles = resourceFiles,
-        WaitForSuccess = true
-    };
+        // Create the unbound pool. Until we call CloudPool.Commit() or CommitAsync(), no pool is actually created in the
+        // Batch service. This CloudPool instance is therefore considered "unbound," and we can modify its properties.
+        pool = batchClient.PoolOperations.CreatePool(
+            poolId: poolId,
+            targetDedicated: 3,                                                         // 3 compute nodes
+            virtualMachineSize: "small",                                                // single-core, 1.75 GB memory, 225 GB disk
+            cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));   // Windows Server 2012 R2
 
-    await pool.CommitAsync();
+        // Create and assign the StartTask that will be executed when compute nodes join the pool.
+        // In this case, we copy the StartTask's resource files (that will be automatically downloaded
+        // to the node by the StartTask) into the shared directory that all tasks will have access to.
+        pool.StartTask = new StartTask
+        {
+            // Specify a command line for the StartTask that copies the task application files to the
+            // node's shared directory. Every compute node in a Batch pool is configured with a number
+            // of pre-defined environment variables that can be referenced by commands or applications
+            // run by tasks.
+
+            // Since a successful execution of robocopy can return a non-zero exit code (e.g. 1 when one or
+            // more files were successfully copied) we need to manually exit with a 0 for Batch to recognize
+            // StartTask execution success.
+            CommandLine = "cmd /c (robocopy %AZ_BATCH_TASK_WORKING_DIR% %AZ_BATCH_NODE_SHARED_DIR%) ^& IF %ERRORLEVEL% LEQ 1 exit 0",
+            ResourceFiles = resourceFiles,
+            WaitForSuccess = true
+        };
+
+        await pool.CommitAsync();
+    }
+    catch (BatchException be)
+    {
+        // Swallow the specific error code PoolExists since that is expected if the pool already exists
+        if (be.RequestInformation?.BatchError != null && be.RequestInformation.BatchError.Code == BatchErrorCodeStrings.PoolExists)
+        {
+            Console.WriteLine("The pool {0} already existed when we tried to create it", poolId);
+        }
+        else
+        {
+            throw; // Any other exception is unexpected
+        }
+    }
 }
 ```
 
@@ -451,7 +461,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(
 在上述代码片段中的 `foreach` 循环内，可以看到已构造任务的命令行，因此有三个命令行参数已传递到 *TaskApplication.exe*：
 
 1. **第一个参数** 是要处理的文件的路径。 这是节点上现有文件的本地路径。 首次创建上面 `UploadFileToContainerAsync` 中的 ResourceFile 对象时，会将文件名用于此属性（作为 ResourceFile 构造函数的参数）。 这意味着可以在 *TaskApplication.exe*所在的目录中找到此文件。
-2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前 3 个单词写入输出文件。
+2. **第二个参数** 指定应将前 *N* 个单词写入输出文件。 在示例中，此参数已经过硬编码，因此会将前&3; 个单词写入输出文件。
 3. **第三个参数**是共享访问签名 (SAS)，提供对 Azure 存储中**输出**容器的写访问。 *TaskApplication.exe* 使用此共享访问签名 URL。 你可以在 TaskApplication 项目的 `Program.cs` 文件的 `UploadFileToContainer` 方法中找到此方面的代码：
 
 ```csharp
@@ -795,6 +805,6 @@ Sample complete, hit ENTER to exit...
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

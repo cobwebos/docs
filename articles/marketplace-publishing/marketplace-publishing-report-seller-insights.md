@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
+ms.date: 02/01/2017
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -29,7 +29,7 @@ ms.openlocfilehash: 408394e529c262c0a47aae680c8f6ea1bc8eb7c6
 
 * **欢迎电子邮件：**作为新的发布者，你将收到一封欢迎电子邮件，通知你将开始收到卖方 Insights 每月报表。
 * **每月销售报表：**如果有使用量，你将收到第二封电子邮件，其中包含报表以及有关如何访问密码的说明：
-  
+
   * 如果所拥有的 VM 或基于使用量的计费开发人员服务 SKU 产生使用量，每月报表将显示有关产品/服务的订单、使用量、市场和客户细节的详细信息。
   * 为了保护客户数据，报表使用密码进行锁定，该密码只有你和 Microsoft 知道。
   * 如果产品/服务当月未产生使用量，Microsoft 将不会发送报表。

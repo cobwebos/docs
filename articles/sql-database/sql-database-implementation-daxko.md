@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 00c8a713-f20c-4d6b-b8b7-0c1b9ba5f05b
 ms.service: sql-database
-ms.custom: app development case study; app development
+ms.custom: app development case study
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/08/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 357b402955187a08a35faacdcb178af75698433d
+ms.sourcegitcommit: b759e9936a45f989088de5e89a59371c5ea64e1c
+ms.openlocfilehash: 079a05d16ccebb705f410e25f0ed5762db20ae22
 
 
 ---
@@ -32,7 +32,7 @@ Daxko/CSI 产品开发主任 David Molina 指出，Azure 为 CSI Software 提供
 
 Molina 补充道，“我们的客户立即感受到改变。 在使用弹性池之前，他们在高峰期有时会遇到超时和其他问题。 使用 Azure 弹性池后，他们可以根据需要激增用量，使用软件时也不会出现任何问题。”
 
-除了改善客户的性能之外，Azure 弹性数据库池还释放了 CSI Software 资源，使他们可以专注于开发新服务和功能，而不是应对运营和管理。 这些 IT 资源已帮助 CSI Software 改进其企业软件产品 SpectrumNG，提高健身房会员的参与度，提升员工效率，使员工和会员能够通过移动设备访问交互式任务和实时通知。
+除了改善客户的性能之外，Azure 弹性池还释放了 CSI Software 资源，使他们可以专注于开发新服务和功能，而不是应对运营和管理。 这些 IT 资源已帮助 CSI Software 改进其企业软件产品 SpectrumNG，提高健身房会员的参与度，提升员工效率，使员工和会员能够通过移动设备访问交互式任务和实时通知。
 
 此外，Azure 还通过启用自动化选项，帮助 CSI Software 加速和改进开发与质量保证 (QA) 周期。 该公司实施 Azure 后，构建管理人员只需单击一下按钮，就能将组件打包。 如 Molina 所述，“现在，QA 能够在发布周期内部署到 Azure 中的测试环境，精确模拟生产堆栈。 我们可以将内部版本立即部署到开发环境以检查更改。 这对我们而言是一大优点，因为之前我们没有类似的环境可用于测试。”
 
@@ -61,13 +61,13 @@ Molina 补充道，“我们的客户立即感受到改变。 在使用弹性池
 
 如今，大约 99% 的 CSI Software 客户都托管在 Azure 中，跨越四个区域数据中心（中北部、中南部、东部和西部）。 由于每个客户所在的地理区域都有数据中心，延迟降到了最低。
 
-## <a name="azure-elastic-database-pools-free-up-it-resources"></a>Azure 弹性数据库池释放 IT 资源
-Azure 的多个功能已帮助 CSI Software 从基础结构和运营为焦点，转化为以功能和开发为焦点。 最大的收益或许来自弹性数据库池。
+## <a name="azure-elastic-pools-free-up-it-resources"></a>Azure 弹性池释放 IT 资源
+Azure 的多个功能已帮助 CSI Software 从基础结构和运营为焦点，转化为以功能和开发为焦点。 最大的收益或许来自弹性池。
 
-CSI Software 目前为客户提供大约 550 个数据库。 在使用弹性池之前，很难在一个分层结构内管理这么多数据库。 运营经理必须根据客户的高峰需求分配性能层，造成了严重的 IT 资源开销。 通过弹性数据库池，经理可以根据情况为租户分配高级或标准池，然后根据大小和需求移动客户。 客户几乎立即可以感受到弹性数据库池的作用；在使用弹性池之前，客户在高峰使用期间遇到了超时和其他问题，但使用弹性池之后，客户可以根据需要体验活动喷发情况，然后继续使用 SpectrumNG 而不会出现任何问题。
+CSI Software 目前为客户提供大约 550 个数据库。 在使用弹性池之前，很难在一个分层结构内管理这么多数据库。 运营经理必须根据客户的高峰需求分配性能层，造成了严重的 IT 资源开销。 通过弹性池，经理可以根据情况为租户分配高级或标准池，然后根据大小和需求移动客户。 客户几乎立即可以感受到弹性池的作用；在使用弹性池之前，客户在高峰使用期间遇到了超时和其他问题，但使用弹性池之后，客户可以根据需要体验活动喷发情况，然后继续使用 SpectrumNG 而不会出现任何问题。
 
 ## <a name="azure-active-geo-replication-accelerates-reporting"></a>Azure 活动异地复制加速报告
-有多个 CSI Software 客户还利用了 Azure 活动异地复制。 使用活动异地复制时，可在相同或不同的数据中心区域中最多配置 4 个可读的辅助数据库。 CSI Software 以两种方式使用活动异地复制：首先，在数据中心中断服务或在无法连接到主数据库时可以使用辅助数据库；其次，辅助数据库是读取的，并且可用于卸载只读工作负荷，例如报告作业。 某些 CSI Software 客户使用这种优点来加速报告工作流。
+有多个 CSI Software 客户还利用了 Azure 活动异地复制。 使用活动异地复制时，可在相同或不同的数据中心区域中最多配置&4; 个可读的辅助数据库。 CSI Software 以两种方式使用活动异地复制：首先，在数据中心中断服务或在无法连接到主数据库时可以使用辅助数据库；其次，辅助数据库是读取的，并且可用于卸载只读工作负荷，例如报告作业。 某些 CSI Software 客户使用这种优点来加速报告工作流。
 
 ## <a name="csi-software-application-logic-and-architecture"></a>CSI Software 应用程序逻辑与体系结构
 SpectrumNG 使用 Web 角色。 由于应用程序是多租户的，因此使用了 WCF 服务处理来自客户的初始连接请求。 Molina 指出，“请求识别每个客户，使我们能够构建出一个可连到其数据库的连接字符串，执行所需的任何操作。”
@@ -87,9 +87,9 @@ SpectrumNG 使用 Web 角色。 由于应用程序是多租户的，因此使用
 Azure SQL 数据库不仅为 SpectrumNG 客户带来了好处，让他们享有快速、可靠的服务，同时也为 CSI Software 的 IT 人员和开发人员带来了丰硕的成果。 通过将运营任务卸载到云中的 Azure，CSI Software 不仅降低了其资源和基础结构的开销、大大加速了开发周期，而且不再需要对数据库进行微观管理，以便优化租户的性能。
 
 ## <a name="more-information"></a>详细信息
-* 有关 Azure 弹性数据库池的详细信息，请参阅[弹性数据库池](sql-database-elastic-pool.md)。
+* 有关 Azure 弹性池的详细信息，请参阅[弹性池](sql-database-elastic-pool.md)。
 * 有关数据库工具和弹性缩放的详细信息，请参阅[弹性数据库工具和弹性缩放](sql-database-elastic-scale-get-started.md)。
-* 有关迁移 SQL Server 数据库的详细信息，请参阅 [Azure SQL 迁移向导](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)。
+* 有关迁移 SQL Server 数据库的详细信息，请参阅[将 Azure SQL 数据库迁移到 Azure](sql-database-cloud-migrate.md)。
 * 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-geo-replication-overview.md)。
 * 有关 Web 角色和辅助角色的详细信息，请参阅[辅助角色](../fundamentals-introduction-to-azure.md#compute)。    
 * 有关 Azure 服务总线的详细信息，请参阅 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)。
@@ -98,6 +98,6 @@ Azure SQL 数据库不仅为 SpectrumNG 客户带来了好处，让他们享有�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

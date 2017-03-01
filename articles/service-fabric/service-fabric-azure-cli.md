@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/24/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: caf6dd414bd8f8180c90835dd9744dcd98f7709c
+ms.sourcegitcommit: 615e7ea84aae45f384edb671a28e4ff98b4ade3a
+ms.openlocfilehash: d61b7a9c8199b15c8bb24e7146ea93a2f67fb0a7
 
 
 ---
@@ -98,16 +98,16 @@ azure servicefabric cluster connect --connection-endpoint http://ip:19080 --clie
 ```
 如果有多个 CA，则使用逗号作为分隔符。
 
-如果证书中的公用名与连接终结点不匹配，则可以使用参数 `--strict-ssl` 跳过验证，如下面的命令中所示： 
+如果证书中的公用名与连接终结点不匹配，则可以使用参数 `--strict-ssl-false` 跳过验证，如下面的命令中所示： 
 
 ```
-azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl false 
+azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false 
 ```
 
-如果想要跳过 CA 验证，可以添加 --reject-unauthorized 参数，如下面的命令中所示： 
+如果想要跳过 CA 验证，可以添加 -reject-unauthorized-false 参数，如下面的命令中所示： 
 
 ```
-azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized false 
+azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
 ```
 
 在连接后，你应能够运行其他 CLI 命令以与群集进行交互。 
@@ -168,6 +168,7 @@ openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 
 有关详细信息，请参阅 [OpenSSL 文档](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html)。
 
+<a id="troubleshooting"></a>
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="copying-of-the-application-package-does-not-succeed"></a>复制应用程序包不成功
 检查是否已安装 `openssh`。 默认情况下，Ubuntu Desktop 不安装它。 使用以下命令安装它：
@@ -203,6 +204,6 @@ openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

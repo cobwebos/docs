@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 5acff25cca5d549541a8cd68f76e1736c1ed0cb0
+ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
+ms.openlocfilehash: 4e8c8539fdcab348aa91644baafae217bd5e863a
 
 
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory 代码示例
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-你可以使用 Microsoft Azure Active Directory (Azure AD) 向你的 web 应用程序和 web API 添加身份验证和授权。 本部分提供了指向代码示例的链接，这些代码示例将向你展示它的工作原理以及你可以在你的应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 并且代码带有注释，可以帮助你理解关键部分。
+你可以使用 Microsoft Azure Active Directory (Azure AD) 向你的 web 应用程序和 web API 添加身份验证和授权。 本部分提供了指向示例的链接，这些示例将演示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 并且代码带有注释，可以帮助你理解关键部分。
 
 若要了解每个示例类型的基本方案，请参阅“Azure AD 的身份验证方案”。
 
-为我们在 GitHub 上的示例做出补充：[Microsoft Azure Active Directory 示例和文档](https://github.com/Azure-Samples?query=active-directory)。
+为我们在 GitHub 上的示例做出补充：[Microsoft Azure Active Directory 示例和文档](https://github.com/Azure-Samples?page=3&query=active-directory)。
 
 ## <a name="web-browser-to-web-application"></a>Web 浏览器到 Web 应用程序
 这些示例展示了如何编写 web 应用程序来对用户的浏览器进行定向以使用户登录到 Azure AD。
@@ -133,7 +133,6 @@ ms.openlocfilehash: 5acff25cca5d549541a8cd68f76e1736c1ed0cb0
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

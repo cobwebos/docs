@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集 | Microsoft Docs"
+title: "使用模板创建 Azure HDInsight (Hadoop) | Microsoft Docs"
 description: "了解如何使用 Azure Resource Manager 模板创建 Azure HDInsight 的群集。"
 services: hdinsight
 documentationcenter: 
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 72ca562c53f813599f19069cfac7ef3ac1957968
-ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 1816b7f5bb95669197891315ca57f93fd779c5c3
 
 
 ---
-# <a name="create-linux-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板在 HDInsight 中创建 Hadoop 群集
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-了解如何使用 Azure Resource Manager (ARM) 模板创建 HDInsight 群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../resource-group-template-deploy.md)。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
+了解如何使用 Azure Resource Manager 模板创建 HDInsight 群集。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
 
 ## <a name="prerequisites"></a>先决条件：
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -34,7 +34,7 @@ ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
 * [Azure 订阅](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * Azure PowerShell 和/或 Azure CLI
 
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ### <a name="access-control-requirements"></a>访问控制要求
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -46,8 +46,8 @@ ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
 
 有关 Resource Manager 模板的详细信息，请参阅
 
-* [创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)
-* [使用 Azure Resource Manager 模板部署应用程序](../resource-group-template-deploy.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
 
 若要找出特定元素的 JSON 架构，可以遵循以下过程：
 
@@ -59,9 +59,9 @@ ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
 
     门户将根据配置创建 Resource Manager 模板。
 
-   ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
+## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 
-以下过程创建基于 Linux 的 HDInsight 群集。
+以下过程在 HDInsight 中创建 Hadoop 群集：
 
 **使用 Resource Manager 模板部署群集**
 
@@ -134,12 +134,12 @@ ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{\"clusterName\":{\"value\":\"hdi1229\"},\"clusterLoginPassword\":{\"value\":\"Pass@word1\"},\"sshPassword\":{\"value\":\"Pass@word1\"}}'
 
 ## <a name="deploy-with-rest-api"></a>使用 REST API 进行部署
-请参阅[使用 REST API 进行部署](../resource-group-template-deploy-rest.md)。
+请参阅[使用 REST API 进行部署](../azure-resource-manager/resource-group-template-deploy-rest.md)。
 
 ## <a name="deploy-with-visual-studio"></a>使用 Visual Studio 进行部署
 使用 Visual Studio，可以创建资源组项目，并通过用户界面将其部署到 Azure。 可选择要在项目中包括的资源类型，这些资源将自动添加到资源管理器模板中。 该项目还提供了用于部署模板的 PowerShell 脚本。
 
-有关将 Visual Studio 用于资源组的简介，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+有关将 Visual Studio 用于资源组的简介，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已经学习了几种创建 HDInsight 群集的方法。 若要了解更多信息，请参阅下列文章：
@@ -147,8 +147,8 @@ ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
 * 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](../virtual-machines/virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service-web/app-service-deploy-complex-application-predictably.md)。
 * 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](../solution-dev-test-environments.md)。
-* 若要了解 Azure Resource Manager 模板的节，请参阅[创作模板](../resource-group-authoring-templates.md)。
-* 有关可在 Azure Resource Manager 模板中使用的函数列表，请参阅[模板函数](../resource-group-template-functions.md)。
+* 若要了解 Azure Resource Manager 模板的节，请参阅[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+* 有关可在 Azure Resource Manager 模板中使用的函数列表，请参阅[模板函数](../azure-resource-manager/resource-group-template-functions.md)。
 
 ## <a name="appx-a-resource-manager-template"></a>附录 A：Resource Manager 模板
 以下 Azure Resource Manager 模板使用依赖的 Azure 存储帐户创建基于 Linux 的 Hadoop 群集。
@@ -359,6 +359,6 @@ ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

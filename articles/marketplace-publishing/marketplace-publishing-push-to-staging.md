@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/17/2016
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 766ef5da584341fba08607a9b04ac85be8333db6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
 
 
 ---
@@ -76,7 +76,7 @@ ms.openlocfilehash: 766ef5da584341fba08607a9b04ac85be8333db6
 
 **特大徽标图标的其他准则（可选）**
 
-* 特大徽标是可选的。 发布者可以选择不上传特大徽标。 **但是，上传特大图标后，无法将其从发布门户中删除。此时，合作伙伴必须遵循特大图标的 Azure 应用商店准则，否则产品/服务将不批准用于生产。**
+* 特大徽标是可选的。 发布者可以选择不上载特大徽标。 **但是，在上载特大图标后，将无法将其从发布门户中删除。此时，合作伙伴必须遵循特大图标的 Azure 应用商店准则，否则产品/服务将不批准用于生产。**
 * 发布者显示名称、计划标题和产品/服务详细摘要将以白色字体颜色显示。 因此，应避免在特大图标的背景中保留任何浅色。 特大图标不允许使用黑色、白色和透明背景。
 * 在产品/服务推出后，发布者显示名称、计划标题、产品/服务详细摘要和创建按钮将以编程方式嵌入在特大徽标内。 因此，在设计特大徽标时，不应输入任何文本。 只需在右侧留出空白区域，因为文本（即 发布者显示名称、计划标题、产品/服务详细摘要）将以编程方式包含在内。 右侧文本的空白区域应为 415x100（并按 370px 从左侧偏移）。
   
@@ -290,6 +290,6 @@ ms.openlocfilehash: 766ef5da584341fba08607a9b04ac85be8333db6
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

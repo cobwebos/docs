@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 4cc2906d19562fc420d92ea0f3097a972acc45b9
-ms.openlocfilehash: dfacb95f816c45413b292c93c13d0e37b7ce517e
+ms.sourcegitcommit: c3d96d11894f0009db004b1089c05559cafd2d43
+ms.openlocfilehash: ee79612cc30f1dfefcf7dcd8af7aed7836dd528c
 
 
 ---
@@ -156,13 +156,14 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 **cloudDataMovementUnits** 属性**允许的值**为 1（默认值）、2、4 和 8。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。
 
 > [!NOTE]
-> 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅当**将多个文件从 Blob存储/Data Lake Store/Amazon S3 复制到 Blob 存储/Data Lake Store/Azure SQL 数据库**，且每个文件的大小大于或等于 16 MB 时，设置为 8 或更高才会有效。
+> 如果需要更多云 DMU 以获得更高的吞吐量，请联系 [Azure支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP 复制到 Blob 存储/Data Lake Store/Azure SQL 数据库**，且每个文件的大小大于或等于 16 MB 时，设置为 8 或更高才会有效。
 >
 >
 
 若要更好地使用这两个属性，并提高数据移动吞吐量，请参阅[示例用例](#case-study-use-parallel-copy)。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。  
 
-请**务必**记住，将根据复制操作的总时间向你收费。 如果复制作业过去使用 1 个云单元花费 1 小时，现在使用 4 个单元花费 15 分钟，则总费用几乎相同。 例如，你使用 4 个云单元。 第一个云单元花费 10 分钟，第二个花费 10 分钟，第三个花费 5 分钟，第四个花费 5 分钟，这些都属于一个复制活动运行。 将对总复制（数据移动）时间进行收费，即 10 + 10 + 5 + 5 = 30 分钟。 使用 **parallelCopies** 不会影响计费。
+### <a name="billing-impact"></a>计费影响
+请**务必**记住，将根据复制操作的总时间向你收费。 如果复制作业过去使用 1 个云单元花费 1 小时，现在使用 4 个单元花费 15 分钟，则总费用几乎相同。 例如，你使用&4; 个云单元。 第一个云单元花费 10 分钟，第二个花费 10 分钟，第三个花费 5 分钟，第四个花费 5 分钟，这些都属于一个复制活动运行。 将对总复制（数据移动）时间进行收费，即 10 + 10 + 5 + 5 = 30 分钟。 使用 **parallelCopies** 不会影响计费。
 
 ## <a name="staged-copy"></a>暂存复制
 将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 暂存在以下情况下特别有用：
@@ -410,6 +411,6 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

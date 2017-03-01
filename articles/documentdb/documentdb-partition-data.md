@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 02/09/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1d65fbb7278adc014ba6a655385396ace87f568e
+ms.sourcegitcommit: 876e0fd12d045bba85d1e30d4abfcb8ce421213a
+ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
 
 
 ---
@@ -31,6 +31,11 @@ ms.openlocfilehash: 1d65fbb7278adc014ba6a655385396ace87f568e
 
 若要开始处理代码，请从 [DocumentDB 性能测试驱动程序示例](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark)下载项目。 
 
+在本 Azure Friday 视频中，Scott Hanselman 和 DocumentDB 首席工程经理 Shireesh Thota 会介绍有关分区和分区键的内容。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-DocumentDB-Elastic-Scale-Partitioning/player]
+> 
+
 ## <a name="partitioning-in-documentdb"></a>DocumentDB 中的分区
 在 DocumentDB 中，可在任何规模以毫秒级响应时间对无模式 JSON 文档进行存储和查询。 DocumentDB 提供了容器来存储名为 **collections** 的数据。 集合是逻辑资源，并且可以跨一个或多个物理分区或服务器。 DocumentDB 基于存储大小和集合设置的吞吐量确定分区数。 DocumentDB 中的每个分区都具有固定大小的与之关联的 SSD 支持的存储，并且会复制分区以实现高可用性。 分区完全由 Azure DocumentDB 进行管理，因此，你无需编写复杂的代码或亲自管理分区。 DocumentDB 集合在存储和吞吐量方面是**几乎无限制**。 
 
@@ -40,7 +45,7 @@ ms.openlocfilehash: 1d65fbb7278adc014ba6a655385396ace87f568e
 
 例如，假设一个应用程序在 DocumentDB 中存储有关员工和部门的数据。 让我们选择 `"department"` 作为分区键属性，以便按部门扩展数据。 在 DocumentDB 中的每个文档必须包含必需的 `"id"` 属性，该属性对每个具有相同分区键值（如 `"Marketing`"）的文档必须是唯一的。 存储在集合中的每个文档都必须具有分区键和 ID 的唯一组合，例如 `{ "Department": "Marketing", "id": "0001" }`、`{ "Department": "Marketing", "id": "0002" }` 和 `{ "Department": "Sales", "id": "0001" }`。 换言之，分区键、ID 的复合属性是集合的主键。
 
-### <a name="partition-keys"></a>分区键
+## <a name="partition-keys"></a>分区键
 选择分区键是设计时需要做的一项重要决定。 选择的 JSON 属性名必须具有一系列的值，且有望均匀地分布访问模式。 分区键指定为 JSON 路径，例如 `/department` 表示属性部门。 
 
 下表显示分区键定义和与每个对应的 JSON 值的示例。
@@ -77,7 +82,7 @@ ms.openlocfilehash: 1d65fbb7278adc014ba6a655385396ace87f568e
 
 让我们看看所选的分区键如何影响应用程序的性能。
 
-### <a name="partitioning-and-provisioned-throughput"></a>分区和设置的吞吐量
+## <a name="partitioning-and-provisioned-throughput"></a>分区和设置的吞吐量
 DocumentDB 旨在提供可预测的性能。 创建集合时，可以根据**每秒的[请求单位](documentdb-request-units.md) (RU) 数**保留吞吐量。 会为每个请求分配请求单位费用，该费用与系统资源（如操作使用的 CPU 和 IO）的数量成正比。 读取 1 kb 会话一致性文档将使用 1 请求单位。 读取为 1 RU 时不考虑存储的项数量或同时运行的并发请求数。 较大的文档要求更高的请求单位，具体取决于大小。 如果你知道实体大小及为应用程序提供支持需要的读取次数，则可以设置应用程序读取所需的那个吞吐量。 
 
 DocumentDB 存储文档时，它将基于分区键值在分区间均匀地分布它们。 吞吐量也均匀分布在可用分区中，即每个分区的吞吐量 =（每个集合的总吞吐量）/（分区的数目）。 
@@ -87,17 +92,15 @@ DocumentDB 存储文档时，它将基于分区键值在分区间均匀地分布
 > 
 > 
 
-## <a name="single-partition-and-partitioned-collections"></a>单个分区和已分区的集合
+## <a name="single-partition-and-partitioned-collections"></a>单分区和已分区的集合
 DocumentDB 支持创建单个分区和已分区的集合。 
 
-* **已分区集合**可以跨越多个分区并支持数量非常大的存储和吞吐量。 必须指定集合的分区键。
-* **单个分区集合**具有较低价格选项和在所有集合数据之间进行查询和执行事务的能力。 它们具有单个分区的可伸缩性和存储限制。 无需指定这些集合的分区键。 
+* **已分区集合**可以跨多个分区并对支持的存储和吞吐量无限制。 必须指定集合的分区键。 
+* **单分区集合**具有较低的价格选项，但对存储和吞吐量上限有限制。 无需指定这些集合的分区键。 除预期仅会使用少量数据存储和请求的情况外，我们建议在所有方案中使用已分区集合，而不要使用单分区集合。
 
 ![DocumentDB 中的已分区集合][2] 
 
-对于不需要大容量存储或大吞吐量的情形，单个分区集合非常适合。 请注意，单个分区集合拥有单个分区的可扩展性和存储限制，即 最多 10 GB 的存储和每秒多达 10,000 个的请求单位。 
-
-已分区集合可以支持数量非常大的存储和吞吐量。 但是，默认的产品/服务将配置为最多 250 GB 的存储和增加到 250,000 个请求单位/秒。 如果每个集合都需要更高的存储或吞吐量，请联系 [Azure 支持](documentdb-increase-limits.md)为帐户增加这些内容。
+已分区集合可以支持的存储和吞吐量无限制。
 
 下表列出使用单个分区和已分区集合的区别：
 
@@ -105,7 +108,7 @@ DocumentDB 支持创建单个分区和已分区的集合。
     <tbody>
         <tr>
             <td valign="top"><p></p></td>
-            <td valign="top"><p><strong>单个分区集合</strong></p></td>
+            <td valign="top"><p><strong>单分区集合</strong></p></td>
             <td valign="top"><p><strong>已分区集合</strong></p></td>
         </tr>
         <tr>
@@ -126,17 +129,17 @@ DocumentDB 支持创建单个分区和已分区的集合。
         <tr>
             <td valign="top"><p>最大存储</p></td>
             <td valign="top"><p>10 GB</p></td>
-            <td valign="top"><p>无限制（默认为 250 GB）</p></td>
+            <td valign="top"><p>不受限制</p></td>
         </tr>
         <tr>
             <td valign="top"><p>最小吞吐量</p></td>
             <td valign="top"><p>400 个请求单位/秒</p></td>
-            <td valign="top"><p>10,000 个请求单位/秒</p></td>
+            <td valign="top"><p>2,500 个请求单位/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>最大吞吐量</p></td>
             <td valign="top"><p>10,000 个请求单位/秒</p></td>
-            <td valign="top"><p>无限制（默认为 250,000 个请求单位/秒）</p></td>
+            <td valign="top"><p>不受限制</p></td>
         </tr>
         <tr>
             <td valign="top"><p>API 版本</p></td>
@@ -171,11 +174,11 @@ Azure DocumentDB 增加了对 [REST API 版本 2015-12-16](https://msdn.microsof
 
 
 > [!NOTE]
-> 为了创建已分区集合，必须指定 > 10,000 个请求单位/秒的吞吐量值。 由于吞吐量是 100 的倍数，因此必须是 10,100 或更多。
+> 若要使用 SDK 创建简单的分区集合，必须指定大于或等于 10,100 RU/秒的吞吐量值。 若要为分区集合设置介于 2,500 和 10,000 之间的吞吐量值，必须暂时使用 Azure 门户，因为 SDK 目前不支持这些新的较小值。
 > 
 > 
 
-此方法可对 DocumentDB 调用 REST API，且该服务将基于所请求的吞吐量设置分区数。 根据你的性能需求的发展，可以更改集合的吞吐量。 有关更多详细信息，请参阅[性能级别](documentdb-performance-levels.md)。
+此方法可对 DocumentDB 调用 REST API，且该服务将基于所请求的吞吐量设置分区数。 根据你的性能需求的发展，可以更改集合的吞吐量。 
 
 ### <a name="reading-and-writing-documents"></a>读取和写入文档
 现在，让我们将数据插入 DocumentDB。 以下的示例类包含设备读取和对 CreateDocumentAsync 的调用，将新设备读数插入到集合。
@@ -285,13 +288,13 @@ DocumentDB SDK 1.9.0 及更高版本支持并行查询执行选项，这些选�
 
 <a name="migrating-from-single-partition"></a>
 
-### <a name="migrating-from-single-partition-to-partitioned-collections"></a>从单个分区集合迁移到已分区集合
+## <a name="migrating-from-single-partition-to-partitioned-collections"></a>从单个分区集合迁移到已分区集合
 当使用单个分区集合的应用程序需要更高的吞吐量 (>10,000 RU/s) 或更大的数据存储 (>10GB) 时，可以使用 [DocumentDB 数据迁移工具](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)将单个分区集合中的数据迁移到已分区集合。 
 
 从单个分区集合迁移到已分区集合
 
 1. 将单个分区集合中的数据导出到 JSON。 有关其他详细信息，请参阅[导出到 JSON 文件](documentdb-import-data.md#export-to-json-file)。
-2. 将数据导入到使用分区键定义创建的、吞吐量超过 10,000 个请求单位/秒的已分区集合，如下例所示。 有关其他详细信息，请参阅[导入到 DocumentDB](documentdb-import-data.md#DocumentDBSeqTarget)。
+2. 将数据导入到使用分区键定义创建的、吞吐量超过 2,500 个请求单位/秒的分区集合，如下例所示。 有关其他详细信息，请参阅[导入到 DocumentDB](documentdb-import-data.md#DocumentDBSeqTarget)。
 
 ![将数据迁移到 DocumentDB 中的已分区集合][3]  
 
@@ -309,7 +312,7 @@ DocumentDB SDK 1.9.0 及更高版本支持并行查询执行选项，这些选�
 所选的分区键应该权衡启用事务的需求与将实体分布到多个分区键（以确保可缩放的解决方案）的需求。 一种极端情况，你可以为所有文档设置相同的分区键，但这可能会限制解决方案的可扩展性。 另一种极端，你可以为每个文档指定唯一的分区键，这将实现高度可扩展性，但会阻止你通过存储过程和触发器跨文档事务进行使用。 理想的分区键是这样的，你可以使用高效查询，并具有足够多基数以确保你的解决方案是可缩放的。 
 
 ### <a name="avoiding-storage-and-performance-bottlenecks"></a>避免存储和性能瓶颈
-还很重要的是选取一个属性可以允许在大量相异值间分布写入。 对相同分区键的请求不能超过单个分区的吞吐量，否则会受到限制。 因此选取不会导致应用程序中**“热点”**的分区键很重要。 具有相同分区键的文档的总存储大小也不能超过 10 GB。 
+还很重要的是选取一个属性可以允许在大量相异值间分布写入。 对相同分区键的请求不能超过单个分区的吞吐量，否则会受到限制。 因此选取不会导致应用程序中**“热点”**的分区键很重要。 单分区键的所有数据都必须存储在分区内，因此，还建议避免使用相同值具有大量数据的分区键。 
 
 ### <a name="examples-of-good-partition-keys"></a>适当的分区键的示例
 以下是有关如何选择应用程序的分区键的几个示例：
@@ -326,7 +329,7 @@ DocumentDB 最常见的使用案例之一是记录和遥测。 选取适当的�
 
 * 如果你的用例涉及很长时间积累的小速率写入，并且需要按时间戳范围和其他筛选器进行查询，则使用时间戳（例如数据）汇总作为分区键是个好方法。 这使你能够查询某日单个分区中的所有数据。 
 * 如果你的工作负荷是更常见的写入密集型，应使用不基于时间戳的分区键，以使 DocumentDB 可以跨多个分区均匀地分布写入。 此处，主机名、进程 ID、活动 ID 或其他具有较大基数的属性是不错的选择。 
-* 第三种方法是混合型分区键，其中你有多个集合，一个用于每日/月，且分区键是类似主机名的粒度属性。 这样做的好处是可以基于时间窗口设置不同性能级别，例如，当月的集合设置为更高的吞吐量，因为它维护读取和写入操作，而之前的月份吞吐量设置为较低，因为它们只维护读取。
+* 第三种方法是混合型分区键，其中你有多个集合，一个用于每日/月，且分区键是类似主机名的粒度属性。 这样做的好处是可以基于时间窗口设置不同的吞吐量，例如，当月的集合设置为更高的吞吐量，因为它维护读取和写入操作，而之前的月份吞吐量设置为较低，因为它们只维护读取。
 
 ### <a name="partitioning-and-multi-tenancy"></a>分区和多租户
 如果你要使用 DocumentDB 实现多租户应用程序，有两种模式来使用 DocumentDB 实现租户，一种是一个租户一个分区键，另一种是一个租户一个集合。 下面是每种模式的优缺点：
@@ -342,7 +345,6 @@ DocumentDB 最常见的使用案例之一是记录和遥测。 选取适当的�
 * 使用 DocumentDB 执行规模和性能测试。 有关示例，请参阅[使用 Azure DocumentDB 进行性能和规模测试](documentdb-performance-testing.md)。
 * 使用 [SDK](documentdb-sdk-dotnet.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 的编码入门
 * 了解 [DocumentDB 中预配的吞吐量](documentdb-performance-levels.md)
-* 如果你想要自定义应用程序执行分区的方式，可以插入自己的客户端分区实现。 请参阅[客户端分区支持](documentdb-sharding.md)。
 
 [1]: ./media/documentdb-partition-data/partitioning.png
 [2]: ./media/documentdb-partition-data/single-and-partitioned.png
@@ -352,6 +354,6 @@ DocumentDB 最常见的使用案例之一是记录和遥测。 选取适当的�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

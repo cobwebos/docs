@@ -1,5 +1,5 @@
 ---
-title: "了解微服务 | Microsoft 文档"
+title: "Azure 上的微服务简介 | Microsoft Docs"
 description: "概述为何使用微服务方法构建云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台用于实现此目的。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2016
-ms.author: mfussell
+ms.date: 02/06/2017
+ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9a3a4424e04597e2a06ea4a5df421bc511bc899b
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: a2a72da08ccff17407fcdd98783137b091651b47
 
 
 ---
@@ -156,6 +156,6 @@ Service Fabric 的目标是将使用微服务方法构建应用程序时的复�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

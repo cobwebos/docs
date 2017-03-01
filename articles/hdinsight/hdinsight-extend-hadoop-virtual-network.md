@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2016
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 7038c19a4419aa3569a931e393f3d94896740209
+ms.sourcegitcommit: 45de2422e79215ecfbacf5bd15712eb780c49016
+ms.openlocfilehash: c0a99dadc1d588942ade14267bd45eff09080315
 
 
 ---
@@ -77,7 +77,7 @@ Azure HDInsight 仅支持基于位置的虚拟网络，目前无法处理基于�
 
 ### <a name="classic-or-v2-virtual-network"></a>经典或 V2 虚拟网络
 
-基于 Windows 的群集需要经典虚拟网络，而基于 Linux 的群集需要 Azure Resource Manager 虚拟网络。 如果没有正确的网络类型，创建群集时它将不能使用。
+基于 Linux 的群集需要 Azure Resource Manager 虚拟网络（基于 Windows 的群集需要经典虚拟网络）。 如果没有正确的网络类型，创建群集时它将不能使用。
 
 如果具有计划创建的群集不可用的虚拟网络上的资源，可以新建一个该群集可用的虚拟网络，并将其连接到不兼容的虚拟网络。 然后可以在其要求的网络版本中创建群集，由于两者已联接，该群集将能够访问另一个网络中的资源。 若要深入了解如何连接经典虚拟网络和新虚拟网络，请参阅[将经典 VNet 连接到新的 VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
 
@@ -93,6 +93,36 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 
 如果需要将 HDInsight 安装到受保护的虚拟网络，必须允许以下 IP 地址通过端口 443 进行入站访问，使 Azure 能够管理 HDInsight 群集。
 
+> [!IMPORTANT]
+> 应允许的 IP 地址专门用于 HDInsight 群集和虚拟网络所在的区域。 使用以下列表查找你所在区域的 IP 地址。
+
+__巴西南部__区域：
+
+* 191.235.84.104
+* 191.235.87.113
+
+__加拿大东部__区域：
+
+* 52.229.127.96
+* 52.229.123.172
+
+__加拿大中部__区域：
+
+* 52.228.37.66
+* 52.228.45.222
+
+__美国中西部__区域：
+
+* 52.161.23.15
+* 52.161.10.167
+
+__美国西部 2__ 区域：
+
+* 52.175.211.210
+* 52.175.222.222
+
+__所有其他区域__:
+
 * 168.61.49.99
 * 23.99.5.239
 * 168.61.48.131
@@ -103,7 +133,9 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 > [!IMPORTANT]
 > HDInsight 不支持限制出站流量，仅可限制入站流量。 在定义包含 HDInsight 的子网的网络安全组规则时，仅使用入站规则。
 
-以下示例演示如何新建一个允许所需地址的网络安全组，并将该安全组应用于虚拟网络中的子网。 这些步骤假定你已创建想要将 HDInsight 安装到其中的虚拟网络和子网。
+下例演示如何新建允许所需地址的网络安全组，并将该安全组应用到虚拟网络中的子网。 此示例中使用的地址来自上面的__所有其他区域__列表。 如果你在上面明确列出的其中一个区域，如__美国中西部__，请修改脚本以使用你所在区域的 IP 地址。
+
+这些步骤假定你已创建想要将 HDInsight 安装到其中的虚拟网络和子网。 请参阅[使用 Azure 门户创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
 
 > [!IMPORTANT]
 > 请注意这些示例中使用的 `priority` 值；根据优先级顺序针对网络流量对规则进行测试。 当某个规则符合测试条件并应用后，就不会再测试其他的规则。
@@ -111,7 +143,6 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 > 如果有广泛阻止入站流量的自定义规则（例如**全部拒绝**规则），则可能需要调整这些示例中或自定义规则中的优先级值，使示例中的规则在阻止访问的规则之前出现。 否则，将先测试**全部拒绝**规则，而不会再应用此示例中的规则。 还必须注意不要阻止 Azure 虚拟网络的默认规则。 例如，不应创建应用于默认的**允许 VNET 入站**规则（其优先级为 65000）前的**全部拒绝**规则。
 > 
 > 若要深入了解如何应用规则以及默认入站和出站规则，请参阅 [What is a Network Security Group?](../virtual-network/virtual-networks-nsg.md)（什么是网络安全组？）。
-
 
 **使用 Azure PowerShell**
 
@@ -195,10 +226,10 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 
 2. 使用以下命令将规则添加新的网络安全组，这些规则允许从 Azure HDInsight 运行状况和管理服务通过端口 443 发起的入站通信。 将 **RESOURCEGROUPNAME** 替换为包含 Azure 虚拟网络的资源组的名称。
     
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
 
 3. 创建规则后，使用以下命令检索此网络安全组的唯一标识符：
 
@@ -206,7 +237,9 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 
     这会返回类似于以下文本的值：
 
-        "/subscriptions/55b1016c-0f27-43d2-b908-b8c373d6d52e/resourceGroups/mygroup/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+
+    如果没有获得预期结果，请在命令中的 ID 两侧使用双引号。
 
 4. 使用以下命令将网络安全组应用于子网。 将 __GUID__ 和 __RESOURCEGROUPNAME__ 值替换为从上一步骤中返回的值。 将 __VNETNAME__ 和 __SUBNETNAME__ 替换为在创建 HDInsight 群集时要使用的虚拟网络名称和子网名称。
    
@@ -220,7 +253,7 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 > 例如，若要允许来自 Internet 的 SSH 访问，需要添加类似于下面的规则： 
 > 
 > * Azure PowerShell - ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
-> * Azure CLI - ```az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"```
+> * Azure CLI - ```az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"```
 
 有关网络安全组的详细信息，请参阅[网络安全组概述](../virtual-network/virtual-networks-nsg.md)。 有关在 Azure 虚拟网络中控制路由的详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。
 
@@ -334,6 +367,6 @@ HDInsight 服务是一个托管的服务，需要在预配期间和运行时访�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

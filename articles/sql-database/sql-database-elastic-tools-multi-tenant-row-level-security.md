@@ -8,6 +8,7 @@ manager: jhubbard
 author: tmullaney
 ms.assetid: e72d3cfe-e9be-4326-b776-9c6d96c0a18e
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 137808a62539e79c756752489981495b09066aa5
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 19afc13a1715890316b34ed1128b594105c53c69
 
 
 ---
@@ -214,7 +215,7 @@ GO
 ```
 
 > [!TIP]
-> 对于需要在数百个表中添加谓词的更复杂项目，你可以使用一个帮助器存储过程，通过在架构中的所有表内添加谓词，来自动生成安全策略。 请参阅[向所有表应用行级安全性 – 帮助器脚本（博客）](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)。  
+> 对于需要在数百个表中添加谓词的更复杂项目，你可以使用一个帮助器存储过程，通过在架构中的所有表内添加谓词，来自动生成安全策略。 请参阅 [Apply Row-Level Security to all tables - helper script ](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)（向所有表应用行级安全性 – 帮助器脚本）（博客）。  
 > 
 > 
 
@@ -303,7 +304,7 @@ GO
 可将弹性数据库工具和行级安全性一起使用，以扩大支持多租户和单租户分片的应用程序的数据层。 使用多租户分片可以更有效地存储数据（尤其是对于大量租户只有几行数据的情况），而使用单租户分片可以支持性能和隔离要求更严格的高级租户。  有关详细信息，请参阅[行级安全性参考](https://msdn.microsoft.com/library/dn765131)。 
 
 ## <a name="additional-resources"></a>其他资源
-* [什么是 Azure 弹性数据库池？](sql-database-elastic-pool.md)
+* [什么是 Azure 弹性池？](sql-database-elastic-pool.md)
 * [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](sql-database-elastic-scale-introduction.md)
 * [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [使用 Azure AD 和 OpenID Connect 的多租户应用身份验证](../guidance/guidance-multitenant-identity-authenticate.md)
@@ -320,6 +321,6 @@ GO
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

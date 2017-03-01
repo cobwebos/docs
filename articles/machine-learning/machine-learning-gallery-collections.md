@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 55fcce54e92cb4d3ecea8946b6cac56bc860ce79
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 55f5eb09e13dd645369486affba338759ec6c1d5
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 55fcce54e92cb4d3ecea8946b6cac56bc860ce79
  “**[收藏](https://gallery.cortanaintelligence.com/collections)**”
 页显示最近添加的和最受欢迎的收藏列表。
 单击“**查看所有**”，以查看所有收藏。
-在此页中，可以浏览库中的所有收藏，或者可以通过选择页面左侧的“筛选器条件”，并在顶部输入搜索词进行搜索。
+在本页中，可以浏览库中的所有集合。 还可在页面左侧选择筛选条件并在顶部输入搜索词进行搜索。
 
  单击任何收藏，可打开该收藏的详细信息页并了解关于该收藏的详细信息。
 你可以在此页进行评论、提供反馈，或通过评论部分提问。 甚至可以使用 LinkedIn 或 Twitter 的共享功能将其与朋友或同事共享。 同时，你也可以通过电子邮件发送指向该实验的链接，邀请其他用户查看此页面。
@@ -54,20 +54,20 @@ ms.openlocfilehash: 55fcce54e92cb4d3ecea8946b6cac56bc860ce79
 
 1. 使用你的 Microsoft 帐户登录到库
 
-* 单击窗口顶部的图像，然后单击你的姓名
+2.  单击窗口顶部的图像，然后单击你的姓名
   
     ![单击帐户名](media/machine-learning-gallery-collections/click-account-name.png)
 
-1. 单击“新建项”
+3. 单击“新建项”
    
     ![单击“新建项”](media/machine-learning-gallery-collections/click-new-item.png)
-2. 为“**项类型**”选择“**收藏**”，然后为收藏提供名称、简短摘要、说明，以及将有助于用户找到收藏的任何标记
+4. 为“**项类型**”选择“**收藏**”，然后为收藏提供名称、简短摘要、说明，以及将有助于用户找到收藏的任何标记
    
     ![输入新收藏的信息](media/machine-learning-gallery-collections/create-collection-page-1.png)
-3. 单击“下一步”，你可以上载图像文件，或选择将与收藏一起显示的库存图像；选择将有助于用户识别内容和收藏用途的内容
+5. 单击“下一步”，你可以上载图像文件，或选择将与收藏一起显示的库存图像；选择将有助于用户识别内容和收藏用途的内容
    
     ![输入新收藏的信息](media/machine-learning-gallery-collections/create-collection-page-2.png)
-4. 单击“**下一步**”，你可以决定收藏是“**公共**”（任何人都可以查看）还是“**未列出**”（仅限具有直接链接的人可以查看收藏）
+6. 单击“**下一步**”，你可以决定收藏是“**公共**”（任何人都可以查看）还是“**未列出**”（仅限具有直接链接的人可以查看收藏）
    
    > [!IMPORTANT]
    > 一旦将收藏设置为“**公共**”，就不可以再将其设置为“**未列出**”。
@@ -75,7 +75,7 @@ ms.openlocfilehash: 55fcce54e92cb4d3ecea8946b6cac56bc860ce79
    > 
    
     ![选择“公共”或“未列出”](media/machine-learning-gallery-collections/create-collection-page-3.png)
-5. 单击“创建” 
+7. 单击“创建” 
 
 你的收藏现在是 Cortana Intelligence 库的一部分了。 它将在你帐户页的“**收藏**”选项卡下列出。
 
@@ -104,6 +104,6 @@ ms.openlocfilehash: 55fcce54e92cb4d3ecea8946b6cac56bc860ce79
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

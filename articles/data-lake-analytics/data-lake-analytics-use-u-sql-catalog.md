@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 15b22d577343667c9232b3394cf64bc307ccd777
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 64427583dba57716c23e1a01df820a263c5e7298
 
 
 ---
-# <a name="use-u-sql-catalog"></a>使用 U-SQL 目录
+# <a name="use-azure-data-lake-analytics-u-sql-catalog"></a>使用 Azure Data Lake Analytics (U-SQL) 目录
 可以使用 -SQL 目录组织数据和代码，以便通过 U-SQL 脚本共享数据和代码。 目录启用 Azure Data Lake 中数据的最高可能性能。
 
 每个 Azure Data Lake Analytics 帐户都有一个与其关联的 U-SQL 目录。 不能删除 U-SQL 目录。 当前不能在 Data Lake Store 帐户之间共享 U-SQL 目录。
@@ -50,10 +50,10 @@ U-SQL 数据库包含：
 3. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“数据库” 和 “master”。
 
     - 若要添加新数据库，右键单击“数据库”，然后单击“创建数据库”。
-    - 若要添加新程序集，右键单击“程序集”然后单击“注册程序集”。
-    - 若要添加新架构，右键单击“架构”然后单击“创建架构**”。
-    - 若要添加新表，右键单击“表”，然后单击“创建表”**。
-    - 若要添加新的表值函数，请参阅 [Develop U-SQL user defined operators for Data Lake Analytics jobs](data-lake-analytics-u-sql-develop-user-defined-operators.md)（为 Data Lake Analytics 作业开发 U-SQL 用户定义的运算符）。
+    - 若要添加新程序集，右键单击“程序集”，然后单击“注册程序集”。
+    - 若要添加新架构，右键单击“架构”，然后单击“创建架构”。
+    - 若要添加新表，右键单击“表”，然后单击“创建表”。
+    - 若要添加新的表值函数，请参阅[为 Data Lake Analytics 作业开发 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)。
 
 
 ![浏览 U-SQL Visual Studio 目录](./media/data-lake-analytics-use-u-sql-catalog/data-lake-analytics-browse-catalogs.png)
@@ -84,6 +84,6 @@ U-SQL 数据库包含：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

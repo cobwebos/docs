@@ -1,14 +1,26 @@
 ---
+title: "Azure SQL 数据库文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解 SQL 数据库（云中的数据库即服务）。 教程、视频和其他文档演示了如何设置、连接及管理关系数据库。"
+services: sql-database
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: sql-database
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: 07cbe71fc9330724dd8b92c5321d4fca9ecde512
+ms.sourcegitcommit: b7dd50ea4075bdd82ef671a3dcd05460444d2312
+ms.openlocfilehash: 53111017309665d9e2e1ca499f5b77e0424e47da
 
 ---
 
 # <a name="sql-database-documentation"></a>SQL 数据库文档
 
-Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQL Server 引擎的任务关键型功能。 SQL 数据库提供可预测的性能、不停机缩放能力、业务连续性和数据保护功能，并且所需的管理工作量极少。 SQL 数据库基于 SQL Server 引擎，因此支持现有的 SQL Server 工具、库和 API，可以更轻松地移动和扩展到云中。
+了解如何使用 SQL 数据库 - 构建在 Microsoft SQL Server 引擎基础之上的云中关系数据库即服务。 教程、视频和其他文档演示了如何设置、连接及管理 SQL 数据库。
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -152,16 +164,10 @@ Azure SQL 数据库是云中的关系数据库服务，提供基于 Microsoft SQ
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 SQL 数据库文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

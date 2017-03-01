@@ -17,8 +17,9 @@ ms.workload: sqldb-design
 ms.date: 02/01/2017
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 7ee06d20ba56402fad86adf321c7c5a4996d7e19
-ms.openlocfilehash: 92dd94db5885bc24655cf2af3247528901f10720
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: c30f1d879f46805cf802679613089a16dc47ad40
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -150,7 +151,7 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 
 使用 Azure SQL 数据库工具来[迁移要扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
 
-查看教程，了解如何[创建弹性池](sql-database-elastic-pool-create-portal.md)。  
+若要使用 Azure 门户创建弹性池，请参阅[创建弹性池](sql-database-elastic-pool-manage-portal.md)。  
 
 了解如何[监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。
 
@@ -160,14 +161,9 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 * [具有弹性数据库工具和行级安全性的多租户应用程序](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 * [使用 Azure Active Directory 和 OpenID Connect 在多租户应用中进行身份验证](../guidance/guidance-multitenant-identity-authenticate.md)
 * [Tailspin Surveys 应用程序](../guidance/guidance-multitenant-identity-tailspin.md)
-* [解决方案快速入门](sql-database-solution-quick-starts.md)
+
 
 ## <a name="questions-and-feature-requests"></a>问题和功能请求
 如有问题，查找我们在 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)。 添加 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)中的功能请求。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

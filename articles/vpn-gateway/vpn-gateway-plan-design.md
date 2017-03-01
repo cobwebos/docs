@@ -1,10 +1,10 @@
 ---
-title: "VPN 网关规划和设计 | Microsoft 文档"
+title: "跨界连接的规划和设计：Azure VPN 网关 | Microsoft 文档"
 description: "了解跨界、混合与 VNet 到 VNet 连接的 VPN 网关规划和设计"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/25/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 03f9294b558a075705fca4bd647a2154e155a1ea
+ms.sourcegitcommit: d2087d4a1844379ae642c9ce5b08d62edef2fccf
+ms.openlocfilehash: 21723b3c8ab636f6c4a497abece59ce83a46d65f
 
 
 ---
@@ -117,7 +117,7 @@ VPN 网关需要一个特定的子网，称为网关子网。 所有网关子网
 
 **强制隧道图**
 
-![强制隧道连接](./media/vpn-gateway-plan-design/forced-tunnel.png "forced tunneling")
+![Azure VPN 网关强制隧道示意图](./media/vpn-gateway-plan-design/forced-tunneling-diagram.png)
 
 可以使用不同的工具在这两种部署模型中配置强制隧道连接。 有关详细信息，请参阅下表。 我们将在由可用于此配置的新文章、新部署模型和其他工具时更新此表。 当有文章可用时，我们将从表中直接链接到该文章。
 
@@ -131,6 +131,6 @@ VPN 网关需要一个特定的子网，称为网关子网。 所有网关子网
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

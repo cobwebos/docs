@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2016
+ms.date: 02/03/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
+ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
+ms.openlocfilehash: ee1668dce71a1f5d7b91e839670b69c9527c4892
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
 了解如何在 Azure 门户中设置全局一致性、使用密钥，以及删除 DocumentDB 帐户。
 
 ## <a name="a-idconsistencyamanage-documentdb-consistency-settings"></a><a id="consistency"></a>管理 DocumentDB 一致性设置
-根据应用程序的语义选择正确的一致性级别。 用户应通过阅读 [使用一致性级别最大限度地提高 DocumentDB 中的可用性和性能][consistency]来熟悉 DocumentDB 中提供的一致性级别。 DocumentDB 在可用于数据库帐户的每个一致性级别提供一致性、可用性和性能保证。 使用非常一致性级别配置数据库帐户需要将数据局限在单个 Azure 区域，而不能使其全局可用。 另一方面，宽松的一致性级别 - 受限停滞、会话或最终一致性可让你将任意数量的 Azure 区域与你的数据库帐户相关联。 以下简单步骤说明如何为数据库帐户选择默认的一致性级别。 
+根据应用程序的语义选择正确的一致性级别。 用户应通过阅读[使用一致性级别最大限度地提高 DocumentDB 中的可用性和性能][consistency]，自行熟悉 DocumentDB 中提供的一致性级别。 DocumentDB 在可用于数据库帐户的每个一致性级别提供一致性、可用性和性能保证。 使用非常一致性级别配置数据库帐户需要将数据局限在单个 Azure 区域，而不能使其全局可用。 另一方面，宽松的一致性级别 - 受限停滞、会话或最终一致性可让你将任意数量的 Azure 区域与你的数据库帐户相关联。 以下简单步骤说明如何为数据库帐户选择默认的一致性级别。 
 
 ### <a name="to-specify-the-default-consistency-for-a-documentdb-account"></a>指定 DocumentDB 帐户的默认一致性
 1. 在 [Azure 门户](https://portal.azure.com/)中，访问 DocumentDB 帐户。
@@ -77,7 +77,7 @@ ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
 > 
 > 
 
-## <a name="get-the-connection-string"></a>获取连接字符串
+## <a name="get-the--connection-string"></a>获取连接字符串
 若要检索连接字符串，请执行以下操作： 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，访问 DocumentDB 帐户。
@@ -87,12 +87,12 @@ ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
 如果在 [DocumentDB 数据库迁移工具](documentdb-import-data.md)中使用连接字符串，将数据库名称追加到连接字符串的末尾。 `AccountEndpoint=< >;AccountKey=< >;Database=< >`。
 
 ## <a name="a-iddeletea-delete-a-documentdb-account"></a><a id="delete"></a> 删除 DocumentDB 帐户
-若要从 Azure 门户中删除不再使用的 DocumentDB 帐户，请使用“DocumentDB 帐户”边栏选项卡中的“删除帐户”命令。
+若要从 Azure 门户中删除不再使用的 DocumentDB 帐户，请右键单击该帐户名称，然后单击“删除帐户”。
 
 ![如何在 Azure 门户中删除 DocumentDB 帐户](./media/documentdb-manage-account/deleteaccount.png)
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，访问要删除的 DocumentDB 帐户。
-2. 在“DocumentDB 帐户”边栏选项卡中单击“更多”，然后单击“删除帐户”。 或者，右键单击数据库的名称，然后单击“删除帐户”。
+2. 在“DocumentDB 帐户”边栏选项卡上，右键单击该帐户，然后单击“删除帐户”。 
 3. 在生成的确认边栏选项卡中，键入 DocumentDB 帐户名称以确认要删除该帐户。
 4. 单击“删除” 按钮。
 
@@ -100,8 +100,6 @@ ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
 
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>后续步骤
 了解如何[开始使用 DocumentDB 帐户](http://go.microsoft.com/fwlink/p/?LinkId=402364)。
-
-若要了解更多有关 DocumentDB 的信息，请参阅 [azure.com](http://go.microsoft.com/fwlink/?LinkID=402319&clcid=0x409) 上的 Azure DocumentDB 文档。
 
 <!--Image references-->
 [1]: ./media/documentdb-manage-account/documentdb_add_region-1.png
@@ -115,10 +113,10 @@ ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
 [azureregions]: https://azure.microsoft.com/en-us/regions/#services
-[服务]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
+[offers]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

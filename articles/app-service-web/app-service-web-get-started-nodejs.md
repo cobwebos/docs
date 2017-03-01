@@ -129,7 +129,7 @@ ms.openlocfilehash: 06a8dfbac31024cb44fd38bcf9c4a4ea79dbc968
 ## <a name="see-your-app-running-live"></a>查看应用实时运行
 若要查看 Azure 中实时运行的应用，请从存储库中的任何目录运行以下命令：
 
-    azure site browse
+    az appservice web browse -n <app-name> --resource-group my-first-app-group
 
 ## <a name="make-updates-to-your-app"></a>更新应用
 现在可以使用 Git 随时从项目（存储库）根目录进行推送，以更新实时站点。 采用首次部署代码时的相同方法执行此操作。 例如，每次想要推送已在本地测试的新更改时，只需从项目（存储库）根目录运行以下命令：
@@ -155,6 +155,6 @@ ms.openlocfilehash: 06a8dfbac31024cb44fd38bcf9c4a4ea79dbc968
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

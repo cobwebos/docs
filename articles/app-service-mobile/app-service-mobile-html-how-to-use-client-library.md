@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: d6e68497cf0a4c48e6f611834089224b50b9bd5e
-ms.openlocfilehash: 79743cab91f8c22d06796803eb7e31681a581233
+ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
+ms.openlocfilehash: 3914d5bdc8feff7d7de5c6f7255396acade341b9
 
 
 ---
@@ -56,7 +56,7 @@ import * as WindowsAzure from 'azure-mobile-apps-client';
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="a-nameauthahow-to-authenticate-users"></a><a name="auth"></a>如何：对用户进行身份验证
+## <a name="a-nameauthahow-to-authenticate-users"></a><a name="auth"></a>如何对用户进行身份验证
 Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
 
 支持两种身份验证流：服务器流和客户端流。  服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。 客户端流依赖于提供程序特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
@@ -68,7 +68,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 * 在本地运行服务
 * 搭配使用实时重载和 Ionic 框架
-* 重定向至应用服务进行身份验证。 
+* 重定向至应用服务进行身份验证。
 
 在本地运行可能会导致问题产生，因为默认情况下，应用服务身份验证只配置为允许从移动应用后端访问。 使用以下步骤更改应用服务设置，允许在本地运行服务器时进行身份验证：
 
@@ -79,12 +79,12 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 5. 展开应用的“config” > “authsettings”节点。
 6. 单击“编辑”按钮可对资源进行编辑。
 7. 查找应为 null 的“allowedExternalRedirectUrls”元素。 在数组中添加 URL：
-   
+
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
-   
+
     将数组中的 URL 替换为服务的 URL，在本示例中为本地 Node.js 示例服务的 `http://localhost:3000`。 对于 Ripple 服务，也可以根据应用的配置方式，使用 `http://localhost:4400` 或其他某个 URL。
 8. 在页面顶部，单击“读/写”，然后单击“PUT”保存更新。
 
@@ -110,6 +110,6 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bd378c8dedd3d2bfed540be0fa009f751bcc5d1c
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: dc5b6f194a7e34d5061b9fa2e4a6123f54f6c14a
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: bd378c8dedd3d2bfed540be0fa009f751bcc5d1c
 
 ![创建仪表板](./media/azure-portal-dashboards/new-dashboard.png)
 
-此操作会创建全新的专用空仪表板，并进入自定义模式，可在此模式下命名仪表板以及添加或重新排列磁贴。  处于此模式下时，可折叠的磁贴库会接管左侧的导航菜单。  通过磁贴库，可以通过各种方式查找 Azure 资源的磁贴：可以按[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)、按资源类型或按[标记](../resource-group-using-tags.md)浏览，也可以按名称搜索资源。  
+此操作会创建全新的专用空仪表板，并进入自定义模式，可在此模式下命名仪表板以及添加或重新排列磁贴。  处于此模式下时，可折叠的磁贴库会接管左侧的导航菜单。  通过磁贴库，可以通过各种方式查找 Azure 资源的磁贴：可以按[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)、按资源类型或按[标记](../azure-resource-manager/resource-group-using-tags.md)浏览，也可以按名称搜索资源。  
 
 ![自定义仪表板](./media/azure-portal-dashboards/customize-dashboard.png)
 
@@ -97,12 +97,12 @@ ms.openlocfilehash: bd378c8dedd3d2bfed540be0fa009f751bcc5d1c
 ![管理访问控制](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 若要管理资源，请参阅[通过门户管理 Azure 资源](resource-group-portal.md)。
-* 若要部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](../resource-group-template-deploy-portal.md)。
+* 若要管理资源，请参阅[通过门户管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
+* 若要部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

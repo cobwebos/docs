@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 31c630088b6dc7481068e8050972b693f4dcaf71
+ms.sourcegitcommit: 5a46b53f42fce7577485517e9d345cf2ad3f0926
+ms.openlocfilehash: d4d0a221d531c4f6eda7bb6410fbc4dcebf5074b
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 31c630088b6dc7481068e8050972b693f4dcaf71
 * **MPI**：Microsoft MPI (MS-MPI) 2012 R2 或更高版本、Intel MPI Library 5.x
 
   支持的 MPI 实现使用 Microsoft Network Direct 接口在实例之间通信。 
-* **HpcVmDrivers VM 扩展** - 在具有 RDMA 功能的 VM 上，必须添加 HpcVmDrivers 扩展才能安装 RDMA 连接所需的 Windows 网络设备驱动程序。 （在云服务和某些 VM 部署中，会自动添加 HpcVmDrivers 扩展。）可使用用于 Azure Resource Manager 的 [Azure PowerShell](/powershell/azureps-cmdlets-docs) cmdlet 将 VM 扩展添加到 VM。
+* **HpcVmDrivers VM 扩展** - 在具有 RDMA 功能的 VM 上，必须添加 HpcVmDrivers 扩展才能安装 RDMA 连接所需的 Windows 网络设备驱动程序。 （在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。）可使用用于 Azure Resource Manager 的 [Azure PowerShell](/powershell/azureps-cmdlets-docs) cmdlet 将 VM 扩展添加到 VM。
 
   获取有关最新 HpcVmDrivers 扩展的信息：
 
@@ -67,6 +67,6 @@ ms.openlocfilehash: 31c630088b6dc7481068e8050972b693f4dcaf71
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

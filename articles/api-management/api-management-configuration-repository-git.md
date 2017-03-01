@@ -1,28 +1,25 @@
 ---
-title: "如何使用 Git 保存和配置 API 管理服务"
+title: "使用 Git 配置 Azure API 管理服务 | Microsoft 文档"
 description: "了解如何使用 Git 保存和配置 API 管理服务。"
 services: api-management
 documentationcenter: 
 author: steved0x
 manager: erikre
-editor: 
+editor: mattfarm
 ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 801fe10ad20c48fb965d3f80956d7979c9c2314e
 
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
-> [!IMPORTANT]
-> API 管理的 Git 配置当前处于预览中。 它具备完整功能，但处于预览中是因为我们正在积极寻求关于此功能的反馈。 为了响应客户反馈，我们可能进行重大更改，因此我们建议在生产环境中使用时不要依赖此功能。 如有任何反馈或疑问，请在 `apimgmt@microsoft.com` 告知我们。
 > 
 > 
 
@@ -40,7 +37,7 @@ ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
 
 以下步骤提供了使用 Git 管理 API 管理服务实例的概述。
 
-1. 在服务中启用 Git 访问
+1. 访问服务中的 Git 配置
 2. 将服务配置数据库保存到 Git 存储库
 3. 将 Git 存储库克隆到本地计算机
 4. 将最新的存储库提取到本地计算，并将更改提交并推送回存储库
@@ -48,20 +45,14 @@ ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
 
 本文介绍如何启用和使用 Git 管理服务配置，并提供 Git 存储库中的文件和文件夹的参考。
 
-## <a name="to-enable-git-access"></a>启用 Git 访问
-可通过查看发布者门户右上角的 Git 图标快速查看 Git 配置的状态。 在此示例中，尚未启用 Git 访问。
+## <a name="access-git-configuration-in-your-service"></a>访问服务中的 Git 配置
+可通过查看发布者门户右上角的 Git 图标快速查看 Git 配置的状态。 在此示例中，状态消息指出存储库存在未保存的更改。 这是因为 API 管理服务配置数据库尚未保存到存储库。
 
 ![Git 状态][api-management-git-icon-enable]
 
 若要查看和配置 Git 配置设置，可单击 Git 图标，或者单击“安全”菜单并导航到“配置存储库”选项卡。
 
 ![启用 Git][api-management-enable-git]
-
-若要启用 Git 访问，请选中“启用 Git 访问”复选框。
-
-片刻之后，将保存更改并显示确认消息。 请注意，Git 图标已更改为指示 Git 访问处于启用状态，并且状态消息现在指示存储库存在未保存的更改。 这是因为 API 管理服务配置数据库尚未保存到存储库。
-
-![Git 已启用][api-management-git-enabled]
 
 > [!IMPORTANT]
 > 未定义为属性的任何机密都将保存在存储库中，并将保留在其历史记录中，直到你禁用并重新启用 Git 访问。 属性提供了管理所有 API 配置和策略的常量字符串值（包括机密）的安全位置，因此无需将它们直接存储在策略声明中。 有关详细信息，请参阅[如何在 Azure API 管理策略中使用属性](api-management-howto-properties.md)。
@@ -109,42 +100,58 @@ ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
 
 使用发布者门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令以将 Git 存储库克隆到本地计算机。
 
-    git clone https://bugbashdev4.scm.azure-api.net/ 
+```
+git clone https://bugbashdev4.scm.azure-api.net/
+```
 
 出现提示时，输入用户名和密码。
 
 如果收到任何错误，请尝试将 `git clone` 命令修改为包含用户名和密码，如以下示例所示。
 
-    git clone https://username:password@bugbashdev4.scm.azure-api.net/
+```
+git clone https://username:password@bugbashdev4.scm.azure-api.net/
+```
 
 如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，然后在“即时窗口”中发出以下命令。 若要打开“即使窗口”，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），然后从“调试”菜单中依次选择“Windows”、“即时”。
 
-    ?System.NetWebUtility.UrlEncode("password from publisher portal")
+```
+?System.NetWebUtility.UrlEncode("password from publisher portal")
+```
 
 将编码密码与用户名和存储库位置一起用于构造 Git 命令。
 
-    git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+```
+git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+```
 
 克隆存储库后，可在本地文件系统中查看和处理它。 有关详细信息，请参阅[本地 Git 存储库的文件和文件夹结构参考](#file-and-folder-structure-reference-of-local-git-repository)。
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新服务实例配置更新本地存储库
 如果在发布者门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用更新更改更新本地存储库。 若要执行此操作，请单击发布者门户中的“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
 
-    git pull
+```
+git pull
+```
 
 运行 `git pull` 之前，请确保自己位于本地存储库的文件夹中。 如果刚刚完成 `git clone` 命令，则必须通过运行如下命令将目录更改为存储库。
 
-    cd bugbashdev4.scm.azure-api.net/
+```
+cd bugbashdev4.scm.azure-api.net/
+```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>将更改从本地存储库推送到服务器存储器
 若要将更改从本地存储库推送到服务器存储库，必须提交更改，然后将它们推送到服务器存储库。 若要提交更改，请打开 Git 命令工具、切换到本地存储库的目录，然后发出以下命令。
 
-    git add --all
-    git commit -m "Description of your changes"
+```
+git add --all
+git commit -m "Description of your changes"
+```
 
 若要将所有提交推送到服务器，请运行以下命令。
 
-    git push
+```
+git push
+```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>将任何服务配置更改部署到 API 管理服务实例
 将本地更改提交并推送到服务器存储库后，可将它们部署到 API 管理服务实例。
@@ -190,19 +197,21 @@ ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
 ### <a name="root-api-management-folder"></a>根 api-management 文件夹
 根 `api-management` 文件夹包含 `configuration.json` 文件，该文件包含采用以下格式的关于服务器实例的顶级信息。
 
-    {
-      "settings": {
-        "RegistrationEnabled": "True",
-        "UserRegistrationTerms": null,
-        "UserRegistrationTermsEnabled": "False",
-        "UserRegistrationTermsConsentRequired": "False",
-        "DelegationEnabled": "False",
-        "DelegationUrl": "",
-        "DelegatedSubscriptionEnabled": "False",
-        "DelegationValidationKey": ""
-      },
-      "$ref-policy": "api-management/policies/global.xml"
-    }
+```json
+{
+  "settings": {
+    "RegistrationEnabled": "True",
+    "UserRegistrationTerms": null,
+    "UserRegistrationTermsEnabled": "False",
+    "UserRegistrationTermsConsentRequired": "False",
+    "DelegationEnabled": "False",
+    "DelegationUrl": "",
+    "DelegatedSubscriptionEnabled": "False",
+    "DelegationValidationKey": ""
+  },
+  "$ref-policy": "api-management/policies/global.xml"
+}
+```
 
 前四个设置（`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`）映射到“安全”部分中的“标识”选项卡上的以下设置。
 
@@ -303,6 +312,6 @@ ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

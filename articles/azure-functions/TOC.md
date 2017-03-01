@@ -13,8 +13,8 @@
 ## 开发
 ### [开发函数应用](functions-reference.md)
 #### [C#](functions-reference-csharp.md)
-#### [Node.js](functions-reference-node.md)
 #### [F#](functions-reference-fsharp.md)
+#### [JavaScript](functions-reference-node.md)
 ### [使用触发器和绑定](functions-triggers-bindings.md)
 #### [DocumentDB 绑定](functions-bindings-documentdb.md)
 #### [事件中心绑定](functions-bindings-event-hubs.md)
@@ -28,7 +28,7 @@
 ##### [表绑定](functions-bindings-storage-table.md)
 #### [计时器触发器](functions-bindings-timer.md)
 #### [Twilio 输出绑定](functions-bindings-twilio.md)
-### [通过 Azure 门户创建函数](functions-create-first-azure-function-azure-portal.md)
+### [通过 Azure 门户创建函数](functions-create-first-azure-function-azure-portal.md) 
 ### [测试 Azure Functions](functions-test-a-function.md)
 ### [进行本地开发和调试](functions-run-local.md)
 ### [Azure Functions 最佳实践](functions-best-practices.md)
@@ -39,6 +39,7 @@
 
 ## 部署
 ### [Azure Functions 的连续部署](functions-continuous-deployment.md)
+### [使用基础结构即代码部署 Azure Functions](functions-infrastructure-as-code.md)
 
 ## 监视
 ### [监视 Azure Functions](functions-monitoring.md)
@@ -47,9 +48,10 @@
 ## [定价](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-functions)
+## [Azure Functions GitHub 存储库](https://github.com/Azure/Azure-Functions/) 
 ## [服务更新](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

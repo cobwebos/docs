@@ -4,7 +4,7 @@ description: "识别和解决 Azure SQL 数据库常见连接错误的步骤。"
 services: sql-database
 documentationcenter: 
 author: dalechen
-manager: felixwu
+manager: cshepard
 editor: 
 ms.assetid: ac463d1c-aec8-443d-b66e-fa5eadcccfa8
 ms.service: sql-database
@@ -13,11 +13,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 48ccd940efb75427461c3a8018aa6b31f46a626e
+ms.sourcegitcommit: 676cecdd886cfb557e7859e1e9583f0a0f9f749c
+ms.openlocfilehash: 222b9fe98592e0c78ec3d7c5ae4804bf75dd0d1e
 
 
 ---
@@ -61,8 +61,8 @@ ms.openlocfilehash: 48ccd940efb75427461c3a8018aa6b31f46a626e
 * 用户失误：例如，连接参数（例如连接字符串中的服务器名称）键入错误。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
-1. 设置[防火墙规则](sql-database-configure-firewall-settings.md)以允许客户端 IP 地址。
-2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 1433。 请参阅[配置 Windows 防火墙以允许 SQL Server 访问](https://msdn.microsoft.com/library/cc646023.aspx)，以获取更多指导。
+1. 设置[防火墙规则](sql-database-configure-firewall-settings.md)以允许客户端 IP 地址。 为便于临时测试，可使用 0.0.0.0 作为 IP 地址范围的开头，并使用 255.255.255.255 作为 IP 地址范围的结尾设置一个防火墙规则。 这将在所有 IP 地址上打开服务器。 如果这样可以解决连接问题，请删除此规则，然后针对适当限制的 IP 地址或地址范围创建防火墙规则。 
+2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 1433。 有关需要为 Azure Active Directory 身份验证打开的其他端口的其他信息，请查看[配置 Windows 防火墙以允许 SQL Server 访问](https://msdn.microsoft.com/library/cc646023.aspx)和[混合标识所需的端口和协议](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports)。
 3. 验证连接字符串和其他连接设置。 请参阅[连接问题主题](sql-database-connectivity-issues.md#connections-to-azure-sql-database)中的“连接字符串”部分。
 4. 在仪表板中检查服务运行状况。 如果认为存在区域性的中断，请参阅[从中断恢复](sql-database-disaster-recovery.md)，以了解恢复到新区域的步骤。
 
@@ -77,13 +77,11 @@ ms.openlocfilehash: 48ccd940efb75427461c3a8018aa6b31f46a626e
 | 4 |[排查 Microsoft Azure SQL 数据库的连接问题](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database) |该工具可帮助你识别并解决连接错误。 |
 | 5 |[排查“服务器 &lt;y&gt; 上的数据库 &lt;x&gt; 当前不可用。请稍后重试连接”进行故障排除](sql-database-troubleshoot-connection.md) |介绍如何识别并解决 40613 错误：“服务器 &lt;y&gt; 上的数据库 &lt;x&gt; 当前不可用。 请稍后重试连接”错误。 |
 | 6 |[SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题](sql-database-develop-error-messages.md) |介绍有关 SQL 数据库客户端应用程序的 SQL 错误代码的信息，例如常见的数据库连接错误、数据库复制问题和常规错误。 |
-| 7 |[Azure SQL 数据库的独立数据库性能指导](sql-database-performance-guidance.md) |提供了帮助你确定哪个服务层适合你的应用程序的指导。 此外提供了调优应用程序以充分利用 Azure SQL 数据库的建议。 |
+| 7 |[Azure SQL 数据库的单一数据库性能指导](sql-database-performance-guidance.md) |提供了帮助你确定哪个服务层适合你的应用程序的指导。 此外提供了调优应用程序以充分利用 Azure SQL 数据库的建议。 |
 | 8 |[SQL 数据库开发概述](sql-database-develop-overview.md) |提供了你可以用来连接到 Azure SQL 数据库以及与之进行交互的各种技术的代码示例的链接。 |
-| 9 |“升级到 Azure SQL 数据库 v12”页（[Azure 门户](sql-database-upgrade-server-portal.md)、[PowerShell](sql-database-upgrade-server-powershell.md)） |提供有关使用 Azure 门户或 PowerShell 将现有 Azure SQL 数据库 V11 服务器和数据库升级到 Azure SQL 数据库 V12 的指导。 |
 
 ## <a name="next-steps"></a>后续步骤
 * [排查 Azure SQL 数据库性能问题](sql-database-troubleshoot-performance.md)
-* [排查 Azure SQL 数据库权限问题](sql-database-troubleshoot-permissions.md)
 * [在 Microsoft Azure 上搜索文档](http://azure.microsoft.com/search/documentation/)
 * [查看 Azure SQL 数据库服务的最新更新](http://azure.microsoft.com/updates/?service=sql-database)
 
@@ -91,12 +89,10 @@ ms.openlocfilehash: 48ccd940efb75427461c3a8018aa6b31f46a626e
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [暂时性错误处理的一般指南](../best-practices-retry-general.md)
 * [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
-* [使用 Azure SQL 数据库的学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
-* [使用弹性数据库功能和工具的学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

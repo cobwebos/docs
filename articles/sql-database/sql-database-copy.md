@@ -16,26 +16,20 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 3686f262a0a3fc01abd179aef337c272e97c0b3c
-ms.openlocfilehash: b12bf1a08780c6888f518a800aea1065fd1283c5
+ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
+ms.openlocfilehash: 265adbccee6764322148fad23f31aa1e279dfc9b
 
 
 ---
 # <a name="copy-an-azure-sql-database"></a>复制 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [概述](sql-database-copy.md)
-> * [Azure 门户](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
 可以使用 Azure [活动异地复制](sql-database-geo-replication-overview.md)功能创建 SQL 数据库的副本。 不过，与异地复制不同的是，只要种子设定阶段完成，就会终止复制链接。 因此，复制数据库是源数据库自复制请求发出时起的快照。  
+
 可以在相同或不同的服务器上创建数据库副本。 默认情况下，数据库副本的服务层和性能级别（定价层）都与源数据库相同。 使用 API 时，可以在同一服务层（版本）中选择不同的性能级别。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，你可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。  
 
 将某个数据库复制到同一逻辑服务器时，可以在这两个数据库上使用相同的登录名。 用于复制该数据库的安全主体将成为新数据库上的数据库所有者 (DBO)。 所有数据库用户、其权限及安全标识符 (SID) 都复制到数据库副本中。  
 
-将数据库复制到不同的逻辑服务器时，新服务器上的安全主体将成为新数据库上的数据库所有者。 如果你使用[包含的数据库用户](sql-database-manage-logins.md)进行数据访问，请确保主数据库和辅助数据库始终具有相同的用户凭据，这样在复制完成后，你便可以使用相同的凭据立即访问。 如果使用 [Azure Active Directory](../active-directory/active-directory-whatis.md)，则完全无需管理副本中的凭据。 不过，将数据库复制到新服务器时，基于登录名的访问通常不起作用，因为登录名在新服务器上不存在。 若要了解如何在将数据库复制到其他逻辑服务器时管理登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 
+将数据库复制到不同的逻辑服务器时，新服务器上的安全主体将成为新数据库上的数据库所有者。 如果你使用[包含的数据库用户](sql-database-manage-logins.md)进行数据访问，请确保主数据库和辅助数据库始终具有相同的用户凭据，这样在复制完成后，你便可以使用相同的凭据立即访问。 如果使用 [Azure Active Directory](../active-directory/active-directory-whatis.md)，则完全无需管理副本中的凭据。 但是，将数据库复制到新服务器时，基于登录名的访问可能不起作用，因为登录名在新服务器上不存在。 若要了解如何在将数据库复制到其他逻辑服务器时管理登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 
 
 若要复制 SQL 数据库，需要满足以下条件：
 
@@ -58,6 +52,6 @@ ms.openlocfilehash: b12bf1a08780c6888f518a800aea1065fd1283c5
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

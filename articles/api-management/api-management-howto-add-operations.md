@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
+ms.sourcegitcommit: d8b2f91a4d47513572fc5a56c60524d8338c8df4
+ms.openlocfilehash: 4527e27f760a7a0685f92a7108c4e8ff9759d33c
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
 
 ![发布者门户][api-management-management-console]
 
-> 如果尚未创建 API 管理服务实例，请参阅 [创建 API 管理服务实例][创建 API 管理服务实例]教程中的[创建 API 管理服务实例][创建 API 管理服务实例]。
+> 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 > 
 > 
 
@@ -47,6 +47,8 @@ ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
 <a name="url-template"></a>
 
 通过键入一个或多个 URL 路径段和零个或多个查询字符串参数组成的 URL 片段定义 URL 目标。 URL 模板附加到 API 的基础 URL，标识单个 HTTP 操作。 它可能包含一个或多个由大括号标识的命名变量部分。 这些变量部分称为模板参数，并在管理平台处理请求时是从请求的 URL 中提取的动态分配值。
+
+> URL 模板可以包含通配符模式。 例如，指定 `/*` 会将该 HTTP 方法的所有请求都转发到后端服务。
 
 ![URL 模板][api-management-url-template]
 
@@ -75,7 +77,7 @@ ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
 
 缓存键用于区分这两个响应，以便与每个不同缓存键对应的响应将获得自己单独的缓存值。 （可选）分别输入特定的查询字符串参数，和/或要在“通过查询字符串参数变化”和“按标头变化”文本框中的计算缓存键值的 HTTP 标头。 如果指定无，完整请求 URL 和以下 HTTP 标头值用在缓存密钥生成过程中：“接受”和“Accept-Charset”。
 
-> 有关缓存和缓存策略的详细信息，请参阅[如何在 Azure API 管理中缓存操作结果][如何缓存 Azure API 管理中的操作结果]。
+> 有关缓存和缓存策略的详细信息，请参阅[如何在 Azure API 管理中缓存操作结果][How to cache operation results in Azure API Management]。
 > 
 > 
 
@@ -129,7 +131,7 @@ ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
 ## <a name="next-steps"> </a>后续步骤
 将操作添加到一个 API 后,下一步是将该 API 与产品相关联并将其发布，以便开发人员可调用其操作。
 
-* [如何创建和发布产品][如何创建和发布产品]
+* [如何创建和发布产品][How to create and publish a product]
 
 [api-management-management-console]: ./media/api-management-howto-add-operations/api-management-management-console.png
 [api-management-operations]: ./media/api-management-howto-add-operations/api-management-operations.png
@@ -154,22 +156,22 @@ ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
 [api-management-api-summary]: ./media/api-management-howto-add-operations/api-management-api-summary.png
 [api-management-echo-operations]: ./media/api-management-howto-add-operations/api-management-echo-operations.png
 
-[添加操作]: #add-operation
-[操作缓存]: #operation-caching
-[请求参数]: #request-parameters
-[请求正文]: #request-body
-[响应]: #responses
-[后续步骤]: #next-steps
+[Add an operation]: #add-operation
+[Operation caching]: #operation-caching
+[Request parameters]: #request-parameters
+[Request body]: #request-body
+[Responses]: #responses
+[Next steps]: #next-steps
 
-[创建 API 管理服务实例]: api-management-get-started.md
-[创建 API 管理服务实例]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[如何将操作添加到 API]: api-management-howto-add-operations.md
-[如何创建和发布产品]: api-management-howto-add-products.md
-[如何缓存 Azure API 管理中的操作结果]: api-management-howto-cache.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
+[How to cache operation results in Azure API Management]: api-management-howto-cache.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

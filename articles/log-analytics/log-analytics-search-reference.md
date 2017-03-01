@@ -4,7 +4,7 @@ description: "Log Analytics 搜索参考介绍搜索语言并提供常规查询�
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: d3abf62e590b5e9466c69f971f4cc6490a7e0d6e
-ms.openlocfilehash: fbbf8c75fa78bf94f0ad84401013d37327329028
+ms.sourcegitcommit: 81fd8dfa480fc6365b6373a4eefef1149248d800
+ms.openlocfilehash: 5e4fba6ff82cbe8af0116e35d71c8f9f04474f0f
 
 
 ---
@@ -45,8 +45,8 @@ system
 
 > [!NOTE]
 > 并非所有字段都以这种方式编制索引，但通常最常见的文本字段（如说明和名称）会使用这种方式。
-> 
-> 
+>
+>
 
 ```
 system error
@@ -62,8 +62,8 @@ system error | sort ManagementGroupName, TimeGenerated desc | top 10
 
 > [!IMPORTANT]
 > 字符串和文本字段的所有字段名称和值都区分大小写。
-> 
-> 
+>
+>
 
 ## <a name="filter-expression"></a>筛选器表达式
 以下小节说明筛选器表达式。
@@ -253,6 +253,29 @@ TimeGenerated:[NOW..NOW+1DAY]
 SampleValue:[0..2]
 ```
 
+### <a name="regular-expressions"></a>正则表达式
+可以使用正则表达式关键字，针对具有正则表达式的字段指定搜索条件。
+
+**语法**
+
+```
+field:Regex("Regular Expression")
+```
+
+```
+field=Regex("Regular Expression")
+```
+
+**示例**
+
+```
+Computer=Regex("C.*")
+```
+
+```
+Computer=Regex("^C.*")
+```
+
 ### <a name="logical-operators"></a>逻辑运算符
 查询语言支持逻辑运算符（*AND*、*OR* 和 *NOT*）及其各自的 C 样式别名（*&&*、*||* 和 *!*）。 可以使用括号来组合这些运算符。
 
@@ -275,7 +298,7 @@ Type:Alert AND NOT(Severity:1 OR ObjectId:"8066bbc0-9ec8-ca83-1edc-6f30d4779bcb8
 | system "Windows Server" OR Severity:1 |system AND ("Windows Server" OR Severity:1) |
 
 ### <a name="wildcarding"></a>通配符
-查询语言支持使用 (*\*) 字符来表示查询中某个值的一个或多个字符。
+查询语言支持使用 (\*) 字符来表示查询中某个值的一个或多个字符。
 
 示例:
 
@@ -287,16 +310,16 @@ Type=Event Computer=*SQL*
 
 > [!NOTE]
 > 现在，不能在引号中使用通配符。 Message=`"*This text*"` 会考虑将 (\*) 用作文本 (\*) 字符。
-> 
+>
 > ## <a name="commands"></a>命令
-> 
+>
 
 命令应用于查询所返回的结果。 使用管道字符 ( | ) 将命令应用于检索到的结果。 多个命令的情况下必须使用管道字符进行分隔。
 
 > [!NOTE]
 > 与字段名称和数据不同，命令名称可以用大写或小写。
-> 
-> 
+>
+>
 
 ### <a name="sort"></a>排序
 语法：
@@ -790,7 +813,6 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

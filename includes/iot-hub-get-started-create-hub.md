@@ -2,7 +2,7 @@
 为模拟设备应用创建要连接到的 IoT 中心。 以下步骤说明如何使用 Azure 门户来完成此任务。
 
 1. 登录到 [Azure 门户][lnk-portal]。
-2. 在“跳转栏”中，依次单击“新建” > “物联网” > “Azure IoT 中心”。
+2. 在“跳转栏”中，依次单击“新建” > “物联网” > “IoT 中心”。
    
     ![Azure 门户跳转栏][1]
 3. 在“IoT 中心”边栏选项卡中，选择 IoT 中心的配置。
@@ -11,7 +11,7 @@
    
    * 在“名称”框中，输入 IoT 中心的名称。 如果该“名称”有效且可用，“名称”框中会出现绿色的勾选标记。
    * 选择“定价和缩放层”[][lnk-pricing]。 本教程不需要特定的层。 对于本教程，请使用免费 F1 层。
-   * 在“资源组” 中，创建新资源组或选择现有的资源组。 有关详细信息，请参阅[使用资源组管理 Azure 资源][lnk-resource-groups]。
+   * 在“资源组”中，创建资源组或选择现有的资源组。 有关详细信息，请参阅[使用资源组管理 Azure 资源][lnk-resource-groups]。
    * 在“位置”中，选择托管 IoT 中心的位置。 对于本教程，请选择最近位置。
 4. 选择 IoT 中心配置选项后，单击“创建”。  Azure 可能需要几分钟时间来创建 IoT 中心。 若要检查状态，可以在“启动板”或“通知”面板中监视进度。
    
@@ -31,12 +31,12 @@
 [5]: ./media/iot-hub-get-started-create-hub/create-iot-hub5.png
 
 <!-- Links -->
-[lnk-resource-groups]: ../articles/azure-portal/resource-group-portal.md
+[lnk-resource-groups]: ../articles/azure-resource-manager/resource-group-portal.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

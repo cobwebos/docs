@@ -28,7 +28,7 @@ ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
 * 访问时间线、好友和关注者
 * 执行下面所述的任意其他操作和触发器  
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。  
+若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。  
 
 ## <a name="connect-to-twitter"></a>连接到 Twitter
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  

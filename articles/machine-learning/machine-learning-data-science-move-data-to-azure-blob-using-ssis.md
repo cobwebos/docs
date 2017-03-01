@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a67f2e77d3bc7da35a03b68d7f32fd3a2a42bfcd
-ms.openlocfilehash: f650555f5ca00ca44426e4d863dd2cf01f14d89c
+ms.sourcegitcommit: 179cac8856cd42cfad4a4d4aaa6301afb2c58329
+ms.openlocfilehash: 6d802148cec5b12004d1d374485f56af8eae64f8
 
 
 ---
@@ -84,7 +84,7 @@ ms.openlocfilehash: f650555f5ca00ca44426e4d863dd2cf01f14d89c
 若要使用 SSIS 将数据从 Azure Blob 存储下载到本地存储，请使用 [Azure Blob 上传任务](https://msdn.microsoft.com/library/mt146779.aspx)的实例。
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>更高级的 SSIS-Azure 方案
-注意：SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例如，blob 数据可以直接传输到 HDInsight 群集，可将此群集的输出下载回 blob，然后再下载到本地存储。 SSIS 可使用附加的 SSIS 连接器在 HDInsight 群集上运行 Hive 和 Pig 作业：
+SSIS 功能包能够通过将任务一起打包来处理更复杂的流。 例如，blob 数据可以直接传输到 HDInsight 群集，可将此群集的输出下载回 blob，然后再下载到本地存储。 SSIS 可使用附加的 SSIS 连接器在 HDInsight 群集上运行 Hive 和 Pig 作业：
 
 * 若要使用 SSIS 在 Azure HDInsight 群集上运行 Hive 脚本，请使用 [Azure HDInsight Hive 任务](https://msdn.microsoft.com/library/mt146771.aspx)。
 * 若要使用 SSIS 在 Azure HDInsight 群集上运行 Pig 脚本，请使用 [Azure HDInsight Pig 任务](https://msdn.microsoft.com/library/mt146781.aspx)。
@@ -92,6 +92,6 @@ ms.openlocfilehash: f650555f5ca00ca44426e4d863dd2cf01f14d89c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

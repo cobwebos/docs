@@ -1,13 +1,25 @@
 ---
+title: "Azure 虚拟机规模集文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用虚拟机规模集为大型计算、大数据和容器化解决方案创建自动缩放的 Windows 或 Linux VM。"
+services: virtual-machine-scale-sets
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: virtual-machine-scale-sets
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
+ms.sourcegitcommit: c9a4b71fc888f5b2b9a32af80d1d4947ff731157
+ms.openlocfilehash: 091259841325103ce6733796f1cfe9109e39877b
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
 
-虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。  VM 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
+了解如何使用虚拟机规模集来部署和管理一组相同的、自动缩放的 Windows 或 Linux VM。 文档介绍了如何使用规模集来支持面向大型计算、大数据和容器化解决方案的服务。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +41,7 @@ ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
         </a>
     </li>
        <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=virtual-machines">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -78,7 +90,22 @@ ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
                     <div class="cardText">
                         <h3>命令行</h3>
                         <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
-                        <p><a href="/azure/virtual-machines/azure-cli-arm-commands">Azure CLI</a></p>
+                        <p><a href="/cli/azure/vm">Azure CLI</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p>
+                        <p><a href="/java/api">Java</a></p>
+                        <p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html">Python</a></p>
                     </div>
                 </div>
             </div>
@@ -90,7 +117,7 @@ ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/compute/">REST API 参考</a></p>
+                        <p><a href="/rest/api/compute">计算 REST API 参考</a></p>
                     </div>
                 </div>
             </div>
@@ -98,16 +125,10 @@ ms.openlocfilehash: ace473bea761bd5219a3ca7facdf681dea04a7ff
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machine-scale-sets.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载虚拟机规模集文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

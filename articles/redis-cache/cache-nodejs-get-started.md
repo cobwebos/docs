@@ -12,11 +12,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 10/25/2016
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 66188b904d9f573e88bc99f185cd1275de31b0c1
+ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
+ms.openlocfilehash: 530191637b1aa91ee1d7fe5b5bb032c60983f7dc
 
 
 ---
@@ -55,6 +55,10 @@ Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis �
       // Add your cache name and access key.
     var client = redis.createClient(6380,'<name>.redis.cache.windows.net', {auth_pass: '<key>', tls: {servername: '<name>.redis.cache.windows.net'}});
 
+> [!NOTE]
+> 已为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 如果使用的是其他不支持 SSL 的客户端，请参阅[如何启用非 SSL 端口](cache-configure.md#access-ports)。
+> 
+> 
 
 ## <a name="add-something-to-the-cache-and-retrieve-it"></a>在缓存中添加一些内容并检索此内容
 下面的示例展示了如何连接到 Azure Redis 缓存实例，以及如何在缓存中存储和检索项目。 有关将 Redis 与 [node_redis](https://github.com/mranney/node_redis) 客户端一起使用的更多示例，请参阅 [http://redis.js.org/](http://redis.js.org/)。
@@ -85,6 +89,6 @@ Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis �
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

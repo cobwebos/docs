@@ -1,13 +1,26 @@
 ---
+title: "Azure SQL Server Stretch Database 文档 - 教程 | Microsoft 文档"
+description: "了解在不更改查询或应用程序的情况下，如何使用 SQL Server Stretch Database 将冷数据安全迁移到 Azure。 教程和其他文档。"
+services: sql-server-stretch-database
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: sql-server-stretch-database
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: d237f5116f81d0977a96a325ee66f2e7c3ee5c41
-ms.openlocfilehash: bf45461eafbb010d99b61f2f67a763e25f374b30
+ms.sourcegitcommit: 91c1cb9713d087982dc68f2511b72ef86a050616
+ms.openlocfilehash: bb5e0fa9981133a77c235a42be369b3bbacb4ac0
 
 ---
 #<a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database 文档
 
-SQL Server Stretch Database 能够透明、安全地将冷数据迁移到 Microsoft Azure 云。 SQL Server Stretch Database 以经济高效的方式使不经常使用的数据保持可用性，它不要求更改查询或应用程序，即使在迁移过程中也能保持数据安全性。 Stretch Database 面向包含不常使用的数据的事务数据库，这些数据通常存储在少量的表中。
+了解如何使用 SQL Server Stretch Database 透明、安全地将冷数据迁移到 Azure 云。 教程和其他文档可帮助用户以经济高效的方式使不经常使用的数据保持可用性，且无需对现有查询或应用程序做出更改。
+
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -86,16 +99,10 @@ SQL Server Stretch Database 能够透明、安全地将冷数据迁移到 Micros
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-server-stretch-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 SQL Server Stretch Database 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Feb17_HO2-->
 
 

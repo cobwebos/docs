@@ -1,5 +1,5 @@
 ---
-title: "如何管理数据资产 | Microsoft Docs"
+title: "如何管理 Azure 数据目录中的数据资产 | Microsoft Docs"
 description: "操作指南文章重点说明如何控制在 Azure 数据目录中注册的数据资产的可见性和所有权。"
 services: data-catalog
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
+ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
+ms.openlocfilehash: 45a7b2df88a2edf2bccdfc9d2aaea932f2096f24
 
 
 ---
-# <a name="how-to-manage-data-assets"></a>如何管理数据资产
+# <a name="how-to-manage-data-assets-in-azure-data-catalog"></a>如何管理 Azure 数据目录中的数据资产
 ## <a name="introduction"></a>介绍
 **Azure 数据目录**提供了数据源发现的功能，使用户能够轻松发现和理解他们执行分析和做出决策所需的数据源。 当所有用户能够找到并了解最广泛的可用数据源时，这些发现功能可以产生最大的影响。 出于这种考虑，数据目录的默认行为是让所有目录用户都能看见并发现所有已注册的数据源。
 
@@ -31,8 +31,8 @@ ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
 
 > [!NOTE]
 > 本文中描述的功能仅在 Azure 数据目录标准版中可用。 免费版不提供所有权和限制数据资产可见性的功能。
-> 
-> 
+>
+>
 
 ## <a name="managing-ownership-of-data-assets"></a>管理数据资产的所有权
 默认情况下，在数据目录中注册的数据资产无所有者；任何有权访问目录的用户均可以发现并批注这些资产。 用户可以获得无所有者的数据资产的所有权，然后限制其所拥有资产的可见性。
@@ -41,8 +41,8 @@ ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
 
 > [!NOTE]
 > 数据目录中的所有权只会影响存储在目录中的元数据。 它不会授予任何针对基础数据源的权限。
-> 
-> 
+>
+>
 
 ### <a name="taking-ownership"></a>取得所有权
 通过选择数据目录门户中的“取得所有权”选项，用户可以获得数据资产的所有权。 要取得无所有者的数据资产的所有权并不需要任何特殊权限；任何用户都可以取得无所有者的数据资产的所有权。
@@ -52,8 +52,8 @@ ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
 
 > [!NOTE]
 > 对于任何已有拥有者的数据资产，最好有至少两个用户作为所有者。
-> 
-> 
+>
+>
 
 ### <a name="removing-owners"></a>删除所有者
 正如任何资产所有者可以添加共同所有者一样，他们也可以删除任何共同所有者。
@@ -65,8 +65,8 @@ ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
 
 > [!NOTE]
 > 只要有可能，应将资产所有权和可见性权限分配给安全组而非单个用户。
-> 
-> 
+>
+>
 
 ## <a name="catalog-administrators"></a>目录管理员
 数据目录管理员是目录中所有资产的隐式共同所有者。 资产所有者不能删除目录管理员的可见性，并且管理员可以管理目录中所有数据资产的所有权和可见性。
@@ -76,7 +76,6 @@ ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

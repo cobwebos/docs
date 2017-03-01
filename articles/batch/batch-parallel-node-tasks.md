@@ -1,9 +1,9 @@
 ---
-title: "通过并行任务最大限度地使用 Batch 节点 | Microsoft Docs"
+title: "运行并行任务以便最大化节点使用率 - Azure Batch | Microsoft Docs"
 description: "通过减少所用的计算节点数并在 Azure Batch 池的每个节点上运行并发任务，来提高效率并降低成本"
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 10/25/2016
-ms.author: marsma
+ms.date: 01/23/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: f5bdbd801107650f87993b395338adfb1b26d17e
-ms.openlocfilehash: b72da9516bdcc0cd78460815ad258a110298150a
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: 8080c8c43d1e88381cd49bdac6a5f36b6cd82709
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: b72da9516bdcc0cd78460815ad258a110298150a
 如果不使用具有 1 个 CPU 内核的 Standard\_D1 节点，则可使用每个具有 16 个内核的 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点，同时允许并行执行任务。 因此，可以使用 *1/16 的节点*，即只需使用 63 个节点，而无需使用 1,000 个节点。 此外，如果每个节点需要大型应用程序文件或引用数据，作业持续时间和效率将再次得到提升，因为数据复制到仅 16 个节点。
 
 ## <a name="enable-parallel-task-execution"></a>允许并行执行任务
-可在池级别配置计算节点，以便并行执行任务。 创建池时，可以通过 Batch .NET 库设置 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。 如果使用的是 Batch REST API，则可在创建池时在请求正文中设置 [maxTasksPerNode][rest_addpool] 元素。
+可在池级别配置计算节点，以便并行执行任务。 在创建池时，可以通过 Batch .NET 库设置 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。 如果使用的是 Batch REST API，则可在创建池时在请求正文中设置 [maxTasksPerNode][rest_addpool] 元素。
 
 使用 Azure Batch 时，可以通过节点设置来设置多达四倍 (4x) 的节点核心数，从而最大限度地提高任务数。 例如，如果将池的节点大小配置为“大型”（四核），则可将 `maxTasksPerNode` 设置为 16。 有关每个节点大小的核心数的详细信息，请参阅[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)。 有关服务限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
 
@@ -48,9 +48,9 @@ ms.openlocfilehash: b72da9516bdcc0cd78460815ad258a110298150a
 ## <a name="distribution-of-tasks"></a>任务分发
 当池中的计算节点可以并行执行任务时，请务必指定任务在池中各节点之间的分布方式。
 
-可以通过 [CloudPool.TaskSchedulingPolicy][task_schedule] 属性指定任务应在池中所有节点之间平均分配（“散布式”）。 或者，先给池中的每个节点分配尽量多的任务，然后再将任务分配给池中的其他节点（“装箱式”）。
+可以通过 [CloudPool.TaskSchedulingPolicy][task_schedule] 属性指定任务，即让任务在池中所有节点之间平均分配（“散布式”）。 或者，先给池中的每个节点分配尽量多的任务，然后再将任务分配给池中的其他节点（“装箱式”）。
 
-此功能十分重要，有关示例，请参阅 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池（在以上示例中），该池的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。 如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 *Pack*，则可充分利用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
+此功能十分重要，如需示例，请参阅上面示例中 [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) 节点的池，该池配置后的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。 如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。 这可以最大程度地减少资源使用量并节省资金。
 
 ## <a name="batch-net-example"></a>Batch .NET 示例
 此 [Batch .NET][api_net] API 代码片段演示了一个请求，该请求要求创建一个包含四个大型节点的池，每个节点最多四个任务。 它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。 有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool][poolcreate_net]。
@@ -69,7 +69,7 @@ pool.Commit();
 ```
 
 ## <a name="batch-rest-example"></a>Batch REST 示例
-此 [Batch REST][api_rest] API 代码段演示了一个请求，该请求要求创建一个包含两个大型节点的池，每个节点最多四个任务。 有关如何使用 REST API 添加池的详细信息，请参阅[将池添加到帐户][rest_addpool]。
+此 [Batch REST][api_rest] API 代码片段演示了一个请求，该请求要求创建一个包含两个大型节点的池，每个节点最多四个任务。 有关如何使用 REST API 添加池的详细信息，请参阅[将池添加到帐户][rest_addpool]。
 
 ```json
 {
@@ -92,9 +92,9 @@ pool.Commit();
 >
 
 ## <a name="code-sample"></a>代码示例
-GitHub 上的 [ParallelNodeTasks][parallel_tasks_sample] 项目演示如何使用 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。
+GitHub 上的 [ParallelNodeTasks][parallel_tasks_sample] 项目说明了如何使用 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。
 
-此 C# 控制台应用程序使用 [Batch .NET][api_net] 库来创建包含一个或多个计算节点的池。 并在这些节点上执行其数量可以配置的任务，以便模拟可变负荷。 应用程序的输出指定了哪些节点执行了每个任务。 该应用程序还提供了作业参数和持续时间的摘要。 下面显示了同一个应用程序运行两次后的输出摘要部分。
+此 C# 控制台应用程序使用 [Batch .NET][api_net] 库创建包含一个或多个计算节点的池。 并在这些节点上执行其数量可以配置的任务，以便模拟可变负荷。 应用程序的输出指定了哪些节点执行了每个任务。 该应用程序还提供了作业参数和持续时间的摘要。 下面显示了同一个应用程序运行两次后的输出摘要部分。
 
 ```
 Nodes: 1
@@ -123,7 +123,7 @@ Duration: 00:08:48.2423500
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="batch-explorer-heat-map"></a>Batch 资源管理器热度地图
-[Azure Batch 资源管理器][batch_explorer]是 Azure Batch [示例应用程序][github_samples]之一，包含*热度地图*功能，可提供任务执行可视化。 执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热度地图”功能来轻松可视化每个节点上并行任务的执行。
+[Azure Batch 资源管理器][batch_explorer]是 Azure Batch [示例应用程序][github_samples]之一，包含热度地图功能，提供任务执行可视化。 执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热度地图”功能轻松可视化每个节点上并行任务的执行。
 
 ![Batch 资源管理器热度地图][1]
 
@@ -146,6 +146,6 @@ Duration: 00:08:48.2423500
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

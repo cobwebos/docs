@@ -1,5 +1,5 @@
 ---
-title: "获取用于 Azure IoT 初学者工具包的 Azure 工具 (macOS 10.10) | Microsoft Docs"
+title: "将 Arduino 连接到 Azure IoT - 第 2 课：Azure 工具 (macOS) | Microsoft Docs"
 description: "在 macOS 上安装 Python 和 Azure 命令行接口 (Azure CLI)。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: de7d031a05110ccbd2d5ab18a7735a91df2bd05e
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: ad8ee9d524dcb096ac7db4bb23ec16d56518742b
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: de7d031a05110ccbd2d5ab18a7735a91df2bd05e
 
 ## <a name="what-you-will-do"></a>执行的操作
 
-安装 Azure 命令行界面 (Azure CLI)。 如果有任何问题，请在适用于 Adafruit Feather M0 WiFi Arduino 开发板的[故障排除页](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)查找解决方案。
+安装 Azure 命令行界面 (Azure CLI)。 如果遇到任何问题，请在 Adafruit Feather M0 WiFi Arduino 开发板的[故障排除页](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)中查找解决方法。
 
 ## <a name="what-you-will-learn"></a>你要学习的知识
 在本文中，将学习以下内容：
@@ -87,6 +87,6 @@ Azure CLI 为 Azure 提供了多平台命令行体验。 可以直接从命令�
 [create-your-iot-hub-and-register-your-arduino-board]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

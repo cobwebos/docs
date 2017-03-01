@@ -1,5 +1,5 @@
 ---
-title: "使用机器学习管理 PowerShell cmdlet 重新训练新 Web 服务 | Microsoft Docs"
+title: "使用 PowerShell 重新训练新的 Azure 机器学习 Web 服务 | Microsoft 文档"
 description: "了解如何使用机器学习管理 PowerShell cmdlet 以编程方式重新训练模型并更新 Web 服务，以在 Azure 中使用新的训练模型。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f6747a80773cd76b0821edfd2ebcd6af84bed233
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
 
 
 ---
@@ -77,7 +77,7 @@ ms.openlocfilehash: f6747a80773cd76b0821edfd2ebcd6af84bed233
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
 ## <a name="update-the-reference-to-the-ilearner-blob-in-the-json"></a>将引用更新到 JSON 中的 iLearner blob。
-在资产中，定位到 [训练的模型]，使用 iLearner blob 的 URI 更新 *locationInfo* 节点中的 *URI* 值。 通过组合 BES 重新训练调用的输出结果中的 *BaseLocation* 和 *RelativeLocation* 生成 URI。
+在资产中，定位到 [训练的模型]，使用 iLearner blob 的 URI 更新 *locationInfo* 节点中的 *URI* 值。 通过组合 BES 重新训练调用的输出结果中的 *BaseLocation* 和 *RelativeLocation* 生成 URI。 这会更新引用新训练的模型的路径。
 
      "asset3": {
         "name": "Retrain Samp.le [trained model]",
@@ -93,13 +93,13 @@ ms.openlocfilehash: f6747a80773cd76b0821edfd2ebcd6af84bed233
       },
 
 ## <a name="import-the-json-into-a-web-service-definition"></a>将 JSON 导入到 Web 服务定义中
-必须使用 [Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) 将修改的 JSON 文件转换回可用于更新预测实验的 Web 服务定义。
+必须使用 [Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) 将修改的 JSON 文件转换回可用于更新 Web 服务定义的 Web 服务定义。
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
 ## <a name="update-the-web-service-with-new-web-service-definition"></a>使用新的 Web 服务定义更新 Web 服务
-最后，可使用 [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) cmdlet 更新预测实验。
+最后，可使用 [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) cmdlet 更新 Web 服务定义。
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 
@@ -112,6 +112,6 @@ ms.openlocfilehash: f6747a80773cd76b0821edfd2ebcd6af84bed233
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

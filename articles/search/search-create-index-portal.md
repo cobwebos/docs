@@ -11,11 +11,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 01/13/2017
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f0d468d0cb2cf76bb90e73d3fef3f6a8c14d1850
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: cc439b5da8753b41f8d65781c567b4808f385078
 
 
 ---
@@ -32,11 +32,11 @@ ms.openlocfilehash: f0d468d0cb2cf76bb90e73d3fef3f6a8c14d1850
 
 按照本指南创建索引之前，应已经 [创建 Azure 搜索服务](search-create-service-portal.md)。
 
-## <a name="i-go-to-your-azure-search-blade"></a>I. 转到“Azure 搜索”边栏选项卡
-1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
+## <a name="go-to-your-azure-search-blade"></a>转到“Azure 搜索”边栏选项卡
+1. 在 [Azure 门户](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)左侧的菜单中，单击“所有资源”
 2. 选择你的 Azure 搜索服务
 
-## <a name="ii-add-and-name-your-index"></a>II. 添加并命名索引
+## <a name="add-and-name-your-index"></a>添加并命名索引
 1. 单击“添加索引”按钮
 2. 命名 Azure 搜索索引。 由于我们要在本指南中创建一个用于搜索酒店的索引，因此我们将索引命名为“酒店”。
    * 索引名称必须以字母开头，并且只能包含小写字母、数字或短划线（“-”）。
@@ -45,7 +45,7 @@ ms.openlocfilehash: f0d468d0cb2cf76bb90e73d3fef3f6a8c14d1850
 
 ![](./media/search-create-index-portal/add-index.png)
 
-## <a name="iii-create-and-define-the-fields-of-your-index"></a>III. 创建并定义你的索引的字段
+## <a name="create-and-define-the-fields-of-your-index"></a>创建并定义你的索引的字段
 1. 通过选择“字段”条目，将打开一个新边栏选项卡，带有可输入你的索引定义的窗体。
 2. 使用窗体将字段添加到你的索引。
    
@@ -62,12 +62,12 @@ ms.openlocfilehash: f0d468d0cb2cf76bb90e73d3fef3f6a8c14d1850
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
-## <a name="next"></a>下一步
+## <a name="next-steps"></a>后续步骤
 创建 Azure 搜索索引后，就可以 [将内容上载到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

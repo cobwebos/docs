@@ -12,19 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/13/2016
 ms.author: jeannt
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: aff024314d3e0d6c50c321b0a058fa02c01c566a
+ms.sourcegitcommit: 8ea727f7b8d93401b35a7b9dbd2f00a5534c3072
+ms.openlocfilehash: e54c37f688e8d107f5323125ea42d63ec91a4c84
 
 
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>有关 Azure 机器学习的 Net# 神经网络规范语言的指南
 ## <a name="overview"></a>概述
-Net# 是由 Microsoft 开发的一种语言，用于定义 Microsoft Azure 机器学习中的神经网络模块的神经网络体系结构。 在本文中，将学习以下内容：  
+Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语言。 可以在 Microsoft Azure 机器学习的神经网络模块中使用 Net#，也可以在 [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml/microsoftml) 中的 `rxNeuralNetwork()` 函数中使用。 
 
-* 与神经网络相关的基本概念
+本文介绍开发自定义神经网络所需的基本概念： 
+
 * 神经网络要求以及如何定义主要组件
 * Net# 规范语言的语法和关键字
 * 使用 Net 创建的自定义神经网络的示例# 
@@ -411,6 +412,6 @@ Net # 可选择支持定义具有共享权重的多个捆绑。 如果任意两�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

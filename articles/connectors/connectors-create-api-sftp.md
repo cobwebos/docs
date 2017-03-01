@@ -24,7 +24,7 @@ ms.openlocfilehash: 2977404fb408ea5301c88caa7ce6767a906ca9c7
 # <a name="get-started-with-the-sftp-connector"></a>SFTP 连接器入门
 使用 SFTP 连接器访问 SFTP 帐户以发送和接收文件。 你可以执行各种操作，如创建、更新、获取或删除文件。  
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
+若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。
 
 ## <a name="connect-to-sftp"></a>连接到 SFTP
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  

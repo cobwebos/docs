@@ -1,13 +1,25 @@
 ---
+title: "Azure 数据工厂文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用数据工厂来与本地源与云源建立自动化数据管道，以便移动和处理要分析的数据。"
+services: data-factory
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-factory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 5742326de5bbe91340df69402bc551f87dafca78
+ms.sourcegitcommit: 7e5e1b41828d0c3d81f5594609910ecdba02a249
+ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure 数据工厂文档
 
-Azure 数据工厂是一项基于云的数据集成服务，可以自动移动和转换数据。 数据工厂服务可以创建数据集成解决方案，从各种数据存储引入数据、转换和处理数据，以及将结果数据发布到数据存储。
+了解如何使用数据工厂（云数据集成服务）将数据存储服务、移动服务和处理服务组合成自动化数据管道。 教程和其他文档介绍了如何设置和管理数据管线，以及移动和转换要分析的数据。
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -107,7 +119,6 @@ Azure 数据工厂是一项基于云的数据集成服务，可以自动移动�
                     <div class="cardText">
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
-                        <p><a href="/azure/data-factory/data-factory-sdks">Azure 数据工厂开发人员参考</a></p>
                    </div>
                 </div>
             </div>
@@ -127,18 +138,9 @@ Azure 数据工厂是一项基于云的数据集成服务，可以自动移动�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-factory.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载数据工厂文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

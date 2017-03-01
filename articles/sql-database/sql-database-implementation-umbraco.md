@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 5243d31e-3241-4cb0-9470-ad488ff28572
 ms.service: sql-database
-ms.custom: app development case study; app development
+ms.custom: app development case study
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0800f04034410c3734ef0a97afd9d41cf850381b
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: 774d5ac6f3d5d9d97120ab895157677e4a92bb05
 
 
 ---
@@ -30,7 +30,7 @@ Umbraco 是一个流行的开源内容管理系统 (CMS)，从小型营销活动
 > 
 > — Morten Christensen，Umbraco 技术主管
 > 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Database-Case-Study-Umbraco/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-Case-Study-Umbraco/player]
 > 
 > 
 
@@ -54,7 +54,7 @@ UaaS 使 SaaS 客户能够使用他们以前未曾接触过的 Umbraco CMS 功�
    项目实施可以使用 C# 管理库和 Azure 服务总线队列完全自动化。
 2. 利用
    
-   客户使用一到三个环境（用于生产、过渡和/或开发），每个环境都有自身的数据库。 客户数据库位于弹性数据库池中，使得 Umbraco 无需过度预配即可提供有效的缩放。
+   客户使用一到三个环境（用于生产、过渡和/或开发），每个环境都有自身的数据库。 客户数据库位于弹性池中，使得 Umbraco 无需过度预配即可提供有效的缩放。
    
    ![Umbraco 项目概览](./media/sql-database-implementation-umbraco/figure2.png)
    
@@ -78,7 +78,7 @@ UaaS 使 SaaS 客户能够使用他们以前未曾接触过的 Umbraco CMS 功�
    删除项目环境时，将在 Azure 服务总线队列清理期间删除所有关联的数据库（开发、过渡或实时）。 此自动化过程将未使用的数据库还原到 Umbraco 的弹性数据库可用性池，这样既可充分利用这些数据库，又可将这些数据库用于将来的预配。
 
 ## <a name="elastic-pools-allow-uaas-to-scale-with-ease"></a>弹性池可让 UaaS 轻松缩放
-利用 Azure 弹性数据库池，Umbraco 可为其客户优化性能，无需担心过度预配或预配不足。 Umbraco 目前拥有 3,000 个遍布在 19 个弹性数据库池中的数据库，无论是现有 325,000 个客户中的任何一个客户，还是已准备好要在云中部署 CMS 的新客户，Umbraco 都能根据需要轻松缩放，满足客户的需求。
+利用 Azure 弹性池，Umbraco 可为其客户优化性能，无需担心过度预配或预配不足。 Umbraco 目前拥有 3,000 个遍布在 19 个弹性池中的数据库，无论是现有 325,000 个客户中的任何一个客户，还是已准备好要在云中部署 CMS 的新客户，Umbraco 都能根据需要轻松缩放，满足客户的需求。
 
 Umbraco 技术主管 Morten Christensen 指出，“UaaS 现在大约以每天 30 个新客户的速度成长。 我们的客户很高兴能够在几秒内就能方便地预配好新项目、使用‘单键部署’功能从开发环境立即将更新发布到直播站点，以同样快速的方式在发现错误时予以更改。”
 
@@ -91,7 +91,7 @@ Umbraco 技术主管 Morten Christensen 指出，“UaaS 现在大约以每天 3
 ## <a name="the-path-from-datacenter-to-cloud"></a>从数据中心到云的路径
 当 Umbraco 开发人员一开始确定转移到 SaaS 模型时，即已知道需要使用一种符合成本效益且可缩放的方式来构建服务。
 
-> “弹性数据库池是最适合我们 SaaS 产品的选项，因为我们可以根据需要调大和调小容量。 预配相当简单，再配合我们的设置，可以发挥它的最大作用。”
+> “弹性池是最适合我们 SaaS 产品的选项，因为我们可以根据需要调大和调小容量。 预配相当简单，再配合我们的设置，可以发挥它的最大作用。”
 > 
 > — Morten Christensen，Umbraco 技术主管
 > 
@@ -110,11 +110,11 @@ Umbraco 开发人员的重要目标之一是，为 UaaS 客户提供一种快速
 * 在 UaaS 参与竞争的所有地理市场中都有运营点（企业需要确保它们可以快速访问其数据，并且其数据存储在符合其区域法规要求的位置）
 
 ## <a name="why-umbraco-chose-azure-for-uaas"></a>Umbraco 为何选择将 Azure 用于 UaaS
-Morten Christensen 指出，“在考虑所有选项之后，我们选择了 Azure，因为它符合我们从管理性、可缩放性再到熟悉度及符合成本效益方面的所有标准。 我们在 Azure VM 上设置环境，每个环境都有自身的 Azure SQL 数据库实例，而所有实例都在弹性数据库池中。 通过将开发、过渡与实时环境之间的数据库隔离，我们可以为客户提供与规模匹配的强大性能隔离，这是一个极大的优势。”
+Morten Christensen 指出，“在考虑所有选项之后，我们选择了 Azure，因为它符合我们从管理性、可缩放性再到熟悉度及符合成本效益方面的所有标准。 我们在 Azure VM 上设置环境，每个环境都有自身的 Azure SQL 数据库实例，而所有实例都在弹性池中。 通过将开发、过渡与实时环境之间的数据库隔离，我们可以为客户提供与规模匹配的强大性能隔离，这是一个极大的优势。”
 
 Morten 补充道，“以前，我们必须手动预配 Web 数据库的服务器。 现在，我们无需考虑这项工作。 从预配到清理的所有操作都是自动化的。”
 
-Morten 也很满意 Azure 提供的缩放功能。 “弹性数据库池是最适合我们 SaaS 产品的选项，因为我们可以根据需要调大和调小容量。 预配相当简单，再配合我们的设置，可以发挥它的最大作用。” Morten 表示，“弹性池的简单性，再加上基于服务层的 DTU 保证，使我们能够根据需要预配新资源池。 最近，我们一个较大客户的实时环境高峰达到 100 个 DTU。 使用 Azure，弹性池为客户的数据库提供了所需的实时资源，而无需预测 DTU 需求。 简单地说，我们的客户达到了预期的周转时间，而我们则达到了性能服务级别协议的要求。”
+Morten 也很满意 Azure 提供的缩放功能。 “弹性池是最适合我们 SaaS 产品的选项，因为我们可以根据需要调大和调小容量。 预配相当简单，再配合我们的设置，可以发挥它的最大作用。” Morten 表示，“弹性池的简单性，再加上基于服务层的 DTU 保证，使我们能够根据需要预配新资源池。 最近，我们一个较大客户的实时环境高峰达到 100 个 DTU。 使用 Azure，弹性池为客户的数据库提供了所需的实时资源，而无需预测 DTU 需求。 简单地说，我们的客户达到了预期的周转时间，而我们则达到了性能服务级别协议的要求。”
 
 Mikkel Madsen 总结，“除了将 Azure 服务总线与 Azure SQL 数据库配合使用的基础技术以外，我们还采用了强大的 Azure 算法，将常见的 SaaS 方案（大规模实时加入新客户）与应用程序模式（预先预配开发数据库和实时数据库）相连接。”
 
@@ -122,7 +122,7 @@ Mikkel Madsen 总结，“除了将 Azure 服务总线与 Azure SQL 数据库配
 自从选择 Azure 作为云合作伙伴后，Umbraco 无需像自我托管解决方案那样需要投资 IT 资源，就能够为 UaaS 客户提供优化的内容管理性能。 就像 Morten 所说，“我们相当满意 Azure 为开发人员提供的便利性和可缩放性，我们的客户也为获得的功能和可靠性振奋不已。 整体而言，它是我们的一大收获！”
 
 ## <a name="more-information"></a>详细信息
-* 有关 Azure 弹性数据库池的详细信息，请参阅[弹性数据库池](sql-database-elastic-pool.md)。
+* 有关 Azure 弹性池的详细信息，请参阅[弹性池](sql-database-elastic-pool.md)。
 * 有关 Azure 服务总线的详细信息，请参阅 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)。
 * 有关 Web 角色和辅助角色的详细信息，请参阅[辅助角色](../fundamentals-introduction-to-azure.md#compute)。    
 * 有关虚拟网络的详细信息，请参阅[虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)。    
@@ -133,6 +133,6 @@ Mikkel Madsen 总结，“除了将 Azure 服务总线与 Azure SQL 数据库配
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement 的 Windows Phone Silverlight SDK 升级�
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 87130026-9759-4659-9184-788a3627a165
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 06b2a8b5e12d33c3ade469491b2694dd4a342cf1
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -110,7 +111,7 @@ SDK 使用术语 `Engagement`。 需要更新项目以匹配此更改。
         </engagement:EngagementPage>
 4. 对于其他资源（如 Captain 图片），请注意，为使用“Engagement”，它们也已进行重命名。
 
-### <a name="application-id-sdk-key"></a>应用程序 ID / SDK 密钥
+### <a name="application-id--sdk-key"></a>应用程序 ID / SDK 密钥
 Engagement 使用连接字符串。 无需使用 Mobile Engagement 指定应用程序 ID 和 SDK 密钥，只需指定连接字符串。 可在 EngagementConfiguration 文件中对其设置。
 
 可在项目的 `Resources\EngagementConfiguration.xml` 文件中设置 Engagement 配置。
@@ -142,10 +143,5 @@ Engagement 使用连接字符串。 无需使用 Mobile Engagement 指定应用�
 * GetCapptainPageName 现在名为 GetEngagementPageName
 
 请注意，重命名也会影响重写方法。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

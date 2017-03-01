@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure 文档 | Microsoft 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 translationtype: Human Translation
-ms.sourcegitcommit: cee95b80d3e4360d68e6f37ad3c61e15d7d2a42e
-ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
+ms.sourcegitcommit: 39bebdc52aea8f4ee154c8369c1c564ffe8be95d
+ms.openlocfilehash: 108064e5da31f99d683714417aea3129f2b0f669
 
 ---
 <div id="main" class="v2">
@@ -99,8 +99,8 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                         </li>
                                         <li>
                                             <a href="/azure/app-service/">
-                                                <img src="media/index/AppService.svg" alt="" />
-                                                <p>应用服务</p>
+                                                <img src="media/index/app-service-web.svg" alt="" />
+                                                <p>Web 应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -630,7 +630,22 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                         <li>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>数据工厂</p>
+                                                <p>Data Factory</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h3>其他云</h3>
+                                    <ul>
+                                        <li>
+                                            <a href="/azure/azure-government/">
+                                                <img src="media/index/azure-government.svg" alt="" />
+                                                <p>Azure 美国政府版</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/azure-stack/">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -699,18 +714,18 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/app-service/">
+                                <a href="/azure/app-service-web">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/AppService.svg" alt="" />
+                                                        <img src="media/index/app-service-web.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>应用服务</h3>
-                                                    <p>为任何平台和任何设备创建 Web 应用与移动应用</p>
+                                                    <h3>Web 应用</h3>
+                                                    <p>快速创建并部署可缩放的关键任务 Web 应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1570,7 +1585,7 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>PowerBI Embedded</h3>
+                                                    <h3>Power BI Embedded</h3>
                                                     <p>在应用程序中嵌入完整交互式的、令人惊叹的数据可视化</p>
                                                 </div>
                                             </div>
@@ -2326,7 +2341,50 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
                                 </a>
                             </li>
                         </ul>
-                    </li>                    
+                    </li>
+                    <li>
+                        <a href="#other">其他云</a>
+                        <ul id="other" class="cardsA">
+                            <li>
+                                <a href="/azure/azure-government/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-government.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Microsoft Azure 美国政府版</h3>
+                                                    <p>在专用的 Azure 实例中构建并托管美国政府任务应用程序</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/azure-stack/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-stack.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Microsoft Azure Stack</h3>
+                                                    <p>使用这款新的混合云平台从自己的数据中心交付 Azure 服务</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -2851,6 +2909,6 @@ ms.openlocfilehash: 656048594dd18c9c39e67a2ec8136cc6e827fccf
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

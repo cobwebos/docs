@@ -1,5 +1,5 @@
 ---
-title: "SAP 解决方案入门 | Microsoft Docs"
+title: "Azure 中 Windows VM 上的 SAP 入门 | Microsoft 文档"
 description: "了解在 Microsoft Azure 中的虚拟机 (VM) 上运行的 SAP 解决方案"
 services: virtual-machines-windows
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 89f5605b23626e426ddc59900c60c29f6d6c1c14
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: 581ddd7ac3d612007614ca4f582364dfa16d30f6
 
 
 ---
@@ -393,6 +393,6 @@ ms.openlocfilehash: 89f5605b23626e426ddc59900c60c29f6d6c1c14
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

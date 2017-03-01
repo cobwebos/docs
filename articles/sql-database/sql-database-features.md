@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 5d8fa8328bb2257b77a27fc2fa33565e20000e10
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -47,7 +48,7 @@ Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 
 * 筛选为针对 SQL 数据库功能的正式发布版本 [(GA) 公告](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)。
 
 > [!TIP]
-> 若要测试现有数据库与 Azure SQL 数据库之间的兼容性，请参阅[验证 Azure SQL 数据库兼容性](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)。
+> 若要测试现有数据库与 Azure SQL 数据库的兼容性，请参阅[将 SQL Server 数据库迁移到 Azure](sql-database-cloud-migrate.md)。
 >
 
 | **功能** | **SQL Server** | **Azure SQL 数据库** | 
@@ -57,12 +58,12 @@ Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 
 | AlwaysOn 可用性组 | [支持](https://msdn.microsoft.com/library/hh510230.aspx) | 不支持 - 请参阅[活动异地复制](sql-database-geo-replication-overview.md) |
 | 附加数据库 | [支持](https://msdn.microsoft.com/library/ms190209.aspx) | 不支持 |
 | 应用程序角色 | [支持](https://msdn.microsoft.com/library/ms190998.aspx) | [支持](https://msdn.microsoft.com/library/ms190998.aspx) |
-| 自动缩放 | 不支持 | [支持](sql-database-scale-up.md) |
+| 自动缩放 | 不支持 | [支持](sql-database-service-tiers.md) |
 | Azure Active Directory | 不支持 | [支持](sql-database-aad-authentication.md) |
 | Azure 数据工厂 | 不支持 - 请参阅 [SQL Server Integration Services (SSIS)](https://msdn.microsoft.com/library/ms141026.aspx) | [支持](https://azure.microsoft.com/services/data-factory/) |
-| 审核 | [支持](https://msdn.microsoft.com/library/cc280386.aspx) | [支持](sql-database-auditing-get-started.md) |
+| 审核 | [支持](https://msdn.microsoft.com/library/cc280386.aspx) | [支持](sql-database-auditing.md) |
 | BACPAC 文件（导出） | [支持](https://msdn.microsoft.com/library/hh213241.aspx) | [支持](sql-database-export.md) |
-| BACPAC 文件（导入） | [支持](https://msdn.microsoft.com/library/hh710052.aspx) | [支持](sql-database-import.md) |
+| BACPAC 文件（导入） | [支持](https://msdn.microsoft.com/library/hh710052.aspx) | [支持](sql-database-import-portal.md) |
 | BACKUP 和 RESTORE 语句 | [支持](https://msdn.microsoft.com/library/ff848768.aspx) | 不支持 |
 | 内置函数 | [支持](https://msdn.microsoft.com/library/ms174318.aspx) | [大多数](https://msdn.microsoft.com/library/ms174318.aspx) |
 | 更改数据捕获 | [支持](https://msdn.microsoft.com/library/cc645937.aspx) | 不支持 |
@@ -132,7 +133,7 @@ Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 
 | SQL Server Integration Services (SSIS) | [支持](https://msdn.microsoft.com/library/ms141026.aspx) | 不支持 - 请参阅 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/) |
 | SQL Server PowerShell | [支持](https://msdn.microsoft.com/library/hh245198.aspx) | [支持](https://msdn.microsoft.com/library/hh245198.aspx) |
 | SQL Server Profiler | [支持](https://msdn.microsoft.com/library/ms181091.aspx) | 不支持 - 请参阅[扩展的事件](https://msdn.microsoft.com/library/ms181091.aspx) |
-| SQL Server 复制 | [支持](https://msdn.microsoft.com/library/ms151198.aspx) | [仅限事务性和快照复制订户](sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
+| SQL Server 复制 | [支持](https://msdn.microsoft.com/library/ms151198.aspx) | [仅限事务性和快照复制订户](sql-database-cloud-migrate.md) |
 | SQL Server Reporting Services (SSRS) | [支持](https://msdn.microsoft.com/library/ms159106.aspx) | 不支持 |
 | 存储过程 | [支持](https://msdn.microsoft.com/library/ms190782.aspx) | [支持](https://msdn.microsoft.com/library/ms190782.aspx) |
 | 系统存储函数 | [支持](https://msdn.microsoft.com/library/ff848780.aspx) | [部分](https://msdn.microsoft.com/library/ff848780.aspx) |
@@ -158,9 +159,4 @@ Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 
 - 了解基于**服务层**的具体资源配额和限制的信息。 有关服务层的概述，请参阅 [SQL 数据库服务层](sql-database-service-tiers.md)。
 - 有关安全概述，请参阅 [Azure SQL 数据库安全概述](sql-database-security-overview.md)。
 - 有关驱动程序可用性和 SQL 数据库支持的信息，请参阅[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

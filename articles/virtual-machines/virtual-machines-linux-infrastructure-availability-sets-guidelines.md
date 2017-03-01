@@ -1,5 +1,5 @@
 ---
-title: "Azure 可用性集准则 | Microsoft Docs"
+title: "Azure 中 Linux VM 的可用性集 | Microsoft 文档"
 description: "了解用于在 Azure 基础结构服务中部署可用性集的关键设计和实施准则。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
-ms.openlocfilehash: 93d1421fb8afdc5e6e7d20de25774eb580a0e8da
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 0c31fb1d02e26491de8d1076d074a2021906999f
 
 
 ---
@@ -56,6 +56,6 @@ Azure 中的底层基础结构分为更新域和容错域。 这些域是按共�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

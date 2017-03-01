@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 69dc7a150fa78d178b7b63b3b6f33558f5d5f1a9
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 7ce5ba3c1a844104b4c14c73e05843becd69eb5f
 
 
 ---
@@ -49,7 +49,7 @@ ms.openlocfilehash: 69dc7a150fa78d178b7b63b3b6f33558f5d5f1a9
 * 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个 **Azure 存储帐户**。 在本教程中，你将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)一文。 创建存储帐户后，你将需要获取用于访问存储的帐户密钥。 请参阅[管理存储访问密钥](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)。
 * 在 **Azure 虚拟机上置备了 SQL Server**。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](machine-learning-data-science-setup-sql-server-virtual-machine.md)。
-* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ## <a name="a-namefilesourcetosqlonazurevma-moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>将数据从平面文件源移动到 Azure 虚拟机上的 SQL Server
 如果数据位于平面文件中（以行/列格式排列），则可以通过以下方法将它移到 Azure 上的 SQL Server 虚拟机：
@@ -171,7 +171,7 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 下面我们将对每种策略进行介绍：
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导
-**将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导**非常简单，建议采用这种方法将数据从本地 SQL Server 实例移到 Azure 虚拟机上的 SQL Server。 有关详细的步骤以及其他备选方法的讨论，请参阅[将数据库迁移到 Azure 虚拟机上的 SQL Server](../virtual-machines/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+**将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导**非常简单，建议采用这种方法将数据从本地 SQL Server 实例移到 Azure 虚拟机上的 SQL Server。 有关详细的步骤以及其他备选方法的讨论，请参阅[将数据库迁移到 Azure 虚拟机上的 SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)。
 
 ### <a name="a-nameexport-flat-fileaexport-to-flat-file"></a><a name="export-flat-file"></a>导出到平面文件
 可以使用各种方法从本地 SQL Server 批量导出数据（如[批量导入和导出数据 (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) 主题中所述）。 本文档将举例说明“大容量复制程序 (BCP)”。 一旦数据导出到平面文件，就可以使用批量导入将其导入到另一个 SQL Server。
@@ -207,15 +207,15 @@ SQL Server Management Studio 中的数据库备份/还原选项的屏幕快照�
 ![SQL Server 导入工具][1]
 
 ## <a name="resources"></a>资源
-[将数据库迁移到 Azure 虚拟机上的 SQL Server](../virtual-machines/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[将数据库迁移到 Azure 虚拟机上的 SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
 
-[Azure 虚拟机上的 SQL Server 概述](../virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Azure 虚拟机上的 SQL Server 概述](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

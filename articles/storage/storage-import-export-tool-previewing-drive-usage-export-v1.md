@@ -1,8 +1,8 @@
 ---
 title: "预览导出作业的驱动器使用情况 | Microsoft Docs"
 description: "了解如何预览针对 Azure 导入/导出服务中的导出作业选择的 Blob 列表"
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-ms.author: renash
+ms.date: 01/15/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: d8ea4cb51c9609b8fa9ed5ee50762f981da68e20
+ms.sourcegitcommit: 358e3f2574cab0150c59f96b9bc4d32d959e94a8
+ms.openlocfilehash: 9ba9a3970925466285ae1df4676501fbdd24bd66
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: d8ea4cb51c9609b8fa9ed5ee50762f981da68e20
 |**/sn:**<StorageAccountName\>|必需。 导出作业的存储帐户的名称。|  
 |**/sk:**<StorageAccountKey\>|当且仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|  
 |**/csas:**<ContainerSas\>|当且仅当未指定存储帐户密钥时才是必需的。 用于列出要在导出作业中导出的 Blob 的容器 SAS。|  
-|**/ExportBlobListFile:**<ExportBlobListFile\>|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageservices/importexport/Put-Job)操作的 `BlobListBlobPath` 元素中使用的文件格式。|  
+|**/ExportBlobListFile:**<ExportBlobListFile\>|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作的 `BlobListBlobPath` 元素中使用的文件格式。|  
 |**/DriveSize:**<DriveSize\>|必需。 用于导出作业的驱动器大小，例如 500GB、1.5TB。|  
   
 以下示例演示了 `PreviewExport` 命令：  
@@ -74,6 +74,7 @@ Number of drives needed:        3
 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

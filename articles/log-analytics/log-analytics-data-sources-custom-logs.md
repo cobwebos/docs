@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 中的自定义日志 | Microsoft Docs"
+title: "收集 OMS Log Analytics 中的自定义日志 | Microsoft Docs"
 description: "Log Analytics 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 OMS 存储库中创建的记录的详细信息。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 25c63021160e5259bc72a4f7bbfc248b7ac717aa
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: a9c70810c4f731b2d8b395873fa6b94db78306aa
 
 
 ---
@@ -177,6 +177,6 @@ Log Analytics 约每隔 5 分钟就会从每个自定义日志中收集新条目
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

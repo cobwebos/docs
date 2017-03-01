@@ -1,13 +1,25 @@
 ---
+title: "Azure 服务总线文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何设置消息传送，用于连接跨本地和云环境的应用程序与服务。  教程、视频、API 参考和其他资源。"
+services: service-bus
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 0ecc51f19240ecfa49852ed1eafcf78d1227af16
+ms.sourcegitcommit: 3e94e98bde67db2e136420ada2a7c625ad5a0307
+ms.openlocfilehash: ac803aaa0cf4cbf69fdca9764923eaaf2d29efc0
 
 ---
 #<a name="service-bus-documentation"></a>服务总线文档
 
-通过服务总线，可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。 
+了解如何使用服务总线建立跨本地和云环境的连接。 教程、视频、API 参考和其他文档演示了如何在应用程序与服务之间设置云消息传送。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -234,16 +246,10 @@ ms.openlocfilehash: 0ecc51f19240ecfa49852ed1eafcf78d1227af16
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载服务总线文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,9 +1,9 @@
 ---
-title: "将云服务与 Azure CDN 集成 | Microsoft Docs"
-description: "本教程演示如何部署云服务，以便从集成的 Azure CDN 终结点提供内容"
+title: "将 Azure 云服务与 Azure CDN 集成 | Microsoft Docs"
+description: "了解如何部署从集成的 Azure CDN 终结点提供内容的云服务"
 services: cdn, cloud-services
 documentationcenter: .net
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: tysonn
 ms.assetid: b3c0108f-9ec5-43a8-8fd0-40eafbd32637
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3d5c371c8753b4ddaffcbf373d078b819fd2d687
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
 
 
 ---
@@ -50,8 +50,8 @@ ms.openlocfilehash: 3d5c371c8753b4ddaffcbf373d078b819fd2d687
 > [!NOTE]
 > 完成本教程需要有一个 Azure 帐户：
 > 
-> * 可以[免费建立一个 Azure 帐户](/pricing/free-trial/) - 获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。
-> * 你可以[激活 MSDN 订户权益](/pricing/member-offers/msdn-benefits-details/) - MSDN 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
+> * 可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/) - 获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。
+> * 你可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) - MSDN 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
 > 
 > 
 
@@ -133,7 +133,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
     ![CDN 终结点][cdn-endpoint-success]
    
    > [!NOTE]
-   > 该终结点将不会立即可用。  通过 CDN 网络传播注册可能需要长达 90 分钟的时间。 尝试立即使用 CDN 域名的用户可能会收到状态代码 404，直到可通过 CDN 访问该内容。
+   > 终结点不会立即可用。  通过 CDN 网络传播注册可能需要长达 90 分钟。 尝试立即使用 CDN 域名的用户可能会收到状态代码 404，直到可通过 CDN 访问该内容。
    > 
    > 
 
@@ -603,6 +603,6 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

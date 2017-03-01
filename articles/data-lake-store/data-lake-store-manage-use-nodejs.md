@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
-ms.openlocfilehash: 968e4039b2c94d67560fafb245b6558c70b6d2e3
+ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
+ms.openlocfilehash: 091ab246826c96b9d816c87b27014c1e54039429
 
 
 ---
@@ -31,6 +31,11 @@ ms.openlocfilehash: 968e4039b2c94d67560fafb245b6558c70b6d2e3
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
+> 
+
+> [!NOTE]
+> 若要上载和下载大量数据（大型文件和/或大量文件），建议使用 [Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md) 或 [Azure PowerShell](data-lake-store-get-started-powershell.md)。 这些选项都有更好的性能，因为使用了多个线程并行执行数据移动操作。
+> 
 > 
 
 了解如何使用 Node.js 的 Azure SDK 来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。 目前，此 SDK 支持
@@ -146,6 +151,6 @@ filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, functio
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

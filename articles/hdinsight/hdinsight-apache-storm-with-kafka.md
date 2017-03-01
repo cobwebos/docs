@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/09/2016
+ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: c6171ad4077e833162bfad31b01abbc9947f8e45
+ms.sourcegitcommit: fb2fe0efe00a7ef7fd1c22ca94c76b2d5f4c5510
+ms.openlocfilehash: 0ab556f074700b7e26be002bc894914a1d429e79
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>将 Apache Kafka（预览版）与 Storm on HDInsight 配合使用
@@ -41,9 +41,9 @@ Apache Kafka 是发布订阅消息传送解决方案，可用于 HDInsight。 Ap
 
 * SSH 客户端（需要 `ssh` 和 `scp` 命令）- 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
   
-  * [在 Linux、Unix 和 Mac OS 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+  * [在 Linux、Unix、Mac OS 和 Windows 10 上的 Bash 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-  * [从 Windows 配合使用 SSH 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
+  * [从 Windows 配合使用 SSH (PuTTY) 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ## <a name="create-the-clusters"></a>创建群集
 
@@ -134,9 +134,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
    
-    * [在 Linux、Unix 和 Mac OS 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Linux、Unix、Mac OS 和 Windows 10 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-    * [从 Windows 配合使用 SSH 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * [从 Windows 配合使用 SSH (PuTTY) 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 2. 与 Kafka 群集建立 SSH 连接后，使用以下命令从 Ambari 中获取 zookeeper 节点：
 
@@ -206,9 +206,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档：
    
-    * [在 Linux、Unix 和 Mac OS 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Linux、Unix、Mac OS 和 Windows 10 上的 Bash 中将 SSH 与基于 Linux 的 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-    * [从 Windows 配合使用 SSH 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * [从 Windows 配合使用 SSH (PuTTY) 与基于 Linux 的 HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 2. 与 Storm 群集建立 SSH 连接后，使用以下命令运行 `set-env-variables.sh` 脚本：
 
@@ -322,6 +322,6 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

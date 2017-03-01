@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 2939e7450c9ce80317ada770fd95f0e9950a58af
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: ebdd4df0bd990ee37cb173da8c1f38b60d203158
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 2939e7450c9ce80317ada770fd95f0e9950a58af
 > [!NOTE]
 > Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为映像格式。 如果需要，可以使用 [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 此外，Azure 不支持上载动态 VHD，因此，上载之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在上载到 Azure 的过程中转换动态磁盘。
 
-* **Azure 命令行接口** - 安装最新的 [Azure 命令行接口](../virtual-machines-command-line-tools.md)以上载 VHD。
+* **Azure 命令行接口** - 安装最新的 [Azure 命令行接口](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)以上载 VHD。
 
 <a id="prepimage"> </a>
 
@@ -109,7 +109,7 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
 若要创建自己的 VM，请提供自己的用户名 + 密码、位置、DNS 名称和映像名称。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅[用于 Azure 经典部署模型的 Azure CLI 参考](../virtual-machines-command-line-tools.md)。
+有关详细信息，请参阅[用于 Azure 经典部署模型的 Azure CLI 参考](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
@@ -117,6 +117,6 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -57,7 +57,7 @@ ms.openlocfilehash: a0e03bda81d26dbc28706b45ee974359337573f0
 创建三个策略后，可以开始构建应用。  
 
 ## <a name="download-the-code-and-configure-authentication"></a>下载代码和配置身份验证
-本示例的代码[保留在 GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet)。 若要根据说明构建示例，可以[下载 .zip 文件格式的骨干项目](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)。 也可以克隆骨干项目：
+本示例的代码[保留在 GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet)。 若要根据说明构建示例，可以[下载 .zip 文件格式的主干项目](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)。 也可以克隆骨干项目：
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git

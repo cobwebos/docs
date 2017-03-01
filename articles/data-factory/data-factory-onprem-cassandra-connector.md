@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 21ec253e35b31af770cacb9747210deb4b9f5fa0
+ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
+ms.openlocfilehash: 7b7d3b87e1285993d744e74d01f5192732b70e77
 
 
 ---
@@ -24,6 +24,9 @@ ms.openlocfilehash: 21ec253e35b31af770cacb9747210deb4b9f5fa0
 本文概括介绍了如何使用 Azure 数据工厂中的“复制活动”将数据从本地 Cassandra 数据库复制到[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分的“接收器”列下所列出的任意数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
 
 数据工厂当前仅支持将数据从 Cassandra 数据库移动到[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)，而不支持将数据从其他数据存储移动到 Cassandra 数据库。
+
+## <a name="supported-versions"></a>支持的版本
+此 Cassandra 连接器支持 Cassandra 版本 2.X。
 
 ## <a name="prerequisites"></a>先决条件
 若要使 Azure 数据工厂能够连接到本地 Cassandra 数据库，必须安装以下组件：
@@ -321,10 +324,10 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

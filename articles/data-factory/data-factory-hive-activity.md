@@ -1,5 +1,5 @@
 ---
-title: "Hive 活动"
+title: "使用 Hive 活动转换数据 - Azure | Microsoft Docs"
 description: "了解如何使用 Azure 数据工厂中的 Hive 活动在按需/你自己的 HDInsight 群集上运行 Hive 查询。"
 services: data-factory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 355de60c6a06f4694b8bce4a6ff3b6c2f65b2233
-ms.openlocfilehash: 373d3c3a38cd56fff9f6da0b9277b22c101b55c0
+ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
+ms.openlocfilehash: 5fe5a990423cd24de0ada90a3a7f76899c4ffadc
 
 
 ---
-# <a name="hive-activity"></a>Hive 活动
+# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -246,6 +246,6 @@ FROM HiveSampleIn Group by ProfileID
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

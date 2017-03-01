@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
-ms.openlocfilehash: 4ca6e9a70eeba688912dd1f2c840fe0289a365c9
+ms.sourcegitcommit: 6fad9ecee49eae24daf924bc292daaf42000c901
+ms.openlocfilehash: 546d7f721689d5d52adfc6149b715a0f9e1aa71e
 
 
 ---
@@ -104,7 +104,7 @@ ms.openlocfilehash: 4ca6e9a70eeba688912dd1f2c840fe0289a365c9
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {
@@ -248,7 +248,7 @@ ms.openlocfilehash: 4ca6e9a70eeba688912dd1f2c840fe0289a365c9
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-amazon-redshift"></a>Amazon Redshift 的类型映射
-如[数据移动活动](data-factory-data-movement-activities.md)一文所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：
+如[数据移动活动](data-factory-data-movement-activities.md)一文所述，复制活动使用以下&2; 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
@@ -284,6 +284,6 @@ ms.openlocfilehash: 4ca6e9a70eeba688912dd1f2c840fe0289a365c9
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

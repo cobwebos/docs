@@ -1,9 +1,9 @@
 ---
-title: "如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 和 IIS 内容的过期问题 | Microsoft Docs"
-description: "描述如何管理 Azure CDN 中云服务内容的过期问题"
+title: "管理 Azure CDN 中 Web 内容的过期问题 | Microsoft Docs"
+description: "了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。"
 services: cdn
 documentationcenter: .NET
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 61c14a27fc82b128dec41e2ed46850ac7fb554ad
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 02d0270c5763eb9dd2190bc24b793022ea536746
 
 
 ---
-# <a name="how-to-manage-expiration-of-azure-web-appscloud-services-aspnet-or-iis-content-in-azure-cdn"></a>如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题 |Microsoft Azure
+# <a name="manage-expiration-of-azure-web-appscloud-services-aspnet-or-iis-content-in-azure-cdn"></a>管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题
 > [!div class="op_single_selector"]
 > * [Azure Web 应用/云服务、ASP.NET 或 IIS](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure 存储 blob 服务](cdn-manage-expiration-of-blob-content.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 61c14a27fc82b128dec41e2ed46850ac7fb554ad
 来自任何可公开访问的源 Web 服务器的文件均可在 Azure CDN 中进行缓存，直到其生存时间 (TTL) 结束。  TTL 由来自源服务器的 HTTP 响应中的 [*Cache-Control* 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)决定。  本文描述如何设置 `Cache-Control`Azure Web 应用、Azure 云服务、ASP.NET 应用程序和 Internet Information Services 网站的标头，所有标头的配置方式都类似。
 
 > [!TIP]
-> 可以选择不对文件设置 TTL。  在这种情况下，Azure CDN 将自动应用默认为 7 天的 TTL。
+> 可以选择不对文件设置 TTL。  在这种情况下，Azure CDN 将自动应用默认为&7; 天的 TTL。
 > 
 > 有关 Azure CDN 如何加速访问文件和其他资源的详细信息，请参阅 [Azure CDN 概述](cdn-overview.md)。
 > 
@@ -58,7 +58,7 @@ ms.openlocfilehash: 61c14a27fc82b128dec41e2ed46850ac7fb554ad
 
 如果需要在 ASP.NET 中以编程方式缓存应用程序内容，请确保已将 HttpCacheability 设置为 *Public*，从而将内容标记为可缓存。 另请确保设置缓存验证标记。 缓存验证标记可以是“上次修改时间”时间戳（通过调用 SetLastModified 来设置），也可以是 etag 值（通过调用 SetETag 来设置）。 你还可以通过调用 SetExpires 来选择性地指定缓存到期时间，或者依靠本文前面介绍过的默认缓存试探程序。  
 
-例如，若要将内容缓存 1 小时，可添加以下语句：  
+例如，若要将内容缓存&1; 小时，可添加以下语句：  
 
 ```csharp
 // Set the caching parameters.
@@ -75,6 +75,6 @@ Response.Cache.SetLastModified(DateTime.Now);
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

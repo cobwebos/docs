@@ -14,6 +14,7 @@
 ### [创建身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)
 ### [配置设置](multi-factor-authentication-whats-next.md)
 ### [MFA 中的报告](multi-factor-authentication-manage-reports.md)
+### [使用现有网络策略服务器](multi-factor-authentication-nps-extension.md)
 ### 本地 Azure MFA
 #### [安装用户门户](multi-factor-authentication-get-started-portal.md)
 #### [高级 VPN 配置](multi-factor-authentication-advanced-vpn-configurations.md)
@@ -38,7 +39,7 @@
 ### [IIS Web 应用](multi-factor-authentication-get-started-server-iis.md)
 ### [远程桌面网关](multi-factor-authentication-get-started-server-rdg.md)
 
-## 开发 
+## 开发
 ### [构建到自定义应用中 (SDK)](multi-factor-authentication-sdk.md)
 
 ## 故障排除
@@ -46,6 +47,6 @@
 ### [提问](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "从 Teradata 移动数据 | Microsoft Docs"
+title: "使用 Azure 数据工厂从 Teradata 移动数据 | Microsoft Docs"
 description: "了解 Teradata 连接器，获取允许从 Teradata 数据库移动数据的数据工厂服务的信息"
 services: data-factory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 6ba9579860f0117a5d15fe0ea54dec22a6d37c9b
+ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
+ms.openlocfilehash: 14e079b94b6a0ceee9070658ac355a40873ad4ca
 
 
 ---
@@ -125,7 +125,7 @@ ms.openlocfilehash: 6ba9579860f0117a5d15fe0ea54dec22a6d37c9b
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -321,10 +321,10 @@ ms.openlocfilehash: 6ba9579860f0117a5d15fe0ea54dec22a6d37c9b
 [!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

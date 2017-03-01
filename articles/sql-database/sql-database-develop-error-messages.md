@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 07/12/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 865ddf4e8849c8c94ac8e20a22874e2edaead646
+ms.sourcegitcommit: 407d8cef2508e4b2344953db86bc9829081cda7c
+ms.openlocfilehash: 72faf68d8a9779b612723f9ee6589cc332bf5ed5
 
 
 ---
@@ -137,9 +137,9 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 相关主题：
 
-* [创建弹性池 (C#)](sql-database-elastic-pool-create-csharp.md) 
+* [创建弹性池 (C#)](sql-database-elastic-pool-manage-csharp.md) 
 * [管理弹性池 (C#)](sql-database-elastic-pool-manage-csharp.md)。 
-* [创建弹性池 (PowerShell)](sql-database-elastic-pool-create-powershell.md) 
+* [创建弹性池 (PowerShell)](sql-database-elastic-pool-manage-powershell.md) 
 * [监视和管理弹性池 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)。
 
 ## <a name="general-errors"></a>常规错误
@@ -183,7 +183,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | 40607 |16 |此版本的 SQL Server 不支持 Windows 登录。 |
 | 40611 |16 |服务器上最多可以定义 128 个防火墙规则。 |
 | 40614 |16 |防火墙规则的开始 IP 地址不能超过结束 IP 地址。 |
-| 40615 |16 |无法打开该登录请求的服务器“{0}”。 不允许具有 IP 地址“{1}”的客户端访问服务器。  若要允许访问，请使用 SQL 数据库门户，或者对 master 数据库运行 sp_set_firewall_rule，以便为此 IP 地址或地址范围创建防火墙规则。  为使此更改生效，最多可能需要 5 分钟。 |
+| 40615 |16 |无法打开该登录请求的服务器“{0}”。 不允许具有 IP 地址“{1}”的客户端访问服务器。  若要允许访问，请使用 SQL 数据库门户，或者对 master 数据库运行 sp_set_firewall_rule，以便为此 IP 地址或地址范围创建防火墙规则。  为使此更改生效，最多可能需要&5; 分钟。 |
 | 40617 |16 |以 <rule name> 开头的防火墙规则名称过长。 最大长度为 128。 |
 | 40618 |16 |防火墙规则名称不能为空。 |
 | 40620 |16 |用户“%.&#x2a;ls”的登录失败。 密码更改失败。 此版本的 SQL Server 不支持在登录过程中更改密码。 |
@@ -219,6 +219,6 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

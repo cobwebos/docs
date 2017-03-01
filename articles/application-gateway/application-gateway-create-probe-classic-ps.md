@@ -1,10 +1,10 @@
 ---
-title: "在经典部署模型中使用 PowerShell 创建应用程序网关的自定义探测 | Microsoft 文档"
+title: "创建自定义探测 - Azure 应用程序网关 - PowerShell 经典 | Microsoft Docs"
 description: "了解如何使用经典部署模型中的 PowerShell 创建应用程序网关的自定义探测"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 338a7be1-835c-48e9-a072-95662dc30f5e
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
-ms.openlocfilehash: 7812179e56372237f9760eccea5ebf8db2cb8d2d
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 4787a382b837b71a28c45211a26aa512e8fb177e
 
 
 ---
@@ -27,14 +27,12 @@ ms.openlocfilehash: 7812179e56372237f9760eccea5ebf8db2cb8d2d
 > * [Azure 门户](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
-> 
-> 
+
 
 [!INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
-
-了解如何[使用 Resource Manager 模型执行这些步骤](application-gateway-create-probe-ps.md)。
+> [!IMPORTANT]
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](application-gateway-create-probe-ps.md)。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -48,7 +46,7 @@ ms.openlocfilehash: 7812179e56372237f9760eccea5ebf8db2cb8d2d
 
 ### <a name="create-an-application-gateway-resource"></a>创建应用程序网关资源
 
-若要创建网关，请使用 **New-AzureApplicationGateway** cmdlet，并将值替换为你自己的值。 此时不会开始计收网关的费用。 计费将在后面已成功启动网关时开始。
+若要创建网关，请使用 `New-AzureApplicationGateway` cmdlet，并将值替换为你自己的值。 此时不会开始计收网关的费用。 计费将在后面已成功启动网关时开始。
 
 以下示例使用名为“testvnet1”的虚拟网络和名为“subnet-1”的子网创建应用程序网关。
 
@@ -56,7 +54,7 @@ ms.openlocfilehash: 7812179e56372237f9760eccea5ebf8db2cb8d2d
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-若要验证是否已创建网关，可以使用 **Get-AzureApplicationGateway** cmdlet。
+若要验证是否已创建网关，可以使用 `Get-AzureApplicationGateway` cmdlet。
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -88,7 +86,7 @@ Get-AzureApplicationGateway AppGwTest
         <Name>fip1</Name>
         <Type>Private</Type>
     </FrontendIPConfiguration>
-</FrontendIPConfigurations>    
+</FrontendIPConfigurations>
 <FrontendPorts>
     <FrontendPort>
         <Name>port1</Name>
@@ -147,12 +145,10 @@ Get-AzureApplicationGateway AppGwTest
 
 编辑配置项的括号之间的值。 使用扩展名 .xml 保存文件。
 
-以下示例演示如何使用配置文件设置应用程序网关以负载平衡公共端口 80 上的 HTTP 流量，然后使用自定义探测将网络流量发送到两个 IP 地址之间的后端端口 80。
+以下示例演示如何使用配置文件设置应用程序网关负载平衡公共端口 80 上的 HTTP 流量，然后使用自定义探测将网络流量发送到 2 个 IP 地址之间的后端端口 80。
 
 > [!IMPORTANT]
 > 协议项 Http 或 Https 区分大小写。
-> 
-> 
 
 已添加用于配置自定义探测的新配置项 \<Probe\>。
 
@@ -165,7 +161,7 @@ Get-AzureApplicationGateway AppGwTest
 * **Timeout** - 定义 HTTP 响应检查的探测超时。
 * **UnhealthyThreshold** - 将后端实例标记为*不正常*所需的失败 HTTP 响应数目。
 
-在 <BackendHttpSettings> 配置中引用探测名称，以分配使用自定义探测设置的后端池。
+\<BackendHttpSettings\> 配置中会引用探测名称，以分配使用自定义探测设置的后端池。
 
 ## <a name="add-a-custom-probe-configuration-to-an-existing-application-gateway"></a>将自定义探测配置添加到现有应用程序网关
 
@@ -173,7 +169,7 @@ Get-AzureApplicationGateway AppGwTest
 
 ### <a name="step-1"></a>步骤 1
 
-使用 get-AzureApplicationGatewayConfig 获取 XML 文件。 这会导出要修改的配置 XML 以添加探测设置。
+使用 `Get-AzureApplicationGatewayConfig` 获取 XML 文件。 此 cmdlet 会导出要修改的配置 XML 以添加探测设置。
 
 ```powershell
 Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
@@ -214,7 +210,7 @@ Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofi
 
 ### <a name="step-3"></a>步骤 3
 
-使用 **Set-AzureApplicationGatewayConfig** 在新的 XML 文件中更新应用程序网关配置。 这将以新的配置更新应用程序网关。
+通过 `Set-AzureApplicationGatewayConfig` 使用新的 XML 文件更新应用程序网关配置。 此 cmdlet 使用新配置更新应用程序网关。
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
@@ -229,6 +225,6 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

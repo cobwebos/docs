@@ -12,15 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 02/23/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a7b22dba766628279b175d73eda3f01866aeba9d
+ms.sourcegitcommit: 6f2db3b411069b31424627f50336f1ba9750a9f5
+ms.openlocfilehash: 060f684cee6a8f98e5e8fb4a49f0bab92bd4df9c
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
+> [!div class="op_single_selector"]
+> * [Azure 门户](active-directory-assign-admin-roles-azure-portal.md)
+> * [Azure 经典门户](active-directory-assign-admin-roles.md)
+>
+>
+
 使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 这些管理员可以按角色访问 Azure 门户或 Azure 经典门户中的各种功能：创建或编辑用户、将管理角色分配给他人、重置用户密码、管理用户许可证以及管理域等。 分配为管理员角色的用户在你的组织所订阅的所有云服务中拥有相同的权限，不管该角色是通过 Office 365 门户、Azure 经典门户还是用于 Windows PowerShell 的 Azure AD 模块分配的。
 
 提供以下管理员角色：
@@ -49,6 +56,8 @@ ms.openlocfilehash: a7b22dba766628279b175d73eda3f01866aeba9d
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“支持管理员”。
   >
   >
+* **Power BI 服务管理员**：具有此角色的用户在 Microsoft Power BI（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [Making It Easier To Administer Power BI](https://powerbi.microsoft.com/en-us/blog/making-it-easier-to-administer-power-bi/)（更轻松地管理 Power BI）。
+* **特权角色管理员**：具有此角色的用户可以管理 Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 以及更新其他用户的角色分配。
 * **SharePoint 服务管理员**：具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。
 * **服务管理员**：管理服务请求并监视服务运行状况。
 
@@ -112,6 +121,17 @@ ms.openlocfilehash: a7b22dba766628279b175d73eda3f01866aeba9d
 6. 从“使用位置”下拉列表中指定位置。
 7. 完成后，单击“保存”。
 
+## <a name="deprecated-roles"></a>已弃用的角色
+
+不应使用以下角色。 这些角色已弃用，并将从 Azure AD 中删除。
+
+* 即席许可证管理员
+* 经电子邮件验证的用户创建者
+* 设备联接
+* 设备管理器
+* 设备用户
+* 工作区设备联接
+
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
 * 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [Understanding resource access in Azure](active-directory-understanding-resource-access.md)（了解 Azure 中的资源访问）
@@ -119,9 +139,4 @@ ms.openlocfilehash: a7b22dba766628279b175d73eda3f01866aeba9d
 * [管理用户](active-directory-create-users.md)
 * [管理密码](active-directory-manage-passwords.md)
 * [管理组](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

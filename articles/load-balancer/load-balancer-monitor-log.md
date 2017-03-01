@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: b7d141e8fc7f7580b5b17b2152dfe418a0ca130e
+ms.sourcegitcommit: ca52a8cfdc4262f55a1fed439f29631966211a00
+ms.openlocfilehash: c605b2f0b49fcc26955e73c931192ada5e407525
 
 ---
 
-# <a name="log-analytics-for-azure-load-balancer-preview"></a>用于 Azure Load Balancer 的 Log Analytics（预览版）
+# <a name="log-analytics-for-azure-load-balancer"></a>Azure Load Balancer 的 Log Analytics
 
 可以在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取并在 Excel 和 PowerBI 等各种工具中查看所有日志。 可从下表了解有关各种类型日志的详细信息。
 
@@ -148,6 +148,6 @@ JSON 输出在属性字段显示了探测运行状况的基本信息。 *dipDown
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO5-->
 
 

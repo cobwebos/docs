@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Azure 负载均衡器文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用负载均衡器提高应用的网络性能。 管理虚拟机、云资源和跨界虚拟网络中的流量。"
+services: load-balancer
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: load-balancer
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: e62704476642d8a519b7bd8b9b101b47ab42e08c
-ms.openlocfilehash: 476eb9f4934d35a808fdd70b6443822eb0a7cfa7
+ms.sourcegitcommit: 7064f4749f4be100b6155ea219284c1ed8fe7eee
+ms.openlocfilehash: 8a225858cc738a8bc04404b0cbf788e77975aa51
 
 ---
+
 #<a name="load-balancer-documentation"></a>负载均衡器文档
 
 了解如何配置负载均衡器，提高应用程序的可用性和网络性能。 文档介绍了如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
@@ -132,16 +144,10 @@ ms.openlocfilehash: 476eb9f4934d35a808fdd70b6443822eb0a7cfa7
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/load-balancer.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载负载均衡器文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "车辆遥测分析解决方案操作手册：深入了解解决方案 |Microsoft Docs"
+title: "深入了解预测车辆的运行状况和行驶习惯 - Azure | Microsoft Docs"
 description: "通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ee4ba38bf483ae4731212d6efb8398ac8ce413cb
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: 898b93ad95ab812b8b6a538048a86a8cc8951101
 
 
 ---
@@ -35,9 +35,9 @@ ms.openlocfilehash: ee4ba38bf483ae4731212d6efb8398ac8ce413cb
 
 车辆远程信息处理模拟器是此解决方案的一部分。 它在给定的时间点根据车辆的状态以及驾驶模式发出对应的诊断信息和信号。 单击 [Vehicle Telematics Simulator](http://go.microsoft.com/fwlink/?LinkId=717075)（车辆远程信息处理模拟器）为基于自身要求的自定义下载 **Vehicle Telematics Simulator Visual Studio Solution**车辆远程信息处理模拟器 Visual Studio 解决方案。 车辆目录包含具有 VIN 到模型映射的引用数据集。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig2-vehicle-telematics-simulator.png)
+![车辆远程信息处理模拟器](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
-图 2 - 车辆远程信息处理模拟器
+*图 1 - 车辆远程信息处理模拟器*
 
 这是一个 JSON 格式的数据集，它包含以下架构。
 
@@ -98,8 +98,8 @@ ms.openlocfilehash: ee4ba38bf483ae4731212d6efb8398ac8ce413cb
 | ……. | |
 
 ### <a name="to-generate-simulated-data"></a>若要生成模拟数据
-1. 要下载数据模拟器包，请单击车辆远程信息处理模拟器节点右上方的箭头。 在本地计算机上保存并解压缩文件。 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telemetry-blueprint.png)图 3 - 车辆遥测分析解决方案蓝图
-2. 在本地计算机上，转到解压缩车辆远程信息处理模拟器包的文件夹。 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-simulator-folder.png) 图4 - 车辆远程信息处理模拟器文件夹
+1. 要下载数据模拟器包，请单击车辆远程信息处理模拟器节点右上方的箭头。 在本地计算机上保存并解压缩文件。 ![车辆遥测分析解决方案蓝图](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig2-vehicle-telemetry-blueprint.png) *图 2 - 车辆遥测分析解决方案蓝图*
+2. 在本地计算机上，转到解压缩车辆远程信息处理模拟器包的文件夹。 ![车辆远程信息处理模拟器](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telematics-simulator-folder.png) *图 3 - 车辆远程信息处理模拟器*
 3. 执行应用程序 **CarEventGenerator.exe**。
 
 ### <a name="references"></a>参考
@@ -115,13 +115,13 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 ### <a name="real-time-analysis"></a>实时分析
 使用事件中心 SDK 将车辆远程信息处理模拟器生成的事件发布到事件中心。 流分析作业从事件中心引入这些事件，并实时处理数据以分析车辆运行状况。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig5-vehicle-telematics-event-hub-dashboard.png) 
+![事件中心仪表板](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-event-hub-dashboard.png) 
 
-图 5 - 事件中心仪表板
+*图 4 - 事件中心仪表板*
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig6-vehicle-telematics-stream-analytics-job-processing-data.png) 
+![处理数据的流分析作业](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig5-vehicle-telematics-stream-analytics-job-processing-data.png) 
 
-图 6 - 处理数据的流分析作业
+*图 5 - 处理数据的流分析作业*
 
 流分析作业；
 
@@ -131,28 +131,28 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 
 使用下列流分析查询将数据保留到 Azure Blob 存储中。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png) 
+![用于数据引入的流分析作业查询](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig6-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png) 
 
-图 7 - 用于数据引入的流分析作业查询
+*图 6 - 用于数据引入的流分析作业查询*
 
 ### <a name="batch-analysis"></a>批处理分析
 我们还生成额外的模拟车辆信号卷和诊断数据集，用于更丰富的批处理分析。 这是确保批处理的良好代表数据卷所必需的。 为此，我们在 Azure 数据工厂工作流中使用名为“PrepareSampleDataPipeline”的管道来生成一年的模拟车辆信号和诊断数据集。 为基于自身要求的自定义单击 [Data Factory custom activity](http://go.microsoft.com/fwlink/?LinkId=717077)（数据工厂自定义活动），下载数据工厂自定义 DotNet 活动 Visual Studio 解决方案。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig8-vehicle-telematics-prepare-sample-data-for-batch-processing.png) 
+![为批处理工作流准备示例数据](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-prepare-sample-data-for-batch-processing.png) 
 
-图 8 - 为批处理工作流准备示例数据
+*图 7 - 为批处理工作流准备示例数据*
 
 管道由自定义 ADF .Net Activity 活动组成，如下所示：
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig9-vehicle-telematics-prepare-sample-data-pipeline.png) 
+![PrepareSampleDataPipeline 活动](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig8-vehicle-telematics-prepare-sample-data-pipeline.png) 
 
-图 9 - PrepareSampleDataPipeline
+*图 8 - PrepareSampleDataPipeline*
 
 一旦管道成功执行，并且“RawCarEventsTable”数据集被标记为“就绪”，就会生成一年的模拟车辆信号和诊断数据。 可在“connectedcar”容器下的存储帐户中查看以下文件夹和文件：
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-prepare-sample-data-pipeline-output.png) 
+![PrepareSampleDataPipeline 输出](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig9-vehicle-telematics-prepare-sample-data-pipeline-output.png) 
 
-图 10 - PrepareSampleDataPipeline
+*图 9 - PrepareSampleDataPipeline 输出*
 
 ### <a name="references"></a>参考
 [用于流引入的 Azure 事件中心 SDK](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
@@ -165,28 +165,28 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 ## <a name="partition-the-dataset"></a>对数据集进行分区
 原始半结构化车辆信号和诊断数据集在数据准备步骤中被分区为年/月格式。 当第一个帐户填充满时，此分区通过启用从一个 blob 帐户到下一个 blob 帐户的故障转移，从而提高了查询和可缩放的长期存储的效率。 
 
-> [!NOTE]
-> 解决方案中的此步骤仅适用于批处理。
-> 
-> 
+>[!NOTE] 
+>解决方案中的此步骤仅适用于批处理。
 
 输入和输出数据的数据管理：
 
 * **输出数据**（标记为 PartitionedCarEventsTable）将在客户的“Data Lake”中以基础/“最原始”数据的形式保存很长一段时间。 
 * 到此管道的**输入数据**通常将被丢弃，因为输出数据对输入具有完全保真度 - 它只是被更好地存储（分区）以供后续使用。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig11-vehicle-telematics-partition-car-events-workflow.png)
+![对汽车事件工作流分区](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-partition-car-events-workflow.png)
 
-图 11 - 对汽车事件工作流分区
+*图 10 - 对汽车事件工作流分区*
 
 在“PartitionCarEventsPipeline”中使用 Hive HDInsight 活动对原始数据进行分区。 用年/月对步骤 1 中生成的一年的示例数据进行分区。 使用分区来生成一年中每个月（总计 12 个分区）的车辆信号和诊断数据。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partition-car-events-pipeline.png)
+![PartitionCarEventsPipeline 活动](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig11-vehicle-telematics-partition-car-events-pipeline.png)
 
-图 12 - PartitionCarEventsPipeline
+*图 11 - PartitionCarEventsPipeline*
+
+***PartitionConnectedCarEvents Hive 脚本***
 
 用名为“partition car events.hql”的下列 Hive 脚本进行分区，它位于所下载的 zip 的“\ demo \ sap \ connected car \ scripts”文件夹中。 
-
+    
     SET hive.exec.dynamic.partition=true;
     SET hive.exec.dynamic.partition.mode = nonstrict;
     set hive.cli.print.header=true;
@@ -322,13 +322,11 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
         MonthNo
     FROM Stage_RawCarEvents WHERE YearNo = ${hiveconf:Year} AND MonthNo = ${hiveconf:Month};
 
-图 13 - PartitionConnectedCarEvents Hive 脚本
-
 一旦管道成功执行，你将在“connectedcar”容器下的存储帐户中看到以下已生成的分区。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-partitioned-output.png)
+![已分区的输出](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partitioned-output.png)
 
-图 14 - 已分区的输出
+*图 12 - 已分区的输出*
 
 数据已优化，更易于管理，并为未来处理做好了准备，以便获得丰富的批处理深入了解。 
 
@@ -371,9 +369,9 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 ### <a name="real-time-analysis"></a>实时分析
 以下流分析 SQL 查询用于获取所有重要车辆参数的平均值，例如车辆速度、燃料油位、引擎温度、里程表读数、轮胎压力、引擎燃料油位等。 平均值用于检测异常情况、发出警报并确定在特定区域操作的车辆的整体运行状况，然后将其与人口统计相关联。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
+![用于实时处理的流分析查询](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig13-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
 
-图 15 - 用于实施处理的流分析查询
+*图 13 - 用于实时处理的流分析查询*
 
 所有平均值都是通过 3 秒钟的 TumblingWindow 计算的。 在这种情况下使用 TubmlingWindow，因为需要非重叠且连续的时间间隔。 
 
@@ -383,11 +381,11 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 
 一个应用程序作为解决方案的一部分实时地操作机器学习。 这个名为“RealTimeDashboardApp”的应用程序是作为解决方案部署的一部分被创建和配置的。 应用程序执行以下操作：
 
-1. 监听事件中心实例，其中流分析会持续发布模式中的事件。 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-stream-analytics-query-for-publishing.png) 图 16 - 用于将数据发布至输出事件中心实例的流分析查询 
+1. 监听事件中心实例，其中流分析会持续发布模式中的事件。 ![用于发布数据的流分析查询](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-stream-analytics-query-for-publishing.png) *图 14 - 用于将数据发布至输出事件中心实例的流分析查询* 
 2. 对于此应用程序收到的每个事件： 
    
    * 使用机器学习请求 - 响应评分 (RRS) 终结点来处理数据。 作为部署的一部分，RRS终结点自动被发布。
-   * 使用推送 API 将 RRS 输出发布到 PowerBI 数据集。
+   * 使用推送 API 将 RRS 输出发布到 Power BI 数据集。
 
 此模式也适用于你希望将业务线 (LoB) 应用程序与实时分析流集成的场景，如警报、通知和消息传递。
 
@@ -395,19 +393,18 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 
 **若要执行实时仪表板应用程序**
 
-1. 单击图示视图上的 PowerBI 节点，然后单击属性窗格上的“下载实时仪表板应用程序”链接。 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) 图 17 - PowerBI 仪表板设置说明
-2. 解压缩并保存到本地 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) 图 18 - RealtimeDashboardApp 文件夹
+1. 单击图示视图上的 Power BI 节点，然后单击属性窗格上的“下载实时仪表板应用程序”链接。 ![Power BI 仪表板设置说明](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-powerbi-dashboard-setup.png) *图 15 - Power BI 仪表板设置说明*
+2. 解压缩并本地保存 ![RealtimeDashboardApp 文件夹](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) *图 16 – RealtimeDashboardApp 文件夹*  
 3. 执行应用程序 RealtimeDashboardApp.exe
-4. 提供有效的 Power BI 凭据，登录并单击“接受” ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+4. 提供有效的 Power BI 凭据，登录并单击“接受” ![实时仪表板应用登录到 Power BI](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![实时仪表板应用完成 Power BI 登录](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
 
-图 19 - RealtimeDashboardApp：登录到 PowerBI
+*图 17 - RealtimeDashboardApp：登录到 Power BI*
 
-> [!NOTE]
-> 如果要刷新 PowerBI 数据集，请使用“flushdata”参数执行RealtimeDashboardApp： 
-> 
-> 
+>[!NOTE] 
+>如果要刷新 Power BI 数据集，请使用“flushdata”参数执行RealtimeDashboardApp： 
 
     RealtimeDashboardApp.exe -flushdata
+
 
 ### <a name="batch-analysis"></a>批处理分析
 此处的目标是展示 Contoso Motors 如何通过 Azure 计算能力利用大数据来获得关于驾驶模式、使用行为和车辆运行状况的丰富深入了解。 这使我们可以：
@@ -427,8 +424,11 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 
 使用 Hive 在名为“AggresiveDrivingPatternPipeline”的管道中处理分区的车辆信号和诊断数据，以确定表现出主动驾驶模式的模型、位置、车辆、驾驶条件和其他参数。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-aggressive-driving-pattern.png) 
-图 20 - 过激驾驶模式工作流**
+![过激驾驶模式工作流](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-aggressive-driving-pattern.png) 
+*图 18 - 过激驾驶模式工作流*
+
+
+***过激驾驶模式 Hive 查询***
 
 用于分析过激驾驶条件模式的名为“aggressive driving.hql”的 Hive 脚本位于下载的 zip 的“\demo\src\connectedcar\scripts”文件夹中。 
 
@@ -489,23 +489,24 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
     from PartitionedCarEvents
     where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND brake_pedal_status = '1' AND speed >= '50'
 
-图 21 - 过激驾驶模式 Hive 查询
 
 它通过车辆的变速齿轮档位、制动踏板状态和速度的组合，基于高速情况下的制动模式来检测鲁莽/过激驾驶行为。 
 
 一旦管道成功执行，你将在“connectedcar”容器下的存储帐户中看到以下已生成的分区。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aggressive-driving-pattern-output.png) 
+![AggressiveDrivingPatternPipeline 输出](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-aggressive-driving-pattern-output.png) 
 
-图 22 - AggressiveDrivingPatternPipeline 输出
+*图 19 - AggressiveDrivingPatternPipeline 输出*
 
 **燃料高效驾驶模式**
 
 在名为“FuelEfficientDrivingPatternPipeline”的管道中处理分区的车辆信号和诊断数据。 用 Hive 来确定显示燃料高效驾驶模式的模型、位置、车辆、驾驶条件和其他属性。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-fuel-efficient-driving-pattern.png) 
+![燃料高效驾驶模式](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-fuel-efficient-driving-pattern.png) 
 
-图 23 - 燃料高效驾驶模式工作流
+*图 20 - 燃料高效驾驶模式工作流*
+
+***燃料高效驾驶模式 Hive 查询***
 
 用于分析过激驾驶条件模式的名为“fuel efficient driving.hql”的 Hive 脚本位于下载的zip的“\demo\src\connectedcar\scripts”文件夹中。 
 
@@ -567,35 +568,35 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
     where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND parking_brake_status = '0' AND brake_pedal_status = '0' AND speed <= '60' AND accelerator_pedal_position >= '50'
 
 
-图 24 - 燃料高效驾驶模式 Hive 查询
-
 它通过车辆的变速齿轮档位、制动踏板状态，速度和加速器踏板位置的组合，基于加速、刹车和速度模式来检测燃油高效驾驶行为。 
 
 一旦管道成功执行，你将在“connectedcar”容器下的存储帐户中看到以下已生成的分区。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-fuel-efficient-driving-pattern-output.png) 
+![FuelEfficientDrivingPatternPipeline 输出](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-fuel-efficient-driving-pattern-output.png) 
 
-图 25 - FuelEfficientDrivingPatternPipeline 输出
+*图 21 - FuelEfficientDrivingPatternPipeline 输出*
 
 **召回预测**
 
 作为解决方案部署的一部分，机器学习实验作为 Web 服务来预配和发布。 批处理评分终点在此工作流中被使用，它被注册为与数据工厂相链接的服务，并通过使用数据工厂批处理评分活动进行操作。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-machine-learning-endpoint.png) 
+![机器学习终结点](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig21-vehicle-telematics-machine-learning-endpoint.png) 
 
-图 26 - 在数据工厂中作为链接的服务被注册的机器学习终结点
+*图 22 - 在数据工厂中注册为链接服务的机器学习终结点*
 
 在 DetectAnomalyPipeline 中使用被注册的链接的服务对使用异常情况检测模型的数据进行评分。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-aml-batch-scoring.png) 
+![数据工厂中的机器学习批处理评分活动](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aml-batch-scoring.png) 
 
-图 27 - 数据工厂中的 Azure 机器学习批处理评分活动 
+*图 23 - 数据工厂中的 Azure 机器学习批处理评分活动* 
 
 对于数据准备，在此管道中要执行几个步骤，以便它可以通过批处理评分 Web 服务被操作。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-pipeline-predicting-recalls.png) 
+![用于预测需要召回的车辆的 DetectAnomalyPipeline](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-pipeline-predicting-recalls.png) 
 
-图 28 - 用于预测车辆要求召回的 DetectAnomalyPipeline 
+*图 24 - 用于预测需要召回的车辆的 DetectAnomalyPipeline* 
+
+***异常情况检测 Hive 查询***
 
 一旦评分完成，使用 HDInsight 活动来处理和聚合被模型分类为异常情况（概率分数为 0.60 或更高）的数据。
 
@@ -659,47 +660,48 @@ Azure 事件中心、流分析和数据工厂的组合可用于获取车辆信�
 
 一旦管道成功执行，你将在“connectedcar”容器下的存储帐户中看到以下已生成的分区。
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-detect-anamoly-pipeline-output.png) 
+![DetectAnomalyPipeline 输出](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig24-vehicle-telematics-detect-anamoly-pipeline-output.png) 
 
-图 30 - 图 30 - DetectAnomalyPipeline 输出
+*图 25 - DetectAnomalyPipeline 输出*
 
 ## <a name="publish"></a>发布
+
 ### <a name="real-time-analysis"></a>实时分析
 流分析作业中的查询之一将事件发布到输出事件中心实例。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig31-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
+![流分析作业发布到输出事件中心实例](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
 
-图 31 - 流发布到输出事件中心实例的分析作业
+*图 26 - 流分析作业发布到输出事件中心实例*
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig32-vehicle-telematics-stream-analytics-query-publish-output-event-hub.png)
+![发布到输出事件中心实例的流分析查询](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-stream-analytics-query-publish-output-event-hub.png)
 
-图 32 - 发布到输出事件中心实例的流分析查询
+*图 27 - 发布到输出事件中心实例的流分析查询*
 
-此事件的流由解决方案中包含的 RealTimeDashboardApp 消耗。 此应用程序利用机器学习请求 - 响应 Web 服务进行实时评分，并将结果数据发布到 PowerBI 数据集以供使用。 
+此事件的流由解决方案中包含的 RealTimeDashboardApp 消耗。 此应用程序利用机器学习请求 - 响应 Web 服务进行实时评分，并将结果数据发布到 Power BI 数据集以供使用。 
 
 ### <a name="batch-analysis"></a>批处理分析
 批处理和实时处理的结果被发布到 Azure SQL数据库表以供使用。 Azure SQL Server、数据库和表作为设置脚本的一部分自动创建。 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig33-vehicle-telematics-batch-processing-results-copy-to-data-mart.png)
+![批处理结果复制到数据市场工作流](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-batch-processing-results-copy-to-data-mart.png)
 
-图 33 - 批处理结果复制到数据市场工作流
+*图 28 - 批处理结果复制到数据市场工作流*
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig34-vehicle-telematics-stream-analytics-job-publishes-to-data-mart.png)
+![流分析作业发布到数据市场](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-stream-analytics-job-publishes-to-data-mart.png)
 
-图 34 - 流分析作业发布到数据市场
+*图 29 - 流分析作业发布到数据市场*
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig35-vehicle-telematics-data-mart-setting-in-stream-analytics-job.png)
+![流分析作业中的数据市场设置](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig29-vehicle-telematics-data-mart-setting-in-stream-analytics-job.png)
 
-图 35 - 在流分析作业中设置数据市场
+*图 30 - 流分析作业中的数据市场设置*
 
 ## <a name="consume"></a>使用
 Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和预测分析可视化。 
 
-单击此处获取有关设置 PowerBI 报表和仪表板的详细说明。 最终仪表板类似于：
+单击此处获取有关设置 Power BI 报表和仪表板的详细说明。 最终仪表板类似于：
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig36-vehicle-telematics-powerbi-dashboard.png)
+![Power BI 仪表板](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-powerbi-dashboard.png)
 
-图 36 - PowerBI 仪表板
+*图 31 - Power BI 仪表板*
 
 ## <a name="summary"></a>摘要
 本文档包含对车辆遥测分析解决方案的详细深入分析。 这展示了一种 lambda 体系结构模式，用于实时和批处理分析，包括预测和操作。 此模式适用于需要热路径（实时）和冷路径（批处理）分析的各种的示例。 
@@ -707,6 +709,6 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

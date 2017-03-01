@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL 数据库查询性能见解"
+title: "Azure SQL 数据库的查询性能见解 | Microsoft 文档"
 description: "查询性能监视可以识别 Azure SQL 数据库中 CPU 消耗最大的查询。"
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5031cefe906f01e14e0155a975dd7996ba70522d
+ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
+ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
 
 
 ---
@@ -32,7 +32,6 @@ ms.openlocfilehash: 5031cefe906f01e14e0155a975dd7996ba70522d
 
 
 ## <a name="prerequisites"></a>先决条件
-* 查询性能见解仅适用于 Azure SQL 数据库 V12。
 * 查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 如果未运行查询存储，该门户会提示将其打开。
 
 ## <a name="permissions"></a>权限
@@ -66,7 +65,7 @@ ms.openlocfilehash: 5031cefe906f01e14e0155a975dd7996ba70522d
     ![查询性能见解][1]
    
     排位靠前的查询视图随即打开并列出 CPU 消耗量靠前的查询。
-2. 单击图表周围以获取详细信息。<br>最前面一行显示数据库的整体 DTU 百分比，条形显示所选查询在所选时间间隔内消耗的 CPU 百分比（例如，如果选择了“**过去一周**”，则每个条代表 1 天）。
+2. 单击图表周围以获取详细信息。<br>最前面一行显示数据库的整体 DTU 百分比，条形显示所选查询在所选时间间隔内消耗的 CPU 百分比（例如，如果选择了“**过去一周**”，则每个条代表&1; 天）。
    
     ![排名靠前的查询][2]
    
@@ -172,12 +171,12 @@ Query Store 处于关闭状态或参数未设置为最优时会发生第二种�
 ### <a name="recommended-retention-and-capture-policy"></a>建议的保留和捕获策略
 有两种类型的保留策略：
 
-* 基于大小的保留策略 – 如果设置为“自动”，则会在快要达到最大大小时自动清除数据。
+* 基于大小的保留策略 - 如果设置为“自动”，则会在快要达到最大大小时自动清除数据。
 * 基于时间的保留策略 - 默认设置为 30 天。也就是说，如果空间不足，查询存储会删除 30 天以前的查询信息
 
 可以将捕获策略设置为：
 
-* **所有** - 捕获所有查询。
+* **全部** - 捕获所有查询。
 * **自动** - 忽略不频繁的查询以及编译和执行持续时间很短的查询。 执行计数、编译和运行时持续时间的阈值由内部决定。 这是默认选项。
 * **无** – Query Store 停止捕获新查询，但是仍然收集已捕获查询的运行时统计信息。
 
@@ -229,6 +228,6 @@ Query Store 处于关闭状态或参数未设置为最优时会发生第二种�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

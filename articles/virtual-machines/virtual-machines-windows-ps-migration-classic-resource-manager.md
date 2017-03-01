@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: b75ed253a47b5f4ad0d95ef29c30f3d5ba3cb5fb
+ms.sourcegitcommit: e90036d97451b271451d0ba5845c788ac05d7abf
+ms.openlocfilehash: 4253d60a8a12877a3c5dac073bd06d70d020ccdc
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: b75ed253a47b5f4ad0d95ef29c30f3d5ba3cb5fb
 * 如果你通过自动化脚本来部署目前的基础结构和应用程序，则可尝试使用这些脚本进行迁移，以便创建类似的测试性设置。 也可以使用 Azure 门户设置示例环境。
 
 > [!IMPORTANT]
-> 目前不支持通过 ExpressRoute 网关和应用程序网关从经典部署模型迁移到 Resource Manager 部署模型。 若要使用 ExpressRoute 或应用程序网关迁移经典虚拟网络，请先删除该网关，然后再运行提交操作来移动网络（你可以运行“准备”步骤，无需删除 ExpressRoute 或应用程序网关）。 完成迁移后，在 Azure Resource Manager 中重新连接该网关。
+> 目前不支持将应用程序网关从经典部署迁移到 Resource Manager。 若要使用应用程序网关迁移经典虚拟网络，请先删除该网关，然后再运行提交操作来移动网络（可运行“准备”步骤，无需删除应用程序网关）。 完成迁移后，在 Azure Resource Manager 中重新连接该网关。 如果网关和 ExpressRoute 线路位于同一订阅，则必须联系支持人员才可迁移 ExpressRoute 网关。 无法迁移其他订阅中连接到 ExpressRoute 线路的 ExpressRoute 网关。 此类情况下，请删除 ExpressRoute 网关、迁移虚拟网络并重新创建网关。
 > 
 > 
 
@@ -274,6 +274,6 @@ Get-AzureRmVMUsage -Location "West US"
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

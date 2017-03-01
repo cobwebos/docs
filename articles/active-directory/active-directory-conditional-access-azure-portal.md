@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2016
+ms.date: 01/19/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0ecbaaf030e5c87ff05228af852477b865329596
-ms.openlocfilehash: 3b06c7c32c6ec27659365ca4da6193457fff7162
+ms.sourcegitcommit: 4dad4bd824f199562cb972c98cfcb452f2823828
+ms.openlocfilehash: b85b10b9504c5efa7ec05b92b544ad777e3abacc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -159,18 +160,33 @@ Azure Active Directory 的当前实现允许配置以下要求：
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件性访问是否适用于 Exchange ActiveSync？
  
-可以在 Exchange ActiveSync 中使用条件性访问策略；对这种方案的支持会受到限制。  
-包含 Exchange ActiveSync 的策略存在以下限制：
+不适用，此时不能在条件性访问策略中使用 Exchange ActiveSync。
 
-- 只能选择 **Exchange Online** 作为**云应用**分配。
 
-- 如果需要设置**控制**，只能选择“要求合规的设备”。 
+### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>如果需要进行多重身份验证或需要兼容设备会出现何种状况？
+
+目前，无论使用何种设备，均将提示用户进行多重身份验证。
+
+
+## <a name="what-you-should-avoid-doing"></a>你应避免的操作
+
+条件访问框架为你提供了极大的配置灵活性。 但是，极大的灵活性也意味着在发布之前你应该仔细检查每个配置策略，以避免产生不理想的结果。 在这种情况下，你应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
+
+在你的环境中，应避免以下配置：
+
+
+**对于所有用户、所有云应用：**
+
+- **阻止访问** - 此配置将阻止你的整个组织（这绝对不是一个好的选项）。
+
+- **需要符合的设备** - 对于尚未注册其设备的用户，此策略将阻止所有访问权限（包括对 Intune 门户的访问权限）。 如果你是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
+
+- **需要加入域** - 如果你不具有加入域的设备，此阻止访问权限的策略还可能会阻止你组织中所有用户的访问权限。
  
-    ![授权](./media/active-directory-conditional-access-azure-portal/22.png)
- 
-- 如果需要配置**条件**，只能配置**客户端应用**。   
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+**对于所有用户、所有云应用、所有设备平台：** 
+
+- **阻止访问** - 此配置将阻止你的整个组织（这绝对不是一个好的选项）。
 
 
 ## <a name="common-scenarios"></a>常见方案
@@ -198,9 +214,4 @@ Azure Active Directory 的当前实现允许配置以下要求：
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何配置条件性访问策略，请参阅 [Get started with conditional access in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md)（Azure Active Directory 中的条件性访问入门）。
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

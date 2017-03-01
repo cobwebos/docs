@@ -4,6 +4,12 @@
 # 入门
 ## [创建和管理帐户](media-services-portal-create-account.md)
 ## [设置开发环境](media-services-set-up-computer.md)
+###[.NET](media-services-dotnet-how-to-use.md)
+###[REST](media-services-rest-how-to-use.md)  
+## 以编程方式连接
+### [.NET](media-services-dotnet-connect-programmatically.md)
+### [REST](media-services-rest-connect-programmatically.md)
+
 ## 传送点播视频
 ### [门户](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
@@ -15,17 +21,18 @@
 
 # 如何
 ## 管理
-### 管理帐户
+### 帐户
 #### [PowerShell](media-services-manage-with-powershell.md)
 #### [REST](/rest/api/media/mediaservice)
-### 管理实体
+### 实体
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
-### 以编程方式连接
-#### [.NET](media-services-dotnet-connect-programmatically.md)
-#### [REST](media-services-rest-connect-programmatically.md)
-### [在门户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
-### [如何：轮转存储访问密钥后更新媒体服务](media-services-roll-storage-access-keys.md)
+### [流式处理终结点](media-services-streaming-endpoints-overview.md)
+#### [门户](media-services-portal-manage-streaming-endpoints.md)
+#### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
+### 存储
+#### [轮转存储访问密钥后更新媒体服务](media-services-roll-storage-access-keys.md)
+#### [跨多个存储帐户管理资产](meda-services-managing-multiple-storage-accounts.md)
 ### [配额和限制](media-services-quotas-and-limitations.md)
 
 ## 上载内容
@@ -33,6 +40,7 @@
 #### [门户](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST](media-services-rest-upload-files.md)
+### [使用 Aspera 上载大型文件](media-services-upload-files-with-aspera.md)
 ### [复制现有的 Blob](media-services-copying-existing-blob.md)
 
 ## [对内容进行编码](media-services-encode-asset.md)
@@ -92,8 +100,10 @@
 
 ## [实时流](media-services-manage-channels-overview.md)
 ### [本地编码器](media-services-live-streaming-with-onprem-encoders.md)
+#### [门户](media-services-portal-live-passthrough-get-started.md)
+#### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+#### [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [使用云编码器实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)
-### 云编码器教程
 #### [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [配置与云编码器一起使用的本地编码器](media-services-live-encoders-overview.md)
@@ -109,11 +119,14 @@
 ### [为流配置 AES-128 明文密钥](media-services-protect-with-aes128.md)
 ### [使用 AMS REST API 通过存储空间加密来加密内容](media-services-rest-storage-encryption.md)
 ### [媒体服务 PlayReady 许可证模板概述](media-services-playready-license-template-overview.md)
+### [Widevine 许可证模板概述](media-services-widevine-license-template-overview.md)
 ### [DRM 许可证传送](media-services-deliver-keys-and-licenses.md)
 ### [使用合作伙伴将 Widevine 许可证传送到 Azure 媒体服务](media-services-licenses-partner-integration.md)
 ### [使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-drm.md)
 ### [使用 Azure 媒体服务流式传输受 Apple FairPlay 保护的 HLS 内容](media-services-protect-hls-with-fairplay.md)
 ### [使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现](media-services-cenc-with-multidrm-access-control.md)
+### [使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务](media-services-axinom-integration.md)
+### [使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务](media-services-castlabs-integration.md)
 
 ### 资产传送
 #### 配置资产传送策略
@@ -147,16 +160,16 @@
 ### [媒体处理](media-services-scale-media-processing-overview.md)
 #### [门户](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
-#### [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+#### [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 ### 流式处理终结点
 #### [门户](media-services-portal-scale-streaming-endpoints.md)
 
 ## [传送内容](media-services-deliver-content-overview.md)
 ### [动态打包](media-services-dynamic-packaging-overview.md)
 ### [筛选器和动态清单概述](media-services-dynamic-manifest-overview.md)
-### 创建筛选器
-#### [.NET](media-services-dotnet-dynamic-manifest.md)
-#### [REST](media-services-rest-dynamic-manifest.md)
+#### [使用 .NET 创建筛选器](media-services-dotnet-dynamic-manifest.md)
+#### [使用 REST 创建筛选器](media-services-rest-dynamic-manifest.md)
+### [媒体服务扩展中的 CDN 缓存策略](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### 发布内容
 #### [门户](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)
@@ -172,14 +185,10 @@
 #### [使用 DASH.js 的 HTML5 应用程序](media-services-embed-mpeg-dash-in-html5.md)
 #### [Adobe Open Source Media Framework 播放器](media-services-use-osmf-smooth-streaming-client-plugin.md)
 ### [客户端插入广告](media-services-inserting-ads-on-client-side.md)
+### [授权 Microsoft 平滑流式处理客户端移植工具包](media-services-sspk.md)
 
 ## 集成
-### [媒体服务扩展中的 CDN 缓存策略](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
-### [授权 Microsoft†" 平滑流式处理客户端移植工具包](media-services-sspk.md)
-### [跨多个存储帐户管理资产](meda-services-managing-multiple-storage-accounts.md)
-### [使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务](media-services-axinom-integration.md)
-### [使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务](media-services-castlabs-integration.md)
-### [Widevine 许可证模板概述](media-services-widevine-license-template-overview.md)
+### [Azure Functions](https://github.com/azure-samples/media-services-dotnet-functions-integration)
 
 ## 监视
 ### 检查作业进度
@@ -187,6 +196,7 @@
 #### [门户](media-services-portal-check-job-progress.md)
 #### [.NET](media-services-check-job-progress.md)
 ### [使用队列存储监视作业通知](media-services-dotnet-check-job-progress-with-queues.md)
+### [使用 webhook 监视作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## 故障排除
 ### [常见问题](media-services-frequently-asked-questions.md)
@@ -207,6 +217,6 @@
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

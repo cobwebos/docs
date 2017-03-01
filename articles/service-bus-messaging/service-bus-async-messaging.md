@@ -1,6 +1,6 @@
 ---
 title: "服务总线异步消息传送 | Microsoft 文档"
-description: "介绍服务总线异步消息传送。"
+description: "介绍 Azure 服务总线异步消息传送。"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2016
+ms.date: 01/13/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb178caeb1ba3cdf8f4a85ac88502425532f86b3
+ms.sourcegitcommit: 798b4310eb5ea7a4877d7842371b5dd7cf88d632
+ms.openlocfilehash: 8a5c1a381cc5cf30f211da948951dc577a124951
 
 
 ---
@@ -60,7 +60,7 @@ Azure 中的其他组件可能偶尔会发生服务问题。 例如，当服务�
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>单个子系统上的服务总线故障
 使用任何应用程序时，环境都可能导致服务总线的内部组件出现不一致。 当服务总线检测到这种不一致时，它将从该应用程序收集数据以辅助诊断问题。 收集到数据后，将重新启动该应用程序以尝试使其返回一致状态。 此过程发生得相当迅速，并且会导致实体长达数分钟不可用，而典型的停机时间则要短得多。
 
-在这些情况下，客户端应用程序将生成 [System.TimeoutException][System.TimeoutException] 或 [MessagingException][MessagingException] 异常。 服务总线通过自动客户端重试逻辑来缓解该问题。 如果重试周期用尽而未能传递消息，可以尝试使用其他功能，例如[成对命名空间][成对命名空间]。 成对命名空间具有其他一些注意事项，本文对此进行了讨论。
+在这些情况下，客户端应用程序将生成 [System.TimeoutException][System.TimeoutException] 或 [MessagingException][MessagingException] 异常。 服务总线通过自动客户端重试逻辑来缓解该问题。 如果重试周期用尽而未能传递消息，可以尝试使用其他功能，例如[成对命名空间][paired namespaces]。 成对命名空间具有其他一些注意事项，本文对此进行了讨论。
 
 ### <a name="failure-of-service-bus-within-an-azure-datacenter"></a>Azure 数据中心内的服务总线故障
 造成 Azure 数据中心内故障的最可能原因是，服务总线或依赖系统升级部署失败。 随着平台的成熟，出现此类型故障的可能性已降低。 数据中心出现故障的原因还可能包括以下方面：
@@ -68,10 +68,10 @@ Azure 中的其他组件可能偶尔会发生服务问题。 例如，当服务�
 * 电力中断（电源和生成的电力消失）。
 * 连接性（客户端与 Azure 之间 Internet 断开）。
 
-对于这两种情况，自然或人为灾难都可能导致此问题发生。 若要解决此问题并确保仍可发送消息，可以使用[成对命名空间][成对命名空间]，以允许在主位置恢复正常时能够将消息发送到第二个位置。 有关详细信息，请参阅[使应用程序免受服务总线中断和灾难影响的最佳实践][使应用程序免受服务总线中断和灾难影响的最佳实践]。
+对于这两种情况，自然或人为灾难都可能导致此问题发生。 若要解决此问题并确保仍可发送消息，可以使用[成对命名空间][paired namespaces]，以允许在主位置恢复正常时能够将消息发送到第二个位置。 有关详细信息，请参阅[使应用程序免受服务总线中断和灾难影响的最佳实践][Best practices for insulating applications against Service Bus outages and disasters]。
 
 ## <a name="paired-namespaces"></a>成对命名空间
-[成对命名空间][成对命名空间]功能支持在数据中心内的服务总线实体或部署不可用时的应用场景。 虽然此故障很少发生，但仍必须准备分布式系统以应对最坏情况。 通常情况下，发生此故障是由于服务总线所依赖的某些元素发生短期问题。 为了维护应用程序在中断期间的可用性，服务总线用户可使用两个单独的命名空间（最好位于独立的数据中心内）来托管其消息实体。 此部分的剩余部分使用了下列术语：
+[成对命名空间][paired namespaces]功能支持在数据中心内的服务总线实体或部署不可用时的应用场景。 虽然此故障很少发生，但仍必须准备分布式系统以应对最坏情况。 通常情况下，发生此故障是由于服务总线所依赖的某些元素发生短期问题。 为了维护应用程序在中断期间的可用性，服务总线用户可使用两个单独的命名空间（最好位于独立的数据中心内）来托管其消息实体。 此部分的剩余部分使用了下列术语：
 
 * 主命名空间：应用程序与之进行交互以便进行发送和接收操作的命名空间。
 * 辅助命名空间：充当主命名空间备份的命名空间。 应用程序逻辑不与此命名空间进行交互。
@@ -91,13 +91,13 @@ Azure 中的其他组件可能偶尔会发生服务问题。 例如，当服务�
 ### <a name="the-messagingfactorypairnamespaceasync-api"></a>MessagingFactory.PairNamespaceAsync API
 成对命名空间功能包含针对 [Microsoft.ServiceBus.Messaging.MessagingFactory][Microsoft.ServiceBus.Messaging.MessagingFactory] 类的 [PairNamespaceAsync][PairNamespaceAsync] 方法：
 
-```
+```csharp
 public Task PairNamespaceAsync(PairedNamespaceOptions options);
 ```
 
 任务完成后，命名空间配对也随即完成并可以响应使用 [MessagingFactory][MessagingFactory] 实例创建的任何 [MessageReceiver][MessageReceiver]、[QueueClient][QueueClient] 或 [TopicClient][TopicClient]。 [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions][Microsoft.ServiceBus.Messaging.PairedNamespaceOptions] 是各种配对类型的基类，可通过 [MessagingFactory][MessagingFactory] 对象使用它。 目前，唯一的派生类名为 [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions]，它可实现发送可用性要求。 [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] 具有一组相互依存的构造函数。 查看参数最多的构造函数，你就能理解其他构造函数的行为。
 
-```
+```csharp
 public SendAvailabilityPairedNamespaceOptions(
     NamespaceManager secondaryNamespaceManager,
     MessagingFactory messagingFactory,
@@ -116,14 +116,14 @@ public SendAvailabilityPairedNamespaceOptions(
 
 若要使用代码，请创建一个 [MessagingFactory][MessagingFactory] 主实例、一个 [MessagingFactory][MessagingFactory] 辅助实例、一个 [NamespaceManager][NamespaceManager] 辅助实例和一个 [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] 实例。 调用可以很简单，如下所示：
 
-```
+```csharp
 SendAvailabilityPairedNamespaceOptions sendAvailabilityOptions = new SendAvailabilityPairedNamespaceOptions(secondaryNamespaceManager, secondary);
 primary.PairNamespaceAsync(sendAvailabilityOptions).Wait();
 ```
 
 [PairNamespaceAsync][PairNamespaceAsync] 方法返回的任务完成后，所有内容都已设置完毕并且可供使用。 在该任务返回之前，你可能尚未完成使所有配对正确工作所需的后台工作。 因此，应在任务返回后才开始发送消息。 如果出现任何故障（例如凭据错误或无法创建积压工作队列），则会在该任务完成后立即引发这些异常。 该任务返回后，请通过检查 [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] 实例的 [BacklogQueueCount][BacklogQueueCount] 属性来验证已找到或创建队列。 对于前面的代码，该操作将显示如下：
 
-```
+```csharp
 if (sendAvailabilityOptions.BacklogQueueCount < 1)
 {
     // Handle case where no queues were created.
@@ -131,30 +131,30 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-了解服务总线中的异步消息传送的基础知识后，可阅读有关[成对命名空间][成对命名空间]的详细信息。
+了解服务总线中的异步消息传送的基本信息后，可阅读有关[成对命名空间][paired namespaces]的详细信息。
 
-[ServerBusyException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx
+[ServerBusyException]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
-[MessagingException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.aspx
-[使应用程序免受服务总线中断和灾难影响的最佳实践]: service-bus-outages-disasters.md
-[Microsoft.ServiceBus.Messaging.MessagingFactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx
-[MessageReceiver]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx
-[QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
-[TopicClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx
-[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.pairednamespaceoptions.aspx
-[MessagingFactory]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx
-[SendAvailabilityPairedNamespaceOptions]:https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.aspx
-[NamespaceManager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
-[PairNamespaceAsync]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.pairnamespaceasync.aspx
-[EnableSyphon]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.enablesyphon.aspx
-[System.TimeSpan.Zero]: https://msdn.microsoft.com/library/azure/system.timespan.zero.aspx
-[IsTransient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingexception.istransient.aspx
-[UnauthorizedAccessException]: https://msdn.microsoft.com/library/azure/system.unauthorizedaccessexception.aspx
-[BacklogQueueCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.backlogqueuecount.aspx
-[成对命名空间]: service-bus-paired-namespaces.md
+[MessagingException]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingexception
+[Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
+[Microsoft.ServiceBus.Messaging.MessagingFactory]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory
+[MessageReceiver]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagereceiver
+[QueueClient]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queueclient
+[TopicClient]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient
+[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions
+[MessagingFactory]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory
+[SendAvailabilityPairedNamespaceOptions]:https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
+[NamespaceManager]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager
+[PairNamespaceAsync]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_
+[EnableSyphon]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_EnableSyphon
+[System.TimeSpan.Zero]: https://msdn.microsoft.com/library/system.timespan.zero.aspx
+[IsTransient]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagingexception#Microsoft_ServiceBus_Messaging_MessagingException_IsTransient
+[UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
+[BacklogQueueCount]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN#Microsoft_ServiceBus_Messaging_SendAvailabilityPairedNamespaceOptions_BacklogQueueCount
+[paired namespaces]: service-bus-paired-namespaces.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

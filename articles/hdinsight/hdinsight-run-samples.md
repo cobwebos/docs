@@ -13,18 +13,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/14/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fc79b8017f2184091f2473a0ff9cdfbd0a4cbdf8
-ms.openlocfilehash: d195f4936e8adfa22972a2a518188987398928e8
+ms.sourcegitcommit: d83bfd81768722592565fe924c4d00610b149999
+ms.openlocfilehash: 16801860b78b40cc883393ca4db3ffa208b889fd
 
 
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 中运行 Hadoop MapReduce 示例
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-为帮助你开始使用 Azure HDInsight 在 Hadoop 群集上运行 MapReduce 作业，我们提供了一组示例。 在你创建的每一个 HDInsight 托管群集上都可以使用这些示例。 运行这些示例会让你熟悉使用 Azure PowerShell cmdlet 在 Hadoop 群集上运行作业。
+为帮助你开始使用 Azure HDInsight 在 Hadoop 群集上运行 MapReduce 作业，我们提供了一组示例。 在你创建的每一个 HDInsight 托管群集上都可以使用这些示例。 运行这些示例可熟悉如何使用 Azure PowerShell cmdlet 在 Hadoop 群集上运行作业。
 
 * [**字数统计**][hdinsight-sample-wordcount]：计算单词在文本文件中出现的次数。
 * [**C# 流式处理字数统计**][hdinsight-sample-csharp-streaming]：使用 Hadoop 流式处理接口计算单词在文本文件中出现的次数。
@@ -54,10 +54,10 @@ Web 上有许多介绍 Hadoop 相关技术（例如基于 Java 的 MapReduce 编
     > [!IMPORTANT]
     > Azure PowerShell 支持使用 Azure Service Manager 管理 HDInsight 资源，但**不建议使用**，而且将于 2017 年 1 月 1 日前删除。 本文档中的步骤使用的是与 Azure Resource Manager 兼容的新 HDInsight cmdlet。
     >
-    > 请按照 [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果你的脚本需要修改后才能使用与 Azure Resource Manager 兼容的新 cmdlet，请参阅 [迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md) ，了解详细信息。
+    > 请按照[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure Resource Manager 兼容的新 cmdlet，请参阅[迁移到基于 Azure Resource Manager 的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
 
 ## <a name="a-namehdinsight-sample-wordcountaword-count---java"></a><a name="hdinsight-sample-wordcount"></a>字数统计 - Java
-若要提交 MapReduce 项目，请先创建 MapReduce 作业定义。 在作业定义中，指定 MapReduce 程序 jar 文件和 jar 文件的位置（即 **wasbs:///example/jars/hadoop-mapreduce-examples.jar**）、类名和参数。  Wordcount MapReduce 程序采用两个参数：用于计算单词数的源文件和输出位置。
+若要提交 MapReduce 项目，请先创建 MapReduce 作业定义。 在作业定义中，指定 MapReduce 程序 jar 文件和 jar 文件的位置（即 **wasbs:///example/jars/hadoop-mapreduce-examples.jar**）、类名和参数。  Wordcount MapReduce 程序采用两个参数：输出位置以及用于计算字数的源文件。
 
 可以在[附录 A](#apendix-a---the-word-count-MapReduce-program-in-java) 中找到源代码。
 
@@ -120,7 +120,7 @@ Web 上有许多介绍 Hadoop 相关技术（例如基于 Java 的 MapReduce 编
     ```
 
     MapReduce 作业将生成一个名为 part-r-00000 的文件，其中包含单词和计数。 该脚本使用 **findstr** 命令列出包含“there”的所有单词。
-3. 设置前 3 个变量，然后运行脚本。
+3. 设置前&3; 个变量，然后运行脚本。
 
 ## <a name="a-namehdinsight-sample-csharp-streamingaword-count---c-streaming"></a><a name="hdinsight-sample-csharp-streaming"></a>字数统计 - C# 流式处理
 Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采用 Java 之外的其他语言来编写映射函数和化简函数。
@@ -128,7 +128,7 @@ Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采�
 > [!NOTE]
 > 本教程中的步骤仅适用于基于 Windows 的 HDInsight 群集。 有关基于 Linux 的 HDInsight 群集流式处理的示例，请参阅[开发适用于 HDInsight 的 Python 流式处理程序](hdinsight-hadoop-streaming-python.md)。
 
-在示例中，映射器和化简器都是可执行的，它们从 [stdin][stdin-stdout-stderr] 读取输入（逐行）并将输出结果发送到 [stdout][stdin-stdout-stderr]。 程序计算文本中所有单词的数量。
+在示例中，映射器和化简器都是可执行的，它们从 [stdin][stdin-stdout-stderr] 读取输入（逐行）并将输出结果发送到 [stdout][stdin-stdout-stderr]。 程序将计算文本中所有单词的数量。
 
 如果为**映射器**指定可执行文件，则当初始化映射器时，每个映射器任务都将启动此可执行文件作为一个单独的进程。 当映射器任务运行时，它将其输入转换为行，并将这些行馈送到进程的 [stdin][stdin-stdout-stderr]。
 
@@ -138,11 +138,9 @@ Hadoop 向 MapReduce 提供了一个流式处理 API，利用它，你可以采�
 
 同时，化简器从进程的 [stdout][stdin-stdout-stderr] 中收集面向行的输出。 然后将每行转换为一个键/值对（作为化简器的输出收集）。 默认情况下，一行的前缀直至第一个制表符是键，而该行的剩余部分（不包括制表符）是值。
 
-有关 Hadoop 流式处理接口的详细信息，请参阅 [Hadoop 流式处理][hadoop-streaming]。
-
 **提交 C# 流式处理字数统计作业**
 
-* 按照[字数统计 - Java](#word-count-java)中的步骤操作，并将作业定义替换为以下内容：
+* 请按照[字数统计 - Java](#word-count-java)中的步骤操作，并将作业定义替换为以下内容：
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -164,7 +162,7 @@ pi 估计器使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 单
 
 **提交 pi 估计器作业**
 
-* 按照[字数统计 - Java](#word-count-java)中的步骤操作，并将作业定义替换为以下内容：
+* 请按照[字数统计 - Java](#word-count-java)中的步骤操作，并将作业定义替换为以下内容：
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -615,7 +613,7 @@ FileOutputFormat.setOutputPath(jobConf, outDir);
 final FileSystem fs = FileSystem.get(jobConf);
 if (fs.exists(TMP_DIR)) {
 throw new IOException("Tmp directory " + fs.makeQualified(TMP_DIR)
-+ " already exists. Please remove it first.");
++ " already exists. Remove it first.");
 }
 if (!fs.mkdirs(inDir)) {
 throw new IOException("Cannot create input directory " + inDir);
@@ -989,6 +987,6 @@ public class TeraSort extends Configured implements Tool {
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

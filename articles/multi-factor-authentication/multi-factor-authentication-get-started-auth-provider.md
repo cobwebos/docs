@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 02/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
+ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
+ms.openlocfilehash: be4361af8f3f3024ab7f12114760f6f58e77deaf
 
 
 ---
@@ -25,17 +25,13 @@ ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
 
 > [!NOTE]
 > Azure Multi-Factor Auth 提供程序用于利用 Azure MFA 完整版提供的功能。 它适用于 **没有通过 Azure MFA、Azure AD Premium 或 EMS 获得许可证**的用户。  默认情况下，Azure MFA、Azure AD Premium 和 EMS 包括 Azure MFA 完整版。  若有许可证，则无需 Azure 多重身份验证提供程序。
-> 
-> 
 
 需要 Azure 多重身份验证提供程序才能下载 SDK。
 
 > [!IMPORTANT]
 > 即使拥有 Azure MFA、AAD 高级版或 EMS 许可证，若要下载 SDK，也请创建 Azure 多重身份验证提供程序。  如果处于此目的而创建 Azure 多重身份验证提供程序且已拥有许可证，请务必使用**按启用的用户**模型创建提供程序。 然后，将该提供程序链接到包含 Azure MFA、Azure AD Premium 或 EMS 许可证的目录。  这将确保仅当使用 SDK 的唯一用户数大于你所拥有的许可证数时才进行计费。
-> 
-> 
 
-## <a name="to-create-a-multi-factor-auth-provider"></a>创建 Multi-Factor Auth 提供程序
+## <a name="create-a-multi-factor-auth-provider"></a>创建多重身份验证提供程序
 使用以下步骤创建 Azure Multi-Factor Auth 提供程序。
 
 1. 以管理员身份登录到 [Azure 经典门户](https://manage.windowsazure.com)。
@@ -64,6 +60,6 @@ ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

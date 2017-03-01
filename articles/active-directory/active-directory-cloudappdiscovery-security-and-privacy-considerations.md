@@ -5,36 +5,35 @@ services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: 2fce5c82-d3de-4097-808f-40214768df9e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: e14ee89eec9cbc7db7b1253ed46acf1ae93e620d
+ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
+ms.openlocfilehash: 5c4ab6e08c8f1af89ea80ac7f4d58d82ee931ec9
 
 
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery 的安全和隐私注意事项
-Microsoft 致力于保护你的隐私和数据安全，同时提供软件和服务来帮助你管理组织的安全性。 <br>
+Microsoft 致力于保护你的隐私和数据安全，同时提供软件和服务来帮助你管理组织的安全性。  
 我们认识到，当你授信他人访问你的数据时，这种信任需要极高的安全工程投资和专业知识来提供支持。
-从安全软件开发生命周期实践到服务运营，Microsoft 都严格遵守法规与安全准则。 <br>
+从安全软件开发生命周期实践到服务运营，Microsoft 都严格遵守法规与安全准则。  
 保护数据是 Microsoft 的头等大事。
 
 本主题介绍如何在 Azure Active Directory Cloud App Discovery 中收集、处理和保护数据
 
 ## <a name="overview"></a>概述
-Cloud App Discovery 是 Azure AD 的一项功能，在 Microsoft Azure 中托管。 <br>
-Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用程序发现数据。 <br>
-收集的数据通过加密通道安全地发送到 Azure AD Cloud App Discovery 服务。 <br>
-然后，组织的 Cloud App Discovery 数据会显示在 Azure 门户中。 <br>
+Cloud App Discovery 是 Azure AD 的一项功能，在 Microsoft Azure 中托管。  
+Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用程序发现数据。  
+收集的数据通过加密通道安全地发送到 Azure AD Cloud App Discovery 服务。  
+然后，组织的 Cloud App Discovery 数据会显示在 Azure 门户中。 
 
-<center>![Cloud App Discovery 的工作原理](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png)</center> <br>
+![云应用程序发现的工作原理](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) 
 
 以下部分以信息流为主，介绍如何从你的组织将信息移到 Cloud App Discovery 服务并最终移到 Cloud App Discovery 门户时为其提供保护。
 
@@ -44,26 +43,27 @@ Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用�
 Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户下载代理安装包。 这些代理可以手动安装或使用 SCCM 或组策略安装在组织中的多台计算机上。
 
 有关部署选项的进一步说明，请参阅 [Cloud App Discovery Group Policy Deployment Guide](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)（Cloud App Discovery 组策略部署指南）。
-<br>
+
 
 ### <a name="data-collected-by-the-agent"></a>代理收集的数据
-在建立与 Web 应用程序的连接时，代理将收集下表中概述的信息。 该信息仅收集用于管理员已为发现配置的这些应用程序。 <br>
+在建立与 Web 应用程序的连接时，代理将收集下表中概述的信息。 该信息仅收集用于管理员已为发现配置的这些应用程序。  
 以通过 Microsoft [Azure 门户](https://portal.azure.com/)中的“Cloud App Discovery”边栏选项卡，在“设置”->“数据收集”->“应用集合列表”下面，编辑代理监视的云应用列表。 有关更多详细信息，请参阅 [Getting Started With Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)（Cloud App Discovery 入门）
-<br>
-**信息类别**：用户信息 <br>
-**说明**： <br>
+
+
+**信息类别**：用户信息  
+**说明**：  
 已对目标 Web 应用程序发出请求的进程的 Windows 用户名（例如：DOMAIN\username），以及用户的 Windows 安全标识符 (SID)。
 
-**信息类别**：进程信息 <br>
-**说明**： <br>
+**信息类别**：进程信息  
+**说明**：  
 已对目标 Web 应用程序发出请求的进程的名称（例如：“iexplore.exe”）
 
-**信息类别**：计算机信息 <br>
-**说明**： <br>
+**信息类别**：计算机信息  
+**说明**：  
 已安装代理的计算机的 NetBIOS 名称。
 
-**信息类别**：应用流量信息 <br>
-**说明**： <br>
+**信息类别**：应用流量信息  
+**说明**： 
 
 以下连接信息：
 
@@ -93,7 +93,6 @@ Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户�
 
 代理除了收集有关网络活动的数据以外，还收集有关软件和硬件配置的匿名信息、错误报告以及有关代理用法的信息。
 
-<br><br>
 
 ### <a name="how-the-agent-works"></a>代理工作原理
 代理安装包括两个组件：
@@ -101,11 +100,11 @@ Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户�
 * 用户模式组件
 * 内核模式驱动程序组件（Windows 筛选平台驱动程序）
 
-首次安装代理时，它将在计算机上存储特定于计算机的受信任的证书，然后用该证书来建立与 Cloud App Discovery 服务的安全连接。 <br>
-代理会通过此安全连接从 Cloud App Discovery 服务定期检索策略配置。 <br>
+首次安装代理时，它将在计算机上存储特定于计算机的受信任的证书，然后用该证书来建立与 Cloud App Discovery 服务的安全连接。  
+代理会通过此安全连接从 Cloud App Discovery 服务定期检索策略配置。  
 该策略包括有关要监视的云应用程序以及是否应启用自动更新等的信息。
 
-在计算机的 Internet Explorer 和 Chrome 中发送和接收 Web 流量时，Cloud App Discovery 代理分析该流量并提取相关的元数据（请参阅上面的**代理收集的数据**部分）。 <br>
+在计算机的 Internet Explorer 和 Chrome 中发送和接收 Web 流量时，Cloud App Discovery 代理分析该流量并提取相关的元数据（请参阅上面的**代理收集的数据**部分）。  
 代理每一分钟通过加密通道将收集的元数据上载到 Cloud App Discovery 服务。
 
 驱动程序组件会截获加密的流量，并将自身插入到加密流中。 有关详细信息，请参阅下面的**拦截来自加密连接的数据（深度检测）**部分。
@@ -143,11 +142,11 @@ Cloud App Discovery 终结点代理只收集上面**代理收集的数据**中�
 ## <a name="sending-data-to-cloud-app-discovery"></a>将数据发送到 Cloud App Discovery
 元数据一旦由代理收集，就会在计算机上缓存一分钟，或直到缓存的数据达到 5MB 的大小。 然后，这些数据会被压缩，并通过安全连接发送到 Cloud App Discovery 服务。
 
-如果出于任何原因，代理无法与 Cloud App Discovery 服务进行通信，则收集的元数据存储在只能由计算机上的特权用户（如管理员组）访问的本地文件缓存中。 <br>
+如果出于任何原因，代理无法与 Cloud App Discovery 服务进行通信，则收集的元数据存储在只能由计算机上的特权用户（如管理员组）访问的本地文件缓存中。  
 代理自动尝试重新发送缓存的元数据，直到 Cloud App Discovery 服务成功接收到元数据为止。
 
 ## <a name="receiving-the-data-at-the-service-end"></a>接收服务端的数据
-代理使用上述计算机特定的客户端身份验证证书对 Cloud App Discovery 服务进行身份验证，并通过加密通道转发数据。 <br>
+代理使用上述计算机特定的客户端身份验证证书对 Cloud App Discovery 服务进行身份验证，并通过加密通道转发数据。  
 Cloud App Discovery 服务的分析管道可通过在分析管道的各个阶段对元数据进行逻辑分区来为每个客户分别处理这些元数据。
 根据经过分析的元数据，可在门户中生成各种报告。
 
@@ -155,7 +154,7 @@ Cloud App Discovery 服务的分析管道可通过在分析管道的各个阶段
 这对脱机分析元数据以及延长数据保留时间很有用。
 
 ## <a name="accessing-the-data-using-the-azure-portal"></a>使用 Azure 门户访问数据
-为了使收集的元数据受到保护，默认情况下，只有租户的全局管理员才有权在 Azure 门户中访问 Cloud App Discovery 功能。 <br>
+为了使收集的元数据受到保护，默认情况下，只有租户的全局管理员才有权在 Azure 门户中访问 Cloud App Discovery 功能。  
 但是，管理员可以选择向其他用户或组委托此访问权限。
 
 > [!NOTE]
@@ -163,7 +162,7 @@ Cloud App Discovery 服务的分析管道可通过在分析管道的各个阶段
 > 
 > 
 
-<br>
+
 任何在门户中访问数据的用户，都必须使用 Azure AD Premium 许可证进行许可。
 
 ## <a name="additional-resources"></a>其他资源
@@ -173,6 +172,6 @@ Cloud App Discovery 服务的分析管道可通过在分析管道的各个阶段
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
-ms.author: cabailey
+ms.date: 11/30/2016
+ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d410dd8b7baf852212707d0fa9bffd6e45c23eff
+ms.sourcegitcommit: 593fdde402845fa062dbceafa533a1efc1f7af9c
+ms.openlocfilehash: b189106be19b95366ba0e6d248c69b34b219b8a1
 
 
 ---
@@ -72,12 +72,12 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 * [步骤 5：将密钥传输到 Azure 密钥保管库](#step-5-transfer-your-key-to-azure-key-vault)
 
 ## <a name="step-1-prepare-your-internet-connected-workstation"></a>步骤 1：准备连接到 Internet 的工作站
-在步骤 1 中，请对连接到 Internet 的工作站执行以下过程。
+在步骤&1; 中，请对连接到 Internet 的工作站执行以下过程。
 
 ### <a name="step-11-install-azure-powershell"></a>步骤 1.1：安装 Azure PowerShell
 从通过 Internet 连接的工作站，下载并安装Azure PowerShell 模块，其包含用于管理 Azure 密钥保管库的 cmdlet。 这要求模块的最低版本为 0.8.13。
 
-如需安装说明，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+如需安装说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>步骤 1.2：获取 Azure 订阅 ID
 使用以下命令启动 Azure PowerShell 会话，并登录你的 Azure 帐户：
@@ -91,79 +91,87 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 不要关闭 Azure PowerShell 窗口。
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>步骤 1.3：下载 Azure 密钥保管库的 BYOK 工具集
-转到 Microsoft 下载中心，针对你所在的地理区域或 Azure 实例[下载 Azure 密钥保管库的 BYOK 工具集](http://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA 256 包哈希：
+转到 Microsoft 下载中心，针对你所在的地理区域或 Azure 实例[下载 Azure 密钥保管库的 BYOK 工具集](http://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA&256; 包哈希：
 
 - - -
-**北美：**
+**美国：**
 
 KeyVault-BYOK-Tools-UnitedStates.zip
 
-305F44A78FEB750D1D478F6A0C345B097CD5551003302FA465C73D9497AB4A03
+760EE9BD6445C87CFF0E8B032577118704B3BEAA045AA55977C10EF68BC67E2B
 
 - - -
 **欧洲：**
 
 KeyVault-BYOK-Tools-Europe.zip
 
-C73BB0628B91471CA7F9ADFCE247561C6016A5103EF1A315D49C3EA23AFC0B9C
+7A64B94225F59B847C5C27C2200BAD7D16C901E1687767EDBBB8B09BB285011D
 
 - - -
 **亚洲：**
 
 KeyVault-BYOK-Tools-AsiaPacific.zip
 
-BE9A84B6C76661929F9FDAD627005D892B3B8F9F19F351220BB4F9C356694192
+813DC94B23079CF7A5CEA71D5B444E86B292F463C53EE47AED25D4F7CD58E7D8
 
 - - -
 **拉丁美洲：**
 
 KeyVault-BYOK-Tools-LatinAmerica.zip
 
-9E8EE11972DECE8F05CD898AF64C070C375B387CED716FDCB788544AE27D3D23
+3F29069E3500F95C0E156F4B8914E1DC60C20FB64B464306A299EA5145D755C0
 
 - - -
 **日本：**
 
 KeyVault-BYOK-Tools-Japan.zip
 
-E6B88C111D972A02ABA3325F8969C4E36FD7565C467E9D7107635E3DDA11A8B2
+453FFEA2F8F410720B68B8BAC4CF79135A7F37F4E491FF840BE9E69E88A98C90
 
 - - -
 **澳大利亚：**
 
 KeyVault-BYOK-Tools-Australia.zip
 
-7660D7A675506737857B14F527232BE51DC269746590A4E5AB7D50EDD220675D
+4AD893396E86F2D2A71682876A6A8EA59E3C7895BEAD2F7E7C8516682582C34B
 
 - - -
 [**Azure Government：**](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
-53801A3043B0F8B4A50E8DC01A935C2BFE61F94EE027445B65C52C1ACC2B5E80
+3AAE1A96B9D15B899B8126CFC0380719EB54FDF2EA94489B43FAD21ECC745F64
 
 - - -
 **加拿大：**
 
 KeyVault-BYOK-Tools-Canada.zip
 
-A42D9407B490E97693F8A5FA6B60DC1B06B1D1516EDAE7C9A71AA13E12CF1345
+30B87A0BA8208F6B7241C30C794FED1C370D7445ACA179685816E4E156CD2AF7
 
 - - -
 **德国：**
 
 KeyVault-BYOK-Tools-Germany.zip
 
-4795DA855E027B2CA8A2FF1E7AE6F03F772836C7255AFC68E576410BDD28B48E
+5E3E4AA54715E4F93C3C145035B18275B7C6815A06D7ABB212E7FADBF2929261
 
 - - -
 **印度：**
 
 KeyVault-BYOK-Tools-India.zip
 
-26853511EB767A33CF6CD880E78588E9BBE04E619B17FBC77A6B00A5111E800C
+136733A6C6A71D75571BB80819B3D55A9B83CCAD5C996C686BC5682A3F369BF7
 
 - - -
+**英国：**
+
+KeyVault-BYOK-Tools-UnitedKingdom.zip
+
+ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
+
+- - -
+
 若要验证已下载的 BYOK 工具集的完整性，请从 Azure PowerShell 会话中使用 [Get-filehash](https://technet.microsoft.com/library/dn520872.aspx) cmdlet。
 
     Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -179,7 +187,7 @@ KeyVault-BYOK-Tools-India.zip
 将该软件包复制到 USB 驱动器或其他便携式存储设备。
 
 ## <a name="step-2-prepare-your-disconnected-workstation"></a>步骤 2：准备连接断开的工作站
-在步骤 2 中，请对未连接到网络（Internet 或内部网络）的工作站执行以下过程。
+在步骤&2; 中，请对未连接到网络（Internet 或内部网络）的工作站执行以下过程。
 
 ### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>步骤 2.1：准备使用 Thales HSM 的连接断开的工作站
 在 Windows 计算机上安装 nCipher (Thales) 支持软件，然后将 Thales HSM 连接到该计算机。
@@ -198,7 +206,7 @@ KeyVault-BYOK-Tools-India.zip
 3. 按照说明安装 Visual Studio 2013 的 Visual c + + 运行时组件。
 
 ## <a name="step-3-generate-your-key"></a>步骤 3：生成密钥
-在步骤 3 中，请对连接断开的工作站执行以下过程。
+在步骤&3; 中，请对连接断开的工作站执行以下过程。
 
 ### <a name="step-31-create-a-security-world"></a>步骤 3.1：创建安全体系
 启动命令提示符并运行 Thales new-world 程序。
@@ -225,7 +233,7 @@ KeyVault-BYOK-Tools-India.zip
 
 验证下载的程序包：
 
-1. 根据你所在的地理区域或 Azure 实例，尝试下列其中一个区域，以运行 verifykeypackage.py 脚本：
+1. 根据你所在的地理区域或 Azure 实例，键入下列其中一个区域，以运行 verifykeypackage.py 脚本：
    
    * 北美洲：
      
@@ -292,7 +300,7 @@ KeyVault-BYOK-Tools-India.zip
 现在已准备好将密钥传输到 Azure 密钥保管库。
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>步骤 4：准备要传输的密钥
-在步骤 4 中，请对断开连接的工作站执行以下过程。
+在步骤&4; 中，请对断开连接的工作站执行以下过程。
 
 ### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>步骤 4.1：使用减少权限创建密钥的副本
 若要减少密钥的权限，请从命令提示符处运行以下命令，具体要取决于你所在的地理区域或 Azure 实例：
@@ -403,6 +411,6 @@ KeyVault-BYOK-Tools-India.zip
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

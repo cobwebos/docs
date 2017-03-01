@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据仓库中的视图 | Microsoft 文档"
+title: "在 Azure SQL 数据仓库中使用 T-SQL 视图 | Microsoft Docs"
 description: "有关在开发解决方案时使用 Azure SQL 数据仓库中的 Transact-SQL 视图的技巧。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eada95920b3f539c70776964eb62ff9e4d219ddd
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 902929fba9e2486d97323ab52505ba6db3fe0aab
 
 
 ---
@@ -66,13 +66,13 @@ SQL 数据仓库中的视图只是元数据。  因此无法使用以下选项�
 * SQL 数据仓库中没有索引视图
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL 数据仓库开发概述]。
+有关更多开发技巧，请参阅 [SQL 数据仓库开发概述][SQL Data Warehouse development overview]。
 有关 `CREATE VIEW` 语法，请参阅 [CREATE VIEW][CREATE VIEW]。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL 数据仓库开发概述]: ./sql-data-warehouse-overview-develop.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 [CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
@@ -81,6 +81,6 @@ SQL 数据仓库中的视图只是元数据。  因此无法使用以下选项�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

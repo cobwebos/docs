@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2016
+ms.date: 12/09/2016
 ms.author: bradsev;hangzh;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3307418f3bcbf1e13b47ffb4d37024f90bdd2c2e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 572f09e5034f60e20b6668b5d513741048619ab6
 
 
 ---
@@ -55,7 +55,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
 1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount* 是正例，等于 $0 的 \_tip*amount* 是反例\_*。
-2. **多元分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount** 划分五个分类收纳组或类别：
+2. **多元分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -319,7 +319,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 你将必须决定有重复的源和目标文件时该怎么办。
 
 > [!NOTE]
-> 如果你的专用 blob 存储帐户中已经有要从公共 blob 存储复制到你的专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果你不希望覆盖它们，请在提示时输入 **n**。 如果你不希望覆盖它们，请在提示时输入 **n**。 也可以输入 **y** 单独覆盖.csv 文件。
+> 如果你的专用 blob 存储帐户中已经有要从公共 blob 存储复制到你的专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果你不希望覆盖它们，请在提示时输入 **n**。 如果你希望覆盖它们**全部**，请在提示时输入 **a**。 也可以输入 **y** 单独覆盖.csv 文件。
 > 
 > 
 
@@ -562,7 +562,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 准备好进行 Azure 机器学习后，你也可以：  
 
 1. 保存最终的 SQL 查询，以提取和采样数据，然后直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块，或者
-2. 保留计划用于在新 SQL DW 表中进行建模的抽样和工程数据，然后使用 Azure 机器学习的“[导入数据] [import-data]”模块中的新表。 前面步骤中的 PowerShell 脚本已经为你完成此操作。 你可以直接从“导入数据”模块中的此表读取。
+2. 保留计划用于在新 SQL DW 表中进行建模的抽样和工程数据，然后使用 Azure 机器学习的“[导入数据][import-data]”模块中的新表。 前面步骤中的 PowerShell 脚本已经为你完成此操作。 你可以直接从“导入数据”模块中的此表读取。
 
 ## <a name="a-nameipnbadata-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook 中的数据浏览和功能设计
 在此部分中，我们将对之前创建的 SQL DW 使用 Python 和 SQL 查询，执行数据浏览和功能生成。 名为 **SQLDW_Explorations.ipynb** 的 IPython Notebook 示例和名为 **SQLDW_Explorations_Scripts.py** 的 Python 脚本文件已下载到本地目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW) 上也有提供。 这两个文件在 Python 脚本中相同。 提供 Python 脚本文件用于应对没有 IPython Notebook 服务器的情况。 这两个示例 Python 文件在 **Python 2.7** 下开发。
@@ -832,7 +832,7 @@ and
 
 在此练习中，我们已经探讨和设计了 SQL 数据仓库中的数据，并确定了要引入 Azure ML 中的样本大小。 下面是构建一个或多个预测模型的过程：
 
-1. 使用“数据输入和输出”部分的[导入数据][import-data]模块，将数据放入 Azure ML。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
+1. 使用“数据输入和输出”部分中的[导入数据][import-data]模块，将数据导入 Azure ML 中。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
    
     ![Azure ML 导入数据][17]
 2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
@@ -871,7 +871,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 2. 标识逻辑**输入端口**，以表示预期输入数据架构。
 3. 标识逻辑**输出端口**，以表示预期 Web 服务输出架构。
 
-创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常排会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“**评分标签**”和“**评分概率**”。
+创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
 
 下图提供评分实验示例。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 
@@ -923,6 +923,6 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

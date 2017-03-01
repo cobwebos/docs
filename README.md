@@ -12,7 +12,6 @@ GitHub 存储库中存储了 [https://docs.microsoft.com/azure](https://docs.mic
 * [存储库组织方式](#repository-organization)
 * [使用 GitHub、Git 和本存储库](#use-github-git-and-this-repository)
 * [如何使用标记来设置主题格式](#how-to-use-markdown-to-format-your-topic)
-* [反馈、意见和支持](./contributor-guide/feedback-and-comments.md)
 * [更多资源](#more-resources)
 * [所有供稿人指南文章的索引](contributor-guide/contributor-guide-index.md)（打开新页）
 
@@ -87,6 +86,6 @@ azure-docs 存储库中的内容遵循 https://docs.microsoft.com/azure 上的�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

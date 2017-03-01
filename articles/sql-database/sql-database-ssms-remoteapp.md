@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: d0edcf7f7e927f817caae1cb7f4519596a09f140
+ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
+ms.openlocfilehash: a8540a541d05d1d8a0afeb2aeb42c77951ebf8c2
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -41,7 +42,7 @@ Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。 如需
 ## <a name="benefits"></a>优点
 在 Azure RemoteApp 中使用 SSMS 有许多好处，包括：
 
-* 在 Azure SQL Server 上的端口 1433 不必对外（在 Azure 外部）公开。
+* Azure SQL Server 上的端口 1433 不必对外（在 Azure 外部）公开。
 * 不需要在 Azure SQL Server 防火墙中不断添加和删除 IP 地址。
 * 所有 Azure RemoteApp 连接都通过 HTTPS 在端口 443 上发生，使用的是加密的远程桌面协议
 * 它采用多用户模式，可以伸缩。
@@ -114,7 +115,7 @@ sysprep 在完成后会关闭 VM。
 转到 Azure Active Directory 中的用户以后，即可转到“活动”选项卡，查看登录 Azure RemoteApp 时的登录信息。
 
 ## <a name="next-steps"></a>后续步骤
-完成所有上述步骤以后，你就能够运行 Azure RemoteApp 客户端并使用分配的用户登录。 你会看到作为应用程序之一显示的 SSMS，并可根据需要来运行它，就像它是安装在你的计算机上且具有 Azure SQL Server 访问权限一样。
+完成所有上述步骤以后，你就能够运行 Azure RemoteApp 客户端并使用分配的用户登录。 你会看到作为应用程序之一显示的 SSMS，并可根据需要来运行它，就像它是安装在你的计算机上且具有 Azure SQL Server 的访问权限一样。
 
 有关如何连接到 SQL 数据库的详细信息，请参阅[使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例性的 T-SQL 查询](sql-database-connect-query-ssms.md)。
 
@@ -127,8 +128,3 @@ sysprep 在完成后会关闭 VM。
 [4]: ./media/sql-database-ssms-remoteapp/allowazure.png
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
-
-
-<!--HONumber=Dec16_HO1-->
-
-

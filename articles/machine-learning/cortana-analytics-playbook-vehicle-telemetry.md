@@ -1,5 +1,5 @@
 ---
-title: "车辆遥测分析解决方案操作手册 | Microsoft Docs"
+title: "预测车辆的运行状况和行驶习惯 - Azure | Microsoft Docs"
 description: "通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 55c85d95a16e0c0ea7bb11d6f47ae85aeb80577d
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: 3467c5549381f1354987fead424646afe847739c
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 55c85d95a16e0c0ea7bb11d6f47ae85aeb80577d
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 ## <a name="overview"></a>概述
-超级电脑已经搬出了实验室，现在停在我们的车库中！ 这些先进的汽车包含无数的传感器，让它们能够每秒跟踪和监控数百万的事件。 我们预计到 2020 年，这些汽车中的大部分将连接到 Internet。 想象挖掘这些丰富的数据，从而提供一流的安全性、可靠性和驾驶体验！ Microsoft 通过 Cortana Intelligence 使得这个美梦成真。
+超级电脑已经搬出了实验室，现在停在我们的车库中！ 这些先进的汽车包含无数的传感器，让它们能够每秒跟踪和监控数百万的事件。 我们预计到 2020 年，这些汽车中的大部分将连接到 Internet。 想象挖掘这些丰富的数据，从而提供更高的安全性、可靠性和更好的驾驶体验！ Microsoft 通过 Cortana Intelligence 使得这个美梦成真。
 
 Microsoft 的 Cortana Intelligence 是一个完全托管的大数据和高级分析套件，使你得以将数据转换为智能操作。 我们要向您介绍 Cortana Intelligence 车辆遥测分析解决方案模板。 此解决方案演示了汽车经销商、汽车制造商和保险公司如何使用Cortana Intelligence 的功能获得车辆运行状况和驾驶习惯的实时和预测性深入了解。 
 
@@ -41,10 +41,10 @@ Microsoft 的 Cortana Intelligence 是一个完全托管的大数据和高级分
 * 使用 Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和预测分析可视化
 
 ## <a name="architecture"></a>体系结构
-![](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
-图 1 - 车辆遥测分析解决方案体系结构**
+![解决方案体系结构图](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
+*图 1 - 车辆遥测分析解决方案体系结构*
 
-此解决方案包括以下 **Cortana Intelligence 组件**并展示了它们的端到端集成
+此解决方案包括以下 **Cortana Intelligence 组件**并展示了它们的端到端集成：
 
 * **事件中心**，用于将数百万车辆遥测事件引入 Azure。
 * **流分析**，用于获得对车辆运行状况的实时深入了解，并将数据持续存储到长期存储中，以进行更丰富的批处理分析。
@@ -61,6 +61,6 @@ Microsoft 的 Cortana Intelligence 是一个完全托管的大数据和高级分
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

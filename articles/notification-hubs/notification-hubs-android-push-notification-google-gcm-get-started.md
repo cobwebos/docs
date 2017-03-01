@@ -3,7 +3,7 @@ title: "通过 Azure 通知中心向 Android 发送推送通知 | Microsoft Docs
 description: "在本教程中，你将了解如何使用 Azure 通知中心将通知推送到 Android 设备。"
 services: notification-hubs
 documentationcenter: android
-keywords: "推送通知,push notification,android 推送通知"
+keywords: "推送通知、推送通知、android 推送通知"
 author: ysxu
 manager: erikre
 editor: 
@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 84d3aa963f8538c0721f6c0a02cee5b8e7269770
-ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
+ms.sourcegitcommit: 5ef9e96ae78b02da9dff1456608d73b9e78516a1
+ms.openlocfilehash: 808fc10ef1ebb3288facbdf2e9e817b27d4fc6bc
 
 
 ---
@@ -63,10 +63,10 @@ ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
 ### <a name="create-a-new-android-project"></a>创建新的 Android 项目
 1. 在 Android Studio 中，启动新的 Android Studio 项目。
    
-     ![Android Studio - 新项目][13]
+   ![Android Studio - 新项目][13]
 2. 选择“手机和平板电脑”外形规格和要支持的“最低 SDK 版本”。 。
    
-     ![Android Studio - 项目创建工作流][14]
+   ![Android Studio - 项目创建工作流][14]
 3. 选择“空活动”作为主活动，单击“下一步”，然后单击“完成”。
 
 ### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
@@ -619,13 +619,14 @@ ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
 #### <a name="running-the-application"></a>运行应用程序
 1. 运行应用，并留意报告注册成功的注册 ID。
    
-       ![Testing on Android - Channel registration][18]
+      ![测试 Android - 通道注册][18]
 2. 输入一条要发送到已在中心注册的所有 Android 设备的通知消息。
    
-       ![Testing on Android - sending a message][19]
+      ![测试 Android - 发送一条消息][19]
+
 3. 按“发送通知”。 `AlertDialog` 实例。 未运行此应用程序，但之前已注册推送通知的设备将在 Android 通知管理器中收到通知。 从左上角向下轻扫即可查看通知。
    
-       ![Testing on Android - notifications][21]
+      ![测试 Android - 通知][21]
 
 ## <a name="next-steps"></a>后续步骤
 建议下一步学习 [使用通知中心向用户推送通知] 教程。 它将显示如何使用标记从 ASP.NET 后端将通知发送到目标特定的用户。
@@ -671,6 +672,6 @@ ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

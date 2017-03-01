@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6b50b1c0522db3efe3bb5a10fd978dfaa41e2987
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 2fbbfd3d221ef2f6bce302ed169eddf5a8b0d73e
 
 
 ---
@@ -30,11 +30,13 @@ ms.openlocfilehash: 6b50b1c0522db3efe3bb5a10fd978dfaa41e2987
 ## <a name="modifying-configuration"></a>修改配置
 > [!IMPORTANT]
 > 本文档中列出的几大错误之所以发生，是因为超出了配置的最大值。 当解决步骤提到你可以更改一个值时，必须使用下列选项之一来执行更改：
-> 
-> 
+
 
 * 对于 **Windows** 群集：使用脚本操作在群集创建过程中配置值。 有关详细信息，请参阅[开发脚本操作](hdinsight-hadoop-script-actions.md)。
 * 对于 **Linux** 群集：使用 Ambari（Web 或 REST API）修改值。 有关详细信息，请参阅[使用 Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ### <a name="default-configuration"></a>默认配置
 以下是在超过时可能影响 WebHCat 性能或导致错误的默认配置值：
@@ -86,6 +88,6 @@ ms.openlocfilehash: 6b50b1c0522db3efe3bb5a10fd978dfaa41e2987
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

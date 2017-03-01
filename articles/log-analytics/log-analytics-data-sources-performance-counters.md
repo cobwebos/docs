@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics 中的 Windows 和 Linux 性能计数器 | Microsoft Docs"
+title: "收集和分析 Log Analytics 中的性能计数器 | Microsoft Docs"
 description: "性能计数器由 Log Analytics 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器的集合、它们在 OMS 存储库中的存储详情和如何在 OMS 门户中对他们对其分析。"
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b4d326064059b42cf2bf059184066c9acb4dcfd0
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: 1e4b5dac9333a9bd38f6ef89ddce22c74fed06ba
 
 
 ---
@@ -82,7 +82,7 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 | Type=Perf (ObjectName=Processor) CounterName="% Processor Time" InstanceName=_Total &#124; measure Avg(Average) as AVGCPU  by Computer |所有计算机的平均 CPU 使用率 |
 | Type=Perf (CounterName="% Processor Time") &#124;  measure max(Max) by Computer |所有计算机的最大 CPU 使用率 |
 | Type=Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Computer="MyComputerName" &#124; measure Avg(Average) by InstanceName |指定计算机的所有实例上的当前磁盘队列平均长度 |
-| Type=Perf CounterName="DiskTransfers/sec" &#124; measure percentile95(Average) by Computer |每秒所有计算机上磁盘传输的第 95 百分位数 |
+| Type=Perf CounterName="DiskTransfers/sec" &#124; measure percentile95(Average) by Computer |每秒所有计算机上磁盘传输的第&95; 百分位数 |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  &#124; measure avg(CounterValue) by Computer Interval 1HOUR |每小时所有计算机 CPU 使用率的平均值 |
 | Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |每小时特定计算机的每个 % 百分比计数器的第 70 百分位数 |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |每小时特定计算机的 CPU 使用率的平均值、最小值、最大值和第 75 百分位数 |
@@ -105,6 +105,6 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

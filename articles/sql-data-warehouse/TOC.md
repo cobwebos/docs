@@ -6,10 +6,7 @@
 
 # 入门
 
-## 创建 SQL 数据仓库
-### [Azure 门户](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
+## [入门教程](sql-data-warehouse-get-started-tutorial.md)
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 ## [获取支持](sql-data-warehouse-get-started-create-support-ticket.md)
@@ -32,6 +29,11 @@
 ### [SSMS](sql-data-warehouse-query-ssms.md)
 ### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [安装 Visual Studio](sql-data-warehouse-install-visual-studio.md)
+
+## 创建
+### [Azure 门户](sql-data-warehouse-get-started-provision.md)
+### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 开发
 
@@ -78,9 +80,9 @@
 
 ### [概述](sql-data-warehouse-overview-load.md)
 ### [示例数据](sql-data-warehouse-load-sample-databases.md)
+### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
-### [从 SQL Server 使用 BCP](sql-data-warehouse-load-from-sql-server-with-bcp.md)
 ### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
 ### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 ### [PolyBase 指南](sql-data-warehouse-load-polybase-guide.md)
@@ -143,8 +145,3 @@
 ### [商业智能](sql-data-warehouse-partner-business-intelligence.md)
 ### [数据集成](sql-data-warehouse-partner-data-integration.md)
 ### [数据管理](sql-data-warehouse-partner-data-management.md)
-
-
-<!--HONumber=Nov16_HO4-->
-
-

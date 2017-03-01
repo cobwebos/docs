@@ -1,6 +1,8 @@
 ---
-title: "创建中心并注册 Raspberry Pi 3 | Microsoft 文档"
-description: "使用 Azure CLI 创建资源组、创建 Azure IoT 中心并在 IoT 中心内注册 Pi。"
+featureFlags:
+- usabilla
+title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 2 课：注册设备 |Microsoft Docs"
+description: "使用 Azure CLI 创建资源组和 Azure IoT 中心，并在 IoT 中心标识注册表中注册 Pi。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +18,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: d93b7b67ee0727f45c3f4b93459b013b16805bf6
-ms.openlocfilehash: fcfb90a385a68e863b3c1d3d0fa3bb24fe778291
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: add684549056a824e5534d071a5d0215e27f7a0e
 
 
 ---
@@ -65,7 +67,7 @@ Azure IoT 中心可帮助你连接、监视并管理数百万 IoT 资产。 若�
 4. 通过运行以下命令在 West US 区域中创建名为 iot-sample 的资源组：
 
    ```bash
-   az resource group create --name iot-sample --location westus
+   az group create --name iot-sample --location westus
    ```
 
    `westus` 是你在其中创建资源组的位置。 如果希望使用其他位置，可以运行 `az account list-locations -o table` 来查看 Azure 支持的所有位置。
@@ -103,6 +105,6 @@ az iot device create --device-id myraspberrypi --hub-name {my hub name} --x509 -
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

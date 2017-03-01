@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 59e10d7b5762b07447f20ed03557b5f09f9b2277
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 64c7486ae24c31ef2a1116fdfd3cab9b813a09af
 
 
 ---
@@ -60,7 +60,7 @@ ms.openlocfilehash: 59e10d7b5762b07447f20ed03557b5f09f9b2277
 
 * VM 映像：[关于 Azure 中的虚拟机映像](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * VM 扩展：[ VM 代理和 VM 扩展概述](https://msdn.microsoft.com/library/azure/dn832621.aspx)和 [Azure VM 扩展和功能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
-* Azure Resource Manager：[创作 Azure ARM 模板](../resource-group-authoring-templates.md)和[简单的 ARM 模板示例](https://github.com/rjmax/ArmExamples)
+* Azure Resource Manager：[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)和[简单的模板示例](https://github.com/rjmax/ArmExamples)
 * 存储帐户限制：[如何监视存储帐户限制](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)和[高级存储](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
@@ -70,6 +70,6 @@ ms.openlocfilehash: 59e10d7b5762b07447f20ed03557b5f09f9b2277
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

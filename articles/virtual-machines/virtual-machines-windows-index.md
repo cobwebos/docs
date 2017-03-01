@@ -3,7 +3,7 @@ title: "与经典 Windows VM 相关的技术文章 | Microsoft Azure"
 description: "与经典部署模型中 Windows 虚拟机相关的 Microsoft Azure 文章完整列表"
 services: virtual-machines-windows
 documentationcenter: 
-author: dlepow
+author: cynthn
 manager: timlt
 tags: azure-service-management
 editor: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/05/2016
+ms.date: 02/13/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
+ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
+ms.openlocfilehash: 263b3a1edc94a60e756850b2d917840be87e7a5a
 
 
 ---
@@ -87,10 +87,6 @@ ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
 
 [适用于经典 Windows 虚拟机的自定义脚本扩展](virtual-machines-windows-classic-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-classic-sql-automated-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
-[Azure 虚拟机中 SQL Server 的自动修补](virtual-machines-windows-classic-sql-automated-patching.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
 [平台支持的从经典部署模型到 Azure Resource Manager 的迁移](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
 ## <a name="configure"></a>配置
@@ -107,7 +103,7 @@ ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
 [如何在经典 Azure 虚拟机上设置终结点](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="storage"></a>存储
-[关于 Azure 虚拟机的磁盘和 VHD](virtual-machines-windows-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[关于 Azure 虚拟机的磁盘和 VHD](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [如何将数据磁盘附加到经典 Windows 虚拟机](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -144,12 +140,12 @@ ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
 
 [SAP](virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-[SQL Server](virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[SQL Server](./windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 [Tomcat](virtual-machines-windows-classic-java-run-tomcat-app-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="reference"></a>引用
-[服务管理模式下的 Azure CLI 命令](../virtual-machines-command-line-tools.md)
+[服务管理模式下的 Azure CLI 命令](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 
 [服务管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)
 
@@ -170,6 +166,6 @@ ms.openlocfilehash: 00d2c2cb2d5f65880f79603954ac23c7efa253a4
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -3,7 +3,7 @@ title: "自动缩放 Azure Batch 池中的计算节点 | Microsoft Docs"
 description: "对云池启用自动缩放功能可以动态调整池中计算节点的数目。"
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: multiple
-ms.date: 10/14/2016
-ms.author: marsma
+ms.date: 01/23/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d2c142291b48210014597b9c0efbe1e0f2886fdf
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: 89ff5d5deeda72361cb619516681aca386c5a422
 
 
 ---
 # <a name="automatically-scale-compute-nodes-in-an-azure-batch-pool"></a>自动缩放 Azure Batch 池中的计算节点
 使用自动缩放，Azure Batch 可以根据所定义的参数在池中动态添加或删除计算节点。 还可以通过自动调整你的应用程序使用的计算能力（当工作的任务要求提高时增加节点，当任务要求降低时删除节点）来节省时间和金钱。
 
-可通过将计算节点池与定义的自动缩放公式相关联（例如，使用 [Batch .NET](batch-dotnet-get-started.md) 库中的 [PoolOperations.EnableAutoScale][net_enableautoscale] 方法），对计算节点池启用自动缩放。 然后，Batch 服务将使用此公式来确定执行工作负荷所需的计算节点数目。 Batch 将会响应定期收集的服务指标数据样本，并根据公式按可配置的间隔调整池中的计算节点数。
+可通过将定义的*自动缩放公式*与计算节点池相关联（例如，使用 [Batch .NET](batch-dotnet-get-started.md) 库中的 [PoolOperations.EnableAutoScale][net_enableautoscale] 方法），对计算节点池启用自动缩放。 然后，Batch 服务将使用此公式来确定执行工作负荷所需的计算节点数目。 Batch 将会响应定期收集的服务指标数据样本，并根据公式按可配置的间隔调整池中的计算节点数。
 
 可以在创建池时启用自动缩放，也可以对现有池启用该功能。 你还可以更改已启用“自动缩放”功能的池的现有公式。 Batch 可让你在将公式分配给池之前先评估公式，以及监视自动缩放运行的状态。
 
 ## <a name="automatic-scaling-formulas"></a>自动缩放公式
-自动缩放公式是定义的包含一个或多个语句的字符串值，此字符串值分配给池的 [autoScaleFormula][rest_autoscaleformula] 元素 (Batch REST) 或 [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] 属性 (Batch .NET)。 将公式分配到池后，Batch 服务将使用公式来确定池中可供下一个处理间隔使用的目标计算节点数（稍后将详细说明间隔）。 公式是一个字符串，其大小不能超过 8 KB，最多可以包含 100 个以分号分隔的语句，可以包括换行符和注释。
+自动缩放公式是你定义的字符串值，其中包含分配给池的 [autoScaleFormula][rest_autoscaleformula] 元素 (Batch REST) 或 [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] 属性 (Batch .NET) 的一个或多个语句。 将公式分配到池后，Batch 服务将使用公式来确定池中可供下一个处理间隔使用的目标计算节点数（稍后将详细说明间隔）。 公式是一个字符串，其大小不能超过 8 KB，最多可以包含 100 个以分号分隔的语句，可以包括换行符和注释。
 
 可以将自动缩放公式视为使用 Batch 自动缩放“语言”。 公式语句是自由形式的表达式，可以包括服务定义的变量（由 Batch 服务定义的变量）和用户定义的变量（你定义的变量）。 公式语句可以通过内置类型、运算符和函数对这些值执行各种操作。 例如，语句可以采用以下格式：
 
@@ -342,7 +342,7 @@ $TargetDedicated = min(400, $totalNodes)
 
 * [添加池到一个帐户](https://msdn.microsoft.com/library/azure/dn820174.aspx)：指定 REST API 请求中的 `enableAutoScale` 和`autoScaleFormula` 元素，以便在创建池时配置池的自动缩放。
 
-以下代码片段通过 [Batch .NET][net_api] 库创建启用了自动缩放的池。 该池的自动缩放公式在星期一将节点的目标数设置为 5，在每星期的其他日子将该目标数设置为 1。 [自动缩放间隔](#automatic-scaling-interval)设置为 30 分钟。 在本文的此部分与其他 C# 代码段中，“myBatchClient”是 [BatchClient][net_batchclient] 的恰当初始化实例。
+以下代码片段通过 [Batch .NET][net_api] 库创建启用了自动缩放的池。 该池的自动缩放公式在星期一将节点的目标数设置为 5，在每星期的其他日子将该目标数设置为 1。 [自动缩放间隔](#automatic-scaling-interval)设置为 30 分钟。 在本文的此部分与其他 C# 代码片段中，“myBatchClient”是适当初始化的 [BatchClient][net_batchclient] 实例。
 
 ```csharp
 CloudPool pool = myBatchClient.PoolOperations.CreatePool("mypool", "3", "small");
@@ -355,7 +355,7 @@ pool.Commit();
 除了 Batch REST API 和 .NET SDK 之外，还可通过任何其他 [Batch SDK](batch-technical-overview.md#batch-development-apis)、[Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md) 和 [ Batch CLI ](batch-cli-get-started.md) 使用自动缩放。
 
 > [!IMPORTANT]
-> 创建启用了自动缩放的池时，**请勿**指定 `targetDedicated` 参数。 此外，若要手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] 来调整），则必须先**禁用**该池的自动缩放功能，然后再调整池的大小。
+> 创建启用了自动缩放的池时，**请勿**指定 `targetDedicated` 参数。 另请注意，如果要手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] 来调整），则必须先**禁用**该池的自动缩放功能，然后再调整池的大小。
 > 
 > 
 
@@ -376,7 +376,7 @@ pool.Commit();
 如果已通过使用 targetDedicated  参数创建了具有固定数量的计算节点的池，仍可在池上启用自动缩放。 每个 Batch SDK 都提供了“启用自动缩放”操作，例如：
 
 * [BatchClient.PoolOperations.EnableAutoScale][net_enableautoscale] (Batch .NET)
-* [Enable automatic scaling on a pool][rest_enableautoscale] (REST API)
+* [对池启用自动缩放][rest_enableautoscale] (REST API)
 
 启用现有池的自动缩放时，以下内容适用：
 
@@ -582,7 +582,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>示例 3：考虑并行任务
-这是另一个示例，可根据任务数调整池大小。 此公式还考虑到了为池设置的 [MaxTasksPerComputeNode][net_maxtasks] 值。 在对池启用了[并行任务执行](batch-parallel-node-tasks.md)的情况下，此公式特别有用。
+这是另一个示例，可根据任务数调整池大小。 此公式还考虑为池设置的 [MaxTasksPerComputeNode][net_maxtasks] 值。 在对池启用了[并行任务执行](batch-parallel-node-tasks.md)的情况下，此公式特别有用。
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -607,7 +607,7 @@ $NodeDeallocationOption = taskcompletion;
 
 以下代码片段中的公式：
 
-* 将初始池大小设置为 4 个节点。
+* 将初始池大小设置为&4; 个节点。
 * 在池生命周期的最初 10 分钟内不调整池大小。
 * 10 分钟后，获取过去 60 分钟内正在运行和处于活动状态的任务数目的最大值。
   * 如果这两个值均为 0（表示过去 60 分钟没有正在运行或处于活动状态的任务），则池大小将设置为 0。
@@ -646,6 +646,6 @@ string formula = string.Format(@"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

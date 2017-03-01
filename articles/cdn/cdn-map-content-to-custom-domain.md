@@ -1,9 +1,9 @@
 ---
-title: "如何将 Azure 内容交付网络 (CDN) 内容映射到自定义域 | Microsoft Docs"
-description: "本主题演示如何将 CDN 内容映射到自定义域。"
+title: "将 Azure CDN 内容映射到自定义域 |Microsoft Docs"
+description: "了解如何将 Azure CDN 内容映射到自定义域。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 289f8d9e-8839-4e21-b248-bef320f9dbfc
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 567e72805c22c8100ef2d8d97c1e26a77f214ca3
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 36099a7c52508cd5115a527f5ef6e40fbfd6c323
 
 
 ---
-# <a name="how-to-map-custom-domain-to-content-delivery-network-cdn-endpoint"></a>如何将自定义域映射到内容交付网络 (CDN) 终结点
+# <a name="map-azure-cdn-content-to-a-custom-domain"></a>将 Azure CDN 内容映射到自定义域
 可以将自定义域映射到 CDN 终结点，以便在指向已缓存内容的 URL 中使用自己的域名，而不是使用 azureedge.net 的子域。
 
 可以使用两种方法将自定义域映射到 CDN 终结点：
@@ -84,6 +84,6 @@ ms.openlocfilehash: 567e72805c22c8100ef2d8d97c1e26a77f214ca3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

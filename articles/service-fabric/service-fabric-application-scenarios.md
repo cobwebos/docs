@@ -12,18 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/22/2016
+ms.date: 2/17/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 160d6a41fc1ea3eecd39e8ad199bc5e69f236061
+ms.sourcegitcommit: d1939e316efb00fb4980c57cbec28920a7475a47
+ms.openlocfilehash: feeba5c8e663b9ea571e4410a2d3ad3505394127
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
 Azure Service Fabric 提供了一个可靠而灵活的平台，使你能够编写和运行多种类型的业务应用程序与服务。 这些应用程序和微服务可以为无状态或有状态，并且它们在各虚拟机间的资源平衡，可最大限度提高工作效率。 Service Fabric 的独特体系结构使你可以在应用程序中执行近实时数据分析、内存中计算、并行事务和事件处理。 你可以根据不断变化的资源要求轻松向上或向下缩放应用程序（其实是扩展或缩减）。
 
-Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服务：
+Azure 中的 Service Fabric 平台非常适合以下类别的应用程序：
 
 * **高度可用的服务**：Service Fabric 服务通过创建多个辅助服务副本提供快速的故障转移。 节点、进程或单独的服务因硬件或其他故障而不可用时，其中一个辅助副本会提升为主副本，将对服务的损失降到最低。
 * **可缩放的服务**：可对单独的服务进行分区，以允许在群集范围内扩大状态。 此外，还可以动态创建并删除单独的服务。 服务可以快速简单地从几个节点上的几个实例扩大到多个节点上的数千个实例，然后再次减少，具体取决于你的资源需求。 可以使用 Service Fabric 来生层这些服务并管理其整个生命周期。
@@ -31,9 +32,11 @@ Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服�
 * **基于会话的交互式应用程序**：在你的应用程序（例如在线游戏或即时消息）需要低延迟读取和写入时，Service Fabric 非常有用。 Service Fabric 使你能够生成这些交互式的有状态应用程序，而无需创建一个无状态应用所需的单独存储或缓存。 （这会增加延迟时间并可能产生一致性问题）。
 * **分布式图形处理**：社交网络的增长大大增加了并行分析大型图形的需求。 快速缩放和并行加载处理使 Service Fabric 成为用于处理大型图形的适宜平台。 Service Fabric 使你可以针对各个组（如社交网络、商业智能和科学研究）生成高度可缩放的服务。
 * **数据分析和工作流**：Service Fabric 的快速读取和写入使必须可靠处理事件或数据流的应用程序成为可能。 Service Fabric 还可让应用程序描述处理管道，其中的结果必须能够可靠地传递到下一个处理阶段而不会丢失。 这包括交易和财务系统，其中的数据一致性和计算保证至关重要。
+* **数据收集、处理和 IoT**：由于 Service Fabric 处理大规模数据并通过其有状态服务实现低延迟，因此它非常适合于设备的数据和计算共存的数百万台设备上的数据处理。
+我们已看到多个客户使用 Service Fabric（包括 [BMW](https://blogs.msdn.microsoft.com/azureservicefabric/2016/08/24/service-fabric-customer-profile-bmw-technology-corporation/)、[Schneider Electric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/08/05/service-fabric-customer-profile-schneider-electric/) 和 [Mesh Systems](https://blogs.msdn.microsoft.com/azureservicefabric/2016/06/20/service-fabric-customer-profile-mesh-systems/)）构建 IoT 系统。
 
 ## <a name="application-design-case-studies"></a>应用程序设计案例研究
-介绍如何使用 Service Fabric 设计应用程序的大量案例研究已发布在[微服务解决方案站点](https://azure.microsoft.com/solutions/microservice-applications/)上
+介绍如何使用 Service Fabric 设计应用程序的大量案例研究已发布在 [Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric/tag/customer-profile/)和[微服务解决方案站点](https://azure.microsoft.com/solutions/microservice-applications/)上
 
 ## <a name="design-applications-composed-of-stateless-and-stateful-microservices"></a>设计由无状态和有状态微服务组成的应用程序
 具有 Azure 云服务辅助角色的生成应用程序是无状态服务的一个示例。 相之之下，除请求及其响应以外，有状态微服务还维护其权威状态。 这可通过简单的 API 提供高可用性和状态一致性，以复制作为后盾提供交易保证。 Service Fabric 的有状态服务使高可用性变得大众化，将其引入所有类型的应用程序，而不仅仅是数据库和其他数据存储。 这是顺其自然的进步。 针对高可用性，应用程序已从使用单纯的关系数据库发展到 NoSQL 数据库的境界。 现在，应用程序可在自身内部管理其“热”状态和数据，以便进一步提高性能，而无需损失可靠性、一致性或可用性。
@@ -51,6 +54,9 @@ Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 * 使用 Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) 和 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 编程模型，开始生成无状态和有状态服务。
+* 详细了解[模式和方案](service-fabric-patterns-and-scenarios.md)。
+* 了解[客户案例研究](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=qDJnf86yC_5206218965
+)。
 * 此外，请参阅以下主题：
   * [介绍微服务](service-fabric-overview-microservices.md)
   * [定义和管理服务状态](service-fabric-concepts-state.md)
@@ -60,9 +66,4 @@ Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服�
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

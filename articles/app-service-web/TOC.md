@@ -3,16 +3,18 @@
 ## [什么是应用服务](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [Linux 上的应用服务](app-service-linux-intro.md)
+## [Linux 上的应用服务常见问题](app-service-linux-faq.md)
 
 # 入门
 
 ## Web 应用
-### [.NET](web-sites-dotnet-get-started.md)
-### [Node.js](app-service-web-nodejs-get-started.md)
-### [Python](web-sites-python-ptvs-django-mysql.md)
-### [Java](web-sites-java-get-started.md)
+### [HTML](app-service-web-get-started-html.md)
+### [.NET](app-service-web-get-started-dotnet.md)
+### [Node.js](app-service-web-get-started-nodejs.md)
+### [Python](app-service-web-get-started-python.md)
+### [Java](app-service-web-get-started-java.md)
 ### [应用商店应用](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-php-get-started.md)   
+### [PHP](app-service-web-get-started-php.md)    
 
 ## API 应用
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
@@ -59,12 +61,16 @@
 ### [Azure 门户](app-service-web-app-azure-portal.md)
 ### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
+
 ### ASP.NET 应用
-#### [在 5 分钟内将第一个 .NET Web 应用部署到 Azure](app-service-web-get-started-dotnet.md)
+#### [使用 Visual Studio 在 Azure 中创建 ASP.NET 应用](web-sites-dotnet-get-started.md)
 #### [使用 ASP.NET Web API 创建 REST 服务](web-sites-dotnet-rest-service-aspnet-api-sql-database.md)
 #### [在 Visual Studio Code 中创建 ASP.NET 5 Web 应用](web-sites-create-web-app-using-vscode.md)
+#### [在 Linux Web 应用中使用 .NET Core](app-service-linux-using-dotnetcore.md)
+
 
 ### Node.js 应用
+#### [为应用服务开发 Node.js](app-service-web-nodejs-get-started.md)
 #### [创建 Node.js Web 应用](web-sites-nodejs-develop-deploy-mac.md)
 #### [使用 Socket.IO 创建 Node.js 聊天应用程序](web-sites-nodejs-chat-app-socketio.md)
 #### [如何在 Web 应用中使用 io.js](web-sites-nodejs-iojs.md)
@@ -72,14 +78,13 @@
 #### [使用 WebMatrix 进行构建和部署](web-sites-nodejs-use-webmatrix.md)
 
 ### PHP 应用
-#### [在 5 分钟内将第一个 PHP Web 应用部署到 Azure](app-service-web-get-started-php.md)
+#### [为应用服务开发 PHP 应用](app-service-web-php-get-started.md)    
 #### [创建 PHP-SQL Web 应用并使用 Git 进行部署](web-sites-php-sql-database-deploy-use-git.md)
 #### [在 Azure 应用服务中创建 WordPress Web 应用](web-sites-php-web-site-gallery.md)
 #### [在 Azure 中创建 MySQL 数据库并连接到该数据库](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 #### [Azure 应用服务上的企业级 WordPress](web-sites-php-enterprise-wordpress.md)
 
 ### Java 应用
-#### [在 5 分钟内将第一个 Java Web 应用部署到 Azure](web-sites-java-get-started.md)
 #### 创建 Hello World 应用
 ##### [Eclipse](app-service-web-eclipse-create-hello-world-web-app.md)
 ##### [IntelliJ](app-service-web-intellij-create-hello-world-web-app.md)
@@ -97,6 +102,9 @@
 #### [将 Flask 和表存储与用于 Visual Studio 的 Python 工具 2.2 配合使用](web-sites-python-ptvs-flask-table-storage.md)
 #### [具有 Python Tools 2.2 for Visual Studio 的 Azure 上的 Django 和 MySQL](web-sites-python-ptvs-django-mysql.md)
 #### [具有 Python Tools 2.2 for Visual Studio 的 Azure 上的 Django 和 SQL 数据库](web-sites-python-ptvs-django-sql.md)
+
+### Ruby 应用
+#### [在 Linux Web 应用中使用 Ruby](app-service-linux-using-ruby.md)
 
 ### [在五分钟内将第一个基本 Web 应用部署到 Azure](app-service-web-get-started-html.md)
 ### [生产环境中 Web 应用测试入门](app-service-web-test-in-production-get-start.md)
@@ -143,9 +151,11 @@
 #### [配置 Python](web-sites-python-configure.md)
 #### [在 Linux 上配置 Node.js 启动](app-service-linux-using-nodejs-pm2.md)
 
+
 ### 自定义域
 #### [购买和配置自定义域](custom-dns-web-site-buydomains-web-app.md)
 #### [映射自己的自定义域](web-sites-custom-domain-name.md)
+#### [迁移活动自定义域](app-service-custom-domain-name-migrate.md)
 #### [配置 GoDaddy 域](web-sites-godaddy-custom-domain-name.md)
 #### [在流量管理器中使用自定义域](web-sites-traffic-manager-custom-domain-name.md)
 
@@ -246,8 +256,8 @@
 ### [排查 HTTP 502 和 503 错误](app-service-web-troubleshoot-http-502-http-503.md)
 ### [排查 Web 应用性能问题](app-service-web-troubleshoot-performance-degradation.md)
 
-# 参考
-## [Azure CLI 2.0 预览版](/cli/azure/appservice)
+# 引用
+## [Azure CLI 2.0](/cli/azure/appservice)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/)
 ## [REST](/rest/api/appservice)
@@ -263,9 +273,3 @@
 # 资源
 ## [最佳实践](app-service-best-practices.md)
 ## [WebJob 资源列表](websites-webjobs-resources.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-

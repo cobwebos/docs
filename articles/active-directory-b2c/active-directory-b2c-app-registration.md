@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 0b87ec728891d4f64bb7b2e4b7b4f0f2276b1ffc
-ms.openlocfilehash: ca75ddf8d099f411c4ae1af00e922f26e145f939
+ms.sourcegitcommit: fd22e9596feecbc12e577a4abfb47552e1b6e520
+ms.openlocfilehash: da8f083cb7bca59501df080036e789a0fb75731e
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: ca75ddf8d099f411c4ae1af00e922f26e145f939
 ## <a name="navigate-to-the-b2c-features-blade"></a>导航到 B2C 功能边栏选项卡
 如果你有固定到启动板的 B2C 功能边栏选项卡，则只要以 B2C 租户的全局管理员身份登录到 [Azure 门户](https://portal.azure.com/) ，便可看到此边栏选项卡。
 
-此外，还可以通过依次单击 [Azure 门户](https://portal.azure.com/)左侧导航窗格中的“浏览”和“Azure AD B2C”访问此边栏选项卡。
+此外，还可以通过单击“更多服务”，然后搜索 [Azure 门户](https://portal.azure.com/)左侧导航窗格中的“Azure AD B2C”访问此边栏选项卡。
 
 > [!IMPORTANT]
 > 你需要是能够访问 B2C 功能边栏选项卡的 B2C 租户全局管理员。 任何其他租户的全局管理员或任何租户的用户均不能访问它。  你可以通过使用 Azure 门户右上角中的租户切换器切换到 B2C 租户。
@@ -40,7 +40,7 @@ ms.openlocfilehash: ca75ddf8d099f411c4ae1af00e922f26e145f939
 1. 在 Azure 门户的 B2C 功能边栏选项卡上，单击“ **应用程序**”。
 2. 单击边栏选项卡顶部的“ **+添加** ”。
 3. 输入应用程序的“ **名称** ”，用于向使用者描述你的应用程序。 例如，你可以输入“Contoso B2C app”。
-4. 如果正在编写基于 Web 的应用程序，请将“包括 Web 应用/Web API”开关切换到“是”。 **回复 URL** 是 Azure AD B2C 将在其中返回应用程序请求的任何令牌的终结点。 例如，输入 `https://localhost:44321/`。 如果 Web 应用程序还将调用一些由 Azure AD B2C 保护的 Web API，则还将需要通过单击“生成密钥”按钮来创建“应用程序密钥”。
+4. 如果正在编写基于 Web 的应用程序，请将“包括 Web 应用/Web API”开关切换到“是”。 **回复 URL** 是 Azure AD B2C 将在其中返回应用程序请求的任何令牌的终结点。 例如，输入 `https://localhost:44316/`。 如果 Web 应用程序还将调用一些由 Azure AD B2C 保护的 Web API，则还将需要通过单击“生成密钥”按钮来创建“应用程序密钥”。
    
    > [!NOTE]
    > **应用程序密钥** 是一个重要的安全凭据，应进行适当地保护。
@@ -63,6 +63,6 @@ ms.openlocfilehash: ca75ddf8d099f411c4ae1af00e922f26e145f939
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

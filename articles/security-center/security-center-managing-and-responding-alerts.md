@@ -1,10 +1,10 @@
 ---
-title: "管理和响应 Azure 安全中心的安全警报 | Microsoft Docs"
+title: "在 Azure 安全中心管理安全警报 | Microsoft 文档"
 description: "本文档旨在帮助使用 Azure 安全中心功能来管理和响应安全警报。"
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
 ms.service: security-center
@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
-ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
+ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
+ms.openlocfilehash: 0093beda6af6d3b2400185fcd63bc73b2c8c9ba9
 
 
 ---
@@ -25,26 +25,27 @@ ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
 
 > [!NOTE]
 > 要启用高级检测，请升级到 Azure 安全中心标准版。 它可以免费试用 90 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
-> 
-> 
+>
+>
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
-安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。 Azure 安全中心还会将形成杀伤链模式的警报聚合成 [事件](security-center-incident.md)。 
+安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
+
 
 > [!NOTE]
 > 有关安全中心检测功能工作原理的详细信息，请参阅 [Azure 安全中心检测功能](security-center-detection-capabilities.md)。
-> 
-> 
+>
+>
 
 ## <a name="managing-security-alerts"></a>管理安全警报
 可以通过查看“安全警报”  磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：
 
 1. 在安全中心仪表板中，可以看到“安全警报”  磁贴。
-   
+
     ![安全中心的“安全警报”磁贴](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig1-ga.png)
 
 2. 单击该磁贴，打开“安全警报”  边栏选项卡，该边栏选项卡包含以下警报详细信息。
-   
+
    ![安全中心的“安全警报”边栏选项卡](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig2-ga.png)
 
 此边栏选项卡的底部是每个警报的详细信息。 要进行排序，请单击按其排序的列。 下面给出了每个列的定义：
@@ -61,7 +62,7 @@ ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
 可以根据日期、状态和严重性筛选警报。 对于需要缩小安全警报显示范围的情况，筛选警报非常有用。 例如，假设正在调查系统中的潜在危害，需要处理过去 24 小时内发生的安全警报。
 
 1. 单击“安全警报”边栏选项卡上的“筛选器”。 此时将打开“筛选器”  边栏选项卡，选择要查看的日期、状态和严重性值。
-   
+
     ![筛选安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-managing-and-responding-alerts-fig3-2017.png)
 
 ### <a name="respond-to-security-alerts"></a>响应安全警报
@@ -79,8 +80,8 @@ ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
 
 > [!NOTE]
 > 有关不同类型的警报的详细信息，请参阅 [Azure 安全中心的安全警报（按类型）](security-center-alerts-type.md)。
-> 
-> 
+>
+>
 
 ## <a name="see-also"></a>另请参阅
 本文档中已经介绍了如何在安全中心配置安全策略。 要了解有关安全中心的详细信息，请参阅以下内容：
@@ -93,7 +94,6 @@ ms.openlocfilehash: 7a4413c6d2ecf497e72e2909e627761f0a9ff23a
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

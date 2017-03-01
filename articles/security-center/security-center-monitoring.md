@@ -1,5 +1,5 @@
 ---
-title: "在 Azure 安全中心进行安全运行状况监视 | Microsoft Docs"
+title: "在 Azure 安全中心进行安全监视 | Microsoft 文档"
 description: "本文介绍如何开始使用 Azure 安全中心的监视功能。"
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
-ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 在“资源安全运行状况”磁贴中，可以监视资源的安全状态。 在下面的示例中，可以看到许多问题严重级别为“高”和“中”，需要引起注意。 启用的安全策略会影响受监视控件的类型。
 
-![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
+![资源安全运行状况磁贴](./media/security-center-monitoring/security-center-monitoring-fig1-new4-2017.png)
 
 如果安全中心确定需要解决的漏洞（例如虚拟机缺少安全更新，或者子网没有[网络安全组](/virtual-network/virtual-networks-nsg.md)），会将其列在此处。
 
@@ -60,8 +60,8 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 > [!NOTE]
 > “网络拓扑”列表的“网络运行状况”边栏选项卡中仅显示至少具有一个公共终结点的虚拟机。
-> 
-> 
+>
+>
 
 每个建议都有一组操作，单击即可执行。 例如，如果单击“缺少的系统更新”，则“缺少的系统更新”边栏选项卡随即打开。 其中会列出缺少修补程序的虚拟机，以及所缺少更新的严重级别，如以下屏幕截图所示。
 
@@ -87,8 +87,8 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 > [!NOTE]
 > 此处提供的安全建议与“建议”边栏选项卡中的相同。 请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)，详细了解如何应用建议。 这不仅适用于虚拟机，还适用于“资源运行状况”磁贴中提供的所有资源。
-> 
-> 
+>
+>
 
 #### <a name="virtual-machines-section"></a>虚拟机部分
 通过虚拟机部分可概览所有虚拟机和建议。 每一列代表一组建议，如以下屏幕截图所示：
@@ -169,7 +169,8 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 此边栏选项卡底部为对此虚拟机的建议，与前述内容类似。 单击某个建议即可了解其详细信息或应用所需的安全控制或配置。
 
 ### <a name="monitor-data"></a>监视数据
-在“资源安全运行状况”磁贴中单击“数据”时，“数据资源”边栏选项卡将会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读“Enable encryption for Azure storage account in Azure Security Center”（在 Azure 安全中心为 Azure 存储帐户启用加密）。
+
+在“资源安全运行状况”磁贴中单击“SQL 和数据”时，“数据资源”边栏选项卡将会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
 
 ![数据资源](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
@@ -216,7 +217,6 @@ ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

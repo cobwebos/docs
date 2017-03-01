@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 机器学习 Web 服务门户管理 Web 服务 | Microsoft Docs"
+title: "使用 Azure 机器学习 Web 服务门户 | Microsoft 文档"
 description: "管理对 Azure 机器学习工作区的访问，部署并管理 ML API Web 服务"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3b04aa7406f44130deb4f12c856b459369301449
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
 
 
 ---
@@ -178,6 +178,6 @@ ms.openlocfilehash: 3b04aa7406f44130deb4f12c856b459369301449
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

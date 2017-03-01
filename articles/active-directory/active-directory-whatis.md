@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/14/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 21cd9fa752f6f3bf2e3aab572ad3336fbd2bee92
-ms.openlocfilehash: 067bef695d8d6a340f7974478e6580b10a1e8dc8
+ms.sourcegitcommit: c28d84bf59c161cfe6a80062f13f10f44bf43f34
+ms.openlocfilehash: 09261f739d2cd3976f68c499d0e83fe25beef0b8
 
 
 ---
@@ -61,56 +61,100 @@ Azure AD 是多客户公共目录服务，这意味着可在 Azure AD 内为云�
 
 可以使用 Azure AD Connect 同步本地标识与 Azure AD。
 
+---
+
 ### <a name="authentication-and-authorization-details"></a>身份验证和授权的详细信息
 
-| Azure AD                                   | 本地 AD DS |
-|--------------------------------------------|-------------------|
-| <li>   SAML      <li>   WS 联合身份验证    <li>   与受支持的凭据交互  <li>   OAuth 2.0   <li>   OpenID Connect                          | <li>   SAML   <li>   WS 联合身份验证  <li>   NTLM  <li>   Kerberos   <li>   MD5   <li>   基本          |
+#### <a name="azure-ad"></a>Azure AD
+`SAML`、`WS-Federation`、与受支持的凭据交互、OAuth 2.0、OpenID Connect 
+
+#### <a name="on-premises-ad-ds"></a>本地 AD DS
+`SAML`、`WS-Federation`、NTLM、Kerberos、MD5、基本
+
+---
 
 ### <a name="object-repository-details"></a>对象存储库详细信息
 
-| Azure AD                                          | 本地 AD DS |
-|---------------------------------------------------|-------------------|
-| 通过 Azure AD Graph 和 Microsoft Graph 访问 | X.500 LDAP    |
+#### <a name="azure-ad"></a>Azure AD
+通过 Azure AD Graph 和 Microsoft Graph 访问 
+
+#### <a name="on-premises-ad-ds"></a>本地 AD DS
+X.500 LDAP  
+
+---
+
 
 ### <a name="programmatic-access-details"></a>以编程方式访问的详细信息
 
-| Azure AD                        | 本地 AD DS |
-|---------------------------------|-------------------|
-| MS/Azure AD Graph REST API | LDAP          |
+#### <a name="azure-ad"></a>Azure AD
+MS/Azure AD Graph REST API 
+
+#### <a name="on-premises-ad-ds"></a>本地 AD DS
+LDAP 
+
+---
 
 ### <a name="sso-to-applications-details"></a>应用程序 SSO 详细信息
 
-| Azure AD           | 本地 AD DS   |
-|--------------------|---------------------|
-| <li>   OpenID Connect  <li>   SAML          | <li>   SAML      <li>   WS 联合身份验证   <li>   Open-ID Connect  |
+#### <a name="azure-ad"></a>Azure AD
+`OpenID Connect`, `SAML` 
+
+#### <a name="on-premises-ad-ds"></a>本地 AD DS
+`Open-ID Connect`、`SAML`、WS 联合身份验证 
+
+---
 
 ### <a name="access-management-details"></a>访问管理详细信息
 
-| Azure AD         | 本地 AD DS     |
-|------------------------------------|------------------------------------------------------------------------|
-| <li>   资源定义的作用域和基于角色的访问控制   <li>   客户端定义委托和应用程序权限        <li>   同意框架（根据资源/客户端定义/请求，强制相应用户/管理员同意）  <li>   通过应用角色，可以单独应用或通过组应用，其支持：   <ul> <li>   管理员管理       <li>   自助服务应用程序访问  <li>   用户同意 </ul>         | <li>   通过 ACL，可以单独应用或通过组应用，其支持：  <ul><li>   管理员管理  </ul>                                                 |
+#### <a name="azure-ad"></a>Azure AD
+资源定义作用域和基于角色的访问控制、客户端定义委托和应用程序权限、同意框架（根据资源/客户端定义/请求，强制相应用户/管理员同意） 
+
+通过应用角色，可以单独应用或通过组应用，其支持：管理员管理、自助服务应用程序访问、用户同意
+
+#### <a name="on-premises-ad-ds"></a>本地 AD DS
+通过 ACL，可以单独应用或通过组应用，其支持：管理员管理 
+
+---
 
 ### <a name="group-management-details"></a>组管理详细信息
 
-| Azure AD                          | 本地 AD DS                                 |
-|-----------------------------------|---------------------------------------------------|
-| <li>   管理员管理    <li>   规则/动态管理   <li>   自助组管理  | <li>   管理员管理      <li>   需要外部系统（FIM 或其他）进行以下项：  <ul><li>   规则/动态管理      </ul>                 |
+#### <a name="azure-ad"></a>Azure AD
+`Admin managed`、规则/动态管理、自助服务组管理 
+
+#### <a name="on-premises-ad-ds"></a>本地 AD DS
+`Admin managed`、规则/动态管理所需的外部系统（FIM 或其他）|
+
+---
 
 ### <a name="supported-credentials-details"></a>受支持凭据的详细信息
 
-| Azure AD           | 本地 AD DS  |
-|--------------------|--------------------|
-| <li>   用户名 + 密码  <li>   智能卡     | <li>   用户名 + 密码  <li>   智能卡     |
+#### <a name="azure-ad"></a>Azure AD
+`Username + password`, `Smartcard` 
+
+#### <a name="on-premises-ad-ds"></a>本地 AD DS
+`Username + password`, `Smartcard` 
+ 
+---
+
+
+
+
+
 
 
 ## <a name="how-can-i-get-started"></a>如何入门？
-* 如果你是 IT 管理员：
-  * [试试看！](https://azure.microsoft.com/trial/get-started-active-directory/) - 现在就可以使用此链接注册 30 天免费试用版，然后在 5 分钟内部署第一个云解决方案
-  * 阅读“Azure AD 入门”，获取有关如何设置和快速运行 Azure AD 租户的提示与技巧
-* 如果你是开发人员：
-  * 查看 Azure Active Directory 的[开发人员指南](active-directory-developers-guide.md)
-  * [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/) - 立即注册 30 天免费试用版，开始集成应用与 Azure AD
+
+**如果你是 IT 管理员：**
+
+* [试试看！](https://azure.microsoft.com/trial/get-started-active-directory/) - 现在就可以使用此链接注册 30 天免费试用版，然后在不到 5 分钟内部署第一个云解决方案
+
+* 阅读“Azure AD 入门”，获取有关如何设置和快速运行 Azure AD 租户的提示与技巧
+
+**如果你是开发人员：**
+ 
+* 查看 Azure Active Directory 的[开发人员指南](active-directory-developers-guide.md)
+
+* [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/) - 立即注册 30 天免费试用版，开始集成应用与 Azure AD
 
 ## <a name="where-can-i-learn-more"></a>可以从何处了解详细信息？
 我们提供了大量的有用在线资源，以帮助你了解 Azure AD 的方方面面。 下面是一些可帮助你快速入门的佳作：
@@ -129,6 +173,6 @@ Azure AD 是多客户公共目录服务，这意味着可在 Azure AD 内为云�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

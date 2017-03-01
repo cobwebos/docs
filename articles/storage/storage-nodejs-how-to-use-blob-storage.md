@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 15485bc6032fb12b18cdac171ec5d6e6c617f4e7
+ms.sourcegitcommit: b9041713f3d084fde77a34ef7956a2c59312245e
+ms.openlocfilehash: d48f82d8fea89b45af14dd2154d69889c95a5e2f
 
 
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>如何通过 Node.js 使用 Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
+[!INCLUDE [storage-check-out-samples-all](../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>概述
 本文介绍如何使用 Blob 存储执行常见方案。 相关示例是通过 Node.js API 编写的。 涉及的方案包括如何上传、列出、下载和删除 Blob。
@@ -42,8 +42,16 @@ ms.openlocfilehash: 15485bc6032fb12b18cdac171ec5d6e6c617f4e7
 1. 使用命令行接口（如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)）导航到在其中创建示例应用程序的文件夹。
 2. 在命令窗口中键入 **npm install azure-storage**。 该命令的输出类似于以下代码示例。
 
-  azure-storage@0.5.0 node_modules\azure-storage +-- extend@1.2.1 +-- xmlbuilder@0.4.3 +-- mime@1.2.11 +-- node-uuid@1.4.3 +-- validator@3.22.2 +-- underscore@1.4.4 +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1) +-- xml2js@0.2.7 (sax@0.5.2) +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-
+        azure-storage@0.5.0 node_modules\azure-storage
+        +-- extend@1.2.1
+        +-- xmlbuilder@0.4.3
+        +-- mime@1.2.11
+        +-- node-uuid@1.4.3
+        +-- validator@3.22.2
+        +-- underscore@1.4.4
+        +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+        +-- xml2js@0.2.7 (sax@0.5.2)
+        +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 3. 可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。 在该文件夹中，找到 **azure-storage** 包，其中包含访问存储所需的库。
 
 ### <a name="import-the-package"></a>导入包
@@ -426,6 +434,6 @@ blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,16 +13,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 01/09/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 91474f61ab724d3fd7a70c51dcd097fade8953dd
-ms.openlocfilehash: 3789079412932d56be1c9697fc23c56de5afba6f
+ms.sourcegitcommit: 218d41ac352f01a7e03b5b8a1c45e1bf6d5ace28
+ms.openlocfilehash: a3b1289d52207448cebc628466492371d1bf6519
 
 
 ---
 
-# <a name="connect-a-mongodb-app-to-an-documentdb-account-using-a-mongodb-connection-string"></a>使用 MongoDB 连接字符串将 MongoDB 应用连接到 DocumentDB 帐户
+# <a name="connect-a-mongodb-app-to-a-documentdb-account-using-a-mongodb-connection-string"></a>使用 MongoDB 连接字符串将 MongoDB 应用连接到 DocumentDB 帐户
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure DocumentDB 帐户。 通过将 MongoDB 应用连接到 Azure DocumentDB 数据库，可以将 DocumentDB 数据库用作 MongoDB 应用的数据存储。 
 
 本教程提供了两种方法来检索连接字符串信息：
@@ -86,6 +86,6 @@ ms.openlocfilehash: 3789079412932d56be1c9697fc23c56de5afba6f
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,21 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 01/20/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6feeeaef2bd5e5ff665ca870b61036365d75f53d
+ms.sourcegitcommit: ec9e12667bc82043fbdc0b3f113533cf518f39be
+ms.openlocfilehash: 66907ccb97dedc176c5fe76826abd3b31f4ccdb9
 
 
 ---
 # <a name="how-to-use-azure-managed-cache-service"></a>如何使用 Azure 托管缓存服务
-本指南演示如何开始使用 **Azure 托管缓存服务**。 相关示例用 C\# 代码编写且使用 .NET API。 涉及的应用场景包括**创建和配置缓存**、**配置缓存客户端**、 **在缓存中添加和删除对象、在缓存中存储 ASP.NET 会话状态**以及**使用缓存启用 ASP.NET 页面输出缓存**。 有关使用 Azure 缓存的详细信息，请参阅[后续步骤][后续步骤]部分。
-
 > [!IMPORTANT]
-> 按照去年的 [公告](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)，将于 2016 年 11 月 30 日停用 Azure 托管缓存服务和 Azure 角色中缓存服务。 我们建议使用 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)。 有关迁移的信息，请参阅 [从托管缓存服务迁移到 Azure Redis 缓存](../redis-cache/cache-migrate-to-redis.md)。
+> 按照去年的[公告](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)，自 2016 年 11 月 30 日起**已停用** Azure 托管缓存服务和 Azure 角色中缓存服务。 我们建议使用 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)。 有关迁移的信息，请参阅 [从托管缓存服务迁移到 Azure Redis 缓存](../redis-cache/cache-migrate-to-redis.md)。
 > 
 > 
+
+本指南演示如何开始使用 **Azure 托管缓存服务**。 相关示例用 C\# 代码编写且使用 .NET API。 涉及的应用场景包括**创建和配置缓存**、**配置缓存客户端**、 **在缓存中添加和删除对象、在缓存中存储 ASP.NET 会话状态**以及**使用缓存启用 ASP.NET 页面输出缓存**。 有关使用 Azure 缓存的详细信息，请参阅[后续步骤][Next Steps]部分。
+
+
 
 <a name="what-is"></a>
 
@@ -47,45 +49,45 @@ Azure 托管缓存服务包含以下功能：
 * 标准 – 大小从 1 GB 到 10 GB 的缓存
 * 高级 – 大小从 5 GB 到 150 GB 的缓存
 
-每个级别在功能和定价方面存在差异。 本指南稍后将介绍这些功能，而有关定价的详细信息，请参阅[缓存定价详细信息][缓存定价详细信息]。
+每个级别在功能和定价方面存在差异。 本指南的后面将介绍这些功能。有关定价的详细信息，则请参阅[缓存定价详细信息][Cache Pricing Details]。
 
-本指南提供了托管缓存服务的入门概述。 有关本入门指南未提及功能的更多详细信息，请参阅 [Azure 托管缓存服务概述][Azure 托管缓存服务概述]。
+本指南提供了托管缓存服务的入门概述。 有关超出本入门指南范围的功能的更多详细信息，请参阅 [Azure 托管缓存服务概述][Overview of Azure Managed Cache Service]。
 
 <a name="getting-started-cache-service"></a>
 
 ## <a name="getting-started-with-cache-service"></a>缓存服务入门
 托管缓存服务入门相当容易。 若要开始使用，需要首先设置和配置缓存。 接下来，配置缓存客户端，以便它们可以访问缓存。 在配置了缓存客户端后，就可以开始使用它们。
 
-* [创建缓存][创建缓存]
-* [配置缓存][配置缓存]
-* [配置缓存客户端][配置缓存客户端]
+* [创建缓存][Create the cache]
+* [配置缓存][Configure the cache]
+* [配置缓存客户端][Configure the cache clients]
 
 <a name="create-cache"></a>
 
 ## <a name="create-a-cache"></a>创建缓存
 托管缓存服务中的缓存是使用 PowerShell cmdlet 创建的。 
 
-> 使用 PowerShell cmdlet 创建托管缓存服务实例后，可在 [Azure 经典门户][Azure 经典门户]中查看和配置该实例。
+> 使用 PowerShell cmdlet 创建托管缓存服务实例后，可在 [Azure 经典门户][Azure Classic Portal]中查看和配置该实例。
 > 
 > 
 
 若要创建托管缓存服务实例，请打开 Azure PowerShell 命令窗口。
 
-> 有关安装和使用 Azure PowerShell 的说明，请参阅[如何安装和配置 Azure PowerShell][如何安装和配置 Azure PowerShell]。
+> 有关安装和使用 Azure PowerShell 的说明，请参阅[如何安装和配置 Azure PowerShell][How to install and configure Azure PowerShell]。
 > 
 > 
 
 调用 [Add-AzureAccount][Add-AzureAccount] cmdlet，然后输入与帐户关联的电子邮件地址和密码。 默认选择订阅，并在调用 [Add-AzureAccount][Add-AzureAccount] cmdlet 后显示订阅。 若要更改订阅，请调用 [Select-AzureSubscription][Select-AzureSubscription] cmdlet。
 
-> 如果你使用你的帐户证书配置了 Azure PowerShell，则可以跳过此步骤。 有关使用 Azure 帐户连接 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell][如何安装和配置 Azure PowerShell]。
+> 如果你使用你的帐户证书配置了 Azure PowerShell，则可以跳过此步骤。 有关使用 Azure 帐户连接 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell][How to install and configure Azure PowerShell]。
 > 
 > 
 
 默认选择并显示订阅。 若要更改订阅，请调用 [Select-AzureSubscription][Select-AzureSubscription] cmdlet。
 
-调用 [New-AzureManagedCache][New-AzureManagedCache] cmdlet 并指定名称、区域、缓存产品/服务和缓存大小。
+调用 [New-AzureManagedCache][New-AzureManagedCache] cmdlet，并指定名称、区域、缓存产品和缓存大小。
 
-对于“名称”，请输入要用于缓存终结点的子域名。 该终结点必须是长度在 6 到 20 个字符之间的字符串，仅包含小写的数字和字母，并且必须以字母开头。
+对于“名称”，请输入要用于缓存终结点的子域名。 该终结点必须是长度在&6; 到&20; 个字符之间的字符串，仅包含小写的数字和字母，并且必须以字母开头。
 
 对于“位置”，请指定缓存的区域。 最佳做法是在与缓存客户端应用程序相同的区域中创建缓存。
 
@@ -95,7 +97,7 @@ Azure 托管缓存服务包含以下功能：
 * 标准 - 缓存大小在 1GB 到 10GB 之间，以 1GB 为增量，支持通知以及最多 10 个命名缓存
 * 高级 - 缓存大小在 5GB 到 150GB 之间，以 5GB 为增量，支持通知、高可用性以及最多 10 个命名缓存
 
-选择满足应用程序需求的“SKU”和“内存”。 请注意，某些缓存功能（例如通知和高可用性）仅可用于某些缓存产品。 有关选择最适合应用程序的缓存产品/服务和大小的详细信息，请参阅[缓存产品/服务][缓存产品]。
+选择满足应用程序需求的“SKU”和“内存”。 请注意，某些缓存功能（例如通知和高可用性）仅可用于某些缓存产品。 有关选择最适合应用程序的缓存产品/服务和大小的详细信息，请参阅[缓存产品/服务][Cache offerings]。
 
  在以下示例中，基本版 128MB 缓存是使用名称 contosocache 在“美国中南部”地理区域中创建的。
 
@@ -105,9 +107,9 @@ Azure 托管缓存服务包含以下功能：
 > 
 > 
 
-调用 PowerShell cmdlet 后，创建缓存可能需要数分钟时间。 创建缓存后，新缓存的状态为 `Running`，它采用默认设置且随时可供使用，你可在 [Azure 经典门户][Azure 经典门户]中查看和配置该缓存。 若要自定义缓存配置，请参阅以下[配置缓存][配置缓存]部分。
+调用 PowerShell cmdlet 后，创建缓存可能需要数分钟时间。 创建缓存后，新缓存的状态为 `Running`，它采用默认设置且随时可供使用。在 [Azure 经典门户][Azure Classic Portal]中可查看和配置该缓存。 若要自定义缓存配置，请参阅以下[配置缓存][Configure the cache]部分。
 
-你可以在 Azure PowerShell 窗口中监视创建进度。 缓存可供使用后，[New-AzureManagedCache][New-AzureManagedCache] cmdlet 将显示缓存信息，如下例中所示。
+你可以在 Azure PowerShell 窗口中监视创建进度。 缓存可供使用后，[New-AzureManagedCache][New-AzureManagedCache] cmdlet 将显示缓存信息，如以下示例中所示。
 
     PS C:\> Add-AzureAccount
     VERBOSE: Account "user@domain.com" has been added.
@@ -138,7 +140,7 @@ Azure 托管缓存服务包含以下功能：
 <a name="enable-caching"></a>
 
 ## <a name="configure-the-cache"></a>配置缓存
-在 Azure 经典门户中，用于缓存的“配置”选项卡位于配置缓存选项的位置。 每个缓存都具有**默认**命名缓存，并且标准和高级缓存产品/服务支持最多 9 个附加的命名缓存，总共 10 个。 每个命名缓存都具有自己的一组选项，可用于以高度灵活的方式配置你的缓存。
+在 Azure 经典门户中，用于缓存的“配置”选项卡位于配置缓存选项的位置。 每个缓存都具有**默认**命名缓存，并且标准和高级缓存产品/服务支持最多&9; 个附加的命名缓存，总共&10; 个。 每个命名缓存都具有自己的一组选项，可用于以高度灵活的方式配置你的缓存。
 
 ![命名缓存][NamedCaches]
 
@@ -155,21 +157,21 @@ Azure 托管缓存服务包含以下功能：
 
 过期策略默认设置为“绝对”，“时间(分钟)”默认设置为 10 分钟。 过期策略对命名缓存中的每个项是固定的，但可通过使用获取 timeout 参数的 **Add** 和 **Put** 重载来自定义每个项的“时间(分钟)”。
 
-有关逐出和过期策略的详细信息，请参阅[过期和逐出][过期和逐出]。
+有关逐出和有效期策略的详细信息，请参阅[有效期和逐出][Expiration and Eviction]。
 
 ## <a name="notifications"></a>通知
-允许你的应用程序在缓存群集上发生多种不同的缓存操作时接收异步通知的缓存通知。 缓存通知还提供本地缓存的对象的自动失效。 有关详细信息，请参阅[通知][通知]。
+允许你的应用程序在缓存群集上发生多种不同的缓存操作时接收异步通知的缓存通知。 缓存通知还提供本地缓存的对象的自动失效。 有关详细信息，请参阅[通知][Notifications]。
 
-> 仅在标准和高级缓存产品中提供通知，在基本缓存产品中不提供通知。 有关详细信息，请参阅[缓存产品/服务][缓存产品]。
+> 仅在标准和高级缓存产品中提供通知，在基本缓存产品中不提供通知。 有关详细信息，请参阅[缓存产品][Cache offerings]。
 > 
 > 
 
 ## <a name="high-availability"></a>高可用性
 在启用高可用性后，将对添加到缓存中的每一项生成一个备份副本。 如果该项的主副本发生了意外失败，则备份副本仍可用。
 
-按照定义，高可用性使用量等于每个缓存项所需的内存量乘以二。 在容量规划任务中将考虑此内存影响。 有关详细信息，请参阅[高可用性][高可用性]。
+按照定义，高可用性使用量等于每个缓存项所需的内存量乘以二。 在容量规划任务中将考虑此内存影响。 有关详细信息，请参阅[高可用性][High Availability]。
 
-> 仅在高级缓存产品中提供高可用性，在基本或标准缓存产品中不提供高可用性。 有关详细信息，请参阅[缓存产品/服务][缓存产品]。
+> 仅在高级缓存产品中提供高可用性，在基本或标准缓存产品中不提供高可用性。 有关详细信息，请参阅[缓存产品][Cache offerings]。
 > 
 > 
 
@@ -177,7 +179,7 @@ Azure 托管缓存服务包含以下功能：
 为了保持在缓存中提供的内存容量，需支持最近最少使用 (LRU) 逐出。 在内存使用量超出内存阈值时，在内存压力得到缓解之前，将从内存中逐出对象，无论这些对象是否已到期。
 默认情况下启用逐出。 如果禁用了逐出，在达到容量时将不会从缓存中逐出项，并且 Put 和 Add 操作将失败。
 
-有关逐出和过期策略的详细信息，请参阅[过期和逐出][过期和逐出]。
+有关逐出和有效期策略的详细信息，请参阅[有效期和逐出][Expiration and Eviction]。
 
 在配置缓存后，可以配置缓存客户端以允许访问缓存。
 
@@ -197,7 +199,7 @@ Azure 托管缓存服务包含以下功能：
 
 NuGet 包可执行多项操作：将所需配置添加到应用程序的 config 文件，并且将添加所需的程序集引用。 对于云服务项目，它还将缓存客户端诊断级别设置添加到云服务的 ServiceConfiguration.cscfg 文件。
 
-> 对于 ASP.NET Web 项目，缓存 NuGet 包还将两个注释掉的节添加到 web.config 中。 第一个节允许会话状态存储在缓存中，第二个节启用 ASP.NET 页面输出缓存。 有关详细信息，请参阅[如何在缓存中存储 ASP.NET 会话状态]和[如何在缓存中存储 ASP.NET 页面输出缓存][如何在缓存中存储 ASP.NET 页面输出缓存]。
+> 对于 ASP.NET Web 项目，缓存 NuGet 包还将两个注释掉的节添加到 web.config 中。 第一个节允许会话状态存储在缓存中，第二个节启用 ASP.NET 页面输出缓存。 有关详细信息，请参阅[如何在缓存中存储 ASP.NET 会话状态]和[如何在缓存中存储 ASP.NET 页面输出缓存][How To: Store ASP.NET Page Output Caching in the Cache]。
 > 
 > 
 
@@ -262,7 +264,7 @@ NuGet 包将以下配置元素添加到应用程序的 web.config 或 app.config
       </ConfigurationSettings>
     </Role>
 
-> 客户端诊断级别配置为缓存客户端收集的缓存诊断信息的级别。 有关详细信息，请参阅[疑难解答和诊断][疑难解答和诊断]
+> 客户端诊断级别配置为缓存客户端收集的缓存诊断信息的级别。 有关详细信息，请参阅[故障排除和诊断][Troubleshooting and Diagnostics]
 > 
 > 
 
@@ -286,11 +288,11 @@ NuGet 包还添加对以下程序集的引用：
 ## <a name="working-with-caches"></a>使用缓存
 本节中的步骤介绍如何使用缓存执行常见任务。
 
-* [如何创建 DataCache 对象][如何创建 DataCache 对象]
-* [如何从缓存添加和检索对象][如何在缓存中添加和检索对象]
-* [如何在缓存中指定对象的有效期][如何在缓存中指定对象的有效期]
+* [如何创建 DataCache 对象][How To: Create a DataCache Object]
+* [如何在缓存中添加和检索对象][How To: Add and Retrieve an Object from the Cache]
+* [如何在缓存中指定对象的有效期][How To: Specify the Expiration of an Object in the Cache]
 * [如何在缓存中存储 ASP.NET 会话状态][如何在缓存中存储 ASP.NET 会话状态]
-* [如何在缓存中存储 ASP.NET 页面输出缓存][如何在缓存中存储 ASP.NET 页面输出缓存]
+* [如何在缓存中存储 ASP.NET 页面输出缓存][How To: Store ASP.NET Page Output Caching in the Cache]
 
 <a name="create-cache-object"></a>
 
@@ -299,7 +301,7 @@ NuGet 包还添加对以下程序集的引用：
 
     using Microsoft.ApplicationServer.Caching;
 
-> 如果在安装了添加必要引用的缓存 NuGet 包后，Visual Studio 仍不能识别 using 语句中的类型，请确保项目的目标配置文件是 .NET Framework 4 或更高版本，并确保选择一个未指定**客户端配置文件**的配置文件。 有关配置缓存客户端的说明，请参阅[配置缓存客户端][配置缓存客户端]。
+> 如果在安装了添加必要引用的缓存 NuGet 包后，Visual Studio 仍不能识别 using 语句中的类型，请确保项目的目标配置文件是 .NET Framework 4 或更高版本，并确保选择一个未指定**客户端配置文件**的配置文件。 有关配置缓存客户端的说明，请参阅[配置缓存客户端][Configure the cache clients]。
 > 
 > 
 
@@ -378,7 +380,7 @@ NuGet 包还添加对以下程序集的引用：
 <a name="store-session"></a>
 
 ## <a name="how-to-store-aspnet-session-state-in-the-cache"></a>如何在缓存中存储 ASP.NET 会话状态
-用于 Azure Cache 的会话状态提供程序是用于 ASP.NET 应用程序的进程外存储机制。 此提供程序允许你将会话状态存储在 Azure 缓存中而非内存或 SQL Server 数据库中。 若要使用缓存会话状态提供程序，请先配置缓存，然后使用缓存 NuGet 包配置用于缓存的 ASP.NET 应用程序，如[托管缓存服务入门][托管缓存服务入门]中所述。 在安装缓存 NuGet 包时，它会在 web.config 中添加一个包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于 Azure Cache 的会话状态提供程序。
+用于 Azure Cache 的会话状态提供程序是用于 ASP.NET 应用程序的进程外存储机制。 此提供程序允许你将会话状态存储在 Azure 缓存中而非内存或 SQL Server 数据库中。 若要使用缓存会话状态提供程序，请首先配置缓存，然后使用缓存 NuGet 包配置用于缓存的 ASP.NET 应用程序，如[托管缓存服务入门][Getting Started with Managed Cache Service]中所述。 在安装缓存 NuGet 包时，它会在 web.config 中添加一个包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于 Azure Cache 的会话状态提供程序。
 
     <!--Uncomment this section to use Azure Caching for session state caching
     <system.web>
@@ -393,18 +395,18 @@ NuGet 包还添加对以下程序集的引用：
       </sessionState>
     </system.web>-->
 
-> 如果安装缓存 NuGet 包后，web.config 仍不含此注释掉的节，请确保从[安装 NuGet 包管理器][安装 NuGet 包管理器]安装最新的 NuGet 包管理器，然后卸载并重新安装该包。
+> 在安装缓存 NuGet 包后，如果 web.config 没有包含此注释掉的节，请确保从[安装 NuGet 包管理器][NuGet Package Manager Installation]安装了最新的 NuGet 包管理器，然后卸载并重新安装该包。
 > 
 > 
 
 若要启用用于 Azure Cache 的会话状态提供程序，请取消注释指定的节。 在提供的代码段中指定了默认缓存。 若要使用不同的缓存，请在 **cacheName** 属性中指定所需缓存。
 
-有关使用托管缓存服务会话状态提供程序的详细信息，请参阅[用于 Azure 缓存的会话状态提供程序][用于 Azure 缓存的会话状态提供程序]。
+有关使用托管缓存服务会话状态提供程序的详细信息，请参阅[用于 Azure Cache 的会话状态提供程序][Session State Provider for Azure Cache]。
 
 <a name="store-page"></a>
 
 ## <a name="how-to-store-aspnet-page-output-caching-in-the-cache"></a>如何在缓存中存储 ASP.NET 页面输出缓存
-用于 Azure Cache 的输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 若要使用输出缓存提供程序，请先配置缓存群集，然后使用缓存 NuGet 包配置用于缓存的 ASP.NET 应用程序，如[托管缓存服务入门][托管缓存服务入门]中所述。 在安装 Caching NuGet 包时，它会在 web.config 中添加以下包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于 Azure Caching 的输出缓存提供程序。
+用于 Azure Cache 的输出缓存提供程序是用于输出缓存数据的进程外存储机制。 此数据专门用于完整 HTTP 响应（页面输出缓存）。 此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。 若要使用该输出缓存提供程序，请首先配置缓存群集，然后使用缓存 NuGet 包配置用于缓存的 ASP.NET 应用程序，如[托管缓存服务入门][Getting Started with Managed Cache Service]中所述。 在安装 Caching NuGet 包时，它会在 web.config 中添加以下包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于 Azure Caching 的输出缓存提供程序。
 
     <!--Uncomment this section to use Azure Caching for output caching
     <caching>
@@ -419,7 +421,7 @@ NuGet 包还添加对以下程序集的引用：
       </outputCache>
     </caching>-->
 
-> 如果安装缓存 NuGet 包后，web.config 仍不含此注释掉的节，请确保从[安装 NuGet 包管理器][安装 NuGet 包管理器]安装最新的 NuGet 包管理器，然后卸载并重新安装该包。
+> 在安装缓存 NuGet 包后，如果 web.config 没有包含此注释掉的节，请确保从[安装 NuGet 包管理器][NuGet Package Manager Installation]安装了最新的 NuGet 包管理器，然后卸载并重新安装该包。
 > 
 > 
 
@@ -429,37 +431,37 @@ NuGet 包还添加对以下程序集的引用：
 
     <%@ OutputCache Duration="60" VaryByParam="*" %>
 
-在此示例中，缓存的页面数据将保留在缓存中 60 秒，并且将为每个参数组合缓存不同版本的页面。 有关可用选项的详细信息，请参阅 [OutputCache 指令][OutputCache 指令]。
+在此示例中，缓存的页面数据将保留在缓存中 60 秒，并且将为每个参数组合缓存不同版本的页面。 有关可用选项的详细信息，请参阅 [OutputCache 指令][OutputCache Directive]。
 
-有关使用用于 Azure 缓存的输出缓存提供程序的详细信息，请参阅[用于 Azure 缓存的输出缓存提供程序][用于 Azure 缓存的输出缓存提供程序]。
+有关使用用于 Azure Cache 的输出缓存提供程序的详细信息，请参阅[用于 Azure Cache 的输出缓存提供程序][Output Cache Provider for Azure Cache]。
 
 <a name="next-steps"></a>
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已了解托管缓存服务的基础知识，请单击下面的链接了解如何执行更复杂的缓存任务。
 
-* 参阅 MSDN 参考：[托管缓存服务][托管缓存服务]
-* 了解如何迁移到托管缓存服务：[迁移到托管缓存服务][迁移到托管缓存服务]
-* 查看示例：[托管缓存服务示例][托管缓存服务示例]
+* 参阅 MSDN 参考：[托管缓存服务][Managed Cache Service]
+* 了解如何迁移到托管缓存服务：[迁移到托管缓存服务][Migrate to Managed Cache Service]
+* 查看示例：[托管缓存服务示例][Managed Cache Service Samples]
 
 <!-- INTRA-TOPIC LINKS -->
-[后续步骤]: #next-steps
-[什么是 Azure 托管缓存服务？]: #what-is
-[创建 Azure 缓存]: #create-cache
-[哪种类型的缓存适合我？]: #choosing-cache
-[准备 Visual Studio 项目以使用 Azure Caching]: #prepare-vs
-[将应用程序配置为使用缓存]: #configure-app
-[托管缓存服务入门]: #getting-started-cache-service
-[创建缓存]: #create-cache
-[配置缓存]: #enable-caching
-[配置缓存客户端]: #NuGet
-[使用缓存]: #working-with-caches
-[如何创建 DataCache 对象]: #create-cache-object
-[如何在缓存中添加和检索对象]: #add-object
-[如何在缓存中指定对象的有效期]: #specify-expiration
+[Next Steps]: #next-steps
+[What is Azure Managed Cache Service?]: #what-is
+[Create an Azure Cache]: #create-cache
+[Which type of caching is right for me?]: #choosing-cache
+[Prepare Your Visual Studio Project to Use Azure Caching]: #prepare-vs
+[Configure Your Application to Use Caching]: #configure-app
+[Getting Started with Managed Cache Service]: #getting-started-cache-service
+[Create the cache]: #create-cache
+[Configure the cache]: #enable-caching
+[Configure the cache clients]: #NuGet
+[Working with Caches]: #working-with-caches
+[How To: Create a DataCache Object]: #create-cache-object
+[How To: Add and Retrieve an Object from the Cache]: #add-object
+[How To: Specify the Expiration of an Object in the Cache]: #specify-expiration
 [如何在缓存中存储 ASP.NET 会话状态]: #store-session
-[如何在缓存中存储 ASP.NET 页面输出缓存]: #store-page
-[定位支持的.NET Framework 配置文件]: #prepare-vs-target-net
+[How To: Store ASP.NET Page Output Caching in the Cache]: #store-page
+[Target a Supported .NET Framework Profile]: #prepare-vs-target-net
 
 <!-- IMAGES -->
 [NewCacheMenu]: ./media/cache-dotnet-how-to-use-service/CacheServiceNewCacheMenu.png
@@ -478,43 +480,43 @@ NuGet 包还添加对以下程序集的引用：
 
 
 <!-- LINKS -->
-[Azure 经典门户]: https://manage.windowsazure.com/
-[如何以编程方式配置缓存客户端]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
-[用于 Azure 缓存的会话状态提供程序]: http://go.microsoft.com/fwlink/?LinkId=320835
-[Azure AppFabric 缓存：缓存会话状态]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
-[用于 Azure 缓存的输出缓存提供程序]: http://go.microsoft.com/fwlink/?LinkId=320837
-[Azure 共享缓存]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
-[团队博客]: http://blogs.msdn.com/b/windowsazure/
-[Azure 缓存]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
-[如何配置虚拟机大小]: http://go.microsoft.com/fwlink/?LinkId=164387
-[Azure Caching 容量规划注意事项]: http://go.microsoft.com/fwlink/?LinkId=320167
-[Azure 缓存]: http://go.microsoft.com/fwlink/?LinkId=252658
-[如何以声明方式设置 ASP.NET 页面可缓存性]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
-[如何以编程方式设置页面的可缓存性]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[Azure 托管缓存服务概述]: http://go.microsoft.com/fwlink/?LinkId=320830
-[托管缓存服务]: http://go.microsoft.com/fwlink/?LinkId=320830
-[OutputCache 指令]: http://go.microsoft.com/fwlink/?LinkId=251979
-[疑难解答和诊断]: http://go.microsoft.com/fwlink/?LinkId=320839
-[安装 NuGet 包管理器]: http://go.microsoft.com/fwlink/?LinkId=240311
-[缓存定价详细信息]: http://www.windowsazure.com/pricing/details/cache/
-[缓存产品]: http://go.microsoft.com/fwlink/?LinkId=317277
-[容量规划]: http://go.microsoft.com/fwlink/?LinkId=320167
-[过期和逐出]: http://go.microsoft.com/fwlink/?LinkId=317278
-[高可用性]: http://go.microsoft.com/fwlink/?LinkId=317329
-[通知]: http://go.microsoft.com/fwlink/?LinkId=317276
-[迁移到托管缓存服务]: http://go.microsoft.com/fwlink/?LinkId=317347
-[托管缓存服务示例]: http://go.microsoft.com/fwlink/?LinkId=320840
+[Azure Classic Portal]: https://manage.windowsazure.com/
+[How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
+[Session State Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320835
+[Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
+[Output Cache Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320837
+[Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
+[Team Blog]: http://blogs.msdn.com/b/windowsazure/
+[Azure Caching]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
+[How to Configure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
+[Azure Caching Capacity Planning Considerations]: http://go.microsoft.com/fwlink/?LinkId=320167
+[Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
+[How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
+[Overview of Azure Managed Cache Service]: http://go.microsoft.com/fwlink/?LinkId=320830
+[Managed Cache Service]: http://go.microsoft.com/fwlink/?LinkId=320830
+[OutputCache Directive]: http://go.microsoft.com/fwlink/?LinkId=251979
+[Troubleshooting and Diagnostics]: http://go.microsoft.com/fwlink/?LinkId=320839
+[NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
+[Cache Pricing Details]: http://www.windowsazure.com/pricing/details/cache/
+[Cache offerings]: http://go.microsoft.com/fwlink/?LinkId=317277
+[Capacity planning]: http://go.microsoft.com/fwlink/?LinkId=320167
+[Expiration and Eviction]: http://go.microsoft.com/fwlink/?LinkId=317278
+[High Availability]: http://go.microsoft.com/fwlink/?LinkId=317329
+[Notifications]: http://go.microsoft.com/fwlink/?LinkId=317276
+[Migrate to Managed Cache Service]: http://go.microsoft.com/fwlink/?LinkId=317347
+[Managed Cache Service Samples]: http://go.microsoft.com/fwlink/?LinkId=320840
 [New-AzureManagedCache]: http://go.microsoft.com/fwlink/?LinkId=400495
-[Azure 托管缓存 Cmdlet]: http://go.microsoft.com/fwlink/?LinkID=398555
-[如何安装和配置 Azure PowerShell]: http://go.microsoft.com/fwlink/?LinkId=400494
+[Azure Managed Cache Cmdlets]: http://go.microsoft.com/fwlink/?LinkID=398555
+[How to install and configure Azure PowerShell]: http://go.microsoft.com/fwlink/?LinkId=400494
 [Add-AzureAccount]: http://msdn.microsoft.com/library/dn495128.aspx
 [Select-AzureSubscription]: http://msdn.microsoft.com/library/dn495203.aspx
 
-[哪种 Azure 缓存产品适合我？]: cache-faq.md#which-azure-cache-offering-is-right-for-me
+[Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -13,23 +13,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: f39e0aec85856adba8dea99159f94fc55c822224
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: e6a3e91e5821e761af0ff710da2a817eb7c185bb
 
 
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight-ssh"></a>将 Sqoop 与 HDInsight 中的 Hadoop 配合使用 (SSH)
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Sqoop 在基于 Linux 的 HDInsight 群集和 Azure SQL 数据库或 SQL Server 数据库之间进行导入和导出。
+了解如何使用 Sqoop 在 HDInsight 群集和 Azure SQL 数据库或 SQL Server 数据库之间进行导入和导出。
 
-> [!NOTE]
-> 这篇文章中的步骤使用 SSH 连接到基于 Linux 的 HDInsight 群集。 Windows 客户端也可以使用 Azure PowerShell 和 HDInsight .NET SDK 在基于 Linux 的群集上操作 Sqoop。 使用选项卡选择器可以打开相关文章。
->
->
+> [!IMPORTANT]
+> 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="prerequisites"></a>先决条件
 开始阅读本教程前的必要准备：
@@ -201,6 +199,6 @@ ms.openlocfilehash: f39e0aec85856adba8dea99159f94fc55c822224
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

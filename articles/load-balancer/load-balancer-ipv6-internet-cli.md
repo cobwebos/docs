@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure CLI 在 Azure Resource Manager 中创建具有 IPv6 的面向 Internet 的负载平衡器 | Microsoft Docs"
+title: "使用 IPv6 创建面向 Internet 的负载均衡器 - Azure CLI | Microsoft Docs"
 description: "了解如何使用 Azure CLI 在 Azure Resource Manager 中创建具有 IPv6 的面向 Internet 的负载均衡器"
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: e516ebea287948c52afca6ab3d3e4e61b3c3c080
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 6edfe8ee8011200e208117f5e03eac8fa741a548
 
 ---
 
@@ -28,7 +28,7 @@ ms.openlocfilehash: e516ebea287948c52afca6ab3d3e4e61b3c3c080
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
-Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负载平衡器可以在云服务或负载平衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure load balancer 是位于第&4; 层 (TCP, UDP) 的负载平衡器。 该负载平衡器可以在云服务或负载平衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 
@@ -345,6 +345,6 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载平衡器。 该负�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "如何配置流分析中的 Azure 机器学习终结点 | Microsoft 文档"
+title: "在流分析中使用 Azure 机器学习终结点 | Microsoft Docs"
 description: "流分析中的机器语言用户定义函数"
 keywords: 
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ce7dd546ce534ede6901444d5fe441493ac2fc45
+ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
+ms.openlocfilehash: e99bf516c7a700d15eaefe046f0a2086f4c16a39
 
 
 ---
@@ -207,6 +207,6 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

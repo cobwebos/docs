@@ -12,20 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 02/09/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86a4bc7ea89416f2c67626439f08fa615a2e6511
+ms.sourcegitcommit: 337a88105d1d19fd69805caeaaef5040dad42316
+ms.openlocfilehash: 663b8a0d27e3746aec5097364643eac981810368
 
 
 ---
-# <a name="secure-your-cloud-and-onpremises-resources-using-azure-multifactor-authentication-server-with-ad-fs-in-windows-server-2012-r2"></a>将 Azure 多重身份验证服务器与 Windows Server 2012 R2 中的 AD FS 配合使用来保护云资源和本地资源
+# <a name="secure-your-cloud-and-on-premises-resources-using-azure-multi-factor-authentication-server-with-ad-fs-in-windows-server-2012-r2"></a>将 Azure 多重身份验证服务器与 Windows Server 2012 R2 中的 AD FS 配合使用来保护云资源和本地资源
 如果使用 Active Directory 联合身份验证服务 (AD FS)，同时想要保护云或本地资源，则可以将 Azure 多重身份验证服务器配置为与 AD FS 配合使用。 此配置将为重要的终结点触发双重验证。
 
 本文介绍如何将 Azure 多重身份验证服务器与 Windows Server 2012 R2 中的 AD FS 配合使用。 请阅读如何 [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云资源和本地资源](multi-factor-authentication-get-started-adfs-adfs2.md)，了解详细信息。
 
-## <a name="secure-windows-server-2012-r2-ad-fs-with-azure-multifactor-authentication-server"></a>使用 Azure 多重身份验证服务器保护 Windows Server 2012 R2 AD FS
+## <a name="secure-windows-server-2012-r2-ad-fs-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器保护 Windows Server 2012 R2 AD FS
 安装 Azure 多重身份验证服务器时，可以使用以下选项：
 
 * 在与 AD FS 所在的同一台服务器上本地安装 Azure 多重身份验证服务器
@@ -39,7 +39,7 @@ ms.openlocfilehash: 86a4bc7ea89416f2c67626439f08fa615a2e6511
 * 多重身份验证 AD FS 适配器安装向导将在 Active Directory 的实例中创建名为 PhoneFactor Admins 的安全组。 然后将联合身份验证服务的 AD FS 服务帐户添加到此组。 建议在域控制器上检查是否确实创建了 PhoneFactor Admins 组，以及 AD FS 服务帐户是否是此组的成员。 如果需要，请在域控制器上手动将 AD FS 服务帐户添加到 PhoneFactor Admins 组。
 * 请阅读如何 [为 Azure 多重身份验证服务器部署用户门户](multi-factor-authentication-get-started-portal.md)
 
-### <a name="install-azure-multifactor-authentication-server-locally-on-the-ad-fs-server"></a>在 AD FS 服务器上本地安装 Azure 多重身份验证服务器
+### <a name="install-azure-multi-factor-authentication-server-locally-on-the-ad-fs-server"></a>在 AD FS 服务器上本地安装 Azure 多重身份验证服务器
 1. 在 AD FS 服务器上下载并安装 Azure 多重身份验证服务器。 请阅读 [Azure 多重身份验证服务器入门](multi-factor-authentication-get-started-server.md)，了解详细信息。
 2. 在 Azure 多重身份验证服务器管理控制台中单击“AD FS”图标，然后选择“允许用户注册”和“允许用户选择方法”选项。
 3. 选择要为组织指定的其他任何选项。
@@ -93,7 +93,7 @@ ms.openlocfilehash: 86a4bc7ea89416f2c67626439f08fa615a2e6511
 3. 将客户端证书的公钥和私钥导出到 .pfx 文件。  
 4. 将 Base64 格式的公钥导出到 .cer 文件。  
 5. 在服务器管理器中，确认已安装了 Web 服务器 (IIS)\Web 服务器\安全\IIS 客户端证书映射身份验证功能。 如果尚未安装，请选择“添加角色和功能”添加此功能。  
-6. 在 IIS Manager 中，在包含 Web 服务 SDK 虚拟目录的网站中单击“配置编辑器”。 请务必在网站级别进行此操作，而不是在虚拟目录级别进行。  
+6. 在 IIS Manager 中，在包含 Web 服务 SDK 虚拟目录的网站中单击“配置编辑器”。 请务必选择网站，而不是虚拟目录。  
 7. 转到 **system.webServer/security/authentication/iisClientCertificateMappingAuthentication** 部分。  
 8. 将“已启用”更改为“true”。  
 9. 将 oneToOneCertificateMappingsEnabled 更改为“true”。  
@@ -116,12 +116,34 @@ ms.openlocfilehash: 86a4bc7ea89416f2c67626439f08fa615a2e6511
 
 最后，若要注册适配器，请在 PowerShell 中运行 \Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1 脚本。 适配器已注册为 WindowsAzureMultiFactorAuthentication。 重新启动 AD FS 服务使注册生效。
 
+## <a name="secure-azure-ad-resources-using-ad-fs"></a>使用 AD FS 保护 Azure AD 资源
+若要保护云资源，请设置声明规则，以便在用户成功执行双重验证之后，Active Directory 联合身份验证服务能够发出多重身份验证声明。 此声明将传递到 Azure AD。 按照以下过程完成各步骤：
+
+1. 打开“AD FS 管理”。
+2. 在左侧选择“信赖方信任”。
+3. 右键单击“Microsoft Office 365 标识平台”，然后选择“编辑声明规则...”
+
+   ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
+
+4. 在“颁发转换规则”上，单击“添加规则”。
+
+   ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
+
+5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，然后单击“下一步”。
+
+   ![云](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
+
+6. 为规则提供一个名称。 
+7. 选择“身份验证方法引用”作为传入声明类型。
+8. 选择“传递所有声明值”。
+    ![添加转换声明规则向导](./media/multi-factor-authentication-get-started-adfs-cloud/configurewizard.png)
+9. 单击“完成” 。 关闭 AD FS 管理控制台。
+
 ## <a name="related-topics"></a>相关主题
 有关疑难解答帮助，请参阅 [ Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

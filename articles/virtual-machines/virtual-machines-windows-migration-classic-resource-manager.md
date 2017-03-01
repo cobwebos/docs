@@ -1,5 +1,5 @@
 ---
-title: "平台支持的从经典部署模型到 Azure Resource Manager 部署模型的 IaaS 资源迁移 | Microsoft Docs"
+title: "将经典资源迁移至 Azure Resource Manager - 概述 | Microsoft Docs"
 description: "本文逐步讲解如何对资源进行平台支持的从经典部署模型到 Azure Resource Manager 的迁移"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 01/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
-ms.openlocfilehash: 8eb70339785ca15131b5ce8debd6a232a8a693b9
+ms.sourcegitcommit: 2c96a3ca5fd72a4a3c992206aeb93f201342dd6a
+ms.openlocfilehash: aafaacea59c2c7fc463fb84207417d2c4e1d81ff
 
 
 ---
@@ -138,6 +138,8 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 
 * 如果资源无法迁移，Azure 平台会列出不支持迁移该资源的所有原因。
 
+在验证存储服务时，将会发现资源组迁移帐户的名称与存储帐户附加“-Migrated”后的名称相同。  例如，如果你的存储帐户名为“mystorage”，你将在名为“mystorage-Migrated”的资源组中找到启用 ARM 的资源，并且它包含名为“mystorage”的存储帐户。
+
 ### <a name="prepare"></a>准备
 准备操作是迁移过程中的第二个步骤。 此步骤的目标是要模拟将 IaaS 资源从经典资源转换为 Resource Manager 资源的过程，并以并排方式让此转换过程直观可见。
 
@@ -250,6 +252,6 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

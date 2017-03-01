@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 71eb6a2fecbd76c9715b9a556a7ffd31b5b4950e
-ms.openlocfilehash: 6b788b3120565895e908bdfc4c9267e715bc5bec
+ms.sourcegitcommit: b52a475008c9d15912c0b363d76118df74112107
+ms.openlocfilehash: b289b9befc67d01689fa87db955b1a10c210a724
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,7 +36,7 @@ Azure AD Privileged Identity Management 可帮助你实现以下操作：
 * 获取有关管理员访问历史记录以及管理员分配更改的报告
 * 获取有关访问特权角色的警报
 
-Azure AD Privileged Identity Management 可以管理内置的 Azure AD 组织角色，包括：  
+Azure AD Privileged Identity Management 可以管理内置的 Azure AD 组织角色，包括（但不限于）：  
 
 * 全局管理员角色
 * 计费管理员
@@ -50,7 +51,7 @@ Azure AD Privileged Identity Management 可以管理内置的 Azure AD 组织角
 可以在 [Azure 门户](https://portal.azure.com/)中开始使用 Azure AD Privileged Identity Management。
 
 > [!NOTE]
-> 只有拥有组织帐户（例如 @yourdomain.com),）而不是 Microsoft 帐户（例如 @outlook.com),）的全局管理员才能为目录启用 Azure AD Privileged Identity Management。
+> 只有拥有组织帐户（例如 @yourdomain.com）而非 Microsoft 帐户（例如 @outlook.com）的全局管理员才能为目录启用 Azure AD Privileged Identity Management。
 
 1. 以目录的全局管理员身份登录 [Azure 门户](https://portal.azure.com/) 。
 2. 如果你的组织有多个目录，请在 Azure 门户的右上角选择你的用户名。 选择你将在其中使用 Azure AD Privileged Identity Management 的目录。
@@ -117,9 +118,4 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 [4]: ./media/active-directory-privileged-identity-management-configure/PIM_RoleActivationSettings.png
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

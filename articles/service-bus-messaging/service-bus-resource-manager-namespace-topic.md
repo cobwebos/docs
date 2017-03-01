@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间 | Microsoft 文档"
+title: "使用模板创建 Azure 服务总线命名空间主题订阅 | Microsoft Docs"
 description: "使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,20 +12,20 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/14/2016
+ms.date: 01/18/2017
 ms.author: sethm;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 27ad541fc51c497528355cd1091cc48ae8fe1ee8
 
 
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间
 本文介绍如何使用创建包含主题和订阅的服务总线命名空间的 Azure Resource Manager 模板。 你将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][创作 Azure Resource Manager 模板]。
+有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板][Authoring Azure Resource Manager templates]。
 
-有关完整模板，请参阅[包含主题和订阅的服务总线命名空间][包含主题和订阅的服务总线命名空间]模板。
+有关完整模板，请参阅[包含主题和订阅的服务总线命名空间][Service Bus namespace with topic and subscription]模板。
 
 > [!NOTE]
 > 以下 Azure Resource Manager 模板可供下载和部署。
@@ -35,7 +35,7 @@ ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
 > * [创建包含队列和授权规则的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
 > * [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 若要检查最新模板，请访问 [Azure 快速入门模板][Azure 快速入门模板]库并搜索“服务总线”。
+> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索“服务总线”。
 > 
 > 
 
@@ -49,14 +49,14 @@ ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
 [![部署到 Azure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-and-subscription%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>parameters
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 你应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 你应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 要创建的服务总线命名空间的名称。
 
-```
+```json
 "serviceBusNamespaceName": {
 "type": "string"
 }
@@ -65,7 +65,7 @@ ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
 ### <a name="servicebustopicname"></a>serviceBusTopicName
 在服务总线命名空间中创建的主题的名称。
 
-```
+```json
 "serviceBusTopicName": {
 "type": "string"
 }
@@ -74,7 +74,7 @@ ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
 在服务总线命名空间中创建的订阅的名称。
 
-```
+```json
 "serviceBusSubscriptionName": {
 "type": "string"
 }
@@ -83,7 +83,7 @@ ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
 模板的服务总线 API 版本。
 
-```
+```json
 "serviceBusApiVersion": {
 "type": "string"
 }
@@ -91,7 +91,7 @@ ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
 ## <a name="resources-to-deploy"></a>要部署的资源
 创建类型为 **Messaging** 的包含主题和订阅的标准服务总线命名空间。
 
-```
+```json
 "resources ": [{
         "apiVersion": "[variables('sbVersion')]",
         "name": "[parameters('serviceBusNamespaceName')]",
@@ -129,12 +129,12 @@ ms.openlocfilehash: d4c3da81e4f809bba252738c783f66a62f116eaa
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```
+```powershell
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```
+```cli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
@@ -144,17 +144,17 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 现在，你已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
 * [使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision.md)
-* [使用服务总线 Explorer 管理服务总线资源](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
+* [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[创作 Azure Resource Manager 模板]: ../resource-group-authoring-templates.md
-[Azure 快速入门模板]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-[了解有关服务总线主题和订阅的详细信息]: service-bus-queues-topics-subscriptions.md
-[将 Azure PowerShell 与 Azure Resource Manager 结合使用]: ../powershell-azure-resource-manager.md
-[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理结合使用]: ../xplat-cli-azure-resource-manager.md
-[包含主题和订阅的服务总线命名空间]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-and-subscription/
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+[Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Service Bus namespace with topic and subscription]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-and-subscription/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

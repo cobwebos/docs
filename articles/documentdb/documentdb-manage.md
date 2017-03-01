@@ -1,30 +1,16 @@
 ---
-title: "DocumentDB 存储和性能 | Microsoft Docs"
-description: "了解 DocumentDB 中的数据存储和文档存储，以及如何调整 DocumentDB 的规模来满足你的应用程序的容量需求。"
-keywords: "文档存储"
-services: documentdb
-author: syamkmsft
-manager: jhubbard
-editor: cgronlun
-documentationcenter: 
-ms.assetid: d3c0bae3-1862-4203-9260-e36216a7823d
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 08/18/2016
-ms.author: syamk
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d5af6e3d9ba35558e0d7850820f4b9a479a259be
-ms.openlocfilehash: 8a387dbb4ae5c8ce64c397441613d6d1fc3f08b1
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: 27880401ccfca4c2c504eecc1aeb128d40c501a3
 
 
 ---
 # <a name="storage-and-predictable-performance-provisioning-in-documentdb"></a>DocumentDB 中的存储和可预测性能的预配
 Azure DocumentDB 是一个全面托管的，面向可扩展文档的针对 JSON 文档的 NoSQL 数据库服务。 使用 DocumentDB，你无需租用虚拟机、部署软件或监视数据库。 DocumentDB 由 Microsoft 工程师操作和持续监视，以提供一流的可用性、性能和数据保护。  
 
-可以通过在 [Azure 门户](https://portal.azure.com/)中[创建数据库帐户](documentdb-create-account.md)和 [DocumentDB database](documentdb-create-database.md)来开始使用 DocumentDB。 DocumentDB 数据库以固态硬盘 (SSD) 支持的存储和吞吐量的单位数来提供。 这些存储单位通过在数据库帐户中[创建数据库集合](documentdb-create-collection.md)来进行预配，每个集合的保留吞吐量可随时增加或减少以满足应用程序的需要。
+可以通过在 [Azure 门户](https://portal.azure.com/)中[创建数据库帐户](documentdb-create-account.md)并创建 [DocumentDB 集合和数据库](documentdb-create-collection.md)来开始使用 DocumentDB。 DocumentDB 数据库以固态硬盘 (SSD) 支持的存储和吞吐量的单位数来提供。 这些存储单位在创建数据库集合时进行预配，每个集合的保留吞吐量可随时增加或减少以满足应用程序的需要。
 
 如果应用程序超出一个或多个集合的保留吞吐量，将按每个集合限制请求。 这意味着一些应用程序请求可能成功，而另一些则可能受限制。
 
@@ -142,6 +128,6 @@ DocumentDB 支持创建单个分区和已分区的集合。 DocumentDB 中的每
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

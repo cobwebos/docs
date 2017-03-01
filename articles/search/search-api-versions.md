@@ -12,20 +12,23 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/28/2016
+ms.date: 01/11/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 070c386c2196f0c53651fc34c88673236b4ea89f
-ms.openlocfilehash: e86fe6afcb97c48ecf55b9d083a1e30c2ee2a569
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
 
 ---
 
 # <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
-Azure 搜索会定期发布功能更新。 有时，但并非总是，这些更新需要我们发布我们的 API 的新版本，以保持向后兼容性。 发布新版本使你可以控制何时以及如何在你的代码中集成搜索服务更新。
+Azure 搜索会定期发布功能更新。 有时，但并非总是，这些更新需要发布 API 的新版本，以保持向后兼容性。 发布新版本使你可以控制何时以及如何在你的代码中集成搜索服务更新。
 
 通常，我们仅在必要时发布新版本，因为它可能会促使你必须升级代码才能使用新版本 API。 仅当我们需要更改 API 的某些方面时才会发布新版本，某种程度上这会破坏向后兼容性。 这可能会因以下情况而发生：现有功能修复，或更改现有 API 外围功能的新功能。
 
 我们遵循适用于 SDK 更新的相同规则。 Azure 搜索 SDK 遵循[语义版本控制](http://semver.org/)规则，这意味着其版本分为三个部分：主要版本号、次要版本号和内部版本号（例如，1.1.0）。 我们仅在更改破坏了向后兼容性时，才会发布 SDK 新的主要版本。 对于非破坏功能更新，我们会增大次要版本号；对于 Bug 修复，我们仅增大内部版本号。
+
+> [!NOTE]
+> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 你可以不使用最新版本，但是我们建议迁移你的代码，以便使用最新版本。 使用 REST API 时，必须在每个请求中通过 api-version 参数指定 API 版本。 使用 .NET SDK 时，使用的 SDK 版本确定对应的 REST API 版本。 如果使用较旧的 SDK，即使已升级服务以支持较新的 API 版本，也可以继续运行代码，而不进行任何更改。
 
 ## <a name="snapshot-of-current-versions"></a>当前版本的快照
 以下是 Azure 搜索的所有编程接口的当前版本的快照。
@@ -63,6 +66,6 @@ Azure 搜索始终先通过 REST API 预发布实验功能，然后再通过 .NE
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

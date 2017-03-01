@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 5738c78d65ed0394028b90d634e5ebd4b1d5c5bc
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 497f963870d24a335379a7f015a515c425737a73
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 5738c78d65ed0394028b90d634e5ebd4b1d5c5bc
 * 根据从搜索中获取的数据生成你的业务流。 
 * 使用搜索图像、搜索资讯等操作。 这些操作可获得响应，然后使输出可用于其他操作。 例如，你可以搜索视频，然后使用 Twitter 将该视频发布到 Twitter 源。
 
-若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要在逻辑应用中添加操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="triggers-and-actions"></a>触发器和操作
 Google Drive 包括以下操作。 没有任何触发器。 
@@ -321,7 +321,7 @@ Google Drive 包括以下操作。 没有任何触发器。
 | value |数组 |否 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 返回到 [API 列表](apis-list.md)。
 
@@ -337,6 +337,6 @@ Google Drive 包括以下操作。 没有任何触发器。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

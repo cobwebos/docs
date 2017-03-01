@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric 术语概述 | Microsoft 文档"
+title: "了解 Azure Service Fabric 术语 | Microsoft Docs"
 description: "Service Fabric 的术语概述。 讨论本文档其余部分所用的重要术语概念和术语。"
 services: service-fabric
 documentationcenter: .net
@@ -12,16 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/25/2016
+ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b68945157d7b4a5d418c766188ad49229c6f4ab5
+ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
+ms.openlocfilehash: e628143db9ceba5e159022d2eefe3e6dd9f4bf22
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 Service Fabric 是一种分布式系统平台，可让你轻松打包、部署和管理可缩放、可靠的微服务。 本主题详细说明 Service Fabric 所使用的术语，以帮助了解文档中使用的术语。
+
+以下 Microsoft Virtual Academy 视频中还讨论了本部分列出的概念：<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">核心概念</a>、<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965">设计时概念</a>和<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">运行时概念</a>。
 
 ## <a name="infrastructure-concepts"></a>基础结构概念
 **群集**：一组通过网络连接在一起的虚拟机或物理计算机，你的微服务将在其中部署和管理。  群集可以扩展到成千上万台计算机。
@@ -59,6 +62,8 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 
 **配置包**：一个磁盘目录，其中包含服务类型的静态只读配置文件（通常是文本文件）。 服务类型的 `ServiceManifest.xml` 文件引用配置包目录中的文件。 创建命名服务后，会将配置包中的文件复制到选定运行命名服务的一个或多个节点。 然后，代码开始运行，现在即可访问配置文件。
 
+**容器**：默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以部署容器映像中的服务。 容器是在应用程序中将基础操作系统虚拟化的一种虚拟化技术。 每个应用程序及其运行时、依赖项和系统库都在容器中运行，在容器各自的独立操作系统构造范围内拥有完全专属访问权限。 Service Fabric 支持 Linux 上的 Docker 容器和 Windows Server 容器。  有关详细信息，请参阅 [Service Fabric 和容器](service-fabric-containers-overview.md)。
+
 **分区方案**：创建命名服务时，需要指定一个分区方案。 包含大量状态的服务将跨分区拆分数据，从而将数据分散在群集的节点上。 这样，命名服务的状态便可缩放。 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供可用性；如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 将创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自身的副本集，其中包含保持同步的所有状态。 如果某个副本失败，Service Fabric 将从现有副本创建新副本。
 
 有关详细信息，请阅读 [Service Fabric Reliable Services 分区](service-fabric-concepts-partitioning.md)一文。
@@ -71,6 +76,8 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 有关使用搭配命名服务运行的客户端与服务通信 API 的详细信息，请阅读[与服务通信](service-fabric-connect-and-communicate-with-services.md)。
 
 **映像存储服务**：每个 Service Fabric 群集都有一个映像存储服务，其中保存已部署且版本化的应用程序包。 将应用程序包复制到映像存储，然后注册该应用程序包内包含的应用程序类型。 预配应用程序类型后，创建它的命名应用程序。 在删除某个应用程序类型的所有命名应用程序之后，可以从映像存储服务中注销该应用程序类型。
+
+有关映像存储服务的详细信息，请参阅[了解 ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)。
 
 有关将应用程序部署到映像存储服务的详细信息，请阅读[部署应用程序](service-fabric-deploy-remove-applications.md)一文。
 
@@ -90,10 +97,5 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 * [Service Fabric 概述](service-fabric-overview.md)
 * [为什么通过微服务的方法构建应用程序？](service-fabric-overview-microservices.md)
 * [应用程序方案](service-fabric-application-scenarios.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

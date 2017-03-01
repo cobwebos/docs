@@ -4,7 +4,7 @@ description: "了解如何使用适用于 Windows Phone Silverlight 应用的具
 services: mobile-engagement
 documentationcenter: windows
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: aa34692f-87f7-47c6-a20c-a1972750bc25
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fc6f97db04ae9dc547beb5a1fa3ee0c8c61885a6
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 3f1f8d74eb2f562991b351cae87c372897644cf8
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: fc6f97db04ae9dc547beb5a1fa3ee0c8c61885a6
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何使用 Azure Mobile Engagement 来了解应用使用情况和向 Windows Phone Silverlight 应用程序的细分用户发送推送通知。
-本教程演示使用 Mobile Engagement 的简单广播方案。 演示中，你将创建一个空白 Windows Phone 8 应用，以使用 Microsoft 推送通知服务 (MPNS) 收集基本数据和接收推送通知。
+本教程演示使用 Mobile Engagement 的简单广播方案。 演示中，你将创建一个空白 Windows Phone&8; 应用，以使用 Microsoft 推送通知服务 (MPNS) 收集基本数据和接收推送通知。
 
 > [!NOTE]
 > 如果你要以 Windows Phone 8.1（非 Silverlight）为目标，请参阅 [Windows Universal 教程](mobile-engagement-windows-store-dotnet-get-started.md)。
@@ -41,10 +42,10 @@ ms.openlocfilehash: fc6f97db04ae9dc547beb5a1fa3ee0c8c61885a6
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-windows-phone-app"></a><a id="setup-azme"></a>为 Windows Phone 应用设置 Mobile Engagement
+## <a name="a-idsetup-azmeasetup-mobile-engagement-for-your-windows-phone-app"></a><a id="setup-azme"></a>为 Windows Phone 应用设置 Mobile Engagement
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
+## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>将应用连接到 Mobile Engagement 后端
 本教程提供的“基本集成”是收集数据和发送推送通知的最低要求。 在 [Mobile Engagement Windows Phone SDK 集成](mobile-engagement-windows-phone-sdk-overview.md)
 
 我们将通过 Visual Studio 创建基本应用，以演示该集成。
@@ -91,7 +92,7 @@ ms.openlocfilehash: fc6f97db04ae9dc547beb5a1fa3ee0c8c61885a6
                EngagementAgent.Instance.OnActivated(e);
             }
 
-## <a name="a-idmonitoraenable-realtime-monitoring"></a><a id="monitor"></a>启用实时监视
+## <a name="a-idmonitoraenable-real-time-monitoring"></a><a id="monitor"></a>启用实时监视
 为了开始发送数据并确保用户处于活动状态，必须将至少一个屏幕（活动）发送到 Mobile Engagement 后端。
 
 1. 在“MainPage.xaml.cs”中，添加 `using` 语句：
@@ -108,10 +109,10 @@ ms.openlocfilehash: fc6f97db04ae9dc547beb5a1fa3ee0c8c61885a6
    
     b.保留“数据库类型”设置，即设置为“共享”。 将 XML 标记名称中的 `phone:PhoneApplicationPage` 替换为 `engagement:EngagementPage`。
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>将应用与实时监视相连接
+## <a name="a-idmonitoraconnect-app-with-real-time-monitoring"></a><a id="monitor"></a>将应用与实时监视相连接
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>启用推送通知和应用内消息传送
+## <a name="a-idintegrate-pushaenable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>启用推送通知和应用内消息传送
 在市场推广活动中，可以使用 Mobile Engagement 通过推送通知和应用内消息传送与 REACH 模块和用户进行交互。 在 Mobile Engagement 门户中，此模块称为 REACH。
 以下各部分将介绍如何设置应用以接收推送通知。
 
@@ -150,7 +151,7 @@ ms.openlocfilehash: fc6f97db04ae9dc547beb5a1fa3ee0c8c61885a6
 
 <!-- URLs. -->
 [MicrosoftAzure.MobileEngagement]: http://go.microsoft.com/?linkid=9874664
-[Mobile Engagement Windows Phone SDK 文档]: ../mobile-engagement-windows-phone-integrate-engagement/
+[Mobile Engagement Windows Phone SDK documentation]: ../mobile-engagement-windows-phone-integrate-engagement/
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-windows-phone-get-started/project-properties.png
@@ -158,9 +159,4 @@ ms.openlocfilehash: fc6f97db04ae9dc547beb5a1fa3ee0c8c61885a6
 [3]: ./media/mobile-engagement-windows-phone-get-started/add-connection-string.png
 [5]: ./media/mobile-engagement-windows-phone-get-started/reach-capabilities.png
 [6]: ./media/mobile-engagement-windows-phone-get-started/push-screenshot.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

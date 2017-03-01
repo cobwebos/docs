@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 0de569ccf12f3ef428960fe8bb745eb7512c80ce
-ms.openlocfilehash: f81088bcc28e49091f45cdcb1207b30aeb3b70f2
+ms.sourcegitcommit: 1e88eba53b8ec3388ede1ae69cb290423919fda6
+ms.openlocfilehash: d683e25ef96bbd87a6d5b5ea143754b8f67f288e
 
 
 ---
@@ -189,7 +189,7 @@ SAN (ISCSI) | 是 | 是
 **存储（来宾 VM/物理服务器）** | **VMware/物理服务器** | **Hyper-V（包含 VMM）**
 --- | --- | ---
 VMDK | 是 | 不可用
-VHD/VHDX | 不可用 | 是（最多 64 个磁盘）
+VHD/VHDX | 不可用 | 是（最多 16 个磁盘）
 第 2 代 VM | 不可用 | 是
 共享群集磁盘 | 是  | 否
 加密磁盘 | 否 | 否
@@ -241,7 +241,7 @@ HUB | 是 | 是 | 是
 **来宾操作系统体系结构** | 64 位 | 如果不支持，先决条件检查将会失败
 **操作系统磁盘大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
 **操作系统磁盘计数** | 1 | 如果不支持，先决条件检查将会失败。
-**数据磁盘计数** | 16 或更少（最大值取决于所创建的虚拟机大小。 16 = XL） | 如果不支持，先决条件检查将会失败
+**数据磁盘计数** | 如果将 **VMware VM 复制到 Azure**，则为 64 个或更少；如果将 **Hyper-V VM 复制到 Azure**，则为 16 个或更少 | 如果不支持，先决条件检查将会失败
 **数据磁盘 VHD 大小** | 最大 1023 GB | 如果不支持，先决条件检查将会失败
 **网络适配器** | 支持多个适配器 |
 **静态 IP 地址** | 支持 | 如果主虚拟机使用的是静态 IP 地址，则你可为要在 Azure 中创建的虚拟机指定静态 IP 地址。<br/><br/> **在 Hyper-v 上运行的 Linux VM** 不支持静态 IP 地址。
@@ -265,6 +265,6 @@ HUB | 是 | 是 | 是
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,22 +12,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
+ms.date: 2/6/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4ac624ea4427edf03e4530e879df96fee950ff80
+ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
+ms.openlocfilehash: abf5e4bc69aa32ca9af8998ef81de20baae24560
 
 
 ---
 # <a name="preview-service-fabric-and-containers"></a>预览：Service Fabric 和容器
 > [!NOTE]
-> 此功能在 Linux 上以预览版提供，在 Windows Server 2016 上目前不可用。 推出 Windows Server 2016 正式版后发布下一个 Azure Service Fabric 版本时，将在 Windows Server 上提供此功能的预览版，后续的 Windows Server 版本将会正式支持此功能。
-> 
-> 
+> 此功能在 Linux 和 Windows Server 2016 上以预览版提供。 
+>   
 
 ## <a name="introduction"></a>介绍
-Azure Service Fabric 是跨计算机群集的服务[协调器](service-fabric-cluster-resource-manager-introduction.md)。 开发服务的方式多种多样：从使用 [Service Fabric 编程模型](service-fabric-choose-framework.md)，到部署[来宾可执行文件](service-fabric-deploy-existing-app.md)，不一而足。 默认情况下，Service Fabric 以进程形式部署和激活这些服务。 进程能够以最快的速度激活、以最高的密度使用群集中的资源。 Service Fabric 还可以部署容器映像中的服务。 重要的是，你可以在同一应用程序中混合进程中的服务和容器中的服务。 你可以根据具体的方案充分利用这些优势。
+Azure Service Fabric 是跨计算机群集的服务的[协调器](service-fabric-cluster-resource-manager-introduction.md)，已在 Microsoft 的大规模服务中使用并优化了多年。 开发服务的方式多种多样：从使用 [Service Fabric 编程模型](service-fabric-choose-framework.md)，到部署[来宾可执行文件](service-fabric-deploy-existing-app.md)，不一而足。 默认情况下，Service Fabric 以进程形式部署和激活这些服务。 进程能够以最快的速度激活、以最高的密度使用群集中的资源。 Service Fabric 还可以部署容器映像中的服务。 重要的是，你可以在同一应用程序中混合进程中的服务和容器中的服务。 
+
+## <a name="containers-and-service-fabric-roadmap"></a>容器和 Service Fabric 路线图
+在后续的多个版本中，Service Fabric 将继续在 Windows 和 Linux 上添加对容器的广泛支持，包括改进网络、资源约束、安全性、诊断、卷驱动程序的和工具支持（尤其是在 Visual Studio 中），以便使用容器映像部署服务的体验达到一流。 这样，你便可以选择使用任一容器来打包现有代码（例如 IIS MVC 应用）或 Service Fabric 编程模型，并且因为 Service Fabric 将这些一视同仁，你可以在应用程序中混合使用它们，从而为你提供部署代码方式的灵活性。 你可以根据具体的方案充分利用这些优势。
 
 ## <a name="what-are-containers"></a>什么是容器？
 容器是可单独部署的封装组件，在相同内核中以隔离的实例运行，并利用操作系统级别的虚拟化。 这意味着，每个应用程序及其运行时、依赖项和系统库都在容器中运行，在容器各自的独立操作系统构造范围内拥有完全专属访问权限。 这种程度的安全性与资源隔离性，再加上可移植性，是将容器与 Service Fabric 配合使用带来的主要优势，否则就要在进程中运行服务。
@@ -50,7 +52,7 @@ Docker 提供了高级 API 在 Linux 内核容器上创建和管理容器。 Doc
 ### <a name="windows-server-containers"></a>Windows Server 容器
 Windows Server 2016 提供两种不同类型的容器，它们的隔离程度有所不同。 Windows Server 容器与 Docker 容器相似，因为它们都能提供命名空间和文件系统隔离，但与它们运行所在的主机共享内核。 在 Linux 上，这种隔离一贯是由控制组 (cgroup) 和命名空间提供的，Windows Server 容器的行为与此类似。
 
-Windows Hyper-V 容器提供更多隔离性和安全性，因为每个容器不与其他容器或主机共享操作系统内核。 由于具有这么高的安全隔离性，Hyper-V 容器特别适合用于对付恶意的多租户方案。
+Windows Hyper-V 容器提供更多隔离性和安全性，因为每个容器不与其他容器或主机共享操作系统内核。 由于具有这么高的安全隔离性，Hyper-V 容器适合用于对付恶意的多租户方案。
 
 有关如何执行此操作的演练，请阅读[将 Windows 容器部署到 Service Fabric](service-fabric-deploy-container.md)。
 
@@ -61,8 +63,8 @@ Windows Hyper-V 容器提供更多隔离性和安全性，因为每个容器不�
 下面是典型示例，其中容器是一个不错的选择：
 
 * **IIS 提升与移动**：如果你有想继续使用的现有 [ASP.NET MVC](https://www.asp.net/mvc) 应用，将它们放在容器中而不是迁移到 ASP.NET 核心。 这些 ASP.NET MVC 应用程序都依赖 Internet 信息服务 (IIS)。 可以从预先创建的 IIS 映像将这些应用打包成容器映像，然后使用 Service Fabric 将其部署。 有关如何创建 IIS 映像的信息，请参阅 [Windows Server 上的容器映像](https://msdn.microsoft.com/virtualization/windowscontainers/quick_start/quick_start_images)。
-* **将容器和 Service Fabric 微服务混合**：可将现有容器映像用作应用程序的一部分。 例如，对于应用程序的 Web 前端，可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)；对于更密集的后端计算，可以使用在 Reliable Services 中构建的有状态服务。 此方案的示例包括游戏应用程序。
-* **降低“干扰性邻居”服务的影响**：你可以使用容器的资源调控能力来限制服务在主机上使用的资源。 如果某些服务可能会消耗大量资源，因而影响其他服务的性能（例如，类似于查询的长时间运行的操作），请考虑将这些服务放入具有资源监管功能的容器中。
+* **将容器和 Service Fabric 微服务混合**：可将现有容器映像用作应用程序的一部分。 例如，对于应用程序的 Web 前端，可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)；对于更密集的后端计算，可以使用有状态服务。
+* **降低“干扰性邻居”服务的影响**：你可以使用容器的资源调控能力来限制服务在主机上使用的资源。 如果某些服务可能会消耗许多资源，因而影响其他服务的性能（例如，长时间运行的类似于查询的操作），请考虑将这些服务放入具有资源监管功能的容器中。
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric 对容器的支持
 目前，Service Fabric 支持在 Linux 上部署 Docker 容器，还支持在 Windows Server 2016 上部署 Windows Server 容器。 将来的版本会添加对 Hyper-V 容器的支持。
@@ -93,6 +95,6 @@ Service Fabric 提供多种容器功能，可帮助你构建由容器化的微�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/23/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 6b41567f7b43fd6a56da1f571e007d31cef97b92
-ms.openlocfilehash: 68965a1157b31d75595e546b2b227844ddff2eb9
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 28984e14f5afc27b608ab37daf19d454eb7c3201
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 68965a1157b31d75595e546b2b227844ddff2eb9
 
 1. 打开 shell。
 2. 浏览到本地 **azure-iot-gateway-sdk** 存储库副本中的根文件夹。
-3. 运行 **tools/build.sh --skip-unittests** 脚本。 此脚本使用 **cmake** 实用工具在 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中创建一个名为 **build** 的文件夹，并生成一个生成文件。 然后，该脚本将生成解决方案并跳过单元测试。 如果想要生成并运行单元测试，请删除 **--skip-unittests** 参数。
+3. 运行 **tools/build.sh** 脚本。 此脚本使用 **cmake** 实用工具在 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中创建一个名为 **build** 的文件夹，并生成一个生成文件。 然后，该脚本将生成解决方案并跳过单元测试和端到端测试。 如果想要生成并运行单元测试，请添加 **--run-unittests** 参数。 如果想要生成并运行端到端测试，请添加 **--run-e2e-tests**。
 
 > [!NOTE]
 > 每次运行 **build.sh** 脚本时，都会删除 **azure-iot-gateway-sdk** 存储库本地副本的根文件夹中的 **build** 文件夹并重新生成。
@@ -92,6 +92,6 @@ ms.openlocfilehash: 68965a1157b31d75595e546b2b227844ddff2eb9
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

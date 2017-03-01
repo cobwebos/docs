@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 60343b409c734bcc9bb50d6216ff2295aede783b
-ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
+ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
+ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
 
 
 ---
@@ -27,13 +27,13 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 > * [门户](virtual-network-manage-nsg-arm-portal.md)
 > * [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 > * [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
-> 
+>
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
 > Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。Microsoft 建议对大多数新的部署使用该模型，而不是经典部署模型。
-> 
+>
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
@@ -68,7 +68,7 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 
 ### <a name="list-all-rules-for-an-nsg"></a>列出 NSG 的所有规则
 
-若要查看 **NSG-FrontEnd** NSG 的规则，请完成以下步骤： 
+若要查看 **NSG-FrontEnd** NSG 的规则，请完成以下步骤：
 
 1. 在“**网络安全组**”边栏选项卡或上述“**资源**”边栏选项卡中，单击“**NSG-FrontEnd**”。
 
@@ -84,7 +84,7 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 
     > [!NOTE]
     > 若要查看默认规则，请单击显示规则的边栏选项卡顶部的“**默认规则**”图标。
-    > 
+    >
 
 ### <a name="view-nsgs-associations"></a>查看 NSG 关联项
 
@@ -182,7 +182,7 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 
 > [!NOTE]
 > 还可以在 NSG 的“**设置**”边栏选项卡中关联 NSG 与子网。
-> 
+>
 
 ## <a name="delete-an-nsg"></a>删除 NSG
 仅当 NSG 不与任何资源关联时，才能删除 NSG。 若要删除 NSG，请完成以下步骤：
@@ -195,13 +195,13 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 6. 如果有任何子网列出，请单击相应的子网，然后按照[取消关联 NSG 与子网](#Dissociate-an-NSG-from-a-subnet)中的第 2 步和第 3 步操作。
 7. 向左滚动到“**NSG-FrontEnd**”边栏选项卡，然后依次单击“**删除**” > “**是**”。
 
-    [Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
+    ![Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

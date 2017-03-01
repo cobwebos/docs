@@ -1,6 +1,6 @@
 ---
-title: "使用 Active Directory 进行 Data Lake Store 身份验证 | Microsoft Docs"
-description: "了解如何使用 Active Directory 进行 Data Lake Store 身份验证"
+title: "使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证 | Microsoft Docs"
+description: "了解如何使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 01/10/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7e7c9fd2fe7e6327cd39c4c26583c8fd556c9044
+ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
+ms.openlocfilehash: a50fc687a1738a55c3d22eb3e12060397c162e06
 
 
 ---
@@ -29,8 +29,8 @@ ms.openlocfilehash: 7e7c9fd2fe7e6327cd39c4c26583c8fd556c9044
 
 Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写用于 Azure Data Lake Store 或 Azure Data Lake Analytics 的应用程序之前，必须首先决定使用 Azure Active Directory (Azure AD) 对应用程序进行身份验证的方式。 可用的两个主要选项是：
 
-* 最终用户身份验证，以及 
-* 服务到服务身份验证。 
+* 最终用户身份验证（本文所述）
+* 服务到服务身份验证
 
 这两个选项都会将 OAuth 2.0 令牌提供给应用程序，此令牌会附加到对 Azure Data Lake Store 或 Azure Data Lake Analytics 作出的每个请求。
 
@@ -59,7 +59,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 > 
 
 ### <a name="directly-passing-in-user-credentials"></a>直接传递用户凭据
-应用程序可直接向 Azure AD 提供用户凭据。 此方法仅适用于组织 ID 用户帐户；不兼容个人/“live ID”用户帐户，包括以 @outlook.com 或 @live.com. 结尾的帐户。此外，此方法不兼容要求 Azure AD 双因素身份验证 (2FA) 的用户帐户。
+应用程序可直接向 Azure AD 提供用户凭据。 此方法仅适用于组织 ID 用户帐户，不适用于个人/“实时 ID”用户帐户，包括那些以 @outlook.com 或 @live.com 结尾的用户帐户。 此外，此方法不适用于需要 Azure AD 双因素身份验证 (2FA) 的用户帐户。
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>使用此方式需要什么？
 * Azure AD 域名。 已在本文的先决条件中列出。
@@ -75,12 +75,12 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 ### <a name="step-1-create-an-azure-active-directory-application"></a>步骤 1：创建 Azure Active Directory 应用程序
 > [!NOTE]
-> 以下步骤使用的是 Azure 门户。 还可使用 [Azure PowerShell](../resource-group-authenticate-service-principal.md) 或 [Azure CLI](../resource-group-authenticate-service-principal-cli.md).来创建 Azure AD 应用程序。
+> 以下步骤使用 Azure 门户。 还可使用 [Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md) 或 [Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md).来创建 Azure AD 应用程序。
 > 
 > 
 
 1. 通过[经典门户](https://manage.windowsazure.com/)登录到 Azure 帐户。
-2. 在左侧窗格中选择“Active Directory”。
+2. 在左侧窗格中选择“**Active Directory**”。
    
      ![选择“Active Directory”](./media/data-lake-store-end-user-authenticate-using-active-directory/active-directory.png)
 3. 选择要用于创建新应用程序的 Active Directory。 如果有多个 Active Directory，通常需要在订阅所在目录中创建应用程序。 只能为与订阅在同一目录中的应用程序授予对订阅中资源的访问权限。  
@@ -126,7 +126,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 7. 单击“保存” 。
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java SDK 等在客户端应用程序中收集了所需的信息。现在，你可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。
+在本文中，创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java SDK 等在创作的客户端应用程序中收集了所需的信息。现在可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。
 
 * [Get started with Azure Data Lake Store using .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [通过 Java SDK 实现 Azure Data Lake Store 入门](data-lake-store-get-started-java-sdk.md)
@@ -134,6 +134,6 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

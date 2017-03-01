@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 8838617f9b7281878ac3561a80bbba5e4506f410
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: 77b8e707b5743ce2d0b3eb52f75828c9ab0337d9
 
 
 ---
@@ -67,6 +67,14 @@ ms.openlocfilehash: 8838617f9b7281878ac3561a80bbba5e4506f410
    > 
    > 
 
+## <a name="step-4-link-your-azure-ad-b2c-tenant-to-your-azure-subscription"></a>步骤 4：将 Azure AD B2C 租户链接到 Azure 订阅
+如果打算为生产应用使用 B2C 租户，需将 Azure AD B2C 租户链接到 Azure 订阅以支付使用费。 请阅读[此文](active-directory-b2c-how-to-enable-billing.md)了解具体操作。
+
+   > [!IMPORTANT]
+   > 如果未将 Azure AD B2C 租户链接到 Azure 订阅，Azure 门户中的 B2C 功能边栏选项卡上会显示一条警告消息（“未将任何订阅链接到此 B2C 租户，或者订阅需要关注。”）。 在将应用转移到生产环境之前，必须执行此步骤。
+   > 
+   > 
+
 ## <a name="easy-access-to-the-b2c-features-blade-on-the-azure-portal"></a>轻松访问 Azure 门户上的 B2C 功能边栏选项卡
 为了提高可发现性，我们在 Azure 门户上添加了 B2C 功能边栏选项卡的快捷方式。
 
@@ -82,6 +90,6 @@ ms.openlocfilehash: 8838617f9b7281878ac3561a80bbba5e4506f410
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

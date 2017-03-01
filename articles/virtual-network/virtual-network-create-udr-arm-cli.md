@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 8be23107d3a377854a4bd17d99652fb5b84c99dc
-ms.openlocfilehash: d134dd27088b29c53a6d3cbe5c3305e0ab45fd11
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: 6d03903d662ecac24fd4afc47134ce9f39af484f
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: d134dd27088b29c53a6d3cbe5c3305e0ab45fd11
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../resource-manager-deployment-model.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。
+> 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Azure Resource Manager 部署模型和经典部署模型。 在使用任何 Azure 资源之前，请确保了解 [部署模型和工具](../azure-resource-manager/resource-manager-deployment-model.md) 。 可以通过单击本文顶部的选项卡来查看不同工具的文档。
 >
 
 本文介绍资源管理器部署模型。 还可在[经典部署模型](virtual-network-create-udr-classic-cli.md)中创建 UDR。
@@ -232,6 +232,6 @@ ms.openlocfilehash: d134dd27088b29c53a6d3cbe5c3305e0ab45fd11
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

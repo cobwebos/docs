@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/07/2016
+ms.date: 12/13/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1f1f486fdd08c6b817b4486fa815ae536bdcebd3
+ms.sourcegitcommit: 2fbce8754a5e3162e3f8c999b34ff25284911021
+ms.openlocfilehash: 731c6542ba6d1385eeffa89a6f62e5bcf57a5c1e
 
 
 ---
@@ -75,6 +75,6 @@ public class Circle : Shape, ICircle
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

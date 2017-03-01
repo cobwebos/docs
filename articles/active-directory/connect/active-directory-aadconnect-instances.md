@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9eae913bfe26a2e395658462352a92bd16eebb65
+ms.sourcegitcommit: ce4d51c4ed38645ee81325404ff7214f845d5bf0
+ms.openlocfilehash: 317f3be6cb39da7c7c57f7f368c750672609726e
 
 
 ---
@@ -26,21 +26,20 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 ## <a name="microsoft-cloud-germany"></a>德国 Microsoft 云
 [德国 Microsoft 云](http://www.microsoft.de/cloud-deutschland)是由德国数据信托运营的最高等级的云。
 
-此云目前提供预览版。 许多通常可以由自己完成的方案（如验证域）必须由运营商完成。 有关如何参加使用预览版的详细信息，请与你当地的 Microsoft 代表联系。
-
 | 在代理服务器中打开的 URL |
 | --- |
 | \*.microsoftonline.de |
 | \*.windows.net |
 | + 证书吊销列表 |
 
-在登录你的 Azure AD 目录时，必须使用 onmicrosoft.de 域中的帐户。
+登录到 Azure AD 租户时，必须使用 onmicrosoft.de 域中的帐户。
 
 德国 Microsoft 云中当前不存在的功能：
 
-* Azure AD Connect Health 未提供。
-* 自动更新未提供。
-* 密码写回未提供。
+* **Azure AD Connect Health** 不可用。
+* **自动更新**不可用。
+* **密码写回**不可用。
+* 其他 Azure AD Premium 服务不可用。
 
 ## <a name="microsoft-azure-government-cloud"></a>Microsoft Azure 政府版云
 [Microsoft Azure 政府版云](https://azure.microsoft.com/features/gov/)是用于美国政府的云。
@@ -53,25 +52,25 @@ DirSync 的早期版本支持该云。 从 Azure AD Connect 的 1.1.180 版本�
 | \*.gov.us.microsoftonline.com |
 | + 证书吊销列表 |
 
-Azure AD Connect 不能自动检测到你的 Azure AD 目录位于政府版的云中。 当你安装 Azure AD Connect 时，需要改为执行以下操作。
+Azure AD Connect 无法自动检测 Azure AD 租户是否位于政府版云中。 当你安装 Azure AD Connect 时，需要改为执行以下操作。
 
 1. 开始 Azure AD Connect 安装。
-2. 当你看到第一页后，这时应该接受 EULA，请不要继续，而是让安装向导运行。
+2. 出现第一页时（假设你会接受 EULA），请不要继续，而是让安装向导保持运行。
 3. 启动 regedit 并将注册表项 `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` 更改为值 `2`。
 4. 返回 Azure AD Connect 安装向导，接受 EULA，然后继续。 在安装期间，请确保使用“自定义配置”安装路径（而不是快速安装）。 然后，像往常一样继续安装。
 
 Microsoft Azure 政府版云中当前不存在的功能：
 
-* Azure AD Connect Health 未提供。
-* 自动更新未提供。
-* 密码写回未提供。
+* **Azure AD Connect Health** 不可用。
+* **自动更新**不可用。
+* **密码写回**不可用。
+* 其他 Azure AD Premium 服务不可用。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

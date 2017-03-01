@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric 和部署容器 | Microsoft 文档"
+title: "Service Fabric 和部署容器 | Microsoft Docs"
 description: "介绍 Service Fabric，以及如何使用容器部署微服务应用程序。 本文介绍 Service Fabric 为容器提供的功能，以及如何在群集中部署 Windows 容器映像。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
-ms.author: mfussell
+ms.date: 2/17/2017
+ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: af9f761179896a1acdde8e8b20476b7db33ca772
-ms.openlocfilehash: 1c5f3bc66c902c3b7186cad44728fa5237dd298a
+ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
+ms.openlocfilehash: 97b0cb7a5f04f2c5c547cb4b70d87273aa8f2383
 
 
 ---
@@ -30,9 +30,8 @@ ms.openlocfilehash: 1c5f3bc66c902c3b7186cad44728fa5237dd298a
 本文将指导完成在 Windows 容器中构建容器化服务的过程。
 
 > [!NOTE]
-> 此功能在 Linux 上以预览版提供，在 Windows Server 2016 上（尚）不可用。 此功能将在即将发布的 Azure Service Fabric 版本中以预览版向 Windows Server 2016 提供。 
-> 
-> 
+> 此功能在 Windows Server 2016 中以预览版提供。
+>  
 
 Service Fabric 提供多种容器功能，可帮助你构建由容器化的微服务组成的应用程序。 
 
@@ -48,17 +47,46 @@ Service Fabric 提供多种容器功能，可帮助你构建由容器化的微�
 让我们了解将容器化服务打包到应用程序时各个功能如何发挥作用。
 
 ## <a name="package-a-windows-container"></a>打包 Windows 容器
-打包容器时，可以选择使用 Visual Studio 项目模板，或者[手动创建应用程序包](#manually)。 使用 Visual Studio 时，新的项目模板将创建应用程序包结构和清单文件。 VS 模板将在以后的版本中发布。
+打包容器时，可以选择使用 Visual Studio 项目模板，或者[手动创建应用程序包](#manually)。  使用 Visual Studio 时，“新建项目”模板将为你创建应用程序包结构和清单文件。
+
+> [!TIP]
+> 将现有容器映像打包到服务中的最简单方法是使用 Visual Studio。
 
 ## <a name="use-visual-studio-to-package-an-existing-container-image"></a>使用 Visual Studio 打包现有容器映像
-> [!NOTE]
-> 在即将发布的适用于 Service Fabric 的 Visual Studio 版本中，可以将容器添加到应用程序，其方法与现在添加来宾可执行文件的方法相同。 有关详细信息，请参阅[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md) 主题。 目前必须按照下节中的说明手动打包容器。
-> 
-> 
+Visual Studio 提供 Service Fabric 服务模板，可帮助用户将容器部署到 Service Fabric 群集。
+
+1. 依次选择“**文件**” > “**新建项目**”，然后创建一个 Service Fabric 应用程序。
+2. 选择“来宾容器”作为服务模板。
+3. 选择“映像名称”，并提供映像在容器存储库（例如在 https://hub.docker.com/ 上）中的路径，例如 myrepo/myimage:v1 
+4. 为服务命名，然后单击“**确定**”。
+5. 如果容器化服务需要通信终结点，你现在可以在 ServiceManifest.xml 文件中添加协议、端口和类型。 例如： 
+     
+    `<Endpoint Name="MyContainerServiceEndpoint" Protocol="http" Port="80" UriScheme="http" PathSuffix="myapp/" Type="Input" />`
+    
+    通过提供 `UriScheme`，向 Service Fabric 命名服务自动注册容器终结点，以实现可发现性。 与任何服务一样，此端口可以固定（如前面的示例所示），也可以动态分配（保留为空，从指定的应用程序端口范围分配一个端口）。
+    还需要在应用程序清单中指定一个 `PortBinding` 策略，以配置容器端口到主机端口映射，如下所述。
+6. 如果容器需要资源调控，则添加 `ResourceGovernancePolicy`。
+8. 如果容器需要通过专用存储库进行身份验证，则添加 `RepositoryCredentials`。
+7. 对于已激活容器支持的 Windows Server 2016，现在可以使用包并发布针对本地群集的操作。 
+8. 完成后，可以将应用程序发布到远程群集，也可以将解决方案签入源控件。 
+
+有关示例应用程序，请[查看 GitHub 上的 Service Fabric 容器代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+
+## <a name="creating-a-windows-server-2016-cluster"></a>创建 Windows Server 2016 群集
+若要部署容器化应用程序，需要创建运行 Windows Server 2016 且启用了容器支持的群集。 这可以是在本地开发计算机上，也可以在 Azure 中通过 Azure Resource Manager (ARM) 部署。 
+
+若要使用 ARM 部署群集，请在 Azure 中选择“Windows Server 2016 with Containers”映像选项。 请参阅[使用 Azure Resource Manager 创建 Service Fabric 群集](service-fabric-cluster-creation-via-arm.md)一文。 确保使用以下 ARM 设置：
+
+```xml
+"vmImageOffer": { "type": "string","defaultValue": "WindowsServer"     },
+"vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
+"vmImageVersion": { "defaultValue": "latest","type": "string"     },  
+```
+还可以使用[此处的&5; 节点 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)创建群集。 此外，请阅读[此处的 Leok 博客文章](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html)，了解如何使用 Service Fabric 和 Windows 容器。
 
 <a id="manually"></a>
 
-## <a name="manually-package-and-deploy-a-container"></a>手动打包和部署容器
+## <a name="manually-package-and-deploy-a-container-image"></a>手动打包和部署容器映像
 手动打包容器化服务的过程基于以下步骤进行：
 
 1. 将容器发布到存储库。
@@ -263,7 +291,7 @@ Service Fabric 提供多种容器功能，可帮助你构建由容器化的微�
         <DataPackage Name="FrontendService.Data" Version="1.0" />
         <Resources>
             <Endpoints>
-                <Endpoint Name="Endpoint1" Port="80"  UriScheme="http" />
+                <Endpoint Name="Endpoint1" UriScheme="http" Port="80" Protocol="http"/>
             </Endpoints>
         </Resources>
     </ServiceManifest>
@@ -272,9 +300,11 @@ Service Fabric 提供多种容器功能，可帮助你构建由容器化的微�
 ## <a name="next-steps"></a>后续步骤
 现在已部署了容器化服务，请通过阅读 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)了解如何管理其生命周期。
 
+* [Service Fabric 和容器概述](service-fabric-containers-overview.md)
+* 有关示例应用程序，请[查看 GitHub 上的 Service Fabric 容器代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

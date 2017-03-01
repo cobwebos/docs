@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2.0 终结点 | Microsoft Docs"
+title: "Azure AD v2.0 终结点中有什么不同？ | Microsoft Docs"
 description: "原始 Azure AD 终结点与 v2.0 终结点之间的比较。"
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 8a8f8af9b23c66461385a73f80c148a2fdd652d5
+ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
+ms.openlocfilehash: 9f00013c4eb6c32707489d5f78a5e95b7419bcd2
 
 
 ---
@@ -113,7 +113,7 @@ v2.0 终结点可能需要针对应用使用新的已知权限 — `offline_acce
 
 若要深入了解 OAuth 2.0、refresh_token 和 access_token，请查看 [v2.0 协议参考](active-directory-v2-protocols.md)。
 
-#### <a name="openid-profile--email"></a>OpenID、profile 和 email
+#### <a name="openid-profile-and-email"></a>OpenID、个人资料和电子邮件
 在原始 Azure Active Directory 服务中，最基本的 OpenID Connect 登录流在生成的 id_token 中提供丰富的用户相关信息。  id_token 中的声明可以包含用户的名称、首选用户名、电子邮件地址和对象 ID 等等。
 
 我们现在限制 `openid` 范围允许应用访问的信息。  “openid”范围只允许应用将用户登录，并接收用户的应用特定标识符。  如果你想要获取有关应用程序中的用户的个人标识信息 (PII)，应用程序必须向用户请求其他权限。  我们引入了两个新范围（`email` 和 `profile` 范围）让你执行这项操作。
@@ -132,6 +132,6 @@ v2.0 终结点颁发的令牌中的声明与正式版 Azure AD 终结点颁发�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

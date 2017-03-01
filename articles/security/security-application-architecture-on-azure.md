@@ -1,6 +1,6 @@
 ---
-title: "Azure 上的应用程序体系结构 | Microsoft 文档"
-description: " 本文将帮助你了解 Azure 上的应用程序和服务体系结构，以便更容易地将安全集成到设计和实现中。 "
+title: "将安全性集成到 Azure 体系结构设计 | Microsoft Docs"
+description: " 本文将帮助你了解 Azure 上的应用程序和服务体系结构，以便更容易地将安全集成到设计和实现中. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5006e7dc237c53cd4b74ca08ea54ca6c999ebefe
+ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
+ms.openlocfilehash: e7ccc71f222d4af9a52cbf55bb6bb446f211e819
 
 
 ---
@@ -58,6 +58,6 @@ Microsoft 发布了一套高级别的[体系结构蓝图](http://aka.ms/azbluepr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

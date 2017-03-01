@@ -1,5 +1,5 @@
 ---
-title: "无法建立到 Azure VM 的 RDP |Microsoft Docs"
+title: "无法在 Azure 中使用 RDP 连接到 Windows VM | Microsoft Docs"
 description: "解决当使用远程桌面时无法在 Azure 中连接到 Windows 虚拟机的问题"
 keywords: "远程桌面错误,远程桌面连接错误,无法连接到 VM,远程桌面故障排除"
 services: virtual-machines-windows
@@ -14,11 +14,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 10/26/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 592d6b0168b9ebb47ed841f7e2b55d55a07500aa
+ms.sourcegitcommit: 9ca20f34d812e15a7f1e6f5dd032ec05c464046d
+ms.openlocfilehash: 53920a551e24f29274133315b463c6c69605da10
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.openlocfilehash: 592d6b0168b9ebb47ed841f7e2b55d55a07500aa
 6. 重新启动 VM。
 7. 重新部署 VM。
 
-如果需要更详细的步骤和说明，请继续阅读。
+如果需要更详细的步骤和说明，请继续阅读。 请确保本地网络设备（如路由器和防火墙）未阻止出站 TCP 端口 3389，如 [RDP 详细故障排除方案](virtual-machines-windows-detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中所述。
 
 > [!TIP]
 > 如果门户中 VM 的“连接”按钮不可用，并且用户未通过 [Express Route](../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 连接来连接到 Azure，则必须先为 VM 创建并分配一个公共 IP 地址，然后才能使用 RDP。 详细了解 [Azure 中的公共 IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
@@ -248,14 +249,7 @@ ms.openlocfilehash: 592d6b0168b9ebb47ed841f7e2b55d55a07500aa
 
 ## <a name="additional-resources"></a>其他资源
 如果未发生上述任何错误但仍无法通过远程桌面连接到 VM，请阅读详细的[远程桌面故障排除指南](virtual-machines-windows-detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-* [Azure IaaS (Windows) 诊断程序包](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
 * 有关用于访问 VM 上运行的应用程序的故障排除步骤，请参阅[对在 Azure VM 上运行的应用程序的访问进行故障排除](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 如果在 Azure 中使用 Secure Shell (SSH) 连接到 Linux VM 时遇到问题，请参阅[对 Azure 中到 Linux VM 的 SSH 连接进行故障排除](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

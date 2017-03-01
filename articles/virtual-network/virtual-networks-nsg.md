@@ -1,10 +1,10 @@
 ---
-title: "网络安全组 | Microsoft 文档"
+title: "Azure 中的网络安全组 | Microsoft 文档"
 description: "了解如何借助网络安全组，在 Azure 中使用分布式防火墙隔离和控制虚拟网络内的通信流。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 20e850fc-6456-4b5f-9a3f-a8379b052bc9
 ms.service: virtual-network
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1de0827c01c772a4298b7b568363e89f08910ff7
-ms.openlocfilehash: 46dce57f509872580c57bb1d8d93af51623211ac
+ms.sourcegitcommit: 2165cdc87a505e94fab2fc73c30a5764348c6dc1
+ms.openlocfilehash: b382cf65ae172e0037f2bc668a4f5862b29d1700
 
 
 ---
-# <a name="network-security-groups"></a>网络安全组
+# <a name="control-network-traffic-flow-with-network-security-groups"></a>使用网络安全组控制网络流量
 
 网络安全组 (NSG) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则适用于该子网中的所有 VM 实例。 另外，可以进一步通过将 NSG 直接关联到单个 VM 对流向该 VM 的流量进行限制。
 
@@ -93,8 +93,8 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 ## <a name="associating-nsgs"></a>将 NSG 相关联
 可以将 NSG 关联到 VM、NIC 和子网，具体取决于所使用的部署模型。
 
-* **将 NSG 关联到 VM（仅限经典部署）。**  将 NSG 关联到 VM 时，NSG 中的网络访问规则将应用到传入和传出 VM 的所有流量。 
-* **将 NSG 关联到 NIC（仅限资源管理器部署）。**  将 NSG 关联到 NIC 时，NSG 中的网络访问规则只会应用到该 NIC。 这意味着，在包含多个 NIC 的 VM 中，如果 NSG 已应用到单个 NIC，则它不会影响已绑定到其他 NIC 的流量。 
+* **将 NSG 关联到 VM（仅限经典部署）。** 将 NSG 关联到 VM 时，NSG 中的网络访问规则将应用到传入和传出 VM 的所有流量。 
+* **将 NSG 关联到 NIC（仅限资源管理器部署）。** 将 NSG 关联到 NIC 时，NSG 中的网络访问规则只会应用到该 NIC。 这意味着，在包含多个 NIC 的 VM 中，如果 NSG 已应用到单个 NIC，则它不会影响已绑定到其他 NIC 的流量。 
 * **将 NSG 关联到子网（所有部署）**。 将 NSG 关联到子网时，NSG 中的网络访问规则将应用到子网中的所有 IaaS 和 PaaS 资源。 
 
 你可以将不同的 NSG 关联到 VM（或 NIC，具体取决于部署模型）以及 NIC 或 VM 绑定到的子网。 如果发生这种情况，所有网络访问规则在每个 NSG 中将按优先级参照以下顺序应用到流量：
@@ -261,6 +261,6 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

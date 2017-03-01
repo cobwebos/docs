@@ -70,7 +70,7 @@ Azure 应用商店中的某些 Linux 虚拟机映像默认未配置 DHCPv6。 �
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="rhel-centos-oracle-linux"></a>RHEL / CentOS / Oracle Linux
+## <a name="rhel--centos--oracle-linux"></a>RHEL / CentOS / Oracle Linux
 
 1. 编辑 `/etc/sysconfig/network` 文件，添加以下参数：
 
@@ -87,7 +87,7 @@ Azure 应用商店中的某些 Linux 虚拟机映像默认未配置 DHCPv6。 �
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="sles-11-opensuse-13"></a>SLES 11 和 openSUSE 13
+## <a name="sles-11--opensuse-13"></a>SLES 11 和 openSUSE 13
 
 Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 SUSE 映像，请使用以下步骤：
 

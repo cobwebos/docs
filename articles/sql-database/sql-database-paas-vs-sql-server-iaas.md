@@ -14,11 +14,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/06/2016
+ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: b4b3e3ac328d1441e831238a282a66e19839719e
+ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
+ms.openlocfilehash: a2e65de2ec77da9005cea18876fd86fd2928b9da
 
 
 ---
@@ -69,9 +69,9 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 |  | | |
 | **资源：** |不想使用 IT 资源来配置和管理底层基础结构，而想要重点关注应用程序层。 |将一些 IT 资源用于配置和管理。 提供的某些自动化功能可极大地简化此操作。 |
 | **总拥有成本：** |消除硬件成本并减少管理成本。 |消除硬件成本。 |
-| **业务连续性：** |除了内置的容错基础结构功能以外，Azure SQL 数据库还提供可提高业务连续性的功能，例如[自动备份](sql-database-automated-backups.md)、[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)、[异地还原](sql-database-recovery-using-backups.md#geo-restore)和[活动异地复制](sql-database-geo-replication-overview.md)。 有关详细信息，请参阅 [《SQL Database business continuity overview》](sql-database-business-continuity.md)（SQL 数据库业务连续性概述）。 |使用 Azure VM 上的 SQL Server 可以设置高可用性和灾难恢复解决方案，以满足数据库的具体需求。 因此，可以构建针对应用程序高度优化的系统。 你可以视需要自我测试并运行故障转移。 有关详细信息，请参阅 [《High Availability and Disaster Recovery for SQL Server on Azure Virtual Machines》](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)（Azure 虚拟机中 SQL Server 的高可用性和灾难恢复）。 |
+| **业务连续性：** |除了内置的容错基础结构功能以外，Azure SQL 数据库还提供可提高业务连续性的功能，例如[自动备份](sql-database-automated-backups.md)、[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)、[异地还原](sql-database-recovery-using-backups.md#geo-restore)和[活动异地复制](sql-database-geo-replication-overview.md)。 有关详细信息，请参阅 [《SQL Database business continuity overview》](sql-database-business-continuity.md)（SQL 数据库业务连续性概述）。 |使用 Azure VM 上的 SQL Server 可以设置高可用性和灾难恢复解决方案，以满足数据库的具体需求。 因此，可以构建针对应用程序高度优化的系统。 你可以视需要自我测试并运行故障转移。 有关详细信息，请参阅 [《High Availability and Disaster Recovery for SQL Server on Azure Virtual Machines》](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)（Azure 虚拟机中 SQL Server 的高可用性和灾难恢复）。 |
 | **混合云：** |本地应用程序可以访问 Azure SQL 数据库中的数据。 |使用 Azure VN 上的 SQL Server，应用程序可以一部分在云中运行，一部分在本地运行。 例如，可以通过 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，将本地网络和 Active Directory 域扩展到云中。 此外，可以使用 [Azure 中的 SQL Server 数据文件功能](http://msdn.microsoft.com/library/dn385720.aspx)，将本地数据文件存储在 Azure 存储空间中。 有关详细信息，请参阅 [SQL Server 2014 混合云简介](http://msdn.microsoft.com/library/dn606154.aspx)。 |
-|  | 作为订阅服务器支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx) 来复制数据。 |完全支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx)、[AlwaysOn 可用性组](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)、集成服务和日志传送来复制数据。 此外，还完全支持传统的 SQL Server 备份 | |
+|  | 作为订阅服务器支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx) 来复制数据。 |完全支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx)、[AlwaysOn 可用性组](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)、集成服务和日志传送来复制数据。 此外，还完全支持传统的 SQL Server 备份 | |
 |  | | |
 
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>选择 Azure SQL 数据库或 Azure VM 上的 SQL Server 时的业务动机
@@ -79,7 +79,7 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 无论你是现金不足的新公司，或是在预算有限的情况下运作的已成立公司的小组，有限资金经常是决定数据库托管方式的主要考虑因素。 在本部分中，将了解 Azure 中有关以下两个关系数据库选项的计费和许可基本概念：SQL 数据库和 Azure VM 中的 SQL Server。 还将了解如何计算应用程序总成本。
 
 #### <a name="billing-and-licensing-basics"></a>计费和许可基础概念
-**SQL 数据库** 作为一种服务销售给客户，不含许可证。  [Azure VM 上的 SQL Server](../virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md) 销售时附带按分钟付费的许可证。 如果有现有的许可证，也可以使用它。  
+**SQL 数据库** 作为一种服务销售给客户，不含许可证。  [Azure VM 上的 SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) 销售时附带按分钟付费的许可证。 如果有现有的许可证，也可以使用它。  
 
 目前，我们在多个服务层中提供 **SQL 数据库** ，并根据你选择的服务层和性能级别，以固定费率向你收取每小时费用。 此外，你需要对固定的 [数据传输速率](https://azure.microsoft.com/pricing/details/data-transfers/)的 Internet 传出流量付费。 基本、标准和高级服务层旨在以多个性能级别提供可预测的性能，以满足应用程序的高峰要求。 你可以在服务层和性能级别之间进行更改，以满足应用程序的不同吞吐量需求。 如果你的数据库具有高事务量且必须支持许多并发用户，我们建议使用高级服务层。 有关目前支持的服务层的最新信息，请参阅 [Azure SQL 数据库服务层](sql-database-service-tiers.md)。 还可以创建[弹性池](sql-database-elastic-pool.md)，在数据库实例之间共享性能资源。
 
@@ -114,7 +114,7 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 ### <a name="administration"></a>管理
 对许多企业来说，决定过渡到到云服务的关键在于降低管理复杂度。 使用 **SQL 数据库**，Microsoft 可以管理底层硬件。 Microsoft 可以自动复制所有数据以提供高可用性，配置及升级数据库软件，管理负载平衡，并在发生服务器故障时执行透明的故障转移。 用户可以继续管理数据库，但不再需要管理数据库引擎、服务器操作系统或硬件。  可以继续管理的项目示例包括数据库和登录、索引和查询优化，以及审核和安全性。
 
-使用 **Azure VM 上的 SQL Server**，可以完全掌控操作系统和 SQL Server 实例配置。 使用 VM，可以由用户决定何时更新/升级操作系统和数据库软件，以及何时安装任何其他软件（例如防病毒软件）。 提供的一些自动化功能能够大大简化修补、备份以及高可用性。 此外，你还可以控制 VM 的大小、磁盘数目及其存储配置。 Azure 允许用户根据需要更改 VM 的大小。 有关信息，请参阅 [Azure 的虚拟机和云服务大小](../virtual-machines/virtual-machines-linux-sizes.md)。 
+使用 **Azure VM 上的 SQL Server**，可以完全掌控操作系统和 SQL Server 实例配置。 使用 VM，可以由用户决定何时更新/升级操作系统和数据库软件，以及何时安装任何其他软件（例如防病毒软件）。 提供的一些自动化功能能够大大简化修补、备份以及高可用性。 此外，你还可以控制 VM 的大小、磁盘数目及其存储配置。 Azure 允许用户根据需要更改 VM 的大小。 有关信息，请参阅 [Azure 的虚拟机和云服务大小](../virtual-machines/virtual-machines-windows-sizes.md)。 
 
 ### <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 对于许多 IT 部门而言，达到服务级别协议 (SLA) 规定的正常运行时间义务是首要任务。 在本部分中，我们将了解 SLA 对每个数据库托管选项代表的含义。
@@ -126,7 +126,7 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 ### <a name="a-namemarketatime-to-market"></a><a name="market"></a>面市时间
 **SQL Database** 是云式应用程序的理想解决方案。 此选项提供类似于编程 DBA 的功能，非常适合云架构师和开发员，因为它能降低管理基础操作系统和数据库的需求。 例如，可以使用 [REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) 和 [PowerShell Cmdlet](http://msdn.microsoft.com/library/mt740629.aspx) 来自动化和管理数千个数据库的管理操作。 [弹性池](sql-database-elastic-pool.md)等功能可让你将重点放在应用程序层上，更快地将解决方案推向市场。
 
-**Azure VM 上运行的 SQL Server** 是理想选择。 此外，如果你想要依现状将现有的本地应用程序和数据库迁移到 Azure，则它也是一个不错的选择。 由于你无需更改呈现、应用程序和数据层，你在重新架构现有解决方案时节省时间和预算。 相反地，你可以将重点放在将所有解决方案迁移到 Azure，并执行 Azure 平台可能需要的某些性能优化。 有关详细信息，请参阅 [Azure 虚拟机上 SQL Server 的性能最佳实践](../virtual-machines/virtual-machines-windows-sql-performance.md)。
+**Azure VM 上运行的 SQL Server** 是理想选择。 此外，如果你想要依现状将现有的本地应用程序和数据库迁移到 Azure，则它也是一个不错的选择。 由于你无需更改呈现、应用程序和数据层，你在重新架构现有解决方案时节省时间和预算。 相反地，你可以将重点放在将所有解决方案迁移到 Azure，并执行 Azure 平台可能需要的某些性能优化。 有关详细信息，请参阅 [Azure 虚拟机上 SQL Server 的性能最佳实践](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)。
 
 ## <a name="summary"></a>摘要
 本文探讨了 SQL 数据库和 Azure 虚拟机 (VM) 上的 SQL Server，并讨论了可能会影响决策的常见业务动机。 以下是供你考虑的建议摘要：
@@ -144,12 +144,12 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 ## <a name="next-steps"></a>后续步骤
 * 若要开始使用 SQL 数据库，请参阅 [《SQL Database tutorial: Create a SQL database in minutes using the Azure portal》](sql-database-get-started.md) （SQL 数据库教程：使用 Azure 门户在几分钟内创建一个 SQL 数据库）。
 * 请参阅 [《SQL Database pricing》](https://azure.microsoft.com/pricing/details/sql-database/)（SQL 数据库定价）。
-* 若要开始在 Azure VM 上使用 SQL Server，请参阅 [《Provision a SQL Server virtual machine in Azure》](../virtual-machines/virtual-machines-windows-portal-sql-server-provision.md) （在 Azure 中预配 SQL Server 虚拟机）。
+* 若要开始在 Azure VM 上使用 SQL Server，请参阅 [《Provision a SQL Server virtual machine in Azure》](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) （在 Azure 中预配 SQL Server 虚拟机）。
 * 请参阅 [Azure 虚拟机上的 SQL Server：学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/)。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

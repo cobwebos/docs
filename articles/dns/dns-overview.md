@@ -1,6 +1,6 @@
 ---
 title: "Azure DNS 概述 | Microsoft Docs"
-description: "在 Microsoft Azure 上托管服务的 Azure DNS 的概述。 在 Microsoft Azure 上托管你的域。"
+description: "Microsoft Azure 上的 DNS 托管服务概述。 在 Microsoft Azure 上托管你的域。"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 12/05/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
-ms.openlocfilehash: 32b6c12a07f67d39d7a1dcf213f0372d3c3cd40c
+ms.sourcegitcommit: 87122cb432f90573fdb0a35943ce14c8d62e84a5
+ms.openlocfilehash: f8ccf5c0fab1e4aca85b22b99a1a5b48f35dfcbc
 
 ---
 
@@ -26,17 +26,17 @@ ms.openlocfilehash: 32b6c12a07f67d39d7a1dcf213f0372d3c3cd40c
 
 Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 我们使用任意广播网络，以便每个 DNS 查询由最近的可用 DNS 服务器来应答。 这为你的域提供更快的性能和高可用性。
 
-Azure DNS 服务基于 Azure Resource Manager (ARM)。 因此，它可以利用 ARM 功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
+Azure DNS 服务基于 Azure Resource Manager。 因此，它可以利用资源管理器功能，例如基于角色的访问控制、审核日志和资源锁定。 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务集成。
 
-Azure DNS 当前不支持购买域名。 如果想要购买域，则需要使用第三方域名注册机构。 注册机构通常将收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
+Azure DNS 当前不支持购买域名。 如果想要购买域，则需要使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，域可以托管在 Azure DNS 中以管理 DNS 记录。 有关详细信息，请参阅[向 Azure DNS 委托域](dns-domain-delegation.md)。
 
-## <a name="next-steps"></a>后续步骤
+### <a name="next-steps"></a>后续步骤
 
-[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
-
-
+[创建 DNS 区域](./dns-getstarted-create-dnszone-portal.md)
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Dec16_HO3-->
 
 

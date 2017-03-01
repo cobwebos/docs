@@ -3,7 +3,7 @@ title: "Azure CDN 中的实时统计信息 | Microsoft Docs"
 description: "在将内容传送到客户端时，实时统计信息将提供有关 Azure CDN 性能的实时数据。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: c7989340-1172-4315-acbb-186ba34dd52a
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 848010306b0946890734a1a7c3c16a91847c1145
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: e9b9522de6b2c54dc794b00100ffe358296ecfdd
 
 
 ---
@@ -96,6 +96,6 @@ HTTP 状态代码列表直接显示在图表上方。 此列表指明可纳入�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

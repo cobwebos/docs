@@ -1,13 +1,25 @@
 ---
+title: "Azure 计划程序文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用计划程序来计划及调用重复性应用程序操作和例行维护等作业。 教程、API 参考和其他资源。"
+services: scheduler
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: scheduler
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: ee469905e6b1f55def062c1d7291bde47a5518ea
+ms.sourcegitcommit: ad88288056956ab29d446efbe105157f6b732d5f
+ms.openlocfilehash: 4883e5689a639259ec1c0bcd31e1016f85af5d66
 
 ---
 # <a name="scheduler-documentation"></a>计划程序文档
 
-Azure 计划程序允许你以声明方式描述要在云中运行的操作。  然后，它自动计划并运行这些操作。  计划程序保留用户可以查看的作业执行结果历史记录。
+了解如何使用计划程序在云中计划和自动调用重复性作业。 教程、API 参考和其他文档介绍了如何计划及监视重复性应用程序操作和例行维护等作业。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -96,15 +108,10 @@ Azure 计划程序允许你以声明方式描述要在云中运行的操作。  
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/scheduler.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载计划程序文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

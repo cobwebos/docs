@@ -1,5 +1,5 @@
 ---
-title: "SQLFilter 语法参考 | Microsoft Docs"
+title: "Azure 服务总线 SQLFilter 语法参考 | Microsoft Docs"
 description: "有关 SQLFilter 语法的详细信息。"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/22/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 5fb6b670ffa496d6626347bc50d537d35d51e08c
-ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
 
 
 ---
@@ -285,6 +285,6 @@ ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
 - [SQLRuleAction 类](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

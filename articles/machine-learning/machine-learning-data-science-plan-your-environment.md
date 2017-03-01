@@ -1,5 +1,5 @@
 ---
-title: "如何确定高级分析数据处理的方案和计划 | Microsoft Docs"
+title: "确认方案并计划分析过程 - Azure | Microsoft Docs"
 description: "规划高级分析时需考虑一系列关键问题。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3b9cd8f5f0f65b84863e27abda0f3e4ca25d2e15
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: d11f023f263b0bb504e2ecb0ff69bb0cc726618b
 
 
 ---
@@ -93,7 +93,7 @@ ms.openlocfilehash: 3b9cd8f5f0f65b84863e27abda0f3e4ca25d2e15
    * SQL
 2. **应使用什么工具进行数据分析？**
    
-   * [Microsoft Azure Powershell](../powershell-install-configure.md) - 用于管理脚本语言中 Azure 资源的一种脚本语言。
+   * [Microsoft Azure Powershell](/powershell/azureps-cmdlets-docs) - 用于管理脚本语言中 Azure 资源的一种脚本语言。
    * [Azure 机器学习工作室](machine-learning-what-is-ml-studio.md)
    * [Revolution Analytics](http://www.revolutionanalytics.com/revolution-r-open)
    * [RStudio](http://www.rstudio.com)
@@ -108,6 +108,6 @@ ms.openlocfilehash: 3b9cd8f5f0f65b84863e27abda0f3e4ca25d2e15
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "快速入门指南：机器学习建议 API | Microsoft 文档"
+title: "快速入门：Azure 机器学习建议 API（版本 1）| Microsoft 文档"
 description: "Azure 机器学习建议 - 快速入门指南"
 services: machine-learning
 documentationcenter: 
@@ -12,22 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/07/2017
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 099090d06163f15a08592e25f6171cfacf24b0f1
-ms.openlocfilehash: bf47dd8f88405f2bed31c621e37531e3641ddc6c
+ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
+ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
 
 
 ---
-# <a name="quick-start-guide-for-the-machine-learning-recommendations-api"></a>机器学习建议 API 快速入门指南
+# <a name="quick-start-guide-for-the-machine-learning-recommendations-api-version-1"></a>机器学习建议 API（版本 1）快速入门指南
+
 > [!NOTE]
-> 应开始使用建议 API 认知服务，而非此版本。 建议认知服务将替代此服务，并且所有新功能都将在该处开发。 它具有新功能，如支持批处理、更好用的 API 资源管理器、更简洁的 API 图面、更一致的注册/计费体验等。
-> 了解有关[迁移到新认知服务](http://aka.ms/recomigrate)的详细信息
+> 应开始使用[建议 API 认知服务](https://www.microsoft.com/cognitive-services/recommendations-api)，而非此版本。 建议认知服务将替代此服务，并且所有新功能都将在该处开发。 它具有新功能，如支持批处理、更好用的 API 资源管理器、更简洁的 API 图面、更一致的注册/计费体验等。
+>
+> 了解有关[迁移到新认知服务](http://aka.ms/recomigrate)的详细信息。
 > 
 > 
 
-本文档介绍如何登记服务或应用程序，以使用 Microsoft Azure 机器学习建议。 可以在[库](http://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)中找到有关建议 API 的更多详细信息。
+本文档介绍如何登记服务或应用程序，以使用 Microsoft Azure 机器学习建议。 可以在 [Cortana Intelligence 库](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2)中找到有关建议 API 的更多详细信息。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -48,9 +50,9 @@ ms.openlocfilehash: bf47dd8f88405f2bed31c621e37531e3641ddc6c
 ## <a name="limitations"></a>限制
 * 每个订阅的最大模型数是 10 个。
 * 目录可容纳的最大项目数是 100000 个。
-* 保留的最大使用点数约为 5000000 个。 如果上载或报告新使用点，将删除最老的使用点。
+* 保留的最大使用点数约为&50000;00 个。 如果上载或报告新使用点，将删除最老的使用点。
 * 在 POST 中可发送的最大数据大小（例如导入目录数据、导入使用数据）是 200MB。
-* 非活动建议模型版本的每秒事务数约为 2TPS。 活动建议模型版本最多可容纳 20TPS。
+* 非活动建议模型版本的每秒事务数约为&2;TPS。 活动建议模型版本最多可容纳 20TPS。
 
 ## <a name="integration"></a>集成
 ### <a name="authentication"></a>身份验证
@@ -703,6 +705,6 @@ OData XML
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "计算链接服务 | Microsoft Docs"
+title: "Azure 数据工厂支持的计算环境 | Microsoft Docs"
 description: "了解可在 Azure 数据工厂管道中用于转换/处理数据的计算环境。"
 services: data-factory
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 357e149121d4cd9b56dd17e7a7429b11e4f192db
-ms.openlocfilehash: f30e31a11ee08601b1c1d8db84031c8db5a15a71
+ms.sourcegitcommit: 080376a50e4cde3d3f9f801408e4a02b75bc72da
+ms.openlocfilehash: 40da274d0dcbf1efb22afc474a1c365f7770fdcb
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="compute-linked-services"></a>计算链接服务
+# <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
 
 下表提供了数据工厂所支持的计算环境以及可以在其上运行的活动的列表。 
@@ -58,18 +59,20 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="example"></a>示例
 以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 处理数据切片时，数据工厂服务将自动创建**基于 Linux 的** HDInsight 群集。 
 
-    {
-        "name": "HDInsightOnDemandLinkedService",
-        "properties": {
-            "type": "HDInsightOnDemand",
-            "typeProperties": {
-                "clusterSize": 4,
-                "timeToLive": "00:05:00",
-                "osType": "linux",
-                "linkedServiceName": "StorageLinkedService"
-            }
+```json
+{
+    "name": "HDInsightOnDemandLinkedService",
+    "properties": {
+        "type": "HDInsightOnDemand",
+        "typeProperties": {
+            "clusterSize": 4,
+            "timeToLive": "00:05:00",
+            "osType": "linux",
+            "linkedServiceName": "StorageLinkedService"
         }
     }
+}
+```
 
 若要使用基于 Windows 的 HDInsight 群集，请将 **osType** 设置为 **windows**或者不使用属性，因为默认值为 windows。  
 
@@ -87,16 +90,19 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | clusterSize |群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助进程节点的群集拥有 24 个内核（具有 4 个辅助进程节点（4 个） + 具有 4 个头节点（2 个））。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 |是 |
 | timetolive |按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br/><br/>如果将 timetolive 值设置为 0，则群集在活动运行处理完后很快便会被删除。 另一方面，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果设置了适当的 timetolive 属性值，多个管道则可以共享按需 HDInsight 群集的同一实例 |是 |
 | 版本 |HDInsight 群集的版本。 对于 Windows 群集，默认值为 3.1；对于 Linux 群集，则为 3.2。 |否 |
-| linkedServiceName |由按需群集用于存储和处理数据的 Azure 存储链接服务。 |是 |
+| linkedServiceName |由按需群集用于存储和处理数据的 Azure 存储链接服务。 <p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 如果想要存储在 Azure Data Lake Store 中处理的来自 HDInsight 的结果数据，请使用复制活动将数据从 Azure Blob 存储复制到 Azure Data Lake Store。</p>  | 是 |
 | additionalLinkedServiceNames |指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 |否 |
 | osType |操作系统的类型。 允许的值为：Windows（默认值）和 Linux |否 |
 | hcatalogLinkedServiceName |指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储以创建按需 HDInsight 群集。 |否 |
 
 #### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON 示例
-    "additionalLinkedServiceNames": [
-        "otherLinkedServiceName1",
-        "otherLinkedServiceName2"
-      ]
+
+```json
+"additionalLinkedServiceNames": [
+    "otherLinkedServiceName1",
+    "otherLinkedServiceName2"
+  ]
+```
 
 ### <a name="advanced-properties"></a>高级属性
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
@@ -112,39 +118,42 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | stormConfiguration |为 HDInsight 群集指定 Storm 配置参数 (storm-site.xml)。 |否 |
 | yarnConfiguration |为 HDInsight 群集指定 Yarn 配置参数 (yarn-site.xml)。 |否 |
 
-#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>示例 - 具有高级属性的按需 HDInsight 群集配置
-    {
-      "name": " HDInsightOnDemandLinkedService",
-      "properties": {
-        "type": "HDInsightOnDemand",
-        "typeProperties": {
-          "clusterSize": 16,
-          "timeToLive": "01:30:00",
-          "linkedServiceName": "adfods1",
-          "coreConfiguration": {
-            "templeton.mapper.memory.mb": "5000"
-          },
-          "hiveConfiguration": {
-            "templeton.mapper.memory.mb": "5000"
-          },
-          "mapReduceConfiguration": {
-            "mapreduce.reduce.java.opts": "-Xmx4000m",
-            "mapreduce.map.java.opts": "-Xmx4000m",
-            "mapreduce.map.memory.mb": "5000",
-            "mapreduce.reduce.memory.mb": "5000",
-            "mapreduce.job.reduce.slowstart.completedmaps": "0.8"
-          },
-          "yarnConfiguration": {
-            "yarn.app.mapreduce.am.resource.mb": "5000",
-            "mapreduce.map.memory.mb": "5000"
-          },
-          "additionalLinkedServiceNames": [
-            "datafeeds",
-            "adobedatafeed"
-          ]
-        }
-      }
+#### <a name="example--on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>示例 - 具有高级属性的按需 HDInsight 群集配置
+
+```json
+{
+  "name": " HDInsightOnDemandLinkedService",
+  "properties": {
+    "type": "HDInsightOnDemand",
+    "typeProperties": {
+      "clusterSize": 16,
+      "timeToLive": "01:30:00",
+      "linkedServiceName": "adfods1",
+      "coreConfiguration": {
+        "templeton.mapper.memory.mb": "5000"
+      },
+      "hiveConfiguration": {
+        "templeton.mapper.memory.mb": "5000"
+      },
+      "mapReduceConfiguration": {
+        "mapreduce.reduce.java.opts": "-Xmx4000m",
+        "mapreduce.map.java.opts": "-Xmx4000m",
+        "mapreduce.map.memory.mb": "5000",
+        "mapreduce.reduce.memory.mb": "5000",
+        "mapreduce.job.reduce.slowstart.completedmaps": "0.8"
+      },
+      "yarnConfiguration": {
+        "yarn.app.mapreduce.am.resource.mb": "5000",
+        "mapreduce.map.memory.mb": "5000"
+      },
+      "additionalLinkedServiceNames": [
+        "datafeeds",
+        "adobedatafeed"
+      ]
     }
+  }
+}
+```
 
 ### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
@@ -156,12 +165,14 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | zookeeperNodeSize |指定 ZooKeeper 节点的大小。 默认值为：Standard_D3。 |否 |
 
 #### <a name="specifying-node-sizes"></a>指定节点大小
-若要了解需要为以上属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md#size-tables?toc=%2fazure%2fdata-factory%2ftoc.json)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
+若要了解需要为以上属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fdata-factory%2ftoc.json#size-tables)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
 
 如果想要创建 D4 大小的头节点和辅助进程节点，需要将 **Standard_D4** 指定为 headNodeSize 和 dataNodeSize 属性的值。 
 
-    "headNodeSize": "Standard_D4",    
-    "dataNodeSize": "Standard_D4",
+```json
+"headNodeSize": "Standard_D4",    
+"dataNodeSize": "Standard_D4",
+```
 
 如果为这些属性指定了错误的值，则可能会收到以下**错误：**未能创建群集。 异常: 无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息: “PreClusterCreationValidationFailure”。 收到此错误时，请确保使用的是上面文章中表格中的 **CMDLET 和 API** 名称。  
 
@@ -178,18 +189,21 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。
 
 ### <a name="example"></a>示例
-    {
-      "name": "HDInsightLinkedService",
-      "properties": {
-        "type": "HDInsight",
-        "typeProperties": {
-          "clusterUri": " https://<hdinsightclustername>.azurehdinsight.net/",
-          "userName": "admin",
-          "password": "<password>",
-          "linkedServiceName": "MyHDInsightStoragelinkedService"
-        }
-      }
+
+```json
+{
+  "name": "HDInsightLinkedService",
+  "properties": {
+    "type": "HDInsight",
+    "typeProperties": {
+      "clusterUri": " https://<hdinsightclustername>.azurehdinsight.net/",
+      "userName": "admin",
+      "password": "<password>",
+      "linkedServiceName": "MyHDInsightStoragelinkedService"
     }
+  }
+}
+```
 
 ### <a name="properties"></a>属性
 | 属性 | 说明 | 必选 |
@@ -198,7 +212,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | clusterUri |HDInsight 群集的 URI。 |是 |
 | username |指定用于连接到现有 HDInsight 群集的用户的名称。 |是 |
 | password |指定用户帐户的密码。 |是 |
-| linkedServiceName |此 HDInsight 群集使用的 Blob 存储的链接服务名称。 |是 |
+| linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Store 链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，那么可以使用 Hive/Pig 脚本访问 Azure Data Lake Store 中的数据。 </p>  |是 |
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 可以创建 Azure Batch 链接服务，以向数据工厂注册虚拟机 (VM) 的 Batch 池。 可以使用 Azure Batch 或 Azure HDInsight 运行 .NET 自定义活动。
@@ -210,27 +224,34 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 * [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) cmdlet - 创建 Azure Batch 池。
 
 ### <a name="example"></a>示例
-    {
-      "name": "AzureBatchLinkedService",
-      "properties": {
-        "type": "AzureBatch",
-        "typeProperties": {
-          "accountName": "<Azure Batch account name>",
-          "accessKey": "<Azure Batch account key>",
-          "poolName": "<Azure Batch pool name>",
-          "linkedServiceName": "<Specify associated storage linked service reference here>"
-        }
-      }
+
+```json
+{
+  "name": "AzureBatchLinkedService",
+  "properties": {
+    "type": "AzureBatch",
+    "typeProperties": {
+      "accountName": "<Azure Batch account name>",
+      "accessKey": "<Azure Batch account key>",
+      "poolName": "<Azure Batch pool name>",
+      "linkedServiceName": "<Specify associated storage linked service reference here>"
     }
+  }
+}
+```
 
 在 **accountName** 属性的 Batch 帐户名后追加 “**.<region name**”。 示例：
 
-            "accountName": "mybatchaccount.eastus"
+```json
+"accountName": "mybatchaccount.eastus"
+```
 
 另一种方法是提供 batchUri 终结点，如下所示。  
 
-            "accountName": "adfteam",
-            "batchUri": "https://eastus.batch.azure.com",
+```json
+"accountName": "adfteam",
+"batchUri": "https://eastus.batch.azure.com",
+```
 
 ### <a name="properties"></a>属性
 | 属性 | 说明 | 必选 |
@@ -245,16 +266,19 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 可以创建 Azure 机器学习链接服务，以向数据工厂注册机器学习批处理计分终结点。
 
 ### <a name="example"></a>示例
-    {
-      "name": "AzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch scoring endpoint]/jobs",
-          "apiKey": "<apikey>"
-        }
-      }
+
+```json
+{
+  "name": "AzureMLLinkedService",
+  "properties": {
+    "type": "AzureML",
+    "typeProperties": {
+      "mlEndpoint": "https://[batch scoring endpoint]/jobs",
+      "apiKey": "<apikey>"
     }
+  }
+}
+```
 
 ### <a name="properties"></a>属性
 | 属性 | 说明 | 必选 |
@@ -268,23 +292,24 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 以下示例为 Azure Data Lake Analytics 链接服务提供 JSON 定义。
 
-    {
-        "name": "AzureDataLakeAnalyticsLinkedService",
-        "properties": {
-            "type": "AzureDataLakeAnalytics",
-            "typeProperties": {
-                "accountName": "adftestaccount",
-                "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
-                "authorization": "<authcode>",
-                "sessionId": "<session ID>",
-                "subscriptionId": "<subscription id>",
-                "resourceGroupName": "<resource group name>"
-            }
+```json
+{
+    "name": "AzureDataLakeAnalyticsLinkedService",
+    "properties": {
+        "type": "AzureDataLakeAnalytics",
+        "typeProperties": {
+            "accountName": "adftestaccount",
+            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+            "authorization": "<authcode>",
+            "sessionId": "<session ID>",
+            "subscriptionId": "<subscription id>",
+            "resourceGroupName": "<resource group name>"
         }
     }
+}
+```
 
-
-下表提供了 JSON 定义中使用的属性的描述。
+下表为 JSON 定义中使用的属性提供了描述。
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
@@ -296,40 +321,43 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | resourceGroupName |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
 | sessionId |OAuth 授权会话中的会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 此 ID 在数据工厂编辑器中自动生成。 |是 |
 
-使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型的用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：凭据操作错误: invalid_grant-AADSTS70002: 验证凭据时出错。 AADSTS70008: 提供的访问权限授予已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
+使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：凭据操作错误: invalid_grant-AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
 
-| 用户类型 | 在以下时间之后过期 |
+| 用户类型 | 过期时间 |
 |:--- |:--- |
 | 不由 Azure Active Directory 管理的用户帐户 (@hotmail.com, @live.com, 等） |12 小时 |
-| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一个切片运行后 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
+| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 若要避免/解决此错误，需要在**令牌过期**时使用“授权”按钮重新授权，并重新部署链接服务。 还可使用以下部分中的代码以编程方式生成 sessionId 和 authorization 属性的值。 
 
 ### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>以编程方式生成 sessionId 和 authorization 值
 以下代码生成 **sessionId** 和 **authorization** 值。  
 
-    if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
-        linkedService.Properties.TypeProperties is AzureDataLakeAnalyticsLinkedService)
+```CSharp
+
+if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
+    linkedService.Properties.TypeProperties is AzureDataLakeAnalyticsLinkedService)
+{
+    AuthorizationSessionGetResponse authorizationSession = this.Client.OAuth.Get(this.ResourceGroupName, this.DataFactoryName, linkedService.Properties.Type);
+
+    WindowsFormsWebAuthenticationDialog authenticationDialog = new WindowsFormsWebAuthenticationDialog(null);
+    string authorization = authenticationDialog.AuthenticateAAD(authorizationSession.AuthorizationSession.Endpoint, new Uri("urn:ietf:wg:oauth:2.0:oob"));
+
+    AzureDataLakeStoreLinkedService azureDataLakeStoreProperties = linkedService.Properties.TypeProperties as AzureDataLakeStoreLinkedService;
+    if (azureDataLakeStoreProperties != null)
     {
-        AuthorizationSessionGetResponse authorizationSession = this.Client.OAuth.Get(this.ResourceGroupName, this.DataFactoryName, linkedService.Properties.Type);
-
-        WindowsFormsWebAuthenticationDialog authenticationDialog = new WindowsFormsWebAuthenticationDialog(null);
-        string authorization = authenticationDialog.AuthenticateAAD(authorizationSession.AuthorizationSession.Endpoint, new Uri("urn:ietf:wg:oauth:2.0:oob"));
-
-        AzureDataLakeStoreLinkedService azureDataLakeStoreProperties = linkedService.Properties.TypeProperties as AzureDataLakeStoreLinkedService;
-        if (azureDataLakeStoreProperties != null)
-        {
-            azureDataLakeStoreProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
-            azureDataLakeStoreProperties.Authorization = authorization;
-        }
-
-        AzureDataLakeAnalyticsLinkedService azureDataLakeAnalyticsProperties = linkedService.Properties.TypeProperties as AzureDataLakeAnalyticsLinkedService;
-        if (azureDataLakeAnalyticsProperties != null)
-        {
-            azureDataLakeAnalyticsProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
-            azureDataLakeAnalyticsProperties.Authorization = authorization;
-        }
+        azureDataLakeStoreProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
+        azureDataLakeStoreProperties.Authorization = authorization;
     }
+
+    AzureDataLakeAnalyticsLinkedService azureDataLakeAnalyticsProperties = linkedService.Properties.TypeProperties as AzureDataLakeAnalyticsLinkedService;
+    if (azureDataLakeAnalyticsProperties != null)
+    {
+        azureDataLakeAnalyticsProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
+        azureDataLakeAnalyticsProperties.Authorization = authorization;
+    }
+}
+```
 
 请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 需要为 WindowsFormsWebAuthenticationDialog 类添加对 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 的引用。 
 
@@ -341,10 +369,5 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 ## <a name="sql-server-linked-service"></a>SQL Server 链接服务
 创建 SQL Server 链接服务，并将其与[存储过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [SQL Server 连接器](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)一文，以了解此链接服务的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

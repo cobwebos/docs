@@ -4,7 +4,7 @@ description: "在本教程中，你将了解如何通过百度使用 Azure 通�
 services: notification-hubs
 documentationcenter: android
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -446,9 +447,4 @@ ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
 [百度推送 Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
 [Azure 经典门户]: https://manage.windowsazure.com/
 [百度门户]: http://www.baidu.com/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

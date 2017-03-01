@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 352532e176a2849c0ea637ea7de09a2299b9862c
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 92b9c88ec49424c96c3bd21bc5c4ce390352c17b
 
 
 ---
@@ -25,11 +25,11 @@ ms.openlocfilehash: 352532e176a2849c0ea637ea7de09a2299b9862c
 
 > [!NOTE]
 > 专用组要求将 Azure AD Premium 许可证分配给
-> 
+>
 > * 管理组中规则的管理员
 > * 规则选择成为组成员的所有用户
-> 
-> 
+>
+>
 
 **启用专用组**
 
@@ -51,6 +51,7 @@ ms.openlocfilehash: 352532e176a2849c0ea637ea7de09a2299b9862c
 
 若要了解如何为动态组成员身份创建 *高级* 规则（可包含多个比较条件的规则），请参阅 [使用属性创建高级规则](active-directory-accessmanagement-groups-with-advanced-rules.md)。
 
+### <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
@@ -60,7 +61,6 @@ ms.openlocfilehash: 352532e176a2849c0ea637ea7de09a2299b9862c
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

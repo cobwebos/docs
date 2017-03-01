@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 创建和管理弹性数据库作业"
+title: "使用 PowerShell 创建和管理弹性作业 | Microsoft Docs"
 description: "使用 PowerShell 管理 Azure SQL 数据库池"
 services: sql-database
 documentationcenter: 
@@ -15,17 +15,13 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: bd673f8ec8bbe6a9971dbcfcf52fe34466e3d3b3
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 225896e724717a00057be4c708ce485c8b785d45
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="create-and-manage-a-sql-database-elastic-database-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性数据库作业（预览版）
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-elastic-jobs-create-and-manage.md)
-> * [PowerShell](sql-database-elastic-jobs-powershell.md)
-> 
-> 
+# <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
 使用适用于**弹性数据库作业**的 PowerShell API（预览版），可以定义要针对哪组数据库执行哪些脚本。 本文说明如何使用 PowerShell cmdlet 创建和管理**弹性数据库作业**。 请参阅[弹性作业概述](sql-database-elastic-jobs-overview.md)。 
 
@@ -72,7 +68,7 @@ ms.openlocfilehash: bd673f8ec8bbe6a9971dbcfcf52fe34466e3d3b3
 
   <tr>
     <td>DACPAC</td>
-    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">跨数据库应用的数据层应用程序 </a> 包。
+    <td>跨数据库应用的<a href="https://msdn.microsoft.com/library/ee210546.aspx">数据层应用程序</a>包。
 
     </td>
     <td>
@@ -358,7 +354,7 @@ ms.openlocfilehash: bd673f8ec8bbe6a9971dbcfcf52fe34466e3d3b3
 检索已提供作业执行 ID 的所有子作业执行，包括非活动的作业执行：
 
     $parentJobExecutionId = "{Job Execution Id}"
-    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId –IncludeInactive -IncludeChildren
+    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
 
 检索使用计划/作业组合创建的所有作业执行，包括非活动的作业：
 
@@ -372,13 +368,13 @@ ms.openlocfilehash: bd673f8ec8bbe6a9971dbcfcf52fe34466e3d3b3
     $shardMapDatabaseName = "{Shard Map Database Name}"
     $shardMapName = "{Shard Map Name}"
     $target = Get-AzureSqlJobTarget -ShardMapManagerDatabaseName $shardMapDatabaseName -ShardMapManagerServerName $shardMapServerName -ShardMapName $shardMapName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
 检索以指定的自定义集合为目标的所有作业，包括非活动的作业：
 
     $customCollectionName = "{Custom Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
 检索特定作业执行内的作业任务执行的列表：
 
@@ -586,7 +582,7 @@ ms.openlocfilehash: bd673f8ec8bbe6a9971dbcfcf52fe34466e3d3b3
     $scheduleName = "{Schedule Name}"
     $jobTrigger = New-AzureSqlJobTrigger
     -ScheduleName $scheduleName
-    –JobName $jobName
+    -JobName $jobName
     Write-Output $jobTrigger
 
 ### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>删除计划的关联，以停止按计划执行作业
@@ -649,9 +645,4 @@ ms.openlocfilehash: bd673f8ec8bbe6a9971dbcfcf52fe34466e3d3b3
 [1]: ./media/sql-database-elastic-jobs-powershell/cmd-prompt.png
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

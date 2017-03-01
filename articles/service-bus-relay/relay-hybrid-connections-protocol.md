@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
-ms.author: sethm
+ms.date: 02/14/2017
+ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 16071ba6c99e41af9fe7614fcc3254cd7e786e89
-ms.openlocfilehash: 497f54903bef564bab687103a763c7a7b58da074
+ms.sourcegitcommit: 579942cfe0dc7d6a5e3f205308642d36bf6be880
+ms.openlocfilehash: d3a191797e75c424af07910e4a6a87e1183f6676
 
 
 ---
@@ -118,7 +118,7 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token
 * **connectHeaders** – 发送方向中继终结点提供的所有 HTTP 头，其中也包括 Sec-WebSocket-Protocol 和 Sec-WebSocket-Extensions 头。
 
 #### <a name="accept-message"></a>接受消息
-``` JSON
+```json
 {                                                           
     "accept" : {
         "address" : "wss://168.61.148.205:443/$hc/{path}?..."    
@@ -201,7 +201,7 @@ URL 必须原样使用，用于创建接受套接字，但是要包含以下参�
 * **token** – 命名空间或混合连接的有效 URL 编码的服务总线共享访问令牌，可授予“**侦听**”权限。
 
 #### <a name="renewtoken-message"></a>renewToken 消息
-``` JSON
+```json
 {                                                                                                                                                                        
     "renewToken" : {                                                                                                                                                      
         "token" : "SharedAccessSignature sr=http%3a%2f%2fcontoso.servicebus.windows.net%2fhyco%2f&amp;sig=XXXXXXXXXX%3d&amp;se=1471633754&amp;skn=SasKeyName"  
@@ -231,7 +231,7 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=
 
 | Param | 必需？ | 说明 |
 | --- | --- | --- |
-| sb-hc-action |是 |对于侦听器角色，该参数必须是 `action=connect`。 |
+| sb-hc-action |是 |对于发送方角色，该参数必须是 `action=connect`。 |
 | {path} |是 |（请参阅下文） |
 | sb-hc-token |是\* |侦听器必须为命名空间或混合连接提供有效的 URL 编码的服务总线共享访问令牌，以授予“**发送**”权限。 |
 | sb-hc-id |否 |启用端到端诊断跟踪的可选 ID，在接受握手期间会将其提供至侦听器。 |
@@ -271,6 +271,6 @@ wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

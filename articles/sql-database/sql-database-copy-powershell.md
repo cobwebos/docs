@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 6d9839d7-9303-48d2-be0f-21ce84f95a94
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.date: 09/08/2016
 ms.author: sstein
@@ -15,26 +16,23 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5916e527e078fbd6c6ee6ce0da7707611b20eafc
+ms.sourcegitcommit: edfbc0d94d9d5b33a25788772a98173187e394b8
+ms.openlocfilehash: 031a17d179cee8d6cceb9ed3aefd993add1958b8
 
 
 ---
 # <a name="copy-an-azure-sql-database-using-powershell"></a>使用 PowerShell 复制 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [概述](sql-database-copy.md)
-> * [Azure 门户](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
-本文介绍如何使用 PowerShell 将 SQL 数据库复制到同一服务器或不同服务器，或者将数据库复制到[弹性数据库池](sql-database-elastic-pool.md)。 数据库复制操作使用 [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx) cmdlet。 
+本文介绍如何使用 PowerShell 将 SQL 数据库复制到同一服务器或不同服务器，或者将数据库复制到[弹性池](sql-database-elastic-pool.md)。 数据库复制操作使用 [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx) cmdlet。 
+
+> [!NOTE]
+> 还可使用 [Azure 门户](sql-database-copy-portal.md)或 [Transact-SQL](sql-database-copy-transact-sql.md) 复制 SQL 数据库。
+>
 
 若要完成本文，需要以下各项：
 
 * Azure SQL 数据库（要复制的数据库）。 如果你没有 SQL 数据库，请按照[创建你的第一个 Azure SQL 数据库](sql-database-get-started.md)文章中的步骤创建一个。
-* 最新版本的 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* 最新版本的 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型](../azure-resource-manager/resource-group-overview.md)时才可用，因此示例使用面向 Resource Manager 的 [Azure SQL 数据库 PowerShell cmdlet](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)。 支持现有的经典部署模型 [Azure SQL 数据库（经典）cmdlet](https://msdn.microsoft.com/library/azure/dn546723\(v=azure.300\).aspx) 以实现向后兼容性，但建议使用 Resource Manager cmdlet。
 
@@ -54,7 +52,7 @@ SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -CopyServerName "server2" -CopyDatabaseName "database1_copy"
 
 
-## <a name="copy-a-sql-database-into-an-elastic-database-pool"></a>将 SQL 数据库复制到弹性数据库池中
+## <a name="copy-a-sql-database-into-an-elastic-pool"></a>将 SQL 数据库复制到弹性池
 若要在池中创建 SQL 数据库的副本，请将 `-ElasticPoolName` 参数设置为现有的池。
 
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegoup1" -ServerName "server1" -DatabaseName "database1" -CopyResourceGroupName "poolResourceGroup" -CopyServerName "poolServer1" -CopyDatabaseName "database1_copy" -ElasticPoolName "poolName"
@@ -93,7 +91,7 @@ SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型
     # -------------------------------------
     New-AzureRmSqlDatabaseCopy -ResourceGroupName $sourceDbResourceGroupName -ServerName $sourceDbServerName -DatabaseName $sourceDbName -CopyResourceGroupName $copyDbResourceGroupName -CopyServerName $copyDbServerName -CopyDatabaseName $copyDbName
 
-    # Copy a database into an elastic database pool
+    # Copy a database into an elastic pool
     # ---------------------------------------------
     $poolName = "pool1"
 
@@ -104,10 +102,10 @@ SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关复制 Azure SQL 数据库的概述，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
-* 若要使用 Azure 门户复制数据库，请参阅[使用 Azure 门户复制 Azure SQL 数据库](sql-database-copy-portal.md)。
-* 若要使用 Transact-SQL 复制数据库，请参阅[使用 Transact-SQL 复制 Azure SQL 数据库](sql-database-copy-transact-sql.md)。
-* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
+* 若要使用 PowerShell 将数据库导出到 BACPAC 文件，请参阅[使用 PowerShell 将数据库导出到 BACPAC](sql-database-export-powershell.md)。
+* [业务连续性概述](sql-database-business-continuity.md)
+* [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
 
 ## <a name="additional-resources"></a>其他资源
 * [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx)
@@ -122,6 +120,6 @@ SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

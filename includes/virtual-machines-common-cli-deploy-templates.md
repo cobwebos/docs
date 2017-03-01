@@ -42,12 +42,18 @@ docker run -it microsoft/azure-cli
 
 你的帐户可能有多个订阅。 可以通过键入 `azure account list` 列出订阅，如下所示：
 
-```azure cli azure 帐户列表信息:    正在执行命令帐户列表数据:    名称                              Id                                    租户 Id                            当前数据:    --------------------------------  ------------------------------------  ------------------------------------  ------- 数据:    Contoso Admin                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  真实数据:    Fabrikam 开发                      xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  假  
-数据:    Fabrikam 测试                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  假  
-数据:    Contoso 生产                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  假  
+```azurecli
+azure account list
+info:    Executing command account list
+data:    Name                              Id                                    Tenant Id                            Current
+data:    --------------------------------  ------------------------------------  ------------------------------------  -------
+data:    Contoso Admin                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  true
+data:    Fabrikam dev                      xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
+data:    Fabrikam test                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
+data:    Contoso production                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 ```
 
-You can set the current Azure subscription by typing the following. Use the subscription name or the ID that has the resources you want to manage.
+若要设置当前 Azure 订阅，请键入以下内容。 使用订阅名称或 ID（包含你要管理的资源）。
 
 ```azurecli
 azure account set <subscription name or ID> true
@@ -1303,6 +1309,6 @@ azure vm disk attach <resource-group> <vm-name> [vhd-url]
 有关可用的其他模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

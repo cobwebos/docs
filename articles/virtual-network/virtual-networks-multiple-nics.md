@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 32b6ebe59f042b71567c37d5dbef7db5ae1e21d0
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: d10ae92ba79014d9700613c06ef37a437089f5ac
 
 
 ---
@@ -76,7 +76,7 @@ ms.openlocfilehash: 32b6ebe59f042b71567c37d5dbef7db5ae1e21d0
 
 * Azure 订阅。
 * 已配置虚拟网络。 有关 VNet 的详细信息，请参阅[虚拟网络概述](virtual-networks-overview.md)。
-* 已下载和安装最新版本的 Azure PowerShell。 请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+* 已下载和安装最新版本的 Azure PowerShell。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 要创建具有多个 NIC 的 VM，请通过在单个 PowerShell 会话中输入每个命令完成以下步骤：
 
@@ -231,6 +231,6 @@ ms.openlocfilehash: 32b6ebe59f042b71567c37d5dbef7db5ae1e21d0
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

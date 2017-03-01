@@ -1,6 +1,6 @@
 ---
 title: "Azure 门户：Azure SQL 数据库服务器级防火墙规则 | Microsoft 文档"
-description: "了解如何使用 Azure 门户，针对访问 Azure SQL 服务器的 IP 地址配置服务器级防火墙规则。"
+description: "了解如何使用 Azure 门户，针对访问 Azure SQL Server 的 IP 地址配置服务器级防火墙规则。"
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -12,23 +12,16 @@ ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 11/28/2016
-ms.author: rickbyh;carlrab
+ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: 36938e642853d587cd28405f5e518ac9ac0697ac
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 1939b69ee806d9091a21f3b21a276175d5a19a62
 
 
 ---
 # <a name="create-and-manage-azure-sql-database-server-level-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure SQL 数据库服务器级防火墙规则
-> [!div class="op_single_selector"]
-> * [概述](sql-database-firewall-configure.md)
-> * [Azure 门户](sql-database-configure-firewall-settings.md)
-> * [TSQL](sql-database-configure-firewall-settings-tsql.md)
-> * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
-> * [REST API](sql-database-configure-firewall-settings-rest.md)
-> 
 
 服务器级防火墙规则使管理员可以从指定的 IP 地址或某个范围的 IP 地址访问 SQL 数据库服务器。 当多个数据库具有相同的访问要求，但你不想花时间分别配置每个数据库时，也可以对用户使用服务器级防火墙规则。 Microsoft 建议尽量使用数据库级防火墙规则，以增强安全性并提高数据库的可移植性。 有关 SQL 数据库防火墙的概述，请参阅 [SQL 数据库防火墙规则概述](sql-database-firewall-configure.md)。
 
@@ -50,8 +43,8 @@ ms.openlocfilehash: 36938e642853d587cd28405f5e518ac9ac0697ac
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关入门教程，请参阅 [SQL 数据库教程：创建服务器、服务器级防火墙规则、示例数据库、数据库级防火墙规则并连接到 SQL Server](sql-database-get-started.md)。
-- 有关安全性入门教程，请参阅[安全性入门](sql-database-control-access-sql-authentication-get-started.md)
+- 有关预配和连接到使用服务器级防火墙的服务器的教程，请参阅[教程：使用 Azure 门户与 SQL Server Management Studio 来预配和访问 Azure SQL 数据库](sql-database-get-started.md)。
+- 有关 SQL Server 身份验证和数据库级防火墙的教程，请参阅 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)
 - 有关从开放源或第三方应用程序连接到 Azure SQL 数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 - 若要了解如何创建可以连接到数据库的其他用户，请参阅 [SQL 数据库身份验证和授权：授予访问权限](https://msdn.microsoft.com/library/azure/ee336235.aspx)。
 
@@ -64,6 +57,6 @@ ms.openlocfilehash: 36938e642853d587cd28405f5e518ac9ac0697ac
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,14 +1,25 @@
 ---
+title: "Azure 监视和诊断文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 API 参考、最佳实践和其他资源。"
+services: monitoring-and-diagnostics
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: monitoring-and-diagnostics
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 23978b98ce1ffab18f4fb843ca8904062bf4253e
+ms.sourcegitcommit: 88bfad219ee0564552ee80da5dc944b7e53320db
+ms.openlocfilehash: aa0837d82f5e938440096cd6d12d80bc42a07528
 
 ---
-
 # <a name="monitoring-and-diagnostics-documentation"></a>监视和诊断文档
 
-监视和诊断是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务，以及处理在开发和管理云应用程序的过程中遇到的重大难题。  监视和诊断代表着用于生成和管理这些企业级第 1 层云规模应用程序的下一代中间件平台。
+了解如何使用 Azure 监视和诊断服务来跟踪性能、维护安全性以及识别趋势。 教程、API 参考、最佳实践和其他文档可帮助你了解如何使用监视和诊断，以及如何规划和部署可缩放的可靠解决方案。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -143,17 +154,26 @@ ms.openlocfilehash: 23978b98ce1ffab18f4fb843ca8904062bf4253e
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema">Azure 诊断架构</a></h3>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot0">Azure 诊断架构 1.0</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot2">Azure 诊断架构 1.2</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-to-1dot5">Azure 诊断架构 1.3 到 1.5</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/monitoring-and-diagnostics.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载监视和诊断文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

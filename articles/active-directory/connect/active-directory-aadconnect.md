@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect：将本地标识与 Azure Active Directory 集成 | Microsoft Docs"
+title: "将 Active Directory 连接到 Azure Active Directory | Microsoft Docs"
 description: "Azure AD Connect 会将你的本地目录与 Azure Active Directory 集成。 这样，你便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。"
 keywords: "Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD Connect, 安装 active directory"
 services: active-directory
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/13/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c4eef02a10cbb646e3d96ed444a0b3d957e0361d
-ms.openlocfilehash: 1d79c703133ce568c3d87821364af2fac7686bff
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: fe52867519aa65cabb62a876d5bfe57310b90fd6
 
 
 ---
-# <a name="integrating-your-on-premises-identities-with-azure-active-directory"></a>将本地标识与 Azure Active Directory 集成
+# <a name="connect-active-directory-with-azure-active-directory"></a>将 Active Directory 连接到 Azure Active Directory
 Azure AD Connect 会将你的本地目录与 Azure Active Directory 集成。 这样，你便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
 
 > [!IMPORTANT]
@@ -159,6 +159,6 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

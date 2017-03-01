@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2016
+ms.date: 01/09/2017
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 738c6ecb40118491dd2e833443c91891e99941d3
+ms.sourcegitcommit: 5f62eef58c8a334013b000176f74cc8f7652f688
+ms.openlocfilehash: 312d1f417df612eee46bb078d784576a438ba0ab
 
 
 ---
@@ -380,14 +380,7 @@ Azure DocumentDB 是可以存储文档的 NoSQL 数据库。 DocumentDB 数据�
 
 文档集合提供一个自然机制用于在单一数据库中将数据分区。 在内部，DocumentDB 数据库可以跨多台服务器，并可以尝试跨服务器分布集合以分散负载。 实施分片的最简单方法是为每个分片创建一个集合。
 
-> [!NOTE]
-> 每个 DocumentDB 数据库都有一个*性能级别*，用于确定它所获取的资源量。 性能级别与*请求单位* (RU) 比率限制关联。 RU 比率限制指定要保留的并可供该集合独占使用的资源量。 集合的成本取决于为该集合选择的性能级别。 性能级别（以及 RU 比率限制）越高，则费用就越高。 可以使用 Azure 门户来调整集合的性能级别。 有关详细信息，请参阅 Microsoft 网站上的 [Performance levels in DocumentDB]（DocumentDB 中的性能级别）页。
->
->
-
 所有数据库在 DocumentDB 帐户的上下文中创建。 一个 DocumentDB 帐户可以包含多个数据库，并指定数据库要在哪些区域中创建。 每个 DocumentDB 帐户还强制实施自身的访问控制。 可以使用 DocumentDB 帐户异地查找靠近需要访问帐户的用户的分片（数据库中的集合），并强制实施限制，以便只有这些用户才能连接到这些帐户。
-
-每个 DocumentDB 帐户都有配额，用于限制其包含的数据库和集合数目，以及可用的文档存储量。 这些限制随时会更改，但 Microsoft 网站上的 [DocumentDB limits and quotas]（DocumentDB 限制和配额）页上已提供了说明。 如果实施的系统中所有分片都属于同一数据库，则理论上有可能会达到帐户的存储容量限制。
 
 在此情况下，可能需要创建更多的 DocumentDB 帐户和数据库，并跨这些数据库分布分片。 但是，即使你不太可能会超过数据库的存储容量，使用多个数据库也是个不错的做法。 这是因为，每个数据库都有自身的用户和权限集，你可以使用这种机制按数据库隔离对集合的访问。
 
@@ -405,12 +398,10 @@ Azure DocumentDB 是可以存储文档的 NoSQL 数据库。 DocumentDB 数据�
 
 确定如何使用 DocumentDB 数据库将数据分区时，请注意以下几点：
 
-* **DocumentDB 数据库的可用资源受限于 DocumentDB 帐户的配额限制**。 每个数据库可以保存许多集合（同样存在限制），每个集合都与控制该集合 RU 比率限制（保留吞吐量）的性能级别相关联。 有关详细信息，请转到 Microsoft 网站上的 [DocumentDB limits and quotas]（DocumentDB 限制和配额）页。
 * **每个文档必须有一个可用于在保存该文档的集合中唯一标识该文档的属性**。 此属性与分片键不同，后者定义文档要保存在哪个集合中。 一个集合可以包含大量的文档。 理论上只受限于文档 ID 的最大长度。 文档 ID 最多可包含 255 个字符。
 * **针对文档的所有操作都在事务的上下文中执行。DocumentDB 数据库中事务的范围是包含该文档的集合。** 如果操作失败，已执行的工作将会回滚。 当文档正在接受某项操作时，所做的任何更改将受限于快照级隔离。 例如，如果创建新文档的请求失败，此机制将保证另一个同时查询数据库的用户不会看到当时删除的部分文档。
 * **DocumentDB 数据库查询的范围还只限于集合级别**。 单个查询只能从一个集合检索数据。 如果需要从多个集合检索数据，则必须分别查询每个集合，并将结果合并到应用程序代码中。
 * **DocumentDB 数据库支持所有可与文档一起存储在集合中的可编程项**。 这包括存储过程、用户定义的函数和触发器（以 JavaScript 编写）。 这些项可以访问同一集合中的任何文档。 此外，这些项在环境事务的范围内运行（如果是由于针对文档执行了创建、删除或替换操作而激发了触发器），或者通过启动新的事务执行（如果是由于显式客户端请求结果而运行的存储过程）。 如果可编程项中的代码引发异常，事务将会回滚。 可以使用存储过程和触发器来维护文档之间的完整性和一致性，但这些文档必须属于同一集合。
-* **要在 DocumentDB 帐户的数据库中保存的集合应该不太可能会超过集合的性能级别所定义的吞吐量限制**。 Microsoft 网站上的 [Manage DocumentDB capacity needs]（管理 DocumentDB 容量需求）页上已说明了这些限制。 如果预计会达到这些限制，请考虑在不同的 DocumentDB 帐户中跨数据库拆分集合，以减少每个集合的负载。
 
 ## <a name="partitioning-strategies-for-azure-search"></a>Azure 搜索的分区策略
 搜索数据的功能通常是许多 web 应用程序提供的主要导航和浏览方法。 它可以帮助用户根据搜索条件的组合快速查找资源（例如，电子商务应用程序中的产品）。 Azure 搜索服务针对 Web 内容提供全文搜索功能，并包括自动提示、根据近似的匹配内容建议查询，以及分面导航等功能。 有关这些功能的完整说明，请参阅 Microsoft 网站上的 [What is Azure Search?]（什么是 Azure 搜索？）页。
@@ -547,7 +538,6 @@ Redis 网站上的 [Partitioning: how to split data among multiple Redis instanc
 * Microsoft 网站上的 [Performing entity group transactions]（执行实体组事务）页提供了有关通过存储在 Azure 表存储的实体执行事务操作的详细信息。
 * Microsoft 网站上的 [Azure Storage table design guide]（Azure 存储表设计指南）一文包含有关在 Azure 表存储中分区数据的详细信息。
 * Microsoft 网站上的 [Using Azure Content Delivery Network]（使用 Azure 内容交付网络）页介绍了如何使用 Azure 内容交付网络复制保存在 Azure Blob 存储中的数据。
-* Microsoft 网站上的 [Manage DocumentDB capacity needs]（管理 DocumentDB 容量需求）页包含有关 Azure DocumentDB 数据库如何分配资源的信息。
 * Microsoft 网站上的 [What is Azure Search?]（什么是 Azure 搜索？）页全面介绍了 Azure 搜索提供的功能。
 * Microsoft 网站上的 [Service limits in Azure Search]（Azure 搜索中的服务限制）页包含有关每个 Azure 搜索实例的容量的信息。
 * Microsoft 网站上的 [Supported data types (Azure Search)]（支持的数据类型（Azure 搜索））页汇总了可以在可搜索文档和索引中使用的数据类型。
@@ -564,11 +554,9 @@ Redis 网站上的 [Partitioning: how to split data among multiple Redis instanc
 [Data consistency primer]: http://aka.ms/Data-Consistency-Primer
 [数据分区指南]: https://msdn.microsoft.com/library/dn589795.aspx
 [数据类型]: http://redis.io/topics/data-types
-[DocumentDB limits and quotas]: documentdb/documentdb-limits.md
 [Elastic Database features overview]: sql-database/sql-database-elastic-scale-introduction.md
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
 [索引表模式]: http://aka.ms/Index-Table-Pattern
-[Manage DocumentDB capacity needs]: documentdb/documentdb-manage.md
 [具体化视图模式]: http://aka.ms/Materialized-View-Pattern
 [Multi-shard querying]: sql-database/sql-database-elastic-scale-multishard-querying.md
 [Partitioning: how to split data among multiple Redis instances]: http://redis.io/topics/partitioning（分区：如何在多个 Redis 实例之间拆分数据）
@@ -588,6 +576,6 @@ Redis 网站上的 [Partitioning: how to split data among multiple Redis instanc
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

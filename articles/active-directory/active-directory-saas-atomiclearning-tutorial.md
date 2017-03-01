@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bc77a43199a2d90978739eb1db89994a64990b76
+ms.sourcegitcommit: 32f0a3d9e8ee2c419a4171cd6702ce625648da94
+ms.openlocfilehash: 9de55f53d2bf574022f2a37222f58ee3a72d62ec
 
 
 ---
@@ -121,7 +121,7 @@ ms.openlocfilehash: bc77a43199a2d90978739eb1db89994a64990b76
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://secure2.atomiclearning.com/sso/shibboleth/<companyname>`。
 
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 
 1. 在“配置 Atomic Learning 的单一登录”页上，单击“下载元数据”，然后将该文件保存在计算机上。
    
@@ -166,7 +166,7 @@ ms.openlocfilehash: bc77a43199a2d90978739eb1db89994a64990b76
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
@@ -180,7 +180,7 @@ ms.openlocfilehash: bc77a43199a2d90978739eb1db89994a64990b76
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -252,6 +252,6 @@ ms.openlocfilehash: bc77a43199a2d90978739eb1db89994a64990b76
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

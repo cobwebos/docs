@@ -3,20 +3,22 @@ title: "使用索引器连接 DocumentDB 和 Azure 搜索 | Microsoft Docs"
 description: "本文介绍如何将 Azure 搜索索引器与 DocumentDB 作为数据源联合使用。"
 services: documentdb
 documentationcenter: 
-author: dennyglee
+author: mimig1
 manager: jhubbard
-editor: mimig
+editor: 
 ms.assetid: fdef3d1d-b814-4161-bdb8-e47d29da596f
 ms.service: documentdb
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 07/08/2016
-ms.author: denlee
+ms.date: 01/10/2017
+ms.author: mimig
+redirect_url: https://docs.microsoft.com/azure/search/search-howto-index-documentdb
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 81dce18eb33dcb31808e41848e543d1488e8cfb7
+ms.sourcegitcommit: 9a5416b1c26d1e8eaecec0ada79d357f32ca5ab1
+ms.openlocfilehash: c318d7133e26ec3a39d6fc97b0693b44d742d456
 
 
 ---
@@ -75,7 +77,6 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 
     SELECT s.id, s.Title, s.Abstract, s._ts FROM Sessions s WHERE s._ts >= @HighWaterMark
 
-
 ### <a name="a-iddatadeletiondetectionpolicyacapturing-deleted-documents"></a><a id="DataDeletionDetectionPolicy"></a>捕获已删除的文档
 在源表中删除行时，你也应该从搜索索引中删除这些行。 数据删除检测策略旨在有效识别已删除的数据项。 目前，唯一支持的策略是 `Soft Delete` 策略（删除标有某种类型的标志），它按如下所示指定：
 
@@ -89,6 +90,42 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 > 如果你使用的是自定义投影，则将需要在 SELECT 子句中包含 softDeleteColumnName 属性。
 > 
 > 
+
+### <a name="a-idleveagingqueriesaleveraging-queries"></a><a id="LeveagingQueries"></a>利用查询
+除了捕获已更改和已删除的文档外，还可以通过指定 DocumentDB 查询来平展嵌套的属性、展开数组、投影 json 属性以及筛选要编制索引的数据。 操作要编制索引的数据可以提高 Azure 搜索索引器的性能。
+
+示例文档：
+
+    {
+        "userId": 10001,
+        "contact": {
+            "firstName": "andy",
+            "lastName": "hoh"
+        },
+        "company": "microsoft",
+        "tags": ["azure", "documentdb", "search"]
+    }
+
+
+平展查询：
+
+    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark
+    
+    
+投影查询：
+
+    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark
+
+
+展开数组查询：
+
+    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark
+    
+    
+筛选查询：
+
+    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark
+
 
 ### <a name="a-idcreatedatasourceexamplearequest-body-example"></a><a id="CreateDataSourceExample"></a>请求正文示例
 下面的示例创建具有自定义查询和策略提示的数据源：
@@ -257,6 +294,6 @@ Azure 搜索支持创建和管理数据源（包括 DocumentDB）以及针对这
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

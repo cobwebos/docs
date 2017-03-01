@@ -1,5 +1,5 @@
 ---
-title: "Azure DPM 备份简介 | Microsoft Docs"
+title: "将 DPM 工作负荷备份到 Azure 经典门户 | Microsoft 文档"
 description: "使用 Azure 备份服务备份 DPM 服务器的简介"
 services: backup
 documentationcenter: 
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2016
-ms.author: trinadhk;giridham;jimpark;markgal
+ms.author: nkolli;giridham;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f34bdb66a201c84ae340460e9e496adaa4c15eb7
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: f4a5412615e23cc90acc54a9c7430b01fe77dbcf
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: f34bdb66a201c84ae340460e9e496adaa4c15eb7
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
-> 
-> 
+>
+>
 
 本文介绍如何使用 Microsoft Azure 备份来保护 System Center Data Protection Manager (DPM) 服务器和工作负载。 通过阅读本文，你将会了解：
 
@@ -55,8 +55,8 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
 > [!NOTE]
 > Linux 虚拟机只能使用文件一致性备份。
-> 
-> 
+>
+>
 
 ## <a name="prerequisites"></a>先决条件
 按如下所述让 Azure 备份做好备份 DPM 数据的准备：
@@ -100,12 +100,11 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
 > [!NOTE]
 > 从 System Center 2012 DPM SP1 开始，你可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

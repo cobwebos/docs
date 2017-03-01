@@ -1,5 +1,5 @@
 ---
-title: "如何为高级 Azure Redis 缓存配置虚拟网络支持 | Microsoft Docs"
+title: "为高级 Azure Redis 缓存配置虚拟网络 | Microsoft 文档"
 description: "了解如何为高级层 Azure Redis 缓存实例创建和管理虚拟网络支持"
 services: redis-cache
 documentationcenter: 
@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: a3e1472ed737039157a4593404dce371c57906da
+ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
+ms.openlocfilehash: 057affeccd955245ac07fc5e174447562e81b959
 
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
-Azure Redis 缓存具有不同的缓存产品（包括新推出的高级层），使缓存大小和功能的选择更加灵活。
-
-Azure Redis 缓存高级层功能包括群集、持久性和虚拟网络 (VNet) 支持。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
+Azure Redis 缓存具有不同的缓存产品（包括高级层功能，如群集、暂留和虚拟网络支持），使缓存大小和功能的选择更加灵活。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
 
 > [!NOTE]
 > Azure Redis 缓存同时支持经典 VNet 和 ARM VNet。
@@ -60,7 +58,7 @@ Azure Redis 缓存高级层功能包括群集、持久性和虚拟网络 (VNet) 
 > 
 > 
 
-创建缓存之后，可以在“设置”边栏选项卡中单击“虚拟网络”，查看 VNet 的配置。
+创建缓存之后，可以在“资源菜单”中单击“虚拟网络”，查看 VNet 的配置。
 
 ![虚拟网络][redis-cache-vnet-info]
 
@@ -168,6 +166,6 @@ Azure Redis 缓存高级层功能包括群集、持久性和虚拟网络 (VNet) 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

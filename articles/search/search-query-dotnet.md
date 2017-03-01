@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: 88d5148806e58d61b7b64327e07809eea5126211
 
 
 ---
@@ -34,10 +34,10 @@ ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
 
 注意，本文中的所有示例代码均用 C# 编写。 可以在 [GitHub](http://aka.ms/search-dotnet-howto)上找到完整的源代码。
 
-## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. 标识 Azure 搜索服务的查询 API 密钥
+## <a name="identify-your-azure-search-services-query-api-key"></a>标识 Azure 搜索服务的查询 API 密钥
 创建好 Azure 搜索索引后，即可使用 .NET SDK 发出查询。 首先，需要获取为已预配的搜索服务生成的其中一个查询 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-1. 若要查找服务的 API 密钥，必须登录 [Azure 门户](https://portal.azure.com/)
+1. 若要查找服务的 API 密钥，可登录到 [Azure 门户](https://portal.azure.com/)
 2. 转到 Azure 搜索服务的边栏选项卡
 3. 单击“密钥”图标
 
@@ -48,7 +48,7 @@ ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
 
 可以使用其中一个查询密钥来查询索引。 查询也可使用管理密钥，但最好在应用程序代码中使用查询密钥，因为这更符合 [最低特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege)。
 
-## <a name="ii-create-an-instance-of-the-searchindexclient-class"></a>II. 创建 SearchIndexClient 类的实例
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>创建 SearchIndexClient 类的实例
 若要使用 Azure 搜索 .NET SDK 发出查询，需要创建 `SearchIndexClient` 类的实例。 此类具有几个构造函数。 需要将搜索服务名称、索引名称和 `SearchCredentials` 对象用作参数。 `SearchCredentials` 包装 API 密钥。
 
 下面的代码使用搜索服务名称值以及应用程序配置文件（`app.config`或 `web.config`）中存储的 API 密钥值为“hotels”索引创建新的 `SearchIndexClient`（该索引在[使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md)中创建）：
@@ -62,7 +62,7 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 
 `SearchIndexClient` 具有 `Documents` 属性。 此属性提供查询 Azure 搜索索引所需的全部方法。
 
-## <a name="iii-query-your-index"></a>III. 查询索引
+## <a name="query-your-index"></a>查询索引
 使用 .NET SDK 进行搜索与对 `SearchIndexClient` 调用 `Documents.Search` 方法一样简单。 此方法采用几个参数，包括搜索文本以及可用于进一步优化查询的 `SearchParameters` 对象。
 
 #### <a name="types-of-queries"></a>查询类型
@@ -127,7 +127,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## <a name="iv-handle-search-results"></a>IV. 处理搜索结果
+## <a name="handle-search-results"></a>处理搜索结果
 `Documents.Search` 方法返回包含查询结果的 `DocumentSearchResult` 对象。 上一节中的示例使用名为 `WriteDocuments` 的方法将搜索结果输出到控制台：
 
 ```csharp
@@ -169,6 +169,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

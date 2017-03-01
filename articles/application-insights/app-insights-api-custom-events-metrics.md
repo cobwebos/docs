@@ -14,24 +14,24 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: 460b9e3cf2b4c7a85895c2db872344a1a5bc0ff9
+ms.sourcegitcommit: 08e2e0894810693696b326538a7449ddab30d2f8
+ms.openlocfilehash: 7b156e647bbf27fe31d9c89b764c6c1c363a8827
 
 
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
 
-在应用程序中插入几行代码，即可了解用户在该应用程序中执行的操作或帮助诊断问题。 可以从设备和桌面应用、Web 客户端和 Web 服务器发送遥测数据。 使用 [Visual Studio Application Insights](app-insights-overview.md) 核心遥测 API 可以发送自定义事件和指标，以及自己的标准遥测版本。 此 API 与标准 Application Insights 数据收集器使用的 API 相同。
+在应用程序中插入几行代码，即可了解用户在该应用程序中执行的操作或帮助诊断问题。 可以从设备和桌面应用、Web 客户端和 Web 服务器发送遥测数据。 使用 [Visual Studio Application Insights](app-insights-overview.md) 核心遥测 API 发送自定义事件和指标，以及自己的标准遥测版本。 此 API 与标准 Application Insights 数据收集器使用的 API 相同。
 
 ## <a name="api-summary"></a>API 摘要
 API 在所有平台中是一致的，只有一些微小的差异。
 
 | 方法 | 用途 |
 | --- | --- |
-| [`TrackPageView`](#page-views) |页面、屏幕、边栏选项卡或窗体 |
+| [`TrackPageView`](#page-views) |页面、屏幕、边栏选项卡或窗体。 |
 | [`TrackEvent`](#track-event) |用户操作和其他事件。 用于跟踪用户行为或监视性能。 |
-| [`TrackMetric`](#track-metric) |性能度量，例如与特定事件不相关的队列长度 |
+| [`TrackMetric`](#track-metric) |性能度量，例如与特定事件不相关的队列长度。 |
 | [`TrackException`](#track-exception) |记录诊断的异常。 跟踪与其他事件的相关性，以及检查堆栈跟踪。 |
 | [`TrackRequest`](#track-request) |记录服务器请求的频率和持续时间以进行性能分析。 |
 | [`TrackTrace`](#track-trace) |诊断日志消息。 还可以捕获第三方日志。 |
@@ -46,23 +46,23 @@ API 在所有平台中是一致的，只有一些微小的差异。
 
   * [ASP.NET 项目][greenbrown]
   * [Java 项目][java]
-  * [每个网页中的 JavaScript][客户端]   
+  * [每个网页中的 JavaScript][client]   
 * 在设备或 Web 服务器代码中包含以下内容：
 
     *C#：* `using Microsoft.ApplicationInsights;`
 
-    *VB：* `Imports Microsoft.ApplicationInsights`
+    Visual Basic：`Imports Microsoft.ApplicationInsights`
 
     *Java：* `import com.microsoft.applicationinsights.TelemetryClient;`
 
-## <a name="construct-a-telemetryclient"></a>构造 TelemetryClient
+## <a name="constructing-a-telemetryclient-instance"></a>构造 TelemetryClient 实例
 构造 TelemetryClient 的实例（网页中的 JavaScript 除外）：
 
-*C#：*
+*C#*
 
     private TelemetryClient telemetry = new TelemetryClient();
 
-*VB：*
+Visual Basic
 
     Private Dim telemetry As New TelemetryClient
 
@@ -72,12 +72,12 @@ API 在所有平台中是一致的，只有一些微小的差异。
 
 TelemetryClient 是线程安全的。
 
-建议针对每个应用模块使用 `TelemetryClient` 的实例。 例如，可以在 Web 服务中使用一个 `TelemetryClient` 报告传入的 http 请求，在中间件类中使用另一个实例报告业务逻辑事件。 可以设置诸如 `TelemetryClient.Context.User.Id` 的属性来跟踪用户和会话，或设置 `TelemetryClient.Context.Device.Id` 来标识计算机。 此信息将附加到实例发送的所有事件。
+建议针对每个应用模块都使用一个 TelemetryClient 实例。 例如，可以在 Web 服务中使用一个 TelemetryClient 实例报告传入的 HTTP 请求，在中间件类中使用另一个实例报告业务逻辑事件。 可以设置诸如 `TelemetryClient.Context.User.Id` 的属性来跟踪用户和会话，或设置 `TelemetryClient.Context.Device.Id` 来标识计算机。 此信息将附加到实例发送的所有事件中。
 
-## <a name="track-event"></a>跟踪事件
-在 Application Insights 中，*自定义事件*是可以在[指标资源管理器][指标]中显示为聚合计数，以及在[诊断搜索][诊断]中显示为单个项的数据点。 （它与 MVC 或其他框架“事件”不相关。）
+## <a name="trackevent"></a>TrackEvent
+在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器][metrics]中显示为聚合计数，在[诊断搜索][diagnostic]中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
 
-在代码中插入 TrackEvent 调用可以统计用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误。
+在代码中插入 TrackEvent 调用可以统计用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
 例如，在游戏应用中，每当用户获胜时将会发送事件：
 
@@ -89,7 +89,7 @@ TelemetryClient 是线程安全的。
 
     telemetry.TrackEvent("WinGame");
 
-*VB*
+Visual Basic
 
     telemetry.TrackEvent("WinGame")
 
@@ -99,30 +99,28 @@ TelemetryClient 是线程安全的。
 
 
 ### <a name="view-your-events-in-the-azure-portal"></a>在 Azure 门户中查看事件
-若要查看事件计数，请打开“指标资源管理器”边栏选项卡、添加新图表，然后选择“事件”。[](app-insights-metrics-explorer.md)  
+若要查看事件计数，请打开[“指标资源管理器”](app-insights-metrics-explorer.md)边栏选项卡、添加新图表，然后选择“事件”。  
 
-![](./media/app-insights-api-custom-events-metrics/01-custom.png)
+![查看自定义事件计数](./media/app-insights-api-custom-events-metrics/01-custom.png)
 
 若要比较不同事件的计数，请将图表类型设置为“网格”，并按事件名称分组：
 
-![](./media/app-insights-api-custom-events-metrics/07-grid.png)
+![设置图表类型和分组](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
-在网格中逐个单击事件名称，查看该事件的发生次数。
+在网格中逐个单击事件名称，查看该事件的发生次数。 单击任何一项事件可查看详细信息。
 
 ![钻取事件](./media/app-insights-api-custom-events-metrics/03-instances.png)
-
-单击任何一项事件可查看详细信息。
 
 若要在“搜索”或“指标资源管理器”中专注查看特定事件，请将边栏选项卡筛选器设置为所需的事件名称：
 
 ![打开“筛选器”，展开“事件名称”，然后选择一个或多个值](./media/app-insights-api-custom-events-metrics/06-filter.png)
 
-## <a name="track-metric"></a>跟踪指标
+## <a name="trackmetric"></a>TrackMetric
 使用 TrackMetric 发送未附加到特定事件的指标。 例如，可以定期监视队列长度。
 
-指标在指标资源管理器中显示为统计图表，但不同于事件，你无法在诊断搜索中搜索单个项。
+指标在指标资源管理器中显示为统计图表。 但不同于事件，无法在诊断搜索中搜索单个事件。
 
-只能正常显示 >= 0 的指标值。
+这些值应大于或等于 0，以便正确显示指标值。
 
 *JavaScript*
 
@@ -132,7 +130,7 @@ TelemetryClient 是线程安全的。
 
     telemetry.TrackMetric("Queue", queue.Length);
 
-*VB*
+Visual Basic
 
     telemetry.TrackMetric("Queue", queue.Length)
 
@@ -157,16 +155,15 @@ TelemetryClient 是线程安全的。
 
 ![添加新图表或选择图表，然后在“自定义”下面选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
-可以[对指标数目使用一些限制](#limits)。
 
 ## <a name="page-views"></a>页面视图
-在设备或网页应用中，加载每个屏幕或页面时默认将发送页面视图遥测数据。 但是，可以更改为在其他时间或不同时间跟踪页面视图。 例如，在显示选项卡或边栏选项卡的应用中，可以在用户每次打开新边栏选项卡时跟踪一个“页面”。
+在设备或网页应用中，加载每个屏幕或页面时默认将发送页面视图遥测数据。 但是，可以更改为在其他时间或不同时间跟踪页面视图。 例如，在显示选项卡或边栏选项卡的应用中，可以在用户每次打开新边栏选项卡时跟踪一个页面。
 
 ![“概述”边栏选项卡上的用法可重用功能区](./media/app-insights-api-custom-events-metrics/appinsights-47usage-2.png)
 
 用户和会话数据与页面视图作为属性一起发送，以便在有页面视图遥测数据时显示用户与会话图表。
 
-#### <a name="custom-page-views"></a>自定义页面视图
+### <a name="custom-page-views"></a>自定义页面视图
 *JavaScript*
 
     appInsights.trackPageView("tab1");
@@ -175,7 +172,7 @@ TelemetryClient 是线程安全的。
 
     telemetry.TrackPageView("GameReviewPage");
 
-*VB*
+Visual Basic
 
     telemetry.TrackPageView("GameReviewPage")
 
@@ -184,13 +181,12 @@ TelemetryClient 是线程安全的。
 
     appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
-#### <a name="timing-page-views"></a>计时页面视图
+### <a name="timing-page-views"></a>计时页面视图
 默认情况下，报告为“页面视图加载时间”的时间测量是从浏览器发送请求开始、调用浏览器的页面加载事件为止的时间。
 
 可以：
 
-* 在 [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) 调用中设置显式持续时间。
-  * `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`
+* 在 [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
 * 使用页面视图计时调用 `startTrackPage` 和 `stopTrackPage`。
 
 *JavaScript*
@@ -207,8 +203,8 @@ TelemetryClient 是线程安全的。
 
 显示在指标资源管理器中的最终页面加载持续时间派生自开始调用与停止调用的间隔时间。 实际时间间隔由你决定。
 
-## <a name="track-request"></a>跟踪请求
-由服务器 SDK 用来记录 HTTP 请求。
+## <a name="trackrequest"></a>TrackRequest
+服务器 SDK 使用 TrackRequest 记录 HTTP 请求。
 
 如果想要在没有 Web 服务模块运行的上下文中模拟请求，也可以自行调用。
 
@@ -244,7 +240,7 @@ TelemetryClient 是线程安全的。
         ...
         telemetry.TrackEvent(...); // or other Track* calls
         ...
-        // Set properties of containing telemetry item - for example:
+        // Set properties of containing telemetry item--for example:
         operation.Telemetry.ResponseCode = "200";
 
         // Optional: explicitly send telemetry item:
@@ -252,16 +248,21 @@ TelemetryClient 是线程安全的。
 
     } // When operation is disposed, telemetry item is sent.
 
-除了设置操作上下文以外，`StartOperation` 还创建采用指定类型的遥测项，并在释放操作或在显式调用 `StopOperation` 时发送该项。 如果使用 `RequestTelemetry` 作为遥测类型，其持续时间将设置为开始与停止的间隔时间。
+除了设置操作上下文之外，`StartOperation` 还会创建一个所指定类型的遥测项。 在处理操作时，或如果显式调用 `StopOperation`，它将发送遥测项。 如果使用 `RequestTelemetry` 作为遥测类型，其持续时间将设置为开始与停止的间隔时间。
 
-操作上下文不能嵌套。 如果已存在操作上下文，其 ID 已与所有被包含项（包括使用 StartOperation 创建的项）关联。
+操作上下文不能嵌套。 如果已存在操作上下文，其 ID 已与所有被包含项（包括使用 `StartOperation` 创建的项）关联。
 
 在搜索中，操作上下文可用于创建“相关项”列表：
 
 ![相关项](./media/app-insights-api-custom-events-metrics/21.png)
 
-## <a name="track-exception"></a>跟踪异常
-将异常发送到 Application Insights：[统计异常][指标]来指明问题的频率；[检查单个异常][诊断]。 报告包含堆栈跟踪。
+## <a name="trackexception"></a>TrackException
+将异常发送到 Application Insights：
+
+* 用于[对其计数][metrics]，作为问题发生频率的指示。
+* 用于[检查单个事件][diagnostic]。
+
+报告包含堆栈跟踪。
 
 *C#*
 
@@ -287,9 +288,9 @@ TelemetryClient 是线程安全的。
 
 SDK 将自动捕获许多异常，因此不一定需要显式调用 TrackException。
 
-* ASP.NET：[编写代码来捕获异常](app-insights-asp-net-exceptions.md)
-* J2EE：[自动捕获异常](app-insights-java-get-started.md#exceptions-and-request-failures)
-* JavaScript：自动捕获。 若要禁用自动收集，请在插入网页的代码片段中添加一行：
+* ASP.NET：[编写代码来捕获异常](app-insights-asp-net-exceptions.md)。
+* J2EE：[自动捕获异常](app-insights-java-get-started.md#exceptions-and-request-failures)。
+* JavaScript：自动捕获异常。 若要禁用自动收集，请在插入网页的代码片段中添加一行：
 
     ```
     ({
@@ -298,10 +299,10 @@ SDK 将自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
     })
     ```
 
-## <a name="track-trace"></a>跟踪线索
-使用此选项可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索][诊断]中检查。
+## <a name="tracktrace"></a>TrackTrace
+使用 TrackTrace 可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索][diagnostic]中检查。
 
-[日志适配器][跟踪]使用此 API 将第三方日志发送到门户。
+[日志适配器][trace]使用此 API 将第三方日志发送到门户。
 
 *C#*
 
@@ -313,17 +314,17 @@ SDK 将自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
 `message` 上的大小限制比属性上的限制高得多。
 TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 例如，可在此处对 POST 数据进行编码。  
 
-此外，可向你的消息添加严重性级别。 并像其他遥测一样，可以添加用于帮助筛选或搜索不同跟踪集的属性值。 例如：
+此外，可向你的消息添加严重性级别。 并像其他遥测一样，可以添加属性值以帮助筛选或搜索不同跟踪集。 例如：
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-这使你可以在“搜索”[][诊断]中轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
+在[“搜索”][diagnostic]中，可轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
 
-## <a name="track-dependency"></a>跟踪依赖项
-可以使用此调用于跟踪响应时间以及调用外部代码片段的成功率。 结果将显示在门户上的依赖项图表中。
+## <a name="trackdependency"></a>TrackDependency
+可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果将显示在门户上的依赖项图表中。
 
 ```C#
 
@@ -341,7 +342,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
             }
 ```
 
-请记住，服务器 SDK 包含[依赖项模块](app-insights-asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 如果想要跟踪不会由自动跟踪捕获的调用，或不想要安装代理，可以使用此调用。
+请记住，服务器 SDK 包含[依赖项模块](app-insights-asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 如果想要跟踪自动跟踪未捕获的调用，或不想安装代理，可以使用此调用。
 
 若要关闭标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。
 
@@ -358,9 +359,9 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 请注意，[服务器遥测通道](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)的函数是异步的。
 
 ## <a name="authenticated-users"></a>经过身份验证的用户
-在 Web 应用中，默认按 Cookie 标识用户。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计他们。
+在 Web 应用中，默认按 Cookie 标识用户。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
 
-但是，如果用户登录到应用，可以通过在浏览器代码中设置经过身份验证的用户 ID 来获取更准确的计数：
+如果用户登录到应用，可以通过在浏览器代码中设置经过身份验证的用户 ID 来获取更准确的计数：
 
 *JavaScript*
 
@@ -386,28 +387,28 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
             </script>
         }
 
-不需要使用用户的实际登录名。 只需使用该用户的唯一 ID 即可。 该 ID 不能包含空格或 `,;=|` 字符。
+不需要使用用户的实际登录名。 只需使用该用户的唯一 ID 即可。 该 ID 不能包含空格或任何 `,;=|` 字符。
 
-还会在会话 Cookie 中设置用户 ID 并将其发送到服务器。 如果安装了服务器 SDK，则发送经过身份验证的用户 ID 作为客户端和服务器遥测上下文属性的一部分可以对它进行筛选和搜索。
+还可在会话 Cookie 中设置用户 ID 并将其发送到服务器。 如果安装了服务器 SDK，则经过身份验证的用户 ID 将作为客户端和服务器遥测上下文属性的一部分发送。 可对其进行筛选和搜索。
 
 如果应用将用户分组到帐户，则还可以传递该帐户的标识符（具有相同的字符限制）。
 
       appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
-在[指标资源管理器](app-insights-metrics-explorer.md)中可以创建统计**已经过身份验证的用户**和**用户帐户**的图表。
+在[指标资源管理器](app-insights-metrics-explorer.md)中，可以创建统计**经身份验证的用户**和**用户帐户**的图表。
 
-还可以[搜索][诊断]具有特定用户名和帐户的客户端数据点。
+还可以[搜索][diagnostic]具有特定用户名和帐户的客户端数据点。
 
-## <a name="a-namepropertiesafilter-search-and-segment-your-data-with-properties"></a><a name="properties"></a>使用属性对数据进行筛选、搜索和分段
+## <a name="a-namepropertiesafiltering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用属性筛选、搜索和细分数据
 可以将属性和度量值附加到事件（以及指标、页面视图、异常和其他遥测数据）。
 
-**属性**是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多个游戏，可以将游戏的名称附加到每个事件，了解哪些游戏较受欢迎。
+*属性*是可以在使用情况报告中用来筛选遥测数据的字符串值。 例如，如果应用提供多种游戏，可以将游戏的名称附加到每个事件，了解哪些游戏更受欢迎。
 
-字符串长度有 1k 的限制。 （如果想要发送大型数据区块，请使用消息参数 [TrackTrace](#track-trace)。）
+字符串长度限制为 1,000。 （如果想要发送大型数据区块，请使用消息参数 [TrackTrace](#track-trace)。）
 
-**指标**是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 图表可以根据连同事件一起发送的属性分段，让你获取不同游戏的独立图形或堆积图。
+*指标*是能够以图形方式呈现的数字值。 例如，可以查看玩家的分数是否逐渐增加。 可以根据连同事件一起发送的属性对图表进行分段，以便获取不同游戏的独立图形或堆积图。
 
-只能正常显示 >= 0 的指标值。
+这些值应大于或等于 0，以便正确显示指标值。
 
 可[对属性、属性值和指标的数目使用一些限制](#limits)。
 
@@ -442,7 +443,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
     telemetry.TrackEvent("WinGame", properties, metrics);
 
 
-*VB*
+Visual Basic
 
     ' Set up some properties:
     Dim properties = New Dictionary (Of String, String)
@@ -475,17 +476,18 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 >
 >
 
-**如果使用了指标**，请打开指标资源管理器，然后从自定义组中选择指标：
+如果使用了指标，请打开“指标资源管理器”，然后从“自定义”组中选择指标：
 
-![打开指标资源管理器，选择图表，然后选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
+![打开“指标资源管理器”，选择图表，然后选择指标](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
-*如果你的指标未显示或“自定义”标题未出现，请关闭选项边栏选项卡并稍后重试。有时，通过管道聚合指标可能需要花费一个小时。*
+> [!NOTE]
+> 如果指标未显示或“自定义”标题未出现，请关闭选项边栏选项卡并稍后重试。 有时，通过管道聚合指标可能需要花费一个小时。
 
-**如果使用了属性和指标**，请按属性将指标分段：
+*如果使用了属性和指标*，请按属性将指标分段：
 
 ![设置“分组”，然后在“分组依据”下面选择属性](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
 
-**在诊断搜索中**，可以查看发生的每个事件的属性和指标。
+*在诊断搜索中*，可以查看发生的每个事件的属性和指标。
 
 ![选择一个实例，然后选择“...”](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
 
@@ -493,9 +495,9 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 ![在“搜索”中键入搜索词](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-5.png)
 
-[详细了解搜索表达式][诊断]。
+[详细了解搜索表达式][diagnostic]。
 
-#### <a name="alternative-way-to-set-properties-and-metrics"></a>设置属性和指标的替代方法
+### <a name="alternative-way-to-set-properties-and-metrics"></a>设置属性和指标的替代方法
 如果更方便的话，可以收集不同对象中的事件的参数：
 
     var event = new EventTelemetry();
@@ -515,7 +517,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 >
 
 ## <a name="a-nametimeda-timing-events"></a><a name="timed"></a>计时事件
-有时，你想要绘制图表来呈现执行某个操作花费了多少时间。 例如，你可能想要知道用户在游戏中考虑如何选择时花费了多少时间。 这个例子很好地体现了度量参数的作用。
+有时，需要绘制图表来呈现执行某个操作花费了多少时间。 例如，你可能想要知道用户在游戏中考虑如何选择时花费了多少时间。 为此，可以使用度量参数。
 
 *C#*
 
@@ -538,7 +540,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 
 ## <a name="a-namedefaultsadefault-properties-for-custom-telemetry"></a><a name="defaults"></a>自定义遥测的默认属性
-如果想要为编写的一些自定义事件设置默认属性值，可以在 TelemetryClient 中设置。 这些值将附加到从该客户端发送的每个遥测项。
+如果想要为编写的一些自定义事件设置默认属性值，可以在 TelemetryClient 实例中设置。 这些值将附加到从该客户端发送的每个遥测项。
 
 *C#*
 
@@ -549,7 +551,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
     // Now all telemetry will automatically be sent with the context property:
     gameTelemetry.TrackEvent("WinGame");
 
-*VB*
+Visual Basic
 
     Dim gameTelemetry = New TelemetryClient()
     gameTelemetry.Context.Properties("Game") = currentGame.Name
@@ -573,21 +575,23 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 单个遥测调用可以重写其属性字典中的默认值。
 
-**对于 JavaScript Web 客户端**，请[使用 JavaScript 遥测初始值设定项](#js-initializer)。
+*对于 JavaScript Web 客户端*，请[使用 JavaScript 遥测初始值设定项](#js-initializer)。
 
-**若要向所有遥测数据（包括来自标准收集模块的数据）添加属性**，请[实现 `ITelemetryInitializer`](app-insights-api-filtering-sampling.md#add-properties)。
+若要向所有遥测数据（包括来自标准收集模块的数据）添加属性，请[实现 `ITelemetryInitializer`](app-insights-api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>采样、筛选和处理遥测数据
-可以编写代码，在从 SDK 发送遥测数据之前对数据进行处理。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
+可以先通过编写代码来处理遥测数据，然后再从 SDK 发送该数据。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
 
-* 通过实现 `ITelemetryInitializer` [将属性添加到](app-insights-api-filtering-sampling.md#add-properties)遥测 - 例如，添加版本号码或从其他属性计算得出的值。
-* [筛选](app-insights-api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcesor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
-* [采样](app-insights-api-filtering-sampling.md)是减少从应用发送到门户的数据量的打包解决方案。 它不会影响显示的指标，且不影响你通过在相关项（如异常、请求和页面视图）之间导航来诊断问题。
+通过实现 `ITelemetryInitializer` [将属性添加到](app-insights-api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
 
-[了解详细信息](app-insights-api-filtering-sampling.md)
+[筛选](app-insights-api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcesor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
+
+[采样](app-insights-api-filtering-sampling.md)是减少从应用发送到门户的数据量的打包解决方案。 它不会影响显示的指标。 且不影响通过在相关项（如异常、请求和页面视图）之间导航来诊断问题。
+
+[了解详细信息](app-insights-api-filtering-sampling.md)。
 
 ## <a name="disabling-telemetry"></a>禁用遥测
-**动态停止和启动**收集与传输遥测数据：
+*动态停止和启动*收集与传输遥测数据：
 
 *C#*
 
@@ -598,7 +602,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config][配置] 中的相关行。 例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+若要禁用选定的标准收集器（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config][config] 中的相关行。 例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 ## <a name="a-namedebugadeveloper-mode"></a><a name="debug"></a>开发人员模式
 在调试期间，通过管道加速遥测会很有效，这样可以立即看到结果。 此外，还可以获得其他消息来帮助跟踪任何遥测问题。 在生产环境中请关闭此模式，因为它可能会拖慢应用。
@@ -607,12 +611,12 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 
-*VB*
+Visual Basic
 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
-## <a name="a-nameikeya-set-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>设置所选自定义遥测的检测密钥
+## <a name="a-nameikeya-setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>设置所选自定义遥测的检测密钥
 *C#*
 
     var telemetry = new TelemetryClient();
@@ -621,7 +625,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 
 ## <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
-若要避免混合来自开发、测试和生产环境的遥测，可以[创建单独的 Application Insights 资源][创建]，并根据环境更改其密钥。
+若要避免混合来自开发、测试和生产环境的遥测，可以[创建单独的 Application Insights 资源][create]，并根据环境更改其密钥。
 
 无需从配置文件获取检测密钥，可以在代码中设置密钥。 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 
@@ -646,7 +650,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 *使用 Razor 的 JavaScript*
 
     <script type="text/javascript">
-    // Standard Application Insights web page script:
+    // Standard Application Insights webpage script:
     var appInsights = window.appInsights || function(config){ ...
     // Modify this part:
     }({instrumentationKey:  
@@ -657,34 +661,30 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 
 ## <a name="telemetrycontext"></a>TelemetryContext
-TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起发送的值数。 它们通常由标准遥测模块设置，但你也可以自行设置。 例如：
+TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起发送的值。 它们通常由标准遥测模块设置，但你也可以自行设置。 例如：
 
     telemetry.Context.Operation.Name = "MyOperationName";
 
-如果自行设置这些值，请考虑从 [ApplicationInsights.config][配置] 中删除相关的代码行，以便你的值与标准值不会造成混淆。
+如果自行设置这些值，请考虑从 [ApplicationInsights.config][config] 中删除相关的代码行，以便你的值与标准值不会造成混淆。
 
-* **Component** 标识应用及其版本
-* **Device** 应用运行所在的设备的相关数据（在 Web 应用中，这是发送遥测数据的服务器或客户端设备）
-* **InstrumentationKey** 标识 Azure 中显示遥测数据的 Application Insights 资源。 通常从 ApplicationInsights.config 中选择
-* **Location** 标识设备的地理位置。
-* **Operation** 在 Web 应用中，为当前的 HTTP 请求。 在其他应用类型中，可将此属性设置为将事件分组在一起。
-  * **Id**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现“相关的项”
+* **Component**：应用及其版本。
+* **Device**：有关正在运行应用的设备的数据。 （在 Web 应用中，是指从其中发送遥测的服务器或客户端设备。）
+* **InstrumentationKey**：Azure 中显示遥测数据的 Application Insights 资源。 通常可从 ApplicationInsights.config 中选择。
+* **Location**：设备的地理位置。
+* **Operation**：在 Web 应用中，为当前的 HTTP 请求。 在其他应用类型中，可将此属性设置为将事件分组在一起。
+  * **Id**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现相关项。
   * **Name**：一个标识符，通常是 HTTP 请求的 URL。
-  * **SyntheticSource**：如果不为 null 或空，此字符串表示请求的源已标识为傀儡或 Web 测试。 默认情况下，该属性将从指标资源管理器的计算中排除。
-* **Properties** 与所有遥测数据一起发送的属性。 可以在单个 Track* 调用中重写。
-* **Session** 标识用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值将会更改。
-* **User** 用户信息
+  * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为傀儡或 Web 测试。 默认情况下，该属性将从指标资源管理器的计算中排除。
+* **Properties**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
+* **Session**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值将会更改。
+* **User**：用户信息。
 
 ## <a name="limits"></a>限制
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
-*如何避免达到数据速率限制？*
+若要避免达到数据速率限制，请使用[采样](app-insights-sampling.md)。
 
-* 使用[采样](app-insights-sampling.md)。
-
-*数据保留多长时间？*
-
-* 请参阅[数据保留和隐私][数据]。
+若要确定保留数据的时间期限，请参阅[数据保留和隐私][data]。
 
 ## <a name="reference-docs"></a>参考文档
 * [ASP.NET 参考](https://msdn.microsoft.com/library/dn817570.aspx)
@@ -704,34 +704,34 @@ TelemetryClient 具有上下文属性，其中包含与所有遥测数据一起�
 ## <a name="questions"></a>问题
 * *Track_() 调用可能会引发哪些异常？*
 
-    无。 不需要将它们包装在 try-catch 子句中。 如果 SDK 遇到问题，它将会记录消息，你可以在调试控制台输出中查看这些消息。也可在诊断搜索中查看这些消息（如果已传入）。
+    无。 不需要将它们包装在 try-catch 子句中。 如果 SDK 遇到问题，它将会在调试控制台输出中记录消息，如果消息已传入，可在诊断搜索中查看。
 * *是否可以使用某个 REST API 从门户获取数据？*
 
     是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[从 Analytics 导出到 Power BI](app-insights-export-power-bi.md) 和[连续导出](app-insights-export-telemetry.md)。
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>后续步骤
-[搜索事件和日志][诊断]
+* [搜索事件和日志][diagnostic]
 
-[示例和演练](app-insights-code-samples.md)
+* [示例和演练](app-insights-code-samples.md)
 
-[故障排除][问题与解答]
+* [故障排除][qna]
 
 <!--Link references-->
 
-[客户端]: app-insights-javascript.md
-[配置]: app-insights-configuration-with-applicationinsights-config.md
-[创建]: app-insights-create-new-resource.md
-[数据]: app-insights-data-retention-privacy.md
-[诊断]: app-insights-diagnostic-search.md
-[异常]: app-insights-asp-net-exceptions.md
+[client]: app-insights-javascript.md
+[config]: app-insights-configuration-with-applicationinsights-config.md
+[create]: app-insights-create-new-resource.md
+[data]: app-insights-data-retention-privacy.md
+[diagnostic]: app-insights-diagnostic-search.md
+[exceptions]: app-insights-asp-net-exceptions.md
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
-[指标]: app-insights-metrics-explorer.md
-[问题与解答]: app-insights-troubleshoot-faq.md
-[跟踪]: app-insights-search-diagnostic-logs.md
+[metrics]: app-insights-metrics-explorer.md
+[qna]: app-insights-troubleshoot-faq.md
+[trace]: app-insights-search-diagnostic-logs.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

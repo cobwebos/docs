@@ -4,7 +4,7 @@ description: "了解如何在 Azure App Service 中保护 Web 应用、移动应
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 5ce560b4-42d7-4b20-935c-0445fd539e39
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 169366535ed15d40de22bf71f444df7569562c8a
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 641fe31fc4b160fe5f0628df717006fb540394b9
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -60,7 +61,7 @@ Azure 负责保护运行应用程序的基础结构和平台，而你负责保�
 启用 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) 可帮助防范对应用与其用户之间的通信进行的 MITM 攻击。
 
 ## <a name="secure-data-tier"></a>保护数据层
-应用服务与 SQL 数据库高度集成，使所有连接字符串都进行了全面加密，并且仅在运行应用的 VM 上解密*且*仅在应用运行时解密。 此外，Azure SQL 数据库还提供许多安全功能来帮助保护应用程序数据免受网络威胁的危害，这些功能包括[静态加密](https://msdn.microsoft.com/library/dn948096.aspx)、[始终加密](https://msdn.microsoft.com/library/mt163865.aspx)、[动态数据掩码](../sql-database/sql-database-dynamic-data-masking-get-started.md)和[威胁检测](../sql-database/sql-database-threat-detection-get-started.md)。 如果有敏感数据或合规性要求，请参阅[保护 SQL 数据库](../sql-database/sql-database-security.md)，以了解有关如何保护数据的详细信息。
+应用服务与 SQL 数据库高度集成，使所有连接字符串都进行了全面加密，并且仅在运行应用的 VM 上解密*且*仅在应用运行时解密。 此外，Azure SQL 数据库还提供许多安全功能来帮助保护应用程序数据免受网络威胁的危害，这些功能包括[静态加密](https://msdn.microsoft.com/library/dn948096.aspx)、[始终加密](https://msdn.microsoft.com/library/mt163865.aspx)、[动态数据掩码](../sql-database/sql-database-dynamic-data-masking-get-started.md)和[威胁检测](../sql-database/sql-database-threat-detection.md)。 如果有敏感数据或合规性要求，请参阅[保护 SQL 数据库](../sql-database/sql-database-security-overview.md)，以了解有关如何保护数据的详细信息。
 
 如果你使用第三方数据库提供程序（如 ClearDB），则应直接查阅提供程序文档以了解安全性最佳实践。  
 
@@ -116,10 +117,5 @@ Azure App Service 通过 **FTPS** 提供对应用文件系统的安全 FTP 访�
 
 ## <a name="whats-changed"></a>发生的更改
 * 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

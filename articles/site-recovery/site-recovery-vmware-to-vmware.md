@@ -1,5 +1,5 @@
 ---
-title: "将本地 VMware 虚拟机或物理服务器复制到辅助站点 | Microsoft 文档"
+title: "将 VMware VM 或物理服务器复制到另一站点（经典 Azure 门户）| Microsoft 文档"
 description: "按照本文可使用 Azure Site Recovery 将 VMware VM 或 Windows/Linux 物理服务器复制到辅助站点。"
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: d325ce41e79ec85e08fbf4bb86e0cd7e0edf1c8f
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: cff6ef0c1c49110edc53ec82f88d9875439aab8a
 
 
 ---
-# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器复制到辅助站点
+# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>在经典 Azure 门户中将本地 VMware 虚拟机或物理服务器复制到辅助站点
+
 ## <a name="overview"></a>概述
 Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实时复制。 InMage Scout 随附在 Azure Site Recovery 服务订阅中。
 
@@ -83,7 +84,7 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实�
 
 ## <a name="updates"></a>更新
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
-Scout Update 4 是累积更新。 它包含从 Update 1 到 Update 3 的所有修复，以及之后的 bug 修复和增强功能。
+Scout Update 4 是累积更新。 它包含从 Update&1; 到 Update&3; 的所有修复，以及之后的 bug 修复和增强功能。
 
 **新的平台支持**
 
@@ -172,7 +173,7 @@ Update 2 中的修复包括：
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Update 1 包含以下 bug 修复和新功能：
 
-* 每个服务器实例享有 31 天的免费保护。 这样，你便可以测试功能或建立概念认证。
+* 每个服务器实例享有&31; 天的免费保护。 这样，你便可以测试功能或建立概念认证。
   * 从使用 Site Recovery Scout 首次保护服务器的时间开始计算的前 31 天，服务器上的所有操作（包括故障转移和故障回复）都是免费的。
   * 从第 32 天起，将会根据标准实例费率，针对每个受保护的服务器，向客户拥有的站点收取 Azure Site Recovery 保护费用。
   * 在 Azure Site Recovery 保管库的“仪表板”页上随时会显示当前计费的受保护服务器数目。
@@ -199,6 +200,6 @@ Update 1 包含以下 bug 修复和新功能：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

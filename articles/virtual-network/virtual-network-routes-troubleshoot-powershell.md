@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
 
 * **系统路由：**默认情况下，在 Azure 虚拟网络 (VNet) 中创建的每个子网都具有系统路由表，允许传送本地 VNet 流量、通过 VPN 网关的本地流量以及 Internet 流量。 对等互连的 VNet 也有系统路由。
 * **BGP 路由：**通过 ExpressRoute 或站点到站点 VPN 连接传播到网络接口。 阅读[使用 VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md) 和 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)一文，了解有关 BGP 路由的详细信息。
-* **用户定义的路由 (UDR)：**如果使用网络虚拟设备或强制隧道通过站点到站点 VPN 将流量传送到本地网络，可将用户定义的路由 (UDR) 与子网路由表相关联。 如果你不熟悉 UDR，请阅读[用户定义的路由](virtual-networks-udr-overview.md#user-defined-routes)一文。
+* **用户定义的路由 (UDR)：**如果使用网络虚拟设备或强制隧道通过站点到站点 VPN 将流量传送到本地网络，可将用户定义的路由 (UDR) 与子网路由表相关联。 如果不熟悉 UDR，请阅读[用户定义的路由](virtual-networks-udr-overview.md#user-defined-routes)一文。
 
 由于可将各种路由应用到网络接口，因此有时难以确定哪些聚合路由是有效的。 为了帮助排查 VM 网络连接问题，可以查看 Azure Resource Manager 部署模型中某个网络接口的所有有效路由。
 
@@ -57,7 +57,7 @@ ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
 ### <a name="view-effective-routes-for-a-network-interface"></a>查看网络接口的有效路由
 若要查看应用到网络接口的聚合路由，请完成以下步骤：
 
-1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 一文。
+1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 一文。
 2. 以下命令返回对资源组 *RG1* 中名为 *VM1-NIC1* 的网络接口应用的所有路由。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -139,6 +139,6 @@ ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 52a5dc6b832fb1314ef5994e932b1fe2b5e5de0b
+ms.sourcegitcommit: 8929a1697bf88da82fc027520d0126eaef872840
+ms.openlocfilehash: ec7bdf6b27cc073324d0d3a79b268e9730a6016b
 
 
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
-Azure Redis 缓存具有不同的缓存产品（包括新推出的高级层），使缓存大小和功能的选择更加灵活。
-
-Azure Redis 缓存高级层包括群集、持久性和虚拟网络支持等功能。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
+Azure Redis 缓存具有不同的缓存产品（包括高级层功能，如群集、暂留和虚拟网络支持），使缓存大小和功能的选择更加灵活。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
 
 有关其他高级缓存功能的信息，请参阅 [Azure Redis 缓存高级层简介](cache-premium-tier-intro.md)。
 
@@ -56,12 +54,18 @@ Azure Redis 缓存提供 Redis 群集的方式就像与[在 Redis 中实施](htt
 
 创建缓存后，即可连接到缓存并使用缓存，就像该缓存没有进行群集一样，而 Redis 则会将数据分布到整个缓存分片中。 如果诊断[已启用](cache-how-to-monitor.md#enable-cache-diagnostics)，则会为每个分片单独捕获度量值，这些度量值可在 Redis 缓存边栏选项卡中[查看](cache-how-to-monitor.md)。 
 
+> [!NOTE]
+> 
+> 配置了群集时，客户端应用程序的要求会有一些细微差异。 有关详细信息，请参阅[使用群集功能时，是否需要对客户端应用程序进行更改？](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+> 
+> 
+
 有关使用 StackExchange.Redis 客户端的群集功能的示例代码，请参阅 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
 
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>更改正在运行的高级缓存上的群集大小
-若要更改正在运行并且已启用群集功能的高级缓存上的群集大小，请在“设置”边栏选项卡中单击“(预览版) Redis 群集大小”。
+若要更改正在运行并且已启用群集功能的高级缓存上的群集大小，请在“资源菜单”中单击“(预览版) Redis 群集大小”。
 
 > [!NOTE]
 > 请注意，虽然 Azure Redis 缓存高级层已发行公开上市版，但 Redis 群集大小功能目前以预览版提供。
@@ -120,7 +124,7 @@ Azure Redis 缓存提供 Redis 群集的方式就像与[在 Redis 中实施](htt
 > 
 
 ### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>启用群集功能后，如何连接到我的缓存？
-连接到缓存时，可以使用的[终结点、端口和密钥](cache-configure.md#properties)与你连接到未启用群集功能的缓存时使用的相同。 Redis 在后端管理群集功能，因此不需要你通过客户端来管理它。
+连接到缓存时，可以使用的[终结点](cache-configure.md#properties)、[端口](cache-configure.md#properties)和[密钥](cache-configure.md#access-keys)与连接到未启用群集功能的缓存时使用的相同。 Redis 在后端管理群集功能，因此不需要你通过客户端来管理它。
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>我可以直接连接到缓存的各个分片吗？
 尚未正式提供此方面的支持。 话虽如此，但每个分片都是由主/副缓存对组成的，该缓存对统称缓存实例。 你可以在 GitHub 上通过 Redis 存储库的[不稳定](http://redis.io/download)分支使用 redis-cli 实用程序连接到这些缓存实例。 使用 `-c` 开关启动后，此版本可实现基本的支持。 有关详细信息，请参阅 [http://redis.io](http://redis.io) 上 [Redis cluster tutorial](http://redis.io/topics/cluster-tutorial)（Redis 群集教程）中的[Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)（操作群集）。
@@ -172,6 +176,6 @@ Azure Redis 缓存提供 Redis 群集的方式就像与[在 Redis 中实施](htt
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

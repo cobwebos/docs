@@ -1,13 +1,25 @@
 ---
+title: "Azure Data Lake Store 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何设置、管理和访问具有超高可伸缩性、与 Hadoop 兼容的 Data Lake 存储库，用于对任何大小、类型和引入速度的数据执行分析。"
+services: data-lake-store
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-lake-store
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: d26d0f965ad1195ab41e04e870ead1b335ff513e
+ms.sourcegitcommit: dcc8f86fe5871d307bf304252e80e64a0084ef49
+ms.openlocfilehash: d7f56dd2658de2cc270f569b871ebf28ad610fd7
 
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store 文档
 
-Azure Data Lake Store 是一个超大规模存储库，适用于大数据分析工作负荷。 使用 Azure Data Lake 可以在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析。  使用与 WebHDFS 兼容的方案可以从 Hadoop（HDInsight 群集提供）访问 Azure Data Lake Store。 它包含可实现安全性、可管理性、可伸缩性、可靠性和可用性的所有企业级功能。
+了解如何使用 Data Lake Store 创建具有超高可伸缩性、与 Hadoop 兼容的存储库，用于对任何大小、类型和引入速度的数据执行分析。 教程、API 参考和其他文档介绍了如何设置、管理及访问用于操作和探索分析的 Data Lake 存储库。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -202,15 +214,9 @@ Azure Data Lake Store 是一个超大规模存储库，适用于大数据分析�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-lake-store.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Data Lake Store 文档 </div>
-    </a>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

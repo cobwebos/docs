@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 32f69c4bcfdeb5dbbbc41deb6d98b2e97e9a095f
-ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
+ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
+ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
 
 
 ---
@@ -26,9 +26,9 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
 > [!NOTE]
 > 在使用复制活动创建管道之前，创建 Azure Data Lake Store 帐户，将数据移入/移出 Azure Data Lake store。 若要了解 Azure Data Lake Store，请参阅 [Azure Data Lake Store 入门](../data-lake-store/data-lake-store-get-started-portal.md)。
 >
-> 查看[生成首个管道教程](data-factory-build-your-first-pipeline.md)，了解创建数据工厂、链接服务、数据集和管道的详细步骤。 通过数据工厂编辑器或 Visual Studio 或 Azure PowerShell 使用 JSON 代码段创建数据工厂实体。
->
->
+
+## <a name="supported-authentication-types"></a>支持的身份验证类型
+Azure Data Lake Store 连接器支持**服务主体**身份验证和**用户凭据**身份验证。 推荐使用前者（尤其对于计划的数据副本），以避免后者令牌过期行为。 有关配置详细信息，请参阅 [Azure Data Lake Store 链接服务属性](#azure-data-lake-store-linked-service-properties)部分。
 
 ## <a name="copy-data-wizard"></a>复制数据向导
 若要创建将数据复制到 Azure Data Lake Store 和从 Azure Data Lake Store 复制数据的管道，最简单的方法是使用复制数据向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
@@ -69,28 +69,18 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
         }
     }
 }
 ```
 
-### <a name="to-create-azure-data-lake-linked-service-using-data-factory-editor"></a>使用数据工厂编辑器创建 Azure Data Lake 链接服务
-以下过程提供使用数据工厂编辑器创建 Azure Data Lake Store 链接服务的步骤。
-
-1. 在命令栏上单击“新建数据存储”并选择“Azure Data Lake Store”。
-2. 在 JSON 编辑器中，对 **dataLakeStoreUri** 属性输入 Data Lake 的 URI。
-3. 单击命令栏上的“授权”按钮。 可以看到一个弹出窗口。
-
-    ![授权按钮](./media/data-factory-azure-data-lake-connector/authorize-button.png)
-4. 使用凭据进行登录，现应已将 JSON 中的 **authorization** 属性分配到某个值。
-5. （可选）指定 JSON 中可选参数（如 **accountName**、**subscriptionID** 和 **resourceGroupName**）的值，或从 JSON 中删除这些属性。
-6. 单击命令栏上的“部署”，部署链接服务。
-
-> [!IMPORTANT]
-> 通过使用“授权”按钮生成的授权代码在一段时间后过期。 **令牌过期**时，使用“授权”按钮“重新授权”，并重新部署链接服务。 请参阅 [Azure Data Lake Store 链接服务](#azure-data-lake-store-linked-service-properties)部分了解详细信息。
->
+> [!NOTE]
+> 有关配置详细信息，请参阅 [Azure Data Lake Store 链接服务属性](#azure-data-lake-store-linked-service-properties)部分中的步骤。
 >
 
 **Azure Blob 输入数据集：**
@@ -208,9 +198,7 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
                 ],
                 "typeProperties": {
                     "source": {
-                        "type": "BlobSource",
-                        "treatEmptyAsNull": true,
-                        "blobColumnSeparators": ","
+                        "type": "BlobSource"
                       },
                       "sink": {
                         "type": "AzureDataLakeStoreSink"
@@ -252,16 +240,16 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
         }
     }
 }
 ```
 
 > [!NOTE]
-> 请参阅前面示例中的步骤，获取授权 URL。  
->
+> 有关配置详细信息，请参阅 [Azure Data Lake Store 链接服务属性](#azure-data-lake-store-linked-service-properties)部分中的步骤。
 >
 
 **Azure 存储链接服务：**
@@ -371,6 +359,7 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
   }
 }
 ```
+
 **包含复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **AzureDataLakeStoreSource**，将 **sink** 类型设置为 **BlobSink**。
@@ -422,19 +411,74 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
 ```
 
 ## <a name="azure-data-lake-store-linked-service-properties"></a>Azure Data Lake Store 链接服务属性
-可使用 Azure Storage 链接服务将 Azure 存储帐户链接到 Azure 数据工厂。 下表提供 Azure 存储链接服务专属 JSON 元素的描述。
+下表提供了特定于 Azure Data Lake Store 链接服务的 JSON 元素的说明，你可在**服务主体**和**用户凭据**身份验证之间进行选择。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type |type 属性必须设置为：**AzureDataLakeStore** |是 |
-| dataLakeStoreUri |指定 Azure Data Lake Store 帐户相关信息。 它采用以下格式：https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 |是 |
-| authorization |单击“数据工厂编辑器”中的“授权”按钮，并输入将自动生成的授权 URL 分配给此属性的凭据。 |是 |
-| sessionId |Oauth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 使用数据工厂编辑器时，将自动生成此设置。 |是 |
-| accountName |Data Lake 帐户名称 |否 |
-| subscriptionId |Azure 订阅 ID。 |否（如果未指定，则使用数据工厂的订阅）。 |
-| resourceGroupName |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
+| type | type 属性必须设置为：**AzureDataLakeStore** | 是 |
+| dataLakeStoreUri | 指定 Azure Data Lake Store 帐户相关信息。 它采用以下格式：**https://[accountname].azuredatalakestore.net/webhdfs/v1** 或 **adl://[accountname].azuredatalakestore.net/**。 | 是 |
+| subscriptionId | Data Lake Store 所属的 Azure 订阅 ID。 | 接收器所需 |
+| resourceGroupName | Data Lake Store 所属的 Azure 资源组名称。 | 接收器所需 |
 
-## <a name="token-expiration"></a>令牌过期
+### <a name="using-service-principal-authentication-recommended"></a>使用服务主体身份验证（推荐）
+若要使用服务主体身份验证，首选需要在 Azure Active Directory (AAD) 中注册应用程序实体并在 Data Lake Store 中对其授予访问权限。 之后，可在 Azure 数据工厂中对相应的应用程序 ID、应用程序密钥和租户信息指定以下属性，以将数据复制出/到 Data Lake Store。 有关如何设置和检索所需信息，请参阅[服务到服务身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
+
+> [!IMPORTANT]
+> 使用复制向导时，请务必向服务主体至少授予对 ADLS 帐户的 ADLS 根（“/”）或“读取者”角色的“读取”权限，这样才能在文件夹之间成功导航。 否则，可能会看到“提供的凭据无效”错误。
+>
+> 如果从 AAD 新建/更新服务主体，可能需要几分钟才能生效。 首先请反复检查服务主体和 ADLS ACL 配置，如果仍有错误指出“提供的凭据无效”，请等待一段时间，然后重试。
+>
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
+| servicePrincipalKey | 指定应用程序的密钥。 | 是 |
+| tenant | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
+
+**示例：使用服务主体身份验证**
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
+        }
+    }
+}
+```
+
+### <a name="using-user-credential-authentication"></a>使用用户凭据身份验证
+或者，通过指定以下属性，可使用用户凭据身份验证将将数据复制出/到 Data Lake Store。
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| authorization | 单击“数据工厂编辑器”中的“授权”按钮，并输入将自动生成的授权 URL 分配给此属性的凭据。 | 是 |
+| sessionId | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 使用数据工厂编辑器时，将自动生成此设置。 | 是 |
+
+**示例：使用用户凭据身份验证**
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "sessionId": "<session ID>",
+            "authorization": "<authorization URL>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
+        }
+    }
+}
+```
+
+#### <a name="token-expiration"></a>令牌过期
 通过使用“授权”按钮生成的授权代码在一段时间后过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：“凭据操作错误：invalid_grant-AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21-09-31Z”。
 
 | 用户类型 | 过期时间 |
@@ -446,7 +490,7 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
 
 若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用以下部分中的代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
 
-### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>以编程方式生成 sessionId 和 authorization 值
+#### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>以编程方式生成 sessionId 和 authorization 值
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -552,6 +596,6 @@ Azure 数据工厂具有用于改进这些任务的性能的选项，具体取�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

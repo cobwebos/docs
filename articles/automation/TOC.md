@@ -19,13 +19,14 @@
 ### [源代码管理集成](automation-source-control-integration.md)
 ## 自动化 Runbook
 ### [启动 Runbook](automation-starting-a-runbook.md)
-### [从 Web 调用启动 Runbook](automation-webhooks.md)
-### [计划 Runbook](automation-scheduling-a-runbook.md)
+### [从 Webhook 启动 Runbook](automation-webhooks.md)
 ### [在数据中心中运行 Runbook](automation-hybrid-runbook-worker.md)
 ### [配置 Runbook 输入参数](automation-runbook-input-parameters.md)
+### [图形 Runbook 中的错误处理](automation-runbook-graphical-error-handling.md)
 ### [跟踪 Runbook 作业](automation-runbook-execution.md)
 ### [更改 Runbook 设置](automation-runbook-settings.md)
 ### [管理 Azure 自动化数据](automation-managing-data.md)
+### [从 Log Analytics 警报调用 Azure 自动化 Runbook](automation-invoke-runbook-from-omsla-alert.md)
 ## 部署配置管理 (DSC)
 ### [所需状态配置 (DSC)](automation-dsc-overview.md)
 ### [入门](automation-dsc-getting-started.md)
@@ -43,6 +44,7 @@
 ### [集成模块](automation-integration-modules.md)
 ### [计划](automation-schedules.md)
 ### [变量](automation-variables.md)
+### [更新 Azure PowerShell 模块](automation-update-azure-modules.md)
 ## 自动化方案
 ### [Runbook 库](automation-runbook-gallery.md)
 ### [启动/停止虚拟机](automation-solution-startstopvm-graphical.md)
@@ -53,14 +55,17 @@
 ### [删除资源组](automation-scenario-remove-resourcegroup.md)
 ### [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
 ### [源代码管理与 GitHub Enterprise 的集成](automation-scenario-source-control-integration-with-github-ent.md)
-## [监视](automation-manage-send-joblogs-log-analytics.md)
+### [源代码管理与 VSTS 的集成](automation-scenario-source-control-integration-with-VSTS.md)
+## 监视
+### [将 Azure 自动化作业数据转发到 Log Analytics](automation-manage-send-joblogs-log-analytics.md)
+### [从 Log Analytics 取消链接 Azure 自动化帐户](automation-unlink-from-log-analytics.md)
 ## 迁移
 ### [从 Orchestrator 迁移](automation-orchestrator-migration.md)
 ### [移动自动化帐户](automation-migrate-account-subscription.md)
 ## 故障排除
 ### [常见错误疑难解答](automation-troubleshooting-automation-errors.md)
-### [Runbook 作业已挂起](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
-# 参考
+### [对混合 Runbook 辅助角色进行故障排除](automation-troubleshooting-hybrid-runbook-worker.md)
+# 引用
 ## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
 ## [PowerShell（经典）](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
@@ -78,6 +83,6 @@
 ## [自动化简介视频](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

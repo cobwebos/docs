@@ -4,7 +4,7 @@ description: "确保对环境进行准备，以便在 Azure 中备份虚拟机"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonn
 editor: 
 keywords: "备份; 正在备份;"
 ms.assetid: 238ab93b-8acc-4262-81b7-ce930f76a662
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.date: 12/20/2016
+ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: b5b18d063a5926ad4acb7d0aa3935978d0fedb8c
-ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
+ms.sourcegitcommit: f517a649a6c6aa65b350767bc66cf4d60c7988b5
+ms.openlocfilehash: 9a114e954d59dcecaf3310e024428770bc4a2349
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -36,6 +37,11 @@ ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
 
 如果确定环境满足这些条件，请转到[备份 VM 的文章](backup-azure-vms.md)。 否则，请继续阅读本文，其中将会引导你逐步完成准备环境来备份 Azure VM 的过程。
 
+##<a name="supported-operating-system-for-backup"></a>支持用于备份的操作系统
+ * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ，但 Core OS Linux 除外。 _只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。但是，我们不赞同将这些分发版用于备份。_
+ * **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
+
+
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>备份和还原 VM 时的限制
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 以下列表提供了在经典模型中部署时的限制。
@@ -49,8 +55,6 @@ ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
 * 不支持跨区域备份和恢复。
 * Azure 的所有公共区域都支持使用 Azure 备份服务来备份虚拟机（请参阅受支持区域的[清单](https://azure.microsoft.com/regions/#services)）。 在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 * 只有特定的操作系统版本才支持使用 Azure 备份服务备份虚拟机。
-  * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ，但 Core OS Linux 除外。 只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。
-  * **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
 * 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。 阅读有关[还原多 DC 域控制器](backup-azure-restore-vms.md#restoring-domain-controller-vms)的详细信息。
 * 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。 还原操作完成后，在 UI 中使用还原工作流创建的虚拟机将不采用这些网络配置。 若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations)。
   * 采用负载平衡器配置的虚拟机（内部和外部）
@@ -81,7 +85,7 @@ ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
 6. 单击“**创建保管库**”。 创建备份保管库可能需要一段时间。 可以在门户底部监视状态通知。
 
     ![创建保管库 toast 通知](./media/backup-azure-vms-prepare/creating-vault.png)
-7. 一条消息将确认已成功创建保管库。 该保管库将在“**恢复服务**”页中以“**活动**”状态列出。 确保在创建保管库后立即选择适当的存储冗余选项。 阅读有关[在备份保管库中设置存储冗余选项](backup-configure-vault.md#step-1-create-a-recovery-services-vault)的更多内容。
+7. 一条消息将确认已成功创建保管库。 该保管库将在“**恢复服务**”页中以“**活动**”状态列出。 确保在创建保管库后立即选择适当的存储冗余选项。 阅读有关[在备份保管库中设置存储冗余选项](backup-configure-vault.md#create-a-recovery-services-vault)的更多内容。
 
     ![备份保管库列表](./media/backup-azure-vms-prepare/backup_vaultslist.png)
 8. 单击备份保管库将转到“**快速启动**”页，其中会显示 Azure 虚拟机的备份说明。
@@ -228,9 +232,4 @@ VM 代理已存在于从 Azure 库创建的 VM 中。 但是，从本地数据�
 * [备份虚拟机](backup-azure-vms.md)
 * [规划 VM 备份基础结构](backup-azure-vms-introduction.md)
 * [管理虚拟机备份](backup-azure-manage-vms.md)
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 

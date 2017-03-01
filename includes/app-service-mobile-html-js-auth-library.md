@@ -80,6 +80,6 @@ fetch(url, { headers: headers })
 提取的内容以 [npm 包](https://www.npmjs.com/package/whatwg-fetch)的形式提供，或者可以通过浏览器从 [CDNJS](https://cdnjs.com/libraries/fetch) 下载。 也可以使用 jQuery 或其他 AJAX API 提取信息。  数据作为 JSON 对象接收。
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

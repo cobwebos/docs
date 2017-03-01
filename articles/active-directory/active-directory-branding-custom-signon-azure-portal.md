@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -45,10 +45,10 @@ ms.openlocfilehash: 3a054a01cf21bba4bbaf15c404f74086b2f25651
 > [!NOTE]
 > * 用户的域名在已配置品牌元素的 Azure 门户的“域”部分必须显示为“活动”。 有关详细信息，请参阅[添加自定义域名](active-directory-domains-add-azure-portal.md)。
 > * 登录页品牌不会带到 Microsoft 的使用者登录页。 如果使用 Microsoft 帐户登录，则可以看到 Azure AD 呈现的经过品牌打造的用户磁贴列表，但用户的组织的品牌元素未应用于 Microsoft 帐户登录页。
-> 
-> 
+>
+>
 
-在登录页中，“使我保持登录状态”复选框允许用户在关闭和重新打开浏览器时保持登录状态。 
+在登录页中，“使我保持登录状态”复选框允许用户在关闭和重新打开浏览器时保持登录状态。
 
    ![使我保持登录状态](./media/active-directory-branding-custom-signon-azure-portal/01.png)
 
@@ -57,22 +57,22 @@ ms.openlocfilehash: 3a054a01cf21bba4bbaf15c404f74086b2f25651
 
    ![使我保持登录状态](./media/active-directory-branding-custom-signon-azure-portal/02.png)
 
-若要隐藏此复选框，可将此设置配置为“是”。 
+若要隐藏此复选框，可将此设置配置为“是”。
 
 > [!NOTE]
 > SharePoint Online 和 Office 2010 的某些功能取决于用户能否勾选此框。 如果将此设置配置为“隐藏”，用户可能会在登录时看到其他意外的提示。
-> 
-> 
+>
+>
 
 **将公司品牌元素添加到目录：**
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，在文本框中输入“用户和组”，然后选择 **Enter**。
-   
+
    ![打开“用户管理”](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“公司品牌元素”。
 4. 在“用户和组 - 公司品牌元素”边栏选项卡上，选择“编辑”命令。
-   
+
     ![编辑自定义品牌元素](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
 5. 修改要自定义的元素。 所有元素都是可选的。
 6. 单击“保存” 。
@@ -81,7 +81,6 @@ ms.openlocfilehash: 3a054a01cf21bba4bbaf15c404f74086b2f25651
 
 ## <a name="next-steps"></a>后续步骤
 [添加特定于语言的公司品牌元素](active-directory-branding-localize-azure-portal.md)
-
 
 
 

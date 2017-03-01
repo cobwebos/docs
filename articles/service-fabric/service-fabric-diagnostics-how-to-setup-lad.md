@@ -1,5 +1,5 @@
 ---
-title: "使用 Linux Azure 诊断收集日志 | Microsoft 文档"
+title: "使用 Linux Azure 诊断收集日志 | Microsoft Docs"
 description: "本文介绍如何将 Azure 诊断设置为从 Azure 中运行的 Service Fabric Linux 群集收集日志。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/28/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
+ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
+ms.openlocfilehash: 37063d35e76d03a84f6e4451c2f6c363704607f2
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
 > 
 > 
 
-当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 只要将日志集中在一个位置，无论问题发生在服务、应用程序还是群集本身，都能轻松分析问题并进行故障排除。 上载和收集日志的方式之一是使用可将日志上载到 Azure 存储空间的 Azure 诊断扩展。 可以从存储中读取事件，并将它们放在[弹性搜索](service-fabric-diagnostic-how-to-use-elasticsearch.md)等产品或其他日志分析解决方案中。
+当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 只要将日志集中在一个位置，无论问题发生在服务、应用程序还是群集本身，都能轻松分析问题并进行故障排除。 上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、Azure Application Insights 或 Azure 事件中心的 Azure 诊断扩展。 也可以从存储或事件中心读取事件，并将其放在 [Log Analytics](../log-analytics/log-analytics-service-fabric.md) 等产品或其他日志分析解决方案中。 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 附带内置的全面日志搜索和分析服务。
 
 ## <a name="log-sources-that-you-might-want-to-collect"></a>可以收集的日志源
 * **Service Fabric 日志**：由平台通过 [LTTng](http://lttng.org) 发出，将上载到你的存储帐户。 日志可能是平台发出的操作事件或运行时事件。 这些日志存储在群集清单指定的位置。 （若要获取存储帐户的详细信息，请搜索 **AzureTableWinFabETWQueryable** 标记，然后查找 **StoreConnectionString**。）
@@ -52,6 +52,6 @@ ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

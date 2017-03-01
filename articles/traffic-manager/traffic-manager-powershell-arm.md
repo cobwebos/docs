@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: c5df6d998812568c764ccb6914b3c81fe4e568ec
-ms.openlocfilehash: d9d9630487f9eeb381198230a20d01c1c5f6678d
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: f97ba8ebc940d4b3eec5d2610503f8a86af8dbe2
 
 ---
 
@@ -33,9 +33,9 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 ## <a name="comparison-with-the-azure-traffic-manager-classic-api"></a>与 Azure 流量管理器经典 API 的比较
 
-对流量管理器的 Azure Resource Manager 支持使用的术语不同于经典部署模型。 下表显示了 Resource Manager 和经典数据之间的区别：
+对流量管理器的 Azure Resource Manager 支持使用的术语不同于经典部署模型。 下表显示了资源管理器和经典数据之间的区别：
 
-| Resource Manager 术语 | 经典术语 |
+| 资源管理器术语 | 经典术语 |
 | --- | --- |
 | 流量路由方法 |负载平衡方法 |
 | 优先级方法 |故障转移方法 |
@@ -52,7 +52,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 这些说明使用 Microsoft Azure PowerShell。 下文介绍了如何安装和配置 Azure PowerShell。
 
-* [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)
+* [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 本文中的示例假设你具备现有的资源组。 可以使用以下命令创建资源组：
 
@@ -342,6 +342,6 @@ Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remov
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

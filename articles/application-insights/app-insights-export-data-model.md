@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e4576409641db73ad8920a1eec2eea1e3580109f
-ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
 
 
 ---
@@ -155,7 +155,7 @@ ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
 | internal.data.id |字符串 | |
 
 ## <a name="events"></a>事件
-[TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) 生成的自定义事件。
+[TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) 生成的自定义事件。
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
@@ -195,7 +195,7 @@ ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
 | basicException [0] typeName |字符串 | |
 
 ## <a name="trace-messages"></a>跟踪消息
-由 [TrackTrace](app-insights-api-custom-events-metrics.md#track-trace) 和[日志记录适配器](app-insights-asp-net-trace-logs.md)发送。
+由 [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace) 和[日志记录适配器](app-insights-asp-net-trace-logs.md)发送。
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
 | remoteDependency [0] urlData.host |字符串 |最大长度为 200 |
 
 ## <a name="requests"></a>请求
-由 [TrackRequest](app-insights-api-custom-events-metrics.md#track-request) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。
+由 [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
@@ -354,6 +354,6 @@ ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

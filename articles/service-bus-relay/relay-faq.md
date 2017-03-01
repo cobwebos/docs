@@ -1,5 +1,5 @@
 ---
-title: "中继常见问题解答 | Microsoft 文档"
+title: "Azure 中继常见问题解答 (FAQ) | Microsoft Docs"
 description: "回答了一些关于 Azure 中继的常见问题。"
 services: service-bus-relay
 documentationcenter: na
@@ -12,32 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub,sethm
+ms.date: 02/02/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 849d7995e9c74bc929c4f791ae9155ca18ddb77b
-ms.openlocfilehash: 12702f585605a88ed6e753a0ff301095e8629e05
+ms.sourcegitcommit: 4b54ad027a7de02cba7821f2a9b7fd06ef3a825b
+ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
 
 
 ---
 # <a name="relay-faq"></a>中继常见问题解答
-本文回答了一些关于 Microsoft Azure 中继的常见问题。 还可以访问 [Azure 支持常见问题](http://go.microsoft.com/fwlink/?LinkID=185083)了解一般的 Azure 定价和支持信息。
+
+本文回答了一些关于 [Microsoft Azure 中继](https://azure.microsoft.com/services/service-bus/)的常见问题。 还可以访问 [Azure 支持常见问题](http://go.microsoft.com/fwlink/?LinkID=185083)了解一般的 Azure 定价和支持信息。
 
 ## <a name="general-questions"></a>一般问题
 ### <a name="what-is-azure-relay"></a>什么是 Azure 中继？
-Azure [中继服务](relay-what-is-it.md)简化了混合应用程序，通过允许安全地向公有云公开位于企业网络内的服务，无需打开防火墙连接，也无需对企业网络基础结构进行彻底更改。
+[Azure 中继服务](relay-what-is-it.md)允许安全地向公有云公开位于企业网络内的服务，无需打开防火墙连接，也无需对企业网络基础结构进行彻底更改，从而简化了混合应用程序。
 
 ### <a name="what-is-a-relay-namespace"></a>什么是中继命名空间？
 [命名空间](relay-create-namespace-portal.md)提供了用于对应用程序中的中继资源进行寻址的范围容器。 必须创建命名空间才能使用中继，而且这也是入门的第一步。
 
 ### <a name="what-happened-to-the-previously-named-relay-service"></a>以前命名的中继服务有什么变化？
-以前命名的**中继**服务现在称为 *WCF 中继*。 你可以继续照常使用此服务。 混合连接是从 BizTalk 移植的服务的更新版本。 今后将继续支持 WCF 中继和混合连接。
+以前命名的服务总线**中继**服务现在称为 WCF 中继。 你可以继续照常使用此服务。 混合连接是从 BizTalk 移植的服务的更新版本。 今后将继续支持 WCF 中继和混合连接。
 
 ## <a name="pricing"></a>定价
 本部分回答了一些关于中继定价结构的常见问题。 你还可以访问 [Azure Support FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)（Azure 支持常见问题）了解一般的 Microsoft Azure 定价信息。 有关中继定价的完整信息，请参阅[服务总线定价详细信息](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>如何对混合连接和 WCF 中继收费？
-有关中继定价的完整信息，请参阅[服务总线定价详细信息][定价概述]。 除标示的价格外，你还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
+有关中继定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。 除标示的价格外，你还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>使用混合连接时怎样计费？
 以下是三个示例方案：
@@ -86,18 +87,21 @@ Azure [中继服务](relay-what-is-it.md)简化了混合应用程序，通过允
 
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？
-你可以使用 PowerShell 命令（可在[此处](../service-bus-messaging/service-bus-powershell-how-to-provision.md#migrate-a-namespace-to-another-azure-subscription)的文章中找到）将命名空间从某个 Azure 订阅移到另一个 Azure 订阅。 若要执行此操作，命名空间必须已处于活动状态。 此外，执行这些命令的用户必须是源订阅和目标订阅的管理员。
+你可以使用 PowerShell 命令（可在[此处](../service-bus-messaging/service-bus-powershell-how-to-provision.md)的文章中找到）将命名空间从某个 Azure 订阅移到另一个 Azure 订阅。 若要执行此操作，命名空间必须已处于活动状态。 此外，执行这些命令的用户必须是源订阅和目标订阅的管理员。
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-their-suggested-actions"></a>Azure 中继 API 所生成的异常有哪些，建议采取什么操作？
-[中继异常][中继异常]一文介绍了部分异常和建议的操作。
+[中继异常][Relay exceptions]一文介绍了部分异常和建议的操作。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什么是共享访问签名？哪些语言支持生成签名？
-共享访问签名是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node、PHP、Java 和 C\# 中生成自有签名的信息，请参阅[共享访问签名][共享访问签名]一文。
+共享访问签名是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node、PHP、Java 和 C\# 中生成自有签名的信息，请参阅[共享访问签名][Shared Access Signatures]一文。
 
-[定价概述]: https://azure.microsoft.com/pricing/details/service-bus/
-[中继异常]: relay-exceptions.md
-[共享访问签名]: ../service-bus-messaging/service-bus-sas-overview.md
+[Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
+[Relay exceptions]: relay-exceptions.md
+[Shared Access Signatures]: ../service-bus-messaging/service-bus-sas-overview.md
+
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>是否可以将中继终结点加入白名单？
+是的。 中继客户端使用完全限定的域名连接到中继服务。 这使客户能够在支持 DNS 白名单的防火墙上为 `*.servicebus.windows.net` 添加一个条目。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建命名空间](relay-create-namespace-portal.md)
@@ -106,6 +110,6 @@ Azure [中继服务](relay-what-is-it.md)简化了混合应用程序，通过允
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

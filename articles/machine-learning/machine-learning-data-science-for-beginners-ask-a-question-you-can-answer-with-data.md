@@ -1,7 +1,7 @@
 ---
-title: "提出可使用数据解答的问题 - 制定问题 | Microsoft Docs"
-description: "通过学习“适合初学者的数据科学”视频 3，了解如何将数据科学问题公式化。 包括分类和回归问题的比较。"
-keywords: "数据科学问题, 公式化问题, 回归问题, 分类问题, 针对性问题"
+title: "提出数据可解答的问题 - 数据科学问题 - Azure | Microsoft Docs"
+description: "通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。"
+keywords: "数据科学问题，数据科学问题，公式化问题，回归问题，分类问题，针对性问题"
 services: machine-learning
 documentationcenter: na
 author: cjgronlund
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f6cb2a15ab8ef87672c0abbc93ee68478d0efb48
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 
 
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列
-通过学习“适合初学者的数据科学”视频 3，了解如何将数据科学问题公式化。 此视频包括对分类和回归算法问题的比较。
+通过学习“适合初学者的数据科学”视频 3，了解如何将数据科学难题公式化为一个问题。 此视频包括对分类和回归算法问题的比较。
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
@@ -100,7 +100,6 @@ ms.openlocfilehash: f6cb2a15ab8ef87672c0abbc93ee68478d0efb48
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

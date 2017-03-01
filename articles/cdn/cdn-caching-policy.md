@@ -1,6 +1,6 @@
 ---
-title: "媒体服务扩展中的 CDN 缓存策略"
-description: "本主题概述了媒体服务扩展中的 CDN 缓存策略。"
+title: "在 Azure 媒体服务中管理 Azure CDN 缓存策略 | Microsoft Docs"
+description: "了解如何在 Azure 媒体服务中管理 Azure CDN 缓存策略。"
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 02/04/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8e5fa4f3de86be0a8ef65971e42c8b20f61f0b2
+ms.sourcegitcommit: fba5384acae53ac416d91ae30840c6cfa04e7c68
+ms.openlocfilehash: 0c479a58f4158bb1a72dc43432507160f65d2791
 
 
 ---
-# <a name="cdn-caching-policy-in-media-services-extension"></a>媒体服务扩展中的 CDN 缓存策略
+# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>在 Azure 媒体服务中管理 Azure CDN 缓存策略
 Azure 媒体服务提供基于 HTTP 的自适应流式处理和渐进式下载。 基于 HTTP 的流式处理是高度可伸缩的功能，具有可以在代理和 CDN 层中缓存以及在客户端缓存的优点。 流式处理终结点提供常用的流式处理功能以及针对 HTTP 缓存标头的配置。 流式处理终结点设置 HTTP Cache-Control: max-age 和 Expires 标头。 你可以从 [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html) 获取更多有关 HTTP 缓存标头的信息。
 
 ## <a name="default-caching-headers"></a>默认缓存标头
@@ -30,9 +30,9 @@ Azure 媒体服务提供基于 HTTP 的自适应流式处理和渐进式下载�
 Azure 媒体服务为流式处理终结点提供[集成 CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/)。 Cache-control 标头的应用方式与流式处理终结点到启用 CDN 的流式处理终结点的应用方式相同。 Azure CDN 使用流式处理终结点配置的值来定义内部缓存对象的生存期，并使用该值来设置交付缓存标头。 使用启用了 CDN 的流式处理终结点时，建议你不要设置小的缓存值。 设置的值过小会降低性能，导致无法充分利用 CDN。 不允许将启用了 CDN 的流式处理终结点的缓存标头设置为小于 600 秒。
 
 > [!IMPORTANT]
-> 可在 **Verizon 提供的 Azure CDN** 上实现 Azure 媒体服务与 Azure CDN 的集成。  如果希望将 **Akamai 提供的 Azure CDN** 用于 Azure 媒体服务，则必须 [手动配置终结点](cdn-create-new-endpoint.md)。  有关 Azure CDN 功能的详细信息，请参阅 [CDN 概述](cdn-overview.md)。
+>Azure 媒体服务支持与 Azure CDN 的完整集成。 单击即可将所有可用的 Azure CDN 提供商（Akamai 和 Verizon）集成到流式处理终结点，包括 CDN 标准版和高级版产品。 有关详细信息，请参阅此[公告](https://azure.microsoft.com/blog/standardstreamingendpoint/)。
 > 
-> 
+> 只有在通过流式处理终结点 API 启用 CDN 或使用 Azure 管理门户的流式端点部分时，才会禁用流式处理终结点到 CDN 的数据费用。 如果进行手动集成，或者使用 CDN API 或门户直接创建 CDN 终结点，则不会禁用数据费用。
 
 ## <a name="configuring-cache-headers-with-azure-media-services"></a>使用 Azure 媒体服务配置缓存标头
 你可以使用 Azure 管理门户或 Azure 媒体服务 API 来配置缓存标头值。
@@ -49,6 +49,6 @@ Azure 媒体服务为流式处理终结点提供[集成 CDN](https://azure.micro
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

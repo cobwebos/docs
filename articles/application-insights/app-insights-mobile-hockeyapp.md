@@ -1,6 +1,6 @@
 ---
-title: "使用开发人员分析监视移动 Web 应用的性能 | Microsoft 文档"
-description: "适用于移动应用开发人员的应用程序性能和使用情况监视。 使用 HockeyApp 和 Application Insights 的桌面、Web 服务和后端应用。"
+title: "监视移动应用的性能 - Azure Application Insights | Microsoft Docs"
+description: "适用于移动应用开发人员的应用程序性能和使用情况监视。 使用 HockeyApp 和 Application Insights 进行开发运营。"
 author: alancameronwills
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 4d394ff22e57d162c5adf39c492ca76f3d1f9d3a
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: c4077aa88a401a1c75c0d3fbcd58186f7cb137c2
 
 
 ---
@@ -64,6 +64,6 @@ Microsoft Developer Analytics 针对应用程序性能监视提供两种解决�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

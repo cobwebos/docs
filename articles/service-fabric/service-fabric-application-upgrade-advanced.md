@@ -1,5 +1,5 @@
 ---
-title: "应用程序升级：高级主题 | Microsoft 文档"
+title: "高级应用程序升级主题 | Microsoft Docs"
 description: "本文介绍有关升级 Service Fabric 应用程序的一些高级主题。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2016
-ms.author: subramar
+ms.date: 02/02/2017
+ms.author: subramar;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: 8f911da6798b8a2d517d79a9a90e66de86db9b8b
+ms.sourcegitcommit: c83c4db0ada77998354b3fca4e2297335899a9bd
+ms.openlocfilehash: 20a3277370583ccf93b36191a70149ed7d814238
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -24,17 +25,17 @@ ms.openlocfilehash: 8f911da6798b8a2d517d79a9a90e66de86db9b8b
 ## <a name="adding-or-removing-services-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务
 如果将新服务添加到已部署的应用程序，并将其作为升级项发布，则该新服务将添加到部署的应用程序。  此类升级不会影响到已属于应用程序一部分的任何服务。 但是，若要激活新服务，必须启动已添加的服务的实例（使用 `New-ServiceFabricService` cmdlet）。
 
-还可以在升级期间从应用程序中删除服务。 但是，在继续升级之前，必须停止要删除的服务的所有当前实例（使用 `Remove-ServiceFabricService` cmdlet）。 
+还可以在升级期间从应用程序中删除服务。 但是，在继续升级之前，必须停止要删除的服务的所有当前实例（使用 `Remove-ServiceFabricService` cmdlet）。
 
 ## <a name="manual-upgrade-mode"></a>手动升级模式
 > [!NOTE]
 > 只应针对已失败或暂停的升级考虑使用不受监视的手动模式。 受监视模式是建议用于 Service Fabric 应用程序的升级模式。
-> 
-> 
+>
+>
 
 Azure Service Fabric 提供了多个升级模式，可支持开发和生产群集。 选择的部署选项可根据不同的环境而有所不同。
 
-受监视应用程序滚动升级是生产中使用的最典型的升级。 当指定了升级策略时，Service Fabric 可确保在升级继续进行之前，应用程序处于正常状态。
+受监视应用程序滚动升级是生产环境中使用的最典型的升级。 当指定了升级策略时，Service Fabric 可确保在升级继续进行之前，应用程序处于正常状态。
 
  应用程序管理员可以使用手动滚动应用程序升级模式，通过各种升级域获得升级过程的完全控制权。 需要自定义的或者复杂的运行状况评估策略，或者进行非常规升级（例如，应用程序已有数据丢失）时，此模式非常有用。
 
@@ -55,7 +56,7 @@ Service Fabric 应用程序可以通过预配一个完整且独立的应用程�
 * 当你拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时，首选差异包。
 * 当你的部署系统直接从应用程序生成过程产生生成布局时，首选差异包。 在这种情况下，即使代码未发生任何更改，新生成的程序集也将获得不同的校验和。 使用完整的应用程序包需要你更新所有代码包上的版本。 使用差异包时，你只提供更改的文件和其中的版本已更改的清单文件。
 
-如果应用程序是使用 Visual Studio 升级的，将自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。 
+如果应用程序是使用 Visual Studio 升级的，将自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
 
 例如，让我们从以下应用程序开始（为便于理解，这里提供了版本号）：
 
@@ -99,10 +100,4 @@ app1/
 了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

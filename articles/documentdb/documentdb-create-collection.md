@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 02/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: f480b8155c7bee797f1fed0f80200eec500e95a2
-ms.openlocfilehash: f8e0b05301b83223a7cb15d55be7001f3299213f
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: 8ee846e659d0a47a5fb39d6baa3235f59e19d653
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -33,18 +34,18 @@ ms.openlocfilehash: f8e0b05301b83223a7cb15d55be7001f3299213f
 2. 在所选帐户的“DocumentDB 帐户”边栏选项卡中，单击“添加集合”。
 
     ![屏幕截图：突出显示跳转栏中的“DocumentDB 帐户”、“DocumentDB 帐户”边栏选项卡中的帐户以及“DocumentDB 帐户”边栏选项卡上的“数据库”可重用功能区中的数据库](./media/documentdb-create-collection/docdb-database-creation-3.png)
-3. 在“添加集合”边栏选项卡的“ID”框中，输入新集合的 ID。 集合名称的长度必须为 1 到 255 个字符，且不能包含 `/ \ # ?` 或尾随空格。 对名称进行验证后，ID 框中会出现一个绿色的复选标记。
+3. 在“添加集合”边栏选项卡的“集合 ID”框中，输入新集合的 ID。 集合名称的长度必须为 1 到 255 个字符，且不能包含 `/ \ # ?` 或尾随空格。 对名称进行验证后，ID 框中会出现一个绿色的复选标记。
 
     ![屏幕截图：突出显示“数据库”边栏选项卡上的“添加集合”按钮、“添加集合”边栏选项卡上的设置以及“确定”按钮 — 用于 DocumentDB 的 Azure 门户 — 用于 NoSQL JSON 数据库的云端数据库创建程序](./media/documentdb-create-collection/docdb-collection-creation-5-8.png)
-4. 默认情况下，“定价层”设置为“标准”，因此可以为集合自定义吞吐量和存储。 有关定价层的详细信息，请参阅 [DocumentDB 中的性能级别](documentdb-performance-levels.md)。  
-5. 选择集合的“分区模式”，即“单个分区”或“已分区”。
+4. “存储容量”默认设置为“250 GB”以处理分区集合。
 
-    “单个分区”具有 10 GB 的保留存储容量，且吞吐量级别可以为每秒 400 个到 10,000 个请求单位（RU/秒）。 一个 RU 相当于读取 1KB 文档的吞吐量。 有关请求单位的详细信息，请参阅[请求单位](documentdb-request-units.md)。
+    如果需要[单分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)，且吞吐量级别为 400-10,000 请求单位/秒（RU/秒），则将存储容量设置为“10 GB”。 一个 RU 相当于读取 1KB 文档的吞吐量。 有关请求单位的详细信息，请参阅[请求单位](documentdb-request-units.md)。
 
-    “已分区的集合”可以进行缩放以处理多个分区不限容量的存储，且吞吐量级别最低可以为 10,100 RU/秒。 在门户中，能够保留的最大存储空间为 250 GB，能够保留的最大吞吐量为 250,000 RU/秒。 若要增大任一配额，请按[请求增加 DocumentDB 帐户配额](documentdb-increase-limits.md)中所述提交请求。 有关已分区集合的详细信息，请参阅[单个分区和已分区的集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)。
+    如果需要可缩放的[已分区集合](documentdb-partition-data.md#single-partition-and-partitioned-collections)以处理多个分区不限容量的存储，且吞吐量级别最低可为 2,500 RU/秒，则将存储容量设置为“250 GB”。
 
-    默认情况下，新单分区集合的吞吐量设置为 1000 RU/s，存储容量为 10 GB。 对于分区的集合，集合吞吐量设置为 10100 RU/s，存储容量为 250 GB。 创建集合后，可以更改集合的吞吐量和存储容量。
-6. 若要创建已分区的集合，请为集合选择“分区键”。 选择正确的分区键对于创建高性能集合而言很重要。 有关选择分区键的详细信息，请参阅[设计分区](documentdb-partition-data.md#designing-for-partitioning)。
+    如需设置除 10 GB 或 250 GB 以外的容量，则将存储容量设置为“自定义”。 DocumentDB 规模几近无限，因此请在支持请求中包含请求的存储大小和吞吐量值。
+
+6. 在“分区键”框中，输入集合的分区键。 此项对分区集合必需，对单分区集合可选。 选择正确的分区键对于创建高性能集合而言很重要。 有关选择分区键的详细信息，请参阅[设计分区](documentdb-partition-data.md#designing-for-partitioning)。
 7. 在“数据库”边栏选项卡中，创建新数据库或使用现有数据库。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。 若要验证名称，请单击文本框外部。 验证名称后，框中会出现一个绿色的复选标记。
 8. 单击屏幕底部的“确定”，以创建新的集合。
 9. 新集合现在会出现在“概述”边栏选项卡上的“集合”可重用功能区中。
@@ -79,10 +80,5 @@ DocumentDB 自动将集合分区到一个或多个物理服务器。 创建集�
 * 可以使用 DocumentDB 数据迁移工具来[导入文档和数据](documentdb-import-data.md)，利用此工具可以导入 JSON 和 CSV 文件，以及来自 SQL Server、MongoDB、Azure 表存储及其他 DocumentDB 集合的数据。
 * 也可以使用某个 [DocumentDB SDK](documentdb-sdk-dotnet.md) 来添加文档。 DocumentDB 有 .NET、Java、Python、Node.js 和 JavaScript API SDK。 有关说明如何使用 DocumentDB .NET SDK 处理文档的 C# 代码示例，请参阅 [C# 文档示例](documentdb-dotnet-samples.md#document-examples)。 有关说明如何使用 DocumentDB Node.js SDK 处理文档的 Node.js 代码示例，请参阅 [Node.js 文档示例](documentdb-nodejs-samples.md#document-examples)。
 
-当集合中有文档后，就可以利用门户中的[查询资源管理器](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或某个 [SDK](documentdb-sdk-dotnet.md)来针对文档使用 [DocumentDB SQL](documentdb-sql-query.md) [执行查询](documentdb-sql-query.md#executing-sql-queries)。 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+当集合中有文档后，就可以利用门户中的[查询资源管理器](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或某个 [SDK](documentdb-sdk-dotnet.md)来针对文档使用 [DocumentDB SQL](documentdb-sql-query.md) [执行查询](documentdb-sql-query.md#ExecutingSqlQueries)。 
 

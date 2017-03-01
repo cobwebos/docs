@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
 translationtype: Human Translation
-ms.sourcegitcommit: 9bfc1a281bb63a9fd7528106d7bdbc808371c5fb
-ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
+ms.sourcegitcommit: 37f795fe59496b0267120537115cf56d44cc5325
+ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
 
 ---
 
@@ -30,7 +30,7 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
 
 在开始之前，请确保具备以下条件：
 *   系统已安装 Visual Studio 2012、2013 或 2015。
-*   还安装了 [Azure Powershell]。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*   已安装 Azure PowerShell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 *   用于初始化数据转换作业的配置设置（用于获取这些设置的说明在此处提供）。
 *   已在资源组中的混合数据资源中正确配置的作业定义。
 *   所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
@@ -62,27 +62,27 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
     5. 对于**位置**，选择 **C:\DataTransformation**。
     6.  。
 
-3.  现在，将 [dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 文件夹中存在的所有 DLL 添加为已创建的项目中的**引用**。 若要下载 dll 文件，请执行以下操作：
+4.  现在，将 [dll](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 文件夹中存在的所有 DLL 添加为已创建的项目中的**引用**。 若要下载 dll 文件，请执行以下操作：
 
     1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”。
     1. 单击“数据转换应用”项目左侧的箭头。 单击“引用”，然后右键单击“添加引用”。
     2. 浏览到程序包文件夹的位置，选择所有 DLL，单击“添加”，然后单击“确定”。
 
-4. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)。
+5. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)。
 
-    ````
+    ```
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using Microsoft.Azure.Management.HybridData.Models;
     using Microsoft.Internal.Dms.DmsWebJob;
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
-    ````
+    ```
 
 
-5. 以下代码初始化数据转换作业实例。 在 **Main 方法**中添加此代码。 将配置参数的值替换为前面获取的值。 插入**资源组名称**和**混合数据资源名称**的值。 **资源组名称**是托管已配置作业定义的混合数据资源的资源组名称。
+6. 以下代码初始化数据转换作业实例。 在 **Main 方法**中添加此代码。 将配置参数的值替换为前面获取的值。 插入**资源组名称**和**混合数据资源名称**的值。 **资源组名称**是托管已配置作业定义的混合数据资源的资源组名称。
 
-    ````
+    ```
     // Setup the configuration parameters.
     var configParams = new ConfigurationParams
     {
@@ -97,24 +97,23 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
     // Initialize the Data Transformation Job instance.
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
 
-    ````
+    ```
 
-6. 指定需要使用其运行作业定义的参数
+7. 指定需要使用其运行作业定义的参数
 
-    ````
+    ```
     string jobDefinitionName = "job-definition-name";
 
     DataTransformationInput dataTransformationInput = dataTransformationJob.GetJobDefinitionParameters(jobDefinitionName);
 
-    ````
+    ```
 
     （或者）
 
     如果要在运行时更改作业定义参数，则添加以下代码：
 
+    ```
     string jobDefinitionName = "job-definition-name";
-
-    ````
     // Must start with a '\'
     var rootDirectories = new List<string> {@"\root"};
 
@@ -136,23 +135,24 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
         // Name of the volume on StorSimple device on which the relevant data is present. 
         VolumeNames = volumeNames
     };
-    ````
+    
+    ```
 
-7. 初始化后，添加以下代码可根据作业定义触发数据转换作业。 插入相应的**作业定义名称**。
+8. 初始化后，添加以下代码可根据作业定义触发数据转换作业。 插入相应的**作业定义名称**。
 
-    ````
+    ```
     // Trigger a job, retrieve the jobId and the retry interval for polling.
     int retryAfter;
     string jobId = dataTransformationJob.RunJobAsync(jobDefinitionName, 
     dataTransformationInput, out retryAfter);
 
-    ````
+    ```
 
-8. 此作业会将 StorSimple 卷上的根目录下存在的匹配文件上载到指定的容器。 上载文件时，会丢弃与作业定义同名的队列（与容器在同一存储帐户中）中的消息。 此消息可用作启动文件的任何进一步处理的触发器。
+9. 此作业会将 StorSimple 卷上的根目录下存在的匹配文件上载到指定的容器。 上载文件时，会丢弃与作业定义同名的队列（与容器在同一存储帐户中）中的消息。 此消息可用作启动文件的任何进一步处理的触发器。
 
-9. 触发作业后，添加以下代码可跟踪作业的完成情况。
+10. 触发作业后，添加以下代码可跟踪作业的完成情况。
 
-    ````
+    ```
     Job jobDetails = null;
 
     // Poll the job.
@@ -171,7 +171,7 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
     // To hold the console before exiting.
     Console.Read();
 
-    ````
+    ```
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -179,6 +179,7 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
 [使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)。
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO4-->
 
 

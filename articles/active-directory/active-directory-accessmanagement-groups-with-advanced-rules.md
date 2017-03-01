@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: c404c8708ec6d33f272733e438b8c3559fa40ce9
-ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
+ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
+ms.openlocfilehash: 00424292fbc5321a77a4e924530ade97739208d4
 
 
 ---
@@ -24,6 +24,15 @@ ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
 你可以在 Azure 经典门户中创建高级规则来启用 Azure Active Directory (Azure AD) 组的更复杂的基于属性的动态成员身份。  
 
 当用户的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看用户的属性更改是否会触发任何组添加或删除。 如果用户满足组中的规则，他们将作为成员添加到该组。 如果他们不再满足所属组的规则，则会从该组中删除他们的身份身份。
+
+> [!NOTE]
+> 你可以为安全组或 Office 365 组中的动态成员身份设置规则。 目前不支持使用嵌套的组成员身份来对应用程序进行基于组的分配。
+>
+> 动态组成员身份要求将 Azure AD Premium 许可证分配到
+>
+> * 管理组中规则的管理员
+> * 组的所有成员
+>
 
 ## <a name="to-create-the-advanced-rule"></a>创建高级规则
 1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，选择“Active Directory”，然后打开你的组织的目录。
@@ -48,17 +57,18 @@ ms.openlocfilehash: 07cf3e27f34c705367aa62650d2b17ed1ea3ec82
 请注意，属性必须使用正确的对象类型作为前缀：用户或设备。
 以下规则通不过验证：mail –ne null
 
-正确的规则是： 
+正确的规则是：
 
 user.mail –ne null
 
 高级规则正文的总长度不能超过 2048 个字符。
 
 > [!NOTE]
-> 字符串和正则表达式运算不区分大小写。 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
+> 字符串和正则表达式运算不区分大小写。
+> 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
 > 只能使用引号括住字符串类型值，并且只能使用英文引号。
-> 
-> 
+>
+>
 
 ## <a name="supported-expression-rule-operators"></a>支持的表达式规则运算符
 下表列出所有要在高级规则正文中使用的支持表达式规则运算符及其语法：
@@ -77,14 +87,14 @@ user.mail –ne null
 ## <a name="operator-precedence"></a>运算符优先顺序
 
 下面从低到高的优先顺序列出了所有运算符，同一行中的运算符具有相同的优先顺序 -any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch
- 
+
 所有运算符可以带或不带连字符。
 
 请注意，始终都不需要添加括号；仅当优先顺序不符合要求时，才添加括号。例如：
 
-   user.department –eq "Marketing" –and user.country –eq "US" 
-   
-等效于： 
+   user.department –eq "Marketing" –and user.country –eq "US"
+
+等效于：
 
    (user.department –eq "Marketing") –and (user.country –eq "US")
 
@@ -164,7 +174,7 @@ user.mail –ne null
 
 ## <a name="use-of-null-values"></a>Null 值的用法
 
-若要在规则中指定 null 值，可以使用“null”或 $null。 示例： 
+若要在规则中指定 null 值，可以使用“null”或 $null。 示例：
 
    user.mail –ne null 等效于 user.mail –ne $null
 
@@ -188,7 +198,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 若要在规则中包含多值属性，请使用“-any”运算符，如下所示
 
   user.assignedPlans -any assignedPlan.service -startsWith "SCO"
-  
+
 ## <a name="direct-reports-rule"></a>直接下属规则
 可以根据用户的 manager 属性在组中填充成员。
 
@@ -198,11 +208,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 2. 选择“组”选项卡，然后打开要编辑的组。
 3. 选择“配置”选项卡，然后选择“高级规则”。
 4. 使用以下语法键入规则：
-   
+
     Direct Reports for *Direct Reports for {obectID_of_manager}*。 下面是有效的直接下属规则示例：
-   
+
                     Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-   
+
     其中，"62e19b97-8b3d-4d4a-a106-4ce66896a863" 是管理员的 objectID。 可以在 Azure AD 的管理员用户的用户页上的“个人资料”选项卡中找到该对象 ID。
 5. 保存此规则时，满足该规则的所有用户将会加入为该组的成员。 最初填充该组可能需要几分钟时间。
 
@@ -230,10 +240,10 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 > [!NOTE]
 > 无法在 Azure 经典门户中使用“简单规则”下拉列表创建这些设备规则。
-> 
-> 
+>
+>
 
-## <a name="additional-information"></a>其他信息
+## <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
 * [组的动态成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md)
@@ -244,7 +254,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

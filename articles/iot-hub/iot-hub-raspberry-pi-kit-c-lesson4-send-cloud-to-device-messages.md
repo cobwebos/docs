@@ -1,5 +1,5 @@
 ---
-title: "运行示例应用程序，接收云到设备消息 | Microsoft Docs"
+title: "将 Raspberry Pi (C) 连接到 Azure IoT - 第 4 课：云到设备 | Microsoft 文档"
 description: "示例应用程序在 Pi 上运行，监视来自 IoT 中心的传入消息。 新的 gulp 任务会将消息从 IoT 中心发送到 Pi，使 LED 闪烁。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 5101cc1942ab430fd0bcbfa2699129e2ffd96117
+ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
+ms.openlocfilehash: 3a6957ebbb239eacb4fce696b7fcfd02e690310b
 
 
 ---
@@ -90,6 +90,6 @@ Gulp 命令首先运行 install-tools 任务， 然后将示例应用程序部�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: "使用 Resource Manager 和 PowerShell 创建和修改 ExpressRoute 线路 | Microsoft Docs"
+title: "创建和修改 ExpressRoute 线路：PowerShell：Azure Resource Manager | Microsoft 文档"
 description: "本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。"
 documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 5c6ee9ef23e8594391a4fce313f945b31e6870a7
-ms.openlocfilehash: b6ee329480e0f8ef14175b636377d20496f3a7a3
+ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
+ms.openlocfilehash: 0aacbdafdb5ded81dbc8495a30837e2f4941075f
 
 
 ---
@@ -387,6 +387,6 @@ PowerShell cmdlet `Get-AzureRmExpressRouteServiceProvider` 将返回此信息，
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

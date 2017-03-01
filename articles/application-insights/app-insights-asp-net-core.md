@@ -1,5 +1,5 @@
 ---
-title: "适用于 ASP.NET Core 的 Application Insights | Microsoft 文档"
+title: "适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs"
 description: "监视 Web 应用程序的可用性、性能和使用情况。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a881d9484089748bffed3713d06e43157dd405c
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 4c97ec97d9d12d86796e995c71d8c9bd6c6a3df2
 
 
 ---
@@ -59,6 +59,6 @@ ms.openlocfilehash: 4a881d9484089748bffed3713d06e43157dd405c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

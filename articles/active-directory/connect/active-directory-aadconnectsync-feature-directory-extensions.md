@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/19/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 78fa8bc1394f98c6aa90a75ba17ec36106f09290
+ms.sourcegitcommit: 2f5c5e9af193c843765f63640d46c25f3a6d10c3
+ms.openlocfilehash: 3641f9309cc38f6575ce36d3450448cdae1601a9
 
 
 ---
@@ -26,23 +26,24 @@ ms.openlocfilehash: 78fa8bc1394f98c6aa90a75ba17ec36106f09290
 目前没有任何 Office 365 工作负荷使用这些属性。
 
 在安装向导的自定义设置路径中配置要同步的其他属性。
-![架构扩展向导](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png) 安装显示以下属性，它们是有效的候选项：
+![架构扩展向导](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png)  
+安装显示以下属性，它们是有效的候选项：
 
 * “用户”和“组”对象类型
 * 单值属性：String、Boolean、Integer、Binary
 * 多值属性：String、Binary
 
-属性列表是安装 Azure AD Connect 过程中从缓存读取的。 如果已使用附加属性扩展 Active Directory 架构，则只有在[刷新架构](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema)后，这些新属性才可见。
+属性列表是在安装 Azure AD Connect 过程中从架构缓存读取的。 如果已使用附加属性扩展 Active Directory 架构，则只有在[刷新架构](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema)后，这些新属性才可见。
 
-对象最多可以有 100 个目录扩展属性。 最大长度为 250 个字符。 如果属性值更长，它将被同步引擎截断。
+Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度为 250 个字符。 如果属性值更长，则将被同步引擎截断。
 
 在安装 Azure AD Connect 期间，将会注册可以使用这些属性的应用程序。 可以在 Azure 门户中看到此应用程序。  
-![架构扩展应用](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3.png)
+![架构扩展应用](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3new.png)
 
 现在可以通过 Graph 使用这些属性：  
 ![图形](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
 
-这些属性的前面带有 extension\_{AppClientId}\_ 前缀。 Azure AD 目录中的所有属性具有相同的 AppClientId 值。
+这些属性的前面带有 extension\_{AppClientId}\_ 前缀。 Azure AD 租户中的所有属性具有相同的 AppClientId 值。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
@@ -51,7 +52,6 @@ ms.openlocfilehash: 78fa8bc1394f98c6aa90a75ba17ec36106f09290
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

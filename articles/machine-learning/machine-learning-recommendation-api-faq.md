@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 18accd5252e0ecf19fed23f3c2e4628e60fe370f
+ms.sourcegitcommit: 9ac2a1bf5987fc6fc30e20a1b4a10340eeed3825
+ms.openlocfilehash: 15cf891b9c31e1f2e2b108e631f32883ce2f36a7
 
 
 ---
@@ -43,9 +43,9 @@ ms.openlocfilehash: 18accd5252e0ecf19fed23f3c2e4628e60fe370f
 
 * 每个订阅的最大模型数：10
 * 目录可容纳的最大项目数：100000
-* 保留的最大使用点数约为 5000000 个。 如果上传或报告新使用点，将删除最老的使用点。
+* 保留的最大使用点数约为&50000;00 个。 如果上传或报告新使用点，将删除最老的使用点。
 * 电子邮件可发送的最大数据大小（例如导入目录数据、导入使用数据）是 200 MB
-* 不活动的建议模型生成的每秒事务数 (TPS) 约为 2 TPS。 活动的建议模型生成可容纳最多 20 TPS。
+* 不活动的建议模型生成的每秒事务数 (TPS) 约为&2; TPS。 活动的建议模型生成可容纳最多 20 TPS。
 
 ## <a name="purchase-and-billing"></a>购买和计费
 **启动期间建议的成本是多少？**
@@ -107,17 +107,17 @@ ms.openlocfilehash: 18accd5252e0ecf19fed23f3c2e4628e60fe370f
 
 **设置建议的前提条件是什么？**
 
-建议要求具有用户选择日志，因为它与目录有关。 如果没有此类日志，但却拥有面向客户的网站，建议可为你收集用户活动。 
+建议要求具有用户选择日志，因为它与目录有关。 如果没有此类日志，但却拥有面向客户的网站，建议功能可为你收集用户活动。 
 
-建议还需要产品或服务目录。 如果没有目录，建议可使用实际客户使用数据，并提取目录。 默示目录不会包含未报告为用户事务一部分的项目。
+建议还需要产品或服务目录。 如果没有目录，建议功能可使用实际的客户使用数据，并提取目录。 默示目录不会包含未报告为用户事务一部分的项目。
 
 **第一次如何设置建议？**
 
-[订阅](https://datamarket.azure.com/dataset/amla/recommendations)建议后，应使用 [Azure 机器学习建议快速入门指南](machine-learning-recommendation-api-quick-start-guide.md)中的 API 文档设置服务。
+[订阅](https://datamarket.azure.com/dataset/amla/recommendations)建议功能后，应使用 [Azure 机器学习建议 - 快速入门指南](machine-learning-recommendation-api-quick-start-guide.md)中的 API 文档设置服务。
 
 **可在哪里找到 API 文档？** 
 
-API 文档是 [Azure 机器学习建议快速入门指南](machine-learning-recommendation-api-quick-start-guide.md)。
+API 文档为 [Azure 机器学习建议 - 快速入门指南](machine-learning-recommendation-api-quick-start-guide.md)。
 
 **将目录和使用数据上传到建议有什么建议？**
 
@@ -140,6 +140,6 @@ API 文档是 [Azure 机器学习建议快速入门指南](machine-learning-reco
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

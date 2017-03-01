@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6a8bd076830d9b639007ee0130320869d2a63746
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c18ef38661e31e16114b88bdfad36320776ef12b
 
 
 ---
@@ -35,23 +35,23 @@ ms.openlocfilehash: 6a8bd076830d9b639007ee0130320869d2a63746
 这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Office 组。
 
 1. 如果不知道使用哪个 SettingTemplate，可通过以下 cmdlet 返回设置模板列表：
-   
+
     `Get-MsolAllSettingTemplate`
-   
+
     ![设置模板列表](./media/active-directory-accessmanagement-groups-settings-cmdlets/list-of-templates.png)
 2. 若要添加使用准则 URL，首先需获取定义使用准则 URL 值的 SettingsTemplate 对象，即 Group.Unified 模板：
-   
+
     `$template = Get-MsolSettingTemplate –TemplateId 62375ab9-6b52-47ed-826b-58e47e0e304b`
 3. 接下来，创建基于该模板的新设置对象：
-   
+
     `$setting = $template.CreateSettingsObject()`
 4. 然后更新使用准则值：
-   
+
     `$setting["UsageGuidelinesUrl"] = "<https://guideline.com>"`
 5. 最后，应用设置：
-   
+
     `New-MsolSettings –SettingsObject $setting`
-   
+
     ![添加使用准则 URL](./media/active-directory-accessmanagement-groups-settings-cmdlets/add-usage-guideline-url.png)
 
 以下是 Group.Unified SettingsTemplate 中定义的设置。
@@ -67,31 +67,31 @@ ms.openlocfilehash: 6a8bd076830d9b639007ee0130320869d2a63746
 这些步骤在目录级别读取设置，这些设置适用于目录中的所有 Office 组。
 
 1. 读取所有现有的目录设置：
-   
+
     `Get-MsolAllSettings`
 2. 读取特定组的所有设置：
-   
+
     `Get-MsolAllSettings -TargetType Groups -TargetObjectId <groupObjectId>`
 3. 使用 SettingId GUID 读取特定目录设置：
-   
+
     `Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
-   
+
     ![设置 ID GUID](./media/active-directory-accessmanagement-groups-settings-cmdlets/settings-id-guid.png)
 
 ## <a name="update-settings-at-the-directory-level"></a>在目录级别更新设置
 这些步骤在目录级别更新设置，这些设置适用于目录中的所有 Office 组。
 
 1. 获取现有 Settings 对象：
-   
+
     `$setting = Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
 2. 获取要更新的值：
-   
+
     `$value = $Setting.GetSettingsValue()`
 3. 更新值：
-   
+
     `$value["AllowToAddGuests"] = "false"`
 4. 更新设置：
-   
+
     `Set-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c –SettingsValue $value`
 
 ## <a name="remove-settings-at-the-directory-level"></a>在目录级别删除设置
@@ -125,7 +125,6 @@ ms.openlocfilehash: 6a8bd076830d9b639007ee0130320869d2a63746
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 01/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a86d5fb7c0215293e281a52d0f805053bb7b7c11
-ms.openlocfilehash: 935de6643bbfdc8674836a33ce0dfe77df0e2d1e
+ms.sourcegitcommit: f0592824bc5296a4c6e5781d43746c09d80609f9
+ms.openlocfilehash: 622f5547dee171d1b3f0a0cb65cba375d5478476
 
 
 ---
@@ -46,86 +46,91 @@ ms.openlocfilehash: 935de6643bbfdc8674836a33ce0dfe77df0e2d1e
 
 **Azure DocumentDB 链接服务：**
 
-    {
-      "name": "DocumentDbLinkedService",
-      "properties": {
-        "type": "DocumentDb",
-        "typeProperties": {
-          "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
-        }
-      }
+```JSON
+{
+  "name": "DocumentDbLinkedService",
+  "properties": {
+    "type": "DocumentDb",
+    "typeProperties": {
+      "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
     }
-
+  }
+}
+```
 **Azure Blob 存储链接服务：**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 **Azure Document DB 输入数据集：**
 
 此示例假定在 Azure DocumentDB 数据库中有一个名为 **Person** 的集合。
 
 “external”: ”true” 设置和指定 externalData 策略将告知 Azure 数据工厂服务：表在数据工厂外部，且不由数据工厂中的活动生成。
 
-    {
-      "name": "PersonDocumentDbTable",
-      "properties": {
-        "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
-        "typeProperties": {
-          "collectionName": "Person"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "PersonDocumentDbTable",
+  "properties": {
+    "type": "DocumentDbCollection",
+    "linkedServiceName": "DocumentDbLinkedService",
+    "typeProperties": {
+      "collectionName": "Person"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 
 **Azure Blob 输出数据集：**
 
 每隔一小时通过反应以小时为粒度的特定日期/时间的 blob 的路径，将数据复制到新的 blob 中。
 
-    {
-      "name": "PersonBlobTableOut",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "docdb",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "nullValue": "NULL"
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```JSON
+{
+  "name": "PersonBlobTableOut",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "docdb",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "nullValue": "NULL"
       }
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 DocumentDB 数据库中 Person 集合中的示例 JSON 文档：
 
-    {
-      "PersonId": 2,
-      "Name": {
-        "First": "Jane",
-        "Middle": "",
-        "Last": "Doe"
-      }
-    }
-
+```JSON
+{
+  "PersonId": 2,
+  "Name": {
+    "First": "Jane",
+    "Middle": "",
+    "Last": "Doe"
+  }
+}
+```
 DocumentDB 支持使用如 SQL 的语法在分层的 JSON 文档上查询文档。
 
 示例： 
@@ -136,46 +141,47 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 
 以下管道将数据从 DocumentDB 数据库中的 Person 集合复制到 Azure blob。 已将输入和输出数据集指定为复制活动的一部分。  
 
-    {
-      "name": "DocDbToBlobPipeline",
-      "properties": {
-        "activities": [
+```JSON
+{
+  "name": "DocDbToBlobPipeline",
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DocumentDbCollectionSource",
+            "query": "SELECT Person.Id, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person",
+            "nestingSeparator": "."
+          },
+          "sink": {
+            "type": "BlobSink",
+            "blobWriterAddHeader": true,
+            "writeBatchSize": 1000,
+            "writeBatchTimeout": "00:00:59"
+          }
+        },
+        "inputs": [
           {
-            "type": "Copy",
-            "typeProperties": {
-              "source": {
-                "type": "DocumentDbCollectionSource",
-                "query": "SELECT Person.Id, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person",
-                "nestingSeparator": "."
-              },
-              "sink": {
-                "type": "BlobSink",
-                "blobWriterAddHeader": true,
-                "writeBatchSize": 1000,
-                "writeBatchTimeout": "00:00:59"
-              }
-            },
-            "inputs": [
-              {
-                "name": "PersonDocumentDbTable"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "PersonBlobTableOut"
-              }
-            ],
-            "policy": {
-              "concurrency": 1
-            },
-            "name": "CopyFromDocDbToBlob"
+            "name": "PersonDocumentDbTable"
           }
         ],
-        "start": "2015-04-01T00:00:00Z",
-        "end": "2015-04-02T00:00:00Z"
+        "outputs": [
+          {
+            "name": "PersonBlobTableOut"
+          }
+        ],
+        "policy": {
+          "concurrency": 1
+        },
+        "name": "CopyFromDocDbToBlob"
       }
-    }
-
+    ],
+    "start": "2015-04-01T00:00:00Z",
+    "end": "2015-04-02T00:00:00Z"
+  }
+}
+```
 ## <a name="sample-copy-data-from-azure-blob-to-azure-documentdb"></a>示例：将数据从 Azure Blob 复制到 Azure DocumentDB
 以下示例显示：
 
@@ -189,167 +195,174 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 
 **Azure Blob 存储链接服务：**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 **Azure DocumentDB 链接服务：**
 
-    {
-      "name": "DocumentDbLinkedService",
-      "properties": {
-        "type": "DocumentDb",
-        "typeProperties": {
-          "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
-        }
-      }
+```JSON
+{
+  "name": "DocumentDbLinkedService",
+  "properties": {
+    "type": "DocumentDb",
+    "typeProperties": {
+      "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
     }
-
+  }
+}
+```
 **Azure Blob 输入数据集：**
 
-    {
-      "name": "PersonBlobTableIn",
-      "properties": {
-        "structure": [
-          {
-            "name": "Id",
-            "type": "Int"
-          },
-          {
-            "name": "FirstName",
-            "type": "String"
-          },
-          {
-            "name": "MiddleName",
-            "type": "String"
-          },
-          {
-            "name": "LastName",
-            "type": "String"
-          }
-        ],
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "fileName": "input.csv",
-          "folderPath": "docdb",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "nullValue": "NULL"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```JSON
+{
+  "name": "PersonBlobTableIn",
+  "properties": {
+    "structure": [
+      {
+        "name": "Id",
+        "type": "Int"
+      },
+      {
+        "name": "FirstName",
+        "type": "String"
+      },
+      {
+        "name": "MiddleName",
+        "type": "String"
+      },
+      {
+        "name": "LastName",
+        "type": "String"
       }
+    ],
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "fileName": "input.csv",
+      "folderPath": "docdb",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "nullValue": "NULL"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 **Azure DocumentDB 输出数据集：**
 
 此示例将数据复制到一个名为“Person”的集合。
 
-    {
-      "name": "PersonDocumentDbTableOut",
-      "properties": {
-        "structure": [
-          {
-            "name": "Id",
-            "type": "Int"
-          },
-          {
-            "name": "Name.First",
-            "type": "String"
-          },
-          {
-            "name": "Name.Middle",
-            "type": "String"
-          },
-          {
-            "name": "Name.Last",
-            "type": "String"
-          }
-        ],
-        "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
-        "typeProperties": {
-          "collectionName": "Person"
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```JSON
+{
+  "name": "PersonDocumentDbTableOut",
+  "properties": {
+    "structure": [
+      {
+        "name": "Id",
+        "type": "Int"
+      },
+      {
+        "name": "Name.First",
+        "type": "String"
+      },
+      {
+        "name": "Name.Middle",
+        "type": "String"
+      },
+      {
+        "name": "Name.Last",
+        "type": "String"
       }
+    ],
+    "type": "DocumentDbCollection",
+    "linkedServiceName": "DocumentDbLinkedService",
+    "typeProperties": {
+      "collectionName": "Person"
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 以下管道将数据从 Azure Blob 复制到 DocumentDB 中的人员集合。 已将输入和输出数据集指定为复制活动的一部分。
 
-    {
-      "name": "BlobToDocDbPipeline",
-      "properties": {
-        "activities": [
+```JSON
+{
+  "name": "BlobToDocDbPipeline",
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "DocumentDbCollectionSink",
+            "nestingSeparator": ".",
+            "writeBatchSize": 2,
+            "writeBatchTimeout": "00:00:00"
+          }
+          "translator": {
+              "type": "TabularTranslator",
+              "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, Title: Title, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
+          }
+        },
+        "inputs": [
           {
-            "type": "Copy",
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "DocumentDbCollectionSink",
-                "nestingSeparator": ".",
-                "writeBatchSize": 2,
-                "writeBatchTimeout": "00:00:00"
-              }
-              "translator": {
-                  "type": "TabularTranslator",
-                  "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, Title: Title, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
-              }
-            },
-            "inputs": [
-              {
-                "name": "PersonBlobTableIn"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "PersonDocumentDbTableOut"
-              }
-            ],
-            "policy": {
-              "concurrency": 1
-            },
-            "name": "CopyFromBlobToDocDb"
+            "name": "PersonBlobTableIn"
           }
         ],
-        "start": "2015-04-14T00:00:00Z",
-        "end": "2015-04-15T00:00:00Z"
+        "outputs": [
+          {
+            "name": "PersonDocumentDbTableOut"
+          }
+        ],
+        "policy": {
+          "concurrency": 1
+        },
+        "name": "CopyFromBlobToDocDb"
       }
-    }
-
+    ],
+    "start": "2015-04-14T00:00:00Z",
+    "end": "2015-04-15T00:00:00Z"
+  }
+}
+```
 如果示例 blob 输入为
 
-    1,John,,Doe
-
+```
+1,John,,Doe
+```
 则 DocumentDB 中的输出 JSON 将为：
 
-    {
-      "Id": 1,
-      "Name": {
-        "First": "John",
-        "Middle": null,
-        "Last": "Doe"
-      },
-      "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
-    }
-
+```JSON
+{
+  "Id": 1,
+  "Name": {
+    "First": "John",
+    "Middle": null,
+    "Last": "Doe"
+  },
+  "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
+}
+```
 DocumentDB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 **nestingSeparator** 来表示层次结构，即“.” 来实现。 通过该分隔符，复制活动将根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。
 
 ## <a name="azure-documentdb-linked-service-properties"></a>Azure DocumentDB 链接服务属性
@@ -371,22 +384,23 @@ DocumentDB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 A
 
 示例：
 
-    {
-      "name": "PersonDocumentDbTable",
-      "properties": {
-        "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
-        "typeProperties": {
-          "collectionName": "Person"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "PersonDocumentDbTable",
+  "properties": {
+    "type": "DocumentDbCollection",
+    "linkedServiceName": "DocumentDbLinkedService",
+    "typeProperties": {
+      "collectionName": "Person"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 ### <a name="schema-by-data-factory"></a>数据工厂的构架
 对于无架构的数据存储（如 DocumentDB），数据工厂服务将使用下列方式之一推断架构：  
 
@@ -398,7 +412,8 @@ DocumentDB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 A
 ## <a name="azure-documentdb-copy-activity-type-properties"></a>Azure DocumentDB 复制活动类型属性
 有关可用于定义活动的部分和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
-**注意：**复制活动仅采用一个输入，且仅生成一个输出。
+> [!NOTE]
+> 复制活动只使用一个输入，只生成一个输出。
 
 另一方面，在活动的 typeProperties 部分中可用的属性因每种活动类型而异；在复制活动中，这些属性则因源和接收器的类型而异。
 
@@ -449,10 +464,10 @@ DocumentDB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 A
    否。 目前仅可以指定一个集合。
 
 ## <a name="performance-and-tuning"></a>性能和优化
-若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
+请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

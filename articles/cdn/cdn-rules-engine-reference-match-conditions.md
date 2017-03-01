@@ -1,6 +1,6 @@
 ---
-title: "Azure 内容交付网络规则引擎匹配条件 | Microsoft Docs"
-description: "本主题介绍规则引擎的匹配条件和功能"
+title: "Azure CDN 规则引擎匹配条件 | Microsoft Docs"
+description: "Azure CDN 规则引擎匹配条件和功能的参考文档。"
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: f96e977c777e4ecd007d6cd863054addb465489d
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: f4886b1d78dfa87cf25737fb46c12b5963034f27
 
 
 ---
 
-#<a name="match-conditions-for-azure-content-delivery-network-cdn-rules-engine"></a>Azure 内容交付网络 (CDN) 规则引擎的匹配条件
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN 规则引擎匹配条件
 本主题列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件的详细说明。
 
 规则的第二部分是匹配条件。 可以使用匹配条件来确定特定类型的请求，以便执行一组相应的功能。
@@ -128,6 +128,6 @@ URL 查询通配符 | 将指定值与请求的查询字符串比较。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

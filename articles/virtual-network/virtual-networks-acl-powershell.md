@@ -1,5 +1,5 @@
 ---
-title: "如何使用 PowerShell 管理终结点的访问控制列表 (ACL)"
+title: "管理 Azure 终结点访问控制列表 | PowerShell | 经典 | Microsoft 文档"
 description: "了解如何使用 PowerShell 管理 ACL"
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 6d0e461daa9a06f490c2fe1a85d160d013f26829
+ms.sourcegitcommit: 18d33244603cff921f1282ba41f3aeb6e42ae542
+ms.openlocfilehash: 60ed242b78576d4673e41801a8687a354d09bf9c
 
 
 ---
-# <a name="how-to-manage-access-control-lists-acls-for-endpoints-by-using-powershell"></a>如何使用 PowerShell 管理终结点的访问控制列表 (ACL)
+# <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>在典型部署模型中使用 PowerShell 管理终结点访问控制列表
 可以使用 Azure PowerShell 或在管理门户中为终结点创建和管理网络访问控制列表 (ACL)。 在本主题中，你将了解可使用 PowerShell 完成的 ACL 常见任务的过程。 有关 Azure PowerShell cmdlet 的列表，请参阅 [Azure 管理 Cmdlet](http://go.microsoft.com/fwlink/?LinkId=317721)。 有关 ACL 的详细信息，请参阅[什么是网络访问控制列表 (ACL)？](virtual-networks-acl.md)。 如果要使用管理门户管理 ACL，请参阅[如何设置虚拟机的终结点](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="manage-network-acls-by-using-azure-powershell"></a>使用 Azure PowerShell 管理网络 ACL
@@ -92,6 +92,6 @@ ms.openlocfilehash: 6d0e461daa9a06f490c2fe1a85d160d013f26829
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 中的警报 | Microsoft Docs"
+title: "在 OMS Log Analytics 中创建警报 | Microsoft Docs"
 description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，并可以主动向你通知问题，或调用操作以尝试更正问题。  本文介绍如何创建警报规则和它们可执行的不同操作的详细信息。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/09/2016
+ms.date: 01/25/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f8603c9ddfd3f99ea38ad07b7a8a0a553e5e4dd
+ms.sourcegitcommit: 9fe104a1ea26afa2817aedaa8ed77d042404cda6
+ms.openlocfilehash: 9a62ed7540de05b1db7610e12f2671d33fc8049d
 
 
 ---
@@ -24,6 +24,9 @@ ms.openlocfilehash: 7f8603c9ddfd3f99ea38ad07b7a8a0a553e5e4dd
 Log Analytics 中的警报标识 OMS 存储库中的重要信息。  警报规则根据计划自动运行日志搜索，并在结果匹配特定条件的情况下，创建警报记录。  然后，该规则可自动运行一个或多个操作来主动向你通知警报或调用另一个进程。   
 
 ![Log Analytics 警报](media/log-analytics-alerts/overview.png)
+
+>[!NOTE]
+> 有关公共预览版中当前存在的指标测量的警报规则的信息，请参阅 [New metric measurement alert rule type in Public Preview!](https://blogs.technet.microsoft.com/msoms/2016/11/22/new-metric-measurement-alert-rule-type-in-public-preview/)（公共预览中新的指标测量警报规则类型！）。
 
 ## <a name="creating-an-alert-rule"></a>创建警报规则
 若要创建警报规则，需要首先针对应调用警报的记录创建日志搜索。  然后，就可以使用“**警报**”按钮以创建和配置警报规则。
@@ -60,6 +63,7 @@ Log Analytics 中的警报标识 OMS 存储库中的重要信息。  警报规�
 | 选择 Runbook |从自动化解决方案中配置的自动化帐户中的 Runbook，选择要启动的 Runbook。 |
 | 运行位置 |选择“**Azure**”以在 Azure 云中运行 Runbook。  选择“**混合辅助角色**”以在本地环境中的“[混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)”上运行 Runbook。 |
 
+
 ## <a name="manage-alert-rules"></a>管理警报规则
 可以在 Log Analytics“**设置**”的“**警报**”菜单中，获得所有警报规则的列表。  
 
@@ -74,28 +78,36 @@ Log Analytics 中的警报标识 OMS 存储库中的重要信息。  警报规�
 * 通过单击警报规则旁的铅笔图标可编辑警报规则。
 * 通过单击警报规则旁的“**X**”图标可删除警报规则。 
 
-## <a name="setting-time-windows"></a>设置时间范围
+## <a name="setting-time-windows-and-thresholds"></a>设置时间范围和阈值
+
+>[!NOTE]
+> 有关公共预览版中当前存在的指标测量的警报规则的信息，请参阅 [New metric measurement alert rule type in Public Preview!](https://blogs.technet.microsoft.com/msoms/2016/11/22/new-metric-measurement-alert-rule-type-in-public-preview/)（公共预览中新的指标测量警报规则类型！）。
+ 
 ### <a name="event-alerts"></a>事件警报
-事件包括数据源（如 Windows 事件日志、Syslog 和自定义记录）。  你可能需要在创建特定错误事件时，或在特定时间范围内创建多个错误事件时创建警报。
+事件包括数据源（如 Windows 事件日志、Syslog 和自定义记录）。  产生特定错误事件时，或在特定时间范围内产生多个错误事件时，你可能希望创建警报。
 
 若要对单个事件发出警报，请将结果数设置为大于 0，并将频率和时间范围都设置为 5 分钟。  这样便会每 5 分钟运行一次查询，并检查自上次运行该查询以来已创建的某一事件的出现次数。  较长的频率可能会延长收集事件和创建警报之间的时间。
 
 某些应用程序可能会记录不一定引发警报的偶然错误。  例如，应用程序可能会重试造成错误事件的过程，而下一次就会成功。  在这种情况下，你可能不想创建警报，除非在特定时间范围内创建多个事件。  
 
-在某些情况下，你可能想要在某个事件不存在的情况下创建警报。  例如，进程可能记录常规事件以指明其运行正常。  如果它不在特定时间范围内记录某个事件，则应创建警报。  在这种情况下，应将阈值设置为“*小于 1*”。
+在某些情况下，你可能想要在某个事件不存在的情况下创建警报。  例如，进程可能记录常规事件以指明其运行正常。  如果它不在特定时间范围内记录某个事件，则应创建警报。  在这种情况下，应将阈值设置为“小于 1”。
 
 ### <a name="performance-alerts"></a>性能警报
-与事件类似，[性能数据](log-analytics-data-sources-performance-counters.md)存储为 OMS 存储库中的记录。  每个记录中的值是过去 30 分钟测量到的平均值。  如果你想要在性能计数器超过特定阈值时发出警报，则该阈值应包括在查询中。
+与事件类似，[性能数据](log-analytics-data-sources-performance-counters.md)存储为 OMS 存储库中的记录。  如果你想要在性能计数器超过特定阈值时发出警报，则该阈值应包括在查询中。
 
-例如，如果想要在处理器运行率超过 90% 的时间长达 30 分钟时发出警报，则需要使用类似 *Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90* 的查询，并将警报规则的阈值设置为“*大于 0*”。  
+例如，若希望处理器超过 90% 时发出警报，可以使用如下查询，并将警报规则的阈值设置为“大于 0”。
 
- 不论你收集每个计数器的频率如何，都会每隔 30 分钟聚合一次“[性能记录](log-analytics-data-sources-performance-counters.md)”，因此，小于 30 分钟的时间范围可能不会返回任何记录。  将时间范围设置为 30 分钟，可确保对每个连接的源获得单一记录，以代表该时间段内平均值。
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
+
+若希望处理器在特定时间范围平均超过 90% 时发出警报，则可使用如下所示的 [measure 命令](log-analytics-search-reference.md#commands)进行查询，并将警报规则的阈值设置为“大于 0”。 
+
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
 ## <a name="alert-actions"></a>警报操作
 除了创建警报记录，还可以配置警报规则，以自动运行一个或多个操作。  操作可以主动向你通知警报，或者调用某些进程，以尝试更正检测到的问题。  以下各部分描述了当前可用的操作。
 
 ### <a name="email-actions"></a>电子邮件操作
-电子邮件操作会发送内含警报详细信息的电子邮件给一位或多位收件人。  你可以指定邮件主题，但其内容是由 Log Analytics 构造的标准格式。  除了日志搜索所返回的最多 10 条记录的详细信息之外，邮件内容还包括摘要信息（如警报名称）。  此外，还包含 Log Analytics 中将从查询中返回整个记录集的日志搜索的链接。   邮件发件人为 *Microsoft Operations Management Suite (OMS) 团队&lt;noreply@oms.microsoft.com&gt;*。 
+电子邮件操作会发送内含警报详细信息的电子邮件给一位或多位收件人。  你可以指定邮件主题，但其内容是由 Log Analytics 构造的标准格式。  除了日志搜索所返回的最多&10; 条记录的详细信息之外，邮件内容还包括摘要信息（如警报名称）。  此外，还包含 Log Analytics 中将从查询中返回整个记录集的日志搜索的链接。   邮件发件人为 *Microsoft Operations Management Suite (OMS) 团队&lt;noreply@oms.microsoft.com&gt;*。 
 
 ### <a name="webhook-actions"></a>Webhook 操作
 Webhook 操作可让你通过单个 HTTP POST 请求调用外部进程。  被调用的服务应支持 Webhook，并确定将如何使用接收的任何负载。  只要此请求采用 API 理解的格式，你还可以调用不专门支持 Webhook 的 REST API。  使用 Webhook 来响应警报的示例有会使用 [Slack](http://slack.com) 之类的服务来发送包含警报详细信息的消息，或在 [PagerDuty](http://pagerduty.com/) 之类的服务中创建事件。  
@@ -212,6 +224,6 @@ Log Analytics 中警报规则创建的警报记录的“**类型**”为“**警
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

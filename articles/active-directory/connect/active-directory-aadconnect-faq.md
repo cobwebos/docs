@@ -1,26 +1,26 @@
 ---
-title: "Azure AD Connect：常见问题 | Microsoft Docs"
+title: "Azure Active Directory Connect：常见问题 - Azure | Microsoft 文档"
 description: "此页包含有关 Azure AD Connect 的常见问题。"
 services: active-directory
 documentationcenter: 
 author: billmath
 manager: femila
-editor: curtand
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d0433f7f2e88dcbf5e0969f0a6c8d2689816b2d1
+ms.sourcegitcommit: 85458f4477dadb83a6a2627ef490471ca38ac634
+ms.openlocfilehash: c2b78731feb1993e5c7123ff676f38704120ccff
 
 
 ---
-# <a name="azure-ad-connect-faq"></a>Azure AD Connect 常见问题
+# <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect 常见问题
+
 ## <a name="general-installation"></a>常规安装
 **问：如果 Azure AD 全局管理员已启用 2FA，安装是否能够正常进行？**  
 2016 年 2 月版本开始支持此功能。
@@ -66,6 +66,12 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
 你还可以根据 [Azure AD Connect 同步服务功能](active-directory-aadconnectsyncservice-features.md)中所述配置 Azure AD，以允许同步引擎更新 userPrincipalName。
 
+**问：是否支持本地 AD 组/联系人对象与现有 Azure AD 组/联系人对象的软匹配？**  
+不能，目前不支持。
+
+**问：是否支持手动设置现有 Azure AD 组/联系人对象的 ImmutableId 属性，以将其硬匹配到本地 AD 组/联系人对象？**  
+不能，目前不支持。
+
 ## <a name="custom-configuration"></a>自定义配置
 **问：在哪里可以找到 Azure AD Connect 的 PowerShell cmdlet 介绍？**  
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
@@ -91,6 +97,6 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

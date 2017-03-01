@@ -1,5 +1,5 @@
 ---
-title: "动态打包概述 | Microsoft Docs"
+title: "Azure 媒体服务动态打包概述 | Microsoft 文档"
 description: "本主题提供动态打包概述。"
 author: Juliako
 manager: erikre
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 01/25/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0c77ee0f612c1cbef551a129a22cf3f125e6f29d
-ms.openlocfilehash: 004cea5afb7ed6853043841c2c820b49d8a31584
+ms.sourcegitcommit: da455a350f61e17425cd308d0fdc8bb5294a0b76
+ms.openlocfilehash: 574921fdecdadaa48c572685f7486d4e7b1d25f4
 
 
 ---
@@ -63,6 +63,6 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS、X
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

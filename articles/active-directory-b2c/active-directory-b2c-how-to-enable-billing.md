@@ -13,14 +13,13 @@ ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
 translationtype: Human Translation
-ms.sourcegitcommit: 0475c0f209cde80177df7dbf23eaf8dd17a44752
-ms.openlocfilehash: b5754a08e0683344cc97bdc664ed26ef9a9cf34d
+ms.sourcegitcommit: 43224628d5726ac2fb0e8c27c649421af7ceeee4
+ms.openlocfilehash: 6cf375fbfe265a53591b9987ebd32db6df73fcb4
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-b2c-tenant-to-pay-for-usage-charges"></a>将 Azure 订阅链接到 Azure B2C 租户以支付使用费
-> [!IMPORTANT]
-> 即将推出。 此功能并非适用于所有 B2C 租户。
 
 Azure Active Directory B2C (Azure AD B2C) 不断发生的使用费将在 Azure 订阅中计费。 创建 B2C 租户本身后，租户管理员必须将 Azure AD B2C 租户显式链接到 Azure 订阅。  这种链接是通过在目标 Azure 订阅中创建 Azure AD“B2C 租户”资源实现的。 许多 B2C 租户可链接到单个 Azure 订阅以及其他 Azure 资源（例如 VM、数据存储和 LogicApps）
 
@@ -69,11 +68,14 @@ Azure AD B2C 资源创建对话框中包含以下参数：
 
 ![B2C 资源设置](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
+## <a name="known-issues"></a>已知问题
+- B2C 租户删除。 如果创建、删除某个 B2C 租户，然后使用相同的域名创建它，请同时删除“链接”资源并使用相同的域名重新创建该资源。  可通过 Azure 门户在订阅租户中的“所有资源”下面找到此“链接”资源。
+- 针对区域资源位置自我施加的限制。  在极少数情况下，用户可能已针对 Azure 资源创建建立了区域限制。  这种限制可能会阻止在 Azure 订阅与 B2C 租户之间创建链接。 若要消除此问题，请放宽此限制。
 
 ## <a name="next-steps"></a>后续步骤
 针对每个 B2C 租户完成这些步骤后，将会根据 Azure Direct 或企业协议详细信息在 Azure 订阅中计费。
 - 在选定的 Azure 订阅中查看使用情况和计费
-- 通过使用报告 API (TBD) 查看详细的每日使用报告
+- 通过[使用报告 API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api) 查看详细的每日使用报告
 
 
 
@@ -81,9 +83,4 @@ Azure AD B2C 资源创建对话框中包含以下参数：
 [gog]: http://google.com/        
 [yah]: http://search.yahoo.com/  
 [msn]: http://search.msn.com/    
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

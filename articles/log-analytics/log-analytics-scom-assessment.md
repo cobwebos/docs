@@ -1,5 +1,5 @@
 ---
-title: "使用 Log Analytics 中的 System Center Operations Manager 评估解决方案优化环境 | Microsoft 文档"
+title: "使用 Log Analytics 中的 System Center Operations Manager 评估解决方案优化环境 | Microsoft Docs"
 description: "可以使用 System Center Operations Manager 评估解决方案定期评估服务器环境的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
+ms.date: 12/06/2016
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 04eebbe19354ab1e927ee2bb41f25dc6676a7c93
-ms.openlocfilehash: c28e73f0a6833793561d8702eb6c6480b9fbc0a4
+ms.sourcegitcommit: 45ba55083ecca1995e343dc1da1497df43f70e10
+ms.openlocfilehash: 90fb374e8c1712b5fc1e94979999da6a8c400f68
 
 
 ---
 
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution-in-log-analytics"></a>使用 Log Analytics 中的 System Center Operations Manager 评估（预览版）解决方案优化环境
 
-可以使用 System Center Operations Manager 评估解决方案定期评估 System Center Operations Manager 服务器环境的风险和运行状况。 本文将帮助你安装、配置和使用该解决方案，以便针对潜在问题采取纠正措施。
+可以使用 System Center Operations Manager 评估解决方案定期评估 System Center Operations Manager 服务器环境的风险和运行状况。 本文将帮助你安装、配置和使用该解决方案，以便针对潜在问题采取纠正措施。 
 
 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。 这些建议跨四个重点领域进行了分类，将帮助你快速了解风险并采取纠正措施。
 
@@ -243,6 +243,12 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 ## <a name="system-center-operations-manager-assessment-solution-faq"></a>System Center Operations Manager 评估解决方案常见问题
 
+*我将评估解决方案添加到了我的 OMS 工作区。但没有看到建议。为什么看不到呢？* 添加解决方案后，使用以下步骤在 OMS 仪表板上查看建议。  
+
+- [设置 System Center Operations Manager 评估的运行方式帐户](#operations-manager-run-as-accounts-for-oms)  
+- [配置 System Center Operations Manager 评估规则](#configure-the-assessment-rule)
+
+
 *是否有某种方法来配置评估的运行频率？* 是的。 请参阅[配置运行频率](#configure-the-run-frequency)。
 
 *如果添加 System Center Operations Manager 评估解决方案后发现另一台服务器，那么是否会评估它？* 是的，发现之后，即会对它进行评估 - 默认情况下每隔七天评估一次。
@@ -274,6 +280,6 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

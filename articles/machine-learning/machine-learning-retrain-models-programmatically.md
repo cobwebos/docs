@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 70004ff5c59427dfd5c58e5633cae95a08a18a3a
+ms.sourcegitcommit: cd32cb7d2247676795f345448960d547eafba084
+ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
 
 
 ---
@@ -44,10 +44,11 @@ ms.openlocfilehash: 70004ff5c59427dfd5c58e5633cae95a08a18a3a
 5. 键入“人口普查模型”。
 6. 在实验画布的底部，单击“**运行**”。
 7. 单击“设置 Web 服务”，然后选择“重新训练 Web 服务”。 
+
+下图显示初始实验。
    
    ![初始实验。][2]
 
-图 2：初始实验。
 
 ## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>创建预测实验并将其发布为 Web 服务
 接下来创建预测实验。
@@ -57,7 +58,7 @@ ms.openlocfilehash: 70004ff5c59427dfd5c58e5633cae95a08a18a3a
 3. 实验运行完毕后，单击“部署 Web 服务 [经典]”或“部署 Web 服务 [全新] ”。
 
 ## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>将训练实验部署为训练 Web 服务
-若要重新训练已经训练的模型，必须部署作为重新训练 Web 服务而创建的训练实验。 此 Web 服务需要一个与*[训练模型][train-model]* 模块连接的*Web 服务输出*模块，以便生成新的训练模型。
+若要重新训练已经训练的模型，必须部署作为重新训练 Web 服务而创建的训练实验。 此 Web 服务需要一个与*[训练模型][train-model]* 模块连接的 Web 服务输出模块，以便生成新的训练模型。
 
 1. 若要返回到训练实验，单击左侧窗格中的“实验”图标，然后单击名为“人口普查模型”的实验。  
 2. 在“搜索实验项目”的搜索框中，键入 Web 服务。 
@@ -79,7 +80,7 @@ ms.openlocfilehash: 70004ff5c59427dfd5c58e5633cae95a08a18a3a
 
 ![运行后生成的工作流。][4]
 
-图 3：运行后生成的工作流。
+
 
 ## <a name="retrain-the-model-with-new-data-using-bes"></a>使用 BES 通过新数据重新训练模型
 对于此示例，正在使用 C# 创建重新培训的应用程序。 还可以使用 Python 或 R 示例代码来完成此任务。
@@ -185,6 +186,6 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,9 +1,9 @@
 ---
-title: "PIM 中的角色 | Microsoft 文档"
+title: "Azure AD Privileged Identity Management 中的角色 | Microsoft 文档"
 description: "了解可以在 Azure Privileged Identity Management 扩展中针对特权标识使用哪些角色。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/01/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0831755c619fb33c49a6df87141ca3a0a4714f71
+ms.sourcegitcommit: ec80273fd388a435bc0aee9cb2dd49df12535923
+ms.openlocfilehash: d21bf547c80c533481254a8a9640b5dcef6a66c2
 
 
 ---
-# <a name="roles-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management 中的角色
+# <a name="roles-in-azure-ad-pim"></a>Azure AD PIM 中的角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 可以将组织中的用户分配到 Azure AD 中的不同管理角色。 这些角色分配控制用户可以针对 Azure AD、Office 365 和其他 Microsoft Online Services 与连接的应用程序执行哪些任务，例如添加或删除用户或更改服务设置。  
@@ -63,7 +63,7 @@ Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具
 ## <a name="roles-not-managed-in-pim"></a>不在 PIM 中管理的角色
 Exchange Online 或 SharePoint Online 中的角色（前面所述的角色除外）并不会出现在 Azure AD 中，因此也不会显示在 PIM 中。 有关在这些 Office 365 服务中更改精细角色分配的详细信息，请参阅 [Permissions in Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)（Office 365 中的权限）。
 
-Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure 订阅，请参阅 [如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)；有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](role-based-access-control-configure.md)。
+Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure 订阅，请参阅 [如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)；有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](role-based-access-control-configure.md)。
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
@@ -71,7 +71,7 @@ Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure �
 ## <a name="user-roles-and-signing-in"></a>用户角色和登录
 对于某些 Microsoft 服务和应用程序而言，将用户分配到角色可能还不足以让该用户成为管理员。
 
-用户若要访问 Azure 经典门户，必须是 Azure 订阅的服务管理员或共同管理员，即使该用户无需管理 Azure 订阅，也是如此。  例如，若要在经典门户中管理 Azure AD 的配置设置，用户必须身兼 Azure AD 中的全局管理员和 Azure 订阅中的订阅共同管理员。  若要了解如何将用户添加到 Azure 订阅，请参阅[如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)。
+用户若要访问 Azure 经典门户，必须是 Azure 订阅的服务管理员或共同管理员，即使该用户无需管理 Azure 订阅，也是如此。  例如，若要在经典门户中管理 Azure AD 的配置设置，用户必须身兼 Azure AD 中的全局管理员和 Azure 订阅中的订阅共同管理员。  若要了解如何将用户添加到 Azure 订阅，请参阅[如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)。
 
 此外，在访问 Microsoft Online Services 时，用户可能需要获得许可证才能打开服务的门户或执行管理任务。
 
@@ -92,6 +92,6 @@ Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure �
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

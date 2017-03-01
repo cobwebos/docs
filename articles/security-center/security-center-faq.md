@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 02/08/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b8a69d89f335c00c5ddc3c201e33a66e1dea1da5
-ms.openlocfilehash: fc45634baec1fe5af6cf8f718fb78025dff88a7e
+ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
+ms.openlocfilehash: 466d4a566ebb426f48e8c271e1305b844842d638
 
 
 ---
@@ -36,13 +36,20 @@ Azure 安全中心提供两种层级：免费层和标准层。
 
 通过免费层可设置安全策略和接收安全警报、事件和建议（这些建议将对配置所需控件的整个过程提供指导）。 使用免费层还可监视 Azure 资源和与 Azure 订阅集成的合作伙伴解决方案的安全状态。
 
-标准层除包含免费层的功能外，还提供高级检测：威胁情报、行为分析、故障分析和异常检测。 可免费试用标准层 90 天。 如要升级，请选择[安全策略](security-center-policies.md#set-security-policies-for-subscriptions)中的“定价层”。 请参阅[安全中心定价](security-center-pricing.md)，了解详细信息。
+标准层除包含免费层的功能外，还提供高级检测：威胁情报、行为分析、故障分析和异常检测。 可免费试用标准层 90 天。 如要升级，请选择[安全策略](security-center-policies.md#set-security-policies-for-subscriptions)中的“定价层”。 若要了解详细信息，请参阅[安全中心定价](security-center-pricing.md)。
+
+## <a name="permissions"></a>权限
+Azure 安全中心使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../active-directory/role-based-access-built-in-roles.md)。
+
+安全中心会评估资源的配置以识别安全问题和漏洞。 如果你分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
+
+若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](security-center-permissions.md)。
 
 ## <a name="data-collection"></a>数据收集
-安全中心从虚拟机收集数据，以评估其安全状态、提供安全建议和威胁警报。 初次访问安全中心时，将在订阅中的所有虚拟机上启用数据收集。 建议使用数据收集，但可通过安全中心策略中[禁用数据收集](#how-do-i-disable-data-collection)来选择退出。
+安全中心会收集来自虚拟机的数据，进而评估其安全状态、提供安全建议并发出威胁警报。 初次访问安全中心时，将在订阅中的所有虚拟机上启用数据收集。 建议使用数据收集，但可通过安全中心策略中[禁用数据收集](#how-do-i-disable-data-collection)来选择退出。
 
 ### <a name="how-do-i-disable-data-collection"></a>如何禁用数据收集？
-可随时在安全中心策略中对订阅禁用“数据收集”。 （[登录到 Azure 门户](https://portal.azure.com)，选择“浏览”，选择“安全中心”，然后选择“策略”。）选中一个订阅后，会打开一个新的选项卡，可在其选项中关闭“数据收集”。 在顶部的功能区中选择“删除代理”选项，将代理从现有的虚拟机中删除。
+可随时在安全中心策略中对订阅禁用“数据收集”。 （[登录到 Azure 门户](https://portal.azure.com)，选择“浏览”，选择“安全中心”，然后选择“策略”。）选中一个订阅后，会打开一个新的边栏选项卡，可在其选项中关闭“数据收集”。 关闭数据收集时，会自动从订阅的现有虚拟机中删除 Azure 监视代理。
 
 > [!NOTE]
 > 虽然可以在 Azure 订阅级别和资源组级别设置安全策略，但必须选择一个订阅以关闭数据收集。
@@ -64,7 +71,7 @@ Azure 安全中心提供两种层级：免费层和标准层。
 代理和扩展使用系统资源的名义帐户，对性能的影响极小。 有关性能影响和代理及扩展的详细信息，请参阅[规划和操作指南](security-center-planning-and-operations-guide.md#data-collection-and-storage)。
 
 ### <a name="where-is-my-data-stored"></a>我的数据存储在哪？
-对于每个有虚拟机运行的区域，可选择相应的存储帐户存储从这些虚拟机收集的数据。 这样即可轻松地将数据保存在同一地理区域，确保维护隐私和数据所有权。 可在安全策略中为订阅选择存储帐户。 （[登录到 Azure 门户](https://portal.azure.com)，选择“浏览”，选择“安全中心”，然后选择“策略”。）单击订阅后，会打开一个新的边栏选项卡。 通过选择“选择存储帐户”来选择区域。
+对于每个有虚拟机运行的区域，可选择相应的存储帐户存储从这些虚拟机收集的数据。 这样即可轻松地将数据保存在同一地理区域，确保维护隐私和数据所有权。 可在安全策略中为订阅选择存储帐户。 （[登录到 Azure 门户](https://portal.azure.com)，选择“浏览”，选择“安全中心”，然后选择“策略”。）选择订阅后，会打开一个新的边栏选项卡。 若要选择区域，请选择“选择存储帐户”。 如果未对每个区域选择一个存储帐户，则系统将为你创建存储帐户并将其置于 securitydata 资源组中。
 
 > [!NOTE]
 > 虽然可在 Azure 订阅级别和资源组级别设置安全策略，但只能在订阅级别选择存储帐户的区域。
@@ -116,18 +123,6 @@ Microsoft 安全响应中心 (MSRC) 会执行 Azure 网络和基础结构的选�
 
 安全中心作为 Azure 的一项服务，可持续监视客户的 Azure 环境，并应用分析来自动广泛地检测潜在的恶意活动。 这些检测结果会作为安全警报显示在安全中心仪表板中。
 
-### <a name="how-are-permissions-handled-in-azure-security-center"></a>如何在 Azure 安全中心处理权限？
-Azure 安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
-
-用户打开安全中心时，仅会显示与用户具有访问权限的资源相关的建议和警报。 这意味着，用户仅可看到与对其分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色的资源相关的项。
-
-如果需要：
-
-* **编辑安全策略**，则你必须是该订阅的所有者或参与者。
-* **应用建议**，则你必须是该订阅的所有者或参与者。
-* **查看所有订阅的安全状态**，则你必须是每个订阅的所有者、参与者或读取者（IT 管理员、安全团队）。
-* **查看资源的安全状态**，则你必须是资源组所有者、参与者或读取者 (DevOps)。
-
 ### <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>哪些 Azure 资源由 Azure 安全中心监视？
 Azure 安全中心监视以下 Azure 资源：
 
@@ -137,7 +132,7 @@ Azure 安全中心监视以下 Azure 资源：
 * 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和[应用服务环境](../app-service/app-service-app-service-environments-readme.md)上的 web 应用程序防火墙
 
 ## <a name="virtual-machines"></a>虚拟机
-### <a name="what-types-of-virtual-machines-will-be-supported"></a>支持哪些类型的虚拟机？
+### <a name="what-types-of-virtual-machines-are-supported"></a>支持哪些类型的虚拟机？
 使用[经典部署模式和 Resource Manager 部署模式](../azure-classic-rm.md)创建的 VM 支持安全运行状况监视和建议。
 
 支持的 Windows VM：
@@ -145,6 +140,7 @@ Azure 安全中心监视以下 Azure 资源：
 * Windows Server 2008 R2
 * Windows Server 2012
 * Windows Server 2012 R2
+* Windows Server 2016
 
 支持的 Linux VM：
 
@@ -152,7 +148,7 @@ Azure 安全中心监视以下 Azure 资源：
 * Debian 版本 7、8
 * CentOS 版本 6.\*、7.*
 * Red Hat Enterprise Linux (RHEL) 版本 6.\*、7.*
-* SUSE Linux Enterprise Server (SLES) 版本 11.\*、12.*
+* SUSE Linux Enterprise Server (SLES) 版本 11 SP4+、12.*
 * Oracle Linux 版本 6.\*、7.*
 
 此外还支持云服务中运行的 VM。 仅监视云服务 web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
@@ -161,13 +157,13 @@ Azure 安全中心监视以下 Azure 资源：
 Azure 安全中心仅可识别出通过 Azure 扩展安装的反恶意软件。 例如，安全中心无法检测出预装在所提供的映像上的反恶意软件或使用自己的进程（例如配置管理系统）在虚拟机上安装的反恶意软件。
 
 ### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>为什么会显示消息称 VM“缺少扫描数据”？
-在 Azure 安全中心启用数据收集之后，扫描数据导入可能需要一段时间（通常低于一小时）。 扫描不会导入处于停止状态的 VM。
+在 Azure 安全中心启用数据收集之后，扫描数据导入可能需要一段时间（低于一小时）。 扫描不会导入处于停止状态的 VM。
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>为什么会显示消息称“VM 代理缺失”？
-VM 代理必须安装在 VM 上才能启用数据收集。 对于从 Azure 应用商店部署的 VM，会默认安装 VM 代理。 有关如何在其他 VM 上安装 VM 代理的详细信息，请参阅博客文章 [VM 代理和扩展](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)。
+VM 代理必须安装在 VM 上才能启用数据收集。 对于从 Azure 应用商店部署的 VM，默认安装 VM 代理。 有关如何在其他 VM 上安装 VM 代理的详细信息，请参阅博客文章 [VM 代理和扩展](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics 中的数据源 | Microsoft Docs"
+title: "配置 OMS Log Analytics 中的数据源 | Microsoft Docs"
 description: "数据源定义 Log Analytics 从代理和其他连接的源所收集的数据。  本文将介绍有关 Log Analytics 如何使用数据源的概念，详细解释如何配置数据源，并对不同的可用数据源进行概要介绍。"
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
-ms.openlocfilehash: ad9cc8765f1a8b83c9dbf5caca573811c6e7f10e
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: cec0ceb0da57150e4bdd9f9a0f6d3e751c108523
 
 
 ---
@@ -50,9 +50,11 @@ Log Analytics 从 OMS 工作区中已连接的源收集数据并将其存储在 
 4. 按照上表中每个数据源链接到的文档，了解有关其配置的详细信息。
 
 ## <a name="data-collection"></a>数据收集
-数据源配置将在几分钟内传送到与 OMS 直接连接的各个代理。  指定的数据从代理收集，并按特定于每个数据源的时间间隔直接传送到 Log Analytics。  请参阅每个数据源的文档以了解详情。
+数据源配置将在几分钟内传送到与 Log Analytics 直接连接的各个代理。  指定的数据从代理收集，并按特定于每个数据源的时间间隔直接传送到 Log Analytics。  请参阅每个数据源的文档以了解详情。
 
 对于在已连接的管理组中的 System Center Operations Manager (SCOM) 代理，数据源配置将按照每 5 分钟的默认间隔转换成管理包并传送到管理组。  代理会下载任何其他的管理包，并收集指定的数据。 根据数据源的不同，数据或者被发送到管理服务器，再由服务器转发到 Log Analytics；或者不通过管理服务器，由代理将数据发送到 Log Analytics。 请参阅[关于 OMS 功能和解决方案的数据收集详细信息](log-analytics-add-solutions.md#data-collection-details)以了解详细信息。  你可以在[配置与 System Center Operations Manager 的集成](log-analytics-om-agents.md)中阅读有关连接 SCOM 和 OMS 以及修改配置传送频率的详细信息。
+
+如果代理无法连接到 Log Analytics 或 Operations Manager，将继续收集在建立连接时传送的数据。  如果数据量达到客户端的最大缓存大小，或者如果代理无法在 24 小时内建立连接，则可能会丢失数据。
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 Log Analytics 所收集的所有数据都作为记录存储在 OMS 存储库。  按不同数据源收集的记录具有其自己的属性集，并由其“**类型**”属性来识别。  有关每种记录类型的详细信息，请参阅每个数据源和解决方案的相关文档。
@@ -64,6 +66,6 @@ Log Analytics 所收集的所有数据都作为记录存储在 OMS 存储库。 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

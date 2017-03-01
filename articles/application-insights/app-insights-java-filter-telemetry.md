@@ -13,8 +13,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9ade7b48b16d79c23355a8dbd46e9367abe4abd6
-ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: cd09b7c5d45d07a3fbcc5d6f0c02400dcd36d61b
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
 * 快速响应，即快速向应用响应的遥测发出请求
 * 特定事件名称
 
-> [!NOTE] 
+> [!NOTE]
 > 筛选器会使应用的指标产生偏差。 例如，为了诊断缓慢响应时间，你可能会决定设置一个排除快速响应时间的筛选器。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
 > 如果这是一个问题，请改用[采样](app-insights-sampling.md)。
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
 
            <!-- Exclude telemetry from availability tests and bots -->
            <Processor type="SyntheticSourceFilter">
-                <!-- Optional: specify which synthetic sources, 
+                <!-- Optional: specify which synthetic sources,
                      comma-separated
                      - default is all synthetics -->
                 <Add name="NotNeededSources" value="Application Insights Availability Monitoring,BingPreview"
@@ -115,7 +115,7 @@ ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
            </Processor>
 ```
 
-* `DurationThresholdInMS` - 持续时间，表示加载该页所花的时间。 如果设置了此筛选器，那么页面加载时间快于此时间时就不会报告。 
+* `DurationThresholdInMS` - 持续时间，表示加载该页所花的时间。 如果设置了此筛选器，那么页面加载时间快于此时间时就不会报告。
 * `NotNeededNames` - 用逗号分隔的页名称列表。
 * `NotNeededUrls` - 用逗号分隔的 URL 分段列表。 例如，`"home"` 可筛选出 URL 中包含“home”的所有页面。
 
@@ -160,7 +160,7 @@ ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
 
 ### <a name="telemetry-event-filter"></a>遥测事件筛选器
 
-筛选自定义事件（使用 [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) 记录）。
+筛选自定义事件（使用 [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) 记录）。
 
 
 ```XML
@@ -176,7 +176,7 @@ ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
 
 ### <a name="trace-telemetry-filter"></a>跟踪遥测筛选器
 
-筛选日志跟踪（使用 [TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) 或[记录框架收集器](app-insights-java-trace-logs.md)记录）。
+筛选日志跟踪（使用 [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) 或[记录框架收集器](app-insights-java-trace-logs.md)记录）。
 
 ```XML
 
@@ -194,14 +194,11 @@ ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
  *  CRITICAL        - 筛选出除 CRITICAL 外的所有值
 
 
-```
+## <a name="custom-filters"></a>自定义筛选器
 
+### <a name="1-code-your-filter"></a>1.编写筛选器代码
 
-## Custom filters
-
-### 1. Code your filter
-
-In your code, create a class that implements `TelemetryProcessor`:
+在代码中创建实现 `TelemetryProcessor` 的类：
 
 ```Java
 
@@ -215,7 +212,7 @@ In your code, create a class that implements `TelemetryProcessor`:
        private final String successful;
 
        /* Initializers for the parameters, named "setParameterName" */
-       public void setNotNeeded(String successful) 
+       public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
@@ -269,7 +266,6 @@ In your code, create a class that implements `TelemetryProcessor`:
 
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

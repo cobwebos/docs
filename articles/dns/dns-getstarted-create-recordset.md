@@ -14,8 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: f4c17d03ff637659a7bc7cde378878d8a4827b80
-ms.openlocfilehash: 175e8620828a2b0a0aff6de0b1a39860ea59514b
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: 67b780d66eac4199b0a2367f575477191542cfa7
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -24,7 +25,8 @@ ms.openlocfilehash: 175e8620828a2b0a0aff6de0b1a39860ea59514b
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-getstarted-create-recordset-portal.md)
 > * [PowerShell](dns-getstarted-create-recordset.md)
-> * [Azure CLI](dns-getstarted-create-recordset-cli.md)
+> * [Azure CLI 1.0](dns-getstarted-create-recordset-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-getstarted-create-recordset-cli.md)
 
 本文介绍使用 Azure PowerShell 创建记录和记录集这一过程。
 
@@ -48,7 +50,7 @@ ms.openlocfilehash: 175e8620828a2b0a0aff6de0b1a39860ea59514b
 
 可以使用 `New-AzureRmDnsRecordSet` cmdlet 创建记录集。 创建记录集时，需指定记录集名称、区域、生存时间 (TTL)、记录类型，以及要创建的记录。
 
-若要在区域（在此例中为“contoso.com”）顶点创建记录集，请使用记录名称 "@",（包括引号）。 这是常见的 DNS 约定。
+若要在区域顶点中创建记录集（在这种情况下为“contoso.com”），使用记录名称“@”，包括引号。 这是常见的 DNS 约定。
 
 以下示例在 DNS 区域“contoso.com”中创建具有相对名称“www”的新记录集。 记录集的完全限定名称为“www.contoso.com”。 记录类型为“A”，TTL 为 3600 秒。 记录集包含单个记录，IP 地址为“1.2.3.4”
 
@@ -114,10 +116,5 @@ Address:  1.2.3.4
 
 了解如何[使用 PowerShell 管理 DNS 记录和记录集](dns-operations-recordsets.md)。
 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

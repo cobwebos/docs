@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: f9c02c11c6f0143f8da7a329f23033120f31ba59
+ms.sourcegitcommit: 2389f1d785abc750dd165303f737a883b3f788d0
+ms.openlocfilehash: 6232a80417cf4581f6c6cbe6c11418dc8d0c3407
 
 
 ---
@@ -154,10 +154,10 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 ![具有有限 Bin 的图表](./media/app-insights-analytics-using/pin-08.png)
 
 ## <a name="export-to-excel"></a>导出到 Excel
-运行查询后，可以下载 .csv 文件。 单击“导出到 Excel”。
+运行查询后，可以下载 .csv 文件。 单击“导出”->“Excel”。
 
 ## <a name="export-to-power-bi"></a>导出到 Power BI
-将光标放在查询中，然后选择“导出到 Power BI”。
+将光标放在查询中，选择“导出”->“Power BI”。
 
 ![从 Analytics 导出到 Power BI](./media/app-insights-analytics-using/240.png)
 
@@ -167,10 +167,22 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 [详细了解如何导出到 Power BI](app-insights-export-power-bi.md)
 
+## <a name="deep-link"></a>深层链接
+
+在“导出”->“共享链接”中获取可发送给另一用户的链接。 如果用户有[资源组的访问权限](app-insights-resources-roles-access-control.md)，则会在 Analytics UI 中打开查询。
+
+（在此链接中，查询文本出现在“?q=”后面，并使用 gzip 进行压缩和使用 base-64 编码。 你可以编写代码以生成向用户提供的深层链接。 但是，建议使用 [REST API](https://dev.applicationinsights.io/) 在代码中运行Analytics。）
+
 
 ## <a name="automation"></a>自动化
 
-可以通过[数据访问 REST API](https://dev.applicationinsights.io/) 运行 Analytics 查询，例如使用 PowerShell。
+使用[数据访问 REST API](https://dev.applicationinsights.io/)运行 Analytics 查询。 [例如](https://dev.applicationinsights.io/apiexplorer/query?appId=DEMO_APP&apiKey=DEMO_KEY&query=requests%0A%7C%20where%20timestamp%20%3E%3D%20ago%2824h%29%0A%7C%20count)（使用 PowerShell）：
+
+```PS
+curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests%7C%20where%20timestamp%20%3E%3D%20ago(24h)%7C%20count" -H "x-api-key: DEMO_KEY"
+```
+
+与 Analytics UI 不同，REST API 不会向查询中自动添加任何时间戳限制。 请记住添加自己的 where 子句，以避免巨大的数据响应量。
 
 
 
@@ -183,7 +195,7 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 ### <a name="define-your-data-schema"></a>定义数据架构
 
 1. 单击“设置”（左上角），然后单击“数据源”。 
-2. 遵照说明添加数据源。 系统会要求提供数据样本，其中应至少包含 10 行。 然后请更正架构。
+2. 遵照说明添加数据源。 系统会要求提供数据样本，其中应至少包含&10; 行。 然后请更正架构。
 
 这样就会定义数据源，稍后可以用它来导入单个表。
 
@@ -217,6 +229,6 @@ IntelliSense 会提示可以使用哪些运算符和表达式元素。 单击信
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

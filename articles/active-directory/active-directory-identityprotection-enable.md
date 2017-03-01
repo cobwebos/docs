@@ -6,18 +6,17 @@ keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管�
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: f7a7ffaf-76bf-4cc7-96a1-86c944275c82
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7321e73bf30e8cba5a7a61a6705d285617f70122
+ms.sourcegitcommit: f231252c222c5520d0a66f9b40749bd203545f16
+ms.openlocfilehash: 44ee1e58b65b23eeb3fa3710fcb29a1646d5f3ad
 
 
 ---
@@ -32,16 +31,16 @@ Azure Active Directory Identity Protection 是一项新功能，提供的统一�
 1. 以全局管理员身份[登录](https://ms.portal.azure.com/)到 Azure 门户。 
 2. 在 Azure 门户中，单击“应用商店”。
    
-    ![创建](./media/active-directory-identityprotection-enable/01.png "Create")
+    ![创建](./media/active-directory-identityprotection-enable/01.png "创建")
 3. 在应用程序列表中，单击“安全性 + 标识”。
    
-    ![创建](./media/active-directory-identityprotection-enable/02.png "Create")
+    ![创建](./media/active-directory-identityprotection-enable/02.png "创建")
 4. 单击“Azure AD Identity Protection”。
    
-    ![创建](./media/active-directory-identityprotection-enable/03.png "Create")
+    ![创建](./media/active-directory-identityprotection-enable/03.png "创建")
 5. 在“Azure AD Identity Protection”边栏选项卡中，单击“创建”。
    
-    ![创建](./media/active-directory-identityprotection-enable/04.png "Create")
+    ![创建](./media/active-directory-identityprotection-enable/04.png "创建")
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
@@ -49,6 +48,6 @@ Azure Active Directory Identity Protection 是一项新功能，提供的统一�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

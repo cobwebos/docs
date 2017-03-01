@@ -1,6 +1,6 @@
 ---
-title: "开发人员指南 - 直接方法 | Microsoft Docs"
-description: "Azure IoT 中心开发人员指南 - 使用直接方法调用设备上的代码"
+title: "了解 Azure IoT 中心直接方法 | Microsoft Docs"
+description: "开发人员指南 - 使用直接方法从服务应用调用设备上的代码。"
 services: iot-hub
 documentationcenter: .net
 author: nberdy
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/11/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
+ms.sourcegitcommit: 9c2817129162ab17faadf3c5ecf8ef7dcb370c3c
+ms.openlocfilehash: 2c9c4b59077ea7d31677a5e1c690160bf63633a6
 
 
 ---
-# <a name="invoke-a-direct-method-on-a-device"></a>在设备上调用直接方法
+# <a name="direct-methods"></a>直接方法
 ## <a name="overview"></a>概述
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 这适用于即时操作过程取决于设备能否响应的情况，例如，如果设备脱机，则向设备发送短信以唤醒设备（短信的开销比方法调用更大）。
 
@@ -34,7 +34,7 @@ ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
 如果在使用所需属性、直接方法或云到设备消息方面有任何疑问，请参阅[云到设备通信指南][lnk-c2d-guidance]。
 
 ## <a name="method-lifecycle"></a>方法生命周期
-直接方法在设备上实现，可能需要在方法有效负载中进行 0 次或 0 次以上的输入才能正确地实例化。 可以通过面向服务的 URI (`{iot hub}/twins/{device id}/methods/`) 调用直接方法。 设备通过特定于设备的 MQTT 主题 (`$iothub/methods/POST/{method name}/`) 接收直接方法。 将来可能会支持在更多的设备端网络协议上使用直接方法。
+直接方法在设备上实现，可能需要在方法有效负载中进行&0; 次或&0; 次以上的输入才能正确地实例化。 可以通过面向服务的 URI (`{iot hub}/twins/{device id}/methods/`) 调用直接方法。 设备通过特定于设备的 MQTT 主题 (`$iothub/methods/POST/{method name}/`) 接收直接方法。 将来可能会支持在更多的设备端网络协议上使用直接方法。
 
 > [!NOTE]
 > 调用设备上的直接方法时，属性名称和值只能包含 US ASCII 可打印字母数字，但下列组中的任一项除外：``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``。
@@ -43,7 +43,9 @@ ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
 
 直接方法是同步的，在超时期限（默认：30 秒，最长可设置为 3600 秒）过后，其结果不是成功就是失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应，例如打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
-从云端来看，设备方法调用仅限 HTTP，从设备端来看，则仅限 MQTT。
+定向方法只能从云端通过 HTTP 调用，从设备端通过 MQTT 调用。
+
+方法请求和响应的有效负载为最大 8KB 的 JSON 文档。
 
 ## <a name="reference-topics"></a>参考主题：
 以下参考主题详细介绍了如何使用直接方法。
@@ -60,7 +62,7 @@ ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
 ```
 {
     "methodName": "reboot",
-    "timeoutInSeconds": 200,
+    "responseTimeoutInSeconds": 200,
     "payload": {
         "input1": "someInput",
         "input2": "anotherInput"
@@ -68,10 +70,10 @@ ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
 }
 ```
 
-  超时以秒为单位。 如果未设置超时，则默认为 30 秒。
+超时以秒为单位。 如果未设置超时，则默认为 30 秒。
 
 ### <a name="response"></a>响应
-由后端接收响应，其中包括：
+由后端应用接收响应，其中包括：
 
 * HTTP 状态代码，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）
 * 标头，其中包含 ETag、请求 ID、内容类型和内容编码
@@ -110,16 +112,16 @@ ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
 正文由设备设置，可以是任何状态。
 
 ## <a name="additional-reference-material"></a>其他参考资料
-开发人员指南中的其他参考主题包括：
+IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点][lnk-endpoints]介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+* [IoT 中心终结点][lnk-endpoints]，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 * [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
-* [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了在开发与 IoT 中心交互的设备和服务应用程序时可使用的各种语言 SDK。
+* [Azure IoT 设备和服务 SDK][lnk-sdks]列出了在开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
 * [设备克隆和作业的 IoT 中心查询语言][lnk-query]介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的 IoT 中心查询语言。
 * [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何使用直接方法以后，可以根据兴趣参阅以下开发人员指南主题：
+了解如何使用直接方法后，可根据兴趣参阅以下 IoT 中心开发人员指南主题：
 
 * [在多台设备上安排作业][lnk-devguide-jobs]
 
@@ -141,6 +143,7 @@ ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Feb17_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0854cc7f23a427fc3fdb16e14af2f9e89bd1627f
+ms.sourcegitcommit: 4e6ef568f510d9db4df115e25d66f53feffc829e
+ms.openlocfilehash: c607830466d7f942f1d0a43ebeccea07ed0877a9
 
 
 ---
@@ -56,6 +56,6 @@ AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

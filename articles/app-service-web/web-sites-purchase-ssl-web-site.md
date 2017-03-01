@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: a86b3e7c653d0767e91ebfaaeaa650b0328c291c
+ms.sourcegitcommit: a1b492b7884deb2d0d4f255af0737e1633606384
+ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
 
 
 ---
@@ -107,18 +107,8 @@ ms.openlocfilehash: a86b3e7c653d0767e91ebfaaeaa650b0328c291c
 ## <a name="a-namebkmkverifyownershipastep-2-verify-the-domain-ownership"></a><a name="bkmk_VerifyOwnership"></a>步骤 2：验证域所有权
 在此步骤中，你将了解如何对刚刚订购的 SSL 证书执行域所有权验证。 
 
-1. 在“证书设置”边栏选项卡中单击“步骤 2: 验证”步骤。 应用服务证书支持 4 种类型的域验证。
+1. 在“证书设置”边栏选项卡中单击“步骤 2: 验证”步骤。 应用服务证书支持 3 种类型的域验证。
    
-   * **应用服务验证** 
-     
-     * 如果已**将自定义域分配到应用服务应用**，则这是最方便的过程。 此方法将列出符合此条件的所有应用服务应用。 
-        例如，在本例中，**contosocertdemo.com** 是分配到名为“ContosoCertDemo”的应用服务应用的自定义域，因此它是此处唯一列出的应用服务应用。 如果有多区域部署，则将列出跨区域的所有项。
-       
-        验证方法仅适用于标准（基本）证书购买。 请跳过“通配符证书”，转到下面的选项 B、C 或 D。
-     * 单击“验证”按钮完成此步骤。
-     * 单击“刷新”，在完成验证之后更新证书状态。 验证可能需要几分钟才能完成。
-     
-     ![插入应用服务验证的图像](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)     
    * **域验证** 
      
      * **仅当**已**[从 Azure 应用服务购买自定义域](custom-dns-web-site-buydomains-web-app.md)**时，这才是最方便的过程。
@@ -131,15 +121,7 @@ ms.openlocfilehash: a86b3e7c653d0767e91ebfaaeaa650b0328c291c
      * 如果需要重新发送验证电子邮件，请单击“重新发送电子邮件”按钮。
    * **手动验证**    
      
-     1. **HTML 网页验证**
-        
-        * 创建名为 **{域验证令牌}**.html 的 HTML 文件（可以从“域验证状态”边栏选项卡复制令牌）
-        * 此文件的内容应与“域验证令牌”的名称完全相同。
-        * 在托管域的 Web 服务器的根目录上载此文件。
-        * 单击“刷新”，在完成验证之后更新证书状态。 验证可能需要几分钟才能完成。
-          
-          例如，如果为域验证令牌为 **‘cAGgQrKc’** 的 contosocertdemo.com 购买了标准证书，则对 **‘http://contosocertdemo.com/cAGgQrKc.html’** 发出的 Web 请求应返回 **cAGgQrKc**。
-     2. **DNS TXT 记录验证**
+      **DNS TXT 记录验证**
         
         * 使用 DNS 管理器，在 **‘DZC’** 子域上创建值等于**域验证令牌**的 TXT 记录。
         * 单击“刷新”，在完成验证之后更新证书状态。 验证可能需要几分钟才能完成。
@@ -207,6 +189,6 @@ ms.openlocfilehash: a86b3e7c653d0767e91ebfaaeaa650b0328c291c
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

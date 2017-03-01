@@ -15,15 +15,15 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 697580da9d7c836655ec64745cfb211beabb84f2
-ms.openlocfilehash: 941d5a8dba421dd5f59bb61af35ac654e42d5910
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 18545981a21736d9673ce19ae2325ba5e4a67ff6
 
 
 ---
 
 # <a name="add-additional-azure-storage-accounts-to-hdinsight"></a>将其他 Azure 存储帐户添加到 HDInsight
 
-了解如何使用脚本操作，将其他 Azure 存储帐户添加到现有 HDInsight 群集。
+了解如何使用脚本操作，将其他 Azure 存储帐户添加到使用 Linux 作为操作系统的现有 HDInsight 群集。
 
 > [!IMPORTANT]
 > 本文档中的信息介绍在创建群集后，如何将其他存储添加到此群集。 若要深入了解如何在群集创建期间添加其他存储帐户，请参阅[创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md#use-additional-storage)文档中的__使用其他存储__部分。
@@ -134,6 +134,6 @@ __要求__：
 本文已介绍完了如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

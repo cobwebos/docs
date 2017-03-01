@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 02/07/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 67575bbbb7d99ffeef3cb5dab74f4a68065bacc1
+ms.sourcegitcommit: 1c4045bd9b705ab3e909a06035f27b85635fdf36
+ms.openlocfilehash: 3d83a919d8e7bc59bd51e226c56ff2bb42c87955
 
 
 ---
@@ -40,6 +40,7 @@ ms.openlocfilehash: 67575bbbb7d99ffeef3cb5dab74f4a68065bacc1
 | [**域管理员或企业管理员权限**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**域加入**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**使用 NTLM 和 Kerberos 进行域身份验证**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
+| [**Kerberos 约束委派**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|基于资源|基于资源和基于帐户|
 | [**自定义 OU 结构**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
 | [**架构扩展**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD 域/林信任**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
@@ -57,6 +58,7 @@ Azure AD 域服务域由 Microsoft 管理。 用户无需考虑如何修补、�
 
 #### <a name="dns-server"></a>DNS 服务器
 Azure AD 域服务管理的域包含 DNS 托管服务。 “AAD DC 管理员”组的成员可以管理托管域上的 DNS。 此组的成员在托管域上拥有完全 DNS 管理权限。 可以使用远程服务器管理工具 (RSAT) 包中包含“DNS 管理控制台”执行 DNS 管理。
+[详细信息](active-directory-ds-admin-guide-administer-dns.md)
 
 #### <a name="domain-or-enterprise-administrator-privileges"></a>域管理员或企业管理员权限
 AAD DS 托管域上未提供这些提升的权限。 无法针对托管域安装/运行需要这些提升权限的应用程序。 委托的管理组（称为“AAD DC 管理员”）的成员拥有少量的管理权限。 这些权限包括配置 DNS、配置组策略、获取已加入域的计算机上的管理员权限，等等。
@@ -67,8 +69,13 @@ AAD DS 托管域上未提供这些提升的权限。 无法针对托管域安装
 #### <a name="domain-authentication-using-ntlm-and-kerberos"></a>使用 NTLM 和 Kerberos 进行域身份验证
 通过 Azure AD 域服务，可以使用企业凭据向托管域进行身份验证。 证书与 Azure AD 租户保持同步。 对于已同步的租户，Azure AD Connect 可确保本地的凭据更改同步到 Azure AD。 使用 DIY 域设置时，可能需要为用户设置与本地帐户林之间的域信任关系，以便用户能够使用其企业凭据进行身份验证。 或者，可能需要设置 AD 复制，确保将用户密码同步到 Azure 域控制器虚拟机。
 
+#### <a name="kerberos-constrained-delegation"></a>Kerberos 约束委派
+你没有 Active Directory 域服务托管域的“域管理员”权限。 因此无法配置基于帐户的（传统）kerberos 约束委派。 但可配置更安全的基于资源的约束委派。
+[详细信息](active-directory-ds-enable-kcd.md)
+
 #### <a name="custom-ou-structure"></a>自定义 OU 结构
-“AAD DC 管理员”组的成员可以在托管域中创建自定义 OU。
+“AAD DC 管理员”组的成员可以在托管域中创建自定义 OU。 创建自定义 OU 的用户将获取 OU 的完全管理权限。 
+[详细信息](active-directory-ds-admin-guide-create-ou.md)
 
 #### <a name="schema-extensions"></a>架构扩展
 无法扩展 Azure AD 域服务托管域的基本架构。 因此，依赖于 AD 架构扩展（例如，用户对象下面的新属性）的应用程序无法即时转移到 AAD DS 域。
@@ -81,12 +88,14 @@ AAD DS 托管域上未提供这些提升的权限。 无法针对托管域安装
 
 #### <a name="secure-ldap"></a>安全 LDAP
 可以配置 Azure AD 域服务，提供对托管域的安全 LDAP 访问访问，包括通过 Internet 访问。
+[详细信息](active-directory-ds-admin-guide-configure-secure-ldap.md)
 
 #### <a name="ldap-write"></a>LDAP 写入
 托管域对用户对象而言是只读的。 因此，对用户对象的属性执行 LDAP 写入操作的应用程序不适用于托管域。 此外，无法在托管域内部更改用户密码。 另一个不允许的操作示例是在托管域中修改组成员身份或组属性。 但是，在 Azure AD（通过 PowerShell/Azure 门户）或本地 AD 中所做的用户属性或密码更改将同步到 AAD-DS 托管域。
 
 #### <a name="group-policy"></a>组策略
-AAD-DS 托管域不支持复杂的组策略构造。 例如，无法为域中的每个自定义 OU 创建和部署不同的 GPO，或将 WMI 筛选用于指定 GP 目标。 “AADDC 计算机”和“AADDC 用户”容器各有内置的 GPO，可对其进行自定义以配置组策略。
+“AADDC 计算机”和“AADDC 用户”容器各有内置的 GPO，可对其进行自定义以配置组策略。 “AAD DC 管理员”组的成员还可创建自定义 GPO 并将其链接到现有的 OU（包括自定义 OU）。
+[详细信息](active-directory-ds-admin-guide-administer-group-policy.md)
 
 #### <a name="geo-dispersed-deployments"></a>地理分散的部署
 Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于需要在世界各地的多个 Azure 区域中提供域控制器的方案，更好的做法可能是在 Azure IaaS VM 中设置域控制器。
@@ -113,6 +122,6 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

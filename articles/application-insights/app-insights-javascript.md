@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57daba3f23b2a35afc2d704e4913584f21259ec7
+ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
+ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
 
 
 ---
@@ -44,7 +44,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 ![选择“新建”、“开发人员服务”、“Application Insights”。](./media/app-insights-javascript/01-create.png)
 
-*有问题吗？* [有关创建资源的详细信息](app-insights-create-new-resource。md)。
+*有问题吗？* [有关创建资源的详细信息](app-insights-create-new-resource.md)。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>将 SDK 脚本添加到应用或网页
 在“快速启动”中获取网页的脚本：
@@ -129,17 +129,17 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 
 请注意页面视图计数和标准偏差。 如果页面计数很小，则问题对用户的影响不大。 如果标准偏差（相对于平均值本身）较大，则表示单个测量之间存在很大的差异。
 
-**放大一个 URL 和一个页面视图。**  单击任一页面名称可以查看针对该 URL 筛选的浏览器图表的边栏选项卡，然后是网页视图的实例。
+**放大一个 URL 和一个页面视图。** 单击任一页面名称可以查看针对该 URL 筛选的浏览器图表的边栏选项卡，然后是网页视图的实例。
 
 ![](./media/app-insights-javascript/35.png)
 
 单击 `...` 获取该事件的属性的完整列表，或检查 Ajax 调用和相关事件。 如果它们是同步的，缓慢的 Ajax 调用会影响整体页面加载时间。 相关事件包含服务器对同一 URL 的请求（如果已在 Web 服务器上设置 Application Insights）。
 
-**一段时间内的页面性能。**  返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
+**一段时间内的页面性能。** 返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
 
 ![单击网格标题，然后选择新图表类型](./media/app-insights-javascript/10-page-perf-area.png)
 
-**按其他维度分段。**  也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
+**按其他维度分段。** 也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
 
 ![](./media/app-insights-javascript/21.png)
 
@@ -170,7 +170,7 @@ Application Insights 资源是显示有关页面性能和使用情况的数据�
 单击 `...` 获取 Ajax 调用的完整遥测数据。
 
 ### <a name="no-ajax-calls-reported"></a>未报告任何 Ajax 调用？
-Ajax 调用包含从网页脚本发出的任何 HTTP 调用。 如果没有看到这些报告，请检查代码片段中是否未设置 `disableAjaxTracking` 或 `maxAjaxCallsPerView` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
+Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没有看到这些报告，请检查代码片段中是否未设置 `disableAjaxTracking` 或 `maxAjaxCallsPerView` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
 
 ## <a name="browser-exceptions"></a>浏览器异常
 “浏览器”边栏选项卡上有一个异常摘要图表，其下面还提供了异常类型网格。
@@ -193,7 +193,7 @@ Ajax 调用包含从网页脚本发出的任何 HTTP 调用。 如果没有看�
 > 
 > 
 
-也可以使用功能强大的 [分析查询语言](app-insights-analytics-tour.md) 来搜索页面视图。
+也可以使用功能强大的 [分析查询语言](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) 来搜索页面视图。
 
 ### <a name="page-view-properties"></a>页面视图属性
 * **页面视图持续时间** 
@@ -230,6 +230,6 @@ Ajax 调用包含从网页脚本发出的任何 HTTP 调用。 如果没有看�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a57ad6211403712bc35f20710e0c8c1728d2639d
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 91fe35cb57775c1ab9c30fdfe5cf82cd1afafd14
 
 
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>将弹性数据库客户端库与实体框架配合使用
-此文档介绍与[弹性数据库工具](sql-database-elastic-scale-introduction.md)集成所需的实体框架应用程序中的更改。 重点是使用 Entity Framework **Code First** 方法撰写[分片映射管理](sql-database-elastic-scale-shard-map-management.md)和[数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)。 EF 的 [Code First – 新数据库](http://msdn.microsoft.com/data/jj193542.aspx)教程在本文档中充当运行示例。 本文档附带的示例代码是 Visual Studio 代码示例中弹性数据库工具示例的一部分。
+此文档介绍与[弹性数据库工具](sql-database-elastic-scale-introduction.md)集成所需的实体框架应用程序中的更改。 重点是使用 Entity Framework **Code First** 方法撰写[分片映射管理](sql-database-elastic-scale-shard-map-management.md)和[数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)。 EF 的[代码优先 – 新数据库](http://msdn.microsoft.com/data/jj193542.aspx)教程在本文档中充当运行示例。 本文档附带的示例代码是 Visual Studio 代码示例中弹性数据库工具示例的一部分。
 
 ## <a name="downloading-and-running-the-sample-code"></a>下载和运行示例代码
 若要下载本文的代码：
@@ -256,7 +256,7 @@ Microsoft 模式和实践团队已发布[暂时性故障处理应用程序块](h
 本文档中概述的方法存在一些限制： 
 
 * 使用 **LocalDb** 的 EF 应用程序在使用弹性数据库客户端库之前，需要先迁移到常规 SQL Server 数据库。 使用弹性缩放通过分片向外扩展应用程序不适用于 **LocalDb**。 请注意，开发仍然可以使用 **LocalDb**。 
-* 任何意味着数据库架构更改的应用程序更改需要在所有分片上通过 EF 迁移。 本文档的示例代码不演示如何执行此操作。 考虑使用带有 ConnectionString 参数的 Update-Database 循环访问所有分片，或使用 Update-Database 与 –Script 选项提取 T-SQL 脚本用于挂起的迁移，并将 T-SQL 脚本应用到您的分片。  
+* 任何意味着数据库架构更改的应用程序更改需要在所有分片上通过 EF 迁移。 本文档的示例代码不演示如何执行此操作。 考虑使用带有 ConnectionString 参数的 Update-Database 循环访问所有分片，或使用 Update-Database 与 –Script 选项提取用于挂起的迁移的 T-SQL 脚本，并将 T-SQL 脚本应用到分片。  
 * 给定一个请求，假设它所有的数据库处理包含在单个分片内，如该请求所提供的分片键所标识的那样。 但是，此假设并不总是有效。 例如，当无法提供分片键时。 为解决此问题，客户端库提供 **MultiShardQuery** 类，此类可实现连接抽象以用于在多个分片上查询。 学习结合使用 **MultiShardQuery** 和 EF 不在本文档的范围内
 
 ## <a name="conclusion"></a>结束语
@@ -269,6 +269,6 @@ Microsoft 模式和实践团队已发布[暂时性故障处理应用程序块](h
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

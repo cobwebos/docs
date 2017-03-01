@@ -40,12 +40,13 @@
 ## [为云服务配置多个 VIP](load-balancer-multivip.md)
 ## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [使用多个 IP 配置](load-balancer-multiple-ip.md)
+### [使用多个 IP 配置 (CLI)](load-balancer-multiple-ip-cli.md)
 ## [Azure Load Balancer 的 Log Analytics](load-balancer-monitor-log.md)
 ## [为 Linux VM 配置 DHCPv6](load-balancer-ipv6-for-linux.md)
 
 # 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network)
-## [Azure CLI 2.0（预览版）](/cli/azure/network/lb)
+## [Azure CLI 2.0](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)
@@ -65,8 +66,3 @@
 # 资源
 ## [定价](https://azure.microsoft.com/pricing/details/load-balancer/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=load-balancer)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

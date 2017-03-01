@@ -197,6 +197,6 @@ Azure SQL 数据库对节点级故障提供内置的复原功能。 所有写入
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

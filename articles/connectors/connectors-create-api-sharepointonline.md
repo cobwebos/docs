@@ -24,7 +24,7 @@ ms.openlocfilehash: 3ecf3e30fe2fcb9d6473d7eda450536cddfa97f4
 # <a name="get-started-with-the-sharepoint-online-connector"></a>SharePoint Online 连接器入门
 使用 SharePoint Online 连接器管理 SharePoint 列表。  
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
+若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。
 
 ## <a name="connect-to-sharepoint-online"></a>连接到 SharePoint Online
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  

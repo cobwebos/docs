@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/07/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2969f307a6f0f52fc732d4e3360cfeda7784c5cf
+ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
+ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 2969f307a6f0f52fc732d4e3360cfeda7784c5cf
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure 存储帐户**。
-* **Azure Data Lake Analytics 帐户（可选）**。 有关如何创建此帐户的说明，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
+* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 
 ## <a name="preparing-the-data"></a>准备数据
 使用导入/导入服务前，请将要传输的数据文件拆分为**小于 200GB 大小的副本**。 导入工具无法处理大于 200GB 的文件。 在本教程中，我们将文件拆分成多个块，每个 100 GB。 可使用 [Cygwin](https://cygwin.com/install.html) 实现此目的。 Cygwin 支持 Linux 命令。 在这种情况下，使用以下命令：
@@ -215,6 +215,6 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

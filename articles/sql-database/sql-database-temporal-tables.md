@@ -3,7 +3,7 @@ title: "Azure SQL 数据库中的临时表入门 | Microsoft 文档"
 description: "了解如何开始使用 Azure SQL 数据库中的临时表。"
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: bonova
 manager: jhubbard
 editor: 
 ms.assetid: c8c0f232-0751-4a7f-a36e-67a0b29fa1b8
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
-ms.date: 08/29/2016
-ms.author: carlrab
+ms.date: 01/10/2017
+ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2b83d2561d37cb2dcb799d14774b6350e0681c42
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: e00345ddd9e52e2613789ba78c48e8f993d2415c
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 2b83d2561d37cb2dcb799d14774b6350e0681c42
 ## <a name="temporal-scenario"></a>临时表方案
 本文演示了在应用程序方案中使用临时表的步骤。 假设你想要从头开始跟踪开发中的新网站上的用户活动，或跟踪你要使用用户活动分析扩展的现有网站上的用户活动。 在这个简化的示例中，我们假设一段时间内浏览过的网页数是需要在托管于 Azure SQL 数据库上的网站数据库中捕获和监视的指标。 用户活动历史分析的目标是获取有关重新设计网站的意见，并为访客提供更好的体验。
 
-此方案的数据库模型非常简单：用户活动指标以一个整数字段 **PageVisited** 表示，并与用户配置文件中的基本信息一起捕获。 此外，对于基于时间的分析，你需要为每个用户保留一系列的行，其中每行代表特定时间段内特定用户访问过的网页数。
+此场景的数据库模型非常简单 - 用户活动指标以一个整数字段 **PageVisited** 表示，并与用户配置文件中的基本信息一起捕获。 此外，对于基于时间的分析，你需要为每个用户保留一系列的行，其中每行代表特定时间段内特定用户访问过的网页数。
 
 ![架构](./media/sql-database-temporal-tables/AzureTemporal1.png)
 
@@ -69,7 +69,9 @@ CREATE TABLE WebsiteUserInfo
 
 在此特定案例中，我们的目标是针对一段较长的数据历史记录以及较大的数据集，执行基于时间的趋势分析，因此历史记录表的存储选择为聚集列存储索引。 聚集列存储为分析查询提供极佳的压缩和性能。 临时表允许你灵活且完全独立地在当前表和临时表中配置索引。 
 
-**注意**：只能在高级服务层中使用列存储索引。
+> [!NOTE]
+> 只能在高级服务层中使用列存储索引。
+>
 
 以下脚本演示如何将历史记录表的默认索引更改为聚集列存储：
 
@@ -199,6 +201,6 @@ ALTER TABLE dbo.WebsiteUserInfo
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

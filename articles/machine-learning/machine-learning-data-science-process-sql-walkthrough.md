@@ -1,5 +1,5 @@
 ---
-title: "团队数据科学过程实务：使用 SQL Server | Microsoft Docs"
+title: "在 Azure VM 上使用 SQL Server 构建和部署机器学习模型 | Microsoft 文档"
 description: "高级分析流程和技术实务"
 services: machine-learning
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/29/2017
 ms.author: fashah;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e9ceeecb3a603cd029117e1b7003aed16628f04f
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: a5e0a76a29a82d5364ee1adb5c912e76064dd1f9
 
 
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
-在本教程中，将逐步指导你使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，然后构建和部署模型。
+在本教程中，将逐步指导你完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，然后构建和部署模型。
 
 ## <a name="a-namedatasetanyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC 出租车行程介绍
 NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 CSV 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖 2013 年的所有行程，并每月在以下两个数据集中提供：
@@ -70,7 +70,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 1. [创建存储帐户](../storage/storage-create-storage-account.md)
 2. [创建 Azure 机器学习工作区](machine-learning-create-workspace.md)
-3. [预配数据科学虚拟机](machine-learning-data-science-setup-sql-server-virtual-machine.md)，它将作为 SQL Server 和 IPython Notebook 的服务器。
+3. [预配数据科研虚拟机](machine-learning-data-science-setup-sql-server-virtual-machine.md)，提供 SQL Server 和 IPython Notebook 服务器。
    
    > [!NOTE]
    > 在安装过程中，示例脚本和 IPython notebook 将下载到你的数据科学虚拟机。 VM 后续安装脚本完成后，这些示例将在你的虚拟机文档库中：  
@@ -152,7 +152,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 准备好进行 Azure 机器学习后，你也可以：  
 
-1. 保存最终的 SQL 查询，以提取和采样数据，然后直接将查询复制和粘贴到 Azure 机器学习中的[导入数据][import-data]模块，或者
+1. 保存最终的 SQL 查询，以提取和采样数据，然后直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块，或者
 2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，然后使用 Azure 机器学习的[导入数据][import-data]模块中的新表。
 
 在本部分中，我们将保存最终查询以提取和采样数据。 第二种方法在 [IPython Notebook 中的数据浏览和特征工程](#ipnb)部分进行了演示。
@@ -266,7 +266,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 
 准备好继续进行 Azure 机器学习后，你也可以：  
 
-1. 保存最终的 SQL 查询，以提取和采样数据，然后直接将查询复制和粘贴到 Azure 机器学习中的[导入数据][import-data]模块。 此方法于[在 Azure 机器学习中建模](#mlmodel)部分进行展示。    
+1. 保存最终的 SQL 查询，以提取和采样数据，然后直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块。 此方法于[在 Azure 机器学习中建模](#mlmodel)部分进行展示。    
 2. 保留计划用于在新数据库表中进行建模的抽样和工程数据，然后在[导入数据][import-data]模块中使用新表。
 
 以下是几个数据浏览、数据可视化和功能设计示例。 有关更多示例，请参阅 **Sample IPython Notebooks** 文件夹中的 SQL IPython Notebook 示例。
@@ -591,7 +591,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 > [!IMPORTANT]
 > 在上一部分中提供的建模数据提取和采样查询示例中，**这三个建模练习的所有标签都包括在此查询中**。 每个建模练习的一个重要（必需）步骤是**排除**其他两个问题不需要的标签，以及任何其他的**目标泄漏**。 例如，使用二元分类时，使用标签 **tipped**并排除字段 **tip\_class**、**tip\_amount** 和 **total\_amount**。 后者是目标泄漏，因为它们指示支付的小费。
 > 
-> 为了排除不需要的列和/或目标泄漏，你可以使用[选择数据集中的列][select-columns]模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅[选择数据集中的列][select-columns]和[编辑元数据][edit-metadata]参考页。
+> 为了排除不需要的列和/或目标泄漏，可以使用[选择数据集中的列][select-columns]模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅[选择数据集中的列][select-columns]和[编辑元数据][edit-metadata]参考页。
 > 
 > 
 
@@ -613,7 +613,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 2. 标识逻辑**输入端口**，以表示预期输入数据架构。
 3. 标识逻辑**输出端口**，以表示预期 Web 服务输出架构。
 
-创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常排会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“**评分标签**”和“**评分概率**”。
+创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
 
 评分实验示例如下图所示。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 
@@ -626,7 +626,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 
 ### <a name="references"></a>参考
 •   [Andrés Monroy NYC 出租车行程下载页面](http://www.andresmh.com/nyctaxitrips/)  
-•   [FOILing NYC 的出租车行程数据（作者：Chris Whong）](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](http://chriswhong.com/open-data/foil_nyc_taxi/)   
 •   [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 [1]: ./media/machine-learning-data-science-process-sql-walkthrough/sql-walkthrough_26_1.png
@@ -656,6 +656,6 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

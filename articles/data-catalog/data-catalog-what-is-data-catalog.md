@@ -1,5 +1,5 @@
 ---
-title: "什么是 Azure 数据目录？ | Microsoft Docs"
+title: "Azure 数据目录简介 | Microsoft 文档"
 description: "本文概述 Microsoft Azure 数据目录，包括其功能和旨在解决的问题。 任何用户（从分析师到数据专家再到开发人员）都可以使用数据目录提供的功能来注册、发现、理解和使用数据源。"
 services: data-catalog
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f047b81511efb0b9852dd343ed995bb153344c39
+ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
+ms.openlocfilehash: 19d4c3990c88f82f60cd253ffdcbd2005d00ad79
 
 
 ---
@@ -75,7 +75,6 @@ Azure 数据目录是完全托管的云服务，可让用户发现所需的数�
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

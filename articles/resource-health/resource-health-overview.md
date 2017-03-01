@@ -15,8 +15,8 @@ ms.workload: Supportability
 ms.date: 06/01/2016
 ms.author: BernardoAMunoz
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6de24842669e29ea7d6796f63fa2a8ae36930531
+ms.sourcegitcommit: d777bc6bd477c5b6645fc8bd7b6d57a5d2f89e22
+ms.openlocfilehash: e465e2c1503add186a4b134e85bd9aab61d5c0ad
 
 
 ---
@@ -43,7 +43,7 @@ Azure 门户中的“资源运行状况”边栏选项卡提供有关资源健�
 登录到 Azure 门户后，可通过两种方式访问“资源运行状况”边栏选项卡： 
 
 ### <a name="open-the-resource-blade"></a>打开“资源”边栏选项卡
-打开给定资源的“资源”边栏选项卡。 在“资源”边栏选项卡旁边打开的“设置”边栏选项卡上，单击“资源运行状况”以打开“资源运行状况”边栏选项卡。 
+打开给定资源的“资源”边栏选项卡。 在“资源”边栏选项卡旁边打开的左侧边栏选项卡上，单击“支持 + 故障排除”下面的“资源运行状况”以打开“资源运行状况”边栏选项卡。 
 
 ![“资源运行状况”边栏选项卡](./media/resource-health-overview/resourceBladeAndResourceHealth.png)
 
@@ -54,7 +54,7 @@ Azure 门户中的“资源运行状况”边栏选项卡提供有关资源健�
 
 ![帮助 + 支持](./media/resource-health-overview/HelpAndSupport.png)
 
-单击磁贴将打开“资源运行状况订阅”边栏选项卡，其中将列出你的订阅中的所有资源。 在每个资源旁边，都有一个图标指示其运行状况。 单击资源将打开“资源运行状况”边栏选项卡。
+在“帮助 + 支持”边栏选项卡旁边打开的左边栏选项卡上单击“支持 + 故障排除”下面的“资源运行状况”。 单击此选项可打开“资源运行状况订阅”边栏选项卡，其中列出了你的订阅中的所有资源。 在每个资源旁边，都有一个图标指示其运行状况。 单击资源将打开“资源运行状况”边栏选项卡。
 
 **资源运行状况磁贴**
 
@@ -77,7 +77,7 @@ Azure 门户中的“资源运行状况”边栏选项卡提供有关资源健�
 
 ![资源不可用](./media/resource-health-overview/Unavailable.png)
 
-### <a name="unavailable-customer-initiated"></a>不可用 - 客户启动
+### <a name="unavailable--customer-initiated"></a>不可用 - 客户启动
 由于客户请求（例如停止资源或请求重启）导致资源不可用。 这会由蓝色信息图标指示。 
 
 ![由于用户启动操作导致资源不可用](./media/resource-health-overview/userInitiated.png)
@@ -110,6 +110,6 @@ Azure 门户中的“资源运行状况”边栏选项卡提供有关资源健�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

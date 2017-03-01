@@ -1,5 +1,5 @@
 ---
-title: "通过运行延伸数据库顾问来识别符合 Stretch Database 条件的数据库和表 | Microsoft 文档"
+title: "标识 Stretch Database 的数据库和表 - Azure | Microsoft Docs"
 description: "了解如何识别符合 Stretch Database 条件的数据库和表。"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2016
+ms.date: 01/05/2017
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1c59343393ca49e11765fdae0fd0fa7620ec08af
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: 0f1a7feea79c73d7b80343fcc9898509268d111c
 
 
 ---
@@ -36,10 +36,10 @@ ms.openlocfilehash: 1c59343393ca49e11765fdae0fd0fa7620ec08af
 
 ## <a name="review-the-results"></a>查看结果
 1. 完成分析后，请在“**已分析的数据库**”边栏选项卡中，选择其中一个已分析的数据库，以显示“**分析结果**”边栏选项卡。
-   
+
    “**分析结果**”边栏选项卡列出了所选数据库中与默认建议条件匹配的推荐表。
 2. 在“**分析结果**”边栏选项卡上的表列表中，选择其中一个推荐表，以显示“**表结果**”边栏选项卡。
-   
+
    如果存在阻碍性问题，则“**表结果**”边栏选项卡列出了所选表的阻碍性问题。 有关延伸数据库顾问检测到的阻碍性问题的信息，请参阅 [Stretch Database 的限制](sql-server-stretch-database-limitations.md)。
 3. 在“**表结果**”边栏选项卡的阻碍性问题列表中，选择其中一个问题，以显示有关所选问题的详细信息，并提出缓解步骤。 如果你要为 Stretch Database 配置选定的表，请执行建议的缓解步骤。
 
@@ -56,11 +56,8 @@ ms.openlocfilehash: 1c59343393ca49e11765fdae0fd0fa7620ec08af
 
 [为表启用 Stretch Database](sql-server-stretch-database-enable-table.md)
 
-[有关 Azure SQL Server Stretch Database 服务的所有主题](sql-server-stretch-database-index-all-articles.md)
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

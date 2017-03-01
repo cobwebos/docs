@@ -12,11 +12,11 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2016
+ms.date: 02/08/2017
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 432fa33d0b7340e075270f4959217978e89b8c69
+ms.sourcegitcommit: 5edf2f4c7d9d2e8e8ceb2e8de9ae7cef4c9fd02e
+ms.openlocfilehash: 446e7361b5817ce888105fbb78f329affa7de6e6
 
 
 ---
@@ -28,13 +28,13 @@ ms.openlocfilehash: 432fa33d0b7340e075270f4959217978e89b8c69
 
 * [设置开发环境][lnk-setupdevbox]，以便在 Windows 上使用 SDK。
 * 若要在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，需要使用中心的名称来完成本演练。 如果你没有帐户，只需几分钟就能创建一个[免费帐户][lnk-free-trial]。
-* 将两个设备添加到 IoT 中心，并记下其 ID 和设备密钥。 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具来将设备添加到在上一步中创建的 IoT 中心，并检索其密钥。
+* 将两个设备添加到 IoT 中心，并记下其 ID 和设备密钥。 可使用[设备资源管理器][lnk-device-explorer]或 [iothub-explorer][lnk-iothub-explorer] 工具将设备添加到在上一步中创建的 IoT 中心，并检索其密钥。
 
 生成示例：
 
 1. 打开 **VS2015 开发人员命令提示**命令提示符。
 2. 浏览到本地 **azure-iot-gateway-sdk** 存储库副本中的根文件夹。
-3. 运行 **tools\\build.cmd** 脚本。 此脚本创建 Visual Studio 解决方案文件，生成解决方案，并运行测试。 你可以在本地 **azure-iot-gateway-sdk** 存储库副本的 **build** 文件夹中找到 Visual Studio 解决方案。
+3. 运行 **tools\\build.cmd** 脚本。 此脚本创建 Visual Studio 解决方案文件并生成解决方案。 你可以在本地 **azure-iot-gateway-sdk** 存储库副本的 **build** 文件夹中找到 Visual Studio 解决方案。 可为脚本提供其他参数，用于生成和运行单元测试和端到端测试。 这些参数分别是 **--run-unittests** 和 **--run-e2e-tests**。
 
 运行示例：
 
@@ -142,7 +142,7 @@ ms.openlocfilehash: 432fa33d0b7340e075270f4959217978e89b8c69
     ```
     build\samples\simulated_device_cloud_upload\Debug\simulated_device_cloud_upload_sample.exe samples\simulated_device_cloud_upload\src\simulated_device_cloud_upload_win.json
     ```
-3. 可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具来监视 IoT 中心从网关接收的消息。
+3. 可使用[设备资源管理器][lnk-device-explorer]或 [iothub-explorer][lnk-iothub-explorer] 工具监视 IoT 中心从网关接收的消息。
 
 ## <a name="next-steps"></a>后续步骤
 如果想要深入了解 IoT 网关 SDK 并尝试一些代码示例，请访问以下开发人员教程和资源：
@@ -153,20 +153,22 @@ ms.openlocfilehash: 432fa33d0b7340e075270f4959217978e89b8c69
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南][lnk-devguide]
+* [从根本上保护 IoT 解决方案][lnk-securing]
 
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-explorer-tools]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md
+[lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
+[lnk-iothub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 
 [lnk-physical-device]: iot-hub-gateway-sdk-physical-device.md
 
-[lnk-devguide]: ./iot-hub-devguide.md
-[lnk-create-hub]: iot-hub-create-through-portal.md 
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-create-hub]: iot-hub-create-through-portal.md
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

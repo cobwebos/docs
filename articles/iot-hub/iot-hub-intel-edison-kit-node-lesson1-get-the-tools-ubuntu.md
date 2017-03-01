@@ -1,5 +1,5 @@
 ---
-title: "获取用于 Azure IoT 初学者工具包的工具 (Ubuntu 16.04) | Microsoft Docs"
+title: "将 Intel Edison（节点）连接到 Azure IoT - 第 1 课：获取工具 (Ubuntu) | Microsoft Docs"
 description: "下载并安装用于 Ubuntu 上的 Edison 的第一个示例应用程序的必需工具和软件。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: d230a064c61623564e575d987cf957de0b81ad23
-ms.openlocfilehash: 3bdfced6709d1460ce42ec97203bf2ead9deb82c
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: c56699b81d83119ca1822c2efa6b2380b3619290
 
 
 ---
@@ -85,6 +85,6 @@ sudo npm install -g gulp
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

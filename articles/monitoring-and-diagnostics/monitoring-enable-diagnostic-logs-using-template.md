@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 2/14/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 6a98f380dd77372e0db9d5de671c58b7660826bb
-ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
+ms.sourcegitcommit: f4e7b1f2ac7f10748473605eacee71bf0cd538e6
+ms.openlocfilehash: 2b28045c3ec32a703c62aeb509777750342ffbb3
 
 
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>在创建资源时使用 Resource Manager 模板自动启用诊断设置
-本文介绍如何使用 [Azure Resource Manager 模板](../resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
+本文介绍如何使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
 
 通过 Resource Manager 模板启用诊断日志时，所用方法取决于资源类型。
 
@@ -33,7 +33,7 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
 基本步骤如下所示：
 
 1. 以 JSON 文件格式创建一个模板，说明如何创建资源和启用诊断。
-2. [使用任意部署方法部署模板](../resource-group-template-deploy.md)。
+2. [使用任意部署方法部署模板](../azure-resource-manager/resource-group-template-deploy.md)。
 
 下面是一个需为非计算资源和计算资源生成的模板 JSON 文件的示例。
 
@@ -102,9 +102,9 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
     ]
     ```
 
-诊断设置的属性 blob 遵循[此文所述的格式](https://msdn.microsoft.com/library/azure/dn931931.aspx)。 添加 `metrics` 属性还可将资源指标发送到这些相同输出。
+诊断设置的属性 blob 遵循[此文所述的格式](https://msdn.microsoft.com/library/azure/dn931931.aspx)。 添加 `metrics` 属性还可将资源指标发送到这些相同输出，前提是[该资源支持 Azure Monitor 指标](monitoring-supported-metrics.md)。
 
-下面是一个完整的示例，说明了如何创建网络安全组，以及如何启用流式传输到事件中心和在存储帐户中进行存储的功能。
+下面是一个完整的示例，说明了如何创建逻辑应用，以及如何启用流式传输到事件中心和在存储帐户中进行存储的功能。
 
 ```json
 
@@ -112,11 +112,15 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "nsgName": {
+    "logicAppName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the NSG that will be created."
+        "description": "Name of the Logic App that will be created."
       }
+    },
+    "testUri": {
+      "type": "string",
+      "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
     },
     "storageAccountName": {
       "type": "string",
@@ -140,19 +144,49 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
   "variables": {},
   "resources": [
     {
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('nsgName')]",
-      "apiVersion": "2016-03-30",
-      "location": "westus",
+      "type": "Microsoft.Logic/workflows",
+      "name": "[parameters('logicAppName')]",
+      "apiVersion": "2016-06-01",
+      "location": "[resourceGroup().location]",
       "properties": {
-        "securityRules": []
+        "definition": {
+          "$schema": "http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "testURI": {
+              "type": "string",
+              "defaultValue": "[parameters('testUri')]"
+            }
+          },
+          "triggers": {
+            "recurrence": {
+              "type": "recurrence",
+              "recurrence": {
+                "frequency": "Hour",
+                "interval": 1
+              }
+            }
+          },
+          "actions": {
+            "http": {
+              "type": "Http",
+              "inputs": {
+                "method": "GET",
+                "uri": "@parameters('testUri')"
+              },
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
       },
       "resources": [
         {
           "type": "providers/diagnosticSettings",
           "name": "Microsoft.Insights/service",
           "dependsOn": [
-            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
+            "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
           ],
           "apiVersion": "2015-07-01",
           "properties": {
@@ -161,15 +195,7 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
             "workspaceId": "[parameters('workspaceId')]",
             "logs": [
               {
-                "category": "NetworkSecurityGroupEvent",
-                "enabled": true,
-                "retentionPolicy": {
-                  "days": 0,
-                  "enabled": false
-                }
-              },
-              {
-                "category": "NetworkSecurityGroupRuleCounter",
+                "category": "WorkflowRuntime",
                 "enabled": true,
                 "retentionPolicy": {
                   "days": 0,
@@ -218,6 +244,6 @@ ms.openlocfilehash: a7d28566650b21193bb816c9399725babbafc228
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

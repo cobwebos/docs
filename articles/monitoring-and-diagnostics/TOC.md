@@ -23,7 +23,7 @@
 ### [自动缩放最佳实践](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ### [自动缩放的常用指标](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
 ### [使用 Resource Manager 模板自动缩放 VM 规模集](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
-### [自动缩放虚拟机规模集中的虚拟机](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)
+### [自动缩放虚拟机规模集中的虚拟机](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [针对自动缩放配置 webhook 和电子邮件通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
 ## 使用活动日志
 ### [在活动日志中查看事件](../monitoring-and-diagnostics/insights-debugging-with-events.md)
@@ -38,17 +38,22 @@
 ## 使用 REST API
 ### [REST API 用法演练](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
 
-
 # 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST](/rest/api/monitor/)
+## [Azure 诊断架构](../monitoring-and-diagnostics/azure-diagnostics-schema.md)
+### [诊断架构 1.0](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md)
+### [诊断架构 1.2](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md)
+### [诊断架构 1.3 到 1.7](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
+
 
 # 资源
 ## [PowerShell 示例](../monitoring-and-diagnostics/insights-powershell-samples.md)
-## [Azure CLI 2.0（预览版）示例](../monitoring-and-diagnostics/insights-cli-samples.md)
+## [Azure CLI 1.0 示例](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [支持的指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO4-->
 
 

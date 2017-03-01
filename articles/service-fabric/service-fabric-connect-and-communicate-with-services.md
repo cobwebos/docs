@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae6d85a3b6efddff1bd1df7b9b022d91b8de634e
+ms.sourcegitcommit: 4e5568bfcc3d488ef07203b7d3ad95f44354cabc
+ms.openlocfilehash: f35a42154e5d14e798a787a3ecd100ab72512b96
 
 
 ---
@@ -24,6 +24,10 @@ ms.openlocfilehash: ae6d85a3b6efddff1bd1df7b9b022d91b8de634e
 在 Service Fabric 中，服务在 Service Fabric 群集（通常分布在多个 VM 间）中的某个位置运行。 它可以从一个位置移动到另一个位置（由服务所有者移动或由 Service Fabric 自动移动）。 服务不以静态方式绑定到特定计算机或地址。
 
 Service Fabric 应用程序通常由许多不同服务组成，其中每个服务执行专门任务。 这些服务可能会相互进行通信以形成一个完整功能，如呈现 Web 应用程序的不同部分。 其中也有连接到服务并与之通信的客户端应用程序。 本文档介绍如何在 Service Fabric 中设置与服务进行的通信以及服务之间的通信。
+
+此 Microsoft Virtual Academy 视频还介绍了服务通信：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
+<img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
 
 ## <a name="bring-your-own-protocol"></a>自带协议
 Service Fabric 可帮助管理服务的生命周期，但是它不会制定有关服务执行的操作的决策。 这包括通信。 服务由 Service Fabric 打开时，服务可以使用所需的任何协议或通信堆栈为传入请求设置终结点。 服务会使用任何寻址方案（如 URI）来侦听通常的 **IP:端口**地址。 多个服务实例或副本可能会共享主机进程，在这种情况下，它们需要使用不同端口，或使用端口共享机制（例如 Windows 中的 http.sys 内核驱动程序）。 在任一情况下，主机进程中的每个服务实例或副本都必须可唯一寻址。
@@ -135,6 +139,6 @@ Reliable Services 框架附带几个预建的通信选项。 你可以根据所�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

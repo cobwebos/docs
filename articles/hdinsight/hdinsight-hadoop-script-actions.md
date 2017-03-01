@@ -13,21 +13,25 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e4e8cf878d08aab41426fcebe1c43d7a9a97b57d
+ms.sourcegitcommit: 6c468c8ed0d817a32c343d55cac780b904ee8668
+ms.openlocfilehash: 6cedd18c22bcd97f7fb2b6926bdf637fe9f04ab4
 
 
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
 了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
 
-> [!NOTE]
-> 此文档中的信息特定于基于 Windows 的 HDInsight 群集。 有关在基于 Windows 的群集上使用脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发 (Linux)](hdinsight-hadoop-script-actions-linux.md)。
+
+
+> [!IMPORTANT]
+> 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。 有关在基于 Linux 的群集上使用脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发 (Linux)](hdinsight-hadoop-script-actions-linux.md)。
 >
 >
+
+
 
 脚本操作可用于安装运行在 Hadoop 群集上的其他软件，或更改安装在群集上的应用程序的配置。 脚本操作是在部署 HDInsight 群集时运行在群集节点上的脚本，这些脚本在群集中的节点完成 HDInsight 配置后执行。 脚本操作根据系统管理员帐户权限执行，提供对群集节点的完全访问权限。 每个群集可能都提供有要按指定顺序执行的脚本操作的列表。
 
@@ -311,6 +315,6 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

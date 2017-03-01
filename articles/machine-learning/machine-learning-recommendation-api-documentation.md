@@ -201,7 +201,7 @@ OData XML
       </entry>
     </feed>
 
-### <a name="53-get-all-models"></a>5.3.    获取所有模型
+### <a name="53----get-all-models"></a>5.3.    获取所有模型
 检索当前用户的所有模型。
 
 | HTTP 方法 | URI |
@@ -266,7 +266,7 @@ OData XML
         </entry>
     </feed>
 
-### <a name="54-update-model"></a>5.4.    更新模型
+### <a name="54----update-model"></a>5.4.    更新模型
 可更新模型说明或活动生成 ID。<br>
 <ins>活动生成 ID</ins> - 每个模型的每个生成均具有生成 ID。 活动生成 ID 是每个新模型的第一个成功生成。 如果拥有活动生成 ID 并且为相同模型执行其他生成，则在需要时要显式将其设置为默认生成 ID。 使用建议时，如果未指定要使用的生成 ID，将自动使用默认生成 ID。<br>
 如果在生产中拥有建议模型，这套机制支持先生成和测试新模型，然后推动它们进入生产。
@@ -286,7 +286,7 @@ OData XML
 
 HTTP 状态代码：200
 
-### <a name="55-delete-model"></a>5.5.    删除模型
+### <a name="55----delete-model"></a>5.5.    删除模型
 按 ID 删除现有模型。
 
 | HTTP 方法 | URI |
@@ -327,7 +327,7 @@ OData XML
     </feed>
 
 ## <a name="6-model-advanced"></a>6.高级模型
-### <a name="61-model-data-insight"></a>6.1.    模型数据见解
+### <a name="61----model-data-insight"></a>6.1.    模型数据见解
 返回此模型用以生成的使用数据的统计数据。
 
 仅可用于建议生成。
@@ -563,7 +563,7 @@ OData XML
     </entry>
     </feed>
 
-### <a name="62-model-insight"></a>6.2.    模型见解
+### <a name="62----model-insight"></a>6.2.    模型见解
 返回活动生成或特定生成（如提供）的模型见解。
 
 仅可用于建议生成。
@@ -644,7 +644,7 @@ OData XML
     </entry>
     </feed>
 
-### <a name="63-get-model-sample"></a>6.3.    获取模型示例
+### <a name="63----get-model-sample"></a>6.3.    获取模型示例
 获取建议模型示例。
 
 | HTTP 方法 | URI |
@@ -689,7 +689,7 @@ OData XML
 * <strong>FeatureWhiteList</strong> - FeatureWhiteList 支持仅建议使用具有特定功能值的项目。
 * <strong>PerSeedBlockList</strong> - PerSeedBlockList 支持为每个项目提供无法返回为建议结果的项目列表。
 
-### <a name="71-get-model-rules"></a>7.1.    获取模型规则
+### <a name="71----get-model-rules"></a>7.1.    获取模型规则
 | HTTP 方法 | URI |
 |:--- |:--- |
 | GET |`<rootURI>/GetModelRules?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br>示例：<br>`<rootURI>/GetModelRules?modelId=%271cac7b76-def4-41f1-bc81-29b806adb1de%27&apiVersion=%271.0%27` |
@@ -746,7 +746,7 @@ OData XML
     </entry>
     </feed>
 
-### <a name="72-add-rule"></a>7.2.    添加规则
+### <a name="72----add-rule"></a>7.2.    添加规则
 | HTTP 方法 | URI |
 |:--- |:--- |
 | POST |`<rootURI>/AddRule?apiVersion=%271.0%27` |
@@ -803,7 +803,7 @@ OData XML
     </entry>
     </feed>
 
-### <a name="73-delete-rule"></a>7.3.    删除规则
+### <a name="73----delete-rule"></a>7.3.    删除规则
 | HTTP 方法 | URI |
 |:--- |:--- |
 | 删除 |`<rootURI>/DeleteRule?modelId=%27<model_id>%27&filterId=%27<filter_Id>%27&apiVersion=%271.0%27`<br><br>示例：<br>`DeleteRule?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&filterId=%271000011%27&apiVersion=%271.0%27` |
@@ -820,7 +820,7 @@ OData XML
 
 HTTP 状态代码：200
 
-### <a name="74-delete-all-rules"></a>7.4.    删除所有规则
+### <a name="74----delete-all-rules"></a>7.4.    删除所有规则
 | HTTP 方法 | URI |
 |:--- |:--- |
 | 删除 |`<rootURI>/DeleteAllRules?modelId=%27<model_id>%27&apiVersion=%271.0%27`<br><br>示例：<br>`DeleteAllRules?modelId=%2724024f7e-b45c-419e-bfa2-dfd947e0d253%27&apiVersion=%271.0%27` |
@@ -837,7 +837,7 @@ HTTP 状态代码：200
 HTTP 状态代码：200
 
 ## <a name="8-catalog"></a>8.目录
-### <a name="81-import-catalog-data"></a>8.1.    导入目录数据
+### <a name="81----import-catalog-data"></a>8.1.    导入目录数据
 如果将多个目录文件上载到具有多个调用的同一模型，则只能插入新目录项目。 现有项目将保留原始值。 不能使用此方法更新目录数据。
 
 目录数据应遵循以下格式：
@@ -902,7 +902,7 @@ OData XML
     </entry>
     </feed>
 
-### <a name="82-get-catalog"></a>8.2.    获取目录
+### <a name="82----get-catalog"></a>8.2.    获取目录
 检索所有目录项。
 一次检索一页目录。 如果要获取特定索引处的项目，可使用 $skip odata 参数。 例如，如果要获取从位置 100 开始的项目，请将参数 $skip=100 添加到请求。
 
@@ -1005,7 +1005,7 @@ OData XML
     </entry>
     </feed>
 
-### <a name="83-get-catalog-items-by-token"></a>8.3.    根据令牌获取目录项目
+### <a name="83----get-catalog-items-by-token"></a>8.3.    根据令牌获取目录项目
 | HTTP 方法 | URI |
 |:--- |:--- |
 | GET |`<rootURI>/GetCatalogItemsByToken?modelId=%27<modelId>%27&token=%27<token>%27&apiVersion=%271.0%27`<br><br>示例：<br>`GetCatalogItemsByToken?modelId=%270dbb55fa-7f11-418d-8537-8ff2d9d1d9c6%27&token=%27Cla%27&apiVersion=%271.0%27` |
@@ -1059,7 +1059,7 @@ OData XML
     </feed>
 
 ## <a name="9-usage-data"></a>9.使用情况数据
-### <a name="91-import-usage-data"></a>9.1.    导入使用情况数据
+### <a name="91----import-usage-data"></a>9.1.    导入使用情况数据
 #### <a name="911-uploading-file"></a>9.1.1. 上传文件
 本部分介绍如何使用文件上传使用情况数据。 通过使用情况数据可调用此 API 几次。 所有调用的全部使用情况数据都将保存。
 
@@ -1212,7 +1212,7 @@ OData XML
 
 **响应**：HTTP 状态代码：200
 
-### <a name="92-list-model-usage-files"></a>9.2.    列出模型使用情况文件
+### <a name="92----list-model-usage-files"></a>9.2.    列出模型使用情况文件
 检索所有模型使用情况文件的元数据。
 一次检索一页使用情况文件。 每页包含 100 个项目。 如果要获取特定索引处的项目，可使用 $skip odata 参数。 例如，如果要获取从位置 100 开始的项目，请将参数 $skip=100 添加到请求。
 
@@ -1277,7 +1277,7 @@ OData XML
     </entry>
 </feed>
 
-### <a name="93-get-usage-statistics"></a>9.3.    获取使用情况统计
+### <a name="93----get-usage-statistics"></a>9.3.    获取使用情况统计
 获取使用情况统计。
 
 | HTTP 方法 | URI |
@@ -1362,7 +1362,7 @@ OData XML
     </entry>
     </feed>
 
-### <a name="94-get-usage-file-sample"></a>9.4.    获取使用情况文件示例
+### <a name="94----get-usage-file-sample"></a>9.4.    获取使用情况文件示例
 检索前 2KB 的使用情况文件内容。
 
 | HTTP 方法 | URI |
@@ -1388,7 +1388,7 @@ HTTP 状态代码：200
 </pre>
 
 
-### <a name="95-get-model-usage-file"></a>9.5.    获取模型使用情况文件
+### <a name="95----get-model-usage-file"></a>9.5.    获取模型使用情况文件
 检索使用情况文件的全部内容。
 
 | HTTP 方法 | URI |
@@ -1414,7 +1414,7 @@ HTTP 状态代码：200
 85526,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 210926,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 116866,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 177458,2406E770-769C-4189-89DE-1C9283F93A96,2014/11/02T13:40:15,True,1 274004,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 123883,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 37712,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 152249,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 250948,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 235588,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 158254,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 271195,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 141157,21BF8088-B6C0-4509-870C-E1C7AC78304A,2014/11/02T13:40:15,True,1 171118,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 225087,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 244881,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 50547,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 213090,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 260655,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 72214,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189334,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 36326,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189336,3BB5CB44-D143-4BDD-A55C-443964BF4B23,2014/11/02T13:40:15,True,1 189334,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 260655,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 162100,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 54946,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 260965,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 102758,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 112602,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 163925,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 262998,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1 144717,552A1940-21E4-4399-82BB-594B46D7ED54,2014/11/02T13:40:15,True,1
 </pre>
 
-### <a name="96-delete-usage-file"></a>9.6.    删除使用情况文件
+### <a name="96----delete-usage-file"></a>9.6.    删除使用情况文件
 删除指定的模型使用情况文件。
 
 | HTTP 方法 | URI |
@@ -1433,7 +1433,7 @@ HTTP 状态代码：200
 
 HTTP 状态代码：200
 
-### <a name="97-delete-all-usage-files"></a>9.7.    删除所有使用情况文件
+### <a name="97----delete-all-usage-files"></a>9.7.    删除所有使用情况文件
 删除所有模型使用情况文件。
 
 | HTTP 方法 | URI |
@@ -2652,7 +2652,7 @@ HTTP 状态代码：200
 
 请参阅 12.1 中的响应示例
 
-### <a name="127-get-user-recommendations-of-a-specific-build"></a>12.7. 获取（特定生成的）用户建议
+### <a name="127-get-user-recommendations--of-a-specific-build"></a>12.7. 获取（特定生成的）用户建议
 获取“建议”类型的特定生成的用户建议。
 
 API 将根据用户的使用情况历史记录返回预测项的列表（用于特定生成）。

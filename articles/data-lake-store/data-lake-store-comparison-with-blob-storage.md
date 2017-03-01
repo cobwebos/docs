@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: e82cc23dac2b765ee3dc8ae2eb1e4f7f2e49675a
-ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
+ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
+ms.openlocfilehash: 10926263ee2657dc96fb1873733d349cf0956e92
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 | 数据操作 - 审核 |可用。 详细信息参见[此处](data-lake-store-diagnostic-logs.md)。 |可用 |
 | 静态数据加密 |透明版服务器端 <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥</li></ul> |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥（即将推出）</li></ul><li>客户端加密</li></ul> |
 | 管理操作（例如“帐户创建”） |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |
-| Developer SDK |.NET、Java、Node.js |.Net、Java、Python、Node.js、C++、Ruby |
+| Developer SDK |.NET、Java、Python、Node.js |.Net、Java、Python、Node.js、C++、Ruby |
 | 分析工作负荷性能 |并行分析工作负荷的优化性能。 高吞吐量和 IOPS。 |未进行分析工作负荷优化 |
 | 大小限制 |无帐户大小、文件大小或文件数量限制 |[此处](../azure-subscription-service-limits.md#storage-limits)记录有具体限制 |
 | 异地冗余 |本地冗余（一个 Azure 区域中数据的多个副本） |本地冗余 (LRS)、全局冗余 (GRS)、读取访问全局冗余 (RA-GRS)。 详细信息参见[此处](../storage/storage-redundancy.md) |
@@ -53,6 +53,6 @@ ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

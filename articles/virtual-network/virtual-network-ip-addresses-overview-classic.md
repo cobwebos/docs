@@ -1,5 +1,5 @@
 ---
-title: "IP 地址（经典）| Microsoft 文档"
+title: "Azure 中的 IP 地址类型（经典）| Microsoft 文档"
 description: "了解如何在 Azure 中使用公共和专用 IP 地址（经典）。"
 services: virtual-network
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: f4c164ac86c404f11a4bc77bc9346ad6fc45e0a7
+ms.sourcegitcommit: 54277a39601cd7f986a8ff8f517ab02eac77309b
+ms.openlocfilehash: dfc34435ad6e8982c0298301bdefe489c37db8f1
 
 
 ---
-# <a name="ip-addresses-classic-in-azure"></a>Azure 中的 IP 地址（经典）
+# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 中的 IP 地址类型和分配方法（经典）
 可以将 IP 地址分配到与其他 Azure 资源通信的 Azure 资源，也可以将其分配到本地网络和 Internet。 可以在 Azure 中使用两种类型的 IP 地址：公共地址和专用地址。
 
 公共 IP 地址用于与 Internet 通信，这些通信中包括面向公众的 Azure 服务。
@@ -133,7 +133,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 
 如果是*独立*云服务，则只能解析同一云服务内的所有 VM/角色实例的主机名。 如果是 VNet 中的云服务，则可以解析该 VNet 中的所有 VM/角色实例的主机名。
 
-### <a name="internal-load-balancers-ilb-application-gateways"></a>内部负载平衡器 (ILB) 和应用程序网关
+### <a name="internal-load-balancers-ilb--application-gateways"></a>内部负载平衡器 (ILB) 和应用程序网关
 可以将专用 IP 地址分配到 [Azure 内部负载均衡器](../load-balancer/load-balancer-internal-overview.md) (ILB) 或 [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md)的**前端**配置。 此专用 IP 地址将用作内部终结点，仅供其虚拟网络 (VNet) 和连接到该 VNet 的远程网络中的资源访问。 你可以将动态或静态专用 IP 地址分配到前端配置。 还可以分配多个专用 IP 地址以启用多 vip 方案。
 
 ### <a name="at-a-glance"></a>速览
@@ -182,6 +182,6 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 4f7a99e82c73d446c928a821f80fc640a1994d67
-ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
+ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
+ms.openlocfilehash: 6baceea55e9085556c5b1386de842b3e4393c721
 
 
 ---
@@ -114,7 +114,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     b.保留“数据库类型”设置，即设置为“共享”。 在“回复 URL”文本框中，使用以下模式键入 URL： 
    
-    - `https://<company name>.fgvms.com/<company name>`
+       - `https://<company name>.fgvms.com/<company name>`
     - `https://www.fieldglass.net/<company name>`
      
     c. 单击“下一步”
@@ -130,7 +130,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     a. 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 5. 若要为应用程序配置 SSO，请联系 Fieldglass 支持团队，并向其提供以下内容： 
    
     -**下载的证书**文件
@@ -170,7 +170,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_06.png)
@@ -183,7 +183,7 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -249,6 +249,6 @@ ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

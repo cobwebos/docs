@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/22/2016
+ms.date: 02/17/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 05209c1c10116af665d9dbfe41ccb9e0b4c2b2bd
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: 41acd377d456fa5e85e3a8ff0b12f7f6eff6cdfe
 
 
 ---
@@ -372,6 +372,6 @@ Service Fabric 提供了三个分区方案可供选择：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

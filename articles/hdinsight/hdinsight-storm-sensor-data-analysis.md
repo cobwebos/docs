@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 0d2743f10d828aaf5ef401ac5378c94384e0a46b
+ms.sourcegitcommit: b19e8b8e6f90ad502799fafd70ad6838d6e6ba4d
+ms.openlocfilehash: 215698f2089934eac549e36644f0bfd4247fe2b9
 
 
 ---
@@ -224,8 +224,7 @@ ms.openlocfilehash: 0d2743f10d828aaf5ef401ac5378c94384e0a46b
    
    > [!NOTE]
    > 此示例假设已使用 **sensordata** 作为事件中心的名称，并假设具有 **Send** 声明的策略的名称为 **devices**。
-   > 
-   > 
+
 3. 使用以下命令在事件中心插入新条目：
    
         node app.js
@@ -345,12 +344,11 @@ ms.openlocfilehash: 0d2743f10d828aaf5ef401ac5378c94384e0a46b
         exit
 
 ## <a name="configure-the-hbase-bolt"></a>配置 HBase bolt
-若要从 Storm 群集写入 HBase，必须向 HBase bolt 提供 HBase 群集的配置详细信息。 执行此操作最简单的方法是从群集下载 **hbase-site.xml** 并将其包含在项目中。 同时还必须取消注释 **pom.xml** 文件中的多个项，该文件加载了 storm-hbase 组件和必需的依赖项。
+
+若要从 Storm 群集写入 HBase，必须向 HBase bolt 提供 HBase 群集的配置详细信息。 执行此操作最简单的方法是从群集下载 **hbase-site.xml** 并将其包含在项目中。 
 
 > [!IMPORTANT]
 > 还必须下载 Storm on HDInsight 群集 3.3 或 3.4 上提供的 storm hbase.jar 文件；此版本是针对 HBase 1.1.x 编译的，可用于 HBase on HDInsight 3.3 和 3.4 群集。 如果从其他位置使用 storm-hbase 组件，则它可能是针对旧版 HBase 编译的。
-> 
-> 
 
 ### <a name="download-the-hbase-sitexml"></a>下载 hbase-site.xml
 从命令提示符处，使用 SCP 从群集下载 **hbase-site.xml** 文件。 在下面的示例中，用创建群集时提供的 SSH 用户替换 **USERNAME**，用之前提供的基名称替换 **BASENAME**。 出现提示时，请输入 SSH 用户名密码。 在 TemperatureMonitor 项目中使用该文件的路径替换 `/path/to/TemperatureMonitor/resources/hbase-site.xml`。
@@ -373,33 +371,18 @@ ms.openlocfilehash: 0d2743f10d828aaf5ef401ac5378c94384e0a46b
    
         mvn install:install-file "-Dfile=storm-hbase-####.jar" "-DgroupId=org.apache.storm" "-DartifactId=storm-hbase" "-Dversion=####" "-Dpackaging=jar"
 
-### <a name="enable-the-storm-hbase-component-in-the-project"></a>启用该项目中的 storm-hbase 组件
-1. 打开 **TemperatureMonitor/pom.xml** 文件并删除以下行：
-   
-        <!-- uncomment this section to enable the hbase-bolt
-        end comment for hbase-bolt section -->
-   
-   > [!IMPORTANT]
-   > 仅删除这两行；不要删除它们之间的任何行。
-   > 
-   > 
-   
-    这样便启用了在使用 hbase bolt 与 HBase 通信时所需的几个组件。
-2. 找到下列代码行，然后用之前下载的 storm-hbase 文件的版本号替换 **####**。
-   
+3. 在 __pom.xml__ 文件中，查找 __storm hbase__ 的依赖项部分。 通过删除依赖项周围的 `<!--` 和 `-->`，取消该依赖项的注释。 同时更改 `<version></version>` 条目，以匹配上一步骤中使用的 ####。 该条目将如以下示例中所示：
+
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-hbase</artifactId>
-            <version>####</version>
+            <version>0.10.0.2.4.2.4-5</version>
         </dependency>
-   
-   > [!IMPORTANT]
-   > 版本号必须与将组件安装到本地 Maven 存储库时所使用的版本号相同，因为生成项目时，Maven 会使用此信息来加载组件。
-   > 
-   > 
-3. 保存 **pom.xml** 文件。
+
+   更改后，保存该文件。
 
 ## <a name="build-package-and-deploy-the-solution-to-hdinsight"></a>生成解决方案，并将其打包和部署到 HDInsight
+
 在开发环境中，按照以下步骤将 Storm 拓扑部署到 Storm 群集。
 
 1. 从 **TemperatureMonitor** 目录中，使用以下命令来执行新的生成并从项目创建 JAR 包：
@@ -409,7 +392,7 @@ ms.openlocfilehash: 0d2743f10d828aaf5ef401ac5378c94384e0a46b
     此操作将在项目的 **target** 目录中创建一个名为 **TemperatureMonitor-1.0-SNAPSHOT.jar** 的文件。
 2. 使用 scp 将 **TemperatureMonitor-1.0-SNAPSHOT.jar** 文件上传到 Storm 群集。 在下面的示例中，用创建群集时提供的 SSH 用户替换 **USERNAME**，用之前提供的基名称替换 **BASENAME**。 出现提示时，请输入 SSH 用户名密码。
    
-        scp target\TemperatureMonitor-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:TemperatureMonitor-1.0-SNAPSHOT.jar
+        scp target/TemperatureMonitor-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:TemperatureMonitor-1.0-SNAPSHOT.jar
    
    > [!NOTE]
    > 上传文件可能需要几分钟的时间，因为文件的大小为几 MB。

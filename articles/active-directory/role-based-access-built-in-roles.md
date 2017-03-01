@@ -1,5 +1,5 @@
 ---
-title: "RBAC：内置角色 | Microsoft Docs"
+title: "Action 和 NotAction - Azure RBAC 中的角色 | Microsoft Docs"
 description: "本主题介绍适用于基于角色的访问控制 (RBAC) 的内置角色。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/25/2016
+ms.date: 01/31/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 386e8479a64af20469e3e03180348f674b08ef8f
+ms.sourcegitcommit: becd7fbcfa094257408ed96eda0c62deefceb44d
+ms.openlocfilehash: 59067ef58d276265e0431119986774ff14212067
 
 
 ---
@@ -28,14 +28,17 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 
 > [!NOTE]
 > Azure 角色定义不断演化。 本文尽可能地保持处于最新状态，但你总是可在 Azure PowerShell 中找到最新的角色定义。 若适用，请使用 cmdlet `(get-azurermroledefinition "<role name>").actions` 或 `(get-azurermroledefinition "<role name>").notactions`。
-> 
-> 
+>
+>
 
 | 角色名称 | 说明 |
 | --- | --- |
 | [API 管理服务参与者](#api-management-service-contributor) |可管理 API 管理服务 |
 | [Application Insights 组件参与者](#application-insights-component-contributor) |可管理 Application Insights 组件 |
 | [自动化操作员](#automation-operator) |能够启动、停止、暂停和继续执行作业 |
+| [备份参与者](#backup-contributor) | 可管理恢复服务保管库中的备份 |
+| [备份操作员](#backup-operator) | 可管理恢复服务保管库中的备份（但无法删除备份） |
+| [备份读取器](#backup-reader) | 可查看所有备份管理服务  |
 | [BizTalk 参与者](#biztalk-contributor) |可管理 BizTalk 服务 |
 | [ClearDB MySQL DB 参与者](#cleardb-mysql-db-contributor) |可管理 ClearDB MySQL 数据库 |
 | [参与者](#contributor) |可管理除访问权限以外的一切内容。 |
@@ -117,6 +120,98 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Resources/deployments/* |创建和管理资源组部署 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
 | Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="backup-contributor"></a>备份参与者
+可管理所有备份管理操作，但无法创建恢复服务保管库和向他人授予访问权限
+
+| **操作** | |
+| --- | --- |
+| Microsoft.Network/virtualNetworks/read | 读取虚拟网络 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | 管理备份管理操作的结果 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | 创建和管理恢复服务保管库备份结构中的备份容器 |
+| Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 将备份作业导出到 excel |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | 创建和管理与备份管理相关的元数据 |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/* | 创建和管理备份策略 |
+| Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | 创建和管理可备份的项 |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | 创建和管理已备份的项 |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | 创建和管理包含备份项的容器 |
+| Microsoft.RecoveryServices/Vaults/certificates/* | 创建和管理与恢复服务保管库中的备份相关的证书 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | 创建和管理与保管库相关的扩展信息 | 
+| Microsoft.RecoveryServices/Vaults/read | 读取恢复服务保管库 |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/* | 管理用于获取新创建的容器的发现操作 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 创建和管理已注册的标识 |
+| Microsoft.RecoveryServices/Vaults/usages/* | 创建和管理恢复服务保管库的使用情况 |
+| Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | 读取资源组 |
+| Microsoft.Storage/storageAccounts/read | 读取存储帐户 |
+| Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="backup-operator"></a>备份操作员
+可管理所有备份管理操作，但无法创建保管库和向他人授予访问权限
+
+| **操作** | |
+| --- | --- |
+| Microsoft.Network/virtualNetworks/read | 读取虚拟网络 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 读取备份管理操作的结果 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 读取对保护容器执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 对已备份项执行按需备份操作 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 读取对已备份项执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationStatus/read | 读取对已备份项执行的操作状态 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 读取已备份项 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 读取已备份项的恢复点 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 使用已备份项的恢复点执行还原操作 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份项 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 读取包含备份项的容器 |
+| Microsoft.RecoveryServices/Vaults/backupJobs/* | 创建和管理备份作业 |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 将备份作业导出到 excel |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | 读取与备份管理相关的元数据 |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/* | 创建和管理备份管理操作的结果 |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 读取对备份策略执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/read | 读取备份策略 |
+| Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | 创建和管理可备份的项 |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 读取已备份项 |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 读取包含备份项的备份容器 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | 读取与保管库相关的扩展信息 | 
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | 写入与保管库相关的扩展信息 | 
+| Microsoft.RecoveryServices/Vaults/read | 读取恢复服务保管库 |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/* | 管理用于获取新创建的容器的发现操作 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | 读取对保管库的已注册项执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | 读取保管库的已注册项 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | 将已注册项写入保管库 |
+| Microsoft.RecoveryServices/Vaults/usages/read | 读取恢复服务保管库的使用情况 |
+| Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | 读取资源组 |
+| Microsoft.Storage/storageAccounts/read | 读取存储帐户 |
+| Microsoft.Support/* | 创建和管理支持票证 |
+
+### <a name="backup-reader"></a>备份读取器
+可监视恢复服务保管库中的备份管理
+
+| **操作** | |
+| --- | --- |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read  | 读取备份管理操作的结果 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read  | 读取对保护容器执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read  | 读取对已备份项执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationStatus/read  | 读取对已备份项执行的操作状态 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read  | 读取已备份项 |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read  | 读取包含备份项的容器 |
+| Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read  | 读取备份作业的结果 |
+| Microsoft.RecoveryServices/Vaults/backupJobs/read  | 读取备份作业 |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 将备份作业导出到 excel |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | 读取与备份管理相关的元数据 |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/read  | 读取备份管理操作结果 |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read  | 读取对备份策略执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/read  | 读取备份策略 |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/read  |  读取已备份项 |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read  | 读取包含备份项的备份容器 |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | 读取与保管库相关的扩展信息 |
+| Microsoft.RecoveryServices/Vaults/read  | 读取恢复服务保管库 |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read  | 读取用于获取新创建的容器的发现操作的结果 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | 读取对保管库的已注册项执行的操作结果 |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | 读取保管库的已注册项 |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  读取恢复服务保管库的使用情况 |
 
 ### <a name="biztalk-contributor"></a>BizTalk 参与者
 可管理 BizTalk 服务
@@ -555,7 +650,6 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

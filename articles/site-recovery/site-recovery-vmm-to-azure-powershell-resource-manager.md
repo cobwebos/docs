@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 62aa837026d11e9c262c68cbdd9c78b1302bc380
+ms.sourcegitcommit: 2c070a6f46e41023ecd2ff7fb5c39b0d021aaef0
+ms.openlocfilehash: 0a900d4ddf6a751a4bf54720d3b62cf9e59e0a71
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -26,8 +27,8 @@ ms.openlocfilehash: 62aa837026d11e9c262c68cbdd9c78b1302bc380
 > * [PowerShell - 资源管理器](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [经典门户](site-recovery-vmm-to-azure-classic.md)
 > * [PowerShell - 经典](site-recovery-deploy-with-powershell.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概述
 Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障转移和恢复，为业务连续性和灾难恢复 (BCDR) 策略发挥作用。 有关部署方案的完整列表，请参阅 [Azure Site Recovery 概述](site-recovery-overview.md)。
@@ -48,8 +49,8 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 > [!NOTE]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用资源管理器部署模型。
-> 
-> 
+>
+>
 
 ## <a name="before-you-start"></a>开始之前
 确保已满足以下先决条件：
@@ -58,12 +59,12 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 * 你将需要一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 如果没有帐户，可先创建一个[免费帐户](https://azure.microsoft.com/free)。 此外，可以阅读 [Azure Site Recovery Manager pricing](https://azure.microsoft.com/pricing/details/site-recovery/)（Azure Site Recovery Manager 定价）。
 * 若要复制到 CSP 订阅方案，需要一个 CSP 订阅。 若要详细了解 CSP 计划，请参阅[如何注册 CSP 计划](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx)。
 * 需要使用一个 Azure v2 存储 (Resource Manager) 帐户来存储复制到 Azure 的数据。 需要为帐户启用地域复制。 该帐户应位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅或 CSP 订阅相关联。 若要详细了解如何设置 Azure 存储，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
-* 需确保要保护的虚拟机符合 [Azure 虚拟机先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+* 需确保要保护的虚拟机符合 [Azure 虚拟机先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 > [!NOTE]
 > 目前只能通过 Powershell 执行 VM 级别的操作。 很快将提供对恢复计划级别操作的支持。  现在，你只能在“受保护的 VM”粒度执行故障转移，而不能在恢复计划级别执行。
-> 
-> 
+>
+>
 
 ### <a name="vmm-prerequisites"></a>VMM 先决条件
 * 你需要具有运行 System Center 2012 R2 的 VMM 服务器。
@@ -108,43 +109,43 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 ## <a name="step-1-set-the-subscription"></a>步骤 1：设置订阅
 1. 从 Azure powershell 登录到你的 Azure 帐户：使用以下 cmdlet
-   
+
         $UserName = "<user@live.com>"
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
         Login-AzureRmAccount #-Credential $Cred
 2. 获取你的订阅的列表。 其中还会列出每个订阅的 subscriptionID。 记下你希望在其中创建恢复服务保管库的订阅的订阅 ID
-   
+
         Get-AzureRmSubscription
 3. 通过提及订阅 ID 设置要在其中创建恢复服务保管库的订阅
-   
+
         Set-AzureRmContext –SubscriptionID <subscriptionId>
 
 ## <a name="step-2-create-a-recovery-services-vault"></a>步骤 2：创建恢复服务保管库
 1. 在 Azure Resource Manager 中创建一个资源组（如果没有）
-   
+
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
 2. 创建新的恢复服务保管库，并将所创建的 ASR 保管库对象保存在变量（后面将用到）中。 你还可以使用 Get-AzureRMRecoveryServicesVault cmdlet 检索 ASR 保管库对象后期创建：-
-   
+
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步骤 3：设置恢复服务保管库上下文
 
 通过运行以下命令设置保管库上下文。
-   
+
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
 ## <a name="step-4-install-the-azure-site-recovery-provider"></a>步骤 4：安装 Azure Site Recovery 提供者
 1. 在 VMM 计算机上，通过运行以下命令创建一个目录：
-   
+
        New-Item c:\ASR -type directory
 2. 通过运行以下命令，使用下载的提供者提取文件
-   
+
        pushd C:\ASR\
        .\AzureSiteRecoveryProvider.exe /x:. /q
 3. 使用以下命令安装提供者：
-   
+
        .\SetupDr.exe /i
        $installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
        do
@@ -155,10 +156,10 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
            $isNotInstalled = $false;
          }
        }While($isNotInstalled)
-   
+
    等待安装完成。
 4. 使用以下命令在保管库中注册服务器：
-   
+
        $BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
        pushd $BinPath
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
@@ -166,7 +167,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 ## <a name="step-5-create-an-azure-storage-account"></a>步骤 5：创建 Azure 存储帐户
 
 如果你没有 Azure 存储帐户，请运行以下命令，在与保管库相同的地区创建一个启用异地复制的帐户：
-   
+
         $StorageAccountName = "teststorageacc1"    #StorageAccountname
         $StorageAccountGeo  = "Southeast Asia"     
         $ResourceGroupName =  “myRG”             #ResourceGroupName
@@ -177,7 +178,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 ## <a name="step-6-install-the-azure-recovery-services-agent"></a>步骤 6：安装 Azure 恢复服务代理
 1. 从 [http://aka.ms/latestmarsagent](http://aka.ms/latestmarsagent) 下载 Azure 恢复服务代理，并将其安装在 VMM 云中要保护的每个 Hyper-V 主机服务器上。
 2. 在所有 VMM 主机上运行以下命令：
-   
+
        marsagentinstaller.exe /q /nu
 
 ## <a name="step-7-configure-cloud-protection-settings"></a>步骤 7：配置云保护设置
@@ -190,25 +191,25 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
         $policryresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds $replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId "/subscriptions/q1345667/resourceGroups/test/providers/Microsoft.Storage/storageAccounts/teststorageacc1"
 
 1. 通过运行以下命令获取保护容器：
-   
+
        $PrimaryCloud = "testcloud"
        $protectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
 2. 通过使用已创建的作业并提及友好策略名称，来获取策略详细信息并将其存储在变量中：
-   
+
        $policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $policyname
 3. 开始将保护容器与复制策略相关联：
-   
+
        $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $protectionContainer  
 4. 在作业完成后，运行以下命令：
-   
+
        $job = Get-AzureRmSiteRecoveryJob -Job $associationJob
-   
+
        if($job -eq $null -or $job.StateDescription -ne "Completed")
        {
          $isJobLeftForProcessing = $true;
        }
 5. 在作业完成处理后，运行以下命令：
-   
+
        if($isJobLeftForProcessing)
        {
          Start-Sleep -Seconds 60
@@ -225,17 +226,17 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 请注意，可以将多个虚拟机网络映射到单个 Azure 网络。 如果目标网络具有多个子网，并且其中一个子网与源虚拟机所在的子网同名，则在故障转移后副本虚拟机将连接到该目标子网。 如果没有具有匹配名称的目标子网，则虚拟机将连接到网络中的第一个子网。
 
 1. 第一条命令将获取当前 Azure Site Recovery 保管库的服务器。 该命令将 Microsoft Azure Site Recovery 服务器存储在 $Servers 数组变量中。
-   
+
         $Servers = Get-AzureRmSiteRecoveryServer
 2. 第二条命令将获取 $Servers 数组中第一个服务器的站点恢复网络。 该命令在 $Networks 变量中存储网络。
 
         $Networks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]
 
 1. 第三条命令获取 Azure 虚拟网络，然后将该值存储在 $AzureVmNetworks 变量中。
-   
+
         $AzureVmNetworks =  Get-AzureRmVirtualNetwork
 2. 最后一个 cmdlet 将在主网络与 Azure 虚拟机网络之间创建映射。 该 cmdlet 将主网络指定为 $Networks 的第一个元素。 该 cmdlet 将虚拟机网络指定为 $AzureVmNetworks 的第一个元素。
-   
+
         New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureVMNetworkId $AzureVmNetworks[0]
 
 ## <a name="step-9-enable-protection-for-virtual-machines"></a>步骤 9：为虚拟机启用保护
@@ -243,17 +244,17 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
  注意以下事项：
 
-* 虚拟机必须满足 Azure 要求。 可以在规划指南中的[先决条件和支持](site-recovery-best-practices.md)中查看这些要求。
+* 虚拟机必须满足 Azure 要求。 可以在规划指南中的[先决条件和支持](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)中查看这些要求。
 * 若要启用保护，必须为虚拟机设置操作系统和操作系统磁盘属性。 当你使用虚拟机模板在 VMM 中创建虚拟机时，可以设置属性。 也可以在虚拟机属性的“常规”和“硬件配置”选项卡中为现有虚拟机设置这些属性。 如果未在 VMM 中设置这些属性，可以在 Azure Site Recovery 门户中配置它们。
 
 1. 若要启用保护，请运行以下命令以获取保护容器：
-   
+
           $ProtectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $CloudName
 2. 通过运行以下命令获取保护实体 (VM)：
-   
+
            $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $protectionContainer
 3. 通过运行以下命令为 VM 启用 DR：
-   
+
           $jobResult = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable –Force -Policy $policy -RecoveryAzureStorageAccountId  $storageID "/subscriptions/217653172865hcvkchgvd/resourceGroups/rajanirgps/providers/Microsoft.Storage/storageAccounts/teststorageacc1
 
 ## <a name="test-your-deployment"></a>测试你的部署
@@ -266,23 +267,23 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 ### <a name="run-a-test-failover"></a>运行测试故障转移
 - 通过运行以下命令来启动测试故障转移：
-   
+
        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
-   
+
        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -AzureVMNetworkId <string>  
 
 ### <a name="run-a-planned-failover"></a>运行计划的故障转移
 - 通过运行以下命令来启动计划的故障转移：
-   
+
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
-   
+
         $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -AzureVMNetworkId <string>  
 
 ### <a name="run-an-unplanned-failover"></a>运行非计划的故障转移
 - 通过运行以下命令来启动非计划的故障转移：
-   
+
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
-   
+
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -AzureVMNetworkId <string>  
 
 ## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a>监视活动
@@ -307,10 +308,4 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解](https://msdn.microsoft.com/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

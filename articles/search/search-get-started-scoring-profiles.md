@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a7a0c49b6fcac84a61005f330b07f5ea47ce1961
+ms.sourcegitcommit: 7a633460f249f7c7b6675a5ab23b1724549cccba
+ms.openlocfilehash: ca07067b73b72b5ff8b93a72fa7eef55e9d47cc2
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: a7a0c49b6fcac84a61005f330b07f5ea47ce1961
 
 将需要 Azure 订阅和 Azure 搜索服务才能完成教程。 有关设置服务方面的帮助，请参阅[在门户中创建搜索服务](search-create-service-portal.md)。
 
- [需要一个 Azure 帐户才能完成本教程：](../../includes/free-trial-note.md)]
+[!INCLUDE [You need an Azure account to complete this tutorial](../../includes/free-trial-note.md)]
 
 <a id="sub-2"></a>
 
@@ -125,6 +125,6 @@ ms.openlocfilehash: a7a0c49b6fcac84a61005f330b07f5ea47ce1961
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

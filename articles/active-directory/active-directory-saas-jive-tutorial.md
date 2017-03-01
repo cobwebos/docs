@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 91f8a95bdab98f079b748b5391e9b611378c6e79
-ms.openlocfilehash: 8e5af99c6c0a8ce4d1b239b3271846f39bc387be
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: 304ee87e82ce5acc4479fd16d3ac1aa340e42815
 
 
 ---
@@ -118,9 +118,9 @@ ms.openlocfilehash: 8e5af99c6c0a8ce4d1b239b3271846f39bc387be
    
     ![配置单一登录](./media/active-directory-saas-jive-tutorial/tutorial_jive_05.png)
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 5. 以管理员身份登录到 Jive 租户。
 6. 在顶部菜单中，单击“Saml”。
    
@@ -167,13 +167,13 @@ ms.openlocfilehash: 8e5af99c6c0a8ce4d1b239b3271846f39bc387be
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-jive-tutorial/create_aaduser_04.png) 
-5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-jive-tutorial/create_aaduser_05.png) 
+5. 在“告诉我们有关此用户的信息”对话框页中，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-jive-tutorial/create_aaduser_05.png) 
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-jive-tutorial/create_aaduser_06.png) 
@@ -186,7 +186,7 @@ ms.openlocfilehash: 8e5af99c6c0a8ce4d1b239b3271846f39bc387be
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-jive-tutorial/create_aaduser_07.png) 
@@ -207,7 +207,7 @@ ms.openlocfilehash: 8e5af99c6c0a8ce4d1b239b3271846f39bc387be
 
 下面的屏幕截图显示了 Azure AD 中相关对话框的示例：
 
-![配置用户预配](./media/active-directory-saas-jive-tutorial/IC698794.png "Configure User Provisioning")
+![配置用户设置](./media/active-directory-saas-jive-tutorial/IC698794.png "配置用户设置")
 
 #### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
 1. 在 Azure 管理门户中的“Jive”应用程序集成页上，单击“配置用户预配”，打开“配置用户预配”对话框。
@@ -283,6 +283,6 @@ ms.openlocfilehash: 8e5af99c6c0a8ce4d1b239b3271846f39bc387be
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

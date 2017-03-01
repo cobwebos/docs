@@ -1,5 +1,5 @@
 ---
-title: "在门户中创建服务主体 | Microsoft Docs"
+title: "在门户中为 Azure 应用创建标识 | Microsoft 文档"
 description: "介绍如何创建新的 Active Directory 应用程序和服务主体，在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4312002b311ec17f175f6eb6bc45fbe1ce7c7a01
-ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 
 
 ---
@@ -28,7 +28,13 @@ ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
 >
 >
 
-当应用程序需要访问或修改资源时，必须设置 Active Directory (AD) 应用程序，并为其分配所需的权限。 本主题演示如何通过门户执行这些步骤。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
+当应用程序需要访问或修改资源时，必须设置 Active Directory (AD) 应用程序，并为其分配所需的权限。 与使用用户自己的凭据运行应用相比，此方法更优，原因在于：
+
+* 可以将权限分配给应用标识，这些权限不同于你自己的权限。 通常情况下，这些权限仅限于应用需执行的操作。
+* 你的职责变化时，无需更改应用的凭据。 
+* 执行无人参与的脚本时，可使用证书自动进行身份验证。
+
+本主题演示如何通过门户执行这些步骤。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
  
 ## <a name="required-permissions"></a>所需的权限
 为完成本主题，必须具有足够的权限向 Active Directory 注册应用程序，并将应用程序分配到 Azure 订阅中的角色。 请确保你拥有适当的权限来执行这些步骤。
@@ -157,9 +163,19 @@ ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
      ![搜索应用](./media/resource-group-create-service-principal-portal/search-app.png)
 9. 选择“确定”完成角色分配。 该应用程序将显示在分配到该范围角色的用户列表中。
 
-现已在 Active Directory 设置你的应用程序。 可使用 ID 和密钥登录为该应用程序。 应用程序分配到角色，可以改角色身份对其执行特定操作。 可以查看示例应用程序，详细了解如何通过应用程序代码完成任务。
+## <a name="log-in-as-the-application"></a>作为应用程序登录
 
-## <a name="sample-applications"></a>示例应用程序
+现已在 Active Directory 设置你的应用程序。 可使用 ID 和密钥登录为该应用程序。 应用程序分配到角色，可以该角色身份执行特定操作。 
+
+若要通过 PowerShell 登录，请参阅[通过 PowerShell 提供凭据](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell)。
+
+若要通过 Azure CLI 登录，请参阅[通过 Azure CLI 提供凭据](resource-group-authenticate-service-principal-cli.md#provide-credentials-through-azure-cli)。
+
+若要获取 REST 操作的访问令牌，请参阅[创建请求](/rest/api/#create-the-request)。
+
+查看下面的示例应用程序，了解如何通过应用程序代码登录。
+
+### <a name="sample-applications"></a>示例应用程序
 以下示例应用程序显示如何登录为 AD 应用程序。
 
 **.NET**
@@ -194,6 +210,6 @@ ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "数据工厂复制向导 |Microsoft Docs"
+title: "使用复制向导轻松复制数据 - Azure | Microsoft Docs"
 description: "了解如何使用数据工厂复制向导将数据从支持的数据源复制到接收器。"
 services: data-factory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bdd816303cb971403eaa074d0fe8a46f11017a42
+ms.sourcegitcommit: 49545648a069f25820f6a6e483072be8410b091e
+ms.openlocfilehash: 0fc9eb7869ebe7316e4aed0d561638a05bc9a91c
 
 
 ---
-# <a name="data-factory-copy-wizard"></a>数据工厂复制向导
+# <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure 数据工厂复制向导轻松复制或移动数据
 Azure 数据工厂复制向导用于简化数据引入过程，这通常是端到端数据集成方案中的第一步。 使用 Azure 数据工厂复制向导时，不需要了解有关链接服务、数据集和管道的任何 JSON 定义。 但是，完成向导中的所有步骤后，向导会自动创建管道，将数据从所选数据源复制到所选目标。 此外，复制向导可帮助你在创作时验证正在引入的数据，从而节省大量时间（尤其第一次从从数据源引入数据时）。 若要启动复制向导，请单击数据工厂主页上的“复制数据”磁贴。
 
 ![复制向导](./media/data-factory-copy-wizard/copy-data-wizard.png)
@@ -57,7 +57,7 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 
 ![验证表达式](./media/data-factory-copy-wizard/validate-expressions.png)
 
-### <a name="filtering-of-data-in-an-azure-blob-folder"></a>筛选 Azure Blob 文件夹中的数据
+### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure Blob 文件夹中的数据筛选
 可以使用文件夹路径中的变量，从运行时基于[系统变量](data-factory-functions-variables.md#data-factory-system-variables)确定的文件夹中复制数据。 支持的变量：**{year}**、**{month}**、**{day}**、**{hour}**、**{minute}** 和 **{custom}**。 示例：inputfolder/{year}/{month}/{day}。
 
 假设输入文件夹格式如下：
@@ -67,7 +67,7 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
     2016/03/01/03
     ...
 
-单击“文件或文件夹”的“浏览”按钮，浏览到其中一个文件夹（例如，2016-> 03-> 01-> 02），然后单击“选择”。 文本框中应该会显示 `2016/03/01/02`。 现在，请用 **{year}** 代替 **2016**、**{month}** 代替 **03**、**{day}** 代替 **01**、**{hour}** 代替 **02**，并按 Tab 键。 可以看到用于选择这四个变量格式的下拉列表：
+单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），然后单击“选择”。 文本框中应该会显示 `2016/03/01/02`。 现在，请用 **{year}** 代替 **2016**、**{month}** 代替 **03**、**{day}** 代替 **01**、**{hour}** 代替 **02**，并按 Tab 键。 可以看到用于选择这四个变量格式的下拉列表：
 
 ![使用系统变量](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
@@ -93,6 +93,6 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

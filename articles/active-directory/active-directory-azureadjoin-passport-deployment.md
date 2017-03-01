@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 115fbee1990b20f6a7186e5f36d0b618cf2e3b7b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6f08fcdb4ec6dd124760cff54c522d998d5a0327
 
 
 ---
@@ -76,7 +76,7 @@ ms.openlocfilehash: 115fbee1990b20f6a7186e5f36d0b618cf2e3b7b
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置文件的名称，例如“My WHfB Profile”。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 4. 在“支持的平台”对话框中，选择将使用该 Windows Hello for Business 配置文件进行配置的平台，然后单击“下一步”。
    
     ![配置 Windows Hello for Business](./media/active-directory-azureadjoin-passport-deployment/04.png)
@@ -90,7 +90,7 @@ ms.openlocfilehash: 115fbee1990b20f6a7186e5f36d0b618cf2e3b7b
    
     c. 显示“身份验证方法”时，选择“基于证书”。
    
-    d.单击“下一步”。 单击“资源组名称” 的 Azure 数据工厂。
+    d.单击“下一步”。 单击“下一步”。
 6. 在“摘要”对话框中，单击“下一步”。
 7. 在“完成”对话框中，单击“关闭”。
 8. 在顶部工具栏中，单击“部署”。
@@ -116,6 +116,6 @@ ms.openlocfilehash: 115fbee1990b20f6a7186e5f36d0b618cf2e3b7b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

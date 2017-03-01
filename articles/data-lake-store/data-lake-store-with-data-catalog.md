@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/28/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c881b378a96b9d3eca7018bc32154a265ec524ea
-ms.openlocfilehash: 893892759b0cac38c0baa5ed3d56addb0dd75065
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: b589742e23ba9cca919a845e4d262ccfea4c9aca
 
 
 ---
@@ -40,17 +40,17 @@ ms.openlocfilehash: 893892759b0cac38c0baa5ed3d56addb0dd75065
 1. 转到 `https://azure.microsoft.com/services/data-catalog`，然后单击“开始使用”。
 2. 登录到 Azure 数据目录门户，然后单击“发布数据”。
 
-    ![注册数据源](./media/data-lake-store-with-data-catalog/register-data-source.png "Register a data source")
+    ![注册数据源](./media/data-lake-store-with-data-catalog/register-data-source.png "注册数据源")
 3. 在下一页上，单击“启动应用程序”。 这将在计算机上下载应用程序清单文件。 双击此清单文件以启动应用程序。
 4. 在“欢迎”页上，单击“登录”并输入凭据。
 
-    ![欢迎屏幕](./media/data-lake-store-with-data-catalog/welcome.screen.png "Welcome screen")
+    ![欢迎屏幕](./media/data-lake-store-with-data-catalog/welcome.screen.png "欢迎屏幕")
 5. 在“选择数据源”页上，选择“Azure Data Lake”，然后单击“下一步”。
 
-    ![选择数据源](./media/data-lake-store-with-data-catalog/select-source.png "Select data source")
+    ![选择数据源](./media/data-lake-store-with-data-catalog/select-source.png "选择数据源")
 6. 在下一页上，提供要在数据目录中注册的 Data Lake Store 帐户名称。 其他选项保留为默认值，然后单击“连接”。
 
-    ![连接到数据源](./media/data-lake-store-with-data-catalog/connect-to-source.png "Connect to data source")
+    ![连接到数据源](./media/data-lake-store-with-data-catalog/connect-to-source.png "连接到数据源")
 7. 下一个页面可以分为以下几部分。
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **服务器层次结构**框表示 Data Lake Store 帐户文件夹结构。 **$Root** 表示 Data Lake Store 帐户的根，而 **AmbulanceData** 表示 Data Lake Store 帐户的根中创建的文件夹。
@@ -59,20 +59,20 @@ ms.openlocfilehash: 893892759b0cac38c0baa5ed3d56addb0dd75065
 
     c. **要注册的对象**框中列出要在 Azure 数据目录中注册的文件和文件夹。
 
-    ![查看数据结构](./media/data-lake-store-with-data-catalog/view-data-structure.png "View data structure")
-8. 在本教程中，应在目录中注册所有文件。 为此，请单击（![移动对象](./media/data-lake-store-with-data-catalog/move-objects.png "Move objects")）按钮以将所有文件移到**要注册的对象**框。
+    ![查看数据结构](./media/data-lake-store-with-data-catalog/view-data-structure.png "查看数据结构")
+8. 在本教程中，应在目录中注册所有文件。 为此，请单击（![移动对象](./media/data-lake-store-with-data-catalog/move-objects.png "移动对象")）按钮将所有文件移到“要注册的对象”框。
 
     由于数据将在组织范围内的数据目录中注册，因此建议添加一些元数据，稍后可以使用这些元数据快速查找数据。 例如，可以为数据所有者添加电子邮件地址（例如，上传数据的用户）或添加标签以标识数据。 下面的屏幕截图显示了添加到数据的标记。
 
-    ![查看数据结构](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "View data structure")
+    ![查看数据结构](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "查看数据结构")
 
     单击“注册”。
 9. 以下屏幕截图表示数据已成功注册到数据目录中。
 
-    ![注册完成](./media/data-lake-store-with-data-catalog/registration-complete.png "View data structure")
+    ![注册完成](./media/data-lake-store-with-data-catalog/registration-complete.png "查看数据结构")
 10. 单击“查看门户”返回到数据目录门户并验证现在是否可以从门户访问注册的数据。 若要搜索数据，可以使用注册数据时使用的标记。
 
-     ![在目录中搜索数据](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Search data in catalog")
+     ![在目录中搜索数据](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "在目录中搜索数据")
 11. 现在可以执行向数据添加批注和文档等操作。 有关详细信息，请参阅以下链接。
 
     * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
@@ -85,6 +85,6 @@ ms.openlocfilehash: 893892759b0cac38c0baa5ed3d56addb0dd75065
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

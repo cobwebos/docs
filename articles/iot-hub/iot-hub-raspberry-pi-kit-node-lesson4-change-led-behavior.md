@@ -1,5 +1,5 @@
 ---
-title: "可选：更改 LED 的亮起和熄灭行为 | Microsoft 文档"
+title: "将 Raspberry Pi (节点) 连接到 Azure IoT - 第 4 课：修改应用 |Microsoft Docs"
 description: "对消息进行自定义以更改 LED 的亮起和熄灭行为。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: dd74474d315c94ae3f2d3e69f8696f9be8508499
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 53c9408bedc6c61cdb0e755b46b3090e8723e271
 
 
 ---
@@ -104,6 +104,6 @@ gulp deploy && gulp run
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

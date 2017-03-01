@@ -1,6 +1,6 @@
 ---
-title: "为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限 | Microsoft Docs"
-description: "如何设置要用于 Azure Resource Manager 虚拟机的 WinRM 访问权限"
+title: "为 Azure VM 设置 WinRM 访问 | Microsoft Docs"
+description: "设置 WinRM 访问，与 Resource Manager 部署模型中创建的 Azure 虚拟机一起使用。"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
-ms.author: singhkay
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
-ms.openlocfilehash: 84a5272844b36951bb0132b21be9913ca50ee817
+ms.sourcegitcommit: ebc2195bbb3526171359cc126ea6b59d0089f4a0
+ms.openlocfilehash: 6559b8605a311bb774f6c8b38a9298875d3a5362
 
 
 ---
@@ -167,6 +167,6 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

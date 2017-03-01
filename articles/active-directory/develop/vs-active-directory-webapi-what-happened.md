@@ -1,6 +1,6 @@
 ---
-title: "我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况 | Microsoft 文档"
-description: "描述当你使用 Visual Studio 连接到 Azure AD 时，你的 MVC 项目 WebApi 会发生什么情况"
+title: "连接到 Azure AD 时对 WebApi 项目所做的更改 | Microsoft 文档"
+description: "介绍使用 Visual Studio 连接到 Azure AD 时，WebApi 项目会发生什么情况"
 services: active-directory
 documentationcenter: 
 author: TomArcher
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a60bdc8d6977943e156fdcf0f29228af3c394a99
-ms.openlocfilehash: e35b18344acf7afedc422760c8a59e6fba17728f
+ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
+ms.openlocfilehash: aa055ead3dc039745f48f268fe456ae5dab5bf36
 
 
 ---
@@ -112,6 +112,6 @@ NuGet 包引用已删除，文件已删除和备份。 根据你的项目的状�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

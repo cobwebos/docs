@@ -1,13 +1,25 @@
 ---
+title: "Azure Service Fabric 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Service Fabric 中间件平台来打包和部署云规模应用程序的微服务。 教程、API 参考和代码示例。"
+services: service-fabric
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: service-fabric
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
-ms.openlocfilehash: 0598e5ea3dc95853a21a56326241a82854477cbe
+ms.sourcegitcommit: 964b9b1ab804b8e5d56863ab5a174c984ebf8235
+ms.openlocfilehash: 2180a54f576c8878e8a33bd6a5be3082188abebc
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric 文档
 
-Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 还解决了开发和管理云应用程序中的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。 
+了解如何使用 Service Fabric 来打包、部署和管理可缩放且可靠的微服务。 教程、API 参考和代码示例演示了如何使用此中间件平台来构建及管理云规模应用程序。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -145,19 +157,13 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
             </div>
         </div>
     </li>
-</ul>   
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-fabric.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Service Fabric 文档 </div>
-    </a>
-</div>
+</ul>    
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

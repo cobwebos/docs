@@ -4,7 +4,7 @@ description: "了解如何在 Azure 应用服务中使用 CORS 支持。"
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 4f980a97-b9f5-4d1d-87ab-82b60bb96e1c
 ms.service: app-service-api
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 08/27/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: be48f1f0b9c3c749c13fd89f63d41fbaff6a62ee
+ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
+ms.openlocfilehash: b0b701b7ea7a608f114d3a82f0403c2ae506854f
+ms.lasthandoff: 12/21/2016
 
 
 ---
@@ -51,7 +52,7 @@ ms.openlocfilehash: be48f1f0b9c3c749c13fd89f63d41fbaff6a62ee
    单击“保存”后，API 应用将接受来自指定 URL 的 JavaScript 调用。
 
 #### <a name="configure-cors-by-using-azure-resource-manager-tools"></a>使用 Azure Resource Manager工具配置 CORS
-也可以使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](../xplat-cli-install.md) 等命令行工具中的 [Azure Resource Manager 模板](../resource-group-authoring-templates.md)来配置 API 应用的 CORS。 
+也可以使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](../xplat-cli-install.md) 等命令行工具中的 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)来配置 API 应用的 CORS。 
 
 有关可设置 CORS 属性的 Azure Resource Manager 模板的示例，请打开 [本教程的示例应用程序存储库中的 azuredeploy.json 文件](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)。 找到如以下示例中所示的模板部分：
 
@@ -248,10 +249,5 @@ Web API CORS 支持比应用服务 CORS 支持更有弹性。 例如，在代码
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何启用应用服务 CORS 支持，使客户端 JavaScript 代码可以调用不同域中的 API。 有关 API 应用的详细信息，请阅读 [introduction to authentication in App Service](../app-service/app-service-authentication-overview.md)（应用服务中的身份验证简介），然后转到 [user authentication for API apps](app-service-api-dotnet-user-principal-auth.md)（API 应用的用户身份验证）教程。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -4,7 +4,7 @@ description: "了解用户在管理门户和 Azure 门户之间对 App Service W
 services: app-service
 documentationcenter: 
 author: jaime-espinosa
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 0cc6a3cc-bd89-4a96-9177-d25f6fb737bb
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: jaime-espinosa
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 00617f4d508c843000d69c02464a1bef36320a8e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -84,10 +85,5 @@ Azure 门户则可以利用多个服务中的组件端对端地轻松构建应�
 
 ## <a name="whats-changed"></a>发生的更改
 * 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

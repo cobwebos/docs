@@ -4,7 +4,7 @@ description: "了解 Azure 应用服务如何帮助开发、托管和使用 REST
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 60049a16-8159-47aa-a34b-110be0d8dab6
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
 ms.openlocfilehash: 62b1541414543fc947886374424dadee09759323
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -58,10 +59,5 @@ API 管理与 API 应用的某些功能类似。  例如，两者都可以自动
 * [Java](app-service-api-java-api-app.md) 
 
 若要咨询有关 API 应用的问题，请在 [API 应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAPIApps)中发贴。 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

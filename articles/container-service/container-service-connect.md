@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 01/30/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: ea59ff3f527d051e01baf12f596ff44af8a0dfc1
-ms.openlocfilehash: 7fe3bc6a5eab1d1b9a8b73ab3c88f9808817369a
+ms.sourcegitcommit: 2464c91b99d985d7e626f57b2d77a334ee595f43
+ms.openlocfilehash: 813517a26ccbbd9df7e7fb7de36811cdebb84284
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>连接到 Azure 容器服务群集
-创建 Azure 容器服务群集后，需要连接到该群集才能部署和管理工作负荷。 本文介绍如何通过远程计算机连接到群集的主 VM。 Kubernetes、DC/OS 和 Docker Swarm 群集都会公开 REST 终结点。 对于 Kubernetes，此终结点在 Internet 上安全公开，用户可在连接到 Internet 的任意计算机上通过运行 `kubectl` 命令行工具来访问此终结点。 对于 DC/OS 和 Docker Swarm，必须创建安全外壳 (SSH) 隧道才能安全连接到 REST 终结点。 
+创建 Azure 容器服务群集后，需要连接到该群集才能部署和管理工作负荷。 本文介绍如何通过远程计算机连接到群集的主 VM。 
+
+Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对于 Kubernetes，此终结点在 Internet 上安全公开，用户可在连接到 Internet 的任意计算机上通过运行 `kubectl` 命令行工具来访问此终结点。 
+
+对于 DC/OS 和 Docker Swarm，必须与内部系统建立一条安全外壳 (SSH) 隧道。 建立隧道后，可以运行使用 HTTP 终结点的命令，通过本地系统查看群集的 Web 界面。 
 
 > [!NOTE]
 > Azure 容器服务中的 Kubernetes 支持当前为预览版。
@@ -43,7 +47,7 @@ ms.openlocfilehash: 7fe3bc6a5eab1d1b9a8b73ab3c88f9808817369a
 > 
 
 ### <a name="install-kubectl"></a>安装 kubectl
-安装此工具的方法之一是使用 `az acs kubernetes install cli` Azure CLI 2.0（预览版）命令。 若要运行此命令，请确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0（预览版）并已登录到 Azure 帐户 (`az login`)。
+安装此工具的方法之一是使用 `az acs kubernetes install-cli` Azure CLI 2.0（预览版）命令。 若要运行此命令，请确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0（预览版）并已登录到 Azure 帐户 (`az login`)。
 
 ```azurecli
 # Linux or OS X
@@ -68,7 +72,7 @@ az acs kubernetes get-credentials --resource-group=<cluster-resource-group> --na
 或者，可以使用 `scp` 安全地将该文件从主 VM 中的 `$HOME/.kube/config` 复制到本地计算机。 例如：
 
 ```console
-mkdir $HOME/.kube/config
+mkdir $HOME/.kube
 scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 ```
 
@@ -96,10 +100,10 @@ Kubernetes UI 现已显示在 `http://localhost:8001/ui` 上。
 
 ## <a name="connect-to-a-dcos-or-swarm-cluster"></a>连接到 DC/OS 或 Swarm 群集
 
-由 Azure 容器服务部署的 DC/OS 和 Docker Swarm 群集将公开 REST 终结点。 但是，这些终结点不对外界开放。 若要管理这些终结点，必须创建安全外壳 (SSH) 隧道。 建立 SSH 隧道后，就可以对群集终结点运行命令，并通过自己系统中的浏览器查看群集 UI。 以下部分逐步讲解如何从运行 Linux、OS X 和 Windows 操作系统的计算机创建 SSH 隧道。
+若要使用 Azure 容器服务部署的 DC/OS 和 Docker Swarm 群集，请遵循以下说明，从本地 Linux、 OS X 或 Windows 系统创建安全外壳 (SSH) 隧道。 
 
 > [!NOTE]
-> 可以使用群集管理系统来创建 SSH 会话。 但不建议这样做。 直接在管理系统上操作会引致无意配置更改所带来的风险。
+> 这些说明重点介绍如何通过 SSH 在隧道中传输 TCP 流量。 也可以使用某个内部群集管理系统启动交互式 SSH 会话，但我们不建议这样做。 直接在内部系统中操作会带来配置意外发生更改的风险。  
 > 
 
 ### <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>在 Linux 或 OS X 上创建 SSH 隧道
@@ -108,49 +112,55 @@ Kubernetes UI 现已显示在 `http://localhost:8001/ui` 上。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到包含容器服务群集的资源组。 展开资源组，显示每个资源。 
 
-2. 找到并选择主资源的虚拟机。 在 DC/OS 群集中，此资源的名称以 **dcos-master-** 开头。 
-
-    “虚拟机”边栏选项卡包含有关公共 IP 地址的信息，包括 DNS 名称。 保存此名称以供稍后使用。 
+2. 单击容器服务资源，然后单击“概览”。 群集的“主 FQDN”将显示在“概要”下面。 保存此名称以供稍后使用。 
 
     ![公用 DNS 名称](media/pubdns.png)
 
+    或者，在容器服务中运行 `az acs show` 命令。 在命令输出中查看 **Master Profile:fqdn** 属性。
+
 3. 现在，打开 shell 并结合以下值运行 `ssh` 命令： 
 
-    **PORT** 是想要公开的终结点的端口。 对于 Swarm，请使用端口 2375。 对于 DC/OS，请使用端口 80。  
+    **LOCAL_PORT** 是要连接到的隧道的服务端上的 TCP 端口。 对于 Swarm，请将此属性设置为 2375。 对于 DC/OS，请设置为 80。  
+    **REMOTE_PORT** 是要公开的终结点的端口。 对于 Swarm，请使用端口 2375。 对于 DC/OS，请使用端口 80。  
     **USERNAME** 是部署群集时提供的用户名。  
     **DNSPREFIX** 是部署群集时提供的 DNS 前缀。  
     **REGION** 是资源组所在的区域。  
     **PATH_TO_PRIVATE_KEY** [可选] 是创建群集时提供的与公钥相对应的私钥的路径。 请结合 `-i` 标志使用此选项。
 
     ```bash
-    ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
+    ssh -fNL PORT:localhost:PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
     ```
     > [!NOTE]
     > SSH 连接端口为 2200，而不是标准端口 22。 在包含多个主 VM 的群集中，这是第一个主 VM 的连接端口。
     > 
 
+
+
 请参阅以下部分中的 DC/OS 和 Swarm 示例。    
 
 ### <a name="dcos-tunnel"></a>DC/OS 隧道
-若要打开 DC/OS 相关终结点的隧道，请运行类似于下面的命令：
+若要打开 DC/OS 终结点的隧道，请运行如下所示的命令：
 
 ```bash
-sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+sudo ssh -fNL 80:localhost:80 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com 
 ```
 
-现在从这些位置可以访问 DC/OS 相关终结点：
+> [!NOTE]
+> 可以指定除端口 80 以外的本地端口，如端口 8888。 但是，如果使用此端口，某些 Web UI 链接可能无法正常工作。
 
-* DC/OS： `http://localhost/`
-* Marathon： `http://localhost/marathon`
-* Mesos： `http://localhost/mesos`
+现在，可通过以下 URL 从本地系统访问 DC/OS 终结点（假设本地端口为 80）：
+
+* DC/OS： `http://localhost:80/`
+* Marathon： `http://localhost:80/marathon`
+* Mesos： `http://localhost:80/mesos`
 
 同样，可以通过此隧道到达每个应用程序的剩余 API。
 
 ### <a name="swarm-tunnel"></a>Swarm 隧道
-若要打开 Swarm 终结点的隧道，请运行类似于下面的命令：
+若要打开 Swarm 终结点的隧道，请运行如下所示的命令：
 
 ```bash
-ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+ssh -fNL 2375:localhost:2375 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com
 ```
 
 现在可以设置 DOCKER_HOST 环境变量，如下所示。 可以继续像平常一样使用 Docker 命令行接口 (CLI)。
@@ -211,6 +221,6 @@ export DOCKER_HOST=:2375
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

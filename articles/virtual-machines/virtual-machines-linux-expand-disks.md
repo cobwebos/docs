@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/22/2016
+ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: c89ce056cb0fa84b2169df161660916d083bec3f
-ms.openlocfilehash: bcef9de167fa31001ee4086d7e5b85c2d8bc4613
+ms.sourcegitcommit: 2826f825b2d34005ce6e7142dd4371285a452ca8
+ms.openlocfilehash: bd1952281dde6f262848d1520995efdb131a3b38
 
 
 ---
 
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的 OS 磁盘
-在 Azure 的 Linux 虚拟机 (VM) 上，操作系统 (OS) 的默认虚拟硬盘大小通常为 30 GB。 可以通过[添加数据磁盘](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来扩充存储空间，也可扩展 OS 磁盘。 本文详述如何使用 Azure CLI 扩展 Linux VM 的 OS 磁盘。
+在 Azure 的 Linux 虚拟机 (VM) 上，操作系统 (OS) 的默认虚拟硬盘大小通常为 30 GB。 可以通过[添加数据磁盘](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来扩充存储空间，也可扩展 OS 磁盘。 本文详述如何使用 Azure CLI 扩展使用非托管磁盘的 Linux VM 的 OS 磁盘。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -46,7 +46,7 @@ azure config mode arm
     > [!NOTE]
     > `azure vm stop` 不释放计算资源。 若要释放计算资源，请使用 `azure vm deallocate`。 只有释放 VM 才能扩展虚拟硬盘。
 
-2. 使用 `azure vm set` 命令更新 OS 磁盘的大小。 以下示例将名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 更新为 `50` GB：
+2. 使用 `azure vm set` 命令更新 OS 非托管磁盘的大小。 以下示例将名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 更新为 `50` GB：
 
     ```azurecli
     azure vm set --resource-group myResourceGroup --name myVM --new-os-disk-size 50
@@ -72,6 +72,6 @@ azure config mode arm
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

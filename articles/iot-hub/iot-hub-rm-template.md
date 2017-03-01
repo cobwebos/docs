@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e4343cfece7286e0a4035239967ab2e0a928b188
-ms.openlocfilehash: cc284c0cd445bbfe2f4424d3251ca07da0538192
+ms.sourcegitcommit: c4330dd4b32119c1950f402c5c589d403960c80f
+ms.openlocfilehash: 49c7506b35f661509346dfd8305f10c0d63422eb
 
 
 ---
@@ -45,7 +45,7 @@ ms.openlocfilehash: cc284c0cd445bbfe2f4424d3251ca07da0538192
 2. 在解决方案资源管理器中右键单击你的项目，然后单击“**管理 NuGet 包**”。
 3. 在 NuGet 包管理器中，选中“包括预发行版”，然后搜索 **Microsoft.Azure.Management.ResourceManager**。 单击“**安装**”，在“**审阅更改**”中单击“**确定**”，然后单击“**我接受**”以接受许可证。
 4. 在 NuGet 包管理器中，搜索 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  单击“**安装**”，在“**审阅更改**”中单击“**确定**”，然后单击“**我接受**”以接受许可证。
-5. 在 Program.cs 中，将现有 **using** 语句替换为以下内容：
+5. 在 Program.cs 中，将现有 **using** 语句替换为以下代码：
    
     ```
     using System;
@@ -193,7 +193,7 @@ ms.openlocfilehash: cc284c0cd445bbfe2f4424d3251ca07da0538192
 * 阅读了解 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的相关功能。
 * 有关 Azure Resource Manager 功能的详细信息，请参阅 [Azure Resource Manager 概述][lnk-azure-rm-overview]。
 
-若要深入了解如何开发 IoT 中心，请参阅以下内容：
+若要详细了解如何开发 IoT 中心，请参阅以下文章：
 
 * [C SDK 简介][lnk-c-sdk]
 * [Azure IoT SDK][lnk-sdks]
@@ -218,6 +218,6 @@ ms.openlocfilehash: cc284c0cd445bbfe2f4424d3251ca07da0538192
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

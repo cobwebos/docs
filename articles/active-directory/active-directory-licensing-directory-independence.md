@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: fff714765508285f4c074b3a7287701a538fbf95
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 23aad0421088b620f32bbf3f6b3f0b11e001e3ae
 
 
 ---
@@ -47,10 +47,11 @@ ms.openlocfilehash: fff714765508285f4c074b3a7287701a538fbf95
 >
 >
 
+## <a name="next-steps"></a>后续步骤
 有关 Azure AD 许可问题和最佳实践的一般概述，请参阅[什么是 Azure Active Directory 许可？](active-directory-licensing-what-is.md)。
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

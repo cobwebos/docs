@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement 中用户交互和通知问题的故障排
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 3f1886b7-1fdd-47f4-b6b0-d79f158d5ef3
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: d59fcba3467e1739c1782a896fc9b5542422e884
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -99,10 +100,5 @@ ms.openlocfilehash: d59fcba3467e1739c1782a896fc9b5542422e884
 * 同时启动多个市场活动扫描用户群花费的时间更长（尝试一次仅启动一个市场活动，最多四个，且仅针对活动用户，这样就无需扫描老用户）。
 * 如果使用市场宣传活动的“市场活动”部分中的“忽略受众，推送将仅通过 API 发送至用户”选项，则市场活动将不会自动发送，而需要通过市场宣传 API 手动发送。
 * 如果在“市场宣传”中使用自定义类别来显示应用内通知，则需要遵循通知的正确生命周期，否则用户取消通知时可能将其清除。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

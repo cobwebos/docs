@@ -1,5 +1,5 @@
 ---
-title: "在 Azure Batch 中轻松安装和管理应用程序 | Microsoft Docs"
+title: "在计算节点上安装应用程序包 - Azure Batch | Microsoft Docs"
 description: "使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 10/21/2016
+ms.date: 01/30/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 8bd78e80347175161053b28e4350fdeb78b3299b
+ms.sourcegitcommit: 08db84f3f3f66930a81e3627dadebbe181dd7da3
+ms.openlocfilehash: 1c89f86c382d627def6cbaf23d8a67a71cd9e890
 
 
 ---
@@ -251,7 +251,9 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 
 `AZ_BATCH_APP_PACKAGE_BLENDER#2.7`
 
-如果为应用程序指定默认版本，可以省略版本后缀。 例如，如果设置“2.7”作为 blender 应用程序的默认版本，任务可以引用以下环境变量，并执行 2.7 版：
+在上载应用程序包时，可以指定要部署到计算节点的默认版本。 如果已指定应用程序的默认版本，可以在引用该应用程序时省略版本后缀。 可以在 Azure 门户的“应用程序”边栏选项卡中指定默认的应用程序版本，如[上载和管理应用程序](#upload-and-manage-applications)中所示。
+
+例如，如果设置“2.7”作为 blender 应用程序的默认版本，任务可以引用以下环境变量，并执行 2.7 版：
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
@@ -349,6 +351,6 @@ foreach (ApplicationSummary app in applications)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

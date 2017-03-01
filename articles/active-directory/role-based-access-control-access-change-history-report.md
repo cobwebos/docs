@@ -1,5 +1,5 @@
 ---
-title: "创建访问权限更改历史记录报告 | Microsoft Docs"
+title: "访问报告 - Azure RBAC | Microsoft Docs"
 description: "生成一个列出过去 90 天内使用基于角色的访问控制对 Azure 订阅的访问权限进行的所有更改的报告。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2016
+ms.date: 02/17/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 44295ff647cbfd2d63ffe08d101da66b83a924f6
+ms.sourcegitcommit: bb894c38de63d0eac4066eeabaed7ba791021cc4
+ms.openlocfilehash: bb15538a37fd610207c77fe2cf89fbfa16bbba11
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.openlocfilehash: 44295ff647cbfd2d63ffe08d101da66b83a924f6
 | **SubscriptionId** |Azure 订阅的 GUID |
 | **SubscriptionName** |Azure 订阅的名称 |
 
-此示例命令列出过去 7 天内订阅中所有访问权限的更改：
+此示例命令列出过去&7; 天内订阅中所有访问权限的更改：
 
 ```
 Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(7)) | FT Caller,Action,RoleName,PrincipalType,PrincipalName,ScopeType,ScopeName
@@ -59,13 +60,8 @@ Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::From
 
 ![更改日志被视为电子表格 - 屏幕快照](./media/role-based-access-control-configure/change-history-spreadsheet.png)
 
-## <a name="see-also"></a>另请参阅
-* 开始使用 [Azure 基于角色的访问控制](role-based-access-control-configure.md)
+## <a name="next-steps"></a>后续步骤
 * 使用 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* 了解如何[使用 PowerShell 管理 Azure RBAC](role-based-access-control-manage-access-powershell.md)
 
 

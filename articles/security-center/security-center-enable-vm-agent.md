@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2084bce2529aaf65194f69b463cb0a1b480e5769
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 83328eb874485d4541ff2131f736a30f350a0eb6
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: 2084bce2529aaf65194f69b463cb0a1b480e5769
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。 这并非一份循序渐进的指南。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>实现该建议
 1. 在“建议”边栏选项卡中，选择“启用 VM 代理”。
@@ -53,6 +53,6 @@ ms.openlocfilehash: 2084bce2529aaf65194f69b463cb0a1b480e5769
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

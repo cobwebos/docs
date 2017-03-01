@@ -1,13 +1,25 @@
 ---
+title: "Azure DNS 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Azure 域名系统管理 DNS 记录。 文档介绍了如何设置及管理域名的 DNS 区域和记录。"
+services: dns
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: dns
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
+ms.sourcegitcommit: f415cc458e91085ce315ef7ee5755b96bbcfa170
+ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
 
 ---
 # <a name="dns-documentation"></a>DNS 文档
 
-Azure DNS（域名系统）是一个 DNS 域服务，它使用 Microsoft Azure 基础结构提供名称解析。  通过在 Azure 中托管你的域，你可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理你的 DNS 记录。
+了解如何使用 Azure 域名系统（一个托管服务）来管理 DNS 记录。 教程、API 参考和其他文档介绍了如何设置及管理域名的 DNS 区域和记录。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -131,16 +143,10 @@ Azure DNS（域名系统）是一个 DNS 域服务，它使用 Microsoft Azure �
 </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/dns.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 DNS 文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

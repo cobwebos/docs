@@ -118,7 +118,7 @@ ADP GlobalView 应用程序需要特定格式的 SAML 断言，这要求将自�
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“回复 URL”文本框中，使用以下格式之一键入 Azure AD 用于将响应发布到 ADP GlobalView 应用程序的 URL：`https://<server name>.globalview.adp.com/federate2/sp/ACS.saml2` 或 `https://<server name>.globalview.adp.com/federate/sp/ACS.saml2`
 
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
 
 1. 在“配置 ADP GlobalView 的单一登录”页面上，执行以下步骤：
@@ -127,7 +127,7 @@ ADP GlobalView 应用程序需要特定格式的 SAML 断言，这要求将自�
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 2. 若要为应用程序配置 SSO，请联系 ADP GlobalView 支持团队，并向其提供以下信息： 
    
    * 下载的**证书**
@@ -209,7 +209,7 @@ ADP GlobalView 应用程序需要特定格式的 SAML 断言，这要求将自�
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_06.png) 
@@ -222,7 +222,7 @@ ADP GlobalView 应用程序需要特定格式的 SAML 断言，这要求将自�
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_07.png) 
@@ -291,6 +291,6 @@ ADP GlobalView 应用程序需要特定格式的 SAML 断言，这要求将自�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

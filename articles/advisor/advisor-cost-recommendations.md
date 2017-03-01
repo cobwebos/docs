@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: a560aa9cc6c70fd3827f649627466c9071b8ab8b
-ms.openlocfilehash: 39a882a8338ce820c6b9b98f58d1a9db7448c7be
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: 7999398f69ed0ce5129dd38f8e9e1994db25f9a5
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -47,7 +48,7 @@ ms.openlocfilehash: 39a882a8338ce820c6b9b98f58d1a9db7448c7be
 3. 在顾问仪表板上，单击“成本”选项卡，选择要接收建议的订阅，然后单击“获取建议”
 
 > [!NOTE]
-> 如果订阅中已用户分配了**所有者**、**参与者**或**读者**角色，则 Azure 顾问会为其生成建议。
+> 若要访问顾问建议，必须先向顾问**注册**订阅。 **订阅所有者**启动顾问仪表板并单击“获取建议”按钮，即可注册订阅。 这是**一次性操作**。 注册订阅后，**所有者**、**参与者**或**读者**可以访问有关订阅、资源组或特定资源的顾问建议。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -57,9 +58,4 @@ ms.openlocfilehash: 39a882a8338ce820c6b9b98f58d1a9db7448c7be
 -  [顾问高可用性建议](advisor-cost-recommendations.md)
 -  [顾问安全性建议](advisor-cost-recommendations.md)
 -  [顾问性能建议](advisor-cost-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

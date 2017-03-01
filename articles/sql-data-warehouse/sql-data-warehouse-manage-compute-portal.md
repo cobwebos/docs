@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: c1c23ab46d9b4e43154a62080cb8865b246489f9
-ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
+ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
+ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
 
 
 ---
@@ -30,22 +30,13 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 >
 >
 
-通过扩大计算资源和内存来提升性能，从而满足工作负荷不断变化的需求。 通过在非高峰时段缩减资源或同时暂停计算来节省成本。
-
-此任务集合使用 Azure 门户实现：
-
-* 缩放计算
-* 暂停计算
-* 恢复计算
-
-有关详细信息，请参阅[管理计算概述][管理计算概述]。
 
 ## <a name="scale-compute-power"></a>缩放计算能力
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
 更改计算资源：
 
-1. 打开 [Azure 门户][Azure 门户]，打开数据库，然后单击“**缩放**”。
+1. 依次打开 [Azure 门户][Azure portal]和数据库，然后单击“缩放”。
 
     ![单击“缩放”][1]
 2. 在“缩放”边栏选项卡上，向左或向右移动滑块，以更改 DWU 设置。
@@ -62,7 +53,7 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 
 暂停数据库：
 
-1. 打开 [Azure 门户][Azure 门户]，然后打开数据库。 请注意，状态为“联机”。
+1. 打开 [Azure 门户][Azure portal]，然后打开数据库。 请注意，状态为“联机”。
 
     ![联机状态][6]
 2. 若要挂起计算和内存资源，请单击“暂停”，随后将显示确认消息。 单击“是”以确认或“否”以取消。
@@ -80,7 +71,7 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 
 恢复数据库：
 
-1. 打开 [Azure 门户][Azure 门户]，然后打开数据库。 请注意，状态为“已暂停”。
+1. 打开 [Azure 门户][Azure portal]，然后打开数据库。 请注意，状态为“已暂停”。
 
     ![暂停数据库][4]
 2. 若要恢复数据库，请单击“启动”，随后将显示确认消息。 单击“是”以确认或“否”以取消。
@@ -94,7 +85,7 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅[管理概述][管理概述]。
+有关详细信息，请参阅[管理概述][Management overview]。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-manage-compute-portal/click-scale.png
@@ -106,18 +97,18 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 [7]: ./media/sql-data-warehouse-manage-compute-portal/pause-confirm.png
 
 <!--Article references-->
-[管理概述]: ./sql-data-warehouse-overview-manage.md
-[管理计算概述]: ./sql-data-warehouse-manage-compute-overview.md
+[Management overview]: ./sql-data-warehouse-overview-manage.md
+[Manage compute overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-[Azure 门户]: http://portal.azure.com/
+[Azure portal]: http://portal.azure.com/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

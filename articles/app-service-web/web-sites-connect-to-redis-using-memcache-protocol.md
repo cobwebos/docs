@@ -1,10 +1,10 @@
 ---
-title: "通过 Memcache 协议将 Azure 应用服务中的 Web 应用连接到 Redis 缓存 | Microsoft Docs"
+title: "通过 Memcache 协议将应用服务 Web 应用连接到 Redis - Azure | Microsoft 文档"
 description: "使用 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存"
 services: app-service\web
 documentationcenter: php
 author: SyntaxC4
-manager: wpickett
+manager: erikre
 editor: riande
 ms.assetid: 0fcdf9fa-2995-4839-ba4d-cfa389c4ba06
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/29/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: c478b8ba6817dd110bb7bfe3a33b728e5f85cc11
+ms.sourcegitcommit: 550b4154f0fe510cb37ec4f8bdef251b06f0b495
+ms.openlocfilehash: 4d867f80cfbe5360962550fbda0091f88784b4af
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -201,9 +202,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [11]: http://stackoverflow.com/questions/tagged/azure-web-sites
 [12]: /services/cache/
 [13]: http://memcached.org
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

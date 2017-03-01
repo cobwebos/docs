@@ -1,5 +1,5 @@
 ---
-title: "使用 Site Recovery 进行本地到本地 Hyper-V 复制的性能测试和缩放结果 | Microsoft 文档"
+title: "使用 Azure Site Recovery 在站点之间进行 Hyper-V 复制的测试结果 | Microsoft 文档"
 description: "本文介绍了使用 Azure Site Recovery 进行本地到本地复制时的性能测试。"
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3c35bf129dd1566f3e2084caacc0330b5a6fc32
+ms.sourcegitcommit: 1b95723ec9886835c5967c9efe95b4922390a847
+ms.openlocfilehash: 92b5200016b943c06ef7732344d4136bd3c491b7
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="performance-test-and-scale-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>使用 Site Recovery 进行本地到本地 Hyper-V 复制的性能测试和缩放结果
+# <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>使用 Site Recovery 进行本地到本地 Hyper-V 复制的测试结果
 你可以使用 Microsoft Azure Site Recovery 来协调和管理从虚拟机和物理服务器到 Azure 或辅助数据中心的复制。 本文提供了我们在两个本地数据中心之间进行 Hyper-V 虚拟机复制时执行的性能测试的结果。
 
 ## <a name="overview"></a>概述
@@ -94,7 +95,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 * 主站点具有一个群集，其中包含运行着 470 个虚拟机的五台 Hyper-V 服务器。
 * 各个虚拟机运行不同的工作负载，并且都启用了 Azure Site Recovery 保护。
 * 群集节点的存储是由一个 iSCSI SAN 提供的。 型号 - Hitachi HUS130。
-* 每台群集服务器具有四个网卡 (NIC)，每个为 1 Gbps。
+* 每台群集服务器具有四个网卡 (NIC)，每个为&1; Gbps。
 * 两个网卡连接到一个 iSCSI 专用网络，另外两个网卡连接到一个外部企业网络。 其中一个外部网络保留给群集通信使用。
 
 ![主要硬件要求](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744922.png)
@@ -150,7 +151,7 @@ SQL Server（卷 2） |8
 | Web 文件服务器 |4864 |33%34%33% |95%95%95% |888 |全部 75% 随机 |
 
 ### <a name="virtual-machine-configuration"></a>虚拟机配置
-* 主群集上有 470 个虚拟机。
+* 主群集上有&470; 个虚拟机。
 * 所有虚拟机都具有 VHDX 磁盘。
 * 虚拟机运行表中汇总的工作负载。 所有虚拟机都是使用 VMM 模板创建的。
 
@@ -189,10 +190,4 @@ SQL Server（卷 2） |8
 
 ## <a name="next-steps"></a>后续步骤
 * [设置两个本地 VMM 站点之间的保护](site-recovery-vmm-to-vmm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

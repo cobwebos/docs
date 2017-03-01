@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 63e822de6ae50be33590048140e06e89526282ee
+ms.sourcegitcommit: b54a95c4f81d9a981912e1b596a817dc6ad56334
+ms.openlocfilehash: 52684fe3212454abbfb0cf9d1c67759fce9a1549
 
 
 ---
@@ -185,44 +185,13 @@ ms.openlocfilehash: 63e822de6ae50be33590048140e06e89526282ee
 
 有关虚拟机的可用大小列表，请参阅 [Azure 中的虚拟机大小](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 。
 
-## <a name="add-a-data-disk-to-a-virtual-machine"></a>将数据磁盘添加到虚拟机
-此示例演示了如何将数据磁盘添加到现有的虚拟机。
-
-    $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-    Add-AzureRmVMDataDisk -VM $vm -Name "disk-name" -VhdUri "https://mystore1.blob.core.windows.net/vhds/datadisk1.vhd" -LUN 0 -Caching ReadWrite -DiskSizeinGB 1 -CreateOption Empty
-    Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
-
-添加的磁盘未进行初始化。 若要初始化该磁盘，可以登录到该磁盘，然后通过磁盘管理进行初始化。 如果在创建磁盘时在其上安装了 WinRM 和证书，则可以通过远程 PowerShell 初始化该磁盘。 还可以使用自定义脚本扩展： 
-
-    $location = "location-name"
-    $scriptName = "script-name"
-    $fileName = "script-file-name"
-    Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
-
-脚本文件可以包含类似于下面的代码来初始化磁盘：
-
-    $disks = Get-Disk |   Where partitionstyle -eq 'raw' | sort number
-
-    $letters = 70..89 | ForEach-Object { ([char]$_) }
-    $count = 0
-    $labels = @("data1","data2")
-
-    foreach($d in $disks) {
-        $driveLetter = $letters[$count].ToString()
-        $d | 
-        Initialize-Disk -PartitionStyle MBR -PassThru |
-        New-Partition -UseMaximumSize -DriveLetter $driveLetter |
-        Format-Volume -FileSystem NTFS -NewFileSystemLabel $labels[$count] `
-            -Confirm:$false -Force 
-        $count++
-    }
 
 ## <a name="next-steps"></a>后续步骤
-如果部署出现问题，请参阅[使用 Azure 门户对资源组部署进行故障排除](../resource-manager-troubleshoot-deployments-portal.md)
+如果部署出现问题，可以参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

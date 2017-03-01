@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aac35e524759d5f4356e9a9e386f658e9003d2ca
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: 926f77b6674a0dba92e160435e4cce7bb0de160d
 
 
 ---
@@ -82,6 +82,8 @@ Application Insights SDK 的安装和配置因使用的平台而异。 对于 AS
     `<InstrumentationKey>` *所复制的检测密钥* `</InstrumentationKey>`
 * 确保解决方案资源管理器中的 ApplicationInsights.config 的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制” 。
 
+如果要[针对不同生成配置切换密钥](app-insights-separate-resources.md)，则在代码中设置检测密钥会很有用。 如果在代码中设置密钥，则无需在 `.config` 文件中设置它。
+
 ## <a name="a-nameruna-run-your-project"></a><a name="run"></a> 运行项目
 使用 **F5** 运行应用程序并试用：打开不同的页面来生成一些遥测。
 
@@ -132,6 +134,6 @@ Application Insights SDK 的安装和配置因使用的平台而异。 对于 AS
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

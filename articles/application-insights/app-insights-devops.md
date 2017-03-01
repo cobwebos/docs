@@ -1,5 +1,5 @@
 ---
-title: "使用 Application Insights 对 Web 应用和服务进行深度诊断 | Microsoft 文档"
+title: "Web 应用程序性能监视 - Azure Application Insights | Microsoft Docs"
 description: "Application Insights 如何适应 devOps 周期"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 9599f0088647c6f017736f5cab36a04ad6024c1d
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: e5652353d658a5de197d71231f649c75fe3b245b
 
 
 ---
@@ -105,7 +105,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 客户 Samtec 说：“在最近的功能过渡期间，我们发现一个小型数据库已到达它的资源限制并导致超时。 当我们分类问题时，主动检测警报立即显现，其速度就像宣传的那样接近实时。 这种与 Azure 平台结合的警报几乎帮助我们瞬间解决了问题。 总停机时间不到 10 分钟。”
 
 ## <a name="live-metrics-stream"></a>实时指标流
-部署最新版本是令人焦虑的体验。 如果出现任何问题，我们希望立即了解情况，以便在必要时取消部署。 实时指标流以大约 1 秒的延迟提供关键指标。
+部署最新版本是令人焦虑的体验。 如果出现任何问题，我们希望立即了解情况，以便在必要时取消部署。 实时指标流以大约&1; 秒的延迟提供关键指标。
 
 ![实时指标](./media/app-insights-devops/040.png)
 
@@ -174,6 +174,6 @@ Application Insights 入门非常简单。 主要选项包括：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

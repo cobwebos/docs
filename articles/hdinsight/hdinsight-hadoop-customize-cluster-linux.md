@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 4bebf59070e4047f083a5e92de1cfeb9d520e41f
+ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
+ms.openlocfilehash: 49bec6125bcd76c3bb52f1237b0f0e0ceff85ffb
 
 
 ---
@@ -25,8 +25,10 @@ ms.openlocfilehash: 4bebf59070e4047f083a5e92de1cfeb9d520e41f
 
 HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用用于自定义群集的自定义脚本。 这些脚本可在创建群集期间或者在运行中的群集上使用，并且用于安装其他组件或更改配置设置。
 
-> [!NOTE]
-> 只有基于 Linux 的 HDInsight 群集能够在运行中的群集上使用脚本操作。 有关在基于 Windows 的群集上使用脚本操作的信息，请参阅[使用脚本操作自定义 HDInsight 群集 (Windows)](hdinsight-hadoop-customize-cluster.md)。
+> [!IMPORTANT]
+> 只有基于 Linux 的 HDInsight 群集能够在运行中的群集上使用脚本操作。
+>
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 
 还可以将脚本操作作为 HDInsight 应用程序发布到 Azure 应用商店。 本文档中的某些示例将演示如何使用 PowerShell 和 .NET SDK 的脚本操作命令来安装 HDInsight 应用程序。 有关 HDInsight 应用程序的详细信息，请参阅[将 HDInsight 应用程序发布到 Azure 应用商店中](hdinsight-apps-publish-applications.md)。
@@ -96,8 +98,6 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 * 在群集节点上以**根级别权限**运行。
 * 可以通过 **Azure 门户**、**Azure PowerShell**、**Azure CLI** 或 **HDInsight .NET SDK** 使用
 
-[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
-
 为了帮助了解哪些脚本已应用到群集，以及确定可供升级或降级的脚本 ID，群集将保留所有已运行脚本的历史记录。
 
 > [!IMPORTANT]
@@ -138,7 +138,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 >
 > 脚本操作以 root 权限运行，因此你应该先确保了解脚本的作用，然后再将它应用到群集。
 
-将脚本应用到群集时，如果脚本运行成功，群集状态将从“正在运行”更改为“已接受”，再更改为“HDInsight 配置”，最后恢复“正在运行”。 脚本状态记录在脚本操作历史记录中，可以使用此状态来确定脚本是成功还是失败。 例如，可以使用 `Get-AzureRmHDInsightScriptActionHistory` PowerShell cmdlet 来查看脚本的状态。 随后将返回类似于下面的信息：
+将脚本应用到群集时，如果脚本运行成功，群集状态将从“正在运行”更改为“已接受”，再更改为“HDInsight 配置”，最后回到“正在运行”。 脚本状态记录在脚本操作历史记录中，可以使用此状态来确定脚本是成功还是失败。 例如，可以使用 `Get-AzureRmHDInsightScriptActionHistory` PowerShell cmdlet 来查看脚本的状态。 这会返回类似于下面的信息：
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 2/23/2016 7:40:55 PM
@@ -192,8 +192,8 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 #### <a name="before-you-begin"></a>开始之前
 
 * 有关配置工作站以运行 HDInsight Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
-* 有关如何创建模板的说明，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
-* 如果你以前没有对 Resource Manager 使用过 Azure PowerShell，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+* 有关如何创建模板的说明，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+* 如果你以前没有对 Resource Manager 使用过 Azure PowerShell，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)。
 
 #### <a name="create-clusters-using-script-action"></a>使用脚本操作创建群集
 
@@ -386,7 +386,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
     系统将提示你为模板中定义的参数提供值。
 
-1. 部署资源组后，你将看到部署摘要。
+1. 部署资源组后，将显示部署摘要。
 
           DeploymentName    : mydeployment
           ResourceGroupName : myresourcegroup
@@ -418,7 +418,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
         $containerName = $clusterName
         $location = "<MicrosoftDataCenter>"                # Location of the HDInsight cluster. It must be in the same data center as the storage account.
         $clusterNodes = <ClusterSizeInNumbers>            # The number of nodes in the HDInsight cluster.
-        $resourceGroupName = "<ResourceGroupName>"      # The resource group that the HDInsight cluster will be created in
+        $resourceGroupName = "<ResourceGroupName>"      # The resource group that the HDInsight cluster is created in
 
 2. 指定配置值（如群集中的节点）和要使用的默认存储。
 
@@ -503,7 +503,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
        在屏幕截图中，`contosodata` 是现有的 Azure 存储帐户，第二行是存储帐户密钥。
 
-   * **持久化**：如果想要持久保存脚本以便在扩展群集时将脚本应用到新的辅助角色节点，请选中此项。
+   * **持久化**：如果想要持久保存脚本以便在扩展群集时将其应用到新的辅助角色节点，请选中此项。
 
 5. 最后，使用“创建”按钮将脚本应用到群集。
 
@@ -556,13 +556,13 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
         azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
 
-    如果省略此命令的参数，系统将提示你指定参数。 如果以 `-u` 指定的脚本接受参数，可以使用 `-p` 参数来指定参数。
+    如果省略此命令的参数，系统将提示指定参数。 如果以 `-u` 指定的脚本接受参数，可以使用 `-p` 参数来指定参数。
 
     有效的**节点类型**包括 **headnode**、**workernode** 和 **zookeeper**。 如果应将脚本应用到多个节点类型，请指定“;”分隔的类型。 例如，`-n headnode;workernode`。
 
     若要持久保存脚本，请添加 `--persistOnSuccess`。 以后也可以使用 `azure hdinsight script-action persisted set` 来持久保存脚本。
 
-    在作业完成后，你将会收到类似于下面的输出。
+    作业完成后，将收到类似于下面的输出。
 
         info:    Executing command hdinsight script-action create
         + Executing Script Action on HDInsight cluster
@@ -616,7 +616,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 | Remove-AzureRmHDInsightPersistedScriptAction |将持久化脚本操作降级为即席脚本操作 |
 
 > [!IMPORTANT]
-> 使用 `Remove-AzureRmHDInsightPersistedScriptAction` 不会撤销脚本执行的操作，而只会删除持久化标志，使脚本不会在添加到群集的新辅助角色节点上运行。
+> 使用 `Remove-AzureRmHDInsightPersistedScriptAction` 不会撤销脚本执行的操作，只会删除持久化标志，使脚本不会在添加到群集的新辅助角色节点上运行。
 
 以下示例脚本演示如何使用 cmdlet 来升级再降级脚本。
 
@@ -628,7 +628,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
     # Promote this to a persisted script
     # Note: the script must have a unique name to be promoted
-    # if the name is not unique, you will receive an error
+    # if the name is not unique, you receive an error
     Set-AzureRmHDInsightPersistedScriptAction -ClusterName mycluster -ScriptExecutionId 635920937765978529
 
     # Demote the script back to ad hoc
@@ -648,7 +648,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` |将持久化脚本操作降级为即席脚本操作 |
 
 > [!IMPORTANT]
-> 使用 `azure hdinsight script-action persisted delete` 不会撤销脚本执行的操作，而只会删除持久化标志，使脚本不会在添加到群集的新辅助角色节点上运行。
+> 使用 `azure hdinsight script-action persisted delete` 不会撤销脚本执行的操作，只会删除持久化标志，使脚本不会在添加到群集的新辅助角色节点上运行。
 
 ### <a name="using-the-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK
 
@@ -667,7 +667,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 * **自定义组件** - 作为群集用户，你可以安装，或者在工作负荷中使用由社区提供的或你自己创建的任何组件。
 
 > [!WARNING]
-> 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
+> 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。
 >
 > 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求你参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 
@@ -675,7 +675,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 1. 作业提交 - Hadoop 或其他类型的作业可以提交到执行或使用自定义组件的群集。
 
-2. 群集自定义 - 在群集创建期间，你可以指定将安装在群集节点的其他设置和自定义组件。
+2. 群集自定义 - 在群集创建期间，可以指定其他设置和安装在群集节点上的自定义组件。
 
 3. 示例 - 对于常见的自定义组件，Microsoft 和其他人可能会提供演示如何在 HDInsight 群集上使用这些组件的示例。 我们不针对这些示例提供支持。
 
@@ -689,7 +689,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
     出现提示时，为群集输入管理员帐户名 (admin) 和密码。 你可能需要在 Web 窗体中重新输入管理员凭据。
 
-2. 从页面顶部栏中选择“操作”条目。 这将显示通过 Ambari 在群集上执行的当前操作和以前操作的列表。
+2. 从页面顶部栏中选择“操作”条目。 这会显示通过 Ambari 在群集上执行的当前操作和以前操作的列表。
 
     ![选中了“操作”的 Ambari Web UI 栏](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
 
@@ -719,7 +719,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
-* 你有可能重复创建了同名的脚本操作群集。 在这种情况下，可以根据 DATE 文件夹名称来区分相关的日志。 例如，在不同的日期创建的群集 (mycluster) 的文件夹结构为：
+* 你有可能重复创建了同名的脚本操作群集。 在这种情况下，可以根据 DATE 文件夹名称来区分相关的日志。 例如，在不同的日期创建的群集 (mycluster) 的文件夹结构类似于：
 
     * `\STORAGE_ACOCUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04`
 
@@ -727,7 +727,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 * 如果在同一天创建同名的脚本操作群集，可以使用唯一的前缀来标识相关日志。
 
-* 如果在当天结束时创建群集，则日志可能跨越两天。 在这种情况下，你将看到同一群集有两个不同的日期文件夹。
+* 如果在当天结束时创建群集，则日志可能跨越两天。 在这种情况下，可看到同一群集有两个不同的日期文件夹。
 
 * 将日志上载到默认容器可能需要 5 分钟，特别是对于大型群集。 因此，如果你想要访问日志，则不应在脚本操作失败时立即删除群集。
 
@@ -735,6 +735,31 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 > [!WARNING]
 > 不要在基于 Linux 的 HDInsight 群集上更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 更改此帐户的密码将无法在 HDInsight 群集上运行新脚本操作。
+
+### <a name="cannot-import-name-blobservice"></a>无法导入名称 BlobService
+
+__Symtoms__：脚本操作失败，在 Ambari 中查看该操作时，会显示类似于以下的错误：
+
+```
+Traceback (most recent call list):
+  File "/var/lib/ambari-agent/cache/custom_actions/scripts/run_customscriptaction.py", line 21, in <module>
+    from azure.storage.blob import BlobService
+ImportError: cannot import name BlobService
+```
+
+__原因__：如果升级 HDInsight 群集中随附的 Python Azure 存储客户端，则会发生此错误。 HDInsight 需要 Azure 存储客户端 0.20.0。
+
+__解决方法__：若要解决此错误，请使用 `ssh` 手动连接到每个群集节点，并使用以下命令重新安装正确的存储客户端版本：
+
+```
+sudo pip install azure-storage==0.20.0
+```
+
+有关如何使用 SSH 连接到群集的详细信息，请参阅以下文档：
+
+* [在 Linux、Unix、OS X 或 Windows 的 HDInsight 上结合使用 SSH 和基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
+
+* [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>历史记录未显示创建群集期间使用的脚本
 
@@ -744,7 +769,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 * 如果群集是在 2015 年 9 月 1 日之前创建的。 这是脚本操作的推出时间，因此，在此日期之前创建的群集可能不是使用脚本操作创建的。
 
-* 如果你在创建群集期间使用了多个脚本操作，并将相同的名称、相同的 URI 用于多个脚本，但将不同的参数用于多个脚本。 在这种情况下，你将收到以下错误。
+* 如果你在创建群集期间使用了多个脚本操作，并将相同的名称、相同的 URI 用于多个脚本，但将不同的参数用于多个脚本。 在这种情况下，将收到以下错误。
 
     由于现有脚本中的脚本名称有冲突，因此无法在此群集上执行任何新脚本操作。 创建群集时提供的脚本名称全都必须唯一。 在调整大小时仍会执行现有脚本。
 
@@ -761,6 +786,6 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2abfeebeac222f4371b0945e1aeb6fcf8e51595d
-ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
+ms.sourcegitcommit: c4330dd4b32119c1950f402c5c589d403960c80f
+ms.openlocfilehash: 0e5f420833276d23565ae0aa83f79bbbe47faf67
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
 2. 在解决方案资源管理器中右键单击你的项目，然后单击“**管理 NuGet 包**”。
 3. 在 NuGet 包管理器中，选中“包括预发行版”，然后搜索 **Microsoft.Azure.Management.ResourceManager**。 单击“**安装**”，在“**审阅更改**”中单击“**确定**”，然后单击“**我接受**”以接受许可证。
 4. 在 NuGet 包管理器中，搜索 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  单击“**安装**”，在“**审阅更改**”中单击“**确定**”，然后单击“**我接受**”以接受许可证。
-5. 在 Program.cs 中，将现有 **using** 语句替换为以下内容：
+5. 在 Program.cs 中，将现有 **using** 语句替换为以下代码：
    
     ```
     using System;
@@ -84,13 +84,13 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
    
     }
     ```
-2. 将以下代码添加到 **CreateIoTHub** 方法，以创建 **HttpClient** 对象并在标头中指定身份验证令牌：
+2. 将以下代码添加到 **CreateIoTHub** 方法中。 该代码使用标头中的身份验证令牌创建 **HttpClient** 对象：
    
     ```
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
-3. 在 **CreateIoTHub** 方法中添加以下代码，以描述如何使用 IoT 中心创建并生成 JSON 表示法。 有关支持 IoT 中心的位置的最新列表，请参阅 [Azure 状态][lnk-status]：
+3. 将以下代码添加到 **CreateIoTHub** 方法中。 此代码描述要创建的 IoT 中心，并生成 JSON 表示形式。 有关支持 IoT 中心的位置的最新列表，请参阅 [Azure 状态][lnk-status]：
    
     ```
     var description = new
@@ -107,7 +107,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
    
     var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
-4. 将以下代码添加到 **CreateIoTHub** 方法，以向 Azure 提交 REST 请求、检查响应，并检索可用于监视部署任务状态的 URL：
+4. 将以下代码添加到 **CreateIoTHub** 方法中。 该代码向 Azure 提交 REST 请求、检查响应，并检索可用于监视部署任务状态的 URL：
    
     ```
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
@@ -122,7 +122,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
    
     var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
-5. 将以下代码添加到 **CreateIoTHub** 方法末尾，以使用上一个步骤中检索的 **asyncStatusUri** 地址来等待部署完成：
+5. 将以下代码添加到 **CreateIoTHub** 方法的末尾。 该代码使用上一个步骤中检索的 **asyncStatusUri** 地址来等待部署完成：
    
     ```
     string body;
@@ -133,7 +133,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
       body = deploymentstatus.Content.ReadAsStringAsync().Result;
     } while (body == "{\"status\":\"Running\"}");
     ```
-6. 将以下代码添加到 **CreateIoTHub** 方法末尾，以检索创建的 IoT 中心密钥并将其输出到控制台：
+6. 将以下代码添加到 **CreateIoTHub** 方法的末尾。 此代码检索创建的 IoT 中心的键，并将其打印到控制台：
    
     ```
     var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
@@ -166,7 +166,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
 * 阅读了解 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的相关功能。
 * 有关 Azure Resource Manager 功能的详细信息，请参阅 [Azure Resource Manager 概述][lnk-azure-rm-overview]。
 
-若要深入了解如何开发 IoT 中心，请参阅以下内容：
+若要详细了解如何开发 IoT 中心，请参阅以下文章：
 
 * [C SDK 简介][lnk-c-sdk]
 * [Azure IoT SDK][lnk-sdks]
@@ -190,6 +190,6 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

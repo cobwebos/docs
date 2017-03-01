@@ -16,8 +16,9 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8b898e56a9f7f76d7a342c102fb6912408116c5a
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 164f3affdf0622653a0a7dcc2a5e886ab855ced1
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -98,16 +99,11 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 有关数据库警报规则的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)和[跟踪服务运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 ### <a name="enable-auditing"></a>启用审核
-如果需要通过审核来访问数据库，你需要在恢复数据库后启用审核。 如果客户端应用程序使用 *.database.secure.windows.net 模式的安全连接字符串，就充分表明需要审核。 有关详细信息，请参阅 [SQL 数据库审核入门](sql-database-auditing-get-started.md)。
+如果需要通过审核来访问数据库，你需要在恢复数据库后启用审核。 如果客户端应用程序使用 *.database.secure.windows.net 模式的安全连接字符串，就充分表明需要审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)
 * 若要了解业务连续性设计和恢复方案，请参阅[连续性方案](sql-database-business-continuity.md)
 * 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

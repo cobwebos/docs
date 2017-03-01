@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/16/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e1911ff65f25d3220d057b6330eb1a2a69373f1d
+ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
+ms.openlocfilehash: 2c44b51d9c832116bf77758144725d2ed3f6e422
 
 
 ---
@@ -31,16 +31,16 @@ ms.openlocfilehash: e1911ff65f25d3220d057b6330eb1a2a69373f1d
 6. [访问 Web 服务](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-若要开发用于信贷风险的预测模型，我们需要用于训练和测试模型的数据。 对于本演练，我们使用 UCI 机器学习存储库的“UCI Statlog(德国信贷数据)数据集”。 可在此处找到以下内容：  
+若要开发用于信贷风险的预测模型，我们需要用于训练和测试模型的数据。 对于本演练，我们使用 UC Irvine 机器学习存储库的“UCI Statlog(德国信贷数据)数据集”。 可在此处找到以下内容：  
 <a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 我们使用名为“german.data”的文件。 将此文件下载到本地硬盘。  
 
-此数据集包含 1000 个以前的信贷申请人的 20 个变量行。 这 20 个变量代表数据集的功能向量，此向量提供每个信贷申请人的标识特征。 每行中的额外列表示申请人经计算的信贷风险，700 个申请人标识为低信贷风险，300 个申请人标识为高风险。
+此数据集包含 1000 个以前的信贷申请人的 20 个变量行。 这 20 个变量代表数据集的功能（功能向量）集，此向量提供每个信贷申请人的标识特征。 每行中的额外列表示申请人经计算的信贷风险，700 个申请人标识为低信贷风险，300 个申请人标识为高风险。
 
-UCI 网站介绍了功能向量的特征，包括金融信息、信贷历史记录、就业状态和个人信息。 每个申请人都将提供二进制分级，指示他们的信贷风险是高还是低。  
+UCI 网站提供此数据的功能向量的属性说明。 这包括财务信息、信贷历史记录、就业状态和个人信息。 每个申请人都将提供二进制分级，指示他们的信贷风险是高还是低。 
 
-我们将使用此数据训练预测分析模型。 操作完成后，模型应能够接收新个人的信息，并预测他们的信贷风险是低还是高。  
+我们将使用此数据训练预测分析模型。 操作完成后，模型应能够接受新个人的功能向量，并预测其信贷风险是低还是高。  
 
 下面是一个有趣的转折。 数据集描述介绍说，将实际上是高信贷风险的用户错误归类为低信贷风险，给金融机构造成的损失要比将低信贷风险的用户错误归类为高信贷风险用户高 5 倍。 在实验中顾及到这种情况的一个简单方法是重复表示高信贷风险用户的条目（5 次）。 如此一来，如果模型将高信贷风险错误归类为低信贷风险，它将错误归类 5 次，一次重复归类一次。 这将增加此错误在训练结果中的成本。  
 
@@ -58,36 +58,49 @@ UCI 网站介绍了功能向量的特征，包括金融信息、信贷历史记�
 在任一情况下，我们已在名为“german.csv”并且要在实验中使用的文件中创建了逗号分隔版的数据。
 
 ## <a name="upload-the-dataset-to-machine-learning-studio"></a>将数据集上传到机器学习工作室
-数据转换为 CSV 格式后，我们需要将其上传到机器学习工作室。 有关机器学习工作室入门的详细信息，请参阅 [Microsoft Azure 机器学习工作室主页](https://studio.azureml.net/)。
+数据转换为 CSV 格式后，我们需要将其上传到机器学习工作室。 
 
-1. 打开机器学习工作室 ([https://studio.azureml.net](https://studio.azureml.net))。 要求登录时，请使用以工作区所有者身份指定的帐户。
-2. 单击窗口顶部的“工作室”选项卡。
+1. 打开机器学习工作室主页 ([https://studio.azureml.net](https://studio.azureml.net))。 
+
+2. 单击窗口左上角菜单![菜单][1]，单击“Azure 机器学习”，选择“工作室”，然后登录。
+
 3. 单击窗口底部的“+ 新建”。
-4. 选择“数据集”。
-5. 选择“从本地文件”。
-6. 在“上传新数据集”对话框中，单击“浏览”，查找创建的“german.csv”文件。
-7. 输入数据集名称。 对于本演练，我们称之为“UCI 德国信用卡数据”。
-8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”。
-9. 如果需要，可添加描述。
-10. 单击“确定”。  
 
-![上传数据集][1]  
+4. 选择“数据集”。
+
+5. 选择“从本地文件”。
+
+    ![从本地文件添加数据集][2]
+
+6. 在“上传新数据集”对话框中，单击“浏览”，查找创建的“german.csv”文件。
+
+7. 输入数据集名称。 对于本演练，我们称之为“UCI 德国信用卡数据”。
+
+8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”。
+
+9. 如果需要，可添加描述。
+
+10. 单击“确定”复选标记。  
+
+    ![上传数据集][3]
 
 这将数据上传到可在实验中使用的数据集模块。
 
-> [!TIP]
-> 若要管理已上传到工作室的数据集，请单击工作室窗口左侧的“数据集”选项卡。
-> 
-> 
+可以通过单击工作室窗口左侧的“数据集”选项卡，来管理已上传到工作室的数据集。
 
-有关将各种类型的数据导入实验的详细信息，请参阅[将训练数据导入 Azure 机器学习工作室](machine-learning-data-science-import-data.md)。
+![管理数据集][4]
+
+有关将其他类型的数据导入实验的详细信息，请参阅[将训练数据导入 Azure 机器学习工作室](machine-learning-data-science-import-data.md)。
 
 **下一步：[创建新实验](machine-learning-walkthrough-3-create-new-experiment.md)**
 
-[1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
+[1]: media/machine-learning-walkthrough-2-upload-data/menu.png
+[2]: media/machine-learning-walkthrough-2-upload-data/add-dataset.png
+[3]: media/machine-learning-walkthrough-2-upload-data/upload-dataset.png
+[4]: media/machine-learning-walkthrough-2-upload-data/dataset-list.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

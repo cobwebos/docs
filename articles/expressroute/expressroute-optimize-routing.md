@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 01/27/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 26f0992e734f0aae96ac6e8b7040d661d5fb063c
+ms.sourcegitcommit: 1b26e82f862a3b2149024d863b907899e14e7d86
+ms.openlocfilehash: 404929cf0def75d92d8bb6de8b41be3aecced458
 
 
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
 当你有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，你所采用的路由可能不是最理想的 - 也就是说，你的流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达你的网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文将详述此问题，并说明如何使用标准路由技术来优化路由。
 
-## <a name="suboptimal-routing-case-1"></a>非最优路由情况 1
+## <a name="suboptimal-routing-from-customer-to-microsoft"></a>从客户到 Microsoft 的欠佳路由
 让我们通过一个示例来详细了解路由问题。 假设你在美国有两个办公室，一个在洛杉矶，一个在纽约。 你的办公室通过广域网 (WAN) 进行连接，该广域网可能是你自己的主干网络，也可能是你服务提供商的 IP VPN。 你有两个 ExpressRoute 线路，一个在美国西部，一个在美国东部，也通过 WAN 连接。 显然，你可以通过两个路径连接到 Microsoft 网络。 现在，假设你在美国西部和美国东部都有 Azure 部署（例如 Azure App Service）。 你的目的是将洛杉矶的用户连接到 Azure 美国西部，将纽约的用户连接到 Azure 美国东部，因为你的服务管理员宣称每个办公室的用户都能够访问附近的 Azure 服务以获取最佳体验。 遗憾的是，此计划适用于东海岸用户，但不适用于西海岸用户。 以下是问题的原因。 在每个 ExpressRoute 线路上，我们会向你播发 Azure 美国东部的前缀 (23.100.0.0/16) 和 Azure 美国西部的前缀 (13.100.0.0/16)。 如果你不知道哪个前缀是来自哪个区域，则无法进行区别对待。 你的 WAN 网络可能会认为这两种前缀更靠近美国东部而非美国西部，因此会将两个办公室的用户都路由到美国东部的 ExpressRoute 线路。 结果就是，洛杉矶办公室的许多用户会很不满意。
 
 ![](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
@@ -33,7 +33,7 @@ ms.openlocfilehash: 26f0992e734f0aae96ac6e8b7040d661d5fb063c
 
 ![](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 
-## <a name="suboptimal-routing-case-2"></a>非最优路由情况 2
+## <a name="suboptimal-routing-from-microsoft-to-customer"></a>从 Microsoft 到客户的欠佳路由
 下面是另一示例：从 Microsoft 发出的连接需要更长的路径才能到达你的网络。 在此示例中，你在 [混合环境](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx)中使用本地 Exchange 服务器和 Exchange Online。 你的办公室都连接到 WAN。 你通过两个 ExpressRoute 线路将两个办公室中的本地服务器的前缀都播发到 Microsoft。 在进行邮箱迁移等情况下，Exchange Online 会发起到本地服务器的连接。 遗憾的是，到你洛杉矶办公室的连接会在遍历整个大陆回到西海岸之前路由到美国东部的 ExpressRoute 线路。 问题原因类似于第一个。 在没有任何提示的情况下，Microsoft 网络无法判断哪个客户前缀靠近美国东部，哪个客户前缀靠近美国西部。 它碰巧选取了到你洛杉矶办公室的错误路径。
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
@@ -58,6 +58,6 @@ ms.openlocfilehash: 26f0992e734f0aae96ac6e8b7040d661d5fb063c
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

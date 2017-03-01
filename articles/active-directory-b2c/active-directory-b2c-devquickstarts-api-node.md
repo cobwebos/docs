@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cea04afd22270c77d91148d3c4a95e87f37406db
+ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
+ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
 
 
 ---
@@ -279,7 +279,7 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 `policyName`：用于验证传入服务器的令牌的策略。 此策略应与针对客户端应用程序登录所用的策略相同。
 
 > [!NOTE]
-> 在 B2C 预览版中，请将相同的策略用于客户端与服务器设置。 如果已完成演练并创建这些策略，则不需要再做一次。 因为已完成此演练，不需要在站点上为客户端演练创建新策略。
+> 目前请将相同的策略用于客户端与服务器设置。 如果已完成演练并创建这些策略，则不需要再做一次。 因为已完成此演练，不需要在站点上为客户端演练创建新策略。
 >
 >
 
@@ -763,6 +763,6 @@ Transfer-Encoding: chunked
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 98f5a017221f0aaba04e2b90afc674e4c42d1bb3
-ms.openlocfilehash: 1c768e4e09f2b452804c65f751963a8d0c312c64
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 687da15bdaf854254321b59350f47549781676f5
 
 
 ---
 # <a name="migrate-automation-account-and-resources"></a>迁移自动化帐户和资源
-对于已在 Azure 门户中创建并且想要从一个资源组迁移到另一个资源组或从一个订阅到另一个订阅的自动化帐户及其关联的资源（即资产、Runbook、模块等），你可以使用 Azure 门户中提供的[移动资源](../resource-group-move-resources.md)功能轻松实现此目的。 但是，在执行此操作前，应该先查看以下[移动资源前需查看的清单](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources)以及下面的特定于自动化的列表。   
+对于已在 Azure 门户中创建并且想要从一个资源组迁移到另一个资源组或从一个订阅到另一个订阅的自动化帐户及其关联的资源（即资产、Runbook、模块等），你可以使用 Azure 门户中提供的[移动资源](../azure-resource-manager/resource-group-move-resources.md)功能轻松实现此目的。 但是，在执行此操作前，应该先查看以下[移动资源前需查看的清单](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources)以及下面的特定于自动化的列表。   
 
 1. 目标订阅/资源组必须与源位于相同的区域。  这意味着，不能在区域间移动自动化帐户。
 2. 移动资源（例如 Runbook、作业等）时，源组和目标组将被锁定，直到移动操作完成。 在完成移动之前，将阻止对组执行写入和删除操作。  
@@ -61,13 +61,13 @@ ms.openlocfilehash: 1c768e4e09f2b452804c65f751963a8d0c312c64
 与前面的示例一样，将提示你确认移动。  
 
 ## <a name="next-steps"></a>后续步骤
-* 有关将资源移到新的资源组或订阅的详细信息，请参阅[将资源移到新的资源组或订阅](../resource-group-move-resources.md)
+* 有关将资源移到新的资源组或订阅的详细信息，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)
 * 有关 Azure 自动化中基于角色的访问控制的详细信息，请参阅 [Role-Based access control in Azure Automation](automation-role-based-access-control.md)（Azure 自动化中基于角色的访问控制）。
-* 若要了解管理订阅所需的 PowerShell cmdlet，请参阅[将 Azure PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)
-* 若要了解管理订阅所需的门户功能，请参阅[使用 Azure 门户管理资源](../azure-portal/resource-group-portal.md)。
+* 若要了解管理订阅所需的 PowerShell cmdlet，请参阅[将 Azure PowerShell 与 Resource Manager 配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
+* 若要了解管理订阅所需的门户功能，请参阅[使用 Azure 门户管理资源](../azure-resource-manager/resource-group-portal.md)。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

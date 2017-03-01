@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: tobiast
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: df275d6ee1aed7e44eb26f999a068b6b56ca918f
+ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
+ms.openlocfilehash: 697a99ec828984d4e6f6e3dc446bc6dc8377cf57
 
 
 ---
@@ -39,10 +39,10 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 ## <a name="a-idodbcadata-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>数据访问技术：ODBC 和 OLE DB
 连接到 Azure SQL DB 没有任何不同，且当前有两种方法连接到数据库：ODBC（开放数据库连接）和 OLE DB（对象链接和嵌入数据库）。 最近几年，Microsoft 已在使用 [ODBC 进行本地关系数据访问](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/)。 ODBC 相对简单，且比 OLE DB 快得多。 唯一需要说明的是，ODBC 使用的是旧的 C 样式 API。 
 
-## <a name="a-idcreateastep-1-creating-your-azure-sql-database"></a><a id="Create"></a>步骤 1：创建 Azure SQL 数据库
+## <a name="a-idcreateastep-1--creating-your-azure-sql-database"></a><a id="Create"></a>步骤 1：创建 Azure SQL 数据库
 请参阅[入门页](sql-database-get-started.md)，以了解如何创建示例数据库。  或者，可以遵循此[两分钟短视频](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)使用 Azure 门户创建 Azure SQL 数据库。
 
-## <a name="a-idconnectionstringastep-2-get-connection-string"></a><a id="ConnectionString"></a>步骤 2：获取连接字符串
+## <a name="a-idconnectionstringastep-2--get-connection-string"></a><a id="ConnectionString"></a>步骤 2：获取连接字符串
 设置 Azure SQL 数据库后，需要执行以下步骤来确定连接信息，并添加客户端 IP 用于防火墙访问。 
 
 在 [Azure 门户](https://portal.azure.com/)中，使用**显示数据库连接字符串**（包含在数据库概述部分中）转到 Azure SQL 数据库 ODBC 连接字符串： 
@@ -53,7 +53,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 
 复制 **ODBC (包括 Node.js) [SQL 身份验证]** 字符串的内容。 稍后，我们将使用此字符串从 C++ ODBC 命令行解释程序进行连接。 此字符串提供驱动程序、服务器和其他数据库连接参数等详细信息。 
 
-## <a name="a-idfirewallastep-3-add-your-ip-to-the-firewall"></a><a id="Firewall"></a>步骤 3：将 IP 添加到防火墙
+## <a name="a-idfirewallastep-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>步骤 3：将 IP 添加到防火墙
 转到数据库服务器的防火墙部分，并[使用以下步骤将客户端 IP 添加到防火墙](sql-database-configure-firewall-settings.md)，以确保我们可以建立成功的连接： 
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
@@ -129,7 +129,7 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 
 ## <a name="next-steps"></a>后续步骤
 * 参阅 [SQL 数据库开发概述](sql-database-develop-overview.md)
-* 更多有关 [ODBC API 引用](https://msdn.microsoft.com/library/ms714562\(v=vs.85\).aspx)的信息
+* 更多有关 [ODBC API 引用](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)的信息
 
 ## <a name="additional-resources"></a>其他资源
 * [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)
@@ -138,6 +138,6 @@ Azure 当前有两个托管 SQL Server 工作负荷的选项：Azure SQL 数据�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

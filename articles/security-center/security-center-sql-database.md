@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6b1c05963afa27ff4d24270048d3071f0fb02c00
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,14 +32,14 @@ ms.openlocfilehash: 6b1c05963afa27ff4d24270048d3071f0fb02c00
 * 定义 SQL 数据库加密和审核的策略。
 * 跨所有订阅监视 SQL 数据库资源的安全性。
 * 快速识别和修复安全问题。
-* 集成来自 [Azure SQL 数据库威胁检测](../sql-database/sql-database-threat-detection-get-started.md)的警报。
+* 集成来自 [Azure SQL 数据库威胁检测](../sql-database/sql-database-threat-detection.md)的警报。
 
 除帮助保护 SQL 数据库资源外，安全中心还可安全监视和管理 Azure 虚拟机、云服务、应用程序服务和虚拟网络等。 在[此处](security-center-intro.md)了解有关安全中心的详细信息。
 
 ## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 使用你的订阅启用安全中心的免费层。 了解有关安全中心免费层和标准层的详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
-安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。 安全中心常见问题提供有关[如何在安全中心处理权限](security-center-faq.md#how-are-permissions-handled-in-azure-security-center)的信息。
+安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。 安全中心常见问题提供有关[如何在安全中心处理权限](security-center-faq.md#permissions)的信息。
 
 ## <a name="access-security-center"></a>访问安全中心
 从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问安全中心。 [登录到门户](https://portal.azure.com/)，然后选择**安全中心选项**。
@@ -79,7 +80,7 @@ ms.openlocfilehash: 6b1c05963afa27ff4d24270048d3071f0fb02c00
 如下所示，安全中心将显示未启用审核与威胁检测的 SQL 服务器。 启用审核后，可以配置威胁检测设置和电子邮件设置，以接收安全警报。 威胁检测会在检测到异常的数据库活动时向你发出警报，指出数据库有潜在的安全威胁。 警报在安全中心仪表板中显示。
 ![审核和威胁检测][5]
 
-请按照 [SQL 数据库威胁检测入门](../sql-database/sql-database-threat-detection-get-started.md)中的步骤启用和配置威胁检测，并配置在检测到异常活动时接收安全警报的电子邮件列表。
+请按照 [Azure 门户中 SQL 数据库威胁检测](../sql-database/sql-database-threat-detection-portal.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。
 
 若要详细了解各项建议，请参阅[管理安全建议](security-center-recommendations.md)。
 
@@ -90,7 +91,7 @@ ms.openlocfilehash: 6b1c05963afa27ff4d24270048d3071f0fb02c00
 若要了解详细信息，请参阅[安全运行状况监视](security-center-monitoring.md)。
 
 ## <a name="manage-and-respond-to-security-alerts"></a>管理和响应安全警报
-安全中心自动收集、分析和集成来自 [Azure SQL 威胁检测](../sql-database/sql-database-threat-detection-get-started.md)的日志数据，以及其他 Azure 资源，以检测真实威胁和减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
+安全中心自动收集、分析和集成来自 [Azure SQL 威胁检测](../sql-database/sql-database-threat-detection.md)的日志数据，以及其他 Azure 资源，以检测真实威胁和减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
 
 若要查看警报，请选择“安全中心”边栏选项卡上的“**安全警报**”磁贴。 在“**安全警报**”边栏选项卡上，选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 在此示例中，选择“**潜在 SQL 注入**”。
 ![安全警报][7]
@@ -115,9 +116,4 @@ ms.openlocfilehash: 6b1c05963afa27ff4d24270048d3071f0fb02c00
 [6]: ./media/security-center-sql-database/monitor-health.png
 [7]: ./media/security-center-sql-database/alert.png
 [8]: ./media/security-center-sql-database/sql-injection.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

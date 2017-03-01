@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 02/13/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0123a322e9dcbdf82dd79bfd4eec7a189cfbe3b5
+ms.sourcegitcommit: d58462cbd6578093e00c93c7e2753efc1493441d
+ms.openlocfilehash: 8f17399846eafcac8b86a9b7d7baa7a029005c8c
 
 
 ---
@@ -28,14 +28,14 @@ ms.openlocfilehash: 0123a322e9dcbdf82dd79bfd4eec7a189cfbe3b5
 > 
 > 
 
-在媒体服务中，可以将数字文件上载到资产中。 [资产](https://msdn.microsoft.com/library/azure/hh974277.aspx)实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上载到资产后，相关内容即安全地存储在云中供后续处理和流式处理。 
+在媒体服务中，可以将数字文件上载到资产中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上载到资产后，相关内容即安全地存储在云中供后续处理和流式处理。 
 
 > [!NOTE]
-> 选择资产文件名时需考虑下列事项：
+> 请注意以下事项：
 > 
-> * 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[保留的百分号编码字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]".。此外，文件扩展名中只能含有一个“.”。
+> * 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 > * 名称长度不应超过 260 个字符。
-> 
+> * 支持在媒体服务中处理的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此主题](media-services-quotas-and-limitations.md)。
 > 
 
 上载资产的基本工作流分为下列各节：
@@ -122,7 +122,7 @@ AMS 还可用于批量上载资产。 有关详细信息，请参阅[此](media-
     }
 
 ### <a name="create-an-assetfile"></a>创建 AssetFile
-[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) 实体表示 blob 容器中存储的视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个资产文件。 如果资产文件对象未与 BLOB 容器中的数字文件关联，则媒体服务 Encoder 任务将失败。
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) 实体表示 blob 容器中存储的视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个资产文件。 如果资产文件对象未与 BLOB 容器中的数字文件关联，则媒体服务 Encoder 任务将失败。
 
 请注意，**AssetFile** 实例和实际媒体文件是两个不同的对象。 AssetFile 实例包含有关媒体文件的元数据，而媒体文件包含实际媒体内容。
 
@@ -186,7 +186,7 @@ AMS 还可用于批量上载资产。 有关详细信息，请参阅[此](media-
 
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>创建具有写入权限的 AccessPolicy。
-将任何文件上载到 BLOB 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx)。
+将任何文件上载到 BLOB 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
 
 以下示例说明了如何创建 AccessPolicy：
 
@@ -232,7 +232,7 @@ AMS 还可用于批量上载资产。 有关详细信息，请参阅[此](media-
     }
 
 ### <a name="get-the-upload-url"></a>获取上载 URL
-若要检索实际上载 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](http://msdn.microsoft.com/library/azure/hh974308.aspx)。
+若要检索实际上载 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
 SAS URL 采用以下格式：
 
@@ -298,14 +298,14 @@ SAS URL 采用以下格式：
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>将文件上载到 Blob 存储容器
-设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上载到 Azure BLOB 存储容器。 也可以按页或块 BLOB 来上载。 
+设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上载到 Azure BLOB 存储容器。 必须以块 blob 形式上传文件。 Azure 媒体服务不支持页 blob。  
 
 > [!NOTE]
 > 必须将要上传文件的文件名添加到在上一节收到的定位符 **Path** 值中。 例如，https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? 。 。 。 
 > 
 > 
 
-有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)。
+有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Blob-Service-REST-API)。
 
 ### <a name="update-the-assetfile"></a>更新 AssetFile
 上载文件后，请更新 FileAsset 大小（和其他）信息。 例如：
@@ -448,7 +448,7 @@ IngestManifestFile 代表将作为批量引入资产的一部分上载的实际�
 可以使用任何能够将资产文件上载到 Blob 存储容器 URI（由 IngestManifest 的 BlobStorageUriForUpload 属性提供）的高速客户端应用程序。 一个明显的高速上传服务就是 [Aspera On Demand for Azure 应用程序](http://go.microsoft.com/fwlink/?LinkId=272001)。
 
 ### <a name="monitor-bulk-ingest-progress"></a>监视批量引入进度
-可以通过轮询 IngestManifest 的 Statistics 属性来监视 IngestManifest 的批量引入操作的进度。 该属性为复杂类型，即 [IngestManifestStatistics](https://msdn.microsoft.com/library/azure/jj853027.aspx)。 若要轮询 Statistics 属性，请提交一个传递 IngestManifest ID 的 HTTP GET 请求。
+可以通过轮询 IngestManifest 的 Statistics 属性来监视 IngestManifest 的批量引入操作的进度。 该属性为复杂类型，即 [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics)。 若要轮询 Statistics 属性，请提交一个传递 IngestManifest ID 的 HTTP GET 请求。
 
 ## <a name="create-contentkeys-used-for-encryption"></a>创建用于加密的 ContentKey
 如果你的资产将使用加密，则在创建资产文件之前，必须创建用于加密的 ContentKey。 对于存储空间加密，应在请求正文中包括以下属性。
@@ -506,11 +506,13 @@ ContentKey 通过发送 HTTP POST 请求关联到一个或多个资产。 以下
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
 
+## <a name="next-steps"></a>后续步骤
 
+现在可以对上载的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。
 
-## <a name="next-step"></a>后续步骤
-查看媒体服务学习路径。
+还可以使用 Azure Functions，基于传入到所配置容器中的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
 
+## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
@@ -521,6 +523,6 @@ ContentKey 通过发送 HTTP POST 请求关联到一个或多个资产。 以下
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

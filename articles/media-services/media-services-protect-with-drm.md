@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/11/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
-ms.openlocfilehash: 7c2709d472d7512eda927f4f70f82e7f74adca0c
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 3309db6a926c3c2a0ff6340f0ade3d73093f6d6b
 
 
 ---
@@ -41,10 +41,8 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 开发应用程序以传送受多个 DRM（例如 PlayReady 和 Widevine）保护的媒体的开发人员可以参考本主题。 本主题介绍如何使用授权策略来配置 PlayReady 许可证传送服务，确保只有经过授权的客户端才能接收 PlayReady 或 Widevine 许可证。 此外，还介绍如何通过 DASH 使用 PlayReady 或 Widevine DRM 进行动态加密。
 
-> [!NOTE]
-> 若要开始使用动态加密，你必须首先获取至少一个缩放单位（也称为流式处理单位）。 有关详细信息，请参阅 [如何缩放媒体服务](media-services-portal-manage-streaming-endpoints.md)。
->
->
+>[!NOTE]
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 ## <a name="download-sample"></a>下载示例
 可以从 [此处](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)下载本文所述的示例。
@@ -160,8 +158,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
                 <add key="Audience" value="urn:test"/>
               </appSettings>
         </configuration>
-5. 针对你要传送内容的“流式处理终结点”，获取至少一个流式处理单位。 有关详细信息，请参阅： [配置流式处理终结点](media-services-dotnet-get-started.md#configure-streaming-endpoints-using-the-azure-portal)。
-6. 使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
+7. 使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
 
     请务必将变量更新为指向输入文件所在的文件夹。
 
@@ -623,6 +620,6 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

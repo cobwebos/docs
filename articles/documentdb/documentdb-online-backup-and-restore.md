@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 02/06/2017
 ms.author: raprasa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 23f6049bc0df133966911b2352b044cdbc777b36
+ms.sourcegitcommit: b5419efbaf51476cfc662c8aa814001e2757b4b7
+ms.openlocfilehash: db7b24c049153b6622f50fd9934611d48c98a1e8
 
 
 ---
@@ -38,7 +38,7 @@ DocumentDB 旨在成为[全局分布式](documentdb-distribute-data-globally.md)
 ![DocumentDB 的高程度冗余性](./media/documentdb-online-backup-and-restore/azure-documentdb-nosql-database-global-distribution.png)
 
 ## <a name="full-automatic-online-backups"></a>完整、自动、联机备份
-抱歉，我删除了集合或数据库！ 使用 DocumentDB，不仅是数据库，还有数据的备份都会使区域灾难高度冗余和可恢复。 这些自动备份当前大约每四小时进行一次。 
+抱歉，我删除了集合或数据库！ 使用 DocumentDB，不仅是数据库，还有数据的备份都会使区域灾难高度冗余和可恢复。 这些自动备份当前大约每四小时进行一次，并且始终存储最新的 2 个备份。 如果数据意外删除或损坏，请在 8 小时内[联系 Azure 支持人员](https://azure.microsoft.com/support/options/)。 
 
 备份不会影响数据库操作的性能或可用性。 DocumentDB 将在后台进行备份，不会使用预配的 RU 或影响性能，也不会影响 NoSQL 数据库的可用性。 
 
@@ -62,6 +62,6 @@ DocumentDB 旨在成为[全局分布式](documentdb-distribute-data-globally.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

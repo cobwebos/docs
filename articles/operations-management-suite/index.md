@@ -1,23 +1,20 @@
 ---
-title: "Operations Management Suite (OMS) 概述 | Microsoft Docs"
-description: "Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。  本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。"
+title: "Azure Operations Management Suite (OMS) 文档 - 教程 | Microsoft 文档"
+description: "Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。 本文标识了 OMS 中包括的不同服务并提供了指向其详细内容的链接。"
 services: operations-management-suite
-documentationcenter: 
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 9dc437b9-e83c-45da-917c-cb4f4d8d6333
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
 ms.service: operations-management-suite
-ms.devlang: na
-ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/24/2016
-ms.author: bwren
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f14a461b842649de977d2c4c80edfc197e15657
-ms.openlocfilehash: 14274c7d94213681b3779b97a44296e6eaf90be9
-
+ms.sourcegitcommit: ccfbd45def1ecf036a2464f560aa89817c37b419
+ms.openlocfilehash: 54b3ce2c8c3966ee36350fed71bdc48aa5bffa63
 
 ---
 # <a name="what-is-operations-management-suite-oms"></a>什么是 Operations Management Suite (OMS)？
@@ -32,7 +29,7 @@ Microsoft Operations Management Suite (OMS) 是 Microsoft 基于云的 IT 管理
 
 可将解决方案轻松添加到日志分析，后者用于定义要收集的数据及其分析逻辑。  解决方案可以包括只需极少或无需配置即可自动交付到代理的附加功能。  除使用独立解决方案提供的分析工具之外，还可在整个数据集中执行自定义搜索，以便在系统和应用程序之间关联数据。  
 
-## <a name="automation-controlmediaoperations-management-suite-overviewicon-automation-controlpng-automation-control"></a>![自动化与控制](media/operations-management-suite-overview/icon-automation-control.png) 自动化与控制
+## <a name="automation--controlmediaoperations-management-suite-overviewicon-automation-controlpng-automation--control"></a>![自动化与控制](media/operations-management-suite-overview/icon-automation-control.png) 自动化与控制
 Azure 自动化通过基于 PowerShell 并在 Azure 云中运行的 [Runbook](../automation/automation-runbook-types.md) 自动执行管理流程。  Runbook 可以访问可通过 PowerShell 进行管理的任何产品或服务，包括 Amazon Web Services (AWS) 等其他云中的资源。  也可在本地数据中心内的服务器上运行 Runbook 以管理本地资源。
 
 Azure 自动化通过 [PowerShell DSC](../automation/automation-dsc-overview.md) 提供配置管理。  可以创建和管理在 Azure 中托管的 DSC 资源，并将其应用到云和本地的系统，从而定义并自动实施其配置。
@@ -58,6 +55,6 @@ Azure 自动化通过 [PowerShell DSC](../automation/automation-dsc-overview.md)
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

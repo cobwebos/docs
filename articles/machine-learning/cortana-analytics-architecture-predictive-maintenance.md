@@ -1,5 +1,5 @@
 ---
-title: "预见性维护的体系结构 | Microsoft Docs"
+title: "使用 Azure 对航天工业进行预见性维护 - Cortana Intelligence 解决方案体系结构 | Microsoft Docs"
 description: "航天工业、实用工具和交通运输预见性维护的 Microsoft Cortana Intelligence 解决方案模板的体系结构图"
 services: cortana-analytics
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
-ms.openlocfilehash: 9a514c6894ca0b0e212922a72188c57be038504d
+ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
+ms.openlocfilehash: 0b79b908537e94af62b59a6135dfc16e2b33fee8
 
 
 ---
@@ -31,6 +31,6 @@ ms.openlocfilehash: 9a514c6894ca0b0e212922a72188c57be038504d
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,16 +12,53 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 01/30/2017
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b8ca8430765ef2377d2ef693a67951cff08534e
+ms.sourcegitcommit: 68655fff239bfd76f93ab9177d161d9534cbb901
+ms.openlocfilehash: 150113dda95ab021dd7ad8696b5886373ba982b8
 
 
 ---
 # <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>SQL 数据仓库中的 Create Table As Select (CTAS)
-Create Table As Select (`CTAS`) 是所提供的最重要的 T-SQL 功能之一。 它是根据 SELECT 语句的输出创建新表的完全并行化操作。 `CTAS` 是创建表副本的最简单快速方法。 你不妨将它视为 `SELECT..INTO` 的增强版本。 本文档提供 `CTAS` 的示例和最佳实践。
+Create Table As Select (`CTAS`) 是所提供的最重要的 T-SQL 功能之一。 它是根据 SELECT 语句的输出创建新表的完全并行化操作。 `CTAS` 是创建表副本的最简单快速方法。 本文档提供 `CTAS` 的示例和最佳实践。
+
+## <a name="selectinto-vs-ctas"></a>SELECT..INTO 与CTAS
+可将 `CTAS` 视为 `SELECT..INTO` 的增强版本。
+
+下面是一个简单 `SELECT..INTO` 语句的示例：
+
+```sql
+SELECT *
+INTO    [dbo].[FactInternetSales_new]
+FROM    [dbo].[FactInternetSales]
+```
+
+在上面的示例中，`[dbo].[FactInternetSales_new]` 将创建为 ROUND_ROBIN 分布表，其中包含聚集列存储索引，因为这是 Azure SQL 数据仓库中的表默认值。
+
+但是，`SELECT..INTO` 不允许在操作过程中更改分布方法或索引类型。 这就是 `CTAS` 的作用所在。
+
+将上述代码转换为 `CTAS` 相当直接：
+
+```sql
+CREATE TABLE [dbo].[FactInternetSales_new]
+WITH
+(
+    DISTRIBUTION = ROUND_ROBIN
+,   CLUSTERED COLUMNSTORE INDEX
+)
+AS
+SELECT  *
+FROM    [dbo].[FactInternetSales]
+;
+```
+
+使用 `CTAS` 可以更改表数据的分布以及表类型。 
+
+> [!NOTE]
+> 如果你只是想要尝试更改 `CTAS` 操作中的索引并且源表经过哈希分布，那么，在保留相同的分布列和数据类型的情况下，`CTAS` 操作的效果最佳。 这可以避免操作期间发生交叉分布数据移动，从而提高效率。
+> 
+> 
 
 ## <a name="using-ctas-to-copy-a-table"></a>使用 CTAS 复制表
 `CTAS` 最常见的用途之一就是创建表副本，使你可以更改 DDL。 例如，如果最初你将表创建为 `ROUND_ROBIN`，现在想要改为在列上分布的表，则可以使用 `CTAS` 来更改分布列。 `CTAS` 还可用于更改数据分区、索引或列类型。
@@ -88,50 +125,19 @@ DROP TABLE FactInternetSales_old;
 ```
 
 > [!NOTE]
-> Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。  为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。  有关统计信息的详细说明，请参阅开发组主题中的[统计信息][统计信息]主题。
+> Azure SQL 数据仓库尚不支持自动创建或自动更新统计信息。  为了获得查询的最佳性能，在首次加载数据或者在数据发生重大更改之后，创建所有表的所有列统计信息非常重要。  有关统计信息的详细说明，请参阅开发主题组中的[统计信息][Statistics]主题。
 > 
 > 
 
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>使用 CTAS 解决不支持的功能
 `CTAS` 还可用于解决以下多种不支持的功能。 这往往是一种经过证实的双赢局面，因为代码不但能够兼容，而且通常可以在 SQL 数据仓库中更快速执行。 这是完全并行化设计的结果。 可以使用 CTAS 解决的方案包括：
 
-* SELECT..INTO
 * UPDATE 中的 ANSI JOIN
 * DELETE 中的 ANSI JOIN
 * MERGE 语句
 
 > [!NOTE]
 > 尽量考虑“CTAS 优先”。 如果你认为可以使用 `CTAS` 解决问题，则它往往就是最佳的解决方法，即使你要因此写入更多的数据。
-> 
-> 
-
-## <a name="selectinto"></a>SELECT..INTO
-你可能会发现 `SELECT..INTO` 出现在解决方案中的多个位置。
-
-下面是 `SELECT..INTO` 语句的一个示例：
-
-```sql
-SELECT *
-INTO    #tmp_fct
-FROM    [dbo].[FactInternetSales]
-```
-
-将上述代码转换为 `CTAS` 相当直接：
-
-```sql
-CREATE TABLE #tmp_fct
-WITH
-(
-    DISTRIBUTION = ROUND_ROBIN
-)
-AS
-SELECT  *
-FROM    [dbo].[FactInternetSales]
-;
-```
-
-> [!NOTE]
-> CTAS 当前需要指定分布列。  如果你不想要尝试更改分布列，并选择与基础表相同的分布列作为避免数据移动的策略，则 `CTAS` 将以最快的速度执行。  如果你正在创建小型表（其性能并非考虑因素），则可以指定 `ROUND_ROBIN` 来避免必须对分布列做出决策。
 > 
 > 
 
@@ -431,14 +437,14 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 有关使用 [CTAS][CTAS] 的详细信息，请参阅 MSDN。 CTAS 是 Azure SQL 数据仓库中最重要的语句之一。 请确保全面了解该语句。
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[部署概述][部署概述]。
+有关更多开发技巧，请参阅[开发概述][development overview]。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-ctas/ctas-results.png
 
 <!--Article references-->
-[部署概述]: sql-data-warehouse-overview-develop.md
-[统计信息]: ./sql-data-warehouse-tables-statistics.md
+[development overview]: sql-data-warehouse-overview-develop.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
@@ -447,6 +453,6 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

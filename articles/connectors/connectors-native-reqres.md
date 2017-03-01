@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 48c9453ac0435a6180f8b322897439bf1964fae9
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: e45b07d709927af64cfba28dfb0d8ee9cb8893b3
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 48c9453ac0435a6180f8b322897439bf1964fae9
 * 从外部 Webhook 事件触发逻辑应用。
 * 从另一个逻辑应用内使用请求和响应操作调用逻辑应用。
 
-若要开始在逻辑应用中使用请求和响应操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要开始在逻辑应用中使用请求和响应操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="use-the-http-request-trigger"></a>使用 HTTP 请求触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。
@@ -109,11 +109,11 @@ HTTP 请求操作仅在由 HTTP 请求触发的工作流中使用时才有效。
 | 正文 |body |响应正文 |
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

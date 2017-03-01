@@ -1,13 +1,26 @@
 ---
+title: "Azure Mobile Engagement 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何深入分析移动应用的使用情况和实时用户细分，以及如何实现区分上下文的推送通知和应用内消息传送。"
+services: mobile-engagement
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: mobile-engagement
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: c9f8493eb39f0c519825cdaa1c06bbb24b0f478f
+ms.sourcegitcommit: 3de3024e93aee7ace0e243eef0beb4008dc50db5
+ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
 
 ---
+
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement 文档
 
-Azure Mobile Engagement 是一个软件即服务 (SaaS) 用户参与平台，可针对应用使用、用户细分提供数据驱动型深入见解，并支持智能推送通知和应用内消息传递。
+了解如何使用 Mobile Engagement 提高移动应用的采用率、保有率和盈利能力。 教程、SDK 和其他文档介绍了如何深入分析应用的使用情况和实时用户细分，以及如何实现区分上下文的推送通知和应用内消息传送。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -194,17 +207,10 @@ Azure Mobile Engagement 是一个软件即服务 (SaaS) 用户参与平台，可
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/mobile-engagement.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure Mobile Engagement 文档 </div>
-    </a>
-</div>
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

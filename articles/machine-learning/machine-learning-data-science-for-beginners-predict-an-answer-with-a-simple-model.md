@@ -1,5 +1,5 @@
 ---
-title: "使用简单模型（回归模型）预测答案 | Microsoft Docs"
+title: "使用简单回归模型预测答案 - Azure | Microsoft Docs"
 description: "“适合初学者的数据科学”视频 4 中的“如何创建简单的回归模型来预测价格”。 包括具有目标数据的线性回归。"
 keywords: "创建模型, 简单的模型, 价格预测, 简单的回归模型"
 services: machine-learning
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
 
 
 ---
@@ -27,9 +27,9 @@ ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
@@ -131,11 +131,10 @@ ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室尝试第一个数据科学实验](machine-learning-create-experiment.md)
-* [获取 Microsoft Azure 上的机器学习的简介](machine-learning-what-is-machine-learning.md)
+* [在 Microsoft Azure 上获取机器学习简介](machine-learning-what-is-machine-learning.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

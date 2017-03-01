@@ -11,12 +11,12 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 01/12/2017
 ms.author: ashmaka
+experiment_id: heidist-experiment1-20170221
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 29385af9183ef2f8431581aaa5fe38e89404d068
-
+ms.sourcegitcommit: 292c9150822363aba3336b1efce579dc5362cb14
+ms.openlocfilehash: 99b3babee9b252b2d741515391295d8b1dc5c747
 
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
@@ -80,13 +80,16 @@ Azure 搜索是一种搜索即服务云解决方案，它将服务器和基础�
 在填充 Azure 搜索索引后，现在可通过将简单的 HTTP 请求与 REST API 或 .NET SDK 结合使用，向服务终结点[发出搜索查询](https://msdn.microsoft.com/library/azure/dn798927.aspx)。
 
 ## <a name="try-it-now-for-free"></a>立即试用（免费！）
-可立即试用 Azure 搜索！ 如果已经有 Azure 帐户，可以[在免费层中预配服务](search-create-service-portal.md)。
+Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)。
 
-如果没有 Azure 帐户，可以尝试免费的 60 分钟会话，无需进行注册。 转到[试用 Azure App Service](http://go.microsoft.com/fwlink/p/?LinkId=618214)，然后选择“Web 应用”。 然后，选择“ASP.NET + Azure 搜索”模板以开始操作。
+如果不是订户，可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可以保留帐户和使用免费的 Azure 服务（如网站）。 你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
+
+也可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月为你提供可用于试用付费版 Azure 服务的信用额度。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO2-->
 
 

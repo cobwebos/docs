@@ -1,5 +1,5 @@
 ---
-title: "将 MongoChef 与具有 MongoDB 协议支持的 Azure DocumentDB 帐户配合使用 | Microsoft Docs"
+title: "将适用于 MongoDB 的 MongoChef 与 Azure DocumentDB 配合使用 | Microsoft Docs"
 description: "了解如何将 MongoChef 与具有 MongoDB 协议支持的 DocumentDB 帐户（目前以预览版提供）配合使用。"
 keywords: mongochef
 services: documentdb
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: b1e73ced8f11c06adc509af355ccf47b616a211b
-ms.openlocfilehash: 41b94580277bc07aad2f122b5db9060e2d7938d8
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 26035ac7827eba384268dde266db2ac13cc30f40
 
 
 ---
@@ -118,6 +118,6 @@ ms.openlocfilehash: 41b94580277bc07aad2f122b5db9060e2d7938d8
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

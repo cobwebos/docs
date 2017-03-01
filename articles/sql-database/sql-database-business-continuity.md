@@ -11,14 +11,14 @@ ms.assetid: 18e5d3f1-bfe5-4089-b6fd-76988ab29822
 ms.service: sql-database
 ms.custom: business continuity
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2016
-ms.author: carlrab;sashan
+ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b2653afe1aeb920ef7e14f3e15501c8541c43219
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 8fefa688ee52395d7dee2f53da12ebc50e84fb8e
 
 
 ---
@@ -38,7 +38,7 @@ SQL 数据库提供若干业务连续性功能，包括自动备份和可选的�
 | 活动异地复制 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |
 
 ### <a name="use-database-backups-to-recover-a-database"></a>使用数据库备份恢复数据库
-SQL 数据库每周自动执行完整数据库备份，每小时自动执行差异数据库备份，每 5 分钟自动执行事务日志备份，防止企业丢失数据。 对于标准和高级服务层中的数据库，这些备份会在本地冗余存储中存储 35 天；对于基本服务层中的数据库，则存储 7 天 - 有关服务层的更多详细信息，请参阅[服务层](sql-database-service-tiers.md)。 如果服务层的保留期不符合企业需求，可[更改服务层](sql-database-scale-up.md)来延长保留期。 完整和差异数据库备份也会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)，以防数据中心中断。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。
+SQL 数据库每周自动执行完整数据库备份，每小时自动执行差异数据库备份，每&5; 分钟自动执行事务日志备份，防止企业丢失数据。 对于标准和高级服务层中的数据库，这些备份会在异地冗余存储中存储 35 天；对于基本服务层中的数据库，则存储 7 天 - 有关服务层的更多详细信息，请参阅[服务层](sql-database-service-tiers.md)。 如果服务层的保留期不符合企业需求，可[更改服务层](sql-database-service-tiers.md)来延长保留期。 完整和差异数据库备份也会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)，以防数据中心中断。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。
 
 如果内置保留期不足以用于应用程序，则可为数据库配置长期保留策略来延长保留期。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。 
 
@@ -59,7 +59,7 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 如需更快速的恢复，请使用[活动异地复制（](sql-database-geo-replication-overview.md)接下来将讨论）。 如果需要恢复 35 天前的数据，请考虑定期将数据库存档到 BACPAC 文件（一种包含数据库架构和关联数据的压缩文件），并存储在 Azure Blob 存储或所选的其他位置中。 有关如何创建事务一致数据库存档的详细信息，请参阅[创建数据库副本](sql-database-copy.md)和[导出数据库副本](sql-database-export.md)。 
 
 ### <a name="use-active-geo-replication-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>使用活动异地复制缩短恢复时间并限制恢复导致的数据丢失
-除了在发生业务中断时使用数据库备份来恢复数据库之外，还可以使用[活动异地复制](sql-database-geo-replication-overview.md)来配置数据库，在所选区域中最多可拥有 4 个可读辅助数据库。 这些辅助数据库使用异步复制机制与主数据库保持同步。 在数据中心中断或应用程序升级期间，此功能可以防止出现业务中断。 活动异地复制还可为地理位置分散的用户提高只读查询的查询性能。
+除了在发生业务中断时使用数据库备份来恢复数据库之外，还可以使用[活动异地复制](sql-database-geo-replication-overview.md)来配置数据库，在所选区域中最多可拥有&4; 个可读辅助数据库。 这些辅助数据库使用异步复制机制与主数据库保持同步。 在数据中心中断或应用程序升级期间，此功能可以防止出现业务中断。 活动异地复制还可为地理位置分散的用户提高只读查询的查询性能。
 
 如果主数据库意外脱机，或者需要脱机维护，可以将辅助数据库快速提升为主数据库（也称为故障转移），并配置应用程序，将它们连接到新提升的主数据库。 进行计划内故障转移时，不会丢失任何数据。 进行计划外故障转移时，由于异步复制的性质使然，最近的事务可能会丢失少量数据。 故障转移之后，可以根据计划或在数据中心重新联机时回复故障。 无论在什么情况下，用户都会经历短暂的停机，并需要重新连接。 
 
@@ -75,6 +75,10 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 * 停机将导致财务责任。
 * 具有很高的数据更改率，而且不接受丢失一小时的数据。
 * 活动异地复制的额外成本低于潜在财务责任和相关业务损失所付出的代价。
+
+>
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
+>
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>在用户或应用程序错误之后恢复数据库
 *人无完人。 用户可能会不小心删除某些数据、无意中删除重要的表，甚至删除整个数据库。 或者，应用程序可能因为自身缺陷，意外以错误数据覆盖正确数据。 
@@ -136,7 +140,7 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 > 
 > 
 
-### <a name="perform-post-failover-recovery-tasks"></a>执行故障转移/恢复后任务
+### <a name="perform-post-failover--recovery-tasks"></a>执行故障转移/恢复后任务
 从任一恢复机制恢复后，都必须执行以下附加任务，用户和应用程序才能重新运行：
 
 * 将客户端和客户端应用程序重定向到新服务器和还原的数据库
@@ -154,6 +158,6 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

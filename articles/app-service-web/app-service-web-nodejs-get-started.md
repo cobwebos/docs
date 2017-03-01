@@ -1,5 +1,5 @@
 ---
-title: "开始在 Azure 应用服务中使用 Node.js Web 应用 | Microsoft Docs"
+title: "开发适用于 Azure 应用服务的 Node.js Web 应用 | Microsoft 文档"
 description: "学习如何将 Node.js 应用程序部署到 Azure App Service 中的 Web 应用。"
 services: app-service\web
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 88405a9e67eb748acc9564022283004b5ebfcf48
-ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
+ms.sourcegitcommit: 763e956004f460f2f6d0fa7325a6f6b5fca3fd5a
+ms.openlocfilehash: ab16eb45f86f81af719fcd0a4b65f19576f01f01
 
 
 ---
-# <a name="get-started-with-nodejs-web-apps-in-azure-app-service"></a>在 Azure App Service 中 Node.js Web 应用入门
+# <a name="develop-nodejs-web-apps-for-azure-app-service"></a>开发适用于 Azure 应用服务的 Node.js Web 应用
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 本教程说明如何创建一个简单的 [Node.js] 应用程序，然后通过 cmd.exe 或 bash 等命令行环境将它部署到 [Azure 应用服务]。 本教程中的说明适用于任何能够运行 Node.js 的操作系统。
@@ -45,7 +45,7 @@ ms.openlocfilehash: 63210a5539d1e5e5b7d1f5a60048d507e53038a5
 * 一个 Microsoft Azure 帐户。 如果没有帐户，可以[注册免费试用帐户]，或者[激活 Visual Studio 订户权益]。
 
 > [!NOTE]
-> 无需 Azure 帐户即可 [试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
+> 无需 Azure 帐户即可 [试用应用服务](https://azure.microsoft.com/try/app-service/) 。 创建入门级应用并使用长达一小时 — 无需信用卡，也无需做出承诺。
 > 
 > 
 
@@ -303,6 +303,6 @@ Kudu 部署引擎按以下顺序确定要使用哪个 Node.js 引擎：
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: c796550f4e47793285ba7d97cbb866c3820f32cf
+ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
+ms.openlocfilehash: 27f8d329c0dddd21cca7e3631594ab326f3610b2
 
 
 ---
@@ -27,6 +27,7 @@ ms.openlocfilehash: c796550f4e47793285ba7d97cbb866c3820f32cf
 
 **我在添加或更改规则后未立即看到成员身份变化，这是为什么？**<br/>专用成员身份评估定期在异步后台进程中执行。 该过程要花费多长时间取决于目录中的用户数，以及应用规则后创建的组的大小。 通常，用户数较少的目录在几分钟内就能看到组成员身份变化。 而具有大量用户的目录可能需要 30 分钟或更长时间才能填充信息。
 
+### <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
@@ -36,7 +37,6 @@ ms.openlocfilehash: c796550f4e47793285ba7d97cbb866c3820f32cf
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

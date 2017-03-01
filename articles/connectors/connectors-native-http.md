@@ -4,7 +4,7 @@ description: "使用属性的 HTTP 操作的概述"
 services: 
 documentationcenter: 
 author: jeffhollan
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 522624ccb14d295359ff5585e1b46b618b45c305
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: d3514dad84bea024ad6215711877a9784a8d8ffd
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 522624ccb14d295359ff5585e1b46b618b45c305
 * 创建在你管理的网站出现故障时激活（触发）的逻辑应用工作流。
 * 通过 HTTP 向任意终结点通信以将工作流扩展到其他服务中。
 
-若要开始在逻辑应用中使用 HTTP 操作，请参阅[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+若要开始在逻辑应用中使用 HTTP 操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
 
 ## <a name="use-the-http-trigger"></a>使用 HTTP 触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。
@@ -125,7 +125,7 @@ HTTP 触发器按重复间隔对 HTTP 终结点进行调用。 默认情况下�
 | 状态代码 |int |HTTP 状态代码 |
 
 ## <a name="authentication"></a>身份验证
-Azure App Service 的逻辑应用功能允许对 HTTP 终结点使用不同类型的身份验证。 可将此身份验证用于 **HTTP**、**[HTTP + Swagger](connectors-native-http-swagger.md)** 和 **[HTTP Webhook](connectors-native-webhook.md)** 连接器。 可配置以下类型的身份验证：
+通过逻辑应用功能可对 HTTP 终结点使用不同类型的身份验证。 可将此身份验证用于 **HTTP**、**[HTTP + Swagger](connectors-native-http-swagger.md)** 和 **[HTTP Webhook](connectors-native-webhook.md)** 连接器。 可配置以下类型的身份验证：
 
 * [基本身份验证](#basic-authentication)
 * [客户端证书身份验证](#client-certificate-authentication)
@@ -209,11 +209,11 @@ Azure AD OAuth 身份验证需要以下身份验证对象。 * 表示它是必�
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

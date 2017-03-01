@@ -13,18 +13,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2016
+ms.date: 02/27/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: d220b3b8189a22e6450897fd5e7a865725051a8f
-ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
+ms.sourcegitcommit: 8078f9822b392af09e00e9bf1e448e0a51994e11
+ms.openlocfilehash: 15707a71500424e4776adc80491af95b57bea222
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="automate-azure-documentdb-account-management-using-azure-powershell"></a>使用 Azure Powershell 自动管理 Azure DocumentDB 帐户
 > [!div class="op_single_selector"]
 > * [Azure 门户](documentdb-create-account.md)
-> * [Azure CLI 和 ARM](documentdb-automation-resource-manager-cli.md)
+> * [Azure CLI 1.0](documentdb-automation-resource-manager-cli-nodejs.md)
+> * [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 > * [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 
 以下指南介绍了使用 Azure Powershell 自动管理 DocumentDB 数据库帐户的命令。 还介绍了用于管理[多区域数据库帐户][scaling-globally]中的帐户密钥和故障转移优先级的命令。 更新数据库帐户可以修改一致性策略以及添加/删除区域。 对于 DocumentDB 数据库帐户的跨平台管理，可使用 [Azure CLI](documentdb-automation-resource-manager-cli.md)、[资源提供程序 REST API][rp-rest-api] 或 [Azure 门户](documentdb-create-account.md)。
@@ -43,12 +45,14 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 此命令可创建 DocumentDB 数据库帐户。 可以将新数据库帐户配置为具有特定[一致性策略](documentdb-consistency-levels.md)的单区域或[多区域][scaling-globally]。
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
+    $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -PropertyObject $DocumentDBProperties
     
 * `<write-region-location>` 数据库帐户的写入区域位置名称。 此位置的故障转移优先级值必须为 0。 每个数据库帐户必须只有一个写入区域。
 * `<read-region-location>` 数据库帐户的读取区域位置名称。 此位置的故障转移优先级值必须大于 0。 每个数据库帐户可以有多个读取区域。
+* `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [DocumentDB 防火墙支持](documentdb-firewall-support.md)
 * `<default-consistency-level>` DocumentDB 帐户的默认一致性级别。 有关详细信息，请参阅 [DocumentDB 中的一致性级别](documentdb-consistency-levels.md)。
 * `<max-interval>` 与有限过期一致性一起使用时，此值表示允许的过期时间（以秒为单位）。 此值的接受范围为 1 - 100。
 * `<max-staleness-prefix>` 与有限过期一致性一起使用时，此值表示允许的过期请求数。 此值的接受范围为 1 – 2,147,483,647。
@@ -59,8 +63,9 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 示例： 
 
     $locations = @(@{"locationName"="West US"; "failoverPriority"=0}, @{"locationName"="East US"; "failoverPriority"=1})
+    $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -PropertyObject $DocumentDBProperties
 
 ### <a name="notes"></a>说明
@@ -75,13 +80,15 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 > 此命令可添加和删除区域，但不可修改故障转移优先级。 若要修改故障转移优先级，请参阅[以下内容](#modify-failover-priority-powershell)。
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
+    $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -PropertyObject $DocumentDBProperties
     
 * `<write-region-location>` 数据库帐户的写入区域位置名称。 此位置的故障转移优先级值必须为 0。 每个数据库帐户必须只有一个写入区域。
 * `<read-region-location>` 数据库帐户的读取区域位置名称。 此位置的故障转移优先级值必须大于 0。 每个数据库帐户可以有多个读取区域。
 * `<default-consistency-level>` DocumentDB 帐户的默认一致性级别。 有关详细信息，请参阅 [DocumentDB 中的一致性级别](documentdb-consistency-levels.md)。
+* `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [DocumentDB 防火墙支持](documentdb-firewall-support.md)
 * `<max-interval>` 与有限过期一致性一起使用时，此值表示允许的过期时间（以秒为单位）。 此值的接受范围为 1 - 100。
 * `<max-staleness-prefix>` 与有限过期一致性一起使用时，此值表示允许的过期请求数。 此值的接受范围为 1 – 2,147,483,647。
 * `<resource-group-name>` 新 DocumentDB 数据库帐户所属的 [Azure 资源组][azure-resource-groups]名称。
@@ -91,8 +98,9 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 示例： 
 
     $locations = @(@{"locationName"="West US"; "failoverPriority"=0}, @{"locationName"="East US"; "failoverPriority"=1})
+    $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -PropertyObject $DocumentDBProperties
 
 ## <a name="a-iddelete-documentdb-account-powershella-delete-a-documentdb-database-account"></a><a id="delete-documentdb-account-powershell"></a>删除 DocumentDB 数据库帐户
@@ -184,8 +192,3 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 [azure-resource-groups]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups
 [azure-resource-tags]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags
 [rp-rest-api]: https://docs.microsoft.com/en-us/rest/api/documentdbresourceprovider/
-
-
-<!--HONumber=Nov16_HO5-->
-
-

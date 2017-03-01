@@ -1,6 +1,6 @@
 ---
-title: "Azure 虚拟网络 (VNet) 概述"
-description: "了解 Azure 中的虚拟网络 (VNet)。"
+title: "Azure 虚拟网络 | Microsoft 文档"
+description: "了解 Azure 中的虚拟网络。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e08966567a8545c1b37ec856f836b976b5a9ab2a
+ms.sourcegitcommit: 83f9a2716086730f22527a9321b6b111f6e69907
+ms.openlocfilehash: 9e794e89e5ecf4633c2e6312c69487bfa0c7795c
 
 
 ---
-# <a name="virtual-network-overview"></a>虚拟网络概述
-Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。  它是对专用于你的订阅的 Azure 云进行的逻辑隔离。 你可以完全控制该网络中的 IP 地址块、DNS 设置、安全策略和路由表。 你还可以进一步将 VNet 细分成各个子网，并启动 Azure IaaS 虚拟机 (VM) 和/或 [云服务（PaaS 角色实例）](../cloud-services/cloud-services-choose-me.md)。 此外，也可以使用 Azure 中提供的[连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site)之一，将虚拟网络连接到本地网络。 实际上，你可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
+# <a name="virtual-networks"></a>虚拟网络
+Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。  它是对专用于你的订阅的 Azure 云进行的逻辑隔离。 你可以完全控制该网络中的 IP 地址块、DNS 设置、安全策略和路由表。 你还可以进一步将 VNet 细分成各个子网，并启动 Azure IaaS 虚拟机 (VM) 和/或 [云服务（PaaS 角色实例）](../cloud-services/cloud-services-choose-me.md)。 此外，也可以使用 Azure 中提供的[连接选项](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)之一，将虚拟网络连接到本地网络。 实际上，你可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
 
 若要更好地了解 VNet，请看下图，其中显示了简化的本地网络。
 
@@ -37,21 +37,19 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。  它�
 
 > [!NOTE]
 > 在 Azure 中有两种部署模式：经典（也称为服务管理）和 Azure 资源管理器 (ARM)。 不能将经典 VNet 添加到地缘组，或创建为区域 VNet。 如果你在地缘组中有一个 VNet，建议你 [将它迁移到区域 VNet](virtual-networks-migrate-to-regional-vnet.md)。
-> 
-> 
+>
 
-## <a name="virtual-network-benefits"></a>虚拟网络优点
+## <a name="benefits"></a>优点
 * **隔离**。 VNet 彼此之间完全隔离。 这使你可以为使用相同 CIDR 地址块的开发、测试和生产创建单独的网络。
 * **访问公共 Internet**。 默认情况下，VNet 中的所有 IaaS VM 和 PaaS 角色实例都可以访问公共 Internet。 可以通过使用网络安全组 (NSG) 来控制访问。
 * **访问 VNet 中的 VM**。 PaaS 角色实例和 IaaS VM 可以在同一虚拟网络中启动，并可使用专用 IP 地址互相进行连接，即使它们位于不同子网，也无需配置网关或使用公共 IP 地址。
-* **名称解析**。 Azure 为部署在 VNet 中的 IaaS VM 和 PaaS 角色实例提供内部名称解析。 你还可以部署自己的 DNS 服务器，并将 VNet 配置为使用这些服务器。
+* **名称解析**。 Azure 为部署在 VNet 中的 IaaS VM 和 PaaS 角色实例提供[内部名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 你还可以部署自己的 DNS 服务器，并将 VNet 配置为使用这些服务器。
 * **安全性**。 进出虚拟网络的流量以及 VNet 中的 PaaS 角色实例都可使用网络安全组进行控制。
-* **连接**。 可使用网络网关或 VNet 对等互连使 VNet 彼此之间的相互连接。 可通过站点到站点 VPN 网络或 Azure ExpressRoute 将 VNet 连接到本地数据中心。 若要了解站点到站点 VPN 连接的详细信息，请访问[关于 VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site). 若要了解有关 ExpressRoute 的详细信息，请访问 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。 若要了解 VNet 对等互连的详细信息，请参阅 [VNet 对等互连](virtual-network-peering-overview.md)。
-  
+* **连接**。 可使用网络网关或 VNet 对等互连使 VNet 彼此之间的相互连接。 可通过站点到站点 VPN 网络或 Azure ExpressRoute 将 VNet 连接到本地数据中心。 若要了解站点到站点 VPN 连接的详细信息，请访问[关于 VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections). 若要了解有关 ExpressRoute 的详细信息，请访问 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。 若要了解 VNet 对等互连的详细信息，请参阅 [VNet 对等互连](virtual-network-peering-overview.md)。
+
   > [!NOTE]
   > 请确保在将任何 IaaS VM 或 PaaS 角色实例部署到 Azure 环境之前创建 VNet。 基于 ARM 的 VM 需要 VNet，如果你未指定现有 VNet，Azure 将创建其 CIDR 地址块可能会与本地网络冲突的默认 VNet。 使你无法将 VNet 连接到本地网络。
-  > 
-  > 
+  >
 
 ## <a name="subnets"></a>子网
 子网是 VNet 中的一系列 IP 地址，你可以将 VNet 划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 你还可以为子网配置路由表和 NSG。
@@ -69,7 +67,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。  它�
 
 若要了解有关 Azure 中的负载平衡的详细信息，请访问 [负载平衡器概述](../load-balancer/load-balancer-overview.md)。
 
-## <a name="network-security-group-nsg"></a>网络安全组 (NSG)
+## <a name="network-security-groups-nsg"></a>网络安全组 (NSG)
 可以创建 NSG 来控制对网络接口 (NIC)、VM 和子网的入站和出站访问。 每个 NSG 包含一条或多条规则，这些规则指定基于源 IP 地址、源端口、目标 IP 地址和目标端口是批准还是拒绝流量。 若要了解有关 NSG 的详细信息，请访问 [什么是网络安全组](virtual-networks-nsg.md)。
 
 ## <a name="virtual-appliances"></a>虚拟设备
@@ -93,7 +91,6 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。  它�
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

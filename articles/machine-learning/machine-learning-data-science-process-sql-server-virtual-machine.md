@@ -1,6 +1,6 @@
 ---
-title: "从 SQL Azure 处理数据 | Microsoft Docs"
-description: "处理 SQL Azure 中的数据"
+title: "浏览 Azure 上 SQL Server 虚拟机中的数据 | Microsoft Docs"
+description: "在 Azure 上的 SQL Server 虚拟机中浏览数据和生成功能"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 01/23/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
-ms.openlocfilehash: 3e565090d751344a8ad3efd6ebdc3f26d5ee55ec
+ms.sourcegitcommit: 0813611f581a68efb8f09a1e041cfbe429bf0c5c
+ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
 
 
 ---
@@ -76,7 +76,7 @@ ms.openlocfilehash: 3e565090d751344a8ad3efd6ebdc3f26d5ee55ec
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
 ### <a name="a-namesql-binningfeatureabinning-feature-generation"></a><a name="sql-binningfeature"></a>生成装箱功能
-下面的示例演示如何通过将可用作函数的数值列装箱（使用 5 箱），从而生成装箱函数：
+下面的示例演示如何通过将可用作函数的数值列装箱（使用&5; 箱），从而生成装箱函数：
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
@@ -150,6 +150,6 @@ Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

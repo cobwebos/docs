@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f073ae70ad3b398a29f874fda35aa4e6299394d1
+ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
+ms.openlocfilehash: 6912357da797a72f8e9cb9ebf700f56d9cfcc696
 
 
 ---
@@ -192,7 +192,7 @@ ms.openlocfilehash: f073ae70ad3b398a29f874fda35aa4e6299394d1
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“用户名”文本框中，键入“BrittaSimon”。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
 
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
@@ -206,7 +206,7 @@ ms.openlocfilehash: f073ae70ad3b398a29f874fda35aa4e6299394d1
    
     d.单击“下一步”。 选择“用户”作为“角色”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -277,6 +277,6 @@ Showpad 支持实时预配。 已在**[配置 Azure AD 单一登录](#configurin
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

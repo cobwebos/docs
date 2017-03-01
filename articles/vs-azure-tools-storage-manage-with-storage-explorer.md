@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a538ceef7d9aeaca0e6f54443f3a5dabd06c22a1
-ms.openlocfilehash: 9914051f5f509a657e91aa66c1efb99ceb9f4817
+ms.sourcegitcommit: 0550f5fecd83ae9dc0acb2770006156425baddf3
+ms.openlocfilehash: 0617d2e668fe719d6002254b6d13ca729887c0e3
 
 
 ---
 # <a name="getting-started-with-storage-explorer-preview"></a>存储资源管理器（预览版）入门
 ## <a name="overview"></a>概述
-Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、OS X 和 Linux 上轻松处理 Azure 存储数据。 在本文中，你将了解如何通过各种方式连接到 Azure 存储帐户并对其进行管理。
+Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 本文介绍如何通过各种方式连接到 Azure 存储帐户并对其进行管理。
 
 ![Microsoft Azure 存储资源管理器（预览版）][15]
 
@@ -34,7 +34,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 * [连接到 Azure 订阅](#connect-to-an-azure-subscription) - 管理属于 Azure 订阅的存储资源。
 * [使用本地开发存储](#work-with-local-development-storage) - 使用 Azure 存储模拟器管理本地存储。
-* [连接外部存储](#attach-or-detach-an-external-storage-account) - 使用存储帐户的帐户名称、密钥和终结点管理属于另一 Azure 订阅或区域 Azure 云的存储资源。
+* [连接外部存储](#attach-or-detach-an-external-storage-account) - 使用存储帐户的名称、密钥和终结点管理属于另一 Azure 订阅或区域 Azure 云的存储资源。
 * [使用 SAS 附加存储帐户](#attach-storage-account-using-sas) - 使用 SAS 管理属于另一 Azure 订阅的存储资源。
 * [使用 SAS 附加服务](#attach-service-using-sas) - 使用 SAS 管理属于另一 Azure 订阅的特定存储服务（Blob 容器、队列或表）。
 
@@ -47,14 +47,14 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 1. 在存储资源管理器（预览版）中，选择“Azure 帐户设置”。
 
     ![Azure 帐户设置][0]
-2. 现在，左窗格中会显示已登录的所有 Microsoft 帐户。 若要连接到另一个帐户，请选择“添加帐户”，然后按对话框中的说明，使用至少与一个活动 Azure 订阅相关联的 Microsoft 帐户登录。
+2. 左窗格显示已登录的所有 Microsoft 帐户。 若要连接到另一个帐户，请选择“添加帐户”，然后按对话框中的说明，使用至少与一个活动 Azure 订阅相关联的 Microsoft 帐户登录。
 > [!NOTE]
 >当前不支持通过登录连接区域 Azure（如 Black Forest Azure、Fairfax Azure 和 Mooncake Azure）。 请参阅**连接或分离外部存储帐户**部分，了解如何连接区域 Azure 存储帐户。
 
-3. 使用 Microsoft 帐户成功登录后，左窗格中将填充与该帐户关联的 Azure 订阅。 选择要使用的 Azure 订阅，然后选择“应用”。 （选择“所有订阅”会选择所有列出的 Azure 订阅，或者一个都不选。）
+3. 使用 Microsoft 帐户成功登录后，左窗格将填充与该帐户关联的 Azure 订阅。 选择要使用的 Azure 订阅，然后选择“应用”。 （选择“所有订阅”会选择所有列出的 Azure 订阅，或者一个都不选。）
 
     ![选择 Azure 订阅][3]
-4. 现在，左窗格会显示与所选 Azure 订阅关联的存储帐户。
+4. 左窗格会显示与所选 Azure 订阅关联的存储帐户。
 
     ![选择的 Azure 订阅][4]
 
@@ -69,10 +69,10 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 1. 在存储资源管理器（预览版）的左窗格中，展开“(本地和附加存储)” > “存储帐户” > “(开发)”节点。
 
     ![本地开发节点][21]
-2. 如果你尚未安装 Azure 存储模拟器，系统会提示你按照信息栏中的说明进行安装。 如果该信息栏已显示，请选择“下载最新版本”，然后安装模拟器。
+2. 如果尚未安装 Azure 存储模拟器，系统会提示用户按照信息栏中的说明进行安装。 如果该信息栏已显示，请选择“下载最新版本”，然后安装模拟器。
 
     ![“下载 Azure 存储模拟器”提示][22]
-3. 安装模拟器以后，即可创建和使用本地 Blob、队列和表。 若要了解如何使用每个存储帐户类型，请在下面选择相应的链接：
+3. 安装模拟器以后，即可创建和使用本地 Blob、队列和表。 若要了解如何使用每个存储帐户类型，请选择下面的一个链接：
 
    * [管理 Azure Blob 存储资源](vs-azure-tools-storage-explorer-blobs.md)
    * 管理 Azure 文件共享存储资源 - *即将推出*
@@ -138,7 +138,7 @@ Azure 订阅管理员可以临时通过 [SAS（共享访问签名）](storage/st
 2. 在“共享访问签名”对话框中，指定要授予该帐户的时间范围和权限，然后选择“创建”。
 
     ![“获取 SAS”对话框][14]
-3. 此时会出现第二个“共享访问签名”对话框，其中显示了 SAS。 选择“连接字符串”旁边的“复制”，将其复制到剪贴板。 选择“关闭”以关闭对话框。
+3. 第二个“共享访问签名”对话框会显示 SAS。 选择“连接字符串”旁边的“复制”，将其复制到剪贴板。 选择“关闭”以关闭对话框。
 
 ### <a name="attach-to-the-shared-account-using-the-sas"></a>使用 SAS 附加到共享帐户
 1. 在存储资源管理器（预览版）中，选择“连接到 Azure 存储”。
@@ -148,7 +148,7 @@ Azure 订阅管理员可以临时通过 [SAS（共享访问签名）](storage/st
 
    ![“连接到 Azure 存储”对话框][24]
 3. 在“连接摘要”对话框中检查信息。 如果想要更改任何设置，请选择“返回”并重新输入所需的设置。 完成后，选择“连接”。
-4. 附加完以后，在显示存储帐户时，会将“(SAS)”文本追加到你所提供的帐户名称后面。
+4. 附加完以后，在显示存储帐户时，会将“(SAS)”文本追加到所提供的帐户名称后面。
 
    ![使用 SAS 附加到帐户的结果][17]
 
@@ -171,7 +171,7 @@ Azure 订阅管理员可以临时通过 [SAS（共享访问签名）](storage/st
 
    ![“连接到 Azure 存储”对话框][24]
 3. 在“连接摘要”对话框中检查信息。 如果想要更改任何设置，请选择“返回”并重新输入所需的设置。 完成后，选择“连接”。
-4. 附加完成后，新附加的服务将显示在“(服务 SAS)”节点下。
+4. 附加完成后，新附加的服务显示在“(服务 SAS)”节点下。
 
    ![使用 SAS 附加到共享服务的结果][20]
 
@@ -210,6 +210,6 @@ Azure 订阅管理员可以临时通过 [SAS（共享访问签名）](storage/st
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

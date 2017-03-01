@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 79adce1f3fb9a33e60159af72e83118dd88e0946
-ms.openlocfilehash: ecddf255f4b4750bf67f2689b0274c04f8ec54b7
+ms.sourcegitcommit: bb078183b24cd5c5172b48f1135eced061220cf5
+ms.openlocfilehash: 3c0c00bf9e4380a682ff1e155fb6d9a3826f4b00
 
 
 ---
@@ -70,7 +70,7 @@ ms.openlocfilehash: ecddf255f4b4750bf67f2689b0274c04f8ec54b7
 3. 设置身份验证：
 
    * 在“身份验证和端口”中选择对主服务器进行身份验证的方式以及身份验证端口。 如果使用证书，请单击“选择证书”以选择一个证书。 如果主服务器和恢复 Hyper-V 主机位于同一个域或受信任的域中，请使用 Kerberos。 对于不同域或工作组部署使用证书。
-   * 在“授权和存储”中，允许**任何**已经过身份验证的（主）服务器将复制数据发送到这个副本服务器。 
+   * 在“授权和存储”中，允许**任何**已经过身份验证的（主）服务器将复制数据发送到这个副本服务器。
 
      ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
    * 运行 **netsh http show servicestate** 检查是否针对指定的协议/端口运行了侦听器：  
@@ -133,11 +133,9 @@ ms.openlocfilehash: ecddf255f4b4750bf67f2689b0274c04f8ec54b7
 * [将 VMM 云中的 Hyper-V VM 复制到 Azure](site-recovery-vmm-to-azure.md)
 * [将 Hyper-V VM 复制（不使用 VMM）到 Azure](site-recovery-hyper-v-site-to-azure.md)
 * [在 VMM 站点之间复制 Hyper-V VM](site-recovery-vmm-to-vmm.md)
-* [使用 SAN 在 VMM 站点之间复制 Hyper-V VM](site-recovery-vmm-san.md)
-* [在单个 VMM 服务器上复制 hyper-V VM](site-recovery-single-vmm.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

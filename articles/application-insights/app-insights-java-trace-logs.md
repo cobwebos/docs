@@ -1,21 +1,21 @@
 ---
-title: "在 Application Insights 中浏览 Java 跟踪日志"
+title: "在 Azure Application Insights 中浏览 Java 跟踪日志 | Microsoft Docs"
 description: "在 Application Insights 中搜索 Log4J 或 Logback 跟踪"
 services: application-insights
 documentationcenter: java
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 12/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
+ms.sourcegitcommit: 086091bb3be6659436ec8e371acbe4b8e86bfacb
+ms.openlocfilehash: 3ef5f6240d7e4704118b86fb0cfee8cf502859ff
 
 
 ---
@@ -39,6 +39,8 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
 
 *Logback*
 
+```XML
+
     <dependencies>
        <dependency>
           <groupId>com.microsoft.azure</groupId>
@@ -46,8 +48,11 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
 *Log4J v2.0*
+
+```XML
 
     <dependencies>
        <dependency>
@@ -56,8 +61,11 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
 *Log4J v1.2*
+
+```XML
 
     <dependencies>
        <dependency>
@@ -66,6 +74,7 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
 #### <a name="if-youre-using-gradle"></a>如果使用 Gradle...
 如果项目已设置为使用 Gradle 进行生成，请将以下代码行之一添加到 build.gradle 文件中的 `dependencies` 组。
@@ -74,15 +83,22 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
 
 **Logback**
 
+```
+
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '1.0.+'
+```
 
 **Log4J v2.0**
 
+```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '1.0.+'
+```
 
 **Log4J v1.2**
 
+```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '1.0.+'
+```
 
 #### <a name="otherwise-"></a>否则...
 下载并提取相应的追加器，然后将相应的库添加到项目：
@@ -98,15 +114,19 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
 
 *Logback*
 
+```XML
+
     <appender name="aiAppender" 
       class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
     </appender>
     <root level="trace">
       <appender-ref ref="aiAppender" />
     </root>
-
+```
 
 *Log4J v2.0*
+
+```XML
 
     <Configuration packages="com.microsoft.applicationinsights.Log4j">
       <Appenders>
@@ -118,9 +138,11 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
         </Root>
       </Loggers>
     </Configuration>
-
+```
 
 *Log4J v1.2*
+
+```XML
 
     <appender name="aiAppender" 
          class="com.microsoft.applicationinsights.log4j.v1_2.ApplicationInsightsAppender">
@@ -129,26 +151,27 @@ ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
       <priority value ="trace" />
       <appender-ref ref="aiAppender" />
     </root>
+```
 
 Application Insights 追加器可由配置的任何记录器（而不一定是根记录器）引用（如上面的代码示例所示）。
 
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>在 Application Insights 门户中浏览跟踪
-将项目配置为向 Application Insights 发送跟踪后，可以在 Application Insights 门户的[搜索][诊断]边栏选项卡中查看和搜索这些跟踪。
+将项目配置为向 Application Insights 发送跟踪后，可以在 Application Insights 门户的[搜索][diagnostic]边栏选项卡中查看和搜索这些跟踪。
 
 ![在 Application Insights 门户中打开“搜索”](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
 ## <a name="next-steps"></a>后续步骤
-[诊断搜索][诊断]。
+[诊断搜索][diagnostic]
 
 <!--Link references-->
 
-[诊断]: app-insights-diagnostic-search.md
+[diagnostic]: app-insights-diagnostic-search.md
 [java]: app-insights-java-get-started.md
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

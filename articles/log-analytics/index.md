@@ -1,9 +1,21 @@
 ---
-layout: LandingPage
+title: "Azure Log Analytics 文档 - 教程和 API 参考 | Microsoft 文档"
 description: "了解如何使用 Log Analytics 收集及分析云与本地环境中的资源生成的数据，不管这些资源的实际位置在哪里。"
+services: log-analytics
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: log-analytics
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: edbf9890b63219e7d87256be3600a1d41c87e295
-ms.openlocfilehash: 31726ed708006d504eea1e948561c108d39622f2
+ms.sourcegitcommit: b44e02d3e22722c05adce10c3b527adf9be20f00
+ms.openlocfilehash: 9d5d1ada86a2cb1b6f6f70d9c662708f81b5bcc6
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -13,7 +25,7 @@ ms.openlocfilehash: 31726ed708006d504eea1e948561c108d39622f2
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/log-analytics/log-analytics-overview">
+      <a href="/azure/log-analytics/log-analytics-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -84,18 +96,19 @@ ms.openlocfilehash: 31726ed708006d504eea1e948561c108d39622f2
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/loganalytics">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li> 
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/log-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Log Analytics 文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT 中心度量值 | Microsoft Docs"
+title: "使用指标监视 Azure IoT 中心 | Microsoft Docs"
 description: "如何使用 Azure IoT 中心度量值评估和监视 IoT 中心的总体运行状况。"
 services: iot-hub
 documentationcenter: 
@@ -12,43 +12,85 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/22/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 689e3a07fd9bdd82d8c57cbe714562a780a14714
+ms.sourcegitcommit: 3f3ff3d196e9c640e9bd7cf01f9f1218c774ec6b
+ms.openlocfilehash: c06c43d430760a56d08dc0c2f9d158f4124db6d3
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="iot-hub-metrics"></a>IoT 中心度量值
-IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure IoT 资源状态。 通过 IoT 中心度量值，可评估 IoT 中心服务及其所连接的设备的总体运行状况。 面向用户的统计信息非常重要，因为它们可以帮助你了解其 IoT 中心的情况，帮助你在不联系 Azure 支持人员的情况下解决根本问题。
+IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure IoT 资源状态。 通过 IoT 中心度量值，可评估 IoT 中心服务及其所连接的设备的总体运行状况。 面向用户的统计信息非常重要，因为它们可以帮助了解 IoT 中心的情况，并可以帮助在不联系 Azure 支持人员的情况下解决根本问题。
 
-可从 Azure 门户启用 IoT 中心度量值。
+默认启用度量值。 可在 Azure 门户中查看 IoT 中心度量值。
 
-## <a name="how-to-enable-iot-hub-metrics"></a>如何启用 IoT 中心度量值
+## <a name="how-to-view-iot-hub-metrics"></a>如何查看 IoT 中心度量值
 1. 创建 IoT 中心。 有关如何创建 IoT 中心的说明，请参阅[入门][lnk-get-started]指南。
-2. 打开 IoT 中心的边栏选项卡。 在其中单击“**诊断**”。
+2. 打开 IoT 中心的边栏选项卡。 在此处单击“指标”。
    
     ![][1]
-3. 将状态设置为“开”并选择用于存储诊断数据的 Azure 存储帐户，从而配置诊断。 检查“**度量**”，然后按“**保存**”。 请注意，必须提前创建 Azure 存储帐户，并且需要单独为存储付费。 你还可以选择将诊断数据发送到事件中心终结点。
+3. 在“度量值”边栏选项卡中，可查看 IoT 中心的度量值并创建度量值的自定义视图。 单击“诊断设置”，即可选择将指标数据发送到事件中心终结点或 Azure 存储帐户。
    
     ![][2]
-4. 设置诊断后，返回到“**概述**”IoT 中心边栏选项卡。 边栏选项卡的“**监视**”部分中填充了度量值信息。 单击图表打开度量值窗格，可以在此处查看 IoT 中心的度量值信息摘要。 可以编辑图表中显示的度量值的选择并配置基于度量值的警报。
-   
-    ![][3]
 
 ## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT 中心度量值及其用法
 IoT 中心提供了多个度量值，使你可以大致了解中心的运行状况以及已连接的设备总数。 可以结合多个度量值的信息，更清楚地了解 IoT 中心的状态。 下表描述了每个 IoT 中心所跟踪的度量值，以及每个度量值与 IoT 中心总体状态的关联。
 
-| 度量值 | 度量值说明 | 度量值用途 |
-| --- | --- | --- |
-| d2c.telemetry.ingress.allProtocol |所有设备上发送的消息数目 |有关消息发送操作的概述数据 |
-| d2c.telemetry.ingress.success |成功传入 IoT 中心的消息总数 |成功传入 IoT 中心的消息的概述 |
-| c2d.commands.egress.complete.success |接收设备在所有设备上完成的所有命令消息计数 |结合有关放弃或拒绝的度量值，概述了云到设备消息的总体成功率 |
-| c2d.commands.egress.abandon.success |接收设备在所有设备上成功放弃的消息总数 |如果消息被放弃的频率超出预期，则突显潜在问题 |
-| c2d.commands.egress.reject.success |接收设备在所有设备上成功拒绝的消息总数 |如果消息被拒绝的频率超出预期，则突显潜在问题 |
-| devices.totalDevices |向 IoT 中心注册的设备的平均数目、最小数目和最大数目 |已注册到 IoT 中心的设备的数目 |
-| devices.connectedDevices.allProtocol |同时连接的设备的平均数目、最小数目和最大数目 |已连接到 IoT 中心的设备数概述 |
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|d2c.telemetry.ingress.allProtocol|遥测消息发送尝试次数|计数|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|
+|d2c.telemetry.ingress.success|已发送的遥测消息数|计数|总计|成功发送到 IoT 中心的、设备到云的遥测消息数|
+|c2d.commands.egress.complete.success|完成的命令数|计数|总计|设备已成功完成的云到设备命令的数目|
+|c2d.commands.egress.abandon.success|放弃的命令数|计数|总计|设备放弃的云到设备命令的数目|
+|c2d.commands.egress.reject.success|拒绝的命令数|计数|总计|设备拒绝的云到设备命令的数目|
+|devices.totalDevices|设备总数|计数|总计|已注册到 IoT 中心的设备数目|
+|devices.connectedDevices.allProtocol|已连接的设备|计数|总计|已连接到 IoT 中心的设备数目|
+|d2c.telemetry.egress.success|发送的遥测消息数|计数|总计|已成功将消息写入到终结点的次数（总数）|
+|d2c.telemetry.egress.dropped|丢弃的消息数|计数|总计|因为与任何路由都不匹配并且回退路由被禁用而被丢弃的消息的数目|
+|d2c.telemetry.egress.orphaned|孤立的消息数|计数|总计|不匹配任何路由（包括回退路由）的消息计数|
+|d2c.telemetry.egress.invalid|无效的消息数|计数|总计|由于与终结点不兼容而未传递的消息计数|
+|d2c.telemetry.egress.fallback|符合回退条件的消息数|计数|总计|已写入到回退终结点的消息数|
+|d2c.endpoints.egress.eventHubs|已传递到事件中心终结点的消息数|计数|总计|已成功将消息写入到事件中心终结点的次数|
+|d2c.endpoints.latency.eventHubs|事件中心终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入事件中心终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.serviceBusQueues|已传递到服务总线队列终结点的消息数|计数|总计|已成功将消息写入到服务总线队列终结点的次数|
+|d2c.endpoints.latency.serviceBusQueues|服务总线队列终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入服务总线队列终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.serviceBusTopics|已传递到服务总线主题终结点的消息数|计数|总计|已成功将消息写入到服务总线主题终结点的次数|
+|d2c.endpoints.latency.serviceBusTopics|服务总线主题终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入服务总线主题终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.builtIn.events|已传递到内置终结点的消息数（消息/事件）|计数|总计|已成功将消息写入到内置终结点的次数（消息/事件）|
+|d2c.endpoints.latency.builtIn.events|内置终结点的消息延迟（消息/事件）|毫秒|平均值|消息进入 IoT 中心与进入内置终结点（消息/事件）之间的平均延迟（毫秒） |
+|d2c.twin.read.success|设备的成功克隆读取数|计数|总计|由设备发起的所有成功的克隆读取的计数。|
+|d2c.twin.read.failure|设备的失败克隆读取数|计数|总计|由设备发起的所有失败的克隆读取的计数。|
+|d2c.twin.read.size|设备的克隆读取的响应大小|字节|平均值|由设备发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|
+|d2c.twin.update.success|设备的成功克隆更新数|计数|总计|由设备发起的所有成功的克隆更新的计数。|
+|d2c.twin.update.failure|设备的失败克隆更新数|计数|总计|由设备发起的所有失败的克隆更新的计数。|
+|d2c.twin.update.size|设备的克隆更新的大小|字节|平均值|由设备发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|
+|c2d.methods.success|成功的直接方法调用数|计数|总计|所有成功的直接方法调用的计数。|
+|c2d.methods.failure|失败的直接方法调用数|计数|总计|所有失败的直接方法调用的计数。|
+|c2d.methods.requestSize|直接方法调用的请求大小|字节|平均值|所有成功的直接方法请求的平均大小、最小大小和最大大小。|
+|c2d.methods.responseSize|直接方法调用的响应大小|字节|平均值|所有成功的直接方法响应的平均大小、最小大小和最大大小。|
+|c2d.twin.read.success|后端的成功克隆读取数|计数|总计|由后端发起的所有成功的克隆读取的计数。|
+|c2d.twin.read.failure|后端的失败克隆读取数|计数|总计|由后端发起的所有失败的克隆读取的计数。|
+|c2d.twin.read.size|后端的克隆读取的响应大小|字节|平均值|由后端发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|
+|c2d.twin.update.success|后端的成功克隆更新数|计数|总计|由后端发起的所有成功的克隆更新的计数。|
+|c2d.twin.update.failure|后端的失败克隆更新数|计数|总计|由后端发起的所有失败的克隆更新的计数。|
+|c2d.twin.update.size|后端的克隆更新的大小|字节|平均值|由后端发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|
+|twinQueries.success|成功的克隆查询|计数|总计|所有成功的克隆查询的计数。|
+|twinQueries.failure|失败的克隆查询|计数|总计|所有失败的克隆查询的计数。|
+|twinQueries.resultSize|克隆查询结果大小|字节|平均值|所有成功的克隆查询的结果大小的平均值、最小值和最大值。|
+|jobs.createTwinUpdateJob.success|克隆更新作业创建成功数|计数|总计|克隆更新作业创建成功的所有次数。|
+|jobs.createTwinUpdateJob.failure|克隆更新作业创建失败数|计数|总计|克隆更新作业创建失败的所有次数。|
+|jobs.createDirectMethodJob.success|方法调用作业的创建成功数|计数|总计|直接方法调用作业创建成功的所有次数。|
+|jobs.createDirectMethodJob.failure|方法调用作业的创建失败数|计数|总计|直接方法调用作业创建失败的所有次数。|
+|jobs.listJobs.success|对列出作业的成功调用数|计数|总计|对列出作业的所有成功调用的计数。|
+|jobs.listJobs.failure|对列出作业的失败调用数|计数|总计|对列出作业的所有失败调用的计数。|
+|jobs.cancelJob.success|成功的作业取消数|计数|总计|用来取消作业的调用成功的次数。|
+|jobs.cancelJob.failure|失败的作业取消数|计数|总计|用来取消作业的调用失败的次数。|
+|jobs.queryJobs.success|成功的作业查询数|计数|总计|对查询作业的所有成功调用的计数。|
+|jobs.queryJobs.failure|失败的作业查询数|计数|总计|对查询作业的所有失败调用的计数。|
+|jobs.completed|已完成的作业|计数|总计|所有已完成的作业的计数。|
+|jobs.failed|失败的作业数|计数|总计|所有失败的作业的计数。|
 
 ## <a name="next-steps"></a>后续步骤
 现已大致了解了 IoT 中心度量值，请单击此链接，深入了解如何管理 Azure IoT 中心：
@@ -63,7 +105,6 @@ IoT 中心提供了多个度量值，使你可以大致了解中心的运行状�
 <!-- Links and images -->
 [1]: media/iot-hub-metrics/enable-metrics-1.png
 [2]: media/iot-hub-metrics/enable-metrics-2.png
-[3]: media/iot-hub-metrics/enable-metrics-3.png
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [lnk-operations-monitoring]: iot-hub-operations-monitoring.md
@@ -74,9 +115,4 @@ IoT 中心提供了多个度量值，使你可以大致了解中心的运行状�
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

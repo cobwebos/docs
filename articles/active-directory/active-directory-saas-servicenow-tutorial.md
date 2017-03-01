@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2e650a5f6e2e69b11d7acbc7628e6ce6f29e5e1c
-ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
+ms.sourcegitcommit: c1e28c5ad7fd3236899ac0ffe9f3d43241061897
+ms.openlocfilehash: 5f253c3a10e5bfdfa9fe36912b5ebcbc9abae3eb
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -101,17 +102,17 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 ### <a name="configuring-azure-ad-single-sign-on-for-servicenow"></a>为 ServiceNow 配置 Azure AD 单一登录
 1. 在 Azure AD 经典门户的“ServiceNow”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749323.png "配置单一登录")
 
 2. 在“你希望用户如何登录 ServiceNow”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749324.png "配置单一登录")
 
 3. 在“配置应用设置”页上，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC769497.png "配置应用 URL")
    
-    a. 在“ServiceNow 登录 URL”文本框中，使用以下模式键入用户用于登录 ServiceNow 应用程序的 URL：`https://<instance-name>.service-now.com`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“ServiceNow 登录 URL”文本框中，使用以下模式键入用户用于登录 ServiceNow 应用程序的 URL：`https://<instance-name>.service-now.com`。
    
     b. 在“标识符”文本框中，使用以下模式键入用户用于登录 ServiceNow 应用程序的 URL：`https://<instance-name>.service-now.com`。
    
@@ -119,11 +120,11 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 4. 若要使 Azure AD 自动配置 ServiceNow 进行基于 SAML 的身份验证，请在“自动配置单一登录”窗体中输入 ServiceNow 实例名称、管理员用户名和管理员密码，并单击“配置”。 请注意，为使此操作生效，提供的管理员用户名必须具有在 ServiceNow 中分配的 **security_admin** 角色。 否则，若要手动配置 ServiceNow 作为 SAML 标识提供者使用 Azure AD，请单击“手动配置应用程序进行单一登录”，然后单击“下一步”，完成后续步骤。
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "配置应用 URL")
 
 5. 在“在 ServiceNow 上配置单一登录”页上，单击“下载证书”，将证书文件本地保存在计算机上。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749325.png "配置单一登录")
 
 6. 以管理员身份登录到 ServiceNow 应用程序。
 
@@ -131,11 +132,11 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
    
     a. 在左侧导航窗格中，转到“系统定义”部分，然后单击“插件”。
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "Activate plugin")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "激活插件")
    
-    b. 搜索“集成 - 多提供程序单一登录安装程序”。
+    b.保留“数据库类型”设置，即设置为“共享”。 搜索“集成 - 多提供程序单一登录安装程序”。
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_04.png "Activate plugin")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_04.png "激活插件")
    
     c. 选择插件。 右键单击插件，选择“激活/升级”。
    
@@ -143,13 +144,13 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 8. 在左侧导航窗格中，单击“属性”。  
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "配置应用 URL")
 
 9. 在“多提供程序 SSO 属性”对话框中，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "配置应用 URL")
    
-    a. 对于“启用多提供程序 SSO”，选择“是”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“启用多提供程序 SSO”，选择“是”。
    
     b. 对于“启用调试日志记录获取多提供程序 SSO 集成”，选择“是”。
    
@@ -159,17 +160,17 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 10. 在左侧导航窗格中，单击“x509 证书”。
     
-     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "Configure single sign-on")
+     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "配置单一登录")
 
 11. 在“X.509 证书”对话框中，单击“新建”。
     
-     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Configure single sign-on")
+     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "配置单一登录")
 
 12. 在“x.509 证书”对话框中，执行以下步骤：
     
-     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
+     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "配置单一登录")
     
-     a. 单击“新建” 。
+     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“新建” 。
     
      b. 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
     
@@ -185,26 +186,26 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 13. 在左侧导航窗格中，单击“标识提供者”。
     
-     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "Configure single sign-on")
+     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "配置单一登录")
 
 14. 在“标识提供者”对话框中，单击“新建”：
     
-     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Configure single sign-on")
+     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "配置单一登录")
 
 15. 在“标识提供者”对话框中，单击“SAML2 Update1?”：
     
-     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Configure single sign-on")
+     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "配置单一登录")
 
 16. 在“SAML2 Update1 属性”对话框中，执行以下步骤：
     
-     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Configure single sign-on")
+     ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
 
-    b. 在“用户字段”文本框中，键入“电子邮件”或“user_id”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。 
+    b.保留“数据库类型”设置，即设置为“共享”。 在“用户字段”文本框中，键入“电子邮件”或“user_name”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。 
 
     > [!NOTE] 
-    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_id）
+    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_name）
 
     c. 在 Azure AD 经典门户中，复制“标识提供者 ID”值，然后将其粘贴到“标识提供者 URL”文本框中。
 
@@ -239,26 +240,26 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 1. 在 Azure AD 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。 
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "配置单一登录")
 
 2. 在“单一登录确认”页上，单击“完成”。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "配置单一登录")
 
 ### <a name="configuring-azure-ad-single-sign-on-for-servicenow-express"></a>为 ServiceNow Express 配置 Azure AD 单一登录
 1. 在 Azure AD 经典门户的“ServiceNow”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749323.png "配置单一登录")
 
 2. 在“你希望用户如何登录 ServiceNow”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749324.png "配置单一登录")
 
 3. 在“配置应用设置”页上，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC769497.png "配置应用 URL")
    
-    a. 在“ServiceNow 登录 URL”文本框中，使用以下模式键入用户用于登录 ServiceNow 应用程序的 URL：`https://<instance-name>.service-now.com`。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“ServiceNow 登录 URL”文本框中，使用以下模式键入用户用于登录 ServiceNow 应用程序的 URL：`https://<instance-name>.service-now.com`。
    
     b. 在“颁发者 URL”文本框中，使用以下模式键入用户用于登录 ServiceNow 应用程序的 URL `https://<instance-name>.service-now.com`。
    
@@ -266,35 +267,35 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 4. 单击“手动配置应用程序进行单一登录”，然后单击“下一步”并完成后续步骤。
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "配置应用 URL")
 
 5. 在“在 ServiceNow 处配置单一登录”页上，单击“下载证书”，将证书文件本地保存在计算机，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC749325.png "配置单一登录")
 
 6. 以管理员身份登录到 ServiceNow Express 应用程序。
 
 7. 在左侧导航窗格中，单击“单一登录”。  
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/ic7694980ex.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/ic7694980ex.png "配置应用 URL")
 
 8. 在“单一登录”对话框中，单击右上角的配置图标，设置以下属性：
    
-    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/ic7694981ex.png "Configure app URL")
+    ![配置应用 URL](./media/active-directory-saas-servicenow-tutorial/ic7694981ex.png "配置应用 URL")
    
-    a. 将“启用多提供程序 SSO”切换到右侧。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将“启用多提供程序 SSO”切换到右侧。
    
     b. 将“为多提供程序 SSO 集成启用调试日志记录”切换到右侧。
    
     c. 在“...用户表上的字段”文本框中，键入“user_name”。
 9. 在“单一登录”对话框中，单击“添加新证书”。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694973ex.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694973ex.png "配置单一登录")
 10. 在“x.509 证书”对话框中，执行以下步骤：
     
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "配置单一登录")
     
-    a. 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
     
     b. 选择“活动”。
     
@@ -314,12 +315,12 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
     g. 单击“更新”。
 11. 在“单一登录”对话框中，单击“添加新 IdP”。
     
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694976ex.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694976ex.png "配置单一登录")
 12. 在“添加新的标识提供者”对话框的“配置标识提供者”下，执行以下步骤：
     
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
 
     b. 在 Azure AD 经典门户中，复制“标识提供者 ID”值，然后将其粘贴到“标识提供者 URL”文本框中。
 
@@ -332,9 +333,9 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 1. 单击“高级设置”，并在“其他标识提供者属性”下，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "配置单一登录")
    
-    a. 在“IDP 的 SingleLogoutRequest 协议绑定”文本框中，键入“urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“IDP 的 SingleLogoutRequest 协议绑定”文本框中，键入“urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect”。
    
     b. 在“NameID 策略”文本框中，键入“urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified”。    
    
@@ -344,9 +345,9 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 2. 在“其他服务提供者属性”下，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "配置单一登录")
    
-    a. 在“ServiceNow 主页”文本框中，键入 ServiceNow 实例主页的 URL。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“ServiceNow 主页”文本框中，键入 ServiceNow 实例主页的 URL。
    
     > [!NOTE]
     > ServiceNow 实例主页是 **ServieNow 租户 URL** 和 **/navpage.do**的串联（例如：`https://fabrikam.service-now.com/navpage.do`）。
@@ -359,10 +360,10 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
    
     d. 在“时钟偏差”文本框中，键入“60”。
    
-    e. 在“用户字段”文本框中，键入“电子邮件”或“user_id”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“用户字段”文本框中，键入“电子邮件”或“user_name”，具体取决于哪个字段用于唯一标识 ServiceNow 部署中的用户。
    
     > [!NOTE]
-    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_id）
+    > 可以配置 Azure AD 以发出 Azure AD 用户 ID（用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符，方法是转到 Azure 经典门户的“ServiceNow”>“属性”>“单一登录”部分，并将所需字段映射到“nameidentifier”属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_name）
     > 
     > 
    
@@ -370,11 +371,11 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 
 3. 在 Azure AD 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。 
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "配置单一登录")
 
 4. 在“单一登录确认”页上，单击“完成”。
    
-    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "配置单一登录")
 
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 本部分的目的是概述如何对 ServiceNow 启用 Active Directory 用户帐户的用户预配。
@@ -382,7 +383,7 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
 1. 在 Azure 管理经典门户中的“ServiceNow”应用程序集成页上，单击“配置用户预配”。 
    
-    ![用户预配](./media/active-directory-saas-servicenow-tutorial/IC769498.png "User provisioning")
+    ![用户设置](./media/active-directory-saas-servicenow-tutorial/IC769498.png "用户设置")
 
 2. 在“输入用于启用自动用户预配的 ServiceNow 凭据”页上，提供以下配置设置：
    
@@ -398,7 +399,7 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
    
      f. 如果想要将所有用户预配到此应用程序，请选择“将目录中的所有用户帐户自动预配到此应用程序”。 
    
-    ![后续步骤](./media/active-directory-saas-servicenow-tutorial/IC698804.png "Next Steps")
+    ![后续步骤](./media/active-directory-saas-servicenow-tutorial/IC698804.png "后续步骤")
    
      g. 在“后续步骤”页上，单击“完成”保存配置。
 
@@ -427,25 +428,25 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-servicenow-tutorial/create_aaduser_05.png) 
    
-    a. 对于“用户类型”，选择“组织中的新用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-servicenow-tutorial/create_aaduser_06.png) 
    
-   a. 在“名字”文本框中，键入“Britta”。  
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
    b. 在“姓氏”文本框中，键入“Simon”。
    
    c. 在“显示名称”文本框中，键入“Britta Simon”。
    
-   d. 在“角色”列表中，选择“用户”。
+   d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e. 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
@@ -455,7 +456,7 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-servicenow-tutorial/create_aaduser_08.png) 
    
-    a. 写下“新密码”的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
    
     b. 单击“完成”。   
 
@@ -516,9 +517,4 @@ ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "代码示例：分析从 Application Insights 导出的数据 | Microsoft 文档"
+title: "示例：分析从 Azure Application Insights 导出的数据 | Microsoft Docs"
 description: "在 Application Insights 中使用连续导出功能编写遥测数据的分析代码。 将数据保存到 SQL。"
 services: application-insights
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: b0782ed5675e5256694f7b9f4e98750e57d23e0a
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: fedd078402bbd220bce9b71cd035508d46f92f82
 
 
 ---
 # <a name="code-sample-parse-data-exported-from-application-insights"></a>代码示例：分析从 Application Insights 导出的数据
-本文说明如何编写代码来处理使用[连续导出][export]从 [Azure Application Insights][启动] 导出的数据。 连续导出以 JSON 格式将遥测数据移入 Azure 存储，因此，我们将编写一些代码来分析 JSON 对象，并在数据库表中创建一些行。
+本文说明如何编写代码来处理使用[连续导出][export]从 [Azure Application Insights][start] 导出的数据。 连续导出以 JSON 格式将遥测数据移入 Azure 存储，因此，我们将编写一些代码来分析 JSON 对象，并在数据库表中创建一些行。
 
 作为示例，我们将编写代码将遥测数据从 Application Insights 移入 Azure SQL 数据库。
 
@@ -30,14 +30,14 @@ ms.openlocfilehash: b0782ed5675e5256694f7b9f4e98750e57d23e0a
 * 本示例通过在 Azure 辅助角色中运行代码，将数据移入 Azure 数据库。 但可以将此代码改写为在本地服务器中运行，以便将数据提取到本地 SQL 服务器中。
 * 可以[编写代码来直接访问 Application Insights 中的遥测数据](http://dev.applicationinsights.io/)，而无需将其导出。
 
-如果尚未开始使用 Application Insights 监视 Web 应用程序，请[立即执行该操作][启动]。
+如果尚未开始使用 Application Insights 监视 Web 应用程序，请[立即执行该操作][start]。
 
 
 
 ## <a name="create-storage-in-azure"></a>在 Azure 中创建存储
 来自 Application Insights 的数据始终以 JSON 格式导出到 Azure 存储帐户。 代码从此存储读取数据。
 
-1. 在 [Azure 门户][门户]上的订阅中创建一个“经典”存储帐户。
+1. 在 [Azure 门户][portal]内的订阅中创建一个“经典”存储帐户。
    
     ![在 Azure 门户中，依次选择“添加”、“数据”、“存储”](./media/app-insights-code-sample-export-telemetry-sql-database/040-store.png)
 2. 创建容器
@@ -74,7 +74,7 @@ ms.openlocfilehash: b0782ed5675e5256694f7b9f4e98750e57d23e0a
 ## <a name="create-an-azure-sql-database"></a>创建 Azure SQL 数据库
 在本示例中，我们将编写代码以将数据推送到数据库。
 
-再次在 [Azure 门户][门户]中打开订阅，创建要在其中写入数据的数据库（除非已有新服务器，否则还要创建新服务器）。
+再次在 [Azure 门户][portal]中打开订阅，创建要在其中写入数据的数据库（除非已有新服务器，否则还要创建新服务器）。
 
 ![依次选择“新建”、“数据”、“SQL”](./media/app-insights-code-sample-export-telemetry-sql-database/090-sql.png)
 
@@ -491,16 +491,16 @@ ms.openlocfilehash: b0782ed5675e5256694f7b9f4e98750e57d23e0a
 
 <!--Link references-->
 
-[诊断]: app-insights-diagnostic-search.md
+[diagnostic]: app-insights-diagnostic-search.md
 [export]: app-insights-export-telemetry.md
-[指标]: app-insights-metrics-explorer.md
-[门户]: http://portal.azure.com/
-[启动]: app-insights-overview.md
+[metrics]: app-insights-metrics-explorer.md
+[portal]: http://portal.azure.com/
+[start]: app-insights-overview.md
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

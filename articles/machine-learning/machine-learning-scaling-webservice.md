@@ -1,6 +1,6 @@
 ---
-title: "扩展 Web 服务 | Microsoft Docs"
-description: "了解如何通过增加并发和添加新终结点扩展 Web 服务。"
+title: "如何增加 Azure 机器学习 Web 服务的并发 | Microsoft Docs"
+description: "了解如何通过添加更多终结点来增加 Azure 机器学习 Web 服务的并发。"
 services: machine-learning
 documentationcenter: 
 author: neerajkh
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 01/23/2017
 ms.author: neerajkh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 559db01d2c9f44af17b86f99031a8827dfeb5ab3
+ms.sourcegitcommit: c54b16517b6f08ed8bfddfb6e2c793ec0f292899
+ms.openlocfilehash: 678f747fd1b2e5017d1859fd594c3b4bc465ea41
 
 
 ---
-# <a name="scaling-a-web-service"></a>扩展 Web 服务
+# <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>通过添加更多终结点来扩展 Azure 机器学习 Web 服务
 > [!NOTE]
 > 本主题介绍适用于经典机器学习 Web 服务的技术。 
 > 
@@ -31,7 +31,6 @@ ms.openlocfilehash: 559db01d2c9f44af17b86f99031a8827dfeb5ab3
 
 如果计划调用带有高于并发调用值 200 所支持的负载的 API，应在同一个 Web 服务上创建多个终结点。 然后可在所有终结点上随机分发负载。
 
-## <a name="add-new-endpoints-for-same-web-service"></a>为同一个 Web 服务添加新终结点
 Web 服务的扩展是常见任务。 扩展的一些原因是为了支持超过 200 个并发请求、通过多个终结点增加可用性或为 Web 服务提供单独的终结点。 通过 [Azure 经典门户](https://manage.windowsazure.com/)或 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户为同一个 Web 服务添加其他终结点，可增加规模。
 
 有关添加新终结点的详细信息，请参阅[创建终结点](machine-learning-create-endpoint.md)。
@@ -46,6 +45,6 @@ Web 服务的扩展是常见任务。 扩展的一些原因是为了支持超过
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

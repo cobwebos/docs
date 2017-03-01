@@ -12,23 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/13/2016
 ms.author: jeannt
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4dcbfbfdb02ac52a42b9f1995e39abdfe1bd3368
+ms.sourcegitcommit: 80bede0dc3ad3934d63feabb946744aeb45f334d
+ms.openlocfilehash: f239a2a270df00cecbe263fa61b84af06af817db
 
 
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>使用 Azure 机器学习分析客户流失
 ## <a name="overview"></a>概述
-本主题介绍使用 Azure 机器学习工作室生成的客户流失分析项目的参考实现。 它讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
+本文介绍使用 Azure 机器学习生成的客户流失分析项目的参考实现。 本文讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
 
 ### <a name="acknowledgements"></a>致谢
 Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习前产品经理）对此实验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型的示例，请参阅：[Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的 [Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)（电信流失模型模板）
+> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Cortana Intelligence 库](http://gallery.cortanaintelligence.com/)中的[零售流失模型模板](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
@@ -253,6 +253,6 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

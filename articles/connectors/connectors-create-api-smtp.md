@@ -24,7 +24,7 @@ ms.openlocfilehash: 3a0fdef111fbd4a9f7491e247f2236cf70b89dca
 # <a name="get-started-with-the-smtp-connector"></a>SMTP 连接器入门
 连接到 SMTP 以发送电子邮件。
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
+若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。
 
 ## <a name="connect-to-smtp"></a>连接到 SMTP
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 SMTP，首先需要 SMTP *连接*。 若要创建连接，需要提供通常用于访问要连接到的服务的凭据。 因此在 SMTP 示例中，需要连接名称、SMTP 服务器地址和用户登录信息的凭据，以便创建到 SMTP 的连接。 [了解有关连接的详细信息]()  

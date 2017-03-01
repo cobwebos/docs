@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: jeffreyr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5aa9b594da6b9f386f88c667106c735ed4fd233b
+ms.sourcegitcommit: 407f2631044fb836930093a774f5b718c91f711d
+ms.openlocfilehash: 822941aa3f745e51f653b4274bf0add9c44ff0c8
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -142,7 +143,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>定义不可变的数据类型以防止编程器错误
-理想情况下，我们希望编译器能够在你意外生成改变对象状态的代码、而此对象又不该改变时报告错误。 但是 C# 编译器做不到这一点。 因此，为了避免潜在的编程器错误，我们强烈建议将可靠集合使用的类型定义为不可变类型。 具体而言，这意味着你要坚持使用核心值类型（例如数字 [Int32、UInt64 等]、DateTime、Guid、TimeSpan 等）。 当然，你也可以使用字符串。 最好是避免集合属性，因为将其序列化和反序列化经常会降低性能。 但是，如果你想要使用集合属性，我们强烈建议使用 .NET 的不可变集合库 (System.Collections.Immutable)。 可以从 http://nuget.org 下载此库。 此外，我们建议尽可能地密封类，并将字段设为只读。
+理想情况下，我们希望编译器能够在你意外生成改变对象状态的代码、而此对象又不该改变时报告错误。 但是 C# 编译器做不到这一点。 因此，为了避免潜在的编程器错误，我们强烈建议将可靠集合使用的类型定义为不可变类型。 具体而言，这意味着你要坚持使用核心值类型（例如数字 [Int32、UInt64 等]、DateTime、Guid、TimeSpan 等）。 当然，你也可以使用字符串。 最好是避免集合属性，因为将其序列化和反序列化经常会降低性能。 但是，如果希望使用集合属性，强烈建议使用 .NET 的不可变集合库 ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/))。 可以从 http://nuget.org 下载此库。 此外，我们建议尽可能地密封类，并将字段设为只读。
 
 以下 UserInfo 类型演示如何利用上述建议定义不可变类型。
 
@@ -216,9 +217,4 @@ public struct ItemId {
 若要了解如何实现版本容错的数据约定，请参阅[版本容错的序列化回调](https://msdn.microsoft.com/library/ms733734.aspx)。
 
 若要了解如何提供可跨多个版本互操作的数据结构，请参阅 [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

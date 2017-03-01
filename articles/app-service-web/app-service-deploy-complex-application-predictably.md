@@ -4,7 +4,7 @@ description: "了解如何使用 JSON 资源组模板和 PowerShell 脚本以一
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a48fa69b198f832de8c0ee42564dfea15bd871c1
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 37a10d284afa6b9ee2aa65e7ec015c3c364f551d
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.openlocfilehash: a48fa69b198f832de8c0ee42564dfea15bd871c1
 ### <a name="azure-resource-manager-templates-json"></a>Azure 资源管理器模板 (JSON)
 例如，每当在 Azure 应用服务中创建 Web 应用时，Azure Resource Manager 都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 应用商店](/marketplace)中的复杂模板（例如 [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) 应用）可能包含 MySQL 数据库、存储帐户、应用服务计划、Web 应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关如何下载和使用这些模板的信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
-有关 Azure Resource Manager 模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)
+有关 Azure Resource Manager 模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新的 SDK 包含对 JSON 编辑器中资源管理器模板支持的改进。 可以使用它快速从头开始创建资源组模板，或打开现有 JSON 模板（例如下载的库模板）以进行修改、填充参数文件，甚至直接从 Azure 资源组解决方案部署资源组。
@@ -129,7 +130,7 @@ ms.openlocfilehash: a48fa69b198f832de8c0ee42564dfea15bd871c1
 * `“resources”: […]` 内（其中定义了数据库和防火墙规则）的嵌套资源具有 `dependsOn` 元素，后者指定根级别 SQLServer 资源的资源 ID。 这将告知 Azure 资源管理器：“创建此资源之前，另一个资源必须已经存在；如果在模板中定义另一个资源，则先创建一个。”
   
   > [!NOTE]
-  > 有关如何使用 `resourceId()` 函数的详细信息，请参阅 [Azure Resource Manager 模板功能](../resource-group-template-functions.md)。
+  > 有关如何使用 `resourceId()` 函数的详细信息，请参阅 [Azure Resource Manager 模板功能](../azure-resource-manager/resource-group-template-functions.md)。
   > 
   > 
 * `dependsOn` 元素的影响在于让 Azure 资源管理器能够知道哪些资源可以并行创建，哪些资源必须按顺序创建。 
@@ -265,16 +266,11 @@ Web 应用取决于两个不同的资源。 这意味着只有在创建 App Serv
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>更多资源
-* [Azure Resource Manager 模板语言](../resource-group-authoring-templates.md)
-* [创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)
-* [Azure Resource Manager 模板功能](../resource-group-template-functions.md)
-* [使用 Azure Resource Manager 模板部署应用程序](../resource-group-template-deploy.md)
-* [将 Azure PowerShell 与 Azure Resource Manager 结合使用](../powershell-azure-resource-manager.md)
-* [Azure 中的资源组部署故障排除](../resource-manager-troubleshoot-deployments-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
+* [Azure Resource Manager 模板语言](../azure-resource-manager/resource-group-authoring-templates.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager 模板功能](../azure-resource-manager/resource-group-template-functions.md)
+* [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
+* [将 Azure PowerShell 与 Azure Resource Manager 结合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Azure 中的资源组部署故障排除](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
 

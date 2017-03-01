@@ -1,5 +1,5 @@
 ---
-title: "运行示例应用程序以将设备到云消息发送到 Azure IoT 中心 | Microsoft Docs"
+title: "将 Arduino (C) 连接到 Azure IoT - 第 3 课：运行示例 | Microsoft Docs"
 description: "在 Adafruit Feather M0 WiFi 上部署并运行示例应用程序，以便将消息发送到 IoT 中心并使 LED 闪烁。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: 569a28ae496f196c0f59be499cdef36550cc2ffa
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 631a6677e4801b1c3475b9e8f2726219dd101132
 
 
 ---
@@ -68,7 +68,7 @@ az iot device show-connection-string --hub-name {my hub name} --device-id mym0wi
    devdisco list --usb
    ```
 
-   可以看到类似于以下内容的输出，并查找 Arduino 开发板的 usb COM 端口：
+   应会看到类似于下面的输出，接下来请查找 Arduino 开发板的 USB COM 端口：
 
    ![设备发现][device-discovery]
 
@@ -107,7 +107,7 @@ az iot device show-connection-string --hub-name {my hub name} --device-id mym0wi
 5. 在 `config-arduino.json` 文件中进行以下替换：
 
    * 将 **[Wi-fi SSID]** 替换为连接到 Internet 的 Wi-Fi SSID。
-   * 将 **[Wi-Fi 密码]**替换为你的 Wi-Fi 密码。 如果你的 Wi-Fi 不需要密码，请删除此字符串。
+   * 将 **[Wi-Fi password]** 替换为 Wi-Fi 密码。 如果你的 Wi-Fi 不需要密码，请删除此字符串。
    * 将 **[IoT device connection string]** 替换为你获取的 `device connection string`。
    * 将 **[IoT hub connection string]** 替换为你获取的 `iot hub connection string`。
 
@@ -151,6 +151,6 @@ gulp run --listen
 [read-messages-persisted-in-azure-storage]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

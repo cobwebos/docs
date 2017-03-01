@@ -1,5 +1,5 @@
 ---
-title: "HBase 教程：Hadoop 中基于 Linux 的 HBase 群集入门 | Microsoft 文档"
+title: "HBase on Azure HDInsight 入门 | Microsoft 文档"
 description: "遵循本 HBase 教程开始在 HDInsight 中将 Apache HBase 与 Hadoop 配合使用。 从 HBase shell 创建表，然后使用 Hive 查询这些表。"
 keywords: "apache hbase,hbase,hbase shell,hbase 教程"
 services: hdinsight
@@ -13,19 +13,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/19/2017
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 86f339b1a8f8c18fd898dc06b87245b265b3adb1
-ms.openlocfilehash: 34e173c6b54bc49cf8966de459e6c03c2260cbf8
+ms.sourcegitcommit: 0a09f1511778623b21a26042a752009ae2208ba6
+ms.openlocfilehash: 415f6f71642726aeb8477f067bd406a57717ff2a
 
 
 ---
 # <a name="hbase-tutorial-get-started-using-apache-hbase-in-hdinsight"></a>HBase 教程：开始使用 HDInsight 中的 Apache HBase
 
 了解如何使用 Hive 在 HDInsight 中创建 HBase 群集、创建 HBase 表和查询表。 有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
-
-本文档中的信息针对基于 Linux 的 HDInsight 群集。 有关基于 Windows 的群集的信息，请使用页面顶部的选项卡选择器进行切换。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -285,6 +283,6 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

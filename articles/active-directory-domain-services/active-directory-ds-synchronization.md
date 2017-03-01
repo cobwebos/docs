@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 01/13/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b89917f71701cccd6e78c036b78b136c19e9c2c
+ms.sourcegitcommit: f5143bc817215d075129170adcabf3dd53b5e15a
+ms.openlocfilehash: 1f6abf9bf123534f29b7976ecadbcf8cb49ce040
 
 
 ---
@@ -32,11 +32,13 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 
 > [!NOTE]
 > 请始终使用最新版本的 Azure AD Connect，确保获得所有已知 Bug 的修复程序。
-> 
-> 
+>
+>
 
 ## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>从 Azure AD 租户同步到托管域
-用户帐户、组成员身份和凭据哈希将从 Azure AD 租户同步到 Azure AD 域服务托管域。 此同步过程是自动的。 不需要配置、监视或管理此同步过程。 此外，同步过程在性质上是单向的。 托管域基本上是只读的，但创建的任何自定义 OU 除外。 因此，无法对托管域中的用户属性、用户密码或组成员身份进行更改。 无法将更改从托管域反向同步到 Azure AD 租户。
+用户帐户、组成员身份和凭据哈希将从 Azure AD 租户同步到 Azure AD 域服务托管域。 此同步过程是自动的。 不需要配置、监视或管理此同步过程。 目录的一次性初始同步完成后，Azure AD 中的更改通常需要约 20 分钟才会在托管域中反映。 此同步时间间隔适用于密码更改或者 Azure AD 中的属性更改。
+
+此外，同步过程在性质上是单向的。 托管域基本上是只读的，但创建的任何自定义 OU 除外。 因此，无法对托管域中的用户属性、用户密码或组成员身份进行更改。 无法将更改从托管域反向同步到 Azure AD 租户。
 
 ## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>从多林本地环境同步
 许多组织使用相当复杂的本地标识基础结构，其中包含多个帐户林。 Azure AD Connect 支持将用户、组和凭据哈希从多林环境同步到 Azure AD 租户。
@@ -66,8 +68,8 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 
 > [!NOTE]
 > **使用 UPN 格式登录到托管域：**可以针对托管域中的某些用户帐户自动生成 SAMAccountName 属性。 如果多个用户具有相同的 mailNickname 属性或者用户具有很长的 UPN 前缀，可能会自动生成这些用户的 SAMAccountName。 因此，使用 SAMAccountName 格式（例如“CONTOSO100\joeuser”）不一定能够可靠地登录到域。 为用户自动生成的 SAMAccountName 可能不同于其 UPN 前缀。 请使用 UPN 格式（例如 'joeuser@contoso100.com')可靠地登录到托管域。
-> 
-> 
+>
+>
 
 ### <a name="attribute-mapping-for-user-accounts"></a>用户帐户的属性映射
 下表演示了 Azure AD 租户中用户对象的特定属性如何同步到托管域中的相应属性。
@@ -122,7 +124,6 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

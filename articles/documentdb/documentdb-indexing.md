@@ -1,24 +1,9 @@
 ---
-title: "DocumentDB 中的自动索引| Microsoft Docs"
-description: "了解 Azure DocumentDB 中的自动索引工作原理。"
-services: documentdb
-author: mimig1
-manager: jhubbard
-editor: mimig1
-documentationcenter: 
-ms.assetid: 126bfd36-9332-4127-8747-1a1c806760f7
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2016
-ms.author: mimig
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9b88c62a7ea76d61ff593217392c3225624bb886
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: 4c7b8965b7fe5de7a8ff839be2b9e555bd8d502c
 
 
 
@@ -75,6 +60,6 @@ DocumentDB 的索引旨在提升存储效率，同时处理多租户。 为了�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 3ff8fba42e6455b33103c931da731b0affa8a0fb
-ms.openlocfilehash: b5fbd15729da2674b34a227861e65b89548dad39
+ms.sourcegitcommit: bfffb074a905184269992a19993aabc22bb1256f
+ms.openlocfilehash: b65c54819374e90a8318a3f3eecce5b71b01b17f
 
 
 ---
@@ -27,9 +27,6 @@ ms.openlocfilehash: b5fbd15729da2674b34a227861e65b89548dad39
 如果在[创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)期间遇到问题，请参阅[创建 Azure AD 租户或 Azure AD B2C 租户 - 问题和解决方案](active-directory-b2c-support-create-directory.md)以获取指导。
 
 请注意，当删除现有 B2C 租户并重新创建具有相同域名的 B2C 租户时，存在已知问题。 你必须创建具有不同域名的 B2C 租户。
-
-## <a name="note-about-b2c-tenant-quotas"></a>有关 B2C 租户配额的注意事项
-默认情况下，B2C 租户中的用户数限制为 50,000 位用户。 如果需要提高你的 B2C 租户的配额，应联系“支持”。
 
 ## <a name="branding-issues-on-verification-email"></a>验证电子邮件中的品牌问题
 默认验证电子邮件包含 Microsoft 品牌。 将来我们会删除它。 现在，你可以使用[公司品牌功能](../active-directory/active-directory-add-company-branding.md)将其删除。
@@ -51,6 +48,39 @@ Azure AD B2C 中目前不支持以下类型的应用程序。 有关支持的应
 
 可以使用 OAuth 2.0 Jwt 持有者凭据授权（也称为代理流）来支持这种链接的 Web API 方案。 但是，Azure AD B2C 中目前尚未实现代理流。
 
+## <a name="restrictions-on-reply-urls"></a>对回复 URL 的限制
+在 Azure AD B2C 中注册的应用目前仅限使用一组有限的回复 URL 值。 Web 应用和服务的回复 URL 必须以方案 `https` 开头，并且所有回复 URL 值必须共享一个 DNS 域。 例如，无法注册具有以下定向 URL 的 Web 应用：
+
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`
+
+注册系统会将现有回复 URL 的完整 DNS 名称与要添加的回复 URL 的 DNS 名称相比较。 如果满足以下任一条件，添加 DNS 名称的请求将失败：
+
+* 新回复 URL 的完整 DNS 名称与现有回复 URL 的 DNS 名称不匹配。
+* 新回复 URL 的完整 DNS 名称不是现有回复 URL 的子域。
+
+例如，如果应用具有以下回复 URL：
+
+`https://login.contoso.com`
+
+你可以向其添加，如下所示：
+
+`https://login.contoso.com/new`
+
+在这种情况下，DNS 名称将完全匹配。 或者，你可以执行下面的操作：
+
+`https://new.login.contoso.com`
+
+在这种情况下，你将引用 login.contoso.com 的 DNS 子域。 如果希望应用使用 login-east.contoso.com 和 login-west.contoso.com 作为回复 URL，必须按以下顺序添加这些回复 URL：
+
+`https://contoso.com`  
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`  
+
+可以添加后两个回复 URL，因为它们是第一个回复 URL (contoso.com) 的子域。 即将发布的版本中将取消此限制。
+
+若要了解如何在 Azure AD B2C 中注册应用，请参阅[如何将应用程序注册到 Azure Active Directory B2C](active-directory-b2c-app-registration.md)。
+
 ## <a name="restriction-on-libraries-and-sdks"></a>对库和 SDK 的限制
 目前能使用 Azure AD B2C 的 Microsoft 支持的库非常有限。 我们支持基于 .NET 的 Web 应用和服务，以及 NodeJS Web 应用和服务。  我们还有一个名为 MSAL 的预览 .NET 客户端库，可与 Windows 和其他 .NET 应用中的 Azure AD B2C 共同使用。
 
@@ -62,7 +92,7 @@ Azure AD B2C 中目前不支持以下类型的应用程序。 有关支持的应
 Azure AD B2C 支持 OpenID Connect 和 OAuth 2.0。 但是，并非每个协议的所有特性与功能都已实现。 若要进一步了解 Azure AD B2C 支持的协议功能范围，请阅读 [OpenID Connect 和 OAuth 2.0 协议参考](active-directory-b2c-reference-protocols.md)。 SAML 和 WS-Fed 协议支持不可用。
 
 ## <a name="restriction-on-tokens"></a>对令牌的限制
-Azure AD B2C 颁发的许多令牌都实现为 JSON Web 令牌或 JWT。 但是，并不是 JWT（被称为“声明”）中包含的所有信息都应有的或者缺失的。 一些示例包括 “sub” 和 “preferred_username” 声明。  随着时间推移，声明的值、格式或含义会发生更改，现有策略的令牌将不受影响，你可以依赖其在生产应用中的值。  在值更改时，我们将为你提供为每个策略配置这些更改的机会。  若要更好地了解 Azure AD B2C 服务当前发出的令牌，请阅读[令牌参考](active-directory-b2c-reference-tokens.md)。
+Azure AD B2C 颁发的许多令牌都实现为 JSON Web 令牌或 JWT。 但是，并不是 JWT（被称为“声明”）中包含的所有信息都应有的或者缺失的。 “preferred_username”声明就是一个例子。  随着时间推移，声明的值、格式或含义会发生更改，现有策略的令牌将不受影响，你可以依赖其在生产应用中的值。  在值更改时，我们将为你提供为每个策略配置这些更改的机会。  若要更好地了解 Azure AD B2C 服务当前发出的令牌，请阅读[令牌参考](active-directory-b2c-reference-tokens.md)。
 
 ## <a name="restriction-on-nested-groups"></a>对嵌套组的限制
 Azure AD B2C 租户中不支持嵌套组成员身份。 我们不计划添加此功能。
@@ -93,9 +123,13 @@ Azure AD B2C 租户中不支持 [Azure AD 图形 API 上的差异查询功能](h
 * 使用“注册或登录策略”代替“登录策略”。
 * 减少政策中请求的**应用程序声明**的数量。
 
+## <a name="issues-with-windows-desktop-wpf-apps-using-azure-ad-b2c"></a>使用 Azure AD B2C 的 Windows 桌面 WPF 应用的问题
+从 Windows 桌面 WPF 应用向 Azure AD B2C 发出的请求有时失败并返回以下错误消息：“基于浏览器的身份验证对话未能完成。 原因: 协议未知，并且未输入匹配的可插入协议。”
+
+原因在于 Azure AD B2C 提供的授权代码大小；该大小与令牌中请求的声明数相关。 此问题的解决方法之一是减少令牌中请求的声明数，并单独针对其他声明查询图形 API。
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

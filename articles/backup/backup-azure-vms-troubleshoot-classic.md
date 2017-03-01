@@ -1,6 +1,6 @@
 ---
-title: "Azure 虚拟机备份疑难解答 | Microsoft Docs"
-description: "Azure 虚拟机备份和还原疑难解答"
+title: "在经典门户中排查 Azure 备份错误 | Microsoft 文档"
+description: "在经典门户中排查 Azure 备份错误和还原 Azure 虚拟机。"
 services: backup
 documentationcenter: 
 author: trinadhk
@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: trinadhk;jimpark;
+ms.date: 1/23/2017
+ms.author: trinadhk;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: e2c22d2833a7905ba6001178be8709ec81c26000
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: 2149407ff4e04f6a52a45c419382617810a63633
 
 
 ---
@@ -117,6 +117,6 @@ ms.openlocfilehash: e2c22d2833a7905ba6001178be8709ec81c26000
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

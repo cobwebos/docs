@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/05/2017
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: aed47a7e9aa06e48199a71f67ae6d82bcfe27c9a
+ms.sourcegitcommit: b76185c0a4a0e17b663affee9a02b65f222fedeb
+ms.openlocfilehash: d679096476406831c1fda4f695adff84e63d6ae8
 
 
 ---
@@ -24,63 +24,48 @@ ms.openlocfilehash: aed47a7e9aa06e48199a71f67ae6d82bcfe27c9a
 本文旨在帮助开发人员创建、部署和管理在 Azure 应用商店中列出的解决方案，以便其他 Azure 客户和合作伙伴可进行购买和利用。
 
 ## <a name="what-is-the-azure-marketplace"></a>什么是 Azure 应用商店？
-在 Azure 应用商店中，Azure 订阅方可以找到相关服务，以促进本地或基于云的解决方案和应用程序的开发。 使用 [Azure 认证的](http://azure.com/certified)服务作为构建基块，可以面向业务范围和其他 Azure 订阅方快速开发创新的应用程序或服务。
+作为 Azure 发布者，Azure 应用商店允许你面向希望快速开发基于云的应用程序和移动解决方案的其他开发人员、ISV 和 IT 专业人员，分发和销售创新的解决方案或服务。 如果解决方案面向业务用户，则可能需要考虑 [AppSource](http://appsource.microsoft.com) 应用商店。
 
-作为 Azure 发布者，Azure 应用商店允许你面向希望快速开发基于云的应用程序和移动解决方案的其他开发人员、ISV 和 IT 专业人员，分发和销售创新的解决方案或服务。
 
-## <a name="supported-types-of-offers"></a>支持的产品/服务类型
-作为一名发布者，首先要做的是定义公司将提供哪种类型的解决方案。 Azure 应用商店支持三种类型的产品/服务：
+## <a name="supported-types-of-solutions"></a>支持的解决方案类型
+作为一名发布者，首先要做的是定义公司将提供哪种类型的解决方案。 Azure 应用商店支持以下类型的产品/服务：
 
-* **虚拟机映像**是预配置的映像，它们具有一个完整安装的操作系统以及一个或多个应用程序。 虚拟机映像提供在 Azure 虚拟机服务中创建和部署虚拟机所需的信息。
+|解决方案类型|虚拟机|解决方案模板|
+|---|---|---|
+|定义|预配置的映像，其具有一个完整安装的操作系统以及一个或多个应用程序。 虚拟机映像提供在 Azure 虚拟机服务中创建和部署虚拟机所需的信息。|可以引用一个或多个不同的 Azure 服务的数据结构（包括由其他卖方发布的服务），允许 Azure 订阅方以单一协同方式部署一个或多个产品/服务。|
+|示例|**例如，**作为 Azure 发布者，你已创建并验证了具有创新数据库服务的 VM，使其极具吸引力，从而让其他 Azure 订阅方都愿意采购此 VM 并将其部署到云服务环境中。|**例如，**作为 Azure 发布者，你已跨 Azure 捆绑服务集，从而可快速部署负载均衡的云服务、增强安全性和高可用性。 其他 Azure 订户可以通过采购满足其目标的解决方案模板来节省时间，而无需手动查找、采购、部署和配置相同或相似的 Azure 服务。|
 
-  > [!NOTE]
-  > **例如，**作为 Azure 发布者，你已创建并验证了具有创新数据库服务的 VM，使其极具吸引力，从而让其他 Azure 订阅方都愿意采购此 VM 并将其部署到云服务环境中。
-  >
-  >
-* **开发人员服务**是用于应用程序开发或系统管理的完全托管的服务。 它们提供的功能可在 Azure 上快速开发云规模的应用程序。
-
-  > [!NOTE]
-  > **例如，**作为 Azure 发布者，你已开发 API 可访问的服务（托管在 Azure 或其他位置），该服务提供基于历史数据的预测。 而且这是一项服务，其他生成解决方案的 Azure 订阅方可能需要利用它。 可以将此服务部署到 Azure 应用商店，以便其他用户查找、采购并在其各自的服务中使用。
-  >
-  >
-* **解决方案模板**是可以引用一个或多个不同的 Azure 服务的数据结构（包括由其他卖方发布的服务），允许 Azure 订阅方以单一协同方式部署一个或多个产品/服务。
-
-  > [!NOTE]
-  > **例如，**作为 Azure 发布者，你已跨 Azure 捆绑服务集，只需几次单击即可快速部署安全、高可用性且负载平衡的云服务。 其他 Azure 订阅方可以通过采购此解决方案模板（而不是手动标识和配置相同或类似的 Azure 服务），从而在省时方面获益。
-  >
-  >
-
-某些步骤在不同的解决方案类型中是通用的。 本文简要概述了针对任何解决方案类型需要完成的步骤。
-
-## <a name="1-pre-requisites"></a>1.先决条件
 > [!NOTE]
-> 在开始在 Azure 应用商店上进行任何工作前，必须通过[预批准](http://azure.com/certified)。
->
->
+> 请注意一些步骤将在不同类型的解决方案之间共享，而另一些步骤则因解决方案类型而异。 本文简要概述了针对任何解决方案类型需要完成的步骤。
 
-1. [申请 Microsoft Azure 认证的预批准](marketplace-publishing-azure-certification.md)
-2. [创建并注册 Microsoft 开发人员帐户](marketplace-publishing-accounts-creation-registration.md)
-3. [完成非技术先决条件](marketplace-publishing-pre-requisites.md)
+## <a name="how-to-publish-a-solution"></a>如何发布解决方案
+![绘制](media/marketplace-publishing-getting-started/img01.png)
 
-## <a name="2-publishing-your-offer"></a>2.发布产品/服务
-### <a name="21-complete-offer-specific-technical-pre-requisites"></a>2.1 完成产品/服务特定的技术先决条件
-* [VM 技术先决条件](marketplace-publishing-vm-image-creation-prerequisites.md)
-* [解决方案模板技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)
+### <a name="1-nominate-your-solution-for-pre-approval"></a>1.提名解决方案以便预批准
+- 请在[此处](https://createopportunity.azurewebsites.net)完成**经过 Microsoft Azure 认证的虚拟机**的解决方案提名表单
 
-### <a name="22-create-your-offer"></a>2.2 创建产品/服务
-1. 使用以下产品/服务特定的指南创建产品/服务。
-   * [创建 VM 产品/服务](marketplace-publishing-vm-image-creation.md)
-   * [创建解决方案模板产品/服务](marketplace-publishing-solution-template-creation.md)
-2. [创建产品/服务市场营销内容](marketplace-publishing-push-to-staging.md)
+>[!NOTE]
+> 如果你正在与合作伙伴客户经理或 DX 合作伙伴经理协作，请让他们对 Azure 认证计划提名你的解决方案，或转到 [Microsoft Azure 认证](http://createopportunity.azurewebsites.net)网页上，填写应用程序表单，并在 Microsoft 发起人联系方式字段中输入你的合作伙伴客户经理或 DX 合作伙伴经理的电子邮件。
 
-### <a name="23-test-your-offer-in-staging"></a>2.3 在过渡环境中测试产品/服务
-* [在过渡环境中测试 VM 产品/服务](marketplace-publishing-vm-image-test-in-staging.md)
-* [在过渡环境中测试解决方案模板产品/服务](marketplace-publishing-solution-template-test-in-staging.md)
+根据 [Azure 应用商店参与策略](http://go.microsoft.com/fwlink/?LinkID=526833)，如果符合资格条件，并且你的应用程序获得了批准，我们将开始协助你将解决方案发布到 Azure 应用商店。
 
-### <a name="24-deploy-your-offer-to-the-marketplace"></a>2.4 将产品/服务部署到应用商店
-* [将产品/服务部署到 Azure 应用商店](marketplace-publishing-push-to-production.md)
-* [应用商店中的常见发布问题疑难解答](marketplace-publishing-support-common-issues.md)
-* 若要了解有关所使用门户的详细信息，请参阅[所需的门户](marketplace-publishing-portals.md)。
+### <a name="2-register-your-account-as-a-microsoft-seller"></a>2.将你的帐户注册为 Microsoft 卖方
+- [将你的 Microsoft 帐户注册为 Microsoft 开发人员帐户](marketplace-publishing-accounts-creation-registration.md)
+
+### <a name="3-publish-your-solution"></a>3.发布解决方案
+1. 满足非技术要求
+  - [完成非技术先决条件](marketplace-publishing-pre-requisites.md)
+  - [VM 技术先决条件](marketplace-publishing-vm-image-creation-prerequisites.md)
+  - [解决方案模板技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)
+2. 创建产品/服务
+  - [虚拟机](marketplace-publishing-vm-image-creation.md)
+  - [解决方案模板](marketplace-publishing-solution-template-creation.md)
+3. [创建产品/服务市场营销内容](marketplace-publishing-push-to-staging.md)
+4. 在过渡环境中测试产品/服务
+  - [在过渡环境中测试 VM 产品/服务](marketplace-publishing-vm-image-test-in-staging.md)
+  - [在过渡环境中测试解决方案模板产品/服务](marketplace-publishing-solution-template-test-in-staging.md)
+5. [将产品/服务部署到 Azure 应用商店](marketplace-publishing-push-to-production.md)
+
 
 ### <a name="virtual-machine-image-specific"></a>虚拟机映像专用
 * [在本地创建 VM 映像](marketplace-publishing-vm-image-creation-on-premise.md)
@@ -88,7 +73,7 @@ ms.openlocfilehash: aed47a7e9aa06e48199a71f67ae6d82bcfe27c9a
 * [在 Azure 门户中创建运行 Linux 的虚拟机](../virtual-machines/virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [对 VHD 创建期间遇到的常见问题进行故障排除](marketplace-publishing-vm-image-creation-troubleshooting.md)
 
-## <a name="3-post-publishing-management-of-your-offer"></a>3.产品/服务的发布后管理
+## <a name="how-to-manage-your-solution"></a>如何管理解决方案
 * [虚拟机产品/服务后期制作指南](marketplace-publishing-vm-image-post-publishing.md)
 * [如何更新产品/服务或 SKU 的非技术详细信息](marketplace-publishing-vm-image-post-publishing.md#2-how-to-update-the-non-technical-details-of-an-offer-or-a-sku)
 * [如何更新产品/服务或 SKU 的技术详细信息](marketplace-publishing-vm-image-post-publishing.md#1-how-to-update-the-technical-details-of-a-sku)
@@ -110,6 +95,6 @@ ms.openlocfilehash: aed47a7e9aa06e48199a71f67ae6d82bcfe27c9a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2016
+ms.date: 01/30/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 6c5bf8907a5f69e45e7b62fb466bdc53460e9029
-ms.openlocfilehash: 86a5911e99e7631b09604afcb0f53ed2887b576b
+ms.sourcegitcommit: 5f9783232e9b03ca3777a000ffc189863d0956ab
+ms.openlocfilehash: ffc481943a9dc55593fa8b46dffef0098f288eaf
 
 
 ---
@@ -83,9 +83,9 @@ DocumentDB 模拟器提供对 DocumentDB 服务的高保真模拟。 它支持�
 
 DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目录。 还可以从命令行启动和停止该模拟器。 有关详细信息，请参阅[命令行工具参考](#command-line)。
 
-## <a name="start-the-local-emulator-data-explorer"></a>启动本地模拟器的数据资源管理器
+## <a name="start-the-documentdb-emulator-data-explorer"></a>启动 DocumentDB 模拟器数据资源管理器
 
-本地模拟器启动时，将在浏览器中自动打开 DocumentDB 数据资源管理器。 地址将显示为 [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html)。 如果关闭浏览器后要重新打开该数据资源管理器，可以在浏览器中打开该 URL 或通过 Windows 任务栏图标中的 DocumentDB 模拟器启动，如下所示。
+DocumentDB 模拟器启动时，将在浏览器中自动打开 DocumentDB 数据资源管理器。 地址将显示为 [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html)。 如果关闭浏览器后要重新打开该数据资源管理器，可以在浏览器中打开该 URL 或通过 Windows 任务栏图标中的 DocumentDB 模拟器启动，如下所示。
 
 ![DocumentDB 本地模拟器数据资源管理器启动器](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-data-explorer-launcher.png)
 
@@ -95,11 +95,7 @@ DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目�
     // Connect to the DocumentDB Emulator running locally
     DocumentClient client = new DocumentClient(
         new Uri("https://localhost:8081"), 
-        "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==",
-        new ConnectionPolicy { EnableEndpointDiscovery = false });
-
-> [!NOTE]
-> 连接到模拟器时，必须在连接配置中设置为 EnableEndpointDiscovery = false。
+        "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 如果使用 [DocumentDB 的 MongoDB 协议支持](documentdb-protocol-mongodb.md)，请使用以下连接字符串：
 
@@ -107,22 +103,26 @@ DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目�
 
 可以通过现有工具连接到 DocumentDB 模拟器，例如 [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio)。 还可以通过 [DocumentDB 数据迁移工具](https://github.com/azure/azure-documentdb-datamigrationtool)在 DocumentDB 模拟器和 Azure DocumentDB 服务之间迁移数据。
 
+默认情况下，使用 DocumentDB 模拟器，可创建多达 25 个单分区集合或 1 个已分区集合。 有关如何更改此值的详细信息，请参阅[设置 PartitionCount 值](#set-partitioncount)。
+
 ## <a name="export-the-documentdb-emulator-ssl-certificate"></a>导出 DocumentDB 模拟器 SSL 证书
 
-.Net 语言和运行时通过 Windows 证书存储安全地连接到 DocumentDB 本地模拟器。 其他语言有自己管理和使用证书方法。 Java 使用自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)，而 Python 使用[套接字包装器](https://docs.python.org/2/library/ssl.html)。
+.NET 语言和运行时使用 Windows 证书存储来安全地连接到 DocumentDB 本地模拟器。 其他语言有自己管理和使用证书方法。 Java 使用自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)，而 Python 使用[套接字包装器](https://docs.python.org/2/library/ssl.html)。
 
-为了获得用于语言和运行时（未与 Windows 证书存储集成）的证书，需要通过 Windows 证书管理器将其导出。 可以通过运行 certlm.msc 开始操作，也可以按照“[导出 DocumentDB 模拟器证书](./documentdb-nosql-local-emulator-export-ssl-certificates.md)”一文中的分步说明操作。 证书管理器开始运行后，打开个人证书（如下所示），并将友好名称为“DocumentDBEmulatorCertificate”的证书导出为 BASE-64 编码的 X.509 (.cer) 文件。
+为了获得用于语言和运行时（未与 Windows 证书存储集成）的证书，需要通过 Windows 证书管理器将其导出。 可通过运行 certlm.msc 进行启动，也可按照[导出 DocumentDB 模拟器证书](./documentdb-nosql-local-emulator-export-ssl-certificates.md)中的分步说明进行操作。 证书管理器开始运行后，打开个人证书（如下所示），并将友好名称为“DocumentDBEmulatorCertificate”的证书导出为 BASE-64 编码的 X.509 (.cer) 文件。
 
 ![DocumentDB 本地模拟器 SSL 证书](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-ssl_certificate.png)
 
-按照“[Adding a Certificate to the Java CA Certificates Store](https://docs.microsoft.com/en-us/azure/java-add-certificate-ca-store)”（将证书添加到 Java CA 证书存储）一文中的说明可将 X.509 证书导入 Java 证书存储中。  证书导入 cacerts 存储后，Java 和 MongoDB 应用程序将能够连接到 DocumentDB 本地模拟器。
+可按照[将证书添加到 Java CA 证书存储](https://docs.microsoft.com/en-us/azure/java-add-certificate-ca-store)中的说明，将 X.509 证书导入 Java 证书存储。 证书导入 cacerts 存储后，Java 和 MongoDB 应用程序即能够连接到 DocumentDB 模拟器。
+
+从 Python 和 Node.js SDK 连接到模拟器时，将禁用 SSL 验证。
 
 ## <a name="a-idcommand-lineadocumentdb-emulator-command-line-tool-reference"></a><a id="command-line"></a>DocumentDB 模拟器命令行工具参考
 从安装位置中，可以使用命令行启动和停止模拟器、配置选项和执行其他操作。
 
 ### <a name="command-line-syntax"></a>命令行语法
 
-    DocumentDB.Emulator.exe [/shutdown] [/datapath] [/port] [/mongoport] [/directports] [/key] [/?]
+    DocumentDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
 
 若要查看选项列表，请在命令提示符下键入 `DocumentDB.Emulator.exe /?`。
 
@@ -135,63 +135,81 @@ DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目�
 </tr>
 <tr>
   <td>[无参数]</td>
-  <td>使用默认设置启动 DocumentDB 模拟器</td>
+  <td>使用默认设置启动 DocumentDB 模拟器。</td>
   <td>DocumentDB.Emulator.exe</td>
   <td></td>
 </tr>
 <tr>
-  <td>关机</td>
-  <td>关闭 DocumentDB 模拟器</td>
-  <td>DocumentDB.Emulator.exe /Shutdown</td>
-  <td></td>
-</tr>
-<tr>
-  <td>帮助</td>
-  <td>显示命令行参数的列表</td>
+  <td>[帮助]</td>
+  <td>显示支持的命令行参数列表。</td>
   <td>DocumentDB.Emulator.exe /?</td>
   <td></td>
 </tr>
 <tr>
-  <td>数据路径</td>
-  <td>指定要在其中存储数据文件的路径</td>
-  <td>DocumentDB.Emulator.exe /datapath=&lt;datapath&gt;</td>
+  <td>关机</td>
+  <td>关闭 DocumentDB 模拟器。</td>
+  <td>DocumentDB.Emulator.exe /Shutdown</td>
+  <td></td>
+</tr>
+<tr>
+  <td>DataPath</td>
+  <td>指定要在其中存储数据文件的路径。 默认路径为 %LocalAppdata%\DocumentDBEmulator。</td>
+  <td>DocumentDB.Emulator.exe /DataPath=&lt;datapath&gt;</td>
   <td>&lt;datapath&gt;：可访问的路径</td>
 </tr>
 <tr>
   <td>端口</td>
-  <td>指定用于模拟器的端口号。  默认值为 8081</td>
-  <td>DocumentDB.Emulator.exe /port=&lt;port&gt;</td>
+  <td>指定用于模拟器的端口号。  默认值为 8081。</td>
+  <td>DocumentDB.Emulator.exe /Port=&lt;port&gt;</td>
   <td>&lt;port&gt;：单个端口号</td>
 </tr>
 <tr>
   <td>MongoPort</td>
-  <td>指定用于 MongoDB 兼容性 API 的端口号。 默认值为 10250</td>
-  <td>DocumentDB.Emulator.exe /mongoport=&lt;mongoport&gt;</td>
+  <td>指定用于 MongoDB 兼容性 API 的端口号。 默认值为 10250。</td>
+  <td>DocumentDB.Emulator.exe /MongoPort=&lt;mongoport&gt;</td>
   <td>&lt;mongoport&gt;：单个端口号</td>
 </tr>
 <tr>
   <td>DirectPorts</td>
-  <td>指定用于直接连接的端口。 默认值为 10251、10252、10253、10254</td>
-  <td>DocumentDB.Emulator.exe /directports:&lt;directports&gt;</td>
+  <td>指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。</td>
+  <td>DocumentDB.Emulator.exe /DirectPorts：&lt;directports&gt;</td>
   <td>&lt;directports&gt;：以逗号分隔的 4 个端口的列表</td>
 </tr>
 <tr>
   <td>键</td>
-  <td>模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码</td>
-  <td>DocumentDB.Emulator.exe /key:&lt;key&gt;</td>
+  <td>模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。</td>
+  <td>DocumentDB.Emulator.exe /Key：&lt;key&gt;</td>
   <td>&lt;key&gt;：密钥必须是 64 字节向量的 base 64 编码</td>
 </tr>
 <tr>
-  <td>EnableThrottling</td>
-  <td>指定启用了请求限制行为</td>
-  <td>DocumentDB.Emulator.exe /enablethrottling</td>
+  <td>EnableRateLimiting</td>
+  <td>指定已启用请求速率限制行为。</td>
+  <td>DocumentDB.Emulator.exe /EnableRateLimiting</td>
   <td></td>
 </tr>
 <tr>
-  <td>DisableThrottling</td>
-  <td>指定禁用了请求限制行为</td>
-  <td>DocumentDB.Emulator.exe /disablethrottling</td>
+  <td>DisableRateLimiting</td>
+  <td>指定已禁用请求速率限制行为。</td>
+  <td>DocumentDB.Emulator.exe /DisableRateLimiting</td>
   <td></td>
+</tr>
+<tr>
+  <td>NoUI</td>
+  <td>不显示模拟器用户界面。</td>
+  <td>DocumentDB.Emulator.exe /NoUI</td>
+  <td></td>
+</tr>
+<tr>
+  <td>NoExplorer</td>
+  <td>不在启动时显示文档资源管理器。</td>
+  <td>DocumentDB.Emulator.exe /NoExplorer</td>
+  <td></td>
+</tr>
+<tr>
+  <td>PartitionCount</td>
+  <td>指定已分区的集合的最大数。 有关详细信息，请参阅[更改集合数](#set-partitioncount)。</td>
+  <td>DocumentDB.Emulator.exe /PartitionCount=&lt;partitioncount&gt;</td>
+  <td>&lt;partitioncount&gt;：允许的单分区集合的最大数量。 默认值为 25。 允许的最大值为 250。</td>
 </tr>
 </table>
 
@@ -205,12 +223,54 @@ DocumentDB 模拟器默认安装到 `C:\Program Files\DocumentDB Emulator` 目�
 * DocumentDB 模拟器不支持服务配额替代，而 Azure DocumentDB 服务支持（例如文档大小限制、增加的分区集合存储）。
 * 由于 DocumentDB 模拟器副本不一定能反映 Azure DocumentDB 服务的最新更改，因此请使用 [DocumentDB 容量规划器](https://www.documentdb.com/capacityplanner)准确估计应用程序的生产吞吐量 (RU) 需求。
 
+## <a name="a-idset-partitioncountachange-the-number-of-collections"></a><a id="set-partitioncount"></a> 更改集合数
+
+默认情况下，使用 DocumentDB 模拟器，可创建多达 25 个单分区集合或 1 个已分区集合。 通过修改 **PartitionCount** 值，可以创建最多 250 个单分区集合或 10 个已分区集合，或两者的任意组合（不得超过 250 个单分区，其中 1 个已分区集合 = 25 个单分区集合）。
+
+如果在已超过当前分区计数后尝试创建集合，则模拟器将引发 ServiceUnavailable 异常，并收到以下消息。
+
+    Sorry, we are currently experiencing high demand in this region, 
+    and cannot fulfill your request at this time. We work continuously 
+    to bring more and more capacity online, and encourage you to try again. 
+    Please do not hesitate to email docdbswat@microsoft.com at any time or 
+    for any reason. ActivityId: 29da65cc-fba1-45f9-b82c-bf01d78a1f91
+
+若要更改 DocumentDB 模拟器可用的集合数，请执行以下操作：
+
+1. 通过在系统任务栏上右键单击“DocumentDB 模拟器”图标，然后单击“重置数据...”，删除所有本地 DocumentDB 模拟器数据。
+2. 删除文件夹 C:\Users\user_name\AppData\Local\DocumentDBEmulator 中的所有模拟器数据。
+3. 通过在系统任务栏上右键单击“DocumentDB 模拟器”图标，然后单击“退出”，退出所有打开的实例。 退出所有实例可能需要一分钟。
+4. 安装最新版本的 [DocumentDB 模拟器](https://aka.ms/documentdb-emulator)。
+5. 通过设置一个 <= 250 的值启动具有 PartitionCount 标志的模拟器。 例如：`C:\Program Files\DocumentDB Emulator>DocumentDB.Emulator.exe /PartitionCount=100`。
+
+## <a name="troubleshooting"></a>故障排除
+
+使用以下提示来帮助解决使用 DocumentDB 模拟器时遇到的问题：
+
+- 如果 DocumentDB 模拟器崩溃，请从 c:\Users\user_name\AppData\Local\CrashDumps 文件夹收集转储文件、进行压缩并将其附加到电子邮件，发送至 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com)。
+
+- 如果遇到连接问题，请[收集跟踪文件](#trace-files)、进行压缩并将其附加到电子邮件，发送至 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com)。
+
+### <a name="a-idtrace-filesacollect-trace-files"></a><a id="trace-files"></a>收集跟踪文件
+
+若要收集调试跟踪，请从管理命令提示符运行以下命令：
+
+1. `cd /d "%ProgramFiles%\DocumentDB Emulator"`
+2. `DocumentDB.Emulator.exe /shutdown`。 监视系统托盘，确保该程序已关闭，这可能需要几分钟时间。 还可以直接在 DocumentDB 模拟器用户界面中单击“退出”。
+3. `DocumentDB.Emulator.exe /starttraces`
+4. `DocumentDB.Emulator.exe`
+5. 再现问题。 如果数据资源管理器无法运行，只需等待几秒钟，待浏览器打开以捕获错误。
+5. `DocumentDB.Emulator.exe /stoptraces`
+6. 导航到 `%ProgramFiles%\DocumentDB Emulator`，查找 docdbemulator_000001.etl 文件。
+7. 将 .etl 文件和重现步骤一起发送至 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) 进行调试。
+
+
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关 DocumentDB 的详细信息，请参阅 [Azure DocumentDB 简介](documentdb-introduction.md)
 * 若要开始使用 DocumentDB 模拟器进行开发，请下载一个[支持的 DocumentDB SDK](documentdb-sdk-dotnet.md)。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

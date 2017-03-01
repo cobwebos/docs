@@ -1,5 +1,5 @@
 ---
-title: "如何通过 Java 使用服务总线队列 | Microsoft 文档"
+title: "如何通过 Java 使用 Azure 服务总线队列 | Microsoft Docs"
 description: "了解如何在 Azure 中使用 Service Bus 队列。 用 Java 编写的代码示例。"
 services: service-bus-messaging
 documentationcenter: java
@@ -11,48 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 29cab1dff7ffc0f42ee8c605e3817b855967eb53
+ms.sourcegitcommit: 43197f7402795c37fa7ed43658bc3b8858a41080
+ms.openlocfilehash: 8568978a558b09220eff14a13ccefb3e60c18e87
 
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>如何使用 Service Bus 队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本文介绍了如何使用服务总线队列。 这些示例用 Java 编写并使用 [Azure SDK for Java][Azure SDK for Java]。 涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。
+本文介绍了如何使用服务总线队列。 这些示例采用 Java 编写，并且使用了 [Azure SDK for Java][Azure SDK for Java]。 涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。
 
-## <a name="what-are-service-bus-queues"></a>什么是服务总线队列？
-服务总线队列支持“中转消息传送”通信模型。 在使用队列时，分布式应用程序的组件不会直接相互通信，而是通过充当中介（代理）的队列交换消息。 消息创建方（发送方）将消息传送到队列，然后继续对其进行处理。
-消息使用方（接收方）以异步方式从队列中提取消息并处理它。 创建方不必等待使用方的答复即可继续处理并发送更多消息。 队列为一个或多个竞争使用方提供**先入先出 (FIFO)**消息传递方式。 也就是说，接收方通常会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
-
-![QueueConcepts](./media/service-bus-java-how-to-use-queues/sb-queues-08.png)
-
-Service Bus 队列是一种可用于各种应用场景的通用技术：
-
-* 多层 Azure 应用程序中 Web 角色和辅助角色之间的通信。
-* 混合解决方案中本地应用程序和 Azure 托管应用程序之间的通信。
-* 在不同组织或组织的各部门中本地运行的分布式应用程序组件之间的通信。
-
-利用队列，你可以更轻松地扩大应用程序，并在体系结构启用复原。
-
-## <a name="create-a-service-namespace"></a>创建服务命名空间
-若要开始在 Azure 中使用服务总线队列，必须先创建一个命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
-
-创建命名空间：
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用 Service Bus
-在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用的是 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][用于 Eclipse 的 Azure 工具包]。 然后，可将 **Microsoft Azure Libraries for Java** 添加到项目：
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 **Microsoft Azure Libraries for Java** 添加到项目：
 
 ![](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
 将以下 `import` 语句添加到 Java 文件顶部：
 
-```
+```java
 // Include the following imports to use Service Bus APIs
 import com.microsoft.windowsazure.services.servicebus.*;
 import com.microsoft.windowsazure.services.servicebus.models.*;
@@ -65,7 +48,7 @@ import javax.xml.datatype.*;
 
 **ServiceBusService** 类提供了创建、枚举和删除队列的方法。 以下示例演示了如何通过名为“HowToSample”的命名空间，使用 **ServiceBusService** 对象创建名为“TestQueue”的队列：
 
-```
+```java
 Configuration config =
     ServiceBusConfiguration.configureWithSASAuthentication(
             "HowToSample",
@@ -90,7 +73,7 @@ catch (ServiceException e)
 
 可对 **QueueInfo** 执行某些方法，以调整队列的属性（例如，将默认的生存时间 (TTL) 值设置为应用于发送到队列的消息）。 以下示例演示了如何创建最大大小为 5GB 且名为 `TestQueue` 的队列：
 
-````
+````java
 long maxSizeInMegabytes = 5120;
 QueueInfo queueInfo = new QueueInfo("TestQueue");
 queueInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
@@ -102,7 +85,7 @@ CreateQueueResult result = service.createQueue(queueInfo);
 ## <a name="send-messages-to-a-queue"></a>向队列发送消息
 若要将消息发送到服务总线队列，应用程序将获得 **ServiceBusContract** 对象。 以下代码演示了如何将消息发送到先前在 `HowToSample` 命名空间中创建的 `TestQueue` 队列。
 
-```
+```java
 try
 {
     BrokeredMessage message = new BrokeredMessage("MyMessage");
@@ -116,11 +99,11 @@ catch (ServiceException e)
 }
 ```
 
-在服务总线队列中发送和接收的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准属性（如 [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) 和 [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)）、一个用来保存自定义应用程序特定属性的词典以及大量随机应用程序数据。 应用程序可通过将任何可序列化对象传入到 [BrokeredMessage][BrokeredMessage] 的构造函数中来设置消息的正文，然后将使用适当的序列化程序来序列化对象。 或者，可提供 **java.IO.InputStream** 对象。
+在服务总线队列中发送和接收的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准属性（如 [Label](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) 和 [TimeToLive](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)）、一个用来保存自定义应用程序特定属性的词典以及大量随机应用程序数据。 应用程序可通过将任何可序列化对象传入到 [BrokeredMessage][BrokeredMessage] 的构造函数中来设置消息的正文，然后将使用适当的序列化程序来序列化对象。 或者，可提供 **java.IO.InputStream** 对象。
 
 以下示例演示了如何将五条测试消息发送到在前面的代码段中获取的 `TestQueue` **MessageSender**：
 
-```
+```java
 for (int i=0; i<5; i++)
 {
      // Create message, passing a string message for the body.
@@ -144,7 +127,7 @@ for (int i=0; i<5; i++)
 
 以下示例演示如何使用 **PeekLock** 模式（非默认模式）接收和处理消息。 下面的示例将执行无限循环并在消息达到我们的“TestQueue”后进行处理：
 
-```
+```java
 try
 {
     ReceiveMessageOptions opts = ReceiveMessageOptions.DEFAULT;
@@ -205,18 +188,17 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 如果在处理消息之后，发出 **deleteMessage** 请求之前，应用程序发生崩溃，该消息将在应用程序重新启动时重新传送给它。 此情况通常称作**至少处理一次**，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 通常可使用消息的 **getMessageId** 方法实现此操作，这在多个传送尝试中保持不变。
 
 ## <a name="next-steps"></a>后续步骤
-了解服务总线队列的基础知识后，请参阅[队列、主题和订阅][队列、主题和订阅]以获取更多信息。
+了解服务总线队列的基本信息后，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]以获取更多信息。
 
 有关详细信息，请参阅 [Java 开发人员中心](/develop/java/)。
 
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
-[用于 Eclipse 的 Azure 工具包]: https://msdn.microsoft.com/library/azure/hh694271.aspx
-[队列、主题和订阅]: service-bus-queues-topics-subscriptions.md
-[BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+[Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

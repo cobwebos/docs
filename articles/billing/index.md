@@ -1,17 +1,29 @@
 ---
+title: "Azure 计费文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解 Azure 计费方式，以及如何管理和监视使用量与费用。 教程、常见问题解答、API 参考和其他文档。"
+services: billing
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: billing
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: c67a65aa1053a3acb6059625877ec1c515d49258
+ms.sourcegitcommit: 4a6b1a9e581904f7f7de2a6592dfb163ab2ec45e
+ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
 
 ---
 # <a name="azure-billing-documentation"></a>Azure 计费文档
 
-客户和合作伙伴需要能够准确地预测和管理其 Azure 费用。 随着从 Capex 迁移到 Opex 模型，他们还需要能够执行 Showback 与 Chargeback 对比分析，并提供估计和计费的模式保真度（尤其是对于大型云部署）。
+了解 Azure 计费方式，以及如何监视使用量与费用。 教程、常见问题解答、API 参考和其他文档介绍了如何管理帐户。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/billing/billing-understand-your-bill">
+        <a href="/azure/billing/billing-getting-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -98,17 +110,10 @@ ms.openlocfilehash: c67a65aa1053a3acb6059625877ec1c515d49258
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/billing.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载计费文档 </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

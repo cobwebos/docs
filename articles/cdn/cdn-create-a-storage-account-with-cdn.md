@@ -1,9 +1,9 @@
 ---
-title: "将存储帐户与 CDN 集成 | Microsoft Docs"
+title: "将 Azure 存储帐户与 Azure CDN 集成 | Microsoft Docs"
 description: "了解如何使用 Azure 内容交付网络 (CDN) 通过缓存 Azure 存储中的 blob 来交付高带宽内容。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 52937c2abe3752dea02467c106167bfe4675fd4d
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 3a0db75612531ebf947c011e9e4545f7d9590e20
 
 
 ---
-# <a name="integrate-a-storage-account-with-cdn"></a>将存储帐户与 CDN 集成
+# <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>将 Azure 存储帐户与 Azure CDN 集成
 启用 CDN 可以缓存 Azure 存储空间的内容。 它通过在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 Blob 和计算实例的静态内容，为开发人员提供一个传送高带宽内容的全球性解决方案。
 
 ## <a name="step-1-create-a-storage-account"></a>步骤 1：创建存储帐户
@@ -131,6 +131,6 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

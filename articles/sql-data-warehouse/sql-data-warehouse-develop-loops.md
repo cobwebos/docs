@@ -1,5 +1,5 @@
 ---
-title: "SQL 数据仓库中的循环 | Microsoft 文档"
+title: "在 Azure SQL 数据仓库中利用 T-SQL 循环 | Microsoft Docs"
 description: "有关在开发解决方案时使用 Azure SQL 数据仓库中的 Transact-SQL 循环和替换游标的技巧。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 41bb17ccd175506d4436eff985c52d46fa594576
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: d6409f1eb87787e5e023aa53b7b264116c9d8026
 
 
 ---
@@ -72,12 +72,12 @@ DROP TABLE #tbl;
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[部署概述][部署概述]。
+有关更多开发技巧，请参阅[开发概述][development overview]。
 
 <!--Image references-->
 
 <!--Article references-->
-[部署概述]: sql-data-warehouse-overview-develop.md
+[development overview]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 [WHILE]: https://msdn.microsoft.com/library/ms178642.aspx
@@ -87,6 +87,6 @@ DROP TABLE #tbl;
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "针对 SQL 数据库审核的下层客户端支持和 IP 终结点更改 | Microsoft 文档"
-description: "了解有关针对 SQL 数据库审核的下层客户端支持和 IP 终结点更改的信息。"
+title: "Azure SQL 数据库的审核、TDS 重定向和 IP 终结点 | Microsoft Docs"
+description: "了解在 Azure SQL 数据库中实现表审核时，审核、TDS 重定向和 IP 终结点的变化。"
 services: sql-database
 documentationcenter: 
 author: ronitr
@@ -13,16 +13,17 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2016
+ms.date: 01/05/2017
 ms.author: ronitr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 06c1dfbcfa365f6c34708021f63a756e295e2ab4
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: bcc02abb62b21aadb10e62320b02b33c3c244c17
+ms.lasthandoff: 02/17/2017
 
 
 ---
-# <a name="sql-database---downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL 数据库 - 针对审核的下层客户端支持和 IP 终结点更改
-对于支持 TDS 重定向的 SQL 客户端，可以自动使用[审核](sql-database-auditing-get-started.md)。
+# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL 数据库 - 针对审核的下层客户端支持和 IP 终结点更改
+对于支持 TDS 重定向的 SQL 客户端，可以自动使用[数据库审核](sql-database-auditing.md)。 请注意，使用 Blob 审核方法时，重定向不适用。
 
 ## <a name="a-idsubheading-1adownlevel-clients-support"></a><a id="subheading-1"></a>下层客户端支持
 任何实现了 TDS 7.4 的客户端同样应当支持重定向。 例外情况包括不完全支持重定向功能的 JDBC 4.0 以及未实现重定向的 Tedious（适用于 Node.JS）。
@@ -43,7 +44,7 @@ ms.openlocfilehash: 06c1dfbcfa365f6c34708021f63a756e295e2ab4
 **注释：**上面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。
 
 ## <a name="a-idsubheading-2aip-endpoint-changes-when-enabling-auditing"></a><a id="subheading-2"></a>启用审核时的 IP 终结点的更改
-请注意，启用审核时将更改数据库的 IP 终结点。 如果你有严格的防火墙设置，请相应地更新这些防火墙设置。
+请注意，启用表审核时，数据库的 IP 终结点将发生更改。 如果你有严格的防火墙设置，请相应地更新这些防火墙设置。
 
 新的数据库 IP 终结点将取决于数据库区域：
 
@@ -55,9 +56,11 @@ ms.openlocfilehash: 06c1dfbcfa365f6c34708021f63a756e295e2ab4
 | 澳大利亚东南部 |191.239.184.223、40.127.85.81、191.239.161.83、40.127.81.130 |
 | 巴西南部 |104.41.44.161、104.41.62.230、23.97.99.54、104.41.59.191 |
 | 美国中部 |104.43.255.70、40.83.14.7、23.99.128.244、40.83.15.176 |
+| 美国中部 EUAP |52.180.178.16, 52.180.176.190 |
 | 东亚 |23.99.125.133、13.75.40.42、23.97.71.138、13.94.43.245 |
 | 美国东部 2 |104.209.141.31、104.208.238.177、191.237.131.51、104.208.235.50 |
 | 美国东部 |23.96.107.223、104.41.150.122、23.96.38.170、104.41.146.44 |
+| 美国东部 EUAP |52.225.190.86, 52.225.191.187 |
 | 印度中部 |104.211.98.219、104.211.103.71 |
 | 印度南部 |104.211.227.102、104.211.225.157 |
 | 印度西部 |104.211.161.152、104.211.162.21 |
@@ -69,12 +72,10 @@ ms.openlocfilehash: 06c1dfbcfa365f6c34708021f63a756e295e2ab4
 | 亚洲东南部 |104.215.198.156、13.76.252.200、23.97.51.109、13.76.252.113 |
 | 欧洲西部 |104.40.230.120、13.80.23.64、137.117.171.161、13.80.8.37、104.47.167.215、40.118.56.193、104.40.176.73、40.118.56.20 |
 | 美国西部 |191.236.123.146、138.91.163.240、168.62.194.148、23.99.6.91 |
-| 加拿大中部 |13.88.248.106 |
-| 加拿大东部 |40.86.227.82 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+| 美国西部 2 |13.66.224.156, 13.66.227.8 |
+| 美国中西部 |52.161.29.186, 52.161.27.213 |
+| 加拿大中部 |13.88.248.106, 13.88.248.110 |
+| 加拿大东部 |40.86.227.82, 40.86.225.194 |
+| 英国北部 |13.87.101.18, 13.87.100.232 |
+| 英国南部 2 |13.87.32.202, 13.87.32.226 |
 

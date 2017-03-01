@@ -1,5 +1,5 @@
 ---
-title: "在计算机上安装 Jupyter 笔记本并连接到 HDInsight Spark 群集 | Microsoft Docs"
+title: "在本地安装 Jupyter 笔记本并连接到 Azure Spark 群集 | Microsoft Docs"
 description: "了解如何在计算机上本地安装 Jupyter 笔记本并将其连接到 Azure HDInsight 上的 Apache Spark 群集。"
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
-ms.openlocfilehash: e6aeacd091e58a010348c031294f7b7c98df57fb
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 26cdaf4dc68876fa2bed4ca15d8bfb7fd3ac4b6d
 
 
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight-linux"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight Linux 上的 Apache Spark 群集
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-cluster-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark 群集
+
 在本文中，你将了解如何安装具有自定义 PySpark（适用于 Python）以及具有 Spark（适用于 Scala）内核和 Spark magic 的 Jupyter 笔记本，然后将笔记本连接到 HDInsight 群集。 在本地计算机上安装 Jupyter 的原因多种多样，同时这种安装也面临着多种难题。 有关原因和难题的列表，请参阅本文末尾的[为何要在计算机上安装 Jupyter](#why-should-i-install-jupyter-on-my-computer)。
 
 在计算机上安装 Jupyter 和 Spark magic 包括三个重要步骤。
@@ -36,7 +37,7 @@ ms.openlocfilehash: e6aeacd091e58a010348c031294f7b7c98df57fb
 此处所列的先决条件不适用于安装 Jupyter。 这些先决条件适用于安装笔记本之后将 Jupyter 笔记本连接到 HDInsight 群集。
 
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](hdinsight-apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>在计算机上安装 Jupyter 笔记本
 必须先安装 Python 才能安装 Jupyter 笔记本。 Python 和 Jupyter 都作为 [Ananconda分发版](https://www.continuum.io/downloads)的一部分提供。 当你安装 Anaconda 时，实际上安装的是某个 Python 分发版。 安装 Anaconda 之后，可通过运行一个命令来添加 Jupyter 安装。 本部分提供必须遵循的说明。
@@ -89,7 +90,7 @@ ms.openlocfilehash: e6aeacd091e58a010348c031294f7b7c98df57fb
 
         python -c "import base64; print(base64.b64encode('{YOURPASSWORD}'))"
 
-5. 在 `config.json` 中配置相应的检测信号设置：
+5. 在 `config.json` 中配置相应的检测信号设置。 应以早前添加 `kernel_python_credentials` 和 `kernel_scala_credentials` 代码片段的等级添加这些设置。 有关添加该信号检测设置的方法和位置的示例，请参阅此[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)。
 
     * 对于 `sparkmagic 0.5.0`（群集 v3.4），包括：
 
@@ -114,7 +115,7 @@ ms.openlocfilehash: e6aeacd091e58a010348c031294f7b7c98df57fb
 
    1. 创建新的笔记本。 在右下角单击“新建”。 用户应该会看到默认内核 **Python2** 和安装的两个新内核：**PySpark** 和 **Spark**。
 
-       ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Create a new Jupyter notebook")
+       ![创建新的 Jupyter 笔记本](./media/hdinsight-apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "创建新的 Jupyter 笔记本")
 
         单击“PySpark”。
 
@@ -170,6 +171,6 @@ ms.openlocfilehash: e6aeacd091e58a010348c031294f7b7c98df57fb
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

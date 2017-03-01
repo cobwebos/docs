@@ -1,6 +1,6 @@
 ---
-title: "监视 Java Web 应用中的依赖项、异常和执行时间"
-description: "使用 Application Insights 针对 Java 网站进行更大范围的监视"
+title: "在 Azure Application Insights 中监视 Java Web 应用的性能 | Microsoft Docs"
+description: "使用 Application Insights 监视 Java 网站的扩展性能和使用情况。"
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 16ffd2ea5be6a18f59065a20d4c801f89bf030cf
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: a481c7c62383c92a5dfab0e3f2b1b4f4f0e5ddf5
 
 
 ---
 # <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、异常和执行时间
 
 
-如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java代理来获取更深入的见解：
+如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
 
 * **依赖项：**有关应用程序对其他组件的调用的数据，包括：
   * 通过 HttpClient、OkHttp 和 RestTemplate (Spring) 发出的 **REST 调用**。
@@ -91,9 +91,9 @@ ms.openlocfilehash: 16ffd2ea5be6a18f59065a20d4c801f89bf030cf
 默认情况下，`reportExecutionTime` 为 true，`reportCaughtExceptions` 为 false。
 
 ## <a name="view-the-data"></a>查看数据
-在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示[在“性能”磁贴][指标]下。
+在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示在[“性能”磁贴下][metrics]。
 
-若要搜索依赖项、异常和方法报告的单个实例，请打开[搜索][诊断]。
+若要搜索依赖项、异常和方法报告的单个实例，请打开[搜索][diagnostic]。
 
 [诊断依赖项问题 - 了解详细信息](app-insights-asp-net-dependencies.md#diagnosis)。
 
@@ -103,18 +103,18 @@ ms.openlocfilehash: 16ffd2ea5be6a18f59065a20d4c801f89bf030cf
 
 <!--Link references-->
 
-[API]: app-insights-api-custom-events-metrics.md
+[api]: app-insights-api-custom-events-metrics.md
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
-[可用性]: app-insights-monitor-web-app-availability.md
-[诊断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
-[指标]: app-insights-metrics-explorer.md
-[用法]: app-insights-web-track-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[usage]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

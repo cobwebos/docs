@@ -1,14 +1,26 @@
 ---
+title: "Azure 流分析文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。"
+services: stream-analytics
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: stream-analytics
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: c57faa7c307420bb92bec2f661e6739a7cfca7ee
+ms.sourcegitcommit: 4835208ce6dcff978cb7b4d722763f705dc6dd33
+ms.openlocfilehash: 8cfa25410edc7c54e9139a596ab39d8d580f44a5
 
 ---
 
 # <a name="stream-analytics-documentation"></a>流分析文档
 
-Azure 流分析是一种完全托管的实时事件处理引擎，可帮助开启来自数据的深入见解。  通过流分析，可以针对设备、传感器、网站、社交媒体、应用程序、基础设施系统等的数据流，轻松地设置实时分析计算。
+了解如何使用流分析（完全托管的事件处理引擎）在云中运行物联网 (IoT) 分析。 教程和其他文档介绍了如何实时分析来自应用程序、传感器、设备、社交媒体等的数据。 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -123,13 +135,14 @@ Azure 流分析是一种完全托管的实时事件处理引擎，可帮助开�
 
 ---
 
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="Command-Line</h3>
+                    <div class="cardText">
+                        <h3>命令行</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics">PowerShell</a></p>
                     </div>
                 </div>
@@ -140,7 +153,8 @@ Azure 流分析是一种完全托管的实时事件处理引擎，可帮助开�
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="Languages</h3>
+                    <div class="cardText">
+                        <h3>语言</h3>
                         <p><a href="/dotnet/api/streamanalytics.tests.operationtests">.NET</a></p>
                         <p><a href="https://msdn.microsoft.com/library/azure/dn834998">查询语言</a></p>
                     </div>
@@ -152,7 +166,8 @@ Azure 流分析是一种完全托管的实时事件处理引擎，可帮助开�
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="REST</h3>
+                    <div class="cardText">
+                        <h3>REST</h3>
                         <p><a href="/rest/api/streamanalytics">REST API 参考</a></p>
                     </div>
                 </div>
@@ -161,16 +176,10 @@ Azure 流分析是一种完全托管的实时事件处理引擎，可帮助开�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/stream-analytics.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载流分析文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO3-->
 
 

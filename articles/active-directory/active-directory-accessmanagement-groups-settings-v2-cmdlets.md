@@ -13,7 +13,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -26,8 +26,8 @@ ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
 > * [Azure 门户](active-directory-groups-create-azure-portal.md)
 > * [Azure 经典门户](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-> 
-> 
+>
+>
 
 以下文档提供的示例介绍如何使用 PowerShell 在 Azure Active Directory (Azure AD) 中管理组。  该文档还介绍如何使用 Azure AD PowerShell 预览版模块进行设置。 首先，必须[下载 Azure AD PowerShell 模块](http://go.microsoft.com/fwlink/p/?LinkId=828627)。
 
@@ -229,7 +229,6 @@ ms.openlocfilehash: 4f12fdf6732d44903fb1e971f05d0233d7aff08e
 
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
 
 
 

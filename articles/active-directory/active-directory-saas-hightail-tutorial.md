@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d56e03d45969f80e8f1121741c0342268efb3ca0
+ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
+ms.openlocfilehash: c0666f50980f5983747f8365e64eea603458db3f
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,8 +27,8 @@ ms.openlocfilehash: d56e03d45969f80e8f1121741c0342268efb3ca0
 将 Hightail 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Hightail
-* 可以让用户使用其 Azure AD 帐户自动登录到 Hightail（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以让用户使用其 Azure AD 帐户自动登录到 Hightail 单一登录 (SSO)
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -37,9 +38,8 @@ ms.openlocfilehash: d56e03d45969f80e8f1121741c0342268efb3ca0
 * Azure AD 订阅
 * 已启用 Hightail 单一登录的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。 
 > 
 
 测试本教程中的步骤应遵循以下建议：
@@ -55,7 +55,7 @@ ms.openlocfilehash: d56e03d45969f80e8f1121741c0342268efb3ca0
 1. 从库中添加 Hightail
 2. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-hightail-from-the-gallery"></a>从库中添加 Hightail
+## <a name="add-hightail-from-the-gallery"></a>从库中添加 Hightail
 若要配置 Hightail 与 Azure AD 的集成，需要从库中将 Hightail 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Hightail，请执行以下步骤：**
@@ -80,7 +80,7 @@ ms.openlocfilehash: d56e03d45969f80e8f1121741c0342268efb3ca0
    
     ![在库中选择应用](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 本部分的目的是说明如何基于一个名为“Britta Simon”的测试用户使用 Hightail 配置和测试 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Hightail 用户。 换句话说，需要在 Azure AD 用户与 Hightail 中相关用户之间建立链接关系。
@@ -89,13 +89,13 @@ ms.openlocfilehash: d56e03d45969f80e8f1121741c0342268efb3ca0
 
 若要使用 Hightail 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 Hightail 测试用户](#creating-a-hightail-test-user)** - 在 Hightail 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 Hightail 应用程序中配置单一登录。
 
 Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可从应用程序的“属性”选项卡管理这些属性的值。 以下屏幕截图显示一个示例。 
@@ -116,18 +116,12 @@ Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用�
    | 电子邮件 |user.mail |
    | UserIdentity |user.mail |
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“添加用户属性”，打开“添加用户属性”对话框。
+    1. 单击“添加用户属性”，打开“添加用户属性”对话框。
    
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_general_82.png) 
-
-    b. 在“属性名称”文本框中，键入为该行显示的属性名称。
-
-    c. 在“属性值”列表中，选择为该行显示的属性值。
-
-    d.单击“下一步”。 单击“完成”。    
-
-
-
+    2. 在“属性名称”文本框中，键入为该行显示的属性名称。
+    3. 在“属性值”列表中，选择为该行显示的属性值。
+    4. 单击“完成”。    
 
 1. 在顶部菜单中，单击“快速启动”。
    
@@ -138,58 +132,44 @@ Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用�
 3. 在“配置应用设置”对话框页上，如果要在“IDP 发起的模式”下配置应用程序，请执行以下步骤，然后单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_04.png) 
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“回复 URL”文本框中，使用以下模式键入 URL：**"https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse"**
-
-    b. 单击“下一步”
+    1. 在“回复 URL”文本框中，使用以下模式键入 URL：**"https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse"**
+    2. 单击“资源组名称” 的 Azure 数据工厂。
 
 1. 如果要在“配置应用设置”对话框页上以“SP 发起的模式”配置应用程序，则单击“显示高级设置(可选)”，然后输入“登录 URL”，并单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_06.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Hightail 应用程序的 URL：**https://www.hightail.com/loginSSO**。 这是要使用 SSO 的所有客户的常见登录页。
-   
-    b. 单击“下一步”
+    1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Hightail 应用程序的 URL：**https://www.hightail.com/loginSSO**。 这是要使用 SSO 的所有客户的常见登录页。
+    2. 单击“资源组名称” 的 Azure 数据工厂。
 2. 在“配置 Hightail 的单一登录”页上，执行以下步骤，然后单击“下一步”：
    
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_05.png) 
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将 base-64 编码的证书文件保存在计算机上。
-
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-
-    > [AZURE.NOTE] 在 Hightail 应用上配置单一登录之前，请将 Hightail 团队的电子邮件域添加到允许列表，以便使用该域的所有用户可以利用单一登录功能。
+    1. 单击“下载证书”，然后将 base-64 编码的证书文件保存在计算机上。
+    2. 单击“资源组名称” 的 Azure 数据工厂。
+    >[!NOTE] 
+    >在 Hightail 应用上配置单一登录之前，请将 Hightail 团队的电子邮件域添加到允许列表，以便使用该域的所有用户可以利用单一登录功能。
+    >
 
 1. 若要为应用程序配置 SSO，需要以管理员身份登录到 Hightail 租户。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在顶部菜单中，单击“帐户”选项卡，然后选择“配置 SAML”。
-   
+    1. 在顶部菜单中，单击“帐户”选项卡，然后选择“配置 SAML”。
+ 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_001.png) 
-
-    b. 选中“启用 SAML 身份验证”复选框。
+    2. 选中“启用 SAML 身份验证”复选框。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_002.png) 
-
-    c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“SAML 令牌签名证书”文本框。
+    3. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“SAML 令牌签名证书”文本框。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_003.png) 
-
-
-    d.单击“下一步”。 将 Azure AD 中的“远程登录 URL”复制到 Hightail 中的“SAML 授权机构(标识提供者)”。
+    4. 将 Azure AD 中的“远程登录 URL”复制到 Hightail 中的“SAML 授权机构(标识提供者)”。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_005.png)
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_004.png)
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 如果要在“IDP 发起的模式”下配置应用程序，请选择“标识提供者(IdP)发起的登录”。 如果使用“SP 发起的模式”，请选择“服务提供程序(SP)发起的登录”。
+    5. 如果要在“IDP 发起的模式”下配置应用程序，请选择“标识提供者(IdP)发起的登录”。 如果使用“SP 发起的模式”，请选择“服务提供程序(SP)发起的登录”。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_006.png)
-
-    f. 复制实例的 SAML 使用者 URL 并将其粘贴到“回复 URL”文本框中，如步骤 4 中所示。 
-
-    g. 单击“保存” 。
-
-
+    6. 复制实例的 SAML 使用者 URL 并将其粘贴到“回复 URL”文本框中，如步骤 4 中所示。 
+    7. 单击“保存” 。
 
 1. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
@@ -198,8 +178,8 @@ Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用�
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 经典门户中创建名为“Britta Simon”的测试用户。
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。
 
 在“用户列表”中，选择“Britta Simon”。
 
@@ -221,24 +201,18 @@ Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用�
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-hightail-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    1. 对于“用户类型”，选择“组织中的新用户”。
+    2. 在“用户名”文本框中，键入“BrittaSimon”。
+    3. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-hightail-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-hightail-tutorial/create_aaduser_07.png) 
@@ -246,21 +220,19 @@ Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用�
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-hightail-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    1. 写下“新密码”的值。
+    2. 单击“完成”。   
 
-### <a name="creating-a-hightail-test-user"></a>创建 Hightail 测试用户
+### <a name="create-a-hightail-test-user"></a>创建 Hightail 测试用户
 本部分的目的是在 Hightail 中创建名为“Britta Simon”的用户。 
 
 本部分不存在任何操作项。 Hightail 支持基于自定义声明进行实时用户预配。 如果已配置自定义声明（如前面的**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)**部分中所述），将自动在应用程序中创建尚不存在的用户。 
 
-> [!NOTE]
-> 如果需要手动创建用户，则需要通过 [support@hightail.com](mailto:support@hightail.com) 联系 Hightail 支持团队。
-> 
+>[!NOTE]
+>如果需要手动创建用户，则需要通过 [support@hightail.com](mailto:support@hightail.com) 联系 Hightail 支持团队。 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 本部分的目的是通过授予 Britta Simon 访问 Hightail 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户][200] 
@@ -281,8 +253,8 @@ Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用�
 
 ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用“访问面板”测试 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Hightail 磁贴时，你应自动登录到 Hightail 应用程序。
 
@@ -307,9 +279,4 @@ Hightail 应用程序需要采用特定格式的 SAML 断言。 请为此应用�
 [203]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

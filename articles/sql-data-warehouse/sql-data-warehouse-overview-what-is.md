@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;mausher;kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff2d30fcf53028754fc5e1a4b6b52323855a48b4
+ms.sourcegitcommit: 6241eb0e7ea091dffcb0ae770f8d89f24a19eb67
+ms.openlocfilehash: ff2f688d42924edb1596cb2db474a58748f2b44c
 
 
 ---
@@ -25,7 +25,7 @@ Azure SQL 数据仓库是一种基于云的向外扩展数据库，可以处理�
 
 SQL 数据仓库：
 
-* 将 SQL Server 关系数据库与 Azure 云向外扩展功能相结合。 你可以在几秒钟内增加、减少、暂停或恢复计算。 你可通过在需要时向外扩展 CPU，并在非高峰时段削减使用量，来节省成本。
+* 将 SQL Server 关系数据库与 Azure 云向外扩展功能相结合。 可以在短时间内增加、减少、暂停或恢复计算。 你可通过在需要时向外扩展 CPU，并在非高峰时段削减使用量，来节省成本。
 * 利用 Azure 平台。 它易于部署、无缝维护并由于自动备份而完全容错。
 * 它是 SQL Server 生态系统的补充。 你可以使用熟悉的 SQL Server Transact-SQL (T-SQL) 和工具进行开发。
 
@@ -122,10 +122,10 @@ Polybase 可让你使用熟悉的 T-SQL 命令来利用不同源中的数据。 
 * PolyBase 可用于访问 Blob 存储，该存储也用作 HDInsight 群集的存储。 这样就可以使用关系和非关系工具访问同一数据。
 
 ## <a name="sla"></a>SLA
-SQL 数据仓库提供产品级别的服务级别协议 (SLA) 作为 Microsoft Online Services SLA 的一部分。 有关详细信息，请访问 [SQL 数据仓库的 SLA][SLA for SQL Data Warehouse]。 有关所有其他产品的 SLA 信息，你可以访问[服务级别协议] Azure 页或在[批量许可][Volume Licensing]页上下载它们。 
+SQL 数据仓库提供产品级别的服务级别协议 (SLA) 作为 Microsoft Online Services SLA 的一部分。 有关详细信息，请访问 [SQL 数据仓库的 SLA][SLA for SQL Data Warehouse]。 有关所有其他产品的 SLA 信息，可访问[服务级别协议] Azure 页面，或在[批量许可][Volume Licensing]页面下载。 
 
 ## <a name="next-steps"></a>后续步骤
-对 SQL 数据仓库有了初步的认识后，请继续了解如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。 如果不熟悉 Azure，当你遇到新术语时， [Azure 词汇表][Azure glossary]可以提供帮助。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
+对 SQL 数据仓库有了初步的认识后，请继续学习如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。 如果你不熟悉 Azure，在遇到新术语时，可以参考 [Azure 术语表][Azure glossary]。 或者，查看一下以下一些其他 SQL 数据仓库资源。  
 
 * [客户成功案例]
 * [博客]
@@ -142,13 +142,13 @@ SQL 数据仓库提供产品级别的服务级别协议 (SLA) 作为 Microsoft O
 
 <!--Article references-->
 [创建支持票证]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[加载示例数据]: ./sql-data-warehouse-load-sample-databases.md
-[创建 SQL 数据仓库]: ./sql-data-warehouse-get-started-provision.md
-[迁移文档]: ./sql-data-warehouse-overview-migrate.md
-[SQL 数据仓库解决方案合作伙伴]: ./sql-data-warehouse-partner-business-intelligence.md
-[集成工具概述]: ./sql-data-warehouse-overview-integrate.md
-[备份和还原概述]: ./sql-data-warehouse-restore-database-overview.md
-[Azure 词汇表]: ../azure-glossary-cloud-terminology.md
+[load sample data]: ./sql-data-warehouse-load-sample-databases.md
+[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
+[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
+[Azure glossary]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
@@ -161,12 +161,12 @@ SQL 数据仓库提供产品级别的服务级别协议 (SLA) 作为 Microsoft O
 [堆栈溢出论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SQL 数据仓库的 SLA]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
-[批量许可]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
+[SLA for SQL Data Warehouse]: https://azure.microsoft.com/en-us/support/legal/sla/sql-data-warehouse/v1_0/
+[Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [服务级别协议]: https://azure.microsoft.com/en-us/support/legal/sla/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 中设计安全卫生保健解决方案的实用指南 | Microsoft 文档"
-description: " 本文帮助你了解如何通过使用 Azure 服务和你配置功能改进卫生保健解决方案的安全性。 "
+description: " 本文有助于了解如何通过使用 Azure 服务和配置的功能提升卫生保健解决方案的安全性. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2016
+ms.date: 01/07/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 050128d937b7cbb7728264594a4399eaae0da57d
+ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
+ms.openlocfilehash: 34ded89eb7fe005be2341f96e5b883ec73d9e0a5
 
 
 ---
@@ -34,7 +34,6 @@ ms.openlocfilehash: 050128d937b7cbb7728264594a4399eaae0da57d
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "为 Azure MFA 分配许可证 | Microsoft Docs"
+title: "为 Azure MFA 分配许可证 | Microsoft 文档"
 description: "了解如何为 Microsoft Azure 多重身份验证分配许可证。"
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/17/2016
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c93db18866478556e91da8acbc9f0c749b65dc62
+ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
+ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
 
 
 ---
@@ -38,9 +38,11 @@ ms.openlocfilehash: c93db18866478556e91da8acbc9f0c749b65dc62
 9. 你应会看到一条消息指出分配了多少个许可证，以及有多少个许可证分配失败。  单击“确定” 。
    ![分配许可证](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
+## <a name="next-steps"></a>后续步骤
+
+- 有关详细信息，请参阅[什么是 Microsoft Azure Active Directory 许可？](../active-directory/active-directory-licensing-what-is.md)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

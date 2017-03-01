@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/20/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: ac73b5c2ece8044d9f75e017428c43259f8a9357
 
 
 ---
@@ -47,8 +47,7 @@ ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
 * 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。 
 
 ## <a name="scenario-description"></a>方案描述
-本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。  
-本教程中概述的方案包括两个主要构建基块：
+本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Promapp 
 2. 配置并测试 Azure AD 单一登录
@@ -107,17 +106,16 @@ ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
    
     ![Azure AD 单一登录][8] 
    
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Promapp 站点的 URL（例如：*https://companyname.promapp.com/instancename*）。
-
-     b. 单击“资源组名称” 的 Azure 数据工厂。
+   1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Promapp 站点的 URL（例如：*https://companyname.promapp.com/instancename*）。
+   2. 单击“资源组名称” 的 Azure 数据工厂。
 
 1. 在“配置 Promapp 的单一登录”页上，执行以下步骤：
    
     ![Azure AD 单一登录][9] 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+   1. 单击“下载证书”，然后将文件保存在计算机上。
+   2. 单击“资源组名称” 的 Azure 数据工厂。
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
 2. 以管理员身份登录 Promapp 公司站点。 
 3. 在顶部菜单中，单击“管理员”。 
    
@@ -129,11 +127,9 @@ ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
    
     ![Azure AD 单一登录][14] 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Azure 经典门户的“配置 Promapp 的单一登录”对话框中，复制“远程登录 URL”值并将其粘贴到“SSO-登录 URL”文本框中，然后单击“保存”。
-   
-    b. 选择“可选”作为“SSO - 单一登录模式”，然后单击“保存”。
-   
-    c. 在记事本中打开下载的证书，复制除第一行 (*-----BEGIN CERTIFICATE-----*) 和最后一行 (*-----END CERTIFICATE-----*) 之外的证书内容，将其粘贴到“SSO-x.509 证书”文本框中，然后单击“保存”。
+   1. 在 Azure 经典门户的“配置 Promapp 的单一登录”对话框中，复制“远程登录 URL”值并将其粘贴到“SSO-登录 URL”文本框中，然后单击“保存”。
+   2. 选择“可选”作为“SSO - 单一登录模式”，然后单击“保存”。
+   3. 在记事本中打开下载的证书，复制除第一行 (*-----BEGIN CERTIFICATE-----*) 和最后一行 (*-----END CERTIFICATE-----*) 之外的证书内容，将其粘贴到“SSO-x.509 证书”文本框中，然后单击“保存”。
 6. 在 Azure AD 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。 
    
     ![Azure AD 单一登录][10]
@@ -162,23 +158,20 @@ ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-promapp-tutorial/create_aaduser_05.png)  
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+   1. 在“用户类型”中，选择“你的组织中的新用户”。
+   2. 在“用户名”文本框中，键入“BrittaSimon”。
+   3. 单击“下一步”。
    
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-promapp-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
+   1. 在“名字”文本框中，键入“Britta”。   
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“下一步”。
    
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-promapp-tutorial/create_aaduser_07.png) 
@@ -186,9 +179,8 @@ ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-promapp-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+   1. 写下“新密码”的值。
+   2. 单击“完成”。   
 
 ### <a name="creating-a-promapp-test-user"></a>创建 Promapp 测试用户
 Promapp 应用程序支持实时预配。
@@ -259,6 +251,6 @@ Promapp 应用程序支持实时预配。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

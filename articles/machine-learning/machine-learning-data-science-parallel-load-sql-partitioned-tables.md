@@ -1,5 +1,5 @@
 ---
-title: "使用 SQL 已分区表并行批量导入数据 | Microsoft Docs"
+title: "生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server | Microsoft 文档"
 description: "使用 SQL 分区表并行批量导入数据"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: e6c45f4be168cef1a05958624f666097779e76f6
-ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
 
 
 ---
@@ -24,11 +24,9 @@ ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
 本文档介绍如何构建分区表来快速将数据并行批量导入 SQL Server 数据库。 若要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>创建一个新数据库和一组文件组
-* [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）
-* 将数据库文件组添加到将保存已分区物理文件的数据库
-  
-  该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成
-* 向每个数据库文件组中添加一个或多个文件（根据需要）
+* [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）。
+* 将数据库文件组添加到将保存已分区物理文件的数据库。该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成
+* 向每个数据库文件组中添加一个或多个文件（根据需要）。
   
   > [!NOTE]
   > 指定保存此分区数据的目标文件组和将存储文件组数据的物理数据库文件名称。
@@ -185,6 +183,6 @@ ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 9d6132e1a01be489b8e8e28a0219cf8a0b50b318
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
 这是[使用 Mobile Engagement REST API 进行身份验证](mobile-engagement-api-authentication.md)一个附录文档。 请务必先阅读它来获取相关内容。 此处描述一种使用 Azure 门户为 Mobile Engagement REST API 进行一次性身份验证设置的替代方法。 
 
 > [!NOTE]
-> 下面的说明均基于此 [Active Directory 指南](../resource-group-create-service-principal-portal.md)，并且是根据 Mobile Engagement API 身份验证的要求进行定制的。 因此，如果你想详细了解以下步骤，请参考这些说明。 
+> 下面的说明均基于此 [Active Directory 指南](../azure-resource-manager/resource-group-create-service-principal-portal.md)，并且是根据 Mobile Engagement API 身份验证的要求进行定制的。 因此，如果你想详细了解以下步骤，请参考这些说明。 
 > 
 > 
 
@@ -137,6 +137,6 @@ ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

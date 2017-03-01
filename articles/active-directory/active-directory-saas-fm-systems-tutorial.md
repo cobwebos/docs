@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 789ec6f0a230f49ecd935bc85ea4ad984e936da9
-ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
+ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
+ms.openlocfilehash: e92f8cb6e980a0552b8ff836ed521e069ba811bb
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 3. 配置用户设置
 4. 分配用户
 
-![方案](./media/active-directory-saas-fm-systems-tutorial/IC795899.png "Scenario")
+![方案](./media/active-directory-saas-fm-systems-tutorial/IC795899.png "方案")
 
 ## <a name="enabling-the-application-integration-for-fmsystems"></a>为 FM:Systems 启用应用程序集成
 本部分的目的是概述如何为 FM:Systems 启用应用程序集成。
@@ -45,23 +45,23 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
    
     ![Active Directory](./media/active-directory-saas-fm-systems-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-fm-systems-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-fm-systems-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-fm-systems-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-fm-systems-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-    ![从库中添加应用程序](./media/active-directory-saas-fm-systems-tutorial/IC749322.png "Add an application from gallerry")
+    ![从库添加应用程序](./media/active-directory-saas-fm-systems-tutorial/IC749322.png "从库添加应用程序")
 
 6. 在“搜索”框中，键入“FM:Systems”。
    
-    ![应用程序库](./media/active-directory-saas-fm-systems-tutorial/IC795900.png "Application Gallery")
+    ![应用程序库](./media/active-directory-saas-fm-systems-tutorial/IC795900.png "应用程序库")
 
 7. 在结果窗格中，选择“FM:Systems”，然后单击“完成”以添加该应用程序。
    
@@ -74,15 +74,15 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在 Azure 经典门户中的“FM:Systems”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC790810.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC790810.png "配置单一登录")
 
 2. 在“你希望用户如何登录 FM:Systems”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC795901.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC795901.png "配置单一登录")
 
 3. 在“配置应用 URL”页上，执行以下步骤：
    
-    ![配置应用 URL](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "Configure App URL")
+    ![配置应用 URL](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "配置应用 URL")
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“FM:Systems 登录 URL”文本框中，键入 FM:Systems“回复 URL”（例如：*https://dpr.fmshosted.com/fminteract/ConsumerService2.aspx*）。  
       
@@ -95,7 +95,7 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 
 4. 在“配置 FM:Systems 的单一登录”页上，若要下载元数据，请单击“下载元数据”，然后将元数据保存在计算机上。
    
-    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC795903.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC795903.png "配置单一登录")
 
 5. 将下载的元数据文件提交给 FM:Systems 支持团队。
    
@@ -106,7 +106,7 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
     > 
 6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC795904.png "Configure Single Sign-On")
+    ![配置单一登录](./media/active-directory-saas-fm-systems-tutorial/IC795904.png "配置单一登录")
    
 ## <a name="configuring-user-provisioning"></a>配置用户设置
 
@@ -118,7 +118,7 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 
 2. 转到“系统管理”\>“管理安全性”\>“用户”\>“用户列表”。
    
-    ![系统管理](./media/active-directory-saas-fm-systems-tutorial/IC795905.png "System Administration")
+    ![系统管理](./media/active-directory-saas-fm-systems-tutorial/IC795905.png "Administration")
 
 3. 单击“创建用户”。
    
@@ -126,11 +126,11 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 
 4. 在“创建用户”部分中，执行以下步骤：
    
-    ![创建用户](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "Create User")
+    ![创建用户](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "创建用户")
    
-    a. 键入要在相关文本框中预配的有效 Azure Active Directory 帐户的用户名、密码、确认密码、电子邮件地址和员工 ID。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 键入要在相关文本框中预配的有效 Azure Active Directory 帐户的用户名、密码、确认密码、电子邮件地址和员工 ID。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
  
 
 ## <a name="assigning-users"></a>分配用户
@@ -140,17 +140,17 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“FM:Systems”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-fm-systems-tutorial/IC795908.png "Assign Users")
+    ![分配用户](./media/active-directory-saas-fm-systems-tutorial/IC795908.png "分配用户")
 
-3. 选择测试用户，单击“分配”，然后单击“是”，确认分配。
+3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-fm-systems-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-fm-systems-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

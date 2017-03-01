@@ -4,7 +4,7 @@ description: "有关如何在业务流程中将 Logic Apps 挂接到 Azure IoT �
 services: 
 suite: iot-suite
 documentationcenter: 
-author: aguilaaj
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: 4629a7af-56ca-4b21-a769-5fa18bc3ab07
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2016
-ms.author: araguila
+ms.date: 02/08/2017
+ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
+ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
+ms.openlocfilehash: 609de3ff0fb14aa98b28572dce1eaeb8a4412d93
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
    
     ![](media/iot-suite-logic-apps-tutorial/logicappsdesigner.png)
 6. 选择“**请求**”。 此操作会将带特定 JSON 格式化有效负载的传入 HTTP 请求指定为触发器。
-7. 将以下内容贴到请求正文 JSON 架构中：
+7. 将以下代码贴到请求正文 JSON 架构中：
    
     ```
     {
@@ -172,6 +172,6 @@ ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

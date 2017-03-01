@@ -1,5 +1,5 @@
 ---
-title: "通过 Python 使用 Azure Data Lake Store 入门 | Microsoft 文档"
+title: "通过 Python SDK 开始使用 Azure Data Lake Store | Microsoft 文档"
 description: "了解如何使用 Python SDK 处理 Data Lake Store 帐户和文件系统。"
 services: data-lake-store
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/29/2016
+ms.date: 01/10/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f29f36effd858f164f7b6fee8e5dab18211528b3
-ms.openlocfilehash: 6f724576badb7cf3625a139c416860b7e43ed036
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 8a3f3d8bfe670f2a4d1a4642b2380764aa6daeb4
 
 
 ---
@@ -74,12 +74,19 @@ pip install azure-datalake-store
     ## Use this only for Azure AD end-user authentication
     from azure.common.credentials import UserPassCredentials
 
+    ## Use this only for Azure AD multi-factor authentication
+    from msrestazure.azure_active_directory import AADTokenCredentials
+
     ## Required for Azure Data Lake Store account management
-    from azure.mgmt.datalake.store.account import DataLakeStoreAccountManagementClient
-    from azure.mgmt.datalake.store.account.models import DataLakeStoreAccount
+    from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
+    from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
     ## Required for Azure Data Lake Store filesystem management
     from azure.datalake.store import core, lib, multithread
+
+    # Common Azure imports
+    from azure.mgmt.resource.resources import ResourceManagementClient
+    from azure.mgmt.resource.resources.models import ResourceGroup
 
     ## Use these as needed for your application
     import logging, getpass, pprint, uuid, time
@@ -88,6 +95,14 @@ pip install azure-datalake-store
 3. 将更改保存到 mysample.py。
 
 ## <a name="authentication"></a>身份验证
+
+本部分介绍有关使用 Azure AD 进行身份验证的不同方式。 可用选项包括：
+
+* 最终用户身份验证
+* 服务到服务身份验证
+* 多重身份验证
+
+必须在帐户管理和文件系统管理模块中使用这些身份验证选项。
 
 ### <a name="end-user-authentication-for-account-management"></a>为帐户管理使用最终用户身份验证
 
@@ -121,6 +136,29 @@ pip install azure-datalake-store
 
     token = lib.auth(tenant_id = 'FILL-IN-HERE', client_secret = 'FILL-IN-HERE', client_id = 'FILL-IN-HERE')
 
+### <a name="multi-factor-authentication-for-account-management"></a>用于帐户管理的多重身份验证
+
+使用此方法可对 Azure AD 帐户管理操作（创建/删除 Data Lake Store 帐户，等等）进行身份验证。 可以使用以下代码片段通过多重身份验证在应用程序中进行身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
+
+    authority_host_url = "https://login.microsoftonline.com"
+    tenant = "FILL-IN-HERE"
+    authority_url = authority_host_url + '/' + tenant
+    client_id = 'FILL-IN-HERE'
+    redirect = 'urn:ietf:wg:oauth:2.0:oob'
+    RESOURCE = 'https://management.core.windows.net/'
+    
+    context = adal.AuthenticationContext(authority_url)
+    code = context.acquire_user_code(RESOURCE, client_id)
+    print(code['message'])
+    mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
+    credentials = AADTokenCredentials(mgmt_token, client_id)
+
+### <a name="multi-factor-authentication-for-filesystem-management"></a>用于文件系统管理的多重身份验证
+
+使用此方法对 Azure AD 文件系统操作（创建文件夹、上载文件，等等）进行身份验证。 可以使用以下代码片段通过多重身份验证在应用程序中进行身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
+
+    token = lib.auth(tenant_id='FILL-IN-HERE')
+
 ## <a name="create-an-azure-resource-group"></a>创建 Azure 资源组
 
 使用以下代码片段创建 Azure 资源组：
@@ -137,7 +175,7 @@ pip install azure-datalake-store
     )
     
     ## Create an Azure Resource Group
-    armGroupResult = resourceClient.resource_groups.create_or_update(
+    resourceClient.resource_groups.create_or_update(
         resourceGroup,
         ResourceGroup(
             location=location
@@ -207,6 +245,6 @@ pip install azure-datalake-store
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 58c0d6590e2fd1684ebeee473029ca4544e223f6
+ms.sourcegitcommit: 02247d679c9bffa01b8d2827ea57eba38894107e
+ms.openlocfilehash: 698384bb5079feb937f423f9b6365dff20cfa3be
 
 
 ---
@@ -25,10 +25,10 @@ ms.openlocfilehash: 58c0d6590e2fd1684ebeee473029ca4544e223f6
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="build-and-run-the-nodejs-sample-solution"></a>生成并运行 node.js 示例解决方案
-1. 若要克隆 *Azure IoT SDK* GitHub 存储库并在桌面环境中安装*适用于 Node.js 的 Microsoft Azure IoT 设备 SDK*，请按照[准备开发环境][lnk-github-prepare]中的说明进行操作。
-2. 从 [azure-iot-sdks][lnk-github-repo] 存储库的本地副本中，将以下两个文件从 node/device/samples 文件夹复制到设备上的某个文件夹：
+1. 若要克隆适用于 Node.js 的 Microsoft Azure IoT SDK GitHub 存储库并在桌面环境中安装，请按照[准备开发环境][lnk-github-prepare]中的说明进行操作。
+2. 在 [azure-iot-sdk-node][lnk-github-repo] 存储库的本地副本中，将以下两个文件从 device/samples 文件夹复制到设备上的文件夹：
    
-   * packages.json
+   * package.json
    * remote_monitoring.js
 3. 打开 remote_monitoring.js 文件并查找以下变量：
    
@@ -55,11 +55,11 @@ ms.openlocfilehash: 58c0d6590e2fd1684ebeee473029ca4544e223f6
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
-[lnk-github-repo]: https://github.com/azure/azure-iot-sdks
-[lnk-github-prepare]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-github-repo]: https://github.com/azure/azure-iot-sdk-node
+[lnk-github-prepare]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

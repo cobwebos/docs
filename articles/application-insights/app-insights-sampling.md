@@ -1,31 +1,31 @@
 ---
-title: "Application Insights 中的遥测采样 | Microsoft 文档"
+title: "Azure Application Insights 中的遥测采样 | Microsoft 文档"
 description: "如何使受控制的遥测数据的卷。"
 services: application-insights
 documentationcenter: windows
 author: vgorbenko
-manager: douge
+manager: carmonm
 ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/03/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: b04e8a33e5253a5fcda78ad3d2f0626d69c4d9b4
+ms.sourcegitcommit: 611f4222b5ab1530658f612de39dd2712f98c250
+ms.openlocfilehash: cbc622a959c402fe25ce9ab026c1ae05f194d884
 
 
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
 
-采样是 [Azure Application Insights](app-insights-overview.md) 中的功能，建议用于降低遥测流量和存储，同时保留采用统计方式的应用程序数据的正确分析。 筛选器会选择相关项，以便可以在执行诊断调查时在不同项之间导航。
+采样是 [Azure Application Insights](app-insights-overview.md) 中的一项功能。 建议用于降低遥测流量和存储，同时保留采用统计方式的应用程序数据的正确分析。 筛选器会选择相关项，以便可以在执行诊断调查时在不同项之间导航。
 当指标计数显示在门户时，它们将重新标准化以考虑采样，从而尽可能降低对统计的任何影响。
 
-采样可减少流量，从而有助于保持在每月数据配额内，并且可以帮助避免限制。
+采样可以降低流量和数据成本，并可帮助用户避免限制。
 
 ## <a name="in-brief"></a>简单地说：
 * 采样会保留 *n* 条记录中的 1 条并丢弃其余记录。 例如，它可能会保留 5 件事件中的 1 件，采样率为 20%。 
@@ -103,6 +103,17 @@ ms.openlocfilehash: b04e8a33e5253a5fcda78ad3d2f0626d69c4d9b4
 * `<InitialSamplingPercentage>100</InitialSamplingPercentage>`
   
     当应用已启动时分配的值。 不要在调试时减少该值。 
+
+* `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
+  
+    不要采样的分号分隔类型列表。 已识别的类型包括：Dependency、Event、Exception、PageView、Request、Trace。 指定类型的所有实例都会传输；对未指定的类型进行采样。
+
+* `<IncludedTypes>Request;Dependency</IncludedTypes>`
+  
+    要采样的分号分隔类型列表。 已识别的类型包括：Dependency、Event、Exception、PageView、Request、Trace。 将对指定的类型进行采样；其他类型的所有实例始终都会传输。
+
+
+**若要关闭**自适应采样，请从 applicationinsights-config 中删除 AdaptiveSamplingTelemetryProcessor 节点。
 
 ### <a name="alternative-configure-adaptive-sampling-in-code"></a>备选： 在代码中配置自适应采样
 除了在 .config 文件中调整采样以外，你可以使用代码。 这样一来，你可以指定在重新计算采样率时调用的回调函数。 例如，可以使用它来了解正在使用的采样率。
@@ -344,6 +355,6 @@ ms.openlocfilehash: b04e8a33e5253a5fcda78ad3d2f0626d69c4d9b4
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -87,7 +87,7 @@
     topicHref: /azure/batch/batch-technical-overview
   - name: "计费"
     tocHref: /azure/billing/
-    topicHref: /azure/billing/../billing-use-existing-office-365-account-azure-subscription
+    topicHref: /azure/billing/billing-getting-started
   - name: "BizTalk 服务"
     tocHref: /azure/biztalk-services/
     topicHref: /azure/biztalk-services/integration-hybrid-connection-overview
@@ -178,7 +178,7 @@
   - name: "监视和诊断"
     tocHref: /azure/monitoring-and-diagnostics/
     topicHref: /azure/monitoring-and-diagnostics/../azure-portal/monitoring-get-started
-  - name: "Multi-Factor Authentication"
+  - name: "多重身份验证"
     tocHref: /azure/multi-factor-authentication/
     topicHref: /azure/multi-factor-authentication/multi-factor-authentication
     items:

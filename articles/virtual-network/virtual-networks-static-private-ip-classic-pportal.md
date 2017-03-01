@@ -1,10 +1,10 @@
 ---
-title: "如何使用 Azure 门户在经典模式下设置静态专用 IP | Microsoft 文档"
+title: "设置静态专用 IP 地址 | Azure 门户 | 经典 | Microsoft 文档"
 description: "了解静态专用 IP 以及如何使用 Azure 门户在经典模式下管理它们"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-service-management
 ms.assetid: b8ef8367-58b2-42df-9f26-3269980950b8
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a9a18f67a5c124f5f6d00a852f44ab5d071a7715
+ms.sourcegitcommit: 446a7dd37e6a58875ba0202cb512b4cc661e0c93
+ms.openlocfilehash: 162b65cb9cfa9129279c78312eafd73b0ffd8d6e
 
 
 ---
@@ -83,6 +83,6 @@ ms.openlocfilehash: a9a18f67a5c124f5f6d00a852f44ab5d071a7715
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

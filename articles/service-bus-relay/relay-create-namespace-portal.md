@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure 门户创建中继命名空间 | Microsoft Docs"
-description: "需要命名空间才能开始使用 Azure 中继。 下面介绍了如何使用 Azure 门户创建一个。"
+description: "如何使用 Azure 门户创建中继命名空间。"
 services: service-bus-relay
 documentationcenter: .net
 author: jtaubensee
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub
+ms.date: 02/13/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 8ba8baa1b6500b3300e0bfc1c6b9f00f214f0179
-ms.openlocfilehash: e51dc77e0a0fc3c0a2cc4050d7b896e177a86cc0
-
+ms.sourcegitcommit: 97c793abc9935707115c166a97f6f7bdfee1a8c5
+ms.openlocfilehash: d6ef2e0c75a27b294ee653bf9a0219c2233d272c
 
 ---
+
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>使用 Azure 门户创建中继命名空间
 命名空间是适用于所有中继组件的公用容器。 单个命名空间中可存在多个中继，命名空间通常用作应用程序容器。 目前有两种方法可用来创建中继命名空间。
 
@@ -39,6 +39,6 @@ ms.openlocfilehash: e51dc77e0a0fc3c0a2cc4050d7b896e177a86cc0
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

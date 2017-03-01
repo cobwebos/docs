@@ -3,7 +3,7 @@ title: "通过在 Azure CDN 中压缩文件来提高性能 | Microsoft Docs"
 description: "了解如何通过在 Azure CDN 中压缩文件来提高文件传输速度和页面加载性能。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1ec71ac6e7054619d21ee22ec801d11519ced67b
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: e80136d096ba83ab5050c8d1d95a9e2abb7a3646
 
 
 ---
-# <a name="improve-performance-by-compressing-files"></a>通过压缩文件来提高性能
+# <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 压缩是提高文件传输速度和增加页面负载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 这样可以减少带宽成本，并为用户提供更快的响应体验。
 
 有两种方法可启用压缩：
@@ -138,6 +138,6 @@ ms.openlocfilehash: 1ec71ac6e7054619d21ee22ec801d11519ced67b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

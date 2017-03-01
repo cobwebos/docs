@@ -4,7 +4,7 @@ description: "了解如何使用 Azure Mobile Engagement 创建和管理推送�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 2fe124a2-a86f-4136-81ba-a9d298ec798a
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d5110a33e13802fd6e5e0f075c7d3ddd521a1ef9
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -120,7 +121,7 @@ ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
 你可以使用“内容”部分修改公告、投票、数据推送和磁贴（仅 Windows Phone）的内容。 推送活动的内容设置是与活动类型相关的。 
 
 ### <a name="see-also"></a>另请参阅
-* [UI 文档 - 市场宣传 - 推送内容][链接 29]
+* [UI 文档 - 市场宣传 - 推送内容][Link 29]
 
 ![市场宣传-活动 5][24]
 
@@ -136,7 +137,7 @@ ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
   定义受众之后，你可以使用模拟按钮来查明有多少用户将收到此推送。 这将计算此受众可能面向的已知用户数量（这是基于用户的随机样本的一个估计值）。 请注意，已卸载应用程序的用户也是此受众的一部分，但无法向其推送。
 
 ### <a name="see-also"></a>另请参阅
-* [UI 文档 - 市场宣传 - 新推送条件][链接 28]
+* [UI 文档 - 市场宣传 - 新推送条件][Link 28]
 
 ![市场宣传-活动 6][25]
 
@@ -158,7 +159,7 @@ ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
 > 没有结束日期的活动可能会将推送缓存在本地，并在你手动完成活动之后仍显示它们。 要避免此行为，请为活动指定一个具体的结束时间。
 
 ### <a name="see-also"></a>另请参阅
-* [市场宣传 - 操作说明 - 计划][链接 3] 
+* [市场宣传 - 操作说明 - 计划][Link 3] 
 
 ![市场宣传-活动 8][27]
 
@@ -172,7 +173,7 @@ ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
 > 当你使用按钮“测试”推送时，不会记录任何服务器端数据，仅对于实际的推送活动，才会记录数据。
 
 ### <a name="see-also"></a>另请参阅
-* [UI 文档 - 我的帐户][链接 14]
+* [UI 文档 - 我的帐户][Link 14]
 
 ![市场宣传-活动 9][28]
 
@@ -237,39 +238,34 @@ ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[链接 1]: mobile-engagement-user-interface.md
-[链接 2]: mobile-engagement-troubleshooting-guide.md
-[链接 3]: mobile-engagement-how-tos.md
-[链接 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[链接 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[链接 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[链接 7]: https://account.windowsazure.com/PreviewFeatures
-[链接 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[链接 9]: http://azure.microsoft.com/services/mobile-engagement/
-[链接 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[链接 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[链接 12]: mobile-engagement-user-interface-navigation.md
-[链接 13]: mobile-engagement-user-interface-home.md
-[链接 14]: mobile-engagement-user-interface-my-account.md
-[链接 15]: mobile-engagement-user-interface-analytics.md
-[链接 16]: mobile-engagement-user-interface-monitor.md
-[链接 17]: mobile-engagement-user-interface-reach.md
-[链接 18]: mobile-engagement-user-interface-segments.md
-[链接 19]: mobile-engagement-user-interface-dashboard.md
-[链接 20]: mobile-engagement-user-interface-settings.md
-[链接 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[链接 22]: mobile-engagement-troubleshooting-guide-apis.md
-[链接 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[链接 24]: mobile-engagement-troubleshooting-guide-service.md
-[链接 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[链接 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[链接 27]: mobile-engagement-user-interface-reach-campaign.md
-[链接 28]: mobile-engagement-user-interface-reach-criterion.md
-[链接 29]: mobile-engagement-user-interface-reach-content.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
+[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[Link 7]: https://account.windowsazure.com/PreviewFeatures
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: mobile-engagement-user-interface-reach-campaign.md
+[Link 28]: mobile-engagement-user-interface-reach-criterion.md
+[Link 29]: mobile-engagement-user-interface-reach-content.md
 
 

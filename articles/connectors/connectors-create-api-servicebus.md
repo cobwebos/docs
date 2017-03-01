@@ -24,7 +24,7 @@ ms.openlocfilehash: 1e23402cbc63aeb262bfb471745589cc0bbd734f
 # <a name="get-started-with-the-azure-service-bus-connector"></a>Azure 服务总线连接器入门
 连接到 Azure 服务总线以发送和接收消息。 可执行发送到队列、发送到主题、从队列接收和从订阅接收等操作。
 
-若要使用“任何连接器”[](apis-list.md)，首先需要创建逻辑应用。 可通过“立即创建逻辑应用”[](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
+若要使用 [任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。
 
 ## <a name="connect-to-service-bus"></a>连接到服务总线
 需要先创建到任何服务的连接，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  

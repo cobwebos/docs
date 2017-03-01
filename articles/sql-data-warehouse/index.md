@@ -1,14 +1,26 @@
 ---
+title: "Azure SQL 数据仓库文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 SQL 数据仓库（将 SQL Server 与大规模并行处理相结合）。 文档介绍了如何加载、分析、管理和导出数据。"
+services: sql-data-warehouse
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: sql-data-warehouse
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: 6c949e62406f2d9029c00e87dfc3ca5530a5497f
+ms.sourcegitcommit: e065918a1380e006253aefb4ab9c897b9148dea5
+ms.openlocfilehash: 576e12831945701b880e891394c0cbb8374d333b
 
 ---
 
 # <a name="sql-data-warehouse-documentation"></a>SQL 数据仓库文档
 
-Azure SQL 数据仓库将 SQL Server 关系数据库与 Azure 云向外扩展功能相结合。  SQL 数据仓库在大规模并行处理 (MPP) 体系结构的基础上构建，可以处理你的企业工作负荷。
+了解如何使用将 SQL Server 关系数据库与大规模并行处理相结合的 SQL 数据仓库。 教程和其他文档介绍了如何将数据加载到数据仓库，然后分析、管理和导出数据。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -54,7 +66,8 @@ Azure SQL 数据仓库将 SQL Server 关系数据库与 Azure 云向外扩展功
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
+
+<img src="media/index/portal.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -75,8 +88,9 @@ Azure SQL 数据仓库将 SQL Server 关系数据库与 Azure 云向外扩展功
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="Command-Line</h3>
-                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets">PowerShell cmdlet</a></p>
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/azure/sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets">PowerShell cmdlets</a></p>
                     </div>
                 </div>
             </div>
@@ -99,16 +113,10 @@ Azure SQL 数据仓库将 SQL Server 关系数据库与 Azure 云向外扩展功
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-data-warehouse.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 SQL 数据仓库文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

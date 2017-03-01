@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: trinadhk; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: 9c8410a847d943c5baee3e08397ebf24072b3f78
+ms.sourcegitcommit: 7de8d98f24ea01012b8fa3a326e1d4ad3f04099a
+ms.openlocfilehash: 186929c1193f63ecda6fd4851bb66c8430ab99ab
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -97,10 +98,10 @@ ms.openlocfilehash: 9c8410a847d943c5baee3e08397ebf24072b3f78
 如果使用基于 cloud-init 的 Linux 分发（如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/virtual-machines-linux-classic-reset-access.md)。 建议在这些分发上使用 SSH 密钥以避免还原后重置密码。 
 
 ## <a name="backup-for-restored-vms"></a>备份已还原的 VM
-如果将 VM 还原到的云服务与最初备份 VM 时所在的云服务同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的云服务或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此你需要为还原的 VM 设置备份。
+如果将 VM 还原到的云服务与最初备份 VM 时所在的云服务同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的云服务或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此需为还原的 VM 设置备份。
 
 ## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>在发生 Azure 数据中心灾难期间还原 VM
-如果运行已备份 VM 的主数据中心遇到灾难性故障，并且你已将备份保管库配置为异地冗余，则 Azure 备份允许将该 VM 还原到配对的数据中心。 在这种情况下，需要选择一个在配对数据中心内存在的存储帐户，而余下的还原过程将保持不变。 Azure 备份使用配对地区中的计算服务来创建还原的虚拟机。 
+如果运行已备份 VM 的主数据中心遇到灾难性故障，并且你已将备份保管库配置为异地冗余，则 Azure 备份允许将该 VM 还原到配对的数据中心。 在这种情况下，需要选择一个在配对数据中心内存在的存储帐户，而余下的还原过程将保持不变。 Azure 备份使用配对地区中的计算服务来创建还原的虚拟机。 详细了解 [Azure 数据中心复原](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)
 
 ## <a name="restoring-domain-controller-vms"></a>还原域控制器 VM
 Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。 但在还原过程中，你必须谨慎操作。 在单 DC 配置中，域控制器 VM 的还原体验大大不同于多 DC 配置中的 VM。
@@ -123,7 +124,7 @@ Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。 但在�
 ## <a name="restoring-vms-with-special-network-configurations"></a>还原采用特殊网络配置的 VM
 Azure 备份支持备份虚拟机的以下特殊网络配置。
 
-* 采用负载均衡器的 VM（内部和外部）
+* 采用负载平衡器的 VM（内部和外部）
 * 具有多个保留 IP 的 VM
 * 具有多个 NIC 的 VM
 
@@ -153,10 +154,5 @@ PowerShell 能够只从备份还原 VM 磁盘，而不建立虚拟机。 当还�
 ## <a name="next-steps"></a>后续步骤
 * [排查错误](backup-azure-vms-troubleshoot.md#restore)
 * [管理虚拟机](backup-azure-manage-vms.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

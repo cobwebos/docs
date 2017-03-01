@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 94b109fdc2c902f1452c143a84b20356e9d58df0
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 44ad1c9fb54231a3942889fc24bfc92554ead6fa
 
 
 ---
@@ -30,12 +30,12 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
 > 
 > 
 
-**为什么对数据进行采样？**
-如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。
-
 以下**菜单**所链接到的主题将描述如何从不同的存储环境采样数据。 
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+
+**为什么对数据进行采样？**
+如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。
 
 此采样任务是[团队数据科学流程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
 
@@ -126,6 +126,6 @@ Python 中的 [Pandas](http://pandas.pydata.org/) 库提供一组丰富的数据
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

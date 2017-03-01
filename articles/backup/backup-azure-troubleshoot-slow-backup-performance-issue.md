@@ -4,7 +4,7 @@ description: "提供了故障排除指导，帮助你诊断 Azure 备份性能�
 services: backup
 documentationcenter: 
 author: genlin
-manager: jimpark
+manager: cshepard
 editor: 
 ms.assetid: e379180a-db13-4e0c-90e4-28e5dd6f5b14
 ms.service: backup

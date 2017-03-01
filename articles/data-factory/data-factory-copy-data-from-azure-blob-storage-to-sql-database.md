@@ -1,5 +1,5 @@
 ---
-title: "将数据从 Blob 存储复制到 SQL 数据库 | Microsoft Docs"
+title: "将数据从 Blob 存储复制到 SQL 数据库 - Azure | Microsoft Docs"
 description: "本教程演示如何使用 Azure 数据工厂管道中的复制活动将数据从 Blob 存储复制到 SQL 数据库。"
 keywords: "blob sql, blob 存储, 数据复制"
 services: data-factory
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 19436167ad8e82f47b147efc65c635d9bf2d2ae5
-ms.openlocfilehash: 0072e1db4758447445b97021e1624c2210fbd0a7
+ms.sourcegitcommit: 2dcba235353f2b1bd2b42d93066a91071f0ea1a1
+ms.openlocfilehash: 8b9afcd62ad318e181e2d210af58dcb412eefaaf
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -123,8 +124,7 @@ ms.openlocfilehash: 0072e1db4758447445b97021e1624c2210fbd0a7
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+> [!NOTE]
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成第一个使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+> 
+> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 

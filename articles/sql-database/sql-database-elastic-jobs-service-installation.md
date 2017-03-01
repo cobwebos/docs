@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
+ms.sourcegitcommit: 6489f013f72a8d283ad5c0723d0a46ea4e66a2d9
+ms.openlocfilehash: f4fa7b12afe0002d5b7e5267c8f670cae8d253da
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -41,17 +42,21 @@ ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
 3. 键入 cd tools，导航到 Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x 文件夹下的 tools 子目录，例如：
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+
 4. 执行 .\InstallElasticDatabaseJobsCmdlets.ps1 脚本，将 ElasticDatabaseJobs 目录复制到 $home\Documents\WindowsPowerShell\Modules 中。 这也会自动导入要使用的模块，例如：
    
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1   PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
 ## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>使用 PowerShell 安装弹性数据库作业组件
 1. 启动 Microsoft Azure PowerShell 命令窗口，并导航到 Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x 文件夹下的 \tools 子目录：键入 cd \tools
    
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+
 2. 执行 .\InstallElasticDatabaseJobs.ps1 PowerShell 脚本，并提供其所请求变量的值。 此脚本将根据[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)中所述创建组件，并将 Azure 云服务配置为适当使用依赖组件。
-   
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1   PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
+
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
 
 运行此命令时，会打开一个窗口，要求提供“**用户名**”和“**密码**”。 这不是你的 Azure 凭据，请输入用户名和密码，将其作为你要为新服务器创建的管理员凭据。
 
@@ -147,7 +152,7 @@ ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>使用门户安装弹性数据库作业组件
-[创建弹性池](sql-database-elastic-pool-create-portal.md)后，可以安装**弹性数据库作业**组件，以便对弹性池中的每个数据库执行管理任务。 与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
+[创建弹性池](sql-database-elastic-pool-manage-portal.md)后，可以安装**弹性数据库作业**组件，以便对弹性池中的每个数据库执行管理任务。 与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
 
 **估计完成时间：**10 分钟。
 
@@ -178,9 +183,4 @@ ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
 [2]: ./media/sql-database-elastic-jobs-service-installation/credentials.png
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

@@ -1,9 +1,9 @@
 ---
-title: "使用 Azure CDN | Microsoft Docs"
-description: "本主题介绍如何对 Azure 启用内容交付网络 (CDN)。 本教程介绍新 CDN 配置文件和终结点的创建。"
+title: "Azure CDN 入门 | Microsoft 文档"
+description: "本主题介绍如何启用 Azure 内容交付网络 (CDN)。 本教程介绍新 CDN 配置文件和终结点的创建。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e5568503541e773fa11bcde530da09befc51b2ad
+ms.sourcegitcommit: bdf6e27463fcc6186a3b15a55653fa468da91bdc
+ms.openlocfilehash: d263e911d0d0b3cdc1e48e300a3c8a0994b38c39
 
 
 ---
-# <a name="using-azure-cdn"></a>使用 Azure CDN
+# <a name="getting-started-with-azure-cdn"></a>Azure CDN 入门
 本主题介绍通过创建新 CDN 配置文件和终结点启用 Azure CDN。
 
 > [!IMPORTANT]
@@ -32,7 +32,7 @@ ms.openlocfilehash: e5568503541e773fa11bcde530da09befc51b2ad
 CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或多个 CDN 终结点。  你可能希望通过 Internet 域、Web 应用程序或其他条件来使用多个配置文件以组织 CDN 终结点。
 
 > [!NOTE]
-> 默认情况下，单个 Azure 订阅仅有 8 个 CDN 配置文件。 每个 CDN 配置文件仅有 10 个 CDN 终结点。
+> 默认情况下，单个 Azure 订阅仅有&8; 个 CDN 配置文件。 每个 CDN 配置文件仅有&10; 个 CDN 终结点。
 > 
 > 可在 CDN 配置文件级别应用 CDN 定价。 如果想混合使用 Azure CDN 定价层，则需多个 CDN 配置文件。
 > 
@@ -106,6 +106,6 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

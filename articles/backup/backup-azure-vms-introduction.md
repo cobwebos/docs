@@ -4,7 +4,7 @@ description: "规划在 Azure 中备份虚拟机时的重要注意事项"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "备份 vm, 备份虚拟机"
 ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: a4045fc0fc6e2c263da06ed31a590714e80fb4d4
-ms.openlocfilehash: ac13b82c885720fa6d3d127b8e8dbbace5b09ef5
+ms.sourcegitcommit: d7a2b9c13b2c3372ba2e83f726c7bf5cc7e98c02
+ms.openlocfilehash: 4fae07988dea260776368162c03374d83bc55664
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -32,6 +33,11 @@ ms.openlocfilehash: ac13b82c885720fa6d3d127b8e8dbbace5b09ef5
 ![Azure 虚拟机备份体系结构](./media/backup-azure-vms-introduction/vmbackup-architecture.png)
 
 数据传输完成后，将会删除快照并创建恢复点。
+
+> [!NOTE]
+> 提取备份时，Azure 备份不包括附加到虚拟机的临时磁盘。 有关详细信息，请参阅[临时磁盘](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+>
+>
 
 ### <a name="data-consistency"></a>数据一致性
 备份和还原业务关键数据十分复杂，因为必须在生成数据的应用程序仍在运行时备份业务关键数据。 为了解决此问题，Azure 备份对 Microsoft 工作负荷进行应用程序一致性备份，使用 VSS 来确保将数据正确写入到存储中。
@@ -69,12 +75,12 @@ Azure 备份将在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 无论何时从存储帐户复制备份数据，都会计入该存储帐户的每秒输入/输出操作数 (IOPS) 和出口（或吞吐量）度量值。 同时，虚拟机会运行并消耗 IOPS 与吞吐量。 目的是确保总流量（备份和虚拟机）不会超过存储帐户限制。
 
 ### <a name="number-of-disks"></a>磁盘数目
-备份过程会尝试尽快完成备份作业。 为此，这将使用尽可能多的资源。 但是，*单个 Blob 的目标吞吐量*实施 I/O 操作总次数限制为每秒 60 MB。 为了最大限度加快速度，备份过程会尝试并行备份每个 VM 磁盘。 因此，如果 VM 有 4 个磁盘，则 Azure 备份会尝试并行备份所有 4 个磁盘。 因此，决定从客户存储帐户传出备份流量的最重要因素是从存储帐户备份的**磁盘数**。
+备份过程会尝试尽快完成备份作业。 为此，这将使用尽可能多的资源。 但是，*单个 Blob 的目标吞吐量*实施 I/O 操作总次数限制为每秒 60 MB。 为了最大限度加快速度，备份过程会尝试并行备份每个 VM 磁盘。 因此，如果 VM 有&4; 个磁盘，则 Azure 备份会尝试并行备份所有&4; 个磁盘。 因此，决定从客户存储帐户传出备份流量的最重要因素是从存储帐户备份的**磁盘数**。
 
 ### <a name="backup-schedule"></a>备份计划
 影响性能的另一因素是**备份计划**。 如果配置策略以同时备份所有 VM，则会导致流量拥堵。 备份过程会尝试并行备份所有磁盘。 减少存储帐户备份流量的一种方法是，确保在一天的不同时间备份不同 VM，且备份时间不会重叠。
 
-## <a name="capacity-planning"></a>容量规划
+## <a name="capacity-planning"></a>容量计划
 通盘考虑所有这些因素意味着需要正确规划存储帐户的使用。 请下载 [VM 备份容量规划 Excel 电子表格](https://gallery.technet.microsoft.com/Azure-Backup-Storage-a46d7e33)，以了解磁盘和备份计划选择所造成的影响。
 
 ### <a name="backup-throughput"></a>备份吞吐量
@@ -91,11 +97,15 @@ Azure 备份将在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 * 花费在[安装或更新备份扩展](backup-azure-vms.md)上的时间。
 * 快照时间，即触发某个快照所花费的时间。 在接近计划的备份时间时，将会触发快照。
 * 队列等待时间。 由于备份服务要处理来自多个客户的备份，可能不会立即将备份数据从快照复制到备份或恢复服务保管库。 在负载高峰期，由于要处理的备份数过多，等待时间可能会长达 8 小时。 但是，每日备份策略规定的 VM 备份总时间不会超过 24 小时。
+* 数据传输时间，备份服务计算上一备份中的增量更改并将更改传输到保管库存储所需的时间。
+
+### <a name="why-am-i-observing-longer15-hours-backup-time"></a>为什么会看到较长的备份时间（超过&15; 小时）？
+备份包含两个阶段：获取快照和将快照传输到保管库。 在第二阶段（将数据传输到保管库），为了优化对备份的存储，我们仅传输上一快照中的增量更改。 为实现此目的，我们计算块的校验和，如果块进行了更改，我们会标识此块并将其发送到保管库。 同样，此时我们将进一步向下钻取块，查看是否可将将数据传输量降至最低，然后联合所有已更改的块发送到保管库。 在存在某些旧版应用程序的情况中，我们发现应用程序执行的写入并不是对应于存储的最佳写入，因为写入较小且为片段。 因此我们需要花费更多时间来处理由这些应用程序写入的数据。 对于在 VM 内部运行的应用程序，Azure 中建议的应用程序写入块的最小值是 8 KB。 如果应用程序使用的块小于 8 KB，则备份性能会受到影响，因为此值不在 Azure 建议的范围内。 请查看[调整应用程序，以获得最佳性能的 Azure 存储](../storage/storage-premium-storage-performance.md)，并查看是否能够调整应用程序使其以最佳方式写入，从而提高备份性能。 虽然文章主要讨论高级存储，但也适用于在标准存储上运行的磁盘。
 
 ## <a name="total-restore-time"></a>总还原时间
 还原操作包括两个主要的子任务：将数据从保管库复制回所选的客户存储帐户和创建虚拟机。 从保管库复制回数据取决于 Azure 中内部存储备份的位置以及存储客户存储帐户的位置。 复制数据所花的时间取决于：
 * 队列等待时间 - 由于服务同时处理来自多个客户的还原，因此还原请求放入队列中。
-* 数据复制时间 - 复制数据的方法与保管库到客户存储帐户的第一次备份过程相似。 如果备份服务需要从保管库写入数据的客户存储帐户已加载，复制时间可能增加。 因此，在还原期间，请确保选择未加载其他应用程序写入和读取的存储帐户，从而优化复制时间。 
+* 数据复制时间 - 复制数据的方法与保管库到客户存储帐户的第一次备份过程相似。 如果备份服务需要从保管库写入数据的客户存储帐户已加载，复制时间可能增加。 因此，在还原期间，请确保选择未加载其他应用程序写入和读取的存储帐户，从而优化复制时间。
 
 ## <a name="best-practices"></a>最佳实践
 建议在为虚拟机配置备份时遵循以下做法：
@@ -138,9 +148,4 @@ Azure 备份将在 Windows VM 上创建 VSS 完整备份（深入了解 [VSS 完
 * [管理虚拟机备份](backup-azure-manage-vms.md)
 * [恢复虚拟机](backup-azure-restore-vms.md)
 * [解决 VM 备份问题](backup-azure-vms-troubleshoot.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

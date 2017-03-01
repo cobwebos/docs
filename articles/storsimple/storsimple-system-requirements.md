@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 12/13/2016
+ms.date: 01/05/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 52f2bf14c60dbb062a6f4aec26403c5064bba036
-ms.openlocfilehash: 3dc513e99ad3ac0f4f18f70666ee299a95ee9294
+ms.sourcegitcommit: c3af0df0f2e5a0367bef8e12edaca4937db7e39f
+ms.openlocfilehash: 50bc63845bab1322090097dd0d5736e11642a95b
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 3dc513e99ad3ac0f4f18f70666ee299a95ee9294
 
 | 支持的操作系统 | 所需版本 | 其他要求/说明 |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1、2012、2012R2 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>如果使用的是 StorSimple iSCSI 卷，则支持 Windows Server 2012 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建精简预配和完全预配的卷， 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，然后新建一个卷而不是重新格式化。 但是，如果你仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 |
+| Windows Server |2008R2 SP1、2012、2012R2、2016 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>如果使用 StorSimple iSCSI 卷，则支持 Windows Server 2012 和 2016 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，然后新建一个卷而不是重新格式化。 但是，如果你仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 |
 | VMWare ESX |5.5 和 6.0 |支持将 VMWare vSphere 作为 iSCSI 客户端。 StorSimple 设备上的 VMware vSphere 支持 VAAI 块功能。 |
 | Linux RHEL/CentOS |5、6 和 7 |支持配有开放 iSCSI 发起程序版本 5、6 和 7 的 Linux iSCSI 客户端。 |
 | Linux |SUSE Linux 11 | |
@@ -253,6 +253,6 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

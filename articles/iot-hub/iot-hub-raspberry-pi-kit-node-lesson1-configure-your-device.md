@@ -1,6 +1,6 @@
 ---
-title: "配置设备 | Microsoft 文档"
-description: "为首次使用配置 Raspberry Pi 3 并安装 Raspbian OS（一个针对 Raspberry Pi 硬件进行了优化的免费操作系统）。"
+title: "将 Raspberry Pi（节点）连接到 Azure IoT - 第 1 课：配置设备 | Microsoft Docs"
+description: Configure Raspberry Pi 3 for first-time use and install the Raspbian OS, a free operating system that is optimized for the Raspberry Pi hardware.
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
+ms.sourcegitcommit: 5b80d471c78973f8c2f6b1ad4e1240c66f0505ef
+ms.openlocfilehash: 5afe1110944641daaeace5ef02b2c9fa8d2a8e05
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -50,7 +51,7 @@ ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
 你还需要：
 
 * Pi 要连接到的有线或无线连接。
-* 一个 USB-SD 适配器或 miniSD 卡，用于将 OS 映像刻录到 microSD 卡上。
+* USB-SD 适配器或 miniSD 卡，用于将操作系统映像刻录到 microSD 卡中。
 * 运行 Windows、Mac 或 Linux 的计算机。 该计算机用来在 microSD 卡上安装 Raspbian。
 * 用于下载必需的工具和软件的 Internet 连接。
 
@@ -79,6 +80,9 @@ ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
 
 > [!NOTE]
 > 必须使用工具包中至少为 2A 的电源以确保 Raspberry 具有足够的电能来正常工作。
+
+## <a name="enable-ssh"></a>启用 SSH
+自 2016 年 11 月版本起，Raspbian 在默认情况下禁用了 SSH 服务器。 需要手动启用它。 可以参阅[正式说明](https://www.raspberrypi.org/documentation/remote-access/ssh/)或连接监视器并转到“首选项”->“Raspberry Pi 配置”以启用 SSH。
 
 ## <a name="connect-raspberry-pi-3-to-the-network"></a>将 Raspberry Pi 3 连接到网络
 可以将 Pi 连接到有线网络或无线网络。 请确保将 Pi 与计算机连接到同一网络。 例如，可以将 Pi 连接到计算机所连接到的同一交换机。
@@ -113,10 +117,5 @@ ms.openlocfilehash: ad1b0eb76d9d82af1ea5f8f1c7bda13656b1ab47
 
 ## <a name="next-steps"></a>后续步骤
 [获取工具](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

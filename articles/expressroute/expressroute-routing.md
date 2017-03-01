@@ -1,5 +1,5 @@
 ---
-title: "ExpressRoute 路由要求 | Microsoft Docs"
+title: "Azure ExpressRoute 路由要求 | Microsoft 文档"
 description: "本页提供有关为 ExpressRoute 线路配置和管理路由的详细要求。"
 documentationcenter: na
 services: expressroute
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/03/2017
+ms.date: 01/27/2017
 ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 4f67c67639eaf33bb1f2aa236164e98030f5b555
-ms.openlocfilehash: c76471f4c0f4e1b751d623f691578d354008d863
+ms.sourcegitcommit: 409f22dcc352aae1af9100bb7a30120ea861009b
+ms.openlocfilehash: 4acca777cb5e34719c9b8ccef09bd04b82f74ce6
 
 
 ---
@@ -189,8 +189,12 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
 | **国家云 Azure 区域**| **BGP 社区值** |
 | --- | --- |
 | **美国政府** |  |
+| 美国亚利桑那州政府 | 12076:51106 |
 | 美国政府爱荷华州 | 12076:51109 |
 | 美国政府弗吉尼亚州 | 12076:51105 |
+| 美国德克萨斯州政府 | 12076:51108 |
+| 美国 DoD 中部 | 12076:51209 |
+| 美国 DoD 东部 | 12076:51205 |
 
 
 | **国家云中的服务** | **BGP 社区值** |
@@ -212,6 +216,6 @@ ExpressRoute 不能配置为传输路由器。 你必须依赖连接服务提供
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: a6b5e865e9a57b1eaf8ad08aa70466f772bdb244
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
 
 
 ---
@@ -27,9 +27,9 @@ ms.openlocfilehash: a6b5e865e9a57b1eaf8ad08aa70466f772bdb244
 在本文中，你将了解如何在浏览器中使用 HDInsight 查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
 
 > [!IMPORTANT]
-> HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 如果使用基于 Linux 的 HDInsight 群集，请参阅 [Run Hive queries using the Hive View](hdinsight-hadoop-use-hive-ambari-view.md)（使用 Hive 视图运行 Hive 查询）。
-> 
-> 
+> HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上即将弃用](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)。
+>
+> 有关 HDInsight 3.4 或更高版本，请参阅[在 Ambari Hive 视图中运行 Hive 查询](hdinsight-hadoop-use-hive-ambari-view.md)，了解如何通过 Web 浏览器运行 Hive 查询。
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
@@ -125,6 +125,6 @@ ms.openlocfilehash: a6b5e865e9a57b1eaf8ad08aa70466f772bdb244
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

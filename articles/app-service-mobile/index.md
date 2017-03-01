@@ -1,14 +1,25 @@
 ---
+title: "Azure 移动应用文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。"
+services: app-service\mobile
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: app-service\mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 9cae18a8206e2828838c8b35733eee5d25d15cb1
-
+ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
+ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
 
 ---
 # <a name="mobile-apps-documentation"></a>移动应用文档
 
-Azure 应用服务中的移动应用提供面向企业开发人员和系统集成商的可缩放移动应用程序开发平台，为移动开发人员提供丰富的功能集。
+了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建本机 iOS、Android 或 Windows 应用，或者跨平台应用。 教程、视频、客户端 SDK 文档和其他资源介绍了如何构建与托管任何移动应用的后端。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -185,8 +196,13 @@ Azure 应用服务中的移动应用提供面向企业开发人员和系统集�
                 <div class="card">
                     <div class="cardText">
                         <h3>语言</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET</a></p>
-                   </div>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET 后端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-node/">Node.js 后端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-android-client/">Android 客户端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-ios-client/">iOS 客户端 SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-js-client/">JavaScript/Cordova 客户端 SDK</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt419521.aspx">Windows/Xamarin 客户端 SDK</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -194,6 +210,7 @@ Azure 应用服务中的移动应用提供面向企业开发人员和系统集�
 </ul>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

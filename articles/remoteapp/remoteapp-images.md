@@ -40,7 +40,7 @@ Azure RemoteApp 订阅包括三个模板映像：
 
 继续阅读了解每个映像所包含内容的详细信息。
 
-## <a name="windows-server-2012-r2-the-vanilla-image"></a>Windows Server 2012 R2（“普通映像”）
+## <a name="windows-server-2012-r2--the-vanilla-image"></a>Windows Server 2012 R2（“普通映像”）
 此映像基于 Microsoft Windows Server 2012 R2 Datacenter 操作系统，安装有以下角色和功能，以便满足 Azure RemoteApp 模板映像的要求：
 
 * .NET Framework 4.5, 3.5.1, 3.5

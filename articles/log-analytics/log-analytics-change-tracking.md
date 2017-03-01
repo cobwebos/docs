@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 01/18/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
+ms.sourcegitcommit: 2a66cdb9825cfc3935d534afaf3f6f0cf5d5fb5a
+ms.openlocfilehash: d4226882ded34a79f7e227886a396db0e927bad2
 
 
 ---
 # <a name="change-tracking-solution-in-log-analytics"></a>Log Analytics 中的更改跟踪解决方案
-本文可帮助你使用 Log Analytics 中的配置更改跟踪解决方案，以便轻松标识环境中的更改。 该解决方案会跟踪对软件、Windows 服务、Linux 守护程序和 Linux 包的更改。 标识配置更改可帮助你查明操作问题。 还可以将解决方案配置为跟踪对特定 Windows 文件的更改。
+本文可帮助你使用 Log Analytics 中的更改跟踪解决方案，以便轻松标识环境中的更改。 该解决方案会跟踪对 Windows 和 Linux 软件、Windows 文件、Windows 服务和 Linux 守护程序的更改。 标识配置更改可帮助你查明操作问题。
 
-安装该解决方案，以更新已安装代理的类型。 系统会读取对受监视服务器上的已安装软件、Windows 服务和 Linux 守护程序的更改，然后将数据发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。 发现更改后，会在“更改跟踪”仪表板中显示服务器及其更改。 通过使用“更改跟踪”仪表板上的信息，你可以轻松看到服务器基础结构中所做的更改。
+安装该解决方案，以更新已安装代理的类型。 系统会读取对受监视服务器上的已安装软件、Windows 服务和 Linux 守护程序的更改，然后将数据发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。 通过使用“更改跟踪”仪表板上的信息，你可以轻松看到服务器基础结构中所做的更改。
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
@@ -63,12 +63,12 @@ ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
 
 | 平台 | 直接代理 | SCOM 代理 | Linux 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows 和 Linux |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |每小时 |
+| Windows 和 Linux |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![否](./media/log-analytics-change-tracking/oms-bullet-red.png) |![是](./media/log-analytics-change-tracking/oms-bullet-green.png) | 耗时 15 分钟至 1 小时，具体取决于更改类型 |
 
 ## <a name="use-change-tracking"></a>使用“更改跟踪”
 安装解决方案后，你可以通过使用 OMS 中“**概述**”页上的“**更改跟踪**”磁贴，查看受监视服务器的更改摘要。
 
-![“更改跟踪”磁贴的图像](./media/log-analytics-change-tracking/oms-changetracking-tile.png)
+![“更改跟踪”磁贴的图像](./media/log-analytics-change-tracking/change-tracking-tile.png)
 
 你可以查看基础结构的更改，然后向下钻取以下类别的详细信息：
 
@@ -79,9 +79,9 @@ ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
 * 单个服务器的 Windows 服务更改
 * Linux 守护程序更改
 
-![“更改跟踪”仪表板的图像](./media/log-analytics-change-tracking/oms-changetracking01.png)
+![“更改跟踪”仪表板的图像](./media/log-analytics-change-tracking/change-tracking-dash01.png)
 
-![“更改跟踪”仪表板的图像](./media/log-analytics-change-tracking/oms-changetracking02.png)
+![“更改跟踪”仪表板的图像](./media/log-analytics-change-tracking/change-tracking-dash02.png)
 
 ### <a name="to-view-changes-for-any-change-type"></a>查看任何更改类型的更改
 1. 在“**概述**”页上单击“**更改跟踪**”磁贴。
@@ -93,6 +93,6 @@ ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

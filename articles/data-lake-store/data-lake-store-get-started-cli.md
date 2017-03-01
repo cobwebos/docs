@@ -1,5 +1,5 @@
 ---
-title: "通过跨平台命令行接口开始使用 Data Lake Store | Microsoft 文档"
+title: "通过命令行界面开始使用 Azure Data Lake Store | Microsoft 文档"
 description: "使用 Azure 跨平台命令行来创建 Data Lake Store 帐户以及执行基本操作"
 services: data-lake-store
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
-ms.openlocfilehash: 236563a8814640391130ba53886c5cebfea67a8f
+ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
+ms.openlocfilehash: 89d1811f3f336f2526ccba3b6be26e90ab7120ad
 
 
 ---
@@ -32,6 +32,11 @@ ms.openlocfilehash: 236563a8814640391130ba53886c5cebfea67a8f
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
+
+> [!NOTE]
+> 若要上载和下载大量数据（大型文件和/或大量文件），建议使用 [Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md) 或 [Azure PowerShell](data-lake-store-get-started-powershell.md)。 这些选项都有更好的性能，因为使用了多个线程并行执行数据移动操作。
+> 
+>  
 
 了解如何使用 Azure 命令行接口来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Store 的详细信息，请参阅 [Data Lake Store 概述](data-lake-store-overview.md)。
 
@@ -171,12 +176,12 @@ Azure CLI 是以 Node.js 实现的。 可以在支持 Node.js 的任意平台（
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

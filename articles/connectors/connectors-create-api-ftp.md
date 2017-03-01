@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f08180c196a1f573529c9fed52c7ae5c3869da6d
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 2634d0101c1cd4535922e8844f0beb6b523e2dea
 
 
 ---
 # <a name="get-started-with-the-ftp-connector"></a>FTP 连接器入门
 使用 FTP 连接器在 FTP 服务器上监视、管理和创建文件。 
 
-若要使用[“任何连接器”](apis-list.md)，首先需要创建逻辑应用。 可通过[“立即创建逻辑应用”](../app-service-logic/app-service-logic-create-a-logic-app.md)开始操作。
+若要使用[“任何连接器”](apis-list.md)，首先需要创建逻辑应用。 可通过[“立即创建逻辑应用”](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
 
 ## <a name="connect-to-ftp"></a>连接到 FTP
 需要先创建到任何服务的*连接*，然后逻辑应用才能访问该服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
@@ -35,7 +35,7 @@ ms.openlocfilehash: f08180c196a1f573529c9fed52c7ae5c3869da6d
 > 
 
 ## <a name="use-a-ftp-trigger"></a>使用 FTP 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。  
+触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
 
 > [!IMPORTANT]
 > FTP 连接器需要可从 Internet 访问并配置为在 PASSIVE 模式下运行的 FTP 服务器。 此外，FTP 连接器**与隐式 FTPS (FTP over SSL) 不兼容**。 FTP 连接器仅支持显式 FTPS (FTP over SSL)。  
@@ -61,7 +61,7 @@ ms.openlocfilehash: f08180c196a1f573529c9fed52c7ae5c3869da6d
 > 
 
 ## <a name="use-a-ftp-action"></a>使用 FTP 操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。  
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
 
 现已添加触发器，按照以下步骤添加将获取由该触发器找到的新文件或已修改文件内容的操作。    
 
@@ -370,11 +370,11 @@ BlobMetadata
 | default |操作失败。 |
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

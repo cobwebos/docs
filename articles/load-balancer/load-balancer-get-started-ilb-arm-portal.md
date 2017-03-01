@@ -1,5 +1,5 @@
 ---
-title: "开始使用 Azure 门户在 Resource Manager 中创建内部负载均衡器 | Microsoft Docs"
+title: "创建内部负载均衡器 - Azure 门户 | Microsoft 文档"
 description: "了解如何使用 Azure 门户在 Resource Manager 中创建内部负载平衡器"
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 6961255e4b1a269b3ac9bafb5f1b3ced7a2a8943
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 8fbe9d5d04d745de51e0e41516d6c12683c98637
 
 ---
 
@@ -107,6 +107,6 @@ ms.openlocfilehash: 6961255e4b1a269b3ac9bafb5f1b3ced7a2a8943
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

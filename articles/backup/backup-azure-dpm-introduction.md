@@ -1,5 +1,5 @@
 ---
-title: "Azure DPM 备份简介 | Microsoft Docs"
+title: "使用 DPM 将工作负荷备份到 Azure 门户 | Microsoft 文档"
 description: "使用 Azure 备份服务备份 DPM 服务器的简介"
 services: backup
 documentationcenter: 
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
-ms.author: trinadhk;giridham;jimpark;markgal;adigan
+ms.author: adigan;giridham;jimpark;markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
-> 
-> 
+>
+>
 
 本文介绍如何使用 Microsoft Azure 备份来保护 System Center Data Protection Manager (DPM) 服务器和工作负载。 通过阅读本文，你将会了解：
 
@@ -39,8 +39,8 @@ ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
 
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文提供有关还原使用 Resource Manager 模型部署的 VM 的信息和过程。
-> 
-> 
+>
+>
 
 System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
 
@@ -66,16 +66,16 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“中心”菜单中，单击“**浏览**”，然后在资源列表中，键入“**恢复服务**”。 当你开始键入时，会根据你的输入筛选该列表。 单击“**恢复服务保管库**”。
-   
+
     ![创建恢复服务保管库步骤 1](./media/backup-azure-dpm-introduction/open-recovery-services-vault.png)
-   
+
     此时将显示恢复服务保管库列表。
 3. 在“恢复服务保管库”菜单中，单击“添加”。
-   
+
     ![创建恢复服务保管库步骤 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
-   
+
     此时将打开恢复服务保管库边栏选项卡，其中会提示你提供“名称”、“订阅”、“资源组”和“位置”。
-   
+
     ![创建恢复服务保管库步骤 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
 5. 单击“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
@@ -91,9 +91,9 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
 1. 选择你的保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
 2. 在“设置”边栏选项卡中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡。 在“备份配置”边栏选项卡中，选择保管库的存储复制选项。
-   
+
     ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
-   
+
     选择好保管库的存储选项后，可以开始将 VM 与保管库相关联。 若要开始关联，请发现及注册 Azure 虚拟机。
 
 ### <a name="2-download-vault-credentials"></a>2.下载保管库凭据
@@ -106,10 +106,10 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 打开要将 DPM 计算机注册到的恢复服务保管库。
 3. 默认情况下会打开“设置”边栏选项卡。 如果“设置”边栏选项卡已关闭，请在保管库仪表板中单击“设置”将它打开。 在“设置”边栏选项卡中，单击“属性”。
-   
+
     ![打开保管库边栏选项卡](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 4. 在“属性”页上的“备份凭据”下，单击“下载”。 门户将生成可供下载的保管库凭据文件。
-   
+
     ![下载](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
 门户将使用保管库名称和当前日期的组合生成保管库凭据。 单击“保存”将保管库凭据下载到本地帐户的 downloads 文件夹，或者从“保存”菜单中选择“另存为”以指定保管库凭据保存到的位置。 生成文件最长需要一分钟时间。
@@ -124,45 +124,45 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
 1. 打开要将 DPM 计算机注册到的恢复服务保管库。
 2. 默认情况下会打开“设置”边栏选项卡。 如果“设置”边栏选项卡已关闭，请单击“设置”将它打开。 在“设置”边栏选项卡中，单击“属性”。
-   
+
     ![打开保管库边栏选项卡](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. 在“设置”页上的“Azure 备份代理”下，单击“下载”。
-   
+
     ![下载](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
-   
+
    下载代理后，双击 MARSAgentInstaller.exe 以启动 Azure 备份代理的安装。 选择代理所需的安装文件夹和临时文件夹。 指定的缓存位置必须至少有备份数据的 5% 的可用空间。
 4. 如果使用代理服务器连接到 Internet，请在“代理配置”屏幕中，输入代理服务器详细信息。 如果使用已经过身份验证的代理，请在此屏幕中输入用户名和密码详细信息。
 5. Azure 备份代理将安装 .NET Framework 4.5 和 Windows PowerShell（如果尚未可用）以完成安装。
 6. 安装代理后，**关闭**该窗口。
-   
+
    ![关闭](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 7. 若要**注册 DPM 服务器**到保管库，请在“管理”选项卡中，单击“联机”。 然后，选择“注册”。 此时会打开注册安装程序向导。
 8. 如果使用代理服务器连接到 Internet，请在“代理配置”屏幕中，输入代理服务器详细信息。 如果使用已经过身份验证的代理，请在此屏幕中输入用户名和密码详细信息。
-   
+
     ![代理配置](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
 9. 在保管库凭据屏幕中，浏览到并选择前面下载的保管库凭据文件。
-   
+
     ![保管库凭据](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
-   
+
     保管库凭据文件只能生效 48 小时（从门户下载后算起）。 如果此屏幕中显示任何错误（例如“提供的保管库凭据文件已过期”），请登录到 Azure 门户，并再次下载保管库凭据文件。
-   
+
     确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果你遇到访问相关的错误，请将保管库凭据文件复制到此计算机中的临时位置，然后重试操作。
-   
+
     如果遇到无效的保管库凭据错误（例如“所提供的保管库凭据无效”），则该文件已损坏，或者没有与恢复服务关联的最新凭据。 请在从门户下载新的保管库凭据文件后重试该操作。 如果用户在 Azure 门户中快速连续单击“下载保管库凭据”选项，则通常会出现此错误。 在这种情况下，只有第二个保管库凭据文件有效。
 10. 若要控制工作时间和非工作时间网络带宽的使用情况，可在“限制设置”屏幕中设置带宽使用限制并定义工作时间和非工作时间。
-    
+
     ![限制设置](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 11. 在“恢复文件夹设置”屏幕中，浏览到将在其中暂存从 Azure 下载的文件的文件夹。
-    
+
     ![恢复文件夹设置](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 12. 在“加密设置”屏幕中，可以生成一个通行短语，或者提供一个通行短语（最少包含 16 个字符）。 请记住将通行短语保存在安全位置。
-    
+
     ![加密](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
-    
+
     > [!WARNING]
     > 如果您丢失或忘记了通行短语，Microsoft 无法帮助您恢复备份的数据。 加密通行短语由最终用户拥有，Microsoft 看不到最终用户所用的通行短语。 请将该文件保存在安全位置，因为在恢复操作期间需要用到它。
-    > 
-    > 
+    >
+    >
 13. 单击“注册”按钮后，计算机即会成功注册到保管库，现在，可以开始备份到 Microsoft Azure。
 14. 在使用 Data Protection Manager 时，可以通过在“管理”选项卡下选择“联机”，单击“配置”选项来修改在注册工作流期间指定的设置。
 
@@ -195,12 +195,11 @@ System Center DPM 备份文件和应用程序数据。 备份到 DPM 的数据�
 
 > [!NOTE]
 > 从 System Center 2012 DPM SP1 开始，你可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

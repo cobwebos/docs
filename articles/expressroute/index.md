@@ -1,14 +1,27 @@
 ---
+title: "Azure ExpressRoute 文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何通过本地基础结构或共同租用设施，配置和管理与 Microsoft 云服务建立的专用 ExpressRoute 连接。"
+services: expressroute
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: expressroute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 551759d87b6c697aa1f28810fe32815aec66f269
+ms.sourcegitcommit: 8a169425aa6e99b1a710f5ca56a76445fb1e09bc
+ms.openlocfilehash: 0d06677f6f3815e8ebb35d13f906481350069d4c
+ms.lasthandoff: 03/01/2017
 
 ---
+
 #<a name="expressroute-documentation"></a>ExpressRoute 文档
 
-使用 Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
-
+了解如何通过本地基础结构或共同租用设施，使用 ExpressRoute 来与 Microsoft 云服务建立快速专用连接。 教程、REST API 和其他文档可帮助你配置和管理 ExpressRoute 线路。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -77,7 +90,7 @@ ms.openlocfilehash: 551759d87b6c697aa1f28810fe32815aec66f269
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -98,16 +111,5 @@ ms.openlocfilehash: 551759d87b6c697aa1f28810fe32815aec66f269
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/expressroute.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 ExpressRoute 文档 </div>
-    </a>
-</div>
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

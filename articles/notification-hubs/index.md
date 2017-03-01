@@ -1,15 +1,26 @@
 ---
+title: "Azure 通知中心文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用通知中心从任何后端向任何移动设备发送推送通知。 教程、API 参考和其他文档。"
+services: notification-hubs
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: notification-hubs
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: b40dd058986a3dbe47709776a27ac949d3c4c491
+ms.sourcegitcommit: a5d4401d74c8aebbe618cd1fac9bc8247b8da90b
+ms.openlocfilehash: 418e985335b582957637430cdde71024302f3fc2
 
 ---
+
 #<a name="notification-hubs-documentation"></a>通知中心文档
 
-Azure 通知中心提供易用的多平台扩展式推送基础结构，让用户从任何后端（云中或本地）向任何移动平台发送移动推送通知。
-
-借助通知中心，可以轻松发送跨平台的个性化推送通知，提取不同平台通知系统 (PNS) 的详细信息。 只需 API 调用一次，就可以将通知发送到单个用户或包含数百万用户的整个受众群的所有设备上。
+了解如何使用通知中心（一种多平台可缩放的推送通知引擎）快速发送数百万条消息。 教程、API 参考和其他文档介绍了如何设置推送通知以及将其从任何后端发送到任何移动设备。 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -202,16 +213,10 @@ Azure 通知中心提供易用的多平台扩展式推送基础结构，让用�
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/notification-hubs.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载通知中心文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

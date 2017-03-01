@@ -1,5 +1,5 @@
 ---
-title: "可靠集合 | Microsoft 文档"
+title: "在 Azure 微服务中保存应用程序状态 | Microsoft Docs"
 description: "Service Fabric 有状态服务提供可靠集合让你编写高度可用、可缩放且低延迟的云应用程序。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: required
 ms.date: 10/18/2016
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9d8be5bed137ae00dec4f66fc821a6415f269ea1
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 287707d528d2327637ad3d17633ef830657c04f8
 
 
 ---
@@ -171,6 +171,6 @@ Reliable Collections 负责保存到该点为止的状态。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

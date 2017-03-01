@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 7b7bcc8d73796908f02c77f2df2f2a7c96e1ba47
-ms.openlocfilehash: 38388ead8e80217b44ec5d103c35d6eb5c13d0d3
+ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
+ms.openlocfilehash: 86cd149d351cc957577d213d77db732bd5e16658
 
 
 ---
+
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
 ## <a name="overview"></a>概述
@@ -142,7 +143,9 @@ BackendAddressPoolsText：
 
 应用程序网关允许用户通过 BackendHttpSetting 配置此设置，然后可将此设置应用到不同的池。 不同的后端池可以有不同的 BackendHttpSetting，因此可配置不同的请求超时。
 
+```powershell
     New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+```
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -151,6 +154,6 @@ BackendAddressPoolsText：
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

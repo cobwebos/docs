@@ -1,6 +1,6 @@
 ---
-title: "从 Azure 数据工厂在 Azure Data Lake Analytics 上运行 U-SQL 脚本"
-description: "了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理数据。"
+title: "使用 U-SQL 脚本转换数据 - Azure | Microsoft Docs"
+description: "了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。"
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/07/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: f2d7655f0e119b524b7fb9a32bee4cc874e265a5
+ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
+ms.openlocfilehash: 7a26b44f1c2c97174fb98ffdf0cb74a71d27710a
 
 
 ---
-# <a name="run-u-sql-script-on-azure-data-lake-analytics-from-azure-data-factory"></a>从 Azure 数据工厂在 Azure Data Lake Analytics 上运行 U-SQL 脚本
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -66,20 +66,20 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| 类型 |类型属性应设置为：**AzureDataLakeAnalytics**。 |是 |
-| accountName |Azure Data Lake Analytics 帐户名称。 |是 |
+| 类型 |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
+| accountName |Azure Data Lake Analytics 帐户名。 |是 |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
 | authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，将自动检索授权代码。 |是 |
 | subscriptionId |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
 | resourceGroupName |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
 | sessionId |OAuth 授权会话中的会话 ID。 每个会话 ID 都是唯一的，并且可能仅可使用一次。 会话 ID 在数据工厂编辑器中自动生成。 |是 |
 
-通过使用“授权”按钮生成的授权代码在一段时间后过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：凭据操作错误：invalid_grant-AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21:09:31Z
+使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：凭据操作错误: invalid_grant-AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
 | 不由 Azure Active Directory 管理的用户帐户 (@hotmail.com, @live.com, 等） |12 小时 |
-| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
+| 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的&14; 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
 若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用以下部分中的代码以编程方式生成 **sessionId** 和 **authorization** 属性的值。 
 
@@ -303,6 +303,6 @@ ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out*
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

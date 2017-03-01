@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 01/07/2017
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d41a332d0d4265bc2802be65c7f89aa07e46ae97
+ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
+ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 
 
 ---
@@ -113,10 +113,10 @@ ms.openlocfilehash: d41a332d0d4265bc2802be65c7f89aa07e46ae97
     // I put my GetToken method in a Utils class. Change for wherever you placed your method.
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
 
-    var sec = kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]).Result.Value;
+    var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]);
 
     //I put a variable in a Utils class to hold the secret for general  application use.
-    Utils.EncryptSecret = sec;
+    Utils.EncryptSecret = sec.Value;
 
 
 
@@ -142,29 +142,26 @@ ms.openlocfilehash: d41a332d0d4265bc2802be65c7f89aa07e46ae97
 
 有关创建测试证书的详细信息，请参阅[如何：创建自己的测试证书](https://msdn.microsoft.com/library/ff699202.aspx)
 
-**将证书与 Azure AD 应用程序相关联**既然你拥有一个证书，你需要将其与 Azure AD 应用程序相关联。 但当前 Azure 管理门户不支持此操作。 你需要改用 Powershell。 以下是你需要运行的命令：
+**将证书与 Azure AD 应用程序相关联**既然你拥有一个证书，你需要将其与 Azure AD 应用程序相关联。 目前，Azure 门户不支持此工作流；可通过 PowerShell 完成此操作。 运行以下命令，将该证书与 Azure AD 应用程序相关联：
 
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-
-    PS C:\> $x509.Import("C:\data\KVWebApp.cer")
-
-    PS C:\> $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
-
-    PS C:\> $now = [System.DateTime]::Now
+    $x509.Import("C:\data\KVWebApp.cer")
+    $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
+    $now = [System.DateTime]::Now
 
     # this is where the end date from the cert above is used
-    PS C:\> $yearfromnow = [System.DateTime]::Parse("2016-07-31")
+    $yearfromnow = [System.DateTime]::Parse("2016-07-31")
 
-    PS C:\> $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
+    $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
 
-    PS C:\> $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
+    $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
-    PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToSecrets all -ResourceGroupName 'contosorg'
+    Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToSecrets all -ResourceGroupName 'contosorg'
 
     # get the thumbprint to use in your app settings
-    PS C:\>$x509.Thumbprint
+    $x509.Thumbprint
 
-运行这些命令后，你可以在 Azure AD 中看到该应用程序。 如果你最初未看到该应用程序，可搜索“我的公司拥有的应用程序”，而不是“我的公司使用的应用程序”。
+运行这些命令后，你可以在 Azure AD 中看到该应用程序。 搜索时，请确保在搜索对话框中选择“我公司拥有的应用程序”，而不是“我公司使用的应用程序”。
 
 若要了解有关 Azure AD 应用程序对象和 ServicePrincipal 对象的详细信息，请参阅[应用程序对象和服务主体对象](../active-directory/active-directory-application-objects.md)
 
@@ -243,6 +240,6 @@ ms.openlocfilehash: d41a332d0d4265bc2802be65c7f89aa07e46ae97
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -59,7 +59,7 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 保存更改，然后选中“**升级应用程序**”框。
 
-## <a name="step-3-upgrade-your-application"></a>步骤 3：升级应用程序
+## <a name="step-3--upgrade-your-application"></a>步骤 3：升级应用程序
 请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解可应用的各种升级参数、超时和运行状况标准。 在本演练中，服务运行状况评估条件设置为默认值（不受监视模式）。 若要配置这些设置，可以选择“**配置升级设置**”，然后视需要修改参数。
 
 现在，我们已经准备好选择“**发布**”来开始升级应用程序。 此选项会将应用程序升级到对象会旋转的版本 2.0.0。 Service Fabric 每次会升级一个更新域（先更新一些对象，再更新另一些对象），在升级期间，仍可访问服务。 可以通过客户端（浏览器）检查是否可以访问服务。  

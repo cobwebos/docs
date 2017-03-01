@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/26/2016
-ms.author: sashan;carlrab
+ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 521bdc1bc13451210ccc3f5eefcfa903166031bc
-ms.openlocfilehash: ad5172865becf203cc42d84805ecaf40b046bd98
+ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
+ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
 
 
 ---
@@ -26,28 +26,13 @@ ms.openlocfilehash: ad5172865becf203cc42d84805ecaf40b046bd98
 
 > [!NOTE]
 > 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。 2017 年 4 月将停用非可读辅助类型数据库，现有的非可读数据库将自动升级到可读辅助数据库。
-> 
-> 
+>  
 
  可以使用 [Azure 门户](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、[Transact-SQL](sql-database-geo-replication-transact-sql.md) 或 [REST API - 创建或更新数据库](https://msdn.microsoft.com/library/azure/mt163685.aspx)配置活动异地复制。
-
-> [!div class="op_single_selector"]
-> * [配置：Azure 门户](sql-database-geo-replication-portal.md)
-> * [配置：PowerShell](sql-database-geo-replication-powershell.md)
-> * [配置：T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
 
 如果主数据库因某种原因而出现故障，或者只是需要脱机，则可以*故障转移*到任何辅助数据库。 当将故障转移激活到辅助数据库之一时，所有其他辅助数据库会自动链接到新的主数据库。
 
 可以使用 [Azure 门户](sql-database-geo-replication-failover-portal.md)、[PowerShell](sql-database-geo-replication-failover-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 计划的故障转移](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)或 [REST API - 未计划的故障转移](https://msdn.microsoft.com/library/azure/mt582027.aspx)故障转移到辅助数据库。
-
-> [!div class="op_single_selector"]
-> * [故障转移：Azure 门户](sql-database-geo-replication-failover-portal.md)
-> * [故障转移：PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [故障转移：T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
@@ -78,7 +63,7 @@ ms.openlocfilehash: ad5172865becf203cc42d84805ecaf40b046bd98
 > 
 > 
 
-* **弹性池数据库的活动异地复制**：可以为任何弹性数据库池中的任何数据库配置活动异地复制。 辅助数据库可以位于另一个弹性数据库池中。 对于常规的数据库，辅助数据库可以是弹性数据库池，反过来也一样，只要服务层相同。 
+* **弹性池数据库的活动异地复制**：可以为任何弹性池中的任何数据库配置活动异地复制。 辅助数据库可以位于另一个弹性池中。 对于常规的数据库，辅助数据库可以是弹性池，反过来也一样，只要服务层相同。 
 * **辅助数据库的可配置性能级别**：可以使用低于主数据库的性能级别创建辅助数据库。 主数据库和辅助数据库都需要有相同的服务层。 不建议将此选项用于具有高数据库写入活动的应用程序，因为复制延迟时间的增长会加大故障转移后大量数据丢失的风险。 此外，在故障转移后，应用程序的性能将受到影响，直到新的主数据库升级到更高的性能级别。 Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小性能级别的好办法。 例如，如果你的主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 你还可以使用 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 或 [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) 数据库视图检索日志 IO 数据。  有关 SQL 数据库性能级别的详细信息，请参阅 [SQL 数据库选项和性能](sql-database-service-tiers.md)。 
 * **用户控制的故障转移和故障回复**：应用程序或用户可随时将辅助数据库显式切换到主角色。 在实际服务中断期间，应使用“计划外”选项，这会立即将辅助数据库升级为主数据库。 当出现故障的主数据库恢复并再次可用时，系统会自动将恢复的主数据库标记为辅助数据库并使其与新的主数据库保持最新状态。 由于复制的异步特性，在未计划的故障转移期间，如果主数据库在将最新的更改复制到辅助数据库之前出现故障，则可能会丢失少量数据。 当具有多个辅助数据库的主数据库进行故障转移时，系统将自动重新配置复制关系，并将剩余辅助数据库链接到新升级的主数据库，无需任何用户的干预。 导致了故障转移的服务中断得到缓解后，可能需要将应用程序返回到主要区域。 为此，应使用“计划内”选项调用故障转移命令。 
 * **保持凭据和防火墙规则同步**：建议将[数据库防火墙规则](sql-database-firewall-configure.md)用于异地复制数据库，以便这些规则可以和数据库一起复制，从而确保所有辅助数据库具有与主数据库相同的防火墙规则。 此方法不再需要客户手动配置和维护承载主数据库和辅助数据库的服务器上的防火墙规则。 同样，将[包含的数据库用户](sql-database-manage-logins.md)用于数据访问可确保主数据库和辅助数据库始终具有相同的用户凭据，以便在故障转移期间，不会因登录名和密码不匹配而产生中断。 通过添加 [Azure Active Directory](../active-directory/active-directory-whatis.md)，客户可以管理主数据库和辅助数据库的用户访问权限，且不再需要同时管理数据库中的凭据。
@@ -149,6 +134,6 @@ ms.openlocfilehash: ad5172865becf203cc42d84805ecaf40b046bd98
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

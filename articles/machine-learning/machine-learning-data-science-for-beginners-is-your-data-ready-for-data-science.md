@@ -1,5 +1,5 @@
 ---
-title: "数据是否可用于数据科研？ 数据评估 | Microsoft Docs"
+title: "数据是否可用于数据科研？ 数据评估 - Azure | Microsoft Docs"
 description: "了解数据可用于数据科学的 4 个条件。 “适合初学者的数据科学”的视频 2 中提供具体示例，帮助了解基本数据评估。"
 keywords: "相关数据, 评估数据, 准备数据, 数据条件, 数据就绪情况"
 services: machine-learning
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 35579eda8b92a481525ad987e99e7d9c9ed6b942
-ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: 3d2b259c29a52394ac42afba0c5572364cfeea39
 
 
 ---
@@ -113,6 +113,6 @@ ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: "使用 Resource Manager 中的 PowerShell 创建应用程序网关的自定义探测 | Microsoft Docs"
+title: "创建自定义探测 - Azure 应用程序网关 - PowerShell | Microsoft Docs"
 description: "了解如何使用资源管理器中的 PowerShell 创建应用程序网关的自定义探测"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: c766763e4633c4905595ae15aca0679b5ecaf5bd
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 794797d9c42ec7f2fc351bab109147e45ce06070
 
 
 ---
@@ -27,8 +27,6 @@ ms.openlocfilehash: c766763e4633c4905595ae15aca0679b5ecaf5bd
 > * [Azure 门户](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
-> 
-> 
 
 [!INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
@@ -39,7 +37,7 @@ ms.openlocfilehash: c766763e4633c4905595ae15aca0679b5ecaf5bd
 
 ### <a name="step-1"></a>步骤 1
 
-使用 Login-AzureRmAccount 进行身份验证。
+使用 `Login-AzureRmAccount` 进行身份验证。
 
 ```powershell
 Login-AzureRmAccount
@@ -55,7 +53,7 @@ Get-AzureRmSubscription
 
 ### <a name="step-3"></a>步骤 3
 
-选择要使用的 Azure 订阅。 <BR>
+选择要使用的 Azure 订阅。
 
 ```powershell
 Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
@@ -192,11 +190,8 @@ $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType B
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
-
 > [!NOTE]
-> **InstanceCount** 的默认值为 2，最大值为 10。 **GatewaySize** 的默认值为 Medium。 可以在 **Standard_Small**、**Standard_Medium** 和 **Standard_Large** 之间进行选择。
-> 
-> 
+> **InstanceCount** 的默认值为 2，最大值为 10。 **GatewaySize** 的默认值为 Medium。 可以在 **Standard_Small**、**Standard_Medium** 和 **Standard_Large** 之间进行选择。 
 
 ## <a name="create-an-application-gateway-by-using-new-azurermapplicationgateway"></a>使用 New-AzureRmApplicationGateway 创建应用程序网关
 
@@ -255,7 +250,6 @@ Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 ```powershell
 $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
-
 
 ### <a name="step-2"></a>步骤 2
 
@@ -318,6 +312,6 @@ DnsSettings              : {
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

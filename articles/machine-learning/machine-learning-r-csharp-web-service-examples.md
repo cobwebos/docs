@@ -1,6 +1,6 @@
 ---
-title: "使用 R 生成的机器学习 Web 服务示例 | Microsoft Docs"
-description: "找到一组使用 R 代码和机器学习创建的有用 Web 服务示例，并发布到 Azure 应用商店。"
+title: "（已弃用）使用 R 生成的机器学习 Web 服务示例 - Azure | Microsoft Docs"
+description: "（已弃用）找到一组使用 R 代码和机器学习创建的有用 Web 服务示例，并发布到 Azure 应用商店。"
 keywords: "csharp, r 代码, Web 服务示例"
 services: machine-learning
 documentationcenter: 
@@ -12,16 +12,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c3e94cf69d55de9c31a48de35e86a1ae9149a63
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 303fb71faf73d4a1b6d17b4ca66b83b15157332b
 
 
 ---
-# <a name="web-services-examples-using-r-code-on-azure-machine-learning-and-published-to-microsoft-azure-marketplace"></a>有关在 Azure 机器学习中使用 R 代码并将其发布到 Microsoft Azure 应用商店的 Web 服务示例
+# <a name="deprecated-web-services-examples-using-r-code-on-azure-machine-learning-and-published-to-microsoft-azure-marketplace"></a>（已弃用）有关在 Azure 机器学习中使用 R 代码并将其发布到 Microsoft Azure 应用商店的 Web 服务示例
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且这些 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 在本文中，Web 服务示例使用 Azure 机器学习创建，并发布到 Azure 应用商店。 每个 Web 服务示例均附加了综合文档，这嵌入了用于测试服务的示例数据集，并解释了用户可以如何自行创建类似的服务。 
 
 在 Azure 机器学习工作室中，用户可以编写 R 代码，并且单击几下鼠标可将其作为应用程序和设备的 Web 服务发布以在全世界使用。 
@@ -47,10 +54,10 @@ ms.openlocfilehash: 0c3e94cf69d55de9c31a48de35e86a1ae9149a63
 * [预测 - 自动回归集成移动平均 (ARIMA)](machine-learning-r-csharp-arima.md)
 * [生存分析](machine-learning-r-csharp-survival-analysis.md)
 
-## <a name="scenario-2-trained-model-specific-data"></a>方案 2：训练模型 – 特定数据
+## <a name="scenario-2-trained-model--specific-data"></a>方案 2：训练模型 – 特定数据
 用户具有通过 R 代码提供有用预测的数据，例如通过 K 平均值算法集合的大型个性调查表示例可预测用户的个性类型，或者是通过调查分析 R 程序包用于预测个人患肺癌风险的健康调查数据。 用户通过 Web 服务发布预测新用户结果的数据。
 
-## <a name="scenario-3-trained-model-generic-data"></a>方案 3：训练模型 – 一般数据
+## <a name="scenario-3-trained-model--generic-data"></a>方案 3：训练模型 – 一般数据
 用户具有一般数据（例如文本集），允许跨不同类型的用例和方案广泛生成和应用 Web 服务。
 
 * [基于词典的情绪分析](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
@@ -72,6 +79,6 @@ ms.openlocfilehash: 0c3e94cf69d55de9c31a48de35e86a1ae9149a63
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

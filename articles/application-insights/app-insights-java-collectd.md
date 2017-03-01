@@ -1,5 +1,5 @@
 ---
-title: "collectd：Azure Application Insights 中 Linux 上的 Java 的性能统计 | Microsoft Docs"
+title: "监视 Linux 上 Java Web 应用的性能 - Azure | Microsoft Docs"
 description: "通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。"
 services: application-insights
 documentationcenter: java
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: e085f90d3f34d32d2e065ede6674842000e29fb8
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
    * 使用资源中的检测密钥添加此代码段：
 
-```
+```XML
 
      LoadPlugin "com.microsoft.applicationinsights.collectd.ApplicationInsightsWriter"
      <Plugin ApplicationInsightsWriter>
@@ -56,6 +56,8 @@ ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
 ```
 
 以下是示例配置文件的一部分：
+
+```XML
 
     ...
     # collectd plugins
@@ -83,14 +85,15 @@ ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
       # Other plugin configurations ...
       ...
     </Plugin>
-。   ...
+    ...
+```
 
 配置其他 [collectd 插件](https://collectd.org/wiki/index.php/Table_of_Plugins)，其可从不同源中收集各种数据。
 
 根据其[手册](https://collectd.org/wiki/index.php/First_steps)重启 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>查看 Application Insights 中的数据
-在 Application Insights 资源中，打开[指标资源管理器和添加图表][指标]，选择要从“自定义”类别查看的指标。
+在 Application Insights 资源中，打开[指标资源管理器和添加图表][metrics]，选择要从“自定义”类别查看的指标。
 
 ![](./media/app-insights-java-collectd/result.png)
 
@@ -114,7 +117,7 @@ ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
 ## <a name="problems"></a>遇到问题？
 *在门户中看不到数据*
 
-* 打开[搜索][诊断]，查看原始事件是否已到达。 有时需较长时间才能在指标资源管理器中看到数据。
+* 打开[搜索][diagnostic]，查看原始事件是否已到达。 有时需较长时间才能在指标资源管理器中看到数据。
 * 可能需要[为传出数据设置防火墙例外](app-insights-ip-addresses.md)
 * 在 Application Insights 插件中启用跟踪。 在 `<Plugin ApplicationInsightsWriter>` 中添加此行：
   * `SDKLogger true`
@@ -123,20 +126,20 @@ ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
 
 <!--Link references-->
 
-[API]: app-insights-api-custom-events-metrics.md
+[api]: app-insights-api-custom-events-metrics.md
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
-[可用性]: app-insights-monitor-web-app-availability.md
-[诊断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
-[指标]: app-insights-metrics-explorer.md
-[用法]: app-insights-web-track-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[usage]: app-insights-web-track-usage.md
 
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

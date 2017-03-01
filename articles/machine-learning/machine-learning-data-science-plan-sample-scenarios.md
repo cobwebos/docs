@@ -1,5 +1,5 @@
 ---
-title: "用于 Azure 机器学习中高级分析过程和技术的方案 | Microsoft Docs"
+title: "识别 Azure 机器学习的高级分析方案 | Microsoft 文档"
 description: "选择适当的方案，用于执行具有团队数据科学过程的高级预测分析。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 97cadfc4e94e425abf2b6b2268fe3478e92ef47f
+ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
+ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 
 
 ---
@@ -268,6 +268,6 @@ ms.openlocfilehash: 97cadfc4e94e425abf2b6b2268fe3478e92ef47f
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

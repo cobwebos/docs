@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fcd8fe1bd1be5ffa85aab0951a28054754ba03ff
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: a451ab54144222676e8063b764a6d22f44a690d7
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: fcd8fe1bd1be5ffa85aab0951a28054754ba03ff
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-enterprise-apps-manage-sso.md)
 > * [Azure 经典门户](active-directory-sso-integrate-saas-apps.md)
-> 
-> 
+>
+>
 
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
@@ -50,8 +50,8 @@ Azure AD 提供多种可自定义的方式来向组织中的用户部署应用�
 
 > [!NOTE]
 > 若要为现有应用程序设置 SSO，你需要有 Azure AD 和 SaaS 应用程序的全局管理员权限。
-> 
-> 
+>
+>
 
 ### <a name="mapping-user-accounts"></a>映射用户帐户
 用户的标识通常有唯一身份标识符，可能是电子邮件地址或用户主体名称 (UPN)。 需要将每个用户的应用程序标识链接（映射）到其各自的 Azure AD 标识。 根据应用程序身份验证的要求，有几种方法可实现此目的。
@@ -72,12 +72,11 @@ Azure AD 提供多种可自定义的方式来向组织中的用户部署应用�
 
 Azure.com 库中还提供了有关所有这些问题的更多详细信息，请先阅读 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

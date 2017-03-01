@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric Reliable Actors KVSActorStateProvider 配置概述 | Microsoft 文档"
+title: "更改 Azure 微服务中的 KVSActorStateProvider 设置 | Microsoft Docs"
 description: "了解有关配置类型为 KVSActorStateProvider 的 Azure Service Fabric 有状态执行组件的信息"
 services: Service-Fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2016
+ms.date: 01/04/2017
 ms.author: sumukhs
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47c72ea0345092e23d3c8603f90891003b6a2f68
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 9610c37111bf8fd36c1eaea4f48e46953661aacf
 
 
 ---
@@ -96,6 +96,6 @@ BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

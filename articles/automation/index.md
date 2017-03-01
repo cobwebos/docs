@@ -1,13 +1,25 @@
 ---
+title: "Azure 自动化文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何使用自动化服务将过程和配置管理自动化，以节省时间，提高例行管理任务的可靠性。"
+services: automation
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: automation
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c9444c341bc5746c96719e6ebfa464f294adf2f8
+ms.sourcegitcommit: 5a96f86157516585742bf184a65f42b1a2070a95
+ms.openlocfilehash: 008fe9bc549d2ba4bc043c344b39409a04efe598
 
 ---
 # <a name="automation-documentation"></a>自动化文档
 
-通过 Azure 自动化，用户可以自动完成通常要在云环境中执行的手动、长时间进行、易出错且重复性高的任务。 它可以节省时间，可以提高常规管理任务的可靠性，甚至可以将这些任务安排成按特定的时间间隔自动执行。
+了解如何使用自动化服务来节省时间，提高云环境中执行的例行管理任务的可靠性。 教程、API 参考和其他文档介绍了如何使用 Runbook 将过程自动化，或者使用 Desired State Configuration 将配置管理自动化。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -165,16 +177,10 @@ ms.openlocfilehash: c9444c341bc5746c96719e6ebfa464f294adf2f8
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/automation.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载自动化文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

@@ -55,8 +55,8 @@ Install-Package wastorage
 将以下 include 语句添加到 C++ 文件的顶部，你要在此使用 Azure 存储 API 来访问队列：  
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/queue.h"
+#include <was/storage_account.h>
+#include <was/queue.h>
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
@@ -273,6 +273,6 @@ queue.delete_queue_if_exists();
 * [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

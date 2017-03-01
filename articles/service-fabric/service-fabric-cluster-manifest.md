@@ -3,7 +3,7 @@ title: "配置独立群集 | Microsoft 文档"
 description: "本文介绍如何配置独立的或专用的 Service Fabric 群集。"
 services: service-fabric
 documentationcenter: .net
-author: dsk-2015
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2016
-ms.author: dkshir
+ms.date: 2/17/2017
+ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b19d1ed96cf8e294cb105fa62f8623b28e3cc7fc
+ms.sourcegitcommit: 4cde82601758c9f92ab36c692265a8b6c192cbdc
+ms.openlocfilehash: eef19d304ec63d752b6b84c78833af44ca5344d2
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: b19d1ed96cf8e294cb105fa62f8623b28e3cc7fc
 
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2015-01-01-alpha",
+    "apiVersion": "2016-09-26",
 
 可为 Service Fabric 群集指定任何友好名称，只需将该名称分配到 **name** 变量即可。 **clusterConfigurationVersion** 是群集的版本号；每次升级 Service Fabric 群集时，都应该递增该号码。 不过，应该将 **apiVersion** 保留为默认值。
 
@@ -132,6 +133,7 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
         "leaseDriverEndpointPort": "19002"
         "serviceConnectionEndpointPort": "19003",
         "httpGatewayEndpointPort": "19080",
+        "reverseProxyEndpointPort": "19081",
         "applicationPorts": {
             "startPort": "20575",
             "endPort": "20605"
@@ -155,7 +157,7 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
 * *applicationPorts* 是 Service Fabric 应用程序使用的端口。 这些端口应是 *ephemeralPorts* 的子集，其范围足以满足应用程序的终结点要求。 每当需要新端口时，Service Fabric 将使用这些端口，并负责为这些端口打开防火墙。 
 * *reverseProxyEndpointPort* 是可选的反向代理终结点。 有关详细信息，请参阅 [Service Fabric 反向代理](service-fabric-reverseproxy.md)。 
 
-### <a name="other-settings"></a>其他设置
+### <a name="log-settings"></a>日志设置
 使用 **fabricSettings** 节可以设置 Service Fabric 数据和日志的根目录。 只能在初次创建群集的时候自定义这些设置。 下面是此部分的代码段示例。
 
     "fabricSettings": [{
@@ -170,12 +172,19 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
 
 建议使用非 OS 驱动器作为 FabricDataRoot 和 FabricLogRoot，因为它能够更可靠地防范 OS 崩溃。 请注意，如果只自定义数据根目录，则会将日志根目录放置在比数据根目录低一级的位置。
 
+### <a name="stateful-reliable-service-settings"></a>有状态的 Reliable Service 设置
+**KtlLogger** 部分允许设置 Reliable Services 的全局配置设置。 有关这些设置的详细信息，请阅读[配置有状态 Reliable Services](service-fabric-reliable-services-configuration.md)。
+下面的示例演示如何更改创建的共享事务日志，以备份有状态服务的任何可靠集合。
+
+    "fabricSettings": [{
+        "name": "KtlLogger",
+        "parameters": [{
+            "name": "SharedLogSizeInMB",
+            "value": "4096"
+        }]
+    }]
+
 ## <a name="next-steps"></a>后续步骤
-根据独立群集设置配置一个完整的 ClusterConfig.JSON 文件后，可以遵循[在本地或云中创建 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)文中所述步骤部署群集，然后继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+根据独立群集设置配置一个完整的 ClusterConfig.JSON 文件后，可以遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)一文中所述步骤部署群集，然后继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
 
 

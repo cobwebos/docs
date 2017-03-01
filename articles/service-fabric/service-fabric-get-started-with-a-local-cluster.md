@@ -1,6 +1,6 @@
 ---
-title: "在本地群集上部署和升级应用入门 | Microsoft Docs"
-description: "设置本地 Service Fabric 群集，在其中部署现有的应用程序，然后升级该应用程序。"
+title: "以本地方式部署和升级 Azure 微服务 | Microsoft 文档"
+description: "了解如何设置本地 Service Fabric 群集，在其中部署现有的应用程序，然后升级该应用程序。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: efe9845280de3bcd882a7c879b53576600aae0a7
-ms.openlocfilehash: 1bc418f3cadfc83fbec0f2e2c508c77d97b84285
+ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
+ms.openlocfilehash: d1320daaf4b0bd8c1a7b7c8e37fa8b81c4a53e64
 
 
 ---
@@ -29,7 +29,7 @@ Azure Service Fabric SDK 包含完整的本地开发环境，可让你快速地�
 > 
 
 ## <a name="create-a-local-cluster"></a>创建本地群集
-Service Fabric 群集代表一组可在其中部署应用程序的硬件资源。 通常，群集由任意数量的计算机（从 5 台到数千台）组成。 不过，Service Fabric SDK 包含可在一台计算机上运行的群集配置。
+Service Fabric 群集代表一组可在其中部署应用程序的硬件资源。 通常，群集由任意数量的计算机（从&5; 台到数千台）组成。 不过，Service Fabric SDK 包含可在一台计算机上运行的群集配置。
 
 请务必知道 Service Fabric 本地群集不是模拟器或仿真器。 它运行多台计算机群集上使用的相同平台代码。 唯一的差别在于它在一台计算机上运行通常会分散于五台计算机的平台进程。
 
@@ -189,10 +189,10 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 3. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”  。
 4. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”  。 此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。 仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才删除本地群集。
 
-## <a name="one-node-and-five-node-cluster-mode"></a>单节点或 5 节点群集模式
-开发应用程序时，你通常会发现自己快速迭代编写代码、调试、更改代码、调试等。 为有助于优化此过程，本地群集可采用两种模式运行：单节点或 5 节点模式。 这两种群集模式各有优点。 5 节点群集模式使你能够使用真正的群集。 可以使用多个实例和服务副本测试故障转移方案。 单节点群集模式经过优化，能够快速执行服务部署和注册，从而帮助使用 Service Fabric 运行时快速验证代码。
+## <a name="one-node-and-five-node-cluster-mode"></a>单节点或&5; 节点群集模式
+开发应用程序时，你通常会发现自己快速迭代编写代码、调试、更改代码、调试等。 为有助于优化此过程，本地群集可采用两种模式运行：单节点或&5; 节点模式。 这两种群集模式各有优点。 5 节点群集模式使你能够使用真正的群集。 可以使用多个实例和服务副本测试故障转移方案。 单节点群集模式经过优化，能够快速执行服务部署和注册，从而帮助使用 Service Fabric 运行时快速验证代码。
 
-单节点群集模式和 5 节点群集模式都不是仿真器或模拟器。 本地开发群集运行多台计算机群集中使用的同一平台代码。
+单节点群集模式和&5; 节点群集模式都不是仿真器或模拟器。 本地开发群集运行多台计算机群集中使用的同一平台代码。
 
 > [!WARNING]
 > 更改群集模式时，会从系统中删除当前群集，并创建一个新的群集。 更改群集模式后会删除相应群集中存储的数据。
@@ -243,6 +243,6 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,10 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/07/2016
-ms.author: dhanyahk
+ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ce0e0ce9004e1b331328fca5830f01b6ce6af6c
+ms.sourcegitcommit: eec9b73cbaccfa50eec6f237e4d1d810c6efa1d9
+ms.openlocfilehash: e5b8ac91914203156bd395d7f462385e9f6dbcb4
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -61,7 +62,7 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 * 处理后，通过 Azure 经典门户编写和缓存报表，并提供相关服务。
 
 ### <a name="report-generation-times"></a>报表生成时间
-由于大量身份验证和登录都通过 Azure AD 平台进行处理，因此，处理的最近登录为平均 1 小时内的登录。 在极少数情况下，处理最近的登录可能最多需要 8 小时。
+由于大量身份验证和登录都通过 Azure AD 平台进行处理，因此，处理的最近登录为平均&1; 小时内的登录。 在极少数情况下，处理最近的登录可能最多需要 8 小时。
 
 你可以通过检查每个报表顶部的帮助文本查找最近处理的登录。
 
@@ -113,7 +114,7 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 ### <a name="integrate-with-the-azure-ad-reporting-api"></a>与 Azure AD Reporting API 集成
 请参阅 [Reporting API 入门](active-directory-reporting-api-getting-started.md)。
 
-### <a name="engage-multifactor-authentication-on-users"></a>对用户使用 Multi-Factor Authentication
+### <a name="engage-multi-factor-authentication-on-users"></a>对用户使用 Multi-Factor Authentication
 在报表中选择一个用户。
 
 单击屏幕底部的“启用 MFA”按钮。
@@ -139,10 +140,5 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 > 有关 Azure AD Reporting 的详细文档，请参阅 [查看访问和使用情况报表](active-directory-view-access-usage-reports.md)。
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

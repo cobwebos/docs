@@ -181,6 +181,6 @@ Microsoft Azure 跨平台命令行工具 0.10.5 版在发布时增加了新的�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

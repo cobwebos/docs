@@ -1,26 +1,26 @@
 ---
-title: "Azure Multi-Factor Authentication 报告"
+title: "管理员管理用户和设备 - Azure MFA | Microsoft Docs"
 description: "本文介绍如何更改用户设置，例如，强制用户再次完成验证过程。"
 documentationcenter: 
 services: multi-factor-authentication
 author: kgremban
 manager: femila
-editor: curtand
+editor: yossib
 ms.assetid: aac3b922-7cc1-428c-9044-273579aa7b5a
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80eb9d882fa6b057623e0a5559baf111542359da
+ms.sourcegitcommit: 27ff53646992308d574dcc2e631cd63b8227f9c8
+ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
 
 
 ---
-# <a name="managing-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure Multi-Factor Authentication 的用户设置
+# <a name="managing-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 作为管理员，你可以管理以下用户和设备设置。  
 
 * [要求选定用户重新提供联系方式](#require-selected-users-to-provide-contact-methods-again)
@@ -37,7 +37,7 @@ ms.openlocfilehash: 80eb9d882fa6b057623e0a5559baf111542359da
 2. 在左侧单击“Active Directory”。
 3. 在“目录”下，单击被要求再次提供联系方法的用户对应的目录。
 4. 在顶部单击“用户”。
-5. 在页面底部，单击“管理 Multi-Factor Auth”。 此时将打开“Multi-Factor Authentication”页。
+5. 在页面底部，单击“管理 Multi-Factor Auth”。 此时将打开“多重身份验证”页。
 6. 找到要管理的用户，并勾选其名称旁边的框。 你可能需要在顶部切换视图。
 7. 右侧将显示“管理用户设置”链接。 请单击此按钮。
 8. 选中“要求选定用户重新提供联系方式”。
@@ -53,7 +53,7 @@ ms.openlocfilehash: 80eb9d882fa6b057623e0a5559baf111542359da
 2. 在左侧单击“Active Directory”。
 3. 在“目录”下，单击你要删除其应用密码的用户对应的目录。
 4. 在顶部单击“用户”。
-5. 在页面底部，单击“管理 Multi-Factor Auth”。 此时将打开“Multi-Factor Authentication”页。
+5. 在页面底部，单击“管理 Multi-Factor Auth”。 此时将打开“多重身份验证”页。
 6. 找到要管理的用户，并勾选其名称旁边的框。 你可能需要在顶部切换视图。
 7. 右侧将显示“管理用户设置”链接。 请单击此按钮。
 8. 选中“删除选定用户生成的所有现有应用密码”。
@@ -62,14 +62,14 @@ ms.openlocfilehash: 80eb9d882fa6b057623e0a5559baf111542359da
 10. 单击“关闭”。
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>还原用户的所有已记住设备的 MFA
-管理员可以还原用户设备和浏览器的 Multi-Factor Authentication。 执行此操作时，将从用户的所有设备和浏览器中删除记住的 MFA，并且用户在下次登录时需要使用 MFA。
+管理员可以还原用户设备和浏览器的多重身份验证。 执行此操作时，将从用户的所有设备和浏览器中删除记住的 MFA，并且用户在下次登录时需要使用 MFA。
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>如何还原用户所有已暂停设备上的 MFA
 1. 登录到 Azure 经典门户。
 2. 在左侧单击“Active Directory”。
 3. 在“目录”下，单击要为其还原 MFA 的用户对应的目录。
 4. 在顶部单击“用户”。
-5. 在页面底部，单击“管理 Multi-Factor Auth”。 此时将打开“Multi-Factor Authentication”页。
+5. 在页面底部，单击“管理 Multi-Factor Auth”。 此时将打开“多重身份验证”页。
 6. 找到要管理的用户，并勾选其名称旁边的框。 你可能需要在顶部切换视图。
 7. 右侧将显示“管理用户设置”链接。 请单击此按钮。
 8. 选中“还原所有已记住设备的多重身份验证”****
@@ -79,7 +79,6 @@ ms.openlocfilehash: 80eb9d882fa6b057623e0a5559baf111542359da
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

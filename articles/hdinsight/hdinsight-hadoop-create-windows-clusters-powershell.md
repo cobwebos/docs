@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure PowerShell 在 HDInsight 中创建基于 Windows 的 Hadoop 群集 | Microsoft Docs"
-description: "了解如何使用 Azure PowerShell 创建 Azure HDInsight 的群集。"
+title: "使用 PowerShell 创建基于 Windows 的 Azure HDInsight (Hadoop) | Microsoft Docs"
+description: "了解如何使用 Azure PowerShell 在 HDInsight 中创建基于 Windows 的 Hadoop 群集。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: a71718eabc3863e4e78619a2f1ceb174c7c0f058
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9870b61eb00cee169973ae7c09b0c4886cd2db53
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中创建基于 Windows 的 Hadoop 群集
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-了解如何使用 Azure PowerShell 创建 HDInsight 群集。 Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet。 有关其他群集创建工具和功能的详细信息，请单击本页顶部相应的选项卡，或参阅[群集创建方法](hdinsight-provision-clusters.md#cluster-creation-methods)。
+了解如何使用 Azure PowerShell 在 HDInsight 中创建基于 Windows 的 Hadoop 群集。 
+
+本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关创建基于 Linux 的群集的信息，请参阅[使用 Azure PowerShell 创建 HDInsight 中的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)。
+
+> [!IMPORTANT]
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ## <a name="prerequisites"></a>先决条件：
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -131,8 +137,8 @@ Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure
     ####################################
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 
-## <a name="create-clusters-using-resource-management-template"></a>使用资源管理模板创建群集
-可以使用 Azure PowerShell 部署可用于创建 HDInsight 群集的 Azure 资源管理模板。  请参阅[使用 Azure PowerShell 调用模板](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-powershell)。
+## <a name="create-clusters-using-resource-manager-template"></a>使用 Resource Manager 模板创建群集
+可以使用 Azure PowerShell 部署可用于创建 HDInsight 群集的 Azure Resource Manager 模板。  请参阅[使用 Azure PowerShell 调用模板](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-powershell)。
 
 ## <a name="customize-clusters"></a>自定义群集
 * 请参阅[使用 Bootstrap 自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)。
@@ -155,6 +161,6 @@ Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

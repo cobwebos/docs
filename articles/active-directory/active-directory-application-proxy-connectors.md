@@ -1,22 +1,22 @@
 ---
-title: "使用 Azure AD 应用程序代理连接器 | Microsoft Docs"
+title: "经典门户 Azure AD 应用代理连接器 | Microsoft Docs"
 description: "介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。"
 services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
+editor: harshja
 ms.assetid: b283796a-9679-4c79-b703-802bb850f65d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c6c16cd2adb22e58a2e5834f5b56aacfa084e407
+ms.sourcegitcommit: 7ed296a6773763f7aaae55e9a1667efca7d9e590
+ms.openlocfilehash: d84eaf5abc80270325e34ec6b5d1ee3edfac637a
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: c6c16cd2adb22e58a2e5834f5b56aacfa084e407
 > [!div class="op_single_selector"]
 > * [Azure 门户](active-directory-application-proxy-connectors-azure-portal.md)
 > * [Azure 经典门户](active-directory-application-proxy-connectors.md)
-> 
-> 
+>
+>
 
 连接器组可用于各种方案，包括：
 
@@ -71,7 +71,6 @@ ms.openlocfilehash: c6c16cd2adb22e58a2e5834f5b56aacfa084e407
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

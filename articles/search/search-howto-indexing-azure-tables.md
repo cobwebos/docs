@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
+ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
+ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
 
 ---
 
@@ -34,7 +34,7 @@ ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
 
 1. 创建数据源
    * 将 `type` 参数设置为 `azuretable`
-   * 作为 `credentials.connectionString` 参数传入存储帐户连接字符串
+   * 作为 `credentials.connectionString` 参数传入存储帐户连接字符串。 有关详细信息请参阅下方的[如何指定凭据](#Credentials)。
    * 使用 `container.name` 参数指定表名称
    * （可选）使用 `container.query` 参数指定查询。 如有可能，请在 PartitionKey 上使用筛选器，以获得最佳性能；任何其他查询将导致全表扫描，这可能会导致大型表性能降低。
 2. 使用与要编制索引的表中的列对应的模式创建搜索索引。
@@ -48,11 +48,25 @@ ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
     {
         "name" : "table-datasource",
         "type" : "azuretable",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
 
 有关创建数据源 API 的详细信息，请参阅[创建数据源](https://msdn.microsoft.com/library/azure/dn946876.aspx)。
+
+<a name="Credentials"></a>
+#### <a name="how-to-specify-credentials"></a>如何指定凭据 ####
+
+可通过以下一种方式提供表的凭据： 
+
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure Resource Manager 存储帐户），从 Azure 门户获取连接字符串。
+- **存储帐户共享访问签名** (SAS) 连接字符串：`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS 应具有容器（本例中为表）和对象（表行）的列表和读取权限。
+-  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`。 SAS 应具有表的列表和读取权限。
+
+有关存储共享访问签名的详细信息，请参阅[使用共享访问签名](../storage/storage-dotnet-shared-access-signature-part-1.md)。
+
+> [!NOTE]
+> 如果使用 SAS 凭据，则需使用续订的签名定期更新数据源凭据，以防止其过期。 如果 SAS 凭据过期，索引器将失败，出现类似于 `Credentials provided in the connection string are invalid or have expired.` 的错误消息。  
 
 ### <a name="create-index"></a>创建索引
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
@@ -123,6 +137,6 @@ ms.openlocfilehash: 031667b3a6f0265e57568706e5454cd275ec9ecc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

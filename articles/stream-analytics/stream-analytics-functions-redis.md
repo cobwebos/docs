@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Functions 从 Azure 流分析输出到 Azure Redis 缓存 | Microsoft 文档"
+title: "针对 Azure Functions 的流分析实时处理 | Microsoft Docs"
 description: "了解如何使用已连接到服务总线队列的 Azure 函数在 Azure Redis 缓存中填充流分析作业的输出。"
 keywords: "数据流, redis 缓存, 服务总线队列"
 services: stream-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: ryancraw
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e792f8c8b1ffddbd534b1660421e4cc89a63d35a
+ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
+ms.openlocfilehash: 3753846e955308a7607d92ed25648d75b9cc3a35
 
 
 ---
@@ -207,6 +207,6 @@ Azure 流分析可帮助快速开发和部署低成本分析解决方案，以�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

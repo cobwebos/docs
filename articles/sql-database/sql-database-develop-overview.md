@@ -12,12 +12,12 @@ ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 18dc3cce7451d90b6b65b990b80c05e7f6decb56
+ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
+ms.openlocfilehash: 59b8e7b6b2e2442c0a961d105ccdbc9336445aa6
 
 
 ---
@@ -32,6 +32,9 @@ ms.openlocfilehash: 18dc3cce7451d90b6b65b990b80c05e7f6decb56
 为各种编程语言和平台提供了代码示例。 可在以下位置找到代码示例的链接： 
 
 * 详细信息：[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
+
+## <a name="tools"></a>工具 
+可以利用开源工具，如 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/)。 此外，Azure SQL 数据库可与 Microsoft 工具（如 [Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)）配合使用。  还可以使用 Azure 管理门户、PowerShell 和 REST API 帮助提高工作效率。
 
 ## <a name="resource-limitations"></a>资源限制
 Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源：资源调控和强制限制。
@@ -72,11 +75,10 @@ Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据�
 * [Azure SQL 数据库 Elastic Scale 预览版入门](sql-database-elastic-scale-get-started.md)
 
 ## <a name="next-steps"></a>后续步骤
-浏览所有 [SQL 数据库的功能](https://azure.microsoft.com/services/sql-database/)。
+浏览所有 [SQL 数据库的功能](sql-database-technical-overview.md)。
 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

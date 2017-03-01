@@ -12,19 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: mijiang
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21c05684055a98fecd214fb8291147d3cfefe13a
-
+ms.sourcegitcommit: 8d5c21f8e746a9bcddc2eb9b0294836e0de55bf2
+ms.openlocfilehash: 6300aa7030cfd29ec4b8b1db7b42227855fddbcf
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="contact-us"></a>联系我们
 * [如何向 Microsoft Azure API 管理团队提问？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
+
+
+## <a name="frequently-asked-questions"></a>常见问题
 * [功能处于预览中意味着什么？](#what-does-it-mean-when-a-feature-is-in-preview)
 * [如何确保 API 管理网关和后端服务之间的连接安全？](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
 * [如何将 API 管理服务实例复制到新实例？](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
@@ -42,6 +44,7 @@ ms.openlocfilehash: 21c05684055a98fecd214fb8291147d3cfefe13a
 * [为何在尝试克隆 GIT 存储库时得到身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否适用于 Azure ExpressRoute ？](#does-api-management-work-with-azure-expressroute)
 * [是否可将 API 管理服务从一个订阅移到另一个订阅？](#can-i-move-an-api-management-service-from-one-subscription-to-another)
+* [导入 API 是否存在限制或已知问题？](#api-management-api-import-restrictions)
 
 ### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>如何向 Microsoft Azure API 管理团队提问？
 可使用以下选项之一联系我们：
@@ -88,7 +91,6 @@ ms.openlocfilehash: 21c05684055a98fecd214fb8291147d3cfefe13a
 2. 使用 `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` 将上下文设置为具有该服务的订阅。
 3. 使用 `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` 获取单一登录 URL。
 4. 使用 URL 访问管理员门户。
-
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>我想要添加的策略为何在策略编辑器中不可用？
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](https://msdn.microsoft.com/library/azure/dn894080.aspx)中的策略的用法部分。
 
@@ -98,7 +100,6 @@ ms.openlocfilehash: 21c05684055a98fecd214fb8291147d3cfefe13a
 * 在 API 管理中，可将 API 配置为表示不同版本。 例如，可具有两个不同的 API，MyAPIv1 和 MyAPIv2。 开发人员可选择该开发人员要使用的版本。
 * 还可使用不包含版本段的服务 URL 配置 API，例如 https://my.api。 然后，在每个操作的[重写 URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) 模板上配置版本段。 例如，可使操作带有名为 /resource 的 [URL 模板](api-management-howto-add-operations.md#url-template)和名为 /v1/Resource 的[重写 URL](api-management-howto-add-operations.md#rewrite-url-template) 模板。 可为每个操作单独更改版本段值。
 * 如果希望在 API 的服务 URL 中保留“默认”版本段，请在选定操作上设置使用[设置后端服务](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService)策略的策略以更改后端请求路径。
-
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
 若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 你可以：
 
@@ -144,11 +145,13 @@ API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-ro
 是的。 API 管理适用于 Azure ExpressRoute。
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>是否可将 API 管理服务从一个订阅移到另一个订阅？
-是的。 若要了解操作方法，请参阅[将资源移动到新资源组或订阅](../resource-group-move-resources.md)。
+是的。 若要了解操作方法，请参阅[将资源移动到新资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+
+### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>导入 API 是否存在限制或已知问题？
+[Open API(Swagger)、WSDL 和 WADL 格式的已知问题和限制](api-management-api-import-restrictions.md)。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

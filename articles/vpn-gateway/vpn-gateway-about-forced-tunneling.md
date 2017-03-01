@@ -1,10 +1,10 @@
 ---
-title: "使用经典部署模型配置站点到站点连接的强制隧道 | Microsoft 文档"
+title: "为 Azure 站点到站点连接配置强制隧道：经典 | Microsoft Docs"
 description: "如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc58780b3f278ef8a0ad46b507dec8f3e7bf364c
+ms.sourcegitcommit: 5183fc3b4e7ec3fe6060a6a9551656332300995f
+ms.openlocfilehash: 75cd2b7073d5cda6fc90aa963a9ad321e6992743
 
 
 ---
@@ -69,7 +69,7 @@ ms.openlocfilehash: cc58780b3f278ef8a0ad46b507dec8f3e7bf364c
 
 * Azure 订阅。 如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * 已配置虚拟网络。 
-* 最新版本的 Azure PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md) 。
+* 最新版本的 Azure PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 。
 
 ## <a name="configure-forced-tunneling"></a>配置强制隧道
 以下过程将帮助您为虚拟网络指定强制隧道。 配置步骤与 VNet 网络配置文件相对应。
@@ -163,6 +163,6 @@ ms.openlocfilehash: cc58780b3f278ef8a0ad46b507dec8f3e7bf364c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

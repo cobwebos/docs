@@ -3,37 +3,35 @@ title: "使用 Azure 门户复制 Azure SQL 数据库 | Microsoft 文档"
 description: "创建 Azure SQL 数据库的副本"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: daa6f079-13ed-462f-b346-e201aa61681b
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
-ms.date: 09/19/2016
-ms.author: sstein
+ms.date: 02/07/2017
+ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
+ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
+ms.openlocfilehash: 5da07683a4ca9fe1751debc163a0a5a595b6f82b
 
 
 ---
 # <a name="copy-an-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户复制 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [概述](sql-database-copy.md)
-> * [Azure 门户](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
-以下步骤说明如何使用 [Azure 门户](https://portal.azure.com)将 SQL 数据库复制到同一服务器或其他服务器。
+以下步骤说明如何使用 [Azure 门户](https://portal.azure.com)将 SQL 数据库复制到同一服务器或其他服务器。 
+
+> [!NOTE]
+> 还可使用 [PowerShell](sql-database-copy-powershell.md) 或 [Transact-SQL](sql-database-copy-transact-sql.md) 复制 SQL 数据库。
+>
 
 若要复制 SQL 数据库，需要做好以下项：
 
-* Azure 订阅。 如果需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
+* Azure 订阅。 如果你需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
 * 要复制的 SQL 数据库。 如果你没有 SQL 数据库，请按照[创建你的第一个 Azure SQL 数据库](sql-database-get-started.md)文章中的步骤创建一个。
 
 ## <a name="copy-your-sql-database"></a>复制 SQL 数据库
@@ -46,7 +44,7 @@ ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
    ![SQL 数据库](./media/sql-database-copy-portal/sql-database-copy.png)
 4. 在“复制”页上，提供了一个默认的数据库名称。 根据需要键入不同的名称（服务器上的所有数据库必须具有唯一的名称）。
 5. 选择**目标服务器**。 目标服务器是要在其中创建数据库副本的位置。 可以将数据库复制到相同或不同的服务器。 可以创建新的服务器，或者从列表中选择现有的服务器。 
-6. 选择**目标服务器**后，将启用“弹性数据库池”和“定价层”选项。 如果服务器包含一个池，可以将数据库复制到该池中。
+6. 选择“目标服务器”后，将启用“弹性池”和“定价层”选项。 如果服务器包含一个池，可以将数据库复制到该池中。
 7. 单击“确定”开始复制过程。
    
    ![SQL 数据库](./media/sql-database-copy-portal/copy-page.png)
@@ -65,15 +63,8 @@ ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
 若要在复制操作完成后解析登录名，请参阅[解析登录名](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)
 
 ## <a name="next-steps"></a>后续步骤
-* 有关复制 Azure SQL 数据库的概述，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
-* 若要使用 PowerShell 复制数据库，请参阅[使用 PowerShell 复制 Azure SQL 数据库](sql-database-copy-powershell.md)。
-* 若要使用 Transact-SQL 复制数据库，请参阅[使用 Transact-SQL 复制 Azure SQL 数据库](sql-database-copy-transact-sql.md)。
-* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
-
-## <a name="additional-resources"></a>其他资源
-* [管理登录名](sql-database-manage-logins.md)
-* [使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询](sql-database-connect-query-ssms.md)
-* [将数据库导出到 BACPAC](sql-database-export.md)
+* 若要了解如何在将数据库复制到其他逻辑服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
+* 若要使用 Azure 门户将数据库导出到 BACPAC 文件，请参阅[使用 Azure 门户将数据库导出到 BACPAC](sql-database-export-portal.md)。
 * [业务连续性概述](sql-database-business-continuity.md)
 * [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
 
@@ -86,6 +77,6 @@ ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

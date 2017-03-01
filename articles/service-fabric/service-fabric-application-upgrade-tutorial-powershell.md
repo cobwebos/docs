@@ -1,5 +1,5 @@
 ---
-title: "使用 PowerShell 升级 Service Fabric 应用 | Microsoft 文档"
+title: "使用 PowerShell 升级 Service Fabric 应用 | Microsoft Docs"
 description: "本文逐步指导你使用 PowerShell 部署 Service Fabric 应用程序、更改代码以及推出升级版本。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/15/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: 568d32f713fa4af1e0841fbf457014c5705be265
+ms.sourcegitcommit: 1825e1400b95eb2a810082b6a3f15324261084b0
+ms.openlocfilehash: 210f368598f0073f11c9d6f9be2fb2220eed29e0
 
 
 ---
@@ -33,7 +33,9 @@ ms.openlocfilehash: 568d32f713fa4af1e0841fbf457014c5705be265
 
 可使用托管或本机 API、PowerShell 或 REST 执行应用程序的受监控升级。 有关使用 Visual Studio 执行升级的说明，请参阅[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)。
 
-使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员还可以配置当运行状况评估失败时要采取的措施（例如，执行自动回滚）。本部分将演练使用 PowerShell 对其中一个 SDK 示例进行受监视的升级。
+使用 Service Fabric 监视的滚动升级，应用程序管理员可以配置 Service Fabric 用于确定应用程序运行状况是否正常的运行状况评估策略。 此外，管理员还可以配置当运行状况评估失败时要采取的措施（例如，执行自动回滚）。本部分将演练使用 PowerShell 对其中一个 SDK 示例进行受监视的升级。 以下 Microsoft Virtual Academy 视频也分步讲解了应用升级：<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
+<img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
+</a></center>
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>步骤 1：构建和部署视觉对象示例
 单击右键应用程序项目 **VisualObjectsApplication**，然后选择“**发布**”命令生成并发布应用程序。  有关详细信息，请参阅 [Service Fabric 应用程序升级教程](service-fabric-application-upgrade-tutorial.md)。  或者，也可以使用 PowerShell 来部署应用程序。
@@ -74,7 +76,7 @@ ms.openlocfilehash: 568d32f713fa4af1e0841fbf457014c5705be265
 
 现在请生成项目，方法是选择 **ActorService** 项目，然后单击右键并选择 Visual Studio 中的“**生成**”选项。 如果选择“**全部重新生成**”，应该更新所有项目的版本，因为代码已更改。 接下来，将更新的应用程序打包，方法是右键单击“***VisualObjectsApplication***”，选择 Service Fabric 菜单，然后选择“**打包**”。 此操作将创建可部署的应用程序包。  更新的应用程序已准备就绪，可供部署。
 
-## <a name="step-3-decide-on-health-policies-and-upgrade-parameters"></a>步骤 3：确定运行状况策略和升级参数
+## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>步骤 3：确定运行状况策略和升级参数
 请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况标准。 对于本演练，服务运行状况评估标准设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为*运行状况正常*。  
 
 让我们将 *HealthCheckStableDuration* 增加到 60 秒（这样该服务在进行下一个更新域的升级之前将至少保持 20 秒的运行状况正常）。  我们还将 *UpgradeDomainTimeout* 设置为 1200 秒，将 *UpgradeTimeout* 设置为 3000 秒。
@@ -139,6 +141,6 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

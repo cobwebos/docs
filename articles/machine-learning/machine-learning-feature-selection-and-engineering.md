@@ -11,12 +11,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/12/2016
+ms.topic: deprecated
+ms.date: 01/18/2017
 ms.author: zhangya;bradsev
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-data-science-create-features
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1d29f416fe7d5ef3f74cf64122a84acc4a4535da
+ms.sourcegitcommit: ba61d00f277af579c87a130336ead9879b82a6de
+ms.openlocfilehash: c6b88355df430e78594fc1283c9df01ad6e27e20
 
 
 ---
@@ -52,7 +54,7 @@ ms.openlocfilehash: 1d29f416fe7d5ef3f74cf64122a84acc4a4535da
 开始 Azure 机器学习时，通过使用机器学习工作室中提供的示例具体掌握此过程最为简单。 这里介绍了两个示例：
 
 * 目标值已知的监督实验中的回归示例（[预测自行车租赁数量](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4)）
-* 使用[特征哈希][特征哈希]的文本挖掘分类示例
+* 一个使用[特征哈希][feature-hashing]的文本挖掘分类示例
 
 ### <a name="example-1-adding-temporal-features-for-a-regression-model"></a>示例1：为回归模型添加临时特征
 若要演示如何为回归任务设计特征，请在 Azure 机器学习工作室中使用“自行车需求预测”实验。 此实验的目的是预测自行车的需求，即在特定月、日或小时内的自行车租赁数量。 数据集**自行车租赁 UCI 数据集**用作原始输入数据。
@@ -81,7 +83,7 @@ ms.openlocfilehash: 1d29f416fe7d5ef3f74cf64122a84acc4a4535da
 
 为了完成这个任务，应用被称为*特征哈希*的技术将任意文本特征有效地转换为索引。 该方法通过将哈希函数应用于特征并将它们的哈希值直接用作索引来起作用，而不是将每个文本特征（单词或短语）与特定索引相关联。
 
-在 Azure 机器学习中，有一个[特征哈希][特征哈希]模块，可以创建这些词或短语特征。 下图显示使用此模块的示例。 输入数据集包含两列：书籍评分（范围为 1 到 5），以及实际评论内容。 此[特征哈希][特征哈希]模块的目标是检索新特征，这些特征显示特定书籍评论中相应单词或短语的出现频率。 若要使用此模块，需要完成以下步骤：
+在 Azure 机器学习中，有一个[特征哈希][feature-hashing]模块可以创建这些词或短语特征。 下图显示使用此模块的示例。 输入数据集包含两列：书籍评分（范围为 1 到 5），以及实际评论内容。 此[特征哈希][feature-hashing]模块的目标是检索新特征，这些特征显示特定书籍评论中相应单词或短语的出现频率。 若要使用此模块，需要完成以下步骤：
 
 1. 选择包含输入文本的列（此示例中的 **Col2**）。
 2. 将 *Hashing bitesize* 设置为 8，这意味着将创建 2^8 = 256 个特征。 文本中的单词或短语将哈希处理为 256 个索引。 参数 *Hashing bitsize* 的范围是 1 到 31。 如果该参数设置为较大数字，单词或短语不太可能被哈希处理到相同的索引中。
@@ -107,7 +109,7 @@ Azure 机器学习工作室提供了适用于特征选择的模块。 如下图�
 
 ![特征选择示例](./media/machine-learning-feature-selection-and-engineering/feature-Selection.png)
 
-例如，将[基于筛选器的特征选择][filter-based-feature-selection]模块与前面所述的文本挖掘示例结合使用。 假设在通过[特征哈希][特征哈希]创建了一组 256 个特征后想要构建回归模型，并且响应变量为 **Col1**，表示范围为 1 到 5 的书籍审核评分。 将“特征评分方法”设置为“皮尔逊相关”、“目标列”设置为“Col1”以及“所需特征数”设置为“50”。 [基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征以及目标属性为 **Col1** 的数据集。 下图显示了此实验的流程以及输入参数。
+例如，将[基于筛选器的特征选择][filter-based-feature-selection]模块与前面所述的文本挖掘示例结合使用。 假设在通过[特征哈希][feature-hashing]创建了一组 256 个特征后要构建回归模型，并且响应变量为 **Col1**，表示范围为 1 到 5 的书籍审核评分。 将“特征评分方法”设置为“皮尔逊相关”、“目标列”设置为“Col1”以及“所需特征数”设置为“50”。 [基于筛选器的特征选择][filter-based-feature-selection]模块将生成一个包含 50 个特征以及目标属性为 **Col1** 的数据集。 下图显示了此实验的流程以及输入参数。
 
 ![特征选择示例](./media/machine-learning-feature-selection-and-engineering/feature-Selection1.png)
 
@@ -119,7 +121,7 @@ Azure 机器学习工作室提供了适用于特征选择的模块。 如下图�
 
 ![所选特征的分数](./media/machine-learning-feature-selection-and-engineering/feature-Selection3.png)
 
-通过应用此[基于筛选器的特征选择][filter-based-feature-selection]模块，将选出 256 个特征中的 50 个，因为它们基于评分方法**皮尔逊相关**具有与目标变量 **Col1** 最相关的特征。
+通过应用此[基于筛选器的特征选择][filter-based-feature-selection]模块，将从256 个特征中选出 50 个，因为它们基于评分方法**皮尔逊相关**具有最多的与目标变量 **Col1**相关的特征。
 
 ## <a name="conclusion"></a>结束语
 特征工程和特征选择是在生成机器学习模型时，为准备定型数据通常执行的两个步骤。 通常，首先应用特征工程生成其他特征，然后执行特征选择步骤，消除不相关、冗余或高度相关的特征。
@@ -128,12 +130,12 @@ Azure 机器学习工作室提供了适用于特征选择的模块。 如下图�
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[特征哈希]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
+[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

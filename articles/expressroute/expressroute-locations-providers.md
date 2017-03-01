@@ -1,10 +1,10 @@
 ---
-title: "ExpressRoute 位置 | Microsoft Docs"
-description: "本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。"
+title: "位置和连接服务提供商：Azure ExpressRoute | Microsoft 文档"
+description: "本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。 按位置排序。"
 services: expressroute
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
@@ -12,14 +12,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/12/2017
+ms.date: 02/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 25dbeb2c011d4f2b833140d86690d546bfb6825e
-ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
+ms.sourcegitcommit: 040598d55939685e50a3fb7006e27e27097f9224
+ms.openlocfilehash: ee64f3bb764d19e60022b5fe9b3ffc75c9b51d77
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
+
+> [!div class="op_single_selector"]
+> * [按提供商列出的位置](expressroute-locations.md)
+> * [按位置列出的提供商](expressroute-locations-providers.md)
+
+
 本文中的表格提供有关 ExpressRoute 连接提供商、ExpressRoute 地理覆盖范围、通过 ExpressRoute 支持的 Microsoft 云服务以及 ExpressRoute 系统集成商 (SI) 的信息。
 
 ## <a name="a-namepartnersaexpressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 连接服务提供商
@@ -34,38 +40,37 @@ ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
-| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、拉斯维加斯、洛杉矶、纽约、西雅图、硅谷、华盛顿特区、蒙特利尔+、魁北克市+、多伦多 |
+| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、拉斯维加斯、洛杉矶、纽约、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
 | **南美洲** |巴西南部 |圣保罗 |
 | **欧洲** |北欧、西欧、英国西部、英国南部 |阿姆斯特丹、都柏林、伦敦、纽波特（威尔士）、巴黎 |
 | **亚洲** |东亚、东南亚 |中国香港特别行政区、新加坡 |
 | **日本** |日本西部、日本东部 |大坂、东京 |
 | **澳大利亚** |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 |
 | **印度** |印度西部、印度中部、印度南部 |金奈、孟买 |
-| **韩国** | 韩国中部、韩国南部 | 釜山、首尔 |
+| **韩国** |韩国中部、韩国南部 |釜山、首尔 |
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的区域和地缘政治边界
 下表提供了国家/地区云的区域和地缘政治边界的信息。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- | --- |
-| **美国政府云** |美国爱荷华州政府、美国弗吉尼亚州政府、美国 DoD 中部+、美国 DoD 东部+  |芝加哥、达拉斯、纽约、硅谷+、华盛顿特区 |
+| **美国政府云** |美国爱荷华州政府、美国弗吉尼亚州政府、美国 DoD 中部、美国 DoD 东部  |芝加哥、达拉斯、纽约、硅谷、华盛顿特区 |
 | **中国** |中国北部、中国东部 |北京、上海 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 
 标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 你需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
 
 ## <a name="a-namelocationsaconnectivity-provider-locations"></a><a name="locations"></a>连接服务提供商位置
-> [!div class="op_single_selector"]
-> * [按提供商列出的位置](expressroute-locations.md#locations)
-> * [按位置列出的提供商](expressroute-locations-providers.md#locations)
-> 
-> 
+
+下表显示连接位置和每个位置的服务提供商。 若要查看服务提供商及其提供服务的位置，请参阅[按服务提供商列出的位置](expressroute-locations.md#locations)。 
+
 
 ### <a name="production-azure"></a>生产 Azure
 | **位置** | **服务提供商** |
 | --- | --- |
 | **阿姆斯特丹** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Orange、Tata Communications、TeleCity Group、Telenor、Verizon |
 | **亚特兰大** |Equinix |
+| **釜山** |LG CNS+、Sejong Telecom |
 | **金奈** |SIFY、Tata Communications |
 | **芝加哥** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Zayo Group |
 | **达拉斯** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport |
@@ -81,8 +86,10 @@ ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
 | **Mumbai** |Tata Communications |
 | **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank |
 | **巴黎** |Interxion、Equinix+ |
+| **魁北克市** | Megaport |
 | **圣保罗** |Equinix、Telefonica |
 | **西雅图** |Equinix、Level 3 Communications、Megaport |
+| **首尔** |KINX、Sejong Telecom |
 | **硅谷** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Console、Equinix、Level 3 Communications、Orange、Tata Communications、Verizon、Zayo Group |
 | **新加坡** |Aryaka Networks、AT&T NetBond、British Telecom、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
 | **悉尼** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Orange、Telstra Corporation、Verizon |
@@ -100,7 +107,7 @@ ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
 | **芝加哥** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 | **达拉斯** |Equinix、Megaport、Verizon |
 | **纽约** |Equinix、Level 3 Communications+、Verizon |
-| **硅谷** | Equinix+ |
+| **硅谷** | Equinix |
 | **华盛顿特区** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
 ### <a name="china"></a>中国
@@ -153,8 +160,8 @@ ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
 | **亚洲** |Avanade Inc.、OneAs1a |
 | **澳大利亚** | IT Consultancy |
 | **欧洲** |Avanade Inc.、Dotnet Solutions、MSG Services、Nelite |
-| **美国** |Avanade Inc.、Equinix Professional Services、Perficient、Project Leadership |
-
+| **北美** |Avanade Inc.、Equinix Professional Services、Perficient、Project Leadership |
+| **南美洲** |Avanade Inc. |
 ## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 * 确保符合所有先决条件。 请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)。
@@ -164,6 +171,6 @@ ms.openlocfilehash: 74805f654249d4499a4d36af1016801737ffb76a
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

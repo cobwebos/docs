@@ -1,5 +1,5 @@
 ---
-title: "存储简介 | Microsoft Docs"
+title: "Azure 存储简介 | Microsoft 文档"
 description: "Microsoft 的云中在线数据存储 - Azure 存储空间的概述。 了解如何在应用程序中使用最佳的云存储解决方案。"
 services: storage
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2016
+ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 40ab7632f47de4d4eef277f4c4071ce2d4de1eed
+ms.sourcegitcommit: f4b26aa9a4dd110eafb8f9f8d658cc0f530136ec
+ms.openlocfilehash: 4548d83525dba6024d1892950e3acbc6b857977a
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储空间简介
+
 ## <a name="overview"></a>概述
 Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。 通过阅读本文章，开发人员、IT 专业人员和业务决策人员可以了解：
 
@@ -30,7 +32,7 @@ Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客�
 * 如何通过冗余和复制确保 Azure 存储数据的持久性
 * 接下来要到何处去构建你的第一个 Azure 存储应用程序
 
-若要快速启动并运行 Azure 存储，请参阅 [在 5 分钟内开始使用 Azure 存储](storage-getting-started-guide.md)。
+若要快速启动并运行 Azure 存储，请参阅 [在&5; 分钟内开始使用 Azure 存储](storage-getting-started-guide.md)。
 
 有关可配合 Azure 存储空间使用的工具、库和其他资源的详细信息，请参阅下面的 [后续步骤](#next-steps) 。
 
@@ -49,7 +51,7 @@ Azure 存储空间支持使用各种操作系统（包括 Windows 和 Linux）�
 
 Azure 高级存储提供高性能、低延迟的磁盘支持，适合在 Azure 虚拟机上运行的 I/O 密集型工作负载。 有了 Azure 高级存储，你就可以将多个持久性数据磁盘附加到虚拟机，并根据性能要求对其进行配置。 每个数据磁盘在 Azure 高级存储中都有一个后备 SSD 磁盘，以确保最高的 I/O 性能。 有关详细信息，请参阅 [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md) 。
 
-## <a name="introducing-the-azure-storage-services"></a>Azure 存储服务介绍
+## <a name="introducing-the-azure-storage-services"></a>Azure 存储服务简介
 Azure 存储空间提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。
 
 * Blob 存储用于存储非结构化对象数据。 Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
@@ -132,10 +134,10 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
 
 创建存储帐户时，可以选择以下复制选项之一：
 
-* **本地冗余存储 (LRS)。**  本地冗余存储保留数据的三个副本。 LRS 将在单个区域中的单个数据中心内复制三次。 LRS 可以保护数据免受普通的硬件故障损害，但无法保护数据免受单个数据中心故障的损害。
+* **本地冗余存储 (LRS)。** 本地冗余存储保留数据的三个副本。 LRS 将在单个区域中的单个数据中心内复制三次。 LRS 可以保护数据免受普通的硬件故障损害，但无法保护数据免受单个数据中心故障的损害。
 
     LRS 以折扣价格提供。 为获得最大持久性，我们建议你使用下文所述的地域冗余存储。
-* **区域冗余存储 (ZRS)。**  区域冗余存储保留数据的三个副本。 ZRS 在两到三个设施之间复制三次（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。 ZRS 在单个区域内确保数据持久保存。
+* **区域冗余存储 (ZRS)。** 区域冗余存储保留数据的三个副本。 ZRS 在两到三个设施之间复制三次（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。 ZRS 在单个区域内确保数据持久保存。
 
     ZRS 提供比 LRS 更高级别的持久性；不过，为获得最大持久性，我们建议你使用下文所述的地域冗余存储。
 
@@ -161,7 +163,7 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
 
 有关 Azure 存储空间持久性的体系结构详细信息，请参阅 [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务）。
 
-## <a name="transferring-data-to-and-from-azure-storage"></a>将数据传输到和移出 Azure 存储空间
+## <a name="transferring-data-to-and-from-azure-storage"></a>将数据传输到和移出 Azure 存储
 你可以使用 AzCopy 命令行实用程序复制存储帐户内或跨存储帐户的 blob、文件和表数据。 有关详细信息，请参阅 [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md) 。
 
 AzCopy 在 [Azure 数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)的基础上构建，当前以预览版提供。
@@ -178,21 +180,21 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [适用于 .NET、Windows Phone 和 Windows 运行时的存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [适用于 C++ 的存储客户端库](https://github.com/Azure/azure-storage-cpp)
-* [适用于 Java/Android 的存储空间客户端库](/develop/java/)
+* [适用于 Java/Android 的存储空间客户端库](https://azure.microsoft.com/develop/java/)
 * [适用于 Node.js 的存储空间客户端库](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [适用于 PHP 的存储空间客户端库](/develop/php/)
-* [适用于 Ruby 的存储空间客户端库](/develop/ruby/)
-* [适用于 Python 的存储空间客户端库](/develop/python/)
+* [适用于 PHP 的存储空间客户端库](https://azure.microsoft.com/develop/php/)
+* [适用于 Ruby 的存储空间客户端库](https://azure.microsoft.com/develop/ruby/)
+* [适用于 Python 的存储空间客户端库](https://azure.microsoft.com/develop/python/)
 * [适用于 PowerShell 1.0 的存储空间 Cmdlet](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
-### <a name="azure-storage-management-services"></a>Azure 存储空间管理服务
-* [存储资源提供程序 REST API 参考](https://msdn.microsoft.com/library/azure/mt163683.aspx)
-* [适用于 .NET 的存储资源提供程序客户端库](https://msdn.microsoft.com/library/azure/mt131037.aspx)
-* [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](https://msdn.microsoft.com/library/azure/mt607151.aspx)
+### <a name="azure-storage-management-services"></a>Azure 存储管理服务
+* [存储资源提供程序 REST API 参考](/rest/api/storagerp/)
+* [适用于 .NET 的存储资源提供程序客户端库](/dotnet/api/microsoft.azure.management.storage)
+* [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](/powershell/storage/)
 * [存储服务管理 REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
-### <a name="azure-storage-data-movement-services"></a>Azure 存储空间数据移动服务
-* [存储导入/导出服务 REST API](https://msdn.microsoft.com/library/azure/dn529096.aspx)
+### <a name="azure-storage-data-movement-services"></a>Azure 存储数据移动服务
+* [存储导入/导出服务 REST API](storage-import-export-service.md)
 * [适用于 .NET 的存储数据移动客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>工具和实用程序
@@ -208,6 +210,8 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 
 ### <a name="documentation"></a>文档
 * [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
+* [创建存储帐户](storage-create-storage-account.md)
+* [Azure 存储五分钟快速入门](storage-getting-started-guide.md)
 
 ### <a name="for-administrators"></a>面向管理员
 * [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
@@ -245,13 +249,4 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [如何通过 Python 使用表存储](storage-python-how-to-use-table-storage.md)
 * [如何通过 Python 使用队列存储](storage-python-how-to-use-queue-storage.md)
 * [如何通过 Python 使用文件存储](storage-python-how-to-use-file-storage.md)
-
-## <a name="next-steps"></a>后续步骤
-
-* [创建存储帐户](storage-create-storage-account.md)
-* [Azure 存储五分钟快速入门](storage-getting-started-guide.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
 

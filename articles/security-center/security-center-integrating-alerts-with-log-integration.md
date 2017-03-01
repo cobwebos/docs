@@ -95,6 +95,6 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

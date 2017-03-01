@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch 的 Visual Studio 模板 | Microsoft Docs"
+title: "使用 Visual Studio 模板快速启动 Batch 项目 - Azure | Microsoft Docs"
 description: "了解这些 Visual Studio 项目模板如何帮助在 Azure Batch 上实现和运行计算密集型工作负荷"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 09/07/2016
-ms.author: marsma
+ms.date: 01/23/2017
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3907de9630fec99b1d28c750bfbfdf6f646bf194
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: d56525e55816595f33b1fcd9ea96e41fe48b55a3
 
 
 ---
@@ -55,7 +55,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 * 已安装 Visual Studio 2015 或更高版本的计算机。
 * Batch 模板，可从 [Visual Studio 库][vs_gallery]以 Visual Studio 扩展的形式获取。 有两种方式可获取模板：
   
-  * 使用 Visual Studio 的“扩展和更新”对话框安装模板（有关详细信息，请参阅[查找和使用 Visual Studio 扩展][vs_find_use_ext]）。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：
+  * 使用 Visual Studio 中的“扩展和更新”对话框安装模板（有关详细信息，请参阅[查找和使用 Visual Studio 扩展][vs_find_use_ext]）。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：
     
     * 随附作业拆分器的 Azure Batch 作业管理器
     * Azure Batch 任务处理器
@@ -154,7 +154,7 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> 在 `Split()` 方法中，批注部分是作业管理器模板代码中唯一可修改的部分，方法是添加用于将作业拆分成不同任务的逻辑。 若要修改模板的其他部分，请确定熟悉 Batch 的工作原理，并先试用几个 [Batch 代码示例][github_samples]。
+> 在 `Split()` 方法中，批注部分是作业管理器模板代码中唯一可修改的部分，方法是添加用于将作业拆分成不同任务的逻辑。 如果想要修改模板的其他部分，请确保熟悉 Batch 的工作原理，并先在几个 [Batch 代码示例][github_samples]中试试看。
 > 
 > 
 
@@ -407,7 +407,7 @@ job.CommonEnvironmentSettings = new [] {
 * Batch 帐户 URL
 * Batch 帐户密钥
 
-Batch 服务提供一个简单的机制，以在 [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] 中使用 `EnvironmentSettings` 属性将环境设置传递到作业管理器任务。
+Batch 服务提供一个简单的机制，用于在 [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] 中使用 `EnvironmentSettings` 属性将环境设置传递到作业管理器任务。
 
 例如，若要获取 Batch 帐户的 `BatchClient` 实例，可以环境变量的形式从客户端代码传递 Batch 帐户的 URL 和共享密钥凭据。 同样，若要访问链接到 Batch 帐户的存储帐户，可使用环境变量的形式传递存储帐户名和存储帐户密钥。
 
@@ -437,9 +437,9 @@ parameters.json 的资源文件，如果找到，则将它加载为参数字典�
 在开发 Batch 解决方案时的另一个有用工具是 [Azure Batch 文件约定][nuget_package]。 在 Batch .NET 应用程序中使用此 .NET 类库（目前以预览版提供）可在 Azure 存储中轻松存储和检索任务输出。 [保存 Azure Batch 作业和任务输出](batch-task-output.md)包含该库及其用法的完整介绍。
 
 ### <a name="batch-forum"></a>Batch 论坛
-MSDN 上的 [Azure Batch 论坛][论坛]是探讨 Batch 服务以及咨询其相关问题的不错场所。 欢迎前往浏览这些帮忙解决“棘手问题”的贴子，并发布你在构建 Batch 解决方案时遇到的问题。
+MSDN 上的 [Azure 批处理论坛][forum]是探讨 Batch 服务以及咨询相关问题的一个好去处。 欢迎前往浏览这些帮忙解决“棘手问题”的贴子，并发布你在构建 Batch 解决方案时遇到的问题。
 
-[论坛]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
+[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
@@ -454,6 +454,6 @@ MSDN 上的 [Azure Batch 论坛][论坛]是探讨 Batch 服务以及咨询其相
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

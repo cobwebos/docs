@@ -58,7 +58,7 @@ ms.openlocfilehash: 89618f7549d8589d5ac684772832748ab9765d1a
         ]
     }
 
-可在 wasbs://processjson@hditutorialdata.blob.core.windows.net/. 上找到文件。有关将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-blob-storage.md)。 如果需要，你可以将该文件复制到群集的默认容器。
+可以在 wasbs://processjson@hditutorialdata.blob.core.windows.net/ 上找到该文件。 有关将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](hdinsight-hadoop-use-blob-storage.md)。 如果需要，你可以将该文件复制到群集的默认容器。
 
 在本教程中，你将使用 Hive 控制台。  有关打开 Hive 控制台的说明，请参阅[通过远程桌面将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-hadoop-use-hive-remote-desktop.md)。
 
@@ -260,6 +260,6 @@ SerDe 是用于分析嵌套 JSON 文档的最佳选择，它可让你定义 JSON
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

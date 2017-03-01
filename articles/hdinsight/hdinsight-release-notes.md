@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 1/18/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9f1222e797446a5835726a10e5c9e8b535a8cf4d
-ms.openlocfilehash: c1c13f21fff7ba201eb00f6c9f594131a75c44fc
+ms.sourcegitcommit: e6167db5f9b6c8b2520b1f3c2d443c7497d44552
+ms.openlocfilehash: b3e625852648e15ccde427ec8c5bb8fe0393cb74
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -30,9 +31,9 @@ ms.openlocfilehash: c1c13f21fff7ba201eb00f6c9f594131a75c44fc
 Spark 2.0.1 现已在 Spark 群集（HDInsight 版本 3.5）上发行。
 
 ## <a name="notes-for-11162016-release-of-r-server-90-on-hdinsight-35-spark-20"></a>R Server 9.0 on HDInsight 3.5 (Spark 2.0) 11/16/2016 版发行说明
-*   R Server 群集现在包括适用于两个版本的选项：R Server 9.0 on HDI 3.5 (Spark 2.0) 和 R Server 8.0 on HDI 3.4 (Spark 1.6)。
-*   R Server 9.0 on HDI 3.5 (Spark 2.0) 是基于 R 3.3.2 构建的，包括新 ScaleR 数据源函数（称为 RxHiveData 和 RxParquetData），用于将数据直接从 Hive 和 Parquet 加载到 Spark DataFrames，由 ScaleR 分析。 有关详细信息，请通过使用 ?RxHiveData 和 ?RxParquetData 命令在 R 中查看关于这些函数的内联帮助。
-*   现在，作为预配流的一部分，RStudio Server 社区版（通过选择退出选项）默认安装在“群集预配”边栏选项卡上。
+*    R Server 群集现在包括适用于两个版本的选项：R Server 9.0 on HDI 3.5 (Spark 2.0) 和 R Server 8.0 on HDI 3.4 (Spark 1.6)。
+*    R Server 9.0 on HDI 3.5 (Spark 2.0) 是基于 R 3.3.2 构建的，包括新 ScaleR 数据源函数（称为 RxHiveData 和 RxParquetData），用于将数据直接从 Hive 和 Parquet 加载到 Spark DataFrames，由 ScaleR 分析。 有关详细信息，请通过使用 ?RxHiveData 和 ?RxParquetData 命令在 R 中查看关于这些函数的内联帮助。
+*    现在，作为预配流的一部分，RStudio Server 社区版（通过选择退出选项）默认安装在“群集预配”边栏选项卡上。
 
 ## <a name="notes-for-11092016-release-of-spark-20-on-hdinsight"></a>Spark 2.0 on HDInsight 11/09/2016 版发行说明
 * HDInsight 3.5 上的 Spark 2.0 群集现支持 Livy 和 Jupyter 服务。
@@ -1070,7 +1071,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 <th>JIRA（如果适用）</th>
 </tr>
 <tr>
-<td><a href = "hdinsight-hadoop-customize-cluster.md" target="_blank">群集自定义正式发布</a></td>
+<td><a href = "hdinsight-hadoop-customize-cluster.md" target="_blank">群集自定义功能正式发布</a></td>
 <td><p>自定义可让你自定义 Azure HDInsight 群集，以搭配使用 Apache Hadoop 生态系统的项目。 使用这项新功能，你现在可以试验并部署 Hadoop 项目到 Azure HDInsight。 这可通过**脚本操作**功能启用，该功能可以使用自定义脚本，以任意方式修改 Hadoop 群集。 此自定义适用于所有类型的 HDInsight 群集，包括 Hadoop、HBase 和 Storm。 为了演示这项强大功能，我们记录了过程以安装流行的 <a href = "hdinsight-hadoop-spark-install.md" target="_blank">Spark</a>、<a href = "hdinsight-hadoop-r-scripts.md" target="_blank">R</a>、<a href = "hdinsight-hadoop-solr-install.md" target="_blank">Solr</a> 和 <a href = "hdinsight-hadoop-giraph-install.md" target="_blank">Giraph</a> 模块。 这个版本也添加让客户通过 Azure 管理门户指定其自定义脚本操作的功能、提供如何使用帮助器方法生成自定义脚本操作的指导方针最佳作法和最佳作法，并提供有关如何测试脚本操作的指导方针。 </p></td>
 <td>功能正式发布</td>
 <td>全部</td>
@@ -1280,7 +1281,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
 关于 Azure PowerShell 和 HDInsight SDK 错误消息：“群集未配置 HTTP 服务访问”：
 
 * 此错误是已知的[兼容性问题](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)，起因于 HDInsight SDK 或 Azure PowerShell 版本和群集版本的差异。 8 月 15 日或之后创建的群集支持虚拟网络的新配置功能。 但旧版的 SDK 或 Azure PowerShell 无法正确解释此功能。 结果造成某些作业提交操作失败。 如果你使用 HDInsight SDK API 或 Azure PowerShell cmdlet 来提交作业（**Use-AzureRmHDInsightCluster** 或 **Invoke-AzureRmHDInsightHiveJob**），这些作业可能失败并返回错误消息“群集 <clustername> 未配置 HTTP 服务访问”。 或者（根据具体的操作），你可能会收到其他错误消息，例如“无法连接到群集”。
-* 在最新版 HDInsight SDK 和 Azure PowerShell 中，这些兼容性问题均已解决。 我们建议将 HDInsight SDK 更新至 1.3.1.6 版本或更高版本，将 Azure PowerShell 工具更新至 0.8.8 版本或更高版本。 可从 [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) 获取最新的 HDInsight SDK，从[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 获取 Azure PowerShell 工具。
+* 在最新版 HDInsight SDK 和 Azure PowerShell 中，这些兼容性问题均已解决。 我们建议将 HDInsight SDK 更新至 1.3.1.6 版本或更高版本，将 Azure PowerShell 工具更新至 0.8.8 版本或更高版本。 可以从 [Nuget](http://nuget.codeplex.com/wikipage?title=Getting%20Started) 获取最新的 HDInsight SDK，从[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 获取 Azure PowerShell 工具。
 
 ## <a name="notes-for-9122014-release-of-hdinsight-31"></a>HDInsight 3.1 2014/9/12 版发行说明
 * 此版本基于 Hortonworks 数据平台 (HDP) 2.1.5。 有关此版本中修复的 bug 列表，请参阅 Hortonworks 站点上的[此版本中修复的问题](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html)页。
@@ -1292,7 +1293,7 @@ Apache Mahout 是 Apache Hadoop 的机器学习库。 Mahout 包含用于处理�
      templeton.mapper.memory.mb (=1024)
 
   * 这项更改解决了某些 Hive 查询由于内存限制较低而遇到的以下错误：“容器即将超出物理内存限制”。
-  * 若要恢复到旧默认值，你可以在创建群集时使用以下命令通过 Azure PowerShell 将此配置值设置为 512：
+  * 要恢复到旧默认值，你可以在创建群集时使用以下命令通过 Azure PowerShell 将此配置值设置为 512：
 
       Add-AzureRmHDInsightConfigValues -Core @{"templeton.mapper.memory.mb"="512";}
 * zookeeper 角色的主机名已更改为 *zookeeper*。 这会影响群集内部的名称解析，但不会影响外部 REST API。 如果你的组件使用了 *zookeepernode* 主机名，则需更新这些组件，让其使用新名称。 三个 zookeeper 节点的新名称为：
@@ -1526,9 +1527,4 @@ SQL Server 的 Java 数据库连接 (JDBC) 驱动程序由 HDInsight 在内部�
 
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

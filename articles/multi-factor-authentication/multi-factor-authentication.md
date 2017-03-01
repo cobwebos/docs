@@ -1,5 +1,5 @@
 ---
-title: "Azure MFA 概述 | Microsoft 文档"
+title: "了解 Azure MFA 中的双重验证 | Microsoft Docs"
 description: "Azure 多重身份验证概念、使用 MFA 的原因、有关多重身份验证客户端以及其他可用方法和版本的详细信息。 "
 keywords: "MFA 简介, mfa 概述, 什么是 mfa"
 services: multi-factor-authentication
@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a510763fe70d90a328c835cb123e78f455796850
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: 757a26ed6c39e6eb498a4f717a2eb5da3cb5c0a6
 
 
 ---
@@ -32,9 +32,9 @@ ms.openlocfilehash: a510763fe70d90a328c835cb123e78f455796850
 
 Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它通过各种验证方法（包括电话、短信或移动应用验证）提供强大的身份验证机制。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/WA-MFA-Overview/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/WA-MFA-Overview/player]
+>
+>
 
 ## <a name="why-use-azure-multi-factor-authentication"></a>为何使用 Azure 多重身份验证？
 与以往相比，联网的用户越来越多。 通过智能手机、平板电脑、笔记本电脑和台式个人电脑，人们可以使用各种不同的选项随时连接网络和保持联系。 人们可以从任何位置访问帐户与应用程序，这意味着，他们可以提高工作效率并为客户提供更好的服务。
@@ -50,16 +50,16 @@ Azure 多重身份验证是一个易于使用、可缩放且可靠的解决方�
 * **始终受保护** - Azure 多重身份验证使用最高行业标准提供强大的身份验证功能。
 * **可靠** - 我们保证 Azure 多重身份验证的可用性达到 99.9%。 当服务无法接收或处理双重验证的验证请求时，即将服务视为不可用。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Windows-Azure-Multi-Factor-Authentication/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Windows-Azure-Multi-Factor-Authentication/player]
+>
+>
 
 ## <a name="how-azure-multi-factor-authentication-works"></a>Azure 多重身份验证的工作原理
 双重验证的安全性在于它的分层方法。 破坏多种验证方法对于攻击者来说是巨大的挑战。 即使攻击者设法得到用户的密码，如果没有同时占有可信设备也没有用处。 如果用户丢失设备，捡到该设备的人也无法使用它，除非知道该用户的密码。
 
 > [!VIDEO https://channel9.msdn.com/Events/TechEd/Europe/2014/EM-B313/player]
-> 
-> 
+>
+>
 
 ## <a name="methods-available-for-multi-factor-authentication"></a>可用于多重身份验证的方法
 当用户登录时，系统将额外的验证请求发送给该用户。 以下是可用于这种二次身份验证的方法列表。
@@ -74,41 +74,40 @@ Azure 多重身份验证是一个易于使用、可缩放且可靠的解决方�
 对于移动应用验证方法，Azure 多重身份验证适用于智能手机的第三方身份验证应用。 但是，建议用户使用 Microsoft Authenticator 应用，该应用可用于 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072) 和 [IOS](http://go.microsoft.com/fwlink/?Linkid=825073)。
 
 ## <a name="available-versions-of-azure-multi-factor-authentication"></a>可用的 Azure 多重身份验证版本
-Azure 多重身份验证有三个不同的版本。 
+Azure 多重身份验证有三个不同的版本。
 
 | 版本 | 说明 |
 | --- | --- |
-| 适用于 Office 365 的 Multi-Factor Authentication |此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 门户进行管理。 因此，管理员现在可以使用双重验证帮助保护 Office 365 资源。 Office 365 订阅随附了此版本。 |
-| 面向 Azure 管理员的 Multi-Factor Authentication |适用于 Office 365 的同样一部分双重验证功能将免费提供给所有 Azure 管理员使用。 Azure 订阅的每个管理员帐户都可以启用此功能来获得额外保护。 如果某个管理员想要访问 Azure 门户来创建 VM 或网站、管理存储，或使用任何其他 Azure 服务，可以将 MFA 添加到管理员帐户。 |
-| Azure 多重身份验证 |多重身份验证提供最丰富的功能集。 它通过 [Azure 经典门户](http://manage.windowsazure.com)、高级报告及支持一系列本地和云应用程序来提供其他配置选项。 Azure 多重身份验证随附在 Azure Active Directory Premium 和企业移动套件中，可以在云中或本地部署。 |
+| 适用于 Office 365 的多重身份验证 |此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 门户进行管理。 因此，管理员现在可以使用双重验证来帮助保护其 Office 365 资源。 此版本是 Office 365 订阅的一部分。 |
+| 面向 Azure 管理员的多重身份验证 |适用于 Office 365 的同样一部分双重验证功能将免费提供给所有 Azure 管理员使用。 Azure 订阅的每个管理员帐户都可以启用此功能来获得额外保护。 如果某个管理员想要访问 Azure 门户来创建 VM 或网站、管理存储，或使用任何其他 Azure 服务，可以将 MFA 添加到管理员帐户。 |
+| Azure 多重身份验证 | Azure 多重身份验证（也称为“完整” 版本）提供了最丰富的功能集。 它通过 [Azure 经典门户](https://manage.windowsazure.com)、高级报告及支持一系列本地和云应用程序来提供其他配置选项。 Azure 多重身份验证随附在 Azure Active Directory Premium 和企业移动套件中，可以在云中或本地部署。 查看以下内容，了解[获取 Azure 多重身份验证的其他方法](multi-factor-authentication.md#how-to-get-azure-multi-factor-authentication)。 |
 
 ## <a name="feature-comparison-of-versions"></a>版本功能比较
-下表提供了 Azure 多重身份验证各版本中可用的功能列表。
+下表提供了 Azure 多重身份验证的各个版本中可用的功能列表。
 
 > [!NOTE]
-> 此对照表讨论每个订阅的功能。 如果使用 Azure AD Premium 或企业移动性套件，某些功能可能不可用，具体取决于是[在云中使用 MFA 还是在本地使用 MFA](multi-factor-authentication-get-started.md)。
-> 
-> 
+> 此比较表讨论了每个版本的多重身份验证的部分功能。 如果拥有完整的 Azure 多重身份验证服务，某些功能可能不可用，具体取决于是否在云中使用 [MFA 或本地 MFA](multi-factor-authentication-get-started.md)。
 
-| 功能 | 适用于 Office 365 的 Multi-Factor Authentication（随附在 Office 365 SKU 中） | 面向 Azure 管理员的 Multi-Factor Authentication（随附在 Azure 订阅中） | Azure 多重身份验证（随附在 Azure AD Premium 和企业移动套件中） |
+
+| 功能 | 适用于 Office 365 的多重身份验证 | 面向 Azure 管理员的多重身份验证 | Azure 多重身份验证 |
 | --- |:---:|:---:|:---:|
-| 管理员可以使用 MFA 保护帐户 |● |●（仅适用于 Azure 管理员帐户） |● |
+| 使用 MFA 保护管理员帐户 |● |●（仅适用于 Azure 管理员帐户） |● |
 | 将移动应用用作第二个因素 |● |● |● |
 | 将电话呼叫用作第二个因素 |● |● |● |
 | 将短信用作第二个因素 |● |● |● |
 | 不支持 MFA 的客户端的应用密码 |● |● |● |
-| 管理员控制身份验证方法 |● |● |● |
+| 管理员控制验证方法 |● |● |● |
 | PIN 模式 | | |● |
 | 欺诈警报 | | |● |
 | MFA 报告 | | |● |
 | 一次性跳过 | | |● |
 | 通话的自定义问候语 | | |● |
-| 可自定义来电者 ID | | |● |
+| 通话的自定义呼叫方 ID | | |● |
 | 事件确认 | | |● |
 | 受信任的 IP | | |● |
 | 记住受信任的设备的 MFA |● |● |● |
 | MFA SDK | | |● 需要多重身份验证提供程序和完整的 Azure 订阅 |
-| 对使用 MFA 服务器的本地应用程序进行 MFA | | |● |
+| 适用于本地应用程序的 MFA | | |● |
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 如果想要获取 Azure 多重身份验证提供的完整功能，可通过多种方法实现：
@@ -119,7 +118,7 @@ Azure 多重身份验证有三个不同的版本。
    * **按用户**。 适用于想要为人数固定、需要定期进行身份验证的员工启用双重验证的企业。  
    * **按身份验证**。 适用于想要为不定期需要身份验证的大量外部用户启用双重验证的企业。  
 
-Azure 多重身份验证为云和服务器提供了可选择的验证方法。 这表示你可以选择为用户提供哪些方法。 当前此功能在 Multi-Factor Authentication 的云版本的公共预览中可用。 有关更多信息，请参阅[可选择的验证方法](multi-factor-authentication-whats-next.md#selectable-verification-methods)。
+Azure 多重身份验证为云和服务器提供了可选择的验证方法。 这表示可以选择用户可使用的方法：电话呼叫、信息、应用通知或应用代码。 有关更多信息，请参阅[可选择的验证方法](multi-factor-authentication-whats-next.md#selectable-verification-methods)。
 
 有关定价详细信息，请参阅 [Azure MFA 定价](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)。
 
@@ -128,7 +127,6 @@ Azure 多重身份验证为云和服务器提供了可选择的验证方法。 �
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

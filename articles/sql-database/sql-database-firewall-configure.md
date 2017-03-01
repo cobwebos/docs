@@ -12,26 +12,19 @@ ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
 ms.service: sql-database
 ms.custom: authentication and authorization
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 11/23/2016
+ms.date: 02/09/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
-ms.openlocfilehash: a0c4cfb127934f86a7ce272c1aec2fd01331e17c
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 09bc875449ecdf48c2570f1029df68d28ae5e798
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="overview-of-azure-sql-database-firewall-rules"></a>Azure SQL 数据库防火墙规则概述 
-> [!div class="op_single_selector"]
-> * [概述](sql-database-firewall-configure.md)
-> * [Azure 门户](sql-database-configure-firewall-settings.md)
-> * [TSQL](sql-database-configure-firewall-settings-tsql.md)
-> * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
-> * [REST API](sql-database-configure-firewall-settings-rest.md)
-> 
-> 
 
 Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序提供关系数据库服务。 为了保护你的数据，在你指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。
 
@@ -41,7 +34,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 * **数据库级防火墙规则**：这些规则允许客户端访问 Azure SQL 数据库服务器内的各个数据库。 可以为每个数据库创建这些规则，它们将存储在单独的数据库中。 （可为 **master** 数据库创建数据库级防火墙规则。）这些规则可以用来将访问限制为同一逻辑服务器内的某些（安全）数据库。 只能通过使用 Transact-SQL 语句配置数据库级防火墙规则。
 
    > [!NOTE]
-   > 有关演示数据库级防火墙用法的教程，请参阅 [SQL 数据库教程：SQL Server 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md)。
+   > 有关演示如何使用数据库级防火墙的教程，请参阅 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)。
    >
 
 **建议**：Microsoft 建议尽量使用数据库级防火墙规则，以增强安全性并提高数据库的可移植性。 当你的多个数据库具有相同的访问要求，但你不想花时间分别配置每个数据库时，可使用管理员的服务器级防火墙规则。
@@ -60,11 +53,12 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
    ![描述防火墙配置的示意图。][1]
 
 ## <a name="connecting-from-the-internet"></a>从 Internet 连接
-当计算机尝试从 Internet 连接到数据库服务器时，防火墙首先根据整个防火墙规则集检查该请求的发起 IP 地址：
 
-* 如果该请求的 IP 地址位于服务器级防火墙规则中指定的某个范围内，则将连接权限授予 Azure SQL 数据库服务器。
-* 如果该请求的 IP 地址不位于服务器级防火墙规则中指定的某个范围内，则检查数据库级防火墙规则。 如果该请求的 IP 地址位于数据库级防火墙规则中指定的某个范围内，则仅将连接权限授予匹配数据库级规则的数据库。
-* 如果该请求的 IP 地址不位于任何服务器级或数据库级防火墙规则中指定的范围内，则连接请求失败。
+在计算机尝试从 Internet 连接到数据库服务器时，防火墙首先根据数据库级防火墙规则（针对该连接所请求的数据库）检查该请求的发起 IP 地址：
+
+* 如果该请求的 IP 地址位于数据库级防火墙规则中指定的某个范围内，则将连接权限授予包含该规则的 SQL 数据库。
+* 如果该请求的 IP 地址不位于数据库级防火墙规则中指定的某个范围内，则检查服务器级防火墙规则。 如果该请求的 IP 地址位于服务器级防火墙规则中指定的某个范围内，则授予连接权限。 服务器级防火墙规则适用于 Azure SQL Server 上的所有 SQL 数据库。  
+* 如果该请求的 IP 地址不位于任何数据库级或服务器级防火墙规则中指定的范围内，则连接请求失败。
 
 > [!NOTE]
 > 若要从你的本地计算机访问 Azure SQL 数据库，请确保你的网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。
@@ -126,7 +120,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 
 * **本地防火墙配置**：在你的计算机可以访问 Azure SQL 数据库之前，可能需要在你的计算机上创建针对 TCP 端口 1433 的防火墙例外。 如果要在 Azure 云边界内部建立连接，可能需要打开其他端口。 有关详细信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)中的 **SQL 数据库 V12：内部与外部**部分。
 * **网络地址转换 (NAT)：**由于 NAT 的原因，计算机用来连接到 Azure SQL 数据库的 IP 地址可能不同于计算机 IP 配置设置中显示的 IP 地址。 若要查看计算机用于连接到 Azure 的 IP 地址，请登录门户并导航到托管数据库的服务器上的“**配置**”选项卡。 在“**允许的 IP 地址**”部分下，显示了“**当前客户端 IP 地址**”。 单击“**添加**”即可添加到“**允许的 IP 地址**”，以允许此计算机访问服务器。
-* **对允许列表的更改尚未生效：**对 Azure SQL 数据库防火墙配置所做的更改可能最多需要 5 分钟的延迟才可生效。
+* **对允许列表的更改尚未生效：**对 Azure SQL 数据库防火墙配置所做的更改可能最多需要&5; 分钟的延迟才可生效。
 * **登录名未授权或使用了错误的密码：**如果某个登录名对 Azure SQL 数据库服务器没有权限或者使用的密码不正确，则与 Azure SQL 数据库服务器的连接将被拒绝。 创建防火墙设置仅向客户端提供尝试连接到你的服务器的机会；每个客户端必须提供必需的安全凭据。 有关准备登录名的详细信息，请参阅在 Azure SQL 数据库中管理数据库、登录名和用户。
 * **动态 IP 地址：**如果你的 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
   
@@ -141,7 +135,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 * [使用 PowerShell 配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings-powershell.md)
 * [使用 REST API 配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings-rest.md)
 
-有关创建数据库的教程，请参阅[使用 Azure 门户在几分钟内创建一个 SQL 数据库](sql-database-get-started.md)。
+有关创建数据库的教程，请参阅[你的第一个 Azure SQL 数据库](sql-database-get-started.md)。
 有关从开放源或第三方应用程序连接到 Azure SQL 数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 若要了解如何导航到数据库，请参阅[管理数据库的访问和登录安全](https://msdn.microsoft.com/library/azure/ee336235.aspx)。
 
@@ -151,9 +145,4 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

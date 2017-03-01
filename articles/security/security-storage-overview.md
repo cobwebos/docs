@@ -1,6 +1,6 @@
 ---
-title: "Azure 存储安全概述 | Microsoft 文档"
-description: " Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。 本文概述可与 Azure 存储配合使用的核心 Azure 安全功能。 "
+title: "可与 Azure 存储配合使用的安全功能 | Microsoft Docs"
+description: " 本文概述可与 Azure 存储配合使用的核心 Azure 安全功能. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 488fe9c38d2e8ca26c1d0cf4d3f937e0c3faa902
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 2db6effdaf2e23d00eefdde82d074dd5d47857d7
 
 
 ---
@@ -101,7 +101,6 @@ Azure 磁盘加密使用 [Azure 密钥保管库](https://azure.microsoft.com/ser
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

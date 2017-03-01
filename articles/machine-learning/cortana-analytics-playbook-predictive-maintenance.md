@@ -1,5 +1,5 @@
 ---
-title: "在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板操作手册 | Microsoft Docs"
+title: "借助 Azure 在航天工业中进行可预见维护 - Cortana Intelligence 模板 | Microsoft Docs"
 description: "在航天工业、实用程序和运输业中用于预测维护的 Microsoft Cortana Intelligence 解决方案模板。"
 services: cortana-analytics
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: fboylu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ce34066c808b378b7f73cb8e782db3d2da7b536b
+ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
+ms.openlocfilehash: 1fc824c65e68c70ace589e788a0c470c475e66b4
 
 
 ---
@@ -286,7 +286,7 @@ ms.openlocfilehash: ce34066c808b378b7f73cb8e782db3d2da7b536b
 
 图 5。 用于故障时间预测的多类分类标记
 
-对于第二个问题，通过在资产故障之前获取 X 个记录并将它们标记为“由于问题 P <sub> i </sub> 即将故障”（标签 = P <sub> i </sub>），而将所有其他记录标记为“正常”（标签 = 0）。 在这种方法中，标签是分类变量（参见图 6）。
+对于第二个问题，通过在资产故障之前获取 X 个记录并将它们标记为“由于问题 P <sub> i </sub> 即将故障”（标签 = P <sub> i </sub>），而将所有其他记录标记为“正常”（标签 =&0;）。 在这种方法中，标签是分类变量（参见图 6）。
 
 ![图 6。 用于根本原因预测的多类分类标记](media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
 
@@ -321,7 +321,7 @@ ms.openlocfilehash: ce34066c808b378b7f73cb8e782db3d2da7b536b
 作为最佳实践，在本节中，我们将仔细研究如何实现依赖于时间的拆分。 我们描述了训练和测试集之间依赖时间的双向拆分，然而，对于训练和验证集，应该对依赖时间的拆分应用完全相同的逻辑。
 
 假设我们有一个时间戳事件流，例如来自各传感器的测量值。 训练和测试示例的功能与他们的标签一起通过包含多个事件的时间范围来定义。
-例如，对于二进制分类，如特性工程和建模技术部分中所述，基于过去时间来创建特性，并且基于将来在“X”个时间单位内的未来事件来创建标签。 因此，示例的标记时间范围比其特性的时间范围晚。 对于依赖时间的拆分，我们选择一个时间点，在该时间点我们通过使用直到该点的历史数据来训练具有优化的超参数的模型。 为了防止超出训练截止的未来标签泄漏到训练数据中，我们选择最新的时间范围，以在训练截止日期之前将训练示例标记为 X 个单位。 在图 7 中，每个实心圆表示根据上述方法计算的特性和标签的最终特性数据集中的一行。 假设，该图显示当为 X = 2 和 W = 3 实现依赖时间的拆分裂时，应该进入训练和测试集的记录：
+例如，对于二进制分类，如特性工程和建模技术部分中所述，基于过去时间来创建特性，并且基于将来在“X”个时间单位内的未来事件来创建标签。 因此，示例的标记时间范围比其特性的时间范围晚。 对于依赖时间的拆分，我们选择一个时间点，在该时间点我们通过使用直到该点的历史数据来训练具有优化的超参数的模型。 为了防止超出训练截止的未来标签泄漏到训练数据中，我们选择最新的时间范围，以在训练截止日期之前将训练示例标记为 X 个单位。 在图 7 中，每个实心圆表示根据上述方法计算的特性和标签的最终特性数据集中的一行。 假设，该图显示当为 X =&2; 和 W =&3; 实现依赖时间的拆分裂时，应该进入训练和测试集的记录：
 
 ![图 7。 适用于二进制分类的依赖于时间的拆分](media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
 
@@ -372,6 +372,6 @@ ms.openlocfilehash: ce34066c808b378b7f73cb8e782db3d2da7b536b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

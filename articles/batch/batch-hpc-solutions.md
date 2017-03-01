@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 11/17/2016
+ms.date: 01/23/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 088d3d55a437165607e73ac2d6a3abe27e9b2639
-ms.openlocfilehash: 755fafcbc01e1da89d7ef3fa99b92da60c95bf8c
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: c3e80bc18e4d1007146d9d3c80c2618400480046
 
 
 ---
@@ -137,6 +137,6 @@ Azure 计算服务是大型计算解决方案的核心，不同的计算服务�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

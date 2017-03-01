@@ -67,7 +67,7 @@
    > 证书中的名称可能不同，但将以 **Apple Development iOS Push Services:**作为前缀。
    > 
    > 
-10. 在 Keychain Access 中，右键单击你在“Certificates”（证书）类别中创建的新推送证书。 单击“导出”，为文件命名，选择“.p12”格式，然后单击“保存”。
+10. 在 Keychain Access 中，按住 Ctrl 并单击在“Certificates”（证书）类别中创建的新推送证书。 单击“导出”，为文件命名，选择“.p12”格式，然后单击“保存”。
     
     记住导出的 .p12 推送证书的文件名和位置。 稍后你要在 Azure 经典门户中将它上载，以使用它来启用 APNS 身份验证。
 
@@ -91,6 +91,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

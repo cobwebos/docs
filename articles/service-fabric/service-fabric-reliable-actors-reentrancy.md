@@ -1,5 +1,5 @@
 ---
-title: "Reliable Actors 可重入性 | Microsoft 文档"
+title: "基于角色的 Azure 微服务的可重入性 | Microsoft Docs"
 description: "Service Fabric Reliable Actors 的可重入性简介"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1d71949426637b520b8fed0b0fe64e4afcbfd077
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 7f6ac80472d3e4fab390b9aa69105e19dca7b947
 
 
 ---
@@ -79,6 +79,6 @@ static class Program
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

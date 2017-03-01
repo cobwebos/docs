@@ -4,7 +4,7 @@ description: "使用 Azure 资源管理器模板来部署包含 GitHub 存储库
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 32739607-85fe-43c8-a4dc-1feb46d93a4d
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: a2f0cbd56ebb90411de882f5b80b80c21d2ce884
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 92408d6358516cdb2cea068553757c036143e955
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -104,7 +105,7 @@ Web 应用还具有一个子资源，在以下**资源**部分中对其进行定
 
     azure group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json
 
-### <a name="azure-cli-20-preview"></a>Azure CLI 2.0（预览版）
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 
     az group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
@@ -112,10 +113,5 @@ Web 应用还具有一个子资源，在以下**资源**部分中对其进行定
 > 有关参数 JSON 文件的内容，请参阅 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json)。
 >
 >
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

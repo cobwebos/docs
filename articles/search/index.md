@@ -1,13 +1,25 @@
 ---
+title: "Azure 搜索文档 - 教程和 API 参考 | Microsoft 文档"
+description: "了解如何向自定义 Web 应用程序或移动应用程序添加强大的搜索功能，包括活动监视功能。 API 参考和其他文档。"
+services: search
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: search
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 680083cd9df823bf0ff89a0b4099c411fa0be078
+ms.sourcegitcommit: d8bf549455e427549a81ff5476a00cdfb836b5ff
+ms.openlocfilehash: aa0c12a669b6b2a1602b9d2f6698f65535b4f7d4
 
 ---
 # <a name="azure-search-documentation"></a>Azure 搜索文档
 
-Azure 搜索是一种托管的云搜索服务，可帮助在自定义应用中提供强大的搜索体验，以及通过门户视图监视服务、索引和查询活动。 主要功能包括可扩展的多语言全文搜索、地理空间搜索、筛选和多面导航、提前键入查询、命中突出显示以及自定义分析器。
+了解如何使用 Azure 搜索（托管的云搜索服务）向自定义 Web 应用或移动应用添加搜索功能。 教程、API 参考和其他文档介绍了如何添加可缩放的多语言全文搜索、地理空间搜索、筛选和多面导航、提前键入查询、命中突出显示以及自定义分析器。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -131,8 +143,8 @@ Azure 搜索是一种托管的云搜索服务，可帮助在自定义应用中�
                     <div class="cardText">
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.search">.NET</a></p>
-                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET 管理</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.management.search">Java</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.management.search">.NET（管理）</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python（管理）</a></p>
                    </div>
                 </div>
             </div>
@@ -153,16 +165,10 @@ Azure 搜索是一种托管的云搜索服务，可帮助在自定义应用中�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/search.pdf">
-        <div class="img"></div>
-        <div class="text">
-下载 Azure 搜索文档 </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

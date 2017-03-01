@@ -1,10 +1,10 @@
 ---
-title: "使用 Resource Manager 部署模型配置站点到站点连接的强制隧道 | Microsoft 文档"
+title: "为 Azure 站点到站点连接配置强制隧道：Resource Manager | Microsoft Docs"
 description: "如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: cbe58db8-b598-4c9f-ac88-62c865eb8721
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: acfa4642ad26f819189bd871d83718b6f579e32d
+ms.sourcegitcommit: 5183fc3b4e7ec3fe6060a6a9551656332300995f
+ms.openlocfilehash: 5bf02651c6a3fdd1369676e225cb859dab6fa5d8
 
 
 ---
@@ -138,6 +138,6 @@ ms.openlocfilehash: acfa4642ad26f819189bd871d83718b6f579e32d
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

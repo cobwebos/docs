@@ -1,5 +1,5 @@
 ---
-title: "通过 Azure Site Recovery（旧版）将 VMware 虚拟机和物理服务器复制到 Azure | Microsoft 文档"
+title: "将 VMware VM 和物理服务器复制到 Azure（旧版经典门户）| Microsoft 文档"
 description: "介绍如何在经典门户中，使用 Azure Site Recovery 将本地 VM 和 Windows/Linux 物理服务器复制到 Azure 以进行传统部署。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
+ms.sourcegitcommit: 858ed6ca4355c36c728ae88bf9488f362d487646
+ms.openlocfilehash: 7ffef4a8dcd10fa6608d200b4ca34fb3517c0cc6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -119,7 +120,7 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
 * **磁盘大小上限** - 可以在虚拟机中附加的磁盘的当前大小上限为 1 TB。 因此，可以复制的源磁盘的最大大小也限制为 1 TB。
 * **每个源的大小上限** - 单个源计算机的大小上限是 31 TB（包含 31 个磁盘，以及为主目标服务器预配的 D14 实例）。
 * **每个主目标服务器的源数目** - 可以使用单个主目标服务器保护多个源计算机。 但是，无法通过多个主目标服务器保护单个计算机，因为在磁盘复制时，镜像磁盘大小的 VHD 在 Azure Blob 存储上创建，并作为数据磁盘附加到主目标服务器。  
-* **每个源的每日更改率上限** - 考虑每个源的推荐更改率时，需要考虑三个因素。 对于基于目标的考虑因素，源上每个操作的目标磁盘需要两个 IOPS。 这是因为目标磁盘上会发生旧数据的读取和新数据的写入。 
+* **每个源的每日更改率上限** - 考虑每个源的推荐更改率时，需要考虑三个因素。 对于基于目标的考虑因素，源上每个操作的目标磁盘需要两个 IOPS。 这是因为目标磁盘上会发生旧数据的读取和新数据的写入。
   * **进程服务器支持的每日更改率** - 一个源计算机不能跨越多个进程服务器。 单个进程服务器可以支持多达 1 TB 的每日更改率。 因此 1 TB 是源计算机支持的每日数据更改率上限。
   * **目标磁盘支持的最大吞吐量** - 每个源磁盘的最大改动不能超过 144 GB/天（8K 写入大小）。 请参阅主目标部分中的表，以获取各种写入大小的目标的吞吐量与 IOPS。 必须将此数字除以 2，因为每个源 IOP 在目标磁盘上生成 2 个 IOPS。 请参阅 [Azure 可缩放性和性能目标](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)，了解如何配置高级存储帐户的目标。
   * **存储帐户支持的最大吞吐量** - 一个源不能跨越多个存储帐户。 假设某个存储帐户每秒可接受最多 20,000 个请求，并且每个源 IOP 在主目标服务器上生成 2 个 IOPS，则建议将源的 IOPS 数目保留为 10,000。 请参阅 [Azure 可缩放性和性能目标](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)，了解如何配置高级存储帐户的源。
@@ -149,7 +150,7 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
 | --- | --- | --- | --- | --- | --- |
 | < 300 GB |4 个 vCPU（2 个插槽 * 2 个核心 @ 2.5GHz） |4 GB |600 GB |每秒 7 到 10 MB |30 Mbps/21 Mbps |
 | 300 到 600 GB |8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5GHz） |6 GB |600 GB |每秒 11 到 15 MB |60 Mbps/42 Mbps |
-| 600 GB 到 1 TB |12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5GHz) |8 GB |600 GB |每秒 16 到 20 MB |100 Mbps/70 Mbps |
+| 600 GB 到 1 TB |12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5GHz） |8 GB |600 GB |每秒 16 到 20 MB |100 Mbps/70 Mbps |
 | > 1 TB |部署另一个进程服务器 | | | | |
 
 **表 2**
@@ -201,7 +202,7 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
 | **Azure 存储** |需要使用 Azure 存储帐户来存储复制的数据<br/><br/> 帐户应为[标准异地冗余存储帐户](../storage/storage-redundancy.md#geo-redundant-storage)或[高级存储帐户](../storage/storage-premium-storage.md)。<br/><br/> 该帐户必须位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅相关联。 我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。<br/><br/> 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md) | |
 | **Azure 虚拟网络** |你将需要 Azure 虚拟网络，配置服务器和主目标服务器将部署在该网络上。 它应该位于 Azure Site Recovery 保管库所在的订阅和区域中。 如果你要通过 ExpressRoute 或 VPN 连接复制数据，Azure 虚拟网络必须通过 ExpressRoute 连接或站点到站点 VPN 连接到本地网络。 | |
 | **Azure 资源** |确保你有足够的 Azure 资源用于部署所有组件。 详细了解 [Azure 订阅限制](../azure-subscription-service-limits.md)。 | |
-| **Azure 虚拟机** |要保护的虚拟机应符合 [Azure 先决条件](site-recovery-best-practices.md)。<br/><br/> **磁盘计数** - 单个受保护的服务器最多可以支持 31 个磁盘<br/><br/> **磁盘大小** - 单个磁盘的容量不能超过 1023 GB<br/><br/> **群集** - 不支持群集服务器<br/><br/> **启动** - 不支持统一可扩展固件接口 (UEFI)/可扩展固件接口 (EFI) 启动<br/><br/> **卷** - 不支持 Bitlocker 加密卷<br/><br/> **服务器名称** - 名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 在计算机受到保护后，你可以修改 Azure 名称。 | |
+| **Azure 虚拟机** |要保护的虚拟机应符合 [Azure 先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。<br/><br/> **磁盘计数** - 单个受保护的服务器最多可以支持 31 个磁盘<br/><br/> **磁盘大小** - 单个磁盘的容量不能超过 1023 GB<br/><br/> **群集** - 不支持群集服务器<br/><br/> **启动** - 不支持统一可扩展固件接口 (UEFI)/可扩展固件接口 (EFI) 启动<br/><br/> **卷** - 不支持 Bitlocker 加密卷<br/><br/> **服务器名称** - 名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 在计算机受到保护后，你可以修改 Azure 名称。 | |
 | **配置服务器** |在订阅中针对配置服务器创建基于 Azure Site Recovery Windows Server 2012 R2 库映像的标准 A3 虚拟机。 它将作为第一个实例在新的云服务中创建。 如果你选择“公共 Internet”作为配置服务器的连接类型，将使用保留的公共 IP 地址创建云服务。<br/><br/> 安装路径应该只包含英文字符。 | |
 | **主目标服务器** |Azure 虚拟机（标准 A4、D14 或 DS4）。<br/><br/> 安装路径应该只包含英文字符。 例如，对于运行 Linux 的主目标服务器，路径应为 **/usr/local/ASR**。 | |
 | **进程服务器** |你可以在运行带有最新更新的 Windows Server 2012 R2 的物理或虚拟机上部署处理服务器。 在 C:/ 上安装。<br/><br/> 我们建议你将该服务器放置在你要保护的计算机所在的网络和子网上。<br/><br/> 在进程服务器上安装 VMware vSphere CLI 5.5.0。 进程服务器上必须有 VMware vSphere CLI 组件，才能发现 vCenter 服务器管理的虚拟机或 ESXi 主机上运行的虚拟机。<br/><br/> 安装路径应该只包含英文字符。<br/><br/> 不支持 ReFS 文件系统。 | |
@@ -358,13 +359,13 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
 1. 将使用这些终结点创建 Windows 主目标服务器 VM。 请注意，仅当通过 Internet 进行连接时，才创建公共终结点。
 
    * 自定义：进程服务器使用公用端口来通过 Internet 发送复制数据。 处理服务器使用专用端口 9443 来通过 VPN 将复制数据发送到主目标服务器。
-   * 自定义 1：进程服务器使用公用端口来通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器。
+   * 自定义&1;：进程服务器使用公用端口来通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器。
    * PowerShell：专用端口 5986
    * 远程桌面：专用端口 3389
 2. 将使用这些终结点创建 Linux 主目标服务器 VM。 请注意，仅当你通过 Internet 进行连接时，才创建公共终结点。
 
    * 自定义：进程服务器使用公用端口通过 Internet 发送复制数据。 处理服务器使用专用端口 9443 来通过 VPN 将复制数据发送到主目标服务器。
-   * 自定义 1：进程服务器使用公用端口通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器
+   * 自定义&1;：进程服务器使用公用端口通过 Internet 发送元数据。 处理服务器使用专用端口 9080 来通过 VPN 将元数据发送到主目标服务器
    * SSH：专用端口 22
 
      > [!WARNING]
@@ -439,7 +440,7 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
    * 单击“资源组名称” 的 Azure 数据工厂。
 
    ![注册配置服务器](./media/site-recovery-vmware-to-azure-classic-legacy/ps-cs.png)
-4. 在“**选择安装驱动器**”中，选择缓存驱动器。 进程服务器需要至少有 600 GB 可用空间的缓存驱动器。  上提出。
+4. 在“**选择安装驱动器**”中，选择缓存驱动器。 进程服务器需要至少有 600 GB 可用空间的缓存驱动器。 上提出。
 
    ![注册配置服务器](./media/site-recovery-vmware-to-azure-classic-legacy/ps-cache.png)
 5. 请注意，可能需要重新启动服务器才能完成安装。 在“**配置服务器**” > “**服务器详细信息**”中，检查进程服务器是否已显示，且已在保管库中成功注册。
@@ -470,10 +471,10 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
 3. 如果运行的虚拟机或物理服务器上已安装移动服务，你可以按如下所示获取服务更新：
 
    * **选项 1**：下载更新程序：
-     * [Windows Server（仅限 64 位）](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
+     * [Windows Server（仅限&64; 位）](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
      * [CentOS 6.4、6.5、6.6（仅限 64 位）](http://download.microsoft.com/download/7/E/D/7ED50614-1FE1-41F8-B4D2-25D73F623E9B/Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz)
      * [Oracle Enterprise Linux 6.4、6.5（仅限 64 位）](http://download.microsoft.com/download/5/2/6/526AFE4B-7280-4DC6-B10B-BA3FD18B8091/Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz)
-     * [SUSE Linux Enterprise Server SP3（仅限 64 位）](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
+     * [SUSE Linux Enterprise Server SP3（仅限&64; 位）](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
      * 在更新进程服务器之后，进程服务器上的 C:\pushinstallsvc\repository 文件夹中会提供移动服务的更新版本。
    * **选项 2**：如果计算机上安装了旧版移动服务，可以从管理门户自动升级计算机上的移动服务。
 
@@ -566,7 +567,7 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
 
 | 源操作系统 | 进程服务器上的移动服务包 |
 | --- | --- |
-| Windows Server（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe` |
+| Windows Server（仅限&64; 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe` |
 | CentOS 6.4、6.5、6.6（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz` |
 | SUSE Linux Enterprise Server 11 SP3（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz` |
 | Oracle Enterprise Linux 6.4、6.5（仅限 64 位） |`C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz` |
@@ -628,7 +629,7 @@ ms.openlocfilehash: c8daa813758f2b0b420bc146d942d56f90f0d526
 * 系统会每隔 15 分钟发现虚拟机一次，在发现之后，最多需要 15 分钟时间虚拟机才会出现在 Azure Site Recovery 中。
 * 虚拟机上的环境更改（例如 VMware 工具安装）最多也可能需要 15 分钟时间才能在 Site Recovery 中更新。
 * 可以在“**配置服务器**”页上 vCenter 服务器/ESXi 主机的“**上次联系时间**”字段中，查看上次发现的时间。
-* 如果你已创建保护组，并在其后添加 vCenter 服务器或 ESXi 主机，则 Azure Site Recovery 门户需要 15 分钟刷新，而虚拟机也需要 15 分钟才会列在“**向保护组添加计算机**”对话框中。
+* 如果你已创建保护组，并在其后添加 vCenter 服务器或 ESXi 主机，则 Azure Site Recovery 门户需要&15; 分钟刷新，而虚拟机也需要&15; 分钟才会列在“**向保护组添加计算机**”对话框中。
 * 如果要立即将计算机添加到保护组，而不想等待完成计划的发现，请选中配置服务器（请勿单击），然后单击“**刷新**”按钮。
 * 将虚拟机或物理机添加到保护组时，进程服务器将自动推送并在源服务器上安装移动服务（如果尚未安装）。
 * 为了使自动推送机制发挥作用，请确保你已按上一步所述设置你的受保护的计算机。
@@ -739,9 +740,4 @@ The information in Section A is regarding Third Party Code components from the p
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
 完整文件可以在 [ Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=529428)上找到。 Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

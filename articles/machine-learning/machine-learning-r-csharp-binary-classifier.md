@@ -1,6 +1,6 @@
 ---
-title: "二元分类器 | Microsoft Docs"
-description: "二元分类器"
+title: "（已弃用）二元分类器 - Azure | Microsoft Docs"
+description: "（已弃用）二元分类器"
 services: machine-learning
 documentationcenter: 
 author: jaymathe
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: db2fc1df586f925277026a418a073917978c0718
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: d1d4f35a7e77a5fac1e8ecb1a82c14cca3406676
 
 
 ---
-# <a name="binary-classifier"></a>二元分类器
+# <a name="deprecated-binary-classifier"></a>（已弃用）二元分类器
+
+> [!NOTE]
+> 将要停用 Microsoft DataMarket，并且此 API 已弃用。 
+> 
+> 你可以在 [Cortana Intelligence 库](http://gallery.cortanaintelligence.com)中找到许多有用的示例试验和 API。 有关该库的详细信息，请参阅[共享和发现 Cortana Intelligence 库中的资源](machine-learning-gallery-how-to-use-contribute-publish.md)。
+
 假设拥有一个数据集，并希望根据独立变量预测二元相关变量。 “逻辑回归”是一种常用的统计方法，用于此类预测。 此处的相关变量是二元或分叉的，p 是所需的特征出现的概率。 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -77,7 +84,7 @@ ms.openlocfilehash: db2fc1df586f925277026a418a073917978c0718
 > 
 > 
 
-在 Azure 机器学习内，创建了新的空白实验，提取了两个[执行 R 脚本][execute-r-script] 模块到工作区。 此 Web 服务使用基础 R 脚本运行 Azure 机器学习实验。 此实验有 2 个部分：架构定义和训练模型 + 评分。 第一个模块定义输入数据集的预期结构，其中第一个变量为相关变量，其他变量为独立变量。 第二个模块适用于输入数据的泛型逻辑回归模型。    
+在 Azure 机器学习中，已创建新的空白实验，并将两个[执行 R 脚本][execute-r-script]模块提取到工作区。 此 Web 服务使用基础 R 脚本运行 Azure 机器学习实验。 此实验有 2 个部分：架构定义和训练模型 + 评分。 第一个模块定义输入数据集的预期结构，其中第一个变量为相关变量，其他变量为独立变量。 第二个模块适用于输入数据的泛型逻辑回归模型。    
 
 ![实验流][2]
 
@@ -126,6 +133,6 @@ ms.openlocfilehash: db2fc1df586f925277026a418a073917978c0718
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

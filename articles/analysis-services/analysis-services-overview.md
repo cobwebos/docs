@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a3380731657d151b8c6337764069890420927dfc
+ms.sourcegitcommit: 653c9a04016c0157b2107710e170ba63b3a499f7
+ms.openlocfilehash: 38f68d6df19d24492a234933e10d5d5cf34d1b23
 
 
 ---
@@ -106,7 +106,7 @@ Azure Analysis Services 当前支持 1200 兼容级别表格模型的表格模�
 | --- | --- |
 | SQL 数据库 |SQL Server |
 | SQL 数据仓库 |APS |
-| Oracle | |
+| Oracle | Oracle |
 | Teradata | |
 
 ### <a name="data-source-providers"></a>数据源提供程序
@@ -123,6 +123,6 @@ Azure Analysis Services 中的数据模型可能需要不同的数据提供程�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

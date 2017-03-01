@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 02/14/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 71d165b8eaf4fe292577dce138d96ad049de61ab
-ms.openlocfilehash: 14032f3e54a078389d1be75742dda757d6a74a36
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
 
 
 ---
@@ -34,6 +34,11 @@ ms.openlocfilehash: 14032f3e54a078389d1be75742dda757d6a74a36
 > 
 
 本教程演示如何使用 Azure 门户创建和监视 Azure 数据工厂。 数据工厂中的管道使用复制活动将数据从 Azure Blob 存储复制到 SQL 数据库。
+
+> [!NOTE]
+> 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 该管道并不通过转换输入数据来生成输出数据。 有关如何使用 Azure 数据工厂来转换数据的教程，请参阅[教程：生成使用 Hadoop 群集来转换数据的管道](data-factory-build-your-first-pipeline.md)。
+> 
+> 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
 
 下面是本教程中要执行的步骤：
 
@@ -231,7 +236,7 @@ ms.openlocfilehash: 14032f3e54a078389d1be75742dda757d6a74a36
         }
       }
     }
-    ```     
+    ```       
     注意以下几点： 
    
    * 数据集 **type** 设置为 **AzureSQLTable**。
@@ -404,15 +409,12 @@ ms.openlocfilehash: 14032f3e54a078389d1be75742dda757d6a74a36
 ## <a name="see-also"></a>另请参阅
 | 主题 | 说明 |
 |:--- |:--- |
-| [数据移动活动](data-factory-data-movement-activities.md) |本文提供有关教程中所用复制活动的详细信息。 |
-| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [管道](data-factory-create-pipelines.md) |帮助了解 Azure 数据工厂中的管道和活动 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
-| [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
+| [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

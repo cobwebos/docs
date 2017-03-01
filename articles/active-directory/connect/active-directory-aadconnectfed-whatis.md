@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 2a361774095b20aacff91e9926ead2c1a53b8835
-ms.openlocfilehash: eedfdea0bcc3f0c69d2fe87b3cf2e2bc4e0ed3a6
+ms.sourcegitcommit: fd3699e4ce423ae9490d5bf788729c43eaa623eb
+ms.openlocfilehash: 19ebfae5de8576402348e3163f99a54b9308a078
 
 
 ---
@@ -45,13 +45,11 @@ ms.openlocfilehash: eedfdea0bcc3f0c69d2fe87b3cf2e2bc4e0ed3a6
 
 ## <a name="additional-resources"></a>其他资源
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-* [Azure 中的 AD FS 部署](active-directory-aadconnect-
-* azure-adfs.md)
+* [Azure 中的 AD FS 部署](active-directory-aadconnect-azure-adfs.md)
 * [使用 Azure 流量管理器在 Azure 中跨地理部署 AD FS 实现高可用性](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

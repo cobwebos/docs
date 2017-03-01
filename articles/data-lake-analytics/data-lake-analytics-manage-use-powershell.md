@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: d5d84e7b070e5530ba3ae7da7c2d310150136736
+ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
+ms.openlocfilehash: 62d5b9d1698dc8f0331fc9ced8fc9611055db06e
 
 
 ---
@@ -319,7 +319,7 @@ Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数�
 * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ## <a name="appendix-a---data-lake-analytics-arm-template"></a>附录 A - Data Lake Analytics ARM 模板
-以下 ARM 模板可用于部署 Data Lake Analytics 帐户及其从属 Data Lake Store 帐户。  将其保存为 json 文件，然后使用 PowerShell 脚本调用此模板。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../resource-group-template-deploy.md)和[创作 Azure Resource Manager 模板](../resource-group-authoring-templates.md)。
+以下 ARM 模板可用于部署 Data Lake Analytics 帐户及其从属 Data Lake Store 帐户。  将其保存为 json 文件，然后使用 PowerShell 脚本调用此模板。 有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)和[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
     {
       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -377,6 +377,6 @@ Data Lake Analytics 帐户和从属存储帐户必须位于同一个 Azure 数�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 
