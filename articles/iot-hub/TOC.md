@@ -3,7 +3,7 @@
 ## [Azure IoT 中心是什么？](iot-hub-what-is-iot-hub.md)
 ## [设备管理概述](iot-hub-device-management-overview.md)
 
-# 入门
+# [入门](iot-hub-get-started.md)
 ## 使用模拟设备
 ### [.NET](iot-hub-csharp-csharp-getstarted.md)
 ### [Java](iot-hub-java-java-getstarted.md)
@@ -22,8 +22,8 @@
 ##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-ubuntu.md)
 ##### [获取 Azure 工具 (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送“设备到云”消息
-##### [创建 Azure Function App 和存储帐户]#(iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
+#### 第 3 课：发送设备到云的消息
+##### [创建 Azure Function App 和存储帐户](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [运行用于发送消息的示例应用程序](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
 ##### [阅读存储中保存的消息](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
 #### 第 4 课：发送云到设备的消息
@@ -65,8 +65,8 @@
 ##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md)
 ##### [获取 Azure 工具 (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送“设备到云”消息
-##### [创建 Azure Function App 和存储帐户]#(iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+#### 第 3 课：发送设备到云的消息
+##### [创建 Azure Function App 和存储帐户](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [运行用于发送消息的示例应用程序](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
 ##### [阅读存储中保存的消息](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
 #### 第 4 课：发送云到设备的消息
@@ -107,13 +107,13 @@
 ##### [获取 Azure 工具 (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
 ##### [获取 Azure 工具 (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
 ##### [获取 Azure 工具 (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
-##### [创建 IoT 中心并注册 Raspberry Pi]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
-#### 第 3 课：发送“设备到云”消息
-##### [创建 Azure Function App 和存储帐户]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
+##### [创建 IoT 中心并注册 Raspberry Pi](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
+#### 第 3 课：发送设备到云的消息
+##### [创建 Azure Function App 和存储帐户](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
 ##### [运行用于发送消息的示例应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
 ##### [阅读存储中保存的消息](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
-#### 第 4 课：发送“云到设备”消息
-##### [运行用于接收消息的示例应用程序]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
+#### 第 4 课：发送云到设备的消息
+##### [运行用于接收消息的示例应用程序](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
 ##### [可选：更改 LED 行为](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
 #### [故障排除](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
 
@@ -172,7 +172,7 @@
 ### [缩放解决方案](iot-hub-scaling.md)
 ### [高可用性和灾难恢复](iot-hub-ha-dr.md)
 ### [支持其他协议](iot-hub-protocol-gateway.md)
-## 开发
+## [开发](iot-hub-how-to.md)
 ### [开发人员指南](iot-hub-devguide.md)
 #### [发送和接收消息](iot-hub-devguide-messaging.md)
 #### [设备到云的功能指南](iot-hub-devguide-d2c-guidance.md)
@@ -269,8 +269,3 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot/)
 ## [Azure IoT 已认证设备目录](https://catalog.azureiotsuite.com/)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

@@ -51,7 +51,7 @@
 ### [获取 ARP 表（经典）](expressroute-troubleshooting-arp-classic.md)
 
 # 参考
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
+## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST（经典）](https://msdn.microsoft.com/library/azure/dn606310)
 
@@ -79,8 +79,3 @@
 ### [提升网络基础结构的连接能力](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [混合合作关系：启用本地方案](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 ## [服务更新](https://azure.microsoft.com/updates/?product=expressroute)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

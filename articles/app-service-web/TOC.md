@@ -256,8 +256,8 @@
 ### [排查 HTTP 502 和 503 错误](app-service-web-troubleshoot-http-502-http-503.md)
 ### [排查 Web 应用性能问题](app-service-web-troubleshoot-performance-degradation.md)
 
-# 参考
-## [Azure CLI 2.0 预览版](/cli/azure/appservice)
+# 引用
+## [Azure CLI 2.0](/cli/azure/appservice)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/)
 ## [REST](/rest/api/appservice)
@@ -273,9 +273,3 @@
 # 资源
 ## [最佳实践](app-service-best-practices.md)
 ## [WebJob 资源列表](websites-webjobs-resources.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-

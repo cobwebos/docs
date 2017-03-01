@@ -39,6 +39,7 @@
 ### [分区的队列和主题](service-bus-partitioning.md)
 ### [死信队列](service-bus-dead-letter-queues.md)
 ### [事务处理](service-bus-transactions.md)
+### [诊断日志](service-bus-diagnostic-logs.md)
 ### AMQP
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
@@ -71,10 +72,5 @@
 ## [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [服务更新](https://azure.microsoft.com/updates/?product=service-bus)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

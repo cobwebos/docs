@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 5b775b3cb53086daea6258cccc15cd77fd0e68d9
-ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
+ms.sourcegitcommit: 400793331aa2d56358a83a51ce64c67f59bbf3b7
+ms.openlocfilehash: d81de30a46f7b849e70b99e7f7423cbc90f25326
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -43,14 +44,14 @@ ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
    
     ![Active Directory](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC700993.png "Active Directory")
 
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-    ![应用程序](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC700994.png "Applications")
+    ![应用程序](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC700994.png "应用程序")
 
 4. 在页面底部单击“添加”。
    
-    ![添加应用程序](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC749321.png "Add application")
+    ![添加应用程序](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC749321.png "添加应用程序")
 
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
@@ -73,19 +74,19 @@ ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
 1. 在“Citrix GoToMeeting”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-    ![启用单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768997.png "Enable single sign-on")
+    ![启用单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768997.png "启用单一登录")
 
 2. 在“你希望用户如何登录 Citrix GoToMeeting”页上，选择“Microsoft Azure AD 单一登录”。
    
-    ![配置单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768998.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768998.png "配置单一登录")
 
 3. 在“配置应用设置”页上，单击“下一步”。 
    
-    ![启用单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689981.png "Enable single sign-on")
+    ![启用单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689981.png "启用单一登录")
 
 4. 在“配置 Citrix GoToMeeting 的单一登录”页上，请单击“下载证书”，然后在计算机上保存该证书文件。
    
-    ![配置单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768999.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768999.png "配置单一登录")
 
 5. 在不同的浏览器窗口，登录到你的 [Citrix 组织中心](https://account.citrixonline.com/organization/administration/)。
 
@@ -93,7 +94,7 @@ ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
    
     ![SAML 设置](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC6892321.png "SAML setup")
    
-    a. 选择“手动”
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“手动”
 
     b.保留“数据库类型”设置，即设置为“共享”。 在 Azure 经典门户的“配置 Citrix GoToMeeting 的单一登录”对话框页上，复制“登录页 URL”值，然后将其粘贴到“登录页 URL”文本框中。 
 
@@ -108,7 +109,7 @@ ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
 
 1. 在 Azure 经典门户上，选择“单一登录配置确认”，然后单击“下一步”。
    
-    ![配置单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769000.png "Configure single sign-on")
+    ![配置单一登录](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769000.png "配置单一登录")
 
 2. 在“单一登录确认”页上，单击“完成”。
    
@@ -126,11 +127,11 @@ ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
    
     ![配置用户设置](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769002.png "Configure user provisioning")
    
-    a. 在“Citrix GoToMeeting 管理员用户名”文本框中，键入管理员的用户名。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“Citrix GoToMeeting 管理员用户名”文本框中，键入管理员的用户名。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“Citrix GoToMeeting 管理员密码”文本框中，键入管理员密码。
 
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“资源组名称”的 Azure 数据工厂。
 
 1. 在“确认”页上，单击复选标记以保存配置。
 2. 单击“验证”按钮以验证配置。
@@ -142,11 +143,11 @@ ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“Citrix GoToMeeting”应用程序集成页上，单击“分配用户”。
    
-    ![分配用户](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769003.png "Assign users")
+    ![分配用户](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769003.png "分配用户")
 
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。
    
-    ![是](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC767830.png "Yes")
+    ![是](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC767830.png "是")
 
 现在应等待 10 分钟，然后验证该帐户是否已同步到 Dropbox for Business。
 
@@ -161,10 +162,5 @@ ms.openlocfilehash: c4f33f3f856c5017c5b156e2b27b3b82a275afa6
 如果要测试单一登录设置，请打开访问面板。
 
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

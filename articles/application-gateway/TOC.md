@@ -14,7 +14,7 @@
 #### [门户](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
-#### [CLI](application-gateway-create-gateway-cli.md)
+#### [Azure CLI](application-gateway-create-gateway-cli.md)
 #### [PowerShell（经典）](application-gateway-create-gateway.md)
 ### 面向内部
 #### [PowerShell](application-gateway-ilb-arm.md)
@@ -44,7 +44,7 @@
 ### [诊断日志记录和指标](application-gateway-diagnostics.md)
 # 引用
 ## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
-## [Azure CLI 2.0 预览版](/cli/azure/network/application-gateway)
+## [Azure CLI 2.0](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)
@@ -65,8 +65,3 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-application-gateway)
 ## [服务更新](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

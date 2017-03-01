@@ -12,7 +12,6 @@
 ### [SQL 与 NoSQL](../documentdb/documentdb-nosql-vs-sql.md)
 ## [SQL 数据库工具](sql-database-manage-overview.md)
 ## [SQL 数据库教程](sql-database-explore-tutorials.md)
-## [解决方案快速入门](sql-database-solution-quick-starts.md)
 ## “安全”
 ### [安全性概述](sql-database-security-overview.md)
 ### [Azure SQL 数据库的 Azure 安全中心](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
@@ -273,6 +272,7 @@
 # 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql)
 ## [PowerShell（弹性数据库）](/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs)
+## [Azure CLI 2.0](/cli/azure/appservice)
 ## [.NET](/dotnet/api/microsoft.azure.management.sql.models)
 ## [Java](/java/api/com.microsoft.azure.management.sql)
 ## [Node.js](https://msdn.microsoft.com/library/mt652093.aspx)
@@ -302,8 +302,3 @@
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
