@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/15/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 44bc06506707e09ea2bbcbb18198bc1a10467d53
-ms.openlocfilehash: 26567a3e935ad9162c366ee053ff846d2edadc38
+ms.sourcegitcommit: de2b914ddb7238c9939066570d8fba78aa5c231e
+ms.openlocfilehash: 73e9c8491520d47bbc60b1556b97918977d29d7f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -51,15 +52,20 @@ ms.openlocfilehash: 26567a3e935ad9162c366ee053ff846d2edadc38
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="a-name11201120httpswwwnugetorgpackagesmicrosoftazuredocumentdb1120"></a><a name="1.12.0"/>[1.12.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.0)
+* 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
+
 ### <a name="a-name11141114httpswwwnugetorgpackagesmicrosoftazuredocumentdb1114"></a><a name="1.11.4"/>[1.11.4](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.4)
 * 针对 32 位主机进程中某些分区查询的失败问题进行了修复。
 * 针对网关模式中使用令牌更新会话容器的请求失败问题进行了修复。
 * 针对某些情况下投影中调用 UDF 的查询失败问题进行了修复。
+* 用于提高请求的读取和写入吞吐量的客户端性能修复。
 
 ### <a name="a-name11131113httpswwwnugetorgpackagesmicrosoftazuredocumentdb1113"></a><a name="1.11.3"/>[1.11.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.3)
 * 针对使用令牌更新会话容器的请求失败问题进行了修复。
 * 添加了对 SDK 在 32 位主机进程中工作的支持。 请注意，如果使用跨分区查询，建议使用 64 位主机进程以提高性能。
 * 针对在 IN 表达式中使用大量分区键值调用查询的方案改进了性能。
+* 在设置 PopulateQuotaInfo 请求时针对文档集合读取请求的 ResourceResponse 中填充了各种资源配额统计信息。
 
 ### <a name="a-name11111111httpswwwnugetorgpackagesmicrosoftazuredocumentdb1111"></a><a name="1.11.1"/>[1.11.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.1)
 * 对 1.11.0 版本中引入的 CreateDocumentCollectionIfNotExistsAsync API 的轻微性能修复。
@@ -199,6 +205,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.12.0](#1.12.0) |2017 年 2 月 15 日 |--- |
 | [1.11.4](#1.11.4) |2017 年 2 月 6 日 |--- |
 | [1.11.3](#1.11.3) |2017 年 1 月 26 日 |--- |
 | [1.11.1](#1.11.1) |2016 年 12 月 21 日 |--- |
@@ -230,10 +237,5 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 ## <a name="see-also"></a>另请参阅
 要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

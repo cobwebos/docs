@@ -5,7 +5,7 @@ keywords: "azure 应用服务, web 应用, nodejs, pm2, linux, oss"
 services: app-service
 documentationcenter: 
 author: naziml
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: fb420f32-6d74-49c7-992f-0ed5616e66e7
 ms.service: app-service
@@ -13,20 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a46f52198e956406c2384c45ed4323aff27259a0
+ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
+ms.openlocfilehash: c4af07e79ae066f916c15aa239cb5dfdd3fef2a8
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="use-pm2-configuration-for-nodejs-in-web-apps-on-linux"></a>在 Linux Web 应用中使用针对 Node.js 的 PM2 配置
-如果将应用程序堆栈设置为 Linux Web 应用的 Node.js，则可选择设置 Node.js 启动文件，如下图所示。
+如果将应用程序堆栈设置为 Linux Web 应用的 Node.js，则可选择设置 Node.js 启动文件，如下图所示：
 
 ![设置 Node.js 启动文件][1]
 
-可以使用此方法执行以下任务之一：
+可以使用此选项执行以下任务之一：
 
 * 指定 Node.js 应用的启动脚本（例如：/bin/server.js）。
 * 指定用于 Node.js 应用的 PM2 配置文件（例如：/foo/process.json）。
@@ -61,12 +62,8 @@ ms.openlocfilehash: a46f52198e956406c2384c45ed4323aff27259a0
 
 ## <a name="next-steps"></a>后续步骤
 * [什么是 Linux 应用服务？](app-service-linux-intro.md)
+* [Linux 上的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-nodejs-pm2/nodejs-startup-file.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/16/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 894f94fdefe081679b1e35183bd4127be35cd33c
+ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
+ms.openlocfilehash: 32d0b45080d57712209e0c5a3e5adf981fb4b66e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -36,10 +37,14 @@ ms.openlocfilehash: 894f94fdefe081679b1e35183bd4127be35cd33c
 7. 总之，邀请方租户*始终*负责对合作伙伴组织中的 B2B 协作用户进行 MFA，而不是由合作伙伴组织本身进行 MFA（即使它具有 MFA 功能，也是如此）。 在将来版本中，我们将允许邀请方组织信任特定合作伙伴组织的 MFA，而不是使用邀请方组织的 MFA。
 
 ## <a name="setting-up-mfa-for-b2b-collaboration-users"></a>为 B2B 协作用户设置 MFA
-若要了解为 B2B 协作用户设置 MFA 有多轻松，请参阅[此视频](https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup)中的操作方法。
+若要了解为 B2B 协作用户设置 MFA 有多轻松，请参阅以下视频：
 
-## <a name="b2b-collaboration-users-mfa-experience-for-offer-redemption"></a>用于产品/服务兑换的 B2B 协作用户 MFA 体验
-请查看下面的动画了解兑换体验，如[此视频](https://channel9.msdn.com/Blogs/Azure/MFA-redemption)中所示。
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
+
+## <a name="b2b-users-mfa-experience-for-offer-redemption"></a>用于产品/服务兑换的 B2B 用户 MFA 体验
+请查看下面的动画了解兑换体验，如以下视频中所示：
+
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
 ## <a name="mfa-reset-for-b2b-collaboration-users"></a>为 B2B 协作用户重置 MFA
 目前，管理员可以要求 B2B 协作用户只使用以下 PowerShell cmdlet 再次身份验证。 因此，如果要重置 B2B 协作用户的身份验证方法，应使用以下 PowerShell cmdlet。
@@ -80,14 +85,9 @@ ms.openlocfilehash: 894f94fdefe081679b1e35183bd4127be35cd33c
 * [B2B 协作邀请电子邮件的元素](active-directory-b2b-invitation-email.md)
 * [B2B 协作邀请兑换](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B 协作授权](active-directory-b2b-licensing.md)
-* [Azure Active Directory B2B 协作故障排除](active-directory-b2b-troubleshooting.md)
+* [Azure Active Directory B2B 协作疑难解答](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B 协作常见问题 (FAQ)](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B 协作 API 和自定义](active-directory-b2b-api.md)
 * [在没有邀请的情况下添加 B2B 协作用户](active-directory-b2b-add-user-without-invite.md)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

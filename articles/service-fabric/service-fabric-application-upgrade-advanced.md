@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
-ms.author: subramar
+ms.date: 02/02/2017
+ms.author: subramar;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: f1e035b50b415f68ce567fe1db3a3fe93c2a1394
-ms.openlocfilehash: 63d7ca0224c1989618c474181b02fa79eb69c966
+ms.sourcegitcommit: c83c4db0ada77998354b3fca4e2297335899a9bd
+ms.openlocfilehash: 20a3277370583ccf93b36191a70149ed7d814238
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 63d7ca0224c1989618c474181b02fa79eb69c966
 
 Azure Service Fabric 提供了多个升级模式，可支持开发和生产群集。 选择的部署选项可根据不同的环境而有所不同。
 
-受监视应用程序滚动升级是生产中使用的最典型的升级。 当指定了升级策略时，Service Fabric 可确保在升级继续进行之前，应用程序处于正常状态。
+受监视应用程序滚动升级是生产环境中使用的最典型的升级。 当指定了升级策略时，Service Fabric 可确保在升级继续进行之前，应用程序处于正常状态。
 
  应用程序管理员可以使用手动滚动应用程序升级模式，通过各种升级域获得升级过程的完全控制权。 需要自定义的或者复杂的运行状况评估策略，或者进行非常规升级（例如，应用程序已有数据丢失）时，此模式非常有用。
 
@@ -99,9 +100,4 @@ app1/
 了解如何使用[数据序列化](service-fabric-application-upgrade-data-serialization.md)，使应用程序在升级后保持兼容。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "将 Azure VM 备份到恢复服务保管库 | Microsoft Docs"
+title: "备份 Azure VM | Microsoft Docs"
 description: "发现、注册和备份 Azure 虚拟机到恢复服务保管库。"
 services: backup
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/30/2017
+ms.date: 2/15/2017
 ms.author: trinadhk;jimpark;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 39147f2db1e660a21d6ed622206787ea0c569056
-ms.openlocfilehash: 28a5014f7ee73b30f879d249811e7fc303b13ac6
+ms.sourcegitcommit: dca042ce1684b35e6a874075e0de28b9d8766331
+ms.openlocfilehash: 981c8652629e96f482d9a62b70b0f0992517019f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -44,32 +45,57 @@ ms.openlocfilehash: 28a5014f7ee73b30f879d249811e7fc303b13ac6
 
 若要运行初始备份作业，请执行以下操作：
 
-1. 在保管库仪表板上的“**备份**”磁贴中，单击“**Azure 虚拟机**”。 <br/>
-    ![设置图标](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. 在保管库仪表板上，单击“备份项”下的数字，或单击“备份项”磁贴。 <br/>
+  ![设置图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-    “**备份项**”边栏选项卡随即打开。
-2. 在“**备份项**”边栏选项卡中，右键单击要备份的保管库，然后单击“**立即备份**”。
+  “**备份项**”边栏选项卡随即打开。
 
-    ![“设置”图标](./media/backup-azure-vms-first-look-arm/back-up-now.png)
+  ![备份项](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-    随即会触发备份作业。 <br/>
+2. 在“备份项”边栏选项卡上，选择项。
 
-    ![已触发备份作业](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
-3. 若要查看初始备份是否已完成，在保管库仪表板上的“**备份作业**”磁贴中，单击“**Azure 虚拟机**”。
+  ![“设置”图标](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-    ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
+  “备份项”列表随即打开。 <br/>
 
-    “备份作业”边栏选项卡随即打开。
-4. 在“**备份作业**”边栏选项卡中，可以看到所有作业的状态。
+  ![已触发备份作业](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-    ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
+3. 在“备份项”列表中，单击省略号“...”以打开上下文菜单。
 
-   > [!NOTE]
-   > 在备份操作期间，每个虚拟机中的备份扩展刷新所有写入并采用一致的快照。
-   >
-   >
+  ![上下文菜单](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-    完成备份作业后，状态将变为“*已完成*”。
+  上下文菜单随即打开。
+
+  ![上下文菜单](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
+
+4. 在上下文菜单上，单击“立即备份”。
+
+  ![上下文菜单](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
+
+  “立即备份”边栏选项卡随即打开。
+
+  ![显示“立即备份”边栏选项卡](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+5. 在“立即备份”边栏选项卡上，单击日历图标，使用日历控件选择保留此恢复点的最后一天，然后单击“备份”。
+
+  ![设置保留立即备份恢复点的最后一天](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  部署通知会告知你备份作业已触发，并且你可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+
+6. 若要查看或跟踪初始备份的状态，请在保管仪表板的“备份作业”磁贴上，单击“正在进行”。
+
+  ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
+
+  “备份作业”边栏选项卡随即打开。
+
+  ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
+
+  在“**备份作业**”边栏选项卡中，可以看到所有作业的状态。 请查看 VM 的备份作业仍在进行中，还是已完成。 完成备份作业后，状态将变为“已完成”。
+
+  > [!NOTE]
+  > 在执行备份操作的过程中，Azure 备份服务将向每个 VM 中的备份扩展发出一条命令，刷新所有写入并取得一致快照。
+  >
+  >
 
 ## <a name="troubleshooting-errors"></a>排查错误
 如果在备份虚拟机时遇到问题，请参阅 [VM 故障排除文章](backup-azure-vms-troubleshoot.md)以获取帮助。
@@ -79,9 +105,4 @@ ms.openlocfilehash: 28a5014f7ee73b30f879d249811e7fc303b13ac6
 
 * [管理和监视你的虚拟机](backup-azure-manage-vms.md)
 * [恢复虚拟机](backup-azure-arm-restore-vms.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

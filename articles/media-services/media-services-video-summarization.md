@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/16/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0c6f4a020430f464a97b0716dea2a40719c0b064
+ms.sourcegitcommit: 343658944394e7b620bc70aa0d92affada07e91d
+ms.openlocfilehash: 7510c8ab4adadbd7d738ba0b8e2bbdddba8d1048
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -26,7 +27,11 @@ ms.openlocfilehash: 0c6f4a020430f464a97b0716dea2a40719c0b064
 
 **Azure Media Video Thumbnail** MP 目前以预览版提供。
 
-此主题提供有关 **Azure Media Video Thumbnail** 的详细信息，并演示如何将它与适用于 .NET 的媒体服务 SDK 配合使用
+此主题提供有关 **Azure Media Video Thumbnail** 的详细信息，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用。
+
+## <a name="limitations"></a>限制
+
+在某些情况下，如果视频不是由不同的场景组成，则输出将只是一个镜头。
 
 ## <a name="video-summary-example"></a>视频摘要示例
 下面是 Azure 媒体视频缩略图媒体处理器可以执行的操作的一些示例：
@@ -262,10 +267,5 @@ ms.openlocfilehash: 0c6f4a020430f464a97b0716dea2a40719c0b064
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

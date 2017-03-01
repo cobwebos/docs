@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f336058fd743b4dfec17eb301a3b28d035ca8d0f
-ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
+ms.sourcegitcommit: 802086b95b949cf4aa14af044f69e500b31def44
+ms.openlocfilehash: 5241a36fbc7008baad5369452d3332d84335a661
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -27,13 +28,13 @@ ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
 * 键入时，Analytics 会提供很多参考资料。 只要开始输入查询，系统就会提示可能的完整形式。
 * [此教程页面](app-insights-analytics-tour.md)提供语言功能的分步介绍。
 * [SQL 用户的备忘单](https://aka.ms/sql-analytics)转换最常见的惯用语言。
-* [针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)（如果应用尚未将数据发送到 Application Insights）。
+* [针对模拟数据测试驱动 Analytics](https://analytics.applicationinsights.io/demo)（如果你自己的应用尚未将数据发送到 Application Insights）。
  
 
 ## <a name="index"></a>索引
 **Let** [let](#let-clause)
 
-**查询和运算符** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**查询和运算符** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **聚合** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -43,9 +44,9 @@ ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
 
 **日期和时间** [Date and time expressions](#date-and-time-expressions) | [Date and time literals](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-**字符串** [GUIDs](#guids) | [Obfuscated String Literals](#obfuscated-string-literals) | [String Literals](#string-literals) | [String comparisons](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+**字符串** [GUIDs](#guids) | [Obfuscated String Literals](#obfuscated-string-literals) | [String Literals](#string-literals) | [String comparisons](#string-comparisons) | [countof](#countof) | [extract](#extract) | [in, !in](#in) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
 
-**数组、对象和动态** [Array and object literals](#array-and-object-literals) | [Dynamic object functions](#dynamic-object-functions) | [Dynamic objects in let clauses](#dynamic-objects-in-let-clauses) | [JSON Path expressions](#json-path-expressions) | [Names](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
+**数组、对象和动态** [Array and object literals](#array-and-object-literals) | [Dynamic object functions](#dynamic-object-functions) | [Dynamic objects in let clauses](#dynamic-objects-in-let-clauses) | [JSON Path expressions](#json-path-expressions) | [Names](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [in, !in](#in) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
 
 ## <a name="let"></a>Let
 ### <a name="let-clause"></a>let 子句
@@ -439,7 +440,10 @@ traces
 
 ### <a name="find-operator"></a>find 运算符
 
-    find in (Table1, Table2, Table3) where id=='42'
+    find in (Table1, Table2, Table3) where id=="a string"
+    find in (Table1, Table2, Table3) where id=="a string" project column1, column2
+    find in (Table1, Table2, Table3) where * has "a string"
+    find in (Table1, Table2, Table3) where appName in ("string 1", "string 2", "string 3")
 
 在一组表中查找与谓词相匹配的行。
 
@@ -453,6 +457,7 @@ traces
 
 * Table1 表名称或查询。 它可以是 let 定义的表，但不能是函数。 使用表名的效果优于使用查询。
 * 谓词 计算指定表中每一行的布尔表达式。
+ * 可以使用“*”代替字符串比较中的列名称
 * Column1`project` 选项可指定哪些列必须始终出现在输出中。 
 
 **结果**
@@ -1140,7 +1145,7 @@ Traces
 请考虑将 [join 运算符](#join-operator)作为替代。
 
 ### <a name="where-operator"></a>where 运算符
-     requests | where resultCode==200
+     requests | where resultCode=="200"
 
 筛选表，获取满足谓词的行子集。
 
@@ -1183,61 +1188,7 @@ traces
 
 请注意，将两个列之间的比较放在最后，因为它不能利用索引和强制执行扫描。
 
-### <a name="where-in-operator"></a>where-in 运算符
-    requests | where resultCode !in (200, 201)
 
-    requests | where resultCode in (403, 404)
-
-**语法**
-
-    T | where col in (listExpression)
-    T | where col !in (listExpression)
-
-**参数**
-
-* `col`：表中的列。
-* `listExpression`：标量表达式列表，或计算结果为列表的表达式。 
-
-例如，将嵌套数组平展为单个列表（例如 `where x in (dynamic([1,[2,3]]))` 变为 `where x in (1,2,3)`）。
-
-使用 `in`，用于仅包括此类行：其中的 `col` 等同于表达式 `expr1...` 中的一个表达式。
-
-使用 `!in`，用于仅包括此类行：其中的 `col` 不等于任何表达式 `expr1...`。  
-
-**示例**
-
-```AIQL
-let cities = dynamic(['Dublin','Redmond','Amsterdam']);
-requests | where client_City in (cities) 
-|  summarize count() by client_City
-```
-
-计算列表：
-
-```AIQL
-let topCities =  toscalar ( // convert single column to value
-   requests
-   | summarize count() by client_City 
-   | top 4 by count_ 
-   | summarize makeset(client_City)) ;
-requests
-| where client_City in (topCities) 
-| summarize count() by client_City;
-```
-
-将函数调用用作列表表达式：
-
-```AIQL
-let topCities =  (n:int) {toscalar (
-   requests
-   | summarize count() by client_City 
-   | top n by count_ 
-   | summarize makeset(client_City)) };
-requests
-| where client_City in (topCities(3)) 
-| summarize count() by client_City;
-```
- 
 
 ## <a name="aggregations"></a>Aggregations
 Aggregations 是用于合并在[汇总操作](#summarize-operator)中所创建组的值的函数。 例如，在此查询中，dcount() 是一个聚合函数：
@@ -2239,8 +2190,8 @@ h"hello"
 | `endswith` |RHS 是 LHS 终端子字符串。 |否 |`"Fabrikam" endswith "kam"` |
 | `!endswith` |RHS 不是 LHS 终端子字符串。 |否 |`"Fabrikam" !endswith "ka"` |
 | `matches regex` |LHS 包含 RHS 的匹配项 |是 |`"Fabrikam" matches regex "b.*k"` |
-| `in` |等于任一元素 |是 |`"abc" in ("123", "345", "abc")` |
-| `!in` |不等于任何元素 |是 |`"bc" !in ("123", "345", "abc")` |
+| [`in`](#in) |等于任一元素 |是 |`"abc" in ("123", "345", "abc")` |
+| [`!in`](#in) |不等于任何元素 |是 |`"bc" !in ("123", "345", "abc")` |
 
 如果正在测试是否存在整体用语，即符号或字母数字式字词（受非字母数字字符或开始或结束字段限制），则使用 `has` 或 `in`。 `has` 执行速度比 `contains`、`startswith` 或 `endswith` 更快。 这些查询的第一个查询运行速度更快：
 
@@ -2323,6 +2274,8 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 <a name="notempty"></a>
 <a name="isnotempty"></a>
 <a name="isempty"></a>
+
+
 
 ### <a name="isempty-isnotempty-notempty"></a>isempty, isnotempty, notempty
     isempty("") == true
@@ -2611,8 +2564,8 @@ T
 ### <a name="dynamic-object-functions"></a>动态对象函数
 |  |  |
 | --- | --- |
-| *value* `in` *array* |如果有 = = *value* 的 *array* 元素，则为 true<br/>`where City in ('London', 'Paris', 'Rome')` |
-| *value* `!in` *array* |如果没有 == *value* 的 *array* 元素，则为 true |
+| [*value* `in` *array*](#in) |*array* 包含 *value* |
+| [*value* `!in` *array*](#in) |*array* 不包含 *value* |
 | [`arraylength(`array`)`](#arraylength) |如果不是数组，则为 null |
 | [`extractjson(`path,object`)`](#extractjson) |使用路径导航到对象。 |
 | [`parsejson(`source`)`](#parsejson) |将 JSON 字符串转换为动态对象。 |
@@ -2631,7 +2584,57 @@ T
     T | project parsejson(list1).a, parsejson(list2).a
 
 
+### <a name="in"></a>位于
+    value in (listExpression)
+    value !in (listExpression)
 
+确定列表中是否存在等于该值的项。 区分大小写，其中值为字符串。
+
+**参数**
+
+* `value`：标量表达式。
+* `listExpression`：标量表达式列表，或计算结果为列表的表达式。 
+
+例如，将嵌套数组平展为单个列表（例如 `where x in (dynamic([1,[2,3]]))` 变为 `where x in (1,2,3)`）。  
+
+**示例**
+
+```AIQL
+    requests | where client_City in ("London", "Paris", "Rome")
+```
+
+```AIQL
+let cities = dynamic(['Dublin','Redmond','Amsterdam']);
+requests | where client_City in (cities) 
+|  summarize count() by client_City
+```
+
+计算列表：
+
+```AIQL
+let topCities =  toscalar ( // convert single column to value
+   requests
+   | summarize count() by client_City 
+   | top 4 by count_ 
+   | summarize makeset(client_City)) ;
+requests
+| where client_City in (topCities) 
+| summarize count() by client_City;
+```
+
+将函数调用用作列表表达式：
+
+```AIQL
+let topCities =  (n:int) {toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City)) };
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+ 
 
 ### <a name="arraylength"></a>arraylength
 动态数组中的元素数。
@@ -2833,10 +2836,5 @@ range(1, 8, 3)
 | [where] |使用语言关键字作为名称 |
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

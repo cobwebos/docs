@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 01/18/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 8725687a5700df72026f9154659758b9280872f4
-ms.openlocfilehash: 35247a68588ab8593c40ed0d62f37062350f9aec
+ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
+ms.openlocfilehash: 039ed6f4be9f3e0f6b92e5a9f11e12392912df9d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -79,14 +80,17 @@ Azure Analysis Services 模型数据库用户必须位于 Azure Active Directory
 }
 ```
 
+## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
+
+订阅管理员可以在控制边栏选项卡中使用“访问控制”来配置角色。 这与服务器管理员或数据库用户不同，如上所述它们是以服务器或数据库级别配置的。 
+
+![Azure 门户中的访问控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
+
+角色适用于需要执行可在门户中完成或使用 Azure Resource Manager 模板完成的任务的用户或帐户。 若要了解详细信息，请参阅[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。
+
 ## <a name="next-steps"></a>后续步骤
 如果尚未将表格模型部署到服务器，现在正是一个好时机。 有关详细信息，请参阅[部署到 Azure Analysis Services](analysis-services-deploy.md)。
 
 如果已将模型部署到服务器，可使用客户端或浏览器连接到该模型。 有关详细信息，请参阅[从 Azure Analysis Services 获取数据](analysis-services-connect.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

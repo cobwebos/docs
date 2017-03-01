@@ -1,5 +1,5 @@
 ---
-title: "登记由 Azure 自动化 DSC 管理的物理机和虚拟机 | Microsoft Docs"
+title: "Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）| Microsoft Docs"
 description: "如何设置可使用 Azure 自动化 DSC 管理的计算机"
 services: automation
 documentationcenter: dev-center-name
@@ -14,8 +14,9 @@ ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 18c6a55f2975305203bf20a040ac29bc9527a124
-ms.openlocfilehash: 0832b5866b49800cc0aecda8f4e473f89b12139b
+ms.sourcegitcommit: e2257730f0c62dbc0313ce7953fc5f953dae8ac3
+ms.openlocfilehash: f81536322ad1bb16e4af326e0b053da47690619c
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -196,7 +197,7 @@ Azure 自动化 DSC 可让你使用 Azure 门户、Azure Resource Manager 模板
 
 ## <a name="generating-dsc-metaconfigurations"></a>生成 DSC 元配置
 
-若要以一般方式将任何计算机登记到 Azure 自动化 DSC，可以生成应用时告知计算机上的 DSC 代理从 Azure 自动化 DSC 提取和/或报告的 DSC 元配置。 Azure 自动化 DSC 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
+若要以一般方式将任何计算机登记到 Azure 自动化 DSC，可以生成应用时告知计算机上的 DSC 代理从 Azure 自动化 DSC 提取和/或报告的 [DSC 元配置](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig)。 Azure 自动化 DSC 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
 
 > [!NOTE]
 > DSC 元配置包含将计算机登记到进行管理的自动化帐户的机密。 请务必适当保护所创建的任何 DSC 元配置，或者在使用后将其删除。
@@ -319,7 +320,11 @@ Azure 自动化 DSC 可让你使用 Azure 门户、Azure Resource Manager 模板
 
 3. 填写自动化帐户的注册密钥和 URL，以及要登记的计算机名称。 所有其他参数都是可选的。 若要查找自动化帐户的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
 4. 如果希望计算机向 Azure 自动化 DSC 报告 DSC 状态信息但不提取配置或 PowerShell 模块，请将 **ReportOnly** 参数设置为 true。
-5. 运行该脚本。 现在，工作目录中应有一个名为 **DscMetaConfigs** 的文件夹，其中包含要登记的计算机的 PowerShell DSC 元配置。
+5. 运行该脚本。 现在，工作目录中应有一个名为 **DscMetaConfigs** 的文件夹，其中包含要登记的计算机的 PowerShell DSC 元配置（作为管理员）：
+
+    ```powershell
+    Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
+    ```
 
 ### <a name="using-the-azure-automation-cmdlets"></a>使用 Azure 自动化 cmdlet
 
@@ -338,13 +343,16 @@ Azure 自动化 DSC 可让你使用 Azure 门户、Azure Resource Manager 模板
         ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
         OutputFolder = "$env:UserProfile\Desktop\";
     }
-
     # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
     # For more info about splatting, run: Get-Help -Name about_Splatting
     Get-AzureRmAutomationDscOnboardingMetaconfig @Params
-     ```
-
-    现在，应有一个名为 ***DscMetaConfigs*** 的文件夹，其中包含要登记的计算机的 PowerShell DSC 元配置。
+    ```
+    
+4. 现在，应有一个名为 ***DscMetaConfigs*** 的文件夹，其中包含要登记的计算机的 PowerShell DSC 元配置（作为管理员）：
+    
+    ```powershell
+    Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
+    ```
 
 ## <a name="secure-registration"></a>安全注册
 
@@ -384,9 +392,4 @@ Azure 自动化 DSC 可让你轻松登记 Azure Windows VM 以进行配置管理
 * [Azure 自动化 DSC 概述](automation-dsc-overview.md)
 * [Azure 自动化 DSC cmdlet](https://msdn.microsoft.com/library/mt244122.aspx)
 * [ 定价](https://azure.microsoft.com/pricing/details/automation/)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

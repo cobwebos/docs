@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: 0c14d1fd457df16483c0f4fefc4f1f82e3df4dd0
+ms.sourcegitcommit: e1e30e34e696b499c17656535d71fc6eb0a987ba
+ms.openlocfilehash: ebde5715ff595b8b76d2500e445f4e51a21cce0e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -48,10 +49,10 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 | **先决条件** | **详细信息** |
 | --- | --- |
 | **Azure** |需要一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 你可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/) Site Recovery 定价。 |
-| **VMM** |你需要至少一台 VMM 服务器。<br/><br/>VMM 服务器应当至少运行具有最新累积更新的 System Center 2012 SP1。<br/><br/>如果希望通过单台 VMM 服务器设置保护，你需要在该服务器上配置至少两个云。<br/><br/>如果希望为两台 VMM 服务器部署保护，每台服务器必须至少在主 VMM 服务器上配置一个你要保护的云，在辅助 VMM 服务器上配置一个你要用于保护和恢复的云。<br/><br/>所有 VMM 云都必须设置 Hyper-V 容量配置文件。<br/><br/>你要保护的源云必须包含一个或多个 VMM 主机组。<br/><br/>阅读 Keith Mayer 博客上的文章 [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)（演练：使用 System Center 2012 SP1 VMM 创建私有云），了解有关设置 VMM 云的详细信息。 |
+| **VMM** |你需要至少一台 VMM 服务器。<br/><br/>VMM 服务器应当至少运行具有最新累积更新的 System Center 2012 SP1。<br/><br/>如果希望通过单台 VMM 服务器设置保护，你需要在该服务器上配置至少两个云。<br/><br/>如果希望为两台 VMM 服务器部署保护，每台服务器必须至少在主 VMM 服务器上配置一个你要保护的云，在辅助 VMM 服务器上配置一个你要用于保护和恢复的云。<br/><br/>所有 VMM 云都必须设置 Hyper-V 容量配置文件。<br/><br/>你要保护的源云必须包含一个或多个 VMM 主机组。 |
 | **Hyper-V** |你需要在主要和辅助 VMM 主机组中有一个或多个 Hyper-V 主机服务器，且在每个 Hyper-V 主机服务器上有一台或多台虚拟机。<br/><br/>主机和目标 Hyper-V 服务器至少必须运行具有 Hyper-V 角色且安装了最新更新程序的 Windows Server 2012。<br/><br/>包含你想要保护的 VM 的任何 Hyper-V 服务器必须位于 VMM 云中。<br/><br/>如果你在群集中运行 Hyper-V，请注意，如果你具有基于静态 IP 地址的群集，则不会自动创建群集代理。 需要手动配置群集代理。 在 Aidan Finn 的博客文章中[了解详细信息](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters)。 |
-| **网络映射** |你可以配置网络映射，以确保在故障转移后以最佳方式将复制的虚拟机放置在辅助 Hyper-V 主机服务器上，并确保它们连接到适当的 VM 网络。 如果不配置网络映射，则故障转移之后，副本 VM 将不会连接到任何网络。<br/><br/>若要在部署过程中设置网络映射，请确保源 Hyper-V 主机服务器上的虚拟机已连接到 VMM VM 网络。 该网络应当链接到与云相关联的逻辑网络。<br/<br/>辅助 VMM 服务器上你用于恢复的目标云应当配置了相应的 VM 网络，并且该网络应当链接到与目标云关联的相应逻辑网络。<br/><br/>[详细了解](site-recovery-network-mapping.md)网络映射。 |
-| **存储映射** |默认情况下，将源 Hyper-V 主机服务器上的虚拟机复制到目标 Hyper-V 主机服务器时，复制的数据存储到在 Hyper-V 管理器中为目标 Hyper-V 主机指定的默认位置。 若要进一步控制将复制的数据存储在何处，可以配置存储映射。<br/><br/> 若要配置存储映射，你需要在开始部署前在源和目标 VMM 服务器上设置存储分类。 [了解详细信息](site-recovery-storage-mapping.md)。 |
+| **网络映射** |你可以配置网络映射，以确保在故障转移后以最佳方式将复制的虚拟机放置在辅助 Hyper-V 主机服务器上，并确保它们连接到适当的 VM 网络。 如果不配置网络映射，则故障转移之后，副本 VM 将不会连接到任何网络。<br/><br/>若要在部署过程中设置网络映射，请确保源 Hyper-V 主机服务器上的虚拟机已连接到 VMM VM 网络。 该网络应当链接到与云相关联的逻辑网络。<br/<br/>辅助 VMM 服务器上你用于恢复的目标云应当配置了相应的 VM 网络，并且该网络应当链接到与目标云关联的相应逻辑网络。 |
+| **存储映射** |默认情况下，将源 Hyper-V 主机服务器上的虚拟机复制到目标 Hyper-V 主机服务器时，复制的数据存储到在 Hyper-V 管理器中为目标 Hyper-V 主机指定的默认位置。 若要进一步控制将复制的数据存储在何处，可以配置存储映射。<br/><br/> 若要配置存储映射，你需要在开始部署前在源和目标 VMM 服务器上设置存储分类。 |
 
 ## <a name="step-1-create-a-site-recovery-vault"></a>步骤 1：创建站点恢复保管库
 1. 从你要注册的 VMM 服务器登录到 [管理门户](https://portal.azure.com) 。
@@ -160,7 +161,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
    * 我们建议你选择可满足你要保护的虚拟机的恢复要求的目标云。
    * 一个云只能属于一个云对 — 作为主云或目标云。
 6. 在“**复制频率**”中，指定应在源位置与目标位置之间同步数据的频率。 请注意，只有当 Hyper-V 主机运行 Windows Server 2012 R2 时，此设置才适用。 对于其他服务器，将使用默认设置五分钟。
-7. 在“**其他恢复点**”中，指定是否要创建其他恢复点。默认值零指定只将主虚拟机的最新恢复点存储在副本主机服务器上。 请注意，启用多个恢复点需要为在每个恢复点上存储的快照提供额外的存储。 默认情况下，每隔一小时会创建恢复点，因此每个恢复点包含一小时的有用数据。 你在 VMM 控制台中为虚拟机分配的恢复点值不应小于你在 Azure Site Recovery 控制台中分配的值。
+7. 在“其他恢复点”中，指定是否要创建其他恢复点。 当默认值为零时，副本主机服务器上只存储主虚拟机的最新恢复点。 请注意，启用多个恢复点需要为在每个恢复点上存储的快照提供额外的存储。 默认情况下，每隔一小时会创建恢复点，因此每个恢复点包含一小时的有用数据。 你在 VMM 控制台中为虚拟机分配的恢复点值不应小于你在 Azure Site Recovery 控制台中分配的值。
 8. 在“**与应用程序一致的快照的频率**”中，指定以何频率创建与应用程序一致的快照。 Hyper-V 使用两种类型的快照 — 标准快照，它提供整个虚拟机的增量快照；与应用程序一致的快照，它生成虚拟机内的应用程序数据的时间点快照。 与应用程序一致的快照使用卷影复制服务 (VSS) 来确保应用程序在拍摄快照时处于一致状态。 请注意，如果你启用了与应用程序一致的快照，它将影响在源虚拟机上运行的应用程序的性能。 请确保你设置的值小于你配置的额外恢复点的数目。
 
     ![配置保护设置](./media/site-recovery-vmm-to-vmm-classic/cloud-settings.png)
@@ -332,9 +333,4 @@ VMM 服务器上的提供程序将从“服务”那里收到事件通知，并�
 
 ## <a name="next-steps"></a>后续步骤
 运行测试性故障转移以确保环境功能正常以后，请[了解](site-recovery-failover.md)不同类型的故障转移。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

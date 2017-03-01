@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 81ac6de576614050d972d6fae384f91cc8bf6841
+ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
+ms.openlocfilehash: a7771c2cee3f2820db014a4e5e8620442eea3dd1
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.openlocfilehash: 81ac6de576614050d972d6fae384f91cc8bf6841
   (Get-AzureRmSubscription -SubscriptionName "Example Subscription").TenantId
   ```
 
-  对于 Azure CLI 2.0（预览版），请使用：
+  对于 Azure CLI 2.0，请使用：
 
   ```azurecli
   az account show --subscription "Example Subscription" --query tenantId
@@ -319,7 +320,7 @@ Are you sure you want to move these resources to the resource group
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
-## <a name="use-azure-cli-20-preview"></a>使用 Azure CLI 2.0（预览版）
+## <a name="use-azure-cli-20"></a>使用 Azure CLI 2.0
 若要将现有资源移到另一个资源组或订阅，请使用 `az resource move` 命令。 提供要移动的资源的资源 ID。 可以使用以下命令获取资源 ID：
 
 ```azurecli
@@ -382,10 +383,5 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 * 若要了解管理订阅所需的 Azure CLI 命令，请参阅[将 Azure CLI 与 Resource Manager 配合使用](xplat-cli-azure-resource-manager.md)。
 * 若要了解管理订阅所需的门户功能，请参阅[使用 Azure 门户管理资源](resource-group-portal.md)。
 * 若要了解如何向资源应用逻辑组织，请参阅[使用标记组织资源](resource-group-using-tags.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

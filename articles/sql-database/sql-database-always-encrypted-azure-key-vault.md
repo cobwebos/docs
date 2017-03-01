@@ -1,6 +1,6 @@
 ---
-title: "始终加密：使用数据库加密保护 Azure SQL 数据库中的敏感数据 | Microsoft 文档"
-description: "在数分钟内保护 SQL 数据库中的敏感数据。"
+title: "始终加密：SQL 数据库 - Azure Key Vault | Microsoft 文档"
+description: "本文演示如何使用 SQL Server Management Studio 中的始终加密向导，通过数据加密来保护 SQL 数据库中的敏感数据。 它还包括如何将每个加密密钥存储在 Azure 密钥保管库的说明。"
 keywords: "数据加密, 加密密钥, 云加密"
 services: sql-database
 documentationcenter: 
@@ -17,17 +17,13 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6b4cf5a1c6b764280488b07cf2dc98ecf78fda21
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: a2a738ef1df470e17b805e843a159e0abc23efdf
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Azure 密钥保管库中
-> [!div class="op_single_selector"]
-> * [Azure 密钥保管库](sql-database-always-encrypted-azure-key-vault.md)
-> * [Windows 证书存储](sql-database-always-encrypted.md)
-> 
-> 
 
 本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt459280.aspx) 中的[始终加密向导](https://msdn.microsoft.com/library/hh213248.aspx)，通过数据加密来保护 SQL 数据库中的敏感数据。 它还包括如何将每个加密密钥存储在 Azure 密钥保管库的说明。
 
@@ -62,7 +58,7 @@ ms.openlocfilehash: 6b4cf5a1c6b764280488b07cf2dc98ecf78fda21
 5. 对于“登录 URL”和“应用 ID URI”，可以键入一个有效 URL（例如：*http://myClientApp*），然后继续。
 6. 单击“配置”。
 7. 复制你的“客户端 ID”。 （稍后在代码中将需要此值。）
-8. 在“密钥”部分中，从“选择持续时间”下拉列表选择“1 年”。 （在步骤 14 中保存后将复制该密钥。）
+8. 在“密钥”部分中，从“选择持续时间”下拉列表选择“1 年”。 （在步骤 13 中保存后将复制该密钥。）
 9. 向下滚动并单击“添加应用程序”。
 10. 保留“显示”设置为“Microsoft 应用”，然后选择“Microsoft Azure 服务管理”。 单击复选标记以继续。
 11. 从“委派权限”下拉列表选择“访问 Azure 服务管理”。
@@ -86,7 +82,7 @@ ms.openlocfilehash: 6b4cf5a1c6b764280488b07cf2dc98ecf78fda21
     $subscriptionId = (Get-AzureRmSubscription -SubscriptionName $subscriptionName).SubscriptionId
     Set-AzureRmContext -SubscriptionId $subscriptionId
 
-    New-AzureRmResourceGroup –Name $resourceGroupName –Location $location
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
@@ -98,7 +94,7 @@ ms.openlocfilehash: 6b4cf5a1c6b764280488b07cf2dc98ecf78fda21
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 转到“新建” > “数据 + 存储” > “SQL 数据库”。
-3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 如需在 Azure 门户中创建数据库的详细说明，请参阅[在数分钟内创建 SQL 数据库](sql-database-get-started.md)。
+3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 若要深入了解如何在 Azure 门户中创建数据库，请参阅[ SQL 数据库](sql-database-get-started.md)。
    
     ![创建空数据库](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
@@ -201,7 +197,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
    ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/console-app.png)
 3. 通过转到“工具” > “NuGet 包管理器” > “包管理器控制台”来安装以下 NuGet 包。
 
-在包管理器控制台中运行以下 2 行代码。
+在包管理器控制台中运行以下&2; 行代码。
 
     Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -646,10 +642,5 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 * [SQL Server 加密](https://msdn.microsoft.com/library/bb510663.aspx)
 * [始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)
 * [始终加密博客](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

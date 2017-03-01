@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: df0ab8e6828033b783449e9478a5884355a7f1fe
-ms.openlocfilehash: 453aa0e98e639872184b697ad8ed91d9545e152f
+ms.sourcegitcommit: 4ccd8cbfd0f3742c14a7effd7484d65be21abb63
+ms.openlocfilehash: d4db3d7a0c860c23a3a3ddecab6f79cb6b297a02
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -98,7 +99,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="data-rate"></a>数据速率
 发送数据时存在三种数量限值：
 
-* **每日上限。** 默认设置为 500 GB/天。 当应用达到上限时，我们将发送一封电子邮件，并丢弃超出的数据，直到当天结束。 可通过“数据量管理”边栏选项卡对其进行更改。
+* **每日上限。** 最大上限为 500 GB/天。 使用 Visual Studio 创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 使用 Azure 门户创建 Application Insights 资源时，该值会设置为最大。 更改时请务必小心，因为达到上限将导致你在一天的剩余时间中丢失数据。 若要更改它，请使用从数据量管理边栏选项卡链接的每日数据量上限。
 * **[采样](app-insights-sampling.md)。** 此机制可减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。
 * **限制**：数据速率上限为每秒 32000 个事件，取 1 分钟的平均值。 
 
@@ -117,12 +118,14 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="to-reduce-your-data-rate"></a>降低数据速率
 可通过以下操作降低数据量：
 
-* 降低每日数据量上限。 默认为 500 GB/天。
 * 使用[采样](app-insights-sampling.md)。 此技术可减少数据速率，同时不会影响指标的准确性，也不会中断在“搜索”中的相关项目之间导航的能力。 在服务器应用中，它会自动运行。
 * [限制可在每个页面视图中报告的 Ajax 调用数](app-insights-javascript.md#detailed-configuration)或关闭 Ajax 报告。
 * 通过[编辑 ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 关闭不需要的集合模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
 * 将遥测拆分到单独的检测密钥。 
-* 预先聚合指标。 如果已将对 TrackMetric 的调用放在应用中，则可通过使用重载降低流量，这种重载接受对一批度量值的平均偏差和标准偏差的计算结果。 也可使用 [预先聚合包](https://www.myget.org/gallery/applicationinsights-sdk-labs)。 
+* 预先聚合指标。 如果已将对 TrackMetric 的调用放在应用中，则可通过使用重载降低流量，这种重载接受对一批度量值的平均偏差和标准偏差的计算结果。 也可使用 [预先聚合包](https://www.myget.org/gallery/applicationinsights-sdk-labs)。
+* 最后，你可以减少每日数据量上限，以限制收集的数据，但这样做会导致一天中剩余时间的数据丢失。 若要更改它，请打开“功能和定价”、“数据管理”。
+
+    ![调整每日遥测数据量上限](./media/app-insights-pricing/daily-cap.png) 
 
 ## <a name="sampling"></a>采样
 [采样](app-insights-sampling.md)是一种方法，可降低向应用发送遥测的速率，同时仍可在诊断搜索过程中查找相关事件，并保留正确的事件计数。 
@@ -172,10 +175,5 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

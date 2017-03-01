@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
-ms.openlocfilehash: 60c8296e1287419dedf5b5f01f2ddb7ab86b5d11
+ms.sourcegitcommit: 05fc8ff05f8e2f20215f6683a125c1a506b4ccdc
+ms.openlocfilehash: 23ed2e066cc6751ebabb57c8077f95b0cb074850
+ms.lasthandoff: 02/18/2017
 
 ---
 
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
-本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和方案。 
+本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和方案。
 
 ## <a name="supported-document-formats"></a>支持的文档格式
 Blob 索引器可从以下文档格式提取文本：
@@ -53,7 +54,7 @@ Blob 索引器可从以下文档格式提取文本：
 >
 >
 
-在这里，我们使用 REST API 演示流。 
+在这里，我们使用 REST API 演示流。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 数据源指定要编制索引的数据、访问数据所需的凭据和有效标识数据更改（新行、修改的行或删除的行）的策略。 一个数据源可供同一搜索服务中的多个索引器使用。
@@ -83,7 +84,7 @@ Blob 索引器可从以下文档格式提取文本：
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>如何指定凭据 ####
 
-可通过以下一种方式提供 blob 容器的凭据： 
+可通过以下一种方式提供 blob 容器的凭据：
 
 - **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“设置”>“访问密钥”（对于 Azure Resource Manager 存储帐户），从 Azure 门户获取连接字符串。
 - **存储帐户共享访问签名** (SAS) 连接字符串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS 应具有容器和对象（本例中为 blob）的列表和读取权限。
@@ -114,7 +115,7 @@ Blob 索引器可从以下文档格式提取文本：
 有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
 ### <a name="step-3-create-an-indexer"></a>步骤 3：创建索引器
-索引器将数据源与目标搜索索引关联，并提供自动执行数据刷新的计划。 
+索引器将数据源与目标搜索索引关联，并提供自动执行数据刷新的计划。
 
 创建索引和数据源后，就可以准备创建索引器了：
 
@@ -135,11 +136,11 @@ Blob 索引器可从以下文档格式提取文本：
 
 ## <a name="how-azure-search-indexes-blobs"></a>Azure 搜索如何为 Blob 编制索引
 
-根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果你只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。 
+根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果你只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
 
 > [!NOTE]
 > 默认情况下，包含结构化内容（例如 JSON、CSV 或 XML）的 Blob 将以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)预览版功能。 目前不支持分析 XML 内容；如果有这方面的需要，请通过 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 提供建议。
-> 
+>
 > 复合或嵌入式文档（例如 ZIP 存档，或者嵌入了带附件 Outlook 电子邮件的 Word 文档）也以单一文档的形式编制索引。
 
 * 文档的整个文本内容将提取到名为 `content` 的字符串字段中。
@@ -236,7 +237,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 ### <a name="dealing-with-unsupported-content-types"></a>处理不受支持的内容类型
 
-默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，你可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 若要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`： 
+默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，你可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 若要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
     Content-Type: application/json
@@ -245,27 +246,27 @@ Blob 索引器可从以下文档格式提取文本：
     {
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
-    } 
+    }
 
 ### <a name="ignoring-parsing-errors"></a>忽略分析错误
 
-Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支持内容类型的文档，例如 .DOCX 或 .PDF。 如果在遇到这种情况时不希望中断索引编制，可将 `maxFailedItems` 和 `maxFailedItemsPerBatch` 配置参数设置为某些合理值。 例如： 
+Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支持内容类型的文档，例如 .DOCX 或 .PDF。 如果在遇到这种情况时不希望中断索引编制，可将 `maxFailedItems` 和 `maxFailedItemsPerBatch` 配置参数设置为某些合理值。 例如：
 
     {
       ... other parts of indexer definition
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
-    } 
+    }
 
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>控制要为 Blob 中的哪些部分编制索引
 
-可以使用 `dataToExtract` 配置参数控制要为 Blob 中的哪些部分编制索引。 该参数采用以下值： 
+可以使用 `dataToExtract` 配置参数控制要为 Blob 中的哪些部分编制索引。 该参数采用以下值：
 
 * `storageMetadata` - 指定仅为[标准 Blob 属性和用户指定的元数据](../storage/storage-properties-metadata.md)编制索引。
 * `allMetadata` - 指定要为从 Blob 内容中提取的存储元数据和[内容类型特定的元数据](#ContentSpecificMetadata)编制索引。
 * `contentAndMetadata` - 指定要为从 Blob 中提取的所有元数据和文本内容编制索引。 这是默认值。
 
-例如，如果只要为存储元数据编制索引，请使用： 
+例如，如果只要为存储元数据编制索引，请使用：
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
     Content-Type: application/json
@@ -317,10 +318,10 @@ Azure 搜索的文档提取逻辑并不完美，有时无法分析包含受支�
 
 ## <a name="indexing-large-datasets"></a>为大型数据集编制索引
 
-Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob 需要编制索引，可以将数据分区，并使用多个索引器来并行处理数据，从而加快索引编制的速度。 设置方法如下： 
+Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob 需要编制索引，可以将数据分区，并使用多个索引器来并行处理数据，从而加快索引编制的速度。 设置方法如下：
 
-- 将数据分区到多个 Blob 容器或虚拟文件夹 
-- 设置多个 Azure 搜索数据源，为每个容器或文件夹各设置一个。 若要指向某个 Blob 文件夹，请使用 `query` 参数： 
+- 将数据分区到多个 Blob 容器或虚拟文件夹
+- 设置多个 Azure 搜索数据源，为每个容器或文件夹各设置一个。 若要指向某个 Blob 文件夹，请使用 `query` 参数：
 
     ```
     {
@@ -332,6 +333,14 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
     ```
 
 - 为每个数据源创建相应的索引器。 所有索引器可以指向同一目标搜索索引。  
+
+## <a name="indexing-documents-along-with-related-data"></a>对文档以及相关数据进行索引
+
+文档可能具有关联的元数据（例如创建文档的部门），作为结构化数据存储在以下位置之一。
+-   SQL 数据库或 DocumentDB 等独立数据存储空间。
+-   作为自定义元数据直接附加到 Azure Blob 存储中的每个文档。 （有关详细信息，请参阅 [Setting and Retrieving Properties and Metadata for Blob Resources](https://docs.microsoft.com/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources) [设置和检索 Blob 资源的属性和元数据]。）
+
+可以通过为每个文档及其元数据分配相同的唯一键值，以及通过为每个索引器指定 `mergeOrUpload` 操作，来对文档及其元数据进行索引。 有关此解决方案的详细说明，请参阅外部文章：[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)（在 Azure 搜索中组合使用文档与其他数据）。
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>特定于内容类型的元数据属性
@@ -356,9 +365,4 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 ## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
 如果想要请求新功能或者在改进方面有什么看法，敬请通过 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)告诉我们。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

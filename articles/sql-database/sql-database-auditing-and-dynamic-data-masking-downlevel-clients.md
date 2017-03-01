@@ -16,13 +16,14 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: ronitr
 translationtype: Human Translation
-ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
-ms.openlocfilehash: d225a6156ea3672ed214f8308d7e944e6ff08576
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: bcc02abb62b21aadb10e62320b02b33c3c244c17
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL 数据库 - 针对审核的下层客户端支持和 IP 终结点更改
-对于支持 TDS 重定向的 SQL 客户端，可以自动使用 [SQL 数据库表审核](sql-database-auditing-get-started.md)功能。 请注意，使用 Blob 审核方法时，重定向不适用。
+对于支持 TDS 重定向的 SQL 客户端，可以自动使用[数据库审核](sql-database-auditing.md)。 请注意，使用 Blob 审核方法时，重定向不适用。
 
 ## <a name="a-idsubheading-1adownlevel-clients-support"></a><a id="subheading-1"></a>下层客户端支持
 任何实现了 TDS 7.4 的客户端同样应当支持重定向。 例外情况包括不完全支持重定向功能的 JDBC 4.0 以及未实现重定向的 Tedious（适用于 Node.JS）。
@@ -77,9 +78,4 @@ ms.openlocfilehash: d225a6156ea3672ed214f8308d7e944e6ff08576
 | 加拿大东部 |40.86.227.82, 40.86.225.194 |
 | 英国北部 |13.87.101.18, 13.87.100.232 |
 | 英国南部 2 |13.87.32.202, 13.87.32.226 |
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

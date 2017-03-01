@@ -17,17 +17,13 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: cffa8955cf044398e526b1ad6158eefebbf91b3b
-ms.openlocfilehash: 9cd3d1b2da7f941673003b566cd92b0eb9acf6f4
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 02ea369d76c1fe7266e9dc0cad2c75e4b5eada6a
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Windows 证书存储中
-> [!div class="op_single_selector"]
-> * [Azure 密钥保管库](sql-database-always-encrypted-azure-key-vault.md)
-> * [Windows 证书存储](sql-database-always-encrypted.md)
-> 
-> 
 
 本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) 中的[始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)，通过数据加密来保护 SQL 数据库中的敏感数据。 它还演示如何将加密密钥存储在 Windows 证书存储中。
 
@@ -54,7 +50,7 @@ ms.openlocfilehash: 9cd3d1b2da7f941673003b566cd92b0eb9acf6f4
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“新建” > “数据 + 存储” > “SQL 数据库”。
-3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 如需在 Azure 门户中创建数据库的详细说明，请参阅[在数分钟内创建 SQL 数据库](sql-database-get-started.md)。
+3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 如需在 Azure 门户中创建数据库的详细说明，请参阅[第一个 Azure SQL 数据库](sql-database-get-started.md)。
    
     ![创建空数据库](./media/sql-database-always-encrypted/create-database.png)
 
@@ -522,10 +518,5 @@ SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松�
 * [SQL Server 加密](https://msdn.microsoft.com/library/bb510663.aspx)
 * [始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)
 * [始终加密博客](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

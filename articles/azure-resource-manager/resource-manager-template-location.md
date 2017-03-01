@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 1f7d7ad6dcec3c7d3b6fec7abcad7c36d2c02b70
-ms.openlocfilehash: 6342b2e5f3efa498a911bb82a642fa4672f77180
+ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
+ms.openlocfilehash: b949318eb689eec9f0d08e91f2a9d0169d9d816f
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -33,7 +34,7 @@ ms.openlocfilehash: 6342b2e5f3efa498a911bb82a642fa4672f77180
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-以下示例使用 Azure CLI 2.0（预览版）获取 `Microsoft.Web\sites` 资源类型的位置：
+以下示例使用 Azure CLI 2.0获取 `Microsoft.Web\sites` 资源类型的位置：
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -100,10 +101,5 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 ## <a name="next-steps"></a>后续步骤
 * 有关如何创建模板的建议，请参阅 [Best practices for creating Azure Resource Manager templates](resource-manager-template-best-practices.md)（创建 Azure Resource Manager 模板的最佳做法）。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

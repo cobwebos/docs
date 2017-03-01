@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 1/26/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 39147f2db1e660a21d6ed622206787ea0c569056
-ms.openlocfilehash: 58f0d2e6d6d213b94385927e4aaa6bbb5f800d5c
+ms.sourcegitcommit: d7a2b9c13b2c3372ba2e83f726c7bf5cc7e98c02
+ms.openlocfilehash: 6f55bdbb97ead96edf7ca41562b1c4b5a712d6e8
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -149,13 +150,16 @@ ms.openlocfilehash: 58f0d2e6d6d213b94385927e4aaa6bbb5f800d5c
     ![保管库中的 VM 列表](./media/backup-azure-arm-restore-vms/restore-job-in-progress.png)
 
 ## <a name="post-restore-steps"></a>还原后的步骤
-如果使用基于 cloud-init 的 Linux 分发（如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/virtual-machines-linux-classic-reset-access.md)。 建议在这些分发上使用 SSH 密钥以避免还原后重置密码。
+* 如果使用基于 cloud-init 的 Linux 分发（如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/virtual-machines-linux-classic-reset-access.md)。 建议在这些分发上使用 SSH 密钥以避免还原后重置密码。
+* 将会安装存在于备份配置期间的扩展，但不会启用这些扩展。 如果发现任何问题，请重新安装扩展。 
+* 如果备份的 VM 具有静态 IP，则还原的 VM 将具有动态 IP 以避免在创建还原的 VM 时发生冲突。 详细了解如何[向还原的 VM 添加静态 IP](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* 还原的 VM 将不会设置可用性值。 在使用还原的磁盘从 PowerShell 创建 VM 时，建议使用还原磁盘选项和[添加可用性集](../virtual-machines/virtual-machines-windows-create-availability-set.md#use-powershell-to-create-an-availability-set)。 
 
 ## <a name="backup-for-restored-vms"></a>备份还原的 VM
 如果将 VM 还原到的资源组与最初备份 VM 时所在的资源组同名，则还原之后，会继续备份该 VM。 如果将 VM 还原到了不同的资源组或者为还原的 VM 指定了不同的名称，则系统会将此 VM 视为新 VM，因此需要为还原的 VM 设置备份。
 
 ## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>在发生 Azure 数据中心灾难期间还原 VM
-如果运行已备份 VM 的主数据中心遇到灾难性故障，并且你已将备份保管库配置为异地冗余，则 Azure 备份允许将该 VM 还原到配对的数据中心。 在这种情况下，需要选择一个在配对数据中心内存在的存储帐户，而余下的还原过程将保持不变。 Azure 备份使用配对地区中的计算服务来创建还原的虚拟机。
+如果运行已备份 VM 的主数据中心遇到灾难性故障，并且你已将备份保管库配置为异地冗余，则 Azure 备份允许将该 VM 还原到配对的数据中心。 在这种情况下，需要选择一个在配对数据中心内存在的存储帐户，而余下的还原过程将保持不变。 Azure 备份使用配对地区中的计算服务来创建还原的虚拟机。 详细了解 [Azure 数据中心复原](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)
 
 ## <a name="restoring-vms-with-special-network-configurations"></a>还原采用特殊网络配置的 VM
 可以备份和还原采用以下特殊网络配置的 VM。 但是，在执行还原过程时，这些配置需要经过一些特殊的考虑。
@@ -184,9 +188,4 @@ ms.openlocfilehash: 58f0d2e6d6d213b94385927e4aaa6bbb5f800d5c
 
 * [排查错误](backup-azure-vms-troubleshoot.md#restore)
 * [管理虚拟机](backup-azure-manage-vms.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

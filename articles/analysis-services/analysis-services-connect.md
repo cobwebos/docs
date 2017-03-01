@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/13/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
-ms.openlocfilehash: 9624d31165f927c442c6dd0cfd646bc3dfd20ec7
+ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
+ms.openlocfilehash: 118ea84abb0de095ac515ee98a643718ca54c043
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -66,6 +67,13 @@ ms.openlocfilehash: 9624d31165f927c442c6dd0cfd646bc3dfd20ec7
 
 可通过使用 Excel 2016 中的“获取数据”或较低版本中的 Power Query 在 Excel 中连接到 Azure Analysis Services。 需要 [MSOLAP.7 提供程序](analysis-services-data-providers.md)。 不支持使用 Power Pivot 中的“导入表向导”进行连接。
 
+> [!NOTE]
+> 某些组织在延期频道上部署 Office 365 更新；这意味着从当前版本的版本更新最多将延迟 4 个月。 对于 Excel 2016 内部版本 1609.7369.2115 及更早版本，或 Excel 2013，可创建 Office 数据连接 (.odc) 文件并手动更新 MSOLAP.7 提供程序以连接到 Azure Analysis Services 服务器。 若要了解详细信息，请参阅[创建 .odc 文件](analysis-services-odc.md)。
+> 
+> 
+
+**从 Excel 2016 进行连接**
+
 1. 在 Excel 2016 的“数据”功能区上，单击“获取外部数据” > “从其他源获取” > “从 Analysis Services 获取”。
 2. 在“数据连接向导”的“服务器名称”中，从剪贴板粘贴服务器名称。 然后，在“登录凭据”中，选择“使用以下用户名和密码”，然后键入组织的用户名，例如 nancy@adventureworks.com, 和密码。
 
@@ -94,10 +102,5 @@ ms.openlocfilehash: 9624d31165f927c442c6dd0cfd646bc3dfd20ec7
 ## <a name="next-steps"></a>后续步骤
 
 [管理服务器](analysis-services-manage.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

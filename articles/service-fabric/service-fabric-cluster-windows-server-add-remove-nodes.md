@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/06/2016
-ms.author: ryanwi;chackdan
+ms.date: 2/02/2017
+ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 3f7d2861512ba02e3b158db78fbee771da1c788b
-ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
+ms.sourcegitcommit: af121309be44852ee51f34130330533adf19d586
+ms.openlocfilehash: 68474b24519a46db71fe59b5d0574cc4700efccb
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 [在 Windows Server 计算机上创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)之后，你的业务需求可能会有改变，因此可能需要向群集添加或删除多个节点。 本文提供了实现此目标的详细步骤。
 
 ## <a name="add-nodes-to-your-cluster"></a>向群集添加节点
-1. 按照[准备计算机以满足群集部署的先决条件](service-fabric-cluster-creation-for-windows-server.md#preparemachines)部分中所提及的步骤，准备要添加到群集中的 VM/计算机。
+1. 按照[准备计算机以满足群集部署的先决条件](service-fabric-cluster-creation-for-windows-server.md)部分中所提及的步骤，准备要添加到群集中的 VM/计算机。
 2. 规划要向哪些容错域和升级域添加此 VM/计算机。
 3. 通过远程桌面 (RDP) 方式进入需要向群集添加的 VM/计算机。
 4. 向此 VM/计算机复制或[下载适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并解压该包。
@@ -39,7 +40,7 @@ ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 
 
 ## <a name="remove-nodes-from-your-cluster"></a>从群集中删除节点
-根据针对群集选择的可靠性级别，有时无法删除主节点类型的前 n 个 (3/5/7/9) 节点。 另请注意，不支持在开发群集上运行 RemoveNode 命令。
+根据针对群集选择的可靠性级别，可能无法删除主节点类型的前 n 个 (3/5/7/9) 节点。 另请注意，不支持在开发群集上运行 RemoveNode 命令。
 
 1. 通过远程桌面 (RDP) 方式进入需要从群集中删除的 VM/计算机。
 2. 复制或[下载适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并将该包解压缩到此 VM/计算机。
@@ -47,7 +48,9 @@ ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 4. 在 Powershell 中运行 *RemoveNode.ps1*。 以下示例从群集中删除当前节点。 *ExistingClientConnectionEndpoint* 是将保留在群集中的任何节点的客户端连接终结点。 选择群集中*任何***其他节点**的 IP 地址和终结点端口。 **另一个节点**反过来将更新已删除节点的群集配置。 
 
 ```
+
 .\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
+
 ```
 
 > [!NOTE]
@@ -57,15 +60,18 @@ ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 
 即使在删除节点之后，如果它在查询和 SFX 中显示处于脱机，请记住这是已知缺陷。 我们会在即将发布的版本中修复此缺陷。 
 
+
+## <a name="remove-node-types-from-your-cluster"></a>从群集中删除节点类型
+删除节点类型时需要特别注意。 删除节点类型前，请仔细检查是否存在任何引用该节点类型的节点。
+
+
+## <a name="replace-primary-nodes-of-your-cluster"></a>替换群集的主节点
+应该逐个执行主节点的替换，而不是批量删除然后添加。
+
+
 ## <a name="next-steps"></a>后续步骤
 * [独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)
-* [使用 Windows 安全性保护 Windows 上的独立群集](service-fabric-windows-cluster-windows-security.md)
 * [使用 X509 证书保护 Windows 上的独立群集](service-fabric-windows-cluster-x509-security.md)
 * [使用运行 Windows 的 Azure VM 创建独立 Service Fabric 群集](service-fabric-cluster-creation-with-windows-azure-vms.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

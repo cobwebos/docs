@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/4/2017
+ms.date: 2/17/2017
 ms.author: sumukhs
 translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: 438ecec47e35619442ed2fdad4e835a674e1a2dc
+ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
+ms.openlocfilehash: 101b4e6a7bd5ded44334a4c3c9efee69669d9bcf
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,14 +36,26 @@ ms.openlocfilehash: 438ecec47e35619442ed2fdad4e835a674e1a2dc
 | SharedLogPath |完全限定的路径名 |"" |指定完全限定的路径，该路径中的共享日志文件用于群集中所有节点上的所有 Reliable Services（不会在其服务特定配置中指定 SharedLogPath）。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 | SharedLogSizeInMB |兆字节 |8192 |指定以静态方式分配给共享日志的磁盘空间 MB 数。 此值必须为 2048 或更大。 |
 
-### <a name="sample-cluster-manifest-section"></a>群集清单节示例
+在 Azure ARM 或本地 JSON 模板中，以下示例演示如何更改创建的共享事务日志，以备份有状态服务的任何可靠集合。
+
+    "fabricSettings": [{
+        "name": "KtlLogger",
+        "parameters": [{
+            "name": "SharedLogSizeInMB",
+            "value": "4096"
+        }]
+    }]
+
+### <a name="sample-local-developer-cluster-manifest-section"></a>本地开发人员群集清单部分示例
+若要在本地开发环境中更改此设置，则需编辑本地 clustermanifest.xml 文件。
+
 ```xml
    <Section Name="KtlLogger">
+     <Parameter Name="SharedLogSizeInMB" Value="4096"/>
      <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
      <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
      <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
      <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
-     <Parameter Name="SharedLogSizeInMB" Value="16383"/>
    </Section>
 ```
 
@@ -174,10 +187,5 @@ SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用�
 ## <a name="next-steps"></a>后续步骤
 * [在 Visual Studio 中调试 Service Fabric 应用程序](service-fabric-debugging-your-application.md)
 * [Reliable Services 的开发人员参考](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

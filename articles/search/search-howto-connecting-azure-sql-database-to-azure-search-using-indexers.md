@@ -12,11 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 02/15/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 096fcd2a7415da03714f05bb1f29ceac6f186eda
-ms.openlocfilehash: dba7cd466d94cb68896ee9270bc765fe822ca00e
+ms.sourcegitcommit: 0841744b806f3dba38dddee21fb7fe881e07134f
+ms.openlocfilehash: 51c9d9afb6c2ed460abd4c47a6afbc404b97a85e
+ms.lasthandoff: 02/16/2017
 
 ---
 
@@ -203,11 +204,13 @@ Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强�
 
 * 所有插入都为列指定一个值。
 * 对某个项目的所有更新也会更改该列的值。
-* 此列的值随每次更改增加。
+* 此列的值随每次插入或更新而增加。
 * 可有效执行使用以下 WHERE 和 ORDER BY 子句进行的查询：`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`。
 
-例如，已编制索引的 **rowversion** 列是高使用标记列的理想候选项。
-若要使用此策略，按如下所示创建或更新数据源：
+> [!IMPORTANT] 
+> 强烈建议为更改跟踪设一 **rowversion** 列。 如果使用其他任何数据类型，则当存在与索引器查询并发执行的事务时，不能保证更改跟踪捕获所有更改。
+
+若要使用高使用标记策略，请按如下所示创建或更新数据源：
 
     {
         "name" : "myazuresqldatasource",
@@ -216,7 +219,7 @@ Azure 搜索服务是一项托管的云搜索服务，可以轻松地提供强�
         "container" : { "name" : "table or view name" },
         "dataChangeDetectionPolicy" : {
            "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
-           "highWaterMarkColumnName" : "[a row version or last_updated column name]"
+           "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
 
@@ -312,9 +315,4 @@ SQL 索引器公开多个配置设置：
 **问：**运行索引器是否会影响我的查询工作负荷？
 
 答：是的。 索引器在你的搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑扩展你的搜索服务。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

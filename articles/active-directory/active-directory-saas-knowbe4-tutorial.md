@@ -12,16 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/02/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
+ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
+ms.openlocfilehash: bc7ce4867180dd9f896b894b56a02bf033ed6bbb
+ms.lasthandoff: 02/17/2017
 
 
 ---
+
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4"></a>教程：Azure Active Directory 与 KnowBe4 集成
 本教程的目的是说明如何将 KnowBe4 与 Azure Active Directory (Azure AD) 集成。  
+
 将 KnowBe4 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 KnowBe4
@@ -34,11 +37,10 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
 若要配置 Azure AD 与 KnowBe4 的集成，需要以下项：
 
 * Azure AD 订阅
-* 已启用 KnowBe4 单一登录的订阅
+* 已启用 KnowBe4 单一登录 (SSO) 的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。 
 > 
 
 测试本教程中的步骤应遵循以下建议：
@@ -48,12 +50,13 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
 
 ## <a name="scenario-description"></a>方案描述
 本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。  
+
 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 KnowBe4
-2. 配置和测试 Azure AD 单一登录
+* 从库中添加 KnowBe4
+* 配置和测试 Azure AD 单一登录
 
-## <a name="adding-knowbe4-from-the-gallery"></a>从库中添加 KnowBe4
+## <a name="add-knowbe4-from-the-gallery"></a>从库添加 KnowBe4
 若要配置 KnowBe4 与 Azure AD 的集成，需要从库中将 KnowBe4 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 KnowBe4，请执行以下步骤：**
@@ -76,21 +79,22 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
     ![创建 Azure AD 测试用户](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_01.png)
 7. 在结果窗格中，选择“KnowBe4”，然后单击“完成”以添加该应用程序。
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 本部分的目的是说明如何基于一个名为“Britta Simon”的测试用户使用 KnowBe4 配置和测试 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 KnowBe4 用户。 换句话说，需要在 Azure AD 用户与 KnowBe4 中相关用户之间建立链接关系。  
+
 通过将 Azure AD 中“用户名”的值分配为 KnowBe4 中“用户名”的值来建立此链接关系。
 
 若要使用 KnowBe4 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 KnowBe4 测试用户](#creating-a-KnowBe4-test-user)** - 在 KnowBe4 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+3. **[创建 KnowBe4 测试用户](#creating-a-KnowBe4-test-user)** - 在 KnowBe4 中创建 Britta Simon 的对应者，并将其链接到她的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 KnowBe4 应用程序中配置单一登录。
 
 **若要使用 KnowBe4 配置 Azure AD 单一登录，请执行以下步骤：**
@@ -105,25 +109,23 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
    
     ![配置单一登录](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 KnowBe4 应用程序的 URL：**“https://\<公司名称\>.knowbe4.com/auth/saml/aad168.ccsctp.net”**。
+  * 在“登录 URL”文本框中，使用以下模式键入用户用于登录 KnowBe4 应用程序的 URL：**“https://\<公司名称\>.knowbe4.com/auth/saml/aad168.ccsctp.net”**。
 
-
-1. 在“配置 KnowBe4 的单一登录”页上，执行以下步骤：
+4. 在“配置 KnowBe4 的单一登录”页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
-   
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-2. 若要为应用程序配置 SSO，请联系 [KnowBe4 支持团队](mailto:support@knowbe4.com)。 将下载的证书文件附加到邮件中，与 KnowBe4 团队共享元数据 URL（实体 ID、SSO 登录 URL 和注销 URL），以便在团队这边设置 SSO。
-3. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+   1. 单击“下载证书”，然后将文件保存在计算机上。 
+   2. 单击“资源组名称” 的 Azure 数据工厂。
+5. 若要为应用程序配置 SSO，请联系 [KnowBe4 支持团队](mailto:support@knowbe4.com)。 将下载的证书文件附加到邮件中，与 KnowBe4 团队共享元数据 URL（实体 ID、SSO 登录 URL 和注销 URL），以便在团队这边设置 SSO。
+6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
-4. 在“单一登录确认”页上，单击“完成”。  
+7. 在“单一登录确认”页上，单击“完成”。  
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。  
 
 ![创建 Azure AD 用户][20]
@@ -144,24 +146,18 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
+   1. 在“用户类型”中，选择“你的组织中的新用户”。   
+   2. 在“用户名”文本框中，键入“BrittaSimon”。
+   3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_06.png) 
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_07.png) 
@@ -169,21 +165,19 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    1. 写下“新密码”的值。
+    2. 单击“完成”。   
 
-### <a name="creating-a-knowbe4-test-user"></a>创建 KnowBe4 测试用户
+### <a name="create-a-knowbe4-test-user"></a>创建 KnowBe4 测试用户
 本部分的目的是在 KnowBe4 中创建名为“Britta Simon”的用户。 KnowBe4 支持在默认情况下启用的实时预配。
 
 本部分不存在任何操作项。 尝试访问 KnowBe4 期间，如果该用户尚不存在，则将创建一个新用户。 
 
-> [!NOTE]
-> 如果需要手动创建用户，则需要联系 KnowBe4 支持团队。
-> 
-> 
+>[!NOTE]
+>如果需要手动创建用户，则需要联系 KnowBe4 支持团队。
+>  
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 本部分的目的是通过授予 Britta Simon 访问 KnowBe4 的权限，允许她使用 Azure 单一登录。
 
     ![Assign User][200] 
@@ -204,8 +198,8 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用“访问面板”测试 Azure AD 单一登录配置。  
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分的目的是使用访问面板测试 Azure AD 单一登录配置。  
 单击访问面板中的 KnowBe4 磁贴时，你应自动登录到 KnowBe4 应用程序。
 
 ## <a name="additional-resources"></a>其他资源
@@ -229,9 +223,4 @@ ms.openlocfilehash: 1dfcc57a23a473bae9417496bfbe4c0c209de564
 [203]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

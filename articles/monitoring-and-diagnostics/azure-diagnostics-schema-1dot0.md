@@ -1,22 +1,23 @@
 ---
 title: "Azure 诊断 1.0 配置架构 | Microsoft Docs"
 description: "只有在用户将 Azure SDK 2.4 及更低版本 与 Azure 虚拟机、虚拟机规模集、Service Fabric 或云服务配合使用时，才相关。"
-services: multiple
+services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/09/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 92bb7ca3414962f18da8505b87ca23f0b704e811
+ms.sourcegitcommit: 66f733d7602a8d26627fcc205f357e7a4a266d11
+ms.openlocfilehash: c749a0929d292913e03fa7340bbbebad411fb44d
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -274,9 +275,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|类型|说明|  
 |---------------|----------|-----------------|  
 |**name**|字符串|必需。 指定要收集的日志的 XPath 表达式。|  
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

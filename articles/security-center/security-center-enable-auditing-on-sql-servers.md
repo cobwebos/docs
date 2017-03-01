@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
-ms.openlocfilehash: 7aab37882e3f831627281bcd197fb6098dc50cc6
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 10206327b628358151ad4585b1d962538ea17bcd
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -42,13 +43,13 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 3. 在“审核设置”边栏选项卡上，选择“审核”下方的“开启”。
 
    ![打开审核设置][3]
-4. 请按照 [SQL 数据库审核入门](../sql-database/sql-database-auditing-get-started.md)中的步骤配置要存储审核日志的存储。 数据收集的订阅存储帐户是默认的存储帐户。
-5. 请按照 [SQL 数据库威胁检测入门](../sql-database/sql-database-threat-detection-get-started.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。
+4. 请按照[在 Azure 门户中审核 SQL 数据库](../sql-database/sql-database-auditing-portal.md)中的步骤配置要存储审核日志的存储。 数据收集的订阅存储帐户是默认的存储帐户。
+5. 请按照 [SQL 数据库威胁检测入门](../sql-database/sql-database-threat-detection.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。
 
 ## <a name="see-also"></a>另请参阅
 本文演示如何实现安全中心建议“对 SQL 服务器启用审核”。 若要了解有关保护 SQL 数据库的详细信息，请参阅以下内容：
 
-* [保护 SQL 数据库](../sql-database/sql-database-security.md)
+* [保护 SQL 数据库](../sql-database/sql-database-security-overview.md)
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
@@ -64,9 +65,4 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 [1]: ./media/security-center-enable-auditing-on-sql-server/enable-auditing-on-sql-servers.png
 [2]:./media/security-center-enable-auditing-on-sql-server/enable-auditing.png
 [3]: ./media/security-center-enable-auditing-on-sql-server/auditing-settings-blade.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

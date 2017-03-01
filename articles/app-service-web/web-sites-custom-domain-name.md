@@ -1,10 +1,10 @@
 ---
 title: "将自定义域名映射到 Azure 应用"
-description: "了解如何在 Azure App Service 中将自定义域名（虚域）映射到应用。"
+description: "了解如何在 Azure 应用服务中将自定义域名（虚域）映射到应用。"
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 tags: top-support-issue
 ms.assetid: 48644a39-107c-45fb-9cd3-c741974ff590
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2016
+ms.date: 01/30/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ebd86b236e5f49d9139732f8922f9929081677cc
+ms.sourcegitcommit: 59565c22ecd42985e8a6b81c4983fc2e87637e36
+ms.openlocfilehash: 589701270770494e4ec4d127a252712249da9f3a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -26,22 +27,12 @@ ms.openlocfilehash: ebd86b236e5f49d9139732f8922f9929081677cc
 
 本文演示如何在 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)中手动将自定义域名映射到 Web 应用、移动应用后端或 API 应用。 
 
-应用已附带了唯一的子域，即 azurewebsites.net。 例如，如果应用的名称为 **contoso**，则其域名为 **contoso.azurewebsites.net**。 但是由于可将自定义域名映射到应用，因此其 URL（如 `www.contoso.com`）会反映出品牌。
+> [!NOTE] 
+> 始终可以[直接从 Azure 购买自定义域名](custom-dns-web-site-buydomains-web-app.md)。
+>
+>
 
-> [!NOTE]
-> 在 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的帮助。 若要获取更高级别的帮助，请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，然后单击“获取支持”。
-> 
-> 
-
-[!INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
-
-## <a name="buy-a-new-custom-domain-in-azure-portal"></a>在 Azure 门户中购买新的自定义域
-如果尚未购买自定义域名，则可在 [Azure 门户](https://portal.azure.com)中购买一个域名，然后直接在应用设置中对其进行管理。 无论应用是否使用 [Azure 流量管理器](web-sites-traffic-manager-custom-domain-name.md)，都可凭借此选项轻松地将自定义域映射到应用。 
-
-有关说明，请参阅[为应用服务购买自定义域名](custom-dns-web-site-buydomains-web-app.md)。
-
-## <a name="map-a-custom-domain-you-purchased-externally"></a>映射从外部购买的自定义域
-如果已从 [Azure DNS](https://azure.microsoft.com/services/dns/) 或第三方提供商处购买了自定义域，则可按照以下三个主要步骤将自定义域映射到应用：
+将自定义域映射到应用有三个主要步骤：
 
 1. [*（仅限 A 记录）*获取应用的 IP 地址](#vip)。
 2. [创建将域映射到应用的 DNS 记录](#createdns)。 
@@ -52,15 +43,15 @@ ms.openlocfilehash: ebd86b236e5f49d9139732f8922f9929081677cc
    * **原因**：这样应用便知道响应对自定义域名所发出的请求。
 4. [验证 DNS 传播](#verify)。
 
-### <a name="types-of-domains-you-can-map"></a>可映射的域类型
-Azure App Service 允许将以下类别的自定义域映射到应用。
+## <a name="types-of-domains-you-can-map"></a>可映射的域类型
+Azure 应用服务允许将以下类别的自定义域映射到应用。
 
 * **根域** - 通过域注册机构所保留的域名（通常由 `@` 主机记录表示）。 
   例如 **contoso.com**。
 * **子域** - 根域下的所有域。 例如，**www.contoso.com**（由 `www` 主机记录表示）。  在 Azure 中可将相同根域的不同子域映射到不同的应用中。
 * **通配符域** - [其最左边的 DNS 标签为 `*`](https://en.wikipedia.org/wiki/Wildcard_DNS_record) 的任何子域（例如主机记录 `*` 和 `*.blogs`）。 例如 **\*.contoso.com**。
 
-### <a name="types-of-dns-records-you-can-use"></a>可使用的 DNS 记录类型
+## <a name="types-of-dns-records-you-can-use"></a>可使用的 DNS 记录类型
 根据需要，可以使用两种不同类型的标准 DNS 记录来映射自定义域： 
 
 * [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) - 直接将自定义域名映射到 Azure 应用的虚拟 IP 地址。 
@@ -86,7 +77,7 @@ CNAME 的优点是其不会随 IP 地址的更改而更改。 如果删除和重
 3. 单击你的应用，然后单击“自定义域”。
 4. 记下“主机名”部分上方的 IP 地址。
    
-   ![使用 A 记录映射自定义域名：获取 Azure App Service 应用的 IP 地址](./media/web-sites-custom-domain-name/virtual-ip-address.png)
+   ![使用 A 记录映射自定义域名：获取 Azure 应用服务应用的 IP 地址](./media/web-sites-custom-domain-name/virtual-ip-address.png)
 5. 将此门户边栏选项卡保持打开状态。 在创建 DNS 记录后会返回这里。
 
 <a name="createdns"></a>
@@ -116,17 +107,17 @@ CNAME 的优点是其不会随 IP 地址的更改而更改。 如果删除和重
   <tr>
     <td>contoso.com（根域）</td>
     <td>@</td>
-    <td><a href="#vip">步骤 1 中的 IP 地址</a></td>
+    <td><a href="#vip">步骤 1</a> 中的 IP 地址</td>
   </tr>
   <tr>
     <td>www.contoso.com（子域）</td>
     <td>www</td>
-    <td><a href="#vip">步骤 1 中的 IP 地址</a></td>
+    <td><a href="#vip">步骤 1</a> 中的 IP 地址</td>
   </tr>
   <tr>
-    <td>*.contoso.com（通配符域）</td>
-    <td>*</td>
-    <td><a href="#vip">步骤 1 中的 IP 地址</a></td>
+    <td>\*.contoso.com（通配符域）</td>
+    <td>\*</td>
+    <td><a href="#vip">步骤 1</a> 中的 IP 地址</td>
   </tr>
 </table>
 
@@ -149,8 +140,8 @@ CNAME 的优点是其不会随 IP 地址的更改而更改。 如果删除和重
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
   <tr>
-    <td>*.contoso.com（通配符域）</td>
-    <td>*</td>
+    <td>\*.contoso.com（通配符域）</td>
+    <td>\*</td>
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
 </table>
@@ -180,8 +171,8 @@ CNAME 的优点是其不会随 IP 地址的更改而更改。 如果删除和重
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
   <tr>
-    <td>*.contoso.com（通配符域）</td>
-    <td>*</td>
+    <td>\*.contoso.com（通配符域）</td>
+    <td>\*</td>
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
 </table>
@@ -207,50 +198,9 @@ CNAME 的优点是其不会随 IP 地址的更改而更改。 如果删除和重
 7. 验证成功后，“添加主机名”按钮变为激活状态，就可以分配主机名了。 
 8. Azure 完成配置新的自定义域名后，在浏览器中导航到自定义域名。 浏览器应会打开 Azure 应用，这意味着已正确配置自定义域名。
 
-> [!NOTE]
-> 如果 DNS 记录已被使用（为流量方案提供服务的活动域）并且需要事先将 Web 应用与其绑定以验证域，则只需根据下表中的示例创建 TXT 记录。 其他 TXT 记录遵循从 &lt;*子域*>.&lt;*根域*> 映射到 &lt;*appname*>.azurewebsites.net 的约定。 
-> 
-> <table cellspacing="0" border="1">
-> 
-> <tr>
-> 
-> <th>FQDN 示例</th>
-> 
-> <th>TXT 主机</th>
-> 
-> <th>TXT 值</th>
-> </tr>
-> 
-> <tr>
-> 
-> <td>contoso.com（根域）</td>
-> 
-> <td>awverify.contoso.com</td>
-> 
-> <td>&lt;<i>appname</i>>.azurewebsites.net</td>
-> </tr>
-> 
-> <tr>
-> 
-> <td>www.contoso.com（子域）</td>
-> 
-> <td>awverify.www.contoso.com</td>
-> 
-> <td>&lt;<i>appname</i>>.azurewebsites.net</td>
-> </tr>
-> 
-> <tr>
-> 
-> <td>*.contoso.com（子域）</td>
-> 
-> <td>awverify.*.contoso.com</td>
-> 
-> <td>&lt;<i>appname</i>>.azurewebsites.net</td>
-> </tr>
-> </table>
-> 创建此 DNS 记录后，返回到 Azure 门户，将自定义域名添加到 Web 应用。
-> 
-> 
+## <a name="migrate-an-active-domain-name"></a>迁移活动域名
+
+如果要映射的域名已由现有网站使用，且希望避免出现停机时间，请参阅[将活动自定义域迁移到应用服务](app-service-custom-domain-name-migrate.md)。
 
 <a name="verify"></a>
 
@@ -268,7 +218,7 @@ CNAME 的优点是其不会随 IP 地址的更改而更改。 如果删除和重
 请参阅[在 Azure 中购买 SSL 证书](web-sites-purchase-ssl-web-site.md)或[使用其他来源的 SSL 证书](web-sites-configure-ssl-certificate.md)，以了解如何使用 HTTPS 保护自定义域名。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -277,10 +227,5 @@ CNAME 的优点是其不会随 IP 地址的更改而更改。 如果删除和重
 [将域委托给 Azure DNS](../dns/dns-domain-delegation.md)
 
 <!-- Images -->
-[子域]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 

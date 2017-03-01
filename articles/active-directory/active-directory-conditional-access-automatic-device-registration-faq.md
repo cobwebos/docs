@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/04/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 3e87a3b4086d3a2b0dec5ec7d954864922f51279
-ms.openlocfilehash: c262134df624b548b99c22bd749bb56fcda6fb1b
+ms.sourcegitcommit: 90327223d19ffc6697237d697b93fe88e1654e2c
+ms.openlocfilehash: fc668e1b4af662506da6652bbf21bab6cf91b114
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -144,15 +145,10 @@ ms.openlocfilehash: c262134df624b548b99c22bd749bb56fcda6fb1b
 
 **答：**有关故障排除信息，请参阅：
 
-1. [Troubleshooting the auto-registration of Azure AD domain joined computers for Windows 10 and Windows Server 2016](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)（排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 10 和 Windows Server 2016）
+1. [排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 10 和 Windows Server 2016](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
 
-2. [Troubleshooting the auto-registration of Azure AD domain joined computers for Windows down-level clients](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)（排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端）
+2. 请参阅[排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
  
 ---
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

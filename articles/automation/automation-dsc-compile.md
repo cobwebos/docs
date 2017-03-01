@@ -14,8 +14,9 @@ ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 032747ffb7a603c54e8913c0d82edbc8e11b73c3
-ms.openlocfilehash: 0b808dd6bcf0a0d1f8e459927a4010dc1887ca60
+ms.sourcegitcommit: 146fe63ba2c9efd8b734eb8cc8cb5dee82a94f2a
+ms.openlocfilehash: 97757f2cc78dc02f4efdcb3c09cee7741504448b
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -44,7 +45,7 @@ ms.openlocfilehash: 0b808dd6bcf0a0d1f8e459927a4010dc1887ca60
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>使用 Azure 门户编译 DSC 配置
 
-1. 从自动化帐户中，单击“配置”。
+1. 从自动化帐户中，单击“DSC 配置”。
 2. 单击某个配置以打开其边栏选项卡。
 3. 单击“编译”。
 4. 如果该配置没有参数，系统将提示你确认是否要进行编译。 如果该配置有参数，则会打开“编译配置”边栏选项卡让用户提供参数值。 有关参数的详细信息，请参阅下面的[**基本参数**](#basic-parameters)部分。
@@ -240,8 +241,39 @@ $ConfigData = @{
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 ```
 
+## <a name="importing-node-configurations"></a>导入节点配置
+
+你还可以导入已在 Azure 外部编译的节点配置 (MOF)。 其中一个优点是可以对节点配置进行签名。
+已签名的节点配置由 DSC 代理在托管节点上进行本地验证，确保应用于节点的配置来自于授权源。
+
+> [!NOTE]
+> 你可以将已签名的配置导入 Azure 自动化帐户，但 Azure 自动化目前不支持编译已签名的配置。
+
+> [!NOTE]
+> 节点配置文件不得大于 1 MB，以便将其导入 Azure 自动化。
+
+如需深入了解如何对节点配置进行签名，请访问 https://msdn.microsoft.com/zh-cn/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module。
+
+### <a name="importing-a-node-configuration-in-the-azure-portal"></a>在 Azure 门户中导入节点配置
+
+1. 从自动化帐户中，单击“DSC 节点配置”。
+
+    ![DSC 节点配置](./media/automation-dsc-compile/node-config.png)
+2. 在“DSC 节点配置”边栏选项卡中，单击“添加 NodeConfiguration”。
+3. 在“导入”边栏选项卡中，单击“节点配置文件”文本框旁边的文件夹图标，在本地计算机上浏览节点配置文件 (MOF)。
+
+    ![浏览本地文件](./media/automation-dsc-compile/import-browse.png)
+4. 在“配置名称”文本框中，输入名称。 此名称必须与编译节点配置的配置名称匹配。
+5. 单击 **“确定”**。
+
+### <a name="importing-a-node-configuration-with-powershell"></a>使用 PowerShell 导入节点配置
+
+可以使用 [Import-AzureRmAutomationDscNodeConfiguration](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.automation/v1.0.12/import-azurermautomationdscnodeconfiguration) cmdlet 将节点配置导入自动化帐户。
+
+```powershell
+Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName "MyAutomationAccount" -ResourceGroupName "MyResourceGroup" -ConfigurationName "MyNodeConfiguration" -Path "C:\MyConfigurations\TestVM1.mof"
+```
 
 
-<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 4612c1f516dca51aea925343f79649761448c05d
+ms.sourcegitcommit: 83bb2090d3a2fbd4fabdcd660c72590557cfcafc
+ms.openlocfilehash: 46702abb229ba0a6512f336cb0aa4e4a75b51771
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -74,18 +75,20 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `ver` |版本 |存储令牌的版本号。 <br><br> **JWT 值示例**： <br> `"ver": "1.0"` |
 
 ## <a name="access-tokens"></a>访问令牌
+身份验证成功后，Azure AD 会返回访问令牌，用于访问受保护的资源。 访问令牌是 base64 编码的 JSON Web 令牌 (JWT)，其内容可以通过解码器运行以进行检查。
 
 如果应用仅*使用*访问令牌来获取对 API 的访问权限，则可（而且应）将访问令牌视为完全不透明 - 它只是在 HTTP 请求中应用可传递至资源的字符串。
 
 请求访问令牌时，Azure AD 还针对应用的使用返回一些有关访问令牌的元数据。  此信息包括访问令牌的到期时间及其有效范围。  这可让应用程序执行访问令牌的智能缓存，而无需分析访问令牌本身。
 
-如果应用是通过 Azure AD 保护的 API，需要 HTTP 请求中的访问令牌，则应验证和检查接收到的令牌。 有关如何使用 .NET 执行此操作的详细信息，请参阅[使用 Azure AD 的持有者令牌保护 Web API](active-directory-devquickstarts-webapi-dotnet.md)。
+如果应用是通过 Azure AD 保护的 API，需要 HTTP 请求中的访问令牌，则应验证和检查接收到的令牌。 你的应用应先对访问令牌执行验证，再用其访问资源。 有关验证的详细信息，请参阅[验证令牌](#validating-tokens)。  
+有关如何使用 .NET 执行此操作的详细信息，请参阅[使用 Azure AD 的持有者令牌保护 Web API](active-directory-devquickstarts-webapi-dotnet.md)。
 
 ## <a name="refresh-tokens"></a>刷新令牌
 
 刷新令牌是应用可用于在 OAuth 2.0 流中获取新访问令牌的安全令牌。  它可让应用表示用户长期访问资源，而无需用户交互。
 
-刷新令牌跨多个资源，这意味着在一个资源的令牌请求期间收到的刷新令牌可以兑换完全不同资源的访问令牌。 若要指定多个资源，请在目标资源的请求中设置 `resource` 参数。
+刷新令牌属于多资源令牌。  也就是说，在一个资源的令牌请求期间收到的刷新令牌可以兑换完全不同资源的访问令牌。 为此，请在目标资源的请求中设置 `resource` 参数。
 
 刷新令牌对应用完全不透明。 它们属于长效令牌，但你不应将应用编写成预期刷新令牌将持续任何一段时间。  刷新令牌可能由于各种原因而随时失效。  让应用知道刷新令牌是否有效的唯一方式就是对 Azure AD 令牌终结点发出令牌请求以尝试兑换刷新令牌。
 
@@ -93,9 +96,9 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 ## <a name="validating-tokens"></a>验证令牌
 
-为了验证 id_token 或 access_token，应用应验证该令牌的签名和声明。
+为了验证 id_token 或 access_token，应用应验证该令牌的签名和声明。 若要验证访问令牌，你的应用还应验证颁发者、目标受众和签名令牌。 这些需要根据 OpenID 发现文档中的值进行验证。 例如，文档的租户独立版本位于 [https://login.windows.net/common/.well-known/openid-configuration](https://login.windows.net/common/.well-known/openid-configuration)。 Azure AD 中间件具有验证访问令牌的内置功能，你可以浏览我们的[示例](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples)，以所选语言进行查找。 有关如何显式验证 JWT 令牌的详细信息，请参阅[手动 JWT 验证示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)。  
 
-如果想要了解基本过程，我们提供了库和代码示例用于演示如何轻松处理令牌验证。  另外还有多个第三方开放源代码库可用于 JWT 验证，几乎每个平台和语言都至少有一个选择。 有关 Azure AD 身份验证库和代码示例的详细信息，请参阅 [Azure AD 身份验证库](active-directory-authentication-libraries.md)。
+我们提供了库和代码示例（用于演示如何轻松处理令牌验证），想要了解基本过程的用户可以参阅以下信息。  另外还提供了多个适用于 JWT 验证的第三方开放源代码库 - 几乎每个平台和语言都至少有一个选项。 有关 Azure AD 身份验证库和代码示例的详细信息，请参阅 [Azure AD 身份验证库](active-directory-authentication-libraries.md)。
 
 #### <a name="validating-the-signature"></a>验证签名
 
@@ -300,10 +303,4 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ## <a name="related-content"></a>相关内容
 * 请参阅 Azure AD Graph [策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)和[策略实体](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)以了解有关通过 Azure AD Graph API 管理令牌生存期策略的详细信息。
 * 有关通过 PowerShell cmdlet 管理策略的详细信息和示例，请参阅 [Azure AD 中的可配置令牌生存期](../active-directory-configurable-token-lifetimes.md)。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 02/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f6019944f9dd1bed0575daaafc39f7aa14e5f6c9
-ms.openlocfilehash: a382870dbcb5710e76b627e4e88d4551dcaf531e
+ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
+ms.openlocfilehash: 1ef09170f9d5dd28005f70913df2c945f8e4ac12
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -137,7 +138,7 @@ ms.openlocfilehash: a382870dbcb5710e76b627e4e88d4551dcaf531e
 
 
 ## <a name="create-work-item"></a>创建工作项
-可以使用任何遥测项中的详细信息，在 Visual Studio Team Services 中创建 Bug。 
+可以使用任何遥测项中的详细信息，在 GitHub 或 Visual Studio Team Services 中创建 Bug。 
 
 ![单击“新建工作项”、编辑字段，然后单击“确定”。](./media/app-insights-diagnostic-search/42.png)
 
@@ -145,7 +146,7 @@ ms.openlocfilehash: a382870dbcb5710e76b627e4e88d4551dcaf531e
 
 ![请填写 Team Services 服务器的 URL 和项目名称，然后单击“授权”](./media/app-insights-diagnostic-search/41.png)
 
-（也可以通过“设置”>“工作项”转到配置边栏选项卡。）
+（你还可以在“工作项”边栏选项卡上配置链接。）
 
 ## <a name="save-your-search"></a>保存搜索
 设置所需的所有筛选器后，可以将搜索保存到收藏夹。 如果使用组织帐户，可以选择是否要将此搜索与其他团队成员共享。
@@ -179,9 +180,4 @@ ms.openlocfilehash: a382870dbcb5710e76b627e4e88d4551dcaf531e
 * [向 Application Insights 发送日志和自定义的遥测数据](app-insights-search-diagnostic-logs.md)
 * [设置可用性和响应能力测试](app-insights-monitor-web-app-availability.md)
 * [故障排除](app-insights-troubleshoot-faq.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

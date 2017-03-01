@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 3c19c2035b8dc9717dced5164b0214ab8019afd1
+ms.sourcegitcommit: 7bd403bb8569950a5bf4da3bd84905604753cda7
+ms.openlocfilehash: f29128dd156576276014e159afa9050364169c46
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -51,6 +52,8 @@ ms.openlocfilehash: 3c19c2035b8dc9717dced5164b0214ab8019afd1
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“支持管理员”。
   >
   >
+* **Power BI 服务管理员**：具有此角色的用户在 Microsoft Power BI（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [Making It Easier To Administer Power BI](https://powerbi.microsoft.com/en-us/blog/making-it-easier-to-administer-power-bi/)（更轻松地管理 Power BI）。
+* **特权角色管理员**：具有此角色的用户可以管理 Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 以及更新其他用户的角色分配。
 * **SharePoint 服务管理员**：具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)（关于 Office 365 管理员角色）。
 * **[服务管理员](#service-administrator)**：管理服务请求并监视服务运行状况。
 
@@ -114,6 +117,17 @@ ms.openlocfilehash: 3c19c2035b8dc9717dced5164b0214ab8019afd1
 6. 从“使用位置”下拉列表中指定位置。
 7. 完成后，单击“保存”。
 
+## <a name="deprecated-roles"></a>已弃用的角色
+
+不应使用以下角色。 这些角色已弃用，并将从 Azure AD 中删除。
+
+* 即席许可证管理员
+* 经电子邮件验证的用户创建者
+* 设备联接
+* 设备管理器
+* 设备用户
+* 工作区设备联接
+
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [如何添加或更改 Azure 管理员角色](../billing/billing-add-change-azure-subscription-administrator.md)
 * 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [Understanding resource access in Azure](active-directory-understanding-resource-access.md)（了解 Azure 中的资源访问）
@@ -121,9 +135,4 @@ ms.openlocfilehash: 3c19c2035b8dc9717dced5164b0214ab8019afd1
 * [管理用户](active-directory-create-users.md)
 * [管理密码](active-directory-manage-passwords.md)
 * [管理组](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
