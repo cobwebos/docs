@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
+ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bf282f9f17c7a651c9229d262db3c61fcb92c799
+ms.sourcegitcommit: 70341f4a14ee807a085931c3480a19727683e958
+ms.openlocfilehash: ce0f2ddb42e19ee33767878797188e924f5cd1e9
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -34,9 +35,14 @@ Redis 输出缓存提供程序是用于输出缓存数据的进程外存储机�
 
 ![Azure Redis 缓存输出缓存提供程序](./media/cache-aspnet-output-cache-provider/redis-cache-page-output-provider.png)
 
-Redis 输出缓存提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName 包。 如果你的项目中没有 StackExchange.Redis.StrongName 包，则将会安装它。 请注意，除了强命名的 StackExchange.Redis.StrongName 包外，还有 StackExchange.Redis 非强命名版本。 如果你的项目使用的是非强命名 StackExchange.Redis 版本，则必须在安装 Redis 输出缓存提供程序 NuGet 包之前或之后将其卸载，否则你的项目中将出现命名冲突。 有关这些包的详细信息，请参阅[配置 .NET 缓存客户端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)。
+Redis 输出缓存提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName 包。 如果项目中没有 StackExchange.Redis.StrongName 包，则会安装它。
 
-NuGet 包会下载并添加所需的程序集引用，并将以下部分添加到你的 web.config 文件，包含 ASP.NET 应用程序所需的配置，以使用 Redis 输出缓存提供程序。
+>[!NOTE]
+>除了强命名的 StackExchange.Redis.StrongName 包外，还有 StackExchange.Redis 非强命名版本。 如果项目使用的是非强命名 StackExchange.Redis 版本，则必须卸载，否则项目中将出现命名冲突。 有关这些包的详细信息，请参阅[配置 .NET 缓存客户端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)。
+>
+>
+
+下载 NuGet 包、添加所需的程序集引用并将下面的部分添加到 web.config 文件。 此部分包含 ASP.NET 应用程序使用 Redis 输出缓存提供程序所需的配置。
 
 ```xml
 <caching>
@@ -70,7 +76,7 @@ NuGet 包会下载并添加所需的程序集引用，并将以下部分添加�
 * **ssl** - 如果要使用 SSL 保护缓存/客户端通信，则为 true；否则为 false。 请务必指定正确的端口。
   * 默认情况下，将为新缓存禁用非 SSL 端口。 为此设置指定 true 可使用 SSL 端口。 有关启用非 SSL 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。
 * **databaseId** - 指定要用于缓存输出数据的数据库。 如果未指定，则使用默认值 0。
-* **applicationName** - 密钥存储在 redis 中作为 <AppName>_<SessionId>_Data。 这使多个应用程序可以共享同一密钥。 此参数是可选的，如果未提供它，则使用默认值。
+* **applicationName** - 密钥存储在 redis 中作为 `<AppName>_<SessionId>_Data`。 此类命名架构使多个应用程序可以共享同一密钥。 此参数是可选的，如果未提供它，则使用默认值。
 * **connectionTimeoutInMilliseconds** - 此设置可替代 StackExchange.Redis 客户端中的 connectTimeout 设置。 如果未指定，则使用默认 connectTimeout 设置 5000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](http://go.microsoft.com/fwlink/?LinkId=398705)。
 * **operationTimeoutInMilliseconds** - 此设置可替代 StackExchange.Redis 客户端中的 syncTimeout 设置。 如果未指定，则使用默认 syncTimeout 设置 1000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](http://go.microsoft.com/fwlink/?LinkId=398705)。
 
@@ -80,16 +86,11 @@ NuGet 包会下载并添加所需的程序集引用，并将以下部分添加�
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-在此示例中，缓存的页面数据将保留在缓存中 60 秒，并且将为每个参数组合缓存不同版本的页面。 有关 OutputCache 指令的详细信息，请参阅 [@OutputCache](http://go.microsoft.com/fwlink/?linkid=320837)。
+在上例中，缓存的页面数据可在缓存中保留 60 秒，并且将为每个参数组合缓存不同版本的页面。 有关 OutputCache 指令的详细信息，请参阅 [@OutputCache](http://go.microsoft.com/fwlink/?linkid=320837)。
 
 执行这些步骤后，你的应用程序已配置为使用 Redis 输出缓存提供程序。
 
 ## <a name="next-steps"></a>后续步骤
 了解 [Azure Redis 缓存的 ASP.NET 会话状态提供程序](cache-aspnet-session-state-provider.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

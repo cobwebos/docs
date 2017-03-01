@@ -15,8 +15,10 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
-ms.openlocfilehash: cb649d3f6ead507582f587d112e43a89e659c757
+ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
+ms.openlocfilehash: 078784bcdf7a3a6d4423389d2f5ca4ffdb67c89f
+ms.lasthandoff: 02/22/2017
+
 
 
 ---
@@ -49,7 +51,7 @@ ms.openlocfilehash: cb649d3f6ead507582f587d112e43a89e659c757
     [;]
 
 > [!NOTE]
-> 确保 `<username>` 不包含任何 **"@servername"** 后缀。 
+> 确保 `<username>` 不包含任何“@servername”后缀。 
 >
 
 ## <a name="create-external-data-sources"></a>创建外部数据源
@@ -180,18 +182,17 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 * 弹性查询最适合大部分计算可以在远程数据库上完成的查询。 使用可以在远程数据库或联接上求值的选择性筛选器谓词（可以完全在远程数据库上执行），通常可以获得最佳查询性能。 其他查询模式可能需要从远程数据库加载大量数据并且可能会执行效果不佳。 
 
 ## <a name="next-steps"></a>后续步骤
-若要查询水平分区的数据库（也称为分片数据库），请参阅[跨分片云数据库（水平分区）的查询](sql-database-elastic-query-horizontal-partitioning.md)。
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+* 有关弹性查询的概述，请参阅[弹性查询概述](sql-database-elastic-query-overview.md)。
+* 有关垂直分区的教程，请参阅[跨数据库查询（垂直分区）入门](sql-database-elastic-query-getting-started-vertical.md)。
+* 有关水平分区（分片）的教程，请参阅[弹性查询入门 - 水平分区（分片）](sql-database-elastic-query-getting-started.md)。
+* 有关水平分区数据的语法和示例查询，请参阅[查询水平分区数据](sql-database-elastic-query-horizontal-partitioning.md)
+* 请参阅 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，了解在单个远程 Azure SQL 数据库或在水平分区方案中用作分片的一组数据库中执行 Transact-SQL 语句的存储过程。
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-vertical-partitioning/verticalpartitioning.png
 
 
 <!--anchors-->
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8714d6b06a08428835ed1b2d955b8e97fc42f4b3
+ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
+ms.openlocfilehash: c43b34124fd0ccdbe03ce3d336388cbd3b77ad9a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -52,7 +53,7 @@ ms.openlocfilehash: 8714d6b06a08428835ed1b2d955b8e97fc42f4b3
     [;]
 
 > [!NOTE]
-> 请确保 *“\<用户名\>”*中不包括任何 *"@servername"* 后缀。 
+> 请确保“\<用户名\>”中不包括任何“@servername”后缀。 
 > 
 > 
 
@@ -133,7 +134,7 @@ ms.openlocfilehash: 8714d6b06a08428835ed1b2d955b8e97fc42f4b3
 ### <a name="remarks"></a>备注
 DATA\_SOURCE 子句定义了用于外部表的外部数据源（分片映射）。  
 
- SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在你要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，你想要定义外部表以在扩展数据层上获取目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。） 
+SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在你要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，你想要定义外部表以在扩展数据层上获取目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。） 
 
 DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DISTRIBUTION 子句中提供的信息来构建最有效的查询计划。  
 
@@ -191,14 +192,16 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 * 当分片键上的谓词允许安全地从处理中排除某些分片时，弹性查询当前不执行分片消除。
 * 弹性查询最适合大部分计算可以在分片上完成的查询。 使用可以在分片或联接上通过分区键求值的选择性筛选器谓词（可以在所有分片上以分区对齐方式执行），通常可以获得最佳查询性能。 其他查询模式可能需要从分片将大量数据加载到头节点并且可能会执行效果不佳
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+## <a name="next-steps"></a>后续步骤
+
+* 有关弹性查询的概述，请参阅[弹性查询概述](sql-database-elastic-query-overview.md)。
+* 有关垂直分区的教程，请参阅[跨数据库查询（垂直分区）入门](sql-database-elastic-query-getting-started-vertical.md)。
+* 有关垂直分区数据的语法和示例查询，请参阅[查询垂直分区数据](sql-database-elastic-query-vertical-partitioning.md)
+* 有关水平分区（分片）的教程，请参阅[弹性查询入门 - 水平分区（分片）](sql-database-elastic-query-getting-started.md)。
+* 请参阅 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，了解在单个远程 Azure SQL 数据库或在水平分区方案中用作分片的一组数据库中执行 Transact-SQL 语句的存储过程。
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

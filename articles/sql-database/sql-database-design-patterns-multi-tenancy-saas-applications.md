@@ -4,7 +4,7 @@ description: "本文介绍云环境中运行的多租户数据库应用程序需
 keywords: 
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: srinia
 manager: jhubbard
 editor: 
 ms.assetid: 1dd20c6b-ddbb-40ef-ad34-609d398d008a
@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
-ms.date: 11/08/2016
-ms.author: carlrab
+ms.date: 02/01/2017
+ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 63f94dc3b648486fe7c2e14661b5f5f02a147149
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: c30f1d879f46805cf802679613089a16dc47ad40
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -90,7 +91,7 @@ ms.openlocfilehash: 63f94dc3b648486fe7c2e14661b5f5f02a147149
 
 图 2：流行的多租户数据模型
 
-图 2 的右下象限显示使用可能很大、共享独立数据库和共享表（或另一个架构）方法的应用程序模式。 由于所有租户都使用单一数据库中相同的数据库资源（CPU、内存、输入/输出），因此适合进行资源共享。 但是，租户隔离有限。 可能需要采取额外的措施来保护应用程序层的各个租户。 这些额外措施可能大幅增加开发和管理应用程序的 DevOps 成本。 可缩放性受限于用于托管数据库的硬件规模。
+图 2 的右下象限显示使用可能很大、共享单一数据库和共享表（或另一个架构）方法的应用程序模式。 由于所有租户都使用单一数据库中相同的数据库资源（CPU、内存、输入/输出），因此适合进行资源共享。 但是，租户隔离有限。 可能需要采取额外的措施来保护应用程序层的各个租户。 这些额外措施可能大幅增加开发和管理应用程序的 DevOps 成本。 可缩放性受限于用于托管数据库的硬件规模。
 
 图 2 左下象限演示跨多个数据库分片的多个租户（通常为不同的硬件缩放单位）。 每个数据库托管一部分租户，解决其他模式的可缩放性需求。 如果需要更大的容量来应对更多的租户，只需将租户放在分配给新硬件缩放单位的新数据库中。 但是，资源共享量会降低。 只有放在相同缩放单位中的租户共享资源。 这种方法也无助于改善租户隔离，因为仍有许多租户共置于相同位置，自然无法免于彼此操作的干扰。 应用程序复杂性仍然很高。
 
@@ -124,7 +125,7 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 | [弹性数据库客户端库](sql-database-elastic-database-client-library.md)：管理数据分布，将租户映射到数据库。 | |
 
 ## <a name="shared-models"></a>共享模型
-如前所述，大多数 SaaS 提供商的“共享模型”方法可能造成租户隔离问题，以及应用程序开发和维护的复杂性。 然而，对于直接向消费者提供服务的多租户应用程序，租户隔离要求的优先性可能敌不过降低成本。 它们也许能够以非常高的密度将租户打包在一个或多个数据库中来降低成本。 使用独立数据库或多个分片数据库的共享数据库模型可以提高资源共享的效率，降低总体成本。 Azure SQL 数据库提供的一些功能可帮助客户在数据层中大规模构建隔离，改善安全和管理。
+如前所述，大多数 SaaS 提供商的“共享模型”方法可能造成租户隔离问题，以及应用程序开发和维护的复杂性。 然而，对于直接向消费者提供服务的多租户应用程序，租户隔离要求的优先性可能敌不过降低成本。 它们也许能够以非常高的密度将租户打包在一个或多个数据库中来降低成本。 使用单一数据库或多个分片数据库的共享数据库模型可以提高资源共享的效率，降低总体成本。 Azure SQL 数据库提供的一些功能可帮助客户在数据层中大规模构建隔离，改善安全和管理。
 
 | 应用程序要求 | SQL 数据库功能 |
 | --- | --- |
@@ -150,7 +151,7 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 
 使用 Azure SQL 数据库工具来[迁移要扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
 
-查看教程，了解如何[创建弹性池](sql-database-elastic-pool-create-portal.md)。  
+若要使用 Azure 门户创建弹性池，请参阅[创建弹性池](sql-database-elastic-pool-manage-portal.md)。  
 
 了解如何[监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。
 
@@ -160,14 +161,9 @@ SQL 数据库中的弹性池结合租户隔离与租户数据库之间的资源�
 * [具有弹性数据库工具和行级安全性的多租户应用程序](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 * [使用 Azure Active Directory 和 OpenID Connect 在多租户应用中进行身份验证](../guidance/guidance-multitenant-identity-authenticate.md)
 * [Tailspin Surveys 应用程序](../guidance/guidance-multitenant-identity-tailspin.md)
-* [解决方案快速入门](sql-database-solution-quick-starts.md)
+
 
 ## <a name="questions-and-feature-requests"></a>问题和功能请求
 如有问题，查找我们在 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)。 添加 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)中的功能请求。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

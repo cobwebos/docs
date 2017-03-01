@@ -11,23 +11,18 @@ ms.service: sql-database
 ms.custom: overview
 ms.devlang: NA
 ms.workload: data-management
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
-ms.date: 09/19/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 420b2153f6115dd712d3033e30f11f79b18cd80f
-ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 130f2341eca570a982ab5c22ba429f6b48006f90
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="manage-azure-sql-databases-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 数据库
-> [!div class="op_single_selector"]
-> * [Azure 门户](sql-database-manage-portal.md)
-> * [SSMS](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-manage-powershell.md)
-> 
-> 
 
 在 [Azure 门户](https://portal.azure.com/)中，可以创建、监视和管理 Azure SQL 数据库与服务器。 本文提供更多常见任务的快速说明和详细信息的链接。
 
@@ -40,17 +35,17 @@ ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 ![SQL 数据库](./media/sql-database-manage-portal/sql-services.png)
 
 ## <a name="how-do-i-create-or-view-azure-sql-databases"></a>如何创建或查看 Azure SQL 数据库？
-若要打开“**SQL 数据库**”边栏选项卡，请单击“**SQL 数据库**”，然后单击要使用的数据库，或单击“**+添加**”创建 SQL 数据库。 有关详细信息，请参阅[使用 Azure 门户在几分钟内创建 SQL 数据库](sql-database-get-started.md)。
+若要打开“**SQL 数据库**”边栏选项卡，请单击“**SQL 数据库**”，然后单击要使用的数据库，或单击“**+添加**”创建 SQL 数据库。 有关详细信息，请参阅[使用 Azure 门户创建第一个 Azure SQL 数据库](sql-database-get-started.md)。
 
 ![SQL 数据库](./media/sql-database-manage-portal/sql-databases.png)
 
 ## <a name="how-do-i-create-or-view-azure-sql-servers"></a>如何创建或查看 Azure SQL Server？
-若要打开“**SQL Server**”边栏选项卡，请单击“**SQL Server**”，然后单击要使用的服务器，或单击“**+添加**”创建 SQL Server。 有关详细信息，请参阅[使用 Azure 门户在几分钟内创建 SQL 数据库](sql-database-get-started.md)。
+若要打开“**SQL Server**”边栏选项卡，请单击“**SQL Server**”，然后单击要使用的服务器，或单击“**+添加**”创建 SQL Server。 有关详细信息，请参阅[使用 Azure 门户创建第一个 Azure SQL 数据库](sql-database-get-started.md)。
 
 ![SQL Server](./media/sql-database-manage-portal/sql-servers.png)
 
 ## <a name="how-do-i-create-or-view-sql-elastic-pools"></a>如何创建或查看 SQL 弹性池？
-若要打开“**SQL 弹性池**”边栏选项卡，请单击“**SQL 弹性池**”，然后单击要使用的池，或单击“**+添加**”创建池。 有关详细信息，请参阅[使用 Azure 门户创建弹性池](sql-database-elastic-pool-create-portal.md)。
+若要打开“**SQL 弹性池**”边栏选项卡，请单击“**SQL 弹性池**”，然后单击要使用的池，或单击“**+添加**”创建池。 有关详细信息，请参阅[使用 Azure 门户创建弹性池](sql-database-elastic-pool-manage-portal.md)。
 
 ![SQL 弹性池](./media/sql-database-manage-portal/elastic-pools.png)
 
@@ -70,12 +65,12 @@ ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 ![防火墙规则](./media/sql-database-manage-portal/sql-database-firewall.png)
 
 ## <a name="how-do-i-change-my-sql-database-service-tier-or-performance-level"></a>如何更改 SQL 数据库服务层或性能级别？
-若要更新 SQL 数据库的服务层或性能级别，请在“**SQL 数据库**”边栏选项卡中单击“**定价层(缩放 DTU)**”。 有关详细信息，请参阅[更改 SQL 数据库的服务层和性能级别（定价层）](sql-database-scale-up.md)。
+若要更新 SQL 数据库的服务层或性能级别，请在“**SQL 数据库**”边栏选项卡中单击“**定价层(缩放 DTU)**”。 有关详细信息，请参阅[更改 SQL 数据库的服务层和性能级别（定价层）](sql-database-service-tiers.md)。
 
 ![定价层](./media/sql-database-manage-portal/pricing-tier.png)
 
 ## <a name="how-do-i-configure-auditing-and-threat-detection-for-a-sql-database"></a>如何为 SQL 数据库配置审核和威胁检测？
-若要为 SQL 数据库配置审核和威胁检测，请在“**SQL 数据库**”边栏选项卡中单击“**审核与威胁检测**”。 有关详细信息，请参阅 [SQL 数据库审核入门](sql-database-auditing-get-started.md)和 [SQL 数据库威胁检测入门](sql-database-threat-detection-get-started.md)。
+若要为 SQL 数据库配置审核和威胁检测，请在“**SQL 数据库**”边栏选项卡中单击“**审核与威胁检测**”。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)和 [SQL 数据库威胁检测入门](sql-database-threat-detection.md)。
 
 ## <a name="how-do-i-configure-dynamic-data-masking-for-a-sql-database"></a>如何为 SQL 数据库配置动态数据掩码？
 若要为 SQL 数据库配置动态数据掩码，请在“**SQL 数据库**”边栏选项卡中单击“**动态数据掩码**。 有关详细信息，请参阅 [SQL 数据库动态数据掩码入门](sql-database-dynamic-data-masking-get-started.md)。
@@ -84,7 +79,7 @@ ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 若要将 SQL 数据库配置为透明数据加密，请在“**SQL 数据库**”边栏选项卡中单击“**透明数据加密**”。 有关详细信息，请参阅[使用门户在数据库上启用 TDE](https://msdn.microsoft.com/library/dn948096#Anchor_1)。
 
 ## <a name="how-do-i-view-or-change-the-max-size-of-a-sql-database"></a>如何查看或更改SQL 数据库的大小上限？
-若要查看或更改 SQL 数据库的大小，请在“**SQL 数据库**”边栏选项卡中单击“**数据库大小**”。 通过更改服务层或性能级别来更新数据库的大小上限。 有关详细信息，请参阅[更改 SQL 数据库的服务层和性能级别（定价层）](sql-database-scale-up.md)。
+若要查看或更改 SQL 数据库的大小，请在“**SQL 数据库**”边栏选项卡中单击“**数据库大小**”。 通过更改服务层或性能级别来更新数据库的大小上限。 有关详细信息，请参阅[更改 SQL 数据库的服务层和性能级别（定价层）](sql-database-service-tiers.md)。
 
 ## <a name="how-do-i-monitor-and-improve-the-performance-of-a-sql-database"></a>如何监视和改善 SQL 数据库的性能？
 若要监视和改善 SQL 数据库的性能特征，请在“**SQL 数据库**”边栏选项卡中单击“**性能概述**”。 有关详细信息，请参阅 [SQL 数据库性能见解](sql-database-performance.md)。
@@ -106,12 +101,12 @@ ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 ![SQL 数据库导出](./media/sql-database-manage-portal/sql-database-export.png)
 
 ## <a name="how-do-i-restore-a-sql-database-to-a-previous-point-in-time"></a>如何将 SQL 数据库还原到以前的时间点？
-若要还原 SQL 数据库，请在“**SQL 数据库**”边栏选项卡中单击“**还原**”。 有关详细信息，请参阅[使用 Azure 门户将 Azure SQL 数据库还原到以前的时间点](sql-database-point-in-time-restore.md)。
+若要还原 SQL 数据库，请在“**SQL 数据库**”边栏选项卡中单击“**还原**”。 有关详细信息，请参阅[使用 Azure 门户将 Azure SQL 数据库还原到以前的时间点](sql-database-point-in-time-restore-portal.md)。
 
 ![SQL 数据库设置](./media/sql-database-manage-portal/sql-database-restore.png)
 
 ## <a name="how-do-i-create-an-azure-sql-database-from-a-bacpac-file"></a>如何从 BACPAC 文件创建 Azure SQL 数据库？
-若要从 BACPAC 文件创建 SQL 数据库，请在“**SQL Server**”边栏选项卡中单击“**导入数据库**”。 有关详细信息，请参阅[导入 BACPAC 文件以创建 Azure SQL 数据库](sql-database-import.md)。
+若要从 BACPAC 文件创建 SQL 数据库，请在“**SQL Server**”边栏选项卡中单击“**导入数据库**”。 有关详细信息，请参阅[导入 BACPAC 文件以创建 Azure SQL 数据库](sql-database-import-portal.md)。
 
 ![SQL Server](./media/sql-database-manage-portal/server-commands.png)
 
@@ -126,10 +121,5 @@ ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 ## <a name="additional-resources"></a>其他资源
 * [SQL 数据库](sql-database-technical-overview.md)
 * [使用 Azure 门户监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

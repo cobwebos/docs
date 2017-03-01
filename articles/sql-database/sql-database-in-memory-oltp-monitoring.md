@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: 86b2358b045bd5bc0c9f4fc2674efd03b098212f
+ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
+ms.openlocfilehash: f53fa3763edb1d9164278d1e3c418e200d7ada89
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -54,10 +55,5 @@ ms.openlocfilehash: 86b2358b045bd5bc0c9f4fc2674efd03b098212f
 * 将服务层升级到具有足够内存中存储的服务层，使保存你需要保留在内存优化表中的数据。
 
 ## <a name="next-steps"></a>后续步骤
-有关[使用动态管理视图监视 Azure SQL 数据库](sql-database-monitoring-with-dmvs.md)的其他资源
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+有关监视指南，请参阅[使用动态管理视图监视 Azure SQL 数据库](sql-database-monitoring-with-dmvs.md)。
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 02/06/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9ab2950715850d0c2ee0f398cd44399a5974c1a9
-ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
+ms.sourcegitcommit: ad9c78483af88a85a1b790269231683155760d76
+ms.openlocfilehash: aef560c2b05a80c59743c4cc6d68d6d2c14bdc3f
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -46,7 +47,7 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 测试本教程中的步骤应遵循以下建议：
 
 - 不应使用生产环境，除非有此必要。
-- 如果没有 Azure AD 试用环境，可在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+- 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 
 ## <a name="scenario-description"></a>方案描述
@@ -93,7 +94,7 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Infor Retail - Information Management 测试用户](#creating-an-infor-retail---information-management-user)** - 在 Infor Retail - Information Management 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
+3. **[创建 Infor Retail - Information Management 测试用户](#creating-an-infor-retail---information-management-test-user)** - 在 Infor Retail - Information Management 中创建 Britta Simon 的对应用户，将其链接到她的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -107,7 +108,7 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 
     ![配置单一登录][4]
 
-2. 在“单一登录”对话框页中，选择“基于 SAML 的登录”作为“模式”，从而启用单一登录。
+2. 在“单一登录”对话框页中，选择“基于 SAML 的登录”作为“模式”以启用单一登录。
  
     ![配置单一登录](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_01.png)
 
@@ -115,9 +116,9 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 
     ![配置单一登录](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_02.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`http://<company name>.mingle.infor.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com`
     
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`http://<company name>.mingle.infor.com:443/sp/ACS.saml2`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/sp/ACS.saml2`
     
 4. 在“Infor Retail - Information Management 域和 URL”部分，如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
     
@@ -125,14 +126,14 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“显示高级 URL 设置”选项
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/<company code>`
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/<company code>`
 
     > [!NOTE] 
-    > 请注意，这些不是实际值。 必须使用实际登录 URL、标识符和回复 URL 更新这些值。请联系 [Infor Retail - Information Management](http://www.infor.com/contact/) 获取这些值。
+    > 请注意，这些不是实际值。 必须使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Infor Retail – Information Management 支持团队](mailto:innovate@infor.com)获取这些值。
 
 5. 在“SAML 签名证书”部分中，单击“创建新证书”。
 
-    ![配置单一登录](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_04.png)   
+    ![配置单一登录](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_04.png)     
 
 6. 在“创建新证书”对话框中，单击日历图标，然后选择“到期日期”。 然后单击“保存”按钮。
 
@@ -146,11 +147,11 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 
     ![配置单一登录](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_400.png)
 
-9. 在“SAML 签名证书”部分中，单击“下载”，然后在计算机上保存元数据文件。
+9. 在“SAML 签名证书”部分中，单击“元数据 XML”，然后在计算机上保存元数据文件。
 
     ![配置单一登录](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_06.png) 
 
-10. 若要为应用程序配置 SSO，请联系 [Infor Retail - Information Management 支持团队](http://www.infor.com/contact/)，并向他们提供下载的**元数据**。
+10. 若要为应用程序配置 SSO，请联系 [Infor Retail - Information Management 支持团队](mailto:innovate@infor.com)，并向他们提供下载的**元数据**。
   
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -160,11 +161,11 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 **Azure 管理门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+1. 在 Azure 管理门户的左侧导航窗格中，单击“Azure Active Directory”图标。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-inforretailinformationmanagement-tutorial/create_aaduser_01.png) 
 
-2. 转到“用户和组”，单击“所有用户”，显示用户列表。
+2. 转到“用户和组”，单击“所有用户”显示用户列表。
     
     ![创建 Azure AD 测试用户](./media/active-directory-saas-inforretailinformationmanagement-tutorial/create_aaduser_02.png) 
 
@@ -176,7 +177,7 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
  
     ![创建 Azure AD 测试用户](./media/active-directory-saas-inforretailinformationmanagement-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -188,7 +189,7 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 
 ### <a name="creating-an-infor-retail--information-management-test-user"></a>创建 Infor Retail - Information Management 测试用户
 
-在本部分中，将在 Infor Retail - Information Management 中创建一个名为“Britta Simon”的用户。 请与 [Infor Retail - Information Management支持团队](http://www.infor.com/contact/)合作，添加 Infor Retail - Information Management 平台中的用户。
+在本部分中，将在 Infor Retail - Information Management 中创建一个名为“Britta Simon”的用户。 请与 [Infor Retail - Information Management支持团队](mailto:innovate@infor.com)合作，添加 Infor Retail - Information Management 平台中的用户。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -250,8 +251,3 @@ ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
 [201]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Jan17_HO3-->
-
-

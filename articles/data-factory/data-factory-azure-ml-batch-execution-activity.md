@@ -1,5 +1,5 @@
 ---
-title: "使用机器学习活动 | Microsoft Docs"
+title: "使用 Azure 数据工厂创建预测数据管道 | Microsoft Docs"
 description: "描述如何使用 Azure 数据工厂和 Azure 机器学习创建预测管道"
 services: data-factory
 documentationcenter: 
@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/19/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: cbd5ca0444a1d0f9ad67864ae9507d5659191a05
-ms.openlocfilehash: aea3600cafeb297822280d7dc7ec9d13cce76ca1
+ms.sourcegitcommit: ffe3e6c5f61f2debee70683990cf26ce094dc64b
+ms.openlocfilehash: 1c8cd0a998d7224caf5dcc70061d288a8e3043ed
+ms.lasthandoff: 02/17/2017
 
 
 ---
-# <a name="create-predictive-pipelines-using-azure-machine-learning-activities"></a>使用 Azure 机器学习活动创建预测管道
+# <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md) 
@@ -43,7 +44,7 @@ ms.openlocfilehash: aea3600cafeb297822280d7dc7ec9d13cce76ca1
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。  
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
-数据工厂是一项基于云的数据集成服务，可对数据**移动**和**转换**进行安排并使其自动化。 可以使用数据工厂服务创建数据集成解决方案，从各种数据存储引入数据、转换/处理数据，并将结果数据发布到数据存储。
+数据工厂是一项基于云的数据集成服务，可对数据**移动**和**转换**进行安排并使其自动化。 可以使用 Azure 数据工厂创建数据集成解决方案，从各种数据存储引入数据、转换/处理数据，并将结果数据发布到数据存储。
 
 在数据工厂服务中可以创建数据管道来移动和转换数据，然后按指定的计划（每小时、每日、每周等）运行管道。 该服务还提供丰富的可视化效果来显示数据管道之间的历史记录和依赖项，用户可以通过单个统一视图监视所有数据管道，轻松查明问题和设置监视警报。
 
@@ -57,12 +58,12 @@ ms.openlocfilehash: aea3600cafeb297822280d7dc7ec9d13cce76ca1
 1. 将训练实验（非预测实验）作为 Web 服务发布。 在 Azure 机器学习工作室中，如同在前一方案中将预测实验作为 Web 服务公开那样执行此步骤。
 2. 使用 Azure 机器学习批处理执行活动调用训练实验的 Web 服务。 基本上，可使用 Azure 机器学习批处理执行活动调用定型 Web 服务和评分 Web 服务。
 
-完成重新定型后，使用 **Azure ML 更新资源活动**通过新的定型模型更新评分 Web 服务（作为 Web 服务公开的预测实验）。 有关详细信息，请参阅[使用更新资源活动更新模型](#updating-models-using-update-resource-activity)部分。
+完成重新定型后，使用 **Azure ML 更新资源活动**通过新的定型模型更新评分 Web 服务（作为 Web 服务公开的预测实验）。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>使用批处理执行活动调用 Web 服务
 使用 Azure 数据工厂来安排数据移动和处理，然后使用 Azure 机器学习进行批处理执行。 下方列出了顶级步骤：
 
-1. 创建 Azure 机器学习链接服务。 需要满足以下条件：
+1. 创建 Azure 机器学习链接服务。 需要以下值：
 
    1. 用于批处理执行 API 的**请求 URI**。 在 Web 服务页中，单击“批处理执行”链接可找到此请求 URI。
    2. 用于已发布 Azure 机器学习 Web 服务的 **API 密钥**。 单击已发布的 Web 服务可找到此 API 密钥。
@@ -260,42 +261,42 @@ ms.openlocfilehash: aea3600cafeb297822280d7dc7ec9d13cce76ca1
     ```JSON
     {
         "name": "PredictivePipeline",
-        "properties": {
+         "properties": {
             "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
-                {
-                    "name": "DecisionTreeInputBlob"
-                }
-                ],
-                "outputs": [
-                {
-                    "name": "DecisionTreeResultBlob"
-                }
-                ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
-                {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }                
-                },
-                "policy": {
+               "activities": [
+             {
+                   "name": "MLActivity",
+                   "type": "AzureMLBatchExecution",
+                   "description": "prediction analysis on batch input",
+                   "inputs": [
+                 {
+                       "name": "DecisionTreeInputBlob"
+                 }
+                   ],
+                   "outputs": [
+                 {
+                       "name": "DecisionTreeResultBlob"
+                 }
+                   ],
+                   "linkedServiceName": "MyAzureMLLinkedService",
+                   "typeProperties":
+                   {
+                       "webServiceInput": "DecisionTreeInputBlob",
+                       "webServiceOutputs": {
+                           "output1": "DecisionTreeResultBlob"
+                       }                
+                   },
+                   "policy": {
                     "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
-            }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+                     "executionPriorityOrder": "NewestFirst",
+                     "retry": 1,
+                     "timeout": "02:00:00"
+                   }
+             }
+               ],
+               "start": "2016-02-13T00:00:00Z",
+               "end": "2016-02-14T00:00:00Z"
+         }
     }
     ```
 
@@ -543,293 +544,7 @@ Azure 机器学习批处理执行 Web 服务可能未配置任何 Web 服务输�
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>使用更新资源活动更新模型
-随着时间推移，需要使用新的输入数据集重新定型 Azure 机器学习评分实验中的预测模型。 完成重新定型后，需使用重新定型的机器学习模型更新评分 Web 服务。 通过 Web 服务重新定型和更新 Azure 机器学习模型的常规步骤如下：
-
-1. 在 [Azure 机器学习工作室](https://studio.azureml.net)中创建实验。
-2. 对模型满意后，使用 Azure 机器学习工作室对**训练实验**和评分/**预测实验**发布 Web 服务。
-
-下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅[以编程方式重新定型机器学习模型](../machine-learning/machine-learning-retrain-models-programmatically.md)。
-
-- **定型 Web 服务** - 接收定型数据和生成定型模型。 重新定型的输出是 Azure Blob 存储中的 .ilearner 文件。 将训练实验作为 Web 服务发布时，会自动为你创建**默认终结点**。 还可创建更多终结点，但本示例仅使用默认终结点。
-- **评分 Web 服务** - 接收未标记的数据示例并进行预测。 预测输出可能采用多种形式，例如 .csv 文件或 Azure SQL 数据库中的行，具体取决于实验的配置。 将预测实验作为 Web 服务发布时，会为你自动创建默认终结点。 
-
-下图描述了 Azure 机器学习中定型和评分终结点之间的关系。
-
-![Web 服务](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
-
-使用**Azure 机器学习批处理执行活动**可调用**定型 Web 服务**。 对于进行数据评分，调用定型 Web 服务与调用 Azure 机器学习 Web 服务（评分 Web 服务）相同。 前面几部分详细介绍了如何从 Azure 数据工厂管道调用 Azure 机器学习 Web 服务。 
-
-使用 **Azure 机器学习更新资源活动**可调用**评分 Web 服务**，以通过新的定型模型更新 Web 服务。 以下示例提供了链接服务定义： 
-
-### <a name="scoring-web-service-is-a-classic-web-service"></a>评分 Web 服务是经典 Web 服务
-如果评分 Web 服务是**经典 Web 服务**，请使用 [Azure 门户](https://manage.windowsazure.com)创建第二个**非默认且可更新的终结点**。 请参阅[创建终结点](../machine-learning/machine-learning-create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下操作：
-
-* 单击“批处理执行”获取 **mlEndpoint** JSON 属性的 URI 值。
-* 单击“更新资源”链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。
-
-![可更新终结点](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
-
-以下示例为 AzureML 链接服务提供示例 JSON 定义。 此链接服务使用 apiKey 进行身份验证。  
-
-```json
-{
-    "name": "updatableScoringEndpoint2",
-    "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--scoring experiment--/jobs",
-            "apiKey": "endpoint2Key",
-            "updateResourceEndpoint": "https://management.azureml.net/workspaces/xxx/webservices/--scoring experiment--/endpoints/endpoint2"
-        }
-    }
-}
-```
-
-### <a name="scoring-web-service-is-a-new-type-of-web-service-azure-resource-manager"></a>评分 Web 服务时新类型的 Web 服务 (Azure Resource Manager)
-如果 Web 服务是公开 Azure Resource Manager 终结点的新类型 Web 服务，则无需添加第二个**非默认**终结点。 链接服务中的 **updateResourceEndpoint** 的格式如下： 
-
-```
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
-```
-
-在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)上查询 Web 服务时可获取 URL 中占位符的值。 新类型的更新资源终结点要求 AAD (Azure Active Directory) 令牌。 指定 AzureML 链接服务中的 **servicePrincipalId** 和 **servicePrincipalKey**。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../azure-resource-manager/resource-group-create-service-principal-portal.md)。 此处为一示例 AzureML 链接服务定义： 
-
-```json
-{
-    "name": "AzureMLLinkedService",
-    "properties": {
-        "type": "AzureML",
-        "description": "The linked service for AML web service.",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/0000000000000000000000000000000000000/services/0000000000000000000000000000000000000/jobs?api-version=2.0",
-            "apiKey": "xxxxxxxxxxxx",
-            "updateResourceEndpoint": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.MachineLearning/webServices/myWebService?api-version=2016-05-01-preview",
-            "servicePrincipalId": "000000000-0000-0000-0000-0000000000000",
-            "servicePrincipalKey": "xxxxx",
-            "tenant": "mycompany.com"
-        }
-    }
-}
-```
-
-以下方案提供更多详细信息。 它包含有关重新定型和更新 Azure 数据工厂管道中 Azure 机器学习模型的示例。
-
-### <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>方案：重新定型和更新 Azure 机器学习模型
-本部分提供使用 **Azure 机器学习批处理执行活动**来重新定型模型的示例管道。 该管道还使用 **Azure 机器学习更新资源活动**更新评分 Web 服务中的模型。 此外，本部分为示例中的所有链接服务、数据集和管道提供 JSON 片段。
-
-下面是示例管道的图示视图。 如你所见，Azure 机器学习批处理执行活动采用定型输入并生成定型输出（iLearner 文件）。 Azure 机器学习更新资源活动采用此定型输出并更新评分 Web 服务终结点中的模型。 更新资源活动不会生成任何输出。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
-
-![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
-
-#### <a name="azure-blob-storage-linked-service"></a>Azure Blob 存储链接服务：
-Azure 存储保留以下数据：
-
-* 定型数据。 Azure 机器学习定型 Web 服务的输入数据。  
-* iLearner 文件。 来自 Azure 机器学习定型 Web 服务的输出。 此文件也是更新资源活动的输入。  
-
-下面是链接服务的示例 JSON 定义：
-
-```JSON
-{
-    "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=name;AccountKey=key"
-        }
-    }
-}
-```
-
-#### <a name="training-input-dataset"></a>定型输入数据集：
-以下数据集表示 Azure 机器学习定型 Web 服务的输入定型数据。 Azure 机器学习批处理执行活动采用此数据集作为输入。
-
-```JSON
-{
-    "name": "trainingData",
-    "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-            "folderPath": "labeledexamples",
-            "fileName": "labeledexamples.arff",
-            "format": {
-                "type": "TextFormat"
-            }
-        },
-        "availability": {
-            "frequency": "Week",
-            "interval": 1
-        },
-        "policy": {          
-            "externalData": {
-                "retryInterval": "00:01:00",
-                "retryTimeout": "00:10:00",
-                "maximumRetry": 3
-            }
-        }
-    }
-}
-```
-
-#### <a name="training-output-dataset"></a>定型输出数据集：
-以下数据集表示 Azure 机器学习定型 Web 服务中的输出 iLearner 文件。 Azure 机器学习批处理执行活动生成此数据集。 此数据集也是 Azure 机器学习更新资源活动的输入。
-
-```JSON
-{
-    "name": "trainedModelBlob",
-    "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-            "folderPath": "trainingoutput",
-            "fileName": "model.ilearner",
-            "format": {
-                "type": "TextFormat"
-            }
-        },
-        "availability": {
-            "frequency": "Week",
-            "interval": 1
-        }
-    }
-}
-```
-
-#### <a name="linked-service-for-azure-ml-training-endpoint"></a>Azure 机器学习定型终结点的链接服务
-以下 JSON 片段定义指向定型 Web 服务默认终结点的 Azure 机器学习链接服务。
-
-```JSON
-{    
-    "name": "trainingEndpoint",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--training experiment--/jobs",
-              "apiKey": "myKey"
-        }
-      }
-}
-```
-
-在 **Azure 机器学习工作室**中，执行以下操作以获取 **mlEndpoint** 和 **apiKey** 的值：
-
-1. 在左侧菜单上，单击“Web 服务”。
-2. 在 Web 服务列表中，单击“定型 Web 服务”。
-3. 单击“API 密钥”文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
-4. 在 **Azure 机器学习工作室**中，单击“批处理执行”链接。
-5. 从“请求”分区复制“请求 URI”，然后将其粘贴到数据工厂 JSON 编辑器。   
-
-#### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Azure 机器学习可更新评分终结点的链接服务：
-以下 JSON 片段定义指向评分 Web 服务的非默认可更新终结点的 Azure 机器学习链接服务。  
-
-```JSON
-{
-    "name": "updatableScoringEndpoint2",
-    "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/00000000eb0abe4d6bbb1d7886062747d7/services/00000000026734a5889e02fbb1f65cefd/jobs?api-version=2.0",
-            "apiKey": "sooooooooooh3WvG1hBfKS2BNNcfwSO7hhY6dY98noLfOdqQydYDIXyf2KoIaN3JpALu/AKtflHWMOCuicm/Q==",
-            "updateResourceEndpoint": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/myWebService?api-version=2016-05-01-preview",
-            "servicePrincipalId": "fe200044-c008-4008-a005-94000000731",
-            "servicePrincipalKey": "zWa0000000000Tp6FjtZOspK/WMA2tQ08c8U+gZRBlw=",
-            "tenant": "mycompany.com"
-        }
-    }
-}
-```
-
-#### <a name="placeholder-output-dataset"></a>占位符输出数据集：
-Azure 机器学习更新资源活动不会生成任何输出。 但是，Azure 数据工厂需要输出数据集来推动管道计划。 因此，本示例使用虚拟/占位符数据集。  
-
-```JSON
-{
-    "name": "placeholderBlob",
-    "properties": {
-        "availability": {
-            "frequency": "Week",
-            "interval": 1
-        },
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-            "folderPath": "any",
-            "format": {
-                "type": "TextFormat"
-            }
-        }
-    }
-}
-```
-
-#### <a name="pipeline"></a>管道
-管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure 机器学习批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
-
-![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
-
-```JSON
-{
-    "name": "pipeline",
-    "properties": {
-        "activities": [
-            {
-                "name": "retraining",
-                "type": "AzureMLBatchExecution",
-                "inputs": [
-                    {
-                        "name": "trainingData"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "trainedModelBlob"
-                    }
-                ],
-                "typeProperties": {
-                    "webServiceInput": "trainingData",
-                    "webServiceOutputs": {
-                        "output1": "trainedModelBlob"
-                    }              
-                 },
-                "linkedServiceName": "trainingEndpoint",
-                "policy": {
-                    "concurrency": 1,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
-            },
-            {
-                "type": "AzureMLUpdateResource",
-                "typeProperties": {
-                    "trainedModelName": "Training Exp for ADF ML [trained model]",
-                    "trainedModelDatasetName" :  "trainedModelBlob"
-                },
-                "inputs": [
-                    {
-                        "name": "trainedModelBlob"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "name": "placeholderBlob"
-                    }
-                ],
-                "policy": {
-                    "timeout": "01:00:00",
-                    "concurrency": 1,
-                    "retry": 3
-                },
-                "name": "AzureML Update Resource",
-                "linkedServiceName": "updatableScoringEndpoint2"
-            }
-        ],
-        "start": "2016-02-13T00:00:00Z",
-           "end": "2016-02-14T00:00:00Z"
-    }
-}
-```
+完成重新定型后，使用 **Azure ML 更新资源活动**通过新的定型模型更新评分 Web 服务（作为 Web 服务公开的预测实验）。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ### <a name="reader-and-writer-modules"></a>读取器和编写器模块
 使用 Web 服务参数的常见方案是使用 Azure SQL 读取器和编写器。 读取器模块用于将数据加载到 Azure 机器学习工作室外数据管理服务的实验中。 编写器模块用于将实验数据保存到 Azure 机器学习工作室外的数据管理服务。  
@@ -917,9 +632,4 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 
 [azure-machine-learning]: http://azure.microsoft.com/services/machine-learning/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

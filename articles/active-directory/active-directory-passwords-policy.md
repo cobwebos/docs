@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/22/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: 5cb86ac4694d8b763fa693954a8bb1383739497c
+ms.sourcegitcommit: fc73b667112fe35473872c33bc98423a424c5c65
+ms.openlocfilehash: d6bee5afea6afcd756b53f41baef5dd984423c0a
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -48,8 +49,8 @@ ms.openlocfilehash: 5cb86ac4694d8b763fa693954a8bb1383739497c
 | 密码过期期限 |<ul><li>默认值：**90** 天 </li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 Set-MsolPasswordPolicy cmdlet 来配置该值。</li></ul> |
 | 密码过期通知 |<ul><li>默认值：**14** 天（密码到期前）</li><li>可使用 Set-MsolPasswordPolicy cmdlet 配置值。</li></ul> |
 | 密码过期 |<ul><li>默认值：**false** 天（表示已启用密码到期） </li><li>可使用 Set-msoluser cmdlet 配置单个用户帐户的值。 </li></ul> |
-| 密码历史记录 |不能再次使用上次的密码。 |
-| 密码历史记录保留期限 |永久 |
+| 密码**更改**历史记录 |**更改**密码后将**无法**再次使用上一个密码。 |
+| 密码**重置**历史记录 | 由于忘记密码而**重置**后，**可能**还可再次使用上一个密码。 |
 | 帐户锁定 |10 次登录尝试失败（错误密码）之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 |
 
 ## <a name="next-steps"></a>后续步骤
@@ -63,9 +64,4 @@ ms.openlocfilehash: 5cb86ac4694d8b763fa693954a8bb1383739497c
 * [密码管理常见问题解答](active-directory-passwords-faq.md)
 * [排查密码管理问题](active-directory-passwords-troubleshoot.md)
 * [了解详细信息](active-directory-passwords-learn-more.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

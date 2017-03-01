@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
+ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
+ms.openlocfilehash: 3ef8a204144461092cdce2e797116ed51d4e7411
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,21 +27,20 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
 将 Asset Bank 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Asset Bank
-* 可使用户通过其 Azure AD 帐户自动登录 Asset Bank（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可让用户使用其 Azure AD 帐户自动登录到 Asset Bank 单一登录 (SSO)
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要配置 Azure AD 与 Asset Bank 的集成，需要以下项目：
 
-* 一个 Azure AD 订阅
-* 启用的订阅上的 Asset Bank 单一登录
+* Azure AD 订阅
+* 已启用 Asset Bank 单一登录 (SSO) 的订阅
 
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-> 
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。
+>  
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -52,10 +52,10 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
 
 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 Asset Bank
-2. 配置和测试 Azure AD 单一登录
+* 从库中添加 Asset Bank
+* 配置和测试 Azure AD 单一登录
 
-## <a name="adding-asset-bank-from-the-gallery"></a>从库中添加 Asset Bank
+## <a name="add-asset-bank-from-the-gallery"></a>从库中添加 Asset Bank
 若要配置 Asset Bank 与 Azure AD 的集成，需要将库中的 Asset Bank 添加到托管的 SaaS 应用列表。
 
 **若要从库中添加 Asset Bank，请执行以下步骤：**
@@ -80,7 +80,7 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 本部分旨在展示如何根据名为“Britta Simon”的测试用户的指令配置和测试 Asset Bank 的 Azure AD 单一登录。
 
 对于单一登录到工作帐户，Azure AD 需要知道 Azure AD 用户在 Asset Bank 中的对应用户是谁。 换句话说，需要建立 Azure AD 用户与 Asset Bank 中相关用户之间的链接关系。
@@ -89,13 +89,13 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
 
 若要通过 Asset Bank 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 Asset Bank 测试用户](#creating-a-asset-bank-test-user)** - 在 Asset Bank 中创建 Britta Simon 的对立用户，并且将其链接到她在 Azure AD 中的代表。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 本部分要在 Azure 经典门户中启用 Azure AD 单一登录，并且在 Asset Bank 应用程序中配置单一登录。
 
 **若要配置 Asset Bank 的 Azure AD 单一登录，请执行以下步骤：**
@@ -110,18 +110,13 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
 2. 在“配置应用设置”对话框页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_04.png) 
-
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Asset Bank 应用程序的 URL：**“https://\<company name\>.assetbank-server.com”**。
-
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-
+    1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Asset Bank 应用程序的 URL：**“https://\<company name\>.assetbank-server.com”**
+    2. 单击“资源组名称” 的 Azure 数据工厂。
 1. 在“配置 Asset Bank 的单一登录”页面上，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
-   
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    ![配置单一登录](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_05.png)    
+    1. 单击“下载元数据”，然后在计算机上保存该文件。
+    2. 单击“资源组名称” 的 Azure 数据工厂。
 2. 若要为应用程序配置 SSO，请通过 [support@assetbank.co.uk](mailto:support@assetbank.co.uk) 联系 Asset Bank 支持团队，然后将元数据文件附加到电子邮件。
 3. 在 Azure 经典门户中，选择单一登录配置确认，然后单击“下一步”。
    
@@ -130,8 +125,8 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 经典门户中创建名为“Britta Simon”的测试用户。
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。
 
 在“用户列表”中，选择“Britta Simon”。
 
@@ -152,47 +147,36 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-assetbank-tutorial/create_aaduser_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
+    1. 在“用户类型”中，选择“你的组织中的新用户”。
+    2. 在“用户名”文本框中，键入“BrittaSimon”。
+    3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-assetbank-tutorial/create_aaduser_06.png) 
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
     ![创建 Azure AD 测试用户](./media/active-directory-saas-assetbank-tutorial/create_aaduser_07.png) 
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-assetbank-tutorial/create_aaduser_08.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    1. 写下“新密码”的值。
+    2. 单击“完成”。   
 
-### <a name="creating-a-asset-bank-test-user"></a>创建 Asset Bank 测试用户
+### <a name="create-a-asset-bank-test-user"></a>创建 Asset Bank 测试用户
 本部分要在 Asset Bank 中创建名为“Britta Simon”的测试用户。 Asset Bank 支持在默认情况下启用的实时预配。
 
 此部分不存在任何操作项。 如果尚不存在用户，将在尝试访问 Asset Bank 期间创建一个新用户。 
 
-> [!NOTE]
-> 如果需要手动创建用户，则需要联系 Asset Bank 支持团队。
-> 
+>[!NOTE]
+>如果需要手动创建用户，则需要联系 Asset Bank 支持团队。
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-本部分旨在通过授予 Britta Simon 访问 Asset Bank 的权限，支持她使用 Azure 单一登录。
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+本部分旨在通过授予 Britta Simon 访问 Asset Bank 的权限，允许她使用 Azure SSO。
 
 ![分配用户][200] 
 
@@ -212,8 +196,8 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分旨在使用“访问面板”测试你的 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击“Asset Bank”磁贴时，应该会自动登录“Asset Bank”应用程序。
 
@@ -238,9 +222,4 @@ ms.openlocfilehash: cb9e051dcb5cb3c59f80a4e0c022654166ca747d
 [203]: ./media/active-directory-saas-assetbank-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-assetbank-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-assetbank-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

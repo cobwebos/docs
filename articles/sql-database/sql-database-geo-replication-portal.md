@@ -3,7 +3,7 @@ title: "使用 Azure 门户为 Azure SQL 数据库配置异地复制 | Microsoft
 description: "使用 Azure 门户为 Azure SQL 数据库配置异地复制"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: d0b29822-714f-4633-a5ab-fb1a09d43ced
@@ -14,21 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/22/2016
-ms.author: sashan;carlrab
+ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 9faff06ee1856ca6490add759acd3c5f36719853
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: fe2d2ef731fb94c7e4e8da0e518bcef8c1ada650
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="configure-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库配置异地复制
-> [!div class="op_single_selector"]
-> * [概述](sql-database-geo-replication-overview.md)
-> * [Azure 门户](sql-database-geo-replication-portal.md)
-> * [PowerShell](sql-database-geo-replication-powershell.md)
-> * [T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
+# <a name="configure-active-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库配置活动异地复制
 
 本文介绍如何使用 [Azure 门户](http://portal.azure.com)为 SQL 数据库配置活动异地复制。
 
@@ -39,7 +33,7 @@ ms.openlocfilehash: 9faff06ee1856ca6490add759acd3c5f36719853
 > 
 > 
 
-若要使用 Azure 门户配置异地复制，需要以下资源：
+若要使用 Azure 门户配置活动异地复制，需要以下资源：
 
 * Azure SQL 数据库：要复制到其他地理区域的主数据库。
 
@@ -51,7 +45,7 @@ ms.openlocfilehash: 9faff06ee1856ca6490add759acd3c5f36719853
 
 只有订阅所有者或共有者才能添加辅助数据库。
 
-辅助数据库具有与主数据库相同的名称，并默认使用相同的服务级别。 辅助数据库可以是独立数据库，也可以是弹性池中的数据库。 有关详细信息，请参阅[服务层](sql-database-service-tiers.md)。
+辅助数据库具有与主数据库相同的名称，并默认使用相同的服务级别。 辅助数据库可以是单一数据库，也可以是弹性池中的数据库。 有关详细信息，请参阅[服务层](sql-database-service-tiers.md)。
 创建辅助数据库并设定种子后，会开始将数据从主数据库复制到新的辅助数据库。
 
 > [!NOTE]
@@ -90,10 +84,5 @@ ms.openlocfilehash: 9faff06ee1856ca6490add759acd3c5f36719853
 ## <a name="next-steps"></a>后续步骤
 * 若要深入了解活动异地复制，请参阅[活动异地复制](sql-database-geo-replication-overview.md)。
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

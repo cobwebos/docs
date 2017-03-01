@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8254f41006c36509af3626cb14825602e6a4adb
+ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
+ms.openlocfilehash: 6e6dad2dba03bd3339d841c885ab4e60b2dafbd3
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>教程：Azure Active Directory 与 Box 集成
 本教程的目的是说明 Azure 与 Box 的集成。  
+
 在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
@@ -30,91 +32,97 @@ ms.openlocfilehash: c8254f41006c36509af3626cb14825602e6a4adb
 
 在本教程中概述的方案由以下构建基块组成：
 
-1. 为 Box 启用应用程序集成
-2. 配置单一登录
-3. 配置用户和组的预配
-4. 分配用户
+* 为 Box 启用应用程序集成
+* 配置单一登录 (SSO)
+* 配置用户和组的预配
+* 分配用户
 
-![方案](./media/active-directory-saas-box-tutorial/IC769537.png "Scenario")
+![方案](./media/active-directory-saas-box-tutorial/IC769537.png "方案")
 
-## <a name="enabling-the-application-integration-for-box"></a>为 Box 启用应用程序集成
+## <a name="enable-the-application-integration-for-box"></a>为 Box 启用应用程序集成
 本部分旨在概述如何为 Box 启用应用程序集成。
 
-### <a name="to-enable-the-application-integration-for-box-perform-the-following-steps"></a>若要支持 Box 的应用程序集成，请执行以下步骤：
+**若要为 Box 启用应用程序集成，请执行以下步骤：**
+
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-box-tutorial/IC700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-box-tutorial/IC700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-box-tutorial/IC700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-box-tutorial/IC749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-box-tutorial/IC749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加一个应用程序](./media/active-directory-saas-box-tutorial/IC749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-box-tutorial/IC749322.png "从库添加应用程序")
 6. 在搜索框中，键入“Box”。
    
-   ![应用程序库](./media/active-directory-saas-box-tutorial/IC701023.png "Application gallery")
+   ![应用程序库](./media/active-directory-saas-box-tutorial/IC701023.png "应用程序库")
 7. 在“结果”窗格中，选择“Box”，然后单击“完成”，添加该应用程序。
    
    ![Box](./media/active-directory-saas-box-tutorial/IC701024.png "Box")
 
-## <a name="configuring-single-sign-on"></a>配置单一登录
-本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Box 证明自己的身份。 在此过程中，需要将元数据上传到 Box.com。
+## <a name="configure-single-sign-on"></a>配置单一登录
+本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Box 证明自己的身份。 
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
+在此过程中，需要将元数据上传到 Box.com。
+
+**若要配置单一登录，请执行以下步骤：**
+
 1. 在 Azure 经典门户中的“Box”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-box-tutorial/IC769538.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-box-tutorial/IC769538.png "配置单一登录")
 2. 在“你希望用户如何登录 Box”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-box-tutorial/IC769539.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-box-tutorial/IC769539.png "配置单一登录")
 3. 在“配置应用 URL”页上的“Box 租户 URL”文本框中，键入 Box 租户 URL（例如：https://<mydomainname>.box.com），然后单击“下一步”。
    
-   ![配置应用 URL](./media/active-directory-saas-box-tutorial/IC669826.png "Configure app URL")
+  ![配置应用 URL](./media/active-directory-saas-box-tutorial/IC669826.png "配置应用 URL")
 4. 在“配置 Box 的单一登录”页上，若要下载元数据，请单击“下载元数据”，然后将元数据文件本地保存在计算机上。
    
-   ![配置单一登录](./media/active-directory-saas-box-tutorial/IC669824.png "Configure single sign-on")
+  ![配置单一登录](./media/active-directory-saas-box-tutorial/IC669824.png "配置单一登录")
 5. 将该元数据文件转发给 Box 支持团队。 支持团队需要为你配置单一登录。
-6. 选择单一登录配置确认，然后单击“完成”，关闭“配置单一登录”对话框。
+6. 选择“单一登录配置确认”，然后单击“完成”以关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-box-tutorial/IC769540.png "Configure single sign-on")
+  ![配置单一登录](./media/active-directory-saas-box-tutorial/IC769540.png "配置单一登录")
    
-   ## <a name="configuring-user-provisioning"></a>配置用户设置
+## <a name="configure-user-provisioning"></a>配置用户设置
 
 本部分的目的是概述如何对 Box 启用 Active Directory 用户帐户的预配。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>若要配置单一登录，请执行以下步骤：
-1. 在 Azure 经典门户中的“Box”应用程序集成页上，单击“配置用户预配”，打开“配置用户预配”对话框。 
+**若要配置单一登录，请执行以下步骤：**
+
+1. 在 Azure 经典门户中的“Box”应用程序集成页上，单击“配置用户设置”，打开“配置用户设置”对话框。 
    
-    ![启用自动预配](./media/active-directory-saas-box-tutorial/IC769541.png "Enable automatic user provisioning")
-2. 在“启用对 Box 的用户预配”对话框页上，单击“启用用户预配”。 
+    ![启用自动用户设置](./media/active-directory-saas-box-tutorial/IC769541.png "Enable automatic user provisioning")
+2. 在“启用对 Box 的用户设置”对话框页上，单击“启用用户设置”。 
    
-    ![启用自动预配](./media/active-directory-saas-box-tutorial/IC769544.png "Enable automatic user provisioning")
+    ![启用自动用户设置](./media/active-directory-saas-box-tutorial/IC769544.png "Enable automatic user provisioning")
 3. 在“登录授予对 Box 的访问权限”页上，提供所需的凭据，然后单击“授权”。 
    
-    ![启用自动预配](./media/active-directory-saas-box-tutorial/IC769546.png "Enable automatic user provisioning")
+    ![启用自动用户设置](./media/active-directory-saas-box-tutorial/IC769546.png "Enable automatic user provisioning")
 4. 单击“授予对 Box 的访问权限”对此操作授权，并返回到 Azure 经典门户。 
    
-    ![启用自动预配](./media/active-directory-saas-box-tutorial/IC769549.png "Enable automatic user provisioning")
+    ![启用自动用户设置](./media/active-directory-saas-box-tutorial/IC769549.png "Enable automatic user provisioning")
 5. 在“预配选项”页上，可以使用“要预配的对象类型”复选框选择是否在用户对象的基础上为 Box 预配组对象。  有关详细信息，请参阅下面的“分配用户和组”部分。
 6. 若要完成配置，请单击“完成”按钮。 
    
-    ![启用自动预配](./media/active-directory-saas-box-tutorial/IC769551.png "Enable automatic user provisioning")
+    ![启用自动用户设置](./media/active-directory-saas-box-tutorial/IC769551.png "Enable automatic user provisioning")
 
-## <a name="assigning-a-test-user"></a>分配测试用户
-若要测试配置，需要向希望能够通过应用程序访问配置的 Azure AD 用户分配访问权限，从而向他们授予该权限。
+## <a name="assign-a-test-user"></a>分配测试用户
+若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
 
-### <a name="to-assign-users-to-box-perform-the-following-steps"></a>若要将用户分配到 Box，请执行以下步骤：
+**若要将用户分配到 Box，请执行以下步骤：**
+
 1. 在 Azure 经典门户中，创建测试帐户。
 2. 在“Box”应用程序集成页上，单击“分配用户”。 
    
-    ![分配用户](./media/active-directory-saas-box-tutorial/IC769552.png "Assign users")
+    ![分配用户](./media/active-directory-saas-box-tutorial/IC769552.png "分配用户")
 3. 选择测试用户，单击“分配”，然后单击“是”确认分配。 
    
-   ![是](./media/active-directory-saas-box-tutorial/IC767830.png "Yes")
+   ![是](./media/active-directory-saas-box-tutorial/IC767830.png "是")
 
 现在应等待 10 分钟，然后验证该帐户是否已同步到 Box。
 
@@ -130,7 +138,7 @@ ms.openlocfilehash: c8254f41006c36509af3626cb14825602e6a4adb
 
 ![集成状态](./media/active-directory-saas-box-tutorial/IC769556.png "Integration status")
 
-## <a name="assigning-users-and-groups"></a>分配用户和组
+## <a name="assign-users-and-groups"></a>分配用户和组
 可以使用 Azure 经典门户中的“Box > 用户和组”选项卡指定应向哪些用户和组授予对 Box 的访问权限。 分配用户或组会导致以下结果：
 
 * Azure AD 允许分配的用户（不管是直接分配还是以组成员的方式进行分配）向 Box 进行身份验证。 如果用户尚未分配，则 Azure AD 不会允许其登录到 Box，并会在 Azure AD 登录页上返回一个错误。
@@ -147,10 +155,5 @@ ms.openlocfilehash: c8254f41006c36509af3626cb14825602e6a4adb
 * [预配：自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

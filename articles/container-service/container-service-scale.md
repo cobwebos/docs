@@ -14,22 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 02/21/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: cb3fd28659eb09dfb74496d2aa526736d223631a
-ms.openlocfilehash: d1571aa6191111c46c43b3a424cea415091adfc9
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 773eba80715cb990b23ecec548a18c112ba73a42
+ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="scale-an-azure-container-service-cluster"></a>缩放 Azure 容器服务群集
 [部署 Azure 容器服务群集](container-service-deployment.md)后，可能需要更改代理节点数。 例如，可能需要更多代理，以便运行更多容器应用程序或实例。 
 
-可以使用 Azure 门户或 Azure CLI 2.0（预览版）更改群集中的代理节点数。 Azure CLI 2.0（预览版）是适用于 Resource Manager 部署模型的[下一代 CLI](/cli/azure/old-and-new-clis)。
-
-> [!NOTE]
-> 目前，不支持缩放容器服务 Kubernetes 群集中的代理节点。
-
+可以使用 Azure 门户或 Azure CLI 2.0（预览版）更改 DC/OS、Docker Swarm 或 Kubernetes 群集中的代理节点数。 Azure CLI 2.0 是适用于 Resource Manager 部署模型的[新一代 CLI](/cli/azure/old-and-new-clis)。
 
 ## <a name="scale-with-the-azure-portal"></a>使用 Azure 门户缩放
 
@@ -43,9 +40,9 @@ ms.openlocfilehash: d1571aa6191111c46c43b3a424cea415091adfc9
 
 
 
-## <a name="scale-with-the-azure-cli-20-preview"></a>使用 Azure CLI 2.0（预览版）缩放
+## <a name="scale-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 缩放
 
-确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0（预览版）并已登录到 Azure 帐户 (`az login`)。
+确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0 并已登录到 Azure 帐户 (`az login`)。
 
 
 ### <a name="see-the-current-agent-count"></a>查看当前代理计数
@@ -67,7 +64,7 @@ az acs show -g myResourceGroup -n containerservice-myACSName
 azure acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Azure CLI 2.0（预览版）将返回一个表示容器服务新配置的 JSON 字符串，其中包括新的代理计数。
+Azure CLI 2.0 将返回一个表示容器服务新配置的 JSON 字符串，其中包括新的代理计数。
 
 有关更多命令选项，请运行 `az acs scale --help`。
 
@@ -90,12 +87,7 @@ Azure CLI 2.0（预览版）将返回一个表示容器服务新配置的 JSON �
 
 
 ## <a name="next-steps"></a>后续步骤
-* 请参阅[更多示例](container-service-create-acs-cluster-cli.md)，了解如何将 Azure CLI 2.0（预览版）命令用于 Azure 容器服务。
+* 请参阅[更多示例](container-service-create-acs-cluster-cli.md)，了解如何将 Azure CLI 2.0 命令用于 Azure 容器服务。
 * 详细了解 Azure 容器服务中的 [DC/OS 代理池](container-service-dcos-agents.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

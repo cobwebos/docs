@@ -12,25 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/30/2017
+ms.date: 02/16/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f65661013ce7cb5987ba83fb824befe7b4d1f70b
-ms.openlocfilehash: 4c230046bb5314f5fbd3e6d65e1317cb056fa647
+ms.sourcegitcommit: 9e480c13f48e93da32ff5a3c8d3064e98fed0265
+ms.openlocfilehash: 0ec19832d395547e8ebd3eee0d44dcf466a2ace7
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-portal"></a>使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集
 > [!div class="op_single_selector"]
 > * [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [使用 PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [使用 PowerShell（对于其他存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [使用资源管理器](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
 了解如何通过 Azure 门户创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集。 对于支持的群集类型，Data Lake Store 用作默认存储或其他存储帐户。 在 Data Lake Store 用作其他存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Store 帐户中。 使用 Data Lake Store 作为其他存储帐户不会影响读/写到此群集的存储的性能或能力。
 
-一些重要注意事项：
+## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>将 Data Lake Store 用于 HDInsight 群集存储
+
+下面是结合使用 HDInsight 和 Data Lake Store 的一些重要注意事项：
 
 * HDInsight 版本 3.5 提供创建 HDInsight 群集（可访问作为默认存储的 Data Lake Store）的选项。
 
@@ -52,12 +56,6 @@ ms.openlocfilehash: 4c230046bb5314f5fbd3e6d65e1317cb056fa647
 
     **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Store 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)中所述。
 
-## <a name="do-you-learn-faster-with-videos"></a>通过视频学得更快？
-观看以下视频，了解如何设置具有 Data Lake Store 访问权限的 HDInsight 群集。
-
-* [Create an HDInsight cluster with access to Data Lake Store](https://mix.office.com/watch/l93xri2yhtp2)（创建具有 Data Lake Store 访问权限的 HDInsight 群集）
-* 设置群集后，[Access data in Data Lake Store using Hive and Pig scripts](https://mix.office.com/watch/1n9g5w0fiqv1q)（使用 Hive 和 Pig 脚本访问 Data Lake Store 中的数据）
-
 ## <a name="create-an-hdinsight-cluster-with-access-to-azure-data-lake-store"></a>创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集
 在此部分中，可创建使用 Data Lake Store 作为其他存储的 HDInsight Hadoop 群集。 此版本中，对于 Hadoop 群集，Data Lake Store 仅可用作此群集的其他存储。 默认存储仍是 Azure storage blobs (WASB)。 因此，首先来创建此群集所需的存储帐户和存储容器。
 
@@ -65,14 +63,16 @@ ms.openlocfilehash: 4c230046bb5314f5fbd3e6d65e1317cb056fa647
 
 2. 请按照[在 HDInsight 中创建 Hadoop群集](../hdinsight/hdinsight-provision-clusters.md)中的步骤开始设置 HDInsight 群集。
 
-3. 在“数据源”边栏选项卡上，指定是否将 Azure 存储 (WASB) 或 Data Lake Store 作为默认存储。 如果将 Azure Data Lake Store 用作默认存储，请跳到下一步。
+3. 在“存储”边栏选项卡上，指定是要将 Azure 存储 (WASB) 还是 Data Lake Store 作为默认存储。 如果将 Azure Data Lake Store 用作默认存储，请跳到下一步。
 
-    如果将 Azure 存储 Blob 用作默认存储，则对于“主要存储类型”，请单击“Azure 存储”。 指定存储帐户和存储容器的详细信息，将“位置”指定为“美国东部 2”，然后单击“Data Lake Store 访问”。
+    如果将 Azure 存储 Blob 用作默认存储，则对于“主要存储类型”，请单击“Azure 存储”。 在此之后，如果要指定属于你的 Azure 订阅的存储帐户，则对于“选择方法”，可以选择“我的订阅”，然后选择存储帐户。 否则，请单击“访问密钥”，并提供想要从你的 Azure 订阅外部选择的存储帐户的信息。 对于“默认容器”，可以选择使用门户建议的默认容器名称或自己指定。 
+
+    将 Azure 存储 Blob 用作默认存储时，仍可将 Azure Data Lake Store 用作群集的其他存储。 若要执行此操作，请单击“Data Lake Store 访问”，然后跳到步骤 5。
 
     ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "将服务主体添加到 HDInsight 群集")
 
 
-4. 如果将 Azure Data Lake Store 用作默认存储，则对于“主要存储类型”，请单击“Data Lake Store”。 选择已存在的 Data Lake Store 帐户，提供根文件夹路径，将在此路径下存储特定群集的文件（请参阅以下说明），将“位置”指定为“美国东部 2”，然后单击“Data Lake Store 访问”。 可将此选项仅用于 HDInsight 3.5 群集（标准版）。 在 HDInsight 3.5 群集内，此选项不可用于 HBase 群集类型。
+4. 如果将 Azure Data Lake Store 用作默认存储，则对于“主要存储类型”，请单击“Data Lake Store”。 选择已存在的 Data Lake Store 帐户，提供根文件夹路径，将在此路径下存储特定群集的文件，将“位置”指定为“美国东部 2”，然后单击“Data Lake Store 访问”。 可将此选项仅用于 HDInsight 3.5 群集（标准版）。 在 HDInsight 3.5 群集内，此选项不可用于 HBase 群集类型。
 
     在以下屏幕截图中，根文件夹路径是 /clusters/myhdiadlcluster，其中 **myhdiadlcluster** 是正在创建的群集的名称。 在这种情况下，请确保 Data Lake Store 帐户中已存在 **/clusters** 文件夹。 **myhdiadlcluster** 文件夹将在群集创建过程中创建。 同样，如果根路径设置为 /hdinsight/clusters/data/myhdiadlcluter，必须确保 Data Lake Store 帐户中已存在 **/hdinsight/clusters/data/**。
 
@@ -158,9 +158,4 @@ Spark 群集可用于对存储在 Data Lake Store 中的数据运行 Spark 作�
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

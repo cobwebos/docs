@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 831f585a9591338c2f404f7ec031d40937731eab
-ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: c226d1eecbda09f4538f37d830ce68064e8ce77b
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
 ## <a name="get-started"></a>入门
 可在 OS X、Windows 或 Linux 上运行此演练。
 - 需要一个 Azure 订阅。 如果没有，可以 [注册一个帐户](https://azure.microsoft.com/)。
-- 安装 [Azure 命令行工具](https://github.com/Azure/azure-cli#microsoft-azure-cli-20---preview)。
+- 安装 [Azure CLI 2.0](/cli/azure/install-az-cli2)。
 
 ## <a name="what-well-create"></a>要创建的内容
 让我们来了解一下该应用某些关键的方面，以及我们要设置的部署流：
@@ -319,7 +320,7 @@ VSTS 发布管道默认设置三个环境：开发、测试，和生产。 目�
 ## <a name="clean-up"></a>清理
 若要限制与此教程相关的计算费用，请运行以下命令，并记下与 ACS 群集相关的部署管道资源：
 
-```azurecli 
+```azurecli    
 az container release list --resource-name myacs --resource-group myacs-rg
 ```
 
@@ -345,9 +346,4 @@ az container release list --resource-name myacs --resource-group myacs-rg
 2. 在左侧的生成定义列表中，单击想要删除的生成定义旁的下拉列表，然后选择“删除”。
 
 `![删除 VSTS 发布定义](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

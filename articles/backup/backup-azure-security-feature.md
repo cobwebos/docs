@@ -12,11 +12,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/24/2016
+ms.date: 02/17/2017
 ms.author: pajosh
 translationtype: Human Translation
-ms.sourcegitcommit: 4a846e86fa8cefbee04e1e30078a0d2aabdd834d
-ms.openlocfilehash: 1b7df71f103e8284bdcc7bc3a27fe44815b12305
+ms.sourcegitcommit: 5c49de40401235d38142efd60d22b0591752fe75
+ms.openlocfilehash: f17802bf455b82f0b5239356c35024ecde7f1f35
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -29,13 +30,14 @@ ms.openlocfilehash: 1b7df71f103e8284bdcc7bc3a27fe44815b12305
 
 > [!NOTE]
 > 只有使用以下项才应启用安全功能： <br/>
-> * **MAB 代理** - 最小代理版本 2.0.9052。 启用这些功能后，应升级到此代理版本，以执行关键操作，例如更改密码、通过删除数据停止备份 <br/>
-> * **Azure 备份服务器** - Azure 备份服务器 Update 1 的最小 MAB 代理版本 2.0.9052 <br/>
-> * **DPM** - 不对 DPM 启用这些功能。 即将在未来的 URs 中推出这些功能，因此启用这些功能对现有功能没有任何影响。 <br/>
+> * **MAB 代理** - 最小代理版本 2.0.9052。 启用这些功能后，应升级到此代理版本，以执行关键操作，例如更改密码、通过删除数据停止备份。 <br/>
+> * **Azure 备份服务器** - Azure 备份服务器 Update 1 的 MAB 最低代理版本 2.0.9052。 <br/>
+> * **DPM** - DPM 2012 R2 UR12 或 DPM 2016 UR2 的 MAB 最低代理版本 2.0.9052。 <br/>
 > * **IaaS VM 备份** - 不对 IaaS VM 备份启用这些功能。 这些功能对于 IaaS VM 备份尚不可用，因此启用这些功能对 IaaS VM 备份没有任何影响。
-> * 启用后，将获得所有 Azure 恢复服务代理 (MARS) 计算机和向保管库注册的 Azure 备份服务器的安全功能。 <br/>
+> * 这些功能仅可用于恢复服务保管库。
+> * 默认情况下，所有新创建的恢复服务保管库均具有这些功能。 对于现有的恢复服务保管库，用户需要使用下面部分中所述的步骤启用这些功能。
+> * 启用后，将获得向保管库注册的所有 Azure 恢复服务代理 (MARS) 计算机、Azure 备份服务器和 DPM 服务器的安全功能。 <br/>
 > * 启用此设置是一次性操作，启用这些功能后不能禁用它们。 <br/>
-> * 此功能仅可用于恢复服务保管库。
 >
 >
 
@@ -70,13 +72,18 @@ ms.openlocfilehash: 1b7df71f103e8284bdcc7bc3a27fe44815b12305
 
 对于 **Microsoft 恢复服务代理 (MARS)** 用户：
 
-1. 如果发生备份的计算机仍可用，请在 MARS 中使用[将数据恢复到同一计算机](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-the-same-machine)，从所有旧的恢复点恢复。
+1. 如果发生备份的计算机仍可用，请在 MARS 中使用[将数据恢复到同一计算机](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine)，从所有旧的恢复点恢复。
 2. 如果上面提到的计算机不可用，则使用[恢复到备用计算机](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)，使用另一台 MARS 计算机获取此数据。
 
 对于 **Azure 备份服务器**用户：
 
 1. 如果发生备份的服务器仍可用，则重新保护已删除的数据源，并使用恢复数据功能从所有旧的恢复点恢复。
 2. 如果上面提到的计算机不可用，则使用[从另一 Azure 备份服务器恢复数据](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server)，使用另一 Azure 备份服务器获取此数据。
+
+对于 **Data Protection Manager (DPM)** 用户：
+
+1. 如果发生备份的服务器仍可用，则重新保护已删除的数据源，并使用恢复数据功能从所有旧的恢复点恢复。
+2. 如果上面提到的计算机不可用，则通过[添加外部 DPM](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server) 来使用另一个 DPM 服务器获取此数据。
 
 ## <a name="preventing-attacks"></a>防止攻击
 作为此功能的一部分，已添加检查，确保只有效用户才可执行各种操作。
@@ -108,9 +115,5 @@ ms.openlocfilehash: 1b7df71f103e8284bdcc7bc3a27fe44815b12305
 * [Azure 恢复服务保管库入门](backup-azure-vms-first-look-arm.md)，用于启用这些功能
 * [下载最新的 Azure 恢复服务代理](http://aka.ms/azurebackup_agent)，保护 Windows 计算机并防止备份数据受到攻击
 * [下载最新的 Azure 备份服务器](https://aka.ms/latest_azurebackupserver)，保护工作负荷并防止备份数据受到攻击
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+* [下载适用于 System Center 2012 R2 Data Protection Manager 的 UR12](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) 或[下载适用于 System Center 2016 Data Protection Manager 的 UR2](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) 来保护工作负荷和备份数据免受攻击
 

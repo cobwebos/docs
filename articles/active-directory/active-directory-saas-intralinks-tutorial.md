@@ -12,22 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
+ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
+ms.openlocfilehash: 2112f4b129ff8735955d440341174a44a6a1469c
+ms.lasthandoff: 02/17/2017
 
 
 ---
+
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>教程：Azure Active Directory 与 Intralinks 集成
 在本教程中，了解如何将 Intralinks 与 Azure Active Directory (Azure AD) 集成。
 
 将 Intralinks 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Intralinks
-* 可以让用户使用其 Azure AD 帐户自动登录到 Intralinks（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以让用户使用其 Azure AD 帐户自动登录到 Intralinks 单一登录 (SSO)
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -37,9 +39,8 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
 * Azure AD 订阅
 * 已启用 Intralinks 单一登录的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。 
 > 
 
 测试本教程中的步骤应遵循以下建议：
@@ -55,7 +56,7 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
 1. 从库中添加 Intralinks
 2. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-intralinks-from-the-gallery"></a>从库中添加 Intralinks
+## <a name="add-intralinks-from-the-gallery"></a>从库添加 Intralinks
 若要配置 Intralinks 与 Azure AD 的集成，需要从库中将 Intralinks 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Intralinks，请执行以下步骤：**
@@ -80,22 +81,24 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，基于一个名为“Britta Simon”的测试用户使用 Intralinks 配置和测试 Azure AD 单一登录。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Intralinks 用户。 换句话说，需要在 Azure AD 用户与 Intralinks 中相关用户之间建立链接关系。
+若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 Intralinks 用户。 换句话说，需要在 Azure AD 用户与 Intralinks 中相关用户之间建立链接关系。
 
-通过将 Azure AD 中“用户名”的值分配为 Intralinks 中“用户名”的值来建立此链接关系。
+>[!NOTE]
+>通过将 Azure AD 中“用户名”的值分配为 Intralinks 中“用户名”的值来建立此链接关系。
+>
 
 若要使用 Intralinks 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Intralinks 测试用户](#creating-an-intralinks-test-user)** - 在 Intralinks 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+3. **[创建 Intralinks 测试用户](#creating-an-intralinks-test-user)** - 在 Intralinks 中创建 Britta Simon 的对应者，将其链接到她的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 在本部分中，在经典门户中启用 Azure AD 单一登录，并在 Intralinks 应用程序中配置单一登录。
 
 **若要使用 Intralinks 配置 Azure AD 单一登录，请执行以下步骤：**
@@ -110,16 +113,14 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
    
     ![配置单一登录](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_04.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Intralinks 应用程序的 URL：**https://\<公司名称\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<Azure AD Tenant ID\>/**。
-   
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Intralinks 应用程序的 URL：**https://\<公司名称\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<Azure AD Tenant ID\>/**。
+    2. 单击“下一步”。
 4. 在“配置 Intralinks 的单一登录”页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_05.png)
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载元数据”，然后在计算机上保存该文件。
-   
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    1. 单击“下载元数据”，然后在计算机上保存该文件。
+    2. 单击“下一步”。
 5. 若要为应用程序配置 SSO，请联系 Intralinks 支持团队，并将下载的元数据文件作为附件通过电子邮件发送。
 6. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
@@ -128,10 +129,10 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 在本部分中，将在经典门户中创建一个名为 Britta Simon 的测试用户。
 
-在“用户”列表中，选择“Britta Simon”。
+* 在“用户”列表中，选择“Britta Simon”。
 
 ![创建 Azure AD 用户][20]
 
@@ -147,24 +148,18 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/create_aaduser_04.png) 
-5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/create_aaduser_05.png) 
+5. 在“告诉我们有关此用户的信息”对话框页中，执行以下步骤： ![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/create_aaduser_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
+    1. 在“用户类型”中，选择“你的组织中的新用户”。 
+    2. 在“用户名”文本框中，键入“BrittaSimon”。
+    3. 单击“资源组名称” 的 Azure 数据工厂。
+6. 在“用户配置文件”对话框页面上，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/create_aaduser_06.png) 
    
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“资源组名称” 的 Azure 数据工厂。
-6. 在“用户配置文件”对话框页上，执行以下步骤：![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/create_aaduser_06.png) 
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   1. 在“名字”文本框中，键入“Britta”。  
+   2. 在“姓氏”文本框中，键入“Simon”。
+   3. 在“显示名称”文本框中，键入“Britta Simon”。   
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/create_aaduser_07.png) 
@@ -172,14 +167,13 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-intralinks-tutorial/create_aaduser_08.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    1. 写下“新密码”的值。
+    2. 单击“完成”。   
 
-### <a name="creating-an-intralinks-test-user"></a>创建 Intralinks 测试用户
+### <a name="create-an-intralinks-test-user"></a>创建 Intralinks 测试用户
 在本部分中，将在 Intralinks 中创建一个名为“Britta Simon”的用户。 请与 Intralinks 支持团队协作，将用户添加到 Intralinks 平台中。
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 在本部分中，通过授予 Britta Simon 访问 Intralinks 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户][200] 
@@ -200,14 +194,13 @@ ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
    
     ![分配用户][205]
 
-### <a name="adding-intralinks-via-or-elite-application"></a>添加 Intralinks VIA 或 Elite 应用程序
-Intralinks 对所有其他 Intralinks 应用程序（不包括 Deal Nexus 应用程序）使用同一单一登录标识平台。 因此，如果你计划使用任何其他 Intralinks 应用程序，则首先需要使用上述过程为一个主要 Intralinks 应用程序配置单一登录。
+### <a name="add-intralinks-via-or-elite-application"></a>添加 Intralinks VIA 或 Elite 应用程序
+Intralinks 对所有其他 Intralinks 应用程序（不包括 Deal Nexus 应用程序）都使用同一 SSO 标识平台。 因此，如果你计划使用任何其他 Intralinks 应用程序，则首先需要使用上述过程为一个主要 Intralinks 应用程序配置 SSO。
 
-之后，可以按照以下过程在可以利用此主要应用程序进行单一登录的租户中添加其他 Intralinks 应用程序。 
+之后，可以按照以下过程在可以利用此主要应用程序进行 SSO 的租户中添加其他 Intralinks 应用程序。 
 
-> [!NOTE]
-> 请注意，此功能只可用于 Azure AD 高级版 SKU 客户，不可用于免费或基本 SKU 客户。
-> 
+>[!NOTE]
+>此功能只可用于 Azure AD 高级 SKU 客户，不可用于免费或基本 SKU 客户。
 > 
 
 1. 在 **Azure 经典门户**的左侧导航窗格上，单击“Active Directory”。
@@ -223,24 +216,24 @@ Intralinks 对所有其他 Intralinks 应用程序（不包括 Deal Nexus 应用
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
     ![应用程序][4]
-6. 在左侧选项卡中单击“自定义”选项卡
+6. 在左侧选项卡中单击“自定义”选项卡。
    
     ![添加 Intralinks VIA 或 Elite 应用程序](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_51.png)
 7. 为应用程序指定适当的名称（例如 **Intralinks Elite**），然后单击“完成”按钮。
-8. 单击“配置单一登录”按钮
-9. 选择“现有单一登录”选项
+8. 单击“配置单一登录”按钮。
+9. 选择“现有单一登录”选项。
    
     ![添加 Intralinks VIA 或 Elite 应用程序](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_52.png)
 10. 从 Intralinks 团队获取其他 Intralinks 应用程序的 SP 启动 SSO URL并输入它，如下所示。 
     
     ![添加 Intralinks VIA 或 Elite 应用程序](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_53.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Intralinks 应用程序的 URL：**https://\<CompanyName\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<AzureADTenantID\>/**
-11. 单击“资源组名称” 的 Azure 数据工厂。
-12. 将应用程序分配给用户或组，如**[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)**部分中所示
+    * 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Intralinks 应用程序的 URL：**https://\<CompanyName\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<AzureADTenantID\>/**
+11. 单击“下一步”。
+12. 将应用程序分配给用户或组，如**[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)**部分中所示。
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+在本部分中，使用访问面板测试 Azure AD SSO 配置。
 
 单击访问面板中的 Intralinks 磁贴时，你应自动登录到 Intralinks 应用程序。
 
@@ -265,9 +258,4 @@ Intralinks 对所有其他 Intralinks 应用程序（不包括 Deal Nexus 应用
 [203]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
