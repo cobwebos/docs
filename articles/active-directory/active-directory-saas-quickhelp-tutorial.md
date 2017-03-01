@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5e67654ceaa7420615c63fae288da4fa048110c7
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: f84a5a9e40f6dd1c98fd73ba38a1b5cae9d9cba4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -111,7 +112,7 @@ ms.openlocfilehash: 5e67654ceaa7420615c63fae288da4fa048110c7
     > 
     > 
    
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
+    b.保留“数据库类型”设置，即设置为“共享”。 单击“下一步”。
 4. 在“配置 QuickHelp 的单一登录”页上，执行以下步骤：单击“下载元数据”，然后将元数据文件本地保存在计算机上。
    
     ![什么是 Azure AD Connect][9] 
@@ -171,7 +172,7 @@ ms.openlocfilehash: 5e67654ceaa7420615c63fae288da4fa048110c7
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤： 
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_06.png) 
@@ -183,7 +184,7 @@ ms.openlocfilehash: 5e67654ceaa7420615c63fae288da4fa048110c7
     c. 在“显示名称”文本框中，键入“Britta Simon”。
    
     d.单击“下一步”。 在“角色”列表中，选择“用户”。
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
 
     ![创建 Azure AD 测试用户](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_07.png) 
@@ -273,10 +274,5 @@ QuickHelp 支持实时预配。 这意味着，如果需要，将在 QuickHelp �
 
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
