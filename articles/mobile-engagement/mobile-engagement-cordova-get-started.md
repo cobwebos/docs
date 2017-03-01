@@ -4,7 +4,7 @@ description: "了解如何将带分析和推送通知功能的 Azure Mobile Enga
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 54fe9113-e239-4ed7-9fd1-a502d7ac7f47
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: a3e619d6e130212064093150d22d971a562a6601
-ms.openlocfilehash: 18a32c7282fd24280cb634b90db20721503437e7
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 2fc534e90431d7c44dc05327fd3d32a2e6ab1c8b
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -219,10 +220,5 @@ iOS 市场宣传图标：必须是带扩展的资源名称（示例：mynotifica
 [10]: ./media/mobile-engagement-cordova-get-started/campaign-activate.png
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 8e11b36ee927724d4736f8a235aa97848ee2d271
-ms.openlocfilehash: d0647706ad18b3106de44496e43ea822896215ba
+ms.sourcegitcommit: f4b26aa9a4dd110eafb8f9f8d658cc0f530136ec
+ms.openlocfilehash: 4548d83525dba6024d1892950e3acbc6b857977a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -179,21 +180,21 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [适用于 .NET、Windows Phone 和 Windows 运行时的存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [适用于 C++ 的存储客户端库](https://github.com/Azure/azure-storage-cpp)
-* [适用于 Java/Android 的存储空间客户端库](/develop/java/)
+* [适用于 Java/Android 的存储空间客户端库](https://azure.microsoft.com/develop/java/)
 * [适用于 Node.js 的存储空间客户端库](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [适用于 PHP 的存储空间客户端库](/develop/php/)
-* [适用于 Ruby 的存储空间客户端库](/develop/ruby/)
-* [适用于 Python 的存储空间客户端库](/develop/python/)
+* [适用于 PHP 的存储空间客户端库](https://azure.microsoft.com/develop/php/)
+* [适用于 Ruby 的存储空间客户端库](https://azure.microsoft.com/develop/ruby/)
+* [适用于 Python 的存储空间客户端库](https://azure.microsoft.com/develop/python/)
 * [适用于 PowerShell 1.0 的存储空间 Cmdlet](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
 ### <a name="azure-storage-management-services"></a>Azure 存储管理服务
-* [存储资源提供程序 REST API 参考](https://msdn.microsoft.com/library/azure/mt163683.aspx)
-* [适用于 .NET 的存储资源提供程序客户端库](https://msdn.microsoft.com/library/azure/mt131037.aspx)
-* [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](https://msdn.microsoft.com/library/azure/mt607151.aspx)
+* [存储资源提供程序 REST API 参考](/rest/api/storagerp/)
+* [适用于 .NET 的存储资源提供程序客户端库](/dotnet/api/microsoft.azure.management.storage)
+* [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](/powershell/storage/)
 * [存储服务管理 REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure 存储数据移动服务
-* [存储导入/导出服务 REST API](https://msdn.microsoft.com/library/azure/dn529096.aspx)
+* [存储导入/导出服务 REST API](storage-import-export-service.md)
 * [适用于 .NET 的存储数据移动客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>工具和实用程序
@@ -248,9 +249,4 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 * [如何通过 Python 使用表存储](storage-python-how-to-use-table-storage.md)
 * [如何通过 Python 使用队列存储](storage-python-how-to-use-queue-storage.md)
 * [如何通过 Python 使用文件存储](storage-python-how-to-use-file-storage.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

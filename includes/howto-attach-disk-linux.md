@@ -1,5 +1,5 @@
 
-有关磁盘的详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关磁盘的详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 <a id="attachempty"></a>
 
@@ -114,9 +114,4 @@
 > 在添加数据磁盘后，需要登录到虚拟机并初始化磁盘，然后虚拟机才能使用磁盘来存储数据（有关如何初始化磁盘的详细信息，请参阅以下步骤）。
 > 
 > 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -38,15 +38,10 @@
     ![服务器位置](./media/sql-data-warehouse-create-logical-server/server-location.png)
     
     > [!TIP]
-    > 无法在此边栏选项卡中更改“允许 Azure 服务访问服务器”复选框的状态。 可以在服务器防火墙边栏选项卡中更改此设置。 有关详细信息，请参阅 [Get started with security](../articles/sql-database/sql-database-get-started-security.md)（安全性入门）。
+    > 无法在此边栏选项卡中更改“允许 Azure 服务访问服务器”复选框的状态。 可以在服务器防火墙边栏选项卡中更改此设置。 有关详细信息，请参阅 [Get started with security](../articles/sql-database/sql-database-manage-servers-portal.md)（安全性入门）。
     >
     
 9. 单击“创建” 。
 
     ![创建按钮](./media/sql-data-warehouse-create-logical-server/create.png)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

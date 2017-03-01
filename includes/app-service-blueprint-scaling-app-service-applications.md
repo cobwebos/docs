@@ -2,7 +2,7 @@
   
   * 了解冗余性和可靠性
   * “有状态”与“无状态”应用程序
-    * [配置无状态应用](/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
+    * [配置无状态应用](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
 * 在应用服务中加载测试应用   
 * 应用服务缩放最佳做法
   
@@ -13,9 +13,4 @@
 * 地理分布
   
   * [利用流量管理器实现全局缩放](../articles/traffic-manager/traffic-manager-overview.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

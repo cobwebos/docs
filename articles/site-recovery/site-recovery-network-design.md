@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/19/2016
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
-ms.openlocfilehash: 2c19472c93d097f29692af18063404f3bf28b6bd
+ms.sourcegitcommit: 6e6d05d7a7595e17d026be6a448b2fa2cca9b816
+ms.openlocfilehash: a62fe406af18c9c7d9b58839bfa0d6e785b614ef
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -34,11 +35,11 @@ BCDR 规划的关键在于必须为灾难恢复计划定义恢复时间目标 (R
 
 ASR 让故障转移变为可能，第一步是将指定的虚拟机从主要数据中心复制到辅助数据中心或 Azure（视方案而定），然后定期刷新副本。 规划基础结构时，应将网络设计视为可能会让你无法达成公司 RTO 和 RPO 目标的潜在瓶颈。  
 
-当管理员计划部署灾难恢复解决方案时，脑海中浮现的一个重要问题是，如何在故障转移完成后使虚拟机可供访问。 ASR 允许管理员选择在故障转移之后虚拟机连接的网络。 如果主站点由 VMM 服务器管理，则可以使用网络映射来实现。 有关更多详细信息，请参阅[准备网络映射](site-recovery-network-mapping.md)。
+当管理员计划部署灾难恢复解决方案时，脑海中浮现的一个重要问题是，如何在故障转移完成后使虚拟机可供访问。 ASR 允许管理员选择在故障转移之后虚拟机连接的网络。 如果主站点由 VMM 服务器管理，则可以使用网络映射来实现。 有关更多详细信息，请参阅[准备网络映射](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping)。
 
 设计恢复站点的网络时，管理员有两种选择：
 
-* 对恢复站点的网络使用不同的 IP 地址范围。 在这种情况下，虚拟机在故障转移之后会获取新的 IP 地址，管理员必须进行 DNS 更新。 在[此处](site-recovery-vmm-to-vmm.md#step-7-test-your-deployment)详细了解如何进行 DNS 更新 
+* 对恢复站点的网络使用不同的 IP 地址范围。 在这种情况下，虚拟机在故障转移之后会获取新的 IP 地址，管理员必须进行 DNS 更新。 在[此处](site-recovery-test-failover-vmm-to-vmm.md#preparing-infrastructure-for-test-failover)了解详细信息
 * 对恢复站点的网络使用相同的 IP 地址范围。 在某些情况下，即使在故障转移之后，管理员也想在主站点上保留他们的 IP 地址。 在正常情况下，管理员必须更新路由以指示 IP 地址的新位置。 但是，对于在主站点和恢复站点之间部署了延伸 VLAN 的情况，保留虚拟机的 IP 地址会变成一个不错的选择。 保留相同 IP 地址可省去故障转移后的所有网络相关步骤，从而简化了恢复过程。
 
 当管理员计划部署灾难恢复解决方案时，脑海中浮现的一个重要问题是，如何在故障转移完成后使应用程序可供访问。 现代应用程序在一定程度上几乎都依赖网络，因此，以物理方式将服务从一个站点移动到另一个站点会带来网络挑战。 在灾难恢复解决方案中，解决这个问题有两种主要方法。 第一种方法是保持固定的 IP 地址。 尽管移动的服务和宿主服务器位于不同的物理位置，应用程序将 IP 地址配置带到新的位置。 第二种方法需要在转换到恢复站点的过程中完全更改 IP 地址。 每种方法都有多种不同的实施方式，下面进行了汇总。
@@ -163,10 +164,5 @@ Woodgrove 决定将来自 IP 地址范围（172.16.1.0/24、172.16.2.0/24）的 
 [为作为灾难恢复站点的 Azure 设置网络基础结构](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)这篇博客文章解释了在不需要保留 IP 地址时如何设置所需的 Microsoft Azure 网络基础结构。 文章一开始描述应用程序，接着探讨如何在本地及 Azure 设置网络，最后说明如何执行测试故障转移和计划的故障转移。
 
 ## <a name="next-steps"></a>后续步骤
-[了解](site-recovery-network-mapping.md)当 VMM 服务器用于管理主站点时，Site Recovery 如何映射源和目标网络。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
+[了解](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping)当 VMM 服务器用于管理主站点时，Site Recovery 如何映射源和目标网络。
 

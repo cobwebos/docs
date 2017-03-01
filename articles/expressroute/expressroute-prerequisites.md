@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 1/6/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 409f22dcc352aae1af9100bb7a30120ea861009b
-ms.openlocfilehash: c38e324c68d382f74a6140952b7900afd509d319
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 304acc7d2bfdefffde700ecd469b6335b08b85e6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: c38e324c68d382f74a6140952b7900afd509d319
 * 激活 Office 365 订阅（如果要使用 Office 365 服务）。 有关详细信息，请参阅本文中的 [Office 365 的具体要求](#office-365-specific-requirements)部分。
 
 ## <a name="connectivity-provider"></a>连接服务提供商
-* 可使用 [ExpressRoute 连接合作伙伴](expressroute-locations.md#partners) 连接到 Microsoft 云。 有 [三种方法](expressroute-introduction.md#howtoconnect)可以在本地网络与 Microsoft 之间建立连接。 
+* 可使用 [ExpressRoute 连接合作伙伴](expressroute-locations.md#partners) 连接到 Microsoft 云。 有 [三种方法](expressroute-introduction.md)可以在本地网络与 Microsoft 之间建立连接。 
 * 即使你的提供商不是 ExpressRoute 连接合作伙伴，你也可以通过 [云交换提供商](expressroute-locations.md#nonpartners)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
@@ -64,10 +65,5 @@ ms.openlocfilehash: c38e324c68d382f74a6140952b7900afd509d319
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)
   * [配置路由](expressroute-howto-routing-classic.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
