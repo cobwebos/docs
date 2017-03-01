@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 58eee787b54122380b48f1c7a96dbe2e79e4bcef
+ms.sourcegitcommit: e0971ca8064a6e4de272a8d890a6fdc88c0f8cc2
+ms.openlocfilehash: 24e3da0ed3aa04e000a4c88fb7b0745d5b880d0d
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: 58eee787b54122380b48f1c7a96dbe2e79e4bcef
 使用以下信息来安装和配置解决方案。
 
 * 代理必须安装在属于要评估的域成员的域控制器上。
-* Active Directory 评估解决方案要求在每台具有 OMS 代理的计算机上安装 .NET Framework 4。
+* Active Directory 评估解决方案要求在每台具有 OMS 代理的计算机上安装受支持版本的 .NET Framework 4（4.5.2 或更高版本）。
 * 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 评估解决方案添加到 OMS 工作区。  无需进一步的配置。
 
   > [!NOTE]
@@ -162,7 +163,7 @@ Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数�
 
 *仅显示前 10 条建议的原因*
 
-* 我们并没有为你提供详尽的任务普遍列表，而是建议你先着重解决按优先级排列的建议。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细的列表，可以使用日志搜索查看所有建议。
+* 我们并没有为你提供完整详尽的任务列表，而是建议你先着重解决优先级较高的建议。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细的列表，可以使用日志搜索查看所有建议。
 
 *有没有方法来忽略建议？*
 
@@ -170,9 +171,4 @@ Active Directory 评估使用已启用的代理收集 WMI 数据、注册表数�
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 AD 评估数据和建议。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
