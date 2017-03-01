@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: c19ad7c0c466d178e97e83bb2d46b9905130d00e
-ms.openlocfilehash: a97aff9cb7071edc0b7fd1046bdd10d440d75eab
+ms.sourcegitcommit: c3c3938577f610eba522ba593bfab5e93c70e459
+ms.openlocfilehash: d47a97fb023e2cc3ad4acaa07eb4edfd1f82509e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -120,7 +121,7 @@ VNet 对等互连中的每个链接都有上述属性集。 从门户中，可�
 
 1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
 2. 如果要在同一订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，请跳到步骤 3。 在**预览**版中，能够在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连。 预览版功能不具有与正式版功能相同级别的可靠性和服务级别协议。 如果要在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，必须先完成以下任务：
-    - 通过从 PowerShell 输入以下命令在 Azure 订阅中注册预览版功能：`Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`此步骤无法在门户中完成。
+    - 通过从 PowerShell 输入以下命令在 Azure 订阅中注册预览版功能：`Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` 和 `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`此步骤无法在门户中完成。
     - 完成本文的[跨订阅对等互连](#x-sub)部分中的步骤 1-6。
 3. 若要在此情况下建立 VNET 对等互连，只需要在 Azure Resource Manager 中的虚拟网络与经典中的虚拟网络之间创建一个链接。 即，从 **VNET1** 到 **VNET2**。 在门户中，单击“浏览”>，然后选择“虚拟网络”
 4. 在“虚拟网络”边栏选项卡中，选择“VNET1” 。 单击“对等互连”，然后单击“添加”。
@@ -141,10 +142,5 @@ VNet 对等互连中的每个链接都有上述属性集。 从门户中，可�
 
     ![删除2](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
 4. 在此状态下，在对等链接状态更改为已启动之前无法重新创建链接。 建议先删除这两个链接，然后再重新创建 VNet 对等互连。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

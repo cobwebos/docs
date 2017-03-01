@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09f0aa4ea770d23d1b581c54b636c10e59ce1d3c
-ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
+ms.sourcegitcommit: 1753096f376d09a1b5f2a6b4731775ef5bf6f5ac
+ms.openlocfilehash: 4f66de2fe4b123e208413ade436bb66b9a03961b
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -28,11 +29,13 @@ ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 
 * [尝试打开文件时配额出错](#quotaerror)
 * [从 Windows 或 Linux 访问 Azure 文件存储时性能不佳](#slowboth)
+* [如何跟踪 Azure 文件存储中的读写操作](#traceop)
 
 **Windows 客户端问题**
 
 * [从 Windows 8.1 或 Windows Server 2012 R2 访问 Azure 文件存储时性能不佳](#windowsslow)
 * [尝试装载 Azure 文件共享时出现错误 53](#error53)
+* [尝试装载 Azure 文件共享时出现错误 87 参数不正确](#error87)
 * [Net use 成功，但Windows Explorer 中未显示已装载的 Azure 文件共享](#netuse)
 * [我的存储帐户包含 "/" 且 net use 命令失败](#slashfails)
 * [我的应用程序/服务无法访问装载的 Azure 文件驱动器。](#accessfiledrive)
@@ -41,12 +44,13 @@ ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 **Linux 客户端问题**
 
 * [将文件上传/复制到 Azure 文件时，出现错误“要将该文件复制到的目标不支持加密”](#encryption)
-* [在装载点上执行列表命令时，现有的文件共享上出现错误“主机已关闭”或外壳挂起](#errorhold)
+* [间歇性 IO 错误 - 在装载点上执行列表命令时，现有的文件共享上出现错误“主机已关闭”或外壳挂起](#errorhold)
 * [尝试在 Linux VM 上装载 Azure 文件时，出现装载错误 115](#error15)
 * [Linux VM 在类似 "ls" 的命令中出现随机延迟](#delayproblem)
 * [错误 112 - 超时错误](#error112)
 
 **从其他应用程序访问**
+
 * [可以通过 Web 作业为应用程序引用 Azure 文件共享吗？](#webjobs)
 
 <a id="quotaerror"></a>
@@ -54,19 +58,15 @@ ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 ## <a name="quota-error-when-trying-to-open-a-file"></a>尝试打开文件时配额出错
 在 Windows 中，将收到下述类似错误消息：
 
-**1816 ERROR_NOT_ENOUGH_QUOTA <--> 0xc0000044**
-
-**STATUS_QUOTA_EXCEEDED**
-
-**处理此命令的配额不够**
-
-**无效句柄值 GetLastError：53**
+`1816 ERROR_NOT_ENOUGH_QUOTA <--> 0xc0000044`
+`STATUS_QUOTA_EXCEEDED`
+`Not enough quota is available to process this command`
+`Invalid handle value GetLastError: 53`
 
 在 Linux 上，将收到下述类似错误消息：
 
-**<filename> [权限被拒绝]**
-
-**超出磁盘配额**
+`<filename> [permission denied]`
+`Disk quota exceeded`
 
 ### <a name="cause"></a>原因
 由于已达到文件允许的并发打开句柄数上限，因此出现问题。
@@ -93,14 +93,21 @@ ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 
 如果安装了修补程序，将显示以下输出：
 
-**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies**
-
-**{96c345ef-3cac-477b-8fcd-bea1a564241c}    REG_DWORD    0x1**
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies`
+`{96c345ef-3cac-477b-8fcd-bea1a564241c}    REG_DWORD    0x1`
 
 > [!NOTE]
 > 从 2015 年 12 月起，Azure 应用商店中的 Windows server 2012 R2 映像将默认安装修补程序 KB3114025。
 >
 >
+
+<a id="traceop"></a>
+
+### <a name="how-to-trace-the-read-and-write-operations-in-azure-file-storage"></a>如何跟踪 Azure 文件存储中的读写操作
+
+[Microsoft Message Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=44226) 能够以明文形式显示客户端的请求，并且有线请求和事务之间的关系良好（假定此处的 SMB 不是 REST）。  其缺点在于，如果你有许多 IaaS VM 工作进程，就需要在每个客户端上运行它，这是很耗时的。
+
+如果将 Message Analyze 与 ProcMon 配合使用，就可以清楚了解负责事务的应用代码。
 
 <a id="additional"></a>
 
@@ -134,8 +141,9 @@ Comcast 和某些 IT 组织阻止此端口。 若要了解“系统错误 53”�
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 配合 IT 组织打开到 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的端口 445 出站通信。
 
+<a id="error87"></a>
 ### <a name="cause-3"></a>原因 3
-如果客户端上启用了 NTLMv1 通信，也可能收到“系统错误 53”。 启用 NTLMv1 将创建安全级别较低的客户端。 使通信受到 Azure 文件阻止。 若要验证这是否是错误原因，可验证以下注册表子项的值是否设置为 3：
+如果客户端上启用了 NTLMv1 通信，也可能收到“系统错误 53 或系统错误 87”。 启用 NTLMv1 将创建安全级别较低的客户端。 使通信受到 Azure 文件阻止。 若要验证这是否是错误原因，可验证以下注册表子项的值是否设置为 3：
 
 HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel.
 
@@ -238,7 +246,11 @@ Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如�
 ### <a name="solution"></a>解决方案
 在“/etc/fstab”项中检查“serverino”：
 
-//azureuser.file.core.windows.net/wms/comer on /home/sampledir type cifs (rw,nodev,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X, file_mode=0755,dir_mode=0755,serverino,rsize=65536,wsize=65536,actimeo=1)
+`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,cache=none,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+
+还可以通过运行 **sudo mount | grep cifs** 命令并查看其输出，来检查是否正在使用该选项：
+
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=none,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
 如果“serverino”选项不存在，可通过选中“serverino”选项卸载并再次装载 Azure 文件。
 
@@ -253,7 +265,7 @@ Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如�
 
 ### <a name="workaround"></a>解决方法
 
-Linux 问题已修复，但尚未移植到 Linux 分发版。 如果此问题由 Linux 中的重新连接问题引起，可通过避免进入空闲状态解决此问题。 若要实现此目的，请在 Azure 文件共享中保留一个文件，并每隔 30 秒在该文件上执行写入操作。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，结果可能会延迟，操作可能不会触发连接。
+Linux 问题已修复，但尚未移植到 Linux 分发版。 如果此问题由 Linux 中的重新连接问题引起，可通过避免进入空闲状态解决此问题。 若要实现此目的，请在 Azure 文件共享中保留一个文件，并每隔 30 秒或更短时间在该文件上执行写入操作。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，结果可能会延迟，操作可能不会触发连接。
 
 <a id="webjobs"></a>
 
@@ -263,9 +275,4 @@ Linux 问题已修复，但尚未移植到 Linux 分发版。 如果此问题由
 ## <a name="learn-more"></a>了解详细信息
 * [在 Windows 上开始使用 Azure 文件存储](storage-dotnet-how-to-use-files.md)
 * [在 Linux 上实现 Azure 文件存储入门](storage-how-to-use-files-linux.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

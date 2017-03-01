@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Active Directory v2.0 和 OpenID Connect 协议 | Microsoft Docs"
 description: "通过使用 OpenID Connect 身份验证协议的 Azure AD v2.0 实现，构建 Web 应用程序。"
@@ -13,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 1d81be4ba596f7bc0ed7d16cb8bb9b375bd1e223
+ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
+ms.openlocfilehash: 4e43304c108fceb7df70fc37898ffcf989beb922
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -199,6 +199,16 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 -->
 
+## <a name="single-sign-out"></a>单一登录
+v2.0 终结点使用 Cookie 标识用户会话。 用户首次登录到应用程序时，v2.0 终结点在用户的浏览器中设置 Cookie。 当用户以后登录到其他应用程序时，Azure AD 首先检查 Cookie 以确定用户是否具有 Azure AD v2.0 终结点的有效登录会话，而不是重新对用户进行身份验证。
+
+同样，当用户首次注销应用程序时，v2.0 终结点将从浏览器中清除 Cookie。 但是，用户可能仍登录到其他使用 Azure AD v2.0 终结点进行身份验证的应用程序。 若要确保从所有应用程序中注销该用户，v2.0 终结点会将 HTTP GET 请求发送到用户当前已登录的所有应用程序的 `LogoutUrl`。 应用程序必须通过清除任何标识用户会话的 Cookie 来响应此请求。 可以从 Azure 门户设置 `LogoutUrl`。
+
+1. 导航到 [Azure 门户](https://portal.azure.com)。
+2. 通过单击页面右上角的帐户选择你的 Active Directory。
+3. 从左侧导航面板中，选择“Azure Active Directory”，然后选择“应用注册”，并选择应用程序。
+4. 单击“属性”并查找“注销 URL”文本框。 
+
 ## <a name="protocol-diagram-token-acquisition"></a>协议图：令牌获取
 许多 Web 应用不仅需要登录用户，还需要代表该用户使用 OAuth 访问 Web 服务。 如果要使用 OAuth 授权代码流，此方案合并了用于对用户进行身份验证的 OpenID Connect，同时将获取授权代码，用户可以使用该代码获取访问令牌。
 
@@ -268,10 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 有关可能的错误代码的描述及建议的客户端响应，请参阅[授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
 
 如果拥有授权代码和 ID 令牌，可以登录用户并代表他们获取访问令牌。 若要登录用户，必须[完全按照上面所述](#validate-the-id-token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 协议文档](active-directory-v2-protocols-oauth-code.md#request-an-access-token)中所述的步骤。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

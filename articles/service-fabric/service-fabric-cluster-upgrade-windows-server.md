@@ -1,5 +1,5 @@
 ---
-title: "升级 Windows Server 上的独立 Service Fabric 群集 | Microsoft 文档"
+title: "升级 Windows Server 上的独立 Service Fabric 群集 | Microsoft Docs"
 description: "升级运行独立 Service Fabric 群集的 Service Fabric 代码和/或配置，其中包括设置群集更新模式"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2016
+ms.date: 02/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
+ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
+ms.openlocfilehash: 217715ad1657582eb35008b765de6d19bd2a8b0b
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
 > 
 > 
 
-仅在使用生产类型节点配置，其中每个 Service Fabric 节点被分配在单独的物理或虚拟计算机上时，才能将群集升级到新版本。 如果拥有开发群集，其中一个以上的 Service Fabric 节点位于单个物理或虚拟计算机上，则必须将群集拆解然后使用新版本重新创建群集。
+仅当使用的是生产形式的节点配置（每个 Service Fabric 节点在独立的物理机或虚拟机上分配）时，才可以将群集升级到最新版本。 如果使用的是开发群集（单个物理机或虚拟机上有多个 Service Fabric 节点），则必须先解除该群集，然后使用新版本重新创建该群集。
 
 有两种不同的工作流可用于将群集升级至最新的或支持的 Service Fabric 版本。 一种适用于可以进行网络连接自动下载最新版本的群集，第二种适用于不能进行网络连接下载最新的 Service Fabric 版本的群集。
 
@@ -124,8 +125,14 @@ ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
 ```
 
 #### <a name="cluster-upgrade-workflow"></a>群集升级工作流。
-1. 在[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)文档中下载最新版本的程序包 
-2. 从对已被列为群集中节点的所有计算机具有管理员访问权限的任何计算机中连接到该群集。 运行此脚本的计算机不一定是群集的一部分 
+1. 从群集中的一个节点运行 Get-ServiceFabricClusterUpgrade 并记下 TargetCodeVersion。
+2. 从连接到 Internet 的计算机运行以下命令，以列出与当前版本兼容的所有升级版本，并从关联的下载链接下载相应的程序包。
+   ```powershell
+   
+    ###### Get list of all upgrade compatible packages
+    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1>
+    ```
+3. 从对已被列为群集中节点的所有计算机具有管理员访问权限的任何计算机中连接到该群集。 运行此脚本的计算机不一定是群集的一部分 
    
     ```powershell
    
@@ -140,7 +147,7 @@ ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
         -StoreLocation CurrentUser `
         -StoreName My
     ```
-3. 将下载的程序包复制到群集映像存储中。
+4. 将下载的程序包复制到群集映像存储中。
    
     ```powershell
    
@@ -152,7 +159,7 @@ ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
 
     ```
 
-1. 注册复制的程序包 
+5. 注册复制的程序包 
    
     ```powershell
    
@@ -163,7 +170,7 @@ ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
    
      ```
-2. 启动到可用版本之一的群集升级。 
+6. 启动到可用版本之一的群集升级。 
    
     ```Powershell
    
@@ -184,6 +191,24 @@ ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
 
 修复造成回滚的问题后，需要按照与之前完全相同的步骤重新启动升级。
 
+
+## <a name="cluster-configuration-upgrade"></a>群集配置升级
+若要执行群集配置升级，请运行 Start-ServiceFabricClusterConfigurationUpgrade。 配置升级由升级域处理。
+
+```powershell
+
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File> 
+
+```
+
+### <a name="cluster-certificate-config-upgrade-pls-hold-on-till-v55-is-released-because-cluster-cert-upgrade-doesnt-work-till-v55"></a>群集证书配置升级（PLS HOLD ON TILL v5.5 已发布，因为在 v5.5 之前，群集证书升级不能正常工作）
+群集证书用于群集节点之间的身份验证，因此执行证书滚动时应格外小心，因为出现故障会阻止群集节点之间的通信。
+从技术上讲，支持两种选择：
+
+1. 单个证书升级：升级路径为“证书 A（主证书）-> 证书 B（主证书）-> 证书 C（主证书）-> ...”。 
+2. 双证书升级：升级路径为“证书 A（主证书）-> 证书 A（主证书）和证书 B（辅助证书）-> 证书 B（主证书）-> 证书 B（主证书）和证书 C（辅助证书）-> 证书 C（主证书）-> ...”
+
+
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
 * 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
@@ -191,9 +216,4 @@ ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

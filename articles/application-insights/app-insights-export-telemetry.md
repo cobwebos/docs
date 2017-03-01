@@ -1,5 +1,5 @@
 ---
-title: "从 Application Insights 连续导出遥测数据 | Microsoft 文档"
+title: "从 Application Insights 连续导出遥测数据 | Microsoft Docs"
 description: "将诊断和使用情况数据导出到 Microsoft Azure 中的存储，然后从中下载这些数据。"
 services: application-insights
 documentationcenter: 
@@ -11,18 +11,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/21/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: 3b1654355ee84610d25da8b6ad4a66036285faba
+ms.sourcegitcommit: 4df32e7e03f17ec46e46a3f2718d24783424ab9e
+ms.openlocfilehash: fc1f3c7160a4956ed7372a2797c03c2892fbfb65
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
 
-连续导出可在[企业定价模型](http://azure.microsoft.com/pricing/details/application-insights/)中使用。
+使用连续导出可能会产生额外费用。 检查你的[定价模型](http://azure.microsoft.com/pricing/details/application-insights/)。
 
 在设置连续导出之前，请考虑一些备选方法：
 
@@ -72,7 +73,7 @@ ms.openlocfilehash: 3b1654355ee84610d25da8b6ad4a66036285faba
 若要永久停止数据流，请删除导出。 这样做不会将数据从存储中删除。
 
 #### <a name="cant-add-or-change-an-export"></a>无法添加或更改导出？
-* 若要添加或更改导出，需要“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][角色]。
+* 若要添加或更改导出，需要“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][roles]。
 
 ## <a name="a-nameanalyzea-what-events-do-you-get"></a><a name="analyze"></a>获取哪些事件？
 导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。 
@@ -164,7 +165,7 @@ ms.openlocfilehash: 3b1654355ee84610d25da8b6ad4a66036285faba
 
 如果数据规模较大，可以考虑 [HDInsight](https://azure.microsoft.com/services/hdinsight/) - 云中的 Hadoop 群集。 HDInsight 提供多种技术用于管理和分析大数据。可以使用 HDInsight 来处理从 Application Insights 导出的数据。
 
-## <a name="q-a"></a>问题解答
+## <a name="q--a"></a>问题解答
 * *我想要一次性下载某个图表。*  
   
     没问题，可以这样做。 请在边栏选项卡顶部单击“导出数据”。[](app-insights-metrics-explorer.md#export-to-excel)
@@ -201,12 +202,7 @@ ms.openlocfilehash: 3b1654355ee84610d25da8b6ad4a66036285faba
 
 [exportcode]: app-insights-code-sample-export-telemetry-sql-database.md
 [exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
-[角色]: app-insights-resources-roles-access-control.md
+[roles]: app-insights-resources-roles-access-control.md
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -13,67 +13,57 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/21/2017
 ms.author: danielsollondon
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 14f83c6753ce37639b1b2f78a4c632f1d69f585d
+ms.sourcegitcommit: b2e89f0d5e6b14ce8d5847f8adc3d57a6122172e
+ms.openlocfilehash: a3a36028a75d6cb7eb36277f3e2b5ab833c96a96
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="creating-virtual-machine-scale-sets-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 创建虚拟机缩放集
-本示例演示如何创建虚拟机缩放集 (VMSS)，其中将会创建具有 3 个节点的 VMSS，并包含所有关联的网络和存储。
+本文演示如何创建虚拟机规模集 (VMSS) 的示例。 该示例创建三个节点的规模集，包括相关联的网络和存储。
 
 ## <a name="first-steps"></a>前几个步骤
-确保已安装最新的 Azure PowerShell 模块，其中包含维护和创建 VMSS 所需的 PowerShell cmdlet。
+务必安装最新的 Azure PowerShell 模块，以确保具有维护和创建规模集所需的 PowerShell cmdlet。
 转到[此处](http://aka.ms/webpi-azps)的命令行工具，获取最新的可用 Azure 模块。
 
-若要查找 VMSS 相关的 cmdlet，请使用搜索字符串 \*VMSS\*。
+若要查找 VMSS 相关的 cmdlet，请使用搜索字符串 \*VMSS\*。 例如，_gcm *vmss*_
 
 ## <a name="creating-a-vmss"></a>创建 VMSS
-##### <a name="create-resource-group"></a>创建资源组
+#### <a name="create-resource-group"></a>创建资源组
 ```
 $loc = 'westus';
 $rgname = 'mynewrgwu';
   New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 ```
 
-##### <a name="create-storage-account"></a>创建存储帐户
-设置存储帐户类型/名称。
-
-```
-$stoname = 'sto' + $rgname;
-$stotype = 'Standard_LRS';
- New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -Kind "Storage";
-
-$stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
-```
-
-#### <a name="create-networking-vnet--subnet"></a>创建网络（VNET/子网）
-##### <a name="subnet-specification"></a>子网规范
+### <a name="create-networking-vnet--subnet"></a>创建网络（VNET/子网）
+#### <a name="subnet-specification"></a>子网规范
 ```
 $subnetName = 'websubnet'
   $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
 ```
 
-##### <a name="vnet-specification"></a>VNET 规范
+#### <a name="vnet-specification"></a>VNET 规范
 ```
 $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
 $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
 
-#In this case below we assume the new subnet is the only one, note difference if you have one already or have adjusted this code to more than one subnet.
+# In this case assume the new subnet is the only one
 $subnetId = $vnet.Subnets[0].Id;
 ```
 
-##### <a name="create-public-ip-resource-to-allow-external-access"></a>创建允许外部访问的公共 IP 资源
-这将绑定到负载平衡器。
+#### <a name="create-public-ip-resource-to-allow-external-access"></a>创建允许外部访问的公共 IP 资源
+该资源将绑定到负载均衡器。
 
 ```
 $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
 $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
 ```
 
-##### <a name="create-and-configure-load-balancer"></a>创建并配置负载平衡器
+#### <a name="create-load-balancer"></a>创建负载均衡器
 ```
 $frontendName = 'fe' + $rgname
 $backendAddressPoolName = 'bepool' + $rgname
@@ -82,12 +72,12 @@ $inboundNatPoolName = 'innatpool' + $rgname
 $lbruleName = 'lbrule' + $rgname
 $lbName = 'vmsslb' + $rgname
 
-#Bind Public IP to Load Balancer
+# Bind Public IP to Load Balancer
 $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
 ```
 
-##### <a name="configure-load-balancer"></a>配置负载平衡器
-创建后端地址池配置，这将由 VMSS 中 VM 的 NIC 共享。
+#### <a name="configure-load-balancer"></a>配置负载平衡器
+创建后端地址池配置，规模集中 VM 的 NIC 共享该配置。
 
 ```
 $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
@@ -99,7 +89,7 @@ $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $bac
 $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 ```
 
-创建 NAT 规则以通过负载平衡器直接路由（而不平衡负载）连接到 VMSS 中的 VM，请注意这只是演示 RDP 的用法，实际上应使用内部 VNET 方法通过 RDP 访问这些服务器。
+创建入站 NAT 池，以便通过负载均衡器将连接直接路由到（非负载均衡）规模集中的 VM。 此操作使用 RDP 进行演示，你的应用程序可能不需要进行此操作。
 
 ```
 $frontendpoolrangestart = 3360
@@ -130,20 +120,20 @@ $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Lo
 -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool -Verbose;
 ```
 
-检查 LB 设置，检查负载均衡端口配置。请注意，在 VMSS 中创建 VM 之前，看不到入站 NAT 规则。
+检查 LB 设置，检查负载均衡端口配置。请注意，创建规模集中的 VM 之前，看不到入站 NAT 规则。
 
 ```
 $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 ```
 
-##### <a name="configure-and-create-vmss"></a>配置和创建 VMSS
-请注意，此基础结构示例演示如何在 VMSS 中设置分发和缩放网络流量，但此处指定的 VM 映像并未安装任何 Web 服务。
+##### <a name="configure-and-create-the-scale-set"></a>配置和创建规模集
+请注意，此基础结构示例演示如何在规模集中设置分发和调整网络流量，但此处指定的 VM 映像并未安装任何 Web 服务。
 
 ```
-#specify VMSS Name
+# specify scale set Name
 $vmssName = 'vmss' + $rgname;
 
-##specify VMSS specific details
+## specify VMSS specific details
 $adminUsername = 'azadmin';
 $adminPassword = "Password1234!";
 
@@ -152,8 +142,6 @@ $Offer         = 'WindowsServer'
 $Sku          = '2012-R2-Datacenter'
 $Version       = 'latest'
 $vmNamePrefix = 'winvmss'
-
-$vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
 
 ###add an extension
 $extname = 'BGInfo';
@@ -171,37 +159,32 @@ $ipCfg = New-AzureRmVmssIPConfig -Name 'nic' `
 -SubnetId $subnetId;
 ```
 
-创建 VMSS 配置
+创建规模集配置
 
 ```
-#Specify number of nodes
+# Specify number of nodes
 $numberofnodes = 3
 
 $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $numberofnodes -SkuName 'Standard_A2' -UpgradePolicyMode 'automatic' `
     | Add-AzureRmVmssNetworkInterfaceConfiguration -Name $subnetName -Primary $true -IPConfiguration $ipCfg `
     | Set-AzureRmVmssOSProfile -ComputerNamePrefix $vmNamePrefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
-    | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+    | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
     -ImageReferenceOffer $Offer -ImageReferenceSku $Sku -ImageReferenceVersion $Version `
-    -ImageReferencePublisher $PublisherName -VhdContainer $vhdContainer `
+    -ImageReferencePublisher $PublisherName `
     | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true
 ```
 
-生成 VMSS 配置
+生成规模集配置
 
 ```
 New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss -Verbose;
 ```
 
-现在你已创建 VMSS。 在本示例中，可以测试使用 RDP 连接到单个 VM：
+现在你已创建规模集。 在本示例中，可以测试使用 RDP 连接到单个 VM：
 
 ```
 VM0 : pubipmynewrgwu.westus.cloudapp.azure.com:3360
 VM1 : pubipmynewrgwu.westus.cloudapp.azure.com:3361
 VM2 : pubipmynewrgwu.westus.cloudapp.azure.com:3362
 ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

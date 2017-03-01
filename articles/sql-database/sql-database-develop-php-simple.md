@@ -13,44 +13,170 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/13/2017
 ms.author: meetb
 translationtype: Human Translation
-ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
-ms.openlocfilehash: e1c3e7e0f6ca097e3ee41995defe5c1df666d39e
+ms.sourcegitcommit: 94fa09526683582bc017213d0ad9455f31cb22ae
+ms.openlocfilehash: fba66e9d41daa2df34fbb3ffd8c92e664eaa560e
+ms.lasthandoff: 02/21/2017
 
 
 ---
-# <a name="connect-to-sql-database-by-using-php-on-windows"></a>在 Windows上使用 PHP 连接到 SQL 数据库
+
+# <a name="connect-to-sql-database-by-using-php"></a>使用 PHP 连接到 SQL 数据库
 [!INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
-本主题演示了如何从 Windows 运行的、以 PHP 编写的客户端应用程序连接到 Azure SQL 数据库。
+本主题说明如何使用 PHP 来连接和查询 Azure SQL 数据库。 可在 Windows 或 Linux 上运行此示例。 
 
-## <a name="step-1--configure-development-environment"></a>步骤 1：配置开发环境
-[配置用于 PHP 开发的开发环境](https://docs.microsoft.com/sql/connect/php/step-1-configure-development-environment-for-php-development/)
 
-## <a name="step-2-create-a-sql-database"></a>步骤 2：创建 SQL 数据库
-请参阅[入门页](sql-database-get-started.md)，以了解如何创建示例数据库。  必须根据指南创建 **AdventureWorks** 数据库模板。 下面所示的示例只适用于 **AdventureWorks 架构**。
+## <a name="step-1-create-a-sql-database"></a>步骤 1：创建 SQL 数据库
+请参阅[入门页](sql-database-get-started.md)，以了解如何创建示例数据库。  必须根据指南创建 **AdventureWorks** 数据库模板。 下面所示的示例只适用于 **AdventureWorks 架构**。 创建数据库后，请确保根据[入门页](sql-database-get-started.md)中所述，通过启用防火墙规则来启用对 IP 地址的访问
 
-## <a name="step-3-get-connection-details"></a>步骤 3：获取连接详细信息
-[!INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
+## <a name="step-2-configure-development-environment"></a>步骤 2：配置开发环境
 
-## <a name="step-4-run-sample-code"></a>步骤 4：运行示例代码
-* [使用 PHP 连接到 SQL 以进行概念认证](https://docs.microsoft.com/sql/connect/php/step-3-proof-of-concept-connecting-to-sql-using-php/)
-* [使用 PHP 弹性连接到 SQL](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php/)
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+打开终端并导航到你要在其中创建 python 脚本的目录。 输入以下命令安装**适用于 Linux 的 Microsoft ODBC 驱动程序**、**pdo_sqlsrv** 和 **sqlsrv**。 适用于 SQL Server 的 Microsoft PHP 驱动程序使用 Linux 上的 Microsoft ODBC 驱动程序连接到 SQL 数据库。
+
+```
+sudo su
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+exit
+sudo apt-get update
+sudo ACCEPT_EULA=Y apt-get install msodbcsql unixodbc-dev gcc g++ build-essential
+sudo pecl install sqlsrv pdo_sqlsrv
+sudo echo "extension= pdo_sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+sudo echo "extension= sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+```
+
+### <a name="windows"></a>**Windows**
+- [从 Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx?lang=)安装 PHP 7.1.1 (x64) 
+- 安装 [Microsoft ODBC 驱动程序 13.1](https://www.microsoft.com/download/details.aspx?id=53339)。 
+- 下载[用于 SQL Server 的 Microsoft PHP 驱动程序](https://pecl.php.net/package/sqlsrv/4.1.6.1/windows)的非线程安全 dll，并将二进制文件放在 PHP\v7.x\ext 文件夹中。
+- 然后通过添加对 dll 的引用来编辑 php.ini (C:\Program Files\PHP\v7.1\php.ini) 文件。 例如：
+      
+      extension=php_sqlsrv.dll
+      extension=php_pdo_sqlsrv.dll
+
+此时，应已向 PHP 注册 dll。
+
+## <a name="step-3-run-sample-code"></a>步骤 3：运行示例代码
+创建名为 **sql_sample.php** 的文件并在其中粘贴以下代码。 可以通过命令行使用以下命令运行此操作：
+
+```
+php sql_sample.php
+```
+
+### <a name="connect-to-your-sql-database"></a>连接到 SQL 数据库
+[sqlsrv connect](http://php.net/manual/en/function.sqlsrv-connect.php) 函数用于连接 SQL 数据库。
+
+```
+<?php
+$serverName = "yourserver.database.windows.net";
+$connectionOptions = array(
+    "Database" => "yourdatabase",
+    "Uid" => "yourusername",
+    "PWD" => "yourpassword"
+    );
+//Establishes the connection
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+if($conn)
+    echo "Connected!"
+?>
+```
+
+### <a name="execute-an-sql-select-statement"></a>执行 SQL SELECT 语句
+[sqlsrv_query](http://php.net/manual/en/function.sqlsrv-query.php) 函数可用于针对 SQL 数据库从查询中检索结果集。 
+
+```
+<?php
+$serverName = "yourserver.database.windows.net";
+$connectionOptions = array(
+    "Database" => "yourdatabase",
+    "Uid" => "yourusername",
+    "PWD" => "yourpassword"
+);
+//Establishes the connection
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+if($conn)
+    echo "Connected!"
+$tsql = "SELECT [CompanyName] FROM SalesLT.Customer";  
+$getProducts = sqlsrv_query($conn, $tsql);  
+if ($getProducts == FALSE)  
+    die(FormatErrors(sqlsrv_errors()));  
+$productCount = 0;  
+while($row = sqlsrv_fetch_array($getProducts, SQLSRV_FETCH_ASSOC))  
+{  
+    echo($row['CompanyName']);  
+    echo("<br/>");  
+    $productCount++;  
+}  
+sqlsrv_free_stmt($getProducts);  
+sqlsrv_close($conn);    
+function FormatErrors( $errors )
+{
+    /* Display errors. */
+    echo "Error information: ";
+    
+    foreach ( $errors as $error )
+    {
+        echo "SQLSTATE: ".$error['SQLSTATE']."";
+        echo "Code: ".$error['code']."";
+        echo "Message: ".$error['message']."";
+    }
+}
+?>
+```
+
+### <a name="insert-a-row-pass-parameters-and-retrieve-the-generated-primary-key"></a>插入一行，传递参数，然后检索生成的主键
+在 SQL 数据库中，可以使用 [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx) 属性和 [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx) 对象自动生成[主键值](https://msdn.microsoft.com/library/ms179610.aspx)。 
+
+
+```
+<?php
+$serverName = "yourserver.database.windows.net";
+$connectionOptions = array(
+    "Database" => "yourdatabase",
+    "Uid" => "yourusername",
+    "PWD" => "yourpassword"
+);
+//Establishes the connection
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+if($conn)
+    echo "Connected!"
+$tsql = "INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server 1', 'SQL Server 2', 0, 0, getdate())";  
+//Insert query  
+$insertReview = sqlsrv_query($conn, $tsql);  
+if($insertReview == FALSE)  
+    die(FormatErrors( sqlsrv_errors()));  
+echo "Product Key inserted is :";  
+while($row = sqlsrv_fetch_array($insertReview, SQLSRV_FETCH_ASSOC))  
+{     
+    echo($row['ProductID']);  
+}  
+sqlsrv_free_stmt($insertReview);  
+sqlsrv_close($conn);  
+function FormatErrors( $errors )
+{
+    /* Display errors. */
+    echo "Error information: ";
+    foreach ( $errors as $error )
+    {
+        echo "SQLSTATE: ".$error['SQLSTATE']."";
+        echo "Code: ".$error['code']."";
+        echo "Message: ".$error['message']."";
+    }
+}
+?>
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 * 参阅 [SQL 数据库开发概述](sql-database-develop-overview.md)
-* 有关 [Microsoft PHP Driver for SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server/) 的详细信息
-* 有关 PHP 安装和用法的详细信息，请参阅使用 [PHP 访问 SQL Server 数据库](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx)。
+* 有关 [Microsoft PHP Driver for SQL Server](https://github.com/Microsoft/msphpsql/) 的详细信息
+* [提出问题](https://github.com/Microsoft/msphpsql/issues)。
 
 ## <a name="additional-resources"></a>其他资源
 * [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * 浏览所有 [SQL 数据库的功能](https://azure.microsoft.com/services/sql-database/)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

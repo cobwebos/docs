@@ -1,5 +1,5 @@
 ---
-title: "Azure 虚拟网络对等互连 - PowerShell | Microsoft 文档"
+title: "Azure 虚拟网络对等互连 - PowerShell | Microsoft Docs"
 description: "了解如何使用 Azure PowerShell 创建虚拟网络对等互连。"
 services: virtual-network
 documentationcenter: 
@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan; annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 5240bfc66ce15f845a511b7f09a5cd6209c8d539
-ms.openlocfilehash: 34cc0fbddadb3860320ae730c2bc9951c735c7f9
+ms.sourcegitcommit: 3fcd6583b415cea6b2151651297c55c93e59c796
+ms.openlocfilehash: b0375a99f5ea3d6af2d3ead382f9a43f1fd285f0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -155,7 +156,7 @@ ms.openlocfilehash: 34cc0fbddadb3860320ae730c2bc9951c735c7f9
         RemoteGateways        : null
         RemoteVirtualNetworkAddressSpace : null
 
-    建立对等互连后，VM 应能够跨这两个 VNet 相互通信。 默认情况下，`AllowVirtualNetworkAccess` 为 *True*，且 VNet 对等互连将预配正确的 ACL 以允许 VNet 之间的通信。 仍可应用网络安全组 (NSG) 规则来阻止特定子网或虚拟机之间的连接，从而实现两个 VNet 之间访问权限的细粒度控制。 阅读 [网络安全组](virtual-networks-create-nsg-arm-ps.md) 一文，了解有关 NSG 的详细信息。
+    建立对等互连后，VM 应能够跨这两个 VNet 相互通信。 默认情况下，`AllowVirtualNetworkAccess` 为 *True*，且 VNet 对等互连将预配正确的 ACL 以允许 VNet 之间的通信。 仍可应用网络安全组 (NSG) 规则来阻止特定子网或虚拟机之间的连接，从而实现两个 VNet 之间访问权限的细粒度控制。 请阅读[网络安全组](virtual-networks-create-nsg-arm-ps.md)一文，了解有关 NSG 的详细信息。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
@@ -224,8 +225,8 @@ ms.openlocfilehash: 34cc0fbddadb3860320ae730c2bc9951c735c7f9
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
 
-1. 如果要在*同一*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，请跳到步骤 2。 在**预览**版中，能够在*不同*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连。 预览版功能的可靠性和服务级协议与正式版功能不是同一级别。 如果要在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，必须先完成以下任务：
-    - 通过从 PowerShell 输入以下命令在 Azure 订阅中注册预览版功能：`Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`
+1. 如果要在*同一*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，请跳到步骤 2。 在**预览**版中，能够在*不同*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连。 预览版功能不具有与正式版功能相同级别的可靠性和服务级别协议。 如果要在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，必须先完成以下任务：
+    - 通过从 PowerShell 输入以下命令在 Azure 订阅中注册预览版功能：`Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` 和 `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`
     - 完成本文的[跨订阅对等互连](#x-sub)部分中的步骤 1-2。
 2. 输入以下命令，读取 **VNET1**（Azure Resource Manager 虚拟网络）的虚拟网络对象：
 
@@ -235,7 +236,7 @@ ms.openlocfilehash: 34cc0fbddadb3860320ae730c2bc9951c735c7f9
 
 3. 若要在此方案中建立 VNet 对等互连，只需要一个链接，具体而言，是从 **VNET1** 到 **VNET2** 的链接。 执行此步骤需要先了解经典 VNet 的资源 ID。 资源组 ID 格式如以下示例所示：
 
-        subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ClassicNetwork/virtualNetworks/{VirtualNetworkName}
+           subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ClassicNetwork/virtualNetworks/{VirtualNetworkName}
 
     请务必将 SubscriptionID、ResourceGroupName 和 VirtualNetworkName 替换为相应的名称。
 
@@ -279,10 +280,5 @@ ms.openlocfilehash: 34cc0fbddadb3860320ae730c2bc9951c735c7f9
     ```
 
 2. 删除 VNET 对等互连中的一个链接后，该对等链接状态将为“断开”。 在此状态下，在对等链接状态更改为“已启动”之前无法重新创建链接。 建议先删除这两个链接，然后再重新创建 VNet 对等互连。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

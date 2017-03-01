@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
+ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
+ms.openlocfilehash: 2ea87726b06a0e8ab20515031424bf4e93f45a80
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
 若要配置 Azure AD 与 Proofpoint on Demand 的集成，需备齐以下项目：
 
 * Azure AD 订阅
-* Proofpoint on Demand 单一登录订阅
+* Proofpoint on Demand 单一登录 (SSO) 订阅
 
 若要测试本教程中的步骤，请遵循以下建议：
 
@@ -47,8 +48,8 @@ ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
 
 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 Proofpoint on Demand。
-2. 配置和测试 Azure AD 单一登录。
+* 从库中添加 Proofpoint on Demand。
+* 配置和测试 Azure AD 单一登录。
 
 ## <a name="add-proofpoint-on-demand-from-the-gallery"></a>从库中添加 Proofpoint on Demand
 若要通过配置将 Proofpoint on Demand 集成到 Azure AD 中，需要从库中将 Proofpoint on Demand 添加到托管 SaaS 应用列表。
@@ -98,28 +99,19 @@ ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
 3. 在“配置应用设置”页上，执行以下步骤：
    
     ![带有填充框的“配置应用设置”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_04.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”框中，键入用户用于登录 Proofpoint on Demand 应用程序的 URL。 请使用以下模式：**https://\<主机名\>.pphosted.com/ppssamlsp_hostname**
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 在“标识符”框中，使用以下模式键入 URL：**https://\<hostname/>.pphosted.com/ppssamlsp**
-   
-    c. 在“回复 URL”框中，使用以下模式键入 URL：**https://\<hostname/>.pphosted.com:portnumber/v1/samlauth/samlconsumer**
-   
-    d.单击“下一步”。 单击“下一步”。
+   1. 在“登录 URL”框中，键入用户用于登录 Proofpoint on Demand 应用程序的 URL。 请使用以下模式：**https://\<主机名\>.pphosted.com/ppssamlsp_hostname**
+   2. 在“标识符”框中，使用以下模式键入 URL：**https://\<hostname/>.pphosted.com/ppssamlsp**
+   3. 在“回复 URL”框中，使用以下模式键入 URL：**https://\<hostname/>.pphosted.com:portnumber/v1/samlauth/samlconsumer**  
+   4. 单击“资源组名称” 的 Azure 数据工厂。
 4. 在“配置 Proofpoint on Demand 的单一登录”页上，执行以下步骤：
    
     ![带有“下载证书”按钮的“配置 Proofpoint on Demand 的单一登录”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_05.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
-   
-    b. 单击“下一步”。
+   1. 单击“下载证书”，然后将文件保存在计算机上。   
+   2. 单击“下一步”。
 5. 若要为应用程序配置 SSO，请联系 Proofpoint on Demand 支持团队，向他们提供以下内容：
-   
-    • 下载的证书
-   
-    • 实体 ID
-   
-    • SAML SSO URL
+   * 下载的证书
+   * 实体 ID
+   * SAML SSO URL
 6. 在经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![用于确认已配置单一登录的复选框][10]
@@ -142,34 +134,28 @@ ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
 4. 若要打开“添加用户”对话框，请在底部工具栏中单击“添加用户”。
    
     ![“添加用户”按钮](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_04.png)
-5. 在“告诉我们有关此用户的信息”页上，执行以下步骤： ![带填充框的“告诉我们有关此用户的信息”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“用户类型”框中，选择“组织中的新用户”。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
-6. 在“用户配置文件”页上，执行以下步骤：![带填充框的“用户配置文件”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”框中，键入“Britta”。  
-   
-   b.保留“数据库类型”设置，即设置为“共享”。 在“姓氏”框中，键入“Simon”。
-   
-   c. 在“显示名称”框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+5. 在“告诉我们有关此用户的信息”页上，执行以下步骤：
+
+    ![“告诉我们有关此用户的信息”页面，包含已填充的文本框](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png)   
+   1. 在“用户类型”框中，选择“组织中的新用户”。
+   2. 在“用户名”框中，键入“BrittaSimon”。
+   3. 单击“下一步”。
+6. 在“用户配置文件”页上，执行以下步骤：
+
+  ![“用户个人资料”页面，包含已填充的文本框](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)   
+   1. 在“名字”框中，键入“Britta”。  
+   2. 在“姓氏”框中，键入“Simon”。
+   3. 在“显示名称”框中，键入“Britta Simon”。
+   4. 在“角色”列表中，选择“用户”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”页上，单击“创建”。
    
-    ![用于创建临时密码的按钮](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png)
+   ![用于创建临时密码的按钮](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png)
 8. 在“获取临时密码”页上，执行以下步骤：
    
-    ![带有密码信息的“获取临时密码”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png)
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”框中的值。
-   
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“完成”。   
+   ![带有密码信息的“获取临时密码”页](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png)  
+   1. 写下“新密码”框中的值。
+   2. 单击“完成”。   
 
 ### <a name="create-a-proofpoint-on-demand-test-user"></a>创建 Proofpoint on Demand 测试用户
 在本部分中，将在 Proofpoint on Demand 中创建一个名为“Britta Simon”的用户。 请协助 Proofpoint on Demand 支持团队将用户添加到 Proofpoint on Demand 平台。
@@ -219,9 +205,4 @@ ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
 [203]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

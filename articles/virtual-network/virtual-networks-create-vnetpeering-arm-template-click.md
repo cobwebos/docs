@@ -1,5 +1,5 @@
 ---
-title: "Azure 虚拟网络对等互连 - 模板 | Microsoft 文档"
+title: "Azure 虚拟网络对等互连 - 模板 | Microsoft Docs"
 description: "了解如何使用 Azure Resource Manager 模板创建虚拟网络对等互连。"
 services: virtual-network
 documentationcenter: 
@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: ddfa2998d7e9305891c5a976dff5c2365d5eb1d4
-ms.openlocfilehash: 351b77482c07160fa62155e90dcb8eb280e9087c
+ms.sourcegitcommit: d68c2f496cfdfa52c33243542ee141c44639e5c0
+ms.openlocfilehash: 7b4fda3ffb269c6a9de407bbd9af32d90768504f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -335,8 +336,8 @@ ms.openlocfilehash: 351b77482c07160fa62155e90dcb8eb280e9087c
 
 若要通过不同的部署模型在虚拟网络之间创建对等互连，请完成以下步骤：
 
-1. 如果要在*同一*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，请跳到步骤 2。 在**预览**版中，能够在*不同*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连。 预览版功能的可靠性和服务级协议与正式版功能不是同一级别。 如果要在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，必须先完成以下任务：
-    - 通过从 PowerShell 输入以下命令在 Azure 订阅中注册预览版功能：`Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`
+1. 如果要在*同一*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，请跳到步骤 2。 在**预览**版中，能够在*不同*订阅中创建通过不同部署模型部署的 VNet 之间的对等互连。 预览版功能不具有与正式版功能相同级别的可靠性和服务级别协议。 如果要在不同订阅中创建通过不同部署模型部署的 VNet 之间的对等互连，必须先完成以下任务：
+    - 通过从 PowerShell 输入以下命令在 Azure 订阅中注册预览版功能：`Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` 和 `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`
     - 完成本文的[跨订阅对等互连](#x-sub)部分中的步骤 1-2。
 2. 以下文本介绍了此方案中 VNET1 与 VNET2 之间的 VNet 对等互连链接的定义。 只需创建一个链接即可在经典虚拟网络和 Azure Resource Manager 虚拟网络之间实现对等互连。
 
@@ -417,10 +418,5 @@ ms.openlocfilehash: 351b77482c07160fa62155e90dcb8eb280e9087c
         RemoteVirtualNetworkAddressSpace : null
 
     在经典 VNet 和 Resource Manager VNet 之间建立对等互连后，应该可以开始在 VNET1 中的任何虚拟机与 VNET2 中的任何虚拟机之间建立连接，反之亦然。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "监视 NSG 的操作、事件和计数器 | Microsoft 文档"
+title: "监视 NSG 的操作、事件和计数器 | Microsoft Docs"
 description: "了解如何为 NSG 启用计数器、事件和操作日志记录"
 services: virtual-network
 documentationcenter: na
@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 8d370f98a4ef2501afc692af8a19a0625f54b678
-ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
+ms.sourcegitcommit: e657e901900b4879d649ac82d8de026957a409c2
+ms.openlocfilehash: 36a872e3e5bd3230dcfe2abdab9b4dbf25212cdb
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -31,7 +32,14 @@ ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
 > [!NOTE]
 > 诊断日志仅适用于通过 Azure Resource Manager 部署模型部署的 NSG。 不能对通过经典部署模型部署的 NSG 启用诊断日志记录。 若要更好地了解这两种模型，可参考[了解 Azure 部署模型](../resource-manager-deployment-model.md)一文。
 
-默认情况下，对通过任一 Azure 部署模型创建的 NSG 启用活动日志记录（以前称为审核日志或操作日志）。 若要在活动日志中确定对 NSG 的哪些操作已完成，请查找包含以下资源类型的条目：Microsoft.ClassicNetwork/networkSecurityGroups、Microsoft.ClassicNetwork/networkSecurityGroups/securityRules、Microsoft.Network/networkSecurityGroups 和 Microsoft.Network/networkSecurityGroups/securityRules。 阅读 [Azure 活动日志概述 ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)一文可了解有关活动日志的详细信息。 
+默认情况下，对通过任一 Azure 部署模型创建的 NSG 启用活动日志记录（以前称为审核日志或操作日志）。 若要在活动日志中确定在 NSG 上完成的操作，请查找包含以下资源类型的条目： 
+
+- Microsoft.ClassicNetwork/networkSecurityGroups 
+- Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+- Microsoft.Network/networkSecurityGroups
+- Microsoft.Network/networkSecurityGroups/securityRules 
+
+阅读 [Azure 活动日志概述 ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)一文可了解有关活动日志的详细信息。 
 
 ## <a name="enable-diagnostic-logging"></a>启用诊断日志记录
 
@@ -116,9 +124,4 @@ ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
 ## <a name="view-and-analyze-logs"></a>查看和分析日志
 
 若要了解如何查看活动日志数据，请阅读 [Azure 活动日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 若要了解如何查看诊断日志数据，请阅读 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文。 如果将诊断数据发送到 Log Analytics，可以使用 [Azure 网络安全组分析](../log-analytics/log-analytics-azure-networking-analytics.md)（预览版）管理解决方案获得增强的见解。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -16,14 +16,15 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e80f41533d82fbb2086d4d766c3ba4a4e34a5032
-ms.openlocfilehash: be569200e4c4a125a275687d82c3204dcfb5b39a
+ms.sourcegitcommit: dbf337a27c43fc6c91f1b061a1938c5471dd36a4
+ms.openlocfilehash: c511a73794a4b1333e149d286ae43c6929d58f75
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="create-and-manage-an-elastic-pool-with-cx23"></a>使用 C# 创建和管理弹性池
 
-本主题介绍了如何使用 [C#](sql-database-elastic-pool-manage-csharp.md) 创建和管理可缩放的[弹性池](sql-database-elastic-pool.md)。 也可以使用 [Azure 门户](https://portal.azure.com/)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API 创建和管理 Azure 弹性池。 此外还可以使用 [Transact-SQL](sql-database-elastic-pool-manage-tsql.md) 创建弹性池和将数据库移入和移出弹性池。
+本主题介绍如何使用 C# 创建和管理可缩放的[弹性池](sql-database-elastic-pool.md)。 也可以使用 [Azure 门户](https://portal.azure.com/)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API 创建和管理 Azure 弹性池。 此外还可以使用 [Transact-SQL](sql-database-elastic-pool-manage-tsql.md) 创建弹性池和将数据库移入和移出弹性池。
 
 > [!NOTE]
 > SQL 数据库的许多新功能仅在使用 [Azure Resource Manager 部署模型](../azure-resource-manager/resource-group-overview.md)时才可用，因此，始终应该使用最新版本的**用于 .NET 的 Azure SQL 数据库管理库（[文档](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)）**。 由于早期版本的[基于经典部署模型的库](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)只能实现向后兼容性，因此我们建议使用较高版本的基于 Resource Manager 的库。
@@ -303,7 +304,7 @@ namespace SqlElasticPoolConsoleApp
 
 若要完成本文中的步骤，需要准备好以下项：
 
-* 弹性池。 若要创建弹性池，请参阅[使用 C# 创建弹性池](sql-database-elastic-pool-create-csharp.md)。
+* 弹性池。 若要创建弹性池，请参阅[使用 C# 创建弹性池](sql-database-elastic-pool-manage-csharp.md)。
 * Visual Studio。 如需 Visual Studio 的免费副本，请参阅 [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs) 页。
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>将数据库移入弹性池
@@ -370,10 +371,5 @@ namespace SqlElasticPoolConsoleApp
 *  若要详细了解 SQL 数据库客户端应用程序的 SQL 错误代码、数据库连接错误和其他问题，请参阅[错误消息](sql-database-develop-error-messages.md)。
 * [Azure 资源管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 * 有关弹性池指南的信息，请参阅[何时使用弹性池？](sql-database-elastic-pool-guidance.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

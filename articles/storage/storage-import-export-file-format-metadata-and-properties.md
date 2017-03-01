@@ -1,5 +1,5 @@
 ---
-title: "导入/导出服务元数据和属性文件格式 | Microsoft Docs"
+title: "Azure 导入/导出元数据和属性文件格式 | Microsoft Docs"
 description: "了解如何为导入或导出作业包含的一个或多个 Blob 指定元数据和属性。"
 author: muralikk
 manager: syadav
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: 8c8800682a0ce2c52962a41c1c09fbc59595dee2
+ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
+ms.openlocfilehash: 0cac5419d4b481a5b783b4b9fbd4ad2d4d637042
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="import-export-service-metadata-and-properties-file-format"></a>导入/导出服务元数据和属性文件格式
+# <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure 导入/导出服务元数据和属性文件格式
 可将一个或多个 Blob 的元数据和属性指定为导入作业或导出作业的一部分。 若要设置将创建为导入作业一部分的 Blob 的元数据或属性，应在包含所要导入数据的硬盘驱动器上提供一个元数据或属性文件。 对于导出作业，元数据和属性将写入到在返回的硬盘驱动器上包含的元数据或属性文件。  
   
 ## <a name="metadata-file-format"></a>元数据文件格式  
@@ -70,9 +71,4 @@ ms.openlocfilehash: 8c8800682a0ce2c52962a41c1c09fbc59595dee2
 |`Cache-Control`|String|可选。 Blob 的缓存控制字符串。|  
   
  有关设置 Blob 元数据和属性的详细规则，请参阅，请参阅[设置 Blob 属性](/rest/api/storageservices/fileservices/set-blob-properties)、[设置 Blob 元数据](/rest/api/storageservices/fileservices/set-blob-metadata)以及[设置和检索 Blob 资源的属性与元数据](/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

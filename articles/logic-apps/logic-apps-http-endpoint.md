@@ -15,8 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: f8ce1215861da2db49f5148400195c4fefb9a01d
+ms.sourcegitcommit: d7144208fc3e6eb1f8d3c43d8b4a5e2bcb225e58
+ms.openlocfilehash: ac0c200abd110262badd04212c82be45cb0f8bfc
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -53,6 +54,31 @@ https://prod-03.eastus.logic.azure.com:443/workflows/080cb66c52ea4e9cabe0abf4e19
 ``` text
 POST https://management.azure.com/{resourceID of your logic app}/triggers/myendpointtrigger/listCallbackURL?api-version=2015-08-01-preview
 ```
+
+### <a name="changing-http-method-of-the-trigger"></a>更改触发器的 HTTP 的方法
+默认情况下，逻辑应用中的请求触发器需要 HTTP POST 请求。 但是，可以在 `Show advanced options` 下面配置 HTTP 方法。
+
+ > [!NOTE]
+ > 仅允许使用一种类型方法。
+
+### <a name="relative-trigger-url"></a>相对触发器 URL
+你还可以自定义请求 URL 的相对路径以接受参数。
+
+1. 展开**请求**触发器的 `Show advanced options`。
+ - 在 `Relative path` 下面输入 `customer/{customerId}`。
+
+  ![相对 URL 触发器](./media/logic-apps-http-endpoint/relativeurl.png)
+
+2. 更新**响应**操作，以利用参数。
+ - 可看到 `customerId` 在令牌选取器中显示。
+ - 更新响应的正文以返回 `Hello {customerId}`。
+
+  ![相对 URL 响应](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+
+3. 保存逻辑应用，你会发现请求 Url 更新为包括相对路径。
+
+4. 复制新的请求 Url 并将其粘贴到一个新的浏览器窗口。 将 `{customerId}` 替换为 `123`，然后按 Enter。
+ - 可看到返回 `Your customer Id is 123`。
 
 ### <a name="security-for-the-trigger-url"></a>触发器 URL 的安全
 使用共享访问签名安全地生成逻辑应用回调 URL。  签名将作为查询参数进行传递，且在逻辑应用触发之前必须经过验证。  它是通过每个逻辑应用的密钥、触发器名称和正在执行的操作的唯一组合而生成的。  除非具有对机密逻辑应用密钥的访问权限，否则将无法生成有效地签名。
@@ -154,9 +180,4 @@ POST https://management.azure.com/{resourceID of your logic app}/triggers/myendp
 [1]: ./media/logic-apps-http-endpoint/manualtriggerurl.png
 [2]: ./media/logic-apps-http-endpoint/manualtrigger.png
 [3]: ./media/logic-apps-http-endpoint/response.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
