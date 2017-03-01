@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/08/2016
 ms.author: estfan
 translationtype: Human Translation
-ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
-ms.openlocfilehash: 538ba17e2b90ca1b30aee79c1f1835f3c4cdfb3c
+ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
+ms.openlocfilehash: 514942b2552564f669d73b997a2d355ddb477b22
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -74,10 +75,5 @@ ms.openlocfilehash: 538ba17e2b90ca1b30aee79c1f1835f3c4cdfb3c
 * [集成帐户元数据](../logic-apps/logic-apps-enterprise-integration-metadata.md "了解集成帐户元数据")
 * [监视 B2B 消息](logic-apps-monitor-b2b-message.md "深入了解 B2B 消息")
 * [在 OMS 门户中跟踪 B2B 消息](logic-apps-track-b2b-messages-omsportal.md "深入了解在 OMS 门户中跟踪 B2B 消息")
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

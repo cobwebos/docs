@@ -1,6 +1,6 @@
 ---
 title: "使用 Log Analytics 中的 SQL 评估解决方案优化环境 | Microsoft Docs"
-description: "可以使用 SQL 评估解决方案定期评估服务器环境的风险和运行状况。"
+description: "借助 Azure Log Analytics，可以使用 SQL 评估解决方案定期评估服务器环境的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 0b0c739f1d89b83c43314d8ace794d26abf10054
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: fc8b2d74737bc334d5c4f27782d4e0d46adbcb18
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="optimize-your-environment-with-the-sql-assessment-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL 评估解决方案优化环境
 可以使用 SQL 评估解决方案定期评估服务器环境的风险和运行状况。 本文将帮助你安装该解决方案，以便针对潜在问题采取纠正措施。
 
-此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。 这些建议跨六个重点领域进行了分类，将帮助你快速了解风险并采取纠正措施。
+此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。 这些建议对六个重点领域的问题进行了分类，可帮助你快速了解风险并采取纠正措施。
 
 提出的建议基于 Microsoft 工程师从数千次客户拜访中所获得的知识和经验。 每一项建议都会就为何问题可能对你至关重要以及如何实施建议更改提供相关指导。
 
@@ -41,7 +42,8 @@ SQL 评估适用于 Standard、Developer 和 Enterprise 版本的所有当前支
 使用以下信息安装和配置解决方案。
 
 * 必须在装有 SQL Server 的服务器上安装代理。
-* SQL 评估解决方案要求在每台具有 OMS 代理的计算机上安装 .NET Framework 4。
+* SQL 评估解决方案要求在每台具有 OMS 代理的计算机上安装受支持版本的 .NET Framework 4。
+* 若要安装该解决方案，用户在使用 Azure 门户时必须是 Azure 订阅的管理员或参与者。 此外，用户必须是 OMS 门户中 OMS 工作区参与者或管理员角色的成员。
 * 当将 Operations Manager 代理与 SQL 评估结合使用时，将需要使用 Operations Manager 运行方式帐户。 有关详细信息，请参阅下面的 [OMS 的 Operations Manager 运行方式帐户](#operations-manager-run-as-accounts-for-oms)。
 
   > [!NOTE]
@@ -52,8 +54,6 @@ SQL 评估适用于 Standard、Developer 和 Enterprise 版本的所有当前支
 
 > [!NOTE]
 > 添加该解决方案后，AdvisorAssessment.exe 文件将会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 OMS 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。
->
->
 
 ## <a name="sql-assessment-data-collection-details"></a>SQL 评估数据集合详细信息
 SQL 评估使用已启用的代理来收集 WMI 数据、注册表数据、性能数据和 SQL Server 动态管理视图结果。
@@ -74,7 +74,7 @@ OMS 中的 Log Analytics 使用 Operations Manager 代理和管理组来收集�
 
 #### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>在操作控制台中配置 SQL 运行方式帐户
 > [!NOTE]
-> 如果使用的是 OMS 直接代理而不是 SCOM 代理，管理包将始终运行在本地系统帐户的安全上下文中。 跳过下面的步骤 1 到 5，并通过指定 NT AUTHORITY\SYSTEM 作为用户名，运行 T-SQL 或 Powershell 示例。
+> 如果使用的是 OMS 直接代理而不是 SCOM 代理，管理包将始终运行在本地系统帐户的安全上下文中。 跳过下面的步骤 1 到 5，直接运行 T-SQL 或 Powershell 示例，将 NT AUTHORITY\SYSTEM 指定为用户名。
 >
 >
 
@@ -109,7 +109,7 @@ OMS 中的 Log Analytics 使用 Operations Manager 代理和管理组来收集�
 
 ```
 #### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>使用 Windows PowerShell 配置 SQL 运行方式帐户
-在使用你的信息更新以下脚本后，打开 PowerShell 窗口并运行该脚本：
+打开 PowerShell 窗口，使用你的信息更新以下脚本，然后运行该脚本：
 
 ```
 
@@ -140,9 +140,9 @@ OMS 中的 Log Analytics 使用 Operations Manager 代理和管理组来收集�
 
 **性能和可扩展性** - 该重点区域显示帮助组织实现 IT 基础结构扩展的建议，确保 IT 环境满足当前性能要求，并且能够应对不断变化的基础结构需求。
 
-**升级、迁移和部署** - 该重点区域显示帮助升级、迁移并将 SQL Server 部署到现有基础结构的建议。
+**升级、迁移和部署** - 该重点区域显示帮助你将 SQL Server 升级、迁移和部署到现有基础结构的建议。
 
-**操作和监视** - 该重点关注领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
+**操作和监视** - 该重点领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
 
 **更改和配置管理** - 该重点关注领域显示相关建议，以帮助保护日常操作，确保更改不会对基础结构造成不良影响，建立更改控制过程，并跟踪和审核系统配置。
 
@@ -184,7 +184,7 @@ OMS 中的 Log Analytics 使用 Operations Manager 代理和管理组来收集�
    * 在 Operations Manager 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>验证建议是否已被忽略
-1. 在下一次计划评估运行后（默认情况下每 7 天），指定的建议会被标记为“已忽略”，并且不会在评估仪表板上显示。
+1. 在下一次计划评估运行后（默认情况下每 7 天运行一次），指定的建议会被标记为“已忽略”，并且不会在评估仪表板上显示。
 2. 可以使用以下日志搜索查询列出所有已忽略的建议。
 
    ```
@@ -231,11 +231,11 @@ OMS 中的 Log Analytics 使用 Operations Manager 代理和管理组来收集�
 
 *为何需要配置运行方式帐户？*
 
-* 对于 SQL Server，将运行少量的 SQL 查询。 为了使它们能够运行，必须使用对 SQL 具有 VIEW SERVER STATE 权限的运行方式帐户。  此外，为了查询 WMI，本地管理员凭据是必需项。
+* 对于 SQL Server，将运行少量的 SQL 查询。 为了使它们能够运行，必须使用对 SQL 具有 VIEW SERVER STATE 权限的运行方式帐户。  此外，要查询 WMI，必须提供本地管理员凭据。
 
 *为何仅显示前 10 条建议？*
 
-* 我们并没有为你提供详尽的任务普遍列表，而是建议你先着重解决按优先级排列的建议。 在解决这些建议后，其他建议将变为可用。 如果你想要查看详细列表，可以使用 OMS 日志搜索来查看所有建议。
+* 我们并没有为你提供完整详尽的任务列表，而是建议你先着重解决优先级较高的建议。 在解决这些建议后，其他建议将变为可用。 如果你想要查看详细列表，可以使用 OMS 日志搜索来查看所有建议。
 
 *有没有方法来忽略建议？*
 
@@ -243,9 +243,4 @@ OMS 中的 Log Analytics 使用 Operations Manager 代理和管理组来收集�
 
 ## <a name="next-steps"></a>后续步骤
 * [搜索日志](log-analytics-log-searches.md)以查看详细的 SQL 评估数据和建议。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

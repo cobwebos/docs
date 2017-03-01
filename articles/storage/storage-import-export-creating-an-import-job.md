@@ -1,5 +1,5 @@
 ---
-title: "为 Azure 导入/导出服务创建导入作业 | Microsoft Docs"
+title: "为 Azure 导入/导出创建导入作业 | Microsoft Docs"
 description: "了解如何为 Microsoft Azure 导入/导出服务创建导入作业"
 author: muralikk
 manager: syadav
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 22e37e26fec913a7638c71b2547c38f5efacd10b
-ms.openlocfilehash: 348757809fb5820e2c5c2d5806ec3c74353f3fc8
+ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
+ms.openlocfilehash: 84ba5256c3ee485af9a1a6bccc0571f93c9c0ab7
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="creating-an-import-job"></a>创建导入作业
+# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
 
 使用 REST API 为 Microsoft Azure 导入/导出服务创建导入作业的过程包括以下步骤：
 
@@ -106,9 +107,4 @@ ms.openlocfilehash: 348757809fb5820e2c5c2d5806ec3c74353f3fc8
 
 ## <a name="see-also"></a>另请参阅
 [使用导入/导出服务 REST API](storage-import-export-using-the-rest-api.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

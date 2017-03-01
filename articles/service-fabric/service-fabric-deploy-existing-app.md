@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/22/2016
-ms.author: mfussell;mikhegn
+ms.date: 02/17/2016
+ms.author: msfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: f31c8ab3d2b4fd871c92ac0e7d04bc8d5ab86830
-ms.openlocfilehash: 70d13fd05aeedc9aa6e9f87a9a0223a2e20ef88b
+ms.sourcegitcommit: d1939e316efb00fb4980c57cbec28920a7475a47
+ms.openlocfilehash: bc9a62eb41a4ccb1ffb17b89e3bee9d40f2e7b54
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -33,6 +34,10 @@ ms.openlocfilehash: 70d13fd05aeedc9aa6e9f87a9a0223a2e20ef88b
 * 运行状况监视。 Service Fabric 运行状况监视功能可检测应用程序是否正在运行，并在出现故障时提供诊断信息。   
 * 应用程序生命周期管理。 除了提供无需停机的升级，Service Fabric 还可以在升级过程中报告坏健康事件时自动回滚到先前的版本。    
 * 密度。 可以在群集中运行多个应用程序，这样便无需使每个应用程序在自己的硬件上运行。
+
+## <a name="samples"></a>示例
+* [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)
+* [使用 REST 通过命名服务进行通信的两种来宾可执行文件（C# 和 nodejs）示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="overview-of-application-and-service-manifest-files"></a>应用程序和服务清单文件概述
 在部署来宾可执行文件期间，最好先了解 Service Fabric 打包和部署模型（如[应用程序模型](service-fabric-application-model.md)中所述）。 Service Fabric 打包模型依赖两个 XML 文件：应用程序清单和服务清单。 ApplicationManifest.xml 和 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
@@ -308,7 +313,7 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 这是适用于前端应用程序（例如，REST 终结点）的实用配置，因为客户端应用程序需要“连接”群集中的任意节点，即可使用终结点。 此配置也适用于其他应用场景，例如，当 Service Fabric 群集的所有节点都连接负载平衡器时。 然后，可将客户端流量分布到群集中所有节点上运行的服务中。
 
 ## <a name="check-your-running-application"></a>检查正在运行的应用程序
-在 Service Fabric Explorer 中，确定服务在其中运行的节点。 在此示例中，它在节点 1 上运行：
+在 Service Fabric Explorer 中，确定服务在其中运行的节点。 在此示例中，它在节点&1; 上运行：
 
 ![运行服务的节点](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
 
@@ -333,13 +338,9 @@ Yeoman 已创建应用程序包，其中包含相应的应用程序和清单文�
 ## <a name="next-steps"></a>后续步骤
 在本文中，我们了解了如何打包来宾可执行文件并将它部署到 Service Fabric。 请参阅下面几篇文章，了解相关信息和任务。
 
-* [在 GitHub 上打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)，包括打包工具的预发行版本的链接
+* [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)，包括打包工具的预发行版本的链接
+* [使用 REST 通过命名服务进行通信的两种来宾可执行文件（C# 和 nodejs）示例](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [部署多个来宾可执行文件](service-fabric-deploy-multiple-apps.md)
 * [使用 Visual Studio 创建第一个 Service Fabric 应用程序](service-fabric-create-your-first-application-in-visual-studio.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

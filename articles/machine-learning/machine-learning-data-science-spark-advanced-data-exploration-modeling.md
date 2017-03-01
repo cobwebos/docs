@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 304323601a7fb2c9b46cf0e1eea9429cf099a111
-ms.openlocfilehash: 853f3c9b2a4781b683b03b5c7ec93f0197c78cdc
+ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
+ms.openlocfilehash: e6bf6bd3c905f077841ef166540337a251b91ad1
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -50,8 +51,16 @@ ms.openlocfilehash: 853f3c9b2a4781b683b03b5c7ec93f0197c78cdc
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
-你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 中提供包含本主题中的代码示例的 **pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb** 笔记本。
+## <a name="setup-spark-clusters-and-notebooks"></a>设置：Spark 群集和笔记本
+本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但是，Jupyter 笔记本是针对 HDInsight Spark 1.6 和 Spark 2.0 群集提供的。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 为方便起见，下面提供了在 Jupyter 笔记本服务器的 pyspark 内核中运行的、适用于 Spark 1.6 和 2.0 的 Jupyter 笔记本的链接：
+
+### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
+
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含笔记本 #1 中的主题，以及使用超参数优化和交叉验证进行模型开发的说明。
+
+### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
+
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中执行数据探索、建模和评分的信息。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -1434,10 +1443,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。
 
 **模型使用：**若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](machine-learning-data-science-spark-model-consumption.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

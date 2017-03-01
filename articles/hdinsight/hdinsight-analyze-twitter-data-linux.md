@@ -13,25 +13,25 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 64324eb5258a060f31902cfb30c97425304b7e33
+ms.sourcegitcommit: 394f29548b25cb317c836fde28f760b335240b37
+ms.openlocfilehash: e64d90f80cd9b0214a7c483977202e5022956d5d
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析 Twitter 数据
 
-在此文档中，将通过使用 Twitter 流式处理 API 获取推文，然后在 HDInsight 群集上使用 Apache Hive 处理 JSON 格式数据。 结果将是发送最多包含某个特定词的推文的 Twitter 用户列表。
+了解如何在 HDInsight 群集上使用 Apache Hive 处理 Twitter 数据。 结果是发送最多包含某个特定词的推文的 Twitter 用户列表。
 
 > [!IMPORTANT]
 > 本文档中的步骤已在基于 Linux 的 HDInsight 群集上进行测试。
 >
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
-### <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
+## <a name="prerequisites"></a>先决条件
 
 * **基于 Linux 的 Azure HDInsight 群集**。 有关创建群集的信息，请参阅[基于 Linux 的 HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)了解有关创建群集的步骤。
 * **SSH 客户端**。 有关将 SSH 与基于 Linux 的 HDInsight 配合使用的详细信息，请参阅以下文章：
@@ -41,11 +41,15 @@ ms.openlocfilehash: 64324eb5258a060f31902cfb30c97425304b7e33
 * **Python** 和 [pip](https://pypi.python.org/pypi/pip)
 
 ## <a name="get-a-twitter-feed"></a>获取 Twitter 源
-Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.com/docs/platform-objects/tweets)作为 JavaScript 对象表示法 (JSON) 文档。 要对 API 进行身份验证，需要 [OAuth](http://oauth.net)。 还必须创建包含用于访问 API 的设置的 *Twitter 应用程序*。
+
+Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.com/docs/platform-objects/tweets)作为 JavaScript 对象表示法 (JSON) 文档。 要对 API 进行身份验证，需要 [OAuth](http://oauth.net)。
 
 ### <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
+
 1. 从 Web 浏览器登录到 [https://apps.twitter.com/](https://apps.twitter.com/)。 单击“立即注册”链接（如果没有 Twitter 帐户）。
+
 2. 单击“创建新应用”。
+
 3. 输入“名称”、“说明”、“网站”。 可为“网站”字段补充 URL。 下表显示了一些要使用的示例值：
    
    | 字段 | 值 |
@@ -53,19 +57,26 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
    | Name |MyHDInsightApp |
    | 说明 |MyHDInsightApp |
    | 网站 |http://www.myhdinsightapp.com |
+
 4. 选中“是，我同意”，然后单击“创建 Twitter 应用程序”。
-5. 单击“权限”选项卡。 默认权限为“只读”。 这对于本教程来说已足够。
+
+5. 单击“权限”选项卡。 默认权限为“只读”。
+
 6. 单击“密钥和访问令牌”选项卡。
+
 7. 单击“创建我的访问令牌”。
+
 8. 在页面右上角单击“测试 OAuth”。
-9. 记下“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”。 在后面的步骤中将会用到这些值。
+
+9. 记下“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”。
 
 > [!NOTE]
 > 在 Windows 中使用 curl 命令时，请使用双引号（而不是单引号）括起选项值。
 
 
 ### <a name="download-tweets"></a>下载推文
-以下 Python 代码将从 Twitter 下载 10,000 篇推文并将其保存到一个名为 **tweets.txt** 的文件中。
+
+以下 Python 代码会从 Twitter 下载 10,000 篇推文并将其保存到一个名为 **tweets.txt** 的文件中。
 
 > [!NOTE]
 > 由于已安装了 Python，请在 HDInsight 群集上执行以下步骤。
@@ -76,232 +87,259 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果你使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如，`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`。
+    如果使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果你使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如，`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`。
    
     有关将 SSH 与基于 Linux 的 HDInsight 配合使用的详细信息，请参阅以下文章：
    
    * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
    * [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+
 2. 默认情况下，HDInsight 头节点上未安装 **pip** 实用程序。 使用以下方法来安装，然后更新此实用程序：
    
-        sudo apt-get install python-pip
-        sudo pip install --upgrade pip
-3. 用于下载推文的代码依赖于 [Tweepy](http://www.tweepy.org/) 和 [Progressbar](https://pypi.python.org/pypi/progressbar/2.2)。 若要安装这些项，请使用以下命令：
+   ```bash
+   sudo apt-get install python-pip
+   sudo pip install --upgrade pip
+   ```
+
+3. 使用以下命令安装 [Tweepy](http://www.tweepy.org/) 和 [Progressbar](https://pypi.python.org/pypi/progressbar/2.2)：
    
-        sudo apt-get install python-dev libffi-dev libssl-dev
-        sudo apt-get remove python-openssl
-        sudo pip install tweepy progressbar pyOpenSSL requests[security]
-   
+   ```bash
+   sudo apt-get install python-dev libffi-dev libssl-dev
+   sudo apt-get remove python-openssl
+   sudo pip install tweepy progressbar pyOpenSSL requests[security]
+   ```
+
    > [!NOTE]
    > 有关删除 python-openssl，安装 python-dev、libffi-dev、libssl-dev、pyOpenSSL 和 requests[security] 的信息是为了避免从 Python 通过 SSL 连接到 Twitter 时出现 InsecurePlatform 警告。
    > 
    > Tweepy v3.2.0 用于避免在处理推文时可能发生的[错误](https://github.com/tweepy/tweepy/issues/576)。
-   > 
-   > 
-4. 使用以下命令创建一个名为 **gettweets.py** 的新文件：
+
+4. 使用以下命令创建一个名为 **gettweets.py** 的文件：
    
-        nano gettweets.py
-5. 使用以下内容作为 **gettweets.py** 文件的内容。 将“consumer\_secret”、“consumer\_key”、“access\_token”和“access\_token\_secret”的占位符信息替换为 Twitter 应用程序的信息。
+   ```bash
+   nano gettweets.py
+   ```
+
+5. 使用以下文本作为 **gettweets.py** 文件的内容。 将“consumer\_secret”、“consumer\_key”、“access\_token”和“access\_token\_secret”的占位符信息替换为 Twitter 应用程序的信息。
    
-        #!/usr/bin/python
-   
-        from tweepy import Stream, OAuthHandler
-        from tweepy.streaming import StreamListener
-        from progressbar import ProgressBar, Percentage, Bar
-        import json
-        import sys
-   
-        #Twitter app information
-        consumer_secret='Your consumer secret'
-        consumer_key='Your consumer key'
-        access_token='Your access token'
-        access_token_secret='Your access token secret'
-   
-        #The number of tweets we want to get
-        max_tweets=10000
-   
-        #Create the listener class that will receive and save tweets
-        class listener(StreamListener):
-            #On init, set the counter to zero and create a progress bar
-            def __init__(self, api=None):
-                self.num_tweets = 0
-                self.pbar = ProgressBar(widgets=[Percentage(), Bar()], maxval=max_tweets).start()
-   
-            #When data is received, do this
-            def on_data(self, data):
-                #Append the tweet to the 'tweets.txt' file
-                with open('tweets.txt', 'a') as tweet_file:
-                    tweet_file.write(data)
-                    #Increment the number of tweets
-                    self.num_tweets += 1
-                    #Check to see if we have hit max_tweets and exit if so
-                    if self.num_tweets >= max_tweets:
-                        self.pbar.finish()
-                        sys.exit(0)
-                    else:
-                        #increment the progress bar
-                        self.pbar.update(self.num_tweets)
-                return True
-   
-            #Handle any errors that may occur
-            def on_error(self, status):
-                print status
-   
-        #Get the OAuth token
-        auth = OAuthHandler(consumer_key, consumer_secret)
-        auth.set_access_token(access_token, access_token_secret)
-        #Use the listener class for stream processing
-        twitterStream = Stream(auth, listener())
-        #Filter for these topics
-        twitterStream.filter(track=["azure","cloud","hdinsight"])
+   ```python
+   #!/usr/bin/python
+
+   from tweepy import Stream, OAuthHandler
+   from tweepy.streaming import StreamListener
+   from progressbar import ProgressBar, Percentage, Bar
+   import json
+   import sys
+
+   #Twitter app information
+   consumer_secret='Your consumer secret'
+   consumer_key='Your consumer key'
+   access_token='Your access token'
+   access_token_secret='Your access token secret'
+
+   #The number of tweets we want to get
+   max_tweets=10000
+
+   #Create the listener class that receives and saves tweets
+   class listener(StreamListener):
+       #On init, set the counter to zero and create a progress bar
+       def __init__(self, api=None):
+           self.num_tweets = 0
+           self.pbar = ProgressBar(widgets=[Percentage(), Bar()], maxval=max_tweets).start()
+
+       #When data is received, do this
+       def on_data(self, data):
+           #Append the tweet to the 'tweets.txt' file
+           with open('tweets.txt', 'a') as tweet_file:
+               tweet_file.write(data)
+               #Increment the number of tweets
+               self.num_tweets += 1
+               #Check to see if we have hit max_tweets and exit if so
+               if self.num_tweets >= max_tweets:
+                   self.pbar.finish()
+                   sys.exit(0)
+               else:
+                   #increment the progress bar
+                   self.pbar.update(self.num_tweets)
+           return True
+
+       #Handle any errors that may occur
+       def on_error(self, status):
+           print status
+
+   #Get the OAuth token
+   auth = OAuthHandler(consumer_key, consumer_secret)
+   auth.set_access_token(access_token, access_token_secret)
+   #Use the listener class for stream processing
+   twitterStream = Stream(auth, listener())
+   #Filter for these topics
+   twitterStream.filter(track=["azure","cloud","hdinsight"])
+   ```
+
 6. 使用 **Ctrl+X**，然后使用 **Y** 以保存该文件。
+
 7. 使用以下命令运行该文件并下载推文：
    
-        python gettweets.py
+    ```bash
+    python gettweets.py
+    ```
    
     进度指示器将出现，并在推文已下载并保存到文件时计数达到 100%。
    
    > [!NOTE]
-   > 如果在进度条前移的过程中花费了太长时间，应该将筛选器更改为跟踪热门主题；如果有许多关于正在筛选的主题的推文，则可以快速获取所需的 10000 条推文。
-   > 
-   > 
+   > 如果进度栏向前移动需要较长时间，则应更改筛选器以跟踪趋势主题。 当存在许多有关筛选器中的主题的推文时，可以快速获取所需的 10000 篇推文。
 
 ### <a name="upload-the-data"></a>上载数据
-若要将数据上载到 WASB（由 HDInsight 使用的分布式文件系统），请使用以下命令：
 
-    hdfs dfs -mkdir -p /tutorials/twitter/data
-    hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
+若要将数据上传到 HDInsight 存储，请使用以下命令：
 
-这将在群集中的所有节点都可以访问的位置中存储数据。
+   ```bash
+   hdfs dfs -mkdir -p /tutorials/twitter/data
+   hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
+```
+
+这些命令会在群集中的所有节点都可以访问的位置中存储数据。
 
 ## <a name="run-the-hiveql-job"></a>运行 HiveQL 作业
+
 1. 使用以下命令来创建包含 HiveQL 语句的文件：
    
-        nano twitter.hql
+   ```bash
+   nano twitter.hql
+   ```
+
+    将以下文本用作文件的内容：
    
-    将以下内容用作该文件的内容：
-   
-        set hive.exec.dynamic.partition = true;
-        set hive.exec.dynamic.partition.mode = nonstrict;
-        -- Drop table, if it exists
-        DROP TABLE tweets_raw;
-        -- Create it, pointing toward the tweets logged from Twitter
-        CREATE EXTERNAL TABLE tweets_raw (
-            json_response STRING
-        )
-        STORED AS TEXTFILE LOCATION '/tutorials/twitter/data';
-        -- Drop and recreate the destination table
-        DROP TABLE tweets;
-        CREATE TABLE tweets
-        (
-            id BIGINT,
-            created_at STRING,
-            created_at_date STRING,
-            created_at_year STRING,
-            created_at_month STRING,
-            created_at_day STRING,
-            created_at_time STRING,
-            in_reply_to_user_id_str STRING,
-            text STRING,
-            contributors STRING,
-            retweeted STRING,
-            truncated STRING,
-            coordinates STRING,
-            source STRING,
-            retweet_count INT,
-            url STRING,
-            hashtags array<STRING>,
-            user_mentions array<STRING>,
-            first_hashtag STRING,
-            first_user_mention STRING,
-            screen_name STRING,
-            name STRING,
-            followers_count INT,
-            listed_count INT,
-            friends_count INT,
-            lang STRING,
-            user_location STRING,
-            time_zone STRING,
-            profile_image_url STRING,
-            json_response STRING
-        );
-        -- Select tweets from the imported data, parse the JSON,
-        -- and insert into the tweets table
-        FROM tweets_raw
-        INSERT OVERWRITE TABLE tweets
-        SELECT
-            cast(get_json_object(json_response, '$.id_str') as BIGINT),
-            get_json_object(json_response, '$.created_at'),
-            concat(substr (get_json_object(json_response, '$.created_at'),1,10),' ',
-            substr (get_json_object(json_response, '$.created_at'),27,4)),
-            substr (get_json_object(json_response, '$.created_at'),27,4),
-            case substr (get_json_object(json_response,    '$.created_at'),5,3)
-                when "Jan" then "01"
-                when "Feb" then "02"
-                when "Mar" then "03"
-                when "Apr" then "04"
-                when "May" then "05"
-                when "Jun" then "06"
-                when "Jul" then "07"
-                when "Aug" then "08"
-                when "Sep" then "09"
-                when "Oct" then "10"
-                when "Nov" then "11"
-                when "Dec" then "12" end,
-            substr (get_json_object(json_response, '$.created_at'),9,2),
-            substr (get_json_object(json_response, '$.created_at'),12,8),
-            get_json_object(json_response, '$.in_reply_to_user_id_str'),
-            get_json_object(json_response, '$.text'),
-            get_json_object(json_response, '$.contributors'),
-            get_json_object(json_response, '$.retweeted'),
-            get_json_object(json_response, '$.truncated'),
-            get_json_object(json_response, '$.coordinates'),
-            get_json_object(json_response, '$.source'),
-            cast (get_json_object(json_response, '$.retweet_count') as INT),
-            get_json_object(json_response, '$.entities.display_url'),
-            array(
-                trim(lower(get_json_object(json_response, '$.entities.hashtags[0].text'))),
-                trim(lower(get_json_object(json_response, '$.entities.hashtags[1].text'))),
-                trim(lower(get_json_object(json_response, '$.entities.hashtags[2].text'))),
-                trim(lower(get_json_object(json_response, '$.entities.hashtags[3].text'))),
-                trim(lower(get_json_object(json_response, '$.entities.hashtags[4].text')))),
-            array(
-                trim(lower(get_json_object(json_response, '$.entities.user_mentions[0].screen_name'))),
-                trim(lower(get_json_object(json_response, '$.entities.user_mentions[1].screen_name'))),
-                trim(lower(get_json_object(json_response, '$.entities.user_mentions[2].screen_name'))),
-                trim(lower(get_json_object(json_response, '$.entities.user_mentions[3].screen_name'))),
-                trim(lower(get_json_object(json_response, '$.entities.user_mentions[4].screen_name')))),
-            trim(lower(get_json_object(json_response, '$.entities.hashtags[0].text'))),
-            trim(lower(get_json_object(json_response, '$.entities.user_mentions[0].screen_name'))),
-            get_json_object(json_response, '$.user.screen_name'),
-            get_json_object(json_response, '$.user.name'),
-            cast (get_json_object(json_response, '$.user.followers_count') as INT),
-            cast (get_json_object(json_response, '$.user.listed_count') as INT),
-            cast (get_json_object(json_response, '$.user.friends_count') as INT),
-            get_json_object(json_response, '$.user.lang'),
-            get_json_object(json_response, '$.user.location'),
-            get_json_object(json_response, '$.user.time_zone'),
-            get_json_object(json_response, '$.user.profile_image_url'),
-            json_response
-        WHERE (length(json_response) > 500);
+   ```hiveql
+   set hive.exec.dynamic.partition = true;
+   set hive.exec.dynamic.partition.mode = nonstrict;
+   -- Drop table, if it exists
+   DROP TABLE tweets_raw;
+   -- Create it, pointing toward the tweets logged from Twitter
+   CREATE EXTERNAL TABLE tweets_raw (
+       json_response STRING
+   )
+   STORED AS TEXTFILE LOCATION '/tutorials/twitter/data';
+   -- Drop and recreate the destination table
+   DROP TABLE tweets;
+   CREATE TABLE tweets
+   (
+       id BIGINT,
+       created_at STRING,
+       created_at_date STRING,
+       created_at_year STRING,
+       created_at_month STRING,
+       created_at_day STRING,
+       created_at_time STRING,
+       in_reply_to_user_id_str STRING,
+       text STRING,
+       contributors STRING,
+       retweeted STRING,
+       truncated STRING,
+       coordinates STRING,
+       source STRING,
+       retweet_count INT,
+       url STRING,
+       hashtags array<STRING>,
+       user_mentions array<STRING>,
+       first_hashtag STRING,
+       first_user_mention STRING,
+       screen_name STRING,
+       name STRING,
+       followers_count INT,
+       listed_count INT,
+       friends_count INT,
+       lang STRING,
+       user_location STRING,
+       time_zone STRING,
+       profile_image_url STRING,
+       json_response STRING
+   );
+   -- Select tweets from the imported data, parse the JSON,
+   -- and insert into the tweets table
+   FROM tweets_raw
+   INSERT OVERWRITE TABLE tweets
+   SELECT
+       cast(get_json_object(json_response, '$.id_str') as BIGINT),
+       get_json_object(json_response, '$.created_at'),
+       concat(substr (get_json_object(json_response, '$.created_at'),1,10),' ',
+       substr (get_json_object(json_response, '$.created_at'),27,4)),
+       substr (get_json_object(json_response, '$.created_at'),27,4),
+       case substr (get_json_object(json_response,    '$.created_at'),5,3)
+           when "Jan" then "01"
+           when "Feb" then "02"
+           when "Mar" then "03"
+           when "Apr" then "04"
+           when "May" then "05"
+           when "Jun" then "06"
+           when "Jul" then "07"
+           when "Aug" then "08"
+           when "Sep" then "09"
+           when "Oct" then "10"
+           when "Nov" then "11"
+           when "Dec" then "12" end,
+       substr (get_json_object(json_response, '$.created_at'),9,2),
+       substr (get_json_object(json_response, '$.created_at'),12,8),
+       get_json_object(json_response, '$.in_reply_to_user_id_str'),
+       get_json_object(json_response, '$.text'),
+       get_json_object(json_response, '$.contributors'),
+       get_json_object(json_response, '$.retweeted'),
+       get_json_object(json_response, '$.truncated'),
+       get_json_object(json_response, '$.coordinates'),
+       get_json_object(json_response, '$.source'),
+       cast (get_json_object(json_response, '$.retweet_count') as INT),
+       get_json_object(json_response, '$.entities.display_url'),
+       array(
+           trim(lower(get_json_object(json_response, '$.entities.hashtags[0].text'))),
+           trim(lower(get_json_object(json_response, '$.entities.hashtags[1].text'))),
+           trim(lower(get_json_object(json_response, '$.entities.hashtags[2].text'))),
+           trim(lower(get_json_object(json_response, '$.entities.hashtags[3].text'))),
+           trim(lower(get_json_object(json_response, '$.entities.hashtags[4].text')))),
+       array(
+           trim(lower(get_json_object(json_response, '$.entities.user_mentions[0].screen_name'))),
+           trim(lower(get_json_object(json_response, '$.entities.user_mentions[1].screen_name'))),
+           trim(lower(get_json_object(json_response, '$.entities.user_mentions[2].screen_name'))),
+           trim(lower(get_json_object(json_response, '$.entities.user_mentions[3].screen_name'))),
+           trim(lower(get_json_object(json_response, '$.entities.user_mentions[4].screen_name')))),
+       trim(lower(get_json_object(json_response, '$.entities.hashtags[0].text'))),
+       trim(lower(get_json_object(json_response, '$.entities.user_mentions[0].screen_name'))),
+       get_json_object(json_response, '$.user.screen_name'),
+       get_json_object(json_response, '$.user.name'),
+       cast (get_json_object(json_response, '$.user.followers_count') as INT),
+       cast (get_json_object(json_response, '$.user.listed_count') as INT),
+       cast (get_json_object(json_response, '$.user.friends_count') as INT),
+       get_json_object(json_response, '$.user.lang'),
+       get_json_object(json_response, '$.user.location'),
+       get_json_object(json_response, '$.user.time_zone'),
+       get_json_object(json_response, '$.user.profile_image_url'),
+       json_response
+   WHERE (length(json_response) > 500);
+   ```
+
 2. 按 **Ctrl+X**，然后按 **Y** 以保存该文件。
 3. 使用以下命令运行该文件中包含的 HiveQL：
    
-        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i twitter.hql
-   
-    这将加载 Hive shell，运行 **twitter.hql** 文件中的 HiveQL，并最终返回 `jdbc:hive2//localhost:10001/>` 提示符。
+   ```bash
+   beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i twitter.hql
+   ```
+
+    此命令会运行 **twitter.hql** 文件。 查询完成之后，你会看到 `jdbc:hive2//localhost:10001/>` 提示符。
+
 4. 在 Beeline 提示符下，使用以下项来验证是否可从 **twitter.hql** 文件中的 HiveQL 创建的 **tweets** 表中选择数据：
    
-        SELECT name, screen_name, count(1) as cc
-            FROM tweets
-            WHERE text like "%Azure%"
-            GROUP BY name,screen_name
-            ORDER BY cc DESC LIMIT 10;
-   
-    这将在消息文本中返回最多 10 篇包含 **Azure** 一词的推文。
+   ```hiveql
+   SELECT name, screen_name, count(1) as cc
+       FROM tweets
+       WHERE text like "%Azure%"
+       GROUP BY name,screen_name
+       ORDER BY cc DESC LIMIT 10;
+   ```
+
+    这会在消息文本中返回最多 10 篇包含 **Azure** 一词的推文。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，我们已了解如何将非结构化 JSON 数据集转换为结构化 Hive 表，以便在 Azure 上使用 HDInsight 查询、探究和分析来自 Twitter 的数据。 若要了解更多信息，请参阅以下文章：
+
+你已了解如何将非结构化 JSON 数据集转换为结构化 Hive 表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
 
 * [HDInsight 入门](hdinsight-hadoop-linux-tutorial-get-started.md)
 * [使用 HDInsight 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)
@@ -313,9 +351,4 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
 
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

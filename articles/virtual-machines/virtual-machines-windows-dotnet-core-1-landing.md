@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 64ad540536dcf3f4d4a73f49d99fb6142b33ea9c
-ms.openlocfilehash: 31fd217e46bbc79bac9e09045677edbc12bcf6c2
+ms.sourcegitcommit: 8284fa063d8ffa0d9951b77eb06be14159fc2561
+ms.openlocfilehash: 5b40d5476d85a4eeba65f01320e0ea03ed4debaa
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -68,10 +69,5 @@ Azure Resource Manager 模板需要以下参数值。
 [步骤 3 - Azure Resource Manager 模板的可用性和缩放](virtual-machines-windows-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [步骤 4 - 使用 Azure Resource Manager 模板部署应用程序](virtual-machines-windows-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4fb6ef56d694aff967840ab26b75b66a2e799cc1
-ms.openlocfilehash: 977de9160be63a91b5926daa45528e5ee205e448
+ms.sourcegitcommit: 4cde82601758c9f92ab36c692265a8b6c192cbdc
+ms.openlocfilehash: eef19d304ec63d752b6b84c78833af44ca5344d2
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -156,7 +157,7 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
 * *applicationPorts* 是 Service Fabric 应用程序使用的端口。 这些端口应是 *ephemeralPorts* 的子集，其范围足以满足应用程序的终结点要求。 每当需要新端口时，Service Fabric 将使用这些端口，并负责为这些端口打开防火墙。 
 * *reverseProxyEndpointPort* 是可选的反向代理终结点。 有关详细信息，请参阅 [Service Fabric 反向代理](service-fabric-reverseproxy.md)。 
 
-### <a name="other-settings"></a>其他设置
+### <a name="log-settings"></a>日志设置
 使用 **fabricSettings** 节可以设置 Service Fabric 数据和日志的根目录。 只能在初次创建群集的时候自定义这些设置。 下面是此部分的代码段示例。
 
     "fabricSettings": [{
@@ -171,12 +172,19 @@ ClusterConfig.JSON 中的 **properties** 节用于配置群集，如下所示。
 
 建议使用非 OS 驱动器作为 FabricDataRoot 和 FabricLogRoot，因为它能够更可靠地防范 OS 崩溃。 请注意，如果只自定义数据根目录，则会将日志根目录放置在比数据根目录低一级的位置。
 
+### <a name="stateful-reliable-service-settings"></a>有状态的 Reliable Service 设置
+**KtlLogger** 部分允许设置 Reliable Services 的全局配置设置。 有关这些设置的详细信息，请阅读[配置有状态 Reliable Services](service-fabric-reliable-services-configuration.md)。
+下面的示例演示如何更改创建的共享事务日志，以备份有状态服务的任何可靠集合。
+
+    "fabricSettings": [{
+        "name": "KtlLogger",
+        "parameters": [{
+            "name": "SharedLogSizeInMB",
+            "value": "4096"
+        }]
+    }]
+
 ## <a name="next-steps"></a>后续步骤
 根据独立群集设置配置一个完整的 ClusterConfig.JSON 文件后，可以遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)一文中所述步骤部署群集，然后继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

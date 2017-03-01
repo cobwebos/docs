@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: cb1c9734ef7745274095e5b3840698a76045bc91
-ms.openlocfilehash: 44dec18e40f5693e32a99cbea0bf0d1530dddb44
+ms.sourcegitcommit: 52f9a3146852ef83c31bd93e1c538e12f0d953eb
+ms.openlocfilehash: e44ecf5860becffb39d199e36d36d96f50bf7cf3
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -103,6 +104,13 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
           -StoreLocation CurrentUser -StoreName My
 ```
 
+### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>使用 Windows Active Directory 连接到安全群集
+如果使用 AD 安全性部署独立群集，请通过附加开关项“WindowsCredential”连接到群集。
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+          -WindowsCredential
+```
 
 <a id="connectsecureclusterfabricclient"></a>
 
@@ -339,10 +347,5 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 * [在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)。
 * [Service Fabric 运行状况模型简介](service-fabric-health-introduction.md)
 * [应用程序安全性和 RunAs](service-fabric-application-runas-security.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

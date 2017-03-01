@@ -1,5 +1,5 @@
 ---
-title: "监视、诊断和排查存储问题 | Microsoft Docs"
+title: "对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs"
 description: "使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。"
 services: storage
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 02/16/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: b0abc4df06849ef2a887a190a8ea306849d40b3d
-ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
+ms.sourcegitcommit: d755a94bc8c5165480291d891c5feb0cf3b26e75
+ms.openlocfilehash: e6915bf94b56b9c9ff3deb131d18d1d5457f0e85
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -84,8 +85,6 @@ ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
 
 ![][1]
 
-图 1：监视、诊断和故障排除
-
 本指南的主要目标受众是开发使用 Azure 存储服务的联机服务的开发人员以及负责管理此类联机服务的 IT 专业人员。 本指南的目标是：
 
 * 帮助你维护 Azure 存储帐户的运行状况和性能。
@@ -110,7 +109,7 @@ ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
 
 存储服务将尽最大努力收集度量值，但可能无法记录每个存储操作。
 
-在 Azure 门户中，你可以查看存储帐户的度量值，如可用性、请求总数和平均延迟数。 也已设置通知规则，以便在可用性下降到低于某个级别时向管理员发出警报。 通过查看此数据，一个可能的调查方面是表服务成功百分比低于 100%（有关详细信息，请参阅“[度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]”一节）。
+在 Azure 门户中，可以查看存储帐户的度量值，如可用性、请求总数和平均延迟数。 也已设置通知规则，以便在可用性下降到低于某个级别时向管理员发出警报。 通过查看此数据，一个可能的调查方面是表服务成功百分比低于 100%（有关详细信息，请参阅“[度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]”一节）。
 
 你应通过以下方式持续监视 Azure 应用程序以确保它们正常运行并按预期执行操作：
 
@@ -119,7 +118,7 @@ ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
 * 记录每小时度量值，并使用这些度量值来监视平均值，例如平均错误计数和请求速率。
 * 使用诊断工具调查潜在问题，如稍后在“[诊断存储问题]”中所述。
 
-下面的图 3 中的图表说明了对每小时度量值进行的求平均值操作如何可能隐藏活动达到峰值。 每小时度量值似乎显示稳定的请求速率，而每分钟度量值却显示了实际发生的波动。
+下图中的图表说明了对每小时度量值进行的求平均值操作如何可以隐藏活动达到峰值。 每小时度量值似乎显示稳定的请求速率，而每分钟度量值却显示了实际发生的波动。
 
 ![][3]
 
@@ -137,7 +136,7 @@ ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
 存储度量值仅存储 Blob 服务的容量度量值，因为 Blob 通常占所存储数据的最大比例（撰写本文时，尚不能使用存储度量值来监视表和队列的容量）。 如果已为 Blob 服务启用监视，则可以在 **$MetricsCapacityBlob** 表中找到此数据。 存储度量值每天记录一次此数据，然后可以使用 **RowKey** 的值来确定某行是否包含与用户数据（值 **data**）或分析数据（值 **analytics**）相关的实体。 每个存储的实体均包含有关所用的存储量（**Capacity**，以字节为单位）、当前的容器数 (**ContainerCount**) 以及存储帐户中正在使用的 Blob 数 (**ObjectCount**) 的信息。 有关 **$MetricsCapacityBlob** 表中存储的容量度量值的详细信息，请参阅[存储分析度量值表架构](http://msdn.microsoft.com/library/azure/hh343264.aspx)。
 
 > [!NOTE]
-> 你应监视这些值以便获取“你已接近存储帐户的容量限制”的早期警告。 在 Azure 门户中，你可以添加警报规则，以便在聚合存储使用量超过或低于指定阈值时通知你。
+> 你应监视这些值以便获取“你已接近存储帐户的容量限制”的早期警告。 在 Azure 门户中，可以添加警报规则，以便在聚合存储使用量超过或低于指定阈值时通知用户。
 > 
 > 
 
@@ -571,11 +570,11 @@ queueServicePoint.UseNagleAlgorithm = false;
 | 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
 | 操作类型     | GetBlobProperties            |
 | 请求状态     | SASAuthorizationError        |
-| HTTP 状态代码   | 404                          |
+| HTTP 状态代码   | 404                            |
 | 身份验证类型| Sas                          |
 | 服务类型       | Blob                         |
-| 请求 URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
-| nbsp;              |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
+| 请求 URL         | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | 请求 ID 标头  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | 客户端请求 ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -890,9 +889,4 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [8]: ./media/storage-monitoring-diagnosing-troubleshooting/wireshark-screenshot-3.png
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

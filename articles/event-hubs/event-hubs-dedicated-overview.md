@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/21/2017
 ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 7547ff2f6db375644dccb9db4283d83a9837e826
+ms.sourcegitcommit: 9c1756d2c2c4dd73c60a71b24bfb4606cab289ed
+ms.openlocfilehash: 8e718e74443e3d51dc54edaf667e34875bc67c5d
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,11 +36,11 @@ ms.openlocfilehash: 7547ff2f6db375644dccb9db4283d83a9837e826
 | 发布者策略 | 不适用 | 是 | 是 |     
 | 使用者组 | 1 - 默认值 | 20 | 20 |
 | 消息重播 | 是 | 是 | 是 |
-| 最大吞吐量单位 | 20 | 20（可灵活调整至 100）  | 1 CU≈200 |
+| 最大吞吐量单位 | 20 | 20（可灵活调整至 100）    | 1 CU≈200 |
 | 中转连接 | 包括&100; | 包括&1000; | 包括&100; K |
 | 其他中转连接 | 不适用 | 是 | 是 |
 | 消息保留 | 包括&1; 天 | 包括&1; 天 | 包括最长 7 天 |
-| 存档（预览版） | 不适用   | 按每小时支付 | 附送 |
+| 存档（预览版） | 不适用    | 按每小时支付 | 附送 |
 
 ## <a name="benefits-of-event-hubs-dedicated-capacity"></a>专用事件中心容量的优点
 
@@ -60,7 +61,7 @@ ms.openlocfilehash: 7547ff2f6db375644dccb9db4283d83a9837e826
 
 ## <a name="how-to-onboard"></a>如何加入
 
-专用事件中心平台通过企业协议提供给公众，它具有不同大小的 CU。 每个 CU 提供约等于 200 吞吐量单位，价格为每小时 31 美元。 通过添加或删除 CU，可以在一个月内随时扩展或缩小容量，满足自身需求。 专用计划独一无二，用户可从事件中心产品团队处获得适合自己的灵活部署，提供一种亲身实践操作体验。 
+专用事件中心平台通过企业协议提供给公众，它具有不同大小的 CU。 每个 CU 提供约等于 200 吞吐量计价单位。 通过添加或删除 CU，可以在一个月内随时扩展或缩小容量，满足自身需求。 专用计划独一无二，用户可从事件中心产品团队处获得适合自己的灵活部署，提供一种亲身实践操作体验。 
 
 ## <a name="next-steps"></a>后续步骤
 请与你的 Microsoft 销售代表或 Microsoft 支持部门联系，以获其他关于事件中心专用容量的详细信息。 还可访问以下链接，了解有关事件中心的详细信息：
@@ -69,9 +70,4 @@ ms.openlocfilehash: 7547ff2f6db375644dccb9db4283d83a9837e826
 
 - [专用事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。 还可以联系你的 Microsoft 销售代表或 Microsoft 支持部门，获取关于专用事件中心容量的其他详细信息。
 - [事件中心常见问题解答](event-hubs-faq.md)中包含了定价信息并解答了一些有关事件中心的常见问题。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

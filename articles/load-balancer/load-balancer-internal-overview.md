@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 177b01989ab2f3475cd853d89789b88e02d04be4
-ms.openlocfilehash: 0194ffe54462e1a432ea10e69608e158f9cc54dc
+ms.sourcegitcommit: 47869775365ea517b94cbd5a2eb83c93f4d2b4df
+ms.openlocfilehash: 17b7337ddcfa2671bb3a035de8462e31bfa0c85f
+ms.lasthandoff: 02/15/2017
 
 ---
 
@@ -83,9 +84,4 @@ LOB 的另一方案是通过站点到站点 VPN 连接到在其中配置了 ILB 
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2017
+ms.date: 02/15/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: a42e04b6a8b09078986ba0d12c6d07305e8068c6
-ms.openlocfilehash: 15d1a9d819fdf9565e85ccea39a922c608aba917
+ms.sourcegitcommit: 4125a8d930ead541420c83ef5d8aa3ae1ea2a263
+ms.openlocfilehash: 520dc84bfd882d33d32719d5225af91eb124f015
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -406,14 +407,14 @@ DocumentDB 查询模型尝试在功能、效率和简单性之间取得平衡。
 尽管上面的代码段演示了通过 [DocumentDB JavaScript SDK](https://github.com/Azure/azure-documentdb-js) 注册 (POST)、取消注册 (PUT)、读取/列出 (GET) 和执行 (POST)，但也可以使用 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或其他[客户端 SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。 
 
 ## <a name="documents"></a>文档
-你可以插入、替换、删除、读取、枚举和查询集合中的任意 JSON 文档。 DocumentDB 不强制要求任何架构，并且对集合中的文档进行查询也不需要辅助索引的支持。   
+你可以插入、替换、删除、读取、枚举和查询集合中的任意 JSON 文档。 DocumentDB 不强制要求任何架构，并且对集合中的文档进行查询也不需要辅助索引的支持。 默认情况下，文档的最大大小为 2 MB。   
 
 作为一种真正的开放式数据库服务，DocumentDB 不创建任何专用的数据类型（例如日期时间）或用于 JSON 文档的特定编码。 请注意，DocumentDB 不需要任何特殊的 JSON 约定来对各种文档之间的关系进行编码；DocumentDB 的 SQL 语法提供了非常强大的分层和关系查询运算符以查询和投影文档，而无需任何特殊的注释，也不需要使用可分辨属性对文档间的关系进行编码。  
 
 与所有其他资源一样，可以使用 REST API 或任一[客户端 SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) 轻松创建、替换、删除、读取、枚举和查询文档。 删除文档将立即释放与所有嵌套附件相对应的配额。 文档的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据你的应用程序的数据一致性要求在每个请求中重写此策略。 查询文档时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
 
 ## <a name="attachments-and-media"></a>附件和媒体
-DocumentDB 可通过 DocumentDB 存储二进制 blob/媒体，或将其存储到远程媒体存储区。 对于被称为附件的特殊文档而言，它还可以用于表示媒体的元数据。 DocumentDB 中的附件是引用存储在其他位置的媒体/blob 的特殊 (JSON) 文档。 附件只是捕获存储在远程媒体存储中的媒体的元数据（例如位置、作者等）的特殊文档。 
+DocumentDB 可通过 DocumentDB 存储二进制 blob/媒体（每个帐户最大 2 GB），或将其存储到远程媒体存储区。 对于被称为附件的特殊文档而言，它还可以用于表示媒体的元数据。 DocumentDB 中的附件是引用存储在其他位置的媒体/blob 的特殊 (JSON) 文档。 附件只是捕获存储在远程媒体存储中的媒体的元数据（例如位置、作者等）的特殊文档。 
 
 考虑到一款社交阅读应用程序，它使用 DocumentDB 来存储墨迹注释，以及与某位给定用户的电子书相关联的元数据（包含评论、重点、书签、评分、喜欢/厌恶，等等）。   
 
@@ -460,10 +461,5 @@ DocumentDB 用户是指对权限进行分组的逻辑命名空间。 DocumentDB 
 [1]: media/documentdb-resources/resources1.png
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/16/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 855fd05d9addc2e57568067e4d434836ceeed570
-ms.openlocfilehash: 21a5f321bd1a3b45cd87c2c9274139c47562cee7
+ms.sourcegitcommit: 2a04860ea7349798d5786e50dc1d564896341d60
+ms.openlocfilehash: 50f13ae0184e5b9609994d382acc126eb2868271
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -54,7 +55,11 @@ ms.openlocfilehash: 21a5f321bd1a3b45cd87c2c9274139c47562cee7
 DocumentDB .NET Core SDK 具有与最新版 [DocumentDB.NET SDK](documentdb-sdk-dotnet.md) 相同的功能。
 
 > [!NOTE] 
-> DocumentDB .NET Core SDK 与通用 Windows 平台 (UWP) 应用尚不兼容。 如需支持 UWP 应用的 .NET Core SDK 预览版，请向 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) 发送电子邮件。
+> DocumentDB .NET Core SDK 与通用 Windows 平台 (UWP) 应用尚不兼容。 如果不支持 UWP 应用的 .NET Core SDK 感兴趣，请向 [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) 发送电子邮件。
+
+### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.0)
+
+将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 
 ### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.0.0)
 
@@ -76,15 +81,11 @@ DocumentDB .NET Core 预览版 SDK 与最新版 [DocumentDB.NET SDK](documentdb-
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.1.0](#1.1.0) |2017 年 2 月 16 日 |--- |
 | [1.0.0](#1.0.0) |2016 年 12 月 21 日 |--- |
 | [0.1.0-preview](#0.1.0-preview) |2016 年 11 月 15 日 |2016 年 12 月 31 日 |
 
 ## <a name="see-also"></a>另请参阅
 要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

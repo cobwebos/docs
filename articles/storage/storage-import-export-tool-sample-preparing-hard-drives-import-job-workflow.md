@@ -1,5 +1,5 @@
 ---
-title: "为 Azure 导入/导出服务的导入作业准备硬盘驱动器的示例工作流 | Microsoft 文档"
+title: "为 Azure 导入作业准备硬盘驱动器的示例工作流 | Microsoft Docs"
 description: "参阅针对 Azure 导入/导出服务中的导入作业准备驱动器的整个过程演练"
 author: muralikk
 manager: syadav
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 41bc5585f3d9dea2a08dc8a6bc1e4fdf9f0c8fc4
-ms.openlocfilehash: 763ad16242da2d895686934422e345555d5b0e05
+ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
+ms.openlocfilehash: ebed1f1d4cb6cca96e02322d2f76abd6e9810ecc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -135,9 +136,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 * [为导入作业准备硬盘驱动器](storage-import-export-tool-preparing-hard-drives-import.md)
 * [常用命令快速参考](storage-import-export-tool-quick-reference.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

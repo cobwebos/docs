@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cf3e083f17bf8b2245373bced5823afd21fe1af9
-ms.openlocfilehash: d2e55846667cccec824e31f648beac1c84fbcf50
+ms.sourcegitcommit: 638410921c6dad72e1bbe0c035243cea70a3deb1
+ms.openlocfilehash: 4bab1ba9c30cee50baeddc06931a3997aac0f33f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -91,7 +92,10 @@ ms.openlocfilehash: d2e55846667cccec824e31f648beac1c84fbcf50
 ### <a name="showhide-self-links"></a>显示/隐藏自链接
 显示自链接将重绘包含任何自链接的服务器节点，这些自链接是表示服务器中的进程的开始和结束的 TCP 连接。  如果显示了自链接，则该菜单将更改为“隐藏自链接”，允许用户切换自链接的绘制。
 
+## <a name="computer-summary"></a>计算机摘要
+“计算机摘要”面板包括服务器的操作系统、依赖关系计数以及其他 OMS 解决方案（包括性能指标、更改跟踪、安全、更新等）的各种数据的概述。
 
+![计算机摘要](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>计算机和进程属性
 导航“服务映射”映射时，可选择计算机和进程获取有关其属性的其他上下文。  计算机提供有关 DNS 名称、IPv4 地址、CPU 和内存容量、VM 类型、操作系统版本、上次重启时间及其 OMS 和服务映射代理的 ID 的信息。
@@ -106,10 +110,22 @@ ms.openlocfilehash: d2e55846667cccec824e31f648beac1c84fbcf50
 
 ![进程摘要](media/oms-service-map/process-summary.png)
 
-## <a name="computer-summary"></a>计算机摘要
-“计算机摘要”面板包括服务器的操作系统、依赖关系计数以及其他 OMS 解决方案（包括性能指标、更改跟踪、安全、更新等）的各种数据的概述。
+## <a name="oms-alerts-integration"></a>OMS 警报集成
+服务映射与 OMS 警报集成，可显示所选时间范围内所选服务器触发的警报。  如果当前有警报，服务器将显示一个图标，且计算机警报面板将列出警报
 
-![计算机摘要](media/oms-service-map/machine-summary.png)
+![计算机警报面板](media/oms-service-map/machine-alerts.png)
+
+请注意，若要使服务映射能够显示相关警报，必须创建警报规则，以便对特定计算机触发。  创建相应的警报：
+- 包含以下子句，以按计算机进行分组：“by Computer interval 1minute”
+- 根据公制度量值选择警报
+
+![警报配置](media/oms-service-map/alert-configuration.png)
+
+
+## <a name="oms-log-events-integration"></a>OMS 日志事件集成
+服务映射与日志搜索集成，可显示所选时间范围内所选服务器的所有可用的日志事件。  你可以单击事件计数列表中的任意行，跳转到日志搜索并查看单独的日志事件。
+
+![日志事件](media/oms-service-map/log-events.png)
 
 ## <a name="oms-change-tracking-integration"></a>OMS 更改跟踪集成
 服务映射将与更改跟踪自动集成，前提是这两个解决方案已启用并在 OMS 工作区中配置。
@@ -138,19 +154,6 @@ ms.openlocfilehash: d2e55846667cccec824e31f648beac1c84fbcf50
 
 计算机更新面板显示所选服务器的 OMS 更新管理解决方案的数据。  面板将列出在所选时间范围内服务器的任何缺少更新的摘要。
 ![“计算机更改跟踪”面板](media/oms-service-map/machine-updates.png)
-
-
-## <a name="oms-alerts-integration"></a>OMS 警报集成
-服务映射与 OMS 警报集成，可显示所选时间范围内所选服务器触发的警报。  如果当前有警报，服务器将显示一个图标，且计算机警报面板将列出警报
-
-![计算机警报面板](media/oms-service-map/machine-alerts.png)
-
-请注意，若要使服务映射能够显示相关警报，必须创建警报规则，以便对特定计算机触发。  创建相应的警报：
-- 包含以下子句，以按计算机进行分组：“by Computer interval 1minute”
-- 根据公制度量值选择警报
-
-![警报配置](media/oms-service-map/alert-configuration.png)
-
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-analytics/log-analytics-log-searches.md)。  这可应用于包括迁移计划、容量分析、发现和临时性能疑难解答在内的方案。
@@ -251,10 +254,14 @@ Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
 Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
 
 
+## <a name="rest-api"></a>REST API
+服务映射中所有服务器、进程和依赖项数据可通过[服务映射 REST API](https://docs.microsoft.com/en-us/rest/api/servicemap/) 获取。
+
+
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 Microsoft 通过使用服务映射服务，自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务映射服务的质量、安全性和完整性。 数据包括有关你的软件配置的信息（如操作系统和版本），还包括 IP 地址、DNS 名称和工作站名称，以便提供准确高效的疑难解答功能。 我们不收集姓名、地址或其他联系信息。
 
-有关数据收集和使用的详细信息，请参阅 [Microsoft Online Services 隐私声明](hhttps://go.microsoft.com/fwlink/?LinkId=512132)。
+有关数据收集和使用的详细信息，请参阅 [Microsoft Online Services 隐私声明](https://go.microsoft.com/fwlink/?LinkId=512132)。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -263,9 +270,4 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="feedback"></a>反馈
 是否有任何关于服务映射或本文档的反馈？  请访问 [User Voice 页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

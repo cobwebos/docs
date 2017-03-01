@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
-ms.openlocfilehash: 3d35c26ab0e1013ae10508cfbcf7ed644ab6d1f0
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: d36bb775d0b0fd732562b18787b65600c8fb5fa1
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -42,12 +43,12 @@ Azure 安全中心将建议对所有 SQL 数据库启用审核（如果尚未启
 3. 在“审核和威胁检测”边栏选项卡上，选择“审核”下方的“ON”。
 
    ![启用审核和威胁检测][3]
-4. 请按照 [SQL 数据库威胁检测入门](../sql-database/sql-database-threat-detection-get-started.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。
+4. 请按照 [Azure 门户中 SQL 数据库威胁检测](../sql-database/sql-database-threat-detection-portal.md)一文中的步骤来启用和配置威胁检测，并配置收到有关检测到异常活动的安全警报的电子邮件列表。
 
 ## <a name="see-also"></a>另请参阅
 本文档演示如何实现安全中心建议“对 SQL 数据库启用审核。” 若要了解有关保护 SQL 数据库的详细信息，请参阅以下内容：
 
-* [保护 SQL 数据库](../sql-database/sql-database-security.md)
+* [保护 SQL 数据库](../sql-database/sql-database-security-overview.md)
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
@@ -63,9 +64,4 @@ Azure 安全中心将建议对所有 SQL 数据库启用审核（如果尚未启
 [1]: ./media/security-center-enable-auditing-on-sql-databases/enable-auditing-on-sql-databases.png
 [2]:./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection.png
 [3]: ./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection-blade.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

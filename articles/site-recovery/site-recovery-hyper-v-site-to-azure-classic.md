@@ -1,6 +1,6 @@
 ---
 title: "在经典门户中将 Hyper-V VM 复制到 Azure | Microsoft 文档"
-description: "本文介绍当计算机不在 VMM 云中托管时，如何使用 Azure Site Recovery 将 Hyper-V 虚拟机复制到 Azure。"
+description: "本文介绍当 Hyper-V 虚拟机不在 VMM 云中托管时，如何将 Hyper-V 虚拟机复制到 Azure。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2016
+ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: b991b27304a4f65485b30431c5eb29461f60984d
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 0c2ca459a691b353a528edc48f4d13c231a440c4
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,16 +29,9 @@ ms.openlocfilehash: b991b27304a4f65485b30431c5eb29461f60984d
 >
 >
 
-欢迎使用 Azure Site Recovery 服务！
-
-站点恢复就是能够帮助实现业务连续性和灾难恢复 (BCDR) 策略的一个 Azure 服务。 站点恢复可安排从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的复制。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 在 [什么是 Azure Site Recovery？](site-recovery-overview.md)
-
-本文介绍如何在 Azure 门户中使用 Azure Site Recovery 将本地 Hyper-V 虚拟机复制到 Azure。 在本方案中，Hyper-V 服务器不在 VMM 云中管理。
+本文介绍如何在 Azure 门户中使用 [Azure Site Recovery](site-recovery-overview.md) 服务，将本地 Hyper-V 虚拟机复制到 Azure。 在本方案中，Hyper-V 服务器不在 VMM 云中管理。
 
 阅读本文后，欢迎在页面底部发表任何看法，或者在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上咨询技术问题。
-
-
-
 
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Azure 门户中的 Site Recovery
@@ -67,7 +61,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 * 正在运行知识库文章 [2961977](https://support.microsoft.com/en-us/kb/2961977 "KB2961977") 中所述的修复程序。
 
 ## <a name="virtual-machine-prerequisites"></a>虚拟机先决条件
-要保护的虚拟机应符合 [Azure 虚拟机要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+要保护的虚拟机应符合 [Azure 虚拟机要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 ## <a name="provider-and-agent-prerequisites"></a>提供程序和代理先决条件
 在部署 Azure Site Recovery 的过程中，你将在每个 Hyper-V 服务器上安装 Azure Site Recovery 提供程序和 Azure 恢复服务代理。 请注意：
@@ -283,9 +277,4 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 ## <a name="next-steps"></a>后续步骤
 设置并运行部署以后，请[详细了解](site-recovery-failover.md)故障转移。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

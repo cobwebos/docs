@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 9bc03ee35436180e7c8639233ca80fb7e7e200f6
-ms.openlocfilehash: e4ce74244ceb7a493d33a1ed2aad8f7a36b96ad9
+ms.sourcegitcommit: bd280fabf22d569f3c4dae9f00f44b08700c8fc4
+ms.openlocfilehash: f034f028b0b1e0011e152b88d304dd54cfbc8320
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -115,8 +116,4 @@ ms.openlocfilehash: e4ce74244ceb7a493d33a1ed2aad8f7a36b96ad9
 ## <a name="next-steps"></a>后续步骤
 * 创建 VM 后，可通过选择 VM 边栏选项卡中的“连接”来连接该 VM。
 * 浏览 [Azure 快速入门模板库中的 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)
-
-
-<!--HONumber=Feb17_HO1-->
-
 

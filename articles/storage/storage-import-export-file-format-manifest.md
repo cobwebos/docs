@@ -1,8 +1,8 @@
 ---
-title: "导入-导出服务清单文件格式 | Microsoft Docs"
+title: "Azure 导入/导出清单文件格式 | Microsoft Docs"
 description: "了解驱动器清单文件的格式。清单文件描述 Azure Blob 存储中的 Blob 与构成导入/导出服务中导入或导出作业的驱动器上的文件之间的映射。"
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-ms.author: renash
+ms.date: 01/23/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: c79d4e4b088bab056459ed4add442acfb0176692
+ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
+ms.openlocfilehash: 2c76120a967aabf546fdb5246478f78e8cf47f94
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="import-export-service-manifest-file-format"></a>导入/导出服务清单文件格式
+# <a name="azure-importexport-service-manifest-file-format"></a>Azure 导入/导出服务清单文件格式
 驱动器清单文件描述 Azure Blob 存储中的 Blob 与构成导入或导出作业的驱动器上的文件之间的映射。 对于某个导入操作而言，该清单文件作为驱动器准备过程的一部分创建，在将该驱动器送至 Azure 数据中心之前已存储在驱动器上。 在导出操作过程中，Azure 导入/导出服务将在驱动器上创建并存储该清单。  
   
 对于导入和导出作业而言，驱动器清单文件存储在导入或导出驱动器上；该文件不通过任何 API 操作传输到该服务。  
@@ -100,7 +101,7 @@ block-list ::=
 |`Drive`|嵌套的 XML 元素|包含每个驱动器的清单。|  
 |`DriveId`|String|驱动器的唯一驱动器标识符。 通过查询驱动器获取其序列号，即可找到该驱动器标识符。 该驱动器序列号通常还打印在该驱动器的外部。 `DriveID` 元素必须出现在清单元素中的任何 `BlobList` 元素之前。|  
 |`StorageAccountKey`|String|当且仅当未指定 `ContainerSas` 时，导入作业才需要此元素。 与作业关联的 Azure 存储帐户的帐户密钥。<br /><br /> 导出操作的清单中会省略此元素。|  
-|`ContainerSas`|String|当且仅当未指定 `StorageAccountKey` 时，导入作业才需要此元素。 用于访问与作业关联的 Blob 的容器 SAS。 有关其格式，请参阅[放置作业](/rest/api/storageservices/importexport/Put-Job)。导出操作的清单中会省略此元素。|  
+|`ContainerSas`|String|当且仅当未指定 `StorageAccountKey` 时，导入作业才需要此元素。 用于访问与作业关联的 Blob 的容器 SAS。 有关其格式，请参阅[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)。导出操作的清单中会省略此元素。|  
 |`ClientCreator`|String|指定创建 XML 文件的客户端。 导入/导出服务不解释该值。|  
 |`BlobList`|嵌套的 XML 元素|包含作为导入或导出作业一部分的 Blob 列表。 Blob 列表中的每个 Blob 共享相同的元数据和属性。|  
 |`BlobList/MetadataPath`|String|可选。 指定磁盘上某个文件的相对路径，该文件包含针对导入操作的 Blob 列表中的 Blob 设置的默认元数据。 可以针对每个 Blob 有选择性地重写此元数据。<br /><br /> 导出操作的清单中会省略此元素。|  
@@ -131,10 +132,5 @@ block-list ::=
 |`Blob/PropertiesPath/@Hash`|属性，字符串|指定 Blob properties 文件的 Base16 编码 MD5 哈希。|  
   
 ## <a name="see-also"></a>另请参阅  
-[存储导入/导出 REST](/rest/api/storageservices/importexport/Storage-Import-Export-Service-REST-API-Reference)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[存储导入/导出 REST](/rest/api/storageimportexport/)
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 12/08/2016
+ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 70f73577fdaf6efa74fe1516a8486c45ef76db31
+ms.sourcegitcommit: 2ab1a58aab138cc81b25731a9454b083d54ded81
+ms.openlocfilehash: eff408bc70288ada1039df7432f43b02420f2c37
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -39,15 +40,19 @@ ms.openlocfilehash: 70f73577fdaf6efa74fe1516a8486c45ef76db31
 ## <a name="scalability-targets-for-blobs-queues-tables-and-files"></a>Blob、队列、表和文件的可伸缩性目标
 [!INCLUDE [azure-storage-limits](../../includes/azure-storage-limits.md)]
 
+<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
 ## <a name="scalability-targets-for-virtual-machine-disks"></a>虚拟机磁盘的可伸缩性目标
 [!INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
 请参阅 [Windows VM 大小](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或 [Linux VM 大小](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)了解其他详细信息。
 
-### <a name="standard-storage-accounts"></a>标准存储帐户
+## <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
+
+[!INCLUDE [azure-storage-limits-vm-disks-managed](../../includes/azure-storage-limits-vm-disks-managed.md)]
+
+## <a name="unmanaged-virtual-machine-disks"></a>非托管虚拟机磁盘
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../../includes/azure-storage-limits-vm-disks-standard.md)]
 
-### <a name="premium-storage-accounts"></a>高级存储帐户
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../includes/azure-storage-limits-vm-disks-premium.md)]
 
 ## <a name="scalability-targets-for-azure-resource-manager"></a>Azure 资源管理器的可伸缩性目标
@@ -78,10 +83,5 @@ ms.openlocfilehash: 70f73577fdaf6efa74fe1516a8486c45ef76db31
 * [Azure 存储复制](storage-redundancy.md)
 * [Microsoft Azure 存储性能和可伸缩性清单](storage-performance-checklist.md)
 * [Microsoft Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

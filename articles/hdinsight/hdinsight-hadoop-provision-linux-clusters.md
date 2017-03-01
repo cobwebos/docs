@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/07/2016
+ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: e731c2334ca2d63017b54f0362657aaace585ae0
+ms.sourcegitcommit: aaff4a7aa717f42dedb96eceeb4315b31a6e7b17
+ms.openlocfilehash: 1ea77289ead60af067a0d07bac6c2e40a1684a04
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -100,7 +101,7 @@ Hadoop 群集由用于对群集中的任务进行分布式处理的多个虚拟�
 有关在一个 Azure 虚拟网络中使用两种群集类型的示例，请参阅[使用 Storm 和 HBase 分析传感器数据](hdinsight-storm-sensor-data-analysis.md)。
 
 ## <a name="cluster-tiers"></a>群集层
-Azure HDInsight 提供了两个类别的大数据云产品/服务：标准和[高级](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)。 HDInsight 高级版包括 R 和其他附加组件。 只有 HDInsight 3.4 版才支持 HDInsight 高级版。
+Azure HDInsight 提供了两个类别的大数据云产品/服务：标准和[高级](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)。 HDInsight 高级版包括 R 和其他附加组件。 只有 HDInsight 3.5 版才支持 HDInsight 高级版。
 
 下表列出了 HDInsight 群集类型和 HDInsight 高级版支持矩阵。
 
@@ -337,9 +338,4 @@ HDInsight 群集与其默认存储帐户必须位于相同的 Azure 位置。
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |✔ |✔ |
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |&nbsp; |&nbsp; |&nbsp; |✔ |✔ |✔ |
 | [Azure Resource Manager 模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |✔ |✔ |
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

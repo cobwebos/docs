@@ -1,6 +1,6 @@
 ---
-title: "设置 Azure 导入/导出工具 | Microsoft Docs"
-description: "了解如何设置 Azure 导入导出工具的驱动器准备和修复工具"
+title: "设置 Azure 导入/导出工具 v1 | Microsoft Docs"
+description: "了解如何设置 Azure 导入导出的驱动器准备和修复工具"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: fbcc295284d060b9a8bc5cf1cb9f8b2fca566db4
-ms.openlocfilehash: 78151092d8987b7513b69e54f9dacb540c5c3278
+ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
+ms.openlocfilehash: 2d30d0da6055a66b60ed5a836dd897a87d564237
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="setting-up-the-azure-import-export-tool"></a>设置 Azure 导入/导出工具
+# <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
 Microsoft Azure 导入/导出工具是可用于 Microsoft Azure 导入/导出服务的驱动器准备和修复工具。 可以使用该工具实现以下功能：  
   
 -   在创建导入作业之前，可以使用此工具将数据复制到要寄送给 Windows Azure 数据中心的硬盘驱动器。  
@@ -260,9 +261,4 @@ Examples:
  [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)   
  [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)   
  [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

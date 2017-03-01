@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB 查询资源管理器：一个 SQL 查询编辑器 | Microsoft Docs"
+title: "Azure DocumentDB 门户工具：查询资源管理器 | Microsoft Docs"
 description: "了解 DocumentDB 查询资源管理器，它是 Azure 门户中的一个编写 SQL 查询，并针对 NoSQL DocumentDB 集合运行这些查询的 SQL 查询编辑器。"
 keywords: "编写 SQL 查询, SQL 查询编辑器"
 services: documentdb
@@ -13,18 +13,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/10/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a4e66ff9022b153fe09fba004ff50aed053b392
+ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
+ms.openlocfilehash: dcf61a8875793bb9e5ed4eda51f9da14366a4fba
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="write-edit-and-run-sql-queries-for-documentdb-using-query-explorer"></a>使用查询资源管理器对 DocumentDB 编写、编辑和运行 SQL 查询
+# <a name="write-edit-and-run-sql-queries-for-documentdb-using-query-explorer-in-the-azure-portal"></a>在 Azure 门户中使用查询资源管理器对 DocumentDB 编写、编辑和运行 SQL 查询
 本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 查询资源管理器，该资源管理器是一个 Azure 门户工具，允许你针对 [DocumentDB](documentdb-create-collection.md) 集合编写、编辑和运行 SQL 查询。
 
-1. 在 **Azure 门户**的跳转栏中，单击“DocumentDB (NoSQL)”。 如果“DocumentDB (NoSQL)”不可见，则单击“更多服务”，再单击“DocumentDB (NoSQL)”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。 
+
+    如果“NoSQL (DocumentDB)”不可见，请单击底部的“更多服务”，然后单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。
 2. 在资源菜单中，单击“查询资源管理器”。 
    
     ![Azure 门户的屏幕截图，其中突出显示了查询资源管理器](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
@@ -71,10 +74,5 @@ Azure 门户中的查询资源管理器只是一种对 DocumentDB 运行 SQL 查
 ## <a name="next-steps"></a>后续步骤
 有关查询资源管理器中支持的 DocumentDB SQL 语法的详细信息，请参阅 [SQL 查询和 SQL 语法](documentdb-sql-query.md)一文或打印 [SQL 查询速查表](documentdb-sql-query-cheat-sheet.md)。
 还可以尝试使用[查询板块](https://www.documentdb.com/sql/demo)，在其中可以使用示例数据集联机测试查询。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

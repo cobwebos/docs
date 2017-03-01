@@ -1,5 +1,5 @@
 ---
-title: "用于查看 JSON 的DocumentDB 文档资源管理器 | Microsoft Docs"
+title: "Azure DocumentDB 门户工具：文档资源管理器 | Microsoft Docs"
 description: "DocumentDB 文档资源管理器是一个 Azure 门户工具，使用 NoSQL 文档数据库 DocumentDB 查看 JSON、编辑、创建和上传 JSON 文档。"
 keywords: "查看 JSON"
 services: documentdb
@@ -13,21 +13,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/10/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
+ms.sourcegitcommit: 81c569c5130869e6d8c9dc79feca592aecc44e61
+ms.openlocfilehash: edccbbb72649c5a443fefd7f1d97a8c01a4daff2
+ms.lasthandoff: 02/15/2017
 
 
 ---
 # <a name="view-edit-create-and-upload-json-documents-using-documentdb-document-explorer"></a>使用 DocumentDB 文档资源管理器查看、编辑、创建和上传 JSON 文档
 本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 文档资源管理器，这是一个 Azure 门户工具，它使用 DocumentDB 查看、编辑、创建、上传和筛选 JSON 文档。 
 
-请注意，具有 MongoDB 协议支持的 DocumentDB 帐户未启用文档资源管理器。 启用此功能后，此页将会更新。
+> [!NOTE]
+> 具有 MongoDB 协议支持的 DocumentDB 帐户未启用文档资源管理器。 启用此功能后，此页将会更新。
 
-## <a name="launch-document-explorer"></a>启动文档资源管理器
-1. 在 **Azure 门户**的跳转栏中，单击“DocumentDB (NoSQL)”。 如果“DocumentDB (NoSQL)”不可见，则单击“更多服务”，再单击“DocumentDB (NoSQL)”。
+<a id="launch-document-explorer"></a>
+
+## <a name="launch-document-explorer-in-the-azure-portal"></a>在 Azure 门户中启动文档资源管理器
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。 
+
+    如果“NoSQL (DocumentDB)”不可见，请单击底部的“更多服务”，然后单击 ![Azure DocumentDB 图标](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png)“NoSQL (DocumentDB)”。
 2. 选择帐户名称。 
 3. 在资源菜单中，单击“文档资源管理器”。 
    
@@ -35,7 +41,7 @@ ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
    
     在“文档资源管理器”边栏选项卡上，将根据在其中启动文档资源管理器的上下文对“数据库”和“集合”下拉列表进行预填充。 
 
-## <a name="create-a-document"></a>创建文档
+## <a name="create-a-json-document"></a>创建 JSON 文档
 1. [启动文档资源管理器](#launch-document-explorer)。
 2. 在“文档资源管理器”边栏选项卡上，单击“创建文档”。 
    
@@ -53,7 +59,7 @@ ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
    
     如果已有来自 JSON 文件、MongoDB、SQL Server、CSV 文件、Azure 表存储、Amazon DynamoDB、HBase 或其他 DocumentDB 集合的数据，可以使用 DocumentDB 的[数据迁移工具](documentdb-import-data.md)快速导入数据。
 
-## <a name="edit-a-document"></a>编辑文档
+## <a name="edit-a-json-document"></a>编辑 JSON 文档
 1. [启动文档资源管理器](#launch-document-explorer)。
 2. 若要编辑现有文档，请在“文档资源管理器”边栏选项卡中选中该文档，在“文档”边栏选项卡中编辑该文档，然后单击“保存”。
    
@@ -63,7 +69,7 @@ ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
    
     ![文档资源管理器“放弃”命令的屏幕截图](./media/documentdb-view-JSON-document-explorer/discardedit.png)
 
-## <a name="delete-a-document"></a>删除文档
+## <a name="delete-a-document-from-documentdb"></a>删除 DocumentDB 中的文档
 1. [启动文档资源管理器](#launch-document-explorer)。
 2. 在“文档资源管理器”选择文档，单击“删除”，然后确认删除。 确认后，将立即从“文档资源管理器”列表中删除该文档。
    
@@ -156,12 +162,5 @@ Azure 门户中的文档资源管理器只是在 DocumentDB 中使用文档的�
 
 ## <a name="next-steps"></a>后续步骤
 有关文档资源管理器中支持的 DocumentDB SQL 语法的详细信息，请参阅 [SQL 查询和 SQL 语法](documentdb-sql-query.md)一文或打印 [SQL 查询备忘单](documentdb-sql-query-cheat-sheet.md)。
-
-[学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)也是一项有用的资源，它可以指导你了解关于 DocumentDB 的更多信息。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

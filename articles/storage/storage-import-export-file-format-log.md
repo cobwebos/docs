@@ -1,6 +1,6 @@
 ---
 
-title: "导入/导出服务日志文件格式 | Microsoft Docs"
+title: "Azure 导入/导出服务日志文件格式 | Microsoft Docs"
 description: "了解针对导入/导出服务作业执行步骤时创建的日志文件的格式"
 author: muralikk
 manager: syadav
@@ -13,22 +13,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: fab36b750ec4ba518fad8392f611cd46d8155985
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 0b402db8c7e6bd4abb5aaf6ded7f539cfec7172e
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="import-export-service-log-file-format"></a>导入/导出服务日志文件格式
+# <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式
 当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，会将日志写入到与该作业关联的存储帐户中的块 Blob 中。  
   
 导入/导出服务可能会写入两种日志：  
   
 -   发生错误时始终生成错误日志。  
   
--   详细日志默认未启用，但可通过对[放置作业](/rest/api/storageservices/importexport/Put-Job)或[更新作业属性](/rest/api/storageservices/importexport/Update-Job-Properties)操作设置 `EnableVerboseLog` 属性来启用该日志。  
+-   详细日志默认未启用，但可通过对[放置作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)或[更新作业属性](/rest/api/storageimportexport/jobs#Jobs_Update)操作设置 `EnableVerboseLog` 属性来启用该日志。  
   
 ## <a name="log-file-location"></a>日志文件的位置  
 日志将写入到 `ImportExportStatesPath` 设置（可在“`Put Job`”操作中设置）指定的容器或虚拟目录中的块 Blob。 日志写入到的位置取决于为该作业指定身份验证的方式，以及为 `ImportExportStatesPath` 指定的值。 可通过存储帐户密钥或容器 SAS（共享访问签名）为作业指定身份验证。  
@@ -44,7 +45,7 @@ ms.openlocfilehash: fab36b750ec4ba518fad8392f611cd46d8155985
 |容器 SAS|默认值|名为 `waimportexport` 的虚拟目录，这是默认名称，位于 SAS 中指定的容器下方。<br /><br /> 例如，如果为作业指定的 SAS 是 `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`，则日志位置应为 `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
 |容器 SAS|用户指定的值|由用户命名的虚拟目录，位于 SAS 中指定的容器下方。<br /><br /> 例如，如果为作业指定的 SAS 是 `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`，指定的虚拟目录名为 `mylogblobs`，则日志位置应为 `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`。|  
   
-可以通过调用[获取作业](/rest/api/storageservices/importexport/Get-Job3)操作来检索错误日志和详细日志的 URL。 处理完驱动器后，将提供日志。  
+可以通过调用[获取作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作来检索错误日志和详细日志的 URL。 处理完驱动器后，将提供日志。  
   
 ## <a name="log-file-format"></a>日志文件格式  
 这两种日志的格式相同：它是一个 Blob，包含在硬盘驱动器与客户帐户之间复制 Blob 时发生的事件的 XML 说明。  
@@ -358,10 +359,5 @@ properties-status ::=
 ```
   
 ## <a name="see-also"></a>另请参阅  
-[存储导入/导出 REST](/rest/api/storageservices/importexport/Storage-Import-Export-Service-REST-API-Reference)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[存储导入/导出 REST](/rest/api/storageimportexport/)
 

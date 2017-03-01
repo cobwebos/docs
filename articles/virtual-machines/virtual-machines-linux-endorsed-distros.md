@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ab139ce55ba293526a3ccfb6bcd6cd5838b383f9
-ms.openlocfilehash: 0be5bb571f3d8fe6d5d9fcde2fe64e9147837445
+ms.sourcegitcommit: 6ac9ccd5510c7cdc8748767281965345a5fa0637
+ms.openlocfilehash: 04294bf682ec2e6cf294ebdb686e1fd58e6c58e4
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -45,7 +46,7 @@ Azure Linux 代理已预安装在 Azure 库映像中，并通常可从分发的�
 | Debian |Debian 7.9+、8.2+ |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+、7.0+ |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7+、7.1+ |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES 11 SP4、SLES 12 SP1+ 和 <p> SLES for SAP |在内核中 |包：在“python-azure-agent”下的 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中 <br/>源代码：[GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+|在内核中 |包：<p> 对于 11，在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中<br>对于 12，包含在“公有云”模块中的“python-azure-agent”下<br/>源代码：[GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.1+ |在内核中 |包：在“python-azure-agent”下的 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04、14.04、16.04、16.10 |在内核中 |包：在“walinuxagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 
@@ -88,10 +89,5 @@ Azure 上的 SUSE Linux Enterprise Server 是一个已验证的平台，该平�
 Canonical 工程和开放社区监管对 Ubuntu 在客户端、服务器和云计算（包括用户的个人云服务）方面获得成功起到了推动作用。 Canonical 期望使用 Ubuntu 开发一个统一的免费平台（从手机到云），该平台带有一系列适用于手机、平板电脑、TV 和桌面的相关接口，从而使 Ubuntu 成为各种机构（从公有云提供商到消费类电子产品制造商）的首选以及各个技术专家的最爱。
 
 借助其遍布全球的开发人员和工程中心，Canonical 在与硬件制造商、内容提供商和软件开发人员合作以将 Ubuntu 解决方案推向市场（从 PC 到服务器和手持设备）方面拥有独特的优势。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

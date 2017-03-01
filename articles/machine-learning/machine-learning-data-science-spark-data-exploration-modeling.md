@@ -1,6 +1,6 @@
 ---
 title: "使用 Spark 进行数据探索和建模 | Microsoft Docs"
-description: "展示 Spark MLlib 工具包的数据浏览和建模功能。"
+description: "展示 Azure 上的 Spark MLlib 工具包的数据浏览和建模功能。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 304323601a7fb2c9b46cf0e1eea9429cf099a111
-ms.openlocfilehash: e989da22fe6819410ff9b4c1e132dc7d74a9bf50
+ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
+ms.openlocfilehash: 76fb321dbe909730f72eba71042264caba407aed
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -43,7 +44,33 @@ ms.openlocfilehash: e989da22fe6819410ff9b4c1e132dc7d74a9bf50
 > 
 
 ## <a name="prerequisites"></a>先决条件
-你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 中提供包含本主题中的代码示例的 **pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb** 笔记本。 
+你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
+
+## <a name="spark-clusters-and-notebooks"></a>Spark 群集和笔记本
+本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但是，Jupyter 笔记本是针对 HDInsight Spark 1.6 和 Spark 2.0 群集提供的。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 为方便起见，下面提供了在 Jupyter 笔记本服务器的 pyspark 内核中运行的、适用于 Spark 1.6 和 2.0 的 Jupyter 笔记本的链接：
+
+### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
+
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何执行数据探索、建模和评分与多种不同算法的信息。
+
+### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
+使用 Spark 2.0 群集实现的回归和分类任务使用不同数据集，并处于单独的笔记本中：
+
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb)：此文件说明如何使用[此处](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-spark-overview)所述的纽约市出租车里程与收费数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：此文件说明如何使用 2011 到 2012 年的已知航班准时出发数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。 我们已在建模之前将航班数据集与机场天气数据（例如风速、温度、海拔等）相集成，因此可在模型中包含这些天气特征。
+
+<!-- -->
+
+> [!NOTE]
+> 航班数据集已添加到 Spark 2.0 笔记本，以方便演示分类算法的用法。 有关航班准时出发数据集和天气数据集的信息，请参阅以下链接：
+
+>- 航班准时出发数据：[http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
+
+>- 机场天气数据：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+> 
+> 
+
+<!-- -->
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -1064,10 +1091,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 **模型使用：**若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](machine-learning-data-science-spark-model-consumption.md)。
 
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

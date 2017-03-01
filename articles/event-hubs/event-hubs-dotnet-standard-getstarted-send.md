@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/31/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: c549676b2126448d52ed43af509671d0b593a064
+ms.sourcegitcommit: 57175ddc53d5856cd3492d4c631a92d4bf9247c4
+ms.openlocfilehash: a6c5ff034450c9c6a01feb4ae6d84cebd75a5682
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -51,9 +52,7 @@ ms.openlocfilehash: c549676b2126448d52ed43af509671d0b593a064
 
 ### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包” 。
-
-2. 单击“浏览”选项卡，然后搜索“Microsoft Azure 事件中心”，并选择“Microsoft Azure 事件中心”项。 单击“安装”以完成安装，然后关闭此对话框。
+* 将 [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包添加到项目。
 
 ### <a name="write-some-code-to-send-messages-to-the-event-hub"></a>编写一些代码将消息发送到事件中心
 
@@ -204,8 +203,3 @@ ms.openlocfilehash: c549676b2126448d52ed43af509671d0b593a064
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
 * [事件中心常见问题](event-hubs-faq.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

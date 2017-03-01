@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 304323601a7fb2c9b46cf0e1eea9429cf099a111
-ms.openlocfilehash: debc2a1671ed8fc2507408a887a7604ee02625f3
+ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
+ms.openlocfilehash: b30b3ed88ab271b5fa3db61ef276cba9b7fcdfdb
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -26,8 +27,13 @@ ms.openlocfilehash: debc2a1671ed8fc2507408a887a7604ee02625f3
 本主题介绍如何加载使用 Spark MLlib 生成并存储在 Azure Blob 存储 (WASB) 中的机器学习 (ML) 模型，以及如何使用同样存储在 WASB 中的数据集为它们评分。 它介绍如何预处理输入数据、使用 MLlib 工具包中的索引和编码函数转换特征，以及如何创建可用作 ML 模型评分的输入的标签点数据对象。 用于评分的模型包括线性回归、逻辑回归、随机林模型和梯度提升树模型。
 
 ## <a name="prerequisites"></a>先决条件
-1. 你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 [Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 中提供包含本主题中的代码示例的 **pySpark-machine-learning-data-science-spark-model-consumption.ipynb** 笔记本。
-2. 还必须在此处通过演练[使用 Spark 进行数据探索和建模](machine-learning-data-science-spark-data-exploration-modeling.md)主题创建要评分的机器学习模型。   
+
+1. 你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
+2. 还必须在此处通过演练针对 Spark 1.6 群集或 Spark 2.0 笔记本的[使用 Spark 进行数据探索和建模](machine-learning-data-science-spark-data-exploration-modeling.md)主题，来创建要评分的机器学习模型。 请注意，Spark 2.0 笔记本将其他数据集用于分类任务（从 2011 年到 2012 年的已知航班准时出发数据集）。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 
+
+
+## <a name="setup-spark-clusters-and-notebooks"></a>设置：Spark 群集和笔记本
+本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：笔记本演示如何在 HDInsight 群集上使用 Python 实施已保存的模型。 若要修改此 Jupyter 笔记本以与 HDInsight Spark 2.0 群集一起使用，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -579,10 +585,5 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 
 ## <a name="whats-next"></a>后续步骤
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)了解如何使用交叉验证和超参数扫描训练模型。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

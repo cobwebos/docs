@@ -1,8 +1,8 @@
 ---
-title: "修复导出作业 | Microsoft Docs"
+title: "修复 Azure 导出作业 | Microsoft Docs"
 description: "了解如何使用 Azure 导入/导出服务修复已创建和运行的导出作业。"
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-ms.author: renash
+ms.date: 01/23/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: 61bcbe23f9c747aeb486414fca6c1eb394098d11
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 7ae819a662230a7ca7da6f7bc5bbb3b3f940074e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -82,7 +83,7 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 ## <a name="using-repairexport-to-validate-drive-contents"></a>使用 RepairExport 验证驱动器内容  
 还可以使用提供 **RepairExport** 选项的 Azure 导入/导出服务来验证驱动器上的内容是否正确。 每个导出驱动器上的清单文件包含驱动器内容的 MD5 哈希。  
   
-Azure 导入/导出服务还可以在导出过程中将清单文件保存到某个存储帐户。 完成作业后，可通过[获取作业](/rest/api/storageservices/importexport/Get-Job3)操作获得清单文件的位置。 有关驱动器清单文件格式的详细信息，请参阅[导入/导出服务清单文件格式](storage-import-export-file-format-metadata-and-properties.md)。  
+Azure 导入/导出服务还可以在导出过程中将清单文件保存到某个存储帐户。 完成作业后，可通过[获取作业](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)操作获得清单文件的位置。 有关驱动器清单文件格式的详细信息，请参阅[导入/导出服务清单文件格式](storage-import-export-file-format-metadata-and-properties.md)。  
   
 以下示例演示如何结合 **/ManifestFile** 和 **/CopyLogFile** 参数运行 Azure 导入/导出工具：  
   
@@ -155,8 +156,4 @@ G:\pictures\wild\canyon.jpg.properties
 [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
 [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)   
 [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
 
