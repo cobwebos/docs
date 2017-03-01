@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/31/2017
+ms.date: 2/23/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: 47d5a9173d8791124a3071b090d6db027dba9448
-ms.openlocfilehash: c070fa326688d94ce2cbf4e0471c4afc9d78c93c
+ms.sourcegitcommit: 244471c5e90a0e2d89c34b255f2da077a94f91cf
+ms.openlocfilehash: 1e87486dc7a186c0ab7147719ac47177c87be148
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -50,35 +51,6 @@ ms.openlocfilehash: c070fa326688d94ce2cbf4e0471c4afc9d78c93c
 ###### <a name="october-23-2016"></a>**2016 年 10 月 23 日**
 Windows Server 2016 将于 2016 年 11 月 1 日作为 OS 系列 5 推出，提供 .NET 4.6 支持。
 
-###### <a name="september-13-2016"></a>**2016 年 9 月 13 日**
-9 月版来宾 OS 将从 2016 年 9 月 13 日开始推出，预计于 2016 年 10 月 13 日正式发行。
-
-###### <a name="august-9-2016"></a>**2016 年 8 月 9 日**
-8 月版来宾 OS 将从 2016 年 8 月 9 日开始推出，预计于 2016 年 9 月 8 日正式发行。 
-
-###### <a name="july-13-2016"></a>**2016 年 7 月 13 日**
-7 月版来宾 OS 将从 2016 年 7 月 13 日开始推出，预计于 2016 年 8 月 12 日正式发行。 
-
-###### <a name="june-15-2016"></a>**2016 年 6 月 15 日**
-6 月版来宾 OS 将从 2016 年 6 月 15 日开始推出，预计于 2016 年 7 月 14 日正式发行。 
-
-###### <a name="may-17-2016"></a>**2016 年 5 月 17 日**
-5 月版来宾 OS 将从 2016 年 5 月 17 日开始推出，预计于 2016 年 6 月 10 日正式发行。 
-
-###### <a name="april-18-2016"></a>**2016 年 4 月 18 日**
-4 月版来宾 OS 将从 2016 年 4 月 18 日开始推出，预计于 2016 年 5 月 12 日正式发行。 
-
-###### <a name="march-14-2016"></a>**2016 年 3 月 14 日**
-3 月版来宾 OS 将从 2016 年 3 月 14 日开始推出，预计于 2016 年 4 月 8 日正式发行。 
-
-###### <a name="february-22-2016"></a>**2016 年 2 月 22 日**
-2 月版来宾 OS 将从 2016 年 2 月 22 日开始推出，预计于 2016 年 3 月 9 日正式发行。
-
-###### <a name="january-18-2016"></a>**2016 年 1 月 18 日**
-1 月版来宾 OS 将从 2016 年 1 月 18 日开始推出，预计于 2016 年 2 月 12 日正式发行。
-
-###### <a name="january-4-2016"></a>**2016 年 1 月 4 日**
-2016 年 1 月 4 日已发布 November 201511-02 来宾 OS 供用户部署。 此 OS 版本未设置为自动更新的默认 OS，因此将来宾 OS 部署到 November 201511-02 OS 所需的预配时间要略长一些。 
 
 ## <a name="releases"></a>发行版本
 ## <a name="family-5-releases"></a>系列 5 发行版本
@@ -251,10 +223,5 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

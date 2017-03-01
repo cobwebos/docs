@@ -12,14 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/03/2017
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
-ms.openlocfilehash: d623c4172a654b90d68c6e6e488a2c791abe8647
+ms.sourcegitcommit: 8209eb8df45d8c7c42e303ab3377dbde3255154a
+ms.openlocfilehash: 924b3621e03b678e158cd1240864a903db6c8510
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配虚拟阵列
+# <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
 ## <a name="overview"></a>概述
@@ -214,9 +216,4 @@ ms.openlocfilehash: d623c4172a654b90d68c6e6e488a2c791abe8647
 ## <a name="next-steps"></a>后续步骤
 * [将 StorSimple 虚拟阵列设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)
 * [将 StorSimple 虚拟阵列设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

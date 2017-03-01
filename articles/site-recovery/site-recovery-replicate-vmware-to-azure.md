@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/17/2017
 ms.author: asgang
 translationtype: Human Translation
-ms.sourcegitcommit: 8f9df48eb93a003f67ad79cc937f41db1531e94d
-ms.openlocfilehash: be280f8de4d2b1316ff6e9e69a4eb93870e8e187
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 54cf67bf630a9de30d4ccafdb09a3f8986c04145
+ms.openlocfilehash: 4415af41cfaf7230f398016e37b8a8cde453fa54
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,10 +29,10 @@ ms.lasthandoff: 02/17/2017
 本文介绍如何设置 VMware 上运行的虚拟机到 Azure 的复制。
 ## <a name="prerequisites"></a>先决条件
 
-本文假设用户已 
+本文假设用户已
 
 1.  [设置本地源环境](site-recovery-set-up-vmware-to-azure.md)
-2.  [在 Azure 中设置目标环境](site-recovery-prepare-target-vmware-to-azure.md) 
+2.  [在 Azure 中设置目标环境](site-recovery-prepare-target-vmware-to-azure.md)
 
 
 ## <a name="enable-replication"></a>启用复制
@@ -63,7 +63,7 @@ ms.lasthandoff: 02/17/2017
 
    * 可以选择高级或标准存储帐户。 如果选择高级帐户，则需要指定其他标准存储帐户来持续写入复制日志。 这些帐户必须位于与恢复服务保管库相同的区域中。
    * 若要使用已有帐户以外的存储帐户，可以创建帐户*占位链接：使用资源管理器创建存储帐户（将在“入门”中介绍）*。 若要使用 Resource Manager 模型创建存储帐户，请单击“新建”。 如果想要使用经典模型创建存储帐户，请[在 Azure 门户中](../storage/storage-create-storage-account-classic-portal.md)执行该操作。
- 
+
 
 8. 选择 Azure VM 在故障转移后启动时所要连接的 Azure 网络和子网。 该网络必须位于与恢复服务保管库相同的区域中。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 如果没有网络，需要[创建一个](#set-up-an-azure-network)。 若要使用 Resource Manager 创建网络，请单击“新建”。 如果想要使用经典模型创建网络，请[在 Azure 门户中](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)执行该操作。 选择适用的子网。 。
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 02/17/2017
 >
 
 ## <a name="view-and-manage-vm-properties"></a>查看和管理 VM 属性
-建议你验证源计算机的属性。 请记住，Azure VM 名称应符合 [Azure 虚拟机要求](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+建议你验证源计算机的属性。 请记住，Azure VM 名称应符合 [Azure 虚拟机要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 1. 单击“设置” > “复制的项”，然后选择计算机。 “概要”边栏选项卡显示有关计算机设置和状态的信息。
 2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
@@ -115,5 +115,6 @@ ms.lasthandoff: 02/17/2017
 * 对于第 2 代虚拟机/已启用 UEFI 的虚拟机，操作系统系列应是 Windows，并且启动盘应小于 300GB。
 
 ## <a name="next-steps"></a>后续步骤
- 
-保护完成后，可以尝试测试故障转移，检查应用程序是否出现在 Azure 中。    
+
+保护完成后，可以尝试测试故障转移，检查应用程序是否出现在 Azure 中。
+

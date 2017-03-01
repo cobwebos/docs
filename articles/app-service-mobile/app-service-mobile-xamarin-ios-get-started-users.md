@@ -4,7 +4,7 @@ description: "了解如何使用移动应用通过各种标识提供者（包括
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a7a4f4b5884c7c8536ad969558eaad4262be52c7
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: cdc8d62c0adb81330353b73be8a0a9db8cef0052
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -99,12 +100,7 @@ ms.openlocfilehash: a7a4f4b5884c7c8536ad969558eaad4262be52c7
     通过向下拉动项列表来执行刷新笔势，这将导致显示登录屏幕。 成功输入有效的凭据后，应用将显示待办事项列表，用户可以对数据进行更新。
 
 <!-- URLs. -->
-[提交应用页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [创建 Xamarin.iOS 应用]: app-service-mobile-xamarin-ios-get-started.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

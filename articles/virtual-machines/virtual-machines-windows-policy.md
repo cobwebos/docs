@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: 83470aaf607a666a63bae5b9897d0b273e327377
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 54afb2f55ef9ff48448c63bc8ee8e745765f61e6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -96,15 +97,10 @@ ms.openlocfilehash: 83470aaf607a666a63bae5b9897d0b273e327377
 ## <a name="create-the-policy"></a>创建策略
 可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。 有关创建策略的信息，请参阅以下文章：
 
-* [创建策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
+* [创建策略](../azure-resource-manager/resource-manager-policy.md)
 
 ## <a name="apply-the-policy"></a>应用策略
 创建策略后，需要根据定义的范围来应用它。 范围可以是订阅、资源组甚至资源。 有关应用策略的信息，请参阅以下文章：
 
-* [创建策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* [创建策略](../azure-resource-manager/resource-manager-policy.md)
 

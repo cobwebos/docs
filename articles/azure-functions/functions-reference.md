@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 0d75654e00e033eab7de97779157c43ee4493a9f
-ms.openlocfilehash: 2032426e473cb859ad60b48684bcf620e314ed6c
+ms.sourcegitcommit: bc96edb44dc8bbbbe4687806117990c9d3470fdc
+ms.openlocfilehash: adb70fc58321c11c0b57efc9810a44d0ab2c8a20
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -103,7 +104,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 按照本主题中的说明 [Azure Functions 连续部署](functions-continuous-deployment.md) 进行操作。
 
 ## <a name="parallel-execution"></a>并行执行
-多个触发事件发生的速度超过了单线程函数运行的处理速度时，运行时可并行多次调用函数。  如果 Function App 正在使用[消耗量托管计划](functions-scale.md#consumption-service-plan)，则 Function App 可自动扩大。  无论应用是在消耗量托管计划还是常规[应用服务托管计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)上运行，每个 Function App 实例都可能使用多个线程并行处理并发函数调用。  每个 Function App 实例中并发函数的最大调用数根据所用触发器类型以及 Function App 中其他函数所用资源而有所不同。
+多个触发事件发生的速度超过了单线程函数运行的处理速度时，运行时可并行多次调用函数。  如果 Function App 正在使用[消耗量托管计划](functions-scale.md#how-the-consumption-plan-works)，则 Function App 可自动扩大。  无论应用是在消耗量托管计划还是常规[应用服务托管计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)上运行，每个 Function App 实例都可能使用多个线程并行处理并发函数调用。  每个 Function App 实例中并发函数的最大调用数根据所用触发器类型以及 Function App 中其他函数所用资源而有所不同。
 
 ## <a name="azure-functions-pulse"></a>Azure Functions 脉冲
 脉冲是一个实时事件流，显示了函数的运行频率，以及成功和失败次数。 还可监视平均执行时间。 随着时间的推移我们将向其中添加更多功能和自定义项。 可从“监视”选项卡访问“脉冲”页。
@@ -134,10 +135,5 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 * [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [Azure Functions：Azure App Service 团队博客之旅](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)。 Azure Functions 的开发历史。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

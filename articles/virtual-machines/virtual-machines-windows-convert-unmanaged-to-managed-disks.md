@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: be2752f46ebedf35a28277ad853207ae8038e345
-ms.openlocfilehash: 16d18b375ba91338aafa0eaef106fdb9107bb872
+ms.sourcegitcommit: e25eaee75b1637447447ace88c2bf1d9aed83880
+ms.openlocfilehash: 484cc6419150b84ee6ed7d2c92960a4d0202e10b
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -39,12 +40,12 @@ ms.openlocfilehash: 16d18b375ba91338aafa0eaef106fdb9107bb872
 
 **数据磁盘**：
 1.    从 VM 中分离数据磁盘。
-2.    将 VHD 复制到从未启用 SSE 的存储帐户。 若要将磁盘复制到另一存储帐户，请使用 [AzCopy](../storage/storage-use-azcopy.md): `https://sourceaccount.blob.core.windows.net/myvhd.vhd  https://destaccount.blob.core.windows.net/myvhd_no_encrypt.vhd /sourcekey:key1 /destkey:key1`
+2.    将 VHD 复制到从未启用 SSE 的存储帐户。 若要将磁盘复制到另一存储帐户，请使用 [AzCopy](../storage/storage-use-azcopy.md): `AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myDataDisk.vhd`
 3.    将复制的磁盘附加到 VM，并转换 VM。
 
 **OS 磁盘**：
 1.    停止（解除分配）VM。 保存 VM 配置（如有必要）。
-2.    将 OS VHD 复制到从未启用 SSE 的存储帐户。 若要将磁盘复制到另一存储帐户，请使用 [AzCopy](../storage/storage-use-azcopy.md): `https://sourceaccount.blob.core.windows.net/myvhd.vhd  https://destaccount.blob.core.windows.net/myvhd_no_encrypt.vhd /sourcekey:key1 /destkey:key1`
+2.    将 OS VHD 复制到从未启用 SSE 的存储帐户。 若要将磁盘复制到另一存储帐户，请使用 [AzCopy](../storage/storage-use-azcopy.md): `AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myVhd.vhd`
 3.    创建使用托管磁盘的 VM，并在创建过程中将 VHD 文件作为 OS 磁盘附加。
 
 
@@ -176,10 +177,5 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 ## <a name="next-steps"></a>后续步骤
 
 使用[快照](virtual-machines-windows-snapshot-copy-managed-disk.md)获取 VM 的只读副本。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

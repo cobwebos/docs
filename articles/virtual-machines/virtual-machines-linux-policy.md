@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 1887b777fbe113d59cffb6ba5409e33ca1380880
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -92,13 +93,8 @@ ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
 | imageVersion |指定所选 SKU 的映像版本 |
 
 ## <a name="create-the-policy"></a>创建策略
-可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。 可以详细了解如何[创建和分配策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)。
+可以直接使用 REST API 或 PowerShell cmdlet 轻松创建策略。 可以详细了解如何[创建和分配策略](../azure-resource-manager/resource-manager-policy.md)。
 
 ## <a name="apply-the-policy"></a>应用策略
-创建策略后，需要根据定义的范围来应用它。 范围可以是订阅、资源组甚至资源。 可以详细了解如何[创建和分配策略](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+创建策略后，需要根据定义的范围来应用它。 范围可以是订阅、资源组甚至资源。 可以详细了解如何[创建和分配策略](../azure-resource-manager/resource-manager-policy.md)。
 

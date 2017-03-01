@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: aeaf8d06749d63d19e02573b5bf66ceac644cb3e
+ms.sourcegitcommit: 858ed6ca4355c36c728ae88bf9488f362d487646
+ms.openlocfilehash: 7ffef4a8dcd10fa6608d200b4ca34fb3517c0cc6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -149,7 +150,7 @@ ms.openlocfilehash: aeaf8d06749d63d19e02573b5bf66ceac644cb3e
 | --- | --- | --- | --- | --- | --- |
 | < 300 GB |4 个 vCPU（2 个插槽 * 2 个核心 @ 2.5GHz） |4 GB |600 GB |每秒 7 到 10 MB |30 Mbps/21 Mbps |
 | 300 到 600 GB |8 个 vCPU（2 个插槽 * 4 个核心 @ 2.5GHz） |6 GB |600 GB |每秒 11 到 15 MB |60 Mbps/42 Mbps |
-| 600 GB 到 1 TB |12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5GHz) |8 GB |600 GB |每秒 16 到 20 MB |100 Mbps/70 Mbps |
+| 600 GB 到 1 TB |12 个 vCPU（2 个插槽 * 6 个核心 @ 2.5GHz） |8 GB |600 GB |每秒 16 到 20 MB |100 Mbps/70 Mbps |
 | > 1 TB |部署另一个进程服务器 | | | | |
 
 **表 2**
@@ -201,7 +202,7 @@ ms.openlocfilehash: aeaf8d06749d63d19e02573b5bf66ceac644cb3e
 | **Azure 存储** |需要使用 Azure 存储帐户来存储复制的数据<br/><br/> 帐户应为[标准异地冗余存储帐户](../storage/storage-redundancy.md#geo-redundant-storage)或[高级存储帐户](../storage/storage-premium-storage.md)。<br/><br/> 该帐户必须位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅相关联。 我们不支持跨资源组移动使用[新 Azure 门户](../storage/storage-create-storage-account.md)创建的存储帐户。<br/><br/> 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md) | |
 | **Azure 虚拟网络** |你将需要 Azure 虚拟网络，配置服务器和主目标服务器将部署在该网络上。 它应该位于 Azure Site Recovery 保管库所在的订阅和区域中。 如果你要通过 ExpressRoute 或 VPN 连接复制数据，Azure 虚拟网络必须通过 ExpressRoute 连接或站点到站点 VPN 连接到本地网络。 | |
 | **Azure 资源** |确保你有足够的 Azure 资源用于部署所有组件。 详细了解 [Azure 订阅限制](../azure-subscription-service-limits.md)。 | |
-| **Azure 虚拟机** |要保护的虚拟机应符合 [Azure 先决条件](site-recovery-best-practices.md)。<br/><br/> **磁盘计数** - 单个受保护的服务器最多可以支持 31 个磁盘<br/><br/> **磁盘大小** - 单个磁盘的容量不能超过 1023 GB<br/><br/> **群集** - 不支持群集服务器<br/><br/> **启动** - 不支持统一可扩展固件接口 (UEFI)/可扩展固件接口 (EFI) 启动<br/><br/> **卷** - 不支持 Bitlocker 加密卷<br/><br/> **服务器名称** - 名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 在计算机受到保护后，你可以修改 Azure 名称。 | |
+| **Azure 虚拟机** |要保护的虚拟机应符合 [Azure 先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。<br/><br/> **磁盘计数** - 单个受保护的服务器最多可以支持 31 个磁盘<br/><br/> **磁盘大小** - 单个磁盘的容量不能超过 1023 GB<br/><br/> **群集** - 不支持群集服务器<br/><br/> **启动** - 不支持统一可扩展固件接口 (UEFI)/可扩展固件接口 (EFI) 启动<br/><br/> **卷** - 不支持 Bitlocker 加密卷<br/><br/> **服务器名称** - 名称应包含 1 到 63 个字符（字母、数字和连字符）。 名称必须以字母或数字开头，并以字母或数字结尾。 在计算机受到保护后，你可以修改 Azure 名称。 | |
 | **配置服务器** |在订阅中针对配置服务器创建基于 Azure Site Recovery Windows Server 2012 R2 库映像的标准 A3 虚拟机。 它将作为第一个实例在新的云服务中创建。 如果你选择“公共 Internet”作为配置服务器的连接类型，将使用保留的公共 IP 地址创建云服务。<br/><br/> 安装路径应该只包含英文字符。 | |
 | **主目标服务器** |Azure 虚拟机（标准 A4、D14 或 DS4）。<br/><br/> 安装路径应该只包含英文字符。 例如，对于运行 Linux 的主目标服务器，路径应为 **/usr/local/ASR**。 | |
 | **进程服务器** |你可以在运行带有最新更新的 Windows Server 2012 R2 的物理或虚拟机上部署处理服务器。 在 C:/ 上安装。<br/><br/> 我们建议你将该服务器放置在你要保护的计算机所在的网络和子网上。<br/><br/> 在进程服务器上安装 VMware vSphere CLI 5.5.0。 进程服务器上必须有 VMware vSphere CLI 组件，才能发现 vCenter 服务器管理的虚拟机或 ESXi 主机上运行的虚拟机。<br/><br/> 安装路径应该只包含英文字符。<br/><br/> 不支持 ReFS 文件系统。 | |
@@ -739,9 +740,4 @@ The information in Section A is regarding Third Party Code components from the p
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
 完整文件可以在 [ Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=529428)上找到。 Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4dfd9690f2e3e017ca308649f79a84466d49d844
-ms.openlocfilehash: 91ee5da0885fc0b044150e524757eac659a003a4
+ms.sourcegitcommit: e37f1716b459ea8eb0f2d0a5a12e7a3a8ab2c083
+ms.openlocfilehash: e2ec0cefb6e009f22c3406ccd1570748dc467ed0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -135,7 +136,7 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 | 从匿名 IP 地址登录 |从未知源登录 |
 | 从具有可疑活动的 IP 地址登录 |从具有可疑活动的 IP 地址登录 |
 | 从不熟悉的位置登录 |- |
-| 锁定事件 |- |
+
 
 以下 Azure AD 异常活动报告未作为风险事件包含在 Azure AD Identity Protection 中，因此不会通过 Identity Protection 提供。 这些报告仍可通过 Azure 经典门户获得。 但是，未来的某个时间它们将会过时，因为 Identity Protection 中的风险事件会将其取代。
 
@@ -149,10 +150,5 @@ Microsoft 安全研究人员发现了在暗网中公开发布的已泄漏凭据�
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

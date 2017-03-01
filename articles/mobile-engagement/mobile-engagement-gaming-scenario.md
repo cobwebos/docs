@@ -4,7 +4,7 @@ description: "实现 Azure Mobile Engagement 的游戏应用方案"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86092228c987de83cf339f76ded6d7a59efaf0f4
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -69,9 +70,4 @@ ms.openlocfilehash: 86092228c987de83cf339f76ded6d7a59efaf0f4
 [1]: ./media/mobile-engagement-game-scenario/notification-scenario.png
 
 <!--Link references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

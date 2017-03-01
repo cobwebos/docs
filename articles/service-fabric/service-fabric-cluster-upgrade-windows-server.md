@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
-ms.openlocfilehash: 217715ad1657582eb35008b765de6d19bd2a8b0b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 3d7e28c1cd221d704cf9cfec66da535e079fb472
+ms.openlocfilehash: 30044abc0d7d42b11ddd210dfb9ea3eadb94dda6
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -125,14 +125,8 @@ ms.lasthandoff: 02/16/2017
 ```
 
 #### <a name="cluster-upgrade-workflow"></a>群集升级工作流。
-1. 从群集中的一个节点运行 Get-ServiceFabricClusterUpgrade 并记下 TargetCodeVersion。
-2. 从连接到 Internet 的计算机运行以下命令，以列出与当前版本兼容的所有升级版本，并从关联的下载链接下载相应的程序包。
-   ```powershell
-   
-    ###### Get list of all upgrade compatible packages
-    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1>
-    ```
-3. 从对已被列为群集中节点的所有计算机具有管理员访问权限的任何计算机中连接到该群集。 运行此脚本的计算机不一定是群集的一部分 
+1. 在[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)文档中下载最新版本的程序包
+2. 从对已被列为群集中节点的所有计算机具有管理员访问权限的任何计算机中连接到该群集。 运行此脚本的计算机不一定是群集的一部分 
    
     ```powershell
    
@@ -147,7 +141,7 @@ ms.lasthandoff: 02/16/2017
         -StoreLocation CurrentUser `
         -StoreName My
     ```
-4. 将下载的程序包复制到群集映像存储中。
+3. 将下载的程序包复制到群集映像存储中。
    
     ```powershell
    
@@ -159,7 +153,7 @@ ms.lasthandoff: 02/16/2017
 
     ```
 
-5. 注册复制的程序包 
+4. 注册复制的程序包 
    
     ```powershell
    
@@ -170,7 +164,7 @@ ms.lasthandoff: 02/16/2017
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
    
      ```
-6. 启动到可用版本之一的群集升级。 
+5. 启动到可用版本之一的群集升级。 
    
     ```Powershell
    
@@ -200,13 +194,6 @@ ms.lasthandoff: 02/16/2017
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File> 
 
 ```
-
-### <a name="cluster-certificate-config-upgrade-pls-hold-on-till-v55-is-released-because-cluster-cert-upgrade-doesnt-work-till-v55"></a>群集证书配置升级（PLS HOLD ON TILL v5.5 已发布，因为在 v5.5 之前，群集证书升级不能正常工作）
-群集证书用于群集节点之间的身份验证，因此执行证书滚动时应格外小心，因为出现故障会阻止群集节点之间的通信。
-从技术上讲，支持两种选择：
-
-1. 单个证书升级：升级路径为“证书 A（主证书）-> 证书 B（主证书）-> 证书 C（主证书）-> ...”。 
-2. 双证书升级：升级路径为“证书 A（主证书）-> 证书 A（主证书）和证书 B（辅助证书）-> 证书 B（主证书）-> 证书 B（主证书）和证书 C（辅助证书）-> 证书 C（主证书）-> ...”
 
 
 ## <a name="next-steps"></a>后续步骤

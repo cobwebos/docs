@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 2/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 963bf66d71a5c3eb2bf4ec8449e342ff1da782a8
-ms.openlocfilehash: d54a3d812051869e70102c19674292fe9edbf248
+ms.sourcegitcommit: f0875344b05b7eb8c6f9f6e39c3b864c202e2931
+ms.openlocfilehash: 968814db9496fd410162d482191592c8a56101f0
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -136,16 +137,11 @@ append_blob = append_blob_service.get_blob_to_text('mycontainer', 'myappendblob'
 ## <a name="next-steps"></a>后续步骤
 现在，你已了解 Blob 存储的基础知识，可单击下面的链接了解详细信息。
 
-* [Python 开发人员中心](/develop/python/)
+* [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Azure 存储空间服务 REST API](http://msdn.microsoft.com/library/azure/dd179355)
 * [Azure 存储团队博客]
 * [用于 Python 的 Microsoft Azure 存储 SDK]
 
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [用于 Python 的 Microsoft Azure 存储 SDK]: https://github.com/Azure/azure-storage-python
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

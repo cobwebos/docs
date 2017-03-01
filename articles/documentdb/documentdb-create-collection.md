@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: a87b2811175193377142e391597011f48f169f11
-ms.openlocfilehash: 4c16c843ba43a9e38d73fc1fd44d06f6f72de60c
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: 8ee846e659d0a47a5fb39d6baa3235f59e19d653
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -79,10 +80,5 @@ DocumentDB 自动将集合分区到一个或多个物理服务器。 创建集�
 * 可以使用 DocumentDB 数据迁移工具来[导入文档和数据](documentdb-import-data.md)，利用此工具可以导入 JSON 和 CSV 文件，以及来自 SQL Server、MongoDB、Azure 表存储及其他 DocumentDB 集合的数据。
 * 也可以使用某个 [DocumentDB SDK](documentdb-sdk-dotnet.md) 来添加文档。 DocumentDB 有 .NET、Java、Python、Node.js 和 JavaScript API SDK。 有关说明如何使用 DocumentDB .NET SDK 处理文档的 C# 代码示例，请参阅 [C# 文档示例](documentdb-dotnet-samples.md#document-examples)。 有关说明如何使用 DocumentDB Node.js SDK 处理文档的 Node.js 代码示例，请参阅 [Node.js 文档示例](documentdb-nodejs-samples.md#document-examples)。
 
-当集合中有文档后，就可以利用门户中的[查询资源管理器](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或某个 [SDK](documentdb-sdk-dotnet.md)来针对文档使用 [DocumentDB SQL](documentdb-sql-query.md) [执行查询](documentdb-sql-query.md#executing-sql-queries)。 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+当集合中有文档后，就可以利用门户中的[查询资源管理器](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或某个 [SDK](documentdb-sdk-dotnet.md)来针对文档使用 [DocumentDB SQL](documentdb-sql-query.md) [执行查询](documentdb-sql-query.md#ExecutingSqlQueries)。 
 

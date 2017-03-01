@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
-ms.openlocfilehash: 19e8c9de137e10abb563fcd60cf89502dbf94cfd
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: 238c74c020625006384a1b31aef320e1346d9ac4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -102,7 +103,7 @@ Azure DocumentDB 可确保所有属性通过其自动索引功能进行索引，
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 一旦我们获得其中一个列表之后，我们就可以使用 [IN 运算符](documentdb-sql-query.md#where-clause) 向 DocumentDB 发布单个查询以一次性获取帖子的所有页面。
+我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。 一旦我们获得其中一个列表之后，我们就可以使用 [IN 运算符](documentdb-sql-query.md#WhereClause) 向 DocumentDB 发布单个查询以一次性获取帖子的所有页面。
 
 可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service-web/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储空间](https://azure.microsoft.com/services/storage/) [队列](../storage/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。 
 
@@ -230,10 +231,5 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 阅读[为 DocumentDB 中的数据建模](documentdb-modeling-data.md)一文，了解有关数据建模的详细信息。 如需了解 DocumentDB 其他用例信息，请参阅 [DocumentDB 的常见用例](documentdb-use-cases.md)。
 
 或遵照 [DocumentDB 学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)了解有关 DocumentDB 的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
-ms.openlocfilehash: 0c2ca459a691b353a528edc48f4d13c231a440c4
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 2bd4b44bea641bcfcb576f0ba5d53564277dfe34
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -242,7 +242,7 @@ Azure 提供了两个不同的[部署模型](../resource-manager-deployment-mode
 
 如果你想要运行测试故障转移而未指定 Azure 网络，则不需要做任何准备。
 
-若要运行具有目标 Azure 网络的测试性故障转移，你将需要创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（你在 Azure 中新建网络时的默认行为）。 阅读[运行测试故障转移](site-recovery-failover.md#run-a-test-failover)以获取更多详细信息。
+若要运行具有目标 Azure 网络的测试性故障转移，你将需要创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（你在 Azure 中新建网络时的默认行为）。 阅读[运行测试故障转移](site-recovery-failover.md)以获取更多详细信息。
 
 若要完全测试复制和网络部署，你需要设置基础结构，以便复制的虚拟机按预期工作。 一种做法是将虚拟机设置为使用 DNS 的域控制器，并使用站点恢复将其复制到 Azure，以通过运行测试故障转移在测试网络中创建该域控制器。  [阅读](site-recovery-active-directory.md#test-failover-considerations)有关 Active Directory 测试故障转移注意事项的详细信息。
 

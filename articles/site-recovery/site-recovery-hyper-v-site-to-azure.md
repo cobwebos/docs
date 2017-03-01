@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
-ms.openlocfilehash: 266b9d0e36aa5e3bef9b689e7602449fbe86b3cd
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: c4129d5b5ebd0295035e81760b2a39f3caf16499
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -385,7 +385,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 [详细了解](site-recovery-failover.md)不同类型的故障转移，以及有关何时和如何执行其中每种故障转移的详细说明。
 
 > [!NOTE]
-> 如果目的是将虚拟机迁移到 Azure，我们强烈建议使用[计划的故障转移操作](site-recovery-failover.md#run-a-planned-failover-primary-to-secondary)，将虚拟机迁移到 Azure。 使用测试故障转移在 Azure 中验证已迁移的应用程序后，请使用[完成迁移](#Complete-migration-of-your-virtual-machines-to-Azure)中所述的步骤完成虚拟机迁移。 不需要执行提交或删除。 完成迁移可以去除对虚拟机的保护，使虚拟机不再产生 Azure Site Recovery 费用。
+> 如果目的是将虚拟机迁移到 Azure，我们强烈建议使用[计划的故障转移操作](site-recovery-failover.md)，将虚拟机迁移到 Azure。 使用测试故障转移在 Azure 中验证已迁移的应用程序后，请使用[完成迁移](#Complete-migration-of-your-virtual-machines-to-Azure)中所述的步骤完成虚拟机迁移。 不需要执行提交或删除。 完成迁移可以去除对虚拟机的保护，使虚拟机不再产生 Azure Site Recovery 费用。
 
 
 ### <a name="run-a-planned-failover"></a>运行计划的故障转移
@@ -408,7 +408,7 @@ Site Recovery 提供的“快速启动”体验可帮助你尽快完成部署。
 4. 选择“关闭虚拟机并同步最新数据”，指定 Azure Site Recovery 应尝试关闭受保护的虚拟机并同步数据，以便对最新版的数据进行故障转移。
 5. 故障转移后，虚拟机处于待提交状态。  单击“提交”提交故障转移。
 
-[了解详细信息](site-recovery-failover.md#run-an-unplanned-failover)
+[了解详细信息](site-recovery-failover.md)
 
 ## <a name="complete-migration-of-your-virtual-machines-to-azure"></a>完成虚拟机到 Azure 的迁移
 > [!NOTE]

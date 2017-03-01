@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/22/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: e8cac4af4b971320429cc4c76b8d806e314e1143
+ms.sourcegitcommit: 3f3ff3d196e9c640e9bd7cf01f9f1218c774ec6b
+ms.openlocfilehash: c06c43d430760a56d08dc0c2f9d158f4124db6d3
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -37,24 +38,59 @@ IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure
 ## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT 中心度量值及其用法
 IoT 中心提供了多个度量值，使你可以大致了解中心的运行状况以及已连接的设备总数。 可以结合多个度量值的信息，更清楚地了解 IoT 中心的状态。 下表描述了每个 IoT 中心所跟踪的度量值，以及每个度量值与 IoT 中心总体状态的关联。
 
-| 度量值 | 度量值说明 | 度量值用途 |
-| --- | --- | --- |
-| d2c.telemetry.ingress.allProtocol | 所有设备上发送的消息数目 | 有关消息发送操作的概述数据 |
-| d2c.telemetry.ingress.success | 成功传入中心的消息总数 | 成功传入中心的消息的概述 |
-| d2c.telemetry.egress.success | 所有成功写入终结点的遥测消息数 | 简要介绍基于用户路由的消息扇出操作 |
-| d2c.telemetry.egress.invalid | 由于与终结点不兼容而未传递的消息计数 | 简要介绍要写入用户的终结点集的故障数。 高值可能表示终结点配置错误。 |
-| d2c.telemetry.egress.dropped | 由于终结点不正常而删除的消息数 | 简要介绍 IoT 中心的当前配置下所丢弃的消息数 |
-| d2c.telemetry.egress.fallback | 符合回退路由的消息计数 | 对于通过管道将所有消息传递到其他终结点（非内置终结点）的用户，此度量值将显示路由设置中的差距 |
-| d2c.telemetry.egress.orphaned | 不匹配任何路由（包括回退路由）的消息计数 | 简要介绍 IoT 中心的当前配置下所孤立的消息数 |
-| d2c.endpoints.latency.eventHubs | 消息进入 IoT 中心与进入事件中心终结点之间的平均延迟（毫秒） | 此传递可帮助用户识别不佳的终结点配置 |
-| d2c.endpoints.latency.serviceBusQueues | 消息进入 IoT 中心与进入服务总线队列终结点之间的平均延迟（毫秒） | 此传递可帮助用户识别不佳的终结点配置 |
-| d2c.endpoints.latency.serviceBusTopic | 消息进入 IoT 中心与进入服务总线主题终结点之间的平均延迟（毫秒） | 此传递可帮助用户识别不佳的终结点配置 |
-| d2c.endpoints.latency.builtIn.events | 消息进入 IoT 中心与进入内置终结点（消息/事件）之间的平均延迟（毫秒） | 此传递可帮助用户识别不佳的终结点配置 |
-| c2d.commands.egress.complete.success | 接收设备在所有设备上完成的所有命令消息计数 |结合有关放弃或拒绝的度量值，概述了“云到设备”命令的总体成功率 |
-| c2d.commands.egress.abandon.success | 接收设备在所有设备上成功放弃的消息总数 |如果消息被放弃的频率超出预期，则突显潜在问题 |
-| c2d.commands.egress.reject.success | 接收设备在所有设备上成功拒绝的消息总数 |如果消息被拒绝的频率超出预期，则突显潜在问题 |
-| devices.totalDevices | 向 IoT 中心注册的设备计数 |向中心注册的设备数目 |
-| devices.connectedDevices.allProtocol | 同时连接的设备计数 |连接到中心的设备数概述 |
+|度量值|指标显示名称|计价单位|聚合类型|说明|
+|---|---|---|---|---|
+|d2c.telemetry.ingress.allProtocol|遥测消息发送尝试次数|计数|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|
+|d2c.telemetry.ingress.success|已发送的遥测消息数|计数|总计|成功发送到 IoT 中心的、设备到云的遥测消息数|
+|c2d.commands.egress.complete.success|完成的命令数|计数|总计|设备已成功完成的云到设备命令的数目|
+|c2d.commands.egress.abandon.success|放弃的命令数|计数|总计|设备放弃的云到设备命令的数目|
+|c2d.commands.egress.reject.success|拒绝的命令数|计数|总计|设备拒绝的云到设备命令的数目|
+|devices.totalDevices|设备总数|计数|总计|已注册到 IoT 中心的设备数目|
+|devices.connectedDevices.allProtocol|已连接的设备|计数|总计|已连接到 IoT 中心的设备数目|
+|d2c.telemetry.egress.success|发送的遥测消息数|计数|总计|已成功将消息写入到终结点的次数（总数）|
+|d2c.telemetry.egress.dropped|丢弃的消息数|计数|总计|因为与任何路由都不匹配并且回退路由被禁用而被丢弃的消息的数目|
+|d2c.telemetry.egress.orphaned|孤立的消息数|计数|总计|不匹配任何路由（包括回退路由）的消息计数|
+|d2c.telemetry.egress.invalid|无效的消息数|计数|总计|由于与终结点不兼容而未传递的消息计数|
+|d2c.telemetry.egress.fallback|符合回退条件的消息数|计数|总计|已写入到回退终结点的消息数|
+|d2c.endpoints.egress.eventHubs|已传递到事件中心终结点的消息数|计数|总计|已成功将消息写入到事件中心终结点的次数|
+|d2c.endpoints.latency.eventHubs|事件中心终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入事件中心终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.serviceBusQueues|已传递到服务总线队列终结点的消息数|计数|总计|已成功将消息写入到服务总线队列终结点的次数|
+|d2c.endpoints.latency.serviceBusQueues|服务总线队列终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入服务总线队列终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.serviceBusTopics|已传递到服务总线主题终结点的消息数|计数|总计|已成功将消息写入到服务总线主题终结点的次数|
+|d2c.endpoints.latency.serviceBusTopics|服务总线主题终结点的消息延迟|毫秒|平均值|消息进入 IoT 中心与进入服务总线主题终结点之间的平均延迟（毫秒）|
+|d2c.endpoints.egress.builtIn.events|已传递到内置终结点的消息数（消息/事件）|计数|总计|已成功将消息写入到内置终结点的次数（消息/事件）|
+|d2c.endpoints.latency.builtIn.events|内置终结点的消息延迟（消息/事件）|毫秒|平均值|消息进入 IoT 中心与进入内置终结点（消息/事件）之间的平均延迟（毫秒） |
+|d2c.twin.read.success|设备的成功克隆读取数|计数|总计|由设备发起的所有成功的克隆读取的计数。|
+|d2c.twin.read.failure|设备的失败克隆读取数|计数|总计|由设备发起的所有失败的克隆读取的计数。|
+|d2c.twin.read.size|设备的克隆读取的响应大小|字节|平均值|由设备发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|
+|d2c.twin.update.success|设备的成功克隆更新数|计数|总计|由设备发起的所有成功的克隆更新的计数。|
+|d2c.twin.update.failure|设备的失败克隆更新数|计数|总计|由设备发起的所有失败的克隆更新的计数。|
+|d2c.twin.update.size|设备的克隆更新的大小|字节|平均值|由设备发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|
+|c2d.methods.success|成功的直接方法调用数|计数|总计|所有成功的直接方法调用的计数。|
+|c2d.methods.failure|失败的直接方法调用数|计数|总计|所有失败的直接方法调用的计数。|
+|c2d.methods.requestSize|直接方法调用的请求大小|字节|平均值|所有成功的直接方法请求的平均大小、最小大小和最大大小。|
+|c2d.methods.responseSize|直接方法调用的响应大小|字节|平均值|所有成功的直接方法响应的平均大小、最小大小和最大大小。|
+|c2d.twin.read.success|后端的成功克隆读取数|计数|总计|由后端发起的所有成功的克隆读取的计数。|
+|c2d.twin.read.failure|后端的失败克隆读取数|计数|总计|由后端发起的所有失败的克隆读取的计数。|
+|c2d.twin.read.size|后端的克隆读取的响应大小|字节|平均值|由后端发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|
+|c2d.twin.update.success|后端的成功克隆更新数|计数|总计|由后端发起的所有成功的克隆更新的计数。|
+|c2d.twin.update.failure|后端的失败克隆更新数|计数|总计|由后端发起的所有失败的克隆更新的计数。|
+|c2d.twin.update.size|后端的克隆更新的大小|字节|平均值|由后端发起的所有成功的克隆更新的平均大小、最小大小和最大大小。|
+|twinQueries.success|成功的克隆查询|计数|总计|所有成功的克隆查询的计数。|
+|twinQueries.failure|失败的克隆查询|计数|总计|所有失败的克隆查询的计数。|
+|twinQueries.resultSize|克隆查询结果大小|字节|平均值|所有成功的克隆查询的结果大小的平均值、最小值和最大值。|
+|jobs.createTwinUpdateJob.success|克隆更新作业创建成功数|计数|总计|克隆更新作业创建成功的所有次数。|
+|jobs.createTwinUpdateJob.failure|克隆更新作业创建失败数|计数|总计|克隆更新作业创建失败的所有次数。|
+|jobs.createDirectMethodJob.success|方法调用作业的创建成功数|计数|总计|直接方法调用作业创建成功的所有次数。|
+|jobs.createDirectMethodJob.failure|方法调用作业的创建失败数|计数|总计|直接方法调用作业创建失败的所有次数。|
+|jobs.listJobs.success|对列出作业的成功调用数|计数|总计|对列出作业的所有成功调用的计数。|
+|jobs.listJobs.failure|对列出作业的失败调用数|计数|总计|对列出作业的所有失败调用的计数。|
+|jobs.cancelJob.success|成功的作业取消数|计数|总计|用来取消作业的调用成功的次数。|
+|jobs.cancelJob.failure|失败的作业取消数|计数|总计|用来取消作业的调用失败的次数。|
+|jobs.queryJobs.success|成功的作业查询数|计数|总计|对查询作业的所有成功调用的计数。|
+|jobs.queryJobs.failure|失败的作业查询数|计数|总计|对查询作业的所有失败调用的计数。|
+|jobs.completed|已完成的作业|计数|总计|所有已完成的作业的计数。|
+|jobs.failed|失败的作业数|计数|总计|所有失败的作业的计数。|
 
 ## <a name="next-steps"></a>后续步骤
 现已大致了解了 IoT 中心度量值，请单击此链接，深入了解如何管理 Azure IoT 中心：
@@ -79,9 +115,4 @@ IoT 中心提供了多个度量值，使你可以大致了解中心的运行状�
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

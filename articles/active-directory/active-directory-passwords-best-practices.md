@@ -12,19 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 02/22/2017
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: f7dd06f1fc789a74ec7ce2182824ff759dcf7a9f
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="deploying-password-management-and-training-users-to-use-it"></a>部署密码管理并向用户培训其用法
 > [!IMPORTANT]
 > **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
-> 
-> 
+>
+>
 
 启用密码重置之后，必须执行的下一个步骤就是让用户使用你组织中的服务。 为此，需要确保已正确将用户配置为使用该服务，同时你必须培训用户，使他们可以顺利地管理其自己的密码。 本文将解释以下概念：
 
@@ -122,11 +123,11 @@ ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
 2. 单击“用户”选项卡。
 3. 从列表中选择所需的用户。
 4. 在第一个选项卡上，可找到“备用电子邮件”，它可作为启用密码重置的属性使用。
-   
+
    ![][005]
 5. 单击“工作信息”选项卡。
 6. 在此页面上，可以看到“办公电话”、“移动电话”、“身份验证电话”和“身份验证电子邮件”。也可以将这些属性设置为允许用户重置其密码。  也可以将这些属性设置为允许用户重置其密码。
-   
+
    ![][006]
 
 若要了解如何使用上述每个属性，请参阅[密码重置使用的数据](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)。
@@ -140,7 +141,7 @@ ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
 <br/>
 <br/>
 
-## <a name="links-to-password-reset-documentation"></a>密码重置文档的链接
+## <a name="next-steps"></a>后续步骤
 以下是所有 Azure AD 密码重置文档页面的链接：
 
 * **你是否因登录时遇到问题而浏览至此？** 如果是这样， [可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
@@ -159,9 +160,4 @@ ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
 [005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -14,8 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: b8f146773989fa59c384aa28718c52a870b33616
-ms.openlocfilehash: 1b933d75f2b9ae9e917b61fadfc0ed4f9f6e41cf
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: 798717eca5180e445b14351bbfc694ed206ee9dc
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -24,7 +25,8 @@ ms.openlocfilehash: 1b933d75f2b9ae9e917b61fadfc0ed4f9f6e41cf
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-getstarted-create-dnszone-portal.md)
 > * [PowerShell](dns-getstarted-create-dnszone.md)
-> * [Azure CLI](dns-getstarted-create-dnszone-cli.md)
+> * [Azure CLI 1.0](dns-getstarted-create-dnszone-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-getstarted-create-dnszone-cli.md)
 
 本文将逐步引导完成使用 Azure PowerShell 创建 DNS 区域的步骤。 也可使用跨平台的 [Azure CLI](dns-getstarted-create-dnszone-cli.md) 或 [Azure 门户](dns-getstarted-create-dnszone-portal.md)创建 DNS 记录。
 
@@ -105,9 +107,4 @@ contoso.com
 ## <a name="next-steps"></a>后续步骤
 
 创建 DNS 区域后，[创建记录集和记录](dns-getstarted-create-recordset.md)为 Internet 域创建 DNS 记录。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

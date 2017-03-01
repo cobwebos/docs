@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: a8e6423020fc0b669aad2bc48198c1df84db4dd2
-ms.openlocfilehash: 18de4326edef50953c972e17cc9e75ea85a1fb82
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 42db903244e5642dbf273e71994d402f8aeda1e9
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/17/2017
 如果希望 Azure Active Directory 实例中有面向用户的 Office 365 订阅或已安装 Office 365 帐户但未安装 Azure 帐户，请参阅[使用 Office 365 帐户注册 Azure](billing-use-existing-office-365-account-azure-subscription.md)。 
 
 ## <a name="before-you-begin"></a>开始之前
-* 必须具有 Azure 订阅服务管理员凭据。 共同管理员帐户无法执行本文中的某些步骤。 若要更改服务管理员，请参阅[如何添加或更改 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md#how-to-change-service-administrator-for-a-subscription)。
+* 必须具有 Azure 订阅服务管理员凭据。 共同管理员帐户无法执行本文中的某些步骤。 若要更改服务管理员，请参阅[如何添加或更改 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)。
 * 必须具有 Office 365 租户的全局管理员凭据。
 * 服务管理员的电子邮件地址不能在 Office 365 租户中。
 * 服务管理员的电子邮件地址不能与 Office 365 租户的任何全局管理员的电子邮件地址匹配。

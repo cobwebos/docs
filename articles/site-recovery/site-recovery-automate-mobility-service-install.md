@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: krnese
 translationtype: Human Translation
-ms.sourcegitcommit: efacf5d10b80fbeea7bd3d2569d878bd8bfa002b
-ms.openlocfilehash: ac6b72bbb70f838493a7e4857217f7c0e669841c
+ms.sourcegitcommit: 2b9a8b5d7b889926f1cdbb6787fea1579dd21190
+ms.openlocfilehash: 941bc07fa9be765403e8fe541caf660eef15585e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -510,10 +511,5 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 ```
 
 ## <a name="next-steps"></a>后续步骤
-部署移动服务代理以后，即可为虚拟机[启用复制](site-recovery-vmware-to-azure.md#step-6-replicate-applications)。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+部署移动服务代理以后，即可为虚拟机[启用复制](site-recovery-vmware-to-azure.md#enable-replication)。
 

@@ -13,18 +13,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 02/27/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 7e10f4d051a484965c7d58de6351dd357aa64c0f
-ms.openlocfilehash: 0c0e682c79a6a25ac29760f649a832f22f39e8b5
+ms.sourcegitcommit: 8078f9822b392af09e00e9bf1e448e0a51994e11
+ms.openlocfilehash: 15707a71500424e4776adc80491af95b57bea222
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="automate-azure-documentdb-account-management-using-azure-powershell"></a>使用 Azure Powershell 自动管理 Azure DocumentDB 帐户
 > [!div class="op_single_selector"]
 > * [Azure 门户](documentdb-create-account.md)
-> * [Azure CLI 和 ARM](documentdb-automation-resource-manager-cli.md)
+> * [Azure CLI 1.0](documentdb-automation-resource-manager-cli-nodejs.md)
+> * [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 > * [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 
 以下指南介绍了使用 Azure Powershell 自动管理 DocumentDB 数据库帐户的命令。 还介绍了用于管理[多区域数据库帐户][scaling-globally]中的帐户密钥和故障转移优先级的命令。 更新数据库帐户可以修改一致性策略以及添加/删除区域。 对于 DocumentDB 数据库帐户的跨平台管理，可使用 [Azure CLI](documentdb-automation-resource-manager-cli.md)、[资源提供程序 REST API][rp-rest-api] 或 [Azure 门户](documentdb-create-account.md)。
@@ -190,8 +192,3 @@ ms.openlocfilehash: 0c0e682c79a6a25ac29760f649a832f22f39e8b5
 [azure-resource-groups]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups
 [azure-resource-tags]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags
 [rp-rest-api]: https://docs.microsoft.com/en-us/rest/api/documentdbresourceprovider/
-
-
-<!--HONumber=Dec16_HO3-->
-
-

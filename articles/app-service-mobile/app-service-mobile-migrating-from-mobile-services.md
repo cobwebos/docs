@@ -4,7 +4,7 @@ description: "了解如何轻松将移动服务应用程序迁移到应用服务
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 029a2b03d29fa581373328489678ad5039daba47
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: d5bceb8dd53850f0f11be05be2d5e5d3fbd01c5d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -37,7 +38,7 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 * 内置的 DevOps 工具，包括[过渡槽]、回滚和生产环境内测试。
 * [自动缩放]、负载平衡和[性能监视]。
 
-有关 Azure 应用服务优点的详细信息，请参阅 [移动服务和应用服务] 主题。
+有关 Azure 应用服务优点的详细信息，请参阅 [Mobile Services vs.App Service]（移动服务与应用服务的比较）主题。
 
 ## <a name="a-namebefore-you-beginabefore-you-begin"></a><a name="before-you-begin"></a>准备工作
 在站点上开始任何主要任务之前，应该先备份移动服务脚本和 SQL 数据库。
@@ -380,7 +381,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 [Azure App Service部署文档]: ../app-service-web/web-sites-deploy.md
 [Azure 经典门户]: https://manage.windowsazure.com
 [Azure 门户]: https://portal.azure.com
-[Azure 区域]: https://azure.microsoft.com/en-us/regions/
+[Azure Region]: https://azure.microsoft.com/en-us/regions/
 [Azure 计划程序计划]: ../scheduler/scheduler-plans-billing.md
 [连续部署]: ../app-service-web/app-service-continuous-deployment.md
 [转换混合命名空间]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
@@ -391,7 +392,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 [混合连接]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [日志记录]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [移动应用 Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
-[移动服务和应用服务]: app-service-mobile-value-prop-migration-from-mobile-services.md
+[Mobile Services vs.App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [通知中心]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [性能监视]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
@@ -400,9 +401,4 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 [XDT 转换示例]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [函数]: ../azure-functions/functions-overview.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

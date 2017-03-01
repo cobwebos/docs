@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: e1e30e34e696b499c17656535d71fc6eb0a987ba
-ms.openlocfilehash: ebde5715ff595b8b76d2500e445f4e51a21cce0e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 89a54a83e6708da8e7fd91923c3ef71d8371f8f3
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -254,7 +254,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 
 ### <a name="run-a-test-failover"></a>运行测试故障转移
 1. 在“**恢复计划**”选项卡上，选择该计划并单击“**测试故障转移**”。
-2. 在“**确认测试故障转移**”页面上，选择“**无**”。 请注意，当启用了此选项时，故障转移后的副本虚拟机不会连接到任何网络。 这将测试虚拟机是否按预期进行故障转移，但是不会测试你的复制网络环境。 有关如何使用不同网络选项的详细信息，请查看[如何运行测试故障转移](site-recovery-failover.md#run-a-test-failover)。
+2. 在“**确认测试故障转移**”页面上，选择“**无**”。 请注意，当启用了此选项时，故障转移后的副本虚拟机不会连接到任何网络。 这将测试虚拟机是否按预期进行故障转移，但是不会测试你的复制网络环境。 有关如何使用不同网络选项的详细信息，请查看[如何运行测试故障转移](site-recovery-failover.md)。
 3. 将在副本虚拟机所在的同一主机上创建测试虚拟机。 它将被添加到副本虚拟机所在的同一个云中。
 
 ### <a name="run-a-recovery-plan"></a>运行恢复计划

@@ -15,8 +15,9 @@ ms.workload: tbd
 ms.date: 01/19/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd12e72ead38aa73b9abf960624755a05720b00
-ms.openlocfilehash: ea973dab1ec68324b24d067e7e07868983a5b151
+ms.sourcegitcommit: f236f6f2155e1bf7471eba8aedea5b77bb5995d0
+ms.openlocfilehash: fd86979339b0ff661dcc6447585ca594b680911d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -82,7 +83,6 @@ Microsoft Azure 支持两种队列机制：**存储队列**和**服务总线队�
 
 ### <a name="additional-information"></a>其他信息
 * 存储队列中的消息通常是先进先出的，但有时其顺序可能会颠倒。例如，当消息的可见性超时持续时间到期时（例如，由于客户端应用程序在处理过程中崩溃），就会发生这种情况。 当可见性超时到期时，消息会再次变成在队列上可见，让另一个工作线程能够取消它的排队。 此时，重新变成可见的消息可以放置在队列中（可以再次取消其排队），位于原先排在它后面的消息之后。
-* 如果你已经在使用 Azure 存储 Blob 或表，然后开始使用队列，则可保证 99.9% 的可用性。 如果你将 Blob 或表与服务总线队列结合使用，则可用性将会降低。
 * 服务总线队列中有保障的 FIFO 模式要求使用消息传送会话。 处理以“扫视与锁定”模式接收的消息时，如果应用程序发生崩溃，则当下次队列接收者接受消息传送会话时，它将在失败消息的生存时间 (TTL) 期限过期后开始传递此消息。
 * 存储队列可支持标准队列方案，例如解除应用程序组件之间的关联，增加可伸缩性和容错能力、进行负载分级，以及生成过程工作流。
 * 服务总线队列支持“至少一次”传递保障。 此外，可以通过使用会话状态来存储应用程序状态，并通过使用事务自动接收消息和更新会话状态，从而支持“最多一次”语义。
@@ -200,10 +200,5 @@ Microsoft Azure 支持两种队列机制：**存储队列**和**服务总线队�
 * [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)（了解 Azure 存储计费 - 带宽、事务和容量）
 
 [Azure portal]: https://portal.azure.com
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

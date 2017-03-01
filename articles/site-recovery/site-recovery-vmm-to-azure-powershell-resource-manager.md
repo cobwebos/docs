@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure Site Recovery 和 PowerShell 复制 VMM 中的 Hyper-V VM (Resource Manager) | Microsoft 文档"
+title: "使用 Azure Site Recovery 和 PowerShell 复制 VMM 云中的 Hyper-V 虚拟机 (Resource Manager) | Microsoft 文档"
 description: "使用 Azure Site Recovery 和 PowerShell 复制 VMM 云中的 Hyper-V 虚拟机"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 19/01/2017
+ms.date: 02/02/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
-ms.openlocfilehash: 7159ea10e05dd6cc9ffd170719fecdb87421515c
+ms.sourcegitcommit: 2c070a6f46e41023ecd2ff7fb5c39b0d021aaef0
+ms.openlocfilehash: 0a900d4ddf6a751a4bf54720d3b62cf9e59e0a71
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -58,7 +59,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 * 你将需要一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 如果没有帐户，可先创建一个[免费帐户](https://azure.microsoft.com/free)。 此外，可以阅读 [Azure Site Recovery Manager pricing](https://azure.microsoft.com/pricing/details/site-recovery/)（Azure Site Recovery Manager 定价）。
 * 若要复制到 CSP 订阅方案，需要一个 CSP 订阅。 若要详细了解 CSP 计划，请参阅[如何注册 CSP 计划](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx)。
 * 需要使用一个 Azure v2 存储 (Resource Manager) 帐户来存储复制到 Azure 的数据。 需要为帐户启用地域复制。 该帐户应位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅或 CSP 订阅相关联。 若要详细了解如何设置 Azure 存储，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
-* 需确保要保护的虚拟机符合 [Azure 虚拟机先决条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)。
+* 需确保要保护的虚拟机符合 [Azure 虚拟机先决条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
 
 > [!NOTE]
 > 目前只能通过 Powershell 执行 VM 级别的操作。 很快将提供对恢复计划级别操作的支持。  现在，你只能在“受保护的 VM”粒度执行故障转移，而不能在恢复计划级别执行。
@@ -132,7 +133,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步骤 3：设置恢复服务保管库上下文
 
 通过运行以下命令设置保管库上下文。
-   
+
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
 ## <a name="step-4-install-the-azure-site-recovery-provider"></a>步骤 4：安装 Azure Site Recovery 提供者
@@ -166,7 +167,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 ## <a name="step-5-create-an-azure-storage-account"></a>步骤 5：创建 Azure 存储帐户
 
 如果你没有 Azure 存储帐户，请运行以下命令，在与保管库相同的地区创建一个启用异地复制的帐户：
-   
+
         $StorageAccountName = "teststorageacc1"    #StorageAccountname
         $StorageAccountGeo  = "Southeast Asia"     
         $ResourceGroupName =  “myRG”             #ResourceGroupName
@@ -243,7 +244,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
  注意以下事项：
 
-* 虚拟机必须满足 Azure 要求。 可以在规划指南中的[先决条件和支持](site-recovery-best-practices.md)中查看这些要求。
+* 虚拟机必须满足 Azure 要求。 可以在规划指南中的[先决条件和支持](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)中查看这些要求。
 * 若要启用保护，必须为虚拟机设置操作系统和操作系统磁盘属性。 当你使用虚拟机模板在 VMM 中创建虚拟机时，可以设置属性。 也可以在虚拟机属性的“常规”和“硬件配置”选项卡中为现有虚拟机设置这些属性。 如果未在 VMM 中设置这些属性，可以在 Azure Site Recovery 门户中配置它们。
 
 1. 若要启用保护，请运行以下命令以获取保护容器：
@@ -307,9 +308,4 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解](https://msdn.microsoft.com/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

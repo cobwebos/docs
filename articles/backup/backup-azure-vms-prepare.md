@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/20/2016
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: cbd7e36c5ef5c78b38a2cc7791b442cac1711b95
-ms.openlocfilehash: 92e8e25abc047811fc0ff45f424bd1b97a045e1f
+ms.sourcegitcommit: f517a649a6c6aa65b350767bc66cf4d60c7988b5
+ms.openlocfilehash: 9a114e954d59dcecaf3310e024428770bc4a2349
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -84,7 +85,7 @@ ms.openlocfilehash: 92e8e25abc047811fc0ff45f424bd1b97a045e1f
 6. 单击“**创建保管库**”。 创建备份保管库可能需要一段时间。 可以在门户底部监视状态通知。
 
     ![创建保管库 toast 通知](./media/backup-azure-vms-prepare/creating-vault.png)
-7. 一条消息将确认已成功创建保管库。 该保管库将在“**恢复服务**”页中以“**活动**”状态列出。 确保在创建保管库后立即选择适当的存储冗余选项。 阅读有关[在备份保管库中设置存储冗余选项](backup-configure-vault.md#step-1-create-a-recovery-services-vault)的更多内容。
+7. 一条消息将确认已成功创建保管库。 该保管库将在“**恢复服务**”页中以“**活动**”状态列出。 确保在创建保管库后立即选择适当的存储冗余选项。 阅读有关[在备份保管库中设置存储冗余选项](backup-configure-vault.md#create-a-recovery-services-vault)的更多内容。
 
     ![备份保管库列表](./media/backup-azure-vms-prepare/backup_vaultslist.png)
 8. 单击备份保管库将转到“**快速启动**”页，其中会显示 Azure 虚拟机的备份说明。
@@ -231,9 +232,4 @@ VM 代理已存在于从 Azure 库创建的 VM 中。 但是，从本地数据�
 * [备份虚拟机](backup-azure-vms.md)
 * [规划 VM 备份基础结构](backup-azure-vms-introduction.md)
 * [管理虚拟机备份](backup-azure-manage-vms.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 26c492ebdb40bef23247487c2f3015ecd9314cb6
+ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
+ms.openlocfilehash: 9afbae9b7c24c72cbb2ef64e693f7a317dc81a46
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -61,7 +62,7 @@ ms.openlocfilehash: 26c492ebdb40bef23247487c2f3015ecd9314cb6
 通常会在一段时间内调用获取建议。 在这时间段内，可以将用法数据重定向到机器学习建议系统，这会将此数据添加到指定的模型容器。 当拥有足够的用法数据时，可以生成新的建议模型，其中包含其他用法数据。 
 
 ## <a name="prerequisites"></a>先决条件
-* Visual Studio 2013
+* Visual Studio 2013 或更高版本
 * Internet 访问权限 
 * 订阅建议 API (https://datamarket.azure.com/dataset/amla/recommendations)。
 
@@ -90,10 +91,5 @@ ms.openlocfilehash: 26c492ebdb40bef23247487c2f3015ecd9314cb6
 
 ## <a name="disclaimer"></a>免责声明
 示例应用不应在生产环境中运行。 目录中提供的数据非常小，并且它将不会提供有意义的建议模型。 提供的数据作为演示之用。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

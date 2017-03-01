@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
-ms.openlocfilehash: a7771c2cee3f2820db014a4e5e8620442eea3dd1
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: c8e130f8adbad040fd06fde89156ca6201d18ea6
+ms.openlocfilehash: 5d85602de4eb4cd4ddadc31a83dac34d3487f54d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -81,7 +81,6 @@ ms.lasthandoff: 02/21/2017
 * CDN
 * 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
 * 认知服务
-* 容器服务
 * 内容审查器
 * 数据目录
 * Data Factory
@@ -128,6 +127,7 @@ ms.lasthandoff: 02/21/2017
 * 应用程序网关
 * Application Insights
 * BizTalk 服务
+* 容器服务
 * Express Route
 * 开发测试实验室 - 支持移到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS

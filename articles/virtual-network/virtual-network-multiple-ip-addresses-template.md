@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3eda8b459b5f095a40c6ea1ed355472daf23a6e3
-ms.openlocfilehash: ae5c430e702b561ddf156aa29016cfec6a0a8153
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 080404a7b4fde0e2fd8b8be407090190d07c6f2a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -122,7 +123,7 @@ ms.openlocfilehash: ae5c430e702b561ddf156aa29016cfec6a0a8153
 
     不管选择哪个选项来部署模板，都必须为本文[参数](#parameters)部分列出的参数提供值。 如果选择使用参数文件提供参数，请将[参数文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)的内容从 GitHub 复制到计算机上的新文件中。 修改文件中的值。 使用所创建的文件作为 `-TemplateParameterFile` 参数的值。
     
-    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#powershell)一文中的步骤。
+    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)一文中的步骤。
 
     >[!TIP]
     >如果不确定 dnslabelprefix 是否可用，请输入 `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` 命令进行查找。 如果可用，该命令会返回 `True`。
@@ -157,14 +158,9 @@ ms.openlocfilehash: ae5c430e702b561ddf156aa29016cfec6a0a8153
 
     不管选择哪个选项来部署模板，都必须为本文[参数](#parameters)部分列出的参数提供值。 如果选择使用参数文件提供参数，请将[参数文件](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)的内容从 GitHub 复制到计算机上的新文件中。 修改文件中的值。 使用所创建的文件作为 `--parameters-file` (-e) 参数的值。
     
-    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#azure-cli-10)一文中的步骤。
+    若要确定 OSVersion、ImagePublisher 和 imageOffer 参数的有效值，请完成[导航并选择 Windows VM 映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)一文中的步骤。
 
 3. 部署 VM 后，连接到 VM 并将专用 IP 地址添加到部署的操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分的步骤即可。 请勿向操作系统添加公共 IP 地址。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

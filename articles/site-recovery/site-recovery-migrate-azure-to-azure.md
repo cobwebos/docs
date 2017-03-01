@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 892c42cf28ef1861f9422c8bcabcbc229c6033b0
-ms.openlocfilehash: 794cfa21f46981c031217687f591c35a4706ae8b
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 501e5e8501c6106ba2e51b3523332fd224a5a142
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -46,13 +47,8 @@ ms.openlocfilehash: 794cfa21f46981c031217687f591c35a4706ae8b
 4. [设置复制设置](site-recovery-vmware-to-azure.md#set-up-replication-settings)。 创建复制策略并分配到配置服务器。
 5. [安装移动服务](site-recovery-vmware-to-azure.md#prepare-vms-for-replication)。 你要保护的每个虚拟机需要安装移动服务。 此服务将数据发送到进程服务器。 可以手动安装移动服务，也可以在启用了虚拟机保护后由进程服务器自动推送并安装。 要迁移的 VM 上的防火墙规则应配置为允许此服务的推送安装。
 6. [启用复制](site-recovery-vmware-to-azure.md#enable-replication)。 为需要迁移的虚拟机启用复制。 你可以使用虚拟机的 IP 地址发现要迁移到 Azure 的 IaaS 虚拟机。 在 Azure 中的虚拟机仪表板上找到此地址。 启用复制时，将 VM 的计算机类型设置为物理计算机。
-7. [运行非计划的故障转移](site-recovery-failover.md#run-an-unplanned-failover)。 初始复制完成之后，可以运行从一个 Azure 区域到另一个 Azure 区域的非计划的故障转移。 （可选）你可以创建一个恢复计划并运行非计划的故障转移，在区域之间迁移多个虚拟机。 [详细了解](site-recovery-create-recovery-plans.md)恢复计划。
+7. [运行非计划的故障转移](site-recovery-failover.md)。 初始复制完成之后，可以运行从一个 Azure 区域到另一个 Azure 区域的非计划的故障转移。 （可选）你可以创建一个恢复计划并运行非计划的故障转移，在区域之间迁移多个虚拟机。 [详细了解](site-recovery-create-recovery-plans.md)恢复计划。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解其他复制方案，请参阅[什么是 Azure Site Recovery？](site-recovery-overview.md)
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 
