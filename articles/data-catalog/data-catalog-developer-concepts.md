@@ -18,6 +18,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 9591d7e2dd743e44d228205163ad55cb47992283
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -123,7 +124,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td>说明</td><td></td><td></td><td>此属性包含资产的说明。 系统的每个用户都可添加自己的说明。  只允许该用户编辑描述对象。  （管理员和资产所有者可删除描述对象，但无法编辑它）。 系统会单独维护用户的说明。  因此每个资产上都有一个说明的数组：为每个对资产贡献知识的用户提供的数组和一个包含派生自数据源的信息的数组（可能具有）。</td></tr>
 <tr><td></td><td>description</td><td>字符串</td><td>资产的简短说明（2-3 行）</td></tr>
 
-<tr><td>标记</td><td></td><td></td><td>此属性定义资产的标记。 系统的每个用户都可为资产添加多个标记。。  只有创建了标记对象的用户可以编辑它们。  （管理员和资产所有者可删除标记对象，但无法编辑它）。 系统会单独维护用户的标记。  这样，每个资产都会有一个标记对象的数组。</td></tr>
+<tr><td>标记</td><td></td><td></td><td>此属性定义资产的标记。 系统的每个用户都可为资产添加多个标记。  只有创建了标记对象的用户可以编辑它们。  （管理员和资产所有者可删除标记对象，但无法编辑它）。 系统会单独维护用户的标记。  这样，每个资产都会有一个标记对象的数组。</td></tr>
 <tr><td></td><td>标记</td><td>字符串</td><td>描述资产的标记。</td></tr>
 
 <tr><td>FriendlyName（“friendlyName”）</td><td></td><td></td><td>此属性包含资产的友好名称。 FriendlyName 是单一批注 - 仅可向一个资产添加一个 FriendlyName。  只有创建 FriendlyName 对象的用户可以编辑它。 （管理员和资产所有者可删除 FriendlyName 对象，但无法编辑它）。 系统会单独维护用户的友好名称。</td></tr>
@@ -359,9 +360,4 @@ ChangeOwnership、ChangeVisibility、ViewPermissions</td></tr><tr><td>参与者<
 
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

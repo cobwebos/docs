@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 568bd06d1dfd0e253b960dcf2fb5409a390da91b
 ms.openlocfilehash: 2116abf974974c285d94d673b6a614360edbc593
+ms.lasthandoff: 11/30/2016
 
 
 ---
@@ -49,16 +50,11 @@ ms.openlocfilehash: 2116abf974974c285d94d673b6a614360edbc593
 
 ![Azure 门户中的产品 ID 详细信息](./media/virtual-machines-windows-client-images/offer_id_azure_portal.png) 
 
-也可以从 Azure 帐户门户的“订阅”选项卡查看产品 ID：[](http://account.windowsazure.com/Subscriptions)
+也可以从 Azure 帐户门户的 [订阅](http://account.windowsazure.com/Subscriptions) 选项卡查看产品 ID：
 
 ![Azure 帐户门户中的产品 ID 详细信息](./media/virtual-machines-windows-client-images/offer_id_azure_account_portal.png) 
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以使用 [PowerShell](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、[Resource Manager 模板](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或 [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) 部署 VM。
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 
