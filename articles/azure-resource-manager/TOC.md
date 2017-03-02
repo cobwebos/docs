@@ -17,6 +17,7 @@
 ### [创作模板](resource-group-authoring-templates.md)
 ### [模板函数](resource-group-template-functions.md)
 ### [定义资源之间的依赖关系](resource-group-define-dependencies.md)
+### [设置子资源名称和类型](resource-manager-template-child-resource.md)
 ### [创建资源类型的多个实例](resource-group-create-multiple.md)
 ### [在部署期间传递安全值](resource-manager-keyvault-parameter.md)
 ### [链接到其他模板](resource-group-linked-templates.md)
@@ -71,8 +72,3 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [服务更新](https://azure.microsoft.com/updates/?product=azure-resource-manager)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

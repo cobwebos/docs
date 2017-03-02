@@ -63,6 +63,7 @@
 ### [HDInsight MapReduce 活动](data-factory-map-reduce.md)
 ### [HDInsight Streaming 活动](data-factory-hadoop-streaming-activity.md)
 ### [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+### [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 ### [存储过程活动](data-factory-stored-proc-activity.md)
 ### [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 ### [.NET 自定义活动](data-factory-use-custom-activities.md)
@@ -99,8 +100,3 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
 ## [请求功能](https://feedback.azure.com/forums/270578-azure-data-factory)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

@@ -1,41 +1,29 @@
 ---
-title: "Azure 逻辑应用文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何开发逻辑应用，用于自动化及简化跨本地和云的业务工作流。 教程、模板和 API 参考。"
-services: logic-apps
-author: carolz
-manager: carolz
 layout: LandingPage
-ms.assetid: 
-ms.service: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
+description: "了解如何使用网络观察程序在网络级别监视和诊断状态。"
 translationtype: Human Translation
-ms.sourcegitcommit: a0bb42ad612c47111c946afe280e5ed0b3acc2a7
-ms.openlocfilehash: 02ea87d181ede4a0a2d5934b7875f335a25d6ce3
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 7b51e3df9aa449bb3fdabd28ce80ac9d4fd7a951
+ms.openlocfilehash: 3c390494f5e86eb82a3011b962217798feff5ca2
+ms.lasthandoff: 02/22/2017
 
 ---
+# <a name="azure-network-watcher-documentation"></a>Azure 网络观察程序文档
 
-# <a name="logic-apps-documentation"></a>逻辑应用文档
-
-了解如何开发逻辑应用，用于简化和集成云中的可缩放工作流。 教程、模板和 API 参考可帮助你设计及部署跨本地和云的自动化业务工作流。
+了解如何使用网络观察程序 - 用于在网络级别监视和诊断状态的服务。 教程、API 参考和其他文档介绍了如何使用数据包捕获、拓扑等工具来洞察 Azure 网络。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/logic-apps/logic-apps-what-are-logic-apps">
+        <a href="/azure/network-watcher/network-watcher-monitoring-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/logic-apps.svg" alt="" />
+                            <img src="media/index/network-watcher.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解逻辑应用</h3>
+                        <h3>了解网络观察程序</h3>
                     </div>
                 </div>
             </div>
@@ -43,7 +31,7 @@ ms.lasthandoff: 02/24/2017
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=network-watcher">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -53,7 +41,7 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>应用服务视频库</h3>
+                        <h3>网络观察程序视频库</h3>
                     </div>
                 </div>
             </div>
@@ -61,7 +49,7 @@ ms.lasthandoff: 02/24/2017
         </a>
     </li>
     <li>
-        <a href="/azure/logic-apps/logic-apps-create-a-logic-app">
+        <a href="/azure/network-watcher/network-watcher-packet-capture-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -71,15 +59,15 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始创建连接 SaaS 服务的新逻辑应用</h3>
+                        <h3>数据包捕获入门</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
-    <li>
-        <a href="/azure/logic-apps/logic-apps-arm-provision">
+    </li> 
+     <li>
+        <a href="/azure/network-watcher/network-watcher-security-group-view-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -89,7 +77,7 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始使用模板创建逻辑应用</h3>
+                        <h3>安全组视图入门</h3>
                     </div>
                 </div>
             </div>
@@ -97,7 +85,7 @@ ms.lasthandoff: 02/24/2017
         </a>
     </li>
     <li>
-        <a href="/azure/logic-apps/logic-apps-create-api-app">
+        <a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -107,13 +95,51 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>开始创建用于逻辑应用的自定义 API</h3>
+                        <h3>IP 流验证入门</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/network-watcher/network-watcher-next-hop-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>下一跃点入门</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   
+     <li>
+        <a href="/azure/network-watcher/network-watcher-topology-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>拓扑入门</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   
 </ul>
 
 ---
@@ -126,7 +152,7 @@ ms.lasthandoff: 02/24/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>命令行</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp">PowerShell</a></p>
+                        <p><a href="/powershell/azureps-cmdlets-docs/">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -137,10 +163,9 @@ ms.lasthandoff: 02/24/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>架构历史记录</h3>
-                        <p><a href="/azure/logic-apps/logic-apps-schema-2016-04-01">GA</a></p>
-                        <p><a href="/azure/logic-apps/logic-apps-schema-2015-08-01">预览</a></p>
-                   </div>
+                        <h3>语言</h3>
+                        <p><a href="/dotnet/api">.NET</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -151,9 +176,7 @@ ms.lasthandoff: 02/24/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/logic/definition-language">工作流定义语言</a></p>
-                        <p><a href="/rest/api/logic/actions-and-triggers">工作流操作和触发器</a></p>
-                        <p><a href="/rest/api/logic/">REST API 参考</a></p>
+                        <p><a href="/rest/api/networkwatcher">REST API 参考</a></p>
                     </div>
                 </div>
             </div>

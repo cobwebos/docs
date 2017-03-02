@@ -9,12 +9,31 @@
 ## [获取 Azure AD 租户](active-directory-howto-tenant.md)
 ## [注册 Azure AD Premium](active-directory-get-started-premium.md)
 ## [关联 Azure 订阅](active-directory-how-subscriptions-associated-directory.md)
-## [管理 AD 许可](active-directory-licensing-what-is.md)
+## 管理 Azure AD 许可
+### [Azure 门户](active-directory-licensing-get-started-azure-portal.md)
+### [经典门户](active-directory-licensing-what-is.md)
 ## [为组织获取 Azure](sign-up-organization.md)
 ## [常见问题](active-directory-faq.md)
 ## [SaaS 应用教程](active-directory-saas-tutorial-list.md)
 
 # 如何
+## 规划和设计
+### [部署混合标识解决方案](active-directory-hybrid-identity-design-considerations-overview.md)
+#### 确定要求
+##### [标识](active-directory-hybrid-identity-design-considerations-business-needs.md)
+##### [目录同步](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [多重身份验证](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [标识生命周期策略](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [数据安全性规划](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [数据保护](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [内容管理](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [访问控制](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [事件响应](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+#### 规划标识生命周期
+##### [任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [采用策略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [后续步骤](active-directory-hybrid-identity-design-considerations-nextsteps.md)
+#### [工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 ## 管理用户
 ### 添加用户
 #### [Azure 门户](active-directory-users-create-azure-portal.md)
@@ -47,17 +66,26 @@
 ### 创建高级规则
 #### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
 #### [经典门户](active-directory-accessmanagement-groups-with-advanced-rules.md)
+### [基于组的许可](active-directory-licensing-whatis-azure-portal.md)
+#### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
+#### [识别和解决组的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [如何将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
+#### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 ### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
 ### [故障排除](active-directory-accessmanagement-troubleshooting.md)
 
-## [查看活动和安全报告](active-directory-view-access-usage-reports.md)
-### [Azure AD 报告](active-directory-reporting-getting-started.md)
+## [查看活动报告](active-directory-view-access-usage-reports.md)
+### [登录](active-directory-reporting-activity-sign-ins.md)
+### [审核日志](active-directory-reporting-activity-audit-logs.md)
+### [有风险的用户](active-directory-reporting-security-user-at-risk.md)
+### [有风险的登录](active-directory-reporting-security-risky-sign-ins.md)
 ### [常见问题](active-directory-reporting-faq.md)
 ### [报告迁移](active-directory-reporting-migration.md)
-
 ### [已知网络](active-directory-known-networks.md)
 
-### [报告指南](active-directory-reporting-guide.md)
+### 经典门户
+#### [Azure AD 报告](active-directory-reporting-getting-started.md)
+#### [报告指南](active-directory-reporting-guide.md)
 #### [预览](active-directory-reporting-azure-portal.md)
 #### [API](active-directory-reporting-api-getting-started.md)
 ##### [审核参考](active-directory-reporting-api-audit-reference.md)
@@ -65,20 +93,18 @@
 ##### [先决条件](active-directory-reporting-api-prerequisites.md)
 ##### [登录参考](active-directory-reporting-api-sign-in-activity-reference.md)
 ##### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
-
-
 #### [审核事件](active-directory-reporting-audit-events.md)
 #### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies.md)
 #### [通知](active-directory-reporting-notifications.md)
-### 了解报表
-#### [异常登录](active-directory-reporting-irregular-sign-in-activity.md)
-#### [多次失败](active-directory-reporting-sign-ins-after-multiple-failures.md)
-#### [可疑 IP 地址](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
-#### [多个地理区域](active-directory-reporting-sign-ins-from-multiple-geographies.md)
-#### [可能受感染的设备](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
-#### [未知源](active-directory-reporting-sign-ins-from-unknown-sources.md)
-#### [异常登录](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
+#### 了解报表
+##### [异常登录](active-directory-reporting-irregular-sign-in-activity.md)
+##### [多次失败](active-directory-reporting-sign-ins-after-multiple-failures.md)
+##### [可疑 IP 地址](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
+##### [多个地理区域](active-directory-reporting-sign-ins-from-multiple-geographies.md)
+##### [可能受感染的设备](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
+##### [未知源](active-directory-reporting-sign-ins-from-unknown-sources.md)
+##### [异常登录](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [管理密码](active-directory-manage-passwords.md)
 ### [更新自己的密码](active-directory-passwords-update-your-own-password.md)
@@ -99,9 +125,11 @@
 #### [故障排除](active-directory-passwords-troubleshoot.md)
 
 ## 管理设备
+### [注册设备](active-directory-conditional-access-device-registration-overview.md)
+#### [管理自动注册](active-directory-conditional-access-automatic-device-registration.md)
+#### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
 ### [注册设备](active-directory-azureadjoin-personal-device.md)
 ### [注册 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
-
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [规划](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [设置设备注册](active-directory-azureadjoin-setup.md)
@@ -176,6 +204,7 @@
 ### [文档库](active-directory-apps-index.md)
 
 ## 管理目录
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### 自定义域名
 #### [概述](active-directory-add-domain-concepts.md)
 #### 添加域名
@@ -249,10 +278,6 @@
 ### [条件性访问](active-directory-conditional-access.md)
 #### [入门](active-directory-conditional-access-azuread-connected-apps.md)
 #### [支持的应用](active-directory-conditional-access-supported-apps.md)
-#### [注册设备](active-directory-conditional-access-device-registration-overview.md)
-#### [管理自动注册](active-directory-conditional-access-automatic-device-registration.md)
-##### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
-#### [管理验证器应用](active-directory-conditional-access-azure-authenticator-app.md)
 #### [了解设备策略](active-directory-conditional-access-device-policies.md)
 #### [设置对已连接应用的访问权限](active-directory-conditional-access-policy-connected-applications.md)
 #### [本地部署](active-directory-conditional-access-on-premises-setup.md)
@@ -274,27 +299,12 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [在 Azure VM 上部署](virtual-networks-windows-server-active-directory-virtual-machines.md)
+## [在 Azure VM 上部署 AD DS](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Azure VM 上的 Windows Server Active Directory](active-directory-deploying-ws-ad-guidelines.md)
 ### [Azure 虚拟网络中的副本域控制器](active-directory-install-replica-active-directory-domain-controller.md)
 ### [在 Azure 虚拟网络中新建林](active-directory-new-forest-virtual-machine.md)
 
-## [部署混合标识解决方案](active-directory-hybrid-identity-design-considerations-overview.md)
-### 确定要求
-#### [标识](active-directory-hybrid-identity-design-considerations-business-needs.md)
-#### [目录同步](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-#### [多重身份验证](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-#### [标识生命周期策略](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-### [数据安全性规划](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-#### [数据保护](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-#### [内容管理](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-#### [访问控制](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-#### [事件响应](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
-### 规划标识生命周期
-#### [任务](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-#### [采用策略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-### [后续步骤](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-### [工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+
 
 ## [在 Azure 中部署 AD FS](active-directory-aadconnect-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
@@ -323,8 +333,3 @@
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Azure 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

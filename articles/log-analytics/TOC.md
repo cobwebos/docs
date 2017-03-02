@@ -16,7 +16,7 @@
 #### [Windows 代理](log-analytics-windows-agents.md)
 #### [Linux 代理](log-analytics-linux-agents.md)
 #### [Azure 虚拟机](log-analytics-azure-vm-extension.md)
-#### [Azure 资源](log-analytics-azure-storage.md)
+#### [Azure 存储](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [配置管理器](log-analytics-sccm.md)
 #### [OMS 网关](log-analytics-oms-gateway.md)
@@ -31,8 +31,8 @@
 ## 查询数据
 ### [日志搜索概述](log-analytics-log-searches.md)
 ### [搜索参考](log-analytics-search-reference.md)
+#### [正则表达式](log-analytics-log-searches-regex.md)
 ### [计算机组](log-analytics-computer-groups.md)
-### [警报](log-analytics-alerts.md)
 ## 分析数据
 ### [仪表板](log-analytics-dashboards.md)
 ### [视图设计器](log-analytics-view-designer.md)
@@ -42,6 +42,7 @@
 #### [AD 评估](log-analytics-ad-assessment.md)
 #### [AD 复制状态](log-analytics-ad-replication-status.md)
 #### [警报管理](log-analytics-solution-alert-management.md)
+#### [Azure SQL Analytics](log-analytics-azure-sql.md)
 #### [容量管理](log-analytics-capacity.md)
 #### [更改跟踪](log-analytics-change-tracking.md)
 #### [容器](log-analytics-containers.md)
@@ -60,6 +61,15 @@
 #### [VMware](log-analytics-vmware.md)
 #### [传输数据](log-analytics-wire-data.md)
 #### [SCOM 评估](log-analytics-scom-assessment.md)
+## 创建警报
+### [了解警报](log-analytics-alerts.md)
+### [警报操作](log-analytics-alerts-actions.md)
+### 创建警报规则
+#### [OMS 门户](log-analytics-alerts-creating.md)
+#### [REST API](log-analytics-api-alerts.md)
+#### [Resource Manager 模板](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)
+### [Webhook 操作示例](log-analytics-alerts-webhooks.md)
+### [警报管理解决方案](log-analytics-solution-alert-management.md)
 ## 开发
 ### [数据收集器 API](log-analytics-data-collector-api.md)
 ### [PowerShell cmdlets](log-analytics-powershell-workspace-configuration.md)
@@ -75,8 +85,3 @@
 ## [升级分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 ## [定价](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=log-analytics)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

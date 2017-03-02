@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4736be260d3fa0ed7ec402959fd53604f55aceca
-ms.openlocfilehash: 8f0236c8ed237c473ee900feb68a3f86a6165106
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 540c213b1228b11fe3c4f77026d71829d16e04d1
+ms.lasthandoff: 02/27/2017
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Linux 虚拟机文档
@@ -33,7 +34,7 @@ ms.openlocfilehash: 8f0236c8ed237c473ee900feb68a3f86a6165106
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 Azure CLI 2.0（预览版）创建 Linux VM</h3>
+                        <h3>使用 Azure CLI 2.0 创建 Linux VM</h3>
                     </div>
                 </div>
             </div>
@@ -142,10 +143,5 @@ ms.openlocfilehash: 8f0236c8ed237c473ee900feb68a3f86a6165106
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
