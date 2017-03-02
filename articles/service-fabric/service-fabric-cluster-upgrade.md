@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2016
+ms.date: 02/22/2017
 ms.author: chackdan
 translationtype: Human Translation
 ms.sourcegitcommit: 0231c3148d03ffef0a518a68bb79398462da2605
 ms.openlocfilehash: 89721efbb9f05871716ca1b16ad0d54eaf1ffd62
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -223,9 +224,4 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们将�
 [ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
 [Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
 [Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
