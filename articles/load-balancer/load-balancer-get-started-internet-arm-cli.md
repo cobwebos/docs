@@ -18,6 +18,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 002fa917e0cc17c34e0e617a28f2e21ba9b7e35f
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器
@@ -131,7 +132,7 @@ ms.openlocfilehash: 002fa917e0cc17c34e0e617a28f2e21ba9b7e35f
 2. 创建负载平衡器规则。
 
     ```azurecli
-        azure network lb rule create --resource-group nrprg nrplb --lb-name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
+        azure network lb rule create --resource-group nrprg --lb-name nrplb --name lbrule --protocol tcp --frontend-port 80 --backend-port 80 --frontend-ip-name NRPfrontendpool --backend-address-pool-name NRPbackendpool
     ```
 
 3. 创建运行状况探测器。
@@ -308,9 +309,4 @@ azure network lb delete --resource-group nrprg --name nrplb
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

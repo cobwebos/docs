@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b0c89d0839402130bc2badc5f33cd633a1e5b7da
+ms.sourcegitcommit: f5640d84774898e1c51c5dcfa52aab781cddf044
+ms.openlocfilehash: a94f88271d7b51a5cc78f9cd611dd824ee125227
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -109,12 +110,12 @@ ms.openlocfilehash: b0c89d0839402130bc2badc5f33cd633a1e5b7da
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，采用以下格式键入用户登录适用于 Microsoft Azure 的云管理门户应用程序时使用的 URL：`https://portal.igcm.com/<instance name>`
    
-    b. 单击“资源组名称” 的 Azure 数据工厂。
+    b. 单击“下一步”。
 4. 在“在适用于 Microsoft Azure 的云管理门户中配置单一登录”页中，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_05.png) 
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
+    a. 单击“下载证书”，然后将文件保存在计算机上。
    
     b. 单击“资源组名称” 的 Azure 数据工厂。
 5. 若要为应用程序配置 SSO，请联系适用于 Microsoft Azure 的云管理门户支持团队，将已下载的证书文件作为电子邮件附件发送至 [jczernuszka@newsignature.com](mailTo:jczernuszka@newsignature.com)。 另请提供颁发者 URL、SAML SSO URL 以及单一注销服务 URL，以便将其配置为可以进行 SSO 集成。
@@ -150,7 +151,7 @@ ms.openlocfilehash: b0c89d0839402130bc2badc5f33cd633a1e5b7da
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
-    c. 单击“资源组名称” 的 Azure 数据工厂。
+    c. 单击“下一步”。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-newsignature-tutorial/create_aaduser_06.png) 
@@ -163,7 +164,7 @@ ms.openlocfilehash: b0c89d0839402130bc2badc5f33cd633a1e5b7da
    
    d.单击“下一步”。 在“角色”列表中，选择“用户”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
+   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-newsignature-tutorial/create_aaduser_07.png) 
@@ -229,9 +230,4 @@ ms.openlocfilehash: b0c89d0839402130bc2badc5f33cd633a1e5b7da
 [203]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

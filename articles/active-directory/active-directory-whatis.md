@@ -12,24 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 02/23/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: c28d84bf59c161cfe6a80062f13f10f44bf43f34
-ms.openlocfilehash: 09261f739d2cd3976f68c499d0e83fe25beef0b8
+ms.sourcegitcommit: b40ae90ea313638cbd0b60792dc4803d3d08aa0a
+ms.openlocfilehash: 03c1442daf07f57476af64491229f1f38f6ffeff
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 Azure Active Directory (Azure AD) 是 Microsoft 提供的基于多租户云的目录和标识管理服务。
 
-对于 IT 管理员而言，Azure AD 提供经济实惠、易于使用的解决方案，使员工和业务合作伙伴能够使用单一登录 (SSO) 功能来访问[数千种云 SaaS 应用程序](http://blogs.technet.com/b/ad/archive/2014/09/03/50-saas-apps-now-support-federation-with-azure-ad.aspx)，例如 Office365、Salesforce.com、DropBox 和 Concur。
+对于 IT 管理员而言，Azure AD 提供经济实惠、易于使用的解决方案，使员工和业务合作伙伴能够使用单一登录 (SSO) 功能来访问[数千种云 SaaS 应用程序](active-directory-saas-tutorial-list.md)，例如 Office365、Salesforce.com、DropBox 和 Concur。
 
 对于应用程序开发人员而言，Azure AD 可让你专注于构建应用程序，快速方便地集成数百万个全球各地组织所用的一流标识管理解决方案。
 
 Azure AD 还包含整套标识管理功能，例如多重身份验证、设备注册、自助密码管理、自助组管理、特权帐户管理、基于角色的访问控制、应用程序使用情况监视、多样化审核以及安全监视和警报。 这些功能可以帮助保护基于云的应用程序的安全，简化 IT 流程，削减成本，以及确保实现公司的合规目标。
 
-此外，只需[单击四下](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx)，Azure AD 就能与现有的 Windows Server Active Directory 集成，使组织能够运用现有的本地标识管理系统投资来管理对基于云的 SaaS 应用程序的访问。
+此外，只需[单击四下](./connect/active-directory-aadconnect-get-started-express.md)，Azure AD 就能与现有的 Windows Server Active Directory 集成，使组织能够运用现有的本地标识管理系统投资来管理对基于云的 SaaS 应用程序的访问。
 
 如果你是 Office365、Azure 或 Dynamics CRM Online 的客户，你可能不知道自己已在使用 Azure AD。 每个 Office365、Azure 和 Dynamics CRM 租户实际上都已经是 Azure AD 租户。 每当有需要时，你就可以开始使用该租户来为 Azure AD 集成的其他数千种云应用程序管理访问权限！
 
@@ -58,86 +59,6 @@ Azure Active Directory (Azure AD) 和本地 Active Directory（Active Directory 
 AD DS 是 Windows Server 上的服务器角色，这意味着可将它部署在物理计算机或虚拟机上。 它具有基于 X.500 的层次结构。 它使用 DNS 查找对象，可使用 LDAP 与它交互，并且它主要使用 Kerberos 进行身份验证。 除了将计算机加入域之外，Active Directory 还启用组织单位 (OU) 和组策略对象 (GPO)，并在域之间创建信任。
 
 Azure AD 是多客户公共目录服务，这意味着可在 Azure AD 内为云服务器和应用程序（如 Office 365）创建租户。 在平面结构中创建用户和组，无需 OU 或 GPO 的。 通过协议（例如 SAML、WS 联合身份验证和 OAuth）执行身份验证。 可以查询 Azure AD，但必须使用称为 AD 图形 API 的 REST API 而不是使用 LDAP。 这些操作均通过 HTTP 和 HTTPS 运作。
-
-可以使用 Azure AD Connect 同步本地标识与 Azure AD。
-
----
-
-### <a name="authentication-and-authorization-details"></a>身份验证和授权的详细信息
-
-#### <a name="azure-ad"></a>Azure AD
-`SAML`、`WS-Federation`、与受支持的凭据交互、OAuth 2.0、OpenID Connect 
-
-#### <a name="on-premises-ad-ds"></a>本地 AD DS
-`SAML`、`WS-Federation`、NTLM、Kerberos、MD5、基本
-
----
-
-### <a name="object-repository-details"></a>对象存储库详细信息
-
-#### <a name="azure-ad"></a>Azure AD
-通过 Azure AD Graph 和 Microsoft Graph 访问 
-
-#### <a name="on-premises-ad-ds"></a>本地 AD DS
-X.500 LDAP  
-
----
-
-
-### <a name="programmatic-access-details"></a>以编程方式访问的详细信息
-
-#### <a name="azure-ad"></a>Azure AD
-MS/Azure AD Graph REST API 
-
-#### <a name="on-premises-ad-ds"></a>本地 AD DS
-LDAP 
-
----
-
-### <a name="sso-to-applications-details"></a>应用程序 SSO 详细信息
-
-#### <a name="azure-ad"></a>Azure AD
-`OpenID Connect`, `SAML` 
-
-#### <a name="on-premises-ad-ds"></a>本地 AD DS
-`Open-ID Connect`、`SAML`、WS 联合身份验证 
-
----
-
-### <a name="access-management-details"></a>访问管理详细信息
-
-#### <a name="azure-ad"></a>Azure AD
-资源定义作用域和基于角色的访问控制、客户端定义委托和应用程序权限、同意框架（根据资源/客户端定义/请求，强制相应用户/管理员同意） 
-
-通过应用角色，可以单独应用或通过组应用，其支持：管理员管理、自助服务应用程序访问、用户同意
-
-#### <a name="on-premises-ad-ds"></a>本地 AD DS
-通过 ACL，可以单独应用或通过组应用，其支持：管理员管理 
-
----
-
-### <a name="group-management-details"></a>组管理详细信息
-
-#### <a name="azure-ad"></a>Azure AD
-`Admin managed`、规则/动态管理、自助服务组管理 
-
-#### <a name="on-premises-ad-ds"></a>本地 AD DS
-`Admin managed`、规则/动态管理所需的外部系统（FIM 或其他）|
-
----
-
-### <a name="supported-credentials-details"></a>受支持凭据的详细信息
-
-#### <a name="azure-ad"></a>Azure AD
-`Username + password`, `Smartcard` 
-
-#### <a name="on-premises-ad-ds"></a>本地 AD DS
-`Username + password`, `Smartcard` 
- 
----
-
-
-
 
 
 
@@ -170,9 +91,4 @@ LDAP
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 * [什么是 Microsoft Azure Active Directory 许可？](active-directory-licensing-what-is.md)
 * [如何发现本组织中使用的未经许可的云应用](active-directory-cloudappdiscovery-whatis.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
