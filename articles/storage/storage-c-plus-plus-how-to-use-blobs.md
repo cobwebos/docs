@@ -3,7 +3,7 @@ title: "如何通过 C++ 使用 Blob 存储（对象存储）| Microsoft Docs"
 description: "使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 services: storage
 documentationcenter: .net
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: 53844120-1c48-4e2f-8f77-5359ed0147a4
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 1f87e40edc8b6ad8567f2409e6df435ed66f2bbc
 ms.openlocfilehash: 8571011cac1182a5bfdfe722c194fcd681712a02
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -55,8 +56,8 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 将以下 include 语句添加到 C++ 文件的顶部，你要在此使用 Azure 存储 API 来访问 blob：  
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/blob.h"
+include <was/storage_account.h>
+include <was/blob.h>
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
@@ -272,10 +273,5 @@ blockBlob.delete_blob();
 * [适用于 C++ 的存储客户端库参考](http://azure.github.io/azure-storage-cpp)
 * [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -28,6 +28,20 @@
 ### [应用商店应用](../app-service-web/web-sites-php-web-site-gallery.md)
 ### [PHP](../app-service-web/app-service-web-php-get-started.md)    
 
+# 常见示例
+## CLI 示例
+### [从 GitHub 创建 Web 应用并部署代码](./scripts/app-service-cli-deploy-github.md)
+### [从 GitHub 使用持续部署创建 Web 应用](./scripts/app-service-cli-continuous-deployment-github.md)
+### [从本地 Git 存储库创建 Web 应用并部署代码](./scripts/app-service-cli-deploy-local-git.md)
+### [创建 Web 应用并将代码部署到过渡环境](./scripts/app-service-cli-deploy-staging-environment.md)
+### [在 Docker 容器中创建 ASP.NET Core Web 应用](./scripts/app-service-cli-linux-docker-aspnetcore.md)
+### [将自定义域映射到 Web 应用](./scripts/app-service-cli-configure-custom-domain.md)
+### [手动缩放 Web 应用](./scripts/app-service-cli-scale-manual.md)
+### [缩放具有高可用性体系结构的全球 Web 应用](./scripts/app-service-cli-scale-high-availability.md)
+### [将 Web 应用连接到 SQL 数据库](./scripts/app-service-cli-app-service-sql.md)
+### [将 Web 应用连接到存储帐户](./scripts/app-service-cli-app-service-storage.md)
+### [使用 Web 服务器日志监视 Web 应用](./scripts/app-service-cli-monitor.md)
+
 # 如何
 
 ## 规划和设计
@@ -156,8 +170,3 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
 ## [服务更新](https://azure.microsoft.com/updates/?product=app-service) 
-
-
-<!--HONumber=Feb17_HO1-->
-
-

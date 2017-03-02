@@ -3,7 +3,7 @@ title: "针对 Microsoft Azure 存储使用 Java 的客户端加密 | Microsoft 
 description: "用于 Java 的 Azure 存储客户端库支持客户端加密以及与 Azure 密钥保管库集成以实现 Azure 存储空间应用程序的最佳安全性。"
 services: storage
 documentationcenter: java
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: 3df49907-554c-404a-9b0c-b3e3269ad04f
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 7e182ee18e3c2c12eb29f864dd875d764ca5d534
 ms.openlocfilehash: 116693fdb8a8fa0e332b74459f7827bbf44c9ed7
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -254,8 +255,3 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
   * [核心](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)程序包
   * [客户端](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)程序包
 * 访问 [Azure 密钥保管库文档](../key-vault/key-vault-whatis.md)
-
-
-<!--HONumber=Nov16_HO4-->
-
-

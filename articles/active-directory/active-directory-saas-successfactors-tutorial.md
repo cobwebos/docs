@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/17/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9a8d41dcfd51d298784b932184fc8d68a9877a65
-ms.openlocfilehash: 2406a3ba5576635e801f6218e03dd74352d15368
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: a0a101c34ffd4adb6816d9db8313d10b0ffbb3ae
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -229,7 +230,7 @@ ms.openlocfilehash: 2406a3ba5576635e801f6218e03dd74352d15368
    
     ![创建 Azure AD 测试用户][20]
    
-    a. 对于“用户类型”，选择“组织中的新用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
    
     b. 在“用户名”文本框中，键入“BrittaSimon”。
    
@@ -238,7 +239,7 @@ ms.openlocfilehash: 2406a3ba5576635e801f6218e03dd74352d15368
    
     ![创建 Azure AD 测试用户][21]
    
-    a. 在“名字”文本框中，键入“Britta”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
    
     b. 在“姓氏”文本框中，键入“Simon”。
    
@@ -254,7 +255,7 @@ ms.openlocfilehash: 2406a3ba5576635e801f6218e03dd74352d15368
    
     ![创建 Azure AD 测试用户][23]
    
-    a. 写下“新密码”的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
    
     b. 单击“完成”。  
 
@@ -329,9 +330,4 @@ ms.openlocfilehash: 2406a3ba5576635e801f6218e03dd74352d15368
 [27]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_09.png
 [28]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_10.png
 [29]: ./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_10.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

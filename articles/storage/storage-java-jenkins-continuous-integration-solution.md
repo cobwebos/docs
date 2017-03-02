@@ -3,7 +3,7 @@ title: "将 Azure 存储用于 Jenkins 持续集成解决方案 | Microsoft Docs
 description: "本教程演示如何使用 Azure Blob 服务作为 Jenkins 持续集成解决方案创建的生成项目的存储库。"
 services: storage
 documentationcenter: java
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: f4e5ca75-f6cb-4f74-981b-2aa06bb8de45
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 317b8d537465daf77c6feeb8fed927c72bdd7190
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -155,8 +156,3 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
 有关详细信息，另请参阅 [Java 开发人员中心](https://azure.microsoft.com/develop/java/)。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

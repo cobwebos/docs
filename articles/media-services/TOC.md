@@ -45,9 +45,17 @@
 
 ## [对内容进行编码](media-services-encode-asset.md)
 ### [比较编码器](media-services-compare-encoders.md)
-### [错误代码](media-services-encoding-error-codes.md)
 ### Media Encoder Standard (MES)
 #### [Media Encoder Standard 格式和编解码器](media-services-media-encoder-standard-formats.md)
+#### [使用 MES 自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)
+#### 使用 Media Encoder Standard 进行编码
+##### [门户](media-services-portal-encode.md)
+##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
+##### [REST](media-services-rest-encode-asset.md)
+#### [使用 MES 进行高级编码](media-services-advanced-encoding-with-mes.md)
+##### [自定义 Media Encoder Standard 预设](media-services-custom-mes-presets-with-dotnet.md)
+##### [如何使用 Media Encoder Standard 通过 .NET 来生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
+##### [使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)
 #### MES 架构
 ##### [Media Encoder Standard 架构](media-services-mes-schema.md)
 ##### [输入元数据](media-services-input-metadata-schema.md)
@@ -78,13 +86,6 @@
 ##### [H264 单比特率 720p (Android)](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md)
 ##### [H264 单比特率高品质 SD (Android)](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md)
 ##### [H264 单比特率低品质 SD (Android)](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md)
-#### 使用 Media Encoder Standard 进行编码
-##### [门户](media-services-portal-encode.md)
-##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
-##### [REST](media-services-rest-encode-asset.md)
-#### [使用 MES 进行高级编码](media-services-advanced-encoding-with-mes.md)
-##### [如何使用 Media Encoder Standard 通过 .NET 来生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
-##### [使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)
 ### 媒体编码器高级工作流
 #### [媒体编码器高级工作流格式和编解码器](media-services-premium-workflow-encoder-formats.md)
 #### 使用媒体编码器高级工作流进行编码
@@ -92,9 +93,11 @@
 ##### [媒体编码器高级工作流教程](media-services-media-encoder-premium-workflow-tutorials.md)
 ##### [使用工作流设计器创建高级编码工作流](media-services-workflow-designer.md)
 ##### [使用多个输入的高级工作流](media-services-media-encoder-premium-workflow-multiplefilesinput.md)
+### [创建生成 fMP4 区块的任务](media-services-generate-fmp4-chunks.md)
 ### 媒体处理器
 #### [.NET](media-services-get-media-processor.md)
 #### [REST](media-services-rest-get-media-processor.md)
+### [错误代码](media-services-encoding-error-codes.md)
 ### 已放弃
 #### [静态打包和加密](media-services-static-packaging.md)
 
@@ -215,8 +218,3 @@
 ## [定价](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure 媒体服务社区](media-services-community.md)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=media-services)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

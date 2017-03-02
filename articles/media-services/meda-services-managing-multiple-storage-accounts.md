@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 1a074e54204ff8098bea09eb4aa2066ccee47608
 ms.openlocfilehash: ab9e952027dcaa5b43cdad8faf8005b063c01dce
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -164,7 +165,7 @@ ms.openlocfilehash: ab9e952027dcaa5b43cdad8faf8005b063c01dce
                     // Create a task with the encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("My encoding task",
                         processor,
-                        "H264 Multiple Bitrate 720p",
+                        "Adaptive Streaming",
                         Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.ProtectedConfiguration);
 
                     // Specify the input asset to be encoded.
@@ -273,10 +274,5 @@ ms.openlocfilehash: ab9e952027dcaa5b43cdad8faf8005b063c01dce
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
 ms.openlocfilehash: a46db1815b84f0ecf93c805f3ea36e4e3d4282ac
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -142,7 +143,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -ManagedDiskStorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
+    -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
 4.  从数据 VHD 文件中创建托管数据磁盘，并将其添加到新的 VM。
@@ -159,13 +160,13 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 5.  通过设置公共 IP、虚拟网络和 NIC 创建新的 VM。
 
     ```powershell
-    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'\_ip') '
+    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
     -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
     
     $vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
     
-    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'\_nic') '
-    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets\[0\].Id '
+    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') '
+    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id '
     -PublicIpAddressId $publicIp.Id
     
     $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
@@ -181,10 +182,5 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ## <a name="next-steps"></a>后续步骤
 
 - 连接到虚拟机。 有关说明，请参阅[如何连接并登录到运行 Windows 的 Azure 虚拟机](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

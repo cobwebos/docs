@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 46bc5b3b70120cd631523fd2b27ad8b9a47e3c6d
 ms.openlocfilehash: 21c25e4579a440b13c3201ee8f6c4e1db7a2aa46
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -57,15 +58,10 @@ ms.openlocfilehash: 21c25e4579a440b13c3201ee8f6c4e1db7a2aa46
 [ec5a4064]: https://github.com/Blackmist/csharp-storm-example "演示一个执行单词计数的基本 Storm 拓扑（以 C# 实现）。此外，还演示如何在一个 C# 拓扑中创建多个数据流。"
 [844d1d81]: hdinsight-storm-develop-csharp-event-hub-topology.md "了解如何使用 Storm on HDInsight 从 Azure 事件中心读取和写入数据。"
 [ab894747]: hdinsight-storm-sensor-data-analysis.md "了解如何使用 Apache Storm on HDInsight 处理来自 Azure 事件中心的传感器数据，使用 D3.js 可视化这些数据，然后（可选）将数据存储到 HBase。"
-[3c86c7c8]: hdinsight-storm-twitter-trending.md "Learn how to use Trident to create a Storm topology that determines trending topics (based on hashtags,) on Twitter."（了解如何使用 Trident 创建确定 Twitter 上的趋势主题（基于哈希标记）的 Storm 拓扑。）
-[246ee964]: hdinsight-storm-iot-eventhub-documentdb.md "Learn how to use a Storm topology to read messages from Azure Event Hubs, read documents from Azure DocumentDB for data referencing and save data to Azure Storage."（了解如何使用 Storm 拓扑从 Azure 事件中心读取消息，从 Azure DocumentDB 读取数据参考文档，并将数据保存到 Azure 存储。）
+[3c86c7c8]: hdinsight-storm-twitter-trending.md "Learn how to use Trident to create a Storm topology that determines trending topics (based on hashtags,) on Twitter.（了解如何使用 Trident 创建确定 Twitter 上的趋势主题（基于哈希标记）的 Storm 拓扑。）"
+[246ee964]: hdinsight-storm-iot-eventhub-documentdb.md "Learn how to use a Storm topology to read messages from Azure Event Hubs, read documents from Azure DocumentDB for data referencing and save data to Azure Storage.（了解如何使用 Storm 拓扑从 Azure 事件中心读取消息，从 Azure DocumentDB 读取数据参考文档，并将数据保存到 Azure 存储。）"
 [d6c540e3]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/EventCountExample "用于演示使用 Apache Storm on HDInsight 从 Azure 事件中心读取数据以及将数据存储到 SQL 数据库时的吞吐量的多个拓扑。"
 [b4b68194]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample "了解如何从 Azure 事件中心读取数据，聚合并转换数据，然后将数据存储到 HBase on HDInsight。"
 [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "此项目包含用来与各种 Azure 服务（例如事件中心、DocumentDB 和 SQL 数据库）进行交互的 spout、bolt 和拓扑的模板。"
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

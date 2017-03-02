@@ -22,8 +22,10 @@
 ## 规划和设计
 ### [设计概念](active-directory-aadconnect-design-concepts.md)
 ### [Azure AD Connect 的拓扑](active-directory-aadconnect-topologies.md)
+### [单一登录](active-directory-aadconnect-sso.md)
+### [Azure 中的 Active Directory 联合身份验证服务](active-directory-aadconnect-azure-adfs.md)
 ### [有关实例的特殊注意事项](active-directory-aadconnect-instances.md)
-
+### [如果已有 Azure AD](active-directory-aadconnect-existing-tenant.md)
 ## [管理 Azure AD Connect](active-directory-aadconnect-whats-next.md)
 ### [续订 O365 和 Azure AD 的证书](active-directory-aadconnect-o365-certs.md)
 ### [启用设备写回](active-directory-aadconnect-feature-device-writeback.md)
@@ -32,20 +34,24 @@
 ### [自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)
 
 
+
 ## 管理 Azure AD Connect Sync
 ### [防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)
+### [直通身份验证](active-directory-aadconnect-pass-through-authentication.md)
 ### [Azure AD 服务帐户](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [安装向导](active-directory-aadconnectsync-installation-wizard.md)
 ### [更改默认配置](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [配置筛选](active-directory-aadconnectsync-configure-filtering.md)
 ### [计划程序](active-directory-aadconnectsync-feature-scheduler.md)
 ### [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md)
+
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
-#### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md?toc=%2fazure%2factive-directory%2faad-connect%2ftoc.json)
+#### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md)
 #### [连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md)
 #### [Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)
 #### [Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
+
 
 ## 管理联合身份验证服务
 ### [管理和自定义](active-directory-aadconnect-federation-management.md)
@@ -83,8 +89,3 @@
 # 资源
 ##[Azure AD Connect 常见问题](active-directory-aadconnect-faq.md)
 ##[DirSync 弃用](active-directory-aadconnect-dirsync-deprecated.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

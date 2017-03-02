@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 02/23/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 48fc6d16c2a9c0a5e617f5c0fd9d5e6aebe6ce05
-ms.openlocfilehash: 2c45857dea0d9962b724d5c890cd7d5595cf89dc
+ms.sourcegitcommit: ca6774310d97cb1c3e72ed43a3340e3bb3d9c70a
+ms.openlocfilehash: 9900183d8207a664b47426209ab3b3b0f6154b2a
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="list-of-tutorials-on-how-to-integrate-saas-apps-with-azure-active-directory"></a>有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表
 为了帮助用户将所有云 [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) 应用程序集成到 Azure Active Directory，我们制作了一系列教程用于说明每个所需的配置步骤。
 
-有关已预先集成到 Azure AD 中的 SaaS 应用的完整列表，请参阅 [Active Directory 应用商店](https://azure.microsoft.com/marketplace/active-directory/)。
+有关已预先集成到 Azure AD 中的 SaaS 应用的完整列表，请参阅 [Active Directory 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)。
 
 ## <a name="list-of-tutorials"></a>教程列表
 
@@ -323,10 +324,5 @@ ms.openlocfilehash: 2c45857dea0d9962b724d5c890cd7d5595cf89dc
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

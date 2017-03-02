@@ -3,7 +3,7 @@ title: "如何使用表存储 (C++) | Microsoft Docs"
 description: "使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
 services: storage
 documentationcenter: .net
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: f191f308-e4b2-4de9-85cb-551b82b1ea7c
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 3047ba6bb363e087bfdf767a32c92a503000f11e
 ms.openlocfilehash: c97343008b5af378ed9d441e242018849e2ab69a
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -51,8 +52,8 @@ ms.openlocfilehash: c97343008b5af378ed9d441e242018849e2ab69a
 将以下 include 语句添加到要在其中使用 Azure 存储 API 访问表的 C++ 文件的顶部：  
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/table.h"
+#include <was/storage_account.h>
+#include <was/table.h>
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
@@ -456,10 +457,5 @@ azure::storage::table_result delete_result = table.execute(delete_operation);
 * [使用 C++ 列出 Azure 存储资源](storage-c-plus-plus-enumeration.md)
 * [适用于 C++ 的存储客户端库参考](http://azure.github.io/azure-storage-cpp)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

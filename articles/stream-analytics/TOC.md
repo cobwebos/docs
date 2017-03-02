@@ -31,6 +31,7 @@
 ### [开窗函数](stream-analytics-window-functions.md)
 
 ## 管理
+### [作业可靠性](stream-analytics-job-reliability.md)
 ### [监视作业](stream-analytics-monitoring.md)
 ### [诊断日志](stream-analytics-job-diagnostic-logs.md)
 ### [以编程方式监视作业](stream-analytics-monitor-jobs.md)
@@ -59,8 +60,3 @@
 ## [反馈论坛](http://feedback.azure.com/forums/270577-azure-stream-analytics)
 ## [服务更新](https://azure.microsoft.com/updates/?product=stream-analytics)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

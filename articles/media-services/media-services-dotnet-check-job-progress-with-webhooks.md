@@ -408,7 +408,7 @@ project.json 文件包含依赖项。
 
                 ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
-                "H264 Multiple Bitrate 720p",
+                "Adaptive Streaming",
                 TaskOptions.None);
 
 

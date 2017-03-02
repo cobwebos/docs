@@ -20,8 +20,10 @@
 ### [网络基础结构注意事项](site-recovery-network-design.md)
 ### [使用 Site Recovery Capacity Planner](site-recovery-capacity-planner.md)
 ### [规划容量以及缩放 VMware 在 Azure 中的复制](site-recovery-plan-capacity-vmware.md)
+### [运行 Deployment Planner 将 VMware 复制到 Azure](site-recovery-deployment-planner.md)
 ## 配置
-### [设置源复制环境](site-recovery-set-up-vmware-to-azure.md)
+### [设置源环境](site-recovery-set-up-vmware-to-azure.md)
+### [设置目标环境](site-recovery-prepare-target-vmware-to-azure.md)
 ### [配置复制设置](site-recovery-setup-replication-settings-vmware.md)
 ### [部署移动服务用于 VMware 复制](site-recovery-vmware-to-azure-install-mob-svc.md)
 #### [使用 System Center Configuration Manager 部署移动服务](site-recovery-install-mobility-service-using-sccm.md)
@@ -32,7 +34,8 @@
 #### [将 Azure Runbook 添加到恢复计划](site-recovery-runbook-automation.md)
 ### [运行测试故障转移到 Azure](site-recovery-test-failover-to-azure.md)
 ### [在两个 VMM 站点之间运行测试故障转移](site-recovery-test-failover-vmm-to-vmm.md)
-### [对 VMware VM 和物理服务器进行故障回复](site-recovery-failback-azure-to-vmware.md)
+### [从 Azure 故障回复 VMware VM/物理服务器](site-recovery-how-to-failback-azure-to-vmware.md)
+### [从 Azure 故障回复 Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
 
 ## 迁移
 ### [迁移到 Azure](site-recovery-migrate-to-azure.md)
@@ -53,8 +56,8 @@
 ### [将 Hyper-V 自动复制到辅助站点（包含 VMM）](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 ## 管理
 ### [删除服务器并禁用保护](site-recovery-manage-registration-and-protection.md)
-### [编辑复制设置](site-recovery-setup-replication-settings-vmware.md#edit-replication-policy)
-## [监视和故障排除](site-recovery-monitoring-and-troubleshooting.md)
+### [横向扩展进程服务器](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)
+### [监视和故障排除](site-recovery-monitoring-and-troubleshooting.md)
 
 # 参考
 ## [PowerShell](/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery)
@@ -70,8 +73,3 @@
 ## [博客](http://azure.microsoft.com/blog/tag/azure-site-recovery/)
 ## [定价](https://azure.microsoft.com/pricing/details/site-recovery/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=site-recovery)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

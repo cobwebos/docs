@@ -5,8 +5,8 @@
 
 # 入门
 ## [创建实验室](devtest-lab-create-lab.md)
-## [创建 VM 项目](devtest-lab-add-vm-with-artifacts.md)
-## [创建培训实验室](devtest-lab-training-lab.md)
+## [创建 VM](devtest-lab-add-vm.md)
+## [创建训练实验室](devtest-lab-training-lab.md)
 ## [常见问题](devtest-lab-faq.md)
 
 # 如何
@@ -20,6 +20,7 @@
 ## 管理项目
 ### [添加项目存储库](devtest-lab-add-artifact-repo.md)
 ### [创建自定义项目](devtest-lab-artifact-author.md)
+### [管理项目](devtest-lab-add-vm-with-artifacts.md)
 
 ## 管理 VM 基项和模板
 ### [使用 Azure Resource Manager 模板创建多 VM 环境](devtest-lab-create-environment-from-arm.md)
@@ -41,8 +42,3 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

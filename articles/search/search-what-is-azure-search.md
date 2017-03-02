@@ -13,10 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
-experiment_id: heidist-experiment1-20170221
+experimental: true
+experiment_id: heidist-20170221
 translationtype: Human Translation
 ms.sourcegitcommit: 292c9150822363aba3336b1efce579dc5362cb14
 ms.openlocfilehash: 99b3babee9b252b2d741515391295d8b1dc5c747
+ms.lasthandoff: 01/14/2017
 
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
@@ -86,10 +88,5 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 
 也可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月为你提供可用于试用付费版 Azure 服务的信用额度。 
 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

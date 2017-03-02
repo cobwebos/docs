@@ -105,6 +105,7 @@
 #### 在 Azure 上创建群集
 ##### [Azure 门户](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+##### [Visual Studio 和 Azure Resource Manager](service-fabric-cluster-creation-via-visual-studio.md)
 #### [节点类型和 VM 规模集](service-fabric-cluster-nodetypes.md)
 #### [缩放群集](service-fabric-cluster-scale-up-down.md)
 #### [升级群集](service-fabric-cluster-upgrade.md)
@@ -116,6 +117,8 @@
 #### [免费试用 Party 群集](http://aka.ms/tryservicefabric)
 
 ### 独立群集
+#### [规划和准备部署](service-fabric-cluster-standalone-deployment-preparation.md)
+#### [Service Fabric 独立包的内容](service-fabric-cluster-standalone-package-contents.md)
 #### [创建独立群集](service-fabric-cluster-creation-for-windows-server.md)
 #### [在 Azure 虚拟机上创建独立群集](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [缩放群集](service-fabric-cluster-windows-server-add-remove-nodes.md)
@@ -211,8 +214,3 @@
 ## [服务更新](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

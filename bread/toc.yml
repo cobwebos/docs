@@ -47,8 +47,8 @@
     tocHref: /azure/advisor/
     topicHref: /azure/advisor/advisor-overview
   - name: "Logic Apps"
-    tocHref: /azure/app-service-logic/
-    topicHref: /azure/app-service-logic/app-service-logic-what-are-logic-apps
+    tocHref: /azure/logic-apps/
+    topicHref: /azure/logic-apps/logic-apps-what-are-logic-apps
   - name: "应用程序网关"
     tocHref: /azure/application-gateway/
     topicHref: /azure/application-gateway/application-gateway-introduction
@@ -185,6 +185,9 @@
       - name: "用户指南"
         tocHref: /azure/multi-factor-authentication/end-user/
         topicHref: /azure/multi-factor-authentication/end-user/
+  - name: "网络观察程序"
+    tocHref: /azure/network-watcher/
+    topicHref: /azure/network-watcher/network-watcher-monitoring-overview
   - name: "通知中心"
     tocHref: /azure/notification-hubs/
     topicHref: /azure/notification-hubs/notification-hubs-push-notification-overview

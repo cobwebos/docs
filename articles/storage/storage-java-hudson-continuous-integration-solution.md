@@ -3,7 +3,7 @@ title: "如何将 Hudson 与 Blob 存储一起使用 | Microsoft Docs"
 description: "介绍如何将 Hudson 与 Microsoft Azure Blob 存储一起使用作为生成项目的存储库。"
 services: storage
 documentationcenter: java
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: 119becdd-72c4-4ade-a439-070233c1e1ac
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 37ad86ce34d7f9ed6642e6f0fa98cf5fbf26e8bc
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -169,8 +170,3 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 * [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
 有关详细信息，另请参阅 [Java 开发人员中心](https://azure.microsoft.com/develop/java/)。
-
-
-<!--HONumber=Nov16_HO3-->
-
-
