@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
 ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -446,10 +447,5 @@ ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
 
 ## <a name="next-steps"></a>后续步骤
 配置内容密钥的授权策略后，请转到[如何配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)主题。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

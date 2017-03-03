@@ -18,6 +18,7 @@ ms.author: guybo
 translationtype: Human Translation
 ms.sourcegitcommit: f13545d753690534e0e645af67efcf1b524837eb
 ms.openlocfilehash: dad27b11b5f02ed41826b82882cc5089eb69cb04
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -57,10 +58,5 @@ Packer 和 Terraform 也支持 Azure Resource Manager，因此也可以“代码
 
 ## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>如何跨更新域推出 OS 更新？
 假设要在更新 OS 映像的同时让 VM 缩放集持续运行。 为此，一种做法是每次更新一个 VM 的 VM 映像。 可以使用 PowerShell 或 Azure CLI 实现此目的。 有单独的命令可在单个 VM 上更新 VM 缩放集模型（其配置的定义方式），以及发出“手动升级”调用。 [升级虚拟机规模集](./virtual-machine-scale-sets-upgrade-scale-set.md) Azure 文档还进一步介绍了可用于跨 VM 规模集执行 OS 升级的选项。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

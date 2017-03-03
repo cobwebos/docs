@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
 ms.openlocfilehash: 240475240be76265c2a2f150a4a6d8f4aa0d3664
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -39,12 +40,12 @@ ms.openlocfilehash: 240475240be76265c2a2f150a4a6d8f4aa0d3664
    ![连接到 Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png)如果收到错误消息并出现连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 单击“下一步”。  
    ![连接到 AD DS](./media/active-directory-aadconnect-get-started-express/connectad.png)
-7. 只有在未完成[先决条件](active-directory-aadconnect-prerequisites.md)中的[验证域](../active-directory-add-domain.md)步骤时，才会显示“Azure AD 登录配置”页。[](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration)
+7. 只有在未完成[先决条件](active-directory-aadconnect-prerequisites.md)中的[验证域](../active-directory-add-domain.md)步骤时，才会显示 [**Azure AD 登录配置**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration)页。
    ![未验证的域](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
    如果看到此页，请查看标记为“未添加”和“未验证”的每个域。 确保使用的域都已在 Azure AD 中验证。 验证域后，请单击“刷新”符号。
 8. 在“准备好配置”屏幕上，单击“安装”。
    * 在“已准备好配置”页上，可以取消选中“配置完成后立即开始同步过程”  复选框。 如果想要进行其他配置（例如[筛选](active-directory-aadconnectsync-configure-filtering.md)），应取消选中此复选框。 如果取消选择此选项，向导将配置同步，但会保持禁用计划程序。 在[重新运行安装向导](active-directory-aadconnectsync-installation-wizard.md)手动启用计划程序之前，计划程序不会运行。
-   * 如果本地 Active Directory 中有 Exchange，也可以选择启用“Exchange 混合部署”。[](https://technet.microsoft.com/library/jj200581.aspx) 如果打算同时在云中和本地设置 Exchange 邮箱，请启用此选项。
+   * 如果本地 Active Directory 中有 Exchange，也可以选择启用 [**Exchange 混合部署**](https://technet.microsoft.com/library/jj200581.aspx)。 如果打算同时在云中和本地设置 Exchange 邮箱，请启用此选项。
      ![已准备好配置 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/readytoconfigure.png)
 9. 安装完成后，单击“退出” 。
 10. 安装完成后，请注销并再次登录，然后即可使用同步服务管理器或同步规则编辑器。
@@ -72,10 +73,5 @@ ms.openlocfilehash: 240475240be76265c2a2f150a4a6d8f4aa0d3664
 | 使用自定义设置安装 |
 | 从 DirSync 升级 |
 | 用于安装的帐户 |
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

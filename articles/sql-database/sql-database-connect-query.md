@@ -19,6 +19,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: 317193c178c4da283de7d61204aa7b824170d72a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -77,10 +78,5 @@ ms.openlocfilehash: 317193c178c4da283de7d61204aa7b824170d72a
 ## <a name="next-steps"></a>后续步骤
 * 在 Visual Studio 中打开 SQL 数据库将使用 SQL Server 数据工具。 有关详细信息，请参阅 [SQL Server 数据工具](https://msdn.microsoft.com/library/hh272686.aspx)。
 * 若要使用代码连接到 SQL 数据库，请参阅 [使用 .NET (C#) 连接到 SQL 数据库](sql-database-develop-dotnet-simple.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

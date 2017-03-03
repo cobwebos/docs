@@ -19,6 +19,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 407d8cef2508e4b2344953db86bc9829081cda7c
 ms.openlocfilehash: 72faf68d8a9779b612723f9ee6589cc332bf5ed5
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -215,10 +216,5 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 ## <a name="related-links"></a>相关链接
 * [Azure SQL 数据库功能](sql-database-features.md)
 * [Azure SQL 数据库资源限制](sql-database-resource-limits.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

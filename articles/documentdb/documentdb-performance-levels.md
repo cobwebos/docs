@@ -17,6 +17,7 @@ ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: b9902de45477bb7970da6c8f2234775bdb6edba8
 ms.openlocfilehash: 65f19191bbb736d3b7fbdd94d73f2308ee6dea83
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -178,8 +179,3 @@ EA 客户在结束其当前合同之前，价格受到保护。
 2.    [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)。 了解吞吐量预配费用和存储使用费用。
 3.    [请求单位](documentdb-request-units.md)。 了解不同操作类型（例如读取、写入和查询）的吞吐量消耗。
 4.    [为 DocumentDB 中的数据建模](documentdb-modeling-data.md)。 了解如何为 DocumentDB 的数据建模。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

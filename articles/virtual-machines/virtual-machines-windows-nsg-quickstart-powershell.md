@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 91c2e6f53f8ba490d2943a60c7ad519d856707b9
 ms.openlocfilehash: 0d57a27c0862b09e2628520a1e50a0cc56a55881
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -87,10 +88,5 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 * [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)
 * [什么是网络安全组 (NSG)？](../virtual-network/virtual-networks-nsg.md)
 * [Azure Resource Manager 中负载平衡器的概述](../load-balancer/load-balancer-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

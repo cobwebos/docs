@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
 ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -593,9 +594,4 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 Azure 数据工厂具有用于改进这些任务的性能的选项，具体取决于初始数据移动是否通过大量的历史数据或增量生产数据负载进行计划。 并发参数属于“复制活动”，此参数定义将并行处理的不同活动窗口的数量。 **parallelCopies** 参数定义单个活动运行的并行度。 在使用 Azure 数据工厂设计数据移动管道来实现最佳吞吐量时，请务必考虑使用这些参数。
 
 请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)，了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

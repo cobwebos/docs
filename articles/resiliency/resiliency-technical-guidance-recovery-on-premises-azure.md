@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
 ms.openlocfilehash: 9af589d4a899702c7c2dd2e2bcf13d783d715380
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -95,10 +96,5 @@ AlwaysOn 可用性组可在本地和云中都有数据库副本的混合 IT 环�
 
 ## <a name="next-steps"></a>后续步骤
 本文是着重介绍 [Azure 复原技术指南](resiliency-technical-guidance.md)的系列教程的一部分。 本系列教程的下一篇文章是[数据损坏或意外删除后进行恢复](resiliency-technical-guidance-recovery-data-corruption.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

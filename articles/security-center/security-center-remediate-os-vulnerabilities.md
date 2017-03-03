@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: 522496ddcd3cc21501f2390e8cdc158798b6289d
 ms.openlocfilehash: 35d33625badeb0b32079f0487b8bf2a3dd97e141
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -79,9 +80,4 @@ Azure 安全中心每日分析虚拟机 (VM) 操作系统 (OS) 的配置（该�
 [1]: ./media/security-center-remediate-os-vulnerabilities/recommendation.png
 [2]:./media/security-center-remediate-os-vulnerabilities/vm-remediate-os-vulnerabilities.png
 [3]: ./media/security-center-remediate-os-vulnerabilities/vulnerability-details.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

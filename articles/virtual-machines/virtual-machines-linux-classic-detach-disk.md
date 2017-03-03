@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 9bb7878836c0444d3ccc058fd89b8bbd9f6e255a
 ms.openlocfilehash: 3ba234eca45e643a235abf120efc6d8f82af461f
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -32,10 +33,5 @@ ms.openlocfilehash: 3ba234eca45e643a235abf120efc6d8f82af461f
 
 * [如何将数据磁盘附加到 Linux 虚拟机](virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [将 Azuer CLI 与经典部署模型搭配使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

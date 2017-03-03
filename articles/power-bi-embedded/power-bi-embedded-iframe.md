@@ -18,6 +18,7 @@ ms.author: asaxton
 translationtype: Human Translation
 ms.sourcegitcommit: 89e16687f858708cdfd1432114c39bd9109dc6ac
 ms.openlocfilehash: 31624b9d15772a4f08cf013ac713b3aa636acfca
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -466,10 +467,5 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 * [在 Power BI Embedded 中进行身份验证和授权](power-bi-embedded-app-token-flow.md)
 
 有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

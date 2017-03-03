@@ -18,6 +18,7 @@ ms.author: cgronlun;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
 ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -93,9 +94,4 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习](https://a
 ## <a name="next-steps"></a>后续步骤
 * [使用 Azure 机器学习尝试第一个数据科学实验](machine-learning-create-experiment.md)
 * [在 Microsoft Azure 上获取机器学习简介](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

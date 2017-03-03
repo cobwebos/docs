@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
 ms.openlocfilehash: 26383db7a3fe6736fb739121dd545518784c098a
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -80,9 +81,4 @@ Microsoft 大数据解决方案的一个关键功能是，将 Microsoft 商业�
 [image-hdi-powerquery-imported-table]: ./media/hdinsight-connect-excel-power-query/HDI.PowerQuery.ImportedTable.PNG
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

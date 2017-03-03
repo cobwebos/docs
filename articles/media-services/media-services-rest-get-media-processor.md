@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: d1d05b46591fe4b72c92c59d357681c8e1cdb336
 ms.openlocfilehash: c208660fc1439ca831ada6c9bb348dbc3eadc18c
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -94,10 +95,5 @@ ms.openlocfilehash: c208660fc1439ca831ada6c9bb348dbc3eadc18c
 
 ## <a name="next-steps"></a>后续步骤
 了解如何获取媒体处理器实例后，请转到[如何对资产进行编码](media-services-rest-get-started.md)主题，其中说明了如何使用 Media Encoder Standard 对资产进行编码。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

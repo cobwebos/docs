@@ -17,6 +17,7 @@ ms.author: robb
 translationtype: Human Translation
 ms.sourcegitcommit: 7814e02df5c6aa0ea9c38e3a048dd52e39436c3c
 ms.openlocfilehash: 349a7d82a96868f65598597c1db192484da9b34d
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -78,10 +79,5 @@ Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 
 * 了解如何[在 Azure 诊断中使用性能计数器](cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md)。
 * 了解如何[将 Azure 诊断信息路由到 Application Insights](azure-diagnostics-configure-applicationinsights.md)
 * 如果在开始诊断时或者在 Azure 存储表中查找数据时遇到问题，请参阅 [Azure 诊断故障排除](azure-diagnostics-troubleshooting.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

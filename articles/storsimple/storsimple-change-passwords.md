@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -56,10 +57,5 @@ StorSimple Snapshot Manager 密码现在应已更新。
 * 详细了解 [StorSimple 安全性](storsimple-security.md)。
 * 详细了解如何[修改设备配置](storsimple-modify-device-config.md)。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

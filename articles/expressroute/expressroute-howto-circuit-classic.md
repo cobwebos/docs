@@ -18,6 +18,7 @@ ms.author: ganesr;cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: fe0bff84a5316628d9e465da0d4e62162f1ea4f2
 ms.openlocfilehash: cb67631dbbfb53a0de9b07bc3918bd70751ec41b
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -338,10 +339,5 @@ ExpressRoute 线路处于以下状态时，你才能使用它：
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-classic.md)
 * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

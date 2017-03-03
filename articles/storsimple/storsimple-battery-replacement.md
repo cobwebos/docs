@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -110,10 +111,5 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件更换](storsimple-hardware-component-replacement.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

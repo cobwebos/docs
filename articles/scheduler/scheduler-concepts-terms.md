@@ -17,6 +17,7 @@ ms.author: deli
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -176,7 +177,7 @@ ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
 
 若要设置重试策略，可指定两个附加设置：重试间隔 (**retryInterval**) 和重试次数 (**retryCount**)。
 
-重试间隔使用 **retryInterval** 对象指定，表示两次重试之间的时间间隔。 其默认值为 30 秒，最小可配置值为 15 秒，最大值为 18 个月。 空闲作业集合中的作业的最小可配置值为 1 小时。  它使用 ISO 8601 格式定义。 同样，重试次数的值使用 **retryCount** 对象指定；它是尝试重试的次数。 其默认值为 4，其最大值为 20。\.**retryInterval** 和 **retryCount** 都是可选的。 如果 **retryType** 设为 **fixed** 并且未为它们显式指定任何值，则为它们赋予默认值。
+重试间隔使用 **retryInterval** 对象指定，表示两次重试之间的时间间隔。 其默认值为 30 秒，最小可配置值为 15 秒，最大值为 18 个月。 空闲作业集合中的作业的最小可配置值为 1 小时。  它使用 ISO 8601 格式定义。 同样，重试次数的值使用 **retryCount** 对象指定；它是尝试重试的次数。 其默认值为 4，其最大值为 20\.**retryInterval** 和 **retryCount** 都是可选的。 如果 **retryType** 设为 **fixed** 并且未为它们显式指定任何值，则为它们赋予默认值。
 
 ## <a name="see-also"></a>另请参阅
  [计划程序是什么？](scheduler-intro.md)
@@ -196,10 +197,5 @@ ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
  [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
 
  [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

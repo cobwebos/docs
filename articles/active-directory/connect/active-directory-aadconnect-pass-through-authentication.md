@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 67b832253619afe789a4dfdb95893e8c0ae62bee
 ms.openlocfilehash: 17890fddf948ddc0e89a9107ac5fe65223cd05e1
+ms.lasthandoff: 01/30/2017
 
 ---
 
@@ -40,6 +41,7 @@ Azure AD 直通身份验证为这些客户提供了一个简单的解决方案�
 >如果林间存在信任关系且正确配置了名称后缀路由，则可支持多林环境。
 
 ## <a name="supported-clients-in-the-preview"></a>预览版中支持的客户端
+
 支持[新式验证](https://aka.ms/modernauthga)的基于 Web 浏览器的客户端和 Office 客户端均支持直通身份验证。 对于不支持的客户端，例如旧的 Office 客户端和 Exchange active sync（即移动设备上的本机电子邮件客户端），建议客户使用等效的新式身份验证。 这些客户端不仅允许直通身份验证，还允许应用条件访问，如多重身份验证。
 
 对于使用加入到 Azure AD 的 Windows 10 的客户，当前不支持直通身份验证。 但是对于 Windows 10 和旧客户端，客户可使用密码同步作为自动回退。
@@ -154,9 +156,4 @@ AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 |AADSTS80004|传递到连接器的用户名无效|确保用户尝试使用正确的用户名登录。
 |AADSTS80005|验证遇到了不可预知的 WebException|此错误是暂时性问题。 重试请求。 如果持续失败，请与 Microsoft 支持部门联系。
 |AADSTS80007|与 Active Directory 通信时出错|检查连接器日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

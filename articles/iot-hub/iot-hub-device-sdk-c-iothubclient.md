@@ -17,6 +17,7 @@ ms.author: obloch
 translationtype: Human Translation
 ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
 ms.openlocfilehash: 669ef16c4fe2edd4525db6f693c424f3027793f3
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -276,9 +277,4 @@ batching 选项非常重要。 默认情况下，库将逐个引入事件（单�
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

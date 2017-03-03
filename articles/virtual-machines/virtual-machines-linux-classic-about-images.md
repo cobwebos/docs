@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
 ms.openlocfilehash: 480211dd13ddc6af348f4179a3c36fd62d7374fc
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -34,10 +35,5 @@ ms.openlocfilehash: 480211dd13ddc6af348f4179a3c36fd62d7374fc
 
 ## <a name="next-steps"></a>后续步骤
 还可以[上载自己的映像](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

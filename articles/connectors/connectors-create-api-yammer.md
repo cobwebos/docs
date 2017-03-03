@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: c69f7af9f9427eb295481657eaefcdad76b48ccb
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -187,9 +188,4 @@ Yammer 包括以下触发器和操作。
 [3]: ./media/connectors-create-api-yammer/connectionconfig3.png
 [4]: ./media/connectors-create-api-yammer/connectionconfig4.png
 [5]: ./media/connectors-create-api-yammer/connectionconfig5.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

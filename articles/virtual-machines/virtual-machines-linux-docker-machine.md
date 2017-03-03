@@ -17,6 +17,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: b64bafe1a8572369aa7a7e6f0d8b924fc182cd53
 ms.openlocfilehash: 9440474db7eb7e3ae082505f8c95cbcf8c285cdf
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -128,10 +129,5 @@ d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago  
 如有兴趣，可以试用 Azure [Docker VM 扩展](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，通过 Azure CLI 或 Azure Resource Manager 模板执行相同的操作。 
 
 有关使用 Docker 的更多示例，请参阅 [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [演示](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)中的 [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker)（使用 Docker）。 有关 HealthClinic.biz 演示的多个快速入门，请参阅 [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)（Azure 开发人员工具快速入门）。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

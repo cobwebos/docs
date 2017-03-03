@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
 ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -224,10 +225,5 @@ Query Store 处于关闭状态或参数未设置为最优时会发生第二种�
 [7]: ./media/sql-database-query-performance/annotation-details.png
 [8]: ./media/sql-database-query-performance/qds-off.png
 [9]: ./media/sql-database-query-performance/qds-button.png
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

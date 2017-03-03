@@ -18,6 +18,7 @@ ms.author: heidist
 translationtype: Human Translation
 ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
 ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
+ms.lasthandoff: 01/19/2017
 
 ---
 
@@ -74,9 +75,4 @@ Azure 搜索中的 **索引器** 是一种爬网程序，它从外部数据源�
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [使用 Azure 搜索 Blob 索引器（预览版）索引 CSV blob](search-howto-index-csv-blobs.md)
 * [使用 Azure 搜索 Blob 索引器（预览版）索引 JSON blob](search-howto-index-json-blobs.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

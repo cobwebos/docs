@@ -17,6 +17,7 @@ ms.author: ryansoc
 translationtype: Human Translation
 ms.sourcegitcommit: ec62cc79aeffa21e5d9d772dcd2da6f973c18d81
 ms.openlocfilehash: 3d9f2308d20e723da324be7e3aec3106ff5ff846
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -120,9 +121,4 @@ Log Analytics 的 URL 在 Azure 政府版中是不同的：
 
 ## <a name="next-steps"></a>后续步骤
 有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客</a>。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
 ms.openlocfilehash: 2017fcdc7a5c36c7c00d8bcef5be973ed60e3f82
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -149,10 +150,5 @@ ms.openlocfilehash: 2017fcdc7a5c36c7c00d8bcef5be973ed60e3f82
 
 ## <a name="next-steps"></a>后续步骤
 了解有关如何[使用本地 Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md) 的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

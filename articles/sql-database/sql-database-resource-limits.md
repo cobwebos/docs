@@ -18,6 +18,7 @@ ms.author: janeng
 translationtype: Human Translation
 ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6
 ms.openlocfilehash: 15fd64f21eb20ae412f4d0cf1930e99e2e9fc62b
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -75,10 +76,5 @@ CPU、内存、日志 I/O 和数据 I/O 以外的资源在达到限制时，将�
 [Azure SQL 数据库服务层和性能级别](sql-database-service-tiers.md)
 
 [SQL 数据库客户端程序的错误消息](sql-database-develop-error-messages.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -4,6 +4,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 0b93e0cd71add8bad86c2b3c0023b524bc4f621a
 ms.openlocfilehash: 1e44ae2341257df6ac367db83947178918016430
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -1114,10 +1115,5 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 请下载并使用 [Github](https://github.com/HEDIDIN/DocDbNotifications) 上提供的逻辑应用代码。 竭诚邀请你在该应用程序基础上进行构建，并将更改提交到存储库。 
 
 若要详细了解 DocumentDB，请访问[学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

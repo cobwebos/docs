@@ -16,6 +16,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
 ms.openlocfilehash: a2a429873c30f526a0de05d4018f53f3a83bbe28
+ms.lasthandoff: 02/10/2017
 
 ---
 
@@ -201,9 +202,4 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 ## <a name="next-steps"></a>后续步骤
 
 请按照 [为 App Service 配置自定义域名](../app-service-web/web-sites-custom-domain-name.md)中的步骤来配置 Web 应用，以便使用自定义域。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

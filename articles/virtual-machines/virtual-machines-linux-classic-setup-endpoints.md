@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: 9fe4e1356064d62d1a373ecbabf4f9cf276524f6
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -36,10 +37,5 @@ ms.openlocfilehash: 9fe4e1356064d62d1a373ecbabf4f9cf276524f6
 ## <a name="next-steps"></a>后续步骤
 * 也可以使用 [Azure 命令行接口](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)创建 VM 终结点。 运行 **azure vm endpoint create** 命令。
 * 如果在 Resource Manager 部署模型中创建虚拟机，可以在 Resource Manager 模式下使用 Azure CLI [创建网络安全组](../virtual-network/virtual-networks-create-nsg-arm-cli.md)，控制发往 VM 的流量。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

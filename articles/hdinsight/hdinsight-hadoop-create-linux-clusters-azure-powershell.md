@@ -18,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 2dd64398fce3a85f92492b01951008eab31a2c3f
 ms.openlocfilehash: a566fe935da98d303f1260cbc2a2009e5702530a
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -187,10 +188,5 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 * [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](hdinsight-apache-spark-use-bi-tools.md)
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](hdinsight-apache-spark-eventhub-streaming.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

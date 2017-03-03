@@ -18,6 +18,7 @@ ms.author: erihur;genli
 translationtype: Human Translation
 ms.sourcegitcommit: 29a6290a19186d5bc8a07d87617b47d21529d6b7
 ms.openlocfilehash: 2e99332e2a2b023c00669b3ad5ea07f0c791a805
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -154,10 +155,5 @@ Microsoft Azure 订阅的费用因资费套餐而异。 某些资费套餐（如
  
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

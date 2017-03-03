@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
 ms.openlocfilehash: 6912357da797a72f8e9cb9ebf700f56d9cfcc696
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -274,9 +275,4 @@ Showpad 支持实时预配。 已在**[配置 Azure AD 单一登录](#configurin
 [203]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

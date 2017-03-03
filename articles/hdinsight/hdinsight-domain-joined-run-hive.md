@@ -18,6 +18,7 @@ ms.author: saurinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 20ae053057e74e0bc874391dd8a9cd19e0a293e7
 ms.openlocfilehash: 2d244187585f716af8c4e6d65a445e0ab8217890
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -90,7 +91,7 @@ ms.openlocfilehash: 2d244187585f716af8c4e6d65a445e0ab8217890
     Hive 服务器类型|选择“Hive Server 2”<strong></strong>
     机制|选择“Azure HDInsight 服务”<strong></strong>
     HTTP 路径|将此字段留空。
-    用户名|输入 hiveuser1@contoso158.onmicrosoft.com.。如果域名不同，请更新域名。
+    用户名|输入 hiveuser1@contoso158.onmicrosoft.com. 如果域名不同，请更新域名。
     密码|输入 hiveuser1 的密码。
     </table>
 
@@ -143,9 +144,4 @@ ms.openlocfilehash: 2d244187585f716af8c4e6d65a445e0ab8217890
 * 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver](hdinsight-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）
 * 若要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop with the Microsoft Hive ODBC drive](hdinsight-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop）
 * 若要使用 Power Query 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop by using Power Query](hdinsight-connect-excel-power-query.md)（使用 Power Query 将 Excel 连接到 Hadoop）
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

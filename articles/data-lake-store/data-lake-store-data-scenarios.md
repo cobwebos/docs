@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
 ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -132,9 +133,4 @@ ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
 
 * 首先通过使用 [Azure 数据工厂从 Data Lake Store 将数据移动到 Azure SQL 数据仓库](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)
 * 之后，可[集成 Power BI 和 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md)来创建数据的可视化表示形式。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

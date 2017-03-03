@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
 ms.openlocfilehash: 890c1ea7f7039886b1d2de72ea8f4a453a7b8ce2
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -30,10 +31,5 @@ ms.openlocfilehash: 890c1ea7f7039886b1d2de72ea8f4a453a7b8ce2
 * [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)  
 * [什么是网络安全组 (NSG)？](../virtual-network/virtual-networks-nsg.md)  
 * [Azure Resource Manager 中负载平衡器的概述](../load-balancer/load-balancer-arm.md) 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

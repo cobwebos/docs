@@ -17,6 +17,7 @@ ms.author: sutalasi
 translationtype: Human Translation
 ms.sourcegitcommit: 0400369eb7ae3a2ebd506605b50afe08fe563d22
 ms.openlocfilehash: 33b3e7322afafd623a10661e33abe7b959eeb512
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -319,9 +320,4 @@ ms.openlocfilehash: 33b3e7322afafd623a10661e33abe7b959eeb512
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解](https://msdn.microsoft.com/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

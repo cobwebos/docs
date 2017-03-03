@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
 ms.openlocfilehash: fe040c6d799c8b1a19d8329b6e4aebefcbae6190
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -289,9 +290,4 @@ HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自
 [203]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

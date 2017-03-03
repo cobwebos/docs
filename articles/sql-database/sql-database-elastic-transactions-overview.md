@@ -18,6 +18,7 @@ ms.author: torsteng
 translationtype: Human Translation
 ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
 ms.openlocfilehash: f9c53a981376cf534c50d80ae2f60fc01f193e4d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -152,10 +153,5 @@ SQL DB 中的弹性数据库事务当前存在以下限制：
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

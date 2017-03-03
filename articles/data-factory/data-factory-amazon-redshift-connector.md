@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 6fad9ecee49eae24daf924bc292daaf42000c901
 ms.openlocfilehash: 546d7f721689d5d52adfc6149b715a0f9e1aa71e
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -281,9 +282,4 @@ ms.openlocfilehash: 546d7f721689d5d52adfc6149b715a0f9e1aa71e
 请参阅以下文章：
 
 * [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，了解创建包含复制活动的管道的分步说明。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

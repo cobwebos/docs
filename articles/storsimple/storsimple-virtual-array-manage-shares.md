@@ -17,6 +17,7 @@ ms.author: manuaery
 translationtype: Human Translation
 ms.sourcegitcommit: 19177fe13db2aefcef7fcf37ea8fef2fa99c728f
 ms.openlocfilehash: e5c62689de36baa175001f5f4f70d87568876ef0
+ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理共享
@@ -142,10 +143,5 @@ StorSimple 服务摘要边栏选项卡上的“共享”菜单显示给定 StorS
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[克隆 StorSimple 共享](storsimple-virtual-array-clone.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

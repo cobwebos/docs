@@ -17,6 +17,7 @@ ms.author: tarcher
 translationtype: Human Translation
 ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
 ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -65,10 +66,5 @@ ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
 * [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或应用商店映像。 本文演示了如何从 VHD 文件创建自定义映像。
 * [配置应用商店映像](devtest-lab-configure-marketplace-images.md) - 开发测试实验室支持创建基于 Azure 应用商店映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 应用商店映像（如果有）。
 * [在实验室中创建 VM](devtest-lab-add-vm-with-artifacts.md) - 演示了如何从基本映像（自定义或应用商店映像）创建 VM，以及如何使用在 VM 中使用项目。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

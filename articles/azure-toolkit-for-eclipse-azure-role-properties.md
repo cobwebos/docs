@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -368,7 +369,7 @@ ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
 
 ![][ic719512]
 
-单击“添加”以添加另一个应用程序，或者单击“删除”以删除某个应用程序。 出于效率考虑，如果在部署到云时要对应用程序的源使用下载，请使用“组件属性”以指定 URL、存储帐户等。[](#components_properties) 
+单击“添加”以添加另一个应用程序，或者单击“删除”以删除某个应用程序。 出于效率考虑，如果在部署到云时要对应用程序的源使用下载，请使用 [组件属性](#components_properties) 以指定 URL、存储帐户等。 
 
 从 2014 年 4 月发行版开始，应用程序将自动上载到为部署选择的同一存储帐户（在 **eclipsedeploy** 容器下）。 你的部署的启动逻辑包含首先从该存储帐户下载这些应用程序的步骤。 这意味着你无需重新生成和重新部署整个程序包即可升级部署中的应用程序，方法是手动将更新版本的应用程序直接上载到该存储帐户（例如，使用 Azure 门户），替换工具包最初上载到那里的 WAR 文件。 然后，只需再次使用 Azure 管理门户，或通过命令行实用工具启动所有这些角色实例的回收。 （目前不支持直接从 Eclipse 工具包中触发角色回收。）
 
@@ -457,9 +458,4 @@ ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
 [ic719481]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719481.png
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690945.aspx -->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

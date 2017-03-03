@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
 ms.openlocfilehash: 31d7f4620420839ade1ca58391fad78e94d4e929
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -99,9 +100,4 @@ ms.openlocfilehash: 31d7f4620420839ade1ca58391fad78e94d4e929
 
 ## <a name="next-steps"></a>后续步骤
 添加磁盘后，需要对它进行准备以供使用。 有关详细信息，请参阅[如何：在 Linux 中初始化新的数据磁盘](virtual-machines-linux-classic-attach-disk.md#initialize-a-new-data-disk-in-linux)。
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: e4bb75b0a45dd922479cbd40ad94190c30b4333f
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -154,9 +155,4 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 [配额和限制](media-services-quotas-and-limitations.md)。  
 
 [媒体服务概念](media-services-concepts.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

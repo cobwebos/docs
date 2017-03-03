@@ -18,6 +18,7 @@ ms.author: anhoh
 translationtype: Human Translation
 ms.sourcegitcommit: 218d41ac352f01a7e03b5b8a1c45e1bf6d5ace28
 ms.openlocfilehash: a3b1289d52207448cebc628466492371d1bf6519
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -83,9 +84,4 @@ ms.openlocfilehash: a3b1289d52207448cebc628466492371d1bf6519
 ## <a name="next-steps"></a>后续步骤
 * 了解如何配合具有 MongoDB 协议支持的 DocumentDB 帐户[使用 MongoChef](documentdb-mongodb-mongochef.md)。
 * 浏览具有 MongoDB 协议支持的 DocumentDB [示例](documentdb-mongodb-samples.md)。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -19,6 +19,7 @@ ms.author: jhubbard
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: d70c0350809325234db366acc676e381ff042c13
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -79,10 +80,5 @@ ms.openlocfilehash: d70c0350809325234db366acc676e381ff042c13
 * 了解如何 [使用 SQL Server Management Studio 连接到 SQL 数据库](sql-database-connect-query-ssms.md) ，以便进行高级查询和分析。
 * 了解 [弹性池](sql-database-elastic-pool.md)的优点。
 * 了解如何 [创建与后端 SQL 数据库连接的 Web 应用程序](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

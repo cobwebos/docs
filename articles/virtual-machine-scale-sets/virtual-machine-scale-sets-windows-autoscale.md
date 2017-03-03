@@ -18,6 +18,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 4fa0cdc2ee71d4e499dfc45bac7b690d728b626a
 ms.openlocfilehash: 2649edd4af67e25ce49bf0ced858b7c7e4633290
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -595,10 +596,5 @@ vmName: vmsstestvm1
 * 在 [Azure 监视器 PowerShell 快速入门示例](../monitoring-and-diagnostics/insights-powershell-samples.md)中查找 Azure 监视器监视功能的示例
 * 若要了解有关通知功能的相关信息，请参阅[使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
 * 了解如何[使用审核日志在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

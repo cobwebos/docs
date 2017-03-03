@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 24c2670394c2873b333f41c081a8134710d16d54
+ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>在 Windows Server 主机上为 StorSimple Virtual Array 配置多路径 I/O
@@ -156,10 +157,5 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列](storsimple-virtual-array-manager-service-administration.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,6 +17,7 @@ ms.author: bsiva
 translationtype: Human Translation
 ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
 ms.openlocfilehash: 3df4aaa018d31e9ee9526679ac1febbe5b75bb7e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -244,9 +245,4 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解](https://msdn.microsoft.com/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

@@ -19,6 +19,7 @@ ms.author: negat
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
 ms.openlocfilehash: 8d274127a4e1947e42b5544c3c1f62c4e48dcee9
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -46,10 +47,5 @@ ms.openlocfilehash: 8d274127a4e1947e42b5544c3c1f62c4e48dcee9
 有关其他文档，请参阅[规模集的主要文档页](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 有关使用规模集的示例 Resource Manager 模板，请在 [Azure 快速入门模板 github 存储库](https://github.com/Azure/azure-quickstart-templates)中搜索“vmss”。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

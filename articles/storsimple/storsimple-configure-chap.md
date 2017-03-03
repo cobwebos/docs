@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
 ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -160,10 +161,5 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [StorSimple 安全性](storsimple-security.md)。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

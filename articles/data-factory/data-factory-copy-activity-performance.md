@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: c3d96d11894f0009db004b1089c05559cafd2d43
 ms.openlocfilehash: ee79612cc30f1dfefcf7dcd8af7aed7836dd528c
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -408,9 +409,4 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * Azure DocumentDB：[DocumentDB 中的性能级别](../documentdb/documentdb-performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
 * 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

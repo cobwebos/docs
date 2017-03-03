@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
 ms.openlocfilehash: e32d21ca410d4107f68f8b72353ca400a26c4523
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -149,9 +150,4 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

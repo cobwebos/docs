@@ -17,6 +17,7 @@ ms.author: obloch
 translationtype: Human Translation
 ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
 ms.openlocfilehash: 0033f1cc036e1eef63f0728be8d5d73c8dbbccf6
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -463,9 +464,4 @@ serializer_deinit();
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

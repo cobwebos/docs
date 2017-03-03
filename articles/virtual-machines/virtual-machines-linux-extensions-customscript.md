@@ -18,6 +18,7 @@ ms.author: nepeters
 translationtype: Human Translation
 ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
 ms.openlocfilehash: 09c1ace33461eff30fbd4b277e1397934fe5a98a
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -230,10 +231,5 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>后续步骤
 有关其他 VM 脚本扩展的信息，请参阅 [Azure Script Extension overview for Linux](virtual-machines-linux-extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（适用于 Linux 的 Azure 脚本扩展概述）。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

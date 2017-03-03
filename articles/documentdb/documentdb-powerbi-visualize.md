@@ -18,6 +18,7 @@ ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: 089b250e36eb3e091ad63d716acaf6259a958898
 ms.openlocfilehash: 3f2103a1d3838b73f10d567721693a9b813d0edb
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -212,10 +213,5 @@ ms.openlocfilehash: 3f2103a1d3838b73f10d567721693a9b813d0edb
 ## <a name="next-steps"></a>后续步骤
 * 有关 Power BI 的详细信息，请参阅 [Power BI 入门](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
 * 若要了解有关 DocumentDB 的详细信息，请参阅 [DocumentDB 文档登录页](https://azure.microsoft.com/documentation/services/documentdb/)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

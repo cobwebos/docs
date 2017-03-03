@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 45011050a6d2f8e4d9d92f4124d6dc9a9eec4cf7
 ms.openlocfilehash: 88032b3855c2f89b935064abe496a8455dcff88b
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -197,9 +198,4 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ## <a name="next-steps"></a>后续步骤
 * 了解 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)。
 * 详细了解适用于高性能计算 (HPC) 等工作负荷的 [H 系列和计算密集型 A 系列 VM](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

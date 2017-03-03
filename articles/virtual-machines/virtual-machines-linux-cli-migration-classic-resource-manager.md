@@ -18,6 +18,7 @@ ms.author: kasing
 translationtype: Human Translation
 ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
 ms.openlocfilehash: 92211cc98b6d8394ff04bc7c2fe33f7bd710713b
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -159,10 +160,5 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ## <a name="next-steps"></a>后续步骤
 * [平台支持的从经典部署模型到 Resource Manager 的 IaaS 资源迁移](virtual-machines-windows-migration-classic-resource-manager.md)
 * [技术探讨：平台支持的从经典部署模型到 Resource Manager 部署模型的迁移](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

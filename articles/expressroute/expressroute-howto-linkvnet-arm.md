@@ -18,6 +18,7 @@ ms.author: ganesr
 translationtype: Human Translation
 ms.sourcegitcommit: 75b7cee2485d1d68fee8dcd65ade84995dcdb9be
 ms.openlocfilehash: fc5bc67fd38fe8a8c4499257a29bc0f0ec71468c
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -149,10 +150,5 @@ ms.openlocfilehash: fc5bc67fd38fe8a8c4499257a29bc0f0ec71468c
 
 ## <a name="next-steps"></a>后续步骤
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

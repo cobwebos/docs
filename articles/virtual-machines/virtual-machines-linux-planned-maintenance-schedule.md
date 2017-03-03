@@ -18,6 +18,7 @@ ms.author: igalf
 translationtype: Human Translation
 ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
 ms.openlocfilehash: 54b15a13d29eb1921cc1264456c5f746b550386c
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -26,10 +27,5 @@ ms.openlocfilehash: 54b15a13d29eb1921cc1264456c5f746b550386c
 > Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关 Resource Manager 模型中的计划内维护的信息，请参阅[此处](virtual-machines-linux-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-planned-maintenance-schedule](../../includes/virtual-machines-common-planned-maintenance-schedule.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 03/01/2017
 ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
 ms.openlocfilehash: 73f5413fb7dd0ca179bf5012478a453963e996a1
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -107,9 +108,4 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

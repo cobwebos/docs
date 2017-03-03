@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 6c468c8ed0d817a32c343d55cac780b904ee8668
 ms.openlocfilehash: 02674646a0dac8a468b8c4f9f079630103058a3a
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -152,10 +153,5 @@ ms.openlocfilehash: 02674646a0dac8a468b8c4f9f079630103058a3a
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

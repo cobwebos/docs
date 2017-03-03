@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 1d2d3d9d6c8dee02f2eb96ba20894e1d52541102
 ms.openlocfilehash: 584af73f3f2d428f7551de0b12b498b1a118e5dc
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -283,9 +284,4 @@ HDInsight 是一项托管服务，这意味着如果检测到问题，Azure 可�
 * [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

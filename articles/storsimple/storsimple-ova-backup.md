@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: 9db591677fb529a72029114db8ad8a8b5d8ab260
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -92,10 +93,5 @@ StorSimple 虚拟设备具有一个默认备份策略，该策略在每天的指
 
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

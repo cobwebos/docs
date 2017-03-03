@@ -17,6 +17,7 @@ ms.author: magoedte;bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 89e5486f3302098f3a1d49e4390ec5b21617d778
 ms.openlocfilehash: fd1737a420c132dace9307436bfea98a9bde94a0
+ms.lasthandoff: 02/11/2017
 
 ---
 
@@ -95,9 +96,4 @@ ms.openlocfilehash: fd1737a420c132dace9307436bfea98a9bde94a0
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何使用链接控制 runbook 旨在执行的活动的逻辑流，请参阅[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)。 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

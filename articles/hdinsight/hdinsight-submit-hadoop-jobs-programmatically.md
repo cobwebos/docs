@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: acce9907fca6e411d8028e87eff7b50ffa04d575
 ms.openlocfilehash: 4098680a7941ec4732ec0a408c3bf02d6a9906f8
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -50,8 +51,3 @@ ms.openlocfilehash: 4098680a7941ec4732ec0a408c3bf02d6a9906f8
 ## <a name="see-also"></a>另请参阅
 
 - [Azure HDInsight 文档](https://docs.microsoft.com/azure/hdinsight/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

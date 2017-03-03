@@ -17,6 +17,7 @@ ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 5e531c6c23c510936fe7e4e844db2ec3afb170dc
 ms.openlocfilehash: 32d79cf050968738764c2239cbd79c73734ee855
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -249,10 +250,5 @@ namespace XamarinApp.WinPhone
 * [在 Windows 上开始使用 Azure 文件存储](storage-dotnet-how-to-use-files.md)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -17,6 +17,7 @@ ms.author: msfussell
 translationtype: Human Translation
 ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
 ms.openlocfilehash: abf5e4bc69aa32ca9af8998ef81de20baae24560
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -92,9 +93,4 @@ Service Fabric 提供多种容器功能，可帮助你构建由容器化的微�
 [将 Docker 容器部署到 Linux 上的 Service Fabric](service-fabric-deploy-container-linux.md)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

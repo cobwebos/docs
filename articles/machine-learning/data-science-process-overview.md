@@ -17,6 +17,7 @@ ms.author: bradsev;hangzh;gokuma
 translationtype: Human Translation
 ms.sourcegitcommit: 1796f7a7cd174d7ed6582878d72c59995aac41cb
 ms.openlocfilehash: 995ba0dc3ffd2bc78625db7d1176ca0d5e1611a0
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -196,10 +197,5 @@ TDSP 提供名为 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/mas
 
 ## <a name="next-steps"></a>后续步骤
 还提供了完整的、端到端的演练，演示**特定方案**处理过程中的所有步骤。 在 [Team Data Science Process 演练](data-science-process-walkthroughs.md)主题中，列出并链接了相关步骤和缩略图说明。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

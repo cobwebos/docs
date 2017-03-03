@@ -18,6 +18,7 @@ ms.author: srinia
 translationtype: Human Translation
 ms.sourcegitcommit: 637171b775d01e16cec1a7e9ef6fad73875eac69
 ms.openlocfilehash: e04a802b662954ff22cf44e144982dbf0964da8e
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -275,9 +276,4 @@ Stop- cmdlet 表示取消，而不是暂停。 你无法在中途恢复升级，
 ## <a name="next-steps"></a>后续步骤
 * [创建弹性作业](sql-database-elastic-jobs-overview.md) 弹性作业使你可以根据池中数据库的数目运行 T-SQL 脚本。
 * 请参阅[使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)：使用弹性工具扩展、移动数据、查询或创建事务。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

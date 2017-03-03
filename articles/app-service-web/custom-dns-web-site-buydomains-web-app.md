@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 9c5c0b40d796130d93111545c93bedf86c374fd9
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -100,12 +101,7 @@ ms.openlocfilehash: 9c5c0b40d796130d93111545c93bedf86c374fd9
 * 自定义的域可能已成功创建，但边栏选项卡没有刷新。 请尝试重新打开“自定义域和 SSL”边栏选项卡。
 * 可能在某个时间点删除了自定义域。 请从应用的主边栏选项卡单击“设置” > “审核日志”，查看审核日志。 
 * 正在查看的“自定义域和 SSL”边栏选项卡可能属于不同 Azure 订阅中创建的应用。 请切换到不同订阅中的另一个应用，查看该应用的“自定义域和 SSL”边栏选项卡。  
-    在门户中，除了该应用以外，无法查看或管理不同 Azure 订阅中创建的自定义域。 但是，如果在域的“管理域”边栏选项卡中单击“高级管理”，将会重定向到域提供商的网站，可在其中为不同 Azure 订阅中创建的应用手动配置自定义域，就像配置所有外部自定义域一样。********  [](web-sites-custom-domain-name.md) 
-   
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+    在门户中，除了该应用以外，无法查看或管理不同 Azure 订阅中创建的自定义域。 但是，如果在域的 **管理域** 边栏选项卡中单击 **高级管理**，将会重定向到域提供商的网站，  [可在其中为不同 Azure 订阅中创建的应用手动配置自定义域](web-sites-custom-domain-name.md) 
+   ，就像配置所有外部自定义域一样。 
 
 

@@ -17,6 +17,7 @@ ms.author: richrund
 translationtype: Human Translation
 ms.sourcegitcommit: abea89ceab4c606a574ad739e9feca5b5dafacf0
 ms.openlocfilehash: bc87bafd1ce6926d787915fae2f72727940bb90e
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -150,10 +151,5 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看 Azure 密钥保管库的详细数据。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

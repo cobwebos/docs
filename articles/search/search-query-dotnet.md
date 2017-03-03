@@ -16,6 +16,7 @@ ms.author: brjohnst
 translationtype: Human Translation
 ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
 ms.openlocfilehash: 88d5148806e58d61b7b64327e07809eea5126211
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -165,10 +166,5 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 ```
 
 上面的示例代码使用控制台来输出搜索结果。 同样需要在自己的应用程序中显示搜索结果。 请在 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) 上查看此示例，查看如何在基于 ASP.NET MVC 的 Web 应用程序中呈现搜索结果。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

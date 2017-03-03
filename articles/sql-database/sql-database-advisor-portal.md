@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: f63bd47c15439e6fedc0f6edf579681697155592
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -147,10 +148,5 @@ SQL 数据库顾问提供了提高 SQL 数据库性能的建议。 通过提供 
 * [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
 * [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
 * [基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -18,6 +18,7 @@ ms.tgt_pltfrm: NA
 translationtype: Human Translation
 ms.sourcegitcommit: 3d04be3d2427bc59d24bfaad227730991b61265b
 ms.openlocfilehash: 162147607baa36de0487cebc06e7ada20f3dd0c0
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -115,10 +116,5 @@ Azure SQL 数据库自动导出现在处于预览状态，将在 2017 年 3 月 
 ## <a name="additional-resources"></a>其他资源
 * [New-AzureRmSqlDatabaseExport](https://msdn.microsoft.com/library/azure/mt707796\(v=azure.300\).aspx)
 * [Get-AzureRmSqlDatabaseImportExportStatus](https://msdn.microsoft.com/library/azure/mt707794\(v=azure.300\).aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
