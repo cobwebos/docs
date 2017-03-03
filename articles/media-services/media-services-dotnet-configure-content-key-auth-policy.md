@@ -17,6 +17,7 @@ ms.author: juliako;mingfeiy
 translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 3dcd45307716b7343fbac00e083e8f26c9eb967f
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -425,10 +426,5 @@ Microsoft Azure 媒体服务允许传送受高级加密标准 (AES)（使用 128
 
 ## <a name="next-step"></a>后续步骤
 配置内容密钥的授权策略后，请转到[如何配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)主题。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: af11866fc812cd8a375557b7bf9df5cdc9bba610
 ms.openlocfilehash: f0d0c05c08ce198e2702c76ad35b348107c664c7
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -94,9 +95,4 @@ ms.openlocfilehash: f0d0c05c08ce198e2702c76ad35b348107c664c7
 ## <a name="see-also"></a>另请参阅
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [Get Started with Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

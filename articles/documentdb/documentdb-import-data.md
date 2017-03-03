@@ -18,6 +18,7 @@ ms.author: anhoh
 translationtype: Human Translation
 ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
 ms.openlocfilehash: fd3ebcaa82952815ad31decd1b44cf6d41365d2f
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -522,10 +523,5 @@ DocumentDB - 顺序记录导入程序具有下列高级附加选项︰
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关 DocumentDB 的详细信息，请参阅[学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

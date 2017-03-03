@@ -18,6 +18,7 @@ ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 6f51f0585dfc75d28da72d1056ef7173c06b24fd
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -170,10 +171,5 @@ GitHub 上也提供了这些工具：[Azure/elastic-db-tools](https://github.com
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png
 [2]: ./media/sql-database-elastic-convert-to-use-elastic-tools/rangemapping.png
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
