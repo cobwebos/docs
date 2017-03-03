@@ -18,6 +18,7 @@ ms.author: jdial
 translationtype: Human Translation
 ms.sourcegitcommit: 3de0b167d0ad32de17093caf7e66a6d08f5c1c61
 ms.openlocfilehash: 762b048056752abd24328433ceb57de492dbf884
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -146,9 +147,4 @@ Azure 中的[网络限制](../azure-subscription-service-limits.md#networking-li
 * [使用 Azure 门户通过静态公共 IP 部署 VM](virtual-network-deploy-static-pip-arm-portal.md)
 * [使用模板通过静态公共 IP 部署 VM](virtual-network-deploy-static-pip-arm-template.md)
 * [通过 Azure 门户使用静态专用 IP 地址部署 VM](virtual-networks-static-private-ip-arm-pportal.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
