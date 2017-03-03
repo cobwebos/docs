@@ -17,6 +17,7 @@ ms.author: v-sharos@microsoft.com
 translationtype: Human Translation
 ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
 ms.openlocfilehash: 3575e4f22e17608de7f3b66e9dd577a1d4a4c148
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -306,10 +307,5 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 ## <a name="next-steps"></a>后续步骤
 了解 [StorSimple 安全性](storsimple-security.md)。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

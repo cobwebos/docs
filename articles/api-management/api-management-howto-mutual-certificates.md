@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 2ebe71c96fd9076a48f689041634dbd23d3d8414
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
@@ -151,10 +152,5 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API 的�
 [Next steps]: #next-steps
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

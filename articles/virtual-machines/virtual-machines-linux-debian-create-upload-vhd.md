@@ -18,6 +18,7 @@ ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
 ms.openlocfilehash: b38edfee4f74ede5fb647001cd64cbe81e941c41
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -94,10 +95,5 @@ ms.openlocfilehash: b38edfee4f74ede5fb647001cd64cbe81e941c41
 
 ## <a name="next-steps"></a>后续步骤
 现在，你可以使用 Debian 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果这是第一次将 .vhd 文件上载到 Azure，请参阅[创建和上载包含 Linux 操作系统的虚拟硬盘](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)中的步骤 2 和步骤 3。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

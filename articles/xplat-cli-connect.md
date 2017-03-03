@@ -19,6 +19,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -165,9 +166,4 @@ Azure CLI 提供两种命令模式让你使用不同的命令集来处理 Azure 
 * 若要使用 Azure CLI 命令，请参阅[资源管理器模式中的 Azure CLI 命令](virtual-machines/azure-cli-arm-commands.md)和[服务管理模式中的 Azure CLI 命令](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
 * 若要了解有关 Azure CLI、下载源代码、报告问题或贡献项目的详细信息，请访问[适用于 Azure CLI 的 GitHub 存储库](https://github.com/azure/azure-xplat-cli)。
 * 如果你在使用 Azure CLI 或 Azure 时遇到问题，请访问 [Azure 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting)。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

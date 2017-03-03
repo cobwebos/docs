@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
 ms.openlocfilehash: e1863b43706ffc200bb94c4a26ae75080a6dd857
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -183,10 +184,5 @@ ms.openlocfilehash: e1863b43706ffc200bb94c4a26ae75080a6dd857
 
 ## <a name="next-steps"></a>后续步骤
 了解如何使用本地 Web UI [管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

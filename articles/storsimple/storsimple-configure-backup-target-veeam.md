@@ -17,6 +17,7 @@ ms.author: hkanna
 translationtype: Human Translation
 ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
 ms.openlocfilehash: 3d9ca83e2672d9022e4f887b84555f0bf95f6da9
+ms.lasthandoff: 01/26/2017
 
 ---
 
@@ -552,9 +553,4 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 - 详细了解如何[从备份集还原](storsimple-restore-from-backup-set-u2.md)。
 - 详细了解如何执行[设备故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

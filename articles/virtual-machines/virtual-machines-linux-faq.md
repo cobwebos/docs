@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
 ms.openlocfilehash: 78b476b31f030fba4034dc1f499b020d244e8288
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -111,9 +112,4 @@ Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存�
         <td style="text-align:center">iloveyou!</td>
     </tr>
 </table>
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

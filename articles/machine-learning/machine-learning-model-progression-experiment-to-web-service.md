@@ -17,6 +17,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
 ms.openlocfilehash: 8c5a3ca30ae0539cded6cf9cd93ba1a42e19ba58
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -118,10 +119,5 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 * [机器学习教程：在 Azure 机器学习工作室中创建第一个实验](machine-learning-create-experiment.md)
 * [演练：在 Azure 机器学习中为信用风险评估开发预测分析解决方案](machine-learning-walkthrough-develop-predictive-solution.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

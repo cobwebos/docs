@@ -17,6 +17,7 @@ ms.author: v-sharos
 translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 7e526816f1a564ab80113c30d5c9671cb2b7e104
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -257,10 +258,5 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 ## <a name="next-steps"></a>后续步骤
 [部署你的 StorSimple 设备](storsimple-deployment-walkthrough.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

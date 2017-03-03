@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -267,10 +268,5 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 
 ## <a name="next-steps"></a>后续步骤
 现即可[部署和配置本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

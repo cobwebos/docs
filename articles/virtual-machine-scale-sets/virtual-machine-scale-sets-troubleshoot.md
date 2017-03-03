@@ -18,6 +18,7 @@ ms.author: guybo
 translationtype: Human Translation
 ms.sourcegitcommit: 4818c0c036c7e462af5b8d99f1085f8d9025156c
 ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -82,9 +83,4 @@ ms.openlocfilehash: 7b4db2f215b8f7369694a45533d0c862b8f8d08e
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
 [tables]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

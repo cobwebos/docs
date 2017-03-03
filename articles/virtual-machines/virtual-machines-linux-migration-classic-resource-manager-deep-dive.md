@@ -18,6 +18,7 @@ ms.author: kasing
 translationtype: Human Translation
 ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
 ms.openlocfilehash: c30916c0b5078a6e346ac2a7ddeb07eda3bda218
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -64,10 +65,5 @@ ms.openlocfilehash: c30916c0b5078a6e346ac2a7ddeb07eda3bda218
 * [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 * [平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](virtual-machines-windows-migration-classic-resource-manager.md)
 * [使用社区 PowerShell 脚本将经典虚拟机克隆到 Azure Resource Manager](virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

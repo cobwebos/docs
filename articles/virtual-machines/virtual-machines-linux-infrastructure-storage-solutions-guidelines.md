@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
 ms.openlocfilehash: 61bd36ff8b3bff0acb262f6d181ffe69e6b92d27
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -84,10 +85,5 @@ Azure 将对可用的数据磁盘数和带宽加以限制，具体取决于 VM �
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

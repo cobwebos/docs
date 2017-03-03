@@ -19,6 +19,7 @@ ms.author: sedusch
 translationtype: Human Translation
 ms.sourcegitcommit: d835d5825268a4ec0fa5b761f9b5714e3236b0ce
 ms.openlocfilehash: 1177321875aa41bc5604b587c4b99fbf81f8637a
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -1927,9 +1928,4 @@ Azure 中 SAP 系统的高可用性要点如下：
 * 若要备份 SAP DBMS 层，请参阅 [DBMS Guide][dbms-guide]（DBMS 指南）。
 * 备份 SAP 对话实例没有太大帮助，因为重新部署简单的对话实例通常更快。
 * 备份包含 SAP 系统全局目录的 VM 和不同实例的所有配置文件很有帮助，应该通过 Windows 备份或 Linux 上的 tar 执行此操作。 由于 Windows Server 2008 (R2) 与 Windows Server 2012 (R2) 之间存在差异，因此使用更新版的 Windows Server 可以更轻松地进行备份，我们建议运行 Windows Server 2012 (R2) 作为 Windows 来宾操作系统。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
