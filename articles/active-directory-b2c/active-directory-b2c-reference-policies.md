@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 33521eca953c0e14a7fdaa99edef2997397286eb
 ms.openlocfilehash: cd79a485feddc68924f9b7f5e7d8d614b4e28d28
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -168,10 +169,5 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 ## <a name="additional-resources"></a>其他资源
 * [令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。
 * [在使用者注册期间禁用电子邮件验证](active-directory-b2c-reference-disable-ev.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

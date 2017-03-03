@@ -17,6 +17,7 @@ ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: b57655c8041fa366d0aeb13e744e30e834ec85fa
 ms.openlocfilehash: 7432e45ef33bd4d51fca8e8db8ec880e8beaf3ab
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -226,9 +227,4 @@ Service Fabric 应用程序项目可以包含一个或多个应用程序参数�
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]:./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
 ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -212,9 +213,4 @@ ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
 [alerts]: app-insights-alerts.md
 [start]: app-insights-overview.md
 [track]: app-insights-api-custom-events-metrics.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

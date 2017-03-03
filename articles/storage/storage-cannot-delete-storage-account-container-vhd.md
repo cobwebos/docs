@@ -18,6 +18,7 @@ ms.author: genli
 translationtype: Human Translation
 ms.sourcegitcommit: d3d59e19ff654a953be43706dce926c4450c6179
 ms.openlocfilehash: 6493230295dbfc939df3daf8504a7d8662083f51
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -137,9 +138,4 @@ Blob“BlobName.vhd”已用作虚拟机磁盘 “VirtualMachineDiskName”，�
 ## <a name="next-steps"></a>后续步骤
 * [删除存储帐户](storage-create-storage-account.md#delete-a-storage-account)
 * [如何在 Microsoft Azure 中解除 blob 存储的锁定租约 (PowerShell)](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

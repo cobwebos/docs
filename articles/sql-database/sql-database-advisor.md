@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
 ms.openlocfilehash: a8d0b08abc7e3c688f9ab79499b3459b33f06848
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -70,10 +71,5 @@ Azure SQL 数据库可以学习和适应你的应用程序并提供自定义的�
 * [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
 * [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
 * [基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

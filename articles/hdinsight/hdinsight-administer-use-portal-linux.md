@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 8c439591dae0bd561ba4f079aba9f2073d1e954b
 ms.openlocfilehash: dc94c3f428200f107f7e953a57cf4e0e83bc7de1
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -314,9 +315,4 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop 命令行"
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -17,6 +17,7 @@ ms.author: darosa;sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 25dd25d8f8f0388ed7ef11bb26344ad7199fde2e
 ms.openlocfilehash: 3f0487fba592426c835d81a46a752697ecf34d8b
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -172,9 +173,4 @@ ms.openlocfilehash: 3f0487fba592426c835d81a46a752697ecf34d8b
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

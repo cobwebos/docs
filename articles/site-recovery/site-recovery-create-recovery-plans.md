@@ -17,6 +17,7 @@ ms.author: raynew
 translationtype: Human Translation
 ms.sourcegitcommit: 9ab51cb8e11df43ba2157b11e25a1f29b19e4da9
 ms.openlocfilehash: e36f19e9c429c0e4b42e96b28b1ba995bd1bf167
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -104,9 +105,4 @@ ms.openlocfilehash: e36f19e9c429c0e4b42e96b28b1ba995bd1bf167
 ## <a name="next-steps"></a>后续步骤
 
 [详细了解](site-recovery-failover.md)如何运行故障转移。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

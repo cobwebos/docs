@@ -18,6 +18,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 3c00742d9686b986841d676872cc93b58827a8e8
 ms.openlocfilehash: b87b507118244f0f275f54cd65cea13a92cdaec6
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -591,10 +592,5 @@ azure group delete vmsstestrg1
 * 若要了解有关通知功能的相关信息，请参阅[使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
 * 了解如何[使用审核日志在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 * 请查看[自动缩放运行 Ubuntu/Apache/PHP 应用的 VM 规模集](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale)模板，该模板设置 LAMP 堆栈以执行虚拟机规模集的自动缩放功能。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

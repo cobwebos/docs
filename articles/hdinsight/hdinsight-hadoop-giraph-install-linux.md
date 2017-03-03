@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
 ms.openlocfilehash: 699626f24e6f66f4b149feda5eb292e64d4b6647
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -178,10 +179,5 @@ ms.openlocfilehash: 699626f24e6f66f4b149feda5eb292e64d4b6647
 * [在 HDinsight 群集上安装 R](hdinsight-hadoop-r-scripts-linux.md)：说明如何使用群集自定义在 HDInsight Hadoop 群集上安装并使用 R。 R 是一种用于统计计算的开放源代码语言和环境。 它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。 它还提供了各种图形功能。
 
 * [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Solr。 Solr 允许对存储的数据执行功能强大的搜索操作。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

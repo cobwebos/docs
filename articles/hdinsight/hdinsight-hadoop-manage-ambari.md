@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
 ms.openlocfilehash: 34f5c92dc565e644bd8c569bfbea65e92ace5a19
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -240,10 +241,5 @@ Ambari 视图允许开发人员使用 [Ambari 视图框架](https://cwiki.apache
 * Hive 视图: Hive 视图允许你直接从 Web 浏览器运行 Hive 查询。 可保存查询、查看结果、将结果保存到群集存储中或将结果下载到本地系统。 有关使用 Hive 视图的详细信息，请参阅[将 Hive 视图与 HDInsight 配合使用](hdinsight-hadoop-use-hive-ambari-view.md)。
 
 * Tez 视图：Tez 视图让你能够通过查看 Tez 作业的执行方式和作业使用的资源更好地理解和优化作业。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

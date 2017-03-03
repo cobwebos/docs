@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 4fbe7bd802e9cc32d43f019980650c4723b75d5f
 ms.openlocfilehash: 7e821117e62eda286cefb59a5ded85b2f99f3ef7
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -174,10 +175,5 @@ UserPrincipalName - 属性 userPrincipalName 是用户登录 Azure AD 和 Office
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 
 了解有关 [Azure AD Connect：设计概念](active-directory-aadconnect-design-concepts.md)的详细信息
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

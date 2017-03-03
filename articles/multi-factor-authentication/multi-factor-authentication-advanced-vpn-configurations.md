@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: f68cf75cb8261ddac3fd56a8718f900bedb51c2b
 ms.openlocfilehash: 7e0f7d8fefad539960436a58a254087a4ebd2f78
+ms.lasthandoff: 02/15/2017
 
 ---
 
@@ -52,8 +53,3 @@ Azure 多重身份验证可以与 Juniper/Pulse Secure SSL VPN 设备集成，�
 - [通过适用于 Azure 多重身份验证的 NPS 扩展增强现有的身份验证基础结构](multi-factor-authentication-nps-extension.md)
 
 - [配置 Azure 多重身份验证设置](multi-factor-authentication-whats-next.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

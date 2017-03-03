@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: cf233279c0a26c3d2970596b1bb515508da20b89
 ms.openlocfilehash: ad696f14d48452840805bc413d890309e523ce34
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -459,10 +460,5 @@ wrinkling       2
 * [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

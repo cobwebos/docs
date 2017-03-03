@@ -18,6 +18,7 @@ ms.author: ganesr;cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
 ms.openlocfilehash: 0aacbdafdb5ded81dbc8495a30837e2f4941075f
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -383,10 +384,5 @@ PowerShell cmdlet `Get-AzureRmExpressRouteServiceProvider` 将返回此信息，
 
 * [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-arm.md)
 * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
 ms.openlocfilehash: 2de70faa090fb3da25fec8f8946e52fcae2677d3
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -355,9 +356,4 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 
 ## <a name="next-steps"></a>后续步骤
 有关创建数据管道以将数据从本地数据存储移动到 Azure 数据存储的分布说明，请参阅[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

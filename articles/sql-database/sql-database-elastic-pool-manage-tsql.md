@@ -18,6 +18,7 @@ ms.author: srinia
 translationtype: Human Translation
 ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
 ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -76,10 +77,5 @@ ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
 创建弹性池后，你可以通过创建弹性作业来管理池中的弹性数据库。 弹性作业可以用来根据池中数据库的数目来运行 T-SQL 脚本。 有关详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
 
 请参阅[使用 Azure SQL 数据库进行扩展](sql-database-elastic-scale-introduction.md)：使用弹性数据库工具扩展、移动数据、查询或创建事务。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -18,6 +18,7 @@ ms.author: raprasa
 translationtype: Human Translation
 ms.sourcegitcommit: b5419efbaf51476cfc662c8aa814001e2757b4b7
 ms.openlocfilehash: db7b24c049153b6622f50fd9934611d48c98a1e8
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -58,10 +59,5 @@ DocumentDB 旨在成为[全局分布式](documentdb-distribute-data-globally.md)
 若要在多个数据中心中复制 NoSQL 数据库，请参阅[使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)。 
 
 若要联系 Azure 支持，请[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

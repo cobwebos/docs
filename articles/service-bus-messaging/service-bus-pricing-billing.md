@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
 ms.openlocfilehash: bd042908fec2dcf499dd1cb5230f62ec4be9fdea
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -150,9 +151,4 @@ WCF 中继仅适用于标准层命名空间。 另外，中继的定价和连接
 * 有关服务总线和计费的一些常见问题解答，请参阅[服务总线定价常见问题解答](service-bus-faq.md#pricing)。
 
 [Azure classic portal]: http://manage.windowsazure.com
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

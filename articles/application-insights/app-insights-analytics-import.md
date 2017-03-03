@@ -15,6 +15,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 938f325e2cd4dfc1a192256e033aabfc39b85dac
 ms.openlocfilehash: 6bb1f31407f9af67e699bd110ee528dddee1a70f
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -364,9 +365,4 @@ namespace IngestionClient
 
 * [Analytics 查询语言教程](app-insights-analytics-tour.md)
 * [使用 *Logstash* 将数据发送到 Application Insights](https://github.com/Microsoft/logstash-output-application-insights)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 7c237bfb42fdd2ffdfface1a12ab21c51d2504bb
 ms.openlocfilehash: b327671b12bf6e2ce040ef6e6b0a58a0fead22b4
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -179,9 +180,4 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

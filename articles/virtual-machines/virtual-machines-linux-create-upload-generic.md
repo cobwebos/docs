@@ -18,6 +18,7 @@ ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: cb794e5da329173ab4d7c856733e6a0f2c5f7019
 ms.openlocfilehash: 7c53a5b443f8afa89dc7ede39f46d29eb39de6cc
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -186,10 +187,5 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
   > 
 
 * 然后，需要关闭虚拟机并将 VHD 上载到 Azure。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 7af856e32064f16e7cb1083432d4d5715cef6e3a
 ms.openlocfilehash: dbffb88020cf53eb59b98eb80e12a47bc17c5708
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -154,9 +155,4 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。 你可以使�
 [powershell-install-configure]: install-configure-powershell-linux.md
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

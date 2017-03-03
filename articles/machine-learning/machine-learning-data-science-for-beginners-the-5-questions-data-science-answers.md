@@ -18,6 +18,7 @@ ms.author: cgronlun;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 50d1f8dfc7ce2d8bf4b04cff68698eafd56ce9c2
 ms.openlocfilehash: 518a7d2b5e43d8133d54ab583e4545a3ee9b3cba
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -140,9 +141,4 @@ ms.openlocfilehash: 518a7d2b5e43d8133d54ab583e4545a3ee9b3cba
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室尝试第一个数据科学实验](machine-learning-create-experiment.md)
 * [在 Microsoft Azure 上获取机器学习简介](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

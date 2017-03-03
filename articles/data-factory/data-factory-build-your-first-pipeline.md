@@ -18,6 +18,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
 ms.openlocfilehash: 590d8e7c90381c455e0145a9016bd888ab0dda2c
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -107,8 +108,3 @@ Azure 门户和 Visual Studio 提供了生成数据工厂的 GUI 方式。 而 P
 
 
   
-
-
-<!--HONumber=Feb17_HO1-->
-
-

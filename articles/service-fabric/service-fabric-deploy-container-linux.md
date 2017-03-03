@@ -17,6 +17,7 @@ ms.author: msfussell
 translationtype: Human Translation
 ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
 ms.openlocfilehash: 056968900d8078dfe53948a2da1daa26cb04a713
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -302,9 +303,4 @@ Service Fabric 应用程序可以包含一个或多个容器，每个容器在�
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

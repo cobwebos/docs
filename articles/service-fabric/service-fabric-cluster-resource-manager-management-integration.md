@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: b2428f93680c12c76000fa8eb1a7138f72a8efe7
 ms.openlocfilehash: 9d67f089f4aba03e846a8fe020a91b6b1ac6ea48
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -184,9 +185,4 @@ PreferredLocation 约束稍有不同，因此它是唯一设置为“Optimizatio
 
 ## <a name="next-steps"></a>后续步骤
 * 从头开始并[获取 Service Fabric 群集资源管理器简介](service-fabric-cluster-resource-manager-introduction.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: annahar
 translationtype: Human Translation
 ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
 ms.openlocfilehash: d7df8f3271c6c92df427a840d73fdb9a0c6b54a1
+ms.lasthandoff: 02/14/2017
 
 ---
 
@@ -167,9 +168,4 @@ AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered
     ```
 
 13. 最后，必须将 DNS 资源记录配置为指向各自的负载平衡器的前端 IP 地址。 可以在 Azure DNS 中托管域。 有关将 Azure DNS 与负载平衡器配合使用的详细信息，请参阅[将 Azure DNS 与其他 Azure 服务配合使用](../dns/dns-for-azure-services.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

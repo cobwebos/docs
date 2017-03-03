@@ -17,6 +17,7 @@ ms.author: rashimg
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 89618f7549d8589d5ac684772832748ab9765d1a
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -257,9 +258,4 @@ SerDe 是用于分析嵌套 JSON 文档的最佳选择，它可让你定义 JSON
 [image-hdi-hivejson-serde_query2]: ./media/hdinsight-using-json-in-hive/serde_query2.png
 [image-hdi-hivejson-serde_query3]: ./media/hdinsight-using-json-in-hive/serde_query3.png
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
