@@ -18,6 +18,7 @@ ms.author: brjohnst
 translationtype: Human Translation
 ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
 ms.openlocfilehash: 3a5131323f438109d94137cb4f577054ec13227f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -178,10 +179,5 @@ serviceClient.Indexes.Delete("hotels");
 
 ## <a name="next-steps"></a>后续步骤
 创建 Azure 搜索索引后，就可以 [将内容上载到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

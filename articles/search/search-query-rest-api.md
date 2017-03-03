@@ -16,6 +16,7 @@ ms.author: ashmaka
 translationtype: Human Translation
 ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
 ms.openlocfilehash: 449110cfda1a08b73b5e21cbf495e59f32d80339
+ms.lasthandoff: 01/14/2017
 
 ---
 
@@ -163,9 +164,4 @@ api-key: [query key]
 ```
 
 要了解详细信息，请参阅 [搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)的“响应”部分。 有关请求失败时可能返回的其他 HTTP 状态代码的详细信息，请参阅 [HTTP 状态代码（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
