@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -166,9 +167,4 @@ ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
 [jettyurl]: ./media/web-sites-java-get-started/jettyurl.png
 [tomcat]: ./media/web-sites-java-get-started/tomcat.png
 [jetty]: ./media/web-sites-java-get-started/jetty.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
