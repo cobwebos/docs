@@ -17,6 +17,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 239702c8b099dd422e6b67a267b1185a27a21807
 ms.openlocfilehash: 52d9194920019291696d5ace3ac24751fde674ab
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -246,10 +247,5 @@ Office 365 服务和 CRM Online 要求启用高级版外接程序。 [定价详�
 
 ### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>是否可以通过 ExpressRoute 连接访问 Dynamics 365 for Operations（以前称为 Dynamics AX Online）？
 是的。 [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) 托管在 Azure 上。 可以启用 ExpressRoute 线路上的 Azure 公共对等互连来连接到它。 
-
-
-
-
-<!--HONumber=Feb17_HO4-->
 
 

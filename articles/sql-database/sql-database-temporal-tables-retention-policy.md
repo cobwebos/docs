@@ -18,6 +18,7 @@ ms.author: bonova
 translationtype: Human Translation
 ms.sourcegitcommit: dd09cf5f9ad4bc82d9685b656eb40d31ac13fbd2
 ms.openlocfilehash: a0f5ef966bf4de86d337a561a4b9e2ded8b55488
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -186,10 +187,5 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 访问第 9 频道收听[客户实施临时表的真实成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)，观看[临时表现场演示](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
 
 有关临时表的详细信息，请查看 [MSDN 文档](https://msdn.microsoft.com/library/dn935015.aspx)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

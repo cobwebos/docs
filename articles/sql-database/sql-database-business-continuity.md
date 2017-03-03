@@ -19,6 +19,7 @@ ms.author: sashan
 translationtype: Human Translation
 ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
 ms.openlocfilehash: 8fefa688ee52395d7dee2f53da12ebc50e84fb8e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -154,10 +155,5 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 
 ## <a name="next-steps"></a>后续步骤
 若要探讨为独立数据库和弹性池设计应用程序时的注意事项，请参阅[设计用于云灾难恢复的应用程序](sql-database-designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
