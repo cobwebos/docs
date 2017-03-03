@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
 ms.openlocfilehash: 0c37a035cfc782e05dd72da7323fe244eadc4ce9
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -107,10 +108,5 @@ SnelStart 当前的目标是不断拓展客户群体并使他们感到满意。 
 * 有关 Web 角色和辅助角色的详细信息，请参阅[辅助角色](../fundamentals-introduction-to-azure.md#compute)。    
 * 有关 Azure SQL 数据仓库的详细信息，请参阅 [SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * 有关 SnelStart 的详细信息，请参阅 [SnelStart](http://www.snelstart.nl)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

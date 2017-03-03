@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 5730556f4d5af04481c771c8a70f003d6cd2917c
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -103,10 +104,5 @@ GEP 采用了其他一些 Azure 服务，使 SMART by GEP 能够响应客户需�
 * Huzaifa Matawala，GEP 助理架构主任
 * Sathyan Narasingh，GEP 工程经理
 * Deepa Velukutty，GEP 数据库架构师
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

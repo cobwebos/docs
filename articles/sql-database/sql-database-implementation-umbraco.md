@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
 ms.openlocfilehash: 774d5ac6f3d5d9d97120ab895157677e4a92bb05
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -129,10 +130,5 @@ Mikkel Madsen 总结，“除了将 Azure 服务总线与 Azure SQL 数据库配
 * 有关备份与恢复的详细信息，请参阅[业务连续性](sql-database-business-continuity.md)。    
 * 有关监视池的详细信息，请参阅[监视池](sql-database-elastic-pool-manage-portal.md)。    
 * 有关 Umbraco 的详细信息，请参阅 [Umbraco](https://umbraco.com/cloud)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

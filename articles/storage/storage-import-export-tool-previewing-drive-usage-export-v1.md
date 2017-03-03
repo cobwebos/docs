@@ -17,6 +17,7 @@ ms.author: muralikk
 translationtype: Human Translation
 ms.sourcegitcommit: 358e3f2574cab0150c59f96b9bc4d32d959e94a8
 ms.openlocfilehash: 9ba9a3970925466285ae1df4676501fbdd24bd66
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -72,9 +73,4 @@ Number of drives needed:        3
   
 ## <a name="see-also"></a>另请参阅  
 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

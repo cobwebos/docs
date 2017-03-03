@@ -17,6 +17,7 @@ ms.author: manuaery
 translationtype: Human Translation
 ms.sourcegitcommit: a437ef2ba20970e2dd9a06fbc9e39fff2bb82da7
 ms.openlocfilehash: 22eb95bf0e3a20893acbb860ad10cfe6a3bcf088
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -214,10 +215,5 @@ ms.openlocfilehash: 22eb95bf0e3a20893acbb860ad10cfe6a3bcf088
 **问：** 是否可以将包含本地固定卷的卷容器故障转移到云设备？
 
 **答：** 可以。 本地固定卷将作为分层卷故障转移。 有关[对跨版本地固定卷进行故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)的详细信息
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
