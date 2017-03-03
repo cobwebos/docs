@@ -18,6 +18,7 @@ ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: 988c887d2d26ab3ab5b287f803c7d598bd6620e3
 ms.openlocfilehash: 23b1780df8ec01c0692e3afd408ea44fc9773b28
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -107,10 +108,5 @@ DocumentDB 中的 JavaScript 执行是在关系型数据库系统所支持的概
 当你准备好帐户可了解更多信息之后，即可访问我们的 [学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/) 浏览所有可供你使用的学习资源。 
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

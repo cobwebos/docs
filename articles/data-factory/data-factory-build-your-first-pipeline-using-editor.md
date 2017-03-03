@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
 ms.openlocfilehash: c9f2e3beafd19e0d4d62e409a80da336be17b90b
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -390,9 +391,4 @@ ms.openlocfilehash: c9f2e3beafd19e0d4d62e409a80da336be17b90b
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [计划和执行](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

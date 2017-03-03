@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
 ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -514,10 +515,5 @@ ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
 [数据工厂 .NET API 参考](/dotnet/api/) | 详细介绍了数据工厂 .NET SDK（查找树视图中的 Microsoft.Azure.Management.DataFactories.Models）。 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
