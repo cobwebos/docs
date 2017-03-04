@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 83ef925a8268873d09c4a1611a1f2341acd92ba7
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -114,9 +115,4 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 [5]: ./media/web-sites-php-web-site-gallery/startmarketplace.png
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
