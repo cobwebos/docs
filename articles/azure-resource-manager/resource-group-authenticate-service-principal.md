@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
 ms.openlocfilehash: 31495f402b810c524bd7b906498774302500b732
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -78,7 +79,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.
 1. 登录到你的帐户。
    
    ```powershell
-   Add-AzureRmAccount
+   Login-AzureRmAccount
    ```
 
 2. 通过提供显示名称、用于描述应用程序的 URI、用于标识应用程序的 URI，以及应用程序标识的密码来创建新的 Active Directory 应用程序。
@@ -152,7 +153,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.
 4. 通过指定此帐户为服务主体并提供凭据对象来以服务主体身份登录。 
    
    ```powershell
-   Add-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId $tenant
+   Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId $tenant
    ```
    
      现在，你已作为所创建 Active Directory 应用程序的服务主体进行身份验证。
@@ -234,7 +235,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.
 2. 登录到你的 Azure 帐户。
    
    ```powershell
-   Add-AzureRmAccount
+   Login-AzureRmAccount
    ```
 3. 通过提供显示名称、用于描述应用程序的 URI、用于标识应用程序的 URI，以及应用程序标识的密码来创建新的 Active Directory 应用程序。
    
@@ -304,7 +305,7 @@ $tenant = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
 若要在脚本中进行身份验证，请指定帐户为服务主体，并提供证书指纹、应用程序 ID 和租户 ID。 若要使脚本自动化，可以将这些值存储为环境变量并在执行操作期间检索它们，或者可以将其包含在脚本中。
 
 ```powershell
-Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint $cert.Thumbprint -ApplicationId $app.ApplicationId -TenantId $tenant
+Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $cert.Thumbprint -ApplicationId $app.ApplicationId -TenantId $tenant
 ```
 
 现在，你已作为所创建 Active Directory 应用程序的服务主体进行身份验证。
@@ -363,10 +364,5 @@ New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -
 * 有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅 [Developer's guide to authorization with the Azure Resource Manager API](resource-manager-api-authentication.md)（使用 Azure Resource Manager API 进行授权的开发人员指南）。
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。 
 * 有关 Active Directory 身份验证的详细信息，请参阅 [Authentication Scenarios for Azure AD](../active-directory/active-directory-authentication-scenarios.md)（Azure AD 的身份验证方案）。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

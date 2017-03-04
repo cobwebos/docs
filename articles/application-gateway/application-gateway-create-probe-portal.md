@@ -18,6 +18,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -78,7 +79,7 @@ ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
 
 ### <a name="step-2"></a>步骤 2
 
-在“appGatewayBackEndHttp”设置边栏选项卡上，单击“使用自定义探测”，然后选择在“创建探测”[](#createprobe)部分创建的探测。
+在 **appGatewayBackEndHttp** 设置边栏选项卡上，单击 **使用自定义探测** ，然后选择在 [创建探测](#createprobe) 部分创建的探测。
 完成后，单击“确定”即可应用相关设置。
 
 ![appgatewaybackend 设置边栏选项卡][5]
@@ -94,9 +95,4 @@ ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
 [3]: ./media/application-gateway-create-probe-portal/figure3.png
 [4]: ./media/application-gateway-create-probe-portal/figure4.png
 [5]: ./media/application-gateway-create-probe-portal/figure5.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
