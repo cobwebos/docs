@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 7e5e1b41828d0c3d81f5594609910ecdba02a249
 ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure 数据工厂文档
@@ -137,10 +138,5 @@ ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
         </div>
     </li>
 </ul>
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

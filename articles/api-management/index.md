@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 5710f0aeb9af0f5d829c30d4b3e604c0a62afdb5
 ms.openlocfilehash: 09eb558a4e4b32fa6e1094c55f321db8ce008d4d
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="api-management-documentation"></a>API 管理文档
@@ -143,10 +144,5 @@ ms.openlocfilehash: 09eb558a4e4b32fa6e1094c55f321db8ce008d4d
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
 ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -150,9 +151,4 @@ ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
 * 了解如何将 [Operations Manager 代理](log-analytics-om-agents.md)连接到 Log Analytics。
 * [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
 * 熟悉[日志搜索](log-analytics-log-searches.md)以查看解决方案收集的详细信息。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

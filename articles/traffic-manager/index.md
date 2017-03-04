@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: c2835e48c1995264af6614fe74fe1594bae86245
 ms.openlocfilehash: 1dab11c9d6874bba16cc047cfc8b03c82e236a35
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="traffic-manager-documentation"></a>流量管理器文档
@@ -131,10 +132,5 @@ ms.openlocfilehash: 1dab11c9d6874bba16cc047cfc8b03c82e236a35
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

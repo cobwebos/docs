@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: dc240443ab6163eb296eaa4d93a17bbe1723ba2c
 ms.openlocfilehash: 7123c27b8e21e7db77245a5119b20840214d9ac2
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure Web 应用文档
@@ -231,10 +232,5 @@ ms.openlocfilehash: 7123c27b8e21e7db77245a5119b20840214d9ac2
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

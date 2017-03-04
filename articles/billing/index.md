@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 4a6b1a9e581904f7f7de2a6592dfb163ab2ec45e
 ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="azure-billing-documentation"></a>Azure 计费文档
@@ -110,10 +111,5 @@ ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

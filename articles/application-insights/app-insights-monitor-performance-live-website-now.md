@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 917f54248f4c9277caa3cf09d92f78593a901e89
 ms.openlocfilehash: fd76f40f5a34b6adf9c6ec3bded604d59b6baa72
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -208,9 +209,4 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -18,6 +18,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
 ms.openlocfilehash: 18bb55a638b998dec0182a61a95c4bbde80bb0d3
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 18bb55a638b998dec0182a61a95c4bbde80bb0d3
 [Azure 机器学习工作室](https://studio.azureml.net/)拥有一个大型算法库，从回归、分类、类聚到异常检测系列。 每一类算法都可用于解决一种类型的机器学习问题。
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>下载：机器学习算法备忘单
-**在此处下载该备忘单：[](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)机器学习算法备忘单（11x17 英寸）**
+**在此处下载该备忘单：[机器学习算法备忘单（11x17 英寸）](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
 ![机器学习算法备忘单：了解如何选择机器学习算法。][cheat-sheet]
 
@@ -85,9 +86,4 @@ ms.openlocfilehash: 18bb55a638b998dec0182a61a95c4bbde80bb0d3
 [initialize-model]: https://msdn.microsoft.com/library/azure/0c67013c-bfbc-428b-87f3-f552d8dd41f6/
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: cf5ecd7652bf1b10d24731a5b6829995fea81e41
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -151,9 +152,4 @@ azure vm endpoint delete web1 tcp-80-80
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

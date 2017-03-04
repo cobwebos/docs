@@ -17,6 +17,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 15ac382f72cab455246ffcc05f08c8aba5876c8f
 ms.openlocfilehash: c90bb4f41661aedec2bde53abe035fe9bcc80320
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -170,8 +171,3 @@ VPN 网关基本上是一个多宿主设备，其中一个 NIC 进入客户专�
 
 * 有关 VPN 网关的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
 * 有关 VPN 网关配置设置的详细信息，请参阅[关于 VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。
-
-
-<!--HONumber=Feb17_HO3-->
-
-

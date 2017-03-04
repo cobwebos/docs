@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 0a09f1511778623b21a26042a752009ae2208ba6
 ms.openlocfilehash: 415f6f71642726aeb8477f067bd406a57717ff2a
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -280,9 +281,4 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 [img-hbase-shell]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

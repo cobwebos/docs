@@ -18,6 +18,7 @@ ms.author: tobiast
 translationtype: Human Translation
 ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
 ms.openlocfilehash: cc756c662b97c64ab30a7d5bf2cc325f9e74d905
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -45,10 +46,5 @@ ms.openlocfilehash: cc756c662b97c64ab30a7d5bf2cc325f9e74d905
 ## <a name="additional-resources"></a>其他资源
 * [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * 浏览所有 [SQL 数据库的功能](https://azure.microsoft.com/services/sql-database/)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 2dc340dcb864325554700f58057d157dd46f7f7a
 ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
+ms.lasthandoff: 02/09/2017
 
 ---
 
@@ -139,9 +140,4 @@ ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

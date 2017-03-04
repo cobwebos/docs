@@ -17,6 +17,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 23c49393a115d9cd0ac3a1b0f146e9dcc780347e
 ms.openlocfilehash: 42be5d71d8f22a2eb06f7ca0ebd4c33fb3d8bebe
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -202,9 +203,4 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
 **答：**否。  Azure AD 不支持 LDAP 协议。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

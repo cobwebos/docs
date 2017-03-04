@@ -18,6 +18,7 @@ ms.author: cgronlun;tedway;olgali
 translationtype: Human Translation
 ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
 ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -112,9 +113,4 @@ Azure 机器学习具有在云中创建完整的预测分析解决方案所需�
 
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

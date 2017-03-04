@@ -17,6 +17,7 @@ ms.author: rli
 translationtype: Human Translation
 ms.sourcegitcommit: 6c8c04e0237e2168df60ecc597754c38af167e14
 ms.openlocfilehash: 0aed3d224199b17bac748b14416a738eac342103
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -88,10 +89,5 @@ Azure 内容交付网络 (CDN) 将静态 Web 内容缓存在按特定策略布�
 了解如何通过 [.NET](cdn-app-dev-net.md) 或 [Node.js](cdn-app-dev-node.md) 实现 Azure CDN 的自动化。
 
 有关定价信息，请参阅 [CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

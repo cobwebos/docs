@@ -17,6 +17,7 @@ ms.author: banders;magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: 6a527fa303f1e2bd06ac662e545d6b6a1d299fb4
 ms.openlocfilehash: cd06dfd498540970dc8ed29650f4d9e3ca57939b
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -185,9 +186,4 @@ OMS 网关需要 Internet 访问权限。 将代理服务器或防火墙设置�
 ## <a name="next-steps"></a>后续步骤
 * [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
 * 熟悉[日志搜索](log-analytics-log-searches.md)以查看解决方案收集的详细信息。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

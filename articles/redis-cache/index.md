@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: ba5cba11b7b5ba142094e9d2c0b027386266e83a
 ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="redis-cache-documentation"></a>Redis 缓存文档
@@ -195,10 +196,5 @@ ms.openlocfilehash: 19756171a8831eef9ac25cfa619a815d17140257
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -18,6 +18,7 @@ ms.author: danlep
 translationtype: Human Translation
 ms.sourcegitcommit: 7d153f1f45eb5cb06d7b960e7449450b4c74747a
 ms.openlocfilehash: e6c1fcea6ba7f6865cab97be9e3431bec2184064
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -48,10 +49,5 @@ ms.openlocfilehash: e6c1fcea6ba7f6865cab97be9e3431bec2184064
 ## <a name="create-rdma-clusters-for-mpi-workloads"></a>为 MPI 工作负荷创建 RDMA 群集
 * [教程：在 Azure 中的 Linux RDMA 群集上运行 OpenFOAM 和 Microsoft HPC Pack](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [设置 Linux RDMA 群集以运行 MPI 应用程序](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 3219df0e45d516ea332725b3e1955026cc1db231
 ms.openlocfilehash: 88fb93b8f3e196121b635d5ce7a21bf8f8c46be5
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -513,13 +514,8 @@ EXIT %ERRORLEVEL%
 [变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[终结点]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

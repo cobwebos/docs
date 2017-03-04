@@ -71,8 +71,3 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=backup)
 ## [服务更新](https://azure.microsoft.com/updates/?product=backup)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

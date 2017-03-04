@@ -17,6 +17,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: baf389dcdfb38053b9feb976d19b471838f1315e
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -299,10 +300,5 @@ DnsSettings              : {
 
 * [Azure 负载平衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

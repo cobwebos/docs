@@ -19,6 +19,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
 ms.openlocfilehash: 92c8f2e0f2dfa35c904a1132d72c037ceb7d3765
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -119,10 +120,5 @@ ms.openlocfilehash: 92c8f2e0f2dfa35c904a1132d72c037ceb7d3765
 * 若要了解如何在迁移后处理 UTC 时间，请参阅 [Modifying the default time zone for your local time zone](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/)（针对本地时区修改默认时区）。
 * 若要了解如何在迁移后更改数据库的默认语言，请参阅 [How to change the default language of Azure SQL Database](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/)（如何更改 Azure SQL 数据库的默认语言）。
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

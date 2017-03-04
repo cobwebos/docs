@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: c9a4b71fc888f5b2b9a32af80d1d4947ff731157
 ms.openlocfilehash: 091259841325103ce6733796f1cfe9109e39877b
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
@@ -125,10 +126,5 @@ ms.openlocfilehash: 091259841325103ce6733796f1cfe9109e39877b
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

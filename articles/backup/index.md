@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 4d159b2cec70d9491a562f460629d8efa511d695
 ms.openlocfilehash: 29466a465865dc17350eb4aa70a86f9c973b693a
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="backup-documentation"></a>备份文档
@@ -144,10 +145,5 @@ ms.openlocfilehash: 29466a465865dc17350eb4aa70a86f9c973b693a
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

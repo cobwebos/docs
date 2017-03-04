@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: ff1cc256ff9ba84504a9df16c33888a920f62cd6
 ms.openlocfilehash: da4f6ab3c7f0c4f96440b3008e6ac62d94ea2406
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="virtual-machines-documentation"></a>虚拟机文档
@@ -60,10 +61,5 @@ ms.openlocfilehash: da4f6ab3c7f0c4f96440b3008e6ac62d94ea2406
     </li>    
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

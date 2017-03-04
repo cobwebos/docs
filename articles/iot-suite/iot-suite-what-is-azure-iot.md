@@ -18,6 +18,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
 ms.openlocfilehash: 57c7b895579e1c1e86224a60d961721d2d4cf638
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -52,9 +53,4 @@ Microsoft Azure IoT 套件是企业级解决方案，让用户能够通过一组
 [Azure Machine Learning]: https://azure.microsoft.com/documentation/services/machine-learning/
 [Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

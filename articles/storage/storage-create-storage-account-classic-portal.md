@@ -17,6 +17,7 @@ ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
 ms.openlocfilehash: 599d509d00e8366a5095cac7503b11cf818e6a34
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -171,10 +172,5 @@ Azure 存储帐户授予你访问 Azure 存储空间中的 Azure Blob、队列�
 * 若要了解有关 Azure 存储空间的详细信息，请参阅 [Azure 存储空间文档](https://azure.microsoft.com/documentation/services/storage/)。
 * 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
