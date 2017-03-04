@@ -16,6 +16,7 @@ ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: 9af9f95e9638eda71fbc4508bea8e35ce5191734
 ms.openlocfilehash: 3caabe366db4def4f8332c64d08f86f271c31bb2
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -44,10 +45,5 @@ ms.openlocfilehash: 3caabe366db4def4f8332c64d08f86f271c31bb2
   * 将共享数据存储在服务外部的存储位置，如本地文件共享或 OneDrive。
   * 在模板映像中配置任何系统范围的设置，而不是在服务中的单个虚拟机上配置。
   * 对已发布的应用程序禁用自动软件更新 - 而是将其手动应用到模板映像，并在从模板进行部署前对其测试。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

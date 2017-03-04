@@ -18,6 +18,7 @@ ms.author: yushwang
 translationtype: Human Translation
 ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
 ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -55,10 +56,5 @@ BGP 使多个网关可以从不同网络获知和传播前缀，而无论它们�
 
 ## <a name="next-steps"></a>后续步骤
 有关为跨界连接和 VNet 到 VNet 连接配置 BGP 的步骤，请参阅 [Azure VPN 网关上的 BGP 入门](vpn-gateway-bgp-resource-manager-ps.md) 。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

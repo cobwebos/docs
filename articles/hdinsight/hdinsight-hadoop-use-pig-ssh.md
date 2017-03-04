@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: 271a15d258177c98ad72be007c20ae278df6236b
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -149,10 +150,5 @@ Windows 未提供内置的 SSH 客户端。 建议使用可从 [http://www.chiar
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

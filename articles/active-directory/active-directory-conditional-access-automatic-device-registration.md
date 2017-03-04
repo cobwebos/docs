@@ -16,6 +16,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
 ms.openlocfilehash: 8fb880a03548540059ad896925adb57577d1aed2
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -95,10 +96,5 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 * [为加入 Windows 7 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md)
 * [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 * [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

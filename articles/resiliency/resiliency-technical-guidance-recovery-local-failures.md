@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 6df92e3c43a9e7ae2e13f21b05cbb94088c46516
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -193,10 +194,5 @@ Azure SQL 数据库对节点级故障提供内置的复原功能。 所有写入
 
 ## <a name="next-steps"></a>后续步骤
 本文是着重介绍 [Azure 复原技术指南](resiliency-technical-guidance.md)的系列教程的一部分。 本系列教程的下一篇文章是[在发生区域范围的服务中断后进行恢复](resiliency-technical-guidance-recovery-loss-azure-region.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

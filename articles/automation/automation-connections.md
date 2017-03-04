@@ -17,6 +17,7 @@ ms.author: magoedte; bwren
 translationtype: Human Translation
 ms.sourcegitcommit: c86ec1d328d3cbf62c1a563766574a006299b232
 ms.openlocfilehash: 8bbd077108ba6ca6df67b64ab3fa24c81bf0ab00
+ms.lasthandoff: 01/14/2017
 
 ---
 
@@ -107,8 +108,3 @@ ms.openlocfilehash: 8bbd077108ba6ca6df67b64ab3fa24c81bf0ab00
 - 查看[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)，了解如何引导和控制 Runbook 中的逻辑流。  
 
 - 若要详细了解 Azure 自动化如何使用 PowerShell 模块，以及如何根据最佳实践创建你自己的 PowerShell 模块（充当 Azure 自动化中的集成模块），请参阅[集成模块](automation-integration-modules.md)。  
-
-
-<!--HONumber=Jan17_HO2-->
-
-

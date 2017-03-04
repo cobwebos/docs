@@ -17,6 +17,7 @@ ms.author: masnider;
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 0bf0755d1c3155ce0203e8070995c298f50bd4db
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -113,9 +114,4 @@ Service Fabric 中常见的无状态服务使用示例是作为前端，它公�
 * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services 高级用法](service-fabric-reliable-services-advanced-usage.md)
 * [Reliable Actors 编程模型](service-fabric-reliable-actors-introduction.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -18,6 +18,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 2d9feed054fb4641e660c685d396260246ed1d54
 ms.openlocfilehash: 6a02bb20ff2ed10ed528bfe2a3aae51ab20e4a60
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -1282,9 +1283,4 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

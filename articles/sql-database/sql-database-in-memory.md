@@ -18,6 +18,7 @@ ms.author: jodebrui
 translationtype: Human Translation
 ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
 ms.openlocfilehash: 620572f66367f61c6ee61d3c044083a0f71aca6f
+ms.lasthandoff: 01/12/2017
 
 ---
 
@@ -518,9 +519,4 @@ GO
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
 - [SQL Server Data Tools (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

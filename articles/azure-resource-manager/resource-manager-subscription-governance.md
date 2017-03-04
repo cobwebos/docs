@@ -17,6 +17,7 @@ ms.author: rodend;karlku;tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: adae9827bbdb5f72b9e0fb4a1792fe54b9324706
 ms.openlocfilehash: 9f4f0ce9e389fa560345c77502db8e225827f054
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -250,10 +251,5 @@ Azure 在最初发布时，对订阅的访问控制非常直接：只允许管�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解订阅监管后，接下来可以了解如何实施这些建议。 请参阅 [Examples of implementing Azure subscription governance](resource-manager-subscription-examples.md)（Azure 订阅监管实施示例）。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

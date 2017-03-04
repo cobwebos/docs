@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 0b2c783712419de1ab1897a0404429fc4ed4c688
 ms.openlocfilehash: 244c3320d673b884057b4200bed0c7858b1a2fea
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -607,9 +608,4 @@ ms.openlocfilehash: 244c3320d673b884057b4200bed0c7858b1a2fea
 
 ## <a name="performance-and-tuning"></a>性能和优化
  若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

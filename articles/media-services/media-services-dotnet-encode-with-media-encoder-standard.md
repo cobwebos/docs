@@ -17,6 +17,7 @@ ms.author: juliako;anilmur
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 775578cb4e89f561449eea10b21a300f20646424
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -146,10 +147,5 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
 ## <a name="see-also"></a>另请参阅
 [如何使用 Media Encoder Standard 通过 .NET 来生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
 [媒体服务编码概述](media-services-encode-asset.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

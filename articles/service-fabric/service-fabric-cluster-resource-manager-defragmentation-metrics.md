@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 5ef6381f7d182c818171eca3e3d32a00bc30268e
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -88,9 +89,4 @@ ClusterManifest.xml：
 * 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[此文](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

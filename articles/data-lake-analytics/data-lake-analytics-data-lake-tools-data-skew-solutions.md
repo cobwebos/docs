@@ -17,6 +17,7 @@ ms.author: yanacai
 translationtype: Human Translation
 ms.sourcegitcommit: 4ed240c0e636bb0b482c103bbe8462d86769ecc3
 ms.openlocfilehash: 13fa1bc8278460c1195ec553c32ff79d11240be3
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -189,9 +190,4 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
         //Your combiner code goes here.
         }
     }
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 
