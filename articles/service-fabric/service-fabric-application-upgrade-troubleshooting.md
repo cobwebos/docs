@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
 ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
 ms.openlocfilehash: 2149bcf588b019a0c0f3c64a4e39fec9b9bc5925
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -223,10 +224,5 @@ Service Fabric 将所有百分比转换为实际实体（如副本、分区和�
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

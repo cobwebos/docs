@@ -19,6 +19,7 @@ ms.author: wesmc
 translationtype: Human Translation
 ms.sourcegitcommit: c8e9f9709d13295c9414e525f1f60abf0d0accb7
 ms.openlocfilehash: 0bfbfd3828aacdee0b6630ced034f2c1e0451abd
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -233,9 +234,4 @@ module.exports = function(context) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

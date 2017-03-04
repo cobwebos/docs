@@ -17,6 +17,7 @@ ms.author: jodehavi;stgriffi
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: cc872e8d9bc0662f46d5f394f9c98885e34fe67a
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -437,9 +438,4 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 对于操作，选择“**Office 365 - 发送电子邮件**”。 填写字段，创建当定义的条件返回 **false** 时要发送的电子邮件。 如果没有 Office 365，可以查看能够达到相同效果的替代方案。
 
 现在端到端管道已创建完毕，它每分钟都会查找一次是否有新的密钥保管库审核日志。 它将发现的新日志推送到服务总线队列。 当新消息进入队列中时，将触发逻辑应用。 如果事件内的 *appid* 与调用应用程序的应用 ID 不匹配，将发送一封电子邮件。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

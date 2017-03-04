@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
 ms.sourcegitcommit: 5a0362caf0082112b7d9c648c9ecfb893d8ac954
 ms.openlocfilehash: 3f8fb1da14a65454d3c7997de80f399110b3b441
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -69,9 +70,4 @@ MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService 和 MaxPer
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

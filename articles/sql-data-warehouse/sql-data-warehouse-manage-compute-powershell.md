@@ -17,6 +17,7 @@ ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
 ms.openlocfilehash: a4cde433850ab3627f870b51f5a897c6f846c2f0
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -128,9 +129,4 @@ $resultDatabase
 <!--Other Web references-->
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 [Azure portal]: http://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

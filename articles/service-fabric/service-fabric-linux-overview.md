@@ -12,11 +12,12 @@ ms.devlang: Java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
+ms.date: 03/02/2017
 ms.author: SubramaR
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: 175edd2c45319f197d1df65ae22853ca0dc3d310
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -46,10 +47,5 @@ Linux 上的 Service Fabric 在概念上等同于 Windows 上的 Service Fabric�
 2. [在 Linux 上准备开发环境](service-fabric-get-started-linux.md)
 3. [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
 4. [在 Linux 上创建第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c8568846837f404eee0293be284c70bd27f06380
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -688,9 +689,4 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
 [Microsoft.Azure.Mobile.Server.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Files/
 [了解共享访问签名]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [创建 Azure 存储帐户]:  ../storage/storage-create-storage-account.md#create-a-storage-account
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
