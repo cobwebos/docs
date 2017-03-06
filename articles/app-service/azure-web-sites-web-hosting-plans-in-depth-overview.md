@@ -32,7 +32,7 @@ ms.lasthandoff: 02/16/2017
 - 实例大小（小、中、大）
 - SKU（免费、共享、基本、标准、高级）
 
-[](http://go.microsoft.com/fwlink/?LinkId=529714) 中的 Web 应用、移动应用、Function App、API 应用均在应用服务计划中运行。  同一订阅、区域和资源组中的应用可共享应用服务计划。 
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 中的 Web 应用、移动应用、Function App、API 应用均在应用服务计划中运行。  同一订阅、区域和资源组中的应用可共享应用服务计划。 
 
 分配到**应用服务计划**的所有应用程序将共享它定义的资源，在托管多个应用时可以节省成本。
 
