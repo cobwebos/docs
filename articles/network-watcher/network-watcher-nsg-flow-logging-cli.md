@@ -33,6 +33,8 @@ ms.lasthandoff: 02/23/2017
 
 网络安全组流日志是网络观察程序的一项功能，可用于查看有关通过网络安全组的入口和出口 IP 流量的信息。 这些流日志以 json 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
 ## <a name="enable-network-security-group-flow-logs"></a>启用网络安全组流日志
 
 以下示例显示了用于启用流日志的命令：
