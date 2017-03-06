@@ -1,5 +1,5 @@
 ---
-title: "开始通过 Azure PowerShell 使用 Azure SQL 数据库的备份和还原进行数据保护和恢复 | Microsoft Docs"
+title: "PowerShell：备份和还原 Azure SQL 数据库 | Microsoft 文档"
 description: "本教程介绍如何使用 PowerShell 从自动备份还原到一个时间点、将自动备份存储在 Azure 恢复服务保管库中，以及从 Azure 恢复服务保管库中还原"
 keywords: "sql 数据库教程"
 services: sql-database
@@ -17,16 +17,17 @@ ms.topic: hero-article
 ms.date: 12/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 68a4ed7aad946dda644a0f085c48fd33f453e018
-ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
+ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
+ms.openlocfilehash: 8a3ede8af471e656e830e38e0cf2f3a909fdaadb
+ms.lasthandoff: 02/18/2017
 
 
 ---
 
 
-# <a name="get-started-with-backup-and-restore-for-data-protection-and-recovery-using-powershell"></a>开始通过 PowerShell 使用备份和还原进行数据保护和恢复
+# <a name="tutorial-back-up-and-restore-an-azure-sql-database-using-powershell"></a>教程：使用 PowerShell 备份和还原 Azure SQL 数据库
 
-本入门教程介绍如何使用 Azure PowerShell 完成以下操作：
+本教程介绍如何使用 Azure PowerShell 执行以下操作：
 
 - 查看数据库的现有备份
 - 将数据库还原到以前的时间点
@@ -38,7 +39,7 @@ ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
 
 ## <a name="prerequisites"></a>先决条件
 
-* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](/pricing/free-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 
+* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](https://azure.microsoft.com/free/)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)。 
 
 * 需使用属于订阅所有者成员或参与者角色成员的帐户连接到 Azure。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Getting started with access management in the Azure portal](../active-directory/role-based-access-control-what-is.md)（Azure 门户中的访问管理入门）。
 
@@ -47,7 +48,7 @@ ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
 * 已完成[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-get-started.md)或等效的 [PowerShell 版本](sql-database-get-started-powershell.md)的步骤。 如果没有，请完成此必备教程或在 [PowerShell 版本](sql-database-get-started-powershell.md)结束时执行 PowerShell 脚本，然后再继续。
 
 > [!TIP]
-> 可以使用 [Azure 门户](sql-database-get-started-backup-recovery.md)执行入门教程中这些相同的任务。
+> 可以使用 [Azure 门户](sql-database-get-started-backup-recovery-portal.md)执行入门教程中这些相同的任务。
 
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
@@ -55,7 +56,7 @@ ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
 
 在教程的本部分中，从数据库的[服务生成的自动备份](sql-database-automated-backups.md)中查看有关最早还原点的信息。 
 
-可以将数据库还原到最早的还原点和最后的可用备份（早于当前时间 6 分钟）之间的任何时间点。 
+可以将数据库还原到最早的还原点和最后的可用备份（早于当前时间&6; 分钟）之间的任何时间点。 
 
 以下代码片段使用 [Get-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabase) cmdlet 获取要还原的数据库的最早还原点。 返回的时间为 UTC 时间，但以下代码片段说明了如何使用本地时间。 实时数据库的最新可用还原点通常是六分钟前的，因此可直接将最新还原点设置为当前时间减六分钟。 
 
@@ -114,7 +115,7 @@ $restoredDb
 
 
 > [!TIP]
-> 若要删除长期保留备份，请参阅[删除长期保留备份](sql-database-long-term-retention-delete.md)。
+> 若要删除长期保留备份，请参阅[使用 PowerShell 管理长期备份保留](sql-database-manage-long-term-backup-retention-powershell.md)。
 
 
 ### <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
@@ -378,8 +379,4 @@ $restoredDbFromLtr
 - 若要了解服务生成的自动备份，请参阅[自动备份](sql-database-automated-backups.md)
 - 若要了解长期备份保留，请参阅[长期备份保留](sql-database-long-term-retention.md)
 - 若要了解如何从备份中还原，请参阅[从备份中还原](sql-database-recovery-using-backups.md)
-
-
-<!--HONumber=Dec16_HO4-->
-
 

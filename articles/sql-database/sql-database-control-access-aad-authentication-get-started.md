@@ -17,13 +17,14 @@ ms.topic: hero-article
 ms.date: 01/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 4ef415b7c0e7079da9930ecc6d8375dfc5a3c0a9
-ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
+ms.sourcegitcommit: 7d061c083b23de823d373c30f93cccfe1c856ba3
+ms.openlocfilehash: 8a6dc7d3dca80782a55e13b53180b1542b61544b
+ms.lasthandoff: 02/18/2017
 
 
 ---
-# <a name="sql-database-tutorial-aad-authentication-logins-and-user-accounts-database-roles-permissions-server-level-firewall-rules-and-database-level-firewall-rules"></a>SQL 数据库教程：AAD 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则
-本入门教程介绍如何在 SQL Server Management Studio 中使用授予 Azure SQL 数据库服务器和数据库访问权限与许可权限的 Azure Active Directory 身份验证、登录名、用户与数据库角色。 学习内容：
+# <a name="azure-ad-authentication-access-and-database-level-firewall-rules"></a>Azure AD 身份验证、访问和数据库级防火墙规则
+本教程介绍如何在 SQL Server Management Studio 中使用授予 Azure SQL 数据库服务器和数据库访问权限与许可权限的 Azure Active Directory 身份验证、登录名、用户与数据库角色。 学习内容：
 
 - 查看 master 数据库和用户数据库中的用户权限
 - 基于 Azure Active Directory 身份验证创建登录名和用户
@@ -36,14 +37,14 @@ ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
 
 ## <a name="prerequisites"></a>先决条件
 
-* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](/pricing/free-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 
+* 需要一个 Azure 帐户。 可以[建立一个免费 Azure 帐户](https://azure.microsoft.com/free/)或[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)。 
 
 * 必须能够使用属于订阅所有者成员或参与者角色成员的帐户连接到 Azure 门户。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Getting started with access management in the Azure portal](../active-directory/role-based-access-control-what-is.md)（Azure 门户中的访问管理入门）。
 
 * 已完成本教程中[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-get-started.md)或等效的 [PowerShell 版本](sql-database-get-started-powershell.md)的步骤。 否则，请完成此必学教程，或者在完成本教程的 [PowerShell 版本](sql-database-get-started-powershell.md)部分时执行 PowerShell 脚本，然后再继续。
 
    > [!NOTE]
-   > 根据需要完成 SQL Server 身份验证的相关教程 [SQL 数据库教程：SQL 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md) - 但是，该教程讲解的一些概念未在本文中复述。 如果在同一台计算机（使用相同的 IP 地址）上完成了这篇相关教程，则无需执行本教程中与服务器和数据库级防火墙相关的过程。正因如此，这些过程在本教程中标记为可选。 此外，本教程中的屏幕截图内容假设读者已完成这篇相关教程。 
+   > 根据需要完成 SQL Server 身份验证的相关教程 [SQL 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md) - 但是，该教程讲解的一些概念未在本文中复述。 如果在同一台计算机（使用相同的 IP 地址）上完成了这篇相关教程，则无需执行本教程中与服务器和数据库级防火墙相关的过程。正因如此，这些过程在本教程中标记为可选。 此外，本教程中的屏幕截图内容假设读者已完成这篇相关教程。 
    >
 
 * 已创建并填充 Azure Active Directory。 有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)、[将自己的域名添加到 Azure AD](../active-directory/active-directory-add-domain.md)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](https://msdn.microsoft.com/library/azure/hh967611.aspx)、[使用 Windows PowerShell 管理 Azure AD](https://msdn.microsoft.com/library/azure/jj151815.aspx) 和[混合标识所需端口和协议](../active-directory/active-directory-aadconnect-ports.md)。
@@ -85,7 +86,7 @@ ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
    ![保存选定的 AAD 管理员帐户](./media/sql-database-control-access-aad-authentication-get-started/aad_admin_save.png)
 
 > [!NOTE]
-> 若要查看此服务器的连接信息，请转到[查看或更新服务器设置](sql-database-view-update-server-settings.md)。 在本系列教程中，完全限定的服务器名称为“sqldbtutorialserver.database.windows.net”。
+> 若要查看此服务器的连接信息，请转到[管理服务器](sql-database-manage-servers-portal.md)。 在本系列教程中，完全限定的服务器名称为“sqldbtutorialserver.database.windows.net”。
 >
 
 ## <a name="connect-to-sql-server-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 服务器
@@ -256,7 +257,7 @@ ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
 ## <a name="create-a-database-level-firewall-rule-for-adventureworkslt-database-users"></a>针对 AdventureWorksLT 数据库用户创建数据库级防火墙规则
 
 > [!NOTE]
-> 如果在学习 SQL Server 身份验证的相关教程[SQL 数据库教程：SQL 身份验证、登录名和用户帐户、数据库角色、权限、服务器级防火墙规则和数据库级防火墙规则](sql-database-control-access-sql-authentication-get-started.md)时已完成相应的过程，并且目前使用同一台计算机（具有相同的 IP 地址），则不需要完成本教程中的相关过程。
+> 如果完成了 SQL Server 身份验证相关教程中的等效过程 [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)，且正在使用具有相同 IP 地址的同一台计算机进行学习，则不需要完成此过程。
 >
 
 在本教程部分，你要尝试使用新用户帐户通过一台具有不同 IP 地址的计算机登录，以服务器管理员身份创建数据库级防火墙规则，然后使用这个新的数据库级防火墙规则成功登录。 
@@ -273,17 +274,17 @@ ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
 
 2. 在“连接到服务器”窗口中，输入服务器名称和身份验证信息，以便使用 aaduser1@microsoft.com 帐户通过 SQL Server 身份验证进行连接。 
     
-   ![在不使用防火墙规则的情况下以 aaduser1@microsoft.com 身份进行连接 1](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule1.png)
+   ![在不使用防火墙规则的情况下以 aaduser1@microsoft.com 身份进行连接&1;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule1.png)
 
 3. 单击“选项”指定要连接到的数据库，然后在“连接属性”选项卡上的“连接到数据库”下拉框中键入 **AdventureWorksLT**。
    
-   ![在不使用防火墙规则的情况下以 aaduser1 身份进行连接 2](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule2.png)
+   ![在不使用防火墙规则的情况下以 aaduser1 身份进行连接&2;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule2.png)
 
 4. 单击“连接”。 此时会出现一个对话框，告知从中尝试连接到 SQL 数据库的计算机上不存在允许访问该数据库的防火墙规则。 根据前面在配置防火墙时执行的步骤，会出现两种不同形式的对话框，但一般情况下会显示第一种形式的对话框。
 
-   ![在不使用防火墙规则的情况下以 user1 身份进行连接 3](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule3.png)
+   ![在不使用防火墙规则的情况下以 user1 身份进行连接&3;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule3.png)
 
-   ![在不使用防火墙规则的情况下以 user1 身份进行连接 4](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule4.png)
+   ![在不使用防火墙规则的情况下以 user1 身份进行连接&4;](./media/sql-database-control-access-aad-authentication-get-started/connect_aaduser1_no_rule4.png)
 
    > [!NOTE]
    > 最新版本的 SSMS 提供相应的功能让订阅所有者和参与者登录到 Microsoft Azure 以及创建服务器级防火墙规则。
@@ -299,7 +300,7 @@ ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
      @start_ip_address = 'x.x.x.x', @end_ip_address = 'x.x.x.x';
    ```
 
-   ![添加数据库级防火墙规则 4](./media/sql-database-control-access-aad-authentication-get-started/aaduser1_add_rule_aw.png)
+   ![添加数据库级防火墙规则&4;](./media/sql-database-control-access-aad-authentication-get-started/aaduser1_add_rule_aw.png)
 
 8. 再次切换计算机，然后在“连接到服务器”对话框中单击“连接”，以 aaduser1 身份连接到 AdventureWorksLT。 
 
@@ -313,10 +314,5 @@ ms.openlocfilehash: f3c8b487f23b5d1642de90d795eb2b41bfdb674d
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

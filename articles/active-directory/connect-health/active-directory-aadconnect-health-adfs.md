@@ -1,124 +1,129 @@
 ---
-title: "使用 Azure AD Connect Health 进行同步 | Microsoft 文档"
-description: "本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。"
+title: "在 AD FS 中使用 Azure AD Connect Health | Microsoft Docs"
+description: "本页与 Azure AD Connect Health 相关，介绍如何监视本地 AD FS 基础结构。"
 services: active-directory
 documentationcenter: 
 author: karavar
 manager: samueld
 editor: curtand
-ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
+ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/12/2017
+ms.date: 2/27/2017
 ms.author: vakarand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 7c320a043322fefea1f58301492d4c5a0567320c
-ms.openlocfilehash: fcea61a09654f41af57969a79fab3aabdba4e19c
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 0ae3f2ddfa37d617c02df2628411a877381412d5
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="using-azure-ad-connect-health-for-sync"></a>使用用于同步的 Azure AD Connect Health
-以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
+# <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
+以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
 
-![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/sync-blade.png)
+## <a name="alerts-for-ad-fs"></a>AD FS 的警报
+Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。
 
-## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>用于同步的 Azure AD Connect Health 的警报
-用于同步的 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。 选择活动或已解决的警报后，将看到一个新的边栏选项卡，其中将显示额外信息、可用于解决警报的方法步骤以及其他文档的链接。 还可以查看过去已解决警报的相关历史数据。
+可以双击某个活动的警报或已解决的警报打开新的边栏选项卡，其中包含附加信息、解决警报的步骤，以及相关文档的链接。 还可以查看过去已解决警报的相关历史数据。
 
-选择警报后，将获取到额外信息、可用于解决警报的方法步骤以及其他文档的链接。
+![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health/alert2.png)
 
-![Azure AD Connect 同步错误](./media/active-directory-aadconnect-health-sync/alert.png)
+## <a name="usage-analytics-for-ad-fs"></a>AD FS 的使用情况分析
+Azure AD Connect Health 使用情况分析可分析联合服务器的身份验证流量。 可以双击使用情况分析框打开使用情况分析边栏选项卡，显示多个指标和分组。
 
-### <a name="limited-evaluation-of-alerts"></a>警报的受限评估
-如果 Azure AD Connect 未使用默认配置（例如，如果属性筛选已从默认配置更改为自定义配置），则 Azure AD Connect Health 代理将不会上载与 Azure AD Connect 相关的错误事件。
+> [!NOTE]
+> 若要将使用情况分析与 AD FS 结合使用，请务必启用 AD FS 审核。 有关详细信息，请参阅 [为 AD FS 启用审核](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs)。
+>
+>
 
-这会限制服务对警报进行评估。 用户将在服务的 Azure 门户中看到一条指示这种状态的横幅消息。
+![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health/report1.png)
 
-![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/banner.png)
+若要选择其他指标、指定时间范围或更改分组，请右键单击使用情况分析图表并选择“编辑图表”。 然后可以指定时间范围、选择不同的指标以及更改分组。 可以查看基于不同“度量值”的身份验证流量分布，并使用以下部分中所述的相关“分组依据”参数对每个度量值进行分组:
 
-你可以通过单击“设置”并允许 Azure AD Connect Health 代理上载所有错误日志，来改变这种状态。
+**度量值：请求总数** - 由 AD FS 服务器处理的请求总数。
 
-![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/banner2.png)
-
-## <a name="sync-insight"></a>深入了解同步
-管理员往往想要了解将更改同步到 Azure AD 所花费的时间以及发生的更改量。 借助此功能，可以使用以下图形轻松可视化这些信息：   
-
-* 同步操作延迟
-* 对象更改趋势
-
-### <a name="sync-latency"></a>同步延迟
-此功能提供连接器同步操作（导入、导出等）延迟的图形趋势。  这提供了一种快速方便的方式，使我们不仅可以了解操作延迟（发生大量更改时延迟较大），而且还可以检测导致延迟的、可能需要进一步调查的异常行为。
-
-![同步延迟](./media/active-directory-aadconnect-health-sync/synclatency02.png)
-
-默认情况下只显示 Azure AD 连接器“导出”操作的延迟。  若要查看对连接器执行的其他操作或其他连接器执行的操作，请右键单击图表，选择“编辑图表”，或者单击“编辑延迟图表”并选择特定的操作和连接器。
-
-### <a name="sync-object-changes"></a>同步对象更改
-此功能提供正在评估并导出到 Azure AD 的更改数的图形趋势。  目前，尝试从同步日志收集此信息并不容易。  图表不仅可让你以更简单的方式监视环境中发生的更改数，而且可以提供正在发生的失败的可视化视图。
-
-![同步延迟](./media/active-directory-aadconnect-health-sync/syncobjectchanges02.png)
-
-## <a name="object-level-synchronization-error-report-preview"></a>对象级同步错误报告（预览版）
-此功能提供有关使用 Azure AD Connect 在 Windows Server AD 与 Azure AD 之间同步标识数据时可能发生的同步错误的报告。
-
-* 该报告涵盖同步客户端（Azure AD Connect 1.1.281.0 或更高版本）记录的错误
-* 其中包含上一次在同步引擎中执行同步操作时发生的错误。 （Azure AD 连接器中的“导出”。）
-* 为了在报告中包含最新的数据，用于同步的 Azure AD Connect Health 代理必须与所需的终结点建立出站连接。
-* 系统会使用用于同步的 Azure AD Connect Health 代理上载的数据**每隔 30 分钟更新**该报告。
-  该报告提供以下重要功能
-
-  * 错误分类
-  * 按类别列出出错的对象
-  * 在一个位置显示有关错误的所有数据
-  * 并列比较由于冲突而出错的对象
-  * 以 CSV 格式下载错误报告（即将推出）
-
-### <a name="categorization-of-errors"></a>错误分类
-该报告将现有同步错误划分为以下类别：
-
-| 类别 | 说明 |
+|分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-| 重复属性 |当 Azure AD Connect 在 Azure AD 中尝试创建或更新对象时出错，因为这些对象具有一个或多个属性的重复值，但这些值在 proxyAddresses、UserPrincipalName 等租户中必须唯一。 |
-| 数据不匹配 |当软匹配无法匹配导致同步错误的对象时出错。 |
-| 数据验证失败 |由于数据无效（例如，UserPrincipalName 等关键属性中包含不受支持的字符，写入 Azure AD 之前使验证失败的格式错误）而出错。 |
-| 属性过大 |由于一个或多个属性大于允许的大小、长度或计数而出错。 |
-| 其他 |不适合上述类别的所有其他错误。 我们将根据反馈将此类别细分为若干子类别。 |
+| 全部 | 显示所有 AD FS 服务器处理的请求总数的计数。|
+| 应用程序 | 基于目标信赖方对请求总数分组。 此分组有助于了解具体某个应用程序正在接收多少百分比的总流量。 |
+|  服务器 |基于处理请求的服务器对请求总数分组。 此分组有助于了解总流量的负载分布。
+| 工作区加入 |基于请求是否来自已加入工作区（已知）的设备对请求总数分组。 此分组有助于了解是否使用标识基础结构未知的设备来访问资源。 |
+|  身份验证方法 | 基于用于身份验证的身份验证方法对请求总数分组。 此分组有助于了解用于身份验证的常见身份验证方法。 可能的身份验证方法如下所示： <ol> <li>Windows 集成身份验证 (Windows)</li> <li>基于窗体的身份验证（窗体）</li> <li>SSO（单一登录）</li> <li>X509 证书身份验证（证书）</li> <br>如果联合服务器接收带有 SSO Cookie 的请求，则该请求被计为 SSO（单一登录）。 在这种情况下，如果此 cookie 有效，则不会要求用户提供凭据并该用户可无缝访问该应用程序。 如果有多个受联合服务器保护的信赖方，则这种行为很常见。 |
+| 网络位置 | 基于用户的网络位置对请求总数分组。 该位置可以是 Intranet 或 Extranet。 此分组有助于了解来自 Intranet 或 Extranet 的流量分别为多少百分比。 |
 
-![同步错误报告摘要](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![同步错误报告类别](./media/active-directory-aadconnect-health-sync/errorreport02.png)
 
-### <a name="list-of-objects-with-error-per-category"></a>按类别列出出错的对象
-深入到每个类别可以查看该类别中出错的对象列表。
-![同步错误报告列表](./media/active-directory-aadconnect-health-sync/errorreport03.png)
+**度量值：失败请求总数** - 失败了的由联合身份验证服务处理的请求总数。 （此度量值仅在 Windows Server 2012 R2 的 AD FS 上可用）
 
-### <a name="error-details"></a>错误详细信息
-每种错误的详细视图中提供以下数据
+|分组依据 | 分组意味着什么，它为什么很有用？ |
+| --- | --- |
+| 错误类型 | 基于预定义错误类型显示错误数。 此分组有助于了解常见类型的错误。 <ul><li>用户名或密码错误：因用户名或密码不正确而导致的错误。</li> <li>“Extranet 锁定”：收到无法访问 Extranet 的用户的请求而导致的失败 </li><li> “密码过期”：用户使用已过期密码登录而导致的失败。</li><li>“帐户已禁用”：用户使用已禁用的帐户登录导致的失败。</li><li>“设备身份验证”：用户无法使用“设备身份验证”进行身份验证导致的失败。</li><li>“用户证书身份验证”：用户因证书无效而无法进行身份验证而导致的失败。</li><li>“MFA”：用户无法使用“多重身份验证”进行身份验证导致的失败。</li><li>“其他凭据”：“颁发授权”：因授权失败而失败。</li><li>“颁发委托”：颁发委托错误导致的失败。</li><li>“令牌接受”：由于 ADFS 拒绝来自第三方标识提供者的令牌而导致的失败。</li><li>“协议”：因协议错误而失败。</li><li>“未知”：全部捕获。 任何其他不属于定义类别的失败。</li> |
+| 服务器 | 基于服务器对错误分组。 这种分组有助于了解各服务器的错误分布情况。 分布不均匀可能表示服务器处于错误状态。 |
+| 网络位置 | 基于请求的网络位置（Intranet 或 Extranet）对错误分组。 这种分组有助于了解失败的请求类型。 |
+|  应用程序 | 基于目标应用程序（信赖方）对失败分组。 这种分组有助于了解错误数最多的目标应用程序。 |
 
-* 相关 *AD 对象*的标识符
-* 相关 *Azure AD 对象*的标识符（如果适用）
-* 错误说明和解决方法
-* 相关文章
+**度量值：用户计数** - 使用 AD FS 主动进行身份验证的独立用户平均数
 
-![同步错误报告详细信息](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+|分组依据 | 分组意味着什么，它为什么很有用？ |
+| --- | --- |
+|全部 |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
+| 应用程序 |基于目标应用程序（信赖方）对用户平均数分组。 这种分组有助于了解使用具体某个应用程序的用户数量。 |
 
-### <a name="download-the-error-report-as-csv"></a>以 CSV 格式下载错误报告
-选择“导出”按钮即可下载一个 CSV 文件，其中包含所有错误的所有详细信息。
+## <a name="performance-monitoring-for-ad-fs"></a>AD FS 的性能监视
+Azure AD Connect Health 性能监视提供有关度量值的监视信息。 选择“监视”框会打开一个边栏选项卡，其中包含有关指标的详细信息。
+
+![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health/perf1.png)
+
+通过选择边栏选项卡顶部的“筛选器”选项，你可以按服务器进行筛选，以查看单个服务器的度量值。 若要更改度量值，请右键单击监视边栏选项卡下的监视图表，然后选择“编辑图表”（或选择“编辑图表”按钮）。 在打开的新边栏选项卡中，可从下拉列表中选择其他度量值，并指定查看性能数据的时间范围。
+
+## <a name="reports-for-ad-fs"></a>AD FS 报告
+Azure AD Connect Health 提供有关 AD FS 活动与性能的报告。 这些报告可帮助管理员深入了解 AD FS 服务器上的活动。
+
+### <a name="top-50-users-with-failed-usernamepassword-logins"></a>用户名/密码登录失败的前 50 个用户
+AD FS 服务器上身份验证请求失败的常见原因之一就是请求所提供的凭据无效，也就是错误的用户名或密码。 这往往是用户的密码太复杂、忘记密码或打错字。
+
+但也有其他原因导致 AD FS 服务器处理的请求数超过预期，例如：某个应用程序缓存了用户凭据、凭据过期，或者某个恶意用户尝试以一系列的常见密码登录到帐户。 这两个示例都是可能导致请求激增的合理原因。
+
+Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户名或密码无效而登录尝试失败的前 50 个用户。 处理场中所有 AD FS 服务器所生成的审核事件即可实现此报告
+
+![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health-adfs/report1a.png)
+
+你可以在这份报告中轻松获取以下信息：
+
+* 过去 30 天内用户名/密码错误的失败请求总数
+* 每天由于用户名/密码不正确而登录失败的平均用户人数。
+
+单击此部分可转到提供其他详细信息的主要报告边栏选项卡。 此边栏选项卡包含一个提供趋势信息的图形，可帮助建立有关用户名或密码错误的请求的基准。 此外，该边栏选项卡还提供尝试失败次数最多的 50 个用户的列表。
+
+该图形提供以下信息：
+
+* 每天由于用户名/密码不正确而登录失败的总数。
+* 每天登录失败的唯一用户总数。
+* 最后一个请求的客户端 IP 地址
+
+![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health-adfs/report3a.png)
+
+该报告提供以下信息：
+
+| 报告项 | 说明 |
+| --- | --- |
+| 用户 ID |显示使用的用户 ID。 此值是用户键入的内容，在某些情况下是使用的错误用户 ID。 |
+| 失败尝试次数 |显示该特定用户 ID 的尝试失败总次数。 该表已按最多失败尝试次数的降序排序。 |
+| 上次失败时间 |显示上次发生失败时的时间戳。 |
+| 上次失败 IP |显示最后一个错误请求中的客户端 IP 地址。 |
+
+> [!NOTE]
+> 此报告每隔两小时以该段时间内收集的新信息自动更新。 因此，报告中不包括过去两小时内的登录尝试。
+>
+>
 
 ## <a name="related-links"></a>相关链接
-* [排查同步期间的错误](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)
-* [重复属性复原](../connect/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health 代理安装](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
-* [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
+* [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
 * [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

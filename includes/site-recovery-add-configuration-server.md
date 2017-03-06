@@ -3,7 +3,7 @@
     ![开始之前](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 3. 在“第三方软件许可证”中单击“我接受”，下载并安装 MySQL。
 
-    ![第三方软件](./media/site-recovery-add-configuration-server/combined-wiz105.PNG)
+    ![第三方软件](./media/site-recovery-add-configuration-server/combined-wiz2.png)
 4. 在“注册”中，选择从保管库下载的注册密钥。
 
     ![注册](./media/site-recovery-add-configuration-server/combined-wiz3.png)
@@ -14,7 +14,7 @@
    * 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”。
 
      * 如果使用自定义代理，则需指定地址、端口和凭据。
-     * 如果你使用代理，应事先允许[先决条件](#configuration-server-prerequisites)中所述的 URL。
+     * 如果你使用代理，应事先允许[先决条件](#prerequisites)中所述的 URL。
 
      ![防火墙](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. 在“先决条件检查”设置中运行检查，确保安装可以运行。 如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
@@ -40,8 +40,3 @@
     ![摘要](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
 注册完成后，服务器将显示在保管库的“设置” > “服务器”边栏选项卡中。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

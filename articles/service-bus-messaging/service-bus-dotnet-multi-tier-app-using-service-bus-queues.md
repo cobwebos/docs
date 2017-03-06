@@ -1,5 +1,5 @@
 ---
-title: "使用 Azure 服务总线队列创建 .NET 多层应用程序 | Microsoft 文档"
+title: "使用 Azure 服务总线的 .NET 多层应用程序 | Microsoft 文档"
 description: "本 .NET 教程可帮助你在 Azure 中开发使用服务总线队列在各层之间进行通信的多层应用。"
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9849b15115de5b17a50e0f46781c8aa16a53d297
-ms.openlocfilehash: c68125afe8979c595ae0f6e78fa90f6a365c435f
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 76c884bfdfbfacf474489d41f1e388956e4daaa0
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -61,11 +62,11 @@ ms.openlocfilehash: c68125afe8979c595ae0f6e78fa90f6a365c435f
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 在开始开发 Azure 应用程序之前，需要获取工具并设置开发环境。
 
-1. 通过[获取工具和 SDK](https://azure.microsoft.com/downloads/) 安装用于 .NET 的 Azure SDK。
-2. 在“.NET”列中，单击要使用的 Visual Studio 版本。 本教程中的步骤使用 Visual Studio 2015。
+1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
+2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤使用 Visual Studio 2015。
 3. 当提示你是要运行还是保存安装程序时，单击“运行” 。
 4. 在“Web 平台安装程序”中，单击“安装”，然后继续安装。
-5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。 如果你未安装 Visual Studio，SDK 还会安装免费的 Visual Studio Express。
+5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
 
 ## <a name="create-a-namespace"></a>创建命名空间
 下一步是创建服务命名空间并获取共享访问签名 (SAS) 密钥。 命名空间为每个通过服务总线公开的应用程序提供应用程序边界。 创建命名空间后，系统将生成一个 SAS 密钥。 命名空间与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
@@ -394,9 +395,4 @@ ms.openlocfilehash: c68125afe8979c595ae0f6e78fa90f6a365c435f
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "在 Visual Studio 中创建你的第一个 Service Fabric 应用程序 | Microsoft Docs"
+title: "创建第一个 Azure 微服务应用程序 | Microsoft 文档"
 description: "使用 Visual Studio 创建、部署和调试 Service Fabric 应用程序"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
-ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
+ms.sourcegitcommit: 45411dcfd2dc221de9566b382a1b1c62da914208
+ms.openlocfilehash: 21f2e6e9b422d497882a2414fd24974d60ea685e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -36,7 +37,7 @@ Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提�
 ## <a name="video-walkthrough"></a>视频演练
 下面的视频介绍了本教程中的步骤：
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
 > 
 > 
 
@@ -116,11 +117,24 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
     ![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]
 
 ## <a name="switch-cluster-mode"></a>切换群集模式
-默认情况下，本地开发群集配置为一个 5 节点群集运行，这对于调试在多个节点中部署的服务很有用。 不过，将应用程序部署到 5 节点的开发群集中可能需要一些时间。 如果想要快速循环访问代码更改，而不需要在 5 个节点上运行应用，可以将开发群集切换到单节点模式。 若要在单节点群集上运行代码，请右键单击系统任务栏中的本地群集管理器，并选择“切换群集模式”->“1 个节点”。  
+默认情况下，本地开发群集配置为一个&5; 节点群集运行，这对于调试在多个节点中部署的服务很有用。 不过，将应用程序部署到&5; 节点的开发群集中可能需要一些时间。 如果想要快速循环访问代码更改，而不需要在&5; 个节点上运行应用，可以将开发群集切换到单节点模式。 若要在单节点群集上运行代码，请右键单击系统任务栏中的本地群集管理器，并选择“切换群集模式”->“1 个节点”。  
 
 ![切换群集模式][switch-cluster-mode]
 
 更改群集模式时将重置开发群集，并删除所有在群集上预配或运行的应用程序。
+
+也可使用 PowerShell 更改群集模式：
+
+1. 以管理员身份启动新的 PowerShell 窗口。
+2. 从 SDK 文件夹运行群集设置脚本：
+   
+    ```powershell
+    & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
+    ```
+   
+    群集设置需要一段时间。 完成设置后，您应会看到类似于下面的输出：
+   
+    ![群集设置输出][cluster-setup-success-1-node]
 
 ## <a name="cleaning-up"></a>清理
 结束之前，请务必记住该本地群集是真实的。 停止调试器会删除您的应用程序实例，并注销应用程序类型。 不过，群集将继续在后台运行。 可通过几个选项对群集进行管理：
@@ -150,9 +164,5 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
+[cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
 

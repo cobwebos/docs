@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: f82634af931a1e9a9646c5631ebd0e5923a0adcc
-ms.openlocfilehash: cbb6de4587871c40c9d4e97c9fb2a88eab4945a6
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 2fb457166b4ebe61c11173aa75bdcd2fbce3f03d
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -24,9 +25,7 @@ ms.openlocfilehash: cbb6de4587871c40c9d4e97c9fb2a88eab4945a6
 
 本文概述如何使用 Azure Site Recovery 服务迁移虚拟机和物理服务器。
 
-组织需要制定 BCDR 策略来确定应用、工作负荷和数据如何在计划和非计划停机期间保持运行和可用，并尽快恢复正常运行情况。 BCDR 策略应保持业务数据的安全性和可恢复性，并确保在发生灾难时工作负荷持续可用。
-
-Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 有关详细信息，请参阅 [什么是 Site Recovery？](site-recovery-overview.md)
+Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 有关详细信息，请参阅 [什么是 Site Recovery？](site-recovery-overview.md) 还可使用 Site Recovery 将现有本地工作负荷迁移到 Azure，加快云进程并增益 Azure 提供的大量功能。
 
 本文介绍如何在 [Azure 门户](https://portal.azure.com)中部署。 使用 [Azure 经典门户](https://manage.windowsazure.com/)可以维护现有的 Site Recovery 保管库，但无法创建新保管库。
 
@@ -35,7 +34,7 @@ Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务�
 
 ## <a name="what-do-we-mean-by-migration"></a>迁移的意思是什么？
 
-可以部署 Site Recovery，将本地 VM 和物理服务器完全复制到 Azure 或辅助站点。可以复制计算机，在发生服务中断时从主站点将它们故障转移，然后在主站点恢复服务时将它们故障回复到主站点。 除了完全复制以外，还可以使用 Site Recovery 将 VM 和物理服务器迁移到 Azure，以便用户可以从 Azure VM 访问计算机工作负荷。 迁移涉及到复制，以及从主站点故障转移到 Azure。 但是，与完全复制不同，它不包含故障回复机制。
+可以部署 Site Recovery，实现将本地 VM 和物理服务器复制到 Azure 或辅助站点。 可以复制计算机，在发生中断时将其从主站点进行故障转移，然后在主站点恢复时再将其故障回复到主站点。 除此之外，还可以使用 Site Recovery 将 VM 和物理服务器迁移到 Azure，以便用户可将其作为 Azure VM 进行访问。 迁移涉及到复制、从主站点故障转移到 Azure，以及完整的迁移动作。
 
 ## <a name="what-can-site-recovery-migrate"></a>Site Recovery 可以迁移哪些工作负荷？
 
@@ -49,7 +48,9 @@ Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务�
 
 若要迁移本地 Hyper-V VM、VMware VM 和物理服务器，遵循的步骤大致与普通复制相同。 此过程包括设置恢复服务保管库，配置所需的管理服务器（具体取决于想要迁移哪些工作负荷），将这些服务器添加到保管库，然后指定复制设置。 为想要迁移的计算机启用复制，并运行快速测试故障转移，确保一切按预期运行。
 
-确认复制环境正常工作后，根据方案[支持的操作](site-recovery-failover.md#failover-and-failback)使用计划内或计划外故障转移。 迁移时，不需要提交故障转移或删除任何内容。 对于想要迁移的每台计算机，可以选择“完成迁移”选项。 “完成迁移”操作会完成迁移过程，删除计算机复制设置，使计算机不再产生 Site Recovery 费用。
+确认复制环境正常工作后，根据方案[支持的操作](site-recovery-failover.md)使用计划内或计划外故障转移。 迁移时，不需要提交故障转移。 对于想要迁移的每台计算机，可以选择“完成迁移”选项。 “完成迁移”操作会完成迁移过程，删除计算机复制设置，使计算机不再产生 Site Recovery 费用。
+
+![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 
 ## <a name="migrate-between-azure-regions"></a>在 Azure 区域之间迁移
 
@@ -65,14 +66,8 @@ Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务�
 ## <a name="next-steps"></a>后续步骤
 
 - [将 VMware VM 迁移到 Azure](site-recovery-vmware-to-azure.md)
-- [将物理服务器迁移到 Azure](site-recovery-vmware-to-azure.md)
 - [将 VMM 云中的 Hyper-V VM 迁移到 Azure](site-recovery-vmm-to-azure.md)
 - [将不包含 VMM 的 Hyper-V VM 迁移到 Azure](site-recovery-hyper-v-site-to-azure.md)
 - [在 Azure 区域之间迁移 Azure VM](site-recovery-migrate-azure-to-azure.md)
 - [将 AWS 实例迁移到 Azure](site-recovery-migrate-aws-to-azure.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
