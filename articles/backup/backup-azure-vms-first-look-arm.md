@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/06/2017
-ms.author: markgal; jimpark
+ms.date: 02/15/2017
+ms.author: markgal;jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: b73d5bb1f4f9e7adc65bf38a3c98db846a341cb3
-ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
+ms.sourcegitcommit: dca042ce1684b35e6a874075e0de28b9d8766331
+ms.openlocfilehash: 7aa9305bf8a32bb7e911dfda3d331adcf1c70383
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -33,11 +34,11 @@ ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
 * Azure Resource Manager 部署型 VM
 * 经典 VM
 * 标准存储 VM
-* 高级存储 VM 
+* 高级存储 VM
 * 在托管磁盘上运行的 VM
 * 使用 Azure 磁盘加密进行加密的 VM，以及 BEK 和 KEK
 
-有关保护高级存储 VM 的详细信息，请参阅[备份和还原高级存储 VM](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)。 有关托管磁盘 VM 支持的详细信息，请参阅[备份和还原托管磁盘上的 VM](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)
+有关保护高级存储 VM 的详细信息，请参阅[备份和还原高级存储 VM](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)一文。 有关支持托管磁盘 VM 的详细信息，请参阅[备份和还原托管磁盘上的 VM](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
 
 > [!NOTE]
 > 本教程假设 Azure 订阅中已有 VM，且已采取措施允许备份服务访问 VM。
@@ -46,37 +47,74 @@ ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
-根据想要保护的虚拟机数量，可以从不同的起点着手 - 如果想要通过一项操作备份多个虚拟机，请转到恢复服务保管库，从保管库仪表板开始备份。 如果想要备份一个 VM，可以直接从 VM 管理边栏选项卡备份。
+根据想要保护的虚拟机数量，可从不同的起点开始。 如果想通过一次操作备份多台虚拟机，请转到恢复服务保管库，并[从保管库仪表板启动备份作业](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault)。 如果想要备份单台虚拟机，可以从 VM 管理边栏选项卡启动备份作业。
 
-## <a name="configure-backup-from-vm-management-blade"></a>从 VM 管理边栏选项卡配置备份
+## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>从 VM 管理边栏选项卡配置备份作业
+
+遵循以下步骤，以在 Azure 门户中从虚拟机管理边栏选项卡配置备份作业。 这些步骤不适用于经典门户中的虚拟机。
+
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“虚拟机”。  此时将显示虚拟机列表。 在虚拟机列表中，选择要备份的虚拟机。 此时将打开虚拟机管理边栏选项卡。
+2. 在“中心”菜单上，单击“更多服务”，然后在“筛选器”对话框中键入“虚拟机”。 键入时，系统将筛选出资源列表。 看到虚拟机时，请选择它。
+
+  ![在“中心”菜单上，单击“更多服务”以打开文本对话框，并键入虚拟机](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
+
+  将显示订阅中的虚拟机 (VM) 列表。
+
+  ![将显示订阅中的 VM 列表。](./media/backup-azure-vms-first-look-arm/list-of-vms.png)
+
+3. 从列表中选择要备份的 VM。
+
+  ![将显示订阅中的 VM 列表。](./media/backup-azure-vms-first-look-arm/list-of-vms-selected.png)
+
+  选择 VM 时，虚拟机列表会移至左侧，并且虚拟机管理边栏选项卡和虚拟机仪表板将打开。
  ![VM 管理边栏选项卡](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
 
-3. 在 VM 管理边栏选项卡中，单击“设置”左下侧显示的“备份”选项。
+4. 在 VM 管理边栏选项卡上的“设置”部分中，单击“备份”。
 ![VM 管理边栏选项卡中的“备份”选项](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
+   “启用备份”边栏选项卡将打开。
 
-4. 此时将打开“启用备份”边栏选项卡。 应在此边栏选项卡中提供两项输入：恢复服务保管库 - 用于存储 VM 备份的 Azure 备份资源；备份策略 - 备份策略指定备份计划，以及备份副本的保留期限。 此边栏选项卡中使用了默认选项。 可以根据备份要求自定义这些选项。
+  ![VM 管理边栏选项卡中的“备份”选项](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-  ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+5. 对于恢复服务保管库，请单击“选择现有”，并从下拉列表中选择保管库。
 
-5. 对于恢复服务保管库，可以选择现有的保管库或创建新保管库。 如果创建新保管库，将在与虚拟机相同的资源组中创建该保管库，其位置也与虚拟机相同。 如果想要使用不同的值创建恢复服务保管库，请先[创建恢复服务保管库](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)，然后在步骤&3; 中单击“备份”选项，并在此边栏选项卡中选择该保管库。
+    ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-6. 在“备份策略”边栏选项卡中选择要应用到保管库的备份策略，然后单击“确定”。
-    ![选择备份策略](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+    如果没有恢复服务保管库，或想要使用新的保管库，可单击“新建”并提供新保管库的名称。 将在与虚拟机相同的资源组和相同的位置中创建新保管库。 如果想要使用不同的值创建恢复服务保管库，请参阅如何[创建恢复服务保管库](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)部分。
 
-    默认策略的详细信息将在详细信息中列出。 如果要创建策略，请从下拉菜单中选择“新建”。 下拉菜单中还提供了一个选项，用于在创建快照时切换时间。 有关定义备份策略的说明，请参阅[定义备份策略](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)。 单击“确定”后，备份策略将与虚拟机相关联。
+6. 若要查看备份策略的详细信息，请单击“备份策略”。
 
-7. 单击“启用备份”在虚拟机上配置备份。 这会触发部署。
-![“启用备份”按钮](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+    “备份策略”边栏选项卡将打开，并提供所选策略的详细信息。 如果存在其他策略，可使用下拉菜单选择不同的备份策略。 如果要创建新策略，请从下拉菜单中选择“新建”。 有关定义备份策略的说明，请参阅[定义备份策略](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)。 若要保存对备份策略所做的更改并返回“启用备份”边栏选项卡，请单击“确定”。
 
-8. 可以通过通知跟踪配置进度。
+    ![选择备份策略](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new-2.png)
+
+7. 在“启用备份策略”边栏选项卡上，单击“启用备份”以触发策略部署，它将策略与保管库和虚拟机相关联起来。
+
+  ![“启用备份”按钮](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+
+8. 可通过门户中显示的通知跟踪配置进度。 以下示例显示“部署已启动”。
 ![“启用备份”通知](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
 
-9. 完成“配置备份”的部署后，在 VM 管理边栏选项卡中单击“备份”选项会转到备份的 VM 对应的“备份项”边栏选项卡。
-![VM 备份项视图](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+9. 配置进度完成后，在 VM 管理边栏选项卡上，单击“备份”打开“备份项”边栏选项卡并查看详细信息。
 
-## <a name="configure-backup-from-recovery-services-vault-view"></a>从恢复服务保管库视图配置备份
+  ![VM 备份项视图](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+
+  完成初始备份之前，“上次备份状态”显示为“警告(初始备份挂起)”。 若要查看下一个计划的备份作业的进行时间，请在“备份策略”下单击该策略的名称。 “备份策略”边栏选项卡将打开，并显示计划的备份时间。
+
+10. 若要运行备份作业并创建初始恢复点，请在“备份”保管库边栏选项卡上单击“立即备份”。
+
+  ![单击“立即备份”以运行初始备份](./media/backup-azure-vms-first-look-arm/backup-now.png)
+
+  “立即备份”边栏选项卡随即打开。
+
+  ![显示“立即备份”边栏选项卡](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+11. 在“立即备份”边栏选项卡上，单击日历图标，使用日历控件选择保留此恢复点的最后一天，然后单击“备份”。
+
+  ![设置保留立即备份恢复点的最后一天](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  部署通知会告知你备份作业已触发，并且你可以在“备份作业”页面上监视作业的进度。
+
+## <a name="configure-the-backup-job-from-the-recovery-services-vault"></a>从恢复服务保管库配置备份作业
 概括而言，你将要完成以下这些步骤。  
 
 1. 为 VM 创建恢复服务保管库。
@@ -93,31 +131,47 @@ ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
 
 若要创建恢复服务保管库，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中，单击“**浏览**”，然后在资源列表中，键入“**恢复服务**”。 当你开始键入时，会根据你的输入筛选该列表。 单击“**恢复服务保管库**”。
+1. 如果尚未登录 [Azure 门户](https://portal.azure.com/)，请使用 Azure 订阅登录。
+2. 在“中心”菜单上，单击“更多服务”，然后在“筛选器”对话框中键入“恢复服务”。 键入时，系统将筛选出资源列表。 在列表中看见“恢复服务保管库”时，请单击它。
 
-    ![创建恢复服务保管库步骤 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+    ![创建恢复服务保管库步骤 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-    此时将显示恢复服务保管库列表。
+    如果在订阅中有恢复服务保管库，则会列出这些保管库。
+
+    ![创建恢复服务保管库步骤 2](./media/backup-azure-vms-first-look-arm/list-of-rs-vault.png)
 3. 在“恢复服务保管库”菜单中，单击“添加”。
 
-    ![创建恢复服务保管库步骤 2](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
+    ![创建恢复服务保管库步骤 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
     此时将打开恢复服务保管库边栏选项卡，其中会提示你提供“名称”、“订阅”、“资源组”和“位置”。
 
-    ![创建恢复服务保管库步骤 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
+    ![创建恢复服务保管库步骤 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
+
 4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
-5. 单击“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
-6. 单击“资源组”查看可用资源组列表，或单击“新建”创建资源组。 有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)
-7. 单击“位置”，为保管库选择地理区域  。 **必须** 与你要保护的虚拟机位于同一区域中。
 
-   > [!IMPORTANT]
-   > 如果你不确定 VM 的所在位置，请关闭保管库创建对话框，并转到门户中的虚拟机列表。 如果多个区域中有虚拟机，请在每个区域中创建恢复服务保管库。 请先在第一个位置创建保管库，然后转到下一个位置。 无需指定存储帐户即可存储备份数据 - 恢复服务保管库和 Azure 备份服务会自动处理这种情况。
-   >
-   >
-8. 单击“创建” 。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。 创建保管库后，它将显示在恢复服务保管库列表中。
+5. 在“订阅”部分，通过下拉菜单选择 Azure 订阅。 如果只使用一个订阅，则会显示该订阅，用户可以跳到下一步。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
 
-    ![备份保管库列表](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
+6. 在“资源组”部分：
+
+    * 如果要创建新的资源组，请选择“新建”。
+    或
+    * 选择“使用现有项”，然后单击下拉菜单查看可用的资源组列表。
+
+  有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
+
+7. 单击“位置”，为保管库选择地理区域  。 此选项决定了备份数据要发送到的地理区域。
+
+  > [!IMPORTANT]
+  > 如果你不确定 VM 的所在位置，请关闭保管库创建对话框，并转到门户中的虚拟机列表。 如果多个区域中有虚拟机，请在每个区域中创建恢复服务保管库。 请先在第一个位置创建保管库，然后转到下一个位置。 无需指定存储帐户即可存储备份数据 - 恢复服务保管库和 Azure 备份服务会自动处理这种情况。
+  >
+
+8. 在恢复服务保管库边栏选项卡的底部，单击“创建”。
+
+    创建恢复服务保管库可能需要数分钟。 可以在门户右上区域监视状态通知。 创建保管库后，它将显示在“恢复服务保管库”的列表中。 如果在几分钟后看不到保管库，请单击“刷新”。
+
+    ![单击“刷新”按钮](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
+
+    一旦在恢复服务保管库列表中看到保管库，即可设置存储冗余。
 
 现已创建保管库，接下来请了解如何设置存储复制。
 
@@ -126,59 +180,72 @@ ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
 
 若要编辑存储复制设置，请执行以下操作：
 
-1. 选择你的保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
-2. 在“设置”边栏选项卡中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡。 在“备份配置”边栏选项卡中，选择保管库的存储复制选项。
+1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。
 
-    ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+  ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    选择好保管库的存储选项后，可以开始将 VM 与保管库相关联。 若要开始关联，请发现及注册 Azure 虚拟机。
+  选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“设置”边栏选项卡（*顶部有保管库的名称*）和保管库详细信息边栏选项卡会打开。
+
+    ![查看新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+2. 在新保管库的“设置”边栏选项卡中，使用垂直滚动条向下滚动到“管理”部分，然后单击“备份基础结构”。
+    此时会打开“备份基础结构”边栏选项卡。
+3. 在“备份基础结构”边栏选项卡中，单击“备份配置”打开“备份配置”边栏选项卡。
+
+    ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+4. 为你的保管库选择合适的存储复制选项。
+
+    ![存储配置选择](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+
+    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”。 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。 请在此[存储冗余概述](../storage/storage-redundancy.md)中深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>选择备份目标、设置策略并定义要保护的项
 在向保管库注册 VM 前，请先执行发现过程，以确保能够识别任何添加到订阅中的新虚拟机。 该过程将在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。 在 Azure 门户中，方案是指要放入恢复服务保管库中的项。 策略是有关恢复点创建频率和时间的计划。 策略还包含恢复点的保留范围。
 
-1. 如果已打开恢复服务保管库，请转到步骤 2。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中单击“浏览”。
+1. 如果已打开恢复服务保管库，请转到步骤 2。 否则，请在“中心”菜单上单击“更多服务”，然后在资源列表中键入“恢复服务”并单击“恢复服务保管库”。
 
-   * 在资源列表中，键入“恢复服务”。
-   * 当你开始键入时，会根据你的输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
+    ![创建恢复服务保管库步骤 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-     ![创建恢复服务保管库步骤 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+    此时将显示恢复服务保管库列表。
 
-     此时将显示恢复服务保管库列表。
-   * 在恢复服务保管库列表中选择一个保管库。
+    ![恢复服务保管库列表的视图](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-     此时将打开选定的保管库仪表板。
+    从恢复服务保管库的列表中，选择一个保管库以打开其仪表板。
 
-     ![打开保管库边栏选项卡](./media/backup-azure-vms-first-look-arm/vault-settings.png)
-2. 在保管库仪表板菜单中，单击“备份”  打开“备份”边栏选项卡。
+     ![打开保管库边栏选项卡](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 
-    ![打开“备份”边栏选项卡](./media/backup-azure-vms-first-look-arm/backup-button.png)
+2. 在保管库仪表板菜单中，单击“备份”以打开“备份”边栏选项卡。
 
-    打开该边栏选项卡后，备份服务将在订阅中搜索所有新 VM。
+    ![打开“备份”边栏选项卡](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-    ![发现 VM](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
-3. 在“备份”边栏选项卡中，单击“备份目标”打开“备份目标”边栏选项卡。
+    此时会打开“备份”和“备份目标”边栏选项卡。
 
-    ![打开“方案”边栏选项卡](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
-4. 在“备份目标”边栏选项卡中，将“工作负荷的运行位置”设置为 Azure，并将“要备份的项”设置为“虚拟机”，然后单击“确定”。
+    ![打开“方案”边栏选项卡](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
+3. 在“备份目标”边栏选项卡上，从“工作负荷的运行位置”下拉菜单中选择 Azure。 从“希望备份的内容”下拉列表中选择虚拟机，然后单击“确定”。
 
-    随即关闭“备份目标”边栏选项卡，然后打开“备份策略”边栏选项卡。
+    这将向保管库注册 VM 扩展。 随即关闭“备份目标”边栏选项卡，然后打开“备份策略”边栏选项卡。
 
-    ![打开“方案”边栏选项卡](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
-5. 在“备份策略”边栏选项卡中选择要应用到保管库的备份策略，然后单击“确定”。
+    ![打开“方案”边栏选项卡](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
-    ![选择备份策略](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+4. 在“备份策略”边栏选项卡中，选择要应用到保管库的备份策略。
 
-    默认策略的详细信息将在详细信息中列出。 如果要创建策略，请从下拉菜单中选择“新建”。 下拉菜单还提供了一个选项，可让你将快照的创建时间切换为 7PM。 有关定义备份策略的说明，请参阅[定义备份策略](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)。 单击“确定”后，备份策略将与保管库相关联。
+    ![选择备份策略](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
-    接下来，选择要与保管库关联的 VM。
-6. 选择要与指定策略相关联的虚拟机，然后单击“选择”。
+    默认策略的详细信息将在下拉菜单下列出。 如果要创建新策略，请从下拉菜单中选择“新建”。 有关定义备份策略的说明，请参阅[定义备份策略](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)。
+    单击“确定”，将备份策略与保管库关联。
 
-    ![选择工作负荷](./media/backup-azure-vms-first-look-arm/select-vms-to-backup-new.png)
+    随即关闭“备份策略”边栏选项卡，然后打开“选择虚拟机”边栏选项卡。
+5. 在“选择虚拟机”边栏选项卡中，选择要与指定策略关联的虚拟机，然后单击“确定”。
 
-    如果未看到所需的 VM，请检查它是否在恢复服务保管库所在的同一个 Azure 位置。
-7. 现在，已定义保管库的所有设置，接下来请在“备份”边栏选项卡中，单击页面底部的“启用备份”。 随后会将策略部署到保管库和 VM。
+    ![选择工作负荷](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    ![启用备份](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
+    所选虚拟机已验证。 如果未看到应出现的虚拟机，请检查它们是否在恢复服务保管库所在的同一 Azure 位置中。 恢复服务保管库的位置显示在保管库仪表板上。
+
+6. 现在，已定义保管库的所有设置，接下来请在“备份”边栏选项卡中，单击“启用备份”。 随后会将策略部署到保管库和 VM。 这不会创建虚拟机的初始恢复点。
+
+    ![启用备份](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+
+成功启用备份后，你的备份策略将按计划执行。 但是，将继续启动第一个备份作业。
 
 ## <a name="initial-backup"></a>初始备份
 在虚拟机上部署备份策略后，并不意味着已备份好数据。 默认情况下，第一个计划的备份（在备份策略中定义）是初始备份。 在执行初始备份之前，“**备份作业**”边栏选项卡上的“上次备份状态”显示为“**警告(等待初始备份)**”。
@@ -187,34 +254,60 @@ ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
 
 除非初始备份预计马上开始，否则建议运行“立即备份” 。
 
-若要运行“立即备份”，请执行以下操作： 
+若要运行初始备份作业，请执行以下操作：
 
-1. 在保管库仪表板上的“备份”磁贴中，单击“Azure 虚拟机” <br/>
-    ![设置图标](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. 在保管库仪表板上，单击“备份项”下的数字，或单击“备份项”磁贴。 <br/>
+  ![设置图标](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-    “**备份项**”边栏选项卡随即打开。
-2. 在“**备份项**”边栏选项卡中，右键单击要备份的保管库，然后单击“**立即备份**”。
+  “**备份项**”边栏选项卡随即打开。
 
-    ![“设置”图标](./media/backup-azure-vms-first-look-arm/back-up-now.png)
+  ![备份项](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-    随即会触发备份作业。 <br/>
+2. 在“备份项”边栏选项卡上，选择项。
 
-    ![已触发备份作业](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
-3. 若要查看初始备份是否已完成，在保管库仪表板上的“**备份作业**”磁贴中，单击“**Azure 虚拟机**”。
+  ![“设置”图标](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-    ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
+  “备份项”列表随即打开。 <br/>
 
-    “备份作业”边栏选项卡随即打开。
-4. 在“备份作业”边栏选项卡中，可以看到所有作业的状态。
+  ![已触发备份作业](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-    ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
+3. 在“备份项”列表中，单击省略号“...”以打开上下文菜单。
 
-   > [!NOTE]
-   > 在执行备份操作的过程中，Azure 备份服务将向每个 VM 中的备份扩展发出一条命令，刷新所有写入并取得一致快照。
-   >
-   >
+  ![上下文菜单](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-    完成备份作业后，状态将变为“*已完成*”。
+  上下文菜单随即打开。
+
+  ![上下文菜单](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
+
+4. 在上下文菜单上，单击“立即备份”。
+
+  ![上下文菜单](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
+
+  “立即备份”边栏选项卡随即打开。
+
+  ![显示“立即备份”边栏选项卡](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+5. 在“立即备份”边栏选项卡上，单击日历图标，使用日历控件选择保留此恢复点的最后一天，然后单击“备份”。
+
+  ![设置保留立即备份恢复点的最后一天](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  部署通知会告知你备份作业已触发，并且你可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+
+6. 若要查看或跟踪初始备份的状态，请在保管仪表板的“备份作业”磁贴上，单击“正在进行”。
+
+  ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
+
+  “备份作业”边栏选项卡随即打开。
+
+  ![“备份作业”磁贴](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
+
+  在“**备份作业**”边栏选项卡中，可以看到所有作业的状态。 请查看 VM 的备份作业仍在进行中，还是已完成。 完成备份作业后，状态将变为“已完成”。
+
+  > [!NOTE]
+  > 在执行备份操作的过程中，Azure 备份服务将向每个 VM 中的备份扩展发出一条命令，刷新所有写入并取得一致快照。
+  >
+  >
+
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
@@ -244,9 +337,4 @@ ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
 
 ## <a name="questions"></a>有疑问？
 如果你有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

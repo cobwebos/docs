@@ -17,6 +17,7 @@ ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
 ms.openlocfilehash: eb9e9ca5082559ee0e30ea67bf53229d38f81589
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -158,10 +159,5 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 * [配置 Azure 存储空间连接字符串](storage-configure-connection-string.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

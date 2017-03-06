@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 创建虚拟机规模集 | Microsoft Docs"
-description: "使用 PowerShell 创建虚拟机规模集"
+title: "使用 PowerShell 创建 Azure 虚拟机规模集 | Microsoft Docs"
+description: "使用 PowerShell 创建 Azure 虚拟机规模集"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: Thraka
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 02/21/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
+ms.sourcegitcommit: 1f8e66fac5b82698525794f0486dd0432c7421a7
+ms.openlocfilehash: 7286fed39839675eb960b749f3235f83e36c5e9a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -55,46 +56,6 @@ ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
         ProvisioningState : Succeeded
         Tags              :
         ResourceId        : /subscriptions/########-####-####-####-############/resourceGroups/myrg1
-
-### <a name="storage-account"></a>存储帐户
-虚拟机使用存储帐户来存储操作系统磁盘和用于缩放的诊断数据。 如有可能，最佳做法是在规模集中为每个虚拟机创建存储帐户。 如果不能，则为每个存储帐户规划不超过 20 个 VM。 本文中的示例演示了为三台虚拟机创建三个存储帐户。
-
-1. 将“$saName”的值替换为存储帐户的名称。 测试名称的唯一性。 
-   
-        $saName = "storage account name"
-        Get-AzureRmStorageAccountNameAvailability $saName
-   
-    如果答案为 **True**，则所选名称是唯一的。
-2. 将 **$saType** 的值替换为存储帐户的类型，然后创建变量：  
-   
-        $saType = "storage account type"
-   
-    可能的值包括：Standard_LRS、Standard_GRS、Standard_RAGRS 或 Premium_LRS。
-3. 创建帐户：
-   
-        New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
-   
-    用户应看到与此示例类似的内容：
-   
-        ResourceGroupName   : myrg1
-        StorageAccountName  : myst1
-        Id                  : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft
-                              .Storage/storageAccounts/myst1
-        Location            : centralus
-        AccountType         : StandardLRS
-        CreationTime        : 3/15/2016 4:51:52 PM
-        CustomDomain        :
-        LastGeoFailoverTime :
-        PrimaryEndpoints    : Microsoft.Azure.Management.Storage.Models.Endpoints
-        PrimaryLocation     : centralus
-        ProvisioningState   : Succeeded
-        SecondaryEndpoints  :
-        SecondaryLocation   :
-        StatusOfPrimary     : Available
-        StatusOfSecondary   :
-        Tags                : {}
-        Context             : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
-4. 重复步骤 1 至 4 以创建三个存储帐户，如 myst1、myst2 和 myst3。
 
 ### <a name="virtual-network"></a>虚拟网络
 规模集中的虚拟机必须具有虚拟网络。
@@ -173,12 +134,10 @@ ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
         $imageSku = "2012-R2-Datacenter"
    
     若要查找其他要使用的映像的相关信息，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-3. 将 **$vhdContainers** 的值替换为包含虚拟硬盘的存储路径的列表，如“https://mystorage.blob.core.windows.net/vhds”，然后创建变量：
+
+3. 创建存储帐户配置文件：
    
-        $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
-4. 创建存储帐户配置文件：
-   
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storageProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### <a name="virtual-machine-scale-set"></a>虚拟机规模集
 最后，可以创建规模集。
@@ -221,10 +180,5 @@ ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
 * 使用[在虚拟机规模集中管理虚拟机](virtual-machine-scale-sets-windows-manage.md)中的信息管理刚刚创建的规模集
 * 请考虑使用[自动缩放和虚拟机规模集](virtual-machine-scale-sets-autoscale-overview.md)中的信息设置规模集的自动缩放
 * 若要了解有关垂直缩放的详细信息，请参阅[虚拟机规模集垂直自动缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

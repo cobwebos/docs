@@ -13,8 +13,3 @@
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=service-bus)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

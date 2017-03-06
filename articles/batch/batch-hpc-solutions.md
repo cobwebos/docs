@@ -1,5 +1,5 @@
 ---
-title: "云中的批处理和 HPC 解决方案 | Microsoft 文档"
+title: "云中的 Batch 和 HPC 解决方案 - Azure | Microsoft Docs"
 description: "了解 Azure 中的批处理和高性能计算（HPC 和大型计算）方案和解决方案选项"
 services: batch, virtual-machines, cloud-services
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: c3e80bc18e4d1007146d9d3c80c2618400480046
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 288bd4dc0bde4cb610efc4a6d015e5b9499eb0ee
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="batch-and-hpc-solutions-in-the-azure-cloud"></a>Azure 云中的 Batch 和 HPC 解决方案
+# <a name="batch-and-hpc-solutions-for-large-scale-computing-workloads"></a>适用于大规模计算工作负荷的 Batch 和 HPC 解决方案
+
 Azure 提供高效且可缩放的云解决方案来进行批处理和高性能计算（HPC，又称为*大型计算*）。 在此处了解大型计算工作负荷以及 Azure 提供的相应支持服务，或者直接跳至本文后面的 [解决方案应用场景](#scenarios) 。 本文主要面向技术决策人、IT 经理和独立软件供应商，但其他 IT 专业人员和开发人员也可以使用它来熟悉这些解决方案。
 
 组织面临着一些大规模计算问题：工程设计和分析、图像渲染、复杂建模、Monte Carlo 仿真，财务风险计算，等等。 Azure 可以帮助组织解决资源、规模和计划方面的问题。 借助 Azure，组织可以：
@@ -134,9 +137,4 @@ Azure 计算服务是大型计算解决方案的核心，不同的计算服务�
 [iaas_cluster]: ./media/batch-hpc-solutions/iaas_cluster.png
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

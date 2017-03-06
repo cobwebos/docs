@@ -16,6 +16,7 @@ ms.author: ashmaka
 translationtype: Human Translation
 ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
 ms.openlocfilehash: cc439b5da8753b41f8d65781c567b4808f385078
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -52,7 +53,7 @@ ms.openlocfilehash: cc439b5da8753b41f8d65781c567b4808f385078
    * 为每个 Azure 搜索索引强制使用类型 Edm.String 的*密钥*字段。 默认情况下，使用字段名称“id”创建此密钥字段。 在我们的索引中，已将此名称更改为“hotelId”。
    * 索引架构的某些属性只能设置一次，以后不能更新。 因此，完成初始配置后，当前不支持任何需要重新编制索引的架构更新（如更改字段类型）。
    * 已根据所认为的每个字段在应用程序中使用的方式，谨慎地为这些字段选择属性值。 设计索引时，必须牢记搜索用户体验和业务需求，因为必须为每个字段分配[适当的属性](https://msdn.microsoft.com/library/azure/dn798941.aspx)。 这些属性控制哪些搜索功能（筛选、分面、排序、全文搜索等）应用于哪些字段。 例如，搜索酒店的人员很可能对匹配“描述”字段的关键字感兴趣，因此我们通过设置“Searchable”属性为该字段启用全文搜索。
-     * 还可以通过单击边栏选项卡顶部的“分析器”选项卡，为每个字段设置“语言分析器”[](https://msdn.microsoft.com/en-us/library/azure/dn879793.aspx)。 如下所示，我们在适用于法语文本的索引中为字段选择了法语分析器。
+     * 还可以通过单击边栏选项卡顶部的 [分析器](https://msdn.microsoft.com/en-us/library/azure/dn879793.aspx) 选项卡，为每个字段设置“语言分析器”。 如下所示，我们在适用于法语文本的索引中为字段选择了法语分析器。
 3. 单击“字段”边栏选项卡上的“确定”，确认你的字段定义
 4. 单击“添加索引”边栏选项卡上的“确定”，保存和创建你刚定义的索引。
 
@@ -64,10 +65,5 @@ ms.openlocfilehash: cc439b5da8753b41f8d65781c567b4808f385078
 
 ## <a name="next-steps"></a>后续步骤
 创建 Azure 搜索索引后，就可以 [将内容上载到索引中](search-what-is-data-import.md) ，以便可以开始搜索数据。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

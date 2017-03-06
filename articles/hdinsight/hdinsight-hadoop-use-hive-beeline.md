@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: c4fb98946a41ee37d8676eca52ff26f81d0ff56a
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -245,10 +246,5 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。 使用以下步骤创
 
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

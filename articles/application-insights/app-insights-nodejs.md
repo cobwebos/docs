@@ -1,21 +1,22 @@
 ---
-title: "添加 Application Insights SDK 以监视 Node.js 应用 | Microsoft Docs"
+title: "使用 Azure Application Insights SDK 监视 Node.js 应用 | Microsoft Docs"
 description: "通过 Application Insights 分析本地或 Microsoft Azure Web 应用程序的使用情况、可用性和性能。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: fd089f0cc5c23dcddb392df55c65907519f59248
+ms.sourcegitcommit: 46b829ce52994a5112494145a02e78859c5fae2d
+ms.openlocfilehash: d4c7fa2058b1c07671329304c37630d2e6e8e8a7
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -31,15 +32,14 @@ ms.openlocfilehash: fd089f0cc5c23dcddb392df55c65907519f59248
 #### <a name="before-you-start"></a>开始之前
 你需要：
 
-* Visual Studio 2013 或更高版本。 版本越高越好。
 * [Microsoft Azure](http://azure.com)订阅。 如果你的团队或组织拥有 Azure 订阅，则所有者可以使用你的 [Microsoft 帐户](http://live.com)将你加入其中。
 
 ## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>创建 Application Insights 资源
-登录 [Azure 门户][门户]，创建新的 Application Insights 资源。 Azure 中的[资源][角色]是服务的实例。 将在此资源中分析并呈现来自应用的遥测。
+登录 [Azure 门户][portal]，创建新的 Application Insights 资源。 Azure 中的[资源][roles]是服务的实例。 将在此资源中分析并呈现来自应用的遥测。
 
 ![依次单击“新建”、“Application Insights”](./media/app-insights-nodejs/01-new-asp.png)
 
-选择“其他”作为应用程序类型。 应用程序类型的选择会设置资源边栏选项卡和 [指标资源管理器][指标]中可见属性的默认内容。
+选择“常规”作为应用程序类型。 选择的应用程序类型将设置资源边栏选项卡的默认内容和[指标资源管理器][metrics]中可见的属性。
 
 #### <a name="copy-the-instrumentation-key"></a>复制检测密钥
 密钥可标识资源，很快将在 SDK 中安装它来将数据定向到资源。
@@ -191,15 +191,10 @@ server.on("listening", () => {
 
 <!--Link references-->
 
-[了解用户]: app-insights-overview-usage.md
-[指标]: app-insights-metrics-explorer.md
+[knowUsers]: app-insights-overview-usage.md
+[metrics]: app-insights-metrics-explorer.md
 [perf]: app-insights-web-monitor-performance.md
-[门户]: http://portal.azure.com/
+[portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
-[角色]: app-insights-resources-roles-access-control.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[roles]: app-insights-resources-roles-access-control.md
 

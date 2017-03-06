@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 5a96f86157516585742bf184a65f42b1a2070a95
 ms.openlocfilehash: 008fe9bc549d2ba4bc043c344b39409a04efe598
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="automation-documentation"></a>自动化文档
@@ -177,10 +178,5 @@ ms.openlocfilehash: 008fe9bc549d2ba4bc043c344b39409a04efe598
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

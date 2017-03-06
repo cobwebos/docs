@@ -18,6 +18,7 @@ ms.author: yushwang
 translationtype: Human Translation
 ms.sourcegitcommit: b8b663d802fde83f3435f2d97ceb51d5b5c802bb
 ms.openlocfilehash: ef17c0226528fef35c0317cebbaa14b7bbe28b1d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -378,10 +379,5 @@ ms.openlocfilehash: ef17c0226528fef35c0317cebbaa14b7bbe28b1d
 
 ## <a name="next-steps"></a>后续步骤
 连接完成后，即可将虚拟机添加到虚拟网络。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以获取相关步骤。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

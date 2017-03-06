@@ -11,16 +11,18 @@ ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: cb2b7bc626294e12c6e19647c1e787e1f671595b
-ms.openlocfilehash: a49a93b11ab3e965ac1ddaec919bfcbf43381dee
+ms.sourcegitcommit: 5009b13cec57e6974f71610c84fdaad837085df0
+ms.openlocfilehash: 5f81d8146f8000e73a2eb578ff2371a62c8875e9
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="enabling-ssl-policy-and-end-to-end-ssl-on-application-gateway"></a>在应用程序网关上启用 SSL 策略和端到端 SSL
+# <a name="overview-of-end-to-end-ssl-and-ssl-policy-on-application-gateway"></a>应用程序网关的端到端 SSL 和 SSL 策略概述
 
 应用程序网关支持在网关上终止 SSL，之后，流量通常会以未加密状态流到后端服务器。 此功能让 Web 服务器不用再负担昂贵的加密/解密开销。 但对于某些客户而言，与后端服务器的未加密通信不是可以接受的选项。 此通信未加密，可能是由于有安全/法规遵从性方面的要求，或应用程序可能仅接受安全连接。 对于此类应用程序，应用程序网关现在可支持端到端 SSL 加密。
 
@@ -32,7 +34,7 @@ ms.openlocfilehash: a49a93b11ab3e965ac1ddaec919bfcbf43381dee
 
 ![端到端 ssl 方案][1]
 
-在此示例中，使用 TLS1.2 的请求通过端到端 SSL 路由到池 1 中的后端服务器。
+在此示例中，使用 TLS1.2 的请求通过端到端 SSL 路由到池&1; 中的后端服务器。
 
 ## <a name="end-to-end-ssl-and-whitelisting-of-certificates"></a>端到端 SSL 和证书允许列表
 
@@ -43,8 +45,8 @@ ms.openlocfilehash: a49a93b11ab3e965ac1ddaec919bfcbf43381dee
 应用程序网关支持用户可配置的 SSL 协商策略，这些策略允许客户更好地控制应用程序网关上的 SSL 连接。
 
 1. 默认情况下，所有应用程序网关都禁用 SSL 2.0 和 3.0。 无法对其进行任何配置。
-2. SSL 策略定义允许用户禁用以下 3 个协议中的任意协议：**TLSv1\_0**、**TLSv1\_1**、**TLSv1\_2**。
-3. 如果没有定义任何 SSL 策略，这 3 个策略（TLSv1\_0、TLSv1\_1、TLSv1_2）会全部启用。
+2. SSL 策略定义允许用户禁用以下&3; 个协议中的任意协议：**TLSv1\_0**、**TLSv1\_1**、**TLSv1\_2**。
+3. 如果没有定义任何 SSL 策略，这&3; 个策略（TLSv1\_0、TLSv1\_1、TLSv1_2）会全部启用。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,9 +55,4 @@ ms.openlocfilehash: a49a93b11ab3e965ac1ddaec919bfcbf43381dee
 <!--Image references-->
 
 [1]: ./media/application-gateway-backend-ssl/scenario.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

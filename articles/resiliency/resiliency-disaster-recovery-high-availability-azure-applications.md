@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: ee3e7103bd647c2d8651ec912fbb764a342781e2
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -120,10 +121,5 @@ Azure 可检测并处理许多故障，但有许多类型的故障需要使用�
 
 ## <a name="next-steps"></a>后续步骤
 本文是着重介绍 Azure 应用程序灾难恢复和高可用性的系列教程的一部分。 本系列教程的下一篇文章为[构建在 Microsoft Azure 基础之上的应用程序的高可用性](resiliency-high-availability-azure-applications.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -206,8 +206,8 @@ Azure 存储帐户可提供在云中存储队列和 Blob 数据的资源。 并�
 6. 在“在 Microsoft Azure 上创建 Web 应用”对话框中，在“Web 应用名称”框中输入唯一名称。
 
     完整的 URL 将包含你在此处输入的内容和 .azurewebsites.net（如“Web 应用名称”文本框的旁边所示）。 例如，如果 Web 应用名称为 ContosoAds，则 URL 将为 ContosoAds.azurewebsites.net。
-7. 在“应用服务计划”[](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)下拉列表中，选择“创建新的应用服务计划”。 输入 App Service 计划的名称，例如 ContosoAdsPlan。
-8. 在“资源组”[](../azure-resource-manager/resource-group-overview.md)下拉列表中，选择“新建资源组”。
+7. 在[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)下拉列表中，选择“创建新的应用服务计划”。 输入 App Service 计划的名称，例如 ContosoAdsPlan。
+8. 在[资源组](../azure-resource-manager/resource-group-overview.md)下拉列表中，选择“新建资源组”。
 9. 输入资源组的名称，例如 ContosoAdsGroup。
 10. 在“区域”下拉列表中，选择你为存储帐户所选的同一区域。
 

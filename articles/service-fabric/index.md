@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 964b9b1ab804b8e5d56863ab5a174c984ebf8235
 ms.openlocfilehash: 2180a54f576c8878e8a33bd6a5be3082188abebc
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric 文档
@@ -160,10 +161,5 @@ ms.openlocfilehash: 2180a54f576c8878e8a33bd6a5be3082188abebc
 </ul>    
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

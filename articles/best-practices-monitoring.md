@@ -18,6 +18,7 @@ ms.author: masashin
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 0eb72af5c0f904655fc4a0d8fd44d6e481c73645
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -706,10 +707,5 @@ SLA 中经常会规定以下条款：
 * [SQL Server business intelligence in Azure Virtual Machines](virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-bi.md)（Azure 虚拟机中的 SQL Server Business Intelligence）
 * [Receive alert notifications](monitoring-and-diagnostics/insights-receive-alert-notifications.md)（接收警报通知）和 [Track service health](monitoring-and-diagnostics/insights-service-health.md)（跟踪服务运行状况）
 * [Application Insights](application-insights/app-insights-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

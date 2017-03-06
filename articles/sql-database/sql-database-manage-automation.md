@@ -18,6 +18,7 @@ ms.author: jhubbard
 translationtype: Human Translation
 ms.sourcegitcommit: 46f65a2898c39774bd63ff2f8f053224d7238fb0
 ms.openlocfilehash: 0abfceb43ec5c333e9800ee6fca4e31fb317208d
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -50,10 +51,5 @@ Azure 自动化还可以通过使用 PowerShell 发出 SQL 命令，与 SQL Serv
 * [第一个 Runbook](../automation/automation-first-runbook-graphical.md)
 * [Azure 自动化学习路线图](https://azure.microsoft.com/documentation/learning-paths/automation/)
 * [Azure 自动化：你在云中的 SQL 代理](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

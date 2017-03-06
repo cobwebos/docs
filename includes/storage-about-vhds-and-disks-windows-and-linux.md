@@ -1,3 +1,14 @@
+### <a name="disk-persistence"></a>磁盘暂留 
+
+下表说明 Azure VM 中不同磁盘的不同状态，以及每种状态下数据是否暂留。
+
+| 磁盘 | 开始 | 停止/<br>释放 | 暂停 | 重新<br>启动 | 关<br>闭 | 删除 | 失败 | 调整大小 | 
+| ---- | ----- | ---- | ---- | ---- | ----  | ------ | ------- | ------ | 
+| OS 磁盘 | 是 | 是  | 是 | 是 | 是  | 否 | 否  | 是 | 
+| RAM  | 是 | 是 | 是 | 是 | 否   | 否 | 否 | 否 | 
+| 本地临时磁盘 | 是 | 否 | 是 | 否 | 否  | 否 | 否 | 否 | 
+| 附加的数据磁盘 | 是 | 是 | 是 | 是 | 是  | 是 | 是 | 是 | 
+
 ## <a name="about-vhds"></a>关于 VHD
 
 Azure 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。 有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)。 有关高级存储的详细信息，请参阅[高性能高级存储和 Azure VM](../articles/storage/storage-premium-storage.md)。
@@ -47,14 +58,8 @@ Azure 中所有要用作磁盘或映像创建来源的 .vhd 文件都是只读�
 |    | Azure 高级磁盘 | Azure 标准磁盘 |
 |--- | ------------------ | ------------------- |
 | 磁盘类型 | 固态硬盘 (SSD) | 硬盘驱动器 (HDD)  |
-| 概述  | 基于 SSD 的 高性能、低延迟磁盘支持，适用于运行 IO 密集型工作负荷或托管任务关键型生产环境的 VM | 基于 HDD 的经济高效型磁盘支持，适用于开发/测试 VM 方案 |
+| 概述  | 基于 SSD 的高性能、低延迟磁盘支持，适用于运行 IO 密集型工作负荷或托管任务关键型生产环境的 VM | 基于 HDD 的经济高效型磁盘支持，适用于开发/测试 VM 方案 |
 | 方案  | 生产和性能敏感型工作负荷 | 开发/测试, 非关键, <br>很少访问 |
-| 磁盘大小 | P10：128 GB<br>P20：512 GB<br>P30：1024 GB | 非托管磁盘：1 GB – 1TB <br><br>托管磁盘：<br> S4：32 GB <br>S6：64 GB <br>S10：128 GB <br>S20：512 GB <br>S30：1024 GB |
+| 磁盘大小 | P10：128 GB<br>P20：512 GB<br>P30：1024 GB | 非托管磁盘：1 GB – 1 TB <br><br>托管磁盘：<br> S4：32 GB <br>S6：64 GB <br>S10：128 GB <br>S20：512 GB <br>S30：1024 GB |
 | 每个磁盘的最大吞吐量 | 200 MB/秒 | 60 MB/秒 |
 | 每个磁盘的最大 IOPS | 5000 IOPS | 500 IOPS |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-

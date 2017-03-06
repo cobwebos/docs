@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: 0842cbcceb7ac96d4283efdd6c178b08dd728254
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -197,10 +198,5 @@ ms.openlocfilehash: 0842cbcceb7ac96d4283efdd6c178b08dd728254
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

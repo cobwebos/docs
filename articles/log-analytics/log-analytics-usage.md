@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 668cde23cb717fcad52fd7823561d10735e6df1b
+ms.sourcegitcommit: 7e3d4b83fefdc70f292cf85b682cf8ed756bf4c5
+ms.openlocfilehash: e7f04df679604f274c8ad9bf4daddc63c8b5418a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -47,6 +48,12 @@ Log Analytics 收集数据，并定期将数据发送到 OMS 服务。  可以�
     - 收集数据和为数据建索引所花的时间
 - 查询列表
 
+## <a name="understanding-nodes-for-oms-offers"></a>了解用于 OMS 产品/服务的节点
+
+如果用户位于每节点 (OMS) 定价层，则根据用户启用的节点和解决方案数量对用户收费。 可以在使用情况仪表板的产品/服务部分中查看使用了每项产品的多少个节点。
+
+![使用情况仪表板](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+
 ## <a name="to-work-with-usage-data"></a>处理使用情况数据
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
 2. 在“中心”菜单中，单击“更多服务”，然后在资源列表中，键入“Log Analytics”。 当你开始键入时，会根据你的输入筛选该列表。 单击“Log Analytics”。  
@@ -55,7 +62,7 @@ Log Analytics 收集数据，并定期将数据发送到 OMS 服务。  可以�
 4. 在“工作区”仪表板中，单击“Log Analytics 使用情况”。
 5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。  
     ![时间间隔](./media/log-analytics-usage/time.png)
-6. 查看“使用情况类别”边栏选项卡以显示你感兴趣的区域。 选择一个边栏选项卡，然后单击其中的项以在“日志搜索”中查看更多详细信息[](log-analytics-log-searches.md)。  
+6. 查看“使用情况类别”边栏选项卡以显示你感兴趣的区域。 选择一个边栏选项卡，然后单击其中的项以在“日志搜索”中[查看更多详细信息](log-analytics-log-searches.md)。  
     ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)
 7. 在“日志搜索”仪表板中，查看搜索返回的结果。  
     ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)
@@ -63,9 +70,4 @@ Log Analytics 收集数据，并定期将数据发送到 OMS 服务。  可以�
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)，查看功能和解决方案收集和发送到 OMS 的详细信息。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

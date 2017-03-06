@@ -18,6 +18,7 @@ ms.author: glimoli;genli
 translationtype: Human Translation
 ms.sourcegitcommit: 5d8274f61c3de178c9d418adb9be1efe0fe62bc1
 ms.openlocfilehash: 6fbfc74cb1cce744b51345c0732b40b95be21c94
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -299,10 +300,5 @@ sc config RemoteRegistry start= auto
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Windows VM 映像上载到 Azure 以进行 Resource Manager 部署](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

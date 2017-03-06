@@ -1,6 +1,6 @@
 ---
 title: "Azure 批处理 PowerShell 入门 | Microsoft 文档"
-description: "快速介绍可用于管理 Azure Batch 服务的 Azure PowerShell cmdlet"
+description: "快速介绍可用于管理 Batch 资源的 Azure PowerShell cmdlet。"
 services: batch
 documentationcenter: 
 author: tamram
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 9bd1c2a1f273d2487e4ce9063c286896cc414e42
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: cc8942dacee60d6243e91a3b4360c0c07956fa66
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="get-started-with-azure-batch-powershell-cmdlets"></a>Azure 批处理 PowerShell cmdlet 入门
+# <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
+
 通过 Azure Batch PowerShell cmdlet，你可以执行许多与通过 Batch API、Azure 门户和 Azure 命令行界面执行的相同任务并为它们编写脚本。 本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
 
 如需 Batch cmdlet 的完整列表和详细的 cmdlet 语法，请参阅 [Azure Batch cmdlet 参考](https://msdn.microsoft.com/library/azure/mt125957.aspx)。
@@ -236,10 +239,5 @@ OData 筛选器的替代方法是使用 **Id** 参数。 若要查询 ID 为“m
 ## <a name="next-steps"></a>后续步骤
 * 有关详细的 cmdlet 语法和示例，请参阅 [Azure Batch cmdlet reference](https://msdn.microsoft.com/library/azure/mt125957.aspx)（Azure Batch cmdlet 参考）。
 * 可以在[使用 Azure 批处理应用程序包部署应用程序](batch-application-packages.md)中找到有关批处理中应用程序和应用程序包的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,6 +17,7 @@ ms.author: ryansoc
 translationtype: Human Translation
 ms.sourcegitcommit: 71e8742d71ce6ebab08988751a886df4df000f8a
 ms.openlocfilehash: 4e815c5fce563155f7a747262a3695a5180706e3
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -117,10 +118,5 @@ Azure 是一个长盛不衰的服务，我们每周都会增加新的服务和�
 <a href="https://azure.microsoft.com/en-us/offers/azure-government/">Azure 政府版分销渠道
 
 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客。</a>
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

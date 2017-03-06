@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
 ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="mobile-apps-documentation"></a>移动应用文档
@@ -208,9 +209,4 @@ ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

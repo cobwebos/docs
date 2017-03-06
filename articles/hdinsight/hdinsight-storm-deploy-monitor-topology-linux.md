@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: ca8f3ac0dd5301e1fd06abaf3a292872eb631f47
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -186,10 +187,5 @@ Storm UI 是以 REST API 为基础生成的，因此，你可以使用 API 执�
 在了解了如何使用 Storm 仪表板部署和监视拓扑后，接下来请了解如何[使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)。
 
 有关更多示例拓扑的列表，请参阅 [Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

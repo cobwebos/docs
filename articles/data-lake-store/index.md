@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: dcc8f86fe5871d307bf304252e80e64a0084ef49
 ms.openlocfilehash: d7f56dd2658de2cc270f569b871ebf28ad610fd7
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store 文档
@@ -213,10 +214,5 @@ ms.openlocfilehash: d7f56dd2658de2cc270f569b871ebf28ad610fd7
         </div>
     </li>
 </ul>
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

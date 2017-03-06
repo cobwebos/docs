@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: ec470466f006265af5c4ccfddeeba975e6e648b5
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -65,9 +66,4 @@ ms.openlocfilehash: ec470466f006265af5c4ccfddeeba975e6e648b5
 * 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[此文](service-fabric-cluster-resource-manager-metrics.md)
 * 群集资源管理器可与 Service Fabric 的管理功能配合使用。 若要了解有关这种集成的详细信息，请阅读[此文](service-fabric-cluster-resource-manager-management-integration.md)
 * 若要了解群集资源管理器如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

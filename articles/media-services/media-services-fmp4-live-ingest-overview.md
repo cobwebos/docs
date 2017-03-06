@@ -17,6 +17,7 @@ ms.author: cenkd;juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 307c9a377fce32c056a54d35f173efd1bafc4df5
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -190,10 +191,5 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 [image5]: ./media/media-services-fmp4-live-ingest-overview/media-services-image5.png
 [image6]: ./media/media-services-fmp4-live-ingest-overview/media-services-image6.png
 [image7]: ./media/media-services-fmp4-live-ingest-overview/media-services-image7.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

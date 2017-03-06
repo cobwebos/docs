@@ -17,6 +17,7 @@ ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
 ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -760,9 +761,4 @@ Transfer-Encoding: chunked
 现在，可以转到更高级主题，例如：
 
 [Connect to a web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

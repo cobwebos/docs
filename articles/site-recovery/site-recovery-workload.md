@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9a1281e7615501b379fc795ca957a07acfea7171
+ms.sourcegitcommit: 0c56a74e43b989a32b10a878cec16cce0f972a9f
+ms.openlocfilehash: 63c0397b6e737038fb7758d2749ae82d1485d45d
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -131,11 +132,5 @@ Azure Site Recovery 可通过以下方式帮助保护 Dynamics AX ERP 解决方�
 [详细了解](http://aka.ms/asr-sap) 如何保护 SAP。
 
 ## <a name="next-steps"></a>后续步骤
-[准备站点恢复部署](site-recovery-best-practices.md) 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[检查先决条件](site-recovery-prereq.md) 
 

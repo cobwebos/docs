@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 220b0f6212268a44226edefa4afc5671306ff295
 ms.openlocfilehash: 9d2ff3ff50aebc3e25f553a86ca13d8a9fe7400c
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -129,9 +130,4 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。 为确保�
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
 [针对服务总线分区队列和主题的 AMQP 1.0 支持]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

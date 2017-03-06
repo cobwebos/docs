@@ -18,6 +18,7 @@ ms.author: annahar
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -112,9 +113,4 @@ ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
 [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

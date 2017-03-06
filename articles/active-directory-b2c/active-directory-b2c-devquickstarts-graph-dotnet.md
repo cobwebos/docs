@@ -17,6 +17,7 @@ ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
 ms.openlocfilehash: a932b617d57184ef714bf18f1e1e23599db52487
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -360,10 +361,5 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 * 创建和更新使用者用户时，需要几个属性，如上所述。
 
 对于想要使用图形 API 在 B2C 租户上执行的操作，如有任何疑问或要求，请在本文留下批注，或在 GitHub 代码示例存储库中提出问题。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

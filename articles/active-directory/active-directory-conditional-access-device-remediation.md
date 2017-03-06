@@ -17,6 +17,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: fbabf6f2e1e588ba509c4da84ab1700b1b5d4f87
 ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -127,10 +128,5 @@ ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory 条件访问](active-directory-conditional-access.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -12,17 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2016
+ms.date: 02/27/2017
 ms.author: mihauss
 translationtype: Human Translation
-ms.sourcegitcommit: c75658d173bcb3438d6f2725ec9ef2c4127013d7
-ms.openlocfilehash: 0d0ca29a4733c681e044884697030ccd2916b6cb
+ms.sourcegitcommit: c004285f3b3052ed9361fc7165702aff8f5e835d
+ms.openlocfilehash: e0df34dbb4278d759ee412000d6dafd64276d926
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="azure-blob-storage-hot-and-cool-storage-tiers"></a>Azure Blob 存储：“热”和“冷”存储层
 ## <a name="overview"></a>概述
-Azure 存储现在为 Blob 对象存储提供两个存储层，以便用户可以根据其使用数据的方式最经济高效地存储数据。 Azure **热存储层** 为存储经常访问的数据进行了优化。 Azure **冷存储层** 为存储不常访问且长期留存的数据进行了优化。 冷存储层中的数据可容许略低的可用性，但仍需要像热数据一样的高持续性和类似的访问时间以及吞吐量特征。 对于冷数据，略低的可用性 SLA 和较高的访问成本对于更低的存储成本而言是可接受的折衷。
+Azure 存储为 Blob 对象存储提供两个存储层，以便用户可以根据其使用数据的方式最经济高效地存储数据。 Azure **热存储层** 为存储经常访问的数据进行了优化。 Azure **冷存储层** 为存储不常访问且长期留存的数据进行了优化。 冷存储层中的数据可容许略低的可用性，但仍需要像热数据一样的高持续性和类似的访问时间以及吞吐量特征。 对于冷数据，略低的可用性 SLA 和较高的访问成本对于更低的存储成本而言是可接受的折衷。
 
 如今，存储在云中的数据以指数速度增长。 若要为扩展的存储需求管理成本，根据属性（如访问频率和计划保留期）整理数据将很有帮助。 存储在云中的数据在其生成方式、处理方式以及在生存期内的访问方式等方面会不相同。 某些数据在其整个生存期中都会受到积极的访问和修改。 某些数据则在生存期早期会受到频繁的访问，随着数据变旧，访问会极大地减少。 某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。
 
@@ -341,10 +342,5 @@ AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数�
 [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 
 [浏览和了解你的存储帐户](http://storageexplorer.com/)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

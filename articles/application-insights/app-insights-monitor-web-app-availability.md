@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 02/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: af6728d23ba228b436546c13529189f649416dba
-ms.openlocfilehash: cbddda10fa2b91e46a9789379fde8011be0e8381
+ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
+ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -78,37 +79,20 @@ Web 测试有两种类型：
 ## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>如果看到失败
 单击红点。
 
-![单击红点](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
+![单击红点](./media/app-insights-monitor-web-app-availability/open-instance.png)
 
-或者，向下滚动并单击成功率小于 100% 的测试。
 
-![单击特定的 Web 测试](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
+从 Web 测试结果，可以：
 
-该测试的结果将会打开。
+* 检查从服务器收到的响应。
+* 在处理失败的请求实例时将打开服务器应用发送的遥测。
+* 在 Git 或 VSTS 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
+* 在 Visual Studio 中打开 Web 测试结果。
 
-![单击特定的 Web 测试](./media/app-insights-monitor-web-app-availability/16-1test.png)
-
-从多个位置运行测试 &#151; 选择结果小于 100% 的测试。
-
-![单击特定的 Web 测试](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
-
-向下滚动到“失败的测试”并选择结果。
-
-单击该结果，在门户中对它进行评估并查看失败原因。
-
-![Web 测试运行结果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
-
-或者，可以下载结果文件，然后在 Visual Studio 中检查。
 
 *看起来正常，但却报告为失败* 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。
 
-### <a name="open-the-server-request-and-exceptions"></a>打开服务器请求和异常
-
-根据特定测试的详细属性，可以打开请求和任何其他事件（如异常）的服务器端报告。
-
-![Web 测试运行结果](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
-
-如果看不到相关项，则可能是因为[采样](app-insights-sampling.md)正在进行。
+*没有相关项？* 这可能是因为正在进行[采样](app-insights-sampling.md)。
 
 ## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
@@ -291,9 +275,4 @@ Web 测试插件提供时间参数化方式。
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

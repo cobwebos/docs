@@ -17,6 +17,7 @@ ms.author: hascipio; v-divte
 translationtype: Human Translation
 ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
 ms.openlocfilehash: 64c7486ae24c31ef2a1116fdfd3cab9b813a09af
+ms.lasthandoff: 12/22/2016
 
 
 ---
@@ -37,7 +38,8 @@ ms.openlocfilehash: 64c7486ae24c31ef2a1116fdfd3cab9b813a09af
 
 * 创建拓扑：“拓扑标识符”通常是解决方案模板的拓扑名称。 拓扑标识符将在 URL 中使用，如下所示：
 
-  Azure 应用商店：http://azure.microsoft.com/marketplace/partners/ {PublisherNamespace} / {OfferIdentifier} {TopologyIdentifier}
+  Azure 应用商店：
+  http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/ {OfferIdentifier}{TopologyIdentifier}
 
   Azure 门户：https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
 * 添加新版本。
@@ -67,9 +69,4 @@ ms.openlocfilehash: 64c7486ae24c31ef2a1116fdfd3cab9b813a09af
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 [link-pubportal]:https://publish.windowsazure.com
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

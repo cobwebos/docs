@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 02/27/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 37409ad3f50cdd4a7a384c96a57a35ef8c83fb8f
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4cde035f75bfa3c448f12e9ebf2896b9a54a6873
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-ssh-with-hdinsight-hadoop-from-windows-linux-unix-or-os-x"></a>在 Windows、Linux、Unix 或 OS X 中将 SSH 与 HDInsight (Hadoop) 配合使用
+# <a name="use-ssh-with-hdinsight-hadoop-from-bash-on-windows-10-linux-unix-or-os-x"></a>在 Windows 10、Linux、Unix 或 OS X 上的 Bash 中将 SSH 与 HDInsight (Hadoop) 配合使用
 
 > [!div class="op_single_selector"]
 > * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -42,13 +43,11 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 * __ssh__：可用于建立远程命令行会话和创建隧道的常规 SSH 客户端。
 * __scp__：可以使用 SSH 协议在本地系统与远程系统之间复制文件的实用工具。
 
-在 Windows 10 Anniversary Edition 推出之前，Windows 一直都未有 SSH 客户端。 此版本的 Windows 包含面向开发人员的 Bash on Windows 10 功能，提供 `ssh`、`scp` 和其他 Linux 命令。 有关使用 Bash on Windows 10 的详细信息，请参阅 [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)（Windows 上的 Ubuntu Bash）。
+Windows 10 周年纪念版提供 Bash 作为开发人员功能。 其中提供 `ssh`、`scp` 及其他 Linux 命令。 有关使用 Bash on Windows 10 的详细信息，请参阅 [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)（Windows 上的 Ubuntu Bash）。
 
 如果你使用的是 Windows 但无法访问 Bash on Windows 10，我们建议使用以下 SSH 客户端：
 
 * [适用于 Windows 的 Git](https://git-for-windows.github.io/)：提供 `ssh` 和 `scp` 命令行实用工具。
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)：提供图形 SSH 客户端。
-* [MobaXterm](http://mobaxterm.mobatek.net/)：提供图形 SSH 客户端。
 * [Cygwin](https://cygwin.com/)：提供 `ssh` 和 `scp` 命令行实用工具。
 
 > [!NOTE]
@@ -64,7 +63,7 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 
 * **私钥**是你使用 SSH 客户端登录时，为了验证自己的身份而提供给 HDInsight 群集的凭据。 请保护好私钥， 不要透露给其他人。
 
-    为私钥创建通行短语可以进一步提高安全性。 在使用密钥之前，必须提供此通行短语。
+    为私钥创建通行短语可以进一步提高安全性。 如果使用密码，则使用 SSH 进行身份验证时必须输入该密码。
 
 ### <a name="create-a-public-and-private-key"></a>创建公钥和私钥
 
@@ -91,7 +90,7 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 * __id\_rsa__：此文件包含私钥。
 
     > [!WARNING]
-    > 必须限制对此文件的访问，防止有人未经授权访问公钥保护的服务。
+    > 限制对此文件的访问，防止有人未经授权访问公钥保护的服务。
 
 * __id\_rsa.pub__：此文件包含公钥。 创建 HDInsght 群集时需要用到此文件。
 
@@ -115,7 +114,7 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 
 尽管创建群集后可将其他 SSH 用户添加到群集，但我们不建议这样做。
 
-* 必须手动将新 SSH 用户添加到群集中的每个节点。
+* 新 SSH 用户需要添加到群集中每个节点。
 
 * 新 SSH 用户对 HDInsight 的访问权限与默认用户相同。 无法根据 SSH 用户帐户限制访问 HDInsight 中的数据或作业。
 
@@ -147,7 +146,7 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 
 ### <a name="connect-to-other-nodes"></a>连接到其他节点
 
-辅助角色节点和 Zookeeper 节点不能直接从群集外部访问，但可以从群集头节点或边缘节点访问。 下面是进行这种访问的一种步骤：
+辅助角色节点和 Zookeeper 节点不能直接从群集外部访问，但可以从群集头节点或边缘节点访问。 以下是连接到其他节点的一般步骤：
 
 1. 使用 SSH 连接到头节点或边缘节点：
 
@@ -183,7 +182,7 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    如果未返回任何信息，则表示 `ssh-agent` 未运行。 请参阅 [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh)（将 ssh-agent 与 ssh 配合使用）中的代理启动脚本信息，或者查阅 SSH 客户端文档，了解安装和配置 `ssh-agent` 的具体步骤。
+    如未返回任何信息，则 `ssh-agent` 未运行。 请参阅 [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh)（将 ssh-agent 与 ssh 配合使用）中的代理启动脚本信息，或者查阅 SSH 客户端文档，了解安装和配置 `ssh-agent` 的具体步骤。
 
 4. 验证了 **ssh-agent** 处于运行状态后，请使用以下方式将你的 SSH 私钥添加到代理：
 
@@ -196,7 +195,7 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 
 [已加入域的 HDInsight](hdinsight-domain-joined-introduction.md) 可将 Kerberos 与 HDInsight 中的 Hadoop 集成。 由于 SSH 用户不是 Active Directory 域用户，因此在使用 Active Directory 进行身份验证之前无法运行 Hadoop 命令。 执行以下步骤，使用 Active Directory 对 SSH 会话进行身份验证：
 
-1. 使用[连接到 HDInsight](#connect) 部分中所述的 SSH 连接到已加入域的 HDInsight 群集。 例如，以下命令使用名为 __sshuser__ 的 SSH 帐户连接到名为 __myhdi__ 的 HDInsight 群集。
+1. 使用 SSH 连接到已加入域的 HDInsight 群集。 例如，以下命令使用名为 __sshuser__ 的 SSH 帐户连接到名为 __myhdi__ 的 HDInsight 群集。
 
         ssh sshuser@myhdi-ssh.azurehdinsight.net
 
@@ -212,12 +211,12 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 
 ## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH 隧道
 
-可以使用 SSH 来以隧道方式将本地请求（例如 Web 请求）传送到 HDInsight 群集。 然后，请求将路由到请求的资源，就像它是来源于 HDInsight 群集头节点一样。
+可以使用 SSH 来以隧道方式将本地请求（例如 Web 请求）传送到 HDInsight 群集。 该请求将转发到群集，然后在群集内进行解决。
 
 > [!IMPORTANT]
 > 访问某些 Hadoop 服务的 Web UI 需要使用 SSH 隧道。 例如，作业历史记录 UI 或资源管理器 UI 只能使用 SSH 隧道访问。
 
-有关创建和使用 SSH 隧道的详细信息，请参阅 [Use SSH Tunneling to access Ambari web UI, JobHistory, NameNode, Oozie, and other web UI's](hdinsight-linux-ambari-ssh-tunnel.md)（使用 SSH 隧道访问 Ambari Web UI、JobHistory、NameNode、Oozie 和其他 Web UI）。
+有关创建和使用 SSH 隧道的详细信息，请参阅[使用 SSH 隧道访问 Ambari Web UI、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -228,9 +227,4 @@ SSH 是一种加密网络协议，可用于通过不安全的网络来与远程�
 * [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

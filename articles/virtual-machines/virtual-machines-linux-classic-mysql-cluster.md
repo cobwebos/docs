@@ -18,6 +18,7 @@ ms.author: jparrel
 translationtype: Human Translation
 ms.sourcegitcommit: 8dc7a8c3f109861df70c7501b709a34196e9acbc
 ms.openlocfilehash: 5541dfa41f55a2841108fc8492338f0f291fe377
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -338,9 +339,4 @@ Pacemaker 使用群集监视资源、定义主节点何时停机，并将这些�
 * 负载均衡器至少需要&5; 秒钟才能做出响应，因此应用程序应是群集感知的并更容忍超时。 其他体系结构（如应用中队列和查询中间件）也会有帮助。
 * 有必要进行 MySQL 优化，确保以受控的速度完成写入，并且尽可能频繁地将缓存刷新到磁盘
 * 写入性能将依赖于虚拟交换机中的 VM 互连，因为这是 DRBD 用于复制设备的机制。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

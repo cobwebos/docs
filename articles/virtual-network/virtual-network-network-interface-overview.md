@@ -1,6 +1,6 @@
 ---
 title: "Azure 中的网络接口 | Microsoft 文档"
-description: "了解 Azure Resource Manager 部署模型中的 Azure 网络接口。"
+description: "了解 Azure 网络接口及其与虚拟机配合使用的方式。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/23/2016
+ms.date: 02/24/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3244d5b52785d820698bf26f9bf189de93ef64e4
-ms.openlocfilehash: 691b79d7739246dad7191195fa049fd58340c8ff
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 395cff80b3f97b6340e15f370c13f783e2f5dde3
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="network-interfaces-in-azure"></a>Azure 中的网络接口
+# <a name="what-are-network-interfaces"></a>什么是网络接口？
+
 网络接口 (NIC) 是虚拟机 (VM) 与基础软件网络之间互相连接的桥梁。 本文解释什么是网络接口，以及在 Azure Resource Manager 部署模型中如何使用它。
 
 Microsoft 建议使用 Resource Manager 部署模型来部署新资源，但也可以在[经典](virtual-network-ip-addresses-overview-classic.md)部署模型中部署具有网络连接的 VM。 如果你熟悉经典模式，请注意，Resource Manager 部署模型中的 VM 网络具有重要的差别。 请阅读 [Virtual machine networking - Classic](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)（虚拟机网络 - 经典）一文详细了解这些差别。
@@ -34,7 +37,7 @@ Microsoft 建议使用 Resource Manager 部署模型来部署新资源，但也�
 4. 可以附加到 VM，但只能附加到与 NIC 位于相同位置的单个 VM。
 5. 具有 MAC 地址。只要 NIC 与 VM 保持连接，MAC 地址就会在 NIC 上保留。 无论是使用 Azure 门户、Azure PowerShell 或 Azure 命令行接口将 VM 重新启动（从操作系统内部）还是停止（解除分配）再启动，MAC 地址都会保留。 如果将 NIC 从 VM 分离，然后将其附加到不同的 VM，则 NIC 会收到不同的 MAC 地址。 如果删除 NIC，MAC 地址将分配到其他 NIC。
 6. 必须向 NIC 分配一个主要**专用** *IPv4* 静态或动态 IP 地址。
-7. NIC 可以关联一个公共 IP 地址资源。
+7. 可将一个或多个公用 IP 地址资源与之关联，有关详细信息，请参阅[每个 NIC 具有多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)这一文档。
 8. 运行特定 Microsoft Windows Server 操作系统版本的特定 VM 大小支持具有单根 I/O 虚拟化 (SR-IOV) 技术的加速网络功能。 有关此预览版功能的详细信息，请阅读[适用于虚拟机的加速网络](virtual-network-accelerated-networking-powershell.md)一文。
 9. 如果为 NIC 启用了 IP 转发，NIC 可以接收目标不是其分配的专用 IP 地址的流量。 例如，如果 VM 正在运行防火墙软件，则会路由目标不是其自身 IP 地址的数据包。 VM 仍然必须运行可以路由或转发流量的软件，但为此必须对 NIC 启用 IP 转发。
 10. NIC 通常在与它附加到的 VM 相同的资源组中创建，或者在它连接到的相同 VNet 中创建，但这不是强制性的要求。
@@ -52,10 +55,5 @@ Microsoft 建议使用 Resource Manager 部署模型来部署新资源，但也�
 * 阅读[创建 VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 一文，了解如何创建具有单个 NIC 的 VM。
 * 阅读[部署具有多个 NIC 的 VM](virtual-network-deploy-multinic-arm-ps.md) 一文，了解如何创建具有多个 NIC 的 VM。
 * 阅读 [Azure 虚拟机的多个 IP 地址](virtual-network-multiple-ip-addresses-powershell.md)一文，了解如何创建具有多个 IP 配置的 NIC。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

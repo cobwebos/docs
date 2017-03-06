@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 50b30a64fab9a7c996040c5a0380975b11b5966f
 ms.openlocfilehash: 9d62ea6d75b48bbc84194635da792764871617e7
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="application-gateway-documentation"></a>应用程序网关文档
@@ -162,10 +163,5 @@ ms.openlocfilehash: 9d62ea6d75b48bbc84194635da792764871617e7
     </li>
 </ul>    
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
 ms.openlocfilehash: afb6662e1b4af6cf66fd3c8e7b155b5b6bea85ff
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -72,7 +73,7 @@ ms.openlocfilehash: afb6662e1b4af6cf66fd3c8e7b155b5b6bea85ff
 5. 完成向导并单击复选框以保存新凭据。
 
 ## <a name="using-a-powershell-credential"></a>使用 PowerShell 凭据
-在 Runbook 或 DSC 配置中使用 **Get-AutomationPSCredential** 活动检索凭据资产。 此操作将返回“PSCredential 对象”[](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx)，可将其用于需要 PSCredential 参数的活动或 cmdlet。 还可以检索要单独使用的凭据对象的属性。 该对象具有一个用于用户名和安全密码的属性，或者你可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) 对象，该对象将提供该密码的不安全版本。
+在 Runbook 或 DSC 配置中使用 **Get-AutomationPSCredential** 活动检索凭据资产。 此操作将返回 [PSCredential 对象](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) ，可将其用于需要 PSCredential 参数的活动或 cmdlet。 还可以检索要单独使用的凭据对象的属性。 该对象具有一个用于用户名和安全密码的属性，或者你可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) 对象，该对象将提供该密码的不安全版本。
 
 ### <a name="textual-runbook-sample"></a>文本 Runbook 示例
 下面的示例命令演示如何在 Runbook 中使用 PowerShell 凭据。 在此示例中，检索了凭据并将其用户名和密码分配到变量。
@@ -100,10 +101,5 @@ ms.openlocfilehash: afb6662e1b4af6cf66fd3c8e7b155b5b6bea85ff
 * 若要了解使用自动化的不同身份验证方法，请参阅 [Azure 自动化安全性](automation-security-overview.md)
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md) 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

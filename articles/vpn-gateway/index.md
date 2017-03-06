@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: b481f480d44696476497e0eaeeee7150ed8d365b
 ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="vpn-gateway-documentation"></a>VPN 网关文档
@@ -164,10 +165,5 @@ ms.openlocfilehash: 6c0f96adff93080f88a6a23edbdf5a622279049f
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c0c33506d134db9fc49bd873e9c95063dd2ab845
-ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
+ms.sourcegitcommit: 6c26fdd11031ab482d12611ca338df5c90a14193
+ms.openlocfilehash: a482e20bdbf60889f93f4532ed042b41ec51b81e
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -95,7 +96,10 @@ ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
 
 ### <a name="domain-and-ou-filtering"></a>域和 OU 筛选
 默认情况下将同步所有域和 OU。 如果你不想将某些域或 OU 同步到 Azure AD，可以取消选择这些域和 OU。  
-![DomainOU 筛选](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)向导中的此页用于配置基于域和基于 OU 的筛选。 有关详细信息，请参阅[基于域的筛选](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)和[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)。 如果使用基于 OU 的筛选，以后添加的新 OU 默认会同步。 如果希望行为是不同步新 OU，可在向导完成后，使用[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)来配置此行为。
+![DomainOU 筛选](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)  
+向导中的此页面用于配置基于域和基于 OU 的筛选。 如果打算进行更改，请在更改之前参阅[基于域的筛选](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)和[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)。 某些 OU 对功能至关重要，不应取消选中。
+
+如果使用基于 OU 的筛选，以后添加的新 OU 默认会同步。 如果希望行为是不同步新 OU，可在向导完成后，使用[基于 OU 的筛选](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)来配置此行为。
 
 如果打算使用[基于组的筛选](#sync-filtering-based-on-groups)，请确保包含该组所在的 OU，而未使用 OU 筛选将该 OU 筛选掉。 OU 筛选将在基于组的筛选之前评估。
 
@@ -174,8 +178,8 @@ ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
 ### <a name="enabling-single-sign-on-sso"></a>启用单一登录 (SSO)
 配合密码同步或传递身份验证配置单一登录是一个简单的过程，针对要同步到 Azure AD 的每个林，只需完成此过程一次。 配置包括如下所述的两个步骤：
 
-1.  在本地 Active Directory 中创建所需的计算机帐户。
-2.  配置客户端计算机的 Intranet 区域，使其支持单一登录。
+1.    在本地 Active Directory 中创建所需的计算机帐户。
+2.    配置客户端计算机的 Intranet 区域，使其支持单一登录。
 
 #### <a name="create-the-computer-account-in-active-directory"></a>在 Active Directory 中创建计算机帐户
 对于在 Azure AD Connect 中添加的每个林，需要提供域管理员凭据，以便在每个林中创建计算机帐户。 凭据仅用于创建帐户，而不会存储，也不会用于其他任何操作。 只需在 Azure AD Connect 向导的“启用单一登录”页上添加凭据，如下所示：
@@ -189,20 +193,20 @@ ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
 为了确保客户端在 Intranet 区域中自动登录，需确保两个 URL 是 Intranet 区域的一部分。 这样就可以确保已加入域的计算机在连接到企业网络后，向 Azure AD 自动发送 Kerberos 票证。
 在装有组策略管理工具的计算机上：
 
-1.  打开组策略管理工具
-2.  编辑要应用到所有用户的组策略。 例如默认的域策略。
-3.  导航到“用户配置\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，然后选择“区域分配列表的站点”，如下图所示。
-4.  启用策略，并在对话框中输入以下两项。
+1.    打开组策略管理工具
+2.    编辑要应用到所有用户的组策略。 例如默认的域策略。
+3.    导航到“用户配置\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，然后选择“区域分配列表的站点”，如下图所示。
+4.    启用策略，并在对话框中输入以下两项。
 
-        Value: `https://autologon.microsoftazuread-sso.com`  
-        Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+        值：`https://autologon.microsoftazuread-sso.com`  
+        Data 1  
+        值：`https://aadg.windows.net.nsatc.net`  
+        Data 1
 
-5.  如下图所示：  
+5.    如下图所示：  
 ![Intranet 区域](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.  单击“确定”两次。
+6.    单击“确定”两次。
 
 ## <a name="configuring-federation-with-ad-fs"></a>配置与 AD FS 的联合
 只需单击几下鼠标，请能使用 Azure AD Connect 配置 AD FS。 配置之前需要做好以下准备。
@@ -313,9 +317,4 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](active-directory-aadconnectsync-feature-scheduler.md)。
 
 了解有关 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

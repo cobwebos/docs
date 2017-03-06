@@ -17,8 +17,9 @@ ms.topic: get-started-article
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: a2e65de2ec77da9005cea18876fd86fd2928b9da
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: bdcf28703f007d32144278c7f0956fe4c27c3b27
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -142,14 +143,8 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 * 有现有的 IT 资源，并且最终可以拥有修补、备份和数据库高可用性。 请注意，一些自动化功能可以极大地简化这些操作。 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要开始使用 SQL 数据库，请参阅 [《SQL Database tutorial: Create a SQL database in minutes using the Azure portal》](sql-database-get-started.md) （SQL 数据库教程：使用 Azure 门户在几分钟内创建一个 SQL 数据库）。
+* 若要开始使用 SQL 数据库，请参阅[第一个 Azure SQL 数据库](sql-database-get-started.md)。
 * 请参阅 [《SQL Database pricing》](https://azure.microsoft.com/pricing/details/sql-database/)（SQL 数据库定价）。
 * 若要开始在 Azure VM 上使用 SQL Server，请参阅 [《Provision a SQL Server virtual machine in Azure》](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) （在 Azure 中预配 SQL Server 虚拟机）。
-* 请参阅 [Azure 虚拟机上的 SQL Server：学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

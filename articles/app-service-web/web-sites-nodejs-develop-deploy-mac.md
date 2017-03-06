@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 4b8eb863a1fcb65c307870619ea9d8942c57a906
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -199,9 +200,4 @@ Node.js 提供可由您的应用程序使用的丰富的模块生态系统。 �
 [deployment-part]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-part.png
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

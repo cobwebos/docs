@@ -18,6 +18,7 @@ ms.author: ningk
 translationtype: Human Translation
 ms.sourcegitcommit: 8dd01c6c283c65a72b7c98a90721a72c9cd27d84
 ms.openlocfilehash: b549b82847a9f37e4ba825c1b5f527741d2ece23
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -347,9 +348,4 @@ MySQL 慢查询日志有助于识别 MySQL 的慢查询。 在启用 MySQL 慢�
 [12]: ./media/virtual-machines-linux-classic-optimize-mysql/virtual-machines-linux-optimize-mysql-perf-12.png
 [13]: ./media/virtual-machines-linux-classic-optimize-mysql/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]: ./media/virtual-machines-linux-classic-optimize-mysql/virtual-machines-linux-optimize-mysql-perf-14.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

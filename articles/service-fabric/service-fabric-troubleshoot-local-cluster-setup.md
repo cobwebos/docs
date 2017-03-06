@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 03/02/2017
 ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0f0db912ac3cee02f4268996bf2409440afade86
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -89,10 +90,5 @@ ms.openlocfilehash: 0f0db912ac3cee02f4268996bf2409440afade86
 ## <a name="next-steps"></a>后续步骤
 * [使用系统运行状况报告了解群集并排除故障](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

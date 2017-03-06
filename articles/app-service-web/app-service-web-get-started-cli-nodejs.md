@@ -4,7 +4,7 @@ description: "了解如何通过部署一个示例应用，轻松地在应用服
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 65c9bdd9-8763-4c56-8e15-f790992e951e
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 2c750583212d7ed13e3bb5f4d0770d52aa9610b2
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: d8f3c95852361fd92eada1e6a50d735cc305279d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,7 +39,7 @@ ms.openlocfilehash: 2c750583212d7ed13e3bb5f4d0770d52aa9610b2
 可以使用以下 CLI 版本之一完成任务：
 
 - [Azure CLI 1.0](app-service-web-get-started-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](app-service-web-get-started.md)- 适用于资源管理部署模型的下一代 CLI
+- [Azure CLI 2.0](app-service-web-get-started.md) - 适用于资源管理部署模型的下一代 CLI
 
 ## <a name="prerequisites"></a>先决条件
 * [Git](http://www.git-scm.com/downloads)。
@@ -136,10 +137,5 @@ ms.openlocfilehash: 2c750583212d7ed13e3bb5f4d0770d52aa9610b2
 
 * 尝试使用 [其他方法将代码部署到 Azure](web-sites-deploy.md)。 例如，若要从某个 GitHub 存储库中进行部署，只需选择 **GitHub**，而不是“部署选项”中的“本地 Git 存储库”。
 * 使 Azure 应用上升到更高的层次。 对用户进行身份验证。 按需缩放。 设置一些性能警报。 所有这些操作只需按几下鼠标即可完成。 请参阅 [在第一个 Web 应用中添加功能](app-service-web-get-started-2.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

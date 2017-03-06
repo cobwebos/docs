@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: c69489141c704965b2406210b3e2c20842c34a6c
 ms.openlocfilehash: 2b130d8b29270e08d432af9a117592c8ce7bac57
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="virtual-network-documentation"></a>虚拟网络文档
@@ -159,10 +160,5 @@ ms.openlocfilehash: 2b130d8b29270e08d432af9a117592c8ce7bac57
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -16,6 +16,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
 ms.openlocfilehash: 9906aa7ac4296089fd2e41897323e757b181a022
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -65,9 +66,4 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 [2]: ./media/active-directory-understanding-resource-access/IC707932.png
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

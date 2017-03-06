@@ -15,8 +15,9 @@ ms.topic: hero-article
 /ms.date: 1/18/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 6c93e5363767cb6860d4a365eba178dd940bd41d
-ms.openlocfilehash: e0800b7c7aba64fa7429fc3ced8c194cd9fbf0d1
+ms.sourcegitcommit: 4e81088857c0e9cacaf91342227ae63080fc90c5
+ms.openlocfilehash: 780066b1e71d967c64da0a1c1a284ffd5d1b7481
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -215,10 +216,10 @@ Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -Des
 3. 在该虚拟机上打开 PowerShell 窗口。
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>保存虚拟机的存储帐户凭据
-装载到文件共享之前，先在虚拟机上保存存储帐户凭据。 当虚拟机重新启动时，此步骤允许 Windows 自动重新连接到文件共享。 若要持久保存帐户凭据，请在虚拟机上的 PowerShell 窗口中运行 `cmdkey` 命令。 请将 `<storage-account-name>` 替换为你的存储帐户名称，将 `<storage-account-key>` 替换为你的存储帐户密钥。
+装载到文件共享之前，先在虚拟机上保存存储帐户凭据。 当虚拟机重新启动时，此步骤允许 Windows 自动重新连接到文件共享。 若要持久保存帐户凭据，请在虚拟机上的 PowerShell 窗口中运行 `cmdkey` 命令。 请将 `<storage-account-name>` 替换为你的存储帐户名称，将 `<storage-account-key>` 替换为你的存储帐户密钥。 必须显式指定域“AZURE”，如以下示例所示。 
 
 ```
-cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
+cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
 ```
 
 现在，当虚拟机重新启动时，Windows 将重新连接到你的文件共享。 可以通过在 PowerShell 窗口中运行 `net use` 命令来验证是否已重新连接共享。
@@ -238,10 +239,10 @@ net use z: \\samples.file.core.windows.net\logs
 由于你已在上一步中保存了存储帐户凭据，因此你无需随 `net use` 命令提供这些凭据。 如果你尚未保存凭据，请作为传递给 `net use` 命令的参数提供凭据，如以下示例所示。
 
 ```
-net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /u:<storage-account-name> <storage-account-key>
+net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /u:AZURE\<storage-account-name> <storage-account-key>
 
 example :
-net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
+net use z: \\samples.file.core.windows.net\logs /u:AZURE\samples <storage-account-key>
 ```
 
 现在，你可以使用虚拟机中的文件存储共享，就像使用任何其他驱动器一样。 你可以从命令提示符发出标准文件命令，也可以从文件资源管理器查看已装载的共享及其内容。 你也可以在虚拟机中运行代码，以便访问使用标准 Windows 文件 I/O API 的文件共享，例如 .NET Framework 中由 [System.IO 命名空间](http://msdn.microsoft.com/library/gg145019.aspx) 提供的文件共享。
@@ -680,9 +681,4 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 * [Azure 文件存储内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

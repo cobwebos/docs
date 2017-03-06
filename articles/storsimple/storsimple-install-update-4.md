@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/21/2017
+ms.date: 03/06/2017
 ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 988d859e2cc9cd723e23704193b6c3bbdce08379
 ms.openlocfilehash: 976aa382e34cdc417a79b513c0e8e063b30d9e01
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -101,10 +102,5 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Update 4 版本](storsimple-update4-release-notes.md) 的详细信息。
-
-
-
-
-<!--HONumber=Feb17_HO4-->
 
 

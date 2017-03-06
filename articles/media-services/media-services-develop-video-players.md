@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: b13861ce404b8c4215248a2498c5969fc19ad536
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -74,10 +75,5 @@ Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告
 [使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频](media-services-embed-mpeg-dash-in-html5.md)
 
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

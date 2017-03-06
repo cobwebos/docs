@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/01/2017
+ms.date: 03/06/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 2fe28e7b52af579038ec145c028a6d2796d6cc6e
 ms.openlocfilehash: f47b719f7b1a78264e054ee15edacc32ca35aaf7
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -143,9 +144,4 @@ ms.openlocfilehash: f47b719f7b1a78264e054ee15edacc32ca35aaf7
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

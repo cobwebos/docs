@@ -18,6 +18,7 @@ ms.author: jehollan
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: fe558958c316c8dba42163e277ae01451f712e5a
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -60,10 +61,5 @@ ms.openlocfilehash: fe558958c316c8dba42163e277ae01451f712e5a
 
 ## <a name="next-steps"></a>后续步骤
 现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

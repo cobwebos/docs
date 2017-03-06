@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: b6b6a217f6fa54928b2c05cf44c5b0b74aaf8ce6
 ms.openlocfilehash: 21b56baf3e17b7955e6baf4b996b02d67fe50b81
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="data-lake-analytics-documentation"></a>Data Lake Analytics 文档
@@ -249,10 +250,5 @@ ms.openlocfilehash: 21b56baf3e17b7955e6baf4b996b02d67fe50b81
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

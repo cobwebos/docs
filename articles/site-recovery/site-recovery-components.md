@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: bd8082c46ee36c70e372208d1bd15337acc558a1
-ms.openlocfilehash: eb97f66901efa336942dee56d9a8a62ade1f6842
+ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
+ms.openlocfilehash: 4993a873742db5ca2bd8c31eaab098beb0a0a030
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -24,13 +25,11 @@ ms.openlocfilehash: eb97f66901efa336942dee56d9a8a62ade1f6842
 
 阅读本文，了解 Azure Site Recovery 服务的基础体系结构以及它运行时必需的组件。
 
-组织需要制定 BCDR 策略来确定应用、工作负荷和数据如何在计划和非计划停机期间保持运行和可用，并尽快恢复正常运行情况。 BCDR 策略应保持业务数据的安全性和可恢复性，并确保在发生灾难时工作负荷持续可用。
-
 Site Recovery 是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。 当主要位置发生故障时，你可以故障转移到辅助位置，使应用和工作负荷保持可用。 当主要位置恢复正常时，你可以故障转移回到主要位置。 有关详细信息，请参阅 [什么是 Site Recovery？](site-recovery-overview.md)
 
 本文介绍如何在 [Azure 门户](https://portal.azure.com)中部署。 使用 [Azure 经典门户](https://manage.windowsazure.com/)可以维护现有的 Site Recovery 保管库，但无法创建新保管库。
 
-请在本文末尾发表任何看法。 如有技术问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上提出。
+请将任何评论发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
 
 ## <a name="deployment-scenarios"></a>部署方案
@@ -133,10 +132,11 @@ Site Recovery 将复制受支持 VM 和物理服务器上运行的应用。 有�
 
 **组件** | **详细信息**
 --- | ---
+
 **Azure** | 在 Azure 中，需要创建 Microsoft Azure 帐户、Azure 存储帐户和 Azure 网络。<br/><br/> 存储和网络帐户可以是基于 Resource Manager 的帐户或经典帐户。<br/><br/> 复制的数据存储在存储帐户中；从本地站点故障转移时，将使用复制的数据创建 Azure VM。<br/><br/> 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
-**VMM 服务器** | 如果 Hyper-V 主机位于 VMM 云中，需要设置逻辑和 VM 网络来配置[网络映射](site-recovery-network-mapping.md)。 VM 网络应链接到与云关联的逻辑网络。
+**VMM 服务器** | 如果 Hyper-V 主机位于 VMM 云中，需要设置逻辑和 VM 网络来配置网络映射。 VM 网络应链接到与云关联的逻辑网络。
 **Hyper-V 主机** | 需要一个或多个 Hyper-V 主机服务器。
-**Hyper-V VM** | Hyper-V 主机服务器上需要一个或多个 VM。 Hyper-V 主机上运行的提供程序通过 Internet 协调使用 Site Recovery 服务的复制。 代理通过 HTTPS 443 处理数据复制。 来自提供程序和代理的通信都是安全且经过加密的。 Azure 存储空间中的复制数据也已加密。
+**Hyper-V VM** | Hyper-V 主机服务器上需要有一个或多个 VM。 Hyper-V 主机上运行的提供程序通过 Internet 协调使用 Site Recovery 服务的复制。 代理通过 HTTPS 443 处理数据复制。 来自提供程序和代理的通信都是安全且经过加密的。 Azure 存储空间中的复制数据也已加密。
 
 
 ## <a name="replication-process"></a>复制过程
@@ -212,7 +212,7 @@ Site Recovery 将复制受支持 VM 和物理服务器上运行的应用。 有�
 --- | ---
 1.**启用保护** | 为 Hyper-V VM 启用保护后，将启动“启用保护”作业，检查计算机是否符合先决条件。 该作业将调用两个方法：<br/><br/> [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx)：使用已配置的设置来设置复制。<br/><br/> [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx)：初始化完整 VM 复制。
 2.**初始复制** |  创建虚拟机快照并逐个复制虚拟硬盘，直到它们已全部复制到辅助位置。<br/><br/> 完成复制所需的时间取决于 VM 大小和网络带宽以及初始复制方法。<br/><br/> 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中，该文件位于与磁盘相同的文件夹中。<br/><br/> 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助存储。<br/><br/> 当初始复制正在进行时，快照和日志将占用磁盘资源。 初始复制完成后，将删除 VM 快照，并且将同步并合并日志中的增量磁盘更改。
-3.**完成保护** | 初始复制完成后，“完成保护”作业将配置网络和其他复制后设置，使虚拟机受到保护。<br/><br/> 如果要复制到 Azure，你可能需要调整虚拟机的设置，使其随时可进行故障转移。<br/><br/> 此时，你可以运行测试故障转移以检查一切是否按预期工作。
+3.**完成保护** | 初始复制完成后，“完成保护”作业将配置网络和其他复制后设置，使虚拟机受到保护。<br/><br/> 如果要复制到 Azure，可能需要调整虚拟机的设置，使其随时可进行故障转移。<br/><br/> 此时，你可以运行测试故障转移以检查一切是否按预期工作。
 4.**复制** | 在完成初始复制后，根据复制设置开始增量同步。<br/><br/> **复制失败**：如果增量复制失败且完整复制因为带宽或时间限制而需要大量开销，将会发生重新同步。 例如，如果 .hrl 文件达到磁盘大小的 50%，系统会将 VM 标记为重新同步。 重新同步通过计算源虚拟机磁盘和目标虚拟机的校验和并只发送增量来最大程度地减小发送的数据量。 重新同步完成后，将会恢复增量复制。 默认情况下，重新同步安排为在非工作时间自动运行，但你可以手动重新同步虚拟机。<br/><br/> **复制错误**：如果发生复制错误，将会进行内置重试。 如果是无法恢复的错误，例如身份验证或授权错误，或者副本计算机处于无效状态，则不会重试。 如果是可恢复的错误，例如网络错误，或磁盘空间/内存不足，则会发生重试。重试的间隔将会递增（依次为 1、2、4、8、10、30 分钟）。
 5.**计划内/计划外故障转移** | 如果需要，可以运行计划内或计划外故障转移。<br/><br/> 如果运行计划的故障转移，源 VM 将关闭以确保不会丢失数据。<br/><br/> 副本 VM 在创建后处于待提交状态。 需要提交这些操作才能完成故障转移。<br/><br/> 主站点启动并运行后，可以故障回复到主站点（如果可用）。
 
@@ -223,10 +223,5 @@ Site Recovery 将复制受支持 VM 和物理服务器上运行的应用。 有�
 
 ## <a name="next-steps"></a>后续步骤
 
-[准备部署](site-recovery-best-practices.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
+[检查先决条件](site-recovery-prereq.md)
 

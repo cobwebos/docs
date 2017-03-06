@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2464c91b99d985d7e626f57b2d77a334ee595f43
-ms.openlocfilehash: 813517a26ccbbd9df7e7fb7de36811cdebb84284
+ms.sourcegitcommit: 320285d97b3ef723ec2b5715fd02580d058cbbcf
+ms.openlocfilehash: 2304c85177cefa6505d92679ec7f791cb87e69e4
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -29,14 +30,11 @@ Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对�
 
 对于 DC/OS 和 Docker Swarm，必须与内部系统建立一条安全外壳 (SSH) 隧道。 建立隧道后，可以运行使用 HTTP 终结点的命令，通过本地系统查看群集的 Web 界面。 
 
-> [!NOTE]
-> Azure 容器服务中的 Kubernetes 支持当前为预览版。
->
 
 ## <a name="prerequisites"></a>先决条件
 
 * [部署在 Azure 容器服务中](container-service-deployment.md)的 Kubernetes、DC/OS 或 Swarm 群集。
-* SSH 私钥文件，对应于在部署期间添加到群集的公钥。 这些命令假设 SSH 私钥位于计算机上的 `$HOME/.ssh/id_rsa` 中。 有关详细信息，请参阅适用于 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 的说明。 如果 SSH 连接不起作用，可能需要[重置 SSH 密钥](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)。
+* SSH RSA 私钥文件，对应于在部署期间添加到群集的公钥。 这些命令假设 SSH 私钥位于计算机上的 `$HOME/.ssh/id_rsa` 中。 有关详细信息，请参阅适用于 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 的说明。 如果 SSH 连接不起作用，可能需要[重置 SSH 密钥](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)。
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>连接到 Kubernetes 群集
 
@@ -47,7 +45,7 @@ Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对�
 > 
 
 ### <a name="install-kubectl"></a>安装 kubectl
-安装此工具的方法之一是使用 `az acs kubernetes install-cli` Azure CLI 2.0（预览版）命令。 若要运行此命令，请确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0（预览版）并已登录到 Azure 帐户 (`az login`)。
+安装此工具的方法之一是使用 `az acs kubernetes install-cli` Azure CLI 2.0 命令。 若要运行此命令，请确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0 并已登录到 Azure 帐户 (`az login`)。
 
 ```azurecli
 # Linux or OS X
@@ -57,7 +55,7 @@ az acs kubernetes install-cli [--install-location=/some/directory/kubectl]
 az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 ```
 
-或者，可以直接从[版本页](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146)下载客户端。
+或者，也可以直接从 [Kubernetes 版本页面](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md)下载最新的客户端。 有关详细信息，请参阅 [Installing and Setting up kubectl](https://kubernetes.io/docs/user-guide/prereqs/)（安装和设置 kubectl）。
 
 ### <a name="download-cluster-credentials"></a>下载群集凭据
 安装 `kubectl` 后，需要将群集凭据复制到计算机。 获取凭据的方法之一是使用 `az acs kubernetes get-credentials` 命令。 传递资源组的名称和容器服务资源的名称：
@@ -128,7 +126,7 @@ Kubernetes UI 现已显示在 `http://localhost:8001/ui` 上。
     **PATH_TO_PRIVATE_KEY** [可选] 是创建群集时提供的与公钥相对应的私钥的路径。 请结合 `-i` 标志使用此选项。
 
     ```bash
-    ssh -fNL PORT:localhost:PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
+    ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
     ```
     > [!NOTE]
     > SSH 连接端口为 2200，而不是标准端口 22。 在包含多个主 VM 的群集中，这是第一个主 VM 的连接端口。
@@ -217,10 +215,5 @@ export DOCKER_HOST=:2375
 * [Work with Azure Container Service and Kubernetes](container-service-kubernetes-ui.md)（使用 Azure 容器服务和 Kubernetes）
 * [使用 Azure 容器服务和 DC/OS](container-service-mesos-marathon-rest.md)
 * [使用 Azure 容器服务和 Docker Swarm](container-service-docker-swarm.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

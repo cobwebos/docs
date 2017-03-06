@@ -14,16 +14,18 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2017
+ms.date: 02/27/2017
 ms.author: cfowler;mahender;glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 30cc3b8749d5b36b89b242e2691003cc6f67f7d2
-ms.openlocfilehash: 00359057d702c556cd8beb91cf17ccf41c96f601
+ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
+ms.openlocfilehash: 045ec40811468eeffb25ed28ec5bfc84f074c19d
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-functions-overview"></a>Azure Functions 概述
-Azure Functions 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 用户可以只编写解决现有问题所需的代码，而无需担心要运行该代码的整个应用程序或基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，如 C#、F#、Node.js、Python 或 PHP。 只需为代码运行的时间付费，并可信任 Azure 会根据需要进行调整。
+# <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介  
+Azure Functions 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 用户可以只编写解决现有问题所需的代码，而无需担心要运行该代码的整个应用程序或基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，如 C#、F#、Node.js、Python 或 PHP。 只需为代码运行的时间付费，并可信任 Azure 会根据需要进行调整。 使用 Azure Functions，可在 Microsoft Azure 上开发无服务器应用程序。
 
 本主题提供有关 Azure Functions 的高级概述。 如果要立即投入和开始使用 Azure Functions，请从 [创建第一个 Azure 函数](functions-create-first-azure-function.md)开始。 如果要查找有关 Functions 的更多技术信息，请参阅 [开发人员参考](functions-reference.md)。
 
@@ -39,7 +41,7 @@ Azure Functions 是用于在云中轻松运行小段代码或“函数”的一�
 * **开放源代码** - Functions 运行时是一个开放源代码， [可在 GitHub 上找到](https://github.com/azure/azure-webjobs-sdk-script)。  
 
 ## <a name="what-can-i-do-with-functions"></a>使用 Functions 可以做什么？
-Azure Functions 是一个理想的解决方案，用于处理数据、集成系统、使用物联网 (IoT) 以及生成简单的 API 和微服务。 对于以下任务请考虑使用 Functions：例如，图像或订单处理、文件维护、要在后台线程中长时间运行的任务，或者要按计划运行的任何任务。 
+Azure Functions 是一个理想的解决方案，用于处理数据、集成系统、使用物联网 (IoT) 以及生成简单的 API 和微服务。 对于以下任务请考虑使用 Functions：例如，图像或订单处理、文件维护，或者要按计划运行的任何任务。 
 
 Functions 提供模板，以帮助用户从主要方案开始，包括以下模板：
 
@@ -66,6 +68,7 @@ Azure Functions 可与各种 Azure 和第三方服务集成。 这些服务可�
 * Azure 存储（blob、队列和表） 
 * GitHub (webhook)
 * 本地（使用服务总线）
+* Twilio（短信）
 
 ## <a name="a-namepricingahow-much-does-functions-cost"></a><a name="pricing"></a>Functions 的费用是多少？
 Azure Functions 具有以下两种定价计划，请选择最适合需要的一种： 
@@ -77,19 +80,14 @@ Azure Functions 具有以下两种定价计划，请选择最适合需要的一�
 
 ## <a name="next-steps"></a>后续步骤
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)  
-   使用 Azure Functions 快速入门立即投入并创建第一个函数。 
+  使用 Azure Functions 快速入门立即投入并创建第一个函数。 
 * [Azure Functions 开发人员参考](functions-reference.md)  
-   提供有关 Azure Functions 运行时的更多技术信息，并为编码函数及定义触发器和绑定提供参考。
+  提供有关 Azure Functions 运行时的更多技术信息，并为编码函数及定义触发器和绑定提供参考。
 * [测试 Azure Functions](functions-test-a-function.md)  
-   介绍可用于测试函数的各种工具和技巧。
+  介绍可用于测试函数的各种工具和技巧。
 * [如何缩放 Azure Functions](functions-scale.md)  
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
 * [详细了解 Azure 应用服务](../app-service/app-service-value-prop-what-is.md)  
-   Azure Functions 利用 Azure 应用服务平台执行核心功能，例如部署、环境变量和诊断。 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
+  Azure Functions 利用 Azure 应用服务平台执行核心功能，例如部署、环境变量和诊断。 
 
 

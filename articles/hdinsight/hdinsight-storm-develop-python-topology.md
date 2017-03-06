@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -183,10 +184,5 @@ Java 在此处调用 Python 并运行包含实际 bolt 逻辑的脚本。 Java s
 
 * [如何使用 Python 流式处理 MapReduce 作业](hdinsight-hadoop-streaming-python.md)
 * [如何在 Pig 和 Hive 中使用 Python 用户定义函数 (UDF) ](hdinsight-python.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

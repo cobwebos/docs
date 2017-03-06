@@ -17,6 +17,7 @@ ms.author: jehollan
 translationtype: Human Translation
 ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
 ms.openlocfilehash: 0a16f22b6e3bb60091409c64b631afcba3d6db10
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 0a16f22b6e3bb60091409c64b631afcba3d6db10
 
 ## <a name="prerequisites"></a>先决条件
   * 必须在 Azure 中使用工作或学校电子邮件地址将本地数据网关与帐户（基于 Azure Active Directory 的帐户）相关联
-  * 如果在使用 Microsoft 帐户（例如 @outlook.com, @live.com)），则可以[按照此处的步骤](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)，使用 Azure 帐户创建工作或学校电子邮件地址 
+  * 如果在使用 Microsoft 帐户 (例如 @outlook.com, @live.com)，则可以[按照此处的步骤](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)，使用 Azure 帐户创建工作或学校电子邮件地址 
   * 必须将本地数据网关[安装在本地计算机上](logic-apps-gateway-install.md)。
   * 网关不得由另一个 Azure 本地数据网关进行声明（[声明随下面步骤 2 的创建一起进行](#2-create-an-azure-on-premises-data-gateway-resource)）- 一个安装只能关联到一个网关资源。
 
@@ -64,9 +65,4 @@ ms.openlocfilehash: 0a16f22b6e3bb60091409c64b631afcba3d6db10
 [1]: ./media/logic-apps-gateway-connection/createblade.png
 [2]: ./media/logic-apps-gateway-connection/blankconnection.png
 [3]: ./media/logic-apps-logic-gateway-connection/checkbox.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

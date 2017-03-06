@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: f415cc458e91085ce315ef7ee5755b96bbcfa170
 ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="dns-documentation"></a>DNS 文档
@@ -143,10 +144,5 @@ ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
 </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

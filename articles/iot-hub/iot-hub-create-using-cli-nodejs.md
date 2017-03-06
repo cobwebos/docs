@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
-ms.openlocfilehash: 44291ed86775312a894f6acf92260cde76982f27
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 1be7dc038f1bc864e7c6461b616449d75ecda439
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -29,9 +30,9 @@ ms.openlocfilehash: 44291ed86775312a894f6acf92260cde76982f27
 可以使用以下 CLI 版本之一完成任务：
 
 * Azure CLI (azure.js) – 如本文所述，用于经典部署模型和资源管理部署模型的 CLI。
-* [Azure CLI 2.0（预览版）(az.py)](iot-hub-create-using-cli.md) - 适用于资源管理部署模型的下一代 CLI。
+* [Azure CLI 2.0 (az.py)](iot-hub-create-using-cli.md) - 适用于资源管理部署模型的下一代 CLI。
 
-若要完成本教程，您需要以下各项：
+若要完成本教程，需要以下各项：
 
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * [Azure CLI 0.10.4][lnk-CLI-install] 或更高版本。 如果已经安装 Azure CLI，则可在命令提示符处使用以下命令验证当前版本：
@@ -130,9 +131,4 @@ ms.openlocfilehash: 44291ed86775312a894f6acf92260cde76982f27
 
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-portal]: iot-hub-create-through-portal.md 
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

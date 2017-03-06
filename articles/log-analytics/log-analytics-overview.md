@@ -17,6 +17,7 @@ ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
 ms.openlocfilehash: dcf61991fcbf989c905aa7c18e73df19afa89c36
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -69,10 +70,5 @@ Log Analytics 提供快速检索和整合存储库中的数据的查询语法。
 * [注册免费的 Log Analytics 帐户](log-analytics-get-started.md) 以在自己的环境中进行测试。
 * 查看各种可用的 [数据源](log-analytics-data-sources.md) 以将数据收集到 OMS 存储区中。
 * [浏览解决方案库中的可用解决方案](log-analytics-add-solutions.md) 以向 Log Analytics 中添加功能。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

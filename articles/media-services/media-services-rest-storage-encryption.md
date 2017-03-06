@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: d649ce6bcb5629cb820befd3478afa3f70293ccb
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -365,9 +366,4 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
        "MimeType":"video/mp4",
        "ContentChecksum":null
     }
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

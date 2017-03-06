@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: d0ea8137dcdd72cf09806006bdca4c24d6f1c1de
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -284,10 +285,5 @@ IaaS 解决方案还为本地应用程序使用 Azure 作为故障转移选项�
 
 ## <a name="next-steps"></a>后续步骤
 本文是着重介绍[构建在 Microsoft Azure 基础之上的应用程序的灾难恢复和高可用性](resiliency-disaster-recovery-high-availability-azure-applications.md)的系列教程的一部分。 本系列教程的前一篇文章为 [构建在 Microsoft Azure 基础之上的应用程序的高可用性](resiliency-high-availability-azure-applications.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

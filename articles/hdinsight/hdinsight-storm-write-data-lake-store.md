@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 0342c13e48d3f3605dcc169523d7d8d2d7aedba8
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -259,10 +260,5 @@ Storm 拓扑将一直运行，直到被停止或群集被删除。 若要停止�
 ## <a name="next-steps"></a>后续步骤
 
 现在大家已了解如何使用 Storm 写入 Azure Data Lake Store，接下来将学习其他 [HDInsight 的 Storm 示例](hdinsight-storm-example-topology.md)。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

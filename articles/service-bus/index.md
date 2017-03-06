@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 3e94e98bde67db2e136420ada2a7c625ad5a0307
 ms.openlocfilehash: ac803aaa0cf4cbf69fdca9764923eaaf2d29efc0
+ms.lasthandoff: 02/09/2017
 
 ---
 #<a name="service-bus-documentation"></a>服务总线文档
@@ -246,10 +247,5 @@ ms.openlocfilehash: ac803aaa0cf4cbf69fdca9764923eaaf2d29efc0
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

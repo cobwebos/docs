@@ -1,5 +1,5 @@
 ---
-title: "服务总线队列入门 | Microsoft Docs"
+title: "编写使用 Azure 服务总线队列的程序 | Microsoft Docs"
 description: "如何编写用于服务总线消息传送的 C# 控制台应用程序"
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 560e73eb7129e665d254c3e93b08f29cfb6b1aa9
-ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 83649bdad1d369cdfe4edf3c2bdaa67180db8668
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
 4. 编写一个控制台应用程序用于接收消息。
 
 ## <a name="prerequisites"></a>先决条件
-1. [Visual Studio 2013 或 Visual Studio 2015](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
+1. [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -175,9 +176,4 @@ ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
