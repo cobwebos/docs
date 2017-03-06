@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 1ee1e7d0c6f239abfda474d51c8d02d5338dabc7
-ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: d27016559ede5d810d7efcec2a3abc78334f0f0a
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 
 ## <a name="prerequisites"></a>先决条件
-1. [Visual Studio 2013 或 Visual Studio 2015](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
+1. [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2015。
 2. Azure 订阅。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -72,10 +73,5 @@ ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
 * [中继常见问题](relay-faq.md)
 * [创建命名空间](relay-create-namespace-portal.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

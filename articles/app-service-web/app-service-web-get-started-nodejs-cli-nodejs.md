@@ -4,7 +4,7 @@ description: "了解如何通过部署一个示例 Node.js 应用，轻松地在
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 670d38f6-48ad-481c-8d82-bd532501f8db
 ms.service: app-service-web
@@ -15,22 +15,14 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: df256874674f5e0474ac813eb5614557f83d340b
+ms.sourcegitcommit: d24e78a826de9fb72e0eedc48877c83e867f70ca
+ms.openlocfilehash: 7868a3d1abbf54b00e7b47ebc743515a5a0e8d7c
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="deploy-your-first-nodejs-web-app-to-azure-in-five-minutes"></a>在&5; 分钟内将第一个 Node.js Web 应用部署到 Azure
-
-> [!div class="op_single_selector"]
-> * [第一个 HTML 站点](app-service-web-get-started-html-cli-nodejs.md)
-> * [第一个 .NET 应用](app-service-web-get-started-dotnet-cli-nodejs.md)
-> * [第一个 PHP 应用](app-service-web-get-started-php-cli-nodejs.md)
-> * [第一个 Node.js 应用](app-service-web-get-started-nodejs-cli-nodejs.md)
-> * [第一个 Python 应用](app-service-web-get-started-python-cli-nodejs.md)
-> * [第一个 Java 应用](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started-nodejs-cli](../../includes/app-service-web-selector-get-started-nodejs-cli.md)]  
 
 本教程帮助用户将第一个 Node.js Web 应用部署到 [Azure App Service](../app-service/app-service-value-prop-what-is.md)。
 应用服务可用于创建 Web 应用、[移动应用后端](/documentation/learning-paths/appservice-mobileapps/)和 [API 应用](../app-service-api/app-service-api-apps-why-best-platform.md)。
@@ -49,7 +41,7 @@ ms.openlocfilehash: df256874674f5e0474ac813eb5614557f83d340b
 可以使用以下 CLI 版本之一完成任务：
 
 - [Azure CLI 1.0](app-service-web-get-started-nodejs-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](app-service-web-get-started-nodejs.md)- 适用于资源管理部署模型的下一代 CLI
+- [Azure CLI 2.0](app-service-web-get-started-nodejs.md) - 适用于资源管理部署模型的下一代 CLI
 
 ## <a name="prerequisites"></a>先决条件
 * [Git](http://www.git-scm.com/downloads)。
@@ -128,10 +120,5 @@ ms.openlocfilehash: df256874674f5e0474ac813eb5614557f83d340b
 
 * 尝试使用 [其他方法将代码部署到 Azure](web-sites-deploy.md)。 例如，若要从某个 GitHub 存储库中进行部署，只需选择 **GitHub**，而不是“部署选项”中的“本地 Git 存储库”。
 * 使 Azure 应用上升到更高的层次。 对用户进行身份验证。 按需缩放。 设置一些性能警报。 所有这些操作只需按几下鼠标即可完成。 请参阅 [在第一个 Web 应用中添加功能](app-service-web-get-started-2.md)。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

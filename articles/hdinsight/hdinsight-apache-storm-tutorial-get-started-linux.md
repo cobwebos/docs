@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 9b38cd0aa542c0fd73b73edefce230e5a463e608
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4950dbe528290c7d839c97cc8770db4ae0ec08c6
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="apache-storm-tutorial-get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Apache Storm 教程：用于在 HDInsight 上进行大数据分析的 Storm 初学者示例入门
+#<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>用于在基于 Linux 的 HDInsight 上进行大数据分析的 Storm 初学者示例入门
 
 Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。 使用 Azure HDInsight 上的 Storm，你可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
 
@@ -32,15 +33,13 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-你必须具备以下条件才能成功完成本 Apache Storm 教程：
-
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-* **熟悉 SSH 和 SCP**。 有关如何在 HDInsight 中使用 SSH 和 SCP 的详细信息，请参阅以下文档：
+* **熟悉 SSH 和 SCP**。 有关如何将 SSH 和 SCP 与 HDInsight 配合使用的详细信息，请参阅以下文档：
   
-    * **Linux、Unix 或 OS X 客户端**：请参阅[在 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Windows 10、Linux、Unix 或 OS X 上的 Bash 中的 HDInsight 上结合使用 SSH 和基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
     
-    * **Windows 客户端**：请参阅 [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ### <a name="access-control-requirements"></a>访问控制要求
 
@@ -48,55 +47,61 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 ## <a name="create-a-storm-cluster"></a>创建 Storm 群集
 
-在本部分中，使用 Azure Resource Manager 模板创建 HDInsight 3.5 版群集（Storm 1.0.1 版）。 有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。 有关其他群集创建方法，请参阅 [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。
+使用以下步骤创建 Storm on HDInsight 群集：
 
-1. 单击下面的图像即可在 Azure 门户中打开该模板。         
+1. 从 [Azure 门户](https://portal.azure.com)，选择“+ 新建”**、“智能 + 分析”**，然后选择“HDInsight”。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight-35.json" target="_blank"><img src="./media/hdinsight-apache-storm-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    ![创建 HDInsight 群集](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
+
+2. 在“基本信息”边栏选项卡中输入以下信息： 
+
+    * **群集名称**：HDInsight 群集的名称。
+    * **订阅**：选择要使用的订阅。
+    * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录凭据。 可以使用这些凭据访问 Ambari Web UI 或 REST API 等服务。
+    * **安全外壳 (SSH) 用户名**：通过 SSH 访问群集时使用的登录名。 默认情况下，密码与群集登录密码相同。
+    * **资源组**：要在其中创建群集的资源组。
+    * **位置**：要在其中创建群集的 Azure 区域。
    
-    该模板位于公共 Blob 容器 *https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json* 中。 
+    ![选择订阅](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-2. 在“自定义部署”边栏选项卡中输入以下信息：
+3. 选择“群集类型”，然后在“群集配置”边栏选项卡上设置以下值：
    
-    * __资源组__：在其中创建群集的资源组。
+    * **群集类型**：Storm
 
-    * **群集名称**：Hadoop 群集的名称。
+    * **操作系统**：Linux
 
-    * __群集登录名__和__密码__：默认登录名是 admin。
-    
-    * __SSH 用户名__和__密码__：使用 SSH 连接到群集的用户和密码。
+    * **版本**：Storm 1.0.1 (HDI 3.5)
 
-    * __位置__：群集的地理位置。
+    * **群集层**：标准
      
-     请记下这些值。  本教程后面的步骤中将会用到它们。
+    最后使用“选择”按钮保存设置。
      
-     > [!NOTE]
-     > 使用 SSH 可通过命令行远程访问 HDInsight 群集。 在通过 SSH 连接群集时，将用到此处所用的用户名和密码。 此外，SSH 用户名必须唯一，因为它将在所有 HDInsight 群集节点上创建一个用户帐户。 下面是一些保留给群集上的服务使用的帐户名，不能将其用作 SSH 用户名：
-     > 
-     > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper。
-     > 
-     > 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文章之一：
-     > 
-     > * [在 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-     > * [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
+    ![选择群集类型](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
-3. 选中“我同意上述条款和条件”，单击“确定”，然后选择“固定到仪表板”
+4. 选择群集类型后，使用“选择”按钮设置群集类型。 接下来，使用“下一步”按钮完成基本配置。
 
-6. 单击“购买”。 你会看到一个标题为“为模板部署提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
+5. 在“存储”边栏选项卡中，选择或创建存储帐户。 对于本文档中的步骤，请让此边栏选项卡上的其他字段保留默认值。 使用“下一步”按钮保存存储配置。
+
+    ![设置 HDInsight 的存储帐户设置](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
+
+6. 在“摘要”边栏选项卡中，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
+   
+    ![群集配置摘要](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
+   
+    > [!NOTE]
+    > 创建群集可能需要 20 分钟。
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>在 HDInsight 上运行 Storm 初学者示例
-
-[storm-starter](https://github.com/apache/storm/tree/master/examples/storm-starter) 示例包含在 HDInsight 群集中。 在以下步骤中，你将运行 WordCount 示例。
 
 1. 使用 SSH 连接到 HDInsight 群集：
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果你使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如，`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`。
+    如果使用了密码来保护 SSH 帐户，系统会提示你输入密码。 如果使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如，`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`。
    
     有关将 SSH 与基于 Linux 的 HDInsight 配合使用的详细信息，请参阅以下文章：
    
-    * [在 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [在 Windows 10、Linux、Unix 或 OS X 上的 Bash 中的 HDInsight 上结合使用 SSH 和基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-unix.md)
 
     * [在 Windows 中的 HDInsight 上将 SSH (PuTTY) 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-windows.md)
 
@@ -107,10 +112,10 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
     > [!NOTE]
     > 在以前版本的 HDInsight 中，拓扑的类名是 `storm.starter.WordCountTopology`，而不是 `org.apache.storm.starter.WordCountTopology`。
    
-    随后将在群集上启动具有友好名称“wordcount”的示例 WordCount 拓扑。 此操作随机生成句子，并统计句子中每个单词的出现次数。
+    此命令可以在群集上启动具有友好名称“wordcount”的示例 WordCount 拓扑。 该命令随机生成句子，并统计句子中每个单词的出现次数。
    
     > [!NOTE]
-    > 将自己的拓扑提交到群集时，必须先复制包含群集的 jar 文件，然后再使用 `storm` 命令。 可以从文件所在的客户端使用 `scp` 命令实现此目的。 例如： `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
+    > 将自己的拓扑提交到群集时，必须先复制包含群集的 jar 文件，然后再使用 `storm` 命令。 使用 `scp` 命令来复制该文件。 例如： `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
     > 
     > WordCount 示例和其他 Storm 初学者示例已经包含在群集中，其位置为 `/usr/hdp/current/storm-client/contrib/storm-starter/`。
 
@@ -122,12 +127,12 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
 执行以下步骤以使用 Storm UI 来监视拓扑。
 
-1. 使用 Web 浏览器打开 https://CLUSTERNAME.azurehdinsight.net/stormui，其中 **CLUSTERNAME** 是群集的名称。 此时将打开 Storm UI。
+1. 若要显示 Storm UI，请在 Web 浏览器中打开 https://CLUSTERNAME.azurehdinsight.net/stormui。 将 **CLUSTERNAME** 替换为群集名称。
     
     > [!NOTE]
     > 如果系统要求你提供用户名和密码，请输入创建群集时使用的群集管理员用户名 (admin) 和密码。
 
-2. 在“拓扑摘要”下，选择“名称”列中的“Wordcount”条目。 这将显示有关拓扑的详细信息。
+2. 在“拓扑摘要”下，选择“名称”列中的“Wordcount”条目。 将显示有关拓扑的信息。
     
     ![包含 Storm 初学者项目 WordCount 拓扑信息的 Storm 仪表板。](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
     
@@ -150,11 +155,11 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
     
     * **停用** - 暂停正在运行的拓扑。
     
-    * **重新平衡** - 调整拓扑的并行度。 更改群集中的节点数目之后，你应该重新平衡正在运行的拓扑。 这可让拓扑调整并行度，以弥补群集中增加/减少的节点数目。 有关详细信息，请参阅 [了解 Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+    * **重新平衡** - 调整拓扑的并行度。 更改群集中的节点数目之后，你应该重新平衡正在运行的拓扑。 重新平衡可调整并行度，以弥补群集中增加/减少的节点数目。 有关详细信息，请参阅 [了解 Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
     
     * **终止** - 在经过指定的超时之后终止 Storm 拓扑。
 
-3. 在此页中，从“Spout”或“Bolt”部分中选择一个条目。 这将显示有关选定组件的信息。
+3. 在此页中，从“Spout”或“Bolt”部分中选择一个条目。 将显示有关选定组件的信息。
    
     ![包含有关选定组件信息的 Storm 仪表板。](./media/hdinsight-apache-storm-tutorial-get-started-linux/component-summary.png)
    
@@ -184,11 +189,11 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
    
-    从这些数据中，你可以看到，单词 **seven** 出现了 1493957 次。 就是自从启动此拓扑以来该单词出现的次数。
+    在此示例中，**seven** 一词出现了 1493957 次。 此计数就是自从启动此拓扑以来该单词出现的次数。
 
 ## <a name="stop-the-topology"></a>停止拓扑
 
-返回到单词计数拓扑的“拓扑摘要”页，然后从“拓扑操作”部分中选择“终止”按钮。 出现提示时，输入停止拓扑之前要等待的秒数，即 10。 超时期限过后，当你访问仪表板的“Storm UI”部分时，将不再显示该拓扑  。
+返回到单词计数拓扑的“拓扑摘要”页，然后从“拓扑操作”部分中选择“终止”按钮。 出现提示时，输入停止拓扑之前要等待的秒数，即 10。 在超时期限之后访问仪表板的“Storm UI”部分，将不再显示该拓扑。
 
 ## <a name="delete-the-cluster"></a>删除群集
 
@@ -196,7 +201,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>后续步骤
 
-在本 Apache Storm 教程中，你已使用 Storm 初学者示例学习如何创建 Storm on HDInsight 群集，以及如何使用 Storm 仪表板来部署、监视和管理 Storm 拓扑。 接下来，了解如何 [使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)。
+此 Apache Storm 教程介绍了有关使用 HDInsight 上 Storm 的基础知识。 接下来，了解如何 [使用 Maven 开发基于 Java 的拓扑](hdinsight-storm-develop-java-topology.md)。
 
 如果已知道怎样开发基于 Java 的拓扑并想要将现有拓扑部署到 HDInsight，请参阅 [在 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology-linux.md)。
 
@@ -213,9 +218,4 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，你的 HDIns
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

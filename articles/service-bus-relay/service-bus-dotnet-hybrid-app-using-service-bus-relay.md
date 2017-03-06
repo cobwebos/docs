@@ -1,5 +1,5 @@
 ---
-title: "本地/云混合应用程序 (.NET) | Microsoft Docs"
+title: "Azure WCF 中继本地/云混合应用程序 (.NET) | Microsoft Docs"
 description: "了解如何使用 Azure WCF 中继创建 .NET 本地/云混合应用程序。"
 services: service-bus-relay
 documentationcenter: .net
@@ -12,17 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/16/2016
+ms.date: 02/16/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
-ms.openlocfilehash: 0288b0dda9139c28da28fedfe39c4e9156c6c938
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 6c59c98a400da0616762b2bd0c4217d97e22ab86
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
 ## <a name="introduction"></a>介绍
-本文说明如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 本教程假定你之前未使用过 Azure。 在不到 30 分钟的时间内，你就能让使用多个 Azure 资源的应用程序在云中启动并运行。
+本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 本教程假定你之前未使用过 Azure。 在不到 30 分钟的时间内，你就能让使用多个 Azure 资源的应用程序在云中启动并运行。
 
 你将学习以下内容：
 
@@ -36,7 +37,7 @@ ms.openlocfilehash: 0288b0dda9139c28da28fedfe39c4e9156c6c938
 
 解决方案架构师开始使用云来轻松地处理缩放需求和降低运营成本。 在此过程中，他们发现希望用作其解决方案的构建基块的现有服务资产位于企业防火墙内，无法通过云解决方案轻松访问。 许多内部服务的构建或托管方式使得它们无法在企业网络边缘轻松公开。
 
-Azure 中继的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。 虽然此类中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的中继服务。 Azure 中继还会通过使用[共享访问签名](../service-bus-messaging/service-bus-sas-overview.md) (SAS) 身份验证来保护这些服务，以阻止未经授权的访问。
+[Azure 中继](https://azure.microsoft.com/services/service-bus/)的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。 虽然此类中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的中继服务。 Azure 中继还会通过使用[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 身份验证来保护这些服务，以阻止未经授权的访问。
 
 ## <a name="solution-scenario"></a>解决方案应用场景
 在本教程中，你将创建一个 ASP.NET 网站，用于查看产品库存页上的产品列表。
@@ -50,18 +51,16 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
 ![][1]
 
 ## <a name="set-up-the-development-environment"></a>设置开发环境
-在开始开发 Azure 应用程序之前，需要获取工具并设置开发环境。
+在开始开发 Azure 应用程序之前，需要下载工具并设置开发环境：
 
-1. 从[获取工具和 SDK][Get Tools and SDK] 页面安装用于 .NET 的 Azure SDK。
-2. 单击你正在使用的 Visual Studio 版本的“安装 SDK”  。 本教程中的步骤使用 Visual Studio 2015。
+1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
+2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤使用 Visual Studio 2015。
 3. 当提示你是要运行还是保存安装程序时，单击“运行” 。
 4. 在“Web 平台安装程序”中，单击“安装”，然后继续安装。
-5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。 如果你未安装 Visual Studio，SDK 还会安装免费的 Visual Studio Express。
+5. 安装完成后，你就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
 
 ## <a name="create-a-namespace"></a>创建命名空间
-若要开始在 Azure 中使用中继功能，必须先创建一个服务命名空间。 命名空间提供了用于对应用程序中的 Azure 资源进行寻址的范围容器。
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+若要开始在 Azure 中使用中继功能，必须先创建一个服务命名空间。 命名空间提供了用于对应用程序中的 Azure 资源进行寻址的范围容器。 请按照[此处的说明](relay-create-namespace-portal.md)创建中继命名空间。
 
 ## <a name="create-an-on-premises-server"></a>创建本地服务器
 首先，你将构建 (mock) 本地产品目录系统。 这将非常简单；可以认为，此系统代表一个实际存在的本地产品目录系统，其中包含我们将尝试集成的完整服务图面。
@@ -69,7 +68,7 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
 此项目是一个 Visual Studio 控制台应用程序，它使用 [Azure 服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 来包含服务总线库和配置设置。
 
 ### <a name="create-the-project"></a>创建项目
-1. 使用管理员特权启动 Microsoft Visual Studio。 若要使用管理员特权启动 Visual Studio，请右键单击“Visual Studio”程序图标，然后单击“以管理员身份运行”。
+1. 使用管理员特权启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，然后单击“以管理员身份运行”。
 2. 在 Visual Studio 的“文件”菜单中，单击“新建”，然后单击“项目”。
 3. 从“已安装的模板”的“Visual C#”下单击“控制台应用程序”。 在“名称”框中，键入名称“ProductsServer”：
 
@@ -86,7 +85,7 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
 9. 在“名称”框中，键入名称 **ProductsContract.cs**。 。
 10. 在“ProductsContract.cs”中，将命名空间定义替换为以下代码，以定义服务的协定。
 
-    ```
+    ```csharp
     namespace ProductsServer
     {
         using System.Collections.Generic;
@@ -122,7 +121,7 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
     ```
 11. 在 Program.cs 中，将命名空间定义替换为以下代码，以为其添加配置文件服务和主机。
 
-    ```
+    ```csharp
     namespace ProductsServer
     {
         using System;
@@ -174,9 +173,9 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
         }
     }
     ```
-12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在 **&lt;system.ServiceModel&gt;** 元素的底部（但仍在 &lt;system.ServiceModel&gt; 内），添加以下 XML 代码。 确保将 yourServiceNamespace 替换为命名空间的名称，并将 yourKey 替换为之前从门户中检索到的 SAS 密钥：
+12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在 `<system.ServiceModel>` 元素的下面（仍在 `<system.ServiceModel>` 中）添加以下 XML 代码。 确保将 yourServiceNamespace 替换为命名空间的名称，并将 yourKey 替换为之前从门户中检索到的 SAS 密钥：
 
-    ```
+    ```xml
     <system.serviceModel>
     ...
       <services>
@@ -197,9 +196,9 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
       </behaviors>
     </system.serviceModel>
     ```
-13. 仍在 App.config 中，将 **&lt;appSettings&gt;** 元素中的连接字符串值替换为之前从门户获取的连接字符串。
+13. 仍在 App.config 文件中，在 `<appSettings>` 元素中，将连接字符串值替换为之前从门户获取的连接字符串。
 
-    ```
+    ```xml
     <appSettings>
        <!-- Service Bus specific app settings for messaging connections -->
        <add key="Microsoft.ServiceBus.ConnectionString"
@@ -236,22 +235,22 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
 ### <a name="modify-the-web-application"></a>修改 Web 应用程序
 1. 在 Visual Studio 的 Product.cs 文件中将现有命名空间定义替换为以下代码。
 
-   ```
-   // Declare properties for the products inventory.
+   ```csharp
+    // Declare properties for the products inventory.
     namespace ProductsWeb.Models
-   {
+    {
        public class Product
        {
            public string Id { get; set; }
            public string Name { get; set; }
            public string Quantity { get; set; }
        }
-   }
-   ```
+    }
+    ```
 2. 在解决方案资源管理器中，展开 **Controllers** 文件夹，然后双击 **HomeController.cs** 文件以在 Visual Studio 中将其打开。
 3. 在 **HomeController.cs**中，将现有命名空间定义替换为以下代码。
 
-    ```
+    ```csharp
     namespace ProductsWeb.Controllers
     {
         using System.Collections.Generic;
@@ -278,7 +277,7 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
 7. 在解决方案资源管理器中，展开 Views\Home 文件夹，然后双击 **Index.cshtml**以在 Visual Studio 编辑器中将其打开。
    将文件的全部内容替换为以下代码。
 
-   ```
+   ```html
    @model IEnumerable<ProductsWeb.Models.Product>
 
    @{
@@ -334,7 +333,7 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
    ![][24]
 6. 现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码。 确保将 yourServiceNamespace 替换为你的服务命名空间的名称，并将 yourKey 替换为你的 SAS 密钥。 这将使客户端能够调用本地服务，并返回调用的结果。
 
-   ```
+   ```csharp
    namespace ProductsWeb.Controllers
    {
        using System.Linq;
@@ -441,7 +440,6 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
-[Get Tools and SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
 [NuGet]: http://nuget.org
 
 [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
@@ -465,9 +463,4 @@ Azure 中继的设计考虑到如何利用现有的 Windows Communication Founda
 [38]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-service2.png
 [41]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

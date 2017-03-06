@@ -1,6 +1,6 @@
 ---
-title: "使用 Resource Manager 部署模型通过 Azure 备份将 Windows 中的文件和文件夹备份到 Azure | Microsoft 文档"
-description: "了解如何在 Resource Manager 部署模型中将 Windows 文件和文件夹备份到 Azure。"
+title: "将 Windows 文件和文件夹备份到 Azure (Resource Manager) | Microsoft Docs"
+description: "了解如何在 Resource Manager 部署中将 Windows 文件和文件夹备份到 Azure。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/10/2017
+ms.date: 2/23/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: cdccfe1215bb8f62381c73becdc9d90f45800966
-ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
+ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
+ms.openlocfilehash: 916a4e837d003a73a1801dd25b8ebfbfdcd86312
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -26,17 +27,6 @@ ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
 
 如果想要深入了解 Azure 备份，请阅读此 [概述](backup-introduction-to-azure-backup.md)。
 
-将文件和文件夹备份到 Azure 需要进行以下活动：
-
-![步骤 1](./media/backup-try-azure-backup-in-10-mins/step-1.png) 获取 Azure 订阅（如果还没有的话）。<br>
-![步骤 2](./media/backup-try-azure-backup-in-10-mins/step-2.png) 创建恢复服务保管库。<br>
-![步骤 3](./media/backup-try-azure-backup-in-10-mins/step-3.png) 下载所需的文件。<br>
-![步骤 4](./media/backup-try-azure-backup-in-10-mins/step-4.png) 安装并注册恢复服务代理。<br>
-![步骤 5](./media/backup-try-azure-backup-in-10-mins/step-5.png) 备份文件和文件夹。
-
-![如何使用 Azure 备份来备份 Windows 计算机](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
-
-## <a name="get-an-azure-subscription"></a>获取 Azure 订阅
 如果你还没有 Azure 订阅，可以先创建一个 [免费帐户](https://azure.microsoft.com/free/) ，这样就可以访问任何 Azure 服务。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
@@ -70,6 +60,7 @@ ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
   有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。
 
 7. 单击“位置”，为保管库选择地理区域  。 此选项决定了备份数据要发送到的地理区域。
+
 8. 在恢复服务保管库边栏选项卡的底部，单击“创建”。
 
     创建恢复服务保管库可能需要数分钟。 可以在门户右上区域监视状态通知。 创建保管库后，它将显示在“恢复服务保管库”的列表中。 如果在几分钟后看不到保管库，请单击“刷新”。
@@ -229,9 +220,4 @@ ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
 * 详细了解如何 [备份 Windows 计算机](backup-configure-vault.md)。
 * 备份文件和文件夹后，可以 [管理保管库和服务器](backup-azure-manage-windows-server.md)。
 * 如果需要还原备份，请参阅 [将文件还原到 Windows 计算机](backup-azure-restore-windows-server.md)一文。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

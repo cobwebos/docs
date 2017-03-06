@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
+ms.sourcegitcommit: 30b30513d5563cf64679e29c4858bf15f65d3a44
+ms.openlocfilehash: 015c997135eae9c936af1a1ec0b0064912baaa04
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -39,8 +40,6 @@ ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
 > 目前，无法在 Azure 门户中配置 Azure 密钥保管库。 请改用这些 Azure PowerShell 说明。
 > 
 > 
-
-可以通过使用 Operations Management Suite 中的 Log Analytics 可视化你收集的日志。 有关详细信息，请参阅 [Log Analytics 中的 Azure 密钥保管库（预览版）解决方案](../log-analytics/log-analytics-azure-key-vault.md)。
 
 有关 Azure 密钥保管库的概述信息，请参阅 [什么是 Azure 密钥保管库？](key-vault-whatis.md)
 
@@ -254,6 +253,10 @@ ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
 | SecretList |[列出保管库中的机密](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
 | SecretListVersions |[列出机密的版本](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
 
+## <a name="a-idloganalyticsause-log-analytics"></a><a id="loganalytics"></a>使用 Log Analytics
+
+你可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。 有关详细信息，包括如何进行设置，请参阅 [Log Analytics 中的Azure Key Vault 解决方案](../log-analytics/log-analytics-azure-key-vault.md)。 如果需要从 Log Analytics 预览版提供的旧 Key Vault 解决方案进行迁移，且之前在该方案中，首先将日志路由到了 Azure 存储帐户，并将 Log Analytics 配置为了从此处读取，则本文也可提供指导。
+
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>后续步骤
 有关在 Web 应用程序中使用 Azure 密钥保管库的教程，请参阅 [从 Web 应用程序使用 Azure 密钥保管库](key-vault-use-from-web-application.md)。
 
@@ -262,10 +265,5 @@ ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
 有关 Azure 密钥保管库的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/library/azure/dn868052.aspx)。
 
 有关使用 Azure 密钥保管库进行密钥轮替和日志审核的教程，请参阅 [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md)（如何使用端到端密钥轮替和审核设置密钥保管库）。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

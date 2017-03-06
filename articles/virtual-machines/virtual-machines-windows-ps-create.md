@@ -13,18 +13,26 @@ ms.topic: get-started-article
 ms.date: 02/14/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: c1262b7708918cbdc8ce35f3e65a47a04797f195
-ms.openlocfilehash: 8a67352a65e755f2177fb4870f34c41440bf90a2
+ms.sourcegitcommit: 8d8dfb9b165d82e8567f6b5577d46d562f9f8db3
+ms.openlocfilehash: 89e306d3e3312531878da088575c7429a941d34f
+ms.lasthandoff: 02/23/2017
 
 ---
 
 # <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>使用 Resource Manager 和 PowerShell 创建 Windows VM
 
-本文介绍如何使用 [Resource Manager](../azure-resource-manager/resource-group-overview.md) 和 PowerShell 快速创建运行 Windows Server 的 Azure 虚拟机及其所需的资源。 若要创建虚拟机，必须执行本文中的所有步骤，这需要花费大约 30 分钟时间。 请将命令中的示例参数值替换为适合自己环境的名称。
+本文介绍如何使用 [Resource Manager](../azure-resource-manager/resource-group-overview.md) 和 Azure PowerShell 快速创建运行 Windows Server 的 Azure 虚拟机及其所需的资源。  
+
+若要创建虚拟机，必须执行本文中的所有步骤，这需要花费大约 30 分钟时间。 请将命令中的示例参数值替换为适合自己环境的名称。
 
 ## <a name="step-1-install-azure-powershell"></a>步骤 1：安装 Azure PowerShell
 
 有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+
+> [!NOTE]
+> 可能需要重新安装 Azure PowerShell 才能使用本文中的功能。 版本 3.5 和更高版本提供托管磁盘功能。
+> 
+> 
 
 ## <a name="step-2-create-a-resource-group"></a>步骤 2：创建资源组
 
@@ -175,10 +183,5 @@ ms.openlocfilehash: 8a67352a65e755f2177fb4870f34c41440bf90a2
 * 如果部署出现问题，后续措施是参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)。
 * 查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的虚拟机。
 * 参考 [使用 Resource Manager 模板创建 Windows 虚拟机](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

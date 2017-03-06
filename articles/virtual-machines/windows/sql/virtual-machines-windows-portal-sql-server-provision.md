@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/02/2017
+ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 55a4b22c3bb097c688446a5ec22f60baecf44ffe
-ms.openlocfilehash: 0dea81ef42d9225ee3780ffd2ad67a37c8a4a2ed
+ms.sourcegitcommit: 5121b2f9d33ebf4749fae6d990feab3bf9244e93
+ms.openlocfilehash: 6b99dbbacd9451285cca29de4a72ffb1473479fc
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -52,11 +53,14 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 
    ![Azure 虚拟机边栏选项卡](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. 查看可用的 SQL Server 模板。
-6. 每个模板均可标识 SQL Server 版本和操作系统。 从列表中选择这些映像之一。 然后查看详细信息边栏选项卡，了解虚拟机映像的说明。
+5. 查看可用的 SQL Server 模板。 每个模板均可标识 SQL Server 版本和操作系统。 
+6. 在 Windows Server 2016 上选择 SQL Server 2016 SP1 Developer 的模板。
+
+   > [!TIP]
+   > 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。
    
    > [!NOTE]
-   > SQL VM 映像包括你创建的 VM 的按分钟定价中的 SQL Server 许可费用。 另一个选项是自带许可 (BYOL)，只支付 VM 费用。 这些映像名称的前缀为 {BYOL}。 有关此选项的详细信息，请参阅[在 Azure 虚拟机上使用 SQL Server 入门](virtual-machines-windows-sql-server-iaas-overview.md)。
+   > SQL VM 映像包括 SQL 服务器在用户创建的 VM（按分钟收费）中的许可费用（Developer 版和 Express 版除外）。 SQL Server Developer 可免费用于开发/测试（不可用于生产），而 SQL Express 可免费用于轻型工作负荷（1 GB 内存以内，10 GB 存储空间以内）。 另一个选项是自带许可 (BYOL)，只支付 VM 费用。 这些映像名称的前缀为 {BYOL}。 有关此选项的详细信息，请参阅[在 Azure 虚拟机上使用 SQL Server 入门](virtual-machines-windows-sql-server-iaas-overview.md)。
    > 
    > 
 7. 在“选择部署模型”下面，确认已选择“Resource Manager”。 对于新虚拟机，建议使用“Resource Manager”部署模型。 单击“创建” 。
@@ -243,14 +247,10 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 配置完 SQL Server 设置后，单击“ **确定**”。
 
 ### <a name="r-services"></a>R 服务
-对于 SQL Server 2016 Enterprise Edition，可以选择启用 [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx)。 这使你可以使用 SQL Server 2016 的高级分析功能。 单击“创建” **启用** on the **SQL Server Settings** ”。
+可以选择启用 [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx)。 这使你可以使用 SQL Server 2016 的高级分析功能。 单击“创建” **启用** on the **SQL Server Settings** ”。
 
 ![启用 SQL Server R 服务](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
-> [!NOTE]
-> 对于不是 2016 Enterprise Edition 的 SQL Server 映像，启用 R 服务的选项将被禁用。
-> 
-> 
 
 ## <a name="5-review-the-summary"></a>5.查看摘要
 在“摘要”边栏选项卡上查看摘要，然后单击“确定”以创建为此 VM 指定的 SQL Server、资源组和资源。
@@ -299,10 +299,5 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。 只
 有关 Azure 虚拟机上的 SQL Server 视频概述，请观看 [Azure VM 是 SQL Server 2016 的最佳平台](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)。
 
 [探索学习路径](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) ：Azure 虚拟机上的 SQL Server。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

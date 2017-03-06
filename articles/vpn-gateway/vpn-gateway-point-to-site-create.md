@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/17/2016
+ms.date: 02/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
+ms.sourcegitcommit: cf72197aba2c6e6c7a51f96d1161cf1fbe88a0c5
+ms.openlocfilehash: 149f3daf1f61f459b0a0834c0f112574510d5259
+ms.lasthandoff: 02/18/2017
 
 
 ---
-# <a name="configure-a-pointtosite-connection-to-a-vnet-using-the-classic-portal"></a>使用经典门户配置与 VNet 的点到站点连接
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-classic-portal"></a>使用经典门户配置与 VNet 的点到站点连接
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -32,9 +33,9 @@ ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
 
 通过点到站点 (P2S) 配置，可以使单台客户端计算机与虚拟网络建立安全的连接。 如果要从远程位置（例如，从家里或会议室）连接到 VNet，或者只有少数几台客户端计算机需要连接到虚拟网络，P2S 连接将非常有用。
 
-本文将指导用户使用**经典门户**在**经典部署模型**中通过点到站点连接来创建 VNet。
+点到站点连接不需要 VPN 设备或面向公众的 IP 地址即可运行。 可通过从客户端计算机启动连接来建立 VPN 连接。 有关点到站点连接的详细信息，请参阅本文末尾的[点到站点常见问题解答](#faq)。
 
-点到站点连接不需要 VPN 设备或面向公众的 IP 地址即可运行。 可通过从客户端计算机启动连接来建立 VPN 连接。 有关点到站点连接的详细信息，请参阅 [VPN 网关常见问题](vpn-gateway-vpn-faq.md#point-to-site-connections)和[规划和设计](vpn-gateway-plan-design.md)。
+本文将指导用户使用经典门户在经典部署模型中通过点到站点连接来创建 VNet。
 
 ### <a name="deployment-models-and-methods-for-p2s-connections"></a>P2S 连接的部署模型和方法
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -44,7 +45,7 @@ ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
 ## <a name="basic-workflow"></a>基本工作流
-![点到站点连接示意图](./media/vpn-gateway-point-to-site-create/p2sclassic.png "point-to-site")
+![点到站点示意图](./media/vpn-gateway-point-to-site-create/p2sclassic.png "点到站点")
 
 以下步骤将逐步引导用户与虚拟网络建立安全的点到站点连接。 
 
@@ -55,9 +56,9 @@ ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
 * **第 3 部分** 导出并安装客户端证书。
 * **第 4 部分** 配置 VPN 客户端。
 
-## <a name="a-namevnetvpnasection-1-create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>第 1 部分 - 创建虚拟网络和 VPN 网关
+## <a name="a-namevnetvpnasection-1---create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>第 1 部分 - 创建虚拟网络和 VPN 网关
 ### <a name="part-1-create-a-virtual-network"></a>第 1 部分：创建虚拟网络
-1. 登录到 [Azure 经典门户](https://manage.windowsazure.com/)。 这些步骤使用的是经典门户，而不是 Azure 门户。 目前不能使用 Azure 门户创建 P2S 连接。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.com)。 这些步骤使用的是经典门户，而不是 Azure 门户。 目前不能使用 Azure 门户创建 P2S 连接。
 2. 在屏幕左下角，单击“新建”。 在导航窗格中，单击“网络服务”，然后单击“虚拟网络”。 单击“自定义创建”以启动配置向导  。
 3. 在“虚拟网络详细信息”  页上，输入以下信息，然后单击右下角的“下一步”箭头。
    
@@ -84,9 +85,9 @@ ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
 必须将网关类型配置为动态。 静态路由网关无法使用此功能。
 
 1. 在 Azure 经典门户的“网络”页上，单击刚创建的虚拟网络，然后导航到“仪表板”页。
-2. 单击位于“仪表板”页底部的“创建网关”。 。 单击“是”  即可开始创建网关。 创建网关可能需要大约 15 分钟。
+2. 在“仪表板”页的底部，单击“创建网关”。 。 单击“是”  即可开始创建网关。 创建网关最多可能需要 45 分钟。
 
-## <a name="a-namegenerateasection-2-generate-and-upload-certificates"></a><a name="generate"></a>第 2 部分 - 生成证书并上传
+## <a name="a-namegenerateasection-2---generate-and-upload-certificates"></a><a name="generate"></a>第 2 部分 - 生成证书并上传
 证书用于对点到站点 VPN 的 VPN 客户端进行身份验证。 可以使用企业证书解决方案生成的根证书，也可以使用自签名证书。 最多可以将 20 个根证书上载到 Azure。 上传 .cer 文件后，Azure 可以使用其中包含的信息来对已安装客户端证书的客户端进行身份验证。 客户端证书必须从 .cer 文件代表的同一个证书生成。
 
 在本部分中，需要执行以下操作：
@@ -109,21 +110,25 @@ ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
 ### <a name="a-namecreateclientcertapart-3-generate-a-client-certificate"></a><a name="createclientcert"></a>第 3 部分：生成客户端证书
 接下来，生成客户端证书。 可以为要连接的每个客户端生成唯一证书，也可以在多台客户端上使用同一个证书。 生成唯一客户端证书的优点是能够在需要时撤销单个证书。 如果所有客户端都使用同一个客户端证书，那么当需要为一台客户端撤销证书时，就需要为使用该证书进行身份验证的所有客户端生成并安装新的证书。
 
-* 如果使用的是企业证书解决方案，请使用通用名称值格式 'name@yourdomain.com', 生成客户端证书，而不要使用 NetBIOS“域\用户名”格式。 
-* 如果使用自签名证书，请参阅 [为点到站点配置使用自签名根证书](vpn-gateway-certificates-point-to-site.md) ，生成客户端证书。
+####<a name="enterprise-certificate"></a>企业证书
+- 如果使用的是企业证书解决方案，请使用通用名称值格式 'name@yourdomain.com', 生成客户端证书，而不要使用“域名\用户名”格式。
+- 请确保颁发的客户端证书基于“用户”证书模板，该模板使用“客户端身份验证”作为使用列表中的第一项，而不是智能卡登录等。可以通过双击客户端证书，然后查看“详细信息”>“增强型密钥用法”来检查证书。
 
-## <a name="a-nameinstallclientcertasection-3-export-and-install-the-client-certificate"></a><a name="installclientcert"></a>第 3 部分 - 导出并安装客户端证书
+####<a name="self-signed-certificate"></a>自签名证书 
+如果使用自签名证书，请参阅 [为点到站点配置使用自签名根证书](vpn-gateway-certificates-point-to-site.md) ，生成客户端证书。
+
+## <a name="a-nameinstallclientcertasection-3---export-and-install-the-client-certificate"></a><a name="installclientcert"></a>第 3 部分 - 导出并安装客户端证书
 在要连接到虚拟网络的每台计算机上安装客户端证书。 进行身份验证需要客户端证书。 可以自动安装客户端证书，也可以手动安装。 以下步骤将引导用户手动导出并安装客户端证书。
 
 1. 若要导出客户端证书，可以使用 *certmgr.msc*。 右键单击要导出的客户端证书，单击“所有任务”，然后单击“导出”。
 2. 导出带私钥的客户端证书。 这是一个 *.pfx* 文件。 请确保记录或记住为此证书设置的密码（密钥）。
 3. 将 *.pfx* 文件复制到客户端计算机。 在客户端计算机上，双击 *.pfx* 文件进行安装。 系统请求你输入密码时，请输入相应的密码。 请勿修改安装位置。
 
-## <a name="a-namevpnclientconfigasection-4-configure-your-vpn-client"></a><a name="vpnclientconfig"></a>第 4 部分 - 配置 VPN 客户端
+## <a name="a-namevpnclientconfigasection-4---configure-your-vpn-client"></a><a name="vpnclientconfig"></a>第 4 部分 - 配置 VPN 客户端
 要连接到虚拟网络，还需要配置 VPN 客户端。 客户端要求你提供客户端证书和正确的 VPN 客户端配置才能进行连接。 要配置 VPN 客户端，请按顺序执行以下步骤。
 
 ### <a name="part-1-create-the-vpn-client-configuration-package"></a>第 1 部分：创建 VPN 客户端配置包
-1. 在 Azure 经典门户的虚拟网络“仪表板”页上，导航到右下角的速览菜单。 有关支持的客户端操作系统列表，请参阅“VPN 网关常见问题”中的[点到站点连接](vpn-gateway-vpn-faq.md#point-to-site-connections)部分。 VPN 客户端包中含有用于配置 Windows 内置 VPN 客户端软件的配置信息。 该程序包不安装额外的软件。 这些设置特定于要连接到的虚拟网络。<br><br>选择与要在其中进行安装的客户端操作系统对应的下载包：
+1. 在 Azure 经典门户的虚拟网络“仪表板”页上，导航到右下角的速览菜单。 VPN 客户端包中含有用于配置 Windows 内置 VPN 客户端软件的配置信息。 该程序包不安装额外的软件。 这些设置特定于要连接到的虚拟网络。 有关支持的客户端操作系统列表，请参阅本文末尾的[点到站点连接常见问题解答](#faq)。<br><br>选择与要在其中进行安装的客户端操作系统对应的下载包：
    
    * 对于 32 位客户端，请选择“下载 32 位客户端 VPN 程序包”。
    * 对于 64 位客户端，请选择“下载 64 位客户端 VPN 程序包”。
@@ -135,16 +140,21 @@ ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
 2. 安装完程序包后，即可启动 VPN 连接。 Microsoft 不会对配置包进行签名。 可能需要使用组织的签名服务对程序包进行签名，也可以自行使用 [SignTool](http://go.microsoft.com/fwlink/p/?LinkId=699327)对其签名。 可以使用不签名的程序包。 但是，如果程序包未签名，那么在安装该程序包时，会显示一条警告。
 3. 在客户端计算机上，导航到“网络设置”，然后单击“VPN”。 此时将看到列出的连接。 它将显示要连接到的虚拟网络的名称，如下所示： 
    
-    ![VPN 客户端](./media/vpn-gateway-point-to-site-create/vpn.png "VPN client")
+    ![VPN 客户端](./media/vpn-gateway-point-to-site-create/vpn.png "VPN 客户端")
 
 ### <a name="part-3-connect-to-azure"></a>第 3 部分：连接到 Azure
 1. 要连接到 VNet，请在客户端计算机上，导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”。 可能会出现与使用证书相关的弹出消息。 如果出现此消息，请单击“继续”  以使用提升的权限。 
 2. 在“连接”状态页上，单击“连接”以启动连接。 如果看到“选择证书”屏幕，请确保所显示的客户端证书是要用来连接的证书。 如果不是，请使用下拉箭头选择正确的证书，然后单击“确定”。
    
-    ![VPN 客户端 2](./media/vpn-gateway-point-to-site-create/clientconnect.png "VPN client connection")
+    ![VPN 客户端 2](./media/vpn-gateway-point-to-site-create/clientconnect.png "VPN 客户端连接")
 3. 现在应已建立连接。
    
-    ![VPN 客户端 3](./media/vpn-gateway-point-to-site-create/connected.png "VPN client connection 2")
+    ![VPN 客户端 3](./media/vpn-gateway-point-to-site-create/connected.png "VPN 客户端连接 2")
+
+> [!NOTE]
+> 如果使用的是通过企业 CA 解决方案颁发的证书，并且无法进行身份验证，请检查客户端证书上的身份验证顺序。 可以通过双击客户端证书，并转到“详细信息”>“增强型密钥用法”来检查身份验证列表顺序。 请确保此列表显示的第一项是“客户端身份验证”。 如果不是，则需要基于将“客户端身份验证”作为列表中第一项的用户模板颁发客户端证书。 
+>
+>
 
 ### <a name="part-4-verify-the-vpn-connection"></a>第 4 部分：验证 VPN 连接
 1. 若要验证你的 VPN 连接是否处于活动状态，请打开提升的命令提示符，然后运行 *ipconfig/all*。
@@ -163,14 +173,14 @@ ms.openlocfilehash: 487a006050bdb77f03db19b87a98dd3f4c64a738
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
 
+## <a name="a-namefaqapoint-to-site-faq"></a><a name="faq"></a>点到站点常见问题解答
+
+[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
-你可以将虚拟机添加到虚拟网络。 请参阅 [如何创建自定义虚拟机](../virtual-machines/virtual-machines-windows-classic-createportal.md)。
 
-如果你需要有关虚拟网络的更多信息，请参阅 [虚拟网络文档](https://azure.microsoft.com/documentation/services/virtual-network/) 页。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](https://docs.microsoft.com/azure/#pivot=services&panel=Compute)。
 
-
-
-
-<!--HONumber=Nov16_HO2-->
+如果你需要有关虚拟网络的更多信息，请参阅 [虚拟网络文档](/azure/virtual-network) 页。
 
 

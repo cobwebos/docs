@@ -1,6 +1,6 @@
 ---
 title: "什么是 Azure 备份？ | Microsoft 文档"
-description: "使用 Azure 备份和恢复服务，可以从 Windows 服务器、Windows 计算机、System Center DPM 服务器和 Azure 虚拟机备份和还原数据与应用程序。"
+description: "使用 Azure 备份和恢复服务，可以从 Windows Server 和工作站、System Center DPM 服务器和工作负荷，及 Azure 虚拟机备份和还原数据与应用程序。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2017
+ms.date: 2/23/2017
 ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: bda71281617fa37f7f2a08e238c706dd2a4f5576
-ms.openlocfilehash: 99246e97f096b872e225e8818def059bdc2211c6
+ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
+ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -45,7 +46,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **应用程序一致的备份** - 无论是备份文件服务器、虚拟机还是 SQL 数据库，都需要知道恢复点具有还原备份副本所需的全部数据。 Azure 备份提供了应用程序一致的备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致的数据可减少还原时间，使得可快速恢复到运行状态。
 
-**长期保留** -  可使用 Azure 实现短期和长期保留，无需将备份副本从磁盘转到磁带中，再将磁带移到异地位置进行长期存储。 Azure 不会限制备份或恢复服务保管库中数据的保留时间长度。 可以根据需要设置数据在保管库中的保留时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 请参阅本文的[备份和保留](backup-introduction-to-azure-backup.md#backup-and-retention)部分，了解此限制对用户备份需求的影响。  
+**长期保留** - 可使用 Azure 实现短期和长期保留，无需将备份副本从磁盘转到磁带中，也无需将磁带移到异地位置。 Azure 不会限制备份或恢复服务保管库中数据的保留时间长度。 可以根据需要设置数据在保管库中的保留时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 请参阅本文的[备份和保留](backup-introduction-to-azure-backup.md#backup-and-retention)部分，了解此限制对用户备份需求的影响。  
 
 ## <a name="which-azure-backup-components-should-i-use"></a>应使用哪些 Azure 备份组件？
 如果不确定哪个 Azure 备份组件适合你的需求，请参阅下表了解每个组件可保护的内容。 Azure 门户提供了一个内置向导，可引导你选择要下载和部署的组件。 该向导是恢复服务保管库创建的一部分，可引导你完成相关步骤来选择备份目标和选择要保护的数据/应用程序。
@@ -96,7 +97,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅[高级存储：Azure 虚拟机工作负荷的高性能存储](../storage/storage-premium-storage.md)一文
 
 ### <a name="back-up-premium-storage-vms"></a>备份高级存储 VM
-在备份高级存储 VM 时，备份服务在高级存储帐户中创建临时暂存位置。 名为“AzureBackup-”的暂存位置相当于连接到 VM 的高级磁盘的数据大小总计。 检查存储帐户中的暂存位置是否有足够的可用空间。 有关其他信息，请参阅 [premium storage limitations](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)（高级存储限制）一文。
+在备份高级存储 VM 时，备份服务在高级存储帐户中创建临时暂存位置。 名为“AzureBackup-”的暂存位置相当于连接到 VM 的高级磁盘的数据大小总计。 检查存储帐户中的暂存位置是否有足够的可用空间。 有关详细信息，请参阅[高级存储限制](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)一文。
 
 > [!NOTE]
 > 请不要修改或编辑暂存位置。
@@ -112,10 +113,10 @@ Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 
 Azure 备份保护托管磁盘 VM。 使用托管磁盘，用户就不需要管理虚拟机的存储帐户，大大简化 VM 预配。
 
 ### <a name="back-up-managed-disk-vms"></a>备份托管磁盘 VM
-在托管磁盘上备份 VM 与备份 Resource Manager VM 并无不同。 可以直接从 VM 视图或恢复服务保管库视图备份。 使用基于托管磁盘的 RestorePoint 收集即可在托管磁盘上备份 VM。 Azure 备份目前不支持对使用 Azure 磁盘加密 (ADE) 加密的托管磁盘 VM 进行备份。
+在托管磁盘上备份 VM 与备份 Resource Manager VM 并无不同。 在 Azure 门户中，可以直接从虚拟机视图或恢复服务保管库视图中配置备份作业。 通过基于托管磁盘的 RestorePoint 收集，可以在托管磁盘上备份 VM。 Azure 备份目前不支持备份使用 Azure 磁盘加密 (ADE) 加密的托管磁盘 VM。
 
 ### <a name="restore-managed-disk-vms"></a>还原托管磁盘 VM
-Azure 备份允许用户还原使用托管磁盘的完整 VM，或者将托管磁盘还原到 Resource Manager 存储帐户。 虽然在还原过程中创建的磁盘由 Azure 管理，但在还原过程中创建的存储帐户与任何其他 Resource Manager 存储帐户一样，应该由客户管理。
+Azure 备份允许用户还原使用托管磁盘的完整 VM，或者将托管磁盘还原到 Resource Manager 存储帐户。 在还原过程中，Azure 管理托管磁盘。 你（客户）管理作为还原过程的一部分所创建的存储帐户。
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>每个备份组件有哪些功能？
 以下各节提供了相关表格，总结了每个 Azure 备份组件中各种功能是否可用或受支持。 请参阅各表格后的额外支持信息或详细信息。
@@ -137,8 +138,6 @@ Azure 备份允许用户还原使用托管磁盘的完整 VM，或者将托管�
 #### <a name="compression"></a>压缩
 备份经过压缩以减少所需的存储空间。 唯一不进行压缩的组件为 VM 扩展。 VM 扩展可将所有备份数据从存储帐户复制到同一区域中的备份保管库。 传输数据时不使用压缩。 传输数据但不压缩会稍微增加所用的存储空间。 但是，存储数据而不压缩可加快还原，实现特定的恢复点目标。
 
-#### <a name="incremental-backup"></a>增量备份
-无论目标存储（磁盘、磁带、备份保管库）如何，每个组件都支持增量备份。 增量备份仅传输自上次备份以来所做的更改，从而可以确保备份在存储空间和时间方面高效。
 
 #### <a name="disk-deduplication"></a>磁盘重复数据删除
 在 [Hyper-V 虚拟机](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx)上部署 System Center DPM 或 Azure 备份服务器时，可使用重复数据删除。 Windows Server 会在以备份存储形式附加到虚拟机的虚拟硬盘 (VHD) 上执行主机级别的重复数据删除。
@@ -147,6 +146,21 @@ Azure 备份允许用户还原使用托管磁盘的完整 VM，或者将托管�
 > 重复数据删除不适用于 Azure 中的所有备份组件。 如果 System Center DPM 和备份服务器部署在 Azure 中，则附加到 VM 的存储磁盘无法进行重复数据删除。
 >
 >
+
+### <a name="incremental-backup-explained"></a>增量备份说明
+无论目标存储（磁盘、磁带、备份保管库）如何，每个 Azure 备份组件都支持增量备份。 增量备份仅传输自上次备份以来所做的更改，从而可以确保备份在存储空间和时间方面高效。
+
+#### <a name="comparing-full-differential-and-incremental-backup"></a>比较完整备份、差异备份和增量备份
+
+存储消耗、恢复时间目标 (RTO) 和网络消耗因每种备份方法而异。 为了降低备份总拥有成本 (TCO)，需要了解如何选择最佳备份解决方案。 下图对完整备份、差异备份和增量备份进行了比较。 在图中，数据源 A 由 10 个每月备份的存储块 A1-A10 组成。 第一个月，存储块 A2、A3、A4 和 A9 变化，第二个月，存储块 A5 变化。
+
+![备份方法比较图](./media/backup-introduction-to-azure-backup/backup-method-comparison.png)
+
+借助**完整备份**，每个备份副本包含整个数据源。 完整备份将占用大量的网络带宽和存储，每次传输一份备份副本。
+
+**差异备份**仅存储自初始完整备份后发生变化的数据块，这将占用较少的网络、消耗较少的存储。 差异备份不保留无变化数据的冗余副本。 但是，由于会传输并存储后续备份之间保持不变的数据块，所以差异备份的效率比较低。 第二个月，对已更改的存储块 A2、A3、A4 和 A9 进行备份。 第三个月，会再次备份这些相同的存储块，以及已更改的存储块 A5。 下次进行完整备份之前，将继续对已更改的存储块进行备份。
+
+**增量备份**通过仅存储上次备份后更改的数据块，从而实现高存储效率和高网络效率。 采用增量备份，没有必要进行定期的完整备份。 在示例中，第一个月进行完整备份后，已更改存储块 A2、A3、A4 和 A9 将标记为“已更改”，在第二个月进行传输。 在第三个月，仅标记已更改的存储块 A5，并进行传输。 移动较少的数据可以节省存储和网络资源，从而降低 TCO。   
 
 ### <a name="security"></a>“安全”
 | 功能 | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
@@ -203,8 +217,8 @@ Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备�
 受保护实例的一些常见示例为虚拟机、应用程序服务器、数据库和运行 Windows 操作系统的个人计算机。 例如：
 
 * 运行 Hyper-V 或 Azure IaaS 虚拟机监控程序结构的虚拟机。 虚拟机的来宾操作系统可以是 Windows Server 或 Linux。
-* 应用程序服务器：它可为运行 Windows Server 和工作负荷（具有需备份的数据）的物理或虚拟机。 常见的工作负荷有 Microsoft SQL Server、Microsoft Exchange 服务器、Microsoft SharePoint 服务器、Microsoft Dynamics 和 Windows Server 上的文件服务器角色。 若要备份这些工作负荷，需要 System Center Data Protection Manager (DPM) 或 Azure 备份服务器。
-* 运行 Windows 操作系统的个人计算机或笔记本电脑。
+* 应用程序服务器：它可为运行 Windows Server 和工作负荷（具有需备份的数据）的物理或虚拟机。 常见的工作负荷有 Microsoft SQL Server、Microsoft Exchange 服务器、Microsoft SharePoint 服务器和 Windows Server 上的文件服务器角色。 若要备份这些工作负荷，需要 System Center Data Protection Manager (DPM) 或 Azure 备份服务器。
+* 运行 Windows 操作系统的个人计算机、工作站或笔记本电脑。
 
 
 ## <a name="what-is-the-vault-credential-file"></a>什么是保管库凭据文件？
@@ -213,7 +227,7 @@ Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备�
 仅可使用保管库凭据来注册服务器或计算机。 但是，请保存好保管库凭据，如果它丢失或由他人获取，这些凭据可能会用于针对相同的保管库注册其他计算机。 由于备份数据使用通行短语进行了加密，因此只有你可访问，现有的备份数据不会泄露。 保管库凭据会在 48 小时后过期。 虽然可随时下载备份保管库的保管库凭据，但只有最新的凭据可用于注册。
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Azure 备份与 Azure Site Recovery 有何不同？
-Azure 备份和 Azure Site Recovery 在这两种服务的备份数据方面相关并且可还原该数据，但两者的核心价值主张不同。
+Azure 备份和 Azure Site Recovery 均备份数据，均可还原数据。 但两者的价值主张不同。
 
 Azure 备份保护本地和云端的数据。 Azure Site Recovery 就虚拟机和物理服务器的复制、故障转移和故障回复进行协调。 这两个服务都很重要，因为灾难恢复解决方案需要让数据保持安全且可恢复（备份）， *同时* 在服务中断时使工作负荷保持可用 (Site Recovery)。
 
@@ -240,9 +254,4 @@ Azure 备份保护本地和云端的数据。 Azure Site Recovery 就虚拟机�
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

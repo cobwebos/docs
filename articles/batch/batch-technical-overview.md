@@ -1,5 +1,5 @@
 ---
-title: "Azure 批处理服务概述 | Microsoft 文档"
+title: "Azure Batch 在云中运行大规模并行计算解决方案 | Microsoft Docs"
 description: "了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷"
 services: batch
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 3a01764b6a0e777e947cf8648606cdd568d118ff
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: e204a3c79768ddbd433f3b00a3db456ef3258173
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="basics-of-azure-batch"></a>Azure Batch 基础知识
+# <a name="run-intrinsically-parallel-workloads-with-batch"></a>使用 Batch 运行固有并行的工作负荷
+
 Azure 批处理是一项平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure 批处理可以计划要在托管的虚拟机集合上运行的计算密集型工作，并且可以缩放计算资源，使之符合作业的需求。
 
 使用 Azure 批处理时，可以轻松定义用于大规模并行执行应用程序的 Azure 计算资源。 不需要手动创建、配置和管理 HPC 群集、各个虚拟机、虚拟网络或复杂的作业和任务计划基础结构。 Azure 批处理自动执行这些任务，或者为用户简化这些任务。
@@ -156,9 +159,4 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

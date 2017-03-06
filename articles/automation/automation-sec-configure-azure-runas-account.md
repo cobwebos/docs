@@ -13,11 +13,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 02/24/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: aec8fd057bd31fc933d19996567437b2a897623b
-ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
+ms.sourcegitcommit: 6966befa56dc6a0feff4b8a821bde4e423a2b53a
+ms.openlocfilehash: 97853ce9f78078cc6bbccdfb5c5a06cae49e218c
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -38,16 +39,15 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 
 > [!NOTE]
 > 使用自动化全局 Runbook 的 Azure [警报集成功能](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)需要已配置了运行方式帐户和经典运行方式帐户的自动化帐户。 可以选择已定义运行方式帐户和经典运行方式帐户的自动化帐户，也可以创建新的自动化帐户。
-> 
-> 
+>  
 
-我们将说明如何从 Azure 门户创建自动化帐户、如何使用 PowerShell 更新自动化帐户，以及演示如何在 Runbook 中进行身份验证。
+我们将说明如何从 Azure 门户创建自动化帐户、如何使用 PowerShell 更新自动化帐户、如何管理帐户配置，以及演示如何在 Runbook 中进行身份验证。
 
 在此之前，应该先了解并考虑一些事项，然后再继续。
 
 1. 这不会影响经典或 Resource Manager 部署模型中已创建的现有自动化帐户。  
 2. 这只适用于通过 Azure 门户创建的自动化帐户。  如果尝试从经典门户创建帐户，将不会复制运行方式帐户配置。
-3. 如果目前使用之前创建的 Runbook 和资产（即计划、变量等）来管理经典资源，并希望这些 Runbook 使用新的经典运行方式帐户进行身份验证，则需要将它们迁移到新的自动化帐户，或使用以下 PowerShell 脚本更新现有帐户。  
+3. 如果目前使用之前创建的 Runbook 和资产（即计划、变量等）来管理经典资源，并希望这些 Runbook 使用新的经典运行方式帐户进行身份验证，则需要通过管理运行方式帐户来创建经典运行方式帐户，或使用以下 PowerShell 脚本更新现有帐户。  
 4. 若要使用新的运行方式帐户和经典运行方式自动化帐户进行身份验证，需要使用下面的示例代码修改现有的 Runbook。  **请注意** ，运行方式帐户使用基于证书的服务主体针对 Resource Manager 资源进行身份验证，而经典运行方式帐户则使用管理证书针对服务管理资源进行身份验证。     
 
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>从 Azure 门户创建新的自动化帐户
@@ -56,9 +56,8 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 > [!NOTE]
 > 执行这些步骤的用户必须是“服务管理员”角色的成员，或者是向用户授予订阅访问权限的订阅共同管理员。 此外，该用户还必须添加为订阅默认 Active Directory 的用户；不需要向该帐户分配特权角色。 在添加到订阅订阅“共同管理员”角色之前不属于订阅 Active Directory 成员的用户将作为来宾添加到 Active Directory，并且 会在“添加自动化帐户”边栏选项卡中看到“你无权创建...”警告。 可以先从订阅 Active Directory 中删除已添加到共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。  用户配置文件下的“用户类型”属性值不应等于“来宾”。  
 > 
-> 
 
-1. 以订阅管理员角色成员和订阅共同管理员的帐户登录到 Azure 门户。
+1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
 2. 选择“自动化帐户”。
 3. 在“自动化帐户”边栏选项卡中，单击“添加”。<br>![添加自动化帐户](media/automation-sec-configure-azure-runas-account/create-automation-account-properties-b.png)
    
@@ -76,7 +75,7 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
    > ![添加自动化帐户警告](media/automation-sec-configure-azure-runas-account/create-account-decline-create-runas-msg.png)<br>
    > 未创建服务主体时不会分配参与者角色。
    > 
-   > 
+
 7. 在 Azure 创建自动化帐户时，可以在菜单的“通知”下面跟踪进度。
 
 ### <a name="resources-included"></a>包含的资源
@@ -84,7 +83,7 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 
 | 资源 | 说明 |
 | --- | --- |
-| AzureAutomationTutorial Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
+| AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证并获取所有 Resource Manager 资源。 |
 | AzureRunAsCertificate |在创建自动化帐户期间自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的证书资产。  使用此证书，可以向 Azure 进行身份验证，以便通过 Runbook 管理 Azure Resource Manager 资源。  此证书有一年的有效期。 |
 | AzureRunAsConnection |在创建自动化帐户期间自动创建的，或针对现有帐户使用以下 PowerShell 脚本创建的连接资产。 |
@@ -93,15 +92,15 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 
 | 资源 | 说明 |
 | --- | --- |
-| AzureClassicAutomationTutorial Runbook |一个示例 Runbook，它可以使用经典运行方式帐户（证书）获取订阅中的所有经典 VM，然后输出 VM 名称和状态。 |
-| AzureClassicAutomationTutorial 脚本 Runbook |一个示例 Runbook，它可以使用经典运行方式帐户（证书）获取订阅中的所有经典 VM，然后输出 VM 名称和状态。 |
+| AzureClassicAutomationTutorial Runbook |一个示例图形 Runbook，可以使用经典运行方式帐户（证书）获取订阅中的所有经典 VM，然后输出 VM 名称和状态。 |
+| AzureClassicAutomationTutorial 脚本 Runbook |一个示例 PowerShell Runbook，可以使用经典运行方式帐户（证书）获取订阅中的所有经典 VM，然后输出 VM 名称和状态。 |
 | AzureClassicRunAsCertificate |自动创建的证书资产，用于向 Azure 进行身份验证，以便通过 Runbook 管理 Azure 经典资源。  此证书有一年的有效期。 |
 | AzureClassicRunAsConnection |自动创建的连接资产，用于向 Azure 进行身份验证，以便通过 Runbook 管理 Azure 经典资源。 |
 
 ## <a name="verify-run-as-authentication"></a>验证运行方式身份验证
 接下来，将执行一个小测试，以确认是否能够使用新的运行方式帐户成功进行身份验证。     
 
-1. 在 Azure 门户中，打开前面创建的自动化帐户。  
+1. 在 Azure 门户中，打开之前创建的自动化帐户。  
 2. 单击“Runbook”  磁贴打开 Runbook 的列表。
 3. 选择 **AzureAutomationTutorialScript** Runbook，然后单击“启动”以启动该 Runbook。  系统会提示用户确认要启动该 Runbook。
 4. 将创建一个 [Runbook 作业](automation-runbook-execution.md)并显示“作业”边栏选项卡，“作业摘要”磁贴中显示作业状态。  
@@ -115,7 +114,7 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 ## <a name="verify-classic-run-as-authentication"></a>验证经典运行方式身份验证
 接下来，将执行一个小测试，以确认是否能够使用新的经典运行方式帐户成功进行身份验证。     
 
-1. 在 Azure 门户中，打开前面创建的自动化帐户。  
+1. 在 Azure 门户中，打开之前创建的自动化帐户。  
 2. 单击“Runbook”  磁贴打开 Runbook 的列表。
 3. 选择 **AzureClassicAutomationTutorialScript** Runbook，然后单击“启动”以启动该 Runbook。  系统会提示用户确认要启动该 Runbook。
 4. 将创建一个 [Runbook 作业](automation-runbook-execution.md)并显示“作业”边栏选项卡，“作业摘要”磁贴中显示作业状态。  
@@ -126,21 +125,51 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 9. 关闭“输出”边栏选项卡返回“作业摘要”边栏选项卡。
 10. 关闭“作业摘要”和相应的 **AzureClassicAutomationTutorialScript** Runbook 边栏选项卡。
 
+## <a name="managing-azure-run-as-account"></a>管理 Azure 运行方式帐户
+在自动化帐户的生存期内，用户需要在证书过期之前进行续订，或者如果认为帐户受到侵害，则可以删除运行方式帐户并重新创建。  本部分将提供有关如何执行这些操作的步骤。  
+
+### <a name="certificate-renewal"></a>证书续订
+任何时候都可以续订为 Azure 运行方式帐户创建的证书，直到该证书在创建日期起一年后过期。  续订证书时，将保留旧的有效证书，以确保任何队列中的 Runbook 或有效运行的 Runbook（通过运行方式帐户进行身份验证）不会受到影响。  该证书将在过期之前一直存在。     
+
+1. 在 Azure 门户中，打开自动化帐户。  
+2. 在“自动化帐户”边栏选项卡上“帐户属性”窗格的“帐户设置”部分下，选择“运行方式帐户”。<br><br> ![自动化帐户属性窗格](media/automation-sec-configure-azure-runas-account/automation-account-properties-pane.png)<br><br>
+3. 在“运行方式帐户”属性边栏选项卡上，选择要为之续订证书的“运行方式帐户”或“经典运行方式帐户”，并在属性边栏选项卡上，为所选帐户单击“续订证书”。<br><br> ![为运行方式帐户续订证书](media/automation-sec-configure-azure-runas-account/automation-account-renew-runas-certificate.png)<br><br> 系统会提示用户确认是否要继续。  
+4. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。
+
+### <a name="delete-run-as-account"></a>删除运行方式帐户
+以下步骤介绍如何删除并重新创建 Azure 运行方式或经典运行方式帐户。  执行此操作时，将保留自动化帐户。  删除运行方式帐户或经典运行方式帐户后，可以在门户中重新创建。  
+
+1. 在 Azure 门户中，打开自动化帐户。  
+2. 在“自动化帐户”边栏选项卡上“帐户属性”窗格的“帐户设置”部分下，选择“运行方式帐户”。
+3. 在“运行方式帐户”属性边栏选项卡上，选择要删除的“运行方式帐户”或“经典运行方式帐户”，并在属性边栏选项卡上，为所选帐户单击“删除”。<br><br> ![删除运行方式帐户](media/automation-sec-configure-azure-runas-account/automation-account-delete-runas.png)<br><br>  系统会提示用户确认是否要继续。
+4. 帐户删除过程中，可以在菜单的“通知”下面跟踪进度。  删除完成后，可在“运行方式帐户”属性边栏选项卡中选择创建“Azure 运行方式帐户”，重新创建该帐户。<br><br> ![重新创建自动化运行方式帐户](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)<br> 
+
+### <a name="misconfiguration"></a>配置错误
+如果运行方式帐户或经典运行方式帐户正常运行所需的任意配置项被删除或在初始设置期间未正确创建，如：
+
+* 证书资产 
+* 连接资产 
+* 运行方式帐户已从参与者角色中删除
+* Azure AD 中的服务主体或应用程序
+
+自动化将检测这些更改，并在该帐户的“运行方式帐户”属性边栏选项卡中显示“不完整”状态来通知用户。<br><br> ![不完整的运行方式配置状态消息](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config.png)<br><br>选择该运行方式帐户时，将在该帐户的“属性”窗格中看到以下警告：<br><br> ![不完整的运行方式配置警告消息](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config-msg.png)。<br>  
+如果运行方式帐户的配置不正确，则可通过删除并重新创建运行方式帐户快速解决此问题。   
+
 ## <a name="update-an-automation-account-using-powershell"></a>使用 PowerShell 更新自动化帐户
 我们在此为你提供了使用 PowerShell 来更新现有自动化帐户的选项，但前提是：
 
 1. 已创建一个自动化帐户，但拒绝创建运行方式帐户
-2. 已有一个自动化帐户用于管理 Resource Manager 资源，并且想要对它进行更新以包含可供 Runbook 身份验证的运行方式帐户
-3. 已有一个自动化帐户用于管理经典资源，并且想要对它进行更新以使用经典运行方式，而不是创建新的帐户并将 Runbook 和资产迁移到该帐户   
+2. 需要在 Azure 政府版云中创建自动化帐户
+3. 已有一个自动化帐户用于管理 Resource Manager 资源，并且想要对它进行更新以包含可供 Runbook 身份验证的运行方式帐户
+4. 已有一个自动化帐户用于管理经典资源，并且想要对它进行更新以使用经典运行方式，而不是创建新的帐户并将 Runbook 和资产迁移到该帐户   
 
 在继续之前，请确认以下事项：
 
-1. 如果你运行的是 Windows 7，已下载并安装了 [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) 。   
-    如果运行的是 Windows Server 2012 R2、Windows Server 2012、Windows 2008 R2、Windows 8.1 和 Windows 7 SP1， [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) 已可供安装。
-2. Azure PowerShell 1.0。 有关此版本及其安装方法的信息，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
+1. 此脚本只支持在安装有 Azure Resource Manager 模块 2.01 及更高版本的 Windows 10 和 Windows Server 2016 上运行。  在 Windows 的早期版本中不受支持。  
+2. Azure PowerShell 1.0 及更高版本。 有关此版本及其安装方法的信息，请参阅 [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs)（如何安装和配置 Azure PowerShell）。
 3. 已创建自动化帐户。  以下两个脚本中的 -AutomationAccountName 和 -ApplicationDisplayName 参数值将引用此帐户。
 
-若要在 Azure 门户中获取 *SubscriptionID*、*ResourceGroup* 和 *AutomationAccountName* 的值（这些都是脚本的必需参数），请从“自动化帐户”边栏选项卡中选择自动化帐户，然后选择“所有设置”。  在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。  在“属性”边栏选项卡中，可以记下这些值。<br> ![自动化帐户属性](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
+若要在 Azure 门户中获取 *SubscriptionID*、*ResourceGroup* 和 *AutomationAccountName* 的值（这些都是脚本的必需参数），请从“自动化帐户”边栏选项卡中选择自动化帐户，然后选择“所有设置”。  在“所有设置”边栏选项卡中，选择“帐户设置”下面的“属性”。  在“属性”边栏选项卡中，可以记下这些值。<br><br> ![自动化帐户属性](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
 
 ### <a name="create-run-as-account-powershell-script"></a>创建运行方式帐户 PowerShell 脚本
 下面的 PowerShell 脚本将配置以下项：
@@ -172,9 +201,18 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
    
         [Parameter(Mandatory=$false)]
         [int] $NoOfMonthsUntilExpired = 12
+
+        [Parameter(Mandatory=$True)]
+        [ValidateSet("AzureCloud","AzureUSGovernment")]
+        [string]$Environment="AzureCloud"
         )
    
-        Login-AzureRmAccount
+        #Check to see which cloud environment to sign into.
+        Switch ($Environment)
+        {
+          "AzureCloud" {Login-AzureRmAccount}
+          "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+        }
         Import-Module AzureRM.Resources
         Select-AzureRmSubscription -SubscriptionId $SubscriptionId
    
@@ -195,9 +233,9 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
         $KeyCredential.StartDate = $CurrentDate
         $KeyCredential.EndDate= $EndDate
         $KeyCredential.KeyId = $KeyId
-        $KeyCredential.Type = "AsymmetricX509Cert"
-        $KeyCredential.Usage = "Verify"
-        $KeyCredential.Value = $KeyValue
+        #$KeyCredential.Type = "AsymmetricX509Cert"
+        #$KeyCredential.Usage = "Verify"
+        $KeyCredential.CertValue = $KeyValue
    
         # Use Key credentials
         $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
@@ -229,8 +267,9 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
         Remove-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -Force -ErrorAction SilentlyContinue
         $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
         New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
+
 2. 在计算机上，从“开始”屏幕以提升的用户权限启动 **Windows PowerShell**。
-3. 从提升的 PowerShell 命令行 shell 导航到包含步骤 1 中创建的脚本的文件夹，并执行脚本来更改 *-ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionId* 和 *-CertPlainPassword* 参数的值。<br>
+3. 从提升的 PowerShell 命令行 shell 导航到包含步骤 1 中创建的脚本的文件夹，并执行脚本来更改 *-ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionId*、*-CertPlainPassword* 和 *-Environment* 参数的值。<br>
    
    > [!NOTE]
    > 执行脚本后，系统将提示你在 Azure 上进行身份验证。 必须以订阅管理员角色成员和订阅共同管理员的帐户登录。
@@ -241,7 +280,7 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
         -AutomationAccountName <NameofAutomationAccount> `
         -ApplicationDisplayName <DisplayNameofAutomationAccount> `
         -SubscriptionId <SubscriptionId> `
-        -CertPlainPassword "<StrongPassword>"  
+        -CertPlainPassword "<StrongPassword>" -Environment <valid values are AzureCloud or AzureUSGovernment>  
    <br>
 
 成功完成脚本之后，请参考以下 [示例代码](#sample-code-to-authenticate-with-resource-manager-resources) 使用 Resource Manager 资源进行身份验证并验证凭据配置。
@@ -307,6 +346,7 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
         Write-Host -ForegroundColor red "Please upload the cert $CertPathCer to the Management store by following the steps below."
         Write-Host -ForegroundColor red "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates."
         Write-Host -ForegroundColor red "Then click Upload and upload the certificate $CertPathCer"
+
 2. 在计算机上，从“开始”屏幕以提升的用户权限启动 **Windows PowerShell**。  
 3. 从提升的 PowerShell 命令行 shell 导航到包含步骤 1 中创建的脚本的文件夹，并执行脚本来更改 *-ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionId* 和 *-CertPlainPassword* 参数的值。<br>
    
@@ -333,7 +373,7 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
        # Get the connection "AzureRunAsConnection "
        $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-       "Logging in to Azure..."
+       "Signing in to Azure..."
        Add-AzureRmAccount `
          -ServicePrincipal `
          -TenantId $servicePrincipalConnection.TenantId `
@@ -354,7 +394,7 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
     }
 
 
-该脚本包含两行额外的代码以支持引用订阅上下文，方便你轻松地在多个订阅之间执行操作。 名为 SubscriptionId 的变量资产包含订阅 ID，并且在 Add-AzureRmAccount cmdlet 语句之后，使用参数集 [-SubscriptionId](https://msdn.microsoft.com/library/mt619263.aspx) 声明 *Set-AzureRmContext cmdlet*。 如果变量名称太过普通，你可以修改变量名称，使其包含前缀或其他命名约定，以便让名称能够更容易地指出你的目的。 或者，你可以将参数集 -SubscriptionName（而非 -SubscriptionId）与相应的变量资产搭配使用。  
+该脚本包含两行额外的代码以支持引用订阅上下文，方便你轻松地在多个订阅之间执行操作。 名为 SubscriptionId 的变量资产包含订阅 ID，并且在 Add-AzureRmAccount cmdlet 语句之后，使用参数集 [-SubscriptionId](https://msdn.microsoft.com/library/mt619263.aspx) 声明 *Set-AzureRmContext cmdlet*。 如果变量名称太过普通，你可以修改变量名称，使其包含前缀或其他命名约定，以便让名称能够更容易地指出你的目的。 或者，你可以将参数集 -SubscriptionName（而非 -SubscriptionId）与相应的变量资产搭配使用。    
 
 请注意，Runbook 中用于身份验证的 cmdlet **Add-AzureRmAccount**使用 *ServicePrincipalCertificate* 参数集。  它使用服务主体证书（而不是凭据）进行身份验证。  
 
@@ -390,10 +430,5 @@ ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 * 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/active-directory-application-objects.md)（应用程序对象和服务主体对象）。
 * 有关 Azure 自动化中基于角色的访问控制的详细信息，请参阅 [Role-Based access control in Azure Automation](automation-role-based-access-control.md)（Azure 自动化中基于角色的访问控制）。
 * 有关证书和 Azure 服务的详细信息，请参阅 [Certificates overview for Azure Cloud Services](../cloud-services/cloud-services-certs-create.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -1,23 +1,25 @@
 ---
-title: "使用 Azure 门户创建虚拟网络 | Microsoft Docs"
-description: "了解如何使用 Azure 门户创建虚拟网络 | Resource Manager"
+title: "创建虚拟网络 - Azure 门户 | Microsoft Docs"
+description: "了解如何使用 Azure 门户创建虚拟网络。"
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 4ad679a4-a959-4e48-a317-d9f5655a442b
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/8/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: c7257faad9a41174fb1d65e04c99cd96a8af3ea9
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 54094c18dcbb751835bfa56d53358ce19e08387d
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -81,8 +83,3 @@ Azure 有两个部署模型：Azure Resource Manager 模型和经典模型。 Mi
 - 阅读文章[创建 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-portal.md)，将虚拟机 (VM) 连接到虚拟网络。 不要根据这两篇文章的步骤创建 VNet 和子网，可以选择要将 VM 连接到的现有 VNet 和子网。
 - 阅读[连接 VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) 一文，将一个虚拟网络连接到其他虚拟网络。
 - 使用站点到站点虚拟专用网络 (VPN) 或 ExpressRoute 线路，将本地网络连接到虚拟网络。 阅读文章[使用站点到站点 VPN 将 VNet 连接到本地网络](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)和[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，了解相关操作方法。
-
-
-<!--HONumber=Jan17_HO1-->
-
-

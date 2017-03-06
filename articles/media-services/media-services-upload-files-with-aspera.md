@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2017
+ms.date: 02/22/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff87afae1b468bef77947edd9806d330047f2ba6
-ms.openlocfilehash: 3b167db06ee30f7c3483eca30782437c61f8dcc8
+ms.sourcegitcommit: 44fe2f5c0a3f050a93368589d9ea6b8ea3e35d26
+ms.openlocfilehash: 60a35bbda79a45bd0ac24e76b0a20720afe79774
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -117,6 +118,15 @@ ms.openlocfilehash: 3b167db06ee30f7c3483eca30782437c61f8dcc8
 
     ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
+## <a name="resources"></a>资源
+
+本文涉及以下资源。 
+
+* [连接浏览器插件](http://downloads.asperasoft.com/connect2/)
+* [连接指南](http://downloads.asperasoft.com/en/documentation/8)
+* [Aspera 客户端](http://downloads.asperasoft.com/en/downloads/2)
+* [客户端指南](http://downloads.asperasoft.com/en/documentation/2)
+
 ## <a name="next-steps"></a>后续步骤
 
 用户现在可以[将 Blob 从存储帐户复制到 AMS 帐户](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account)。
@@ -126,10 +136,5 @@ ms.openlocfilehash: 3b167db06ee30f7c3483eca30782437c61f8dcc8
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

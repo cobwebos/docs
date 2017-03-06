@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2017
+ms.date: 02/16/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 0fec7a18e098891374b3b0d7313a72918b630918
-ms.openlocfilehash: 7fb107922af9d2316fb7490670002f4255572458
+ms.sourcegitcommit: eccd394a29376a20371732023bfbf9b53435f0ae
+ms.openlocfilehash: 51c994a37ebaca472c360e0c5f7b4a7fab5f55fc
+ms.lasthandoff: 02/17/2017
 
 ---
 
@@ -30,7 +31,7 @@ ms.openlocfilehash: 7fb107922af9d2316fb7490670002f4255572458
 可以使用两种不同的方法下载 Azure Multi-Factor Authentication 服务器。 两种方法都是通过 Azure 门户进行的。 第一种方法是直接管理 Multi-Factor Auth 提供程序。 第二种方法是通过服务设置。 第二个选项需要多重身份验证提供程序或 Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证。
 
 > [!Important]
-> 这两个选项看上去相似，但必须知道要使用哪一个。 如果用户具有附带 MFA 的许可证，请不要创建多重身份验证提供程序来下载服务器。 而是使用选项 2 从服务设置页下载服务器。 
+> 这两个选项看上去相似，但必须知道要使用哪一个。 如果用户具有附带 MFA（Azure MFA、Azure AD Premium 或企业移动性 + 安全性）的许可证，请不要创建多重身份验证提供程序来下载服务器。 而是使用选项 2 从服务设置页下载服务器。 
 
 ### <a name="option-1-download-azure-multi-factor-authentication-server-from-the-azure-classic-portal"></a>选项 1：从 Azure 经典门户下载 Azure 多重身份验证服务器
 
@@ -111,7 +112,7 @@ ms.openlocfilehash: 7fb107922af9d2316fb7490670002f4255572458
 1. 在“Azure MFA 服务器”的左侧选择“用户” 。
 2. 在底部选择“从 Active Directory 导入” 。
 3. 现在，你可以搜索单个用户，或在 AD 中搜索包含用户的 OU（组织单位）。  在本例中，我们将指定用户 OU。
-4. 突出显示右侧的所有用户，然后单击“导入”。。  此时应会显示一个弹出窗口，指出操作已成功。  关闭导入窗口。
+4. 突出显示右侧的所有用户，**然后单击“导入**。  此时应会显示一个弹出窗口，指出操作已成功。  关闭导入窗口。
 
 ![云](./media/multi-factor-authentication-get-started-server/import2.png)
 
@@ -163,9 +164,4 @@ ms.openlocfilehash: 7fb107922af9d2316fb7490670002f4255572458
 | [与 Windows Server Active Directory 同步](multi-factor-authentication-get-started-server-dirint.md) |有关在 Active Directory 与 Azure MFA 服务器之间设置和配置同步的信息。 |
 | [部署 Azure 多重身份验证服务器移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md) |有关设置和配置 Azure MFA 服务器 Web 服务的信息。 |
 | [使用 Azure 多重身份验证与第三方 VPN 的高级方案](multi-factor-authentication-advanced-vpn-configurations.md) | Cisco、Citrix 和 Juniper VPN 设备的分步配置指南。 |
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

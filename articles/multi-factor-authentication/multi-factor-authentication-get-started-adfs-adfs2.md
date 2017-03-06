@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 02/24/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
-ms.openlocfilehash: 035ec56b638797d650f73e1112b77991555d5194
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: ea0853929cd8670b6458a546e7fb1b3a229c09d7
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="secure-cloud-and-on-premises-resources-using-azure-multi-factor-authentication-server-with-ad-fs-20"></a>将 Azure Multi-Factor Authentication 服务器与 AD FS 2.0 配合使用来保护云和本地资源
+# <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
 本文适用于联合使用 Azure Active Directory 以及希望保护本地或云中资源的组织。 通过使用 Azure 多重身份验证服务器，并将其配置为使用 AD FS，为重要的终结点触发双重验证，从而保护资源。
 
 本文介绍如何将 Azure Multi-Factor Authentication 服务器与 AD FS 2.0 配合使用。 有关 AD FS 的详细信息，请参阅[将 Azure 多重身份验证服务器与 Windows Server 2012 R2 AD FS 配合使用来保护云和本地资源](multi-factor-authentication-get-started-adfs-w2k12.md)。
@@ -115,9 +116,4 @@ ms.openlocfilehash: 035ec56b638797d650f73e1112b77991555d5194
 4. 输入应加入白名单的 IP 地址、IP 地址范围或子网。 如果输入子网，请选择适当的网络掩码，然后单击“确定”按钮。 现已添加受信任的 IP。
 
 <center>![设置](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

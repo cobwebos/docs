@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/25/2017
 ms.author: guybo
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 868d65642ab9ca3e1c35d33a7cb9e9dd8c31c430
-ms.openlocfilehash: f945ac0357c11c70780dea8e62f094457a213d96
+ms.sourcegitcommit: 54673cbc69e418bdbe7cb5791dfb5d20e7ebcb9f
+ms.openlocfilehash: 2294587fd3f978a3f8383112ece329b47307db7a
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="virtual-machine-scale-sets-overview"></a>虚拟机规模集概述
+# <a name="what-are-virtual-machine-scale-sets-in-azure"></a>什么是 Azure 中的虚拟机规模集？
 虚拟机缩放集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 VM 规模集中的所有 VM 均采用相同的配置，专用于支持真正的自动缩放，而无需对 VM 进行预配，这可更简便地生成面向大计算、大数据、容器化工作负荷的大规模服务。
 
 对于需要扩大和缩小计算资源的应用程序，缩放操作在容错域和更新域之间进行隐式平衡。 有关 VM 规模集的简介，请参阅 [Azure 博客公告](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/)。
@@ -127,9 +129,4 @@ ms.openlocfilehash: f945ac0357c11c70780dea8e62f094457a213d96
 **问：** VM 缩放集是否可与 Azure 可用性集配合使用？
 
 **答：** 是的。 VM 规模集是含有 5 个 FD 和 5 个 UD 的隐式可用性集。 无需在 virtualMachineProfile 下进行任何配置。 VM 规模集如果包含 100 个以上的 VM，则会跨多个“位置组”，等效于多个可用性集。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的 VNET 中。 常见的配置是将控制节点 VM（通常需要可用性集中的配置）和数据节点置于规模集中。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

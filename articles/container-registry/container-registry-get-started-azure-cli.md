@@ -1,6 +1,6 @@
 ---
 title: "创建 Azure 容器注册表 - CLI | Microsoft 文档"
-description: "开始使用 Azure CLI 2.0 预览版创建和管理 Azure 容器注册表"
+description: "开始使用 Azure CLI 2.0 创建和管理 Azure 容器注册表"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -17,12 +17,13 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
-ms.openlocfilehash: bd2f3f5331eb83f09f5d187699a39c74be6282d5
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 1d5e16952cbc56a381ead23843515cf6ed1d74a9
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>使用 Azure CLI 创建容器注册表
-使用 [Azure CLI 2.0 预览版](https://github.com/Azure/azure-cli)中的命令可以从 Linux、 Mac 或 Windows 计算机创建容器注册表以及管理其设置。 也可以使用 [Azure 门户](container-registry-get-started-portal.md)或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
+使用 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 中的命令从 Linux、Mac 或 Windows 计算机创建容器注册表并管理其设置。 也可以使用 [Azure 门户](container-registry-get-started-portal.md)或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
 
 
 * 有关背景信息和概念，请参阅[什么是 Azure 容器注册表？](container-registry-intro.md)
@@ -34,9 +35,9 @@ ms.openlocfilehash: bd2f3f5331eb83f09f5d187699a39c74be6282d5
 > 
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure CLI 2.0 预览版** - 若要安装和开始使用 CLI 2.0 预览版，请参阅[安装说明](https://github.com/Azure/azure-cli/blob/master/README.rst)。 运行 `az login` 登录到你的 Azure 订阅。
-* **资源组** - 在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 CLI 2.0 预览版创建资源组，请参阅 [CLI 2.0 Preview samples](https://github.com/Azure/azure-cli-samples/tree/master/arm)（CLI 2.0 预览版示例）。 
-* **存储帐户**（可选）- 创建一个标准的 Azure [存储帐户](../storage/storage-introduction.md)用于在同一位置备份容器注册表。 如果使用 `az acr create` 创建注册表时未指定存储帐户，该命令将自动创建一个存储帐户。 若要使用 CLI 2.0 预览版创建存储帐户，请参阅 [CLI 2.0 Preview samples](https://github.com/Azure/azure-cli-samples/tree/master/storage)（CLI 2.0 预览版示例）。
+* **Azure CLI 2.0** - 若要安装并开始使用 CLI 2.0，请参阅[安装说明](https://github.com/Azure/azure-cli/blob/master/README.rst)。 运行 `az login` 登录到你的 Azure 订阅。
+* **资源组** - 在创建容器注册表之前创建[资源组](../azure-resource-manager/resource-group-overview.md#resource-groups)，或使用现有资源组。 请确保该资源组位于[提供](https://azure.microsoft.com/regions/services/)容器注册表服务的位置。 若要使用 CLI 2.0 创建资源组，请参阅 [CLI 2.0 示例](https://github.com/Azure/azure-cli-samples/tree/master/arm)。 
+* **存储帐户**（可选）- 创建一个标准的 Azure [存储帐户](../storage/storage-introduction.md)用于在同一位置备份容器注册表。 如果使用 `az acr create` 创建注册表时未指定存储帐户，该命令将自动创建一个存储帐户。 若要使用 CLI 2.0 创建存储帐户，请参阅 [CLI 2.0 示例](https://github.com/Azure/azure-cli-samples/tree/master/storage)。
 * **服务主体**（可选）- 使用 CLI 创建注册表时，默认情况下不会为该注册表设置访问权限。 可以根据需要将现有 Azure Active Directory 服务主体分配到注册表（或创建并分配新的服务主体），或者启用注册表的管理员用户帐户。 请参阅本文稍后的部分。 有关注册表访问权限的详细信息，请参阅 [Authenticate with the container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。 
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
@@ -66,7 +67,7 @@ az acr create -n myRegistry -g myResourceGroup -l southcentralus
 * `loginServer` - 为[登录到注册表](container-registry-authentication.md)而指定的完全限定名称。 在本示例中，名称为 `myregistry-contoso.exp.azurecr.io`（全部小写）。
 
 ## <a name="assign-a-service-principal"></a>分配服务主体
-使用 CLI 2.0 预览版命令可将 Azure Active Directory 服务主体分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但你可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
+使用 CLI 2.0 命令可将 Azure Active Directory 服务主体分配到注册表。 为这些示例中的服务主体分配了“所有者”角色，但你可以根据需要分配[其他角色](../active-directory/role-based-access-control-configure.md)。
 
 ### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>创建服务主体并分配注册表访问权限
 在以下命令中，新服务主体有权以“所有者”角色身份访问使用 `--scopes` 参数传递的注册表标识符。 使用 `--password` 参数指定一个强密码。
@@ -127,10 +128,5 @@ az acr repository show-tags -n myRegistry --repository samples/nginx -o json
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

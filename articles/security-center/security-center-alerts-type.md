@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 9ee2d2ef7b21fab8cfc4a70561d612be7367d366
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -182,7 +183,7 @@ Windows 通过动态链接库 (DLL) 让软件能够利用常见的 Windows 系�
 ![传出 DOS](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
 ## <a name="resource-analysis"></a>资源分析
-安全中心资源分析专注于 PaaS 服务，例如集成 [Azure SQL 数据库威胁检测](../sql-database/sql-database-threat-detection-get-started.md) 的功能。 安全中心根据这些方面的分析结果触发资源相关警报。
+安全中心资源分析专注于 PaaS 服务，例如集成 [Azure SQL 数据库威胁检测](../sql-database/sql-database-threat-detection.md)的功能。 安全中心根据这些方面的分析结果触发资源相关警报。
 
 ### <a name="potential-sql-injection"></a>潜在 SQL 注入
 SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传递给 SQL Server 实例进行分析和执行。 应该对构建 SQL 语句的任何过程进行检查，检查其中是否存在注入漏洞，因为 SQL Server 会执行其接收的所有在语法上有效的查询。 SQL 威胁检测通过机器学习、行为分析和异常检测确定可能在 Azure SQL 数据库中发生的可疑事件。 例如：
@@ -213,9 +214,4 @@ SQL 注入攻击会将恶意代码插入字符串中，这些字符串随后传�
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
 * [Azure 安全中心常见问题解答](security-center-faq.md) — 查找有关使用该服务的常见问题解答。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

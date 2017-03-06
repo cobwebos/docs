@@ -136,7 +136,7 @@ azure vm deallocate <resource-group> <vm-name>
 
 可将用户分配给多个角色，并且可以创建自定义角色以实现更细化的权限。
 
-> [!NOTE]
+d> [!NOTE]
 > RBAC 不限制已登录到 VM 的用户可以执行的操作。 这些权限由来宾 OS 上的帐户类型决定。   
 > 
 > 
@@ -146,7 +146,6 @@ azure vm deallocate <resource-group> <vm-name>
 如果需要加密 OS 磁盘和数据磁盘，请考虑使用 [Azure 磁盘加密][disk-encryption]。 
 
 ## <a name="solution-deployment"></a>解决方案部署
-
 [GitHub][github-folder] 中提供了此参考体系结构的部署。 它包括一个 VNet、NSG 和单个 VM。 若要部署该体系结构，请执行以下步骤： 
 
 1. 右键单击下面的按钮，然后选择“在新标签页中打开链接”或“在新窗口中打开链接”。
@@ -156,7 +155,7 @@ azure vm deallocate <resource-group> <vm-name>
    * 参数文件中已定义**资源组**名称，因此请选择“新建”，然后在文本框中输入 `ra-single-vm-rg`。
    * 从“位置”下拉框中选择区域。
    * 不要编辑“模板根 URI”或“参数根 URI”文本框。
-   * 在“OS 类型”下拉框中，选择“Linux”。
+。   在 OS 类型*下拉框中，选择“Linux”。
    * 查看条款和条件，然后单击“我同意上述条款和条件”复选框。
    * 单击“购买”按钮。
 3. 等待部署完成。
@@ -176,7 +175,7 @@ azure vm deallocate <resource-group> <vm-name>
 [blob-storage]: ../articles/storage/storage-introduction.md
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
-[data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
+[data-disk]: ../articles/storage/storage-about-disks-and-vhds-linux.md
 [disk-encryption]: ../articles/security/azure-security-disk-encryption.md
 [enable-monitoring]: ../articles/monitoring-and-diagnostics/insights-how-to-use-diagnostics.md
 [fqdn]: ../articles/virtual-machines/virtual-machines-linux-portal-create-fqdn.md
@@ -215,9 +214,4 @@ azure vm deallocate <resource-group> <vm-name>
 [components]: #Solution-components
 [blocks]: https://github.com/mspnp/template-building-blocks
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Azure 中的单一 Linux VM 体系结构"
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

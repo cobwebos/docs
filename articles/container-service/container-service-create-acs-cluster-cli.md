@@ -1,6 +1,6 @@
 ---
 title: "部署 Docker 容器群集 - Azure CLI | Microsoft 文档"
-description: "使用 Azure CLI 2.0 预览版部署 Azure 容器服务群集"
+description: "使用 Azure CLI 2.0 部署 Azure 容器服务群集"
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -17,23 +17,24 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: df916670743158d6a22b3f17343630114584fa08
-ms.openlocfilehash: 65f1c812472f4a3b6d4a4e6fb7666a2c022af102
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 792150afa1c4f91c4bf6175037c7708d8f7bfabe
+ms.lasthandoff: 02/22/2017
 
 
 ---
-# <a name="using-the-azure-cli-20-preview-to-create-an-azure-container-service-cluster"></a>使用 Azure CLI 2.0（预览版）创建 Azure 容器服务群集
+# <a name="use-the-azure-cli-20-to-create-an-azure-container-service-cluster"></a>使用 Azure CLI 2.0 创建 Azure 容器服务群集
 
-使用 Azure CLI 2.0（预览版）中的 `az acs` 命令，在 Azure 容器服务中创建和管理群集。 也可使用 [Azure 门户](container-service-deployment.md)或 Azure 容器服务 API 部署 Azure 容器服务群集。
+使用 Azure CLI 2.0 中的 `az acs` 命令，在 Azure 容器服务中创建和管理群集。 也可使用 [Azure 门户](container-service-deployment.md)或 Azure 容器服务 API 部署 Azure 容器服务群集。
 
 如需 `az acs` 命令的帮助，请将 `-h` 参数传递给任何命令。 例如：`az acs create -h`。
 
 
 
 ## <a name="prerequisites"></a>先决条件
-若要使用 Azure CLI 2.0（预览版）创建 Azure 容器服务群集，用户必须：
+要使用 Azure CLI 2.0 创建 Azure 容器服务群集，用户必须：
 * 具有一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）
-* 已安装并设置 [Azure CLI v.2.0（预览版）](/cli/azure/install-az-cli2)
+* 已安装并设置 [Azure CLI 2.0](/cli/azure/install-az-cli2)
 
 ## <a name="get-started"></a>入门 
 ### <a name="log-in-to-your-account"></a>登录到你的帐户
@@ -41,7 +42,7 @@ ms.openlocfilehash: 65f1c812472f4a3b6d4a4e6fb7666a2c022af102
 az login 
 ```
 
-按照提示以交互方式登录。 如需其他登录方法，请参阅 [Azure CLI 2.0（预览版）入门](/cli/azure/get-started-with-az-cli2)。
+按照提示以交互方式登录。 如需其他登录方法，请参阅 [Azure CLI 2.0 入门](/cli/azure/get-started-with-az-cli2)。
 
 ### <a name="set-your-azure-subscription"></a>设置 Azure 订阅
 
@@ -74,7 +75,7 @@ az group create -n acsrg1 -l "westus"
 
 
 ### <a name="quick-acs-create-using-defaults"></a>快速 `acs create`（使用默认值）
-如果在默认位置有一个 SSH 公钥文件 `id_rsa.pub`（或者为 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 创建了一个），则可使用如下所示的命令：
+如果在默认位置有一个 SSH RSA 公钥文件 `id_rsa.pub`（或者为 [OS X 和 Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) 或 [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 创建了一个），则可使用以下类似命令：
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
@@ -143,8 +144,3 @@ az acs delete -g acsrg1 -n acs-cluster
 * [Work with Azure Container Service and DC/OS](container-service-mesos-marathon-rest.md)
 * [Work with Azure Container Service and Docker Swarm](container-service-docker-swarm.md)
 * [Work with Azure Container Service and Kubernetes](container-service-kubernetes-walkthrough.md)（使用 Azure 容器服务和 Kubernetes）
-
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -1,6 +1,6 @@
 ---
 title: "创建适用于 Azure 上的 Linux VM 的 SSH 密钥对 | Microsoft 文档"
-description: "安全地创建适用于 Linux VM 的 SSH 公钥和私钥对。"
+description: "安全地创建适用于 Azure Linux VM 的 SSH 公钥和私钥对。"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2016
+ms.date: 2/6/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: e5f93bab46620e06e56950ba7b3686b15f789a9d
-ms.openlocfilehash: 1ee0368b75e4ef2fc759251db32c5aed5c1a168d
+ms.sourcegitcommit: 6776fe5cf1faadfbcfc9bbd6c69ec1380c2429c7
+ms.openlocfilehash: 67dce2c226f5ec5f396ef51cd59781d532d76795
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -41,6 +42,9 @@ ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N mypassword
 ```bash
 ssh-add ~/.ssh/id_rsa
 ```
+
+> [!NOTE] 
+> 以上命令几乎适用于所有分发的 Linux 操作系统，但并不一定要在容器中运行，因为可能导致对环境的完全限制。
 
 ## <a name="detailed-walkthrough"></a>详细演练
 
@@ -249,9 +253,4 @@ ssh fedora22
 * [使用 Azure 模板创建安全 Linux VM](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 Azure 门户创建安全 Linux VM](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 Azure CLI 创建安全 Linux VM](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

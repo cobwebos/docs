@@ -10,14 +10,15 @@ tags: azure-resource-manager
 ms.assetid: f38f8a44-6c88-4490-a84a-46388212d24c
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: 
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 1cbc3534aa0415a14d8b955dbcd291d2200c276e
-ms.openlocfilehash: 2ffc8d1f8ec924914c624f882bf35a08f0dd5888
+ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
+ms.openlocfilehash: e038515302acc4871687ad592c44fcf9a352bfe6
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 2ffc8d1f8ec924914c624f882bf35a08f0dd5888
 可以使用以下 CLI 版本之一在 Azure 中创建 VM：
 
 - Azure CLI 1.0 – 用于经典部署模型和资源管理部署模型（本文）的 CLI
-- [Azure CLI 2.0（预览版）](virtual-machines-linux-creation-choices.md)- 适用于资源管理部署模型的下一代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-creation-choices.md) - 适用于资源管理部署模型的下一代 CLI
 
 Azure CLI 1.0 可通过 npm 包、发行版提供的程序包或 Docker 容器跨平台使用。 有关详细信息，请参阅 [如何安装和配置 Azure CLI](../xplat-cli-install.md)。 以下教程提供了 Azure CLI 1.0 使用示例。 阅读下面每篇文章，了解更多有关所示的 CLI 快速启动命令的更多详细信息：
 
@@ -130,10 +131,5 @@ azure vm image list --location WestUS --publisher Canonical --offer UbuntuServer
 * 通过[门户](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[CLI](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure Resource Manager 模板](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)创建 Linux VM。
 * 创建 Linux VM 后，可[添加数据磁盘](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * [重置密码或 SSH 密钥和管理用户](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

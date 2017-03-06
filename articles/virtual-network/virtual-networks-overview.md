@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 83f9a2716086730f22527a9321b6b111f6e69907
-ms.openlocfilehash: 9e794e89e5ecf4633c2e6312c69487bfa0c7795c
+ms.sourcegitcommit: 75c5b8d3d8c8f389b8cee7d5d304b6e9704252fc
+ms.openlocfilehash: a57805510d5e84fcdc6c4521ae9443ec72de59e1
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -52,10 +53,10 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。  它�
   >
 
 ## <a name="subnets"></a>子网
-子网是 VNet 中的一系列 IP 地址，你可以将 VNet 划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 你还可以为子网配置路由表和 NSG。
+子网是 VNet 中的一系列 IP 地址，用户可以将 VNet 划分成多个子网，以方便进行组织和提高安全性。 部署到 VNet 的子网（不管是相同的子网还是不同的子网）中的 VM 和 PaaS 角色实例可以互相通信，不需任何额外的配置。 你还可以为子网配置路由表和 NSG。
 
 ## <a name="ip-addresses"></a>IP 地址
-有两种类型的 IP 地址分配给 Azure 中的资源：*公共*和*专用*。 使用公共 IP 地址可以让 Azure 资源与 Internet 以及其他面向公众的 Azure 服务（例如 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)、[Azure 事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)）通信。 专用 IP 地址允许在虚拟网络的资源之间通信，以及与那些通过 VPN 连接的资源通信，不需使用可通过 Internet 路由的 IP 地址。
+有两种类型的 IP 地址分配给 Azure 中的资源：*公共*和*专用*。 使用公共 IP 地址可以让 Azure 资源与 Internet 以及其他面向公众的 Azure 服务（例如 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)、[Azure 事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)）通信。 使用专用 IP 地址可以在虚拟网络的资源之间通信，并且还能与那些通过 VPN 连接的资源通信，不需使用可通过 Internet 路由的 IP 地址。
 
 若要详细了解 Azure 中的 IP 地址，请访问 [虚拟网络中的 IP 地址](virtual-network-ip-addresses-overview-arm.md)
 
@@ -88,9 +89,4 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。  它�
 * [在 VNet 中创建 VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md)。
 * 了解 [NSG](virtual-networks-nsg.md)。
 * 了解 [用户定义的路由和 IP 转发](virtual-networks-udr-overview.md)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "设备注册, 启用设备注册, 设备注册和 MDM"
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: 
 ms.assetid: 1e92c1a2-01b8-4225-950b-373cd601b035
 ms.service: active-directory
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 02/22/2017
 ms.author: Markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98f1b1856a6c457349decefeb277208a3b483bad
+ms.sourcegitcommit: 8df5889bfe2757ef68d0895d140dd44a765a89d0
+ms.openlocfilehash: 06fb59f627ea6aff3916787e321069c6b58c3e10
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -65,7 +66,7 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 
 必须创建一条 DNS CNAME 记录，该记录指向与你的 Azure Active Directory 设备注册服务关联的 A 记录。 该 CNAME 记录必须使用已知的前缀 enterpriseregistration，后接组织中的用户帐户使用的 UPN 后缀。 如果你的组织使用了多个 UPN 后缀，则必须在 DNS 中创建多条 CNAME 记录。
 
-例如，如果在组织中使用名为 @contoso.com 和 @region.contoso.com, 的两个 UPN 后缀，则需创建以下 DNS 记录。
+例如，如果在组织中使用名为 @contoso.com 和 @region.contoso.com 的两个 UPN 后缀，则需创建以下 DNS 记录。
 
 | 条目 | 类型 | 地址 |
 | --- | --- | --- |
@@ -89,10 +90,5 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 * [为加入 Windows 7 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md)
 * [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 * [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 
