@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: d5171cdc9048837385bfb99d553e496a9f56846e
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
 * 可以让用户使用其 Azure AD 帐户自动登录到 ClickTime（单一登录）
 * 可在一个中心位置（即 Azure 经典门户）管理帐户
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要配置 Azure AD 与 ClickTime 的集成，需要具有以下项：
@@ -61,19 +62,19 @@ ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
 1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
    
    ![Active Directory](./media/active-directory-saas-clicktime-tutorial/tic700993.png "Active Directory")
-2. 从“目录”列表中，选择要为其启用目录集成的目录。
+2. 在“目录”列表中，选择要启用目录集成的目录。
 3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
    
-   ![应用程序](./media/active-directory-saas-clicktime-tutorial/tic700994.png "Applications")
+   ![应用程序](./media/active-directory-saas-clicktime-tutorial/tic700994.png "应用程序")
 4. 在页面底部单击“添加”。
    
-   ![添加应用程序](./media/active-directory-saas-clicktime-tutorial/tic749321.png "Add application")
+   ![添加应用程序](./media/active-directory-saas-clicktime-tutorial/tic749321.png "添加应用程序")
 5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
    
-   ![从库中添加一个应用程序](./media/active-directory-saas-clicktime-tutorial/tic749322.png "Add an application from gallerry")
+   ![从库添加应用程序](./media/active-directory-saas-clicktime-tutorial/tic749322.png "从库添加应用程序")
 6. 在**搜索框**中，键入“ClickTime”。
    
-   ![应用程序库](./media/active-directory-saas-clicktime-tutorial/tic777275.png "Application gallery")
+   ![应用程序库](./media/active-directory-saas-clicktime-tutorial/tic777275.png "应用程序库")
 7. 在结果窗格中，选择“ClickTime”，然后单击“完成”以添加该应用程序。
    
    ![ClickTime](./media/active-directory-saas-clicktime-tutorial/tic777276.png "ClickTime")
@@ -105,10 +106,10 @@ ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
 
 1. 在 Azure 经典门户中，在 **ClickTime** 应用程序集成页上，单击“配置单一登录”，以打开“配置单一登录”对话框。
    
-   ![启用单一登录](./media/active-directory-saas-clicktime-tutorial/tic777277.png "Enable single sign-on")
+   ![启用单一登录](./media/active-directory-saas-clicktime-tutorial/tic777277.png "启用单一登录")
 2. 在“你希望用户如何登录到 ClickTime”页上，选择“Microsoft Azure AD 单一登录”，然后单击“下一步”。
    
-   ![配置单一登录](./media/active-directory-saas-clicktime-tutorial/tic777278.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-clicktime-tutorial/tic777278.png "配置单一登录")
 3. 在“配置应用设置”对话框页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-clicktime-tutorial/tic777286.png) 
@@ -120,14 +121,14 @@ ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
     c. 单击“下一步”
 4. 在“在 ClickTime 处配置单一登录”页上，若要下载证书，请单击“下载证书”，然后将证书文件保存在计算机上。
    
-   ![配置单一登录](./media/active-directory-saas-clicktime-tutorial/tic777279.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-clicktime-tutorial/tic777279.png "配置单一登录")
 5. 在另一个 Web 浏览器窗口中，以管理员身份登录到你的 ClickTime 公司站点。
 6. 在顶部工具栏中，单击“首选项”，然后单击“安全设置”。
 7. 在“单一登录首选项”配置部分中，执行以下步骤：
    
-   ![安全设置](./media/active-directory-saas-clicktime-tutorial/tic777280.png "Security Settings")
+   ![安全设置](./media/active-directory-saas-clicktime-tutorial/tic777280.png "安全设置")
    
-   a.  选择“允许”通过“Azure AD”使用单一登录 (SSO) 进行登录。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  选择“允许”通过“Azure AD”使用单一登录 (SSO) 进行登录。
    
    b.  在 Azure 经典门户中，在“在 ClickTime 处配置单一登录”对话框页上，复制“单一登录服务 URL”值，然后将其粘贴到“标识提供者终结点”文本框中。
    
@@ -136,9 +137,9 @@ ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
    d.  单击“保存”。
 8. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“完成”，关闭“配置单一登录”对话框。
    
-   ![配置单一登录](./media/active-directory-saas-clicktime-tutorial/tic777281.png "Configure single sign-on")
+   ![配置单一登录](./media/active-directory-saas-clicktime-tutorial/tic777281.png "配置单一登录")
 
-## <a name="configuring-user-provisioning"></a>配置用户预配
+## <a name="configuring-user-provisioning"></a>配置用户设置
 为了使 Azure AD 用户能够登录到 ClickTime，必须将其预配到 ClickTime 中。  
 对于 ClickTime，需要手动执行预配。
 
@@ -146,15 +147,15 @@ ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
 1. 登录到你的 **ClickTime** 租户。
 2. 在顶部工具栏中，单击“公司”，然后单击“人员”。
    
-   ![人员](./media/active-directory-saas-clicktime-tutorial/tic777282.png "People")
+   ![人员](./media/active-directory-saas-clicktime-tutorial/tic777282.png "人员")
 3. 单击“添加用户”。
    
-   ![添加人员](./media/active-directory-saas-clicktime-tutorial/tic777283.png "Add Person")
+   ![添加人员](./media/active-directory-saas-clicktime-tutorial/tic777283.png "添加人员")
 4. 在“新建人员”部分中，执行以下步骤：
    
-   ![人员](./media/active-directory-saas-clicktime-tutorial/tic777284.png "People")
+   ![人员](./media/active-directory-saas-clicktime-tutorial/tic777284.png "人员")
    
-   a.  在“电子邮件地址”文本框中，键入你的 Azure AD 帐户的电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  在“电子邮件地址”文本框中，键入你的 Azure AD 帐户的电子邮件地址。
    
    b.  在“全名”文本框中，键入你的 Azure AD 帐户的名称。  
    
@@ -208,9 +209,4 @@ ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
 [201]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_201.png
 [203]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_203.png
 [205]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

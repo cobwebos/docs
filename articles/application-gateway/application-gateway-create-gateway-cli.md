@@ -1,6 +1,6 @@
 ---
-title: "创建 Azure 应用程序网关 - Azure CLI | Microsoft Docs"
-description: "了解如何在 Resource Manager 中使用 Azure CLI 创建应用程序网关"
+title: "创建 Azure 应用程序网关 - Azure CLI 2.0 | Microsoft 文档"
+description: "了解如何在 Resource Manager 中使用 Azure CLI 2.0 创建应用程序网关"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -13,30 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: d376cd1f62f99d3f611d0d5ccc613c4b649e5c3c
+ms.sourcegitcommit: 1481fcb070f383d158c5a6ae32504e498de4a66b
+ms.openlocfilehash: 68d3e3ee9b35f2d6d88cde68365cef91d9683462
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
+# <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建应用程序网关
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure 经典 PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager 模板](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI](application-gateway-create-gateway-cli.md)
-> 
-> 
+> * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
+> * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
 
-Azure 应用程序网关是第&7; 层负载平衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
+Azure 应用程序网关是第&7; 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
 
-## <a name="prerequisite-install-the-azure-cli"></a>先决条件：安装 Azure CLI
+## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](../xplat-cli-install.md)，还需要[登录 Azure](../xplat-cli-connect.md)。 
+可以使用以下 CLI 版本之一完成任务：
+
+* [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI。
+* [Azure CLI 2.0](application-gateway-create-gateway-cli.md) - 适用于资源管理部署模型的下一代 CLI
+
+## <a name="prerequisite-install-the-azure-cli-20"></a>先决条件：安装 Azure CLI 2.0
+
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)。
 
 > [!NOTE]
 > 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/sign-up-organization.md)。
@@ -66,8 +73,10 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 打开 **Microsoft Azure 命令提示符**，然后登录。 
 
 ```azurecli
-azure login
+az login -u "username"
 ```
+
+>[注意] 还可以使用不带开关的 `az login` 进行设备登录，登录时不需要在 aka.ms/devicelogin 输入代码。
 
 键入前述示例后，将提供代码。 在浏览器中导航到 https://aka.ms/devicelogin，继续登录过程。
 
@@ -81,34 +90,26 @@ azure login
 
 ![已成功登录][3]
 
-## <a name="switch-to-resource-manager-mode"></a>切换到 Resource Manager 模式
-
-```azurecli
-azure config mode arm
-```
-
 ## <a name="create-the-resource-group"></a>创建资源组
 
 在创建应用程序网关前，会创建资源组以包含应用程序网关。 以下显示该命令。
 
 ```azurecli
-azure group create -n AdatumAppGatewayRG -l eastus
+az resource group create --name myresourcegroup --location "West US"
 ```
 
-## <a name="create-a-virtual-network"></a>创建虚拟网络
+## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
 
-创建资源组后，会为应用程序网关创建虚拟网络。  在以下示例中，地址空间为前述方案说明中定义的 10.0.0.0/16。
-
-```azurecli
-azure network vnet create -n AdatumAppGatewayVNET -a 10.0.0.0/16 -g AdatumAppGatewayRG -l eastus
-```
-
-## <a name="create-a-subnet"></a>创建子网
-
-创建虚拟网络后，会为应用程序网关添加子网。  如果计划搭配使用应用程序网关和与其在同一虚拟网络中托管的 Web 应用，请确保为其他子网留出足够的空间。
+创建资源组后，会为应用程序网关创建虚拟网络。  在以下示例中，地址空间 10.0.0.0/16 定义用于虚拟网络，10.0.0.0/28 用于子网，如前面的方案说明中所示。
 
 ```azurecli
-azure network vnet subnet create -g AdatumAppGatewayRG -n Appgatewaysubnet -v AdatumAppGatewayVNET -a 10.0.0.0/28 
+az network vnet create \
+--name AdatumAppGatewayVNET \
+--address-prefix 10.0.0.0/16 \
+--subnet-name Appgatewaysubnet \
+--subnet-prefix 10.0.0.0/28 \
+--resource-group AdatumAppGateway \
+--location eastus
 ```
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
@@ -116,11 +117,30 @@ azure network vnet subnet create -g AdatumAppGatewayRG -n Appgatewaysubnet -v Ad
 创建虚拟网络和子网后，即已满足应用程序网关的先决条件。 此外，以下步骤还需要之前导出的 .pfx 证书和证书密码：用于后端的 IP 地址是后端服务器的 IP 地址。 这些值可以是虚拟网络中的专用 IP、公共 IP 或后端服务器的完全限定域名。
 
 ```azurecli
-azure network application-gateway create -n AdatumAppGateway -l eastus -g AdatumAppGatewayRG -e AdatumAppGatewayVNET -m Appgatewaysubnet -r 134.170.185.46,134.170.188.221,134.170.185.50 -y c:\AdatumAppGateway\adatumcert.pfx -x P@ssw0rd -z 2 -a Standard_Medium -w Basic -j 443 -f Enabled -o 80 -i http -b https -u Standard
+az network application-gateway create \
+--name AdatumAppGateway \
+--location eastus \
+--resource-group AdatumAppGatewayRG \
+--vnet-name AdatumAppGatewayVNET \
+--vnet-address-prefix 10.0.0.0/16 \
+--subnet Appgatewaysubnet \
+--subnet-address-prefix 10.0.0.0/28 \
+--servers 10.0.0.4 10.0.0.5 \
+--cert-file /mnt/c/Users/username/Desktop/application-gateway/fabrikam.pfx \
+--cert-password P@ssw0rd \
+--capacity 2 \
+--sku-tier Standard \
+--sku-name Standard_Small \
+--http-settings-cookie-based-affinity Enabled \
+--http-settings-protocol Http \
+--frontend-port 443 \
+--routing-rule-type Basic \
+--http-settings-port 80
+
 ```
 
 > [!NOTE]
-> 如需在创建过程中能够提供的参数的列表，请运行以下命令：**azure network application-gateway create --help**。
+> 如需在创建过程中能够提供的参数的列表，请运行以下命令：**az network application-gateway create --help**。
 
 此示例会创建基本的应用程序网关，提供的默认设置适用于侦听器、后端池、后端 http 设置以及规则。 它还会配置 SSL 卸载。 预配成功后，即可根据部署修改这些设置。
 如果在之前的步骤中已使用后端池定义 Web 应用程序，则在创建后，负载均衡即会开始。
@@ -137,9 +157,4 @@ azure network application-gateway create -n AdatumAppGateway -l eastus -g Adatum
 [1]: ./media/application-gateway-create-gateway-cli/figure1.png
 [2]: ./media/application-gateway-create-gateway-cli/figure2.png
 [3]: ./media/application-gateway-create-gateway-cli/figure3.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

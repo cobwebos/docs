@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure CLI 2.0 创建 Linux 环境 | Microsoft 文档"
-description: "使用 Azure CLI 2.0（预览版）从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。"
+description: "使用 Azure CLI 2.0 从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 39ce158ae52b978b74161cdadb4b886a7ddbf87a
-ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
+ms.sourcegitcommit: d4cff286de1abd492ce7276c300b50d71f06345b
+ms.openlocfilehash: f07a326aa2fcd659f69265001293c9ed332bb842
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-complete-linux-environment-by-using-the-azure-cli-20-preview"></a>使用 Azure CLI 2.0 预览版创建完整的 Linux 环境
-在本文中，我们将构建一个简单网络，其中包含一个负载均衡器，以及一对可用于开发和简单计算的 VM。 将以逐条命令的方式完成整个过程，直到创建两个可以从 Internet 上的任何位置连接的有效且安全的 Linux VM。 然后，便可以继续构建更复杂的网络和环境。
+# <a name="create-a-complete-linux-environment-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建完整的 Linux 环境
+在本文中，我们将构建一个简单网络，其中包含一个负载均衡器，以及一对可用于开发和简单计算的 VM。 将以逐条命令的方式完成整个过程，直到创建两个可以从 Internet 上的任何位置连接的有效且安全的 Linux VM。 然后，便可以继续构建更复杂的网络和环境。 本文详细介绍如何使用 Azure CLI 2.0 构建环境。 还可以使用 [Azure CLI 1.0](virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 在此过程中，你将了解 Resource Manager 部署模型提供的依赖性层次结构及其提供的功能。 明白系统是如何构建的以后，即可使用 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)更快速地重新构建系统。 此外，在了解环境的部件如何彼此配合运行后，可以更轻松地创建模板来将它们自动化。
 
@@ -34,18 +35,12 @@ ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 
 ![基本环境概述](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
-可以使用以下 CLI 版本之一完成任务：
-
-- [Azure CLI 1.0](virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](#quick-commands)- 适用于资源管理部署模型的下一代 CLI（本文）
-
 ## <a name="quick-commands"></a>快速命令
 如果需要快速完成任务，请参阅以下部分，其中详细说明了用于将 VM 上载到 Azure 的基本命令。 本文档的余下部分（从[此处](#detailed-walkthrough)开始）提供了每个步骤的更详细信息和上下文。
 
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 `myResourceGroup`、`mystorageaccount` 和 `myVM`。
 
-若要创建此自定义环境，需要安装最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+若要创建此自定义环境，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
 
 首先，使用 [az group create](/cli/azure/group#create) 创建资源组。 以下示例在 `westeurope` 位置创建名为 `myResourceGroup` 的资源组：
 
@@ -53,7 +48,7 @@ ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 az group create --name myResourceGroup --location westeurope
 ```
 
-此后续步骤是可选的。 使用 Azure CLI 2.0（预览版）创建 VM 时的默认操作是使用 Azure 托管磁盘。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 如果要改为使用非托管磁盘，需要使用 [az storage account create](/cli/azure/storage/account#create) 创建存储帐户。 以下示例创建一个名为 `mystorageaccount` 的存储帐户。 （存储帐户名称必须唯一，因此，请提供自己的唯一名称。）
+此后续步骤是可选的。 使用 Azure CLI 2.0 创建 VM 时的默认操作是使用 Azure 托管磁盘。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 如果要改为使用非托管磁盘，需要使用 [az storage account create](/cli/azure/storage/account#create) 创建存储帐户。 以下示例创建一个名为 `mystorageaccount` 的存储帐户。 （存储帐户名称必须唯一，因此，请提供自己的唯一名称。）
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -226,7 +221,7 @@ az group export --name myResourceGroup > myResourceGroup.json
 ## <a name="detailed-walkthrough"></a>详细演练
 下面的详细步骤说明构建环境时每条命令的作用。 了解这些概念有助于构建自己的自定义开发或生产环境。
 
-确保已安装了最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)并已使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+确保已安装了最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
 
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 `myResourceGroup`、`mystorageaccount` 和 `myVM`。
 
@@ -252,7 +247,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
-此后续步骤是可选的。 使用 Azure CLI 2.0（预览版）创建 VM 时的默认操作是使用 Azure 托管磁盘。 这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 如果想要使用 Azure 托管磁盘，请跳到[创建虚拟网络和子网](#create-a-virtual-network-and-subnet)。 
+此后续步骤是可选的。 使用 Azure CLI 2.0 创建 VM 时的默认操作是使用 Azure 托管磁盘。 这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。 有关 Azure 托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)。 如果想要使用 Azure 托管磁盘，请跳到[创建虚拟网络和子网](#create-a-virtual-network-and-subnet)。 
 
 如果想要使用非托管磁盘，需要为 VM 磁盘和想要添加的任何其他数据磁盘创建存储帐户。
 
@@ -1114,9 +1109,4 @@ az group deployment create --resource-group myNewResourceGroup \
 
 ## <a name="next-steps"></a>后续步骤
 现在，已准备好开始使用多个网络组件和 VM。 可以使用此处介绍的核心组件，通过此示例环境来构建应用程序。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

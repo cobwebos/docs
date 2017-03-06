@@ -1,6 +1,6 @@
 ---
-title: "将 Azure CLI 2.0（预览版）与 Azure 存储配合使用 | Microsoft 文档"
-description: "了解如何将 Azure 命令行界面 (Azure CLI) 2.0（预览版）与 Azure 存储配合使用，从而创建和管理存储帐户并使用 Azure Blob 和文件。 Azure CLI 2.0 是一种跨平台工具。"
+title: "将 Azure CLI 2.0 用于 Azure 存储 | Microsoft 文档"
+description: "了解如何将 Azure 命令行接口 (Azure CLI) 2.0 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。 Azure CLI 2.0 是使用 Python 编写的跨平台工具。"
 services: storage
 documentationcenter: na
 author: mmacy
@@ -12,21 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 02/18/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 9a9ae2758aba17f35b7262560f8d980404ecd394
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: 5008bb0292bc7513a6264ff1768976fd5ba11bfa
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="using-the-azure-cli-20-preview-with-azure-storage"></a>将 Azure CLI 2.0（预览版）与 Azure 存储配合使用
+# <a name="using-the-azure-cli-20-with-azure-storage"></a>将 Azure CLI 2.0 用于 Azure 存储
 
 ## <a name="overview"></a>概述
 
-开源且跨平台的 Azure CLI 2.0（预览版）提供了一组用于使用 Azure 平台的命令。 它提供 [Azure 门户](https://portal.azure.com)所提供的很多相同功能，包括各种数据访问功能。
+开源且跨平台的 Azure CLI 2.0 提供了一组可在 Azure 平台上运行的命令。 它提供 [Azure 门户](https://portal.azure.com)所提供的很多相同功能，包括各种数据访问功能。
 
-在本指南中，我们展示了如何使用 [Azure CLI 2.0（预览版）](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)执行多个使用 Azure 存储帐户中的资源的任务。 我们建议在使用本指南之前下载并安装或者升级到 CLI 2.0 的最新版。
+本指南介绍如何使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) 执行多个使用 Azure 存储帐户中的资源的任务。 我们建议在使用本指南之前下载并安装或者升级到 CLI 2.0 的最新版。
 
 指南中的示例假定在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。 
 
@@ -39,9 +40,9 @@ ms.openlocfilehash: 9a9ae2758aba17f35b7262560f8d980404ecd394
 * **Azure 帐户**：如果用户没有 Azure 订阅，可以[创建免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **存储帐户**：请参阅[关于 Azure 存储帐户](../storage/storage-create-storage-account.md)中的[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。
 
-### <a name="install-the-azure-cli-20-preview"></a>安装 Azure CLI 2.0（预览版）
+### <a name="install-the-azure-cli-20"></a>安装 Azure CLI 2.0
 
-按照[安装 Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)中的概要说明，下载和安装 Azure CLI 2.0（预览版）。
+按照[安装 Azure CLI 2.0](/cli/azure/install-az-cli2) 中的概要说明，下载和安装 Azure CLI 2.0。
 
 > [!TIP]
 > 如果在安装时遇到问题，请查看本文的[安装故障排除](/cli/azure/install-az-cli2#installation-troubleshooting)部分以及 GitHub 上的 [Install Troubleshooting](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md)（安装故障排除）指南。
@@ -70,21 +71,24 @@ Here are the base commands:
                 resources.
     appservice: Commands to manage your Azure web apps and App Service plans.
     cloud     : Manage the Azure clouds registered.
-    component : Commands to manage and update Azure CLI 2.0 (Preview) components.
-    configure : Configure Azure CLI 2.0 Preview or view your configuration. The command is
+    component : Commands to manage and update Azure CLI 2.0 components.
+    configure : Configure Azure CLI 2.0 or view your configuration. The command is
                 interactive, so just type `az configure` and respond to the prompts.
     container : Set up automated builds and deployments for multi-container Docker applications.
-    context   : Manage contexts.
+    disk      : Commands to manage 'Managed Disks'.
     feature   : Commands to manage resource provider features, such as previews.
     feedback  : Loving or hating the CLI?  Let us know!
     group     : Commands to manage resource groups.
+    image     : Commands to manage custom virtual machine images based on managed disks/snapshots.
+    lock
     login     : Log in to access Azure subscriptions.
-    logout    : Log out to remove accesses to Azure subscriptions.
+    logout    : Log out to remove access to Azure subscriptions.
     network   : Manages Network resources.
     policy    : Commands to manage resource policies.
     provider  : Manage resource providers.
     resource  : Generic commands to manage Azure resources.
     role      : Use role assignments to manage access to your Azure resources.
+    snapshot  : Commands to manage snapshots.
     storage   : Durable, highly available, and massively scalable cloud storage.
     tag       : Manage resource tags.
     vm        : Provision Linux and Windows virtual machines in minutes.
@@ -191,7 +195,7 @@ test_blob.txt
 Done
 ```
 
-> [!NOTE]
+> [!TIP]
 > 前面的输出采用**表**格式。 可以通过在 CLI 命令中指定 `--output` 参数来指定要使用的输出格式，或使用 `az configure` 进行全局设置。
 >
 
@@ -344,32 +348,19 @@ az storage file list -s myshare/myDir
 az storage file list -s myshare -p myDir/mySubDir/MySubDir2
 ```
 
-### <a name="copy-files"></a>复制文件      
+### <a name="copy-files"></a>复制文件        
 可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 例如，若要将文件复制到不同共享中的目录，请执行以下操作：        
         
 ```azurecli
-# Get the URL for the source file you want to copy
-az storage file url -s myshare -p /mydir/image.png
-
-# Copy the file to another share
 az storage file copy start \
-    --source-uri https://mystorageaccount.file.core.windows.net/myshare/mydir/image.png \   
-    --destination-share myshare2 --destination-path mydir2/image.png        
+--source-share share1 --source-path dir1/file.txt \
+--destination-share share2 --destination-path dir2/file.txt        
 ```
 
-> [!NOTE]
-> CLI 2.0（预览版）中存在一个已知问题，导致无法使用 `--source-share` 和 `--source-path`。 此问题被解决之前，可以使用 `--source-uri` 参数作为解决方法。
->
-
 ## <a name="next-steps"></a>后续步骤
-以下是一些用于详细了解如何使用 Azure CLI 2.0（预览版）的其他资源。
+以下是一些用于详细了解如何使用 Azure CLI 2.0 的其他资源。
 
-* [Azure CLI 2.0（预览版）入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Azure CLI 2.0（预览版）命令参考](/cli/azure)
-* [GitHub 上的 Azure CLI 2.0（预览版）](https://github.com/Azure/azure-cli)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+* [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Azure CLI 2.0 命令参考](/cli/azure)
+* [GitHub 上的 Azure CLI 2.0](https://github.com/Azure/azure-cli)
 

@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure CLI 创建具有多个 NIC 的 VM | Microsoft 文档"
-description: "了解如何使用 Azure CLI 通过 Azure Resource Manager 创建具有多个 NIC 的 VM。"
+title: "创建具有多个 NIC 的 VM - Azure CLI 2.0 | Microsoft 文档"
+description: "了解如何使用 Azure CLI 2.0 创建具有多个 NIC 的 VM。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 8e906a4b-8583-4a97-9416-ee34cfa09a98
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5f6f14a3bf779de0c4ef6d1f31c283b72d3a18f7
-ms.openlocfilehash: 903669b90e07cb1dddc5fd8b78828b2022394be0
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 624f179c481448eb6c556b8cd9d90ef06d807c60
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-vm-with-multiple-nics-using-the-azure-cli"></a>使用 Azure CLI 创建具有多个 NIC 的 VM
+# <a name="create-a-vm-with-multiple-nics-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建具有多个 NIC 的 VM
+
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
 
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
@@ -30,335 +33,152 @@ ms.openlocfilehash: 903669b90e07cb1dddc5fd8b78828b2022394be0
 > Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。  本文介绍如何使用 Resource Manager 部署模型。Microsoft 建议对大多数新的部署使用该模型，而不是[经典部署模型](virtual-network-deploy-multinic-classic-cli.md)。
 >
 
-[!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
+## <a name="a-namecreateacreate-the-vm"></a><a name="create"></a>创建 VM
 
-以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。
+可以使用 Azure CLI 2.0（本文）或 [Azure CLI 1.0](virtual-network-deploy-multinic-cli-nodejs.md) 完成此任务。 在以下步骤中，"" 中的变量值使用本方案的设置创建资源。 根据需要更改你的环境值。
 
-## <a name="prerequisites"></a>先决条件
-创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成以下步骤：
-
-1. 导航到[模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)。
-2. 在模板页中“**父资源组**”的右侧，单击“**部署到 Azure**”。
-3. 如果需要，更改参数值，然后按照 Azure 预览门户中的步骤部署资源组。
-
-> [!IMPORTANT]
-> 请确保你的存储帐户名称是唯一的。 不能在 Azure 中有重复的存储帐户名称。
-> 
-
-[!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
-
-## <a name="create-the-back-end-vms"></a>创建后端 VM
-后端 VM 取决于以下资源的创建：
-
-* **数据磁盘的存储帐户**。 为了提高性能，数据库服务器上的数据磁盘将使用固态驱动器 (SSD) 技术，这需要高级存储帐户。 请确保部署到的 Azure 位置支持高级存储。
-* **NIC**。 每个 VM 都将具有两个 NIC，一个用于数据库访问，另一个用于管理。
-* **可用性集**。 所有数据库服务器都将添加到单个可用性集，以确保在维护期间至少有一个 VM 已启动且正在运行。
-
-### <a name="step-1---start-your-script"></a>步骤 1 - 启动脚本
-可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh)下载所用的完整 bash 脚本。 请按以下步骤更改要在环境中使用的脚本。
-
-1. 基于在上面[先决条件](#Prerequisites)中部署的现有资源组更改以下变量的值。
+1. 安装 [Azure CLI 2.0](/cli/azure/install-az-cli2)（如果尚未安装）。
+2. 通过完成[为 Linux VM 创建 SSH 公钥和私钥对](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中的步骤创建适用于 Linux VM 的 SSH 公钥和私钥对。
+3. 从命令行界面，使用命令 `az login` 登录。
+4. 通过在 Linux 或 Mac 计算机上执行以下脚本创建 VM。 该脚本创建一个资源组、一个包含两个子网的虚拟网络 (VNet)、两个 NIC 和一个附加有两个 NIC 的 VM。 其中一个 NIC 连接到一个子网，并分配有一个静态公共 IP 地址和一个专用 IP 地址。 另一个 NIC 连接到其他子网，并分配有一个静态专用 IP 地址，未分配公共 IP 地址。 NIC、公共 IP 地址、虚拟网络和 VM 资源必须存在于同一位置和同一订阅中。 虽然资源不必都存在于同一资源组中，但是在以下脚本中资源都存在于同一资源组中。
 
     ```azurecli
-    existingRGName="IaaSStory"
-    location="westus"
-    vnetName="WTestVNet"
-    backendSubnetName="BackEnd"
-    remoteAccessNSGName="NSG-RemoteAccess"
-    ```
-2. 基于要用于后端部署的值更改以下变量的值。
+    #!/bin/sh
 
-    ```azurecli
-    backendRGName="IaaSStory-Backend"
-    prmStorageAccountName="wtestvnetstorageprm"
-    avSetName="ASDB"
-    vmSize="Standard_DS3"
-    diskSize=127
-    publisher="Canonical"
-    offer="UbuntuServer"
-    sku="14.04.2-LTS"
-    version="latest"
-    vmNamePrefix="DB"
-    osDiskName="osdiskdb"
-    dataDiskName="datadisk"
-    nicNamePrefix="NICDB"
-    ipAddressPrefix="192.168.2."
-    username='adminuser'
-    password='adminP@ssw0rd'
-    numberOfVMs=2
-    ```
+    RgName="Multi-NIC-VM"
+    Location="westus"
+    az group create --name $RgName --location $Location
 
-3. 检索要在其中创建 VM 的 `BackEnd` 子网的 ID。 你需要执行此操作，因为要关联到此子网的 NIC 位于不同的资源组中。
+    # Create a public IP address resource with a static IP address using the `--allocation-method Static` option.
+    # If you do not specify this option, the address is allocated dynamically. The address is assigned to the
+    # resource from a pool of IP adresses unique to each Azure region. 
+    # Download and view the file from https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists
+    # the ranges for each region.
 
-    ```azurecli
-    subnetId="$(azure network vnet subnet show --resource-group $existingRGName \
-            --vnet-name $vnetName \
-            --name $backendSubnetName|grep Id)"
-    subnetId=${subnetId#*/}
-    ```
+    PipName="PIP-WEB"
 
-   > [!TIP]
-   > 上面的第一个命令使用 [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) 和[字符串操作](http://tldp.org/LDP/abs/html/string-manipulation.html)（更具体地说，是子字符串删除）。
-   >
+    az network public-ip create \
+    --name $PipName \
+    --resource-group $RgName \
+    --location $Location \
+    --allocation-method Static
 
-4. 检索 `NSG-RemoteAccess` NSG 的 ID。 你需要执行此操作，因为要关联到此 NSG 的 NIC 位于不同的资源组中。
+    # Create a virtual network with one subnet
 
-    ```azurecli
-    nsgId="$(azure network nsg show --resource-group $existingRGName \
-        --name $remoteAccessNSGName|grep Id)"
-        nsgId=${nsgId#*/}
-    ```
+    VnetName="VNet1"
+    VnetPrefix="10.0.0.0/16"
+    VnetSubnet1Name="Front-End"
+    VnetSubnet1Prefix="10.0.0.0/24"
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>步骤 2 - 为 VM 创建必要资源
+    az network vnet create \
+    --name $VnetName \
+    --resource-group $RgName \
+    --location $Location \
+    --address-prefix $VnetPrefix \
+    --subnet-name $VnetSubnet1Name \
+    --subnet-prefix $VnetSubnet1Prefix
 
-1. 为所有后端资源创建新的资源组。 请注意使用 `$backendRGName` 变量表示资源组名称，使用 `$location` 表示 Azure 区域。
+    # Create a second subnet within the VNet
 
-    ```azurecli
-    azure group create $backendRGName $location
-    ```
+    VnetSubnet2Name="Back-end"
+    VnetSubnet2Prefix="10.0.1.0/24"
 
-2. 为要由你的 VM 使用的 OS 和数据磁盘创建高级存储帐户。
+    az network vnet subnet create \
+    --vnet-name $VnetName \
+    --resource-group $RgName \
+    --name $VnetSubnet2Name \
+    --address-prefix $VnetSubnet2Prefix
 
-    ```azurecli
-    azure storage account create $prmStorageAccountName \
-        --resource-group $backendRGName \
-        --location $location \
-        --type PLRS
-    ```
+    # Create a network interface connected to one of the subnets. The NIC is assigned a single dynamic private and
+    # public IP address by default, but you can instead, assign static addresses, or no public IP address at all.
+    # You can also assign multiple private or public IP addresses to each NIC. To learn more about IP addressing
+    # options for NICs, enter the `az network nic create -h` command.
 
-3. 为 VM 创建可用性集。
+    Nic1Name="NIC-FE"
+    PrivateIpAddress1="10.0.0.5"
 
-    ```azurecli
-    azure availset create --resource-group $backendRGName \
-        --location $location \
-        --name $avSetName
-    ```
+    az network nic create \
+    --name $Nic1Name \
+    --resource-group $RgName \
+    --location $Location \
+    --subnet $VnetSubnet1Name \
+    --vnet-name $VnetName \
+    --private-ip-address $PrivateIpAddress1 \
+    --public-ip-address $PipName
 
-### <a name="step-3---create-the-nics-and-back-end-vms"></a>步骤 3 - 创建 NIC 和后端 VM
+    # Create a second network interface and connect it to the other subnet. Though multiple NICs attached to the same
+    # VM can be connected to different subnets, the subnets must all be within the same VNet. Add additional NICs as necessary.
 
-1. 基于 `numberOfVMs` 变量启动一个循环来创建多个 VM。
+    Nic2Name="NIC-BE"
+    PrivateIpAddress2="10.0.1.5"
 
-    ```azurecli
-    for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
-    do
-    ```
+    az network nic create \
+    --name $Nic2Name \
+    --resource-group $RgName \
+    --location $Location \
+    --subnet $VnetSubnet2Name \
+    --vnet-name $VnetName \
+    --private-ip-address $PrivateIpAddress2 \
 
-2. 对于每个 VM，创建一个 NIC 用于数据库访问。
+    # Create a VM and attach the two NICs.
 
-    ```azurecli
-    nic1Name=$nicNamePrefix$suffixNumber-DA
-    x=$((suffixNumber+3))
-    ipAddress1=$ipAddressPrefix$x
-    azure network nic create --name $nic1Name \
-        --resource-group $backendRGName \
-        --location $location \
-        --private-ip-address $ipAddress1 \
-        --subnet-id $subnetId
-    ```
+    VmName="WEB"
 
-3. 对于每个 VM，创建一个 NIC 用于远程访问。 请注意 `--network-security-group` 参数，它用于将 NIC 关联到 NSG。
+    # Replace the value for the following **VmSize** variable with a value from the
+    # https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article. Not all VM sizes support
+    # more than one NIC, so be sure to select a VM size that supports the number of NICs you want to attach to the VM.
+    # You must create the VM with at least two NICs if you want to add more after VM creation. If you create a VM with
+    # only one NIC, you can't add additional NICs to the VM after VM creation, regardless of how many NICs the VM supports.
+    # The VM size specified in the following variable supports two NICs.
 
-    ```azurecli
-    nic2Name=$nicNamePrefix$suffixNumber-RA
-    x=$((suffixNumber+53))
-    ipAddress2=$ipAddressPrefix$x
-    azure network nic create --name $nic2Name \
-        --resource-group $backendRGName \
-        --location $location \
-        --private-ip-address $ipAddress2 \
-        --subnet-id $subnetId $vnetName \
-        --network-security-group-id $nsgId
-    ```
+    VmSize="Standard_DS2"
 
-4. 创建 VM。
+    # Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
+    # `az vm image list` command.
 
-    ```azurecli
-    azure vm create --resource-group $backendRGName \
-        --name $vmNamePrefix$suffixNumber \
-        --location $location \
-        --vm-size $vmSize \
-        --subnet-id $subnetId \
-        --availset-name $avSetName \
-        --nic-names $nic1Name,$nic2Name \
-        --os-type linux \
-        --image-urn $publisher:$offer:$sku:$version \
-        --storage-account-name $prmStorageAccountName \
-        --storage-account-container-name vhds \
-        --os-disk-vhd $osDiskName$suffixNumber.vhd \
-        --admin-username $username \
-        --admin-password $password
+    OsImage="credativ:Debian:8:latest"
+
+    Username="adminuser"
+
+    # Replace the following value with the path to your public key file.
+
+    SshKeyValue="~/.ssh/id_rsa.pub"
+
+    # Before executing the following command, add variable names of additional NICs you may have added to the script that
+    # you want to attach to the VM. If creating a Windows VM, remove the **ssh-key-value** line and you'll be prompted for
+    # the password you want to configure for the VM.
+
+    az vm create \
+    --name $VmName \
+    --resource-group $RgName \
+    --image $OsImage \
+    --location $Location \
+    --size $VmSize \
+    --nics $Nic1Name $Nic2Name \
+    --admin-username $Username \
+    --ssh-key-value $SshKeyValue
     ```
 
-5. 对于每个 VM，创建两个数据磁盘，并以 `done` 命令结束循环。
+    除了创建具有两个 NIC 的 VM，该脚本还创建：
+    - 创建单个高级托管磁盘（默认情况下），但对于可以创建的磁盘类型，你可以有其他选择。 有关详细信息，请阅读[使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 一文。
+    - 一个包含两个子网和单个公共 IP 地址的虚拟网络。 或者，可以使用*现有*虚拟网络、子网、NIC 或公共 IP 地址资源。 若要了解如何使用现有网络资源，而不是创建其他资源，请输入 `az vm create -h`。
 
-    ```azurecli
-    azure vm disk attach-new --resource-group $backendRGName \
-        --vm-name $vmNamePrefix$suffixNumber \
-        --storage-account-name $prmStorageAccountName \
-        --storage-account-container-name vhds \
-        --vhd-name $dataDiskName$suffixNumber-1.vhd \
-        --size-in-gb $diskSize \
-        --lun 0
+## <a name="a-name--validateavalidate-vm-creation-and-nics"></a><a name = "validate"></a>验证 VM 创建和 NIC
 
-    azure vm disk attach-new --resource-group $backendRGName \
-        --vm-name $vmNamePrefix$suffixNumber \        
-        --storage-account-name $prmStorageAccountName \
-        --storage-account-container-name vhds \
-        --vhd-name $dataDiskName$suffixNumber-2.vhd \
-        --size-in-gb $diskSize \
-        --lun 1
-        done
-    ```
+1. 输入命令 `az resource list --resouce-group Multi-NIC-VM --output table`，查看由脚本创建的资源的列表。 返回的输出中应该有六个资源：两个 NIC、一个磁盘、一个公共 IP 地址、一个虚拟网络和一个虚拟机。
+2. 输入命令 `az network public-ip show --name PIP-WEB --resource-group Multi-NIC-VM --output table`。 在返回的输出中，记下 **IpAddress** 的值，并且 **PublicIpAllocationMethod** 的值是 *Static*。
+3. 在运行以下命令前，请删除 <>，将 *Username* 替换为用于脚本中 **Username** 变量的名称，并将 *ipAddress* 替换为上一步中的 **ipAddress**。 输入以下命令以连接到 VM：`ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`。 
+4. 连接到 VM 后，运行 `sudo ifconfig` 命令以查看 *eth0* 和 *eth1* 接口。 Azure DHCP 服务器已为每个 NIC 分配了脚本中指定的静态专用 IP 地址。 删除 VM 之前，分配给 NIC 的 IP 和 MAC 地址不会更改。 建议你不更改操作系统内的 IP 寻址，因为它可能会禁用与计算机的连接。 公共 IP 地址不会显示在操作系统中，因为它们是 Azure 基础结构转换到专用 IP 地址或从专用 IP 地址转换的网络地址。
 
-### <a name="step-4---run-the-script"></a>步骤 4 - 运行脚本
-现在，你已根据需要下载并更改了脚本，请运行该脚本以创建具有多个 NIC 的后端数据库 VM。
+## <a name="a-name-clean-uparemove-the-vm-and-associated-resources"></a><a name= "clean-up"></a>删除 VM 和关联的资源
 
-1. 保存该脚本并从 **Bash** 终端运行它。 将看到最初的输出，如下所示。
-   
-        info:    Executing command group create
-        info:    Getting resource group IaaSStory-Backend
-        info:    Creating resource group IaaSStory-Backend
-        info:    Created resource group IaaSStory-Backend
-        data:    Id:                  /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend
-        data:    Name:                IaaSStory-Backend
-        data:    Location:            westus
-        data:    Provisioning State:  Succeeded
-        data:    Tags: null
-        data:
-        info:    group create command OK
-        info:    Executing command storage account create
-        info:    Creating storage account
-        info:    storage account create command OK
-        info:    Executing command availset create
-        info:    Looking up the availability set "ASDB"
-        info:    Creating availability set "ASDB"
-        info:    availset create command OK
-        info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB1-DA"
-        info:    Creating network interface "NICDB1-DA"
-        info:    Looking up the network interface "NICDB1-DA"
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-DA
-        data:    Name                            : NICDB1-DA
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Private IP address            : 192.168.2.4
-        data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
-        data:
-        info:    network nic create command OK
-        info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB1-RA"
-        info:    Creating network interface "NICDB1-RA"
-        info:    Looking up the network interface "NICDB1-RA"
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-RA
-        data:    Name                            : NICDB1-RA
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    Network security group          : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/networkSecurityGroups/NSG-RemoteAccess
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Private IP address            : 192.168.2.54
-        data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
-        data:
-        info:    network nic create command OK
-        info:    Executing command vm create
-        info:    Looking up the VM "DB1"
-        info:    Using the VM Size "Standard_DS3"
-        info:    The [OS, Data] Disk or image configuration requires storage account
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    Looking up the availability set "ASDB"
-        info:    Found an Availability set "ASDB"
-        info:    Looking up the NIC "NICDB1-DA"
-        info:    Looking up the NIC "NICDB1-RA"
-        info:    Creating VM "DB1"
-2. 几分钟后，执行将结束，你将看到输出的其余部分，如下所示。
-   
-        info:    vm create command OK
-        info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB1"
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk1-1.vhd
-        info:    Updating VM "DB1"
-        info:    vm disk attach-new command OK
-        info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB1"
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk1-2.vhd
-        info:    Updating VM "DB1"
-        info:    vm disk attach-new command OK
-        info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB2-DA"
-        info:    Creating network interface "NICDB2-DA"
-        info:    Looking up the network interface "NICDB2-DA"
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-DA
-        data:    Name                            : NICDB2-DA
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Private IP address            : 192.168.2.5
-        data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
-        data:
-        info:    network nic create command OK
-        info:    Executing command network nic create
-        info:    Looking up the network interface "NICDB2-RA"
-        info:    Creating network interface "NICDB2-RA"
-        info:    Looking up the network interface "NICDB2-RA"
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-RA
-        data:    Name                            : NICDB2-RA
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    Network security group          : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/networkSecurityGroups/NSG-RemoteAccess
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Private IP address            : 192.168.2.55
-        data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
-        data:
-        info:    network nic create command OK
-        info:    Executing command vm create
-        info:    Looking up the VM "DB2"
-        info:    Using the VM Size "Standard_DS3"
-        info:    The [OS, Data] Disk or image configuration requires storage account
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    Looking up the availability set "ASDB"
-        info:    Found an Availability set "ASDB"
-        info:    Looking up the NIC "NICDB2-DA"
-        info:    Looking up the NIC "NICDB2-RA"
-        info:    Creating VM "DB2"
-        info:    vm create command OK
-        info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB2"
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-1.vhd
-        info:    Updating VM "DB2"
-        info:    vm disk attach-new command OK
-        info:    Executing command vm disk attach-new
-        info:    Looking up the VM "DB2"
-        info:    Looking up the storage account wtestvnetstorageprm
-        info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-2.vhd
-        info:    Updating VM "DB2"
-        info:    vm disk attach-new command OK
+如果你创建资源组只是为了完成本文中的步骤，则可以通过使用 `az group delete --name Multi-NIC-VM` 命令删除资源组来删除所有资源。
 
+>[!WARNING]
+>在删除资源组之前，请确认在资源组中除了本文中的脚本创建的资源外没有其他资源。 运行 `az resource list --resource-group Multi-NIC-VM` 命令以查看资源组中的资源。
 
+如果你不会在生产环境中使用 VM，建议你删除资源。 VM、公共 IP 地址和磁盘资源在预配后将产生费用。
 
+## <a name="next-steps"></a>后续步骤
 
-<!--HONumber=Nov16_HO3-->
-
-
+任何网络流量都可流入和流出本文中创建的 VM。 你可以在 NSG 中定义入站和出站规则，以限制可以流入和流出每个网络接口和/或每个子网的流量。 若要了解有关 NSG 的详细信息，请阅读 [NSG 概述](virtual-networks-nsg.md)一文。

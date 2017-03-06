@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 6f75781af24d1ad4cb6460f0dfd528684aaad57f
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 7a03e1417617453c43edcc3787da10d171359757
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -30,7 +31,7 @@ Microsoft Azure 跨平台命令行工具 0.10.5 版在发布时增加了新的�
 若要了解如何管理资源组，请参阅 [Use the Azure CLI to manage Azure resources and resource groups](../azure-resource-manager/xplat-cli-azure-resource-manager.md)（使用 Azure CLI 管理 Azure 资源和资源组）。 
 
 > [!NOTE] 
-> 还可试用 [Azure CLI 2.0（预览版）](https://github.com/Azure/azure-cli)，它是使用 Python 为资源管理部署模型编写的下一代 CLI。
+> 还可试用 [Azure CLI 2.0](https://github.com/Azure/azure-cli)，它是使用 Python 为资源管理部署模型编写的下一代 CLI。
 >
 >
 
@@ -178,9 +179,4 @@ Microsoft Azure 跨平台命令行工具 0.10.5 版在发布时增加了新的�
 * 若要了解 Azure Resource Manager CLI 支持，请参阅 [Use the Azure CLI to manage Azure resources and resource groups](../azure-resource-manager/xplat-cli-azure-resource-manager.md)（使用 Azure CLI 管理 Azure 资源和资源组）。
 * 若要了解如何使用 PowerShell 管理应用服务，请参阅 [Using Azure Resource Manager-Based PowerShell to Manage Azure Web Apps](app-service-web-app-azure-resource-manager-powershell.md)（使用基于 Azure Resource Manager 的 PowerShell 管理 Azure Web 应用）。
 * 若要了解 Linux Azure App Service，请参阅 [Linux 应用服务简介](app-service-linux-intro.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
