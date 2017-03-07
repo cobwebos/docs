@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 06/22/2015
 ms.author: rashimg
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 89618f7549d8589d5ac684772832748ab9765d1a
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c292772cb21c90bf4373803bfcaa47787c3980b5
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -174,7 +174,7 @@ SerDe 是用于分析嵌套 JSON 文档的最佳选择，它可让你定义 JSON
 
     add jar json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar;
 
-    ![Adding JAR to your project][image-hdi-hivejson-addjar]
+   ![将 JAR 添加到项目][image-hdi-hivejson-addjar]
 
 现在，你可以使用 SerDe 对 JSON 文档运行查询。
 
