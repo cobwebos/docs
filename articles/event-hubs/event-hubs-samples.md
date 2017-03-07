@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/01/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 5b02054546ebf25766be6bb2837aebc502b67a67
-ms.openlocfilehash: 9c50b7caefe06bceac8035a0d274e13a96547fea
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 32b57664fcf15daed75fe7050b672383e79c50cf
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -43,9 +44,9 @@ ms.openlocfilehash: 9c50b7caefe06bceac8035a0d274e13a96547fea
 
 ### <a name="receive-events"></a>接收事件 
 
-[使用事件处理器主机接收入门](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples/SampleEphReceiver)示例是一个使用[事件处理器主机](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)从事件中心接收消息的 .NET Core 控制台应用程序。 
+[使用事件处理器主机接收入门](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver)示例是一个使用[事件处理器主机](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)从事件中心接收消息的 .NET Core 控制台应用程序。 
 
-## <a name="net-framework"></a>.NET framework   
+## <a name="net-framework"></a>.NET framework    
 
 这些示例针对 [.NET Framework 库](https://msdn.microsoft.com/library/w0x726c2.aspx)演示 Azure 事件中心的各种其他功能。
  
@@ -81,8 +82,3 @@ ms.openlocfilehash: 9c50b7caefe06bceac8035a0d274e13a96547fea
 - [事件中心概述](event-hubs-what-is-event-hubs.md)
 - [创建事件中心](event-hubs-create.md)
 - [事件中心常见问题](event-hubs-faq.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5874e88fe70bef2b6b1bda666c2c69142e376d
-ms.openlocfilehash: 3fdc27c54ad52dfce42f6d039a8453cdfdce00ee
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 82d40c30c92f5da090e7ec4e2f25ead3908cc603
+ms.openlocfilehash: ea0598251e979094c5841c56c85f7297aaf3d21d
+ms.lasthandoff: 03/02/2017
 
 ---
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/01/2017
 
 此示例在 Bash shell 中正常工作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 中运行 Azure CLI](../virtual-machines-windows-cli-options.md)。
 
-## <a name="create-vm-sample"></a>创建 VM 示例
+## <a name="sample-script"></a>示例脚本
 
 [!code-azurecli[主要](../../../cli_scripts/virtual-machine/create-windows-iis-using-dsc/create-windows-iis-using-dsc.sh "快速创建 VM")]
 

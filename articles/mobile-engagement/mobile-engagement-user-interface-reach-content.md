@@ -4,7 +4,7 @@ description: "了解如何在 Azure Mobile Engagement 中管理不同类型的�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -237,10 +238,5 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

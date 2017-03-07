@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/08/2016
+ms.date: 02/22/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
-ms.openlocfilehash: 22e2e2ff15daa390a952b465f937e890169b95a8
+ms.sourcegitcommit: b80ee30379e9aac207cfe420cae17da57ea123a5
+ms.openlocfilehash: 9159f40fed17e52e6576efa1ea7e8a2dee98728e
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -339,7 +340,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 可以从 [GitHub 上的 Azure 快速入门模板库][azure-quickstart-templates]获取示例 Resource Manager 模板。 这些模板可用作群集模板的起点。
 
 ### <a name="create-the-resource-manager-template"></a>创建 Resource Manager 模板
-本指南使用 [5 节点安全群集][service-fabric-secure-cluster-5-node-1-nodetype-wad]示例模板和模板参数。 将 `azuredeploy.json` 和 `azuredeploy.parameters.json` 下载到计算机，在偏好的文本编辑器中打开这两个文件。
+本指南使用 [5 节点安全群集][service-fabric-secure-cluster-5-node-1-nodetype]示例模板和模板参数。 将 `azuredeploy.json` 和 `azuredeploy.parameters.json` 下载到计算机，在偏好的文本编辑器中打开这两个文件。
 
 ### <a name="add-certificates"></a>添加证书
 通过引用包含证书密钥的密钥保管库将证书添加到群集 Resource Manager 模板。 我们建议将密钥保管库值放在 Resource Manager 模板参数文件中。 以便可以重复使用 Resource Manager 模板文件，且无需特定于某个部署的值。
@@ -667,7 +668,7 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
 [sf-aad-ps-script-download]:http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
 [azure-quickstart-templates]: https://github.com/Azure/azure-quickstart-templates
-[service-fabric-secure-cluster-5-node-1-nodetype-wad]: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype-wad/
+[service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
 
@@ -679,9 +680,4 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

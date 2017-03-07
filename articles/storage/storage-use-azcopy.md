@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: a2d0f959bfcae54367512db1f63e22c866c35671
-ms.openlocfilehash: ca26ad38722560054aef1a153b9b95296d8bb021
+ms.sourcegitcommit: e1c4342897fe6cf57e323a82e04e10473b3ece30
+ms.openlocfilehash: 777b84d9aa59f773345c1925c3c6467dc64d2d34
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -308,23 +309,25 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfiles
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
 ```
+在跨文件共享复制某个文件时，将执行[服务器端复制](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作。
 
 ### <a name="copy-from-file-share-to-blob"></a>从文件共享复制到 blob
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
 ```
+将文件从文件共享复制到 Blob 时，将执行[服务器端复制](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作。
 
-请注意，不支持从文件存储到页 Blob 的异步复制。
 
 ### <a name="copy-from-blob-to-file-share"></a>从 blob 复制到文件共享
 
 ```azcopy
 AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
 ```
+将文件从 Blob 复制到文件共享时，将执行[服务器端复制](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作。
 
 ### <a name="synchronously-copy-files"></a>同步复制文件
-可以指定选项 `/SyncCopy`，以从文件存储到文件存储、从文件存储到 Blob 存储以及从 Blob 存储到文件存储同步复制数据，AzCopy 通过将源数据下载到本地内存并再将其上传到目标以实现此同步操作。
+可以指定选项 `/SyncCopy`，以从文件存储到文件存储、从文件存储到 Blob 存储以及从 Blob 存储到文件存储同步复制数据，AzCopy 通过将源数据下载到本地内存并再将其上传到目标以实现此同步操作。 将应用标准传出费用。
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
@@ -767,7 +770,7 @@ AzCopy 将使用此选项解释为在没有此选项 /L 的情况下，模拟运
 ### <a name="delimiterdelimiter"></a>/Delimiter:"delimiter"
 指示用于分隔 blob 名称中的虚拟目录的分隔符字符。
 
-默认情况下，AzCopy 使用 / 作为分隔符字符。 不过，AzCopy 支持使用任何常见字符（例如 @,、# 或 %）作为分隔符。 如果需要在命令行上包括这些特殊字符之一，请将文件名用双引号引起来。
+默认情况下，AzCopy 使用 / 作为分隔符字符。 不过，AzCopy 支持使用任何常见字符（例如 @、# 或 %）作为分隔符。 如果需要在命令行上包括这些特殊字符之一，请将文件名用双引号引起来。
 
 此选项仅适用于下载 blob。
 
@@ -904,10 +907,5 @@ AzCopy 旨在最大程度上利用计算机资源来加快数据传输，如果�
 * [AzCopy: Transfer data with re-startable mode and SAS token](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)（AzCopy：使用可重启的模式和 SAS 令牌传输数据）
 * [AzCopy: Using cross-account Copy Blob](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)（AzCopy：使用跨帐户复制 Blob）
 * [AzCopy: Uploading/downloading files for Azure Blobs](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)（AzCopy：为 Azure Blob 上传/下载文件）
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

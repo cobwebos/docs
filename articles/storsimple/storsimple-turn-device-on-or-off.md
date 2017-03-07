@@ -1,10 +1,10 @@
 ---
 title: "打开或关闭 StorSimple 设备 | Microsoft Docs"
-description: "介绍如何打开新的 StorSimple 设备、打开已关闭或断电的设备以及关闭正在运行的设备。"
+description: "介绍如何打开新 StorSimple 设备，打开已关闭或断电的设备，以及关闭正在运行的设备。"
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
@@ -12,17 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/23/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5943276236d239e8ee2eba302f52e9445203564d
+ms.sourcegitcommit: 6bfbb0b5eaae3fb3ce45d719ea1d3dec48ed0467
+ms.openlocfilehash: 359aaa1af6765270d9fe0f449007fcb4323b0ad4
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="turn-your-storsimple-device-on-or-off"></a>打开或关闭 StorSimple 设备
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>打开或关闭 StorSimple 8000 系列设备
 ## <a name="overview"></a>概述
-在正常的系统操作过程中，无需关闭 Microsoft Azure StorSimple 设备。 但是，你可能需要打开新设备或必需关闭的设备。 在必须更换故障的硬件、以物理方式移动设备或使设备暂停服务的情况下，通常需要关机。 本教程将介绍在不同情况下打开和关闭 StorSimple 设备所需的过程。
+在正常的系统操作过程中，无需关闭 Microsoft Azure StorSimple 设备。 但是，你可能需要打开新设备或不得已关闭了的设备。 在必须更换故障硬件，移动设备的物理位置或让设备暂停服务的情况下，通常需要关机。 本教程将介绍在不同情况下打开和关闭 StorSimple 设备所需的过程。
 
 下表列出了打开和关闭 StorSimple 设备的各种情况，并提供了相应过程的链接。
 
@@ -76,7 +78,7 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 关闭后，请使用以下过程打开配有主机箱但没有 EBOD 机箱的 StorSimple 设备。
 
 #### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>打开只有主机箱的新设备
-1. 请确保电源和冷却模块 (PCM) 上的电源开关处于 OFF（关）位置。 如果这两个模块的开关都未处于 OFF（关）位置，请将它们拨至 OFF（关）位置，并等待灯熄灭。
+1. 请确保电源和冷却模块 (PCM) 上的电源开关处于 OFF（关）位置。 如果这两个模块的开关不在 OFF（关）位置，请将其拨至 OFF（关）位置，并等待指示灯熄灭。
 2. 将两个 PCM 的电源开关切换到 ON（开）位置，即可打开设备。 现在，设备应打开。
 3. 检查以下项目，确认设备完全开启：
    
@@ -90,8 +92,8 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 关闭后，请使用以下过程打开配有主机箱和 EBOD 机箱的 StorSimple 设备。 请严格按照所述顺序执行每个步骤。 否则，可能会导致数据丢失。
 
 #### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>打开配有主机箱和 EBOD 机箱的设备
-1. 请确保 EBOD 机箱连接到主机箱。 有关详细信息，请参阅 [安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md)。
-2. 确保 EBOD 和主机箱上的电源和冷却模块 (PCM) 处于 OFF（关）位置。 如果这两个模块的开关都未处于 OFF（关）位置，请将它们拨至 OFF（关）位置，并等待灯熄灭。
+1. 请确保 EBOD 机箱连接到主机箱。 有关详细信息，请参阅[安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md)。
+2. 确保 EBOD 和主机箱上的电源和冷却模块 (PCM) 处于 OFF（关）位置。 如果这两个模块的开关不在 OFF（关）位置，请将其拨至 OFF（关）位置，并等待指示灯熄灭。
 3. 将两个 PCM 的电源开关切换到 ON（开）位置，即可打开 EBOD 机箱。 现在，PCM LED 应为绿色。 此装置上的绿色 EBOD 控制器 LED 指示 EBOD 机箱已打开。
 4. 将两个 PCM 的电源开关切换到 ON（开）位置，即可打开主机箱。 现在，整个系统应该打开。
 5. 确认 SAS LED 为绿色，这是为了确保 EBOD 机箱与主机箱之间的连接良好。
@@ -144,7 +146,7 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 7. 检查绿色 LED 是否亮起，确保 EBOD 机箱已打开。
 8. 打开主机箱。
 9. 检查控制器的绿色 LED 是否亮起，确保主机箱已打开。
-10. 检查 SAS 通道 LED（每个 EBOD 控制器有 4 个）是否全都亮起，以便确认主机箱与 EBOD 机箱的连接良好。
+10. 检查 SAS 通道 LED（每个 EBOD 控制器有&4; 个）是否全都亮起，以便确认主机箱与 EBOD 机箱的连接良好。
 
 > [!IMPORTANT]
 > 如果 SAS 电缆有缺陷或 EBOD 机箱与主机箱之间的连接不正确，当你打开系统时，它将进入恢复模式。 如果发生这种情况，请 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。
@@ -187,10 +189,5 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 
 ## <a name="next-steps"></a>后续步骤
 如果在打开或关闭 StorSimple 设备时遇到问题，请 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

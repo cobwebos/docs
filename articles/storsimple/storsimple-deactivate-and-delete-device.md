@@ -4,7 +4,7 @@ description: "介绍了如何使用该服务通过先停用再删除 StorSimple 
 services: storsimple
 documentationcenter: 
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 155cda38-c5ae-45dc-b7e8-6444494afc9e
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 02/27/2017
 ms.author: anbacker
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 014d4faeb478690168b44f88e7a0bda2b406cd4b
+ms.sourcegitcommit: 80fde4dfe7de89dffd39242d94fe46f68e41d611
+ms.openlocfilehash: 833dee54ef9de46c50e9e760594359baf4f89b5e
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deactivate-and-delete-a-storsimple-device"></a>停用和删除 StorSimple 设备
+# <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>通过 StorSimple Manager 服务停用和删除 StorSimple 8000 系列设备
 ## <a name="overview"></a>概述
 用户可能希望停用某个 StorSimple 设备（例如，用户需要更换或升级设备，或者不再使用 StorSimple）。 如果出现这种情况，则需先停用设备，然后将其删除。 停用服务器时，将会断开设备与相应 StorSimple Manager 服务之间的连接。 本教程介绍如何使用该服务通过先停用再删除 StorSimple 设备的方式来删除该设备。 
 
@@ -93,10 +95,5 @@ ms.openlocfilehash: 014d4faeb478690168b44f88e7a0bda2b406cd4b
 * 若要将已停用的设备还原为出厂默认设置，请转到[将设备重置为出厂默认设置](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)。
 * 如需技术帮助，请[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。
 * 若要了解有关如何使用 StorSimple Manager 服务的详细信息，请转到[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

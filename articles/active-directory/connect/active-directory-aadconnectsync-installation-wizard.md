@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: df5c0475245c6ad1f632b08e5fdbf64374893d67
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 902c6ae45e7809e2847c9e45a35803f40c0b0ff3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -38,8 +39,8 @@ ms.openlocfilehash: df5c0475245c6ad1f632b08e5fdbf64374893d67
 
 > [!IMPORTANT]
 > 当你打开安装向导时，同步引擎中的所有操作都会挂起。 请确保在完成配置更改后，立即关闭安装向导。
-> 
-> 
+>
+>
 
 ## <a name="view-current-configuration"></a>查看当前配置
 此选项可让你快速查看当前配置的选项。
@@ -81,7 +82,7 @@ ms.openlocfilehash: df5c0475245c6ad1f632b08e5fdbf64374893d67
 ## <a name="change-user-sign-in"></a>更改用户登录
 此选项可让你从密码同步更改为联盟，反之亦然。 但不能更改为“不配置”。
 
-有关此选项的详细信息，请参阅[用户登录](active-directory-aadconnect-user-signin.md#changing-user-sign-in-method)。
+有关此选项的详细信息，请参阅[用户登录](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method)。
 
 ## <a name="next-steps"></a>后续步骤
 * 在[了解声明性预配](active-directory-aadconnectsync-understanding-declarative-provisioning.md)中了解 Azure AD Connect 同步使用的配置模型。
@@ -90,10 +91,4 @@ ms.openlocfilehash: df5c0475245c6ad1f632b08e5fdbf64374893d67
 
 * [Azure AD Connect 同步：理解和自定义同步](active-directory-aadconnectsync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
