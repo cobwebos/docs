@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 1c4045bd9b705ab3e909a06035f27b85635fdf36
 ms.openlocfilehash: 3d83a919d8e7bc59bd51e226c56ff2bb42c87955
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -109,8 +110,8 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 
 > [!NOTE]
 > 你可能觉得 DIY 选项更适合你的部署用例。 欢迎各位[分享反馈](active-directory-ds-contact-us.md)，让我们了解哪些功能可在你们今后选择 Azure AD 域服务时提供帮助。 此外，这些反馈可帮助我们改进服务，使其更好地满足部署需求，适合具体的用例。
-> 
-> 
+>
+>
 
 我们已发布[在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](https://msdn.microsoft.com/library/azure/jj156090.aspx)，帮助客户完成 DIY 安装。
 
@@ -118,10 +119,4 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 * [功能 - Azure AD 域服务](active-directory-ds-features.md)
 * [部署方案 - Azure AD 域服务](active-directory-ds-scenarios.md)
 * [在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

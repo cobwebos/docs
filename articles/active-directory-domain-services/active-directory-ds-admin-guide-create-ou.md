@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 6e0da01df8ac5fd3cdb6b4e42dfbc08fab7d9615
 ms.openlocfilehash: 5931d532a0790f1570d1d99687611231aafc7596
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -40,27 +41,27 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
 
 > [!NOTE]
 > 只有“AAD DC 管理员”组的成员具有创建自定义 OU 的必要权限。 请确保以此组成员的用户身份执行以下步骤。
-> 
-> 
+>
+>
 
 1. 在“开始”屏幕中单击“管理工具”。 此时会看到在虚拟机上安装的 AD 管理工具。
-   
+
     ![在服务器上安装的管理工具](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 2. 单击“Active Directory 管理中心”。
-   
+
     ![Active Directory 管理中心](./media/active-directory-domain-services-admin-guide/adac-overview.png)
 3. 若要查看域，请单击左窗格中的域名（例如“contoso100.com”）。
-   
+
     ![ADAC - 查看域](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 4. 在右侧的“任务”窗格中，单击域名节点下的“新建”。 在本示例中，请在右侧的“任务”窗格中单击“contoso100(local)”节点下的“新建”。
-   
+
     ![ADAC - 新建 OU](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 5. 应会看到用于创建组织单位的选项。 单击“组织单位”启动“创建组织单位”对话框。
 6. 在“创建组织单位”对话框中，指定新 OU 的**名称**。 提供 OU 的简短说明。 还可以设置 OU 的“管理方”字段。 若要创建自定义 OU，请单击“确定”。
-   
+
     ![ADAC - 创建 OU 对话框](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
 7. 新建的 OU 应会出现在 AD 管理中心 (ADAC)。
-   
+
     ![ADAC - 已创建 OU](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
 ## <a name="permissionssecurity-for-newly-created-ous"></a>新建 OU 的权限/安全性
@@ -73,18 +74,12 @@ Azure AD 域服务托管域包含两个内置容器，分别称为“AADDC 计�
 
 > [!WARNING]
 > 在自定义 OU 下创建的用户帐户、组、服务帐户和计算机对象无法在 Azure AD 租户中使用。 换而言之，使用 Azure AD 图形 API 或 Azure AD UI 无法显示这些对象。 这些对象仅在 Azure AD 域服务托管域中可用。
-> 
-> 
+>
+>
 
 ## <a name="related-content"></a>相关内容
 * [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
 * [在托管域上配置组策略](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory 管理中心：入门](https://technet.microsoft.com/library/dd560651.aspx)
 * [服务帐户分步指南](https://technet.microsoft.com/library/dd548356.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

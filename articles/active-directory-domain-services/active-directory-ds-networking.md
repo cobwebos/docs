@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
 * **在使用 Azure Resource Manager 创建的虚拟网络中无法启用** Azure AD 域服务。
 * 可将基于 Resource Manager 的虚拟网络连接到启用 Azure AD 域服务的经典虚拟网络。 然后，便可以在基于 Resource Manager 的虚拟网络中使用 Azure AD 域服务。 有关详细信息，请参阅[网络连接](active-directory-ds-networking.md#network-connectivity)部分。
 * **区域虚拟网络**：如果打算使用现有的虚拟网络，请确保它是区域虚拟网络。
-  
+
   * 使用传统地缘组机制的虚拟网络不能与 Azure AD 域服务配合使用。
   * 若要使用 Azure AD 域服务，请[将传统虚拟网络迁移到区域虚拟网络](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
 
@@ -45,8 +46,8 @@ ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
 
 > [!WARNING]
 > 启用域服务之后，无法将其转移到其他虚拟网络。
-> 
-> 
+>
+>
 
 ## <a name="network-security-groups-and-subnet-design"></a>网络安全组和子网设计
 [网络安全组 (NSG)](../virtual-network/virtual-networks-nsg.md) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝虚拟网络中流向 VM 实例的网络流量。 NSG 可以与子网或该子网中的各个 VM 实例相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM 实例。 另外，可以通过将 NSG 直接关联到单个 VM，对流向该 VM 的流量进行进一步的限制。
@@ -61,8 +62,8 @@ ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
 
 > [!WARNING]
 > 将 NSG 与已启用 Azure AD 域服务的子网相关联时，可能会导致 Microsoft 无法维护和管理域。 此外，Azure AD 租户与托管域之间的同步会中断。 **如果在部署中应用的 NSG 会阻止 Azure AD 域服务更新和管理域，SLA 将不适用于此类部署。**
-> 
-> 
+>
+>
 
 ### <a name="ports-required-for-azure-ad-domain-services"></a>Azure AD 域服务所需的端口
 Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保在启用托管域的子网中未阻止这些端口。
@@ -92,14 +93,14 @@ Azure AD 域服务托管域只能在 Azure 上的单个经典虚拟网络中启�
 
 ### <a name="network-connection-options"></a>网络连接选项
 * **使用站点到站点 VPN 连接的 VNet 到 VNet 连接：**将虚拟网络连接到虚拟网络（VNet 到 VNet）类似于将虚拟网络连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。
-  
+
     ![使用 VPN 网关的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
-  
+
     [详细信息 - 使用 VPN 网关连接虚拟网络](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * **使用虚拟网络对等互连的 VNet 到 VNet 连接：**虚拟网络对等互连是通过 Azure 主干网络在同一区域连接两个虚拟网络的一种机制。 对等互连后，出于所有连接目的，两个虚拟网络会显示为一个。 这两个虚拟网络仍作为单独资源管理，但这些虚拟网络中的虚拟机可直接通过专用 IP 地址彼此通信。
-  
+
     ![使用对等互连的虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-peering.png)
-  
+
     [详细信息 - 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 
 <br>
@@ -108,10 +109,4 @@ Azure AD 域服务托管域只能在 Azure 上的单个经典虚拟网络中启�
 * [Azure 虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)
 * [为经典部署模型配置 VNet 到 VNet 连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure 网络安全组](../virtual-network/virtual-networks-nsg.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

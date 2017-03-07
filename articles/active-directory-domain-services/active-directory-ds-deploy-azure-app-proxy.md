@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 5121a810badcaa9c66a9f5d85bd83b9f522b9665
 ms.openlocfilehash: 449499ebed1b455af012ec97976d04604a320941
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -104,7 +105,7 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
 
 ### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器启用基于资源的 kerberos 约束委派
-应针对 kerberos 约束委派 (KCD) 配置 Azure 应用程序代理连接器，使其可以模拟托管域上的用户。 在 Azure AD 域服务托管域上，你没有域管理员权限。 因此，**无法在托管域上配置传统帐户级 KCD**。 
+应针对 kerberos 约束委派 (KCD) 配置 Azure 应用程序代理连接器，使其可以模拟托管域上的用户。 在 Azure AD 域服务托管域上，你没有域管理员权限。 因此，**无法在托管域上配置传统帐户级 KCD**。
 
 请使用基于资源的 KCD，如[此文](active-directory-ds-enable-kcd.md)中所述。
 
@@ -130,9 +131,4 @@ Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateTo
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [在托管域上配置 Kerberos 约束委派](active-directory-ds-enable-kcd.md)
 * [Kerberos 约束委派概述](https://technet.microsoft.com/library/jj553400.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

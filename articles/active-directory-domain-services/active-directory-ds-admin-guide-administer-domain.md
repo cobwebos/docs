@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -65,28 +66,28 @@ ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
 执行以下步骤，在已加入域的虚拟机上安装 Active Directory 管理工具。 有关[安装和使用远程服务器管理工具](https://technet.microsoft.com/library/hh831501.aspx)的详细信息，请参阅 Technet。
 
 1. 在 Azure 经典门户中导航到“虚拟机”节点。 选择在任务 1 中创建的虚拟机，然后单击窗口底部命令栏上的“连接”。
-   
+
     ![连接到 Windows 虚拟机](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 2. 经典门户将提示打开或保存用于连接虚拟机的、扩展名为“.rdp”的文件。 文件下载完成后，请单击打开该文件。
 3. 出现登录提示时，请使用属于“AAD DC 管理员”组的用户的凭据。 例如，我们在示例中使用 'bob@domainservicespreview.onmicrosoft.com'。
 4. 在“开始”屏幕中打开“服务器管理器”。 在“服务器管理器”窗口的中心窗格中单击“添加角色和功能”。
-   
+
     ![在虚拟机上启动服务器管理器](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
 5. 在“添加角色和功能向导”的“准备工作”页上，单击“下一步”。
-   
+
     ![“准备工作”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
 6. 在“安装类型”页上选中“基于角色或基于功能的安装”选项，然后单击“下一步”。
-   
+
     ![“安装类型”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
 7. 在“服务器选择”页上，从服务器池中选择当前的虚拟机，然后单击“下一步”。
-   
+
     ![“服务器选择”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
 8. 在“服务器角色”页上，单击“下一步”。 我们跳过此页是因为我们不在服务器上安装任何角色。
 9. 在“功能”页上，通过单击展开“远程服务器管理工具”节点，然后通过单击展开“角色管理工具”节点。 从角色管理工具列表中选择“AD DS 和 AD LDS 工具”功能。
-   
+
     ![“功能”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
 10. 在“确认”页上，单击“安装”在虚拟机上安装 AD 和 AD LDS 工具功能。 功能安装成功完成后，单击“关闭”退出“添加角色和功能”向导。
-    
+
     ![“确认”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>任务 3 - 连接到托管域并对其进行浏览
@@ -94,23 +95,23 @@ ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
 
 > [!NOTE]
 > 必须是“AAD DC 管理员”组的成员才能管理托管域。
-> 
-> 
+>
+>
 
 1. 在“开始”屏幕中单击“管理工具”。 此时会看到在虚拟机上安装的 AD 管理工具。
-   
+
     ![在服务器上安装的管理工具](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 2. 单击“Active Directory 管理中心”。
-   
+
     ![Active Directory 管理中心](./media/active-directory-domain-services-admin-guide/adac-overview.png)
 3. 若要浏览域，请单击左窗格中的域名（例如“contoso100.com”）。 请注意两个容器，其名称分别为“AADDC 计算机”和“AADDC 用户”。
-   
+
     ![ADAC - 查看域](./media/active-directory-domain-services-admin-guide/adac-domain-view.png)
 4. 单击名为“AADDC 用户”的容器，查看属于托管域的所有用户和组。 你会看到来自 Azure AD 租户的用户帐户和组显示在此容器中。 请注意在此示例中，此容器中会出现名为“bob”的用户的用户帐户，以及名为“AAD DC 管理员”的组。
-   
+
     ![ADAC - 域用户](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
 5. 单击名为“AADDC 计算机”的容器，查看已加入此托管域的计算机。 此时会显示已加入域的当前虚拟机的项。 已加入 Azure AD 域服务托管域的所有计算机的计算机帐户存储在“AADDC 计算机”这个容器中。
-   
+
     ![ADAC - 已加入域的计算机](./media/active-directory-domain-services-admin-guide/adac-aaddc-computers.png)
 
 <br>
@@ -119,10 +120,4 @@ ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [将 Windows Server 虚拟机加入 Azure AD 域服务托管域](active-directory-ds-admin-guide-join-windows-vm.md)
 * [部署远程服务器管理工具](https://technet.microsoft.com/library/hh831501.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

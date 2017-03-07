@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
 ms.openlocfilehash: 34f84de82cbd6c15bd62abedd05e0eff6ce2dc2f
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -39,9 +40,4 @@ ms.openlocfilehash: 34f84de82cbd6c15bd62abedd05e0eff6ce2dc2f
 * **可在多个 Azure 区域中使用：**请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)页，了解已推出 Azure AD 域服务的 Azure 区域。
 * **高可用性：**Azure AD 域服务可为域提供高可用性。 此功能可以保证增大服务运行时间，提高弹性应对故障的能力。 内置的运行状况监视功能可以在发生故障时自动补救，因为它可以启动新的实例来取代有故障的实例，持续为域提供服务。
 * **使用熟悉的管理工具：**可以使用 Active Directory 管理中心或 PowerShell 的 Active Directory 等熟悉的 Windows Server Active Directory 管理工具来管理托管域。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

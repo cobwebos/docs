@@ -1,4 +1,3 @@
-
 ---
 title: "Data Lake Store 中的访问控制概述 | Microsoft 文档"
 description: "了解 Azure Data Lake Store 中访问控制的工作原理"
@@ -13,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/02/2016
+ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 756d51e41c43be2e80f8fce1c3965e1723f7cec8
 ms.openlocfilehash: 7cd0c60b3eaaf6c2fd702d4e4b580299cb71c5fc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -339,9 +339,4 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 ## <a name="see-also"></a>另请参阅
 
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

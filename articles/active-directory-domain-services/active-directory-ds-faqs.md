@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 5e6bab265b2b6eabd1a878492588c4eb39d1b332
 ms.openlocfilehash: 89dfabb8feafffee2ed8143c372b53d02033d582
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -79,9 +80,4 @@ Azure 免费试用版中包含此服务。 可以注册 [Azure 一个月免费�
 
 #### <a name="what-azure-regions-is-the-service-available-in"></a>哪些 Azure 区域提供此服务？
 请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)页，获取提供 Azure AD 域服务的 Azure 区域列表。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

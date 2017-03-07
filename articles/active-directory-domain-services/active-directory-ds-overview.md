@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: c70e80c413d0637f956c43686df29b8073daaa3b
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -61,8 +62,8 @@ Litware Corporation 已部署 [Azure AD Connect](../active-directory/active-dire
 
 > [!NOTE]
 > **混合型组织必须通过密码同步使用 Azure AD 域服务**。 这是因为在 Azure AD 域服务提供的托管域中，需要使用用户的凭据才能通过 NTLM 或 Kerberos 身份验证方法来验证这些用户的身份。
-> 
-> 
+>
+>
 
 ![Litware Corporation 的 Azure AD 域服务](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
 
@@ -82,10 +83,4 @@ Azure AD 域服务预配的托管域的几个重要方面如下所述：
 * **集成** - Azure AD 域服务与 Azure AD 租户深度集成。 可以使用 Azure AD 作为基于云的集成式企业目录，同时迎合现代应用程序和传统的目录感知应用程序的需求。
 * **兼容** - Azure AD 域服务建立在 Windows Server Active Directory 的经过证实的企业级基础结构之上。 因此，与 Windows Server Active Directory 功能的更高程度的兼容可为应用程序提供保障。 并非 Windows Server AD 中的所有功能目前都可在 Azure AD 域服务中使用。 但是，可用的功能与本地基础结构中依赖的相应 Windows Server AD 功能兼容。 LDAP、Kerberos、NTLM、组策略和域加入功能构成了一款成熟的产品，并且已在各种 Windows Server 版本经过测试和优化。
 * **经济高效** – 使用 Azure AD 域服务免除了管理标识基础结构、为传统的目录感知应用程序提供支持所带来的基础结构和管理负担。 可以将这些应用程序转移到 Azure 基础结构服务，受益于运营开支的大幅节减。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 
