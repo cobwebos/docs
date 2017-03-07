@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
 ms.openlocfilehash: 3d78af41bbe13bcec9336452110a857d114ad006
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -162,9 +163,4 @@ ms.openlocfilehash: 3d78af41bbe13bcec9336452110a857d114ad006
 [policies-edit]: ./media/api-management-howto-policies/api-management-policies-edit.png
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

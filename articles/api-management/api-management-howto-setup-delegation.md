@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
 ms.openlocfilehash: 0be893406c6a20193b10b728fff2cec06f562069
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -179,9 +180,4 @@ var signature = digest.toString('base64');
 [示例代码在下面提供]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
