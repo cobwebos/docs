@@ -15,20 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9d20050dada974c0c2a54399e2db7b9a289f7e89
-ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4531aeb00cff7eee12ab0ab9c7466446fc50d5b1
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
+# <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据
+
 了解如何在基于 Linux 的 HDInsight 上使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库中。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Deprecation on Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)（HDInsight 在 Windows 上即将弃用）。
 
 ### <a name="prerequisites"></a>先决条件
-在开始阅读本教程前，你必须具有：
 
 * **一个 HDInsight 群集**。 有关创建新的基于 Linux 的 HDInsight 群集的步骤，请参阅[在 Linux 上的 HDInsight 中开始将 Hadoop 与 Hive 配合使用](hdinsight-hadoop-linux-tutorial-get-started.md)。
 
@@ -78,9 +79,9 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     unzip FILENAME.zip
     ```
    
-    此操作会提取大小约为 60MB 的 .csv 文件。
+    此命令会提取大小约为 60 MB 的 .csv 文件。
 
-4. 使用以下命令在 WASB（由 HDInsight 使用的分布式数据存储）上创建一个新目录并复制该文件：
+4. 使用以下命令在 HDInsight 存储上创建目录，然后将文件复制到该目录：
    
     ```
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -88,15 +89,16 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     ```
 
 ## <a name="create-and-run-the-hiveql"></a>创建并运行 HiveQL
+
 使用以下步骤将 CSV 文件中的数据导入到名为 **Delays** 的 Hive 表中。
 
-1. 使用以下项创建名为 **flightdelays.hql** 的新文件并编辑它：
+1. 使用以下命令创建名为 **flightdelays.hql** 的新文件并编辑它：
    
     ```
     nano flightdelays.hql
     ```
    
-    使用以下项作为此文件的内容：
+    将以下文本用作此文件的内容：
    
     ```hiveql
     DROP TABLE delays_raw;
@@ -175,7 +177,7 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
     ```
 
-5. 当你收到 `jdbc:hive2://localhost:10001/>` 提示时，请使用以下命令从导入的航班延误数据中检索数据。
+5. 收到 `jdbc:hive2://localhost:10001/>` 提示时，请使用以下查询从导入的航班延误数据中检索数据。
    
     ```hiveql
     INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
@@ -187,20 +189,20 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     GROUP BY origin_city_name;
     ```
    
-    这会检索遇到天气延迟的城市的列表，以及平均延迟时间并将其保存到 `/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库中。
+    此查询会检索遇到天气延迟的城市的列表，以及平均延迟时间并将其保存到 `/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库中。
 
 6. 若要退出 Beeline，请在提示符处输入 `!quit`。
 
 ## <a name="create-a-sql-database"></a>创建 SQL 数据库
 
-如果已具备 SQL 数据库，则必须获取服务器名称。 可通过选择“SQL 数据库”在 [Azure 门户](https://portal.azure.com)中找到该名称，然后筛选要使用的数据库的名称。 服务器名称在“SERVER”列中列出。
+如果已具备 SQL 数据库，则必须获取服务器名称。 可通过选择“SQL 数据库”在 [Azure 门户](https://portal.azure.com)中找到服务器名称，然后筛选要使用的数据库的名称。 服务器名称在“SERVER”列中列出。
 
 如果还没有 SQL 数据库，请使用 [SQL 数据库教程：几分钟内即可创建 SQL 数据库](../sql-database/sql-database-get-started.md)中的信息创建一个。 需要保存数据库所使用的服务器名称。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
 > [!NOTE]
-> 有多种方法可连接到 SQL 数据库以创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](http://www.freetds.org/)。
+> 有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](http://www.freetds.org/)。
 
 
 1. 使用 SSH 连接到基于 Linux 的 HDInsight 群集，并从 SSH 会话运行以下步骤。
@@ -217,7 +219,7 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
    
-    将收到类似于下面的输出：
+    将收到类似于以下文本的输出：
    
     ```
     locale is "en_US.UTF-8"
@@ -238,7 +240,7 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     GO
     ```
    
-    输入 `GO` 语句后，将评估前面的语句。 这会创建一个名为 **delays** 且具有聚集索引（SQL 数据库所必需）的新表。
+    输入 `GO` 语句后，将评估前面的语句。 这会创建一个名为 **delays** 且具有聚集索引的表。
    
     使用以下命令验证是否已创建该表：
    
@@ -264,7 +266,7 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
     ```
    
-    此时会返回数据库列表，其中包括你此前创建的 delays 表所在的数据库。
+    此命令会返回数据库列表，其中包括此前创建的 delays 表所在的数据库。
 
 2. 使用以下命令将 hivesampletable 中的数据导出到 mobiledata 表：
    
@@ -272,7 +274,7 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
    
-    此命令会指示 Sqoop 连接到 SQL 数据库中包含 delays 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录（先前存储 hive 查询输出的位置）导出到 delays 表。
+    Sqoop 连接到包含 delays 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录导出到 delays 表。
 
 3. 该命令完成后，使用以下命令通过 TSQL 连接到数据库：
    
@@ -291,9 +293,8 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
 
 ## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a>后续步骤
 
-现在你已了解如何执行以下操作：将文件上载到 Azure Blob 存储、使用 Azure Blob 存储中的数据填充 Hive 表、运行 Hive 查询以及使用 Sqoop 将数据从 HDFS 导出到 Azure SQL 数据库。 若要了解更多信息，请参阅下列文章：
+若要详细了解如何通过各种方式使用 HDInsight 中的数据，请参阅以下文档：
 
-* [HDInsight 入门][hdinsight-get-started]
 * [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
 * [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]
 * [将 Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]
@@ -325,10 +326,5 @@ ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

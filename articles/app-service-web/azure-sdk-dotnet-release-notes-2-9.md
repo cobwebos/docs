@@ -14,8 +14,9 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: b0bbde6828ed556eef8063a56a35b325fee1865c
-ms.openlocfilehash: 4ba7d6c43a5e0893366669e7511d8e1cfe149b81
+ms.sourcegitcommit: 71c5a4f1b816fdcfe7ef267c20e6ed42e6cc51e6
+ms.openlocfilehash: 3c3fb275a7c980f71a3a30e6875b9515321bad99
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -42,6 +43,10 @@ ms.openlocfilehash: 4ba7d6c43a5e0893366669e7511d8e1cfe149b81
 ### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016 虚拟机
 
 - Visual Studio 现在支持将云服务部署到操作系统系列 5 (Windows Server 2016) 虚拟机。 对于现有云服务，可更改设置以面向新的 OS 系列。 创建新的云服务时，如果选择创建使用 .NET 4.6 或更高版本的服务，则该服务将默认使用 OS 系列 5。  有关详细信息，可查看[来宾 OS 系列支持表](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/)。
+
+#### <a name="known-issues"></a>已知问题
+
+- Azure .NET SDK 2.9.6 引入了一个限制，阻止用户使用不受支持的 .NET 框架（例如 .NET 4.6）将项目部署到任何 OS 系列 (< 5)。 [此处](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)通过了一个解决方法。
 
  
 ### <a name="azure-in-role-cache"></a>Azure 角色中缓存 
@@ -86,10 +91,5 @@ ms.openlocfilehash: 4ba7d6c43a5e0893366669e7511d8e1cfe149b81
 
 ## <a name="see-also"></a>另请参阅
 [Azure SDK 2.9 通告文章](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 45de2422e79215ecfbacf5bd15712eb780c49016
-ms.openlocfilehash: c0a99dadc1d588942ade14267bd45eff09080315
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: b28eec9a01c45468e0cc323514d9c2e91ec88bf5
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: c0a99dadc1d588942ade14267bd45eff09080315
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure CLI 2.0（预览版）：有关详细信息，请参阅[安装和配置 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)。
+* Azure CLI 2.0：有关详细信息，请参阅[安装和配置 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)。
 
 * Azure PowerShell：有关详细信息，请参阅[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
@@ -363,10 +364,5 @@ __所有其他区域__:
 * [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](hdinsight-use-sqoop-mac-linux.md) - 提供有关使用 Sqoop 通过虚拟网络传输 SQL Server 数据的信息。
 
 若要了解有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

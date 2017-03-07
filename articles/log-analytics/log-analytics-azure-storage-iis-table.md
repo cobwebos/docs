@@ -1,5 +1,5 @@
 ---
-title: "使用适用于 IIS 的 blob 存储和适用于事件的表存储 | Microsoft Docs"
+title: "在 Azure Log Analytics 中使用适用于 IIS 的 blob 存储和适用于事件的表存储 | Microsoft 文档"
 description: "Log Analytics 可以读取将诊断写入到表存储或将 IIS 日志写入到 Blob 存储的 Azure 服务的日志。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 79f5bad314b230df27c73fb7e60e173778c96865
-ms.openlocfilehash: da31e1ceebfecf766828fa761b01f4e346cd13aa
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: b40d7c0acd8cc6a672f25489b745561c24501482
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="using-blob-storage-for-iis-and-table-storage-for-events"></a>使用适用于 IIS 的 Blob 存储和适用于事件的表存储
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用
+
 Log Analytics 可以读取将诊断写入到表存储或将 IIS 日志写入到 Blob 存储的以下服务的日志：
 
 * Service Fabric 群集（预览版）
@@ -37,7 +40,7 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 
 | 日志类型 | 资源类型 | 位置 |
 | --- | --- | --- |
-| IIS 日志 |虚拟机 <br> Web 角色 <br> 辅助角色 |wad-iis-logfiles （Blob 存储） |
+| IIS 日志 |虚拟机 <br> Web 角色 <br> 辅助角色 |wad-iis-logfiles（Blob 存储） |
 | Syslog |虚拟机 |LinuxsyslogVer2v0（表存储） |
 | Service Fabric 操作事件 |Service Fabric 节点 |WADServiceFabricSystemEventTable |
 | Service Fabric Reliable Actor 事件 |Service Fabric 节点 |WADServiceFabricReliableActorEventTable |
@@ -193,9 +196,4 @@ Azure 诊断是可让你从 Azure 中运行的辅助角色、Web 角色或虚拟
 * 针对支持的 Azure 服务[收集 Azure 服务的日志和指标](log-analytics-azure-storage.md)。
 * [启用解决方案](log-analytics-add-solutions.md)深入分析数据。
 * [使用搜索查询](log-analytics-log-searches.md)分析数据。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

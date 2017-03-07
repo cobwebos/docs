@@ -1,6 +1,6 @@
 ---
-title: "创建 SharePoint 服务器场 | Microsoft Docs"
-description: "在 Azure 中快速创建新的 SharePoint 2013 或 SharePoint 2016 场。"
+title: "在 Azure 中创建 SharePoint 服务器场 | Microsoft 文档"
+description: "使用 Azure 门户应用商店在 Azure 中快速创建新的 SharePoint 2013 或 SharePoint 2016 场。"
 services: virtual-machines-windows
 documentationcenter: 
 author: JoeDavies-MSFT
@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2016
 ms.author: josephd
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: 7c0746840dd45229dac491b03925349e6d9a44de
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: b668e32bf00ec32c7ffa77594bd1fb07440cf1ac
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-sharepoint-server-farms"></a>创建 SharePoint 服务器场
+# <a name="create-sharepoint-server-farms-using-the-azure-portal-marketplace"></a>使用 Azure 门户应用商店创建 SharePoint 服务器场
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -33,7 +35,7 @@ ms.openlocfilehash: 7c0746840dd45229dac491b03925349e6d9a44de
 >
 >
 
-基本 SharePoint 场在此配置中包括 3 个虚拟机。
+基本 SharePoint 场在此配置中包括&3; 个虚拟机。
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/Non-HAFarm.png)
 
@@ -46,7 +48,7 @@ ms.openlocfilehash: 7c0746840dd45229dac491b03925349e6d9a44de
 3. 在“SharePoint 2013 非 HA 场”窗格中，单击“创建”。
 4. 在“创建 SharePoint 2013 非 HA 场”窗格的步骤中指定设置，然后单击“创建”。
 
-高可用性 SharePoint 场在此配置中包括 9 个虚拟机。
+高可用性 SharePoint 场在此配置中包括&9; 个虚拟机。
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/HAFarm.png)
 
@@ -83,9 +85,4 @@ Azure 门户可以在具有面向 Internet 的网络影响力、仅限云的虚�
 
 ## <a name="next-steps"></a>后续步骤
 * 发现 Azure 基础结构服务中的其他 [SharePoint 配置](https://technet.microsoft.com/library/dn635309.aspx)。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

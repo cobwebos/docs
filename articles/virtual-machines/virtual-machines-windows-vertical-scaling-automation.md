@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2016
 ms.author: kasing
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 915320ed4a7d9e86a7a9b29dff5c0addfb95f4c0
+ms.sourcegitcommit: 0a888f945a39a8bb88a730a226af6ec21d133f44
+ms.openlocfilehash: 0075160ea9c0dae991fc2344c46d216a8203bec3
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="vertically-scale-azure-virtual-machines-with-azure-automation"></a>使用 Azure 自动化垂直缩放 Azure 虚拟机
+# <a name="how-to-vertically-scale-virtual-machines-with-azure-automation"></a>如何使用 Azure 自动化垂直缩放虚拟机
 垂直缩放是增加或减少计算机的资源以响应工作负荷的过程。 在 Azure 中，这可以通过更改虚拟机的大小来实现。 这种做法可为以下方案提供方便
 
 * 如果你不经常使用某个虚拟机，可以缩小其大小，以降低每月成本
@@ -89,10 +91,5 @@ ms.openlocfilehash: 915320ed4a7d9e86a7a9b29dff5c0addfb95f4c0
 ![将警报添加到虚拟机 1](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
 
 ![将警报添加到虚拟机 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

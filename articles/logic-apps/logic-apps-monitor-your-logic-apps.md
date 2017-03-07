@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中监视逻辑应用 | Microsoft Docs"
-description: "如何查看逻辑应用进行的操作"
+title: "启用日志记录和警报、检查运行历史记录、跟踪输入和输出 - Azure 逻辑应用 | Microsoft 文档"
+description: "通过记录、跟踪、和查看历史记录和诊断，监视逻辑应用工作流的状态"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: db3684fc5cc4ae7933454a02d8440d1eb4948828
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: d6840be7afc05d8d563215e370c59cf41a206e4f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="monitor-your-logic-apps"></a>监视逻辑应用
+# <a name="check-the-performance-and-start-diagnostic-logging-and-alerts-of-your-workflows-in-logic-apps"></a>在逻辑应用中检查性能并启动对工作流的日志记录和警报
 [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)之后，可以在 Azure 门户中查看其执行的完整历史记录。  还可以设置服务（如 Azure 诊断和 Azure 警报）以实时监视事件，以及针对“一小时内运行失败次数超过 5 次”的事件发出警报。
 
 ## <a name="monitor-in-the-azure-portal"></a>在 Azure 门户中进行监视
@@ -137,10 +139,5 @@ ms.openlocfilehash: db3684fc5cc4ae7933454a02d8440d1eb4948828
 * [逻辑应用的常见示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [创建逻辑应用部署模板](../logic-apps/logic-apps-create-deploy-template.md)
 * [企业集成功能](../logic-apps/logic-apps-enterprise-integration-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

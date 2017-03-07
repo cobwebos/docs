@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5a46b53f42fce7577485517e9d345cf2ad3f0926
-ms.openlocfilehash: d4d0a221d531c4f6eda7bb6410fbc4dcebf5074b
+ms.sourcegitcommit: 58e8474a9cafdad06c2968a7317e0c30474b5069
+ms.openlocfilehash: 5021a0aa554978fbb5543024400986715227de0b
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="about-h-series-and-compute-intensive-a-series-vms"></a>关于 H 系列和计算密集型 A 系列 VM
+# <a name="about-h-series-and-compute-intensive-a-series-vms-for-windows"></a>关于适用于 Windows 的 H 系列和计算密集型 A 系列 VM
 本文提供有关使用较新的 Azure H 系列和较早的 A8、A9、A10 和 A11 实例（也称为*计算密集型*实例）的背景信息和一些注意事项。 本文重点介绍如何对 Windows VM 使用这些实例。 本文同样适用于 [Linux VM](virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 有关基本规范、存储容量和磁盘详细信息，请参阅[虚拟机的大小](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
@@ -63,10 +65,5 @@ ms.openlocfilehash: d4d0a221d531c4f6eda7bb6410fbc4dcebf5074b
 * 有关 VM 存储容量和磁盘详细信息，请参阅 [Sizes for virtual machines](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（虚拟机大小）。
 * 若要开始在 Windows 上通过 HPC Pack 部署和使用计算密集型实例，请参阅[使用 HPC Pack 设置一个用于运行 MPI 应用程序的 Windows RDMA 群集](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 * 有关使用计算密集型实例在 Azure Batch 中运行 MPI 应用程序的信息，请参阅[在 Azure Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序](../batch/batch-mpi.md)。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics 警报 REST API"
-description: "Log Analytics 警报 REST API 允许在 Operations Management Suite (OMS) 中创建和管理警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。"
+title: "使用 OMS Log Analytics 警报 REST API"
+description: "Log Analytics 警报 REST API 允许用户在属于 Operations Management Suite (OMS) 一部分的 Log Analytics 中创建和管理警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
+ms.date: 02/27/2017
 ms.author: bwren
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 53a7be4d213f3f4c6d01b95355543fc9cd55717f
+ms.sourcegitcommit: db3a68e532775728099854a46d1ad0841e38b4a8
+ms.openlocfilehash: 3161a05a051ba741cf76e149f7b5e5a4324be0a4
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="log-analytics-alert-rest-api"></a>Log Analytics 警报 REST API
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则
 Log Analytics 警报 REST API 允许在 Operations Management Suite (OMS) 中创建和管理警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。
 
 Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager REST API 访问。 在本文档中你会看到使用 [ARMClient](https://github.com/projectkudu/ARMClient)（可简化 Azure Resource Manager API 调用的开放源命令行工具）从 PowerShell 命令行访问 API 的示例。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 使用这些工具可以利用 RESTful Azure Resource Manager API 对 OMS 工作区进行调用并执行它们所包含的搜索命令。 API 将以 JSON 格式输出搜索结果，从而允许你以编程方式使用许多不同的方法来搜索结果。
@@ -242,17 +244,18 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure Resource Manager RES
 下面是创建新电子邮件警报的完整示例。  这将创建一个新计划以及包含阈值和电子邮件的操作。
 
     $subscriptionId = "3d56705e-5b26-5bcc-9368-dbc8d2fafbfc"
+    $resourceGroup  = "MyResourceGroup"    
     $workspaceId    = "MyWorkspace"
-    $searchId       = "51cf0bd9-5c74-6bcb-927e-d1e9080b934e"
+    $searchId       = "MySearch"
+    $scheduleId     = "MySchedule"
+    $thresholdId    = "MyThreshold"
+    $actionId       = "MyEmailAction"
 
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' }"
-    armclient put /subscriptions/$subscriptionId/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/$workspaceId/savedSearches/$searchId/schedules/myschedule?api-version=2015-03-20 $scheduleJson
-
-    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
-    armclient put /subscriptions/$subscriptionId/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/$workspaceId/savedSearches/$searchId/schedules/myschedule/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+    armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceId/savedSearches/$searchId/schedules/$scheduleId/?api-version=2015-03-20 $scheduleJson
 
     $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
-    armclient put /subscriptions/$subscriptionId/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/$workspaceId/savedSearches/$searchId/schedules/myschedule/actions/myemailaction?api-version=2015-03-20 $emailJson
+    armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceId/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
 
 ### <a name="webhook-actions"></a>Webhook 操作
 Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进程。  Webhook 操作与修正操作类似，不同之处在于它们是用于 Webhook，可能调用 Azure 自动化 Runbook 之外的进程。  此外，它们还提供其他选项来提供要发送到远程进程的负载。
@@ -314,10 +317,5 @@ Webhook 操作具有下表中的属性。
 
 ## <a name="next-steps"></a>后续步骤
 * 在 Log Analytics 中使用 [REST API 执行日志搜索](log-analytics-log-search-api.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

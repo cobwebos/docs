@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 91eb30aaa1ab3891d8e97d48a9a0fe9fa9b2b82b
-ms.openlocfilehash: 3130104427b2a1873690617c6d726375c89876cf
+ms.sourcegitcommit: 2aa32d692da81dc34fafbc9cb6ea72a806f31e5c
+ms.openlocfilehash: a4068c70a01f80086ff3fb55f8e101c7dce95dea
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -79,8 +80,8 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 | 发送方 | 在接收设置中配置的来宾合作伙伴，或在 AS2 协议的发送设置中配置的主机合作伙伴。 |
 | 接收方 | 在接收设置中配置的主机合作伙伴，或在 AS2 协议的发送设置中配置的来宾合作伙伴。 |
 | 逻辑应用 | 其中配置了 AS2 操作的逻辑应用。 |
-| 状态 | AS2 消息状态。 成功 = 已接收或已发送正常的 AS2 消息，未配置 MDN；成功 = 已接收或已发送正常的 AS2 消息，已配置并已接收 MDN 或已发送 MDN；失败 = 已接收错误的 AS2 消息，未配置 MDN；挂起 = 已接收或已发送正常的 AS2 消息，已配置 MDN，预期会收到功能确认。 |
-| Ack | MDN 消息状态。 |
+| 状态 | AS2 消息状态 <br>成功 = 接收或发送了正确的 AS2 消息，未配置 MDN <br>成功 = 接收或发送了正确的 AS2 消息，MDN 已配置和接收，或者 MDN 已发送 <br>失败 = 接收了错误的 AS2 消息，未配置 MDN <br>挂起 = 接收或发送了正确的 AS2 消息，MDN 已配置，预计可以进行功能确认 |
+| Ack | MDN 消息状态 <br>已接受 = 接收或发送了正面的 MDN <br>挂起 = 等待接收或发送 MDN <br>已拒绝 = 接收或发送了负面的 MDN <br>不需要 = 协议中未配置 MDN |
 | Direction | AS2 消息传送方向。 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID。 |
 | 消息 ID |  AS2 消息 ID，来自 AS2 消息的标头。 |
@@ -93,8 +94,8 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 | 发送方 | 在接收设置中配置的来宾合作伙伴，或在 AS2 协议的发送设置中配置的主机合作伙伴。 |
 | 接收方 | 在接收设置中配置的主机合作伙伴，或在 AS2 协议的发送设置中配置的来宾合作伙伴。 |
 | 逻辑应用 | 其中配置了 AS2 操作的逻辑应用。 |
-| 状态 | X12 消息状态。 成功 = 已接收或已发送正常的 X12 消息，未配置功能确认；成功 = 已接收或已发送正常的 X12 消息，已配置并已接收功能确认或已发送功能确认；失败 = 已接收或已发送错误的 X12 消息；挂起 = 已接收或已发送正常的 X12 消息，已配置功能确认，预期会收到功能确认。 |
-| Ack | 功能确认 (997) 状态。  已接受 = 已接收或已发送肯定的功能确认；已拒绝 = 已接收或已发送否定的功能确认；挂起 = 预期会收到功能确认，但未收到；挂起 = 生成了功能确认，但无法将它发送给合作伙伴。 |
+| 状态 | X12 消息状态 <br>成功 = 接收或发送了正确的 X12 消息，未配置功能确认 <br>成功 = 接收或发送了正确的 X12 消息，已配置和接收功能确认，或者已发送功能确认 <br>失败 = 接收或发送了错误的 X12 消息 <br>挂起 = 接收或发送了正确的 X12 消息，已配置功能确认，预计可以进行功能确认。 |
+| Ack | 功能确认 (997) 状态 <br>已接受 = 接收或发送了正面的功能确认 <br>已拒绝 = 接收或发送了负面的功能确认 <br>挂起 = 预计会有功能确认，但未收到 <br>挂起 = 生成了功能确认，但无法将其发送给合作伙伴 <br>不需要 = 未配置功能确认 |
 | Direction | X12 消息传送方向。 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID。 |
 | 消息类型 |  EDI X12 消息类型。 |
@@ -130,9 +131,4 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 [AS2 跟踪架构](logic-apps-track-integration-account-as2-tracking-schemas.md "Learn about AS2 Tracking Schema")    
 [X12 跟踪架构](logic-apps-track-integration-account-x12-tracking-schema.md "Learn about X12 Tracking Schema")  
 [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

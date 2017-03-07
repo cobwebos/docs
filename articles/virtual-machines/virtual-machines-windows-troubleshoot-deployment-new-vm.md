@@ -1,5 +1,5 @@
 ---
-title: "排查 Windows VM 部署问题 - RM | Microsoft Docs"
+title: "在 Azure 中排查 Windows VM 部署问题 | Microsoft 文档"
 description: "排查在 Azure 中创建新 Windows 虚拟机时遇到的 Resource Manager 部署问题"
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: 
@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cjiang
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 94c18aa0c4fe38fb74931d5ed61fece207c8b5ce
-ms.openlocfilehash: 5b876185db505ec4bdbaff1d641b85c393e82559
+ms.sourcegitcommit: ec36172909398fbcae9ad39827307de758b855f0
+ms.openlocfilehash: 18767fe6bc08fd8ccb3670de686df39f58269e80
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>排查在 Azure 中新建 Windows 虚拟机时遇到的 Resource Manager 部署问题
+# <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -84,10 +86,5 @@ ms.openlocfilehash: 5b876185db505ec4bdbaff1d641b85c393e82559
 
 ## <a name="next-steps"></a>后续步骤
 如果在 Azure 中启动已停止的 Windows VM 或调整现有 Windows VM 的大小时遇到问题，请参阅[排查在 Azure 中重新启动现有 Windows 虚拟机或调整其大小时遇到的 Resource Manager 部署问题](virtual-machines-windows-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
