@@ -3,8 +3,8 @@ title: "有关 Azure IaaS VM 磁盘的常见问题解答 (FAQ) | Microsoft Docs"
 description: "有关 Azure IaaS VM 磁盘和高级磁盘（托管和非托管）的常见问题解答"
 services: storage
 documentationcenter: 
-author: ramankumarlive
-manager: aungoo-msft
+author: robinsh
+manager: timlt
 editor: tysonn
 ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: storage
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
-ms.author: ramankum
+ms.date: 02/23/2017
+ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 0746c954e669bd739b8ecfcddaf287cb5172877f
-ms.openlocfilehash: 95b627738726f3c108fff38bfeda413303b2c718
+ms.sourcegitcommit: 61610078ad5cefd513fdb758aec45d7489704817
+ms.openlocfilehash: b4cb40d81613c16558be1e0e2c10dbfa0265a6b7
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -120,6 +121,48 @@ ms.openlocfilehash: 95b627738726f3c108fff38bfeda413303b2c718
 
 Azure 托管磁盘当前仅支持本地冗余存储 (LRS)。
 
+## <a name="managed-disks-and-port-8443"></a>托管磁盘和端口 8443
+
+**为何客户必需使用 Azure 托管磁盘在端口 8443 上为 VM 解除阻止出站流量？**
+
+Azure VM 代理使用端口 8443 将每个 VM 扩展的状态报告给 Azure 平台。 如果不解除对该端口的阻止，VM 代理将无法报告任何 VM 扩展的状态。 有关 VM 代理的详细信息，请参阅 [Azure 虚拟机代理概述](../virtual-machines/virtual-machines-windows-agent-user-guide.md)。
+
+**如果在部署 VM 时未取消对扩展和端口的阻止，会发生什么情况？**
+
+部署会导致错误。 
+
+**如果在部署 VM 时不带扩展，且端口未取消阻止，会发生什么情况？**
+
+对部署不会有任何影响。 
+
+**如果在 VM 上安装了扩展，且该 VM 已预配并处于运行状态，而 VM 的端口 8443 并未取消阻止，会发生什么情况？**
+
+不会成功部署该扩展。 扩展的状态将为未知。 
+
+**如果使用 ARM 模板来预配多个阻止了端口 8443 的 VM（一个 VM 带扩展，另一个 VM 依赖于第一个 VM），会发生什么情况？**
+
+第一个 VM 会显示部署失败，因为扩展未成功部署。 第二个 VM 不会部署。 
+
+**取消端口阻止这个要求是否适用于所有 VM 扩展？**
+
+是的。
+
+**是否需同时解除对端口 8443 上的入站和出站连接的阻止？**
+
+否。 仅需解除对端口 8443 上的出站连接的阻止。 
+
+**是否需在 VM 的整个生存期解除对端口 8443 上的出站连接的阻止？**
+
+是的。
+
+**取消对该端口的阻止是否影响 VM 的性能？**
+
+不能。
+
+**解决此问题是否有一个估计的日期？我不想再被迫解除对端口 8443 的阻止。**
+
+是的，此问题会在 2017 年 5 月底之前解决。
+
 ## <a name="premium-disks--both-managed-and-unmanaged"></a>高级磁盘 - 托管和非托管
 
 **如果 VM 使用支持高级存储的大小系列（比如 DSv2），是否可以同时附加高级和标准数据磁盘？** 
@@ -151,8 +194,3 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4000 IOPS，以及�
 如果未在此处找到相关问题，请联系我们获取帮助。 可将问题发布在本文末尾的评论中或 MSDN [Azure 存储论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)中，围绕本文内容，与 Azure 存储团队和其他社区成员展开探讨。
 
 若要提出功能请求，请将请求和想法提交到 [Azure 存储反馈论坛](https://feedback.azure.com/forums/217298-storage)。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

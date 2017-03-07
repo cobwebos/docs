@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 应用服务移动应用和 Azure 通知�
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 78976e591d2eaacb286465b1ad0926a04143cecc
-ms.openlocfilehash: 6cb3033b302e2506252707856e4ce676bf576c77
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 5e71ecc6539179efdcfa6bfc4567bddaa96a59d9
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -54,7 +55,7 @@ ms.openlocfilehash: 6cb3033b302e2506252707856e4ce676bf576c77
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 ## <a name="a-idupdate-serviceaupdate-the-server-to-send-push-notifications"></a><a id="update-service"></a>更新服务器以发送推送通知
-选择下面与后端项目类型&mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
+使用下面与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
 ### <a name="a-namedotnetanet-backend-project"></a><a name="dotnet"></a>.NET 后端项目
 1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 Microsoft.Azure.NotificationHubs，然后单击“安装”。 这将安装通知中心客户端库。
@@ -195,17 +196,12 @@ ms.openlocfilehash: 6cb3033b302e2506252707856e4ce676bf576c77
 * [向应用添加身份验证](app-service-mobile-windows-store-dotnet-get-started-users.md)  
   了解如何使用标识提供者对应用程序的用户进行身份验证。
 * [为应用启用脱机同步](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-   了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+  了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
 
 <!-- Anchors. -->
 
 <!-- URLs. -->
-[在 Azure App Service 中创建 Java Web 应用]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

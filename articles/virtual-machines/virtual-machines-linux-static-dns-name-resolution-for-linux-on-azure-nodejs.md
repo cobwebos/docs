@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 8584606666fe93630f6486c16350a619787c8d14
-ms.openlocfilehash: 9d3b1f7582a487f5c9f4e58852d41fac91028bdc
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: caae05d89bc0375e08418a015150726e2a6393b9
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: 9d3b1f7582a487f5c9f4e58852d41fac91028bdc
 可以使用以下 CLI 版本之一完成任务：
 
 - [Azure CLI 1.0](#quick-commands) – 用于经典部署模型和资源管理部署模型（本文）的 CLI
-- [Azure CLI 2.0（预览版）](virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)- 适用于资源管理部署模型的下一代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-static-dns-name-resolution-for-linux-on-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于资源管理部署模型的下一代 CLI
 
 
 ## <a name="quick-commands"></a>快速命令
@@ -186,9 +187,4 @@ azure vm create jenkins \
 * [使用 Azure Resource Manager 模板创建特定部署](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [直接使用 Azure CLI 命令创建自定义的 Linux VM 环境](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用模板在 Azure 上创建 Linux VM](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

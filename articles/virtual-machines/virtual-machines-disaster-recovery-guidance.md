@@ -1,5 +1,5 @@
 ---
-title: "发生影响 Azure 虚拟机的 Azure 服务中断事件时该怎么办 | Microsoft Docs"
+title: "Azure VM 灾难恢复方案 | Microsoft 文档"
 description: "了解发生影响 Azure 虚拟机的 Azure 服务中断事件时该怎么办。"
 services: virtual-machines
 documentationcenter: 
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: kmouss;aglick
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e1c0a6c0b375d9f1fbc331736f6bed73c2232048
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: a70f30f380bf110271cb597d8755611da5d2d78c
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-virtual-machines"></a>发生影响 Azure 虚拟机的 Azure 服务中断事件时该怎么办
+# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>发生影响 Azure VM 的 Azure 服务中断事件时该怎么办
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供你需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
 
 Microsoft 为其服务提供服务级别协议 (SLA)，作为运行时间和连接承诺。 可以在 [Azure 服务级别协议](https://azure.microsoft.com/support/legal/sla/)中找到各种 Azure 服务的 SLA。
@@ -76,10 +78,5 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 若要了解如何使用 Azure Site Recovery 来安排和自动保护 VMWare 和 Hyper-V VM 上运行的物理（和虚拟）Windows 和 Linux 计算机，请参阅 [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/)。
 
 如果指示不清楚，或者如果希望 Microsoft 自动执行操作，请联系[客户支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

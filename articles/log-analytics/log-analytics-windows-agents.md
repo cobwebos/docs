@@ -1,6 +1,6 @@
 ---
-title: "将 Windows 计算机连接到 Log Analytics | Microsoft Docs"
-description: "本文介绍了通过使用自定义版本的 Microsoft Monitoring Agent (MMA) 将本地基础结构中的 Windows 计算机直接连接到 OMS 的步骤。"
+title: "将 Windows 计算机连接到 Azure Log Analytics | Microsoft 文档"
+description: "本文介绍了通过使用自定义版本的 Microsoft Monitoring Agent (MMA) 将本地基础结构中的 Windows 计算机连接到 Log Analytics 服务的步骤。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ca573f743325b29d43c4b1a0c3bc7001a54fcfae
-ms.openlocfilehash: f7d740c164df5fe2341a3a0dc3ca0149aed68386
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ecee44194c32569f1d50001543ef4b37ecdb5eb3
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-windows-computers-to-log-analytics"></a>将 Windows 计算机连接到 Log Analytics
+# <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
-本文介绍了通过使用自定义版本的 Microsoft Monitoring Agent (MMA) 将本地基础结构中的 Windows 计算机直接连接到 OMS 工作区的步骤。 你需要为想要登录的所有计算机安装代理并连接到 OMS，以便代理向 OMS 发送数据以及在 OMS 门户中查看和操作该数据。 每个代理都可以向多个工作区报告。
+本文介绍了通过使用自定义版本的 Microsoft Monitoring Agent (MMA) 将本地基础结构中的 Windows 计算机连接到 OMS 工作区的步骤。 需要为想要登录的所有计算机安装代理并进行连接，以便代理向 Log Analytics 服务发送数据以及查看和操作该数据。 每个代理都可以向多个工作区报告。
 
 可使用安装程序、命令行或 Azure 自动化中的所需状态配置 (DSC) 安装代理。  
 
@@ -107,10 +109,10 @@ $mma.ReloadConfiguration()
 此过程和脚本示例不会升级现有代理。
 
 1. 将 [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 的 xPSDesiredStateConfiguration DSC 模块导入到 Azure 自动化。  
-2.  为 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 创建 Azure 自动化变量资产。 将 *OPSINSIGHTS_WS_ID* 设置为 OMS Log Analytics 工作区 ID，将 *OPSINSIGHTS_WS_KEY* 设置为工作区的主键。
-3.  使用以下脚本并以 MMAgent.ps1 形式保存
-4.  修改后参照以下示例使用 Azure 自动化中的 DSC 安装代理。 通过使用 Azure 自动化界面或 cmdlet 将 MMAgent.ps1 导入 Azure 自动化。
-5.  向配置分配节点。 15 分钟内，该节点将检查其配置，MMA 将被推送到该节点。
+2.    为 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 创建 Azure 自动化变量资产。 将 *OPSINSIGHTS_WS_ID* 设置为 OMS Log Analytics 工作区 ID，将 *OPSINSIGHTS_WS_KEY* 设置为工作区的主键。
+3.    使用以下脚本并以 MMAgent.ps1 形式保存
+4.    修改后参照以下示例使用 Azure 自动化中的 DSC 安装代理。 通过使用 Azure 自动化界面或 cmdlet 将 MMAgent.ps1 导入 Azure 自动化。
+5.    向配置分配节点。 15 分钟内，该节点将检查其配置，MMA 将被推送到该节点。
 
 ```
 Configuration MMAgent
@@ -199,17 +201,17 @@ foreach ($Application in $InstalledApplications)
 如果在 IT 基础结构中使用 Operations Manager，还可以使用 MMA 代理作为 Operations Manager 代理。
 
 ### <a name="to-configure-mma-agents-to-report-to-an-operations-manager-management-group"></a>将 MMA 代理配置为向 Operations Manager 管理组报告
-1.  在安装代理的计算机上打开“**控制面板**”。  
-2.  打开 **Microsoft Monitoring Agent**，然后单击“**Operations Manager**”选项卡。  
+1.    在安装代理的计算机上打开“**控制面板**”。  
+2.    打开 **Microsoft Monitoring Agent**，然后单击“**Operations Manager**”选项卡。  
     ![Microsoft Monitoring Agent Operations Manager 选项卡](./media/log-analytics-windows-agents/om-mg01.png)
-3.  如果 Operations Manager 服务器与 Active Directory 集成，请单击“**自动更新 AD DS 中的管理组分配**”。
-4.  单击“**添加**”以打开“**添加管理组**”对话框。  
+3.    如果 Operations Manager 服务器与 Active Directory 集成，请单击“**自动更新 AD DS 中的管理组分配**”。
+4.    单击“**添加**”以打开“**添加管理组**”对话框。  
     ![Microsoft Monitoring Agent 添加管理组](./media/log-analytics-windows-agents/oms-mma-om02.png)
-5.  在“**管理组名称**”框中，键入管理组的名称。
-6.  在“**主管理服务器**”框中，键入主管理服务器的计算机名称。
-7.  在“**管理服务器端口**”框中，键入 TCP 端口号。
-8.  在“**代理操作帐户**”下面，选择本地系统帐户或本地域帐户。
-9.  单击“**确定**”关闭“**添加管理组**”对话框中，再单击“**确定**”关闭“**Microsoft Monitoring Agent 属性**”对话框。
+5.    在“**管理组名称**”框中，键入管理组的名称。
+6.    在“**主管理服务器**”框中，键入主管理服务器的计算机名称。
+7.    在“**管理服务器端口**”框中，键入 TCP 端口号。
+8.    在“**代理操作帐户**”下面，选择本地系统帐户或本地域帐户。
+9.    单击“**确定**”关闭“**添加管理组**”对话框中，再单击“**确定**”关闭“**Microsoft Monitoring Agent 属性**”对话框。
 
 ## <a name="optionally-configure-agents-to-use-the-oms-gateway"></a>可选择将代理配置为使用 OMS 网关
 
@@ -226,9 +228,4 @@ foreach ($Application in $InstalledApplications)
 
 - [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
 - 如果组织使用代理服务器或防火墙，请[在 Log Analytics 中配置代理服务器和防火墙设置](log-analytics-proxy-firewall.md)以便代理可以与 Log Analytics 服务进行通信。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

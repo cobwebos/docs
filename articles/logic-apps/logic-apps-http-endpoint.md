@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: d7144208fc3e6eb1f8d3c43d8b4a5e2bcb225e58
-ms.openlocfilehash: ac0c200abd110262badd04212c82be45cb0f8bfc
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 6964ff18532ccf4b67eecfe12122bc16819a7b4b
+ms.openlocfilehash: 9b2e0797317c6e0268e8ae90f4091fea96c78726
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/22/2017
 为说明本文的其余部分，我们使用**请求**作为示例，但是所有原理都同样适用于其他 2 种类型的触发器。
 
 ## <a name="adding-a-trigger-to-your-definition"></a>将触发器添加到定义
-第一步是将可以接收传入请求的触发器添加到逻辑应用定义。  可以在设计器中搜索“HTTP 请求”以添加到触发器卡。 可以定义请求正文 JSON 架构，设计器会生成标记以帮助分析数据并通过工作流从手动触发器传递数据。  建议使用 [jsonschema.net](http://jsonschema.net) 这类工具从示例正文有效负载生成 JSON 架构。
+第一步是将可以接收传入请求的触发器添加到逻辑应用定义。  可以在设计器中搜索“HTTP 请求”以添加到触发器卡。 可以定义请求正文 JSON 架构，设计器会生成标记以帮助分析数据并通过工作流从手动触发器传递数据。 如果还没有架构，可以选择`Use sample payload to generate schema`，从有效负载示例中生成 JSON 架构。
 
 ![请求触发器卡][2]
 

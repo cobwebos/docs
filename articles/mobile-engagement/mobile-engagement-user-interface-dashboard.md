@@ -4,7 +4,7 @@ description: "了解如何使用 Azure Mobile Engagement 查看和管理应用�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 72d5965e-8e79-48a3-9e63-0b66b7457d3c
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 835cc39ebe7cc3a6ee8fafdaad6a36ebb301a615
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 835cc39ebe7cc3a6ee8fafdaad6a36ebb301a615
 用户界面的“仪表板”部分通过向客户准确提供其所需信息（替代在分析部分中搜索信息），从而允许客户创建自定义图表以最大化利用自己的时间。 仪表板显示了应用程序的趋势和在给定时间内（小时/天/周/月/自定义）应用程序不同版本的活动用户的计数。 显示的趋势是基于过去 7 天的活动。
 
 ### <a name="see-also"></a>另请参阅
-* [故障排除指南 - 分析][链接 21]
+* [故障排除指南 - 分析][Link 21]
 
 ## <a name="dashboard"></a>仪表板
 * 可通过从用户界面的“分析”部分中的任何图表的齿轮菜单中，选择“发送到仪表板”操作向空仪表板添加想要在仪表板上看到的图表。
@@ -98,43 +99,38 @@ ms.openlocfilehash: 835cc39ebe7cc3a6ee8fafdaad6a36ebb301a615
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[链接 1]: mobile-engagement-user-interface.md
-[链接 2]: mobile-engagement-troubleshooting-guide.md
-[链接 3]: mobile-engagement-how-tos.md
-[链接 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[链接 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[链接 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[链接 7]: https://account.windowsazure.com/PreviewFeatures
-[链接 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[链接 9]: http://azure.microsoft.com/services/mobile-engagement/
-[链接 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[链接 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[链接 12]: mobile-engagement-user-interface-navigation.md
-[链接 13]: mobile-engagement-user-interface-home.md
-[链接 14]: mobile-engagement-user-interface-my-account.md
-[链接 15]: mobile-engagement-user-interface-analytics.md
-[链接 16]: mobile-engagement-user-interface-monitor.md
-[链接 17]: mobile-engagement-user-interface-reach.md
-[链接 18]: mobile-engagement-user-interface-segments.md
-[链接 19]: mobile-engagement-user-interface-dashboard.md
-[链接 20]: mobile-engagement-user-interface-settings.md
-[链接 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[链接 22]: mobile-engagement-troubleshooting-guide-apis.md
-[链接 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[链接 24]: mobile-engagement-troubleshooting-guide-service.md
-[链接 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[链接 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[链接 27]: ../mobile-engagement-how-tos-first-push.md
-[链接 28]: ../mobile-engagement-how-tos-test-campaign.md
-[链接 29]: ../mobile-engagement-how-tos-personalize-push.md
-[链接 30]: ../mobile-engagement-how-tos-differentiate-push.md
-[链接 31]: ../mobile-engagement-how-tos-schedule-campaign.md
-[链接 32]: ../mobile-engagement-how-tos-text-view.md
-[链接 33]: ../mobile-engagement-how-tos-web-view.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
+[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[Link 7]: https://account.windowsazure.com/PreviewFeatures
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: ../mobile-engagement-how-tos-first-push.md
+[Link 28]: ../mobile-engagement-how-tos-test-campaign.md
+[Link 29]: ../mobile-engagement-how-tos-personalize-push.md
+[Link 30]: ../mobile-engagement-how-tos-differentiate-push.md
+[Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
+[Link 32]: ../mobile-engagement-how-tos-text-view.md
+[Link 33]: ../mobile-engagement-how-tos-web-view.md
 
 

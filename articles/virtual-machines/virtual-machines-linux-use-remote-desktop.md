@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 95a79ccb83d5a3ba386d5db2fd47f3887a03fa8a
-ms.openlocfilehash: 4abb2fa6591c0e014e8d9563f69f9586e081e7b2
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: 01a19f1070c1096b41599705bba246bd0cc45d09
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -27,10 +28,10 @@ ms.openlocfilehash: 4abb2fa6591c0e014e8d9563f69f9586e081e7b2
 ## <a name="prerequisites"></a>先决条件
 本文需要 Azure 中的现有 Linux VM。 如果需要创建 VM，请使用以下方法之一：
 
-- [Azure CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure CLI 2.0（预览版）](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure CLI 2.0](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [Azure CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 门户](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-还需要安装最新的 [Azure CLI 1.0](../xplat-cli-install.md) 或 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)并登录到[有效的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
+还需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 或 [Azure CLI 1.0](../xplat-cli-install.md) 并登录到[有效的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
 ## <a name="quick-commands"></a>快速命令
@@ -69,16 +70,7 @@ sudo service xrdp restart
 sudo passwd ops
 ```
 
-退出 Linux VM 的 SSH 会话。 使用本地计算机上的 Azure CLI 创建网络安全组规则，以允许远程桌面流量。 以下示例使用 Azure CLI 1.0 在 `myNetworkSecurityGroup` 内创建名为 `myNetworkSecurityGroupRule` 的规则，以允许 tcp 端口 3389 上的流量：
-
-```azurecli
-azure network nsg rule create --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-    --protocol tcp --direction inbound --priority 1010 \
-    --destination-port-range 3389 --access allow
-```
-
-或者，将 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 与 Azure CLI 2.0（预览版）配合使用：
+退出 Linux VM 的 SSH 会话。 使用本地计算机上的 Azure CLI 创建网络安全组规则，以允许远程桌面流量。 将 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 与 Azure CLI 2.0 配合使用。 以下示例在 `myNetworkSecurityGroup` 中创建一个名为 `myNetworkSecurityGroupRule` 的规则，以允许 tcp 端口 3389 上的流量：
     
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup \
@@ -87,6 +79,15 @@ az network nsg rule create --resource-group myResourceGroup \
     --source-address-prefix '*' --source-port-range '*' \
     --destination-address-prefix '*' --destination-port-range 3389 \
     --access allow
+```
+
+或者，使用 Azure CLI 1.0：
+
+```azurecli
+azure network nsg rule create --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
+    --protocol tcp --direction inbound --priority 1010 \
+    --destination-port-range 3389 --access allow
 ```
 
 使用所选的远程桌面客户端连接到 Linux VM。
@@ -149,16 +150,7 @@ sudo passwd ops
 
 以下示例创建名为 `myNetworkSecurityGroupRule` 的网络安全组规则以 `allow` `tcp` 端口 `3389` 上的流量。
 
-- 使用 Azure CLI 1.0：
-
-    ```azurecli
-    azure network nsg rule create --resource-group myResourceGroup \
-        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-        --protocol tcp --direction inbound --priority 1010 \
-        --destination-port-range 3389 --access allow
-    ```
-
-- 或者，将 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 与 Azure CLI 2.0（预览版）配合使用：
+- 将 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 与 Azure CLI 2.0 配合使用：
     
     ```azurecli
     az network nsg rule create --resource-group myResourceGroup \
@@ -169,6 +161,14 @@ sudo passwd ops
         --access allow
     ```
 
+- 或者，使用 Azure CLI 1.0：
+
+    ```azurecli
+    azure network nsg rule create --resource-group myResourceGroup \
+        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
+        --protocol tcp --direction inbound --priority 1010 \
+        --destination-port-range 3389 --access allow
+    ```
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>使用远程桌面客户端连接 Linux VM
 打开本地的远程桌面客户端，并连接到 Linux VM 的 IP 地址或 DNS 名称。 输入 VM 上的用户帐户的用户名和密码，如下所示：
@@ -215,10 +215,5 @@ tail -f /var/log/syslog
 有关为 Linux VM 创建 SSH 密钥和在 Linux VM 上使用 SSH 密钥的详细信息，请参阅[在 Azure 中为 Linux VM 创建 SSH 密钥](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 有关从 Windows 使用 SSH 的信息，请参阅[如何在 Windows 中使用 SSH 密钥](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

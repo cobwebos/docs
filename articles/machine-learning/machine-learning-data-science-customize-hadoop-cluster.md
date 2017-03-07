@@ -17,6 +17,7 @@ ms.author: hangzh;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
 ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
 在下一页中，输入“DATA NODES”的数量，选择“REGION/VIRTUAL NETWORK”，然后选择“HEAD NODE”和“DATA NODE”。 单击箭头转到下一个配置页。
 
 > [!NOTE]
-> **REGION/VIRTUAL NETWORK**必须与 HDInsight Hadoop 群集的存储帐户所用的区域相同。 否则在第 4 个配置页中，存储帐户不会出现在“帐户名”下拉列表中。
+> **REGION/VIRTUAL NETWORK**必须与 HDInsight Hadoop 群集的存储帐户所用的区域相同。 否则在第&4; 个配置页中，存储帐户不会出现在“帐户名”下拉列表中。
 > 
 > 
 
@@ -69,7 +70,7 @@ ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
 ## <a name="a-nameheadnodea-access-the-head-node-of-hadoop-cluster"></a><a name="headnode"></a> 访问 Hadoop 群集的头节点
 必须启用对 Azure 中的 Hadoop 群集的远程访问，然后才能通过 RDP 访问 Hadoop 群集的头节点。 
 
-1. 登录到“Azure 经典门户”[](https://manage.windowsazure.com/)，选择左侧的“HDInsight”，然后从群集列表中选择Hadoop 群集，请单击“配置”选项卡，然后单击页面底部的“启用远程”图标。
+1. 登录到 [**Azure 经典门户**](https://manage.windowsazure.com/)，选择左侧的 **HDInsight**，然后从群集列表中选择Hadoop 群集，请单击 **配置** 选项卡，然后单击页面底部的 **启用远程** 图标。
    
     ![创建工作区](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png)
 2. 在“配置远程桌面”窗口中，输入用户名和密码字段中，然后选择用于远程访问的到期日期。 然后单击复选标记以启用对 Hadoop 群集的头节点的远程访问权限。
@@ -88,10 +89,5 @@ ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
 进一步的分析过程中的下一个步骤映射在[团队数据科学进程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中，并且可能包括将数据移到 HDInsight 的步骤，然后对该步骤进行采样、处理，以便使用 Azure 机器学习来学习数据。
 
 请参阅 [如何提交 Hive 查询](machine-learning-data-science-move-hive-tables.md#submit)如何访问从函数 (UDFs) - 即用户指定来处理群集中的 Hive 记录的函数 - 中的群集头节点纳入 Anaconda 的 Python 模块。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

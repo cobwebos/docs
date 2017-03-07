@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: cedc76bc46137a5d53fd76c0fdb6ff2db79566a4
-ms.openlocfilehash: 05e999d62d3ffdde708c9898807e79fabcff992e
+ms.sourcegitcommit: a8b570cfbab594e1a21417e081eaf6d34a4659d0
+ms.openlocfilehash: 40f10b1cb860ca0c018cc3589417c54588269b0c
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -36,6 +37,10 @@ Blob 的快照与其基本 Blob 相同，不过，Blob URI 的后面追加了一
 创建 Blob 的快照时，会将该 Blob 的系统属性复制到具有相同值的快照。 基本 Blob 的元数据也会复制到快照，除非创建快照时为其指定了不同的元数据。
 
 任何与基本 Blob 关联的租约都不会影响快照。 无法获取快照上的租约。
+
+VHD 文件用于存储 VM 磁盘的当前信息和状态。 可以将磁盘从 VM 分离或者关闭 VM，然后拍摄其 VHD 文件的快照。 可以在以后使用该快照文件检索该时间点的 VHD 文件并重新创建 VM。
+
+如果为 Blob 所在的存储帐户启用了存储服务加密 (SSE)，则会对该 Blob 的任何快照进行静息加密。
 
 ## <a name="create-a-snapshot"></a>创建快照
 以下代码示例演示如何在 .NET 中创建快照。 本示例在创建快照时为其指定了不同的元数据。
@@ -163,10 +168,5 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 
 ## <a name="next-steps"></a>后续步骤
 有关 Blob 存储使用方面的其他示例，请参阅 [Azure 代码示例](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)。 可以下载示例应用程序并运行，或在 GitHub 上浏览代码。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

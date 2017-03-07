@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 2/6/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 673b979520b0e6fd4d0b0c00d2be26c41d112677
-ms.openlocfilehash: f99effa72070bb8acd35fa95b1ea3219d64ace46
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: 8bc6ac01f1592d371abbb2df3ff6ecf4ee2a993c
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -24,12 +25,12 @@ ms.openlocfilehash: f99effa72070bb8acd35fa95b1ea3219d64ace46
 
 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 <!--Add link to topic or blog post that explains managed disks. -->
 
-使用 Azure 门户或 Azure CLI 2.0（预览版）获取托管磁盘的快照。
+使用 Azure 门户或 Azure CLI 2.0 获取托管磁盘的快照。
 
-## <a name="use-azure-cli-20-preview-to-take-a-snapshot"></a>使用 Azure CLI 2.0（预览版）拍摄快照
+## <a name="use-azure-cli-20-to-take-a-snapshot"></a>使用 Azure CLI 2.0 拍摄快照
 
 > [!NOTE] 
-> 以下示例需要安装 Azure CLI 2.0（预览版）并登录到你的 Azure 帐户。
+> 以下示例需要安装 Azure CLI 2.0 并登录到 Azure 帐户。
 
 以下步骤说明如何使用带有 `--source-disk` 参数的 `az snapshot create` 命令获取和拍摄托管操作系统磁盘的快照。 以下示例假设在 `myResourceGroup` 资源组中存在使用托管操作系统磁盘创建的名为 `myVM` 的VM。
 
@@ -80,10 +81,5 @@ az snapshot create -g myResourceGroup --source "$osDiskId" --name osDisk-backup
 
 如果计划使用快照创建托管磁盘并将其附加到需要具有高性能的 VM，请结合使用 `az snapshot create` 命令和参数 `--sku Premium_LRS`。 这将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘性能更好，因为它们是固态硬盘 (SSD)，但成本高于标准磁盘 (HDD)。
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

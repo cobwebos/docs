@@ -4,7 +4,7 @@ description: "介绍如何安全地更换 PCM、电池、控制器模块、EBOD 
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: e8087ba7-0b66-4f59-8988-e53aad52ee21
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/11/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 50df20f1f84f570cec1261e14028f3a700871dac
+ms.sourcegitcommit: f2d197264f066a23468db80686444bd24f6d796f
+ms.openlocfilehash: ae37f49916445a9486457af61aa9bf8bc1d7eb87
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="storsimple-hardware-component-replacement"></a>StorSimple 硬件组件更换
+# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
+
 ## <a name="overview"></a>概述
 此硬件组件更换教程介绍 Microsoft Azure StorSimple 8000 系列设备的硬件组件，以及移除和更换这些组件所需的步骤。 本文介绍安全图标、提供指向详细教程的链接，并列出可更换的组件。
 
@@ -134,10 +137,5 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 ## <a name="next-steps"></a>后续步骤
 在尝试更换 StorSimple 硬件组件之前，请查看所有[安全信息](storsimple-safety.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

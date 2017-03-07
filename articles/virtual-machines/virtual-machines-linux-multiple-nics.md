@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure CLI 2.0（预览版）创建具有多个 NIC 的 Linux VM | Microsoft Docs"
-description: "了解如何使用 Azure CLI 2.0（预览版）或 Resource Manager 模板创建附有多个 NIC 的 Linux VM。"
+title: "使用 Azure CLI 2.0 创建具有多个 NIC 的 Linux VM | Microsoft 文档"
+description: "了解如何使用 Azure CLI 2.0 或 Resource Manager 模板创建具有多个 NIC 的 Linux VM。"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,27 +15,23 @@ ms.workload: infrastructure
 ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 368c79b001495e0fb000a4b280023b2299256435
-ms.openlocfilehash: a854a15a9119f289344a75638d1042ee6779bb46
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: e50f9ce362177a2aff8da5b1d516973c41d1149e
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-linux-vm-with-multiple-nics-using-the-azure-cli-20-preview"></a>使用 Azure CLI 2.0（预览版）创建具有多个 NIC 的 Linux VM
+# <a name="create-a-linux-vm-with-multiple-nics"></a>创建具有多个 NIC 的 Linux VM
 可以在 Azure 中创建附有多个虚拟网络接口 (NIC) 的虚拟机 (VM)。 一种常见方案是为前端和后端连接使用不同的子网，或者为监视或备份解决方案使用一个专用网络。 本文提供用于创建附有多个 NIC 的 VM 的快速命令。 有关详细信息（包括如何在自己的 Bash 脚本中创建多个 NIC），请阅读 [deploying multi-NIC VMs](../virtual-network/virtual-network-deploy-multinic-arm-cli.md)（部署具有多个 NIC 的 VM）。 不同的 [VM 大小](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
+
+本文详述了如何使用 Azure CLI 2.0 创建具有多个 NIC 的 VM。 还可以使用 [Azure CLI 1.0](virtual-machines-linux-multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 > [!WARNING]
 > 必须在创建 VM 时附加多个 NIC - 不能将 NIC 添加到现有 VM。 可以[基于原始虚拟磁盘创建 VM](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，并在部署 VM 时创建多个 NIC。
 
 
-## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
-可以使用以下 CLI 版本之一完成任务：
-
-- [Azure CLI 1.0](virtual-machines-linux-multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](#create-supporting-resources)- 适用于资源管理部署模型的下一代 CLI（本文）
-
-
 ## <a name="create-supporting-resources"></a>创建支持资源
-安装最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
 
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 `myResourceGroup`、`mystorageaccount` 和 `myVM`。
 
@@ -120,10 +116,5 @@ Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可�
 尝试创建具有多个 NIC 的 VM 时，请务必查看 [Linux VM sizes](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Linux VM 大小）。 注意每个 VM 大小支持的 NIC 数目上限。 
 
 请记住，不能将其他 NIC 添加到现有 VM，而必须在部署 VM 时创建所有 NIC。 仔细规划部署，确保从一开始就建立了全部所需的网络连接。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -4,7 +4,7 @@ description: "介绍如何使用 StorSimple 设备管理器的“配置”页添
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: 6df75f229b95de99fb7f97714336fdc857e672eb
+ms.sourcegitcommit: 4b5c86314bde2acb7d5723909f89691bf7ed8b98
+ms.openlocfilehash: 6bb07bc1e3ab439352b444016167541eca54f788
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列的存储帐户凭据
+# <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的存储帐户凭据
 
 ## <a name="overview"></a>概述
 StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“配置”部分提供了可以在 StorSimple Manager 服务中创建的全局服务参数。 这些参数可应用到所有连接到该服务的设备，包括：
@@ -150,10 +151,5 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理你的 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

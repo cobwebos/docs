@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/28/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: bc97472a07ac4c27c60fbe2cb803f2360a3362c4
-ms.openlocfilehash: 7faa219c7c21c768419f6c5e98712a0f0f471924
+ms.sourcegitcommit: af3ba5a4d1bd457f19038b9917ce55920e5e882b
+ms.openlocfilehash: 7d97e0f8be183c8858520d795ac28b7ad63a6dae
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 7faa219c7c21c768419f6c5e98712a0f0f471924
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
 ## <a name="about-this-tutorial"></a>关于本教程
-本教程将介绍如何针对 Microsoft Azure 文件存储服务执行基本的操作。 通过以 C++ 编写的示例，学习如何创建共享和目录，以及如何上传、列出和删除文件。 如果不熟悉 Microsoft Azure 文件存储服务，学习后续部分的概念对于理解示例会很有帮助。
+本教程将介绍如何针对 Microsoft Azure 文件存储服务执行基本的操作。 通过以 C++ 编写的示例，学习如何创建共享和目录，以及如何上传、列出和删除文件。 如果不熟悉 Microsoft Azure 文件存储服务，学习后续部分的概念对于理解示例有帮助。
 
 [!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
@@ -50,8 +51,8 @@ Install-Package wastorage
 将以下 include 语句添加到 C++ 文件的顶部，会在此使用 Azure 存储 API 来访问文件：
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/file.h"
+#include <was/storage_account.h>
+#include <was/file.h>
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
@@ -132,7 +133,7 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
 ## <a name="how-to-create-a-directory"></a>如何：创建目录
-也可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 Azure 文件存储服务可以创建任意数目的目录，只要你的帐户允许。 下面的代码会在根目录下创建一个名为 **my-sample-directory** 的目录，以及一个名为 **my-sample-subdirectory** 的子目录。
+也可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 Azure 文件存储服务允许你创建帐户允许的任意数目的目录。 下面的代码会在根目录下创建一个名为 **my-sample-directory** 的目录，以及一个名为 **my-sample-subdirectory** 的子目录。
 
 ```cpp
 // Retrieve a reference to a directory
@@ -354,12 +355,8 @@ if (share.exists())
 若要了解有关 Azure 存储空间的详细信息，请参阅以下资源：
 
 * [适用于 C++ 的存储客户端库](https://github.com/Azure/azure-storage-cpp)
+* [Azure Storage File Service Samples in C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)（C++ 中的 Azure 存储文件服务示例）
 * [Azure 存储空间资源管理器](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -4,7 +4,7 @@ description: "了解如何使用移动应用通过各种标识提供者（包括
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 30fac48cbacb26b03ce430987997c38c68368385
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
 本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin Forms 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，将显示用户 ID 值，该用户将能够访问受限制的表数据。
 
 ## <a name="prerequisites"></a>先决条件
-为了使本教程达到最佳效果，建议用户先完成[创建 Xamarin Forms 应用][1]教程。 完成此教程后，用户将获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
+为了使本教程达到最佳效果，建议用户先完成[创建 Xamarin.Forms 应用][1]教程。 完成此教程后，用户将获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
 
 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][2]。
 
@@ -307,7 +308,7 @@ ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
 
 * [向应用添加推送通知](app-service-mobile-xamarin-forms-get-started-push.md)
   
-   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+  了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)
   
   了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
@@ -322,9 +323,4 @@ ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
 [5]: app-service-mobile-dotnet-how-to-use-client-library.md#serverflow
 [6]: app-service-mobile-dotnet-how-to-use-client-library.md#clientflow
 [7]: https://msdn.microsoft.com/library/azure/jj730936(v=azure.10).aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

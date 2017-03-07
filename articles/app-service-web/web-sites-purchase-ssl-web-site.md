@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: a1b492b7884deb2d0d4f255af0737e1633606384
-ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
+ms.sourcegitcommit: 3629280101a6c8c53dacf9f80c09becf1db53f03
+ms.openlocfilehash: e4331c6d5a07e6450c1fdde43d4c226e9a06de54
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -121,12 +122,21 @@ ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
      * 如果需要重新发送验证电子邮件，请单击“重新发送电子邮件”按钮。
    * **手动验证**    
      
-      **DNS TXT 记录验证**
-        
-        * 使用 DNS 管理器，在 **‘DZC’** 子域上创建值等于**域验证令牌**的 TXT 记录。
+      **HTML 网页验证（仅适用于标准证书 SKU）**
+
+        * 创建名为“starfield.html”的 HTML 文件
+        * 此文件的内容应与“域验证令牌”的名称完全相同。 （可以从域验证状态边栏选项卡复制令牌）
+        * 在托管域 **/.well-known/pki-validation/starfield.html** 的 Web 服务器的根目录上载此文件
         * 单击“刷新”，在完成验证之后更新证书状态。 验证可能需要几分钟才能完成。
           
-          例如，若要对主机名为 **\*.contosocertdemo.com** 或 **\*.subdomain.contosocertdemo.com** 且域验证令牌为 **cAGgQrKc** 的通配符证书执行验证，则需要在 dzc.contosocertdemo.com 上创建一条值为 **cAGgQrKc** 的 TXT 记录。     
+          例如，如果为域验证令牌为 **tgjgthq8d11ttaeah97s3fr2sh** 的 **contosocertdemo.com** 购买了标准证书，则对 **http://contosocertdemo.com/.well-known/pki-validation/starfield.html** 发出的 Web 请求应返回 **tgjgthq8d11ttaeah97s3fr2sh**。
+
+      **DNS TXT 记录验证**
+        
+        * 使用 DNS 管理器，在 **‘@’** 子域上创建值等于**域验证令牌**的 TXT 记录。
+        * 单击“刷新”，在完成验证之后更新证书状态。 验证可能需要几分钟才能完成。
+          
+          例如，若要对主机名为 **\*.contosocertdemo.com** 或 **\*.subdomain.contosocertdemo.com** 且域验证令牌为 **tgjgthq8d11ttaeah97s3fr2sh** 的通配符证书执行验证，则需要在 **contosocertdemo.com** 上创建一条值为 **tgjgthq8d11ttaeah97s3fr2sh** 的 TXT 记录     
 
 ## <a name="a-namebkmkassigncertificateastep-3-assign-certificate-to-app-service-app"></a><a name="bkmk_AssignCertificate"></a>步骤 3：将证书分配到应用服务应用
 在此步骤中，将了解如何将这个新购买的证书分配到应用服务应用。 
@@ -185,10 +195,5 @@ ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
 > 如果想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](https://azure.microsoft.com/try/app-service/)，可以通过该页面在 App Service 中立即创建一个生存期较短的入门 Web 应用。 你不需要使用信用卡，也不需要做出承诺。
 > 
 > 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

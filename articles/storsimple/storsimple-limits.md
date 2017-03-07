@@ -12,15 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/30/2017
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d81b20ca17ddf723dcc11148f7b44e763dde100b
-ms.openlocfilehash: 1af0f36ce1161b35a2f75d74774ed145c8bc9328
-
+ms.sourcegitcommit: dd9e7f672a9f991fd06530a968a3369b752148a2
+ms.openlocfilehash: 3e4f7bfd117696ddb25156e027e29c0d21f27804
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="storsimple-system-limits"></a>StorSimple 系统限制
+# <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 系列的系统限制是什么？
 ## <a name="overview"></a>概述
 StorSimple 为数据中心提供可伸缩且灵活的存储。 但用户在规划、部署和运行 StorSimple 解决方案时，应牢记某些限制。 下表介绍了这些限制，并提供了一些建议，以便用户充分利用 StorSimple 解决方案。
 
@@ -56,10 +57,5 @@ StorSimple 为数据中心提供可伸缩且灵活的存储。 但用户在规�
 
 ## <a name="next-steps"></a>后续步骤
 查看 [StorSimple 系统要求](storsimple-system-requirements.md)。 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 59e3402fbeb6356c164a9a7a80728ec06ca7e141
-
+ms.sourcegitcommit: 2fd9fd50be79e8af239101147e5ae0a39eb2dc07
+ms.openlocfilehash: 7cef940b26003578a3b08c453ed4f91d3e617b2e
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="access-and-security-in-azure-resource-manager-templates"></a>Azure Resource Manager 模板中的访问权限和安全性
+# <a name="access-and-security-in-azure-resource-manager-templates-for-linux-vms"></a>适用于 Linux VM 的 Azure Resource Manager 模板中的访问权限和安全性
+
 可能需要通过 Internet 或与 Azure 建立的 VPN/Express Route 连接才能访问托管在 Azure 中的应用程。 在音乐应用商店应用程序示例中，网站通过公共 IP 地址在 Internet 上提供访问。 建立访问方式后，应该保护对应用程序的连接，以及对虚拟机资源本身的访问。 这种访问安全性是通过网络安全组提供的。 
 
 本文档详细说明如何在示例 Azure Resource Manager 模板中保护音乐应用商店应用程序。 所有依赖项和独特配置都已突出显示。 为了获得最佳体验，请将一个解决方案实例预先部署到 Azure 订阅，然后将它与 Azure Resource Manager 模板配合运行。 可通过以下链接找到完整模板 – [Ubuntu 上的音乐应用商店部署](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。 
@@ -137,10 +139,5 @@ Azure 门户中的网络安全组如下所示。 请注意，NSG 可与子网和
 <hr>
 
 [步骤 3 - Azure Resource Manager 模板的可用性和缩放](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

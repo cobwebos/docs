@@ -4,7 +4,7 @@ description: "介绍了如何在 Azure 经典门户中创建和删除 StorSimple
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: byronr
+manager: timlt
 editor: 
 ms.assetid: bc1d5650-275c-42ed-bc77-cdb596f85943
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f507eb6986f7c62965dc00673ee5ebe38e70f1d7
-ms.openlocfilehash: 1858fa9e1223d0938bb1eb6195c42fb1ec3b007d
+ms.sourcegitcommit: 99fab8eafe4e17f50db8e7e33637001be03abe7b
+ms.openlocfilehash: 0cb356910b858bf231dfadffa1d4561df1977af0
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deploy-the-storsimple-manager-service"></a>部署 StorSimple Manager 服务
+# <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>在 Azure 经典门户中部署 StorSimple Manager 服务
+
 ## <a name="overview"></a>概述
 StorSimple Manager 服务在 Microsoft Azure 中运行并连接到多台 StorSimple 设备。 在创建该服务后，你可以使用它从在浏览器中运行的 Microsoft Azure 经典门户中管理设备。 这使得你可以从单个中央位置监视连接到 StorSimple Manager 服务的所有设备，因此最大限度地降低了管理负担。
 
@@ -99,9 +102,4 @@ StorSimple Manager 登陆页会列出可以用来管理 StorSimple 存储设备�
 * 详细了解 [StorSimple 部署过程](storsimple-deployment-walkthrough-u2.md)。
 * 详细了解如何[管理 StorSimple 存储帐户](storsimple-manage-storage-accounts.md)。
 * 详细了解如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)。
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

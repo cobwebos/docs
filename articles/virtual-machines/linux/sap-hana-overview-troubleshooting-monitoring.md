@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 195ee1537df6ed8c0afe245f414061a7af6fed73
-ms.openlocfilehash: 036dc46cd3a2944500b068038a3d15a2cccaaf40
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: da712db02fe91f7d075e5203b627a12f341fac78
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="troubleshooting-and-monitoring-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）的故障排除与监视
+# <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>如何对 Azure 上的 SAP HANA（大型实例）进行故障排除和监视
 
 
 ## <a name="monitoring-in-sap-hana-on-azure-large-instances"></a>在 Azure 上的 SAP HANA（大型实例）中监视
@@ -187,10 +189,5 @@ Azure 上的 SAP HANA（大型实例）与其他任何 IaaS 部署一样，都�
 用于检查 SAP HANA 参数的 **HANA\_Configuration\_Parameters\_Rev70+**。
 
 ![用于检查 SAP HANA 参数的 HANA\_Configuration\_Parameters\_Rev70+](./media/sap-hana-overview-troubleshooting-monitoring/image15-configuration-parameters.png)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

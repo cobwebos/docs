@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 02/06/2017
+ms.date: 02/28/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 71476ae63d2394e7edefa10b8c71d15c04190290
-ms.openlocfilehash: 299e06bf6d4bd3af5d6dc7496ba9a947f42c19b7
+ms.sourcegitcommit: 02b905b12344f23e0eb3b8d0a1969bf7c491119e
+ms.openlocfilehash: 0f7412d9ed3cacb043a5cf3f21d6109eeeeb074c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 299e06bf6d4bd3af5d6dc7496ba9a947f42c19b7
 
 在继续之前，可能需要保存以下资源。 在将 Power BI 报表集成到示例应用和自己的应用中时，这些资源都可以提供帮助。
 
-* [Web 应用示例仪表板](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [示例工作区 Web 应用](http://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI Embedded API 参考](https://msdn.microsoft.com/en-US/library/azure/mt711507.aspx)
 * [Power BI Embedded .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472)（通过 NuGet 提供）
 * [JavaScript 报表嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo)
@@ -68,7 +69,7 @@ Checking import state... Succeeded
 此时，**工作区**中已导入了一个 Power BI PBIX 报表。 接下来将演示如何运行 **Power BI Embedded** 入门示例 Web 应用。
 
 ## <a name="run-the-sample-web-app"></a>运行示例 Web 应用
-Web 应用示例是一个示例仪表板，用于呈现**工作区**中导入的报表。 下面介绍了如何配置 Web 应用示例。
+Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入的报表。 下面介绍了如何配置 Web 应用示例。
 
 1. 在 **PowerBI Embedded** Visual Studio 解决方案中，右键单击“EmbedSample”Web 应用程序，然后选择“设为启动项目”。
 2. 在 **web.config** 的 **EmbedSample** Web 应用程序中，编辑 **appSettings** 中的 **AccessKey** 和 **WorkspaceCollection** 名称，以及 **WorkspaceId**。
@@ -93,7 +94,7 @@ Web 应用示例是一个示例仪表板，用于呈现**工作区**中导入的
 
 ## <a name="explore-the-sample-code"></a>探索示例代码
 
-**Microsoft Power BI Embedded** 示例是一个 Web 应用示例仪表板，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式根据用户输入的三个单独的类（模型、视图和控件）对域、演示文稿和操作分开进行建模。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](http://www.asp.net/mvc)（了解 ASP.NET）。
+**Microsoft Power BI Embedded** 示例是一个 Web 应用示例，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式根据用户输入的三个单独的类（模型、视图和控件）对域、演示文稿和操作分开进行建模。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](http://www.asp.net/mvc)（了解 ASP.NET）。
 
 **Microsoft Power BI Embedded** 示例代码分隔方式如下所示。 每个部分在 PowerBI embedded.sln 解决方案中都包括了文件名称，以便轻松查找示例中的代码。
 
@@ -241,13 +242,8 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > {tableName/fieldName} 不能包含空格或特殊字符。 {fieldValue} 接受单个分类值。  
 
 ## <a name="see-also"></a>另请参阅
-* [常见 Microsoft Power BI Embedded 方案](power-bi-embedded-scenarios.md)
-* [在 Power BI Embedded 中进行身份验证和授权](power-bi-embedded-app-token-flow.md)
 
+[常见 Microsoft Power BI Embedded 方案](power-bi-embedded-scenarios.md)  
+[在 Power BI Embedded 中进行身份验证和授权](power-bi-embedded-app-token-flow.md)  
 有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

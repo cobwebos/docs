@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 42a2f5488bac192311cd0652286e45a2280032f2
-ms.openlocfilehash: 8bb2c8138d5f5ef76490e5439ba2427cbaf9b33d
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: a412304c33d915be6e30c6b748c8431a9c7e9f34
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构
+# <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）概述和体系结构 
 这是一份体系结构和技术部署指南，由五个部分组成，其中包含的信息可帮助用户在 Azure 中的新型“Azure 上的 SAP HANA（大型实例）”上部署 SAP。 本指南中的内容并不详尽，未包括有关设置 SAP 解决方案的具体详细信息。 它只是提供重要的信息来帮助用户完成初始部署和日常操作。 请不要使用它来取代有关安装 SAP HANA 的 SAP 文档（也不能取代包括该主题的许多 SAP 支持说明）。 此外，本指南提供了有关安装“Azure 上的 SAP HANA（大型实例）”的详细信息。
 
 
@@ -358,10 +360,5 @@ Azure 上的 SAP HANA（大型实例）网络体系结构的最小部署：
 > [!IMPORTANT] 
 > 如果使用了多个 ExpressRoute 线路，则应当使用“AS 路径前追加”和“本地首选 BGP”设置来确保对流量进行正确路由。
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

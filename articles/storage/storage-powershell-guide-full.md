@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 70a03b39eb49ed96b649e63f6f2c728147ebddec
+ms.sourcegitcommit: b046dcb32e6796f4e66009361783fa95936794b8
+ms.openlocfilehash: 662fbbdda2c6d4d7da2c7c94dabb984a6bfc7296
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -38,7 +39,7 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
 
 **创建 Microsoft Azure 订阅和帐户之后：**
 
-1. 下载和安装 [Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409)。
+1. 下载并安装最新的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/latest)。
 2. 启动 Windows PowerShell 集成脚本环境 (ISE)：在本地计算机上，转到“开始”菜单。 键入“管理工具”，并单击以运行它。 在“管理工具”窗口中，右键单击“Windows PowerShell ISE”，然后单击“以管理员身份运行”。
 3. 在“Windows PowerShell ISE”中，单击“文件” > “新建”创建新的脚本文件。
 4. 现在，我们将提供一个简单的脚本，演示用于访问 Azure 存储的基本 PowerShell 命令。 该脚本首先会请求用户提供 Azure 帐户凭据，以将 Azure 帐户添加到本地 PowerShell 环境。 然后，该脚本将设置默认 Azure 订阅，并在 Azure 中创建新的存储帐户。 接下来，该脚本将在此新存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 在脚本列出该容器中的所有 Blob 后，它将在本地计算机中创建新的目标目录，并下载图像文件。
@@ -847,9 +848,4 @@ Azure 环境的部署独立于 Microsoft Azure，其示例包括[面向美国政
 [How to manage Shared Access Signature (SAS) and Stored Access Policy]: #sas
 [How to use Azure Storage for U.S. government and Azure China]: #gov
 [Next Steps]: #next
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

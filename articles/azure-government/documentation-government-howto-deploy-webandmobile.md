@@ -15,8 +15,9 @@ ms.workload: azure-government
 ms.date: 01/03/2016
 ms.author: sdubeymsft
 translationtype: Human Translation
-ms.sourcegitcommit: 40e2eea5c1a11dadb232c6ac7c224ca5fc847c02
-ms.openlocfilehash: 9a5efdd4c94c7cfc7a63c478f1f5b8124a8cb5c6
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 159c891dedb66dfaa238981b395b4bba074c5716
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 9a5efdd4c94c7cfc7a63c478f1f5b8124a8cb5c6
 
 ## <a name="prerequisites"></a>先决条件
 * 请参阅 [Visual Studio 先决条件](../app-service-api/app-service-api-dotnet-get-started.md#prerequisites)，安装和配置 Visual Studio 2015 和 Azure SDK。
-* 按照[这些说明](documentation-government-manage-subscriptions.md#connecting-via-visual-studio)配置 Visual Studio，以便连接到 Azure Government 帐户。
+* 按照[这些说明] (documentation-government-manage-subscriptions.md) 配置 Visual Studio，以便连接到 Azure Government 帐户。
 
 ## <a name="open-app-project-in-visual-studio"></a>在 Visual Studio 中打开应用项目
 * 在 Visual Studio 中打开现有应用解决方案\项目，按照[这些说明](../app-service-web/web-sites-dotnet-get-started.md#create-a-web-application)创建一个项目，或按照[这些步骤](../app-service-api/app-service-api-dotnet-get-started.md#download-the-sample-application)下载示例应用。
@@ -42,9 +43,4 @@ ms.openlocfilehash: 9a5efdd4c94c7cfc7a63c478f1f5b8124a8cb5c6
 
 ## <a name="next-steps"></a>后续步骤
 有关补充信息和更新，请订阅 [Microsoft Azure 政府版博客](https://blogs.msdn.microsoft.com/azuregov/)。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 02579f138f957e5d245290e2cb8fc448120a4701
-ms.openlocfilehash: e77fee96710e99dab664f61d4c64aea0b12944ad
-
+ms.sourcegitcommit: 07ee32a293d53dd9c0e0afa5da2bac7ec146a536
+ms.openlocfilehash: c7f39a5396f0f9b6f9a577a3225ccadff1fd0dc9
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="azure-linux-agent-user-guide"></a>Azure Linux 代理用户指南
+# <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="introduction"></a>介绍
@@ -305,10 +306,5 @@ Linux 代理的正常运行依赖一些系统程序包：
   
   * [Ubuntu Wiki：配置交换分区](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [将自定义数据注入到 Azure 虚拟机中](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

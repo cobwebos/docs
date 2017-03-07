@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 62b5469d06974dfbe1b243091d34e1141416c971
+ms.sourcegitcommit: 4652795b8bef910b4e5eb83ef836e7b75621ab8a
+ms.openlocfilehash: bbea6700f7abc7822c3530f151c224cb59104cb1
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -44,7 +45,7 @@ Azure 日志集成当前支持 Azure 审核日志、虚拟机日志和 Azure 安
 在本文档中，已向你介绍 Azure 日志集成。 若要详细了解 Azure 日志集成和支持的日志类型，请参阅以下内容：
 
 * [Microsoft Azure Log Integration for Azure logs (Preview)](https://www.microsoft.com/download/details.aspx?id=53324)（适用于 Azure 日志的 Microsoft Azure 日志集成（预览版））– 有关 Azure 日志集成的详细信息、系统要求和安装说明的下载中心。
-* [Azure 日志集成入门](security-azure-log-integration-get-started.md) - 本教程将指导你完成 Azure 日志集成的安装，以及集成来自 Azure 存储、Azure 审核日志和安全中心警报的日志。
+* [Azure 日志集成入门](security-azure-log-integration-get-started.md) - 本教程将指导用户完成 Azure 日志集成的安装，以及集成来自 Azure WAD 存储的日志、Azure 活动日志、Azure 安全中心警报和 Azure Active Directory 审核日志。
 * [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) - 此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。
 * [Azure 日志集成常见问题解答 (FAQ)](security-azure-log-integration-faq.md) - 此常见问题解答回答了有关 Azure 日志集成的问题。
 * [集成安全中心警报与 Azure 日志集成](../security-center/security-center-integrating-alerts-with-log-integration.md) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与你的日志分析或 SIEM 解决方案同步。
@@ -52,9 +53,4 @@ Azure 日志集成当前支持 Azure 审核日志、虚拟机日志和 Azure 安
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
