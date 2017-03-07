@@ -58,8 +58,3 @@
 ## [Redis 缓存示例](cache-redis-samples.md)
 ## [定价](https://azure.microsoft.com/pricing/details/cache/)
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

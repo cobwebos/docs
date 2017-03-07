@@ -81,8 +81,3 @@
 ## [区域可用性](https://azure.microsoft.com/regions/services)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
-
-
-<!--HONumber=Jan17_HO3-->
-
-
