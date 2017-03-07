@@ -15,24 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/19/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8b88db5bb2c8153953109fcd0511c22042bcf931
-ms.openlocfilehash: bef30df14f6d00c4a7f5f5b3d59ec85b2e4fbe10
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: a795f7a8dbb02ad29c517dca6ab06575a8d48bf9
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="run-pig-jobs-using-powershell"></a>使用 PowerShell 运行 Pig 作业
+# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>使用 Azure PowerShell 通过 HDInsight 运行 Pig 作业
+
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-本文档提供使用 Azure PowerShell 向 HDInsight 群集上的 Hadoop 提交 Pig 作业的示例。 Pig 允许你通过使用可为数据转换建模的语言 (Pig Latin) 编写 MapReduce 作业，而无需使用映射和化简函数。
+本文档提供使用 Azure PowerShell 向 HDInsight 群集上的 Hadoop 提交 Pig 作业的示例。 Pig 允许用户通过使用可为数据转换建模的语言 (Pig Latin) 编写 MapReduce 作业，而无需使用映射和化简函数。
 
 > [!NOTE]
 > 本文档未详细描述示例中使用的 Pig Latin 语句的作用。 有关此示例中使用的 Pig Latin 的详细信息，请参阅[将 Pig 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-pig.md)。
-> 
-> 
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
-若要完成本文中的步骤，你将需要：
+## <a id="prereq"></a>先决条件
 
 * **一个 Azure HDInsight 群集**
 
@@ -43,13 +42,14 @@ ms.openlocfilehash: bef30df14f6d00c4a7f5f5b3d59ec85b2e4fbe10
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-## <a name="a-idpowershellarun-pig-jobs-using-powershell"></a><a id="powershell"></a>使用 PowerShell 运行 Pig 作业
-Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业。 从内部来讲，这是通过使用 REST 调用 HDInsight 群集上运行的 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)（以前称为 Templeton）实现的。
+## <a id="powershell"></a>使用 PowerShell 运行 Pig 作业
+
+Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业。 PowerShell 在内部使用 REST 调用来调用在 HDInsight 上运行的 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)。
 
 在远程 HDInsight 群集上运行 Pig 作业时，将使用以下 Cmdlet：
 
 * **Login-AzureRmAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证
-* **New-AzureRmHDInsightPigJobDefinition**：使用指定的 Pig Latin 语句创建新的*作业定义*
+* **New-AzureRmHDInsightPigJobDefinition**：使用指定的 Pig Latin 语句创建*作业定义*
 * **Start-AzureRmHDInsightJob**：将作业定义发送到 HDInsight，启动作业，然后返回可用来检查作业状态的*作业*对象
 * **Wait-AzureRmHDInsightJob**：使用作业对象来检查作业的状态。 它将等到作业完成或超出等待时间。
 * **Get-AzureRmHDInsightJobOutput**：用于检索作业的输出
@@ -110,9 +110,9 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
    
         .\pigjob.ps1
    
-    系统将提示你首先登录到 Azure 订阅。 然后，将要求你输入 HDInsight 群集的 HTTPs/Admin 帐户名称和密码。
+    系统将提示用户首先登录到 Azure 订阅。 然后，将要求你输入 HDInsight 群集的 HTTPs/Admin 帐户名称和密码。
 
-2. 在作业完成时，它应返回如下信息：
+2. 在作业完成时，它应返回类似于以下文本的信息：
    
         Start the Pig job ...
         Wait for the Pig job to complete ...
@@ -124,7 +124,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
         (ERROR,6)
         (FATAL,2)
 
-## <a name="a-idtroubleshootingatroubleshooting"></a><a id="troubleshooting"></a>故障排除
+## <a id="troubleshooting"></a>故障排除
 
 如果在作业完成时未返回任何信息，则可能表示处理期间发生错误。 若要查看此作业的错误信息，请将以下命令添加到 **pigjob.ps1** 文件的末尾，保存，然后重新运行该文件。
 
@@ -136,12 +136,12 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-这样就会返回运行作业时写入到服务器上的 STDERR 的信息，它可帮助确定该作业失败的原因。
+在运行作业时，这将返回写入到服务器上的 STDERR 的信息，它可帮助确定该作业失败的原因。
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>摘要
+## <a id="summary"></a>摘要
 如你所见，Azure PowerShell 提供了简单的方法让你在 HDInsight 群集上运行 Pig 作业、监视作业状态，以及检索输出。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Pig 的一般信息：
 
 * [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
@@ -150,10 +150,5 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

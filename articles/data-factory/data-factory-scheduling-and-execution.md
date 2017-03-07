@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: febc8fef864f88fa07accf91efc9b87727a48b32
 ms.openlocfilehash: 8b1029075178fbc591645a5fd6a112ad0a7f8b86
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -756,7 +757,7 @@ hive 活动每天采用两个输入并且生成输出切片。 可将每天的�
 
 ```
 DatasetSlice = [start, end]
-DependecyPeriod = [f(start, end), g(start, end)]
+DependencyPeriod = [f(start, end), g(start, end)]
 ```
 
 **F** 和 **g** 是映射函数，用于计算每个活动输入的依赖周期的开始和结束时间。
@@ -855,10 +856,5 @@ DependecyPeriod = [f(start, end), g(start, end)]
 * 指定输入和输出数据集的 **Availability**（**frequency** 和 **interval**），尽管数据工厂不使用该值。  
 * “关系图”视图不显示一次性管道。 这是设计的行为。
 * 一次性管道无法更新。 可对一次性管道执行克隆、重命名、更新属性，还可以对其部署以生成另外一个一次性管道。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

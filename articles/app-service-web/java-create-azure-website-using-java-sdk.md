@@ -5,7 +5,7 @@ tags: azure-classic-portal
 services: app-service\web
 documentationcenter: Java
 author: donntrenton
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 8954c456-1275-4d57-aff4-ca7d6374b71e
 ms.service: multiple
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: v-donntr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e7e2c6ef375b860ad79f0cc0c385dec2e5de2660
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 19ddcc3e8e1bb3b52eeb06d81e27793c25c1e230
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -25,14 +26,14 @@ ms.openlocfilehash: e7e2c6ef375b860ad79f0cc0c385dec2e5de2660
 <!-- Azure Active Directory workflow is not yet available on the Azure Portal -->
 
 ## <a name="overview"></a>概述
-本演练演示如何创建 Azure SDK for Java 应用程序，以便在 [Azure 应用服务][Azure 应用服务]中创建 Web 应用，然后将应用程序部署到该应用。 它由两个部分组成：
+本演练演示如何创建 Azure SDK for Java 应用程序，以便在 [Azure 应用服务][Azure App Service]中创建 Web 应用，然后将应用程序部署到该应用。 它由两个部分组成：
 
 * 第 1 部分演示如何生成创建 Web 应用的 Java 应用程序。
 * 第 2 部分演示如何创建简单的 JSP“Hello World”应用程序，然后使用 FTP 客户端将代码部署到应用服务。
 
 ## <a name="prerequisites"></a>先决条件
 ### <a name="software-installations"></a>软件安装
-本文中的 AzureWebDemo 应用程序代码是使用 Azure Java SDK 0.7.0 编写的，可使用 [Web 平台安装程序][Web 平台安装程序] (WebPI) 进行安装。 此外，请确保使用最新版本的[用于 Eclipse 的 Azure 工具][用于 Eclipse 的 Azure 工具]。 安装 SDK 之后，通过在“Maven 存储库”中运行“更新索引”更新 Eclipse 项目中的依赖项，然后在“依赖项”窗口中重新添加每个包的最新版本。 可以通过单击“帮助”>“安装详细信息”验证 Eclipse 中已安装软件的版本；至少应具有以下版本：
+本文中的 AzureWebDemo 应用程序代码是使用 Azure Java SDK 0.7.0 编写的，用户可以使用 [Web 平台安装程序][Web Platform Installer] (WebPI) 进行安装。 此外，请确保使用最新版本的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]。 安装 SDK 之后，通过在“Maven 存储库”中运行“更新索引”更新 Eclipse 项目中的依赖项，然后在“依赖项”窗口中重新添加每个包的最新版本。 可以通过单击“帮助”>“安装详细信息”验证 Eclipse 中已安装软件的版本；至少应具有以下版本：
 
 * Package for Microsoft Azure Libraries for Java 0.7.0.20150309
 * Eclipse IDE for Java EE Developers 4.4.2.20150219
@@ -41,7 +42,7 @@ ms.openlocfilehash: e7e2c6ef375b860ad79f0cc0c385dec2e5de2660
 在开始此过程之前，你需要拥有有效的 Azure 订阅，并在 Azure 上设置默认的 Active Directory (AD)。
 
 ### <a name="create-an-active-directory-ad-in-azure"></a>在 Azure 中创建 Active Directory (AD)
-如果 Azure 订阅中还没有 Active Directory (AD)，请使用 Microsoft 帐户登录 [Azure 经典门户][Azure 经典门户]。 如有多个订阅，请单击“订阅”并选择要用于此项目的订阅的默认目录。 然后单击“应用”切换到该订阅视图。
+如果 Azure 订阅中还没有 Active Directory (AD)，请使用 Microsoft 帐户登录 [Azure 经典门户][Azure classic portal]。 如有多个订阅，请单击“订阅”并选择要用于此项目的订阅的默认目录。 然后单击“应用”切换到该订阅视图。
 
 1. 从左侧菜单中选择“Active Directory”。 单击“新建”>“目录”>“自定义创建”。
 2. 在“添加目录”中，选择“创建新目录”。
@@ -49,12 +50,12 @@ ms.openlocfilehash: e7e2c6ef375b860ad79f0cc0c385dec2e5de2660
 4. 在“域”中输入域名。 这是默认情况下你的目录附带的基本域名，它采用 `<domain_name>.onmicrosoft.com` 格式。 可以根据目录名称或你拥有的其他域名将它命名。 以后，可以添加你的组织已在使用的其他域名。
 5. 在“国家或地区”中选择你的区域设置。
 
-有关 AD 的详细信息，请参阅[什么是 Azure AD 目录][什么是 Azure AD 目录]？
+有关 AD 的详细信息，请参阅[什么是 Azure AD 目录][What is an Azure AD directory]？
 
 ### <a name="create-a-management-certificate-for-azure"></a>创建 Azure 的管理证书
 Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。 对于使用服务管理 API 代表订阅所有者管理订阅资源的客户端应用程序，你可以使用这些 X.509 v3 证书来对其进行身份验证。
 
-此过程中的代码使用自签名证书在 Azure 上进行身份验证。 对于此过程，需要事先创建一个证书并将其上传到 [Azure 经典门户][Azure 经典门户]。 这包括以下步骤：
+此过程中的代码使用自签名证书在 Azure 上进行身份验证。 对于此过程，需要事先创建一个证书并将其上载到 [Azure 经典门户][Azure classic portal]。 这包括以下步骤：
 
 * 生成表示客户端证书的 PFX 文件，并将其保存在本地。
 * 从 PFX 文件生成管理证书（CER 文件）。
@@ -62,12 +63,12 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。 �
 * 将 PFX 文件转换为 JKS，因为 Java 以这种格式来使用证书进行身份验证。
 * 编写引用本地 JKS 文件的应用程序身份验证代码。
 
-完成此过程后，CER 证书将驻留在 Azure 订阅中，JKS 证书将驻留在本地驱动器中。 有关管理证书的详细信息，请参阅[创建并上传 Azure 管理证书][创建并上传 Azure 管理证书]。
+完成此过程后，CER 证书将驻留在 Azure 订阅中，JKS 证书将驻留在本地驱动器中。 有关管理证书的详细信息，请参阅[创建并上载 Azure 的管理证书][Create and Upload a Management Certificate for Azure]。
 
 #### <a name="create-a-certificate"></a>创建证书
 若要创建自己的自签名证书，请在操作系统上打开一个命令控制台并运行以下命令。
 
-> **注意：**运行此命令的计算机必须已安装 JDK。 此外，keytool 的路径取决于安装 JDK 的位置。 有关详细信息，请参阅 Java 联机文档中的[密钥和证书管理工具 (keytool)][密钥和证书管理工具 (keytool)]。
+> **注意：**运行此命令的计算机必须已安装 JDK。 此外，keytool 的路径取决于安装 JDK 的位置。 有关详细信息，请参阅 Java 联机文档中的[密钥和证书管理工具 (keytool)][Key and Certificate Management Tool (keytool)]。
 > 
 > 
 
@@ -93,7 +94,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。 �
 * `<password>` 是选择用于保护证书的密码；它的长度必须至少为 6 个字符。 可以不输入密码，但不建议这样做。
 * `<dname>` 是要与别名关联的 X.500 可分辨名称，它用作自签名证书中的颁发者和使用者字段。
 
-有关详细信息，请参阅[创建并上传 Azure 管理证书][创建并上传 Azure 管理证书]。
+有关详细信息，请参阅[创建并上载 Azure 的管理证书][Create and Upload a Management Certificate for Azure]。
 
 #### <a name="upload-the-certificate"></a>上载证书
 若要将自签名证书上传到 Azure，请转到经典门户中的“设置”页，然后单击“管理证书”选项卡。 单击页面底部的“上传”，然后导航到已创建的 CER 文件的所在位置。
@@ -320,7 +321,7 @@ AzureWebDemo 应用程序的目的是创建应用服务 Web 应用，因此请�
 1. 单击“文件”>“新建”>“动态 Web 项目”。 将它命名为 `JSPHello`。 不需要在此对话框中更改其他任何设置。 单击“完成” 。
    
     ![][3]
-2. 在项目资源管理器中，展开“JSPHello”项目，右键单击“WebContent”，然后单击“新建”>“JSP 文件”。 在“新建 JSP 文件”对话框中，将新文件命名为 `index.jsp`。 单击“资源组名称” 的 Azure 数据工厂。
+2. 在项目资源管理器中，展开“JSPHello”项目，右键单击“WebContent”，然后单击“新建”>“JSP 文件”。 在“新建 JSP 文件”对话框中，将新文件命名为 `index.jsp`。 单击“下一步”。
 3. 在“选择 JSP 模板”对话框中，选择“新建 JSP 文件 (html)”，然后单击“完成”。
 4. 在 index.jsp 中，在 `<head>` 和 `<body>` 标记部分中添加以下代码：
    
@@ -397,7 +398,7 @@ AzureWebDemo 应用程序的目的是创建应用服务 Web 应用，因此请�
 #### <a name="get-ftp-connection-information"></a>获取 FTP 连接信息
 若要使用 FTP 将应用程序文件部署到新建的 Web 应用，你需要获取连接信息。 可通过两种方法获取连接信息。 一种方法是访问 Web 应用的“仪表板”页；另一种方法是下载 Web 应用的发布配置文件。 发布配置文件是一个 XML 文件，它提供 Azure App Service 中 Web Apps 的 FTP 主机名和登录凭据等信息。 你可以使用此用户名和密码部署到与 Azure 帐户关联的所有订阅中的任何 Web 应用，而不仅仅是此 Web 应用。
 
-若要从 [Azure 门户][Azure 门户]的 Web 应用边栏选项卡中获取 FTP 连接信息：
+若要从 [Azure 门户][Azure Portal]的 Web 应用边栏选项卡中获取 FTP 连接信息，请执行以下操作：
 
 1. 在 **Essentials** 下查找并复制**FTP 主机名**。 这是类似于 `ftp://waws-prod-bay-NNN.ftp.azurewebsites.windows.net` 的 URI。
 2. 在 **Essentials** 下查找并复制 **FTP/部署用户名**。 此值的形式为 *webappname\deployment-username*；例如 `WebDemoWebApp\deployer77`。
@@ -514,19 +515,14 @@ JSPHello.war 自身首先会显示在目录区域中：
 [10]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-2.png
 
 
-[Azure 应用服务]: http://go.microsoft.com/fwlink/?LinkId=529714
-[Web 平台安装程序]: http://go.microsoft.com/fwlink/?LinkID=252838
-[用于 Eclipse 的 Azure 工具]: https://msdn.microsoft.com/library/azure/hh690946.aspx
-[Azure 经典门户]: https://manage.windowsazure.com
-[什么是 Azure AD 目录]: http://technet.microsoft.com/library/jj573650.aspx
-[创建并上传 Azure 管理证书]: ../cloud-services/cloud-services-certs-create.md
-[密钥和证书管理工具 (keytool)]: http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html
+[Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
+[Web Platform Installer]: http://go.microsoft.com/fwlink/?LinkID=252838
+[Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh690946.aspx
+[Azure classic portal]: https://manage.windowsazure.com
+[What is an Azure AD directory]: http://technet.microsoft.com/library/jj573650.aspx
+[Create and Upload a Management Certificate for Azure]: ../cloud-services/cloud-services-certs-create.md
+[Key and Certificate Management Tool (keytool)]: http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html
 [WebSiteManagementClient]: http://azure.github.io/azure-sdk-for-java/com/microsoft/azure/management/websites/WebSiteManagementClient.html
 [WebSpaceNames]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/models/WebSpaceNames.html
-[Azure 门户]: https://portal.azure.com
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Azure Portal]: https://portal.azure.com
 

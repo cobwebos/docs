@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/13/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
-ms.openlocfilehash: 6c9e70c3de404a3a5af343570203d6724342e062
-
+ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
+ms.openlocfilehash: 2f2792c409b579ba721195e5749a38c6396f339d
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="correlate-events-over-time-with-storm-and-hbase-on-hdinsight"></a>使用 HDInsight 上的 Storm 和 HBase 按时间对事件进行关联
+# <a name="correlate-events-that-arrive-at-differnet-times-using-storm-and-hbase"></a>使用 Storm 和 HBase 关联在不同时间到达的事件
 
 通过使用 Apache Storm 的持久数据存储，你可以将不同时间到达的数据条目关联起来。 例如，将用户会话的登录事件和注销事件关联起来即可计算该会话的持续时间。
 
@@ -217,10 +218,5 @@ ms.openlocfilehash: 6c9e70c3de404a3a5af343570203d6724342e062
 ## <a name="next-steps"></a>后续步骤
 
 如需更多的 Storm 示例，请参阅 [Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

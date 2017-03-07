@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: bprakash
 translationtype: Human Translation
-ms.sourcegitcommit: 934b2a1eca2034cb01c6d51194c19199773e1ad3
-ms.openlocfilehash: ff155bc08049467e20877f76d87a6067d38fc848
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 0371c6ba2434c315db1bdbacab8639fd40d5c999
+ms.openlocfilehash: 1986a4f19d89f1451ca47a94511ff998705ed785
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -64,21 +64,10 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 >
 >
 
-| 组件 | HDInsight version 3.5（默认） | HDInsight 版本 3.4 | HDInsight 版本 3.3 | HDInsight 版本 3.2 | HDInsight 版本 3.1 | HDInsight 版本 3.0 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Hortonworks 数据平台 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
-| Apache Hadoop 和 YARN |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
-| Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 | |
-| Apache Pig |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
-| Apache Hive 和 HCatalog |1.2.1.2.5 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
-| Apache HBase |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 | |
-| Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
-| Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
-| Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
-| Apache Storm |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 | |
-| Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 | |
-| Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 | |
-| Apache Spark |1.6.2 + 2.0（仅限 Linux） |1.6.0（仅限 Linux） |1.5.2（仅限 Linux/实验性生成） |1.3.1（仅限 Windows） | | |
+
+| 组件 | HDInsight 版本 3.5（默认）| HDInsight 版本 3.4 | HDInsight 版本 3.3 | HDInsight 版本 3.2 | HDInsight 版本 3.1 | HDInsight 版本 3.0 |
+
+| --- | --- | --- | --- | --- | --- | --- | | Hortonworks 数据平台 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 | | Apache Hadoop 和 YARN |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 | | Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 | | | Apache Pig |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 | | Apache Hive 和 HCatalog |1.2.1.2.5 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 | | Apache HBase |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 | | | Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 | | Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 | | Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 | | Apache Storm |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 | | | Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 | | | Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 | | | Apache Spark |1.6.2 + 2.0（仅 Linux）|1.6.0（仅 Linux）|1.5.2（仅 Linux/试验版本）|1.3.1（仅 Windows）| | |
 
 **获取当前组件版本信息**
 
