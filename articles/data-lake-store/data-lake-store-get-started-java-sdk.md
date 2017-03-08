@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 12/23/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 091fadce064086d82b833f8e44edfbba125d3e6b
-ms.openlocfilehash: cb5babdd8fea3615d8aa27f05a07c3b489f3faa4
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3e4302e7c5b54a46994eccaa8cf9ecbb0a84446d
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/30/2017
 2. 检索 Azure AD Web 应用程序的客户端 ID、客户端机密和令牌终结点。
 3. 配置 Azure AD Web 应用程序对你要从所创建的 Java 应用程序访问的 Data Lake Store 文件/文件夹的访问权限。
 
-有关如何执行这些步骤的说明，请参阅[创建 Active Directory 应用程序](data-lake-store-authenticate-using-active-directory.md#create-an-active-directory-application)。
+有关如何执行这些步骤的说明，请参阅[创建 Active Directory 应用程序](data-lake-store-authenticate-using-active-directory.md)。
 
 Azure Active Directory 提供其他选项，也可以检索令牌。 可以根据自己的方案从多种不同的身份验证机制中选择，例如，在浏览器中运行的应用程序、作为桌面应用程序分发的应用程序，或者在本地或 Azure 虚拟机中运行的服务器应用程序。 还可以选择不同类型的凭据，例如密码、证书、双重身份验证，等等。此外，Azure Active Directory 允许将本地 Active Directory 用户同步到云。 有关详细信息，请参阅 [Authentication Scenarios for Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md)（Azure Active directory 的身份验证方案）。 
 
