@@ -4,7 +4,7 @@ description: "提供有关 Windows 设备中的企业状态漫游设置的信息
 services: active-directory
 keywords: "什么是企业状态漫游, 企业同步, Windows 云"
 documentationcenter: 
-author: markvi
+author: MarkusVi
 manager: femila
 editor: curtand
 ms.assetid: 83b3b58f-94c1-4ab0-be05-20e01f5ae3f0
@@ -18,6 +18,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: ce78b996a5f45b0b074563bc50af5aaab85f2667
 ms.openlocfilehash: 56eacc48102302961132bba6d14838327a899c59
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -37,10 +38,5 @@ ms.openlocfilehash: 56eacc48102302961132bba6d14838327a899c59
 | [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md) |Windows 10 提供了组策略和移动设备管理 (MDM) 策略设置以限制设置同步。 |
 | [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) |以下为将在 Windows 10 中漫游和/或备份的所有设置的完整列表。 |
 | [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md) |本主题介绍故障排除的一些基本步骤，并包含已知问题列表。 |
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 
