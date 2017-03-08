@@ -16,7 +16,7 @@
 #### [Windows 代理](log-analytics-windows-agents.md)
 #### [Linux 代理](log-analytics-linux-agents.md)
 #### [Azure 虚拟机](log-analytics-azure-vm-extension.md)
-#### [Azure 存储](log-analytics-azure-storage.md)
+#### [Azure 资源](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [配置管理器](log-analytics-sccm.md)
 #### [OMS 网关](log-analytics-oms-gateway.md)

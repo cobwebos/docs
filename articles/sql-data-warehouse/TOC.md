@@ -3,6 +3,7 @@
 ## [什么是 SQL 数据仓库？](sql-data-warehouse-overview-what-is.md)
 ## [数据仓库工作负荷](sql-data-warehouse-overview-workload.md)
 ## [分布式数据](sql-data-warehouse-distributed-data.md)
+## [常见问题](sql-data-warehouse-overview-faq.md)
 
 # 入门
 
@@ -10,6 +11,7 @@
 ## [最佳实践](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 ## [获取支持](sql-data-warehouse-get-started-create-support-ticket.md)
+## [故障排除](sql-data-warehouse-troubleshoot.md)
 
 # 如何
 
@@ -113,8 +115,7 @@
 ### [概述](sql-data-warehouse-overview-manage-user-queries.md)
 ### [列存储压缩](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [查询](sql-data-warehouse-manage-monitor.md)
-### [工作负荷](sql-data-warehouse-develop-concurrency.md)
-### [排除故障](sql-data-warehouse-troubleshoot.md)
+### [工作负载](sql-data-warehouse-develop-concurrency.md)
 
 ## “安全”
 
