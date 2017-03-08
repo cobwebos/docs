@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: d4f5d9dbe60e549d270e190e626a87a66696f07c
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -168,10 +169,5 @@ Azure AD 中还提供其他可在事件响应调查期间使用的重要内置�
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](active-directory-hybrid-identity-design-considerations-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
