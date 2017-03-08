@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 83881cda043fc9f1ef48281e8160a882c1f9bced
-ms.openlocfilehash: 5aa7353e681a16d2032fecaf8a2de50e241ac4ad
+ms.sourcegitcommit: f76277ab93c58098648ee65ea5aba0757495da68
+ms.openlocfilehash: 1222a670a1bf530871a19c79b7da441c03f8df51
 ms.lasthandoff: 02/22/2017
 
 
@@ -107,7 +107,7 @@ Azure 媒体服务引入了视频智能很强大的 Azure 媒体分析。 有关
 
 ### <a name="azure-media-encoder-deprecation-announcement"></a>Azure 媒体编码器弃用公告
 
-Azure 媒体编码器将于 12 个月内弃用。 请开始使用[媒体编码器标准版](media-services-media-encoder-standard-formats.md)编码器。
+将在 Media Encoder Standard 发布后大约 12 个月内开始弃用 Azure 媒体编码器。
 
 ### <a name="azure-sdk-for-php"></a>内置 Web 服务器
 Azure SDK 团队已发布新版 [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) 包，其中包含 Microsoft Azure 媒体服务的更新与新功能。 具体而言，适用于 PHP 的 Azure 媒体服务 SDK 现在支持最新的[内容保护](media-services-content-protection-overview.md)功能：有无令牌限制均可使用 AES 与 DRM（PlayReady 和 Widevine）动态加密。 还支持缩放[编码单位](media-services-dotnet-encoding-units.md)。

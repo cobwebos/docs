@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: richrund
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 3bb103a8def2e1c56695169568c2d3c64b7f291f
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-azure-virtual-machines-to-log-analytics"></a>将 Azure 虚拟机连接到 Log Analytics
+# <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>使用 Log Analytics 代理将 Azure 虚拟机连接到 Log Analytics
+
 对于 Windows 和 Linux 计算机，建议使用的收集日志和指标的方法是安装 Log Analytics 代理。
 
 在 Azure 虚拟机上安装 Log Analytics 代理的最简单的方法是通过 Log Analytics VM 扩展。  使用扩展可简化安装流程，并可自动配置代理，以将数据发送至指定的 Log Analytics 工作区。 代理还会自动升级，以确保拥有最新的功能和修补程序。
@@ -34,8 +37,8 @@ ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
 
 > [!IMPORTANT]
 > 如果将 Log Analytics 配置为使用“[Azure 诊断](log-analytics-azure-storage.md)”索引日志数据并配置代理收集相同的日志，则日志被收集了两次。 会向你收取两种数据源的费用。 如果已安装代理，则应只使用代理收集日志数据 - 不要将 Log Analytics 配置为通过 Azure 诊断收集日志数据。
-> 
-> 
+>
+>
 
 有三种简单简单方法方法可启用 Log Analytics 虚拟机扩展：
 
@@ -53,7 +56,7 @@ ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
    ![OMS 工作区](./media/log-analytics-azure-vm-extension/oms-connect-azure-01.png)
 4. 在“**Log Analytics 管理**”下，选择“**虚拟机**”。  
    ![虚拟机](./media/log-analytics-azure-vm-extension/oms-connect-azure-02.png)
-5. 在“**虚拟机**”列表中，选择想要在其中安装代理的虚拟机。。 VM 的“**OMS 连接状态**”指示其“**未连接**”。  
+5. 在“**虚拟机**”列表中，选择想要在其中安装代理的虚拟机。 VM 的“**OMS 连接状态**”指示其“**未连接**”。  
    ![VM 未连接](./media/log-analytics-azure-vm-extension/oms-connect-azure-03.png)
 6. 在虚拟机的详细信息中，选择“**连接**”。 则自动会为 Log Analytics 工作区安装并配置代理。 此过程需要几分钟的时间，在此期间，“OMS 连接”状态为“*正在连接...*”  
    ![连接 VM](./media/log-analytics-azure-vm-extension/oms-connect-azure-04.png)
@@ -400,10 +403,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 
 * [将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)
 * [将 Linux 计算机连接到 Log Analytics](log-analytics-linux-agents.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

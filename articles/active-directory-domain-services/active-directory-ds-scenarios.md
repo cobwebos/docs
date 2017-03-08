@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 359653f29adc538a4fe2f2143e8132bdd9a9d15b
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -82,10 +83,4 @@ Contoso 管理员可以使用 Azure RemoteApp 创建已加入域的集合。 由
 ![Azure RemoteApp](./media/active-directory-domain-services-scenarios/azure-remoteapp.png)
 
 有关此部署方案的详细信息，请参阅标题为 [Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)（使用 Azure RemoteApp 和 Azure AD 域服务即时转移工作负荷）的远程桌面服务博客文章。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

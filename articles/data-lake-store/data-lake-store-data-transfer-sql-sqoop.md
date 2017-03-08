@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/02/2016
+ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: f1c8c5b9bfa14b817efb635cf812242afaa70e35
 ms.openlocfilehash: d536ba2bd44941d036a00a74243cb37b8ae69abb
+ms.lasthandoff: 12/02/2016
 
 
 ---
@@ -143,9 +144,4 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 
 * [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 8651566079a0875e1a3a549d4bf1dbbc6ac7ce21
-ms.openlocfilehash: 410159ad7b5abc5eb3cb1a212895eda7ac225323
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: fb670dd7296f329fc280cf9f2c2adba2df44c07c
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -47,7 +48,7 @@ Azure VM - 无论它使用托管磁盘还是非托管磁盘 - 都能以标准存
 
 ## <a name="creating-a-vm-with-a-managed-disk"></a>创建具有托管磁盘的 VM
 
-以下示例要求具有 Azure CLI 2.0（预览版），可[在此安装]。
+以下示例要求具有 Azure CLI 2.0，可[在此安装]。
 
 首先，创建资源组以管理资源：
 
@@ -238,10 +239,5 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 ## <a name="storage-limits"></a>存储限制
 * [存储服务限制](../azure-subscription-service-limits.md#storage-limits)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

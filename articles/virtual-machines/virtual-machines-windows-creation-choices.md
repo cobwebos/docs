@@ -1,5 +1,5 @@
 ---
-title: "创建 Windows VM 的不同方式 | Microsoft Docs"
+title: "在 Azure 中创建 Windows VM 的不同方式 | Microsoft 文档"
 description: "列出使用资源管理器创建 Windows 虚拟机的不同方式。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/27/2016
+ms.date: 03/02/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bc3921003bf3b91de88e70ff18b5c397687c288c
-ms.openlocfilehash: 6f4a825faac413652b1dc3880d899e0e40caedbc
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: d01b71257a4a95294aebcde8c1d056e3fc3ed1be
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="different-ways-to-create-a-windows-vm"></a>创建 Windows VM 的不同方法
+# <a name="different-ways-to-create-a-windows-virtual-machine"></a>创建 Windows 虚拟机的不同方式
+
 Azure 提供不同方式来创建虚拟机，因为虚拟机适合于不同的用户和目的。 这意味着，你需要在虚拟机及其创建方式上做出一些选择。 本文提供了这些选项的摘要和说明链接。
 
 ## <a name="azure-portal"></a>Azure 门户
@@ -43,10 +46,5 @@ Azure 提供不同方式来创建虚拟机，因为虚拟机适合于不同的�
 结合使用 Visual Studio 和 Azure Tools for Visual Studio 以及 Azure SDK，生成、管理和部署 VM。
 
 [用于 Visual Studio 的 Azure 工具](https://www.visualstudio.com/features/azure-tools-vs)
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "新架构版本 2016-06-01 | Microsoft Docs"
-description: "了解如何为最新版本的逻辑应用编写 JSON 定义"
+title: "架构更新（2016 年&6; 月&1; 日）- Azure 逻辑应用 | Microsoft 文档"
+description: "为 Azure 逻辑应用创建 JSON 定义，使用的架构版本为 2016-06-01"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,25 +12,30 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: aaacb76fe845ca8892e4fe3979be5ea6ac5e902b
+ms.sourcegitcommit: dab219386a32f519e50f76e18013f8f94a2266ff
+ms.openlocfilehash: 9d8f0be3d5c8e2c2e5f169dc1d0851c95a641d0c
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="new-schema-version-2016-06-01"></a>新架构版本 2016-06-01
-逻辑应用的新架构和 API 版本具有大量改进，可提高逻辑应用的可靠性和易用性。 有 3 个重要差异：
+# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
 
-1. 添加了范围，它们是包含操作集合的操作。
-2. 条件和循环是一流操作
-3. 通过 `runAfter` 属性（替换了 `dependsOn`）更详细地进行执行排序
+适用于 Azure 逻辑应用的这个新架构和 API 版本包含多项关键改进，使逻辑应用更可靠，更易于使用：
 
-有关将逻辑应用从 2015-08-01-预览架构升级到 2016-06-01 架构的信息，请[查看下面的升级部分](#upgrading-to-2016-06-01-schema)。
+* [作用域](#scopes)允许用户以操作集合方式将操作组合或嵌套在一起。
+* [条件和循环](#conditions-loops)现在是一流操作。
+* 针对 `runAfter` 属性运行操作时排序更精确，替换了 `dependsOn`
 
-## <a name="1-scopes"></a>1.范围
-此架构中的最大变化之一是添加了范围以及能够相互嵌套操作。  将一组操作分组在一起时，或是需要相互嵌套操作（例如一个条件可以包含其他条件）时，这会非常有用。  可以在[此处](../logic-apps/logic-apps-loops-and-scopes.md)找到有关范围语法的更多详细信息，不过可以在下面找到一个简单范围示例：
+若要将逻辑应用从 2015 年 8 月 1 日的预览版架构升级到 2016 年 6 月 1 日的架构，请[查看升级部分](#upgrading-to-2016-06-01-schema)。
+
+<a name="scopes"></a>
+## <a name="scopes"></a>范围
+
+此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的作用域示例：
 
 ```
 {
@@ -52,14 +57,16 @@ ms.openlocfilehash: aaacb76fe845ca8892e4fe3979be5ea6ac5e902b
 }
 ```
 
-## <a name="2-conditions-and-loops-changes"></a>2.条件和循环更改
-在以前版本的架构中，条件和循环是与单个操作关联的参数。  此限制已在此架构中解除，现在条件和循环会显示为一种操作类型。  可以在[本文中](../logic-apps/logic-apps-loops-and-scopes.md)找到详细信息，下面演示了条件操作的简单示例：
+<a name="conditions-loops"></a>
+## <a name="conditions-and-loops-changes"></a>条件和循环更改
+
+在以前的架构版本中，条件和循环是与单个操作关联的参数。 此架构提升了该限制，因此条件和循环现在显示为操作类型。 请详细了解[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的条件操作示例：
 
 ```
 {
-    "If_trigger_is_foo": {
+    "If_trigger_is_some-trigger": {
         "type": "If",
-        "expression": "@equals(triggerBody(), 'foo')",
+        "expression": "@equals(triggerBody(), 'some-trigger')",
         "runAfter": { },
         "actions": {
             "Http_2": {
@@ -73,14 +80,18 @@ ms.openlocfilehash: aaacb76fe845ca8892e4fe3979be5ea6ac5e902b
         },
         "else": 
         {
-            "if_trigger_is_bar": "..."
+            "if_trigger_is_another-trigger": "..."
         }      
     }
 }
 ```
 
-## <a name="3-runafter-property"></a>3.RunAfter 属性
-新的 `runAfter` 属性替换了 `dependsOn`，以帮助更精确地进行运行排序。  `dependsOn` 是“操作已运行并成功”的同义词，但是在许多时候，当上一个操作成功、失败或已跳过时，需要执行相应操作。  通过 `runAfter` 可以实现这种灵活性。  它是一个对象，指定在它之前运行的所有操作名称，并定义可接受用于触发的状态的数组。  例如，如果要在步骤 A 成功并且步骤 B 成功或失败之后运行，则会构造以下 `runAfter` 属性：
+<a name="run-after"></a>
+## <a name="runafter-property"></a>“runAfter”属性
+
+`runAfter` 属性替换了 `dependsOn`，根据以前操作的状态为操作指定运行顺序时更精确。
+
+`dependsOn` 属性等同于“操作已运行并成功”，不管用户需要执行某个操作多少次（具体取决于以前的操作是成功、失败还是已跳过）。 `runAfter` 属性以对象方式提供上述灵活性，通过对象指定所有操作名称，对象在相应操作完成后运行。 该属性也定义可充当触发器的状态的数组。 例如，如果某个操作需要在步骤 A 成功后运行，也需要在步骤 B 成功或失败后运行，则可将 `runAfter` 属性构造如下：
 
 ```
 {
@@ -92,47 +103,62 @@ ms.openlocfilehash: aaacb76fe845ca8892e4fe3979be5ea6ac5e902b
 }
 ```
 
-## <a name="upgrading-to-2016-06-01-schema"></a>升级到 2016-06-01 架构
-升级到新的 2016-06-01 架构只需几个步骤。  可以在[本文中](../logic-apps/logic-apps-schema-2016-04-01.md)找到有关架构中的更改的详细信息。  升级过程包括运行升级脚本、保存为新逻辑应用以及可能会覆盖旧逻辑应用（如果需要）。
+## <a name="upgrade-your-schema"></a>升级架构
 
-1. 打开当前逻辑应用。
-2. 单击工具栏中的“更新架构”按钮
+升级到新的架构只需几个步骤。 升级过程包括运行升级脚本、另存为新的逻辑应用，以及在可能情况下根据需要覆盖旧逻辑应用。
+
+1. 在 Azure 门户中打开逻辑应用。
+
+2. 转到“概览”。 在逻辑应用工具栏上，选择“更新架构”。
    
-    ![][1]
+    ![选择“更新架构”][1]
    
-    会返回升级后的定义。  可以将此复制并粘贴到资源定义中（如果需要），但是我们**强烈建议**使用“另存为”按钮以确保所有连接引用都在升级后的逻辑应用中有效。
-3. 单击升级边栏选项卡的工具栏中的“另存为”按钮。
-4. 填写名称和逻辑应用状态，然后单击“创建”以部署升级逻辑应用。
-5. 验证升级后的逻辑应用是否按预期方式工作。
+    此时会返回升级的定义，用户可以根据需要将其复制并粘贴到资源定义中。 
+    但是，我们**强烈建议**用户选择“另存为”，确保已升级逻辑应用中的所有连接引用有效。**** 
+   
+
+3. 在升级边栏选项卡工具栏中，选择“另存为”。
+
+4. 输入逻辑名称和状态。 若要部署升级的逻辑应用，请选择“创建”。
+
+5. 确认已升级的逻辑应用正常运行。
    
    > [!NOTE]
-   > 如果使用手动或请求触发器，则回调 URL 会在新逻辑应用中更改。  使用新 URL 验证它是否以端到端方式正常工作，可以在现有逻辑应用上克隆以保留以前的 URL。
-   > 
-   > 
-6. 可选 使用工具栏中的“克隆”按钮（与上图中的“更新架构”图标相邻）将以前的逻辑应用覆盖为新的架构版本。  仅当要保留逻辑应用的相同资源 ID 或请求触发器 URL 时，这才是必需的。
+   > 如果使用 manual 或 request 触发器，则回调 URL 会在新逻辑应用中更改。 请测试新的 URL，确保端到端体验正常。 若要保留以前的 URL，可以通过现有的逻辑应用进行克隆。
+
+6. *可选* 若要使用新的架构版本覆盖以前的逻辑应用，请在工具栏上选择“更新架构”旁边的“克隆”。 仅当需要保留逻辑应用的同一资源 ID 或请求触发器 URL 时，此步骤才是必需的。
 
 ### <a name="upgrade-tool-notes"></a>升级工具说明
-#### <a name="condition-mapping"></a>条件映射
-该工具在升级后的定义中，会尽量将 true 和 false 分支操作分组在范围中。  具体而言，`@equals(actions('a').status, 'Skipped')` 设计器模式应显示为 `else` 操作。  但是如果该工具检测到它无法识别的模式，则可能会为 true 和 false 分支创建单独条件。  操作可以在升级后重新映射（如果需要）。
 
-#### <a name="foreach-with-condition"></a>具有条件的 ForEach
-在新架构中，可以使用筛选器操作重复每个项一个条件的以前 foreach 循环模式。  这应在升级时自动进行。  条件会变为 foreach 循环前的筛选器操作（用于仅返回与条件匹配的项数组），该数组会传递到 foreach 操作中。  可以在[本文中](../logic-apps/logic-apps-loops-and-scopes.md)查看此方面的示例
+#### <a name="mapping-conditions"></a>映射条件
+
+在升级的定义中，该工具尽量将 true 和 false 分支操作作为作用域组合在一起。 具体而言，`@equals(actions('a').status, 'Skipped')` 设计器模式应显示为 `else` 操作。 但是，如果检测到无法识别的模式，该工具可能会为 true 和 false 分支创建单独条件。 可以根据需要在升级后重新映射操作。
+
+#### <a name="foreach-loop-with-condition"></a>带条件的“foreach”循环
+
+在新架构中，可以使用筛选器操作复制每个项都有一个条件的 `foreach` 循环的模式，不过，此更改会在用户升级时自动发生。 条件会变为 foreach 循环前的筛选器操作，仅返回与条件匹配的项数组，而该数组会传递到 foreach 操作中。 有关示例，请参阅[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)。
 
 #### <a name="resource-tags"></a>资源标记
-资源标记会在升级时删除，你需要为升级后的工作流再次设置它们。
+
+升级之后会删除资源标记，因此必须针对升级的工作流重置这些标记。
 
 ## <a name="other-changes"></a>其他更改
-### <a name="manual-trigger-renamed-to-request-trigger"></a>手动触发器重命名为请求触发器
-类型 `manual` 已弃用，并重命名为具有 `http` 种类的 `request`。  这与触发器用于构建的模式类型更加一致。
+
+### <a name="renamed-manual-trigger-to-request-trigger"></a>已将“manual”触发器重命名为“request”触发器
+
+`manual` 触发器类型已弃用，并已通过类型 `http` 将其重命名为 `request`。 对于使用触发器构建的那类模式，此更改加强了一致性。
 
 ### <a name="new-filter-action"></a>新“筛选器”操作
-如果在使用大型数组并需要将它筛选为较小的项集合，则可以使用新“筛选器”类型。  它接受一个数组和一个条件，会为每个项评估条件并返回满足条件的项的数组。
 
-### <a name="foreach-and-until-action-restrictions"></a>ForEach 和 until 操作限制
-foreach 和 until 循环限制为单个操作。
+新的 `filter` 类型用于将大型数组筛选为小型项集，可以接受一个数组和一个条件，针对每个项对条件进行评估，返回项符合条件的数组。
 
-### <a name="trackedproperties-on-actions"></a>操作中的 TrackedProperties
-操作现在具有一个名为 `trackedProperties` 的附加属性（与 `runAfter` 和 `type` 同级）。  它是一个对象，指定要包含在作为工作流一部分发出的 Azure 诊断遥测中的特定操作输入或输出。  例如：
+### <a name="restrictions-for-foreach-and-until-actions"></a>“foreach”和“until”操作的限制
+
+`foreach` 和 `until` 循环限制为单个操作。
+
+### <a name="new-trackedproperties-for-actions"></a>新的针对操作的“trackedProperties”
+
+操作现在可以有一个名为 `trackedProperties` 的额外属性，与 `runAfter` 和 `type` 属性同级。 此对象指定要包含在 Azure 诊断遥测中的特定操作输入或输出，作为工作流的一部分发出。 例如：
 
 ```
 {                
@@ -152,14 +178,9 @@ foreach 和 until 循环限制为单个操作。
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [使用逻辑应用工作流定义](../logic-apps/logic-apps-author-definitions.md)
-* [创建逻辑应用部署模板](../logic-apps/logic-apps-create-deploy-template.md)
+* [为逻辑应用创建工作流定义](../logic-apps/logic-apps-author-definitions.md)
+* [创建逻辑应用的部署模板](../logic-apps/logic-apps-create-deploy-template.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

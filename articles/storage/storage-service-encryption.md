@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 130100a4f1710a7820c8e9793db73144d7d68808
-ms.openlocfilehash: 26b1f0708b3705297b9a35cce0692d3503b03246
+ms.sourcegitcommit: a5cce0da15941e91cbe74cdd1e0306ebd8db362c
+ms.openlocfilehash: d228ceb1a99e8fe11b59e6372b60bbfc93adac27
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,10 +39,10 @@ SSE 的工作方式是在数据写入到 Azure 存储时对其加密，可用于
 
 存储服务加密 - 文件预览版 SSE 现在可用于加密文件存储中的数据。 此功能目前处于预览状态。 下面给出的是提供适用于文件存储的 SSE 的区域列表。
 
-若要参与 SSE 文件预览版，请联系 ssdiscussions@microsoft.com。
+若要参与 SSE 文件预览版，请联系 ssediscussions@microsoft.com。
 
 若要了解详细信息，请参阅“常见问题解答”。
-目前，在“东亚”区域中提供适用于文件存储的文件存储存储服务加密。
+目前，在“东亚”、“北欧”和“美国东部 2”区域中提供适用于文件存储的文件存储存储服务加密。
 
 
 若要启用或禁用存储帐户的存储服务加密，请登录 [Azure 门户](https://azure.portal.com)，然后选择存储帐户。 在“设置”边栏选项卡中，寻找如屏幕截图所示的“Blob 服务”部分，然后单击“加密”。
@@ -198,10 +199,5 @@ Azure 文件存储使用标准 SMB 协议在云中提供文件共享。 可以�
 
 ## <a name="next-steps"></a>后续步骤
 Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 有关详细信息，请访问[存储安全指南](storage-security-guide.md)。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

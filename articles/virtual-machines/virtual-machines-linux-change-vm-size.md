@@ -1,5 +1,5 @@
 ---
-title: "如何使用 Azure CLI 2.0（预览版）调整 Linux VM 的大小 | Microsoft Docs"
+title: "如何使用 Azure CLI 2.0 调整 Linux VM 的大小 | Microsoft 文档"
 description: "如何通过更改 VM 大小来扩展或缩减 Linux 虚拟机。"
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,23 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b95ab7b023dddc77231a59151b0c2d44cf968b6e
-ms.openlocfilehash: fb2adcfafca35c35d0b526c30d242927b3ef58fe
-
+ms.sourcegitcommit: 1a218c8b9a1119ed284bc55071eed2a082122802
+ms.openlocfilehash: 78efd3d80f066d6b182b142564dbd0a7a9e01431
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="how-to-resize-a-linux-vm"></a>如何调整 Linux VM 的大小
-预配虚拟机 (VM) 后，可以通过更改 [VM 大小][vm-sizes]来扩展或缩减 VM。 在某些情况下，必须先解除分配 VM。 如果所需大小在托管 VM 的硬件群集上不可用，则需要解除分配 VM。 本文详细介绍了如何使用 Azure CLI 2.0（预览版）来调整 Linux VM 的大小。
+
+# <a name="resize-a-linux-vm-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 调整 Linux VM 的大小
+
+预配虚拟机 (VM) 后，可以通过更改 [VM 大小][vm-sizes]来扩展或缩减 VM。 在某些情况下，必须先解除分配 VM。 如果所需大小在托管 VM 的硬件群集上不可用，则需要解除分配 VM。 
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 可以使用以下 CLI 版本之一完成任务：
 
-- [Azure CLI 1.0](virtual-machines-linux-change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于经典部署模型和资源管理部署模型的 CLI
-- [Azure CLI 2.0（预览版）](#resize-a-linux-vm)- 适用于资源管理部署模型的下一代 CLI（本文）
+- [Azure CLI 1.0](#resize-a-linux-vm) – 用于经典部署模型和资源管理部署模型（本文）的 CLI
+- [Azure CLI 2.0](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - 适用于资源管理部署模型的下一代 CLI
 
-## <a name="resize-a-linux-vm"></a>调整 Linux VM 的大小
-若要调整 VM 的大小，需要最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)并已使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+
+
+若要调整 VM 的大小，需要最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
 
 1. 使用 [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) 查看托管 VM 的硬件群集上可用的 VM 大小的列表。 以下示例列出资源组 `myResourceGroup` 区域中名为 `myVM` 的 VM 的 VM 大小：
    
@@ -65,9 +69,4 @@ ms.openlocfilehash: fb2adcfafca35c35d0b526c30d242927b3ef58fe
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]: virtual-machines-linux-sizes.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

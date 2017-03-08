@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: adegeo
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 090374b057a62251e40ccc41f60f61e84e08a03f
-ms.openlocfilehash: ff137ead5e3490a129b36c959040d3571bff7669
+ms.sourcegitcommit: 3f1fdddcf382026e25ac6bca0b835e560152be9f
+ms.openlocfilehash: 98b302c26867d2fb2ade296e6983306266fa6f63
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="automatic-scaling-and-virtual-machine-scale-sets"></a>自动缩放和虚拟机缩放集
+# <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>如何使用自动缩放和虚拟机规模集
 在规模集内自动缩放虚拟机是指按需在规模集内创建或删除虚拟机，以符合性能需求。 当工作量增大时，应用程序可能需要额外的资源才能有效执行任务。
 
 自动缩放是一个自动化过程，可帮助减少管理开销。 通过减少开销，使用户无需持续监控系统性能或决定如何管理资源。 缩放是一个灵活的过程。 当负载增加时可添加更多的资源；当需求减少时可通过删除资源来使成本最小化，同时维持性能级别。
@@ -182,7 +184,7 @@ autoscaleSettings 资源使用诊断扩展中的信息，以决定是增加规�
 
 ![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountAfter.png)
 
-触发扩大操作，使规模集的容量增加 1：
+触发扩大操作，使规模集的容量增加&1;：
 
     "sku": {
       "name": "Standard_A0",
@@ -220,10 +222,5 @@ autoscaleSettings 资源使用诊断扩展中的信息，以决定是增加规�
 * 若要了解有关通知功能的相关信息，请参阅[使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)。
 * 了解如何[使用审核日志在 Azure 监视器中发送电子邮件和 webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 * 了解[高级自动缩放方案](virtual-machine-scale-sets-advanced-autoscale.md)的相关信息。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

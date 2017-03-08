@@ -53,8 +53,3 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
 ## [Azure Data Lake 博客](https://blogs.msdn.microsoft.com/azuredatalake/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

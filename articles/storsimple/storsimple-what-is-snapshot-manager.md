@@ -4,7 +4,7 @@ description: "介绍 StorSimple Snapshot Manager 及其体系结构和功能。"
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754
 ms.service: storsimple
@@ -12,25 +12,28 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/24/2016
+ms.date: 02/27/2017
 ms.author: v-sharos
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1300262c5306ab76ae90be76dc19639e26665b69
+ms.sourcegitcommit: 43eb76f2d51c586f3cd44d4d34b307257a655182
+ms.openlocfilehash: 38c197c7bc57110b29b1d8cb789d5b7310823da2
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="what-is-storsimple-snapshot-manager"></a>什么是 StorSimple Snapshot Manager？
+# <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介
+
 ## <a name="overview"></a>概述
 StorSimple Snapshot Manager 是一种 Microsoft 管理控制台 (MMC) 管理单元，可以简化 Microsoft Azure StorSimple 环境中的保护和备份管理。 借助 StorSimple Snapshot Manager，可以将数据中心和云中的 Microsoft Azure StorSimple 数据作为单一集成的存储解决方案进行管理，这样可以简化备份流程并降低成本。
 
-本概述将介绍 StorSimple Snapshot Manager 及其功能，并解释它在 Microsoft Azure StorSimple 中的作用。 
+本概述介绍 StorSimple Snapshot Manager 及其功能，并阐述它在 Microsoft Azure StorSimple 中的作用。 
 
 有关整个 Microsoft Azure StorSimple 系统的概述，包括 StorSimple 设备、StorSimple Manager 服务、StorSimple Snapshot Manager 和 StorSimple Adapter for SharePoint，请参阅 [StorSimple 8000 系列：混合云存储解决方案](storsimple-overview.md)。 
 
 > [!NOTE]
 > * 不能使用 StorSimple Snapshot Manager 管理 Microsoft Azure StorSimple 虚拟数组（也称为 StorSimple 本地虚拟设备）。
-> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请**在安装 StorSimple Update 2 前**，务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果你正在使用旧版本的 StorSimple Snapshot Manager，则需要将其更新（安装新版本前，无需卸载旧版本）。
+> * 如果你使用的是旧版 StorSimple Snapshot Manager，则需要更新（**安装新版本前，无需卸载旧版本**）。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果你使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
 > 
 > 
 
@@ -44,7 +47,7 @@ StorSimple Snapshot Manager 提供了一个中心管理控制台，可用于创�
 
 StorSimple Snapshot Manager 提取使用主机上的 VSS 提供程序注册的应用程序的列表。 然后，若要创建应用程序一致性备份，它会检查应用程序使用的卷并建议要配置的卷组。 StorSimple Snapshot Manager 使用这些卷组来生成应用程序一致的备份副本。 （当所有的相关文件和数据库已同步并表示应用程序在特定时间点的真实状态时，即存在应用程序一致性。） 
 
-StorSimple Snapshot Manager 备份采用增量快照的形式，仅捕获自上次备份以来的更改。 因此，备份需要较少的存储空间，可以快速创建和恢复。 StorSimple Snapshot Manager 使用 Windows 卷影复制服务 (VSS) 以确保快照捕获应用程序一致性数据。 （有关详细信息，请转到“与 Windows 卷影复制服务集成”部分。）使用 StorSimple Snapshot Manager，你可以根据需要创建备份计划或进行即时备份。 如果你需要从备份还原数据，StorSimple Snapshot Manager会让你从本地或云快照目录中进行选择。 Azure StorSimple 仅在需要时还原所需的数据，这样可以防止在还原操作期间数据可用性发生延迟。）
+StorSimple Snapshot Manager 备份采用增量快照的形式，仅捕获自上次备份以来的更改。 因此，备份需要较少的存储空间，可以快速创建和恢复。 StorSimple Snapshot Manager 使用 Windows 卷影复制服务 (VSS) 以确保快照捕获应用程序一致性数据。 （有关详细信息，请转到“与 Windows 卷影复制服务集成”部分。）使用 StorSimple Snapshot Manager，你可以根据需要创建备份计划或进行即时备份。 如果你需要从备份还原数据，StorSimple Snapshot Manager 会让你从本地或云快照目录中进行选择。 Azure StorSimple 仅在需要时还原所需的数据，这样可以防止在还原操作期间数据可用性发生延迟。）
 
 ![StorSimple Snapshot Manager 体系结构](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
 
@@ -137,10 +140,5 @@ StorSimple Snapshot Manager 可用于监视和管理即将开始、已计划和�
 ## <a name="next-steps"></a>后续步骤
 * 了解有关[使用 StorSimple Snapshot Manager 管理你的 StorSimple 解决方案](storsimple-snapshot-manager-admin.md)的详细信息。
 * 下载 [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -1,7 +1,7 @@
 ---
-title: "Log Analytics 中的更改跟踪解决方案 | Microsoft Docs"
-description: "可以使用 Log Analytics 中的“配置更改跟踪”解决方案，帮助你轻松识别软件，以及在环境中发生的 Windows 服务更改 — 识别这些配置更改可帮助你查明操作问题。"
-services: operations-management-suite
+title: "使用 Azure Log Analytics 跟踪更改 | Microsoft 文档"
+description: "Log Analytics 中的更改跟踪解决方案可帮助用户确定在环境中发生的软件和 Windows 服务更改。"
+services: log-analytics
 documentationcenter: 
 author: bandersmsft
 manager: carmonm
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a66cdb9825cfc3935d534afaf3f6f0cf5d5fb5a
-ms.openlocfilehash: d4226882ded34a79f7e227886a396db0e927bad2
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 3953a83b20ee2d1ca0035b31824ca167e92f4864
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="change-tracking-solution-in-log-analytics"></a>Log Analytics 中的更改跟踪解决方案
+# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的软件更改
+
 本文可帮助你使用 Log Analytics 中的更改跟踪解决方案，以便轻松标识环境中的更改。 该解决方案会跟踪对 Windows 和 Linux 软件、Windows 文件、Windows 服务和 Linux 守护程序的更改。 标识配置更改可帮助你查明操作问题。
 
 安装该解决方案，以更新已安装代理的类型。 系统会读取对受监视服务器上的已安装软件、Windows 服务和 Linux 守护程序的更改，然后将数据发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。 通过使用“更改跟踪”仪表板上的信息，你可以轻松看到服务器基础结构中所做的更改。
@@ -90,9 +93,4 @@ ms.openlocfilehash: d4226882ded34a79f7e227886a396db0e927bad2
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)可查看详细的更改跟踪数据。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

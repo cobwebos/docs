@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ef700f9a27d27997d53143260603bda822aa104
 ms.openlocfilehash: b84853da989d18414a31cf5b178c6506abc56bbe
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -49,9 +50,4 @@ SharePoint Server 包含一个用户配置文件服务用于用户配置文件�
 
 ## <a name="related-content"></a>相关内容
 * [技术参考 - 在 SharePoint Server 2013 中授予配置文件同步的 Active Directory 域服务权限](https://technet.microsoft.com/library/hh296982.aspx)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

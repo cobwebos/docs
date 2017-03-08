@@ -1,4 +1,4 @@
-## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
+
 1. 登录到 [Azure 门户](https://portal.azure.com) > “Site Recovery”
 2. 单击“新建” > “管理” >
 3. 在“名称”中，指定一个友好名称以标识该保管库。 如果你有多个订阅，请选择其中一个。

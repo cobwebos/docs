@@ -266,19 +266,19 @@ Visual Studio 中会显示“本地”帐户，安装程序将在 *C:\LocalRunRo
 ## <a name="see-also"></a>另请参阅
 若要借助不同的工具开始使用 Data Lake Analytics，请参阅：
 
-* [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
-* [Get started with Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Get started with Data Lake Analytics using .NET SDK](data-lake-analytics-get-started-net-sdk.md)
-* [Debug C# code in U-SQL jobs](data-lake-analytics-debug-u-sql-jobs.md)
+* [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
+* [通过 Azure PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
+* [通过 .NET SDK 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-net-sdk.md)
+* [Debug C# code in U-SQL jobs（在 U-SQL 作业中调试 C# 代码）](data-lake-analytics-debug-u-sql-jobs.md)
 
 若要了解用于 Visual Studio 的 Data Lake 工具代码，请参阅[使用用于 Visual Studio 的 Data Lake 工具代码](data-lake-analytics-data-lake-tools-for-vscode.md)。
 
 查看更多开发主题：
 
-* [Analyze weblogs using Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
+* [Analyze weblogs using Data Lake Analytics（使用 Data Lake Analytics 分析网络日志）](data-lake-analytics-analyze-weblogs.md)
 * [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-* [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)
-* [Develop U-SQL user defined operators for Data Lake Analytics jobs](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+* [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)
+* [为 Data Lake Analytics 作业开发 U-SQL 用户定义的运算符](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
 ## <a name="appx-a-powershell-sample-for-preparing-the-tutorial"></a>附录 A：用于准备教程的 PowerShell 示例
 以下 PowerShell 脚本可以准备 Azure Data Lake Analytics 帐户和源数据，这样就可以直接跳到 [开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts)部分。

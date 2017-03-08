@@ -1,10 +1,10 @@
 ---
-title: "使用 Log Analytics 中的 System Center Operations Manager 评估解决方案优化环境 | Microsoft Docs"
+title: "使用 Azure Log Analytics 优化 System Center Operations Manager 环境 | Microsoft 文档"
 description: "可以使用 System Center Operations Manager 评估解决方案定期评估服务器环境的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 45ba55083ecca1995e343dc1da1497df43f70e10
-ms.openlocfilehash: 90fb374e8c1712b5fc1e94979999da6a8c400f68
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: f812ff8fb2b32f89e24d640e0eae8f2da9858a18
+ms.lasthandoff: 02/28/2017
 
 
 ---
 
-# <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution-in-log-analytics"></a>使用 Log Analytics 中的 System Center Operations Manager 评估（预览版）解决方案优化环境
+# <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>使用 System Center Operations Manager 评估（预览版）解决方案优化环境
 
-可以使用 System Center Operations Manager 评估解决方案定期评估 System Center Operations Manager 服务器环境的风险和运行状况。 本文将帮助你安装、配置和使用该解决方案，以便针对潜在问题采取纠正措施。 
+可以使用 System Center Operations Manager 评估解决方案定期评估 System Center Operations Manager 服务器环境的风险和运行状况。 本文将帮助你安装、配置和使用该解决方案，以便针对潜在问题采取纠正措施。
 
 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。 这些建议跨四个重点领域进行了分类，将帮助你快速了解风险并采取纠正措施。
 
@@ -43,12 +45,17 @@ ms.openlocfilehash: 90fb374e8c1712b5fc1e94979999da6a8c400f68
 
 使用以下信息安装和配置解决方案。
 
-- 应该将管理组中的某台 Operations Manager 管理服务器配置为连接到 OMS。 若要将 Operations Manager 管理服务器连接到 OMS，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md#connecting-operations-manager-to-oms)。
-    - 如果使用 OMS 管理的计算机组来监视管理组中的多台管理服务器，请确保将评估配置为在一台管理服务器上运行。 有关详细信息，请参阅[配置评估规则](#configure-the-assessment-rule)。
-- 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 若要了解有关安装解决方案的详细信息，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。
-- 将 Operations Manager 代理与 System Center Operations Manager 评估结合使用时，需要使用 Operations Manager 运行方式帐户。 有关详细信息，请参阅 [OMS 的 Operations Manager 运行方式帐户](#operations-manager-run-as-accounts-for-oms)。
-    >[!NOTE]
-    添加该解决方案后，AdvisorAssessment.exe 文件将添加到 SCOM 服务器。 读取配置数据，然后将其发送到云中的 OMS 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。
+ - 在 OMS 中使用评估解决方案之前，必须先安装该解决方案。 若要了解有关安装解决方案的详细信息，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。
+
+ - 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 评估”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，然后按照页面中所述的配置步骤操作
+
+ ![System Center Operations Manager 仪表板磁贴](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
+
+ 可以通过脚本配置 System Center Operations Manager，只需执行 OMS 中解决方案的配置页提及的步骤即可。
+
+ 而若要通过 SCOM 控制台配置评估，则需按相同顺序执行以下步骤
+1. [设置 System Center Operations Manager 评估的运行方式帐户](#operations-manager-run-as-accounts-for-oms)  
+2. [配置 System Center Operations Manager 评估规则](#configure-the-assessment-rule)
 
 # <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager 评估数据收集详细信息
 
@@ -58,7 +65,7 @@ System Center Operations Manager 评估使用启用的服务器，通过 Windows
 
 | 平台 | 直接代理 | SCOM 代理 | Azure 存储空间 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |  ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png) | ![是](./media/log-analytics-scom-assessment/oms-bullet-green.png)  | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  |  ![是](./media/log-analytics-scom-assessment/oms-bullet-green.png) | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | 七天 |
+| Windows |  ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png) | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  |  ![是](./media/log-analytics-scom-assessment/oms-bullet-green.png) | ![否](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | 七天 |
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>OMS 的 Operations Manager 运行方式帐户
 
@@ -73,7 +80,11 @@ OMS 基于工作负荷的管理包生成，提供增值服务。 每个工作负
 3. 创建运行方式帐户：根据向导创建一个 Windows 帐户。 要使用的帐户应是一个已识别的且满足以下所有先决条件的帐户：
 
     >[!NOTE]
-    运行方式帐户必须满足以下要求：- 环境中所有服务器上的本地管理员组的域帐户成员（所有 Operations Manager 角色 - 管理服务器、OpsMgr 数据库、数据仓库、报告、Web 控制台、网关）- 所评估的管理组的 Operations Manager 管理员角色 - Operations Manager 使用的所有 SQL 服务器或实例上的 SysAdmin 角色
+    运行方式帐户必须满足以下要求：
+    - 在环境中的所有服务器的本地管理员组中都有一个域帐户成员（所有 Operations Manager 角色 - 管理服务器、OpsMgr 数据库、数据仓库、报表、Web 控制台、网关）
+    - 正在评估管理组的 Operation Manager 管理员角色
+    - 执行[脚本](#sql-script-to-grant-granular-permissions-to-the-run-as-account)，向 Operations Manager 使用的 SQL 实例上的帐户授予具体权限。
+      注意：如果此帐户已经有 sysadmin 权限，则跳过脚本执行操作。
 
 4. 在“分发安全性”下面，选择“更安全”。
 5. 指定要将帐户分发到的管理服务器。
@@ -82,7 +93,7 @@ OMS 基于工作负荷的管理包生成，提供增值服务。 每个工作负
 5. 配置文件名应为：“Microsoft System Center Advisor SCOM 评估运行方式配置文件”。
 6. 右键单击该配置文件并更新其属性，然后添加最近在步骤 3 中创建的运行方式帐户。
 
-### <a name="sql-script-granting-permissions-to-the-run-as-account"></a>向运行方式帐户授权的 SQL 脚本
+### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>向运行方式帐户授予具体权限的 SQL 脚本
 
 执行以下 SQL 脚本，向 Operations Manager 使用的 SQL 实例上的运行方式帐户授予所需权限。
 
@@ -144,8 +155,8 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 1. 在 Operations Manager 控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。
 3. 右键单击该规则，然后单击“重写” > “对于类为管理服务器的特定对象”。
-4.  在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。
-5.  请务必将“已启用”参数值的重写值更改为 **True**。  
+4.    在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。
+5.    请务必将“已启用”参数值的重写值更改为 **True**。  
     ![重写参数](./media/log-analytics-scom-assessment/rule.png)
 
 继续在此窗口中操作，使用下一个过程配置运行频率。
@@ -277,9 +288,4 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 ## <a name="next-steps"></a>后续步骤
 
 - 使用[搜索日志](log-analytics-log-searches.md)查看详细的 System Center Operations Manager 评估数据和建议。
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

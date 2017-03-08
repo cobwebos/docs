@@ -1,5 +1,5 @@
 ---
-title: "在 Log Analytics 中创建自定义仪表板 | Microsoft Docs"
+title: "在 Azure Log Analytics 中创建自定义仪表板 | Microsoft 文档"
 description: "本指南可帮助你了解 Log Analytics 仪表板如何直观显示所有已保存的日志搜索，从而为你提供单个可重用功能区来查看环境。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: afd1e5359edbdfdbd4a8afaac139f5877b306c2b
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a8c9766bf066a7f0dfd28ebb4e41bf0eaf3f05bd
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-custom-dashboard-in-log-analytics"></a>在 Log Analytics 中创建自定义仪表板
+# <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>创建适用于 Log Analytics 的自定义仪表板
 本指南可帮助你了解 Log Analytics 仪表板如何直观显示所有已保存的日志搜索，从而为你提供单个可重用功能区来查看环境。
 
 ![示例仪表板](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
@@ -83,9 +85,4 @@ ms.openlocfilehash: afd1e5359edbdfdbd4a8afaac139f5877b306c2b
 
 ## <a name="next-steps"></a>后续步骤
 * 在 Log Analytics 中创建[警报](log-analytics-alerts.md)，以生成通知并解决问题。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: d72a191cceaa90f9dae69b5c2698fae1a9fb95a7
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 69fbac5acdc812917d1e022d19768a8d72955783
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: d72a191cceaa90f9dae69b5c2698fae1a9fb95a7
 
 我们所提供的这些准则是专门针对高级存储的，因为在高级存储上运行的工作负荷具有高度的性能敏感性。 我们根据需要提供示例。 你也可以将部分此类准则应用于在标准存储磁盘的 IaaS VM 上运行的应用程序。
 
-如果尚不熟悉高级存储，请在开始之前首先阅读[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)一文和 [Azure 高级存储可伸缩性和性能目标](storage-scalability-targets.md#premium-storage-accounts)。
+如果尚不熟悉高级存储，请在开始之前首先阅读[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)一文和 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)一文。
 
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 我们评估应用程序的性能好坏时，会使用下面这样的性能指标：应用程序处理用户请求的速度如何、应用程序每个请求处理多少数据、应用程序在特定时间内处理多少请求、用户在提交其请求后必须等待多长时间才能获得响应。 与这些性能指标相对应的技术术语是：IOPS、吞吐量或带宽、延迟。
@@ -593,9 +594,4 @@ SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
 
 * [Azure 虚拟机中 SQL Server 的性能最佳实践](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
 * [Azure Premium Storage provides highest performance for SQL Server in Azure VM](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)（Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能）
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

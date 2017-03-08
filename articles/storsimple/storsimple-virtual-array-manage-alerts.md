@@ -4,7 +4,7 @@ description: "介绍 StorSimple 虚拟阵列警报条件和严重性以及如何
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
@@ -12,14 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ae076d52b532f5181868b2ab24ee8f2ffa887af7
-ms.openlocfilehash: 33b14d56b8d3622ba4e7bfb553e86055e57362fb
+ms.sourcegitcommit: b870974efdde2ebdf339013ca86b772b665151a4
+ms.openlocfilehash: 8cfdad48524c24b3ad69c01ae0330e90ce197b3a
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务查看和管理 StorSimple 虚拟阵列的警报
+# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
 
 ## <a name="overview"></a>概述
 
@@ -150,7 +152,7 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 在数据传输中遇到意外延迟。 |数据传输较慢。 |当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务这样做是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关 Azure 存储帐户疑难解答的详细信息，请转到[监视、诊断和排查 Microsoft Azure 存储问题](../storage/storage-monitoring-diagnosing-troubleshooting.md)。 |
-| <*device name*> 上的本地预留磁盘空间不足。 |响应时间较长。 |在本地设备上预留 <*device name*> 的总预配大小的 10%，现在预留空间不足。 <*device name*> 上的工作负荷正在生成更高的改动率，或者你最近迁移了大量数据。 这可能导致性能降低。 若要解决此问题，请考虑采取以下措施之一：<ul><li>增加此设备的云带宽。</li><li>减少工作负荷或将工作负荷移到其他卷或共享。</li></ul> |
+| <*device name*> 上的本地预留磁盘空间不足。 |响应时间较长。 |在本地设备上预留 <*device name*> 的总预配大小的&10;%，现在预留空间不足。 <*device name*> 上的工作负荷正在生成更高的改动率，或者你最近迁移了大量数据。 这可能导致性能降低。 若要解决此问题，请考虑采取以下措施之一：<ul><li>增加此设备的云带宽。</li><li>减少工作负荷或将工作负荷移到其他卷或共享。</li></ul> |
 
 ### <a name="security-alerts"></a>安全警报
 
@@ -168,10 +170,5 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 StorSimple 虚拟阵列](storsimple-ova-overview.md)。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

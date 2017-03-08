@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: 68557393d6cbdc47f19dddfae05940979e2004f5
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 9fc53417c40225c87d3849cbe51712849e5cc93a
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -85,9 +86,4 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png
 [image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

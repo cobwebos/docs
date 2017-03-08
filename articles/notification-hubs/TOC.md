@@ -69,8 +69,3 @@
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-notificationhub)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=notification-hubs)
 ## [服务更新](https://azure.microsoft.com/updates/?product=notification-hubs)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

@@ -29,8 +29,3 @@
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/biztalk-services)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

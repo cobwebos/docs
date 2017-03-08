@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/18/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 3a353bc874c1827f8a0fc85352894ad96cff16b5
-ms.openlocfilehash: e6ee3ea5e59e402d69ad255d2210d7092786c9d1
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: c208f44045ba414be2034f577435ae02ea4456cf
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -41,7 +42,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 有关如何使用托管磁盘创建 VM 的信息，请参阅以下文章之一。
 
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
-* [使用 Azure CLI 2.0（预览版）创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 
 ## <a name="standard-storage-features"></a>标准存储功能 
 
@@ -92,7 +93,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 ## <a name="snapshots-and-copy-blob"></a>快照和复制 Blob
 
-对于存储服务，VHD 文件是页 blob。 可以拍摄页 blob 的快照，然后将其复制到其他位置，例如其他存储帐户。
+对于存储服务而言，VHD 文件是页 blob。 可以拍摄页 blob 的快照，然后将其复制到其他位置，例如其他存储帐户。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 
@@ -140,7 +141,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 可以使用 Azure 备份来备份具有非托管磁盘的虚拟机。 [更多详细信息](../backup/backup-azure-vms-first-look-arm.md)。
 
-还可将 Azure 备份服务与托管磁盘配合使用，以创建具有基于时间备份的备份作业、轻松 VM 还原和备份保留策略。 有关详细信息，请参阅[将 Azure 备份服务用于具有托管磁盘的 VM](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
+还可将 Azure 备份服务与托管磁盘配合使用，以创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 有关详细信息，请参阅[将 Azure 备份服务用于具有托管磁盘的 VM](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -152,9 +153,4 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [使用 Azure CLI 2.0（预览版）创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)

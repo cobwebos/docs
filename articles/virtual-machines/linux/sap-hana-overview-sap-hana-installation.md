@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3827e74433a859e65071a1041c5ed6c8253db8df
-ms.openlocfilehash: be17b2de227ef6d93f8d326ff060c3c4788eb622
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: 0d998b5347a9da6dd209b0ba106792ab5c34164d
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="install-sap-hana-on-sap-hana-on-azure-large-instances"></a>在 Azure SAP HANA（大型实例）上安装 SAP HANA
+# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安装和配置 SAP HANA（大型实例）
 
 安装 SAP HANA 是你的责任，可以在切换新的 Azure SAP HANA（大型实例）服务器后立即执行。 请注意，根据 SAP 政策，SAP HANA 的安装必须由经过认证的 SAP HANA 安装人员（已通过 SAP 技术认证专员 - SAP HANA 安装认证考试）或经过 SAP 认证的系统集成商 (SI) 完成。
 
@@ -80,10 +82,5 @@ SAP 对组成 SAP 系统的各组件的时间差异非常敏感。 如果你已�
 
 就 Azure SAP HANA（大型实例）来说，在 Azure 中进行的时间同步不适用于大型实例戳中的计算单元。 这种同步不适用于在 Azure 中（VM 上）以本机方式运行的 SAP 应用程序，因为 Azure 可确保正确同步系统的时间。 因此，必须设置单独的时间服务器，供在 Azure VM 上运行的 SAP 应用程序服务器以及在 HANA 大型实例上运行的 SAP HANA 数据库实例使用。 大型实例戳中的存储基础结构与 NTP 服务器进行时间同步。
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

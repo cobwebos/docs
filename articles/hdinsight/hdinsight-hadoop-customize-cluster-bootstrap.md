@@ -13,16 +13,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
-ms.openlocfilehash: 0bb7af25211ef728055ddb5a6fb826411986dd4e
+ms.sourcegitcommit: c8abf308c20968f184a80b20dc40185b1631105d
+ms.openlocfilehash: 903004ae83d86ddcda13c6f2fce708e71ffa729b
+ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
-有时，你可能需要配置配置文件，包括：
+有时，用户可能需要配置配置文件，包括：
 
 * clusterIdentity.xml
 * core-site.xml
@@ -40,20 +41,17 @@ ms.openlocfilehash: 0bb7af25211ef728055ddb5a6fb826411986dd4e
 * webhcat-site.xml
 * yarn-site.xml
 
-群集无法保留重置映像所造成的更改。 有关重置映像的详细信息，请参阅 [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)（由于操作系统升级而使角色实例重新启动）。 若要在群集生存期保留更改，你可以在创建过程中使用 HDInsight 群集自定义。 这是更改群集的配置，以及发生这些 Azure 重置映像、重新引导和重新启动事件后保留配置的推荐方法。 这些配置更改将在服务启动之前应用，因此无需重新启动服务。 
-
-Bootstrap 的使用方式有 3 种：
+Bootstrap 的使用方式有三种：
 
 * 使用 Azure PowerShell
-  
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 * 使用 .NET SDK
 * 使用 Azure Resource Manager 模板
+
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 有关在创建时在 HDInsight 群集上安装其他组件的信息，请参阅：
 
 * [使用脚本操作自定义 HDInsight 群集 (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
-* [使用脚本操作自定义 HDInsight 群集 (Windows)](hdinsight-hadoop-customize-cluster.md)
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 以下 PowerShell 代码将自定义 Hive 配置：
@@ -74,8 +72,8 @@ Bootstrap 的使用方式有 3 种：
         -Location $location `
         -ClusterSizeInNodes $clusterSizeInNodes `
         -ClusterType Hadoop `
-        -OSType Windows `
-        -Version "3.2" `
+        -OSType Linux `
+        -Version "3.5" `
         -HttpCredential $httpCredential `
         -Config $config 
 
@@ -84,7 +82,7 @@ Bootstrap 的使用方式有 3 种：
 **验证更改：**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧窗格中单击“浏览”，然后单击“HDInsight 群集”。
+2. 单击左侧菜单中的“HDInsight 群集”。 如果看不到该群集，请先单击“更多服务”。
 3. 单击刚使用 PowerShell 脚本创建的群集。
 4. 在边栏选项卡的顶部单击“仪表板”以打开 Ambari UI。
 5. 在左侧菜单中，单击“Hive”。
@@ -244,7 +242,7 @@ Bootstrap 的使用方式有 3 种：
         -ClusterSizeInNodes 1 `
         -ClusterType Hadoop `
         -OSType Linux `
-        -Version "3.2" `
+        -Version "3.5" `
         -HttpCredential $httpCredential `
         -SshCredential $sshCredential `
         -Config $config
@@ -255,9 +253,4 @@ Bootstrap 的使用方式有 3 种：
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 
     #endregion
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

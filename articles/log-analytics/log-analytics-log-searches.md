@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 中的日志搜索 | Microsoft Docs"
+title: "在 Azure Log Analytics 中使用日志搜索查找数据 | Microsoft 文档"
 description: "日志搜索允许你将环境内来自多个源的任意计算机数据进行组合和关联。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3e1810850651cff4680ea558178ebf92aeac4faa
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: d4935af0647f0629cca327a7e87c29f1252af382
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="log-searches-in-log-analytics"></a>Log Analytics 中的日志搜索
+# <a name="find-data-using-log-searches"></a>使用日志搜索查找数据
+
 Log Analytics 的核心是日志搜索功能，该功能允许你将环境内来自多个源的任意计算机数据进行组合和关联。 日志搜索还提供解决方案，以提供围绕某个特定问题区域的度量值。
 
 你可以在“搜索”页上创建查询，然后在搜索时使用 Facet 控件筛选结果。 还可创建高级查询以转换、筛选和报告结果。
@@ -34,9 +37,9 @@ Log Analytics 的核心是日志搜索功能，该功能允许你将环境内来
 熟悉了搜索技术后，可查看 [Log Analytics 日志搜索引用](log-analytics-search-reference.md)。
 
 ## <a name="use-basic-filters"></a>使用基本筛选器
-首先需要了解的是，搜索查询的第一部分（在任意“|”竖线前）始终是*筛选器*。 可将其视为 TSQL 中的 WHERE 子句（它确定从 OMS 数据存储中拉取的数据子集*内容*）。 在数据存储中的搜索主要与指定想要提取的数据特征有关，因此从 WHERE 子句开始查询是很自然的。
+首先需要了解的是，搜索查询的第一部分（在任意“|”竖线前）始终是*筛选器*。 可将其视为 TSQL 中的 Where 子句（它确定从 OMS 数据存储中拉取的数据子集*内容*）。 在数据存储中的搜索主要与指定想要提取的数据特征有关，因此从 Where 子句开始查询是很自然的。
 
-可使用的最基本的筛选器是*关键字*例如“错误”或“超时”）或计算机名称。 这些简单的查询类型通常返回同一结果集内的各种数据形状。 这是因为 Log Analytics 在系统中有不同的数据*类型*。
+可使用的最基本的筛选器是*关键字*，例如“错误”或“超时”）或计算机名称。 这些简单的查询类型通常返回同一结果集内的各种数据形状。 这是因为 Log Analytics 在系统中有不同的数据*类型*。
 
 ### <a name="to-conduct-a-simple-search"></a>若要进行简单搜索
 1. 在 OMS 门户中，单击“**日志搜索**”。  
@@ -154,7 +157,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 ![交集](./media/log-analytics-log-searches/oms-search-intersection.png)
 
-这意味着，如果时间段不相交（例如，在 OMS 门户中选择“**本周**”，而在查询中指定“**上周**”）则时间段没有交集，因此不会收到任何结果。
+这意味着，如果时间段不相交（例如，在 OMS 门户中选择“**本周**”，而在查询中指定“**上周**”），则时间段没有交集，因此不会收到任何结果。
 
 用于 TimeGenerated 字段的比较运算符在其他情况下也很有用。 例如，使用数值型字段。
 
@@ -179,14 +182,14 @@ Type=Event EventLog="Operations Manager" EventID:[2100..2199]
 
 
 > [!NOTE]
-> 必须使用的范围语法是冒号 (:) 字段：值分隔符和，而*不是*等号 (=)。 将范围的下限和上限括在方括号内，并用两个句点 (..) 将其分隔。
+> 必须使用的范围语法是冒号 (:) 字段:值分隔符和，而*不是*等号 (=)。 将范围的下限和上限括在方括号内，并用两个句点 (..) 将其分隔。
 >
 >
 
 ## <a name="manipulate-search-results"></a>操作搜索结果
 在搜索数据时，你会需要优化搜索查询并对结果拥有较好的控制级别。 检索出结果时，可应用命令将其转换。
 
-Log Analytics 搜索中的命令*必须*跟在竖线 (|) 后。 筛选器必须始终是查询字符串的第一部分。 它定义了你使用的数据设置，然后将这些结果通过“管道”输入命令。 然后，你可以使用管道来添加其他命令。 这与 Windows PowerShell 管道大致相似。
+Log Analytics 搜索中的命令*必须*跟在竖线 (|) 后。 筛选器必须始终是查询字符串的第一部分。 它定义了你使用的数据集，然后将这些结果通过“管道”输入命令。 然后，你可以使用管道来添加其他命令。 这与 Windows PowerShell 管道大致相似。
 
 一般情况下，Log Analytics 搜索语言尝试遵循 PowerShell 样式和指导，使其与 IT 专业人士相似，以减缓学习曲线。
 
@@ -230,9 +233,9 @@ Type=Event EventID=600 | Top 1
 ```
 
 
-#### <a name="to-search-using-top"></a>要使用 TOP 搜索
+#### <a name="to-search-using-top"></a>使用 TOP 搜索
 * 在搜索查询字段中，键入 `Type=Event EventID=600 | Top 1`   
-    ![搜索 top](./media/log-analytics-log-searches/oms-search-top.png)
+    ![搜索 Top](./media/log-analytics-log-searches/oms-search-top.png)
 
 在以上图像中，有 35.8 万条 EventID=600 的记录。 左侧的字段、Facet 和筛选器始终显示有关由查询的*筛选器部分*返回的结果信息，这一部分位于任意管道字符之前。 “**结果**”窗格仅返回最新的 1 个结果，因为示例命令对结果进行了塑造和转换。
 
@@ -247,8 +250,8 @@ SELECT 命令的行为与 PowerShell 中的 Select-Object 类似。 它返回筛
 
 想要控制搜索输出并仅选择对你的浏览有用的数据部分（通常不是完整记录）时，该命令尤为有用。 当不同类型的记录具有*一些*公用属性，但并非*所有*属性都为公用属性时，该命令也很有用。 然后，可生成外观与表更接近（或在导出到 CSV 文件时能够正常运行）的输出，然后在 Excel 中进行修改。
 
-## <a name="use-the-measure-command"></a>使用 MEASURE 命令
-MEASURE 是 Log Analytics 搜索中功能最全的命令之一。 它允许向数据应用统计*函数*，并聚合按给定字段进行分组的结果。 存在多个 MEASURE 支持的统计函数。
+## <a name="use-the-measure-command"></a>使用 Measure 命令
+Measure 是 Log Analytics 搜索中功能最全的命令之一。 它允许向数据应用统计*函数*，并聚合按给定字段进行分组的结果。 存在多个 Measure 支持的统计函数。
 
 ### <a name="measure-count"></a>Measure count()
 要使用的第一个统计函数是 *count()* 函数，它也是最容易理解的函数之一。
@@ -261,19 +264,19 @@ MEASURE 是 Log Analytics 搜索中功能最全的命令之一。 它允许向�
 
 如果想要查看所有值该如何操作（因为磁贴仅显示前 5 个值）？
 
-这就要用到具有 count() 函数的 MEASURE 命令。 此函数不使用任何参数。 只需指定分组所依据的字段 – 在此示例中为“**计算机**”字段：
+这就要用到具有 count() 函数的 Measure 命令。 此函数不使用任何参数。 只需指定分组所依据的字段 – 在此示例中为“**计算机**”字段：
 
 `Type=Event | Measure count() by Computer`
 
 ![search measure count](./media/log-analytics-log-searches/oms-search-measure-count-computer.png)
 
-但是，“**计算机**”只是在每段数据*中*使用的一个字段（不涉及任何关系数据库，也不存在任何单独的“**计算机**”对象）。 只有数据*中*的值能够描述生成它们的实体类型、一些其他特征和数据方面 – 因此，术语为 *Facet*。 但是，也可按其他字段进行分组。 因为，通过管道输入 MEASURE 命令的近 73.9 万个事件的原始结果也具有名为“**EventID**”的字段，你可以通过该字段将同一技术应用到组，并通过 EventID 获取事件计数：
+但是，“**计算机**”只是在每段数据*中*使用的一个字段（不涉及任何关系数据库，也不存在任何单独的“**计算机**”对象）。 只有数据*中*的值能够描述生成它们的实体类型、一些其他特征和数据方面 – 因此，术语为 *Facet*。 但是，也可按其他字段进行分组。 因为，通过管道输入 Measure 命令的近 73.9 万个事件的原始结果也具有名为“**EventID**”的字段，你可以通过该字段将同一技术应用到组，并通过 EventID 获取事件计数：
 
 ```
 Type=Event | Measure count() by EventID
 ```
 
-如果你对包含特定值的实际记录计数不感兴趣，而只想查看值本身的列表，可在末尾处添加 *SELECT* 命令并仅选择第一列：
+如果你对包含特定值的实际记录计数不感兴趣，而只想查看值本身的列表，可在末尾处添加 *Select* 命令并仅选择第一列：
 
 ```
 Type=Event | Measure count() by EventID | Select EventID
@@ -285,7 +288,7 @@ Type=Event | Measure count() by EventID | Select EventID
 Type=Event | Measure count() by EventID | Select EventID | Sort EventID asc
 ```
 
-#### <a name="to-search-using-measure-count"></a>使用 MEASURE COUNT 搜索
+#### <a name="to-search-using-measure-count"></a>使用 Measure count 搜索
 * 在搜索查询字段中，键入 `Type=Event | Measure count() by EventID`
 * 在查询末尾追加 `| Select EventID`。
 * 最后，在查询末尾处追加 `| Sort EventID asc`。
@@ -294,9 +297,9 @@ Type=Event | Measure count() by EventID | Select EventID | Sort EventID asc
 
 首先，你看到的结果不再是原始结果。 相反，它们是聚合的结果（实质上是结果组）。 这不是问题，但你应该了解，你正在与完全不同的数据形状（与因为聚合/统计函数而匆忙创建的原始形状不同）进行交互。
 
-其次，“**MEASURE COUNT**”当前仅返回前 100 个不同的结果。 此限制不适用于其他统计函数。 因此，在应用 measure count() 前，通常需要先使用更精确的筛选器来搜索特定项目。
+其次，“**Measure count**”当前仅返回前 100 个不同的结果。 此限制不适用于其他统计函数。 因此，在应用 measure count() 前，通常需要先使用更精确的筛选器来搜索特定项目。
 
-## <a name="use-the-max-and-min-functions-with-the-measure-command"></a>将 MAX 和 MIN 函数与 MEASURE 命令结合使用
+## <a name="use-the-max-and-min-functions-with-the-measure-command"></a>将 Max 和 Min 函数与 Measure 命令结合使用
 “**Measure Max()**和“**Measure Min()**”在多种方案中都非常有用。 但是，因为两者互为反函数，所以我们将演示 Max()，而你可以自行尝试 Min()。
 
 如果查询安全事件，它们的“**级别**”属性可能不同。 例如：
@@ -313,7 +316,7 @@ Type=SecurityEvent
 Type=ConfigurationAlert | Measure Max(Level) by Computer
 ```
 
-![搜索 MEASURE MAX COMPUTER](./media/log-analytics-log-searches/oms-search-measure-max02.png)
+![search measure max computer](./media/log-analytics-log-searches/oms-search-measure-max02.png)
 
 它对具有“**级别**”记录的计算机显示结果（其中大部分记录至少具有 8 级，许多记录有 16 级）。
 
@@ -329,8 +332,8 @@ Type=ConfigurationAlert | Measure Max(Severity) by Computer
 Type=ConfigurationChange | Measure Max(TimeGenerated) by Computer
 ```
 
-## <a name="use-the-avg-function-with-the-measure-command"></a>将 avg 函数与 MEASURE 命令结合使用
-与 MEASURE 结合使用的 Avg() 统计函数可计算某些字段的平均值，并按相同或其他字段对结果分组。 这在各种事例中都很有用（如性能数据）。
+## <a name="use-the-avg-function-with-the-measure-command"></a>将 avg 函数与 Measure 命令结合使用
+与 Measure 结合使用的 Avg() 统计函数可计算某些字段的平均值，并按相同或其他字段对结果分组。 这在各种事例中都很有用（如性能数据）。
 
 我们从性能数据开始。 注意，OMS 目前为 Windows 和 Linux 计算机收集性能计数器。
 
@@ -354,7 +357,7 @@ Type=Perf
 
 ![search avg start](./media/log-analytics-log-searches/oms-search-avg02.png)
 
-阅读了性能记录形状和其他搜索技术后，可使用 measure Avg() 聚合此类型的数值数据。
+阅读了性能记录形状和其他搜索技术后，可使用 Measure Avg() 聚合此类型的数值数据。
 
 以下是一个简单的示例：
 
@@ -370,7 +373,7 @@ Type=Perf  ObjectName:Processor  InstanceName:_Total  CounterName:"% Processor T
 Type=Perf  ObjectName:Processor  InstanceName:_Total  CounterName:"% Processor Time" TimeGenerated>NOW-6HOURS | Measure Avg(CounterValue) by Computer
 ```
 
-### <a name="to-search-using-the-avg-function-with-the-measure-command"></a>结合 avg 函数与 MEASURE 命令进行搜索
+### <a name="to-search-using-the-avg-function-with-the-measure-command"></a>结合 avg 函数与 Measure 命令进行搜索
 * 在搜索查询框中，键入 `Type=Perf  ObjectName:Processor  InstanceName:_Total  CounterName:"% Processor Time" TimeGenerated>NOW-6HOURS | Measure Avg(CounterValue) by Computer`。
 
 可以*跨*计算机聚合并关联数据。 例如，假设在某些服务器场中有一组主机，其中每个节点与其他节点等同并执行同样类型的任务，且负荷应大致平衡。 可使用以下查询一次性获取其计数器，并获取整个服务器场的平均值。 可通过使用以下示例从选择计算机开始：
@@ -391,7 +394,7 @@ Type=Perf InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Process
 Type=Perf InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Processor Time") OR (ObjectName="LogicalDisk" AND CounterName="% Free Space")) AND TimeGenerated>NOW-4HOURS AND (Computer="AzureMktg01" OR Computer="AzureMktg02" OR Computer="AzureMktg03")
 ```
 
-因为选择非常具体，只需通过按 CounterName 进行分组，“**measure Avg()**”命令即可跨服务器场返回平均值（无需由计算机返回）。 例如：
+因为选择非常具体，只需通过按 CounterName 进行分组，“**Measure Avg()**”命令不会按计算机而是跨服务器场返回平均值。 例如：
 
 ```
 Type=Perf  InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Processor Time") OR (ObjectName="LogicalDisk" AND CounterName="% Free Space")) AND TimeGenerated>NOW-4HOURS AND (Computer="AzureMktg01" OR Computer="AzureMktg02" OR Computer="AzureMktg03") | Measure Avg(CounterValue) by CounterName
@@ -405,15 +408,15 @@ Type=Perf  InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Proces
 
 ![search avg dashboard](./media/log-analytics-log-searches/oms-search-avg05.png)
 
-### <a name="use-the-sum-function-with-the-measure-command"></a>将 sum 函数与 MEASURE 命令结合使用
-Sum 函数与 MEASURE 命令的其他函数类似。 可在 [Microsoft Azure 操作见解中的 W3C IIS 日志搜索](http://blogs.msdn.com/b/dmuscett/archive/2014/09/20/w3c-iis-logs-search-in-system-center-advisor-limited-preview.aspx) 中查看有关如何使用 SUM 函数的示例。
+### <a name="use-the-sum-function-with-the-measure-command"></a>将 Sum 函数与 Measure 命令结合使用
+Sum 函数与 Measure 命令的其他函数类似。 可在 [Microsoft Azure 操作见解中的 W3C IIS 日志搜索](http://blogs.msdn.com/b/dmuscett/archive/2014/09/20/w3c-iis-logs-search-in-system-center-advisor-limited-preview.aspx) 中查看有关如何使用 SUM 函数的示例。
 
 可将 Max() 和 Min() 与数字、日期时间和文本字符串结合使用。 文本字符串按字母排序，将获得第一个和最后一个字符串。
 
 但是，不能将 Sum() 与任意非数字字段一起使用。 这同样适用于 Avg()。
 
-### <a name="use-the-percentile-function-with-the-measure-command"></a>将 percentile 函数与 MEASURE 命令结合使用
-Percentile 函数与 Avg() 和 Sum() 的相似之处在于，你仅可将其用于数字字段。 可在数字字段上使用 1 到 99 之间的任意百分位数。 也可同时使用“**PERCENTILE**”和“**PCT**”命令。 以下是几个示例：  
+### <a name="use-the-percentile-function-with-the-measure-command"></a>将 Percentile 函数与 Measure 命令结合使用
+Percentile 函数与 Avg() 和 Sum() 的相似之处在于，你仅可将其用于数字字段。 可在数字字段上使用 1 到 99 之间的任意百分位数。 也可同时使用“**Percentile**”和“**PCT**”命令。 以下是几个示例：  
 
 ```
 Type:Perf CounterName:"DiskTransers/sec" |measure percentile95(CurrentValue) by Computer
@@ -422,8 +425,8 @@ Type:Perf CounterName:"DiskTransers/sec" |measure percentile95(CurrentValue) by 
 Type:Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Computer="MyComputerName" | measure pct65(CurrentValue) by InstanceName
 ```
 
-## <a name="use-the-where-command"></a>使用 WHERE 命令
-WHERE 命令的工作方式与筛选器类似，但它可应用于管道，以进一步筛选由 MEAUSRE 命令生成的聚合结果（这与查询开始时筛选的原始结果相反）。
+## <a name="use-the-where-command"></a>使用 Where 命令
+Where 命令的工作方式与筛选器类似，但它可应用于管道，以进一步筛选由 Measure 命令生成的聚合结果（这与查询开始时筛选的原始结果相反）。
 
 例如：
 
@@ -431,13 +434,13 @@ WHERE 命令的工作方式与筛选器类似，但它可应用于管道，以�
 Type=Perf  CounterName="% Processor Time"  InstanceName="_Total" | Measure Avg(CounterValue) as AVGCPU by Computer
 ```
 
-可添加另一个管道“|”字符和 WHERE 命令，以仅获取平均 CPU 高于 80% 的计算机，如以下示例中所示：
+可添加另一个管道“|”字符和 Where 命令，以仅获取平均 CPU 高于 80% 的计算机，如以下示例中所示：
 
 ```
 Type=Perf  CounterName="% Processor Time"  InstanceName="_Total" | Measure Avg(CounterValue) as AVGCPU by Computer | Where AVGCPU>80
 ```
 
-如果熟悉 Microsoft System Center - Operations Manager，可将其视为管理包术语中的 WHERE 命令。 如果该示例是一条规则，则该查询的第一部分将为数据源，而 WHERE 命令将为条件检测。
+如果熟悉 Microsoft System Center - Operations Manager，可将其视为管理包术语中的 Where 命令。 如果该示例是一条规则，则该查询的第一部分将为数据源，而 Where 命令将为条件检测。
 
 可将查询用作“**我的仪表板**”中的磁贴并作为排序的监视器，以查看计算机 CPU 过度使用的时间。 若要了解有关仪表板的详细信息，请参阅 [在 Log Analytics 中创建自定义仪表板](log-analytics-dashboards.md)。 也可使用移动应用创建和使用仪表板。 有关详细信息，请参阅 [OMS 移动应用](http://www.windowsphone.com/en-us/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)。 在下图中底部的两个磁贴中，可看到监视器以数字形式显示的列表。 从本质上说，你始终希望该数字为零且列表为空。 否则，它表示警报条件。 如果需要，可用它查看哪些计算机处于压力下。
 
@@ -465,7 +468,7 @@ Type=Event Computer IN {Type:Update UpdateState=Needed Optional=false Classifica
 
 另请注意内部搜索中使用的时间筛选器，因为系统更新评估每隔 24 小时会拍摄所有计算机的快照。 可通过仅搜索一天的结果使内部查询更为轻量和精确。 而外部搜索在用户界面中使用时间选择来检索过去 7 天的事件。 请参阅 [布尔运算符](#boolean-operators) 以了解有关时间运算符的详细信息。
 
-因为你实际上仅使用内部搜索的结果作为外部搜索的筛选值，所以仍可在外部搜索中应用命令。 例如，仍可使用其他 MEASURE 命令对以上事件进行分组：
+因为你实际上仅使用内部搜索的结果作为外部搜索的筛选值，所以仍可在外部搜索中应用命令。 例如，仍可使用其他 Measure 命令对以上事件进行分组：
 
 ```
 Type=Event Computer IN {Type:Update UpdateState=Needed Optional=false Classification="Security Updates" TimeGenerated>NOW-24HOURS | measure count() by Computer} | measure count() by Source
@@ -475,7 +478,7 @@ Type=Event Computer IN {Type:Update UpdateState=Needed Optional=false Classifica
 
 通常情况下，你会希望内部查询快速执行，因为 Log Analytics 对其具有服务端超时并返回结果的一小部分。 如果内部查询返回更多结果，结果列表将被截断，这可能导致外部搜索返回不正确的结果。
 
-另一条规则是，内部搜索当前需提供*聚合*结果。 换言之，它必须包含 *MEASURE* 命令；目前不能将原始结果注入外部搜索。
+另一条规则是，内部搜索当前需提供*聚合*结果。 换言之，它必须包含 *Measure* 命令；目前不能将原始结果注入外部搜索。
 
 此外，可只存在一个 IN 运算符，但它必须是查询中的最后一个筛选器。 多个 IN 运算符不能为 OR’d，这实质上阻止了多个子搜索运行：重要的一点是，对于每个外部搜索仅能使用一个子/内部搜索。
 
@@ -499,7 +502,7 @@ Type=Event EventLevelName=error Computer IN {Type=SQLAssessmentRecommendation | 
 Type=SecurityEvent Computer IN { Type=ADAssessmentRecommendation | measure count() by Computer }
 ```
 
-**已登录 BACONLAND\jochan 帐户的计算机还登陆了哪些其他帐户？**
+**已登录 BACONLAND\jochan 帐户的计算机还登录了哪些其他帐户？**
 
 ```
 Type=SecurityEvent EventID=4624   Account!="BACONLAND\\jochan" Computer IN { Type=SecurityEvent EventID=4624   Account="BACONLAND\\jochan" | measure count() by Computer } | measure count() by Account
@@ -521,7 +524,7 @@ Type=Event | Distinct Computer
 ```
 ![DISTINCT 搜索命令示例](./media/log-analytics-log-searches/oms-search-distinct02-revised.png)
 
-## <a name="use-the-countdistinct-function-with-the-measure-command"></a>将 countdistinct 函数与 MEASURE 命令结合使用
+## <a name="use-the-countdistinct-function-with-the-measure-command"></a>将 countdistinct 函数与 Measure 命令结合使用
 Countdistinct 函数计算每个组内的非重复值的数目。 例如，可将其用于计算向每个类型报告的唯一计算机的数目：
 
 ```
@@ -530,7 +533,7 @@ Countdistinct 函数计算每个组内的非重复值的数目。 例如，可�
 
 ![OMS-countdistinct](./media/log-analytics-log-searches/oms-countdistinct.png)
 
-## <a name="use-the-measure-interval-command"></a>使用 MEASURE INTERVAL 命令
+## <a name="use-the-measure-interval-command"></a>使用 Measure interval 命令
 通过接近实时的性能数据收集，可收集和可视化 Log Analytics 中的任意性能计数器。 只需输入查询“**Type:Perf**”即可返回数千个基于 Log Analytics 环境中的计数器数和服务器数的度量值图表。 通过按需度量值聚合，可在高级别下查看环境中的整体度量值，并根据需要深入了解更具体的数据。
 
 假设想要了解跨所有计算机的平均 CPU。 查看每个计算机的平均 CPU 可能没有什么帮助，因为结果可能会被消除。 若要查看详细信息，可在更小的时间窗口区块中聚合结果，并跨不同维度查看时间序列。 例如，可跨所有计算机执行 CPU 使用情况的每小时平均值，如下所示：
@@ -555,7 +558,7 @@ Type:W3CIISLog | measure max(TimeTaken) by csMethod Interval 5MINUTES
 ```
 
 ### <a name="use-multiple-aggregates-in-one-query"></a>在一个查询中使用多个聚合
-可在 MEASURE 命令中指定多个聚合子句。  每个子句均可使用独立的别名。  若未提供别名，则生成的字段名称将是用于 avg(CounterValue) 的聚合函数（例如，avg(CounterValue)）。
+可在 Measure 命令中指定多个聚合子句。  每个子句均可使用独立的别名。  若未提供别名，则生成的字段名称将是用于 avg(CounterValue) 的聚合函数（例如，avg(CounterValue)）。
 
  ```
 Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval 1hour
@@ -574,9 +577,4 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 
 * 使用 [Log Analytics 中的自定义字段](log-analytics-custom-fields.md)扩展日志搜索。
 * 查看 [Log Analytics 日志搜索引用](log-analytics-search-reference.md)以查看 Log Analytics 中所有可用的搜索字段和 Facet。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

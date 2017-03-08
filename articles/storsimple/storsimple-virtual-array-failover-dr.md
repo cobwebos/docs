@@ -4,7 +4,7 @@ description: "了解有关如何对 StorSimple Virtual Array 进行故障转移�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
@@ -12,14 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: d31f10f660dc05290363825c089664a70ecdd037
+ms.sourcegitcommit: 01acc0a5a6db7695d04d3adbf843826da5288025
+ms.openlocfilehash: 30b0aaa27be46ed581f56176fa3385273ff101c0
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array"></a>StorSimple Virtual Array 的灾难恢复和设备故障转移
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
 
 ## <a name="overview"></a>概述
 本文介绍 Microsoft Azure StorSimple 虚拟阵列的灾难恢复，包括故障转移到其他虚拟阵列的详细步骤。 通过故障转移，可以将数据中心内*源*设备中的数据移到*目标*设备。 目标设备可以位于相同或不同的地理位置中。 设备故障转移适用于整个设备。 在故障转移期间，源设备的云数据将所有权更改为目标设备云数据。
@@ -178,10 +180,5 @@ ms.openlocfilehash: d31f10f660dc05290363825c089664a70ecdd037
 ## <a name="next-steps"></a>后续步骤
 
 了解有关如何[使用本地 Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md) 的详细信息。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

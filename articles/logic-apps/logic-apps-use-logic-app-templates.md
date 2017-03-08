@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cd25b99d8d94d57638806317ef35d850adcad17b
-ms.openlocfilehash: fc1129efaf03d9d96804146294f5ad4e105d7411
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: 17486fd41b471356648656b65ca66e1234313d4c
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="logic-app-templates"></a>逻辑应用模板
+# <a name="configure-a-workflow-using-a-pre-built-template-or-pattern-to-get-started-quickly"></a>使用预建模板或模式配置快速入门的工作流
+
 ## <a name="what-are-logic-app-templates"></a>什么是逻辑应用模板
 逻辑应用模板是预建的逻辑应用，可用于快速开始创建自己的工作流。 
 
@@ -67,10 +70,5 @@ ms.openlocfilehash: fc1129efaf03d9d96804146294f5ad4e105d7411
  ![](../../includes/media/app-service-logic-templates/template6.png)  
 
 若想了解如何向现有逻辑应用模板添加更多步骤，或进行常规编辑的详细信息，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

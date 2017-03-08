@@ -16,44 +16,38 @@ ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
 translationtype: Human Translation
-ms.sourcegitcommit: c7f552825f3230a924da6e5e7285e8fa7fa42842
-ms.openlocfilehash: 541709ca17b96f8334e67dbdbbd9a10eefffa06b
+ms.sourcegitcommit: bb4f7c4977de290e6e148bbb1ae8b28791360f96
+ms.openlocfilehash: 1a385de3c00b9288d9e1245f04969a9099bf5b45
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-metadata-service---scheduled-events"></a>Azure 元数据服务 - 计划事件
+# <a name="azure-metadata-service---scheduled-events-preview"></a>Azure 元数据服务 - 计划事件（预览）
 
-使用 Azure 元数据服务可以发现有关 Azure 中托管的虚拟机的信息。 计划事件（已公开的类别之一）显示有关即将发生的事件（例如，重新启动）的信息，使应用程序可以为其做准备并限制中断。 它可用于所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 该服务给虚拟机时间来执行预防性任务并最大限度地降低事件的影响。 例如，你的服务可能会耗尽会话、选择新的主管，或者在观察到实例已计划重新启动后复制数据以避免中断。
+> [!NOTE] 
+> 同意使用条款即可使用预览版。 有关详细信息，请参阅 [针对 Microsoft Azure 预览版的 Microsoft Azure 补充使用条款。] (https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/)
+>
 
+计划事件是 Azure 元数据服务下面的子服务之一，显示有关即将发生的事件（例如，重新启动）的信息，使应用程序可以为其做准备并限制中断。 它可用于所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 计划事件给虚拟机时间来执行预防性任务并最大限度地降低事件的影响。 
 
 
 ## <a name="introduction---why-scheduled-events"></a>简介 - 为什么要有计划事件？
 
-有了计划事件，你可以了解（发现）可能会影响虚拟机的可用性的即将发生事件，并采取主动操作来限制对服务的影响。
-使用复制技术保持状态的多实例工作负荷可能易受到跨多个实例频繁发生的服务中断的影响。 此类服务中断可能会导致开销高的任务（例如，重新生成索引）甚至副本丢失。
-在很多其他情况下，使用正常关闭顺序可提高整体服务可用性。 例如，完成（或取消）正在提交的事务，将其他任务重新分配到群集中的其他 VM（手动故障转移），从负载均衡器池中删除虚拟机。
-有时会通知管理员即将发生的事件，甚至仅仅记录此类事件也会帮助改进托管在云中的应用程序的可维护性。
-
+使用计划事件，用户客户采取相应步骤来限制对服务的影响。 使用复制技术保持状态的多实例工作负荷可能易受到跨多个实例频繁发生的服务中断的影响。 此类服务中断可能会导致开销高的任务（例如，重新生成索引）甚至副本丢失。 在很多其他情况下，使用正常关闭顺序可提高整体服务可用性。 例如，完成（或取消）正在提交的事务，将其他任务重新分配到群集中的其他 VM（手动故障转移），从负载均衡器池中删除虚拟机。 有时会通知管理员即将发生的事件，甚至仅仅记录此类事件也会帮助改进托管在云中的应用程序的可维护性。
 Azure 元数据服务在以下用例中显示计划事件：
--   平台启动的有影响维护（例如，主机 OS 部署）
--   平台启动的无影响维护（例如，就地 VM 迁移）
--   交互式调用（例如，用户重启或重新部署 VM）
-
+-    平台启动的维护（例如，主机 OS 部署）
+-    用户启动的调用（例如，用户重启或重新部署 VM）
 
 
 ## <a name="scheduled-events---the-basics"></a>计划事件 - 基础知识  
 
 Azure 元数据服务使用 REST 终结点从 VM 中公开有关正在运行的虚拟机的信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开它。
 
-### <a name="scope"></a>范围 
-计划事件将显示到云服务中的所有虚拟机或可用性集中的所有虚拟机上。 因此，应查看事件中的“资源”字段以确定哪些 VM 将会受到影响。
+### <a name="scope"></a>范围
+计划事件将显示到云服务中的所有虚拟机或可用性集中的所有虚拟机上。 因此，应查看事件中的“资源”字段以确定哪些 VM 将会受到影响。 
 
 ### <a name="discover-the-endpoint"></a>发现终结点
-在虚拟网络 (VNet) 中创建虚拟机的情况下，元数据服务可从不可路由 IP：169.254.169.254 获得
-
-在虚拟机用于云服务 (PaaS) 的情况下，可以使用注册表发现元数据服务终结点。
-
-    {HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure\DeploymentManagement}
+当虚拟机是在虚拟网络 (VNet) 中创建时，可以从不可路由的 IP 169.254.169.254 使用元数据服务。否则，在适用于云服务和经典 VM 的默认情况下，需要通过其他逻辑来发现要使用的终结点。 请参阅此示例，了解如何[发现主机终结点] (https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)
 
 ### <a name="versioning"></a>版本控制 
 元数据服务通过以下格式使用版本控制 API：http://{ip}/metadata/{version}/scheduledevents 建议你的服务使用以下网址提供的最新版本：http://{ip}/metadata/latest/scheduledevents
@@ -62,8 +56,11 @@ Azure 元数据服务使用 REST 终结点从 VM 中公开有关正在运行的�
 查询元数据服务时，必须提供以下标头 *Metadata: true*。 
 
 ### <a name="enable-scheduled-events"></a>启用计划事件
-第一次调用计划事件时，Azure 会在虚拟机上隐式启用该功能。 因此，第一次调用时应该会延迟响应最多一分钟。 
+第一次调用计划事件时，Azure 会在虚拟机上隐式启用该功能。 因此，第一次调用时应该会延迟响应最多两分钟。
 
+### <a name="testing-your-logic-with-user-initiated-operations"></a>通过用户启动的操作对逻辑进行测试
+若要测试逻辑，可以使用 Azure 门户、API、CLI 或 PowerShell 启动生成计划事件的操作。 重新启动虚拟机会生成事件类型为“重新启动”的计划事件。 重新部署虚拟机会生成事件类型为“重新部署”的计划事件。
+用户启动的操作在这两种情况下都需要更长的时间来完成，因为计划事件为应用程序留出更多的时间来正常关闭。 
 
 ## <a name="using-the-api"></a>使用 API
 
@@ -76,10 +73,11 @@ Azure 元数据服务使用 REST 终结点从 VM 中公开有关正在运行的�
 在有计划事件的情况下，响应包含事件数组： 
 
     {
+     "DocumentIncarnation":{IncarnationID},
      "Events":[
           {
                 "EventId":{eventID},
-                "EventType":"Reboot" | "Redeploy" | "Pause",
+                "EventType":"Reboot" | "Redeploy" | "Freeze",
                 "ResourceType":"VirtualMachine",
                 "Resources":[{resourceName}],
                 "EventStatus":"Scheduled" | "Started",
@@ -89,7 +87,7 @@ Azure 元数据服务使用 REST 终结点从 VM 中公开有关正在运行的�
     }
 
 EventType 捕获对虚拟机的预期影响，其中：
-- 暂停：虚拟机将计划暂停几秒。 对内存、打开文件或网络连接没有影响
+- 冻结：虚拟机将计划暂停几秒。 对内存、打开文件或网络连接没有影响
 - 重新启动：虚拟机将计划重新启动（擦除内存）。
 - 重新部署：虚拟机将计划移到另一个节点（临时磁盘将丢失）。 
 
@@ -136,7 +134,7 @@ for ($eventIdx=0; $eventIdx -lt $scheduledEventsResponse.Events.Length ; $eventI
 
 
 ## <a name="c-sample"></a>C\# 示例 
-以下代码是公开用于与元数据服务进行通信的 API 的客户端代码
+以下示例是公开用于与元数据服务进行通信的 API 的客户端代码
 ```csharp
    public class ScheduledEventsClient
     {
@@ -304,9 +302,4 @@ if __name__ == '__main__':
 ```
 ## <a name="next-steps"></a>后续步骤 
 [Azure 中虚拟机的计划内维护](./virtual-machines-linux-planned-maintenance.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

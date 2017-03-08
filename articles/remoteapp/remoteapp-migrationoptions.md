@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 7c75fd870efb93bcf6c69ccf8a8ea9b56288c749
-ms.openlocfilehash: 0744b317f595786b91afce3c9e9d59f64ceef25d
+ms.sourcegitcommit: 801eef31e4a06fd1b89ddf504d643d9dcfcdcbdc
+ms.openlocfilehash: 99e6f4c1be6fa73db05fc4635fa5c34a579af588
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -61,6 +62,21 @@ ms.openlocfilehash: 0744b317f595786b91afce3c9e9d59f64ceef25d
 ### <a name="citrix-service-provider-program"></a>**Citrix 服务提供商计划**
 Citrix 服务提供商计划使得服务提供商为中小型企业提供虚拟云计算变得简单，中小型企业可以通过一种简单且即付即用的模式获得想要的服务。 Citrix 服务提供商利用任意设备、无处不在的访问、最广泛的应用程序支持、丰富的体验、增强的安全性和增加的可扩展性拓展自己的 Microsoft SPLA 业务并扩大其 RDS 平台投资。 相应地，Citrix 服务提供商也会吸引更多订户、提高客户满意度并降低运营成本。 [了解更多信息](http://www.citrix.com/products/service-providers.html)或[查找合作伙伴](https://www.citrix.com/buy/partnerlocator.html)。
 
+### <a name="frame"></a>Frame
+
+企业、政府、托管服务提供商和领先的软件供应商中的 IT 组织选择 Frame 创建和管理其在云中通过软件定义的安全工作区。 不管是小型组织还是大型组织，都可以使用 Frame 无比轻松地让用户在任何设备的任何浏览器上访问 Windows 应用程序。 Frame 平台提供管理员从云部署应用程序所需的一切，包括 Azure 基础结构和 RDS 许可证（用户可以自带 Azure 帐户和许可证）。 
+
+了解关于 [Azure 中 Frame](https://www.fra.me/ara) 的详细信息。 
+
+主要地点：美国加州圣马特奥市
+
+运营区域：全球
+
+Microsoft 合作伙伴：是
+
+1-480-269-4668
+
+
 ### <a name="microsoft-hosted-service-provider"></a>**Microsoft 托管服务提供商**
 托管服务合作伙伴通常提供完全托管式 Windows 桌面和应用程序服务，可能包括使用合作伙伴与 Microsoft 和其他软件提供商签署的许可协议，以及为了允许转售订户访问许可证 (SAL) 必须具有的服务提供商许可协议来管理 Azure 资源、操作系统、应用程序和服务台。 下面提供了详细信息以及一些专门帮助客户迁移 Azure RemoteApp 的托管服务提供商的联系信息。 查看[当前的托管服务提供商列表](http://aka.ms/rdsonazurecertified) ，这些提供商已经完成 RDS on IaaS 的学习路径和评估。  
 
@@ -86,7 +102,7 @@ Azure RemoteApp 迁移解决方案：是，[了解更多信息](https://www.aspe
 * 网址：[http://cloud.aspex.be/contact-ara-0](http://cloud.aspex.be/contact-ara-0)
 
 #### <a name="conexlink-platform-name-mycloudit"></a>**Conexlink（平台名称：MyCloudIT）**
-[MyCloudIT](http://www.mycloudit.com) 是供 IT 公司使用的一个自动化平台，可以简化、优化和扩展迁移，并在 Microsoft Azure 云中提供远程桌面、远程应用程序和基础结构。 
+[MyCloudIT](https://mycloudit.com) 是供 IT 公司使用的一个自动化平台，可以简化、优化和扩展迁移，并在 Microsoft Azure 云中提供远程桌面、远程应用程序和基础结构。 
 
 只需点击几下，MyCloudIT 平台即可减少 95% 的部署时间、降低 30% 的 Azure 部署成本，并将其客户的整个 IT 基础结构迁移到云中。 合作伙伴现在能够以前所未有的方式管理单个全局仪表板中的客户以及世界各地的服务终端用户，并在无需增加额外开销或进行大量 Azure 培训的情况下即可提高收入。  
 
@@ -208,10 +224,5 @@ Microsoft 云服务提供商：是
 1. 发送电子邮件至 [arainfo@microsoft.com](mailto:arainfo@microsoft.com)。
 2. 联络 [Azure 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 首先提交 [Azure 支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 3. 请拨打我们的电话。 [查找当地的销售电话号码](https://azure.microsoft.com/overview/sales-number/)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

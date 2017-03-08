@@ -3,7 +3,7 @@ title: "故障分析服务概述 |Microsoft 文档"
 description: "本文介绍 Service Fabric 中用于针对服务引入故障和运行测试方案的故障分析服务。"
 services: service-fabric
 documentationcenter: .net
-author: rishirsinha
+author: anmolah
 manager: timlt
 editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/06/2016
-ms.author: rsinha
+ms.date: 03/01/2017
+ms.author: anmola
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 84b5de368b59f7cb6e5b2965a7e9f731c472fa0e
+ms.sourcegitcommit: e3dda1f6a0d513668aca252aa1855a93f3720247
+ms.openlocfilehash: 3bff3fb99f27985c24b5a2e677738595314242c4
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -102,9 +103,4 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

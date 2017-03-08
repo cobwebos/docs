@@ -4,7 +4,7 @@ description: "介绍如何管理访问控制记录 (ACR)，以确定哪些主机
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 11252938-5b97-4178-8c37-f58eaa3d00b1
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 037da7a5647f5b3d2b0cf1364fab050406be3b62
+ms.sourcegitcommit: f45d8e2b848e930a790e7bf38c2b09fbdaaf2fab
+ms.openlocfilehash: 30b6aedd9b4b7913f6862b34582f3ae96c9eae5f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records-for-the-storsimple-virtual-array"></a>使用 StorSimple Manager 服务管理 StorSimple Virtual Array 的访问控制记录
+# <a name="use-storsimple-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>使用 StorSimple Manager 管理 StorSimple 虚拟阵列的访问控制记录
+
 ## <a name="overview"></a>概述
 访问控制记录 (ACR) 允许你指定哪些主机可以连接到 StorSimple Virtual Array（也称为 StorSimple 本地虚拟设备）上的卷。 ACR 设置为特定的卷，并包含主机的 iSCSI 限定名称 (IQN)。 当主机尝试连接到卷时，设备将在与该卷关联的 ACR 中检查 IQN 名称；如果名称匹配，则建立连接。 “配置”页上的**访问控制记录**部分显示包含相应主机 IQN 的所有访问控制记录。
 
@@ -103,10 +106,5 @@ ms.openlocfilehash: 037da7a5647f5b3d2b0cf1364fab050406be3b62
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关[添加卷和配置 ACR](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume) 的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -18,10 +18,12 @@ ms.author: sashan
 translationtype: Human Translation
 ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
 ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
+ms.lasthandoff: 01/07/2017
 
 
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性 
+
 > [!NOTE]
 > [活动异地复制](sql-database-geo-replication-overview.md)现在可供所有服务层中的所有数据库使用。
 >  
@@ -101,10 +103,5 @@ ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
 * 若要深入了解随附的数据库用户，请参阅[包含的数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 * 若要了解如何使用和配置活动异地复制息，请参阅[活动异地复制](sql-database-geo-replication-overview.md)
 * 若要了解如何使用异地还原，请参阅[异地还原](sql-database-recovery-using-backups.md#geo-restore)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

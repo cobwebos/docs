@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 52fa2ceb13e6c14d0dd4ba72a76328a2a9356bab
-ms.openlocfilehash: 79acdf2c29c3520fc38adf6270bcae68e87aac18
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: dc760b4c08d0e1afff3bc1276f6ed2367d67629e
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="monitor-b2b-messages"></a>监视 B2B 消息
+# <a name="start-or-enable-logging-of-as2-x12-and-edifact-messages-to-monitor-success-errors-and-message-properties"></a>启动或启用对 AS2、X12 和 EDIFACT 消息的日志记录，监视成功、错误和消息属性
 
-B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消息交换。 该关系定义业务流程之间的协议。 建立通信后，可以设置消息监视，检查通信是否按预期进行。
-若要获取更丰富的详细信息并进行调试，可为集成帐户设置诊断。
+B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消息交换。 该关系定义业务流程之间的协议。 建立通信后，可以设置消息监视，检查通信是否按预期进行。 若要获取更丰富的详细信息并进行调试，可为集成帐户设置诊断。
 
 消息跟踪适用于以下 B2B 协议：AS2、X12 和 EDIFACT。 
 
@@ -94,10 +95,5 @@ B2B 通信涉及到两个正在运行的业务流程或应用程序之间的消�
 [在 OMS 门户中跟踪 B2B 消息](logic-apps-track-b2b-messages-omsportal.md "跟踪 B2B 消息")
 
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

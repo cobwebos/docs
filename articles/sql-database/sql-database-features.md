@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/01/2017
+ms.date: 03/03/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 5d8fa8328bb2257b77a27fc2fa33565e20000e10
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 3f8ad9bf72555b9ab19af4c7a15f66b982fe66fe
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -118,7 +118,8 @@ Azure SQL 数据库中的每个数据库都与一个逻辑服务器相关联。 
 | Polybase | [支持](https://msdn.microsoft.com/library/mt143171.aspx) | [不支持]
 | 基于策略的管理 | [支持](https://msdn.microsoft.com/library/bb510667.aspx) | 不支持 |
 | 谓词 | [支持](https://msdn.microsoft.com/library/ms189523.aspx) | [大多数](https://msdn.microsoft.com/library/ms189523.aspx)
-| 资源调控器 | [支持](https://msdn.microsoft.com/library/bb933866.aspx) | [内置](sql-database-service-tiers.md) |
+| R 服务 | [支持](https://msdn.microsoft.com/library/mt604845.aspx)
+| 资源调控器 | [支持](https://msdn.microsoft.com/library/bb933866.aspx) | 不支持 |
 | 从备份还原数据库 | [支持](https://msdn.microsoft.com/library/ms187048.aspx#anchor_6) | [仅限从内置备份还原](sql-database-recovery-using-backups.md) |
 | 行级安全性 | [支持](https://msdn.microsoft.com/library/dn765131.aspx) | [支持](https://msdn.microsoft.com/library/dn765131.aspx) |
 | 安全语句 | [支持](https://msdn.microsoft.com/library/ff848791.aspx) | [部分](https://msdn.microsoft.com/library/ff848791.aspx) |

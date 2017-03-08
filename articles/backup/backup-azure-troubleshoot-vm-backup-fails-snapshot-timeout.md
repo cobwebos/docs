@@ -4,7 +4,7 @@ description: "与以下错误相关的 Azure 备份失败的症状、原因与�
 services: backup
 documentationcenter: 
 author: genlin
-manager: cfreeman
+manager: cshepard
 editor: 
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
-ms.author: jimpark; markgal; genli
+ms.author: genli;markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: 26ea5c6f867165a25dd5aecb01d0a0ce3b213a51
 ms.openlocfilehash: 707d666eb6c23fb926c31711daddfb22979513bc
+ms.lasthandoff: 01/25/2017
 
 ---
 
@@ -118,9 +119,4 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 | 同一个云服务中的许多 VM 配置为同时备份。 | 最佳做法是将备份计划分给同一云服务中的 VM。 |
 | VM 在运行时使用了很高的 CPU 或内存。 | 如果 VM 在运行时使用了很高的 CPU 使用率（超过 90%）或内存使用率，快照任务将排入队列、延迟并最终超时。 在这种情况下，请尝试进行按需备份。 |
 | VM 无法从 DHCP 获取主机/结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。  如果 VM 无法从 DHCP 响应 245 获取主机/结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP 地址，你应该通过平台配置该 IP。 VM 内的 DHCP 选项应保持启用。 有关详细信息，请参阅[设置静态内部专用 IP](../virtual-network/virtual-networks-reserved-private-ip.md)。 |
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

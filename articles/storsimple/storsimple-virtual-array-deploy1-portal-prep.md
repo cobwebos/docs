@@ -12,19 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/03/2017
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
-ms.openlocfilehash: 8539540f96d1a6fbb34736eebb0a5897b4754c9f
+ms.sourcegitcommit: d8acfd6e0206e8e97b7d49e280a7e72e0acadb6d
+ms.openlocfilehash: 9ce5278e66afb81c5cbfe3662c6654d39bbc9a54
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array---prepare-the-portal"></a>部署 StorSimple 虚拟阵列 - 准备门户
+# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 ## <a name="overview"></a>概述
 
-这是此系列部署教程的第一篇文章，是使用 Resource Manager 模型将虚拟阵列完全部署为文件服务器或 iSCSI 服务器所必读的。 本文介绍在预配虚拟阵列之前创建和配置 StorSimple Manager 服务所需进行的准备。 本文还提供了部署配置清单和配置先决条件的链接。
+这是此系列部署教程的第一篇文章，是使用 Resource Manager 模型将虚拟阵列完全部署为文件服务器或 iSCSI 服务器所必读的。 本文介绍在预配虚拟阵列之前创建和配置 StorSimple Device Manager 服务所需进行的准备。 本文还提供了部署配置清单和配置先决条件的链接。
 
 需要有管理员权限才能完成安装和配置过程。 建议在开始之前查看部署配置清单。 门户准备只需不到 10 分钟的时间。
 
@@ -168,10 +170,5 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 * [在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)
 * [在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

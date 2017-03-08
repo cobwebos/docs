@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
-ms.openlocfilehash: a3bb9851d0f7e6f40f456f7989ae949fb38549e0
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: 9a663a4e79c30b97e6390b7ff7f83deec131384a
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="custom-tracking-schemas"></a>自定义跟踪架构
-可以在 Azure 集成帐户中使用自定义跟踪架构来帮助监视企业到企业 (B2B) 事务。
+# <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>启用跟踪，以便监视完整的端到端工作流
+可以为企业到企业工作流的不同部分启用内置跟踪，例如跟踪 AS2 或 X12 消息。 当创建的工作流包含逻辑应用、BizTalk Server、SQL Server 或任何其他层时，用户可以启用自定义跟踪，以便从头至尾记录工作流的事件。 
+
+本主题提供的自定义代码可以用于逻辑应用外部的层。 
 
 ## <a name="custom-tracking-schema"></a>自定义跟踪架构
 ````java
@@ -84,9 +88,4 @@ ms.openlocfilehash: a3bb9851d0f7e6f40f456f7989ae949fb38549e0
 * [了解有关监视 B2B 消息的详细信息](logic-apps-monitor-b2b-message.md)。   
 * 了解[在 Operations Management Suite 门户中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 * 了解有关 [Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md)。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

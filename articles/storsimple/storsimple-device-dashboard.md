@@ -4,7 +4,7 @@ description: "介绍 StorSimple Manager 服务设备仪表板、如何用其查�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 6c213969-a385-461f-b698-78ef5b8a79cc
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 29a9477c740acca2bd0e220c554fda9a6f515998
+ms.sourcegitcommit: 182d7b2bd4d9f663b545684f2bc2a02d06952b61
+ms.openlocfilehash: 0d8035b9608ca3bac3d4822c7c755b81c96d481e
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="use-the-storsimple-manager-device-dashboard"></a>使用 StorSimple Manager 设备仪表板
+# <a name="use-the-device-dashboard-in-storsimple-manager-service"></a>在 StorSimple Manager 服务中使用设备仪表板  
+
 ## <a name="overview"></a>概述
 StorSimple Manager 设备仪表板提供特定 StorSimple 设备的概要信息，服务仪表板则不同，提供 Microsoft Azure StorSimple 解决方案中包括的所有设备的信息。
 
@@ -81,10 +84,5 @@ StorSimple Manager 设备仪表板提供特定 StorSimple 设备的概要信息�
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [StorSimple Manager 服务仪表板](storsimple-service-dashboard.md)。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

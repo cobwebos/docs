@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 3eb5f21eed1c583587cf7642db4e70102c818348
+ms.sourcegitcommit: d72ff7449a87dfa9223b7c5e77446de23502eb84
+ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array--set-up-your-virtual-device-as-an-iscsi-server"></a>部署 StorSimple 虚拟阵列 - 将虚拟设备设置为 iSCSI 服务器
+# <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
 
 ![iscsi 设置流程](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
@@ -213,7 +214,7 @@ ms.openlocfilehash: 3eb5f21eed1c583587cf7642db4e70102c818348
 12. 为卷分配驱动器号，然后单击“下一步”。
     
     ![新建卷向导 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. 输入对卷进行格式化的参数。 **Windows Server 仅支持 NTFS。** 将分配单元大小设置为 64 K。 为卷提供一个标签。 根据最佳做法，建议将此名称设置为在 StorSimple 虚拟阵列上提供的卷名。 单击“资源组名称” 的 Azure 数据工厂。
+13. 输入对卷进行格式化的参数。 **Windows Server 仅支持 NTFS。** 将分配单元大小设置为 64 K。 为卷提供一个标签。 根据最佳做法，建议将此名称设置为在 StorSimple 虚拟阵列上提供的卷名。 单击“下一步”。
     
     ![新建卷向导 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. 查看卷的值，然后单击“完成”。
@@ -244,10 +245,5 @@ ms.openlocfilehash: 3eb5f21eed1c583587cf7642db4e70102c818348
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

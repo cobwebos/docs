@@ -36,8 +36,6 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
-### [链接相关资源](resource-group-link-resources.md)
-### [Azure 资源浏览器](resource-manager-resource-explorer.md)
 ## 控制访问
 ### [使用 PowerShell 创建服务主体](resource-group-authenticate-service-principal.md)
 ### [使用 Azure CLI 创建服务主体](resource-group-authenticate-service-principal-cli.md)

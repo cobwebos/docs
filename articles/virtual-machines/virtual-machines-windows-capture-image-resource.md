@@ -13,15 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: 12b2d12c5152c6e9b8f2e8c78fbbd6663cb24e45
+ms.sourcegitcommit: 0f6bd85668533ee79700caead2edc6bc6c7d70de
+ms.openlocfilehash: 45383cb3b8238d72bf9ba398a22fe0a005941c3f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="how-to-capture-a-managed-image-of-a-generalized-vm-in-azure"></a>如何在 Azure 中捕获通用 VM 的托管映像
+# <a name="capture-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中捕获通用 VM 的托管映像
 
 可以从在存储帐户中存储为托管磁盘或非托管磁盘的通用 VM 创建托管映像资源。 映像随后可用于创建多个使用托管磁盘进行存储的 VM。 
 
@@ -39,13 +40,14 @@ ms.openlocfilehash: 12b2d12c5152c6e9b8f2e8c78fbbd6663cb24e45
 4. 从结果中选择“映像”。
 5. 在“映像”边栏选项卡中，单击“创建”。
 6. 在“名称”中，键入映像的名称。
+7. 如果有多个订阅，请从“订阅”下拉列表中选择正确的订阅。
 7. 在“资源组”中，选择“新建”并键入名称，或选择“来自现有”并从下拉列表中选择要使用的资源组。
 8. 在“位置”中，选择资源组的位置。
 9. 在“OS 类型”中，选择操作系统类型，可以为 Windows 或 Linux。
 11. 在“存储 blob”中，单击“浏览”以在 Azure 存储中查找 VHD。
 12. 在“帐户类型”中，选择 Standard_LRS 或 Premium_LRS。 标准版使用硬盘驱动器，高级版使用固态硬盘。 它们都使用本地冗余存储。
 13. 在“磁盘缓存”中，选择适当的磁盘缓存选项。 选项包括“无”、“只读”和“读\写”。
-14. 可选：你也可以将现有的数据磁盘添加到映像。  
+14. 可选：也可以将现有的数据磁盘添加到映像，只需单击“+ 添加数据磁盘”即可。  
 15. 完成选择后，请单击“创建”。
 16. 创建映像后，在所选资源组的资源列表中，你将看到它作为**映像**资源而出现。
 
@@ -171,10 +173,5 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
 ## <a name="next-steps"></a>后续步骤
 - 现在，你可以[从通用托管映像创建 VM](virtual-machines-windows-create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

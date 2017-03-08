@@ -3,8 +3,8 @@ title: "Azure 高级和标准托管磁盘概述 |Microsoft 文档"
 description: "概述了 Azure 托管磁盘，该磁盘在你使用 Azure VM 时为你处理存储帐户"
 services: storage
 documentationcenter: na
-author: ramankumarlive
-manager: tadb
+author: robinsh
+manager: timlt
 editor: tysonn
 ms.assetid: 272250b3-fd4e-41d2-8e34-fd8cc341ec87
 ms.service: storage
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
-ms.author: ramankum
+ms.date: 02/23/2017
+ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 58c395a45115c9db0027cffe96d20863c928a63d
-ms.openlocfilehash: 74ec73388af06dbf5682c5aa1c84b153dfc4a744
+ms.sourcegitcommit: 388e4c8f46662200a0e05db06d417f086ad41b11
+ms.openlocfilehash: b53feeb08d469363a52303cad4577b752a570900
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -26,7 +27,8 @@ ms.openlocfilehash: 74ec73388af06dbf5682c5aa1c84b153dfc4a744
 Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-introduction.md)简化了 Azure IaaS VM 的磁盘管理。 你只需指定所需的类型（[高级](storage-premium-storage.md)或[标准](storage-standard-storage.md)）和磁盘大小，Azure 将为你创建和管理磁盘。
 
 >[!NOTE]
-> 托管磁盘要求端口 8443 可用；如果希望阻止该端口，则必须使用非托管磁盘。
+>使用托管磁盘的 VM 要求端口 8443 上的出站流量将已安装 [VM 扩展](../virtual-machines/virtual-machines-windows-extensions-features.md)的状态报告给 Azure 平台。 如果无法使用该端口，则为 VM 预配扩展会失败。 另外，如果将扩展安装在正在运行的 VM 上，该扩展的部署状态将为未知。 如果不能解除对端口 8443 的阻止，则必须使用非托管磁盘。 我们正在努力解决此问题。 有关更多详细信息，请参阅 [IaaS VM 磁盘常见问题](storage-faq-for-disks.md#managed-disks-and-port-8443)。 
+>
 >
 
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
@@ -102,7 +104,7 @@ Azure 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](storage-intro
 
 有关创建映像的信息，请查看以下文章：
 * [如何在 Azure 中捕获通用 VM 的托管映像](../virtual-machines/virtual-machines-windows-capture-image-resource.md)
-* [如何使用 Azure CLI 2.0（预览版）通用化和捕获 Linux 虚拟机](../virtual-machines/virtual-machines-linux-capture-image.md)
+* [如何使用 Azure CLI 2.0 用化和捕获 Linux 虚拟机](../virtual-machines/virtual-machines-linux-capture-image.md)
 
 ## <a name="images-versus-snapshots"></a>映像与快照
 
@@ -134,7 +136,7 @@ SSE 在数据写入到存储帐户时会对数据进行加密。 如果你有曾
 
 * [使用 Resource Manager 和 PowerShell 创建 VM](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [使用 Azure CLI 2.0（预览版）创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [使用 Azure CLI 2.0 创建 Linux VM](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 
 * [使用 PowerShell 将托管数据磁盘附加到 Windows VM](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
 
@@ -151,9 +153,4 @@ SSE 在数据写入到存储帐户时会对数据进行加密。 如果你有曾
 * [从 AWS 和其他平台迁移到 Azure 中的托管磁盘](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
 
 * [将 Azure VM 转换为 Azure 中的托管磁盘](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

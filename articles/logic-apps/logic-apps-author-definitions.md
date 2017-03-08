@@ -1,6 +1,6 @@
 ---
-title: "创作逻辑应用定义 |Microsoft Docs"
-description: "了解如何编写逻辑应用的 JSON 定义"
+title: "使用 JSON 定义工作流 - Azure 逻辑应用 | Microsoft 文档"
+description: "如何在 JSON 中为逻辑应用编写工作流定义"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,22 +12,27 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
+ms.sourcegitcommit: e94837bf79e42602e2f72cda747ea629eed45a20
+ms.openlocfilehash: 920940d8ebe23d24216d3e886bd8ae58be12ce34
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="author-logic-app-definitions"></a>创作逻辑应用定义
-本主题演示如何使用 [Azure 逻辑应用](logic-apps-what-are-logic-apps.md)定义语言，这是一种简单的声明性 JSON 语言。 如果尚未创建，请首先查阅[如何创建新的逻辑应用](logic-apps-create-a-logic-app.md)。 你还可以阅读 [MSDN 上的定义语言的完整参考资料](http://aka.ms/logicappsdocs)。
+# <a name="create-workflow-definitions-for-logic-apps-using-json"></a>使用 JSON 为逻辑应用创建工作流定义
 
-## <a name="several-steps-that-repeat-over-a-list"></a>对列表重复执行的几个步骤
-可以利用 [foreach 类型](logic-apps-loops-and-scopes.md)遍历多达 10k 个项的数组，对每个项执行一个操作。
+可以使用简单的声明性 JSON 语言为 [Azure 逻辑应用](logic-apps-what-are-logic-apps.md)创建工作流定义。 首先请查看[如何使用逻辑应用设计器创建第一个逻辑应用](logic-apps-create-a-logic-app.md)（如果尚未这样做）。 另请参阅[工作流定义语言参考大全](http://aka.ms/logicappsdocs)。
 
-## <a name="a-failure-handling-step-if-something-goes-wrong"></a>出现问题时的失败处理步骤
-当**且仅当**一个或多个调用失败时，通常想要编写*修复步骤* — 执行的某种逻辑。 在本示例中，从多个位置获取数据，但是如果调用失败，我想在某处发布一条消息，以便以后可以跟踪到此故障：  
+## <a name="repeat-steps-over-a-list"></a>针对一个列表重复执行步骤
+
+若要循环访问多达 10,000 个项的数组并对每个项执行一个操作，请使用 [foreach 类型](logic-apps-loops-and-scopes.md)。
+
+## <a name="handle-failures-if-something-goes-wrong"></a>在出现故障时处理故障
+
+通常需包含*修复步骤* — *当且仅当* 一个或多个调用失败时执行的某种逻辑。 本示例从多个位置获取数据，但如果调用失败，则需在某处发布一条消息，方便以后跟踪该失败：  
 
 ```
 {
@@ -60,12 +65,13 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-可以使用 `runAfter` 属性来指定仅当 `readData` 为 **Failed** 时运行 `postToErrorMessageQueue`。  此属性值也可以是一个可能值列表，因此 `runAfter` 可以为 `["Succeeded", "Failed"]`。
+例如，若要指定 `postToErrorMessageQueue` 仅在 `readData` `Failed`后运行，请使用 `runAfter` 属性指定一系列可能的值，使 `runAfter` 可以为 `["Succeeded", "Failed"]`。
 
-最后，因为已处理错误，不再需要将运行标记为 **Failed**。 正如在此处看到的，即使有一个步骤失败，此运行也为 **Succeeded**，因为我写了步骤来处理此失败。
+最后，因为此示例现在可处理错误，我们不再将运行标记为 `Failed`。 由于我们已在此示例中添加该步骤来处理此故障，运行 `Succeeded`，虽然一个步骤 `Failed`。
 
-## <a name="two-or-more-steps-that-execute-in-parallel"></a>并行执行的两个（或更多）步骤
-若要让多个操作并行执行，运行时的 `runAfter` 属性必须相同。 
+## <a name="execute-two-or-more-steps-in-parallel"></a>并行执行两个或更多个步骤
+
+若要并行运行多个操作，运行时的 `runAfter` 属性必须相同。 
 
 ```
 {
@@ -104,14 +110,13 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-正如以上示例所示，`branch1` 和 `branch2` 均设置为在 `readData` 之后运行。 因此，这两个分支将并行运行：
+在此示例中，`branch1` 和 `branch2` 均设置为在 `readData` 后运行。 因此，这两个分支并行运行。 这两个分支的时间戳完全相同。
 
 ![并行](media/logic-apps-author-definitions/parallel.png)
 
-可以看到这两个分支的时间戳完全相同。 
-
 ## <a name="join-two-parallel-branches"></a>联接两个并行分支
-可以通过向与上面类似的 `runAfter` 属性中添加项来联接设为并行执行的两个操作。
+
+可以像前面的示例一样向 `runAfter` 属性添加项，以便将设置为并行运行的两个操作联接起来。
 
 ```
 {
@@ -182,8 +187,9 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 
 ![并行](media/logic-apps-author-definitions/join.png)
 
-## <a name="mapping-items-in-a-list-to-some-different-configuration"></a>将列表中的项映射到某些不同的配置
-接下来，假设我们想要获取完全不同的内容，该内容取决于一个属性的值。 我们可以创建值到目标的映射，并将其作为参数。  
+## <a name="map-list-items-to-a-different-configuration"></a>将列表项映射到其他配置
+
+接下来，假设我们需要根据属性的值获取不同的内容。 我们可以创建值到目标的映射，并将其作为参数。  
 
 ```
 {
@@ -234,14 +240,19 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-在本例中，首先获取文章列表，然后根据定义为参数的类别在映射中查找要从中获取内容的 URL。 
+在这种情况下，我们首先获取文章的列表。 第二步使用映射查找获取内容所需的 URL，具体取决于作为参数定义的类别。
 
-此处要注意以下两项：[`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 函数用于查看类别是否与定义的已知类别之一相符。 第二个，在获取类别后，可以使用方括号提取映射的项：`parameters[...]`。 
+请注意： 
 
-## <a name="working-with-strings"></a>操作字符串
-有多种函数可用于操作字符串。 举个例子，我们要将一个字符串传递给系统，但是我们不确信是否可以正确处理字符编码。 一种选择是对字符串进行 base64 编码。 但是，为了避免在 URL 中转义我们要替换几个字符。 
+*    [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 函数检查类别是否与某个已知的已定义类别匹配。
 
-我们还想要订购方名称的子字符串，因为不使用前 5 个字符。
+*    在获取类别后，可以使用方括号提取映射的项：`parameters[...]`
+
+## <a name="process-strings"></a>处理字符串
+
+可以使用各种函数来操作字符串。 例如，假设我们需要将一个字符串传递给某个系统，但不确定如何正确处理才能进行字符编码。 一种选择是对字符串进行 base64 编码。 但为了避免在 URL 中转义，我们要替换几个字符。 
+
+我们还想要订购方名称的子字符串，因为不使用前五个字符。
 
 ```
 {
@@ -275,17 +286,23 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-从内到外进行处理：
+从内到外处理：
 
 1. 获取订购方名称的 [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length)，这可以返回字符总数。
-2. 减 5（因为想要更短的字符串）
-3. 实际使用的是 [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring)。 我们从索引处 `5` 开始，提取字符串的其余部分。
-4. 将此子字符串转换为 [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 字符串
-5. 将所有 `+` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `-`
-6. 将所有 `/` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `_`
 
-## <a name="working-with-date-times"></a>使用日期时间
-日期时间可能很有用，特别是尝试从不支持**触发器**的数据源中提取数据的时候。  你还可以使用日期时间找出各个步骤需要花费的时间。 
+2. 减 5（因为想要更短的字符串）。
+
+3. 实际使用的是 [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring)。 我们从索引处 `5` 开始，提取字符串的其余部分。
+
+4. 将此子字符串转换为 [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 字符串。
+
+5. 将所有 `+` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `-` 字符。
+
+6. 将所有 `/` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `_` 字符。
+
+## <a name="work-with-date-times"></a>使用日期时间
+
+日期时间可能很有用，特别是尝试从不支持*触发器* 的数据源中提取数据的时候。 还可以使用日期时间找出各个步骤需要花费的时间。
 
 ```
 {
@@ -337,16 +354,20 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-在本例中，我们提取前一步的 `startTime`。 然后获取当前时间，并减去一秒：[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds)（可以使用其他时间单位，如 `minutes` 或 `hours`）。 最后，比较这两个值。 如果第一个值小于第二个值，则意味着从首次下订单开始过去了超过&1; 秒。 
+在本例中，我们提取前一步的 `startTime`。 然后，我们获取当前时间，并从中减去&1; 秒：
 
-此外请注意，可以使用字符串格式化函数设置日期的格式：在查询字符串中我使用 [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) 获取 RFC1123。 所有日期格式在 [MSDN 中均有记录](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)。 
+[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
 
-## <a name="using-deployment-time-parameters-for-different-environments"></a>针对不同的环境使用部署时间参数
-在具有开发环境、过渡环境和生产环境的地方普遍具有部署生命周期。 例如，在所有这些环境中你可能想要相同的定义，但是使用不同数据库。 同样，你可能想要在许多不同区域中使用相同的定义，以实现高可用性，但是希望每个逻辑应用实例与该区域的数据库通信。 
+可以使用其他时间单位，例如`minutes`或`hours`。 最后，比较这两个值。 如果第一个值小于第二个值，则意味着从首次下订单开始过去了&1; 秒以上的时间。
 
-请注意，这不同于在*运行时*采用不同参数，为此应使用上面所调用的 `trigger()` 函数。 
+若要设置日期格式，可以使用字符串格式化程序。 例如，若要获取 RFC1123，可以使用 [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)。 若要了解日期格式设置，请参阅 [Workflow Definition Language](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)（工作流定义语言）。
 
-可以首先编写一个非常简单的定义，如下：
+## <a name="deployment-parameters-for-different-environments"></a>适用于不同环境的部署参数
+
+通常情况下，部署生命周期涉及开发环境、过渡环境和生产环境。 例如，用户可以将同一定义用于所有这些环境，但使用不同的数据库。 同样，用户可能需要在不同区域中使用同一定义以实现高可用性，但又需要每个逻辑应用实例与该区域的数据库通信。
+这种情况不同于在*运行时*使用参数，后一情况应像前面的示例一样改用 `trigger()` 函数。
+
+可以首先编写一个基本的定义，如以下示例所示：
 
 ```
 {
@@ -375,7 +396,7 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-然后，在逻辑应用的实际 `PUT` 请求中提供参数 `uri`。 请注意，由于不再存在默认值，因此在逻辑应用有效负载中需要此参数：
+在逻辑应用的实际 `PUT` 请求中，可以提供参数 `uri`。 默认值不再存在，因此逻辑应用有效负载需要以下参数：
 
 ```
 {
@@ -393,13 +414,7 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ``` 
 
-在每个环境中可对 `connection` 参数提供不同值。 
+在每个环境中，可为 `connection` 参数提供不同值。 
 
-有关用于创建和管理逻辑应用的所有选项，请参阅 [REST API 文档](https://msdn.microsoft.com/library/azure/mt643787.aspx)。 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+如需用于创建和管理逻辑应用的所有选项，请参阅 [REST API 文档](https://msdn.microsoft.com/library/azure/mt643787.aspx)。 
 

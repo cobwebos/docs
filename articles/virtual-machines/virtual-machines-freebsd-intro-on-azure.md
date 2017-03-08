@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2017
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: 71ad04b10bc49500197db6fecdcc0305a1ea0dd2
-ms.openlocfilehash: ecb1c385de6c1b12674326afe7d5a0ebf6cd9ad0
+ms.sourcegitcommit: 8c96cacadb34a3d4eca1fe523d8a159c69a0ebe3
+ms.openlocfilehash: 01c855972d66d8ae2e975b206791ab8f9abcec41
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -83,16 +84,9 @@ Microsoft Corporation 在 Azure 上提供预先配置了 [Azure VM 来宾代理]
 可以选择使用 `sudo -s` 获取 root shell。
 
 ## <a name="known-issues"></a>已知问题
-1. 目前在基于 Hyper-V（以及 Azure）的 FreeBSD 11.0 上存在一个尚待解决的问题，如果操作系统使用 `freebsd-update` 进行修补，该问题可能导致 VM 无法启动。 [建议的修补程序](https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=212721)包含在 Azure 应用商店上的 FreeBSD 映像中。 但是，FreeBSD 团队尚未将此修补程序合并到上游，因此运行 `freebsd-update` 以便将内核替换为未修补的内核。 建议 Azure 用户在 FreeBSD 11.0 修补程序作为 ERRATA 发布后再安装该修补程序。
-
-2. [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.2 存在 [已知问题] (https://github.com/Azure/WALinuxAgent/pull/517)，此问题导致 Azure 上的 FreeBSD VM 预配失败。 建议 Azure 上的 FreeBSD VM 用户使用 2.2.1 或更早版本。 [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.3 将修复此问题。 
+1. [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.2 存在 [已知问题] (https://github.com/Azure/WALinuxAgent/pull/517)，此问题导致 Azure 上的 FreeBSD VM 预配失败。 [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.3 及更高版本已修复此问题。 
 
 ## <a name="next-steps"></a>后续步骤
 * 转到 [Azure 应用商店](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)创建 FreeBSD VM。
 * 如果要将自己的 FreeBSD 放入 Azure，请参阅 [Create and upload a FreeBSD VHD to Azure](./virtual-machines-linux-classic-freebsd-create-upload-vhd.md)（创建 FreeBSD VHD 并将其上载到 Azure）。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

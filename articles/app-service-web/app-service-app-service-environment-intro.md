@@ -4,7 +4,7 @@ description: "了解有关可提供安全、加入 VNet 的专用缩放单位用
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 465710ca02b8f905b11980e0023d7feceabf34f1
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 91b1d6315a9414789b28442f3f19d14c2aed8f00
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.openlocfilehash: 465710ca02b8f905b11980e0023d7feceabf34f1
 
 有关应用服务环境如何提供高缩放性和安全网络访问的概述，请参阅有关应用服务环境的 [AzureCon 深入探讨][AzureConDeepDive]！
 
-有关使用多个应用服务环境水平缩放的深入探讨，请参阅有关如何设置[地理分散的应用占用空间][GeodistributedAppFootprint]的文章。
+有关使用多个应用服务环境横向调整规模的深入探讨，请参阅有关如何设置[按地理位置分布的应用的数量][GeodistributedAppFootprint]的文章。
 
 若要查看“AzureCon 深入探讨”中所示的安全体系结构的配置方式，请参阅有关使用应用服务环境实现[分层安全体系结构](app-service-app-service-environment-layered-security.md)的文章。
 
@@ -61,7 +62,7 @@ ms.openlocfilehash: 465710ca02b8f905b11980e0023d7feceabf34f1
 有关应用服务环境中支持的可用计算资源大小的详细信息，请参阅[应用服务定价][AppServicePricing]页，并查看高级定价层中应用服务环境可用的选项。
 
 ## <a name="virtual-network-support"></a>虚拟网络支持
-可以在 Azure Resource Manager 虚拟网络**或者**经典的部署模型虚拟网络中创建应用服务环境（[有关虚拟网络的更多信息][MoreInfoOnVirtualNetworks]）。  由于应用服务环境始终位于虚拟网络中（更准确地说，是位于虚拟网络的子网中），因此可以利用虚拟网络的安全功能来控制入站和出站网络通信。  
+可以在 Azure Resource Manager 虚拟网络**或者**经典的部署模型虚拟网络中创建应用服务环境（[关于虚拟网络的更多信息][MoreInfoOnVirtualNetworks]）。  由于应用服务环境始终位于虚拟网络中（更准确地说，是位于虚拟网络的子网中），因此可以利用虚拟网络的安全功能来控制入站和出站网络通信。  
 
 应用服务环境既可以是面向 Internet 的（使用公共 IP 地址），也可以是面向内部的（只使用 Azure 内部负载均衡器 (ILB) 地址）。
 
@@ -69,7 +70,7 @@ ms.openlocfilehash: 465710ca02b8f905b11980e0023d7feceabf34f1
 
 应用还经常需要访问公司资源，例如内部数据库和 Web 服务。  常见的做法是让这些终结点仅可用于在 Azure 虚拟网络中流动的内部网络流量。  一旦应用服务环境加入到与内部服务相同的虚拟网络，在此环境中运行的应用即可访问这些内部服务，包括可通过[站点到站点][SiteToSite]和 [Azure ExpressRoute][ExpressRoute] 连接访问的终结点。
 
-有关应用服务环境如何配合虚拟网络和本地网络使用的更多详细信息，请参阅以下文章：[网络体系结构][NetworkArchitectureOverview]、[控制入站流量][ControllingInboundTraffic]和[安全连接到后端][SecurelyConnectingToBackends]。 
+有关应用服务环境如何在虚拟网络和本地网络中使用的详细信息，请参阅以下文章：[网络体系结构][NetworkArchitectureOverview]、[控制入站流量][ControllingInboundTraffic]和[安全连接到后端][SecurelyConnectingToBackends]。 
 
 ## <a name="getting-started"></a>入门
 若要开始使用应用服务环境，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]
@@ -110,10 +111,5 @@ ms.openlocfilehash: 465710ca02b8f905b11980e0023d7feceabf34f1
 
 <!-- IMAGES -->
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 13ae22245d105b32b9fc50d7dbc8a6d50ad4560a
-ms.openlocfilehash: 85fcc919b97d4cc06f89fc1ea5dc701ff61c2b27
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: f421ebdc81ce413d69f62a3b86563ab4a09b747a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -28,10 +29,18 @@ ms.openlocfilehash: 85fcc919b97d4cc06f89fc1ea5dc701ff61c2b27
 
 可使用以下选项之一重新部署 VM。 只需选择一个选项来重新部署 VM：
 
+- [Azure CLI 2.0](#azure-cli-20)
 - [Azure CLI 1.0](#azure-cli-10)
-- [Azure CLI 2.0（预览版）](#azure-cli-20-preview)
 - [Azure 门户](#using-azure-portal)
 
+## <a name="azure-cli-20"></a>Azure CLI 2.0
+安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+
+使用 [az vm redeploy](/cli/azure/vm#redeploy) 重新部署 VM。 以下示例重新部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
+
+```azurecli
+az vm redeploy --resource-group myResourceGroup --name myVM 
+```
 
 ## <a name="azure-cli-10"></a>Azure CLI 1.0
 安装[最新的 Azure CLI 1.0](../xplat-cli-install.md)，登录到 Azure 帐户，并确保处于 Resource Manager 模式 (`azure config mode arm`)。
@@ -42,23 +51,9 @@ ms.openlocfilehash: 85fcc919b97d4cc06f89fc1ea5dc701ff61c2b27
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
 ```
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0（预览版）
-安装最新的 [Azure CLI 2.0（预览版）](/cli/azure/install-az-cli2)并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
-
-使用 [az vm redeploy](/cli/azure/vm#redeploy) 重新部署 VM。 以下示例重新部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
-
-```azurecli
-az vm redeploy --resource-group myResourceGroup --name myVM 
-```
-
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>后续步骤
 如果在连接 VM 时遇到问题，可以在 [troubleshooting SSH connections](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（SSH 连接故障排除）或 [detailed SSH troubleshooting steps](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（详细的 SSH 故障排除步骤）中找到特定的帮助。 如果无法访问在 VM 上运行的应用程序，还可以阅读 [application troubleshooting issues](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（应用程序故障排除问题）。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

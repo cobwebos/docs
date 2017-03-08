@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 09b2847586eec50d8512ec5eabdc05a11d8b238a
-ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
+ms.sourcegitcommit: 3693b90509646fd7292861979cd7c2d1c0100d68
+ms.openlocfilehash: 30e92d17a99a0c751397e448108d488aefdd557a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
 本文对监视 Azure 资源进行概念性概述， 并提供有关特定类型资源的信息的导航。  如需要了解从非 Azure 角度监视应用程序的信息，请参阅[监视和诊断指南](../best-practices-monitoring.md)。
 
 Azure Monitor 的视频演练位于  
-[探索 Microsoft Azure 监视和诊断](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor)。 介绍可使用 Azure Monitor 的方案的另一个视频位于[探索 Microsoft Azure 监视和诊断](https://channel9.msdn.com/events/Ignite/2016/BRK2234)。  
+[Azure Monitor 入门](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor)。 介绍可使用 Azure Monitor 的方案的另一个视频位于[探索 Microsoft Azure 监视和诊断](https://channel9.msdn.com/events/Ignite/2016/BRK2234)。  
 
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
@@ -55,7 +56,7 @@ Azure Monitor 的视频演练位于
 ### <a name="resource---metrics-and-diagnostics-logs"></a>资源 - 指标和诊断日志
 可收集的指标取决于资源类型。 例如，虚拟机提供有关磁盘 IO 和 CPU 百分比的统计信息。 但这些统计信息对于服务总线队列来说并不存在，后者提供的是队列大小和消息吞吐量之类的指标。
 
-对于计算资源来说，用户可以获取有关来宾 OS 和诊断模块（例如 Azure 诊断）的指标。 Azure 诊断有助于收集诊断数据，并可将收集的诊断数据路由到其他位置（包括 Azure 存储）。
+对于计算资源来说，用户可以获取有关来宾 OS 和诊断模块（例如 Azure 诊断）的指标。 Azure 诊断有助于收集诊断数据，并可将诊断数据路由到其他位置（包括 Azure 存储）。
 
 [支持的指标](monitoring-supported-metrics.md)中提供了当前可收集的指标列表。
 
@@ -113,7 +114,7 @@ Azure Monitor 的视频演练位于
 * 发送到事件中心，以便将其路由到第三方工具进行实时分析。
 
 ### <a name="automate"></a>自动化
-可以使用监视数据触发事件甚至整个过程  示例包括：
+可以使用监视数据触发警报甚至整个过程。 示例包括：
 
 * 使用数据根据应用程序负载自动缩放计算实例数。
 * 当某个指标超出预定阈值时发送电子邮件。
@@ -145,9 +146,4 @@ Azure 的产品/服务可用于监视从裸机基础结构到应用程序遥测�
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) 如果要尝试诊断应用服务 Web 应用中的问题。
 * [Azure 存储故障诊断](../storage/storage-e2e-troubleshooting.md) 在使用存储 Blob、表或队列的情况下。
 * [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 和 [Operations Management Suite](https://www.microsoft.com/oms/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

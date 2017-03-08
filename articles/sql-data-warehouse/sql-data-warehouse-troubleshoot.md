@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 03/03/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: ecc008469ba754af12583d350706f626ec6690b5
-ms.lasthandoff: 12/07/2016
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 73f10984b7fe2636f5b9f664b831adc910e7ac7a
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -58,7 +58,6 @@ ms.lasthandoff: 12/07/2016
 ## <a name="polybase"></a>Polybase
 | 问题 | 解决方法 |
 |:--- |:--- |
-| UTF-8 错误 |目前 PolyBase 仅支持加载已进行 UTF-8 编码的数据文件。  有关如何解决此限制的指导，请参阅[绕开 PolyBase UTF-8 要求][Working around the PolyBase UTF-8 requirement]。 |
 | 由于行大加载失败 |目前 Polybase 不提供大型行支持。  这意味着，如果你的表包含 VARCHAR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)，将无法使用外部表加载数据。  目前仅支持通过 Azure 数据工厂（带 BCP）、Azure 流分析、SSIS、BCP 或 .NET SQLBulkCopy 类加载大型行。 在未来版本中将添加对大型行的 PolyBase 支持。 |
 | 使用 bcp 加载包含 MAX 数据类型的表失败 |有一个已知问题，它要求在某些情况下将 VARCHAR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX) 放置在表的末尾。  请尝试将 MAX 列移到表的末尾。 |
 
@@ -94,7 +93,7 @@ ms.lasthandoff: 12/07/2016
 [Connect to Azure SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
 [创建支持票证]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Scaling your SQL Data Warehouse]: ./sql-data-warehouse-manage-compute-overview.md
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: ./sql-data-warehouse-overview-what-is.md
 [request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 [Learning how to monitor your queries]: ./sql-data-warehouse-manage-monitor.md
 [Provisioning instructions]: ./sql-data-warehouse-get-started-provision.md

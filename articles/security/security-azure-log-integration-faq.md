@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
-ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
+ms.sourcegitcommit: d31d4c390d5e03c8b206284c3ae75defed2a38af
+ms.openlocfilehash: 83bedb42e8e685f5ea65e160ab7bfe128236ef82
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -49,7 +50,6 @@ ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
 添加源时，将 **subscriptionid** 追加到友好名称后面。
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
-
 事件 XML 具有如下所示的元数据，包括订阅 ID。
 
 ![事件 XML][1]
@@ -65,7 +65,7 @@ ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
 ### <a name="when-running-command-azlog-authorize-why-do-i-get-the-following-error"></a>运行 **azlog authorize** 命令时，为什么收到以下错误？
 错误：
 
-  *创建角色分配警告 - AuthorizationFailed：具有对象 ID“fe9e03e4-4dad-4328-910f-fd24a9660bd2”的客户端 janedo@microsoft.com' 没有在 '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000” 范围执行操作 'Microsoft.Authorization/roleAssignments/write' 的权限。*
+  *创建角色分配警告 - AuthorizationFailed：具有对象 ID“fe9e03e4-4dad-4328-910f-fd24a9660bd2”的客户端 janedo@microsoft.com 没有在“/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000”范围执行操作“Microsoft.Authorization/roleAssignments/write”的权限。*
 
 **Azlog authorize** 命令会将读取器角色分配给 Azure AD 服务主体（使用 **Azlog createazureid** 创建）所提供的订阅。 如果 Azure 登录不是订阅的协同管理员或所有者，就会失败，并显示“授权失败”错误消息。 需要 Azure 基于角色访问控制 (RBAC) 的共同管理员或所有者来完成此操作。
 
@@ -104,13 +104,9 @@ ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
 
 完成更改后，检查存储帐户，以确保收集正确的事件。
 
-如果存在关于 Azure 日志集成的问题，请发送电子邮件至 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+如果在安装和配置过程中遇到问题，请开具[支持请求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)，选择“日志集成”作为需要请求支持的服务。
+
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

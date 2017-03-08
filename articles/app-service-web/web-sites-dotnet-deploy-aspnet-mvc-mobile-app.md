@@ -4,7 +4,7 @@ description: "本教程说明如何使用 ASP.NET MVC 5 Web 应用程序中的�
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 0752c802-8609-4956-a755-686116913645
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin;riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 68764f29fde48631727371de05372a47e336a919
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: b23dfdcf99cab46bb4cedc690e00d29d37b3a044
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,11 +27,11 @@ ms.openlocfilehash: 68764f29fde48631727371de05372a47e336a919
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-youll-build"></a>所需操作
-在本教程中，你将在[初学者项目][StarterProject] 提供的简单会议列表应用程序中添加移动功能。 以下屏幕截图显示了已完成的应用程序中的 ASP.NET 会话，如在 Internet Explorer 11 F12 开发人员工具的浏览器模拟器中所见。
+在本教程中，用户将在[初学者项目][StarterProject]提供的简单会议列表应用程序中添加移动功能。 以下屏幕截图显示了已完成的应用程序中的 ASP.NET 会话，如在 Internet Explorer 11 F12 开发人员工具的浏览器模拟器中所见。
 
 ![][FixedSessionsByTag]
 
-可以使用 Internet Explorer 11 F12 开发人员工具和 [Fiddler 工具][Fiddler] 来帮助调试应用程序。 
+用户可以使用 Internet Explorer 11 F12 开发人员工具和 [Fiddler 工具][Fiddler]来调试应用程序。 
 
 ## <a name="skills-youll-learn"></a>将要学到的技能
 学习内容：
@@ -48,7 +49,7 @@ ms.openlocfilehash: 68764f29fde48631727371de05372a47e336a919
 
 还需要安装移动浏览器模拟器。 以下版本均可：
 
-* [Internet Explorer 11 F12 开发人员工具][EmulatorIE11] 中的浏览器模拟器（所有移动浏览器屏幕截图都使用此工具）。 它为 Windows Phone 8、Windows Phone 7 和 Apple iPad 提供用户代理字符串预设。
+* [Internet Explorer 11 F12 开发人员工具][EmulatorIE11]中的浏览器模拟器（所有移动浏览器屏幕截图都使用此工具）。 它为 Windows Phone 8、Windows Phone 7 和 Apple iPad 提供用户代理字符串预设。
 * [Google Chrome DevTools][EmulatorChrome] 中的浏览器模拟器。 它包含众多 Android 设备以及 Apple iPhone、Apple iPad 和 Amazon Kindle Fire 的预设。 它还会模拟触控事件。
 * [Opera Mobile Emulator][EmulatorOpera]
 
@@ -232,7 +233,7 @@ Bootstrap 并不特定于 ASP.NET MVC 5，你可以在任何 Web 应用程序上
 ## <a name="a-namebkmkimprovespeakerslista-improve-the-speakers-list"></a><a name="bkmk_Improvespeakerslist"></a>改进发言人列表
 正如你刚才看到的，“发言人”视图虽然可读，但链接字迹小，不易在移动设备上点击。 在本节中，你将使 *AllSpeakers* 视图适合移动应用，显示较大的便于点按的链接，并包含一个搜索框，用于快速查找发言人。
 
-可以使用 Bootstrap [链接列表组][链接列表组]样式来改进“发言人”视图。 在 *Views\\Home\\AllSpeakers.cshtml* 中，将 Razor 文件的内容替换为以下代码。
+可以使用 Bootstrap [链接列表组][linked list group]样式来改进“发言人”视图。 在 *Views\\Home\\AllSpeakers.cshtml* 中，将 Razor 文件的内容替换为以下代码。
 
      @model IEnumerable<string>
 
@@ -255,7 +256,7 @@ Bootstrap 并不特定于 ASP.NET MVC 5，你可以在任何 Web 应用程序上
 
 ![][AllSpeakersFixed]
 
-Bootstrap [链接列表组][链接列表组]样式使每个链接的整个框可单击，这大大改进了用户体验。 切换到桌面视图，可以看到一致的外观。
+Bootstrap [链接列表组][linked list group]样式使每个链接的整个框可单击，这大大改进了用户体验。 切换到桌面视图，可以看到一致的外观。
 
 ![][AllSpeakersFixedDesktop]
 
@@ -359,7 +360,7 @@ Bootstrap [链接列表组][链接列表组]样式使每个链接的整个框可
 
 ![][AllDatesFixed]
 
-可以通过按日期组织日期时间值来进一步改进“日期”视图。 这可以使用 Bootstrap [面板][面板]样式来实现。 将 *Views\\Home\\AllDates.cshtml* 文件的内容替换为下列代码：
+可以通过按日期组织日期时间值来进一步改进“日期”视图。 这可以使用 Bootstrap [面板][panels]样式来实现。 将 *Views\\Home\\AllDates.cshtml* 文件的内容替换为下列代码：
 
     @model IEnumerable<DateTime>
 
@@ -387,7 +388,7 @@ Bootstrap [链接列表组][链接列表组]样式使每个链接的整个框可
         </div>
     }
 
-此代码为列表中的每个非重复日期创建一个单独的 `<div class="panel panel-primary">` 标记，并像前面一样为相应的链接使用[链接列表组][链接列表组]。 当此代码运行时，移动浏览器看起来像这样：
+此代码为列表中的每个非重复日期创建一个单独的 `<div class="panel panel-primary">` 标记，并像前面一样为相应的链接使用[链接列表组][linked list group]。 当此代码运行时，移动浏览器看起来像这样：
 
 ![][AllDatesFixed2]
 
@@ -441,9 +442,9 @@ Bootstrap [链接列表组][链接列表组]样式使每个链接的整个框可
 
 该代码执行 3 项操作：
 
-* 使用 Bootstrap [自定义链接列表组][自定义链接列表组]将会话信息设为竖向，这样即可在移动浏览器中阅读所有此类信息（使用 list-group-item-text 等类）
-* 将[网格系统][网格系统]应用到布局，使会话项在桌面浏览器中横向排布，在移动浏览器中纵向排布（使用 col-md-4 类）
-* 使用[响应式实用工具][响应式实用工具]，以便在移动浏览器中查看时隐藏会话标记（使用 hidden-xs 类）
+* 使用 Bootstrap [自定义链接列表组][custom linked list group]将会话信息设为竖向，这样即可在移动浏览器中阅读所有此类信息（使用 list-group-item-text 等类）
+* 将[网格系统][grid system]应用到布局，使会话项在桌面浏览器中横向排布，在移动浏览器中纵向排布（使用 col-md-4 类）
+* 使用[响应式实用工具][responsive utilities]，以便在移动浏览器中查看时隐藏会话标记（使用 hidden-xs 类）
 
 你还可以点击标题链接转到相应的会话。 下图反映了代码更改。
 
@@ -529,27 +530,27 @@ Bootstrap [链接列表组][链接列表组]样式使每个链接的整个框可
 * 在 Razor 代码中应用 Bootstrap 样式
 
 ## <a name="see-also"></a>另请参阅
-* [响应式 Web 设计的 9 项基本原则](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
+* [响应式 Web 设计的&9; 项基本原则](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
 * [Bootstrap][BootstrapSite]
-* [Bootstrap 官方博客][Bootstrap 官方博客]
-* [Tutorial Republic 中的 Bootstrap Twitter 教程][Tutorial Republic 中的 Bootstrap Twitter 教程]
-* [Bootstrap 演练中心][Bootstrap 演练中心]
-* [W3C 建议移动 Web 应用程序的最佳做法][W3C 建议移动 Web 应用程序的最佳做法]
-* [用于媒体查询的 W3C 候选建议方案][用于媒体查询的 W3C 候选建议方案]
+* [Bootstrap 官方博客][Official Bootstrap Blog]
+* [Tutorial Republic 中的 Bootstrap Twitter 教程][Twitter Bootstrap Tutorial from Tutorial Republic]
+* [Bootstrap 演练中心][The Bootstrap Playground]
+* [W3C 建议移动 Web 应用程序的最佳做法][W3C Recommendation Mobile Web Application Best Practices]
+* [用于媒体查询的 W3C 候选建议方案][W3C Candidate Recommendation for media queries]
 
 ## <a name="whats-changed"></a>发生的更改
 * 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- Internal Links -->
-[将初学者项目部署到 Azure Web 应用]: #bkmk_DeployStarterProject
-[Bootstrap CSS 框架]: #bkmk_bootstrap
-[重写视图、布局和分部视图]: #bkmk_overrideviews
-[创建浏览器特定的视图]:#bkmk_browserviews
-[改进发言人列表]: #bkmk_Improvespeakerslist
-[改进标签列表]: #bkmk_improvetags
-[改进日期列表]: #bkmk_improvedates
-[改进 SessionsTable 视图]: #bkmk_improvesessionstable
-[改进 SessionByCode 视图]: #bkmk_improvesessionbycode
+[Deploy the starter project to an Azure web app]: #bkmk_DeployStarterProject
+[Bootstrap CSS Framework]: #bkmk_bootstrap
+[Override the Views, Layouts, and Partial Views]: #bkmk_overrideviews
+[Create Browser-Specific Views]:#bkmk_browserviews
+[Improve the Speakers List]: #bkmk_Improvespeakerslist
+[Improve the Tags List]: #bkmk_improvetags
+[Improve the Dates List]: #bkmk_improvedates
+[Improve the SessionsTable View]: #bkmk_improvesessionstable
+[Improve the SessionByCode View]: #bkmk_improvesessionbycode
 
 <!-- External Links -->
 [Visual Studio Express 2013]: http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-web
@@ -563,17 +564,17 @@ Bootstrap [链接列表组][链接列表组]样式使每个链接的整个框可
 [CompletedProject]: http://go.microsoft.com/fwlink/?LinkID=398781&clcid=0x409
 [BootstrapSite]: http://getbootstrap.com/
 [WebPIAzureSdk23NetVS13]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/WebPIAzureSdk23NetVS13.png
-[链接列表组]: http://getbootstrap.com/components/#list-group-linked
+[linked list group]: http://getbootstrap.com/components/#list-group-linked
 [glyphicon]: http://getbootstrap.com/components/#glyphicons
-[面板]: http://getbootstrap.com/components/#panels
-[自定义链接列表组]: http://getbootstrap.com/components/#list-group-custom-content
-[网格系统]: http://getbootstrap.com/css/#grid
-[响应式实用工具]: http://getbootstrap.com/css/#responsive-utilities
-[Bootstrap 官方博客]: http://blog.getbootstrap.com/
-[Tutorial Republic 中的 Bootstrap Twitter 教程]: http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
-[Bootstrap 演练中心]: http://www.bootply.com/
-[W3C 建议移动 Web 应用程序的最佳做法]: http://www.w3.org/TR/mwabp/
-[用于媒体查询的 W3C 候选建议方案]: http://www.w3.org/TR/css3-mediaqueries/
+[panels]: http://getbootstrap.com/components/#panels
+[custom linked list group]: http://getbootstrap.com/components/#list-group-custom-content
+[grid system]: http://getbootstrap.com/css/#grid
+[responsive utilities]: http://getbootstrap.com/css/#responsive-utilities
+[Official Bootstrap Blog]: http://blog.getbootstrap.com/
+[Twitter Bootstrap Tutorial from Tutorial Republic]: http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
+[The Bootstrap Playground]: http://www.bootply.com/
+[W3C Recommendation Mobile Web Application Best Practices]: http://www.w3.org/TR/mwabp/
+[W3C Candidate Recommendation for media queries]: http://www.w3.org/TR/css3-mediaqueries/
 
 <!-- Images -->
 [DeployClickPublish]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/deploy-to-azure-website-1.png
@@ -608,10 +609,5 @@ Bootstrap [链接列表组][链接列表组]样式使每个链接的整个框可
 [SessionsTableFixedTagASP.NETDesktop]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionsTable-Fixed-Tag-ASP.NET-Desktop.png
 [SessionByCode3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-3-644.png
 [SessionByCodeFixed3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-Fixed-3-644.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

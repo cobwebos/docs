@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 20cc8290663b4931ed3c7ef6769312da1b4b34e1
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -45,28 +46,28 @@ Azure AD 目录中的管理员无权通过远程桌面连接到托管域上的�
 执行以下步骤，在已加入域的虚拟机上安装 DNS 管理工具。 有关[安装和使用远程服务器管理工具](https://technet.microsoft.com/library/hh831501.aspx)的详细信息，请参阅 Technet。
 
 1. 在 Azure 经典门户中导航到“虚拟机”节点。 选择在任务 1 中创建的虚拟机，然后单击窗口底部命令栏上的“连接”。
-   
+
     ![连接到 Windows 虚拟机](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 2. 经典门户将提示打开或保存用于连接虚拟机的、扩展名为“.rdp”的文件。 文件下载完成后，请单击该文件。
 3. 出现登录提示时，请使用属于“AAD DC 管理员”组的用户的凭据。 例如，我们在示例中使用 'bob@domainservicespreview.onmicrosoft.com'。
 4. 在“开始”屏幕中打开“服务器管理器”。 在“服务器管理器”窗口的中心窗格中单击“添加角色和功能”。
-   
+
     ![在虚拟机上启动服务器管理器](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
 5. 在“添加角色和功能向导”的“准备工作”页上，单击“下一步”。
-   
+
     ![“准备工作”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
 6. 在“安装类型”页上选中“基于角色或基于功能的安装”选项，然后单击“下一步”。
-   
+
     ![“安装类型”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
 7. 在“服务器选择”页上，从服务器池中选择当前的虚拟机，然后单击“下一步”。
-   
+
     ![“服务器选择”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
 8. 在“服务器角色”页上，单击“下一步”。 我们跳过此页是因为我们不在服务器上安装任何角色。
 9. 在“功能”页上，通过单击展开“远程服务器管理工具”节点，然后通过单击展开“角色管理工具”节点。 从角色管理工具列表中选择“DNS 服务器工具”功能。
-   
+
     ![“功能”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
 10. 在“确认”页上，单击“安装”在虚拟机上安装 DNS 服务器工具功能。 功能安装成功完成后，单击“关闭”退出“添加角色和功能”向导。
-    
+
     ![“确认”页](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
 
 ## <a name="task-3---launch-the-dns-management-console-to-administer-dns"></a>任务 3 - 启动 DNS 管理控制台，对 DNS 进行管理
@@ -74,25 +75,25 @@ Azure AD 目录中的管理员无权通过远程桌面连接到托管域上的�
 
 > [!NOTE]
 > 必须是“AAD DC 管理员”组的成员才能管理托管域上的 DNS。
-> 
-> 
+>
+>
 
 1. 在“开始”屏幕中单击“管理工具”。 此时会看到在虚拟机上安装的 **DNS** 控制台。
-   
+
     ![管理工具 - DNS 控制台](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
 2. 单击“DNS”启动 DNS 管理控制台。
 3. 在“连接到 DNS 服务器”对话框中，单击名为“以下计算机”的选项，然后输入托管域的 DNS 域名（例如“contoso100.com”）。
-   
+
     ![DNS 控制台 - 连接到域](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 4. DNS 控制台连接到托管域。
-   
+
     ![DNS 控制台 - 管理域](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
 5. 用户现在可以使用 DNS 控制台，在已启用 AAD 域服务的虚拟网络中添加计算机的 DNS 条目。
 
 > [!WARNING]
 > 使用 DNS 管理工具管理托管域的 DNS 时要小心。 确保**不删除或修改域中的域服务使用的内置 DNS 记录**。 内置 DNS 记录包括域 DNS 记录、名称服务器记录，以及其他用于 DC 定位的记录。 如果修改这些记录，虚拟网络上的域服务会中断。
-> 
-> 
+>
+>
 
 请参阅 [Technet 上的“DNS 工具”一文](https://technet.microsoft.com/library/cc753579.aspx)，详细了解如何管理 DNS。
 
@@ -101,10 +102,4 @@ Azure AD 目录中的管理员无权通过远程桌面连接到托管域上的�
 * [将 Windows Server 虚拟机加入 Azure AD 域服务托管域](active-directory-ds-admin-guide-join-windows-vm.md)
 * [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
 * [DNS administration tools](https://technet.microsoft.com/library/cc753579.aspx)（DNS 管理工具）
-
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

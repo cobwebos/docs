@@ -32,8 +32,3 @@
 ## [示例](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Power BI 社区](http://community.powerbi.com/t5/Developer/bd-p/Developer)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/powerbi)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

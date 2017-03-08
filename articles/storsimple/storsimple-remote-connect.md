@@ -4,7 +4,7 @@ description: "介绍如何配置设备进行远程管理，以及如何通过 HT
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 923377aa-f451-4656-87de-5e95a34a6a2a
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 64f6f245b86d9194a52e40ed226de9960a36f3f9
-ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
+ms.sourcegitcommit: 5760c4a381a10fd1619b0239dd38e41d88f495e5
+ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-remotely-to-your-storsimple-device"></a>远程连接到 StorSimple 设备
+# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
+
 ## <a name="overview"></a>概述
 可以使用 Windows PowerShell 远程处理连接到 StorSimple 设备。 采用这种方式进行连接时，不会看到菜单。 （仅当在设备上使用串行控制台进行连接时，才会看到菜单。）借助 Windows PowerShell 远程处理，可连接到特定的运行空间。 也可以指定显示语言。 
 
@@ -32,7 +35,7 @@ ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
 * 与在网络上通过串行控制台进行连接相比，通过 HTTP 会话进行连接可能具有更高的安全性。 虽然这不是最安全的方法，但在受信任的网络上是比较可行的方法。 
 * 通过使用自签名证书的 HTTPS 会话进行连接是最安全的选项（建议使用）。
 
-可以远程连接到 Windows PowerShell 接口。 但是，通过 Windows PowerShell 接口远程访问 StorSimple 设备默认为未启用。 首先需要在设备上启用远程管理，然后在用于访问设备的客户端上启用远程管理。
+可以远程连接到 Windows PowerShell 接口。 但在默认情况下，通过 Windows PowerShell 接口远程访问 StorSimple 设备处于未启用状态。 首先需要在设备上启用远程管理，然后在用于访问设备的客户端上启用远程管理。
 
 本文中所述的步骤是在运行 Windows Server 2012 R2 的主机系统上执行的。
 
@@ -70,7 +73,7 @@ ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
 1. 在串行控制台菜单上，选择“选项 1”。 有关在设备上使用串行控制台的详细信息，请转到 [Connect to Windows PowerShell for StorSimple via device serial console](storsimple-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)（通过设备串行控制台连接到 Windows PowerShell for StorSimple）。
 2. 在提示符下键入：`Enable-HcsRemoteManagement –AllowHttp`
 3. 将会收到使用 HTTP 连接到设备的安全漏洞的相关通知。 出现提示时，键入 **Y** 以确认。
-4. 键入 `Get-HcsSystem` 以验证是否启用了 HTTP
+4. 键入以下内容来验证是否启用了 HTTP：`Get-HcsSystem`
 5. 验证“RemoteManagementMode”字段是否显示为“HttpsAndHttpEnabled”。下图显示了 PuTTY 中的这些设置。
    
      ![已启用串行 HTTPS 和 HTTP](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
@@ -106,7 +109,7 @@ ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
    > 
    > 
    
-     此时，应该拥有了到设备的活动的远程 Windows PowerShell 会话。
+     此时，应该创建了到设备的远程 Windows PowerShell 会话。
    
     ![使用 HTTP 的 PowerShell 远程处理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
 
@@ -217,7 +220,7 @@ ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
    
      `$cred = New-Object pscredential @("<IP of target device>\SSAdmin", (ConvertTo-SecureString -Force -AsPlainText "<Device Administrator Password>"))`
    
-    其中，<*IP of target device*> 是设备的 DATA 0 IP 地址；如前面 hosts 文件的图片中所示的 **10.126.173.90**。 此外，请提供设备的管理员密码。
+    其中，<*IP of target device*> 是设备的 DATA 0 IP 地址；如前面主机文件的图片中所示的 **10.126.173.90**。 此外，请提供设备的管理员密码。
 4. 通过键入以下内容创建会话：
    
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
@@ -233,10 +236,5 @@ ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
 ## <a name="next-steps"></a>后续步骤
 * 了解有关如何[使用 Windows PowerShell 管理 StorSimple 设备](storsimple-windows-powershell-administration.md)的详细信息。
 * 了解有关如何[使用 StorSimple Manager 服务管理 StorSimple 设备](storsimple-manager-service-administration.md)的详细信息。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

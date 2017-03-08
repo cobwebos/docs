@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 1753096f376d09a1b5f2a6b4731775ef5bf6f5ac
-ms.openlocfilehash: 4f66de2fe4b123e208413ade436bb66b9a03961b
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 7aa2a60f2a02e0f9d837b5b1cecc03709f040898
+ms.openlocfilehash: cce72f374e2cc6f1a42428d9f8e1f3ab8be50f7b
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -246,13 +246,15 @@ Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如�
 ### <a name="solution"></a>解决方案
 在“/etc/fstab”项中检查“serverino”：
 
-`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,cache=none,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 还可以通过运行 **sudo mount | grep cifs** 命令并查看其输出，来检查是否正在使用该选项：
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=none,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
 如果“serverino”选项不存在，可通过选中“serverino”选项卸载并再次装载 Azure 文件。
+
+性能降低的另一个原因可能是禁用了缓存。 若要检查是否启用了缓存，请查找“cache=”。  *cache=none* 指示缓存已禁用。 请使用默认的装载命令重新装载共享，或者显式添加 **cache=strict** 选项到装载命令中，确保默认缓存或“strict”缓存模式已启用。
 
 <a id="error112"></a>
 ## <a name="error-112---timeout-error"></a>错误 112 - 超时错误
@@ -263,9 +265,10 @@ Linux 分发尚不支持 SMB 3.0 中的加密功能。 在某些分发中，如�
 
 此错误可由 Linux 重新连接问题或阻止重新连接的其他问题（如网络错误）引发。 指定硬装载会强制客户端等待，直到建立连接或显式中断为止，可用于避免由于网络超时而引起的错误。 但用户应注意，这可能会导致无限期等待，应在必要时停止连接。
 
+
 ### <a name="workaround"></a>解决方法
 
-Linux 问题已修复，但尚未移植到 Linux 分发版。 如果此问题由 Linux 中的重新连接问题引起，可通过避免进入空闲状态解决此问题。 若要实现此目的，请在 Azure 文件共享中保留一个文件，并每隔 30 秒或更短时间在该文件上执行写入操作。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，结果可能会延迟，操作可能不会触发连接。
+Linux 问题已修复，但尚未移植到 Linux 分发版。 如果此问题由 Linux 中的重新连接问题引起，可通过避免进入空闲状态解决此问题。 若要实现此目的，请在 Azure 文件共享中保留一个文件，并每隔 30 秒或更短时间在该文件上执行写入操作。 这必须是一个写入操作，例如在文件上重写创建/修改的日期。 否则，结果可能会延迟，操作可能不会触发连接。 这是常用的 Linux 内核的列表，这些内核包含这样和那样的重新连接修补程序：4.4.40+ 4.8.16+ 4.9.1+
 
 <a id="webjobs"></a>
 

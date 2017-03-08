@@ -4,7 +4,7 @@ description: "介绍了如何使用该服务通过先停用再删除 StorSimple 
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bf5ddb32-da4b-446f-ab91-215e9020e1c8
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87aa287acff47ae471830ef09bf674e2c97abddd
+ms.sourcegitcommit: d2008fa396405de99c527a84831a6544cdc0fc1d
+ms.openlocfilehash: d62b484150a6786f0a6abbff1ca2c172e1ad43db
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>停用和删除 StorSimple Virtual Array
+# <a name="deactivate-and-delete-a-storsimple-virtual-array-via-storsimple-manager"></a>通过 StorSimple Manager 停用和删除 StorSimple 虚拟阵列
 ## <a name="overview"></a>概述
 停用 StorSimple Virtual Array 时，将会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是不可撤消的“永久性”操作。 停用的设备不能再次注册到 StorSimple Manager 服务。
 
@@ -85,10 +87,5 @@ ms.openlocfilehash: 87aa287acff47ae471830ef09bf674e2c97abddd
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解有关如何使用 StorSimple Manager 服务的详细信息，请转到[使用 StorSimple Manager 服务管理 StorSimple Virtual Array](storsimple-ova-manager-service-administration.md)。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

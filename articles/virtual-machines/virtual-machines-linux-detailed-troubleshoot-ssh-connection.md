@@ -14,11 +14,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/28/2016
+ms.date: 03/07/2017
 ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 2df9b83132711e199b58fa92841a3dca74c7282a
 ms.openlocfilehash: 0164ad801b11a6c6124df8106bd7b71b737f81f1
+ms.lasthandoff: 11/30/2016
 
 
 ---
@@ -143,10 +144,5 @@ ms.openlocfilehash: 0164ad801b11a6c6124df8106bd7b71b737f81f1
 
 ## <a name="additional-resources"></a>其他资源
 有关对应用程序访问进行故障排除的详细信息，请参阅 [Troubleshoot access to an application running on an Azure virtual machine](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（对在 Azure 虚拟机上运行的应用程序的访问进行故障排除）
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

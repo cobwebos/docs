@@ -5,7 +5,7 @@ services: app-service
 documentationcenter: 
 author: cephalin
 writer: cephalin
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.service: app-service
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: c002c4588869536810b969aed80da09e60b62525
-ms.openlocfilehash: 9b06b4a7f4b58c586b81d0ad4a40dfdc586dfe6e
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 10b1998789feafaf0c28155bc8a96a28ff78cf02
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -236,7 +237,7 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 * 若要在 Azure CLI 中列出可用于 Azure App Service 的命令，请调用 `azure site -h`。
 
 > [!NOTE] 
-> 若要了解部署槽的 [Azure CLI 2.0（预览版）](https://github.com/Azure/azure-cli)命令，请参阅 [az appservice web 部署槽](/cli/azure/appservice/web/deployment/slot)。
+> 若要了解部署槽的 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 命令，请参阅 [az appservice web 部署槽](/cli/azure/appservice/web/deployment/slot)。
 
 - - -
 ### <a name="azure-site-list"></a>azure site list
@@ -291,10 +292,5 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 [Autoswap1]: ./media/web-sites-staged-publishing/AutoSwap01.png
 [Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "将 Azure 中的 Linux VM 从非托管磁盘转换为托管磁盘 | Microsoft Docs"
-description: "如何使用 Azure CLI 2.0（预览版）将 VM 从非托管磁盘转换为 Azure 托管磁盘"
+description: "如何使用 Azure CLI 2.0 将 VM 从非托管磁盘转换为 Azure 托管磁盘"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ef59fc785847f09706a565dc0a0471f8c08e7955
-ms.openlocfilehash: 71e0bfb230cc0c385a09243fa195e918bbade865
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: 937b22dd9ad26211b006326b39cafe9c5da4e8bd
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -98,9 +99,4 @@ ms.openlocfilehash: 71e0bfb230cc0c385a09243fa195e918bbade865
 
 ## <a name="next-steps"></a>后续步骤
 有关存储选项的详细信息，请参阅 [Azure 托管磁盘概述](../storage/storage-managed-disks-overview.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

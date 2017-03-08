@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 44be67cd5c59a57cafd244ce0a49a6fadf44bdda
 ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 2. 一个 **Azure AD 目录** - 已与本地目录或仅限云的目录同步。
 3. 必须为 Azure AD 目录启用 **Azure AD 域服务**。 如果未启用，请遵循[入门指南](active-directory-ds-getting-started.md)中所述的所有任务。
 4. **用于启用安全 LDAP 的证书**。
-   
+
    * **建议** - 从信任的公共证书颁发机构获取证书。 这是更安全的配置选项。
    * 或者，也可以按本文稍后所述选择[创建自签名证书](#task-1---obtain-a-certificate-for-secure-ldap)。
 
@@ -47,8 +48,8 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 
 > [!NOTE]
 > **企业证书颁发机构：**Azure AD 域服务目前不支持使用组织的企业证书颁发机构颁发的安全 LDAP 证书。 限制的原因是：此服务不信任企业 CA 作为根证书颁发机构。 我们希望在将来添加对企业 CA 的支持。 如果必须使用由企业 CA 颁发的证书。请[联系我们](active-directory-ds-contact-us.md)获取帮助。
-> 
-> 
+>
+>
 
 <br>
 
@@ -65,8 +66,8 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 
 > [!NOTE]
 > 需要使用安全 LDAP 连接到托管域的客户端计算机必须信任安全 LDAP 证书的颁发者。
-> 
-> 
+>
+>
 
 ### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>选项 B - 为安全 LDAP 创建自签名证书
 如果不想使用公共证书颁发机构颁发的证书，可以选择为安全 LDAP 创建自签名证书。
@@ -176,8 +177,8 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 
    > [!NOTE]
    > 为托管域启用安全 LDAP 大约需要 10 到 15 分钟时间。 如果提供的安全 LDAP 证书不符合所需的条件，则不会为目录启用安全 LDAP，并且会显示失败消息。 例如，域名不正确、证书已过期或即将过期。
-   > 
-   > 
+   >
+   >
 
 9. 为托管域成功启用安全 LDAP 后，“挂起...”消息应会消失。 此时会显示证书的指纹。
 
@@ -233,9 +234,4 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)
 * [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
 * [管理 Azure AD 域服务托管域上的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

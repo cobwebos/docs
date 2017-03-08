@@ -4,7 +4,7 @@ description: "介绍如何在 StorSimple 8000 系列设备上安装 StorSimple 8
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 7a513923-eb77-4078-b0ab-f8e90183796a
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/22/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f16ae589c160338450a41857f88fe29763e1b9eb
+ms.sourcegitcommit: 56af9046fff24229298997b169aaf329e1692cc2
+ms.openlocfilehash: 80ff35cc47dfc38089f4c392ef4c90baf9ccc03e
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="install-update-12-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 1.2
+# <a name="install-update-12-on-your-storsimple-8000-series-device"></a>在 StorSimple 8000 系列设备上安装 Update 1.2
 ## <a name="overview"></a>概述
 本教程介绍如何在运行 Update 1 之前的软件版本的 StorSimple 设备上安装 Update 1.2。 本教程还介绍了将网关配置在 StorSimple 设备的非 DATA 0 网络接口上时，进行更新所需的额外步骤。
 
@@ -59,7 +61,7 @@ Update 1.2 包括设备软件更新、LSI 驱动程序更新以及磁盘固件�
    
    维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。
    
-   ![“维护”页](./media/storsimple-install-update-1/InstallUpdate12_10M.png "Maintenance page")
+   ![维护页](./media/storsimple-install-update-1/InstallUpdate12_10M.png "维护页")
 2. 下载维护模式更新时，需使用[下载修补程序](#to-download-hotfixes)中列出的步骤搜索并下载 KB3063416，以便安装磁盘固件更新（其他更新此时应已安装）。
 3. 按照[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)中列出的步骤安装维护模式更新。
 4. 在 Azure 经典门户中导航到“维护”页，在页面底部单击“扫描更新”查看 Windows 更新，然后单击“安装更新”。 成功安装所有更新以后，相关操作即告完成。
@@ -114,10 +116,5 @@ Update 1.2 包括设备软件更新、LSI 驱动程序更新以及磁盘固件�
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [Update 1.2 版](storsimple-update1-release-notes.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

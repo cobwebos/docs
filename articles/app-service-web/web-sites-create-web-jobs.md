@@ -4,7 +4,7 @@ description: "了解如何在 Azure Web 应用中运行后台任务。"
 services: app-service
 documentationcenter: 
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 11/27/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 10320f338d902ffefd8a98fd59f3e8fb22682b00
-ms.openlocfilehash: 578575877fc706076ac2fdf034cb1ac0e92b16ef
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 5d0d46447c3e0a3a1047e2bbedd44bbd46dd7f1b
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="run-background-tasks-with-webjobs"></a>使用 Web 作业运行后台任务
 ## <a name="overview"></a>概述
-可使用 3 种方式在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用的 WebJobs 中运行程序或脚本：按需、连续或按计划。 使用 Web 作业无需支付额外的费用。
+可使用&3; 种方式在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用的 WebJobs 中运行程序或脚本：按需、连续或按计划。 使用 Web 作业无需支付额外的费用。
 
 本文说明如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs。 有关如何使用 Visual Studio 或连续交付过程进行部署的信息，请参阅[如何将 Azure WebJobs 部署到 Web 应用](websites-dotnet-deploy-webjobs.md)。
 
@@ -203,10 +204,5 @@ Azure 门户尚不能创建计划 WebJob，但在增添该功能之前，可使�
 [LinkToScheduler]: ./media/web-sites-create-web-jobs/31LinkToScheduler.png
 [SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

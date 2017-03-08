@@ -15,13 +15,14 @@ ms.devlang: python
 ms.topic: article
 ms.date: 11/10/2015
 ms.author: crwilcox
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e33a3314fc127673a8bf7659b72bd91e1a2d1712
-
+ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
+ms.openlocfilehash: ad53cb9bb58064aeed49cb05fdcb936e408346d2
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="jupyter-notebook-on-azure"></a>Azure 上的 Jupyter Notebook
+# <a name="creating-an-azure-vm-installing-jupyter-and-running-a-jupyter-notebook-on-azure"></a>在 Azure 上创建 Azure VM、安装 Jupyter，以及运行 Jupyter Notebook
 [Jupyter 项目](http://jupyter.org)（以前称为 [IPython 项目](http://ipython.org)），提供了一套使用功能强大的交互式 shell 进行科学计算的工具，实现了将代码执行与创建实时计算文档相结合。 这些 Notebook 文件可以包含任意文本、数学公式、输入代码、结果、图形、视频以及新型 Web 浏览器能够显示的任何其他种类的媒体。 无论你是第一次使用 Python 并希望在有趣的交互式环境中了解它，还是执行一些严格的并行/技术计算，Jupyter Notebook 都是一个很好的选择。
 
 ![屏幕截图](./media/virtual-machines-linux-jupyter-notebook/ipy-notebook-spectral.png)使用 SciPy 和 Matplotlib 包来分析录音结构。
@@ -38,7 +39,7 @@ ms.openlocfilehash: e33a3314fc127673a8bf7659b72bd91e1a2d1712
 此 VM 是云中的完整操作系统，它将用于运行 Jupyter Notebook。 Azure 能够同时运行 Linux 和 Windows 虚拟机，我们将介绍如何在这两种类型的虚拟机上设置 Jupyter。
 
 ### <a name="create-a-linux-vm-and-open-a-port-for-jupyter"></a>为 Jupyter 创建 Linux VM 并打开端口
-按照[此处][portal-vm-linux]提供的说明可创建 *Ubuntu* 分发版的虚拟机。 本教程使用 Ubuntu Server 14.04 LTS。 假设用户名为 *azureuser*。
+按照[此处][portal-vm-linux]提供的说明可创建 *Ubuntu* 分发的虚拟机。 本教程使用 Ubuntu Server 14.04 LTS。 假设用户名为 *azureuser*。
 
 虚拟机部署后，我们需要在网络安全组中建立安全规则。  从 Azure 门户转到“网络安全组”，打开 VM 对应的安全组的选项卡。 需要使用以下设置添加入站安全规则：协议为 **TCP**，源（公用）端口为 **\***，目标（专用）端口为 **9999**。
 
@@ -172,22 +173,17 @@ Jupyter 不仅仅是字处理器，因为它允许混合计算和丰富媒体（
 * 用于提供可由他人以立即重现、验证和扩展的方式显示研究结果的“可执行论文”。
 * 用作协作计算的平台：多个用户可以登录到同一 notebook 服务器来共享实时计算会话。
 
-如果转到 IPython 源代码[存储库][存储库]，可以找到具有 notebook 示例的整个目录，可以下载这些示例，然后在自己的 Azure Jupyter VM 上进行试用。  只需从网站中下载 `.ipynb` 文件并将它们上载到你的 notebook Azure VM 的仪表板上（或将它们直接下载到 VM 中）。
+如果转到 IPython 源代码[存储库][repository]，可以找到具有 notebook 示例的整个目录，可以下载这些示例，然后在自己的 Azure Jupyter VM 上进行试用。  只需从网站中下载 `.ipynb` 文件并将它们上载到你的 notebook Azure VM 的仪表板上（或将它们直接下载到 VM 中）。
 
 ## <a name="conclusion"></a>结束语
 Jupyter Notebook 为交互访问 Azure 上的 Python 生态系统的功能提供了强大接口。  它涵盖范围广泛的用例，包括简单的探索和学习 Python、数据分析和可视化、模拟和并行计算。 生成的 Notebook 文档包含所执行的可与其他 Jupyter 用户共享的计算的完整记录。  Jupyter Notebook 可用作本地应用程序，但它非常适合 Azure 上的云部署
 
-还可通过[用于 Visual Studio 的 Python 工具][用于 Visual Studio 的 Python 工具] (PTVS) 在 Visual Studio 中使用 Jupyter 的核心功能。 PTVS 是 Microsoft 提供的免费开放源代码插件，它可将 Visual Studio 转变为高级 Python 开发环境，其中包括具有 IntelliSense、调试、分析和并行计算集成功能的高级编辑器。
+还可通过[用于 Visual Studio 的 Python 工具][Python Tools for Visual Studio] (PTVS) 在 Visual Studio 中使用 Jupyter 的核心功能。 PTVS 是 Microsoft 提供的免费开放源代码插件，它可将 Visual Studio 转变为高级 Python 开发环境，其中包括具有 IntelliSense、调试、分析和并行计算集成功能的高级编辑器。
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [Python 开发人员中心](/develop/python/)。
 
 [portal-vm-linux]: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
-[存储库]: https://github.com/ipython/ipython
-[用于 Visual Studio 的 Python 工具]: http://aka.ms/ptvs
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[repository]: https://github.com/ipython/ipython
+[Python Tools for Visual Studio]: http://aka.ms/ptvs
 

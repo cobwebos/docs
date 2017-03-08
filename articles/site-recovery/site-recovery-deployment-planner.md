@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: f438db1d0129dfb0e2eaa00146147084cd8c11b6
-ms.openlocfilehash: 179e8cf928d83a3a66ed3489173e4c28a2bc9d4f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4e444deaa84c7f02608f4910e31f7033df51a73b
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -268,9 +268,9 @@ ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter
 >
 > * 对于复制，请预配建议的带宽来满足 100% 时间 RPO。 如果即使预配了适当的带宽，工具报告的实现吞吐量也没有任何增长，请检查以下信息：
 >
-> a. 检查是否有任何网络服务质量 (QoS) 了限制 Azure Site Recovery 吞吐量
+> a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 检查是否有任何网络服务质量 (QoS) 了限制 Azure Site Recovery 吞吐量
 >
-> b. 检查 Azure Site Recovery 保管库是否在最靠近受支持 Microsoft Azure 区域的物理位置，以尽量降低网络延迟
+> b.保留“数据库类型”设置，即设置为“共享”。 检查 Azure Site Recovery 保管库是否在最靠近受支持 Microsoft Azure 区域的物理位置，以尽量降低网络延迟
 >
 > c. 检查本地存储特征，尽力改进硬件（例如，将 HDD 更换为 SSD，等等。）
 >
@@ -309,7 +309,7 @@ ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter
 
 **为了满足 90% 时间 RPO：**如果由于宽带价格或其他任何原因而无法预配所需的带宽来满足 100% 时间所需 RPO，可以选择预配更低的但可以满足 90% 时间所需 RPO 的带宽量。 为了帮助用户理解预配这种较低带宽造成的影响，报告中会根据预期发生的 RPO 违规数目和持续时间提供一项假设 (what if) 分析。
 
-**实现的吞吐量：**从运行 GetThroughput 命令的服务器到 Azure 存储帐户所在的 Microsoft Azure 区域的吞吐量。 它表示在配置服务器/进程服务器存储和网络特征与运行该工具的服务器保持相同的前提下，使用 Azure Site Recovery 保护兼容的虚拟机时可实现的大致吞吐量。 实现的吞吐量是从运行 GetThroughput 命令的服务器到 Azure 存储帐户所在的 Microsoft Azure 区域的吞吐量。 它表示在配置服务器/进程服务器存储和网络特征与运行该工具的服务器保持相同的前提下，使用 Azure Site Recovery 保护兼容的虚拟机时可实现的大致吞吐量。
+**实现的吞吐量：**从运行 GetThroughput 命令的服务器到 Azure 存储帐户所在的 Microsoft Azure 区域的吞吐量。 它表示在配置服务器/进程服务器存储和网络特征与运行该工具的服务器保持相同的前提下，使用 Azure Site Recovery 保护兼容的虚拟机时可实现的大致吞吐量。    
 
 对于复制，应预配建议的带宽来满足 100% 时间 RPO。 如果即使预配了适当的带宽，工具报告的实现吞吐量也没有任何增长，请检查以下信息：
 

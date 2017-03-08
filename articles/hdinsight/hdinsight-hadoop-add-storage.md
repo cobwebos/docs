@@ -12,16 +12,17 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 02/23/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 18545981a21736d9673ce19ae2325ba5e4a67ff6
-
+ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
+ms.openlocfilehash: b8c5e53ed5fe86ed099e37644d405080477f8c27
+ms.lasthandoff: 03/01/2017
 
 ---
 
-# <a name="add-additional-azure-storage-accounts-to-hdinsight"></a>将其他 Azure 存储帐户添加到 HDInsight
+# <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
 了解如何使用脚本操作，将其他 Azure 存储帐户添加到使用 Linux 作为操作系统的现有 HDInsight 群集。
 
@@ -44,7 +45,7 @@ ms.openlocfilehash: 18545981a21736d9673ce19ae2325ba5e4a67ff6
 
 * 验证存储帐户是否存在，以及是否可以使用密钥访问。
 
-* 使用群集凭据对密钥进行加密。 此操作可防止 HDInsight 用户轻松地从 Ambari 中提取和使用存储帐户密钥。
+* 使用群集凭据对密钥进行加密。
 
 * 将存储帐户添加到 core-site.xml 文件中。
 
@@ -76,7 +77,7 @@ __要求__：
 
 在 Azure 门户中查看 HDInsight 群集时，选择“属性”下的“存储帐户”项，则不会显示通过此脚本操作添加的存储帐户。 Azure PowerShell 和 Azure CLI 也不会显示其他存储帐户。
 
-这是因为该脚本只修改群集的 core-site.xml 配置。 使用 Azure 管理 API 检索群集信息时，当前未使用此信息。
+存储信息未显示是因为该脚本只修改群集的 core-site.xml 配置。 使用 Azure 管理 API 检索群集信息时，不使用此信息。
 
 若要查看使用此脚本添加到群集的存储帐户信息，请使用 Ambari REST API。 以下命令演示如何使用 [cURL (http://curl.haxx.se/)](http://curl.haxx.se/) 和 [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) 从 Ambari 检索和分析 JSON 数据：
 
@@ -96,13 +97,11 @@ __要求__：
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>更改密钥后，无法访问存储
 
-如果更改存储帐户的密钥，则 HDInsight 将不再能够访问该存储帐户。
+如果更改存储帐户的密钥，则 HDInsight 将不再能够访问该存储帐户。 HDInsight 将 core-site.xml 中密钥的缓存副本用于群集。 必须更新此缓存的副本，使之匹配新的密钥。
 
-这是因为存储在群集的 core-site.xml 中的密钥是旧密钥。
+重新运行脚本操作__不会__更新密钥，因为该脚本会检查存储帐户的某个条目是否已存在。 如果已存在条目，则不进行任何更改。
 
-重新运行脚本操作__不会__更新密钥，因为该脚本会检查存储帐户的某个条目是否已存在。 如果已存在，则其不进行任何更改。
-
-若要解决此问题，必须删除存储帐户的现有条目。 可通过执行以下步骤实现此操作：
+若要解决此问题，必须删除存储帐户的现有条目。 按以下步骤删除现有条目：
 
 1. 在 Web 浏览器中，打开 HDInsight 群集的 Ambari Web UI。 该 URI 是 https://CLUSTERNAME.azurehdinsight.net。 将 __CLUSTERNAME__ 替换为群集名称。
 
@@ -131,9 +130,4 @@ __要求__：
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍完了如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+你已了解如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)

@@ -12,19 +12,23 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/24/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: d67271ebf90ac2a1870787de7cfe6459526fcb37
-ms.openlocfilehash: 60cd63540d91e11729f2a305b999548d5c6b9320
-
+ms.sourcegitcommit: 0ac8ca0c5407925728ed0431294a3234b58d6e63
+ms.openlocfilehash: 04506596ba21c3ebef7237eaad8c5d786ad672fe
+ms.lasthandoff: 02/27/2017
 
 ---
+
 # <a name="install-net-on-a-cloud-service-role"></a>在云服务角色上安装 .NET
 本文介绍如何在云服务 Web 角色和辅助角色上安装与来宾 OS 随附的版本所不同的 .NET Framework。 例如，可以使用这些步骤在不带任何 .NET 4.6 版本的 Azure 来宾 OS 系列 4 上安装 .NET 4.6.1。 有关最新的来宾 OS 版本信息，请参阅 [Azure 来宾 OS 版本动态](cloud-services-guestos-update-matrix.md)。
 
 >[!NOTE]
 >来宾 OS 5 包含 .NET 4.6
+
+>[!IMPORTANT]
+>Azure SDK 2.9 包含一个限制，限制将 .NET 4.6 部署到来宾 OS 4 或更低版本。 [此处](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)提供了一个解决方法。
 
 在 Web 角色和辅助角色上安装 .NET 的过程涉及到在云项目中添加 .NET 安装包，并在执行角色的启动任务过程中启动安装程序。  
 
@@ -189,22 +193,17 @@ ms.openlocfilehash: 60cd63540d91e11729f2a305b999548d5c6b9320
 部署服务时，启动任务将会运行并安装 .NET Framework（如果尚未安装）。 安装 Framework 时，角色将处于忙碌状态，而且甚到可能会重新启动（如果 Framework 安装有此要求）。 
 
 ## <a name="additional-resources"></a>其他资源
-* [安装 .NET Framework][安装 .NET Framework]
-* [如何：确定安装的 .NET Framework 版本][如何：确定安装的 .NET Framework 版本]
-* [.NET Framework 安装疑难解答][.NET Framework 安装疑难解答]
+* [安装 .NET Framework][Installing the .NET Framework]
+* [如何：确定安装的 .NET Framework 版本][How to: Determine Which .NET Framework Versions Are Installed]
+* [.NET Framework 安装故障排除][Troubleshooting .NET Framework Installations]
 
-[如何：确定安装的 .NET Framework 版本]: https://msdn.microsoft.com/library/hh925568.aspx
-[安装 .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
-[.NET Framework 安装疑难解答]: https://msdn.microsoft.com/library/hh925569.aspx
+[How to: Determine Which .NET Framework Versions Are Installed]: https://msdn.microsoft.com/library/hh925568.aspx
+[Installing the .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
+[Troubleshooting .NET Framework Installations]: https://msdn.microsoft.com/library/hh925569.aspx
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

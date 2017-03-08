@@ -2,6 +2,7 @@
 # 概述
 ## [什么是认知服务？](https://azure.microsoft.com/services/cognitive-services/)
 # 入门
+## [创建帐户](cognitive-services-apis-create-account.md)
 ## [文本分析快速入门](cognitive-services-text-analytics-quick-start.md)
 ## [建议快速入门](cognitive-services-recommendations-quick-start.md)
 
@@ -52,8 +53,3 @@
 ## [定价](https://azure.microsoft.com/pricing/details/cognitive-services/)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=cognitive-services)
 ## [服务更新](https://azure.microsoft.com/updates/?product=cognitive-services)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

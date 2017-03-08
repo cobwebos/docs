@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
-ms.openlocfilehash: 2470a8e7d82c6c01e9f32b062bc09f5a2f6ed1cd
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: c8c7642a28f1dc386a73d014abe13ec36c6cbe69
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="x12-tracking-schemas"></a>X12 跟踪架构
+# <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>启动或启用对 X12 消息的跟踪，监视成功、错误和消息属性
 可以在 Azure 集成帐户中使用这些 X12 跟踪架构来帮助监视企业到企业 (B2B) 的事务：
 
 * X12 事务集跟踪架构
@@ -355,9 +357,4 @@ ms.openlocfilehash: 2470a8e7d82c6c01e9f32b062bc09f5a2f6ed1cd
 * 了解有关 [B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)的详细信息。
 * 了解有关[在 Operations Management Suite 门户中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)的信息。
 * 了解有关 [Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md)。  
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

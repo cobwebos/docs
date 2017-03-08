@@ -4,7 +4,7 @@ description: "了解如何从 App Service 环境安全连接到后端资源。"
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2783e9c84684a52fb9b85074eabc490c24b6eb9a
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 0b6d3a47dc429c469b37c2c74f546cfeca580358
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: 2783e9c84684a52fb9b85074eabc490c24b6eb9a
 
 应用服务环境要求为虚拟网络配置有效 DNS 基础结构。  如果 DNS 配置在创建应用服务环境之后因为任何原因而更改，开发人员可以强制应用服务环境选择新的 DNS 配置。  使用位于门户中“应用服务环境管理”边栏选项卡顶部的“重新启动”图标触发轮流环境重新启动，会导致环境选择新的 DNS 配置。
 
-此外，还建议事先在 VNet 上设置任何自定义 DNS 服务器，然后创建 App Service 环境。  如果在创建 App Service 环境时更改虚拟网络的 DNS 配置，将会导致 App Service 环境创建过程失败。  同样地，如果自定义 DNS 服务器存在于 VPN 网关的另一端，且 DNS 服务器无法连接或无法使用，则应用服务环境创建过程也会失败。
+此外，还建议事先在 VNet 上设置任何自定义 DNS 服务器，然后创建 App Service 环境。  如果在创建应用服务环境时更改虚拟网络的 DNS 配置，将会导致应用服务环境创建过程失败。  同样地，如果自定义 DNS 服务器存在于 VPN 网关的另一端，且 DNS 服务器无法连接或无法使用，则应用服务环境创建过程也会失败。
 
 ## <a name="connecting-to-a-sql-server"></a>连接到 SQL Server
 常见的 SQL Server 配置包含一个侦听端口 1433 的终结点：
@@ -111,9 +112,4 @@ ms.openlocfilehash: 2783e9c84684a52fb9b85074eabc490c24b6eb9a
 [SqlServerEndpoint]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/SqlServerEndpoint01.png
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f73cbfec2ce2e41589b84997891ff0b60266c9b2
-ms.openlocfilehash: 10a10e138c9c8ed8c15136bf1d6565edc57758b5
-
+ms.sourcegitcommit: f3b1593a80e6eedc08005988d485a317951efd33
+ms.openlocfilehash: ad2beff5bbc6aaa18247939ccfe310460f9ccdee
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="about-h-series-and-compute-intensive-a-series-vms"></a>关于 H 系列和计算密集型 A 系列 VM
+# <a name="about-h-series-and-compute-intensive-a-series-vms-for-linux"></a>关于适用于 Linux 的 H 系列和计算密集型 A 系列 VM
 本文提供有关使用较新 Azure H 系列和早期 A8、A9、A10 与 A11 大小（也称*计算密集型*实例）的背景信息及某些注意事项。 本文重点介绍如何对 Linux VM 使用这些大小。 本文同样适用于 [Windows VM](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 有关基本规范、存储容量和磁盘详细信息，请参阅[虚拟机的大小](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -128,10 +129,5 @@ done
 * 有关计算密集型大小的可用性和定价详细信息，请参阅 [Virtual Machines pricing](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)（虚拟机定价）。
 * 有关 VM 存储容量和磁盘详细信息，请参阅 [Sizes for virtual machines](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（虚拟机大小）。
 * 若要开始在 Linux 上部署和使用支持 RDMA 的计算密集型大小 VM，请参阅 [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)（设置 Linux RDMA 群集以运行 MPI 应用程序）。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

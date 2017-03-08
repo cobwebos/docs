@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/20/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 9c43a831768684c6458d5f62557c8a06b2c5ca6b
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -30,8 +31,8 @@ ms.openlocfilehash: 9c43a831768684c6458d5f62557c8a06b2c5ca6b
 > [!div class="op_single_selector"]
 > * [仅限云的 Azure AD 租户](active-directory-ds-getting-started-password-sync.md)
 > * [已同步的 Azure AD 租户](active-directory-ds-getting-started-password-sync-synced-tenant.md)
-> 
-> 
+>
+>
 
 <br>
 
@@ -47,8 +48,8 @@ ms.openlocfilehash: 9c43a831768684c6458d5f62557c8a06b2c5ca6b
 
 > [!WARNING]
 > 必须安装推荐的最新的 Azure AD Connect 版本，才能将旧密码凭据（NTLM 和 Kerberos 身份验证需要的）同步到 Azure AD 租户。 此功能不可用于之前的 Azure AD Connect 版本或旧版的 DirSync 工具。
-> 
-> 
+>
+>
 
 有关 Azure AD connect 的安装说明，请参阅以下文章 — [Azure AD Connect 入门](../active-directory/active-directory-aadconnect.md)
 
@@ -78,10 +79,4 @@ Azure AD 的凭据哈希同步需要一些时间，具体取决于目录的大�
 * [管理受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-administer-domain.md)
 * [将 Windows 虚拟机加入到受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-join-windows-vm.md)
 * [将 Red Hat Enterprise Linux 虚拟机加入到受 Azure AD 域服务管理的域](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

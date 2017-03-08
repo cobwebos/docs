@@ -15,8 +15,9 @@ ums.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: aaa69e2e4fed314e8bc363f60e7538b12bb3a56d
-ms.openlocfilehash: ca7f05534113752f3607268c15a9fe3e0e2982e0
+ms.sourcegitcommit: 9c27ea02ae341197a70d2b399cf8d534d79c9e4c
+ms.openlocfilehash: 001cc873960733bfe3e37fad95dbac29872ba00a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -62,11 +63,9 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 
        Replace the Cloud with any of the following
        AzureCloud
-       AzureChinaCloud
        AzureUSGovernment
-       AzureGermanCloud
 
-       Note that at this time, an Azlog integrator only supports integrating logs from one cloud that you choose to integrate.
+       Note that at this time, an Azlog integrator only supports integrating logs from a cloud that you choose to integrate.
 
 ## <a name="integrate-azure-vm-logs-from-your-azure-diagnostics-storage-accounts"></a>从 Azure 诊断存储帐户集成 Azure VM 日志
 1. 检查上面列出的先决条件，确保 WAD 存储帐户正在收集日志，然后才能继续进行 Azure 日志集成。 如果 WAD 存储帐户未在收集日志，请不要执行下面的步骤。
@@ -99,7 +98,7 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 2. 连接到通过命令 **azlog source add** 添加的存储帐户。
 3. 在 Microsoft Azure 存储资源管理器中，浏览到表 **WADWindowsEventLogsTable**，以查看是否存在任何数据。 如果没有数据，说明 VM 中的诊断未正确配置。
 
-## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>集成 Azure 审核日志和安全中心警报
+## <a name="integrate-azure-activity-logs-and-security-center-alerts"></a>集成 Azure 活动日志和安全中心警报
 1. 打开命令提示符并键入 **cd** **c:\Program Files\Microsoft Azure Log Integration**。
 2. 运行命令
 
@@ -128,7 +127,19 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
 6. 将标准 SIEM 文件转发器连接器指向相应的文件夹，以将数据发送给 SIEM 实例。 根据所使用的 SIEM 产品，你可能需要某些字段映射。
 
-如果存在关于 Azure 日志集成的问题，请发送电子邮件至 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+## <a name="integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志
+1. 打开命令提示符并键入 **cd** **c:\Program Files\Microsoft Azure Log Integration**
+2. 运行命令 .\AZLOG.exe authorizedirectoryreader <TenantID> 示例 - 
+
+.\AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
+
+3. 检查以下文件夹，确认其中是否创建了 Azure Active Directory 审核日志 JSON 文件： 
+* **C:\Users\azlog\AzureActiveDirectoryJson**   
+* **C:\Users\azlog\AzureActiveDirectoryJsonLD**
+
+4. 将标准 SIEM 文件转发器连接器指向相应的文件夹，以将数据发送给 SIEM 实例。 根据所使用的 SIEM 产品，你可能需要某些字段映射。
+
+如果在安装和配置过程中遇到问题，请开具[支持请求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)，选择“日志集成”作为需要请求支持的服务。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你学习了如何安装 Azure 日志集成以及如何从 Azure 存储集成日志。 若要了解更多信息，请参阅下列文章：
@@ -139,9 +150,4 @@ Azure 日志集成服务从安装它的计算机中收集遥测数据。  收集
 * [Azure 日志集成常见问题解答 (FAQ)](security-azure-log-integration-faq.md) - 此常见问题解答回答了有关 Azure 日志集成的问题。
 * [集成安全中心警报与 Azure 日志集成](../security-center/security-center-integrating-alerts-with-log-integration.md) - 本文档介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与你的日志分析或 SIEM 解决方案同步。
 * [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/)（Azure 诊断和 Azure 审核日志的新功能）– 此博客文章介绍 Azure 审核日志和其他功能，可帮助你深入了解 Azure 资源的操作。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

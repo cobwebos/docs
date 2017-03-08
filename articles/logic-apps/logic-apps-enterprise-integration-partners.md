@@ -1,11 +1,11 @@
 ---
-title: "了解合作伙伴和 Enterprise Integration Pack | Microsoft Docs"
-description: "了解如何将合作伙伴与 Enterprise Integration Pack 和逻辑应用一起使用"
+title: "为企业到企业 (B2B) 消息创建合作伙伴 - Azure 逻辑应用 | Microsoft 文档"
+description: "了解如何使用 Enterprise Integration Pack 和逻辑应用向集成帐户添加合作伙伴"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: msftman
+author: MandiOhlinger
 manager: anneta
-editor: cgronlun
+editor: 
 ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.service: logic-apps
 ms.workload: integration
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: estfan
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2549531d21c8e15e5bbb4321c4119e6aaac53e96
-ms.openlocfilehash: de12b83c811dcdd93ed691ddade9d748383110df
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: 2a886d1eaf1253b55d8c95786139a2bbdc6f145e
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="partners-in-b2b-scenarios"></a>B2B 方案中的合作伙伴
+# <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>在工作流中添加或更新企业到企业协议中的合作伙伴
 
 合作伙伴是参与企业到企业 (B2B) 交易并相互交换消息的实体。 在创建代表你和这些交易中的其他组织的合作伙伴之前，你们双方必须先共享可识别并验证相互发送的消息的信息。 在讨论这些详细信息并准备好开始业务关系后，你们便可以在集成帐户中创建代表你们双方的合作伙伴。
 
@@ -89,10 +91,5 @@ ms.openlocfilehash: de12b83c811dcdd93ed691ddade9d748383110df
 
 ## <a name="next-steps"></a>后续步骤
 * [了解有关协议的详细信息](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

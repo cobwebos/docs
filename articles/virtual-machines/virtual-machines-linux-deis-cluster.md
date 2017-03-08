@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/24/2015
 ms.author: hbai
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 8e69e791128710e640cba0c9edfbbadc0ea70ef5
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: a972ab1671e55a94fa1dc2060f220d2e85787e35
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="deploy-a-3-node-deis-cluster"></a>部署三节点 Deis 群集
+# <a name="deploy-and-configure-a-3-node-deis-cluster-in-azure"></a>在 Azure 中部署和配置 3 节点型 Deis 群集
 本文将指导你完成在 Azure 上预配 [Deis](http://deis.io/) 群集的过程。 其中包括所有的步骤，从创建必要的证书，到在新预配的群集上部署和缩放示例 **Go** 应用程序。
 
 下图显示了部署的系统的体系结构。 系统管理员可以使用 Deis 工具（如 **deis** 和 **deisctl**）来管理群集。 连接是通过会将连接转发到群集上某个成员节点的 Azure 负载均衡器建立的。 客户端也通过负载均衡器访问部署的应用程序。 在此情况下，负载均衡器会将流量转发到 Deis 路由器网络，从者进一步将流量路由到托管在群集上的对应 Docker 容器。
@@ -251,9 +253,4 @@ ms.openlocfilehash: 8e69e791128710e640cba0c9edfbbadc0ea70ef5
 [azure-command-line-tools]: ../xplat-cli-install.md
 [resource-group-overview]: ../azure-resource-manager/resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
