@@ -17,6 +17,7 @@ ms.author: anoopkv
 translationtype: Human Translation
 ms.sourcegitcommit: eccc927550aef4c9cd71ffad64d2eddedb74326e
 ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
+ms.lasthandoff: 02/13/2017
 
 ---
 
@@ -34,7 +35,7 @@ ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
 - VMware vCenter 中可用于[自动发现](./site-recovery-vmware-to-azure.md#vmware-account-permissions)的专用帐户。
 - 用于安装配置服务器的虚拟机。
 
-### <a name="configuration-server-minimum-requirements"></a>配置服务器的最低要求
+## <a name="configuration-server-minimum-requirements"></a>配置服务器的最低要求
 应将配置服务器软件部署到高度可用的 VMware 虚拟机。 下表列出了配置服务器的最低硬件、软件和网络要求。
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -97,9 +98,4 @@ ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
 
 ## <a name="next-steps"></a>后续步骤
 在 Azure 中[设置目标环境](./site-recovery-prepare-target-vmware-to-azure.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

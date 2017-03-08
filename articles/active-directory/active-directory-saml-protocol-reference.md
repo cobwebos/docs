@@ -17,6 +17,7 @@ ms.author: priyamo
 translationtype: Human Translation
 ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
 ms.openlocfilehash: 53e9fd58e72d83db32fa1fab937b4618cd4cd159
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -34,9 +35,4 @@ Azure Active Directory 公开特定于租户的和公用的（独立于租户的
 * 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。此终结点地址中显示 **common**，而不是租户域名或 ID。
 
 有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata](active-directory-federation-metadata.md)（联合元数据）。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

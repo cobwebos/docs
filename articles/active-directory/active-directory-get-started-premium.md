@@ -4,7 +4,7 @@ description: "本主题介绍如何通过批量许可网站注册 Azure Active D
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: curtand
 ms.assetid: 391764e5-c4eb-4ae6-b8a9-3d09f0de04a6
 ms.service: active-directory
 ms.workload: infrastructure-services
@@ -12,10 +12,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2017
-ms.author: markvi
+ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 73cbbce9ae3d727632b8cac2a29c2b1b92332ae7
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -136,9 +137,4 @@ ms.openlocfilehash: 73cbbce9ae3d727632b8cac2a29c2b1b92332ae7
 [10]: ./media/active-directory-get-started-premium/contosolicenseplan.png
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
