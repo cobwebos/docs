@@ -4,6 +4,7 @@
 # 入门
 ## [在门户中创建规模集](virtual-machine-scale-sets-portal-create.md)
 ## [使用 Azure CLI 创建规模集](virtual-machine-scale-sets-linux-create-cli.md)
+## [使用 Resource Manager 模板创建规模集](virtual-machine-scale-sets-mvss-start.md)
 
 # 如何
 ## 规划和设计
@@ -46,8 +47,3 @@
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

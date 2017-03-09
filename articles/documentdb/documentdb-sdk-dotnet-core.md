@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/16/2017
+ms.date: 02/22/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 2a04860ea7349798d5786e50dc1d564896341d60
-ms.openlocfilehash: 50f13ae0184e5b9609994d382acc126eb2868271
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: e37416268802b849f6be350a8d7e0e6b284e830b
+ms.openlocfilehash: a2972c7c7fead727e6147212b211d102faf01a29
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -59,7 +59,8 @@ DocumentDB .NET Core SDK 具有与最新版 [DocumentDB.NET SDK](documentdb-sdk-
 
 ### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.0)
 
-将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
+* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](documentdb-sql-query.md#Aggregates)。
+* 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 
 ### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.0.0)
 

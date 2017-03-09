@@ -12,8 +12,7 @@
 ### [名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # 入门
-## [创建虚拟网络](virtual-networks-create-vnet-arm-pportal.md)
-## [将 VM 部署到虚拟网络](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+## [创建自己的首个虚拟网络](virtual-network-get-started-vnet-subnet.md)
 
 # 如何
 ## 规划和设计
@@ -146,8 +145,3 @@
 ## [网络论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [定价](https://azure.microsoft.com/pricing/details/virtual-network)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-virtual-network)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

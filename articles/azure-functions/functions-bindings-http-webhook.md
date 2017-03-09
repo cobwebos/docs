@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 29df0e2198be05a64b6a90f1adf30a0c3b218d93
-ms.openlocfilehash: b40fa2d511910668438ba33291d16202dec8c8a8
+ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
+ms.openlocfilehash: ce7534b9ff675e1ae0902ba936e1ea897d80d936
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -33,6 +34,11 @@ Azure Functions 提供以下绑定：
 - 利用 [HTTP 输出绑定](#output)，可响应请求。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+> [!TIP]
+>
+> 建议阅读这个有关 [HTTPClient](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) 的最佳做法文档。
+>
 
 <a name="httptrigger"></a>
 
@@ -435,10 +441,5 @@ module.exports = function (context, data) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

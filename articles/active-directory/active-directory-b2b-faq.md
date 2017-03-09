@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 03/07/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 3e92da61128a18c42726f4c3c85cd6e5024a697f
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 0abe257f3c1c2f35c92fa5f382e9778217f01159
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -41,9 +41,6 @@ B2B 协作来宾用户在目录中。 你可以将它们添加到有权访问 Sh
 
 ### <a name="can-the-invited-external-user-leave-the-organization-to-which-he-was-invited"></a>受邀的外部用户能否离开他受邀加入的组织？
 目前在此公共预览版刷新中未提供此功能。
-
-### <a name="can-i-use-my-microsoft-account-johncontosomicrosoftacctcom-to-sign-in-to-resources"></a>我能否使用 Microsoft 帐户 (John@contosomicrosoftacct.com) 登录到资源？
-在此公共预览版刷新期间，不能使用 Microsoft 帐户。 如果你有非标准 Microsoft 帐户后缀（可能用于公司邮件（例如 @contoso.com),）），将创建一个 Azure Active Directory 租户供你使用。
 
 ### <a name="now-that-multi-factor-authentication-mfa-is-available-for-guest-users-can-they-also-reset-their-mfa-method"></a>现在，多重身份验证 (MFA) 可用于来宾用户，他们是否也可以重置其 MFA 方法？
 是的，方式与常规用户相同。

@@ -34,15 +34,13 @@
 ##### [采用策略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 #### [后续步骤](active-directory-hybrid-identity-design-considerations-nextsteps.md)
 #### [工具比较](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+
 ## 管理用户
 ### 添加用户
 #### [Azure 门户](active-directory-users-create-azure-portal.md)
 #### [经典门户](active-directory-create-users.md)
 
-### 从其他目录添加用户
-#### [Azure 门户](active-directory-users-create-external-azure-portal.md)
-#### [经典门户](active-directory-create-users-external.md)
-
+### [从其他目录添加用户（经典门户）](active-directory-create-users-external.md)
 ### [删除用户](active-directory-users-delete-user-azure-portal.md)
 ### [管理用户个人资料](active-directory-users-profile-azure-portal.md)
 ### [重置密码](active-directory-users-reset-password-azure-portal.md)
@@ -69,32 +67,33 @@
 ### [基于组的许可](active-directory-licensing-whatis-azure-portal.md)
 #### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
 #### [识别和解决组的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [如何将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
+#### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 ### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
 ### [故障排除](active-directory-accessmanagement-troubleshooting.md)
 
-## [查看活动报告](active-directory-view-access-usage-reports.md)
-### [登录](active-directory-reporting-activity-sign-ins.md)
-### [审核日志](active-directory-reporting-activity-audit-logs.md)
+## [管理报表](active-directory-reporting-azure-portal.md)
+### [登录活动](active-directory-reporting-activity-sign-ins.md)
+### [审核活动](active-directory-reporting-activity-audit-logs.md)
 ### [有风险的用户](active-directory-reporting-security-user-at-risk.md)
 ### [有风险的登录](active-directory-reporting-security-risky-sign-ins.md)
+### [风险事件](active-directory-reporting-risk-events.md)
+### [命名网络](active-directory-known-networks-azure-portal.md)
 ### [常见问题](active-directory-reporting-faq.md)
 ### [报告迁移](active-directory-reporting-migration.md)
-### [已知网络](active-directory-known-networks.md)
-
-### 经典门户
+### [保留](active-directory-reporting-retention.md)
+###    以编程方式访问
+#### [审核参考](active-directory-reporting-api-audit-reference.md)
+#### [审核示例](active-directory-reporting-api-audit-samples.md)
+#### [先决条件](active-directory-reporting-api-prerequisites.md)
+#### [登录参考](active-directory-reporting-api-sign-in-activity-reference.md)
+#### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
+### [经典门户](active-directory-view-access-usage-reports.md)
 #### [Azure AD 报告](active-directory-reporting-getting-started.md)
 #### [报告指南](active-directory-reporting-guide.md)
-#### [预览](active-directory-reporting-azure-portal.md)
+#### [已知网络](active-directory-known-networks.md)
 #### [API](active-directory-reporting-api-getting-started.md)
-##### [审核参考](active-directory-reporting-api-audit-reference.md)
-##### [审核示例](active-directory-reporting-api-audit-samples.md)
-##### [先决条件](active-directory-reporting-api-prerequisites.md)
-##### [登录参考](active-directory-reporting-api-sign-in-activity-reference.md)
-##### [登录示例](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [审核事件](active-directory-reporting-audit-events.md)
-#### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies.md)
 #### [通知](active-directory-reporting-notifications.md)
 #### 了解报表
@@ -108,6 +107,7 @@
 
 ## [管理密码](active-directory-manage-passwords.md)
 ### [更新自己的密码](active-directory-passwords-update-your-own-password.md)
+### [设置自助服务密码重置](active-directory-passwords.md)
 ### [了解密码管理](active-directory-passwords-how-it-works.md)
 ### [了解策略和限制](active-directory-passwords-policy.md)
 ### 重置密码
@@ -117,7 +117,6 @@
 ### 启用密码管理
 #### [入门](active-directory-passwords-getting-started.md)
 #### [部署](active-directory-passwords-best-practices.md)
-#### [设置自助服务密码重置](active-directory-passwords.md)
 #### [自定义](active-directory-passwords-customize.md)
 #### [查看报告](active-directory-passwords-get-insights.md)
 #### [了解详细信息](active-directory-passwords-learn-more.md)
@@ -128,22 +127,19 @@
 ### [注册设备](active-directory-conditional-access-device-registration-overview.md)
 #### [管理自动注册](active-directory-conditional-access-automatic-device-registration.md)
 #### [设置](active-directory-conditional-access-automatic-device-registration-setup.md)
-### [注册设备](active-directory-azureadjoin-personal-device.md)
-### [注册 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
+#### [常见问题](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### 故障排除
+##### [对 Windows 10 和 Windows Server 2016 进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
+##### [对 Windows 下层客户端进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [规划](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [设置设备注册](active-directory-azureadjoin-setup.md)
 #### [注册新设备](active-directory-azureadjoin-user-frx.md)
 #### [部署](active-directory-azureadjoin-devices-group-policy.md)
-#### [无密码身份验证](active-directory-azureadjoin-passport.md)
-#### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
-
 #### [了解 Windows 10 集成](active-directory-azureadjoin-windows10-devices-overview.md)
 #### [使用 Windows 10 设备](active-directory-azureadjoin-windows10-devices.md)
-#### [常见问题](active-directory-conditional-access-automatic-device-registration-faq.md)
-#### 故障排除
-##### [对 Windows 10 和 Windows Server 2016 进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
-##### [对 Windows 下层客户端进行故障排除](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+#### [加入设备](active-directory-azureadjoin-personal-device.md)
+#### [加入 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
 
 ## 管理应用
 ### [概述](active-directory-enable-sso-scenario.md)
@@ -237,6 +233,7 @@
 #### [邀请兑换](active-directory-b2b-redemption-experience.md)
 #### [B2B 用户属性](active-directory-b2b-user-properties.md)
 #### [将来宾用户添加到角色](active-directory-b2b-add-guest-to-role.md)
+#### [审核和报表](active-directory-b2b-auditing-and-reporting.md)
 #### [API 和自定义](active-directory-b2b-api.md)
 #### [委托邀请](active-directory-b2b-delegate-invitations.md)
 #### [动态组和 B2B](active-directory-b2b-dynamic-groups.md)
@@ -284,6 +281,9 @@
 #### [常见问题](active-directory-conditional-faqs.md)
 #### [故障排除](active-directory-conditional-access-device-remediation.md)
 #### [参考](active-directory-conditional-access-technical-reference.md)
+### Windows Hello
+#### [无密码身份验证](active-directory-azureadjoin-passport.md)
+#### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 ### 基于证书的身份验证
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

@@ -4,7 +4,7 @@ description: "了解如何轻松将移动服务应用程序迁移到应用服务
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
@@ -21,15 +21,15 @@ ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="a-namearticle-topamigrate-your-existing-azure-mobile-service-to-azure-app-service"></a><a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
+# <a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
 借助 [Azure App Service 正式版]，可轻松就地迁移 Azure 移动服务站点，使用 Azure App Service 的所有功能。  本文档说明将站点从 Azure 移动服务迁移到 Azure 应用服务时的情形。
 
-## <a name="a-namewhat-does-migration-doawhat-does-migration-do-to-your-site"></a><a name="what-does-migration-do"></a>迁移对站点有何作用
+## <a name="what-does-migration-do"></a>迁移对站点有何作用
 迁移 Azure 移动服务可使移动服务变成 [Azure App Service] 应用，且不会对代码造成任何影响。  通知中心、SQL 数据连接、身份验证设置、计划作业和域名将保持不变。  使用 Azure 移动服务的移动客户端仍可正常运行。  迁移操作将服务传输到 Azure App Service 之后，服务会重新启动。
 
 [!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
 
-## <a name="a-namewhy-migrateawhy-you-should-migrate-your-site"></a><a name="why-migrate"></a>为何要迁移站点
+## <a name="why-migrate"></a>为何要迁移站点
 Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项功能，其中包括：
 
 * 新的主机功能，包括 [WebJobs] 和[自定义域名]。
@@ -40,10 +40,10 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 
 有关 Azure 应用服务优点的详细信息，请参阅 [Mobile Services vs.App Service]（移动服务与应用服务的比较）主题。
 
-## <a name="a-namebefore-you-beginabefore-you-begin"></a><a name="before-you-begin"></a>准备工作
+## <a name="before-you-begin"></a>准备工作
 在站点上开始任何主要任务之前，应该先备份移动服务脚本和 SQL 数据库。
 
-## <a name="a-namemigrating-siteamigrating-your-sites"></a><a name="migrating-site"></a>迁移站点
+## <a name="migrating-site"></a>迁移站点
 迁移过程将迁移单个 Azure 区域中的所有站点。
 
 若要迁移站点，请执行以下操作：
@@ -64,10 +64,10 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 迁移每个移动服务可能需要 3 到 15 分钟时间不等。  在迁移期间，站点仍然可用。
 迁移过程结束后，会重启站点。  站点在重启期间无法使用，此状况可能会持续几秒钟。
 
-## <a name="a-namefinalizing-migrationafinalizing-the-migration"></a><a name="finalizing-migration"></a>完成迁移
+## <a name="finalizing-migration"></a>完成迁移
 计划在迁移过程结束后从移动客户端测试站点。  请确保可以执行所有一般客户端操作，而不会更改移动客户端。  
 
-### <a name="a-nameupdate-app-service-tieraselect-an-appropriate-app-service-pricing-tier"></a><a name="update-app-service-tier"></a>选择适当的应用服务定价层
+### <a name="update-app-service-tier"></a>选择适当的应用服务定价层
 在迁移到 Azure 应用服务之后，定价方面有更多弹性。
 
 1. 登录到 [Azure 门户]。
@@ -92,7 +92,7 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 > 
 > 
 
-### <a name="a-namereview-migration-scheduler-jobsareview-the-migrated-scheduler-jobs"></a><a name="review-migration-scheduler-jobs"></a>查看已迁移的计划程序作业
+### <a name="review-migration-scheduler-jobs"></a>查看已迁移的计划程序作业
 计划程序作业在迁移后约 30 分钟内不会显示。  计划的作业会继续在后台运行。
 在计划的作业可见后再次进行查看：
 
@@ -101,7 +101,7 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 
 迁移后可用的计划程序作业数量有所限制。  查看使用情况和 [Azure 计划程序计划]。
 
-### <a name="a-nameconfigure-corsaconfigure-cors-if-needed"></a><a name="configure-cors"></a>根据需要配置 CORS
+### <a name="configure-cors"></a>根据需要配置 CORS
 跨域资源共享是可以让网站访问不同域上的 Web API 的技术。  如果将 Azure 移动服务与相关联的网站一起使用，则需要将 CORS 配置为迁移的一部分。  如果从移动设备以独占方式访问 Azure 移动服务，则在绝大多数情况下都需要配置 CORS。
 
 已迁移的 CORS 设置可用作 **MS_CrossDomainWhitelist** 应用设置。  若要将站点迁移到应用服务CORS 设施，请执行以下操作：
@@ -118,7 +118,7 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 > 
 > 
 
-### <a name="a-namedownload-publish-profileadownload-a-new-publishing-profile"></a><a name="download-publish-profile"></a>下载新的发布配置文件
+### <a name="download-publish-profile"></a>下载新的发布配置文件
 站点发布配置文件迁移到 Azure 应用服务时会发生更改。  如果想要从 Visual Studio 内发布站点，需要新的发布配置文件。  若要下载新的发布配置文件，请执行以下操作：
 
 1. 登录到 [Azure 门户]。
@@ -134,10 +134,10 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 5. 单击“验证连接”，确保发布设置有效。
 6. 单击“发布”以发布站点。
 
-## <a name="a-nameworking-with-your-siteaworking-with-your-site-post-migration"></a><a name="working-with-your-site"></a>在迁移后使用站点
+## <a name="working-with-your-site"></a>在迁移后使用站点
 在迁移后，可在 [Azure 门户]中开始使用新的应用服务。  下面是过去在 [Azure 经典门户]中执行的特定操作的某些注意事项，及其应用服务的等效功能。
 
-### <a name="a-namepublishing-your-siteadownloading-and-publishing-your-migrated-site"></a><a name="publishing-your-site"></a>下载和发布已迁移的站点
+### <a name="publishing-your-site"></a>下载和发布已迁移的站点
 站点可通过 git 或 ftp 来使用，并且可通过多种不同的机制重新发布，包括 WebDeploy、TFS、Mercurial、GitHub 和 FTP。  部署凭据随着站点的其余部分迁移。  如果未设置部署凭据或不记得，可以将其重置：
 
 1. 登录到 [Azure 门户]。
@@ -148,7 +148,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 
 可以使用这些凭据通过 git 克隆站点，或者从 GitHub、TFS 或 Mercurial 设置自动化部署。  有关详细信息，请参阅 [Azure App Service部署文档]。
 
-### <a name="a-nameappsettingsaapplication-settings"></a><a name="appsettings"></a>应用程序设置
+### <a name="appsettings"></a>应用程序设置
 可以通过“应用设置”使用已迁移的移动服务的大多数设置。  可以从 [Azure 门户]获取应用设置列表。
 若要查看或更改应用设置，请执行以下操作：
 
@@ -166,7 +166,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 > 
 > 
 
-### <a name="a-nameauthenticationaauthentication"></a><a name="authentication"></a>身份验证
+### <a name="authentication"></a>身份验证
 所有身份验证设置都可用作已迁移的站点中的应用设置。  若要更新身份验证设置，必须更改相应的应用设置。  下表显示身份验证提供程序的相应应用设置：
 
 | 提供程序 | 客户端 ID | 客户端机密 | 其他设置 |
@@ -186,7 +186,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 > 
 > 
 
-### <a name="a-nameeasytablesadata"></a><a name="easytables"></a>数据
+### <a name="easytables"></a>数据
 移动服务中的“数据”选项卡在 Azure 门户中已被“简易表”取代。  若要访问“简易表”，请执行以下操作：
 
 1. 登录到 [Azure 门户]。
@@ -203,7 +203,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 * 清除表内容
 * 删除特定的表行
 
-### <a name="a-nameeasyapisaapi"></a><a name="easyapis"></a>API
+### <a name="easyapis"></a>API
 移动服务中的“API”选项卡在 Azure 门户中已被“简易 API”取代。  若要访问“简易 API”，请执行以下操作：
 
 1. 登录到 [Azure 门户]。
@@ -214,7 +214,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 已迁移的 API 已列在边栏选项卡中。  也可以从此边栏选项卡添加 API。  若要管理特定 API，请单击该 API。
 从新的边栏选项卡中，可以调整权限以及编辑 API 的脚本。
 
-### <a name="a-nameon-demand-jobsascheduler-jobs"></a><a name="on-demand-jobs"></a>计划程序作业
+### <a name="on-demand-jobs"></a>计划程序作业
 可通过“计划程序作业集合”部分使用所有计划程序作业。  若要访问计划程序作业，请执行以下操作：
 
 1. 登录到 [Azure 门户]。
@@ -232,7 +232,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 
 按需作业位于 `App_Data/config/scripts/scheduler post-migration` 中。  建议将所有按需作业转换为 [WebJobs] 或[函数]。  编写新的计划程序作业作为 [WebJobs] 或[函数]。
 
-### <a name="a-namenotification-hubsanotification-hubs"></a><a name="notification-hubs"></a>通知中心
+### <a name="notification-hubs"></a>通知中心
 移动服务使用通知中心来处理推送通知。  迁移后，可使用以下应用设置将通知中心链接到移动服务：
 
 | 应用程序设置 | 说明 |
@@ -260,12 +260,12 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 > 
 > 
 
-### <a name="a-namelegacy-pushalegacy-push-settings"></a><a name="legacy-push"></a>传统推送设置
+### <a name="legacy-push"></a>传统推送设置
 如果在通知中心引入之前即已配置了移动服务的推送，使用的就是传统推送。  如果使用推送，但配置中没有列出通知中心，则可能使用的是传统推送。  此功能会随其他所有功能一起迁移。  但是，建议完成迁移后尽快升级到通知中心。
 
 在过渡期，所有传统推送设置（APNS 证书除外）都可以在应用设置中获取。  替换文件系统上相应的文件可更新 APNs 证书。
 
-### <a name="a-nameapp-settingsaother-app-settings"></a><a name="app-settings"></a>其他应用设置
+### <a name="app-settings"></a>其他应用设置
 下面是从移动服务迁移的其他应用设置，可在“设置” > “应用设置”下使用：
 
 | 应用程序设置 | 说明 |
@@ -277,7 +277,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 
 应用程序密钥和主密钥与原始移动服务中的应用程序密钥完全相同。  具体而言，移动客户端发送应用程序密钥，验证它们对移动 API 的使用。
 
-### <a name="a-namecliequivalentsacommand-line-equivalents"></a><a name="cliequivalents"></a>命令行等效项
+### <a name="cliequivalents"></a>命令行等效项
 不能再使用 *azure mobile* 命令来管理 Azure 移动服务站点。  相反，许多函数已由 *azure site* 命令所取代。  使用下表查找常用命令的等效项：
 
 | *Azure Mobile* 命令 | 等效的 *Azure Site* 命令 |
@@ -304,7 +304,7 @@ PublishSettings 文件将下载到计算机。  此文件通常名为 sitename.P
 通过更新相应的应用程序设置，可以更新身份验证或推送通知设置。
 请编辑文件，并通过 ftp 或 git 发布站点。
 
-### <a name="a-namediagnosticsadiagnostics-and-logging"></a><a name="diagnostics"></a>诊断和日志记录
+### <a name="diagnostics"></a>诊断和日志记录
 Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日志记录，请执行以下操作：
 
 1. 登录到 [Azure 门户]。
@@ -324,7 +324,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 
 日志生成后会显示在窗口中。  还可以下载日志，以便后续使用部署凭据进行分析。 有关详细信息，请参阅[日志记录]文档。
 
-## <a name="a-nameknown-issuesaknown-issues"></a><a name="known-issues"></a>已知问题
+## <a name="known-issues"></a>已知问题
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>删除已迁移的移动应用克隆会导致站点中断
 如果使用 Azure PowerShell 克隆已迁移的移动服务，然后又删除该克隆，则会删除生产服务的 DNS 项。  不能再从 Internet 访问该站点。  
 
@@ -355,7 +355,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 ### <a name="migrated-mobile-services-cannot-be-added-to-traffic-manager"></a>无法将迁移的移动服务添加到流量管理器
 创建流量管理器配置文件时，无法直接选择配置文件的已迁移的移动服务。  请使用“外部终结点”。  外部终结点只能通过 PowerShell 来添加。  有关详细信息，请参阅[流量管理器教程](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)。
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 现已将应用程序迁移到应用服务，有更多的功能可以使用：
 
 * 使用部署[过渡槽]可以暂存站点更改并执行 A/B 测试。
@@ -364,7 +364,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 * 可以使用 [Application Insights] 监视站点。
 * 以相同的代码为网站和移动 API 提供服务。
 
-### <a name="a-nameupgrading-your-siteaupgrading-your-mobile-services-site-to-azure-mobile-apps-sdk"></a><a name="upgrading-your-site"></a>将移动服务站点升级到 Azure 移动应用 SDK
+### <a name="upgrading-your-site"></a>将移动服务站点升级到 Azure 移动应用 SDK
 * 对于基于 Node.js 的服务器项目，新的[移动应用 Node.js SDK] 提供许多新功能。 例如，现在可以执行本地开发和调试、使用 0.10 以上的任何 Node.js 版本，以及使用任何 Express.js 中间件自定义。
 * 对于基于 .NET 的服务器项目，新的 [Mobile Apps SDK NuGet packages](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/)（移动应用 SDK NuGet 包）在 NuGet 依赖关系上具有更大的灵活性。  这些包支持新的应用服务身份验证，并有任何 ASP.NET 项目组成。 要了解升级的详细信息，请参阅[将现有 .NET 移动服务升级为应用服务](app-service-mobile-net-upgrading-from-mobile-services.md)。
 

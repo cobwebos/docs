@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
 ms.openlocfilehash: 8c4920107b5d05716021bcef80d3c52c25f6eade
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -46,10 +47,5 @@ ms.openlocfilehash: 8c4920107b5d05716021bcef80d3c52c25f6eade
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [什么是 Azure Active Directory？](active-directory-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

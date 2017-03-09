@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/16/2017
+ms.date: 02/23/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 509053c87e84a4dbff78eee503dcf3af149b6f1e
-ms.openlocfilehash: 81d2a746b5e1df2cfd5b8fc465045cb92af01358
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 2e26bd81c59fd53a0e8fc693dde30cb403995896
+ms.openlocfilehash: 38d37e45c34c8c0a3bd2ed94f72944208292f466
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/16/2017
 
 Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Hadoop 群集的管理和监视。 使用 Linux 操作系统的 HDInsight 群集包含 Ambari，用于监视群集和进行配置更改。 在本文档中，你将了解使用 Ambari REST API 的基础知识。
 
-## <a name="a-idwhatisawhat-is-ambari"></a><a id="whatis"></a>什么是 Ambari
+## <a id="whatis"></a>什么是 Ambari
 
 [Apache Ambari](http://ambari.apache.org) 提供简单易用的 Web UI，让你可以预配、管理和监视 Hadoop 群集，以此简化 Hadoop 管理。 开发人员可以使用 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 在其应用程序中集成这些功能。
 
@@ -66,7 +66,7 @@ HDInsight 上 Ambari REST API 的基本 URI 是 https://CLUSTERNAME.azurehdinsig
 
 ### <a name="authentication"></a>身份验证
 
-连接到 HDInsight 上的 Ambari 需要 HTTPS。 验证连接时，必须使用管理员帐户名（默认为 **admin**）和创建群集时提供的密码。
+连接到 HDInsight 上的 Ambari 需要 HTTPS。 对连接进行身份验证时，必须使用创建群集时提供的管理员帐户名（默认为 **admin**）和密码。
 
 ## <a name="examples-authentication-and-parsing-json"></a>示例：身份验证和解析 JSON
 
@@ -207,7 +207,7 @@ $respObj.Clusters.health_report
 >
 > 有关将 HDInsight 与虚拟网络配合使用的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight 功能](hdinsight-extend-hadoop-virtual-network.md)。
 
-必须事先知悉主机的 FQDN，然后才能获取 IP 地址。 在知悉 FQDN 后，可以获取主机的 IP 地址。 以下示例首先从 Ambari 查询所有主机节点的 FQDN，然后从 Ambari 查询每个主机的 IP 地址。
+必须知悉主机的 FQDN，然后才能获取 IP 地址。 在知悉 FQDN 后，可以获取主机的 IP 地址。 以下示例首先从 Ambari 查询所有主机节点的 FQDN，然后从 Ambari 查询每个主机的 IP 地址。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -293,7 +293,55 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 > [!NOTE]
 > [Azure PowerShell](https://docs.microsoft.com/powershell/) 提供的 `Get-AzureRmHDInsightCluster` cmdlet 也返回群集的存储信息。
 
-## <a name="example-update-ambari-configuration"></a>示例：更新 Ambari 配置
+
+## <a name="example-get-configuration"></a>示例：获取配置
+
+1. 获取适用于群集的配置。
+
+    ```bash
+    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
+    ```
+
+    ```powershell
+    Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
+        -Credential $creds
+    ```
+
+    此示例将返回一个 JSON 文档，其中包含群集上安装的组件的当前配置（由 *tag* 值标识）。 以下示例是从 Spark 群集类型返回的数据摘录。
+   
+   ```json
+   "spark-metrics-properties" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   },
+   "spark-thrift-fairscheduler" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   },
+   "spark-thrift-sparkconf" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   }
+   ```
+
+2. 获取感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一请求返回的标记值。
+
+    ```bash
+    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
+    ```
+
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=core-site&tag=INITIAL" `
+        -Credential $creds
+    $resp.Content
+    ```
+
+    此示例返回的 JSON 文档包含 `core-site` 组件的当前配置。
+
+## <a name="example-update-configuration"></a>示例：更新配置
 
 1. 获取当前配置，即 Ambari 存储为“所需配置”的配置：
 
@@ -354,7 +402,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
     * 删除 `href`、`version` 和 `Config` 元素，因为提交新配置时不需要这些元素。
 
-    * 添加一个值为 `version#################` 的新 `tag` 元素。 数字部分基于当前日期。 每个配置必须有唯一的标记。
+    * 添加一个值为 `version#################` 的 `tag` 元素。 数字部分基于当前日期。 每个配置必须有唯一的标记。
      
     最后，将数据保存到 `newconfig.json` 文档。 文档结构应该类似于以下示例：
      

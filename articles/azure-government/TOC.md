@@ -1,3 +1,4 @@
+
 # 概述
 ## [什么是 Azure 政府版？](documentation-government-welcome.md)
 ## [ITAR](documentation-government-overview-itar.md)
@@ -31,6 +32,7 @@
 ### [计算](documentation-government-compute.md)
 ### [存储](documentation-government-services-storage.md)
 ### [数据库](documentation-government-services-database.md)
+### [智能 + 分析](documentation-government-services-intelligenceandanalytics.md)
 ### [网络](documentation-government-networking.md)
 ### [安全性 + 标识](documentation-government-services-securityandidentity.md)
 ### [监视 + 管理](documentation-government-services-monitoringandmanagement.md)
@@ -42,8 +44,3 @@
 ## [试用](https://azuregov.microsoft.com/trial/azuregovtrial)
 ## [博客](https://blogs.msdn.microsoft.com/azuregov/)
 ## [Azure Government 网站](https://azure.microsoft.com/overview/clouds/government/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

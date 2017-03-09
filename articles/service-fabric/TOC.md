@@ -81,9 +81,10 @@
 #### [计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)
 #### [事件](service-fabric-reliable-actors-events.md)
 #### [状态管理](service-fabric-reliable-actors-state-management.md)
-#### [配置状态提供程序](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
+#### [配置 KvsActorStateProvider](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [类型序列化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 #### [配置通信设置](service-fabric-reliable-actors-fabrictransportsettings.md) 
+#### [配置 ReliableDictionaryActorStateProvider](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
 ## 从云服务迁移
 ### [比较云服务和 Service Fabric](service-fabric-cloud-services-migration-differences.md)
@@ -106,6 +107,7 @@
 ##### [Azure 门户](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 ##### [Visual Studio 和 Azure Resource Manager](service-fabric-cluster-creation-via-visual-studio.md)
+#### [群集网络模式](service-fabric-patterns-networking.md)
 #### [节点类型和 VM 规模集](service-fabric-cluster-nodetypes.md)
 #### [缩放群集](service-fabric-cluster-scale-up-down.md)
 #### [升级群集](service-fabric-cluster-upgrade.md)

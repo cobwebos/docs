@@ -1,12 +1,16 @@
 # 概述
 ## [什么是 Azure 自动化？](automation-intro.md)
-## [Azure 自动化中的安全性](automation-security-overview.md)
 # 入门
 ## [创建 runbook](automation-first-runbook-graphical.md)
 ## [创建 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ## [创建 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 ## [管理基于角色的访问控制](automation-role-based-access-control.md)
 # 如何
+## 设置身份验证
+### [Azure 自动化中的身份验证](automation-security-overview.md)
+### [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)
+### [Azure 服务管理和 Resource Manager](automation-sec-configure-aduser-account.md)
+### [Amazon Web Services](automation-sec-configure-aws-account.md)
 ## 创建 Runbook
 ### [Runbook 类型](automation-runbook-types.md)
 ### [创建和导入 Runbook](automation-creating-importing-runbook.md)
@@ -28,15 +32,11 @@
 ### [管理 Azure 自动化数据](automation-managing-data.md)
 ### [从 Log Analytics 警报调用 Azure 自动化 Runbook](automation-invoke-runbook-from-omsla-alert.md)
 ## 部署配置管理 (DSC)
-### [所需状态配置 (DSC)](automation-dsc-overview.md)
+### [所需状态配置 (DSC) 概述](automation-dsc-overview.md)
 ### [入门](automation-dsc-getting-started.md)
 ### [载入用于管理的计算机](automation-dsc-onboarding.md)
 ### [编译 DSC 配置](automation-dsc-compile.md)
 ### [使用 Chocolatey 进行连续部署](automation-dsc-cd-chocolatey.md)
-## 设置身份验证
-### [Azure 服务管理和 Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon Web Services](automation-sec-configure-aws-account.md)
-### [Azure RunAs 帐户](automation-sec-configure-azure-runas-account.md)
 ## 管理自动化资产
 ### [证书](automation-certificates.md)
 ### [连接](automation-connections.md)
@@ -47,8 +47,6 @@
 ### [更新 Azure PowerShell 模块](automation-update-azure-modules.md)
 ## 自动化方案
 ### [Runbook 库](automation-runbook-gallery.md)
-### [启动/停止虚拟机](automation-solution-startstopvm-graphical.md)
-### [使用 PowerShell 启动/停止虚拟机](automation-solution-startstopvm-psworkflow.md)
 ### [创建 Amazon Web 服务 VM](automation-scenario-aws-deployment.md)
 ### [解决 Azure VM 警报](automation-azure-vm-alert-integration.md)
 ### [使用 JSON 标记启动/停止 VM](automation-scenario-start-stop-vm-wjson-tags.md)
@@ -81,8 +79,3 @@
 ## [Azure 自动化培训](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [学习路径](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [自动化简介视频](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

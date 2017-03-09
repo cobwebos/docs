@@ -4,8 +4,9 @@ description: "了解如何从基于 Windows 的 HDInsight 群集迁移到基于 
 services: hdinsight
 documentationcenter: 
 author: bhanupr
+manager: asadk
 editor: bhanupr
-ms.assetid: 
+ms.assetid: 60eb573c-e639-4815-9fc6-ea8b106d8dbc
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -16,6 +17,7 @@ ms.author: bhanupr
 translationtype: Human Translation
 ms.sourcegitcommit: 8c59375290e410c34ba25d4e5d8e8f9f8de0cafe
 ms.openlocfilehash: ceb5f5c639633d7118a057927b236b51b54f8fa7
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -40,21 +42,16 @@ ms.openlocfilehash: ceb5f5c639633d7118a057927b236b51b54f8fa7
 
 验证一切都按预期工作后，请为迁移安排停机时间。 在此停机期间，请执行以下操作：
 
-1.  备份所有存储在本地群集节点上的暂时性数据。 例如，如果你的数据直接存储在头节点上。
-2.  删除现有的群集。
-3.  使用前一群集使用的同一默认数据存储在具有最新（或支持）的 HDI 版本的同一 VNET 子网中创建群集。 这样，新群集便可针对现有生产数据继续运行。
-4.  导入任何已备份的暂时性数据。
-5.  使用新群集启动作业/继续处理。
+1.    备份所有存储在本地群集节点上的暂时性数据。 例如，如果你的数据直接存储在头节点上。
+2.    删除现有的群集。
+3.    使用前一群集使用的同一默认数据存储在具有最新（或支持）的 HDI 版本的同一 VNET 子网中创建群集。 这样，新群集便可针对现有生产数据继续运行。
+4.    导入任何已备份的暂时性数据。
+5.    使用新群集启动作业/继续处理。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [从 Windows 客户端使用 SSH 连接到基于 Linux 的群集](hdinsight-hadoop-linux-use-ssh-windows.md)
 * [从 Linux、Unix，或 Mac 客户端使用 SSH 连接到基于 Linux 的群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [使用 Ambari 管理基于 Linux 的群集](hdinsight-hadoop-manage-ambari.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

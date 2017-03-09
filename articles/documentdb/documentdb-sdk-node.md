@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 01/27/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 43d658a67eb55a2d2e35f79080d63c3effb6387e
+ms.sourcegitcommit: 8ffbf7807bdd3d0f9147dcd0237a999386553c37
+ms.openlocfilehash: b84597fb44b28f827a14a1c1b319a766b8a0b4dd
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -55,83 +56,87 @@ ms.openlocfilehash: 43d658a67eb55a2d2e35f79080d63c3effb6387e
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="a-name11011101a"></a><a name="1.10.1"/>1.10.1</a>
+### <a name="1.10.2"/>1.10.2</a>
+* 修复了 user-agent 标头，使之包括 SDK 版本。
+* 细微代码清理。
+
+### <a name="1.10.1"/>1.10.1</a>
 * 使用 SDK 定位模拟器 (hostname=localhost) 时禁用 SSL 验证。
 * 添加了在存储过程执行期间对启用脚本日志记录的支持。
 
-### <a name="a-name11001100a"></a><a name="1.10.0"/>1.10.0</a>
+### <a name="1.10.0"/>1.10.0</a>
 * 添加了对跨分区并行查询的支持。
 * 已对分区集合添加 TOP/ORDER BY 查询支持。
 
-### <a name="a-name190190a"></a><a name="1.9.0"/>1.9.0</a>
+### <a name="1.9.0"/>1.9.0</a>
 * 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，遇到错误代码 429 时，DocumentDB 将针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 DocumentDB 现在对每个要中止的请求等待最多 30 秒（不考虑重试计数），并返回错误代码为 429 的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
 * DocumentDB 现在将 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 作为每个请求的响应标头返回，以表示限制重试计数和重试之间请求所等待的累计时间。
 * 已添加 RetryOptions 类，从而公开了 ConnectionPolicy 类上可用于替代某些默认重试选项的 RetryOptions 属性。
 
-### <a name="a-name180180a"></a><a name="1.8.0"/>1.8.0</a>
+### <a name="1.8.0"/>1.8.0</a>
 * 添加了对多区域数据库帐户的支持。
 
-### <a name="a-name170170a"></a><a name="1.7.0"/>1.7.0</a>
+### <a name="1.7.0"/>1.7.0</a>
 * 在文档中添加了对生存时间 (TTL) 的支持。
 
-### <a name="a-name160160a"></a><a name="1.6.0"/>1.6.0</a>
+### <a name="1.6.0"/>1.6.0</a>
 * 实现了[分区集合](documentdb-partition-data.md)和[用户定义的性能级别](documentdb-performance-levels.md)。
 
-### <a name="a-name156156a"></a><a name="1.5.6"/>1.5.6</a>
+### <a name="1.5.6"/>1.5.6</a>
 * 修复了 RangePartitionResolver.resolveForRead Bug，其会由于结果的错误 concat，它不返回链接。
 
-### <a name="a-name155155a"></a><a name="1.5.5"/>1.5.5</a>
+### <a name="1.5.5"/>1.5.5</a>
 * 修复了 hashParitionResolver resolveForRead()：这时没有提供的分区键抛出异常，而不是返回所有已注册链接的列表。
 
-### <a name="a-name154154a"></a><a name="1.5.4"/>1.5.4</a>
+### <a name="1.5.4"/>1.5.4</a>
 * 修复了问题 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - 专用 HTTPS 代理：避免因 DocumentDB 用途而修改全局代理。 对所有 lib 的请求均使用专用代理。
 
-### <a name="a-name153153a"></a><a name="1.5.3"/>1.5.3</a>
+### <a name="1.5.3"/>1.5.3</a>
 * 修复了问题 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) - 正确处理媒体 ID 中的短划线。
 
-### <a name="a-name152152a"></a><a name="1.5.2"/>1.5.2</a>
+### <a name="1.5.2"/>1.5.2</a>
 * 修复了问题 [#95](https://github.com/Azure/azure-documentdb-node/issues/95) - EventEmitter 侦听器泄漏警告。
 
-### <a name="a-name151151a"></a><a name="1.5.1"/>1.5.1</a>
+### <a name="1.5.1"/>1.5.1</a>
 * 修复了问题 [#92](https://github.com/Azure/azure-documentdb-node/issues/90) - 对区分大小写的系统，将文件夹 Hash 重命名为 hash。
 
-### <a name="a-name150150a"></a><a name="1.5.0"/>1.5.0</a>
+### <a name="1.5.0"/>1.5.0</a>
 * 通过添加哈希和范围分区解析程序来实现分片支持。
 
-### <a name="a-name140140a"></a><a name="1.4.0"/>1.4.0</a>
+### <a name="1.4.0"/>1.4.0</a>
 * 实现 Upsert。 DocumentClient 上的新 upsertXXX 方法。
 
-### <a name="a-name130130a"></a><a name="1.3.0"/>1.3.0</a>
+### <a name="1.3.0"/>1.3.0</a>
 * 跳过以使版本号与其他 SDK 符合。
 
-### <a name="a-name122122a"></a><a name="1.2.2"/>1.2.2</a>
+### <a name="1.2.2"/>1.2.2</a>
 * 将 Q 承诺包装拆分到新的存储库。
 * 更新到 npm 注册表的程序包文件。
 
-### <a name="a-name121121a"></a><a name="1.2.1"/>1.2.1</a>
+### <a name="1.2.1"/>1.2.1</a>
 * 实现基于 ID 的路由。
 * 修复了问题 [#49](https://github.com/Azure/azure-documentdb-node/issues/49) - 当前属性与方法 current() 发生冲突。
 
-### <a name="a-name120120a"></a><a name="1.2.0"/>1.2.0</a>
+### <a name="1.2.0"/>1.2.0</a>
 * 添加对地理空间索引的支持。
 * 验证所有资源的 ID 属性。 资源的 ID 不能包含 ？、/、#、&#47;&#47;、字符或以空格结尾。
 * 将新标头“索引转换进度”添加到 ResourceResponse。
 
-### <a name="a-name110110a"></a><a name="1.1.0"/>1.1.0</a>
+### <a name="1.1.0"/>1.1.0</a>
 * 实施 V2 索引策略。
 
-### <a name="a-name103103a"></a><a name="1.0.3"/>1.0.3</a>
+### <a name="1.0.3"/>1.0.3</a>
 * 问题 [#40](https://github.com/Azure/azure-documentdb-node/issues/40) - 已在核心和承诺 SDK 中实现 eslint 和 grunt 配置。
 
-### <a name="a-name102102a"></a><a name="1.0.2"/>1.0.2</a>
+### <a name="1.0.2"/>1.0.2</a>
 * 问题 [#45](https://github.com/Azure/azure-documentdb-node/issues/45) - 承诺包装器不包括错误的标头。
 
-### <a name="a-name101101a"></a><a name="1.0.1"/>1.0.1</a>
+### <a name="1.0.1"/>1.0.1</a>
 * 通过添加 readConflicts、readConflictAsync 和 queryConflicts 实现了查询冲突的功能。
 * 更新了 API 文档。
 * 问题 [#41](https://github.com/Azure/azure-documentdb-node/issues/41) - client.createDocumentAsync 错误。
 
-### <a name="a-name100100a"></a><a name="1.0.0"/>1.0.0</a>
+### <a name="1.0.0"/>1.0.0</a>
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
@@ -145,6 +150,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.10.2](#1.10.2) |2017 年 1 月 27 日 |--- |
 | [1.10.1](#1.10.1) |2016 年 12 月 22 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 10 月 3 日 |--- |
 | [1.9.0](#1.9.0) |2016 年 7 月 7 日 |--- |
@@ -174,10 +180,5 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 ## <a name="see-also"></a>另请参阅
 要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -8,9 +8,10 @@ tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
+ms.assetid: b587cc9b-a41a-49ac-998f-b54d6c0bdfe0
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: 
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/07/2017
@@ -18,6 +19,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: b52e5bcf443afd05bf8cc37ce436cb80ab41412f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -143,8 +145,3 @@ ms.openlocfilehash: b52e5bcf443afd05bf8cc37ce436cb80ab41412f
 - 若要了解如何以远程方式通过 HDInsight 上的工具包调试 Spark 应用程序，请参阅[通过用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具对 HDInsight Spark Linux 群集上的 Spark 应用程序进行远程调试](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)。
 - 若要了解如何通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序，请参阅[通过用于 Eclipse 的 Azure 工具包中的 HDInsight 工具创建 Spark 应用程序](hdinsight-apache-spark-eclipse-tool-plugin.md)。
 - 若要观看用于 Eclipse 的 HDInsight 工具的视频，请参阅[通过用于 Eclipse 的 HDInsight 工具创建 Spark 应用程序](https://mix.office.com/watch/1rau2mopb6fha)。
-
-
-<!--HONumber=Jan17_HO4-->
-
-

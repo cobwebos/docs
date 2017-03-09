@@ -264,6 +264,7 @@
 
 # 相关内容
 ## [用于 .NET 的 Azure SDK 发行说明](azure-sdk-dotnet-release-notes.md)
+### [3.0 版](azure-sdk-dotnet-release-notes-3-0.md)
 ### [2.9 版](azure-sdk-dotnet-release-notes-2-9.md)
 ### [2.8.X 版](azure-sdk-dotnet-release-notes-2-8.md)
 ### [2.7.X 版](azure-sdk-dotnet-release-notes-2-7.md)

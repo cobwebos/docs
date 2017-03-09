@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/11/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: bb27d279396aa7b670187560cebe2ed074576bad
-ms.openlocfilehash: 86df3e74cd0060652a3223cfbd1516643985275e
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 45225c4250539dfeb9f3b4654615acbdd162191b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -140,7 +141,7 @@ ms.openlocfilehash: 86df3e74cd0060652a3223cfbd1516643985275e
 
 ![Json_Pub_Setting2][Json_Pub_Setting2]
 
-如果不想**滚动更新证书**，则将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前证书滚动更新为新证书。 
+如果要**滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前证书滚动更新为新证书。 
 
 
 ```JSON
@@ -312,10 +313,5 @@ Get-ServiceFabricClusterHealth
 [Json_Pub_Setting4]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_17.PNG
 [Json_Pub_Setting5]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_18.PNG
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

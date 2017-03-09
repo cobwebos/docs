@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
 ms.openlocfilehash: d9264e4268bb0418d64d4da680bd6e8b756a9ea6
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -287,9 +288,4 @@ ms.openlocfilehash: d9264e4268bb0418d64d4da680bd6e8b756a9ea6
 [203]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

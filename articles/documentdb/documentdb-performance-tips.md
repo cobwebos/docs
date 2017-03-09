@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 02/23/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: abf65ccbf8806d6581135f41224ef46840715f85
-ms.openlocfilehash: 51e7188530574703a178c5927092d9bc9d15a45f
+ms.sourcegitcommit: d1ff26fd2d93881d028728bf86197c2dc9835ad7
+ms.openlocfilehash: 01f250b218e348a8bad046ac1ddb8c532aa8267f
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -91,9 +92,9 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
     请注意，每个 DocumentClient 实例都是线程安全的，在直接模式下运行时可执行高效的连接管理和地址缓存。 若要通过 DocumentClient 获得高效的连接管理和更好的性能，建议在应用程序生存期内对每个 AppDomain 使用单个 DocumentClient 实例。
 
    <a id="max-connection"></a>
-3. **增加每台主机的 System.Net MaxConnections**
+3. **在使用“网关”模式时增加每台主机的 System.Net MaxConnections**
 
-    默认情况下，DocumentDB 请求是通过 HTTPS/REST 发出的，并受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxConnections 设置为较大的值 (100-1000)，以便客户端库能够同时利用多个连接来访问 DocumentDB。 在 .NET SDK 1.8.0 和更高版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的默认值为 50，若要更改此值，可将 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 设置为更大的值。  
+    使用“网关”模式时，DocumentDB 请求是通过 HTTPS/REST 发出的，并受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxConnections 设置为较大的值 (100-1000)，以便客户端库能够同时利用多个连接来访问 DocumentDB。 在 .NET SDK 1.8.0 和更高版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的默认值为 50，若要更改此值，可将 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 设置为更大的值。   
 4. **优化分区集合的并行查询。**
 
      DocumentDB.NET SDK 版本 1.9.0 和更高版本支持并行查询，可查询并行分区集（请参阅[使用 Sdk](documentdb-partition-data.md#working-with-the-sdks) 以及相关[的代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)以获取详细信息）。 并行查询旨改善查询延迟和串行配对物上的吞吐量。 并行查询提供两个参数，用户可以调整来适应自身的需求 (a) MaxDegreeOfParallelism：控制并行中运行的最大分区数 (b) MaxBufferedItemCount：控制预提取结果的数量。
@@ -135,7 +136,7 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
     
 11. **使用 64 位主机进程**
 
-    DocumentDB SDK 在 32 位主机进程中工作。 但是，如果使用跨分区查询，建议使用 64 位主机进程来提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
+    当用户使用 DocumentDB .NET SDK 1.11.4 及更高版本时，DocumentDB SDK 可以在 32 位主机进程中运行。 但是，如果使用跨分区查询，建议使用 64 位主机进程来提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
     
     - 对于可执行应用程序，在“生成”选项卡的“项目属性”窗口中，通过取消“首选 32 位”选项可实现以上目的。 
     
@@ -215,9 +216,4 @@ Azure DocumentDB 是一个快速、弹性的分布式数据库，可以在提供
 有关用于评估 DocumentDB 以使用少量客户端计算机实现高性能的示例应用程序，请参阅 [使用 Azure DocumentDB 进行性能和规模测试](documentdb-performance-testing.md)。
 
 此外，若要了解如何设计应用程序以实现缩放和高性能的详细信息，请参阅 [Azure DocumentDB 中的分区和缩放](documentdb-partition-data.md)。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

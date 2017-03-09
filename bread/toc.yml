@@ -4,7 +4,7 @@
   items:
   - name: "Active Directory"
     tocHref: /azure/active-directory/
-    topicHref: /azure/active-directory/active-directory-whatis
+    topicHref: /azure/active-directory/
     items:
       - name: "连接"
         tocHref: /azure/active-directory/connect/
@@ -20,146 +20,146 @@
         topicHref: /azure/active-directory/privileged-identity-management/
   - name: "Active Directory B2C"
     tocHref: /azure/active-directory-b2c/
-    topicHref: /azure/active-directory-b2c/active-directory-b2c-overview
+    topicHref: /azure/active-directory-b2c/
   - name: "Active Directory 域服务"
     tocHref: /azure/active-directory-domain-services/
-    topicHref: /azure/active-directory-domain-services/active-directory-ds-overview
+    topicHref: /azure/active-directory-domain-services/
   - name: "Analysis Services"
     tocHref: /azure/analysis-services/
-    topicHref: /azure/analysis-services/analysis-services-overview
+    topicHref: /azure/analysis-services/
   - name: "API 管理"
     tocHref: /azure/api-management/
-    topicHref: /azure/api-management/api-management-key-concepts
+    topicHref: /azure/api-management/
   - name: "App Service"
     tocHref: /azure/app-service/
-    topicHref: /azure/app-service/app-service-how-works-readme
+    topicHref: /azure/app-service/
     items:
     - name: "Web 应用"
       tocHref: /azure/app-service-web/
-      topicHref: /azure/app-service-web/app-service-web-overview
+      topicHref: /azure/app-service-web/
     - name: "移动应用"
       tocHref: /azure/app-service-mobile/
-      topicHref: /azure/app-service-mobile/app-service-mobile-value-prop
+      topicHref: /azure/app-service-mobile/
     - name: "API Apps"
       tocHref: /azure/app-service-api/
-      topicHref: /azure/app-service-api/app-service-api-apps-why-best-platform
+      topicHref: /azure/app-service-api/
   - name: "顾问"
     tocHref: /azure/advisor/
-    topicHref: /azure/advisor/advisor-overview
+    topicHref: /azure/advisor/
   - name: "Logic Apps"
     tocHref: /azure/logic-apps/
-    topicHref: /azure/logic-apps/logic-apps-what-are-logic-apps
+    topicHref: /azure/logic-apps/
   - name: "应用程序网关"
     tocHref: /azure/application-gateway/
-    topicHref: /azure/application-gateway/application-gateway-introduction
+    topicHref: /azure/application-gateway/
   - name: "Application Insights"
     tocHref: /azure/application-insights/
-    topicHref: /azure/application-insights/app-insights-overview
+    topicHref: /azure/application-insights/
   - name: "自动化"
     tocHref: /azure/automation/
-    topicHref: /azure/automation/automation-intro
+    topicHref: /azure/automation/
   - name: "容器注册表"
     tocHref: /azure/container-registry/
-    topicHref: /azure/container-registry/container-registry-intro
+    topicHref: /azure/container-registry/
   - name: "函数"
     tocHref: /azure/azure-functions/
-    topicHref: /azure/azure-functions/functions-overview
+    topicHref: /azure/azure-functions/
   - name: "Government"
     tocHref: /azure/azure-government/
-    topicHref: /azure/azure-government-overview
+    topicHref: /azure/azure-government/
   - name: "门户"
     tocHref: /azure/azure-portal/
-    topicHref: /azure/azure-portal/azure-portal-overview
+    topicHref: /azure/azure-portal/
   - name: "资源管理器"
     tocHref: /azure/azure-resource-manager/
-    topicHref: /azure/azure-resource-manager/resource-group-overview
+    topicHref: /azure/azure-resource-manager/
   - name: "Azure Stack"
     tocHref: /azure/azure-stack/
-    topicHref: /azure/azure-stack/azure-stack-poc
+    topicHref: /azure/azure-stack/
   - name: "可支持性"
     tocHref: /azure/azure-supportability/
     topicHref: /azure/azure-supportability/
   - name: "备份"
     tocHref: /azure/backup/
-    topicHref: /azure/backup/backup-introduction-to-azure-backup
+    topicHref: /azure/backup/
   - name: "批处理"
     tocHref: /azure/batch/
-    topicHref: /azure/batch/batch-technical-overview
+    topicHref: /azure/batch/
   - name: "计费"
     tocHref: /azure/billing/
-    topicHref: /azure/billing/billing-getting-started
+    topicHref: /azure/billing/
   - name: "BizTalk 服务"
     tocHref: /azure/biztalk-services/
-    topicHref: /azure/biztalk-services/integration-hybrid-connection-overview
+    topicHref: /azure/biztalk-services/
   - name: "缓存"
     tocHref: /azure/cache/
     topicHref: /azure/cache/
   - name: "CDN"
     tocHref: /azure/cdn/
-    topicHref: /azure/cdn/cdn-overview
+    topicHref: /azure/cdn/
   - name: "云服务"
     tocHref: /azure/cloud-services/
-    topicHref: /azure/cloud-services/cloud-services-choose-me
+    topicHref: /azure/cloud-services/
   - name: "认知服务"
     tocHref: /azure/cognitive-services/
-    topicHref: /azure/cognitive-services/cognitive-services-text-analytics-quick-start
+    topicHref: /azure/cognitive-services/
   - name: "连接器"
     tocHref: /azure/connectors/
     topicHref: /azure/connectors/
   - name: "容器服务"
     tocHref: /azure/container-service/
-    topicHref: /azure/container-service/container-service-intro
+    topicHref: /azure/container-service/
   - name: "数据目录"
     tocHref: /azure/data-catalog/
-    topicHref: /azure/data-catalog/data-catalog-what-is-data-catalog
+    topicHref: /azure/data-catalog/
   - name: "Data Factory"
     tocHref: /azure/data-factory/
-    topicHref: /azure/data-factory/data-factory-introduction
+    topicHref: /azure/data-factory/
   - name: "数据湖分析"
     tocHref: /azure/data-lake-analytics/
-    topicHref: /azure/data-lake-analytics/data-lake-analytics-overview
+    topicHref: /azure/data-lake-analytics/
   - name: "数据湖存储"
     tocHref: /azure/data-lake-store/
-    topicHref: /azure/data-lake-store/data-lake-store-overview
+    topicHref: /azure/data-lake-store/
   - name: "开发测试实验室"
     tocHref: /azure/devtest-lab/
-    topicHref: /azure/devtest-lab/devtest-lab-overview
+    topicHref: /azure/devtest-lab/
   - name: "DNS"
     tocHref: /azure/dns/
-    topicHref: /azure/dns/dns-overview
+    topicHref: /azure/dns/
   - name: "DocumentDB"
     tocHref: /azure/documentdb/
-    topicHref: /azure/documentdb/documentdb-introduction
+    topicHref: /azure/documentdb/
   - name: "事件中心"
     tocHref: /azure/event-hubs/
-    topicHref: /azure/event-hubs/event-hubs-what-is-event-hubs
+    topicHref: /azure/event-hubs/
   - name: "ExpressRoute"
     tocHref: /azure/expressroute/
-    topicHref: /azure/expressroute/expressroute-introduction
+    topicHref: /azure/expressroute/
   - name: "指南"
     tocHref: /azure/guidance/
-    topicHref: /azure/guidance/guidance-resiliency-overview
+    topicHref: /azure/guidance/
   - name: "HDInsight"
     tocHref: /azure/hdinsight/
-    topicHref: /azure/hdinsight/hdinsight-hadoop-introduction
+    topicHref: /azure/hdinsight/
   - name: "IoT 中心"
     tocHref: /azure/iot-hub/
-    topicHref: /azure/iot-hub/iot-hub-what-is-azure-iot
+    topicHref: /azure/iot-hub/
   - name: "IoT 套件"
     tocHref: /azure/iot-suite/
-    topicHref: /azure/iot-suite/iot-suite-what-is-azure-iot
+    topicHref: /azure/iot-suite/
   - name: "密钥保管库"
     tocHref: /azure/key-vault/
-    topicHref: /azure/key-vault/key-vault-whatis
+    topicHref: /azure/key-vault/
   - name: "负载平衡器"
     tocHref: /azure/load-balancer/
-    topicHref: /azure/load-balancer/load-balancer-overview
+    topicHref: /azure/load-balancer/
   - name: "Log Analytics"
     tocHref: /azure/log-analytics/
-    topicHref: /azure/log-analytics/log-analytics-overview
+    topicHref: /azure/log-analytics/
   - name: "机器学习"
     tocHref: /azure/machine-learning/
-    topicHref: /azure/machine-learning/machine-learning-faq
+    topicHref: /azure/machine-learning/
   - name: "应用商店消费者"
     tocHref: /azure/marketplace-consumer/
     topicHref: /azure/marketplace-consumer/
@@ -168,41 +168,41 @@
     topicHref: /azure/marketplace-publishing/
   - name: "媒体服务"
     tocHref: /azure/media-services/
-    topicHref: /azure/media-services/media-services-overview
+    topicHref: /azure/media-services/
   - name: "Mobile Engagement"
     tocHref: /azure/mobile-engagement/
-    topicHref: /azure/mobile-engagement/mobile-engagement-overview
+    topicHref: /azure/mobile-engagement/
   - name: "移动服务"
     tocHref: /azure/mobile-services/
     topicHref: /azure/mobile-services/
   - name: "监视和诊断"
     tocHref: /azure/monitoring-and-diagnostics/
-    topicHref: /azure/monitoring-and-diagnostics/../azure-portal/monitoring-get-started
+    topicHref: /azure/monitoring-and-diagnostics/
   - name: "多重身份验证"
     tocHref: /azure/multi-factor-authentication/
-    topicHref: /azure/multi-factor-authentication/multi-factor-authentication
+    topicHref: /azure/multi-factor-authentication/
     items:
       - name: "用户指南"
         tocHref: /azure/multi-factor-authentication/end-user/
         topicHref: /azure/multi-factor-authentication/end-user/
   - name: "网络观察程序"
     tocHref: /azure/network-watcher/
-    topicHref: /azure/network-watcher/network-watcher-monitoring-overview
+    topicHref: /azure/network-watcher/
   - name: "通知中心"
     tocHref: /azure/notification-hubs/
-    topicHref: /azure/notification-hubs/notification-hubs-push-notification-overview
+    topicHref: /azure/notification-hubs/
   - name: "Operations Management Suite"
     tocHref: /azure/operations-management-suite/
-    topicHref: /azure/operations-management-suite/operations-management-suite-overview
+    topicHref: /azure/operations-management-suite/
   - name: "Power BI Embedded"
     tocHref: /azure/power-bi-embedded/
     topicHref: /azure/power-bi-embedded/
   - name: "Redis 缓存"
     tocHref: /azure/redis-cache/
-    topicHref: /azure/redis-cache/cache-faq
+    topicHref: /azure/redis-cache/
   - name: "RemoteApp"
     tocHref: /azure/remoteapp/
-    topicHref: /azure/remoteapp/remoteapp-whatis
+    topicHref: /azure/remoteapp/
   - name: "复原能力"
     tocHref: /azure/resiliency/
     topicHref: /azure/resiliency/
@@ -211,76 +211,76 @@
     topicHref: /azure/resource-health/
   - name: "计划程序"
     tocHref: /azure/scheduler/
-    topicHref: /azure/scheduler/scheduler-intro
+    topicHref: /azure/scheduler/
   - name: "搜索"
     tocHref: /azure/search/
-    topicHref: /azure/search/search-what-is-azure-search
+    topicHref: /azure/search/
   - name: "“安全”"
     tocHref: /azure/security/
-    topicHref: /azure/security/azure-security-getting-started
+    topicHref: /azure/security/
   - name: "安全中心"
     tocHref: /azure/security-center/
-    topicHref: /azure/security-center/security-center-intro
+    topicHref: /azure/security-center/
   - name: "服务总线"
     tocHref: /azure/service-bus/
-    topicHref: /azure/service-bus/../service-bus-messaging/service-bus-queues-topics-subscriptions
+    topicHref: /azure/service-bus/
   - name: "服务总线消息传送"
     tocHref: /azure/service-bus-messaging/
-    topicHref: /azure/service-bus-messaging/service-bus-queues-topics-subscriptions
+    topicHref: /azure/service-bus-messaging/
   - name: "Service Bus 中继"
     tocHref: /azure/service-bus-relay/
-    topicHref: /azure/service-bus-relay/service-bus-relay-overview
+    topicHref: /azure/service-bus-relay/
   - name: "Service Fabric"
     tocHref: /azure/service-fabric/
-    topicHref: /azure/service-fabric/service-fabric-overview
+    topicHref: /azure/service-fabric/
   - name: "站点恢复"
     tocHref: /azure/site-recovery/
-    topicHref: /azure/site-recovery/site-recovery-overview
+    topicHref: /azure/site-recovery/
   - name: "SQL 数据仓库"
     tocHref: /azure/sql-data-warehouse/
-    topicHref: /azure/sql-data-warehouse/sql-data-warehouse-overview-what-is
+    topicHref: /azure/sql-data-warehouse/
   - name: "SQL 数据库"
     tocHref: /azure/sql-database/
-    topicHref: /azure/sql-database/sql-database-technical-overview
+    topicHref: /azure/sql-database/
   - name: "SQL Server Stretch Database"
     tocHref: /azure/sql-server-stretch-database/
-    topicHref: /azure/sql-server-stretch-database/sql-server-stretch-database-overview
+    topicHref: /azure/sql-server-stretch-database/
   - name: "存储"
     tocHref: /azure/storage/
-    topicHref: /azure/storage/storage-introduction
+    topicHref: /azure/storage/
   - name: "StorSimple"
     tocHref: /azure/storsimple/
-    topicHref: /azure/storsimple/storsimple-ova-overview
+    topicHref: /azure/storsimple/
   - name: "流分析"
     tocHref: /azure/stream-analytics/
-    topicHref: /azure/stream-analytics/stream-analytics-introduction
+    topicHref: /azure/stream-analytics/
   - name: "流量管理器"
     tocHref: /azure/traffic-manager/
-    topicHref: /azure/traffic-manager/traffic-manager-overview
+    topicHref: /azure/traffic-manager/
   - name: "虚拟机规模集"
     tocHref: /azure/virtual-machine-scale-sets/
-    topicHref: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
+    topicHref: /azure/virtual-machine-scale-sets/
   - name: "虚拟机"
     tocHref: /azure/virtual-machines/
     topicHref: /azure/virtual-machines/
     items:
       - name: "Linux"
         tocHref: /azure/virtual-machines/linux/
-        topicHref: /azure/virtual-machines/linux/virtual-machines-linux-azure-overview
+        topicHref: /azure/virtual-machines/linux/
         items:
           - name: "经典部署"
             tocHref: /azure/virtual-machines/linux/classic/
             topicHref: /azure/virtual-machines/linux/classic/
       - name: "Windows"
         tocHref: /azure/virtual-machines/windows/
-        topicHref: /azure/virtual-machines/windows/virtual-machines-windows-about
+        topicHref: /azure/virtual-machines/windows/
         items:
           - name: "经典部署"
             tocHref: /azure/virtual-machines/windows/classic/
             topicHref: /azure/virtual-machines/windows/classic/
   - name: "虚拟网络"
     tocHref: /azure/virtual-network/
-    topicHref: /azure/virtual-network/virtual-networks-overview
+    topicHref: /azure/virtual-network/
   - name: "VPN 网关"
     tocHref: /azure/vpn-gateway/
-    topicHref: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
+    topicHref: /azure/vpn-gateway/

@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/11/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 7b691e92cfcc8c6c62f854b3f1b6cf13d317df7b
-ms.openlocfilehash: 961aa46e3f3654c250aa10e61149fac2fc251935
+ms.sourcegitcommit: c2c9d84bc6699f4487e82b117d27b19f66313018
+ms.openlocfilehash: cde63b21e4bac8f635ef9125101735a07deb1bc2
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -55,6 +56,8 @@ ms.openlocfilehash: 961aa46e3f3654c250aa10e61149fac2fc251935
 
 * 有关 `path`，请参阅[名称模式](#pattern)了解如何设置 blob 名称模式的格式。
 * `connection` 必须包含具有存储连接字符串的应用设置的名称。 在 Azure 门户中，创建存储帐户或选择现有存储帐户时，“集成”选项卡中的标准编辑器会为你配置此应用设置。 若要手动创建此应用设置，请参阅[手动配置此应用设置]()。 
+
+基于消耗计划运行时，如果 Function App 处于空闲状态，则在处理新 Blob 时，可能会出现某天耗时长达 10 分钟的情况。 Function App 运行以后，Blob 处理速度会加快。 若要避免这种初始延迟，可以使用常规的应用服务计划并启用“始终可用”，或者使用其他机制来触发 Blob 处理，例如使用包含 Blob 名称的队列消息。 
 
 另请参阅以下副标题以了解详细信息：
 
@@ -368,10 +371,5 @@ module.exports = function(context) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

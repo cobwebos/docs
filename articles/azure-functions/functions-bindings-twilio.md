@@ -7,7 +7,7 @@ author: wesmc7777
 manager: erikre
 editor: 
 tags: 
-keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
+keywords: "Azure Functions, Functions, 事件处理, 动态计算, 无服务体系结构"
 ms.assetid: a60263aa-3de9-4e1b-a2bb-0b52e70d559b
 ms.service: functions
 ms.devlang: multiple
@@ -15,14 +15,16 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/20/2016
-ms.author: wesmc
+ms.author: wesmc, glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 29fa4620885ec787f362966f732510fded600d53
+ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
+ms.openlocfilehash: 9355aae6e3fbf70aae08cc829d7addd2decc44fd
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-functions-twilio-output-binding"></a>Azure Functions Twilio 输出绑定
+# <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>使用 Twilio 输出绑定从 Azure Functions 发送短信
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 本文介绍如何配置 Twilio 绑定并与 Azure Functions 配合使用。 
@@ -31,7 +33,7 @@ ms.openlocfilehash: 29fa4620885ec787f362966f732510fded600d53
 
 Azure Functions 支持 Twilio 输出绑定，使函数能够通过几行代码和 [Twilio](https://www.twilio.com/) 帐户发送短信。 
 
-## <a name="functionjson-for-azure-notification-hub-output-binding"></a>用于 Azure 通知中心输出绑定的 function.json
+## <a name="functionjson-for-the-twilio-output-binding"></a>用于 Twilio 输出绑定的 function.json
 function.json 文件提供以下属性：
 
 * `name`：在 Twilio 短信的函数代码中使用的变量名。
@@ -155,10 +157,5 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

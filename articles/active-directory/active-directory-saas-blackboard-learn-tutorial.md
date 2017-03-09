@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9d32b156878ff963e6dac00663fc5f1f272d269b
-ms.openlocfilehash: f86b20d5cf20ff977901d481438292c7b38658da
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 0247e7c8f3803e27b4304dae6af11f18432e76b0
+ms.openlocfilehash: 92ee9f08ff85a85a08a2d1e021cdb7afec0c6de7
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -35,17 +35,17 @@ ms.lasthandoff: 02/17/2017
 ## <a name="prerequisites"></a>先决条件
 若要配置 Azure AD 与 Blackboard Learn 的集成，需要以下各项：
 
-* 一个 Azure AD 订阅
-* 一个支持 Blackboard Learn 云平台单一登录的订阅
+* Azure AD 订阅
+* 一个支持 Blackboard Learn Cloud Platform 单一登录 (SSO) 的订阅
 
 >[!NOTE]
->为了测试本教程中的步骤，我们不建议使用生产环境。 
+>不建议使用生产环境测试本教程中的步骤。 
 > 
 
 测试本教程中的步骤应遵循以下建议：
 
 * 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，在测试环境中测试 Azure AD 单一登录。

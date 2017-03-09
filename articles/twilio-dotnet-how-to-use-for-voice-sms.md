@@ -13,32 +13,33 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
-ms.author: devinr
+ms.author: MicrosoftHelp@twilio.com
 translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: 8d22a1ed9a0f93d8cab2fe5567d94075f5384382
+ms.lasthandoff: 12/14/2016
 
 
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何在 Azure 中使用 Twilio 实现语音和短信功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
 
-## <a name="a-idwhatisawhat-is-twilio"></a><a id="WhatIs"></a>什么是 Twilio？
+## <a id="WhatIs"></a>什么是 Twilio？
 Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将语音、VoIP 和消息传送嵌入到应用程序中。 它们对基于云的全球环境中所需的所有基础结构进行虚拟化，并通过 Twilio 通信 API 平台将其公开。 可轻松构建和扩展应用程序。 享受现用现付定价所带来的灵活性，并从云可靠性中受益。
 
 利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 **Twilio SMS** 使应用程序能够发送和接收 SMS 消息。 利用 **Twilio 客户端**，可以从任何手机、平板电脑或浏览器发起 VoIP 呼叫并支持 WebRTC。
 
-## <a name="a-idpricingatwilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定价和特别优惠
+## <a id="Pricing"></a>Twilio 定价和特别优惠
 Azure 客户在升级 Twilio 帐户后即可获得[特别优惠](http://www.twilio.com/azure)：10 美元的 Twilio 信用额度。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 Twilio 信用额度并从 [ahoy.twilio.com/azure](http://ahoy.twilio.com/azure) 开始。
 
 Twilio 是一种现用现付服务。 没有设置费用，并且您可以随时关闭您的帐户。 可以在 [Twilio 定价](http://www.twilio.com/voice/pricing)中找到更多详细信息。  
 
-## <a name="a-idconceptsaconcepts"></a><a id="Concepts"></a>概念
+## <a id="Concepts"></a>概念
 Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][twilio_libraries]。
 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
-### <a name="a-idverbsatwilio-verbs"></a><a id="Verbs"></a>Twilio 谓词
+### <a id="Verbs"></a>Twilio 谓词
 API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。
 
 下面是 Twilio 谓词的列表。  通过 [Twilio 标记语言文档](http://www.twilio.com/docs/api/twiml)了解其他谓词和功能。
@@ -54,7 +55,7 @@ API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在�
 * **&lt;Say&gt;**：将文本转换为呼叫中生成的语音。
 * **&lt;Sms&gt;**：发送 SMS 消息。
 
-### <a name="a-idtwimlatwiml"></a><a id="TwiML"></a>TwiML
+### <a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
 
 例如，以下 TwiML 将文本 **Hello World** 转换为语音。
@@ -68,16 +69,16 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][twiml]。 有关 Twilio API 的其他信息，请参阅 [Twilio API][twilio_api]。
 
-## <a name="a-idcreateaccountacreate-a-twilio-account"></a><a id="CreateAccount"></a>创建 Twilio 帐户
+## <a id="CreateAccount"></a>创建 Twilio 帐户
 准备好获取 Twilio 帐户后，请在[试用 Twilio][try_twilio] 上注册。 可以先使用免费帐户，以后再升级您的帐户。
 
 注册 Twilio 帐户时，您将收到帐户 ID 和身份验证令牌。 需要二者才能发起 Twilio API 呼叫。 为了防止对您的帐户进行未经授权的访问，请保护身份验证令牌。 你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][twilio_account]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
-## <a name="a-idcreateappacreate-an-azure-application"></a><a id="create_app"></a>创建 Azure 应用程序
+## <a id="create_app"></a>创建 Azure 应用程序
 托管启用 Twilio 的应用程序的 Azure 应用程序与其他任何 Azure 应用程序没有区别。 您需添加 Twilio .NET 库并将角色配置为使用 Twilio .NET 库。
 有关创建初始 Azure 项目的信息，请参阅[使用 Visual Studio 创建 Azure 项目][vs_project]。
 
-## <a name="a-idconfigureappaconfigure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>将应用程序配置为使用 Twilio 库
+## <a id="configure_app"></a>将应用程序配置为使用 Twilio 库
 Twilio 提供了一系列可包装 Twilio 各个方面的 .NET 帮助程序库，使您能够以简单且轻松地方式与 Twilio REST API 和 Twilio 客户端进行交互，从而生成 TwiML 响应。
 
 Twilio 为 .NET 开发人员提供了 5 个库：
@@ -102,7 +103,7 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 > 
 > 
 
-### <a name="a-idusenugetato-add-the-twilio-libraries-to-your-visual-studio-project"></a><a id="use_nuget"></a>向您的 Visual Studio 项目添加 Twilio 库：
+### <a id="use_nuget"></a>向您的 Visual Studio 项目添加 Twilio 库：
 1. 在 Visual Studio 中打开您的解决方案。
 2. 右键单击“引用”。
 3. 单击“管理 NuGet 包”。
@@ -110,7 +111,7 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 5. 在联机搜索框中，键入 *twilio*。
 6. 单击 Twilio 程序包对应的“安装”。
 
-## <a name="a-idhowtomakecallahow-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>如何：发起传出呼叫
+## <a id="howto_make_call"></a>如何：发起传出呼叫
 下面演示了如何使用 **TwilioRestClient** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换“呼叫方”和“被呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
 
     // Use your account SID and authentication token instead
@@ -144,7 +145,7 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 
 如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用您自己的站点来提供 TwiML 响应。 有关详细信息，请参阅[如何：从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
 
-## <a name="a-idhowtosendsmsahow-to-send-an-sms-message"></a><a id="howto_send_sms"></a>如何：发送 SMS 消息
+## <a id="howto_send_sms"></a>如何：发送 SMS 消息
 以下屏幕截图演示了如何使用 **TwilioRestClient** 类发送短信。 “呼叫方”号码由 Twilio 提供，供试用帐户用来发送 SMS 消息。 在运行代码前，必须验证 Twilio 帐户的“被呼叫方”号码。
 
         // Use your account SID and authentication token instead
@@ -166,7 +167,7 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
             string message = result.RestException.Message;
         }
 
-## <a name="a-idhowtoprovidetwimlresponsesahow-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>如何：从您自己的网站提供 TwiML 响应
+## <a id="howto_provide_twiml_responses"></a>如何：从您自己的网站提供 TwiML 响应
 当应用程序开始调用 Twilio API 时（例如通过 **client.InitiateOutboundCall** 方法），Twilio 会将请求发送到预期返回 TwiML 响应的 URL。 [如何：发起传出呼叫](#howto_make_call)中的示例使用 Twilio 提供的 URL [http://twimlets.com/message][twimlet_message_url] 返回该响应。
 
 > [!NOTE]
@@ -285,9 +286,4 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

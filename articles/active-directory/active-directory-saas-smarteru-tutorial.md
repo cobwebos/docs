@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
 ms.openlocfilehash: 058f84f57c18735d42b95a74aee74468ccef0f8d
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -150,10 +151,5 @@ ms.openlocfilehash: 058f84f57c18735d42b95a74aee74468ccef0f8d
     ![是](./media/active-directory-saas-smarteru-tutorial/IC767830.png "是")
 
 如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: bc60476253fd3e646fbd08cd6749e06fb403959c
-ms.openlocfilehash: 7ce638ae0cdca9f6114acae458a2cdea38a7793f
+ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
+ms.openlocfilehash: 391943c6057081b48594d74898d798e5365509d3
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -308,6 +309,11 @@ Amazon Web Services (AWS) 应用程序需要特定格式的 SAML 断言，这要
 ### <a name="creating-a-amazon-web-services-aws-test-user"></a>创建 Amazon Web Services (AWS) 测试用户
 本部分要在 Amazon Web Services (AWS) 中创建名为“Britta Simon”的测试用户。
 
+> [!NOTE]
+> AWS 支持通过 SAML 进行实时用户预配。 这是默认启用的，因此不需在 AWS 中预配用户。
+> 
+> 
+
 ### <a name="to-create-a-user-called-britta-simon-in-amazon-web-services-aws-perform-the-following-steps"></a>若要在 Amazon Web Services (AWS) 中创建名为“Britta Simon”的用户，请执行以下步骤：
 1. 以管理员身份登录 **Amazon Web Services (AWS)** 公司站点。
 
@@ -421,10 +427,5 @@ Amazon Web Services (AWS) 应用程序需要特定格式的 SAML 断言，这要
 
 
 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: dc5f98fd548512801c705f942e30df5e6b95d542
 ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
 
 若要了解有关脱机同步功能的详细信息，请参阅[移动应用中的脱机数据同步]。
 
-## <a name="a-namereview-syncareview-the-client-sync-code"></a><a name="review-sync"></a>查看客户端同步代码
+## <a name="review-sync"></a>查看客户端同步代码
 [创建 iOS 应用]教程中下载的客户端项目已包含使用基于 Core Data 的本地数据库支持脱机同步的代码。 本部分汇总了教程代码中已包含的内容。 有关该功能的概念性概述，请参阅[移动应用中的脱机数据同步]。
 
 使用移动应用的脱机数据同步功能，即使网络不可访问，最终用户也能够与本地数据库交互。 若要在应用中使用这些功能，你可以初始化 `MSClient` 的同步上下文，并引用本机存储。 然后通过 **MSSyncTable** 接口引用你的表。
@@ -48,6 +49,7 @@ ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
    self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
    ```    
 * **Swift**。 在**ToDoTableViewController.viewDidLoad**方法中：
+
    ```swift
    let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
@@ -135,7 +137,7 @@ ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
 
 由于每当修改数据 (Objective-C) 或启动应用（Objective-C 和 Swift）时应用就会同步，因此，应用假设用户已联机。 在后面的一个部分中，我们将更新应用，以便即使在脱机时用户也能进行编辑。
 
-## <a name="a-namereview-core-dataareview-the-core-data-model"></a><a name="review-core-data"></a>查看 Core Data 模型
+## <a name="review-core-data"></a>查看 Core Data 模型
 在使用 Core Data 脱机存储时，必须在数据模型中定义特定的表和字段。 示例应用已包含具有正确格式的数据模型。 在本部分中，我们会逐步介绍这些表以便说明其用法。
 
 打开 **QSDataModel.xcdatamodeld**。 已定义四个表，其中三个由 SDK 使用，一个用于待办事项本身：
@@ -202,7 +204,7 @@ ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
 | updatedAt | 日期 | （可选）映射到 **updatedAt** 系统属性 |
 | 版本 | String | （可选）用于检测冲突，映射到版本 |
 
-## <a name="a-namesetup-syncachange-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>更改应用的同步行为
+## <a name="setup-sync"></a>更改应用的同步行为
 在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。
 
 **Objective-C**：
@@ -231,7 +233,7 @@ ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="a-nametest-appatest-the-app"></a><a name="test-app"></a>测试应用程序
+## <a name="test-app"></a>测试应用程序
 在本部分，将连接到无效的 URL，以模拟脱机方案。 添加数据项时，数据项将保存在本地 Core Data 存储中，而不会与移动应用后端同步。
 
 1. 将 **QSTodoService.m** 中的移动应用 URL 更改为无效 URL，然后再次运行该应用：
@@ -285,9 +287,4 @@ ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
 
 [云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

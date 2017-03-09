@@ -14,24 +14,27 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/09/2016
-ms.author: wesmc
+ms.date: 02/27/2017
+ms.author: glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
-ms.openlocfilehash: c638bf42b9adf906f195d77268637d056f7b00a9
+ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
+ms.openlocfilehash: 53dcaea155471d47eb61317c52d38524c05e4600
+ms.lasthandoff: 03/01/2017
+
 
 ---
 
-# <a name="best-practices-for-azure-functions"></a>Azure Functions 最佳做法
+# <a name="tips-for-improving-the-performance-and-reliability-of-azure-functions"></a>提高 Azure Functions 性能和可靠性的技巧
 
 ##<a name="overview"></a>概述
 
-本文提供实现 Function App 时需考虑的最佳做法集合。 请记住，Azure Function App 是一种 Azure App Service。 因此，这些最佳做法适用。
+本文提供实现 Function App 时需考虑的最佳做法集合。 请记住，Function App 是 Azure 应用服务中的应用。 因此，应用服务最佳做法也适用。
 
 
 ## <a name="avoid-large-long-running-functions"></a>避免使用长时间运行的大型函数
 
-长时间运行的大型函数可能会引起意外的超时问题。 由于含有许多 Node.js 依赖项，函数规模可能会很大。 导入这些依赖项会导致加载时间增加，引起意外的超时问题。 Node.js 依赖项可由代码中的多个 `require()` 语句进行显式加载。 基于代码加载的具有其内部依赖项的单个模块，它们也可能是隐式的。  
+长时间运行的大型函数可能会引起意外超时问题。 由于含有许多 Node.js 依赖项，函数规模可能会很大。 导入这些依赖项会导致加载时间增加，引起意外的超时问题。 Node.js 依赖项可由代码中的多个 `require()` 语句进行显式加载。 依赖项也可能是隐式的，具体取决于代码加载的具有其内部依赖项的单个模块。  
 
 尽可能将大型函数重构为可协同工作且返回快速响应的较小函数集。 例如，webhook 或 HTTP 触发器函数可能需要在特定时间限制内确认响应。 可将 HTTP 触发器有效负载传递到由队列触发器函数处理的队列。 此方法允许延迟实际工作并返回即时响应。 Webhook 通常都需要即时响应。
 
@@ -71,8 +74,6 @@ ms.openlocfilehash: c638bf42b9adf906f195d77268637d056f7b00a9
 利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器](functions-bindings-storage-queue.md#trigger)文档中的**处理有害队列消息**。
  
 
-
-
 ## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一 Function App 中混合测试和生产代码。
 
 Function App 中的各函数共享资源。 例如，共享内存。 如果生产中使用的是 Function App，则请勿向其添加与测试相关的函数和资源。 生产代码执行期间，这可能会导致意外的开销。
@@ -103,10 +104,6 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 * [Azure Functions C# 开发人员参考](functions-reference-csharp.md)
 * [Azure Functions F# 开发人员参考](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+* [模式和实践 HTTP 性能优化](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md)
 
 

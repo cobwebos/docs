@@ -3,7 +3,7 @@ title: "在 Xamarin.Forms 应用中连接到 Azure 存储"
 description: "连接到 Azure blob 存储向待办事项列表 Xamarin.Forms 移动应用添加图像"
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: bb1a1437-0a31-46bb-9237-1b692b0ede21
@@ -54,7 +54,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
 * [存储控制器注册的路由](#routes-registered)
 * [客户端和服务器通信](#client-communication)
 
-### <a name="a-nameadd-controller-codeaadd-a-storage-controller-to-your-server-project"></a><a name="add-controller-code"></a>向服务器项目添加存储控制器
+### <a name="add-controller-code"></a>向服务器项目添加存储控制器
 1. 在 Visual Studio 中，打开 .NET 服务器项目。 添加 Nuget 包 [Microsoft.Azure.Mobile.Server.Files]。 请务必选择“包括预发行版”。
 2. 在 Visual Studio 中，打开 .NET 服务器项目。 右键单击“控制器”文件夹，然后选择“添加” -> “控制器” -> “Web API 2 控制器 - 空”。 将该控制器命名为 `TodoItemStorageController`。
 3. 添加以下 using 语句：
@@ -96,7 +96,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
         config.MapHttpAttributeRoutes();
 7. 将服务器项目发布到移动应用后端。
 
-### <a name="a-nameroutes-registeredaroutes-registered-by-the-storage-controller"></a><a name="routes-registered"></a>存储控制器注册的路由
+### <a name="routes-registered"></a>存储控制器注册的路由
 新 `TodoItemStorageController` 在它管理的记录下公开了两个子资源：
 
 * StorageToken
@@ -113,7 +113,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
     
       `/tables/TodoItem/{id}/MobileServiceFiles/{fileid}`
 
-### <a name="a-nameclient-communicationaclient-and-server-communication"></a><a name="client-communication"></a>客户端和服务器通信
+### <a name="client-communication"></a>客户端和服务器通信
 请注意，`TodoItemStorageController` *未*提供用于上载或下载 blob 的路由。 这是因为移动客户端在先获取 SAS 令牌（共享访问签名）以安全地访问特定 blob 或容器后，*直接*与 blob 存储交互以执行这些操作。 这是重要的体系结构设计，因为以其他方式访问存储会受到移动后端的可伸缩性和可用性的限制。 移动客户端通过直接连接到 Azure 存储，可以充分利用其功能，如自动分区和地理分布。
 
 共享访问签名对存储帐户中的资源提供委托访问。 这意味着你可以授权客户端在指定时间段内，以一组指定权限有限地访问你的存储帐户中的对象，而不必共享你的帐户访问密钥。 若要了解详细信息，请参阅[了解共享访问签名]。
@@ -139,7 +139,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
 > 
 > 
 
-### <a name="a-nameadd-nugetaadd-nuget-packages"></a><a name="add-nuget"></a>添加 Nuget 包
+### <a name="add-nuget"></a>添加 Nuget 包
 右键单击解决方案，然后选择“管理解决方案的 NuGet 包”。 将以下 NuGet 包添加到解决方案中的**所有**项目。 请务必选中“包括预发行版”。
 
 * [Microsoft.Azure.Mobile.Client.Files]
@@ -150,7 +150,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
 
 [PCLStorage]: https://www.nuget.org/packages/PCLStorage/
 
-### <a name="a-nameadd-iplatformaadd-iplatform-interface"></a><a name="add-iplatform"></a>添加 IPlatform 接口
+### <a name="add-iplatform"></a>添加 IPlatform 接口
 在主要的可移植库项目中创建新接口 `IPlatform`。 它使用 [Xamarin.Forms DependencyService] 模式，在运行时加载特定于相应平台的类。 以后将在每个客户端项目中添加平台特定的实现。
 
 1. 添加以下 using 语句：
@@ -171,7 +171,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
             Task DownloadFileAsync<T>(IMobileServiceSyncTable<T> table, MobileServiceFile file, string filename);
         }
 
-### <a name="a-nameadd-filehelperaadd-filehelper-class"></a><a name="add-filehelper"></a>添加 FileHelper 类
+### <a name="add-filehelper"></a>添加 FileHelper 类
 1. 在主要的可移植库项目中创建新类 `FileHelper`。 添加以下 using 语句：
    
         using System.IO;
@@ -227,7 +227,7 @@ Azure 移动应用客户端和服务器 SDK 支持对结构化数据（包含对
             }
         }
 
-### <a name="a-namefile-sync-handlera-add-a-file-sync-handler"></a><a name="file-sync-handler"></a> 添加文件同步处理程序
+### <a name="file-sync-handler"></a> 添加文件同步处理程序
 在主要的可移植库项目中创建新类 `TodoItemFileSyncHandler`。 此类包含 Azure SDK 中的回调，以便在添加或删除文件时通知代码。
 
 Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调用 `IFileSyncHandler` 的实现，该实现确定是否以及如何将文件存储在本地设备上。
@@ -267,7 +267,7 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
             }
         }
 
-### <a name="a-nameupdate-todoitemmanageraupdate-todoitemmanager"></a><a name="update-todoitemmanager"></a>更新 TodoItemManager
+### <a name="update-todoitemmanager"></a>更新 TodoItemManager
 1. 在 **TodoItemManager.cs** 中，取消注释行 `#define OFFLINE_SYNC_ENABLED`。
 2. 在 **TodoItemManager.cs** 中，添加以下 using 语句：
    
@@ -313,7 +313,7 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
             return await this.todoTable.GetFilesAsync(todoItem);
         }
 
-### <a name="a-nameadd-details-viewaadd-a-details-view"></a><a name="add-details-view"></a>添加详细信息视图
+### <a name="add-details-view"></a>添加详细信息视图
 在本部分中，将为待办事项添加新的详细信息视图。 该视图在用户选择待办事项时创建，并且它允许将新图像添加到待办事项。
 
 1. 通过以下实现将新类 **TodoItemImage** 添加到可移植库项目：
@@ -439,7 +439,7 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
             }
         }
 
-### <a name="a-nameupdate-main-viewaupdate-the-main-view"></a><a name="update-main-view"></a>更新主视图
+### <a name="update-main-view"></a>更新主视图
 更新主视图，以便在用户选择某个待办事项时打开详细信息视图。
 
 在 **TodoList.xaml.cs** 中，将 `OnSelected` 的实现替换为以下内容：
@@ -457,7 +457,7 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
         todoList.SelectedItem = null;
     }
 
-### <a name="a-nameupdate-androidaupdate-the-android-project"></a><a name="update-android"></a>更新 Android 项目
+### <a name="update-android"></a>更新 Android 项目
 将平台特定的代码添加到 Android 项目，包括用于下载文件和使用摄像头捕获新图像的代码。 
 
 此代码使用 Xamarin.Forms [DependencyService](https://developer.xamarin.com/guides/xamarin-forms/dependency-service/)，在运行时加载特定于相应平台的类。
@@ -526,7 +526,7 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
    
         App.UIContext = this;
 
-### <a name="a-nameupdate-iosaupdate-the-ios-project"></a><a name="update-ios"></a>更新 iOS 项目
+### <a name="update-ios"></a>更新 iOS 项目
 将平台特定的代码添加到 iOS 项目。
 
 1. 将组件 **Xamarin.Mobile** 添加到 iOS 项目。
@@ -586,7 +586,7 @@ Azure 移动客户端 SDK 不实际存储任何文件数据：客户端 SDK 调�
         }
 3. 编辑 **AppDelegate.cs**，取消注释对 `SQLitePCL.CurrentPlatform.Init()` 的调用。
 
-### <a name="a-nameupdate-windowsaupdate-the-windows-project"></a><a name="update-windows"></a>更新 Windows 项目
+### <a name="update-windows"></a>更新 Windows 项目
 1. 安装 Visual Studio 扩展 [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919)。 
    有关详细信息，请参阅教程[为 Windows 应用启用脱机同步](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)。 
 2. 编辑 **Package.appxmanifest**，检查**网络摄像头**功能。

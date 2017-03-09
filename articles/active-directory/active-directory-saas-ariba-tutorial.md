@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/17/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: 0e373e1c45f9d5584d8153c1cefd4dbb25772782
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,8 +27,8 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
 将 Ariba 与 Azure AD 集成具有以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 Ariba
-* 可以让用户使用其 Azure AD 帐户自动登录到 Ariba（单一登录）
-* 可在一个中心位置（即 Azure 经典门户）管理帐户
+* 可以让用户使用其 Azure AD 帐户自动登录到 Ariba 单一登录 (SSO)
+* 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,27 +36,26 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
 若要配置 Azure AD 与 Ariba 的集成，需要具有以下项：
 
 * Azure AD 订阅
-* 已启用 Ariba 单一登录的订阅
+* 已启用 Ariba 单一登录 (SSO) 的订阅
 
-> [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
-> 
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。
+>  
 
 测试本教程中的步骤应遵循以下建议：
 
 * 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。 
+本教程旨在介绍如何在测试环境中测试 Azure AD SSO。 
 
 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Ariba
-2. 配置和测试 Azure AD 单一登录
+2. 配置和测试 Azure AD SSO
 
-## <a name="adding-ariba-from-the-gallery"></a>从库中添加 Ariba
+## <a name="add-ariba-from-the-gallery"></a>从库中添加 Ariba
 若要配置 Ariba 与 Azure AD 的集成，需要从库中将 Ariba 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Ariba，请执行以下步骤：**
@@ -80,14 +80,14 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-本部分的目的是基于名为“Britta Simon”的测试用户展示如何配置并测试 Ariba 的 Azure AD 单一登录。
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+本部分旨在说明如何基于名为“Britta Simon”的测试用户配置和测试 Ariba 的 Azure AD SSO。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Ariba 用户。 换句话说，需要建立 Azure AD 用户与 Ariba 中相关用户之间的关联关系。
+若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 Ariba 用户。 换句话说，需要建立 Azure AD 用户与 Ariba 中相关用户之间的关联关系。
 
 可以通过将 Azure AD 中“用户名”的值分配为 Ariba 中“用户名”的值来建立此关联关系。
 
-若要配置和测试 Ariba 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Ariba 的 Azure AD SSO，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
@@ -95,10 +95,10 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-本部分要在 Azure 经典门户中启用 Azure AD 单一登录，并且在 Ariba 应用程序中配置单一登录。
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+本部分旨在介绍如何在 Azure 经典门户中启用 Azure AD SSO 并在 Ariba 应用程序中配置 SSO。
 
-**若要配置 Ariba 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Ariba 的 Azure AD SSO，请执行以下步骤：**
 
 1. 在 Azure 经典门户中的 Ariba 应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
    
@@ -109,36 +109,31 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
 3. 在“配置应用设置”对话框页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_04.png) 
+  1. 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Ariba 应用程序的 URL：**“https://<companyname>.sourcing.ariba.com”**或**“https://<CompanyName>.supplier.ariba.com”**。
+  2. 单击“资源组名称” 的 Azure 数据工厂。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入用户用于登录 Ariba 应用程序的 URL：**“https://<companyname>.sourcing.ariba.com”**或**“https://<CompanyName>.supplier.ariba.com”**。
-
-    b.保留“数据库类型”设置，即设置为“共享”。 单击“资源组名称” 的 Azure 数据工厂。
-
-1. 在“配置 Ariba 的单一登录”页上，执行以下步骤：
+4. 在“配置 Ariba 的单一登录”页上，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。
-   
-    b. 单击“资源组名称” 的 Azure 数据工厂。
-2. 若要为应用程序配置 SSO，请通过 **1-866-218-2155** 联系 Ariba 支持团队。
+    ![配置单一登录](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_05.png)  
+  1. 单击“下载证书”，然后将文件保存在计算机上。
+  2. 单击“下一步”。
+5. 若要为应用程序配置 SSO，请通过 **1-866-218-2155** 联系 Ariba 支持团队。
 
-> [!NOTE]
-> 请确保 Ariba 系统中的用户名与 Azure AD 中的匹配，否则无法进行集成。
-> 
-> 
+ >[!NOTE]
+ >请确保 Ariba 系统中的用户名与 Azure AD 中的匹配，否则无法进行集成。
+ >  
 
-1. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
+6. 在 Azure 经典门户中，选择“单一登录配置确认”，然后单击“下一步”。
    
     ![Azure AD 单一登录][10]
-2. 在“单一登录确认”页上，单击“完成”。  
+7. 在“单一登录确认”页上，单击“完成”。  
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。
 
-![创建 Azure AD 用户][20]
+ ![创建 Azure AD 用户][20]
 
 **若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
@@ -154,46 +149,35 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ariba-tutorial/create_aaduser_04.png) 
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-ariba-tutorial/create_aaduser_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-ariba-tutorial/create_aaduser_05.png)   
+  1. 在“用户类型”中，选择“你的组织中的新用户”。
+  2. 在“用户名”文本框中，键入“BrittaSimon”。
+  3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
    ![创建 Azure AD 测试用户](./media/active-directory-saas-ariba-tutorial/create_aaduser_06.png) 
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+  1. 在“名字”文本框中，键入“Britta”。  
+  2. 在“姓氏”文本框中，键入“Simon”。
+  3. 在“显示名称”文本框中，键入“Britta Simon”。
+  4. 在“角色”列表中，选择“用户”。
+  5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ariba-tutorial/create_aaduser_07.png) 
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-ariba-tutorial/create_aaduser_08.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+  1. 写下“新密码”的值。 
+  2. 单击“完成”。   
 
-### <a name="creating-a-ariba-test-user"></a>创建 Ariba 测试用户
+### <a name="create-a-ariba-test-user"></a>创建 Ariba 测试用户
 本部分的目的是在 Ariba 中创建名为 Britta Simon 的用户。 请与 Ariba 支持团队协作，将用户添加到 Ariba 系统中。 
 
-> [!NOTE]
-> 如果需要手动创建用户，则需联系 Ariba 支持团队。
-> 
-> 
+ >[!NOTE]
+ >如果需要手动创建用户，则需联系 Ariba 支持团队。
+ >  
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 本部分的目的是通过向 Britta Simon 授予对 Ariba 的访问权限，使她能够使用 Azure 单一登录。
 
 ![分配用户][200] 
@@ -214,8 +198,8 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用“访问面板”测试 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分旨在使用“访问面板”测试 Azure AD SSO 配置。
 
 当在访问面板中单击 Ariba 磁贴时，应该会自动登录 Ariba 应用程序。
 
@@ -240,9 +224,4 @@ ms.openlocfilehash: e70f34f37f3f641a4d5a0c006274d84ecd8cceb4
 [203]: ./media/active-directory-saas-ariba-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-ariba-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ariba-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

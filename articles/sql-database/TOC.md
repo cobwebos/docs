@@ -58,33 +58,37 @@
 ## 迁移和移动数据
 ### 学习
 #### [迁移数据库](sql-database-cloud-migrate.md)
-#### [事务复制](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
+#### [导出数据库](sql-database-export.md)
 #### [数据同步](sql-database-get-started-sql-data-sync.md)
 #### [复制 SQL 数据库](sql-database-copy.md)
 ## 防火墙规则、身份验证和授权
 ### 学习
 #### [访问控制](sql-database-control-access.md)
-#### [防火墙](sql-database-firewall-configure.md)
+#### [防火墙规则](sql-database-firewall-configure.md)
 #### [管理登录名](sql-database-manage-logins.md)
+#### [Azure AD 身份验证](sql-database-aad-authentication.md)
+#### [多重身份验证](sql-database-ssms-mfa-authentication.md)
 ### 操作
 #### [SQL 身份验证和授权](sql-database-control-access-sql-authentication-get-started.md)
 #### [Azure AD 身份验证和授权](sql-database-control-access-aad-authentication-get-started.md)
 ## 保护数据
 ### 学习
 #### 审核
-##### [审核](sql-database-auditing-get-started.md)
+##### [审核](sql-database-auditing.md)
 ##### [ 针对审核的下层客户端支持和 IP 终结点更改](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)
-#### [威胁检测](sql-database-threat-detection-get-started.md)
+#### [威胁检测](sql-database-threat-detection.md)
 #### 加密数据
-##### [Azure 密钥保管库](sql-database-always-encrypted-azure-key-vault.md)
 ##### [透明数据加密](https://msdn.microsoft.com/library/azure/dn948096)
 ##### [列加密](https://msdn.microsoft.com/library/azure/ms179331)
-#### 对数据进行掩码
-##### 动态数据掩码
-###### [Azure 门户](sql-database-dynamic-data-masking-get-started.md)
+#### 屏蔽数据
+##### [动态数据屏蔽](sql-database-dynamic-data-masking-get-started.md)
 ### 操作
-#### [使用 Azure 门户进行动态数据掩码](sql-database-dynamic-data-masking-get-started.md)
-##### [使用 Windows 证书存储的 Always Encrypted](sql-database-always-encrypted.md)
+#### [使用 Azure 门户进行动态数据掩码](sql-database-dynamic-data-masking-get-started-portal.md)
+#### [使用 Azure 门户配置审核](sql-database-auditing-portal.md)
+#### [使用 PowerShell 配置审核](sql-database-auditing-powershell.md)
+#### [使用 REST API 配置审核](sql-database-auditing-rest.md)
+#### [使用 Windows 证书的 Always Encrypted](sql-database-always-encrypted.md)
+#### [使用 Azure 密钥保管库的 Always Encrypted](sql-database-always-encrypted-azure-key-vault.md)
 ## 业务连续性
 ### 学习
 #### [概述](sql-database-business-continuity.md)
@@ -100,7 +104,7 @@
 #### [执行灾难恢复演练](sql-database-disaster-recovery-drills.md)
 #### [活动异地复制概述](sql-database-geo-replication-overview.md)
 ### 要
-#### [Azure 门户：备份和还原](sql-database-get-started-backup-recovery.md)
+#### [Azure 门户：备份和还原](sql-database-get-started-backup-recovery-portal.md)
 #### [PowerShell：备份和还原](sql-database-get-started-backup-recovery-powershell.md)
 ## 应用开发
 ### 学习
@@ -157,67 +161,55 @@
 #### [使用 PowerShell 进行升级](sql-database-upgrade-server-powershell.md)
 # 如何
 ## 创建和管理
-### [使用 Azure 门户管理 SQL 数据库](sql-database-manage-portal.md)
-### [使用 PowerShell 管理 SQL 数据库](sql-database-manage-powershell.md)
-### [使用 SSMS 管理 SQL 数据库](sql-database-manage-azure-ssms.md)
+### [使用 Azure 门户进行管理](sql-database-manage-portal.md)
+### [使用 PowerShell 进行管理](sql-database-manage-powershell.md)
+### [使用 SSMS 进行管理](sql-database-manage-azure-ssms.md)
 ### 服务器
-#### [创建服务器](sql-database-create-servers.md)
-#### [查看或更新服务器设置](sql-database-view-update-server-settings.md)
+#### [使用 Azure 门户进行管理](sql-database-manage-servers-portal.md)
+#### [使用 PowerShell 进行管理](sql-database-manage-servers-powershell.md)
 ### 单一数据库
-#### [创建单一数据库](sql-database-create-databases.md)
-#### [查看或更新数据库设置](sql-database-view-update-database-settings.md)
+#### [使用 Azure 门户进行管理](sql-database-manage-single-databases-portal.md)
+#### [使用 PowerShell 进行管理](sql-database-manage-single-databases-powershell.md)
+#### [使用 Transact-SQL 进行管理](sql-database-manage-single-databases-tsql.md)
 ### 防火墙规则
-#### [使用 Azure 门户创建防火墙规则](sql-database-configure-firewall-settings.md)
-#### [使用 PowerShell 创建防火墙规则](sql-database-configure-firewall-settings-powershell.md)
-#### [使用 REST API 创建防火墙规则](sql-database-configure-firewall-settings-rest.md)
-#### [使用 T-SQL 创建防火墙规则](sql-database-configure-firewall-settings-tsql.md)
+#### [使用 Azure 门户进行创建](sql-database-configure-firewall-settings.md)
+#### [使用 PowerShell 进行创建](sql-database-configure-firewall-settings-powershell.md)
+#### [使用 REST API 进行创建](sql-database-configure-firewall-settings-rest.md)
+#### [使用 T-SQL 进行创建](sql-database-configure-firewall-settings-tsql.md)
 ### 多个数据库
 #### [升级客户端应用程序中的客户端库](sql-database-elastic-scale-upgrade-client-library.md)
 #### 分片的数据库
 ##### [安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
 ##### [添加分片](sql-database-elastic-scale-add-a-shard.md)
 ##### [解决分片映射问题](sql-database-elastic-database-recovery-manager.md)
-##### [将现有的扩展数据库迁移到分片数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
+##### [迁移到分片数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
 ##### [为分片映射管理器创建性能计数器](sql-database-elastic-database-perf-counters.md)
 #### 弹性作业
-##### [如何安装弹性作业服务？](sql-database-elastic-jobs-service-installation.md)
-##### [使用 PowerShell 创建和管理弹性作业](sql-database-elastic-jobs-powershell.md) 
-##### [使用 Azure 门户创建和管理弹性作业](sql-database-elastic-jobs-create-and-manage.md)
-##### [如何卸载弹性作业？](sql-database-elastic-jobs-uninstall.md)
+##### [如何安装？](sql-database-elastic-jobs-service-installation.md)
+##### [使用 PowerShell 进行管理](sql-database-elastic-jobs-powershell.md) 
+##### [使用 Azure 门户进行管理](sql-database-elastic-jobs-create-and-manage.md)
+##### [如何卸载？](sql-database-elastic-jobs-uninstall.md)
 #### 弹性池
-##### [使用 Azure 门户进行创建](sql-database-elastic-pool-create-portal.md)
-##### [使用 PowerShell 进行创建](sql-database-elastic-pool-create-powershell.md)
-##### [使用 C# 进行创建](sql-database-elastic-pool-create-csharp.md)
 ##### [使用 Azure 门户进行管理](sql-database-elastic-pool-manage-portal.md)
 ##### [使用 PowerShell 进行管理](sql-database-elastic-pool-manage-powershell.md)
 ##### [使用 C# 进行管理](sql-database-elastic-pool-manage-csharp.md)
 ##### [使用 T-SQL 进行管理](sql-database-elastic-pool-manage-tsql.md)
-##  身份验证和授权
-### [Azure AD 身份验证](sql-database-aad-authentication.md)
-### [多重身份验证](sql-database-ssms-mfa-authentication.md)
+## 身份验证和授权
+### [配置 Azure AD 身份验证](sql-database-aad-authentication-configure.md)
+### [配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)
+## 配置威胁检测
+### [使用 Azure 门户配置威胁检测](sql-database-threat-detection-portal.md)
 ## 加密数据
 ### [透明数据加密](https://msdn.microsoft.com/library/azure/dn948096)
 ### [列加密](https://msdn.microsoft.com/library/azure/ms179331)
-## 迁移数据库
-### 确定兼容性
-#### [使用 SQL 包实用工具确定兼容性](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md)
-#### [使用 SSMS 确定兼容性](sql-database-cloud-migrate-determine-compatibility-ssms.md)
-### 修复兼容性问题
-#### [使用 SSDT 解决兼容性问题](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
-#### [使用 SSMS 解决兼容性问题](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md)
-#### [使用 SMW 解决兼容性问题](sql-database-cloud-migrate-fix-compatibility-issues.md)
-### [使用 SSMS 迁移向导进行迁移](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
 ## 监视和优化
 ### [Query Performance Insight](sql-database-query-performance.md)
 ### [SQL 数据库顾问](sql-database-advisor-portal.md)
 ### [DMV](sql-database-monitoring-with-dmvs.md)
 ### [兼容性级](sql-database-compatibility-level-query-performance-130.md)
 ### [性能优化提示](sql-database-troubleshoot-performance.md)
-### 更改服务层和性能级别
-#### [使用 Azure 门户更改服务层](sql-database-scale-up.md)
-#### [使用 PowerShell 更改服务层](sql-database-scale-up-powershell.md)
 ### [创建警报](sql-database-insights-alerts-portal.md)
-#### [监视内存中 OLTP 存储](sql-database-in-memory-oltp-monitoring.md)
+### [监视内存中 OLTP 存储](sql-database-in-memory-oltp-monitoring.md)
 ### 查询存储
 #### [使用 Query Store 监视性能](https://msdn.microsoft.com/library/dn817826.aspx)
 #### [Query Store 使用方案](https://msdn.microsoft.com/library/mt614796.aspx)
@@ -231,31 +223,30 @@
 #### [使用 PowerShell 进行复制](sql-database-copy-powershell.md)
 #### [使用 T-SQL 进行复制](sql-database-copy-transact-sql.md)
 ### 将数据库导出到 BACPAC
-#### [使用 Azure 门户导出](sql-database-export.md)
-#### [使用 SSMS 导出](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-#### [使用 SQL 包实用工具导出](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md)
+#### [使用 Azure 门户导出](sql-database-export-portal.md)
+#### [使用 SQL 包实用工具导出](sql-database-export-sqlpackage.md)
 #### [使用 PowerShell 导出](sql-database-export-powershell.md)
-### 从 BACPAC 文件导入数据库
-#### [使用 Azure 门户导入](sql-database-import.md)
-#### [使用 PowerShell 导入](sql-database-import-powershell.md)
-#### [使用 SSMS 导入](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
-#### [使用 SQL 包实用工具导入](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
+#### [使用 SSMS 导出](sql-database-export-ssms.md)
+## 导入数据
+### [使用 Azure 门户导入](sql-database-import-portal.md)
+### [使用 PowerShell 导入](sql-database-import-powershell.md)
+### [使用 SQLPackage 导入](sql-database-import-sqlpackage.md)
 ### [使用 BCP 从 CSV 文件加载](sql-database-load-from-csv-with-bcp.md)
 ## 查询
 ### [使用 SSMS 查询](sql-database-connect-query-ssms.md)
 ## 备份和还原
 ### 长期备份保留
-#### [配置长期备份保留](sql-database-configure-long-term-retention.md)
-#### [查看恢复服务保管库中的备份](sql-database-view-backups-in-vault.md)
-#### [从长期备份保留存储中还原](sql-database-restore-from-long-term-retention.md)
-#### [从长期备份保留存储中删除](sql-database-long-term-retention-delete.md)
+#### [使用 Azure 门户管理长期备份保留](sql-database-manage-long-term-backup-retention-portal.md)
+#### [使用 PowerShell 管理长期备份保留](sql-database-manage-long-term-backup-retention-powershell.md)
 ### 还原已删除的数据库
 #### [使用 Azure 门户还原已删除的数据库](sql-database-restore-deleted-database-portal.md)
 #### [使用 PowerShell 还原已删除的数据库](sql-database-restore-deleted-database-powershell.md)
-### 时间点还原
-#### [还原到某个时间点](sql-database-point-in-time-restore.md)
-#### [查看最早的还原点](sql-database-view-oldest-restore-point.md)
-### [从异地冗余备份中还原](sql-database-geo-restore.md)
+### 数据库时间点还原
+#### [使用 Azure 门户进行时间点还原](sql-database-point-in-time-restore-portal.md)
+#### [使用 PowerShell 进行数据库时间点还原](sql-database-point-in-time-restore-powershell.md)
+### 从异地冗余备份中还原
+### [使用 Azure 门户进行异地还原](sql-database-geo-restore-portal.md)
+### [使用 PowerShell 进行异地还原](sql-database-geo-restore-powershell.md)
 ## 活动异地复制
 ### [使用 Azure 门户进行配置](sql-database-geo-replication-portal.md)
 ### [使用 PowerShell 进行配置](sql-database-geo-replication-powershell.md)

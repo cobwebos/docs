@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
 ms.openlocfilehash: bbd6fbc87fa9676b4c31450479d890abc02a8bf5
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -257,9 +258,4 @@ ms.openlocfilehash: bbd6fbc87fa9676b4c31450479d890abc02a8bf5
 [203]: ./media/active-directory-saas-synergi-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-synergi-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-synergi-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
