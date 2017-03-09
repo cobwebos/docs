@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 应用服务移动应用和 Azure 通知�
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.service: app-service-mobile
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/01/2017
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="a-nameconfigure-hubaconfigure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
+## <a name="configure-hub"></a>配置通知中心
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>为推送通知注册应用程序
@@ -54,10 +54,10 @@ ms.lasthandoff: 03/01/2017
 ## <a name="configure-the-backend-to-send-push-notifications"></a>配置后端以发送推送通知
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a name="a-idupdate-serviceaupdate-the-server-to-send-push-notifications"></a><a id="update-service"></a>更新服务器以发送推送通知
+## <a id="update-service"></a>更新服务器以发送推送通知
 使用下面与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
-### <a name="a-namedotnetanet-backend-project"></a><a name="dotnet"></a>.NET 后端项目
+### <a name="dotnet"></a>.NET 后端项目
 1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 Microsoft.Azure.NotificationHubs，然后单击“安装”。 这将安装通知中心客户端库。
 2. 展开“控制器”，打开 TodoItemController.cs，然后添加以下 using 语句：
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 03/01/2017
     此代码指示通知中心在插入新项后，发送一条推送通知。
 4. 重新发布服务器项目。
 
-### <a name="a-namenodejsanodejs-backend-project"></a><a name="nodejs"></a>Node.js 后端项目
+### <a name="nodejs"></a>Node.js 后端项目
 1. 如果尚未执行此操作，请[下载快速入门项目](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户中的在线编辑器](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
 2. 将 todoitem.js 文件中的现有代码替换为以下内容：
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 03/01/2017
     插入新的待办事项时，会发送一条包含 item.text 的 WNS toast 通知。
 3. 编辑本地计算机上的文件时，重新发布服务器项目。
 
-## <a name="a-idupdate-appaadd-push-notifications-to-your-app"></a><a id="update-app"></a>向应用程序添加推送通知
+## <a id="update-app"></a>向应用程序添加推送通知
 下一步，应用必须在启动时注册推送通知。 已启用身份验证时，请确保用户先登录，然后再尝试注册推送通知。
 
 1. 打开 **App.xaml.cs** 项目文件并添加以下 `using` 语句：
@@ -180,10 +180,10 @@ ms.lasthandoff: 03/01/2017
     这保证每次启动应用程序时都注册短期的 ChannelURI。
 4. 重新生成 UWP 应用项目。 你的应用现在已能够接收 toast 通知。
 
-## <a name="a-idtestatest-push-notifications-in-your-app"></a><a id="test"></a>在应用程序中测试推送通知
+## <a id="test"></a>在应用程序中测试推送通知
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a name="a-idmoreanext-steps"></a><a id="more"></a>后续步骤
+## <a id="more"></a>后续步骤
 了解有关推送通知的详细信息：
 
 * [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  

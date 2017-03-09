@@ -4,7 +4,7 @@ description: "就 IT 管理员可能会遇到的一些设置和应用数据同�
 services: active-directory
 keywords: "企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答"
 documentationcenter: 
-author: femila
+author: ningtan
 manager: swadhwa
 editor: 
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
-ms.author: femila
+ms.date: 03/08/2017
+ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 58a583a761a400d8fa0488fbc4fbfec35ec62c41
 ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -59,9 +60,9 @@ ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
 ### <a name="verify-the-device-registration-status"></a>验证设备注册状态
 企业状态漫游要求将设备注册到 Azure AD。 以下说明尽管不专门针对企业状态漫游，但可帮助确认 Windows 10 客户端是否已注册，并确认指纹、Azure AD 设置 URL、NGC 状态和其他信息。
 
-1.  使用未提升的权限打开命令提示符。 若要在 Windows 中执行此操作，请打开“运行”启动器 (Win + R) 并键入“cmd”。
-2.  打开命令提示符后，键入“*dsregcmd.exe /status*”。
-3.  在预期的输出中，**AzureAdJoined** 字段值应为“YES”，**WamDefaultSet** 字段值应为“YES”，**WamDefaultGUID** 字段值应是末尾为“(AzureAd)”的 GUID。
+1.    使用未提升的权限打开命令提示符。 若要在 Windows 中执行此操作，请打开“运行”启动器 (Win + R) 并键入“cmd”。
+2.    打开命令提示符后，键入“*dsregcmd.exe /status*”。
+3.    在预期的输出中，**AzureAdJoined** 字段值应为“YES”，**WamDefaultSet** 字段值应为“YES”，**WamDefaultGUID** 字段值应是末尾为“(AzureAd)”的 GUID。
 
 **潜在问题**：**WamDefaultSet** 和 **AzureAdJoined** 的字段值中均包含“NO”，设备已加入域并已注册到 Azure AD，但设备不同步。 如果显示这样的信息，则表示设备可能需要等待应用策略，或者在连接到 Azure AD 时设备身份验证失败。 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销再重新登录，或者在任务计划程序中启动任务，来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，然后重试注册，可能有助于解决此问题。
 
@@ -144,7 +145,7 @@ ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>事件 ID 6065: 80070533 此用户无法登录，因为此帐户当前已禁用  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>事件 ID 6065: 80070533 此用户无法登录，因为此帐户当前已禁用    
 如果租户未自动预配 AzureRMS，事件查看器中的 SettingSync/Debug 日志下面可能会出现此错误。 
 
 **建议的操作**  
@@ -152,8 +153,8 @@ ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098: 错误: 0xCAA5001C 令牌代理操作失败  
-在事件查看器中的 AAD/Operational 日志下面可能会出现此错误，其中附带消息：“事件 1104: AAD 云 AP 插件调用 Get 令牌返回了错误: 0xC000005F”。 如果缺少权限或所有权属性，将出现此问题。  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098: 错误: 0xCAA5001C 令牌代理操作失败    
+在事件查看器中的 AAD/Operational 日志下面可能会出现此错误，其中附带消息：“事件 1104: AAD 云 AP 插件调用 Get 令牌返回了错误: 0xC000005F”。 如果缺少权限或所有权属性，将出现此问题。     
 
 **建议的操作**  
 执行 [KB3196528](https://support.microsoft.com/kb/3196528) 中所列的步骤。  
@@ -172,9 +173,4 @@ ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
 * [设置和数据漫游的常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

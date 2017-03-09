@@ -4,7 +4,7 @@ description: "就 IT 管理员可能会遇到的一些设置和应用数据同�
 services: active-directory
 keywords: "企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答"
 documentationcenter: 
-author: femila
+author: ningtan
 manager: swadhwa
 editor: curtand
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 7d472733e80ae03294ba1ac9e97d1afd3aa0fa91
 ms.openlocfilehash: c7d8eefe560a361690cc4daf6550b2a8c894f318
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -128,9 +129,4 @@ Windows 10 客户端 SKU 支持企业状态漫游，但服务器 SKU 不支持�
 * [设置同步的组策略和 MDM 设置](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [故障排除](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

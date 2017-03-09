@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 319eaccb0613a7829da01e28112e9510bdf66e67
 ms.openlocfilehash: 7f806619f794b9e9d943a125e59936e51658070c
+ms.lasthandoff: 12/23/2016
 
 
 ---
@@ -292,9 +293,4 @@ RolePoint 应用程序需要采用特定格式的 SAML 断言。 请为此应用
 [203]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-rolepoint-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

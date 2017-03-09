@@ -4,7 +4,7 @@ description: "了解如何使用 Azure 应用服务将推送通知发送到 Xama
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.service: app-service-mobile
@@ -120,7 +120,7 @@ ms.lasthandoff: 11/17/2016
 
 你的应用现已更新，可支持推送通知。
 
-## <a name="a-nametestatest-push-notifications-in-your-app"></a><a name="test"></a>在应用程序中测试推送通知
+## <a name="test"></a>在应用程序中测试推送通知
 1. 在支持 iOS 的设备中按“运行”按钮，生成项目并启动应用，然后单击“确定”接受推送通知。
    
    > [!NOTE]

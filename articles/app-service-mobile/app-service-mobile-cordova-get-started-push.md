@@ -3,7 +3,7 @@ title: "使用 Azure 移动应用向 Apache Cordova 应用添加推送通知 | M
 description: "了解如何使用 Azure 移动应用将推送通知发送到 Apache Cordova 应用。"
 services: app-service\mobile
 documentationcenter: javascript
-manager: erikre
+manager: adrianha
 editor: 
 author: ysxu
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: 47063276d7bb6bb3b3aac0cca4290dfbea5488f7
 ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
+ms.lasthandoff: 12/01/2016
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][1]。
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 本教程介绍了使用 Visual Studio 2015 开发的 Apache Cordova 应用程序，该应用程序可在 Google Android 模拟器、Android 设备、Windows 设备和 iOS 设备上运行。
 
 若要完成本教程，你需要：
@@ -41,7 +42,7 @@ ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
 * (iOS) [Apple 开发人员计划成员身份][7]和 iOS 设备（iOS 模拟器不支持推送）。
 * (Windows) [Windows 应用商店开发人员帐户][8]和 Windows 10 设备。
 
-## <a name="a-nameconfigure-hubaconfigure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
+## <a name="configure-hub"></a>配置通知中心
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 [观看演示本节中步骤的视频][9]
@@ -49,7 +50,7 @@ ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
 ## <a name="update-the-server-project"></a>更新服务器项目
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="a-nameadd-push-to-appamodify-your-cordova-app"></a><a name="add-push-to-app"></a>修改 Cordova 应用
+## <a name="add-push-to-app"></a>修改 Cordova 应用
 确保 Apache Cordova 应用项目已准备就绪，可通过安装 Cordova 推送插件和任何平台特定的推送服务来处理推送通知。
 
 #### <a name="update-the-cordova-version-in-your-project"></a>更新项目中的 Cordova 版本。
@@ -160,12 +161,12 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 ## <a name="optional-configure-and-run-the-app-on-android"></a>（可选）在 Android 上配置并运行应用
 完成此部分以启用 Android 的推送通知。
 
-#### <a name="a-nameenable-gcmaenable-firebase-cloud-messaging"></a><a name="enable-gcm"></a>启用 Firebase Cloud Messaging
+#### <a name="enable-gcm"></a>启用 Firebase Cloud Messaging
 由于我们最初面向的是 Google Android 平台，因此必须启用 Firebase Cloud Messaging。
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="a-nameconfigure-backendaconfigure-the-mobile-app-backend-to-send-push-requests-using-fcm"></a><a name="configure-backend"></a>使用 FCM 配置移动应用后端以发送推送请求
+#### <a name="configure-backend"></a>使用 FCM 配置移动应用后端以发送推送请求
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>配置适用于 Android 的 Cordova 应用
@@ -183,7 +184,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
             wns: {}
         });
 
-#### <a name="a-nameconfigure-deviceaconfigure-your-android-device-for-usb-debugging"></a><a name="configure-device"></a>配置 Android 设备以进行 USB 调试
+#### <a name="configure-device"></a>配置 Android 设备以进行 USB 调试
 需要启用 USB 调试才能将应用部署到 Android 设备。  在 Android 手机上执行以下步骤：
 
 1. 转到“设置” > “关于手机”，然后点击“内部版本号”，直到启用开发人员模式（大约 7 次）。
@@ -327,7 +328,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 确认在添加该项目时收到了通知。
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 * 有关推送通知的信息，请参阅[通知中心][17]。
 * 如果尚未这样做，可通过将[身份验证][14]添加到 Apache Cordova 应用来继续该教程。
 
@@ -362,9 +363,4 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 [19]: https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md
 [20]: https://www.mobizen.com/
 [21]: http://taco.visualstudio.com/en-us/docs/build_ios_cloud/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

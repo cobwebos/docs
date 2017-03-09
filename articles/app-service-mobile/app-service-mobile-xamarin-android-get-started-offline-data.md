@@ -3,7 +3,7 @@ title: "为 Azure 移动应用启用脱机同步 (Xamarin Android)"
 description: "了解如何在 Xamarin Android 应用程序中使用应用服务移动应用缓存和同步脱机数据"
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 91d59e4b-abaa-41f4-80cf-ee7933b32568
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/08/2017
 2. 打开 ToDoActivity.cs 文件并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
 3. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。 但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
-## <a name="a-nameupdate-syncaupdate-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>更新应用以与后端断开连接
+## <a name="update-sync"></a>更新应用以与后端断开连接
 在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项已添加到本地存储，在以连接状态执行推送时，这些新项将同步到移动应用后端。
 
 1. 在共享项目中编辑 ToDoActivity.cs。 更改 **applicationURL** 以指向无效的 URL：
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/08/2017
 5. （可选）在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。 验证后端数据库中的数据是否未更改。
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
-## <a name="a-nameupdate-online-appaupdate-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>更新应用以重新连接移动应用后端
+## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
 在本部分中，会将应用重新连接到移动应用后端。 首次运行该应用程序时，`OnCreate` 事件处理程序将调用 `OnRefreshItemsSelected`。 而此方法将调用 `SyncAsync`，将本地存储与后端数据库同步。
 
 1. 在共享项目中，打开 ToDoActivity.cs 并恢复对 **applicationURL** 属性的更改。

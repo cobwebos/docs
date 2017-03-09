@@ -4,7 +4,7 @@ description: "按照本教程进行操作，开始使用 Azure 移动应用进�
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -85,9 +86,4 @@ ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
 <!-- URLs. -->
 [Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

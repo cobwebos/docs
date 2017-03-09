@@ -3,7 +3,7 @@ title: "Azure 移动应用中的脱机数据同步 | Microsoft Docs"
 description: "Azure 移动应用脱机数据同步功能的概念参考和概述"
 documentationcenter: windows
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
@@ -62,7 +62,7 @@ ms.lasthandoff: 12/01/2016
 
 本地存储使用初始化方法（例如 [.NET 客户端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`）来与同步上下文关联。
 
-## <a name="a-namehow-sync-worksahow-offline-synchronization-works"></a><a name="how-sync-works"></a>脱机同步的工作原理
+## <a name="how-sync-works"></a>脱机同步的工作原理
 使用同步表时，客户端代码将控制本地更改与 Azure 移动应用后端同步的时机。 在发生*推送*本地更改的调用之前，不会向后端发送任何内容。 同样，仅当发生了*提取*数据的调用时，才在本地存储中填充新数据。
 
 * **推送**：推送是对同步上下文的操作，发送自上一次推送之后的所有 CUD 更改。 请注意，无法做到只发送单个表的更改，否则操作发送顺序可能出错。 推送对 Azure 移动应用后端执行一系列 REST 调用，而这会修改服务器数据库。

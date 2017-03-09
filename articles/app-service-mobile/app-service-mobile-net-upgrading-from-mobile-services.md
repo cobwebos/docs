@@ -4,7 +4,7 @@ description: "了解如何轻松将移动服务应用程序升级到应用服务
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/08/2016
 * 支持其他 ASP.NET 项目类型和路由。 现在，可以在与移动后端项目相同的项目中托管 MVC 和 Web API 控制器。
 * 支持新的应用服务身份验证功能，允许跨 Web 应用和移动应用使用常见的身份验证配置。
 
-## <a name="a-nameoverviewabasic-upgrade-overview"></a><a name="overview"></a>基本升级概述
+## <a name="overview"></a>基本升级概述
 在许多情况下，只需切换到新的移动应用服务器 SDK 并将代码重新发布到新的移动应用实例，即可完成升级。 但在某些情况下则需要一些额外的配置，例如高级身份验证方案和使用计划作业。 后续部分将逐一介绍。
 
 > [!TIP]
@@ -63,7 +63,7 @@ ms.lasthandoff: 12/08/2016
 3. 发布新版客户端应用程序
 4. （可选）删除已迁移的原始实例
 
-## <a name="a-namemobile-app-versionacreating-a-second-application-instance"></a><a name="mobile-app-version"></a>创建第二个应用程序实例
+## <a name="mobile-app-version"></a>创建第二个应用程序实例
 升级的第一个步骤是创建用于托管新版应用程序的移动应用资源。 如果已迁移现有移动服务，则需要在同一个托管计划中创建此版本。 打开 [Azure 门户]，导航到已迁移的应用程序。 记下运行该应用程序的应用服务计划。
 
 接下来，根据 [.NET 后端创建说明](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)创建第二个应用程序实例。 当系统提示选择应用服务计划或“托管计划”时，请选择已迁移的应用程序的计划。
@@ -215,7 +215,7 @@ ms.lasthandoff: 12/08/2016
     ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
     traceWriter.Info("Hello, World");  
 
-## <a name="a-nameauthenticationaauthentication-considerations"></a><a name="authentication"></a>身份验证注意事项
+## <a name="authentication"></a>身份验证注意事项
 移动服务的身份验证组件现已移入应用服务身份验证/授权功能。 可以阅读 [向移动应用添加身份验证](app-service-mobile-ios-get-started-users.md)主题，了解如何为站点启用此功能。
 
 对于某些提供者（例如 AAD、Facebook 和 Google），应该可以利用复制应用程序中现有的注册。 只需导航到标识提供者的门户，并将新的重定向 URL 添加到注册即可。 然后，使用客户端 ID 和机密配置应用服务身份验证/授权。
@@ -238,7 +238,7 @@ ms.lasthandoff: 12/08/2016
 ### <a name="custom-authentication"></a>自定义身份验证
 如果应用程序使用自定义的身份验证解决方案，需要确保已升级的站点有权访问系统。 遵循 [.NET 服务器 SDK 概述]中适用于自定义身份验证的新说明来集成解决方案。 请注意，自定义身份验证组件仍以预览版提供。
 
-## <a name="a-nameupdating-clientsaupdating-clients"></a><a name="updating-clients"></a>更新客户端
+## <a name="updating-clients"></a>更新客户端
 在获得可正常运行的移动应用后端之后，可以在使用它的新版客户端应用程序上操作。 移动应用还包含新版客户端 SDK。与上述的服务器升级类似，需先删除所有对移动服务 SDK 的引用，然后再安装移动应用版本。
 
 版本间的其中一个主要更改是构造函数不再需要应用程序密钥。 现在只需传入移动应用的 URL。 例如，在 .NET 客户端中，`MobileServiceClient` 构造函数现在是：
