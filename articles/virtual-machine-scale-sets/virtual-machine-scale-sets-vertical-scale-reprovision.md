@@ -18,6 +18,7 @@ ms.author: guybo
 translationtype: Human Translation
 ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
 ms.openlocfilehash: 4533b446f661568d0e70a23bb64880022038bb9a
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -124,11 +125,6 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 ## <a name="summary"></a>摘要
 本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，您可以使用一组自定义操作连接各种事件。
 
-[Runbook]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
-[库]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
+[gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png
 
