@@ -17,6 +17,7 @@ ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: dce65678f9fc96d5802a7b705689cc63e6532c84
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -180,10 +181,5 @@ loginStatus 有两个选项：0 - 成功，1 - 失败
 ## <a name="next-steps"></a>后续步骤
 * 想要查看筛选的登录活动的示例？ 请查看 [Azure Active Directory 登录活动报告 API 示例](active-directory-reporting-api-sign-in-activity-samples.md)。
 * 是否要了解有关 Azure AD 报告 API 的详细信息？ 请参阅 [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started.md)。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
