@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e331e7aab69890637a74382938e22cca56c4d39a
-ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
+ms.sourcegitcommit: c2b0c6b125ededd30e9db8e7f42796bdf6b413d4
+ms.openlocfilehash: f254b4a9b942004f0d1d1065ec2efb2ea5df8418
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -29,8 +30,8 @@ ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
 ## <a name="azure-cli"></a>Azure CLI
 [Azure CLI](../xplat-cli-install.md) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此版本的 CLI 通过 Node.js 实现。
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0（预览版）
-[Azure CLI 2.0（预览版）](https://docs.microsoft.com/cli/azure/install-az-cli2)是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此预览版的 CLI 通过 Python 实现。
+## <a name="azure-cli-20"></a>Azure CLI 2.0
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) 是一个跨平台、开源、基于 shell 的命令工具，适用于在 Microsoft Azure 中创建和管理资源。 此预览版的 CLI 通过 Python 实现。
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 设备 SDK
@@ -256,8 +257,3 @@ Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的
 
 ## <a name="x509-client-certificate"></a>X.509 客户端证书
 设备可以使用 X.509 证书在 [IoT 中心](#iot-hub)进行身份验证。 使用 X.509 证书是使用 [SAS 令牌](#shared-access-signature)的替代方案。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

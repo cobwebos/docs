@@ -11,15 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: 2dd9c96e1c15e424588869b61eb26501b1b66be3
+ms.sourcegitcommit: 15cb521e928bab6c7966d19e74d9ae3bca99ef34
+ms.openlocfilehash: ef589c768f60e9a68ac7bc952fa181758452b1bd
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="introduction-to-the-access-panel"></a>访问面板简介
+# <a name="what-is-the-access-panel"></a>访问面板是什么
 访问面板是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的基于云的应用程序。 如果你是使用 Azure Active Directory 版本的最终用户，则还可以通过访问面板利用自助服务组管理功能。 <br>
 访问面板是与 Azure 管理门户分开的，不要求用户拥有 Azure 订阅。 
 
@@ -131,9 +133,4 @@ ms.openlocfilehash: 2dd9c96e1c15e424588869b61eb26501b1b66be3
 [2]: ./media/active-directory-saas-access-panel-introduction/ic767167.png
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

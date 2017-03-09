@@ -1,28 +1,7 @@
 ---
-title: "创建 Azure 容器注册表 - 门户 | Microsoft 文档"
-description: "开始使用 Azure 门户创建和管理 Azure 容器注册表"
-services: container-registry
-documentationcenter: 
-author: stevelas
-manager: balans
-editor: dlepow
-tags: 
-keywords: 
-ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1
-ms.service: container-registry
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/14/2016
-ms.author: stevelas
-translationtype: Human Translation
-ms.sourcegitcommit: d3047cd4cddb23c4daeb9265afc4d7b3fe30d46c
-ms.openlocfilehash: bec138da39696cd93bdc9bf0307108b8ca6eb149
+title: 创建 Azure 容器注册表 - 门户 | Microsoft 文档 description: 使用 Azure 门户创建和管理 Azure 容器注册表 services: container-registry documentationcenter: '' author: stevelas manager: balans editor: dlepow tags: ''keywords: ''
 
----
-# <a name="create-a-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建容器注册表
-使用 Azure 门户创建容器注册表并管理其设置。 也可以使用 [Azure CLI 2.0 预览版命令](container-registry-get-started-azure-cli.md)或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
+ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1 ms.service: container-registry ms.devlang: na ms.topic: get-started-article ms.tgt_pltfrm: na ms.workload: na ms.date: 11/14/2016 ms.author: stevelas ---# 使用 Azure 门户创建容器注册表 使用 Azure 门户创建容器注册表并管理其设置。 也可以使用 [Azure CLI 2.0 命令](container-registry-get-started-azure-cli.md)或者使用容器注册表 [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) 以编程方式创建和管理容器注册表。
 
 有关背景信息和概念，请参阅[什么是 Azure 容器注册表？](container-registry-intro.md)
 
@@ -52,7 +31,9 @@ ms.openlocfilehash: bec138da39696cd93bdc9bf0307108b8ca6eb149
    > [!IMPORTANT]
    > 除了通过管理员用户帐户提供访问权限以外，容器注册表还基于 Azure Active Directory 服务主体的身份验证。 有关详细信息和注意事项，请参阅 [Authenticate with a container registry](container-registry-authentication.md)（使用容器注册表进行身份验证）。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户** - 使用默认设置来创建[存储帐户](../storage/storage-introduction.md)，或选择位于同一位置的现有存储帐户。 请注意，不支持高级和经典存储帐户。
+
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户** - 使用默认设置来创建[存储帐户](../storage/storage-introduction.md)，或选择位于同一位置的现有存储帐户。 当前不支持高级存储。
+
 
 ## <a name="manage-registry-settings"></a>管理注册表设置
 创建注册表后，请在门户中的“容器注册表”在边栏选项卡上查找注册表设置。 例如，可能需要指定设置来登录注册表，或者需要启用或禁用管理员用户。
@@ -72,11 +53,5 @@ ms.openlocfilehash: bec138da39696cd93bdc9bf0307108b8ca6eb149
 ## <a name="next-steps"></a>后续步骤
 * [使用 Docker CLI 推送第一个映像](container-registry-get-started-docker-cli.md)
 
-
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -13,15 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 02/15/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
-ms.openlocfilehash: ff2e371f0c75dca36cceda36f477e30588dea8e4
+ms.sourcegitcommit: 623f502a92dc8eb152a9b01c4f6db0640ce57e54
+ms.openlocfilehash: ab027e1f21e8c2c33829f833395a6872cb7bcdd8
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>有关 IoT 套件的常见问题
+
+### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>在哪里可以找到预配置解决方案的源代码？
+源代码存储在以下 GitHub 存储库中：
+* [远程监视预配置解决方案][lnk-remote-monitoring-github]
+* [预见性维护预配置解决方案][lnk-predictive-maintenance-github]
+
+### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>如何更新到最新版的远程监视预配置解决方案，以便使用 IoT 中心设备管理功能？
+* 如果从 https://www.azureiotsuite.com/ 站点部署预配置解决方案，则始终部署的是最新版解决方案的全新实例。
+* 如果使用命令行部署预配置解决方案，则可使用新代码更新现有的部署。 请参阅 GitHub [存储库][lnk-remote-monitoring-github]中的[云部署][lnk-cloud-deployment]。
+
+### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>如何向远程监视预配置解决方案添加新设备方法的支持？
+请参阅[自定义预配置解决方案][lnk-customize]一文的[向模拟器添加新方法的支持][lnk-add-method]部分。
+
+### <a name="the-simulated-device-is-ignoring-my-desired-property-changes-why"></a>模拟设备忽略所需属性更改，这是什么原因？
+在远程监视预配置解决方案中，模拟设备代码仅使用所需的属性 **Desired.Config.TemperatureMeanValue** 和**Desired.Config.TelemetryInterval** 来更新报告的属性。 将忽略所有其他的所需属性更改请求。
+
+### <a name="my-device-does-not-appear-in-the-list-of-devices-in-the-solution-dashboard-why"></a>我的设备未显示在解决方案仪表板的设备列表中，这是什么原因？
+解决方案仪表板中的设备列表使用查询来返回设备列表。 目前，查询返回的设备数不能超过 10000。 可以尝试让查询的搜索条件更具限制性。
+
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>在 Azure 门户中删除资源组与在 azureiotsuite.com 中对预配置解决方案单击删除之间的区别是什么？
 * 如果在 [azureiotsuite.com][lnk-azureiotsuite] 中删除预配置解决方案，则会删除在创建预配置解决方案时预配的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。 
 * 如果删除 [Azure 门户][lnk-azure-portal]中的资源组，则只会删除该资源组中的资源。 此外还需在 [Azure 经典门户][lnk-classic-portal]中删除与预配置的解决方案关联的 Azure Active Directory 应用程序。
@@ -77,9 +97,8 @@ ms.openlocfilehash: ff2e371f0c75dca36cceda36f477e30588dea8e4
 [lnk-dreamspark]: https://www.dreamspark.com/Product/Product.aspx?productid=99 
 [lnk-30daytrial]: https://azure.microsoft.com/free/
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+[lnk-cloud-deployment]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
+[lnk-add-method]: iot-suite-guidance-on-customizing-preconfigured-solutions.md#add-support-for-a-new-method-to-the-simulator
+[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
+[lnk-remote-monitoring-github]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-predictive-maintenance-github]: https://github.com/Azure/azure-iot-predictive-maintenance

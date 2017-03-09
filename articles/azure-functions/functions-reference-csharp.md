@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 05/13/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: da9da90e7ccd5d324b8f87a3585555ea5d5ed475
-ms.openlocfilehash: d587ff744fea5393a34d5a576e6af32cac5d2b44
+ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
+ms.openlocfilehash: 6b2473ef6336aea5c9a79aad78e02bcfc38b9018
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -52,6 +53,11 @@ public class MyClass
     public string Id { get; set; }
 }
 ```
+
+> [!TIP]
+>
+> 如果计划使用 HTTP 或 WebHook 绑定，建议阅读这个有关 [HTTPClient](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) 的最佳做法文档。
+>
 
 ## <a name="logging"></a>日志记录
 若要登录到 C# 中的流式处理日志输出，可以包括 `TraceWriter` 类型化参数。 建议将其命名为 `log`。 们建议在 Azure Functions 中避免 `Console.Write`。
@@ -314,10 +320,5 @@ public class Order
 * [Azure Functions F# 开发人员参考](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
-ms.openlocfilehash: a6d6db0e0e6b6fe8d8ccbd6cbd3858ae0df5cb2d
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: f62c0ca57bfd15a9ad1f767fa8fd59cc73b71c43
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -32,7 +33,7 @@ ms.openlocfilehash: a6d6db0e0e6b6fe8d8ccbd6cbd3858ae0df5cb2d
 若要完成本教程，需要满足以下条件：
 
 * C 语言开发环境。 对于本教程，我们将假定 gcc 堆栈在使用 Ubuntu 14.04 的 Azure Linux 虚拟机上。
-* Microsoft Visual Studio Express for Windows
+* Microsoft Visual Studio 或 Visual Studio Community Edition
 * 有效的 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="send-messages-to-event-hubs"></a>将消息发送到事件中心
@@ -167,9 +168,4 @@ ms.openlocfilehash: a6d6db0e0e6b6fe8d8ccbd6cbd3858ae0df5cb2d
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
