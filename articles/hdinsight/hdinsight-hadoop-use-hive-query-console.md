@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -31,14 +32,14 @@ ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
 >
 > 有关 HDInsight 3.4 或更高版本，请参阅[在 Ambari Hive 视图中运行 Hive 查询](hdinsight-hadoop-use-hive-ambari-view.md)，了解如何通过 Web 浏览器运行 Hive 查询。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>先决条件
+## <a id="prereq"></a>先决条件
 若要完成本文中的步骤，你将需要：
 
 * 基于 Windows 的 HDInsight Hadoop 群集
 * 现代 Web 浏览器
 
-## <a name="a-idruna-run-hive-queries-using-the-query-console"></a><a id="run"></a>使用查询控制台运行 Hive 查询
-1. 打开 Web 浏览器并导航到 ** https://CLUSTERNAME.azurehdinsight.net**，其中 **CLUSTERNAME**是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
+## <a id="run"></a>使用查询控制台运行 Hive 查询
+1. 打开 Web 浏览器并导航到 **https://CLUSTERNAME.azurehdinsight.net** ，其中 **CLUSTERNAME** 是 HDInsight 群集的名称。 出现提示时，输入在创建群集时使用的用户名和密码。
 2. 在页面顶部的链接中，选择“Hive 编辑器”。 此时将显示一个窗体，你可以在其中输入要在 HDInsight 群集上运行的 HiveQL 语句。
    
     ![hive 编辑器](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
@@ -70,12 +71,12 @@ ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
 3. 单击“提交”。 页面底部的“作业会话”应显示作业的详细信息。
 4. 当“状态”字段更改为“已完成”时，请选择与作业对应的“查看详细信息”。 在详细信息页上，“作业输出”包含 `[ERROR]    3`。 可以使用此字段下面的“下载”按钮下载包含作业的输出的文件。
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>摘要
+## <a id="summary"></a>摘要
 如你所见，查询控制台提供了简单的方法让你在 HDInsight 群集上运行 Hive 查询，监视作业状态，以及检索输出。
 
 若要了解有关使用 Hive 查询控制台运行 Hive 作业的详细信息，请选择查询控制台顶部的“入门”，然后使用提供的示例。 每个示例演练使用 Hive 分析数据的过程，包括有关本示例中使用的 HiveQL 语句的说明。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>后续步骤
+## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Hive 的一般信息：
 
 * [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
@@ -122,9 +123,4 @@ ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
 
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
