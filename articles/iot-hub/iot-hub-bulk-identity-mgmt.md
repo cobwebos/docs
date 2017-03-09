@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
-ms.openlocfilehash: 668f6ab0d5c09d53edd85b568cc8c9941b2f9135
+ms.sourcegitcommit: 79004e91c9e22b085b04e446999d4efe05426436
+ms.openlocfilehash: 512c4dc5f77d5f730720909628364c5c9d8b3174
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -41,6 +42,10 @@ ms.openlocfilehash: 668f6ab0d5c09d53edd85b568cc8c9941b2f9135
 // Call an export job on the IoT Hub to retrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
+
+> [!NOTE]
+> 若要在 C# 代码中使用 **RegistryManager** 类，请将 **Microsoft.Azure.Devices** NuGet 包添加到项目。 **RegistryManager** 类位于 **Microsoft.Azure.Devices** 命名空间。
+
 
 然后，你可以通过使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的**作业**的状态。
 
@@ -355,9 +360,4 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

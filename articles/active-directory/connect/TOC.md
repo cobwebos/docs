@@ -60,7 +60,8 @@
 ## 故障排除
 ### [连接](active-directory-aadconnect-troubleshoot-connectivity.md)
 ### [同步过程中出错](active-directory-aadconnect-troubleshoot-sync-errors.md)
-
+### [对象不同步](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
+### [密码同步](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
 
 # 引用
 ## [标识同步和重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)

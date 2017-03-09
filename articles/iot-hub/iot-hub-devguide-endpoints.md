@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 58a5f8cfc376cd1fea6a668126683bb6d2521bab
+ms.sourcegitcommit: 32364c5a681c1d614abbc32cc8b73dba4e5a2d18
+ms.openlocfilehash: 00a576357c6e89d7943e6c6c6a83c2c1535d549e
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -49,6 +50,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
   * *发送云到设备的消息和接收送达确认*。 这些终结点可让解决方案后端发送可靠的[云到设备的消息][lnk-c2d]，以及接收对应的传送或过期确认。
   * *接收文件通知*。 此消息传递终结点允许你在设备成功上传文件时接收通知。 
   * *直接方法调用*。 此终结点允许后端服务调用设备上的[直接方法][lnk-methods]。
+  * *接收操作监视事件*。 此终结点可以用于接收操作监视事件，前提是已将 IoT 中心配置为发出这些事件。 如需更多详细信息，请参阅 [IoT 中心操作监视][lnk-operations-mon]。
 
 [Azure IoT SDK][lnk-sdks] 一文介绍了访问这些终结点的各种方法。
 
@@ -109,9 +111,5 @@ IoT 中心需要这些服务终结点的写入权限，以便使用消息路由�
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+[lnk-operations-mon]: iot-hub-operations-monitoring.md
 

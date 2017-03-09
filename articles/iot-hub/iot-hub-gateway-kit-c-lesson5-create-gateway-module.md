@@ -16,13 +16,14 @@ ms.workload: na
 ms.date: 2/17/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 6b12d39ce8c6062df5fb78de654bf22183b6ecd9
-ms.openlocfilehash: 42c22192bc3cccdea97f7d8dac575fa7cbc9a6c6
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 027597c73d7282ef929363bab904e7d3d423d3d4
+ms.openlocfilehash: db2757015cf8e821cffcfe39bcbd1559c23fc7ed
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="lesson-5-create-your-first-azure-iot-gateway-module"></a>第 5 课：创建你的第一个 Azure IoT 网关模块
+虽然网关 SDK 允许用户生成以 Java、.NET 或 Node.js 编写的模块，但本教程分步介绍的是如何使用 C 生成模块。
 
 ## <a name="what-you-will-do"></a>执行的操作
 

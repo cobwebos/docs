@@ -9,13 +9,13 @@
 ### [数据安全与加密最佳实践](azure-security-data-encryption-best-practices.md)
 ### [存储安全指南](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [计算安全](security-virtual-machines-overview.md)
+### [Azure VM 最佳做法](azure-security-best-practices-vms.md)
 ### [IaaS 工作负荷最佳实践](azure-security-iaas.md)
 ### [Microsoft 反恶意软件](azure-security-antimalware.md)
 ### [磁盘加密](azure-security-disk-encryption.md)
 ### [加密 Azure VM](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [安全管理和监视](security-management-and-monitoring-overview.md)
 ### [安全管理](azure-security-management.md)
-### [IaaS 上的软件更新最佳实践](azure-security-best-practices-software-updates-iaas.md)
 ### [Azure 安全中心](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Azure 日志集成](security-azure-log-integration-overview.md)
 #### [入门](security-azure-log-integration-get-started.md)
@@ -63,8 +63,3 @@
 ###[输入验证](azure-security-threat-modeling-tool-input-validation.md)
 ###[敏感数据](azure-security-threat-modeling-tool-sensitive-data.md)
 ###[会话管理](azure-security-threat-modeling-tool-session-management.md)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
