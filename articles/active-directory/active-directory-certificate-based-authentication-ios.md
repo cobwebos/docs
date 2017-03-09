@@ -14,9 +14,9 @@ ms.workload: identity
 ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c4d95068b5e6472dbb809e675a47cb9eada7ca66
-ms.openlocfilehash: f643deb0b76c598df9bd983474b4bd2bcba129e7
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 28c2ef4878305d5cdb37ab8c0802644b1f236337
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/16/2017
 | OneDrive |![勾选标记][1] |
 | Outlook |![勾选标记][1] |
 | Yammer |![勾选标记][1] |
-| Skype for Business |即将支持 |
+| Skype for Business |![勾选标记][1] |
 
 ## <a name="requirements"></a>要求 
 

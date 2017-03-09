@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 43197f7402795c37fa7ed43658bc3b8858a41080
-ms.openlocfilehash: 8568978a558b09220eff14a13ccefb3e60c18e87
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 9780fa4461e32a4518c1b6ef019161a01fffecb3
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -190,15 +191,10 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 ## <a name="next-steps"></a>后续步骤
 了解服务总线队列的基本信息后，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]以获取更多信息。
 
-有关详细信息，请参阅 [Java 开发人员中心](/develop/java/)。
+有关详细信息，请参阅 [Java 开发人员中心](https://azure.microsoft.com/develop/java/)。
 
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
-
-
-
-<!--HONumber=Jan17_HO2-->
-
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
