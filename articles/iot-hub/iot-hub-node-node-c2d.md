@@ -12,11 +12,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2016
+ms.date: 12/15/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 05ccc7f419a420cb80f9fd71d5c59912468eb8f8
+ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
+ms.openlocfilehash: 312e9081c8597f59c32e99d594f2e729410986d8
+ms.lasthandoff: 12/16/2016
 
 
 ---
@@ -53,7 +54,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 在本部分中，你将修改在 [IoT 中心入门]中创建的模拟设备应用，以接收来自 IoT 中心的“云到设备”消息。
 
 1. 使用文本编辑器打开 SimulatedDevice.js 文件。
-2. 修改 **connectCallback** 函数以处理从 IoT 中心发送的消息。 在此示例中，设备始终调用 **complete** 函数来向 IoT 中心通知它已处理消息。 新版本的 **connectCallback** 函数如下所示：
+2. 修改 **connectCallback** 函数以处理从 IoT 中心发送的消息。 在此示例中，设备始终调用 **complete** 函数来向 IoT 中心通知它已处理消息。 **connectCallback** 函数的新版本类似于以下片段：
    
     ```
     var connectCallback = function (err) {
@@ -95,7 +96,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
     npm install azure-iothub --save
     ```
-3. 使用文本编辑器，在 **sendcloudtodevicemessage** 文件夹中创建新的 **SendCloudToDeviceMessage.js** 文件。
+3. 通过文本编辑器，在 **sendcloudtodevicemessage**文件夹中创建一个 **SendCloudToDeviceMessage.js** 文件。
 4. 在 **SendCloudToDeviceMessage.js** 文件的开头添加以下 `require` 语句：
    
     ```
@@ -167,7 +168,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     node SendCloudToDeviceMessage.js 
     ```
    
-    ![运行应用以发送 c2d 命令][img-send-command]
+    ![运行应用以发送云到设备的命令][img-send-command]
    
    > [!NOTE]
    > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按 MSDN 文章 [Transient Fault Handling]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
@@ -192,13 +193,8 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 [IoT 中心开发人员指南]: iot-hub-devguide.md
 [Azure IoT 开发人员中心]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure 门户]: https://portal.azure.com
 [Azure IoT 套件]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
