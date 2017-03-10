@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/30/2016
 ms.author: alanwar
+redirect_url: /azure/service-fabric/service-fabric-reliable-services-introduction
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5e2dcee657c0ee0a6680bce775418c8a50aa605e
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -95,10 +97,5 @@ StatefulService 派生自 StatefulServiceBase。 StatefulServiceBase 为服务�
 [Reliable Services 高级用法](service-fabric-reliable-services-advanced-usage.md)
 
 [Reliable Services 配置](service-fabric-reliable-services-configuration.md)  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -5,7 +5,7 @@ description: "有关 Windows 设备中的企业状态漫游设置的常见问题
 services: active-directory
 keywords: "企业状态漫游, Windows 云, 如何启用企业状态漫游"
 documentationcenter: 
-author: ningtan
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4

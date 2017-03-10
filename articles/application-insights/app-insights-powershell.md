@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
 ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -191,9 +192,8 @@ ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
 若要同时设置指标警报和应用资源，请将如下代码合并到模板文件：
 
 ```JSON
-
+{
     parameters: { ... // existing parameters ...
-       ,       
             "responseTime": {
               "type": "int",
               "defaultValue": 3,
@@ -203,12 +203,10 @@ ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
               }
     },
     variables: { ... // existing variables ...
-      ,
       // Alert names must be unique within resource group.
       "responseAlertName": "[concat('ResponseTime-', toLower(parameters('appName')))]"
     }, 
     resources: { ... // existing resources ...
-     ,
      {
       //
       // Metric alert on response time
@@ -250,7 +248,7 @@ ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
         ]
       }
     }
-
+}
 ```
 
 调用模板时，可选择添加此参数：
@@ -271,19 +269,16 @@ ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
 将以下代码合并到创建应用的模板文件中。
 
 ```JSON
-
+{
     parameters: { ... // existing parameters here ...
-      ,
       "pingURL": { "type": "string" },
       "pingText": { "type": "string" , defaultValue: ""}
     },
     variables: { ... // existing variables here ...
-      ,
       "pingTestName":"[concat('PingTest-', toLower(parameters('appName')))]",
       "pingAlertRuleName": "[concat('PingAlert-', toLower(parameters('appName')), '-', subscription().subscriptionId)]"
     },
     resources: { ... // existing resources here ...
-    ,  
     { //
       // Availability test: part 1 configures the test
       //
@@ -365,7 +360,7 @@ ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
         ]
       }
     }
-
+}
 ```
 
 若要发现其他测试位置的代码，或自动创建更复杂的 Web 测试，请手动创建示例，然后在 [Azure Resource Manager](https://resources.azure.com/) 中参数化代码。
@@ -434,10 +429,5 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 * [将 Azure 诊断发送到 Application Insights](app-insights-powershell-azure-diagnostics.md)
 * [从 Github 部署到 Azure](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

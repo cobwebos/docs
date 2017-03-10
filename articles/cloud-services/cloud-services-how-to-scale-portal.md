@@ -105,7 +105,7 @@ ms.lasthandoff: 02/28/2017
 配置规则之后，请选择规则边栏选项卡底部的“确定”按钮。
 
 ## <a name="back-to-manual-scale"></a>返回到手动缩放
-导航到“缩放设置”[](#where-scale-is-located)，并将“缩放方式”选项设置为“手动输入的实例计数”。
+导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数** 。
 
 ![包含配置文件和规则的云服务缩放设置](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
@@ -115,6 +115,6 @@ ms.lasthandoff: 02/28/2017
 2. 角色实例滑块，用于设置要缩放的实例。
 3. 要缩放的角色实例。
 
-配置缩放设置后，请选择顶部的“保存”图标。
+配置缩放设置后，请选择顶部的 **保存** 图标。
 
 

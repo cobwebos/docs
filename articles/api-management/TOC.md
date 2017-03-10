@@ -57,7 +57,7 @@
 #### [跨域策略](api-management-cross-domain-policies.md)
 #### [转换策略](api-management-transformation-policies.md)
 ### [错误处理](api-management-error-handling-policies.md)
-### [Policy expressions](api-management-policy-expressions.md)（策略表达式）
+### [策略表达式](api-management-policy-expressions.md)
 ## [模板](api-management-developer-portal-templates-reference.md)
 ### 模板参考
 #### [API](api-management-api-templates.md)

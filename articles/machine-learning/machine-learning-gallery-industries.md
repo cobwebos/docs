@@ -17,6 +17,7 @@ ms.author: roopalik;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
 ms.openlocfilehash: ebee9b7d45cae0259968313b0908be148f47d6b3
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: ebee9b7d45cae0259968313b0908be148f47d6b3
 这些资源包括实验、自定义模块、API、收藏和其他库项，可帮助你开发特定于你所在行业的解决方案。
 
 ## <a name="discover"></a>发现
- 若要浏览库中特定于行业的解决方案，请打开“库”[](http://gallery.cortanaintelligence.com)、将鼠标指向库主页顶部的“行业”、选择特定行业细分，或者选择“查看全部”以查看所有行业的概述页。
+ 若要浏览库中特定于行业的解决方案，请打开 [库](http://gallery.cortanaintelligence.com)、将鼠标指向库主页顶部的 **行业**、选择特定行业细分，或者选择 **查看全部** 以查看所有行业的概述页。
 
  每个行业页显示与该行业相关联的最受欢迎库项的列表。
 单击“查看全部”即可查看库中所有特定于行业的资源。
@@ -49,10 +50,5 @@ ms.openlocfilehash: ebee9b7d45cae0259968313b0908be148f47d6b3
 **[将我转到库 >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

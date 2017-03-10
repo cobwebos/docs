@@ -4,7 +4,7 @@ description: "就 IT 管理员可能会遇到的一些设置和应用数据同�
 services: active-directory
 keywords: "企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答"
 documentationcenter: 
-author: ningtan
+author: tanning
 manager: swadhwa
 editor: curtand
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7

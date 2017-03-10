@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 03/08/2017
 ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: f222caa272b86ff42873df09561ca4f6c6e6aa26
 ms.openlocfilehash: ba499a98960b0cf2f865e2d349003cd8cb65b526
+ms.lasthandoff: 11/28/2016
 
 
 ---
@@ -53,9 +54,4 @@ ms.openlocfilehash: ba499a98960b0cf2f865e2d349003cd8cb65b526
 * [服务总线队列、主题和订阅](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)
 * [如何使用 Service Bus 队列](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 
