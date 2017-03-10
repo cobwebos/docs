@@ -4,7 +4,7 @@ description: "将在 Windows 10 中漫游或备份的所有设置的完整列表
 services: active-directory
 keywords: "企业状态漫游, Windows 云"
 documentationcenter: 
-author: ningtan
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
