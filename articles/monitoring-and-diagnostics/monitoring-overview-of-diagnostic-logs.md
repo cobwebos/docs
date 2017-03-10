@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: fbc96a248de20b67a72e6a0150fe4b9b754ec4fe
-ms.openlocfilehash: d61ec29026ae5bbbdf33d7810e2e35c4d6bee1e7
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 2e011fbde0ee1b070d51a38b23193a4b48a3a154
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -167,19 +167,19 @@ ms.lasthandoff: 02/21/2017
 
 | 服务 | 架构和文档 |
 | --- | --- |
-| 负载均衡器 |[用于 Azure 负载平衡器的 Log Analytics（预览版）](../load-balancer/load-balancer-monitor-log.md) |
+| 负载均衡器 |[用于 Azure 负载均衡器的 Log Analytics（预览版）](../load-balancer/load-balancer-monitor-log.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../virtual-network/virtual-network-nsg-manage-log.md) |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
 | 密钥保管库 |[Azure 密钥保管库日志记录](../key-vault/key-vault-logging.md) |
 | Azure 搜索 |[允许并使用搜索流量分析](../search/search-traffic-analytics.md) |
-| 数据湖存储 |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 数据湖分析 |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Logic Apps |[逻辑应用 B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Azure 批处理 |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
 | 流分析 |[作业诊断日志](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| 服务总线 |没有可用架构。 |
+| 服务总线 |[Azure 服务总线诊断日志](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
