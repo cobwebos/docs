@@ -17,6 +17,7 @@ ms.author: brendal
 translationtype: Human Translation
 ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
 ms.openlocfilehash: 89aa44df74effec7da2eb008faf8f01dda0d27ca
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -71,7 +72,7 @@ ms.openlocfilehash: 89aa44df74effec7da2eb008faf8f01dda0d27ca
 | 数据目录 |否 |
 | Data Factory |否 |
 | 数据湖分析 |否 |
-| 数据湖存储 |否 |
+| Data Lake Store |否 |
 | HDInsights |否 |
 | 机器学习 |否 |
 | Power BI |否 |
@@ -126,10 +127,5 @@ ms.openlocfilehash: 89aa44df74effec7da2eb008faf8f01dda0d27ca
 
 ## <a name="next-steps"></a>后续步骤
 有关补充信息和更新，请订阅 <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure 政府博客</a>。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

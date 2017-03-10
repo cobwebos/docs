@@ -16,6 +16,7 @@ ms.author: mrys
 translationtype: Human Translation
 ms.sourcegitcommit: cd2aafd80db337cadaa2217a6638d93186975b68
 ms.openlocfilehash: 563a6821b4a3736ef1233aa67d86b9ba06565788
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -26,7 +27,7 @@ Azure Data Lake 包括了所有所需的功能，使开发人员、数据专家�
 Azure Data Lake 是一组服务，可协同工作以提供基于云的大数据平台：
 
 - HDInsight
-- Azure 数据湖存储
+- Azure Data Lake Store
 - Azure Data Lake Analytics
 
 U-SQL 是一种查询语言，专为大数据类型的工作负荷设计。 U-SQL 的一个独有特点是将类似 SQL 的声明性语言与 C# 提供的可扩展性和可编程性结合起来。 它还允许访问和处理架构元数据，以及创建自定义组件，如数据处理器和化简器。
@@ -2609,9 +2610,4 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
 OUTPUT @rs2 TO @output_file USING Outputters.Text();
 ```
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

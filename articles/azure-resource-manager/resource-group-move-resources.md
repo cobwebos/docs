@@ -84,8 +84,8 @@ ms.lasthandoff: 02/27/2017
 * 内容审查器
 * 数据目录
 * Data Factory
-* 数据湖分析
-* 数据湖存储
+* Data Lake Analytics
+* Data Lake Store
 * DNS
 * DocumentDB
 * 事件中心
@@ -132,7 +132,7 @@ ms.lasthandoff: 02/27/2017
 * 开发测试实验室 - 支持移到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
-* “安全”
+* 安全
 * 证书存储在密钥保管库中的虚拟机
 * 虚拟机规模集
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
