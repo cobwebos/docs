@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
 ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -26,8 +27,8 @@ ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
 
 为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。 这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。 必须先存在作业中配置的输出，然后才能启动作业并开始事件的流动。 例如，如果你使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。 在启动 ASA 作业之前，需要由用户创建该存储帐户。
 
-## <a name="azure-data-lake-store"></a>Azure 数据湖存储
-流分析支持 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 此存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。 此外，流分析需要经过授权，才能访问数据湖存储。 [Data Lake 输出一文](stream-analytics-data-lake-output.md)讨论了有关授权以及如何注册 Data Lake Store（如果需要）的详细信息。
+## <a name="azure-data-lake-store"></a>Azure Data Lake Store
+流分析支持 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 此存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。 此外，流分析需要经过授权，才能访问 Data Lake Store。 [Data Lake 输出一文](stream-analytics-data-lake-output.md)讨论了有关授权以及如何注册 Data Lake Store（如果需要）的详细信息。
 
 ### <a name="authorize-an-azure-data-lake-store"></a>授权 Azure Data Lake Store
 当选择 Data Lake Storage 作为 Azure 管理门户的输出时，系统将提示你对现有 Data Lake Store 的连接进行授权。  
@@ -38,7 +39,7 @@ ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
 
 ![Azure Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
-下表列出了属性名称和创建数据湖存储输出所需的属性说明。
+下表列出了属性名称和创建 Data Lake Store 输出所需的属性说明。
 
 <table>
 <tbody>
@@ -48,15 +49,15 @@ ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
 </tr>
 <tr>
 <td>输出别名</td>
-<td>该名称是在查询中使用的友好名称，用于将查询输出定向到此数据湖存储。</td>
+<td>该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Store。</td>
 </tr>
 <tr>
 <td>帐户名</td>
-<td>Data Lake 存储帐户的名称（你正在向该存储帐户发送输出）。 你将看到数据湖存储帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
+<td>Data Lake 存储帐户的名称（你正在向该存储帐户发送输出）。 你将看到 Data Lake Store 帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
 </tr>
 <tr>
 <td>路径前缀模式 [<I>可选</I>]</td>
-<td>用于对指定数据湖存储帐户中的文件进行编写的文件路径。 <BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
+<td>用于对指定 Data Lake Store 帐户中的文件进行编写的文件路径。 <BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
 </tr>
 <tr>
 <td>日期格式 [<I>可选</I>]</td>
@@ -85,7 +86,7 @@ ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
 </tbody>
 </table>
 
-### <a name="renew-data-lake-store-authorization"></a>续订数据湖存储授权
+### <a name="renew-data-lake-store-authorization"></a>续订 Data Lake Store 授权
 如果自作业创建后或上次身份验证后更改了密码，则需要重新对 Data Lake Store 帐户进行身份验证。
 
 ![Azure Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
@@ -262,7 +263,7 @@ Datetime | String | String |  Datetime | String
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此表存储。 |
 | 存储帐户 |存储帐户的名称（你正在向该存储帐户发送输出）。 |
 | 存储帐户密钥 |与存储帐户关联的访问密钥。 |
-| 表名称 |表的名称 如果表不存在，则会创建表。 |
+| 表名称 |表的名称。 如果表不存在，则会创建表。 |
 | 分区键 |包含分区键的输出列的名称。 分区键是给某个定表中分区的唯一标识，分区键构成了实体主键的第一部分。 分区键是一个最大为 1 KB 的字符串值。 |
 | 行键 |包含行键的输出列的名称。 行键是某个给定分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是一个最大为 1 KB 的字符串值。 |
 | 批大小 |批处理操作的记录数。 通常情况下，默认值对于大多数作业来说已经足够；若要修改此设置，请参阅[表批处理操作规范](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)以获取详细信息。 |
@@ -334,9 +335,4 @@ Datetime | String | String |  Datetime | String
 [stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
