@@ -25,7 +25,7 @@ ms.lasthandoff: 03/01/2017
 ## <a name="overview"></a>概述
 [Azure 应用商店中](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/)的 Web 应用程序防火墙（如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)）可以通过检查入站 Web 流量来阻止 SQL 注入、跨站脚本、恶意上载和应用程序 DDoS 及其他攻击，从而帮助保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 与隔离功能以及 App Service 环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。
 
-+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>设置
 在本文中，我们将配置受多个 Barracuda WAF 负载平衡实例保护的 App Service 环境，只让来自 WAF 的流量到达该 App Service 环境，而且无法从外围网络访问该环境。 在 Barracuda WAF 实例的前面，我们还部署了 Azure 流量管理器，用于在 Azure 数据中心和区域进行负载平衡。 高级设置示意图如下所示。
