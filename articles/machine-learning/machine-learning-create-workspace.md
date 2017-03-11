@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: garye;bradsev;ahgyger
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 647398c1a0994da04845672e89d9f82d5e8b6d21
+ms.sourcegitcommit: 613cf7e34d69afa21b1808ffe57af9a8b64944f5
+ms.openlocfilehash: 182a34822e71d63f4d7229548ae3f59d9f195337
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -29,86 +30,77 @@ ms.openlocfilehash: 647398c1a0994da04845672e89d9f82d5e8b6d21
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="to-create-a-workspace"></a>创建工作区
-1. 登录到 [ Microsoft Azure 经典门户]。
+### <a name="to-create-a-workspace"></a>创建工作区
+1. 登录到 [Azure 门户](https://portal.azure.com/)
 
-> [!NOTE]
-> 若要登录，需要是 Azure 订阅管理员。 机器学习工作区的所有者不会授予访问 [ Microsoft Azure 经典门户]的权限。 有关详细信息，请参阅 [Azure 订阅管理员和工作区所有者的特权](#subscriptionvsworkspace)。
-> 
-> 
+    > [!NOTE]
+    > 若要登录并创建工作区，需要是 Azure 订阅管理员。 
+    >
+    > 
 
-1. 在 Microsoft Azure 服务面板中，单击“机器学习”。
-   
-    ![机器学习服务][1]
-2. 单击窗口底部的“+ 新建”。
-3. 依次单击“数据服务”、“机器学习”和“快速创建”。
-   
-    ![新工作区的快速创建][3]
-4. 输入工作区的“工作区名称”。
-5. 指定 Azure“位置”，然后输入现有的 Azure“存储帐户”或选择“新建”创建新的存储帐户。
-6. 单击“创建 ML 工作区”。
+2. 单击“+新建”
 
-创建机器学习工作区后，将看到它在“机器学习”页面上列出。
+3. 选择“智能 + 分析”，单击“机器学习工作区”，然后单击“创建”
+
+4. 输入工作区信息
+
+    - *工作区名称*最多可以为 260 个字符，不能以空格结束。 该名称不能包含下列字符：`< > * % & : \ ? + /`
+    - 如果从此工作区部署 Web 服务，将使用所选择（或创建）的 *Web 服务计划*以及所选的关联*定价层*。
+
+    ![创建新的工作区](media/machine-learning-create-workspace/create-new-workspace.png)
+
+5. 单击“创建” 
+
+部署工作区后，可以在机器学习工作室中打开它。
+
+1. 浏览到机器学习工作室 ([https://studio.azureml.net/](https://studio.azureml.net/))。
+
+2. 在右上角选择工作区。
+
+    ![选择工作区](media/machine-learning-create-workspace/open-workspace.png)
+
+3. 单击“我的试验”。
+
+    ![打开试验](media/machine-learning-create-workspace/my-experiments.png)
+
+有关管理工作区的信息，请参阅[管理 Azure 机器学习工作区](machine-learning-manage-workspace.md)。
+如果在创建工作区时遇到问题，请参阅[故障排除指南：创建并连接到机器学习工作区](machine-learning-troubleshooting-creating-ml-workspace.md)。
+
 
 ## <a name="sharing-an-azure-machine-learning-workspace"></a>共享 Azure 机器学习工作区
-创建机器学习工作区后，可以邀请用户进入工作区，并共享对工作区及其所有试验的访问权限。 支持两类角色的用户：
+创建机器学习工作区后，可以邀请用户进入工作区，以共享对工作区及其所有试验、数据集、笔记本等的访问权限。可以将用户添加到以下两个角色之一：
 
-* **用户** - 工作区用户可以在工作区中创建、打开、修改和删除数据集、试验和 Web 服务。
-* **所有者** - 除了用户可以执行的操作之外，所有者还可以邀请、删除和列出具有工作区访问权限的用户。 他/她也有权访问 Notebook。
-
-### <a name="to-share-a-workspace"></a>共享工作区
-1. 登录到 [Azure 机器学习工作室]
-2. 在机器学习工作室面板中，单击“设置”
-3. 单击“用户”
-4. 单击“邀请多个用户”
-   
-    ![邀请多个用户][4]
-5. 输入一个或多个电子邮件地址。 用户只需要有效的 Microsoft 帐户（例如 name@outlook.com) 或组织帐户（来自 Azure Active Directory）。
-6. 单击勾选按钮。
-
-添加的每个用户都将收到一封电子邮件，其中包含登录共享工作区的说明。
-
-有关管理工作区的信息，请参阅[管理 Azure 机器学习工作区]。
-如果在创建工作区时遇到问题，请参阅[疑难解答指南：创建并连接到机器学习工作区]。
-
-## <a name="a-namesubscriptionvsworkspaceaprivileges-of-azure-subscription-administrator-and-of-workspace-owner"></a><a name="subscriptionvsworkspace"></a> Azure 订阅管理员和工作区所有者的特权
-下表说明 Azure 订阅管理员和工作区所有者之间的区别。
-
-| 操作 | Azure 订阅管理员 | 工作区所有者 |
-| --- |:---:|:---:|
-| 访问 [ Microsoft Azure 经典门户] |是 |否 |
-| 创建新的工作区 |是 |否 |
-| 创建工作区 |是 |否 |
-| 将终结点添加到 Web 服务 |是 |否 |
-| 将终结点从 Web 服务中删除 |是 |否 |
-| 更改 Web 服务的并发 |是 |否 |
-| 访问[Azure 机器学习工作室] |否 * |是 |
+* **用户** - 工作区用户可以在工作区中创建、打开、修改和删除试验、数据集等。
+* **所有者** - 除了指定用户可以执行的操作之外，所有者还可以邀请和删除工作区中的用户。
 
 > [!NOTE]
-> * Azure 订阅管理员将自动添加到他/她所创建的工作区，作为工作区所有者。 但是，只是作为 Azure 订阅管理员并不会授予他/她对该订阅下的任何工作区的访问权限。
+> 创建工作区的管理员帐户将自动添加到工作区，作为工作区所有者。 但是，不会向该订阅中的其他管理员或用户自动授予访问工作区的权限 - 你需要显式邀请他们。
 > 
 > 
 
-<!-- ![List of Machine Learning workspaces][2] -->
+### <a name="to-share-a-workspace"></a>共享工作区
 
-<!--Anchors-->
-[创建工作区]: #createworkspace
+1. 登录到机器学习工作室 ([https://studio.azureml.net/Home](https://studio.azureml.net/Home))
 
-<!--Image references-->
-[1]: media/machine-learning-create-workspace/cw1.png
-[2]: media/machine-learning-create-workspace/cw2.png
-[3]: media/machine-learning-create-workspace/cw4.png
-[4]: media/machine-learning-create-workspace/cw5.png
+2. 在左面板中，单击“设置”
+
+3. 单击“用户”选项卡
+
+4. 单击页面底部的“邀请更多用户”
+
+    ![工作室设置](media/machine-learning-create-workspace/settings.png)
+
+5. 输入一个或多个电子邮件地址。 用户需要有效的 Microsoft 帐户或组织帐户（来自 Azure Active Directory）。
+
+6. 选择是要将用户添加为“所有者”还是“用户”。
+
+7. 单击“确定”复选标记按钮。
+
+添加的每个用户都将收到一封电子邮件，其中包含如何登录共享工作区的说明。
+
+> [!NOTE]
+> 要使用户能够在此工作区中部署或管理 Web 服务，这些用户必须是 Azure 订阅中的参与者或管理员。 
 
 
-<!--Link references-->
-[管理 Azure 机器学习工作区]: machine-learning-manage-workspace.md
-[疑难解答指南：创建并连接到机器学习工作区]: machine-learning-troubleshooting-creating-ml-workspace.md
-[Azure 机器学习工作室]: https://studio.azureml.net/  
-[ Microsoft Azure 经典门户]: https://manage.windowsazure.com/
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

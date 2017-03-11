@@ -1,5 +1,5 @@
 ---
-title: "收集和分析 Log Analytics 中的性能计数器 | Microsoft Docs"
+title: "收集和分析 Azure Log Analytics 中的性能计数器 | Microsoft 文档"
 description: "性能计数器由 Log Analytics 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器的集合、它们在 OMS 存储库中的存储详情和如何在 OMS 门户中对他们对其分析。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 02/24/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: 1e4b5dac9333a9bd38f6ef89ddce22c74fed06ba
+ms.sourcegitcommit: 853177202e4724546242d4e8d1b41b456a444eeb
+ms.openlocfilehash: 2381b7e9ab4514d6668569c2a58d108af5008a7e
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 遵循以下步骤添加要收集的新 Windows 性能计数器。
 
-1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，将会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。 
+1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，将会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。
 2. 单击 **+** 或按 **Enter** 将计数器添加到列表中。
 3. 添加计数器后，计数器将把 10 秒作为“**采样间隔**”的默认时间。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
 4. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
@@ -92,19 +93,9 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 
 ![指标视图折叠](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
 
-如果你选择的时间范围为 6 小时或更短，则图像会每隔几秒更新一次。  实时数据以浅蓝色显示在图形右侧。
-
-![指标视图展开后显示实时数据](media/log-analytics-data-sources-performance-counters/metricsexpanded.png)
-
 若要聚合日志搜索中的性能数据，请参阅 [OMS 中的按需指标聚合和可视化](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/)。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
 * 将收集的数据导出到 [Power BI](log-analytics-powerbi.md) 以进行其他可视化操作和分析。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

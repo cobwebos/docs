@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 02/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
-ms.openlocfilehash: b5c031d1e36508e7622ba516d7bb8b2cfb3d7a89
+ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
+ms.openlocfilehash: 6ad91429794e465be7cb26963d032d9357143053
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: b5c031d1e36508e7622ba516d7bb8b2cfb3d7a89
 如果 IT 管理员发出特定 URL 或管理双重验证的步骤，请按照这些说明操作。 否则，可按照以下适用于所有用户的说明操作。 如果执行以下步骤，但看到的选项不同，则表示公司或学校已自定义门户。 通过管理员获取 Azure 多重身份验证门户的链接。
 
 1. 登录 [https://myapps.microsoft.com](https://myapps.microsoft.com)  
-2. 选择顶部的“个人资料”。  
+2. 在右上方选择你的帐户名称，然后选择“配置文件”。  
 3. 选择“其他安全性验证”。  
 
     ![Myapps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
@@ -56,15 +57,17 @@ ms.openlocfilehash: b5c031d1e36508e7622ba516d7bb8b2cfb3d7a89
 2. 在文本框中输入辅助电话号码。  
 3. 选择“保存”，完成更改。  
 
+## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>需要在已标记为受信任的设备上重新进行双重验证
+
+在浏览器中执行双重验证时，根据组织设置，可能会有一个复选框显示“**X** 天不再询问”。 如果选中了此复选框，然后丢失了设备或认为你的帐户受到安全威胁，则应将双重验证还原到所有设备。 
+
+1. 在“其他安全验证”页中，选择“在以前受信任的设备上还原多重身份验证”。
+2. 下次登录任何设备时，将会提示你执行双重验证。 
+
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>如何从旧设备清除 Microsoft Authenticator 并将其迁移到新设备？
 从设备上卸载应用或者重置设备时，不会在后端删除激活信息。 有关详细信息，请参阅 [Microsoft Authenticator](microsoft-authenticator-app-how-to.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 在[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)中获得疑难解答提示和帮助
 * 为不支持双重验证的任何应用设置[应用密码](multi-factor-authentication-end-user-app-passwords.md)。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

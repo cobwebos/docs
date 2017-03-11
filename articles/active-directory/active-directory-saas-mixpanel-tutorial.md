@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/17/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: 87b409c73e68a6ed6ea84e92b15bbcf3ed82d5f9
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
 将 Mixpanel 与 Azure AD 集成可提供以下优势：
 
 * 可以在 Azure AD 中控制谁有权访问 Mixpanel
-* 可以让用户使用其 Azure AD 帐户自动登录到 Mixpanel（单一登录）
+* 可以让用户使用其 Azure AD 帐户自动登录到 Mixpanel 单一登录 (SSO)
 * 可以在一个中心位置（即 Azure 经典门户）管理帐户
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
@@ -35,27 +36,26 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
 若要配置 Azure AD 与 Mixpanel 的集成，需要具有以下项：
 
 * Azure AD 订阅
-* 启用了 Mixpanel 单一登录的订阅
+* 启用了 Mixpanel 单一登录 (SSO) 的订阅
 
-> [!NOTE]
-> 测试本教程中的步骤时，建议不要使用生产环境。
-> 
+>[!NOTE]
+>不建议使用生产环境测试本教程中的步骤。 
 > 
 
 测试本教程中的步骤应遵循以下建议：
 
 * 不应使用生产环境，除非有此必要。
-* 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 如果没有 Azure AD 试用环境，可以获取[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-本教程的目的是介绍如何在测试环境中测试 Azure AD 单一登录。 
+本教程旨在介绍如何在测试环境中测试 Azure AD SSO。 
 
 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Mixpanel
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD SSO
 
-## <a name="adding-mixpanel-from-the-gallery"></a>从库中添加 Mixpanel
+## <a name="add-mixpanel-from-the-gallery"></a>从库中添加 Mixpanel
 若要配置 Mixpanel 与 Azure AD 的集成，需要从库中将 Mixpanel 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Mixpanel，请执行以下步骤：**
@@ -78,10 +78,10 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
     ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_01.png)
 7. 在结果窗格中，选择“Mixpanel”，然后单击“完成”以添加该应用程序。
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置并测试 Azure AD 单一登录
-本部分的目的是基于名为“Britta Simon”的测试用户展示如何配置并测试 Mixpanel 的 Azure AD 单一登录。
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+本部分旨在说明如何基于名为“Britta Simon”的测试用户配置和测试 Mixpanel 的 Azure AD SSO。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Mixpanel 用户。 换句话说，需要在 Azure AD 用户与 Mixpanel 中的相关用户之间建立链接关系。
+若要运行 SSO，Azure AD 需要知道与 Azure AD 用户相对应的 Mixpanel 用户。 换句话说，需要在 Azure AD 用户与 Mixpanel 中的相关用户之间建立链接关系。
 
 可以通过将 Azure AD 中“用户名”的值分配为 Mixpanel 中“用户名”的值来建立此链接关系。
 
@@ -90,11 +90,11 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-single-sign-on)** - 让用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[创建 Mixpanel 测试用户](#creating-a-mixpanel-test-user)** - 在 Mixpanel 中创建 Britta Simon 的对应用户，将其链接到其 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-本部分的目的是在 Azure 经典门户中启用 Azure AD 单一登录并在 Mixpanel 应用程序中配置单一登录。
+本部分旨在介绍如何在 Azure 经典门户中启用 Azure AD SSO 并在 Mixpanel 应用程序中配置 SSO。
 
 **若要配置 Mixpanel 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -106,23 +106,20 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
     ![配置单一登录](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_03.png) 
 3. 在“配置应用设置”对话框页上，执行以下步骤：
    
-    ![配置单一登录](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_04.png) 
+    ![配置单一登录](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_04.png)
+  1. 在“登录 URL”文本框中，使用以下模式键入用户用来登录 Mixpanel 应用程序的 URL：**“https://mixpanel.com/login/”**。
 
-    a. 在“登录 URL”文本框中，使用以下模式键入用户用来登录 Mixpanel 应用程序的 URL：**“https://mixpanel.com/login/”**。
+    >[!NOTE]
+    >请在 [https://mixpanel.com/register/](https://mixpanel.com/register/) 注册以设置登录凭据并联系 [Mixpanel 支持团队](mailto:support@Mixpanel.com)来为你的租户启用 SSO 设置。 如果需要，还可以从 Mixpanel 支持团队获取登录 URL。
+    >
 
-    > [AZURE.NOTE] 请在 [https://mixpanel.com/register/](https://mixpanel.com/register/) 注册以设置登录凭据并联系 [Mixpanel 支持团队](mailto:support@Mixpanel.com)来为你的租户启用 SSO 设置。 如果需要，还可以从 Mixpanel 支持团队获取登录 URL。
-
-    b. 单击“下一步”。
-
-
+  2. 单击“资源组名称” 的 Azure 数据工厂。
 
 1. 在“在 Mixpanel 处配置单一登录”页上，执行以下步骤：
    
     ![配置单一登录](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“下载证书”，然后将文件保存在计算机上。 
-   
-    b. 单击“下一步”。
+  1. 单击“下载证书”，然后将文件保存在计算机上。 
+  2. 单击“资源组名称” 的 Azure 数据工厂。
 2. 在另一个浏览器窗口中，以管理员身份登录到 Mixpanel 应用程序。
 3. 在页面底部，单击左下角的小**齿轮**图标。 
    
@@ -144,9 +141,10 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
    
     ![Azure AD 单一登录][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-本部分的目的是在 Azure 经典门户中创建名为“Britta Simon”的测试用户。
-在“用户列表”中，选择“Britta Simon”。
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+本部分的目的是在 Azure 经典门户中创建名为 Britta Simon 的测试用户。
+
+* 在“用户列表”中，选择“Britta Simon”。
 
 ![创建 Azure AD 用户][20]
 
@@ -164,38 +162,28 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
     ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_04.png) 
 5. 在“告诉我们有关此用户的信息”对话框页上，执行以下步骤：
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_05.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“用户类型”，选择“组织中的新用户”。
-   
-    b. 在“用户名”文本框中，键入“BrittaSimon”。
-   
-    c. 单击“下一步”。
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_05.png)  
+ 1. 在“用户类型”中，选择“你的组织中的新用户”。
+ 2. 在“用户名”文本框中，键入“BrittaSimon”。 
+ 3. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“用户配置文件”对话框页上，执行以下步骤：
    
-   ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_06.png) 
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名字”文本框中，键入“Britta”。  
-   
-   b. 在“姓氏”文本框中，键入“Simon”。
-   
-   c. 在“显示名称”文本框中，键入“Britta Simon”。
-   
-   d.单击“下一步”。 在“角色”列表中，选择“用户”。
-   
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 单击“下一步”。
+   ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_06.png)  
+ 1. 在“名字”文本框中，键入“Britta”。   
+ 2. 在“姓氏”文本框中，键入“Simon”。 
+ 3. 在“显示名称”文本框中，键入“Britta Simon”。  
+ 4. 在“角色”列表中，选择“用户”。 
+ 5. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“获取临时密码”对话框页上，单击“创建”。
    
     ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_07.png) 
 8. 在“获取临时密码”对话框页上，执行以下步骤：
    
-    ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_08.png) 
-   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 写下“新密码”的值。
-   
-    b. 单击“完成”。   
+    ![创建 Azure AD 测试用户](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_08.png)  
+ 1. 写下“新密码”的值。
+ 2. 单击“完成”。   
 
-### <a name="creating-a-mixpanel-test-user"></a>创建 Mixpanel 测试用户
+### <a name="create-a-mixpanel-test-user"></a>创建 Mixpanel 测试用户
 本部分的目的是在 Mixpanel 中创建名为 Britta Simon 的用户。 
 
 1. 以管理员身份登录到你的 Mixpanel 公司站点。
@@ -208,8 +196,8 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
 
 用户将收到一封电子邮件，要求设置其配置文件。
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-本部分的目的是通过向 Britta Simon 授予对 Mixpanel 的访问权限，使她能够使用 Azure 单一登录。
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+本部分旨在通过授予 Britta Simon 访问 Mixpanel 的权限，允许她使用 Azure SSO。
 
 ![分配用户][200] 
 
@@ -229,8 +217,8 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
    
     ![分配用户][205]
 
-### <a name="testing-single-sign-on"></a>测试单一登录
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+### <a name="test-single-sign-on"></a>测试单一登录
+本部分旨在使用“访问面板”测试 Azure AD 单一 SSO 配置。
 
 当在访问面板中单击 Mixpanel 磁贴时，应当会自动登录到 Mixpanel 应用程序。
 
@@ -255,9 +243,4 @@ ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
 [203]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-mixpanel-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

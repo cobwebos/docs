@@ -1,6 +1,6 @@
 ---
-title: "为 Spark 构建的机器学习模型评分 | Microsoft Docs"
-description: "如何为已在 Azure Blob 存储 (WASB) 中存储的学习模型评分。"
+title: "操作 Spark 构建的机器学习模型 | Microsoft 文档"
+description: "如何使用 Python 加载 Azure Blob 存储 (WASB) 中存储的学习模型并为其评分。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,28 +12,35 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 02/24/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
-ms.openlocfilehash: b30b3ed88ab271b5fa3db61ef276cba9b7fcdfdb
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 138c1182ea173ff2f14672e692ff79ae1015dcfc
+ms.openlocfilehash: 52319ff75817e75b31388aa03030a4f0e63c182d
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="score-spark-built-machine-learning-models"></a>为 Spark 构建的机器学习模型评分
+# <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-本主题介绍如何加载使用 Spark MLlib 生成并存储在 Azure Blob 存储 (WASB) 中的机器学习 (ML) 模型，以及如何使用同样存储在 WASB 中的数据集为它们评分。 它介绍如何预处理输入数据、使用 MLlib 工具包中的索引和编码函数转换特征，以及如何创建可用作 ML 模型评分的输入的标签点数据对象。 用于评分的模型包括线性回归、逻辑回归、随机林模型和梯度提升树模型。
+本主题演示如何在 HDInsight Spark 群集上使用 Python 操作已保存的机器学习模型 (ML)。 它介绍如何加载使用 Spark MLlib 生成并存储在 Azure Blob 存储 (WASB) 中的机器学习模型，以及如何使用同样存储在 WASB 中的数据集为它们评分。 它介绍如何预处理输入数据、使用 MLlib 工具包中的索引和编码函数转换特征，以及如何创建可用作 ML 模型评分的输入的标签点数据对象。 用于评分的模型包括线性回归、逻辑回归、随机林模型和梯度提升树模型。
+
+## <a name="spark-clusters-and-jupyter-notebooks"></a>Spark 群集和 Jupyter 笔记本
+本演练提供了使用 HDInsight Spark 1.6 群集和 Spark 2.0 群集操作 ML 模型的设置步骤和代码。 Jupyter 笔记本中也提供了有关这些过程的代码。
+
+### <a name="notebook-for-spark-16"></a>适用于 Spark 1.6 的笔记本
+[pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：Jupyter 笔记本演示如何在 HDInsight 群集上使用 Python 操作已保存的模型。 
+
+### <a name="notebook-for-spark-20"></a>适用于 Spark 2.0 的笔记本
+若要修改适用于 Spark 1.6 的 Jupyter 笔记本以用于 HDInsight Spark 2.0 群集，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。 此代码演示如何使用在 Spark 2.0 中创建的模型。
+
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 你需要一个 Azure 帐户和一个 Spark 1.6 或 Spark 2.0 HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
-2. 还必须在此处通过演练针对 Spark 1.6 群集或 Spark 2.0 笔记本的[使用 Spark 进行数据探索和建模](machine-learning-data-science-spark-data-exploration-modeling.md)主题，来创建要评分的机器学习模型。 请注意，Spark 2.0 笔记本将其他数据集用于分类任务（从 2011 年到 2012 年的已知航班准时出发数据集）。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 
-
-
-## <a name="setup-spark-clusters-and-notebooks"></a>设置：Spark 群集和笔记本
-本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：笔记本演示如何在 HDInsight 群集上使用 Python 实施已保存的模型。 若要修改此 Jupyter 笔记本以与 HDInsight Spark 2.0 群集一起使用，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。
+1. 你需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](machine-learning-data-science-spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
+2. 还必须在此处通过演练针对 Spark 1.6 群集或 Spark 2.0 笔记本的[使用 Spark 进行数据探索和建模](machine-learning-data-science-spark-data-exploration-modeling.md)主题，来创建要评分的机器学习模型。 
+3. Spark 2.0 笔记本将其他数据集用于分类任务（从 2011 年到 2012 年的已知航班准时出发数据集）。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -182,7 +189,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：46.37 秒
 
 ## <a name="prepare-data-for-scoring-in-spark"></a>为 Spark 中的评分准备数据
-本部分介绍如何为分类数据编制索引、编码和缩放，以使它们准备好在分类和回归的 MLlib 监督学习算法中使用。
+本部分介绍如何为分类功能编制索引、编码和对其进行缩放，使它们准备好在分类和回归的 MLlib 监督式学习算法中使用。
 
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>特征转换：为分类特征编制索引并编码以输入到模型中进行评分
 本部分介绍如何使用 `StringIndexer` 为分类数据编制索引，并使用 `OneHotEncoder` 为特征编码以输入到模型中。
@@ -524,7 +531,7 @@ BoostedTreeRegressionFileLoc：GradientBoostingTreeRegression_2016-05-0317_23_56
 Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理作业或交互式查询的机制。 Livy 在 HDInsight Spark 群集上默认处于启用状态。 有关 Livy 的详细信息，请参阅：[使用 Livy 远程提交 Spark 作业](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)。 
 
 可使用 Livy 远程提交一个作业，该作业批处理评分存储在 Azure Blob 中的文件，然后将结果写入另一个 blob。 若要执行此操作，将 Python 脚本从  
-[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上传到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上传到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
+[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上传到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上载到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
 
 > [!NOTE]
 > 可在与 Spark 群集相关联的存储帐户的门户上找到所需的访问密钥。 
@@ -578,7 +585,7 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 如果首选无代码客户端体验，请使用 [Azure 逻辑应用](https://azure.microsoft.com/documentation/services/app-service/logic/)通过在**逻辑应用设计器**上定义一个 HTTP 操作并设置其参数来调用 Spark 批处理评分。 
 
 * 从 Azure 门户，通过依次选择“+新建” -> “Web + 移动” -> “逻辑应用”创建新的逻辑应用。 
-* 若要弹出“逻辑应用设计器”，请输入逻辑应用名称和应用服务计划。
+* 若要显示**逻辑应用设计器**，请输入逻辑应用和应用服务计划的名称。
 * 选择某个 HTTP 操作并输入下图中显示的参数：
 
 ![逻辑应用设计器](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)

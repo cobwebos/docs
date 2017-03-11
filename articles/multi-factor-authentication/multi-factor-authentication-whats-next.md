@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 02/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: c8a53cbbfdb0f3d5d5b4b3a1e70f2c08d50c6004
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 042b99a77fae0de2fe65113d9d909a443f5487d4
+ms.openlocfilehash: 3a6020b2c189b4ce9a930a18d78140b7bd8ff8ff
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 在启动并运行 Azure 多重身份验证后，可以参考本文进行管理。  本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。  并非所有版本的 Azure 多重身份验证都提供了这些功能。
 
-| 功能 | 描述 | |:--- |:--- || | [欺诈警报](#fraud-alert) |管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。 | | [免验证一次](#one-time-bypass) |免验证一次可让用户通过“免除”多重身份验证的方式进行身份验证，不过只会免验证一次。 | | [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于多重身份验证。 | | [缓存](#caching-in-azure-multi-factor-authentication) |使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。 | | [受信任的 IP](#trusted-ips) |托管或联合租户的管理员可以使用“受信任的 IP”对从公司本地 Intranet 登录的用户免除双重验证。 | | [应用密码](#app-passwords) |应用密码允许非 MFA 感知应用程序免于进行多重身份验证并继续工作。 | | [为记住的设备和浏览器记住多重身份验证](#remember-multi-factor-authentication-for-devices-users-trust) |允许在用户使用 MFA 成功登录后将设备记住设定的天数。 | | [可选择的验证方法](#selectable-verification-methods) |允许你选择可供用户使用的身份验证方法。 |
+| 功能 | 描述 | |:--- |:--- || | [欺诈警报](#fraud-alert) |管理员可以配置和设置欺诈警报，以便用户针对访问其资源的欺诈性企图进行举报。 | | [免验证一次](#one-time-bypass) |免验证一次可让用户通过“免除”多重身份验证的方式进行身份验证，不过只会免验证一次。 | | [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于多重身份验证。 | | [缓存](#caching-in-azure-multi-factor-authentication) |使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。 | | [受信任的 IP](#trusted-ips) |托管或联合租户的管理员可以使用“受信任的 IP”对从公司本地 Intranet 登录的用户免除双重验证。 | | [应用密码](#app-passwords) |应用密码允许非 MFA 感知应用程序免于进行多重身份验证并继续工作。 | | [为记住的设备和浏览器记住多重身份验证](#remember-multi-factor-authentication-for-devices-that-users-trust) |允许在用户使用 MFA 成功登录后将设备记住设定的天数。 | | [可选择的验证方法](#selectable-verification-methods) |允许你选择可供用户使用的身份验证方法。 |
 
 ## <a name="access-the-azure-mfa-management-portal"></a>访问 Azure MFA 管理门户
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 02/17/2017
 <center>![云](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
 ## <a name="trusted-ips"></a>受信任的 IP
-“受信任的 IP”是 Azure MFA 的一项功能，托管或联合租户的管理员可以使用此功能对从公司本地 Intranet 登录的用户免除双重验证。 Azure 多重身份验证的完整版本中为管理员提供了此功能，免费版本中没有提供。 有关如何获取 Azure 多重身份验证的完整版本的详细信息，请参阅[如何获取 Azure 多重身份验证](multi-factor-authentication.md#how-to-get-azure-multi-factor-authentication)。
+“受信任的 IP”是 Azure MFA 的一项功能，托管或联合租户的管理员可以使用此功能对从公司本地 Intranet 登录的用户免除双重验证。 Azure 多重身份验证的完整版本中为管理员提供了此功能，免费版本中没有提供。 有关如何获取 Azure 多重身份验证的完整版本的详细信息，请参阅 [Azure 多重身份验证](multi-factor-authentication.md)。
 
 | AZURE AD 租户类型	 | 可用的受信任 IP 选项 |
 |:--- |:--- |
@@ -260,13 +260,18 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 的�
 ## <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>记住用户信任的设备的多重身份验证
 记住用户信任的设备和浏览器的 Multi-Factor Authentication 是针对所有 MFA 用户的一项免费功能。 此功能允许你在用户使用 MFA 执行成功登录后的指定天数内为用户提供绕过 MFA 的选项。 这可以尽量减少用户可能在同一设备上执行双重验证的次数，从而可以提高可用性。
 
+但是，如果帐户或设备遭到入侵，则记住信任的设备的 MFA 可能会影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user)。 此操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 你还可以指示用户按照[管理双重验证设置](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原 MFA
+
+### <a name="how-it-works"></a>工作原理
+
+在用户在登录时选中“**X** 天不再询问”框的情况下，通过在浏览器上设置持久性 Cookie，记住多重身份验证的有效性。 在 Cookie 过期之前，不会提示用户再次从该浏览器进行 MFA。 如果用户在同一设备上打开不同浏览器或清除其 Cookie，将提示他们重新进行验证。 
+
+非浏览器应用不会显示“**X** 天不再询问”复选框，无论它们是否支持新式身份验证。 这些应用使用每小时提供新访问令牌的刷新令牌。 验证刷新令牌时，Azure AD 会检查最后一次执行双重验证的时间是否在配置的天数内。 
+
+因此，在受信任的设备上记住 MFA 会减少在 Web 应用上进行身份验证的次数（通常每次都提示），但会增加新式身份验证客户端的身份验证次数（通常每隔 90 天提示一次）。
+
 > [!NOTE]
-> 此功能通过浏览器 Cookie 缓存方式实现。 如果未启用浏览器 Cookie，此功能则无法实现。
-
-但是，如果帐户或设备遭到入侵，则记住信任的设备的 MFA 可能会影响安全性。 为确保帐户安全性，我们提供了一个可用来在所有设备上还原多重身份验证的选项。 这意味着所有设备都将丢失其受信任状态，并且用户需要重新执行双重验证。 出现下列任一情况时，都应还原设备的多重身份验证：
-
-* 如果你的公司帐户受到安全威胁
-* 如果记住的设备丢失或被盗
+>当用户通过 Azure MFA 服务器或第三方 MFA 解决方案向 AD FS 执行双重验证时，此功能与 AD FS 的“使我保持登录”功能不兼容。 如果用户在 AD FS 上选择“使我保持登录”，并且还将其设备标记为“受信任，可以跳过 MFA”，则在“记住 MFA”天数期满后，他们将不能验证。 Azure AD 将请求全新双重验证，但 AD FS 将返回包含原始 MFA 声明和日期的令牌，而不是重新执行双重验证。 这将引发 Azure AD 和 AD FS 之间的验证循环。 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>启用“记住多重身份验证”
 1. 登录到 [Azure 经典门户](https://portal.azure.com/)。

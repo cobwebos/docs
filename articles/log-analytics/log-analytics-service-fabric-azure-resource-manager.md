@@ -1,6 +1,6 @@
 ---
-title: "使用 Log Analytics 中的 Service Fabric 解决方案优化环境 | Microsoft Docs"
-description: "可以使用 Service Fabric 解决方案访问 Service Fabric 应用程序、微服务、节点和群集的风险和运行状况。"
+title: "通过 Azure 门户使用 Log Analytics 评估 Service Fabric 应用程序 | Microsoft 文档"
+description: "可以通过 Azure 门户使用 Log Analytics 中的 Service Fabric 解决方案评估 Service Fabric 应用程序、微服务、节点和群集的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
 author: niniikhena
@@ -15,17 +15,19 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2fe6c2b23c816a5ec5bb00199725cdf0b29b31f0
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ac94bca1657efbe0ce94db953933f026217d1c8a
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="service-fabric-solution-in-log-analytics"></a>Log Analytics 中的 Service Fabric 解决方案
+# <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>使用 Azure 门户评估 Service Fabric 应用程序和微服务
+
 > [!div class="op_single_selector"]
-> * [资源管理器](log-analytics-service-fabric-azure-resource-manager.md)
+> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
-> 
-> 
+>
+>
 
 本文介绍如何使用 Log Analytics 中的 Service Fabric 解决方案帮助识别和解决 Service Fabric 群集中的问题。
 
@@ -33,7 +35,7 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 
 若要开始使用解决方案，需要将 Service Fabric 群集连接到 Log Analytics 工作区。 下面是需要考虑的三种方案：
 
-1. 如果你尚未部署 Service Fabric 群集，请使用***部署已连接到 Log Analytics 工作区的 Service Fabric 群集***中的步骤部署新群集，并将其配置为 Log Analytics 的报告。
+1. 如果你尚未部署 Service Fabric 群集，请使用***部署已连接到 Log Analytics 工作区的 Service Fabric 群集***中的步骤部署新群集，并将其配置为向 Log Analytics 报告。
 2. 如果你需要从主机中收集性能计数器以便在 Service Fabric 群集上使用其他 OMS 解决方案（如安全性），请按照***部署已连接到装有 VM 扩展的 OMS 工作区的 Service Fabric 群集***中的步骤操作。
 3. 如果已部署了 Service Fabric 群集并且希望将其连接到 Log Analytics，请按照***将现有的存储帐户添加到 Log Analytics*** 中的步骤操作。
 
@@ -79,11 +81,11 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 * 转到左侧窗格上的“设置”，并依次选择“数据”>>“Windows 性能计数器”>>“添加所选的性能计数器”：![Service Fabric](./media/log-analytics-service-fabric/7.png)
 * 在“日志搜索”中，使用以下查询深入探讨有关节点的关键指标：
   </br>
-  
+
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 比较过去一小时所有节点中的平均 CPU 利用率，以查看哪些节点存在问题以及节点在什么时间间隔达到峰值：
-  
+
     ``` Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR. ```
-  
+
     ![Service Fabric](./media/log-analytics-service-fabric/10.png)
 
     b. 通过以下查询，查看每个节点上可用内存的类似折线图：
@@ -103,7 +105,7 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 
     ![Service Fabric](./media/log-analytics-service-fabric/12.png)
 
-    在[此处](https://blogs.technet.microsoft.com/msoms/tag/metrics/)阅读有关 Log Analytics 中性能指标的详细信息。
+    在[此处] (https://blogs.technet.microsoft.com/msoms/tag/metrics/) 阅读有关 Log Analytics 中性能指标的详细信息。
 
 
 ## <a name="adding-an-existing-storage-account-to-log-analytics"></a>将现有存储帐户添加到 Log Analytics
@@ -115,8 +117,8 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 > [!NOTE]
 > 在选择资源组时，如果使用的是现有 Log Analytics 工作区，请选择“使用现有工作区”，然后搜索包含 OMS 工作区的资源组。 否则，请创建新的工作区。
 > ![Service Fabric](./media/log-analytics-service-fabric/8.png)
-> 
-> 
+>
+>
 
 部署完此模板后，你将能够看到存储帐户连接到 Log Analytics 工作区。 在此情况下，我已向前面创建的 Exchange 工作区添加了多个存储帐户。
 ![Service Fabric](./media/log-analytics-service-fabric/9.png)
@@ -129,7 +131,7 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 | 值得注意的问题 |显示 RunAsyncFailures RunAsynCancellations 和 Node Down 等问题。 |
 | 操作事件 |应用程序升级和部署等值得注意的操作事件。 |
 | 可靠服务事件 |Runasyncinvocations 等值得注意的可靠服务事件。 |
-| 执行组件事件 |由微服务生成的，值得注意的执行组件事件，例如执行组件方法产生的异常、执行组件激活和停用等。 |
+| 执行组件事件 |由微服务生成的值得注意的执行组件事件，例如执行组件方法产生的异常、执行组件激活和停用等。 |
 | 应用程序事件 |由应用程序生成的所有自定义 ETW 事件。 |
 
 ![Service Fabric 仪表板](./media/log-analytics-service-fabric/sf3.png)
@@ -144,15 +146,9 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 
 > [!NOTE]
 > 可以通过单击仪表板顶部的“基于最近 7 天的数据”，更改这些事件在 Service Fabric 解决方案中的作用域。 还可以显示最近 7 天、1 天或 6 小时内生成的事件。 或者，可以选择“自定义”来指定自定义的日期范围。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 Service Fabric 事件数据。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

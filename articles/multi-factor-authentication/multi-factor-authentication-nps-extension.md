@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/23/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 68f1088a7303b5eddecc9ff99f7330c0462baafc
-ms.openlocfilehash: 9fb517a08fb56a1adb9e23f820aa2e4aa20eacf6
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: 804e811c0db5f72b6764b3cb120eb5ec8898baac
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="augment-your-existing-authentication-infrastructure-with-the-nps-extension-for-azure-multi-factor-authentication---public-preview"></a>通过适用于 Azure 多重身份验证的 NPS 扩展增强现有的身份验证基础结构 - 公共预览版
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成 - 公共预览版
 
 适用于 Azure MFA 的网络策略服务器 (NPS) 扩展可以使用现有的服务器将基于云的 MFA 功能添加到身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流，而无需安装、配置和维护新服务器。 
  
@@ -155,9 +156,4 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 ## <a name="next-steps"></a>后续步骤
 
 了解如何将 Azure MFA 与 [Active Directory](multi-factor-authentication-get-started-server-dirint.md)、[RADIUS 身份验证](multi-factor-authentication-get-started-server-radius.md)和 [LDAP 身份验证](multi-factor-authentication-get-started-server-ldap.md)相集成。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
